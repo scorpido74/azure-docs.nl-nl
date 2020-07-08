@@ -3,12 +3,12 @@ title: Programmatisch beleid maken
 description: Dit artikel helpt u bij het programmatisch maken en beheren van beleids regels voor Azure Policy met Azure CLI, Azure PowerShell en REST API.
 ms.date: 05/20/2020
 ms.topic: how-to
-ms.openlocfilehash: 8ee87ecd9e7c636b5bb63c8e94be0e353acc3e13
-ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
+ms.openlocfilehash: 3f785556dd86aa8b02f5aa0af09190266b8c509f
+ms.sourcegitcommit: f684589322633f1a0fafb627a03498b148b0d521
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83682117"
+ms.lasthandoff: 07/06/2020
+ms.locfileid: "85969886"
 ---
 # <a name="programmatically-create-policies"></a>Programmatisch beleid maken
 
@@ -40,7 +40,7 @@ De eerste stap voor een betere zicht baarheid van uw resources is het maken en t
 
 ### <a name="create-and-assign-a-policy-definition-with-powershell"></a>Een beleids definitie maken en toewijzen met Power shell
 
-1. Gebruik het volgende JSON-code fragment om een JSON-bestand met de naam AuditStorageAccounts. json te maken.
+1. Gebruik het volgende JSON-code fragment om een JSON-bestand met de naam AuditStorageAccounts.jsaan te maken.
 
    ```json
    {
@@ -63,7 +63,7 @@ De eerste stap voor een betere zicht baarheid van uw resources is het maken en t
 
    Zie [Azure Policy Definition structure](../concepts/definition-structure.md)(Engelstalig) voor meer informatie over het ontwerpen van een beleids definitie.
 
-1. Voer de volgende opdracht uit om een beleids definitie te maken met het bestand AuditStorageAccounts. json.
+1. Voer de volgende opdracht uit om een beleids definitie te maken met behulp van de AuditStorageAccounts.jsin het bestand.
 
    ```azurepowershell-interactive
    New-AzPolicyDefinition -Name 'AuditStorageAccounts' -DisplayName 'Audit Storage Accounts Open to Public Networks' -Policy 'AuditStorageAccounts.json'
@@ -95,7 +95,7 @@ De eerste stap voor een betere zicht baarheid van uw resources is het maken en t
    - Abonnees`/subscriptions/{subId}/`
    - Beheer groep-`/providers/Microsoft.Management/managementGroups/{mgName}`
 
-Zie [AZ. resources](/powershell/module/az.resources/#policies)(Engelstalig) voor meer informatie over het beheren van bron beleid met behulp van de Azure Resource Manager Power shell-module.
+Zie [AZ. resources](/powershell/module/az.resources/#policies)(Engelstalig) voor meer informatie over het beheren van bron beleid met behulp van de Resource Manager Power shell-module.
 
 ### <a name="create-and-assign-a-policy-definition-using-armclient"></a>Een beleids definitie maken en toewijzen met behulp van ARMClient
 

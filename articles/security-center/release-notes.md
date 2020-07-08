@@ -10,14 +10,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 06/23/2020
+ms.date: 07/01/2020
 ms.author: memildin
-ms.openlocfilehash: cebc1d54443c63a3fb9a2c8b6e9471525e0d7403
-ms.sourcegitcommit: 61d92af1d24510c0cc80afb1aebdc46180997c69
+ms.openlocfilehash: 997b7b1442d29c4daa4e47c89a7f53d46c3b8c81
+ms.sourcegitcommit: f684589322633f1a0fafb627a03498b148b0d521
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/24/2020
-ms.locfileid: "85341263"
+ms.lasthandoff: 07/06/2020
+ms.locfileid: "85969582"
 ---
 # <a name="whats-new-in-azure-security-center"></a>Wat is er nieuw in Azure Security Center?
 
@@ -29,6 +29,19 @@ Azure-beveiliging is in actieve ontwikkeling en ontvangt voortdurend verbetering
 
 Deze pagina wordt regel matig bijgewerkt. Ga daarom vaak opnieuw te werk. Als u op zoek bent naar items die ouder zijn dan zes maanden, kunt u deze vinden in het [Archief voor wat er nieuw is in azure Security Center](release-notes-archive.md).
 
+## <a name="july-2020"></a>Juli 2020
+
+De updates in juli zijn onder andere:
+- [Beveiliging tegen bedreigingen voor Azure Storage uitgebreid tot Azure Files en Azure Data Lake Storage Gen2 bevatten (preview)](#threat-protection-for-azure-storage-expanded-to-include-azure-files-and-azure-data-lake-storage-gen2-preview)
+
+### <a name="threat-protection-for-azure-storage-expanded-to-include-azure-files-and-azure-data-lake-storage-gen2-preview"></a>Beveiliging tegen bedreigingen voor Azure Storage uitgebreid tot Azure Files en Azure Data Lake Storage Gen2 bevatten (preview)
+
+Bedreigings beveiliging voor Azure Storage detecteert mogelijk schadelijke activiteiten op uw Azure Storage-accounts. Security Center geeft een waarschuwing weer wanneer er wordt geprobeerd toegang te krijgen tot uw opslag accounts. 
+
+Uw gegevens kunnen worden beveiligd, ongeacht of deze zijn opgeslagen als blob-containers, bestands shares of gegevens-meren. 
+
+Meer informatie over [beveiliging tegen bedreigingen voor Azure Storage](threat-protection.md#threat-protection-for-azure-storage-).
+
 
 ## <a name="june-2020"></a>Juni 2020
 
@@ -38,6 +51,8 @@ De updates in juni omvatten:
 - [Twee nieuwe aanbevelingen voor het implementeren van de Log Analytics agent op Azure Arc-machines (preview)](#two-new-recommendations-to-deploy-the-log-analytics-agent-to-azure-arc-machines-preview)
 - [Nieuw beleid voor het maken van continue export-en werk stroom automatiserings configuraties op schaal](#new-policies-to-create-continuous-export-and-workflow-automation-configurations-at-scale)
 - [Nieuwe aanbeveling voor het gebruik van Nsg's om niet-Internet gerichte virtuele machines te beveiligen](#new-recommendation-for-using-nsgs-to-protect-non-internet-facing-virtual-machines)
+- [Nieuw beleid voor het inschakelen van bedreigings beveiliging en geavanceerde gegevens beveiliging](#new-policies-for-enabling-threat-protection-and-advanced-data-security)
+
 
 
 ### <a name="secure-score-api-preview"></a>Secure Score-API (preview-versie)
@@ -111,11 +126,37 @@ Meer informatie over het gebruik van de twee export beleidsregels in [voortduren
 
 Het beveiligings beheer voor best practices voor beveiliging bevat nu de volgende nieuwe aanbeveling:
 
-- **Niet-Internet gerichte virtuele machines moeten worden beveiligd met netwerk beveiligings groepen**
+- **Niet-internetgerichte virtuele machines moeten worden beveiligd met netwerkbeveiligingsgroepen**
 
 Een bestaande aanbeveling, **Internet gerichte virtuele machines moeten worden beveiligd met netwerk beveiligings groepen**, heeft geen onderscheid gemaakt tussen virtuele machines met Internet gerichte en niet-Internet. Voor beide is een aanbeveling met een hoge urgentie gegenereerd als een virtuele machine niet aan een netwerk beveiligings groep is toegewezen. Deze nieuwe aanbeveling scheidt de niet-Internet gerichte machines van elkaar om de fout-positieven te reduceren en onnodige waarschuwingen met hoge urgentie te voor komen.
 
 Meer informatie vindt u in de tabel met [netwerk aanbevelingen](recommendations-reference.md#recs-network) .
+
+
+
+
+### <a name="new-policies-for-enabling-threat-protection-and-advanced-data-security"></a>Nieuw beleid voor het inschakelen van bedreigings beveiliging en geavanceerde gegevens beveiliging
+
+De onderstaande nieuwe beleids regels zijn toegevoegd aan het ASC-standaard initiatief en zijn ontworpen om te helpen bij het inschakelen van bedreigings beveiliging of geavanceerde gegevens beveiliging voor de relevante resource typen.
+
+Het beleid is te vinden in azure Policy:
+
+
+| Beleid                                                                                                                                                                                                                                                                | Beleids-ID                            |
+|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|--------------------------------------|
+| [Geavanceerde gegevens beveiliging moet zijn ingeschakeld op Azure SQL Database servers](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2fproviders%2fMicrosoft.Authorization%2fpolicyDefinitions%2f7fe3b40f-802b-4cdd-8bd4-fd799c948cc2)     | 7fe3b40f-802b-4cdd-8bd4-fd799c948cc2 |
+| [Geavanceerde gegevens beveiliging moet zijn ingeschakeld op SQL-servers op computers](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2fproviders%2fMicrosoft.Authorization%2fpolicyDefinitions%2f6581d072-105e-4418-827f-bd446d56421b) | 6581d072-105e-4418-827f-bd446d56421b |
+| [Geavanceerde beveiliging tegen bedreigingen moet zijn ingeschakeld voor opslag accounts](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2fproviders%2fMicrosoft.Authorization%2fpolicyDefinitions%2f308fbb08-4ab8-4e67-9b29-592e93fb94fa)           | 308fbb08-4ab8-4e67-9b29-592e93fb94fa |
+| [Geavanceerde beveiliging tegen bedreigingen moet zijn ingeschakeld op Azure Key Vault kluizen](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2fproviders%2fMicrosoft.Authorization%2fpolicyDefinitions%2f0e6763cc-5078-4e64-889d-ff4d9a839047)           | 0e6763cc-5078-4e64-889d-ff4d9a839047 |
+| [Geavanceerde beveiliging tegen bedreigingen moet zijn ingeschakeld op App Service plannen](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2fproviders%2fMicrosoft.Authorization%2fpolicyDefinitions%2f2913021d-f2fd-4f3d-b958-22354e2bdbcb)                | 2913021d-f2fd-4f3d-b958-22354e2bdbcb |
+| [Geavanceerde beveiliging tegen bedreigingen moet worden ingeschakeld voor Azure Container Registry registers](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2fproviders%2fMicrosoft.Authorization%2fpolicyDefinitions%2fc25d9a16-bc35-4e15-a7e5-9db606bf9ed4)   | c25d9a16-bc35-4e15-a7e5-9db606bf9ed4 |
+| [Geavanceerde beveiliging tegen bedreigingen moet zijn ingeschakeld op Azure Kubernetes Service-clusters](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2fproviders%2fMicrosoft.Authorization%2fpolicyDefinitions%2f523b5cd1-3e23-492f-a539-13118b6d1e3a)   | 523b5cd1-3e23-492f-a539-13118b6d1e3a |
+| [Geavanceerde beveiliging tegen bedreigingen moet zijn ingeschakeld op Virtual Machines](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2fproviders%2fMicrosoft.Authorization%2fpolicyDefinitions%2f4da35fc9-c9e7-4960-aec9-797fe7d9051d)           | 4da35fc9-c9e7-4960-aec9-797fe7d9051d |
+|                                                                                                                                                                                                                                                                       |                                      |
+
+Meer informatie over [beveiliging tegen bedreigingen vindt u in azure Security Center](https://docs.microsoft.com/azure/security-center/threat-protection).
+
+
 
 
 
@@ -195,6 +236,7 @@ De beveiligings besturings elementen-en deze wissel knop maken deel uit van de n
 
 Meer informatie over beveiligings controles in [Enhanced Secure Score (preview) in azure Security Center](secure-score-security-controls.md).
 
+![Wissel knop "groeperen op besturings elementen" voor aanbevelingen](\media\secure-score-security-controls\recommendations-group-by-toggle.gif)
 
 ### <a name="expanded-security-control-implement-security-best-practices"></a>Uitgebreide beveiliging, aanbevolen procedures voor het implementeren van beveiliging 
 
@@ -380,13 +422,3 @@ Als aanvallers stealthier Azure Security Center-methoden gebruiken om detectie t
 
 Als u deze bedreiging wilt bemeteren, Azure Security Center u de aanvals detectie van bestanden voor Windows in oktober 2018 vrijgegeven en nu ook uitgebreide aanvals detectie op Linux. 
 
-
-## <a name="january-2020"></a>Januari 2020
-
-### <a name="enhanced-secure-score-preview"></a>Verbeterde beveiligde Score (preview-versie)
-
-Een verbeterde versie van de functie beveiligde Score van Azure Security Center is nu beschikbaar als preview. In deze versie zijn meerdere aanbevelingen onderverdeeld in beveiligings controles die beter aansluiten op uw kwets bare aanvallen (bijvoorbeeld de toegang tot beheer poorten beperken).
-
-Lees meer over de wijzigingen in de beveiligde score tijdens de preview-fase en bepaal andere herstel bewerkingen waarmee u uw omgeving verder kunt beveiligen.
-
-Meer informatie over [verbeterde beveiligde Score (preview) in azure Security Center](secure-score-security-controls.md).

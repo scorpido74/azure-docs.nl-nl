@@ -5,12 +5,12 @@ author: mscurrell
 ms.author: markscu
 ms.date: 08/02/2018
 ms.topic: how-to
-ms.openlocfilehash: fc779d6caba2b896b869440ad523291bc3c9a9b2
-ms.sourcegitcommit: 6fd8dbeee587fd7633571dfea46424f3c7e65169
+ms.openlocfilehash: 850f4e3754af790e6b9bab5c68c9bd10849bba37
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83726431"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85965277"
 ---
 # <a name="rendering-using-azure"></a>Weergeven met Azure
 
@@ -48,7 +48,7 @@ Er zijn tal van Azure-functies die kunnen worden gebruikt voor het renderen van 
 
 Het meest voorkomende geval is dat er een bestaande on-premises weergave farm wordt beheerd door een beeldrenderings toepassing, zoals PipelineFX Qube, Royal rendering of Thinkbox deadline.  De vereiste is om de on-premises weer gave-Farm capaciteit uit te breiden met behulp van virtuele Azure-machines.
 
-De software voor het renderen van apparaten heeft ingebouwde ondersteuning voor Azure of we maken beschik bare invoeg toepassingen die ondersteuning voor Azure toevoegen. Zie het artikel over het [gebruik van render-beheerders](https://docs.microsoft.com/azure/batch/batch-rendering-render-managers)voor meer informatie over de ondersteunde weergave beheerders en de ingeschakelde functionaliteit.
+De software voor het renderen van apparaten heeft ingebouwde ondersteuning voor Azure of we maken beschik bare invoeg toepassingen die ondersteuning voor Azure toevoegen. Zie het artikel over het [gebruik van render-beheerders](./batch-rendering-render-managers.md)voor meer informatie over de ondersteunde weergave beheerders en de ingeschakelde functionaliteit.
 
 ### <a name="custom-rendering-workflow"></a>Aangepaste werk stroom voor Rendering
 
@@ -77,9 +77,9 @@ Azure Batch wordt gebruikt voor veel werk belastingen, maar de volgende mogelijk
 Er zijn verschillende manieren om Azure Batch te gebruiken, die allemaal ook van toepassing zijn op Azure Batch rendering.
 
 * API's:
-  * Code schrijven met behulp van de [rest](https://docs.microsoft.com/rest/api/batchservice)-, [.net](https://docs.microsoft.com/dotnet/api/overview/azure/batch)-, [python](https://docs.microsoft.com/python/api/overview/azure/batch)-, [Java](https://docs.microsoft.com/java/api/overview/azure/batch)-of andere ondersteunde api's.  Ontwikkel aars kunnen Azure Batch-mogelijkheden integreren in hun bestaande toepassingen of werk stroom, of deze in de Cloud of op basis van on-premises.  De [Autodesk Maya-invoeg toepassing](https://github.com/Azure/azure-batch-maya) maakt bijvoorbeeld gebruik van de batch PYTHON-API voor het aanroepen van batch, het maken en beheren van groepen, het verzenden van taken en taken en het controleren van de status.
+  * Code schrijven met behulp van de [rest](/rest/api/batchservice)-, [.net](/dotnet/api/overview/azure/batch)-, [python](/python/api/overview/azure/batch)-, [Java](/java/api/overview/azure/batch)-of andere ondersteunde api's.  Ontwikkel aars kunnen Azure Batch-mogelijkheden integreren in hun bestaande toepassingen of werk stroom, of deze in de Cloud of op basis van on-premises.  De [Autodesk Maya-invoeg toepassing](https://github.com/Azure/azure-batch-maya) maakt bijvoorbeeld gebruik van de batch PYTHON-API voor het aanroepen van batch, het maken en beheren van groepen, het verzenden van taken en taken en het controleren van de status.
 * Opdracht regel Programma's:
-  * De [Azure-opdracht regel](https://docs.microsoft.com/cli/azure/) of- [Azure PowerShell](https://docs.microsoft.com/powershell/azure/overview) kan worden gebruikt voor het uitvoeren van scripts voor batch gebruik.
+  * De [Azure-opdracht regel](/cli/azure/) of- [Azure PowerShell](/powershell/azure/overview) kan worden gebruikt voor het uitvoeren van scripts voor batch gebruik.
   * Met name de batch-CLI-sjabloon ondersteuning maakt het veel eenvoudiger om Pools te maken en taken te verzenden.
 * UIs:
   * [Batch Explorer](https://github.com/Azure/BatchExplorer) is een platform voor meerdere platforms waarmee batch-accounts ook kunnen worden beheerd en bewaakt, maar biedt een aantal rijkere mogelijkheden in vergelijking met de Azure Portal-gebruikers interface.  Er zijn een set groeps-en taak sjablonen beschikbaar die zijn afgestemd op elke ondersteunde toepassing en kunnen worden gebruikt om eenvoudig Pools te maken en taken te verzenden.
@@ -95,9 +95,9 @@ Er zijn verschillende manieren om Azure Batch te gebruiken, die allemaal ook van
 
 Raadpleeg de volgende inleidende zelf studies om Azure Batch rendering te proberen:
 
-* [Batch Explorer gebruiken om een overvloei scène weer te geven](https://docs.microsoft.com/azure/batch/tutorial-rendering-batchexplorer-blender)
-* [De batch-CLI gebruiken voor het weer geven van een auto Desk 3ds Max scène](https://docs.microsoft.com/azure/batch/tutorial-rendering-cli)
+* [Batch Explorer gebruiken om een overvloei scène weer te geven](./tutorial-rendering-batchexplorer-blender.md)
+* [De batch-CLI gebruiken voor het weer geven van een auto Desk 3ds Max scène](./tutorial-rendering-cli.md)
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Bepaal de lijst met rendering-toepassingen en versies die zijn opgenomen in de VM-installatie kopieën van Azure Marketplace in [dit artikel](https://docs.microsoft.com/azure/batch/batch-rendering-applications).
+Bepaal de lijst met rendering-toepassingen en versies die zijn opgenomen in de VM-installatie kopieën van Azure Marketplace in [dit artikel](./batch-rendering-applications.md).

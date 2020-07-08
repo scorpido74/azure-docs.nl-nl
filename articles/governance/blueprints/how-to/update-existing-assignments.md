@@ -3,12 +3,12 @@ title: Een bestaande toewijzing bijwerken vanuit de portal
 description: Meer informatie over het mechanisme voor het bijwerken van een bestaande blauw druk-toewijzing vanuit de portal in azure-blauw drukken.
 ms.date: 04/15/2020
 ms.topic: how-to
-ms.openlocfilehash: a00a8bcc10b37af576777e3816a794225a3832f7
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 03c954517662c1f54fcca9fbb96ebdf48afdedef
+ms.sourcegitcommit: f684589322633f1a0fafb627a03498b148b0d521
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81381792"
+ms.lasthandoff: 07/06/2020
+ms.locfileid: "85969461"
 ---
 # <a name="how-to-update-an-existing-blueprint-assignment"></a>Een bestaande blauw druk-toewijzing bijwerken
 
@@ -50,18 +50,18 @@ De implementatie van de bijgewerkte toewijzingen volgt enkele belang rijke regel
   - Als de definitie van de beleids toewijzing is gewijzigd, wordt er een nieuwe beleids toewijzing gemaakt.
     De eerder geïmplementeerde beleids toewijzingen blijven aanwezig.
   - Als het artefact voor beleids toewijzing van de blauw druk wordt verwijderd, blijven geïmplementeerde beleids toewijzingen aanwezig.
-- Azure Resource Manager-sjablonen
+- Azure Resource Manager sjablonen (ARM-sjablonen)
   - De sjabloon wordt als een **put**verwerkt door Resource Manager. Raadpleeg de documentatie voor elke opgenomen resource als elk resource type deze actie anders verwerkt, om de impact van deze actie te bepalen wanneer deze wordt uitgevoerd door blauw drukken.
 
 ## <a name="possible-errors-on-updating-assignments"></a>Mogelijke fouten bij het bijwerken van toewijzingen
 
-Wanneer u toewijzingen bijwerkt, kunt u wijzigingen aanbrengen die onderbreekt wanneer ze worden uitgevoerd. Een voor beeld is het wijzigen van de locatie van een resource groep nadat deze al is geïmplementeerd. Alle wijzigingen die door [Azure Resource Manager](../../../azure-resource-manager/management/overview.md) worden ondersteund, kunnen worden aangebracht, maar elke wijziging die zou leiden tot een fout via Azure Resource Manager, resulteert ook in het mislukken van de toewijzing.
+Wanneer u toewijzingen bijwerkt, kunt u wijzigingen aanbrengen die onderbreekt wanneer ze worden uitgevoerd. Een voor beeld is het wijzigen van de locatie van een resource groep nadat deze al is geïmplementeerd. Alle wijzigingen die door [Resource Manager](../../../azure-resource-manager/management/overview.md) worden ondersteund, kunnen worden gemaakt, maar elke wijziging die zou leiden tot een fout door Resource Manager, leidt ook tot het mislukken van de toewijzing.
 
 Er is geen limiet voor het aantal keren dat een toewijzing kan worden bijgewerkt. Als er een fout optreedt, controleert u de fout en maakt u een andere update voor de toewijzing.  Voor beelden van fout scenario's:
 
 - Een ongeldige para meter
 - Een al bestaand object
-- Een wijziging die niet wordt ondersteund door Azure Resource Manager
+- Een wijziging die niet wordt ondersteund door Resource Manager
 
 ## <a name="next-steps"></a>Volgende stappen
 
