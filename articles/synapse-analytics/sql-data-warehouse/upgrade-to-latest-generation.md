@@ -12,10 +12,10 @@ ms.author: martinle
 ms.reviewer: jrasnick
 ms.custom: seo-lt-2019
 ms.openlocfilehash: 1177551b698bb2e295a71f6cd4a132411d1c5bea
-ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/23/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85210691"
 ---
 # <a name="optimize-performance-by-upgrading-azure-synapse-analytics-sql-pool"></a>Prestaties optimaliseren door de SQL-groep voor Azure Synapse Analytics te upgraden
@@ -65,7 +65,7 @@ U kunt nu probleemloos upgraden naar de Gen2-laag van de SQL-groep Compute Optim
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
-- Meld u aan bij de [Azure-portal](https://portal.azure.com/).
+- Meld u aan bij [Azure Portal](https://portal.azure.com/).
 - Zorg ervoor dat de SQL-pool actief is. deze moet worden gemigreerd naar Gen2
 
 ### <a name="powershell-upgrade-commands"></a>Power shell-upgrade opdrachten
@@ -182,7 +182,7 @@ WHERE  idx.type_desc = 'CLUSTERED COLUMNSTORE';
 
 ## <a name="create-a-user-defined-restore-point-using-the-azure-portal"></a>Een door de gebruiker gedefinieerd herstel punt maken met behulp van de Azure Portal
 
-1. Meld u aan bij de [Azure-portal](https://portal.azure.com/).
+1. Meld u aan bij [Azure Portal](https://portal.azure.com/).
 
 2. Ga naar de SQL-groep waarvoor u een herstel punt wilt maken.
 
@@ -196,7 +196,7 @@ WHERE  idx.type_desc = 'CLUSTERED COLUMNSTORE';
 
 ## <a name="restore-an-active-or-paused-database-using-the-azure-portal"></a>Een actieve of onderbroken data base herstellen met behulp van de Azure Portal
 
-1. Meld u aan bij de [Azure-portal](https://portal.azure.com/).
+1. Meld u aan bij [Azure Portal](https://portal.azure.com/).
 2. Ga naar de SQL-groep waarvan u wilt herstellen.
 3. Klik boven aan de sectie Overzicht op **herstellen**.
 

@@ -12,10 +12,10 @@ ms.author: kevin
 ms.reviewer: igorstan
 ms.custom: azure-synapse
 ms.openlocfilehash: fcebf66dba2fc13457ca359b81565fc5870032c9
-ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/23/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85213292"
 ---
 # <a name="load-data-from-azure-data-lake-storage-for-synapse-sql"></a>Gegevens laden uit Azure Data Lake Storage voor Synapse SQL
@@ -41,7 +41,7 @@ U hebt het volgende nodig om deze zelfstudie te volgen:
 * Een SQL-groep. Zie [een SQL-groep en query gegevens maken](create-data-warehouse-portal.md).
 * Een Data Lake Storage-account. Zie [aan de slag met Azure data Lake Storage](../../data-lake-store/data-lake-store-get-started-portal.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json). Voor dit opslag account moet u een van de volgende referenties configureren of opgeven om te laden: een sleutel voor een opslag account, een SAS-sleutel (Shared Access Signature), een Azure Directory-toepassings gebruiker of een AAD-gebruiker die de juiste RBAC-rol heeft voor het opslag account.
 
-## <a name="create-the-target-table"></a>De doel tabel maken
+## <a name="create-the-target-table"></a>De doeltabel maken
 
 Maak verbinding met uw SQL-groep en wijs de doel tabel aan waarnaar u wilt laden. In dit voor beeld maken we een tabel met product dimensies.
 

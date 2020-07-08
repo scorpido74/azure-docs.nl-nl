@@ -4,10 +4,10 @@ description: Hierin worden de structuur en eigenschappen van Azure Resource Mana
 ms.topic: conceptual
 ms.date: 06/22/2020
 ms.openlocfilehash: 4fdf386aa3b17f46589183706b2a91637acacdb7
-ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/23/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85208821"
 ---
 # <a name="understand-the-structure-and-syntax-of-arm-templates"></a>Inzicht in de structuur en syntaxis van ARM-sjablonen
@@ -130,7 +130,7 @@ Zie voor meer informatie over het gebruik `copy` van om verschillende waarden vo
 
 Zie [variabelen in azure Resource Manager sjabloon](template-variables.md)voor voor beelden van het gebruik van variabelen.
 
-## <a name="functions"></a>Functies
+## <a name="functions"></a>Functions
 
 U kunt binnen uw sjabloon uw eigen functies maken. Deze functies zijn beschikbaar voor gebruik in uw sjabloon. Normaal gesp roken definieert u gecompliceerde expressies die u niet wilt herhalen in uw sjabloon. U maakt de door de gebruiker gedefinieerde functies op basis van expressies en [functies](template-functions.md) die in sjablonen worden ondersteund.
 

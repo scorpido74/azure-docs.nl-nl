@@ -5,10 +5,10 @@ ms.date: 01/08/2020
 ms.topic: how-to
 ms.reviewer: brendal
 ms.openlocfilehash: aaef42f715c9f4fa2550f4a2468b42c5077af14c
-ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/23/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85210759"
 ---
 # <a name="deploy-azure-blockchain-workbench-preview"></a>Azure Block Chain Workbench preview implementeren
@@ -51,7 +51,7 @@ Azure Block Chain Workbench vereist Azure AD-configuratie-en-toepassings registr
 
 Zodra de vereiste stappen zijn voltooid, bent u klaar voor de implementatie van de Block Chain-Workbench. In de volgende secties wordt uitgelegd hoe u het Framework implementeert.
 
-1. Meld u aan bij de [Azure-portal](https://portal.azure.com).
+1. Meld u aan bij [Azure Portal](https://portal.azure.com).
 1. Selecteer uw account in de rechter bovenhoek en schakel over naar de gewenste Azure AD-Tenant waar u Azure Block Chain Workbench wilt implementeren.
 1. Selecteer in de linkerbovenhoek van de Azure Portal **een resource maken** .
 1. Selecteer **Block Chain**  >  **Azure Block Chain workbench (preview-versie)**.
@@ -123,7 +123,7 @@ De implementatie kan Maxi maal 90 minuten duren. U kunt de Azure Portal gebruike
 
 Zodra de implementatie van de Block Chain-Workbench is voltooid, bevat een nieuwe resource groep uw resources van Block Chain Workbench. Block Chain Workbench-Services zijn toegankelijk via een web-URL. De volgende stappen laten zien hoe u de web-URL van het geïmplementeerde Framework kunt ophalen.
 
-1. Meld u aan bij de [Azure-portal](https://portal.azure.com).
+1. Meld u aan bij [Azure Portal](https://portal.azure.com).
 1. Selecteer **resource groepen**in het navigatie deel venster aan de linkerkant.
 1. Kies de naam van de resource groep die u hebt opgegeven bij het implementeren van Block Chain Workbench.
 1. Selecteer de kolomkop **type** om de lijst alfabetisch te sorteren op type.
@@ -177,7 +177,7 @@ Als u ervoor kiest om de Azure AD-instellingen voor de implementatie hand matig 
 
 Voor de implementatie van Block Chain Workbench is registratie van een Azure AD-toepassing vereist. U hebt een Azure Active Directory-Tenant (Azure AD) nodig om de app te registreren. U kunt een bestaande Tenant gebruiken of een nieuwe Tenant maken. Als u een bestaande Azure AD-Tenant gebruikt, hebt u voldoende machtigingen nodig voor het registreren van toepassingen, het verlenen van Graph API machtigingen en het toestaan van gast toegang binnen een Azure AD-Tenant. Als u onvoldoende machtigingen hebt in een bestaande Azure AD-Tenant, maakt u een nieuwe Tenant.
 
-1. Meld u aan bij de [Azure-portal](https://portal.azure.com).
+1. Meld u aan bij [Azure Portal](https://portal.azure.com).
 1. Selecteer uw account in de rechter bovenhoek en schakel over naar de gewenste Azure AD-Tenant. De Tenant moet de Tenant van de abonnements beheerder zijn van het abonnement waar Azure Block Chain Workbench wordt geïmplementeerd en u voldoende machtigingen hebt om toepassingen te registreren.
 1. Selecteer in het navigatiedeelvenster aan de linkerkant de **Azure Active Directory**-service. Selecteer **app-registraties**  >  **nieuwe registratie**.
 
@@ -277,7 +277,7 @@ Als u gast gebruikers in uw Azure AD-Tenant hebt, volgt u de extra stappen om er
 
 Zodra Azure Block Chain Workbench is geïmplementeerd, moet u de **antwoord-URL** voor de Azure Active Directory (Azure AD)-client toepassing configureren van de geïmplementeerde Block Chain Workbench web-URL.
 
-1. Meld u aan bij de [Azure-portal](https://portal.azure.com).
+1. Meld u aan bij [Azure Portal](https://portal.azure.com).
 1. Controleer of u zich in de Tenant bevindt waarin u de Azure AD-client toepassing hebt geregistreerd.
 1. Selecteer in het navigatiedeelvenster aan de linkerkant de **Azure Active Directory**-service. Selecteer **App-registraties**.
 1. Selecteer de Azure AD-client toepassing die u hebt geregistreerd in de sectie vereisten.

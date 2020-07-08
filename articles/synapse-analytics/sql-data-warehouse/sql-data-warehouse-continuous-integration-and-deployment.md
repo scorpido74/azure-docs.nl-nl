@@ -12,10 +12,10 @@ ms.author: kevin
 ms.reviewer: igorstan
 ms.custom: azure-synapse
 ms.openlocfilehash: 725e8165f8a7bdb654f61d7257867a2d0bf17110
-ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/23/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85213564"
 ---
 # <a name="continuous-integration-and-deployment-for-data-warehousing"></a>Continue integratie en implementatie voor gegevens opslag
@@ -26,7 +26,7 @@ In deze eenvoudige zelf studie wordt uitgelegd hoe u het SSDT-data base project 
 
 - Door loop de [zelf studie over de integratie van bron beheer](sql-data-warehouse-source-control-integration.md)
 
-- Azure DevOps instellen en er verbinding mee maken
+- Instellen van en verbinding maken met Azure DevOps
 
 ## <a name="continuous-integration-with-visual-studio-build"></a>Continue integratie met Visual Studio build
 
@@ -62,5 +62,5 @@ Op dit moment hebt u een eenvoudige omgeving waar elke check-in voor de hoofd ve
 
 - [Synapse SQL pool MPP-architectuur](massively-parallel-processing-mpp-architecture.md) verkennen
 - Snel [een SQL-groep maken](create-data-warehouse-portal.md)
-- [Voorbeeld gegevens laden](load-data-from-azure-blob-storage-using-polybase.md)
+- [Voorbeeldgegevens laden](load-data-from-azure-blob-storage-using-polybase.md)
 - [Video's verkennen](sql-data-warehouse-videos.md)
