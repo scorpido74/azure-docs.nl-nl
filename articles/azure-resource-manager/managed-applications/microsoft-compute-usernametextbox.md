@@ -6,10 +6,9 @@ ms.topic: conceptual
 ms.date: 06/27/2018
 ms.author: tomfitz
 ms.openlocfilehash: c7544ae7d872a64547cb6c57ce8af9a09fc6c3d8
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75651902"
 ---
 # <a name="microsoftcomputeusernametextbox-ui-element"></a>Micro soft. compute. UserNameTextBox UI-element
@@ -50,8 +49,8 @@ Een besturings element tekstvak met ingebouwde validatie voor Windows-en Linux-g
 - Als `constraints.required` is ingesteld op **waar**, moet het tekstvak een waarde hebben om te kunnen valideren. De standaard waarde is **True**.
 - `osPlatform`moet worden opgegeven, en kan **Windows** of **Linux**zijn.
 - `constraints.regex`is een reguliere java script-expressie patroon. Indien opgegeven, moet de waarde van het tekstvak overeenkomen met het patroon om te valideren. De standaard waarde is **Null**.
-- `constraints.validationMessage`is een teken reeks die moet worden weer gegeven wanneer de waarde van het tekstvak niet `constraints.regex`voldoet aan de validatie die is opgegeven door. Als dat niet is opgegeven, worden de ingebouwde validatie berichten van het tekstvak gebruikt. De standaard waarde is **Null**.
-- Dit element heeft ingebouwde validatie die is gebaseerd op de waarde die is opgegeven voor `osPlatform`. De ingebouwde validatie kan worden gebruikt in combi natie met een aangepaste reguliere expressie. Als een waarde `constraints.regex` is opgegeven, worden de ingebouwde en aangepaste validaties geactiveerd.
+- `constraints.validationMessage`is een teken reeks die moet worden weer gegeven wanneer de waarde van het tekstvak niet voldoet aan de validatie die is opgegeven door `constraints.regex` . Als dat niet is opgegeven, worden de ingebouwde validatie berichten van het tekstvak gebruikt. De standaard waarde is **Null**.
+- Dit element heeft ingebouwde validatie die is gebaseerd op de waarde die is opgegeven voor `osPlatform` . De ingebouwde validatie kan worden gebruikt in combi natie met een aangepaste reguliere expressie. Als een waarde `constraints.regex` is opgegeven, worden de ingebouwde en aangepaste validaties geactiveerd.
 
 ## <a name="next-steps"></a>Volgende stappen
 

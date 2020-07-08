@@ -6,10 +6,9 @@ ms.topic: article
 ms.date: 06/29/2018
 ms.author: pepogors
 ms.openlocfilehash: 999dbb8c36c4e0413f287b2a73cf39ab4acd15f5
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75610043"
 ---
 # <a name="develop-java-service-fabric-applications-with-visual-studio-code"></a>Ontwikkel Java Service Fabric-toepassingen met Visual Studio code
@@ -36,7 +35,7 @@ git clone https://github.com/Azure-Samples/service-fabric-java-quickstart.git
 
 ## <a name="open-the-application-in-vs-code"></a>Open de toepassing in VS code
 
-Open VS code.  Klik op het Explorer-pictogram op de **activiteiten balk** en klik op **map openen**, of klik op **bestand > map openen**. Navigeer naar de map *./service-Fabric-Java-QuickStart/voting* in de map waarnaar u de opslag plaats hebt gekloond en klik vervolgens op **OK**. De werk ruimte moet dezelfde bestanden bevatten die worden weer gegeven in de onderstaande scherm afbeelding.
+Open VS Code.  Klik op het Explorer-pictogram op de **activiteiten balk** en klik op **map openen**, of klik op **bestand > map openen**. Navigeer naar de map *./service-Fabric-Java-QuickStart/voting* in de map waarnaar u de opslag plaats hebt gekloond en klik vervolgens op **OK**. De werk ruimte moet dezelfde bestanden bevatten die worden weer gegeven in de onderstaande scherm afbeelding.
 
 ![Java-stem toepassing in de werk ruimte](./media/service-fabric-develop-java-applications-with-vs-code/java-voting-application.png)
 
@@ -57,11 +56,11 @@ Nadat u de toepassing hebt gemaakt, kunt u deze implementeren in het lokale clus
 
    ![Opdracht toepassing implementeren in VS code](./media/service-fabric-develop-java-applications-with-vs-code/sf-deploy-application.png)
 
-4. Wanneer de implementatie is voltooid, start u een browser en opent u `http://localhost:19080/Explorer`service Fabric Explorer:. U ziet dat de toepassing wordt uitgevoerd. Dit kan enige tijd duren. het is dus een ogen blik geduld. 
+4. Wanneer de implementatie is voltooid, start u een browser en opent u Service Fabric Explorer: `http://localhost:19080/Explorer` . U ziet dat de toepassing wordt uitgevoerd. Dit kan enige tijd duren. het is dus een ogen blik geduld. 
 
    ![Stem toepassing in Service Fabric Explorer](./media/service-fabric-develop-java-applications-with-vs-code/sfx-localhost-java.png)
 
-4. Nadat u hebt gecontroleerd of de toepassing wordt uitgevoerd, start u een browser en opent u deze `http://localhost:8080`pagina:. Dit is de web-front-end van de toepassing. U kunt items toevoegen en hierop klikken om te stemmen.
+4. Nadat u hebt gecontroleerd of de toepassing wordt uitgevoerd, start u een browser en opent u deze pagina: `http://localhost:8080` . Dit is de web-front-end van de toepassing. U kunt items toevoegen en hierop klikken om te stemmen.
 
    ![Stem toepassing in browser](./media/service-fabric-develop-java-applications-with-vs-code/voting-sample-in-browser.png)
 
@@ -82,30 +81,30 @@ Voer een opmerking uit bij de opdracht op regel 6 (gebruik ' # ') en voeg de vol
    java -Xdebug -Xrunjdwp:transport=dt_socket,address=8001,server=y,suspend=n -Djava.library.path=$LD_LIBRARY_PATH -jar VotingDataService.jar
    ```
 
-2. Werk het bestand *stem/VotingApplication/ApplicationManifest. XML* bij. Stel de **MinReplicaSetSize** -en **TargetReplicaSetSize** -kenmerken in op ' 1 ' in het element **StatefulService** :
+2. Werk het *stem-VotingApplication/ApplicationManifest.xml-* bestand bij. Stel de **MinReplicaSetSize** -en **TargetReplicaSetSize** -kenmerken in op ' 1 ' in het element **StatefulService** :
    
    ```xml
          <StatefulService MinReplicaSetSize="1" ServiceTypeName="VotingDataServiceType" TargetReplicaSetSize="1">
    ```
 
-3. Klik op het pictogram fout opsporing op de **activiteiten balk** om de weer gave fout opsporing in VS code te openen. Klik boven aan de weer gave van het fout opsporingsprogramma op het tandwiel pictogram en selecteer **Java** in het menu van de vervolg keuzelijst omgeving. Het bestand Launch. json wordt geopend. 
+3. Klik op het pictogram fout opsporing op de **activiteiten balk** om de weer gave fout opsporing in VS code te openen. Klik boven aan de weer gave van het fout opsporingsprogramma op het tandwiel pictogram en selecteer **Java** in het menu van de vervolg keuzelijst omgeving. De launch.jsin het bestand wordt geopend. 
 
    ![Pictogram fout opsporing in VS code-werk ruimte](./media/service-fabric-develop-java-applications-with-vs-code/debug-icon-workspace.png)
 
-3. Stel in het bestand Launch. json de poort waarde in de configuratie met de naam **debug (attach)** in op **8001**. Sla het bestand op.
+3. Stel in de launch.jsop bestand de poort waarde in de configuratie **debug (attach)** in op **8001**. Sla het bestand op.
 
-   ![Configuratie van fouten opsporen voor de Launch. json](./media/service-fabric-develop-java-applications-with-vs-code/launch-json-java.png)
+   ![Configuratie van fouten opsporen voor de launch.jsop](./media/service-fabric-develop-java-applications-with-vs-code/launch-json-java.png)
 
 4. Implementeer de toepassing naar het lokale cluster met behulp van de opdracht **service Fabric: Deploy toepassing (localhost)** . Controleer of de toepassing wordt uitgevoerd in Service Fabric Explorer. Uw toepassing is nu klaar om fouten te kunnen opsporen.
 
 Voer de volgende stappen uit om een onderbrekings punt in te stellen:
 
-1. Open het */voting/VotingDataService/src/statefulservice/VotingDataService.java* -bestand in Verkenner. Stel een onderbrekings punt in op de eerste regel `try` code in het `addItem` blok in de methode (regel 80).
+1. Open het */voting/VotingDataService/src/statefulservice/VotingDataService.java* -bestand in Verkenner. Stel een onderbrekings punt in op de eerste regel code in het `try` blok in de `addItem` methode (regel 80).
    
    ![Onderbrekings punt instellen in gegevens service met stem](./media/service-fabric-develop-java-applications-with-vs-code/breakpoint-set.png)
 
    > [!IMPORTANT]
-   > Zorg ervoor dat u onderbrekings punten instelt op uitvoer bare regels code. Bijvoorbeeld onderbrekings punten die zijn ingesteld voor methode `try` declaraties, `catch` instructies of instructies, worden gemist door het fout opsporingsprogramma.
+   > Zorg ervoor dat u onderbrekings punten instelt op uitvoer bare regels code. Bijvoorbeeld onderbrekings punten die zijn ingesteld voor methode declaraties, `try` instructies of `catch` instructies, worden gemist door het fout opsporingsprogramma.
 2. Als u de fout opsporing wilt starten, klikt u op het pictogram fout opsporing op de **activiteiten balk**, selecteert u de configuratie **fout opsporing (koppelen)** in het menu fout opsporing en klikt u op de knop uitvoeren (groene pijl).
 
    ![Configuratie fouten opsporen (koppelen)](./media/service-fabric-develop-java-applications-with-vs-code/debug-attach-java.png)

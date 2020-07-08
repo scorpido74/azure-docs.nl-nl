@@ -6,10 +6,9 @@ ms.author: jobreen
 author: jjbfour
 ms.date: 06/20/2019
 ms.openlocfilehash: 6110a7952b7c29609d2b98e135b61032aec3fa52
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75650394"
 ---
 # <a name="adding-custom-actions-to-azure-rest-api"></a>Aangepaste acties toevoegen aan Azure REST API
@@ -18,7 +17,7 @@ In dit artikel worden de vereisten en aanbevolen procedures beschreven voor het 
 
 ## <a name="how-to-define-an-action-endpoint"></a>Een actie-eind punt definiëren
 
-Een **eind punt** is een URL die verwijst naar een service, waarmee het onderliggende contract tussen IT en Azure wordt geïmplementeerd. Het eind punt wordt gedefinieerd in de aangepaste resource provider en kan een openbaar toegankelijke URL zijn. In het onderstaande voor beeld **action** is de `myCustomAction` actie geïmplementeerd `endpointURL`door.
+Een **eind punt** is een URL die verwijst naar een service, waarmee het onderliggende contract tussen IT en Azure wordt geïmplementeerd. Het eind punt wordt gedefinieerd in de aangepaste resource provider en kan een openbaar toegankelijke URL zijn. In het onderstaande voor beeld is de **actie** `myCustomAction` geïmplementeerd door `endpointURL` .
 
 Voor beeld van **resource provider**:
 

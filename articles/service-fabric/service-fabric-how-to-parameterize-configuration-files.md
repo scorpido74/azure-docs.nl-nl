@@ -6,10 +6,9 @@ ms.topic: conceptual
 ms.date: 10/09/2018
 ms.author: mikhegn
 ms.openlocfilehash: 4e96a732cffd70b0a5c24e7ebafe214297a72720
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75644627"
 ---
 # <a name="how-to-parameterize-configuration-files-in-service-fabric"></a>Configuratie bestanden in Service Fabric para meters
@@ -20,7 +19,7 @@ In dit artikel leest u hoe u een configuratie bestand in Service Fabric kunt par
 
 In dit voor beeld overschrijft u een configuratie waarde met behulp van para meters in de implementatie van uw toepassing.
 
-1. Open het * \<bestand MyService> \packageroot\config\settings.XML* in uw service project.
+1. Open het * \<MyService>\PackageRoot\Config\Settings.xml* -bestand in uw service project.
 1. Stel een naam en waarde voor de configuratie parameter in, bijvoorbeeld cache grootte gelijk aan 25, door het volgende XML-bestand toe te voegen:
 
    ```xml
@@ -30,15 +29,15 @@ In dit voor beeld overschrijft u een configuratie waarde met behulp van para met
    ```
 
 1. Sla het bestand op en sluit het.
-1. Open het * \<bestand mijn toepassing> \applicationpackageroot\applicationmanifest.XML* .
-1. In het bestand ApplicationManifest. XML declareert u een para meter en standaard waarde `Parameters` in het-element.  Het is aan te bevelen de naam van de service (bijvoorbeeld "MyService") in de parameter naam te vinden.
+1. Open het * \<MyApplication>\ApplicationPackageRoot\ApplicationManifest.xml* -bestand.
+1. In het ApplicationManifest.xml bestand declareert u een para meter en standaard waarde in het- `Parameters` element.  Het is aan te bevelen de naam van de service (bijvoorbeeld "MyService") in de parameter naam te vinden.
 
    ```xml
     <Parameters>
       <Parameter Name="MyService_CacheSize" DefaultValue="80" />
     </Parameters>
    ```
-1. Voeg in `ServiceManifestImport` de sectie van het ApplicationManifest. XML-bestand een `ConfigOverrides` - `ConfigOverride` element toe, dat verwijst naar het configuratie pakket, de sectie en de para meter.
+1. Voeg in de `ServiceManifestImport` sectie van het ApplicationManifest.xml-bestand een `ConfigOverrides` - `ConfigOverride` element toe, dat verwijst naar het configuratie pakket, de sectie en de para meter.
 
    ```xml
     <ConfigOverrides>

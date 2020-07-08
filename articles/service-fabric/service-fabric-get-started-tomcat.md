@@ -5,10 +5,9 @@ ms.topic: conceptual
 ms.date: 6/08/2018
 ms.author: pepogors
 ms.openlocfilehash: 1a699f3b35970270a9800162a6d8717682a168ae
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75614414"
 ---
 # <a name="create-service-fabric-container-running-apache-tomcat-server-on-linux"></a>Service Fabric-container maken met Apache Tomcat server op Linux
@@ -58,7 +57,7 @@ Volg de stappen in deze sectie om een docker-installatie kopie te maken op basis
    docker build . -t tomcattest
    ```
 
-   Met deze opdracht wordt de nieuwe installatie kopie gemaakt met behulp van de instructies in de Dockerfile, naamgeving ( `tomcattest`-t tagging) van de installatie kopie. Als u een container installatie kopie wilt maken, wordt eerst de basis installatie kopie gedownload uit docker hub en wordt de toepassing hieraan toegevoegd. 
+   Met deze opdracht wordt de nieuwe installatie kopie gemaakt met behulp van de instructies in de Dockerfile, naamgeving (-t tagging) van de installatie kopie `tomcattest` . Als u een container installatie kopie wilt maken, wordt eerst de basis installatie kopie gedownload uit docker hub en wordt de toepassing hieraan toegevoegd. 
 
    Nadat de buildopdracht is voltooid, voert u de opdracht `docker images` uit om de gegevens van de nieuwe installatiekopie te bekijken:
 
@@ -79,7 +78,7 @@ Volg de stappen in deze sectie om een docker-installatie kopie te maken op basis
    * `-p`Hiermee geeft u de poort toewijzing tussen de container en het besturings systeem van de host op. 
 
    > [!Note]
-   > De poort die u met de `-p` para meter opent, moet de poort zijn waarop uw Tomcat-toepassing luistert naar aanvragen. In het huidige voor beeld is er een connector geconfigureerd in het *ApacheTomcat/conf/server. XML-* bestand om te Luis teren op poort 8080 voor HTTP-aanvragen. Deze poort is toegewezen aan poort 8080 op de host. 
+   > De poort die u met de `-p` para meter opent, moet de poort zijn waarop uw Tomcat-toepassing luistert naar aanvragen. In het huidige voor beeld is er een connector geconfigureerd in het bestand *ApacheTomcat/conf/server.xml* om te Luis teren op poort 8080 voor HTTP-aanvragen. Deze poort is toegewezen aan poort 8080 op de host. 
 
    Zie de [documentatie van docker run](https://docs.docker.com/engine/reference/commandline/run/)voor meer informatie over andere para meters.
 
@@ -101,7 +100,7 @@ Volg de stappen in deze sectie om een docker-installatie kopie te maken op basis
 ## <a name="push-the-tomcat-image-to-your-container-registry"></a>De tomcat-installatie kopie naar het container register pushen
 Nu u hebt gecontroleerd of de tomcat-installatie kopie wordt uitgevoerd in een container op uw ontwikkel computer, pusht u deze naar een opslag plaats in een container register. In dit artikel wordt gebruikgemaakt van Azure Container Registry voor het opslaan van de installatie kopie, maar u kunt elk gewenst container register gebruiken als u een aantal stappen hebt gewijzigd. In dit artikel wordt ervan uitgegaan dat de register naam *myregistry* is en dat de volledige register naam myregistry.azurecr.io is. Wijzig deze op de juiste manier voor uw scenario. 
 
-1. Voer `docker login` uit om u aan te melden bij uw container register met uw [register referenties](../container-registry/container-registry-authentication.md).
+1. Voer uit `docker login` om u aan te melden bij uw container register met uw [register referenties](../container-registry/container-registry-authentication.md).
 
    In het volgende voorbeeld worden de id en het wachtwoord van een [service-principal](../active-directory/develop/app-objects-and-service-principals.md) van Azure Active Directory doorgegeven. U hebt bijvoorbeeld een service-principal aan uw register toegewezen voor een automatiseringsscenario. U kunt zich ook aanmelden met uw gebruikers naam en wacht woord voor het REGI ster.
 
@@ -139,7 +138,7 @@ Nu u de tomcat-installatie kopie naar een container register hebt gepusht, kunt 
 
    ![Service Fabric Yeoman-generator voor containers](./media/service-fabric-get-started-tomcat/yo-generator.png)
 
-10. Voeg in het service manifest (*ServiceFabricTomcat/ServiceFabricTomcat/TomcatServicePkg/ServiceManifest. XML*) de volgende XML onder het hoofd- **ServiceManfest** -label toe om de poort te openen waarop uw toepassing luistert naar aanvragen. Het **eindpunt** label declareert het protocol en de poort voor het eind punt. Voor dit artikel luistert de container service naar poort 8080: 
+10. Voeg in het service manifest (*ServiceFabricTomcat/ServiceFabricTomcat/TomcatServicePkg/ServiceManifest.xml*) het volgende XML-bestand onder de root **ServiceManfest** -code toe om de poort te openen waarnaar uw toepassing luistert naar aanvragen. Het **eindpunt** label declareert het protocol en de poort voor het eind punt. Voor dit artikel luistert de container service naar poort 8080: 
 
    ```xml
    <Resources>
@@ -152,7 +151,7 @@ Nu u de tomcat-installatie kopie naar een container register hebt gepusht, kunt 
    </Resources>
    ```
 
-11. Voeg in het manifest van de toepassing (*ServiceFabricTomcat/ServiceFabricTomcat/ApplicationManifest. XML*) onder de label **SERVICEMANIFESTIMPORT** de volgende XML toe. Vervang de **AccountName** en het **wacht woord** in de **RepositoryCredentials** -tag door de naam van het container register en het wacht woord dat vereist is om u aan te melden.
+11. Voeg in het manifest van de toepassing (*ServiceFabricTomcat/ServiceFabricTomcat/ApplicationManifest.xml*) onder de **ServiceManifestImport** -tag de volgende XML toe. Vervang de **AccountName** en het **wacht woord** in de **RepositoryCredentials** -tag door de naam van het container register en het wacht woord dat vereist is om u aan te melden.
 
    ```xml
    <Policies>
@@ -182,7 +181,7 @@ Nu u de tomcat-installatie kopie naar een container register hebt gepusht, kunt 
      ```bash
      sfctl cluster select --endpoint https://PublicIPorFQDN:19080 -pem your-certificate.pem -no-verify
      ```
-     Vervang `your-certificate.pem` in de voor gaande opdracht door de naam van het client certificaat bestand. In ontwikkel-en test omgevingen wordt het cluster certificaat vaak gebruikt als het client certificaat. Als uw certificaat niet zelf is ondertekend, laat u de `-no-verify` para meter weg. 
+     Vervang in de voor gaande opdracht door `your-certificate.pem` de naam van het client certificaat bestand. In ontwikkel-en test omgevingen wordt het cluster certificaat vaak gebruikt als het client certificaat. Als uw certificaat niet zelf is ondertekend, laat u de `-no-verify` para meter weg. 
        
      Cluster certificaten worden doorgaans lokaal gedownload als. pfx-bestand. Als u uw certificaat nog niet in de PEM-indeling hebt, kunt u de volgende opdracht uitvoeren om een. pem-bestand te maken vanuit een pfx-bestand:
 
@@ -190,7 +189,7 @@ Nu u de tomcat-installatie kopie naar een container register hebt gepusht, kunt 
      openssl pkcs12 -in your-certificate.pfx -out your-certificate.pem -nodes -passin pass:your-pfx-password
      ```
 
-     Als uw pfx-bestand niet is beveiligd met een wacht `-passin pass:` woord, gebruikt u voor de laatste para meter.
+     Als uw pfx-bestand niet is beveiligd met een wacht woord, gebruikt u `-passin pass:` voor de laatste para meter.
 
 
 13. Voer het installatie script uit dat is opgenomen in de sjabloon om de toepassing te implementeren in uw cluster. Het script kopieert het toepassings pakket naar de installatie kopie opslag van het cluster, registreert het toepassings type en maakt een exemplaar van de toepassing.
@@ -202,7 +201,7 @@ Nu u de tomcat-installatie kopie naar een container register hebt gepusht, kunt 
    Nadat u het installatie script hebt uitgevoerd, opent u een browser en navigeert u naar Service Fabric Explorer:
     
    * Gebruik `http://localhost:19080/Explorer` (Vervang *localhost* door het privé-IP-adres van de virtuele machine als u Vagrant op Mac OS X gebruikt) op een lokaal cluster.
-   * Gebruik `https://PublicIPorFQDN:19080/Explorer`op een veilig Azure-cluster. 
+   * Gebruik op een veilig Azure-cluster `https://PublicIPorFQDN:19080/Explorer` . 
     
    Vouw het knoop punt **toepassingen** uit en houd er rekening mee dat er nu een vermelding is voor uw toepassings type, **ServiceFabricTomcatType**en een andere voor het eerste exemplaar van dat type. Het kan enkele minuten duren voordat de toepassing volledig is geïmplementeerd, dus een ogen blik geduld.
 

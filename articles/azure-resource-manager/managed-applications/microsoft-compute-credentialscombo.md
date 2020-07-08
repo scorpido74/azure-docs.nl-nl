@@ -6,10 +6,9 @@ ms.topic: conceptual
 ms.date: 09/29/2018
 ms.author: tomfitz
 ms.openlocfilehash: baee83e08505ddabb4680b5bbb4101479010ea47
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75652136"
 ---
 # <a name="microsoftcomputecredentialscombo-ui-element"></a>Micro soft. compute. CredentialsCombo UI-element
@@ -115,7 +114,7 @@ Als `osPlatform` is **Linux** en de gebruiker een open bare SSH-sleutel heeft ge
 - Als `constraints.required` is ingesteld op **True**, moeten de tekst vakken voor het wacht woord of de open bare SSH-sleutel waarden bevatten om te kunnen valideren. De standaard waarde is **True**.
 - Als `options.hideConfirmation` is ingesteld op **True**, wordt het tweede tekstvak voor het bevestigen van het wacht woord van de gebruiker verborgen. De standaardwaarde is **onwaar**.
 - Als `options.hidePassword` is ingesteld op **True**, is de optie voor het gebruik van wachtwoord verificatie verborgen. Het kan alleen worden gebruikt als `osPlatform` **Linux**. De standaardwaarde is **onwaar**.
-- Aanvullende beperkingen voor de toegestane wacht woorden kunnen worden geïmplementeerd met behulp van de `customPasswordRegex` -eigenschap. De teken reeks `customValidationMessage` in wordt weer gegeven wanneer een wacht woord aangepaste validatie mislukt. De standaard waarde voor beide eigenschappen is **Null**.
+- Aanvullende beperkingen voor de toegestane wacht woorden kunnen worden geïmplementeerd met behulp van de- `customPasswordRegex` eigenschap. De teken reeks in `customValidationMessage` wordt weer gegeven wanneer een wacht woord aangepaste validatie mislukt. De standaard waarde voor beide eigenschappen is **Null**.
 
 ## <a name="next-steps"></a>Volgende stappen
 

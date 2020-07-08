@@ -6,10 +6,9 @@ ms.topic: conceptual
 ms.date: 06/03/2019
 ms.author: evanhi
 ms.openlocfilehash: 7f475774828bcaecd471e13de994b156041323ed
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75651382"
 ---
 # <a name="enable-and-request-just-in-time-access-for-azure-managed-applications"></a>Just-in-time-toegang inschakelen en aanvragen voor Azure Managed Applications
@@ -34,9 +33,9 @@ In dit artikel wordt gekeken naar de acties die zijn uitgevoerd voor het inschak
 
 ## <a name="add-jit-access-step-to-ui"></a>JIT-toegangs stap toevoegen aan de gebruikers interface
 
-Uw CreateUiDefinition. JSON-bestand is precies hetzelfde als het gebruikers interface bestand dat u voor permanente toegang maakt, behalve dat u een stap moet toevoegen waarmee gebruikers JIT-toegang kunnen inschakelen. Zie [Azure Managed Applications in Marketplace](publish-marketplace-app.md)voor meer informatie over het publiceren van uw eerste beheerde toepassings aanbieding in de Azure Marketplace.
+Uw CreateUiDefinition.jsin het bestand is precies hetzelfde als het gebruikers interface bestand dat u hebt gemaakt voor permanente toegang, behalve dat u een stap moet toevoegen waarmee gebruikers JIT-toegang kunnen inschakelen. Zie [Azure Managed Applications in Marketplace](publish-marketplace-app.md)voor meer informatie over het publiceren van uw eerste beheerde toepassings aanbieding in de Azure Marketplace.
 
-Voeg de volgende inhoud toe aan het bestand CreateUiDefinition. json om JIT-mogelijkheden voor uw aanbieding te ondersteunen:
+Voeg de volgende inhoud toe aan uw CreateUiDefinition.jsin het bestand om de JIT-functionaliteit voor uw aanbieding te ondersteunen:
 
 In ' stappen ':
 

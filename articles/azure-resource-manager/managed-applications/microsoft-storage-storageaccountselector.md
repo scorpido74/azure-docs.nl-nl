@@ -6,10 +6,9 @@ ms.topic: conceptual
 ms.date: 06/28/2018
 ms.author: tomfitz
 ms.openlocfilehash: 4fcaf0e5842ce8a65175d2fc1dfa2483a1203b2f
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75651889"
 ---
 # <a name="microsoftstoragestorageaccountselector-ui-element"></a>Micro soft. storage. StorageAccountSelector UI-element
@@ -64,7 +63,7 @@ Met het besturings element kan de gebruiker een nieuw opslag account maken of ee
 
 - Indien opgegeven, `defaultValue.name` wordt automatisch gevalideerd voor uniekheid. Als de naam van het opslag account niet uniek is, moet de gebruiker een andere naam opgeven of een bestaand opslag account kiezen.
 - De standaard waarde voor `defaultValue.type` is **Premium_LRS**.
-- Elk type dat niet is `constraints.allowedTypes` opgegeven in, is verborgen en elk type dat `constraints.excludedTypes` niet is opgegeven in wordt weer gegeven. `constraints.allowedTypes`en `constraints.excludedTypes` zijn beide optioneel, maar kunnen niet tegelijkertijd worden gebruikt.
+- Elk type dat niet is opgegeven in `constraints.allowedTypes` , is verborgen en elk type dat niet is opgegeven in `constraints.excludedTypes` wordt weer gegeven. `constraints.allowedTypes`en `constraints.excludedTypes` zijn beide optioneel, maar kunnen niet tegelijkertijd worden gebruikt.
 - Als `options.hideExisting` de **waarde True**is, kan de gebruiker geen bestaand opslag account kiezen. De standaardwaarde is **onwaar**.
 
 ## <a name="next-steps"></a>Volgende stappen

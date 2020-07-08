@@ -6,10 +6,9 @@ ms.topic: conceptual
 ms.date: 08/18/2017
 ms.author: masnider
 ms.openlocfilehash: 5306439184561e8dec8303a7b149f51d6c2f6e08
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75551859"
 ---
 # <a name="availability-of-service-fabric-services"></a>Beschik baarheid van Service Fabric Services
@@ -18,7 +17,7 @@ Dit artikel geeft een overzicht van de manier waarop Azure Service Fabric de bes
 ## <a name="availability-of-service-fabric-stateless-services"></a>Beschik baarheid van Service Fabric stateless Services
 Service Fabric Services kunnen stateful of stateless zijn. Een stateless service is een toepassings service zonder [lokale status](service-fabric-concepts-state.md) die Maxi maal beschikbaar of betrouwbaar moet zijn.
 
-Als u een stateless service wilt maken `InstanceCount`, moet u een opgeven. Met het aantal instanties wordt het aantal exemplaren gedefinieerd van de toepassings logica van de stateless service die in het cluster moet worden uitgevoerd. Het verhogen van het aantal exemplaren is de aanbevolen manier om een stateless service te schalen.
+Als u een stateless service wilt maken, moet u een opgeven `InstanceCount` . Met het aantal instanties wordt het aantal exemplaren gedefinieerd van de toepassings logica van de stateless service die in het cluster moet worden uitgevoerd. Het verhogen van het aantal exemplaren is de aanbevolen manier om een stateless service te schalen.
 
 Wanneer een exemplaar van een stateless benoemde service mislukt, wordt er een nieuw exemplaar gemaakt op een in aanmerking komend knoop punt in het cluster. Een stateless service-exemplaar kan bijvoorbeeld mislukken op Knooppunt1 en opnieuw worden gemaakt op Knooppunt5.
 

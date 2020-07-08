@@ -6,10 +6,9 @@ ms.topic: conceptual
 ms.date: 06/28/2018
 ms.author: tomfitz
 ms.openlocfilehash: 53c9653b44a6c9d26d49d37b351cf6000676e2d4
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75651967"
 ---
 # <a name="microsoftnetworkvirtualnetworkcombo-ui-element"></a>Gebruikers interface-element van micro soft. Network. VirtualNetworkCombo
@@ -105,12 +104,12 @@ Wanneer de gebruiker een bestaand virtueel netwerk kiest, moet de gebruiker elk 
 
 ## <a name="remarks"></a>Opmerkingen
 
-- Indien opgegeven, wordt het eerste niet-overlappende adres voorvoegsel van `defaultValue.addressPrefixSize` grootte automatisch bepaald op basis van de bestaande virtuele netwerken in het abonnement van de gebruiker.
+- Indien opgegeven, wordt het eerste niet-overlappende adres voorvoegsel van grootte `defaultValue.addressPrefixSize` automatisch bepaald op basis van de bestaande virtuele netwerken in het abonnement van de gebruiker.
 - De standaard waarde voor `defaultValue.name` en `defaultValue.addressPrefixSize` is **Null**.
 - `constraints.minAddressPrefixSize`moet worden opgegeven. Bestaande virtuele netwerken met een adres ruimte die kleiner is dan de opgegeven waarde, zijn niet beschikbaar voor selectie.
 - `subnets`moet worden opgegeven en `constraints.minAddressPrefixSize` moet voor elk subnet worden opgegeven.
-- Wanneer u een nieuw virtueel netwerk maakt, wordt het adres voorvoegsel van elk subnet automatisch berekend op basis van het adres voorvoegsel van het virtuele `addressPrefixSize`netwerk en de respectieve.
-- Wanneer u een bestaand virtueel netwerk gebruikt, zijn alle subnetten die kleiner `constraints.minAddressPrefixSize` zijn dan de respectieve, niet beschikbaar voor selectie. Bovendien, indien opgegeven, subnetten die geen mini maal `minAddressCount` beschik bare adressen hebben, zijn niet beschikbaar voor selectie. De standaard waarde is **0**. Geef **waar** op als u wilt dat de beschik bare adressen `requireContiguousAddresses`aaneengesloten zijn. De standaard waarde is **True**.
+- Wanneer u een nieuw virtueel netwerk maakt, wordt het adres voorvoegsel van elk subnet automatisch berekend op basis van het adres voorvoegsel van het virtuele netwerk en de respectieve `addressPrefixSize` .
+- Wanneer u een bestaand virtueel netwerk gebruikt, zijn alle subnetten die kleiner zijn dan de respectieve, `constraints.minAddressPrefixSize` niet beschikbaar voor selectie. Bovendien, indien opgegeven, subnetten die geen mini maal `minAddressCount` beschik bare adressen hebben, zijn niet beschikbaar voor selectie. De standaard waarde is **0**. Geef **waar** op als u wilt dat de beschik bare adressen aaneengesloten zijn `requireContiguousAddresses` . De standaard waarde is **True**.
 - Het maken van subnetten in een bestaand virtueel netwerk wordt niet ondersteund.
 - Als `options.hideExisting` de **waarde True**is, kan de gebruiker geen bestaand virtueel netwerk kiezen. De standaardwaarde is **onwaar**.
 

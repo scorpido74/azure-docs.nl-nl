@@ -6,10 +6,9 @@ ms.topic: conceptual
 ms.date: 12/06/2017
 ms.author: mikhegn
 ms.openlocfilehash: a53626b8fd362397ba89df30b099fa3c9ff7b0a2
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75609856"
 ---
 # <a name="how-to-specify-the-port-number-of-a-service-using-parameters-in-service-fabric"></a>Het poort nummer van een service opgeven met behulp van para meters in Service Fabric
@@ -23,10 +22,10 @@ In dit voor beeld stelt u het poort nummer in voor uw asp.net core web-API met b
 1. Open Visual Studio en maak een nieuwe Service Fabric-toepassing.
 1. Kies de sjabloon staatloze ASP.NET Core.
 1. Kies Web API.
-1. Open het bestand ServiceManifest. XML.
+1. Open het ServiceManifest.xml-bestand.
 1. Noteer de naam van het eind punt dat is opgegeven voor uw service. De standaardwaarde is `ServiceEndpoint`.
-1. Open het bestand ApplicationManifest. XML
-1. In het `ServiceManifestImport` element voegt u een nieuw `RessourceOverrides` -element toe met een verwijzing naar het eind punt in het bestand ServiceManifest. XML.
+1. Het ApplicationManifest.xml bestand openen
+1. In het `ServiceManifestImport` element voegt u een nieuw- `RessourceOverrides` element toe met een verwijzing naar het eind punt in uw ServiceManifest.xml-bestand.
 
     ```xml
       <ServiceManifestImport>
@@ -40,7 +39,7 @@ In dit voor beeld stelt u het poort nummer in voor uw asp.net core web-API met b
       </ServiceManifestImport>
     ```
 
-1. In het `Endpoint` -element kunt u nu elk kenmerk overschrijven met een para meter. In dit voor beeld geeft `Port` u een parameter naam op met behulp van vier Kante haken, bijvoorbeeld`[MyWebAPI_PortNumber]`
+1. In het `Endpoint` -element kunt u nu elk kenmerk overschrijven met een para meter. In dit voor beeld geeft u `Port` een parameter naam op met behulp van vier Kante haken, bijvoorbeeld`[MyWebAPI_PortNumber]`
 
     ```xml
       <ServiceManifestImport>
@@ -54,7 +53,7 @@ In dit voor beeld stelt u het poort nummer in voor uw asp.net core web-API met b
       </ServiceManifestImport>
     ```
 
-1. In het bestand ApplicationManifest. XML geeft u vervolgens de para meter op in het `Parameters` element
+1. In het ApplicationManifest.xml-bestand kunt u vervolgens de para meter in het `Parameters` element opgeven
 
     ```xml
       <Parameters>
@@ -79,7 +78,7 @@ In dit voor beeld stelt u het poort nummer in voor uw asp.net core web-API met b
       </Parameters>
     ```
 
-Wanneer u uw toepassing publiceert vanuit Visual Studio met behulp van het publicatie profiel Cloud. XML, is uw service geconfigureerd voor het gebruik van poort 80. Als u de toepassing implementeert zonder de para meter MyWebAPI_PortNumber op te geven, gebruikt de service poort 8080.
+Wanneer u uw toepassing publiceert vanuit Visual Studio met behulp van het Cloud.xml publicatie profiel, wordt de service geconfigureerd voor het gebruik van poort 80. Als u de toepassing implementeert zonder de para meter MyWebAPI_PortNumber op te geven, gebruikt de service poort 8080.
 
 ## <a name="next-steps"></a>Volgende stappen
 Zie de [artikelen toepassingen beheren voor meerdere omgevingen](service-fabric-manage-multiple-environment-app-configuration.md)voor meer informatie over een aantal van de belangrijkste concepten die in dit artikel worden besproken.

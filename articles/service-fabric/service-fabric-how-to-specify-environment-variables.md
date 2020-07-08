@@ -6,10 +6,9 @@ ms.topic: conceptual
 ms.date: 12/06/2017
 ms.author: mikhegn
 ms.openlocfilehash: f4c4f2a1c140e3d0f181c4fd55482056f9f91b62
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75614312"
 ---
 # <a name="how-to-specify-environment-variables-for-services-in-service-fabric"></a>Omgevings variabelen opgeven voor services in Service Fabric
@@ -20,8 +19,8 @@ In dit artikel leest u hoe u omgevings variabelen kunt opgeven voor een service 
 
 In dit voor beeld stelt u een omgevings variabele in voor een container. In dit artikel wordt ervan uitgegaan dat u al een toepassings-en service manifest hebt.
 
-1. Open het bestand ServiceManifest. XML.
-2. Voeg in `CodePackage` het-element een nieuw `EnvironmentVariables` -element en `EnvironmentVariable` een-element toe voor elke omgevings variabele.
+1. Open het ServiceManifest.xml-bestand.
+2. Voeg in het `CodePackage` -element een nieuw- `EnvironmentVariables` element en een- `EnvironmentVariable` element toe voor elke omgevings variabele.
 
     ```xml
     <CodePackage Name="MyCode" Version="CodeVersion1">
@@ -35,7 +34,7 @@ In dit voor beeld stelt u een omgevings variabele in voor een container. In dit 
 
    Omgevings variabelen kunnen worden overschreven in het toepassings manifest.
 
-3. Als u de omgevings variabelen in het manifest van de toepassing `EnvironmentOverrides` wilt overschrijven, gebruikt u het-element.
+3. Als u de omgevings variabelen in het manifest van de toepassing wilt overschrijven, gebruikt u het- `EnvironmentOverrides` element.
 
     ```xml
       <ServiceManifestImport>

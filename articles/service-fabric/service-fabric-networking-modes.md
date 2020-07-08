@@ -6,10 +6,9 @@ ms.topic: conceptual
 ms.date: 2/23/2018
 ms.author: atsenthi
 ms.openlocfilehash: ba1fa92559d39a481008d1dd18036e4232be1bfa
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75639799"
 ---
 # <a name="service-fabric-container-networking-modes"></a>Service Fabric container netwerk modi
@@ -194,14 +193,14 @@ Wanneer een container service opnieuw wordt gestart of naar een ander knoop punt
    |Instelling |Waarde | |
    | --- | --- | --- |
    |Prioriteit |2000 | |
-   |Naam |Custom_Dns  | |
+   |Name |Custom_Dns  | |
    |Bron |VirtualNetwork | |
    |Doel | VirtualNetwork | |
    |Service | DNS (UDP/53) | |
    |Bewerking | Toestaan  | |
    | | |
 
-4. Geef de netwerk modus op in het manifest van de toepassing voor `<NetworkConfig NetworkType="Open">`elke service:. De **Open** -netwerk modus resulteert in de service die een toegewezen IP-adres krijgt. Als er geen modus is opgegeven, wordt de standaard waarde **NAT** modus voor de service gebruikt. In het volgende voor beeld van een `NodeContainerServicePackage1` manifest `NodeContainerServicePackage2` kunnen de-en-services elk Luis teren op dezelfde poort ( `Endpoint1`beide services Luis teren). Wanneer de open-netwerk modus is `PortBinding` opgegeven, kunnen er geen configuraties worden opgegeven.
+4. Geef de netwerk modus op in het manifest van de toepassing voor elke service: `<NetworkConfig NetworkType="Open">` . De **Open** -netwerk modus resulteert in de service die een toegewezen IP-adres krijgt. Als er geen modus is opgegeven, wordt de standaard waarde **NAT** modus voor de service gebruikt. In het volgende voor beeld van een manifest kunnen de- `NodeContainerServicePackage1` en- `NodeContainerServicePackage2` Services elk Luis teren op dezelfde poort (beide services Luis teren `Endpoint1` ). Wanneer de open-netwerk modus is opgegeven, `PortBinding` kunnen er geen configuraties worden opgegeven.
 
     ```xml
     <?xml version="1.0" encoding="UTF-8"?>

@@ -6,21 +6,20 @@ ms.topic: conceptual
 ms.date: 01/23/2019
 ms.author: pepogors
 ms.openlocfilehash: 1c044d5fd973d3c577088a887f2fac413d2ab79d
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75551808"
 ---
 # <a name="infrastructure-as-code"></a>Infrastructure als code
 
 Maak in een productie scenario Azure Service Fabric-clusters met behulp van Resource Manager-sjablonen. Resource Manager-sjablonen bieden meer controle over de bron eigenschappen en zorgen ervoor dat u een consistent resource model hebt.
 
-Voorbeeld sjablonen voor Resource Manager zijn beschikbaar voor Windows en Linux in de [Azure-voor beelden op github](https://github.com/Azure-Samples/service-fabric-cluster-templates). Deze sjablonen kunnen worden gebruikt als uitgangs punt voor uw cluster sjabloon. Down `azuredeploy.json` load `azuredeploy.parameters.json` en bewerk ze om te voldoen aan uw aangepaste vereisten.
+Voorbeeld sjablonen voor Resource Manager zijn beschikbaar voor Windows en Linux in de [Azure-voor beelden op github](https://github.com/Azure-Samples/service-fabric-cluster-templates). Deze sjablonen kunnen worden gebruikt als uitgangs punt voor uw cluster sjabloon. Down load `azuredeploy.json` en `azuredeploy.parameters.json` Bewerk ze om te voldoen aan uw aangepaste vereisten.
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-Gebruik de volgende `azuredeploy.json` Azure `azuredeploy.parameters.json` cli-opdrachten om de en sjablonen te implementeren die u hierboven hebt gedownload:
+`azuredeploy.json` `azuredeploy.parameters.json` Gebruik de volgende Azure cli-opdrachten om de en sjablonen te implementeren die u hierboven hebt gedownload:
 
 ```azurecli
 ResourceGroupName="sfclustergroup"

@@ -7,10 +7,9 @@ ms.date: 03/19/2019
 ms.author: srrengar
 ms.custom: mvc, devcenter
 ms.openlocfilehash: 247a1de4d00668371337295616d31caf101f0cc5
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75498141"
 ---
 # <a name="monitoring-and-diagnostics"></a>Controle en diagnose
@@ -101,7 +100,7 @@ In elk voor beeld volgt de resource-ID dit patroon
     az monitor metrics list --resource <resourceId> --metric "CpuUtilization" --start-time 2019-02-01T00:00:00Z --end-time 2019-02-01T01:00:00Z --aggregation "Average" --filter "ServiceName eq 'VotingWeb'"
 ``` 
 
-### <a name="metrics-explorer"></a>Metrics Explorer
+### <a name="metrics-explorer"></a>Metrics-explorer
 
 Metrics Explorer is een Blade in de portal waarin u alle metrische gegevens voor uw net-toepassing kunt visualiseren. Deze Blade is toegankelijk op de pagina van de toepassing in de portal en de Blade Azure monitor, waarmee u de metrische gegevens voor al uw Azure-resources kunt weer geven die Azure Monitor ondersteunen. 
 

@@ -7,10 +7,9 @@ ms.date: 12/03/2018
 ms.author: asnegi
 ms.custom: mvc, devcenter
 ms.openlocfilehash: f26fe70afe7d9e2872f06ac6da7143556278b1b0
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75497970"
 ---
 # <a name="mount-highly-available-service-fabric-reliable-disk-based-volume-in-a-service-fabric-mesh-application"></a>Maxi maal beschik bare Service Fabric betrouw bare schijf op basis van schijven koppelen in een Service Fabric mesh-toepassing 
@@ -25,7 +24,7 @@ De `counterService` waarde van een item wordt periodiek gelezen uit een bestand,
 
 ## <a name="prerequisites"></a>Vereisten
 
-U kunt de Azure Cloud Shell of een lokale installatie van de Azure CLI gebruiken om deze taak te volt ooien. Als u de Azure CLI wilt gebruiken met dit artikel, `az --version` moet u ervoor `azure-cli (2.0.43)`zorgen dat u ten minste een waarde retourneert.  Installeer de module Azure Service Fabric mesh CLI (of werk deze bij) door deze [instructies](service-fabric-mesh-howto-setup-cli.md)te volgen.
+U kunt de Azure Cloud Shell of een lokale installatie van de Azure CLI gebruiken om deze taak te volt ooien. Als u de Azure CLI wilt gebruiken met dit artikel, moet u ervoor zorgen dat u `az --version` ten minste een waarde retourneert `azure-cli (2.0.43)` .  Installeer de module Azure Service Fabric mesh CLI (of werk deze bij) door deze [instructies](service-fabric-mesh-howto-setup-cli.md)te volgen.
 
 ## <a name="sign-in-to-azure"></a>Aanmelden bij Azure
 
@@ -38,7 +37,7 @@ az account set --subscription "<subscriptionID>"
 
 ## <a name="create-a-resource-group"></a>Een resourcegroep maken
 
-Maak een resourcegroep waarin u de toepassing wilt implementeren. Met de volgende opdracht maakt u een resource `myResourceGroup` groep met de naam op een locatie in het eastern-Verenigde Staten. Als u de naam van de resource groep in de onderstaande opdracht wijzigt, vergeet dan niet om deze te wijzigen in alle opdrachten die volgen.
+Maak een resourcegroep waarin u de toepassing wilt implementeren. Met de volgende opdracht maakt u een resource groep met de naam `myResourceGroup` op een locatie in het Eastern-Verenigde Staten. Als u de naam van de resource groep in de onderstaande opdracht wijzigt, vergeet dan niet om deze te wijzigen in alle opdrachten die volgen.
 
 ```azurecli-interactive
 az group create --name myResourceGroup --location eastus
@@ -46,7 +45,7 @@ az group create --name myResourceGroup --location eastus
 
 ## <a name="deploy-the-template"></a>De sjabloon implementeren
 
-Met de volgende opdracht wordt een Linux-toepassing geïmplementeerd met behulp van de [sjabloon Counter. sfreliablevolume. Linux. json](https://github.com/Azure-Samples/service-fabric-mesh/blob/master/templates/counter/counter.sfreliablevolume.linux.json). Als u een Windows-toepassing wilt implementeren, gebruikt u de [sjabloon Counter. sfreliablevolume. Windows. json](https://github.com/Azure-Samples/service-fabric-mesh/blob/master/templates/counter/counter.sfreliablevolume.windows.json). Houd er rekening mee dat grotere container installatie kopieën langer kunnen worden geïmplementeerd.
+Met de volgende opdracht wordt een Linux-toepassing geïmplementeerd met behulp [van decounter.sfreliablevolume.linux.jsop de sjabloon](https://github.com/Azure-Samples/service-fabric-mesh/blob/master/templates/counter/counter.sfreliablevolume.linux.json). Als u een Windows-toepassing wilt implementeren, gebruikt u de [counter.sfreliablevolume.windows.jsop sjabloon](https://github.com/Azure-Samples/service-fabric-mesh/blob/master/templates/counter/counter.sfreliablevolume.windows.json). Houd er rekening mee dat grotere container installatie kopieën langer kunnen worden geïmplementeerd.
 
 ```azurecli-interactive
 az mesh deployment create --resource-group myResourceGroup --template-uri https://raw.githubusercontent.com/Azure-Samples/service-fabric-mesh/master/templates/counter/counter.sfreliablevolume.linux.json
@@ -58,7 +57,7 @@ U kunt ook de status van de implementatie bekijken met de opdracht
 az group deployment show --name counter.sfreliablevolume.linux --resource-group myResourceGroup
 ```
 
-Let op de naam van de gateway resource die het resource `Microsoft.ServiceFabricMesh/gateways`type heeft als. Dit wordt gebruikt om het open bare IP-adres van de app op te halen.
+Let op de naam van de gateway resource die het resource type heeft als `Microsoft.ServiceFabricMesh/gateways` . Dit wordt gebruikt om het open bare IP-adres van de app op te halen.
 
 ## <a name="open-the-application"></a>De toepassing openen
 
@@ -67,11 +66,11 @@ Zodra de toepassing is geïmplementeerd, haalt u het IP-adres van de gateway bro
 az mesh gateway show --resource-group myResourceGroup --name counterGateway
 ```
 
-De uitvoer moet een eigenschap `ipAddress` hebben die het open bare IP-adres van het service-eind punt is. Open het bestand vanuit een browser. Er wordt een webpagina weer gegeven met de item waarde die elke seconde wordt bijgewerkt.
+De uitvoer moet een eigenschap hebben `ipAddress` die het open bare IP-adres van het service-eind punt is. Open het bestand vanuit een browser. Er wordt een webpagina weer gegeven met de item waarde die elke seconde wordt bijgewerkt.
 
 ## <a name="verify-that-the-application-is-able-to-use-the-volume"></a>Controleer of de toepassing het volume kan gebruiken
 
-De toepassing maakt een bestand met `counter.txt` de naam in het `counter/counterService` volume in de map. De inhoud van dit bestand is de item waarde die op de webpagina wordt weer gegeven.
+De toepassing maakt een bestand `counter.txt` met de naam in het volume in de `counter/counterService` map. De inhoud van dit bestand is de item waarde die op de webpagina wordt weer gegeven.
 
 ## <a name="delete-the-resources"></a>De resources verwijderen
 

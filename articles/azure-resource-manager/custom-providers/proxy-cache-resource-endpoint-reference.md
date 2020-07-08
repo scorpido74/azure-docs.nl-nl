@@ -6,10 +6,9 @@ ms.author: jobreen
 author: jjbfour
 ms.date: 06/20/2019
 ms.openlocfilehash: e1b8c44f020d18066423eed236018308fe88b607
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75650381"
 ---
 # <a name="custom-resource-cache-reference"></a>Verwijzing naar aangepaste resource-cache
@@ -42,11 +41,11 @@ Voor beeld van aangepaste resource provider:
 
 ## <a name="building-proxy-resource-endpoint"></a>Resource-eind punt van de proxy bouwen
 
-Een **eind punt** dat het resource- **eind punt** proxy, cache implementeert, moet de aanvraag en het antwoord voor de nieuwe API in azure afhandelen. In dit geval genereert het **resource type** een nieuwe Azure-resource-API `PUT`voor `GET`,, `DELETE` en voor het uitvoeren van ruw op één resource, en `GET` voor het ophalen van alle bestaande resources:
+Een **eind punt** dat het resource- **eind punt** proxy, cache implementeert, moet de aanvraag en het antwoord voor de nieuwe API in azure afhandelen. In dit geval genereert het **resource type** een nieuwe Azure-resource-API voor `PUT` , `GET` , en `DELETE` voor het uitvoeren van ruw op één resource, en `GET` voor het ophalen van alle bestaande resources:
 
 > [!NOTE]
-> De Azure API genereert de aanvraag methoden `PUT`, `GET`en `DELETE`, maar het cache- **eind punt** hoeft alleen te worden `PUT` verwerkt `DELETE`en.
-> Het is raadzaam dat het **eind punt** ook `GET`implementeert.
+> De Azure API genereert de aanvraag methoden `PUT` , `GET` en `DELETE` , maar het cache- **eind punt** hoeft alleen te worden verwerkt `PUT` en `DELETE` .
+> Het is raadzaam dat het **eind punt** ook implementeert `GET` .
 
 ### <a name="create-a-custom-resource"></a>Een aangepaste resource maken
 
@@ -88,7 +87,7 @@ Op dezelfde manier wordt de reactie van het **eind punt** doorgestuurd naar de k
 
 - Een geldig JSON-object document. Alle matrices en teken reeksen moeten worden genest onder een top-object.
 - De `Content-Type` header moet worden ingesteld op application/json; charset = UTF-8.
-- De aangepaste resource provider overschrijft de `name`velden `type`,, `id` en voor de aanvraag.
+- De aangepaste resource provider overschrijft de `name` `type` velden,, en `id` voor de aanvraag.
 - De aangepaste resource provider retourneert alleen velden onder het `properties` object voor een cache-eind punt.
 
 **Eind punt** Beantwoord
@@ -107,7 +106,7 @@ Content-Type: application/json; charset=utf-8
 }
 ```
 
-De `name`velden `id`, en `type` en worden automatisch gegenereerd voor de aangepaste resource door de aangepaste resource provider.
+De `name` `id` velden, en en `type` worden automatisch gegenereerd voor de aangepaste resource door de aangepaste resource provider.
 
 Reactie van de aangepaste Azure-resource provider:
 

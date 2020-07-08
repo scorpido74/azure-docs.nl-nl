@@ -4,10 +4,9 @@ description: In dit artikel wordt uitgelegd hoe u uw beheerde identiteits Servic
 ms.topic: article
 ms.date: 12/09/2019
 ms.openlocfilehash: 3b1feab1e67e993df771564a1a7c1aba4236b2c0
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75614790"
 ---
 # <a name="granting-a-service-fabric-applications-managed-identity-access-to-azure-resources-preview"></a>Het verlenen van toegang tot Azure-resources door de beheerde identiteit van een Service Fabric-toepassing (preview)
@@ -24,11 +23,11 @@ U kunt de Service Fabric beheerde identiteit van de toepassing (in dit geval toe
 3. Beschrijving Controleer de bestaande toegang: een door het systeem of de gebruiker toegewezen beheerde identiteit selecteren in het besturings element ' zoeken '; Selecteer de juiste identiteit in de lijst met resultaten
 4. Klik boven aan de pagina op functie toewijzing toevoegen om een nieuwe roltoewijzing toe te voegen voor de identiteit van de toepassing.
 Selecteer onder rol in de vervolg keuzelijst Storage BLOB data Reader.
-5. Kies `User assigned managed identity`in de volgende vervolg keuzelijst toegang toewijzen aan.
+5. Kies in de volgende vervolg keuzelijst toegang toewijzen aan `User assigned managed identity` .
 6. Controleer vervolgens of het juiste abonnement wordt weergegeven in de vervolgkeuzelijst Abonnement, en stel Resourcegroep in op Alle resourcegroepen.
 7. Kies onder selecteren de UAI die overeenkomt met de Service Fabric toepassing en klik vervolgens op opslaan.
 
-Ondersteuning voor door het systeem toegewezen Service Fabric beheerde identiteiten omvatten geen integratie in de Azure Portal; Als uw toepassing gebruikmaakt van een door het systeem toegewezen identiteit, moet u eerst de client-ID van de identiteit van de toepassing zoeken en vervolgens de bovenstaande stappen herhalen, maar `Azure AD user, group, or service principal` de optie selecteren in het besturings element zoeken.
+Ondersteuning voor door het systeem toegewezen Service Fabric beheerde identiteiten omvatten geen integratie in de Azure Portal; Als uw toepassing gebruikmaakt van een door het systeem toegewezen identiteit, moet u eerst de client-ID van de identiteit van de toepassing zoeken en vervolgens de bovenstaande stappen herhalen, maar de `Azure AD user, group, or service principal` optie selecteren in het besturings element zoeken.
 
 ## <a name="granting-access-to-azure-key-vault"></a>Toegang verlenen tot Azure Key Vault
 Net als bij het openen van opslag kunt u gebruikmaken van de beheerde identiteit van een Service Fabric toepassing om toegang te krijgen tot een Azure-sleutel kluis. De stappen voor het verlenen van toegang in de Azure Portal zijn vergelijkbaar met die hierboven vermeld, en worden hier niet herhaald. Raadpleeg de onderstaande afbeelding voor verschillen.

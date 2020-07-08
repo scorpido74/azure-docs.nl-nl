@@ -6,10 +6,9 @@ ms.topic: conceptual
 ms.date: 03/27/2018
 ms.author: srrengar
 ms.openlocfilehash: 8c4721584e74bd7f7111c516f2d16bd190392bb5
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75614363"
 ---
 # <a name="add-logging-to-your-service-fabric-application"></a>Logboekregistratie toevoegen aan uw Service Fabric-toepassing
@@ -161,7 +160,7 @@ Sommige providers van derden gebruiken de benadering die wordt beschreven in de 
 5. Instrumenteer de code op dezelfde wijze als wanneer u ASP.NET Core zonder Serilog gebruikt.
 
    >[!NOTE]
-   >Het is raadzaam om *don't* de statische `Log.Logger` met het vorige voor beeld niet te gebruiken. Service Fabric kunnen in één proces meerdere exemplaren van hetzelfde service type hosten. Als u de statische `Log.Logger`gebruikt, worden in de laatste schrijver van de eigenschaps verrijkingen waarden weer gegeven voor alle exemplaren die worden uitgevoerd. Dit is een reden waarom de variabele _logger een persoonlijk lidvariabele van de service klasse is. U moet ook de `_logger` beschik bare algemene code maken, die in meerdere services kan worden gebruikt.
+   >Het is raadzaam om *don't* de statische `Log.Logger` met het vorige voor beeld niet te gebruiken. Service Fabric kunnen in één proces meerdere exemplaren van hetzelfde service type hosten. Als u de statische gebruikt `Log.Logger` , worden in de laatste schrijver van de eigenschaps verrijkingen waarden weer gegeven voor alle exemplaren die worden uitgevoerd. Dit is een reden waarom de variabele _logger een persoonlijk lidvariabele van de service klasse is. U moet ook de `_logger` beschik bare algemene code maken, die in meerdere services kan worden gebruikt.
 
 ## <a name="next-steps"></a>Volgende stappen
 

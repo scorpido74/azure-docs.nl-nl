@@ -6,19 +6,18 @@ ms.author: lazinnat
 author: lazinnat
 ms.date: 07/11/2019
 ms.openlocfilehash: 2bc0017d71e159ac490041494bcf37db035ef421
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75651460"
 ---
 # <a name="reference-deployment-template-artifact"></a>Verwijzing: implementatie sjabloon artefact
 
-Dit artikel bevat een verwijzing naar een *mainTemplate. json* -artefact in azure Managed Applications. Zie [Azure Resource Manager-sjablonen](../templates/template-syntax.md)voor meer informatie over het ontwerpen van een implementatie sjabloon.
+Dit artikel bevat een verwijzing naar een *mainTemplate.jsvoor* artefacten in azure Managed Applications. Zie [Azure Resource Manager-sjablonen](../templates/template-syntax.md)voor meer informatie over het ontwerpen van een implementatie sjabloon.
 
 ## <a name="deployment-template"></a>Implementatiesjabloon
 
-In de volgende JSON ziet u een voor beeld van het bestand *mainTemplate. json* voor Azure Managed Applications:
+In de volgende JSON ziet u een voor beeld van *mainTemplate.jsop* bestand voor Azure Managed Applications:
 
 ```json
 {

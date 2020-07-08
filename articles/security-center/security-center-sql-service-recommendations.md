@@ -14,10 +14,9 @@ ms.workload: na
 ms.date: 12/19/2019
 ms.author: memildin
 ms.openlocfilehash: 74ed55e1d460495bfa8d3d4c00bd37bb7f05260e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75552862"
 ---
 # <a name="protect-azure-data-and-storage-services"></a>Azure-gegevens-en opslag Services beveiligen
@@ -55,7 +54,7 @@ Zie [aanbevelingen voor gegevens en opslag](recommendations-reference.md#recs-da
 
 2. Klik op een aanbeveling. De pagina aanbeveling wordt geopend en toont de herstels **tappen** voor het implementeren van de aanbeveling.
 
-   ![Herstels tappen](./media/security-center-monitoring/remediate1.png)
+   ![Herstelstappen](./media/security-center-monitoring/remediate1.png)
 
 3. Klik op **actie ondernemen**. De pagina Resource-instellingen wordt weer gegeven.
 

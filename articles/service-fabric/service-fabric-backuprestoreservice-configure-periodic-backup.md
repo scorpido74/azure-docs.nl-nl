@@ -6,10 +6,9 @@ ms.topic: article
 ms.date: 2/01/2019
 ms.author: hrushib
 ms.openlocfilehash: 34c6495e094a1160f6ac75b9f098934d5cbce967
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75610145"
 ---
 # <a name="understanding-periodic-backup-configuration-in-azure-service-fabric"></a>Informatie over periodieke back-upconfiguratie in azure Service Fabric
@@ -45,7 +44,7 @@ Een back-upbeleid bestaat uit de volgende configuraties:
         ```
 
     2. **Back-upschema op basis van tijd**: dit schema type moet worden gebruikt als de nood zaak is om gegevens back-up te maken op specifieke tijdstippen van de dag of week. Het frequentie type van de planning kan dagelijks of wekelijks zijn.
-        1. ** _Dagelijks_ back-upschema op basis van tijd**: dit schema type moet worden gebruikt als de nood zaak om gegevens back-ups te maken op specifieke tijdstippen van de dag. Als u dit wilt opgeven `ScheduleFrequencyType` , stelt u deze in op _dagelijks_; en is `RunTimes` ingesteld op een lijst met de gewenste tijd op de dag in de iso8601-notatie, de datum die wordt opgegeven samen met de tijd, wordt genegeerd. Dit is `0001-01-01T18:00:00` bijvoorbeeld _6:00 pm_ dagelijks, waarbij datum deel _0001-01-01_wordt genegeerd. Hieronder ziet u een voor beeld van de configuratie om dagelijks een back-up te activeren om _9:00 uur_ en _6:00 uur_ per dag.
+        1. ** _Dagelijks_ back-upschema op basis van tijd**: dit schema type moet worden gebruikt als de nood zaak om gegevens back-ups te maken op specifieke tijdstippen van de dag. Als u dit wilt opgeven, stelt u deze in op `ScheduleFrequencyType` _dagelijks_; en stelt `RunTimes` u in op een lijst met de gewenste tijd op de dag in iso8601-notatie, de datum die wordt opgegeven samen met de tijd, wordt genegeerd. Dit is bijvoorbeeld `0001-01-01T18:00:00` _6:00 pm_ dagelijks, waarbij datum deel _0001-01-01_wordt genegeerd. Hieronder ziet u een voor beeld van de configuratie om dagelijks een back-up te activeren om _9:00 uur_ en _6:00 uur_ per dag.
 
             ```json
             {
@@ -58,7 +57,7 @@ Een back-upbeleid bestaat uit de volgende configuraties:
             }
             ```
 
-        2. ** _Wekelijks_ back-upschema op basis van tijd**: dit plannings type moet worden gebruikt als de nood zaak om gegevens back-ups te maken op specifieke tijdstippen van de dag. Als u dit wilt opgeven `ScheduleFrequencyType` , stelt u in op _wekelijks_. instellen `RunDays` op de lijst met dagen in een week wanneer de back-up moet worden geactiveerd `RunTimes` en moet worden ingesteld op een lijst met gewenste tijdstippen gedurende de dag in iso8601-notatie, de datum die wordt opgegeven samen met de tijd, wordt genegeerd. Lijst van dagen van een week waarop de periodieke back-up moet worden geactiveerd. Hieronder ziet u een voor beeld van de configuratie om dagelijks een back-up te activeren op _9:00 uur_ en _6:00 uur_ tijdens maandag tot en met vrijdag.
+        2. ** _Wekelijks_ back-upschema op basis van tijd**: dit plannings type moet worden gebruikt als de nood zaak om gegevens back-ups te maken op specifieke tijdstippen van de dag. Als u dit wilt opgeven, stelt u in op `ScheduleFrequencyType` _wekelijks_; ingesteld `RunDays` op lijst met dagen in een week wanneer de back-up moet worden geactiveerd en moet worden ingesteld `RunTimes` op een lijst met gewenste tijdstippen gedurende de dag in iso8601-notatie, de datum die wordt opgegeven samen met de tijd, wordt genegeerd. Lijst van dagen van een week waarop de periodieke back-up moet worden geactiveerd. Hieronder ziet u een voor beeld van de configuratie om dagelijks een back-up te activeren op _9:00 uur_ en _6:00 uur_ tijdens maandag tot en met vrijdag.
 
             ```json
             {
@@ -119,7 +118,7 @@ Een back-upbeleid bestaat uit de volgende configuraties:
 >
 
 * **Bewaar beleid**: Hiermee geeft u het beleid voor het bewaren van back-ups in de geconfigureerde opslag. Alleen Basic-Bewaar beleid wordt ondersteund.
-    1. **Basis beleid voor bewaren**: met dit Bewaar beleid kunt u optimaal gebruikmaken van de opslag capaciteit door back-upbestanden te verwijderen die niet meer nodig zijn. `RetentionDuration`kan worden opgegeven voor het instellen van de tijds Panne waarvoor back-ups moeten worden bewaard in de opslag. `MinimumNumberOfBackups`is een optionele para meter die kan worden opgegeven om ervoor te zorgen dat het opgegeven aantal back-ups altijd worden bewaard, `RetentionDuration`ongeacht het. Hieronder ziet u een voor beeld van de configuratie voor het bewaren van back-ups gedurende _10_ dagen en het aantal back-ups dat niet meer dan _20_mag worden gebruikt.
+    1. **Basis beleid voor bewaren**: met dit Bewaar beleid kunt u optimaal gebruikmaken van de opslag capaciteit door back-upbestanden te verwijderen die niet meer nodig zijn. `RetentionDuration`kan worden opgegeven voor het instellen van de tijds Panne waarvoor back-ups moeten worden bewaard in de opslag. `MinimumNumberOfBackups`is een optionele para meter die kan worden opgegeven om ervoor te zorgen dat het opgegeven aantal back-ups altijd worden bewaard, ongeacht het `RetentionDuration` . Hieronder ziet u een voor beeld van de configuratie voor het bewaren van back-ups gedurende _10_ dagen en het aantal back-ups dat niet meer dan _20_mag worden gebruikt.
 
         ```json
         {
@@ -140,7 +139,7 @@ Er is mogelijk een scenario waarbij gegevens back-up met hetzelfde back-upschema
 
 ### <a name="example"></a>Voorbeeld
 
-In dit voor beeld wordt het installatie programma gebruikt met twee toepassingen, _MyApp_A_ en _MyApp_B_. Toepassings _MyApp_A_ bevat twee betrouw bare stateful Services, _SvcA1_ & _SvcA3_en één reliable actor service, _ActorA2_. _SvcA1_ bevat drie partities terwijl _ActorA2_ en _SvcA3_ twee partities bevatten.  Toepassings _MyApp_B_ bevat drie betrouw bare stateful Services, _SvcB1_, _SvcB2_en _SvcB3_. _SvcB1_ en _SvcB2_ bevatten twee partities, terwijl _SvcB3_ drie partities bevat.
+In dit voor beeld wordt het installatie programma gebruikt met twee toepassingen, _MyApp_A_ en _MyApp_B_. Toepassings _MyApp_A_ bevat twee betrouw bare stateful Services, _SvcA1_  &  _SvcA3_en één reliable actor service, _ActorA2_. _SvcA1_ bevat drie partities terwijl _ActorA2_ en _SvcA3_ twee partities bevatten.  Toepassings _MyApp_B_ bevat drie betrouw bare stateful Services, _SvcB1_, _SvcB2_en _SvcB3_. _SvcB1_ en _SvcB2_ bevatten twee partities, terwijl _SvcB3_ drie partities bevat.
 
 Stel dat deze toepassingen gegevens back-ups als volgt zijn
 
@@ -182,7 +181,7 @@ Back-upbeleid kan worden uitgeschakeld wanneer er geen back-up van gegevens nodi
 
 * Als u het back-upbeleid voor een _partitie_ uitschakelt, wordt alle periodieke gegevens back-up gestopt vanwege het back-upbeleid op de partitie.
 
-* Bij het uitschakelen van de back-up voor een entiteit (toepassing/ `CleanBackup` service/partitie), kan worden ingesteld op _True_ om alle back-ups in geconfigureerde opslag ruimte te verwijderen.
+* Bij het uitschakelen van de back-up voor een entiteit (toepassing/service/partitie), `CleanBackup` kan worden ingesteld op _True_ om alle back-ups in geconfigureerde opslag ruimte te verwijderen.
     ```json
     {
         "CleanBackup": true 
@@ -214,7 +213,7 @@ Hoewel uitschakelen kan alleen worden aangeroepen op een niveau dat eerder was i
 ## <a name="auto-restore-on-data-loss"></a>Gegevens verlies automatisch herstellen
 De service partitie kan gegevens verliezen vanwege onverwachte fouten. Bijvoorbeeld: de schijf voor twee van de drie replica's voor een partitie (met inbegrip van de primaire replica) wordt beschadigd of gewist.
 
-Wanneer Service Fabric detecteert dat de partitie zich in gegevens verlies bevindt `OnDataLossAsync` , roept deze de interface methode op de partitie aan en verwacht de partitie dat de vereiste actie moet worden ondernomen om verlies van gegevens te voor komen. Als in dit geval het effectief back-upbeleid op de partitie `AutoRestoreOnDataLoss` is ingesteld op `true` ingeschakeld, wordt de herstel bewerking automatisch geactiveerd met de meest recente beschik bare back-up voor deze partitie.
+Wanneer Service Fabric detecteert dat de partitie zich in gegevens verlies bevindt, roept deze de `OnDataLossAsync` Interface methode op de partitie aan en verwacht de partitie dat de vereiste actie moet worden ondernomen om verlies van gegevens te voor komen. Als in dit geval het effectief back-upbeleid op de partitie is `AutoRestoreOnDataLoss` ingesteld op ingeschakeld, `true` wordt de herstel bewerking automatisch geactiveerd met de meest recente beschik bare back-up voor deze partitie.
 
 ## <a name="get-backup-configuration"></a>Back-upconfiguratie ophalen
 Er worden afzonderlijke Api's beschikbaar gesteld om informatie over de back-upconfiguratie op te halen voor een _toepassings_-, _service_-en _partitie_ bereik. [Back-Upconfiguratiegegevens voor toepassingen](https://docs.microsoft.com/rest/api/servicefabric/sfclient-api-getapplicationbackupconfigurationinfo)ophalen, [configuratie gegevens van service back-up ophalen](https://docs.microsoft.com/rest/api/servicefabric/sfclient-api-getservicebackupconfigurationinfo)en [configuratie gegevens voor partitie back-ups ophalen](https://docs.microsoft.com/rest/api/servicefabric/sfclient-api-getpartitionbackupconfigurationinfo) deze api's respectievelijk zijn. Deze Api's retour neren voornamelijk het toepasselijke back-upbeleid, het bereik waarop het back-upbeleid wordt toegepast en Details van de back-upblokkering. Hieronder vindt u een korte beschrijving van de geretourneerde resultaten van deze Api's.

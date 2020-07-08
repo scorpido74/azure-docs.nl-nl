@@ -9,10 +9,9 @@ ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 12/26/2019
 ms.openlocfilehash: 5989692aeb59c7394299b4cb2474b244818895b2
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75500072"
 ---
 # <a name="combine-scaler-and-sparkr-in-hdinsight"></a>Schaalr en Spark in HDInsight combi neren
@@ -29,9 +28,9 @@ Bij de stappen in dit document wordt ervan uitgegaan dat u een tussenliggend niv
 
 ## <a name="the-airline-and-weather-datasets"></a>De luchtvaart maatschappij en weer gegevens sets
 
-De vlucht gegevens zijn beschikbaar via de [archieven van de Amerikaanse overheid](https://www.transtats.bts.gov/DL_SelectFields.asp?Table_ID=236). Het is ook beschikbaar als een zip-bestand van [AirOnTimeCSV. zip](https://packages.revolutionanalytics.com/datasets/AirOnTime87to12/AirOnTimeCSV.zip).
+De vlucht gegevens zijn beschikbaar via de [archieven van de Amerikaanse overheid](https://www.transtats.bts.gov/DL_SelectFields.asp?Table_ID=236). Het is ook beschikbaar als post code van [AirOnTimeCSV.zip](https://packages.revolutionanalytics.com/datasets/AirOnTime87to12/AirOnTimeCSV.zip).
 
-De weer gegevens kunnen worden gedownload als zip-bestanden in onbewerkte vorm, per maand, vanuit de [nationale Oceanic-en atmosferische beheer opslagplaats](https://www.ncdc.noaa.gov/orders/qclcd/). Voor dit voor beeld downloadt u de gegevens voor mei 2007 – december 2012. Gebruik de gegevens bestanden en `YYYYMMMstation.txt` het bestand in elk uur in elk van de zips.
+De weer gegevens kunnen worden gedownload als zip-bestanden in onbewerkte vorm, per maand, vanuit de [nationale Oceanic-en atmosferische beheer opslagplaats](https://www.ncdc.noaa.gov/orders/qclcd/). Voor dit voor beeld downloadt u de gegevens voor mei 2007 – december 2012. Gebruik de gegevens bestanden en het `YYYYMMMstation.txt` bestand in elk uur in elk van de zips.
 
 ## <a name="setting-up-the-spark-environment"></a>De Spark-omgeving instellen
 
@@ -80,7 +79,7 @@ logmsg('Start')
 logmsg(paste('Number of task nodes=',length(trackers)))
 ```
 
-Voeg `Spark_Home` vervolgens toe aan het zoekpad voor R-pakketten. Als u het toevoegt aan het zoekpad, kunt u Spark gebruiken en een Spark-sessie initialiseren:
+Voeg vervolgens toe `Spark_Home` aan het zoekpad voor R-pakketten. Als u het toevoegt aan het zoekpad, kunt u Spark gebruiken en een Spark-sessie initialiseren:
 
 ```
 #..setup for use of SparkR  
@@ -506,7 +505,7 @@ plot(logitRoc)
 
 ## <a name="scoring-elsewhere"></a>Score elders
 
-We kunnen het model ook gebruiken voor het scoren van gegevens op een ander platform. Door de app op te slaan in een RDS-bestand en deze vervolgens te verplaatsen en te importeren in een doel Score omgeving zoals micro soft SQL Server R Services. Het is belang rijk om ervoor te zorgen dat de factor niveaus van de gegevens die moeten worden beoordeeld overeenkomen met die op basis waarvan het model is gebouwd. Dit kan worden bereikt door de kolom informatie die is gekoppeld aan de model gegevens te extra heren en op te slaan `rxCreateColInfo()` met behulp van de functie van de gegevens bron voor voor spellingen. In de volgende stappen slaan we een paar rijen van de test gegevensset op en halen en gebruiken we de kolom informatie uit dit voor beeld in het Voorspellings script:
+We kunnen het model ook gebruiken voor het scoren van gegevens op een ander platform. Door de app op te slaan in een RDS-bestand en deze vervolgens te verplaatsen en te importeren in een doel Score omgeving zoals micro soft SQL Server R Services. Het is belang rijk om ervoor te zorgen dat de factor niveaus van de gegevens die moeten worden beoordeeld overeenkomen met die op basis waarvan het model is gebouwd. Dit kan worden bereikt door de kolom informatie die is gekoppeld aan de model gegevens te extra heren en op te slaan met behulp van de functie van de `rxCreateColInfo()` gegevens bron voor voor spellingen. In de volgende stappen slaan we een paar rijen van de test gegevensset op en halen en gebruiken we de kolom informatie uit dit voor beeld in het Voorspellings script:
 
 ```
 # save the model and a sample of the test dataset 

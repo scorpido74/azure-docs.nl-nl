@@ -6,10 +6,9 @@ ms.topic: troubleshooting
 ms.date: 5/20/2019
 ms.author: pepogors
 ms.openlocfilehash: c30eedb6782e4172d677f16e27441f28c78cdd89
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75614346"
 ---
 # <a name="use-visual-studio-to-create-and-publish-net-core-applications-targeting-a-remote-linux-service-fabric-cluster"></a>Visual Studio gebruiken om .net core-toepassingen te maken en te publiceren die gericht zijn op een extern Linux Service Fabric-cluster
@@ -38,7 +37,7 @@ Met Visual Studio-hulp middelen kunt u Service Fabric .net core-toepassingen ont
     <UpdateServiceFabricManifestEnabled>False</UpdateServiceFabricManifestEnabled>
 ```
 > [!Note]
-> Als UpdateServiceFabricManifestEnabled is ingesteld op False, worden updates voor de ServiceManifest. XML tijdens een build uitgeschakeld. Wijzigingen, zoals toevoegen, verwijderen of wijzigen van de naam van de service, worden niet weer gegeven in ServiceManifest. XML. Als er wijzigingen worden aangebracht, moet u de ServiceManifest hand matig bijwerken of UpdateServiceFabricManifestEnabled instellen op True en de service bouwen waarmee de ServiceManifest. XML wordt bijgewerkt en teruggezet naar false.
+> Als UpdateServiceFabricManifestEnabled is ingesteld op False, worden updates voor de ServiceManifest.xml tijdens het bouwen uitgeschakeld. Wijzigingen, zoals toevoegen, verwijderen of wijzigen van de naam van de service, worden niet weer gegeven in de ServiceManifest.xml. Als er wijzigingen worden aangebracht, moet u de ServiceManifest hand matig bijwerken of UpdateServiceFabricManifestEnabled instellen op True en de service bouwen die de ServiceManifest.xml bijwerkt en deze vervolgens weer herstellen naar onwaar.
 >
 
 4. Werk de RuntimeIndetifier van Win7-x64 bij naar het doel platform in het service project.

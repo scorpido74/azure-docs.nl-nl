@@ -6,19 +6,18 @@ ms.topic: conceptual
 ms.date: 10/2/2017
 ms.author: sumukhs
 ms.openlocfilehash: cdb115bd57cf3d5af4388f4efa03c2522feef9ca
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75609771"
 ---
 # <a name="configuring-reliable-actors--kvsactorstateprovider"></a>Reliable Actors configureren--KVSActorStateProvider
-U kunt de standaard configuratie van KVSActorStateProvider wijzigen door het bestand settings. XML te wijzigen dat wordt gegenereerd in de hoofdmap van het micro soft Visual Studio-pakket onder de map config voor de opgegeven actor.
+U kunt de standaard configuratie van KVSActorStateProvider wijzigen door het settings.xml bestand te wijzigen dat wordt gegenereerd in de hoofdmap van het micro soft Visual Studio-pakket onder de map config voor de opgegeven actor.
 
-De Azure Service Fabric runtime zoekt naar vooraf gedefinieerde sectie namen in het bestand settings. XML en verbruikt de configuratie waarden tijdens het maken van de onderliggende runtime-onderdelen.
+De Azure Service Fabric runtime zoekt naar vooraf gedefinieerde sectie namen in het settings.xml-bestand en verbruikt de configuratie waarden tijdens het maken van de onderliggende runtime-onderdelen.
 
 > [!NOTE]
-> Verwijder of wijzig de sectie namen van de volgende configuraties **niet** in het bestand settings. XML dat is gegenereerd in de Visual Studio-oplossing.
+> Verwijder of wijzig de sectie namen van de volgende configuraties **niet** in het settings.xml bestand dat wordt gegenereerd in de Visual Studio-oplossing.
 > 
 > 
 
@@ -31,17 +30,17 @@ Een lege beveiligings configuratie sectie voor komt standaard replicatie beveili
 > 
 
 ### <a name="section-name"></a>Sectie naam
-&lt;Actornaam&gt;ServiceReplicatorSecurityConfig
+&lt;Actornaam &gt; ServiceReplicatorSecurityConfig
 
 ## <a name="replicator-configuration"></a>Replicator-configuratie
 Met replicatie configuraties wordt de Replicator geconfigureerd die verantwoordelijk is voor het zeer betrouwbaar maken van de status van de actor State-provider.
 De standaard configuratie wordt gegenereerd door de Visual Studio-sjabloon en moet voldoende zijn. In deze sectie vindt u meer informatie over aanvullende configuraties die beschikbaar zijn voor het afstemmen van de Replicator.
 
 ### <a name="section-name"></a>Sectie naam
-&lt;Actornaam&gt;ServiceReplicatorConfig
+&lt;Actornaam &gt; ServiceReplicatorConfig
 
 ### <a name="configuration-names"></a>Configuratie namen
-| Naam | Eenheid | Standaardwaarde | Opmerkingen |
+| Name | Eenheid | Standaardwaarde | Opmerkingen |
 | --- | --- | --- | --- |
 | BatchAcknowledgementInterval |Seconden |0,015 |De periode gedurende welke de Replicator op het secundaire wacht na ontvangst van een bewerking voordat een bevestiging wordt verzonden naar de primaire. Alle andere bevestigingen die moeten worden verzonden voor bewerkingen die binnen dit interval worden verwerkt, worden als één antwoord verzonden. |
 | ReplicatorEndpoint |N.v.t. |Geen standaard-vereiste para meter |Het IP-adres en de poort die door de primaire/secundaire Replicator worden gebruikt om te communiceren met andere replicatie Programma's in de replicaset. Dit moet verwijzen naar een TCP-bron eindpunt in het service manifest. Raadpleeg de [service manifest bronnen](service-fabric-service-manifest-resources.md) voor meer informatie over het definiëren van eindpunt resources in het service manifest. |
@@ -55,10 +54,10 @@ Archief configuraties worden gebruikt voor het configureren van het lokale archi
 De standaard configuratie wordt gegenereerd door de Visual Studio-sjabloon en moet voldoende zijn. In deze sectie vindt u meer informatie over aanvullende configuraties die beschikbaar zijn voor het afstemmen van het lokale archief.
 
 ### <a name="section-name"></a>Sectie naam
-&lt;Actornaam&gt;ServiceLocalStoreConfig
+&lt;Actornaam &gt; ServiceLocalStoreConfig
 
 ### <a name="configuration-names"></a>Configuratie namen
-| Naam | Eenheid | Standaardwaarde | Opmerkingen |
+| Name | Eenheid | Standaardwaarde | Opmerkingen |
 | --- | --- | --- | --- |
 | MaxAsyncCommitDelayInMilliseconds |Milliseconden |200 |Hiermee stelt u het maximale batch-interval in voor de opslag van duurzame lokale opslag. |
 | MaxVerPages |Aantal pagina's |16384 |Het maximum aantal versie pagina's in de lokale store-data base. Hiermee wordt het maximum aantal openstaande trans acties bepaald. |

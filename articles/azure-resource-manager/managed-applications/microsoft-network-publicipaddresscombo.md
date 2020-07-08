@@ -6,10 +6,9 @@ ms.topic: conceptual
 ms.date: 06/28/2018
 ms.author: tomfitz
 ms.openlocfilehash: 0393673663df8f3ca580ff34e16bee910b955f8d
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75651915"
 ---
 # <a name="microsoftnetworkpublicipaddresscombo-ui-element"></a>Gebruikers interface-element van micro soft. Network. PublicIpAddressCombo
@@ -80,7 +79,7 @@ Als de gebruiker een nieuw of bestaand IP-adres selecteert, retourneert het best
 }
 ```
 
-- Wanneer `options.hideNone` is opgegeven als **waar**, `newOrExistingOrNone` heeft alleen de waarde **Nieuw** of **bestaand**.
+- Wanneer `options.hideNone` is opgegeven als **waar**, heeft `newOrExistingOrNone` alleen de waarde **Nieuw** of **bestaand**.
 - Als `options.hideDomainNameLabel` is opgegeven als **waar**, `domainNameLabel` is niet-gedeclareerd.
 
 ## <a name="remarks"></a>Opmerkingen
@@ -89,7 +88,7 @@ Als de gebruiker een nieuw of bestaand IP-adres selecteert, retourneert het best
 - Als `options.hideNone` is ingesteld op **True**, wordt de optie voor het selecteren van **geen** voor het open bare IP-adres verborgen. De standaardwaarde is **onwaar**.
 - Als `options.hideDomainNameLabel` is ingesteld op **True**, wordt het tekstvak voor het domein naam label verborgen. De standaardwaarde is **onwaar**.
 - Als `options.hideExisting` de waarde True is, kan de gebruiker geen bestaand openbaar IP-adres kiezen. De standaardwaarde is **onwaar**.
-- Voor `zone`worden alleen open bare IP-adressen voor de opgegeven zone of zone met flexibele open bare IP-adressen beschikbaar.
+- Voor `zone` worden alleen open bare IP-adressen voor de opgegeven zone of zone met flexibele open bare IP-adressen beschikbaar.
 
 ## <a name="next-steps"></a>Volgende stappen
 

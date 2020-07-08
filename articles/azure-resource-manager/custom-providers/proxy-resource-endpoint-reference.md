@@ -6,10 +6,9 @@ ms.author: jobreen
 author: jjbfour
 ms.date: 06/20/2019
 ms.openlocfilehash: 46b38686b39836f3d4bfb80686d514f932a79bf3
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75650459"
 ---
 # <a name="custom-resource-proxy-reference"></a>Naslag informatie voor de aangepaste resource proxy
@@ -42,10 +41,10 @@ Voor beeld van aangepaste resource provider:
 
 ## <a name="building-proxy-resource-endpoint"></a>Resource-eind punt van de proxy bouwen
 
-Een **eind punt** dat een ' proxy ' resource- **eind punt** implementeert, moet de aanvraag en het antwoord voor de nieuwe API in azure afhandelen. In dit geval genereert het **resource type** een nieuwe Azure-resource-API `PUT`voor `GET`,, `DELETE` en voor het uitvoeren van ruw op één resource, en `GET` voor het ophalen van alle bestaande resources.
+Een **eind punt** dat een ' proxy ' resource- **eind punt** implementeert, moet de aanvraag en het antwoord voor de nieuwe API in azure afhandelen. In dit geval genereert het **resource type** een nieuwe Azure-resource-API voor `PUT` , `GET` , en `DELETE` voor het uitvoeren van ruw op één resource, en `GET` voor het ophalen van alle bestaande resources.
 
 > [!NOTE]
-> De `id`velden `name`, en `type` zijn niet vereist, maar zijn nodig voor de integratie van de aangepaste resource met het bestaande Azure-ecosysteem.
+> De `id` `name` velden, en zijn `type` niet vereist, maar zijn nodig voor de integratie van de aangepaste resource met het bestaande Azure-ecosysteem.
 
 Voorbeeld resource:
 
@@ -67,7 +66,7 @@ Parameter verwijzing:
 
 Eigenschap | Voorbeeld | Beschrijving
 ---|---|---
-name | '{myCustomResourceName}' | De naam van de aangepaste resource.
+naam | '{myCustomResourceName}' | De naam van de aangepaste resource.
 type | Micro soft. CustomProviders/resourceProviders/{resourceTypeName} | De naam ruimte van het resource type.
 id | '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/<br>providers/micro soft. CustomProviders/resourceProviders/{resourceProviderName}/<br>myCustomResources/{myCustomResourceName}' | De resource-ID.
 
@@ -270,7 +269,7 @@ Op dezelfde manier wordt de reactie van het **eind punt** doorgestuurd naar de k
 
 - Een geldig JSON-object document. Alle matrices en teken reeksen moeten worden genest onder een top-object.
 - De `Content-Type` header moet worden ingesteld op application/json; charset = UTF-8.
-- De lijst met resources moet worden geplaatst onder de eigenschap op het `value` hoogste niveau.
+- De lijst met resources moet worden geplaatst onder de eigenschap op het hoogste niveau `value` .
 
 **Eind punt** Beantwoord
 

@@ -6,10 +6,9 @@ ms.topic: conceptual
 ms.date: 11/02/2017
 ms.author: vturecek
 ms.openlocfilehash: 46ce91e607341e2fbdc0b6a3018e74cb24e76839
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75645528"
 ---
 # <a name="reliable-actors-reentrancy"></a>Reliable Actors herbetreedbaarheid
@@ -34,9 +33,9 @@ public enum ActorReentrancyMode
     Disallowed(2)
 }
 ```
-Herbetreedbaarheid kunnen tijdens de registratie worden `ActorService`geconfigureerd in de instellingen van een. De instelling is van toepassing op alle actor-exemplaren die zijn gemaakt in de actor-service.
+Herbetreedbaarheid kunnen `ActorService` tijdens de registratie worden geconfigureerd in de instellingen van een. De instelling is van toepassing op alle actor-exemplaren die zijn gemaakt in de actor-service.
 
-In het volgende voor beeld ziet u een actor service waarmee de herbetreedbaarheid `ActorReentrancyMode.Disallowed`-modus wordt ingesteld op. Als een actor een bericht naar een andere actor verzendt, wordt er in dit geval een uitzonde ring `FabricException` van het type gegenereerd.
+In het volgende voor beeld ziet u een actor service waarmee de herbetreedbaarheid-modus wordt ingesteld op `ActorReentrancyMode.Disallowed` . Als een actor een bericht naar een andere actor verzendt, wordt er in dit geval een uitzonde ring van het type `FabricException` gegenereerd.
 
 ```csharp
 static class Program

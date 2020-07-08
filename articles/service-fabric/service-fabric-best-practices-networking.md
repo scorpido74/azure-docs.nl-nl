@@ -6,10 +6,9 @@ ms.topic: conceptual
 ms.date: 01/23/2019
 ms.author: pepogors
 ms.openlocfilehash: de2a74ad2d61de18d2150b72be3251e5b5583f2e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75551791"
 ---
 # <a name="networking"></a>Netwerken
@@ -51,7 +50,7 @@ Er is een uitbrei ding van de infra structuur vereist om versnelde netwerken in 
 
 * Service Fabric clusters kunnen worden geïmplementeerd in een bestaand virtueel netwerk door de stappen te volgen die worden beschreven in [service Fabric-netwerk patronen](https://docs.microsoft.com/azure/service-fabric/service-fabric-patterns-networking).
 
-* Netwerk beveiligings groepen (Nsg's) worden aanbevolen voor knooppunt typen die binnenkomend en uitgaand verkeer naar hun cluster beperken. Zorg ervoor dat de benodigde poorten zijn geopend in de NSG. Bijvoorbeeld: ![service Fabric NSG-regels][NSGSetup]
+* Netwerk beveiligings groepen (Nsg's) worden aanbevolen voor knooppunt typen die binnenkomend en uitgaand verkeer naar hun cluster beperken. Zorg ervoor dat de benodigde poorten zijn geopend in de NSG. Bijvoorbeeld: ![ service Fabric NSG-regels][NSGSetup]
 
 * Het primaire knooppunt type, dat de Service Fabric systeem services bevat, hoeft niet te worden weer gegeven via de externe load balancer en kan worden weer gegeven door een [interne Load Balancer](https://docs.microsoft.com/azure/service-fabric/service-fabric-patterns-networking#internal-only-load-balancer)
 

@@ -6,20 +6,19 @@ ms.topic: conceptual
 ms.date: 10/02/2017
 ms.author: sumukhs
 ms.openlocfilehash: 9743213394b59af701b25b8be9dd48cf4310b499
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75645511"
 ---
 # <a name="configure-stateful-reliable-services"></a>Stateful reliable Services configureren
 Er zijn twee sets configuratie-instellingen voor betrouw bare Services. Eén set is globaal voor alle betrouw bare Services in het cluster, terwijl de andere set specifiek is voor een bepaalde betrouw bare service.
 
 ## <a name="global-configuration"></a>Algemene configuratie
-De algemene betrouw bare service configuratie is opgegeven in het cluster manifest voor het cluster in het gedeelte KtlLogger. Hiermee kunt u de locatie en grootte van het gedeelde logboek configureren, plus de globale geheugen limieten die door de logboeken worden gebruikt. Het cluster manifest is een enkel XML-bestand met instellingen en configuraties die van toepassing zijn op alle knoop punten en services in het cluster. Het bestand heet doorgaans ClusterManifest. XML. U kunt het cluster manifest voor uw cluster zien met behulp van de Power shell-opdracht Get-ServiceFabricClusterManifest.
+De algemene betrouw bare service configuratie is opgegeven in het cluster manifest voor het cluster in het gedeelte KtlLogger. Hiermee kunt u de locatie en grootte van het gedeelde logboek configureren, plus de globale geheugen limieten die door de logboeken worden gebruikt. Het cluster manifest is een enkel XML-bestand met instellingen en configuraties die van toepassing zijn op alle knoop punten en services in het cluster. Het bestand wordt doorgaans ClusterManifest.xml genoemd. U kunt het cluster manifest voor uw cluster zien met behulp van de Power shell-opdracht Get-ServiceFabricClusterManifest.
 
 ### <a name="configuration-names"></a>Configuratie namen
-| Naam | Eenheid | Standaardwaarde | Opmerkingen |
+| Name | Eenheid | Standaardwaarde | Opmerkingen |
 | --- | --- | --- | --- |
 | WriteBufferMemoryPoolMinimumInKB |Kilo bytes |8388608 |Minimum aantal KB dat moet worden toegewezen in de kernelmodus voor de geheugen groep schrijf buffer voor logboek registratie. Deze geheugen groep wordt gebruikt voor het opslaan van de status informatie voordat naar de schijf wordt geschreven. |
 | WriteBufferMemoryPoolMaximumInKB |Kilo bytes |Geen limiet |Maximale grootte van de geheugen groep voor schrijf buffer voor logboek registratie kan worden uitgebreid. |
@@ -38,7 +37,7 @@ In het voor beeld hieronder ziet u in azure ARM of een on-premises JSON-sjabloon
     }]
 
 ### <a name="sample-local-developer-cluster-manifest-section"></a>Voor beeld van een lokaal ontwikkelaars cluster manifest sectie
-Als u dit wilt wijzigen in uw lokale ontwikkel omgeving, moet u het lokale bestand clustermanifest. xml bewerken.
+Als u dit wilt wijzigen in uw lokale ontwikkel omgeving, moet u het lokale clustermanifest.xml-bestand bewerken.
 
 ```xml
    <Section Name="KtlLogger">
@@ -53,20 +52,20 @@ Als u dit wilt wijzigen in uw lokale ontwikkel omgeving, moet u het lokale besta
 ### <a name="remarks"></a>Opmerkingen
 De logger heeft een globale geheugen groep die is toegewezen op basis van niet-wisselbaar kernelgeheugen dat beschikbaar is voor alle betrouw bare Services op een knoop punt om status gegevens in de cache op te zetten voordat ze worden geschreven naar het toegewezen logboek dat is gekoppeld aan de betrouw bare service replica. De pool grootte wordt bepaald door de instellingen WriteBufferMemoryPoolMinimumInKB en WriteBufferMemoryPoolMaximumInKB. WriteBufferMemoryPoolMinimumInKB Hiermee geeft u de oorspronkelijke grootte van deze geheugen groep en de laagste grootte op waarmee de geheugen groep kan worden verkleind. WriteBufferMemoryPoolMaximumInKB is de hoogste grootte waarmee de geheugen groep mag groeien. Elke betrouw bare service replica die wordt geopend, kan de grootte van de geheugen groep verhogen door een door het systeem vastgesteld bedrag tot WriteBufferMemoryPoolMaximumInKB. Als er meer geheugen nodig is dan beschikbaar is, worden de aanvragen voor geheugen uitgesteld totdat er geheugen beschikbaar is. Als de geheugen groep schrijf buffer te klein is voor een bepaalde configuratie, kan dit de prestaties nadelig beïnvloeden.
 
-De instellingen SharedLogId en SharedLogPath worden altijd samen gebruikt voor het definiëren van de GUID en locatie voor het standaard gedeelde logboek voor alle knoop punten in het cluster. Het standaard gedeelde logboek wordt gebruikt voor alle betrouw bare services die de instellingen niet opgeven in de instellingen. XML voor de specifieke service. Voor de beste prestaties moeten gedeelde logboek bestanden worden geplaatst op schijven die alleen worden gebruikt voor het gedeelde logboek bestand om conflicten te verminderen.
+De instellingen SharedLogId en SharedLogPath worden altijd samen gebruikt voor het definiëren van de GUID en locatie voor het standaard gedeelde logboek voor alle knoop punten in het cluster. Het standaard gedeelde logboek wordt gebruikt voor alle betrouw bare services die de instellingen niet opgeven in de settings.xml voor de specifieke service. Voor de beste prestaties moeten gedeelde logboek bestanden worden geplaatst op schijven die alleen worden gebruikt voor het gedeelde logboek bestand om conflicten te verminderen.
 
 SharedLogSizeInMB Hiermee geeft u de hoeveelheid schijf ruimte op die vooraf moet worden toegewezen voor het gedeelde standaard logboek op alle knoop punten.  SharedLogId en SharedLogPath hoeven niet te worden opgegeven om SharedLogSizeInMB te kunnen opgeven.
 
 ## <a name="service-specific-configuration"></a>Servicespecifieke configuratie
 U kunt stateful Reliable Services ' standaard configuraties wijzigen met behulp van het configuratie pakket (config) of de service-Implementatie (code).
 
-* **Config** -configuratie via het configuratie pakket wordt bereikt door het bestand settings. XML te wijzigen dat wordt gegenereerd in de hoofdmap van het micro soft Visual Studio-pakket onder de map config voor elke service in de toepassing.
+* **Config** -configuratie via het configuratie pakket wordt bereikt door het Settings.xml bestand te wijzigen dat wordt gegenereerd in de hoofdmap van het micro soft Visual Studio-pakket onder de map config voor elke service in de toepassing.
 * **Code** -configuratie via code wordt bereikt door een ReliableStateManager te maken met behulp van een ReliableStateManagerConfiguration-object met de juiste opties ingesteld.
 
-Standaard zoekt de runtime van Azure Service Fabric naar vooraf gedefinieerde sectie namen in het bestand settings. XML en worden de configuratie waarden gebruikt tijdens het maken van de onderliggende runtime-onderdelen.
+De Azure Service Fabric runtime zoekt standaard naar vooraf gedefinieerde sectie namen in het Settings.xml bestand en verbruikt de configuratie waarden tijdens het maken van de onderliggende runtime-onderdelen.
 
 > [!NOTE]
-> Verwijder de sectie namen van de volgende configuraties **niet** in het bestand settings. XML dat is gegenereerd in de Visual Studio-oplossing, tenzij u van plan bent om uw service via code te configureren.
+> Verwijder de sectie namen van de volgende configuraties **niet** in het Settings.xml-bestand dat is gegenereerd in de Visual Studio-oplossing, tenzij u van plan bent om uw service via code te configureren.
 > Voor het wijzigen van de naam van het configuratie pakket of de sectie namen is een code wijziging vereist bij het configureren van de ReliableStateManager.
 > 
 > 
@@ -100,7 +99,7 @@ ReplicatorConfig
 > 
 
 ### <a name="configuration-names"></a>Configuratie namen
-| Naam | Eenheid | Standaardwaarde | Opmerkingen |
+| Name | Eenheid | Standaardwaarde | Opmerkingen |
 | --- | --- | --- | --- |
 | BatchAcknowledgementInterval |Seconden |0,015 |De periode gedurende welke de Replicator op het secundaire wacht na ontvangst van een bewerking voordat een bevestiging wordt verzonden naar de primaire. Alle andere bevestigingen die moeten worden verzonden voor bewerkingen die binnen dit interval worden verwerkt, worden als één antwoord verzonden. |
 | ReplicatorEndpoint |N.v.t. |Geen standaard-vereiste para meter |Het IP-adres en de poort die door de primaire/secundaire Replicator worden gebruikt om te communiceren met andere replicatie Programma's in de replicaset. Dit moet verwijzen naar een TCP-bron eindpunt in het service manifest. Raadpleeg de [service manifest bronnen](service-fabric-service-manifest-resources.md) voor meer informatie over het definiëren van eindpunt resources in een service manifest. |
@@ -116,7 +115,7 @@ ReplicatorConfig
 | SharedLogPath |Fully Qualified Path name |"" |Hiermee geeft u het volledige pad op waar het gedeelde logboek bestand voor deze replica wordt gemaakt. Normaal gesp roken moeten services deze instelling niet gebruiken. Als SharedLogPath echter is opgegeven, moet SharedLogId ook worden opgegeven. |
 | SlowApiMonitoringDuration |Seconden |300 |Hiermee stelt u het bewakings interval voor beheerde API-aanroepen. Voor beeld: door de gebruiker geleverde Terugbel functie voor back-up. Nadat het interval is verstreken, wordt een waarschuwings status rapport verzonden naar de Health Manager. |
 | LogTruncationIntervalSeconds |Seconden |0 |Configureerbaar interval waarmee de afkap ping van het logboek op elke replica wordt gestart. Het wordt gebruikt om ervoor te zorgen dat Logboeken ook worden afgekapt op basis van tijd in plaats van alleen logboek grootte. Deze instelling dwingt ook het leegmaken van verwijderde vermeldingen in een betrouw bare woorden lijst af. Dit kan daarom worden gebruikt om ervoor te zorgen dat verwijderde items tijdig worden opgeschoond. |
-| EnableStableReads |Booleaans |False |Het inschakelen van stabiele Lees bewerkingen beperkt secundaire replica's voor het retour neren van waarden die zijn bevestigd. |
+| EnableStableReads |Boolean-waarde |False |Het inschakelen van stabiele Lees bewerkingen beperkt secundaire replica's voor het retour neren van waarden die zijn bevestigd. |
 
 ### <a name="sample-configuration-via-code"></a>Voorbeeld configuratie via code
 ```csharp

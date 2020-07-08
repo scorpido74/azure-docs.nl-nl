@@ -6,10 +6,9 @@ ms.topic: conceptual
 ms.date: 04/20/2017
 ms.author: pepogors
 ms.openlocfilehash: ca5eafa4612503a13f80b7f238e4827979c0358b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75614159"
 ---
 # <a name="secure-wcf-based-communications-for-a-service"></a>Beveiligde communicatie op basis van WCF voor een service
@@ -17,7 +16,7 @@ Beveiliging is een van de belangrijkste aspecten van de communicatie. Het Reliab
 
 We gebruiken een bestaand [voor beeld](service-fabric-reliable-services-communication-wcf.md) waarin wordt uitgelegd hoe u een op WCF gebaseerde communicatie stack instelt voor betrouw bare Services. Voer de volgende stappen uit om een service te helpen beveiligen wanneer u een op WCF gebaseerde communicatie stack gebruikt:
 
-1. Voor de service moet u helpen de WCF Communication listener (`WcfCommunicationListener`) te beveiligen die u maakt. U doet dit door de `CreateServiceReplicaListeners` methode te wijzigen.
+1. Voor de service moet u helpen de WCF Communication listener () te beveiligen `WcfCommunicationListener` die u maakt. U doet dit door de methode te wijzigen `CreateServiceReplicaListeners` .
 
     ```csharp
     protected override IEnumerable<ServiceReplicaListener> CreateServiceReplicaListeners()
@@ -54,7 +53,7 @@ We gebruiken een bestaand [voor beeld](service-fabric-reliable-services-communic
         return b;
     }
     ```
-2. In de-client blijft `WcfCommunicationClient` de klasse die in het vorige [voor beeld](service-fabric-reliable-services-communication-wcf.md) is gemaakt, ongewijzigd. Maar u moet de `CreateClientAsync` `WcfCommunicationClientFactory`volgende methode onderdrukken:
+2. In de-client `WcfCommunicationClient` blijft de klasse die in het vorige [voor beeld](service-fabric-reliable-services-communication-wcf.md) is gemaakt, ongewijzigd. Maar u moet de `CreateClientAsync` volgende methode onderdrukken `WcfCommunicationClientFactory` :
 
     ```csharp
     public class SecureWcfCommunicationClientFactory<TServiceContract> : WcfCommunicationClientFactory<TServiceContract> where TServiceContract : class
@@ -104,7 +103,7 @@ We gebruiken een bestaand [voor beeld](service-fabric-reliable-services-communic
     }
     ```
 
-    Gebruiken `SecureWcfCommunicationClientFactory` om een WCF-communicatie client (`WcfCommunicationClient`) te maken. Gebruik de-client om service methoden aan te roepen.
+    Gebruiken `SecureWcfCommunicationClientFactory` om een WCF-communicatie client ( `WcfCommunicationClient` ) te maken. Gebruik de-client om service methoden aan te roepen.
 
     ```csharp
     IServicePartitionResolver partitionResolver = ServicePartitionResolver.GetDefault();

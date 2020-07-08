@@ -4,10 +4,9 @@ description: Meer informatie over het testen van de eenheid in azure Service Fab
 ms.topic: conceptual
 ms.date: 09/04/2018
 ms.openlocfilehash: 9c657bd8295d01a4e0fa4e44e969b33946684bfa
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75639833"
 ---
 # <a name="create-unit-tests-for-stateful-services"></a>Eenheids tests maken voor stateful Services
@@ -22,15 +21,15 @@ In dit artikel wordt ervan uitgegaan dat de [Services voor het testen van de een
 ## <a name="the-servicefabricmocks-library"></a>De bibliotheek ServiceFabric. modelers
 Vanaf versie 3.3.0 biedt [ServiceFabric.-modellen](https://www.nuget.org/packages/ServiceFabric.Mocks/) een API voor het aftrekken van de indeling van de replica's en het status beheer. Dit wordt gebruikt in de voor beelden.
 
-[Nuget](https://www.nuget.org/packages/ServiceFabric.Mocks/)
-[github](https://github.com/loekd/ServiceFabric.Mocks)
+[Nuget](https://www.nuget.org/packages/ServiceFabric.Mocks/) 
+ [Github](https://github.com/loekd/ServiceFabric.Mocks)
 
 *ServiceFabric.-modellen zijn geen eigendom van of worden onderhouden door micro soft. Dit is echter de aanbevolen bibliotheek van micro soft voor de stateful Services voor het testen van eenheden.*
 
 ## <a name="set-up-the-mock-orchestration-and-state"></a>De indeling en status van het model instellen
-Als onderdeel van de rang schikking van een test, worden er een model replicaset en status Manager gemaakt. De replicaset maakt vervolgens een eigen exemplaar van de geteste service voor elke replica. Er wordt ook eigenaar van levenscyclus gebeurtenissen, zoals `OnChangeRole` en. `RunAsync` De status Manager van de Modeler zorgt ervoor dat alle bewerkingen die worden uitgevoerd op de status Manager worden uitgevoerd en bewaard als de daad werkelijke status Manager.
+Als onderdeel van de rang schikking van een test, worden er een model replicaset en status Manager gemaakt. De replicaset maakt vervolgens een eigen exemplaar van de geteste service voor elke replica. Er wordt ook eigenaar van levenscyclus gebeurtenissen, zoals `OnChangeRole` en `RunAsync` . De status Manager van de Modeler zorgt ervoor dat alle bewerkingen die worden uitgevoerd op de status Manager worden uitgevoerd en bewaard als de daad werkelijke status Manager.
 
-1. Maak een service Factory-gemachtigde waarmee wordt geïnstantieerd dat de service wordt getest. Dit moet gelijk zijn aan of hetzelfde zijn als de call back service Factory `Program.cs` die meestal wordt gevonden in voor een service Fabric service of actor. Dit moet de volgende hand tekening volgen:
+1. Maak een service Factory-gemachtigde waarmee wordt geïnstantieerd dat de service wordt getest. Dit moet gelijk zijn aan of hetzelfde zijn als de call back service Factory die meestal wordt gevonden in `Program.cs` voor een service Fabric service of actor. Dit moet de volgende hand tekening volgen:
    ```csharp
    MyStatefulService CreateMyStatefulService(StatefulServiceContext context, IReliableStateManagerReplica2 stateManager)
    ```
@@ -90,7 +89,7 @@ PromoteNewReplicaToPrimaryAsync(4)
 ```
 
 ## <a name="putting-it-all-together"></a>Alles samenvoegen
-De volgende test laat zien hoe u een replicaset met drie knoop punten instelt en controleert of de gegevens beschikbaar zijn vanaf een secundaire nadat een rol is gewijzigd. Een veelvoorkomend probleem is dat dit kan worden veroorzaakt doordat de gegevens `InsertAsync` die zijn toegevoegd, zijn opgeslagen in een geheugen of een betrouw bare verzameling `CommitAsync`zonder dat ze worden uitgevoerd. In beide gevallen is het secundaire is niet gesynchroniseerd met de primaire. Dit zou leiden tot inconsistente reacties na het verplaatsen van de service.
+De volgende test laat zien hoe u een replicaset met drie knoop punten instelt en controleert of de gegevens beschikbaar zijn vanaf een secundaire nadat een rol is gewijzigd. Een veelvoorkomend probleem is dat dit kan worden veroorzaakt doordat de gegevens `InsertAsync` die zijn toegevoegd, zijn opgeslagen in een geheugen of een betrouw bare verzameling zonder dat ze worden uitgevoerd `CommitAsync` . In beide gevallen is het secundaire is niet gesynchroniseerd met de primaire. Dit zou leiden tot inconsistente reacties na het verplaatsen van de service.
 
 ```csharp
 [TestMethod]

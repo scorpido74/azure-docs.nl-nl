@@ -8,10 +8,9 @@ ms.subservice: security-develop
 ms.topic: article
 ms.date: 08/17/2017
 ms.openlocfilehash: 88eea0eb2bceb0f6322381a94d4339cbdfa662c0
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75552114"
 ---
 # <a name="threat-modeling-tool-feature-overview"></a>Overzicht van Threat Modeling Tool-functies
@@ -41,7 +40,7 @@ De ervaring is vergelijkbaar met andere micro soft-producten. Laten we de menu o
 
 | Label                               | Details      |
 | --------------------------------------- | ------------ |
-| **Bestand** | <ul><li>Bestanden openen, opslaan en sluiten</li><li>Meld u aan en meld u af bij de OneDrive-accounts.</li><li>Koppelingen delen (weer geven en bewerken).</li><li>Bestands gegevens weer geven.</li><li>Pas een nieuwe sjabloon toe op bestaande modellen.</li></ul> |
+| **File** | <ul><li>Bestanden openen, opslaan en sluiten</li><li>Meld u aan en meld u af bij de OneDrive-accounts.</li><li>Koppelingen delen (weer geven en bewerken).</li><li>Bestands gegevens weer geven.</li><li>Pas een nieuwe sjabloon toe op bestaande modellen.</li></ul> |
 | **Bewerken** | Acties ongedaan maken en opnieuw uitvoeren, evenals kopiëren, plakken en verwijderen. |
 | **Weergave** | <ul><li>Scha kelen tussen **analyse** -en **ontwerp** weergaven.</li><li>Open gesloten vensters (bijvoorbeeld stencils, element eigenschappen en berichten).</li><li>De indeling opnieuw instellen op de standaard instellingen.</li></ul> |
 | **Diagram** | Diagrammen toevoegen en verwijderen en door tabs met diagrammen bladeren. |
@@ -54,7 +53,7 @@ De symbolen zijn snelkoppelingen voor de menu's op het hoogste niveau:
 | --------------------------------------- | ------------ |
 | **Openen** | Hiermee opent u een nieuw bestand. |
 | **Opslaan** | Hiermee slaat u het huidige bestand. |
-| **Ontwerpen** | Hiermee opent u de **ontwerp** weergave, waar u modellen kunt maken. |
+| **Ontwerp** | Hiermee opent u de **ontwerp** weergave, waar u modellen kunt maken. |
 | **Analyseren** | Toont gegenereerde bedreigingen en hun eigenschappen. |
 | **Diagram toevoegen** | Hiermee voegt u een nieuw diagram toe (vergelijkbaar met nieuwe tabbladen in Excel). |
 | **Diagram verwijderen** | Hiermee verwijdert u het huidige diagram. |
@@ -160,7 +159,7 @@ Als u een bedreigings model maakt en verg eten bent om gegevens stromen naar ele
 
 ![Berichten](./media/threat-modeling-tool-feature-overview/messages.png)
 
-### <a name="notes"></a>Opmerkingen
+### <a name="notes"></a>Notities
 
 Als u notities wilt toevoegen aan uw diagram, gaat u naar het tabblad **notities** van het tabblad **berichten** .
 
@@ -194,11 +193,11 @@ Zoals in de voor gaande afbeelding wordt weer gegeven, kunt u de gegevens wijzig
 
 ## <a name="reports"></a>Rapporten
 
-Nadat u de prioriteiten hebt gewijzigd en de status van elke gegenereerde bedreiging hebt bijgewerkt, kunt u het bestand opslaan en/of een rapport afdrukken. Ga naar **rapport** > **volledig rapport maken**. Geef het rapport een naam en ziet er ongeveer als volgt uit:
+Nadat u de prioriteiten hebt gewijzigd en de status van elke gegenereerde bedreiging hebt bijgewerkt, kunt u het bestand opslaan en/of een rapport afdrukken. Ga naar **rapport**  >  **volledig rapport maken**. Geef het rapport een naam en ziet er ongeveer als volgt uit:
 
 ![Rapport](./media/threat-modeling-tool-feature-overview/report.png)
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- Stuur uw vragen, opmerkingen en problemen naar tmtextsupport@microsoft.com. **[Down load](https://aka.ms/threatmodelingtool)** de Threat Modeling tool om aan de slag te gaan.
+- Stuur uw vragen, opmerkingen en problemen naar tmtextsupport@microsoft.com . **[Down load](https://aka.ms/threatmodelingtool)** de Threat Modeling tool om aan de slag te gaan.
 - Ga naar onze [github](https://github.com/Microsoft/threat-modeling-templates) -pagina om een sjabloon voor de community bij te dragen.

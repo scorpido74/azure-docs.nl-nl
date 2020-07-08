@@ -9,10 +9,9 @@ ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 12/18/2019
 ms.openlocfilehash: 3c93eca493275612ac14a995140b2e91cc40fe98
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75644661"
 ---
 # <a name="create-linux-based-clusters-in-hdinsight-using-azure-powershell"></a>Op Linux gebaseerde clusters maken in HDInsight met behulp van Azure PowerShell
@@ -60,7 +59,7 @@ Het kan Maxi maal 20 minuten duren om een cluster te maken.
 
 ## <a name="create-cluster-configuration-object"></a>Cluster maken: configuratie object
 
-U kunt ook een HDInsight-configuratie object maken [`New-AzHDInsightClusterConfig`](https://docs.microsoft.com/powershell/module/az.hdinsight/new-azhdinsightclusterconfig) met behulp van de cmdlet. U kunt dit configuratie object vervolgens wijzigen om aanvullende configuratie opties voor uw cluster in te scha kelen. Gebruik tot slot de `-Config` para meter van [`New-AzHDInsightCluster`](https://docs.microsoft.com/powershell/module/az.hdinsight/new-azhdinsightcluster) de cmdlet om de configuratie te gebruiken.
+U kunt ook een HDInsight-configuratie object maken met behulp van de [`New-AzHDInsightClusterConfig`](https://docs.microsoft.com/powershell/module/az.hdinsight/new-azhdinsightclusterconfig) cmdlet. U kunt dit configuratie object vervolgens wijzigen om aanvullende configuratie opties voor uw cluster in te scha kelen. Gebruik tot slot de `-Config` para meter van de [`New-AzHDInsightCluster`](https://docs.microsoft.com/powershell/module/az.hdinsight/new-azhdinsightcluster) cmdlet om de configuratie te gebruiken.
 
 Met het volgende script maakt u een configuratie object voor het configureren van een R Server in het HDInsight-cluster type. Met de configuratie kunt u een Edge-knoop punt, RStudio en een extra opslag account maken.
 

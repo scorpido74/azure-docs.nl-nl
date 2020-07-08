@@ -6,10 +6,9 @@ ms.topic: conceptual
 ms.date: 08/18/2017
 ms.author: masnider
 ms.openlocfilehash: af3e01d0d5a605c052be24eed8e14ee3449e2c79
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75563340"
 ---
 # <a name="service-movement-cost"></a>Kosten voor service verplaatsing
@@ -94,7 +93,7 @@ MoveCost helpt u bij het vinden van de oplossingen die de minst onderbrekingen i
 Voor een nauw keurigere MoveCosts moet MoveCost in uw cluster worden ingeschakeld... Zonder deze instelling wordt de standaard methode voor het tellen van aantallen gebruikt voor het berekenen van MoveCost en worden MoveCost-rapporten genegeerd.
 
 
-ClusterManifest. XML:
+ClusterManifest.xml:
 
 ``` xml
         <Section Name="PlacementAndLoadBalancing">
@@ -102,7 +101,7 @@ ClusterManifest. XML:
         </Section>
 ```
 
-via ClusterConfig. json voor zelfstandige implementaties of sjabloon. json voor door Azure gehoste clusters:
+via ClusterConfig.jsop voor zelfstandige implementaties of Template.jsop voor door Azure gehoste clusters:
 
 ```json
 "fabricSettings": [

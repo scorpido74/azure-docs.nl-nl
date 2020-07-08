@@ -6,10 +6,9 @@ ms.topic: conceptual
 ms.date: 11/02/2017
 ms.author: suhuruli
 ms.openlocfilehash: 15448a9bd8998a99e8fce578b05130694ecd5fd0
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75614482"
 ---
 # <a name="debug-your-java-service-fabric-application-using-eclipse"></a>Fout opsporing voor uw Java Service Fabric-toepassing met behulp van eclips
@@ -20,7 +19,7 @@ ms.locfileid: "75614482"
 
 1. Start een lokaal ontwikkel cluster door de stappen in [uw service Fabric-ontwikkel omgeving](service-fabric-get-started-linux.md)in te stellen.
 
-2. Update entryPoint.sh van de service waarvoor u fouten wilt opsporen, zodat het Java-proces wordt gestart met externe debug-para meters. Dit bestand bevindt zich op de volgende locatie `ApplicationName\ServiceNamePkg\Code\entrypoint.sh`:. Poort 8001 is in dit voorbeeld voor foutopsporing ingesteld.
+2. Update entryPoint.sh van de service waarvoor u fouten wilt opsporen, zodat het Java-proces wordt gestart met externe debug-para meters. Dit bestand bevindt zich op de volgende locatie: `ApplicationName\ServiceNamePkg\Code\entrypoint.sh` . Poort 8001 is in dit voorbeeld voor foutopsporing ingesteld.
 
     ```sh
     java -Xdebug -Xrunjdwp:transport=dt_socket,address=8001,server=y,suspend=n -Djava.library.path=$LD_LIBRARY_PATH -jar myapp.jar
@@ -37,7 +36,7 @@ ms.locfileid: "75614482"
    ```
 6.  Stel onderbrekings punten in op de gewenste posities en spoor fouten op in de toepassing.
 
-Als de toepassing vastloopt, wilt u mogelijk ook coredumps inschakelen. Voer `ulimit -c` uit in een shell en als deze 0 retourneert, zijn coredumps niet ingeschakeld. Als u onbeperkte coredumps wilt inschakelen, voert u de `ulimit -c unlimited`volgende opdracht uit:. U kunt ook de status controleren met behulp `ulimit -a`van de opdracht.  Als u het pad voor het genereren van coredump wilt bijwerken `echo '/tmp/core_%e.%p' | sudo tee /proc/sys/kernel/core_pattern`, voert u uit. 
+Als de toepassing vastloopt, wilt u mogelijk ook coredumps inschakelen. Voer `ulimit -c` uit in een shell en als deze 0 retourneert, zijn coredumps niet ingeschakeld. Als u onbeperkte coredumps wilt inschakelen, voert u de volgende opdracht uit: `ulimit -c unlimited` . U kunt ook de status controleren met behulp van de opdracht `ulimit -a` .  Als u het pad voor het genereren van coredump wilt bijwerken, voert u uit `echo '/tmp/core_%e.%p' | sudo tee /proc/sys/kernel/core_pattern` . 
 
 ### <a name="next-steps"></a>Volgende stappen
 

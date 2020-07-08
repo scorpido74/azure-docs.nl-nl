@@ -17,10 +17,9 @@ ms.author: sethm
 ms.reviewer: jowargo
 ms.lastreviewed: 01/04/2019
 ms.openlocfilehash: db42cf7f886855af77073963e6f04ac088ca5612
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75530728"
 ---
 # <a name="securely-push-notifications-from-azure-notification-hubs"></a>Veilige push meldingen van Azure Notification Hubs
@@ -62,7 +61,7 @@ In deze veilige push zelf studie wordt uitgelegd hoe u een push melding veilig v
     ```csharp
     RegisterBackgroundTask();
     ```
-2. Voeg in App.xaml.cs nog steeds de volgende code toe direct na `OnLaunched()` de-methode:
+2. Voeg in App.xaml.cs nog steeds de volgende code toe direct na de- `OnLaunched()` methode:
 
     ```csharp
     private async void RegisterBackgroundTask()
@@ -95,8 +94,8 @@ De volgende stap is het maken van het push-achtergrond onderdeel.
 2. Vouw **Store-apps**uit, klik op **Windows Phone apps**en klik vervolgens op **Windows runtime onderdeel (Windows Phone)**. Noem het project **PushBackgroundComponent**en klik vervolgens op **OK** om het project te maken.
 
     ![][12]
-3. Klik in Solution Explorer met de rechter muisknop op het project **PushBackgroundComponent (Windows Phone 8,1)** , klik op **toevoegen**en klik vervolgens op **klasse**. Geef de nieuwe klasse `PushBackgroundTask.cs`een naam. Klik op **toevoegen** om de klasse te genereren.
-4. Vervang de volledige inhoud van de `PushBackgroundComponent` naam ruimte definitie door de volgende code, waarbij u de `{back-end endpoint}` tijdelijke aanduiding vervangt door het back-end-eind punt dat is verkregen tijdens het implementeren van uw back-end:
+3. Klik in Solution Explorer met de rechter muisknop op het project **PushBackgroundComponent (Windows Phone 8,1)** , klik op **toevoegen**en klik vervolgens op **klasse**. Geef de nieuwe klasse een naam `PushBackgroundTask.cs` . Klik op **toevoegen** om de klasse te genereren.
+4. Vervang de volledige inhoud van de `PushBackgroundComponent` naam ruimte definitie door de volgende code, waarbij u de tijdelijke aanduiding vervangt `{back-end endpoint}` door het back-end-eind punt dat is verkregen tijdens het implementeren van uw back-end:
 
     ```csharp
     public sealed class Notification
@@ -147,7 +146,7 @@ De volgende stap is het maken van het push-achtergrond onderdeel.
 7. Typ **Http Client** in **het zoekvak**.
 8. Klik in de lijst met resultaten op **HTTP-client bibliotheken van micro soft**en klik vervolgens op **installeren**. Voltooi de installatie.
 9. Typ nu **Json.net** in **het zoekvak** van NuGet. Installeer het **JSON.net** -pakket en sluit vervolgens het venster NuGet Package Manager.
-10. Voeg boven aan `using` het `PushBackgroundTask.cs` bestand de volgende-instructies toe:
+10. Voeg `using` boven aan het bestand de volgende-instructies toe `PushBackgroundTask.cs` :
 
     ```csharp
     using Windows.ApplicationModel.Background;

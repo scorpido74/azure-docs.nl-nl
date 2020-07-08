@@ -6,10 +6,9 @@ ms.topic: conceptual
 ms.date: 5/24/2019
 ms.author: hrushib
 ms.openlocfilehash: 938cbbde9f53c52350ef64715f6c61c4aa961057
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75526240"
 ---
 # <a name="periodic-backup-and-restore-in-a-standalone-service-fabric"></a>Periodieke back-ups maken en herstellen in een zelfstandige Service Fabric
@@ -55,7 +54,7 @@ Service Fabric biedt een reeks Api's om de volgende functionaliteit te bieden me
     Install-Module -Name Microsoft.ServiceFabric.Powershell.Http -AllowPrerelease
 ```
 
-* Zorg ervoor dat het cluster is verbonden met `Connect-SFCluster` behulp van de opdracht voordat u een configuratie aanvraag maakt met behulp van de module micro soft. ServiceFabric. Power shell. http.
+* Zorg ervoor dat het cluster is verbonden met behulp van de `Connect-SFCluster` opdracht voordat u een configuratie aanvraag maakt met behulp van de module micro soft. ServiceFabric. Power shell. http.
 
 ```powershell
 
@@ -77,7 +76,7 @@ Eerst moet u de service voor _back-up en herstel_ inschakelen in uw cluster. Haa
     }
     ```
 
-2. Schakel nu de _Service back-up en herstel_ in door `addonFeatures` de volgende `properties` sectie toe te voegen onder sectie, zoals wordt weer gegeven in het volgende code fragment: 
+2. Schakel nu de _Service back-up en herstel_ in door de volgende sectie toe te voegen `addonFeatures` onder `properties` sectie, zoals wordt weer gegeven in het volgende code fragment: 
 
     ```json
         "properties": {
@@ -89,7 +88,7 @@ Eerst moet u de service voor _back-up en herstel_ inschakelen in uw cluster. Haa
 
     ```
 
-3. Het X. 509-certificaat configureren voor het versleutelen van referenties. Dit is belang rijk om ervoor te zorgen dat de referenties, indien aanwezig, worden versleuteld om verbinding te maken met de opslag. Configureer het versleutelings certificaat door `BackupRestoreService` de volgende `fabricSettings` sectie toe te voegen onder sectie, zoals wordt weer gegeven in het volgende code fragment: 
+3. Het X. 509-certificaat configureren voor het versleutelen van referenties. Dit is belang rijk om ervoor te zorgen dat de referenties, indien aanwezig, worden versleuteld om verbinding te maken met de opslag. Configureer het versleutelings certificaat door de volgende sectie toe te voegen `BackupRestoreService` onder `fabricSettings` sectie, zoals wordt weer gegeven in het volgende code fragment: 
 
     ```json
     "properties": {
@@ -113,13 +112,13 @@ Eerst moet u de service voor _back-up en herstel_ inschakelen in uw cluster. Haa
 ## <a name="enabling-periodic-backup-for-reliable-stateful-service-and-reliable-actors"></a>Periodieke back-ups inschakelen voor betrouw bare stateful service en Reliable Actors
 We gaan stappen uitvoeren om periodieke back-ups in te scha kelen voor betrouw bare stateful service en Reliable Actors. Bij deze stappen wordt ervan uitgegaan
 - Of het cluster is ingesteld met _Backup-en Restore-service_.
-- Een betrouw bare stateful service wordt op het cluster geïmplementeerd. Voor het doel van deze Snelstartgids is `fabric:/SampleApp` de toepassings-URI en de URI voor een betrouw bare stateful service die deel uitmaakt `fabric:/SampleApp/MyStatefulService`van deze toepassing. Deze service wordt geïmplementeerd met één partitie en de partitie-ID is `23aebc1e-e9ea-4e16-9d5c-e91a614fefa7`.  
+- Een betrouw bare stateful service wordt op het cluster geïmplementeerd. Voor het doel van deze Snelstartgids is de toepassings-URI `fabric:/SampleApp` en de URI voor een betrouw bare stateful service die deel uitmaakt van deze toepassing `fabric:/SampleApp/MyStatefulService` . Deze service wordt geïmplementeerd met één partitie en de partitie-ID is `23aebc1e-e9ea-4e16-9d5c-e91a614fefa7` .  
 
 ### <a name="create-backup-policy"></a>Back-upbeleid maken
 
 De eerste stap is het maken van een back-upbeleid met een beschrijving van back-upschema, doel opslag voor back-upgegevens, beleids naam en maximale incrementele back-ups die moeten worden toegestaan voordat het volledige back-up-en bewaar beleid voor back-upopslag wordt geactiveerd. 
 
-Voor back-upopslag maakt u de bestands share en geeft u ReadWrite toegang tot deze bestands share voor alle Service Fabric knooppunt machines. In dit voor beeld wordt ervan uitgegaan `BackupStore` dat de share `StorageServer`met de naam aanwezig is op.
+Voor back-upopslag maakt u de bestands share en geeft u ReadWrite toegang tot deze bestands share voor alle Service Fabric knooppunt machines. In dit voor beeld wordt ervan uitgegaan dat de share met de naam `BackupStore` aanwezig is op `StorageServer` .
 
 
 #### <a name="powershell-using-microsoftservicefabricpowershellhttp-module"></a>Power shell met behulp van de module micro soft. ServiceFabric. Power shell. http
@@ -184,7 +183,7 @@ Enable-SFApplicationBackup -ApplicationId 'SampleApp' -BackupPolicyName 'BackupP
 ```
 
 #### <a name="rest-call-using-powershell"></a>Rest-aanroep met Power shell
-Voer het volgende Power shell-script uit om de vereiste REST API aan te roepen `BackupPolicy1` om het back-upbeleid `SampleApp`te koppelen aan de bovenstaande stap met de toepassing.
+Voer het volgende Power shell-script uit om de vereiste REST API aan te roepen om het back-upbeleid te koppelen aan de `BackupPolicy1` bovenstaande stap met de toepassing `SampleApp` .
 
 ```powershell
 $BackupPolicyReference = @{
@@ -225,7 +224,7 @@ Back-ups die zijn gekoppeld aan alle partities die deel uitmaken van betrouw bar
 
 #### <a name="rest-call-using-powershell"></a>Rest-aanroep met Power shell
 
-Voer de volgende Power shell-script uit om de HTTP API aan te roepen om de back-ups te `SampleApp` inventariseren die zijn gemaakt voor alle partities in de toepassing.
+Voer de volgende Power shell-script uit om de HTTP API aan te roepen om de back-ups te inventariseren die zijn gemaakt voor alle partities in de `SampleApp` toepassing.
 
 ```powershell
 $url = "http://localhost:19080/Applications/SampleApp/$/GetBackups?api-version=6.4"

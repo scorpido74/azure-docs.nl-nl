@@ -8,10 +8,9 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 12/13/2019
 ms.openlocfilehash: 6fc0d4cfe29e0fb189c44b307576bd08d2da8a31
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75638881"
 ---
 # <a name="run-azure-machine-learning-workloads-with-automated-machine-learning-on-apache-spark-in-hdinsight"></a>Azure Machine Learning werk belastingen uitvoeren met geautomatiseerde machine learning op Apache Spark in HDInsight
@@ -71,7 +70,7 @@ U kunt de gegevens opslag ook registreren bij de werk ruimte met behulp van een 
 
 ## <a name="experiment-submission"></a>Inzending experimenteren
 
-In de [configuratie van automatische machine learning](/python/api/azureml-train-automl-client/azureml.train.automl.automlconfig.automlconfig)moet de `spark_context` eigenschap worden ingesteld voor het uitvoeren van het pakket op de gedistribueerde modus. De eigenschap `concurrent_iterations`, waarmee het maximum aantal iteraties wordt uitgevoerd, moet worden ingesteld op een waarde die kleiner is dan de uitvoer kernen voor de Spark-app.
+In de [configuratie van automatische machine learning](/python/api/azureml-train-automl-client/azureml.train.automl.automlconfig.automlconfig)moet de eigenschap `spark_context` worden ingesteld voor het uitvoeren van het pakket op de gedistribueerde modus. De eigenschap `concurrent_iterations` , waarmee het maximum aantal iteraties wordt uitgevoerd, moet worden ingesteld op een waarde die kleiner is dan de uitvoer kernen voor de Spark-app.
 
 ## <a name="next-steps"></a>Volgende stappen
 

@@ -9,10 +9,9 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 12/27/2019
 ms.openlocfilehash: c6bf26d8f3a73db6ee69b2aa0de73872911893bf
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75552709"
 ---
 # <a name="analyze-website-logs-using-a-custom-python-library-with-apache-spark-cluster-on-hdinsight"></a>Website logboeken analyseren met behulp van een aangepaste python-bibliotheek met Apache Spark cluster op HDInsight
@@ -25,11 +24,11 @@ Een Apache Spark-cluster in HDInsight. Zie [Apache Spark-clusters maken in Azure
 
 ## <a name="save-raw-data-as-an-rdd"></a>Onbewerkte gegevens opslaan als een RDD
 
-In deze sectie gebruiken we het [Jupyter](https://jupyter.org) -notebook dat is gekoppeld aan een Apache Spark-cluster in HDInsight om taken uit te voeren die uw onbewerkte voorbeeld gegevens verwerken en deze op te slaan als een Hive-tabel. De voorbeeld gegevens zijn standaard een CSV-bestand (HVAC. CSV) dat beschikbaar is op alle clusters.
+In deze sectie gebruiken we het [Jupyter](https://jupyter.org) -notebook dat is gekoppeld aan een Apache Spark-cluster in HDInsight om taken uit te voeren die uw onbewerkte voorbeeld gegevens verwerken en deze op te slaan als een Hive-tabel. De voorbeeld gegevens zijn standaard een CSV-bestand (hvac.csv) dat beschikbaar is op alle clusters.
 
 Zodra de gegevens zijn opgeslagen als een Apache Hive tabel, wordt in de volgende sectie verbinding gemaakt met de Hive-tabel met behulp van BI-hulpprogram ma's zoals Power BI en tableau.
 
-1. Ga in een webbrowser naar `https://CLUSTERNAME.azurehdinsight.net/jupyter`, waarbij `CLUSTERNAME` de naam van het cluster is.
+1. Ga in een webbrowser naar `https://CLUSTERNAME.azurehdinsight.net/jupyter` , waarbij `CLUSTERNAME` de naam van het cluster is.
 
 1. Maak een nieuwe notebook. Selecteer **Nieuw**en vervolgens **PySpark**.
 
@@ -46,7 +45,7 @@ Zodra de gegevens zijn opgeslagen als een Apache Hive tabel, wordt in de volgend
     from pyspark.sql.types import *
     ```
 
-1. Maak een RDD met behulp van de voorbeeld logboek gegevens die al beschikbaar zijn op het cluster. U hebt toegang tot de gegevens in het standaard opslag account dat is gekoppeld aan `\HdiSamples\HdiSamples\WebsiteLogSampleData\SampleLog\909f2b.log`het cluster op. Voer de volgende code uit:
+1. Maak een RDD met behulp van de voorbeeld logboek gegevens die al beschikbaar zijn op het cluster. U hebt toegang tot de gegevens in het standaard opslag account dat is gekoppeld aan het cluster op `\HdiSamples\HdiSamples\WebsiteLogSampleData\SampleLog\909f2b.log` . Voer de volgende code uit:
 
     ```pyspark
     logs = sc.textFile('wasbs:///HdiSamples/HdiSamples/WebsiteLogSampleData/SampleLog/909f2b.log')
@@ -70,15 +69,15 @@ Zodra de gegevens zijn opgeslagen als een Apache Hive tabel, wordt in de volgend
 
 ## <a name="analyze-log-data-using-a-custom-python-library"></a>Logboek gegevens analyseren met behulp van een aangepaste python-bibliotheek
 
-1. In de bovenstaande uitvoer bevatten de eerste paar regels de header-informatie en wordt elke resterende regel overeenkomt met het schema dat in die header wordt beschreven. Het parseren van dergelijke logboeken kan gecompliceerd zijn. Daarom gebruiken we een aangepaste python-bibliotheek (**iislogparser.py**) die het parseren van dergelijke logboeken veel eenvoudiger maakt. Deze bibliotheek is standaard opgenomen in uw Spark-cluster op HDInsight op `/HdiSamples/HdiSamples/WebsiteLogSampleData/iislogparser.py`.
+1. In de bovenstaande uitvoer bevatten de eerste paar regels de header-informatie en wordt elke resterende regel overeenkomt met het schema dat in die header wordt beschreven. Het parseren van dergelijke logboeken kan gecompliceerd zijn. Daarom gebruiken we een aangepaste python-bibliotheek (**iislogparser.py**) die het parseren van dergelijke logboeken veel eenvoudiger maakt. Deze bibliotheek is standaard opgenomen in uw Spark-cluster op HDInsight op `/HdiSamples/HdiSamples/WebsiteLogSampleData/iislogparser.py` .
 
-    Deze bibliotheek bevindt zich echter `PYTHONPATH` niet in de daarom kan niet worden gebruikt met behulp `import iislogparser`van een import instructie zoals. Als u deze bibliotheek wilt gebruiken, moeten we deze distribueren naar alle worker-knoop punten. Voer het volgende code fragment uit.
+    Deze bibliotheek bevindt zich echter niet in de `PYTHONPATH` daarom kan niet worden gebruikt met behulp van een import instructie zoals `import iislogparser` . Als u deze bibliotheek wilt gebruiken, moeten we deze distribueren naar alle worker-knoop punten. Voer het volgende code fragment uit.
 
     ```pyspark
     sc.addPyFile('wasbs:///HdiSamples/HdiSamples/WebsiteLogSampleData/iislogparser.py')
     ```
 
-1. `iislogparser`biedt een functie `parse_log_line` die retourneert `None` of een logboek regel een koprij is en een exemplaar van de `LogLine` klasse retourneert als er een logboek regel wordt aangetroffen. Gebruik de `LogLine` -klasse om alleen de logboek regels uit de RDD te extra heren:
+1. `iislogparser`biedt een functie `parse_log_line` die retourneert `None` of een logboek regel een koprij is en een exemplaar van de `LogLine` klasse retourneert als er een logboek regel wordt aangetroffen. Gebruik de- `LogLine` klasse om alleen de logboek regels uit de RDD te extra heren:
 
     ```pyspark
     def parse_line(l):
@@ -100,7 +99,7 @@ Zodra de gegevens zijn opgeslagen als een Apache Hive tabel, wordt in de volgend
     2014-01-01 02:01:09 SAMPLEWEBSITE GET /blogposts/mvc4/step3.png X-ARR-LOG-ID=9eace870-2f49-4efd-b204-0d170da46b4a 80 - 1.54.23.196 Mozilla/5.0+(Windows+NT+6.3;+WOW64)+AppleWebKit/537.36+(KHTML,+like+Gecko)+Chrome/31.0.1650.63+Safari/537.36 - http://weblogs.asp.net/sample/archive/2007/12/09/asp-net-mvc-framework-part-4-handling-form-edit-and-post-scenarios.aspx www.sample.com 200 0 0 51237 871 32]
     ```
 
-1. De `LogLine` klasse heeft op zijn beurt een aantal handige methoden, zoals `is_error()`, die retourneert of een logboek vermelding een fout code heeft. Gebruik deze klasse voor het berekenen van het aantal fouten in de uitgepakte logboek regels en meld alle fouten vervolgens naar een ander bestand.
+1. De `LogLine` klasse heeft op zijn beurt een aantal handige methoden, zoals `is_error()` , die retourneert of een logboek vermelding een fout code heeft. Gebruik deze klasse voor het berekenen van het aantal fouten in de uitgepakte logboek regels en meld alle fouten vervolgens naar een ander bestand.
 
     ```pyspark
     errors = logLines.filter(lambda p: p.is_error())
@@ -110,7 +109,7 @@ Zodra de gegevens zijn opgeslagen als een Apache Hive tabel, wordt in de volgend
     errors.map(lambda p: str(p)).saveAsTextFile('wasbs:///HdiSamples/HdiSamples/WebsiteLogSampleData/SampleLog/909f2b-2.log')
     ```
 
-    De uitvoer moet de `There are 30 errors and 646 log entries`status hebben.
+    De uitvoer moet de status hebben `There are 30 errors and 646 log entries` .
 
 1. U kunt **matplotlib** ook gebruiken om een visualisatie van de gegevens te maken. Als u bijvoorbeeld de oorzaak van aanvragen wilt isoleren die gedurende een lange periode worden uitgevoerd, kunt u de bestanden die het meest het meest worden gebruikt, voor het eerst vinden. In het onderstaande fragment worden de belangrijkste 25 resources opgehaald die de meeste tijd nodig hebben om een aanvraag te doen.
 
@@ -172,15 +171,15 @@ Zodra de gegevens zijn opgeslagen als een Apache Hive tabel, wordt in de volgend
     SELECT * FROM AverageTime
     ```
 
-   Het `%%sql` Magic wordt gevolgd `-o averagetime` door ervoor te zorgen dat de uitvoer van de query lokaal wordt opgeslagen op de Jupyter-server (doorgaans de hoofd knooppunt van het cluster). De uitvoer wordt persistent gemaakt als een [Panda](https://pandas.pydata.org/) data frame met de opgegeven naam **averagetime**.
+   Het `%%sql` Magic wordt gevolgd door `-o averagetime` ervoor te zorgen dat de uitvoer van de query lokaal wordt opgeslagen op de Jupyter-server (doorgaans de hoofd knooppunt van het cluster). De uitvoer wordt persistent gemaakt als een [Panda](https://pandas.pydata.org/) data frame met de opgegeven naam **averagetime**.
 
    U ziet een uitvoer zoals de volgende afbeelding:
 
    ![uitvoer van hdinsight jupyter SQL-query](./media/apache-spark-custom-library-website-log-analysis/hdinsight-jupyter-sql-qyery-output.png "SQL-query-uitvoer")
 
-   Zie `%%sql` [para meters die worden ondersteund met%% SQL Magic](apache-spark-jupyter-notebook-kernels.md#parameters-supported-with-the-sql-magic)voor meer informatie over het Magic.
+   `%%sql`Zie [para meters die worden ondersteund met%% SQL Magic](apache-spark-jupyter-notebook-kernels.md#parameters-supported-with-the-sql-magic)voor meer informatie over het Magic.
 
-1. U kunt nu matplotlib, een bibliotheek die wordt gebruikt om visualisatie van gegevens te maken, gebruiken om een plot te creëren. Omdat het waarnemings punt moet worden gemaakt van de lokaal blijvende persistente **averagetime** -data frame, moet het code fragment `%%local` beginnen met het Magic. Dit zorgt ervoor dat de code lokaal wordt uitgevoerd op de Jupyter-server.
+1. U kunt nu matplotlib, een bibliotheek die wordt gebruikt om visualisatie van gegevens te maken, gebruiken om een plot te creëren. Omdat het waarnemings punt moet worden gemaakt van de lokaal blijvende persistente **averagetime** -data frame, moet het code fragment beginnen met het `%%local` Magic. Dit zorgt ervoor dat de code lokaal wordt uitgevoerd op de Jupyter-server.
 
     ```pyspark
     %%local

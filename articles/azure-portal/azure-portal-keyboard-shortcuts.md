@@ -16,13 +16,12 @@ ms.date: 12/20/2019
 ms.author: mblythe
 ms.custom: accessibility
 ms.openlocfilehash: e42dfc82fa0db028894dd77225621e867d79dac6
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75641330"
 ---
-# <a name="keyboard-shortcuts-in-the-azure-portal"></a>Sneltoetsen in de Azure Portal
+# <a name="keyboard-shortcuts-in-the-azure-portal"></a>Toetsenbordsneltoetsen in de Azure-portal
 
 In dit artikel vindt u een overzicht van de sneltoetsen die overal in het Azure Portal werken. Afzonderlijke services hebben mogelijk hun eigen sneltoetsen.
 

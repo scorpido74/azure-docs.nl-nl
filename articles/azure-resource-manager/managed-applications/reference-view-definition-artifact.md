@@ -1,24 +1,23 @@
 ---
 title: Naslag informatie over definitie artefacten weer geven
-description: Hier vindt u een voor beeld van het weer geven van definitie artefacten voor Azure Managed Applications. De bestands naam is viewDefinition. json.
+description: Hier vindt u een voor beeld van het weer geven van definitie artefacten voor Azure Managed Applications. De bestands naam is viewDefinition.jsop.
 ms.topic: conceptual
 ms.author: lazinnat
 author: lazinnat
 ms.date: 07/11/2019
 ms.openlocfilehash: 5173db54abef132a4a4d5d117881352ca37d6b23
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75651200"
 ---
 # <a name="reference-view-definition-artifact"></a>Verwijzing: definitie-artefact weer geven
 
-Dit artikel bevat een verwijzing naar een *viewDefinition. json* -artefact in azure Managed Applications. Zie [definition artefact weer geven](concepts-view-definition.md)voor meer informatie over de configuratie van de ontwerp weergaven.
+Dit artikel bevat een verwijzing naar een *viewDefinition.jsvoor* artefacten in azure Managed Applications. Zie [definition artefact weer geven](concepts-view-definition.md)voor meer informatie over de configuratie van de ontwerp weergaven.
 
 ## <a name="view-definition"></a>Definitie weergeven
 
-In de volgende JSON ziet u een voor beeld van het bestand *viewDefinition. json* voor Azure Managed Applications:
+In de volgende JSON ziet u een voor beeld van *viewDefinition.jsop* bestand voor Azure Managed Applications:
 
 ```json
 {

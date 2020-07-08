@@ -5,10 +5,9 @@ ms.topic: article
 ms.date: 12/30/2019
 ms.custom: mvc
 ms.openlocfilehash: f66890c503de8de9160f11fb28795012ae57daeb
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75561334"
 ---
 # <a name="mount-an-azure-file-share-in-azure-container-instances"></a>Een Azure-bestandsshare koppelen in Azure Container Instances
@@ -49,7 +48,7 @@ az storage share create \
 
 Als u een Azure-bestandsshare wilt koppelen als een volume in Azure Container Instances, hebt u drie waarden nodig: de naam van het opslagaccount, de sharenaam en de toegangssleutel voor opslag.
 
-* **Naam van opslag account** : als u het voor gaande script hebt gebruikt, is de naam van het `$ACI_PERS_STORAGE_ACCOUNT_NAME` opslag account opgeslagen in de variabele. Als u de account naam wilt zien, typt u:
+* **Naam van opslag account** : als u het voor gaande script hebt gebruikt, is de naam van het opslag account opgeslagen in de `$ACI_PERS_STORAGE_ACCOUNT_NAME` variabele. Als u de account naam wilt zien, typt u:
 
   ```console
   echo $ACI_PERS_STORAGE_ACCOUNT_NAME
@@ -98,9 +97,9 @@ Nadat u de tekst hebt opgeslagen met de app, kunt u de [Azure Portal][portal] of
 
 U kunt ook een container groep implementeren en een volume in een container koppelen met de Azure CLI en een [yaml-sjabloon](container-instances-multi-container-yaml.md). Implementeren op basis van de YAML-sjabloon is een voorkeurs methode bij het implementeren van container groepen die uit meerdere containers bestaan.
 
-De volgende YAML-sjabloon definieert een container groep met één container die met `aci-hellofiles` de installatie kopie is gemaakt. De container koppelt de Azure-bestands share *acishare* die eerder zijn gemaakt als een volume. Indien aangegeven, voert u de naam en de opslag sleutel in voor het opslag account dat als host fungeert voor de bestands share. 
+De volgende YAML-sjabloon definieert een container groep met één container die met de `aci-hellofiles` installatie kopie is gemaakt. De container koppelt de Azure-bestands share *acishare* die eerder zijn gemaakt als een volume. Indien aangegeven, voert u de naam en de opslag sleutel in voor het opslag account dat als host fungeert voor de bestands share. 
 
-Net als in het CLI-voor `dnsNameLabel` beeld moet de waarde uniek zijn binnen de Azure-regio waar u het container exemplaar maakt. Werk indien nodig de waarde in het YAML-bestand bij.
+Net als in het CLI-voor beeld `dnsNameLabel` moet de waarde uniek zijn binnen de Azure-regio waar u het container exemplaar maakt. Werk indien nodig de waarde in het YAML-bestand bij.
 
 ```yaml
 apiVersion: '2018-10-01'
@@ -138,7 +137,7 @@ tags: {}
 type: Microsoft.ContainerInstance/containerGroups
 ```
 
-Als u wilt implementeren met de YAML-sjabloon, slaat u de voor gaande `deploy-aci.yaml`yaml op in een bestand met de naam en voert `--file` u de opdracht [AZ container Create][az-container-create] uit met de para meter:
+Als u wilt implementeren met de YAML-sjabloon, slaat u de voor gaande YAML op in een bestand met de naam `deploy-aci.yaml` en voert u de opdracht [AZ container Create][az-container-create] uit met de `--file` para meter:
 
 ```azurecli
 # Deploy with YAML template
@@ -152,9 +151,9 @@ Vul eerst de `volumes` matrix in het gedeelte container Group `properties` van d
 
 Voor elke container waarin u het volume wilt koppelen, vult u de `volumeMounts` matrix in de `properties` sectie van de container definitie.
 
-De volgende Resource Manager-sjabloon definieert een container groep met één container die is `aci-hellofiles` gemaakt met de installatie kopie. De container koppelt de Azure-bestands share *acishare* die eerder zijn gemaakt als een volume. Indien aangegeven, voert u de naam en de opslag sleutel in voor het opslag account dat als host fungeert voor de bestands share. 
+De volgende Resource Manager-sjabloon definieert een container groep met één container die is gemaakt met de `aci-hellofiles` installatie kopie. De container koppelt de Azure-bestands share *acishare* die eerder zijn gemaakt als een volume. Indien aangegeven, voert u de naam en de opslag sleutel in voor het opslag account dat als host fungeert voor de bestands share. 
 
-Net als in de voor gaande voor `dnsNameLabel` beelden moet de waarde uniek zijn binnen de Azure-regio waar u het container exemplaar maakt. Werk de waarde in de sjabloon zo nodig bij.
+Net als in de voor gaande voor beelden `dnsNameLabel` moet de waarde uniek zijn binnen de Azure-regio waar u het container exemplaar maakt. Werk de waarde in de sjabloon zo nodig bij.
 
 ```JSON
 {
@@ -223,7 +222,7 @@ Net als in de voor gaande voor `dnsNameLabel` beelden moet de waarde uniek zijn 
 }
 ```
 
-Als u wilt implementeren met de Resource Manager-sjabloon, slaat u de voor gaande `deploy-aci.json`JSON op in een bestand met de naam en voert u `--template-file` de opdracht [AZ Group Deployment Create][az-group-deployment-create] uit met de para meter:
+Als u wilt implementeren met de Resource Manager-sjabloon, slaat u de voor gaande JSON op in een bestand met de naam `deploy-aci.json` en voert u de opdracht [AZ Group Deployment Create][az-group-deployment-create] uit met de `--template-file` para meter:
 
 ```azurecli
 # Deploy with Resource Manager template
@@ -233,9 +232,9 @@ az group deployment create --resource-group myResourceGroup --template-file depl
 
 ## <a name="mount-multiple-volumes"></a>Meerdere volumes koppelen
 
-Als u meerdere volumes in een container exemplaar wilt koppelen, moet u implementeren met behulp van een [Azure Resource Manager-sjabloon](/azure/templates/microsoft.containerinstance/containergroups), een yaml-bestand of een andere programmatische methode. Als u een sjabloon-of YAML-bestand wilt gebruiken, geeft u de delen Details op en definieert `volumes` u de volumes `properties` door de matrix in de sectie van het bestand in te vullen. 
+Als u meerdere volumes in een container exemplaar wilt koppelen, moet u implementeren met behulp van een [Azure Resource Manager-sjabloon](/azure/templates/microsoft.containerinstance/containergroups), een yaml-bestand of een andere programmatische methode. Als u een sjabloon-of YAML-bestand wilt gebruiken, geeft u de delen Details op en definieert u de volumes door de `volumes` matrix in de `properties` sectie van het bestand in te vullen. 
 
-Als u bijvoorbeeld twee Azure Files shares hebt gemaakt met de naam *share1* en *Share2* in de *myStorageAccount*van `volumes` het opslag account, ziet de matrix in een resource manager-sjabloon er ongeveer als volgt uit:
+Als u bijvoorbeeld twee Azure Files shares hebt gemaakt met de naam *share1* en *Share2* in de *myStorageAccount*van het opslag account, ziet de `volumes` matrix in een resource manager-sjabloon er ongeveer als volgt uit:
 
 ```JSON
 "volumes": [{

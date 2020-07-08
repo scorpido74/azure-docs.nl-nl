@@ -9,10 +9,9 @@ ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 01/01/2020
 ms.openlocfilehash: 78623f738285e781cb561a3844db8fbf37226929
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75645018"
 ---
 # <a name="run-custom-mapreduce-programs"></a>Aangepaste MapReduce-programma's uitvoeren
@@ -48,7 +47,7 @@ Overweeg het maken van uw eigen kaart en verminder de onderdelen voor de volgend
 
 De meest voorkomende MapReduce-Program ma's zijn geschreven in Java en gecompileerd naar een jar-bestand.
 
-1. Nadat u uw MapReduce-programma hebt ontwikkeld, gecompileerd en getest, gebruikt u `scp` de opdracht om het jar-bestand naar de hoofd knooppunt te uploaden.
+1. Nadat u uw MapReduce-programma hebt ontwikkeld, gecompileerd en getest, gebruikt u de `scp` opdracht om het jar-bestand naar de hoofd knooppunt te uploaden.
 
     ```cmd
     scp mycustomprogram.jar sshuser@CLUSTERNAME-ssh.azurehdinsight.net
@@ -68,7 +67,7 @@ De meest voorkomende MapReduce-Program ma's zijn geschreven in Java en gecompile
     yarn jar mycustomprogram.jar mynamespace.myclass /example/data/sample.log /example/data/logoutput
     ```
 
-    Met deze opdracht wordt de MapReduce-taak naar GARENs verzonden. Het invoer bestand is `/example/data/sample.log`en de uitvoermap `/example/data/logoutput`. Het invoer bestand en uitvoer bestanden worden opgeslagen in de standaard opslag voor het cluster.
+    Met deze opdracht wordt de MapReduce-taak naar GARENs verzonden. Het invoer bestand is `/example/data/sample.log` en de uitvoermap `/example/data/logoutput` . Het invoer bestand en uitvoer bestanden worden opgeslagen in de standaard opslag voor het cluster.
 
 ## <a name="next-steps"></a>Volgende stappen
 

@@ -6,10 +6,9 @@ ms.topic: article
 ms.date: 06/29/2018
 ms.author: pepogors
 ms.openlocfilehash: 1d7478e6b81ef2c53ca6194197336e91d3ff250b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75614520"
 ---
 # <a name="develop-c-service-fabric-applications-with-visual-studio-code"></a>C#-Service Fabric toepassingen ontwikkelen met Visual Studio code
@@ -61,31 +60,31 @@ Nadat u de toepassing hebt gemaakt, kunt u deze implementeren in het lokale clus
 
    ![Opdracht toepassing implementeren in VS code](./media/service-fabric-develop-csharp-applications-with-vs-code/sf-deploy-application.png)
 
-4. Wanneer de implementatie is voltooid, start u een browser en opent u Service Fabric Explorer:\/http:/localhost: 19080/Explorer. U ziet dat de toepassing wordt uitgevoerd. Dit kan enige tijd duren. het is dus een ogen blik geduld. 
+4. Wanneer de implementatie is voltooid, start u een browser en opent u Service Fabric Explorer: http: \/ /localhost: 19080/Explorer. U ziet dat de toepassing wordt uitgevoerd. Dit kan enige tijd duren. het is dus een ogen blik geduld. 
 
    ![Counter service-toepassing in Service Fabric Explorer](./media/service-fabric-develop-csharp-applications-with-vs-code/sfx-verify-deploy.png)
 
-4. Nadat u hebt gecontroleerd of de toepassing wordt uitgevoerd, start u een browser en opent u deze pagina\/: http:/localhost: 31002. Dit is de web-front-end van de toepassing. Vernieuw de pagina om de huidige waarde van de teller te zien wanneer deze wordt verhoogd.
+4. Nadat u hebt gecontroleerd of de toepassing wordt uitgevoerd, start u een browser en opent u deze pagina: http: \/ /localhost: 31002. Dit is de web-front-end van de toepassing. Vernieuw de pagina om de huidige waarde van de teller te zien wanneer deze wordt verhoogd.
 
    ![Counter service-toepassing in browser](./media/service-fabric-develop-csharp-applications-with-vs-code/counter-service-running.png)
 
 ## <a name="publish-the-application-to-an-azure-service-fabric-cluster"></a>De toepassing publiceren in een Azure Service Fabric-cluster
 Naast het implementeren van de toepassing naar het lokale cluster, kunt u de toepassing ook publiceren naar een extern Azure Service Fabric-cluster. 
 
-1. Zorg ervoor dat u uw toepassing hebt gemaakt met behulp van de bovenstaande instructies. Werk het gegenereerde configuratie `Cloud.json` bestand bij met de details van het externe cluster waarnaar u wilt publiceren.
+1. Zorg ervoor dat u uw toepassing hebt gemaakt met behulp van de bovenstaande instructies. Werk het gegenereerde configuratie bestand `Cloud.json` bij met de details van het externe cluster waarnaar u wilt publiceren.
 
 2. Selecteer in het **opdracht palet**de **service Fabric: opdracht toepassing publiceren**. De uitvoer van het installatie proces wordt verzonden naar de geïntegreerde Terminal.
 
    ![Opdracht toepassing publiceren in VS code](./media/service-fabric-develop-csharp-applications-with-vs-code/sf-publish-application.png)
 
-3. Wanneer de implementatie is voltooid, start u een browser en opent u `https:<clusterurl>:19080/Explorer`service Fabric Explorer:. U ziet dat de toepassing wordt uitgevoerd. Dit kan enige tijd duren. het is dus een ogen blik geduld. 
+3. Wanneer de implementatie is voltooid, start u een browser en opent u Service Fabric Explorer: `https:<clusterurl>:19080/Explorer` . U ziet dat de toepassing wordt uitgevoerd. Dit kan enige tijd duren. het is dus een ogen blik geduld. 
 
 ## <a name="debug-the-application"></a>Fouten in de toepassing opsporen
 Bij het opsporen van fouten in toepassingen in VS code moet de toepassing worden uitgevoerd op een lokaal cluster. Onderbrekings punten kunnen vervolgens worden toegevoegd aan de code.
 
 Voer de volgende stappen uit om een onderbrekings punt en fout opsporing in te stellen:
-1. Open het */src/CounterServiceApplication/CounterService/CounterService.cs* -bestand in Verkenner en stel een onderbrekings punt in op regel `RunAsync` 62 in de methode.
-3. Klik op het pictogram fout opsporing op de **activiteiten balk** om de weer gave fout opsporing in VS code te openen. Klik boven aan de weer gave van het fout opsporingsprogramma op het tandwiel pictogram en selecteer **.net core** in het menu van de vervolg keuzelijst omgeving. Het bestand Launch. json wordt geopend. U kunt dit bestand sluiten. U ziet nu configuratie opties in het menu Debug Configuration naast de knop uitvoeren (groene pijl).
+1. Open het */src/CounterServiceApplication/CounterService/CounterService.cs* -bestand in Verkenner en stel een onderbrekings punt in op regel 62 in de `RunAsync` methode.
+3. Klik op het pictogram fout opsporing op de **activiteiten balk** om de weer gave fout opsporing in VS code te openen. Klik boven aan de weer gave van het fout opsporingsprogramma op het tandwiel pictogram en selecteer **.net core** in het menu van de vervolg keuzelijst omgeving. De launch.jsin het bestand wordt geopend. U kunt dit bestand sluiten. U ziet nu configuratie opties in het menu Debug Configuration naast de knop uitvoeren (groene pijl).
 
    ![Pictogram fout opsporing in VS code-werk ruimte](./media/service-fabric-develop-csharp-applications-with-vs-code/debug-icon-workspace.png)
 
@@ -93,7 +92,7 @@ Voer de volgende stappen uit om een onderbrekings punt en fout opsporing in te s
 
    ![Pictogram fout opsporing in VS code-werk ruimte](./media/service-fabric-develop-csharp-applications-with-vs-code/debug-start.png)
 
-3. Open Service Fabric Explorer in een browser: http:\//localhost: 19080/Explorer. Klik op **toepassingen** en zoom in om het primaire knoop punt te bepalen waarop de CounterService wordt uitgevoerd. In de afbeelding onder het primaire knoop punt voor de CounterService is knoop punt 0.
+3. Open Service Fabric Explorer in een browser: http: \/ /localhost: 19080/Explorer. Klik op **toepassingen** en zoom in om het primaire knoop punt te bepalen waarop de CounterService wordt uitgevoerd. In de afbeelding onder het primaire knoop punt voor de CounterService is knoop punt 0.
 
    ![Primair knoop punt voor CounterService](./media/service-fabric-develop-csharp-applications-with-vs-code/counter-service-primary-node.png)
 

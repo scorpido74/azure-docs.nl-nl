@@ -6,10 +6,9 @@ ms.topic: conceptual
 ms.date: 10/06/2017
 ms.author: amanbha
 ms.openlocfilehash: 73c149a0d0992fecd1acf633891057570285df64
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75639663"
 ---
 # <a name="actor-events"></a>Actor gebeurtenissen
@@ -85,7 +84,7 @@ GameActor actorProxy = ActorProxyBase.create<GameActor>(GameActor.class, new Act
 return ActorProxyEventUtility.subscribeAsync(actorProxy, new GameEventsHandler());
 ```
 
-In het geval van failovers kan de actor een failover uitvoeren naar een ander proces of knoop punt. De actor-proxy beheert de actieve abonnementen en abonneert deze automatisch opnieuw. U kunt het interval voor opnieuw abonnementen beheren via de `ActorProxyEventExtensions.SubscribeAsync<TEvent>` API. Als u zich wilt afmelden `ActorProxyEventExtensions.UnsubscribeAsync<TEvent>` , gebruikt u de API.
+In het geval van failovers kan de actor een failover uitvoeren naar een ander proces of knoop punt. De actor-proxy beheert de actieve abonnementen en abonneert deze automatisch opnieuw. U kunt het interval voor opnieuw abonnementen beheren via de `ActorProxyEventExtensions.SubscribeAsync<TEvent>` API. Als u zich wilt afmelden, gebruikt u de `ActorProxyEventExtensions.UnsubscribeAsync<TEvent>` API.
 
 Op de actor publiceert u de gebeurtenissen wanneer ze plaatsvinden. Als zich abonnees op de gebeurtenis bevinden, verzendt de actors-runtime de melding.
 

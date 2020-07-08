@@ -6,10 +6,9 @@ ms.topic: conceptual
 ms.date: 08/18/2017
 ms.author: masnider
 ms.openlocfilehash: bba459be4408f4a4bc438bb33b0570a91e84f2cd
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75563357"
 ---
 # <a name="defragmentation-of-metrics-and-load-in-service-fabric"></a>Gegevens defragmenteren en laden in Service Fabric
@@ -58,7 +57,7 @@ Experimenteren is vereist om de exacte configuratie te bepalen die nodig is. We 
 ## <a name="configuring-defragmentation-metrics"></a>Metrische gegevens voor defragmentatie configureren
 Het configureren van metrische gegevens voor defragmentatie is een wereld wijd besluit in het cluster en afzonderlijke meet waarden kunnen worden geselecteerd voor defragmentatie. De volgende configuratie fragmenten laten zien hoe u metrische gegevens voor defragmentatie kunt configureren. In dit geval wordt "Metric1" geconfigureerd als een gegevensverdelings metriek, terwijl "Metric2" normaal gesp roken blijft. 
 
-ClusterManifest. XML:
+ClusterManifest.xml:
 
 ```xml
 <Section Name="DefragmentationMetrics">
@@ -67,7 +66,7 @@ ClusterManifest. XML:
 </Section>
 ```
 
-via ClusterConfig. json voor zelfstandige implementaties of sjabloon. json voor door Azure gehoste clusters:
+via ClusterConfig.jsop voor zelfstandige implementaties of Template.jsop voor door Azure gehoste clusters:
 
 ```json
 "fabricSettings": [

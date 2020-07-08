@@ -4,10 +4,9 @@ description: Meer informatie over het maken van een Service Fabric cluster met b
 ms.topic: conceptual
 ms.date: 09/06/2019
 ms.openlocfilehash: 4a4448c88fa9493979f075f6b9c669927dd1d39e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75614550"
 ---
 # <a name="deploy-a-service-fabric-cluster-that-uses-certificate-common-name-instead-of-thumbprint"></a>Een Service Fabric cluster implementeren dat de algemene certificaat naam gebruikt in plaats van een vinger afdruk
@@ -65,10 +64,10 @@ Write-Host "Common Name              :"  $CommName
 ```
 
 ## <a name="download-and-update-a-sample-template"></a>Een voorbeeld sjabloon downloaden en bijwerken
-In dit artikel worden de voorbeeld sjabloon en sjabloon parameters [voor het beveiligde cluster met 5 knoop punten](https://github.com/Azure-Samples/service-fabric-cluster-templates/tree/master/5-VM-Windows-1-NodeTypes-Secure) gebruikt. Down load de bestanden *azuredeploy. json* en *azuredeploy. para meters. json* naar uw computer.
+In dit artikel worden de voorbeeld sjabloon en sjabloon parameters [voor het beveiligde cluster met 5 knoop punten](https://github.com/Azure-Samples/service-fabric-cluster-templates/tree/master/5-VM-Windows-1-NodeTypes-Secure) gebruikt. Down load de *azuredeploy.jsop* en *azuredeploy.parameters.jsop* bestanden naar uw computer.
 
 ### <a name="update-parameters-file"></a>Parameter bestand bijwerken
-Open eerst het bestand *azuredeploy. para meters. json* in een tekst editor en voeg de volgende parameter waarde toe:
+Open eerst de *azuredeploy.parameters.jsin* het bestand in een tekst editor en voeg de volgende parameter waarde toe:
 ```json
 "certificateCommonName": {
     "value": "myclustername.southcentralus.cloudapp.azure.com"
@@ -95,7 +94,7 @@ Stel vervolgens de para meters *certificateCommonName*, *sourceVaultValue*en *ce
 ```
 
 ### <a name="update-the-template-file"></a>Het sjabloon bestand bijwerken
-Open vervolgens het bestand *azuredeploy. json* in een tekst editor en maak drie updates ter ondersteuning van de algemene naam van het certificaat.
+Open vervolgens de *azuredeploy.jsin* het bestand in een tekst editor en maak drie updates ter ondersteuning van de algemene naam van het certificaat.
 
 1. Voeg in de sectie **para meters** een *certificateCommonName* -para meter toe:
     ```json
@@ -120,14 +119,14 @@ Open vervolgens het bestand *azuredeploy. json* in een tekst editor en maak drie
     "sfrpApiVersion": "2018-02-01",
     ```
 
-3. In de resource **micro soft. Compute/virtualMachineScaleSets** werkt u de extensie van de virtuele machine bij voor het gebruik van de algemene naam in certificaat instellingen in plaats van de vinger afdruk.  In **virtualMachineProfile**->**extensionProfile**->**extensions**->**settings**instellingen->voor**properties**eigenschappen->van virtualMachineProfile extensionProfile-extensies**certificaat**toevoegen 
+3. In de resource **micro soft. Compute/virtualMachineScaleSets** werkt u de extensie van de virtuele machine bij voor het gebruik van de algemene naam in certificaat instellingen in plaats van de vinger afdruk.  In instellingen voor eigenschappen van **virtualMachineProfile** -> **extensionProfile** -> -**extensies** -> **properties** -> **settings** -> **certificaat**toevoegen 
     ```json
        "commonNames": [
         "[parameters('certificateCommonName')]"
        ],
     ```
 
-    en verwijderen `"thumbprint": "[parameters('certificateThumbprint')]",`.
+    en verwijderen `"thumbprint": "[parameters('certificateThumbprint')]",` .
 
     ```json
     "virtualMachineProfile": {

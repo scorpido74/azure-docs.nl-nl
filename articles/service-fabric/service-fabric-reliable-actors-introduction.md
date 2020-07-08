@@ -6,10 +6,9 @@ ms.topic: conceptual
 ms.date: 11/01/2017
 ms.author: vturecek
 ms.openlocfilehash: 6aafa2a3372c431f8afa7fad41051c26c3fe5fcd
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75645562"
 ---
 # <a name="introduction-to-service-fabric-reliable-actors"></a>Inleiding tot Service Fabric Reliable Actors
@@ -92,7 +91,7 @@ myActor.DoWorkAsync().get();
 
 Houd er rekening mee dat de twee stukjes informatie die worden gebruikt voor het maken van het actor-proxy object de actor-ID en de toepassings naam zijn. Met de actor-ID wordt de actor uniek geïdentificeerd, terwijl de naam van de toepassing de [service Fabric toepassing](service-fabric-reliable-actors-platform.md#application-model) identificeert waarin de actor wordt geïmplementeerd.
 
-De `ActorProxy`klasse (C#) `ActorProxyBase`/(Java) aan de client zijde voert de nood zakelijke oplossing uit om de actor met de id te vinden en een communicatie kanaal te openen. Ook wordt geprobeerd om de actor te vinden in het geval van communicatie fouten en failovers. Als gevolg hiervan heeft de bezorging van berichten de volgende kenmerken:
+De `ActorProxy` klasse (C#)/ `ActorProxyBase` (Java) aan de client zijde voert de nood zakelijke oplossing uit om de actor met de id te vinden en een communicatie kanaal te openen. Ook wordt geprobeerd om de actor te vinden in het geval van communicatie fouten en failovers. Als gevolg hiervan heeft de bezorging van berichten de volgende kenmerken:
 
 * Bericht bezorging is het beste.
 * Actors kunnen dubbele berichten ontvangen van dezelfde client.
@@ -126,7 +125,7 @@ Enkele belang rijke punten om rekening mee te houden:
 * Hoewel *Method1* wordt uitgevoerd namens *ActorId2* als reactie op client aanvragen *xyz789*, arriveert een andere client aanvraag (*abc123*) die ook *Method1* moet uitvoeren door *ActorId2*. De tweede uitvoering van *Method1* begint echter pas als de vorige uitvoering is voltooid. Op dezelfde manier wordt een herinnering geregistreerd door *ActorId2* geactiveerd terwijl *Method1* wordt uitgevoerd in reactie op de *xyz789*van de client aanvraag. De retour aanroep van de herinnering wordt pas uitgevoerd nadat de uitvoering van *Method1* is voltooid. Dit komt door dat op basis van een op zichzelf gebaseerde gelijktijdigheid wordt afgedwongen voor *ActorId2*.
 * Op deze manier wordt ook gelijktijdigheid op basis van een op- *ActorId1*afgedwongen, zoals gedemonstreerd door de uitvoering van *Method1*, *Method2*en de timer-Call back uit naam van *ActorId1* . dit gebeurt op een seriële manier.
 * Het uitvoeren van *Method1* namens *ActorId1* overlapt met uitvoering namens *ActorId2*. Dit komt doordat gelijktijdigheid op basis van lagen alleen binnen een actor en niet tussen actors wordt afgedwongen.
-* In sommige van de methode/call back-uitvoeringen `Task`, de (C# `CompletableFuture`)/(Java) geretourneerd door de methode/call back is voltooid nadat de methode is geretourneerd. In sommige andere gevallen is de asynchrone bewerking al voltooid op het moment dat de methode/retour aanroep wordt geretourneerd. In beide gevallen wordt de vergren deling per actor pas vrijgegeven nadat de methode/retour aanroep is geretourneerd en de asynchrone bewerking is voltooid.
+* In sommige van de methode/call back-uitvoeringen, de `Task` (C#)/ `CompletableFuture` (Java) geretourneerd door de methode/call back is voltooid nadat de methode is geretourneerd. In sommige andere gevallen is de asynchrone bewerking al voltooid op het moment dat de methode/retour aanroep wordt geretourneerd. In beide gevallen wordt de vergren deling per actor pas vrijgegeven nadat de methode/retour aanroep is geretourneerd en de asynchrone bewerking is voltooid.
 
 ### <a name="reentrancy"></a>Herintreding
 De actors-runtime maakt standaard herbetreedbaarheid mogelijk. Dit betekent dat als een actor-methode van *actor a* een methode aanroept op *actor B*, die op zijn beurt een andere methode op *actor A*aanroept. deze methode mag worden uitgevoerd. Dit is omdat deze deel uitmaakt van dezelfde logische aanroep keten context. Alle timer-en herinnerings aanroepen beginnen met de nieuwe logische aanroep context. Zie de [reliable actors herbetreedbaarheid](service-fabric-reliable-actors-reentrancy.md) voor meer informatie.

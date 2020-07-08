@@ -6,15 +6,14 @@ ms.topic: conceptual
 ms.date: 09/06/2019
 ms.author: jobreen
 ms.openlocfilehash: 1846b036f12fe7e691021ec0248782cad946d9b7
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75650407"
 ---
 # <a name="azure-custom-providers-resource-onboarding-overview"></a>Overzicht van de resource voor het onboarding van Azure Custom providers
 
-Het onboarden van resources van Azure Custom providers is een uitbreidings model voor Azure-resource typen. Zo kunt u bewerkingen of beheer Toep assen op bestaande Azure-resources op schaal. Zie How to extend Azure [Custom providers Azure](overview.md)voor meer informatie. In dit artikel wordt beschreven:
+Het onboarden van resources van Azure Custom providers is een uitbreidings model voor Azure-resource typen. Zo kunt u bewerkingen of beheer Toep assen op bestaande Azure-resources op schaal. Zie How to extend Azure [Custom providers Azure](overview.md)voor meer informatie. In dit artikel wordt het volgende beschreven:
 
 - Wat voor onboarding van resources kan doen.
 - Basis beginselen voor het onboarding van resources en hoe u deze kunt gebruiken.
@@ -23,7 +22,7 @@ Het onboarden van resources van Azure Custom providers is een uitbreidings model
 > [!IMPORTANT]
 > Aangepaste providers zijn momenteel beschikbaar als open bare preview.
 > Deze preview-versie is beschikbaar zonder een service overeenkomst en wij raden deze niet aan voor productie werkbelastingen. Bepaalde functies worden mogelijk niet ondersteund of hebben mogelijk beperkte mogelijkheden.
-> Zie voor meer informatie [aanvullende gebruiks voorwaarden voor Microsoft Azure-previews](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+> Zie [Supplemental Terms of Use for Microsoft Azure Previews (Aanvullende gebruiksvoorwaarden voor Microsoft Azure-previews)](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) voor meer informatie.
 
 ## <a name="what-can-resource-onboarding-do"></a>Wat kan onboarding van resources doen?
 
@@ -54,11 +53,11 @@ Hier volgt een voor beeld van een aangepaste Azure-provider:
 }
 ```
 
-Eigenschap | Vereist? | Beschrijving
+Eigenschap | Vereist? | Description
 ---|---|---
-name | Ja | De naam van de eindpunt definitie. Voor het onboarden van resources moet de naam ' Associations ' zijn.
-routingType | Ja | Bepaalt het type contract met het eind punt. Voor onboarding van resources zijn de geldige **routingTypes** ' proxy, cache, extensie ' en ' webhook, cache, extensie '.
-endpoint | Ja | Het eind punt waarnaar de aanvragen worden gerouteerd. Hiermee worden de reactie en eventuele neven effecten van de aanvraag verwerkt.
+naam | Yes | De naam van de eindpunt definitie. Voor het onboarden van resources moet de naam ' Associations ' zijn.
+routingType | Yes | Bepaalt het type contract met het eind punt. Voor onboarding van resources zijn de geldige **routingTypes** ' proxy, cache, extensie ' en ' webhook, cache, extensie '.
+endpoint | Yes | Het eind punt waarnaar de aanvragen worden gerouteerd. Hiermee worden de reactie en eventuele neven effecten van de aanvraag verwerkt.
 
 Nadat u de aangepaste provider met het resource type voor koppelingen hebt gemaakt, kunt u een target gebruiken met behulp van micro soft. CustomProviders/Associations. Micro soft. CustomProviders/Associations is een extensie resource waarmee elke andere Azure-resource kan worden uitgebreid. Wanneer een exemplaar van micro soft. CustomProviders/Associations wordt gemaakt, wordt er een eigenschap **targetResourceId**, die een geldige resource-id van micro soft. CustomProviders/ResourceProviders of micro soft. Solutions/Applications moet zijn. In deze gevallen wordt de aanvraag doorgestuurd naar het resource type van de koppeling voor het micro soft. CustomProviders/resourceProviders-exemplaar dat u hebt gemaakt.
 
@@ -76,9 +75,9 @@ Voor beeld van een Azure Custom providers-koppeling:
 }
 ```
 
-Eigenschap | Vereist? | Beschrijving
+Eigenschap | Vereist? | Description
 ---|---|---
-targetResourceId | Ja | De resource-ID van micro soft. CustomProviders/resourceProviders of micro soft. Solutions/Applications.
+targetResourceId | Yes | De resource-ID van micro soft. CustomProviders/resourceProviders of micro soft. Solutions/Applications.
 
 ## <a name="how-to-use-resource-onboarding"></a>Het gebruik van resource-onboarding
 
@@ -146,11 +145,11 @@ X-MS-CustomProviders-ExtendedResource: /subscriptions/{subscriptionId}/resourceG
 }
 ```
 
-Het eind punt moet reageren met een toepassing/ `Content-Type` JSON en een geldige JSON-antwoord tekst. Velden die worden geretourneerd onder het object **Properties** van de JSON, worden toegevoegd aan de Association retour-antwoord.
+Het eind punt moet reageren met een toepassing/JSON `Content-Type` en een geldige JSON-antwoord tekst. Velden die worden geretourneerd onder het object **Properties** van de JSON, worden toegevoegd aan de Association retour-antwoord.
 
 ## <a name="getting-help"></a>Ondersteuning vragen
 
-Als u vragen hebt over het ontwikkelen van aangepaste Azure-resource providers, vraagt u deze op [stack overflow](https://stackoverflow.com/questions/tagged/azure-custom-providers). Er is mogelijk al een vergelijk bare vraag beantwoord, dus controleer eerst vóór het boeken. Voeg de tag ```azure-custom-providers``` toe om een snel antwoord te krijgen.
+Als u vragen hebt over het ontwikkelen van aangepaste Azure-resource providers, vraagt u deze op [stack overflow](https://stackoverflow.com/questions/tagged/azure-custom-providers). Er is mogelijk al een vergelijk bare vraag beantwoord, dus controleer eerst vóór het boeken. Voeg de tag toe ```azure-custom-providers``` om een snel antwoord te krijgen.
 
 ## <a name="next-steps"></a>Volgende stappen
 

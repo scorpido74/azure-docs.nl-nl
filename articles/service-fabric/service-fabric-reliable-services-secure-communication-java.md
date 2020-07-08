@@ -6,10 +6,9 @@ ms.topic: conceptual
 ms.date: 06/30/2017
 ms.author: pakunapa
 ms.openlocfilehash: adefeadf939d398268624343d82c18cbf5ec87cd
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75609635"
 ---
 # <a name="secure-service-remoting-communications-in-a-java-service"></a>Externe communicatie met beveiligde service in een Java-service
@@ -23,7 +22,7 @@ Beveiliging is een van de belangrijkste aspecten van de communicatie. Het Reliab
 
 Voer de volgende stappen uit om een service te helpen beveiligen wanneer u service voor externe toegang met Java-Services gebruikt:
 
-1. Een interface `HelloWorldStateless`maken, waarmee de methoden worden gedefinieerd die beschikbaar zijn voor een externe procedure aanroep van uw service. Uw service gebruikt `FabricTransportServiceRemotingListener`, die in het `microsoft.serviceFabric.services.remoting.fabricTransport.runtime` pakket wordt gedeclareerd. Dit is een `CommunicationListener` implementatie die mogelijkheden biedt voor externe communicatie.
+1. Een interface maken, `HelloWorldStateless` waarmee de methoden worden gedefinieerd die beschikbaar zijn voor een externe procedure aanroep van uw service. Uw service gebruikt `FabricTransportServiceRemotingListener` , die in het pakket wordt gedeclareerd `microsoft.serviceFabric.services.remoting.fabricTransport.runtime` . Dit is een `CommunicationListener` implementatie die mogelijkheden biedt voor externe communicatie.
 
     ```java
     public interface HelloWorldStateless extends Service {
@@ -53,7 +52,7 @@ Voer de volgende stappen uit om een service te helpen beveiligen wanneer u servi
 
    1. Geef ze op met behulp van een [configuratie pakket](service-fabric-application-and-service-manifests.md):
 
-       Voeg een benoemde `TransportSettings` sectie toe aan het bestand settings. XML.
+       Voeg een benoemde `TransportSettings` sectie toe aan het settings.xml-bestand.
 
        ```xml
        <!--Section name should always end with "TransportSettings".-->
@@ -68,7 +67,7 @@ Voer de volgende stappen uit om een service te helpen beveiligen wanneer u servi
 
        ```
 
-       In dit geval ziet de `createServiceInstanceListeners` -methode er als volgt uit:
+       In dit geval ziet de- `createServiceInstanceListeners` methode er als volgt uit:
 
        ```java
         protected List<ServiceInstanceListener> createServiceInstanceListeners() {
@@ -80,7 +79,7 @@ Voer de volgende stappen uit om een service te helpen beveiligen wanneer u servi
         }
        ```
 
-        Als u een `TransportSettings` sectie toevoegt in het bestand settings. XML zonder voor voegsel, `FabricTransportListenerSettings` worden alle instellingen in deze sectie standaard geladen.
+        Als u een `TransportSettings` sectie toevoegt in het settings.xml bestand zonder voor voegsel, `FabricTransportListenerSettings` worden alle instellingen in deze sectie standaard geladen.
 
         ```xml
         <!--"TransportSettings" section without any prefix.-->
@@ -88,7 +87,7 @@ Voer de volgende stappen uit om een service te helpen beveiligen wanneer u servi
             ...
         </Section>
         ```
-        In dit geval ziet de `CreateServiceInstanceListeners` -methode er als volgt uit:
+        In dit geval ziet de- `CreateServiceInstanceListeners` methode er als volgt uit:
 
         ```java
         protected List<ServiceInstanceListener> createServiceInstanceListeners() {
@@ -99,9 +98,9 @@ Voer de volgende stappen uit om een service te helpen beveiligen wanneer u servi
             return listeners;
         }
        ```
-3. Wanneer u methoden aanroept voor een beveiligde service met behulp van de externe stack, in plaats `microsoft.serviceFabric.services.remoting.client.ServiceProxyBase` van de klasse te gebruiken om een service `microsoft.serviceFabric.services.remoting.client.FabricServiceProxyFactory`proxy te maken, gebruikt u.
+3. Wanneer u methoden aanroept voor een beveiligde service met behulp van de externe stack, in plaats van de `microsoft.serviceFabric.services.remoting.client.ServiceProxyBase` klasse te gebruiken om een Service proxy te maken, gebruikt u `microsoft.serviceFabric.services.remoting.client.FabricServiceProxyFactory` .
 
-    Als de client code wordt uitgevoerd als onderdeel van een service, kunt u laden `FabricTransportSettings` vanuit het bestand settings. XML. Maak een TransportSettings-sectie die vergelijkbaar is met de service code, zoals eerder wordt weer gegeven. Breng de volgende wijzigingen aan in de client code:
+    Als de client code wordt uitgevoerd als onderdeel van een service, kunt u laden `FabricTransportSettings` vanuit het settings.xml-bestand. Maak een TransportSettings-sectie die vergelijkbaar is met de service code, zoals eerder wordt weer gegeven. Breng de volgende wijzigingen aan in de client code:
 
     ```java
 

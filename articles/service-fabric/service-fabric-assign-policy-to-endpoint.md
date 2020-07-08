@@ -4,14 +4,13 @@ description: Meer informatie over het toewijzen van beveiligings beleid voor HTT
 ms.topic: conceptual
 ms.date: 03/21/2018
 ms.openlocfilehash: c7d30e85848f045b5724bb8bdc6e5c810102c044
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75614652"
 ---
 # <a name="assign-a-security-access-policy-for-http-and-https-endpoints"></a>Een beleid voor beveiligings toegang toewijzen voor HTTP-en HTTPS-eind punten
-Als u een uitvoeren als-beleid toepast en het service manifest HTTP-eindpunt bronnen declareert, moet u een **SecurityAccessPolicy**opgeven.  **SecurityAccessPolicy** zorgt ervoor dat de poorten die zijn toegewezen aan deze eind punten, correct worden beperkt tot het gebruikers account waarmee de service wordt uitgevoerd. Anders heeft **http. sys** geen toegang tot de service en worden er problemen met aanroepen van de client weer geven. In het volgende voor beeld wordt het Customer1-account toegepast op een eind punt met de naam **endpointnaam**, waardoor het volledige toegangs rechten biedt.
+Als u een uitvoeren als-beleid toepast en het service manifest HTTP-eindpunt bronnen declareert, moet u een **SecurityAccessPolicy**opgeven.  **SecurityAccessPolicy** zorgt ervoor dat de poorten die zijn toegewezen aan deze eind punten, correct worden beperkt tot het gebruikers account waarmee de service wordt uitgevoerd. Als dat niet het geval is, heeft **http.sys** geen toegang tot de service en worden er storingen met aanroepen van de client ontvangen. In het volgende voor beeld wordt het Customer1-account toegepast op een eind punt met de naam **endpointnaam**, waardoor het volledige toegangs rechten biedt.
 
 ```xml
 <Policies>

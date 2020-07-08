@@ -6,10 +6,9 @@ ms.topic: conceptual
 ms.date: 6/12/2017
 ms.author: lemai
 ms.openlocfilehash: 8f2eefec94ad4763a054ee089b17232c41e642dd
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75609788"
 ---
 # <a name="replacing-the-start-node-and-stop-node-apis-with-the-node-transition-api"></a>Het begin knooppunt vervangen en de knoop punt-Api's stoppen met de knooppunt overgangs-API
@@ -31,7 +30,7 @@ De duur waarmee een knoop punt wordt gestopt voor is ' oneindig ' totdat de begi
 
 Deze problemen zijn hierboven in een nieuwe set Api's opgelost.  De nieuwe knooppunt overgangs-API (beheerd: [StartNodeTransitionAsync ()][snt]) kan worden gebruikt om een service Fabric knoop punt over te zetten naar de status *stopped* , of om het over te zetten van een status *gestopt* naar een normale status.  Houd er rekening mee dat de ' Start ' in de naam van de API niet verwijst naar het starten van een knoop punt.  Het verwijst naar een asynchrone bewerking die door het systeem wordt uitgevoerd om het knoop punt over te zetten naar de status *gestopt* of gestart.
 
-**Belasting**
+**Gebruik**
 
 Als de knooppunt overgangs-API geen uitzonde ring genereert wanneer deze wordt aangeroepen, is de asynchrone bewerking door het systeem geaccepteerd en wordt deze uitgevoerd.  Een geslaagde aanroep houdt niet in dat de bewerking nog is voltooid.  Als u informatie wilt ophalen over de huidige status van de bewerking, roept u de voortgang van de knooppunt overgangs-API (beheerd: [GetNodeTransitionProgressAsync ()][gntp]) aan met de GUID die wordt gebruikt bij het aanroepen van de knooppunt overgangs-API voor deze bewerking.  De API voor voortgangs overgang van knoop punten retourneert een NodeTransitionProgress-object.  De eigenschap State van dit object geeft de huidige status van de bewerking aan.  Als de status wordt uitgevoerd, wordt de bewerking uitgevoerd.  Als de bewerking is voltooid, is deze zonder fouten voltooid.  Als er een fout optreedt, is er een probleem opgetreden bij het uitvoeren van de bewerking.  De eigenschap Exception van het resultaat wordt aangegeven wat het probleem is.  Zie https://docs.microsoft.com/dotnet/api/system.fabric.testcommandprogressstate voor meer informatie over de eigenschap State en de sectie ' voor beeld gebruik ' hieronder voor code voorbeelden.
 

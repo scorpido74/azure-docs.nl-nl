@@ -6,13 +6,12 @@ ms.topic: conceptual
 ms.date: 02/25/2019
 ms.author: srrengar
 ms.openlocfilehash: 48350caef6bdaafda9aff7ac776d67b314aeaf8c
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75614397"
 ---
-# <a name="query-eventstore-apis-for-cluster-events"></a>Query's uitvoeren op Event Store-Api's voor cluster gebeurtenissen
+# <a name="query-eventstore-apis-for-cluster-events"></a>Query's uitvoeren op EventStore-API's voor clustergebeurtenissen
 
 In dit artikel wordt beschreven hoe u een query kunt uitvoeren op de Event Store-Api's die beschikbaar zijn in Service Fabric versie 6,2 en hoger. Als u meer wilt weten over de Event Store-service, raadpleegt u het [overzicht van Event Store-Services](service-fabric-diagnostics-eventstore.md). De Event Store-service heeft momenteel alleen toegang tot gegevens voor de afgelopen zeven dagen (dit is gebaseerd op het Bewaar beleid voor diagnostische gegevens van uw cluster).
 
@@ -44,14 +43,14 @@ Elke entiteit in een cluster kan query's voor gebeurtenissen zijn. U kunt ook ee
 * Exacte`/EventsStore/Partitions/<PartitionID>/$/Replicas/<ReplicaID>/$/Events`
 
 >[!NOTE]
->Bij het verwijzen naar een naam van een toepassing of service hoeft de query niet de "Fabric:/" te bevatten. beleids. Als de namen van uw toepassingen of services een '/' bevatten, kunt u deze ook overschakelen op ' ~ ' om de query te laten werken. Als uw toepassing bijvoorbeeld wordt weer gegeven als ' Fabric:/App1/FrontendApp ', worden uw app-specifieke query's gestructureerd als `/EventsStore/Applications/App1~FrontendApp/$/Events`.
->Daarnaast worden status rapporten voor services nu weer gegeven onder de bijbehorende toepassing, zodat u een query uitvoert `DeployedServiceHealthReportCreated` voor gebeurtenissen voor de juiste toepassings entiteit. 
+>Bij het verwijzen naar een naam van een toepassing of service hoeft de query niet de "Fabric:/" te bevatten. beleids. Als de namen van uw toepassingen of services een '/' bevatten, kunt u deze ook overschakelen op ' ~ ' om de query te laten werken. Als uw toepassing bijvoorbeeld wordt weer gegeven als ' Fabric:/App1/FrontendApp ', worden uw app-specifieke query's gestructureerd als `/EventsStore/Applications/App1~FrontendApp/$/Events` .
+>Daarnaast worden status rapporten voor services nu weer gegeven onder de bijbehorende toepassing, zodat u een query uitvoert voor `DeployedServiceHealthReportCreated` gebeurtenissen voor de juiste toepassings entiteit. 
 
 ## <a name="query-the-eventstore-via-rest-api-endpoints"></a>Query's uitvoeren op de Event Store via REST API-eind punten
 
-U kunt de Event Store rechtstreeks via een REST-eind punt opvragen door `GET` aanvragen te doen `<your cluster address>/EventsStore/<entity>/Events/`:.
+U kunt de Event Store rechtstreeks via een REST-eind punt opvragen door `GET` aanvragen te doen: `<your cluster address>/EventsStore/<entity>/Events/` .
 
-Als u bijvoorbeeld een query wilt uitvoeren voor alle cluster gebeurtenissen tussen `2018-04-03T18:00:00Z` en `2018-04-04T18:00:00Z`, ziet uw aanvraag er als volgt uit:
+Als u bijvoorbeeld een query wilt uitvoeren voor alle cluster gebeurtenissen tussen `2018-04-03T18:00:00Z` en `2018-04-04T18:00:00Z` , ziet uw aanvraag er als volgt uit:
 
 ```
 Method: GET 
@@ -106,7 +105,7 @@ Body:
 ]
 ```
 
-Hier kunnen we zien dat tussen `2018-04-03T18:00:00Z` en `2018-04-04T18:00:00Z`, de eerste upgrade van het cluster is voltooid toen het voor het eerst was, `"CurrentClusterVersion": "0.0.0.0:"` van `"TargetClusterVersion": "6.2:1.0"`tot, `"OverallUpgradeElapsedTimeInMs": "120196.5212"`in.
+Hier kunnen we zien dat tussen `2018-04-03T18:00:00Z` en `2018-04-04T18:00:00Z` , de eerste upgrade van het cluster is voltooid toen het voor het eerst was, van `"CurrentClusterVersion": "0.0.0.0:"` tot `"TargetClusterVersion": "6.2:1.0"` , in `"OverallUpgradeElapsedTimeInMs": "120196.5212"` .
 
 ## <a name="query-the-eventstore-programmatically"></a>Query's uitvoeren op de Event Store via een programma
 
@@ -114,7 +113,7 @@ U kunt de Event Store ook programmatisch opvragen via de Service Fabric- [client
 
 Zodra u uw Service Fabric-client hebt ingesteld, kunt u een query uitvoeren op gebeurtenissen door de Event Store als volgt te openen:`sfhttpClient.EventStore.<request>`
 
-Hier volgt een voor beeld van een aanvraag voor alle `2018-04-03T18:00:00Z` cluster `2018-04-04T18:00:00Z`gebeurtenissen tussen en `GetClusterEventListAsync` met behulp van de functie.
+Hier volgt een voor beeld van een aanvraag voor alle cluster gebeurtenissen tussen `2018-04-03T18:00:00Z` en met `2018-04-04T18:00:00Z` behulp van de `GetClusterEventListAsync` functie.
 
 ```csharp
 var sfhttpClient = ServiceFabricClientFactory.Create(clusterUrl, settings);
@@ -127,7 +126,7 @@ var clstrEvents = sfhttpClient.EventsStore.GetClusterEventListAsync(
     .ToList();
 ```
 
-Hier volgt nog een voor beeld van query's voor de cluster status en alle knooppunt gebeurtenissen in september 2018 en worden afgedrukt.
+Hier volgt nog een voorbeeld waarin een query wordt uitgevoerd voor de clusterstatus en alle knooppuntgebeurtenissen in september 2018 en deze worden afgedrukt.
 
 ```csharp
   const int timeoutSecs = 60;
@@ -187,7 +186,7 @@ U kunt ook uw recente toepassings implementaties en-upgrades volgen. Gebruik de 
 
 *Historische status voor een toepassing:*
 
-Naast het weer geven van toepassings levenscyclus gebeurtenissen, wilt u mogelijk ook historische gegevens bekijken over de status van een bepaalde toepassing. U kunt dit doen door de naam van de toepassing op te geven waarvoor u de gegevens wilt verzamelen. Gebruik deze query om alle gebeurtenissen van de toepassings status op `https://mycluster.cloudapp.azure.com:19080/EventsStore/Applications/myApp/$/Events?api-version=6.4&starttimeutc=2018-03-24T17:01:51Z&endtimeutc=2018-03-29T17:02:51Z&EventsTypesFilter=ApplicationNewHealthReport`te halen:. Als u status gebeurtenissen wilt toevoegen die mogelijk zijn verlopen (de TTL (time to Live) is voltooid, voegt `,ApplicationHealthReportExpired` u toe aan het einde van de query om twee typen gebeurtenissen te filteren.
+Naast het weer geven van toepassings levenscyclus gebeurtenissen, wilt u mogelijk ook historische gegevens bekijken over de status van een bepaalde toepassing. U kunt dit doen door de naam van de toepassing op te geven waarvoor u de gegevens wilt verzamelen. Gebruik deze query om alle gebeurtenissen van de toepassings status op te halen: `https://mycluster.cloudapp.azure.com:19080/EventsStore/Applications/myApp/$/Events?api-version=6.4&starttimeutc=2018-03-24T17:01:51Z&endtimeutc=2018-03-29T17:02:51Z&EventsTypesFilter=ApplicationNewHealthReport` . Als u status gebeurtenissen wilt toevoegen die mogelijk zijn verlopen (de TTL (time to Live) is voltooid, voegt u toe `,ApplicationHealthReportExpired` aan het einde van de query om twee typen gebeurtenissen te filteren.
 
 *Historische status voor alle services in ' Mijntoep ':*
 
@@ -195,7 +194,7 @@ Status rapport gebeurtenissen voor services worden momenteel weer gegeven als `D
 
 *Herconfiguratie van partitie:*
 
-Als u wilt zien welke partitie-verplaatsingen er in uw cluster zijn `PartitionReconfigured` opgetreden, moet u een query uitvoeren voor de gebeurtenis. Zo kunt u nagaan welke workloads op specifieke momenten op het knoop punt worden uitgevoerd, bij het vaststellen van problemen in uw cluster. Hier volgt een voor beeld van een query:`https://mycluster.cloudapp.azure.com:19080/EventsStore/Partitions/Events?api-version=6.4&starttimeutc=2018-04-22T17:01:51Z&endtimeutc=2018-04-29T17:02:51Z&EventsTypesFilter=PartitionReconfigured`
+Als u wilt zien welke partitie-verplaatsingen er in uw cluster zijn opgetreden, moet u een query uitvoeren voor de `PartitionReconfigured` gebeurtenis. Zo kunt u nagaan welke workloads op specifieke momenten op het knoop punt worden uitgevoerd, bij het vaststellen van problemen in uw cluster. Hier volgt een voor beeld van een query:`https://mycluster.cloudapp.azure.com:19080/EventsStore/Partitions/Events?api-version=6.4&starttimeutc=2018-04-22T17:01:51Z&endtimeutc=2018-04-29T17:02:51Z&EventsTypesFilter=PartitionReconfigured`
 
 *Chaos-service:*
 

@@ -1,24 +1,23 @@
 ---
 title: CreateUiDefinition artefact
-description: Laat zien hoe u het createUiDefinition-artefact maakt voor een door Azure beheerde toepassing. Het bestand heeft de naam createUiDefinition. json.
+description: Laat zien hoe u het createUiDefinition-artefact maakt voor een door Azure beheerde toepassing. Het bestand heeft de naam createUiDefinition.jsop.
 ms.topic: conceptual
 ms.author: lazinnat
 author: lazinnat
 ms.date: 07/11/2019
 ms.openlocfilehash: 9be1cb02c419314a33b9487bf183ef3659b2b549
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75651486"
 ---
 # <a name="reference-user-interface-elements-artifact"></a>Verwijzing: elementen artefact van gebruikers interface
 
-Dit artikel bevat een verwijzing naar een *createUiDefinition. json* -artefact in azure Managed Applications. Zie elementen van de [gebruikers interface maken](create-uidefinition-elements.md)voor meer informatie over het ontwerpen van gebruikers interface-elementen.
+Dit artikel bevat een verwijzing naar een *createUiDefinition.jsvoor* artefacten in azure Managed Applications. Zie elementen van de [gebruikers interface maken](create-uidefinition-elements.md)voor meer informatie over het ontwerpen van gebruikers interface-elementen.
 
 ## <a name="user-interface-elements"></a>Elementen van de gebruikersinterface
 
-In de volgende JSON ziet u een voor beeld van het bestand *createUiDefinition. json* voor Azure Managed Applications:
+In de volgende JSON ziet u een voor beeld van *createUiDefinition.jsop* bestand voor Azure Managed Applications:
 
 ```json
 {

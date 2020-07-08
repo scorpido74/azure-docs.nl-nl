@@ -9,10 +9,9 @@ ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 12/24/2019
 ms.openlocfilehash: deaa934b257fab74830d75e308a283e7608dc590
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75552590"
 ---
 # <a name="run-apache-hive-queries-using-powershell"></a>Apache Hive query's uitvoeren met Power shell
@@ -42,15 +41,15 @@ De volgende cmdlets worden gebruikt bij het uitvoeren van Hive-query's in een ex
 * `Wait-AzHDInsightJob`: Het taak object wordt gebruikt om de status van de taak te controleren. Er wordt gewacht tot de taak is voltooid of de wacht tijd is overschreden.
 * `Get-AzHDInsightJobOutput`: Wordt gebruikt om de uitvoer van de taak op te halen.
 * `Invoke-AzHDInsightHiveJob`: Wordt gebruikt om HiveQL-instructies uit te voeren. Deze cmdlet blokkeert de query en retourneert vervolgens de resultaten.
-* `Use-AzHDInsightCluster`: Hiermee stelt u in dat het huidige cluster `Invoke-AzHDInsightHiveJob` moet worden gebruikt voor de opdracht.
+* `Use-AzHDInsightCluster`: Hiermee stelt u in dat het huidige cluster moet worden gebruikt voor de `Invoke-AzHDInsightHiveJob` opdracht.
 
 De volgende stappen laten zien hoe u deze cmdlets kunt gebruiken om een taak uit te voeren in uw HDInsight-cluster:
 
-1. Gebruik een editor om de volgende code op te `hivejob.ps1`slaan als.
+1. Gebruik een editor om de volgende code op te slaan als `hivejob.ps1` .
 
     [!code-powershell[main](../../../powershell_scripts/hdinsight/use-hive/use-hive.ps1?range=5-42)]
 
-2. Open een nieuwe **Azure PowerShell** opdracht prompt. Wijzig de mappen in de locatie van `hivejob.ps1` het bestand en gebruik vervolgens de volgende opdracht om het script uit te voeren:
+2. Open een nieuwe **Azure PowerShell** opdracht prompt. Wijzig de mappen in de locatie van het `hivejob.ps1` bestand en gebruik vervolgens de volgende opdracht om het script uit te voeren:
 
         .\hivejob.ps1
 
@@ -74,7 +73,7 @@ De volgende stappen laten zien hoe u deze cmdlets kunt gebruiken om een taak uit
         2012-02-03    19:25:27    SampleClass4    [ERROR]    incorrect    id
 
    > [!NOTE]  
-   > Voor langere HiveQL query's kunt u de script bestanden Azure PowerShell **hier-strings** of HiveQL gebruiken. Het volgende code fragment laat zien hoe u `Invoke-Hive` de cmdlet kunt gebruiken om een HiveQL-script bestand uit te voeren. Het HiveQL-script bestand moet worden geüpload naar wasbs://.
+   > Voor langere HiveQL query's kunt u de script bestanden Azure PowerShell **hier-strings** of HiveQL gebruiken. Het volgende code fragment laat zien hoe u de cmdlet kunt gebruiken `Invoke-Hive` om een HiveQL-script bestand uit te voeren. Het HiveQL-script bestand moet worden geüpload naar wasbs://.
    >
    > `Invoke-AzHDInsightHiveJob -File "wasbs://<ContainerName>@<StorageAccountName>/<Path>/query.hql"`
    >
@@ -82,7 +81,7 @@ De volgende stappen laten zien hoe u deze cmdlets kunt gebruiken om een taak uit
 
 ## <a name="troubleshooting"></a>Problemen oplossen
 
-Als er geen informatie wordt geretourneerd wanneer de taak is voltooid, raadpleegt u de fouten Logboeken. Als u de fout gegevens voor deze taak wilt weer geven, voegt u het volgende `hivejob.ps1` toe aan het einde van het bestand, slaat u het op en voert u het vervolgens opnieuw uit.
+Als er geen informatie wordt geretourneerd wanneer de taak is voltooid, raadpleegt u de fouten Logboeken. Als u de fout gegevens voor deze taak wilt weer geven, voegt u het volgende toe aan het einde van het `hivejob.ps1` bestand, slaat u het op en voert u het vervolgens opnieuw uit.
 
 ```powershell
 # Print the output of the Hive job.
