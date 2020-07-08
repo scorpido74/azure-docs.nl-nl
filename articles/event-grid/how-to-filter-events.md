@@ -8,10 +8,9 @@ ms.topic: conceptual
 ms.date: 01/21/2020
 ms.author: spelluru
 ms.openlocfilehash: 63a5cdbff79af52d9f96cf410a820c6cfc530066
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "79454020"
 ---
 # <a name="filter-events-for-event-grid"></a>Gebeurtenissen filteren op Event Grid
@@ -22,9 +21,9 @@ In dit artikel wordt beschreven hoe u gebeurtenissen filtert bij het maken van e
 
 ## <a name="filter-by-event-type"></a>Filteren op gebeurtenis type
 
-Wanneer u een Event Grid-abonnement maakt, kunt u opgeven welke [gebeurtenis typen](event-schema.md) moeten worden verzonden naar het eind punt. De voor beelden in deze sectie maken gebeurtenis abonnementen voor een resource groep, maar beperken de gebeurtenissen die worden `Microsoft.Resources.ResourceWriteFailure` verzonden `Microsoft.Resources.ResourceWriteSuccess`naar en. Zie filteren op geavanceerde Opera tors en gegevens velden als u meer flexibiliteit nodig hebt bij het filteren van gebeurtenissen op gebeurtenis typen.
+Wanneer u een Event Grid-abonnement maakt, kunt u opgeven welke [gebeurtenis typen](event-schema.md) moeten worden verzonden naar het eind punt. De voor beelden in deze sectie maken gebeurtenis abonnementen voor een resource groep, maar beperken de gebeurtenissen die worden verzonden naar `Microsoft.Resources.ResourceWriteFailure` en `Microsoft.Resources.ResourceWriteSuccess` . Zie filteren op geavanceerde Opera tors en gegevens velden als u meer flexibiliteit nodig hebt bij het filteren van gebeurtenissen op gebeurtenis typen.
 
-Voor Power shell gebruikt u `-IncludedEventType` de para meter bij het maken van het abonnement.
+Voor Power shell gebruikt u de `-IncludedEventType` para meter bij het maken van het abonnement.
 
 ```powershell
 $includedEventTypes = "Microsoft.Resources.ResourceWriteFailure", "Microsoft.Resources.ResourceWriteSuccess"
@@ -48,7 +47,7 @@ az eventgrid event-subscription create \
   --included-event-types $includedEventTypes
 ```
 
-Voor een resource manager-sjabloon gebruikt u `includedEventTypes` de eigenschap.
+Voor een resource manager-sjabloon gebruikt u de `includedEventTypes` eigenschap.
 
 ```json
 "resources": [
@@ -93,7 +92,7 @@ New-AzEventGridSubscription `
   -SubjectBeginsWith $resourceId
 ```
 
-In het volgende Power shell-voor beeld wordt een abonnement gemaakt voor een Blob-opslag. Er worden gebeurtenissen beperkt met een onderwerp dat eindigt op `.jpg`.
+In het volgende Power shell-voor beeld wordt een abonnement gemaakt voor een Blob-opslag. Er worden gebeurtenissen beperkt met een onderwerp dat eindigt op `.jpg` .
 
 ```powershell
 $storageId = (Get-AzStorageAccount -ResourceGroupName myResourceGroup -AccountName $storageName).Id
@@ -117,7 +116,7 @@ az eventgrid event-subscription create \
   --subject-begins-with $resourceId
 ```
 
-In het volgende Azure CLI-voor beeld wordt een abonnement gemaakt voor een Blob-opslag. Er worden gebeurtenissen beperkt met een onderwerp dat eindigt op `.jpg`.
+In het volgende Azure CLI-voor beeld wordt een abonnement gemaakt voor een Blob-opslag. Er worden gebeurtenissen beperkt met een onderwerp dat eindigt op `.jpg` .
 
 ```azurecli
 storageid=$(az storage account show --name $storageName --resource-group myResourceGroup --query id --output tsv)
@@ -155,7 +154,7 @@ In het volgende voor beeld van een resource manager-sjabloon maakt u een gebeurt
 ]
 ```
 
-In het volgende voor beeld van een resource manager-sjabloon wordt een abonnement gemaakt voor een Blob-opslag. Er worden gebeurtenissen beperkt met een onderwerp dat eindigt op `.jpg`.
+In het volgende voor beeld van een resource manager-sjabloon wordt een abonnement gemaakt voor een Blob-opslag. Er worden gebeurtenissen beperkt met een onderwerp dat eindigt op `.jpg` .
 
 ```json
 "resources": [

@@ -4,10 +4,9 @@ description: Meer informatie over het vinden van binnenkomende en uitgaande IP-a
 ms.topic: conceptual
 ms.date: 12/03/2018
 ms.openlocfilehash: bfd2d573e0a1c78d0ef4c68be224f92e8f689f62
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80656770"
 ---
 # <a name="ip-addresses-in-azure-functions"></a>IP-adressen in Azure Functions
@@ -25,7 +24,7 @@ IP-adressen zijn gekoppeld aan functie-apps, niet met afzonderlijke functies. In
 
 Elke functie-app heeft één inkomend IP-adres. Het IP-adres zoeken:
 
-1. Meld u aan bij de [Azure-portal](https://portal.azure.com).
+1. Meld u aan bij [Azure Portal](https://portal.azure.com).
 2. Navigeer naar de functie-app.
 3. Selecteer **Platformfuncties**.
 4. Selecteer **Eigenschappen**en het inkomende IP-adres wordt weer gegeven onder **virtueel IP-adres**.
@@ -39,7 +38,7 @@ De uitgaande IP-adressen vinden die beschikbaar zijn voor een functie-app:
 1. Meld u aan bij de [Azure resource Explorer](https://resources.azure.com).
 2. Selecteer **abonnementen > {Your Subscription} > providers > micro soft. Web >-sites**.
 3. Zoek in het deel venster JSON de site met een `id` eigenschap die eindigt op de naam van uw functie-app.
-4. Zie `outboundIpAddresses` en `possibleOutboundIpAddresses`. 
+4. Zie `outboundIpAddresses` en `possibleOutboundIpAddresses` . 
 
 De set van `outboundIpAddresses` is momenteel beschikbaar voor de functie-app. De set van `possibleOutboundIpAddresses` bevat IP-adressen die alleen beschikbaar zijn als de functie-app wordt [geschaald naar andere prijs categorieën](#outbound-ip-address-changes).
 
@@ -95,7 +94,7 @@ Wanneer uw functie-app wordt uitgevoerd in een [verbruiks abonnement](functions-
 De set beschik bare uitgaande IP-adressen voor een functie-app kan veranderen wanneer u:
 
 * Onderneem elke actie die het inkomende IP-adres kan wijzigen.
-* Wijzig de prijs categorie van uw App Service abonnement. De lijst met alle mogelijke uitgaande IP-adressen die uw app kan gebruiken voor alle prijs categorieën, bevindt `possibleOutboundIPAddresses` zich in de eigenschap. Zie [uitgaande Ip's zoeken](#find-outbound-ip-addresses).
+* Wijzig de prijs categorie van uw App Service abonnement. De lijst met alle mogelijke uitgaande IP-adressen die uw app kan gebruiken voor alle prijs categorieën, bevindt zich in de `possibleOutboundIPAddresses` eigenschap. Zie [uitgaande Ip's zoeken](#find-outbound-ip-addresses).
 
 Wanneer uw functie-app wordt uitgevoerd in een [verbruiks abonnement](functions-scale.md#consumption-plan), kan het uitgaande IP-adres ook worden gewijzigd, zelfs als u geen acties hebt uitgevoerd zoals [hierboven vermeld](#inbound-ip-address-changes).
 
@@ -115,7 +114,7 @@ Als u statische, specifieke IP-adressen nodig hebt, raden wij u aan [app service
 
 Als u wilt weten of uw functie-app wordt uitgevoerd in een App Service Environment:
 
-1. Meld u aan bij de [Azure-portal](https://portal.azure.com).
+1. Meld u aan bij [Azure Portal](https://portal.azure.com).
 2. Navigeer naar de functie-app.
 3. Selecteer het tabblad **Overzicht**.
 4. De laag App Service plan wordt weer gegeven onder **app service plan/prijs categorie**. De prijs Categorie App Service Environment is **geïsoleerd**.
@@ -126,7 +125,7 @@ Als alternatief kunt u het [Cloud shell](../cloud-shell/quickstart.md)gebruiken:
 az webapp show --resource-group <group_name> --name <app_name> --query sku --output tsv
 ```
 
-De App Service Environment `sku` is `Isolated`.
+De App Service Environment `sku` is `Isolated` .
 
 ## <a name="next-steps"></a>Volgende stappen
 

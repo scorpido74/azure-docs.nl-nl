@@ -12,10 +12,9 @@ manager: daveba
 ms.reviewer: sahenry
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 42f7e120745357d3bd5735cca568bdd6971ea061
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80652361"
 ---
 # <a name="deploy-password-reset-without-requiring-end-user-registration"></a>Wacht woord opnieuw instellen implementeren zonder registratie door eind gebruiker vereist
@@ -38,7 +37,7 @@ Als u de standaard instellingen in Azure AD Connect gebruikt, worden de volgende
 
 | On-premises Active Directory | Azure AD |
 | --- | --- |
-| telephoneNumber | Zakelijke telefoon |
+| telephoneNumber | Bureautelefoon |
 | mobiel | Mobiele telefoon |
 
 Nadat een gebruiker zijn of haar mobiele telefoon nummer heeft geverifieerd, wordt het *telefoon* veld onder **verificatie contact gegevens** in azure AD ook ingevuld met dit nummer.

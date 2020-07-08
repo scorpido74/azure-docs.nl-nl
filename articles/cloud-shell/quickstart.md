@@ -11,10 +11,9 @@ ms.topic: article
 ms.date: 03/12/2018
 ms.author: damaerte
 ms.openlocfilehash: 58d795a5aee79e4149864a79a923ce34950b31d6
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "79458066"
 ---
 # <a name="quickstart-for-bash-in-azure-cloud-shell"></a>Quick start voor bash in Azure Cloud Shell
@@ -28,14 +27,14 @@ Dit document bevat informatie over het gebruik van bash in Azure Cloud Shell in 
 1. Start **Cloud shell** vanaf de bovenste navigatie van het Azure Portal. <br>
 ![](media/quickstart/shell-icon.png)
 
-2. Selecteer een abonnement om een opslag account en Microsoft Azure bestands share te maken.
+2. Selecteer een abonnement om een opslagaccount en een Microsoft Azure Files-share te maken.
 3. Selecteer opslag maken
 
 > [!TIP]
 > U wordt in elke sessie automatisch geverifieerd voor Azure CLI.
 
 ### <a name="select-the-bash-environment"></a>De bash omgeving selecteren
-Controleer of de vervolg keuzelijst omgeving van de linkerkant van het shell venster wordt vermeld `Bash`. <br>
+Controleer of de vervolg keuzelijst omgeving van de linkerkant van het shell venster wordt vermeld `Bash` . <br>
 ![](media/quickstart/env-selector.png)
 
 ### <a name="set-your-subscription"></a>Uw abonnement instellen
@@ -50,7 +49,7 @@ az account set --subscription 'my-subscription-name'
 ```
 
 > [!TIP]
-> Uw abonnement wordt onthouden voor toekomstige sessies met `/home/<user>/.azure/azureProfile.json`.
+> Uw abonnement wordt onthouden voor toekomstige sessies met `/home/<user>/.azure/azureProfile.json` .
 
 ### <a name="create-a-resource-group"></a>Een resourcegroep maken
 Maak een nieuwe resource groep in Westus met de naam ' MyRG '.
@@ -66,16 +65,16 @@ az vm create -n myVM -g MyRG --image UbuntuLTS --generate-ssh-keys
 ```
 
 > [!NOTE]
-> Met `--generate-ssh-keys` het gebruik van Azure cli kunt u open bare en persoonlijke sleutels maken en instellen in `$Home` uw VM en Directory. Standaard sleutels worden in Cloud Shell geplaatst op `/home/<user>/.ssh/id_rsa` en. `/home/<user>/.ssh/id_rsa.pub` De `.ssh` map wordt opgeslagen in de bestands share van 5 GB die wordt gebruikt om de installatie kopie `$Home`te behouden.
+> Met `--generate-ssh-keys` het gebruik van Azure cli kunt u open bare en persoonlijke sleutels maken en instellen in uw VM en `$Home` Directory. Standaard sleutels worden in Cloud Shell geplaatst op `/home/<user>/.ssh/id_rsa` en `/home/<user>/.ssh/id_rsa.pub` . De `.ssh` map wordt opgeslagen in de bestands share van 5 GB die wordt gebruikt om de installatie kopie te behouden `$Home` .
 
-Uw gebruikers naam op deze VM is uw gebruikers naam die wordt gebruikt inUser@Azure:Cloud shell ($).
+Uw gebruikers naam op deze VM is uw gebruikers naam die wordt gebruikt in Cloud Shell ($ User@Azure: ).
 
 ### <a name="ssh-into-your-linux-vm"></a>SSH in uw virtuele Linux-machine
 1. Zoek de naam van uw virtuele machine in de zoek balk Azure Portal.
 2. Klik op verbinding maken om de naam van uw virtuele machine en het open bare IP-adres op te halen. <br>
    ![](media/quickstart/sshcmd-copy.png)
 
-3. SSH in uw virtuele machine met `ssh` de Cmd.
+3. SSH in uw virtuele machine met de `ssh` cmd.
    ```
    ssh username@ipaddress
    ```

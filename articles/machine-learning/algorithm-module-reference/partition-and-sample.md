@@ -10,10 +10,9 @@ author: likebupt
 ms.author: keli19
 ms.date: 10/22/2019
 ms.openlocfilehash: 0392a05df485b45b1244f4542ed55af1837dca3d
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "79477507"
 ---
 # <a name="partition-and-sample-module"></a>Partitie en voorbeeld module
@@ -75,7 +74,7 @@ Deze optie ondersteunt eenvoudige wille keurige steek proeven of stratified will
 
 1. **Sampling frequentie**: Voer een waarde in tussen 0 en 1. met deze waarde wordt het percentage rijen van de bron-gegevensset opgegeven dat moet worden opgenomen in de uitvoer gegevensset.
 
-   Als u bijvoorbeeld slechts de helft van de oorspronkelijke gegevensset wilt, voert `0.5` u in om aan te geven dat de sampling frequentie 50 procent moet zijn.
+   Als u bijvoorbeeld slechts de helft van de oorspronkelijke gegevensset wilt, voert u `0.5` in om aan te geven dat de sampling frequentie 50 procent moet zijn.
 
    De rijen van de invoer gegevensset worden in een wille keurige volg orde geplaatst en op basis van de opgegeven verhouding in de uitvoer gegevensset ingevoegd.
 

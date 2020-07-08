@@ -9,10 +9,9 @@ ms.date: 03/01/2019
 ms.author: genli
 ms.custom: seodec18
 ms.openlocfilehash: d61b95c7136a4cbce11789a58d27cc1a164ae374
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80668028"
 ---
 # <a name="troubleshoot-domain-and-tlsssl-certificate-problems-in-azure-app-service"></a>Problemen met domein-en TLS/SSL-certificaten in Azure App Service oplossen
@@ -88,9 +87,9 @@ Dit probleem kan om de volgende redenen optreden:
 
     **Oplossing**: als het certificaat is gemarkeerd als fraude en na 24 uur niet is opgelost, voert u de volgende stappen uit:
 
-    1. Meld u aan bij de [Azure-portal](https://portal.azure.com).
+    1. Meld u aan bij [Azure Portal](https://portal.azure.com).
     2. Ga naar **app service certificaten**en selecteer het certificaat.
-    3. Selecteer **certificaat configuratie** > **stap 2: Controleer** > de verificatie van het**domein**. Met deze stap verzendt u een e-mail bericht naar de Azure-certificaat provider om het probleem op te lossen.
+    3. Selecteer **certificaat configuratie**  >  **stap 2: Controleer**de verificatie van het  >  **domein**. Met deze stap verzendt u een e-mail bericht naar de Azure-certificaat provider om het probleem op te lossen.
 
 ## <a name="custom-domain-problems"></a>Problemen met aangepaste domeinen
 
@@ -120,7 +119,7 @@ De Internet browser kan nog steeds het oude IP-adres in de cache opslaan voor uw
 
 **Oplossing voor oorzaak 2**
 
-Wis de browser. Voor Windows-apparaten kunt u de opdracht `ipconfig /flushdns`uitvoeren. Gebruik [WhatsmyDNS.net](https://www.whatsmydns.net/) om te controleren of uw domein verwijst naar het IP-adres van de app. 
+Wis de browser. Voor Windows-apparaten kunt u de opdracht uitvoeren `ipconfig /flushdns` . Gebruik [WhatsmyDNS.net](https://www.whatsmydns.net/) om te controleren of uw domein verwijst naar het IP-adres van de app. 
 
 ### <a name="you-cant-add-a-subdomain"></a>U kunt geen subdomein toevoegen 
 
@@ -190,7 +189,7 @@ App Service synchroniseert uw certificaat automatisch binnen 48 uur. Wanneer u e
 
 U kunt de synchronisatie van het certificaat forceren:
 
-1. Meld u aan bij de [Azure-portal](https://portal.azure.com). Selecteer **app service certificaten**en selecteer vervolgens het certificaat.
+1. Meld u aan bij [Azure Portal](https://portal.azure.com). Selecteer **app service certificaten**en selecteer vervolgens het certificaat.
 2. Selecteer opnieuw **genereren en synchroniseren**en selecteer vervolgens **synchroniseren**. Het kan enige tijd duren voordat de synchronisatie is voltooid. 
 3. Wanneer de synchronisatie is voltooid, ziet u de volgende melding: alle resources zijn bijgewerkt met het nieuwste certificaat.
 

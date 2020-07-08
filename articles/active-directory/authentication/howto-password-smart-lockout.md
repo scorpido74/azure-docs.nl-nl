@@ -12,10 +12,9 @@ manager: daveba
 ms.reviewer: rogoya
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 61ae942ed189dc4245a9a0b282daf4cad5323536
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80652585"
 ---
 # <a name="azure-active-directory-smart-lockout"></a>Slimme vergrendeling van Azure Active Directory
@@ -56,7 +55,7 @@ Gebruik de volgende instructies om uw on-premises Active Directory account vergr
 
 1. Open het groepsbeleid-beheer programma.
 2. Bewerk het groeps beleid dat het account vergrendelings beleid van uw organisatie bevat, bijvoorbeeld het **standaard domein beleid**.
-3. Bladeren naar **computer configuratie** > **beleid** > **Windows-instellingen** > **beveiligings instellingen** > **account beleid** > account**vergrendelings beleid**.
+3. Bladeren naar **computer configuratie**  >  **beleid**  >  **Windows-instellingen**  >  **beveiligings instellingen**  >  **account beleid**account  >  **vergrendelings beleid**.
 4. Controleer de **drempel waarde voor account vergrendeling** en **Stel de teller voor account vergrendeling na waarden opnieuw** in.
 
 ![Het vergrendelings beleid voor on-premises Active Directory-account wijzigen](./media/howto-password-smart-lockout/active-directory-on-premises-account-lockout-policy.png)
@@ -67,8 +66,8 @@ Op basis van de vereisten van uw organisatie moeten slimme vergrendelings waarde
 
 Voer de volgende stappen uit om de slimme vergrendelings waarden voor uw organisatie te controleren of te wijzigen:
 
-1. Meld u aan bij de [Azure-portal](https://portal.azure.com).
-1. Zoek naar *Azure Active Directory* en selecteer deze optie. Selecteer **beveiligings** > **verificatie methoden** > **wachtwoord beveiliging**.
+1. Meld u aan bij [Azure Portal](https://portal.azure.com).
+1. Zoek naar *Azure Active Directory* en selecteer deze optie. Selecteer **beveiligings**  >  **verificatie methoden**  >  **wachtwoord beveiliging**.
 1. Stel de **drempel waarde voor vergren deling**in op basis van het aantal mislukte aanmeldingen dat is toegestaan voor een account voordat het voor het eerst wordt vergrendeld. De standaard waarde is 10.
 1. Stel de **vergrendelings duur in seconden in**, tot de lengte in seconden van elke vergren deling. De standaard waarde is 60 seconden (een minuut).
 

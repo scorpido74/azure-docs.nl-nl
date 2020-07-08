@@ -4,10 +4,9 @@ description: Geef op dat een mislukte implementatie moet worden teruggedraaid na
 ms.topic: conceptual
 ms.date: 10/04/2019
 ms.openlocfilehash: 206c794996f58a4c5b6982c551ae50128ed4f5eb
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "79460140"
 ---
 # <a name="rollback-on-error-to-successful-deployment"></a>Ongedaan maken bij fout bij geslaagde implementatie
@@ -24,7 +23,7 @@ Als u deze optie wilt gebruiken, moeten uw implementaties unieke namen hebben zo
 
 ## <a name="powershell"></a>PowerShell
 
-Als u de laatste geslaagde implementatie opnieuw wilt implementeren `-RollbackToLastDeployment` , voegt u de para meter toe als een vlag.
+Als u de laatste geslaagde implementatie opnieuw wilt implementeren, voegt u de `-RollbackToLastDeployment` para meter toe als een vlag.
 
 ```azurepowershell-interactive
 New-AzResourceGroupDeployment -Name ExampleDeployment02 `
@@ -33,7 +32,7 @@ New-AzResourceGroupDeployment -Name ExampleDeployment02 `
   -RollbackToLastDeployment
 ```
 
-Als u een specifieke implementatie opnieuw wilt implementeren, `-RollBackDeploymentName` gebruikt u de para meter en geeft u de naam van de implementatie op. De opgegeven implementatie moet zijn geslaagd.
+Als u een specifieke implementatie opnieuw wilt implementeren, gebruikt u de `-RollBackDeploymentName` para meter en geeft u de naam van de implementatie op. De opgegeven implementatie moet zijn geslaagd.
 
 ```azurepowershell-interactive
 New-AzResourceGroupDeployment -Name ExampleDeployment02 `
@@ -44,7 +43,7 @@ New-AzResourceGroupDeployment -Name ExampleDeployment02 `
 
 ## <a name="azure-cli"></a>Azure CLI
 
-Als u de laatste geslaagde implementatie opnieuw wilt implementeren `--rollback-on-error` , voegt u de para meter toe als een vlag.
+Als u de laatste geslaagde implementatie opnieuw wilt implementeren, voegt u de `--rollback-on-error` para meter toe als een vlag.
 
 ```azurecli-interactive
 az deployment group create \
@@ -55,7 +54,7 @@ az deployment group create \
   --rollback-on-error
 ```
 
-Als u een specifieke implementatie opnieuw wilt implementeren, `--rollback-on-error` gebruikt u de para meter en geeft u de naam van de implementatie op. De opgegeven implementatie moet zijn geslaagd.
+Als u een specifieke implementatie opnieuw wilt implementeren, gebruikt u de `--rollback-on-error` para meter en geeft u de naam van de implementatie op. De opgegeven implementatie moet zijn geslaagd.
 
 ```azurecli-interactive
 az deployment group create \

@@ -4,10 +4,9 @@ description: In dit artikel vindt u informatie over het maken van back-ups van S
 ms.topic: conceptual
 ms.date: 12/11/2019
 ms.openlocfilehash: 52c235c95cea73a0c51c62fcb55f7f711d2eff21
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "79476454"
 ---
 # <a name="about-sap-hana-database-backup-in-azure-vms"></a>Over SAP HANA back-up van de data base in azure Vm's
@@ -75,4 +74,4 @@ Voer de volgende stappen uit om een VM met SAP HANA te herstellen:
 ## <a name="next-steps"></a>Volgende stappen
 
 * Meer informatie over het [herstellen van een SAP Hana-data base die wordt uitgevoerd op een virtuele Azure-machine](https://docs.microsoft.com/azure/backup/sap-hana-db-restore)
-* Meer informatie over het [beheren van SAP Hana databases waarvan een back-up is gemaakt met behulp van Azure backup](https://docs.microsoft.com/azure/backup/sap-hana-db-manage)
+* Meer informatie over [het beheren van SAP HANA-databases waarvan een back-up wordt gemaakt met behulp van Azure Backup](https://docs.microsoft.com/azure/backup/sap-hana-db-manage)

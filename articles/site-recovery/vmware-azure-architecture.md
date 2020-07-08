@@ -8,10 +8,9 @@ ms.topic: conceptual
 ms.date: 11/06/2019
 ms.author: raynew
 ms.openlocfilehash: 77b4dd4c0efbe6d03e64865f18c2c87614aaecb5
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80632524"
 ---
 # <a name="vmware-to-azure-disaster-recovery-architecture"></a>Architectuur voor nood herstel van VMware naar Azure
@@ -23,7 +22,7 @@ In dit artikel worden de architectuur en processen beschreven die worden gebruik
 
 De volgende tabel en afbeelding bieden een weer gave op hoog niveau van de onderdelen die worden gebruikt voor VMware-herstel na nood gevallen naar Azure.
 
-**Component** | **Vereiste** | **Nadere**
+**Onderdeel** | **Vereiste** | **Details**
 --- | --- | ---
 **Azure** | Een Azure-abonnement, Azure Storage account voor cache, beheerde schijf en Azure-netwerk. | Gerepliceerde gegevens van on-premises Vm's worden opgeslagen in azure Storage. Virtuele Azure-machines worden gemaakt met de gerepliceerde gegevens wanneer u een failover van on-premises naar Azure uitvoert. De Azure-VM's maken verbinding met het virtuele Azure-netwerk wanneer ze worden gemaakt.
 **Computer van de configuratie server** | Één on-premises computer. We raden u aan deze uit te voeren als een VMware-VM die kan worden geïmplementeerd vanuit een gedownloade OVF-sjabloon.<br/><br/> Op de computer worden alle on-premises Site Recovery onderdelen uitgevoerd, waaronder de configuratie server, de proces server en de hoofddoel server. | **Configuratie server**: coördineert de communicatie tussen on-premises en Azure, en beheert de gegevens replicatie.<br/><br/> **Proces server**: standaard geïnstalleerd op de configuratie server. Het ontvangt replicatie gegevens; optimaliseert het met caching, compressie en versleuteling. en verzendt deze naar Azure Storage. De processerver installeert ook Azure Site Recovery Mobility Service op VM's die u wilt repliceren, en detecteert automatisch on-premises computers. Naarmate uw implementatie groeit, kunt u extra, afzonderlijke proces servers toevoegen om grotere volumes van replicatie verkeer af te handelen.<br/><br/> **Hoofddoel server**: standaard geïnstalleerd op de configuratie server. De replicatie gegevens worden verwerkt tijdens de failback vanuit Azure. Voor grote implementaties kunt u een extra, afzonderlijke Master doel server toevoegen voor failback.

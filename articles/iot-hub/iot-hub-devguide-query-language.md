@@ -8,10 +8,9 @@ ms.topic: conceptual
 ms.date: 10/29/2018
 ms.author: robinsh
 ms.openlocfilehash: bcc53322ac6942b52853be561bc3441e23fbf53b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80632932"
 ---
 # <a name="iot-hub-query-language-for-device-and-module-twins-jobs-and-message-routing"></a>IoT Hub-querytaal voor apparaat- en moduledubbels, taken en-berichtroutering
@@ -112,7 +111,7 @@ SELECT * FROM devices
   WHERE properties.reported.connectivity IN ['wired', 'wifi']
 ```
 
-Het is vaak nodig om alle apparaatdubbels te identificeren die een specifieke eigenschap bevatten. IoT Hub ondersteunt de functie `is_defined()` voor dit doel. Gebruik bijvoorbeeld de volgende query om apparaatdubbels op te halen `connectivity` die de eigenschap definiëren:
+Het is vaak nodig om alle apparaatdubbels te identificeren die een specifieke eigenschap bevatten. IoT Hub ondersteunt de functie `is_defined()` voor dit doel. Gebruik bijvoorbeeld de volgende query om apparaatdubbels op te halen die de `connectivity` eigenschap definiëren:
 
 ```SQL
 SELECT * FROM devices
@@ -201,9 +200,9 @@ Voor het **query** -object is een pagina grootte (maxi maal 100) geïnstantieerd
 
 In het object query worden meerdere **volgende** waarden weer gegeven, afhankelijk van de deserialisatie optie die de query vereist. Bijvoorbeeld dubbele en taak objecten, of gewone JSON bij het gebruik van projecties.
 
-### <a name="nodejs-example"></a>Node. js-voor beeld
+### <a name="nodejs-example"></a>Node.js-voor beeld
 
-De functionaliteit van de query wordt weer gegeven door de [Azure IOT Service SDK voor node. js](iot-hub-devguide-sdks.md) in het **register** object.
+De functionaliteit van de query wordt weer gegeven door de [Azure IOT Service SDK voor Node.js](iot-hub-devguide-sdks.md) in het **register** object.
 
 Hier volgt een voor beeld van een eenvoudige query:
 
@@ -273,7 +272,7 @@ Op dit moment worden vergelijkingen alleen ondersteund tussen primitieve typen (
 Op dit moment kan deze verzameling worden opgevraagd als **devices.Jobs** in de query taal IOT hub.
 
 > [!IMPORTANT]
-> Op dit moment wordt de eigenschap Jobs nooit geretourneerd tijdens het opvragen van de apparaatdubbels van het apparaat. Dat wil zeggen query's die ' van apparaten ' bevatten. De eigenschap Jobs kan alleen rechtstreeks worden geopend met query's met `FROM devices.jobs`behulp van.
+> Op dit moment wordt de eigenschap Jobs nooit geretourneerd tijdens het opvragen van de apparaatdubbels van het apparaat. Dat wil zeggen query's die ' van apparaten ' bevatten. De eigenschap Jobs kan alleen rechtstreeks worden geopend met query's met behulp van `FROM devices.jobs` .
 >
 >
 
@@ -392,7 +391,7 @@ GROUP BY <group_by_element>
 De component GROUP BY wordt momenteel alleen ondersteund bij het opvragen van de apparaatdubbels van het apparaat.
 
 > [!IMPORTANT]
-> De term `group` wordt momenteel behandeld als een speciaal tref woord in query's. Als u de naam van `group` uw eigenschap gebruikt, kunt u deze omsluiten met dubbele haken om fouten te voor komen, bijvoorbeeld `SELECT * FROM devices WHERE tags.[[group]].name = 'some_value'`.
+> De term `group` wordt momenteel behandeld als een speciaal tref woord in query's. `group`Als u de naam van uw eigenschap gebruikt, kunt u deze omsluiten met dubbele haken om fouten te voor komen, bijvoorbeeld `SELECT * FROM devices WHERE tags.[[group]].name = 'some_value'` .
 >
 
 ## <a name="expressions-and-conditions"></a>Expressies en voor waarden
@@ -441,7 +440,7 @@ Raadpleeg de volgende tabel om te begrijpen wat elk symbool in de syntaxis van e
 | function_name| Een functie die wordt weer gegeven in de sectie [functies](#functions) . |
 | decimal_literal |Een float, uitgedrukt in een decimale notatie. |
 | hexadecimal_literal |Een getal uitgedrukt in de teken reeks ' 0x ' gevolgd door een teken reeks van hexadecimale cijfers. |
-| string_literal |Literals voor teken reeksen zijn Unicode-teken reeksen die worden vertegenwoordigd door een reeks van nul of meer Unicode-tekens of escape-reeksen. Letterlijke teken reeksen worden tussen enkele aanhalings tekens of dubbele aanhalings tekens geplaatst. Toegestane Escapes: `\'`, `\"`, `\\`, `\uXXXX` voor Unicode-tekens die worden gedefinieerd door 4 hexadecimale cijfers. |
+| string_literal |Literals voor teken reeksen zijn Unicode-teken reeksen die worden vertegenwoordigd door een reeks van nul of meer Unicode-tekens of escape-reeksen. Letterlijke teken reeksen worden tussen enkele aanhalings tekens of dubbele aanhalings tekens geplaatst. Toegestane Escapes: `\'` , `\"` , `\\` , `\uXXXX` voor Unicode-tekens die worden gedefinieerd door 4 hexadecimale cijfers. |
 
 ### <a name="operators"></a>Operators
 
@@ -459,7 +458,7 @@ Bij het uitvoeren van een query op apparaatdubbels en Jobs is de enige ondersteu
 
 | Functie | Beschrijving |
 | -------- | ----------- |
-| IS_DEFINED (eigenschap) | Retourneert een Booleaanse waarde die aangeeft of aan de eigenschap een waarden (inclusief `null`) is toegewezen. |
+| IS_DEFINED (eigenschap) | Retourneert een Booleaanse waarde die aangeeft of aan de eigenschap een waarden (inclusief `null` ) is toegewezen. |
 
 In routes voor waarden worden de volgende wiskundige functies ondersteund:
 
@@ -478,14 +477,14 @@ In routes-voor waarden worden de volgende typen controleren en casting ondersteu
 
 | Functie | Beschrijving |
 | -------- | ----------- |
-| AS_NUMBER | Converteert de invoer teken reeks naar een getal. `noop`Als invoer een getal is; `Undefined` als teken reeks geen getal voor stelt.|
+| AS_NUMBER | Converteert de invoer teken reeks naar een getal. `noop`Als invoer een getal is; `Undefined`als teken reeks geen getal voor stelt.|
 | IS_ARRAY | Retourneert een Booleaanse waarde die aangeeft of het type van de opgegeven expressie een matrix is. |
 | IS_BOOL | Retourneert een Booleaanse waarde die aangeeft of het type van de opgegeven expressie een Boolean is. |
-| IS_DEFINED | Retourneert een Booleaanse waarde die aangeeft of aan de eigenschap een waarde is toegewezen. Dit wordt alleen ondersteund als de waarde een primitief type is. Primitieve typen bevatten een teken reeks, een Booleaanse waarde of `null`een getal. DateTime, object typen en matrices worden niet ondersteund. |
+| IS_DEFINED | Retourneert een Booleaanse waarde die aangeeft of aan de eigenschap een waarde is toegewezen. Dit wordt alleen ondersteund als de waarde een primitief type is. Primitieve typen bevatten een teken reeks, een Booleaanse waarde of een getal `null` . DateTime, object typen en matrices worden niet ondersteund. |
 | IS_NULL | Retourneert een Booleaanse waarde die aangeeft of het type van de opgegeven expressie Null is. |
 | IS_NUMBER | Retourneert een Booleaanse waarde die aangeeft of het type van de opgegeven expressie een getal is. |
 | IS_OBJECT | Retourneert een Booleaanse waarde die aangeeft of het type van de opgegeven expressie een JSON-object is. |
-| IS_PRIMITIVE | Retourneert een Booleaanse waarde die aangeeft of het type van de opgegeven expressie een primitieve is (teken reeks, Booleaans, numeriek of `null`). |
+| IS_PRIMITIVE | Retourneert een Booleaanse waarde die aangeeft of het type van de opgegeven expressie een primitieve is (teken reeks, Booleaans, numeriek of `null` ). |
 | IS_STRING | Retourneert een Booleaanse waarde die aangeeft of het type van de opgegeven expressie een teken reeks is. |
 
 In routes-voor waarden worden de volgende teken reeks functies ondersteund:

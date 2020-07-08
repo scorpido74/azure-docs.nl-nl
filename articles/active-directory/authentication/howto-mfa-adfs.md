@@ -12,10 +12,9 @@ manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: e5949fdce9d591a9c02c5c6c4fb2f1dde94c45d2
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80654024"
 ---
 # <a name="securing-cloud-resources-with-azure-multi-factor-authentication-and-ad-fs"></a>Cloudresources beveiligen met Azure Multi-Factor Authentication en AD FS
@@ -59,9 +58,9 @@ Het eerste wat we moeten doen is de AD FS-claims configureren. U maakt twee clai
 1. Open AD FS-beheer.
 2. Selecteer aan de linkerkant de **vertrouwens relatie van de relying**Party.
 3. Klik met de rechter muisknop op **Microsoft Office 365-identiteits platform** en selecteer **claim regels bewerken...** 
-   ADFS-console-claim ![regels bewerken](./media/howto-mfa-adfs/trustedip1.png)
+    ![ ADFS-console-claim regels bewerken](./media/howto-mfa-adfs/trustedip1.png)
 4. Klik bij uitgifte transformatie regels op **regel toevoegen.** 
-    ![](./media/howto-mfa-adfs/trustedip2.png)
+    ![ Een claim regel toevoegen](./media/howto-mfa-adfs/trustedip2.png)
 5. Selecteer in de wizard Transformatieclaimregels toevoegen **Passthrough of Een binnenkomende claim filteren** in de vervolgkeuzelijst en klik op **Volgende**.
    ![Wizard Claimregel voor transformatie toevoegen](./media/howto-mfa-adfs/trustedip3.png)
 6. Geef de claimregel een naam in het vak bij Naam claimregel. Bijvoorbeeld: BinnenBedrijfsNet.
@@ -85,8 +84,8 @@ Het eerste wat we moeten doen is de AD FS-claims configureren. U maakt twee clai
 
 Nu de claims zijn gemaakt, kunnen we goedgekeurde IP-adressen gaan configureren.
 
-1. Meld u aan bij de [Azure-portal](https://portal.azure.com).
-2. Selecteer **Azure Active Directory** > **beveiligings** > **voorwaardelijke toegang** > met de**naam locaties**.
+1. Meld u aan bij [Azure Portal](https://portal.azure.com).
+2. Selecteer **Azure Active Directory**  >  **beveiligings**  >  **voorwaardelijke toegang**met de  >  **naam locaties**.
 3. Selecteer op de Blade **voorwaardelijke toegang-benoemde locaties** de optie **MFA-vertrouwde IP-adressen configureren**
 
    ![Voorwaardelijke toegang voor Azure AD benoemde locaties geconfigureerde MFA-IP-adressen configureren](./media/howto-mfa-adfs/trustedip6.png)

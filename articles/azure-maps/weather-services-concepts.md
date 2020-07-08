@@ -9,10 +9,9 @@ ms.service: azure-maps
 services: azure-maps
 manager: philmea
 ms.openlocfilehash: 03a16ac065b585c499efa268500e0a8c81c07738
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80333819"
 ---
 # <a name="weather-services-in-azure-maps"></a>Weer Services in Azure Maps
@@ -52,31 +51,31 @@ Sommige van de weers-Api's kunnen gebruikers toestaan om op te geven of de gegev
 
 ## <a name="weather-icons"></a>Weer pictogrammen
 
-Sommige van de weer service Api's retour neren `iconCode` de in het antwoord. De `iconCode` is een numerieke waarde die wordt gebruikt om het pictogram te definiëren. U kunt niet rechtstreeks vanuit uw toepassingen een koppeling naar deze installatie kopieën maken, de Url's kunnen worden gewijzigd.
+Sommige van de weer service Api's retour neren de `iconCode` in het antwoord. De `iconCode` is een numerieke waarde die wordt gebruikt om het pictogram te definiëren. U kunt niet rechtstreeks vanuit uw toepassingen een koppeling naar deze installatie kopieën maken, de Url's kunnen worden gewijzigd.
 
 | Pictogram nummer |Pictogram| Dag | 'S | Tekst |
 |-------------|:----:|-----|-------|------|
-| 1           |![](./media/weather-services-concepts/sunny-i.png)                      | Ja |  Nee    | Zon|
-| 2           |![](./media/weather-services-concepts/mostly-sunny.png)                | Ja |  Nee    | Grotendeels zonnig|
-| 3           |![](./media/weather-services-concepts/partly-sunny.png)                | Ja |  Nee    | Deels zonnig|
-| 4           |![](./media/weather-services-concepts/intermittent-clouds.png)         | Ja |  Nee    | Periodieke Clouds|
-| 5           |![](./media/weather-services-concepts/hazy-sunshine.png)               | Ja |  Nee    | Hazy schijnt |
-| 6           |![](./media/weather-services-concepts/mostly-cloudy.png)               | Ja |  Nee    | Overwegend bewolkt|
+| 1           |![](./media/weather-services-concepts/sunny-i.png)                      | Yes |  Nee    | Zon|
+| 2           |![](./media/weather-services-concepts/mostly-sunny.png)                | Yes |  Nee    | Grotendeels zonnig|
+| 3           |![](./media/weather-services-concepts/partly-sunny.png)                | Yes |  Nee    | Deels zonnig|
+| 4           |![](./media/weather-services-concepts/intermittent-clouds.png)         | Yes |  Nee    | Periodieke Clouds|
+| 5           |![](./media/weather-services-concepts/hazy-sunshine.png)               | Yes |  Nee    | Hazy schijnt |
+| 6           |![](./media/weather-services-concepts/mostly-cloudy.png)               | Yes |  Nee    | Overwegend bewolkt|
 | 7           |![](./media/weather-services-concepts/cloudy-i.png)                     | Ja |  Ja   | Cloud |
 | 8           |![](./media/weather-services-concepts/dreary-overcast.png)             | Ja |  Ja   | Dreary (Overcast)|
 | 11           |![](./media/weather-services-concepts/fog-i.png)                       | Ja |  Ja   | Fogcomputing|
 | 12           |![](./media/weather-services-concepts/showers-i.png)                   | Ja |  Ja   | Douchen|
-| 13           |![](./media/weather-services-concepts/mostly-cloudy-showers.png)       | Ja |  Nee    | Overwegend bewolkt met Showers|
-| 14           |![](./media/weather-services-concepts/partly-sunny-showers.png)        | Ja |  Nee    | Deels zonnig met Showers|
+| 13           |![](./media/weather-services-concepts/mostly-cloudy-showers.png)       | Yes |  Nee    | Overwegend bewolkt met Showers|
+| 14           |![](./media/weather-services-concepts/partly-sunny-showers.png)        | Yes |  Nee    | Deels zonnig met Showers|
 | 15           |![](./media/weather-services-concepts/tstorms-i.png)                   | Ja |  Ja   | Thunderstorms|
-| 16           |![](./media/weather-services-concepts/mostly-cloudy-tstorms.png)       | Ja |  Nee    | Overwegend bewolkt met thunderstorms|
-| 17           |![](./media/weather-services-concepts/partly-sunny-tstorms.png)        | Ja |  Nee    | Deels zonnig met thunderstorms|
+| 16           |![](./media/weather-services-concepts/mostly-cloudy-tstorms.png)       | Yes |  Nee    | Overwegend bewolkt met thunderstorms|
+| 17           |![](./media/weather-services-concepts/partly-sunny-tstorms.png)        | Yes |  Nee    | Deels zonnig met thunderstorms|
 | 18           |![](./media/weather-services-concepts/rain-i.png)                      | Ja |  Ja   | Vloeiend|
 | 19           |![](./media/weather-services-concepts/flurries-i.png)                  | Ja |  Ja   | Flurries|
-| 20           |![](./media/weather-services-concepts/mostly-cloudy-flurries.png)      | Ja |  Nee    | Overwegend bewolkt met Flurries|
-| 21           |![](./media/weather-services-concepts/partly-sunny-flurries.png)       | Ja |  Nee    | Deels zonnig met Flurries|
+| 20           |![](./media/weather-services-concepts/mostly-cloudy-flurries.png)      | Yes |  Nee    | Overwegend bewolkt met Flurries|
+| 21           |![](./media/weather-services-concepts/partly-sunny-flurries.png)       | Yes |  Nee    | Deels zonnig met Flurries|
 | 22           |![](./media/weather-services-concepts/snow-i.png)                      | Ja |  Ja   | Richting|
-| 23           |![](./media/weather-services-concepts/mostly-cloudy-snow.png)          | Ja |  Nee    | Overwegend bewolkt met sneeuw|
+| 23           |![](./media/weather-services-concepts/mostly-cloudy-snow.png)          | Yes |  Nee    | Overwegend bewolkt met sneeuw|
 | 24           |![](./media/weather-services-concepts/ice-i.png)                       | Ja |  Ja   | Ice |
 | 25           |![](./media/weather-services-concepts/sleet-i.png)                     | Ja |  Ja   | Sleet|
 | 26           |![](./media/weather-services-concepts/freezing-rain.png)              | Ja |  Ja   | Vries regen|
@@ -84,11 +83,11 @@ Sommige van de weer service Api's retour neren `iconCode` de in het antwoord. De
 | 30           |![](./media/weather-services-concepts/hot-i.png)                       | Ja |  Ja   | Warm|
 | 31           |![](./media/weather-services-concepts/cold-i.png)                      | Ja |  Ja   | Koud|
 | 32           |![](./media/weather-services-concepts/windy-i.png)                     | Ja |  Ja   | Wikkeling|
-| 33           |![](./media/weather-services-concepts/clear-night.png)                | Nee  |  Ja   | Wissen|
-| 34           |![](./media/weather-services-concepts/mostly-clear-night.png)          | Nee  |  Ja   | Voornamelijk wissen|
-| 35           |![](./media/weather-services-concepts/partly-cloudy-night.png)         | Nee  |  Ja   | Deels Cloud|
-| 36           |![](./media/weather-services-concepts/intermittent-clouds-Night.png)   | Nee  |  Ja   | Periodieke Clouds|
-| 37           |![](./media/weather-services-concepts/hazymoon-light.png)             | Nee  |  Ja   | Hazy Moonlight|
+| 33           |![](./media/weather-services-concepts/clear-night.png)                | Nee  |  Yes   | Veilig|
+| 34           |![](./media/weather-services-concepts/mostly-clear-night.png)          | Nee  |  Yes   | Voornamelijk wissen|
+| 35           |![](./media/weather-services-concepts/partly-cloudy-night.png)         | Nee  |  Yes   | Deels Cloud|
+| 36           |![](./media/weather-services-concepts/intermittent-clouds-Night.png)   | Nee  |  Yes   | Periodieke Clouds|
+| 37           |![](./media/weather-services-concepts/hazymoon-light.png)             | Nee  |  Yes   | Hazy Moonlight|
 | 38           |![](./media/weather-services-concepts/mostly-cloudy-night.png)         | Nee  |  Ja   | Overwegend bewolkt|
 | 39           |![](./media/weather-services-concepts/partly-cloudy-showers-night.png)  | Nee  |  Ja   | Deels Cloudy met Showers|
 | 40           |![](./media/weather-services-concepts/mostly-cloudy-showers-night.png)  | Nee  |  Ja   | Overwegend bewolkt met Showers|

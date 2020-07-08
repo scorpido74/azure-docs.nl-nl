@@ -12,10 +12,9 @@ ms.workload: infrastructure-services
 ms.date: 09/10/2018
 ms.author: sharadag
 ms.openlocfilehash: bb1de5d51afd01cf0aa519f12aa3665bee804efd
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "79471673"
 ---
 # <a name="protocol-support-for-http-headers-in-azure-front-door"></a>Protocol ondersteuning voor HTTP-headers in azure front-deur
@@ -33,7 +32,7 @@ De voor deur accepteert de meeste kopteksten van de binnenkomende aanvraag zonde
 
 De voor deur bevat headers uit een binnenkomende aanvraag, tenzij deze worden verwijderd vanwege beperkingen. Met de voor deur worden ook de volgende headers toegevoegd:
 
-| Header  | Voor beeld en beschrijving |
+| Koptekst  | Voor beeld en beschrijving |
 | ------------- | ------------- |
 | Kopen |  Via: 1,1 Azure </br> De voor deur voegt de HTTP-versie van de client, gevolgd door *Azure* , toe als de waarde voor de via-header. Deze header geeft de HTTP-versie van de client aan en de voor deur was een tussenliggende ontvanger voor de aanvraag tussen de client en de back-end.  |
 | X-Azure-client | X-Azure-client: 127.0.0.1 </br> Vertegenwoordigt het client-IP-adres dat is gekoppeld aan de aanvraag die wordt verwerkt. Een aanvraag die afkomstig is van een proxy, kan bijvoorbeeld de X-doorgestuurde header toevoegen om het IP-adres van de oorspronkelijke aanroeper aan te geven. |
@@ -49,7 +48,7 @@ De voor deur bevat headers uit een binnenkomende aanvraag, tenzij deze worden ve
 
 Alle kopteksten die naar de voor deur van de back-end worden verzonden, worden ook door gegeven aan de client. De volgende headers worden verzonden van de voor deur naar clients.
 
-| Header  | Voorbeeld |
+| Koptekst  | Voorbeeld |
 | ------------- | ------------- |
 | X-Azure-Ref |  *X-Azure-Ref: 0zxV + XAAAAABKMMOjBv2NT4TY6SQVjC0zV1NURURHRTA2MTkANDM3YzgyY2QtMzYwYS00YTU0LTk0YzMtNWZmNzA3NjQ3Nzgz* </br> Dit is een unieke verwijzings reeks die een aanvraag identificeert die wordt aangeboden door de voor deur. Dit is essentieel voor het oplossen van problemen bij het zoeken naar toegangs logboeken.|
 

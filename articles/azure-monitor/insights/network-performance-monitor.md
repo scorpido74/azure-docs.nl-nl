@@ -7,10 +7,9 @@ author: vinynigam
 ms.author: vinigam
 ms.date: 02/20/2018
 ms.openlocfilehash: 9660e87f3ee4e1c1c6a270f14928fdd111664e66
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "79480875"
 ---
 # <a name="network-performance-monitor-solution-in-azure"></a>Netwerkprestatiemeter oplossing in azure
@@ -84,7 +83,7 @@ Gebruik de basis processen om agents te installeren op [Windows-computers verbin
 
 Netwerkprestatiemeter maakt gebruik van synthetische trans acties voor het bewaken van de netwerk prestaties tussen bron-en doel agents. U kunt kiezen tussen TCP en ICMP als het protocol voor bewaking in prestatie meter en mogelijkheden voor de connectiviteits controle van de service. Alleen TCP is beschikbaar als het bewakings protocol voor de ExpressRoute-monitor. Zorg ervoor dat de firewall communicatie toestaat tussen de Log Analytics agents die worden gebruikt voor de bewaking van het gekozen protocol. 
 
-* **TCP-protocol**: als u TCP kiest als protocol voor bewaking, opent u de firewall poort op de agents die worden gebruikt voor de monitor Netwerkprestatiemeter en ExpressRoute om er zeker van te zijn dat de agents verbinding met elkaar kunnen maken. Als u de poort wilt openen, voert u het Power shell-script [EnableRules. ps1](https://aka.ms/npmpowershellscript) uit zonder para meters in een Power shell-venster met Administrator bevoegdheden.
+* **TCP-protocol**: als u TCP kiest als protocol voor bewaking, opent u de firewall poort op de agents die worden gebruikt voor de monitor Netwerkprestatiemeter en ExpressRoute om er zeker van te zijn dat de agents verbinding met elkaar kunnen maken. Als u de poort wilt openen, voert u het Power shell-script [EnableRules.ps1](https://aka.ms/npmpowershellscript) zonder para meters uit in een Power shell-venster met beheerders bevoegdheden.
 
     Het script maakt register sleutels die vereist zijn voor de oplossing. Er worden ook Windows Firewall regels gemaakt waarmee agents TCP-verbindingen met elkaar kunnen maken. De register sleutels die door het script zijn gemaakt, geven aan of de logboeken voor fout opsporing en het pad voor het logboek bestand moeten worden geregistreerd. Het script definieert ook de TCP-poort van de agent die wordt gebruikt voor communicatie. De waarden voor deze sleutels worden automatisch ingesteld door het script. Wijzig deze sleutels niet hand matig. De poort die standaard wordt geopend, is 8084. U kunt een aangepaste poort gebruiken door de para meter poort nummer toe te voegen aan het script. Gebruik dezelfde poort op alle computers waarop het script wordt uitgevoerd. 
 
@@ -92,7 +91,7 @@ Netwerkprestatiemeter maakt gebruik van synthetische trans acties voor het bewak
     > Het script configureert alleen Windows Firewall lokaal. Als u een netwerk firewall hebt, controleert u of het verkeer dat is bestemd voor de TCP-poort die wordt gebruikt door Netwerkprestatiemeter, is toegestaan.
 
     >[!NOTE]
-    > U hoeft het Power shell-script [EnableRules. ps1](https://aka.ms/npmpowershellscript ) niet uit te voeren voor de service verbindings monitor.
+    > U hoeft het [EnableRules.ps1](https://aka.ms/npmpowershellscript ) Power shell-script voor service verbindings monitor niet uit te voeren.
 
     
 

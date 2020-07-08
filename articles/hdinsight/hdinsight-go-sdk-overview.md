@@ -9,10 +9,9 @@ ms.topic: conceptual
 ms.custom: seodec18
 ms.date: 01/03/2020
 ms.openlocfilehash: 292496c4d458621213fe62105149ac845d78891e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "79479583"
 ---
 # <a name="hdinsight-sdk-for-go-preview"></a>HDInsight-SDK voor Go (preview-versie)
@@ -23,7 +22,7 @@ De HDInsight-SDK voor Go biedt klassen en functies waarmee u uw HDInsight-cluste
 > [!NOTE]  
 >GoDoc-referentie materiaal voor deze SDK is [hier ook beschikbaar](https://godoc.org/github.com/Azure/azure-sdk-for-go/services/preview/hdinsight/mgmt/2018-06-01-preview/hdinsight).
 
-Als u nog geen abonnement op Azure hebt, maak dan een [gratis account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) aan voordat u begint.
+Als u nog geen abonnement op Azure hebt, maakt u een [gratis account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) aan voordat u begint.
 
 ## <a name="prerequisites"></a>Vereisten
 
@@ -36,7 +35,7 @@ Voer vanuit uw GOPATH-locatie`go get github.com/Azure/azure-sdk-for-go/tree/mast
 
 ## <a name="authentication"></a>Verificatie
 
-De SDK moet eerst worden geverifieerd met uw Azure-abonnement.  Volg het onderstaande voor beeld om een service-principal te maken en te verifiëren. Nadat u dit hebt gedaan, hebt u een exemplaar van een `ClustersClient`, dat veel functies bevat (beschreven in de onderstaande secties) die kunnen worden gebruikt om beheer bewerkingen uit te voeren.
+De SDK moet eerst worden geverifieerd met uw Azure-abonnement.  Volg het onderstaande voor beeld om een service-principal te maken en te verifiëren. Nadat u dit hebt gedaan, hebt u een exemplaar van een `ClustersClient` , dat veel functies bevat (beschreven in de onderstaande secties) die kunnen worden gebruikt om beheer bewerkingen uit te voeren.
 
 > [!NOTE]  
 > Er zijn andere manieren om te verifiëren naast het onderstaande voor beeld dat mogelijk beter geschikt is voor uw behoeften. Alle functies worden hier beschreven: [verificatie functies in de Azure SDK voor Go](https://docs.microsoft.com/azure/go/azure-sdk-go-authorization)
@@ -100,7 +99,7 @@ De gegevens van de service-principal worden weer gegeven als JSON.
 }
 ```
 
-Kopieer het onderstaande fragment en `TENANT_ID`Vul, `CLIENT_ID` `CLIENT_SECRET`, en `SUBSCRIPTION_ID` met de teken reeksen uit de JSON die zijn geretourneerd na het uitvoeren van de opdracht om de service-principal te maken.
+Kopieer het onderstaande fragment en vul `TENANT_ID` ,, `CLIENT_ID` `CLIENT_SECRET` en `SUBSCRIPTION_ID` met de teken reeksen uit de JSON die zijn geretourneerd na het uitvoeren van de opdracht om de service-principal te maken.
 
 ```golang
 package main
@@ -136,11 +135,11 @@ func main() {
 ## <a name="cluster-management"></a>Clusterbeheer
 
 > [!NOTE]  
-> In deze sectie wordt ervan uitgegaan dat u al een `ClusterClient` exemplaar hebt geauthenticeerd en geconstrueerd en opgeslagen in een variabele met de naam `client`. Instructies voor het verifiëren en verkrijgen `ClusterClient` van een vindt u in de sectie verificatie hierboven.
+> In deze sectie wordt ervan uitgegaan dat u al een exemplaar hebt geauthenticeerd en geconstrueerd `ClusterClient` en opgeslagen in een variabele met de naam `client` . Instructies voor het verifiëren en verkrijgen van een `ClusterClient` vindt u in de sectie verificatie hierboven.
 
 ### <a name="create-a-cluster"></a>Een cluster maken
 
-Een nieuw cluster kan worden gemaakt door aan `client.Create()`te roepen. 
+Een nieuw cluster kan worden gemaakt door aan te roepen `client.Create()` . 
 
 #### <a name="example"></a>Voorbeeld
 
@@ -296,7 +295,7 @@ client.ListByResourceGroup("<Resource Group Name>")
 ```
 
 > [!NOTE]  
-> `List()` En `ListByResourceGroup()` retour neren een `ClusterListResultPage` struct. Als u de volgende pagina wilt weer geven, `Next()`kunt u bellen. Dit kan worden herhaald tot `ClusterListResultPage.NotDone()` er `false`een resultaat is, zoals wordt weer gegeven in het onderstaande voor beeld.
+> `List()`En `ListByResourceGroup()` retour neren een `ClusterListResultPage` struct. Als u de volgende pagina wilt weer geven, kunt u bellen `Next()` . Dit kan worden herhaald tot `ClusterListResultPage.NotDone()` er `false` een resultaat is, zoals wordt weer gegeven in het onderstaande voor beeld.
 
 #### <a name="example"></a>Voorbeeld
 
@@ -352,7 +351,7 @@ client.Resize(context.Background(), "<Resource Group Name>", "<Cluster Name>", h
 
 De HDInsight Management SDK kan ook worden gebruikt voor het beheren van bewaking op uw clusters met behulp van de operations management suite (OMS).
 
-Net als bij de manier `ClusterClient` waarop u voor beheer bewerkingen hebt gemaakt, moet u een `ExtensionClient` gebruiken om bewerkingen te controleren. Zodra u de sectie verificatie hierboven hebt voltooid, kunt u een `ExtensionClient` van de volgende opties maken:
+Net als bij de manier waarop u `ClusterClient` voor beheer bewerkingen hebt gemaakt, moet u een `ExtensionClient` gebruiken om bewerkingen te controleren. Zodra u de sectie verificatie hierboven hebt voltooid, kunt u een van de `ExtensionClient` volgende opties maken:
 
 ```golang
 extClient := hdi.NewExtensionsClient(SUBSCRIPTION_ID)
@@ -360,7 +359,7 @@ extClient.Authorizer, _ = credentials.Authorizer()
 ```
 
 > [!NOTE]  
-> In de onderstaande controle voorbeelden wordt ervan uitgegaan dat u `ExtensionClient` al `extClient` een aangeroepen hebt geïnitialiseerd en dat deze is ingesteld zoals hierboven wordt weer gegeven. `Authorizer`
+> In de onderstaande controle voorbeelden wordt ervan uitgegaan dat u al een aangeroepen hebt geïnitialiseerd `ExtensionClient` `extClient` en dat deze is ingesteld `Authorizer` zoals hierboven wordt weer gegeven.
 
 ### <a name="enable-oms-monitoring"></a>OMS-bewaking inschakelen
 
@@ -405,7 +404,7 @@ var scriptAction1 = hdi.RuntimeScriptAction{Name: to.StringPtr("<Script Name>"),
 client.ExecuteScriptActions(context.Background(), "<Resource Group Name>", "<Cluster Name>", hdi.ExecuteScriptActionParameters{PersistOnSuccess: to.BoolPtr(true), ScriptActions: &[]hdi.RuntimeScriptAction{scriptAction1}}) //add more RuntimeScriptActions to the list to execute multiple scripts
 ```
 
-Voor de bewerkingen script actie verwijderen en lijst met persistente script acties moet u een `ScriptActionsClient`maken, op dezelfde manier als u hebt gemaakt `ClusterClient` om te gebruiken voor beheer bewerkingen. Zodra u de sectie verificatie hierboven hebt voltooid, kunt u een `ScriptActionsClient` van de volgende opties maken:
+Voor de bewerkingen script actie verwijderen en lijst met persistente script acties moet u een maken `ScriptActionsClient` , op dezelfde manier als u hebt gemaakt `ClusterClient` om te gebruiken voor beheer bewerkingen. Zodra u de sectie verificatie hierboven hebt voltooid, kunt u een van de `ScriptActionsClient` volgende opties maken:
 
 ```golang
 scriptActionsClient := hdi.NewScriptActionsClient(SUBSCRIPTION_ID)
@@ -413,7 +412,7 @@ scriptActionsClient.Authorizer, _ = credentials.Authorizer()
 ```
 
 > [!NOTE]  
-> In de onderstaande script acties-voor beelden wordt ervan uitgegaan `ScriptActionsClient` dat `scriptActionsClient` u al een aangeroepen hebt geïnitialiseerd en dat deze is ingesteld zoals hierboven wordt weer gegeven. `Authorizer`
+> In de onderstaande script acties-voor beelden wordt ervan uitgegaan dat u al een aangeroepen hebt geïnitialiseerd en dat deze is `ScriptActionsClient` `scriptActionsClient` ingesteld `Authorizer` zoals hierboven wordt weer gegeven.
 
 ### <a name="delete-script-action"></a>Script actie verwijderen
 
@@ -426,7 +425,7 @@ scriptActionsClient.Delete(context.Background(), "<Resource Group Name>", "<Clus
 ### <a name="list-persisted-script-actions"></a>Permanente script acties weer geven
 
 > [!NOTE]  
-> Beide `ListByCluster()` retourneert een `ScriptActionsListPage` struct. Als u de volgende pagina wilt weer geven, `Next()`kunt u bellen. Dit kan worden herhaald tot `ClusterListResultPage.NotDone()` er `false`een resultaat is, zoals wordt weer gegeven in het onderstaande voor beeld.
+> Beide `ListByCluster()` retourneert een `ScriptActionsListPage` struct. Als u de volgende pagina wilt weer geven, kunt u bellen `Next()` . Dit kan worden herhaald tot `ClusterListResultPage.NotDone()` er `false` een resultaat is, zoals wordt weer gegeven in het onderstaande voor beeld.
 
 Voor het weer geven van alle persistente script acties voor het opgegeven cluster:
 ```golang
@@ -453,7 +452,7 @@ for (page.NotDone()) {
 
 ### <a name="list-all-scripts-execution-history"></a>De uitvoerings geschiedenis van alle scripts weer geven
 
-Voor deze bewerking moet u een `ScriptExecutionHistoryClient`maken, op dezelfde manier als u hebt gemaakt `ClusterClient` om te gebruiken voor beheer bewerkingen. Zodra u de sectie verificatie hierboven hebt voltooid, kunt u een `ScriptActionsClient` van de volgende opties maken:
+Voor deze bewerking moet u een maken, op `ScriptExecutionHistoryClient` dezelfde manier als u hebt gemaakt `ClusterClient` om te gebruiken voor beheer bewerkingen. Zodra u de sectie verificatie hierboven hebt voltooid, kunt u een van de `ScriptActionsClient` volgende opties maken:
 
 ```golang
 scriptExecutionHistoryClient := hdi.NewScriptExecutionHistoryClient(SUBSCRIPTION_ID)
@@ -461,7 +460,7 @@ scriptExecutionHistoryClient.Authorizer, _ = credentials.Authorizer()
 ```
 
 > [!NOTE]  
-> In de onderstaande stappen wordt ervan uitgegaan dat u `ScriptExecutionHistoryClient` al `scriptExecutionHistoryClient` een aangeroepen hebt geïnitialiseerd en dat deze is ingesteld zoals hierboven wordt weer gegeven. `Authorizer`
+> In de onderstaande stappen wordt ervan uitgegaan dat u al een aangeroepen hebt geïnitialiseerd `ScriptExecutionHistoryClient` `scriptExecutionHistoryClient` en dat deze is ingesteld `Authorizer` zoals hierboven wordt weer gegeven.
 
 De uitvoerings geschiedenis van alle scripts voor het opgegeven cluster weer geven:
 

@@ -7,10 +7,9 @@ author: bwren
 ms.author: bwren
 ms.date: 03/12/2020
 ms.openlocfilehash: a6ab126c3a5b0d2a82b17fac42dcc9e20f6aba3f
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "79480450"
 ---
 # <a name="create-interactive-reports-azure-monitor-for-vms-with-workbooks"></a>Interactieve rapporten maken: Azure Monitor voor VM's met werkmappen
@@ -26,7 +25,7 @@ Werkmappen zijn handig voor scenario's zoals:
 
 In de volgende tabel ziet u een overzicht van de werkmappen die Azure Monitor voor VM's bevat om aan de slag te gaan.
 
-| Werkmap | Beschrijving | Bereik |
+| Werkmap | Description | Bereik |
 |----------|-------------|-------|
 | Prestaties | Biedt een aanpas bare versie van onze weer gave top N-lijsten en-diagrammen in één werkmap die gebruikmaakt van alle Log Analytics prestatie meter items die u hebt ingeschakeld.| Op schaal |
 | Prestatiemeteritems | Een bovenste N grafiek weergave in een breed scala aan prestatie meter items. | Op schaal |
@@ -44,7 +43,7 @@ In de volgende tabel ziet u een overzicht van de werkmappen die Azure Monitor vo
 
 Een werkmap bestaat uit secties die bestaan uit onafhankelijk Bewerk bare grafieken, tabellen, tekst en invoer besturings elementen. Voor een beter begrip van werkmappen kunt u beginnen met het openen van een sjabloon en het maken van een aangepaste werkmap door lopen. 
 
-1. Meld u aan bij de [Azure-portal](https://portal.azure.com).
+1. Meld u aan bij [Azure Portal](https://portal.azure.com).
 
 2. Selecteer **virtual machines**.
 
@@ -100,7 +99,7 @@ Voor het toevoegen van gegevens uit andere Log Analytics werk ruimten of van een
 
 ### <a name="advanced-analytic-query-settings"></a>Geavanceerde instellingen voor analytische query's
 
-Elke sectie heeft zijn eigen geavanceerde instellingen, die toegankelijk zijn via de sectie ![instellingen werkmappen bewerkings](media/vminsights-workbooks/006-settings.png) pictogram bevindt zich rechts van de knop **para meters toevoegen** .
+Elke sectie heeft zijn eigen geavanceerde instellingen, die toegankelijk zijn via de ![ sectie instellingen werkmappen bewerkings ](media/vminsights-workbooks/006-settings.png) pictogram bevindt zich rechts van de knop **para meters toevoegen** .
 
 ![Sectie besturings elementen voor het bewerken van Azure Monitor voor VM's-werkmappen](media/vminsights-workbooks/007-settings-expanded.png)
 
@@ -147,7 +146,7 @@ Hier volgt een voor beeld van gegevens van virtuele machines die worden opgehaal
 
 Met de para meters van de werkmap kunt u waarden in de werkmap wijzigen zonder de query-of tekst secties hand matig te bewerken. Dit betekent dat het niet nodig is om inzicht te krijgen in de onderliggende analyse query taal en de potentiële doel groep van rapporten op basis van een werkmap aanzienlijk uit te breiden.
 
-De waarden van para meters worden vervangen in de secties query, tekst of andere para meters door de naam van de para meter ``{parameterName}``tussen accolades te plaatsen, zoals. Namen van para meters zijn beperkt tot vergelijk bare regels als Java script-id's, alfabetische tekens of onderstrepings tekens, gevolgd door een alfanumeriek of onderstrepings teken. Zo is **a1** toegestaan, maar **1a** is niet toegestaan.
+De waarden van para meters worden vervangen in de secties query, tekst of andere para meters door de naam van de para meter tussen accolades te plaatsen, zoals ``{parameterName}`` . Namen van para meters zijn beperkt tot vergelijk bare regels als Java script-id's, alfabetische tekens of onderstrepings tekens, gevolgd door een alfanumeriek of onderstrepings teken. Zo is **a1** toegestaan, maar **1a** is niet toegestaan.
 
 Para meters zijn lineair, vanaf de bovenkant van een werkmap en doorlopend naar latere stappen.  Para meters die later in een werkmap zijn gedeclareerd, kunnen para meters overschrijven die eerder zijn gedeclareerd. Op deze manier kunt u ook para meters gebruiken om toegang te krijgen tot de waarden van eerder gedefinieerde para meters. Binnen de stap zelf van een para meter zijn para meters ook lineair, van links naar rechts, waarbij para meters aan de rechter kant kunnen afhankelijk zijn van een para meter die eerder in diezelfde stap is gedeclareerd.
  

@@ -12,10 +12,9 @@ manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 5c32867313a0adf1967cb55cb78c42cc1b4e5758
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80653129"
 ---
 # <a name="getting-started-with-the-azure-multi-factor-authentication-server"></a>Aan de slag met de Azure Multi-Factor Authentication-server
@@ -51,7 +50,7 @@ Wanneer een master Azure MFA-server offline gaat, kunnen de ondergeschikte serve
 
 Zorg ervoor dat de server die u voor Azure Multi-Factor Authentication gebruikt, voldoet aan de volgende vereisten:
 
-| Vereisten voor Azure Multi-Factor Authentication-server | Beschrijving |
+| Vereisten voor Azure Multi-Factor Authentication-server | Description |
 |:--- |:--- |
 | Hardware |<li>200 MB aan vasteschijfruimte</li><li>Voor x32 of x64 geschikte processor</li><li>1 GB of meer RAM-geheugen</li> |
 | Software |<li>Windows Server 2016</li><li>Windows Server 2012 R2</li><li>Windows Server 2012</li><li>Windows Server 2008 R2</li><li>Windows Server 2008, SP1, SP2</li><li>Windows Server 2003 R2</li><li>Windows Server 2003, SP1, SP2</li><li>Windows 10</li><li>Windows 8.1, alle edities</li><li>Windows 8, alle edities</li><li>Windows 7, alle edities</li><li>Windows Vista, alle edities, SP1, SP2</li><li>Microsoft .NET 4.0 Framework</li><li>IIS 7.0 of een recentere versie als de installatie wordt uitgevoerd vanuit de gebruikersportal of de webservice-SDK</li> |
@@ -96,7 +95,7 @@ Als u de functie Gebeurtenisbevestiging niet gebruikt en gebruikers geen mobiele
 Volg deze stappen om de Azure Multi-Factor Authentication-server te downloaden via Azure Portal:
 
 1. Meld u aan bij de [Azure Portal](https://portal.azure.com) als beheerder.
-2. Zoek naar *Azure Active Directory* en selecteer deze optie. Selecteer **beveiliging** > **MFA**.
+2. Zoek naar *Azure Active Directory* en selecteer deze optie. Selecteer **beveiliging**  >  **MFA**.
 3. Selecteer **Server instellingen**onder **beheer MFA server**.
 4. Selecteer **Downloaden** en volg de instructies op de downloadpagina om het installatieprogramma op te slaan. 
 

@@ -10,10 +10,9 @@ author: likebupt
 ms.author: keli19
 ms.date: 02/11/2020
 ms.openlocfilehash: 7550bb7c6bbf7602245f9a9f1ac006ce693b36a8
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "79477643"
 ---
 # <a name="cross-validate-model"></a>Kruisvalidatie van model valideren
@@ -86,7 +85,7 @@ De eerste uitvoer van de module levert de bron gegevens voor elke rij, samen met
 
 Als u de resultaten wilt weer geven, klikt u in de pijp lijn met de rechter muisknop op de model module Kruis valideren. Selecteer **gescoorde resultaten visualiseren**.
 
-| Nieuwe kolomnaam      | Beschrijving                              |
+| Nieuwe kolomnaam      | Description                              |
 | -------------------- | ---------------------------------------- |
 | Labels met een score        | Deze kolom wordt toegevoegd aan het einde van de gegevensset. Het bevat de voorspelde waarde voor elke rij. |
 | Gescoorde kansen | Deze kolom wordt toegevoegd aan het einde van de gegevensset. Deze geeft de geschatte waarschijnlijkheid van de waarde in de **gescoorde labels**aan. |
@@ -101,7 +100,7 @@ In dit rapport worden de vouwen weer gegeven op index waarde, in oplopende volg 
 Als u de resultaten wilt weer geven, klikt u in de pijp lijn met de rechter muisknop op de model module Kruis valideren. Selecteer **evaluatie resultaten visualiseren door te vouwen**.
 
 
-|Kolomnaam| Beschrijving|
+|Kolomnaam| Description|
 |----|----|
 |Vouw nummer| Een id voor elke vouw. Als u vijf vouwen hebt gemaakt, zijn er vijf subsets met gegevens, genummerd van 0 tot 4.
 |Aantal voor beelden in vouwen|Het aantal rijen dat aan elke vouw is toegewezen. Ze moeten ongeveer gelijk zijn. |

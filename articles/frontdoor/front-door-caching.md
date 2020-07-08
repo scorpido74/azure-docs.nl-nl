@@ -12,10 +12,9 @@ ms.workload: infrastructure-services
 ms.date: 09/10/2018
 ms.author: sharadag
 ms.openlocfilehash: d4fed878e2c0b1430e963f43743fd772493d3270
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "79471741"
 ---
 # <a name="caching-with-azure-front-door"></a>Caching met de voor deur van Azure
@@ -85,24 +84,24 @@ Wanneer een aanvraag voor een Asset compressie specificeert en de aanvraag resul
 Met de voor deur kunt u bepalen hoe bestanden in de cache worden opgeslagen voor een webaanvraag die een query reeks bevat. In een webaanvraag met een query reeks is de query reeks het gedeelte van de aanvraag dat wordt uitgevoerd na een vraag teken (?). Een query reeks kan een of meer sleutel-waardeparen bevatten, waarbij de veld naam en de waarde ervan gescheiden worden door een gelijkteken (=). Elk sleutel-waardepaar wordt gescheiden door een en-teken (&). Bijvoorbeeld `http://www.contoso.com/content.mov?field1=value1&field2=value2`. Als er meer dan één sleutel/waarde-paar in een query reeks van een aanvraag is, is de volg orde hiervan niet van belang.
 - **Query reeksen negeren**: standaard modus. In deze modus geeft de voor deur de query teken reeksen van de aanvrager door aan de back-end bij de eerste aanvraag en slaat het de Asset op in de cache. Alle volgende aanvragen voor de activa die worden bediend vanuit de voor deur, negeren de query teken reeksen totdat het activum in de cache verloopt.
 
-- **Elke unieke URL in de cache opslaan**: in deze modus wordt elke aanvraag met een unieke URL, inclusief de query reeks, behandeld als een unieke Asset met een eigen cache. Het antwoord van de back-end voor een aanvraag voor `www.example.ashx?q=test1` wordt bijvoorbeeld in de cache geplaatst in de front-deur omgeving en wordt geretourneerd voor volgende caches met dezelfde query reeks. Een aanvraag voor `www.example.ashx?q=test2` wordt in de cache opgeslagen als een afzonderlijk activum met een eigen time-to-Live-instelling.
+- **Elke unieke URL in de cache opslaan**: in deze modus wordt elke aanvraag met een unieke URL, inclusief de query reeks, behandeld als een unieke Asset met een eigen cache. Het antwoord van de back-end voor een aanvraag voor wordt bijvoorbeeld in `www.example.ashx?q=test1` de cache geplaatst in de front-deur omgeving en wordt geretourneerd voor volgende caches met dezelfde query reeks. Een aanvraag voor `www.example.ashx?q=test2` wordt in de cache opgeslagen als een afzonderlijk activum met een eigen time-to-Live-instelling.
 
 ## <a name="cache-purge"></a>Cache opschonen
 Met de voor deur worden assets in de cache opgeslagen totdat de TTL (time-to-Live) van het activum verloopt. Nadat de TTL van het activum verloopt, haalt de front-deur omgeving een nieuwe bijgewerkte kopie van de Asset op om de client aanvraag te leveren en de cache op te slaan wanneer een client de Asset aanvraagt.
 </br>De best practice om ervoor te zorgen dat uw gebruikers altijd de nieuwste kopie van uw assets verkrijgen, is om uw assets voor elke update te maken en ze als nieuwe Url's te publiceren. Met de voor deur worden onmiddellijk de nieuwe assets opgehaald voor de volgende client aanvragen. Soms wilt u in de cache opgeslagen inhoud uit alle Edge-knoop punten verwijderen en alle nieuwe bijgewerkte assets laten afdwingen. Dit kan worden veroorzaakt door updates van uw webtoepassing, of om snel assets bij te werken die onjuiste informatie bevatten.
 
 </br>Selecteer welke assets u wilt verwijderen uit de Edge-knoop punten. Als u alle assets wilt wissen, klikt u op het selectie vakje alles opschonen. Als dat niet het geval is, typt u het pad van elk activum dat u wilt verwijderen in het tekstvak pad. De onderstaande indelingen worden ondersteund in het pad.
-1. **Eén pad leegmaken**: afzonderlijke activa opschonen door het volledige pad van de asset (zonder het protocol en domein) op te geven, met de bestands extensie, bijvoorbeeld/pictures/Strasbourg.png;
-2. **Joker tekens opschonen**:\*sterretje () kan worden gebruikt als Joker teken. Verwijder alle mappen, submappen en bestanden onder een eind punt met/\* in het pad of verwijder alle submappen en bestanden in een specifieke map door de map op te geven gevolgd door/\*, bijvoorbeeld/Pictures/.\*
+1. **Eén pad leegmaken**: afzonderlijke activa opschonen door het volledige pad van de asset (zonder het protocol en domein) op te geven, met de bestands extensie, bijvoorbeeld/pictures/strasbourg.png;
+2. **Joker tekens opschonen**: sterretje ( \* ) kan worden gebruikt als Joker teken. Verwijder alle mappen, submappen en bestanden onder een eind punt met/ \* in het pad of verwijder alle submappen en bestanden in een specifieke map door de map op te geven gevolgd door/ \* , bijvoorbeeld/pictures/ \* .
 3. **Basis domein opschonen**: de hoofdmap van het eind punt met '/' in het pad opschonen.
 
 Cache verwijderingen op de voor deur zijn hoofdletter gevoelig. Daarnaast zijn ze query teken reeks neutraal, wat betekent dat als u een URL opschoont, alle wijzigingen in de query teken reeks worden verwijderd. 
 
 ## <a name="cache-expiration"></a>Verval datum van cache
 De volgende volg orde van koppen wordt gebruikt om te bepalen hoe lang een item wordt opgeslagen in de cache:</br>
-1. Cache-Control: s-maxAge =\<seconden>
-2. Cache-Control: Max-Age =\<seconden>
-3. Verloopt \<op: http-datum>
+1. Cache-Control: s-maxAge =\<seconds>
+2. Cache-Control: Max-Age =\<seconds>
+3. Verstreken\<http-date>
 
 Cache-Control-antwoord headers die aangeven dat het antwoord niet in de cache moet worden opgeslagen, zoals cache-Control: private, caching-Control: no-cache en Cache-Control: No-Store is gehonoreerd. Als er echter meerdere aanvragen in de vlucht zijn bij een POP voor dezelfde URL, kunnen ze de reactie delen. Als er geen cache-Control aanwezig is, is het standaard gedrag dat AFD de resource gedurende X-tijd in de cache plaatst waarbij X wille keurig tussen 1 en 3 dagen wordt gekozen.
 

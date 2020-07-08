@@ -15,10 +15,9 @@ ms.workload: na
 ms.date: 09/23/2019
 ms.author: yelevin
 ms.openlocfilehash: fdb58686fcdd18a8e2861aab533717dbc91e8893
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "79476012"
 ---
 # <a name="work-with-multiple-tenants-in-azure-sentinel"></a>Werken met meerdere tenants in azure Sentinel 
@@ -27,7 +26,7 @@ Als u een beheerde Security service provider (MSSP) bent en u [Azure Lighthouse]
 
 ## <a name="prerequisites"></a>Vereisten
 - [Onboarding van Azure Lighthouse](../lighthouse/how-to/onboard-customer.md)
-- Om dit goed te laten werken, moet uw Tenant zijn geregistreerd bij de Azure Sentinel resource provider op ten minste één abonnement. Als u een geregistreerde Azure-Sentinel hebt in uw Tenant, bent u klaar om aan de slag te gaan. Als dat niet het geval is, selecteert u **abonnementen** uit het Azure Portal, gevolgd door **resource providers**.  Zoek en selecteer `Microsoft.OperationalInsights` `Microsoft.SecurityInsights`vervolgens, in het scherm **Soc-resource providers** , en selecteer **registreren**.
+- Om dit goed te laten werken, moet uw Tenant zijn geregistreerd bij de Azure Sentinel resource provider op ten minste één abonnement. Als u een geregistreerde Azure-Sentinel hebt in uw Tenant, bent u klaar om aan de slag te gaan. Als dat niet het geval is, selecteert u **abonnementen** uit het Azure Portal, gevolgd door **resource providers**.  Zoek en selecteer vervolgens, in het scherm **Soc-resource providers** , en `Microsoft.OperationalInsights` Selecteer `Microsoft.SecurityInsights` **registreren**.
    ![Resource providers controleren](media/multiple-tenants-service-providers/check-resource-provider.png)
 ## <a name="how-to-access-azure-sentinel-from-other-tenants"></a>Toegang tot Azure Sentinel van andere tenants
 1. Selecteer onder **adres lijst + abonnement**de gedelegeerde directory's en de abonnementen waar de Azure Sentinel-werk ruimten van uw klant zich bevinden.
@@ -44,7 +43,7 @@ Als u een beheerde Security service provider (MSSP) bent en u [Azure Lighthouse]
 
 
 ## <a name="next-steps"></a>Volgende stappen
-In dit document hebt u geleerd hoe u meerdere Azure Sentinel-tenants naadloos kunt beheren. Raadpleeg de volgende artikelen voor meer informatie over Azure Sentinel:
-- Meer informatie over hoe u [inzicht krijgt in uw gegevens en mogelijke bedreigingen](quickstart-get-visibility.md).
-- Ga aan de slag [met het detecteren van bedreigingen met Azure Sentinel](tutorial-detect-threats-built-in.md).
+In dit document hebt u geleerd hoe u meerdere Azure Sentinel-tenants naadloos kunt beheren. Zie de volgende artikelen voor meer informatie over Azure Sentinel:
+- Meer informatie over het [verkrijgen van inzicht in uw gegevens en mogelijke bedreigingen](quickstart-get-visibility.md).
+- Ga aan de slag met [het detecteren van bedreigingen met Azure Sentinel](tutorial-detect-threats-built-in.md).
 

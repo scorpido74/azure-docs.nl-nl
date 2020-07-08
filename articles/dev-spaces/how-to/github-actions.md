@@ -7,10 +7,9 @@ description: Wijzigingen van een pull-aanvraag rechtstreeks controleren en teste
 keywords: Docker, Kubernetes, azure, AKS, Azure Kubernetes service, containers, GitHub acties, helm, Service-Mesh, Service-Mesh-route ring, kubectl, K8S
 manager: gwallace
 ms.openlocfilehash: a83da0ef3958748831eb0eeda1aa5e91efa7ef2e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80637950"
 ---
 # <a name="github-actions--azure-kubernetes-service-preview"></a>GitHub acties & Azure Kubernetes service (preview)
@@ -29,7 +28,7 @@ In deze handleiding leert u het volgende:
 
 ## <a name="prerequisites"></a>Vereisten
 
-* Een Azure-abonnement. Als u geen Azure-abonnement hebt, kunt u een [gratis account](https://azure.microsoft.com/free)maken.
+* Een Azure-abonnement. Als u geen Azure-abonnement hebt, kunt u een [gratis account](https://azure.microsoft.com/free) maken.
 * [Azure CLI geïnstalleerd][azure-cli-installed].
 * [Helm 3 is geïnstalleerd][helm-installed].
 * Een GitHub-account waarvoor [github-acties zijn ingeschakeld][github-actions-beta-signup].
@@ -116,7 +115,7 @@ cd dev-spaces/samples/BikeSharingApp/
 git checkout -b bike-images
 ```
 
-Edit [Bikes/server. js][bikes-server-js] om de regels 232 en 233 te verwijderen:
+[Fietsen/server.js][bikes-server-js] bewerken om de regels 232 en 233 te verwijderen:
 
 ```javascript
     // Hard code image url *FIX ME*
@@ -131,7 +130,7 @@ De sectie moet er nu als volgt uitzien:
     delete theBike._id;
 ```
 
-Sla het bestand op en `git add` `git commit` gebruik het om de wijzigingen te bewerken.
+Sla het bestand `git add` op en gebruik het `git commit` om de wijzigingen te bewerken.
 
 ```cmd
 git add Bikes/server.js 

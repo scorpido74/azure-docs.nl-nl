@@ -9,10 +9,9 @@ ms.topic: article
 ms.date: 07/18/2017
 ms.author: tagore
 ms.openlocfilehash: a6030cbb756525137497834ac911835033858401
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80652077"
 ---
 # <a name="customize-the-lifecycle-of-a-web-or-worker-role-in-net"></a>De levens cyclus van een web-of worker-rol in .NET aanpassen
@@ -72,7 +71,7 @@ U kunt de methode **Run** overschrijven om een langlopende thread voor uw rolins
 Het is niet nodig om de methode **Run** te overschrijven. met de standaard implementatie wordt een thread gestart die permanent in slaap stand wordt gezet. Als u de methode **Run** overschrijft, moet uw code voor onbepaalde tijd worden geblokkeerd. Als de methode **Run** wordt geretourneerd, wordt de rol automatisch zonder problemen gerecycled. met andere woorden: Azure verhoogt de gebeurtenis **stoppen** en roept de methode **OnStop** aan zodat uw afsluit sequenties kunnen worden uitgevoerd voordat de rol offline wordt genomen.
 
 ### <a name="implementing-the-aspnet-lifecycle-methods-for-a-web-role"></a>De ASP.NET levenscyclus methoden voor een webrole implementeren
-U kunt de ASP.NET levenscyclus methoden, naast die van de klasse **RoleEntryPoint** , gebruiken voor het beheren van initialisatie-en afsluit reeksen voor een webrole. Dit kan handig zijn voor compatibiliteits doeleinden als u een bestaande ASP.NET-toepassing naar Azure wilt overbrengen. De ASP.NET levenscyclus methoden worden aangeroepen vanuit de **RoleEntryPoint** -methoden. De **Start\_** methode van de toepassing wordt aangeroepen nadat de methode **RoleEntryPoint. onstart** is voltooid. De **End\_** -methode van de toepassing wordt aangeroepen voordat de methode **RoleEntryPoint. OnStop** wordt aangeroepen.
+U kunt de ASP.NET levenscyclus methoden, naast die van de klasse **RoleEntryPoint** , gebruiken voor het beheren van initialisatie-en afsluit reeksen voor een webrole. Dit kan handig zijn voor compatibiliteits doeleinden als u een bestaande ASP.NET-toepassing naar Azure wilt overbrengen. De ASP.NET levenscyclus methoden worden aangeroepen vanuit de **RoleEntryPoint** -methoden. De ** \_ Start** methode van de toepassing wordt aangeroepen nadat de methode **RoleEntryPoint. onstart** is voltooid. De ** \_ End** -methode van de toepassing wordt aangeroepen voordat de methode **RoleEntryPoint. OnStop** wordt aangeroepen.
 
 ## <a name="next-steps"></a>Volgende stappen
 Meer informatie over het [maken van een Cloud service pakket](cloud-services-model-and-package.md).

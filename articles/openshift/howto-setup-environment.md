@@ -8,10 +8,9 @@ ms.date: 11/04/2019
 ms.topic: conceptual
 ms.service: container-service
 ms.openlocfilehash: e7396ce9fbed46688d59b582f246e5454d063fb3
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "79477031"
 ---
 # <a name="set-up-your-azure-red-hat-openshift-dev-environment"></a>Een Azure Red Hat OpenShift-ontwikkelaarsomgeving instellen
@@ -19,7 +18,7 @@ ms.locfileid: "79477031"
 Als u Microsoft Azure Red Hat open Shift-toepassingen wilt bouwen en uitvoeren, moet u het volgende doen:
 
 * Installeer versie 2.0.65 (of hoger) van de Azure CLI (of gebruik de Azure Cloud Shell).
-* Registreer u voor `AROGA` de functie en de bijbehorende resource providers.
+* Registreer u voor de `AROGA` functie en de bijbehorende resource providers.
 * Maak een Azure Active Directory-Tenant (Azure AD).
 * Maak een Azure AD-toepassings object.
 * Maak een Azure AD-gebruiker.
@@ -34,7 +33,7 @@ Azure Red Hat open Shift vereist versie 2.0.65 of hoger van de Azure CLI. Als u 
 az --version
 ```
 
-De eerste regel van de uitvoer heeft bijvoorbeeld `azure-cli (2.0.65)`de CLI-versie.
+De eerste regel van de uitvoer heeft bijvoorbeeld de CLI-versie `azure-cli (2.0.65)` .
 
 Hier vindt u instructies voor [het installeren van de Azure cli](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest) als u een nieuwe installatie of een upgrade nodig hebt.
 
@@ -42,7 +41,7 @@ U kunt ook de [Azure Cloud shell](https://docs.microsoft.com/azure/cloud-shell/o
 
 ## <a name="register-providers-and-features"></a>Providers en functies registreren
 
-De `Microsoft.ContainerService AROGA` functie, `Microsoft.Solutions` `Microsoft.Compute` `Microsoft.Storage`,, en `Microsoft.Network` providers moeten hand matig worden geregistreerd bij uw abonnement voordat u uw eerste Azure Red Hat open Shift-cluster implementeert. `Microsoft.KeyVault`
+De `Microsoft.ContainerService AROGA` functie,,, en `Microsoft.Solutions` `Microsoft.Compute` `Microsoft.Storage` `Microsoft.KeyVault` `Microsoft.Network` providers moeten hand matig worden geregistreerd bij uw abonnement voordat u uw eerste Azure Red Hat open Shift-cluster implementeert.
 
 Als u deze providers en onderdelen hand matig wilt registreren, gebruikt u de volgende instructies van een bash-shell als u de CLI hebt geïnstalleerd of van de Azure Cloud Shell-sessie (bash) in uw Azure Portal:
 

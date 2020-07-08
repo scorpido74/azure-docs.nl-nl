@@ -6,10 +6,9 @@ ms.topic: article
 ms.date: 1/17/2020
 ms.author: atinb
 ms.openlocfilehash: 0761db6b73c6fcfeb1ef6fda729a68c9644bbc72
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "79479556"
 ---
 # <a name="install-azure-farmbeats"></a>Azure FarmBeats installeren
@@ -124,9 +123,9 @@ Voer de volgende stappen uit in een Cloud Shell-exemplaar met behulp van de Powe
 
 4. Het script vraagt om de volgende drie invoer:
 
-    - **FarmBeats-website naam**: dit is het unieke URL-voor voegsel voor uw FarmBeats-webtoepassing. Als het voor voegsel al wordt gemaakt, wordt er een fout opgetreden in het script. Na de installatie is uw FarmBeats-implementatie toegankelijk vanaf https://\<FarmBeats-website naam>. azurewebsites.net en de Swagger-api's hebben https://\<FarmBeats-website-name>-API.azurewebsites.net
+    - **FarmBeats-website naam**: dit is het unieke URL-voor voegsel voor uw FarmBeats-webtoepassing. Als het voor voegsel al wordt gemaakt, wordt er een fout opgetreden in het script. Na de installatie is uw FarmBeats-implementatie toegankelijk via https:// \<FarmBeats-website-name> . azurewebsites.net en zijn de Swagger-api's op https:// \<FarmBeats-website-name> -API.azurewebsites.net
 
-    - **Azure-aanmeldings-id**: Geef de Azure-aanmeldings-id op voor de gebruiker die u wilt toevoegen als beheerder van FarmBeats. Deze gebruiker kan vervolgens toegang tot FarmBeats-webtoepassing verlenen aan andere gebruikers. De aanmeldings-ID is in het algemeen john.doe@domain.comvan het formulier. Azure UPN wordt ook ondersteund.
+    - **Azure-aanmeldings-id**: Geef de Azure-aanmeldings-id op voor de gebruiker die u wilt toevoegen als beheerder van FarmBeats. Deze gebruiker kan vervolgens toegang tot FarmBeats-webtoepassing verlenen aan andere gebruikers. De aanmeldings-ID is in het algemeen van het formulier john.doe@domain.com . Azure UPN wordt ook ondersteund.
 
     - **Abonnements-id**: dit is de id van het abonnement waarin u Azure FarmBeats wilt installeren
 
@@ -168,9 +167,9 @@ U bent nu klaar om FarmBeats te installeren. Volg de onderstaande stappen om de 
 
 8. Zodra de ingevoerde gegevens zijn gevalideerd, selecteert u **OK**. De pagina Gebruiksvoorwaarden wordt weer gegeven. Bekijk de voor waarden en selecteer **maken** om de installatie te starten. U wordt omgeleid naar de pagina waar u de voortgang van de installatie kunt volgen.
 
-Nadat de installatie is voltooid, kunt u de installatie controleren en de FarmBeats-portal gaan gebruiken door te navigeren naar de naam van de website die u\<tijdens de installatie hebt ingesteld: https://FarmBeats-website-name>. azurewebsites.net. U ziet de FarmBeats-gebruikers interface met een optie voor het maken van farms.
+Nadat de installatie is voltooid, kunt u de installatie controleren en de FarmBeats-portal gaan gebruiken door te navigeren naar de naam van de website die u tijdens de installatie hebt ingesteld: https:// \<FarmBeats-website-name> . azurewebsites.net. U ziet de FarmBeats-gebruikers interface met een optie voor het maken van farms.
 
-**Datahub** vindt u op https://\<FarmBeats-website naam>-API.azurewebsites.net/Swagger. Hier ziet u de verschillende API-objecten van FarmBeats en worden REST-bewerkingen uitgevoerd op de Api's.
+**Datahub** vindt u op https:// \<FarmBeats-website-name> -API.azurewebsites.net/Swagger. Hier ziet u de verschillende API-objecten van FarmBeats en worden REST-bewerkingen uitgevoerd op de Api's.
 
 ## <a name="upgrade"></a>Upgraden
 
@@ -196,7 +195,7 @@ De eerste keer dat gebruikers worden gevraagd om een abonnement te selecteren en
         ./upgrade-farmbeats.ps1 -InputFilePath [Path to input.json file]
     ```
 
-Het pad naar het bestand input. json is optioneel. Als u dit niet opgeeft, wordt u door het script gevraagd om alle vereiste invoer. De upgrade moet in ongeveer 30 minuten worden voltooid.
+Het pad naar input.jsin het bestand is optioneel. Als u dit niet opgeeft, wordt u door het script gevraagd om alle vereiste invoer. De upgrade moet in ongeveer 30 minuten worden voltooid.
 
 ## <a name="uninstall"></a>Verwijderen
 

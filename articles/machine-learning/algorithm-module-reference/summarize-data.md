@@ -10,10 +10,9 @@ author: likebupt
 ms.author: keli19
 ms.date: 01/27/2020
 ms.openlocfilehash: b0def12582dd3795e1b17334406e28d77c3c5656
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "79477439"
 ---
 # <a name="summarize-data"></a>Gegevens samenvatten
@@ -46,7 +45,7 @@ De module berekent de belang rijke scores voor elke kolom en retourneert een rij
 
 Het rapport van de module kan de volgende statistieken bevatten. 
 
-|Kolomnaam|Beschrijving|
+|Kolomnaam|Description|
 |------|------|  
 |**Functie**|Naam van de kolom|
 |**Aantal**|Aantal rijen|
@@ -54,7 +53,7 @@ Het rapport van de module kan de volgende statistieken bevatten.
 |**Aantal ontbrekende waarden**|Aantal unieke waarden in kolom|
 |**Haal**|Laagste waarde in kolom|  
 |**Aantal**|Hoogste waarde in kolom|
-|**Gemiddelde**|Gemiddelde van alle kolom waarden|
+|**Greenwich**|Gemiddelde van alle kolom waarden|
 |**Gemiddelde afwijking**|Gemiddelde afwijking van kolom waarden|
 |**1e kwartiel**|Waarde bij eerste kwartiel|
 |**Mediaan**|Kolom waarde mediaan|

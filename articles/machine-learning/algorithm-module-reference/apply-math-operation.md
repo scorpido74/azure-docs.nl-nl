@@ -10,10 +10,9 @@ author: likebupt
 ms.author: keli19
 ms.date: 09/09/2019
 ms.openlocfilehash: 2b4d6939aa1db4b8321c792898ed421c0d16cc99
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "79456740"
 ---
 # <a name="apply-math-operation"></a>Wiskundige bewerking toepassen
@@ -32,7 +31,7 @@ Nadat u een bewerking hebt gedefinieerd en de pijp lijn hebt uitgevoerd, worden 
 
 Zoek naar de bewerking die u nodig hebt in de volgende categorieën:  
 
-- [Hoofd](#basic-math-operations)  
+- [Standaard](#basic-math-operations)  
   
      De functies in de categorie **Basic** kunnen worden gebruikt voor het bewerken van één waarde of een kolom met waarden. U kunt bijvoorbeeld de absolute waarde van alle getallen in een kolom ophalen of de vierkantswortel van elke waarde in een kolom berekenen.  
   
@@ -72,7 +71,7 @@ Elk exemplaar van deze module kan slechts één type bewerking tegelijk uitvoere
 1.  Selecteer een of meer bron kolommen waarop de berekening moet worden uitgevoerd.   
   
     - Een kolom die u kiest, moet een numeriek gegevens type zijn. 
-    - Het gegevens bereik moet geldig zijn voor de geselecteerde wiskundige bewerking. Anders treedt er een fout of NaN (geen getal) resultaat op. Bijvoorbeeld: ln (-1,0) is een ongeldige bewerking en resulteert in een waarde van `NaN`.
+    - Het gegevens bereik moet geldig zijn voor de geselecteerde wiskundige bewerking. Anders treedt er een fout of NaN (geen getal) resultaat op. Bijvoorbeeld: ln (-1,0) is een ongeldige bewerking en resulteert in een waarde van `NaN` .
   
 1.  Klik op **categorie** om het **type** wiskundige bewerking te selecteren dat u wilt uitvoeren.
     
@@ -253,12 +252,12 @@ De volg orde waarin u de kolommen voor het delen en aftrekken hebt gekozen, lijk
 
 Bewerking|Num1|Num2|Resultaten kolom|Resultaat waarde|
 ----|----|----|----|----
-|Optelling|1|5|Toevoegen (Num2_Num1)| 4|
-|Vermenigvuldiging|1|5|Meerdere (Num2_Num1)|5|
+|Optellen|1|5|Toevoegen (Num2_Num1)| 4|
+|Vermenigvuldigen|1|5|Meerdere (Num2_Num1)|5|
 |Aftrekking|1|5|Aftrekken (Num2_Num1)|4|
 |Aftrekking|0|1|Aftrekken (Num2_Num1)|0|
-|Deling|1|5|Delen (Num2_Num1)|5|
-|Deling|0|1|Delen (Num2_Num1)|Oneindig|
+|Afdeling|1|5|Delen (Num2_Num1)|5|
+|Afdeling|0|1|Delen (Num2_Num1)|Oneindig|
 
 ### <a name="add"></a>Toevoegen
 

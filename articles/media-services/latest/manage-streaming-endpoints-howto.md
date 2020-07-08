@@ -15,10 +15,9 @@ ms.topic: article
 ms.date: 03/11/2020
 ms.author: juliako
 ms.openlocfilehash: 75ba2ad87eabd7ff6b0625ad95ab24a8ae58dd0f
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "79461041"
 ---
 # <a name="manage-streaming-endpoints-with--media-services-v3"></a>Streaming-eind punten beheren met Media Services v3
@@ -32,7 +31,7 @@ In dit artikel wordt beschreven hoe u de [Start](https://docs.microsoft.com/rest
     
 ## <a name="prerequisites"></a>Vereisten
 
-Bod 
+Bekijk: 
 
 * [Media Services concepten](concepts-overview.md)
 * [Concept van streaming-eind punt](streaming-endpoint-concept.md)
@@ -54,7 +53,7 @@ Zie voor meer informatie:
 
 ## <a name="use-the-azure-portal"></a>Azure Portal gebruiken 
  
-1. Meld u aan bij de [Azure-portal](https://portal.azure.com/).
+1. Meld u aan bij [Azure Portal](https://portal.azure.com/).
 1. Ga naar uw Azure Media Services-account.
 1. Selecteer in het linkerdeel venster **streaming-eind punten**.
 1. Selecteer het streaming-eind punt dat u wilt starten en selecteer vervolgens **starten**.

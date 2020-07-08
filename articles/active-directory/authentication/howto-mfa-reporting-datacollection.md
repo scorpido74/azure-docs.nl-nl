@@ -12,10 +12,9 @@ manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 6f3b5af972ad6dd15b7c992d5e264ede97bd1dde
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80653634"
 ---
 # <a name="azure-multi-factor-authentication-user-data-collection"></a>Verzameling van Azure Multi-Factor Authentication-gebruikers gegevens
@@ -136,16 +135,16 @@ Wijzigingen (gebruikt voor het synchroniseren van gebruikers wijzigingen naar de
 Voor MFA Server versie 8,0 of hoger kunt u met het volgende proces alle gegevens voor gebruikers exporteren:
 
 - Meld u aan bij uw MFA-server, navigeer naar het tabblad **gebruikers** , selecteer de gebruiker in kwestie en klik op de knop **bewerken** . Maak scherm opnamen (Alt-PrtScn) van elk tabblad om de gebruiker de huidige MFA-instellingen te geven.
-- Voer vanaf de opdracht regel van de MFA-server de volgende opdracht uit om het pad te wijzigen volgens `C:\Program Files\Multi-Factor Authentication Server\MultiFactorAuthGdpr.exe export <username>` uw installatie om een JSON-bestand met indeling te maken.
+- Voer vanaf de opdracht regel van de MFA-server de volgende opdracht uit om het pad te wijzigen volgens uw installatie `C:\Program Files\Multi-Factor Authentication Server\MultiFactorAuthGdpr.exe export <username>` om een JSON-bestand met indeling te maken.
 - Beheerders kunnen ook de GetUserGdpr-bewerking van de webservice-SDK gebruiken als optie voor het exporteren van alle gegevens van de MFA-Cloud service die zijn verzameld voor een bepaalde gebruiker of die zijn opgenomen in een grotere rapportage oplossing.
-- Zoek `C:\Program Files\Multi-Factor Authentication Server\Logs\MultiFactorAuthSvc.log` en back-ups voor "\<username>" (Neem de aanhalings tekens in de zoek opdracht op) om alle exemplaren te vinden van de gebruikers record die wordt toegevoegd of gewijzigd.
+- Zoeken `C:\Program Files\Multi-Factor Authentication Server\Logs\MultiFactorAuthSvc.log` en eventuele back-ups voor " \<username> " (de aanhalings tekens in de zoek opdracht opnemen) om alle exemplaren te vinden van de gebruikers record die wordt toegevoegd of gewijzigd.
    - Deze records kunnen worden beperkt (maar niet geëlimineerd) door de selectie van **' gebruikers wijzigingen vastleggen '** in de sectie MFA server UX, logboek registratie op het tabblad Logboek bestanden uit te schakelen.
    - Als syslog is geconfigureerd en **' wijzigingen in het logboek vastleggen van de gebruiker '** is ingeschakeld in de sectie MFA server UX, logboek registratie, tabblad syslog, kunnen de logboek vermeldingen worden verzameld van syslog.
-- Andere instanties van de gebruikers naam in MultiFactorAuthSvc. log en andere logboek bestanden van de MFA-server die betrekking hebben op verificatie pogingen, worden beschouwd als operationeel en dubbel naar de informatie die wordt verstrekt met MultiFactorAuthGdpr. exe export of Web Service SDK GetUserGdpr.
+- Andere instanties van de gebruikers naam in MultiFactorAuthSvc. log en andere logboek bestanden van de MFA-server die betrekking hebben op verificatie pogingen, worden beschouwd als operationeel en dubbel naar de informatie die wordt verstrekt met MultiFactorAuthGdpr.exe export-of Web Service SDK GetUserGdpr.
 
 ## <a name="delete-data-from-mfa-server"></a>Gegevens verwijderen van de MFA-server
 
-Voer vanaf de opdracht regel van de MFA-server de volgende opdracht uit, waarbij u het pad wijzigt `C:\Program Files\Multi-Factor Authentication Server\MultiFactorAuthGdpr.exe delete <username>` volgens uw installatie om alle gegevens van de MFA-Cloud service die voor deze gebruiker zijn verzameld, te verwijderen.
+Voer vanaf de opdracht regel van de MFA-server de volgende opdracht uit, waarbij u het pad wijzigt volgens uw installatie `C:\Program Files\Multi-Factor Authentication Server\MultiFactorAuthGdpr.exe delete <username>` om alle gegevens van de MFA-Cloud service die voor deze gebruiker zijn verzameld, te verwijderen.
 
 - Gegevens die in de export zijn opgenomen, worden in realtime verwijderd, maar het kan tot 30 dagen duren voordat operationele of dubbele gegevens volledig worden verwijderd.
 - Beheerders kunnen ook de DeleteUserGdpr-bewerking van de webservice-SDK gebruiken als optie voor het verwijderen van alle gegevens van de MFA-Cloud service die voor een bepaalde gebruiker zijn verzameld of die zijn opgenomen in een grotere rapportage oplossing.

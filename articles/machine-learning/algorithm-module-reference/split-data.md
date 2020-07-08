@@ -10,10 +10,9 @@ author: likebupt
 ms.author: keli19
 ms.date: 10/22/2019
 ms.openlocfilehash: 9eba6f2c47629b708dde4a5a2888b76dbd24b4e4
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "79455890"
 ---
 # <a name="split-data-module"></a>Module voor splitsen van gegevens
@@ -87,7 +86,7 @@ De volgende voor beelden laten zien hoe u een gegevensset kunt verdelen met behu
 
 ### <a name="single-whole-word"></a>Eén heel woord 
 
-In dit voor beeld worden alle rijen die de tekst `Gryphon` in de kolom `Text`bevatten, in de eerste gegevensset geplaatst. Er worden andere rijen in de tweede uitvoer van **gesplitste gegevens**geplaatst.
+In dit voor beeld worden alle rijen die de tekst in de kolom bevatten, in de eerste gegevensset geplaatst `Gryphon` `Text` . Er worden andere rijen in de tweede uitvoer van **gesplitste gegevens**geplaatst.
 
 ```text
     \"Text" Gryphon  
@@ -101,7 +100,7 @@ In dit voor beeld wordt gezocht naar de opgegeven teken reeks op een wille keuri
 (\1) ^[a-f]
 ```
 
-De eerste resultaat gegevensset bevat alle rijen waar de index kolom met een van de volgende tekens begint `a`: `b`, `c`, `d`, `e`, `f`,. Alle andere rijen worden omgeleid naar de tweede uitvoer.
+De eerste resultaat gegevensset bevat alle rijen waar de index kolom met een van de volgende tekens begint: `a` , `b` , `c` , `d` , `e` , `f` . Alle andere rijen worden omgeleid naar de tweede uitvoer.
 
 ## <a name="select-a-relative-expression"></a>Een relatieve expressie selecteren
 
@@ -114,12 +113,12 @@ De eerste resultaat gegevensset bevat alle rijen waar de index kolom met een van
    Voor **numerieke kolom**:
    - De kolom bevat getallen van elk numeriek gegevens type, inclusief gegevens typen voor datum en tijd.
    - De expressie kan naar Maxi maal één kolom naam verwijzen.
-   - Gebruik het teken `&`en en voor de bewerking en. Gebruik het sluis teken ( `|`) voor de or-bewerking.
-   - De volgende Opera tors worden ondersteund `<`: `>`, `<=`, `>=`, `==`, `!=`,.
-   - U kunt geen bewerkingen groeperen met `(` behulp van en `)`.
+   - Gebruik het teken en en `&` voor de bewerking en. Gebruik het sluis teken ( `|` ) voor de or-bewerking.
+   - De volgende Opera tors worden ondersteund: `<` , `>` , `<=` , `>=` , `==` , `!=` .
+   - U kunt geen bewerkingen groeperen met behulp van `(` en `)` .
    
    Voor de **teken reeks kolom**:
-   - De volgende Opera tors worden ondersteund `==`: `!=`,.
+   - De volgende Opera tors worden ondersteund: `==` , `!=` .
 
 1. Verzend de pijp lijn.
 
@@ -129,7 +128,7 @@ De volgende voor beelden laten zien hoe u een gegevensset kunt verdelen met behu
 
 ### <a name="calendar-year"></a>Kalenderjaar
 
-Een veelvoorkomend scenario is het verdelen van een gegevensset per jaar. Met de volgende expressie worden alle rijen geselecteerd waarvan de waarden in `Year` de kolom groter `2010`zijn dan.
+Een veelvoorkomend scenario is het verdelen van een gegevensset per jaar. Met de volgende expressie worden alle rijen geselecteerd waarvan de waarden in de kolom `Year` groter zijn dan `2010` .
 
 ```text
 \"Year" > 2010
@@ -137,7 +136,7 @@ Een veelvoorkomend scenario is het verdelen van een gegevensset per jaar. Met de
 
 De datum expressie moet rekening houden met alle datum onderdelen die zijn opgenomen in de gegevens kolom. De notatie van de datums in de gegevens kolom moet consistent zijn. 
 
-In een kolom Date die de notatie `mmddyyyy`gebruikt, moet de expressie er bijvoorbeeld als volgt uitzien:
+In een kolom Date die de notatie gebruikt `mmddyyyy` , moet de expressie er bijvoorbeeld als volgt uitzien:
 
 ```text
 \"Date" > 1/1/2010

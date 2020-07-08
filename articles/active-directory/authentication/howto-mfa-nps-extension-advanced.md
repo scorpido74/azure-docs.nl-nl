@@ -12,10 +12,9 @@ manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 34d92af88106151e7efba679c53c5b5bd1c07dcd
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80653790"
 ---
 # <a name="advanced-configuration-options-for-the-nps-extension-for-multi-factor-authentication"></a>Geavanceerde configuratieopties voor de NPS-extensie voor Multi-Factor Authentication
@@ -28,7 +27,7 @@ Aangezien de NPS-extensie verbinding maakt met zowel uw on-premises als in de Cl
 
 U kunt binnen de NPS-uitbrei ding een Active Directory kenmerk opgeven dat moet worden gebruikt in plaats van de UPN voor Azure Multi-Factor Authentication. Zo kunt u uw on-premises resources beveiligen met verificatie in twee stappen zonder uw lokale Upn's te wijzigen. 
 
-Als u alternatieve aanmeldings-Id's wilt configureren `HKLM\SOFTWARE\Microsoft\AzureMfa` , gaat u naar en bewerkt u de volgende register waarden:
+Als u alternatieve aanmeldings-Id's wilt configureren, gaat u naar `HKLM\SOFTWARE\Microsoft\AzureMfa` en bewerkt u de volgende register waarden:
 
 | Naam | Type | Standaardwaarde | Beschrijving |
 | ---- | ---- | ------------- | ----------- |
@@ -42,7 +41,7 @@ Als u problemen met alternatieve aanmeldings-Id's wilt oplossen, gebruikt u de a
 
 Als u de beschik baarheid van de server wilt bewaken, bijvoorbeeld als load balancers controleren welke servers worden uitgevoerd voordat workloads worden verzonden, wilt u deze controles niet blok keren door verificatie aanvragen. Maak in plaats daarvan een lijst met IP-adressen die u kent door service accounts, en schakel Multi-Factor Authentication vereisten voor die lijst uit.
 
-Als u een lijst met toegestane IP-adressen `HKLM\SOFTWARE\Microsoft\AzureMfa` wilt configureren, gaat u naar en configureert u de volgende register waarde:
+Als u een lijst met toegestane IP-adressen wilt configureren, gaat u naar `HKLM\SOFTWARE\Microsoft\AzureMfa` en configureert u de volgende register waarde:
 
 | Naam | Type | Standaardwaarde | Beschrijving |
 | ---- | ---- | ------------- | ----------- |
@@ -51,7 +50,7 @@ Als u een lijst met toegestane IP-adressen `HKLM\SOFTWARE\Microsoft\AzureMfa` wi
 > [!NOTE]
 > Deze register sleutel wordt niet standaard gemaakt door het installatie programma en er wordt een fout weer gegeven in het AuthZOptCh-logboek wanneer de service opnieuw wordt gestart. Deze fout in het logboek kan worden genegeerd, maar als deze register sleutel is gemaakt en leeg blijft als deze niet nodig is, wordt het fout bericht niet weer gegeven.
 
-Wanneer een aanvraag afkomstig is van een IP-adres dat in de `IP_WHITELIST`is, wordt verificatie in twee stappen overgeslagen. De IP-lijst wordt vergeleken met het IP-adres dat is opgenomen in het kenmerk *ratNASIPAddress* van de RADIUS-aanvraag. Als een RADIUS-aanvraag wordt geleverd zonder het kenmerk ratNASIPAddress, wordt de volgende waarschuwing vastgelegd: "P_WHITE_LIST_WARNING:: IP-white list wordt genegeerd als bron-IP ontbreekt in de RADIUS-aanvraag in het kenmerk NasIpAddress."
+Wanneer een aanvraag afkomstig is van een IP-adres dat in de is `IP_WHITELIST` , wordt verificatie in twee stappen overgeslagen. De IP-lijst wordt vergeleken met het IP-adres dat is opgenomen in het kenmerk *ratNASIPAddress* van de RADIUS-aanvraag. Als een RADIUS-aanvraag wordt geleverd zonder het kenmerk ratNASIPAddress, wordt de volgende waarschuwing vastgelegd: "P_WHITE_LIST_WARNING:: IP-white list wordt genegeerd als bron-IP ontbreekt in de RADIUS-aanvraag in het kenmerk NasIpAddress."
 
 ## <a name="next-steps"></a>Volgende stappen
 

@@ -10,10 +10,9 @@ author: likebupt
 ms.author: keli19
 ms.date: 02/11/2020
 ms.openlocfilehash: f1b194f2c65f95ad4daff0353d05ca589db9ce51
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "79477660"
 ---
 # <a name="convert-to-indicator-values"></a>Converteren naar indicatorwaarden
@@ -48,7 +47,7 @@ Stel dat u een kolom hebt met scores die aangeven of een server een hoge, gemidd
 | Server-ID | Fout Score |
 | --------- | ------------- |
 | 10301     | Laag           |
-| 10302     | Middelgroot        |
+| 10302     | Normaal        |
 | 10303     | Hoog          |
 
 Wanneer u **converteren toepast op indicator waarden**, zet de ontwerper één kolom met labels om in meerdere kolommen met Booleaanse waarden:  
@@ -63,7 +62,7 @@ De conversie werkt als volgt:
 
 -   In de kolom **fout Score** die het risico beschrijft, zijn er slechts drie mogelijke waarden (hoog, gemiddeld en laag) en ontbreken er geen waarden meer. Dat betekent dat er precies drie nieuwe kolommen worden gemaakt.  
 
--   De nieuwe indicator kolommen hebben de naam op basis van de kolom koppen en waarden van de kolom Bron, met behulp van dit patroon: * \<bron kolom>- \<gegevens waarde>*.  
+-   De nieuwe indicator kolommen hebben de naam op basis van de kolom koppen en waarden van de kolom Bron, met behulp van dit patroon: *\<source column>- \<data value>* .  
 
 -   Er moet een 1 in precies één indicator kolom zijn en 0 in alle andere indicator kolommen, aangezien elke server slechts één risico classificatie kan hebben.  
 
@@ -98,13 +97,13 @@ Deze sectie bevat implementatie details, tips en antwoorden op veelgestelde vrag
 
 -   Alleen kolommen die zijn gemarkeerd als categorische kunnen worden geconverteerd naar indicator kolommen. Als u de volgende fout ziet, is een van de geselecteerde kolommen waarschijnlijk niet categorische:  
 
-     Fout 0056: kolom met naam \<kolom naam> bevindt zich niet in een toegestane categorie.  
+     Fout 0056: de kolom met \<column name> de naam bevindt zich niet in een toegestane categorie.  
 
      Standaard worden de meeste kolommen met teken reeksen verwerkt als teken reeks functies, dus u moet ze expliciet markeren als categorische met behulp van [meta gegevens bewerken](edit-metadata.md).  
 
 -   Er is geen limiet voor het aantal kolommen dat u kunt converteren naar indicator kolommen. Omdat elke kolom met waarden echter meerdere indicator kolommen kan leveren, wilt u mogelijk slechts enkele kolommen tegelijk converteren en bekijken.  
 
--   Als de kolom ontbrekende waarden bevat, wordt er een afzonderlijke indicator kolom voor de ontbrekende categorie gemaakt, met deze naam: * \<bron kolom>-ontbreekt*  
+-   Als de kolom ontbrekende waarden bevat, wordt er een afzonderlijke indicator kolom gemaakt voor de ontbrekende categorie met deze naam: * \<source column> -ontbreekt*  
 
 -   Als de kolom die u converteert naar indicator waarden getallen bevat, moeten deze worden gemarkeerd als categorische, zoals elke andere functie kolom. Nadat u dit hebt gedaan, worden de getallen beschouwd als discrete waarden. Als u bijvoorbeeld een numerieke kolom hebt met MPG-waarden van 25 tot 30, wordt er een nieuwe indicator kolom gemaakt voor elke afzonderlijke waarde:  
 

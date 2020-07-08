@@ -7,10 +7,9 @@ author: bwren
 ms.author: bwren
 ms.date: 03/12/2020
 ms.openlocfilehash: 80473aa494b8fbcea5e43870b7717cd3472dd7d1
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "79480518"
 ---
 # <a name="disable-monitoring-of-your-vms-in-azure-monitor-for-vms"></a>Bewaking van uw Vm's in Azure Monitor voor VM's uitschakelen
@@ -24,7 +23,7 @@ Azure Monitor voor VM's is afhankelijk van de volgende onderdelen voor het lever
 * Een Log Analytics-werk ruimte die bewakings gegevens van Vm's en andere bronnen opslaat.
 * Een verzameling prestatie meter items die in de werk ruimte zijn geconfigureerd. De verzameling werkt de bewakings configuratie bij op alle Vm's die zijn verbonden met de werk ruimte.
 * `VMInsights`, een bewakings oplossing die is geconfigureerd in de werk ruimte. Met deze oplossing wordt de bewakings configuratie bijgewerkt op alle Vm's die zijn verbonden met de werk ruimte.
-* `MicrosoftMonitoringAgent`en `DependencyAgent`, die Azure VM-extensies zijn. Met deze uitbrei dingen worden gegevens verzameld en verzonden naar de werk ruimte.
+* `MicrosoftMonitoringAgent`en `DependencyAgent` , die Azure VM-extensies zijn. Met deze uitbrei dingen worden gegevens verzameld en verzonden naar de werk ruimte.
 
 Houd rekening met het volgende wanneer u de bewaking van uw Vm's wilt uitschakelen:
 
@@ -38,8 +37,8 @@ Houd rekening met het volgende wanneer u de bewaking van uw Vm's wilt uitschakel
 
 Als u nog steeds de Log Analytics-werk ruimte nodig hebt, volgt u deze stappen om Azure Monitor voor VM's volledig te verwijderen. U verwijdert de `VMInsights` oplossing uit de werk ruimte.  
 
-1. Meld u aan bij de [Azure-portal](https://portal.azure.com).
-2. Selecteer in het Azure Portal **alle services**. Typ in de lijst met resources **Log Analytics**. Wanneer u begint te typen, worden in de lijst suggesties weer geven op basis van uw invoer. Selecteer **Log Analytics**.
+1. Meld u aan bij [Azure Portal](https://portal.azure.com).
+2. Selecteer in de Azure-portal de optie **Alle services**. Typ in de lijst met resources **Log Analytics**. Wanneer u begint te typen, worden in de lijst suggesties weer geven op basis van uw invoer. Selecteer **Log Analytics**.
 3. Selecteer in de lijst met Log Analytics-werk ruimten de werk ruimte die u hebt gekozen bij het inschakelen van Azure Monitor voor VM's.
 4. Selecteer aan de linkerkant **oplossingen**.  
 5. Selecteer **VMInsights (werkruimte naam)** in de lijst met oplossingen. Selecteer op de pagina **overzicht** voor de oplossing **verwijderen**. Selecteer **Ja**als u wordt gevraagd om te bevestigen.
@@ -56,7 +55,7 @@ Als uw Log Analytics-werk ruimte nog steeds ondersteuning moet bieden voor de be
 >
 > Als u de Log Analytics-agent verwijdert, kunt u voor komen dat deze services en oplossingen proactief uw VM beheren. 
 
-1. Meld u aan bij de [Azure-portal](https://portal.azure.com). 
+1. Meld u aan bij [Azure Portal](https://portal.azure.com). 
 2. Selecteer **virtual machines**In het Azure Portal. 
 3. Selecteer een VM in de lijst. 
 4. Selecteer aan de linkerkant de optie **uitbrei dingen**. Selecteer op de pagina **uitbrei dingen** de optie **DependencyAgent**.

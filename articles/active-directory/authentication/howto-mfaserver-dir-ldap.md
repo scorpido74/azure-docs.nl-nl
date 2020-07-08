@@ -12,10 +12,9 @@ manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 2df89a764bc9b92a830b13e4216412694bb95523
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80653019"
 ---
 # <a name="ldap-authentication-and-azure-multi-factor-authentication-server"></a>LDAP-verificatie en Azure Multi-Factor Authentication-server
@@ -55,7 +54,7 @@ Wanneer Azure Multi-Factor Authentication is geconfigureerd om LDAP-verificaties
 
 1. Als u de LDAP-adreslijst verbinding wilt configureren, klikt u op het pictogram **adreslijst integratie** .
 2. Schakel op het tabblad instellingen het keuze rondje **specifieke LDAP-configuratie gebruiken** in.
-3. Selecteer **Bewerken...**
+3. Selecteer **bewerken...**
 4. Vul in de velden van het dialoogvenster LDAP-configuratie bewerken de benodigde informatie in om verbinding te maken met de LDAP-adreslijst. Beschrijvingen van de velden zijn ook beschikbaar in het Help-bestand voor de Azure Multi-Factor Authentication-server.
 
     ![LDAP-configuratie van adreslijst integratie](./media/howto-mfaserver-dir-ldap/ldap.png)

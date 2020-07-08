@@ -7,15 +7,14 @@ ms.topic: conceptual
 ms.date: 03/16/2020
 ms.author: tisande
 ms.openlocfilehash: 24acd1e9c13320244ff4c27abd13abeda6f70b2b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "79464458"
 ---
 # <a name="aggregate-functions-in-azure-cosmos-db"></a>Statistische functies in Azure Cosmos DB
 
-Statistische functies voeren een berekening uit op een set waarden in de `SELECT` component en retour neren een enkele waarde. Met de volgende query wordt bijvoorbeeld het aantal items in de `Families` container geretourneerd:
+Statistische functies voeren een berekening uit op een set waarden in de `SELECT` component en retour neren een enkele waarde. Met de volgende query wordt bijvoorbeeld het aantal items in de container geretourneerd `Families` :
 
 ## <a name="examples"></a>Voorbeelden
 
@@ -45,7 +44,7 @@ U ziet deze uitvoer:
     [ 2 ]
 ```
 
-U kunt ook aggregaties met filters combi neren. Met de volgende query wordt bijvoorbeeld het aantal items met de adres status van `WA`weer gegeven.
+U kunt ook aggregaties met filters combi neren. Met de volgende query wordt bijvoorbeeld het aantal items met de adres status van weer gegeven `WA` .
 
 ```sql
     SELECT VALUE COUNT(1)
@@ -61,7 +60,7 @@ U ziet deze uitvoer:
 
 ## <a name="types-of-aggregate-functions"></a>Typen statistische functies
 
-De SQL-API biedt ondersteuning voor de volgende statistische functies. `SUM`en `AVG` werken met numerieke waarden, en `COUNT`, `MIN`en `MAX` werk op getallen, teken reeksen, Boole-tekens en nullen.
+De SQL-API biedt ondersteuning voor de volgende statistische functies. `SUM`en werken met `AVG` numerieke waarden, en `COUNT` , `MIN` en `MAX` werk op getallen, teken reeksen, Boole-tekens en nullen.
 
 | Functie | Beschrijving |
 |-------|-------------|
@@ -78,7 +77,7 @@ U kunt ook aggregatie over de resultaten van een matrix herhaling.
 
 ## <a name="remarks"></a>Opmerkingen
 
-Deze statistische systeem functies profiteren van een [bereik index](index-policy.md#includeexclude-strategy). Als u een `COUNT`, `SUM` `MIN` `MAX`,, of `AVG` op een eigenschap verwacht, moet u [het relevante pad in het indexerings beleid toevoegen](index-policy.md#includeexclude-strategy).
+Deze statistische systeem functies profiteren van een [bereik index](index-policy.md#includeexclude-strategy). Als u een,,, `COUNT` `SUM` `MIN` `MAX` of `AVG` op een eigenschap verwacht, moet u [het relevante pad in het indexerings beleid toevoegen](index-policy.md#includeexclude-strategy).
 
 ## <a name="next-steps"></a>Volgende stappen
 

@@ -7,10 +7,9 @@ author: bwren
 ms.author: bwren
 ms.date: 10/15/2019
 ms.openlocfilehash: 734f61c2e96002516e9e15af88d2c6b0fce00e98
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "79480739"
 ---
 # <a name="enable-azure-monitor-for-vms-for-a-hybrid-environment"></a>Azure Monitor voor VM's inschakelen voor een hybride omgeving
@@ -41,7 +40,7 @@ De stappen om deze taak te volt ooien, zijn als volgt samenvatten:
 
 ## <a name="install-the-dependency-agent-on-windows"></a>De afhankelijkheids agent installeren in Windows
 
-U kunt de afhankelijkheids agent hand matig installeren op Windows-computers `InstallDependencyAgent-Windows.exe`door uit te voeren. Als u dit uitvoer bare bestand zonder opties uitvoert, wordt een installatie wizard gestart die u kunt volgen om de agent interactief te installeren.
+U kunt de afhankelijkheids agent hand matig installeren op Windows-computers door uit te voeren `InstallDependencyAgent-Windows.exe` . Als u dit uitvoer bare bestand zonder opties uitvoert, wordt een installatie wizard gestart die u kunt volgen om de agent interactief te installeren.
 
 >[!NOTE]
 >Er zijn *beheerders* bevoegdheden vereist om de agent te installeren of verwijderen.
@@ -53,7 +52,7 @@ De volgende tabel geeft een overzicht van de para meters die worden ondersteund 
 | /? | Retourneert een lijst met de opdracht regel opties. |
 | / S | Voert een stille installatie zonder tussen komst van de gebruiker uit. |
 
-Voer bijvoorbeeld **InstallDependencyAgent-Windows. exe/?** in om het `/?` installatie programma uit te voeren met de para meter.
+`/?`Voer bijvoorbeeld **InstallDependencyAgent-Windows.exe/?** in om het installatie programma uit te voeren met de para meter.
 
 Bestanden voor de Windows-afhankelijkheids agent worden standaard in *C:\Program Files\Microsoft dependency agent* geïnstalleerd. Als de afhankelijkheids agent niet kan worden gestart nadat de installatie is voltooid, raadpleegt u de logboeken voor gedetailleerde informatie over de fout. De logboekmap is *%ProgramFiles%\Microsoft dependency Agent\logs*.
 
@@ -71,15 +70,15 @@ De afhankelijkheids agent is geïnstalleerd op Linux-servers vanuit *InstallDepe
 | -s | Een installatie op de achtergrond uitvoeren zonder gebruikersvragen. |
 | --Controleer | Controleer de machtigingen en het besturings systeem, maar installeer de agent niet. |
 
-Voer bijvoorbeeld **InstallDependencyAgent-Linux64. bin-Help**in om het `-help` installatie programma uit te voeren met de para meter.
+`-help`Voer bijvoorbeeld **InstallDependencyAgent-Linux64. bin-Help**in om het installatie programma uit te voeren met de para meter.
 
-Installeer de Linux-afhankelijkheids agent als root door de opdracht `sh InstallDependencyAgent-Linux64.bin`uit te voeren.
+Installeer de Linux-afhankelijkheids agent als root door de opdracht uit te voeren `sh InstallDependencyAgent-Linux64.bin` .
 
 Als de afhankelijkheids agent niet kan worden gestart, raadpleegt u de logboeken voor gedetailleerde informatie over de fout. Op Linux-agents is de logboekmap */var/opt/Microsoft/dependency-agent/log*.
 
 Bestanden voor de afhankelijkheids agent worden in de volgende directory's geplaatst:
 
-| Bestanden | Locatie |
+| Files | Locatie |
 |:--|:--|
 | Kernbestanden | /opt/microsoft/dependency-agent |
 | Logboekbestanden | /var/opt/microsoft/dependency-agent/log |
@@ -156,7 +155,7 @@ Als u niet weet hoe u resources kunt implementeren met behulp van een sjabloon, 
 * [Resources implementeren met Resource Manager-sjablonen en Azure PowerShell](../../azure-resource-manager/templates/deploy-powershell.md)
 * [Resources implementeren met Resource Manager-sjablonen en Azure CLI](../../azure-resource-manager/templates/deploy-cli.md)
 
-Als u Azure CLI wilt gebruiken, moet u de CLI eerst lokaal installeren en gebruiken. U moet de Azure CLI-versie 2.0.27 of hoger uitvoeren. Voer uit `az --version`om uw versie te identificeren. Als u de Azure CLI wilt installeren of upgraden, raadpleegt u [de Azure cli installeren](https://docs.microsoft.com/cli/azure/install-azure-cli).
+Als u Azure CLI wilt gebruiken, moet u de CLI eerst lokaal installeren en gebruiken. U moet de Azure CLI-versie 2.0.27 of hoger uitvoeren. Voer uit om uw versie te identificeren `az --version` . Als u de Azure CLI wilt installeren of upgraden, raadpleegt u [de Azure cli installeren](https://docs.microsoft.com/cli/azure/install-azure-cli).
 
 ### <a name="create-and-execute-a-template"></a>Een sjabloon maken en uitvoeren
 
@@ -206,7 +205,7 @@ Als u Azure CLI wilt gebruiken, moet u de CLI eerst lokaal installeren en gebrui
     }
     ```
 
-1. Sla dit bestand op als *installsolutionsforvminsights. json* naar een lokale map.
+1. Sla dit bestand als *installsolutionsforvminsights.jsop in* een lokale map.
 
 1. Leg de waarden vast voor de *werkruimte*, *ResourceGroupName*en *WorkspaceLocation*. De waarde voor *workspacenaam* is de naam van uw log Analytics-werk ruimte. De waarde voor *WorkspaceLocation* is de regio waarin de werk ruimte is gedefinieerd.
 
@@ -229,7 +228,7 @@ Als u Azure CLI wilt gebruiken, moet u de CLI eerst lokaal installeren en gebrui
 
 Als de installatie van de afhankelijkheids agent is voltooid, maar u de computer niet ziet op de kaart, kunt u de oorzaak van het probleem vaststellen door de volgende stappen uit te voeren.
 
-1. Is de afhankelijkheids agent geïnstalleerd? U kunt dit valideren door te controleren of de service is geïnstalleerd en wordt uitgevoerd.
+1. Is de afhankelijkheidsagent correct geïnstalleerd? U kunt dit valideren door te controleren of de service is geïnstalleerd en actief is.
 
     **Windows**: zoek naar de service met de naam ' micro soft dependency agent '.
 
@@ -249,7 +248,7 @@ Als de installatie van de afhankelijkheids agent is voltooid, maar u de computer
 
 Als uw server op de kaart wordt weer gegeven, maar er geen proces-of verbindings gegevens zijn, geeft dit aan dat de afhankelijkheids agent is geïnstalleerd en wordt uitgevoerd, maar het kernel-stuur programma is niet geladen.
 
-Controleer het bestand C:\Program Files\Microsoft dependency Agent\logs\wrapper.log (Windows) of het/var/opt/Microsoft/dependency-agent/Log/service.log-bestand (Linux). De laatste regels van het bestand moeten aangeven waarom de kernel niet is geladen. De kernel wordt bijvoorbeeld mogelijk niet ondersteund op Linux als u uw kernel hebt bijgewerkt.
+Controleer het bestand C:\Program Files\Microsoft Dependency Agent\logs\wrapper.log (Windows) of het bestand /var/opt/microsoft/dependency-agent/log/service.log (Linux). De laatste regels van het bestand zouden moeten aangeven waarom de kernel niet is geladen. Het is bijvoorbeeld mogelijk dat de kernel niet wordt ondersteund op Linux als u uw kernel hebt bijgewerkt.
 
 
 ## <a name="next-steps"></a>Volgende stappen

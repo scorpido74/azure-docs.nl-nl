@@ -10,10 +10,9 @@ author: likebupt
 ms.author: keli19
 ms.date: 09/01/2019
 ms.openlocfilehash: 6e4d4c8f798418e090caeba091dec33c71f0458f
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "79477490"
 ---
 # <a name="preprocess-text"></a>Tekst voorverwerken
@@ -51,7 +50,7 @@ De **tekst module preprocess** ondersteunt momenteel alleen Engels.
 
 1. **Zinnen detecteren**: Selecteer deze optie als u wilt dat de module een teken grens markering voor een zin invoegt bij het uitvoeren van analyses.
 
-    In deze module wordt een reeks van drie sluis `|||` tekens gebruikt om de zin af te duiden.
+    In deze module wordt een reeks van drie sluis tekens gebruikt `|||` om de zin af te duiden.
 
 1. Voer optionele Zoek-en vervang bewerkingen uit met reguliere expressies.
 
@@ -70,18 +69,18 @@ De **tekst module preprocess** ondersteunt momenteel alleen Engels.
     
     * **Dubbele tekens verwijderen**: Selecteer deze optie als u wilt dat de extra tekens in een reeks die meer dan twee keer worden herhaald, worden verwijderd. Een reeks zoals ' aaaaa ' wordt bijvoorbeeld gereduceerd tot ' AA '.
     
-    * **E-mail adressen verwijderen**: Selecteer deze optie om een wille keurige volg orde van de indeling `<string>@<string>`te verwijderen.  
-    * **Url's verwijderen**: Selecteer deze optie om een reeks te verwijderen die de volgende URL-voor voegsels `http`bevat `https`: `ftp`,,,`www`
+    * **E-mail adressen verwijderen**: Selecteer deze optie om een wille keurige volg orde van de indeling te verwijderen `<string>@<string>` .  
+    * **Url's verwijderen**: Selecteer deze optie om een reeks te verwijderen die de volgende URL-voor voegsels bevat: `http` , `https` , `ftp` ,`www`
     
 1. **Uitbestedingen van woorden uitvouwen**: deze optie is alleen van toepassing op talen die verb-contract ANTEN gebruiken; Dit is momenteel alleen beschikbaar in het Engels. 
 
     Als u deze optie selecteert, kunt u bijvoorbeeld de zin *' zou niet blijven behouden '* vervangen. *"would not stay there"*
 
-1. **Backslashes normaliseren naar slashes**: Selecteer deze optie om alle exemplaren van `\\` aan toe `/`te wijzen.
+1. **Backslashes normaliseren naar slashes**: Selecteer deze optie om alle exemplaren van `\\` aan toe te wijzen `/` .
 
-1. **Tokens splitsen op speciale tekens**: Selecteer deze optie als u woorden wilt splitsen op tekens zoals `&`, `-`enzovoort. Deze optie kan ook de speciale tekens verminderen wanneer deze meer dan twee keer wordt herhaald. 
+1. **Tokens splitsen op speciale tekens**: Selecteer deze optie als u woorden wilt splitsen op tekens zoals, enzovoort `&` `-` . Deze optie kan ook de speciale tekens verminderen wanneer deze meer dan twee keer wordt herhaald. 
 
-    De teken `MS---WORD` reeks wordt bijvoorbeeld onderverdeeld in drie `MS`tokens, `-`, en. `WORD`
+    De teken reeks wordt bijvoorbeeld `MS---WORD` onderverdeeld in drie tokens,, `MS` `-` en `WORD` .
 
 1. Verzend de pijp lijn.
 

@@ -8,10 +8,9 @@ ms.topic: conceptual
 ms.date: 03/06/2020
 tags: connectors
 ms.openlocfilehash: 0a3fb9a8a72b384d2af4af38bdc382e541ddf535
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80656283"
 ---
 # <a name="create-and-run-automated-event-based-workflows-by-using-http-webhooks-in-azure-logic-apps"></a>Geautomatiseerde op gebeurtenis gebaseerde werk stromen maken en uitvoeren met behulp van HTTP-webhooks in Azure Logic Apps
@@ -47,7 +46,7 @@ Zo is de actie [**e-mail bericht verzenden goed keuren**](connectors-create-api-
 > * TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384
 > * TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256
 
-Zie deze onderwerpen voor meer informatie:
+Raadpleeg de volgende onderwerpen voor meer informatie:
 
 * [Trigger parameters voor HTTP-webhook](../logic-apps/logic-apps-workflow-actions-triggers.md#http-webhook-trigger)
 * [Webhooks en abonnementen](../logic-apps/logic-apps-workflow-actions-triggers.md#webhooks-and-subscriptions)
@@ -67,13 +66,13 @@ Zie deze onderwerpen voor meer informatie:
 
 Deze ingebouwde trigger roept het eind punt van het abonnement op de doel service aan en registreert een call back-URL met de doel service. De logische app wacht vervolgens tot de doel service een `HTTP POST` aanvraag naar de call back-URL verzendt. Wanneer deze gebeurtenis plaatsvindt, wordt de trigger geactiveerd en worden gegevens in de aanvraag samen met de werk stroom door gegeven.
 
-1. Meld u aan bij de [Azure-portal](https://portal.azure.com). Open uw lege logische app in de ontwerp functie voor logische apps.
+1. Meld u aan bij [Azure Portal](https://portal.azure.com). Open uw lege logische app in de ontwerp functie voor logische apps.
 
-1. Voer `http webhook` als filter in het zoekvak van de ontwerp functie in. Selecteer in de lijst **Triggers** de **http-webhook-** trigger.
+1. Voer als filter in het zoekvak van de ontwerp functie in `http webhook` . Selecteer in de lijst **Triggers** de **http-webhook-** trigger.
 
    ![Trigger voor HTTP-webhook selecteren](./media/connectors-native-webhook/select-http-webhook-trigger.png)
 
-   In `HTTP Webhook trigger` dit voor beeld wordt de naam van de trigger gewijzigd zodat de stap een meer beschrijvende naam heeft. Daarnaast voegt het voor beeld een HTTP-webhook-actie toe en beide namen moeten uniek zijn.
+   In dit voor beeld wordt de naam van de trigger gewijzigd `HTTP Webhook trigger` zodat de stap een meer beschrijvende naam heeft. Daarnaast voegt het voor beeld een HTTP-webhook-actie toe en beide namen moeten uniek zijn.
 
 1. Geef de waarden voor de [para meters voor de http-webhook-trigger](../logic-apps/logic-apps-workflow-actions-triggers.md#http-webhook-trigger) op die u wilt gebruiken voor de aanroepen van abonneren en het afmelden.
 
@@ -83,12 +82,12 @@ Deze ingebouwde trigger roept het eind punt van het abonnement op de doel servic
 
    | Eigenschap | Vereist | Beschrijving |
    |----------|----------|-------------|
-   | **Abonnement-methode** | Ja | De methode die moet worden gebruikt bij het abonneren op het doel eindpunt |
-   | **Abonneren: URI** | Ja | De URL die moet worden gebruikt voor het abonneren op het doel eindpunt |
-   | **Abonneren: hoofd tekst** | Nee | Een bericht tekst die moet worden meegenomen in de abonnements aanvraag. Dit voor beeld bevat de call back-URL waarmee de abonnee op unieke wijze wordt geïdentificeerd: de logische app, `@listCallbackUrl()` door gebruik te maken van de expressie voor het ophalen van de call back-URL van de logische app. |
-   | **Afmelden-methode** | Nee | De methode die moet worden gebruikt bij het afmelden van het doel eindpunt |
-   | **Opzeg ging van de URI** | Nee | De URL die moet worden gebruikt voor het afmelden van het doel eindpunt |
-   | **Afmelden: hoofd tekst** | Nee | Een optionele bericht tekst die moet worden meegenomen in de afmeldings aanvraag <p><p>**Opmerking**: deze eigenschap biedt geen ondersteuning voor `listCallbackUrl()` het gebruik van de functie. De trigger neemt echter automatisch de headers op en verzendt deze `x-ms-client-tracking-id` en `x-ms-workflow-operation-name`, die de doel service kan gebruiken om de abonnee uniek te identificeren. |
+   | **Abonnement-methode** | Yes | De methode die moet worden gebruikt bij het abonneren op het doel eindpunt |
+   | **Abonneren: URI** | Yes | De URL die moet worden gebruikt voor het abonneren op het doel eindpunt |
+   | **Abonneren: hoofd tekst** | No | Een bericht tekst die moet worden meegenomen in de abonnements aanvraag. Dit voor beeld bevat de call back-URL waarmee de abonnee op unieke wijze wordt geïdentificeerd: de logische app, door gebruik te maken van de `@listCallbackUrl()` expressie voor het ophalen van de call back-URL van de logische app. |
+   | **Afmelden-methode** | No | De methode die moet worden gebruikt bij het afmelden van het doel eindpunt |
+   | **Opzeg ging van de URI** | No | De URL die moet worden gebruikt voor het afmelden van het doel eindpunt |
+   | **Afmelden: hoofd tekst** | No | Een optionele bericht tekst die moet worden meegenomen in de afmeldings aanvraag <p><p>**Opmerking**: deze eigenschap biedt geen ondersteuning voor het gebruik van de `listCallbackUrl()` functie. De trigger neemt echter automatisch de headers op en verzendt deze `x-ms-client-tracking-id` en `x-ms-workflow-operation-name` , die de doel service kan gebruiken om de abonnee uniek te identificeren. |
    ||||
 
 1. Open de lijst **nieuwe para meters toevoegen** om andere trigger eigenschappen toe te voegen.
@@ -99,23 +98,23 @@ Deze ingebouwde trigger roept het eind punt van het abonnement op de doel servic
 
 1. Ga door met het bouwen van de werk stroom van uw logische app met acties die worden uitgevoerd wanneer de trigger wordt geactiveerd.
 
-1. Wanneer u klaar bent, kunt u uw logische app opslaan. Selecteer **Opslaan**op de werk balk van de ontwerp functie.
+1. Wanneer u klaar bent, kunt u uw logische app opslaan. Selecteer **Opslaan** op de werkbalk van de ontwerper.
 
    Als u uw logische app opslaat, wordt het eind punt van de abonnee op de doel service aangeroepen en wordt de call back-URL geregistreerd. De logische app wacht vervolgens tot de doel service een `HTTP POST` aanvraag naar de call back-URL verzendt. Wanneer deze gebeurtenis plaatsvindt, wordt de trigger geactiveerd en worden gegevens in de aanvraag samen met de werk stroom door gegeven. Als deze bewerking is voltooid, wordt de trigger afgemeld bij het eind punt en wordt de resterende werk stroom door de logische app voortgezet.
 
 ## <a name="add-an-http-webhook-action"></a>Een HTTP-webhook-actie toevoegen
 
-Met deze ingebouwde actie wordt het eind punt voor abonneren op de doel service aangeroepen en wordt een call back-URL geregistreerd bij de doel service. Uw logische app wordt vervolgens onderbroken en er wordt gewacht tot de doel service `HTTP POST` een aanvraag naar de call back-URL verzendt. Wanneer deze gebeurtenis plaatsvindt, geeft de actie gegevens in de aanvraag door aan de werk stroom. Als de bewerking is voltooid, wordt de actie afgemeld bij het eind punt, waarna de logische app de resterende werk stroom blijft uitvoeren.
+Met deze ingebouwde actie wordt het eind punt voor abonneren op de doel service aangeroepen en wordt een call back-URL geregistreerd bij de doel service. Uw logische app wordt vervolgens onderbroken en er wordt gewacht tot de doel service een `HTTP POST` aanvraag naar de call back-URL verzendt. Wanneer deze gebeurtenis plaatsvindt, geeft de actie gegevens in de aanvraag door aan de werk stroom. Als de bewerking is voltooid, wordt de actie afgemeld bij het eind punt, waarna de logische app de resterende werk stroom blijft uitvoeren.
 
-1. Meld u aan bij de [Azure-portal](https://portal.azure.com). Open uw logische app in de ontwerp functie voor logische apps.
+1. Meld u aan bij [Azure Portal](https://portal.azure.com). Open uw logische app in de ontwerp functie voor logische apps.
 
    In dit voor beeld wordt de HTTP-webhook-trigger als de eerste stap gebruikt.
 
 1. Selecteer **nieuwe stap**onder de stap waarin u de http-webhook-actie wilt toevoegen.
 
-   Als u een actie tussen stappen wilt toevoegen, plaatst u de muis aanwijzer op de pijl tussen de stappen. Selecteer het plus teken (**+**) dat wordt weer gegeven en selecteer vervolgens **een actie toevoegen**.
+   Als u een actie tussen stappen wilt toevoegen, plaatst u de muis aanwijzer op de pijl tussen de stappen. Selecteer het plus teken ( **+** ) dat wordt weer gegeven en selecteer vervolgens **een actie toevoegen**.
 
-1. Voer `http webhook` als filter in het zoekvak van de ontwerp functie in. Selecteer in de lijst **acties** de actie **http-webhook** .
+1. Voer als filter in het zoekvak van de ontwerp functie in `http webhook` . Selecteer in de lijst **acties** de actie **http-webhook** .
 
    ![Actie voor HTTP-webhook selecteren](./media/connectors-native-webhook/select-http-webhook-action.png)
 
@@ -129,12 +128,12 @@ Met deze ingebouwde actie wordt het eind punt voor abonneren op de doel service 
 
    | Eigenschap | Vereist | Beschrijving |
    |----------|----------|-------------|
-   | **Abonnement-methode** | Ja | De methode die moet worden gebruikt bij het abonneren op het doel eindpunt |
-   | **Abonneren: URI** | Ja | De URL die moet worden gebruikt voor het abonneren op het doel eindpunt |
-   | **Abonneren: hoofd tekst** | Nee | Een bericht tekst die moet worden meegenomen in de abonnements aanvraag. Dit voor beeld bevat de call back-URL waarmee de abonnee op unieke wijze wordt geïdentificeerd: de logische app, `@listCallbackUrl()` door gebruik te maken van de expressie voor het ophalen van de call back-URL van de logische app. |
-   | **Afmelden-methode** | Nee | De methode die moet worden gebruikt bij het afmelden van het doel eindpunt |
-   | **Opzeg ging van de URI** | Nee | De URL die moet worden gebruikt voor het afmelden van het doel eindpunt |
-   | **Afmelden: hoofd tekst** | Nee | Een optionele bericht tekst die moet worden meegenomen in de afmeldings aanvraag <p><p>**Opmerking**: deze eigenschap biedt geen ondersteuning voor `listCallbackUrl()` het gebruik van de functie. De actie bevat echter automatisch de headers en verzendt deze `x-ms-client-tracking-id` en `x-ms-workflow-operation-name`, die de doel service kan gebruiken om de abonnee uniek te identificeren. |
+   | **Abonnement-methode** | Yes | De methode die moet worden gebruikt bij het abonneren op het doel eindpunt |
+   | **Abonneren: URI** | Yes | De URL die moet worden gebruikt voor het abonneren op het doel eindpunt |
+   | **Abonneren: hoofd tekst** | No | Een bericht tekst die moet worden meegenomen in de abonnements aanvraag. Dit voor beeld bevat de call back-URL waarmee de abonnee op unieke wijze wordt geïdentificeerd: de logische app, door gebruik te maken van de `@listCallbackUrl()` expressie voor het ophalen van de call back-URL van de logische app. |
+   | **Afmelden-methode** | No | De methode die moet worden gebruikt bij het afmelden van het doel eindpunt |
+   | **Opzeg ging van de URI** | No | De URL die moet worden gebruikt voor het afmelden van het doel eindpunt |
+   | **Afmelden: hoofd tekst** | No | Een optionele bericht tekst die moet worden meegenomen in de afmeldings aanvraag <p><p>**Opmerking**: deze eigenschap biedt geen ondersteuning voor het gebruik van de `listCallbackUrl()` functie. De actie bevat echter automatisch de headers en verzendt deze `x-ms-client-tracking-id` en `x-ms-workflow-operation-name` , die de doel service kan gebruiken om de abonnee uniek te identificeren. |
    ||||
 
 1. Open de lijst **nieuwe para meters** toevoegen om andere actie-eigenschappen toe te voegen.
@@ -143,7 +142,7 @@ Met deze ingebouwde actie wordt het eind punt voor abonneren op de doel service 
 
    Als u bijvoorbeeld verificatie moet gebruiken, kunt u de eigenschappen **Abonneren-authenticatie** en **Afmelden/authenticatie** toevoegen. Zie [verificatie toevoegen aan uitgaande oproepen](../logic-apps/logic-apps-securing-a-logic-app.md#add-authentication-outbound)voor meer informatie over de beschik bare verificatie typen voor http-webhook.
 
-1. Wanneer u klaar bent, moet u uw logische app opslaan. Selecteer **Opslaan**op de werk balk van de ontwerp functie.
+1. Wanneer u klaar bent, moet u uw logische app opslaan. Selecteer **Opslaan** op de werkbalk van de ontwerper.
 
    Wanneer deze actie nu wordt uitgevoerd, roept uw logische app het eind punt voor abonneren aan bij de doel service en registreert de call back-URL. Met de logische app wordt de werk stroom onderbroken en wordt gewacht tot de doel service een `HTTP POST` aanvraag naar de call back-URL verzendt. Wanneer deze gebeurtenis plaatsvindt, geeft de actie gegevens in de aanvraag door aan de werk stroom. Als de bewerking is voltooid, wordt de actie afgemeld bij het eind punt, waarna de logische app de resterende werk stroom blijft uitvoeren.
 
@@ -155,14 +154,14 @@ Zie [http-webhook-para meters](../logic-apps/logic-apps-workflow-actions-trigger
 
 Hier vindt u meer informatie over de uitvoer van een HTTP-webhook-trigger of-actie, waarmee deze gegevens worden geretourneerd:
 
-| Naam van eigenschap | Type | Beschrijving |
+| Naam van eigenschap | Type | Description |
 |---------------|------|-------------|
 | koppen | object | De headers van de aanvraag |
 | body | object | JSON-object | Het object met de inhoud van de hoofd tekst van de aanvraag |
 | statuscode | int | De status code van de aanvraag |
 |||
 
-| Statuscode | Beschrijving |
+| Statuscode | Description |
 |-------------|-------------|
 | 200 | OK |
 | 202 | Geaccepteerd |

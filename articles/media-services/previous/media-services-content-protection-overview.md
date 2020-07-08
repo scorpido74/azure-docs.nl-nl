@@ -15,10 +15,9 @@ ms.topic: article
 ms.date: 04/01/2019
 ms.author: juliako
 ms.openlocfilehash: 88e0e1c18722fd86e79fc1fa7722b59b3cb8966a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "79460956"
 ---
 # <a name="content-protection-overview"></a>Overzicht van inhoudsbeveiliging 
@@ -26,7 +25,7 @@ ms.locfileid: "79460956"
 > [!NOTE]
 > Er worden geen nieuwe functies of functionaliteit meer aan Media Services v2. toegevoegd. <br/>Bekijk de nieuwste versie [Media Services v3](https://docs.microsoft.com/azure/media-services/latest/). Zie ook [migratie richtlijnen van v2 naar v3](../latest/migrate-from-v2-to-v3.md)
 
-U kunt Azure Media Services gebruiken om uw media te beveiligen vanaf het moment dat de computer de opslag, verwerking en levering verlaat. Met Media Services kunt u uw Live en on-demand inhoud dynamisch versleutelen met Advanced Encryption Standard (AES-128) of een van de drie belangrijkste Digital Rights Management (DRM)-systemen: micro soft PlayReady, Google Widevine en Apple FairPlay. Media Services biedt ook een service voor het leveren van AES-sleutels en DRM-licenties (PlayReady, Widevine en FairPlay) aan geautoriseerde clients. 
+U kunt Azure Media Services gebruiken om uw media te beveiligen vanaf het moment dat de computer de opslag, verwerking en levering verlaat. Met Media Services kunt u uw live en on-demand inhoud dynamisch versleutelen met Advanced Encryption Standard (AES-128) of een van de drie belangrijkste Digital Rights Management-systemen (DRM): Microsoft PlayReady, Google Widevine en Apple FairPlay. Media Services biedt ook een service voor het leveren van AES-sleutels en DRM-licenties (PlayReady, Widevine en FairPlay) aan geautoriseerde klanten. 
 
 In de volgende afbeelding ziet u de werk stroom voor Media Services beveiliging van inhoud: 
 
@@ -51,7 +50,7 @@ Als u een Asset wilt versleutelen, moet u een versleutelings inhouds sleutel aan
 
 U moet ook het leverings beleid van het activum configureren. Als u een opslag versleutelde Asset wilt streamen, moet u opgeven hoe u deze wilt leveren door het beleid voor de levering van assets te configureren.
 
-Wanneer een stroom wordt aangevraagd door een speler, gebruikt Media Services de opgegeven sleutel om uw inhoud dynamisch te versleutelen met behulp van AES Clear Key of DRM-versleuteling. Voor het ontsleutelen van de stroom vraagt de speler de sleutel aan bij Media Services key delivery service. Om te bepalen of de gebruiker gemachtigd is om de sleutel op te halen, evalueert de service het autorisatie beleid dat u hebt opgegeven voor de sleutel.
+Wanneer een stream wordt aangevraagd door een speler, gebruikt Media Services de opgegeven sleutel om uw inhoud dynamisch te versleutelen met AES clear key of DRM-versleuteling. Voor het ontsleutelen van de stroom vraagt de speler de sleutel aan bij Media Services key delivery service. Om te bepalen of de gebruiker gemachtigd is om de sleutel op te halen, evalueert de service het autorisatie beleid dat u hebt opgegeven voor de sleutel.
 
 ## <a name="aes-128-clear-key-vs-drm"></a>AES-128 Clear-sleutel versus DRM
 Klanten vragen vaak of ze AES-versleuteling of een DRM-systeem moeten gebruiken. Het belangrijkste verschil tussen de twee systemen is dat met AES-versleuteling de inhouds sleutel wordt verzonden naar de client in een niet-versleutelde indeling (' in de Clear '). Als gevolg hiervan kan de sleutel voor het versleutelen van de inhoud worden weer gegeven in een netwerk tracering op de client als tekst zonder opmaak. AES-128 Clear Key Encryption is geschikt voor gebruik waarbij de viewer een vertrouwde partij is (bijvoorbeeld het versleutelen van bedrijfs Video's die binnen een bedrijf worden gedistribueerd om door werk nemers te worden weer gegeven).
@@ -109,7 +108,7 @@ De volgende overwegingen zijn van toepassing:
 
 ## <a name="additional-notes"></a>Aanvullende opmerkingen
 
-* Widevine is een service van Google Inc. en is onderworpen aan de service voorwaarden en het privacybeleid van Google, Inc.
+* Widevine is een service van Google Inc. en is onderworpen aan de servicevoorwaarden en het privacybeleid van Google Inc.
 
 ## <a name="next-steps"></a>Volgende stappen
 In de volgende artikelen worden de volgende stappen beschreven om aan de slag te gaan met inhouds beveiliging:

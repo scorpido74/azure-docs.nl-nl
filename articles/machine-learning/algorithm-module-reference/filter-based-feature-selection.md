@@ -10,10 +10,9 @@ author: likebupt
 ms.author: keli19
 ms.date: 10/10/2019
 ms.openlocfilehash: c009a98931240e92527035e51fdce3f1c92f5212
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "79477592"
 ---
 # <a name="filter-based-feature-selection"></a>Functieselectie op basis van filters
@@ -120,7 +119,7 @@ Als u Pearson-correlatie gebruikt voor een numerieke functie en een categorische
 
 -   Als u een score methode wilt gebruiken met een kolom van een gegevens type dat niet wordt ondersteund door de-methode, wordt er een fout gegenereerd door de module. Of een Score van nul wordt toegewezen aan de kolom.  
 
--   Als een kolom logische waarden (True/False) bevat, worden deze verwerkt als `True = 1` en `False = 0`.  
+-   Als een kolom logische waarden (True/False) bevat, worden deze verwerkt als `True = 1` en `False = 0` .  
 
 -   Een kolom kan geen functie zijn als deze is aangewezen als een **Label** of **Score**.  
 

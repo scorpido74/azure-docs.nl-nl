@@ -7,10 +7,9 @@ author: bwren
 ms.author: bwren
 ms.date: 03/16/2020
 ms.openlocfilehash: 18cd74ac9298b7dd058de2b224f677ec0d8f2d64
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "79480280"
 ---
 # <a name="azure-monitor-log-query-examples"></a>Voor beelden van Azure Monitor-logboek query
@@ -72,7 +71,7 @@ Heartbeat
 ### <a name="match-protected-status-records-with-heartbeat-records"></a>Beveiligde status records vergelijken met heartbeat-records
 
 In dit voor beeld vindt u gerelateerde beveiligings status records en heartbeat-records, die overeenkomen op computer en tijd.
-Houd er rekening mee dat het veld tijd wordt afgerond op de dichtstbijzijnde minuut. We hebben de berekening van de runtime opslaglocatie gebruikt `round_time=bin(TimeGenerated, 1m)`om dat te doen:.
+Houd er rekening mee dat het veld tijd wordt afgerond op de dichtstbijzijnde minuut. We hebben de berekening van de runtime opslaglocatie gebruikt om dat te doen: `round_time=bin(TimeGenerated, 1m)` .
 
 ```Kusto
 let protection_data = ProtectionStatus
@@ -229,7 +228,7 @@ protection_data | join (heartbeat_data) on Computer, round_time
 ### <a name="count-security-events-by-activity-id"></a>Beveiligings gebeurtenissen per activiteits-ID tellen
 
 
-In dit voor beeld wordt gebruikgemaakt van de vaste **Activity** structuur van de \<kolom\>-\<activiteit\>: id-naam.
+In dit voor beeld wordt gebruikgemaakt van de vaste structuur van de kolom **activiteit** : \<ID\> - \<Name\> .
 De waarde van de **activiteit** wordt geparseerd in twee nieuwe kolommen en telt het exemplaar van elke **activityID**.
 
 ```Kusto
@@ -270,7 +269,7 @@ SecurityEvent
 ```
 
 ### <a name="parse-activity-name-and-id"></a>Naam en ID van de parser-activiteit
-De twee voor beelden hieronder zijn afhankelijk van de vaste structuur **Activity** van de kolom \<activiteit\>-\<:\>id-naam. In het eerste voor beeld wordt de operator **parse** gebruikt om waarden toe te wijzen aan twee nieuwe kolommen: **activityID** en **activityDesc**.
+De twee voor beelden hieronder zijn afhankelijk van de vaste structuur van de kolom **activiteit** : \<ID\> - \<Name\> . In het eerste voor beeld wordt de operator **parse** gebruikt om waarden toe te wijzen aan twee nieuwe kolommen: **activityID** en **activityDesc**.
 
 ```Kusto
 SecurityEvent
@@ -389,7 +388,7 @@ Usage
 | summarize BillableDataGB = sum(Quantity) / 1000. by bin(StartTime, 1d), Solution | render barchart
 ```
 
-Houd er rekening mee `where IsBillable = true` dat met de component gegevens typen worden gefilterd van bepaalde oplossingen waarvoor geen opname kosten worden berekend.  Ook de component with `TimeGenerated` is alleen om ervoor te zorgen dat de query-ervaring in het Azure Portal na de standaard 24 uur terugkeert. Wanneer u het gegevens type gebruik gebruikt `StartTime` en `EndTime` de tijds verzamelingen weergeeft waarvoor de resultaten worden weer gegeven. 
+Houd er rekening mee dat met de component `where IsBillable = true` gegevens typen worden gefilterd van bepaalde oplossingen waarvoor geen opname kosten worden berekend.  Ook de component with `TimeGenerated` is alleen om ervoor te zorgen dat de query-ervaring in het Azure Portal na de standaard 24 uur terugkeert. Wanneer u het gegevens type gebruik gebruikt `StartTime` en `EndTime` de tijds verzamelingen weergeeft waarvoor de resultaten worden weer gegeven. 
 
 #### <a name="data-volume-by-type"></a>Gegevens volume per type
 

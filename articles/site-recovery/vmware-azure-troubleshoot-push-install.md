@@ -8,10 +8,9 @@ ms.topic: conceptual
 ms.author: ramamill
 ms.date: 04/03/2020
 ms.openlocfilehash: 1afd931249d4dbeda2b4b25f822837e2a564f959
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80656312"
 ---
 # <a name="troubleshoot-mobility-service-push-installation"></a>Problemen met push-installatie van Mobility service oplossen
@@ -41,7 +40,7 @@ Voor Windows (**fout 95107**) controleert u of het gebruikers account beheerders
 * Hand matig een register sleutel toevoegen die toegangs beheer voor externe gebruikers uitschakelt:
 
   * `HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System`
-  * Nieuwe `DWORD`toevoegen:`LocalAccountTokenFilterPolicy`
+  * Nieuwe toevoegen `DWORD` :`LocalAccountTokenFilterPolicy`
   * Stel de waarde in op`1`
 
 * Voer de volgende opdracht uit vanaf een opdracht prompt om de register sleutel toe te voegen:
@@ -51,9 +50,9 @@ Voor Windows (**fout 95107**) controleert u of het gebruikers account beheerders
 Voor Linux (**fout 95108**), moet u het **hoofd** account kiezen voor een geslaagde installatie van de Mobility Service-agent. Daarnaast moeten SSH-File Transfer Protocol (SFTP)-services worden uitgevoerd. Het SFTP-subsysteem en de wachtwoord verificatie inschakelen in het _sshd_config_ bestand:
 
 1. Meld u aan als **rootgebruiker**.
-1. Ga naar _/etc/ssh/sshd_config-bestand_, zoek de regel die begint `PasswordAuthentication`met.
-1. Verwijder de opmerking bij de regel en wijzig de waarde `yes`in.
-1. Zoek de regel die begint met `Subsystem`en verwijder de opmerking over de regel.
+1. Ga naar _/etc/ssh/sshd_config-bestand_, zoek de regel die begint met `PasswordAuthentication` .
+1. Verwijder de opmerking bij de regel en wijzig de waarde in `yes` .
+1. Zoek de regel die begint met `Subsystem` en verwijder de opmerking over de regel.
 1. Start de `sshd` service opnieuw.
 
 Als u de referenties van het gekozen gebruikers account wilt wijzigen, volgt u [deze instructies](vmware-azure-manage-configuration-server.md#modify-credentials-for-mobility-service-installation).
@@ -97,8 +96,8 @@ Deze fout treedt op wanneer de aanmeldings servers niet beschikbaar zijn op de b
 
 De aanmeldings service wordt niet uitgevoerd op de bron machine en heeft de aanmeldings aanvraag mislukt. De Mobility-agent kan niet worden geïnstalleerd. Gebruik een van de volgende methoden om de `Netlogon` service op de bron computer te starten om de fout op te lossen:
 
-* Voer de opdracht `Netlogon` `net start Netlogon`uit om de service te starten vanaf een opdracht prompt.
-* Start de `Netlogon` service vanuit taak beheer.
+* `Netlogon`Voer de opdracht uit om de service te starten vanaf een opdracht prompt `net start Netlogon` .
+* Start de service vanuit taak beheer `Netlogon` .
 
 ## <a name="connectivity-failure-errorid-95117--97118"></a>Connectiviteits fout (ErrorID: 95117 & 97118)
 
@@ -108,7 +107,7 @@ Om de fout op te lossen:
 
 * Zorg ervoor dat u de bron computer kunt pingen vanaf de configuratie server. Als u tijdens het inschakelen van de replicatie de scale-out proces server hebt gekozen, moet u ervoor zorgen dat u de bron computer kunt pingen vanaf de proces server.
 
-* Gebruik `Telnet` de opdracht regel van de bron server om de configuratie server of scale-out proces server op HTTPS-poort 135 te pingen, zoals wordt weer gegeven in de volgende opdracht. Met deze opdracht wordt gecontroleerd of er problemen zijn met de netwerk verbinding of het blok keren van de firewall poort.
+* Gebruik de opdracht regel van de bron server `Telnet` om de configuratie server of scale-out proces server op HTTPS-poort 135 te pingen, zoals wordt weer gegeven in de volgende opdracht. Met deze opdracht wordt gecontroleerd of er problemen zijn met de netwerk verbinding of het blok keren van de firewall poort.
 
   `telnet <CS/ scale-out PS IP address> <135>`
 
@@ -118,9 +117,9 @@ Om de fout op te lossen:
   * SFTP-services moeten worden uitgevoerd. SFTP-subsysteem en-wachtwoord verificatie inschakelen in het _sshd_config_ -bestand:
 
     1. Meld u aan als **rootgebruiker**.
-    1. Ga naar _/etc/ssh/sshd_config_ -bestand, zoek de regel die begint `PasswordAuthentication`met.
-    1. Verwijder de opmerking bij de regel en wijzig de waarde `yes`in.
-    1. Zoek de regel die begint met `Subsystem`en verwijder de opmerking bij de regel
+    1. Ga naar _/etc/ssh/sshd_config_ -bestand, zoek de regel die begint met `PasswordAuthentication` .
+    1. Verwijder de opmerking bij de regel en wijzig de waarde in `yes` .
+    1. Zoek de regel die begint met en `Subsystem` Verwijder de opmerking bij de regel
     1. Start de `sshd` service opnieuw.
 
 * Een poging om verbinding te maken is mislukt als er na een bepaalde tijd geen geldige antwoorden zijn of als een tot stand gebrachte verbinding is mislukt omdat een verbonden host niet kan reageren.
@@ -137,13 +136,13 @@ Controleer na een connectiviteits controle of de service Bestands-en printer del
 Voor **Windows 2008 R2 en eerdere versies**:
 
 * Om bestands-en printer deling via Windows Firewall in te scha kelen,
-  1. Open **configuratie scherm** > **systeem-en beveiligings** > **Windows Firewall**. **Selecteer in** > het linkerdeel venster de optie**regels voor inkomend verkeer** in de console structuur.
+  1. Open **configuratie scherm**  >  **systeem-en beveiligings**  >  **Windows Firewall**. **Selecteer in**het linkerdeel venster de optie  >  **regels voor inkomend verkeer** in de console structuur.
   1. Regels bestand en printer deling (NB-session-in) en bestands-en printer deling (SMB-in) zoeken.
   1. Voor elke regel klikt u met de rechter muisknop op de regel en klikt u vervolgens op **regel inschakelen**.
 
 * Het delen van bestanden met groepsbeleid inschakelen:
   1. Ga naar **Start**, typ `gpmc.msc` en zoek.
-  1. Open in het navigatie deel venster de volgende mappen:**gebruikers configuratie** > van het **lokale computer beleid** > **Beheersjablonen** > **Windows-onderdelen** > **netwerk delen**.
+  1. Open in het navigatie deel venster de volgende mappen: gebruikers configuratie van het **lokale computer beleid**  >  **User Configuration**  >  **Beheersjablonen**  >  **Windows-onderdelen**  >  **netwerk delen**.
   1. Dubbel klik in het detail venster op **voor komen dat gebruikers bestanden binnen hun profiel delen**.
 
      Selecteer **uitgeschakeld**om de instelling Groepsbeleid uit te scha kelen en de gebruiker in staat te stellen bestanden te delen.
@@ -160,7 +159,7 @@ Nadat u de bestands-en printer services hebt gecontroleerd, schakelt u de WMI-se
 
 WMI inschakelen:
 
-1. Ga naar**beveiliging** van **het configuratie scherm** > en selecteer **Windows Firewall**.
+1. Ga naar beveiliging van **het configuratie scherm**  >  **Security** en selecteer **Windows Firewall**.
 1. Selecteer **instellingen wijzigen** en selecteer vervolgens het tabblad **uitzonde ringen** .
 1. Schakel in het venster **uitzonde ringen** het selectie vakje voor Windows Management INSTRUMENTATION (WMI) in om WMI-verkeer via de firewall in te scha kelen.
 
@@ -221,7 +220,7 @@ Bijvoorbeeld:
 
 De apparaatnamen moeten worden vervangen door de bijbehorende UUID.
 
-1. Zoek de UUID van het apparaat door de opdracht `blkid \<device name>`uit te voeren.
+1. Zoek de UUID van het apparaat door de opdracht uit te voeren `blkid \<device name>` .
 
    Bijvoorbeeld:
 
@@ -232,7 +231,7 @@ De apparaatnamen moeten worden vervangen door de bijbehorende UUID.
    /dev/sda2: UUID="62927e85-f7ba-40bc-9993-cc1feeb191e4" TYPE="ext3"
    ```
 
-1. Vervang nu de naam van het apparaat door de bijbehorende UUID in `root=UUID=\<UUID>`de indeling zoals. Als we bijvoorbeeld de apparaatnaam vervangen door UUID voor de para meter root en resume die wordt vermeld in de bestanden _/boot/grub2/grub.cfg_, _/boot/grub2/grub.cfg_of _/etc/default/grub_ , zien de regels in de bestanden eruit als in de volgende regel:
+1. Vervang nu de naam van het apparaat door de bijbehorende UUID in de indeling zoals `root=UUID=\<UUID>` . Als we bijvoorbeeld de apparaatnaam vervangen door UUID voor de para meter root en resume die wordt vermeld in de bestanden _/boot/grub2/grub.cfg_, _/boot/grub2/grub.cfg_of _/etc/default/grub_ , zien de regels in de bestanden eruit als in de volgende regel:
 
    `kernel /boot/vmlinuz-3.0.101-63-default root=UUID=62927e85-f7ba-40bc-9993-cc1feeb191e4 resume=UUID=6f614b44-433b-431b-9ca1-4dd2f6f74f6b splash=silent crashkernel=256M-:128M showopts vga=0x314`
 
@@ -266,7 +265,7 @@ De installatie van de Volume Shadow Copy-service (VSS) is onderdeel van de insta
 
 Dit probleem wordt doorgaans weer gegeven wanneer antivirus software de bewerkingen van Azure Site Recovery Services blokkeert.
 
-Los dit probleem als volgt op:
+Ga als volgt te werk om het probleem op te lossen:
 
 1. Bekijk de lijst met [uitgesloten mappen van het antivirus programma](vmware-azure-set-up-source.md#azure-site-recovery-folder-exclusions-from-antivirus-program).
 1. Volg de richt lijnen die zijn gepubliceerd door uw antivirus provider om de registratie van de DLL in Windows te blok keren.
@@ -291,7 +290,7 @@ Als er een fout optreedt, controleert u of een antivirus programma of andere ser
 
 ### <a name="vss-exit-code-806"></a>VSS-afsluit code 806
 
-Deze fout treedt op wanneer het gebruikers account dat wordt gebruikt voor de installatie, niet `CSScript` over de machtigingen beschikt om de opdracht uit te voeren. Geef de benodigde machtigingen voor het gebruikers account op om het script uit te voeren en voer de bewerking opnieuw uit.
+Deze fout treedt op wanneer het gebruikers account dat wordt gebruikt voor de installatie, niet over de machtigingen beschikt om de opdracht uit te voeren `CSScript` . Geef de benodigde machtigingen voor het gebruikers account op om het script uit te voeren en voer de bewerking opnieuw uit.
 
 ### <a name="other-vss-errors"></a>Andere VSS-fouten
 
@@ -301,7 +300,7 @@ Probeer de VSS-Provider service hand matig te installeren op de bron machine doo
 
 ## <a name="vss-error---0x8004e00f"></a>VSS-fout-0x8004E00F
 
-Deze fout treedt doorgaans op tijdens de installatie van de Mobility-agent vanwege problemen `DCOM` in `DCOM` en is een kritieke status.
+Deze fout treedt doorgaans op tijdens de installatie van de Mobility-agent vanwege problemen in `DCOM` en `DCOM` is een kritieke status.
 
 Gebruik de volgende procedure om de oorzaak van de fout te bepalen.
 
@@ -321,7 +320,7 @@ Gebruik de volgende procedure om de oorzaak van de fout te bepalen.
     - Exit code: 802
     ```
 
-Om het probleem op te lossen:
+Het probleem oplossen:
 
 Neem contact op met het [micro soft Windows-platform](https://aka.ms/Windows_Support) om hulp te krijgen bij het oplossen van het probleem met DCOM.
 
@@ -362,13 +361,13 @@ Dit probleem leidt ertoe dat de Azure Site Recovery Mobility agent-installatie m
 
 ### <a name="to-identify-the-issue"></a>Het probleem identificeren
 
-In het logboek op de configuratie server op _C:\ProgramData\ASRSetupLogs\UploadedLogs\<datum/tijd->UA_InstallLogFile. log_ vindt u de volgende uitzonde ring:
+In het logboek op de configuratie server op _C:\ProgramData\ASRSetupLogs\UploadedLogs \<date-time> UA_InstallLogFile. log_ ziet u de volgende uitzonde ring:
 
 ```plaintext
 COM+ was unable to talk to the Microsoft Distributed Transaction Coordinator (Exception from HRESULT: 0x8004E00F)
 ```
 
-Om het probleem op te lossen:
+Het probleem oplossen:
 
 1. Controleer of deze computer een niet-cluster machine is en of de cluster onderdelen niet worden gebruikt.
 1. Als de onderdelen niet worden gebruikt, verwijdert u de cluster onderdelen van de machine.
@@ -377,11 +376,11 @@ Om het probleem op te lossen:
 
 Als de installatie van de Mobility-agent mislukt, raadpleegt u de Logboeken onder _C:\ProgramData\ASRSetupLogs_ om te bepalen of sommige van de vereiste Stuur Programma's in sommige besturings sets ontbreken.
 
-Om het probleem op te lossen:
+Het probleem oplossen:
 
-1. Open het REGI ster met behulp van een REGI ster `regedit.msc`-editor, zoals.
+1. Open het REGI ster met behulp van een REGI ster `regedit.msc` -Editor, zoals.
 1. Open het `HKEY_LOCAL_MACHINE\SYSTEM` knoop punt.
-1. Zoek de `SYSTEM` besturings sets in het knoop punt.
+1. `SYSTEM`Zoek de besturings sets in het knoop punt.
 1. Open elke set besturings elementen en controleer of de volgende Windows-Stuur Programma's aanwezig zijn:
 
    * ATAPI

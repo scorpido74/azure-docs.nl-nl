@@ -15,10 +15,9 @@ ms.topic: conceptual
 ms.date: 03/17/2020
 ms.author: b-juche
 ms.openlocfilehash: 24b3710861f0ee158619ae9103584dcdb181f3d5
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "79460446"
 ---
 # <a name="faqs-about-smb-performance-for-azure-netapp-files"></a>Veelgestelde vragen over SMB-prestaties voor Azure NetApp Files
@@ -44,7 +43,7 @@ SMB meerdere kanalen sinds Windows 2012 wordt ondersteund om de beste prestaties
 
 ## <a name="does-my-azure-virtual-machine-support-rss"></a>Ondersteunt mijn virtuele Azure-machine RSS?
 
-Als u wilt weten of de Nic's van uw virtuele Azure-machine RSS `Get-SmbClientNetworkInterface` ondersteunen, voert u de opdracht `RSS Capable`als volgt uit en controleert u het veld: 
+Als u wilt weten of de Nic's van uw virtuele Azure-machine RSS ondersteunen, voert u de opdracht `Get-SmbClientNetworkInterface` als volgt uit en controleert u het veld `RSS Capable` : 
 
 ![RSS-ondersteuning voor virtuele Azure-machines](../media/azure-netapp-files/azure-netapp-files-formance-rss-support.png)
 
@@ -60,7 +59,7 @@ Met de functie SMB meerdere kanalen kan een SMB3-client een pool met verbindinge
 
 Nee. De SMB-client komt overeen met het aantal NIC'S dat door de SMB-server wordt geretourneerd.  Elk opslag volume is toegankelijk vanuit één en slechts één opslag eindpunt.  Dit betekent dat er slechts één NIC wordt gebruikt voor een bepaalde SMB-relatie.  
 
-In de uitvoer van `Get-SmbClientNetworkInterace` hieronder ziet u de virtuele machine met twee netwerk interfaces:--15 en 12.  Zoals hieronder wordt weer gegeven onder `Get-SmbMultichannelConnection`de opdracht, hoewel er twee met RSS geschikte nic's zijn, wordt alleen interface 12 gebruikt in combi natie met de SMB-share. Interface 15 wordt niet gebruikt.
+In de uitvoer van `Get-SmbClientNetworkInterace` Hieronder ziet u de virtuele machine met twee netwerk interfaces:--15 en 12.  Zoals hieronder wordt weer gegeven onder de opdracht `Get-SmbMultichannelConnection` , hoewel er twee met RSS geschikte nic's zijn, wordt alleen interface 12 gebruikt in combi natie met de SMB-share; interface 15 wordt niet gebruikt.
 
 ![Met RSS compatibele NIC'S](../media/azure-netapp-files/azure-netapp-files-rss-capable-nics.png)
 
@@ -74,9 +73,9 @@ De volgende tests en grafieken tonen de kracht van SMB meerdere kanalen voor wor
 
 ### <a name="random-io"></a>Wille keurige I/O  
 
-Als SMB meerdere kanalen is uitgeschakeld op de client, zijn er KiB Lees-en schrijf tests uitgevoerd met behulp van FIO en een 40-GiB werkset.  De SMB-share is losgekoppeld van elke test, met stappen van het aantal SMB-client verbindingen per RSS-netwerk interface- `1`instellingen`4`van`8`,`16`, `set-SmbClientConfiguration -ConnectionCountPerRSSNetworkInterface <count>`,,. De tests laten zien dat de standaard instelling `4` van voldoende is voor I/O-intensieve workloads. oplopend `8` tot `16` en heeft geen effect. 
+Als SMB meerdere kanalen is uitgeschakeld op de client, zijn er KiB Lees-en schrijf tests uitgevoerd met behulp van FIO en een 40-GiB werkset.  De SMB-share is losgekoppeld van elke test, met stappen van het aantal SMB-client verbindingen per RSS-netwerk interface-instellingen van,,,, `1` `4` `8` `16` `set-SmbClientConfiguration -ConnectionCountPerRSSNetworkInterface <count>` . De tests laten zien dat de standaard instelling van `4` voldoende is voor I/O-intensieve workloads; er wordt verhoogd naar `8` en `16` heeft geen effect. 
 
-De opdracht `netstat -na | findstr 445` heeft aangetoond dat er extra verbindingen tot stand zijn gebracht `1` met `4` stappen `8` van naar `16`en tot.  Er zijn vier CPU-kernen voor SMB tijdens elke test volledig gebruikt, zoals bevestigd door de `Per Processor Network Activity Cycles` prestatie statistieken (niet opgenomen in dit artikel).
+De opdracht heeft `netstat -na | findstr 445` aangetoond dat er extra verbindingen tot stand zijn gebracht met stappen van `1` naar `4` `8` en tot `16` .  Er zijn vier CPU-kernen voor SMB tijdens elke test volledig gebruikt, zoals bevestigd door de prestatie `Per Processor Network Activity Cycles` Statistieken (niet opgenomen in dit artikel).
 
 ![Wille keurige I/O-tests](../media/azure-netapp-files/azure-netapp-files-random-io-tests.png)
 

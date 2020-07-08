@@ -8,10 +8,9 @@ ms.topic: article
 ms.date: 08/25/2018
 tags: connectors
 ms.openlocfilehash: 1cfc53dcd730262101c0e879e0419ba3f2db4d38
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80657005"
 ---
 # <a name="send-email-from-your-smtp-account-with-azure-logic-apps"></a>E-mail verzenden vanuit uw SMTP-account met Azure Logic Apps
@@ -43,7 +42,7 @@ Met Azure Logic Apps en de Simple Mail Transfer Protocol (SMTP)-connector kunt u
 1. Kies **nieuwe stap**onder de laatste stap waarin u een SMTP-actie wilt toevoegen. 
 
    Als u een actie tussen stappen wilt toevoegen, plaatst u de muis aanwijzer op de pijl tussen de stappen. 
-   Kies het plus teken (**+**) dat wordt weer gegeven en selecteer vervolgens **een actie toevoegen**.
+   Kies het plus teken ( **+** ) dat wordt weer gegeven en selecteer vervolgens **een actie toevoegen**.
 
 1. Voer in het zoekvak ' SMTP ' in als uw filter. Selecteer in de lijst acties de gewenste actie.
 
@@ -51,12 +50,12 @@ Met Azure Logic Apps en de Simple Mail Transfer Protocol (SMTP)-connector kunt u
 
    | Eigenschap | Vereist | Beschrijving |
    |----------|----------|-------------|
-   | **Verbindings naam** | Ja | Een naam voor de verbinding met de SMTP-server | 
-   | **SMTP-server adres** | Ja | Het adres voor de SMTP-server | 
-   | **Gebruikers naam** | Ja | Uw gebruikers naam voor uw SMTP-account | 
-   | **Wachtwoord** | Ja | Uw wacht woord voor uw SMTP-account | 
-   | **SMTP-server poort** | Nee | Een specifieke poort op de SMTP-server die u wilt gebruiken | 
-   | **SSL inschakelen?** | Nee | Schakel TLS/SSL-versleuteling in of uit. | 
+   | **Verbindingsnaam** | Yes | Een naam voor de verbinding met de SMTP-server | 
+   | **SMTP-server adres** | Yes | Het adres voor de SMTP-server | 
+   | **Gebruikers naam** | Yes | Uw gebruikers naam voor uw SMTP-account | 
+   | **Wachtwoord** | Yes | Uw wacht woord voor uw SMTP-account | 
+   | **SMTP-server poort** | No | Een specifieke poort op de SMTP-server die u wilt gebruiken | 
+   | **SSL inschakelen?** | No | Schakel TLS/SSL-versleuteling in of uit. | 
    |||| 
 
 1. Geef de benodigde gegevens op voor de geselecteerde actie. 

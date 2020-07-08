@@ -12,10 +12,9 @@ manager: daveba
 ms.reviewer: jsimmons
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 4ee0f3d89d48b23db48e3bf4b78203b09fbcbdbd
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80652625"
 ---
 # <a name="enable-on-premises-azure-active-directory-password-protection"></a>On-premises Azure Active Directory wachtwoord beveiliging inschakelen
@@ -32,13 +31,13 @@ In dit artikel wordt beschreven hoe u Azure AD-wachtwoord beveiliging inschakelt
 
 ## <a name="enable-on-premises-password-protection"></a>On-premises wachtwoord beveiliging inschakelen
 
-1. Meld u aan bij de [Azure Portal](https://portal.azure.com) en blader naar **Azure Active Directory** > **beveiligings** > **verificatie methoden** > **wachtwoord beveiliging**.
+1. Meld u aan bij de [Azure Portal](https://portal.azure.com) en blader naar **Azure Active Directory**  >  **beveiligings**  >  **verificatie methoden**  >  **wachtwoord beveiliging**.
 1. Stel de optie voor het **inschakelen van wachtwoord beveiliging op Windows Server Active Directory** in op *Ja*.
 
     Als deze instelling is ingesteld op *Nee*, gaan alle geïmplementeerde Azure AD-agenten voor wachtwoord beveiliging domein controller in een quiescent-modus waarbij alle wacht woorden worden geaccepteerd als-is. Er worden geen validatie activiteiten uitgevoerd en er worden geen controle gebeurtenissen gegenereerd.
 
 1. Het is raadzaam om de **modus** in te stellen op *controleren*. Nadat u vertrouwd bent met de functie en de gevolgen voor gebruikers in uw organisatie, kunt u de **modus** instellen op *afgedwongen*. Zie de volgende sectie in de [bewerkings modus](#modes-of-operation)voor meer informatie.
-1. Wanneer u klaar bent, selecteert u **Opslaan**.
+1. Selecteer **Opslaan** wanneer u klaar bent.
 
     [![](media/howto-password-ban-bad-on-premises-operations/enable-configure-custom-banned-passwords-cropped.png "Enable on-premises password protection under Authentication Methods in the Azure portal")](media/howto-password-ban-bad-on-premises-operations/enable-configure-custom-banned-passwords.png#lightbox)
 

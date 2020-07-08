@@ -12,10 +12,9 @@ manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 2777675d915d99b8c0e3c2a123b24ab60d41f672
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80653352"
 ---
 # <a name="configure-azure-multi-factor-authentication-server-to-work-with-ad-fs-in-windows-server"></a>Azure Multi-Factor Authentication-server configureren om met AD FS in Windows Server te werken
@@ -84,8 +83,8 @@ De Multi-Factor Authentication-server is nu ingesteld voor gebruik als een extra
 Volg deze stappen om het bestand MultiFactorAuthenticationAdfsAdapter.config te bewerken:
 
 1. Stel het knooppunt **UseWebServiceSdk** in op **true**.  
-2. Stel de waarde voor **WebServiceSdkUrl** in op de URL van de webservice-SDK voor Multi-Factor Authentication. Bijvoorbeeld: *https:\/\/\<contoso.com/Certificate name>/multifactorauthwebservicessdk/pfwssdk.asmx*, waarbij * \<Certificate naam>* de naam is van uw certificaat.  
-3. Bewerk het script register-MultiFactorAuthenticationAdfsAdapter. ps1 door toe `-ConfigurationFilePath &lt;path&gt;` te voegen aan het `Register-AdfsAuthenticationProvider` einde van de opdracht, waarbij * &lt;pad&gt; * het volledige pad naar het bestand bestand multifactorauthenticationadfsadapter. config is.
+2. Stel de waarde voor **WebServiceSdkUrl** in op de URL van de webservice-SDK voor Multi-Factor Authentication. Bijvoorbeeld: *https: \/ \/ contoso.com/ \<certificatename> /multifactorauthwebservicessdk/pfwssdk.asmx*, waarbij *\<certificatename>* de naam is van uw certificaat.  
+3. Bewerk het Register-MultiFactorAuthenticationAdfsAdapter.ps1 script door toe `-ConfigurationFilePath &lt;path&gt;` te voegen aan het einde van de `Register-AdfsAuthenticationProvider` opdracht, waarbij * &lt; pad &gt; * het volledige pad naar het MultiFactorAuthenticationAdfsAdapter.config bestand is.
 
 ### <a name="configure-the-web-service-sdk-with-a-username-and-password"></a>De webservice-SDK configureren met een gebruikersnaam en wachtwoord
 

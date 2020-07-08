@@ -7,10 +7,9 @@ ms.topic: conceptual
 ms.date: 02/03/2020
 ms.author: brendm
 ms.openlocfilehash: 2e29f6a75b303518ac34ecf9b570bd7638cf0c3a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "79471027"
 ---
 # <a name="set-up-a-staging-environment-in-azure-spring-cloud"></a>Een faserings omgeving instellen in azure lente-Cloud
@@ -67,10 +66,10 @@ Ga naar uw service-exemplaar in het Azure Portal en selecteer **implementatie be
 
 >[!TIP]
 > * Controleer of het eind punt van de test eindigt met een slash (/) om ervoor te zorgen dat het CSS-bestand correct wordt geladen.  
-> * Als uw browser vereist dat u aanmeldings referenties opgeeft om de pagina weer te geven, gebruikt u de [URL decoderen](https://www.urldecoder.org/) om uw test eindpunt te decoderen. URL decoderen retourneert een URL in de vorm\<"https://username\<>: password\<> @ cluster-name>. test.azureapps.io/gateway/Green".  Gebruik dit formulier om toegang te krijgen tot uw eind punt.
+> * Als uw browser vereist dat u aanmeldings referenties opgeeft om de pagina weer te geven, gebruikt u de [URL decoderen](https://www.urldecoder.org/) om uw test eindpunt te decoderen. Het decoderen van de URL retourneert een URL in de vorm "https:// \<username> : \<password> @ \<cluster-name> . test.azureapps.io/gateway/Green".  Gebruik dit formulier om toegang te krijgen tot uw eind punt.
 
 >[!NOTE]    
-> Instellingen voor de configuratie server zijn van toepassing op zowel uw faserings omgeving als productie. Als`server.servlet.context-path`u bijvoorbeeld het context pad () voor uw app-gateway in de configuratie server instelt als *somepath*, wordt het pad naar uw groene implementatie gewijzigd in '\<https://username>\<: password>\<@ cluster-name>. test.azureapps.io/gateway/Green/somepath/... '.
+> Instellingen voor de configuratie server zijn van toepassing op zowel uw faserings omgeving als productie. Als u bijvoorbeeld het context pad ( `server.servlet.context-path` ) voor uw app-gateway in de configuratie server instelt als *somepath*, wordt het pad naar uw groene implementatie gewijzigd in ' https:// \<username> : \<password> @ \<cluster-name> . test.azureapps.io/gateway/Green/somepath/... '.
  
  Als u op dit punt naar de open bare app-gateway gaat, ziet u de oude pagina zonder uw nieuwe wijziging.
     

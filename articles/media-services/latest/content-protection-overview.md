@@ -16,19 +16,18 @@ ms.date: 03/17/2020
 ms.author: juliako
 ms.custom: seodec18
 ms.openlocfilehash: c1c9440f7ec70cea98f270f04c3030c800dd0fde
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "79461109"
 ---
 # <a name="protect-your-content-with-media-services-dynamic-encryption"></a>Uw inhoud beveiligen met Media Services dynamische versleuteling
 
-Gebruik Azure Media Services om uw media te beveiligen vanaf het moment dat deze uw computer overhoudt, zoals opslag, verwerking en levering. Met Media Services kunt u uw Live en on-demand inhoud dynamisch versleutelen met Advanced Encryption Standard (AES-128) of een van de drie belangrijkste Digital Rights Management (DRM)-systemen: micro soft PlayReady, Google Widevine en Apple FairPlay. Media Services biedt ook een service voor het leveren van AES-sleutels en DRM-licenties (PlayReady, Widevine en FairPlay) aan geautoriseerde clients. Als inhoud is versleuteld met een AES-sleutel en via HTTPS wordt verzonden, wordt deze niet duidelijk totdat de client wordt bereikt. 
+Met Azure Media Services kunt u uw media beveiligen vanaf het moment dat deze uw computer verlaten en ze worden opgeslagen, verwerkt en afgeleverd. Met Media Services kunt u uw live en on-demand inhoud dynamisch versleutelen met Advanced Encryption Standard (AES-128) of een van de drie belangrijkste Digital Rights Management-systemen (DRM): Microsoft PlayReady, Google Widevine en Apple FairPlay. Media Services biedt ook een service voor het leveren van AES-sleutels en DRM-licenties (PlayReady, Widevine en FairPlay) aan geautoriseerde klanten. Als inhoud is versleuteld met een AES-sleutel en via HTTPS wordt verzonden, wordt deze niet duidelijk totdat de client wordt bereikt. 
 
 In Media Services v3 is een inhouds sleutel gekoppeld aan streaming-Locator (Zie [dit voor beeld](protect-with-aes128.md)). Als u de Media Services key delivery-service gebruikt, kunt u Azure Media Services de inhouds sleutel voor u laten genereren. De inhouds sleutel moet zelf worden gegenereerd als u de service voor de levering van sleutels gebruikt, of als u een scenario met een hoge Beschik baarheid wilt afhandelen, waarbij u dezelfde inhouds sleutel moet hebben in twee data centers.
 
-Wanneer een stroom wordt aangevraagd door een speler, gebruikt Media Services de opgegeven sleutel om uw inhoud dynamisch te versleutelen met behulp van AES Clear Key of DRM-versleuteling. Voor het ontsleutelen van de stroom vraagt de speler de sleutel aan bij Media Services key delivery service of de key delivery service die u hebt opgegeven. Om te bepalen of de gebruiker gemachtigd is om de sleutel op te halen, evalueert de service het beleid voor de inhouds sleutel die u hebt opgegeven voor de sleutel.
+Wanneer een stream wordt aangevraagd door een speler, gebruikt Media Services de opgegeven sleutel om uw inhoud dynamisch te versleutelen met AES clear key of DRM-versleuteling. Voor het ontsleutelen van de stream vraagt de speler de sleutel aan bij Media Services-sleutelleveringsservice of de sleutelleveringsservice die u hebt opgegeven. Om te bepalen of de gebruiker gemachtigd is om de sleutel op te halen, evalueert de service het beleid voor de inhouds sleutel die u hebt opgegeven voor de sleutel.
 
 U kunt de REST API of een Media Services-client bibliotheek gebruiken om autorisatie-en verificatie beleid te configureren voor uw licenties en sleutels.
 
@@ -70,7 +69,7 @@ Het voor beeld laat zien hoe u:
 
 2. Maak een [streaming-Locator](streaming-locators-concept.md) die is geconfigureerd voor het streamen van het versleutelde activum.
   
-   De streaming-Locator moet worden gekoppeld aan een [streaming-beleid](streaming-policy-concept.md). In het voor beeld is het `StreamingLocator.StreamingPolicyName` beleid ' Predefined_MultiDrmCencStreaming ' ingesteld.
+   De streaming-Locator moet worden gekoppeld aan een [streaming-beleid](streaming-policy-concept.md). In het voor beeld is `StreamingLocator.StreamingPolicyName` het beleid ' Predefined_MultiDrmCencStreaming ' ingesteld.
 
    De PlayReady-en Widevine-versleuteling worden toegepast en de sleutel wordt aan de client voor afspelen geleverd op basis van de geconfigureerde DRM-licenties. Als u uw stroom ook wilt versleutelen met CBCS (FairPlay), gebruikt u het beleid ' Predefined_MultiDrmStreaming '.
 
@@ -78,10 +77,10 @@ Het voor beeld laat zien hoe u:
 
 3. Maak een test token.
 
-   De `GetTokenAsync` -methode laat zien hoe u een test token maakt.
+   De- `GetTokenAsync` methode laat zien hoe u een test token maakt.
 4. De streaming-URL bouwen.
 
-   De `GetDASHStreamingUrlAsync` -methode laat zien hoe u de streaming-URL bouwt. In dit geval wordt de streep inhoud door de URL gestreamd.
+   De- `GetDASHStreamingUrlAsync` methode laat zien hoe u de streaming-URL bouwt. In dit geval wordt de streep inhoud door de URL gestreamd.
 
 ### <a name="player-with-an-aes-or-drm-client"></a>Speler met een AES-of DRM-client
 
@@ -124,7 +123,7 @@ Het HLS-protocol ondersteunt de volgende container indelingen en versleutelings 
 
 |Container indeling|Versleutelings schema|Voor beeld van URL|
 |---|---|---|
-|Alle|AES|`https://amsv3account-usw22.streaming.media.azure.net/00000000-0000-0000-0000-000000000000/ignite.ism/manifest(format=m3u8-aapl,encryption=cbc)`|
+|Alles|AES|`https://amsv3account-usw22.streaming.media.azure.net/00000000-0000-0000-0000-000000000000/ignite.ism/manifest(format=m3u8-aapl,encryption=cbc)`|
 |MPG2-TS |CBCS (FairPlay) |`https://amsv3account-usw22.streaming.media.azure.net/00000000-0000-0000-0000-000000000000/ignite.ism/manifest(format=m3u8-aapl,encryption=cbcs-aapl)`|
 |CMAF(fmp4) |CBCS (FairPlay) |`https://amsv3account-usw22.streaming.media.azure.net/00000000-0000-0000-0000-000000000000/ignite.ism/manifest(format=m3u8-cmaf,encryption=cbcs-aapl)`|
 |MPG2-TS |CENC (PlayReady) |`https://amsv3account-usw22.streaming.media.azure.net/00000000-0000-0000-0000-000000000000/ignite.ism/manifest(format=m3u8-aapl,encryption=cenc)`|
@@ -142,7 +141,7 @@ Het MPEG-DASH-protocol ondersteunt de volgende container indelingen en versleute
 
 |Container indeling|Versleutelings schema|URL-voor beelden
 |---|---|---|
-|Alle|AES|`https://amsv3account-usw22.streaming.media.azure.net/00000000-0000-0000-0000-000000000000/ignite.ism/manifest(format=mpd-time-csf,encryption=cbc)`|
+|Alles|AES|`https://amsv3account-usw22.streaming.media.azure.net/00000000-0000-0000-0000-000000000000/ignite.ism/manifest(format=mpd-time-csf,encryption=cbc)`|
 |KVP (fmp4) |CENC (Widevine + PlayReady) |`https://amsv3account-usw22.streaming.media.azure.net/00000000-0000-0000-0000-000000000000/ignite.ism/manifest(format=mpd-time-csf,encryption=cenc)`|
 |CMAF(fmp4)|CENC (Widevine + PlayReady)|`https://amsv3account-usw22.streaming.media.azure.net/00000000-0000-0000-0000-000000000000/ignite.ism/manifest(format=mpd-time-cmaf,encryption=cenc)`|
 
@@ -242,18 +241,18 @@ Bijvoorbeeld:
 streamingPolicy.EnvelopEncryption.customKeyAcquisitionUrlTemplate = "https://mykeyserver.hostname.com/envelopekey/{AlternativeMediaId}/{ContentKeyId}";
 ```
 
-`ContentKeyId`heeft een waarde van de aangevraagde sleutel. U kunt gebruiken `AlternativeMediaId` als u de aanvraag aan een entiteit aan uw zijde wilt toewijzen. `AlternativeMediaId` Kan bijvoorbeeld worden gebruikt om u te helpen bij het opzoeken van machtigingen.
+`ContentKeyId`heeft een waarde van de aangevraagde sleutel. U kunt gebruiken `AlternativeMediaId` Als u de aanvraag aan een entiteit aan uw zijde wilt toewijzen. `AlternativeMediaId`Kan bijvoorbeeld worden gebruikt om u te helpen bij het opzoeken van machtigingen.
 
 Zie [streaming-beleid-maken](https://docs.microsoft.com/rest/api/media/streamingpolicies/create)voor rest-voor beelden die gebruikmaken van url's voor aangepaste licentie/sleutel overname.
 
 > [!NOTE]
-> Widevine is een service van Google Inc. en is onderworpen aan de service voorwaarden en het privacybeleid van Google, Inc.
+> Widevine is een service van Google Inc. en is onderworpen aan de servicevoorwaarden en het privacybeleid van Google Inc.
 
 ## <a name="troubleshoot"></a>Problemen oplossen
 
 Als u de `MPE_ENC_ENCRYPTION_NOT_SET_IN_DELIVERY_POLICY` fout melding krijgt, moet u ervoor zorgen dat u het juiste streaming-beleid opgeeft.
 
-Als er fouten optreden die eindigen op `_NOT_SPECIFIED_IN_URL`, zorg er dan voor dat u de versleutelings indeling opgeeft in de URL. Een voorbeeld is `…/manifest(format=m3u8-cmaf,encryption=cbcs-aapl)`. Zie [streaming protocollen en versleutelings typen](#streaming-protocols-and-encryption-types).
+Als er fouten optreden die eindigen op `_NOT_SPECIFIED_IN_URL` , zorg er dan voor dat u de versleutelings indeling opgeeft in de URL. Een voorbeeld is `…/manifest(format=m3u8-cmaf,encryption=cbcs-aapl)`. Zie [streaming protocollen en versleutelings typen](#streaming-protocols-and-encryption-types).
 
 ## <a name="ask-questions-give-feedback-get-updates"></a>Vragen stellen, feedback geven, updates ophalen
 

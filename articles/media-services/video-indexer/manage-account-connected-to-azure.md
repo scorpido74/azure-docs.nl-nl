@@ -11,10 +11,9 @@ ms.topic: article
 ms.date: 12/16/2019
 ms.author: juliako
 ms.openlocfilehash: 5b9ec1c04dd90af9d9380a1f4d30386c8f9cc3ed
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "79499667"
 ---
 # <a name="manage-a-video-indexer-account-connected-to-azure"></a>Een Video Indexer account beheren dat is verbonden met Azure
@@ -58,8 +57,8 @@ In het dialoog venster **verbinding bijwerken met Azure Media Services** van uw 
 |---|---|
 |Azure-abonnements-ID|De abonnements-ID kan worden opgehaald uit de Azure Portal. Klik op **alle services** in het linkerdeel venster en zoek naar ' Abonnementen '. Selecteer **abonnementen** en kies de gewenste id in de lijst met uw abonnementen.|
 |Naam van de resource groep Azure Media Services|De naam voor de resource groep waarin u het Media Services-account hebt gemaakt.|
-|Toepassings-id|De Azure AD-toepassings-ID (met machtigingen voor het opgegeven Media Services-account) dat u voor dit Video Indexer account hebt gemaakt. <br/><br/>Als u de App-ID wilt ophalen, gaat u naar Azure Portal. Kies onder het Media Services account uw account en ga naar **API-toegang**. Selecteer **verbinding maken met Media Services-API met Service-Principal** -> **Azure AD-App**. Kopieer de relevante para meters.|
-|Toepassings sleutel|De Azure AD-toepassings sleutel die is gekoppeld aan uw Media Services account dat u hierboven hebt opgegeven. <br/><br/>Als u de app-sleutel wilt ophalen, gaat u naar Azure Portal. Kies onder het Media Services account uw account en ga naar **API-toegang**. Selecteer **verbinding maken met Media Services-API met Service-Principal** -> **toepassings** -> **certificaten beheren & geheimen**. Kopieer de relevante para meters.|
+|Toepassings-id|De Azure AD-toepassings-ID (met machtigingen voor het opgegeven Media Services-account) dat u voor dit Video Indexer account hebt gemaakt. <br/><br/>Als u de App-ID wilt ophalen, gaat u naar Azure Portal. Kies onder het Media Services account uw account en ga naar **API-toegang**. Selecteer **verbinding maken met Media Services-API met Service-Principal**  ->  **Azure AD-App**. Kopieer de relevante para meters.|
+|Toepassings sleutel|De Azure AD-toepassings sleutel die is gekoppeld aan uw Media Services account dat u hierboven hebt opgegeven. <br/><br/>Als u de app-sleutel wilt ophalen, gaat u naar Azure Portal. Kies onder het Media Services account uw account en ga naar **API-toegang**. Selecteer **verbinding maken met Media Services-API met Service-Principal**  ->  **toepassings**  ->  **certificaten beheren & geheimen**. Kopieer de relevante para meters.|
 
 ## <a name="autoscale-reserved-units"></a>Gereserveerde eenheden automatisch schalen
 
@@ -75,7 +74,7 @@ Als uw account aanpassingen vereist, ziet u relevante fouten en waarschuwingen o
 
 * EventGrid
 
-    U moet de EventGrid-resource provider registreren met behulp van de Azure Portal. Ga in het [Azure Portal](https://portal.azure.com/)naar **abonnementen** > [Subscription] > **ResourceProviders** > **micro soft. EventGrid**. Als dat **niet het geval** is, selecteert u **registreren**. Het duurt enkele minuten om u te registreren.
+    U moet de EventGrid-resource provider registreren met behulp van de Azure Portal. Ga in het [Azure Portal](https://portal.azure.com/)naar **abonnementen** > [Subscription] > **ResourceProviders**  >  **micro soft. EventGrid**. Als dat **niet het geval** is, selecteert u **registreren**. Het duurt enkele minuten om u te registreren.
 
 * Streaming-eindpunt
 

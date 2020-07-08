@@ -9,10 +9,9 @@ ms.topic: conceptual
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.date: 02/28/2020
 ms.openlocfilehash: f7dc7b520cba2bbf2351d93795a1a26b3b5124be
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "79471350"
 ---
 # <a name="what-is-apache-hive-and-hiveql-on-azure-hdinsight"></a>Wat is Apache Hive en HiveQL in azure HDInsight?
@@ -23,7 +22,7 @@ Met hive kunt u de structuur projecteren op grotendeels ongestructureerde gegeve
 
 HDInsight biedt verschillende cluster typen, die zijn afgestemd op specifieke werk belastingen. De volgende cluster typen worden meestal gebruikt voor Hive-query's:
 
-|Cluster type |Beschrijving|
+|Cluster type |Description|
 |---|---|
 |Interactive Query|Een Hadoop-cluster dat [LLAP-functionaliteit (Low latentie Analytical Processing)](https://cwiki.apache.org/confluence/display/Hive/LLAP) biedt om de reactie tijden voor interactieve query's te verbeteren. Zie het document [Start with Interactive query in HDInsight](../interactive-query/apache-interactive-query-get-started.md) voor meer informatie.|
 |Hadoop|Een Hadoop-cluster dat is afgestemd op werk belastingen voor batch verwerking. Zie het document [beginnen met Apache Hadoop in HDInsight](../hadoop/apache-hadoop-linux-tutorial-get-started.md) voor meer informatie.|
@@ -40,7 +39,7 @@ Gebruik de volgende tabel om de verschillende manieren te ontdekken voor het geb
 | [HDInsight-hulpprogram ma's voor Visual Studio](../hadoop/apache-hadoop-use-hive-visual-studio.md) |✔ |✔ |Windows |
 | [Hive-weergave](../hadoop/apache-hadoop-use-hive-ambari-view.md) |✔ |✔ |Any (op browser gebaseerd) |
 | [Beeline-client](../hadoop/apache-hadoop-use-hive-beeline.md) |✔ |✔ |Linux, UNIX, Mac OS X of Windows |
-| [REST-API](../hadoop/apache-hadoop-use-hive-curl.md) |&nbsp; |✔ |Linux, UNIX, Mac OS X of Windows |
+| [REST API](../hadoop/apache-hadoop-use-hive-curl.md) |&nbsp; |✔ |Linux, UNIX, Mac OS X of Windows |
 | [Windows PowerShell](../hadoop/apache-hadoop-use-hive-powershell.md) |&nbsp; |✔ |Windows |
 
 ## <a name="hiveql-language-reference"></a>Naslag informatie voor HiveQL language
@@ -66,13 +65,13 @@ STORED AS TEXTFILE LOCATION '/example/data/';
 
 Hive ondersteunt ook aangepaste **serialisatiefunctie/deserializers (SerDe)** voor complexe of onregelmatige gestructureerde gegevens. Zie het [gebruik van een aangepaste JSON-SerDe met HDInsight](https://web.archive.org/web/20190217104719/https://blogs.msdn.microsoft.com/bigdatasupport/2014/06/18/how-to-use-a-custom-json-serde-with-microsoft-azure-hdinsight/) -document voor meer informatie.
 
-Voor meer informatie over bestands indelingen die worden ondersteund door Hive, raadpleegt u de [hand leiding voor talen (https://cwiki.apache.org/confluence/display/Hive/LanguageManual) ](https://cwiki.apache.org/confluence/display/Hive/LanguageManual)
+Voor meer informatie over bestands indelingen die worden ondersteund door Hive, raadpleegt u de [hand leiding voor talen ( https://cwiki.apache.org/confluence/display/Hive/LanguageManual) ](https://cwiki.apache.org/confluence/display/Hive/LanguageManual)
 
 ### <a name="hive-internal-tables-vs-external-tables"></a>Interne tabellen van Hive versus externe tabellen
 
 Er zijn twee soorten tabellen die u met hive kunt maken:
 
-* __Intern__: gegevens worden opgeslagen in het Hive-Data Warehouse. Het Data Warehouse bevindt `/hive/warehouse/` zich op de standaard opslag voor het cluster.
+* __Intern__: gegevens worden opgeslagen in het Hive-Data Warehouse. Het Data Warehouse bevindt zich `/hive/warehouse/` op de standaard opslag voor het cluster.
 
     Gebruik interne tabellen wanneer een van de volgende voor waarden van toepassing is:
 
@@ -106,11 +105,11 @@ Hive kan ook worden uitgebreid via door de **gebruiker gedefinieerde functies (U
 
 ## <a name="example-data"></a>Voorbeeldgegevens
 
-Hive op HDInsight wordt vooraf geladen met een interne tabel met de `hivesampletable`naam. HDInsight biedt ook voor beelden van gegevens sets die kunnen worden gebruikt met Hive. Deze gegevens sets worden opgeslagen in de `/example/data` mappen `/HdiSamples` en. Deze directory's bestaan in de standaard opslag voor uw cluster.
+Hive op HDInsight wordt vooraf geladen met een interne tabel met de naam `hivesampletable` . HDInsight biedt ook voor beelden van gegevens sets die kunnen worden gebruikt met Hive. Deze gegevens sets worden opgeslagen in de `/example/data` `/HdiSamples` mappen en. Deze directory's bestaan in de standaard opslag voor uw cluster.
 
 ## <a name="example-hive-query"></a>Voor beeld Hive-query
 
-De volgende HiveQL-instructies project kolommen naar `/example/data/sample.log` het bestand:
+De volgende HiveQL-instructies project kolommen naar het `/example/data/sample.log` bestand:
 
 ```hiveql
 DROP TABLE log4jLogs;
@@ -131,12 +130,12 @@ SELECT t4 AS sev, COUNT(*) AS count FROM log4jLogs
 
 In het vorige voor beeld voeren de HiveQL-instructies de volgende acties uit:
 
-|Rekeningen |Beschrijving |
+|Rekeningen |Description |
 |---|---|
 |TABEL NEERZETTEN|Als de tabel al bestaat, verwijdert u deze.|
-|EXTERNE TABEL MAKEN|Hiermee maakt u een nieuwe **externe** tabel in Hive. Externe tabellen slaan de tabel definitie in Hive alleen op. De gegevens blijven op de oorspronkelijke locatie en in de oorspronkelijke indeling.|
+|CREATE EXTERNAL TABLE|Hiermee maakt u een nieuwe **externe** tabel in Hive. Externe tabellen slaan de tabel definitie in Hive alleen op. De gegevens blijven op de oorspronkelijke locatie en in de oorspronkelijke indeling.|
 |RIJ-INDELING|Hiermee wordt aangegeven hoe de gegevens worden opgemaakt. In dit geval worden de velden in elk logboek gescheiden door een spatie.|
-|OPGESLAGEN ALS TEXTFILE-LOCATIE|Hiermee wordt de component aangegeven waarin de gegevens worden `example/data` opgeslagen (de map) en opgeslagen als tekst. De gegevens kunnen zich in één bestand bevindt of zich verspreiden over meerdere bestanden in de map.|
+|OPGESLAGEN ALS TEXTFILE-LOCATIE|Hiermee wordt de component aangegeven waarin de gegevens worden opgeslagen (de `example/data` map) en opgeslagen als tekst. De gegevens kunnen zich in één bestand bevindt of zich verspreiden over meerdere bestanden in de map.|
 |SELECT|Hiermee wordt het aantal rijen geselecteerd waarin de kolom **T4** de waarde **[error]** bevat. Deze instructie retourneert de waarde **3** omdat er drie rijen met deze waarde zijn.|
 |INPUT__FILE__NAME zoals%. log|Hive probeert het schema toe te passen op alle bestanden in de map. In dit geval bevat de map bestanden die niet overeenkomen met het schema. Om te voor komen dat gegevens in de resultaten permanent worden opgehaald, wordt met deze verklaring aangegeven dat er alleen gegevens moeten worden geretourneerd van bestanden die eindigen op. log.|
 
@@ -164,7 +163,7 @@ SELECT t1, t2, t3, t4, t5, t6, t7
 
 Met deze instructies worden de volgende acties uitgevoerd:
 
-|Rekeningen |Beschrijving |
+|Rekeningen |Description |
 |---|---|
 |CREATE TABLE ALS DEZE NIET BESTAAT|Als de tabel niet bestaat, maakt u deze. Omdat het **externe** sleutel woord niet wordt gebruikt, maakt deze instructie een interne tabel. De tabel wordt opgeslagen in het Hive-Data Warehouse en wordt volledig beheerd door Hive.|
 |OPGESLAGEN ALS ORC|Hiermee worden de gegevens opgeslagen in de ORC-indeling (Optimized Row in kolommen). ORC is een zeer geoptimaliseerde en efficiënte indeling voor het opslaan van Hive-gegevens.|

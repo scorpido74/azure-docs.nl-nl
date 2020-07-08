@@ -4,10 +4,9 @@ description: Hierin wordt beschreven hoe u uitvoer waarden definieert in een Azu
 ms.topic: conceptual
 ms.date: 02/25/2020
 ms.openlocfilehash: 203bfc66e9515ef14a5fe1315ef5b9ee07075041
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "79460021"
 ---
 # <a name="outputs-in-azure-resource-manager-template"></a>Uitvoer in Azure Resource Manager sjabloon
@@ -79,7 +78,7 @@ In het volgende voor beeld ziet u hoe u het IP-adres instelt op een load balance
 }
 ```
 
-U kunt de `reference` functie niet gebruiken in het gedeelte outputs van een [geneste sjabloon](linked-templates.md#nested-template). Als u de waarden voor een geïmplementeerde resource in een geneste sjabloon wilt retour neren, converteert u de geneste sjabloon naar een gekoppelde sjabloon.
+U kunt de functie niet gebruiken `reference` in het gedeelte outputs van een [geneste sjabloon](linked-templates.md#nested-template). Als u de waarden voor een geïmplementeerde resource in een geneste sjabloon wilt retour neren, converteert u de geneste sjabloon naar een gekoppelde sjabloon.
 
 ## <a name="get-output-values"></a>Uitvoer waarden ophalen
 
@@ -87,7 +86,7 @@ Wanneer de implementatie is geslaagd, worden de uitvoer waarden automatisch gere
 
 Als u uitvoer waarden wilt ophalen uit de implementatie geschiedenis, kunt u script gebruiken.
 
-# <a name="powershell"></a>[Zo](#tab/azure-powershell)
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
 ```azurepowershell-interactive
 (Get-AzResourceGroupDeployment `
@@ -110,7 +109,7 @@ az deployment group show \
 
 In de volgende voor beelden ziet u scenario's voor het gebruik van uitvoer.
 
-|Template  |Beschrijving  |
+|Template  |Description  |
 |---------|---------|
 |[Variabelen kopiëren](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/multipleinstance/copyvariables.json) | Maakt complexe variabelen en voert deze waarden uit. Implementeert geen resources. |
 |[Openbaar IP-adres](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/linkedtemplates/public-ip.json) | Hiermee maakt u een openbaar IP-adres en voert u de resource-ID uit. |

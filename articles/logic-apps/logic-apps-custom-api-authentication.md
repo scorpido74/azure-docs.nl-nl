@@ -7,10 +7,9 @@ ms.reviewer: klam, logicappspm
 ms.topic: article
 ms.date: 09/22/2017
 ms.openlocfilehash: 5e0dcd478c6eb6696a0e07d35d4dccddac68ac1c
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80656239"
 ---
 # <a name="increase-security-for-calls-to-custom-apis-from-azure-logic-apps"></a>Verbeter de beveiliging van aanroepen naar aangepaste Api's van Azure Logic Apps
@@ -51,9 +50,9 @@ Uw logische app maakt gebruik van deze Azure AD-toepassings identiteit om te ver
 2. Controleer of u zich in dezelfde map bevindt als de web-app of API-app.
 
    > [!TIP]
-   > Als u wilt scha kelen tussen directory's, kiest u uw profiel en selecteert u een andere map. Of kies **overzicht** > **Switch Directory**.
+   > Als u wilt scha kelen tussen directory's, kiest u uw profiel en selecteert u een andere map. Of kies **overzicht**  >  **Switch Directory**.
 
-3. Kies in het menu Directory onder **beheren**de optie **app-registraties** > **nieuwe toepassing registreren**.
+3. Kies in het menu Directory onder **beheren**de optie **app-registraties**  >  **nieuwe toepassing registreren**.
 
    > [!TIP]
    > De lijst met app-registraties bevat standaard alle app-registraties in uw Directory. Als u alleen uw app-registraties wilt weer geven, gaat u naar het zoekvak en selecteert u **mijn apps**. 
@@ -152,7 +151,7 @@ Nu moet u de client-ID en Tenant-ID vinden voor de toepassings identiteit die is
 
 U moet nog steeds een Azure AD-toepassings-id voor uw web-app of API-app maken die afwijkt van de app-identiteit voor uw logische app. Volg de vorige stappen in deel 2 van de Azure Portal om de toepassings-id te maken. 
 
-U kunt ook de stappen in deel 1 volgen, maar zorg ervoor dat u de URL van uw web-app of `https://{URL}` API-app gebruikt voor **aanmeldings-** en **App-ID-URI**. In deze stappen moet u zowel de client-ID als de Tenant-ID opslaan voor gebruik in de implementatie sjabloon van uw app en ook voor deel 3.
+U kunt ook de stappen in deel 1 volgen, maar zorg ervoor dat u de URL van uw web-app of API-app gebruikt `https://{URL}` voor **aanmeldings-** en **App-ID-URI**. In deze stappen moet u zowel de client-ID als de Tenant-ID opslaan voor gebruik in de implementatie sjabloon van uw app en ook voor deel 3.
 
 > [!NOTE]
 > Wanneer u de Azure AD-toepassings-id voor uw web-app of API-app maakt, moet u het Azure Portal gebruiken, niet Power shell. De Power shell-commandlet heeft niet de vereiste machtigingen ingesteld voor het aanmelden van gebruikers op een website.
@@ -199,11 +198,11 @@ Open de definitie van de logische app in de code weergave, ga naar de **http-** 
 
 | Eigenschap | Vereist | Beschrijving | 
 | -------- | -------- | ----------- | 
-| tenant | Ja | De GUID voor de Azure AD-Tenant | 
-| gericht | Ja | De GUID voor de doel resource waartoe u toegang wilt krijgen, wat de client-ID is van de toepassings identiteit voor uw web-app of API-app | 
-| clientId | Ja | De GUID voor de client die toegang vraagt, de client-ID van de toepassings identiteit voor uw logische app | 
-| geheim | Ja | De sleutel of het wacht woord van de toepassings-id voor de client die het toegangs token aanvraagt | 
-| type | Ja | Het verificatie type. De waarde is `ActiveDirectoryOAuth`voor ActiveDirectoryOAuth-verificatie. | 
+| tenant | Yes | De GUID voor de Azure AD-Tenant | 
+| gericht | Yes | De GUID voor de doel resource waartoe u toegang wilt krijgen, wat de client-ID is van de toepassings identiteit voor uw web-app of API-app | 
+| clientId | Yes | De GUID voor de client die toegang vraagt, de client-ID van de toepassings identiteit voor uw logische app | 
+| geheim | Yes | De sleutel of het wacht woord van de toepassings-id voor de client die het toegangs token aanvraagt | 
+| type | Yes | Het verificatie type. De waarde is voor ActiveDirectoryOAuth-verificatie `ActiveDirectoryOAuth` . | 
 |||| 
 
 Bijvoorbeeld:
@@ -250,9 +249,9 @@ Neem de volgende eigenschappen op in de sectie **autorisatie** :
 
 | Eigenschap | Vereist | Beschrijving |
 | -------- | -------- | ----------- |
-| `type` | Ja | Het verificatie type. Voor TLS/SSL-client certificaten moet de waarde zijn `ClientCertificate`. |
-| `password` | Nee | Het wacht woord voor toegang tot het client certificaat (PFX-bestand) |
-| `pfx` | Ja | De met base64 gecodeerde inhoud van het client certificaat (PFX-bestand) |
+| `type` | Yes | Het verificatie type. Voor TLS/SSL-client certificaten moet de waarde zijn `ClientCertificate` . |
+| `password` | No | Het wacht woord voor toegang tot het client certificaat (PFX-bestand) |
+| `pfx` | Yes | De met base64 gecodeerde inhoud van het client certificaat (PFX-bestand) |
 ||||
 
 <a name="basic"></a>
@@ -273,9 +272,9 @@ Neem de volgende eigenschappen op in de sectie **autorisatie** :
 
 | Eigenschap | Vereist | Beschrijving | 
 | -------- | -------- | ----------- | 
-| type | Ja | Het verificatie type dat u wilt gebruiken. Voor basis verificatie moet de waarde zijn `Basic`. | 
-| gebruikersnaam | Ja | De gebruikers naam die u wilt gebruiken voor verificatie | 
-| wachtwoord | Ja | Het wacht woord dat u wilt gebruiken voor verificatie | 
+| type | Yes | Het verificatie type dat u wilt gebruiken. Voor basis verificatie moet de waarde zijn `Basic` . | 
+| gebruikersnaam | Yes | De gebruikers naam die u wilt gebruiken voor verificatie | 
+| wachtwoord | Yes | Het wacht woord dat u wilt gebruiken voor verificatie | 
 |||| 
 
 <a name="azure-ad-code"></a>

@@ -8,13 +8,12 @@ ms.topic: conceptual
 ms.date: 12/15/2019
 tags: connectors
 ms.openlocfilehash: 5b61b51e79c71736e18aaa63ab032c05c512c8d7
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80656333"
 ---
-# <a name="create-monitor-and-manage-ftp-files-by-using-azure-logic-apps"></a>FTP-bestanden maken, controleren en beheren met behulp van Azure Logic Apps
+# <a name="create-monitor-and-manage-ftp-files-by-using-azure-logic-apps"></a>FTP-bestanden bewaken, maken en beheren met behulp van Azure Logic Apps
 
 Met Azure Logic Apps en de FTP-connector kunt u geautomatiseerde taken en werk stromen maken om bestanden te maken, controleren, verzenden en ontvangen via uw account op een FTP-server, samen met andere acties, bijvoorbeeld:
 
@@ -45,8 +44,8 @@ FTP-triggers worden uitgevoerd door het FTP-bestands systeem te pollen en te zoe
 
 | SFTP-client | Bewerking |
 |-------------|--------|
-| WinSCP | Ga naar **Opties** > **voor keuren** > **overdracht** > **bewerken** > **behouden tijds tempel** > **uitschakelen** |
-| FileZilla | Ga naar de **overdrachts** > **tijds tempels van overgebrachte bestanden** > **uitschakelen** |
+| WinSCP | Ga naar **Opties**  >  **voor keuren**  >  **overdracht**  >  **bewerken**  >  **behouden tijds tempel**  >  **uitschakelen** |
+| FileZilla | Ga naar de **overdrachts**  >  **tijds tempels van overgebrachte bestanden**  >  **uitschakelen** |
 |||
 
 Wanneer een trigger een nieuw bestand vindt, controleert de trigger of het nieuwe bestand is voltooid en niet gedeeltelijk is geschreven. Een bestand kan bijvoorbeeld wijzigingen in voortgang hebben wanneer de trigger de bestands server controleert. Om te voor komen dat een gedeeltelijk geschreven bestand wordt geretourneerd, wordt door de trigger de tijds tempel voor het bestand met recente wijzigingen weer gegeven, maar wordt dat bestand niet direct geretourneerd. De trigger retourneert het bestand alleen wanneer de server opnieuw wordt gecontroleerd. Dit gedrag kan soms een vertraging veroorzaken die twee maal het polling interval van de trigger is.
@@ -69,13 +68,13 @@ Wanneer een trigger een nieuw bestand vindt, controleert de trigger of het nieuw
 
 1. Meld u aan bij de [Azure Portal](https://portal.azure.com)en open de logische app in de ontwerp functie voor logische apps.
 
-1. Voer `ftp` als filter toe voor lege logische apps in het zoekvak. Selecteer de gewenste trigger in de lijst met **Triggers** .
+1. Voer als filter toe voor lege logische apps in het zoekvak `ftp` . Selecteer de gewenste trigger in de lijst met **Triggers** .
 
    -of-
 
-   Voor bestaande Logic apps, onder de laatste stap waar u een actie wilt toevoegen, selecteert u **nieuwe stap**en vervolgens **een actie toevoegen**. Voer `ftp` in het zoekvak in als uw filter. Selecteer in de lijst **acties** de gewenste actie.
+   Voor bestaande Logic apps, onder de laatste stap waar u een actie wilt toevoegen, selecteert u **nieuwe stap**en vervolgens **een actie toevoegen**. Voer in het zoekvak in `ftp` als uw filter. Selecteer in de lijst **acties** de gewenste actie.
 
-   Als u een actie tussen stappen wilt toevoegen, plaatst u de muis aanwijzer op de pijl tussen de stappen. Selecteer het plus teken (**+**) dat wordt weer gegeven en selecteer vervolgens **een actie toevoegen**.
+   Als u een actie tussen stappen wilt toevoegen, plaatst u de muis aanwijzer op de pijl tussen de stappen. Selecteer het plus teken ( **+** ) dat wordt weer gegeven en selecteer vervolgens **een actie toevoegen**.
 
 1. Geef uw verbindings gegevens op en selecteer **maken**.
 
@@ -95,7 +94,7 @@ Hier volgt een voor beeld waarin wordt getoond hoe u de trigger **Wanneer een be
 
 1. Meld u aan bij de [Azure Portal](https://portal.azure.com)en open de logische app in de ontwerp functie voor logische apps, als deze nog niet is geopend.
 
-1. Voer `ftp` als filter toe voor lege logische apps in het zoekvak. Selecteer deze trigger onder de lijst triggers: **Wanneer een gearchiveerd of gewijzigd wordt toegevoegd (alleen eigenschappen)**
+1. Voer als filter toe voor lege logische apps in het zoekvak `ftp` . Selecteer deze trigger onder de lijst triggers: **Wanneer een gearchiveerd of gewijzigd wordt toegevoegd (alleen eigenschappen)**
 
    ![Zoek en selecteer de FTP-trigger](./media/connectors-create-api-ftp/select-ftp-trigger-logic-app.png)
 
@@ -105,7 +104,7 @@ Hier volgt een voor beeld waarin wordt getoond hoe u de trigger **Wanneer een be
 
    ![Verbinding maken met de FTP-server](./media/connectors-create-api-ftp/create-ftp-connection-trigger.png)
 
-1. Selecteer in het vak **map** het mappictogram zodat er een lijst wordt weer gegeven. Als u de map wilt vinden die u wilt controleren op nieuwe of bewerkte bestanden, selecteert u**>** de pijl-rechts (), bladert u naar de map en selecteert u de map.
+1. Selecteer in het vak **map** het mappictogram zodat er een lijst wordt weer gegeven. Als u de map wilt vinden die u wilt controleren op nieuwe of bewerkte bestanden, selecteert u de pijl-rechts ( **>** ), bladert u naar de map en selecteert u de map.
 
    ![Zoeken en selecteren welke map u wilt bewaken](./media/connectors-create-api-ftp/select-folder-ftp-trigger.png)
 
@@ -113,7 +112,7 @@ Hier volgt een voor beeld waarin wordt getoond hoe u de trigger **Wanneer een be
 
    ![De geselecteerde map wordt weer gegeven in de eigenschap ' folder '](./media/connectors-create-api-ftp/selected-folder-ftp-trigger.png)
 
-1. Sla uw logische app op. Selecteer **Opslaan**op de werk balk van de ontwerp functie.
+1. Sla uw logische app op. Selecteer **Opslaan** op de werkbalk van de ontwerper.
 
 Nu de logische app een trigger heeft, voegt u de acties toe die u wilt uitvoeren wanneer de logische app een nieuw of bewerkt bestand vindt. Voor dit voor beeld kunt u een FTP-actie toevoegen die de nieuwe of bijgewerkte inhoud ontvangt.
 
@@ -125,7 +124,7 @@ Met de actie **meta gegevens van bestand ophalen** worden de eigenschappen opgeh
 
 1. Selecteer **nieuwe stap**onder de trigger of een andere actie.
 
-1. Voer `ftp` in het zoekvak in als uw filter. Selecteer in de lijst acties deze actie: **meta gegevens van bestand ophalen**
+1. Voer in het zoekvak in `ftp` als uw filter. Selecteer in de lijst acties deze actie: **meta gegevens van bestand ophalen**
 
    ![Selecteer de actie ' meta gegevens van bestand ophalen '](./media/connectors-create-api-ftp/select-get-file-metadata-ftp-action.png)
 

@@ -11,10 +11,9 @@ ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
 ms.openlocfilehash: e69a03cd142fdbcc5864ee38a4843e1c2e44a124
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "79477150"
 ---
 # <a name="execute-data-science-tasks-exploration-modeling-and-deployment"></a>Data science tasks uitvoeren: verkennen, model leren en implementeren
@@ -23,7 +22,7 @@ Typische data science tasks omvatten het verkennen, model leren en implementeren
 
 - [Azure Machine Learning](../index.yml)
 - [SQL-Server met ML-Services](https://docs.microsoft.com/sql/advanced-analytics/r/r-services)
-- [Microsoft Machine Learning Server](https://docs.microsoft.com/machine-learning-server/what-is-machine-learning-server)
+- [Microsoft Machine Learning-server](https://docs.microsoft.com/machine-learning-server/what-is-machine-learning-server)
 
 
 ## <a name="1--exploration"></a>1. <a name='DataQualityReportUtility-1'></a> verkennen 
@@ -76,7 +75,7 @@ Nadat er meerdere modellen zijn gebouwd, hebt u doorgaans een systeem nodig voor
 1. [Azure Machine Learning-model beheer service](../index.yml)
 2. [ModelDB van MIT](http://modeldb.csail.mit.edu:3000/projects) 
 3. [SQL-Server als model beheersysteem](https://blogs.technet.microsoft.com/dataplatforminsider/2016/10/17/sql-server-as-a-machine-learning-model-management-system/)
-4. [Microsoft Machine Learning Server](https://docs.microsoft.com/sql/advanced-analytics/r/r-server-standalone)
+4. [Microsoft Machine Learning-server](https://docs.microsoft.com/sql/advanced-analytics/r/r-server-standalone)
 
 ## <a name="3--deployment"></a>3. <a name='Deployment-3'></a> implementatie
 
@@ -88,7 +87,7 @@ Er zijn verschillende benaderingen en platformen om modellen in productie te bre
 
 - [Model implementatie in Azure Machine Learning](../how-to-deploy-and-where.md)
 - [Implementatie van een model in SQL-Server](https://docs.microsoft.com/sql/advanced-analytics/tutorials/sqldev-py6-operationalize-the-model)
-- [Microsoft Machine Learning Server](https://docs.microsoft.com/sql/advanced-analytics/r/r-server-standalone)
+- [Microsoft Machine Learning-server](https://docs.microsoft.com/sql/advanced-analytics/r/r-server-standalone)
 
 > [!NOTE]
 > Voorafgaand aan de implementatie moet u er zeker van zijn dat de latentie van de model Score laag genoeg is voor gebruik in de productie omgeving.

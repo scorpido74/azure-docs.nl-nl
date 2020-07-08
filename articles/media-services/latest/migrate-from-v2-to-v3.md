@@ -16,15 +16,14 @@ ms.workload: media
 ms.date: 03/09/2020
 ms.author: juliako
 ms.openlocfilehash: 72d413c5d8bc982d885d889da35b29a3607410cc
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "79472064"
 ---
 # <a name="migration-guidance-for-moving-from-media-services-v2-to-v3"></a>Migratie richtlijnen voor het overstappen van Media Services versie 2 naar v3
 
->Ontvang een melding over wanneer u deze pagina voor updates opnieuw moet bezoeken door deze URL te kopiëren `https://docs.microsoft.com/api/search/rss?search=%22Migrate+from+Azure+Media+Services+v2+to+v3%22&locale=en-us` en te plakken: in uw RSS-feed-lezer.
+>Ontvang een melding over wanneer u deze pagina voor updates opnieuw moet bezoeken door deze URL te kopiëren en te plakken: `https://docs.microsoft.com/api/search/rss?search=%22Migrate+from+Azure+Media+Services+v2+to+v3%22&locale=en-us` in uw RSS-feed-lezer.
 
 In dit artikel vindt u de richt lijnen voor migratie van Media Services versie 2 tot v3.
 
@@ -42,7 +41,7 @@ Als u op dit moment een video service hebt ontwikkeld voor de [oudere Media Serv
 *  v3 is gebaseerd op een geïntegreerde API-gebied dat functionaliteit voor zowel beheer als bewerkingen beschikbaar stelt die is gebouwd op Azure Resource Manager. Azure Resource Manager sjablonen kunnen worden gebruikt voor het maken en implementeren van trans formaties, streaming-eind punten, Live-gebeurtenissen en meer.
 * [OpenAPI-specificatie (voorheen Swagger-document genoemd)](https://aka.ms/ams-v3-rest-sdk) .
     Beschrijft het schema voor alle service onderdelen, inclusief code ring op basis van een bestand.
-* Sdk's beschikbaar voor [.net](https://aka.ms/ams-v3-dotnet-ref), .net core, [node. js](/javascript/api/overview/azure/mediaservices/management), [python](https://aka.ms/ams-v3-python-ref), [Java](https://aka.ms/ams-v3-java-ref), [Go](https://aka.ms/ams-v3-go-ref)en Ruby.
+* Sdk's beschikbaar voor [.net](https://aka.ms/ams-v3-dotnet-ref), .net Core, [Node.js](/javascript/api/overview/azure/mediaservices/management), [python](https://aka.ms/ams-v3-python-ref), [Java](https://aka.ms/ams-v3-java-ref), [Go](https://aka.ms/ams-v3-go-ref)en Ruby.
 * [Azure cli](https://aka.ms/ams-v3-cli-ref) -integratie voor eenvoudige script ondersteuning.
 
 ### <a name="new-features"></a>Nieuwe functies

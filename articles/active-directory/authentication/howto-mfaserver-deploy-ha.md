@@ -12,10 +12,9 @@ manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 5e7b5f6bef5358acf0709f994b85215e505fa4db
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80653370"
 ---
 # <a name="configure-azure-multi-factor-authentication-server-for-high-availability"></a>Azure Multi-Factor Authentication-server configureren voor maximale Beschik baarheid
@@ -66,7 +65,7 @@ Houd rekening met de volgende items voor het bijbehorende gedeelte van het voor 
    ![Azure MFA-server-app server HA](./media/howto-mfaserver-deploy-ha/mfaapp.png)
 
    > [!NOTE]
-   > Omdat RPC dynamische poorten gebruikt, is het niet raadzaam om firewalls te openen tot het bereik van dynamische poorten die door RPC mogelijk kunnen worden gebruikt. Als u een firewall **tussen** uw MFA-toepassings servers hebt, moet u de MFA-server zo configureren dat deze communiceert op een statische poort voor het replicatie verkeer tussen de onderliggende en hoofd servers en de poort op de firewall opent. U kunt de statische poort afdwingen door een DWORD-register waarde ```HKEY_LOCAL_MACHINE\SOFTWARE\Wow6432Node\Positive Networks\PhoneFactor``` te ```Pfsvc_ncan_ip_tcp_port``` maken bij de naam en de waarde in te stellen op een beschik bare statische poort. Verbindingen worden altijd geïnitieerd door de onderliggende MFA-servers naar de Master, de statische poort is alleen vereist voor de Master, maar omdat u op elk gewenst moment een onderliggend niveau als master kunt instellen, moet u de statische poort op alle MFA-servers.
+   > Omdat RPC dynamische poorten gebruikt, is het niet raadzaam om firewalls te openen tot het bereik van dynamische poorten die door RPC mogelijk kunnen worden gebruikt. Als u een firewall **tussen** uw MFA-toepassings servers hebt, moet u de MFA-server zo configureren dat deze communiceert op een statische poort voor het replicatie verkeer tussen de onderliggende en hoofd servers en de poort op de firewall opent. U kunt de statische poort afdwingen door een DWORD-register waarde ```HKEY_LOCAL_MACHINE\SOFTWARE\Wow6432Node\Positive Networks\PhoneFactor``` te maken bij ```Pfsvc_ncan_ip_tcp_port``` de naam en de waarde in te stellen op een beschik bare statische poort. Verbindingen worden altijd geïnitieerd door de onderliggende MFA-servers naar de Master, de statische poort is alleen vereist voor de Master, maar omdat u op elk gewenst moment een onderliggend niveau als master kunt instellen, moet u de statische poort op alle MFA-servers.
 
 2. De twee gebruikers Portal/MFA Mobile App servers (MFA-UP-MAS1 en MFA-UP-MAS2) worden gelijkmatig verdeeld in een **stateful** configuratie (MFA.contoso.com). U herinnert dat Sticky Sessions een vereiste zijn voor de taak verdeling van de MFA-gebruikers Portal en de mobiele App Service.
    ![Azure MFA-Server-gebruikers Portal en mobiele App Service HA](./media/howto-mfaserver-deploy-ha/mfaportal.png)

@@ -14,10 +14,9 @@ ms.topic: article
 ms.date: 11/15/2017
 ms.author: tarcher
 ms.openlocfilehash: 8bacadd8941131f608411e61cc15c120c1b2bc60
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "79458151"
 ---
 # <a name="deploy-with-terraform-from-bash-in-azure-cloud-shell"></a>Implementeren met terraform vanuit bash in Azure Cloud Shell
@@ -62,7 +61,7 @@ resource "azurerm_resource_group" "myterraformgroup" {
 Sla het bestand op en sluit de tekst editor.
 
 ### <a name="terraform-init"></a>Terraform init
-Begin door uit `terraform init`te voeren.
+Begin door uit te voeren `terraform init` .
 
 ```
 justin@Azure:~$ terraform init
@@ -93,7 +92,7 @@ commands will detect it and remind you to do so if necessary.
 De [opdracht terraform init](https://www.terraform.io/docs/commands/init.html) wordt gebruikt voor het initialiseren van een werkmap met terraform-configuratie bestanden. De `terraform init` opdracht is de eerste opdracht die moet worden uitgevoerd na het schrijven van een nieuwe terraform-configuratie of het klonen van een bestaande-versie beheer. Het is veilig om deze opdracht meerdere keren uit te voeren.
 
 ### <a name="terraform-plan"></a>Terraform plan
-Bekijk een voor beeld van de resources die moeten worden gemaakt `terraform plan`door de terraform-sjabloon met.
+Bekijk een voor beeld van de resources die moeten worden gemaakt door de terraform-sjabloon met `terraform plan` .
 
 ```
 justin@Azure:~$ terraform plan
@@ -129,7 +128,7 @@ can't guarantee that exactly these actions will be performed if
 De opdracht [terraform plan](https://www.terraform.io/docs/commands/plan.html) wordt gebruikt om een uitvoeringsplan te maken. Terraform voert een vernieuwing uit, tenzij expliciet is uitgeschakeld, en vervolgens bepaalt u welke acties nodig zijn om de gewenste status te krijgen die is opgegeven in de configuratie bestanden. Het plan kan worden opgeslagen met behulp van en wordt vervolgens terraform toegepast om ervoor te zorgen dat alleen de vooraf geplande acties worden uitgevoerd.
 
 ### <a name="terraform-apply"></a>Terraform apply
-Richt de Azure-resources `terraform apply`in met.
+Richt de Azure-resources in met `terraform apply` .
 
 ```
 justin@Azure:~$ terraform apply

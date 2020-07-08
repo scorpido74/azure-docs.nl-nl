@@ -14,10 +14,9 @@ ms.author: sethm
 ms.reviewer: thsomasu
 ms.lastreviewed: 01/28/2019
 ms.openlocfilehash: 855a050afa14144f8963f24398c6b7b3939ef562
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80656474"
 ---
 # <a name="change-pricing-tier-of-an-azure-notification-hubs-namespace"></a>De prijs categorie van een Azure notification hubs-naam ruimte wijzigen
@@ -40,9 +39,9 @@ Wanneer u de Azure Portal gebruikt, kunt u de prijs categorie voor een naam ruim
 
 De volgende procedure laat zien hoe u de prijs categorie voor een naam ruimte op de pagina met de naam ruimte kunt wijzigen. Wanneer u de laag voor een naam ruimte wijzigt, geldt dit voor alle hubs in die naam ruimte.
 
-1. Meld u aan bij de [Azure-portal](https://portal.azure.com).
+1. Meld u aan bij [Azure Portal](https://portal.azure.com).
 2. Selecteer **alle services** in het menu links.
-3. Selecteer **Notification hub-naam ruimten** in het gedeelte **Internet of Things** . Als u het sterretje (`*`) naast de tekst selecteert, wordt het toegevoegd aan de linkernavigatiebalk onder **Favorieten**. Zo kunt u sneller toegang krijgen tot de pagina naam ruimten. Nadat u deze aan favorieten hebt toegevoegd, selecteert u **Notification hub-naam ruimten**.
+3. Selecteer **Notification hub-naam ruimten** in het gedeelte **Internet of Things** . Als u het sterretje ( `*` ) naast de tekst selecteert, wordt het toegevoegd aan de linkernavigatiebalk onder **Favorieten**. Zo kunt u sneller toegang krijgen tot de pagina naam ruimten. Nadat u deze aan favorieten hebt toegevoegd, selecteert u **Notification hub-naam ruimten**.
 
     ![Alle services-> notification hub-naam ruimten](./media/change-pricing-tier/all-services-nhub.png)
 
@@ -64,7 +63,7 @@ De volgende procedure laat zien hoe u de prijs categorie voor een naam ruimte op
 
 De volgende procedure laat zien hoe u de prijs categorie voor een naam ruimte op de hub-pagina kunt wijzigen. Hoewel u deze stappen vanaf de hub-pagina uitvoert, wijzigt u de prijs categorie voor de naam ruimte en alle hubs in de naam ruimte.
 
-1. Meld u aan bij de [Azure-portal](https://portal.azure.com).
+1. Meld u aan bij [Azure Portal](https://portal.azure.com).
 2. Selecteer **alle services** in het menu links.
 3. Selecteer **Notification hubs** in het gedeelte **Internet of Things** .
 4. Selecteer uw notification **hub**.

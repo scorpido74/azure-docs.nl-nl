@@ -4,10 +4,9 @@ description: Hierin wordt beschreven hoe u kunt opgeven of u een volledige of in
 ms.topic: conceptual
 ms.date: 01/17/2020
 ms.openlocfilehash: 1077d92f076797fb03c4fe750b353e2306f9b6de
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "79460242"
 ---
 # <a name="azure-resource-manager-deployment-modes"></a>Implementatie modi Azure Resource Manager
@@ -82,7 +81,7 @@ Wanneer de implementatie is geïmplementeerd in de modus **voltooid** , wordt br
 
 ## <a name="set-deployment-mode"></a>Implementatie modus instellen
 
-Als u de implementatie modus wilt instellen bij het implementeren met Power `Mode` shell, gebruikt u de para meter.
+Als u de implementatie modus wilt instellen bij het implementeren met Power shell, gebruikt u de `Mode` para meter.
 
 ```azurepowershell-interactive
 New-AzResourceGroupDeployment `

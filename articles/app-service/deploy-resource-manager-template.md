@@ -7,10 +7,9 @@ ms.date: 01/03/2019
 ms.author: tomfitz
 ms.custom: seodec18
 ms.openlocfilehash: 0a282a412823207e5f662441158000e8c6121796
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80637932"
 ---
 # <a name="guidance-on-deploying-web-apps-by-using-azure-resource-manager-templates"></a>Richt lijnen voor het implementeren van web-apps met behulp van Azure Resource Manager sjablonen
@@ -45,7 +44,7 @@ U implementeert resources in de volgende volg orde:
 
 **Laag 4**
 * App Service certificaat: afhankelijk van broncode beheer of MSDeploy, indien aanwezig. Anders is dit afhankelijk van de web-app.
-* Configuratie-instellingen (verbindings reeksen, Web. config-waarden, app-instellingen): afhankelijk van broncode beheer of MSDeploy, indien aanwezig. Anders is dit afhankelijk van de web-app.
+* Configuratie-instellingen (verbindings reeksen, web.config waarden, app-instellingen): afhankelijk van broncode beheer of MSDeploy, indien aanwezig. Anders is dit afhankelijk van de web-app.
 
 **Laag 5**
 * Host-naam bindingen: afhankelijk van het certificaat, indien aanwezig. Anders is dit afhankelijk van een resource van een hoger niveau.
@@ -90,7 +89,7 @@ Als uw Resource Manager-sjabloon gebruikmaakt van MSDeploy, kan het lastig zijn 
 
 1. Ga naar de kudu- [console](https://github.com/projectkudu/kudu/wiki/Kudu-console)van de site.
 2. Blader naar de map op D:\home\LogFiles\SiteExtensions\MSDeploy.
-3. Zoek naar de bestanden appManagerStatus. XML en appManagerLog. XML. Het eerste bestand registreert de status. Het tweede bestand registreert informatie over de fout. Als de fout niet aan u is toegevoegd, kunt u deze toevoegen wanneer u hulp nodig hebt bij het [forum](https://docs.microsoft.com/answers/topics/azure-webapps.html).
+3. Zoek naar de appManagerStatus.xml-en appManagerLog.xml-bestanden. Het eerste bestand registreert de status. Het tweede bestand registreert informatie over de fout. Als de fout niet aan u is toegevoegd, kunt u deze toevoegen wanneer u hulp nodig hebt bij het [forum](https://docs.microsoft.com/answers/topics/azure-webapps.html).
 
 ## <a name="choose-a-unique-web-app-name"></a>Kies een unieke naam voor de web-app
 
@@ -127,7 +126,7 @@ Selecteer in uw Key Vault **certificaten** en **genereren/importeren** om het ce
 
 ![Certificaat importeren](media/web-sites-rm-template-guidance/import-certificate.png)
 
-Geef in uw sjabloon de naam op van het certificaat voor `keyVaultSecretName`.
+Geef in uw sjabloon de naam op van het certificaat voor `keyVaultSecretName` .
 
 Zie [een web-app-certificaat implementeren vanuit Key Vault Secret en dit gebruiken voor het maken van SSL-binding](https://github.com/Azure/azure-quickstart-templates/tree/master/201-web-app-certificate-from-key-vault)voor een voorbeeld sjabloon.
 

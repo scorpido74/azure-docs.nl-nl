@@ -10,10 +10,9 @@ author: likebupt
 ms.author: keli19
 ms.date: 10/10/2019
 ms.openlocfilehash: fd45db779b7a828d247f09cae38f90fc20d12c16
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "79456587"
 ---
 # <a name="convert-to-dataset"></a>Converteren naar gegevensset
@@ -46,9 +45,9 @@ U wordt aangeraden de module [meta gegevens bewerken](edit-metadata.md) te gebru
     - **ReplaceValues**: gebruik deze optie om een enkele exacte waarde op te geven die moet worden vervangen door een andere exacte waarde. U kunt ontbrekende waarden of aangepaste waarden vervangen door de **Vervang** methode in te stellen:
 
       - **Ontbrekend**: Kies deze optie om ontbrekende waarden in de invoer-gegevensset te vervangen. Voer bij **nieuwe waarde**de waarde in om de ontbrekende waarden te vervangen door.
-      - **Aangepast**: Kies deze optie om aangepaste waarden in de invoer-gegevensset te vervangen. Voer voor **aangepaste waarde**de waarde in die u wilt zoeken. Als uw gegevens bijvoorbeeld de teken reeks `obs` bevatten die wordt gebruikt als tijdelijke aanduiding voor ontbrekende waarden, voert `obs`u in. Voer bij **nieuwe waarde**de nieuwe waarde in om de oorspronkelijke teken reeks te vervangen door.
+      - **Aangepast**: Kies deze optie om aangepaste waarden in de invoer-gegevensset te vervangen. Voer voor **aangepaste waarde**de waarde in die u wilt zoeken. Als uw gegevens bijvoorbeeld de teken reeks bevatten `obs` die wordt gebruikt als tijdelijke aanduiding voor ontbrekende waarden, voert u in `obs` . Voer bij **nieuwe waarde**de nieuwe waarde in om de oorspronkelijke teken reeks te vervangen door.
   
-    Houd er rekening mee dat de bewerking **ReplaceValues** alleen van toepassing is op exacte overeenkomsten. Deze teken reeksen worden bijvoorbeeld niet beïnvloed: `obs.`,. `obsolete`  
+    Houd er rekening mee dat de bewerking **ReplaceValues** alleen van toepassing is op exacte overeenkomsten. Deze teken reeksen worden bijvoorbeeld niet beïnvloed: `obs.` , `obsolete` .  
  
   
 5.  Verzend de pijp lijn.  

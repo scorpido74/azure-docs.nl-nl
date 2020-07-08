@@ -4,10 +4,9 @@ description: Meer informatie over het koppelen van een geheim volume voor het op
 ms.topic: article
 ms.date: 04/03/2020
 ms.openlocfilehash: 756828e71174246450245938595c8872afc62961
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80657155"
 ---
 # <a name="mount-a-secret-volume-in-azure-container-instances"></a>Een geheim volume koppelen in Azure Container Instances
@@ -22,7 +21,7 @@ Gebruik een *geheim* volume om gevoelige informatie op te geven voor de containe
 
 ## <a name="mount-secret-volume---azure-cli"></a>Geheim volume koppelen-Azure CLI
 
-Als u een container met een of meer geheimen wilt implementeren met behulp van de Azure `--secrets` cli `--secrets-mount-path` , neemt u de para meters en op in de opdracht [AZ container Create][az-container-create] . In dit voor beeld wordt een *geheim* volume dat bestaat uit twee bestanden met geheimen, ' mysecret1 ' en ' mysecret2 ', `/mnt/secrets`gekoppeld aan:
+Als u een container met een of meer geheimen wilt implementeren met behulp van de Azure CLI, neemt u de `--secrets` `--secrets-mount-path` para meters en op in de opdracht [AZ container Create][az-container-create] . In dit voor beeld wordt een *geheim* volume dat bestaat uit twee bestanden met geheimen, ' mysecret1 ' en ' mysecret2 ', gekoppeld aan `/mnt/secrets` :
 
 ```azurecli-interactive
 az container create \
@@ -59,7 +58,7 @@ U kunt ook container groepen implementeren met de Azure CLI en een [yaml-sjabloo
 
 Wanneer u implementeert met een YAML-sjabloon, moeten de geheime waarden in de sjabloon **Base64-gecodeerd** zijn. De geheime waarden worden echter weer gegeven als tekst zonder opmaak in de bestanden in de container.
 
-De volgende YAML-sjabloon definieert een container groep met één container die een *geheim* volume koppelt `/mnt/secrets`op. Het geheime volume heeft twee bestanden met geheimen: ' mysecret1 ' en ' mysecret2 '.
+De volgende YAML-sjabloon definieert een container groep met één container die een *geheim* volume koppelt op `/mnt/secrets` . Het geheime volume heeft twee bestanden met geheimen: ' mysecret1 ' en ' mysecret2 '.
 
 ```yaml
 apiVersion: '2018-10-01'
@@ -90,7 +89,7 @@ tags: {}
 type: Microsoft.ContainerInstance/containerGroups
 ```
 
-Als u wilt implementeren met de YAML-sjabloon, slaat u de voor gaande `deploy-aci.yaml`yaml op in een bestand met de naam en voert `--file` u de opdracht [AZ container Create][az-container-create] uit met de para meter:
+Als u wilt implementeren met de YAML-sjabloon, slaat u de voor gaande YAML op in een bestand met de naam `deploy-aci.yaml` en voert u de opdracht [AZ container Create][az-container-create] uit met de `--file` para meter:
 
 ```azurecli-interactive
 # Deploy with YAML template
@@ -107,12 +106,12 @@ Vul eerst de `volumes` matrix in het gedeelte container Group `properties` van d
 
 Vervolgens vult u voor elke container in de container groep waarin u het *geheime* volume wilt koppelen, de `volumeMounts` matrix in de `properties` sectie van de container definitie.
 
-De volgende Resource Manager-sjabloon definieert een container groep met één container die een *geheim* volume koppelt `/mnt/secrets`op. Het geheime volume heeft twee geheimen: ' mysecret1 ' en ' mysecret2 '.
+De volgende Resource Manager-sjabloon definieert een container groep met één container die een *geheim* volume koppelt op `/mnt/secrets` . Het geheime volume heeft twee geheimen: ' mysecret1 ' en ' mysecret2 '.
 
 <!-- https://github.com/Azure/azure-docs-json-samples/blob/master/container-instances/aci-deploy-volume-secret.json -->
 [!code-json[volume-secret](~/azure-docs-json-samples/container-instances/aci-deploy-volume-secret.json)]
 
-Als u wilt implementeren met de Resource Manager-sjabloon, slaat u de voor gaande `deploy-aci.json`JSON op in een bestand met de naam en voert u `--template-file` de opdracht [AZ Deployment Group Create][az-deployment-group-create] uit met de para meter:
+Als u wilt implementeren met de Resource Manager-sjabloon, slaat u de voor gaande JSON op in een bestand met de naam `deploy-aci.json` en voert u de opdracht [AZ Deployment Group Create][az-deployment-group-create] uit met de `--template-file` para meter:
 
 ```azurecli-interactive
 # Deploy with Resource Manager template

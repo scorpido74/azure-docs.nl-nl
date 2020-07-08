@@ -13,17 +13,16 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 06/05/2018
 ms.openlocfilehash: cffa5677c5531f3887639c049998523d7d07586a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "79455559"
 ---
-# <a name="check-resource-usage-against-limits"></a>Gebruik van resources controleren op basis van limieten
+# <a name="check-resource-usage-against-limits"></a>Resourcegebruik controleren op basis van limieten
 
 In dit artikel leert u hoe u het nummer kunt zien van elk netwerk bron type dat u in uw abonnement hebt geïmplementeerd en wat uw [abonnements limieten](../azure-resource-manager/management/azure-subscription-service-limits.md?toc=%2fazure%2fnetworking%2ftoc.json#networking-limits) zijn. De mogelijkheid om het gebruik van resources op basis van limieten te bekijken is handig voor het bijhouden van het huidige gebruik en het plannen van toekomstig gebruik. U kunt de [Azure-Portal](#azure-portal), [Power shell](#powershell)of de [Azure cli](#azure-cli) gebruiken om het gebruik bij te houden.
 
-## <a name="azure-portal"></a>Azure-portal
+## <a name="azure-portal"></a>Azure Portal
 
 1. Meld u aan bij Azure [Portal](https://portal.azure.com).
 2. Selecteer boven aan de linkerbovenhoek van de Azure Portal **alle services**.
@@ -46,7 +45,7 @@ In dit artikel leert u hoe u het nummer kunt zien van elk netwerk bron type dat 
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-U kunt de opdrachten uitvoeren die volgen in de [Azure Cloud shell](https://shell.azure.com/powershell), of door Power shell uit te voeren vanaf uw computer. De Azure Cloud Shell is een gratis interactieve shell. In deze shell zijn algemene Azure-hulpprogramma's vooraf geïnstalleerd en geconfigureerd voor gebruik met uw account. Als u Power shell vanaf uw computer uitvoert, hebt u de Azure PowerShell module versie 1.0.0 of hoger nodig. Voer `Get-Module -ListAvailable Az` uit op uw computer om de geïnstalleerde versie te vinden. Als u PowerShell wilt upgraden, raadpleegt u [De Azure PowerShell-module installeren](/powershell/azure/install-az-ps). Als u Power shell lokaal uitvoert, moet u ook uitvoeren `Login-AzAccount` om u aan te melden bij Azure.
+U kunt de opdrachten uitvoeren die volgen in de [Azure Cloud shell](https://shell.azure.com/powershell), of door Power shell uit te voeren vanaf uw computer. De Azure Cloud Shell is een gratis interactieve shell. In deze shell zijn algemene Azure-hulpprogramma's vooraf geïnstalleerd en geconfigureerd voor gebruik met uw account. Als u Power shell vanaf uw computer uitvoert, hebt u de Azure PowerShell module versie 1.0.0 of hoger nodig. Voer uit `Get-Module -ListAvailable Az` op uw computer om de geïnstalleerde versie te vinden. Als u PowerShell wilt upgraden, raadpleegt u [De Azure PowerShell-module installeren](/powershell/azure/install-az-ps). Als u Power shell lokaal uitvoert, moet u ook uitvoeren `Login-AzAccount` om u aan te melden bij Azure.
 
 Bekijk uw gebruik op basis van limieten met [Get-AzNetworkUsage](https://docs.microsoft.com/powershell/module/az.network/get-aznetworkusage). In het volgende voor beeld wordt het gebruik opgehaald voor resources waarbij ten minste één resource wordt geïmplementeerd op de locatie VS-Oost:
 
@@ -71,7 +70,7 @@ Network Watchers                   1     1
 
 ## <a name="azure-cli"></a>Azure CLI
 
-Als u Azure-opdracht regel interface opdrachten gebruikt om taken in dit artikel te volt ooien, moet u de opdrachten uitvoeren in de [Azure Cloud shell](https://shell.azure.com/bash)of door de CLI vanaf uw computer uit te voeren. Voor dit artikel is de Azure CLI-versie 2.0.32 of hoger vereist. Voer `az --version` uit om te kijken welke versie is geïnstalleerd. Als u uw CLI wilt installeren of upgraden, raadpleegt u [De Azure CLI installeren](/cli/azure/install-azure-cli). Als u de Azure CLI lokaal uitvoert, moet u ook uitvoeren `az login` om u aan te melden bij Azure.
+Als u Azure-opdracht regel interface opdrachten gebruikt om taken in dit artikel te volt ooien, moet u de opdrachten uitvoeren in de [Azure Cloud shell](https://shell.azure.com/bash)of door de CLI vanaf uw computer uit te voeren. Voor dit artikel is de Azure CLI-versie 2.0.32 of hoger vereist. Voer `az --version` uit om te kijken welke versie is geïnstalleerd. Als u uw CLI wilt installeren of upgraden, raadpleegt u [De Azure CLI installeren](/cli/azure/install-azure-cli). Als u de Azure CLI lokaal uitvoert, moet u ook uitvoeren om u `az login` aan te melden bij Azure.
 
 Uw gebruik weer geven op basis van limieten met [AZ Network List-usages](/cli/azure/network?view=azure-cli-latest#az-network-list-usages). In het volgende voor beeld wordt het gebruik opgehaald voor resources op de locatie VS-Oost:
 

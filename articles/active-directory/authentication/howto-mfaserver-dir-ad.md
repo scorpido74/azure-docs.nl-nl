@@ -13,10 +13,9 @@ ms.reviewer: michmcla
 ms.custom: seo-update-azuread-jan
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: fceaa203944074b0c3fcf5cb6254f1e87ac16cba
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "79480977"
 ---
 # <a name="directory-integration-between-azure-mfa-server-and-active-directory"></a>Adreslijstintegratie tussen Azure MFA-server en Active Directory
@@ -80,7 +79,7 @@ Kenmerken kunnen handmatig worden ingevoerd en hoeven niet overeen te komen met 
 | --- | --- |
 | Unieke id |Voer de kenmerknaam van het kenmerk in die fungeert als de unieke id van de container, beveiligingsgroep en gebruikersrecords.  In Active Directory is dit doorgaans objectGUID. Andere LDAP-implementaties maken mogelijk gebruik van entryUUID of iets soortgelijks.  De standaardwaarde is objectGUID. |
 | Type unieke id |Selecteer het type van het kenmerk Unieke id.  In Active Directory heeft het kenmerk objectGUID het type GUID. Andere LDAP-implementaties maken mogelijk gebruik van het type ASCII-bytematrix of Tekenreeks.  De standaardwaarde is GUID. <br><br>Het is belangrijk dat u dit type juist instelt, omdat naar synchronisatie-items wordt verwezen via de bijbehorende id's. Het unieke id-type wordt gebruikt om het object rechtstreeks te vinden in de directory.  Wanneer dit type wordt ingesteld op Tekenreeks terwijl de directory de waarde eigenlijk als een bytematrix van ASCII-tekens opslaat, verloopt de synchronisatie niet juist. |
-| DN-naam |Voer de kenmerknaam in van het kenmerk dat de DN-naam voor elke record bevat.  In Active Directory is dit doorgaans distinguishedName. Andere LDAP-implementaties maken mogelijk gebruik van entryDN of iets soortgelijks.  De standaardwaarde is distinguishedName. <br><br>Als er geen kenmerk met alleen de DN-naam bestaat, kan het Ads-pad kenmerk worden gebruikt.  Het gedeelte LDAP://\<server\>/ van het pad wordt automatisch verwijderd, waardoor alleen de DN-naam van het object overblijft. |
+| DN-naam |Voer de kenmerknaam in van het kenmerk dat de DN-naam voor elke record bevat.  In Active Directory is dit doorgaans distinguishedName. Andere LDAP-implementaties maken mogelijk gebruik van entryDN of iets soortgelijks.  De standaardwaarde is distinguishedName. <br><br>Als er geen kenmerk met alleen de DN-naam bestaat, kan het Ads-pad kenmerk worden gebruikt.  Het gedeelte ' LDAP:// \<server\> /' van het pad wordt automatisch verwijderd, waardoor alleen de DN-naam van het object wordt gelaten. |
 | Containernaam |Voer de kenmerknaam in van het kenmerk dat de naam in een containerrecord bevat.  De waarde van dit kenmerk wordt weergegeven in de containerhiërarchie bij het importeren vanuit Active Directory of bij het toevoegen van synchronisatie-items.  De standaardwaarde is name. <br><br>Als verschillende containers verschillende kenmerken voor namen gebruiken, gebruikt u puntkomma's om meerdere containernaamkenmerken te scheiden.  Het eerste containernaamkenmerk dat in een containerobject wordt gevonden, wordt gebruikt om de naam ervan weer te geven. |
 | Naam beveiligingsgroep |Voer de kenmerknaam in van het kenmerk dat de naam in een beveiligingsgroepsrecord bevat.  De waarde van dit kenmerk wordt weergegeven in de lijst Beveiligingsgroep bij het importeren vanuit Active Directory of het toevoegen van synchronisatie-items.  De standaardwaarde is name. |
 | Gebruikersnaam |Voer de kenmerknaam in van het kenmerk dat de gebruikersnaam in een gebruikersrecord bevat.  De waarde van dit kenmerk wordt gebruikt als de gebruikersnaam voor de Multi-Factor Authentication-server.  Een tweede kenmerk kan worden opgegeven als een back-up voor het eerste.  Het tweede kenmerk wordt alleen gebruikt als het eerste kenmerk geen waarde voor de gebruiker bevat.  De standaardwaarden zijn userPrincipalName en sAMAccountName. |
@@ -88,7 +87,7 @@ Kenmerken kunnen handmatig worden ingevoerd en hoeven niet overeen te komen met 
 | Achternaam |Voer de kenmerknaam in van het kenmerk dat de achternaam in een gebruikersrecord bevat.  De standaardwaarde is sn. |
 | E-mailadres |Voer de kenmerknaam in van het kenmerk dat het e-mailadres in een gebruikersrecord bevat.  Het e-mailadres wordt gebruikt om via e-mail welkomstberichten en updateberichten naar de gebruiker te verzenden.  De standaardwaarde is mail. |
 | Gebruikersgroep |Voer de kenmerknaam in van het kenmerk dat de gebruikersgroep in een gebruikersrecord bevat.  Gebruikersgroep kan worden gebruikt voor het filteren van gebruikers in de agent en in rapporten in de beheerportal van de Multi-Factor Authentication-server. |
-| Beschrijving |Voer de kenmerknaam in van het kenmerk dat de beschrijving in een gebruikersrecord bevat.  Beschrijving wordt alleen gebruikt voor zoekopdrachten.  De standaardwaarde is description. |
+| Description |Voer de kenmerknaam in van het kenmerk dat de beschrijving in een gebruikersrecord bevat.  Beschrijving wordt alleen gebruikt voor zoekopdrachten.  De standaardwaarde is description. |
 | Taal telefoonoproep |Voer de kenmerknaam in van het kenmerk dat de korte naam bevat van de taal die moet worden gebruikt voor telefoonoproepen voor de gebruiker. |
 | Taal sms-bericht |Voer de kenmerknaam in van het kenmerk dat de korte naam bevat van de taal die moet worden gebruikt voor sms-berichten voor de gebruiker. |
 | Taal mobiele app |Voer de kenmerknaam in van het kenmerk dat de korte naam bevat van de taal die moet worden gebruikt voor tekstberichten van mobiele apps voor de gebruiker. |

@@ -8,10 +8,9 @@ ms.author: jofrance
 ms.date: 03/17/2020
 ms.custom: seodec18
 ms.openlocfilehash: 4e342ff44af38b8e79dc8695c1270b1f5c68e0a8
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80657445"
 ---
 # <a name="configure-lvm-and-raid-on-encrypted-devices"></a>LVM en RAID op versleutelde apparaten configureren
@@ -88,7 +87,7 @@ az vm create \
 -o table
 ```
 ### <a name="attach-disks-to-the-vm"></a>Schijven koppelen aan de virtuele machine
-Herhaal de volgende opdrachten voor `$N` het aantal nieuwe schijven dat u wilt koppelen aan de virtuele machine.
+Herhaal de volgende opdrachten voor het `$N` aantal nieuwe schijven dat u wilt koppelen aan de virtuele machine.
 
 PowerShell:
 
