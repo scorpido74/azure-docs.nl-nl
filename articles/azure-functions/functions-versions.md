@@ -4,10 +4,10 @@ description: Azure Functions ondersteunt meerdere versies van de runtime. Meer i
 ms.topic: conceptual
 ms.date: 12/09/2019
 ms.openlocfilehash: 0989795d802b21e07ad9fea3bd417f0408df706c
-ms.sourcegitcommit: fc718cc1078594819e8ed640b6ee4bef39e91f7f
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/27/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "83996717"
 ---
 # <a name="azure-functions-runtime-versions-overview"></a>Overzicht van Azure Functions runtime versies
@@ -27,7 +27,7 @@ De volgende tabel geeft aan welke programmeer talen momenteel worden ondersteund
 
 [!INCLUDE [functions-supported-languages](../../includes/functions-supported-languages.md)]
 
-Zie voor meer informatie [Ondersteunde talen](supported-languages.md).
+Zie [ondersteunde talen](supported-languages.md)voor meer informatie.
 
 ## <a name="run-on-a-specific-version"></a><a name="creating-1x-apps"></a>Uitvoeren op een specifieke versie
 
@@ -43,7 +43,7 @@ Hoewel het mogelijk is om een ' in-place ' upgrade uit te voeren door de app-con
 
 Vanaf versie 2. x moet u de uitbrei dingen voor specifieke triggers en bindingen installeren die worden gebruikt door de functies in uw app. De enige uitzonde ring voor deze HTTP-en timer-triggers, waarvoor geen extensie is vereist.  Zie [bindings uitbreidingen registreren en installeren](./functions-bindings-register.md)voor meer informatie.
 
-Er zijn ook enkele wijzigingen in de *functie. json* of kenmerken van de functie tussen versies. De eigenschap Event hub `path` is nu bijvoorbeeld `eventHubName` . Zie de [bestaande bindings tabel](#bindings) voor koppelingen naar documentatie voor elke binding.
+Er zijn ook enkele wijzigingen in de *function.jsop* of kenmerken van de functie tussen versies. De eigenschap Event hub `path` is nu bijvoorbeeld `eventHubName` . Zie de [bestaande bindings tabel](#bindings) voor koppelingen naar documentatie voor elke binding.
 
 ### <a name="changes-in-features-and-functionality-after-version-1x"></a>Wijzigingen in functies en functionaliteit na versie 1. x
 
@@ -55,15 +55,15 @@ In versie 2. x zijn de volgende wijzigingen aangebracht:
 
 * De runtime van versie 2. x bevat geen ingebouwde ondersteuning voor webhook-providers. Deze wijziging is doorgevoerd om de prestaties te verbeteren. U kunt HTTP-triggers blijven gebruiken als eind punten voor webhooks.
 
-* Het configuratie bestand voor de host (host. json) moet leeg zijn of de teken reeks bevatten `"version": "2.0"` .
+* Het configuratie bestand voor de host (host.jsaan) moet leeg zijn of de teken reeks bevatten `"version": "2.0"` .
 
-* Ter verbetering van de controle wordt het webjobs-dash board in de portal, dat gebruikmaakt van de [`AzureWebJobsDashboard`](functions-app-settings.md#azurewebjobsdashboard) instelling, vervangen door Azure-toepassing Insights, dat de [`APPINSIGHTS_INSTRUMENTATIONKEY`](functions-app-settings.md#appinsights_instrumentationkey) instelling gebruikt. Zie [Azure functions bewaken](functions-monitoring.md)voor meer informatie.
+* Ter verbetering van de controle wordt het webjobs-dash board in de portal, dat gebruikmaakt van de [`AzureWebJobsDashboard`](functions-app-settings.md#azurewebjobsdashboard) instelling, vervangen door Azure-toepassing Insights, dat de [`APPINSIGHTS_INSTRUMENTATIONKEY`](functions-app-settings.md#appinsights_instrumentationkey) instelling gebruikt. Zie [Monitor Azure Functions](functions-monitoring.md) (Azure Functions bewaken) voor meer informatie.
 
-* Alle functies in een functie-app moeten dezelfde taal delen. Wanneer u een functie-app maakt, moet u een runtime stack kiezen voor de app. De runtime stack wordt opgegeven met de [`FUNCTIONS_WORKER_RUNTIME`](functions-app-settings.md#functions_worker_runtime) waarde in toepassings instellingen. Deze vereiste is toegevoegd ter verbetering van de footprint en de opstart tijd. Wanneer u lokaal ontwikkelt, moet u deze instelling ook in het [bestand local. settings. json](functions-run-local.md#local-settings-file)toevoegen.
+* Alle functies in een functie-app moeten dezelfde taal delen. Wanneer u een functie-app maakt, moet u een runtime stack kiezen voor de app. De runtime stack wordt opgegeven met de [`FUNCTIONS_WORKER_RUNTIME`](functions-app-settings.md#functions_worker_runtime) waarde in toepassings instellingen. Deze vereiste is toegevoegd ter verbetering van de footprint en de opstart tijd. Wanneer u lokaal ontwikkelt, moet u deze instelling ook in de [local.settings.jsin het bestand](functions-run-local.md#local-settings-file)toevoegen.
 
-* De standaardtime-out voor functies in een App Service-abonnement wordt gewijzigd in 30 minuten. U kunt de time-out hand matig wijzigen in onbeperkt door gebruik te maken van de instelling [functionTimeout](functions-host-json.md#functiontimeout) in host. json.
+* De standaardtime-out voor functies in een App Service-abonnement wordt gewijzigd in 30 minuten. U kunt de time-out hand matig wijzigen in onbeperkt door gebruik te maken van de instelling [functionTimeout](functions-host-json.md#functiontimeout) in host.jsop.
 
-* HTTP-gelijktijdigheids vertragingen worden standaard geïmplementeerd voor verbruiks plan functies, met een standaard waarde van 100 gelijktijdige aanvragen per instantie. U kunt dit wijzigen in de [`maxConcurrentRequests`](functions-host-json.md#http) instelling in het bestand host. json.
+* HTTP-gelijktijdigheids vertragingen worden standaard geïmplementeerd voor verbruiks plan functies, met een standaard waarde van 100 gelijktijdige aanvragen per instantie. U kunt dit wijzigen in de [`maxConcurrentRequests`](functions-host-json.md#http) instelling in de host.jsvoor het bestand.
 
 * Vanwege [.net core-beperkingen](https://github.com/Azure/azure-functions-host/issues/3414)is ondersteuning voor F # script-functies (. FSX) verwijderd. Gecompileerde F #-functies (. FS) worden nog steeds ondersteund.
 
@@ -87,7 +87,7 @@ Hieronder vindt u de wijzigingen die u moet kennen voordat u een upgrade uitvoer
 
 * Er kan geen toegang meer worden verkregen tot de nettolading van de HTTP-aanvraag via `context.bindingData.req` .  Het kan nog steeds worden geopend als een invoer parameter, `context.req` en in `context.bindings` .
 
-* Node. js 8 wordt niet meer ondersteund en kan niet worden uitgevoerd in 3. x-functies.
+* Node.js 8 wordt niet meer ondersteund en kan niet worden uitgevoerd met 3. x-functies.
 
 #### <a name="net"></a>.NET
 

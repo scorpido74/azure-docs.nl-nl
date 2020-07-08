@@ -13,10 +13,10 @@ ms.reviewer: sahenry
 ms.custom: seo-update-azuread-jan
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 5ca3f4b1e1061b0ca86cc836849499b83ee055fe
-ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/25/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "83826516"
 ---
 # <a name="troubleshoot-self-service-password-reset"></a>Problemen met self-service voor wachtwoordherstel oplossen
@@ -97,7 +97,7 @@ Een best practice bij het oplossen van problemen met wacht woord terugschrijven 
 
 ### <a name="if-the-source-of-the-event-is-adsync"></a>Als de bron van de gebeurtenis ADSync is
 
-| Code | Naam of bericht | Beschrijving |
+| Code | Naam of bericht | Description |
 | --- | --- | --- |
 | 6329 | Afwijzen: MMS (4924) 0x80230619: ' door een beperking wordt voor komen dat het wacht woord wordt gewijzigd in de huidige opgegeven. ' | Deze gebeurtenis treedt op wanneer de service voor het terugschrijven van wacht woorden probeert een wacht woord in te stellen voor uw lokale adres lijst die niet voldoet aan de vereisten voor wachtwoord duur, geschiedenis, complexiteit of filtering van het domein. <br> <br> Als u een minimale wachtwoord duur hebt en het wacht woord onlangs hebt gewijzigd binnen dat venster, kunt u het wacht woord niet meer wijzigen tot de opgegeven leeftijd in uw domein is bereikt. Voor test doeleinden moet de minimale leeftijd worden ingesteld op 0. <br> <br> Als u vereisten voor wachtwoord geschiedenis hebt ingeschakeld, moet u een wacht woord selecteren dat niet is gebruikt in de afgelopen *N* keer, waarbij *N* de instelling voor wachtwoord geschiedenis is. Als u een wacht woord selecteert dat in de afgelopen *N* keer is gebruikt, ziet u een fout in dit geval. Voor test doeleinden moet de wachtwoord geschiedenis worden ingesteld op 0. <br> <br> Als u vereisten voor wachtwoord complexiteit hebt, worden deze allemaal afgedwongen wanneer de gebruiker een wacht woord probeert te wijzigen of opnieuw in te stellen. <br> <br> Als wachtwoord filters zijn ingeschakeld en een gebruiker een wacht woord selecteert dat niet voldoet aan de filter criteria, mislukt de bewerking voor opnieuw instellen of wijzigen. |
 | 6329 | MMS (3040): admaexport. cpp (2837): de server bevat niet het besturings element LDAP-wachtwoord beleid. | Dit probleem treedt op als LDAP_SERVER_POLICY_HINTS_OID besturings element (1.2.840.113556.1.4.2066) niet is ingeschakeld op de Dc's. Als u de functie voor het terugschrijven van wacht woorden wilt gebruiken, moet u het besturings element inschakelen. Hiertoe moet de Dc's zich op Windows Server 2008R2 of later bevindt. |
@@ -105,7 +105,7 @@ Een best practice bij het oplossen van problemen met wacht woord terugschrijven 
 
 ### <a name="if-the-source-of-the-event-is-passwordresetservice"></a>Als de bron van de gebeurtenis PasswordResetService is
 
-| Code | Naam of bericht | Beschrijving |
+| Code | Naam of bericht | Description |
 | --- | --- | --- |
 | 31001 | PasswordResetStart | Deze gebeurtenis geeft aan dat de on-premises service een aanvraag voor het opnieuw instellen van een wacht woord heeft gedetecteerd voor een federatieve, Pass-Through-verificatie of gebruiker met hash-synchronisatie met wacht woord afkomstig uit de Cloud. Deze gebeurtenis is de eerste gebeurtenis in elke terugschrijf bewerking van een wacht woord. |
 | 31002 | PasswordResetSuccess | Deze gebeurtenis geeft aan dat een gebruiker een nieuw wacht woord heeft geselecteerd tijdens een bewerking voor het opnieuw instellen van een wacht woord. We hebben vastgesteld dat dit wacht woord voldoet aan de vereisten voor het bedrijfs wachtwoord. Het wacht woord is teruggeschreven naar de lokale Active Directory-omgeving. |

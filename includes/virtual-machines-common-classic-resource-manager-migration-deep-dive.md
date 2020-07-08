@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 10/26/2018
 ms.author: tagore
 ms.openlocfilehash: d7019d673bd8dfda31c5073fb7f37e26768dcc1d
-ms.sourcegitcommit: 318d1bafa70510ea6cdcfa1c3d698b843385c0f6
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/21/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "83778276"
 ---
 ## <a name="migrate-iaas-resources-from-the-classic-deployment-model-to-azure-resource-manager"></a>IaaS-resources van het klassieke implementatie model migreren naar Azure Resource Manager
@@ -136,7 +136,7 @@ Hier volgt een stroom diagram dat laat zien hoe u kunt door gaan met de migratie
 ## <a name="translation-of-the-classic-deployment-model-to-resource-manager-resources"></a>Vertaling van het klassieke implementatie model naar Resource Manager-resources
 U vindt het klassieke implementatie model en de Resource Manager-weer gave van de resources in de volgende tabel. Andere functies en resources worden momenteel niet ondersteund.
 
-| Klassieke weergave | Weergave van de Resource Manager | Opmerkingen |
+| Klassieke weergave | Weergave van de Resource Manager | Notities |
 | --- | --- | --- |
 | Naam cloudservice |DNS-naam |Tijdens de migratie wordt een nieuwe resourcegroep gemaakt voor elke cloudservice met het naamgevingspatroon `<cloudservicename>-migrated`. Deze resourcegroep bevat al uw resources. De naam van de cloudservice wordt een DNS-naam die is gekoppeld aan het openbare IP-adres. |
 | Virtuele machine |Virtuele machine |VM-specifieke eigenschappen worden ongewijzigd gemigreerd. Bepaalde osProfile-gegevens, zoals computer naam, worden niet opgeslagen in het klassieke implementatie model en blijven leeg na de migratie. |

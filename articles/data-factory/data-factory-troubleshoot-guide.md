@@ -9,10 +9,10 @@ ms.date: 8/26/2019
 ms.author: abnarain
 ms.reviewer: craigg
 ms.openlocfilehash: ac6081f02ad532b512ecca335b949eec71c060ff
-ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/25/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "83836155"
 ---
 # <a name="troubleshoot-azure-data-factory"></a>Problemen met Azure Data Factory oplossen
@@ -442,7 +442,7 @@ De volgende tabel is van toepassing op Azure Batch.
 
 - **Oorzaak**:`Can't launch command, or the program returned an error code.`
 
-- **Aanbeveling**: Controleer of het uitvoer bare bestand bestaat. Als het programma is gestart, controleert u of *stdout. txt* en *stderr. txt* zijn geüpload naar het opslag account. Het is een goed idee om Logboeken in uw code op te neemen voor fout opsporing.
+- **Aanbeveling**: Controleer of het uitvoer bare bestand bestaat. Als het programma is gestart, controleert u of *stdout.txt* en *stderr.txt* zijn geüpload naar het opslag account. Het is een goed idee om Logboeken in uw code op te neemen voor fout opsporing.
 
 ### <a name="error-code-2501"></a>Fout code: 2501
 
@@ -1055,4 +1055,4 @@ Probeer deze bronnen voor meer informatie over probleem oplossing:
 * [Stack Overflow forum voor Data Factory](https://stackoverflow.com/questions/tagged/azure-data-factory)
 * [Twitter-informatie over Data Factory](https://twitter.com/hashtag/DataFactory)
 * [Azure-video's](https://azure.microsoft.com/resources/videos/index/)
-* [Micro soft Q&een vraag pagina](https://docs.microsoft.com/answers/topics/azure-data-factory.html)
+* [Microsoft Q&A-vragenpagina](https://docs.microsoft.com/answers/topics/azure-data-factory.html)

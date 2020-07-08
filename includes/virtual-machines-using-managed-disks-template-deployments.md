@@ -9,10 +9,10 @@ ms.date: 06/05/2018
 ms.author: jaboes
 ms.custom: include file
 ms.openlocfilehash: 126b488d2bb59e2904bee646301240efe6fe71a4
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "76037945"
 ---
 In dit document wordt uitgelegd wat de verschillen zijn tussen beheerde en onbeheerde schijven bij het gebruik van Azure Resource Manager sjablonen voor het inrichten van virtuele machines. De voor beelden helpen u bij het bijwerken van bestaande sjablonen die gebruikmaken van niet-beheerde schijven naar beheerde schijven. Ter referentie gebruiken we de sjabloon [101-VM-Simple-Windows](https://github.com/Azure/azure-quickstart-templates/tree/master/101-vm-simple-windows) als richt lijn. U kunt de sjabloon weer geven met behulp van zowel [beheerde schijven](https://github.com/Azure/azure-quickstart-templates/tree/master/101-vm-simple-windows/azuredeploy.json) als een eerdere versie met behulp van [onbeheerde schijven](https://github.com/Azure/azure-quickstart-templates/tree/93b5f72a9857ea9ea43e87d2373bf1b4f724c6aa/101-vm-simple-windows/azuredeploy.json) als u deze direct wilt vergelijken.
@@ -35,7 +35,7 @@ We gaan nu kijken hoe onbeheerde schijven worden geïmplementeerd. Bij het maken
 }
 ```
 
-Voeg binnen het virtuele-machine object een afhankelijkheid toe aan het opslag account om ervoor te zorgen dat deze wordt gemaakt vóór de virtuele machine. Geef in `storageProfile` de sectie de volledige URI op van de VHD-locatie, die verwijst naar het opslag account en is vereist voor de besturingssysteem schijf en alle gegevens schijven.
+Voeg binnen het virtuele-machine object een afhankelijkheid toe aan het opslag account om ervoor te zorgen dat deze wordt gemaakt vóór de virtuele machine. Geef in de `storageProfile` sectie de volledige URI op van de VHD-locatie, die verwijst naar het opslag account en is vereist voor de besturingssysteem schijf en alle gegevens schijven.
 
 ```json
 {
@@ -85,10 +85,10 @@ Voeg binnen het virtuele-machine object een afhankelijkheid toe aan het opslag a
 
 ## <a name="managed-disks-template-formatting"></a>Sjabloon opmaak voor Managed disks
 
-Met Azure Managed Disks wordt de schijf een resource op het hoogste niveau en hoeft er geen opslag account meer te worden gemaakt door de gebruiker. Managed disks zijn voor het `2016-04-30-preview` eerst beschikbaar gemaakt in de API-versie en zijn nu ook het standaard schijf type. In de volgende secties worden de standaard instellingen en details beschreven voor het aanpassen van uw schijven.
+Met Azure Managed Disks wordt de schijf een resource op het hoogste niveau en hoeft er geen opslag account meer te worden gemaakt door de gebruiker. Managed disks zijn voor het eerst beschikbaar gemaakt in de `2016-04-30-preview` API-versie en zijn nu ook het standaard schijf type. In de volgende secties worden de standaard instellingen en details beschreven voor het aanpassen van uw schijven.
 
 > [!NOTE]
-> Het is raadzaam om een API-versie later te `2016-04-30-preview` gebruiken dan wanneer er sprake `2016-04-30-preview` is `2017-03-30`van een laatste wijziging tussen en.
+> Het is raadzaam om een API-versie later te gebruiken dan `2016-04-30-preview` wanneer er sprake is van een laatste wijziging tussen `2016-04-30-preview` en `2017-03-30` .
 >
 >
 
@@ -164,7 +164,7 @@ Als alternatief voor het opgeven van de schijf configuratie in het virtuele-mach
 }
 ```
 
-In het VM-object verwijst u naar het schijf object dat moet worden gekoppeld. Het opgeven van de bron-ID van de beheerde schijf `managedDisk` die is gemaakt in de eigenschap, staat de bijlage van de schijf toe als de virtuele machine wordt gemaakt. De `apiVersion` voor de VM-resource is ingesteld `2017-03-30`op. Er wordt een afhankelijkheid van de schijf resource toegevoegd om ervoor te zorgen dat deze is gemaakt voordat de VM wordt gemaakt. 
+In het VM-object verwijst u naar het schijf object dat moet worden gekoppeld. Het opgeven van de bron-ID van de beheerde schijf die is gemaakt in de `managedDisk` eigenschap, staat de bijlage van de schijf toe als de virtuele machine wordt gemaakt. De `apiVersion` voor de VM-resource is ingesteld op `2017-03-30` . Er wordt een afhankelijkheid van de schijf resource toegevoegd om ervoor te zorgen dat deze is gemaakt voordat de VM wordt gemaakt. 
 
 ```json
 {
@@ -209,7 +209,7 @@ In het VM-object verwijst u naar het schijf object dat moet worden gekoppeld. He
 
 ### <a name="create-managed-availability-sets-with-vms-using-managed-disks"></a>Beheerde beschikbaarheids sets maken met Vm's met behulp van beheerde schijven
 
-Als u beheerde beschikbaarheids sets wilt maken met virtuele machines met behulp `sku` van beheerde schijven, voegt u het object toe `name` aan de `Aligned`resource van de beschikbaarheidsset en stelt u de eigenschap in op. Met deze eigenschap zorgt u ervoor dat de schijven voor elke VM voldoende van elkaar zijn geïsoleerd om afzonderlijke storings punten te voor komen. Houd er ook rekening `apiVersion` mee dat de voor de resource van de `2018-10-01`beschikbaarheidsset is ingesteld op.
+Als u beheerde beschikbaarheids sets wilt maken met virtuele machines met behulp van beheerde schijven, voegt u het `sku` object toe aan de resource van de beschikbaarheidsset en stelt `name` u de eigenschap in op `Aligned` . Met deze eigenschap zorgt u ervoor dat de schijven voor elke VM voldoende van elkaar zijn geïsoleerd om afzonderlijke storings punten te voor komen. Houd er ook rekening mee dat de `apiVersion` voor de resource van de beschikbaarheidsset is ingesteld op `2018-10-01` .
 
 ```json
 {
@@ -231,7 +231,7 @@ Als u beheerde beschikbaarheids sets wilt maken met virtuele machines met behulp
 
 Hieronder vindt u de para meters die nodig zijn in het Resource Manager-sjabloon om Standard-SSD schijven te maken:
 
-* *apiVersion* voor micro soft. Compute moet worden `2018-04-01` ingesteld als (of hoger)
+* *apiVersion* voor micro soft. Compute moet worden ingesteld als `2018-04-01` (of hoger)
 * Geef *managedDisk. storageAccountType* op als`StandardSSD_LRS`
 
 In het volgende voor beeld ziet u de sectie *Properties. storageProfile. osDisk* voor een virtuele machine die gebruikmaakt van Standard-SSD schijven:

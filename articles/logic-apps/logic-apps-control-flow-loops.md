@@ -7,10 +7,10 @@ ms.reviewer: klam, logicappspm
 ms.topic: article
 ms.date: 01/05/2019
 ms.openlocfilehash: 986440db7f8d4e1d4d46832543f58fa2985a4df4
-ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/25/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "83831616"
 ---
 # <a name="create-loops-that-repeat-workflow-actions-or-process-arrays-in-azure-logic-apps"></a>Herhalingen maken waarmee werkstroomacties worden herhaald of matrices worden verwerkt in Azure Logic Apps
@@ -175,7 +175,7 @@ Vanaf 8:00 uur elke dag wordt in dit voor beeld van de logische app een variabel
 
    | Eigenschap | Waarde |
    | -------- | ----- |
-   | **Bereik** | 1 | 
+   | **Interval** | 1 | 
    | **Frequentie** | Dag |
    | **Deze uren** | 8 |
    ||| 
@@ -189,7 +189,7 @@ Vanaf 8:00 uur elke dag wordt in dit voor beeld van de logische app een variabel
 
    ![Eigenschappen van variabele instellen](./media/logic-apps-control-flow-loops/do-until-loop-set-variable-properties.png)
 
-   | Eigenschap | Waarde | Beschrijving |
+   | Eigenschap | Waarde | Description |
    | -------- | ----- | ----------- |
    | **Naam** | Limiet | De naam van de variabele | 
    | **Type** | Geheel getal | Het gegevens type van uw variabele | 
@@ -232,7 +232,7 @@ Vanaf 8:00 uur elke dag wordt in dit voor beeld van de logische app een variabel
 
       | Eigenschap | Waarde | Beschrijving |
       | -------- | ----- | ----------- | 
-      | **Aan** | *\<e-mail adres \@ domein>* | Het e-mail adres van de ontvanger. Gebruik uw eigen e-mail adres om te testen. | 
+      | **Aan** | *\<email-address\@domain>* | Het e-mail adres van de ontvanger. Gebruik uw eigen e-mail adres om te testen. | 
       | **Onderwerp** | De huidige waarde voor limiet is **limiet** | Geef het onderwerp van de e-mail op. Voor dit voor beeld moet u de **limiet** variabele toevoegen. | 
       | **Hoofdtekst** | <*e-mail: inhoud*> | Geef de inhoud van het e-mail bericht op die u wilt verzenden. Voor dit voor beeld voert u de gewenste tekst in. | 
       |||| 
@@ -250,7 +250,7 @@ Een ' until '-lus heeft standaard limieten die de uitvoering stoppen als een van
 | Eigenschap | Standaardwaarde | Beschrijving | 
 | -------- | ------------- | ----------- | 
 | **Aantal** | 60 | Het hoogste aantal lussen dat wordt uitgevoerd voordat de lus wordt afgesloten. De standaard waarde is 60 cycli. | 
-| **Out** | PT1H | De meeste tijd voor het uitvoeren van een lus voordat de lus wordt afgesloten. De standaard waarde is één uur en wordt opgegeven in de ISO 8601-indeling. <p>De time-outwaarde wordt geëvalueerd voor elke lus-cyclus. Als een actie in de lus langer duurt dan de time-outlimiet, wordt de huidige cyclus niet gestopt. De volgende cyclus wordt echter niet gestart omdat niet wordt voldaan aan de limiet voorwaarde. | 
+| **Time-out** | PT1H | De meeste tijd voor het uitvoeren van een lus voordat de lus wordt afgesloten. De standaard waarde is één uur en wordt opgegeven in de ISO 8601-indeling. <p>De time-outwaarde wordt geëvalueerd voor elke lus-cyclus. Als een actie in de lus langer duurt dan de time-outlimiet, wordt de huidige cyclus niet gestopt. De volgende cyclus wordt echter niet gestart omdat niet wordt voldaan aan de limiet voorwaarde. | 
 |||| 
 
 Als u deze standaard limieten wilt wijzigen, kiest u **Geavanceerde opties weer geven** in de vorm van de lus.

@@ -4,10 +4,10 @@ description: Meer informatie over de opslag vereisten van Azure Functions en ove
 ms.topic: conceptual
 ms.date: 01/21/2020
 ms.openlocfilehash: 324516240d09a5443908cbffec514e4caba2b604
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/19/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "83648789"
 ---
 # <a name="storage-considerations-for-azure-functions"></a>Aandachtspunten voor de opslag van Azure Functions
@@ -17,10 +17,10 @@ Azure Functions moet een Azure Storage-account zijn wanneer u een exemplaar van 
 
 |Opslag service  | Functie gebruik  |
 |---------|---------|
-| [Azure Blob-opslag](../storage/blobs/storage-blobs-introduction.md)     | Status-en functie sleutels van bindingen onderhouden.  <br/>Wordt ook gebruikt door [taak hubs in Durable functions](durable/durable-functions-task-hubs.md). |
+| [Azure Blob Storage](../storage/blobs/storage-blobs-introduction.md)     | Status-en functie sleutels van bindingen onderhouden.  <br/>Wordt ook gebruikt door [taak hubs in Durable functions](durable/durable-functions-task-hubs.md). |
 | [Azure Files](../storage/files/storage-files-introduction.md)  | Bestands share gebruikt om de code van uw functie-app op te slaan en uit te voeren in een [verbruiks abonnement](functions-scale.md#consumption-plan). |
 | [Azure-wachtrij opslag](../storage/queues/storage-queues-introduction.md)     | Wordt gebruikt door [taak hubs in Durable functions](durable/durable-functions-task-hubs.md).   |
-| [Azure-tabel opslag](../storage/tables/table-storage-overview.md)  |  Wordt gebruikt door [taak hubs in Durable functions](durable/durable-functions-task-hubs.md).       |
+| [Azure Table storage](../storage/tables/table-storage-overview.md)  |  Wordt gebruikt door [taak hubs in Durable functions](durable/durable-functions-task-hubs.md).       |
 
 > [!IMPORTANT]
 > Als u gebruikmaakt van het hostingabonnement Consumption worden uw functiecode en uw bindingsconfiguratiebestanden opgeslagen in het belangrijkste opslagaccount in Azure File Storage. Wanneer u het belangrijkste opslagaccount verwijdert, wordt de inhoud verwijderd en kan deze niet worden hersteld.
@@ -57,7 +57,7 @@ Het is mogelijk dat meerdere functie-apps hetzelfde opslag account delen zonder 
 
 ## <a name="mount-file-shares-linux"></a>Bestands shares koppelen (Linux)
 
-U kunt bestaande Azure Files-shares koppelen aan uw Linux-functie-apps. Door een share te koppelen aan uw Linux-functie-app, kunt u gebruikmaken van bestaande machine learning modellen of andere gegevens in uw functies. U kunt de [`az webapp config storage-account add`](/cli/azure/webapp/config/storage-account#az-webapp-config-storage-account-add) opdracht gebruiken om een bestaande share te koppelen aan uw Linux-functie-app. 
+U kunt bestaande Azure Files-shares koppelen aan uw Linux-functie-apps. Door een share te koppelen aan uw Linux-functie-app, kunt u gebruikmaken van bestaande machine learning-modellen of andere gegevens in uw functies. U kunt de [`az webapp config storage-account add`](/cli/azure/webapp/config/storage-account#az-webapp-config-storage-account-add) opdracht gebruiken om een bestaande share te koppelen aan uw Linux-functie-app. 
 
 In deze opdracht `share-name` is de naam van de bestaande Azure Files share en `custom-id` kan elke wille keurige teken reeks zijn die een unieke definitie vormt van de share wanneer deze wordt gekoppeld aan de functie-app. Het `mount-path` is ook het pad van waaruit de share wordt geopend in uw functie-app. `mount-path`moet de indeling `/dir-name` hebben en kan niet beginnen met `/home` .
 
