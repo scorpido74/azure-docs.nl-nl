@@ -15,10 +15,9 @@ ms.workload: na
 ms.date: 12/30/2019
 ms.author: yelevin
 ms.openlocfilehash: 8d82d8c5a76c34875e9a4aae22c547aec897c18a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77588294"
 ---
 # <a name="connect-extrahop-revealx"></a>Verbinding maken met ExtraHop Reveal(x)
@@ -34,16 +33,16 @@ Met de ExtraHop Reveal (x) Data Connector kunt u eenvoudig uw Reveal (x)-systeem
 
 ## <a name="connect-azure-sentinel-to-extrahop-revealx"></a>Azure Sentinel verbinden met ExtraHop Reveal (x)
 
-1. Navigeer in het Azure Portal naar **Azure Sentinel** > **Data connectors** en selecteer vervolgens de **ExtraHop Reveal (x)-** connector.
+1. Navigeer in het Azure Portal naar **Azure Sentinel**  >  **Data connectors** en selecteer vervolgens de **ExtraHop Reveal (x)-** connector.
 
 2. Selecteer de **pagina connector openen**.
 
 3. Volg de instructies op de pagina **ExtraHop Reveal (x)** .
 
 ## <a name="next-steps"></a>Volgende stappen
-In dit document hebt u geleerd hoe u ExtraHop Reveal (x) met Azure Sentinel verbindt. Raadpleeg de volgende artikelen voor meer informatie over Azure Sentinel:
-- Meer informatie over hoe u [inzicht krijgt in uw gegevens en mogelijke bedreigingen](quickstart-get-visibility.md).
-- Ga aan de slag [met het detecteren van bedreigingen met Azure Sentinel](tutorial-detect-threats-built-in.md).
+In dit document hebt u geleerd hoe u ExtraHop Reveal (x) met Azure Sentinel verbindt. Zie de volgende artikelen voor meer informatie over Azure Sentinel:
+- Meer informatie over het [verkrijgen van inzicht in uw gegevens en mogelijke bedreigingen](quickstart-get-visibility.md).
+- Ga aan de slag met [het detecteren van bedreigingen met Azure Sentinel](tutorial-detect-threats-built-in.md).
 - [Gebruik werkmappen](tutorial-monitor-your-data.md) om uw gegevens te bewaken.
 
 

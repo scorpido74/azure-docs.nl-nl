@@ -13,10 +13,9 @@ ms.workload: na
 ms.date: 09/23/2019
 ms.author: yelevin
 ms.openlocfilehash: a8213bd57936f95870324950204dbd6c1473739a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77588515"
 ---
 # <a name="connect-azure-stack-virtual-machines-to-azure-sentinel"></a>Azure Stack virtuele machines verbinden met Azure Sentinel
@@ -36,8 +35,8 @@ Voeg de extensie van de virtuele machine **Azure monitor, update en configuratie
 
 1. Meld u in een nieuw browser tabblad aan bij uw [Azure stack-Portal](https://docs.microsoft.com/azure-stack/user/azure-stack-use-portal#access-the-portal).
 2. Ga naar de pagina **virtuele machines** en selecteer de virtuele machine die u met Azure Sentinel wilt beveiligen. Zie [een Windows Server-VM maken met de Azure stack Portal](https://docs.microsoft.com/azure/azure-stack/user/azure-stack-quick-windows-portal) of [een Linux-Server-VM maken met behulp van de Azure stack Portal](https://docs.microsoft.com/azure/azure-stack/user/azure-stack-quick-linux-portal)voor meer informatie over het maken van een virtuele machine op Azure stack.
-3. Selecteer **uitbrei dingen**. De lijst met virtuele-machine uitbreidingen die op deze virtuele machine is geïnstalleerd, wordt weer gegeven.
-4. Klik op het tabblad **toevoegen** . De Blade **Nieuw resource** menu wordt geopend en toont de lijst met beschik bare extensies van virtuele machines. 
+3. Selecteer **Extensies**. De lijst met virtuele machine-extensies die op deze virtuele machine is geïnstalleerd, wordt weergegeven.
+4. Klik op de knop **Add**. De menublade **Nieuwe resource** wordt geopend en toont de lijst met beschikbare extensies van virtuele machines. 
 5. Selecteer de uitbrei ding **Azure monitor, update en configuratie beheer** en klik op **maken**. Het venster **extensie configuratie installeren** wordt geopend.
 
    ![Instellingen voor Azure Monitor-, update-en configuratie beheer](./media/connect-azure-stack/azure-monitor-extension-fix.png)  
@@ -51,23 +50,23 @@ Voeg de extensie van de virtuele machine **Azure monitor, update en configuratie
 
 Zie [Windows-computers verbinden](../azure-monitor/platform/agent-windows.md#install-the-agent-using-setup-wizard)voor meer informatie over het installeren en configureren van de agent voor Windows.
 
-Zie [problemen met Azure log Analytics Linux-agent oplossen](../azure-monitor/platform/agent-linux-troubleshoot.md)voor Linux problemen oplossen met agents.
+Zie [Probleemoplossing voor Linux-agent voor Log Analytics](../azure-monitor/platform/agent-linux-troubleshoot.md) voor meer informatie over het oplossen van problemen met agents in Linux.
 
 In de Azure-Sentinel-Portal op Azure, onder **virtual machines**, hebt u een overzicht van alle vm's en computers, samen met hun status. 
 
 ## <a name="clean-up-resources"></a>Resources opschonen
-Wanneer u deze niet meer nodig hebt, kunt u de extensie uit de virtuele machine verwijderen via de Azure Stack Portal.
+Wanneer u deze niet meer nodig hebt, kunt u de extensie uit de virtuele machine verwijderen via de Azure Stack-portal.
 
-De uitbrei ding verwijderen:
+De extensie verwijderen:
 
-1. Open de **Azure stack Portal**.
-2. Ga naar de pagina **virtuele machines** en selecteer de virtuele machine waarvan u de extensie wilt verwijderen.
-3. Selecteer **uitbrei dingen**, selecteer de extensie **micro soft. EnterpriseCloud. monitoring**.
+1. Open de **Azure Stack-portal**.
+2. Ga naar de pagina **Virtuele machines**, selecteer de virtuele machine waarvan u de extensie wilt verwijderen.
+3. Selecteer **Extensies**, de extensie **Microsoft.EnterpriseCloud.Monitoring**.
 4. Klik op **installatie ongedaan maken**en bevestig uw selectie.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Raadpleeg de volgende artikelen voor meer informatie over Azure Sentinel:
-- Meer informatie over hoe u [inzicht krijgt in uw gegevens en mogelijke bedreigingen](quickstart-get-visibility.md).
-- Ga aan de slag [met het detecteren van bedreigingen met Azure Sentinel](tutorial-detect-threats-built-in.md).
+Zie de volgende artikelen voor meer informatie over Azure Sentinel:
+- Meer informatie over het [verkrijgen van inzicht in uw gegevens en mogelijke bedreigingen](quickstart-get-visibility.md).
+- Ga aan de slag met [het detecteren van bedreigingen met Azure Sentinel](tutorial-detect-threats-built-in.md).
 - Gegevens streamen van [algemene fout indelings toestellen](connect-common-event-format.md) in azure Sentinel.

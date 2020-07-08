@@ -4,10 +4,9 @@ description: Een artikel met informatie over het gebruik van Azure Policy om bac
 ms.topic: conceptual
 ms.date: 11/08/2019
 ms.openlocfilehash: 1d423371788f87155328e8f5c9334e47349a68e8
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77584265"
 ---
 # <a name="auto-enable-backup-on-vm-creation-using-azure-policy"></a>Back-up automatisch inschakelen bij het maken van VM's met Azure Policy
@@ -16,7 +15,7 @@ Een van de belangrijkste verantwoordelijkheden van een back-up-of nalevings behe
 
 Momenteel biedt Azure Backup een ingebouwd beleid (met behulp van Azure Policy) dat kan worden toegewezen aan **alle virtuele Azure-machines in een opgegeven locatie binnen een abonnement of resource groep**. Wanneer dit beleid is toegewezen aan een bepaald bereik, worden alle nieuwe Vm's die in dat bereik zijn gemaakt, automatisch geconfigureerd voor back-up naar een **bestaande kluis op dezelfde locatie en hetzelfde abonnement**. De gebruiker kan de kluis en het Bewaar beleid opgeven waarnaar de back-ups van virtuele machines moeten worden gekoppeld.
 
-## <a name="supported-scenarios"></a>Ondersteunde scenario 's
+## <a name="supported-scenarios"></a>Ondersteunde scenario's
 
 * Het ingebouwde beleid wordt momenteel alleen ondersteund voor virtuele Azure-machines. Gebruikers moeten er zeker van zijn dat het Bewaar beleid dat tijdens de toewijzing is opgegeven, een VM-Bewaar beleid is. Raadpleeg [Dit](https://docs.microsoft.com/azure/backup/backup-azure-policy-supported-skus) document voor een overzicht van alle VM-sku's die door dit beleid worden ondersteund.
 

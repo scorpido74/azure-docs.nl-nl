@@ -14,10 +14,9 @@ ms.date: 09/10/2018
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: 047ea4d07f2b497ac8c7deb90c056d63976094f4
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77617081"
 ---
 # <a name="monitoring-and-troubleshooting-from-hana-side"></a>Bewaken en problemen oplossen vanaf de HANA-zijde
@@ -70,7 +69,7 @@ Raadpleeg het [SAP Hana probleem oplossing: oorzaken voor CPU-problemen en oplos
 
 Een van de belangrijkste controles voor SAP HANA op Linux is om ervoor te zorgen dat transparante, enorme pagina's worden uitgeschakeld. Zie [SAP Note #2131662 – transparent enorme Pages (THP) op SAP Hana servers](https://launchpad.support.sap.com/#/notes/2131662)voor meer informatie.
 
-- U kunt controleren of transparante enorme pagina's zijn ingeschakeld via de volgende Linux-opdracht: **kat\_/sys/kernel/mm/transparent hugepage/ingeschakeld**
+- U kunt controleren of transparante enorme pagina's zijn ingeschakeld via de volgende Linux-opdracht: **kat/sys/kernel/mm/transparent \_ hugepage/ingeschakeld**
 - Als er _altijd_ tussen vier Kante haken staan zoals hieronder, betekent dit dat de transparante enorme pagina's zijn ingeschakeld: [always] madvise nooit; Als er _nooit_ tussen vier Kante haken staan zoals hieronder, betekent dit dat de transparante enorme pagina's zijn uitgeschakeld: altijd madvise [nooit]
 
 De volgende Linux-opdracht zou niets kunnen retour neren: **rpm-QA | grep-ulimit.** Als wordt weer gegeven dat _ulimit_ is geïnstalleerd, verwijdert u dit onmiddellijk.
@@ -93,10 +92,10 @@ Raadpleeg de [SAP Hana problemen oplossen: site geheugen problemen](https://help
 Raadpleeg [SAP note #2081065: problemen met SAP Hana netwerk oplossen](https://launchpad.support.sap.com/#/notes/2081065) en de stappen voor het oplossen van problemen met het netwerk uitvoeren in deze SAP-notitie.
 
 1. De round-trip tijd tussen de server en de client analyseren.
-  A. Voer het SQL- [_script\_Hana\_-netwerkclients_](https://launchpad.support.sap.com/#/notes/1969700)uit _._
+  A. Voer het SQL-script [_Hana- \_ \_ netwerkclients_](https://launchpad.support.sap.com/#/notes/1969700)uit _._
   
 2. Analyseer communicatie tussen knoop punten.
-  A. Voer SQL script [_Hana\_-\_netwerk services_](https://launchpad.support.sap.com/#/notes/1969700)uit _._
+  A. Voer SQL script [_Hana- \_ netwerk \_ Services_](https://launchpad.support.sap.com/#/notes/1969700)uit _._
 
 3. Voer Linux-opdracht **ifconfig** uit (de uitvoer geeft aan of er pakket verlies optreedt).
 4. Voer Linux-opdracht **tcpdump**uit.
@@ -119,15 +118,15 @@ Raadpleeg het [SAP Hana probleem oplossing: I/O-gerelateerde hoofd oorzaken en o
 
 ## <a name="diagnostic-tools"></a>Diagnostische Hulpprogram Ma's
 
-Voer een SAP HANA Health Check uit via\_de\_Hana-configuratie Minichecks. Met dit hulp programma worden mogelijk kritieke technische problemen geretourneerd die al zouden worden gegenereerd als waarschuwingen in SAP HANA Studio.
+Voer een SAP HANA Health Check uit via de HANA- \_ configuratie \_ Minichecks. Met dit hulp programma worden mogelijk kritieke technische problemen geretourneerd die al zouden worden gegenereerd als waarschuwingen in SAP HANA Studio.
 
-Raadpleeg [SAP Note #1969700-verzameling van SQL-instructies voor SAP Hana](https://launchpad.support.sap.com/#/notes/1969700) en down load het zip-bestand van SQL statements dat aan deze opmerking is gekoppeld. Sla dit zip-bestand op de lokale harde schijf op.
+Raadpleeg [SAP Note #1969700-verzameling van SQL-instructies voor SAP Hana](https://launchpad.support.sap.com/#/notes/1969700) en down load het SQL Statements.zip-bestand dat aan die notitie is gekoppeld. Sla dit zip-bestand op de lokale harde schijf op.
 
 Klik in SAP HANA Studio met de rechter muisknop in de kolom **naam** op het tabblad **systeem informatie** en selecteer **SQL-instructies importeren**.
 
 ![Klik in SAP HANA Studio met de rechter muisknop in de kolom naam op het tabblad systeem informatie en selecteer SQL-instructies importeren](./media/troubleshooting-monitoring/image7-import-statements-a.png)
 
-Selecteer de SQL-instructies. zip-bestand lokaal opgeslagen en er wordt een map met de bijbehorende SQL-instructies geïmporteerd. Op dit punt kunnen de vele verschillende diagnostische controles worden uitgevoerd met deze SQL-instructies.
+Selecteer het SQL Statements.zip lokaal opgeslagen bestand en een map met de bijbehorende SQL-instructies worden geïmporteerd. Op dit punt kunnen de vele verschillende diagnostische controles worden uitgevoerd met deze SQL-instructies.
 
 Als u bijvoorbeeld de bandbreedte vereisten voor SAP HANA systeem replicatie wilt testen, klikt u met de rechter muisknop op de overzicht van de **band breedte** onder **replicatie: band breedte** en selecteert u **openen** in SQL-console.
 
@@ -143,29 +142,29 @@ Dit resulteert in informatie die helpt bij het oplossen van problemen:
 
 ![Dit leidt tot informatie die helpt bij het oplossen van problemen](./media/troubleshooting-monitoring/image10-import-statements-d.png)
 
-Doe hetzelfde voor de HANA\_-\_configuratie Minichecks en controleer of er _X_ -tekens in de kolom _C_ (kritiek) staan.
+Doe hetzelfde voor de HANA \_ \_ -configuratie Minichecks en controleer of er _X_ -tekens in de kolom _C_ (kritiek) staan.
 
 Voorbeeld uitvoer:
 
-**Hana\_-\_configuratie\_MiniChecks Rev 102.01 + 1** voor algemene SAP Hana controles.
+**Hana \_ Configuratie \_ MiniChecks \_ rev 102.01 + 1** voor algemene SAP Hana controles.
 
-![HANA\_-\_configuratie\_MiniChecks rev 102.01 + 1 voor algemene SAP Hana controles](./media/troubleshooting-monitoring/image11-configuration-minichecks.png)
+![HANA- \_ configuratie \_ MiniChecks \_ rev 102.01 + 1 voor algemene SAP Hana controles](./media/troubleshooting-monitoring/image11-configuration-minichecks.png)
 
-**Overzicht\_van\_Hana-Services** voor een overzicht van de SAP Hana services die momenteel worden uitgevoerd.
+**Hana \_ \_Overzicht van services** voor een overzicht van wat sap Hana services momenteel worden uitgevoerd.
 
-![Overzicht\_van\_Hana-Services voor een overzicht van de SAP Hana services die momenteel worden uitgevoerd](./media/troubleshooting-monitoring/image12-services-overview.png)
+![\_Overzicht van Hana-Services \_ voor een overzicht van de SAP Hana services die momenteel worden uitgevoerd](./media/troubleshooting-monitoring/image12-services-overview.png)
 
-**Hana\_-\_services statistieken** voor SAP Hana service-informatie (CPU, geheugen, enzovoort).
+**Hana \_ Services \_ Statistieken** voor SAP Hana service-informatie (CPU, geheugen, enz.).
 
-![Statistieken\_voor\_Hana-Services voor informatie over SAP Hana-service](./media/troubleshooting-monitoring/image13-services-statistics.png)
+![\_Statistieken voor Hana-Services \_ voor informatie over SAP Hana-service](./media/troubleshooting-monitoring/image13-services-statistics.png)
 
-**Hana\_-\_configuratie\_Overview Rev110 +** voor algemene informatie over het SAP Hana-exemplaar.
+**Hana \_ Configuratie \_ overzicht \_ Rev110 +** voor algemene informatie over het SAP Hana-exemplaar.
 
-![HANA\_-\_configuratie\_Overview Rev110 + voor algemene informatie over het SAP Hana-exemplaar](./media/troubleshooting-monitoring/image14-configuration-overview.png)
+![HANA- \_ configuratie \_ Overview \_ Rev110 + voor algemene informatie over het SAP Hana-exemplaar](./media/troubleshooting-monitoring/image14-configuration-overview.png)
 
-**Hana\_-\_configuratie\_parameters Rev70 +** om SAP Hana parameters te controleren.
+**Hana \_ Configuratie \_ parameters \_ Rev70 +** om SAP Hana-para meters te controleren.
 
-![HANA\_-\_configuratie\_parameters Rev70 + om SAP Hana parameters te controleren](./media/troubleshooting-monitoring/image15-configuration-parameters.png)
+![HANA- \_ configuratie \_ parameters \_ Rev70 + om SAP Hana parameters te controleren](./media/troubleshooting-monitoring/image15-configuration-parameters.png)
 
 **Volgende stappen**
 

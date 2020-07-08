@@ -15,10 +15,9 @@ ms.workload: na
 ms.date: 12/30/2019
 ms.author: yelevin
 ms.openlocfilehash: 849087cbbe91be799c51929353b9f020859c85b8
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77588141"
 ---
 # <a name="connect-one-identity-safeguard"></a>Verbinding maken met één identiteits beveiliging
@@ -31,7 +30,7 @@ De gegevens connector met één identiteits beveiliging verbetert de standaard C
 
 ## <a name="connect-azure-sentinel-to-one-identity-safeguard"></a>Azure-Sentinel verbinden met één identiteits beveiliging
 
-1. Navigeer in het Azure Portal naar **Azure Sentinel** > **Data connectors** en selecteer vervolgens de connector voor **identiteits beveiliging** .
+1. Navigeer in het Azure Portal naar **Azure Sentinel**  >  **Data connectors** en selecteer vervolgens de connector voor **identiteits beveiliging** .
 
 2. Selecteer de **pagina connector openen**.
 
@@ -39,9 +38,9 @@ De gegevens connector met één identiteits beveiliging verbetert de standaard C
 
 
 ## <a name="next-steps"></a>Volgende stappen
-In dit document hebt u geleerd hoe u één identiteits beveiliging verbindt met Azure Sentinel. Raadpleeg de volgende artikelen voor meer informatie over Azure Sentinel:
-- Meer informatie over hoe u [inzicht krijgt in uw gegevens en mogelijke bedreigingen](quickstart-get-visibility.md).
-- Ga aan de slag [met het detecteren van bedreigingen met Azure Sentinel](tutorial-detect-threats-built-in.md).
+In dit document hebt u geleerd hoe u één identiteits beveiliging verbindt met Azure Sentinel. Zie de volgende artikelen voor meer informatie over Azure Sentinel:
+- Meer informatie over het [verkrijgen van inzicht in uw gegevens en mogelijke bedreigingen](quickstart-get-visibility.md).
+- Ga aan de slag met [het detecteren van bedreigingen met Azure Sentinel](tutorial-detect-threats-built-in.md).
 - [Gebruik werkmappen](tutorial-monitor-your-data.md) om uw gegevens te bewaken.
 
 

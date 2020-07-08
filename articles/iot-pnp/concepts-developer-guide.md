@@ -8,10 +8,9 @@ ms.topic: conceptual
 ms.service: iot-pnp
 services: iot-pnp
 ms.openlocfilehash: 5fda51e6d2f62b9cbef0fcac22d5bb2ea0df905b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77605219"
 ---
 # <a name="iot-plug-and-play-preview-modeling-developer-guide"></a>Ontwikkelaars handleiding voor IoT Plug en Play preview-modellen
@@ -20,7 +19,7 @@ Met IoT Plug en Play preview kunt u apparaten bouwen die hun mogelijkheden adver
 
 Als u een IoT Plug en Play-apparaat wilt bouwen, moet u een apparaatbeschrijving maken. De beschrijving wordt uitgevoerd met een eenvoudige definitie taal met de naam Digital Apparaatdubbels Definition Language (DTDL).
 
-## <a name="device-capability-model"></a>Mogelijkheidsprofiel
+## <a name="device-capability-model"></a>Apparaatondersteuningsprofiel
 
 Met DTDL maakt u een _hulp middel_ voor het maken van een apparaat om de onderdelen van uw apparaat te beschrijven. Een typisch IoT-apparaat bestaat uit:
 
@@ -97,7 +96,7 @@ Een interface bevat enkele vereiste velden:
 
 In dit eenvoudige voor beeld is er slechts één telemetrie-veld. Een minimale veld Beschrijving heeft een:
 
-- `@type`: Hiermee geeft u het type mogelijkheid `Telemetry`: `Property`, of `Command`.
+- `@type`: Hiermee geeft u het type mogelijkheid: `Telemetry` , `Property` of `Command` .
 - `name`: Hiermee geeft u de naam van de telemetrie-waarde op.
 - `schema`: Hiermee geeft u het gegevens type voor de telemetrie op. Deze waarde kan een primitief type zijn, zoals double, integer, Boolean of string. Complexe object typen, matrices en Maps worden ook ondersteund.
 
@@ -127,11 +126,11 @@ Opdrachten zijn ofwel synchroon of asynchroon. Een synchrone opdracht moet stand
 
 Gebruik asynchrone opdrachten voor langlopende bewerkingen. Het apparaat verzendt voortgangs informatie met behulp van telemetrie-berichten. Deze voortgangs berichten hebben de volgende header-eigenschappen:
 
-- `iothub-command-name`: de naam van de opdracht, `UpdateFirmware`bijvoorbeeld.
+- `iothub-command-name`: de naam van de opdracht, bijvoorbeeld `UpdateFirmware` .
 - `iothub-command-request-id`: de aanvraag-ID die is gegenereerd aan de server zijde en die tijdens de eerste aanroep naar het apparaat wordt verzonden.
-- `iothub-interface-id`: De ID van de interface waarop deze opdracht is gedefinieerd, bijvoorbeeld `urn:example:AssetTracker:1`.
- `iothub-interface-name`: de naam van de instantie van deze interface, `myAssetTracker`bijvoorbeeld.
-- `iothub-command-statuscode`: de status code die is geretourneerd van het apparaat, `202`bijvoorbeeld.
+- `iothub-interface-id`: De ID van de interface waarop deze opdracht is gedefinieerd, bijvoorbeeld `urn:example:AssetTracker:1` .
+ `iothub-interface-name`: de naam van de instantie van deze interface, bijvoorbeeld `myAssetTracker` .
+- `iothub-command-statuscode`: de status code die is geretourneerd van het apparaat, bijvoorbeeld `202` .
 
 ## <a name="register-a-device"></a>Een apparaat registreren
 
@@ -182,29 +181,29 @@ result = DigitalTwin_DeviceClient_RegisterInterfacesAsync(
 
 Met IoT Plug en Play kunt u apparaten gebruiken die hun mogelijkheden hebben geregistreerd bij uw IoT-hub. U kunt bijvoorbeeld rechtstreeks toegang krijgen tot de eigenschappen en opdrachten van een apparaat.
 
-Als u een IoT-Plug en Play apparaat wilt gebruiken dat is verbonden met uw IoT-hub, gebruikt u de IoT Hub REST API of een van de IoT-taal-Sdk's. De volgende voor beelden gebruiken de IoT Hub REST API. De huidige versie van de API is `2019-07-01-preview`. Voeg `?api-version=2019-07-01-preview` toe aan uw rest Pi-aanroepen.
+Als u een IoT-Plug en Play apparaat wilt gebruiken dat is verbonden met uw IoT-hub, gebruikt u de IoT Hub REST API of een van de IoT-taal-Sdk's. De volgende voor beelden gebruiken de IoT Hub REST API. De huidige versie van de API is `2019-07-01-preview` . Voeg `?api-version=2019-07-01-preview` toe aan uw rest Pi-aanroepen.
 
-Als u de waarde van een eigenschap apparaat wilt ophalen, zoals de firmware versie`fwVersion`() in `DeviceInformation` de interface van de Thermo staat, gebruikt u de digitale apparaatdubbels rest API.
+Als u de waarde van een eigenschap apparaat wilt ophalen, zoals de firmware versie ( `fwVersion` ) in de `DeviceInformation` interface van de Thermo staat, gebruikt u de digitale apparaatdubbels rest API.
 
-Als uw Thermo staat-apparaat `t-123`wordt aangeroepen, krijgt u de alle eigenschappen van alle interfaces die door uw apparaat worden geïmplementeerd met een rest API Get-aanroep:
+Als uw Thermo staat-apparaat wordt aangeroepen `t-123` , krijgt u de alle eigenschappen van alle interfaces die door uw apparaat worden geïmplementeerd met een rest API Get-aanroep:
 
 ```REST
 GET /digitalTwins/t-123/interfaces
 ```
 
-Meer in het algemeen zijn alle eigenschappen op alle interfaces toegankelijk met deze REST API sjabloon `{device-id}` , waarbij de id is van het apparaat:
+Meer in het algemeen zijn alle eigenschappen op alle interfaces toegankelijk met deze REST API sjabloon, waarbij `{device-id}` de id is van het apparaat:
 
 ```REST
 GET /digitalTwins/{device-id}/interfaces
 ```
 
-Als u de naam van de interface kent, zoals `deviceInformation`en u eigenschappen voor die specifieke interface wilt ophalen, moet u de aanvraag op naam bereiken voor een specifieke interface:
+Als u de naam van de interface kent, zoals `deviceInformation` en u eigenschappen voor die specifieke interface wilt ophalen, moet u de aanvraag op naam bereiken voor een specifieke interface:
 
 ```REST
 GET /digitalTwins/t-123/interfaces/deviceInformation
 ```
 
-Meer in het algemeen zijn eigenschappen van een specifieke interface toegankelijk via deze REST API sjabloon, `device-id` waarbij de id voor het apparaat is `{interface-name}` en de naam van de interface is:
+Meer in het algemeen zijn eigenschappen van een specifieke interface toegankelijk via deze REST API sjabloon, waarbij `device-id` de id voor het apparaat is en `{interface-name}` de naam van de interface is:
 
 ```REST
 GET /digitalTwins/{device-id}/interfaces/{interface-name}

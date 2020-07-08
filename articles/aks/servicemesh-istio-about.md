@@ -6,10 +6,9 @@ ms.topic: article
 ms.date: 10/09/2019
 ms.author: pabouwer
 ms.openlocfilehash: 8518e30a54c2486abf84cd9ac026cc4dccb3fa84
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77593897"
 ---
 # <a name="istio"></a>Istio
@@ -43,7 +42,7 @@ In het volgende architectuur diagram ziet u hoe de verschillende onderdelen binn
 Het is belang rijk dat u de volgende gebieden begrijpt en overweegt om Istio te evalueren voor uw workloads:
 
 - [Ontwerp doelen](#design-goals)
-- [Functionaliteit](#capabilities)
+- [Functies](#capabilities)
 - [Scenario's](#scenarios)
 
 
@@ -60,7 +59,7 @@ De volgende ontwerp doelstellingen [begeleiden][design-goals] het Istio-project:
 - **Uniformiteit van beleid** : consistentie in de beleids definitie over diverse bronnen.
 
 
-### <a name="capabilities"></a>Functionaliteit
+### <a name="capabilities"></a>Functies
 
 Istio biedt de volgende mogelijkheden:
 

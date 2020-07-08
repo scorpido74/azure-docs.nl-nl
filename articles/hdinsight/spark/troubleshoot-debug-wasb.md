@@ -8,10 +8,9 @@ ms.service: hdinsight
 ms.topic: troubleshooting
 ms.date: 02/18/2020
 ms.openlocfilehash: f1707c7f8d6324678c8bf5a470bbded1e58c719e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77470714"
 ---
 # <a name="debug-wasb-file-operations-in-azure-hdinsight"></a>Fouten opsporen in WASB-Bestands bewerkingen in azure HDInsight
@@ -26,23 +25,23 @@ Een geproduceerd logboek ziet er ongeveer als volgt uit:
 
 ## <a name="turn-on-wasb-debug-log-for-file-operations"></a>WASB debug-logboek inschakelen voor bestands bewerkingen
 
-1. Ga in een webbrowser naar `https://CLUSTERNAME.azurehdinsight.net/#/main/services/SPARK2/configs`, waarbij `CLUSTERNAME` de naam van uw Spark-cluster is.
+1. Ga in een webbrowser naar `https://CLUSTERNAME.azurehdinsight.net/#/main/services/SPARK2/configs` , waarbij `CLUSTERNAME` de naam van uw Spark-cluster is.
 
 1. Ga naar **Geavanceerde spark2-log4j-Properties**.
 
-    1. Wijzigen `log4j.appender.console.Threshold=INFO` in `log4j.appender.console.Threshold=DEBUG`.
+    1. Wijzigen `log4j.appender.console.Threshold=INFO` in `log4j.appender.console.Threshold=DEBUG` .
 
-    1. Toevoegen `log4j.logger.org.apache.hadoop.fs.azure.NativeAzureFileSystem=DEBUG`.
+    1. Toevoegen `log4j.logger.org.apache.hadoop.fs.azure.NativeAzureFileSystem=DEBUG` .
 
 1. Ga naar **Geavanceerde livy2-log4j-Properties**.
 
-    Toevoegen `log4j.logger.org.apache.hadoop.fs.azure.NativeAzureFileSystem=DEBUG`.
+    Toevoegen `log4j.logger.org.apache.hadoop.fs.azure.NativeAzureFileSystem=DEBUG` .
 
 1. Sla de wijzigingen op.
 
 ## <a name="additional-logging"></a>Aanvullende logboekregistratie
 
-De bovenstaande logboeken moeten informatie op hoog niveau van de bestandssysteem bewerkingen bieden. Als de bovenstaande logboeken nog steeds geen bruikbare informatie bieden of als u API-aanroepen voor Blob-opslag wilt `fs.azure.storage.client.logging=true` onderzoeken, `core-site`voegt u deze toe aan. Met deze instelling worden de Java SDK-logboeken ingeschakeld voor wasb-opslag stuur programma en worden alle aanroepen naar de Blob Storage-Server afgedrukt. Verwijder de instelling na onderzoek, omdat hiermee de schijf snel kan worden gevuld en het proces kan worden vertraagd.
+De bovenstaande logboeken moeten informatie op hoog niveau van de bestandssysteem bewerkingen bieden. Als de bovenstaande logboeken nog steeds geen bruikbare informatie bieden of als u API-aanroepen voor Blob-opslag wilt onderzoeken, voegt u `fs.azure.storage.client.logging=true` deze toe aan `core-site` . Met deze instelling worden de Java SDK-logboeken ingeschakeld voor wasb-opslag stuur programma en worden alle aanroepen naar de Blob Storage-Server afgedrukt. Verwijder de instelling na onderzoek, omdat hiermee de schijf snel kan worden gevuld en het proces kan worden vertraagd.
 
 Als de back-end Azure Data Lake is, gebruikt u de volgende log4j-instelling voor het onderdeel (bijvoorbeeld Spark/TEZ/hdfs):
 
@@ -63,6 +62,6 @@ Als u het probleem niet ziet of als u het probleem niet kunt oplossen, gaat u na
 
 * Krijg antwoorden van Azure-experts via de [ondersteuning van Azure Community](https://azure.microsoft.com/support/community/).
 
-* Maak verbinding [@AzureSupport](https://twitter.com/azuresupport) met-het officiële Microsoft Azure account voor het verbeteren van de gebruikers ervaring. Verbinding maken met de Azure-community met de juiste resources: antwoorden, ondersteuning en experts.
+* Maak verbinding met [@AzureSupport](https://twitter.com/azuresupport) -het officiële Microsoft Azure account voor het verbeteren van de gebruikers ervaring. Verbinding maken met de Azure-community met de juiste resources: antwoorden, ondersteuning en experts.
 
 * Als u meer hulp nodig hebt, kunt u een ondersteunings aanvraag indienen via de [Azure Portal](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade/). Selecteer **ondersteuning** in de menu balk of open de hub **Help en ondersteuning** . Lees [hoe u een ondersteunings aanvraag voor Azure kunt maken](https://docs.microsoft.com/azure/azure-supportability/how-to-create-azure-support-request)voor meer informatie. De toegang tot abonnementen voor abonnements beheer en facturering is inbegrepen bij uw Microsoft Azure-abonnement en technische ondersteuning wordt geleverd via een van de [ondersteunings abonnementen voor Azure](https://azure.microsoft.com/support/plans/).

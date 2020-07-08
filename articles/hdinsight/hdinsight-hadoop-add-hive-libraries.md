@@ -9,21 +9,20 @@ ms.topic: conceptual
 ms.custom: H1Hack27Feb2017,hdinsightactive
 ms.date: 02/14/2020
 ms.openlocfilehash: 0b746963cea5a950ba47d8b4dfeb074cb0910436
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77471020"
 ---
 # <a name="add-custom-apache-hive-libraries-when-creating-your-hdinsight-cluster"></a>Aangepaste Apache Hive bibliotheken toevoegen bij het maken van uw HDInsight-cluster
 
 Meer informatie over het vooraf laden van [Apache Hive](https://hive.apache.org/) bibliotheken op HDInsight. Dit document bevat informatie over het gebruik van een script actie voor het vooraf laden van bibliotheken tijdens het maken van het cluster. Bibliotheken die zijn toegevoegd aan de hand van de stappen in dit document, zijn wereld wijd beschikbaar in Hive-er hoeft geen [jar](https://cwiki.apache.org/confluence/display/Hive/LanguageManual+Cli) te worden gebruikt om ze te laden.
 
-## <a name="how-it-works"></a>Hoe werkt het?
+## <a name="how-it-works"></a>Uitleg
 
 Wanneer u een cluster maakt, kunt u een script actie gebruiken om cluster knooppunten te wijzigen wanneer ze worden gemaakt. In het script in dit document wordt één para meter geaccepteerd. Dit is de locatie van de bibliotheken. Deze locatie moet zich in een Azure Storage-account bevinden en de bibliotheken moeten worden opgeslagen als jar-bestanden.
 
-Tijdens het maken van het cluster worden de bestanden door het script opgesomd, worden `/usr/lib/customhivelibs/` deze gekopieerd naar de map op de hoofd-en worker `hive.aux.jars.path` -knoop punten `core-site.xml` en vervolgens toegevoegd aan de eigenschap in het bestand. Op Linux-gebaseerde clusters wordt het `hive-env.sh` bestand ook bijgewerkt met de locatie van de bestanden.
+Tijdens het maken van het cluster worden de bestanden door het script opgesomd, worden deze gekopieerd naar de `/usr/lib/customhivelibs/` map op de hoofd-en worker-knoop punten en vervolgens toegevoegd aan de `hive.aux.jars.path` eigenschap in het `core-site.xml` bestand. Op Linux-gebaseerde clusters wordt het bestand ook bijgewerkt `hive-env.sh` met de locatie van de bestanden.
 
 Met de script actie in dit artikel maakt u de bibliotheken beschikbaar wanneer u een Hive-client gebruikt voor **WebHCat**en **HiveServer2**.
 
@@ -41,7 +40,7 @@ Met de script actie in dit artikel maakt u de bibliotheken beschikbaar wanneer u
 
 * Het opslag account met de bibliotheek van jar-bestanden **moet** worden gekoppeld aan het HDInsight-cluster tijdens het maken. Dit moet het standaard opslag account zijn of een account dat is toegevoegd via de instellingen voor het __opslag account__.
 
-* Het WASB-pad naar de container moet worden opgegeven als een para meter voor de script actie. Als de potten bijvoorbeeld worden opgeslagen in een container met de naam **bibliotheken** op een opslag account met de naam **mijn opslag**, is `wasbs://libs@mystorage.blob.core.windows.net/`de para meter.
+* Het WASB-pad naar de container moet worden opgegeven als een para meter voor de script actie. Als de potten bijvoorbeeld worden opgeslagen in een container met de naam **bibliotheken** op een opslag account met de naam **mijn opslag**, is de para meter `wasbs://libs@mystorage.blob.core.windows.net/` .
 
   > [!NOTE]  
   > In dit document wordt ervan uitgegaan dat u al een opslag account, Blob-container hebt gemaakt en de bestanden erin hebt geladen.
@@ -59,17 +58,17 @@ Met de script actie in dit artikel maakt u de bibliotheken beschikbaar wanneer u
     |Eigenschap |Waarde |
     |---|---|
     |Script type|-Aangepast|
-    |Naam|Bibliotheken |
+    |Name|Bibliotheken |
     |Bash-script-URI|`https://hdiconfigactions.blob.core.windows.net/linuxsetupcustomhivelibsv01/setup-customhivelibs-v01.sh`|
     |Knooppunt type (n)|Hoofd, werk nemer|
     |Parameters|Voer het WASB-adres in voor de container en het opslag account dat de potten bevat. Bijvoorbeeld `wasbs://libs@mystorage.blob.core.windows.net/`.|
 
     > [!NOTE]
-    > Voor Apache Spark 2,1 gebruikt u deze bash-script- `https://hdiconfigactions.blob.core.windows.net/linuxsetupcustomhivelibsv01/setup-customhivelibs-v00.sh`URI:.
+    > Voor Apache Spark 2,1 gebruikt u deze bash-script-URI: `https://hdiconfigactions.blob.core.windows.net/linuxsetupcustomhivelibsv01/setup-customhivelibs-v00.sh` .
 
 1. Ga door met het inrichten van het cluster zoals beschreven in [HDInsight-clusters inrichten op Linux](hdinsight-hadoop-provision-linux-clusters.md).
 
-Nadat het maken van het cluster is voltooid, kunt u de potten die via dit script zijn toegevoegd, uit de Hive `ADD JAR` gebruiken zonder dat u de instructie hoeft te gebruiken.
+Nadat het maken van het cluster is voltooid, kunt u de potten die via dit script zijn toegevoegd, uit de Hive gebruiken zonder dat u de instructie hoeft te gebruiken `ADD JAR` .
 
 ## <a name="next-steps"></a>Volgende stappen
 

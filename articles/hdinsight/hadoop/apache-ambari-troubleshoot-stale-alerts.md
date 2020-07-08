@@ -8,10 +8,9 @@ ms.service: hdinsight
 ms.topic: troubleshooting
 ms.date: 01/22/2020
 ms.openlocfilehash: f9dfcb930e3fe4f862f9f51ff00270d0eb0c66ca
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77539107"
 ---
 # <a name="scenario-apache-ambari-stale-alerts-in-azure-hdinsight"></a>Scenario: Apache Ambari verouderde waarschuwingen in azure HDInsight
@@ -82,7 +81,7 @@ Als uw probleem hier niet is vermeld of als u het niet kunt oplossen, gaat u naa
 
 * Krijg antwoorden van Azure-experts bij [Azure-Community-ondersteuning](https://azure.microsoft.com/support/community/).
 
-* Maak verbinding [@AzureSupport](https://twitter.com/azuresupport) met op Twitter. Dit is het officiële Microsoft Azure account voor het verbeteren van de gebruikers ervaring. De Azure-community wordt verbonden met de juiste resources: antwoorden, ondersteuning en experts.
+* Maak verbinding met [@AzureSupport](https://twitter.com/azuresupport) op Twitter. Dit is het officiële Microsoft Azure account voor het verbeteren van de gebruikers ervaring. De Azure-community wordt verbonden met de juiste resources: antwoorden, ondersteuning en experts.
 
 * Als u meer hulp nodig hebt, kunt u een ondersteunings aanvraag indienen via de [Azure Portal](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade/). Als u deze wilt weer geven, selecteert u Help (**?**) in het menu van de portal of opent u het deel venster **Help + ondersteuning** . Zie [een Azure-ondersteunings aanvraag maken](https://docs.microsoft.com/azure/azure-supportability/how-to-create-azure-support-request)voor meer informatie. 
 

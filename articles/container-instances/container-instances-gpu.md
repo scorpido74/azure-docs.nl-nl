@@ -4,10 +4,9 @@ description: Meer informatie over het implementeren van Azure container instance
 ms.topic: article
 ms.date: 02/19/2020
 ms.openlocfilehash: 0f1d21c62be5d7ae099faa2c6fcc440829bb451f
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77525283"
 ---
 # <a name="deploy-container-instances-that-use-gpu-resources"></a>Container instanties implementeren die GPU-bronnen gebruiken
@@ -91,7 +90,7 @@ properties:
   restartPolicy: OnFailure
 ```
 
-Implementeer de container groep met de opdracht [AZ container Create][az-container-create] en geef de yaml-bestands naam op `--file` voor de para meter. U moet de naam van een resource groep en een locatie opgeven voor de container groep, zoals *ooster* , die GPU-resources ondersteunt.  
+Implementeer de container groep met de opdracht [AZ container Create][az-container-create] en geef de yaml-bestands naam op voor de `--file` para meter. U moet de naam van een resource groep en een locatie opgeven voor de container groep, zoals *ooster* , die GPU-resources ondersteunt.  
 
 ```azurecli
 az container create --resource-group myResourceGroup --file gpu-deploy-aci.yaml --location eastus
@@ -116,7 +115,7 @@ Done
 
 ## <a name="resource-manager-template-example"></a>Voor beeld van Resource Manager-sjabloon
 
-Een andere manier om een container groep te implementeren met GPU-resources is met behulp van een [Resource Manager-sjabloon](container-instances-multi-container-group.md). Begin met het maken van een `gpudeploy.json`bestand met de naam en kopieer vervolgens de volgende JSON naar de toepassing. In dit voor beeld wordt een container exemplaar geïmplementeerd met een V100-GPU die een [tensor flow](https://www.tensorflow.org/) -trainings taak uitvoert op de MNIST-gegevensset. De resource-aanvragen zijn voldoende om de werk belasting uit te voeren.
+Een andere manier om een container groep te implementeren met GPU-resources is met behulp van een [Resource Manager-sjabloon](container-instances-multi-container-group.md). Begin met het maken van een bestand met `gpudeploy.json` de naam en kopieer vervolgens de volgende JSON naar de toepassing. In dit voor beeld wordt een container exemplaar geïmplementeerd met een V100-GPU die een [tensor flow](https://www.tensorflow.org/) -trainings taak uitvoert op de MNIST-gegevensset. De resource-aanvragen zijn voldoende om de werk belasting uit te voeren.
 
 ```JSON
 {

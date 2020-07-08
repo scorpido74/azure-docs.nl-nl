@@ -14,10 +14,9 @@ ms.date: 09/10/2018
 ms.author: hermannd
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: 023f32fce01ffbd974b182fa89fd604e62332936
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77617214"
 ---
 # <a name="install-hana-on-sap-hana-on-azure-large-instances"></a>HANA installeren op SAP HANA op Azure (grote exemplaren)
@@ -39,7 +38,7 @@ De HANA-eenheden voor grote instanties zijn niet rechtstreeks verbonden met inte
 
 U hebt een SAP S-gebruiker of een andere gebruiker nodig, waarmee u de SAP Marketplace kunt openen.
 
-1. Meld u aan en ga naar [SAP Service Marketplace](https://support.sap.com/en/index.html). Selecteer **Software** > -**installaties downloaden en upgraden** > **per alfabetische index**. Selecteer vervolgens **onder H – SAP Hana platform Edition** > **SAP Hana platform Edition 2,0** > -**installatie**. Down load de bestanden die worden weer gegeven in de volgende scherm afbeelding.
+1. Meld u aan en ga naar [SAP Service Marketplace](https://support.sap.com/en/index.html). Selecteer **Software**-  >  **installaties downloaden en upgraden**  >  **per alfabetische index**. Selecteer vervolgens **onder H – SAP Hana platform Edition**  >  **SAP Hana platform Edition 2,0**-  >  **installatie**. Down load de bestanden die worden weer gegeven in de volgende scherm afbeelding.
 
    ![Scherm afbeelding van de bestanden die moeten worden gedownload](./media/hana-installation/image16_download_hana.PNG)
 

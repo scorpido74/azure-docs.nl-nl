@@ -6,10 +6,9 @@ ms.topic: reference
 ms.date: 02/20/2020
 ms.author: cshoe
 ms.openlocfilehash: 53d336aff3177a76c5e02266ffb8484bd9945119
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77530261"
 ---
 # <a name="signalr-service-input-binding-for-azure-functions"></a>Invoer binding van de signalerings service voor Azure Functions
@@ -38,11 +37,11 @@ public static SignalRConnectionInfo Negotiate(
 
 # <a name="c-script"></a>[C#-script](#tab/csharp-script)
 
-In het volgende voor beeld ziet u een ingangs verbindings gegevens invoer binding in een *Function. json* -bestand en een [C#-script functie](functions-reference-csharp.md) die gebruikmaakt van de binding om de verbindings gegevens te retour neren.
+In het volgende voor beeld ziet u een invoer binding voor een signaal verbinding in eenfunction.jsin een bestand en een [C#-script functie](functions-reference-csharp.md) die gebruikmaakt *van* de binding om de verbindings gegevens te retour neren.
 
-Hier vindt u de bindings gegevens in het bestand *Function. json* :
+Hier vindt u een bindings gegevens in de *function.jsvoor* het volgende bestand:
 
-Voor beeld van function. json:
+Voor beeld function.jsop:
 
 ```json
 {
@@ -66,13 +65,13 @@ public static SignalRConnectionInfo Run(HttpRequest req, SignalRConnectionInfo c
 }
 ```
 
-# <a name="javascript"></a>[Javascript](#tab/javascript)
+# <a name="javascript"></a>[JavaScript](#tab/javascript)
 
-In het volgende voor beeld ziet u een ingangs verbindings gegevens invoer binding in een *Function. json* -bestand en een [Java script-functie](functions-reference-node.md) die gebruikmaakt van de binding om de verbindings gegevens op te halen.
+In het volgende voor beeld ziet u een invoer binding voor een signaal verbinding in eenfunction.jsin een bestand en een [Java script-functie](functions-reference-node.md) die gebruikmaakt *van* de binding om de verbindings gegevens te retour neren.
 
-Hier vindt u de bindings gegevens in het bestand *Function. json* :
+Hier vindt u een bindings gegevens in de *function.jsvoor* het volgende bestand:
 
-Voor beeld van function. json:
+Voor beeld function.jsop:
 
 ```json
 {
@@ -94,11 +93,11 @@ module.exports = async function (context, req, connectionInfo) {
 
 # <a name="python"></a>[Python](#tab/python)
 
-In het volgende voor beeld ziet u een ingangs verbindings gegevens invoer binding in een *Function. json* -bestand en een [python-functie](functions-reference-python.md) die gebruikmaakt van de binding om de verbindings gegevens te retour neren.
+In het volgende voor beeld ziet u een invoer binding voor een signaal verbinding in eenfunction.jsin een bestand en een [python-functie](functions-reference-python.md) die gebruikmaakt *van* de binding om de verbindings gegevens te retour neren.
 
-Hier vindt u de bindings gegevens in het bestand *Function. json* :
+Hier vindt u een bindings gegevens in de *function.jsvoor* het volgende bestand:
 
-Voor beeld van function. json:
+Voor beeld function.jsop:
 
 ```json
 {
@@ -147,11 +146,11 @@ public SignalRConnectionInfo negotiate(
 
 Als de functie wordt geactiveerd door een geverifieerde client, kunt u een claim voor een gebruikers-ID toevoegen aan het gegenereerde token. U kunt eenvoudig verificatie toevoegen aan een functie-app met behulp van [app service-verificatie](../app-service/overview-authentication-authorization.md).
 
-App Service-verificatie sets HTTP- `x-ms-client-principal-id` headers `x-ms-client-principal-name` met de naam en die respectievelijk de client-Principal-id en-naam van de geverifieerde gebruiker bevatten.
+App Service-verificatie sets HTTP-headers met `x-ms-client-principal-id` de naam en `x-ms-client-principal-name` die respectievelijk de client-Principal-ID en-naam van de geverifieerde gebruiker bevatten.
 
 # <a name="c"></a>[C#](#tab/csharp)
 
-U kunt de `UserId` eigenschap van de binding met de waarde uit een van beide kopteksten instellen met behulp `{headers.x-ms-client-principal-name}`van een [bindings expressie](./functions-bindings-expressions-patterns.md): `{headers.x-ms-client-principal-id}` of.
+U kunt de `UserId` eigenschap van de binding met de waarde uit een van beide kopteksten instellen met behulp van een [bindings expressie](./functions-bindings-expressions-patterns.md): `{headers.x-ms-client-principal-id}` of `{headers.x-ms-client-principal-name}` .
 
 ```cs
 [FunctionName("negotiate")]
@@ -168,9 +167,9 @@ public static SignalRConnectionInfo Negotiate(
 
 # <a name="c-script"></a>[C#-script](#tab/csharp-script)
 
-U kunt de `userId` eigenschap van de binding met de waarde uit een van beide kopteksten instellen met behulp `{headers.x-ms-client-principal-name}`van een [bindings expressie](./functions-bindings-expressions-patterns.md): `{headers.x-ms-client-principal-id}` of.
+U kunt de `userId` eigenschap van de binding met de waarde uit een van beide kopteksten instellen met behulp van een [bindings expressie](./functions-bindings-expressions-patterns.md): `{headers.x-ms-client-principal-id}` of `{headers.x-ms-client-principal-name}` .
 
-Voor beeld van function. json:
+Voor beeld function.jsop:
 
 ```json
 {
@@ -197,11 +196,11 @@ public static SignalRConnectionInfo Run(HttpRequest req, SignalRConnectionInfo c
 }
 ```
 
-# <a name="javascript"></a>[Javascript](#tab/javascript)
+# <a name="javascript"></a>[JavaScript](#tab/javascript)
 
-U kunt de `userId` eigenschap van de binding met de waarde uit een van beide kopteksten instellen met behulp `{headers.x-ms-client-principal-name}`van een [bindings expressie](./functions-bindings-expressions-patterns.md): `{headers.x-ms-client-principal-id}` of.
+U kunt de `userId` eigenschap van de binding met de waarde uit een van beide kopteksten instellen met behulp van een [bindings expressie](./functions-bindings-expressions-patterns.md): `{headers.x-ms-client-principal-id}` of `{headers.x-ms-client-principal-name}` .
 
-Voor beeld van function. json:
+Voor beeld function.jsop:
 
 ```json
 {
@@ -226,9 +225,9 @@ module.exports = async function (context, req, connectionInfo) {
 
 # <a name="python"></a>[Python](#tab/python)
 
-U kunt de `userId` eigenschap van de binding met de waarde uit een van beide kopteksten instellen met behulp `{headers.x-ms-client-principal-name}`van een [bindings expressie](./functions-bindings-expressions-patterns.md): `{headers.x-ms-client-principal-id}` of.
+U kunt de `userId` eigenschap van de binding met de waarde uit een van beide kopteksten instellen met behulp van een [bindings expressie](./functions-bindings-expressions-patterns.md): `{headers.x-ms-client-principal-id}` of `{headers.x-ms-client-principal-name}` .
 
-Voor beeld van function. json:
+Voor beeld function.jsop:
 
 ```json
 {
@@ -258,7 +257,7 @@ def main(req: func.HttpRequest, connectionInfoJson: str) -> func.HttpResponse:
 
 # <a name="java"></a>[Java](#tab/java)
 
-U kunt de `userId` eigenschap van de binding met de waarde uit een van beide kopteksten instellen met behulp `{headers.x-ms-client-principal-name}`van een [bindings expressie](./functions-bindings-expressions-patterns.md): `{headers.x-ms-client-principal-id}` of.
+U kunt de `userId` eigenschap van de binding met de waarde uit een van beide kopteksten instellen met behulp van een [bindings expressie](./functions-bindings-expressions-patterns.md): `{headers.x-ms-client-principal-id}` of `{headers.x-ms-client-principal-name}` .
 
 ```java
 @FunctionName("negotiate")

@@ -9,10 +9,9 @@ ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 02/13/2020
 ms.openlocfilehash: 104975e6424ed96d43434a588997957033c31d93
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77560351"
 ---
 # <a name="manage-apache-hadoop-clusters-in-hdinsight-by-using-azure-powershell"></a>Apache Hadoop clusters in HDInsight beheren door gebruik te maken van Azure PowerShell
@@ -21,7 +20,7 @@ ms.locfileid: "77560351"
 
 Azure PowerShell kan worden gebruikt om de implementatie en het beheer van uw workloads in azure te beheren en te automatiseren. In dit artikel vindt u informatie over het beheren van [Apache Hadoop](https://hadoop.apache.org/) clusters in azure HDInsight met behulp van de Azure PowerShell AZ-module. Zie de [verwijzing AZ. HDInsight](https://docs.microsoft.com/powershell/module/az.hdinsight)voor de lijst met de Hdinsight Power shell-cmdlets.
 
-Als u nog geen abonnement op Azure hebt, maak dan een [gratis account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) aan voordat u begint.
+Als u nog geen abonnement op Azure hebt, maakt u een [gratis account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) aan voordat u begint.
 
 ## <a name="prerequisites"></a>Vereisten
 

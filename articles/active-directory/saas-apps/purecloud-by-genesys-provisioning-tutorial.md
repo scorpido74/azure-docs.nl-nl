@@ -16,10 +16,9 @@ ms.topic: article
 ms.date: 02/05/2020
 ms.author: Zhchia
 ms.openlocfilehash: 119690b9046821ab538d879e1209c6ef77277370
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77370679"
 ---
 # <a name="tutorial-configure-purecloud-by-genesys-for-automatic-user-provisioning"></a>Zelf studie: PureCloud configureren door Genesys voor automatische gebruikers inrichting
@@ -44,7 +43,7 @@ In het scenario dat in deze zelf studie wordt beschreven, wordt ervan uitgegaan 
 * Een PureCloud [-organisatie](https://help.mypurecloud.com/?p=81984).
 * Een gebruiker met [machtigingen](https://help.mypurecloud.com/?p=24360) voor het maken van een OAuth-client.
 
-## <a name="step-1-plan-your-provisioning-deployment"></a>Step 1. Uw inrichtings implementatie plannen
+## <a name="step-1-plan-your-provisioning-deployment"></a>Stap 1. Uw inrichtings implementatie plannen
 1. Meer informatie over [de werking van de inrichtings service](https://docs.microsoft.com/azure/active-directory/manage-apps/user-provisioning).
 2. Bepaal wie binnen het [bereik van de inrichting](https://docs.microsoft.com/azure/active-directory/manage-apps/define-conditional-rules-for-provisioning-user-accounts)valt.
 3. Bepaal welke gegevens moeten worden [toegewezen tussen Azure AD en PureCloud door Genesys](https://docs.microsoft.com/azure/active-directory/manage-apps/customize-application-attributes). 
@@ -74,7 +73,7 @@ In deze sectie wordt u begeleid bij de stappen voor het configureren van de Azur
 
 ### <a name="to-configure-automatic-user-provisioning-for-purecloud-by-genesys-in-azure-ad"></a>Automatische gebruikers inrichting configureren voor PureCloud door Genesys in azure AD:
 
-1. Meld u aan bij de [Azure-portal](https://portal.azure.com). Selecteer **bedrijfs toepassingen**en selecteer **alle toepassingen**.
+1. Meld u aan bij [Azure Portal](https://portal.azure.com). Selecteer **bedrijfs toepassingen**en selecteer **alle toepassingen**.
 
     ![De blade Bedrijfstoepassingen](common/enterprise-applications.png)
 
@@ -90,7 +89,7 @@ In deze sectie wordt u begeleid bij de stappen voor het configureren van de Azur
 
     ![Tabblad inrichten](common/provisioning-automatic.png)
 
-5. Typ in het gedeelte **beheerders referenties** de PureCloud van de API-URL en het OAuth-token in de velden **Tenant-URL** en **geheime** token in respectievelijk. De API-URL wordt gestructureerd als `{{API Url}}/api/v2/scim/v2`, met behulp van de API-URL voor uw PureCloud-regio in het [PureCloud Developer Center](https://developer.mypurecloud.com/api/rest/index.html). Klik op **verbinding testen** om te controleren of Azure AD verbinding kan maken met PureCloud door Genesys. Als de verbinding mislukt, controleert u of uw PureCloud door Genesys-account beheerders machtigingen heeft en probeer het opnieuw.
+5. Typ in het gedeelte **beheerders referenties** de PureCloud van de API-URL en het OAuth-token in de velden **Tenant-URL** en **geheime** token in respectievelijk. De API-URL wordt gestructureerd als `{{API Url}}/api/v2/scim/v2` , met behulp van de API-URL voor uw PureCloud-regio in het [PureCloud Developer Center](https://developer.mypurecloud.com/api/rest/index.html). Klik op **verbinding testen** om te controleren of Azure AD verbinding kan maken met PureCloud door Genesys. Als de verbinding mislukt, controleert u of uw PureCloud door Genesys-account beheerders machtigingen heeft en probeer het opnieuw.
 
     ![inrichtings](./media/purecloud-by-genesys-provisioning-tutorial/provisioning.png)
 
@@ -107,14 +106,14 @@ In deze sectie wordt u begeleid bij de stappen voor het configureren van de Azur
      |Kenmerk|Type|
      |---|---|
      |userName|Tekenreeks|
-     |actief|Booleaans|
+     |actief|Boolean-waarde|
      |displayName|Tekenreeks|
      |e-mail berichten [type EQ "werk]. waarde|Tekenreeks|
      |titel|Tekenreeks|
      |phoneNumbers [type EQ "Mobile"]. waarde|Tekenreeks|
      |phoneNumbers [type EQ "werk]. waarde|Tekenreeks|
      |urn: IETF: params: scim: schemas: extension: Enter prise: 2.0: gebruiker: Department|Tekenreeks|
-     |urn: IETF: params: scim: schemas: extensie: Enter prise: 2.0: gebruiker: Manager|Naslaginformatie|
+     |urn: IETF: params: scim: schemas: extensie: Enter prise: 2.0: gebruiker: Manager|Verwijzing|
 
 10. Selecteer in de sectie **toewijzingen** de optie **Azure Active Directory groepen synchroniseren op PureCloud door Genesys**.
 
@@ -124,7 +123,7 @@ In deze sectie wordt u begeleid bij de stappen voor het configureren van de Azur
       |---|---|
       |displayName|Tekenreeks|
       |externalId|Tekenreeks|
-      |leden|Naslaginformatie|
+      |leden|Verwijzing|
 
 12. Raadpleeg de volgende instructies in de [zelf studie](../manage-apps/define-conditional-rules-for-provisioning-user-accounts.md)voor het filteren op bereik voor het configureren van bereik filters.
 
@@ -152,7 +151,7 @@ Nadat u het inrichten hebt geconfigureerd, gebruikt u de volgende bronnen om uw 
 ## <a name="additional-resources"></a>Aanvullende bronnen
 
 * [Inrichten van gebruikers accounts voor zakelijke apps beheren](../manage-apps/configure-automatic-user-provisioning-portal.md)
-* [Wat is toegang tot toepassingen en eenmalige aanmelding met Azure Active Directory?](../manage-apps/what-is-single-sign-on.md)
+* [What is application access and single sign-on with Azure Active Directory?](../manage-apps/what-is-single-sign-on.md) (Wat houden toegang tot toepassingen en eenmalige aanmelding met Azure Active Directory in?)
 
 ## <a name="next-steps"></a>Volgende stappen
 

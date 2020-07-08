@@ -17,10 +17,9 @@ ms.date: 09/19/2018
 ms.author: terrylan
 Customer intent: As an IT Pro or decision maker I am trying to learn about identity management capabilities in Azure
 ms.openlocfilehash: f61b6193a0d2082296a17128b41d7220f9b7e05f
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77565890"
 ---
 # <a name="azure-identity-management-security-overview"></a>Overzicht van Azure Identity Management-beveiliging
@@ -63,7 +62,7 @@ Gebruikers hoeven niet alleen meerdere sets met gebruikers namen en wacht woorde
 Meer informatie:
 
 * [Overzicht van eenmalige aanmelding](https://azure.microsoft.com/documentation/videos/overview-of-single-sign-on/)
-* [Wat is toegang tot toepassingen en eenmalige aanmelding met Azure Active Directory?](../../active-directory/manage-apps/what-is-single-sign-on.md)
+* [What is application access and single sign-on with Azure Active Directory?](../../active-directory/manage-apps/what-is-single-sign-on.md) (Wat houden toegang tot toepassingen en eenmalige aanmelding met Azure Active Directory in?)
 * [Azure Active Directory eenmalige aanmelding integreren met SaaS-apps](../../active-directory/manage-apps/configure-single-sign-on-non-gallery-applications.md)
 
 ## <a name="reverse-proxy"></a>Omgekeerde proxy

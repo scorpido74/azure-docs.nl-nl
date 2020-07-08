@@ -16,10 +16,9 @@ ms.workload: infrastructure-services
 ms.date: 09/16/2016
 ms.author: hermannd
 ms.openlocfilehash: 3efd92226b7c69590f3960458ffec49b63b8364f
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77616695"
 ---
 # <a name="deploy-sap-ides-ehp7-sp3-for-sap-erp-60-on-azure"></a>SAP IDE'S EHP7 SP3 implementeren voor SAP ERP 6,0 op Azure
@@ -105,7 +104,7 @@ U hebt een SAP CAL-account gemaakt dat het volgende kan:
 
     ![Basis modus SAP-CAL: exemplaar maken](./media/cal-ides-erp6-ehp7-sp3-sql/ides-pic10a.png)
 
-1. Klik op **maken**. Afhankelijk van de grootte en complexiteit van de oplossing (de SAP CAL biedt een schatting), wordt de status na enige tijd weer gegeven als actief en klaar voor gebruik: 
+1. Klik op **Create**. Afhankelijk van de grootte en complexiteit van de oplossing (de SAP CAL biedt een schatting), wordt de status na enige tijd weer gegeven als actief en klaar voor gebruik: 
 
     ![SAP CAL-exemplaren](./media/cal-ides-erp6-ehp7-sp3-sql/ides-pic12a.png)
 

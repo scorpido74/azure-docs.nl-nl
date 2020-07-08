@@ -10,10 +10,9 @@ services: azure-maps
 manager: ''
 ms.custom: codepen
 ms.openlocfilehash: b8d131dcc798fb2fe1d4bb650cd5b0a68903381b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77209695"
 ---
 # <a name="add-a-symbol-layer-to-a-map"></a>Een symbool laag aan een kaart toevoegen
@@ -23,7 +22,7 @@ Een symbool verbinden met een gegevens bron en gebruiken om een pictogram of een
 Symbool lagen worden gerenderd met behulp van WebGL. Gebruik een symbool laag om grote verzamelingen van punten op de kaart weer te geven. Vergeleken met HTML-markering, wordt met de laag Symbol een groot aantal punt gegevens op de kaart weer gegeven, met betere prestaties. De laag Symbol ondersteunt echter geen traditionele CSS-en HTML-elementen voor opmaak.  
 
 > [!TIP]
-> Met symbool lagen worden standaard de coördinaten van alle geometrieën in een gegevens bron weer gegeven. Als u de laag zo wilt beperken dat alleen de functies van de functie punt `filter` geometrie de eigenschap van de `['==', ['geometry-type'], 'Point']` laag `['any', ['==', ['geometry-type'], 'Point'], ['==', ['geometry-type'], 'MultiPoint']]` instellen op of als u wilt, kunt u ook multi point-functies toevoegen.
+> Met symbool lagen worden standaard de coördinaten van alle geometrieën in een gegevens bron weer gegeven. Als u de laag zo wilt beperken dat alleen de functies van de functie punt geometrie de `filter` eigenschap van de laag instellen op `['==', ['geometry-type'], 'Point']` of `['any', ['==', ['geometry-type'], 'Point'], ['==', ['geometry-type'], 'MultiPoint']]` Als u wilt, kunt u ook multi point-functies toevoegen.
 
 De Maps-afbeelding sprite Manager laadt aangepaste installatie kopieën die worden gebruikt door de laag van het symbool. Het ondersteunt de volgende afbeeldings indelingen:
 
@@ -61,23 +60,23 @@ Er zijn vier verschillende typen punt gegevens die aan de kaart kunnen worden to
 - Geojson-functie: dit object bestaat uit een geojson-geometrie en een set eigenschappen die meta gegevens bevatten die aan de geometrie zijn gekoppeld. De `atlas.data.Feature` helperklasse kan worden gebruikt om deze objecten eenvoudig te maken.
 - `atlas.Shape`de klasse is vergelijkbaar met de geojson-functie. Beide bestaan uit een geojson-geometrie en een set eigenschappen die meta gegevens bevatten die aan de geometrie zijn gekoppeld. Als een geojson-object wordt toegevoegd aan een gegevens bron, kan het eenvoudig worden weer gegeven in een laag. Als de eigenschap coördinaten van het geojson-object echter wordt bijgewerkt, worden de gegevens bron en de kaart niet gewijzigd. Dat komt doordat het JSON-object geen mechanisme bevat om een update te activeren. De klasse Shape biedt functies voor het bijwerken van de gegevens die deze bevat. Als er een wijziging wordt aangebracht, worden de gegevens bron en de kaart automatisch gewaarschuwd en bijgewerkt. 
 
-In het volgende code voorbeeld wordt een geometrie voor een geojson-punt gemaakt `atlas.Shape` en door gegeven aan de klasse, zodat deze gemakkelijk kan worden bijgewerkt. Het middel punt van de kaart wordt in eerste instantie gebruikt om een symbool weer te geven. Een Click-gebeurtenis wordt toegevoegd aan de kaart, zodat de coördinaten van de muis worden gebruikt in combi natie met de functie `setCoordinates` shapes als deze wordt geactiveerd. De muis coördinaten worden vastgelegd op het moment van de gebeurtenis Click. Vervolgens wordt de `setCoordinates` locatie van het symbool op de kaart bijgewerkt.
+In het volgende code voorbeeld wordt een geometrie voor een geojson-punt gemaakt en door gegeven `atlas.Shape` aan de klasse, zodat deze gemakkelijk kan worden bijgewerkt. Het middel punt van de kaart wordt in eerste instantie gebruikt om een symbool weer te geven. Een Click-gebeurtenis wordt toegevoegd aan de kaart, zodat de coördinaten van de muis worden gebruikt in combi natie met de functie shapes als deze wordt geactiveerd `setCoordinates` . De muis coördinaten worden vastgelegd op het moment van de gebeurtenis Click. Vervolgens wordt de `setCoordinates` locatie van het symbool op de kaart bijgewerkt.
 
 <br/>
 
-<iframe height='500' scrolling='no' title='Switch pincode locatie' src='//codepen.io/azuremaps/embed/ZqJjRP/?height=500&theme-id=0&default-tab=js,result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>Zie de <a href='https://codepen.io/azuremaps/pen/ZqJjRP/'>pincode locatie</a> van de Pen van Azure Maps<a href='https://codepen.io/azuremaps'>@azuremaps</a>() op <a href='https://codepen.io'>CodePen</a>().
+<iframe height='500' scrolling='no' title='Switch pincode locatie' src='//codepen.io/azuremaps/embed/ZqJjRP/?height=500&theme-id=0&default-tab=js,result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>Zie de <a href='https://codepen.io/azuremaps/pen/ZqJjRP/'>pincode locatie</a> van de Pen van Azure Maps ( <a href='https://codepen.io/azuremaps'>@azuremaps</a> ) op <a href='https://codepen.io'>CodePen</a>().
 </iframe>
 
 > [!TIP]
-> Standaard optimaliseert symbool lagen de rendering van symbolen door symbolen te verbergen die elkaar overlappen. Wanneer u inzoomt, worden de verborgen symbolen zichtbaar. Als u deze functie wilt uitschakelen en alle symbolen wilt renderen, stelt `allowOverlap` u de eigenschap `iconOptions` van de `true`opties in op.
+> Standaard optimaliseert symbool lagen de rendering van symbolen door symbolen te verbergen die elkaar overlappen. Wanneer u inzoomt, worden de verborgen symbolen zichtbaar. Als u deze functie wilt uitschakelen en alle symbolen wilt renderen, stelt `allowOverlap` u de eigenschap van de `iconOptions` Opties in op `true` .
 
 ## <a name="add-a-custom-icon-to-a-symbol-layer"></a>Een aangepast pictogram toevoegen aan een symbool-laag
 
-Symbool lagen worden gerenderd met behulp van WebGL. Alle resources, zoals pictogram afbeeldingen, moeten worden geladen in de WebGL-context. In dit voor beeld ziet u hoe u een aangepast pictogram aan de kaart resources toevoegt. Dit pictogram wordt vervolgens gebruikt voor het weer geven van punt gegevens met een aangepast symbool op de kaart. Voor `textField` de eigenschap van de Symbol-laag moet een expressie worden opgegeven. In dit geval willen we de eigenschap Tempe ratuur weer geven. Omdat de Tempe ratuur een getal is, moet dit worden geconverteerd naar een teken reeks. Daarnaast willen we ' °F ' eraan toevoegen. Een expressie kan worden gebruikt om deze samen voeging uit te voeren. `['concat', ['to-string', ['get', 'temperature']], '°F']`. 
+Symbool lagen worden gerenderd met behulp van WebGL. Alle resources, zoals pictogram afbeeldingen, moeten worden geladen in de WebGL-context. In dit voor beeld ziet u hoe u een aangepast pictogram aan de kaart resources toevoegt. Dit pictogram wordt vervolgens gebruikt voor het weer geven van punt gegevens met een aangepast symbool op de kaart. `textField`Voor de eigenschap van de Symbol-laag moet een expressie worden opgegeven. In dit geval willen we de eigenschap Tempe ratuur weer geven. Omdat de Tempe ratuur een getal is, moet dit worden geconverteerd naar een teken reeks. Daarnaast willen we ' °F ' eraan toevoegen. Een expressie kan worden gebruikt om deze samen voeging uit te voeren. `['concat', ['to-string', ['get', 'temperature']], '°F']`. 
 
 <br/>
 
-<iframe height='500' scrolling='no' title='Pictogram voor aangepaste symbool afbeelding' src='//codepen.io/azuremaps/embed/WYWRWZ/?height=500&theme-id=0&default-tab=js,result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>Zie het <a href='https://codepen.io/azuremaps/pen/WYWRWZ/'>pictogram afbeelding voor aangepast symbool</a> voor Pen door<a href='https://codepen.io/azuremaps'>@azuremaps</a>Azure Maps () op <a href='https://codepen.io'>CodePen</a>.
+<iframe height='500' scrolling='no' title='Pictogram voor aangepaste symbool afbeelding' src='//codepen.io/azuremaps/embed/WYWRWZ/?height=500&theme-id=0&default-tab=js,result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>Zie het <a href='https://codepen.io/azuremaps/pen/WYWRWZ/'>pictogram afbeelding voor aangepast symbool</a> voor Pen door Azure Maps ( <a href='https://codepen.io/azuremaps'>@azuremaps</a> ) op <a href='https://codepen.io'>CodePen</a>.
 </iframe>
 
 > [!TIP]
@@ -89,11 +88,11 @@ De Symbol-laag heeft veel stijl opties beschikbaar. Hier volgt een hulp programm
 
 <br/>
 
-<iframe height='700' scrolling='no' title='Opties voor symbool lagen' src='//codepen.io/azuremaps/embed/PxVXje/?height=700&theme-id=0&default-tab=result' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>Zie de <a href='https://codepen.io/azuremaps/pen/PxVXje/'>laag opties</a> van het pen-symbool<a href='https://codepen.io/azuremaps'>@azuremaps</a>per Azure Maps () op <a href='https://codepen.io'>CodePen</a>.
+<iframe height='700' scrolling='no' title='Opties voor symbool lagen' src='//codepen.io/azuremaps/embed/PxVXje/?height=700&theme-id=0&default-tab=result' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>Zie de <a href='https://codepen.io/azuremaps/pen/PxVXje/'>laag opties</a> van het pen-symbool per Azure Maps ( <a href='https://codepen.io/azuremaps'>@azuremaps</a> ) op <a href='https://codepen.io'>CodePen</a>.
 </iframe>
 
 > [!TIP]
-> Als u alleen tekst wilt weer geven met een symbool-laag, kunt u het pictogram verbergen door de `image` eigenschap van de pictogram opties in `'none'`te stellen op.
+> Als u alleen tekst wilt weer geven met een symbool-laag, kunt u het pictogram verbergen door de `image` eigenschap van de pictogram opties in te stellen op `'none'` .
 
 ## <a name="next-steps"></a>Volgende stappen
 

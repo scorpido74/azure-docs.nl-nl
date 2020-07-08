@@ -5,10 +5,9 @@ ms.topic: conceptual
 ms.date: 05/07/2017
 ms.subservice: autoscale
 ms.openlocfilehash: 7758c440c75af5819099110dcbdaf5a86a1d2a04
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77425116"
 ---
 # <a name="get-started-with-auto-scale-by-custom-metric-in-azure"></a>Aan de slag met automatisch schalen op basis van aangepaste metrische gegevens in azure
@@ -23,7 +22,7 @@ In dit artikel wordt ervan uitgegaan dat u een web-app met Application Insights 
 - [Azure Portal][2] openen
 - Klik op Azure Monitor pictogram in het navigatie deel venster links.
   ![Azure Monitor starten][3]
-- Klik op instelling voor automatisch schalen om alle resources weer te geven waarvoor automatische schaal baarheid van toepassing is, samen met de huidige ![automatische schaal status automatisch schalen in azure monitor][4]
+- Klik op instelling voor automatisch schalen om alle resources weer te geven waarvoor automatische schaal baarheid van toepassing is, samen met de huidige ![ Automatische schaal status automatisch schalen in azure monitor][4]
 - Open de Blade automatisch schalen in Azure Monitor en selecteer een resource die u wilt schalen
   > Opmerking: in de volgende stappen wordt een app service-plan gebruikt dat is gekoppeld aan een web-app die app Insights heeft geconfigureerd.
 - In de Blade schaal instelling voor de resource ziet u dat het huidige aantal exemplaren 1 is. Klik op automatisch schalen inschakelen.

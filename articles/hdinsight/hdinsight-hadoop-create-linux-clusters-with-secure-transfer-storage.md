@@ -9,10 +9,9 @@ ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 02/18/2020
 ms.openlocfilehash: c1e5ca8b0bb828e5e8ce896bba6a5278266b118e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77560079"
 ---
 # <a name="apache-hadoop-clusters-with-secure-transfer-storage-accounts-in-azure-hdinsight"></a>Apache Hadoop clusters met opslag accounts voor veilige overdracht in azure HDInsight
@@ -32,13 +31,13 @@ Zie voor het bijwerken van een bestaand opslag account met Azure Portal [vereise
 
 ### <a name="powershell"></a>PowerShell
 
-Zorg ervoor dat de para meter `-EnableHttpsTrafficOnly` is ingesteld voor de Power shell- `1`cmdlet [New-AzStorageAccount](https://docs.microsoft.com/powershell/module/az.storage/new-azstorageaccount).
+Zorg ervoor dat de para meter is ingesteld voor de Power shell-cmdlet [New-AzStorageAccount](https://docs.microsoft.com/powershell/module/az.storage/new-azstorageaccount) `-EnableHttpsTrafficOnly` `1` .
 
 Zie [veilige overdracht vereisen met Power shell](../storage/common/storage-require-secure-transfer.md#require-secure-transfer-with-powershell)voor meer informatie over het bijwerken van een bestaand opslag account met Power shell.
 
 ### <a name="azure-cli"></a>Azure CLI
 
-Voor de Azure CLI-opdracht [AZ Storage account create](https://docs.microsoft.com/cli/azure/storage/account?view=azure-cli-latest#az-storage-account-create), controleert `--https-only` u of de `true`para meter is ingesteld op.
+Voor de Azure CLI-opdracht [AZ Storage account create](https://docs.microsoft.com/cli/azure/storage/account?view=azure-cli-latest#az-storage-account-create), controleert u of de para meter `--https-only` is ingesteld op `true` .
 
 Zie [veilige overdracht vereisen met Azure cli](../storage/common/storage-require-secure-transfer.md#require-secure-transfer-with-azure-cli)voor meer informatie over het bijwerken van een bestaand opslag account met Azure cli.
 

@@ -15,10 +15,9 @@ ms.topic: conceptual
 ms.date: 03/18/2019
 ms.author: juliako
 ms.openlocfilehash: 7dd49df782115c8c328eed819395209ee7217fd3
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77566060"
 ---
 # <a name="get-started-with-delivering-content-on-demand-using-net-sdk"></a>Aan de slag met het leveren van inhoud on demand met .NET SDK  
@@ -81,7 +80,7 @@ U start het streaming-eindpunt als volgt:
 
 ## <a name="create-and-configure-a-visual-studio-project"></a>Maak en configureer een Visual Studio-project.
 
-1. Stel uw ontwikkel omgeving in en vul in het bestand app. config de verbindings informatie in, zoals beschreven in [Media Services ontwikkeling met .net](media-services-dotnet-how-to-use.md). 
+1. Stel uw ontwikkel omgeving in en vul het app.config bestand in met verbindings informatie, zoals beschreven in [Media Services ontwikkeling met .net](media-services-dotnet-how-to-use.md). 
 2. Maak een nieuwe map (deze kan overal op uw lokaal station zijn opgeslagen) en kopieer een MP4-bestand dat u wilt coderen en streamen of progressief wilt downloaden. In dit voorbeeld wordt het pad C:\VideoFiles gebruikt.
 
 ## <a name="connect-to-the-media-services-account"></a>Verbinding met het Azure Media Services-account maken

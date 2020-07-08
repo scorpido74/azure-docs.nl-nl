@@ -15,10 +15,9 @@ ms.workload: na
 ms.date: 12/30/2019
 ms.author: yelevin
 ms.openlocfilehash: a25d76b4b8a6f516de70604146bd1b236ba3ca1e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77588022"
 ---
 # <a name="connect-trend-micro-deep-security"></a>Verbinding maken met Trend Micro diepe beveiliging
@@ -32,16 +31,16 @@ Met de trend micro diepe Security connector kunt u eenvoudig uw diepe beveiligin
 
 ## <a name="connect-azure-sentinel-to-trend-micro-deep-security"></a>Azure Sentinel verbinden met Trend Micro diepe beveiliging
 
-1. Navigeer in het Azure Portal naar **Azure Sentinel** > **Data connectors** en selecteer vervolgens de **Trend Micro diepe Security** connector.
+1. Navigeer in het Azure Portal naar **Azure Sentinel**  >  **Data connectors** en selecteer vervolgens de **Trend Micro diepe Security** connector.
 
 2. Selecteer de **pagina connector openen**.
 
 3. Volg de instructies en de volgende stappen.
 
 ## <a name="next-steps"></a>Volgende stappen
-In dit document hebt u geleerd hoe u de trend micro diepe beveiliging verbindt met Azure Sentinel. Raadpleeg de volgende artikelen voor meer informatie over Azure Sentinel:
-- Meer informatie over hoe u [inzicht krijgt in uw gegevens en mogelijke bedreigingen](quickstart-get-visibility.md).
-- Ga aan de slag [met het detecteren van bedreigingen met Azure Sentinel](tutorial-detect-threats-built-in.md).
+In dit document hebt u geleerd hoe u de trend micro diepe beveiliging verbindt met Azure Sentinel. Zie de volgende artikelen voor meer informatie over Azure Sentinel:
+- Meer informatie over het [verkrijgen van inzicht in uw gegevens en mogelijke bedreigingen](quickstart-get-visibility.md).
+- Ga aan de slag met [het detecteren van bedreigingen met Azure Sentinel](tutorial-detect-threats-built-in.md).
 - [Gebruik werkmappen](tutorial-monitor-your-data.md) om uw gegevens te bewaken.
 
 

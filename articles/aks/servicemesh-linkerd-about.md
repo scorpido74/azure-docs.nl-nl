@@ -6,10 +6,9 @@ ms.topic: article
 ms.date: 10/09/2019
 ms.author: pabouwer
 ms.openlocfilehash: 3181be62a14ec1b3450bd181172b5323ca176427
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77593764"
 ---
 # <a name="linkerd"></a>Linkerd
@@ -44,7 +43,7 @@ In het volgende architectuur diagram ziet u hoe de verschillende onderdelen binn
 Het is belang rijk dat u de volgende gebieden begrijpt en overweegt om Linkerd te evalueren voor uw workloads:
 
 - [Ontwerp principes](#design-principles)
-- [Functionaliteit](#capabilities)
+- [Functies](#capabilities)
 - [Scenario's](#scenarios)
 
 
@@ -59,7 +58,7 @@ De volgende ontwerp principes [begeleiden][design-principles] het Linkerd-projec
 - U hoeft **alleen maar** de bestaande toepassingen te onderbreken en geen ingewikkelde configuratie te hoeven uitvoeren.
 
 
-### <a name="capabilities"></a>Functionaliteit
+### <a name="capabilities"></a>Functies
 
 Linkerd biedt de volgende mogelijkheden:
 

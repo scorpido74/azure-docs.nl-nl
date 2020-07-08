@@ -15,17 +15,16 @@ ms.workload: na
 ms.date: 12/30/2019
 ms.author: yelevin
 ms.openlocfilehash: cc784afe5db64ccc4aad13fae7a2fa748e4befa3
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77587988"
 ---
 # <a name="connect-zscaler-internet-access-to-azure-sentinel"></a>Verbinding maken met Zscaler Internet toegang tot Azure Sentinel
 
 > [!IMPORTANT]
 > De Zscaler-gegevens connector in azure Sentinel is momenteel beschikbaar als open bare preview.
-> Deze functie wordt zonder service level agreement gegeven en wordt niet aanbevolen voor productie werkbelastingen. Misschien worden bepaalde functies niet ondersteund of zijn de mogelijkheden ervan beperkt. Zie voor meer informatie [aanvullende gebruiks voorwaarden voor Microsoft Azure-previews](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+> Deze functie wordt zonder service level agreement gegeven en wordt niet aanbevolen voor productie werkbelastingen. Misschien worden bepaalde functies niet ondersteund of zijn de mogelijkheden ervan beperkt. Zie [Supplemental Terms of Use for Microsoft Azure Previews (Aanvullende gebruiksvoorwaarden voor Microsoft Azure-previews)](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) voor meer informatie.
 
 In dit artikel wordt uitgelegd hoe u uw Zscaler Internet Access-apparaat verbindt met Azure Sentinel. Met de Zscaler-gegevens connector kunt u eenvoudig uw Zscaler Internet Access-Logboeken (ZIA) verbinden met Azure Sentinel, voor het weer geven van Dash boards, het maken van aangepaste waarschuwingen en het verbeteren van onderzoek. Door Zscaler te gebruiken in azure Sentinel krijgt u meer inzicht in het Internet gebruik van uw organisatie en worden de mogelijkheden voor beveiligings bewerkingen verbeterd. 
 
@@ -43,14 +42,14 @@ In dit artikel wordt uitgelegd hoe u uw Zscaler Internet Access-apparaat verbind
    > Deze oplossing ondersteunt syslog RFC 3164 of RFC 5424.
 
 
-1. Zoek naar om het relevante schema in Log Analytics te gebruiken voor de CEF- `CommonSecurityLog`gebeurtenissen.
+1. Zoek naar om het relevante schema in Log Analytics te gebruiken voor de CEF-gebeurtenissen `CommonSecurityLog` .
 1. Ga door naar [stap 3: de verbinding valideren](connect-cef-verify.md).
 
 
 ## <a name="next-steps"></a>Volgende stappen
-In dit document hebt u geleerd hoe u verbinding maakt met Zscaler Internet toegang tot Azure Sentinel. Raadpleeg de volgende artikelen voor meer informatie over Azure Sentinel:
-- Meer informatie over hoe u [inzicht krijgt in uw gegevens en mogelijke bedreigingen](quickstart-get-visibility.md).
-- Ga aan de slag [met het detecteren van bedreigingen met Azure Sentinel](tutorial-detect-threats.md).
+In dit document hebt u geleerd hoe u verbinding maakt met Zscaler Internet toegang tot Azure Sentinel. Zie de volgende artikelen voor meer informatie over Azure Sentinel:
+- Meer informatie over het [verkrijgen van inzicht in uw gegevens en mogelijke bedreigingen](quickstart-get-visibility.md).
+- Ga aan de slag met [het detecteren van bedreigingen met Azure Sentinel](tutorial-detect-threats.md).
 - [Gebruik werkmappen](tutorial-monitor-your-data.md) om uw gegevens te bewaken.
 
 

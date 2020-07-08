@@ -15,10 +15,9 @@ ms.workload: TBD
 ms.date: 02/08/2017
 ms.author: alkohli
 ms.openlocfilehash: 7f1927a67127766c72be463c283225135b2a2aad
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77466906"
 ---
 # <a name="deploy-storsimple-virtual-array-for-cloud-solution-provider-program"></a>StorSimple Virtual array implementeren voor het Cloud Solution Provider-programma
@@ -81,7 +80,7 @@ In sommige gevallen hebt u mogelijk een bestaande klant en moet u een abonnement
 
      ![Dash board in partner centrum](./media/storsimple-partner-csp-deploy/image1.png)
                               
-2. Klik in het linkerdeel venster op **klanten**. Zoek of navigeer naar de klant aan wie u een abonnement wilt toevoegen. Klik op ![het pictogram selectie](./media/storsimple-partner-csp-deploy/expand_pane_icon.png) uitvouwen om de rij voor de bedrijfs naam voor uw klant uit te vouwen. Klik in de details op **abonnementen toevoegen**.
+2. Klik in het linkerdeel venster op **klanten**. Zoek of navigeer naar de klant aan wie u een abonnement wilt toevoegen. Klik op het pictogram ![ Selectie uitvouwen ](./media/storsimple-partner-csp-deploy/expand_pane_icon.png) om de rij voor de bedrijfs naam voor uw klant uit te vouwen. Klik in de details op **abonnementen toevoegen**.
 
     ![Customers](./media/storsimple-partner-csp-deploy/image10.png)
 

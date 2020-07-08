@@ -14,10 +14,9 @@ ms.date: 02/11/2020
 ms.author: bentrin
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: fd1267711871b3e55f1a6229e46ae27b360322f6
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77617045"
 ---
 # <a name="sap-hana-on-azure-large-instance-migration-to-azure-virtual-machines"></a>SAP HANA voor migratie van grote Azure-instanties naar Azure Virtual Machines
@@ -27,7 +26,7 @@ In dit artikel worden mogelijke scenario's voor grootschalige implementaties in 
 Sinds de aankondiging van de Azure large instances voor SAP HANA (HLI) in september 2016, hebben veel klanten deze hardware als een service-aanbieding voor hun in-Memory reken platform aangenomen.  In de afgelopen jaren is de Azure VM-grootte-uitbrei ding gecombineerd met de ondersteuning van HANA scale-out-implementatie de meeste vraag naar ERP-data bases van de onderneming.  We beginnen klanten om de interesse te bekijken om hun SAP HANA werk belasting van fysieke servers naar virtuele Azure-machines te migreren.
 Deze hand leiding is geen stapsgewijze configuratie document. Hierin worden de algemene implementatie modellen beschreven en wordt geadviseerd voor de planning en migratie.  Het doel is om de nodige aandachtspunten voor de voor bereiding aan te roepen om de overgangs downtime te minimaliseren.
 
-## <a name="assumptions"></a>Veronderstellingen
+## <a name="assumptions"></a>Aannames
 In dit artikel worden de volgende veronderstellingen aangebracht:
 - De enige beoordeelde rente is een homogene HANA data base Compute Service-migratie van Hana large instance (HLI) naar Azure VM zonder aanzienlijke software-upgrade of patching. Deze kleine updates omvatten het gebruik van een recentere versie van het besturings systeem of HANA-versie expliciet vermeld zoals ondersteund door de relevante SAP-opmerkingen. 
 - Alle updates/upgrade-activiteiten moeten worden uitgevoerd vóór of na de migratie.  Bijvoorbeeld SAP HANA MCOS conversie naar MDC-implementatie. 
@@ -49,21 +48,21 @@ Algemene implementatie modellen met HLI-klanten worden in de volgende tabel same
 
 | Scenario-ID | HLI-scenario | Migreren naar VM-Verbatim? | Opmerkingen |
 | --- | --- | --- | --- |
-| 1 | [Eén knoop punt met één SID](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-supported-scenario#single-node-with-one-sid) | Ja | - |
-| 2 | [Eén knoop punt met MCOS](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-supported-scenario#single-node-mcos) | Ja | - |
-| 3 | [Eén knoop punt met behulp van opslag replicatie met DR](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-supported-scenario#single-node-with-dr-using-storage-replication) | Nee | Opslag replicatie is niet beschikbaar met Azure Virtual platform, wijzig de huidige oplossing voor nood herstel naar HSR of Backup/Restore |
-| 4 | [Eén knoop punt met DR (Multipurpose) met behulp van storage-replicatie](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-supported-scenario#single-node-with-dr-multipurpose-using-storage-replication) | Nee | Opslag replicatie is niet beschikbaar met Azure Virtual platform, wijzig de huidige oplossing voor nood herstel naar HSR of Backup/Restore |
-| 5 | [HSR met STONITH voor hoge Beschik baarheid](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-supported-scenario#hsr-with-stonith-for-high-availability) | Ja | Geen vooraf geconfigureerde SBD voor doel-Vm's.  Selecteer en implementeer een STONITH-oplossing.  Mogelijke opties: Azure omheinings agent (ondersteund voor zowel [RHEL](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-rhel-pacemaker), [SLES](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-suse-pacemaker)), SBD |
-| 6 | [HA met HSR, DR met opslag replicatie](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-supported-scenario#high-availability-with-hsr-and-dr-with-storage-replication) | Nee | Opslag replicatie voor nood gevallen vervangen door HSR of Backup/Restore |
-| 7 | [Automatische failover van host (1 + 1)](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-supported-scenario#host-auto-failover-11) | Ja | ANF gebruiken voor gedeelde opslag met Azure-Vm's |
-| 8 | [Uitschalen met stand-by](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-supported-scenario#scale-out-with-standby) | Ja | BW/4HANA met M128s, M416s, M416ms Vm's met behulp van ANF alleen voor opslag |
-| 9 | [Uitschalen zonder stand-by](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-supported-scenario#scale-out-without-standby) | Ja | BW/4HANA met M128s-, M416s-, M416ms-Vm's (met of zonder gebruik van ANF voor opslag) |
-| 10 | [Uitschalen met behulp van de opslag replicatie met DR](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-supported-scenario#scale-out-with-dr-using-storage-replication) | Nee | Opslag replicatie voor nood gevallen vervangen door HSR of Backup/Restore |
-| 11 | [Eén knoop punt met DR met behulp van HSR](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-supported-scenario#single-node-with-dr-using-hsr) | Ja | - |
-| 12 | [HSR van één knoop punt naar DR (kosten geoptimaliseerd)](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-supported-scenario#single-node-hsr-to-dr-cost-optimized) | Ja | - |
-| 13 | [HA en DR met HSR](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-supported-scenario#high-availability-and-disaster-recovery-with-hsr) | Ja | - |
-| 14 | [HA en DR met HSR (kosten geoptimaliseerd)](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-supported-scenario#high-availability-and-disaster-recovery-with-hsr-cost-optimized) | Ja | - |
-| 15 | [Uitschalen met DR met behulp van HSR](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-supported-scenario#scale-out-with-dr-using-hsr) | Ja | BW/4HANA met M128s. M416s, M416ms Vm's (met of zonder gebruik van ANF voor opslag) |
+| 1 | [Eén knoop punt met één SID](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-supported-scenario#single-node-with-one-sid) | Yes | - |
+| 2 | [Eén knoop punt met MCOS](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-supported-scenario#single-node-mcos) | Yes | - |
+| 3 | [Eén knoop punt met behulp van opslag replicatie met DR](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-supported-scenario#single-node-with-dr-using-storage-replication) | No | Opslag replicatie is niet beschikbaar met Azure Virtual platform, wijzig de huidige oplossing voor nood herstel naar HSR of Backup/Restore |
+| 4 | [Eén knoop punt met DR (Multipurpose) met behulp van storage-replicatie](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-supported-scenario#single-node-with-dr-multipurpose-using-storage-replication) | No | Opslag replicatie is niet beschikbaar met Azure Virtual platform, wijzig de huidige oplossing voor nood herstel naar HSR of Backup/Restore |
+| 5 | [HSR met STONITH voor hoge Beschik baarheid](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-supported-scenario#hsr-with-stonith-for-high-availability) | Yes | Geen vooraf geconfigureerde SBD voor doel-Vm's.  Selecteer en implementeer een STONITH-oplossing.  Mogelijke opties: Azure omheinings agent (ondersteund voor zowel [RHEL](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-rhel-pacemaker), [SLES](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-suse-pacemaker)), SBD |
+| 6 | [HA met HSR, DR met opslag replicatie](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-supported-scenario#high-availability-with-hsr-and-dr-with-storage-replication) | No | Opslag replicatie voor nood gevallen vervangen door HSR of Backup/Restore |
+| 7 | [Automatische failover van host (1 + 1)](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-supported-scenario#host-auto-failover-11) | Yes | ANF gebruiken voor gedeelde opslag met Azure-Vm's |
+| 8 | [Uitschalen met stand-by](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-supported-scenario#scale-out-with-standby) | Yes | BW/4HANA met M128s, M416s, M416ms Vm's met behulp van ANF alleen voor opslag |
+| 9 | [Uitschalen zonder stand-by](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-supported-scenario#scale-out-without-standby) | Yes | BW/4HANA met M128s-, M416s-, M416ms-Vm's (met of zonder gebruik van ANF voor opslag) |
+| 10 | [Uitschalen met behulp van de opslag replicatie met DR](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-supported-scenario#scale-out-with-dr-using-storage-replication) | No | Opslag replicatie voor nood gevallen vervangen door HSR of Backup/Restore |
+| 11 | [Eén knoop punt met DR met behulp van HSR](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-supported-scenario#single-node-with-dr-using-hsr) | Yes | - |
+| 12 | [HSR van één knoop punt naar DR (kosten geoptimaliseerd)](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-supported-scenario#single-node-hsr-to-dr-cost-optimized) | Yes | - |
+| 13 | [HA en DR met HSR](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-supported-scenario#high-availability-and-disaster-recovery-with-hsr) | Yes | - |
+| 14 | [HA en DR met HSR (kosten geoptimaliseerd)](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-supported-scenario#high-availability-and-disaster-recovery-with-hsr-cost-optimized) | Yes | - |
+| 15 | [Uitschalen met DR met behulp van HSR](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-supported-scenario#scale-out-with-dr-using-hsr) | Yes | BW/4HANA met M128s. M416s, M416ms Vm's (met of zonder gebruik van ANF voor opslag) |
 
 
 ## <a name="source-hli-planning"></a>Bron (HLI) planning

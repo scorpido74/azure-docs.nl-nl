@@ -14,10 +14,9 @@ ms.workload: infrastructure-services
 ms.date: 01/31/2020
 ms.author: rdhillon
 ms.openlocfilehash: 1e5253d617c87d5869cebc817da6d265ebfdfa7e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77539464"
 ---
 # <a name="troubleshoot-azure-private-link-connectivity-problems"></a>Problemen met de connectiviteit van Azure Private Link oplossen
@@ -81,7 +80,7 @@ Als u verbindings problemen ondervindt met het instellen van uw persoonlijke kop
 
        ![Zichtbaarheids gegevens controleren](./media/private-link-tsg/pls-overview-pane-visibility.png)
 
-    g. Bekijk de gegevens van de **Load Balancer** op het tabblad **overzicht** .
+    bijvoorbeeld Bekijk de gegevens van de **Load Balancer** op het tabblad **overzicht** .
      - U kunt naar de load balancer gaan door de load balancer koppeling te selecteren.
 
        ![Gegevens van de Load Balancer controleren](./media/private-link-tsg/pls-overview-pane-ilb.png)

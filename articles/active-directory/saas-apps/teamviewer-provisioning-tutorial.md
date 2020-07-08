@@ -16,10 +16,9 @@ ms.topic: article
 ms.date: 01/27/2020
 ms.author: Zhchia
 ms.openlocfilehash: dc33cf9249a5b804ef46e75ff1822eaa5c6f9d6a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77366431"
 ---
 # <a name="tutorial-configure-teamviewer-for-automatic-user-provisioning"></a>Zelf studie: team viewer configureren voor automatische gebruikers inrichting
@@ -43,7 +42,7 @@ In het scenario dat in deze zelf studie wordt beschreven, wordt ervan uitgegaan 
 * Een geldige [tensor-licentie](https://www.teamviewer.com/de/teamviewer-tensor/) voor Team Viewer.
 * Een geldige aangepaste id van de configuratie [voor eenmalige aanmelding](https://community.teamviewer.com/t5/Knowledge-Base/Single-Sign-On-with-Azure-Active-Directory/ta-p/60209#toc-hId--473669723) die beschikbaar is.
 
-## <a name="step-1-plan-your-provisioning-deployment"></a>Step 1. Uw inrichtings implementatie plannen
+## <a name="step-1-plan-your-provisioning-deployment"></a>Stap 1. Uw inrichtings implementatie plannen
 1. Meer informatie over [de werking van de inrichtings service](https://docs.microsoft.com/azure/active-directory/manage-apps/user-provisioning).
 2. Bepaal wie binnen het [bereik van de inrichting](https://docs.microsoft.com/azure/active-directory/manage-apps/define-conditional-rules-for-provisioning-user-accounts)valt.
 3. Bepalen welke gegevens moeten worden [toegewezen tussen Azure AD en Team Viewer](https://docs.microsoft.com/azure/active-directory/manage-apps/customize-application-attributes). 
@@ -85,7 +84,7 @@ In deze sectie wordt u begeleid bij de stappen voor het configureren van de Azur
 
 ### <a name="to-configure-automatic-user-provisioning-for-teamviewer-in-azure-ad"></a>Automatische gebruikers inrichting voor team viewer configureren in azure AD:
 
-1. Meld u aan bij de [Azure-portal](https://portal.azure.com). Selecteer **bedrijfs toepassingen**en selecteer **alle toepassingen**.
+1. Meld u aan bij [Azure Portal](https://portal.azure.com). Selecteer **bedrijfs toepassingen**en selecteer **alle toepassingen**.
 
     ![De blade Bedrijfstoepassingen](common/enterprise-applications.png)
 
@@ -101,7 +100,7 @@ In deze sectie wordt u begeleid bij de stappen voor het configureren van de Azur
 
     ![Tabblad inrichten](common/provisioning-automatic.png)
 
-5. Voer `ttps://webapi.teamviewer.com/scim/v2` in het gedeelte **beheerders referenties** het veld **tenterende URL** in en voer het script token in dat eerder in het **geheim token**is gemaakt. Klik op **verbinding testen** om te controleren of Azure AD verbinding kan maken met Team Viewer. Als de verbinding mislukt, zorg er dan voor dat uw team viewer-account beheerders machtigingen heeft en probeer het opnieuw.
+5. Voer in het gedeelte **beheerders referenties** `ttps://webapi.teamviewer.com/scim/v2` het veld **tenterende URL** in en voer het script token in dat eerder in het **geheim token**is gemaakt. Klik op **verbinding testen** om te controleren of Azure AD verbinding kan maken met Team Viewer. Als de verbinding mislukt, zorg er dan voor dat uw team viewer-account beheerders machtigingen heeft en probeer het opnieuw.
 
     ![inrichtings](./media/teamViewer-provisioning-tutorial/provisioning.png)
 
@@ -119,7 +118,7 @@ In deze sectie wordt u begeleid bij de stappen voor het configureren van de Azur
    |---|---|
    |userName|Tekenreeks|
    |displayName|Tekenreeks|
-   |actief|Booleaans|
+   |actief|Boolean-waarde|
 
 10. Raadpleeg de volgende instructies in de [zelf studie](../manage-apps/define-conditional-rules-for-provisioning-user-accounts.md)voor het filteren op bereik voor het configureren van bereik filters.
 
@@ -147,7 +146,7 @@ Nadat u het inrichten hebt geconfigureerd, gebruikt u de volgende bronnen om uw 
 ## <a name="additional-resources"></a>Aanvullende bronnen
 
 * [Inrichten van gebruikers accounts voor zakelijke apps beheren](../manage-apps/configure-automatic-user-provisioning-portal.md)
-* [Wat is toegang tot toepassingen en eenmalige aanmelding met Azure Active Directory?](../manage-apps/what-is-single-sign-on.md)
+* [What is application access and single sign-on with Azure Active Directory?](../manage-apps/what-is-single-sign-on.md) (Wat houden toegang tot toepassingen en eenmalige aanmelding met Azure Active Directory in?)
 
 ## <a name="next-steps"></a>Volgende stappen
 

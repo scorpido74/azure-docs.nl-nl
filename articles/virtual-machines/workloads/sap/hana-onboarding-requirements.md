@@ -14,10 +14,9 @@ ms.date: 01/31/2019
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: 141a75a75a214ff4a6f136df7570d6e81f7f4e82
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77617007"
 ---
 # <a name="onboarding-requirements"></a>Voorbereidingsvereisten
@@ -50,7 +49,7 @@ In deze lijst worden de vereisten voor het uitvoeren van SAP HANA op Azure geass
 - Red Hat Subscription Manager geïmplementeerd in azure op een virtuele machine. Red Hat Subscription Manager biedt de mogelijkheid om SAP HANA op Azure (grote instanties) te registreren en respectievelijk bijgewerkt te worden door Red Hat. (Er is geen directe toegang tot internet vanuit de Tenant die is geïmplementeerd op de stempel van het grote Azure-exemplaar.)
 - Voor SAP moet u ook een ondersteunings contract met uw Linux-provider hebben. Deze vereiste wordt niet verwijderd door de oplossing van HANA grote instanties of het feit dat u Linux in azure uitvoert. In tegens telling tot een aantal installatie kopieën van de Linux Azure-galerie, zijn de service kosten *niet* opgenomen in de oplossings aanbieding van Hana grote instanties. Het is uw verantwoordelijkheid om te voldoen aan de vereisten van SAP met betrekking tot ondersteunings contracten met de Linux-distributeur. 
    - Voor SUSE Linux zoekt u de vereisten van de ondersteunings contracten in [SAP note #1984787-SuSE Linux Enterprise Server 12: installatie notities](https://launchpad.support.sap.com/#/notes/1984787) en [SAP-Opmerking #1056161-SuSE-prioriteits ondersteuning voor SAP-toepassingen](https://launchpad.support.sap.com/#/notes/1056161).
-   - Voor Red Hat Linux moet u de juiste abonnements niveaus hebben die ondersteuning en service-updates bevatten voor de besturings systemen van HANA grote instanties. Red Hat adviseert het Red Hat Enterprise Linux-abonnement voor SAP-oplossing. Raadpleegt https://access.redhat.com/solutions/3082481u. 
+   - Voor Red Hat Linux moet u de juiste abonnements niveaus hebben die ondersteuning en service-updates bevatten voor de besturings systemen van HANA grote instanties. Red Hat adviseert het Red Hat Enterprise Linux-abonnement voor SAP-oplossing. Raadpleegt u https://access.redhat.com/solutions/3082481 . 
 
 Zie [SAP Note #2235581](https://launchpad.support.sap.com/#/notes/2235581)voor de ondersteunings matrix van de verschillende SAP Hana versies met de verschillende Linux-versies.
 
@@ -61,7 +60,7 @@ Raadpleeg voor de compatibiliteits matrix van het besturings systeem en///versie
 > Voor het type II-eenheden wordt op dit moment alleen de SLES 12 SP2-besturingssysteem versie ondersteund. 
 
 
-**Enddatabase**
+**Database**
 
 - Licenties en software-installatie onderdelen voor SAP HANA (platform of ENTER prise Edition).
 

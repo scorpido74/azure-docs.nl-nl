@@ -16,10 +16,9 @@ ms.workload: infrastructure-services
 ms.date: 10/29/2019
 ms.author: radeltch
 ms.openlocfilehash: b41db629c5308348f632b3dc51c75822ba361c60
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77591350"
 ---
 # <a name="high-availability-for-sap-netweaver-on-azure-vms-on-windows-with-azure-netapp-filessmb-for-sap-applications"></a>Hoge Beschik baarheid voor SAP NetWeaver op Azure Vm's in Windows met Azure NetApp Files (SMB) voor SAP-toepassingen
@@ -147,7 +146,7 @@ U hebt de volgende software van SAP nodig:
 
 ### <a name="install-an-ascsscs-instance-on-the-first-ascsscs-cluster-node"></a>Een ASCS/SCS-exemplaar installeren op het eerste ASCS/SCS-cluster knooppunt
 
-1. Installeer een SAP ASCS/SCS-exemplaar op het eerste cluster knooppunt. Start het SAP SWPM-installatie programma en navigeer naar: **product** > **DBMS** > installatie > Application Server ABAP (of Java) > systeem met maximale Beschik baarheid > ASCS/SCS-exemplaar > eerste cluster knooppunt.  
+1. Installeer een SAP ASCS/SCS-exemplaar op het eerste cluster knooppunt. Start het SAP SWPM-installatie programma en navigeer naar: **product**  >  **DBMS** > installatie > Application Server ABAP (of Java) > systeem met maximale Beschik baarheid > ASCS/SCS-exemplaar > eerste cluster knooppunt.  
 
 2. Selecteer **Bestands share cluster** als de configuratie van de cluster share in SWPM.  
 3. Wanneer u wordt gevraagd om stap **SAP-para meters**van het systeem, voert u de hostnaam in voor de Azure NetApp files SMB-share die u al hebt gemaakt als hostnaam van de **Bestands share**.  In dit voor beeld is de hostnaam van de SMB **-share anfsmb-9562**. 
@@ -158,11 +157,11 @@ U hebt de volgende software van SAP nodig:
 > [!TIP]
 > Als de controle van de vereisten in SWPM wordt weer gegeven, wordt niet voldaan aan de voor waarde voor wissel grootte, kunt u de wissel grootte aanpassen door te navigeren naar mijn computer>systeem eigenschappen>prestatie-instellingen> Geavanceerd> virtueel geheugen> gewijzigd.  
 
-4. Configureer een SAP-cluster bron, `SAP-SID-IP` de test poort, met behulp van Power shell. Voer deze configuratie uit op een van de SAP ASCS/SCS-cluster knooppunten, zoals beschreven in [test poort configureren](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-high-availability-installation-wsfc-shared-disk#10822f4f-32e7-4871-b63a-9b86c76ce761).
+4. Configureer een SAP-cluster bron, de `SAP-SID-IP` test poort, met behulp van Power shell. Voer deze configuratie uit op een van de SAP ASCS/SCS-cluster knooppunten, zoals beschreven in [test poort configureren](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-high-availability-installation-wsfc-shared-disk#10822f4f-32e7-4871-b63a-9b86c76ce761).
 
 ### <a name="install-an-ascsscs-instance-on-the-second-ascsscs-cluster-node"></a>Een ASCS/SCS-exemplaar op het tweede ASCS/SCS-cluster knooppunt installeren
 
-1. Installeer een SAP ASCS/SCS-exemplaar op het tweede cluster knooppunt. Start het SAP SWPM-installatie programma en navigeer vervolgens naar **product** > **DBMS** > installatie > Application Server ABAP (of Java) > systeem met maximale Beschik baarheid > ASCS/SCS-exemplaar > extra cluster knooppunt.  
+1. Installeer een SAP ASCS/SCS-exemplaar op het tweede cluster knooppunt. Start het SAP SWPM-installatie programma en navigeer vervolgens naar **product**  >  **DBMS** > installatie > Application Server ABAP (of Java) > systeem met maximale Beschik baarheid > ASCS/SCS-exemplaar > extra cluster knooppunt.  
 
 ### <a name="install-a-dbms-instance-and-sap-application-servers"></a>Een DBMS-exemplaar en SAP-toepassings servers installeren
 
@@ -177,9 +176,9 @@ Voltooi uw SAP-installatie door het volgende te installeren:
 ### <a name="fail-over-from-cluster-node-a-to-cluster-node-b-and-back"></a>Failover van cluster knooppunt A naar cluster knooppunt B en back
 In dit test scenario verwijzen we naar cluster knooppunt sapascs1 als knoop punt A en naar cluster knooppunt sapascs2 als knoop punt B.
 
-1. Controleer of de cluster bronnen worden uitgevoerd op het knoop punt ![a. afbeelding 1: Windows Server failover cluster-resources die worden uitgevoerd op knoop punt a vóór de failover-test](./media/virtual-machines-shared-sap-high-availability-guide/high-availability-windows-azure-netapp-files-smb-figure-1.png)  
+1. Controleer of de cluster bronnen worden uitgevoerd op knoop punt A. ![ Afbeelding 1: failover-cluster resources van Windows Server die worden uitgevoerd op knoop punt A vóór de failover-test](./media/virtual-machines-shared-sap-high-availability-guide/high-availability-windows-azure-netapp-files-smb-figure-1.png)  
 
-2. Start cluster knooppunt A opnieuw. De SAP-cluster bronnen worden verplaatst naar cluster knooppunt B ![. afbeelding 2: Windows Server failover cluster-resources die worden uitgevoerd op knoop punt b na de failover-test](./media/virtual-machines-shared-sap-high-availability-guide/high-availability-windows-azure-netapp-files-smb-figure-2.png)  
+2. Start cluster knooppunt A opnieuw. De SAP-cluster bronnen worden verplaatst naar cluster knooppunt B. ![ Afbeelding 2: Windows Server failover cluster-resources die worden uitgevoerd op knoop punt B na de failover-test](./media/virtual-machines-shared-sap-high-availability-guide/high-availability-windows-azure-netapp-files-smb-figure-2.png)  
 
 
 ## <a name="lock-entry-test"></a>Invoer test vergren delen

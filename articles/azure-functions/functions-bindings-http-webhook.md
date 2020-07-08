@@ -6,10 +6,9 @@ ms.topic: reference
 ms.date: 02/14/2020
 ms.author: cshoe
 ms.openlocfilehash: 29b5e9c7673b4a730a41bf7cf2b1c4a2a86209ed
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77462102"
 ---
 # <a name="azure-functions-http-triggers-and-bindings-overview"></a>Overzicht van Azure Functions HTTP-triggers en-bindingen
@@ -25,7 +24,7 @@ De code in dit artikel wordt standaard ingesteld op .NET core-syntaxis, gebruikt
 
 ## <a name="add-to-your-functions-app"></a>Toevoegen aan uw functions-app
 
-### <a name="functions-2x-and-higher"></a>Functies 2. x en hoger
+### <a name="functions-2x-and-higher"></a>Functions 2.x en hoger
 
 Voor het werken met de trigger en bindingen moet u verwijzen naar het juiste pakket. Het NuGet-pakket wordt gebruikt voor .NET-klassen bibliotheken terwijl de uitbreidings bundel wordt gebruikt voor alle andere toepassings typen.
 

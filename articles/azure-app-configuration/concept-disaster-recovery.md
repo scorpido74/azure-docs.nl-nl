@@ -7,10 +7,9 @@ ms.service: azure-app-configuration
 ms.topic: conceptual
 ms.date: 02/20/2020
 ms.openlocfilehash: 96ef09ac081aa328014217592a7fcd3ed6314c0e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77523761"
 ---
 # <a name="resiliency-and-disaster-recovery"></a>Tolerantie en herstel na noodgevallen
@@ -60,7 +59,7 @@ public static IHostBuilder CreateHostBuilder(string[] args) =>
 ```
 ---
 
-U ziet `optional` dat de para meter `AddAzureAppConfiguration` wordt door gegeven aan de functie. Als deze para `true`meter is ingesteld op, kan de toepassing niet worden voortgezet als de functie geen configuratie gegevens kan laden.
+U ziet dat de `optional` para meter wordt door gegeven aan de `AddAzureAppConfiguration` functie. Als `true` deze para meter is ingesteld op, kan de toepassing niet worden voortgezet als de functie geen configuratie gegevens kan laden.
 
 ## <a name="synchronization-between-configuration-stores"></a>Synchronisatie tussen configuratie archieven
 
@@ -68,7 +67,7 @@ Het is belang rijk dat uw Geo-redundante configuratie alle dezelfde set gegevens
 
 Vanuit het Azure Portal kunt u een wijziging naar een andere configuratie Store pushen door de volgende stappen uit te voeren.
 
-1. Ga naar het tabblad **importeren/exporteren** en selecteer**app-configuratie** > **doel** >  **exporteren** > **een resource selecteren**.
+1. Ga naar het tabblad **importeren/exporteren** en selecteer app **Export**-  >  **configuratie**  >  **doel**exporteren  >  **een resource selecteren**.
 
 1. Op de nieuwe blade die wordt geopend, geeft u het abonnement, de resource groep en de resource naam van uw secundaire archief op. Selecteer vervolgens **Toep assen**.
 

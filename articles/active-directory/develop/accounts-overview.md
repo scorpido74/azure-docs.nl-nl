@@ -14,10 +14,9 @@ ms.author: shoatman
 ms.custom: aaddev
 ms.reviewer: shoatman
 ms.openlocfilehash: d0497ad68e7b29e6d8c83dd860ba8f509e229579
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77611884"
 ---
 # <a name="accounts--tenant-profiles-android"></a>Accounts en tenantprofielen (Android)
@@ -32,7 +31,7 @@ Een account in het micro soft Identity platform bestaat uit:
 - Een of meer referenties die worden gebruikt om het eigendom/beheer van het account te demonstreren.
 - Een of meer profielen die bestaan uit kenmerken, zoals:
   - Afbeelding, voor naam, familie naam, titel, kantoor locatie
-- Een account heeft een bron van de instantie of het record systeem. Dit is het systeem waar het account wordt gemaakt en waar de referenties zijn opgeslagen die aan dat account zijn gekoppeld. In multi tenant systemen zoals het micro soft-identiteits platform is het record systeem de `tenant` waar het account is gemaakt. Deze Tenant wordt ook wel de `home tenant`genoemd.
+- Een account heeft een bron van de instantie of het record systeem. Dit is het systeem waar het account wordt gemaakt en waar de referenties zijn opgeslagen die aan dat account zijn gekoppeld. In multi tenant systemen zoals het micro soft-identiteits platform is het record systeem de `tenant` waar het account is gemaakt. Deze Tenant wordt ook wel de genoemd `home tenant` .
 - Accounts in het micro soft Identity-platform hebben de volgende record systemen:
   - Azure Active Directory, inclusief Azure Active Directory B2C.
   - Microsoft-account (Live).
@@ -43,7 +42,7 @@ Een account in het micro soft Identity platform bestaat uit:
 - Met het micro soft Identity-platform kan één account worden gebruikt voor toegang tot resources die deel uitmaken van meerdere organisaties (Azure Active Directory tenants).
   - Als u wilt vastleggen dat een account van het ene record systeem (AAD Tenant A) toegang heeft tot een resource in een ander record systeem (AAD Tenant B), moet het account worden weer gegeven in de Tenant waarin de resource is gedefinieerd. Dit doet u door een lokale record van het account te maken op systeem A in systeem B.
   - Deze lokale record, die de weer gave van het account is, is gekoppeld aan het oorspronkelijke account.
-  - MSAL maakt deze lokale record beschikbaar als een `Tenant Profile`.
+  - MSAL maakt deze lokale record beschikbaar als een `Tenant Profile` .
   - Het Tenant profiel kan verschillende kenmerken hebben die relevant zijn voor de lokale context, zoals de functie, de kantoor locatie, de contact gegevens, enzovoort.
 - Omdat een account in een of meer tenants aanwezig kan zijn, heeft een account mogelijk meer dan één profiel.
 
@@ -125,7 +124,7 @@ String issuer = account.getClaims().get("iss"); // The tenant specific authority
 
 ### <a name="access-tenant-profile-claims"></a>Claims voor toegang tot Tenant profielen
 
-Als u toegang wilt krijgen tot claims over een account die in andere tenants worden weer gegeven, moet u eerst uw `IMultiTenantAccount`account object converteren naar. Alle accounts kunnen meerdere tenants zijn, maar het aantal Tenant profielen dat via MSAL beschikbaar is, is gebaseerd op de tenants waarvan u de tokens hebt aangevraagd met behulp van het huidige account.  Bijvoorbeeld:
+Als u toegang wilt krijgen tot claims over een account die in andere tenants worden weer gegeven, moet u eerst uw account object converteren naar `IMultiTenantAccount` . Alle accounts kunnen meerdere tenants zijn, maar het aantal Tenant profielen dat via MSAL beschikbaar is, is gebaseerd op de tenants waarvan u de tokens hebt aangevraagd met behulp van het huidige account.  Bijvoorbeeld:
 
 ```java
 // Psuedo Code
@@ -140,7 +139,7 @@ multiTenantAccount.getTenantProfiles().get("tenantid for contoso").getClaims().g
 
 Het vernieuwen van tokens voor een account wordt niet gedeeld via B2C-beleid. Als gevolg hiervan is eenmalige aanmelding met tokens niet mogelijk. Dit betekent niet dat eenmalige aanmelding niet mogelijk is. Dit betekent dat eenmalige aanmelding een interactieve ervaring heeft waarin een cookie beschikbaar is om eenmalige aanmelding mogelijk te maken.
 
-Dit betekent ook dat in het geval van MSAL tokens worden verkregen met behulp van verschillende B2C-beleids regels. deze worden vervolgens beschouwd als afzonderlijke accounts, elk met hun eigen id. Als u een account wilt gebruiken om een token aan te vragen `acquireTokenSilent`, moet u het account selecteren in de lijst met accounts die overeenkomen met het beleid dat u gebruikt met de token aanvraag. Bijvoorbeeld:
+Dit betekent ook dat in het geval van MSAL tokens worden verkregen met behulp van verschillende B2C-beleids regels. deze worden vervolgens beschouwd als afzonderlijke accounts, elk met hun eigen id. Als u een account wilt gebruiken om een token aan te vragen `acquireTokenSilent` , moet u het account selecteren in de lijst met accounts die overeenkomen met het beleid dat u gebruikt met de token aanvraag. Bijvoorbeeld:
 
 ```java
 // Get Account For Policy

@@ -15,15 +15,14 @@ ms.workload: na
 ms.date: 02/20/2020
 ms.author: yelevin
 ms.openlocfilehash: cea7429ecea105355b0afe306bfa334e55d5d9c4
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77585104"
 ---
 # <a name="tutorial-create-custom-analytic-rules-to-detect-suspicious-threats"></a>Zelf studie: aangepaste analyse regels maken om verdachte bedreigingen te detecteren
 
-Nadat u [uw gegevens bronnen](quickstart-onboard.md) aan Azure Sentinel hebt gekoppeld, kunt u aangepaste regels maken waarmee kan worden gezocht naar specifieke criteria in uw omgeving en incidenten worden gegenereerd wanneer de criteria worden vergeleken, zodat u ze kunt onderzoeken. Deze zelf studie helpt u bij het maken van aangepaste regels voor het detecteren van bedreigingen met Azure Sentinel.
+Nadat u [uw gegevens bronnen](quickstart-onboard.md)   aan Azure Sentinel hebt gekoppeld, kunt u aangepaste regels maken waarmee kan worden gezocht naar specifieke criteria in uw omgeving en incidenten worden gegenereerd wanneer de criteria worden vergeleken, zodat u ze kunt onderzoeken. Deze zelf studie helpt u bij het maken van aangepaste regels voor het detecteren van bedreigingen met Azure Sentinel.
 
 Deze zelf studie helpt u bij het detecteren van bedreigingen met Azure Sentinel.
 > [!div class="checklist"]
@@ -59,7 +58,7 @@ U kunt aangepaste analyse regels maken om u te helpen bij het zoeken naar de typ
      \| make-series dcount(ResourceId)  default=0 on EventSubmissionTimestamp in range(ago(7d), now(), 1d) by Caller`
 
       > [!NOTE]
-      > De lengte van de query moet tussen 1 en 10.000 tekens lang zijn en mag \*niet ' Search ' \*of ' Union ' bevatten.
+      > De lengte van de query moet tussen 1 en 10.000 tekens lang zijn en mag niet ' Search \* ' of ' Union \* ' bevatten.
 
     1. Gebruik de sectie **entiteiten toewijzen** om de para meters van uw query resultaten te koppelen aan door Sentinel herkende entiteiten van Azure. Deze entiteiten vormen de basis voor verdere analyse, met inbegrip van het groeperen van waarschuwingen in incidenten op het tabblad **incident instellingen** .
     1. Stel in de sectie **query planning** de volgende para meters in:

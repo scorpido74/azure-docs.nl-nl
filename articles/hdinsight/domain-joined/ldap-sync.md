@@ -8,10 +8,9 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 02/14/2020
 ms.openlocfilehash: 99bd1ac156b12a5be7b8c5c17eb5b568b7070a25
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77463217"
 ---
 # <a name="ldap-sync-in-ranger-and-apache-ambari-in-azure-hdinsight"></a>LDAP-synchronisatie in zwerver en Apache Ambari in azure HDInsight
@@ -33,9 +32,9 @@ Wanneer een beveiligd cluster wordt geïmplementeerd, worden groeps leden in tra
 
 ## <a name="ambari-user-sync-and-configuration"></a>Gebruikers synchronisatie en-configuratie Ambari
 
-Vanuit de hoofd knooppunten wordt een cron-taak `/opt/startup_scripts/start_ambari_ldap_sync.py`,, elke uur uitgevoerd om de gebruikers synchronisatie te plannen. De cron-taak roept de Ambari rest Api's aan om de synchronisatie uit te voeren. Het script verzendt een lijst met gebruikers en groepen die moeten worden gesynchroniseerd (aangezien de gebruikers geen deel uitmaken van de opgegeven groepen, worden beide afzonderlijk opgegeven.) Ambari synchroniseert de sAMAccountName als de gebruikers naam en alle groeps leden, transitief.
+Vanuit de hoofd knooppunten wordt een cron-taak, `/opt/startup_scripts/start_ambari_ldap_sync.py` , elke uur uitgevoerd om de gebruikers synchronisatie te plannen. De cron-taak roept de Ambari rest Api's aan om de synchronisatie uit te voeren. Het script verzendt een lijst met gebruikers en groepen die moeten worden gesynchroniseerd (aangezien de gebruikers geen deel uitmaken van de opgegeven groepen, worden beide afzonderlijk opgegeven.) Ambari synchroniseert de sAMAccountName als de gebruikers naam en alle groeps leden, transitief.
 
-De logboeken moeten zijn `/var/log/ambari-server/ambari-server.log`in. Zie [Configure Ambari Logging Level](https://docs.cloudera.com/HDPDocuments/Ambari-latest/administering-ambari/content/amb_configure_ambari_logging_level.html)(Engelstalig) voor meer informatie.
+De logboeken moeten zijn in `/var/log/ambari-server/ambari-server.log` . Zie [Configure Ambari Logging Level](https://docs.cloudera.com/HDPDocuments/Ambari-latest/administering-ambari/content/amb_configure_ambari_logging_level.html)(Engelstalig) voor meer informatie.
 
 In Data Lake clusters wordt de hook voor het maken van de gebruiker post gebruikt voor het maken van de basis mappen voor de gesynchroniseerde gebruikers en ze zijn ingesteld als eigen aren van de basis mappen. Als de gebruiker niet correct is gesynchroniseerd met Ambari, kan de gebruiker storingen in de toegang tot tijdelijke bestanden en andere tijdelijke mappen oplossen.
 
@@ -64,16 +63,16 @@ Incrementele synchronisatie werkt alleen voor gebruikers die al zijn gesynchroni
 
 ### <a name="update-ranger-sync-filter"></a>Synchronisatie filter zwerver bijwerken
 
-U vindt het LDAP-filter in de Ambari-gebruikers interface, in de sectie zwerver-gebruikers synchronisatie configureren. Het bestaande filter wordt in het formulier `(|(userPrincipalName=bob@contoso.com)(userPrincipalName=hdiwatchdog-core01@CONTOSO.ONMICROSOFT.COM)(memberOf:1.2.840.113556.1.4.1941:=CN=hadoopgroup,OU=AADDC Users,DC=contoso,DC=onmicrosoft,DC=com))`weer. Zorg ervoor dat u aan het einde een predikaat toevoegt en test het filter `net ads` met behulp van de zoek opdracht of Ldp. exe of iets dergelijks.
+U vindt het LDAP-filter in de Ambari-gebruikers interface, in de sectie zwerver-gebruikers synchronisatie configureren. Het bestaande filter wordt in het formulier weer `(|(userPrincipalName=bob@contoso.com)(userPrincipalName=hdiwatchdog-core01@CONTOSO.ONMICROSOFT.COM)(memberOf:1.2.840.113556.1.4.1941:=CN=hadoopgroup,OU=AADDC Users,DC=contoso,DC=onmicrosoft,DC=com))` . Zorg ervoor dat u aan het einde een predikaat toevoegt en test het filter met behulp van de `net ads` Zoek opdracht of het ldp.exe of iets dergelijks.
 
 ## <a name="ranger-user-sync-logs"></a>Zwerver gebruikers synchronisatie logboeken
 
-Zwerver-gebruikers synchronisatie kan worden uitgevoerd op een van de hoofd knooppunten. De logboeken zijn `/var/log/ranger/usersync/usersync.log`in. Voer de volgende stappen uit om de uitgebreider van de logboeken te verg Roten:
+Zwerver-gebruikers synchronisatie kan worden uitgevoerd op een van de hoofd knooppunten. De logboeken zijn in `/var/log/ranger/usersync/usersync.log` . Voer de volgende stappen uit om de uitgebreider van de logboeken te verg Roten:
 
 1. Meld u aan bij Ambari.
 1. Ga naar de configuratie sectie zwerver.
 1. Ga naar de sectie Geavanceerde **usersync-log4j** .
-1. Wijzig de `log4j.rootLogger` waarde `DEBUG` in op niveau (na wijziging moet er `log4j.rootLogger = DEBUG,logFile,FilterLog`als volgt uitzien).
+1. Wijzig de `log4j.rootLogger` waarde in op `DEBUG` niveau (na wijziging moet er als volgt uitzien `log4j.rootLogger = DEBUG,logFile,FilterLog` ).
 1. Sla de configuratie op en start zwerver opnieuw op.
 
 ## <a name="next-steps"></a>Volgende stappen

@@ -13,10 +13,9 @@ ms.workload: infrastructure
 ms.date: 09/24/2018
 ms.author: hermannd
 ms.openlocfilehash: e93b3412785817050ac53030be9ff2172a678c06
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77617125"
 ---
 # <a name="verify-and-troubleshoot-sap-hana-scale-out-high-availability-setup-on-sles-12-sp3"></a>Controleren en problemen oplossen SAP HANA scale-out instellingen voor hoge Beschik baarheid in SLES 12 SP3 
@@ -91,7 +90,7 @@ De volgende SAP HANA netwerk aanbevelingen zijn drie subnetten gemaakt binnen é
 - 10.0.1.0/24 voor SAP HANA-systeem replicatie (HSR)
 - 10.0.0.0/24 voor alle andere zaken
 
-Zie [SAP Hana Global. ini](#sap-hana-globalini)(Engelstalig) voor informatie over SAP Hana configuratie met betrekking tot het gebruik van meerdere netwerken.
+Zie [SAP HANA global.ini](#sap-hana-globalini)voor meer informatie over SAP Hana configuratie met betrekking tot het gebruik van meerdere netwerken.
 
 Elke VM in het cluster heeft drie Vnic's die overeenkomen met het aantal subnetten. [Het maken van een virtuele Linux-machine in azure met meerdere netwerk interface kaarten][azure-linux-multiple-nics] beschrijft een mogelijke routerings probleem in azure bij het implementeren van een virtuele Linux-machine. Dit specifieke routerings artikel is alleen van toepassing op het gebruik van meerdere Vnic's. Het probleem wordt door SUSE per standaard in SLES 12 SP3 opgelost. Zie voor meer informatie [multi-NIC met Cloud-netconfig in EC2 en Azure][suse-cloud-netconfig].
 
@@ -656,7 +655,7 @@ Waiting for 7 replies from the CRMd....... OK
 
 ## <a name="failover-or-takeover"></a>Failover of overname
 
-Zoals beschreven in [belang rijke opmerkingen](#important-notes), mag u geen standaard zonder problemen gebruiken om de failover van het cluster of SAP Hana HSR-overname te testen. In plaats daarvan raden we u aan een kernel in te scha kelen, een bron migratie af te dwingen of om alle netwerken op het niveau van het besturings systeem van een virtuele machine af te sluiten. Een andere methode is **de \<stand\> -by** -opdracht van het CRM-knoop punt. Zie het [SuSE-document][sles-12-ha-paper]. 
+Zoals beschreven in [belang rijke opmerkingen](#important-notes), mag u geen standaard zonder problemen gebruiken om de failover van het cluster of SAP Hana HSR-overname te testen. In plaats daarvan raden we u aan een kernel in te scha kelen, een bron migratie af te dwingen of om alle netwerken op het niveau van het besturings systeem van een virtuele machine af te sluiten. Een andere methode is de CRM-opdracht ** \<node\> stand** . Zie het [SuSE-document][sles-12-ha-paper]. 
 
 De volgende drie voorbeeld opdrachten kunnen een clusterfailover geforceerd:
 
@@ -682,7 +681,7 @@ Het helpt ook de SAP HANA landschaps status te bekijken die afkomstig is van een
 
 Er zijn enkele nieuwe pogingen om onnodige failovers te voor komen. Het cluster reageert alleen als de status wordt gewijzigd van **OK**, retour waarde **4**, naar **fout**, retour waarde **1**. Het is dus correct als de uitvoer van **SAPHanaSR-showAttr** een virtuele machine met de status **offline**weergeeft. Maar er is nog geen activiteit om de primaire en secundaire te scha kelen. Er wordt geen cluster activiteit geactiveerd, zolang SAP HANA geen fout retourneert.
 
-U kunt de status van de SAP Hana landschap controleren als gebruiker ** \<Hana\>sid adm** door het SAP python-script als volgt aan te roepen. Mogelijk moet u het pad aanpassen:
+U kunt de status van de SAP HANA landschap controleren als gebruiker ** \<HANA SID\> adm** door het SAP python-script als volgt aan te roepen. Mogelijk moet u het pad aanpassen:
 
 <pre><code>
 watch python /hana/shared/HSO/exe/linuxx86_64/HDB_2.00.032.00.1533114046_eeaf4723ec52ed3935ae0dc9769c9411ed73fec5/python_support/landscapeHostConfiguration.py
@@ -900,10 +899,10 @@ Sep 13 07:38:02 [4184] hso-hana-vm-s2-0       crmd:     info: pcmk_cpg_membershi
 
 
 
-## <a name="sap-hana-globalini"></a>SAP HANA Global. ini
+## <a name="sap-hana-globalini"></a>SAP HANA global.ini
 
 
-De volgende fragmenten zijn afkomstig uit het SAP HANA **Global. ini** -bestand op cluster site 2. In dit voor beeld ziet u de hostnamen-omzettings vermeldingen voor het gebruik van verschillende netwerken voor SAP HANA interknooppunt communicatie en HSR:
+De volgende fragmenten zijn afkomstig uit het SAP HANA **global.ini** -bestand op cluster site 2. In dit voor beeld ziet u de hostnamen-omzettings vermeldingen voor het gebruik van verschillende netwerken voor SAP HANA interknooppunt communicatie en HSR:
 
 <pre><code>
 [communication]
@@ -945,7 +944,7 @@ listeninterface = .internal
 ## <a name="hawk"></a>Hawk
 
 De cluster-oplossing biedt een browser interface die een GUI biedt voor gebruikers die de voor keur geven aan menu's en afbeeldingen om alle opdrachten op het shell niveau te krijgen.
-Als u de browser interface wilt gebruiken ** \<,\> ** vervangt u het knoop punt door een werkelijk SAP Hana knoop punt in de volgende URL. Voer vervolgens de referenties in van het cluster (gebruikers **cluster**):
+Als u de browser interface wilt gebruiken, vervangt u door **\<node\>** een werkelijk SAP Hana knoop punt in de volgende URL. Voer vervolgens de referenties in van het cluster (gebruikers **cluster**):
 
 <pre><code>
 https://&ltnode&gt:7630

@@ -14,10 +14,9 @@ ms.topic: troubleshooting
 ms.date: 08/28/2019
 ms.author: tiag
 ms.openlocfilehash: c24a840716841d04537ac5b77bcaf26fca4b78cf
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77561946"
 ---
 # <a name="linux-vm-boots-to-grub-rescue"></a>Virtuele Linux-machine wordt opgestart naar grub-herstel
@@ -43,11 +42,11 @@ Volg de onderstaande stappen, afhankelijk van de fout die u ontvangt:
 
     * Voor het ontbrekende bestand `/boot/grub2/grub.cfg` of `initrd/initramfs` gaat u verder met het volgende proces:
 
-    1. Zorg `/etc/default/grub` ervoor dat er bestaat en de juiste/gewenste instellingen heeft. Als u niet weet wat de standaard instellingen zijn, kunt u controleren met een werkende VM.
+    1. Zorg ervoor dat er `/etc/default/grub` bestaat en de juiste/gewenste instellingen heeft. Als u niet weet wat de standaard instellingen zijn, kunt u controleren met een werkende VM.
 
     2. Voer vervolgens de volgende opdracht uit om de configuratie opnieuw te genereren:`grub2-mkconfig -o /boot/grub2/grub.cfg`
 
-   * Als het ontbrekende bestand is `/boot/grub/menu.lst`, is deze fout voor oudere versies van het besturings systeem (**RHEL 6. x**, **CentOS 6. x** en **Ubuntu 14,04**), zodat de opdrachten kunnen verschillen. U moet een oude server opzetten en testen om er zeker van te zijn dat de juiste opdrachten worden weer gegeven.
+   * Als het ontbrekende bestand is `/boot/grub/menu.lst` , is deze fout voor oudere versies van het besturings systeem (**RHEL 6. x**, **CentOS 6. x** en **Ubuntu 14,04**), zodat de opdrachten kunnen verschillen. U moet een oude server opzetten en testen om er zeker van te zijn dat de juiste opdrachten worden weer gegeven.
 
 ### <a name="error---no-such-partition"></a>Fout-er is geen partitie
 
@@ -59,11 +58,11 @@ Volg de onderstaande stappen, afhankelijk van de fout die u ontvangt:
 
     * Voor het ontbrekende bestand `/boot/grub2/grub.cfg` of `initrd/initramfs` gaat u verder met het volgende proces:
 
-    1. Zorg `/etc/default/grub` ervoor dat er bestaat en de juiste/gewenste instellingen heeft. Als u niet weet wat de standaard instellingen zijn, kunt u controleren met een werkende VM.
+    1. Zorg ervoor dat er `/etc/default/grub` bestaat en de juiste/gewenste instellingen heeft. Als u niet weet wat de standaard instellingen zijn, kunt u controleren met een werkende VM.
 
-    2. Voer vervolgens de volgende opdracht uit om de configuratie opnieuw te genereren `grub2-mkconfig -o /boot/grub2/grub.cfg`:.
+    2. Voer vervolgens de volgende opdracht uit om de configuratie opnieuw te genereren: `grub2-mkconfig -o /boot/grub2/grub.cfg` .
 
-   * Als het ontbrekende bestand is `/boot/grub/menu.lst`, is deze fout voor oudere versies van het besturings systeem (**RHEL 6. x**, **CentOS 6. x** en **Ubuntu 14,04**), zodat de opdrachten kunnen worden uitgesteld. Geef een oude server op en test deze om te controleren of de juiste opdrachten worden gegeven.
+   * Als het ontbrekende bestand is `/boot/grub/menu.lst` , is deze fout voor oudere versies van het besturings systeem (**RHEL 6. x**, **CentOS 6. x** en **Ubuntu 14,04**), zodat de opdrachten kunnen worden uitgesteld. Geef een oude server op en test deze om te controleren of de juiste opdrachten worden gegeven.
 
 ## <a name="next-steps"></a>Volgende stappen
 

@@ -12,10 +12,9 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 386af46bbee623d37bc914d2ee9130c914c6c885
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77620877"
 ---
 # <a name="azure-ad-connect-cloud-provisioning-supported-topologies-and-scenarios"></a>Ondersteuning voor topologieën en scenario's voor het inrichten van Clouds Azure AD Connect
@@ -50,7 +49,7 @@ Een algemene topologie is een meerdere AD-forests met een of meer domeinen en é
 Dit scenario is een topologie die vergelijkbaar is met het scenario met meerdere forests, maar dit is een bestaande Azure AD Connect omgeving en brengt vervolgens een nieuw forest met Azure AD Connect Cloud inrichting aan.  Zie [zelf studie: een bestaand forest met één Azure AD-Tenant](tutorial-existing-forest.md) voor een voor beeld van dit scenario.
 
 ## <a name="piloting-azure-ad-connect-cloud-provisioning-in-an-existing-hybrid-ad-forest"></a>Piloten Azure AD Connect Cloud inrichting in een bestaand hybride AD-forest
-![Topologie voor één forest en één Tenant](media/plan-cloud-provisioning-topologies/migrate.png) het proef scenario omvat het bestaan van zowel Azure AD Connect als Azure AD Connect Cloud inrichting in hetzelfde forest en het bereik van de gebruikers en groepen dienovereenkomstig. Opmerking: een object moet binnen het bereik van slechts een van de hulpprogram ma's zijn. 
+![Topologie voor één forest en één Tenant ](media/plan-cloud-provisioning-topologies/migrate.png) het proef scenario omvat het bestaan van zowel Azure AD Connect als Azure AD Connect Cloud inrichting in hetzelfde forest en het bereik van de gebruikers en groepen dienovereenkomstig. Opmerking: een object moet binnen het bereik van slechts een van de hulpprogram ma's zijn. 
 
 Zie voor een voor beeld van dit scenario [zelf studie: Pilot Azure AD Connect Cloud Provisioning in een bestaand GESYNCHRONISEERD AD-forest](tutorial-pilot-aadc-aadccp.md)
 

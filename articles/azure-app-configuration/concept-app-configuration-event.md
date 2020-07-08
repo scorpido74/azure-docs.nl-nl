@@ -8,10 +8,9 @@ ms.date: 02/20/2020
 ms.topic: article
 ms.service: azure-app-configuration
 ms.openlocfilehash: a4f61d147ba1abf73ada6360b8d0d965d8e063a5
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77523795"
 ---
 # <a name="reacting-to-azure-app-configuration-events"></a>Reageren op Azure-app configuratie gebeurtenissen
@@ -29,7 +28,7 @@ Bekijk de [Route Azure-app configuratie gebeurtenissen naar een aangepast webein
 ## <a name="available-azure-app-configuration-events"></a>Beschik bare Azure-app configuratie gebeurtenissen
 Event grid gebruikt [gebeurtenis abonnementen](../event-grid/concepts.md#event-subscriptions) om gebeurtenis berichten te routeren naar abonnees. Azure-app configuratie gebeurtenis abonnementen kunnen twee typen gebeurtenissen bevatten:  
 
-> |Gebeurtenisnaam|Beschrijving|
+> |Gebeurtenisnaam|Description|
 > |----------|-----------|
 > |`Microsoft.AppConfiguration.KeyValueModified`|Wordt geactiveerd wanneer een sleutel waarde wordt gemaakt of vervangen|
 > |`Microsoft.AppConfiguration.KeyValueDeleted`|Wordt geactiveerd wanneer een sleutel waarde wordt verwijderd|
@@ -37,16 +36,16 @@ Event grid gebruikt [gebeurtenis abonnementen](../event-grid/concepts.md#event-s
 ## <a name="event-schema"></a>Gebeurtenisschema
 Azure-app configuratie gebeurtenissen bevatten alle informatie die u nodig hebt om te reageren op wijzigingen in uw gegevens. U kunt een gebeurtenis voor de configuratie van een app identificeren omdat de eigenschap Event type begint met ' micro soft. AppConfiguration '. Meer informatie over het gebruik van Event Grid gebeurtenis eigenschappen wordt beschreven in [Event grid-gebeurtenis schema](../event-grid/event-schema.md).  
 
-> |Eigenschap|Type|Beschrijving|
+> |Eigenschap|Type|Description|
 > |-------------------|------------------------|-----------------------------------------------------------------------|
 > |onderwerp|tekenreeks|Volledige Azure Resource Manager-id van de app-configuratie waarmee de gebeurtenis wordt verzonden.|
 > |Onderwerp|tekenreeks|De URI van de sleutel waarde die het onderwerp van de gebeurtenis is.|
 > |eventTime|tekenreeks|De datum/tijd waarop de gebeurtenis is gegenereerd, in ISO 8601-indeling.|
-> |eventType|tekenreeks|"Micro soft. AppConfiguration. KeyValueModified" of "micro soft. AppConfiguration. KeyValueDeleted".|
+> |Type|tekenreeks|"Micro soft. AppConfiguration. KeyValueModified" of "micro soft. AppConfiguration. KeyValueDeleted".|
 > |Id|tekenreeks|Een unieke id van deze gebeurtenis.|
 > |dataVersion|tekenreeks|De schemaversie van het gegevensobject.|
 > |metadataVersion|tekenreeks|De schema versie van de eigenschappen op het hoogste niveau.|
-> |data|object|Verzameling van Azure-app configuratie-specifieke gebeurtenis gegevens|
+> |gegevens|object|Verzameling van Azure-app configuratie-specifieke gebeurtenis gegevens|
 > |data. key|tekenreeks|De sleutel van de sleutel waarde die is gewijzigd of verwijderd.|
 > |data. label|tekenreeks|Het label, indien van toepassing, van de sleutel waarde die is gewijzigd of verwijderd.|
 > |data. ETAG|tekenreeks|Voor `KeyValueModified` de ETAG van de nieuwe sleutel waarde. Voor `KeyValueDeleted` de ETAG van de sleutel waarde die is verwijderd.|

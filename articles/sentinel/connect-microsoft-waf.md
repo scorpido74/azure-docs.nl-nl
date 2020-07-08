@@ -10,10 +10,9 @@ ms.topic: conceptual
 ms.date: 09/23/2019
 ms.author: yelevin
 ms.openlocfilehash: a5cef16694fa2cfae036152d22cfa4473956fc72
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77588175"
 ---
 # <a name="connect-data-from-microsoft-web-application-firewall"></a>Verbinding maken met gegevens van micro soft Web Application Firewall
@@ -34,7 +33,7 @@ Zodra uw micro soft-Web Application Firewall is geïmplementeerd en gegevens hee
     
 1. Selecteer in de Azure-Sentinel-Portal de optie **Data connectors**.
 1. Selecteer op de pagina Data connectors de tegel **WAF** .
-1. Ga naar [Application Gateway resource](https://ms.portal.azure.com/#blade/HubsExtension/BrowseAllResourcesBlade/resourceType/Microsoft.Network%2FapplicationGateways) en kies uw WAF.
+1. Ga naar [Application Gateway resource](https://ms.portal.azure.com/#blade/HubsExtension/BrowseAllResourcesBlade/resourceType/Microsoft.Network%2FapplicationGateways)   en kies uw WAF.
     1. Selecteer **Diagnostische instellingen**.
     1. Selecteer **+ Diagnostische instelling toevoegen** onder de tabel.
     1. Typ op de pagina **Diagnostische instellingen** een **naam** en selecteer **verzenden naar log Analytics**.
@@ -43,6 +42,6 @@ Zodra uw micro soft-Web Application Firewall is geïmplementeerd en gegevens hee
 1. Als u het relevante schema in Log Analytics voor de micro soft Web Application Firewall-waarschuwingen wilt gebruiken, zoekt u naar **AzureDiagnostics**.
 
 ## <a name="next-steps"></a>Volgende stappen
-In dit document hebt u geleerd hoe u micro soft Web Application Firewall verbindt met Azure Sentinel. Raadpleeg de volgende artikelen voor meer informatie over Azure Sentinel:
-- Meer informatie over hoe u [inzicht krijgt in uw gegevens en mogelijke bedreigingen](quickstart-get-visibility.md).
-- Ga aan de slag [met het detecteren van bedreigingen met Azure Sentinel](tutorial-detect-threats-built-in.md).
+In dit document hebt u geleerd hoe u micro soft Web Application Firewall verbindt met Azure Sentinel. Zie de volgende artikelen voor meer informatie over Azure Sentinel:
+- Meer informatie over het [verkrijgen van inzicht in uw gegevens en mogelijke bedreigingen](quickstart-get-visibility.md).
+- Ga aan de slag met [het detecteren van bedreigingen met Azure Sentinel](tutorial-detect-threats-built-in.md).

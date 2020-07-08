@@ -17,10 +17,9 @@ ms.date: 05/05/2017
 ms.author: radeltch
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: a393c1ac09283f1570908cea72750ed5ae28f81e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77617334"
 ---
 # <a name="install-sap-netweaver-high-availability-on-a-windows-failover-cluster-and-file-share-for-sap-ascsscs-instances-on-azure"></a>Een hoge Beschik baarheid van SAP NetWeaver installeren op een Windows-failovercluster en een bestands share voor SAP ASCS/SCS-exemplaren in azure
@@ -231,13 +230,13 @@ Er zijn geen speciale overwegingen wanneer verschillende DBMS-services communice
 
 Maak het volgende volume en deze bestands share op het SOFS-cluster:
 
-* SAP GLOBALHOST- `C:\ClusterStorage\Volume1\usr\sap\<SID>\SYS\` bestands structuur op SOFS cluster Shared volume (CSV)
+* SAP GLOBALHOST-bestands `C:\ClusterStorage\Volume1\usr\sap\<SID>\SYS\` structuur op SOFS cluster Shared volume (CSV)
 
 * SAPMNT-bestands share
 
 * Stel beveiliging in voor de bestands share SAPMNT en de map met volledig beheer voor:
-    * Het \<domein> \ SAP_\<sid>_GlobalAdmin gebruikers groep
-    * Het SAP ASCS/SCS-cluster knooppunt computer \<objecten domein> $ en \<domein> \clusternode2 $
+    * De \<DOMAIN> \<SID> gebruikers groep \ SAP_ _GlobalAdmin
+    * De SAP ASCS/SCS-cluster knooppunt computer objecten \<DOMAIN> \ClusterNode1 $ en \<DOMAIN> \ClusterNode2 $
 
 Als u een CSV-volume met mirror-tolerantie wilt maken, voert u de volgende Power shell-cmdlet uit op een van de SOFS-cluster knooppunten:
 
@@ -299,7 +298,7 @@ Maak een SAP ASCS/SCS-cluster netwerk naam (bijvoorbeeld **PR1-ASCS [10.0.6.7]**
 
 Installeer een SAP ASCS/SCS-exemplaar op het eerste cluster knooppunt. Als u het exemplaar wilt installeren, gaat u in het SAP SWPM-installatie programma naar:
 
-**\<Product>**  >  >  **DBMS>de installatie van de toepassings server ABAP (of Java) > ASCS/SCS-exemplaar van het systeem met hoge Beschik baarheid het eerste cluster \< ****ASCS/SCS instance** > **knooppunt**. **Java** **Installation** >  **High-Availability System****Application Server ABAP**  > 
+**\<Product>** > **\<DBMS>** > **Installatie**  >  **Application Server ABAP** (of **Java**) > het eerste cluster-exemplaar van het systeem ASCS/SCS met **hoge Beschik baarheid**  >  **ASCS/SCS instance**  >  **First cluster node**.
 
 ### <a name="add-a-probe-port"></a>Een test poort toevoegen
 
@@ -309,21 +308,21 @@ Configureer een SAP-cluster bron, de SAP-SID-IP-test poort, met behulp van Power
 
 Installeer een SAP ASCS/SCS-exemplaar op het tweede cluster knooppunt. Als u het exemplaar wilt installeren, gaat u in het SAP SWPM-installatie programma naar:
 
-**\<Product>**  >  >  **DBMS>ABAP (of Java) voor de installatie van de toepassings server > Maxi maal Beschik baarheid systeem ASCS/SCS exemplaar extra cluster \< ** **High-Availability System** > **ASCS/SCS instance** **Installation** > **Application Server ABAP** **knooppunt**. **Java**  > 
+**\<Product>** > **\<DBMS>** > **Installatie**  >  **Application Server ABAP** (of **Java**) > een systeem ASCS/SCS met **hoge Beschik baarheid**  >  **ASCS/SCS instance**  >  **extra cluster knooppunt**.
 
 
 ## <a name="update-the-sap-ascsscs-instance-profile"></a>Het SAP ASCS/SCS-exemplaar profiel bijwerken
 
-Werk de para meters bij in de ASCS/ \<SCS-instantie profiel-sid van SAP>_ASCS/SCS\<nr>_ \<host>.
+Werk de para meters bij in het SAP ASCS/SCS-exemplaar profiel \<SID> _ASCS/SCS \<Nr> _ \<Host> .
 
 
 | Parameternaam | Parameterwaarde |
 | --- | --- |
 | gw/netstat_once | **0** |
-| enque/encni/set_so_keepalive  | **echte** |
+| enque/encni/set_so_keepalive  | **true** |
 | Service/ha_check_node | **1** |
 
-Start het SAP ASCS/SCS-exemplaar opnieuw op. Para `KeepAlive` meters instellen op beide SAP ASCS/SCS-cluster knooppunten volgen de instructies voor [het instellen van Register vermeldingen op de cluster knooppunten van het SAP ASCS/SCS-exemplaar][high-availability-guide]. 
+Start het SAP ASCS/SCS-exemplaar opnieuw op. `KeepAlive`Para meters instellen op beide SAP ASCS/SCS-cluster knooppunten volgen de instructies voor [het instellen van Register vermeldingen op de cluster knooppunten van het SAP ASCS/SCS-exemplaar][high-availability-guide]. 
 
 ## <a name="install-a-dbms-instance-and-sap-application-servers"></a>Een DBMS-exemplaar en SAP-toepassings servers installeren
 

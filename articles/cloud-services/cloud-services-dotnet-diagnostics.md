@@ -11,10 +11,9 @@ ms.topic: article
 ms.date: 05/22/2017
 ms.author: tagore
 ms.openlocfilehash: 1e49a0935a70a2470267e5458fa1f55e3059e965
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77469762"
 ---
 # <a name="enabling-azure-diagnostics-in-azure-cloud-services"></a>Azure Diagnostics in azure inschakelen Cloud Services
@@ -136,12 +135,12 @@ namespace WorkerRole1
     ```powershell
     (Get-AzureServiceAvailableExtension -ExtensionName 'PaaSDiagnostics' -ProviderNamespace 'Microsoft.Azure.Diagnostics').PublicConfigurationSchema | Out-File -Encoding utf8 -FilePath 'WadConfig.xsd'
     ```
-2. Voeg een XML-bestand toe aan uw **WorkerRole1** -project door met de rechter muisknop op het **WorkerRole1** -project te klikken en nieuw item **toevoegen** -> te selecteren **...** -> **Visual C# items** -> **Data** -> **XML-bestand**met Visual C#-items. Noem het bestand ' WadExample. XML '.
+2. Voeg een XML-bestand toe aan uw **WorkerRole1** -project door met de rechter muisknop op het **WorkerRole1** -project te klikken en nieuw item **toevoegen**te selecteren  ->  **...** -> **Visual C#-items**  ->  **Gegevens**  ->  **XML-bestand**. Geef het bestand de naam WadExample.xml.
 
    ![CloudServices_diag_add_xml](./media/cloud-services-dotnet-diagnostics/AddXmlFile.png)
-3. Koppel de WadConfig. XSD aan het configuratie bestand. Zorg ervoor dat het venster WadExample. XML editor het actieve venster is. Druk op **F4** om het venster **Eigenschappen** te openen. Klik op de eigenschap **schemas** in het venster **Eigenschappen** . Klik op de **..** . in de eigenschap **schemas** . Klik op de knop **Toevoegen...** en navigeert u naar de locatie waar u het XSD-bestand hebt opgeslagen en selecteert u het bestand WadConfig. XSD. Klik op **OK**.
+3. Koppel de WadConfig. XSD aan het configuratie bestand. Zorg ervoor dat het venster WadExample.xml editor het actieve venster is. Druk op **F4** om het venster **Eigenschappen** te openen. Klik op de eigenschap **schemas** in het venster **Eigenschappen** . Klik op de **..** . in de eigenschap **schemas** . Klik op de knop **Toevoegen...** en navigeert u naar de locatie waar u het XSD-bestand hebt opgeslagen en selecteert u het bestand WadConfig. XSD. Klik op **OK**.
 
-4. Vervang de inhoud van het configuratie bestand WadExample. XML door de volgende XML en sla het bestand op. Dit configuratie bestand definieert een aantal prestatie meter items die moeten worden verzameld: één voor CPU-gebruik en één voor geheugen gebruik. Vervolgens definieert de configuratie de vier gebeurtenissen die overeenkomen met de methoden in de SampleEventSourceWriter-klasse.
+4. Vervang de inhoud van het WadExample.xml configuratie bestand door de volgende XML en sla het bestand op. Dit configuratie bestand definieert een aantal prestatie meter items die moeten worden verzameld: één voor CPU-gebruik en één voor geheugen gebruik. Vervolgens definieert de configuratie de vier gebeurtenissen die overeenkomen met de methoden in de SampleEventSourceWriter-klasse.
 
 ```xml
 <?xml version="1.0" encoding="utf-8"?>
@@ -170,7 +169,7 @@ namespace WorkerRole1
 De Power shell-cmdlets voor het beheren van diagnostische gegevens voor een web-of worker-rol zijn: set-AzureServiceDiagnosticsExtension, Get-AzureServiceDiagnosticsExtension en Remove-AzureServiceDiagnosticsExtension.
 
 1. Open Azure PowerShell.
-2. Voer het script uit om diagnostische gegevens te installeren voor uw werknemersrol (Vervang *StorageAccountKey* door de sleutel van het opslag account voor uw wadexample-opslag account en *config_path* met het pad naar het *wadexample. XML* -bestand):
+2. Voer het script uit om diagnostische gegevens te installeren voor uw werknemersrol (Vervang *StorageAccountKey* door de sleutel van het opslag account voor uw wadexample-opslag account en *config_path* met het pad naar het *WadExample.xml* bestand):
 
 ```powershell
 $storage_name = "wadexample"

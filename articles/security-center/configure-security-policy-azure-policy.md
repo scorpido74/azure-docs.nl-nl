@@ -9,10 +9,9 @@ ms.topic: conceptual
 ms.date: 11/04/2019
 ms.author: memildin
 ms.openlocfilehash: c218b5dc8ca3bfa0358a9b6a0d4867696762a8d4
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77430938"
 ---
 # <a name="configure-a-security-policy-in-azure-policy-using-the-rest-api"></a>Een beveiligings beleid configureren in Azure Policy met behulp van de REST API
@@ -127,7 +126,7 @@ In dit voor beeld ziet u hoe u een toewijzing verwijdert:
 |Adaptieve toepassingsbesturingselementen |Mogelijke app-white list in Azure Security Center bewaken |adaptiveApplicationControlsMonitoringEffect|
 |Netwerkbeveiligingsgroepen |Bewaak strikte netwerk toegang in Azure Security Center |networkSecurityGroupsMonitoringEffect| 
 |Beveiligingsconfiguraties |Beveiligings problemen met het besturings systeem in Azure Security Center bewaken |systemConfigurationsMonitoringEffect| 
-|Endpoint Protection |Ontbrekende Endpoint Protection in Azure Security Center controleren |endpointProtectionMonitoringEffect |
+|Endpoint Protection |Ontbrekende Endpoint Protection bewaken in Azure Security Center |endpointProtectionMonitoringEffect |
 |Schijfversleuteling |Niet-versleutelde VM-schijven in Azure Security Center bewaken |diskEncryptionMonitoringEffect|
 |Evaluatie van beveiligingsproblemen |VM-beveiligings problemen in Azure Security Center bewaken |vulnerabilityAssessmentMonitoringEffect|
 |Web Application Firewall |Niet-beveiligde webtoepassing in Azure Security Center bewaken |webApplicationFirewallMonitoringEffect |

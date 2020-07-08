@@ -7,17 +7,16 @@ ms.topic: article
 ms.date: 11/04/2019
 ms.author: atulmal
 ms.openlocfilehash: 5ee8ee4d2c9e225d82e58daffeef9e5f09e43e6b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77595362"
 ---
 # <a name="github-actions-for-deploying-to-kubernetes-service"></a>GitHub acties voor het implementeren van de Kubernetes-service
 
-[Github-acties](https://help.github.com/en/articles/about-github-actions) bieden u de flexibiliteit om een geautomatiseerde werk stroom voor de levens cyclus van software ontwikkeling te bouwen. De Kubernetes- [azure/aks-set-context@v1](https://github.com/Azure/aks-set-context) actie vereenvoudigt implementaties naar Azure Kubernetes-Service clusters. Met deze actie wordt de doel context van de AKS-cluster ingesteld, die kan worden gebruikt door andere acties zoals [Azure/K8S-Deploy](https://github.com/Azure/k8s-deploy/tree/master), [Azure/K8S-Create-Secret](https://github.com/Azure/k8s-create-secret/tree/master) , enzovoort. u kunt ook kubectl-opdrachten uitvoeren.
+[Github-acties](https://help.github.com/en/articles/about-github-actions) bieden u de flexibiliteit om een geautomatiseerde werk stroom voor de levens cyclus van software ontwikkeling te bouwen. De Kubernetes-actie [azure/aks-set-context@v1](https://github.com/Azure/aks-set-context) vereenvoudigt implementaties naar Azure Kubernetes-Service clusters. Met deze actie wordt de doel context van de AKS-cluster ingesteld, die kan worden gebruikt door andere acties zoals [Azure/K8S-Deploy](https://github.com/Azure/k8s-deploy/tree/master), [Azure/K8S-Create-Secret](https://github.com/Azure/k8s-create-secret/tree/master) , enzovoort. u kunt ook kubectl-opdrachten uitvoeren.
 
-Een werk stroom wordt gedefinieerd door een YAML-bestand (. yml) `/.github/workflows/` in het pad in uw opslag plaats. Deze definitie bevat de verschillende stappen en para meters die deel uitmaken van de werk stroom.
+Een werk stroom wordt gedefinieerd door een YAML-bestand (. yml) in het `/.github/workflows/` pad in uw opslag plaats. Deze definitie bevat de verschillende stappen en para meters die deel uitmaken van de werk stroom.
 
 Voor een werk stroom gericht AKS heeft het bestand drie secties:
 
@@ -71,9 +70,9 @@ Volg de stappen voor het configureren van de geheimen:
 
 ##  <a name="build-a-container-image-and-deploy-to-azure-kubernetes-service-cluster"></a>Een container installatie kopie bouwen en implementeren in azure Kubernetes service-cluster
 
-Het bouwen en pushen van de container installatie kopieën wordt `Azure/docker-login@v1` uitgevoerd met behulp van actie. Als u een container installatie kopie wilt implementeren in AKS, moet u de `Azure/k8s-deploy@v1` actie gebruiken. Deze actie heeft vijf para meters:
+Het bouwen en pushen van de container installatie kopieën wordt uitgevoerd met behulp van `Azure/docker-login@v1` actie. Als u een container installatie kopie wilt implementeren in AKS, moet u de `Azure/k8s-deploy@v1` actie gebruiken. Deze actie heeft vijf para meters:
 
-| **Bepaalde**  | **Uitleg**  |
+| **Parameter**  | **Uitleg**  |
 |---------|---------|
 | **naam ruimte** | Beschrijving Kies de doel-Kubernetes naam ruimte. Als de naam ruimte niet wordt gegeven, worden de opdrachten uitgevoerd in de standaard naam ruimte | 
 | **manifesten** |  Lang Pad naar de manifest bestanden die worden gebruikt voor implementatie |

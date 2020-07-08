@@ -9,10 +9,9 @@ ms.topic: conceptual
 ms.service: iot-accelerators
 services: iot-accelerators
 ms.openlocfilehash: 752529454a5b6293d9cbfdf8378b46947aed5a0e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77564641"
 ---
 # <a name="integrate-azure-time-series-insights-with-remote-monitoring"></a>Integreer Azure Time Series Insights met Externe bewaking
@@ -49,9 +48,9 @@ az iot hub consumer-group create --hub-name contosorm30526 --name timeseriesinsi
 
 Implementeer vervolgens Time Series Insights als een extra bron in uw oplossing voor externe controle en verbind deze met de IoT-hub.
 
-1. Meld u aan bij de [Azure-portal](https://portal.azure.com/).
+1. Meld u aan bij [Azure Portal](https://portal.azure.com/).
 
-1. Selecteer **een resource** > **maken internet of Things** > **Time Series Insights**.
+1. Selecteer **een resource maken**  >  **Internet of Things**  >  **Time Series Insights**.
 
     ![Nieuwe Time Series Insights](./media/iot-accelerators-remote-monitoring-integrate-time-series-insights/new-time-series-insights.png)
 
@@ -68,7 +67,7 @@ Implementeer vervolgens Time Series Insights als een extra bron in uw oplossing 
 
     ![Time Series Insights maken](./media/iot-accelerators-remote-monitoring-integrate-time-series-insights/new-time-series-insights-create.png)
 
-1. Klik op **maken**. Het kan even duren voordat de omgeving is gemaakt.
+1. Klik op **Create**. Het kan even duren voordat de omgeving is gemaakt.
 
 ## <a name="create-event-source"></a>Gebeurtenisbron maken
 
@@ -101,7 +100,7 @@ Maak een nieuwe gebeurtenis bron om verbinding te maken met uw IoT-hub. Zorg erv
 
     ![Gebeurtenis bron maken](./media/iot-accelerators-remote-monitoring-integrate-time-series-insights/time-series-insights-event-source-create.png)
 
-1. Klik op **maken**.
+1. Klik op **Create**.
 
 ## <a name="configure-the-data-access-policy"></a>Het beleid voor gegevens toegang configureren
 
@@ -205,7 +204,7 @@ Als u de integratie van Time Series Insights wilt volt ooien, moet u de omgeving
 
 ### <a name="basic-deployments"></a>Basis implementaties
 
-Configureer de `basic` implementatie omgeving voor de bijgewerkte micro Services.
+Configureer de implementatie omgeving `basic` voor de bijgewerkte micro Services.
 
 1. Klik in het Azure Portal op het tabblad **Azure Active Directory** in het deel venster aan de linkerkant.
 
@@ -213,15 +212,15 @@ Configureer de `basic` implementatie omgeving voor de bijgewerkte micro Services
 
 1. Zoek en klik op uw **ContosoRM** -toepassing.
 
-1. Navigeer naar **instellingen** > **sleutels** en maak een nieuwe sleutel voor uw toepassing. Zorg ervoor dat u de sleutel waarde naar een veilige locatie kopieert.
+1. Navigeer naar **instellingen**  >  **sleutels** en maak een nieuwe sleutel voor uw toepassing. Zorg ervoor dat u de sleutel waarde naar een veilige locatie kopieert.
 
 1. Haal het [meest recente docker yaml-bestand](https://github.com/Azure/pcs-cli/tree/5a9b4e0dbe313172eff19236e54a4d461d4f3e51/solutions/remotemonitoring/single-vm) op uit github opslag plaats met de nieuwste tag. 
 
 1. SSH naar de virtuele machine door de stappen te volgen die worden beschreven in het [maken en gebruiken van SSH-sleutels](https://docs.microsoft.com/azure/virtual-machines/linux/ssh-from-windows).
 
-1. Zodra u verbinding hebt `cd /app`gemaakt, typt u.
+1. Zodra u verbinding hebt gemaakt, typt u `cd /app` .
 
-1. Voeg de volgende omgevings variabelen toe aan elke micro service in het docker yaml-bestand en `env-setup` het script in de virtuele machine:
+1. Voeg de volgende omgevings variabelen toe aan elke micro service in het docker yaml-bestand en het `env-setup` script in de virtuele machine:
 
     ```sh
     PCS_TELEMETRY_STORAGE_TYPE=tsi
@@ -233,18 +232,18 @@ Configureer de `basic` implementatie omgeving voor de bijgewerkte micro Services
 
 1. Ga naar de **telemetrie-service** en bewerk het bestand docker opstellen door hierboven dezelfde omgevings variabelen toe te voegen.
 
-1. Ga naar de **service ASA Manager** en bewerk het bestand docker opstellen door het toe `PCS_TELEMETRY_STORAGE_TYPE`te voegen.
+1. Ga naar de **service ASA Manager** en bewerk het bestand docker opstellen door het toe te voegen `PCS_TELEMETRY_STORAGE_TYPE` .
 
-1. Start de docker-containers `sudo ./start.sh` opnieuw op via de VM.
+1. Start de docker-containers opnieuw `sudo ./start.sh` op via de VM.
 
 > [!NOTE]
 > De bovenstaande configuratie van omgevings variabelen is geldig voor versies van externe controle voordat 1.0.2
 
 ### <a name="standard-deployments"></a>Standaard implementaties
 
-Configureer de `standard` implementatie omgeving voor de bijgewerkte micro services hierboven
+Configureer de implementatie omgeving `standard` voor de bijgewerkte micro services hierboven
 
-1. Voer op de opdracht regel uit `kubectl proxy`. Zie [toegang tot de Kubernetes-API](https://kubernetes.io/docs/tasks/access-kubernetes-api/http-proxy-access-api/#using-kubectl-to-start-a-proxy-server)voor meer informatie.
+1. Voer op de opdracht regel uit `kubectl proxy` . Zie [toegang tot de Kubernetes-API](https://kubernetes.io/docs/tasks/access-kubernetes-api/http-proxy-access-api/#using-kubectl-to-start-a-proxy-server)voor meer informatie.
 
 1. Open de Kubernetes-beheer console.
 

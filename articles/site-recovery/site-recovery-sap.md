@@ -6,10 +6,9 @@ manager: rochakm
 ms.topic: how-to
 ms.date: 11/27/2018
 ms.openlocfilehash: 29acd1b00d23e4f1c2f241027dadbbb406e5e049
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77190799"
 ---
 # <a name="set-up-disaster-recovery-for-a-multi-tier-sap-netweaver-app-deployment"></a>Herstel na nood geval instellen voor een implementatie van SAP NetWeaver met meerdere lagen
@@ -119,7 +118,7 @@ Als u de virtuele machines van de SAP-toepassing wilt repliceren naar het Azure 
 
 ## <a name="networking-configuration"></a>Netwerk configuratie
 
-Als u een statisch IP-adres gebruikt, kunt u het IP-adres opgeven dat u wilt dat de virtuele machine moet overnemen. Als u het IP-adres wilt instellen, gaat u naar de**netwerk interface kaart** **reken-en netwerk instellingen** > .
+Als u een statisch IP-adres gebruikt, kunt u het IP-adres opgeven dat u wilt dat de virtuele machine moet overnemen. Als u het IP-adres wilt instellen **Compute and Network settings**, gaat u naar de  >  **netwerk interface kaart**reken-en netwerk instellingen.
 
 ![Scherm afbeelding van het instellen van een privé-IP-adres in het deel venster Site Recovery netwerk interface kaart](./media/site-recovery-sap/sap-static-ip.png)
 

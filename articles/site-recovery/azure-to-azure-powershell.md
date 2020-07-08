@@ -8,17 +8,16 @@ ms.topic: article
 ms.date: 3/29/2019
 ms.author: sutalasi
 ms.openlocfilehash: 583511194fb100add1d5fc4ea9c06a869cf652b5
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77212287"
 ---
 # <a name="set-up-disaster-recovery-for-azure-virtual-machines-using-azure-powershell"></a>Herstel na nood geval instellen voor virtuele Azure-machines met Azure PowerShell
 
 In dit artikel ziet u hoe u herstel na nood gevallen instelt en test voor virtuele Azure-machines met behulp van Azure PowerShell.
 
-Procedures voor:
+In deze zelfstudie leert u procedures om het volgende te doen:
 
 > [!div class="checklist"]
 > - Maak een Recovery Services-kluis.
@@ -41,17 +40,17 @@ Procedures voor:
 Voordat u begint:
 - Zorg ervoor dat u inzicht hebt in de [architectuur en onderdelen voor dit scenario](azure-to-azure-architecture.md).
 - Raadpleeg de [ondersteuningsvereisten](azure-to-azure-support-matrix.md) voor alle onderdelen.
-- U hebt de module `Az` Azure PowerShell. Als u Azure PowerShell moet installeren of upgraden, volgt u deze [hand leiding voor het installeren en configureren van Azure PowerShell](/powershell/azure/install-az-ps).
+- U hebt de `Az` module Azure PowerShell. Als u Azure PowerShell moet installeren of upgraden, volgt u deze [hand leiding voor het installeren en configureren van Azure PowerShell](/powershell/azure/install-az-ps).
 
 ## <a name="sign-in-to-your-microsoft-azure-subscription"></a>Meld u aan bij uw Microsoft Azure-abonnement
 
-Meld u aan bij uw Azure-abonnement `Connect-AzAccount` met de cmdlet.
+Meld u aan bij uw Azure-abonnement met de `Connect-AzAccount` cmdlet.
 
 ```azurepowershell
 Connect-AzAccount
 ```
 
-Selecteer uw Azure-abonnement. Gebruik de `Get-AzSubscription` cmdlet om de lijst met Azure-abonnementen waartoe u toegang hebt, op te halen. Selecteer het Azure-abonnement waarmee u wilt werken `Set-AzContext` met de cmdlet.
+Selecteer uw Azure-abonnement. Gebruik de `Get-AzSubscription` cmdlet om de lijst met Azure-abonnementen waartoe u toegang hebt, op te halen. Selecteer het Azure-abonnement waarmee u wilt werken met de `Set-AzContext` cmdlet.
 
 ```azurepowershell
 Set-AzContext -SubscriptionId "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"
@@ -59,7 +58,7 @@ Set-AzContext -SubscriptionId "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"
 
 ## <a name="get-details-of-the-virtual-machine-to-be-replicated"></a>Details ophalen van de virtuele machine die moet worden gerepliceerd
 
-In dit artikel wordt een virtuele machine in de regio VS-Oost gerepliceerd naar en hersteld in de regio vs West 2. De virtuele machine die wordt gerepliceerd, heeft een besturingssysteem schijf en één gegevens schijf. De naam van de virtuele machine die in het voor beeld `AzureDemoVM`wordt gebruikt, is.
+In dit artikel wordt een virtuele machine in de regio VS-Oost gerepliceerd naar en hersteld in de regio vs West 2. De virtuele machine die wordt gerepliceerd, heeft een besturingssysteem schijf en één gegevens schijf. De naam van de virtuele machine die in het voor beeld wordt gebruikt, is `AzureDemoVM` .
 
 ```azurepowershell
 # Get details of the virtual machine
@@ -115,7 +114,7 @@ Tags              :
 ResourceId        : /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/a2ademorecoveryrg
 ```
 
-Maak een Recovery Services-kluis. In dit voor beeld wordt een Recovery Services kluis `a2aDemoRecoveryVault` met de naam gemaakt in de regio vs West 2.
+Maak een Recovery Services-kluis. In dit voor beeld wordt een Recovery Services kluis met `a2aDemoRecoveryVault` de naam gemaakt in de regio vs West 2.
 
 ```azurepowershell
 #Create a new Recovery services vault in the recovery region
@@ -170,7 +169,7 @@ Het Fabric-object in de kluis vertegenwoordigt een Azure-regio. Het primaire Fab
 - Er kan slechts één Fabric-object per regio worden gemaakt.
 - Als u eerder Site Recovery replicatie voor een virtuele machine in de Azure Portal hebt ingeschakeld, maakt Site Recovery automatisch een Fabric-object. Als er voor een regio een Fabric-object bestaat, kunt u geen nieuwe maken.
 
-Voordat u begint, moet u weten dat Site Recovery bewerkingen asynchroon worden uitgevoerd. Wanneer u een bewerking initieert, wordt een Azure Site Recovery taak verzonden en wordt een taak tracking object geretourneerd. Gebruik het object voor taak tracering om de meest recente status voor de`Get-AzRecoveryServicesAsrJob`taak () op te halen en om de status van de bewerking te controleren.
+Voordat u begint, moet u weten dat Site Recovery bewerkingen asynchroon worden uitgevoerd. Wanneer u een bewerking initieert, wordt een Azure Site Recovery taak verzonden en wordt een taak tracking object geretourneerd. Gebruik het object voor taak tracering om de meest recente status voor de taak () op te halen `Get-AzRecoveryServicesAsrJob` en om de status van de bewerking te controleren.
 
 ```azurepowershell
 #Create Primary ASR fabric
@@ -603,7 +602,7 @@ Errors           : {}
 
 ## <a name="reprotect-and-fail-back-to-the-source-region"></a>Opnieuw beveiligen en failback naar de bron regio
 
-Wanneer u klaar bent om terug te gaan naar de oorspronkelijke regio, start u na een failover de omgekeerde replicatie voor het beveiligde replicatie- `Update-AzRecoveryServicesAsrProtectionDirection` item met behulp van de-cmdlet.
+Wanneer u klaar bent om terug te gaan naar de oorspronkelijke regio, start u na een failover de omgekeerde replicatie voor het beveiligde replicatie-item met behulp van de- `Update-AzRecoveryServicesAsrProtectionDirection` cmdlet.
 
 ```azurepowershell
 #Create Cache storage account for replication logs in the primary region

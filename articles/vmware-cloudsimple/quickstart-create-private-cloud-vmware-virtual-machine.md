@@ -9,10 +9,9 @@ ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
 ms.openlocfilehash: 4ac818cfd267b781366c0e32c9f93cc885dff99c
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77566145"
 ---
 # <a name="create-vmware-virtual-machines-on-your-private-cloud"></a>Virtuele VMware-machines maken in uw Privécloud
@@ -96,7 +95,7 @@ De volgende secties bevatten optionele informatie over het instellen van DNS-en 
 
 ## <a name="add-users-and-identity-sources-to-vcenter-optional"></a>Gebruikers en identiteits bronnen aan vCenter toevoegen (optioneel)
 
-CloudSimple wijst een standaard-vCenter-gebruikers account toe `cloudowner@cloudsimple.local`met een gebruikers naam. U hoeft geen extra account in te stellen om aan de slag te gaan.  CloudSimple wijst beheerders normaal gesp roken de bevoegdheden toe die ze nodig hebben om normale bewerkingen uit te voeren.  Stel uw on-premises Active Directory of Azure AD in als een [extra id-bron](set-vcenter-identity.md) in uw privécloud.
+CloudSimple wijst een standaard-vCenter-gebruikers account toe met een gebruikers naam `cloudowner@cloudsimple.local` . U hoeft geen extra account in te stellen om aan de slag te gaan.  CloudSimple wijst beheerders normaal gesp roken de bevoegdheden toe die ze nodig hebben om normale bewerkingen uit te voeren.  Stel uw on-premises Active Directory of Azure AD in als een [extra id-bron](set-vcenter-identity.md) in uw privécloud.
 
 ## <a name="create-a-dns-and-dhcp-server-optional"></a>Een DNS-en DHCP-server maken (optioneel)
 

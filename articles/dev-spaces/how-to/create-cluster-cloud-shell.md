@@ -4,12 +4,11 @@ services: azure-dev-spaces
 ms.date: 10/04/2018
 ms.topic: conceptual
 description: Meer informatie over hoe u snel een Kubernetes-cluster kunt maken dat rechtstreeks vanuit uw browser kan worden geactiveerd zonder dat u iets hoeft te installeren.
-keywords: Docker, Kubernetes, azure, AKS, Azure Kubernetes service, containers, helm, service-net, service mesh routing, kubectl, K8S
+keywords: Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, containers, Helm, servicemesh, servicemeshroutering, kubectl, k8s
 ms.openlocfilehash: 5e2e5cfd22eeedd3554737458caeca0b891b62fe
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77605297"
 ---
 # <a name="create-a-kubernetes-cluster-with-azure-dev-spaces-enabled-with-azure-cloud-shell"></a>Een Kubernetes-cluster maken met Azure dev Spaces ingeschakeld met Azure Cloud Shell
@@ -30,14 +29,14 @@ Maak een Kubernetes-cluster met de volgende opdracht:
 az aks create -g MyResourceGroup -n MyAKS --location <region> --generate-ssh-keys
 ```
 
-Het duurt een paar minuten om het cluster te maken.  Wanneer dit is voltooid, wordt de uitvoer weer gegeven in de JSON-indeling. Zoek `provisioningState` en controleer het `Succeeded`.
+Het duurt een paar minuten om het cluster te maken.  Wanneer dit is voltooid, wordt de uitvoer weer gegeven in de JSON-indeling. Zoek `provisioningState` en controleer het `Succeeded` .
 
 ## <a name="next-steps"></a>Volgende stappen
 
 Zie [Azure dev Spaces](/azure/dev-spaces/) voor koppelingen naar volledige zelf studies.
 
 > [!IMPORTANT]
-> Veel van de Azure dev Spaces Quick starts en zelf studies gebruiken de Azure dev Spaces CLI om bewerkingen uit te voeren. U kunt de CLI voor Azure dev Spaces niet installeren in de Azure Cloud Shell.
+> Veel van de Azure dev Spaces Quick starts en zelf studies gebruiken de Azure dev Spaces CLI om bewerkingen uit te voeren. U kunt de CLI voor Azure Dev Spaces niet installeren in Azure Cloud Shell.
 
 
 [supported-regions]: https://azure.microsoft.com/global-infrastructure/services/?products=kubernetes-service

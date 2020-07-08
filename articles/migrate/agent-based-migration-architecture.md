@@ -7,10 +7,9 @@ ms.topic: conceptual
 ms.date: 02/17/2020
 ms.author: raynew
 ms.openlocfilehash: d345d707cbf58f48466c3bd830d93250d13397c6
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77425851"
 ---
 # <a name="agent-based-migration-architecture"></a>Migratiearchitectuur op basis van een agent
@@ -38,7 +37,7 @@ Het diagram illustreert de onderdelen die betrokken zijn bij migratie op basis v
 
 De tabel bevat een overzicht van de onderdelen die worden gebruikt voor migratie op basis van een agent.
 
-**Component** | **Nadere** | **Installatie**
+**Onderdeel** | **Details** | **Installatie**
 --- | --- | ---
 **Replicatie apparaat** | Het replicatie apparaat (configuratie Server/proces server) is een on-premises computer die fungeert als een brug tussen de on-premises omgeving en server migratie. Het apparaat detecteert de on-premises machine voorraad, zodat server migratie replicatie en migratie kan organiseren. Het apparaat heeft twee onderdelen:<br/><br/> **Configuratie server**: Hiermee maakt u verbinding met de server migratie en de coördinaten van de replicatie.<br/> **Proces server**: gegevens replicatie wordt verwerkt. De proces server ontvangt computer gegevens, comprimeert en versleutelt deze en verzendt deze naar Azure. In azure schrijft server migratie de gegevens naar Managed disks. | Standaard wordt de proces server samen met de configuratie server op het replicatie apparaat geïnstalleerd.
 **Mobility-service** | De Mobility-service is een agent die is geïnstalleerd op elke computer die u wilt repliceren en migreren. Het verzendt replicatie gegevens van de machine naar de proces server. | Installatie bestanden voor verschillende versies van de Mobility-service bevinden zich op het replicatie-apparaat. U downloadt en installeert de agent die u nodig hebt, in overeenstemming met het besturings systeem en de versie van de computer die u wilt repliceren.
@@ -73,7 +72,7 @@ De Mobility-service communiceert met het replicatie apparaat en de gerepliceerde
 
 ## <a name="ports"></a>Poorten
 
-**Apparaat** | **Combi**
+**Apparaat** | **Verbinding**
 --- | --- 
 **Computers repliceren** | De Mobility-service die wordt uitgevoerd op Vm's communiceert met het on-premises replicatie apparaat op poort HTTPS 443 inkomend voor replicatie beheer.<br/><br/> Computers verzenden replicatie gegevens naar de proces server op poort HTTPS 9443 binnenkomend. Deze poort kan worden gewijzigd.
 **Replicatie apparaat** | Het replicatie apparaat organiseert de replicatie met Azure via poort HTTPS 443 uitgaand.
@@ -95,7 +94,7 @@ Gebruik de waarden in deze tabel om erachter te komen of u een extra proces serv
 - Als uw dagelijkse wijzigings frequentie (verloop frequentie) groter is dan 2 TB, implementeert u een extra proces server.
 - Als u meer dan 200 computers repliceert, implementeert u een extra replicatie apparaat.
 
-**VERBRUIK** | **Geheugen** | **Vrije ruimte-gegevens in cache opslaan** | **Verloop frequentie** | **Replicatie limieten**
+**CPU** | **Geheugen** | **Vrije ruimte-gegevens in cache opslaan** | **Verloop frequentie** | **Replicatie limieten**
 --- | --- | --- | --- | ---
 8 Vcpu's (2 sockets * 4 kernen \@ 2,5 GHz) | 16 GB | 300 GB | 500 GB of minder | < 100-machines 
 12 Vcpu's (2 sockets * 6 kernen \@ 2,5 GHz) | 18 GB | 600 GB | 501 GB tot 1 TB | 100-150 machines.

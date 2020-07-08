@@ -12,10 +12,9 @@ manager: daveba
 ms.reviewer: tilarso
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 0f75dea2cffbe710bf2778ceab5eacc91ffcca9c
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77523102"
 ---
 # <a name="what-is-the-identity-secure-score-in-azure-active-directory"></a>Wat is de id-beveiligingsscore in Azure Active Directory?
@@ -48,7 +47,7 @@ Door de verbeteringsacties te volgen, kunt u het volgende doen:
 
 ## <a name="how-do-i-get-my-secure-score"></a>Hoe kom ik aan mijn beveiligde score?
 
-De beveiligde score voor identiteiten is beschikbaar in alle edities van Azure AD. Organisaties hebben toegang tot hun identiteits beveiligde Score van de **Azure Portal** > **Azure Active Directory** > **Security** > **beveiligde Score**van de beveiligings identiteit.
+De beveiligde score voor identiteiten is beschikbaar in alle edities van Azure AD. Organisaties hebben toegang tot hun identiteits beveiligde Score van de **Azure Portal**  >  **Azure Active Directory**  >  **Security**  >  **beveiligde Score**van de beveiligings identiteit.
 
 ## <a name="how-does-it-work"></a>Hoe werkt het?
 

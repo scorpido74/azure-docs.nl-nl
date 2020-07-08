@@ -14,10 +14,9 @@ ms.date: 07/12/2019
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: 100e1b974e54d8c0065194bc7beb18f458011434
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77616869"
 ---
 # <a name="os-backup-and-restore-for-type-ii-skus-of-revision-3-stamps"></a>Back-up en herstel van het besturings systeem voor de type II Sku's van Revision 3-stem pels
@@ -31,7 +30,7 @@ In dit document worden de stappen beschreven voor het uitvoeren van een back-up 
 >[!NOTE]
 >De back-upscripten van het besturings systeem gebruiken de achterzijde-software, die vooraf is geïnstalleerd op de server.  
 
-Nadat het inrichten is voltooid door het micro soft `Service Management` -team, is de server standaard geconfigureerd met twee back-upschemas om een back-up te maken van het bestandssysteem niveau van het besturings systeem. U kunt de planningen van de back-uptaken controleren met behulp van de volgende opdracht:
+Nadat het inrichten is voltooid door het micro soft- `Service Management` team, is de server standaard geconfigureerd met twee back-upschemas om een back-up te maken van het bestandssysteem niveau van het besturings systeem. U kunt de planningen van de back-uptaken controleren met behulp van de volgende opdracht:
 ```
 #crontab –l
 ```
@@ -69,7 +68,7 @@ Met de volgende opdracht wordt het herstellen van een bestand met back-up van he
 
 De volgende scherm afbeelding toont het herstellen van een volledige back-up:
 
-![HowtoRestoreaBackup. PNG](media/HowToHLI/OSBackupTypeIISKUs/HowtoRestoreaBackup.PNG)
+![HowtoRestoreaBackup.PNG](media/HowToHLI/OSBackupTypeIISKUs/HowtoRestoreaBackup.PNG)
 
 ## <a name="how-to-install-the-rear-tool-and-change-the-configuration"></a>Het hulp programma achteraan installeren en de configuratie wijzigen? 
 
@@ -99,4 +98,4 @@ EXCLUDE_VG=( vgHANA-data-HC2 vgHANA-data-HC3 vgHANA-log-HC2 vgHANA-log-HC3 vgHAN
 BACKUP_PROG_EXCLUDE=("${BACKUP_PROG_EXCLUDE[@]}" '/media' '/var/tmp/*' '/var/crash' '/hana' '/usr/sap'  ‘/proc’)
 ```
 
-De volgende scherm afbeelding toont het herstellen van een volledige back ![-up: REARTOOLCONFIGURATION. png](media/HowToHLI/OSBackupTypeIISKUs/RearToolConfiguration.PNG)
+De volgende scherm afbeelding toont het herstellen van een volledige back-up: ![RearToolConfiguration.PNG](media/HowToHLI/OSBackupTypeIISKUs/RearToolConfiguration.PNG)

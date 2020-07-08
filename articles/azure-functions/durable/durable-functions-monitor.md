@@ -5,10 +5,9 @@ ms.topic: conceptual
 ms.date: 12/07/2018
 ms.author: azfuncdf
 ms.openlocfilehash: ed92156df9d8e1e07b56cea4b1e64edee11d68d9
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77562119"
 ---
 # <a name="monitor-scenario-in-durable-functions---weather-watcher-sample"></a>Het scenario bewaken in het Durable Functions-weers Watcher-voor beeld
@@ -38,7 +37,7 @@ In dit voor beeld worden de huidige weers omstandigheden van een locatie bewaakt
 
 In dit voor beeld moet u de weers ondergrondse API gebruiken om de huidige weers omstandigheden voor een locatie te controleren.
 
-Het eerste wat u nodig hebt, is een weers ondergrondse-account. U kunt een gratis abonnement maken op [https://www.wunderground.com/signup](https://www.wunderground.com/signup). Zodra u een account hebt, moet u een API-sleutel aanschaffen. U kunt dit doen door naar [https://www.wunderground.com/weather/api](https://www.wunderground.com/weather/api/?MR=1)te gaan en vervolgens sleutel instellingen te selecteren. Het Stratus-ontwikkelaars abonnement is gratis en voldoende om dit voor beeld uit te voeren.
+Het eerste wat u nodig hebt, is een weers ondergrondse-account. U kunt een gratis abonnement maken op [https://www.wunderground.com/signup](https://www.wunderground.com/signup) . Zodra u een account hebt, moet u een API-sleutel aanschaffen. U kunt dit doen door naar [https://www.wunderground.com/weather/api](https://www.wunderground.com/weather/api/?MR=1) te gaan en vervolgens sleutel instellingen te selecteren. Het Stratus-ontwikkelaars abonnement is gratis en voldoende om dit voor beeld uit te voeren.
 
 Zodra u een API-sleutel hebt, voegt u de volgende **app-instelling** toe aan uw functie-app.
 
@@ -50,7 +49,7 @@ Zodra u een API-sleutel hebt, voegt u de volgende **app-instelling** toe aan uw 
 
 In dit artikel worden de volgende functies in de voor beeld-app uitgelegd:
 
-* `E3_Monitor`: Een [Orchestrator-functie](durable-functions-bindings.md#orchestration-trigger) die regel `E3_GetIsClear` matig aanroept. `E3_SendGoodWeatherAlert` Als `E3_GetIsClear` retourneert waar wordt geretourneerd.
+* `E3_Monitor`: Een [Orchestrator-functie](durable-functions-bindings.md#orchestration-trigger) die `E3_GetIsClear` regel matig aanroept. `E3_SendGoodWeatherAlert`Als `E3_GetIsClear` retourneert waar wordt geretourneerd.
 * `E3_GetIsClear`: Een [activiteit functie](durable-functions-bindings.md#activity-trigger) die de huidige weers omstandigheden voor een locatie controleert.
 * `E3_SendGoodWeatherAlert`: Een activiteit functie die een SMS-bericht verzendt via Twilio.
 
@@ -62,9 +61,9 @@ In dit artikel worden de volgende functies in de voor beeld-app uitgelegd:
 
 De Orchestrator vereist een locatie om te bewaken en een telefoon nummer om een bericht te verzenden naar wanneer het duidelijk wordt op de locatie. Deze gegevens worden door gegeven aan de Orchestrator als een sterk getypeerd `MonitorRequest` object.
 
-# <a name="javascript"></a>[Javascript](#tab/javascript)
+# <a name="javascript"></a>[JavaScript](#tab/javascript)
 
-De functie **E3_Monitor** maakt gebruik van de standaard *functie. json* voor Orchestrator-functies.
+De functie **E3_Monitor** maakt gebruik van de standaard *function.js* voor Orchestrator-functies.
 
 [!code-json[Main](~/samples-durable-functions/samples/javascript/E3_Monitor/function.json)]
 
@@ -87,15 +86,15 @@ Meerdere Orchestrator-exemplaren kunnen tegelijkertijd worden uitgevoerd door de
 
 ### <a name="e3_getisclear-activity-function"></a>E3_GetIsClear-activiteit functie
 
-Net als bij andere voor beelden zijn de functies van de Help-activiteit reguliere `activityTrigger` functies die gebruikmaken van de trigger binding. De functie **E3_GetIsClear** haalt de huidige weers omstandigheden op met behulp van de weers ondergrondse API en bepaalt of de lucht duidelijk is.
+Net als bij andere voor beelden zijn de functies van de Help-activiteit reguliere functies die gebruikmaken van de `activityTrigger` trigger binding. De functie **E3_GetIsClear** haalt de huidige weers omstandigheden op met behulp van de weers ondergrondse API en bepaalt of de lucht duidelijk is.
 
 # <a name="c"></a>[C#](#tab/csharp)
 
 [!code-csharp[Main](~/samples-durable-functions/samples/precompiled/Monitor.cs?range=80-85)]
 
-# <a name="javascript"></a>[Javascript](#tab/javascript)
+# <a name="javascript"></a>[JavaScript](#tab/javascript)
 
-De *functie. json* wordt als volgt gedefinieerd:
+De *function.jsop* wordt als volgt gedefinieerd:
 
 [!code-json[Main](~/samples-durable-functions/samples/javascript/E3_GetIsClear/function.json)]
 
@@ -116,9 +115,9 @@ De functie **E3_SendGoodWeatherAlert** maakt gebruik van de Twilio-binding voor 
 > [!NOTE]
 > U moet het `Microsoft.Azure.WebJobs.Extensions.Twilio` Nuget-pakket installeren om de voorbeeld code uit te voeren.
 
-# <a name="javascript"></a>[Javascript](#tab/javascript)
+# <a name="javascript"></a>[JavaScript](#tab/javascript)
 
-De *functie. json* is eenvoudig:
+De *function.js* is eenvoudig:
 
 [!code-json[Main](~/samples-durable-functions/samples/javascript/E3_SendGoodWeatherAlert/function.json)]
 
@@ -169,7 +168,7 @@ U kunt de activiteit van de Orchestration bekijken door te kijken naar de functi
 2018-03-01T01:14:54.030 Function completed (Success, Id=561d0c78-ee6e-46cb-b6db-39ef639c9a2c, Duration=62ms)
 ```
 
-De indeling wordt [beëindigd](durable-functions-instance-management.md) zodra de time-out is bereikt of als er duidelijke skies zijn gedetecteerd. U kunt ook ( `TerminateAsync` .net) of `terminate` (Java script) in een andere functie gebruiken of de **terminatePostUri** http post-webhook aanroepen waarnaar wordt verwezen in het `{text}` 202-antwoord hierboven, waarbij wordt vervangen door de reden voor beëindiging:
+De indeling wordt [beëindigd](durable-functions-instance-management.md) zodra de time-out is bereikt of als er duidelijke skies zijn gedetecteerd. U kunt ook `TerminateAsync` (.net) of `terminate` (Java script) in een andere functie gebruiken of de **terminatePostUri** http post-webhook aanroepen waarnaar wordt verwezen in het 202-antwoord hierboven, waarbij wordt vervangen `{text}` door de reden voor beëindiging:
 
 ```
 POST https://{host}/runtime/webhooks/durabletask/instances/f6893f25acf64df2ab53a35c09d52635/terminate?reason=Because&taskHub=SampleHubVS&connection=Storage&code={systemKey}

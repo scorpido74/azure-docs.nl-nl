@@ -9,10 +9,9 @@ ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
 ms.openlocfilehash: 674ca8bea110d60557d1e50e7b68c9c3f7a92bf2
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77564581"
 ---
 # <a name="use-azure-ad-as-an-identity-provider-for-vcenter-on-cloudsimple-private-cloud"></a>Azure AD gebruiken als een id-provider voor vCenter op CloudSimple Private Cloud
@@ -86,14 +85,14 @@ U kunt desgewenst andere Azure AD-functies configureren.  Deze zijn niet vereist
     | **Optie** | **Beschrijving** |
     |------------|-----------------|
     | **Naam** | De naam van de identiteits bron. |
-    | **Basis-DN voor gebruikers** | Basis-DN-naam voor gebruikers.  Gebruik voor Azure AD: `OU=AADDC Users,DC=<domain>,DC=<domain suffix>` voor beeld: `OU=AADDC Users,DC=cloudsimplecustomer,DC=com`.|
+    | **Basis-DN voor gebruikers** | Basis-DN-naam voor gebruikers.  Gebruik voor Azure AD: `OU=AADDC Users,DC=<domain>,DC=<domain suffix>` voor beeld: `OU=AADDC Users,DC=cloudsimplecustomer,DC=com` .|
     | **Domeinnaam** | FQDN-namen van het domein, bijvoorbeeld example.com. Geef geen IP-adres op in dit tekstvak. |
     | **Domein alias** | *(optioneel)* De NetBIOS-naam van het domein. Voeg de NetBIOS-naam van het Active Directory domein als alias van de identiteits bron toe als u SSPI-verificaties gebruikt. |
     | **Basis-DN voor groepen** | De DN-basis naam voor groepen. Gebruik voor Azure AD: `OU=AADDC Users,DC=<domain>,DC=<domain suffix>` voor beeld:`OU=AADDC Users,DC=cloudsimplecustomer,DC=com`|
-    | **URL van primaire server** | LDAP-server van de primaire domein controller voor het domein.<br><br>Gebruik de indeling `ldaps://hostname:port`. De poort is doorgaans 636 voor LDAPS-verbindingen. <br><br>Een certificaat dat een vertrouwens relatie voor het LDAPS-eind punt van de Active Directory server tot `ldaps://` stand brengt, is vereist wanneer u gebruikt in de primaire of secundaire LDAP-URL. |
+    | **URL van primaire server** | LDAP-server van de primaire domein controller voor het domein.<br><br>Gebruik de indeling  `ldaps://hostname:port` . De poort is doorgaans 636 voor LDAPS-verbindingen. <br><br>Een certificaat dat een vertrouwens relatie voor het LDAPS-eind punt van de Active Directory server tot stand brengt, is vereist wanneer u gebruikt  `ldaps://`   in de primaire of secundaire LDAP-URL. |
     | **URL van secundaire server** | Adres van de LDAP-server van de secundaire domein controller die wordt gebruikt voor failover. |
-    | **Certificaat kiezen** | Als u LDAPS wilt gebruiken met uw Active Directory LDAP-server of OpenLDAP-server identiteits bron, wordt er een knop certificaat kiezen `ldaps://` weer gegeven nadat u in het tekstvak URL hebt getypt. Een secundaire URL is niet vereist. |
-    | **Gebruikers** | ID van een gebruiker in het domein met mini maal alleen-lezen toegang tot de basis-DN voor gebruikers en groepen. |
+    | **Certificaat kiezen** | Als u LDAPS wilt gebruiken met uw Active Directory LDAP-server of OpenLDAP-server identiteits bron, wordt er een knop certificaat kiezen weer gegeven nadat u in het tekstvak URL hebt getypt  `ldaps://`   . Een secundaire URL is niet vereist. |
+    | **Gebruikersnaam** | ID van een gebruiker in het domein met mini maal alleen-lezen toegang tot de basis-DN voor gebruikers en groepen. |
     | **Wachtwoord** | Het wacht woord van de gebruiker die is opgegeven door de gebruikers naam. |
 
 3. Meld u aan bij uw Privécloud-vCenter nadat de bevoegdheden zijn geëscaleerd.

@@ -15,10 +15,9 @@ ms.workload: na
 ms.date: 12/30/2019
 ms.author: yelevin
 ms.openlocfilehash: bbc77340375b22f137045d68b7449dd1e8adc4b7
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77588379"
 ---
 # <a name="connect-citrix-analytics-security"></a>Verbinding maken met Citrix Analytics (Security) 
@@ -36,16 +35,16 @@ Citrix Analytics (Security) integratie met Azure Sentinel helpt u bij het export
 
 ## <a name="connect-azure-sentinel-to-citrix-analytics-security"></a>Azure Sentinel koppelen aan Citrix Analytics (beveiliging)
 
-1. Navigeer in het Azure Portal naar **Azure Sentinel** > **Data connectors** en selecteer vervolgens de **Citrix Analytics-connector (Security)** .
+1. Navigeer in het Azure Portal naar **Azure Sentinel**  >  **Data connectors** en selecteer vervolgens de **Citrix Analytics-connector (Security)** .
 
 2. Selecteer de **pagina connector openen**.
 
 3. Volg de instructies op de pagina **Citrix Analytics (beveiliging)** .
 
 ## <a name="next-steps"></a>Volgende stappen
-In dit document hebt u geleerd hoe u Citrix Analytics (Security) kunt verbinden met Azure Sentinel. Raadpleeg de volgende artikelen voor meer informatie over Azure Sentinel:
-- Meer informatie over hoe u [inzicht krijgt in uw gegevens en mogelijke bedreigingen](quickstart-get-visibility.md).
-- Ga aan de slag [met het detecteren van bedreigingen met Azure Sentinel](tutorial-detect-threats-built-in.md).
+In dit document hebt u geleerd hoe u Citrix Analytics (Security) kunt verbinden met Azure Sentinel. Zie de volgende artikelen voor meer informatie over Azure Sentinel:
+- Meer informatie over het [verkrijgen van inzicht in uw gegevens en mogelijke bedreigingen](quickstart-get-visibility.md).
+- Ga aan de slag met [het detecteren van bedreigingen met Azure Sentinel](tutorial-detect-threats-built-in.md).
 - [Gebruik werkmappen](tutorial-monitor-your-data.md) om uw gegevens te bewaken.
 
 

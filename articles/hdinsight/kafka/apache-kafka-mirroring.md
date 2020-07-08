@@ -9,10 +9,9 @@ ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 11/29/2019
 ms.openlocfilehash: 45977f52226fac0a3e23455ce9457a721947a8cc
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77425881"
 ---
 # <a name="use-mirrormaker-to-replicate-apache-kafka-topics-with-kafka-on-hdinsight"></a>MirrorMaker gebruiken om Apache Kafka-onderwerpen te repliceren met Kafka in HDInsight
@@ -90,8 +89,8 @@ Deze architectuur bevat twee clusters in verschillende resource groepen en virtu
 
 Configureer IP-reclame om een client in staat te stellen verbinding te maken met behulp van IP-adressen van Broker in plaats van domein namen.
 
-1. Ga naar het Ambari-dash board voor het primaire `https://PRIMARYCLUSTERNAME.azurehdinsight.net`cluster:.
-1. Selecteer **Services** > **Kafka**. CliSelectck het tabblad **configuraties** .
+1. Ga naar het Ambari-dash board voor het primaire cluster: `https://PRIMARYCLUSTERNAME.azurehdinsight.net` .
+1. Selecteer **Services**  >  **Kafka**. CliSelectck het tabblad **configuraties** .
 1. Voeg de volgende configuratie regels toe aan de onderste **sjabloon sectie Kafka-env** . Selecteer **Opslaan**.
 
     ```
@@ -105,13 +104,13 @@ Configureer IP-reclame om een client in staat te stellen verbinding te maken met
 1. Voer een opmerking in het scherm **configuratie opslaan** in en klik op **Opslaan**.
 1. Als u wordt gevraagd om een configuratie waarschuwing, klikt u op **door gaan**.
 1. Selecteer **OK** op de **wijzigingen in de configuratie opslaan**.
-1. Selecteer **opnieuw opstarten opnieuw** > starten**alle beïnvloed** in de melding **opnieuw opstarten vereist** . Selecteer **Bevestig opnieuw opstarten**.
+1. Selecteer **opnieuw opstarten opnieuw**starten  >  **alle beïnvloed** in de melding **opnieuw opstarten vereist** . Selecteer **Bevestig opnieuw opstarten**.
 
     ![Apache Ambari alle betrokken software opnieuw opstarten](./media/apache-kafka-mirroring/ambari-restart-notification.png)
 
 ### <a name="configure-kafka-to-listen-on-all-network-interfaces"></a>Configureer Kafka om te Luis teren op alle netwerk interfaces.
     
-1. Blijf op het tabblad **configuratie** onder **Services** > **Kafka**. Stel in het gedeelte **Kafka-Broker** de eigenschap **listeners** in `PLAINTEXT://0.0.0.0:9092`op.
+1. Blijf op het tabblad **configuratie** onder **Services**  >  **Kafka**. Stel in het gedeelte **Kafka-Broker** de eigenschap **listeners** in op `PLAINTEXT://0.0.0.0:9092` .
 1. Selecteer **Opslaan**.
 1. Selecteer **opnieuw opstarten**en **Bevestig opnieuw opstarten**.
 
@@ -136,14 +135,14 @@ Configureer IP-reclame om een client in staat te stellen verbinding te maken met
 
     Zie [SSH-sleutels gebruiken met HDInsight](../hdinsight-hadoop-linux-use-ssh-unix.md) voor informatie.
 
-1. Gebruik de volgende opdracht om een variabele te maken met de Apache Zookeeper-hosts voor het primaire cluster. De teken reeksen `ZOOKEEPER_IP_ADDRESS1` zoals moeten worden vervangen door de werkelijke IP-adressen die eerder zijn `10.23.0.11` geregistreerd `10.23.0.7`, zoals en. Als u de FQDN-resolutie met een aangepaste DNS-server gebruikt, voert u [de volgende stappen uit om de](apache-kafka-get-started.md#getkafkainfo) namen van Broker en Zookeeper op te halen.:
+1. Gebruik de volgende opdracht om een variabele te maken met de Apache Zookeeper-hosts voor het primaire cluster. De teken reeksen zoals `ZOOKEEPER_IP_ADDRESS1` moeten worden vervangen door de werkelijke IP-adressen die eerder zijn geregistreerd, zoals `10.23.0.11` en `10.23.0.7` . Als u de FQDN-resolutie met een aangepaste DNS-server gebruikt, voert u [de volgende stappen uit om de](apache-kafka-get-started.md#getkafkainfo) namen van Broker en Zookeeper op te halen.:
 
     ```bash
     # get the zookeeper hosts for the primary cluster
     export PRIMARY_ZKHOSTS='ZOOKEEPER_IP_ADDRESS1:2181, ZOOKEEPER_IP_ADDRESS2:2181, ZOOKEEPER_IP_ADDRESS3:2181'
     ```
 
-1. Als u een onderwerp met `testtopic`de naam wilt maken, gebruikt u de volgende opdracht:
+1. Als u een onderwerp met de naam wilt maken `testtopic` , gebruikt u de volgende opdracht:
 
     ```bash
     /usr/hdp/current/kafka-broker/bin/kafka-topics.sh --create --replication-factor 2 --partitions 8 --topic testtopic --zookeeper $PRIMARY_ZKHOSTS
@@ -155,7 +154,7 @@ Configureer IP-reclame om een client in staat te stellen verbinding te maken met
     /usr/hdp/current/kafka-broker/bin/kafka-topics.sh --list --zookeeper $PRIMARY_ZKHOSTS
     ```
 
-    Het antwoord bevat `testtopic`.
+    Het antwoord bevat `testtopic` .
 
 1. Gebruik de volgende informatie om de Zookeeper van de host te bekijken (het **primaire**) cluster:
 
@@ -244,15 +243,15 @@ Configureer IP-reclame om een client in staat te stellen verbinding te maken met
         /usr/hdp/current/kafka-broker/bin/kafka-topics.sh --create --replication-factor 2 --partitions 8 --topic testtopic --zookeeper $SECONDARY_ZKHOSTS
         ```
 
-        Vervang `testtopic` door de naam van het onderwerp dat u wilt maken.
+        Vervang door `testtopic` de naam van het onderwerp dat u wilt maken.
 
     * **Het cluster configureren voor het automatisch maken van een onderwerp**: met deze optie kan MirrorMaker automatisch onderwerpen maken, maar dit kan worden gemaakt met een ander aantal partities of replicatie factor dan het primaire onderwerp.
 
         Voer de volgende stappen uit om het secundaire cluster zo te configureren dat er automatisch onderwerpen worden gemaakt:
 
-        1. Ga naar het Ambari-dash board voor het secundaire `https://SECONDARYCLUSTERNAME.azurehdinsight.net`cluster:.
-        1. Klik op **Services** > **Kafka**. Klik op het tabblad **configuratie** .
-        1. Voer in het veld __filter__ een waarde van `auto.create`in. Hiermee wordt de lijst met eigenschappen gefilterd `auto.create.topics.enable` en wordt de instelling weer gegeven.
+        1. Ga naar het Ambari-dash board voor het secundaire cluster: `https://SECONDARYCLUSTERNAME.azurehdinsight.net` .
+        1. Klik op **Services**  >  **Kafka**. Klik op het tabblad **configuratie** .
+        1. Voer in het veld __filter__ een waarde van in `auto.create` . Hiermee wordt de lijst met eigenschappen gefilterd en wordt de instelling weer gegeven `auto.create.topics.enable` .
         1. Wijzig de waarde van `auto.create.topics.enable` in waar en selecteer vervolgens __Opslaan__. Voeg een notitie toe en selecteer vervolgens __Opslaan__ opnieuw.
         1. Selecteer de __Kafka__ -service, selecteer __opnieuw opstarten__en selecteer vervolgens __alle betrokkenen opnieuw opstarten__. Selecteer __Bevestig opnieuw opstarten__als dit wordt gevraagd.
 
@@ -270,8 +269,8 @@ Configureer IP-reclame om een client in staat te stellen verbinding te maken met
 
     |Parameter |Beschrijving |
     |---|---|
-    |--Consumer. config|Hiermee geeft u het bestand op dat de eigenschappen van de gebruiker bevat. Deze eigenschappen worden gebruikt voor het maken van een consumer die leest van het *primaire* Kafka-cluster.|
-    |--producer. config|Hiermee geeft u het bestand op dat de eigenschappen van de producent bevat. Deze eigenschappen worden gebruikt voor het maken van een producent die naar het *secundaire* Kafka-cluster schrijft.|
+    |--consumer.config|Hiermee geeft u het bestand op dat de eigenschappen van de gebruiker bevat. Deze eigenschappen worden gebruikt voor het maken van een consumer die leest van het *primaire* Kafka-cluster.|
+    |--producer.config|Hiermee geeft u het bestand op dat de eigenschappen van de producent bevat. Deze eigenschappen worden gebruikt voor het maken van een producent die naar het *secundaire* Kafka-cluster schrijft.|
     |--White List|Een lijst met onderwerpen die MirrorMaker repliceren van het primaire cluster naar de secundaire.|
     |--num. streams|Het aantal te maken Consumer threads.|
 
@@ -292,7 +291,7 @@ Configureer IP-reclame om een client in staat te stellen verbinding te maken met
     /usr/hdp/current/kafka-broker/bin/kafka-console-consumer.sh --bootstrap-server $SECONDARY_ZKHOSTS --topic testtopic --from-beginning
     ```
 
-    De lijst met onderwerpen bevat `testtopic`nu een MirrorMaster die wordt gemaakt wanneer het onderwerp van het primaire cluster wordt gespiegeld met de secundaire. De berichten die worden opgehaald uit het onderwerp, zijn dezelfde als die u hebt ingevoerd op het primaire cluster.
+    De lijst met onderwerpen bevat nu een `testtopic` MirrorMaster die wordt gemaakt wanneer het onderwerp van het primaire cluster wordt gespiegeld met de secundaire. De berichten die worden opgehaald uit het onderwerp, zijn dezelfde als die u hebt ingevoerd op het primaire cluster.
 
 ## <a name="delete-the-cluster"></a>Het cluster verwijderen
 

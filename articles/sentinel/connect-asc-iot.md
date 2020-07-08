@@ -15,17 +15,16 @@ ms.workload: na
 ms.date: 02/18/2020
 ms.author: yelevin
 ms.openlocfilehash: 3af51110a4c4604444573f62be65077c786db606
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77588634"
 ---
 # <a name="connect-your-data-from-azure-security-center-for-iot-to-azure-sentinel"></a>Uw gegevens verbinden met Azure Security Center voor IoT naar Azure Sentinel 
 
 
 > [!IMPORTANT]
-> De Azure Security Center voor IoT data connector bevindt zich momenteel in de open bare preview. Deze functie wordt zonder service level agreement gegeven en wordt niet aanbevolen voor productie werkbelastingen. Misschien worden bepaalde functies niet ondersteund of zijn de mogelijkheden ervan beperkt. Zie voor meer informatie [aanvullende gebruiks voorwaarden voor Microsoft Azure-previews](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+> De Azure Security Center voor IoT data connector bevindt zich momenteel in de open bare preview. Deze functie wordt zonder service level agreement gegeven en wordt niet aanbevolen voor productie werkbelastingen. Misschien worden bepaalde functies niet ondersteund of zijn de mogelijkheden ervan beperkt. Zie [Supplemental Terms of Use for Microsoft Azure Previews (Aanvullende gebruiksvoorwaarden voor Microsoft Azure-previews)](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) voor meer informatie.
 
 Gebruik de Azure Security Center voor IoT-connector om al uw Azure Security Center voor IoT-gebeurtenissen in azure Sentinel te streamen. 
 
@@ -45,7 +44,7 @@ Gebruik de Azure Security Center voor IoT-connector om al uw Azure Security Cent
 1. Klik in het rechterdeel venster aan de rechter kant op **connector pagina openen**. 
 1. Klik op **verbinding maken**naast elk IOT hub abonnement waarvan u de waarschuwingen en de waarschuwingen van apparaten wilt streamen naar Azure Sentinel. 
     - Als Azure Security Center voor IoT niet is ingeschakeld op die hub, wordt **er een waarschuwings** bericht weer gegeven. Klik op de koppeling **inschakelen** om de service te starten. 
-1. U kunt beslissen of u de waarschuwingen van Azure Security Center voor IoT automatisch incidenten wilt genereren in azure Sentinel. Selecteer onder **incidenten maken**de optie **inschakelen** om de standaard analyse regel in te scha kelen om incidenten automatisch te maken op basis van waarschuwingen die zijn gegenereerd in de verbonden beveiligings service. Deze regel kan worden gewijzigd of bewerkt onder **Analytics** > **actieve** regels voor analyse.
+1. U kunt beslissen of u de waarschuwingen van Azure Security Center voor IoT automatisch incidenten wilt genereren in azure Sentinel. Selecteer onder **incidenten maken**de optie **inschakelen** om de standaard analyse regel in te scha kelen om incidenten automatisch te maken op basis van waarschuwingen die zijn gegenereerd in de verbonden beveiligings service. Deze regel kan worden gewijzigd of bewerkt onder **Analytics**  >  **actieve** regels voor analyse.
 
 > [!NOTE]
 > Het kan enige tijd duren voordat de lijst met hubs is gewijzigd. 
@@ -54,7 +53,7 @@ Gebruik de Azure Security Center voor IoT-connector om al uw Azure Security Cent
 
 Als u het relevante schema in Log Analytics wilt gebruiken om de Azure Security Center voor IoT-waarschuwingen weer te geven:
 
-1. Open **Logboeken** > **SecurityInsights** > **SecurityAlert**of zoek naar **SecurityAlert**. 
+1. Open **Logboeken**  >  **SecurityInsights**  >  **SecurityAlert**of zoek naar **SecurityAlert**. 
 2. Filter om alleen Azure Security Center voor IoT-waarschuwingen weer te geven met behulp van het volgende kql-filter:
 
 ```kusto
@@ -68,7 +67,7 @@ Nadat u verbinding hebt gemaakt met een IoT Hub, zijn de hub-gegevens ongeveer 1
 
 ## <a name="next-steps"></a>Volgende stappen
 
-In dit document hebt u geleerd hoe u Azure Security Center voor IoT-gegevens verbindt met Azure Sentinel. Raadpleeg de volgende artikelen voor meer informatie over Azure Sentinel:
-- Meer informatie over hoe u [inzicht krijgt in uw gegevens en mogelijke bedreigingen](quickstart-get-visibility.md).
-- Ga aan de slag [met het detecteren van bedreigingen met Azure Sentinel](tutorial-detect-threats-built-in.md).
+In dit document hebt u geleerd hoe u Azure Security Center voor IoT-gegevens verbindt met Azure Sentinel. Zie de volgende artikelen voor meer informatie over Azure Sentinel:
+- Meer informatie over het [verkrijgen van inzicht in uw gegevens en mogelijke bedreigingen](quickstart-get-visibility.md).
+- Ga aan de slag met [het detecteren van bedreigingen met Azure Sentinel](tutorial-detect-threats-built-in.md).
 - [Gebruik werkmappen](tutorial-monitor-your-data.md) om uw gegevens te bewaken.

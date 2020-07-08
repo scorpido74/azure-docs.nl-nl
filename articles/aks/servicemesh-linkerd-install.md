@@ -7,22 +7,21 @@ ms.date: 10/09/2019
 ms.author: pabouwer
 zone_pivot_groups: client-operating-system
 ms.openlocfilehash: 419b61527b68299c82dec4f2f5da6b0220859cc1
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77593711"
 ---
 # <a name="install-linkerd-in-azure-kubernetes-service-aks"></a>Linkerd installeren in azure Kubernetes service (AKS)
 
 [Linkerd][linkerd-github] is een open-source service-net-en [CNCF-incubatie-project][linkerd-cncf]. Linkerd is een ultralight service-net dat functies biedt die het beheer van verkeer, service-identiteit en beveiliging, betrouw baarheid en naleving kunnen bevatten. Voor meer informatie over Linkerd raadpleegt u de officiële [Veelgestelde vragen over Linkerd][linkerd-faq] en [Linkerd Architecture][linkerd-architecture] -documentatie.
 
-In dit artikel wordt beschreven hoe u Linkerd installeert. Het binaire `linkerd` bestand van de Linkerd-client wordt geïnstalleerd op de client computer en de Linkerd-onderdelen worden geïnstalleerd in een Kubernetes-cluster op AKS.
+In dit artikel wordt beschreven hoe u Linkerd installeert. Het `linkerd` binaire bestand van de Linkerd-client wordt geïnstalleerd op de client computer en de Linkerd-onderdelen worden geïnstalleerd in een Kubernetes-cluster op AKS.
 
 > [!NOTE]
-> Deze instructies verwijzen naar Linkerd `stable-2.6.0`-versie.
+> Deze instructies verwijzen naar Linkerd-versie `stable-2.6.0` .
 >
-> De Linkerd `stable-2.6.x` kan worden uitgevoerd op Kubernetes- `1.13+`versies. U vindt extra stabiele en Linkerd versies van [github-Linkerd-releases][linkerd-github-releases].
+> De Linkerd `stable-2.6.x` kan worden uitgevoerd op Kubernetes-versies `1.13+` . U vindt extra stabiele en Linkerd versies van [github-Linkerd-releases][linkerd-github-releases].
 
 In dit artikel leert u het volgende:
 
@@ -35,7 +34,7 @@ In dit artikel leert u het volgende:
 
 ## <a name="before-you-begin"></a>Voordat u begint
 
-Voor de stappen in dit artikel wordt ervan uitgegaan dat u een AKS-cluster `1.13` hebt gemaakt (Kubernetes en hoger, met RBAC ingeschakeld) `kubectl` en een verbinding met het cluster tot stand hebt gebracht. Als u hulp nodig hebt bij een van deze items, raadpleegt u de [AKS Quick][aks-quickstart]start.
+Voor de stappen in dit artikel wordt ervan uitgegaan dat u een AKS-cluster hebt gemaakt (Kubernetes `1.13` en hoger, met RBAC ingeschakeld) en een `kubectl` verbinding met het cluster tot stand hebt gebracht. Als u hulp nodig hebt bij een van deze items, raadpleegt u de [AKS Quick][aks-quickstart]start.
 
 Alle Linkerd-peulen moeten worden gepland om te worden uitgevoerd op Linux-knoop punten. deze instelling is de standaard waarde voor de installatie methode die hieronder wordt beschreven en vereist geen aanvullende configuratie.
 
@@ -123,13 +122,13 @@ Nu is het tijd om de Linkerd-onderdelen te installeren. Gebruik de `linkerd` en 
 linkerd install | kubectl apply -f -
 ```
 
-Linkerd implementeert een aantal objecten. U ziet de lijst in de uitvoer van de bovenstaande `linkerd install` opdracht. De implementatie van de Linkerd-onderdelen moet ongeveer 1 minuut duren, afhankelijk van uw cluster omgeving.
+Linkerd implementeert een aantal objecten. U ziet de lijst in de uitvoer van de `linkerd install` bovenstaande opdracht. De implementatie van de Linkerd-onderdelen moet ongeveer 1 minuut duren, afhankelijk van uw cluster omgeving.
 
 Op dit moment hebt u Linkerd geïmplementeerd op uw AKS-cluster. Om ervoor te zorgen dat de implementatie van Linkerd succesvol is, gaan we verder met de volgende sectie om [de Linkerd-installatie te valideren](#validate-the-linkerd-installation).
 
 ## <a name="validate-the-linkerd-installation"></a>De Linkerd-installatie valideren
 
-Controleer of de resources zijn gemaakt. Gebruik de opdrachten [kubectl Get SVC][kubectl-get] en [kubectl Get POD][kubectl-get] om de `linkerd` naam ruimte op te vragen, waarbij de Linkerd-onderdelen `linkerd install` zijn geïnstalleerd met behulp van de opdracht:
+Controleer of de resources zijn gemaakt. Gebruik de opdrachten [kubectl Get SVC][kubectl-get] en [kubectl Get POD][kubectl-get] om de naam ruimte op te vragen `linkerd` , waarbij de Linkerd-onderdelen zijn geïnstalleerd met behulp van de `linkerd install` opdracht:
 
 ```console
 kubectl get svc --namespace linkerd --output wide
@@ -226,7 +225,7 @@ Status check results are √
 
 ## <a name="access-the-dashboard"></a>Het dash board openen
 
-Linkerd wordt geleverd met een dash board dat inzicht biedt in het service-net en werk belastingen. Gebruik de `linkerd dashboard` opdracht om toegang te krijgen tot het dash board. Met deze opdracht maakt u een beveiligde verbinding tussen uw client computer en de relevante peul in uw AKS-cluster met behulp van de [kubectl-poort][kubectl-port-forward] . Vervolgens wordt het dash board automatisch in de standaard browser geopend.
+Linkerd wordt geleverd met een dash board dat inzicht biedt in het service-net en werk belastingen. Gebruik de opdracht om toegang te krijgen tot het dash board `linkerd dashboard` . Met deze opdracht maakt u een beveiligde verbinding tussen uw client computer en de relevante peul in uw AKS-cluster met behulp van de [kubectl-poort][kubectl-port-forward] . Vervolgens wordt het dash board automatisch in de standaard browser geopend.
 
 ```console
 linkerd dashboard

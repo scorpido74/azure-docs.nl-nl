@@ -10,10 +10,9 @@ ms.author: sgilley
 author: sdgilley
 ms.date: 12/27/2019
 ms.openlocfilehash: 03bc49c24e3c2d32e97f3e5e03bd39da63428a6e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77505572"
 ---
 # <a name="what-is-an-azure-machine-learning-workspace"></a>Wat is een Azure Machine Learning-werk ruimte?
@@ -118,7 +117,7 @@ Om aan de slag te gaan met Azure Machine Learning raadpleegt u:
 + [Overzicht van Azure Machine Learning](overview-what-is-azure-ml.md)
 + [Een werkruimte maken](how-to-manage-workspace.md)
 + [Een werkruimte beheren](how-to-manage-workspace.md)
-+ [Zelf studie: aan de slag met het maken van uw eerste ML-experiment met de python-SDK](tutorial-1st-experiment-sdk-setup.md)
++ [Zelfstudie: Ga aan de slag met het maken van uw eerste ML-experiment met de Python SDK](tutorial-1st-experiment-sdk-setup.md)
 + [Zelf studie: aan de slag met Azure Machine Learning met de R SDK](tutorial-1st-r-experiment.md)
 + [Zelf studie: uw eerste classificatie model maken met geautomatiseerde machine learning](tutorial-first-experiment-automated-ml.md) (alleen beschikbaar in de [Enter prise Edition](overview-what-is-azure-ml.md#sku) -werk ruimten)
 + [Zelf studie: prijs van auto Mobile voors pellen met de ontwerp functie](tutorial-designer-automobile-price-train-score.md) (alleen beschikbaar in werk ruimten voor [Enter prise Edition](overview-what-is-azure-ml.md#sku) )

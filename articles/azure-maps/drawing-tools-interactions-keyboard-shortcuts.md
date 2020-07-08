@@ -9,10 +9,9 @@ ms.service: azure-maps
 services: azure-maps
 manager: cpendle
 ms.openlocfilehash: fb8a1e1a8c29086553500bdad2e4604d1e1ef471
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77198289"
 ---
 # <a name="interaction-types-and-keyboard-shortcuts-in-the-drawing-tools-module"></a>Interactie typen en sneltoetsen in de module teken hulpprogramma's
@@ -27,26 +26,26 @@ De tekening beheerder ondersteunt drie verschillende manieren van interactie met
 
 ## <a name="how-to-draw-shapes"></a>Vormen tekenen
 
- Voordat een shape kan worden getekend, stelt u `drawingMode` de optie van de tekening manager in op een ondersteunde teken instelling. Deze instelling kan worden geprogrammeerd of opgeroepen door op een van de teken knoppen op de werk balk te drukken. De teken modus blijft ingeschakeld, zelfs nadat een vorm is getekend, waardoor het gemakkelijk is om extra vormen van hetzelfde type te tekenen. De teken modus programmatisch instellen op niet-actieve status. Of schakel over naar een niet-actieve status door te klikken op de knop huidige teken modi op de werk balk.
+ Voordat een shape kan worden getekend, stelt `drawingMode` u de optie van de tekening manager in op een ondersteunde teken instelling. Deze instelling kan worden geprogrammeerd of opgeroepen door op een van de teken knoppen op de werk balk te drukken. De teken modus blijft ingeschakeld, zelfs nadat een vorm is getekend, waardoor het gemakkelijk is om extra vormen van hetzelfde type te tekenen. De teken modus programmatisch instellen op niet-actieve status. Of schakel over naar een niet-actieve status door te klikken op de knop huidige teken modi op de werk balk.
 
 De volgende secties bevatten een overzicht van de verschillende manieren waarop vormen kunnen worden getekend op de kaart.
 
 ### <a name="how-to-draw-a-point"></a>Een punt tekenen
 
-Wanneer het tekening beheer zich in `draw-point` de teken modus bevindt, kunnen de volgende acties worden uitgevoerd om punten op de kaart te tekenen. Deze methoden werken met alle interactie modi.
+Wanneer het tekening beheer zich in de teken modus bevindt `draw-point` , kunnen de volgende acties worden uitgevoerd om punten op de kaart te tekenen. Deze methoden werken met alle interactie modi.
 
 **Tekenen starten**
  - Klik op de linkermuisknop of druk op de kaart om een punt aan de kaart toe te voegen. 
- - Als de muis zich boven de kaart bevindt `F` , drukt u op de toets en wordt er een punt toegevoegd aan de coördinaat van de muis aanwijzer. Deze methode biedt een hogere nauw keurigheid voor het toevoegen van een punt aan de kaart. Er is minder beweging aan de muis als gevolg van het drukken op beweging van de linkermuisknop.
+ - Als de muis zich boven de kaart bevindt, drukt u op de `F` toets en wordt er een punt toegevoegd aan de coördinaat van de muis aanwijzer. Deze methode biedt een hogere nauw keurigheid voor het toevoegen van een punt aan de kaart. Er is minder beweging aan de muis als gevolg van het drukken op beweging van de linkermuisknop.
  - Blijf klikken, raken of ingedrukt `F` om meer punten aan de kaart toe te voegen.
  
 **Tekenen volt ooien**
  - Klik op een knop op de werk balk tekenen. 
  - De teken modus programmatisch instellen. 
- - Druk op `C` de toets.
+ - Druk op de `C` toets.
 
 **Tekenen annuleren**
- - Druk op `Escape` de toets.
+ - Druk op de `Escape` toets.
 
 ### <a name="how-to-draw-a-line"></a>Een lijn tekenen
 
@@ -55,10 +54,10 @@ Wanneer de teken beheer `draw-line` modus actief is, kunnen de volgende acties w
 **Tekenen starten**
  - Klik modus
    * Klik op de linkermuisknop of druk op de kaart om elk punt van een regel op de kaart toe te voegen. Een coördinaat wordt toegevoegd aan de regel voor elke klik of aanraking. 
-   * Als de muis zich boven de kaart bevindt `F` , drukt u op de toets en wordt er een punt toegevoegd aan de coördinaat van de muis aanwijzer. Deze methode biedt een hogere nauw keurigheid voor het toevoegen van een punt aan de kaart. Er is minder beweging aan de muis als gevolg van het drukken op beweging van de linkermuisknop.
+   * Als de muis zich boven de kaart bevindt, drukt u op de `F` toets en wordt er een punt toegevoegd aan de coördinaat van de muis aanwijzer. Deze methode biedt een hogere nauw keurigheid voor het toevoegen van een punt aan de kaart. Er is minder beweging aan de muis als gevolg van het drukken op beweging van de linkermuisknop.
    * Blijf klikken totdat alle gewenste punten aan de lijn zijn toegevoegd.
  - Free hand-modus
-   * Houd de linkermuisknop ingedrukt of vervolg keuzelijst op de kaart en sleep de muis of het aanraak punt rond. Coördinaten worden toegevoegd aan de regel als de muis of het aanraak punt over de kaart wordt verplaatst. Zodra de muis of het aanraak gebeurtenis wordt geactiveerd, wordt de tekening voltooid. De frequentie waarmee coördinaten worden toegevoegd, wordt gedefinieerd door de optie teken `freehandInterval` beheer.
+   * Houd de linkermuisknop ingedrukt of vervolg keuzelijst op de kaart en sleep de muis of het aanraak punt rond. Coördinaten worden toegevoegd aan de regel als de muis of het aanraak punt over de kaart wordt verplaatst. Zodra de muis of het aanraak gebeurtenis wordt geactiveerd, wordt de tekening voltooid. De frequentie waarmee coördinaten worden toegevoegd, wordt gedefinieerd door de optie teken beheer `freehandInterval` .
  - Hybride modus
    * Scha kelen tussen de methoden Click en Free hand, indien gewenst, tijdens het tekenen van één regel. Klik bijvoorbeeld op een paar punten, houd de muis knop ingedrukt en sleep om een aantal punten toe te voegen en klik vervolgens op enkele andere. 
 
@@ -69,10 +68,10 @@ Wanneer de teken beheer `draw-line` modus actief is, kunnen de volgende acties w
    * De teken modus programmatisch instellen. 
  - Free hand-modus
    * Laat de muis knop of het aanraak punt los.
- - Druk op `C` de toets.
+ - Druk op de `C` toets.
 
 **Tekenen annuleren**
- - Druk op `Escape` de toets.
+ - Druk op de `Escape` toets.
 
 ### <a name="how-to-draw-a-polygon"></a>Een veelhoek tekenen
 
@@ -81,10 +80,10 @@ Wanneer de teken beheer `draw-polygon` modus actief is, kunnen de volgende actie
 **Tekenen starten**
  - Klik modus
    * Klik op de linkermuisknop of druk op de kaart om elk punt van een veelhoek op de kaart toe te voegen. Er wordt voor elke klik of aanraking een coördinaat toegevoegd aan de veelhoek. 
-   * Als de muis zich boven de kaart bevindt `F` , drukt u op de toets en wordt er een punt toegevoegd aan de coördinaat van de muis aanwijzer. Deze methode biedt een hogere nauw keurigheid voor het toevoegen van een punt aan de kaart. Er is minder beweging aan de muis als gevolg van het drukken op beweging van de linkermuisknop.
+   * Als de muis zich boven de kaart bevindt, drukt u op de `F` toets en wordt er een punt toegevoegd aan de coördinaat van de muis aanwijzer. Deze methode biedt een hogere nauw keurigheid voor het toevoegen van een punt aan de kaart. Er is minder beweging aan de muis als gevolg van het drukken op beweging van de linkermuisknop.
    * Blijf klikken totdat alle gewenste punten aan de veelhoek zijn toegevoegd.
  - Free hand-modus
-   * Houd de linkermuisknop ingedrukt of vervolg keuzelijst op de kaart en sleep de muis of het aanraak punt rond. Coördinaten worden toegevoegd aan de veelhoek als de muis of het aanraak punt zich verplaatst rond de kaart. Zodra de muis of het aanraak gebeurtenis wordt geactiveerd, wordt de tekening voltooid. De frequentie waarmee coördinaten worden toegevoegd, wordt gedefinieerd door de optie teken `freehandInterval` beheer.
+   * Houd de linkermuisknop ingedrukt of vervolg keuzelijst op de kaart en sleep de muis of het aanraak punt rond. Coördinaten worden toegevoegd aan de veelhoek als de muis of het aanraak punt zich verplaatst rond de kaart. Zodra de muis of het aanraak gebeurtenis wordt geactiveerd, wordt de tekening voltooid. De frequentie waarmee coördinaten worden toegevoegd, wordt gedefinieerd door de optie teken beheer `freehandInterval` .
  - Hybride modus
    * Scha kelen tussen de methoden Click en Free hand, indien gewenst, terwijl u één veelhoek tekent. Klik bijvoorbeeld op een paar punten, houd de muis knop ingedrukt en sleep om een aantal punten toe te voegen en klik vervolgens op enkele andere. 
 
@@ -96,10 +95,10 @@ Wanneer de teken beheer `draw-polygon` modus actief is, kunnen de volgende actie
    * De teken modus programmatisch instellen. 
  - Free hand-modus
    * Laat de muis knop of het aanraak punt los.
- - Druk op `C` de toets.
+ - Druk op de `C` toets.
 
 **Tekenen annuleren**
- - Druk op `Escape` de toets.
+ - Druk op de `Escape` toets.
 
 ### <a name="how-to-draw-a-rectangle"></a>Een rechthoek tekenen
 
@@ -111,10 +110,10 @@ Wanneer de teken beheer `draw-rectangle` modus actief is, kunnen de volgende act
 **Tekenen volt ooien**
  - Laat de muis knop of het aanraak punt los.
  - De teken modus programmatisch instellen. 
- - Druk op `C` de toets.
+ - Druk op de `C` toets.
 
 **Tekenen annuleren**
- - Druk op `Escape` de toets.
+ - Druk op de `Escape` toets.
 
 ### <a name="how-to-draw-a-circle"></a>Een cirkel tekenen
 
@@ -126,10 +125,10 @@ Wanneer de teken beheer `draw-circle` modus actief is, kunnen de volgende acties
 **Tekenen volt ooien**
  - Laat de muis knop of het aanraak punt los.
  - De teken modus programmatisch instellen. 
- - Druk op `C` de toets.
+ - Druk op de `C` toets.
 
 **Tekenen annuleren**
- - Druk op `Escape` de toets.
+ - Druk op de `Escape` toets.
 
 ## <a name="keyboard-shortcuts"></a>Sneltoetsen
 

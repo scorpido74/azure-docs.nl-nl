@@ -9,10 +9,9 @@ ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 02/17/2020
 ms.openlocfilehash: 3f8ff3cbc24f6e3a7e0eccf1b18e01941c9584b9
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77471177"
 ---
 # <a name="analyze-logs-for-apache-kafka-on-hdinsight"></a>Logboeken analyseren voor Apache Kafka in HDInsight
@@ -23,9 +22,9 @@ Informatie over het gebruik van Azure Monitor logboeken voor het analyseren van 
 
 ## <a name="logs-location"></a>Logboek locatie
 
-Apache Kafka-Logboeken in het cluster bevinden zich op `/var/log/kafka`. Kafka-logboeken worden niet opgeslagen of bewaard in de levens cyclus van het cluster, ongeacht of beheerde schijven worden gebruikt. De volgende tabel bevat de beschik bare Logboeken.
+Apache Kafka-Logboeken in het cluster bevinden zich op `/var/log/kafka` . Kafka-logboeken worden niet opgeslagen of bewaard in de levens cyclus van het cluster, ongeacht of beheerde schijven worden gebruikt. De volgende tabel bevat de beschik bare Logboeken.
 
-|Logboek |Beschrijving |
+|Logboek |Description |
 |---|---|
 |Kafka. out|stdout en stderr van het Kafka-proces. U vindt de opstart-en afsluit logboeken van Kafka in dit bestand.|
 |server. log|Het belangrijkste Kafka-server logboek. Alle Kafka Broker-logboeken worden hier beëindigd.|
@@ -68,7 +67,7 @@ De stappen voor het inschakelen van Azure Monitor logboeken voor HDInsight zijn 
     | summarize AggregatedValue = avg(CounterValue) by Computer, bin(TimeGenerated, 1h)
     ```
 
-* Inkomende berichten per seconde: (Vervang `your_kafka_cluster_name` door de naam van uw cluster.)
+* Inkomende berichten per seconde: (Vervang door `your_kafka_cluster_name` de naam van uw cluster.)
 
     ```kusto
     metrics_kafka_CL 
@@ -84,7 +83,7 @@ De stappen voor het inschakelen van Azure Monitor logboeken voor HDInsight zijn 
     | summarize AggregatedValue = avg(kafka_BrokerTopicMetrics_BytesInPerSec_Count_value_d) by bin(TimeGenerated, 1h)
     ```
 
-* Uitgaande bytes per seconde: (vervangen `your_kafka_cluster_name` door de naam van uw cluster.)
+* Uitgaande bytes per seconde: (vervangen door `your_kafka_cluster_name` de naam van uw cluster.)
 
     ```kusto
     metrics_kafka_CL 
@@ -94,11 +93,11 @@ De stappen voor het inschakelen van Azure Monitor logboeken voor HDInsight zijn 
 
     U kunt ook invoeren `*` om te zoeken naar alle typen die zijn geregistreerd. Momenteel zijn de volgende logboeken beschikbaar voor query's:
 
-    | Logboek type | Beschrijving |
+    | Logboek type | Description |
     | ---- | ---- |
-    | Log\_kafkaserver\_-LC | Kafka Broker-server. log |
-    | Log\_kafkacontroller\_-LC | Kafka Broker controller. log |
-    | metrische gegevens\_Kafka\_cl | Kafka JMX-metrische gegevens |
+    | Log \_ kafkaserver- \_ LC | Kafka Broker-server. log |
+    | Log \_ kafkacontroller- \_ LC | Kafka Broker controller. log |
+    | metrische gegevens \_ Kafka \_ cl | Kafka JMX-metrische gegevens |
 
     ![CPU-gebruik voor Apache Kafka log Analytics](./media/apache-kafka-log-analytics-operations-management/apache-kafka-cpu-usage.png)
 

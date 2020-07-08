@@ -5,17 +5,16 @@ services: container-service
 ms.topic: conceptual
 ms.date: 12/06/2018
 ms.openlocfilehash: efe72157f598c336248e407c57bce92fe87da23a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77594739"
 ---
 # <a name="best-practices-for-container-image-management-and-security-in-azure-kubernetes-service-aks"></a>Aanbevolen procedures voor het beheer van container installatie kopieën en beveiliging in azure Kubernetes service (AKS)
 
 Wanneer u toepassingen ontwikkelt en uitvoert in azure Kubernetes service (AKS), is de beveiliging van uw containers en container installatie kopieën een belang rijke overweging. Containers met verouderde basis installatie kopieën of niet-patchde toepassings Runtimes veroorzaken een beveiligings risico en mogelijke aanvals vector. Als u deze Risico's wilt minimaliseren, integreert u hulpprogram ma's waarmee u problemen in uw containers tijdens het bouwen en tijdens de uitvoering kunt onderzoeken en oplossen. Het eerder in het proces dat het beveiligings probleem of de verouderde basis installatie kopie wordt onderschept, wordt het cluster beter beveiligd. In dit artikel worden zowel de container installatie kopieën *die zijn opgeslagen* in een container register als de actieve containers.
 
-Dit artikel is gericht op het beveiligen van uw containers in AKS. Procedures voor:
+Dit artikel is gericht op het beveiligen van uw containers in AKS. In deze zelfstudie leert u procedures om het volgende te doen:
 
 > [!div class="checklist"]
 > * Beveiligings problemen scannen en oplossen

@@ -6,10 +6,9 @@ ms.topic: reference
 ms.date: 02/28/2019
 ms.author: cshoe
 ms.openlocfilehash: 863620ce6f0af33b05ef290ae95ccdc99a53a54d
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77523033"
 ---
 # <a name="signalr-service-bindings-for-azure-functions"></a>SignalR-servicebindingen voor Azure Functions
@@ -23,7 +22,7 @@ In deze reeks artikelen wordt uitgelegd hoe u real-time berichten verifieert en 
 
 ## <a name="add-to-your-functions-app"></a>Toevoegen aan uw functions-app
 
-### <a name="functions-2x-and-higher"></a>Functies 2. x en hoger
+### <a name="functions-2x-and-higher"></a>Functions 2.x en hoger
 
 Voor het werken met de trigger en bindingen moet u verwijzen naar het juiste pakket. Het NuGet-pakket wordt gebruikt voor .NET-klassen bibliotheken terwijl de uitbreidings bundel wordt gebruikt voor alle andere toepassings typen.
 
@@ -43,7 +42,7 @@ Raadpleeg [Azure functions ontwikkeling en configuratie met de Azure signalering
 
 ### <a name="annotations-library-java-only"></a>Aantekeningen bibliotheek (alleen Java)
 
-Als u de aantekeningen van de seingevings service in Java-functies wilt gebruiken, moet u een afhankelijkheid toevoegen aan het *Azure-functions-Java-Library-seingevings-* artefact (versie 1,0 of hoger) aan uw *pom. XML* -bestand.
+Als u de aantekeningen van de seingevings service in Java-functies wilt gebruiken, moet u een afhankelijkheid toevoegen aan het *Azure-functions-Java-Library-seingevings-* artefact (versie 1,0 of hoger) aan uw *pom.xml* -bestand.
 
 ```xml
 <dependency>

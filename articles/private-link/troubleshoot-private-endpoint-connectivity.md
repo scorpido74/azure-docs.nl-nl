@@ -14,10 +14,9 @@ ms.workload: infrastructure-services
 ms.date: 01/31/2020
 ms.author: rdhillon
 ms.openlocfilehash: fcc482e6231bbd925fd500a37989052765dede58
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77538531"
 ---
 # <a name="troubleshoot-azure-private-endpoint-connectivity-problems"></a>Verbindingsproblemen met het Azure-privé-eindpunt oplossen
@@ -45,7 +44,7 @@ Bekijk deze stappen om te controleren of alle gebruikelijke configuraties naar v
 
     b. Selecteer **privé-eind punten**in het linkerdeel venster.
     
-      ![Privé-eind punten](./media/private-endpoint-tsg/private-endpoints.png)
+      ![Privé-eindpunten](./media/private-endpoint-tsg/private-endpoints.png)
 
     c. Filter en selecteer het persoonlijke eind punt dat u wilt diagnosticeren.
 

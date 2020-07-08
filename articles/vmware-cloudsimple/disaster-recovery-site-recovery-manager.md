@@ -9,10 +9,9 @@ ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
 ms.openlocfilehash: fa8b2da683d68a337df38e13726f22c5af43540a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77565924"
 ---
 # <a name="set-up-private-cloud-as-a-disaster-recovery-target-with-vmware-site-recovery-manager"></a>Een Privécloud instellen als een nood herstel doel met VMware Site Recovery Manager
@@ -146,7 +145,7 @@ Zie voor gedetailleerde installatie-instructies voor vSphere-replicatie 6,5 het 
 
 Meld u aan bij vCenter met cloudowner-gebruikers referenties na het escaleren van bevoegdheden van de CloudSimple-Portal.
 
-Maak een nieuwe gebruiker `srm-soln-admin`in vCenter en voeg deze toe aan de groep Administrators in vCenter.
+Maak een nieuwe gebruiker `srm-soln-admin` in vCenter en voeg deze toe aan de groep Administrators in vCenter.
 Meld u af bij vCenter als de cloudowner-gebruiker en meld u aan als de *soln-beheerder-* gebruiker.
 
 #### <a name="cloudsimple-portal-configure-firewall-rules-for-vra"></a>CloudSimple-portal: Firewall regels configureren voor vRA
@@ -219,7 +218,7 @@ U hebt volledige controle over de vSphere-replicatie en de software-levens duur 
 
  [Replicatie-en vSphere-replicatie technologieën kunnen zowel op de matrix als](https://blogs.vmware.com/virtualblocks/2017/06/22/srm-array-based-replication-vs-vsphere-replication) op dezelfde tijd worden gebruikt. Ze moeten echter worden toegepast op een afzonderlijke set virtuele machines (een bepaalde virtuele machine kan worden beveiligd door replicatie op basis van een matrix of vSphere, maar niet voor beide). Bovendien kan de CloudSimple-site worden geconfigureerd als een herstel site voor meerdere beveiligde sites. Zie de opties voor de meerdere locaties van de [website](https://blogs.vmware.com/virtualblocks/2016/07/28/srm-multisite/) voor meer informatie over configuraties voor meerdere locaties.
 
-## <a name="references"></a>Verwijzingen
+## <a name="references"></a>Referenties
 
 * [Documentatie voor VMware Site Recovery Manager](https://docs.vmware.com/en/Site-Recovery-Manager/index.html)
 * [Operationele limieten voor Site Recovery Manager 6,5](https://kb.vmware.com/s/article/2147110)

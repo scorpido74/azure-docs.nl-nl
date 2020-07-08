@@ -11,10 +11,9 @@ ms.topic: conceptual
 ms.date: 01/27/2019
 ms.author: memildin
 ms.openlocfilehash: 2d81e1a1218add504e1e35015276b6924da0e3e3
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77616472"
 ---
 # <a name="protect-your-azure-app-service-web-apps-and-apis"></a>Uw Azure App Service web-apps en Api's beveiligen
@@ -57,7 +56,7 @@ Als u controle en aanbevelingen voor uw App Service wilt uitschakelen, herhaalt 
 
 
 
-## <a name="see-also"></a>Zie ook
+## <a name="see-also"></a>Zie tevens
 In dit artikel hebt u kunnen lezen hoe u de bewakingsmogelijkheden in Azure Security Center gebruikt. Raadpleeg de volgende artikelen voor meer informatie over Azure Security Center:
 
 * [Beveiligingsbeleid instellen in Azure Security Center](tutorial-security-policy.md): leer hoe u beveiligingsinstellingen configureert in Azure Security Center.

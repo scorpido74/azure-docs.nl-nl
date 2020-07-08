@@ -6,10 +6,9 @@ ms.topic: how-to
 ms.date: 2/5/2020
 ms.author: ramamill
 ms.openlocfilehash: f24d321e882024d324435498adf11694037547f7
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77252224"
 ---
 # <a name="automate-mobility-service-installation"></a>De installatie van de Mobility-service automatiseren
@@ -42,7 +41,7 @@ Als u de installatie wilt automatiseren, hebt u de volgende items nodig:
 
 De volgende tabel bevat een overzicht van de hulpprogram ma's en processen voor het automatiseren van de implementatie van de Mobility-service.
 
-**Hulpprogramma** | **Nadere** | **Instructies**
+**Hulpprogramma** | **Details** | **Instructies**
 --- | --- | ---
 **Configuration Manager** | 1. Controleer of u de hierboven vermelde [vereisten](#prerequisites) hebt. <br/><br/> 2. Implementeer herstel na nood gevallen door de bron omgeving in te stellen, inclusief het downloaden van een bestand met de Site Recovery configuratie server als een VMware-VM met behulp van een OVF-sjabloon.<br/><br/> 3. u registreert de configuratie server bij de Site Recovery-service, stelt de doel-Azure-omgeving in en configureert een replicatie beleid.<br/><br/> 4. voor automatische implementatie van Mobility-Services maakt u een netwerk share met de configuratie server wachtwoordzin en de Mobility service-installatie bestanden.<br/><br/> 5. u maakt een Configuration Manager-pakket met de installatie of updates en bereidt de implementatie van de Mobility-service voor.<br/><br/> 6. u kunt vervolgens replicatie naar Azure inschakelen voor de computers waarop de Mobility-service is geïnstalleerd. | [Automatiseren met Configuration Manager](#automate-with-configuration-manager)
 **JetPatch** | 1. Controleer of u de hierboven vermelde [vereisten](#prerequisites) hebt. <br/><br/> 2. Implementeer herstel na nood gevallen door de bron omgeving in te stellen, met inbegrip van het downloaden en implementeren van JetPatch agent Manager voor Azure Site Recovery in uw Site Recovery omgeving, met behulp van een OVF-sjabloon.<br/><br/> 3. u registreert de configuratie server bij Site Recovery, stelt de doel-Azure-omgeving in en configureert een replicatie beleid.<br/><br/> 4. voor automatische implementatie initialiseert en voltooit u de configuratie van JetPatch agent Manager.<br/><br/> 5. in JetPatch kunt u een Site Recovery-beleid maken om de implementatie en upgrade van de Mobility Service-agent te automatiseren. <br/><br/> 6. u kunt vervolgens replicatie naar Azure inschakelen voor de computers waarop de Mobility-service is geïnstalleerd. | [Automatiseren met JetPatch agent Manager](https://jetpatch.com/microsoft-azure-site-recovery-deployment-guide/)<br/><br/> [Problemen met de installatie van de agent in JetPatch oplossen](https://kc.jetpatch.com/hc/articles/360035981812)
@@ -77,7 +76,7 @@ De volgende tabel bevat een overzicht van de hulpprogram ma's en processen voor 
 
 1. Kopieer de volgende installatie bestanden naar de netwerk share:
 
-   - Kopieer voor Windows _micro soft-ASR_UA_version_Windows_GA_date_Release. exe_ naar _MobSvcWindows_.
+   - Voor Windows kopieert u _Microsoft-ASR_UA_version_Windows_GA_date_Release.exe_ naar _MobSvcWindows_.
    - Voor Linux kopieert u de volgende bestanden naar _MobSvcLinux_:
      - _Micro soft-ASR_UARHEL6 -64release. tar. gz_
      - _Micro soft-ASR_UARHEL7 -64release. tar. gz_
@@ -88,14 +87,14 @@ De volgende tabel bevat een overzicht van de hulpprogram ma's en processen voor 
 
 1. Zoals beschreven in de volgende procedures kopieert u de code naar de Windows-of Linux-mappen. We gaan ervan uit dat:
 
-   - Het IP-adres van de configuratie `192.168.3.121`server is.
-   - De beveiligde netwerk bestands share is `\\ContosoSecureFS\MobilityServiceInstallers`.
+   - Het IP-adres van de configuratie server is `192.168.3.121` .
+   - De beveiligde netwerk bestands share is `\\ContosoSecureFS\MobilityServiceInstallers` .
 
 ### <a name="copy-code-to-the-windows-folder"></a>Code kopiëren naar de Windows-map
 
 Kopieer de volgende code:
 
-- Sla de code in de map _MobSvcWindows_ op als _install. bat_.
+- Sla de code in de map _MobSvcWindows_ op als _install.bat_.
 - Vervang de `[CSIP]` tijdelijke aanduidingen in dit script door de werkelijke waarden van het IP-adres van de configuratie server.
 - Het script ondersteunt nieuwe installaties van de Mobility Service-agent en updates van agents die al zijn geïnstalleerd.
 
@@ -338,24 +337,24 @@ cd /tmp
 
 ### <a name="create-a-package"></a>Een pakket maken
 
-1. Meld u aan bij de Configuration Manager-console en ga naar **software bibliotheek** > **Application Management** > -**pakketten**.
-1. Klik met de rechter muisknop op **pakketten** > **maken pakket**.
+1. Meld u aan bij de Configuration Manager-console en ga naar **software bibliotheek**  >  **Application Management**-  >  **pakketten**.
+1. Klik met de rechter muisknop op **pakketten**  >  **maken pakket**.
 1. Geef pakket Details op, inclusief een naam, beschrijving, fabrikant, taal en versie.
 1. Selecteer **Dit pakket bevat bron bestanden**.
-1. Klik op **Bladeren**en selecteer de netwerk share en de map die het relevante installatie programma bevat (_MobSvcWindows_ of _MobSvcLinux_). Selecteer vervolgens **volgende**.
+1. Klik op **Bladeren**en selecteer de netwerk share en de map die het relevante installatie programma bevat (_MobSvcWindows_ of _MobSvcLinux_). Selecteer vervolgens **Volgende**.
 
    ![Scherm opname van de wizard pakket en programma maken](./media/vmware-azure-mobility-install-configuration-mgr/create_sccm_package.png)
 
-1. Selecteer in **het programma type kiezen dat u wilt maken de** optie **standaard programma** > **volgende**.
+1. Selecteer in **het programma type kiezen dat u wilt maken de** optie **standaard programma**  >  **volgende**.
 
    ![Scherm opname van de wizard pakket en programma maken](./media/vmware-azure-mobility-install-configuration-mgr/sccm-standard-program.png)
 
 1. Geef bij **Geef informatie op over deze standaard programma** pagina de volgende waarden op:
 
-    **Bepaalde** | **Windows-waarde** | **Linux-waarde**
+    **Parameter** | **Windows-waarde** | **Linux-waarde**
     --- | --- | ---
     **Naam** | Microsoft Azure Mobility-service installeren (Windows) | Installeer Microsoft Azure Mobility service (Linux).
-    **Opdracht regel** | install. bat | ./install_linux. sh
+    **Opdrachtregel** | install.bat | ./install_linux. sh
     **Het programma kan worden uitgevoerd** | Ongeacht of er een gebruiker is aangemeld of niet | Ongeacht of er een gebruiker is aangemeld of niet
     **Andere para meters** | Standaard instelling gebruiken | Standaard instelling gebruiken
 
@@ -364,7 +363,7 @@ cd /tmp
 1. Voer de volgende taken uit in **de vereisten voor dit standaard programma opgeven**:
 
    - Voor Windows-computers selecteert u **dit programma kan alleen op de opgegeven platforms worden uitgevoerd**. Selecteer vervolgens de [ondersteunde Windows-besturings systemen](vmware-physical-azure-support-matrix.md#replicated-machines) en selecteer **volgende**.
-   - Voor Linux-machines selecteert u **dit programma kan op elk platform worden uitgevoerd**. Selecteer **volgende**.
+   - Voor Linux-machines selecteert u **dit programma kan op elk platform worden uitgevoerd**. Selecteer vervolgens **Volgende**.
 
 1. Sluit de wizard af.
 
@@ -392,7 +391,7 @@ cd /tmp
    - Om te voor komen dat het systeem onnodig opnieuw wordt opgestart, moet u de installatie van het pakket plannen tijdens het maandelijkse onderhouds venster of het venster software-updates
 
 1. Configureer op de pagina **distributie punten** de instellingen en voltooi de wizard.
-1. Bewaak de voortgang van de implementatie in de Configuration Manager-console. Ga naar **bewakings** > **implementaties** > van_\<uw\>pakket naam_.
+1. Bewaak de voortgang van de implementatie in de Configuration Manager-console. Ga naar **bewakings**  >  **implementaties**  >  _\<your package name\>_ .
 
 ### <a name="uninstall-the-mobility-service"></a>De Mobility-service verwijderen
 

@@ -8,10 +8,9 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 02/14/2020
 ms.openlocfilehash: 5529989384df75b592afa8f5e4960eb9817fb2d7
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77472516"
 ---
 # <a name="manage-ssh-access-for-domain-accounts-in-azure-hdinsight"></a>SSH-toegang beheren voor domein accounts in azure HDInsight
@@ -20,7 +19,7 @@ Op beveiligde clusters mogen standaard alle domein gebruikers in [Azure AD DS](.
 
 ## <a name="manage-access"></a>Toegang beheren
 
-Als u SSH-toegang tot specifieke gebruikers of groepen wilt `/etc/ssh/sshd_config` wijzigen, moet u deze bijwerken op elk knoop punt.
+Als u SSH-toegang tot specifieke gebruikers of groepen wilt wijzigen, moet u `/etc/ssh/sshd_config` deze bijwerken op elk knoop punt.
 
 1. Gebruik de [SSH-opdracht](../hdinsight-hadoop-linux-use-ssh-unix.md) om verbinding te maken met uw cluster. Bewerk de onderstaande opdracht door CLUSTERNAME te vervangen door de naam van uw cluster en voer vervolgens de volgende opdracht in:
 
@@ -28,7 +27,7 @@ Als u SSH-toegang tot specifieke gebruikers of groepen wilt `/etc/ssh/sshd_confi
     ssh sshuser@CLUSTERNAME-ssh.azurehdinsight.net
     ```
 
-1. Open het `ssh_confi`bestand g.
+1. Open het `ssh_confi` bestand g.
 
     ```bash
     sudo nano /etc/ssh/sshd_config
@@ -54,11 +53,11 @@ Als u SSH-toegang tot specifieke gebruikers of groepen wilt `/etc/ssh/sshd_confi
 
 ## <a name="ssh-authentication-log"></a>SSH-verificatie logboek
 
-Er wordt naar `/var/log/auth.log`het SSH-verificatie logboek geschreven. Als er mislukte aanmeldingen via SSH worden weer geven voor lokale of domein accounts, moet u het logboek door lopen om de fouten op te sporen. Vaak is het probleem mogelijk gerelateerd aan specifieke gebruikers accounts en is het meestal een goede gewoonte om andere gebruikers accounts of SSH te proberen met behulp van de standaard SSH-gebruiker (lokaal account) en vervolgens een kinit te proberen.
+Er wordt naar het SSH-verificatie logboek geschreven `/var/log/auth.log` . Als er mislukte aanmeldingen via SSH worden weer geven voor lokale of domein accounts, moet u het logboek door lopen om de fouten op te sporen. Vaak is het probleem mogelijk gerelateerd aan specifieke gebruikers accounts en is het meestal een goede gewoonte om andere gebruikers accounts of SSH te proberen met behulp van de standaard SSH-gebruiker (lokaal account) en vervolgens een kinit te proberen.
 
 ## <a name="ssh-debug-log"></a>Fout opsporing SSH-logboek
 
-Als u uitgebreide logboek registratie wilt inschakelen, moet u opnieuw `sshd` opstarten met `-d` de optie. `/usr/sbin/sshd -d` U kunt ook uitvoeren `sshd` op een aangepaste poort (zoals 2222), zodat u de hoofd-SSH-daemon niet hoeft te stoppen. U kunt ook de `-v` optie met de SSH-client gebruiken om meer logboeken te ontvangen (weer gave aan client zijde van de fouten).
+Als u uitgebreide logboek registratie wilt inschakelen, moet u opnieuw opstarten `sshd` met de `-d` optie. `/usr/sbin/sshd -d`U kunt ook uitvoeren `sshd` op een aangepaste poort (zoals 2222), zodat u de hoofd-SSH-daemon niet hoeft te stoppen. U kunt ook `-v` de optie met de SSH-client gebruiken om meer logboeken te ontvangen (weer gave aan client zijde van de fouten).
 
 ## <a name="next-steps"></a>Volgende stappen
 

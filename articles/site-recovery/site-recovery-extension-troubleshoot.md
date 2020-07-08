@@ -6,10 +6,9 @@ manager: rochakm
 ms.topic: troubleshooting
 ms.date: 11/27/2018
 ms.openlocfilehash: a780a42179a0bacf0e4a12ba1e75ae84943539b4
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77190727"
 ---
 # <a name="troubleshoot-azure-vm-extension-issues"></a>Problemen met Azure VM-extensies oplossen
@@ -42,7 +41,7 @@ Fout code: "151099"
 
 Deze fout kan optreden als de Azure-gast agent op de virtuele machine niet de status gereed heeft.
 
-U kunt de status van de Azure-gast agent controleren in het [Azure Portal](https://portal.azure.com/). Ga naar de virtuele machine die u wilt beveiligen en controleer**de status in**de**Eigenschappen** > van de **VM** > -**instellingen** > . De meeste tijd is de status van de agent gereed na het opnieuw opstarten van de virtuele machine. Als u echter niet opnieuw kunt opstarten of u nog steeds het probleem ondervindt, voert u de volgende stappen voor probleem oplossing uit:
+U kunt de status van de Azure-gast agent controleren in het [Azure Portal](https://portal.azure.com/). Ga naar de virtuele machine die u wilt beveiligen en controleer de status in de eigenschappen van de **VM**-  >  **instellingen**  >  **Properties**  >  **Agent status**. De meeste tijd is de status van de agent gereed na het opnieuw opstarten van de virtuele machine. Als u echter niet opnieuw kunt opstarten of u nog steeds het probleem ondervindt, voert u de volgende stappen voor probleem oplossing uit:
 
 - [De agent is geïnstalleerd op de VM, maar reageert niet (voor Windows-Vm's)](#the-agent-installed-in-the-vm-but-unresponsive-for-windows-vms)
 - [De agent die is geïnstalleerd in de virtuele machine is verouderd (voor Linux-Vm's)](#the-agent-installed-in-the-vm-is-out-of-date-for-linux-vms)
@@ -102,8 +101,8 @@ Verwijder de extensie en start de bewerking opnieuw.
 De uitbrei ding verwijderen:
 
 1. Ga in het [Azure Portal](https://portal.azure.com/)naar de virtuele machine waarop een back-up is mislukt.
-1. **Instellingen**selecteren.
-1. Selecteer **uitbrei dingen**.
+1. Selecteer **Instellingen**.
+1. Selecteer **Extensies**.
 1. Selecteer **site Recovery extensie**.
 1. Selecteer **Verwijderen**.
 

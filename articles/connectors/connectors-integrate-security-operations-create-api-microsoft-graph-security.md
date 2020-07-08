@@ -10,10 +10,9 @@ ms.topic: article
 ms.date: 02/21/2020
 tags: connectors
 ms.openlocfilehash: b4f51b192d1a7c0ee14a769321793753e8217dea
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77598830"
 ---
 # <a name="improve-threat-protection-by-integrating-security-operations-with-microsoft-graph-security--azure-logic-apps"></a>Verbeter de beveiliging tegen bedreigingen door beveiligings bewerkingen te integreren met Microsoft Graph Security-& Azure Logic Apps
@@ -41,7 +40,7 @@ Zie [Microsoft Graph Security API overview](https://aka.ms/graphsecuritydocs)(En
   | Eigenschap | Waarde |
   |----------|-------|
   | **Toepassings naam** | `MicrosoftGraphSecurityConnector` |
-  | **Toepassings-ID** | `c4829704-0edc-4c3d-a347-7c4a67586f3c` |
+  | **Toepassings-id** | `c4829704-0edc-4c3d-a347-7c4a67586f3c` |
   |||
 
   Voor het verlenen van toestemming voor de connector kan uw Azure AD-Tenant beheerder de volgende stappen volgen:
@@ -91,12 +90,12 @@ In dit voor beeld ziet u hoe u een werk stroom van een logische app kunt starten
 
 1.  Geef in de trigger informatie op over de waarschuwingen die u wilt bewaken. Voor meer eigenschappen opent u de lijst **nieuwe para meter toevoegen** en selecteert u een para meter om die eigenschap toe te voegen aan de trigger.
 
-   | Eigenschap | Eigenschap (JSON) | Vereist | Type | Beschrijving |
+   | Eigenschap | Eigenschap (JSON) | Vereist | Type | Description |
    |----------|-----------------|----------|------|-------------|
-   | **Bereik** | `interval` | Ja | Geheel getal | Een positief geheel getal dat aangeeft hoe vaak de werk stroom wordt uitgevoerd op basis van de frequentie. Dit zijn de minimale en maximale intervallen: <p><p>-Maand: 1-16 maanden <br>-Dag: 1-500 dagen <br>-Uur: 1-12000 uur <br>-Minuut: 1-72000 minuten <br>-Seconde: 1-9999999 seconden <p>Als het interval bijvoorbeeld 6 is en de frequentie ' month ' is, is het terugkeer patroon elke 6 maanden. |
+   | **Interval** | `interval` | Yes | Geheel getal | Een positief geheel getal dat aangeeft hoe vaak de werk stroom wordt uitgevoerd op basis van de frequentie. Dit zijn de minimale en maximale intervallen: <p><p>-Maand: 1-16 maanden <br>-Dag: 1-500 dagen <br>-Uur: 1-12000 uur <br>-Minuut: 1-72000 minuten <br>-Seconde: 1-9999999 seconden <p>Als het interval bijvoorbeeld 6 is en de frequentie ' month ' is, is het terugkeer patroon elke 6 maanden. |
    | **Frequentie** | `frequency` | Ja | Tekenreeks | De tijds eenheid voor het terugkeer patroon: **tweede**, **minuut**, **uur**, **dag**, **week**of **maand** |
-   | **Tijdzone** | `timeZone` | Nee | Tekenreeks | Is alleen van toepassing wanneer u een start tijd opgeeft, omdat deze trigger geen [UTC-offset](https://en.wikipedia.org/wiki/UTC_offset)accepteert. Selecteer de tijd zone die u wilt Toep assen. |
-   | **Begintijd** | `startTime` | Nee | Tekenreeks | Geef een begin datum en-tijd op in de volgende indeling: <p><p>JJJJ-MM-DDTuu: mm: SS als u een tijd zone selecteert <p>-of- <p>JJJJ-MM-DDTuu: mm: ssZ als u geen tijd zone selecteert <p>Als u bijvoorbeeld 18 september 2017 om 2:00 uur wilt, geeft u "2017-09-18T14:00:00" op en selecteert u een tijd zone zoals Pacific (standaard tijd). U kunt ook "2017-09-18T14:00:00Z" opgeven zonder tijd zone. <p>**Opmerking:** Deze begin tijd heeft een maximum van 49 jaar in de toekomst en moet voldoen aan de [ISO 8601 date time-specificatie](https://en.wikipedia.org/wiki/ISO_8601#Combined_date_and_time_representations) in [UTC datum tijd notatie](https://en.wikipedia.org/wiki/Coordinated_Universal_Time), maar zonder een [UTC-afwijking](https://en.wikipedia.org/wiki/UTC_offset). Als u geen tijd zone selecteert, moet u de letter ' Z ' aan het einde toevoegen zonder spaties. Deze "Z" verwijst naar de equivalente [zeemijl tijd](https://en.wikipedia.org/wiki/Nautical_time). <p>Voor eenvoudige schema's is de start tijd het eerste voorval, terwijl voor complexe schema's de trigger niet eerder dan de begin tijd wordt geactiveerd. [*Wat zijn de manieren waarop ik de begin datum en-tijd kan gebruiken?*](../logic-apps/concepts-schedule-automated-recurring-tasks-workflows.md#start-time) |
+   | **Tijdzone** | `timeZone` | No | Tekenreeks | Is alleen van toepassing wanneer u een start tijd opgeeft, omdat deze trigger geen [UTC-offset](https://en.wikipedia.org/wiki/UTC_offset)accepteert. Selecteer de tijd zone die u wilt Toep assen. |
+   | **Begin tijd** | `startTime` | No | Tekenreeks | Geef een begin datum en-tijd op in de volgende indeling: <p><p>JJJJ-MM-DDTuu: mm: SS als u een tijd zone selecteert <p>-of- <p>JJJJ-MM-DDTuu: mm: ssZ als u geen tijd zone selecteert <p>Als u bijvoorbeeld 18 september 2017 om 2:00 uur wilt, geeft u "2017-09-18T14:00:00" op en selecteert u een tijd zone zoals Pacific (standaard tijd). U kunt ook "2017-09-18T14:00:00Z" opgeven zonder tijd zone. <p>**Opmerking:** Deze begin tijd heeft een maximum van 49 jaar in de toekomst en moet voldoen aan de [ISO 8601 date time-specificatie](https://en.wikipedia.org/wiki/ISO_8601#Combined_date_and_time_representations) in [UTC datum tijd notatie](https://en.wikipedia.org/wiki/Coordinated_Universal_Time), maar zonder een [UTC-afwijking](https://en.wikipedia.org/wiki/UTC_offset). Als u geen tijd zone selecteert, moet u de letter ' Z ' aan het einde toevoegen zonder spaties. Deze "Z" verwijst naar de equivalente [zeemijl tijd](https://en.wikipedia.org/wiki/Nautical_time). <p>Voor eenvoudige schema's is de start tijd het eerste voorval, terwijl voor complexe schema's de trigger niet eerder dan de begin tijd wordt geactiveerd. [*Wat zijn de manieren waarop ik de begin datum en-tijd kan gebruiken?*](../logic-apps/concepts-schedule-automated-recurring-tasks-workflows.md#start-time) |
    ||||||
 
 1.  Wanneer u klaar bent, selecteert u op de werk balk ontwerpen de optie **Opslaan**.
@@ -109,7 +108,7 @@ Hier vindt u meer specifieke informatie over het gebruik van de verschillende ac
 
 ### <a name="manage-alerts"></a>Waarschuwingen beheren
 
-Als u de meest recente resultaten wilt filteren, sorteren of ophalen, geeft u *alleen* de [ODATA-query parameters op die door Microsoft Graph worden ondersteund](https://docs.microsoft.com/graph/query-parameters). *Geef niet* de volledige basis-URL of de http-actie, bijvoorbeeld `https://graph.microsoft.com/v1.0/security/alerts`, of de `GET` of `PATCH` -bewerking op. Hier volgt een specifiek voor beeld waarin de para meters voor een actie **Get Alerts** worden weer gegeven wanneer u een lijst met waarschuwingen met hoge urgentie wilt:
+Als u de meest recente resultaten wilt filteren, sorteren of ophalen, geeft u *alleen* de [ODATA-query parameters op die door Microsoft Graph worden ondersteund](https://docs.microsoft.com/graph/query-parameters). *Geef niet* de volledige basis-URL of de http-actie, bijvoorbeeld, `https://graph.microsoft.com/v1.0/security/alerts` of de `GET` of- `PATCH` bewerking op. Hier volgt een specifiek voor beeld waarin de para meters voor een actie **Get Alerts** worden weer gegeven wanneer u een lijst met waarschuwingen met hoge urgentie wilt:
 
 `Filter alerts value as Severity eq 'high'`
 
@@ -117,14 +116,14 @@ Voor meer informatie over de query's die u met deze connector kunt gebruiken, ra
 
 | Bewerking | Beschrijving |
 |--------|-------------|
-| **Waarschuwingen ophalen** | Ontvang waarschuwingen die worden gefilterd op basis van een of meer eigenschappen `Provider eq 'Azure Security Center' or 'Palo Alto Networks'`van [waarschuwingen](https://docs.microsoft.com/graph/api/resources/alert), bijvoorbeeld. | 
+| **Waarschuwingen ophalen** | Ontvang waarschuwingen die worden gefilterd op basis van een of meer [Eigenschappen van waarschuwingen](https://docs.microsoft.com/graph/api/resources/alert), bijvoorbeeld `Provider eq 'Azure Security Center' or 'Palo Alto Networks'` . | 
 | **Waarschuwing op ID ontvangen** | Een specifieke waarschuwing ophalen op basis van de waarschuwings-ID. | 
 | **Waarschuwing bijwerken** | Een specifieke waarschuwing bijwerken op basis van de waarschuwings-ID. Om ervoor te zorgen dat u de vereiste en bewerk bare eigenschappen in uw aanvraag doorgeeft, raadpleegt u de [Bewerk bare eigenschappen voor waarschuwingen](https://docs.microsoft.com/graph/api/alert-update). Als u bijvoorbeeld een waarschuwing wilt toewijzen aan een beveiligings analist zodat deze kan worden onderzocht, kunt u de waarschuwing voor de eigenschap **toegewezen aan** bijwerken. |
 |||
 
 ### <a name="manage-alert-subscriptions"></a>Waarschuwings abonnementen beheren
 
-Microsoft Graph ondersteunt [*abonnementen*](https://docs.microsoft.com/graph/api/resources/subscription)of [*webhooks*](https://docs.microsoft.com/graph/api/resources/webhooks). Als u abonnementen wilt ontvangen, bijwerken of verwijderen, geeft u de Odata-query parameters op die worden [ondersteund door Microsoft Graph](https://docs.microsoft.com/graph/query-parameters) aan `security/alerts` de construct Microsoft Graph entiteit en worden gevolgd door de ODATA-query. *Neem* de basis-URL niet op, bijvoorbeeld `https://graph.microsoft.com/v1.0`. Gebruik in plaats daarvan de notatie in dit voor beeld:
+Microsoft Graph ondersteunt [*abonnementen*](https://docs.microsoft.com/graph/api/resources/subscription)of [*webhooks*](https://docs.microsoft.com/graph/api/resources/webhooks). Als u abonnementen wilt ontvangen, bijwerken of verwijderen, geeft u de Odata-query parameters op die worden [ondersteund door Microsoft Graph](https://docs.microsoft.com/graph/query-parameters) aan de construct Microsoft Graph entiteit en worden `security/alerts` gevolgd door de ODATA-query. *Neem* de basis-URL niet op, bijvoorbeeld `https://graph.microsoft.com/v1.0` . Gebruik in plaats daarvan de notatie in dit voor beeld:
 
 `security/alerts?$filter=status eq 'New'`
 
@@ -132,13 +131,13 @@ Microsoft Graph ondersteunt [*abonnementen*](https://docs.microsoft.com/graph/ap
 |--------|-------------|
 | **Abonnementen maken** | [Maak een abonnement](https://docs.microsoft.com/graph/api/subscription-post-subscriptions) dat u op de hoogte brengt van eventuele wijzigingen. U kunt dit abonnement filteren op de specifieke waarschuwings typen die u wilt. U kunt bijvoorbeeld een abonnement maken dat u op de hoogte stelt van waarschuwingen met hoge urgentie. |
 | **Actieve abonnementen ophalen** | Niet- [verlopen abonnementen ophalen](https://docs.microsoft.com/graph/api/subscription-list). | 
-| **Abonnement bijwerken** | [Werk een abonnement](https://docs.microsoft.com/graph/api/subscription-update) bij door de abonnements-id op te geven. Als u uw abonnement wilt uitbreiden, kunt u bijvoorbeeld de eigenschap van `expirationDateTime` het abonnement bijwerken. | 
+| **Abonnement bijwerken** | [Werk een abonnement](https://docs.microsoft.com/graph/api/subscription-update) bij door de abonnements-id op te geven. Als u uw abonnement wilt uitbreiden, kunt u bijvoorbeeld de eigenschap van het abonnement bijwerken `expirationDateTime` . | 
 | **Abonnement verwijderen** | [Een abonnement verwijderen](https://docs.microsoft.com/graph/api/subscription-delete) door de abonnements-id op te geven. | 
 ||| 
 
 ### <a name="manage-threat-intelligence-indicators"></a>Threat Intelligence-indica toren beheren
 
-Als u de meest recente resultaten wilt filteren, sorteren of ophalen, geeft u *alleen* de [ODATA-query parameters op die door Microsoft Graph worden ondersteund](https://docs.microsoft.com/graph/query-parameters). *Geef niet* de volledige basis-URL of de http-actie, bijvoorbeeld `https://graph.microsoft.com/beta/security/tiIndicators`, of de `GET` of `PATCH` -bewerking op. Hier volgt een specifiek voor beeld waarin de para meters voor de actie **Get tiIndicators** worden weer gegeven wanneer u een `DDoS` lijst wilt met het type bedreiging:
+Als u de meest recente resultaten wilt filteren, sorteren of ophalen, geeft u *alleen* de [ODATA-query parameters op die door Microsoft Graph worden ondersteund](https://docs.microsoft.com/graph/query-parameters). *Geef niet* de volledige basis-URL of de http-actie, bijvoorbeeld, `https://graph.microsoft.com/beta/security/tiIndicators` of de `GET` of- `PATCH` bewerking op. Hier volgt een specifiek voor beeld waarin de para meters voor de actie **Get tiIndicators** worden weer gegeven wanneer u een lijst wilt met het `DDoS` type bedreiging:
 
 `Filter threat intelligence indicator value as threatType eq 'DDoS'`
 

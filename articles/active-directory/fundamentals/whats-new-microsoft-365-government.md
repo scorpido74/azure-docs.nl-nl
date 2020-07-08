@@ -14,10 +14,9 @@ ms.date: 05/07/2019
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 48a7e5e810e509a97b6010218532f6e7dff0b73f
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77425541"
 ---
 # <a name="whats-new-for-azure-active-directory-in-microsoft-365-government"></a>Wat is er nieuw voor Azure Active Directory in Microsoft 365 overheid
@@ -34,9 +33,9 @@ Dit artikel is niet van toepassing op Microsoft 365 Government-GCC-klanten.
 
 ## <a name="changes-to-the-initial-domain-name"></a>Wijzigingen in de oorspronkelijke domein naam
 
-Tijdens de eerste aanmelding van uw organisatie voor een online-Microsoft 365 Government-service, hebt u gevraagd om de domein naam van uw organisatie `<your-domain-name>.onmicrosoft.com`te kiezen. Als u al een domein naam met het achtervoegsel. com hebt, wordt niets gewijzigd.
+Tijdens de eerste aanmelding van uw organisatie voor een online-Microsoft 365 Government-service, hebt u gevraagd om de domein naam van uw organisatie te kiezen `<your-domain-name>.onmicrosoft.com` . Als u al een domein naam met het achtervoegsel. com hebt, wordt niets gewijzigd.
 
-Als u zich echter aanmeldt voor een nieuwe Microsoft 365 overheids service, wordt u gevraagd een domein naam te kiezen met behulp `.us` van het achtervoegsel. Dit is dus `<your-domain-name>.onmicrosoft.us`.
+Als u zich echter aanmeldt voor een nieuwe Microsoft 365 overheids service, wordt u gevraagd een domein naam te kiezen met behulp van het `.us` achtervoegsel. Dit is dus `<your-domain-name>.onmicrosoft.us` .
 
 >[!Note]
 >Deze wijziging is niet van toepassing op klanten die worden beheerd door Cloud serviceproviders (Csp's).
@@ -51,7 +50,7 @@ Voorheen kunnen klanten zich aanmelden met behulp van de wereld wijde Azure-port
 
 In de volgende tabel worden de eind punten voor alle klanten weer gegeven:
 
-| Naam | Details van eind punt |
+| Name | Details van eind punt |
 |------|------------------|
 | Portals |Microsoft Azure Government:https://portal.azure.us<p>Microsoft 365 overheid – GCC hoog:https://portal.office365.us<p>Microsoft 365 overheid – DoD:https://portal.apps.mil |
 | Eind punt van Azure Active Directory instantie | https://login.microsoftonline.us |
@@ -63,7 +62,7 @@ In de volgende tabel worden de eind punten voor alle klanten weer gegeven:
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Raadpleeg voor meer informatie de volgende artikelen:
+Raadpleeg deze artikelen voor meer informatie:
 
 - [Wat is Azure Government?](https://docs.microsoft.com/azure/azure-government/documentation-government-welcome)
 

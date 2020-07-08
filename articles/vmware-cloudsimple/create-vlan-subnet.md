@@ -9,10 +9,9 @@ ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
 ms.openlocfilehash: c0160513eb9abca54adbc3819b982348dc202c90
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77565992"
 ---
 # <a name="create-and-manage-vlanssubnets-for-your-private-clouds"></a>VLAN'S/subnetten voor uw privé-clouds maken en beheren
@@ -31,7 +30,7 @@ Open het tabblad VLAN'S/subnetten op de pagina netwerk om VLAN'S en subnetten vo
 5. Voer een VLAN-ID in.
 6. Voer de naam van het subnet in.
 7. Als u route ring op het VLAN (subnet) wilt inschakelen, geeft u het CIDR-bereik van het subnet op. Zorg ervoor dat het CIDR-bereik niet overlapt met een van uw on-premises subnetten, Azure-subnetten of gateway-subnet.
-8. Klik op **verzenden**.
+8. Klik op **Submit**
 
     ![VLAN/subnet maken](media/create-new-vlan-subnet-details.png)
 

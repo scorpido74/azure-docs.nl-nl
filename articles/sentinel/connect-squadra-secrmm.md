@@ -13,17 +13,16 @@ ms.workload: na
 ms.date: 02/20/2020
 ms.author: yelevin
 ms.openlocfilehash: d904e51321870fb4b61a237c23e425034b76dc0b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77588107"
 ---
 # <a name="connect-your-squadra-technologies-secrmm-data-to-azure-sentinel"></a>Verbind uw Squadra Technologies secRMM-gegevens met de Azure-Sentinel 
 
 > [!IMPORTANT]
 > De Squadra Technologies Security Removable media manager (secRMM)-gegevens connector in azure Sentinel is momenteel beschikbaar als open bare preview.
-> Deze functie wordt zonder service level agreement gegeven en wordt niet aanbevolen voor productie werkbelastingen. Misschien worden bepaalde functies niet ondersteund of zijn de mogelijkheden ervan beperkt. Zie voor meer informatie [aanvullende gebruiks voorwaarden voor Microsoft Azure-previews](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+> Deze functie wordt zonder service level agreement gegeven en wordt niet aanbevolen voor productie werkbelastingen. Misschien worden bepaalde functies niet ondersteund of zijn de mogelijkheden ervan beperkt. Zie [Supplemental Terms of Use for Microsoft Azure Previews (Aanvullende gebruiksvoorwaarden voor Microsoft Azure-previews)](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) voor meer informatie.
 
 
 Met de Squadra Technologies secRMM-connector kunt u uw Squadra Technologies secRMM-logboeken voor beveiligings oplossingen eenvoudig verbinden met Azure Sentinel. U kunt Dash boards weer geven, aangepaste waarschuwingen maken en het onderzoek verbeteren. Met deze connector beschikt u over inzicht in USB-Verwissel bare opslag gebeurtenissen. Integratie tussen Squadra Technologies secRMM en Azure Sentinel maakt gebruik van REST API.
@@ -50,8 +49,8 @@ Het kan 20 minuten duren voordat uw logboeken in Log Analytics worden weer gegev
 
 
 ## <a name="next-steps"></a>Volgende stappen
-In dit document hebt u geleerd hoe u Squadra Technologies secRMM kunt verbinden met Azure Sentinel. Raadpleeg de volgende artikelen voor meer informatie over Azure Sentinel:
-- Meer informatie over hoe u [inzicht krijgt in uw gegevens en mogelijke bedreigingen](quickstart-get-visibility.md).
-- Ga aan de slag [met het detecteren van bedreigingen met Azure Sentinel](tutorial-detect-threats-built-in.md).
+In dit document hebt u geleerd hoe u Squadra Technologies secRMM kunt verbinden met Azure Sentinel. Zie de volgende artikelen voor meer informatie over Azure Sentinel:
+- Meer informatie over het [verkrijgen van inzicht in uw gegevens en mogelijke bedreigingen](quickstart-get-visibility.md).
+- Ga aan de slag met [het detecteren van bedreigingen met Azure Sentinel](tutorial-detect-threats-built-in.md).
 - [Gebruik werkmappen](tutorial-monitor-your-data.md) om uw gegevens te bewaken.
 
