@@ -16,10 +16,10 @@ ms.date: 04/28/2020
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 799206ee08dc3b1cdac46a0e4e79d2c929138c31
-ms.sourcegitcommit: a8928136b49362448e992a297db1072ee322b7fd
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/11/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84718595"
 ---
 # <a name="tutorial-configure-workplace-by-facebook-for-automatic-user-provisioning"></a>Zelf studie: werk plek op Facebook configureren voor automatische gebruikers inrichting
@@ -74,7 +74,7 @@ Met de Azure AD-inrichtings service kunt u bereiken die worden ingericht op basi
 
 * Begin klein. Test met een klein aantal gebruikers en groepen voordat u naar iedereen uitrolt. Wanneer het bereik voor inrichting is ingesteld op toegewezen gebruikers en groepen, kunt u dit beheren door een of twee gebruikers of groepen toe te wijzen aan de app. Wanneer bereik is ingesteld op alle gebruikers en groepen, kunt u een [kenmerk op basis van bereik filteren](https://docs.microsoft.com/azure/active-directory/manage-apps/define-conditional-rules-for-provisioning-user-accounts)opgeven. 
 
-1. Meld u aan bij de [Azure-portal](https://portal.azure.com). Selecteer **bedrijfs toepassingen**en selecteer **alle toepassingen**.
+1. Meld u aan bij [Azure Portal](https://portal.azure.com). Selecteer **bedrijfs toepassingen**en selecteer **alle toepassingen**.
 
     ![De blade Bedrijfstoepassingen](common/enterprise-applications.png)
 
@@ -110,8 +110,8 @@ Met de Azure AD-inrichtings service kunt u bereiken die worden ingericht op basi
    |---|---|
    |userName|Tekenreeks|
    |displayName|Tekenreeks|
-   |actief|Booleaans|
-   |titel|Booleaans|
+   |actief|Boolean-waarde|
+   |titel|Boolean-waarde|
    |e-mail berichten [type EQ "werk]. waarde|Tekenreeks|
    |name. naam|Tekenreeks|
    |naam. familielid|Tekenreeks|

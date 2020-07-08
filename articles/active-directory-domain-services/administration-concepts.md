@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 06/05/2020
 ms.author: iainfou
 ms.openlocfilehash: 4f1f6c60ef2e0ccdd3e166e2272fe917ead3ed2e
-ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/12/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84735044"
 ---
 # <a name="management-concepts-for-user-accounts-passwords-and-administration-in-azure-active-directory-domain-services"></a>Beheer concepten voor gebruikers accounts, wacht woorden en beheer in Azure Active Directory Domain Services
@@ -25,7 +25,7 @@ Dit conceptuele artikel bevat informatie over het beheren van een beheerd domein
 
 ## <a name="domain-management"></a>Domein beheer
 
-Een beheerd domein is een DNS-naam ruimte en overeenkomende Directory. In een beheerd domein maken de domein controllers (Dc's) die alle resources zoals gebruikers en groepen, referenties en beleids regels bevatten onderdeel van de beheerde service. Voor redundantie worden twee Dc's gemaakt als onderdeel van een beheerd domein. U kunt zich niet aanmelden bij deze Dc's om beheer taken uit te voeren. In plaats daarvan maakt u een beheer-VM die is gekoppeld aan het beheerde domein en installeert u vervolgens uw normale AD DS-beheer hulpprogramma's. U kunt bijvoorbeeld de Active Directory-beheercentrum-of MMC-modules (micro soft Management Console), zoals DNS of groepsbeleid objecten, gebruiken.
+Een beheerd domein is een DNS-naamruimte en bijbehorende directory. In een beheerd domein maken de domein controllers (Dc's) die alle resources zoals gebruikers en groepen, referenties en beleids regels bevatten onderdeel van de beheerde service. Voor redundantie worden twee Dc's gemaakt als onderdeel van een beheerd domein. U kunt zich niet aanmelden bij deze Dc's om beheer taken uit te voeren. In plaats daarvan maakt u een beheer-VM die is gekoppeld aan het beheerde domein en installeert u vervolgens uw normale AD DS-beheer hulpprogramma's. U kunt bijvoorbeeld de Active Directory-beheercentrum-of MMC-modules (micro soft Management Console), zoals DNS of groepsbeleid objecten, gebruiken.
 
 ## <a name="user-account-creation"></a>Gebruikers account maken
 
@@ -46,9 +46,9 @@ Zie [wacht woord-en account vergrendelings beleid in beheerde domeinen][password
 
 ## <a name="password-hashes"></a>Wacht woord-hashes
 
-Voor het verifiëren van gebruikers in het beheerde domein heeft Azure AD DS wacht woord-hashes nodig in een indeling die geschikt is voor NT LAN Manager (NTLM) en Kerberos-verificatie. Azure AD genereert of slaat geen wacht woord-hashes in de vereiste indeling voor NTLM-of Kerberos-authenticatie totdat u Azure AD DS voor uw Tenant inschakelt. Uit veiligheids overwegingen slaat Azure AD ook geen wachtwoord referenties op in een normale tekst vorm. Daarom kan Azure AD deze NTLM-of Kerberos-wachtwoord hashes niet automatisch genereren op basis van de bestaande referenties van gebruikers.
+Voor de verificatie van gebruikers in het beheerde domein heeft Azure AD DS wachtwoordhashes nodig in een indeling die geschikt is voor NTLM- (NT LAN Manager) en Kerberos-verificatie. Totdat u Azure AD DS voor uw tenant inschakelt, maakt of bewaart Azure AD geen wachtwoordhashes in de vereiste indeling voor NTLM- of Kerberos-verificatie. Om veiligheidsredenen slaat Azure AD ook geen wachtwoorden op in niet-gecodeerde vorm. Azure AD kan deze wachtwoordhashes voor NTLM of Kerberos niet automatisch genereren op basis van bestaande referenties van gebruikers.
 
-Voor Cloud gebruikers accounts moeten gebruikers hun wacht woord wijzigen voordat ze het beheerde domein kunnen gebruiken. Door deze wachtwoord wijziging worden de wacht woord-hashes voor Kerberos-en NTLM-verificatie gegenereerd en opgeslagen in azure AD. Het account wordt niet gesynchroniseerd van Azure AD naar Azure AD DS totdat het wacht woord is gewijzigd.
+Voor Cloud gebruikers accounts moeten gebruikers hun wacht woord wijzigen voordat ze het beheerde domein kunnen gebruiken. Door deze wachtwoordwijziging worden de wachtwoordhashes voor Kerberos- en NTLM-verificatie gegenereerd en opgeslagen in Azure AD. Het account wordt niet gesynchroniseerd vanuit Azure AD naar Azure AD DS totdat het wachtwoord wordt gewijzigd.
 
 [Schakel synchronisatie van wacht woord-hashes][hybrid-phs]in voor gebruikers die zijn gesynchroniseerd vanuit een on-premises AD DS omgeving met Azure AD Connect.
 
@@ -57,10 +57,10 @@ Voor Cloud gebruikers accounts moeten gebruikers hun wacht woord wijzigen voorda
 >
 > Als uw verouderde toepassingen geen gebruikmaken van NTLM-verificatie of LDAP-eenvoudige bindingen, raden we u aan NTLM-wachtwoord hash-synchronisatie voor Azure AD DS uit te scha kelen. Zie voor meer informatie [zwak coderings suites en hash-synchronisatie van NTLM-referenties uitschakelen][secure-domain].
 
-Na de juiste configuratie worden de bruikbare wachtwoord-hashes opgeslagen in het beheerde domein. Als u het beheerde domein verwijdert, worden alle wacht woord-hashes die op dat punt zijn opgeslagen, ook verwijderd. Gesynchroniseerde referentie gegevens in azure AD kunnen niet opnieuw worden gebruikt als u later een ander beheerd domein maakt, moet u de wachtwoord-hash-synchronisatie opnieuw configureren om de wacht woord-hashes opnieuw op te slaan. Eerder aan een domein gekoppelde Vm's of gebruikers kunnen zich niet onmiddellijk verifiëren: Azure AD moet de wacht woord-hashes in het nieuwe beheerde domein genereren en opslaan. Zie [wacht woord-hash synchronisatie proces voor Azure AD DS en Azure AD Connect][azure-ad-password-sync]voor meer informatie.
+Zodra de configuratie is geslaagd, worden de bruikbare wachtwoordhashes opgeslagen in het beheerde domein. Als u het beheerde domein verwijdert, worden alle wachtwoordhashes die op dat punt zijn opgeslagen ook verwijderd. Gesynchroniseerde referentie gegevens in azure AD kunnen niet opnieuw worden gebruikt als u later een ander beheerd domein maakt, moet u de wachtwoord-hash-synchronisatie opnieuw configureren om de wacht woord-hashes opnieuw op te slaan. Eerder aan het domein toegevoegde virtuele machines of gebruikers kunnen niet direct een verificatie uitvoeren; Azure AD moet eerst de wachtwoordhashes in het nieuwe beheerd domein genereren en opslaan. Zie [Synchronisatieproces voor wachtwoordhashes voor Azure AD DS en Azure AD Connect][azure-ad-password-sync] voor meer informatie.
 
 > [!IMPORTANT]
-> Azure AD Connect moet alleen worden geïnstalleerd en geconfigureerd voor synchronisatie met on-premises AD DS-omgevingen. Het is niet mogelijk om Azure AD Connect te installeren in een beheerd domein om objecten terug te synchroniseren naar Azure AD.
+> Azure AD Connect moet alleen worden geïnstalleerd en geconfigureerd voor synchronisatie met on-premises AD DS-omgevingen. Het installeren van Azure AD Connect in een beheerd domein om objecten weer naar Azure AD te synchroniseren, wordt niet ondersteund.
 
 ## <a name="forests-and-trusts"></a>Forests en vertrouwensrelaties
 
@@ -68,9 +68,9 @@ Een *forest* is een logische constructie die door Active Directory Domain Servic
 
 In azure AD DS bevat het forest slechts één domein. On-premises AD DS bossen bevatten vaak veel domeinen. In grote organisaties, met name na fusies en acquisities, kunt u meerdere on-premises forests gebruiken die elk meerdere domeinen bevatten.
 
-Standaard wordt een beheerd domein gemaakt als een *gebruikers* forest. Dit type forest synchroniseert alle objecten van Azure AD, met inbegrip van gebruikers accounts die zijn gemaakt in een on-premises AD DS omgeving. Gebruikers accounts kunnen rechtstreeks worden geverifieerd aan de hand van het beheerde domein, bijvoorbeeld om zich aan te melden bij een virtuele machine die lid is van een domein. Een gebruikers forest werkt wanneer de wacht woord-hashes kunnen worden gesynchroniseerd en gebruikers gebruiken geen exclusieve aanmeldings methoden zoals smartcard verificatie.
+Standaard wordt een beheerd domein gemaakt als een *gebruikers* forest. Met dit type forest worden alle objecten van Azure AD gesynchroniseerd, waaronder alle gebruikersaccounts die zijn gemaakt in een on-premises AD DS-omgeving. Gebruikers accounts kunnen rechtstreeks worden geverifieerd aan de hand van het beheerde domein, bijvoorbeeld om zich aan te melden bij een virtuele machine die lid is van een domein. Een gebruikers forest werkt wanneer de wacht woord-hashes kunnen worden gesynchroniseerd en gebruikers gebruiken geen exclusieve aanmeldings methoden zoals smartcard verificatie.
 
-In een Azure AD DS- *bron* -forest verifiëren *gebruikers via een eenrichtings forestvertrouwensrelatie van hun* on-premises AD DS. Met deze benadering worden de gebruikers objecten en wacht woord-hashes niet gesynchroniseerd met Azure AD DS. De gebruikers objecten en referenties bestaan alleen in het on-premises AD DS. Met deze aanpak kunnen bedrijven hosten van resources en toepassings platforms in azure die afhankelijk zijn van klassieke verificatie, zoals LDAPS, Kerberos of NTLM, maar eventuele verificatie problemen of problemen worden verwijderd. Azure AD DS resource-forests zijn momenteel beschikbaar als preview-versie.
+In een Azure AD DS- *bron* -forest verifiëren *gebruikers via een eenrichtings forestvertrouwensrelatie van hun* on-premises AD DS. Met deze benadering worden de gebruikers objecten en wacht woord-hashes niet gesynchroniseerd met Azure AD DS. De gebruikers objecten en referenties bestaan alleen in het on-premises AD DS. Met deze aanpak kunnen bedrijven hosten van resources en toepassings platforms in azure die afhankelijk zijn van klassieke verificatie, zoals LDAPS, Kerberos of NTLM, maar eventuele verificatie problemen of problemen worden verwijderd. Azure AD DS-resourceforests bevinden zich momenteel in de preview-fase.
 
 Zie [Wat zijn resource][concepts-forest] -forests? en [Hoe worden forest-vertrouwens relaties in azure AD DS?][concepts-trust] voor meer informatie over forest-typen in azure AD DS?
 

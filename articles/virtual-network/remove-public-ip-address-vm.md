@@ -14,10 +14,10 @@ ms.workload: infrastructure-services
 ms.date: 12/04/2019
 ms.author: allensu
 ms.openlocfilehash: b171699a0c578b3761e58f6e0e977199369864a8
-ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/11/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84709960"
 ---
 # <a name="dissociate-a-public-ip-address-from-an-azure-vm"></a>Een openbaar IP-adres ontkoppelen van een Azure-VM 
@@ -28,7 +28,7 @@ U kunt de [Azure Portal](#azure-portal), de Azure [-opdracht regel interface](#a
 
 ## <a name="azure-portal"></a>Azure Portal
 
-1. Meld u aan bij de [Azure-portal](https://portal.azure.com).
+1. Meld u aan bij [Azure Portal](https://portal.azure.com).
 2. Blader naar of zoek naar de virtuele machine die u wilt loskoppelen van het open bare IP-adres en selecteer deze.
 3. Selecteer op de pagina VM de optie **overzicht**, selecteer het open bare IP-adres, zoals wordt weer gegeven in de volgende afbeelding:
 

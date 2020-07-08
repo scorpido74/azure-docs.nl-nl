@@ -14,10 +14,10 @@ ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: damendo
 ms.openlocfilehash: fb5ae2408c15baee0f37acaacc780f4d198b1521
-ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/12/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84738053"
 ---
 # <a name="use-packet-capture-for-proactive-network-monitoring-with-alerts-and-azure-functions"></a>Pakket opname gebruiken voor proactieve netwerk bewaking met waarschuwingen en Azure Functions
@@ -78,8 +78,8 @@ De eerste stap is het maken van een Azure-functie voor het verwerken van de waar
     |---|---|---|
     |**Naam van app**|PacketCaptureExample|De naam van de functie-app.|
     |**Abonnement**|[Uw abonnement] Het abonnement waarvoor u de functie-app wilt maken.||
-    |**Resource groep**|PacketCaptureRG|De resource groep die de functie-app bevat.|
-    |**Hosting plan**|Verbruiksabonnement| Het type van het plan dat door uw functie-app wordt gebruikt. Opties zijn verbruik of Azure App Service plan. |
+    |**Resourcegroep**|PacketCaptureRG|De resource groep die de functie-app bevat.|
+    |**Hostingabonnement**|Verbruiksabonnement| Het type van het plan dat door uw functie-app wordt gebruikt. Opties zijn verbruik of Azure App Service plan. |
     |**Locatie**|VS - centraal| De regio waarin de functie-app moet worden gemaakt.|
     |**Opslag account**|automatisch gegenereerde| Het opslag account dat Azure Functions vereist voor opslag voor algemeen gebruik.|
 
@@ -346,7 +346,7 @@ Ga naar een bestaande virtuele machine en voeg vervolgens een waarschuwings rege
   |---|---|---|
   |**Naam**|TCP_Segments_Sent_Exceeded|De naam van de waarschuwings regel.|
   |**Beschrijving**|Drempel waarde verzonden TCP-segmenten overschreden|De beschrijving voor de waarschuwings regel.|
-  |**Gegevens**|Verzonden TCP-segmenten| De metriek die moet worden gebruikt om de waarschuwing te activeren. |
+  |**Meting**|Verzonden TCP-segmenten| De metriek die moet worden gebruikt om de waarschuwing te activeren. |
   |**Voorwaarde**|Groter dan| De voor waarde die moet worden gebruikt bij het evalueren van de metriek.|
   |**Spreek**|100| De waarde van de metriek waarmee de waarschuwing wordt geactiveerd. Deze waarde moet worden ingesteld op een geldige waarde voor uw omgeving.|
   |**Periode**|In de afgelopen vijf minuten| Bepaalt de periode waarin de drempel waarde voor de metriek moet worden gezocht.|

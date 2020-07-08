@@ -14,10 +14,10 @@ ms.workload: infrastructure-services
 ms.date: 1/22/2020
 ms.author: kumud
 ms.openlocfilehash: 1eb32fe4950a3a27ec97026b9170d08996de0c89
-ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/11/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84707426"
 ---
 # <a name="create-change-or-delete-a-network-interface"></a>Een netwerk interface maken, wijzigen of verwijderen
@@ -67,7 +67,7 @@ De portal biedt geen optie om de netwerk interface toe te wijzen aan toepassings
 >[!Note]
 > Azure wijst pas een MAC-adres toe aan de netwerk interface nadat de netwerk interface is gekoppeld aan een virtuele machine en de virtuele machine de eerste keer wordt gestart. U kunt het MAC-adres dat door Azure wordt toegewezen aan de netwerk interface niet opgeven. Het MAC-adres blijft toegewezen aan de netwerk interface totdat de netwerk interface is verwijderd of het privé-IP-adres dat is toegewezen aan de primaire IP-configuratie van de primaire netwerk interface, wordt gewijzigd. Zie [IP-adressen beheren](virtual-network-network-interface-addresses.md) voor meer informatie over IP-adressen en IP-configuraties
 
-**Opdracht**
+**Opdrachten**
 
 |Hulpprogramma|Opdracht|
 |---|---|
@@ -115,7 +115,7 @@ De DNS-server wordt door de Azure DHCP-server toegewezen aan de netwerk interfac
      >Als de virtuele machine gebruikmaakt van een NIC die deel uitmaakt van een beschikbaarheidsset, worden alle DNS-servers die zijn opgegeven voor elk van de virtuele machines van alle Nic's die deel uitmaken van de beschikbaarheidsset, overgenomen.
 5. Selecteer **Opslaan**.
 
-**Opdracht**
+**Opdrachten**
 
 |Hulpprogramma|Opdracht|
 |---|---|
@@ -136,7 +136,7 @@ De instelling moet worden ingeschakeld voor elke netwerk interface die is gekopp
 4. Selecteer **ingeschakeld** of **uitgeschakeld** (standaard instelling) om de instelling te wijzigen.
 5. Selecteer **Opslaan**.
 
-**Opdracht**
+**Opdrachten**
 
 |Hulpprogramma|Opdracht|
 |---|---|
@@ -156,7 +156,7 @@ U kunt het subnet wijzigen, maar niet het virtuele netwerk waaraan een netwerk i
 4. Selecteer in de vervolg keuzelijst **subnet** het subnet waarnaar u de netwerk interface wilt verplaatsen.
 5. Selecteer **Opslaan**. Nieuwe dynamische adressen worden toegewezen vanuit het adres bereik van het subnet voor het nieuwe subnet. Nadat u de netwerk interface aan een nieuw subnet hebt toegewezen, kunt u, indien gewenst, een statisch IPv4-adres uit het nieuwe adres bereik van het subnet toewijzen. Zie [IP-adressen beheren](virtual-network-network-interface-addresses.md)voor meer informatie over het toevoegen, wijzigen en verwijderen van IP-adressen voor een netwerk interface.
 
-**Opdracht**
+**Opdrachten**
 
 |Hulpprogramma|Opdracht|
 |---|---|
@@ -170,7 +170,7 @@ U kunt alleen een netwerk interface toevoegen aan of verwijderen uit een toepass
 1. Begin in het vak *resources, services en documenten zoeken* bovenaan de Portal de naam van een virtuele machine met een netwerk interface die u wilt toevoegen aan of verwijderen uit een toepassings beveiligings groep. Wanneer de naam van uw virtuele machine wordt weer gegeven in de zoek resultaten, selecteert u deze.
 2. Selecteer onder **INSTELLINGEN** de optie **Netwerken**.  Selecteer **toepassings beveiligings** groepen en vervolgens **de beveiligings groepen**van de toepassing, selecteer de toepassings beveiligings groepen waaraan u de netwerk interface wilt toevoegen, of verwijder de selectie van de toepassings beveiligings groepen waarvan u de netwerk interface wilt verwijderen en selecteer vervolgens **Opslaan**. Alleen netwerk interfaces die zich in hetzelfde virtuele netwerk bevinden, kunnen worden toegevoegd aan dezelfde toepassings beveiligings groep. De toepassings beveiligings groep moet zich op dezelfde locatie bevinden als de netwerk interface.
 
-**Opdracht**
+**Opdrachten**
 
 |Hulpprogramma|Opdracht|
 |---|---|
@@ -186,7 +186,7 @@ U kunt alleen een netwerk interface toevoegen aan of verwijderen uit een toepass
 5. Selecteer **netwerk beveiligings groep** en selecteer vervolgens de netwerk beveiligings groep die u wilt koppelen aan de netwerk interface, of selecteer **geen**, om een netwerk beveiligings groep te verbreken.
 6. Selecteer **Opslaan**.
 
-**Opdracht**
+**Opdrachten**
 
 - Azure CLI: [AZ Network NIC update](/cli/azure/network/nic#az-network-nic-update)
 - Power shell: [set-AzNetworkInterface](/powershell/module/az.network/set-aznetworkinterface)
@@ -202,7 +202,7 @@ U kunt een netwerk interface verwijderen zolang deze niet is gekoppeld aan een v
 
 Wanneer u een netwerk interface verwijdert, worden alle hieraan toegewezen MAC-of IP-adressen vrijgegeven.
 
-**Opdracht**
+**Opdrachten**
 
 |Hulpprogramma|Opdracht|
 |---|---|
@@ -225,7 +225,7 @@ De meest efficiënte beveiligings regels voor elke netwerk interface die is geko
 
 Met de functie voor het controleren van de IP-stroom van Azure Network Watcher kunt u ook bepalen of beveiligings regels de communicatie tussen een virtuele machine en een eind punt verhinderen. Zie [IP-stroom controleren](../network-watcher/diagnose-vm-network-traffic-filtering-problem.md?toc=%2fazure%2fvirtual-network%2ftoc.json)voor meer informatie.
 
-**Opdracht**
+**Opdrachten**
 
 - Azure CLI: [AZ Network NIC List-effectief-NSG](/cli/azure/network/nic#az-network-nic-list-effective-nsg)
 - Power shell: [Get-AzEffectiveNetworkSecurityGroup](/powershell/module/az.network/get-azeffectivenetworksecuritygroup)
@@ -242,7 +242,7 @@ De actieve routes voor de netwerk interfaces die zijn gekoppeld aan een virtuele
 
 Met de functie volgende hop van Azure Network Watcher kunt u ook bepalen of routes de communicatie tussen een virtuele machine en een eind punt verhinderen. Zie [volgende hop](../network-watcher/diagnose-vm-network-routing-problem.md?toc=%2fazure%2fvirtual-network%2ftoc.json)voor meer informatie.
 
-**Opdracht**
+**Opdrachten**
 
 - Azure CLI: [AZ Network NIC show-ingangsdatum-route tabel](/cli/azure/network/nic#az-network-nic-show-effective-route-table)
 - Power shell: [Get-AzEffectiveRouteTable](/powershell/module/az.network/get-azeffectiveroutetable)

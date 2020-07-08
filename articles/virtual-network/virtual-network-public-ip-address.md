@@ -17,10 +17,10 @@ ms.workload: infrastructure-services
 ms.date: 08/06/2019
 ms.author: kumud
 ms.openlocfilehash: 2f71a1d26543e7436dee039592d120b52d5c9fea
-ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/11/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84710963"
 ---
 # <a name="create-change-or-delete-a-public-ip-address"></a>Een openbaar IP-adres maken, wijzigen of verwijderen
@@ -66,7 +66,7 @@ Open bare IP-adressen hebben een nominale belasting. Lees de pagina met [prijzen
    |Locatie|Ja|Moet zich op dezelfde [locatie](https://azure.microsoft.com/regions)bevinden, ook wel regio genoemd, als de resource waaraan u het open bare IP-adres koppelt.|
    |Beschikbaarheidszone| No | Deze instelling wordt alleen weer gegeven als u een ondersteunde locatie selecteert. Zie [overzicht van beschikbaarheids zones](../availability-zones/az-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json)voor een lijst met ondersteunde locaties. Als u de **basis** -SKU hebt *geselecteerd, wordt er niet* automatisch voor u geselecteerd. Als u liever een specifieke zone wilt garanderen, kunt u een specifieke zone selecteren. Een van de keuzesen is niet zone-redundant. Als u de **Standard** -SKU hebt geselecteerd: zone-redundante wordt automatisch voor u geselecteerd en wordt het gegevenspad flexibeler voor zone storingen. Als u de voor keur geeft aan een specifieke zone, wat niet kan leiden tot een zone storing, kunt u een specifieke zone selecteren.
 
-**Opdracht**
+**Opdrachten**
 
 Hoewel de Portal de mogelijkheid biedt om twee open bare IP-adres bronnen te maken (één IPv4 en één IPv6), maken de volgende CLI-en Power shell-opdrachten één resource met een adres voor één of meer IP-versies. Als u twee open bare IP-adres bronnen wilt, één voor elke IP-versie, moet u de opdracht twee keer uitvoeren, waarbij u verschillende namen en IP-versies opgeeft voor de open bare IP-adres bronnen.
 
@@ -87,7 +87,7 @@ Hoewel de Portal de mogelijkheid biedt om twee open bare IP-adres bronnen te mak
    >[!WARNING]
    >Wanneer u de toewijzings methode van statisch naar dynamisch wijzigt, verliest u het IP-adres dat is toegewezen aan het open bare IP-adres. Terwijl de Azure open bare DNS-servers een toewijzing onderhouden tussen statische of dynamische adressen en een DNS-naam label (als u deze hebt gedefinieerd), kan een dynamisch IP-adres worden gewijzigd wanneer de virtuele machine wordt gestart nadat de status gestopt (toewijzing ongedaan gemaakt) is. Wijs een statisch IP-adres toe om te voor komen dat het adres wordt gewijzigd.
 
-**Opdracht**
+**Opdrachten**
 
 |Hulpprogramma|Opdracht|
 |---|---|

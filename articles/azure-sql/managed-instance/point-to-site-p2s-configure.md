@@ -13,10 +13,10 @@ ms.author: srbozovi
 ms.reviewer: sstein, carlrab, bonova, jovanpop
 ms.date: 03/13/2019
 ms.openlocfilehash: 7b9c9fc6259656af77bf1ba1b95ccf190cbd85da
-ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/11/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84708623"
 ---
 # <a name="quickstart-configure-a-point-to-site-connection-to-azure-sql-managed-instance-from-on-premises"></a>Snelstartgids: een punt-naar-site-verbinding naar een met Azure SQL beheerd exemplaar van on-premises configureren
@@ -65,7 +65,7 @@ Voor deze snelstartgids geldt het volgende:
 
 ## <a name="create-a-vpn-connection"></a>Een VPN-verbinding maken
 
-1. Meld u aan bij de [Azure-portal](https://portal.azure.com/).
+1. Meld u aan bij [Azure Portal](https://portal.azure.com/).
 2. Open de resource groep waarin u de gateway van het virtuele netwerk hebt gemaakt en open vervolgens de bron van de virtuele netwerk gateway.
 3. Selecteer **punt-naar-site-configuratie** en selecteer vervolgens **VPN-client downloaden**.
 
@@ -83,7 +83,7 @@ Voor deze snelstartgids geldt het volgende:
 1. Ga naar **VPN** in **netwerk & Internet** op uw on-premises client computer en selecteer het virtuele netwerk van uw SQL Managed instance om een verbinding met dit VNet tot stand te brengen. Het VNet bevindt zich in de volgende afbeelding met de naam **MyNewVNet**.
 
     ![VPN-verbinding](./media/point-to-site-p2s-configure/vpn-connection.png)  
-2. Selecteer **Verbinden**.
+2. Selecteer **Verbinding maken**.
 3. Selecteer in het dialoog venster **verbinding maken**.
 
     ![VPN-verbinding](./media/point-to-site-p2s-configure/vpn-connection2.png)  
@@ -107,5 +107,5 @@ Nadat u verbinding hebt gemaakt, kunt u uw systeem-en gebruikers databases weer 
 ## <a name="next-steps"></a>Volgende stappen
 
 - Zie [een punt-naar-site-verbinding configureren](point-to-site-p2s-configure.md)voor een Snelstartgids waarin wordt getoond hoe u verbinding maakt vanaf een virtuele Azure-machine.
-- Zie [Connect your applications to SQL Managed instance](connect-application-instance.md)(Engelstalig) voor een overzicht van de verbindings opties voor toepassingen.
+- Zie [Uw toepassingen verbinden met SQL Managed Instance](connect-application-instance.md) voor een overzicht van de verbindingsopties voor toepassingen.
 - Als u een bestaande SQL Server-Data Base van on-premises naar een beheerd exemplaar wilt herstellen, kunt u [Azure database Migration service gebruiken voor migratie](../../dms/tutorial-sql-server-to-managed-instance.md) of de [T-SQL-opdracht herstellen](restore-sample-database-quickstart.md) om een back-upbestand van een Data Base te herstellen.

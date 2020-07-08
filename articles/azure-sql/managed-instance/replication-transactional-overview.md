@@ -13,10 +13,10 @@ ms.author: mathoma
 ms.reviewer: carlrab
 ms.date: 04/20/2020
 ms.openlocfilehash: 2163a6e47767f6ce990526c7ececb7b4b554bf4e
-ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/11/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84708494"
 ---
 # <a name="transactional-replication-with-azure-sql-managed-instance"></a>Transactionele replicatie met Azure SQL Managed instance
@@ -198,7 +198,7 @@ Zie de volgende zelf studies voor meer informatie over het configureren van tran
 - [Maak een publicatie](https://docs.microsoft.com/sql/relational-databases/replication/publish/create-a-publication).
 - [Maak een push-abonnement](https://docs.microsoft.com/sql/relational-databases/replication/create-a-push-subscription) met behulp van de server naam als abonnee (bijvoorbeeld `N'azuresqldbdns.database.windows.net` en de data base in Azure SQL database naam als de doel database (bijvoorbeeld **AdventureWorks**). )
 
-## <a name="see-also"></a>Zie ook  
+## <a name="see-also"></a>Zie tevens  
 
 - [Replicatie met een door SQL beheerd exemplaar en een failovergroep](transact-sql-tsql-differences-sql-server.md#replication)
 - [Replicatie naar SQL Database](../database/replication-to-sql-database.md)

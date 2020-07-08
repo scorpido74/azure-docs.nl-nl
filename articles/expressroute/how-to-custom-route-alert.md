@@ -8,10 +8,10 @@ ms.topic: how-to
 ms.date: 05/29/2020
 ms.author: cherylmc
 ms.openlocfilehash: 42f416cf6f297eb54298a10162e7ba28f7acd1bd
-ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/12/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84738478"
 ---
 # <a name="configure-custom-alerts-to-monitor-advertised-routes"></a>Aangepaste waarschuwingen configureren voor het bewaken van aangekondigde routes
@@ -283,7 +283,7 @@ Maak in **Logic app Designer**een logische app met behulp van de sjabloon voor d
 
 ### <a name="2-add-a-trigger"></a>2. een trigger toevoegen
 
-Elke logische app wordt gestart door een trigger. Een trigger wordt geactiveerd wanneer een bepaalde gebeurtenis plaatsvindt of wanneer aan een bepaalde voor waarde wordt voldaan. Telkens wanneer de trigger wordt geactiveerd, maakt de Azure Logic Apps-Engine een exemplaar van een logische app waarmee de werk stroom wordt gestart en uitgevoerd.
+Elke logische app wordt gestart door een trigger. Een trigger wordt geactiveerd wanneer een bepaalde gebeurtenis plaatsvindt of wanneer aan een bepaalde voor waarde wordt voldaan. Steeds wanneer de trigger wordt geactiveerd, maakt de Azure Logic Apps-engine een exemplaar van een logische app dat wordt gestart en de werkstroom uitvoert.
 
 Als u regel matig een logische app wilt uitvoeren die is gebaseerd op een vooraf gedefinieerde tijd schema, voegt u het ingebouwde **terugkeer patroon: schema** toe aan uw werk stroom. Typ **schema**in het zoekvak. Selecteer **Triggers**. Selecteer in de lijst triggers de optie **terugkeer patroon**.
 
@@ -330,7 +330,7 @@ Een logische app heeft toegang tot andere apps, services en het platform, hoewel
 
 2. Geef op de pagina **taak uitvoer ophalen** de vereiste informatie op voor toegang tot het Automation-account. Selecteer het **abonnement, de resource groep**en het **Automation-account** dat u wilt gebruiken. Klik in het vak **taak-id** . Wanneer de lijst met **dynamische inhoud** wordt weer gegeven, selecteert u **taak-id**.
 
-   :::image type="content" source="./media/custom-route-alert-portal/job-id.png" alt-text="Taak-ID" lightbox="./media/custom-route-alert-portal/job-id-expand.png":::
+   :::image type="content" source="./media/custom-route-alert-portal/job-id.png" alt-text="Taak-id" lightbox="./media/custom-route-alert-portal/job-id-expand.png":::
 
 ### <a name="5-parse-the-json"></a><a name="parse"></a>5. de JSON parseren
 

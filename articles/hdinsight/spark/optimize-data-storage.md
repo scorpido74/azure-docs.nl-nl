@@ -8,10 +8,10 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 05/20/2020
 ms.openlocfilehash: 7162e2e8c42f3e83a47c46d739f93cfc4cfcaac6
-ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/12/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84737628"
 ---
 # <a name="data-storage-optimization-for-apache-spark"></a>Optimalisatie van gegevens opslag voor Apache Spark
@@ -20,35 +20,35 @@ In dit artikel worden strategieën beschreven voor het optimaliseren van gegeven
 
 ## <a name="overview"></a>Overzicht
 
-Spark ondersteunt veel indelingen, zoals CSV, JSON, XML, Parquet, Orc en AVRO. Spark kan worden uitgebreid ter ondersteuning van veel meer indelingen met externe gegevens bronnen. Zie [Apache Spark pakketten](https://spark-packages.org)voor meer informatie.
+Spark biedt ondersteuning voor veel indelingen, zoals csv, json, xml, parquet, orc en avro. Spark kan worden uitgebreid om ondersteuning te bieden voor veel meer indelingen met externe gegevensbronnen. Raadpleeg [Apache Spark-pakketten](https://spark-packages.org) voor meer informatie.
 
-De beste prestatie-indeling is Parquet met *Snappy-compressie*. Dit is de standaard waarde in Spark 2. x. Parquet slaat gegevens op in de kolom indeling en is zeer geoptimaliseerd in Spark.
+De beste indeling voor prestaties is parquet met *snappy-compressie*. Dit is de standaardinstelling in Spark 2.x. Met parquet worden gegevens opgeslagen in de kolomindeling. Parquet is bovendien zeer geoptimaliseerd in Spark.
 
 ## <a name="choose-data-abstraction"></a>Gegevens abstractie kiezen
 
-Eerdere Spark-versies gebruiken Rdd's tot abstracte gegevens, Spark 1,3 en 1,6, respectievelijk DataFrames en gegevens sets. Houd rekening met de volgende relatieve voor delen:
+Eerdere Spark-versies gebruiken RDD’s voor gegevensabstractie. In Spark 1.3 en 1.6 zijn respectievelijk DataFrames en DataSets geïntroduceerd. Bekijk de volgende relatieve voordelen:
 
 * **DataFrames**
     * Beste keuze in de meeste situaties.
-    * Biedt query optimalisatie via Catalyst.
-    * Genereren van code in hele fase.
-    * Directe geheugen toegang.
-    * Overhead van lage Garbage Collection (GC).
-    * Niet als gegevens sets voor ontwikkel aars, omdat er geen compilatie controles of het Program meren van domein objecten zijn.
-* **Sets**
-    * Goed in complexe ETL-pijp lijnen waarbij de prestaties worden beïnvloed.
-    * Niet goed in aggregaties waarbij de prestatie-impact aanzienlijk kan zijn.
-    * Biedt query optimalisatie via Catalyst.
-    * Ontwikkel aars-vriendelijk door het opgeven van controle en compilatie van domein objecten.
-    * Overhead voor serialisatie/deserialisatie toevoegen.
+    * Biedt queryoptimalisatie via Catalyst.
+    * Codegeneratie in de volledige fase.
+    * Directe geheugentoegang.
+    * Lage GC-overhead (garbagecollection).
+    * Niet zo ontwikkelaarsvriendelijk als DataSets, omdat er geen controle van compilatietijd of programmering van domeinobjecten beschikbaar is.
+* **DataSets**
+    * Goed voor complexe ETL-pijplijnen, waarbij de impact op de prestaties acceptabel is.
+    * Niet goed voor aggregaties waarbij de impact op de prestaties aanzienlijk kan zijn.
+    * Biedt queryoptimalisatie via Catalyst.
+    * Ontwikkelaarsvriendelijk vanwege de beschikbare programmering van domeinobjecten en controle van compilatietijd.
+    * Voegt overhead voor serialisatie/deserialisatie toe.
     * Hoge GC-overhead.
-    * Het genereren van code met hele fase verbreken.
-* **Rdd's**
-    * U hoeft geen Rdd's te gebruiken, tenzij u een nieuwe aangepaste RDD wilt maken.
-    * Geen query optimalisatie via Catalyst.
-    * Geen code voor het genereren van de hele fase.
+    * Verbreekt codegeneratie in de volledige fase.
+* **RDD’s**
+    * U hoeft geen RDD's te gebruiken, tenzij u een nieuwe aangepaste RDD wilt maken.
+    * Geen queryoptimalisatie via Catalyst.
+    * Geen codegeneratie in de volledige fase.
     * Hoge GC-overhead.
-    * Moeten Spark 1. x verouderde Api's gebruiken.
+    * Moeten gebruikmaken van verouderde API’s voor Spark 1.x.
 
 ## <a name="select-default-storage"></a>Standaard opslag selecteren
 
@@ -66,7 +66,7 @@ Zie [opslag opties vergelijken voor gebruik met Azure HDInsight-clusters](../hdi
 
 ## <a name="use-the-cache"></a>De cache gebruiken
 
-Spark biedt eigen systeem eigen caching-mechanismen die kunnen worden gebruikt via verschillende methoden, zoals `.persist()` , `.cache()` en `CACHE TABLE` . Deze systeem eigen cache is effectief met kleine gegevens sets en in ETL-pijp lijnen waar u tussenliggende resultaten in de cache moet opslaan. Spark native caching werkt echter niet goed met partitioneren, omdat het partitioneren van gegevens niet wordt bewaard in een tabel in de cache. Een meer generieke en betrouw bare cache techniek is het opslaan van de *opslag laag in de cache*.
+Spark biedt systeemeigen mechanismen voor caching die kunnen worden gebruikt via verschillende methoden, zoals `.persist()`, `.cache()` en `CACHE TABLE`. Deze systeem eigen cache is effectief met kleine gegevens sets en in ETL-pijp lijnen waar u tussenliggende resultaten in de cache moet opslaan. Systeemeigen Spark-caching werkt momenteel echter niet goed met partitionering, omdat gepartitioneerde gegevens niet behouden blijven in een in cache geplaatste tabel. Een meer generieke en betrouw bare cache techniek is het opslaan van de *opslag laag in de cache*.
 
 * Systeem eigen Spark-caching (niet aanbevolen)
     * Geschikt voor kleine gegevens sets.
@@ -81,24 +81,24 @@ Spark biedt eigen systeem eigen caching-mechanismen die kunnen worden gebruikt v
     * Maakt gebruik van SSD-caching.
     * Gegevens in de cache gaan verloren wanneer u het cluster verwijdert, waardoor een cache opnieuw moet worden opgebouwd.
 
-## <a name="optimize-data-serialization"></a>Gegevens serialisatie optimaliseren
+## <a name="optimize-data-serialization"></a>Gegevensserialisatie optimaliseren
 
-Spark-taken worden gedistribueerd, zodat de juiste gegevens serialisatie belang rijk is voor de beste prestaties.  Er zijn twee opties voor serialisatie voor Spark:
+Spark-taken worden gedistribueerd, daarom is de juiste gegevensserialisatie belangrijk voor de beste prestaties.  Er zijn twee opties voor serialisatie voor Spark:
 
-* Java-serialisatie is de standaard instelling.
+* Java-serialisatie is de standaardinstelling.
 * `Kryo`serialisatie is een nieuwere indeling en kan leiden tot snellere en meer compacte serialisatie dan Java.  `Kryo`Hiervoor moet u de klassen in het programma registreren en wordt niet alle serialiseerbare typen ondersteund.
 
-## <a name="use-bucketing"></a>Bucket gebruiken
+## <a name="use-bucketing"></a>Bucketing gebruiken
 
-Bucket is vergelijkbaar met het partitioneren van gegevens. Elke Bucket kan echter een set kolom waarden bevatten in plaats van slechts één. Deze methode werkt goed voor het partitioneren van grote aantallen (in miljoenen of meer) waarden, zoals product-id's. Een Bucket wordt bepaald door de Bucket sleutel van de rij te hashen. Gebucketse tabellen bieden unieke optimalisaties, omdat ze meta gegevens opslaan over hoe ze zijn Bucket en gesorteerd.
+Bucket is vergelijkbaar met het partitioneren van gegevens. Elke Bucket kan echter een set kolom waarden bevatten in plaats van slechts één. Deze methode werkt goed voor het partitioneren van grote aantallen (in miljoenen of meer) waarden, zoals product-id's. Een bucket wordt bepaald door de bucketsleutel van de rij te hashen. Tabellen die in buckets zijn geplaatst, bieden unieke optimalisaties, omdat ze metagegevens bevatten over de bucketing of sortering.
 
-Enkele geavanceerde functies voor Bucket zijn:
+Enkele geavanceerde functies voor bucketing zijn:
 
-* Query optimalisatie op basis van het Bucket van meta gegevens.
+* Queryoptimalisatie op basis van bucketing van metagegevens.
 * Geoptimaliseerde aggregaties.
-* Geoptimaliseerde samen voegingen.
+* Geoptimaliseerde joins.
 
-U kunt partitioneren en gelijktijdig buckets gebruiken.
+U kunt partitionering en bucketing gelijktijdig gebruiken.
 
 ## <a name="next-steps"></a>Volgende stappen
 

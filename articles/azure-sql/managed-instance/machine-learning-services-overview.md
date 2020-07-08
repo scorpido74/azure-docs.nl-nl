@@ -13,10 +13,10 @@ ms.reviewer: carlrab, davidph
 manager: cgronlun
 ms.date: 06/03/2020
 ms.openlocfilehash: b5daf283df1ef5d6b42da5bf0a4652aedf2f6284
-ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/11/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84708736"
 ---
 # <a name="machine-learning-services-in-azure-sql-managed-instance-preview"></a>Machine Learning Services in Azure SQL Managed instance (preview-versie)
@@ -24,7 +24,7 @@ ms.locfileid: "84708736"
 Machine Learning Services is een functie van Azure SQL Managed instance (preview) dat in-data base-machine learning biedt en zowel python-als R-scripts ondersteunt. De functie bevat micro soft python en R-pakketten voor predictive analytics met hoge prestaties en machine learning. De relationele gegevens kunnen worden gebruikt in scripts via opgeslagen procedures, een T-SQL-script met python-of R-instructies of python-of R-code met T-SQL.
 
 > [!IMPORTANT]
-> Machine Learning Services is een functie van een Azure SQL Managed instance die momenteel beschikbaar is als open bare preview.
+> Machine Learning Services is een functie van Azure SQL Managed Instance die momenteel beschikbaar is als openbare preview.
 > Deze preview-functie is in eerste instantie beschikbaar in een beperkt aantal regio's in de VS, Azië en Australië, met extra regio's die later worden toegevoegd.
 >
 > Deze preview-versie wordt aangeboden zonder service level agreement en wordt niet aanbevolen voor productieworkloads. Misschien worden bepaalde functies niet ondersteund of zijn de mogelijkheden ervan beperkt.
@@ -52,11 +52,11 @@ Basis distributies van python en R zijn opgenomen in Machine Learning Services. 
 
 Deze beperkte open bare preview is onderhevig aan de voor [waarden van Azure preview](https://azure.microsoft.com/support/legal/preview-supplemental-terms/). 
 
-Als u geïnteresseerd bent in het toevoegen van het preview-programma en deze voor waarden accepteert, kunt u de inschrijving aanvragen door een ondersteunings ticket voor Azure te maken op [https://azure.microsoft.com/support/create-ticket/](https://azure.microsoft.com/support/create-ticket/) . Voor ' probleem type ' selecteert u ' Technical ' voor ' service ' selecteert u ' SQL Database Managed instance ' en selecteert u ' Overig '. In uw aanvraag is dit de status die u wilt inschrijven voor een beperkte open bare preview van Machine Learning voor een SQL Managed instance met de volgende details: naam, regio en abonnements-ID van de logische server.
+Als u geïnteresseerd bent in het toevoegen van het preview-programma en deze voor waarden accepteert, kunt u de inschrijving aanvragen door een ondersteunings ticket voor Azure te maken op [https://azure.microsoft.com/support/create-ticket/](https://azure.microsoft.com/support/create-ticket/) . Voor ' probleem type ' selecteert u ' Technical ' voor ' service ' selecteert u ' SQL Database Managed instance ' en selecteert u ' Overig '. In uw aanvraag vermeldt u dat u zich wilt inschrijven voor een beperkte openbare preview van Machine Learning voor SQL Managed Instance. Geef de volgende details op: naam van logische server, regio en abonnements-id.
 
-Zodra u bent Inge schreven in het programma, wordt u door micro soft naar de open bare preview gewerkt en Machine Learning Services voor uw bestaande of nieuwe data base in te scha kelen.
+Zodra u voor het programma staat ingeschreven, vindt onboarding plaats voor de openbare preview en wordt Machine Learning Services voor uw bestaande of nieuwe database ingeschakeld.
 
-Machine Learning Services in SQL Managed instance wordt niet aanbevolen voor productie werkbelastingen tijdens de open bare preview.
+Machine Learning Services in SQL Managed Instance wordt niet aanbevolen voor productieworkloads tijdens de openbare preview.
 
 ## <a name="next-steps"></a>Volgende stappen
 

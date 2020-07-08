@@ -13,10 +13,10 @@ ms.author: jovanpop
 ms.reviewer: sstein, carlrab, srbozovi, bonova
 ms.date: 02/18/2019
 ms.openlocfilehash: 76c4e2c5052e70c4c6cb8ff631151a5e6fc544e5
-ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/11/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84706355"
 ---
 # <a name="quickstart-configure-an-azure-vm-to-connect-to-azure-sql-managed-instance"></a>Snelstartgids: een Azure-VM configureren om verbinding te maken met een door Azure SQL beheerd exemplaar
@@ -81,7 +81,7 @@ De eenvoudigste manier om een virtuele client machine met alle benodigde hulppro
    | Instelling| Voorgestelde waarde | Beschrijving |
    | ---------------- | ----------------- | ----------- |
    | **Abonnement** | Een geldig abonnement | Moet een abonnement zijn waarin u gemachtigd bent om nieuwe resources te maken. |
-   | **Resource groep** |De resource groep die u hebt opgegeven in de Snelstartgids voor het [maken van SQL Managed instance](instance-create-quickstart.md)|Deze resource groep moet het VNet zijn.|
+   | **Resourcegroep** |De resource groep die u hebt opgegeven in de Snelstartgids voor het [maken van SQL Managed instance](instance-create-quickstart.md)|Deze resource groep moet het VNet zijn.|
    | **Locatie** | De locatie voor de resource groep | Deze waarde wordt ingevuld op basis van de geselecteerde resource groep. |
    | **Naam van virtuele machine**  | Een geldige naam | Zie [Naming conventions](/azure/architecture/best-practices/resource-naming) (Naamgevingsconventies) voor geldige namen.|
    |**Gebruikers naam beheerder**|Een geldige gebruikers naam|Zie [Naming conventions](/azure/architecture/best-practices/resource-naming) (Naamgevingsconventies) voor geldige namen. Maak geen gebruik van 'serverbeheerder' aangezien dit een rol is die op serverniveau is gereserveerd.<br>U gebruikt deze gebruikers naam telkens wanneer u [verbinding maakt met de virtuele machine](#connect-to-the-virtual-machine).|
@@ -112,7 +112,7 @@ De volgende stappen laten zien hoe u verbinding maakt met uw nieuwe virtuele mac
 
     ![VM](./media/connect-vm-instance-configure/vm.png)  
 
-2. Selecteer **Verbinden**.
+2. Selecteer **Verbinding maken**.
 
    Een Remote Desktop Protocol bestand (RDP-bestand) wordt weer gegeven met het open bare IP-adres en het poort nummer voor de virtuele machine.
 
@@ -147,5 +147,5 @@ Nadat u verbinding hebt gemaakt, kunt u uw systeem en gebruikersdatabases bekijk
 ## <a name="next-steps"></a>Volgende stappen
 
 - Zie [een punt-naar-site-verbinding configureren](point-to-site-p2s-configure.md)voor een Snelstartgids waarin wordt getoond hoe u verbinding maakt met een on-premises client computer met behulp van een punt-naar-site-verbinding.
-- Zie [Connect your applications to SQL Managed instance](connect-application-instance.md)(Engelstalig) voor een overzicht van de verbindings opties voor toepassingen.
+- Zie [Uw toepassingen verbinden met SQL Managed Instance](connect-application-instance.md) voor een overzicht van de verbindingsopties voor toepassingen.
 - Als u een bestaande SQL Server-Data Base van on-premises naar een beheerd exemplaar wilt herstellen, kunt u [Azure database Migration service gebruiken voor migratie](../../dms/tutorial-sql-server-to-managed-instance.md) of de [T-SQL-opdracht herstellen](restore-sample-database-quickstart.md) om een back-upbestand van een Data Base te herstellen.

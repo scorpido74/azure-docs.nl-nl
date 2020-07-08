@@ -9,10 +9,10 @@ ms.date: 09/17/2019
 ms.author: cherylmc
 ms.custom: seodec18
 ms.openlocfilehash: a4ed99d69d1c2389e73c215bccfd6112895e791d
-ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/12/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84737067"
 ---
 # <a name="connect-a-virtual-network-to-an-expressroute-circuit-using-the-portal"></a>Een virtueel netwerk verbinden aan een ExpressRoute-circuit met behulp van de portal
@@ -124,7 +124,7 @@ De circuit gebruiker heeft de resource-ID en een autorisatie sleutel nodig van d
 5. Selecteer op de pagina **instellingen** de **virtuele netwerk gateway** en schakel het selectie vakje **autorisatie inwisselen** in.
 6. Voer de **autorisatie sleutel** en de **URI van het peer circuit** in en geef de verbinding een naam. Klik op **OK**. De **URI van het peer circuit** is de resource-id van het ExpressRoute-circuit (dat u kunt vinden onder het instellingen venster Eigenschappen van het ExpressRoute-circuit).
 
-   ![De pagina Instellingen](./media/expressroute-howto-linkvnet-portal-resource-manager/Connection4.png)
+   ![Pagina Instellingen](./media/expressroute-howto-linkvnet-portal-resource-manager/Connection4.png)
 7. Controleer de informatie op de pagina **samen vatting** en klik op **OK**.
 
 **Een verbindings autorisatie vrijgeven**

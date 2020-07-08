@@ -8,10 +8,10 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 05/20/2020
 ms.openlocfilehash: 06bb8f2005dae9e36fe55547a31c81c36d0c7068
-ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/12/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84737645"
 ---
 # <a name="memory-usage-optimization-for-apache-spark"></a>Optimalisatie van geheugen gebruik voor Apache Spark
@@ -20,28 +20,28 @@ In dit artikel wordt beschreven hoe u het geheugen beheer van uw Apache Spark cl
 
 ## <a name="overview"></a>Overzicht
 
-Spark werkt door gegevens in het geheugen te plaatsen. Het beheren van geheugen bronnen is dus een belang rijk aspect van het optimaliseren van de uitvoering van Spark-taken.  Er zijn verschillende technieken die u kunt Toep assen om het geheugen van uw cluster efficiënt te gebruiken.
+Spark werkt door gegevens in het geheugen te plaatsen. Het beheren van geheugen bronnen is dus een belang rijk aspect van het optimaliseren van de uitvoering van Spark-taken.  Er zijn verschillende technieken die u kunt toepassen om het geheugen van uw cluster efficiënt te gebruiken.
 
-* Geniet de voor keur van kleinere gegevens partities en een account voor gegevens grootte, typen en distributie in uw strategie voor partitioneren.
+* Gebruik eerder kleinere gegevenspartities en houd in uw partitiestrategie rekening met gegevensgrootten, -typen, en -distributie.
 * Overweeg de nieuwere, efficiënter [`Kryo data serialization`](https://github.com/EsotericSoftware/kryo) , in plaats van de standaard-Java-serialisatie.
 * Geniet van de voor keur aan GARENs, omdat deze `spark-submit` door batch worden gescheiden.
-* Spark-configuratie-instellingen bewaken en afstemmen.
+* Bewaak Spark-configuratie-instellingen en verfijn ze.
 
-Ter referentie worden de Spark-geheugen structuur en enkele para meters voor de door Voer van de sleutel in de volgende afbeelding weer gegeven.
+Ter referentie worden de Spark-geheugenstructuur en enkele belangrijke geheugenparameters voor de uitvoerder weergegeven in de volgende afbeelding.
 
 ## <a name="spark-memory-considerations"></a>Overwegingen voor Spark-geheugen
 
 Als u Apache Hadoop GARENs gebruikt, beheert garen het geheugen dat door alle containers op elk Spark-knoop punt wordt gebruikt.  In het volgende diagram ziet u de belangrijkste objecten en hun relaties.
 
-![Vonk geheugen beheer van garen](./media/apache-spark-perf/apache-yarn-spark-memory.png)
+![Geheugenbeheer met YARN Spark](./media/apache-spark-perf/apache-yarn-spark-memory.png)
 
-Probeer het volgende om berichten over onvoldoende geheugen te adresseren:
+Probeer het volgende om berichten over onvoldoende geheugen af te handelen:
 
-* DAG beheer in wille keurige volg orde controleren. Verlaag met rebuising aan de kaart zijde, pre-Partition (of buckets) bron gegevens, Maximaliseer enkele wille keurige volg orde en verminder de hoeveelheid verzonden gegevens.
-* `ReduceByKey`De voor keur met de vaste geheugen limiet tot `GroupByKey` , die aggregaties, windowing en andere functies biedt, maar wel een niet-gebonden geheugen limiet heeft.
-* `TreeReduce`Voor keur, waarmee u meer werk kunt doen aan de uitvoerders of partities, aan `Reduce` , dat alles op het stuur programma werkt.
+* Bekijk beheer-shuffles in DAG. Verlaag met rebuising aan de kaart zijde, pre-Partition (of buckets) bron gegevens, Maximaliseer enkele wille keurige volg orde en verminder de hoeveelheid verzonden gegevens.
+* Gebruik eerder `ReduceByKey` - met de bijbehorende vaste geheugenlimiet - in plaats van `GroupByKey`, wat aggregaties, vensterbewerking en andere functies biedt, maar waarvoor een niet-gebonden geheugenlimiet geldt.
+* Gebruik eerder `TreeReduce`, wat meer werk uitvoert met de uitvoerders of partities, in plaats van `Reduce`, wat al het werk uitvoert in het stuurprogramma.
 * Gebruik DataFrames in plaats van RDD-objecten op lagere niveaus.
-* Maak toe die acties inkapselen, zoals ' top N ', verschillende aggregaties of venster bewerkingen.
+* Maak ComplexTypes dat acties inkapselt, zoals ‘Top N’, verschillende aggregaties of vensterbewerking.
 
 Zie [OutOfMemoryError-uitzonde ringen voor Apache Spark in azure HDInsight](apache-spark-troubleshoot-outofmemory.md)voor meer probleemoplossings stappen.
 

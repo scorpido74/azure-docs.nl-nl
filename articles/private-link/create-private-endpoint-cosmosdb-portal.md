@@ -7,10 +7,10 @@ ms.topic: how-to
 ms.date: 11/04/2019
 ms.author: allensu
 ms.openlocfilehash: d074128376d481902a203de3d32ef89aa72d7b3a
-ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/12/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84737713"
 ---
 # <a name="connect-privately-to-an-azure-cosmos-account-using-azure-private-link"></a>Privé verbinding maken met een Azure Cosmos-account met behulp van Azure Private Link
@@ -36,9 +36,9 @@ In deze sectie moet u de volgende parameters in de stappen vervangen door onders
 | **\<resource-group-name>**  | myResourceGroup|
 | **\<virtual-network-name>** | myVirtualNetwork         |
 | **\<region-name>**          | VS - west-centraal     |
-| **\<IPv4-address-space>**   | 10.1.0.0 \ 16          |
+| **\<IPv4-address-space>**   | 10.1.0.0\16          |
 | **\<subnet-name>**          | mySubnet        |
-| **\<subnet-address-range>** | 10.1.0.0 \ 24          |
+| **\<subnet-address-range>** | 10.1.0.0\24          |
 
 [!INCLUDE [virtual-networks-create-new](../../includes/virtual-networks-create-new.md)]
 
@@ -147,9 +147,9 @@ In deze sectie maakt u een particuliere verbinding met het Azure Cosmos-account 
 
 1. Voer de connection string in door de gegevens die eerder zijn gekopieerd te plakken.
 
-1. Selecteer **Next**.
+1. Selecteer **Volgende**.
 
-1. Selecteer **Verbinden**.
+1. Selecteer **Verbinding maken**.
 
 1. Blader door de Azure Cosmos-data bases en-containers via *mycosmosaccount*.
 
@@ -165,7 +165,7 @@ Wanneer u klaar bent met het persoonlijke eind punt, het Azure Cosmos-account en
 
 1. Selecteer **Resourcegroep verwijderen**.
 
-1. Voer *myResourceGroup* in bij **Typ de naam van de resource groep** en selecteer **verwijderen**.
+1. Voer *myResourceGroup* in voor **TYP DE RESOURCEGROEPNAAM** en selecteer **Verwijderen**.
 
 ## <a name="next-steps"></a>Volgende stappen
 

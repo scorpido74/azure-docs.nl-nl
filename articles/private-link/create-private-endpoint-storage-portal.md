@@ -8,10 +8,10 @@ ms.topic: how-to
 ms.date: 09/16/2019
 ms.author: allensu
 ms.openlocfilehash: 1ccbb685ceb406fd7a52edf793b53d9e1c32630b
-ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/12/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84737322"
 ---
 # <a name="connect-privately-to-a-storage-account-using-azure-private-endpoint"></a>Privé verbinding maken met een opslagaccount met behulp van een privé-eindpunt in Azure
@@ -37,9 +37,9 @@ In deze sectie moet u de volgende parameters in de stappen vervangen door onders
 | **\<resource-group-name>**  | myResourceGroup |
 | **\<virtual-network-name>** | myVirtualNetwork          |
 | **\<region-name>**          | VS - west-centraal      |
-| **\<IPv4-address-space>**   | 10.1.0.0 \ 16          |
+| **\<IPv4-address-space>**   | 10.1.0.0\16          |
 | **\<subnet-name>**          | mySubnet        |
-| **\<subnet-address-range>** | 10.1.0.0 \ 24          |
+| **\<subnet-address-range>** | 10.1.0.0\24          |
 
 [!INCLUDE [virtual-networks-create-new](../../includes/virtual-networks-create-new.md)]
 
@@ -181,10 +181,10 @@ In deze sectie maakt u een particuliere verbinding met het opslag account met be
 4. Selecteer **opslag accounts** met de rechter muisknop.
 5. Selecteer **verbinding maken met een Azure-opslag**.
 6. Selecteer **een Connection String gebruiken**.
-7. Selecteer **Next**.
+7. Selecteer **Volgende**.
 8. Voer de connection string in door de gegevens die eerder zijn gekopieerd te plakken.
-9. Selecteer **Next**.
-10. Selecteer **Verbinden**.
+9. Selecteer **Volgende**.
+10. Selecteer **Verbinding maken**.
 11. Door de BLOB-containers bladeren vanuit mystorageaccount 
 12. Eventueel Maak mappen en/of upload bestanden naar *mystorageaccount*. 
 13. Sluit de verbinding met extern bureau blad met *myVM*. 
@@ -199,7 +199,7 @@ Aanvullende opties voor toegang tot het opslag account:
 Wanneer u klaar bent met het persoonlijke eind punt, het opslag account en de virtuele machine, verwijdert u de resource groep en alle resources die deze bevat: 
 1. Typ *myResourceGroup* in het vak **Zoeken** bovenaan de portal en selecteer *myResourceGroup* in de zoekresultaten. 
 2. Selecteer **Resourcegroep verwijderen**. 
-3. Voer *myResourceGroup* in bij **Typ de naam van de resource groep** en selecteer **verwijderen**. 
+3. Voer *myResourceGroup* in voor **TYP DE RESOURCEGROEPNAAM** en selecteer **Verwijderen**. 
 
 ## <a name="next-steps"></a>Volgende stappen
 In deze Quick Start hebt u een VM gemaakt op een virtueel netwerk en een opslag account en een persoonlijk eind punt. U hebt verbinding gemaakt met één virtuele machine via internet en veilig door gegeven aan het opslag account met behulp van een persoonlijke koppeling. Zie [Wat is Azure private endpoint?](private-endpoint-overview.md)voor meer informatie over privé-eind punten.

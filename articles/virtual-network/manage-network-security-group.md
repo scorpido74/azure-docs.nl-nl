@@ -12,10 +12,10 @@ ms.workload: infrastructure-services
 ms.date: 03/13/2020
 ms.author: kumud
 ms.openlocfilehash: 38fe9582595969ac92d3468b3b7e8c0a9d793c0c
-ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/11/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84708277"
 ---
 # <a name="create-change-or-delete-a-network-security-group"></a>Een netwerkbeveiligingsgroep maken, wijzigen of verwijderen
@@ -63,7 +63,7 @@ Er is een limiet voor het aantal netwerk beveiligings groepen dat u kunt maken v
 
 5. Nadat u het bericht **validatie geslaagd** hebt weer gegeven, selecteert u **maken**.
 
-#### <a name="commands"></a>Opdracht
+#### <a name="commands"></a>Opdrachten
 
 | Hulpprogramma | Opdracht |
 | ---- | ------- |
@@ -74,7 +74,7 @@ Er is een limiet voor het aantal netwerk beveiligings groepen dat u kunt maken v
 
 Ga naar de [Azure Portal](https://portal.azure.com) om uw netwerk beveiligings groepen weer te geven. Zoek en selecteer **netwerk beveiligings groepen**. De lijst met netwerk beveiligings groepen wordt weer gegeven voor uw abonnement.
 
-#### <a name="commands"></a>Opdracht
+#### <a name="commands"></a>Opdrachten
 
 | Hulpprogramma | Opdracht |
 | ---- | ------- |
@@ -99,7 +99,7 @@ Zie de volgende artikelen voor meer informatie over de algemene Azure-instelling
 - [Vergren delingen](../azure-resource-manager/management/lock-resources.md?toc=%2fazure%2fvirtual-network%2ftoc.json)
 - [Automation-script](../azure-resource-manager/templates/export-template-portal.md)
 
-#### <a name="commands"></a>Opdracht
+#### <a name="commands"></a>Opdrachten
 
 | Hulpprogramma | Opdracht |
 | ---- | ------- |
@@ -114,7 +114,7 @@ Zie de volgende artikelen voor meer informatie over de algemene Azure-instelling
 
 De meest voorkomende wijzigingen zijn het [toevoegen van een beveiligings regel](#create-a-security-rule), het [verwijderen van een regel](#delete-a-security-rule)en het [koppelen of loskoppelen van een netwerk beveiligings groep naar of van een subnet of netwerk interface](#associate-or-dissociate-a-network-security-group-to-or-from-a-subnet-or-network-interface).
 
-#### <a name="commands"></a>Opdracht
+#### <a name="commands"></a>Opdrachten
 
 | Hulpprogramma | Opdracht |
 | ---- | ------- |
@@ -135,7 +135,7 @@ Als een netwerk beveiligings groep is gekoppeld aan subnetten of netwerk interfa
 
 3. Selecteer **verwijderen**op de werk balk van de netwerk beveiligings groep. Selecteer vervolgens **Ja** in het bevestigings venster.
 
-#### <a name="commands"></a>Opdracht
+#### <a name="commands"></a>Opdrachten
 
 | Hulpprogramma | Opdracht |
 | ---- | ------- |
@@ -167,7 +167,7 @@ Er is een limiet voor het aantal regels per netwerk beveiligings groep dat u kun
     | **Bron servicetag** | Een servicetag in de vervolg keuzelijst | Deze optionele instelling wordt weer gegeven als u **bron** -naar- **service-tag** voor een binnenkomende beveiligings regel instelt. Een servicetag is een vooraf gedefinieerde id voor een categorie met IP-adressen. Zie [service Tags](security-overview.md#service-tags)voor meer informatie over de beschik bare service tags en wat elke tag vertegenwoordigt. |
     | **Beveiligings groep voor de bron toepassing** | Een bestaande toepassings beveiligings groep | Deze instelling wordt weer gegeven als u **bron** instelt op **toepassings beveiligings groep**. Selecteer een toepassings beveiligings groep die zich in dezelfde regio bevindt als de netwerk interface. Meer informatie over het [maken van een toepassings beveiligings groep](#create-an-application-security-group). |
     | **Poortbereiken van bron** | Een van de volgende opties:<ul><li>Eén poort, zoals`80`</li><li>Een bereik van poorten, zoals`1024-65535`</li><li>Een door komma's gescheiden lijst met enkele poorten en/of poortbereiken, zoals`80, 1024-65535`</li><li>Een asterisk ( `*` ) om verkeer toe te staan op een wille keurige poort</li></ul> | Met deze instelling geeft u de poorten op waarop de regel verkeer toestaat of weigert. Er zijn limieten voor het aantal poorten dat u kunt opgeven. Zie [Azure-limieten](../azure-resource-manager/management/azure-subscription-service-limits.md?toc=%2fazure%2fvirtual-network%2ftoc.json#azure-resource-manager-virtual-networking-limits)voor meer informatie. |
-    | **Beoogde** | Een van de volgende opties:<ul><li>**Alle**</li><li>**IP-adressen**</li><li>**Servicetag (uitgaande** beveiligings regel) of **VirtualNetwork** (binnenkomende beveiligings regel)</li><li>**Toepassings &nbsp; beveiligings &nbsp; groep**</li></ul> | <p>Als u **IP-adressen**kiest, moet u ook **doel-IP-adressen/CIDR-bereiken**opgeven.</p><p>Als u **VirtualNetwork**kiest, wordt verkeer toegestaan voor alle IP-adressen binnen de adres ruimte van het virtuele netwerk. **VirtualNetwork** is een servicetag.</p><p>Als u **toepassings beveiligings groep**selecteert, moet u vervolgens een bestaande toepassings beveiligings groep selecteren. Meer informatie over het [maken van een toepassings beveiligings groep](#create-an-application-security-group).</p> |
+    | **Doel** | Een van de volgende opties:<ul><li>**Alle**</li><li>**IP-adressen**</li><li>**Servicetag (uitgaande** beveiligings regel) of **VirtualNetwork** (binnenkomende beveiligings regel)</li><li>**Toepassings &nbsp; beveiligings &nbsp; groep**</li></ul> | <p>Als u **IP-adressen**kiest, moet u ook **doel-IP-adressen/CIDR-bereiken**opgeven.</p><p>Als u **VirtualNetwork**kiest, wordt verkeer toegestaan voor alle IP-adressen binnen de adres ruimte van het virtuele netwerk. **VirtualNetwork** is een servicetag.</p><p>Als u **toepassings beveiligings groep**selecteert, moet u vervolgens een bestaande toepassings beveiligings groep selecteren. Meer informatie over het [maken van een toepassings beveiligings groep](#create-an-application-security-group).</p> |
     | **Doel-IP-adressen/CIDR-bereiken** | Een door komma's gescheiden lijst met IP-adressen en CIDR-bereiken | <p>Deze instelling wordt weer gegeven als u de **bestemming** wijzigt in **IP-adressen**. Net als **bron** **-en bron-IP-adressen/CIDR-bereiken**, kunt u één of meerdere adressen of bereiken opgeven. Er zijn limieten voor het aantal dat u kunt opgeven. Zie [Azure-limieten](../azure-resource-manager/management/azure-subscription-service-limits.md?toc=%2fazure%2fvirtual-network%2ftoc.json#azure-resource-manager-virtual-networking-limits)voor meer informatie.</p><p>Als het door u opgegeven IP-adres is toegewezen aan een virtuele machine van Azure, moet u ervoor zorgen dat u het privé-IP-adres opgeeft, niet het open bare IP-adressen. Azure verwerkt beveiligings regels nadat het open bare IP-adres is omgezet naar een privé-IP-adres voor binnenkomende beveiligings regels, maar voordat Azure een privé-IP-adres omzet in een openbaar IP-adres voor uitgaande regels. Zie [IP-adres typen](virtual-network-ip-addresses-overview-arm.md)voor meer informatie over open bare en privé-IP-adressen in Azure.</p> |
     | **Doelservicetag** | Een servicetag in de vervolg keuzelijst | Deze optionele instelling wordt weer gegeven als **Destination** u doel **wijzigt in servicetag voor een** uitgaande beveiligings regel. Een servicetag is een vooraf gedefinieerde id voor een categorie met IP-adressen. Zie [service Tags](security-overview.md#service-tags)voor meer informatie over de beschik bare service tags en wat elke tag vertegenwoordigt. |
     | **Beveiligings groep voor de doel toepassing** | Een bestaande toepassings beveiligings groep | Deze instelling wordt weer gegeven als u **doel** instelt op **toepassings beveiligings groep**. Selecteer een toepassings beveiligings groep die zich in dezelfde regio bevindt als de netwerk interface. Meer informatie over het [maken van een toepassings beveiligings groep](#create-an-application-security-group). |
@@ -178,7 +178,7 @@ Er is een limiet voor het aantal regels per netwerk beveiligings groep dat u kun
     | **Naam** | Een unieke naam voor de regel in de netwerk beveiligings groep | De naam mag Maxi maal 80 tekens lang zijn. De naam moet beginnen met een letter of cijfer en moet eindigen met een letter, cijfer of onderstrepings teken. De naam mag alleen letters, cijfers, onderstrepings tekens, punten of afbreek streepjes bevatten. |
     | **Beschrijving** | Een tekst beschrijving | U kunt eventueel een beschrijving van de tekst voor de beveiligings regel opgeven. |
 
-#### <a name="commands"></a>Opdracht
+#### <a name="commands"></a>Opdrachten
 
 | Hulpprogramma | Opdracht |
 | ---- | ------- |
@@ -197,7 +197,7 @@ Een netwerk beveiligings groep bevat nul of meer regels. Zie [overzicht van netw
 
 De lijst bevat de regels die u hebt gemaakt en de [standaard beveiligings regels](security-overview.md#default-security-rules)voor de netwerk beveiligings groep.
 
-#### <a name="commands"></a>Opdracht
+#### <a name="commands"></a>Opdrachten
 
 | Hulpprogramma | Opdracht |
 | ---- | ------- |
@@ -217,7 +217,7 @@ De lijst bevat de regels die u hebt gemaakt en de [standaard beveiligings regels
     > [!NOTE]
     > Deze procedure is alleen van toepassing op een aangepaste beveiligings regel. Als u een standaard beveiligings regel kiest, werkt deze niet.
 
-#### <a name="commands"></a>Opdracht
+#### <a name="commands"></a>Opdrachten
 
 | Hulpprogramma | Opdracht |
 | ---- | ------- |
@@ -233,7 +233,7 @@ De lijst bevat de regels die u hebt gemaakt en de [standaard beveiligings regels
     > [!NOTE]
     > Deze procedure is alleen van toepassing op een aangepaste beveiligings regel. Het is niet toegestaan om een standaard beveiligings regel te wijzigen.
 
-#### <a name="commands"></a>Opdracht
+#### <a name="commands"></a>Opdrachten
 
 | Hulpprogramma | Opdracht |
 | ---- | ------- |
@@ -249,7 +249,7 @@ De lijst bevat de regels die u hebt gemaakt en de [standaard beveiligings regels
     > [!NOTE]
     > Deze procedure is alleen van toepassing op een aangepaste beveiligings regel. U bent niet gemachtigd om een standaard beveiligings regel te verwijderen.
 
-#### <a name="commands"></a>Opdracht
+#### <a name="commands"></a>Opdrachten
 
 | Hulpprogramma | Opdracht |
 | ---- | ------- |
@@ -281,7 +281,7 @@ Een toepassings beveiligings groep bevat geen of meer netwerk interfaces. Zie [t
 
 6. Klik op het tabblad **controleren en maken** , nadat u het bericht validatie is geslaagd hebt weer **gegeven** , en selecteer **maken**.
 
-#### <a name="commands"></a>Opdracht
+#### <a name="commands"></a>Opdrachten
 
 | Hulpprogramma | Opdracht |
 | ---- | ------- |
@@ -292,7 +292,7 @@ Een toepassings beveiligings groep bevat geen of meer netwerk interfaces. Zie [t
 
 Ga naar de [Azure Portal](https://portal.azure.com) om uw toepassings beveiligings groepen weer te geven. Zoek en selecteer **toepassings beveiligings groepen**. In de Azure Portal wordt een lijst met uw toepassings beveiligings groepen weer gegeven.
 
-#### <a name="commands"></a>Opdracht
+#### <a name="commands"></a>Opdrachten
 
 | Hulpprogramma | Opdracht |
 | ---- | ------- |
@@ -305,7 +305,7 @@ Ga naar de [Azure Portal](https://portal.azure.com) om uw toepassings beveiligin
 
 2. Selecteer de naam van de toepassings beveiligings groep waarvan u de details wilt weer geven.
 
-#### <a name="commands"></a>Opdracht
+#### <a name="commands"></a>Opdrachten
 
 | Hulpprogramma | Opdracht |
 | ---- | ------- |
@@ -325,7 +325,7 @@ Ga naar de [Azure Portal](https://portal.azure.com) om uw toepassings beveiligin
 
     In de menu balk kunt u ook **toegangs beheer (IAM)** selecteren. U kunt op de pagina **toegangs beheer (IAM)** machtigingen toewijzen of verwijderen voor de toepassings beveiligings groep.
 
-#### <a name="commands"></a>Opdracht
+#### <a name="commands"></a>Opdrachten
 
 | Hulpprogramma | Opdracht |
 | ---- | ------- |
@@ -342,7 +342,7 @@ U kunt een toepassings beveiligings groep niet verwijderen als deze netwerk inte
 
 3. Selecteer **verwijderen**en selecteer vervolgens **Ja** om de toepassings beveiligings groep te verwijderen.
 
-#### <a name="commands"></a>Opdracht
+#### <a name="commands"></a>Opdrachten
 
 | Hulpprogramma | Opdracht |
 | ---- | ------- |

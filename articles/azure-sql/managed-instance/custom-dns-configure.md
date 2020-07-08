@@ -13,16 +13,16 @@ ms.author: srbozovi
 ms.reviewer: sstein, bonova, carlrab
 ms.date: 07/17/2019
 ms.openlocfilehash: 2ba5794ba647c28cde3b54a1afdfbd0201b23e8e
-ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/11/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84706151"
 ---
 # <a name="configure-a-custom-dns-for-azure-sql-managed-instance"></a>Een aangepaste DNS configureren voor Azure SQL Managed instance
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
 
-Azure SQL Managed instance moet worden geïmplementeerd in een [virtueel Azure-netwerk (VNet)](../../virtual-network/virtual-networks-overview.md). Er zijn enkele scenario's (bijvoorbeeld DB mail, gekoppelde servers naar andere SQL Server instanties in uw Cloud of hybride omgeving) waarvoor particuliere hostnamen moeten worden omgezet van een door SQL beheerd exemplaar. In dit geval moet u een aangepaste DNS-server in azure configureren. 
+Azure SQL Managed instance moet worden geïmplementeerd in een [virtueel Azure-netwerk (VNet)](../../virtual-network/virtual-networks-overview.md). Er zijn enkele scenario's (bijvoorbeeld Database Mail, servers die zijn gekoppeld aan andere SQL Server-exemplaren in uw cloud of hybride omgeving) waarvoor de namen van particuliere hosts moeten worden omgezet vanuit een SQL Managed Instance. In dit geval moet u een aangepast DNS configureren in Azure. 
 
 Omdat SQL Managed instance dezelfde DNS gebruikt voor de interne werking, configureert u de aangepaste DNS-server zodat deze open bare domein namen kan omzetten.
 

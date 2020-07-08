@@ -9,10 +9,10 @@ ms.topic: article
 ms.date: 10/15/2019
 ms.author: ramamill
 ms.openlocfilehash: 5209dab5e0934cc98bb1334a1565cc13998a7d2e
-ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/11/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84704434"
 ---
 # <a name="deploy-a-configuration-server"></a>Een configuratieserver implementeren
@@ -129,7 +129,7 @@ Als u een extra NIC aan de configuratie server wilt toevoegen, voegt u deze toe 
 
 5. Bij het valideren van de configuratie van het **toestel**worden de vereisten gecontroleerd voordat u doorgaat.
 6. Voer op de **vCenter Server/VSphere ESXi-server configureren**de FQDN of het IP-adres van de vCenter-Server of vSphere-host in, waarbij de vm's die u wilt repliceren zich bevinden. Voer de poort in waarop de server luistert. Voer een beschrijvende naam in voor de VMware-server in de kluis.
-7. Voer referenties in die door de configuratieserver moeten worden gebruikt voor verbinding met de VMware-server. Site Recovery gebruikt deze referenties voor het automatisch detecteren van VMware-VM’s die beschikbaar zijn voor replicatie. Selecteer **Add**  >  **door gaan**toevoegen. De referenties die u hier opgeeft, worden lokaal opgeslagen.
+7. Voer referenties in die door de configuratieserver moeten worden gebruikt voor verbinding met de VMware-server. Site Recovery gebruikt deze referenties voor het automatisch detecteren van VMware-VM’s die beschikbaar zijn voor replicatie. Selecteer **Toevoegen** > **Doorgaan**. De referenties die u hier opgeeft, worden lokaal opgeslagen.
 8. Voer bij **referenties voor virtuele machine configureren**de gebruikers naam en het wacht woord van de virtuele machines in om de Mobility-service automatisch te installeren tijdens de replicatie. Voor **Windows** -computers heeft het account lokale beheerders rechten nodig voor de computers die u wilt repliceren. Voor **Linux**geeft u Details voor het hoofd account op.
 9. Selecteer **Configuratie voltooien** om de registratie te voltooien.
 10. Nadat de registratie is voltooid, opent u de Azure Portal en controleert u of de configuratie server en de VMware-Server worden vermeld op **Recovery Services kluis**  >  **Manage**  >  **site Recovery infrastructuur**  >  **configuratie servers**beheren.

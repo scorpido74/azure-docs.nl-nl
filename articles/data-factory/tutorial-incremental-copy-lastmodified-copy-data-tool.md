@@ -13,10 +13,10 @@ ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 6/10/2020
 ms.openlocfilehash: 402214da75bffd278e12db94f089d64acd62221e
-ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/12/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84730137"
 ---
 # <a name="incrementally-copy-new-and-changed-files-based-on-lastmodifieddate-by-using-the-copy-data-tool"></a>Incrementeel nieuwe en gewijzigde bestanden op basis van LastModifiedDate kopiëren met behulp van het hulp programma Gegevens kopiëren
@@ -96,7 +96,7 @@ Bereid de Blob-opslag voor op de zelf studie door de volgende stappen uit te voe
 
     d. Voer onder **terugkeer patroon** **15 minuut/minuten**in.
 
-    e. Selecteer **Next**.
+    e. Selecteer **Volgende**.
 
     Data Factory maakt een pijp lijn met de opgegeven taak naam.
 
@@ -136,7 +136,7 @@ Bereid de Blob-opslag voor op de zelf studie door de volgende stappen uit te voe
 
     ![De pagina voor het uitvoer bestand of de map kiezen](./media/tutorial-incremental-copy-lastmodified-copy-data-tool/choose-output-file-folder.png)
 
-    b. Selecteer **Next**.
+    b. Selecteer **Volgende**.
 
 7. Selecteer op de pagina **Instellingen** de optie **Volgende**.
 

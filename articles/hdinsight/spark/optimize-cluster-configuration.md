@@ -8,10 +8,10 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 05/20/2020
 ms.openlocfilehash: 464f0dcab3debf92605d2f13be9b25ece63f4bf2
-ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/12/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84737679"
 ---
 # <a name="cluster-configuration-optimization-for-apache-spark"></a>Optimalisatie van cluster configuratie voor Apache Spark
@@ -32,37 +32,37 @@ Hier volgen enkele algemene para meters die u kunt aanpassen:
 
 ## <a name="select-the-correct-executor-size"></a>Selecteer de juiste grootte voor de uitvoerder
 
-Houd bij het bepalen van de configuratie van de uitvoerder rekening met de overhead van de Java garbage collection (GC).
+Houd bij het bepalen van de configuratie van de uitvoerder rekening met Java GC-overhead (garbagecollection).
 
-* Factoren om de uitvoerings grootte te verkleinen:
-    1. Verminder de grootte van de heap onder 32 GB om de GC-overhead < 10% te houden.
-    2. Verminder het aantal kernen om de GC-overhead < 10% te houden.
+* Factoren om de grootte van de uitvoerder te verkleinen:
+    1. Verklein de heap-grootte naar minder dan 32 GB om de GC-overhead < 10% te houden.
+    2. Verklein het aantal kernen om de GC-overhead < 10% te houden.
 
-* Factoren voor het verg Roten van de uitvoerder grootte:
-    1. Verminder de communicatie overhead tussen uitvoerender.
-    2. Verminder het aantal openstaande verbindingen tussen uitvoerende (N2) op grotere clusters (>100-uitvoerders).
-    3. Verg root de Heap-grootte zodat deze geschikt is voor geheugenintensieve taken.
-    4. Optioneel: de overhead per uitvoerder geheugen verlagen.
+* Factoren om de grootte van de uitvoerder te vergroten:
+    1. Verminder de communicatie-overhead tussen uitvoerders.
+    2. Verminder het aantal openstaande verbindingen tussen uitvoerders (N2) in grotere clusters (> 100 uitvoerders).
+    3. Vergroot de heap-grootte zodat deze geschikt is voor geheugenintensieve taken.
+    4. Optioneel: Verminder de geheugen-overhead per uitvoerder.
     5. Optioneel: gebruik en gelijktijdigheid verhogen door de CPU te verlengen.
 
 Als algemene regel wordt bij het selecteren van de grootte van de uitvoerder:
 
-1. Begin met 30 GB per uitvoerder en distribueer beschik bare machine kernen.
-2. Verhoog het aantal uitvoer kernen voor grotere clusters (> 100-uitvoerendeers).
-3. Wijzig grootte op basis van de test uitvoeringen en op de voor gaande factoren zoals GC-overhead.
+1. Begin met 30 GB per uitvoerder, en distribueer beschikbare machinekernen.
+2. Verhoog het aantal uitvoerkernen voor grotere clusters (> 100 uitvoerders).
+3. Wijzig de grootte op basis van zowel uitvoeringen van de proefversie als op de voorgaande factoren, zoals GC-overhead.
 
 Bij het uitvoeren van gelijktijdige query's moet u rekening houden met het volgende:
 
-1. Begin met 30 GB per uitvoerder en alle machine kernen.
-2. Maak meerdere parallelle Spark-toepassingen door de CPU (circa 30% latentie verbetering) te vervolledigen.
+1. Begin met 30 GB per uitvoerder en alle machinekernen.
+2. Maak meerdere parallelle Spark-toepassingen door de CPU te overbelasten (circa 30% latentieverbetering).
 3. Verdeel query's over parallelle toepassingen.
-4. Wijzig grootte op basis van de test uitvoeringen en op de voor gaande factoren zoals GC-overhead.
+4. Wijzig de grootte op basis van zowel uitvoeringen van de proefversie als op de voorgaande factoren, zoals GC-overhead.
 
 Zie [Apache Spark Settings-Spark-uitvoerende modules](apache-spark-settings.md#configuring-spark-executors)voor meer informatie over het gebruik van Ambari voor het configureren van uitvoerender.
 
 Bewaak de query prestaties voor uitbijters of andere prestatie problemen door te kijken naar de tijdlijn weergave. Ook SQL-grafiek, taak statistieken, enzovoort. Zie [Debug Apache Spark jobs die worden uitgevoerd op Azure HDInsight](apache-spark-job-debugging.md)voor informatie over het opsporen van fouten in Spark-taken met garens en de Spark-geschiedenis server. Voor tips over het gebruik van een garen tijdlijn Server raadpleegt u [toegang Apache Hadoop toepassings logboeken van garens](../hdinsight-hadoop-access-yarn-app-logs-linux.md).
 
-Soms zijn een of enkele van de uitvoerende partijen trager dan de andere, en duren taken veel langer om uit te voeren. Deze traagheid gebeurt vaak op grotere clusters (> 30 knoop punten). In dit geval moet u het werk delen in een groter aantal taken zodat de planner de taak kan compenseren voor trage taken. Stel bijvoorbeeld ten minste twee taken uit als het aantal uitvoer kernen in de toepassing. U kunt ook speculatieve uitvoering van taken inschakelen met `conf: spark.speculation = true` .
+Soms zijn een of meer uitvoerders langzamer dan de rest, en duurt het veel langer om taken uit te voeren. Deze traagheid gebeurt vaak op grotere clusters (> 30 knoop punten). In dit geval verdeelt u het werk over een groter aantal taken, zodat de planner de langzame taken kan compenseren. Zorg er bijvoorbeeld voor dat u twee keer zoveel taken hebt als het aantal uitvoerkernen in de toepassing. U kunt ook speculatieve uitvoering van taken inschakelen met `conf: spark.speculation = true`.
 
 ## <a name="next-steps"></a>Volgende stappen
 

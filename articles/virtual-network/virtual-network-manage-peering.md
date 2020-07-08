@@ -16,10 +16,10 @@ ms.workload: infrastructure-services
 ms.date: 04/01/2019
 ms.author: altambaw
 ms.openlocfilehash: d38b164e95b1791971f88f62e7eccfee8a59bd71
-ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/11/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84711099"
 ---
 # <a name="create-change-or-delete-a-virtual-network-peering"></a>Een peering op een virtueel netwerk maken, wijzigen of verwijderen
@@ -72,7 +72,7 @@ Voordat u een peering maakt, moet u vertrouwd raken met de vereisten en beperkin
 
 Zie [volgende stappen](#next-steps)voor stapsgewijze instructies voor het implementeren van peering tussen virtuele netwerken in verschillende abonnementen en implementatie modellen.
 
-### <a name="commands"></a>Opdracht
+### <a name="commands"></a>Opdrachten
 
 - **Azure cli**: [AZ Network vnet peering Create](/cli/azure/network/vnet/peering)
 - **Power shell**: [add-AzVirtualNetworkPeering](/powershell/module/az.network/add-azvirtualnetworkpeering)
@@ -88,7 +88,7 @@ Voordat u een peering wijzigt, moet u vertrouwd raken met de vereisten en beperk
 5. Wijzig de juiste instelling. Meer informatie over de opties voor elke instelling in [stap 5](#add-peering) van een peering maken.
 6. Selecteer **Opslaan**.
 
-**Opdracht**
+**Opdrachten**
 
 - **Azure cli**: [AZ Network vnet peering List](/cli/azure/network/vnet/peering) to list peerings voor een virtueel netwerk, [AZ Network vnet peering laat](/cli/azure/network/vnet/peering) instellingen weer geven voor een specifieke peering en [AZ Network vnet peering update](/cli/azure/network/vnet/peering) om instellingen voor peering te wijzigen. |
 - **Power shell**: [Get-AzVirtualNetworkPeering](/powershell/module/az.network/get-azvirtualnetworkpeering) voor het ophalen van instellingen voor het weer geven van peering en [set-AzVirtualNetworkPeering](/powershell/module/az.network/set-azvirtualnetworkpeering) om instellingen te wijzigen.
@@ -107,7 +107,7 @@ Als u wilt dat virtuele netwerken soms communiceren, maar niet altijd, in plaats
 4. Selecteer aan de rechter kant van de peering die u wilt verwijderen **...**, selecteer **verwijderen**en selecteer vervolgens **Ja** om de peering uit het eerste virtuele netwerk te verwijderen.
 5. Voltooi de voor gaande stappen om de peering te verwijderen uit het andere virtuele netwerk in de peering.
 
-**Opdracht**
+**Opdrachten**
 
 - **Azure cli**: [AZ Network vnet peering verwijderen](/cli/azure/network/vnet/peering)
 - **Power shell**: [Remove-AzVirtualNetworkPeering](/powershell/module/az.network/remove-azvirtualnetworkpeering)

@@ -8,10 +8,10 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 05/20/2020
 ms.openlocfilehash: 021999e1757993eea4bbfe3aec0bd68049a37e42
-ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/12/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84737662"
 ---
 # <a name="data-processing-optimization-for-apache-spark"></a>Optimalisatie van gegevens verwerking voor Apache Spark
@@ -20,13 +20,13 @@ In dit artikel wordt beschreven hoe u de configuratie van uw Apache Spark-cluste
 
 ## <a name="overview"></a>Overzicht
 
-Als u langzame taken hebt voor een samen voeging of een wille keurige volg orde, is de oorzaak waarschijnlijk van *gegevens scheef*. Gegevens scheefheid is asymmetrie in uw taak gegevens. Een kaart taak kan bijvoorbeeld 20 seconden duren. Maar het uitvoeren van een taak waarbij de gegevens worden toegevoegd of waarin de rang orde wordt geduurd. Als u gegevens scheefheid wilt verhelpen, moet u de volledige sleutel zouten of een *geïsoleerde Salt* gebruiken voor slechts een deel van de sleutels. Als u een geïsoleerd zout gebruikt, moet u verder filteren om uw subset van gezoute sleutels in kaart verbindingen te isoleren. Een andere optie is om eerst een Bucket kolom en vooraf aggregatie in buckets in te voeren.
+Als u langzame taken hebt voor een samen voeging of een wille keurige volg orde, is de oorzaak waarschijnlijk van *gegevens scheef*. Gegevens scheefheid is asymmetrie in uw taak gegevens. Een kaart taak kan bijvoorbeeld 20 seconden duren. Maar het uitvoeren van een taak waarbij de gegevens worden toegevoegd of waarin de rang orde wordt geduurd. Als u gegevensverschil wilt oplossen, moet u salt toevoegen aan de hele sleutel, of een *geïsoleerde salt* gebruiken voor slechts enkele sleutelsubsets. Als u een geïsoleerde salt gebruikt, moet u verder filteren om uw sleutelsubset waaraan salt is toegevoegd, te isoleren in toewijzings-joins. Een andere optie is om eerst een bucketkolom en een samenvoeging vooraf te introduceren in buckets.
 
-Een andere factor veroorzaakt langzame samen voegingen zou het jointype kunnen zijn. Spark maakt standaard gebruik van het `SortMerge` jointype. Dit type samen voeging is het meest geschikt voor grote gegevens sets. Maar is anders rekenbaar kostbaar omdat het eerst de linker-en rechter zijde van de gegevens moet sorteren voordat u ze samenvoegt.
+Een andere factor die langzame joins veroorzaakt, kan het jointype zijn. Spark maakt standaard gebruik van het jointype `SortMerge`. Dit type samen voeging is het meest geschikt voor grote gegevens sets. Maar is anders rekenbaar kostbaar omdat het eerst de linker-en rechter zijde van de gegevens moet sorteren voordat u ze samenvoegt.
 
-Een `Broadcast` samen voeging is het meest geschikt voor kleinere gegevens sets, of waarbij een zijde van de samen voeging veel kleiner is dan de andere kant. Dit type deelname zendt één zijde naar alle uitvoerende organisaties, en vereist daarom meer geheugen voor broadcasts in het algemeen.
+Een `Broadcast`-join is het meest geschikt voor kleinere gegevenssets, of waarbij één zijde van de join veel kleiner is dan de andere zijde. Met dit jointype wordt één zijde naar alle uitvoerders uitgezonden, waardoor meer geheugen voor uitzendingen in het algemeen is vereist.
 
-U kunt het jointype in uw configuratie wijzigen door in `spark.sql.autoBroadcastJoinThreshold` te stellen, of u kunt een samenvoegings Hint instellen met behulp van de data frame-api's ( `dataframe.join(broadcast(df2))` ).
+U kunt het jointype in uw configuratie wijzigen door `spark.sql.autoBroadcastJoinThreshold` in te stellen, of u kunt een join-hint instellen met behulp van de DataFrame API’s (`dataframe.join(broadcast(df2))`).
 
 ```scala
 // Option 1
@@ -41,24 +41,24 @@ df1.join(broadcast(df2), Seq("PK")).
 sql("SELECT col1, col2 FROM V_JOIN")
 ```
 
-Als u gekoppelde tabellen gebruikt, hebt u een derde jointype, de `Merge` koppeling. Een juiste vooraf gepartitioneerde en vooraf gesorteerde gegevensset slaat de dure Sorteer fase over van een `SortMerge` koppeling.
+Als u tabellen in buckets gebruikt, hebt u een derde jointype, de `Merge`-join. Met een correct vooraf gepartitioneerde en vooraf gesorteerde gegevensset wordt de dure sorteerfase in een `SortMerge`-join overgeslagen.
 
-De volg orde van de kwesties, met name in complexere query's. Begin met de meeste selectieve samen voegingen. U kunt ook koppelingen verplaatsen die het aantal rijen na aggregaties verg Roten wanneer dat mogelijk is.
+De volgorde van joins doet ertoe, met name bij meer complexe query’s. Begin met de meeste selectieve joins. Verplaats ook joins die het aantal rijen na aggregaties vergroten, indien mogelijk.
 
-Als u de parallelle uitvoering voor Cartesische join's wilt beheren, kunt u geneste structuren en Vensters toevoegen en wellicht een of meer stappen in uw Spark-taak overs Laan.
+Als u parallelle uitvoering voor Cartesian-joins wilt beheren, kunt u geneste structuren en vensterbewerking toevoegen, en misschien een of meer stappen overslaan in uw Spark-taak.
 
-## <a name="optimize-job-execution"></a>Taak uitvoering optimaliseren
+## <a name="optimize-job-execution"></a>Taakuitvoering optimaliseren
 
-* Sla zo nodig een cache op, bijvoorbeeld als u de gegevens twee keer gebruikt en vervolgens opslaat in de cache.
-* Broadcast variabelen naar alle uitvoerende organisaties. De variabelen worden slechts eenmaal geserialiseerd, wat resulteert in snellere zoek acties.
-* Gebruik de thread pool op het stuur programma, wat resulteert in een snellere bewerking voor veel taken.
+* Sla gegevens zo nodig in de cache op, bijvoorbeeld als u ze twee keer gebruikt.
+* Zend variabelen uit naar alle uitvoerders. De variabelen worden slechts eenmaal geserialiseerd, wat resulteert in snellere zoekacties.
+* Gebruik de threadpool in het stuurprogramma, wat resulteert in een snellere bewerking voor veel taken.
 
 Bewaak uw actieve taken regel matig voor prestatie problemen. Als u meer inzicht wilt in bepaalde problemen, kunt u een van de volgende hulpprogram ma's voor prestatie profilering overwegen:
 
 * [Intel PAL-hulp programma](https://github.com/intel-hadoop/PAT) bewaakt CPU, opslag en netwerk bandbreedte gebruik.
 * De beheer profielen voor de [missie van Oracle Java 8](https://www.oracle.com/technetwork/java/javaseproducts/mission-control/java-mission-control-1998576.html) Spark en de uitvoerder code.
 
-De sleutel tot Spark 2. x query prestaties is de Tungsten-engine, die afhankelijk is van het genereren van code in een hele fase. In sommige gevallen kan het genereren van code in hele fase worden uitgeschakeld. Als u bijvoorbeeld een niet-ververanderd type ( `string` ) in de expressie aggregatie gebruikt, `SortAggregate` wordt dit weer gegeven in plaats van `HashAggregate` . Als u bijvoorbeeld betere prestaties wilt, kunt u het volgende proberen en vervolgens code generatie opnieuw inschakelen:
+Het belangrijkste aspect voor Spark 2.x-queryprestaties is de Tungsten-engine, die afhankelijk is van codegeneratie in de volledige fase. In sommige gevallen is codegeneratie in de volledige fase mogelijk uitgeschakeld. Als u bijvoorbeeld een niet-veranderlijk type (`string`) in de aggregatie-expressie gebruikt, wordt `SortAggregate` weergegeven in plaats van `HashAggregate`. Probeer bijvoorbeeld voor betere prestaties het volgende uit, en schakel vervolgens codegeneratie in:
 
 ```sql
 MAX(AMOUNT) -> MAX(cast(AMOUNT as DOUBLE))

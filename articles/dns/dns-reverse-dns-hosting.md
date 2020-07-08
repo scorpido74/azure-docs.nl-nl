@@ -8,10 +8,10 @@ ms.workload: infrastructure-services
 ms.date: 05/29/2017
 ms.author: rohink
 ms.openlocfilehash: d6fabd58baf8fb3dc30c2468efd5bdc8179d5f95
-ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/11/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84709195"
 ---
 # <a name="host-reverse-dns-lookup-zones-in-azure-dns"></a>Reverse DNS lookup zones in Azure DNS
@@ -28,7 +28,7 @@ Dit artikel begeleidt u stapsgewijs door de stappen voor het maken van uw eerste
 
 ## <a name="create-a-reverse-lookup-dns-zone"></a>Een DNS-zone voor reverse lookup maken
 
-1. Meld u aan bij de [Azure-portal](https://portal.azure.com).
+1. Meld u aan bij [Azure Portal](https://portal.azure.com).
 1. Selecteer in het menu **hub** **nieuwe**  >  **netwerken**en selecteer vervolgens **DNS-zone**.
 
    ![De selectie van de DNS-zone](./media/dns-reverse-dns-hosting/figure1.png)

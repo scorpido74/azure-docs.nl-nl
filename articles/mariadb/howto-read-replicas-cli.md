@@ -7,10 +7,10 @@ ms.service: mariadb
 ms.topic: conceptual
 ms.date: 6/10/2020
 ms.openlocfilehash: ddcfea684a22c9ad06197086b3e74700df755da1
-ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/11/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84707988"
 ---
 # <a name="how-to-create-and-manage-read-replicas-in-azure-database-for-mariadb-using-the-azure-cli-and-rest-api"></a>Lees replica's maken en beheren in Azure Database for MariaDB met behulp van de Azure CLI en REST API
@@ -41,7 +41,7 @@ az mariadb server replica create --name mydemoreplicaserver --source-server myde
 
 Voor de `az mariadb server replica create` opdracht zijn de volgende para meters vereist:
 
-| Instelling | Voorbeeldwaarde | Beschrijving  |
+| Instelling | Voorbeeldwaarde | Description  |
 | --- | --- | --- |
 | resource-group |  myResourceGroup |  De resource groep waar de replica-server wordt gemaakt.  |
 | naam | mydemoreplicaserver | De naam van de nieuwe replica server die wordt gemaakt. |
@@ -71,7 +71,7 @@ az mariadb server replica list --server-name mydemoserver --resource-group myres
 
 Voor de `az mariadb server replica list` opdracht zijn de volgende para meters vereist:
 
-| Instelling | Voorbeeldwaarde | Beschrijving  |
+| Instelling | Voorbeeldwaarde | Description  |
 | --- | --- | --- |
 | resource-group |  myResourceGroup |  De resource groep waar de replica-server wordt gemaakt.  |
 | servernaam | mydemoserver | De naam of ID van de hoofd server. |
@@ -89,7 +89,7 @@ az mariadb server replica stop --name mydemoreplicaserver --resource-group myres
 
 Voor de `az mariadb server replica stop` opdracht zijn de volgende para meters vereist:
 
-| Instelling | Voorbeeldwaarde | Beschrijving  |
+| Instelling | Voorbeeldwaarde | Description  |
 | --- | --- | --- |
 | resource-group |  myResourceGroup |  De resource groep waar de replica-server bestaat.  |
 | naam | mydemoreplicaserver | De naam van de replica server waarvoor replicatie moet worden gestopt. |

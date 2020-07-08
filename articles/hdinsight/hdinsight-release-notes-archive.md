@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 01/08/2019
 ms.openlocfilehash: aff3ae34f391ac50dc4333fc2dcc3622e1bf479f
-ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/12/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84738002"
 ---
 # <a name="archived-release-notes"></a>Gearchiveerde releaseopmerkingen
@@ -1467,7 +1467,7 @@ Met opgeloste problemen worden geselecteerde problemen weer gegeven die eerder z
 | BUG-97864              | [HIVE-18833](https://issues.apache.org/jira/browse/HIVE-18833)   | Automatisch samen voegen mislukt wanneer ' in map invoegen als orcfile '                                      |
 | BUG-98814              | [HDFS-13314](https://issues.apache.org/jira/browse/HDFS-13314)   | NameNode moet eventueel worden afgesloten als FsImage beschadigd wordt gedetecteerd                              |
 
-**Upgrade uitvoeren**
+**Upgraden**
 
 | **Hortonworks-fout-ID** | **Apache JIRA**                                                                                                                | **Samenvatting**                                                                 |
 |------------------------|--------------------------------------------------------------------------------------------------------------------------------|-----------------------------------------------------------------------------|
@@ -1671,7 +1671,7 @@ Met opgeloste problemen worden geselecteerde problemen weer gegeven die eerder z
     
   U kunt de beleids voorwaarde met deze tekens zien door het beleid te openen in de bewerkings modus.
     
-  **Enkele**
+  **Tijdelijke oplossing**
     
   - **Optie \# 1: beleid maken/bijwerken via de rest-API van zwerver**
         

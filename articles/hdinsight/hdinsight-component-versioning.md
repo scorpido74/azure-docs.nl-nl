@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.custom: hdinsightactive,hdiseo17may2017,seoapr2020
 ms.date: 05/28/2020
 ms.openlocfilehash: 7a6a672cef42eb15cbd8f2f254207e0a9d96ee33
-ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/12/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84736200"
 ---
 # <a name="apache-components-and-versions-available-for-azure-hdinsight"></a>Apache-onderdelen en-versies die beschikbaar zijn voor Azure HDInsight
@@ -30,7 +30,7 @@ De versies van de onderdelen die zijn gekoppeld aan HDInsight-cluster versies, w
 
 | Onderdeel              | HDInsight 4.0 | HDInsight 3,6 (standaard)     |
 |------------------------|---------------|-----------------------------|
-| Apache Hadoop en garen | punt         | 2.7.3                       |
+| Apache Hadoop en garen | 3.1.1         | 2.7.3                       |
 | Apache TEZ             | 0.9.1         | 0.7.0                       |
 | Apache-Pig             | 0.16.0        | 0.16.0                      |
 | Apache Hive            | 3.1.0         | 1.2.1 (2.1.0 op ESP-interactieve query) |

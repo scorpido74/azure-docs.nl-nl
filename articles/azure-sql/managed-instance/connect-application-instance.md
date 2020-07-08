@@ -13,10 +13,10 @@ ms.author: srbozovi
 ms.reviewer: sstein, bonova, carlrab, vanto
 ms.date: 11/09/2018
 ms.openlocfilehash: a5d002532adb043fa5196231964d5b6e2c81417c
-ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/11/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84706372"
 ---
 # <a name="connect-your-application-to-azure-sql-managed-instance"></a>Uw toepassing verbinden met het beheerde Azure SQL-exemplaar
@@ -30,7 +30,7 @@ Welke keuze u ook maakt, u kunt verbinding maken met Azure SQL Managed instance.
 
 ![Hoge beschikbaarheid](./media/connect-application-instance/application-deployment-topologies.png)
 
-In dit artikel wordt beschreven hoe u een toepassing verbindt met Azure SQL Managed instance in een aantal verschillende toepassings scenario's. 
+In dit artikel wordt beschreven hoe u een toepassing verbindt met Azure SQL Managed Instance in een aantal verschillende toepassingsscenario's. 
 
 ## <a name="connect-inside-the-same-vnet"></a>Verbinding maken binnen hetzelfde VNet
 

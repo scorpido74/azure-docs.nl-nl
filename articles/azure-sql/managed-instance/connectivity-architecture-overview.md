@@ -13,13 +13,13 @@ ms.author: srbozovi
 ms.reviewer: sstein, bonova, carlrab
 ms.date: 03/17/2020
 ms.openlocfilehash: 115cf589c6aa0786026f68eff839a7a2ad6aa9ca
-ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/11/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84706202"
 ---
-# <a name="connectivity-architecture-for-azure-sql-managed-instance"></a>Connectiviteits architectuur voor Azure SQL Managed instance
+# <a name="connectivity-architecture-for-azure-sql-managed-instance"></a>Connectiviteitsarchitectuur van Azure SQL Managed Instance
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
 
 In dit artikel wordt de communicatie in Azure SQL Managed instance uitgelegd. Ook wordt de connectiviteits architectuur beschreven en hoe de onderdelen direct verkeer naar een beheerd exemplaar.  

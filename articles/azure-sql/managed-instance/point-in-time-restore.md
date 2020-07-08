@@ -13,10 +13,10 @@ ms.author: jovanpop
 ms.reviewer: sstein, carlrab, mathoma
 ms.date: 08/25/2019
 ms.openlocfilehash: 407d56c209f64d350906a17c0746b1c43f969d43
-ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/11/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84708636"
 ---
 # <a name="restore-a-database-in-azure-sql-managed-instance-to-a-previous-point-in-time"></a>Een data base in een Azure SQL Managed instance herstellen naar een eerder tijdstip
@@ -56,7 +56,7 @@ Een bestaande data base herstellen naar hetzelfde beheerde SQL-exemplaar met beh
 
 # <a name="portal"></a>[Portal](#tab/azure-portal)
 
-1. Meld u aan bij de [Azure-portal](https://portal.azure.com). 
+1. Meld u aan bij [Azure Portal](https://portal.azure.com). 
 2. Ga naar uw SQL Managed instance en selecteer de data base die u wilt herstellen.
 3. Selecteer **herstellen** op de pagina Data Base:
 

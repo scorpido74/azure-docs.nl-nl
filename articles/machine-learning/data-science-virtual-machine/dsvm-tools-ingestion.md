@@ -11,10 +11,10 @@ ms.author: laobri
 ms.topic: conceptual
 ms.date: 12/12/2019
 ms.openlocfilehash: d86858f8d7f09628457b718ca3c481934d720081
-ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/11/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84708005"
 ---
 # <a name="data-science-virtual-machine-data-ingestion-tools"></a>Data Science Virtual Machine hulpprogram ma's voor gegevens opname
@@ -77,7 +77,7 @@ Hier volgen enkele hulp middelen voor het verplaatsen van gegevens die beschikba
 | Ondersteunde DSVM-versies      | Windows      |
 | Typische toepassingen      | Gegevens importeren en exporteren uit de DSVM.    |
 |  Hoe kunt u het gebruiken/uitvoeren?    | Zoek naar ' Azure Storage Explorer ' in het menu Start. |
-| Koppelingen naar voor beelden      | [Azure Opslagverkenner](vm-do-ten-things.md#access-azure-data-and-analytics-services)      |
+| Koppelingen naar voor beelden      | [Azure Storage Explorer](vm-do-ten-things.md#access-azure-data-and-analytics-services)      |
 
 
 ## <a name="bcp"></a>bcp
