@@ -6,10 +6,9 @@ ms.topic: conceptual
 ms.date: 11/02/2019
 ms.author: azfuncdf
 ms.openlocfilehash: 4cb832f8fe11ac2581e97d9cdcc777eaff702ee9
-ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/11/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84697999"
 ---
 # <a name="diagnostics-in-durable-functions-in-azure"></a>Diagnostische gegevens in Durable Functions in Azure
@@ -390,7 +389,7 @@ Durable Functions-status wordt standaard opgeslagen in Azure Storage. Dit beteke
 Dit is handig voor het opsporen van fouten, omdat u precies ziet in welke staat een indeling kan zijn. Berichten in de wacht rijen kunnen ook worden onderzocht om te ontdekken wat er in behandeling is (of in sommige gevallen vastgelopen).
 
 > [!WARNING]
-> Hoewel het handig is om uitvoerings geschiedenis te zien in tabel opslag, moet u geen afhankelijkheid van deze tabel maken. Dit kan veranderen als de Durable Functions extensie wordt ontwikkeld.
+> Hoewel het handig is om uitvoerings geschiedenis te zien in tabel opslag, moet u geen afhankelijkheid van deze tabel maken. De tabel kan veranderen naarmate de Durable Functions-uitbreiding zich ontwikkelt.
 
 ## <a name="next-steps"></a>Volgende stappen
 

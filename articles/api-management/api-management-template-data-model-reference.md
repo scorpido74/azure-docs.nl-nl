@@ -14,10 +14,9 @@ ms.topic: article
 ms.date: 11/04/2019
 ms.author: apimpm
 ms.openlocfilehash: 5625ff7e4fc51b9b6b894698719247902a480f44
-ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/11/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84690028"
 ---
 # <a name="azure-api-management-template-data-model-reference"></a>Naslag informatie over Azure API Management-sjabloon gegevens model
@@ -29,7 +28,7 @@ In dit onderwerp worden de entiteits-en type representaties beschreven voor alge
 
 [!INCLUDE [premium-dev-standard-basic.md](../../includes/api-management-availability-premium-dev-standard-basic.md)]
 
-## <a name="reference"></a>Naslaginformatie
+## <a name="reference"></a>Verwijzing
 
 -   [API](#API)  
 -   [API-samen vatting](#APISummary)  
@@ -127,7 +126,7 @@ In dit onderwerp worden de entiteits-en type representaties beschreven voor alge
 ##  <a name="comment"></a><a name="Comment"></a>Heffen  
  De `API` entiteit heeft de volgende eigenschappen:  
   
-|Eigenschap|Type|Beschrijving|  
+|Eigenschap|Type|Description|  
 |--------------|----------|-----------------|  
 |`Id`|getal|De ID van de opmerking.|  
 |`CommentText`|tekenreeks|De hoofd tekst van de opmerking. Kan HTML bevatten.|  
@@ -184,7 +183,7 @@ In dit onderwerp worden de entiteits-en type representaties beschreven voor alge
 ##  <a name="http-response"></a><a name="HTTPResponse"></a>HTTP-antwoord  
  In deze sectie wordt de `response` representatie beschreven.  
   
-|Eigenschap|Type|Beschrijving|  
+|Eigenschap|Type|Description|  
 |--------------|----------|-----------------|  
 |`statusCode`|positief geheel getal|Status code van bewerkings antwoord.|  
 |`description`|tekenreeks|Beschrijving van bewerkings antwoord.|  
@@ -227,7 +226,7 @@ In dit onderwerp worden de entiteits-en type representaties beschreven voor alge
 ##  <a name="paging"></a><a name="Paging"></a>Haalt  
  De `paging` entiteit heeft de volgende eigenschappen:  
   
-|Eigenschap|Type|Beschrijving|  
+|Eigenschap|Type|Description|  
 |--------------|----------|-----------------|  
 |`Page`|getal|Het huidige pagina nummer.|  
 |`PageSize`|getal|De maximum resultaten die op één pagina worden weer gegeven.|  
@@ -264,7 +263,7 @@ In dit onderwerp worden de entiteits-en type representaties beschreven voor alge
 ##  <a name="provider"></a><a name="Provider"></a>Providers  
  De `provider` entiteit heeft de volgende eigenschappen:  
   
-|Eigenschap|Type|Beschrijving|  
+|Eigenschap|Type|Description|  
 |--------------|----------|-----------------|  
 |`Properties`|teken reeks woordenlijst|Eigenschappen voor deze verificatie provider.|  
 |`AuthenticationType`|tekenreeks|Het provider type. (Azure Active Directory, Facebook-aanmelding, Google-account, micro soft-account, Twitter).|  

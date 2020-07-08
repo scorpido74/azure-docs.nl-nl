@@ -6,10 +6,9 @@ ms.topic: conceptual
 ms.date: 12/17/2019
 ms.author: azfuncdf
 ms.openlocfilehash: 4e4081ecca4714c713d105d363a83a4f96a0d3fc
-ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/11/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84697840"
 ---
 # <a name="http-api-reference"></a>HTTP API-verwijzing
@@ -18,7 +17,7 @@ De uitbrei ding Durable Functions maakt een reeks ingebouwde HTTP-Api's die kunn
 
 Voor alle HTTP-Api's die door de extensie worden geïmplementeerd, zijn de volgende para meters vereist. Het gegevens type van alle para meters is `string` .
 
-| Parameter        | Parameter type  | Beschrijving |
+| Parameter        | Parameter type  | Description |
 |------------------|-----------------|-------------|
 | **`taskHub`**    | Queryreeks    | De naam van de [taak hub](durable-functions-task-hubs.md). Indien niet opgegeven, wordt ervan uitgegaan dat de naam van de taak-hub van de huidige functie-app wordt gebruikt. |
 | **`connection`** | Queryreeks    | De **naam** van de Connection String voor het opslag account. Als deze niet wordt opgegeven, wordt aangenomen dat de standaard connection string voor de functie-app wordt gebruikt. |
@@ -54,7 +53,7 @@ POST /runtime/webhooks/durabletask/orchestrators/{functionName}/{instanceId?}
 
 Aanvraag parameters voor deze API zijn de standaardset die eerder is vermeld, evenals de volgende unieke para meters:
 
-| Veld              | Parameter type  | Beschrijving |
+| Veld              | Parameter type  | Description |
 |--------------------|-----------------|-------------|
 | **`functionName`** | URL             | De naam van de Orchestrator-functie die moet worden gestart. |
 | **`instanceId`**   | URL             | Optionele parameter. De ID van het Orchestration-exemplaar. Als deze niet wordt opgegeven, begint de Orchestrator-functie met een wille keurige exemplaar-ID. |
@@ -144,7 +143,7 @@ GET /runtime/webhooks/durabletask/instances/{instanceId}
 
 Aanvraag parameters voor deze API zijn de standaardset die eerder is vermeld, evenals de volgende unieke para meters:
 
-| Veld                   | Parameter type  | Beschrijving |
+| Veld                   | Parameter type  | Description |
 |-------------------------|-----------------|-------------|
 | **`instanceId`**        | URL             | De ID van het Orchestration-exemplaar. |
 | **`showInput`**         | Queryreeks    | Optionele parameter. Als deze optie is ingesteld op `false` , wordt de functie-invoer niet opgenomen in de nettolading van het antwoord.|
@@ -272,7 +271,7 @@ GET /runtime/webhooks/durableTask/instances?
 
 Aanvraag parameters voor deze API zijn de standaardset die eerder is vermeld, evenals de volgende unieke para meters:
 
-| Veld                   | Parameter type  | Beschrijving |
+| Veld                   | Parameter type  | Description |
 |-------------------------|-----------------|-------------|
 | **`instanceId`**        | URL             | De ID van het Orchestration-exemplaar. |
 | **`showInput`**         | Queryreeks    | Optionele parameter. Als deze optie is ingesteld op `false` , wordt de functie-invoer niet opgenomen in de nettolading van het antwoord.|
@@ -370,7 +369,7 @@ DELETE /runtime/webhooks/durabletask/instances/{instanceId}
 
 Aanvraag parameters voor deze API zijn de standaardset die eerder is vermeld, evenals de volgende unieke para meters:
 
-| Veld             | Parameter type  | Beschrijving |
+| Veld             | Parameter type  | Description |
 |-------------------|-----------------|-------------|
 | **`instanceId`**  | URL             | De ID van het Orchestration-exemplaar. |
 
@@ -383,7 +382,7 @@ De volgende HTTP-status code waarden kunnen worden geretourneerd.
 
 De nettolading van de reactie voor de **HTTP 200-** case is een JSON-object met het volgende veld:
 
-| Veld                  | Gegevenstype | Beschrijving |
+| Veld                  | Gegevenstype | Description |
 |------------------------|-----------|-------------|
 | **`instancesDeleted`** | geheel getal   | Het aantal verwijderde exemplaren. Voor het geval van één exemplaar moet deze waarde altijd zijn `1` . |
 
@@ -427,7 +426,7 @@ DELETE /runtime/webhooks/durabletask/instances
 
 Aanvraag parameters voor deze API zijn de standaardset die eerder is vermeld, evenals de volgende unieke para meters:
 
-| Veld                 | Parameter type  | Beschrijving |
+| Veld                 | Parameter type  | Description |
 |-----------------------|-----------------|-------------|
 | **`createdTimeFrom`** | Queryreeks    | Hiermee wordt de lijst met verwijderde exemplaren gefilterd die zijn gemaakt op of na de opgegeven ISO8601-tijds tempel.|
 | **`createdTimeTo`**   | Queryreeks    | Optionele parameter. Hiermee wordt de lijst met verwijderde exemplaren die zijn gemaakt op of vóór de opgegeven ISO8601-tijds tempel gefilterd.|
@@ -445,7 +444,7 @@ De volgende HTTP-status code waarden kunnen worden geretourneerd.
 
 De nettolading van de reactie voor de **HTTP 200-** case is een JSON-object met het volgende veld:
 
-| Veld                   | Gegevenstype | Beschrijving |
+| Veld                   | Gegevenstype | Description |
 |-------------------------|-----------|-------------|
 | **`instancesDeleted`**  | geheel getal   | Het aantal verwijderde exemplaren. |
 
@@ -483,7 +482,7 @@ POST /runtime/webhooks/durabletask/instances/{instanceId}/raiseEvent/{eventName}
 
 Aanvraag parameters voor deze API zijn de standaardset die eerder is vermeld, evenals de volgende unieke para meters:
 
-| Veld             | Parameter type  | Beschrijving |
+| Veld             | Parameter type  | Description |
 |-------------------|-----------------|-------------|
 | **`instanceId`**  | URL             | De ID van het Orchestration-exemplaar. |
 | **`eventName`**   | URL             | De naam van de gebeurtenis waarop het doel exemplaar van de Orchestrator-instantie wacht. |
@@ -538,7 +537,7 @@ POST /runtime/webhooks/durabletask/instances/{instanceId}/terminate
 
 Aanvraag parameters voor deze API zijn de standaardset die eerder is vermeld, evenals de volgende unieke para meter.
 
-| Veld             | Parameter type  | Beschrijving |
+| Veld             | Parameter type  | Description |
 |-------------------|-----------------|-------------|
 | **`instanceId`**  | URL             | De ID van het Orchestration-exemplaar. |
 | **`reason`**      | Queryreeks    | Optioneel. De reden voor het beëindigen van het Orchestrator-exemplaar. |
@@ -587,7 +586,7 @@ POST /runtime/webhooks/durabletask/instances/{instanceId}/rewind
 
 Aanvraag parameters voor deze API zijn de standaardset die eerder is vermeld, evenals de volgende unieke para meter.
 
-| Veld             | Parameter type  | Beschrijving |
+| Veld             | Parameter type  | Description |
 |-------------------|-----------------|-------------|
 | **`instanceId`**  | URL             | De ID van het Orchestration-exemplaar. |
 | **`reason`**      | Queryreeks    | Optioneel. De reden voor het terugspoelen van het Orchestration-exemplaar. |
@@ -629,7 +628,7 @@ POST /runtime/webhooks/durabletask/entities/{entityName}/{entityKey}
 
 Aanvraag parameters voor deze API zijn de standaardset die eerder is vermeld, evenals de volgende unieke para meters:
 
-| Veld             | Parameter type  | Beschrijving |
+| Veld             | Parameter type  | Description |
 |-------------------|-----------------|-------------|
 | **`entityName`**  | URL             | De naam (type) van de entiteit. |
 | **`entityKey`**   | URL             | De sleutel (unieke ID) van de entiteit. |
@@ -718,7 +717,7 @@ GET /runtime/webhooks/durabletask/entities/{entityName}
 
 Aanvraag parameters voor deze API zijn de standaardset die eerder is vermeld, evenals de volgende unieke para meters:
 
-| Veld                       | Parameter type  | Beschrijving |
+| Veld                       | Parameter type  | Description |
 |-----------------------------|-----------------|-------------|
 | **`entityName`**            | URL             | Optioneel. Als deze is opgegeven, wordt de lijst met geretourneerde entiteiten gefilterd op basis van de naam van de entiteit (niet hoofdletter gevoelig). |
 | **`fetchState`**            | Queryreeks    | Optionele parameter. Als deze is ingesteld op `true` , wordt de status van de entiteit opgenomen in de nettolading van de reactie. |

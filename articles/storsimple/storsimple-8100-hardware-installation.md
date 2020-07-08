@@ -8,10 +8,9 @@ ms.topic: conceptual
 ms.date: 01/09/2018
 ms.author: alkohli
 ms.openlocfilehash: 113b72ddf7e5d508c8a0b577d4004d4fbd83e8e5
-ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/11/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84699104"
 ---
 # <a name="unpack-rack-mount-and-cable-your-storsimple-8100-device"></a>Uw StorSimple 8100-apparaat uitpakken, aan het rek koppelen en bekabelen
@@ -184,7 +183,7 @@ Ter ondersteuning van deze redundante Controller-failover moet u het netwerk van
    
     **Weer gave van het apparaat met gegevens poorten**
    
-   | Label | Beschrijving |
+   | Label | Description |
    | --- | --- |
    |   0, 1, 4, 5 |1 GbE-netwerk interfaces |
    |   2, 3 |10 GbE-netwerk interfaces |
@@ -195,7 +194,7 @@ Ter ondersteuning van deze redundante Controller-failover moet u het netwerk van
 
     **Netwerk kabels voor uw apparaat**
 
-   |Label | Beschrijving |
+   |Label | Description |
    |----- | ----------- |
    | A    | LAN met Internet toegang |
    | B    | Controller 0 |

@@ -17,10 +17,9 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 9618e02f54fbb2a3b92771761c5fcf700d126b5c
-ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/11/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84698764"
 ---
 # <a name="topologies-for-azure-ad-connect"></a>Topologieën voor Azure AD Connect
@@ -123,7 +122,7 @@ Voor sommige Office 365-werk belastingen gelden bepaalde beperkingen voor onders
 | Workload | Beperkingen |
 | --------- | --------- |
 | Exchange Online | Zie [hybride implementaties met meerdere Active Directory-forests](https://technet.microsoft.com/library/jj873754.aspx)voor meer informatie over hybride topologieën die door Exchange Online worden ondersteund. |
-| Skype voor Bedrijven | Wanneer u meerdere on-premises forests gebruikt, wordt alleen de topologie van het account-resource forest ondersteund. Zie voor meer informatie [milieu vereisten voor Skype voor bedrijven Server 2015](https://technet.microsoft.com/library/dn933910.aspx). |
+| Skype voor bedrijven | Wanneer u meerdere on-premises forests gebruikt, wordt alleen de topologie van het account-resource forest ondersteund. Zie voor meer informatie [milieu vereisten voor Skype voor bedrijven Server 2015](https://technet.microsoft.com/library/dn933910.aspx). |
 
 Als u een grotere organisatie bent, kunt u het beste de [Office 365 PreferredDataLocation](how-to-connect-sync-feature-preferreddatalocation.md) -functie gebruiken. Hiermee kunt u definiëren in welke Data Center-regio de resources van de gebruiker zich bevinden.
 

@@ -8,10 +8,9 @@ ms.topic: conceptual
 ms.date: 11/14/2019
 ms.author: raynew
 ms.openlocfilehash: 26c734b7a2e9f5592ee6d51dfee4650a3998ab1a
-ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/11/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84699053"
 ---
 # <a name="run-a-test-failover-disaster-recovery-drill-to-azure"></a>Een testfailover (inzoomen op nood herstel) uitvoeren in azure 
@@ -45,7 +44,7 @@ In deze procedure wordt beschreven hoe u een testfailover uitvoert voor een hers
 5. Volg de voortgang van de failover op het tabblad **taken** . U moet de test replica-machine in de Azure Portal kunnen zien.
 6. Als u een RDP-verbinding met de Azure-VM wilt initiëren, moet u [een openbaar IP-adres toevoegen](https://aka.ms/addpublicip) aan de netwerk interface van de virtuele machine waarvoor een failover is uitgevoerd.
 7. Wanneer alles werkt zoals verwacht, klikt u op **testfailover opschonen**. Hiermee verwijdert u de Vm's die zijn gemaakt tijdens de testfailover.
-8. Leg in **notities**eventuele opmerkingen over de testfailover vast en sla deze op.
+8. Leg in **Notities** eventuele opmerkingen over de testfailover vast en sla deze op.
 
 
 ![Failover testen](./media/site-recovery-test-failover-to-azure/TestFailoverJob.png)

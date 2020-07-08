@@ -4,10 +4,9 @@ description: Hierin wordt beschreven hoe u fouten oplost wanneer een bron niet k
 ms.topic: troubleshooting
 ms.date: 06/10/2020
 ms.openlocfilehash: 224af4ce0fe5053201f25d8207f4ca8cdc73e638
-ms.sourcegitcommit: eeba08c8eaa1d724635dcf3a5e931993c848c633
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/10/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84667944"
 ---
 # <a name="resolve-resource-not-found-errors"></a>Fouten bij niet-gevonden resources oplossen

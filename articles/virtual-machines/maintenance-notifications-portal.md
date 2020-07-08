@@ -8,10 +8,9 @@ ms.topic: how-to
 ms.date: 11/19/2019
 ms.author: shants
 ms.openlocfilehash: 77d5731738fbade97be08841428c3bc6b712a7a8
-ms.sourcegitcommit: f01c2142af7e90679f4c6b60d03ea16b4abf1b97
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/10/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84678729"
 ---
 # <a name="handling-planned-maintenance-notifications-using-the-portal"></a>Geplande onderhouds meldingen verwerken met behulp van de portal
@@ -22,7 +21,7 @@ Zodra een [geplande onderhouds](maintenance-notifications.md) Golf is gepland, k
 
 U kunt de Azure Portal gebruiken en zoeken naar Vm's die zijn gepland voor onderhoud.
 
-1. Meld u aan bij de [Azure-portal](https://portal.azure.com).
+1. Meld u aan bij [Azure Portal](https://portal.azure.com).
 
 2. Klik in de linkernavigatiebalk op **virtual machines**.
 

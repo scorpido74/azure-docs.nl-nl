@@ -7,10 +7,9 @@ ms.topic: conceptual
 ms.date: 12/24/2019
 ms.author: ramamill
 ms.openlocfilehash: 01aef3aca4f6967b1681bff9598c7dd7a24739cd
-ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/11/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84692516"
 ---
 # <a name="manage-vmware-vcenter-server"></a>VMware vCenter Server beheren
@@ -36,7 +35,7 @@ Wanneer u herstel na nood gevallen instelt voor on-premises VMware-Vm's, moet Si
    > [!NOTE]
    > Het duurt ongeveer 15 minuten om account gegevens te synchroniseren met Site Recovery.
 
-### <a name="account-permissions"></a>Account machtigingen
+### <a name="account-permissions"></a>Accountmachtigingen
 
 |**Taak** | **Account** | **Machtigingen** | **Details**|
 |--- | --- | --- | ---|

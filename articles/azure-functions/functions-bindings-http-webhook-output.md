@@ -6,10 +6,9 @@ ms.topic: reference
 ms.date: 02/21/2020
 ms.author: cshoe
 ms.openlocfilehash: a25658677e436edf4d001599bb4981f527016596
-ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/11/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84697439"
 ---
 # <a name="azure-functions-http-output-bindings"></a>Azure Functions HTTP-uitvoer bindingen
@@ -64,7 +63,7 @@ In deze sectie worden de algemene configuratie-instellingen beschreven die besch
 }
 ```
 
-|Eigenschap  |Standaard | Beschrijving |
+|Eigenschap  |Standaard | Description |
 |---------|---------|---------| 
 | customHeaders|geen|Hiermee kunt u aangepaste kopteksten instellen in het HTTP-antwoord. In het vorige voor beeld wordt de `X-Content-Type-Options` header toegevoegd aan het antwoord om te voor komen dat inhouds type-sniffing. |
 |dynamicThrottlesEnabled|echte<sup>\*</sup>|Als deze instelling is ingeschakeld, wordt door de aanvraag verwerkings pijplijn periodiek de prestatie meter items van het systeem gecontroleerd `connections/threads/processes/memory/cpu/etc` , zoals en als een van deze prestatie meter items een ingebouwde hoge drempel waarde (80%) heeft, zullen aanvragen worden afgewezen met een `429 "Too Busy"` reactie totdat de teller (s) op normale niveaus terugkeren.<br/><sup>\*</sup>De standaard waarde in een verbruiks abonnement is `true` . De standaard instelling in een specifiek abonnement is `false` .|

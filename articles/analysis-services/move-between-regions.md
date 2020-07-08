@@ -8,10 +8,9 @@ ms.date: 06/09/2020
 ms.author: owend
 ms.reviewer: minewiskan
 ms.openlocfilehash: ff012dc78f3981b6fb5fdbd8a5bde45083dd997b
-ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/11/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84699427"
 ---
 # <a name="move-analysis-services-to-a-different-region"></a>Analysis Services verplaatsen naar een andere regio
@@ -68,9 +67,9 @@ De sjabloon bevat configuratie-eigenschappen van de bron server.
 
 # <a name="portal"></a>[Portal](#tab/azure-portal)
 
-Een sjabloon exporteren met behulp van Azure Portal:
+Een sjabloon exporteren via de Azure-portal:
 
-1. Meld u aan bij de [Azure-portal](https://portal.azure.com).
+1. Meld u aan bij [Azure Portal](https://portal.azure.com).
 
 2. Selecteer **alle resources**en selecteer vervolgens uw Analysis Services-server.
 
@@ -190,13 +189,13 @@ Als u een nieuwe server bron in een andere regio wilt implementeren, gebruikt u 
 
 1. Selecteer in de portal **een resource maken**.
 
-2. In **Marketplace doorzoeken** typt u **sjabloonimplementatie**. Druk vervolgens op **ENTER**.
+2. Typ in **de Marketplace zoeken de** **sjabloon implementatie**en druk vervolgens op **Enter**.
 
-3. Selecteer **Sjabloonimplementatie**.
+3. Selecteer **Sjabloonimlementatie**.
 
 4. Selecteer **Maken**.
 
-5. Selecteer **Bouw uw eigen sjabloon in de editor**.
+5. Selecteer **uw eigen sjabloon bouwen in de editor**.
 
 6. Selecteer **bestand laden**en volg de instructies voor het laden van de **template.jsvoor** het bestand dat u hebt geëxporteerd en gewijzigd.
 

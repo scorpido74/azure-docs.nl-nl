@@ -7,10 +7,9 @@ ms.topic: reference
 ms.date: 11/21/2017
 ms.custom: seodec18
 ms.openlocfilehash: e30b256d9fa43402c3b2c444aa1a0e0dc16cfdcf
-ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/11/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84697619"
 ---
 # <a name="azure-cosmos-db-bindings-for-azure-functions-1x"></a>Azure Cosmos DB bindingen voor Azure Functions 1. x
@@ -178,7 +177,7 @@ Kenmerken worden niet ondersteund door Java script.
 
 De volgende tabel bevat uitleg over de binding configuratie-eigenschappen die u hebt ingesteld in de *function.jsvoor* het bestand en het `CosmosDBTrigger` kenmerk.
 
-|function.jsbij eigenschap | Kenmerk eigenschap |Beschrijving|
+|function.jsbij eigenschap | Kenmerk eigenschap |Description|
 |---------|---------|----------------------|
 |**type** | N.v.t. | Moet worden ingesteld op `cosmosDBTrigger` . |
 |**direction** | N.v.t. | Moet worden ingesteld op `in` . Deze para meter wordt automatisch ingesteld wanneer u de trigger maakt in de Azure Portal. |
@@ -1113,7 +1112,7 @@ Kenmerken worden niet ondersteund door Java script.
 
 De volgende tabel bevat uitleg over de binding configuratie-eigenschappen die u hebt ingesteld in de *function.jsvoor* het bestand en het `DocumentDB` kenmerk.
 
-|function.jsbij eigenschap | Kenmerk eigenschap |Beschrijving|
+|function.jsbij eigenschap | Kenmerk eigenschap |Description|
 |---------|---------|----------------------|
 |**type**     | N.v.t. | Moet worden ingesteld op `documentdb` .        |
 |**direction**     | N.v.t. | Moet worden ingesteld op `in` .         |
@@ -1452,7 +1451,7 @@ Kenmerken worden niet ondersteund door Java script.
 
 De volgende tabel bevat uitleg over de binding configuratie-eigenschappen die u hebt ingesteld in de *function.jsvoor* het bestand en het `DocumentDB` kenmerk.
 
-|function.jsbij eigenschap | Kenmerk eigenschap |Beschrijving|
+|function.jsbij eigenschap | Kenmerk eigenschap |Description|
 |---------|---------|----------------------|
 |**type**     | N.v.t. | Moet worden ingesteld op `documentdb` .        |
 |**direction**     | N.v.t. | Moet worden ingesteld op `out` .         |
@@ -1475,7 +1474,7 @@ Wanneer u in uw functie naar de uitvoer parameter schrijft, wordt er standaard e
 
 ## <a name="exceptions-and-return-codes"></a>Uitzonde ringen en retour codes
 
-| Binding | Naslaginformatie |
+| Binding | Verwijzing |
 |---|---|
 | CosmosDB | [CosmosDB-fout codes](https://docs.microsoft.com/rest/api/cosmos-db/http-status-codes-for-cosmosdb) |
 

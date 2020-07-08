@@ -6,10 +6,9 @@ ms.topic: reference
 ms.date: 11/29/2017
 ms.author: cshoe
 ms.openlocfilehash: 9ed2b81c12c698822b9542bb6903189c865b572b
-ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/11/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84697354"
 ---
 # <a name="azure-functions-sendgrid-bindings"></a>Azure Functions SendGrid-bindingen
@@ -354,7 +353,7 @@ Met de aantekening [SendGridOutput](https://github.com/Azure/azure-functions-jav
 
 De volgende tabel geeft een lijst van de bindings configuratie-eigenschappen die beschikbaar zijn in de *function.jsin* het bestand en het `SendGrid` kenmerk/aantekening.
 
-| *function.jsbij* eigenschap | Kenmerk/annotatie-eigenschap | Beschrijving | Optioneel |
+| *function.jsbij* eigenschap | Kenmerk/annotatie-eigenschap | Description | Optioneel |
 |--------------------------|-------------------------------|-------------|----------|
 | type |N.v.t.| Moet worden ingesteld op `sendGrid` .| No |
 | richting |N.v.t.| Moet worden ingesteld op `out` .| No |
@@ -389,7 +388,7 @@ In deze sectie worden de algemene configuratie-instellingen beschreven die besch
 }
 ```  
 
-|Eigenschap  |Standaard | Beschrijving |
+|Eigenschap  |Standaard | Description |
 |---------|---------|---------| 
 |from|N.v.t.|Het e-mail adres van de afzender over alle functies.| 
 

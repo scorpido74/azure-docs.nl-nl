@@ -8,10 +8,9 @@ author: bwren
 ms.author: bwren
 ms.date: 02/14/2020
 ms.openlocfilehash: a7e6a3a299df8112fe4fbcf457516894c1766b8c
-ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/11/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84686661"
 ---
 # <a name="overview-of-azure-monitor-agents"></a>Overzicht van Azure Monitor agents
@@ -29,7 +28,7 @@ De volgende tabellen bieden een snelle vergelijking van de Azure Monitor agents 
 
 ### <a name="windows-agents"></a>Windows-agents
 
-| | Diagnostiek<br>extensie (WAD) | Log Analytics<br>tussen | Afhankelijkheid<br>tussen |
+| | Diagnostiek<br>extensie (WAD) | Log Analytics<br>agent | Afhankelijkheid<br>agent |
 |:---|:---|:---|:---|
 | Omgevingen worden ondersteund | Azure | Azure<br>Andere Cloud<br>On-premises | Azure<br>Andere Cloud<br>On-premises | 
 | Agent vereisten  | Geen | Geen | Vereist Log Analytics-agent |
@@ -39,7 +38,7 @@ De volgende tabellen bieden een snelle vergelijking van de Azure Monitor agents 
 
 ### <a name="linux-agents"></a>Linux-agents
 
-| | Diagnostiek<br>extensie (LAD) | Telegrafie<br>tussen | Log Analytics<br>tussen | Afhankelijkheid<br>tussen |
+| | Diagnostiek<br>extensie (LAD) | Telegrafie<br>agent | Log Analytics<br>agent | Afhankelijkheid<br>agent |
 |:---|:---|:---|:---|:---|
 | Omgevingen worden ondersteund | Azure | Azure<br>Andere Cloud<br>On-premises | Azure<br>Andere Cloud<br>On-premises | Azure<br>Andere Cloud<br>On-premises |
 | Agent vereisten  | Geen | Geen | Geen | Vereist Log Analytics-agent |

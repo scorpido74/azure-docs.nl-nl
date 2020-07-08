@@ -4,10 +4,9 @@ description: Hierin wordt beschreven hoe u fouten oplost bij het werken met een 
 ms.topic: troubleshooting
 ms.date: 08/01/2018
 ms.openlocfilehash: 474cb85d16382136e24e5502b87ba8a1a65488ef
-ms.sourcegitcommit: f01c2142af7e90679f4c6b60d03ea16b4abf1b97
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/10/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84673657"
 ---
 # <a name="resolve-errors-for-parent-resources"></a>Fouten voor bovenliggende resources oplossen

@@ -8,10 +8,9 @@ ms.date: 03/04/2020
 ms.author: owend
 ms.reviewer: minewiskan
 ms.openlocfilehash: aaa3a6d128fe7dd466f6f60ab515f05fa38ba63b
-ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/11/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84690373"
 ---
 # <a name="monitor-server-metrics"></a>Metrische servergegevens bewaken
@@ -37,7 +36,7 @@ Als u meer uitgebreide diagnostische gegevens wilt uitvoeren, de prestaties wilt
 
 Gebruik deze tabel om te bepalen welke metrische gegevens het meest geschikt zijn voor uw bewakings scenario. In hetzelfde diagram kunnen alleen metrische gegevens van dezelfde eenheid worden weer gegeven.
 
-|Gegevens|Weergave naam voor metrische gegevens|Eenheid|Aggregatietype|Beschrijving|
+|Gegevens|Weergave naam voor metrische gegevens|Eenheid|Aggregatietype|Description|
 |---|---|---|---|---|
 |CommandPoolJobQueueLength|Wachtrij lengte van de opdracht pool taak|Count|Average|Aantal taken in de wachtrij van de opdracht thread pool.|
 |CurrentConnections|Verbinding: huidige verbindingen|Count|Average|Het huidige aantal client verbindingen dat tot stand is gebracht.|

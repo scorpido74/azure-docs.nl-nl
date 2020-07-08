@@ -8,10 +8,9 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 08/08/2019
 ms.openlocfilehash: 71a5737434e78bc39bccdfeb950e0dbc32ed0052
-ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/11/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84688973"
 ---
 # <a name="reference---iot-hub-quotas-and-throttling"></a>Referentie-IoT Hub quota's en beperking
@@ -26,7 +25,7 @@ Elke IoT-hub is ingericht met een bepaald aantal eenheden in een bepaalde laag. 
 
 De laag bepaalt ook de beperkings limieten die IoT Hub afgedwongen voor alle bewerkingen.
 
-### <a name="iot-plug-and-play"></a>IoT Plug and Play
+### <a name="iot-plug-and-play"></a>IoT Plug en Play
 
 Tijdens de open bare preview verzenden IoT Plug en Play-apparaten afzonderlijke berichten per interface, waardoor het aantal berichten dat kan worden meegeteld voor uw bericht quotum, kan toenemen.
 

@@ -7,10 +7,9 @@ author: bwren
 ms.author: bwren
 ms.date: 02/05/2019
 ms.openlocfilehash: a005b6cec811b8a584123dc4c8abab77766961e0
-ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/11/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84689007"
 ---
 # <a name="computer-groups-in-azure-monitor-log-queries"></a>Computer groepen in Azure Monitor-logboek query's
@@ -49,7 +48,7 @@ In de volgende tabel worden de eigenschappen beschreven die een computer groep d
 | Eigenschap | Beschrijving |
 |:---|:---|
 | Naam   | De naam van de query die moet worden weer gegeven in de portal. |
-| Functie alias | Een unieke alias die wordt gebruikt om de computer groep in een query te identificeren. |
+| Functiealias | Een unieke alias die wordt gebruikt om de computer groep in een query te identificeren. |
 | Categorie       | Categorie voor het ordenen van de query's in de portal. |
 
 
@@ -118,7 +117,7 @@ De volgende query retourneert update Summary-records voor alleen computers in do
 ## <a name="computer-group-records"></a>Records computer groep
 Er wordt een record gemaakt in de werk ruimte Log Analytics voor elk lidmaatschap van de computer groep dat is gemaakt op basis van Active Directory of WSUS.  Deze records hebben het type **ComputerGroup** en hebben de eigenschappen in de volgende tabel.  Er worden geen records gemaakt voor computer groepen op basis van logboek query's.
 
-| Eigenschap | Beschrijving |
+| Eigenschap | Description |
 |:--- |:--- |
 | `Type` |*ComputerGroup* |
 | `SourceSystem` |*SourceSystem* |

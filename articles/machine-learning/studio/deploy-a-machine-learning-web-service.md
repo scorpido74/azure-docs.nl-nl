@@ -11,10 +11,9 @@ ms.author: keli19
 ms.custom: previous-ms.author=yahajiza, previous-author=YasinMSFT
 ms.date: 01/06/2017
 ms.openlocfilehash: 3fcf4e180233c6ceaa552b3505462639569ed974
-ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/11/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84696385"
 ---
 # <a name="deploy-an-azure-machine-learning-studio-classic-web-service"></a>Een Azure Machine Learning Studio-webservice (klassiek) implementeren
@@ -40,7 +39,7 @@ Vanuit een hoogwaardige punt weergave implementeert u uw model in drie stappen:
 
 Als u een predictive analytics model wilt trainen, gebruikt u Azure Machine Learning Studio (klassiek) om een trainings experiment te maken waarin u diverse modules opneemt voor het laden van trainings gegevens, het voorbereiden van de gegevens, het Toep assen van machine learning algoritmen en het evalueren van de resultaten. U kunt een experiment herhalen en verschillende machine learning algoritmen proberen om de resultaten te vergelijken en te evalueren.
 
-Het proces voor het maken en beheren van trainings experimenten wordt uitgebreid besproken. Raadpleeg voor meer informatie de volgende artikelen:
+Het proces voor het maken en beheren van trainings experimenten wordt uitgebreid besproken. Raadpleeg deze artikelen voor meer informatie:
 
 * [Een eenvoudig experiment maken in Azure Machine Learning Studio (klassiek)](create-experiment.md)
 * [Een voorspellende oplossing ontwikkelen met Azure Machine Learning Studio (klassiek)](tutorial-part1-credit-risk.md)

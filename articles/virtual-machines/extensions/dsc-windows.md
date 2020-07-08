@@ -14,10 +14,9 @@ ms.workload: ''
 ms.date: 03/26/2018
 ms.author: robreed
 ms.openlocfilehash: 592c731d1851ac36cf9b57864750df0603b6c3fd
-ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/11/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84689483"
 ---
 # <a name="powershell-dsc-extension"></a>Power shell DSC-extensie
@@ -106,7 +105,7 @@ De volgende JSON toont het schema voor het gedeelte instellingen van de DSC-uitb
 
 ### <a name="settings-property-values"></a>Eigenschaps waarden van instellingen
 
-| Name | Gegevenstype | Beschrijving
+| Name | Gegevenstype | Description
 | ---- | ---- | ---- |
 | Settings. wmfVersion | tekenreeks | Hiermee geeft u de versie op van het Windows Management Framework dat op uw virtuele machine moet worden geïnstalleerd. Als u deze eigenschap instelt op ' meest recente ', wordt de meest recente versie van WMF geïnstalleerd. De enige huidige mogelijke waarden voor deze eigenschap zijn ' 4,0 ', ' 5,0 ' en ' meest recent '. Deze mogelijke waarden zijn onderhevig aan updates. De standaard waarde is ' meest recent '. |
 | settings.configuratie. URL | tekenreeks | Hiermee geeft u de URL-locatie van waaruit u uw DSC-configuratie-zip-bestand wilt downloaden. Als voor de opgegeven URL een SAS-token voor toegang is vereist, moet u de eigenschap urationUrlSasToken van de protectedSettings.configinstellen op de waarde van uw SAS-token. Deze eigenschap is vereist als settings.configuratie. script en/of settings.configuratie. functie zijn gedefinieerd.
@@ -120,7 +119,7 @@ De volgende JSON toont het schema voor het gedeelte instellingen van de DSC-uitb
 
 ### <a name="protected-settings-property-values"></a>Eigenschaps waarden voor beveiligde instellingen
 
-| Name | Gegevenstype | Beschrijving
+| Name | Gegevenstype | Description
 | ---- | ---- | ---- |
 | protectedSettings.configurationArguments | tekenreeks | Hiermee definieert u de para meters die u wilt door geven aan uw DSC-configuratie. Deze eigenschap wordt versleuteld. |
 | protectedSettings.configurationUrlSasToken | tekenreeks | Hiermee geeft u het SAS-token voor toegang tot de URL die is gedefinieerd door Configuration. URL. Deze eigenschap wordt versleuteld. |

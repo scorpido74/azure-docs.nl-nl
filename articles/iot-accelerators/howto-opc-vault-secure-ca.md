@@ -9,10 +9,9 @@ ms.service: industrial-iot
 services: iot-industrialiot
 manager: philmea
 ms.openlocfilehash: 88f8188779c5fb6b3cd07c67e9f35a6b8f9ad97d
-ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/11/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84687069"
 ---
 # <a name="run-the-opc-vault-certificate-management-service-securely"></a>De OPC kluis Certificate Management-service veilig uitvoeren
@@ -109,7 +108,7 @@ Onderhoud van een activa-inventaris voor alle productie-hosts (inclusief permane
 
 #### <a name="inventory-of-the-default-azure-opc-vault-microservice-production-deployment"></a>Inventarisatie van de standaard implementatie van Azure OPC kluis micro Services productie 
 
-In Azure:
+Doe het volgende in Azure:
 - **App service plan**: app service-plan voor service-hosts. Standaard S1.
 - **App service** voor micro service: de OPC kluis servicehost.
 - **App service** voor voorbeeld toepassing: de voor beeld-Toepassingshost van de OPC-kluis.
