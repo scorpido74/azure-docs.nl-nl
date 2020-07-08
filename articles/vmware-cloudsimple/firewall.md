@@ -9,11 +9,11 @@ ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
 ms.openlocfilehash: 986f4b0da7254ebac3725a704f32af785c72fbcc
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79244665"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85846872"
 ---
 # <a name="set-up-firewall-tables-and-rules-for-private-clouds"></a>Firewall tabellen en-regels voor persoonlijke Clouds instellen
 
@@ -72,8 +72,8 @@ Firewall regels bepalen hoe de firewall specifieke typen verkeer behandelt. Het 
 
 Nadat u een firewall tabel hebt gedefinieerd, kunt u de subnetten opgeven waarop de regels in de tabel van toepassing zijn.
 
-1. Selecteer een firewall tabel op de pagina **netwerk** > **firewall tabellen** .
+1. **Network**  >  Selecteer een firewall tabel op de pagina netwerk**firewall tabellen** .
 2. Open het tabblad **gekoppelde vlan's/subnet** .
 3. Klik op **koppelen aan een VLAN/subnet**.
 4. Selecteer de Privécloud en het VLAN. De bijbehorende subnetnaam en het CIDR-blok worden weer gegeven.
-5. Klik op **verzenden**.
+5. Klik op **Submit**

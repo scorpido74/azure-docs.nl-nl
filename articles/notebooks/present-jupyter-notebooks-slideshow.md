@@ -3,18 +3,18 @@ title: Een Jupyter-notebook presen teren als een diapresentatie op Azure Noteboo
 description: Meer informatie over het configureren van cellen voor de diavoorstellings modus in een Jupyter-notebook en de diavoorstelling vervolgens presen teren met de toename extensie.
 ms.topic: how-to
 ms.date: 12/04/2018
-ms.openlocfilehash: 05dd3d9c5580e208ecf6f9e6d762476b0b493a6c
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 2fe337361436ecfc8eabf2855ad633b891db69d8
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75647115"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85834043"
 ---
 # <a name="run-a-notebook-slideshow-in-azure-notebooks-preview"></a>Een diapresentatie van een notebook uitvoeren in Azure Notebooks preview
 
-Azure Notebooks is vooraf geconfigureerd met de Jupyter/IPython-extensie (toename) waarmee u een notitie blok rechtstreeks als een diapresentatie kunt weer geven. In een diapresentatie worden cellen doorgaans een voor een weer gegeven met behulp van een teken grootte die geschikt is voor het presen teren op grote schermen, en u kunt de code nog steeds uitvoeren in plaats van naar een afzonderlijke demo computer te scha kelen.
-
 [!INCLUDE [notebooks-status](../../includes/notebooks-status.md)]
+
+Azure Notebooks is vooraf geconfigureerd met de Jupyter/IPython-extensie (toename) waarmee u een notitie blok rechtstreeks als een diapresentatie kunt weer geven. In een diapresentatie worden cellen doorgaans een voor een weer gegeven met behulp van een teken grootte die geschikt is voor het presen teren op grote schermen, en u kunt de code nog steeds uitvoeren in plaats van naar een afzonderlijke demo computer te scha kelen.
 
 In de volgende afbeelding ziet u de standaard notitieblok weergave, waarin u prijs-en code cellen tegelijk kunt zien:
 
@@ -34,7 +34,7 @@ Voor het voorbereiden van een notitie blok voor een diapresentatie zijn twee pri
 
 Als u een wille keurige notebook gebruikt voor een diavoorstelling, weet u doorgaans dat alle cellen onsamenhangend zijn en dat veel van de inhoud wordt verborgen onder in het browser venster. Als u een doel treffende presentatie wilt maken, moet u aan elke cel een type diavoorstelling toewijzen met behulp van de werk balk van de diavoorstelling:
 
-1. Selecteer in het menu **weer gave** de optie**Diavoorstelling**op **werk balk** > van cel:
+1. Selecteer in het menu **weer gave** de optie diavoorstelling op **werk balk van cel**  >  **Slideshow**:
 
     ![De werk balk van de diavoorstelling met cellen inschakelen](media/slideshow/slideshow-view-cell-toolbar.png)
 
@@ -53,7 +53,7 @@ Als u een wille keurige notebook gebruikt voor een diavoorstelling, weet u doorg
     | Subdia | Cel is "onder" een primaire dia, navigeert naar met behulp van de pijl-omlaag van het besturings element navigatie. De pijl-omhoog wordt weer gegeven op de primaire dia. Subdiavoorstellingen worden gebruikt voor secundair materiaal dat u kunt overs laan in het hoofd pad van een presentatie, maar is zo nodig direct beschikbaar. |
     | Fragment | Celinhoud wordt weer gegeven in de context van de vorige dia of subdia wanneer u de navigatie pijl omlaag gebruikt (een fragment wordt verwijderd wanneer u de pijl-omhoog gebruikt). U kunt een fragment met een code-cel gebruiken om ervoor te zorgen dat de code wordt weer gegeven in een dia of u kunt meerdere fragmenten gebruiken om tekst opsommings tekens één voor één weer te geven (Zie voor beeld in de volgende sectie). Omdat fragmenten op de huidige dia worden gebouwd, worden overtollige fragmenten niet weer gegeven in de onderkant van het browser venster. |
     | Overslaan | Cel wordt niet weer gegeven in de diavoorstelling. |
-    | Opmerkingen | Cel bevat sprekers notities die niet worden weer gegeven in de diavoorstelling. |
+    | Notities | Cel bevat sprekers notities die niet worden weer gegeven in de diavoorstelling. |
 
 1. In eerste instantie is het handig om de **dia** voor elke cel te kiezen. U kunt vervolgens de diavoorstelling uitvoeren en de juiste aanpassingen aanbrengen.
 
@@ -88,7 +88,7 @@ Omdat de diavoorstelling fragmenten weergeeft met meer verticale ruimte dan wann
     ![De uitvoer van de code-cel wordt weer gegeven in de diavoorstelling](media/slideshow/slideshow-run-code-cell-output.png)
 
     > [!Tip]
-    > De cel-uitvoer wordt beschouwd als onderdeel van de cel in een diavoorstelling. Als u een cel in een van de notebook-of diavoorstellings weergave uitvoert, wordt de uitvoer ook weer gegeven in de andere weer gave. Als u de uitvoer wilt wissen, gebruikt u de **cel** > **huidige uitvoer** > **wissen** opdracht (voor de huidige cel) of**alle uitvoer** > van een **cel** > **(voor** alle cellen).
+    > De cel-uitvoer wordt beschouwd als onderdeel van de cel in een diavoorstelling. Als u een cel in een van de notebook-of diavoorstellings weergave uitvoert, wordt de uitvoer ook weer gegeven in de andere weer gave. Als u de uitvoer wilt wissen, gebruikt u de **cel**  >  **huidige uitvoer**  >  **wissen** opdracht (voor de huidige cel **Cell**) of  >  **alle uitvoer**  >  **Clear** van een cel (voor alle cellen).
 
 1. Wanneer u klaar bent met de diavoorstelling, gebruikt u de **X** om terug te keren naar de notebook weergave.
 

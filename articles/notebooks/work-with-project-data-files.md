@@ -3,18 +3,18 @@ title: Gegevens importeren en exporteren met projecten met Azure Notebooks previ
 description: Meer informatie over het inbrengen van gegevens in een Azure Notebooks preview-project uit externe bronnen en het exporteren van gegevens uit een project.
 ms.topic: how-to
 ms.date: 12/04/2018
-ms.openlocfilehash: e1d4a52ab7f4ad2ca3438af4bc87bec0b79f34d1
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: b3669128582d3bdd6a3c4506a040856ab7b07e9a
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75646973"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85834111"
 ---
 # <a name="work-with-data-files-in-azure-notebooks-preview-projects"></a>Werken met gegevens bestanden in Azure Notebooks preview-projecten
 
-Gegevens zijn de lifeblood van veel Jupyter-notebooks, met name notebooks die worden gebruikt voor gegevens wetenschap. Met Azure Notebooks kunt u eenvoudig importeren uit verschillende bronnen in een project en vervolgens die gegevens van notebooks gebruiken. U kunt notitie blokken ook gegevens laten genereren die zijn opgeslagen in het project, die u vervolgens kunt downloaden voor gebruik op een andere locatie.
-
 [!INCLUDE [notebooks-status](../../includes/notebooks-status.md)]
+
+Gegevens zijn de lifeblood van veel Jupyter-notebooks, met name notebooks die worden gebruikt voor gegevens wetenschap. Met Azure Notebooks kunt u eenvoudig importeren uit verschillende bronnen in een project en vervolgens die gegevens van notebooks gebruiken. U kunt notitie blokken ook gegevens laten genereren die zijn opgeslagen in het project, die u vervolgens kunt downloaden voor gebruik op een andere locatie.
 
 Het menu **Data** van een actief notitie blok biedt ook **Upload** -en **Download** opdrachten, die met bestanden in het project werken, evenals tijdelijke bestanden voor de huidige notitieblok sessie.
 
@@ -26,7 +26,7 @@ In de rest van dit artikel vindt u meer informatie over bestands bewerkingen op 
 
 ## <a name="import-data"></a>Gegevens importeren
 
-U kunt bestanden vanuit het project-dash board of in een actief notitie blok naar een project brengen met behulp van het menu **Data** of `curl`een opdracht, zoals.
+U kunt bestanden vanuit het project-dash board of in een actief notitie blok naar een project brengen met behulp van het menu **Data** of een opdracht, zoals `curl` .
 
 ### <a name="import-files-from-the-project-dashboard"></a>Bestanden importeren uit het project dashboard
 
@@ -46,7 +46,7 @@ U kunt bestanden vanuit het project-dash board of in een actief notitie blok naa
 
 ### <a name="import-files-from-the-file-menu-in-a-notebook"></a>Bestanden importeren vanuit het menu bestand in een notitie blok
 
-1. Selecteer in een actief notitie blok de opdracht voor het**uploaden** van **bestanden** > :
+1. Selecteer in een actief notitie blok de opdracht voor het uploaden van **bestanden**  >  **Upload** :
 
     ![Menu opdracht bestand uploaden binnen een notitie blok](media/file-menu-upload.png)
 
@@ -54,9 +54,9 @@ U kunt bestanden vanuit het project-dash board of in een actief notitie blok naa
 
 1. Selecteer in het pop-upvenster **Upload status** dat wordt weer gegeven een **doelmap** in de vervolg keuzelijst:
 
-    - Sessiemap ()*~/* : uploadt bestanden naar de huidige notebook sessie, maar maakt geen bestanden in het project. De sessiemap is een peer met de projectmap, maar blijft niet behouden nadat de sessie is beëindigd. Als u toegang wilt krijgen tot sessie bestanden in code, moet u de bestands namen voor het relatieve pad opgeven *. /*.
+    - Sessiemap ( *~/* ): uploadt bestanden naar de huidige notebook sessie, maar maakt geen bestanden in het project. De sessiemap is een peer met de projectmap, maar blijft niet behouden nadat de sessie is beëindigd. Als u toegang wilt krijgen tot sessie bestanden in code, moet u de bestands namen voor het relatieve pad opgeven *. /*.
 
-        Het gebruik van de sessiemap is handig voor experimenten en voor komt dat u het project overzichtelijk maakt met bestanden die u mogelijk op lange termijn nodig hebt. U kunt ook bestanden uploaden naar de sessiemap met identieke namen naar bestanden in het project zonder dat er conflicten ontstaan en zonder dat u de bestanden hoeft te wijzigen. Stel bijvoorbeeld dat er al één versie van *Data. CSV* in het project is, maar u wilt experimenteren met een andere versie van *Data. CSV*. Als u het bestand in de map Session uploadt, kunt u het notitie blok uitvoeren met behulp van gegevens in het geüploade bestand (in code verwijzen met behulp van *.. /data.CSV*) in plaats van de gegevens in het bestand van het project.
+        Het gebruik van de sessiemap is handig voor experimenten en voor komt dat u het project overzichtelijk maakt met bestanden die u mogelijk op lange termijn nodig hebt. U kunt ook bestanden uploaden naar de sessiemap met identieke namen naar bestanden in het project zonder dat er conflicten ontstaan en zonder dat u de bestanden hoeft te wijzigen. Stel bijvoorbeeld dat er al een versie van *data.csv* in het project is, maar u wilt experimenteren met een andere versie van *data.csv*. Als u het bestand in de map Session uploadt, kunt u het notitie blok uitvoeren met behulp van gegevens in het geüploade bestand (in code verwijzen met behulp van *.. /data.csv*) in plaats van de gegevens in het bestand van het project.
 
     - Projectmap (*/project*): uploadt bestanden naar het project waar ze toegankelijk zijn met relatieve padnamen in de code. Het uploaden van een bestand naar deze map is hetzelfde als het uploaden van een bestand in het project dashboard. Het bestand wordt opgeslagen met het project en is beschikbaar in latere sessies.
 
@@ -76,13 +76,13 @@ curl https://raw.githubusercontent.com/petroleum101/figures/db46e7f48b8aab67a0df
 wget https://raw.githubusercontent.com/petroleum101/figures/db46e7f48b8aab67a0dfe31696f6071fb7a84f1e/oil_price/oil_price.csv -o oil_price.csv
 ```
 
-Wanneer u een python-code-cel in een notitie blok gebruikt, `!`moet u de opdrachten voorzien van een voor voegsel.
+Wanneer u een python-code-cel in een notitie blok gebruikt, moet u de opdrachten voorzien van een voor voegsel `!` .
 
-De projectmap is de standaardmap. u kunt dus een doel bestandsnaam opgeven, zoals *oil_price. CSV* maakt het bestand in het project. Als u een sessie bestand wilt maken, maakt u een voor voegsel van de naam met *.. /* als in *.. /oil_price. CSV*.
+De projectmap is de standaardmap, dus geef een naam op voor het doel, zoals *oil_price.csv* het bestand in het project maakt. Als u een sessie bestand wilt maken, maakt u een voor voegsel van de naam met *.. /* als in *.. /oil_price.csv*.
 
 ### <a name="create-files-in-code"></a>Bestanden in code maken
 
-Wanneer u code gebruikt waarmee een bestand wordt gemaakt, zoals de `write_csv` functie Pandas, zijn padnamen altijd relatief ten opzichte van de projectmap. Gebruiken *.. /* maakt een sessie bestand dat wordt genegeerd wanneer het notitie blok wordt gestopt en gesloten.
+Wanneer u code gebruikt waarmee een bestand wordt gemaakt, zoals de functie Pandas `write_csv` , zijn padnamen altijd relatief ten opzichte van de projectmap. Gebruiken *.. /* maakt een sessie bestand dat wordt genegeerd wanneer het notitie blok wordt gestopt en gesloten.
 
 ## <a name="export-files"></a>Bestanden exporteren
 
@@ -100,7 +100,7 @@ U kunt ook een bestand selecteren en de **down load** opdracht (sneltoets: d) op
 
 ## <a name="export-files-from-the-data-menu-in-a-notebook"></a>Bestanden exporteren vanuit het menu Data in een notitie blok
 
-1. Selecteer de menu opdracht **bestand** > **downloaden** :
+1. Selecteer de **File**  >  menu opdracht bestand**downloaden** :
 
     ![Menu opdracht voor het downloaden van gegevens binnen een notitie blok](media/file-menu-download.png)
 

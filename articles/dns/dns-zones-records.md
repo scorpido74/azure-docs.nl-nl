@@ -10,11 +10,11 @@ ms.workload: infrastructure-services
 ms.date: 12/18/2017
 ms.author: rohink
 ms.openlocfilehash: 19189af6424960b8e20be686af745b10f2d8578b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79265153"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85846838"
 ---
 # <a name="overview-of-dns-zones-and-records"></a>Overzicht van DNS-zones en records
 
@@ -24,7 +24,7 @@ Op deze pagina worden de belangrijkste concepten van domeinen, DNS-zones, DNS-re
 
 Het Domain Name System is een hiërarchie van domeinen. De hiërarchie start vanaf het hoofddomein. De naam van dit domein is eenvoudigweg '**.**'.  Hieronder komen de topleveldomeinen, zoals com, net, org, uk of nl.  Onder de topleveldomeinen komen de secondleveldomeinen, zoals org.uk of co.jp. De domeinen in de DNS-hiërarchie zijn wereld wijd gedistribueerd, gehost door DNS-naam servers over de hele wereld.
 
-Een domein naam registratie is een organisatie waarmee u een domein naam kunt kopen, zoals `contoso.com`.  Als u een domein naam aanschaft, kunt u de DNS-hiërarchie onder die naam beheren, bijvoorbeeld zodat u de naam `www.contoso.com` naar de website van uw bedrijf kunt sturen. De registratie van het domein kan in eigen naam servers worden gehost of u kunt alternatieve naam servers opgeven.
+Een domein naam registratie is een organisatie waarmee u een domein naam kunt kopen, zoals `contoso.com` .  Als u een domein naam aanschaft, kunt u de DNS-hiërarchie onder die naam beheren, bijvoorbeeld zodat u de naam `www.contoso.com` naar de website van uw bedrijf kunt sturen. De registratie van het domein kan in eigen naam servers worden gehost of u kunt alternatieve naam servers opgeven.
 
 Azure DNS biedt een wereld wijd gedistribueerde naam server infrastructuur met hoge Beschik baarheid, die u kunt gebruiken om uw domein te hosten. Door uw domeinen in Azure DNS te hosten, kunt u uw DNS-records met dezelfde referenties, Api's, hulpprogram ma's, facturering en ondersteuning als uw andere Azure-Services beheren.
 
@@ -48,7 +48,7 @@ In Azure DNS wordt de TTL voor de recordset opgegeven, niet voor elke record, zo
 
 Azure DNS ondersteunt [recordsets met jokertekens](https://en.wikipedia.org/wiki/Wildcard_DNS_record). Joker records worden geretourneerd als antwoord op een wille keurige query met een overeenkomende naam (tenzij er een nauwere overeenkomst is met een niet-Joker record). Azure DNS ondersteunt Joker record sets voor alle record typen behalve NS en SOA.
 
-Als u een set met Joker tekens wilt maken, gebruikt u de\*naam van de recordset. U kunt ook een naam met '\*' gebruiken als het meest linkse label, bijvoorbeeld '\*. foo '.
+Als u een set met Joker tekens wilt maken, gebruikt u de naam van de Recordset \* . U kunt ook een naam met ' \* ' gebruiken als het meest linkse label, bijvoorbeeld ' \* . foo '.
 
 ### <a name="caa-records"></a>CAA records
 
@@ -64,13 +64,13 @@ Met CAA-records kunnen domein eigen aars opgeven welke certificerings instanties
 
 CNAME-recordsets kunnen niet worden gecombineerd met andere recordsets met dezelfde naam. U kunt bijvoorbeeld geen CNAME-recordset maken met de relatieve naam ' www ' en een record met de relatieve naam ' www ' op hetzelfde moment.
 
-Omdat de zone Apex (name = '\@') altijd de NS-en SOA-record sets bevat die zijn gemaakt toen de zone werd gemaakt, kunt u geen CNAME-recordset maken op de zone Apex.
+Omdat de zone Apex (name = ' \@ ') altijd de NS-en SOA-record sets bevat die zijn gemaakt toen de zone werd gemaakt, kunt u geen CNAME-recordset maken op de zone Apex.
 
 Deze beperkingen komen voort uit de DNS-standaarden en zijn geen beperkingen van Azure DNS.
 
 ### <a name="ns-records"></a>NS-records
 
-De NS-record die is ingesteld op de zone Apex\@(naam) wordt automatisch gemaakt bij elke DNS-zone en wordt automatisch verwijderd wanneer de zone wordt verwijderd (deze kan niet afzonderlijk worden verwijderd).
+De NS-record die is ingesteld op de zone Apex (naam \@ ) wordt automatisch gemaakt bij elke DNS-zone en wordt automatisch verwijderd wanneer de zone wordt verwijderd (deze kan niet afzonderlijk worden verwijderd).
 
 Deze recordset bevat de namen van de Azure DNS naam servers die zijn toegewezen aan de zone. U kunt aanvullende naam servers toevoegen aan deze NS-Recordset, ter ondersteuning van co-hosting domeinen met meer dan één DNS-provider. U kunt ook de TTL en meta gegevens voor deze recordset wijzigen. U kunt de vooraf ingevulde Azure DNS naam servers echter niet verwijderen of wijzigen. 
 
@@ -78,7 +78,7 @@ Dit geldt alleen voor de NS-recordset die is ingesteld op de zone Apex. Andere N
 
 ### <a name="soa-records"></a>SOA-records
 
-Er wordt automatisch een SOA-recordset gemaakt aan de Apex van elke zone (naam\@= ' ') en wordt automatisch verwijderd wanneer de zone wordt verwijderd.  SOA-records kunnen niet afzonderlijk worden gemaakt of verwijderd.
+Er wordt automatisch een SOA-recordset gemaakt aan de Apex van elke zone (naam = ' \@ ') en wordt automatisch verwijderd wanneer de zone wordt verwijderd.  SOA-records kunnen niet afzonderlijk worden gemaakt of verwijderd.
 
 U kunt alle eigenschappen van de SOA-record wijzigen, met uitzonde ring van de eigenschap host, die vooraf is geconfigureerd om te verwijzen naar de naam van de primaire naam server die wordt opgegeven door Azure DNS.
 
@@ -92,7 +92,7 @@ Het serie nummer van de zone in de SOA-record wordt niet automatisch bijgewerkt 
 
 [SRV-records](https://en.wikipedia.org/wiki/SRV_record) worden door verschillende services gebruikt om server locaties op te geven. Bij het opgeven van een SRV-record in Azure DNS:
 
-* De *service* en het *protocol* moeten worden opgegeven als onderdeel van de naam van de recordset, voorafgegaan door onderstrepings tekens.  Bijvoorbeeld: '\_SIP. \_TCP.name '.  Voor een record op de zone Apex is het niet nodig om in de record\@naam op te geven. u hoeft alleen de service en het protocol te gebruiken,\_bijvoorbeeld ' SIP '. \_TCP.
+* De *service* en het *protocol* moeten worden opgegeven als onderdeel van de naam van de recordset, voorafgegaan door onderstrepings tekens.  Bijvoorbeeld: ' \_ SIP. \_ tcp.name '.  Voor een record op de zone Apex is het niet nodig om \@ in de record naam op te geven. u hoeft alleen de service en het protocol te gebruiken, bijvoorbeeld ' \_ SIP '. \_ TCP.
 * De *prioriteit*, het *gewicht*, de *poort*en het *doel* worden opgegeven als para meters van elke record in de recordset.
 
 ### <a name="txt-records"></a>TXT-records
@@ -127,10 +127,10 @@ Azure DNS Power shell gebruikt standaard eTags om gelijktijdige wijzigingen in z
 
 Op het niveau van de Azure DNS REST API worden eTags opgegeven met behulp van HTTP-headers.  Hun gedrag wordt vermeld in de volgende tabel:
 
-| Header | Gedrag |
+| Koptekst | Gedrag |
 | --- | --- |
 | Geen |PUT altijd geslaagd (geen ETag-controles) |
-| Als-match \<-ETAG> |Alleen geslaagd als resource bestaat en ETAG overeenkomt |
+| If-match\<etag> |Alleen geslaagd als resource bestaat en ETAG overeenkomt |
 | If-match * |Alleen geslaagd als de resource bestaat |
 | If-None-Match * |Alleen geslaagd als de resource niet bestaat |
 

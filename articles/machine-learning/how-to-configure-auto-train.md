@@ -11,12 +11,12 @@ ms.subservice: core
 ms.topic: how-to
 ms.date: 05/20/2020
 ms.custom: seodec18, tracking-python
-ms.openlocfilehash: f00946c4c0a9abe343448266128c682f2376cf7a
-ms.sourcegitcommit: fdaad48994bdb9e35cdd445c31b4bac0dd006294
+ms.openlocfilehash: 519d9f25276ea54fbfd49970ba3c288245ce9653
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/26/2020
-ms.locfileid: "85412597"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85833686"
 ---
 # <a name="configure-automated-ml-experiments-in-python"></a>Geautomatiseerde ML-experimenten configureren in Python
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -39,7 +39,7 @@ Als u liever geen code hebt, kunt u ook [uw geautomatiseerde machine learning ex
 
 ## <a name="select-your-experiment-type"></a>Het type experimenten selecteren
 
-Voordat u begint met het experiment, moet u het soort machine learning probleem bepalen dat u wilt oplossen. Automatische machine learning ondersteunt de taak typen classificatie, regressie en prognose. Meer informatie over [taak typen](how-to-define-task-type.md).
+Voordat u begint met het experiment, moet u het soort machine learning probleem bepalen dat u wilt oplossen. Automatische machine learning ondersteunt de taak typen classificatie, regressie en prognose. Meer informatie over [taak typen](concept-automated-ml.md#when-to-use-automl-classify-regression--forecast).
 
 Automatische machine learning ondersteunt de volgende algoritmen tijdens het automatiserings-en afstemmings proces. Als gebruiker hoeft u het algoritme niet op te geven.
 
@@ -199,7 +199,7 @@ In elk automatisch machine learning experiment worden uw gegevens [automatisch g
 
 Wanneer u uw experimenten in uw `AutoMLConfig` object configureert, kunt u de instelling in-of uitschakelen `featurization` . De volgende tabel bevat de geaccepteerde instellingen voor parametrisatie in de [klasse AutoMLConfig](/python/api/azureml-train-automl-client/azureml.train.automl.automlconfig.automlconfig).
 
-|Parametrisatie-configuratie | Beschrijving |
+|Parametrisatie-configuratie | Description |
 | ------------- | ------------- |
 |`"featurization": 'auto'`| Geeft aan dat als onderdeel van de voor verwerking, [gegevens Guardrails en parametrisatie-stappen](how-to-configure-auto-features.md#featurization) automatisch worden uitgevoerd. **Standaardinstelling**|
 |`"featurization": 'off'`| Hiermee wordt aangegeven dat de parametrisatie-stap niet automatisch moet worden uitgevoerd.|
@@ -422,7 +422,7 @@ Gebruik deze 2 Api's voor de eerste stap van het model voor meer informatie.  Be
     'Tranformations': ['DateTime','DateTime','DateTime','DateTime','DateTime','DateTime','DateTime','DateTime','DateTime','DateTime','DateTime']}]
   ```
 
-   Waar:
+   Waarbij:
 
    |Uitvoer|Definitie|
    |----|--------|

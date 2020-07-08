@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 06/22/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: a33d3e8b330f5ee8549f536bbfba958d96d8e59b
-ms.sourcegitcommit: bf99428d2562a70f42b5a04021dde6ef26c3ec3a
+ms.openlocfilehash: a37f57bc12e5756b493bb009268beb067e7faaab
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/23/2020
-ms.locfileid: "85255971"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85833975"
 ---
 # <a name="azure-security-baseline-for-logic-apps"></a>Azure-beveiligings basislijn voor Logic Apps
 
@@ -238,7 +238,7 @@ U kunt Azure PowerShell of Azure CLI gebruiken om op basis van hun labels acties
 
 ### <a name="22-configure-central-security-log-management"></a>2,2: Centraal beveiligings logboek beheer configureren
 
-**Richt lijnen**: voor meer informatie over het opsporen van fouten in uw Logic apps tijdens runtime kunt u Azure monitor logboeken instellen en gebruiken voor het vastleggen en opslaan van informatie over runtime gegevens en gebeurtenissen, zoals trigger gebeurtenissen, uitvoer gebeurtenissen en actie gebeurtenissen in een log Analytics-werk ruimte. Azure Monitor helpt u bij het bewaken van uw Cloud-en on-premises omgevingen, zodat u hun Beschik baarheid en prestaties gemakkelijker kunt onderhouden. Met Azure Monitor-Logboeken kunt u logboek query's maken die u helpen bij het verzamelen en controleren van deze gegevens. U kunt deze diagnostische gegevens ook gebruiken met andere Azure-Services, zoals Azure Storage en Azure Event Hubs.
+**Richt lijnen**: voor meer informatie over het opsporen van fouten in uw Logic apps tijdens runtime kunt u Azure monitor logboeken instellen en gebruiken voor het vastleggen en opslaan van informatie over runtime gegevens en gebeurtenissen, zoals trigger gebeurtenissen, uitvoer gebeurtenissen en actie gebeurtenissen in een log Analytics-werk ruimte. Azure Monitor helpt u bij het bewaken van uw cloud- en on-premises omgevingen, zodat u hun beschikbaarheid en prestaties gemakkelijker kunt onderhouden. Met Azure Monitor-Logboeken kunt u logboek query's maken die u helpen bij het verzamelen en controleren van deze gegevens. U kunt deze diagnostische gegevens ook gebruiken met andere Azure-Services, zoals Azure Storage en Azure Event Hubs.
 
 U kunt ook gegevens in-of uitschakelen voor Azure Sentinel of een SIEM van derden.
 
@@ -254,7 +254,7 @@ U kunt ook gegevens in-of uitschakelen voor Azure Sentinel of een SIEM van derde
 
 ### <a name="23-enable-audit-logging-for-azure-resources"></a>2,3: controle logboek registratie inschakelen voor Azure-resources
 
-**Richt lijnen**: voor meer informatie over het opsporen van fouten in uw Logic apps tijdens runtime kunt u Azure monitor logboeken instellen en gebruiken voor het vastleggen en opslaan van informatie over runtime gegevens en gebeurtenissen, zoals trigger gebeurtenissen, uitvoer gebeurtenissen en actie gebeurtenissen in een log Analytics-werk ruimte. Azure Monitor helpt u bij het bewaken van uw Cloud-en on-premises omgevingen, zodat u hun Beschik baarheid en prestaties gemakkelijker kunt onderhouden. Met Azure Monitor-Logboeken kunt u logboek query's maken die u helpen bij het verzamelen en controleren van deze gegevens. U kunt deze diagnostische gegevens ook gebruiken met andere Azure-Services, zoals Azure Storage en Azure Event Hubs.
+**Richt lijnen**: voor meer informatie over het opsporen van fouten in uw Logic apps tijdens runtime kunt u Azure monitor logboeken instellen en gebruiken voor het vastleggen en opslaan van informatie over runtime gegevens en gebeurtenissen, zoals trigger gebeurtenissen, uitvoer gebeurtenissen en actie gebeurtenissen in een log Analytics-werk ruimte. Azure Monitor helpt u bij het bewaken van uw cloud- en on-premises omgevingen, zodat u hun beschikbaarheid en prestaties gemakkelijker kunt onderhouden. Met Azure Monitor-Logboeken kunt u logboek query's maken die u helpen bij het verzamelen en controleren van deze gegevens. U kunt deze diagnostische gegevens ook gebruiken met andere Azure-Services, zoals Azure Storage en Azure Event Hubs.
 
 U kunt ook gegevens in-of uitschakelen voor Azure Sentinel of een SIEM van derden.
 
@@ -358,7 +358,7 @@ U kunt ook gegevens naar Azure-Sentinel inschakelen en op het bord zetten.
 
 **Hulp**: Azure Active Directory (AD) heeft ingebouwde rollen die expliciet moeten worden toegewezen en waarop query's kunnen worden doorzocht. Gebruik de Azure AD Power shell-module om ad hoc-query's uit te voeren om accounts te detecteren die lid zijn van beheer groepen.
 
-Om toegang te krijgen tot andere bronnen die worden beveiligd door Azure Active Directory (Azure AD) en uw identiteit te verifiëren zonder zich aan te melden, kan uw logische app gebruikmaken van een beheerde identiteit (voorheen Managed Service Identity of MSI), in plaats van referenties of geheimen. Azure beheert deze identiteit voor u en helpt u bij het beveiligen van uw referenties omdat u geen geheimen hoeft op te geven of te draaien.
+Om toegang te krijgen tot andere bronnen die worden beveiligd door Azure Active Directory (Azure AD) en uw identiteit te verifiëren zonder zich aan te melden, kan uw logische app gebruikmaken van een beheerde identiteit (voorheen Managed Service Identity of MSI), in plaats van referenties of geheimen. Azure beheert deze identiteit voor u en helpt u bij het beveiligen van uw referenties omdat u geen geheimen hoeft op te geven of te wisselen.
 
 Elk aanvraag eindpunt op een logische app heeft een Shared Access Signature (SAS) in de URL van het eind punt. Als u de eind punt-URL voor een op aanvragen gebaseerde trigger met andere partijen deelt, kunt u Url's voor terugbellen genereren die specifieke sleutels gebruiken en verloop datums hebben. Op die manier kunt u sleutels naadloos draaien of de toegang beperken tot het activeren van uw logische app op basis van een specifieke tijds duur.
 
@@ -483,9 +483,9 @@ Daarnaast heeft elk aanvraag eindpunt op een logische app een Shared Access Sign
 
 **Hulp**: gebruik Azure Active Directory (AD) als centrale verificatie-en autorisatie systeem voor uw Azure Logic apps-instanties. Azure AD beveiligt gegevens door gebruik te maken van sterke versleuteling voor gegevens in rust en onderweg. Azure AD bevat ook zouten, hashes en veilige gebruikers referenties.
 
-Als er ondersteuning is voor Logic Apps, gebruikt u een beheerde identiteit om eenvoudig toegang te krijgen tot andere bronnen die worden beveiligd door Azure Active Directory (Azure AD) en uw identiteit te verifiëren zonder dat u zich hoeft aan te melden, in plaats van referenties of geheimen. Azure beheert deze identiteit voor u en helpt u bij het beveiligen van uw referenties omdat u geen geheimen hoeft op te geven of te draaien.
+Als er ondersteuning is voor Logic Apps, gebruikt u een beheerde identiteit om eenvoudig toegang te krijgen tot andere bronnen die worden beveiligd door Azure Active Directory (Azure AD) en uw identiteit te verifiëren zonder dat u zich hoeft aan te melden, in plaats van referenties of geheimen. Azure beheert deze identiteit voor u en helpt u bij het beveiligen van uw referenties omdat u geen geheimen hoeft op te geven of te wisselen.
 
-Azure Logic Apps ondersteunt zowel door het systeem toegewezen als door de gebruiker toegewezen beheerde identiteiten. Uw logische app kan gebruikmaken van de door het systeem toegewezen identiteit of één door de gebruiker toegewezen identiteit, die u kunt delen via een groep logische apps, maar niet beide. Momenteel ondersteunen alleen specifieke ingebouwde triggers en acties beheerde identiteiten, niet beheerde connectors of verbindingen, bijvoorbeeld:
+Azure Logic Apps ondersteunt zowel door het systeem toegewezen als door de gebruiker toegewezen beheerde identiteiten. Uw logische app kan gebruikmaken van de door het systeem toegewezen identiteit of één door de gebruiker toegewezen identiteit, die u kunt delen via een groep logische apps, maar niet van beide. Momenteel ondersteunen alleen specifieke ingebouwde triggers en acties beheerde identiteiten, niet beheerde connectors of verbindingen, bijvoorbeeld:
 - HTTP
 - Azure Functions
 - Azure API Management
@@ -551,7 +551,7 @@ U kunt dit proces stroom lijnen door Diagnostische instellingen voor Azure AD-ge
 
 **Verantwoordelijkheid**: klant
 
-## <a name="data-protection"></a>Gegevensbeveiliging
+## <a name="data-protection"></a>Gegevensbescherming
 
 *Zie [beveiligings beheer: gegevens beveiliging](https://docs.microsoft.com/azure/security/benchmarks/security-control-data-protection)voor meer informatie.*
 
@@ -573,7 +573,7 @@ Voor Logic apps die directe toegang tot resources in een virtueel Azure-netwerk 
 
 Wanneer u uw ISE maakt, kunt u kiezen of u interne of Externe toegangs punten wilt gebruiken. Uw selectie bepaalt of aanvragen of webhooks worden geactiveerd op Logic apps in uw ISE kan aanroepen ontvangen van buiten uw virtuele netwerk.
 
-Daarnaast kunt u isolatie implementeren met afzonderlijke abonnementen en beheer groepen voor afzonderlijke beveiligings domeinen, zoals omgevings type en gegevens gevoeligheids niveau. U kunt het toegangs niveau voor uw Azure-resources beperken die worden vereist door uw toepassingen en bedrijfs omgevingen. U kunt de toegang tot Azure-resources beheren via Azure Active Directory op rollen gebaseerd toegangs beheer.
+Daarnaast kunt u isolatie implementeren met afzonderlijke abonnementen en beheer groepen voor afzonderlijke beveiligings domeinen, zoals omgevings type en gegevens gevoeligheids niveau. U kunt het toegangs niveau voor uw Azure-resources beperken die worden vereist door uw toepassingen en bedrijfs omgevingen. U kunt de toegang tot Azure-resources beheren via Azure op rollen gebaseerd toegangs beheer (Azure RBAC).
 
 * [Connectors voor Logic Apps](https://docs.microsoft.com/azure/connectors/apis-list)
 
@@ -615,7 +615,7 @@ Volg Azure Security Center aanbevelingen voor het versleutelen van de rest en de
 
 * [Inkomende HTTPS-aanvragen ontvangen en erop reageren in Azure Logic Apps](https://docs.microsoft.com/azure/connectors/connectors-native-reqres#tls-support)
 
-* [Service-eind punten aanroepen via HTTP of HTTPS vanaf Azure Logic Apps](https://docs.microsoft.com/azure/connectors/connectors-native-http#tls-support)
+* [Service-eindpunten aanroepen via HTTP of HTTPS vanuit Azure Logic Apps](https://docs.microsoft.com/azure/connectors/connectors-native-http#tls-support)
 
 * [Meer informatie over versleuteling in transit met Azure](https://docs.microsoft.com/azure/security/fundamentals/encryption-overview#encryption-of-data-in-transit)
 
@@ -1049,7 +1049,7 @@ Wanneer u een Integration service Environment (ISE) maakt voor het hosten van uw
 
 ### <a name="712-manage-identities-securely-and-automatically"></a>7,12: identiteiten veilig en automatisch beheren
 
-**Richt lijnen**: als u eenvoudig toegang wilt krijgen tot andere bronnen die worden beveiligd door Azure Active Directory (Azure AD) en uw identiteit wilt verifiëren zonder u aan te melden, kan uw logische app gebruikmaken van een beheerde identiteit (voorheen Managed Service Identity of MSI), in plaats van referenties of geheimen. Azure beheert deze identiteit voor u en helpt u bij het beveiligen van uw referenties omdat u geen geheimen hoeft op te geven of te draaien.
+**Richt lijnen**: als u eenvoudig toegang wilt krijgen tot andere bronnen die worden beveiligd door Azure Active Directory (Azure AD) en uw identiteit wilt verifiëren zonder u aan te melden, kan uw logische app gebruikmaken van een beheerde identiteit (voorheen Managed Service Identity of MSI), in plaats van referenties of geheimen. Azure beheert deze identiteit voor u en helpt u bij het beveiligen van uw referenties omdat u geen geheimen hoeft op te geven of te wisselen.
 
 Momenteel ondersteunen alleen specifieke ingebouwde triggers en acties beheerde identiteiten, niet beheerde connectors of verbindingen, bijvoorbeeld:
 - HTTP

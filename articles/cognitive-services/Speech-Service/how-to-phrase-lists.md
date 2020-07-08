@@ -1,7 +1,7 @@
 ---
 title: Woordgroepen lijsten-spraak service
 titleSuffix: Azure Cognitive Services
-description: Informatie over het leveren van de spraak service met een woordgroepen lijst `PhraseListGrammar` met behulp van het object om de resultaten van spraak-naar-tekst herkenning te verbeteren.
+description: Informatie over het leveren van de spraak service met een woordgroepen lijst met behulp van het `PhraseListGrammar` object om de resultaten van spraak-naar-tekst herkenning te verbeteren.
 services: cognitive-services
 author: trevorbye
 manager: nitinme
@@ -9,14 +9,14 @@ ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 02/04/2020
-ms.author: dapine
+ms.author: trbye
 zone_pivot_groups: programming-languages-speech-services-one-nomore-no-go
-ms.openlocfilehash: d6418a863e8af75e4f2f063d9e6151e19a0e7e6e
-ms.sourcegitcommit: 999ccaf74347605e32505cbcfd6121163560a4ae
+ms.openlocfilehash: 7347fee0cd8bdaae73467a84806819c913599a51
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/08/2020
-ms.locfileid: "82977580"
+ms.lasthandoff: 07/01/2020
+ms.locfileid: "85834009"
 ---
 # <a name="phrase-lists-for-speech-to-text"></a>Woordgroepen lijsten voor spraak naar tekst
 
@@ -31,7 +31,7 @@ Enkele woorden of volledige woord groepen kunnen worden toegevoegd aan een woord
 
 ## <a name="how-to-use-phrase-lists"></a>Woordgroepen lijsten gebruiken
 
-In de onderstaande voor beelden ziet u hoe u een woordgroepen lijst `PhraseListGrammar` maakt met behulp van het object.
+In de onderstaande voor beelden ziet u hoe u een woordgroepen lijst maakt met behulp van het `PhraseListGrammar` object.
 
 ::: zone pivot="programming-language-csharp"
 
@@ -91,7 +91,7 @@ phraseListGrammar.addPhrase("Move to Ted");
 >[!Note]
 > Het maximum aantal woordgroepen lijsten dat door de spraak service wordt gebruikt om te voldoen aan spraak is 1024 zinsdelen.
 
-U kunt ook de zinsdelen wissen die zijn gekoppeld `PhraseListGrammar` aan de door het aanroepen van Clear ().
+U kunt ook de zinsdelen wissen die zijn gekoppeld aan de `PhraseListGrammar` door het aanroepen van Clear ().
 
 ::: zone pivot="programming-language-csharp"
 

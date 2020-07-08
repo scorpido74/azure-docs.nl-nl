@@ -14,11 +14,11 @@ ms.topic: article
 ms.date: 11/04/2019
 ms.author: apimpm
 ms.openlocfilehash: 1dac90053797caf66af79e458b9dbb95b682cd17
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79249579"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85846850"
 ---
 # <a name="issue-templates-in-azure-api-management"></a>Sjablonen uitgeven in azure API Management
 Azure API Management biedt u de mogelijkheid om de inhoud van de pagina's van de ontwikkelaars portal aan te passen met behulp van een set sjablonen waarmee de inhoud wordt geconfigureerd. Met de syntaxis van de [DotLiquid](http://dotliquidmarkup.org/) en de editor van uw keuze, zoals [DotLiquid for designers](https://github.com/dotliquid/dotliquid/wiki/DotLiquid-for-Designers), en een opgegeven set gelokaliseerde [teken reeks resources](api-management-template-resources.md#strings), [glyph-resources](api-management-template-resources.md#glyphs)en [pagina besturings elementen](api-management-page-controls.md), hebt u een grote flexibiliteit om de inhoud van de pagina's zo te configureren dat ze met deze sjablonen overeenkomen.  
@@ -98,7 +98,7 @@ Azure API Management biedt u de mogelijkheid om de inhoud van de pagina's van de
   
 ### <a name="data-model"></a>Gegevensmodel  
   
-|Eigenschap|Type|Beschrijving|  
+|Eigenschap|Type|Description|  
 |--------------|----------|-----------------|  
 |`Issues`|Verzameling van [uitgifte](api-management-template-data-model-reference.md#Issue) -entiteiten.|De problemen die zichtbaar zijn voor de huidige gebruiker.|  
 |`Paging`|De entiteit [paging](api-management-template-data-model-reference.md#Paging) .|De paginerings gegevens voor de verzameling toepassingen.|  

@@ -13,11 +13,11 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/10/2018
 ms.openlocfilehash: de56ba1281d0f20c8be838fa1bc9ebc24905b26c
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79260369"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85846912"
 ---
 # <a name="monitor-and-manage-azure-data-factory-pipelines-by-using-the-monitoring-and-management-app"></a>Azure Data Factory pijp lijnen bewaken en beheren met behulp van de app voor bewaking en beheer
 > [!div class="op_single_selector"]
@@ -159,7 +159,7 @@ Activiteit Vensters kunnen een van de volgende statussen hebben:
 
 <table>
 <tr>
-    <th align="left">Status</th><th align="left">Substatus</th><th align="left">Beschrijving</th>
+    <th align="left">Status</th><th align="left">Substatus</th><th align="left">Description</th>
 </tr>
 <tr>
     <td rowspan="8">Wachten</td><td>ScheduleTime</td><td>De tijd voor het uitvoeren van het activiteiten venster kan niet worden uitgevoerd.</td>
@@ -187,13 +187,13 @@ Activiteit Vensters kunnen een van de volgende statussen hebben:
 </tr>
 <tr>
 <tr>
-<td rowspan="2">InProgress</td><td>Valideren</td><td>De validatie wordt uitgevoerd.</td>
+<td rowspan="2">Wordt uitgevoerd</td><td>Valideren</td><td>De validatie wordt uitgevoerd.</td>
 </tr>
 <td>-</td>
 <td>Het activiteiten venster wordt verwerkt.</td>
 </tr>
 <tr>
-<td rowspan="4">Mislukt</td><td>Out</td><td>De uitvoering van de activiteit duurde langer dan is toegestaan door de activiteit.</td>
+<td rowspan="4">Mislukt</td><td>Verlopen</td><td>De uitvoering van de activiteit duurde langer dan is toegestaan door de activiteit.</td>
 </tr>
 <tr>
 <td>Geannuleerd</td><td>Het activiteiten venster is geannuleerd door de gebruiker.</td>
@@ -286,7 +286,7 @@ U kunt hetzelfde pop-upvenster gebruiken om filters te wissen. Als u alle filter
 
 ## <a name="perform-batch-actions"></a>Batch acties uitvoeren
 ### <a name="rerun-selected-activity-windows"></a>Geselecteerde activiteit Vensters opnieuw uitvoeren
-Selecteer een activiteiten venster, klik op de pijl-omlaag voor de eerste opdracht balk knop en **Selecteer** / opnieuw**uitvoeren met upstream in pijp lijn**. Wanneer u de optie **opnieuw uitvoeren met upstream in pijplijn** selecteert, worden alle Windows-activiteiten voor upstream ook opnieuw uitgevoerd.
+Selecteer een activiteiten venster, klik op de pijl-omlaag voor de eerste opdracht balk knop en **Selecteer opnieuw**  /  **uitvoeren met upstream in pijp lijn**. Wanneer u de optie **opnieuw uitvoeren met upstream in pijplijn** selecteert, worden alle Windows-activiteiten voor upstream ook opnieuw uitgevoerd.
     ![Een activiteiten venster opnieuw uitvoeren](./media/data-factory-monitor-manage-app/ReRunSlice.png)
 
 U kunt ook meerdere activiteit Vensters in de lijst selecteren en deze op hetzelfde moment opnieuw uitvoeren. U kunt de activiteiten Vensters filteren op basis van de status (bijvoorbeeld: **mislukt**), en vervolgens de Windows mislukt-activiteit opnieuw uitvoeren nadat het probleem is verholpen dat ervoor zorgt dat de activiteit Windows mislukt. Zie de volgende sectie voor meer informatie over het filteren van activiteit Vensters in de lijst.  

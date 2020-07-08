@@ -1,20 +1,20 @@
 ---
 author: rothja
-ms.service: cost-management-billing
+ms.service: app-service
 ms.topic: include
 ms.date: 03/04/2020
 ms.author: jroth
-ms.openlocfilehash: af0f7ef04ce746c502a8ddf7b0d3971f13a42484
-ms.sourcegitcommit: 11572a869ef8dbec8e7c721bc7744e2859b79962
+ms.openlocfilehash: 469138da19248bc7872028508f3080de5fae4a52
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/05/2020
-ms.locfileid: "82844553"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85838828"
 ---
 | Resource | Gratis | Gedeeld | Basic | Standard | Premium (v2) | Geïsoleerd </th> |
 | --- | --- | --- | --- | --- | --- | --- |
 | [Web-, mobiele of API-apps](https://azure.microsoft.com/services/app-service/) per [Azure app service abonnement](../articles/app-service/overview-hosting-plans.md)<sup>1</sup> |10 |100 |Onbeperkt<sup>2</sup> |Onbeperkt<sup>2</sup> |Onbeperkt<sup>2</sup> |Onbeperkt<sup>2</sup>|
-| [App Service plan](../articles/app-service/overview-hosting-plans.md) |10 per regio |10 per resource groep |100 per resource groep |100 per resource groep |100 per resource groep |100 per resource groep|
+| [App Service-plan](../articles/app-service/overview-hosting-plans.md) |10 per regio |10 per resource groep |100 per resource groep |100 per resource groep |100 per resource groep |100 per resource groep|
 | Type Compute-instantie |Gedeeld |Gedeeld |Toegewezen<sup>3</sup> |Toegewezen<sup>3</sup> |Toegewezen<sup>3</sup></p> |Toegewezen<sup>3</sup>|
 | [Uitschalen](../articles/app-service/manage-scale-up.md) (maximum aantal instanties) |1 gedeeld |1 gedeeld |3 toegewezen<sup>3</sup> |10 toegewezen<sup>3</sup> |30 toegewezen<sup>3</sup>|100 toegewezen<sup>4</sup>|
 | Opslag<sup>5</sup> |1 GB<sup>5</sup> |1 GB<sup>5</sup> |10 GB<sup>5</sup> |50 GB<sup>5</sup> |250 GB<sup>5</sup> <br/><br/> Voor meer dan 250 GB dient u een ondersteunings aanvraag in. |1 TB<sup>5</sup> <br/><br/> De beschik bare opslag limiet is 999 GB. |
@@ -45,7 +45,7 @@ ms.locfileid: "82844553"
 <sup>4</sup> Meer zijn toegestaan op aanvraag.  
 <sup>5</sup> De opslag limiet is de totale inhouds grootte voor alle apps in hetzelfde app service-plan. De totale inhouds grootte van alle apps in alle app service-abonnementen in één resource groep en regio mag niet groter zijn dan 500 GB.  
 <sup>6</sup> Deze resources worden beperkt door fysieke resources op de toegewezen instanties (de exemplaar grootte en het aantal exemplaren).  
-<sup>7</sup> Als u een app in de basis-laag schaalt naar twee exemplaren, hebt u 350 gelijktijdige verbindingen voor elk van de twee exemplaren. Voor de Standard-laag en hierboven zijn er geen theoretische limieten voor web sockets, maar andere factoren kunnen het aantal websockets beperken. Het maximum aantal toegestane gelijktijdige aanvragen (gedefinieerd door `maxConcurrentRequestsPerCpu`) is bijvoorbeeld: 7.500 per kleine vm, 15.000 per gemiddelde vm (7.500 x 2 kern geheugens) en 75.000 per grote vm (18.750 x 4 kern geheugens).  
+<sup>7</sup> Als u een app in de basis-laag schaalt naar twee exemplaren, hebt u 350 gelijktijdige verbindingen voor elk van de twee exemplaren. Voor de Standard-laag en hierboven zijn er geen theoretische limieten voor web sockets, maar andere factoren kunnen het aantal websockets beperken. Het maximum aantal toegestane gelijktijdige aanvragen (gedefinieerd door `maxConcurrentRequestsPerCpu` ) is bijvoorbeeld: 7.500 per kleine VM, 15.000 per gemiddelde VM (7.500 x 2 kern geheugens) en 75.000 per grote VM (18.750 x 4 kern geheugens).  
 <sup>8</sup> Het maximum aantal IP-verbindingen is per exemplaar en is afhankelijk van de instantie grootte: 1.920 per B1/S1/P1V2-exemplaar, 3.968 per B2/S2/P2V2-exemplaar, 8.064 per B3/S3/P3V2-exemplaar.  
 <sup>9</sup> De quotum limiet van App Service Certificate per abonnement kan worden verhoogd via een ondersteunings aanvraag tot een maximum limiet van 200.  
 <sup>10</sup> App Service Isolated Sku's kunnen intern worden verdeeld (ILB) met Azure Load Balancer, dus er is geen open bare verbinding via internet. Als gevolg hiervan moeten sommige functies van een geïsoleerde ILB-App Service worden gebruikt vanaf computers met rechtstreekse toegang tot het ILB-netwerk eindpunt.  

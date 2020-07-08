@@ -6,11 +6,11 @@ ms.topic: reference
 ms.date: 2/25/2019
 ms.author: srrengar
 ms.openlocfilehash: e69b407bc7d58a83616daa44272ec008ccff9fad
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79258536"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85846655"
 ---
 # <a name="list-of-service-fabric-events"></a>Lijst met Service Fabric gebeurtenissen 
 
@@ -31,7 +31,7 @@ Hier volgt een lijst met deze Service Fabric gebeurtenissen ingedeeld op entitei
 
 Meer informatie over cluster upgrades vindt u [hier](service-fabric-cluster-upgrade-windows-server.md).
 
-| Gebeurtenis | Naam | Categorie | Beschrijving |Bron (taak) | Niveau | 
+| Gebeurtenis | Name | Categorie | Beschrijving |Bron (taak) | Niveau | 
 | --- | --- | --- | --- | --- | --- | 
 | 29627 | ClusterUpgradeStarted | Upgraden | Een upgrade van een cluster is gestart | CM | Informatief |
 | 29628 | ClusterUpgradeCompleted | Upgraden | Een cluster upgrade is voltooid | CM | Informatief | 
@@ -43,7 +43,7 @@ Meer informatie over cluster upgrades vindt u [hier](service-fabric-cluster-upgr
 
 **Levenscyclus gebeurtenissen van knoop punt** 
 
-| Gebeurtenis | Naam | Categorie | Beschrijving |Bron (taak) | Niveau |
+| Gebeurtenis | Name | Categorie | Beschrijving |Bron (taak) | Niveau |
 | --- | --- | ---| --- | --- | --- | 
 | 18602 | NodeDeactivateCompleted | StateTransition | Het deactiveren van een knoop punt is voltooid | FM | Informatief | 
 | 18603 | NodeUp | StateTransition | Het cluster heeft gedetecteerd dat een knoop punt is gestart | FM | Informatief | 
@@ -60,7 +60,7 @@ Meer informatie over cluster upgrades vindt u [hier](service-fabric-cluster-upgr
 
 **Toepassings levenscyclus gebeurtenissen**
 
-| Gebeurtenis | Naam | Categorie | Beschrijving |Bron (taak) | Niveau | 
+| Gebeurtenis | Name | Categorie | Beschrijving |Bron (taak) | Niveau | 
 | --- | --- | --- | --- | --- | --- | 
 | 29620 | ApplicationCreated | Duur | Er is een nieuwe toepassing gemaakt | CM | Informatief | 
 | 29625 | ApplicationDeleted | Duur | Een bestaande toepassing is verwijderd | CM | Informatief | 
@@ -70,7 +70,7 @@ Meer informatie over cluster upgrades vindt u [hier](service-fabric-cluster-upgr
 
 Meer informatie over toepassings upgrades vindt u [hier](service-fabric-application-upgrade.md).
 
-| Gebeurtenis | Naam | Categorie | Beschrijving |Bron (taak) | Niveau | 
+| Gebeurtenis | Name | Categorie | Beschrijving |Bron (taak) | Niveau | 
 | --- | --- | ---| --- | --- | --- | 
 | 29621 | ApplicationUpgradeStarted | Upgraden | Een toepassings upgrade is gestart | CM | Informatief | 
 | 29622 | ApplicationUpgradeCompleted | Upgraden | Een toepassings upgrade is voltooid | CM | Informatief | 
@@ -82,7 +82,7 @@ Meer informatie over toepassings upgrades vindt u [hier](service-fabric-applicat
 
 **Service levenscyclus gebeurtenissen**
 
-| Gebeurtenis | Naam | Categorie | Beschrijving |Bron (taak) | Niveau | 
+| Gebeurtenis | Name | Categorie | Beschrijving |Bron (taak) | Niveau | 
 | --- | --- | ---| --- | --- | --- |
 | 18657 | ServiceCreated | Duur | Er is een nieuwe service gemaakt | FM | Informatief | 
 | 18658 | ServiceDeleted | Duur | Er is een bestaande service verwijderd | FM | Informatief | 
@@ -91,7 +91,7 @@ Meer informatie over toepassings upgrades vindt u [hier](service-fabric-applicat
 
 **Partities verplaatsen**
 
-| Gebeurtenis | Naam | Categorie | Beschrijving |Bron (taak) | Niveau | 
+| Gebeurtenis | Name | Categorie | Beschrijving |Bron (taak) | Niveau | 
 | --- | --- | ---| --- | --- | --- |
 | 18940 | PartitionReconfigured | Duur | De herconfiguratie van een partitie is voltooid | RA | Informatief | 
 
@@ -99,7 +99,7 @@ Meer informatie over toepassings upgrades vindt u [hier](service-fabric-applicat
 
 **Gebeurtenissen voor de levens cyclus van replica's**
 
-| Gebeurtenis | Naam | Categorie | Beschrijving |Bron (taak) | Niveau |
+| Gebeurtenis | Name | Categorie | Beschrijving |Bron (taak) | Niveau |
 | --- | --- | ---| --- | --- | --- |
 | 61701 | ReliableDictionaryOpened | Duur | Betrouw bare woorden lijst is geopend | DistributedDictionary | Informatief |
 | 61702 | ReliableDictionaryClosed | Duur | Betrouw bare woorden lijst is gesloten | DistributedDictionary | Informatief |
@@ -120,14 +120,14 @@ Meer informatie over toepassings upgrades vindt u [hier](service-fabric-applicat
 | 16831 | BuildIdleReplicaStarted | Duur | Primaire replica is begonnen met het bouwen van een inactieve replica | Replicatie | Informatief |
 | 16832 | BuildIdleReplicaCompleted | Duur | Primaire replica heeft het opbouwen van een inactieve replica voltooid | Replicatie | Informatief |
 | 16833 | BuildIdleReplicaFailed | Duur | Primaire replica kan geen inactieve replica opbouwen | Replicatie | Waarschuwing |
-| 16834 | PrimaryReplicationQueueFull | Status | De replicatie wachtrij van de primaire replica is vol | Replicatie | Waarschuwing |
-| 16835 | PrimaryReplicationQueueWarning | Status | De replicatie wachtrij van de primaire replica is bijna vol | Replicatie | Waarschuwing |
-| 16836 | PrimaryReplicationQueueWarningMitigated | Status | De replicatie wachtrij van de primaire replica is OK | Replicatie | Informatief |
-| 16837 | SecondaryReplicationQueueFull | Status | De replicatie wachtrij van de secundaire replica is vol | Replicatie | Waarschuwing |
-| 16838 | SecondaryReplicationQueueWarning | Status | De replicatie wachtrij van de secundaire replica is bijna vol | Replicatie | Waarschuwing |
-| 16839 | SecondaryReplicationQueueWarningMitigated | Status | De replicatie wachtrij van de secundaire replica is OK | Replicatie | Informatief |
-| 16840 | PrimaryFaultedSlowSecondary | Status | De primaire replica heeft een fout met een langzame secundaire replica veroorzaakt | Replicatie | Waarschuwing |
-| 16841 | ReplicatorFaulted | Status | Replica is mislukt | Replicatie | Waarschuwing |
+| 16834 | PrimaryReplicationQueueFull | Gezondheidszorg | De replicatie wachtrij van de primaire replica is vol | Replicatie | Waarschuwing |
+| 16835 | PrimaryReplicationQueueWarning | Gezondheidszorg | De replicatie wachtrij van de primaire replica is bijna vol | Replicatie | Waarschuwing |
+| 16836 | PrimaryReplicationQueueWarningMitigated | Gezondheidszorg | De replicatie wachtrij van de primaire replica is OK | Replicatie | Informatief |
+| 16837 | SecondaryReplicationQueueFull | Gezondheidszorg | De replicatie wachtrij van de secundaire replica is vol | Replicatie | Waarschuwing |
+| 16838 | SecondaryReplicationQueueWarning | Gezondheidszorg | De replicatie wachtrij van de secundaire replica is bijna vol | Replicatie | Waarschuwing |
+| 16839 | SecondaryReplicationQueueWarningMitigated | Gezondheidszorg | De replicatie wachtrij van de secundaire replica is OK | Replicatie | Informatief |
+| 16840 | PrimaryFaultedSlowSecondary | Gezondheidszorg | De primaire replica heeft een fout met een langzame secundaire replica veroorzaakt | Replicatie | Waarschuwing |
+| 16841 | ReplicatorFaulted | Gezondheidszorg | Replica is mislukt | Replicatie | Waarschuwing |
 
 ## <a name="container-events"></a>Container gebeurtenissen
 
@@ -246,7 +246,7 @@ Het [service Fabric status model](service-fabric-health-introduction.md) biedt e
 
 Hier volgt een uitgebreide lijst met gebeurtenissen van Service Fabric vóór versie 6,2.
 
-| Gebeurtenis | Naam | Bron (taak) | Niveau |
+| Gebeurtenis | Name | Bron (taak) | Niveau |
 | --- | --- | --- | --- |
 | 25620 | NodeOpening | FabricNode | Informatief |
 | 25621 | NodeOpenedSuccess | FabricNode | Informatief |

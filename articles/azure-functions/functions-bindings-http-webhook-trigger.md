@@ -6,12 +6,12 @@ ms.topic: reference
 ms.date: 02/21/2020
 ms.author: cshoe
 ms.custom: tracking-python
-ms.openlocfilehash: 44b9b060be7ec707444ddf409848be1a16addb83
-ms.sourcegitcommit: 4042aa8c67afd72823fc412f19c356f2ba0ab554
+ms.openlocfilehash: 14da272ce5ce7c078719909345961f6ddf57f37b
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/24/2020
-ms.locfileid: "85298613"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85833788"
 ---
 # <a name="azure-functions-http-trigger"></a>HTTP-trigger Azure Functions
 
@@ -498,7 +498,9 @@ Het invoer type van de trigger wordt gedeclareerd als ofwel `HttpRequest` een aa
 
 Wanneer u een functie voor een HTTP-trigger maakt, is de functie standaard adresseerbaar met een route van het formulier:
 
-    http://<APP_NAME>.azurewebsites.net/api/<FUNCTION_NAME>
+```http
+http://<APP_NAME>.azurewebsites.net/api/<FUNCTION_NAME>
+```
 
 U kunt deze route aanpassen met behulp van de optionele `route` eigenschap voor de invoer binding van de HTTP-trigger. Als voor beeld wordt met de volgende *function.jsin* file een `route` eigenschap gedefinieerd voor een http-trigger:
 
@@ -766,7 +768,9 @@ U kunt functie sleutels programmatisch verkrijgen met behulp van [Key Management
 
 Voor de meeste HTTP-trigger sjablonen is een API-sleutel in de aanvraag vereist. Uw HTTP-aanvraag lijkt daarom normaal te lijken op de volgende URL:
 
-    https://<APP_NAME>.azurewebsites.net/api/<FUNCTION_NAME>?code=<API_KEY>
+```http
+https://<APP_NAME>.azurewebsites.net/api/<FUNCTION_NAME>?code=<API_KEY>
+```
 
 De sleutel kan worden opgenomen in een query reeks variabele met de naam `code` , zoals hierboven is beschreven. Het kan ook worden opgenomen in een `x-functions-key` http-header. De waarde van de sleutel kan een functie sleutel zijn die is gedefinieerd voor de functie of een wille keurige host-sleutel.
 
@@ -809,6 +813,14 @@ Webhook-autorisatie wordt verwerkt door het onderdeel webhook-ontvanger, onderde
 
 * **Query reeks**: de provider geeft de sleutel naam door in de `clientid` query teken reeks parameter, zoals `https://<APP_NAME>.azurewebsites.net/api/<FUNCTION_NAME>?clientid=<KEY_NAME>` .
 * **Aanvraag header**: de provider geeft de sleutel naam in de `x-functions-clientid` header door.
+
+## <a name="content-types"></a>Inhouds typen
+
+Als u binaire en formulier gegevens wilt door geven aan een niet-C #-functie, moet u de juiste content-type-header gebruiken. Ondersteunde inhouds typen zijn `octet-stream` voor binaire gegevens en [meerdelige typen](https://www.iana.org/assignments/media-types/media-types.xhtml#multipart).
+
+### <a name="known-issues"></a>Bekende problemen
+
+In niet-C #-functies worden aanvragen die worden verzonden met het inhouds type, verwerkt `image/jpeg` in een `string` waarde die is door gegeven aan de functie. In dergelijke gevallen kunt u de waarde hand matig converteren `string` naar een byte matrix om toegang te krijgen tot de onbewerkte binaire gegevens.
 
 ## <a name="limits"></a>Limieten
 

@@ -4,18 +4,18 @@ description: Meer informatie over het beheren van meta gegevens van project, pro
 ms.topic: how-to
 ms.date: 02/28/2020
 ms.custom: tracking-python
-ms.openlocfilehash: df64c9d90252c31118b66943b6a182319e3f1cc2
-ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
+ms.openlocfilehash: 53acf7c916b402e291b9779948579761e79179ef
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84554310"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85834077"
 ---
 # <a name="manage-and-configure-projects-in-azure-notebooks-preview"></a><a id="manage-and-configure-projects" />Projecten beheren en configureren in Azure Notebooks preview
 
-Een project in Azure Notebooks preview is in feite een configuratie van de onderliggende virtuele Linux-machine waarin Jupyter-notebooks worden uitgevoerd, samen met een bestandsmap en beschrijvende meta gegevens. 
-
 [!INCLUDE [notebooks-status](../../includes/notebooks-status.md)]
+
+Een project in Azure Notebooks preview is in feite een configuratie van de onderliggende virtuele Linux-machine waarin Jupyter-notebooks worden uitgevoerd, samen met een bestandsmap en beschrijvende meta gegevens. 
 
 Met het project dashboard in Azure Notebooks kunt u bestanden beheren en de eigenschappen van het project anders configureren:
 
@@ -57,7 +57,7 @@ In het project dashboard wordt de inhoud van het map-systeem van het project wee
 
 De **+ nieuwe** opdracht (sneltoets: n) maakt nieuwe bestanden of mappen. Wanneer u de opdracht gebruikt, selecteert u eerst het type item dat u wilt maken:
 
-| Item type | Beschrijving | Opdracht gedrag |
+| Item type | Description | Opdracht gedrag |
 | --- | --- | --- |
 | **Notebook** | Een Jupyter-notebook | Hiermee wordt een pop-upvenster weer gegeven waarin u de bestands naam en-taal van het notitie blok opgeeft. |
 | **Map** | Een submap | Hiermee maakt u een bewerkings veld in de bestands lijst van het project waarin u de mapnaam opgeeft. |
@@ -127,14 +127,14 @@ Als u een stap wilt toevoegen, selecteert u eerst **+ toevoegen**en selecteert u
 
 De gegevens die u vervolgens projecteert, zijn afhankelijk van het type bewerking dat u hebt gekozen:
 
-- **Requirements. txt**: Selecteer in de tweede vervolg keuzelijst het bestand *Requirements. txt* dat zich al in het project bevermeldt. Selecteer vervolgens een python-versie in de derde vervolg keuzelijst die wordt weer gegeven. Met het bestand *Requirements. txt* Azure notebooks uitgevoerd `pip install -r` met het bestand *Requirements. txt* bij het starten van een notebook server. U hoeft geen expliciet pakketten te installeren vanuit het notitie blok zelf.
+- **Requirements.txt**: Selecteer in de tweede vervolg keuzelijst een *requirements.txt* bestand dat al in het project voor komt. Selecteer vervolgens een python-versie in de derde vervolg keuzelijst die wordt weer gegeven. Als u een *requirements.txt* bestand gebruikt, wordt Azure notebooks uitgevoerd `pip install -r` met het *requirements.txt* -bestand wanneer een notebook server wordt gestart. U hoeft geen expliciet pakketten te installeren vanuit het notitie blok zelf.
 
 - **Shell script**: Selecteer in de tweede vervolg keuzelijst een bash-shell script in het project (meestal een bestand met de extensie *. sh* ) dat opdrachten bevat die u wilt uitvoeren om de omgeving te initialiseren.
 
 - **Environment. yml**: Selecteer in de tweede vervolg keuzelijst een *omgeving. yml* -bestand voor python-projecten met een Conda-omgeving.
 
    > [!WARNING]
-   > Aangezien dit een preview-service is die in ontwikkeling is, is er momenteel een bekend probleem waarbij de `Environment.yml` instelling niet op de verwachte manier wordt toegepast op het project. Het project en de Jupyter-notebooks in kunnen het opgegeven omgevings bestand momenteel niet laden.
+   > Omdat dit een service in preview is die nog wordt ontwikkeld, is er momenteel een bekend probleem waarbij de instelling `Environment.yml` niet zoals verwacht op uw project wordt toegepast. In het project en de Jupyter-notebooks in dat project wordt het opgegeven omgevingsbestand momenteel niet geladen.
 
 Wanneer u klaar bent met het toevoegen van stappen, selecteert u **Opslaan**.
 

@@ -8,11 +8,11 @@ ms.topic: conceptual
 ms.date: 04/28/2019
 ms.author: ramamill
 ms.openlocfilehash: ef16e3b75ca8e051b1b7abb1a92843279884c697
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79257249"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85846559"
 ---
 # <a name="manage-process-servers"></a>Processervers beheren
 
@@ -48,7 +48,7 @@ U kunt als volgt de belasting verdelen door Vm's tussen twee proces servers te v
     ![LoadPS](media/vmware-azure-manage-process-server/LoadPS.PNG)
 
 2. Klik op **machines selecteren**en kies de computers die u van de huidige naar de doel proces server wilt verplaatsen. Details van de gemiddelde gegevens wijziging worden voor elke virtuele machine weer gegeven. Klik vervolgens op **OK**. 
-3. Controleer in de kluis de voortgang van de taak onder **bewaking** > **site Recovery taken**.
+3. Controleer in de kluis de voortgang van de taak onder **bewaking**  >  **site Recovery taken**.
 
 Het duurt ongeveer 15 minuten voordat wijzigingen worden weer gegeven in de portal. [Vernieuw de configuratie server](vmware-azure-manage-configuration-server.md#refresh-configuration-server)voor een snellere werking.
 
@@ -63,7 +63,7 @@ Verplaats de hele werk belasting die door een proces server wordt verwerkt, als 
 
     ![Switch](media/vmware-azure-manage-process-server/Switch.PNG)
 
-5. Controleer in de kluis de voortgang van de taak onder **bewaking** > **site Recovery taken**.
+5. Controleer in de kluis de voortgang van de taak onder **bewaking**  >  **site Recovery taken**.
 
 Het duurt ongeveer 15 minuten voordat wijzigingen worden weer gegeven in de portal. [Vernieuw de configuratie server](vmware-azure-manage-configuration-server.md#refresh-configuration-server)voor een snellere werking.
 

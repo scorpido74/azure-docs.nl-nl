@@ -4,11 +4,11 @@ description: Meer informatie over hoe u prestatie problemen in Azure Functions k
 ms.topic: conceptual
 ms.date: 02/25/2018
 ms.openlocfilehash: 872ad9a1b8f0a7da6fe410e68f08469ac11045a5
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79276450"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85846767"
 ---
 # <a name="manage-connections-in-azure-functions"></a>Verbindingen in Azure Functions beheren
 
@@ -16,7 +16,7 @@ Functies in een functie-app delen resources. Onder deze gedeelde bronnen staan v
 
 ## <a name="connection-limit"></a>Verbindings limiet
 
-Het aantal beschik bare verbindingen is deels beperkt omdat een functie-app in een [sandbox-omgeving](https://github.com/projectkudu/kudu/wiki/Azure-Web-App-sandbox)wordt uitgevoerd. Een van de beperkingen die de sandbox voor uw code oplegt, is een limiet voor het aantal uitgaande verbindingen dat momenteel 600 actief is (1.200 totaal) verbindingen per exemplaar. Wanneer u deze limiet bereikt, schrijft de functions-runtime het volgende bericht naar de `Host thresholds exceeded: Connections`logboeken:. Zie de [functies service limieten](functions-scale.md#service-limits)voor meer informatie.
+Het aantal beschik bare verbindingen is deels beperkt omdat een functie-app in een [sandbox-omgeving](https://github.com/projectkudu/kudu/wiki/Azure-Web-App-sandbox)wordt uitgevoerd. Een van de beperkingen die de sandbox voor uw code oplegt, is een limiet voor het aantal uitgaande verbindingen dat momenteel 600 actief is (1.200 totaal) verbindingen per exemplaar. Wanneer u deze limiet bereikt, schrijft de functions-runtime het volgende bericht naar de logboeken: `Host thresholds exceeded: Connections` . Zie de [functies service limieten](functions-scale.md#service-limits)voor meer informatie.
 
 Deze limiet is per instantie. Wanneer de [schaal controller functie-app-exemplaren toevoegt](functions-scale.md#how-the-consumption-and-premium-plans-work) om meer aanvragen te verwerken, heeft elk exemplaar een onafhankelijke verbindings limiet. Dit betekent dat er geen algemene verbindings limiet is en dat u veel meer dan 600 actieve verbindingen voor alle actieve instanties kunt hebben.
 
@@ -52,13 +52,13 @@ public static async Task Run(string input)
 }
 ```
 
-Een veelgestelde vraag over [httpclient maakt](https://msdn.microsoft.com/library/system.net.http.httpclient(v=vs.110).aspx) in .net is ' moet ik mijn client verwijderen? ' Over het algemeen kunt u objecten verwijderen die worden `IDisposable` geïmplementeerd wanneer u klaar bent met het gebruik ervan. Maar u kunt een statische client niet verwijderen omdat u deze niet hebt gebruikt wanneer de functie eindigt. U wilt dat de statische client Live voor de duur van uw toepassing.
+Een veelgestelde vraag over [httpclient maakt](https://msdn.microsoft.com/library/system.net.http.httpclient(v=vs.110).aspx) in .net is ' moet ik mijn client verwijderen? ' Over het algemeen kunt u objecten verwijderen die worden geïmplementeerd `IDisposable` Wanneer u klaar bent met het gebruik ervan. Maar u kunt een statische client niet verwijderen omdat u deze niet hebt gebruikt wanneer de functie eindigt. U wilt dat de statische client Live voor de duur van uw toepassing.
 
 ### <a name="http-agent-examples-javascript"></a>Voor beelden van HTTP-agents (Java script)
 
-Omdat het betere opties voor verbindings beheer biedt, moet u de systeem [`http.agent`](https://nodejs.org/dist/latest-v6.x/docs/api/http.html#http_class_http_agent) eigen klasse gebruiken in plaats van niet-systeem eigen methoden `node-fetch` , zoals de module. Verbindings parameters worden geconfigureerd via opties in de `http.agent` -klasse. Zie [nieuwe agent (\[\]opties)](https://nodejs.org/dist/latest-v6.x/docs/api/http.html#http_new_agent_options)voor gedetailleerde opties die beschikbaar zijn in de http-agent.
+Omdat het betere opties voor verbindings beheer biedt, moet u de systeem eigen [`http.agent`](https://nodejs.org/dist/latest-v6.x/docs/api/http.html#http_class_http_agent) klasse gebruiken in plaats van niet-systeem eigen methoden, zoals de `node-fetch` module. Verbindings parameters worden geconfigureerd via opties in de- `http.agent` klasse. Zie [nieuwe agent ( \[ opties \] )](https://nodejs.org/dist/latest-v6.x/docs/api/http.html#http_new_agent_options)voor gedetailleerde opties die beschikbaar zijn in de http-agent.
 
-Voor de `http.globalAgent` globale klasse die `http.request()` door wordt gebruikt, zijn al deze waarden ingesteld op de respectievelijke standaarden. De aanbevolen manier om verbindings limieten in functies te configureren is door een maximum aantal globaal in te stellen. In het volgende voor beeld wordt het maximum aantal sockets voor de functie-app ingesteld:
+Voor de globale `http.globalAgent` klasse die door wordt gebruikt, `http.request()` zijn al deze waarden ingesteld op de respectievelijke standaarden. De aanbevolen manier om verbindings limieten in functies te configureren is door een maximum aantal globaal in te stellen. In het volgende voor beeld wordt het maximum aantal sockets voor de functie-app ingesteld:
 
 ```js
 http.globalAgent.maxSockets = 200;
@@ -130,7 +130,7 @@ Uw functie code kan gebruikmaken van de .NET Framework Data Provider voor SQL Se
 ) -verbindingen implementeert ADO.net standaard verbindings groepen. Maar omdat u nog steeds verbinding kunt maken, moet u de verbindingen met de data base optimaliseren. Zie [SQL Server Connection Pooling (ADO.net) (Engelstalig)](https://docs.microsoft.com/dotnet/framework/data/adonet/sql-server-connection-pooling)voor meer informatie.
 
 > [!TIP]
-> Sommige gegevens raamwerken, zoals Entity Framework, krijgen meestal verbindings reeksen uit de sectie **Connections Tring** van een configuratie bestand. In dit geval moet u SQL database verbindings reeksen expliciet toevoegen aan de **verbindingsteken reeks** verzameling van de instellingen van de functie-app en in het [bestand local. settings. json](functions-run-local.md#local-settings-file) in uw lokale project. Als u een instantie van [SqlConnection](https://msdn.microsoft.com/library/system.data.sqlclient.sqlconnection(v=vs.110).aspx) in uw functie code maakt, moet u de Connection String waarde in **Toepassings instellingen** opslaan met uw andere verbindingen.
+> Sommige gegevens raamwerken, zoals Entity Framework, krijgen meestal verbindings reeksen uit de sectie **Connections Tring** van een configuratie bestand. In dit geval moet u SQL database verbindings reeksen expliciet toevoegen aan de **verbindingsteken reeks** verzameling van de instellingen van de functie-app en in de [local.settings.jsvoor het bestand](functions-run-local.md#local-settings-file) in uw lokale project. Als u een instantie van [SqlConnection](https://msdn.microsoft.com/library/system.data.sqlclient.sqlconnection(v=vs.110).aspx) in uw functie code maakt, moet u de Connection String waarde in **Toepassings instellingen** opslaan met uw andere verbindingen.
 
 ## <a name="next-steps"></a>Volgende stappen
 
