@@ -7,10 +7,9 @@ ms.date: 04/22/2019
 ms.author: tyleonha
 ms.reviewer: glenga
 ms.openlocfilehash: 133e89bd9187ae5e48fa208b407678760d31adfd
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "78163757"
 ---
 # <a name="debug-powershell-azure-functions-locally"></a>Power shell-Azure Functions lokaal debuggen
@@ -40,7 +39,7 @@ PSFunctionApp
 
 Deze functie-app is vergelijkbaar met de toepassing die u krijgt wanneer u de [Power shell-Snelstartgids](functions-create-first-function-powershell.md)voltooit.
 
-De functie code ziet `run.ps1` eruit als in het volgende script:
+De functie code `run.ps1` ziet eruit als in het volgende script:
 
 ```powershell
 param($Request)
@@ -66,7 +65,7 @@ Push-OutputBinding -Name Response -Value ([HttpResponseContext]@{
 
 Voor het opsporen van fouten in een Power shell-functie moet de functie worden gestopt om het fout opsporingsprogramma te koppelen. De `Wait-Debugger` cmdlet stopt de uitvoering en wacht op het fout opsporingsprogramma.
 
-U hoeft alleen maar op de `Wait-Debugger` `if` volgende manier een aanroep naar de cmdlet toe te voegen:
+U hoeft alleen maar op de volgende manier een aanroep naar de cmdlet toe te voegen `Wait-Debugger` `if` :
 
 ```powershell
 param($Request)
@@ -83,7 +82,7 @@ if($name) {
 # ...
 ```
 
-Fout opsporing begint bij `if` de instructie. 
+Fout opsporing begint bij de `if` instructie. 
 
 Met `Wait-Debugger` deze functie kunt u nu fouten opsporen in de functies met behulp van Visual Studio code of een Power shell-console.
 
@@ -104,7 +103,7 @@ Na het installeren van deze afhankelijkheden, laadt u een bestaand Power shell f
 
 Power shell core wordt naast Windows Power shell geïnstalleerd. Stel Power shell core in als de Power shell-versie die moet worden gebruikt met de Power shell-extensie voor Visual Studio code.
 
-1. Druk op F1 om de opdracht pallet weer te geven en `Session`zoek vervolgens naar.
+1. Druk op F1 om de opdracht pallet weer te geven en zoek vervolgens naar `Session` .
 
 1. Kies **Power shell: menu sessie weer geven**.
 
@@ -124,8 +123,8 @@ U kunt ook op de toets F5 drukken om de fout opsporing te starten.
 
 Met de bewerking voor het starten van fout opsporing worden de volgende taken uitgevoerd:
 
-* Wordt `func extensions install` uitgevoerd in de terminal om Azure functions extensies te installeren die vereist zijn voor uw functie-app.
-* Wordt `func host start` uitgevoerd in de terminal om de functie-app in de functions-host te starten.
+* Wordt uitgevoerd `func extensions install` in de terminal om Azure functions extensies te installeren die vereist zijn voor uw functie-app.
+* Wordt uitgevoerd `func host start` in de terminal om de functie-app in de functions-host te starten.
 * Koppel de Power Shell-fout opsporing aan de Power shell-runs Pace in de functions-runtime.
 
 >[!NOTE]
@@ -141,7 +140,7 @@ Voer de volgende opdracht uit in een Power shell-console:
 Invoke-RestMethod "http://localhost:7071/api/HttpTrigger?Name=Functions"
 ```
 
-U ziet dat een antwoord niet onmiddellijk wordt geretourneerd. Dat komt doordat `Wait-Debugger` de fout opsporing en Power shell-uitvoering zijn gekoppeld aan de verwerkings modus zodra dit mogelijk is. Dit komt door het [BreakAll-concept](#breakall-might-cause-your-debugger-to-break-in-an-unexpected-place), dat later wordt uitgelegd. Nadat u op de `continue` knop hebt geklikt, wordt het fout opsporingsprogramma nu `Wait-Debugger`meteen op de regel afgebroken.
+U ziet dat een antwoord niet onmiddellijk wordt geretourneerd. Dat komt doordat `Wait-Debugger` de fout opsporing en Power shell-uitvoering zijn gekoppeld aan de verwerkings modus zodra dit mogelijk is. Dit komt door het [BreakAll-concept](#breakall-might-cause-your-debugger-to-break-in-an-unexpected-place), dat later wordt uitgelegd. Nadat u op de knop hebt geklikt `continue` , wordt het fout opsporingsprogramma nu meteen op de regel afgebroken `Wait-Debugger` .
 
 Op dit moment is het fout opsporingsprogramma gekoppeld en kunt u alle normale debugging bewerkingen uitvoeren. Zie [de officiële documentatie](https://code.visualstudio.com/Docs/editor/debugging#_debug-actions)voor meer informatie over het gebruik van het fout opsporingsprogramma in Visual Studio code.
 
@@ -150,28 +149,28 @@ Nadat u het script hebt voortgezet en volledig hebt aangeroepen, ziet u dat:
 * De Power shell-console met `Invoke-RestMethod` heeft een resultaat geretourneerd
 * De geïntegreerde Power shell-console in Visual Studio code wacht tot een script wordt uitgevoerd
 
-Later wanneer u dezelfde functie aanroept, wordt het fout opsporingsprogramma in Power shell-uitbrei ding direct na de `Wait-Debugger`.
+Later wanneer u dezelfde functie aanroept, wordt het fout opsporingsprogramma in Power shell-uitbrei ding direct na de `Wait-Debugger` .
 
 ## <a name="debugging-in-a-powershell-console"></a>Fout opsporing in een Power shell-console
 
 >[!NOTE]
-> In deze sectie wordt ervan uitgegaan dat u de [Azure functions core tools docs](functions-run-local.md) hebt gelezen en hoe `func host start` u de opdracht kunt gebruiken om de functie-app te starten.
+> In deze sectie wordt ervan uitgegaan dat u de [Azure functions core tools docs](functions-run-local.md) hebt gelezen en hoe u de opdracht kunt gebruiken `func host start` om de functie-app te starten.
 
-Open een- `cd` console in de map van uw functie-app en voer de volgende opdracht uit:
+Open een-console `cd` in de map van uw functie-app en voer de volgende opdracht uit:
 
 ```sh
 func host start
 ```
 
-Met de functie-app die wordt `Wait-Debugger` uitgevoerd en de in-place kunt u aan het proces koppelen. U hebt nog twee Power shell-consoles nodig.
+Met de functie-app die wordt uitgevoerd en de `Wait-Debugger` in-place kunt u aan het proces koppelen. U hebt nog twee Power shell-consoles nodig.
 
-Een van de-consoles fungeert als de client. Hier roept `Invoke-RestMethod` u aan om de functie te activeren. U kunt bijvoorbeeld de volgende opdracht uitvoeren:
+Een van de-consoles fungeert als de client. Hier roept u `Invoke-RestMethod` aan om de functie te activeren. U kunt bijvoorbeeld de volgende opdracht uitvoeren:
 
 ```powershell
 Invoke-RestMethod "http://localhost:7071/api/HttpTrigger?Name=Functions"
 ```
 
-U ziet dat het geen antwoord retourneert dat het resultaat is van de `Wait-Debugger`. De Power shell-runs Pace wacht op het toevoegen van een fout opsporingsprogramma. Laten we dat doen.
+U ziet dat het geen antwoord retourneert dat het resultaat is van de `Wait-Debugger` . De Power shell-runs Pace wacht op het toevoegen van een fout opsporingsprogramma. Laten we dat doen.
 
 Voer in de andere Power shell-console de volgende opdracht uit:
 
@@ -194,7 +193,7 @@ pwsh            32071 None
 pwsh            88785 None
 ```
 
-Noteer de `ProcessId` voor het item in de tabel met de `ProcessName` as. `dotnet` Dit proces is uw functie-app.
+Noteer de `ProcessId` voor het item in de tabel met de `ProcessName` as `dotnet` . Dit proces is uw functie-app.
 
 Voer vervolgens het volgende code fragment uit:
 
@@ -220,16 +219,16 @@ At /Path/To/PSFunctionApp/HttpTriggerFunction/run.ps1:13 char:1
 [DBG]: [Process:49988]: [Runspace1]: PS /Path/To/PSFunctionApp>>
 ```
 
-Op dit moment wordt u gestopt op een onderbrekings punt in het [Power Shell-fout opsporingsprogramma](/powershell/module/microsoft.powershell.core/about/about_debuggers). Hier kunt u alle gebruikelijke probleemoplossings bewerkingen uitvoeren, de stap over, Step Into, door gaan, afsluiten en anderen. Als u de volledige set opdrachten voor fout opsporing wilt zien die beschikbaar zijn in `h` de `?` -console, voert u de opdrachten of uit.
+Op dit moment wordt u gestopt op een onderbrekings punt in het [Power Shell-fout opsporingsprogramma](/powershell/module/microsoft.powershell.core/about/about_debuggers). Hier kunt u alle gebruikelijke probleemoplossings bewerkingen uitvoeren, de stap over, Step Into, door gaan, afsluiten en anderen. Als u de volledige set opdrachten voor fout opsporing wilt zien die beschikbaar zijn in de-console, voert u de `h` opdrachten of uit `?` .
 
-U kunt onderbrekings punten op dit niveau ook instellen met `Set-PSBreakpoint` de cmdlet.
+U kunt onderbrekings punten op dit niveau ook instellen met de `Set-PSBreakpoint` cmdlet.
 
 Nadat u het script hebt door lopen en volledig hebt aangeroepen, ziet u het volgende:
 
-* De Power shell-console waarin `Invoke-RestMethod` u hebt uitgevoerd, heeft nu een resultaat geretourneerd.
-* De Power shell-console waarin `Debug-Runspace` u hebt uitgevoerd, wacht op het uitvoeren van een script.
+* De Power shell-console waarin u hebt uitgevoerd, `Invoke-RestMethod` heeft nu een resultaat geretourneerd.
+* De Power shell-console waarin u hebt uitgevoerd `Debug-Runspace` , wacht op het uitvoeren van een script.
 
-U kunt dezelfde functie opnieuw aanroepen (door `Invoke-RestMethod` bijvoorbeeld te gebruiken) en het fout opsporingsprogramma wordt direct na `Wait-Debugger` de opdracht afgebroken.
+U kunt dezelfde functie opnieuw aanroepen (door `Invoke-RestMethod` bijvoorbeeld te gebruiken) en het fout opsporingsprogramma wordt direct na de opdracht afgebroken `Wait-Debugger` .
 
 ## <a name="considerations-for-debugging"></a>Overwegingen voor fout opsporing
 
@@ -237,11 +236,11 @@ Houd de volgende problemen bij het opsporen van fouten in uw functions-code.
 
 ### <a name="breakall-might-cause-your-debugger-to-break-in-an-unexpected-place"></a>`BreakAll`kan ertoe leiden dat uw fout opsporingsprogramma op een onverwachte plaats breekt
 
-De Power shell- `Debug-Runspace`extensie gebruikt, die op zijn beurt gebruikmaakt van `BreakAll` de functie van Power shell. Deze functie geeft aan dat Power shell stopt bij de eerste opdracht die wordt uitgevoerd. Dit gedrag biedt u de mogelijkheid om onderbrekings punten in te stellen in de runs Pace met fout opsporing.
+De Power shell-extensie gebruikt `Debug-Runspace` , die op zijn beurt gebruikmaakt van de functie van Power shell `BreakAll` . Deze functie geeft aan dat Power shell stopt bij de eerste opdracht die wordt uitgevoerd. Dit gedrag biedt u de mogelijkheid om onderbrekings punten in te stellen in de runs Pace met fout opsporing.
 
-De Azure Functions runtime voert enkele opdrachten uit voordat u het `run.ps1` script daad werkelijk aanroept. het is dus mogelijk dat het fout opsporingsprogramma eindigt op `Microsoft.Azure.Functions.PowerShellWorker.psm1` de `Microsoft.Azure.Functions.PowerShellWorker.psd1`of.
+De Azure Functions runtime voert enkele opdrachten uit voordat u het script daad werkelijk aanroept `run.ps1` . het is dus mogelijk dat het fout opsporingsprogramma eindigt op de `Microsoft.Azure.Functions.PowerShellWorker.psm1` of `Microsoft.Azure.Functions.PowerShellWorker.psd1` .
 
-Als deze onderbreking plaatsvindt, voert u `continue` de `c` opdracht of uit om dit onderbrekings punt over te slaan. Vervolgens stopt u bij het verwachte onderbrekings punt.
+Als deze onderbreking plaatsvindt, voert `continue` u de `c` opdracht of uit om dit onderbrekings punt over te slaan. Vervolgens stopt u bij het verwachte onderbrekings punt.
 
 ## <a name="next-steps"></a>Volgende stappen
 

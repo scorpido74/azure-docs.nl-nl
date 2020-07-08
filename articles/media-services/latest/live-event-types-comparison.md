@@ -14,10 +14,9 @@ ms.topic: article
 ms.date: 06/13/2019
 ms.author: juliako
 ms.openlocfilehash: a28d4d96f643c12eeb6aa542db2c6af06f4fd954
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "78244645"
 ---
 # <a name="live-event-types-comparison"></a>Vergelijking van live gebeurtenis typen
@@ -36,13 +35,13 @@ In de volgende tabel worden de functies van de live-gebeurtenis typen vergeleken
 
 | Functie | Pass-through live-gebeurtenis | Standard-of Premium1080p live-gebeurtenis |
 | --- | --- | --- |
-| Invoer met één bitsnelheid wordt gecodeerd in meerdere bitrates in de Cloud |Nee |Ja |
+| Invoer met één bitsnelheid wordt gecodeerd in meerdere bitrates in de Cloud |No |Yes |
 | Maximale video resolutie voor invoer van contributie |4.000 (4096x2160 bij 60 frames per seconde) |1080p (1920x1088 bij 30 frames per seconde)|
 | Aanbevolen maximum aantal lagen in de invoer van bijdragen|Maxi maal 12|Eén audio|
 | Maximum aantal lagen in uitvoer| Hetzelfde als invoer|Maxi maal 6 (zie onderstaande systeem instellingen)|
 | Maximale cumulatieve band breedte van invoer voor bijdragen|60 Mbps|N.v.t.|
 | Maximale bitrate voor één laag in de bijdrage |20 Mbps|20 Mbps|
-| Ondersteuning voor audio tracks met meerdere talen|Ja|Nee|
+| Ondersteuning voor audio tracks met meerdere talen|Yes|No|
 | Ondersteunde video-codecs voor invoer |H. 264/AVC en H. 265/HEVC|H. 264/AVC|
 | Ondersteunde video-codecs voor uitvoer|Hetzelfde als invoer|H. 264/AVC|
 | Ondersteunde bitdiepte, invoer en uitvoer van video|Maxi maal 10 bits inclusief HDR 10/HLG|8-bits|
@@ -53,15 +52,15 @@ In de volgende tabel worden de functies van de live-gebeurtenis typen vergeleken
 | Invoer protocollen|RTMP, gefragmenteerd-MP4 (Smooth Streaming)|RTMP, gefragmenteerd-MP4 (Smooth Streaming)|
 | Prijs|Bekijk de [pagina met prijzen](https://azure.microsoft.com/pricing/details/media-services/) en klik op het tabblad live video|Bekijk de [pagina met prijzen](https://azure.microsoft.com/pricing/details/media-services/) en klik op het tabblad live video|
 | Maximale uitvoerings tijd| 24 uur x 365 dagen, Live lineair | 24 uur x 365 dagen, Live lineair (preview-versie)|
-| De mogelijkheid om gegevens van Inge sloten CEA 608/708-bijschriften door te geven|Ja|Ja|
-| Mogelijkheid om live-transcriptie in te scha kelen|Ja|Ja|
+| De mogelijkheid om gegevens van Inge sloten CEA 608/708-bijschriften door te geven|Yes|Ja|
+| Mogelijkheid om live-transcriptie in te scha kelen|Yes|Ja|
 | Ondersteuning voor het invoegen van pastels|Nee|Nee|
 | Ondersteuning voor AD-Signa lering via API| Nee|Nee|
-| Ondersteuning voor AD-Signa lering via SCTE-35 in-band-berichten|Ja|Ja|
+| Ondersteuning voor AD-Signa lering via SCTE-35 in-band-berichten|Yes|Ja|
 | Mogelijkheid om te herstellen van korte hokjes in een bijdrager|Ja|Gedeeltelijk|
-| Ondersteuning voor niet-uniforme invoer GOPs|Ja|Nee: de duur van de invoer moet een vaste GOP terug hebben|
-| Ondersteuning voor variabele frame-rate invoer|Ja|Nee – invoer moet een vaste frame frequentie zijn. Kleine variaties zijn toegestaan, bijvoorbeeld tijdens hoge bewegende scènes. Maar de bijdrage feed kan de frame frequentie niet verwijderen (bijvoorbeeld op 15 frames per seconde).|
-| Automatische shutoff van live gebeurtenis wanneer invoer toevoer verloren gaat|Nee|Na 12 uur, als er geen LiveOutput wordt uitgevoerd|
+| Ondersteuning voor niet-uniforme invoer GOPs|Yes|Nee: de duur van de invoer moet een vaste GOP terug hebben|
+| Ondersteuning voor variabele frame-rate invoer|Yes|Nee – invoer moet een vaste frame frequentie zijn. Kleine variaties zijn toegestaan, bijvoorbeeld tijdens hoge bewegende scènes. Maar de bijdrage feed kan de frame frequentie niet verwijderen (bijvoorbeeld op 15 frames per seconde).|
+| Automatische shutoff van live gebeurtenis wanneer invoer toevoer verloren gaat|No|Na 12 uur, als er geen LiveOutput wordt uitgevoerd|
 
 ## <a name="system-presets"></a>Systeem instellingen
 

@@ -9,10 +9,9 @@ ms.topic: conceptual
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.date: 02/28/2020
 ms.openlocfilehash: ac3904284ebf20fa1d5e75f9249732be3963f677
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "78206279"
 ---
 # <a name="use-apache-spark-rest-api-to-submit-remote-jobs-to-an-hdinsight-spark-cluster"></a>Apache Spark REST API gebruiken voor het verzenden van externe taken naar een HDInsight Spark-cluster
@@ -41,7 +40,7 @@ curl -k --user "admin:password" -v -H "Content-Type: application/json" -X POST -
     curl -k --user "admin:mypassword1!" -v -H "Content-Type: application/json" -X POST -d '{ "file":"wasbs://mycontainer@mystorageaccount.blob.core.windows.net/data/SparkSimpleTest.jar", "className":"com.microsoft.spark.test.SimpleFile" }' "https://mysparkcluster.azurehdinsight.net/livy/batches" -H "X-Requested-By: admin"
     ```
 
-* Als u de jar-bestands naam en de className wilt door geven als onderdeel van een invoer bestand (in dit voor beeld is input. txt)
+* Als u de jar-bestands naam en de className wilt door geven als onderdeel van een invoer bestand (in dit voor beeld input.txt)
 
     ```cmd
     curl -k  --user "admin:mypassword1!" -v -H "Content-Type: application/json" -X POST --data @C:\Temp\input.txt "https://mysparkcluster.azurehdinsight.net/livy/batches" -H "X-Requested-By: admin"
@@ -77,7 +76,7 @@ curl -k --user "admin:mypassword1!" -v -X DELETE "https://<spark_cluster_name>.a
 
 ### <a name="example"></a>Voorbeeld
 
-Een batch-taak met batch- `5`id verwijderen.
+Een batch-taak met batch-ID verwijderen `5` .
 
 ```cmd
 curl -k --user "admin:mypassword1!" -v -X DELETE "https://mysparkcluster.azurehdinsight.net/livy/batches/5"
@@ -99,7 +98,7 @@ In deze sectie kijken we naar voor beelden voor het gebruik van livy Spark om ee
 
 Voer de volgende stappen uit:
 
-1. Stel omgevings variabelen in om gebruiks gemak te gebruiken. Dit voor beeld is gebaseerd op een Windows-omgeving en wijzigt indien nodig de variabelen voor uw omgeving. Vervang `CLUSTERNAME`en `PASSWORD` door de juiste waarden.
+1. Stel omgevings variabelen in om gebruiks gemak te gebruiken. Dit voor beeld is gebaseerd op een Windows-omgeving en wijzigt indien nodig de variabelen voor uw omgeving. Vervang `CLUSTERNAME` en `PASSWORD` door de juiste waarden.
 
     ```cmd
     set clustername=CLUSTERNAME
@@ -128,13 +127,13 @@ Voer de volgende stappen uit:
 
     U ziet dat in de laatste regel van de uitvoer het volgende wordt vermeld **: 0**, waarmee wordt aangegeven dat er geen actieve batches worden uitgevoerd.
 
-1. Laat ons nu een batch-taak indienen. In het volgende code fragment wordt een invoer bestand (input. txt) gebruikt om de naam van het jar en de naam van de klasse als para meters door te geven. Als u deze stappen uitvoert vanaf een Windows-computer, is het gebruik van een invoer bestand de aanbevolen methode.
+1. Laat ons nu een batch-taak indienen. In het volgende code fragment wordt een invoer bestand (input.txt) gebruikt voor het door geven van de JAR-naam en de naam van de klasse als para meters. Als u deze stappen uitvoert vanaf een Windows-computer, is het gebruik van een invoer bestand de aanbevolen methode.
 
     ```cmd
     curl -k --user "admin:%password%" -v -H "Content-Type: application/json" -X POST --data @C:\Temp\input.txt "https://%clustername%.azurehdinsight.net/livy/batches" -H "X-Requested-By: admin"
     ```
 
-    De para meters in het bestand **input. txt** worden als volgt gedefinieerd:
+    De para meters in het bestand **input.txt** worden als volgt gedefinieerd:
 
     ```text
     { "file":"wasbs:///example/jars/SparkSimpleApp.jar", "className":"com.microsoft.spark.example.WasbIOTest" }
@@ -203,11 +202,11 @@ Voer de volgende stappen uit:
 
 ## <a name="updates-to-livy-configuration-starting-with-hdinsight-35-version"></a>Updates voor livy-configuratie vanaf HDInsight 3,5-versie
 
-HDInsight 3,5-clusters en hoger: Schakel het gebruik van lokale bestands paden standaard uit voor toegang tot bestanden of potten met voorbeeld gegevens. We raden u aan om in `wasbs://` plaats daarvan het pad te gebruiken voor het openen van potten of voorbeeld gegevens bestanden van het cluster.
+HDInsight 3,5-clusters en hoger: Schakel het gebruik van lokale bestands paden standaard uit voor toegang tot bestanden of potten met voorbeeld gegevens. We raden u aan om `wasbs://` in plaats daarvan het pad te gebruiken voor het openen van potten of voorbeeld gegevens bestanden van het cluster.
 
 ## <a name="submitting-livy-jobs-for-a-cluster-within-an-azure-virtual-network"></a>Livy-taken verzenden voor een cluster binnen een virtueel Azure-netwerk
 
-Als u vanuit een Azure Virtual Network verbinding maakt met een HDInsight Spark-cluster, kunt u rechtstreeks verbinding maken met livy op het cluster. In een dergelijk geval is `http://<IP address of the headnode>:8998/batches`de URL voor livy-eind punt. Hier is **8998** de poort waarop livy wordt uitgevoerd op het cluster hoofd knooppunt. Zie [poorten die worden gebruikt door Apache Hadoop Services op HDInsight](../hdinsight-hadoop-port-settings-for-services.md)voor meer informatie over het openen van services op niet-open bare poorten.
+Als u vanuit een Azure Virtual Network verbinding maakt met een HDInsight Spark-cluster, kunt u rechtstreeks verbinding maken met livy op het cluster. In een dergelijk geval is de URL voor livy-eind punt `http://<IP address of the headnode>:8998/batches` . Hier is **8998** de poort waarop livy wordt uitgevoerd op het cluster hoofd knooppunt. Zie [poorten die worden gebruikt door Apache Hadoop Services op HDInsight](../hdinsight-hadoop-port-settings-for-services.md)voor meer informatie over het openen van services op niet-open bare poorten.
 
 ## <a name="next-steps"></a>Volgende stappen
 

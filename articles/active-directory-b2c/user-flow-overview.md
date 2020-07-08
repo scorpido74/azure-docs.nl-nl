@@ -11,10 +11,9 @@ ms.date: 11/30/2018
 ms.author: mimart
 ms.subservice: B2C
 ms.openlocfilehash: c11bc48742c398d2048a236c7d00af044971f845
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "78185604"
 ---
 # <a name="user-flows-in-azure-active-directory-b2c"></a>Gebruikers stromen in Azure Active Directory B2C
@@ -28,7 +27,7 @@ Met een gebruikers stroom kunt u gedrag in uw toepassingen beheren door de volge
 - Account typen die worden gebruikt voor aanmelding, zoals sociale accounts zoals een Facebook-of lokale account
 - Kenmerken die moeten worden verzameld van de consument, zoals de voor naam, de post code en de grootte van de schoenen
 - Azure Multi-Factor Authentication
-- Aanpassing van de gebruikers interface
+- Aanpassing van de gebruikersinterface
 - Informatie die de toepassing ontvangt als claims in een token
 
 U kunt veel gebruikers stromen van verschillende typen in uw Tenant maken en deze naar behoefte gebruiken in uw toepassingen. Gebruikers stromen kunnen opnieuw worden gebruikt in verschillende toepassingen. Met deze flexibiliteit kunt u identiteits ervaringen definiëren en wijzigen met minimale of geen wijzigingen in uw code. Uw toepassing activeert een gebruikers stroom met behulp van een standaard-HTTP-verificatie aanvraag die een para meter voor de gebruikers stroom bevat. Er wordt een aangepast [token](tokens-overview.md) ontvangen als antwoord.
@@ -73,7 +72,7 @@ De volgende gebruikers stromen worden momenteel aanbevolen:
 
 Een **registratie-of aanmeldings** gebruikers stroom met lokale accounts bevat een **verg eten wacht woord?** koppeling op de eerste pagina van de ervaring. Als u op deze koppeling klikt, wordt de gebruikers stroom voor wacht woord opnieuw instellen niet automatisch geactiveerd.
 
-In plaats daarvan wordt de `AADB2C90118` fout code geretourneerd naar uw toepassing. Uw toepassing moet deze fout code verwerken door een specifieke gebruikers stroom uit te voeren waarmee het wacht woord opnieuw wordt ingesteld. Bekijk een voor beeld met een [eenvoudig ASP.net](https://github.com/AzureADQuickStarts/B2C-WebApp-OpenIDConnect-DotNet-SUSI) -voor beeld dat het koppelen van gebruikers stromen laat zien.
+In plaats daarvan wordt de fout code `AADB2C90118` geretourneerd naar uw toepassing. Uw toepassing moet deze fout code verwerken door een specifieke gebruikers stroom uit te voeren waarmee het wacht woord opnieuw wordt ingesteld. Bekijk een voor beeld met een [eenvoudig ASP.net](https://github.com/AzureADQuickStarts/B2C-WebApp-OpenIDConnect-DotNet-SUSI) -voor beeld dat het koppelen van gebruikers stromen laat zien.
 
 ## <a name="email-address-storage"></a>E-mail adres opslag
 

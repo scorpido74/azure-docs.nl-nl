@@ -16,10 +16,9 @@ ms.date: 07/27/2018
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: ef7161e653ec582708f242b67c643d960d75e27f
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "78255463"
 ---
 # <a name="sap-hana-availability-within-one-azure-region"></a>Beschik baarheid van SAP HANA binnen een Azure-regio
@@ -54,7 +53,7 @@ Een status controle functie controleert de status van elke virtuele machine die 
 Met de host-en VM-bewaking die door Azure wordt verstrekt, worden Azure-Vm's die problemen met de host ondervinden, automatisch opnieuw gestart op een goede Azure-host. 
 
 >[!IMPORTANT]
->Azure service retoucheert geen Linux-Vm's waar het gast besturingssysteem zich in de status van de kernel bevindt. De standaard instellingen van de meest gebruikte Linux-releases, worden niet automatisch opnieuw opgestart op Vm's of servers waarop de Linux-kernel zich in de stand-by staat bevindt. In plaats daarvan wordt de standaard instelling gebruikt om te zorgen dat het besturings systeem in de status van de kernel in staat is om een kerneldebugger toe te voegen om te analyseren. Azure respecteert dat gedrag door een virtuele machine niet automatisch opnieuw te starten met het gast besturingssysteem in een dergelijke status. Veronderstelling is dat dergelijke gevallen extreem zeldzaam zijn. U kunt het standaard gedrag overschrijven om het opnieuw opstarten van de virtuele machine in te scha kelen. Als u het standaard gedrag wilt wijzigen, schakelt u de para meter ' kernel. paniek ' in/etc/sysctl.conf. De tijd die u instelt voor deze para meter is in enkele seconden. Gemeen schappelijke aanbevolen waarden moeten 20-30 seconden wachten voordat de herstart via deze para meter wordt geactiveerd. Zie ook <https://gitlab.com/procps-ng/procps/blob/master/sysctl.conf>.
+>Azure service retoucheert geen Linux-Vm's waar het gast besturingssysteem zich in de status van de kernel bevindt. De standaard instellingen van de meest gebruikte Linux-releases, worden niet automatisch opnieuw opgestart op Vm's of servers waarop de Linux-kernel zich in de stand-by staat bevindt. In plaats daarvan wordt de standaard instelling gebruikt om te zorgen dat het besturings systeem in de status van de kernel in staat is om een kerneldebugger toe te voegen om te analyseren. Azure respecteert dat gedrag door een virtuele machine niet automatisch opnieuw te starten met het gast besturingssysteem in een dergelijke status. Veronderstelling is dat dergelijke gevallen extreem zeldzaam zijn. U kunt het standaard gedrag overschrijven om het opnieuw opstarten van de virtuele machine in te scha kelen. Als u het standaard gedrag wilt wijzigen, schakelt u de para meter ' kernel. paniek ' in/etc/sysctl.conf. De tijd die u instelt voor deze para meter is in enkele seconden. Gemeen schappelijke aanbevolen waarden moeten 20-30 seconden wachten voordat de herstart via deze para meter wordt geactiveerd. Zie ook <https://gitlab.com/procps-ng/procps/blob/master/sysctl.conf> .
 
 De tweede functie die u in dit scenario vertrouwt, is het feit dat de HANA-service die wordt uitgevoerd in een opnieuw opgestart VM automatisch wordt gestart nadat de VM opnieuw is opgestart. U kunt [Hana-service automatisch opnieuw opstarten](https://help.sap.com/viewer/6b94445c94ae495c83a19646e7c3fd56/2.0.01/en-US/cf10efba8bea4e81b1dc1907ecc652d3.html) via de watchdog-services van de verschillende Hana-Services.
 

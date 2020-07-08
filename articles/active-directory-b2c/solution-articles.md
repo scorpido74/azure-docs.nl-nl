@@ -10,10 +10,9 @@ ms.topic: conceptual
 ms.service: active-directory
 ms.subservice: B2C
 ms.openlocfilehash: 9e00c872bb2794cdd8eb2560392ce058ae41b257
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "78186723"
 ---
 # <a name="solutions-and-training-for-azure-active-directory-b2c"></a>Oplossingen en trainingen voor Azure Active Directory B2C
@@ -22,7 +21,7 @@ Met Azure Active Directory B2C (Azure AD B2C) kunnen organisaties zakelijke oplo
 
 | Titel | Beschrijving |
 | ----- | ----------- |
-| [Identiteits beheer van klanten met Azure AD B2C](https://channel9.msdn.com/Shows/On-NET/Customer-Identity-Management-with-Azure-AD-B2C) | In dit overzicht van de service biedt Parakh Jain ([@jainparakh](https://twitter.com/jainparakh)) van het Azure AD B2C-team een overzicht van de werking van de service en ziet u ook hoe u snel B2C kunt verbinden met een ASP.net core-toepassing. |
+| [Identiteits beheer van klanten met Azure AD B2C](https://channel9.msdn.com/Shows/On-NET/Customer-Identity-Management-with-Azure-AD-B2C) | In dit overzicht van de service biedt Parakh Jain ( [@jainparakh](https://twitter.com/jainparakh) ) van het Azure AD B2C-team een overzicht van de werking van de service en ziet u ook hoe u snel B2C kunt verbinden met een ASP.net core-toepassing. |
 | [Voor delen van het gebruik van Azure AD B2C](https://aka.ms/b2coverview) | Meer informatie over de voor delen en algemene scenario's van Azure AD B2C en over de manier waarop uw toepassingen deze CIAM-service kunnen gebruiken. |
 | [Krijg kennis in Azure AD B2C: een cursus voor ontwikkel aars](https://aka.ms/learnAADB2C) | Deze end-to-end-cursus maakt ontwikkel aars een volledige reis over het ontwikkelen van toepassingen met Azure AD B2C als verificatie mechanisme. Tien uitgebreide modules met Labs dekken alles uit het instellen van een Azure-abonnement voor het maken van aangepast beleid voor het definiëren van de trajecten die uw klanten meenemen. |
 | [Partners, leveranciers en klanten in staat stellen om toegang te krijgen tot toepassingen met Azure Active Directory](https://aka.ms/aadexternalidentities) | Het succes van elke organisatie, ongeacht de omvang, branche of nalevings-en beveiligings postuur, is afhankelijk van de mogelijkheden van de organisatie om samen te werken met andere organisaties en om verbinding te maken met klanten.<br><br>Samen met Azure AD, Azure AD B2C en Azure AD B2B-samen werking. deze hand leiding bevat informatie over de bedrijfs waarde en de mechanismen voor het bouwen van een toepassing of webervaring met een geconsolideerde verificatie-ervaring die is afgestemd op de contexten van uw werk nemers, zakelijke partners en leveranciers en klanten. |

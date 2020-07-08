@@ -8,10 +8,9 @@ ms.topic: conceptual
 ms.date: 12/05/2019
 keywords: Aro, open Shift, aquasec, twistlock, Red Hat
 ms.openlocfilehash: e1c1dd9f27a207f78dd22e271f6b070c7f92f622
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "78271365"
 ---
 # <a name="run-privileged-containers-in-an-azure-red-hat-openshift-cluster"></a>Bevoorrechte containers uitvoeren in een Azure Red Hat OpenShift-cluster
@@ -29,9 +28,9 @@ Sectie titels in productspecifieke stappen hieronder verwijzen rechtstreeks naar
 De documentatie van de meeste beveiligings producten veronderstelt dat u cluster beheerders bevoegdheden hebt.
 Klant beheerders hebben niet alle bevoegdheden in azure Red Hat open SHIFT. De vereiste machtigingen voor het wijzigen van de cluster bronnen zijn beperkt.
 
-Controleer eerst of de gebruiker is aangemeld bij het cluster als een klant beheerder door uit te voeren `oc get scc`. Alle gebruikers die lid zijn van de groep klant beheerders, hebben machtigingen voor het weer geven van de beveiligings context beperkingen (SCCs) op het cluster.
+Controleer eerst of de gebruiker is aangemeld bij het cluster als een klant beheerder door uit te voeren `oc get scc` . Alle gebruikers die lid zijn van de groep klant beheerders, hebben machtigingen voor het weer geven van de beveiligings context beperkingen (SCCs) op het cluster.
 
-Zorg er vervolgens voor dat `oc` de binaire versie `3.11.154`.
+Zorg er vervolgens voor dat de `oc` binaire versie `3.11.154` .
 ```
 oc version
 oc v3.11.154
@@ -74,9 +73,9 @@ Volg de resterende instructies in stap 1.  In deze instructies wordt beschreven 
 ### <a name="step-2-deploy-the-aqua-server-database-and-gateway"></a>Stap 2: de blauwe server, data base en gateway implementeren
 Volg de stappen in de onderhouds documentatie voor het installeren van de YAML.
 
-Wijzig de gegeven `aqua-console.yaml`.  Verwijder de bovenste twee objecten met het label `kind: ClusterRole` , `kind: ClusterRoleBinding`en.  Deze resources worden niet gemaakt, omdat de beheerder van de klant op dit moment geen toestemming `ClusterRole` heeft `ClusterRoleBinding` om te wijzigen en objecten.
+Wijzig de gegeven `aqua-console.yaml` .  Verwijder de bovenste twee objecten met het label, `kind: ClusterRole` en `kind: ClusterRoleBinding` .  Deze resources worden niet gemaakt, omdat de beheerder van de klant op dit moment geen toestemming heeft om te wijzigen `ClusterRole` en `ClusterRoleBinding` objecten.
 
-De tweede wijziging is het `kind: Route` gedeelte van de. `aqua-console.yaml` Vervang de volgende YAML voor het `kind: Route` object in het `aqua-console.yaml` bestand.
+De tweede wijziging is het `kind: Route` gedeelte van de `aqua-console.yaml` . Vervang de volgende YAML voor het `kind: Route` object in het `aqua-console.yaml` bestand.
 ```
 apiVersion: route.openshift.io/v1
 kind: Route
@@ -121,7 +120,7 @@ Stel de volgende velden in wanneer u afdwingers implementeert:
 
 De basis instructies die u kunt wijzigen, zijn te vinden in de [prisma-documentatie over Cloud implementatie](https://docs.paloaltonetworks.com/prisma/prisma-cloud/19-11/prisma-cloud-compute-edition-admin/install/install_openshift.html)
 
-Begin met het installeren `twistcli` van het hulp programma zoals beschreven in de secties ' prisma-Cloud installeren ' en ' de prisma-cloud software downloaden '.
+Begin met het installeren van het `twistcli` hulp programma zoals beschreven in de secties ' prisma-Cloud installeren ' en ' de prisma-cloud software downloaden '.
 
 Een nieuw open Shift-project maken
 ```

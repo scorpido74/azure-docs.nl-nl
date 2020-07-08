@@ -5,10 +5,9 @@ ms.topic: article
 ms.date: 02/02/2018
 ms.custom: seodec18
 ms.openlocfilehash: 597964914f4022899ab027b735ec6932105497b4
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "78273624"
 ---
 # <a name="os-and-runtime-patching-in-azure-app-service"></a>Patches voor besturings systeem en uitvoering in Azure App Service
@@ -51,11 +50,11 @@ Runtime-updates en afschaffing worden hier aangekondigd:
 
 ### <a name="new-patch-updates"></a>Nieuwe patch updates
 
-Patch-updates voor .NET, PHP, Java SDK of Tomcat/jetty-versie worden automatisch toegepast door de bestaande installatie te overschrijven met de nieuwe versie. Updates voor node. js-patches worden naast de bestaande versies geïnstalleerd (vergelijkbaar met de primaire en secundaire versies in de volgende sectie). Nieuwe python-patch versies kunnen hand matig worden geïnstalleerd via [site-extensies](https://azure.microsoft.com/blog/azure-web-sites-extensions/), naast de ingebouwde python-installaties.
+Patch-updates voor .NET, PHP, Java SDK of Tomcat/jetty-versie worden automatisch toegepast door de bestaande installatie te overschrijven met de nieuwe versie. Node.js patch updates worden naast de bestaande versies geïnstalleerd (vergelijkbaar met de primaire en secundaire versies in de volgende sectie). Nieuwe python-patch versies kunnen hand matig worden geïnstalleerd via [site-extensies](https://azure.microsoft.com/blog/azure-web-sites-extensions/), naast de ingebouwde python-installaties.
 
 ### <a name="new-major-and-minor-versions"></a>Nieuwe primaire en secundaire versies
 
-Wanneer een nieuwe primaire of secundaire versie wordt toegevoegd, wordt deze naast de bestaande versies geïnstalleerd. U kunt uw app hand matig bijwerken naar de nieuwe versie. Als u de runtime versie in een configuratie bestand (zoals `web.config` en `package.json`) hebt geconfigureerd, moet u een upgrade uitvoeren met dezelfde methode. Als u een App Service instelling hebt gebruikt om uw runtime versie te configureren, kunt u deze wijzigen in de [Azure Portal](https://portal.azure.com) of door een [Azure cli](https://docs.microsoft.com/cli/azure/get-started-with-azure-cli) -opdracht uit te voeren in de [Cloud shell](../cloud-shell/overview.md), zoals wordt weer gegeven in de volgende voor beelden:
+Wanneer een nieuwe primaire of secundaire versie wordt toegevoegd, wordt deze naast de bestaande versies geïnstalleerd. U kunt uw app hand matig bijwerken naar de nieuwe versie. Als u de runtime versie in een configuratie bestand (zoals `web.config` en) hebt geconfigureerd `package.json` , moet u een upgrade uitvoeren met dezelfde methode. Als u een App Service instelling hebt gebruikt om uw runtime versie te configureren, kunt u deze wijzigen in de [Azure Portal](https://portal.azure.com) of door een [Azure cli](https://docs.microsoft.com/cli/azure/get-started-with-azure-cli) -opdracht uit te voeren in de [Cloud shell](../cloud-shell/overview.md), zoals wordt weer gegeven in de volgende voor beelden:
 
 ```azurecli-interactive
 az webapp config set --net-framework-version v4.7 --resource-group <groupname> --name <appname>
@@ -81,12 +80,12 @@ In de volgende tabel ziet u hoe de versies van Windows en de taal runtime worden
 | .NET-versie | `https://<appname>.scm.azurewebsites.net/DebugConsole`Voer de volgende opdracht uit in de opdracht prompt: <br>`powershell -command "gci 'Registry::HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Net Framework Setup\NDP\CDF'"` |
 | .NET core-versie | `https://<appname>.scm.azurewebsites.net/DebugConsole`Voer de volgende opdracht uit in de opdracht prompt: <br> `dotnet --version` |
 | PHP-versie | `https://<appname>.scm.azurewebsites.net/DebugConsole`Voer de volgende opdracht uit in de opdracht prompt: <br> `php --version` |
-| Standaard versie van node. js | Voer in het [Cloud shell](../cloud-shell/overview.md)de volgende opdracht uit: <br> `az webapp config appsettings list --resource-group <groupname> --name <appname> --query "[?name=='WEBSITE_NODE_DEFAULT_VERSION']"` |
+| Standaard Node.js versie | Voer in het [Cloud shell](../cloud-shell/overview.md)de volgende opdracht uit: <br> `az webapp config appsettings list --resource-group <groupname> --name <appname> --query "[?name=='WEBSITE_NODE_DEFAULT_VERSION']"` |
 | Python-versie | `https://<appname>.scm.azurewebsites.net/DebugConsole`Voer de volgende opdracht uit in de opdracht prompt: <br> `python --version` |  
 | Java-versie | `https://<appname>.scm.azurewebsites.net/DebugConsole`Voer de volgende opdracht uit in de opdracht prompt: <br> `java -version` |  
 
 > [!NOTE]  
-> Toegang tot de register `HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Component Based Servicing\Packages`locatie, waar informatie over [KB-patches](https://docs.microsoft.com/security-updates/SecurityBulletins/securitybulletins) wordt opgeslagen, is vergrendeld.
+> Toegang tot de register locatie `HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Component Based Servicing\Packages` , waar informatie over [KB-patches](https://docs.microsoft.com/security-updates/SecurityBulletins/securitybulletins) wordt opgeslagen, is vergrendeld.
 >
 >
 

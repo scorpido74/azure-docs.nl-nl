@@ -8,10 +8,9 @@ ms.date: 03/04/2020
 ms.author: girobins
 ms.custom: query-reference
 ms.openlocfilehash: 6d173827f2695cc20fa208d390731acf0edb3848
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "78301094"
 ---
 # <a name="abs-azure-cosmos-db"></a>ABS (Azure Cosmos DB)
@@ -34,7 +33,7 @@ ABS (<numeric_expr>)
   
 ## <a name="examples"></a>Voorbeelden
   
-  In het volgende voor beeld ziet u de resultaten `ABS` van het gebruik van de functie op drie verschillende getallen.  
+  In het volgende voor beeld ziet u de resultaten van het gebruik van de `ABS` functie op drie verschillende getallen.  
   
 ```sql
 SELECT ABS(-1) AS abs1, ABS(0) AS abs2, ABS(1) AS abs3 

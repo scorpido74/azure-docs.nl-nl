@@ -13,10 +13,9 @@ ms.custom: seo-lt-2019
 ms.topic: article
 ms.date: 01/24/2020
 ms.openlocfilehash: 956523e2b51795a4bc97c653dab8b408b06061f4
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "78255570"
 ---
 # <a name="tutorial-migrate-oracle-to-azure-database-for-postgresql-online-using-dms-preview"></a>Zelf studie: Oracle migreren naar Azure Database for PostgreSQL online met behulp van DMS (preview)
@@ -86,7 +85,7 @@ Voor het voltooien van deze zelfstudie hebt u het volgende nodig:
       SHUTDOWN IMMEDIATE;
       ```
 
-      Wacht tot de bevestiging `'ORACLE instance shut down'`is bevestigd.
+      Wacht tot de bevestiging is bevestigd `'ORACLE instance shut down'` .
 
     * Start het nieuwe exemplaar en koppel de data base (maar niet open) om de archiveringsinvoegtoepassing in of uit te scha kelen met de volgende opdracht:
 
@@ -116,12 +115,12 @@ Voor het voltooien van deze zelfstudie hebt u het volgende nodig:
       SELECT log_mode FROM v$database;
       ```
 
-      U ontvangt een antwoord `'ARCHIVELOG'`. Als het antwoord is `'NOARCHIVELOG'`, wordt niet voldaan aan de vereiste.
+      U ontvangt een antwoord `'ARCHIVELOG'` . Als het antwoord is `'NOARCHIVELOG'` , wordt niet voldaan aan de vereiste.
 
   * Schakel aanvullende logboek registratie in voor replicatie met een van de volgende opties.
 
     * **Optie 1**.
-      Wijzig de aanvullende logboek registratie op database niveau voor alle tabellen met PK en unieke index. De detectie query wordt geretourneerd `'IMPLICIT'`.
+      Wijzig de aanvullende logboek registratie op database niveau voor alle tabellen met PK en unieke index. De detectie query wordt geretourneerd `'IMPLICIT'` .
 
       ```
       ALTER DATABASE ADD SUPPLEMENTAL LOG DATA (PRIMARY KEY, UNIQUE) COLUMNS;
@@ -134,7 +133,7 @@ Voor het voltooien van deze zelfstudie hebt u het volgende nodig:
       ```
 
     * **Optie 2**.
-      Wijzig de aanvullende logboek registratie op database niveau voor alle tabellen en retourneert `'YES'`de detectie query.
+      Wijzig de aanvullende logboek registratie op database niveau voor alle tabellen en retourneert de detectie query `'YES'` .
 
       ```
       ALTER DATABASE ADD SUPPLEMENTAL LOG DATA;
@@ -166,7 +165,7 @@ Voor het voltooien van deze zelfstudie hebt u het volgende nodig:
       SELECT supplemental_log_data_min FROM v$database;
       ```
 
-    U ontvangt een antwoord `'YES'`.
+    U ontvangt een antwoord `'YES'` .
 
 ## <a name="assess-the-effort-for-an-oracle-to-azure-database-for-postgresql-migration"></a>De inspanningen evalueren voor een Oracle-Azure Database for PostgreSQL migratie
 
@@ -249,7 +248,7 @@ Aan de slag:
     | HR | targetHR.HR | ' HR '. LANDEN "." COUNTRY_ID " |
     | HR | targetHR.Hr | * Kan geen gemengde cases toewijzen |
 
-    * Als u schema voor gemengde cases en tabel namen wilt maken in [dmsfeedback@microsoft.com](mailto:dmsfeedback@microsoft.com)doel postgresql, neemt u contact op met. We kunnen een script opgeven voor het instellen van een schema voor het maken van een gemengde Case-tabel in de doel-PostgreSQL-data base.
+    * Als u schema voor gemengde cases en tabel namen wilt maken in doel PostgreSQL, neemt u contact op met [dmsfeedback@microsoft.com](mailto:dmsfeedback@microsoft.com) . We kunnen een script opgeven voor het instellen van een schema voor het maken van een gemengde Case-tabel in de doel-PostgreSQL-data base.
 
 ## <a name="register-the-microsoftdatamigration-resource-provider"></a>Registreer de Microsoft.DataMigration-resourceprovider
 
@@ -261,7 +260,7 @@ Aan de slag:
 
     ![Resourceproviders weergeven](media/tutorial-oracle-azure-postgresql-online/portal-select-resource-provider.png)
 
-3. Zoek naar migratie, klik rechts van **micro soft. DataMigration**, selecteer **registreren**.
+3. Zoek naar migratie en selecteer rechts van **Microsoft.DataMigration** de optie **Registreren**.
 
     ![Resourceprovider registreren](media/tutorial-oracle-azure-postgresql-online/portal-register-resource-provider.png)
 
@@ -322,7 +321,7 @@ Nadat de service is gemaakt, zoek deze op in de Azure-portal, open hem en maak v
 
 ## <a name="upload-oracle-oci-driver"></a>Oracle OCI-stuur programma uploaden
 
-1. Selecteer **Opslaan**en meld u vervolgens [aan bij uw](https://www.oracle.com/technetwork/topics/winx64soft-089540.html#ic_winx64_inst)Oracle-account in het scherm voor het installeren van een OCI- **stuur programma** en down load het stuur programma **instantclient-basiclite-windows. x64-12.2.0.1.0. zip** (37.128.586 byte (s)) (sha1-controlesom: 865082268).
+1. Selecteer **Opslaan**en meld u [aan bij uw](https://www.oracle.com/technetwork/topics/winx64soft-089540.html#ic_winx64_inst)Oracle-account in het scherm voor het installeren van een OCI- **stuur programma** en down load het stuur programma **instantclient-basiclite-windows.x64-12.2.0.1.0.zip** (37.128.586 byte (s)) (sha1-controlesom: 865082268).
 2. Down load het stuur programma naar een gedeelde map.
 
    Zorg ervoor dat de map wordt gedeeld met de gebruikers naam die u hebt opgegeven met minimale alleen-lezen toegang. Azure Database Migration Service toegang tot en lees bewerkingen van de share om het OCI-stuur programma naar Azure te uploaden door de gebruikers naam die u opgeeft, te imiteren.

@@ -13,10 +13,9 @@ ms.workload: infrastructure
 ms.date: 10/08/2018
 ms.author: genli
 ms.openlocfilehash: 54ba87b681a055bb46b81ca81d2bcdd103491f27
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77921450"
 ---
 # <a name="windows-shows-critical-service-failed-on-blue-screen-when-booting-an-azure-vm"></a>Windows geeft een ' kritieke SERVICE is mislukt ' weer op het blauwe scherm bij het opstarten van een Azure VM
@@ -27,7 +26,7 @@ In dit artikel wordt de fout ' essentiële SERVICE is mislukt ' beschreven die u
 
 Een Windows-VM start niet. Wanneer u de opstart scherm afbeeldingen in [Diagnostische gegevens over opstarten](./boot-diagnostics.md)controleert, wordt een van de volgende fout berichten weer gegeven in een blauw scherm:
 
-- ' Er is een probleem opgetreden in de PC en opnieuw moet worden opgestart. U kunt opnieuw opstarten. Ga naar https://windows.com/stopcodevoor meer informatie over dit probleem en mogelijke oplossingen. Als u een ondersteunings medewerker belt, geeft u deze de volgende informatie: stop code: kritieke SERVICE mislukt ' 
+- ' Er is een probleem opgetreden in de PC en opnieuw moet worden opgestart. U kunt opnieuw opstarten. Ga naar voor meer informatie over dit probleem en mogelijke oplossingen https://windows.com/stopcode . Als u een ondersteunings medewerker belt, geeft u deze de volgende informatie: stop code: kritieke SERVICE mislukt ' 
 - ' Er is een probleem opgetreden in de PC en opnieuw moet worden opgestart. Er worden alleen fout gegevens verzameld en vervolgens wordt de computer opnieuw opgestart. Als u meer wilt weten, kunt u later online zoeken naar deze fout: CRITICAL_SERVICE_FAILED "
 
 ## <a name="cause"></a>Oorzaak
@@ -107,15 +106,15 @@ Voer de volgende stappen uit om de dump logboeken zelf te analyseren:
 
 1. Koppel de besturingssysteemschijf aan een virtuele machine voor herstel.
 2. Blader op de besturingssysteem schijf die u hebt toegevoegd naar **\Windows\System32\Config**. Kopieer alle bestanden als back-up in geval van een terugdraai actie vereist is.
-3. Start de **REGI ster-editor** (Regedit. exe).
-4. Selecteer de **HKEY_LOCAL_MACHINE** sleutel. Selecteer in het menu de optie **bestand** > **laden**.
+3. Start de **REGI ster-editor** (regedit.exe).
+4. Selecteer de **HKEY_LOCAL_MACHINE** sleutel. Selecteer in het menu de optie **bestand**  >  **laden**.
 5. Blader naar de map **\windows\system32\config\SYSTEM** op de besturingssysteem schijf die u hebt toegevoegd. Voer **BROKENSYSTEM**in voor de naam van de component. De nieuwe register component wordt weer gegeven onder de sleutel **HKEY_LOCAL_MACHINE** .
 6. Blader naar **HKEY_LOCAL_MACHINE \brokensystem\controlset00x\control\crashcontrol** en breng de volgende wijzigingen aan:
 
     AutoReboot = 0
 
     CrashDumpEnabled = 2
-7.  Selecteer **BROKENSYSTEM**. Selecteer in het menu het onderdeel **bestand** > **verwijderen**.
+7.  Selecteer **BROKENSYSTEM**. Selecteer in het menu het **File**  >  **onderdeel bestand verwijderen**.
 8.  Wijzig de BCD-instellingen om op te starten in de foutopsporingsmodus. Voer de volgende opdrachten uit vanaf een opdracht prompt met verhoogde bevoegdheid:
 
     ```cmd
@@ -135,7 +134,7 @@ Voer de volgende stappen uit om de dump logboeken zelf te analyseren:
 9. [Ontkoppel de besturingssysteem schijf en koppel de besturingssysteem schijf opnieuw aan de betreffende VM](troubleshoot-recovery-disks-portal-windows.md).
 10. Start de virtuele machine op om te controleren of de dump analyse wordt weer gegeven. Zoek het bestand dat niet kan worden geladen. U moet dit bestand vervangen door een bestand van de werkende VM. 
 
-    Hieronder ziet u een voor beeld van een dump analyse. U kunt zien dat de **fout** zich op filecrypt. sys: "FAILURE_BUCKET_ID: 0x5A_c0000428_IMAGE_filecrypt. sys" bevindt.
+    Hieronder ziet u een voor beeld van een dump analyse. U kunt zien dat de **fout** zich voordeed filecrypt.sys: "FAILURE_BUCKET_ID: 0x5A_c0000428_IMAGE_filecrypt.sys".
 
     ```
     kd> !analyze -v 

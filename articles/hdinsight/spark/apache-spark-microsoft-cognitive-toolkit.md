@@ -9,10 +9,9 @@ ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 01/14/2020
 ms.openlocfilehash: 1933db624dfef2ffa747ecb043be6730b6b884b5
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "78206551"
 ---
 # <a name="use-microsoft-cognitive-toolkit-deep-learning-model-with-azure-hdinsight-spark-cluster"></a>Microsoft Cognitive Toolkit diepe leer model gebruiken met Azure HDInsight Spark cluster
@@ -25,9 +24,9 @@ In dit artikel voert u de volgende stappen uit.
 
 ## <a name="prerequisites"></a>Vereisten
 
-* Een Apache Spark-cluster in HDInsight. Zie [een Apache Spark-cluster maken](./apache-spark-jupyter-spark-sql-use-portal.md).
+* Een Apache Spark-cluster in HDInsight. Zie [Een Apache Spark-cluster maken](./apache-spark-jupyter-spark-sql-use-portal.md).
 
-* Weten hoe u Jupyter Notebook gebruikt met Spark on HDInsight. Zie [gegevens laden en query's uitvoeren met Apache Spark op HDInsight](./apache-spark-load-data-run-query.md)voor meer informatie.
+* Weten hoe u Jupyter Notebook gebruikt met Spark on HDInsight. Zie [Zelfstudie: Gegevens laden en query's uitvoeren in een Apache Spark-cluster in Azure HDInsight](./apache-spark-load-data-run-query.md) voor meer informatie.
 
 ## <a name="how-does-this-solution-flow"></a>Hoe gaat deze oplossing stroom?
 
@@ -61,20 +60,20 @@ Zie [HDInsight-clusters aanpassen met script actie](../hdinsight-hadoop-customiz
 |Eigenschap |Waarde |
 |---|---|
 |Script type|-Aangepast|
-|Naam| MCT installeren|
+|Name| MCT installeren|
 |Bash-script-URI|`https://raw.githubusercontent.com/Azure-Samples/hdinsight-pyspark-cntk-integration/master/cntk-install.sh`|
 |Knooppunt type (n):|Hoofd, werk nemer|
 |Parameters|Geen|
 
 ## <a name="upload-the-jupyter-notebook-to-azure-hdinsight-spark-cluster"></a>De Jupyter-notebook uploaden naar Azure HDInsight Spark-cluster
 
-Als u de Microsoft Cognitive Toolkit met het Azure HDInsight Spark cluster wilt gebruiken, moet u de Jupyter notebook **CNTK_model_scoring_on_Spark_walkthrough. ipynb** naar het Azure HDInsight Spark cluster laden. Dit notitie blok is beschikbaar op GitHub [https://github.com/Azure-Samples/hdinsight-pyspark-cntk-integration](https://github.com/Azure-Samples/hdinsight-pyspark-cntk-integration)op.
+Als u de Microsoft Cognitive Toolkit met het Azure HDInsight Spark cluster wilt gebruiken, moet u de Jupyter notebook **CNTK_model_scoring_on_Spark_walkthrough. ipynb** naar het Azure HDInsight Spark cluster laden. Dit notitie blok is beschikbaar op GitHub op [https://github.com/Azure-Samples/hdinsight-pyspark-cntk-integration](https://github.com/Azure-Samples/hdinsight-pyspark-cntk-integration) .
 
-1. Downloaden en uitpakken [https://github.com/Azure-Samples/hdinsight-pyspark-cntk-integration](https://github.com/Azure-Samples/hdinsight-pyspark-cntk-integration).
+1. Downloaden en uitpakken [https://github.com/Azure-Samples/hdinsight-pyspark-cntk-integration](https://github.com/Azure-Samples/hdinsight-pyspark-cntk-integration) .
 
-1. Ga in een webbrowser naar `https://CLUSTERNAME.azurehdinsight.net/jupyter`, waarbij `CLUSTERNAME` de naam van het cluster is.
+1. Ga in een webbrowser naar `https://CLUSTERNAME.azurehdinsight.net/jupyter` , waarbij `CLUSTERNAME` de naam van het cluster is.
 
-1. Selecteer in de Jupyter-notebook **uploaden** in de rechter bovenhoek en navigeer vervolgens naar het bestand `CNTK_model_scoring_on_Spark_walkthrough.ipynb`downloaden en selecteren.
+1. Selecteer in de Jupyter-notebook **uploaden** in de rechter bovenhoek en navigeer vervolgens naar het bestand downloaden en selecteren `CNTK_model_scoring_on_Spark_walkthrough.ipynb` .
 
     ![Jupyter-notebook uploaden naar Azure HDInsight Spark-cluster](./media/apache-spark-microsoft-cognitive-toolkit/hdinsight-microsoft-cognitive-toolkit-load-jupyter-notebook.png "Jupyter-notebook uploaden naar Azure HDInsight Spark-cluster")
 
@@ -82,7 +81,7 @@ Als u de Microsoft Cognitive Toolkit met het Azure HDInsight Spark cluster wilt 
 
 1. Nadat het notitie blok is geüpload, klikt u op de naam van het notitie blok en volgt u de instructies in het notitie blok zelf voor het laden van de gegevensset en het uitvoeren van het artikel.
 
-## <a name="see-also"></a>Zie ook
+## <a name="see-also"></a>Zie tevens
 
 * [Overzicht: Apache Spark in Azure HDInsight](apache-spark-overview.md)
 

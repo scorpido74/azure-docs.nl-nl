@@ -14,10 +14,9 @@ ms.workload: na
 ms.date: 12/29/2019
 ms.author: memildin
 ms.openlocfilehash: dcf7df501665ea3885d00b9f7668a95cbbf02428
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "78208539"
 ---
 # <a name="endpoint-protection-assessment-and-recommendations-in-azure-security-center"></a>Endpoint Protection-evaluatie en aanbevelingen in Azure Security Center
@@ -55,7 +54,7 @@ Azure Security Center biedt status beoordelingen van [ondersteunde](security-cen
 
 ## <a name="microsoft-system-center-endpoint-protection"></a>Micro soft System Center Endpoint Protection
 
-* Security Center raadt u **aan om Endpoint Protection-oplossingen op virtuele machine te installeren** bij het importeren van **SCEPMpModule (' $env:P rogramfiles\microsoft Security Client\MpProvider\MpProvider.psd1 ')** en het uitvoeren van **Get-MProtComputerStatus** resultaten met **AMServiceEnabled = False**
+* Security Center raadt u **aan om Endpoint Protection-oplossingen te installeren op de virtuele machine** wanneer u **SCEPMpModule ($env:P rogramfiles\microsoft Security Client\MpProvider\MpProvider.psd1)** importeert en de resultaten **Get-MProtComputerStatus** uitvoert met **AMServiceEnabled = False**
 
 * Security Center raadt u **aan om problemen met de Endpoint Protection-status op uw computers op te lossen** wanneer **Get-MprotComputerStatus** wordt uitgevoerd en een van de volgende situaties zich voordoet:
 

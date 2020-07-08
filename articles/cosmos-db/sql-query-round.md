@@ -8,10 +8,9 @@ ms.date: 09/13/2019
 ms.author: girobins
 ms.custom: query-reference
 ms.openlocfilehash: b6aac5a963d0f58a3b21b9fb0958793169a3d444
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "78302114"
 ---
 # <a name="round-azure-cosmos-db"></a>ROUND (Azure Cosmos DB)
@@ -40,7 +39,7 @@ ROUND(<numeric_expr>)
   |-|-|
   |-6,5000|-7|
   |-0,5|-1|
-  |0.5|1|
+  |0,5|1|
   |6,5000|7||
   
 ## <a name="examples"></a>Voorbeelden

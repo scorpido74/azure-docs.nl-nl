@@ -13,10 +13,9 @@ ms.workload: infrastructure-services
 ms.date: 03/01/2020
 ms.author: juergent
 ms.openlocfilehash: bb32350597059209e5baf01d53b0c59fdc2344f3
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "78255222"
 ---
 # <a name="backup-guide-for-sap-hana-on-azure-virtual-machines"></a>Back-upgids voor SAP HANA op Azure Virtual Machines
@@ -41,7 +40,7 @@ Informatie over hoe u kunt vinden welke SAP-software wordt ondersteund op Azure,
 
 ## <a name="azure-backup-service"></a>Azure Backup-Service
 
-Het eerste scenario dat wordt weer gegeven, is een scenario waarbij Azure Backup service de `backint` SAP Hana-interface gebruikt voor het uitvoeren van een streaming-back-up met vanuit een SAP Hana-data base. Of u gebruikt een meer algemene mogelijkheid van Azure Backup service om een toepassings consistente schijf momentopname te maken en die ene naar de Azure Backup-service te laten overzetten.
+Het eerste scenario dat wordt weer gegeven, is een scenario waarbij Azure Backup service de SAP HANA `backint` -interface gebruikt voor het uitvoeren van een streaming-back-up met vanuit een SAP Hana-data base. Of u gebruikt een meer algemene mogelijkheid van Azure Backup service om een toepassings consistente schijf momentopname te maken en die ene naar de Azure Backup-service te laten overzetten.
 
 Azure Backup integreert en is gecertificeerd als back-upoplossing voor SAP HANA met behulp van de eigen SAP HANA-interface met de naam [backint](https://www.sap.com/dmc/exp/2013_09_adpd/enEN/#/d/solutions?id=8f3fd455-a2d7-4086-aa28-51d8870acaa5). Lees voor meer informatie over de oplossing, de mogelijkheden en de Azure-regio's waar deze beschikbaar is, het artikel [support matrix voor het maken van back-ups van SAP Hana-data bases op Azure-vm's](https://docs.microsoft.com/azure/backup/sap-hana-backup-support-matrix#scenario-support). Lees het artikel [over SAP Hana-database back-up in azure vm's](https://docs.microsoft.com/azure/backup/sap-hana-db-about)voor meer informatie en principes over Azure backup service voor Hana. 
 
@@ -116,12 +115,12 @@ Zoals eerder is beschreven, is het beschrijven van de back-upfuncties voor momen
 > Back-ups op basis van schijf momentopnamen voor SAP HANA in implementaties waarbij meerdere database containers worden gebruikt, is een minimale versie van HANA 2,0 SP04
 > 
 
-Azure Storage biedt geen consistentie van bestands systemen op meerdere schijven of volumes die zijn gekoppeld aan een virtuele machine tijdens het momentopname proces. Dit betekent dat de toepassings consistentie tijdens de moment opname moet worden geleverd door de toepassing, in dit geval SAP HANA zichzelf. [SAP Note 2039883](https://launchpad.support.sap.com/#/notes/2039883) heeft belang rijke informatie over het SAP Hana van back-ups door opslag momentopnamen. Met XFS-bestands systemen is het bijvoorbeeld nodig **xfs\_-blok kering** uit te voeren voordat u een moment opname van de opslag start om toepassings consistentie te bieden (Zie [\_xfs bevriezen (8)-Linux-man pagina](https://linux.die.net/man/8/xfs_freeze) voor meer informatie over **xfs\_blok keren**).
+Azure Storage biedt geen consistentie van bestands systemen op meerdere schijven of volumes die zijn gekoppeld aan een virtuele machine tijdens het momentopname proces. Dit betekent dat de toepassings consistentie tijdens de moment opname moet worden geleverd door de toepassing, in dit geval SAP HANA zichzelf. [SAP Note 2039883](https://launchpad.support.sap.com/#/notes/2039883) heeft belang rijke informatie over het SAP Hana van back-ups door opslag momentopnamen. Met XFS-bestands systemen is het bijvoorbeeld nodig **xfs- \_ blok kering** uit te voeren voordat u een moment opname van de opslag start om toepassings consistentie te bieden (Zie [xfs \_ bevriezen (8)-Linux-man pagina](https://linux.die.net/man/8/xfs_freeze) voor meer informatie over **xfs \_ blok keren**).
 
 Ervan uitgaande dat er een XFS-bestands systeem is met vier virtuele schijven van Azure, bieden de volgende stappen een consistente moment opname die het HANA-gegevens gebied vertegenwoordigt:
 
 1. Voor bereide HANA-gegevens momentopname maken
-1. De bestands systemen van alle schijven/volumes blok keren (gebruik bijvoorbeeld **xfs\_stilzetten**)
+1. De bestands systemen van alle schijven/volumes blok keren (gebruik bijvoorbeeld **xfs \_ stilzetten**)
 1. Alle benodigde BLOB-moment opnamen maken op Azure
 1. De blok kering van het bestands systeem opheffen
 1. De HANA-gegevens momentopname bevestigen (de moment opname wordt verwijderd)
@@ -133,7 +132,7 @@ Meer informatie over het maken van HANA-gegevens momentopnamen vindt u in de vol
 - Meer informatie over het uitvoeren van stap #1 vindt u in [het artikel een moment opname van gegevens maken (systeem eigen SQL)](https://help.sap.com/viewer/6b94445c94ae495c83a19646e7c3fd56/2.0.04/en-US/9fd1c8bb3b60455caa93b7491ae6d830.html) 
 - Details over het bevestigen/verwijderen van HANA-gegevens momentopnamen, zoals in stap #5, vindt u in het artikel [een moment opname van gegevens maken (systeem eigen SQL)](https://help.sap.com/viewer/6b94445c94ae495c83a19646e7c3fd56/2.0.04/en-US/9fd1c8bb3b60455caa93b7491ae6d830.html) 
 
-Het is belang rijk om de HANA-moment opname te bevestigen. Als gevolg van &quot;het kopiëren naar schrijven,&quot; is voor SAP Hana mogelijk geen extra schijf ruimte nodig tijdens deze modus voor het voorbereiden van de moment opname. Het kan ook zijn dat er geen nieuwe back-ups&#39;worden gestart totdat de moment opname van SAP HANA is bevestigd.
+Het is belang rijk om de HANA-moment opname te bevestigen. Als gevolg van het &quot; kopiëren naar schrijven, &quot; is voor SAP Hana mogelijk geen extra schijf ruimte nodig tijdens deze modus voor het voorbereiden van de moment opname. Het kan ook zijn dat er geen nieuwe back-ups&#39;worden gestart totdat de moment opname van SAP HANA is bevestigd.
 
 
 ### <a name="sap-hana-backup-scheduling-strategy"></a>Strategie voor het plannen van back-ups SAP HANA

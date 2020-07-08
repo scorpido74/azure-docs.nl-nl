@@ -7,10 +7,9 @@ ms.date: 10/25/2019
 ms.author: jafreebe
 ms.reviewer: ushan
 ms.openlocfilehash: d5f175d887cec1d5b5e567d3f716e6492f4516dd
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "78246975"
 ---
 # <a name="deploy-a-custom-container-to-app-service-using-github-actions"></a>Een aangepaste container implementeren op App Service met behulp van GitHub-acties
@@ -21,7 +20,7 @@ ms.locfileid: "78246975"
 > GitHub-acties zijn momenteel in een bèta versie. U moet [zich eerst aanmelden om lid te worden van het voor beeld](https://github.com/features/actions) met behulp van uw github-account.
 > 
 
-Een werk stroom wordt gedefinieerd door een YAML-bestand (. yml) `/.github/workflows/` in het pad in uw opslag plaats. Deze definitie bevat de verschillende stappen en para meters die deel uitmaken van de werk stroom.
+Een werk stroom wordt gedefinieerd door een YAML-bestand (. yml) in het `/.github/workflows/` pad in uw opslag plaats. Deze definitie bevat de verschillende stappen en para meters die deel uitmaken van de werk stroom.
 
 Voor een Azure App Service container werk stroom heeft het bestand drie secties:
 
@@ -75,7 +74,7 @@ In het onderstaande voor beeld wordt gebruikgemaakt van referenties op gebruiker
     # Replace {subscription-id}, {resource-group} with the subscription, resource group details
     ```
 
-3. Nu in het werk stroom bestand in uw vertakking `.github/workflows/workflow.yml` : Vervang het geheim in azure-aanmeldings actie met uw geheim.
+3. Nu in het werk stroom bestand in uw vertakking: `.github/workflows/workflow.yml` Vervang het geheim in azure-aanmeldings actie met uw geheim.
 
 4. U kunt ook de volgende extra geheimen voor de container register referenties definiëren en instellen in de aanmeldings actie voor docker. 
 
@@ -121,17 +120,17 @@ jobs:
 
 ## <a name="deploy-to-an-app-service-container"></a>Implementeren in een App Service-container
 
-Gebruik de `azure/webapps-container-deploy@v1` actie om uw installatie kopie te implementeren in een aangepaste container in app service. Deze actie heeft vijf para meters:
+Gebruik de actie om uw installatie kopie te implementeren in een aangepaste container in App Service `azure/webapps-container-deploy@v1` . Deze actie heeft vijf para meters:
 
-| **Bepaalde**  | **Uitleg**  |
+| **Parameter**  | **Uitleg**  |
 |---------|---------|
 | **app-naam** | Lang De naam van de App Service-app | 
 | **sleuf naam** | Beschrijving Voer een bestaande sleuf in, behalve de productie sleuf |
 | **installatie kopieën** | Lang Geef de volledig gekwalificeerde naam van de container installatie kopie (n) op. Bijvoorbeeld ' myregistry.azurecr.io/nginx:latest ' of ' python: 3.7.2-Alpine/'. Voor een app met meerdere containers kunnen namen van meerdere container installatie kopieën worden gegeven (gescheiden door meerdere regels) |
 | **configuratie-bestand** | Beschrijving Pad van het docker-bestand. Moet een volledig gekwalificeerd pad of relatief ten opzichte van de standaard werkmap zijn. Vereist voor apps met meerdere containers. |
-| **container-opdracht** | Beschrijving Voer de opstart opdracht in. Voor ex. DotNet run of DotNet filename. dll |
+| **container-opdracht** | Beschrijving Voer de opstart opdracht in. Voor ex. DotNet-run-of DotNet-filename.dll |
 
-Hieronder ziet u de voorbeeld werk stroom voor het maken en implementeren van een node. js-app naar een aangepaste container in App Service.
+Hieronder ziet u de voorbeeld werk stroom voor het maken en implementeren van een Node.js-app in een aangepaste container in App Service.
 
 ```yaml
 on: [push]

@@ -8,10 +8,9 @@ ms.date: 03/03/2020
 ms.author: girobins
 ms.custom: query-reference
 ms.openlocfilehash: ce11db91eff51e669f0917fbf34b1d560d0e9f07
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "78296538"
 ---
 # <a name="stringtoboolean-azure-cosmos-db"></a>StringToBoolean (Azure Cosmos DB)
@@ -34,7 +33,7 @@ StringToBoolean(<str_expr>)
   
 ## <a name="examples"></a>Voorbeelden
   
-  In het volgende voor beeld `StringToBoolean` ziet u hoe de verschillende typen zich gedraagt. 
+  In het volgende voor beeld ziet u hoe de `StringToBoolean` verschillende typen zich gedraagt. 
  
  Hier volgen enkele voor beelden met geldige invoer.
 

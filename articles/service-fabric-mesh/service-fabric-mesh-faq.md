@@ -5,10 +5,9 @@ ms.author: pepogors
 ms.date: 4/23/2019
 ms.topic: troubleshooting
 ms.openlocfilehash: 2a5c2ea63d162eb6fb78ab702e0519f8ac25dcc7
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "78252495"
 ---
 # <a name="commonly-asked-service-fabric-mesh-questions"></a>Veelgestelde vragen over Service Fabric mesh
@@ -73,7 +72,7 @@ az mesh app show --resource-group myResourceGroup --name helloWorldApp
 }
 ```
 
-Als u de resource groep wilt verwijderen, `az group delete <nameOfResourceGroup>` gebruikt u de opdracht.
+Als u de resource groep wilt verwijderen, gebruikt u de `az group delete <nameOfResourceGroup>` opdracht.
 
 ## <a name="deployments"></a>Implementaties
 
@@ -117,7 +116,7 @@ EXPOSE 80
 
 Mogelijk moet u in uw lokale ontwikkel cluster op een andere manier verwijzen naar services dan in azure mesh.
 
-Gebruik `{serviceName}.{applicationName}`in uw lokale ontwikkel cluster. Gebruik `{servicename}`In Azure service Fabric net. 
+Gebruik in uw lokale ontwikkel cluster `{serviceName}.{applicationName}` . Gebruik in azure Service Fabric net `{servicename}` . 
 
 Azure mesh biedt momenteel geen ondersteuning voor DNS-omzetting in toepassingen.
 
@@ -135,7 +134,7 @@ Hiermee wordt het probleem opgelost, zelfs wanneer de app al lokaal en in een sl
 
 U kunt de CPU-Beschik baarheid en de limieten voor alle toepassingen vast. Beperken:
 - Maak een cluster met vijf knoop punten.
-- Verminder het CPU-gebruik in Services in de app die is geïmplementeerd. Wijzig `cpu: 1.0` bijvoorbeeld in het bestand service. yaml van uw service in`cpu: 0.5`
+- Verminder het CPU-gebruik in Services in de app die is geïmplementeerd. Wijzig bijvoorbeeld in het bestand service. yaml van uw `cpu: 1.0` service in`cpu: 0.5`
 
 Meerdere toepassingen kunnen niet worden geïmplementeerd op een cluster met één knoop punt. Beperken:
 - Gebruik een cluster met vijf knoop punten wanneer u meerdere apps implementeert op een lokaal cluster.

@@ -4,10 +4,9 @@ description: Meer informatie over het instellen van Azure Active Directory (Azur
 ms.topic: conceptual
 ms.date: 6/28/2019
 ms.openlocfilehash: 28c4c65cfcc77607dfe9a463a09ecd10389a6eca
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "78193374"
 ---
 # <a name="set-up-azure-active-directory-for-client-authentication"></a>Azure Active Directory instellen voor client verificatie
@@ -49,7 +48,7 @@ $Configobj = .\SetupApplications.ps1 -TenantId '0e3d2646-78b3-4711-b8be-74a381d9
 > [!NOTE]
 > Voor nationale clouds (bijvoorbeeld Azure Government, Azure China, Azure Duitsland), moet u ook de parameter `-Location` opgeven.
 
-U kunt uw *TenantId* vinden door de Power shell-opdracht `Get-AzureSubscription`uit te voeren. Als u deze opdracht uitvoert, wordt de TenantId voor elk abonnement weer gegeven.
+U kunt uw *TenantId* vinden door de Power shell-opdracht uit te voeren `Get-AzureSubscription` . Als u deze opdracht uitvoert, wordt de TenantId voor elk abonnement weer gegeven.
 
 De *Clusternaam* wordt gebruikt voor als prefix aan de Azure Active Directory-toepassingen die zijn gemaakt door het script. Deze hoeft niet precies overeen te komen met de naam van het daadwerkelijke cluster. De naam is uitsluitend bedoeld om het eenvoudiger te maken dat Azure Active Directory-artefacten worden toegewezen aan het Service Fabric-cluster waarmee ze worden gebruikt.
 
@@ -59,8 +58,8 @@ https://&lt;cluster_domain&gt;:19080/Explorer
 
 U wordt gevraagd of u zich aanmeldt bij een account dat beheerdersrechten voor de Azure Active Directory-tenant heeft. Nadat u zich hebt aangemeld, maakt het script de web- en systeemeigen toepassingen voor uw Service Fabric-cluster. Als u kijkt naar de toepassingen van de tenant in de [Azure-portal][azure-portal], ziet u twee nieuwe vermeldingen:
 
-   * *Cluster*\_naam cluster
-   * *Clustername*\_-client
+   * *Clustername* \_ Cluster
+   * *Clustername* \_ Serviceclient
 
 Het script drukt de JSON af die vereist is voor de Azure Resource Manager sjabloon bij [het maken van uw Aad-cluster](service-fabric-cluster-creation-create-template.md#add-azure-ad-configuration-to-use-azure-ad-for-client-access). Daarom is het een goed idee om het Power shell-venster geopend te laten.
 
@@ -85,7 +84,7 @@ Nadat u zich hebt aangemeld bij Azure AD in Service Fabric Explorer, keert de br
 De gebruiker heeft geen rol toegewezen in de Azure AD-cluster toepassing. Azure AD-verificatie mislukt dus op Service Fabric cluster. Service Fabric Explorer terugvallen op de verificatie van het certificaat.
 
 #### <a name="solution"></a>Oplossing
-Volg de instructies voor het instellen van Azure AD en het toewijzen van gebruikers rollen. We raden u ook aan om ' gebruikers toewijzing vereist voor toegang tot de app ' `SetupApplications.ps1` in te scha kelen.
+Volg de instructies voor het instellen van Azure AD en het toewijzen van gebruikers rollen. We raden u ook aan om ' gebruikers toewijzing vereist voor toegang tot de app ' in te scha kelen `SetupApplications.ps1` .
 
 ### <a name="connection-with-powershell-fails-with-an-error-the-specified-credentials-are-invalid"></a>De verbinding met Power shell is mislukt met de volgende fout: de opgegeven referenties zijn ongeldig
 #### <a name="problem"></a>Probleem
@@ -96,7 +95,7 @@ Deze oplossing is hetzelfde als die van de voor gaande.
 
 ### <a name="service-fabric-explorer-returns-a-failure-when-you-sign-in-aadsts50011"></a>Service Fabric Explorer retourneert een fout wanneer u zich aanmeldt: ' AADSTS50011 '
 #### <a name="problem"></a>Probleem
-Wanneer u zich probeert aan te melden bij Azure AD in Service Fabric Explorer, retourneert de pagina een fout: "AADSTS50011: de antwoord &lt;adres&gt; -URL komt niet overeen met de antwoord adressen die zijn &lt;geconfigureerd&gt;voor de toepassing: GUID."
+Wanneer u zich probeert aan te melden bij Azure AD in Service Fabric Explorer, retourneert de pagina een fout: "AADSTS50011: de antwoord adres- &lt; URL &gt; komt niet overeen met de antwoord adressen die zijn geconfigureerd voor de toepassing: &lt; GUID &gt; ."
 
 ![Het SFX-antwoord adres komt niet overeen][sfx-reply-address-not-match]
 
@@ -110,13 +109,13 @@ Selecteer op de pagina Azure AD-App-registratie voor uw cluster **verificatie**e
 
 ### <a name="connecting-to-the-cluster-using-azure-ad-authentication-via-powershell-gives-an-error-when-you-sign-in-aadsts50011"></a>Als u verbinding maakt met het cluster via Azure AD-verificatie via Power shell, wordt er een fout bericht weer geven als u zich aanmeldt: "AADSTS50011"
 #### <a name="problem"></a>Probleem
-Wanneer u probeert verbinding te maken met een Service Fabric cluster met behulp van Azure AD via Power shell, retourneert de aanmeldings pagina een fout: "AADSTS50011: de antwoord-URL die in de aanvraag is opgegeven, komt niet overeen met &lt;de&gt;antwoord-url's die zijn geconfigureerd voor de toepassing: GUID."
+Wanneer u probeert verbinding te maken met een Service Fabric cluster met behulp van Azure AD via Power shell, retourneert de aanmeldings pagina een fout: "AADSTS50011: de antwoord-URL die in de aanvraag is opgegeven, komt niet overeen met de antwoord-url's die zijn geconfigureerd voor de toepassing: &lt; GUID &gt; ."
 
 #### <a name="reason"></a>Reden
 Net als bij het voor gaande probleem probeert Power shell verificatie uit te voeren bij Azure AD, dat een omleidings-URL biedt die niet wordt vermeld in de lijst met **antwoord-url's** van de Azure AD-toepassing.  
 
 #### <a name="solution"></a>Oplossing
-Gebruik hetzelfde proces als in het voor gaande probleem, maar de URL moet worden ingesteld op `urn:ietf:wg:oauth:2.0:oob`, een speciale omleiding voor verificatie via de opdracht regel.
+Gebruik hetzelfde proces als in het voor gaande probleem, maar de URL moet worden ingesteld op `urn:ietf:wg:oauth:2.0:oob` , een speciale omleiding voor verificatie via de opdracht regel.
 
 ### <a name="connect-the-cluster-by-using-azure-ad-authentication-via-powershell"></a>Verbind het cluster met behulp van Azure AD-verificatie via Power shell
 Gebruik de volgende Power shell-opdracht voor beeld om verbinding te maken met het Service Fabric cluster:

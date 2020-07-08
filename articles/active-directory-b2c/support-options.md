@@ -11,10 +11,9 @@ ms.date: 12/06/2016
 ms.author: mimart
 ms.subservice: B2C
 ms.openlocfilehash: 5195241003b1ce4ea505002e2cc3c10410e6cde1
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "78183717"
 ---
 # <a name="azure-active-directory-b2c-file-support-requests"></a>Azure Active Directory B2C: aanvragen voor bestands ondersteuning
@@ -52,7 +51,7 @@ U kunt de volgende stappen gebruiken om ondersteunings aanvragen voor Azure Acti
 
      ![Probleem pagina met de knop Volgende gemarkeerd in Azure Portal](./media/support-options/support-problem.png)
 
-1. Voeg op de Blade **contact gegevens** uw contact gegevens toe. Klik op **maken**.
+1. Voeg op de Blade **contact gegevens** uw contact gegevens toe. Klik op **Create**.
 
     ![De pagina contact gegevens met de knop maken is gemarkeerd in de portal](./media/support-options/support-contact.png)
 

@@ -9,10 +9,9 @@ ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 11/27/2019
 ms.openlocfilehash: 90d7da9c8ddd8c9c595f2209dcc34e2f595acfd2
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "78196923"
 ---
 # <a name="configure-apache-hive-policies-in-hdinsight-with-enterprise-security-package"></a>Apache Hive-beleidsregels configureren in HDInsight met Enterprise Security Package
@@ -66,7 +65,7 @@ In deze sectie maakt u twee zwerver-beleids regels voor toegang tot hivesampleta
     > [!NOTE]  
     > Als een domeingebruiker niet is ingevuld in Gebruiker selecteren, wacht u even, zodat Ranger met AAD kan synchroniseren.
 
-4. Selecteer **toevoegen** om het beleid op te slaan.
+4. Selecteer **Toevoegen** om het beleid op te slaan.
 
 5. Herhaal de laatste twee stappen, zodat u een ander beleid kunt maken met de volgende eigenschappen:
 
@@ -103,7 +102,7 @@ In de laatste sectie hebt u twee beleids regels geconfigureerd.  hiveuser1 heeft
 
 1. Open een nieuwe of bestaande werkmap in Excel.
 
-1. Ga op het tabblad **gegevens** naar **gegevens** > ophalen**uit andere bronnen** > **van ODBC** om het venster **van ODBC** te starten.
+1. Ga op het tabblad **gegevens** naar **gegevens ophalen**  >  **uit andere bronnen**  >  **van ODBC** om het venster **van ODBC** te starten.
 
     ![Wizard gegevens verbinding openen](./media/apache-domain-joined-run-hive/simbahiveodbc-excel-dataconnection1.png)
 

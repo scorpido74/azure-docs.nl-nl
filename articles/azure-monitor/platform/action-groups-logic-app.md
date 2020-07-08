@@ -7,10 +7,9 @@ ms.topic: conceptual
 ms.date: 07/18/2018
 ms.subservice: alerts
 ms.openlocfilehash: 655a3acc44a1418778b37fbef85e5df75d042317
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "78206233"
 ---
 # <a name="how-to-trigger-complex-actions-with-azure-monitor-alerts"></a>Complexe acties met Azure Monitor waarschuwingen activeren
@@ -43,7 +42,7 @@ Het proces is vergelijkbaar als u wilt dat de logische app een andere actie uitv
 
     ![Een logische app maken](media/action-groups-logic-app/create-logic-app-dialog.png "Een logische app maken")
 
-4.  Selecteer **maken** om de logische app te maken. Een pop-upbericht geeft aan dat de logische app is gemaakt. Selecteer **bron starten** om de **Logic apps Designer**te openen.
+4.  Selecteer **Maken** om de logische app te maken. Een pop-upbericht geeft aan dat de logische app is gemaakt. Selecteer **bron starten** om de **Logic apps Designer**te openen.
 
 5.  Selecteer de trigger: **Wanneer een HTTP-aanvraag wordt ontvangen**.
 
@@ -110,7 +109,7 @@ Het proces is vergelijkbaar als u wilt dat de logische app een andere actie uitv
 
 12. Configureer de micro soft teams-actie. De **Logic apps Designer** vraagt u om te verifiëren bij uw Office 365-account. Kies de **Team-ID** en de **kanaal-id** waarnaar het bericht moet worden verzonden.
 
-13. Configureer het bericht met een combi natie van statische tekst en verwijzingen naar de \<velden\> in de dynamische inhoud. Kopieer en plak de volgende tekst in het **bericht** veld:
+13. Configureer het bericht met een combi natie van statische tekst en verwijzingen naar de \<fields\> in de dynamische inhoud. Kopieer en plak de volgende tekst in het **bericht** veld:
 
     ```text
       Activity Log Alert: <eventSource>
@@ -119,7 +118,7 @@ Het proces is vergelijkbaar als u wilt dat de logische app een andere actie uitv
       resourceId: <resourceId>
     ```
 
-    Zoek en vervang vervolgens de \<velden\> met dynamische inhouds Tags met dezelfde naam.
+    Zoek en vervang vervolgens de \<fields\> met dynamische inhouds Tags met dezelfde naam.
 
     > [!NOTE]
     > Er zijn twee dynamische velden met de naam **status**. Voeg beide velden toe aan het bericht. Gebruik het veld in de **activityLog** -eigenschappen verzameling en verwijder het andere veld. Beweeg de muis aanwijzer over het veld **status** om de volledig gekwalificeerde veld verwijzing te zien, zoals wordt weer gegeven in de volgende scherm afbeelding:
@@ -195,7 +194,7 @@ Azure Service Health vermeldingen maken deel uit van het activiteiten logboek. H
 
    1. In de voor waarde **Indien waar** , volg de instructies in stap 11 tot en met 13 in [een waarschuwing voor het maken van een activiteiten logboek](#create-an-activity-log-alert-administrative) om de micro soft teams-actie toe te voegen.
 
-   1. Definieer het bericht met behulp van een combi natie van HTML en dynamische inhoud. Kopieer en plak de volgende inhoud in het veld **bericht** . Vervang de `[incidentType]`velden `[trackingID]`, `[title]`, en `[communication]` door de labels van de dynamische inhoud met dezelfde naam:
+   1. Definieer het bericht met behulp van een combi natie van HTML en dynamische inhoud. Kopieer en plak de volgende inhoud in het veld **bericht** . Vervang de `[incidentType]` `[trackingID]` velden,, en door de `[title]` `[communication]` labels van de dynamische inhoud met dezelfde naam:
 
        ```html
        <p>
@@ -284,7 +283,7 @@ Het proces voor het maken van een metrische waarschuwing is vergelijkbaar met he
 
       !["Metrische waarschuwing True voor waarde post actie"](media/action-groups-logic-app/metric-alert-true-condition-post-action.png "Post actie metrische waarschuwing True voor waarde")
 
-  1. In de voor waarde **indien onwaar** definieert u een micro soft teams-actie om te communiceren dat de metrische waarschuwing niet overeenkomt met de verwachtingen van de logische app. De JSON-nettolading bevatten. U ziet hoe u kunt `triggerBody` verwijzen naar de dynamische `json()` inhoud in de expressie.
+  1. In de voor waarde **indien onwaar** definieert u een micro soft teams-actie om te communiceren dat de metrische waarschuwing niet overeenkomt met de verwachtingen van de logische app. De JSON-nettolading bevatten. U ziet hoe u kunt verwijzen naar de `triggerBody` dynamische inhoud in de `json()` expressie.
 
       !["Metrische waarschuwing ONWAAR voor waarde na actie bericht"](media/action-groups-logic-app/metric-alert-false-condition-post-action.png "Post actie waarschuwing metrische waarde ONWAAR")
 

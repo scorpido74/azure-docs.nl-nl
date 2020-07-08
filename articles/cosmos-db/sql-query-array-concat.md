@@ -8,10 +8,9 @@ ms.date: 03/03/2020
 ms.author: girobins
 ms.custom: query-reference
 ms.openlocfilehash: 8f2b37181e5d743809bb1f60be4056cb4442a8d2
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "78295875"
 ---
 # <a name="array_concat-azure-cosmos-db"></a>ARRAY_CONCAT (Azure Cosmos DB)
@@ -26,7 +25,7 @@ ARRAY_CONCAT (<arr_expr1>, <arr_expr2> [, <arr_exprN>])
 ## <a name="arguments"></a>Argumenten
   
 *arr_expr*  
-   Is een matrix expressie die moet worden samengevoegd met de andere waarden. Voor `ARRAY_CONCAT` de functie zijn ten minste twee *arr_expr* argumenten vereist.  
+   Is een matrix expressie die moet worden samengevoegd met de andere waarden. `ARRAY_CONCAT`Voor de functie zijn ten minste *twee arr_expr* argumenten vereist.  
   
 ## <a name="return-types"></a>Retour typen
   

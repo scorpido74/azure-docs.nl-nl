@@ -7,10 +7,9 @@ ms.service: spring-cloud
 ms.topic: how-to
 ms.date: 01/14/2019
 ms.openlocfilehash: fc208a3542528fb4554a365a02e13c2da3055cf2
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "78192197"
 ---
 # <a name="stream-azure-spring-cloud-app-logs-in-real-time"></a>Azure Spring Cloud-applogboeken in realtime streamen
@@ -22,7 +21,7 @@ Met Azure lente-Cloud kunt u logboek streaming in azure CLI inschakelen voor het
 * Een exemplaar van **Azure lente Cloud** met een actieve toepassing, bijvoorbeeld [lente-Cloud-app](./spring-cloud-quickstart-launch-app-cli.md).
 
 > [!NOTE]
->  De ASC CLI-extensie wordt bijgewerkt van versie 0.2.0 naar 0.2.1. Deze wijziging is van invloed op de syntaxis van de opdracht voor `az spring-cloud app log tail`logboek streaming:, die wordt `az spring-cloud app logs`vervangen door:. De opdracht: `az spring-cloud app log tail` wordt afgeschaft in een toekomstige release. Als u versie 0.2.0 hebt gebruikt, kunt u een upgrade uitvoeren naar 0.2.1. Verwijder eerst de oude versie met behulp van de `az extension remove -n spring-cloud`opdracht:.  Installeer vervolgens 0.2.1 met de opdracht: `az extension add -n spring-cloud`.
+>  De ASC CLI-extensie wordt bijgewerkt van versie 0.2.0 naar 0.2.1. Deze wijziging is van invloed op de syntaxis van de opdracht voor logboek streaming: `az spring-cloud app log tail` , die wordt vervangen door: `az spring-cloud app logs` . De opdracht: `az spring-cloud app log tail` wordt afgeschaft in een toekomstige release. Als u versie 0.2.0 hebt gebruikt, kunt u een upgrade uitvoeren naar 0.2.1. Verwijder eerst de oude versie met behulp van de opdracht: `az extension remove -n spring-cloud` .  Installeer vervolgens 0.2.1 met de opdracht: `az extension add -n spring-cloud` .
 
 ## <a name="use-cli-to-tail-logs"></a>CLI gebruiken om logboeken af te staart
 
@@ -50,7 +49,7 @@ Hiermee worden logboeken geretourneerd:
 ```
 
 ### <a name="tail-log-for-app-with-multiple-instances"></a>Staart logboek voor app met meerdere exemplaren
-Als er meerdere exemplaren bestaan voor de naam `auth-service`van de app, kunt u het exemplaar logboek weer `-i/--instance` geven met behulp van de optie. 
+Als er meerdere exemplaren bestaan voor de naam van de app `auth-service` , kunt u het exemplaar logboek weer geven met behulp van de `-i/--instance` optie. 
 
 U kunt eerst de naam van het app-exemplaar ophalen met de volgende opdracht.
 
@@ -66,7 +65,7 @@ auth-service-default-12-75cc4577fc-pw7hb  Running   UP
 auth-service-default-12-75cc4577fc-8nt4m  Running   UP
 auth-service-default-12-75cc4577fc-n25mh  Running   UP
 ``` 
-Vervolgens kunt u logboeken van een app-exemplaar streamen met `-i/--instance` de optie optie:
+Vervolgens kunt u logboeken van een app-exemplaar streamen met de optie optie `-i/--instance` :
 
 ```
 az spring-cloud app logs -n auth-service -i auth-service-default-12-75cc4577fc-pw7hb

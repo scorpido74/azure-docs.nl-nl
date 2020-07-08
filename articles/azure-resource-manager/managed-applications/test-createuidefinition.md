@@ -6,21 +6,20 @@ ms.topic: conceptual
 ms.date: 08/06/2019
 ms.author: tomfitz
 ms.openlocfilehash: e2d075a58872f9337c7d1faa642a48047e2f9ddf
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "78250185"
 ---
 # <a name="test-your-portal-interface-for-azure-managed-applications"></a>Uw portal-interface voor Azure Managed Applications testen
 
-Nadat u [het bestand createUiDefinition. json](create-uidefinition-overview.md) voor uw beheerde toepassing hebt gemaakt, moet u de gebruikers ervaring testen. Gebruik een sandbox-omgeving om het bestand in de portal te laden om het testen te vereenvoudigen. U hoeft uw beheerde toepassing niet echt te implementeren. De sandbox geeft uw gebruikers interface weer in de huidige, volledige scherm Portal-ervaring. U kunt ook een script gebruiken om de interface te testen. Beide benaderingen worden weer gegeven in dit artikel. De sandbox is de aanbevolen manier om een voor beeld van de interface te bekijken.
+Nadat u [de createUiDefinition.jshebt gemaakt](create-uidefinition-overview.md) voor uw beheerde toepassing, moet u de gebruikers ervaring testen. Gebruik een sandbox-omgeving om het bestand in de portal te laden om het testen te vereenvoudigen. U hoeft uw beheerde toepassing niet echt te implementeren. De sandbox geeft uw gebruikers interface weer in de huidige, volledige scherm Portal-ervaring. U kunt ook een script gebruiken om de interface te testen. Beide benaderingen worden weer gegeven in dit artikel. De sandbox is de aanbevolen manier om een voor beeld van de interface te bekijken.
 
 ## <a name="prerequisites"></a>Vereisten
 
-* Een bestand **createUiDefinition. json** . Als u dit bestand niet hebt, kopieert u het [voorbeeld bestand](https://github.com/Azure/azure-quickstart-templates/blob/master/100-marketplace-sample/createUiDefinition.json).
+* Een **createUiDefinition.jsin** het bestand. Als u dit bestand niet hebt, kopieert u het [voorbeeld bestand](https://github.com/Azure/azure-quickstart-templates/blob/master/100-marketplace-sample/createUiDefinition.json).
 
-* Een Azure-abonnement. Als u nog geen abonnement op Azure hebt, [Maak dan een gratis account](https://azure.microsoft.com/free/) aan voordat u begint.
+* Een Azure-abonnement. Als u geen abonnement op Azure hebt, maakt u een [gratis account](https://azure.microsoft.com/free/) voordat u begint.
 
 ## <a name="use-sandbox"></a>Sandbox gebruiken
 
@@ -28,7 +27,7 @@ Nadat u [het bestand createUiDefinition. json](create-uidefinition-overview.md) 
 
    ![Sandbox weer geven](./media/test-createuidefinition/show-sandbox.png)
 
-1. Vervang de lege definitie door de inhoud van het bestand createUiDefinition. json. Selecteer **voor beeld**.
+1. Vervang de lege definitie door de inhoud van uw createUiDefinition.jsin het bestand. Selecteer **voor beeld**.
 
    ![Voor beeld selecteren](./media/test-createuidefinition/select-preview.png)
 
@@ -54,9 +53,9 @@ Als u uw interface in de portal wilt testen, kopieert u een van de volgende scri
 * [Power shell side-load script-Azure-module](https://github.com/Azure/azure-quickstart-templates/blob/master/SideLoad-CreateUIDefinition.ps1)
 * [Script voor het laden van Azure CLI-scripts](https://github.com/Azure/azure-quickstart-templates/blob/master/sideload-createuidef.sh)
 
-Als u het interface bestand in de portal wilt bekijken, voert u het gedownloade script uit. Met het script maakt u een opslag account in uw Azure-abonnement en uploadt u het bestand createUiDefinition. json naar het opslag account. Het opslag account wordt gemaakt wanneer u het script voor het eerst uitvoert of als het opslag account is verwijderd. Als het opslag account al in uw Azure-abonnement bestaat, wordt het door het script opnieuw gebruikt. Het script opent de portal en laadt uw bestand vanuit het opslag account.
+Als u het interface bestand in de portal wilt bekijken, voert u het gedownloade script uit. Met het script maakt u een opslag account in uw Azure-abonnement en uploadt u uw createUiDefinition.jsnaar het opslag account. Het opslag account wordt gemaakt wanneer u het script voor het eerst uitvoert of als het opslag account is verwijderd. Als het opslag account al in uw Azure-abonnement bestaat, wordt het door het script opnieuw gebruikt. Het script opent de portal en laadt uw bestand vanuit het opslag account.
 
-Geef een locatie op voor het opslag account en geef de map op die het bestand createUiDefinition. json bevat.
+Geef een locatie op voor het opslag account en geef de map op die uw createUiDefinition.jsbevat voor het bestand.
 
 Gebruik voor PowerShell:
 
@@ -74,7 +73,7 @@ Gebruik voor Azure CLI:
   -a .\100-Marketplace-Sample
 ```
 
-Als het bestand createUiDefinition. json zich in dezelfde map bevindt als het script en u het opslag account al hebt gemaakt, hoeft u deze para meters niet op te geven.
+Als uw createUiDefinition.jsvoor het bestand zich in dezelfde map bevindt als het script en u het opslag account al hebt gemaakt, hoeft u deze para meters niet op te geven.
 
 Gebruik voor PowerShell:
 
@@ -100,7 +99,7 @@ Als de portal vastloopt op het scherm samen vatting, is er mogelijk een fout in 
 
 ## <a name="test-your-solution-files"></a>Uw oplossings bestanden testen
 
-Nu u hebt gecontroleerd of uw portal-interface werkt zoals verwacht, is het tijd om te controleren of uw createUiDefinition-bestand correct is geïntegreerd met uw mainTemplate. JSON-bestand. U kunt een validatie script test uitvoeren om de inhoud van uw oplossings bestanden te testen, met inbegrip van het createUiDefinition-bestand. Het script valideert de JSON-syntaxis, controleert op regex-expressies in tekst velden en zorgt ervoor dat de uitvoer waarden van de portal-interface overeenkomen met de para meters van uw sjabloon. Zie voor meer informatie over het uitvoeren van dit script [statische validatie controles uitvoeren voor sjablonen](https://github.com/Azure/azure-quickstart-templates/tree/master/test).
+Nu u hebt gecontroleerd of uw portal-interface werkt zoals verwacht, is het tijd om te controleren of uw createUiDefinition-bestand correct is geïntegreerd met uw mainTemplate.jsvoor het bestand. U kunt een validatie script test uitvoeren om de inhoud van uw oplossings bestanden te testen, met inbegrip van het createUiDefinition-bestand. Het script valideert de JSON-syntaxis, controleert op regex-expressies in tekst velden en zorgt ervoor dat de uitvoer waarden van de portal-interface overeenkomen met de para meters van uw sjabloon. Zie voor meer informatie over het uitvoeren van dit script [statische validatie controles uitvoeren voor sjablonen](https://github.com/Azure/azure-quickstart-templates/tree/master/test).
 
 ## <a name="next-steps"></a>Volgende stappen
 

@@ -9,10 +9,9 @@ ms.date: 02/26/2020
 ms.author: normesta
 ms.reviewer: stewu
 ms.openlocfilehash: 422b814f1d9738ca4f03d08dfecc6761b764f997
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "78196022"
 ---
 # <a name="open-source-platforms-that-support-azure-data-lake-storage-gen2"></a>Open-source platforms die ondersteuning bieden voor Azure Data Lake Storage Gen2
@@ -39,4 +38,4 @@ Deze tabel geeft een lijst van de open-source platforms die Data Lake Storage Ge
 - [Bekende problemen met Azure Data Lake Storage Gen2](data-lake-storage-known-issues.md)
 - [Blob-opslag functies die beschikbaar zijn in Azure Data Lake Storage Gen2](data-lake-storage-supported-blob-storage-features.md)
 - [Azure-Services die ondersteuning bieden voor Azure Data Lake Storage Gen2](data-lake-storage-supported-azure-services.md)
-- [Toegang tot meerdere protocollen op Azure Data Lake Storage](data-lake-storage-multi-protocol-access.md)
+- [Toegang met meerdere protocollen in Azure Data Lake Storage](data-lake-storage-multi-protocol-access.md)

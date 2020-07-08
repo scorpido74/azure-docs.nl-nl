@@ -7,10 +7,9 @@ ms.service: mysql
 ms.topic: conceptual
 ms.date: 2/27/2020
 ms.openlocfilehash: 83b0a69e063e9427c726216ef873f5a1c97f9582
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "78163723"
 ---
 # <a name="migrate-your-mysql-database-by-using-import-and-export"></a>Uw MySQL-data base migreren met behulp van importeren en exporteren
@@ -42,13 +41,13 @@ Voeg de verbindings gegevens toe aan MySQL Workbench.
 ## <a name="determine-when-to-use-import-and-export-techniques-instead-of-a-dump-and-restore"></a>Bepaal wanneer u import-en export technieken wilt gebruiken in plaats van een dump en herstel
 Gebruik MySQL-hulpprogram ma's voor het importeren en exporteren van data bases in de Azure MySQL-data base in de volgende scenario's. In andere scenario's kunt u in plaats daarvan gebruikmaken van de methode [dump en Restore](concepts-migrate-dump-restore.md) . 
 
-- Wanneer u selectief moet kiezen uit een aantal tabellen die u wilt importeren uit een bestaande MySQL-data base in azure MySQL-data base, kunt u het beste de import-en export techniek gebruiken.  Door dit te doen, kunt u onnodige tabellen uit de migratie weglaten om tijd en resources te besparen. `--include-tables` Gebruik bijvoorbeeld de of `--exclude-tables` Schakel over met [mysqlpump](https://dev.mysql.com/doc/refman/5.7/en/mysqlpump.html#option_mysqlpump_include-tables) en de `--tables` switch met [mysqldump](https://dev.mysql.com/doc/refman/5.7/en/mysqldump.html#option_mysqldump_tables).
+- Wanneer u selectief moet kiezen uit een aantal tabellen die u wilt importeren uit een bestaande MySQL-data base in azure MySQL-data base, kunt u het beste de import-en export techniek gebruiken.  Door dit te doen, kunt u onnodige tabellen uit de migratie weglaten om tijd en resources te besparen. Gebruik bijvoorbeeld de `--include-tables` of `--exclude-tables` Schakel over met [mysqlpump](https://dev.mysql.com/doc/refman/5.7/en/mysqlpump.html#option_mysqlpump_include-tables) en de `--tables` Switch met [mysqldump](https://dev.mysql.com/doc/refman/5.7/en/mysqldump.html#option_mysqldump_tables).
 - Wanneer u de andere database objecten dan tabellen verplaatst, moet u deze objecten expliciet maken. Neem beperkingen op (primaire sleutel, refererende sleutel, indexen), weer gaven, functies, procedures, triggers en andere database objecten die u wilt migreren.
 - Wanneer u gegevens migreert uit externe gegevens bronnen, met uitzonde ring van een MySQL-data base, maakt u platte bestanden en importeert u deze met behulp van [mysqlimport](https://dev.mysql.com/doc/refman/5.7/en/mysqlimport.html).
 
 Zorg ervoor dat alle tabellen in de data base de InnoDB-opslag engine gebruiken wanneer u gegevens laadt in Azure Database for MySQL. Azure Database for MySQL ondersteunt alleen de InnoDB-opslag engine, zodat er geen alternatieve opslag engines worden ondersteund. Als voor uw tabellen alternatieve opslag engines zijn vereist, moet u deze converteren naar de InnoDB-engine indeling gebruiken vóór de migratie naar Azure Database for MySQL. 
 
-Als u bijvoorbeeld een WordPress-of web-app hebt die gebruikmaakt van de MyISAM-engine, moet u de tabellen eerst converteren door de gegevens te migreren naar InnoDB-tabellen. Ga vervolgens terug naar Azure Database for MySQL. Gebruik de- `ENGINE=INNODB` component om de engine in te stellen voor het maken van een tabel en vervolgens de gegevens over te dragen naar de compatibele tabel vóór de migratie. 
+Als u bijvoorbeeld een WordPress-of web-app hebt die gebruikmaakt van de MyISAM-engine, moet u de tabellen eerst converteren door de gegevens te migreren naar InnoDB-tabellen. Ga vervolgens terug naar Azure Database for MySQL. Gebruik de-component `ENGINE=INNODB` om de engine in te stellen voor het maken van een tabel en vervolgens de gegevens over te dragen naar de compatibele tabel vóór de migratie. 
 
    ```sql
    INSERT INTO innodb_table SELECT * FROM myisam_table ORDER BY primary_key_columns

@@ -8,10 +8,9 @@ ms.date: 03/03/2020
 ms.author: girobins
 ms.custom: query-reference
 ms.openlocfilehash: c3e61d1efe20910d84ef4ff583d74982b3ea9f3d
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "78296378"
 ---
 # <a name="stringtoobject-azure-cosmos-db"></a>StringToObject (Azure Cosmos DB)
@@ -34,7 +33,7 @@ StringToObject(<str_expr>)
   
 ## <a name="examples"></a>Voorbeelden
   
-  In het volgende voor beeld `StringToObject` ziet u hoe de verschillende typen zich gedraagt. 
+  In het volgende voor beeld ziet u hoe de `StringToObject` verschillende typen zich gedraagt. 
   
  Hier volgen enkele voor beelden met geldige invoer.
 
@@ -56,7 +55,7 @@ Dit is de resultatenset.
 ```
 
  Hier volgen enkele voor beelden met ongeldige invoer.
-Hoewel ze geldig zijn binnen een query, worden ze niet geparseerd naar geldige objecten. Teken reeksen in de teken reeks van een object moeten worden voorafgegaan door\\' {\\' a\\':\\' str '} ' of de omliggende aanhaling moet één ' {' a ': ' str '} ' zijn.
+Hoewel ze geldig zijn binnen een query, worden ze niet geparseerd naar geldige objecten. Teken reeksen in de teken reeks van een object moeten worden voorafgegaan door ' { \\ ' a \\ ': \\ ' Str \\ '} ' of de omliggende aanhaling moet één ' {' a ': ' str '} ' zijn.
 
 Enkele aanhalings tekens rond eigenschapnamen zijn geen geldige JSON-namen.
 

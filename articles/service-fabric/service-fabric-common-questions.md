@@ -5,10 +5,9 @@ ms.topic: troubleshooting
 ms.date: 08/18/2017
 ms.author: pepogors
 ms.openlocfilehash: bf61858b446c1ac6d4a0210571fffaa721ad0166
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "78254889"
 ---
 # <a name="commonly-asked-service-fabric-questions"></a>Veelgestelde vragen over Service Fabric
@@ -64,7 +63,7 @@ We hebben een productie cluster nodig om ten minste vijf knoop punten te hebben 
 2. We plaatsen altijd één replica van een service per knoop punt, dus de cluster grootte is de bovengrens voor het aantal replica's dat een service (in werkelijkheid een partitie) kan hebben.
 3. Omdat een cluster upgrade ten minste één knoop punt uitvalt, willen we een buffer van ten minste één knoop punt hebben. Daarom willen we dat een productie cluster ten minste twee knoop punten bevat *naast* de Maxi maal bewaarde. De minimum waarde is de quorum grootte van een systeem service zoals hieronder wordt uitgelegd.  
 
-We willen dat het cluster beschikbaar is in het vlak van gelijktijdige storingen van twee knoop punten. Voor een Service Fabric cluster beschikbaar is, moeten de systeem services beschikbaar zijn. Stateful systeem services, zoals naamgevings service en failover Manager-service, die bijhouden welke services zijn geïmplementeerd in het cluster en waar ze momenteel worden gehost, zijn afhankelijk van sterke consistentie. Deze sterke consistentie is op zijn beurt afhankelijk van de mogelijkheid om een *quorum* te verkrijgen voor een bepaalde update in de status van die services, waarbij een quorum een strikte meerderheid van de Replica's (N/2 + 1) voor een bepaalde service vertegenwoordigt. Daarom moeten we ClusterSize-QuorumSize >= 2 hebben, waardoor de minimale grootte vijf moet zijn om te voor komen dat er meerdere knoop punten verloren gaan (dus simultaan verlies van twee replica's van een systeem service). Houd er rekening mee dat het cluster N knoop punten heeft en dat er N replica's van een systeem service zijn, één op elk knoop punt. De quorum grootte voor een systeem service is (N/2 + 1). De bovenstaande ongelijkheid ziet eruit als N-(N/2 + 1) >= 2. Er zijn twee situaties waarin u rekening moet houden: wanneer N even is en wanneer N oneven is. Als N even is, zegt N = 2\*m, waarbij m >= 1, is de ongelijkheid hetzelfde\*als 2 m-\*(2 m/2 + 1) >= 2 of m >= 3. Het minimum voor N is 6 en dat wordt behaald wanneer m = 3. Als N daarentegen oneven is, zegt\*n = 2 m + 1 waarbij m >= 1, is de ongelijkheid hetzelfde als 2\*m + 1-((2\*m + 1)/2 + 1) >= 2 of 2\*m + 1-(m + 1) >= 2 of m >= 2. Het minimum voor N is 5 en dat wordt behaald wanneer m = 2. Daarom is voor alle waarden van N die voldoen aan de ClusterSize-QuorumSize >= 2 het minimum 5.
+We willen dat het cluster beschikbaar is in het vlak van gelijktijdige storingen van twee knoop punten. Voor een Service Fabric cluster beschikbaar is, moeten de systeem services beschikbaar zijn. Stateful systeem services, zoals naamgevings service en failover Manager-service, die bijhouden welke services zijn geïmplementeerd in het cluster en waar ze momenteel worden gehost, zijn afhankelijk van sterke consistentie. Deze sterke consistentie is op zijn beurt afhankelijk van de mogelijkheid om een *quorum* te verkrijgen voor een bepaalde update in de status van die services, waarbij een quorum een strikte meerderheid van de Replica's (N/2 + 1) voor een bepaalde service vertegenwoordigt. Daarom moeten we ClusterSize-QuorumSize >= 2 hebben, waardoor de minimale grootte vijf moet zijn om te voor komen dat er meerdere knoop punten verloren gaan (dus simultaan verlies van twee replica's van een systeem service). Houd er rekening mee dat het cluster N knoop punten heeft en dat er N replica's van een systeem service zijn, één op elk knoop punt. De quorum grootte voor een systeem service is (N/2 + 1). De bovenstaande ongelijkheid ziet eruit als N-(N/2 + 1) >= 2. Er zijn twee situaties waarin u rekening moet houden: wanneer N even is en wanneer N oneven is. Als N even is, zegt N = 2 \* m, waarbij m >= 1, is de ongelijkheid hetzelfde als 2 \* m-(2 \* m/2 + 1) >= 2 of m >= 3. Het minimum voor N is 6 en dat wordt behaald wanneer m = 3. Als N daarentegen oneven is, zegt N = 2 \* m + 1 waarbij m >= 1, is de ongelijkheid hetzelfde als 2 \* m + 1-((2 \* m + 1)/2 + 1) >= 2 of 2 \* m + 1-(m + 1) >= 2 of m >= 2. Het minimum voor N is 5 en dat wordt behaald wanneer m = 2. Daarom is voor alle waarden van N die voldoen aan de ClusterSize-QuorumSize >= 2 het minimum 5.
 
 In het bovenstaande argument hebben we aangenomen dat elk knoop punt een replica van een systeem service heeft, waardoor de quorum grootte wordt berekend op basis van het aantal knoop punten in het cluster. Door *TargetReplicaSetSize* te wijzigen, kunnen we echter de grootte van het quorum kleiner maken dan (N/2 + 1). Dit kan de indruk geven dat een cluster kleiner is dan vijf knoop punten en nog twee extra knoop punten boven de quorum grootte heeft. Als we in een cluster met vier knoop punten bijvoorbeeld TargetReplicaSetSize op 3 hebben ingesteld, is de quorum grootte gebaseerd op TargetReplicaSetSize (3/2 + 1) of 2, dus hebben we ClusterSize-QuorumSize = 4-2 >= 2. We kunnen echter niet garanderen dat de systeem service zich op of boven het quorum bevindt als er een paar knoop punten tegelijk verloren gaan. het kan zijn dat de twee knoop punten die verloren zijn gegaan, twee replica's hosten, zodat de systeem service in quorum verlies werkt (met slechts één replica) en is niet meer beschikbaar.
 
@@ -109,18 +108,18 @@ Nee. Vm's met een lage prioriteit worden niet ondersteund.
 
 | **Uitgesloten processen van anti virus** |
 | --- |
-| Fabric. exe |
-| FabricHost. exe |
-| FabricInstallerService. exe |
-| FabricSetup. exe |
-| FabricDeployer. exe |
-| ImageBuilder. exe |
-| FabricGateway. exe |
-| FabricDCA. exe |
-| FabricFAS. exe |
-| FabricUOS. exe |
-| FabricRM. exe |
-| File Store service. exe |
+| Fabric.exe |
+| FabricHost.exe |
+| FabricInstallerService.exe |
+| FabricSetup.exe |
+| FabricDeployer.exe |
+| ImageBuilder.exe |
+| FabricGateway.exe |
+| FabricDCA.exe |
+| FabricFAS.exe |
+| FabricUOS.exe |
+| FabricRM.exe |
+| FileStoreService.exe |
  
 ### <a name="how-can-my-application-authenticate-to-keyvault-to-get-secrets"></a>Hoe kan mijn toepassing worden geverifieerd bij de sleutel kluis om geheimen te verkrijgen?
 Als uw toepassing referenties voor verificatie bij de sleutel kluis heeft, kunt u het volgende doen:

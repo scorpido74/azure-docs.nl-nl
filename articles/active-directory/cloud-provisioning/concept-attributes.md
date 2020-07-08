@@ -16,10 +16,9 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 4ac09fb3faf55be6c07a1e0a88b6e2032c9ab8ce
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "78299326"
 ---
 # <a name="understand-the-azure-ad-schema"></a>Het Azure AD-schema begrijpen
@@ -42,13 +41,13 @@ Een gebruiker kan bijvoorbeeld deel uitmaken van een marketing afdeling. Het ken
 
 Kenmerk synchronisatie kan direct worden ingeschakeld, waarbij de waarde in azure AD rechtstreeks wordt ingesteld op de waarde van het on-premises kenmerk. Een programmatische expressie kan de synchronisatie ook afhandelen. Er is een programmatische expressie nodig in gevallen waarin een bepaalde logica of een bepaling moet worden gemaakt om de waarde in te vullen.
 
-Als u bijvoorbeeld het kenmerkjohn.smith@contoso.commail had en nodig hebt om het@contoso.comgedeelte ' ' te verwijderen en alleen de waarde ' John. Smit ' te gebruiken, zou u er ongeveer als volgt moeten uitzien:
+Als u bijvoorbeeld het kenmerk mail had john.smith@contoso.com en nodig hebt om het gedeelte ' ' te verwijderen @contoso.com en alleen de waarde ' John. Smit ' te gebruiken, zou u er ongeveer als volgt moeten uitzien:
 
 `Replace([mail], "@contoso.com", , ,"", ,)`  
 
 **Voor beeld van invoer/uitvoer:** <br>
 
-* **Invoer** (e-mail adresjohn.smith@contoso.com): ""
+* **Invoer** (e-mail adres): " john.smith@contoso.com "
 * **Uitvoer**: "Jan. Smit"
 
 Zie [expressies schrijven voor kenmerk toewijzingen in azure Active Directory](https://docs.microsoft.com/azure/active-directory/manage-apps/functions-for-customizing-application-data)voor meer informatie over het schrijven van aangepaste expressies en de syntaxis.
@@ -61,7 +60,7 @@ De volgende tabel bevat algemene kenmerken en hoe deze worden gesynchroniseerd m
 |genoemd|Direct|commonName
 |countryCode|Direct|countryCode|
 |displayName|Direct|displayName|
-|givenName|Expressie|givenName|
+|givenName|Expression|givenName|
 |GUID|Direct|sourceAnchorBinary|  
 |userprincipalName|Direct|userPrincipalName|
 |ProxyAdress|Direct|ProxyAddress attribuut|
@@ -75,8 +74,8 @@ Volg deze stappen om het schema weer te geven en te controleren.
 1.  Ga naar [Graph Explorer](https://developer.microsoft.com/graph/graph-explorer).
 1.  Meld u aan met het account van uw globale beheerder.
 1.  Selecteer aan de linkerkant de optie **machtigingen wijzigen** en zorg ervoor dat **map. readwrite. all** is *gezonden*.
-1.  Voer de query `https://graph.microsoft.com/beta/serviceprincipals/?$filter=startswith(Displayname,'Active')`uit. Deze query retourneert een gefilterde lijst met Service-principals.
-1.  Zoek `"appDisplayName": "Active Directory to Azure Active Directory Provisioning"` en noteer de waarde voor `"id"`.
+1.  Voer de query uit `https://graph.microsoft.com/beta/serviceprincipals/?$filter=startswith(Displayname,'Active')` . Deze query retourneert een gefilterde lijst met Service-principals.
+1.  Zoek `"appDisplayName": "Active Directory to Azure Active Directory Provisioning"` en noteer de waarde voor `"id"` .
     ```
     "value": [
             {
@@ -149,8 +148,8 @@ Volg deze stappen om het schema weer te geven en te controleren.
                 "passwordCredentials": []
             },
     ```
-1. Vervang `{Service Principal id}` door uw waarde en voer de query `https://graph.microsoft.com/beta/serviceprincipals/{Service Principal id}/synchronization/jobs/`uit.
-1. Zoek `"id": "AD2AADProvisioning.fd1c9b9e8077402c8bc03a7186c8f976"` en noteer de waarde voor `"id"`.
+1. Vervang door `{Service Principal id}` uw waarde en voer de query uit `https://graph.microsoft.com/beta/serviceprincipals/{Service Principal id}/synchronization/jobs/` .
+1. Zoek `"id": "AD2AADProvisioning.fd1c9b9e8077402c8bc03a7186c8f976"` en noteer de waarde voor `"id"` .
     ```
     {
                 "id": "AD2AADProvisioning.fd1c9b9e8077402c8bc03a7186c8f976",
@@ -241,7 +240,7 @@ Volg deze stappen om het schema weer te geven en te controleren.
                 ]
             }
     ```
-1. Voer nu de query `https://graph.microsoft.com/beta/serviceprincipals/{Service Principal Id}/synchronization/jobs/{AD2AAD Provisioning id}/schema`uit.
+1. Voer nu de query uit `https://graph.microsoft.com/beta/serviceprincipals/{Service Principal Id}/synchronization/jobs/{AD2AAD Provisioning id}/schema` .
  
     Voorbeeld: https://graph.microsoft.com/beta/serviceprincipals/653c0018-51f4-4736-a3a3-94da5dcb6862/synchronization/jobs/AD2AADProvisioning.e9287a7367e444c88dc67a531c36d8ec/schema
 

@@ -12,10 +12,9 @@ ms.date: 02/26/2020
 ms.author: mimart
 ms.subservice: B2C
 ms.openlocfilehash: 3d0cb06f84fdd96d099e05f55ba62c37cb1192c7
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "78183972"
 ---
 # <a name="page-layout-versions"></a>Versie van pagina-indeling
@@ -26,7 +25,7 @@ Pagina-indelings pakketten worden regel matig bijgewerkt met oplossingen en verb
 
 ## <a name="200"></a>2.0.0
 
-- Zelfbevestigende pagina (`selfasserted`)
+- Zelfbevestigende pagina ( `selfasserted` )
   - Er is ondersteuning toegevoegd voor [besturings elementen voor weer gave](display-controls.md) in aangepast beleid.
 
 ## <a name="120"></a>1.2.0
@@ -36,10 +35,10 @@ Pagina-indelings pakketten worden regel matig bijgewerkt met oplossingen en verb
   - U kunt nu het `data-preload="true"` kenmerk toevoegen aan [uw HTML-tags](custom-policy-ui-customization.md#guidelines-for-using-custom-page-content) om de laad volgorde voor CSS en Java script te bepalen.
     - Laad gekoppelde CSS-bestanden op hetzelfde moment als uw HTML-sjabloon zodat er geen Flik kering is tussen het laden van de bestanden.
     - De volg orde bepalen waarin uw `script` Tags worden opgehaald en uitgevoerd voordat de pagina wordt geladen.
-  - Het veld e-mail is `type=email` nu en mobiele toetsen borden bieden de juiste suggesties
+  - Het veld e-mail is nu `type=email` en mobiele toetsen borden bieden de juiste suggesties
   - Ondersteuning voor Chrome-vertaling
 - Geïntegreerde en zelf bevestigde pagina's
-  - De velden gebruikers naam/e-mail adres en `form` wacht woord gebruiken nu het HTML-element zodat Edge en Internet Explorer (IE) deze gegevens op de juiste manier kunnen opslaan.
+  - De velden gebruikers naam/e-mail adres en wacht woord gebruiken nu het `form` HTML-element zodat Edge en Internet Explorer (IE) deze gegevens op de juiste manier kunnen opslaan.
 
 ## <a name="110"></a>1.1.0
 

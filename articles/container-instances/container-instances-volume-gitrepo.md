@@ -4,10 +4,9 @@ description: Meer informatie over het koppelen van een gitRepo-volume om een Git
 ms.topic: article
 ms.date: 06/15/2018
 ms.openlocfilehash: 405cacd7a1649f95640a8dabf476729e101d03f8
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "78252087"
 ---
 # <a name="mount-a-gitrepo-volume-in-azure-container-instances"></a>Een gitRepo-volume koppelen in Azure Container Instances
@@ -25,15 +24,15 @@ Wanneer u een *gitRepo* -volume koppelt, kunt u drie eigenschappen instellen voo
 
 | Eigenschap | Vereist | Beschrijving |
 | -------- | -------- | ----------- |
-| `repository` | Ja | De volledige URL, inclusief `http://` of `https://`, van de Git-opslag plaats die moet worden gekloond.|
-| `directory` | Nee | De map waarin de opslag plaats moet worden gekloond. Het pad mag niet bevatten of beginnen met`..`.  Als u "`.`" opgeeft, wordt de opslag plaats gekloond in de map van het volume. Anders wordt de Git-opslag plaats gekloond in een submap van de opgegeven naam binnen de map volume. |
-| `revision` | Nee | De doorvoer-hash van de revisie die moet worden gekloond. Als u deze niet opgeeft `HEAD` , wordt de revisie gekloond. |
+| `repository` | Yes | De volledige URL, inclusief `http://` of `https://` , van de Git-opslag plaats die moet worden gekloond.|
+| `directory` | No | De map waarin de opslag plaats moet worden gekloond. Het pad mag niet bevatten of beginnen met `..` .  Als u " `.` " opgeeft, wordt de opslag plaats gekloond in de map van het volume. Anders wordt de Git-opslag plaats gekloond in een submap van de opgegeven naam binnen de map volume. |
+| `revision` | No | De doorvoer-hash van de revisie die moet worden gekloond. Als u deze niet opgeeft, `HEAD` wordt de revisie gekloond. |
 
 ## <a name="mount-gitrepo-volume-azure-cli"></a>GitRepo volume koppelen: Azure CLI
 
-Als u een gitRepo-volume wilt koppelen wanneer u container instanties implementeert met de [Azure cli](/cli/azure), moet u de `--gitrepo-url` para meters en `--gitrepo-mount-path` opgeven bij de opdracht [AZ container Create][az-container-create] . U kunt desgewenst de map opgeven in het volume waarnaar u wilt klonen`--gitrepo-dir`() en de hash voor door voeren van de revisie die moet`--gitrepo-revision`worden gekloond ().
+Als u een gitRepo-volume wilt koppelen wanneer u container instanties implementeert met de [Azure cli](/cli/azure), moet u de `--gitrepo-url` `--gitrepo-mount-path` para meters en opgeven bij de opdracht [AZ container Create][az-container-create] . U kunt desgewenst de map opgeven in het volume waarnaar u wilt klonen ( `--gitrepo-dir` ) en de hash voor door voeren van de revisie die moet worden gekloond ( `--gitrepo-revision` ).
 
-Met deze voorbeeld opdracht wordt de voorbeeld toepassing micro soft [ACI-HelloWorld][aci-helloworld] gekloond in het container exemplaar: `/mnt/aci-helloworld`
+Met deze voorbeeld opdracht wordt de voorbeeld toepassing micro soft [ACI-HelloWorld][aci-helloworld] gekloond `/mnt/aci-helloworld` in het container exemplaar:
 
 ```azurecli-interactive
 az container create \
@@ -83,7 +82,7 @@ Zie [groepen met meerdere containers implementeren in azure container instances]
 
 Als u een gitRepo-volume wilt koppelen voor een privé Git-opslag plaats, geeft u de referenties op in de URL van de opslag plaats. Referenties hebben doorgaans de vorm van een gebruikers naam en een persoonlijk toegangs token (PAT) waarmee toegang tot de opslag plaats met een bereik wordt verleend.
 
-De Azure CLI `--gitrepo-url` -para meter voor een persoonlijke github-opslag plaats zou er als volgt uitzien (waarbij ' gituser ' de GitHub-gebruikers naam is en ' abcdef1234fdsa4321abcdef ' het persoonlijke toegangs token van de gebruiker is):
+De Azure CLI- `--gitrepo-url` para meter voor een persoonlijke github-opslag plaats zou er als volgt uitzien (waarbij ' gituser ' de GitHub-gebruikers naam is en ' abcdef1234fdsa4321abcdef ' het persoonlijke toegangs token van de gebruiker is):
 
 ```console
 --gitrepo-url https://gituser:abcdef1234fdsa4321abcdef@github.com/GitUser/some-private-repository
