@@ -112,6 +112,8 @@
               href: concepts-data-access-and-security-private-link.md
             - name: Gegevensversleuteling
               href: concepts-data-encryption-postgresql.md
+            - name: Dubbele infrastructuurversleuteling
+              href: concepts-infrastructure-double-encryption.md
             - name: Beveiligingsbasislijn
               href: security-baseline.md
         - name: Bedrijfscontinuïteit
@@ -307,6 +309,10 @@
               href: howto-data-encryption-cli.md
             - name: Validatie voor gegevensversleuteling
               href: howto-data-encryption-validation.md
+        - name: Dubbele infrastructuurversleuteling
+          items:
+            - name: Dubbele infrastructuurversleuteling configureren
+              href: howto-double-encryption.md
         - name: Server opnieuw opstarten
           items:
             - name: Azure Portal

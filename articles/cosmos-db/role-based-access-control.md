@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 06/03/2020
 ms.author: mjbrown
-ms.openlocfilehash: 0782d5f091671a235df1ab85a8b9706c7efe9170
-ms.sourcegitcommit: 5504d5a88896c692303b9c676a7d2860f36394c1
+ms.openlocfilehash: cbb97dd260e5aee53595afc24e577ce08334e2b2
+ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/08/2020
-ms.locfileid: "84509029"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86027015"
 ---
 # <a name="role-based-access-control-in-azure-cosmos-db"></a>Op rollen gebaseerd toegangsbeheer in Azure Cosmos DB
 
@@ -35,7 +35,7 @@ Hier volgen de ingebouwde rollen die door Azure Cosmos DB worden ondersteund:
 
 Het deel venster **toegangs beheer (IAM)** in de Azure portal wordt gebruikt voor het configureren van toegangs beheer op basis van rollen op Azure Cosmos-resources. De rollen worden toegepast op gebruikers, groepen, service-principals en beheerde identiteiten in Active Directory. U kunt ingebouwde rollen of aangepaste rollen gebruiken voor individuen en groepen. De volgende scherm afbeelding toont Active Directory Integration (RBAC) met behulp van toegangs beheer (IAM) in de Azure Portal:
 
-![Toegangs beheer (IAM) in de Azure Portal-demonstrerende database beveiliging](./media/role-based-access-control/database-security-identity-access-management-rbac.png)
+:::image type="content" source="./media/role-based-access-control/database-security-identity-access-management-rbac.png" alt-text="Toegangs beheer (IAM) in de Azure Portal-demonstrerende database beveiliging":::
 
 ## <a name="custom-roles"></a>Aangepaste rollen
 
@@ -110,6 +110,6 @@ Update-AzCosmosDBAccount -ResourceGroupName [ResourceGroupName] -Name [CosmosDBA
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- [Wat is op rollen gebaseerd toegangs beheer (RBAC) voor Azure-resources](../role-based-access-control/overview.md)
+- [Wat is Azure Role-based Access Control (Azure RBAC)](../role-based-access-control/overview.md)
 - [Aangepaste rollen voor Azure-resources](../role-based-access-control/custom-roles.md)
 - [Bewerkingen voor de resource provider Azure Cosmos DB](../role-based-access-control/resource-provider-operations.md#microsoftdocumentdb)

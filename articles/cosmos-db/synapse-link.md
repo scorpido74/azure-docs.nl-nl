@@ -7,12 +7,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 05/19/2020
 ms.reviewer: sngun
-ms.openlocfilehash: 1acb01ceb9747fa833e998bd5501ce8a8a51babb
-ms.sourcegitcommit: 23604d54077318f34062099ed1128d447989eea8
+ms.openlocfilehash: ff64f3f4891aac27a32b642b50ebd51dea9bd34a
+ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/20/2020
-ms.locfileid: "85119457"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86025774"
 ---
 # <a name="what-is-azure-synapse-link-for-azure-cosmos-db-preview"></a>Wat is een Azure Synapse-koppeling voor Azure Cosmos DB (preview)?
 
@@ -122,6 +122,8 @@ Synapse-koppeling wordt niet aanbevolen als u op zoek bent naar traditionele Dat
 
 * Op dit moment kan de analytische opslag alleen worden ingeschakeld voor nieuwe containers (zowel in nieuwe als bestaande Azure Cosmos DB-accounts).
 
+* In de preview-versie wordt voor Synapse-koppeling ingeschakelde database accounts geen back-up en herstel van containers ondersteund. Als u productie werkbelastingen hebt waarvoor een back-up-en herstel functionaliteit nodig is, wordt aangeraden de Synapse-koppeling niet in te scha kelen voor deze database accounts. 
+
 * Het openen van de Azure Cosmos DB Analytics Store met Synapse SQL Server is momenteel onder gated preview. Als u toegang wilt aanvragen, moet u een e-mail sturen naar het [Azure Cosmos DB team](mailto:cosmosdbsynapselink@microsoft.com).
 
 * Het is momenteel niet mogelijk om toegang te krijgen tot de Azure Cosmos DB Analytics Store met Synapse SQL provisioned.
@@ -134,7 +136,7 @@ Het facturerings model van de koppeling Azure Synapse bevat de kosten die zijn g
 
 Raadpleeg de volgende documenten voor meer informatie:
 
-* [Overzicht van analytische opslag van Azure Cosmos DB](analytical-store-introduction.md)
+* [Overzicht van Azure Cosmos DB Analytical Store](analytical-store-introduction.md)
 
 * [Aan de slag met Azure Synapse Link voor Azure Cosmos DB](configure-synapse-link.md)
  

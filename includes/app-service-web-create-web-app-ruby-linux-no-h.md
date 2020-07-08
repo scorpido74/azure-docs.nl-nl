@@ -1,5 +1,5 @@
 ---
-title: bestand opnemen
+title: Include-bestand
 description: bestand opnemen
 services: app-service
 author: cephalin
@@ -8,16 +8,16 @@ ms.topic: include
 ms.date: 07/10/2019
 ms.author: cephalin
 ms.custom: include file
-ms.openlocfilehash: 01c1c7c0bdf8e55b002b73682407a3e03ee30b8f
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
-ms.translationtype: MT
+ms.openlocfilehash: 95f0e542022f64a5a5bf7d7009c79382e25392df
+ms.sourcegitcommit: 93462ccb4dd178ec81115f50455fbad2fa1d79ce
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82085774"
+ms.lasthandoff: 07/06/2020
+ms.locfileid: "86035575"
 ---
-Maak een [Web-app](../articles/app-service/containers/app-service-linux-intro.md) in `myAppServicePlan` het app service plan. 
+Een [web-app](../articles/app-service/containers/app-service-linux-intro.md) maken in het App Service-plan `myAppServicePlan`. 
 
-In de Cloud Shell kunt u de [`az webapp create`](/cli/azure/webapp?view=azure-cli-latest) opdracht gebruiken. Vervang in het volgende voorbeeld `<app-name>` door een unieke naam (geldige tekens zijn `a-z`, `0-9`, en `-`). De runtime is ingesteld op `RUBY|2.3`. Als u alle ondersteunde Runtimes wilt weer [`az webapp list-runtimes --linux`](/cli/azure/webapp?view=azure-cli-latest)geven, voert u uit. 
+In Cloud Shell kunt u de opdracht [`az webapp create`](/cli/azure/webapp?view=azure-cli-latest) gebruiken. Vervang in het volgende voorbeeld `<app-name>` door een unieke naam (geldige tekens zijn `a-z`, `0-9`, en `-`). De runtime is ingesteld op `RUBY|2.6.2`. Voer [`az webapp list-runtimes --linux`](/cli/azure/webapp?view=azure-cli-latest) uit als u alle ondersteunde runtimes wilt zien. 
 
 ```azurecli-interactive
 # Bash

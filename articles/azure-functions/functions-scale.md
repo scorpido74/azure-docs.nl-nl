@@ -5,12 +5,12 @@ ms.assetid: 5b63649c-ec7f-4564-b168-e0a74cb7e0f3
 ms.topic: conceptual
 ms.date: 03/27/2019
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 5504416d09cf6b3f75d02e29cc93b0278cc42386
-ms.sourcegitcommit: 23604d54077318f34062099ed1128d447989eea8
+ms.openlocfilehash: 26924498f32b8aac2e3e7fb5cfd7c1965ee5884f
+ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/20/2020
-ms.locfileid: "85117128"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86025825"
 ---
 # <a name="azure-functions-scale-and-hosting"></a>Schaal en hosting van Azure Functions
 
@@ -122,7 +122,7 @@ Het is mogelijk dat meerdere functie-apps hetzelfde opslag account delen zonder 
 
 Zie [Inleiding tot de Azure Storage services](../storage/common/storage-introduction.md#core-storage-services)voor meer informatie over typen opslag accounts.
 
-## <a name="how-the-consumption-and-premium-plans-work"></a>Hoe de verbruiks-en Premium-abonnementen werken
+## <a name="how-the-consumption-and-premium-plans-work"></a>Hoe de verbruiks- en Premium-abonnementen werken
 
 In de verbruiks-en Premium-abonnementen schaalt de Azure Functions-infra structuur CPU-en geheugen bronnen door extra exemplaren van de functions-host toe te voegen op basis van het aantal gebeurtenissen waarvoor de functies zijn geactiveerd. Elk exemplaar van de functions-host in het verbruiks abonnement is beperkt tot 1,5 GB aan geheugen en één CPU.  Een exemplaar van de host is de volledige functie-app, wat betekent dat alle functies binnen een functie-app resources delen binnen een exemplaar en op hetzelfde moment kunnen worden geschaald. Functie-apps die hetzelfde verbruiks abonnement delen, worden onafhankelijk geschaald.  In het Premium-abonnement bepaalt de grootte van het abonnement het beschik bare geheugen en de CPU voor alle apps in dat exemplaar.  
 
@@ -175,7 +175,7 @@ In de volgende vergelijkings tabel ziet u alle belang rijke aspecten om het besl
 | | |
 | --- | --- |  
 |**[Verbruiks abonnement](#consumption-plan)**| Schaal automatisch en betaal alleen voor reken resources wanneer uw functies worden uitgevoerd. In het verbruiks plan worden instanties van de functions-host dynamisch toegevoegd en verwijderd op basis van het aantal binnenkomende gebeurtenissen.<br/> ✔ Standaard hosting plan.<br/>✔ Betaal alleen wanneer uw functies worden uitgevoerd.<br/>✔ automatisch uitschalen, zelfs tijdens peri Oden met een hoge belasting.|  
-|**[Premium-abonnement](#premium-plan)**|Bij automatisch schalen op basis van de vraag, kunt u vooraf gewarmde werk rollen gebruiken om toepassingen uit te voeren zonder vertraging na inactiviteit, om krachtigere instanties uit te voeren en verbinding te maken met VNETs. Bekijk het Azure Functions Premium-abonnement in de volgende situaties naast alle functies van het App Service plan: <br/>✔ Uw functie-apps continu of bijna continu worden uitgevoerd.<br/>✔ U een groot aantal kleine uitvoeringen hebt en een hoge uitvoerings factuur hebt, maar een laag GB tweede factuur in het verbruiks abonnement.<br/>✔ U meer CPU-of geheugen opties nodig hebt dan wat wordt aangegeven door het verbruiks abonnement.<br/>✔ De code moet langer worden uitgevoerd dan de Maxi maal toegestane uitvoerings tijd voor het verbruiks abonnement.<br/>✔ U functies nodig hebt die alleen beschik bare zijn [mogelijk voor een Premium-abonnement, zoals een verbinding met een virtueel netwerk.|  
+|**[Premium-abonnement](#premium-plan)**|Bij automatisch schalen op basis van de vraag, kunt u vooraf gewarmde werk rollen gebruiken om toepassingen uit te voeren zonder vertraging na inactiviteit, om krachtigere instanties uit te voeren en verbinding te maken met VNETs. Bekijk het Azure Functions Premium-abonnement in de volgende situaties naast alle functies van het App Service plan: <br/>✔ Uw functie-apps continu of bijna continu worden uitgevoerd.<br/>✔ U een groot aantal kleine uitvoeringen hebt en een hoge uitvoerings factuur hebt, maar een laag GB tweede factuur in het verbruiks abonnement.<br/>✔ U meer CPU-of geheugen opties nodig hebt dan wat wordt aangegeven door het verbruiks abonnement.<br/>✔ De code moet langer worden uitgevoerd dan de Maxi maal toegestane uitvoerings tijd voor het verbruiks abonnement.<br/>✔ U functies nodig hebt die alleen beschikbaar zijn in een Premium-abonnement, zoals een verbinding met een virtueel netwerk.|  
 |**[Toegewezen abonnement](#app-service-plan)**<sup>1</sup>|Voer uw functies uit binnen een App Service plan op regel matige App Service plan tarieven. Geschikt voor langlopende bewerkingen en wanneer meer voorspellende schaling en kosten zijn vereist. Houd rekening met een App Service-abonnement in de volgende situaties:<br/>✔ U bestaande, geApp Servicede virtuele machines die al worden uitgevoerd, worden gebruikt.<br/>✔ U een aangepaste installatie kopie wilt opgeven waarop uw functies moeten worden uitgevoerd.|  
 |**[ASE](#app-service-plan)**<sup>1</sup>|App Service Environment (ASE) is een App Service functie die een volledig geïsoleerde en toegewezen omgeving biedt voor het veilig uitvoeren van App Service-apps op grote schaal. As zijn geschikt voor werk belastingen van toepassingen die nodig zijn voor: <br/>✔ Zeer grote schaal.<br/>✔ Isolatie en beveiligde netwerk toegang.<br/>✔ Hoog geheugen gebruik.|  
 | **[Kubernetes](functions-kubernetes-keda.md)** | Kubernetes biedt een volledig geïsoleerde en toegewezen omgeving die boven op het Kubernetes-platform wordt uitgevoerd.  Kubernetes is geschikt voor werk belastingen van toepassingen die het volgende vereisen: <br/>Aangepaste hardwarevereisten ✔.<br/>✔ Isolatie en beveiligde netwerk toegang.<br/>✔ Mogelijkheid om uit te voeren in een hybride of multi-cloud omgeving.<br/>✔ Uitgevoerd naast bestaande Kubernetes-toepassingen en-services.|  

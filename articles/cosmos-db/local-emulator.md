@@ -6,12 +6,12 @@ ms.topic: how-to
 author: markjbrown
 ms.author: mjbrown
 ms.date: 01/31/2020
-ms.openlocfilehash: 227e60486f0a6712b0d29de47983bad737481bd4
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: e06a2eac5387cd02e95d8252ae04edc356683ed9
+ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85800542"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86028235"
 ---
 # <a name="use-the-azure-cosmos-emulator-for-local-development-and-testing"></a>Azure Cosmos Emulator gebruiken voor lokaal ontwikkelen en testen
 
@@ -64,9 +64,11 @@ U kunt Azure Cosmos Emulator downloaden en installeren vanuit het [Microsoft Dow
 
 Als u Azure Cosmos Emulator wilt starten, selecteert u de Start-knop of drukt u op de Windows-toets. Begin met het typen van **Azure Cosmos Emulator** en selecteer de emulator in de lijst met toepassingen.
 
-![Selecteer de Start-knop of druk op de Windows-toets, begin met het typen van **Azure Cosmos Emulator** en selecteer de emulator in de lijst met toepassingen](./media/local-emulator/database-local-emulator-start.png)
+:::image type="content" source="./media/local-emulator/database-local-emulator-start.png" alt-text="Selecteer de knop Start of druk op de Windows-toets, begin met het typen van de Azure Cosmos-emulator en selecteer de emulator in de lijst met toepassingen":::
 
-Wanneer de emulator wordt gestart, ziet u een pictogram in het systeemvak op de taakbalk van Windows. ![Melding in systeemvak van lokale Azure Cosmos Emulator](./media/local-emulator/database-local-emulator-taskbar.png)
+Wanneer de emulator wordt gestart, ziet u een pictogram in het systeemvak op de taakbalk van Windows. 
+
+:::image type="content" source="./media/local-emulator/database-local-emulator-taskbar.png" alt-text="Melding in systeemvak van lokale Azure Cosmos Emulator":::
 
 Azure Cosmos Emulator wordt standaard uitgevoerd op de lokale computer ('localhost') en luistert op poort 8081.
 
@@ -222,7 +224,7 @@ Start de emulator als beheerder vanaf de opdrachtprompt met '/EnableGremlinEndpo
 
 Om een certificaat te verkrijgen voor gebruik bij talen en runtimes die niet worden geïntegreerd in het certificaatarchief van Windows, moet u het exporteren met behulp van de Windows Certificate Manager. U kunt dit proces starten door certlm.msc uit te voeren of door de stapsgewijze instructies te volgen in [De Azure Cosmos Emulator-certificaten exporteren](./local-emulator-export-ssl-certificates.md). Zodra de certificaatmanager wordt uitgevoerd, opent u de persoonlijke certificaten zoals hieronder weergegeven en exporteert u het certificaat met de beschrijvende naam 'DocumentDBEmulatorCertificate' als een BASE 64-gecodeerd X.509-bestand (.cer).
 
-![TLS/SSL-certificaat voor lokale Azure Cosmos Emulator](./media/local-emulator/database-local-emulator-ssl_certificate.png)
+:::image type="content" source="./media/local-emulator/database-local-emulator-ssl_certificate.png" alt-text="TLS/SSL-certificaat voor lokale Azure Cosmos Emulator":::
 
 Volg de instructies in [Een certificaat toevoegen aan het Java CA-certificaatarchief](https://docs.microsoft.com/azure/java-add-certificate-ca-store) om het X.509-certificaat te importeren in het Java-certificaatarchief. Zodra het certificaat is geïmporteerd in het certificaatarchief, kunnen clients voor de SQL-API en de Azure Cosmo API voor MongoDB verbinding maken met Azure Cosmos Emulator.
 
@@ -470,7 +472,7 @@ Als u werkt met Linux, vertrouwt .NET op OpenSSL voor de validatie:
    update-ca-certificates
    ```
 
-### <a name="mac-os"></a>Mac OS
+### <a name="macos"></a>macOS
 
 Voer de volgende stappen uit als u werkt met een Mac:
 

@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 03/23/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: 2d78a7e0eaed27fec7f813fa3e6bffaffe5a6540
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 09d2fb709e21b7c1251c2caf224f4d5c3ce6aea1
+ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82186166"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86026573"
 ---
 # <a name="azure-security-baseline-for-azure-database-for-mariadb"></a>Azure-beveiligings basislijn voor Azure Database for MariaDB
 
@@ -1014,19 +1014,10 @@ Meer informatie over back-up en herstel in Azure Database for MariaDB:https://do
 ### <a name="101-create-an-incident-response-guide"></a>10,1: een hand leiding voor reactie op incidenten maken
 
 **Hulp**: een antwoord gids voor incidenten maken voor uw organisatie. Zorg ervoor dat er schriftelijke incidenten abonnementen zijn die alle werk rollen definiëren, evenals fasen van incident handling/management van detectie tot een beoordeling van het incident.
-    
 
-    Guidance on building your own security incident response process: https://msrc-blog.microsoft.com/2019/07/01/inside-the-msrc-building-your-own-security-incident-response-process/
-
-    
-
-    Microsoft Security Response Center's Anatomy of an Incident: https://msrc-blog.microsoft.com/2019/06/27/inside-the-msrc-anatomy-of-a-ssirp-incident/
-
-    
-
-    Customer may also leverage NIST's Computer Security Incident Handling Guide to aid in the creation of their own incident response plan: https://csrc.nist.gov/publications/detail/sp/800-61/rev-2/final 
-
-
+- Richt lijnen voor het bouwen van uw eigen beveiligings incident antwoord proces:https://msrc-blog.microsoft.com/2019/07/01/inside-the-msrc-building-your-own-security-incident-response-process/
+- Micro soft Security Response Center anatomie van een incident:https://msrc-blog.microsoft.com/2019/06/27/inside-the-msrc-anatomy-of-a-ssirp-incident/
+- De klant kan ook gebruikmaken van de hand leiding voor de verwerking van het computer beveiligings incident van het NIST om hulp te bieden bij het maken van een eigen reactie plan voor incidenten:https://csrc.nist.gov/publications/detail/sp/800-61/rev-2/final 
 
 **Azure Security Center bewaking**: niet van toepassing
 
@@ -1035,17 +1026,12 @@ Meer informatie over back-up en herstel in Azure Database for MariaDB:https://do
 ### <a name="102-create-an-incident-scoring-and-prioritization-procedure"></a>10,2: een beoordelings procedure voor incidenten en prioriteits procedures maken
 
 **Hulp**: Security Center wijst aan elke waarschuwing een Ernst toe om u te helpen bepalen welke waarschuwingen het eerst moeten worden onderzocht. De ernst is gebaseerd op de manier waarop vertrouwen Security Center is in de zoek actie of het analyse programma dat wordt gebruikt om de waarschuwing te geven, evenals het betrouwbaarheids niveau dat er schadelijke bedoelingen zijn achter de activiteit die tot de waarschuwing heeft geleid. 
-    
 
-    Additionally, clearly mark subscriptions (for ex. production, non-prod) using tags and create a naming system to clearly identify and categorize Azure resources, especially those processing sensitive data.  It is your responsibility to prioritize the remediation of alerts based on the criticality of the Azure resources and environment where the incident occurred.
+Daarnaast kunt u ook duidelijk abonnementen markeren (voor bijvoorbeeld productie, niet-productie) met behulp van tags en maak een naamgevings systeem om Azure-resources duidelijk te identificeren en te categoriseren, met name voor de verwerking van gevoelige gegevens.  Het is uw verantwoordelijkheid om prioriteit te geven aan het herstel van waarschuwingen op basis van de ernst van de Azure-resources en-omgeving waar het incident heeft plaatsgevonden.
 
-    
+- Beveiligings waarschuwingen in Azure Security Center:https://docs.microsoft.com/azure/security-center/security-center-alerts-overview
 
-    Security alerts in Azure Security Center: https://docs.microsoft.com/azure/security-center/security-center-alerts-overview
-
-    
-
-Tags gebruiken om uw Azure-resources te organiseren:https://docs.microsoft.com/azure/azure-resource-manager/resource-group-using-tags
+- Tags gebruiken om uw Azure-resources te organiseren:https://docs.microsoft.com/azure/azure-resource-manager/resource-group-using-tags
 
 **Azure Security Center bewaking**: Ja
 
@@ -1054,11 +1040,8 @@ Tags gebruiken om uw Azure-resources te organiseren:https://docs.microsoft.com/a
 ### <a name="103-test-security-response-procedures"></a>10,3: procedures voor beveiligings antwoorden testen
 
 **Richt lijnen**: oefent oefeningen uit om de respons mogelijkheden van uw systeem te testen op een reguliere uitgebracht om uw Azure-resources te beschermen. Identificeer zwakke punten en tussen ruimten en wijzig zo nodig het schema.
-    
 
-    Refer to NIST's publication: Guide to Test, Training, and Exercise Programs for IT Plans and Capabilities: https://nvlpubs.nist.gov/nistpubs/Legacy/SP/nistspecialpublication800-84.pdf
-
-
+- Raadpleeg de publicatie van het NIST: hand leiding voor het testen, trainen en uitoefenen van Program Ma's voor IT-plannen en-mogelijkheden:https://nvlpubs.nist.gov/nistpubs/Legacy/SP/nistspecialpublication800-84.pdf
 
 **Azure Security Center bewaking**: niet van toepassing
 
@@ -1067,11 +1050,8 @@ Tags gebruiken om uw Azure-resources te organiseren:https://docs.microsoft.com/a
 ### <a name="104-provide-security-incident-contact-details-and-configure-alert-notifications-for-security-incidents"></a>10,4: contact gegevens van het beveiligings incident opgeven en waarschuwings meldingen configureren voor beveiligings incidenten
 
 **Hulp**: contact gegevens van beveiligings incidenten worden door micro soft gebruikt om contact met u op te nemen als het micro soft Security Response Center (MSRC) detecteert dat uw gegevens zijn geopend door een onrecht matige of niet-gemachtigde partij. Bekijk incidenten na het feit om te controleren of de problemen zijn opgelost.
-    
 
-    How to set the Azure Security Center Security Contact: https://docs.microsoft.com/azure/security-center/security-center-provide-security-contact-details
-
-
+- De Azure Security Center Security-contact persoon instellen:https://docs.microsoft.com/azure/security-center/security-center-provide-security-contact-details
 
 **Azure Security Center bewaking**: Ja
 
@@ -1080,15 +1060,9 @@ Tags gebruiken om uw Azure-resources te organiseren:https://docs.microsoft.com/a
 ### <a name="105-incorporate-security-alerts-into-your-incident-response-system"></a>10,5: beveiligings waarschuwingen opnemen in uw reactie systeem van uw incident
 
 **Hulp**: exporteer uw Azure Security Center waarschuwingen en aanbevelingen met behulp van de functie continue export om Risico's voor Azure-resources te identificeren. Met doorlopend exporteren kunt u waarschuwingen en aanbevelingen hand matig of op een doorlopende manier exporteren. U kunt de Azure Security Center Data Connector gebruiken om de waarschuwingen naar Azure Sentinel te streamen.
-    
 
-    How to configure continuous export: https://docs.microsoft.com/azure/security-center/continuous-export
-
-    
-
-    How to stream alerts into Azure Sentinel: https://docs.microsoft.com/azure/sentinel/connect-azure-security-center
-
-
+- Continue export configureren:https://docs.microsoft.com/azure/security-center/continuous-export
+- Waarschuwingen streamen naar Azure Sentinel:https://docs.microsoft.com/azure/sentinel/connect-azure-security-center
 
 **Azure Security Center bewaking**: niet van toepassing
 

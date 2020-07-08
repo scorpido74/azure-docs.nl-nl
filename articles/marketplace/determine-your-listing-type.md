@@ -5,14 +5,14 @@ author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
-ms.date: 04/14/2020
+ms.date: 06/22/2020
 ms.author: dsindona
-ms.openlocfilehash: 92a24a59038eb74a6a2f6a738005ff8aadf35ff0
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: 457ff90c21fee2b569fa24d90fffc6ce80cdf969
+ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83658057"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86027100"
 ---
 # <a name="determine-your-publishing-option"></a>Uw publicatieoptie bepalen
 
@@ -56,7 +56,7 @@ Voordat u een publicatie optie selecteert, is het belang rijk om inzicht te krij
 **Azure Marketplace** -toepassingen zijn technische oplossingen voor bouw stenen die zijn gebaseerd op of gebaseerd op Azure en die bedoeld zijn voor een IT-of ontwikkelaars doelgroep. Azure Marketplace Consulting Services zijn Professional Services-aanbiedingen waarmee klanten aan de slag kunnen met het gebruik van Azure.
 
 >[!Note]
->Cross-List (alleen voor SaaS-apps): wanneer een lijst of een op een proef versie gebaseerd aanbod voldoet aan de criteria voor een publiek van technische en zakelijke gebruikers, wordt uw aanbieding vermeld in beide winkel. Meer informatie over de onderstaande publicatie opties.
+>' Cross-List ' (alleen voor SaaS-apps): als uw SaaS-aanbieding is bedoeld voor een technisch publiek (Azure Marketplace) en een bedrijfs doel (AppSource), kunt u een categorie en/of subcategorie selecteren die van toepassing zijn op de winkel. Mindful dat de bedoeling van ' cross-List ' uw aanbieding moet zijn gebaseerd op een toegevoegde waarde die wordt uitgebreid naar beide doel groepen. Klik [hier](./gtm-offer-listing-best-practices.md#categories) om de categorieën weer te geven die van toepassing zijn op elke winkel.
 
 ## <a name="choose-a-publishing-option"></a>Een publicatie optie kiezen
 
@@ -64,7 +64,7 @@ De beschik bare publicatie opties bieden een gedifferentieerde klant betrokkenhe
 
 | **Publicatie optie**    | **Beschrijving**  |
 | :------------------- | :-------------------|
-| **Orderverzamellijst** | Eenvoudige vermelding van uw toepassing of service waarmee een commerciële Marketplace-gebruiker u kan vragen om verbinding te maken met de klant via de **contact persoon die mij** aanroept. |
+| **List** | Eenvoudige vermelding van uw toepassing of service waarmee een commerciële Marketplace-gebruiker u kan vragen om verbinding te maken met de klant via de **contact persoon die mij** aanroept. |
 | **Proefversie** | Gebruik de commerciële Marketplace voor het verbeteren van de detectie en het automatiseren van het inrichten van de proef ervaring van uw oplossing, waardoor potentiële gebruikers uw SaaS, IaaS of micro soft in-app-ervaring gratis kunnen gebruiken voor een beperkte periode voordat ze worden gekocht. De aanroep-to-action die wordt gebruikt voor de optie voor het publiceren van de proef versie, is een **gratis proef versie** of een **test station**. |
 | **BYOL** | Gebruik de commerciële Marketplace om de detectie en het automatiseren van de inrichting van uw oplossing te verbeteren en de financiële trans actie afzonderlijk te volt ooien. BYOL-aanbiedings typen zijn ideaal voor on-premises naar Cloud migraties. De aanroep-to-Action wordt **nu ontvangen**.
 | **Trans** | Aanbiedingen voor de Transact worden verkocht via de commerciële Marketplace. Micro soft is verantwoordelijk voor facturering en verzamelingen. De aanroep-to-Action wordt **nu ontvangen**.|

@@ -10,12 +10,12 @@ ms.topic: article
 ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: 88e9cdfa8ea4554a44ddfc25cde2b0eb2aed7a57
-ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
+ms.openlocfilehash: a9528b31bfd1be40b478f3c47fd0a16047a7f6ff
+ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83682696"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86028120"
 ---
 # <a name="platforms-and-tools-for-data-science-projects"></a>Platformen en hulpprogram ma's voor data Science-projecten
 
@@ -110,16 +110,18 @@ Het TDSP-team van micro soft heeft twee end-to-end-procedures gepubliceerd die l
 
 Als u de TDSP in **Windows**volgt, moet u de **Git CREDENTIAL Manager (GCM)** installeren om te communiceren met de Git-opslag plaatsen. Als u GCM wilt installeren, moet u eerst **chocolaty**installeren. Als u chocolaty en GCM wilt installeren, voert u de volgende opdrachten uit in Windows Power shell als **beheerder**:  
 
-    iwr https://chocolatey.org/install.ps1 -UseBasicParsing | iex
-    choco install git-credential-manager-for-windows -y
-    
+```powershell
+iwr https://chocolatey.org/install.ps1 -UseBasicParsing | iex
+choco install git-credential-manager-for-windows -y
+```  
 
 ### <a name="install-git-on-linux-centos-machines"></a>Git installeren op Linux-machines (CentOS)
 
 Voer de volgende bash-opdracht uit om Git op Linux-machines (CentOS) te installeren:
 
-    sudo yum install git
-
+```powershell
+sudo yum install git
+```
 
 ### <a name="generate-public-ssh-key-on-linux-centos-machines"></a>Open bare SSH-sleutel op Linux-machines (CentOS) genereren
 

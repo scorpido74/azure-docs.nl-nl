@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 06/18/2020
 ms.author: xiaojul
-ms.openlocfilehash: eb2a7d4f83b3d8bda0d06e14b4dab9bb4872885e
-ms.sourcegitcommit: fdaad48994bdb9e35cdd445c31b4bac0dd006294
+ms.openlocfilehash: 0197bb81fdba8bab20742d95aebaa2028bb90c18
+ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/26/2020
-ms.locfileid: "85414280"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86027678"
 ---
 # <a name="set-up-web-endpoints"></a>Webeindpunten instellen
 
@@ -46,11 +46,12 @@ In dit artikel leert u hoe u Web-eind punten kunt instellen in een toepassing me
    | Naam | UpdateDeviceState | Naam voor het eind punt van de website. |
    | URL | https://webendpointexample.azurewebsites.net/api/DeviceState | De URL van het eind punt waarop u wilt communiceren met uw aangepaste opdracht-app. |
    | Methode | POST | De toegestane interacties (zoals GET, POST) met uw eind punt.|
-   | Headers | Sleutel: app, waarde: een unieke naam voor uw app | De header-para meters die moeten worden meegenomen in de aanvraag header.|
+   | Headers | Sleutel: app, waarde: Neem de eerste acht cijfers van uw applicationId op | De header-para meters die moeten worden meegenomen in de aanvraag header.|
 
     > [!NOTE]
     > - Het voor beeld-webeindpunt dat is gemaakt met behulp van [Azure function](https://docs.microsoft.com/azure/azure-functions/), waarmee de status van de apparaat-en ventilator wordt opgeslagen in de data base
     > - De voorgestelde header is alleen nodig voor het voorbeeld eindpunt
+    > - Om ervoor te zorgen dat de waarde van de header uniek is in het voor beeld-eind punt, neemt u de eerste acht cijfers van uw applicationId op
     > - In de praktijk kan het eind punt van het Web het eind punt zijn voor de [IOT-hub](https://docs.microsoft.com/azure/iot-hub/about-iot-hub) waarmee uw apparaten worden beheerd
 
 1. Klik op **Opslaan**.
@@ -74,6 +75,8 @@ In dit artikel leert u hoe u Web-eind punten kunt instellen in een toepassing me
     > - De voorgestelde query parameters zijn alleen nodig voor het voorbeeld eindpunt
 
 1. In **bij geslaagde actie om uit te voeren**, selecteert u **spraak antwoord verzenden**.
+    
+    Voer in **eenvoudige editor**in `{SubjectDevice} is {OnOff}` .
    
    > [!div class="mx-imgBorder"]
    > ![De actie Web-eind punten aanroepen bij een geslaagde poging](media/custom-commands/setup-web-endpoint-edit-action-on-success-send-response.png)
@@ -86,6 +89,9 @@ In dit artikel leert u hoe u Web-eind punten kunt instellen in een toepassing me
    > - U kunt de velden in het HTTP-antwoord ook rechtstreeks openen met behulp van `{YourWebEndpointName.FieldName}` . Bijvoorbeeld: `{UpdateDeviceState.TV}`
 
 1. Selecteer in **bij fout-actie om uit te voeren**de optie **spraak antwoord verzenden**
+
+    Voer in **eenvoudige editor**in `Sorry, {WebEndpointErrorMessage}` .
+
    > [!div class="mx-imgBorder"]
    > ![Actie voor het aanroepen van web-eind punten bij een fout](media/custom-commands/setup-web-endpoint-edit-action-on-fail.png)
 

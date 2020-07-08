@@ -8,12 +8,12 @@ ms.topic: troubleshooting
 ms.date: 03/30/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 124d81651cd937dc9671f725f54826b1ff9a42a5
-ms.sourcegitcommit: f98ab5af0fa17a9bba575286c588af36ff075615
+ms.openlocfilehash: aad3bffeba4395ba415fb99a3667d04d18769a47
+ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/25/2020
-ms.locfileid: "85362319"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86026692"
 ---
 # <a name="tenant-and-host-pool-creation"></a>Tenants en hostpools maken
 
@@ -405,6 +405,12 @@ Als u de GitHub-Azure Resource Manager sjabloon uitvoert, geeft u waarden op voo
 - Wacht woord voor Tenant beheerder: het wachtwoord geheim dat u hebt gegenereerd voor de Service-Principal
 - IsServicePrincipal: **True**
 - AadTenantId: de Azure AD-Tenant-ID van de service-principal die u hebt gemaakt
+
+### <a name="error-vmsubnet-not-available-when-configuring-virtual-networks"></a>Fout: het VM-subnet is niet beschikbaar bij het configureren van virtuele netwerken
+
+**Oorzaak:** In de sjabloon WVD Marketplace worden alleen subnetten weer gegeven met ten minste zoveel IP-adressen als het totale aantal virtuele machines dat is opgegeven in de sjabloon. Het werkelijke aantal beschik bare IP-adressen in het subnet hoeft alleen gelijk te zijn aan het aantal nieuwe Vm's dat wordt geïmplementeerd, maar dit kan niet worden berekend door de huidige gebruikers interface.
+
+**Oplossen:** U kunt een subnet opgeven met ten minste zoveel IP-adressen als het aantal Vm's dat wordt toegevoegd door niet gebruik te maken van de Marketplace-gebruikers interface. Dit kan worden gedaan door de naam van het subnet op te geven in de para meter "**existingSubnetName**" wanneer u [een bestaande implementatie opnieuw implementeert](expand-existing-host-pool-2019.md#redeploy-from-azure) of [implementeert met BEhulp van de onderliggende arm-sjabloon van github](create-host-pools-arm-template.md#run-the-azure-resource-manager-template-for-provisioning-a-new-host-pool).
 
 ## <a name="next-steps"></a>Volgende stappen
 

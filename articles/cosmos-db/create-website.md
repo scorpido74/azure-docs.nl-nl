@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: how-to
 ms.date: 06/19/2020
 ms.author: mjbrown
-ms.openlocfilehash: 30a80a2e2eb5522768c08a24535b0fb3f8d86a44
-ms.sourcegitcommit: 635114a0f07a2de310b34720856dd074aaf4f9cd
+ms.openlocfilehash: 5038d9968e37b956774d1c5f8abdb14865422e8b
+ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/23/2020
-ms.locfileid: "85261984"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86027744"
 ---
 # <a name="deploy-azure-cosmos-db-and-azure-app-service-with-a-web-app-from-github-using-an-azure-resource-manager-template"></a>Azure Cosmos DB en Azure App Service met een web-app implementeren vanuit GitHub met behulp van een Azure Resource Manager-sjabloon
 
@@ -36,7 +36,7 @@ De resulterende implementatie heeft een volledig functionele webtoepassing die v
 
 Selecteer eerst de onderstaande knop **implementeren naar Azure** om de Azure portal te openen voor het maken van een aangepaste implementatie. U kunt ook de Azure resource management-sjabloon bekijken in de [Galerie met Azure Quick](https://github.com/Azure/azure-quickstart-templates/tree/master/101-cosmosdb-webapp) start-sjablonen
 
-[![Implementeren in azure](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/1-CONTRIBUTION-GUIDE/images/deploytoazure.svg?sanitize=true)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-cosmosdb-webapp%2Fazuredeploy.json)
+[:::image type="content" source="../media/template-deployments/deploy-to-azure.svg" alt-text="Implementeren in Azure":::](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-cosmosdb-webapp%2Fazuredeploy.json)
 
 Selecteer in de Azure Portal het abonnement dat u wilt implementeren en selecteer of maak een nieuwe resource groep. Vul vervolgens de volgende waarden in.
 
@@ -64,7 +64,7 @@ Nadat u de waarden hebt ingevuld, selecteert u de knop **maken** om de implement
 
 Wanneer de resources zijn geïmplementeerd met de sjabloon, kunt u deze nu weer geven in de resource groep.
 
-:::image type="content" source="./media/create-website/resource-group.png" alt-text="Resource groep":::
+:::image type="content" source="./media/create-website/resource-group.png" alt-text="Resourcegroep":::
 
 ### <a name="view-cosmos-db-endpoint-and-keys"></a>Cosmos DB-eind punt en-sleutels weer geven
 

@@ -1,18 +1,18 @@
 ---
 title: Aanbevolen procedures voor aanbiedingen-micro soft Commercial Marketplace
 description: Meer informatie over de beste prak tijken van Go-to-Market voor uw Microsoft AppSource en Azure Marketplace-aanbiedingen.
-author: qianw211
+author: anbene
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
-ms.date: 04/16/2020
+ms.date: 07/06/2020
 ms.author: dsindona
-ms.openlocfilehash: 33effe0bbc566880b147c377b3bb130cd81999c8
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
+ms.openlocfilehash: 60f9630b58250bdae4c382e61697f7abd53e036d
+ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83740770"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86027066"
 ---
 # <a name="offer-listing-best-practices"></a>Best practices voor aanbiedingsvermeldingen
 
@@ -22,47 +22,173 @@ Dit artikel bevat suggesties voor het maken en aanbieden van commerciële Market
 
 | Winkel instelling | Best practice |
 |:--- |:--- |  
-| Naam van aanbieding | Geef een sterke titel op:<br> <ul> <li> De naam van uw app moet de kern waarde voor uw klanten door geven. </li> <li> Neem Zoek woorden op in de titel van de app om een hogere classificatie te krijgen in resultaten van de zoek machine. </li> </ul> Volg de titel notatie instellen voor advies over service voorbeelden:<br>[Naam aanbieding: [duur] [aanbiedings type] (bijvoorbeeld *contoso: implementatie van 2 weken*) <br><br> Voldoen aan de merk richtlijnen:<br>Volg de [richt lijnen van het handels merk en merk van micro soft](https://www.microsoft.com/en-us/legal/intellectualproperty/trademarks/usage/general.aspx) en andere relevante richt lijnen die specifiek zijn voor het product wanneer u verwijst naar handels merken van micro soft en de namen van micro soft-software,-producten en-services. |
-| Beschrijving van aanbieding | Geef een beschrijving van een duidelijk aanbod op:<br> <ul> <li> Beschrijf duidelijk de toegevoegde waarde van uw aanbieding in de eerste paar zinnen van uw beschrijving. </li> <li> Houd er rekening mee dat de eerste paar zinnen kunnen worden weer gegeven in de resultaten van de zoek machine. </li> <li> Vertrouw niet op functies en functionaliteit om uw product te verkopen. Richt u in plaats daarvan op de waarde die u levert. </li> <li> Gebruik zo veel mogelijk branchespecifieke woorden lijst of op basis van voor delen.</li> <li> Daarnaast moeten service voorbeelden van Consulting de door u geboden professionele service duidelijk vermelden. </li></ul> De belangrijkste onderdelen van de toegevoegde waarde moeten de volgende informatie bevatten:<ul><li>Beschrijving van het product.</li><li>Het type gebruiker dat voor deel is van het product.</li><li>De klant nodig heeft of pijnt dat de product adressen.</li></ul> |
+| Naam van aanbieding | Geef voor apps een duidelijke titel op die Zoek woorden bevat waarmee klanten uw aanbieding kunnen ontdekken. <br> <br> Voor advies Services gaat u als volgt te werk: [naam aanbieding: [duration] [aanbiedings type] (bijvoorbeeld contoso: implementatie 2 weken) <br> <br> Voldoen aan de merk richtlijnen: Volg de [richt lijnen voor handels merken en merken van micro soft](https://www.microsoft.com/en-us/legal/intellectualproperty/trademarks/usage/general.aspx) en andere relevante, productspecifieke richt lijnen bij het verwijzen naar handels merken van micro soft en de namen van micro soft-software,-producten en-services. |
+| Beschrijving van aanbieding | Geef een duidelijke beschrijving van de toegevoegde waarde van uw aanbieding in de eerste paar zinnen.  Houd er rekening mee dat deze zinnen kunnen worden gebruikt in resultaten van de zoek machine. De belangrijkste onderdelen van de toegevoegde waarde zijn: <ul> <li>Beschrijving van het product of de oplossing. </li> <li> Gebruikers die profiteren van het product of de oplossing. </li> <li> Klanten behoefte hebben of pijnen van de product-of oplossings adressen. </li> </ul> <br> Gebruik, indien mogelijk, terminologie op basis van de industrie norm of op voor delen.  Vertrouw niet op functies en functionaliteit om uw product te verkopen.  Richt u in plaats daarvan op de waarde die u levert. <br> <br> Voor advies Services moet u de professionele service die u levert duidelijk vermelden. |
 
 De tabellen in deze sectie bieden suggesties voor het maken en aanbieden van Marketplace-aanbiedingen. Als u uw marketing materiaal wilt schrijven en configureren, gaat u naar het [partner centrum](https://partner.microsoft.com/dashboard/commercial-marketplace/). 
 
 ## <a name="storefront-listing-details"></a>Details van de winkel vermelding
 
-| Winkel instelling | Best practice |
-|:--- |:--- |  
-| Branches: alleen Microsoft AppSource-apps en Consulting Services | Selecteer branches als uw aanbieding gericht is op de behoeften van de branche: <ul><li> Noem branchespecifieke mogelijkheden in de beschrijving van uw aanbieding.</li> </ul> **Opmerking**: het maximum aantal opties is afhankelijk van het aanbiedings type en wordt aangegeven in het [partner centrum](https://partner.microsoft.com/dashboard/commercial-marketplace/). |
-| Categorieën | Selecteer categorieën die het beste overeenkomen met uw aanbieding:<br> <ul> <li> Kies de categorieën zorgvuldig, omdat klanten deze gebruiken om te zoeken naar relevante apps. </li> <li> Zorg ervoor dat u uitbelt hoe uw aanbod categorie-specifieke behoeften ondersteunt in de beschrijving van de aanbieding. </li> </ul> **Opmerking**: het maximum aantal opties is afhankelijk van het aanbiedings type en wordt aangegeven in het [partner centrum](https://partner.microsoft.com/dashboard/commercial-marketplace/). |
-| Producten waarvoor uw app werkt (3 Max.): alleen AppSource-apps | Vermeld aanvullende producten en technologieën die uw oplossing gebruikt of uitbreidt. Bijvoorbeeld Azure IoT Hub of Azure Machine Learning. |
-| Tref woorden zoeken (Maxi maal 3) | Met tref woorden zoeken kunnen zakelijke gebruikers uw aanbieding vinden tijdens het zoeken <ul>  <li>op Microsoft AppSource</li> <li>in azure Marketplace</li><li>Zoek machines gebruiken</li> </ul> Als u uw vermelding wilt weer geven in deze Zoek opdrachten, moet u het volgende doen: <ul> <li> Identificeer de eerste drie Zoek trefwoorden voor uw aanbieding. </li> <li> de zoek woorden opnemen in de samen vatting en beschrijving van uw aanbieding; </li> <li> noem hier de tref woorden. </li> </ul> |
+Categorieën en branches voor een andere winkel zijn van toepassing op verschillende typen aanbiedingen.
 
-### <a name="category"></a>Categorie
+|  | **Categorieën <br> per winkel** |  | **Branches <br> voor AppSource** |
+| :------------------- |:----------------:|:------:|:-------------:|
+| **Aanbiedings type**   |  **Azure Marketplace**  | **AppSource**  |
+| Azure-app | X | |
+| Container | X | |
+| Adviesservices | | | X |
+| Dynamics 365 Customer engagement & Power platform | | X | X |
+| Dynamics 365-Financiën & Supply Chain Management | | X | X | 
+| Dynamics 365 Business Central | | X | X |
+| IoT Edge modules | X | |
+| Power BI | | X | X |
+| SaaS | X | X | X |
+| Virtuele Azure-machine |  X |    |
 
-Microsoft AppSource en Azure Marketplace zijn winkelen die verschillende en unieke klant vereisten bieden. Kies de juiste winkel en categorieën voor elke aanbieding om uw klanten te richten op rol. 
+### <a name="categories"></a>Categorieën
 
-U kunt Maxi maal twee categorieën en twee subcategorieën voor een aanbieding selecteren. De categorieën en subcategorieën die hieronder worden weer gegeven, zijn beschikbaar in beide-winkels.  Zorg ervoor dat uw categorie selectie is afgestemd op de beoogde doel groep, de beschrijving van de aanbieding en de toegevoegde waarde van uw aanbieding.
+Microsoft AppSource en Azure Marketplace zijn twee verschillende winkels die unieke klant vereisten bieden. Azure Marketplace streeft ernaar IT-professionals en ontwikkel aars bij het bouwen van oplossingen op Azure.  Microsoft AppSource streeft naar zakelijke gebruikers die op zoek zijn naar zakelijke en/of hoogopgeleide SaaS-toepassingen, een Dynamics 365-invoeg toepassing, Microsoft 365-invoeg toepassingen en Power platform-apps.
 
-| **Branche**    | **Subsector**  | 
-| :------------------- | :-------------------|
-| * Automobiel     | * Automobiel |
-| Landbouw     | * Overig-niet-gesegmenteerd |
-| Distributie    | * Groot handel <br> * Pakket verzen ding van Parcel & |
-| Onderwijs     | * Hoger onderwijs <br> * Primaire & secundair onderwijs/K-12 <br> * Bibliotheken & musea |
-| Financiële diensten     | * Bankieren & kapitaal markten <br> * Verzekering |
-| Overheid    | * Verdediging &e intelligentie (gebruikt voor de zogenaamde nationale en open bare veiligheid) <br> * Open bare veiligheid & rechtvaardigheid <br> * Burger overheid |
-| Gezondheids zorg (gebruikt voor de status)   | * Status betaler <br> * Health-provider <br> * Farmaceutische producten |
-| Resources voor productie & (gebruikt voor de zogenaamde productie)   | * Chemisch & Agrochemical <br> * Discrete productie <br> * Energie |
-| Retail & consumenten goederen (gebruikt voor de verkoop van Retail)  | * Consumenten goederen <br> * Detail handelaren |
-| * Media & communicatie (gebruikt voor het noemen van media en entertainment)  | * Media & entertainment <br> * Telecommunicatie |
-| Professionele services  | * Juridisch <br> * Partner Professional-Services |
-| * Architectuur & constructie (wordt gebruikt als architectuur techniek)  | * Overig-niet-gesegmenteerd |
-| * Horeca & reizen  | * Hotels & vrije tijd <br> * Reis & transport <br> * Restaurants & voedsel Services |
-| * Andere branches uit de open bare sector  | * Bosbouw & visserij <br> * Non-profit organisaties |
-| * Onroerend goed  | * Overig-niet-gesegmenteerd |
+Categorieën en subcategorieën worden toegewezen aan elke winkel op basis van de doel groep. Uw aanbieding wordt gepubliceerd op Microsoft AppSource of Azure Marketplace, afhankelijk van het type aanbieding, de transactie mogelijkheden van de aanbieding en categorie/subcategorie. 
+
+Selecteer categorieën en subcategorieën die het beste aansluiten bij uw aanbieding en uw beoogde doel groep. U kunt het volgende selecteren:
+
+* Maxi maal twee (2) categorieën, met inbegrip van een primaire en secundaire categorie (optioneel).
+* Maxi maal twee (2) subcategorieën voor elke primaire en/of secundaire categorie. Als er geen subcategorie is geselecteerd, kunt u nog steeds alleen de geselecteerde categorie detecteerbaar maken.
+
+| [**Azure Marketplace**](https://azuremarketplace.microsoft.com/marketplace/apps) (IT-professionals en ontwikkel aars)  | [**AppSource**](https://appsource.microsoft.com/marketplace/apps) (zakelijke gebruikers)|
+| :------------------- |:----------------|
+|**Analyse** | **Analyse** |
+| &nbsp;&nbsp;Gegevens inzichten | &nbsp;&nbsp;Geavanceerde analyse  |
+| &nbsp;&nbsp;Gegevens analyse |  &nbsp;&nbsp;Visualisatie & rapportage |
+| &nbsp;&nbsp;Big Data | **AI en Machine Learning**  |
+| &nbsp;&nbsp;Voorspellende analyse | &nbsp;&nbsp;AI voor bedrijven |
+| &nbsp;&nbsp;Analyse in realtime/streamen | &nbsp;&nbsp;Bot-apps |
+| **AI en Machine Learning** | **Samenwerking** |
+| &nbsp;&nbsp;Bot-service | &nbsp;&nbsp;Contact opnemen met & personen |
+| &nbsp;&nbsp;Cognitive Services | &nbsp;&nbsp;Beheer van vergaderingen |
+| &nbsp;&nbsp;ML-service | &nbsp;&nbsp;Beheer van site ontwerp & |
+| &nbsp;&nbsp;Automatische ML | &nbsp;&nbsp;Taak & project beheer |
+| &nbsp;&nbsp;Automatisering van zakelijke/geautomatiseerde processen | &nbsp;&nbsp;Video vergaderingen met spraak & |
+| &nbsp;&nbsp;Gegevens labelen | **Naleving & juridisch** |
+| &nbsp;&nbsp;Gegevens voorbereiding | &nbsp;&nbsp;Controle van belasting & |
+| &nbsp;&nbsp;Kennis analyse | &nbsp;&nbsp;Rechtmatig |
+| &nbsp;&nbsp;ML-bewerkingen | &nbsp;&nbsp;Gegevens, het governance & privacy |
+| **Blockchain**  | &nbsp;&nbsp;Gezondheids & veiligheid |
+| &nbsp;&nbsp;App-Accelerators | **Customer Service**  |
+| &nbsp;&nbsp;Groot boek met één knoop punt | &nbsp;&nbsp;Contact centrum |
+| &nbsp;&nbsp;Meerdere knoop punten in het groot boek | &nbsp;&nbsp;Gezicht to face-service |
+| &nbsp;&nbsp;Software | &nbsp;&nbsp;Back-up van Office & werknemers service |
+| **Compute**  | &nbsp;&nbsp;Case beheer kennis & |
+| &nbsp;&nbsp;Toepassings infrastructuur | &nbsp;&nbsp;Omnichannel-betrokkenheid van sociale media & |
+| &nbsp;&nbsp;Besturings systemen | **Financieel** |
+| &nbsp;&nbsp;Cache | &nbsp;&nbsp;Accounting |
+| **Containers**  | &nbsp;&nbsp;Asset Management |
+| &nbsp;&nbsp;Aan de slag met containers | &nbsp;&nbsp;Analyse, consolidatie & rapportage |
+| &nbsp;&nbsp;Container-apps | &nbsp;&nbsp;Tegoed & verzamelingen |
+| &nbsp;&nbsp;Container installatie kopieën | &nbsp;&nbsp;Nalevings & risico beheer |
+| **Databases**  | **Geolocatie** |
+| &nbsp;&nbsp;NoSQL-data bases | &nbsp;&nbsp;Hiermee |
+| &nbsp;&nbsp;Relationele data bases | &nbsp;&nbsp;Nieuws & weer |
+| &nbsp;&nbsp;Groot boek-Block chain data bases | **Human Resources** |
+| &nbsp;&nbsp;Data meren | &nbsp;&nbsp;Verwerving van talen |
+| &nbsp;&nbsp;Data Warehouse | &nbsp;&nbsp;Talen beheer |
+| **Ontwikkelhulpprogramma's**  | &nbsp;&nbsp;HR-bewerkingen |
+| &nbsp;&nbsp;Software | &nbsp;&nbsp;Personeel planning & Analytics |
+| &nbsp;&nbsp;Scriptmap | **&-beheer Hulpprogramma's** |
+| &nbsp;&nbsp;Ontwikkelaars service | &nbsp;&nbsp;Beheer oplossingen |
+| **DevOps**  | &nbsp;&nbsp;Business Applications |
+| **Integratie**  | **Internet of Things** |
+| &nbsp;&nbsp;Mede | &nbsp;&nbsp;& bewerkingen voor beheer van bedrijfs middelen |
+| **&-beheer Hulpprogramma's**  | &nbsp;&nbsp;Verbonden producten |
+| &nbsp;&nbsp;Beheer oplossingen | &nbsp;&nbsp;Intelligente toeleverings keten |
+| &nbsp;&nbsp;Business Applications | &nbsp;&nbsp;Voor speld onderhoud |
+| **Identiteit**  | &nbsp;&nbsp;Externe controle |
+| &nbsp;&nbsp;Toegangs beheer | &nbsp;&nbsp;Veiligheids & beveiliging |
+| **Internet of Things**  | &nbsp;&nbsp;Slimme infrastructuur resources & |
+| &nbsp;&nbsp;IoT-connectiviteit | &nbsp;&nbsp;Mobiele & mobiliteit |
+| &nbsp;&nbsp;IoT-kern Services | **Marketing** |
+| &nbsp;&nbsp;IoT Edge modules | &nbsp;&nbsp;Bekendmaking |
+| &nbsp;&nbsp;IoT-oplossingen | &nbsp;&nbsp;Analyse |
+| &nbsp;&nbsp;Visualisatie van gegevens analyse & | &nbsp;&nbsp;& automatisering van campagne beheer |
+| **Media**  | &nbsp;&nbsp;E-mail marketing |
+| &nbsp;&nbsp;Media Services | &nbsp;&nbsp;Gebeurtenissen & resource beheer |
+| &nbsp;&nbsp;Content Protection | &nbsp;&nbsp;Onderzoek & analyse |
+| &nbsp;&nbsp;Live & on-demand streaming | &nbsp;&nbsp;Sociale media |
+| **& diagnostische gegevens controleren**  | **Toeleverings keten van operations-&** |
+| **Migratie**  | &nbsp;&nbsp;Activum & productie beheer |
+| &nbsp;&nbsp;Gegevens migratie | &nbsp;&nbsp;Vraag prognose |
+| **Mixed Reality**  | &nbsp;&nbsp;& connectiviteit voor informatie beheer |
+| **Netwerken**  | &nbsp;&nbsp;&-rapportage plannen, kopen |
+| &nbsp;&nbsp;Toestel beheerders | &nbsp;&nbsp;Quality &-Service beheer |
+| &nbsp;&nbsp;Mogelijkheden | &nbsp;&nbsp;Order beheer voor verkoop & |
+| &nbsp;&nbsp;Brand | &nbsp;&nbsp;Trans Port-& magazijn beheer |
+| &nbsp;&nbsp;Load balancers | **Productiviteit** |
+| **Beveiliging**  | &nbsp;&nbsp;& beheer voor het maken van inhoud |
+| &nbsp;&nbsp;Toegangs beheer voor identiteits & | &nbsp;&nbsp;Document beheer |
+| &nbsp;&nbsp;Bedreigings beveiliging | &nbsp;&nbsp;E-mail beheer |
+| &nbsp;&nbsp;Information Protection | &nbsp;&nbsp;Vertaling van taal & |
+| **Storage**  | &nbsp;&nbsp;Naslag informatie over & zoeken |
+| &nbsp;&nbsp;Back-up & herstellen | &nbsp;&nbsp;Gamificatietoepassing |
+| &nbsp;&nbsp;Hybride opslag voor ondernemingen | **Sales** |
+| &nbsp;&nbsp;Bestanden delen | &nbsp;&nbsp;Televerkoop |
+| &nbsp;&nbsp;Beheer van gegevens levenscyclus | &nbsp;&nbsp;Configure, Price, quote (CPQ) |
+| **Web**  | &nbsp;&nbsp;Contract beheer |
+| &nbsp;&nbsp;Blogs & CMSs | &nbsp;&nbsp;VERPLAATST |
+| &nbsp;&nbsp;Starter Web Apps | &nbsp;&nbsp;E-commerce |
+| &nbsp;&nbsp;E-commerce | &nbsp;&nbsp;Verrijking van zakelijke gegevens  |
+| &nbsp;&nbsp;Web app-Frameworks | &nbsp;&nbsp;Verkoop activering  |
+| &nbsp;&nbsp;Web Apps |  |
+
+**BELANG rijk: SaaS-aanbiedingen en Microsoft 365-invoeg toepassingen**
+
+Raadpleeg de [hand leiding van het aanbiedings type](https://docs.microsoft.com/azure/marketplace/partner-center-portal/commercial-marketplace-overview) voor specifieke informatie over hoe de Transact-mogelijkheden kunnen beïnvloeden hoe uw aanbieding kan worden weer gegeven en gekocht door klanten van Marketplace. Voor SaaS-aanbiedingen is de transactie capaciteit van de aanbieding en de categorie selectie bepaalt de winkel waar uw aanbieding wordt gepubliceerd:
+
+| SaaS-aanbieding    |     |          |           |    |    |     | Toepasselijke winkel |              |
+|:-------------:|:---:|:--------:|:---------:|:--:|:--:|:---:|:---------------------:|:-------------:|
+| Factuur met data limiet | Microsoft 365-invoeg toepassingen | Contact opnemen | Transact (ten minste 1 abonnement) | Persoonlijk abonnement | Alleen openbaar abonnement | Privé-abonnementen openbaar & | AppSource | Azure Marketplace |
+|  | X |  |  |  |  |  | X |  |
+| X |  |  | X | X |  |  |  | X |
+| X |  |  | X |  | X |  |  | X |
+| X |  |  | X |  |  | X |  | X<sup>2</sup> |
+|  |  |  | X | X |  |  |  | X |
+|  |  |  | X |  | X |  | X<sup>1</sup> | X<sup>1</sup> |
+|  |  |  | X |  |  | X | X<sup>1</sup> | X<sup>1, 2</sup> |
+|  |  | X |  |  |  |  | x<sup>1</sup> | X<sup>1</sup> | 
+
+1. Afhankelijk van categorie/subcategorie en branche selectie
+2. Aanbiedingen met persoonlijke abonnementen worden gepubliceerd op de Azure Portal
+
 
 ### <a name="industries"></a>Bedrijfstakken
 
-Branche selectie geldt alleen voor aanbiedingen die zijn gepubliceerd op AppSource en Consulting Services die zijn gepubliceerd in azure Marketplace. Selecteer branches en/of verticaal als uw aanbieding gericht is op de behoeften van de branche en die branchespecifieke mogelijkheden in uw aanbiedings beschrijving aanroept. U kunt Maxi maal twee (2) sectoren selecteren en twee (2) verticaal per branche geselecteerd.
+Branche selectie geldt alleen voor aanbiedingen die zijn gepubliceerd op AppSource en Consulting Services die zijn gepubliceerd in azure Marketplace.  Selecteer branches en/of verticaal als uw aanbieding gericht is op de behoeften van de branche en die branchespecifieke mogelijkheden in uw aanbiedings beschrijving aanroept. U kunt Maxi maal twee (2) sectoren selecteren en twee (2) verticaal per branche geselecteerd.
+
+>[!Note]
+>Voor advies over service aanbiedingen in azure Marketplace zijn er geen verticale sectoren.
+
+| **Bedrijfstakken** |  **Sectoren** |
+| :------------------- | :----------------|
+| **Landbouw** | |
+| **Architectuur & constructie** | |
+| **Auto's** | |
+| **Distributie** | Handels <br> Pakket verzending van Parcel & |  
+| **Onderwijs** | Hoger onderwijs <br> Primaire & secundair edu/K-12 <br> Bibliotheken & musea |
+| **Financiële diensten** | Bank & kapitaal markten <br> Polis | 
+| **Overheid** |  Verdediging & Intelligence <br> Burger overheid <br> Open bare veiligheid & Justitie |
+| **Gezondheidszorg** | Status betaler <br> Health-provider <br> Pharmaceuticals | 
+| **Horeca & reizen** | Reis & vervoer <br> Hotels & vrije tijd <br> Restaurants & voedsel Services | 
+| **Resources voor productie &** | Chemische & Agrochemical <br> Discrete productie <br> Energie | 
+| **Media & communicatie** | Media & entertainment <br> Telecommunicatie | 
+| **Andere branches uit de open bare sector** | Bosbouw & visserij <br> Non-profit | 
+| **Professionele services** | Partner Professional-Services <br> Juridisch | 
+| **Onroerend goed** | |
+
+Alleen voor Microsoft AppSource:
+
+| **Branche** |  **Sectoren** |
+| :------------------- | :----------------|
+| **Retail & consumenten goederen** | Handelaren <br> Consumenten goederen |
 
 ### <a name="applicable-products"></a>Toepasselijke producten
 

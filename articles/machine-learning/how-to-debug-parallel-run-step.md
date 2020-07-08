@@ -6,21 +6,21 @@ services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: troubleshooting
-ms.reviewer: trbye, jmartens, larryfr, vaidyas
+ms.reviewer: trbye, jmartens, larryfr, vaidyas, laobri
 ms.author: trmccorm
 author: tmccrmck
-ms.date: 01/15/2020
-ms.openlocfilehash: 7f05133f15f1df39a61c34b43f18828ee494b735
-ms.sourcegitcommit: b55d1d1e336c1bcd1c1a71695b2fd0ca62f9d625
+ms.date: 07/06/2020
+ms.openlocfilehash: 870563a1a27ee00c2f14935e5200f722136011a1
+ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/04/2020
-ms.locfileid: "84433451"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86026998"
 ---
 # <a name="debug-and-troubleshoot-parallelrunstep"></a>Fout opsporing en problemen oplossen ParallelRunStep
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
 
-In dit artikel leert u hoe u fouten kunt opsporen en oplossen van de [ParallelRunStep](https://docs.microsoft.com/python/api/azureml-contrib-pipeline-steps/azureml.contrib.pipeline.steps.parallel_run_step.parallelrunstep?view=azure-ml-py) -klasse in de [Azure machine learning SDK](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py).
+In dit artikel leert u hoe u fouten kunt opsporen en oplossen van de [ParallelRunStep](https://docs.microsoft.com/python/api/azureml-pipeline-steps/azureml.pipeline.steps.parallel_run_step.parallelrunstep?view=azure-ml-py) -klasse in de [Azure machine learning SDK](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py).
 
 ## <a name="testing-scripts-locally"></a>Scripts lokaal testen
 
@@ -40,7 +40,7 @@ Vanwege de gedistribueerde aard van ParallelRunStep-taken zijn er logboeken van 
 
 Logboeken die zijn gegenereerd op basis van een invoer script met behulp van EntryScript-helper-en-afdruk instructies, worden in de volgende bestanden
 
-- `~/logs/user/<ip_address>/<node_name>.log.txt`: Dit zijn de logboeken die zijn geschreven van entry_script met behulp van de EntryScript-helper. Bevat ook print-instructie (stdout) van entry_script.
+- `~/logs/user/<ip_address>/<node_name>.log.txt`: Deze bestanden zijn de logboeken geschreven van entry_script met behulp van de EntryScript-helper. Bevat ook print-instructie (stdout) van entry_script.
 
 Er is sprake van een beknopt overzicht van fouten in uw script:
 
@@ -52,13 +52,13 @@ Voor meer informatie over fouten in uw script, geldt het volgende:
 
 Als u wilt weten hoe elk knoop punt het Score script heeft uitgevoerd, bekijkt u de afzonderlijke proces logboeken voor elk knoop punt. De proces logboeken kunnen worden gevonden in de `sys/node` map, gegroepeerd op worker-knoop punten:
 
-- `~/logs/sys/node/<node_name>.txt`: Dit bestand bevat gedetailleerde informatie over elke mini-batch, zoals deze wordt opgehaald of voltooid door een werk nemer. Voor elke mini-batch bestaat dit bestand uit:
+- `~/logs/sys/node/<node_name>.txt`: Dit bestand bevat gedetailleerde informatie over elke mini-batch tijdens het ophalen of volt ooien van een werk nemer. Voor elke mini-batch bestaat dit bestand uit:
 
     - Het IP-adres en de PID van het werk proces. 
     - Het totale aantal items, het aantal items dat is verwerkt en het aantal mislukte items.
     - De tijd van begin tijd, duur, proces tijd en uitvoerings methode.
 
-U kunt ook informatie vinden over het resource gebruik van de processen voor elke werk nemer. Deze informatie bevindt zich in CSV-indeling en bevindt zich op `~/logs/sys/perf/overview.csv` . Voor informatie over elk proces is het beschikbaar onder `~logs/sys/processes.csv` .
+U kunt ook informatie vinden over het resource gebruik van de processen voor elke werk nemer. Deze informatie bevindt zich in CSV-indeling en bevindt zich op `~/logs/sys/perf/overview.csv` . Informatie over elk proces is beschikbaar onder `~logs/sys/processes.csv` .
 
 ### <a name="how-do-i-log-from-my-user-script-from-a-remote-context"></a>Hoe kan ik logboek van mijn gebruikers script vanuit een externe context?
 U kunt een logboek registratie ophalen van EntryScript zoals hieronder wordt weer gegeven in de voorbeeld code om de logboeken weer te geven in de map **Logboeken/gebruikers** in de portal.
@@ -87,7 +87,7 @@ def run(mini_batch):
 
 ### <a name="how-could-i-pass-a-side-input-such-as-a-file-or-files-containing-a-lookup-table-to-all-my-workers"></a>Hoe kan ik een invoer van een zijde, zoals een bestand of bestand (en) met een opzoek tabel, aan al mijn werk rollen door geven?
 
-Maak een [gegevensset](https://docs.microsoft.com/python/api/azureml-core/azureml.core.dataset.dataset?view=azure-ml-py) die de invoer aan de zijkant bevat en Registreer deze bij uw werk ruimte. Geef deze door aan de `side_input` para meter van uw `ParallelRunStep` . Daarnaast kunt u het pad in de `arguments` sectie toevoegen om eenvoudig toegang te krijgen tot het gekoppelde pad:
+Maak een [gegevensset](https://docs.microsoft.com/python/api/azureml-core/azureml.core.dataset.dataset?view=azure-ml-py) die de invoer aan de zijkant bevat en Registreer deze bij uw werk ruimte. Geef deze door aan de `side_input` para meter van uw `ParallelRunStep` . Daarnaast kunt u het pad in de sectie toevoegen `arguments` om eenvoudig toegang te krijgen tot het gekoppelde pad:
 
 ```python
 label_config = label_ds.as_named_input("labels_input")
@@ -113,6 +113,6 @@ labels_path = args.labels_dir
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* Raadpleeg de SDK-Naslag informatie voor hulp met het pakket met de [contrib-pipeline-stap](https://docs.microsoft.com/python/api/azureml-contrib-pipeline-steps/azureml.contrib.pipeline.steps?view=azure-ml-py) en de [documentatie](https://docs.microsoft.com/python/api/azureml-contrib-pipeline-steps/azureml.contrib.pipeline.steps.parallelrunstep?view=azure-ml-py) voor de klasse ParallelRunStep.
+* Raadpleeg de SDK-Naslag informatie voor hulp met het pakket met de stappen voor de [azureml-pipelines](https://docs.microsoft.com/python/api/azureml-pipeline-steps/azureml.pipeline.steps?view=azure-ml-py) . Referentie [documentatie](https://docs.microsoft.com/python/api/azureml-pipeline-steps/azureml.pipeline.steps.parallelrunstep?view=azure-ml-py) voor de klasse ParallelRunStep weer geven.
 
-* Volg de [Geavanceerde zelf studie](tutorial-pipeline-batch-scoring-classification.md) over het gebruik van pijp lijnen met ParallelRunStep en voor een voor beeld van het door geven van een ander bestand als een kantlijn invoer. 
+* Volg de [Geavanceerde zelf studie](tutorial-pipeline-batch-scoring-classification.md) over het gebruik van pijp lijnen met ParallelRunStep. De zelf studie laat zien hoe u een ander bestand als een kantlijn invoer kunt door geven. 

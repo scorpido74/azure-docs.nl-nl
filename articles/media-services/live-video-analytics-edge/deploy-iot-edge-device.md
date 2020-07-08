@@ -3,12 +3,12 @@ title: Live video Analytics implementeren op een IoT Edge apparaat-Azure
 description: In dit artikel worden de stappen beschreven die u helpen bij het implementeren van live video Analytics op uw IoT Edge-apparaat. U kunt dit bijvoorbeeld doen als u toegang hebt tot een lokale Linux-machine en/of eerder een Azure Media Services-account hebt gemaakt.
 ms.topic: how-to
 ms.date: 04/27/2020
-ms.openlocfilehash: db0addfbc2fc5b322c2f6dd9b51f3ace10935589
-ms.sourcegitcommit: 223cea58a527270fe60f5e2235f4146aea27af32
+ms.openlocfilehash: eaaa793bb5b84ac4ae352f242215b8d3e7d56cf1
+ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/01/2020
-ms.locfileid: "84261413"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86026964"
 ---
 # <a name="deploy-live-video-analytics-on-an-iot-edge-device"></a>Live video Analytics implementeren op een IoT Edge apparaat
 
@@ -23,12 +23,12 @@ In dit artikel worden de stappen beschreven die u helpen bij het implementeren v
 * [IoT Edge-apparaat registreren](https://docs.microsoft.com/azure/iot-edge/how-to-register-device)
 * [De Azure IoT Edge-runtime op op Debian gebaseerde Linux-systemen installeren](https://docs.microsoft.com/azure/iot-edge/how-to-install-iot-edge-linux)
 * [Een Azure Media Services-account maken](../latest/create-account-howto.md)
-    * Gebruik een van deze regio's: VS-Oost 2, VS-midden, Noord-Centraal VS, Japan-West, VS-West 2, VS-West-Centraal, Canada-oost, UK-zuid, Frankrijk-centraal, Frankrijk-zuid, Zwitserland-noord, Zwitserland-west en Japan-West.
+    * Gebruik een van deze regio's: VS-Oost 2, VS-midden, Noord-Centraal VS, Japan-Oost, VS-West 2, VS-West-Centraal, Canada-oost, UK-zuid, Frankrijk-centraal, Frankrijk-zuid, Zwitserland-noord, Zwitserland-west en Japan-West.
     * Het is raadzaam om GPv2-opslag accounts (General-Purpose v2) te gebruiken.
 
 ## <a name="configuring-azure-resources-for-using-live-video-analytics"></a>Azure-resources configureren voor het gebruik van live video Analytics
 
-### <a name="create-custom-azure-resource-manager-role"></a>Aangepaste Azure Resource Manager rol maken
+### <a name="create-custom-azure-resource-manager-role"></a>Aangepaste Azure Resource Manager-rol maken
 
 Zie [aangepaste Azure Resource Manager rol maken](create-custom-azure-resource-manager-role-how-to.md) en deze toewijzen aan een service-principal voor gebruik in live video-analyses.
 
@@ -259,4 +259,4 @@ Vervolgens kunt u het voor beeld testen door een directe methode aan te roepen. 
 
 ## <a name="next-steps"></a>Volgende stappen
 
-[Snelstartgids: aan de slag-live video Analytics op IoT Edge](get-started-detect-motion-emit-events-quickstart.md)
+[Quickstart: Over Live Video Analytics in IoT Edge](get-started-detect-motion-emit-events-quickstart.md)

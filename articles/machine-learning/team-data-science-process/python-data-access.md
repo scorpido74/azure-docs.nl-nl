@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, tracking-python, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: e26d2e98a791c4b4e212863700a4745185642de7
-ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
+ms.openlocfilehash: 486b89e5c93de7444758638ad36743ff2f0bcb37
+ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84558408"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86026335"
 ---
 # <a name="access-datasets-with-python-using-the-azure-machine-learning-python-client-library"></a>Toegang tot gegevenssets met Python met behulp van de clientbibliotheek van Azure Machine Learning Python
 Met de preview-versie van Microsoft Azure Machine Learning python-client bibliotheek kan beveiligde toegang tot uw Azure Machine Learning gegevens sets worden ingeschakeld vanuit een lokale python-omgeving en kunnen gegevens sets in een werk ruimte worden gemaakt en beheerd.
@@ -38,23 +38,28 @@ Het is afhankelijk van de volgende pakketten:
 
 * aanvragen
 * python-dateutil
-* Pandas
+* pandas
 
 U kunt het beste een python-distributie gebruiken, zoals [Anaconda](https://www.anaconda.com/) of [Canopy](https://store.enthought.com/downloads/), die wordt geleverd met python, IPython en de drie bovenstaande pakketten die hierboven zijn geïnstalleerd. Hoewel IPython niet strikt vereist is, is het een fantastische omgeving voor het interactief bewerken en visualiseren van gegevens.
 
 ### <a name="how-to-install-the-azure-machine-learning-python-client-library"></a><a name="installation"></a>De Azure Machine Learning python-client bibliotheek installeren
 Installeer de Azure Machine Learning python-client bibliotheek om de taken uit te voeren die in dit onderwerp worden beschreven. Deze bibliotheek is beschikbaar vanuit de [python-pakket index](https://pypi.python.org/pypi/azureml). Als u deze wilt installeren in uw python-omgeving, voert u de volgende opdracht uit vanuit uw lokale python-omgeving:
 
-    pip install azureml
+```console
+pip install azureml
+```
 
 U kunt ook downloaden en installeren vanuit de bronnen op [github](https://github.com/Azure/Azure-MachineLearning-ClientLibrary-Python).
 
-    python setup.py install
+```console
+python setup.py install
+```
 
 Als Git op uw computer is geïnstalleerd, kunt u PIP gebruiken om rechtstreeks vanuit de Git-opslag plaats te installeren:
 
-    pip install git+https://github.com/Azure/Azure-MachineLearning-ClientLibrary-Python.git
-
+```console
+pip install git+https://github.com/Azure/Azure-MachineLearning-ClientLibrary-Python.git
+```
 
 ## <a name="use-code-snippets-to-access-datasets"></a><a name="datasetAccess"></a>Code fragmenten gebruiken voor toegang tot gegevens sets
 De python-client bibliotheek geeft u programmatische toegang tot uw bestaande gegevens sets van experimenten die zijn uitgevoerd.
@@ -143,98 +148,119 @@ In de volgende stappen ziet u een voor beeld waarin een experiment wordt gemaakt
 ### <a name="workspace"></a>Werkruimte
 De werk ruimte is het toegangs punt voor de python-client bibliotheek. Geef de `Workspace` klasse op met uw werk ruimte-id en autorisatie token om een instantie te maken:
 
-    ws = Workspace(workspace_id='4c29e1adeba2e5a7cbeb0e4f4adfb4df',
-                   authorization_token='f4f3ade2c6aefdb1afb043cd8bcf3daf')
-
+```python
+ws = Workspace(workspace_id='4c29e1adeba2e5a7cbeb0e4f4adfb4df',
+               authorization_token='f4f3ade2c6aefdb1afb043cd8bcf3daf')
+```
 
 ### <a name="enumerate-datasets"></a>Gegevens sets opsommen
 Alle gegevens sets in een bepaalde werk ruimte opsommen:
 
-    for ds in ws.datasets:
-        print(ds.name)
+```python
+for ds in ws.datasets:
+    print(ds.name)
+```
 
 Als u alleen de door de gebruiker gemaakte gegevens sets wilt inventariseren:
 
-    for ds in ws.user_datasets:
-        print(ds.name)
+```python
+for ds in ws.user_datasets:
+    print(ds.name)
+```
 
 Als u alleen de voorbeeld gegevens sets wilt inventariseren:
 
-    for ds in ws.example_datasets:
-        print(ds.name)
+```python
+for ds in ws.example_datasets:
+    print(ds.name)
+```
 
 U kunt een gegevensset openen op naam (dit is hoofdletter gevoelig):
 
-    ds = ws.datasets['my dataset name']
+```python
+ds = ws.datasets['my dataset name']
+```
 
 Of u kunt de app openen via index:
 
-    ds = ws.datasets[0]
-
+```python
+ds = ws.datasets[0]
+```
 
 ### <a name="metadata"></a>Metagegevens
 Data sets bevatten naast inhoud ook meta gegevens. (Tussenliggende gegevens sets vormen een uitzonde ring op deze regel en bevatten geen meta gegevens.)
 
 Sommige meta gegevens waarden worden tijdens het maken toegewezen door de gebruiker:
 
-    print(ds.name)
-    print(ds.description)
-    print(ds.family_id)
-    print(ds.data_type_id)
+* `print(ds.name)`
+* `print(ds.description)`
+* `print(ds.family_id)`
+* `print(ds.data_type_id)`
 
 Andere zijn waarden die worden toegewezen door Azure ML:
 
-    print(ds.id)
-    print(ds.created_date)
-    print(ds.size)
+* `print(ds.id)`
+* `print(ds.created_date)`
+* `print(ds.size)`
 
 Zie de `SourceDataset` klasse voor meer informatie over de beschik bare meta gegevens.
 
 ### <a name="read-contents"></a>Inhoud lezen
 De code fragmenten die worden verschaft door Machine Learning Studio (klassiek), downloaden en deserialiseren de gegevensset automatisch naar een Panda data frame-object. Dit wordt gedaan met de- `to_dataframe` methode:
 
-    frame = ds.to_dataframe()
+```python
+frame = ds.to_dataframe()
+```
 
 Als u liever de onbewerkte gegevens downloadt en de deserialisatie zelf uitvoert, is dit een optie. Op dit moment is dit de enige optie voor indelingen zoals ' ARFF ', die de python-client bibliotheek niet kan deserialiseren.
 
 De inhoud als tekst lezen:
 
-    text_data = ds.read_as_text()
+```python
+text_data = ds.read_as_text()
+```
 
 De inhoud als binair lezen:
 
-    binary_data = ds.read_as_binary()
+```python
+binary_data = ds.read_as_binary()
+```
 
 U kunt ook gewoon een stroom naar de inhoud openen:
 
-    with ds.open() as file:
-        binary_data_chunk = file.read(1000)
-
+```python
+with ds.open() as file:
+    binary_data_chunk = file.read(1000)
+```
 
 ### <a name="create-a-new-dataset"></a>Een nieuwe gegevensset maken
 Met de python-client bibliotheek kunt u gegevens sets uploaden vanuit uw python-programma. Deze gegevens sets zijn vervolgens beschikbaar voor gebruik in uw werk ruimte.
 
 Als u uw gegevens in een Panda data frame hebt, gebruikt u de volgende code:
 
-    from azureml import DataTypeIds
+```python
+from azureml import DataTypeIds
 
-    dataset = ws.datasets.add_from_dataframe(
-        dataframe=frame,
-        data_type_id=DataTypeIds.GenericCSV,
-        name='my new dataset',
-        description='my description'
-    )
+dataset = ws.datasets.add_from_dataframe(
+    dataframe=frame,
+    data_type_id=DataTypeIds.GenericCSV,
+    name='my new dataset',
+    description='my description'
+)
+```
 
 Als uw gegevens al zijn geserialiseerd, kunt u het volgende gebruiken:
 
-    from azureml import DataTypeIds
+```python
+from azureml import DataTypeIds
 
-    dataset = ws.datasets.add_from_raw_data(
-        raw_data=raw_data,
-        data_type_id=DataTypeIds.GenericCSV,
-        name='my new dataset',
-        description='my description'
-    )
+dataset = ws.datasets.add_from_raw_data(
+    raw_data=raw_data,
+    data_type_id=DataTypeIds.GenericCSV,
+    name='my new dataset',
+    description='my description'
+)
+```
 
 De python-client bibliotheek kan een Panda data frame serialiseren met de volgende indelingen (constanten voor deze bevinden zich in de `azureml.DataTypeIds` klasse):
 
@@ -249,66 +275,76 @@ Als u probeert een nieuwe gegevensset te uploaden met een naam die overeenkomt m
 
 Als u een bestaande gegevensset wilt bijwerken, moet u eerst een verwijzing naar de bestaande gegevensset ophalen:
 
-    dataset = ws.datasets['existing dataset']
+```python
+dataset = ws.datasets['existing dataset']
 
-    print(dataset.data_type_id) # 'GenericCSV'
-    print(dataset.name)         # 'existing dataset'
-    print(dataset.description)  # 'data up to jan 2015'
+print(dataset.data_type_id) # 'GenericCSV'
+print(dataset.name)         # 'existing dataset'
+print(dataset.description)  # 'data up to jan 2015'
+```
 
 Vervolgens gebruikt `update_from_dataframe` u om de inhoud van de gegevensset in azure te serialiseren en te vervangen:
 
-    dataset = ws.datasets['existing dataset']
+```python
+dataset = ws.datasets['existing dataset']
 
-    dataset.update_from_dataframe(frame2)
+dataset.update_from_dataframe(frame2)
 
-    print(dataset.data_type_id) # 'GenericCSV'
-    print(dataset.name)         # 'existing dataset'
-    print(dataset.description)  # 'data up to jan 2015'
+print(dataset.data_type_id) # 'GenericCSV'
+print(dataset.name)         # 'existing dataset'
+print(dataset.description)  # 'data up to jan 2015'
+```
 
 Als u de gegevens wilt serialiseren naar een andere indeling, geeft u een waarde op voor de optionele `data_type_id` para meter.
 
-    from azureml import DataTypeIds
+```python
+from azureml import DataTypeIds
 
-    dataset = ws.datasets['existing dataset']
+dataset = ws.datasets['existing dataset']
 
-    dataset.update_from_dataframe(
-        dataframe=frame2,
-        data_type_id=DataTypeIds.GenericTSV,
-    )
+dataset.update_from_dataframe(
+    dataframe=frame2,
+    data_type_id=DataTypeIds.GenericTSV,
+)
 
-    print(dataset.data_type_id) # 'GenericTSV'
-    print(dataset.name)         # 'existing dataset'
-    print(dataset.description)  # 'data up to jan 2015'
+print(dataset.data_type_id) # 'GenericTSV'
+print(dataset.name)         # 'existing dataset'
+print(dataset.description)  # 'data up to jan 2015'
+```
 
 U kunt desgewenst een nieuwe beschrijving instellen door een waarde voor de para meter op te geven `description` .
 
-    dataset = ws.datasets['existing dataset']
+```python
+dataset = ws.datasets['existing dataset']
 
-    dataset.update_from_dataframe(
-        dataframe=frame2,
-        description='data up to feb 2015',
-    )
+dataset.update_from_dataframe(
+    dataframe=frame2,
+    description='data up to feb 2015',
+)
 
-    print(dataset.data_type_id) # 'GenericCSV'
-    print(dataset.name)         # 'existing dataset'
-    print(dataset.description)  # 'data up to feb 2015'
+print(dataset.data_type_id) # 'GenericCSV'
+print(dataset.name)         # 'existing dataset'
+print(dataset.description)  # 'data up to feb 2015'
+```
 
 U kunt desgewenst een nieuwe naam instellen door een waarde voor de para meter op te geven `name` . Vanaf nu haalt u de gegevensset op met behulp van de nieuwe naam. Met de volgende code worden de gegevens, naam en beschrijving bijgewerkt.
 
-    dataset = ws.datasets['existing dataset']
+```python
+dataset = ws.datasets['existing dataset']
 
-    dataset.update_from_dataframe(
-        dataframe=frame2,
-        name='existing dataset v2',
-        description='data up to feb 2015',
-    )
+dataset.update_from_dataframe(
+    dataframe=frame2,
+    name='existing dataset v2',
+    description='data up to feb 2015',
+)
 
-    print(dataset.data_type_id)                    # 'GenericCSV'
-    print(dataset.name)                            # 'existing dataset v2'
-    print(dataset.description)                     # 'data up to feb 2015'
+print(dataset.data_type_id)                    # 'GenericCSV'
+print(dataset.name)                            # 'existing dataset v2'
+print(dataset.description)                     # 'data up to feb 2015'
 
-    print(ws.datasets['existing dataset v2'].name) # 'existing dataset v2'
-    print(ws.datasets['existing dataset'].name)    # IndexError
+print(ws.datasets['existing dataset v2'].name) # 'existing dataset v2'
+print(ws.datasets['existing dataset'].name)    # IndexError
+```
 
 De `data_type_id` `name` `description` para meters en zijn optioneel en zijn standaard ingesteld op de vorige waarde. De `dataframe` para meter is altijd vereist.
 

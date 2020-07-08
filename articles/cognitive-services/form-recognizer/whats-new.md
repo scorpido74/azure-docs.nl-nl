@@ -9,12 +9,12 @@ ms.subservice: forms-recognizer
 ms.topic: conceptual
 ms.date: 05/19/2020
 ms.author: pafarley
-ms.openlocfilehash: ad87c7e3517aad8a611c711773c5e1cc99b24f88
-ms.sourcegitcommit: 73ac360f37053a3321e8be23236b32d4f8fb30cf
+ms.openlocfilehash: bbf098feccaf760718b97b1afb2d24bc55eef9ad
+ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/30/2020
-ms.locfileid: "85562881"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86027032"
 ---
 # <a name="whats-new-in-form-recognizer"></a>Wat is er nieuw in Form Recognizer?
 
@@ -22,6 +22,19 @@ De Form Recognizer-service wordt doorlopend bijgewerkt. Gebruik dit artikel om o
 
 > [!NOTE]
 > De Quick starts en hand leidingen voor de formulier Recognizer gebruiken altijd de nieuwste versie van de API, tenzij opgegeven.
+
+## <a name="july-2020"></a>Juli 2020
+
+### <a name="new-features"></a>Nieuwe functies
+* **v 2.0-verwijzing beschikbaar** Bekijk de [v 2.0 API-referentie](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2/operations/AnalyzeWithCustomForm) en de bijgewerkte sdk's voor [.net](https://docs.microsoft.com/dotnet/api/overview/azure/formrecognizer), [python](https://docs.microsoft.com/python/api/overview/azure/formrecognizer), [Java](https://docs.microsoft.com/java/api/overview/azure/formrecognizer)en [Java script](https://docs.microsoft.com/javascript/api/overview/azure/formrecognizer).
+* Verbeteringen in de **tabel en** uitbrei ding van de extractie omvatten nauw keurige verbeteringen en verbeteringen in tabel extractie, met name de mogelijkheid om tabellen en structuren in een aangepaste trein zonder labels te leren. 
+* **Valuta ondersteuning** Detectie en extractie van algemene valuta symbolen.
+* **Azure-gov** Formulier herkenning is nu ook beschikbaar in azure gov.
+*   **Verbeterde beveiligings functies**: 
+    *   **Uw eigen sleutel meenemen**  Met de formulier herkenning worden uw gegevens automatisch versleuteld wanneer deze worden opgeslagen in de cloud om deze te beveiligen en om u te helpen te voldoen aan de beveiligings-en nalevings verplichtingen van uw organisatie. Uw abonnement maakt standaard gebruik van door micro soft beheerde versleutelings sleutels. U kunt uw abonnement nu ook beheren met uw eigen coderings sleutels. [Door de klant beheerde sleutels (CMK), ook wel bekend als het nemen van uw eigen sleutel (BYOK)](https://docs.microsoft.com/azure/cognitive-services/form-recognizer/form-recognizer-encryption-of-data-at-rest
+), bieden meer flexibiliteit voor het maken, draaien, uitschakelen en intrekken van toegangs beheer. U kunt ook de versleutelings sleutels controleren die worden gebruikt voor het beveiligen van uw gegevens.  
+    *   **Persoonlijke eind punten** – Hiermee kunt u een virtueel netwerk (VNet) [gebruiken om veilig toegang te krijgen tot gegevens via een privé-koppeling.](https://docs.microsoft.com/azure/private-link/private-link-overview)
+
 
 ## <a name="june-2020"></a>Juni 2020
 
@@ -46,8 +59,8 @@ De Form Recognizer-service wordt doorlopend bijgewerkt. Gebruik dit artikel om o
   De nieuwe SDK ondersteunt alle functies van de v 2.0 REST API voor de formulier herkenner. U kunt bijvoorbeeld een model trainen met of zonder labels en extra tekst, sleutel waardeparen en tabellen uit uw formulieren extra heren, gegevens uit de bevestigingen ophalen met de vooraf gemaakte ontvangst bevestigingen en tekst en tabellen met de lay-outservice uit uw documenten ophalen. U kunt uw feedback op de Sdk's delen via het [SDK-feedback formulier](https://aka.ms/FR_SDK_v1_feedback).
  
 * **Aangepast model kopiëren** U kunt nu modellen kopiëren tussen regio's en abonnementen met behulp van de nieuwe functie voor het kopiëren van aangepaste modellen. Voordat u de API voor het kopiëren van aangepaste modellen aanroept, moet u eerst autorisatie aanvragen voor het kopiëren naar de doel bron door de bewerking Copy Authorization aan te roepen voor het doel bron eindpunt.
-   * [Een Kopieer autorisatie genereren](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-preview/operations/CopyCustomFormModelAuthorization) REST API
-   * [Een aangepast model kopiëren](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-preview/operations/CopyCustomFormModel) REST API 
+   * [Een Kopieer autorisatie genereren](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2/operations/CopyCustomFormModelAuthorization) REST API
+   * [Een aangepast model kopiëren](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2/operations/CopyCustomFormModel) REST API 
 
 ### <a name="security-improvements"></a>Verbeterde beveiliging
 
@@ -97,7 +110,7 @@ Raadpleeg de documentatie die beschikbaar is op [github](https://github.com/micr
 
 TLS 1,2 wordt nu afgedwongen voor alle HTTP-aanvragen voor deze service. Zie [Azure Cognitive Services Security](../cognitive-services-security.md)(Engelstalig) voor meer informatie.
 
-## <a name="january-2020"></a>januari 2020
+## <a name="january-2020"></a>Januari 2020
 
 Deze release introduceert de formulier Recognizer 2,0 (preview). In de volgende secties vindt u meer informatie over nieuwe functies, verbeteringen en wijzigingen. 
 
@@ -137,4 +150,4 @@ De JSON-antwoorden voor alle API-aanroepen hebben nieuwe notaties. Sommige sleut
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Voer een [Snelstartgids](quickstarts/curl-train-extract.md) uit om aan de slag te gaan met de [API voor formulier herkenning](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-preview/operations/AnalyzeWithCustomForm).
+Voer een [Snelstartgids](quickstarts/curl-train-extract.md) uit om aan de slag te gaan met de [API voor formulier herkenning](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2/operations/AnalyzeWithCustomForm).

@@ -3,12 +3,12 @@ title: Gast configuratie beleidsregels maken voor Linux
 description: Meer informatie over het maken van een Azure Policy gast configuratie beleid voor Linux.
 ms.date: 03/20/2020
 ms.topic: how-to
-ms.openlocfilehash: a636b63c80799f8bfe3dfd3a0eb37d1367cdcf0d
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: 5ce6dce034c9479924901e5a20b38c343dd8bac6
+ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83654859"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86026709"
 ---
 # <a name="how-to-create-guest-configuration-policies-for-linux"></a>Gast configuratie beleidsregels maken voor Linux
 
@@ -27,7 +27,7 @@ Gebruik de volgende acties om uw eigen configuratie te maken voor het valideren 
 >
 > De gast configuratie-uitbrei ding is vereist voor het uitvoeren van controles op virtuele machines van Azure.
 > Als u de uitbrei ding op schaal wilt implementeren op alle Linux-machines, wijst u de volgende beleids definitie toe:
->   - [Vereisten implementeren om gast configuratie beleid in te scha kelen op virtuele Linux-machines.](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Ffb27e9e0-526e-4ae1-89f2-a2a0bf0f8a50)
+>   - [Vereisten voor het inschakelen van gastenconfiguratiebeleid op Linux-VM's implementeren.](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Ffb27e9e0-526e-4ae1-89f2-a2a0bf0f8a50)
 
 ## <a name="install-the-powershell-module"></a>De Power shell-module installeren
 
@@ -81,7 +81,7 @@ Zelfs in Linux-omgevingen gebruikt de gast configuratie de gewenste status confi
 
 #### <a name="configuration-requirements"></a>Configuratie vereisten
 
-De naam van de aangepaste configuratie moet consistent zijn. De naam van het zip-bestand voor het inhouds pakket, de configuratie naam in het MOF-bestand en de naam van de gast toewijzing in de Resource Manager-sjabloon, moet hetzelfde zijn.
+De naam van de aangepaste configuratie moet consistent zijn. De naam van het zip-bestand voor het inhouds pakket, de configuratie naam in het MOF-bestand en de naam van de gast toewijzing in de Azure Resource Manager sjabloon (ARM-sjabloon) moet hetzelfde zijn.
 
 ### <a name="custom-guest-configuration-configuration-on-linux"></a>Configuratie van aangepaste gast configuratie op Linux
 
@@ -276,9 +276,9 @@ New-GuestConfigurationPolicy `
 
 De volgende bestanden worden gemaakt door `New-GuestConfigurationPolicy` :
 
-- **auditIfNotExists. json**
-- **deployIfNotExists. json**
-- **Initiative. json**
+- **auditIfNotExists.jsop**
+- **deployIfNotExists.jsop**
+- **Initiative.jsop**
 
 De cmdlet-uitvoer retourneert een object dat de weergave naam en het pad van de beleids bestanden bevat.
 
@@ -347,7 +347,7 @@ describe file(attr_path) do
 end
 ```
 
-De cmdlets `New-GuestConfigurationPolicy` en `Test-GuestConfigurationPolicyPackage` bevatten een para meter met de naam **para meters**. Met deze para meter wordt een hashtabel met alle details van elke para meter en worden automatisch alle vereiste secties gemaakt van de bestanden die worden gebruikt voor het maken van elke Azure Policy definitie.
+De cmdlets `New-GuestConfigurationPolicy` en `Test-GuestConfigurationPolicyPackage` bevatten een para meter met de naam **para meter**. Met deze para meter wordt een hashtabel met alle details van elke para meter en worden automatisch alle vereiste secties gemaakt van de bestanden die worden gebruikt voor het maken van elke Azure Policy definitie.
 
 In het volgende voor beeld wordt een beleids definitie gemaakt om een bestandspad te controleren. de gebruiker geeft het pad op naar het tijdstip van de beleids toewijzing.
 
@@ -371,7 +371,7 @@ New-GuestConfigurationPolicy
     -DisplayName 'Audit Linux file path.' `
     -Description 'Audit that a file path exists on a Linux machine.' `
     -Path './policies' `
-    -Parameters $PolicyParameterInfo `
+    -Parameter $PolicyParameterInfo `
     -Version 1.0.0
 ```
 

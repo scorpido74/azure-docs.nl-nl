@@ -2,13 +2,13 @@
 title: Modus voor volledige verwijdering
 description: Toont hoe bron typen het verwijderen van de modus volt ooien in Azure Resource Manager sjablonen verwerken.
 ms.topic: conceptual
-ms.date: 06/15/2020
-ms.openlocfilehash: 4c16b8a0ffa1a4756a3063ca63f8c0eae2166f3e
-ms.sourcegitcommit: 6571e34e609785e82751f0b34f6237686470c1f3
+ms.date: 07/06/2020
+ms.openlocfilehash: 5e247fc20a128b3dd8b3fe646ef956388e0d2c2d
+ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/15/2020
-ms.locfileid: "84791160"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86027830"
 ---
 # <a name="deletion-of-azure-resources-for-complete-mode-deployments"></a>Verwijdering van Azure-resources voor implementaties in de volledige modus
 
@@ -40,7 +40,6 @@ Ga naar de naam ruimte van een resource provider:
 > - [Micro soft. Azureworden](#microsoftazuredata)
 > - [Micro soft. AzureStack](#microsoftazurestack)
 > - [Micro soft. AzureStackHCI](#microsoftazurestackhci)
-> - [Micro soft. AzureStackResourceMonitor](#microsoftazurestackresourcemonitor)
 > - [Microsoft.Batch](#microsoftbatch)
 > - [Microsoft.Billing](#microsoftbilling)
 > - [Microsoft.BingMaps](#microsoftbingmaps)
@@ -60,6 +59,7 @@ Ga naar de naam ruimte van een resource provider:
 > - [Microsoft.CognitiveServices](#microsoftcognitiveservices)
 > - [Microsoft.Commerce](#microsoftcommerce)
 > - [Microsoft.Compute](#microsoftcompute)
+> - [Micro soft. ConnectedCache](#microsoftconnectedcache)
 > - [Micro soft. verbruik](#microsoftconsumption)
 > - [Micro soft. ContainerInstance](#microsoftcontainerinstance)
 > - [Microsoft.ContainerRegistry](#microsoftcontainerregistry)
@@ -288,6 +288,7 @@ Ga naar de naam ruimte van een resource provider:
 > | Resourcetype | Modus voor volledige verwijdering |
 > | ------------- | ----------- |
 > | attestationProviders | Yes |
+> | defaultProviders | No |
 
 ## <a name="microsoftauthorization"></a>Microsoft.Authorization
 
@@ -374,6 +375,7 @@ Ga naar de naam ruimte van een resource provider:
 > | Resourcetype | Modus voor volledige verwijdering |
 > | ------------- | ----------- |
 > | cloudManifestFiles | No |
+> | edgeSubscriptions | Yes |
 > | registraties | Yes |
 > | registraties/customerSubscriptions | No |
 > | registraties/producten | No |
@@ -384,13 +386,6 @@ Ga naar de naam ruimte van een resource provider:
 > | Resourcetype | Modus voor volledige verwijdering |
 > | ------------- | ----------- |
 > | clusters | Yes |
-
-## <a name="microsoftazurestackresourcemonitor"></a>Micro soft. AzureStackResourceMonitor
-
-> [!div class="mx-tableFixed"]
-> | Resourcetype | Modus voor volledige verwijdering |
-> | ------------- | ----------- |
-> | storageAccountMonitor | Yes |
 
 ## <a name="microsoftbatch"></a>Microsoft.Batch
 
@@ -452,8 +447,15 @@ Ga naar de naam ruimte van een resource provider:
 > | billingAccounts/klanten/trans acties | No |
 > | billingAccounts/klanten/overdrachten | No |
 > | billingAccounts/afdelingen | No |
+> | billingAccounts/afdelingen/billingPermissions | No |
+> | billingAccounts/afdelingen/billingRoleAssignments | No |
+> | billingAccounts/afdelingen/billingRoleDefinitions | No |
 > | billingAccounts / enrollmentAccounts | No |
+> | billingAccounts / enrollmentAccounts / billingPermissions | No |
+> | billingAccounts / enrollmentAccounts / billingRoleAssignments | No |
+> | billingAccounts / enrollmentAccounts / billingRoleDefinitions | No |
 > | billingAccounts/facturen | No |
+> | billingAccounts/facturen/trans acties | No |
 > | billingAccounts / invoiceSections | No |
 > | billingAccounts / invoiceSections / billingSubscriptionMoveOperations | No |
 > | billingAccounts / invoiceSections / billingSubscriptions | No |
@@ -617,7 +619,7 @@ Ga naar de naam ruimte van een resource provider:
 > [!div class="mx-tableFixed"]
 > | Resourcetype | Modus voor volledige verwijdering |
 > | ------------- | ----------- |
-> | bieden | No |
+> | mogelijkheden | No |
 > | Domein naam | Yes |
 > | Domein naam/mogelijkheden | No |
 > | Domein naam/internalLoadBalancers | No |
@@ -649,7 +651,7 @@ Ga naar de naam ruimte van een resource provider:
 > [!div class="mx-tableFixed"]
 > | Resourcetype | Modus voor volledige verwijdering |
 > | ------------- | ----------- |
-> | bieden | No |
+> | mogelijkheden | No |
 > | expressRouteCrossConnections | No |
 > | expressRouteCrossConnections/peerings | No |
 > | gatewaySupportedDevices | No |
@@ -665,7 +667,7 @@ Ga naar de naam ruimte van een resource provider:
 > [!div class="mx-tableFixed"]
 > | Resourcetype | Modus voor volledige verwijdering |
 > | ------------- | ----------- |
-> | bieden | No |
+> | mogelijkheden | No |
 > | cd's | No |
 > | images | No |
 > | osImages | No |
@@ -727,7 +729,6 @@ Ga naar de naam ruimte van een resource provider:
 > | sharedVMImages/versies | No |
 > | momentopnamen | Yes |
 > | sshPublicKeys | Yes |
-> | swiftlets | Yes |
 > | Informatie | Yes |
 > | Informatie/extensies | Yes |
 > | Informatie/metricDefinitions | No |
@@ -738,6 +739,13 @@ Ga naar de naam ruimte van een resource provider:
 > | virtualMachineScaleSets/publicIPAddresses | No |
 > | virtualMachineScaleSets/informatie | No |
 > | virtualMachineScaleSets/informatie/networkInterfaces | No |
+
+## <a name="microsoftconnectedcache"></a>Micro soft. ConnectedCache
+
+> [!div class="mx-tableFixed"]
+> | Resourcetype | Modus voor volledige verwijdering |
+> | ------------- | ----------- |
+> | CacheNodes | Yes |
 
 ## <a name="microsoftconsumption"></a>Micro soft. verbruik
 
@@ -754,7 +762,7 @@ Ga naar de naam ruimte van een resource provider:
 > | Prognoses | No |
 > | extra | No |
 > | Markt plaatsen | No |
-> | Pricesheets | No |
+> | Prijzenoverzichten | No |
 > | producten | No |
 > | ReservationDetails | No |
 > | ReservationRecommendationDetails | No |
@@ -906,9 +914,7 @@ Ga naar de naam ruimte van een resource provider:
 > | datacatalogs/gegevens bronnen | No |
 > | datacatalogs/gegevens bronnen/scans | No |
 > | datacatalogs/gegevens bronnen/scans/gegevens sets | No |
-> | datacatalogs/data sources/scans/filters | No |
 > | datacatalogs/gegevens bronnen/scans/triggers | No |
-> | datacatalogs / scanrulesets | No |
 
 ## <a name="microsoftdatafactory"></a>Microsoft.DataFactory
 
@@ -956,6 +962,7 @@ Ga naar de naam ruimte van een resource provider:
 > | Resourcetype | Modus voor volledige verwijdering |
 > | ------------- | ----------- |
 > | BackupVaults | Yes |
+> | ResourceOperationGateKeepers | Yes |
 
 ## <a name="microsoftdatashare"></a>Micro soft. DataShare
 
@@ -1758,6 +1765,9 @@ Ga naar de naam ruimte van een resource provider:
 > [!div class="mx-tableFixed"]
 > | Resourcetype | Modus voor volledige verwijdering |
 > | ------------- | ----------- |
+> | privateLinkServicesForPowerBI | Yes |
+> | tenants | Yes |
+> | tenants/werk ruimten | No |
 > | workspaceCollections | Yes |
 
 ## <a name="microsoftpowerbidedicated"></a>Micro soft. PowerBIDedicated
@@ -1780,6 +1790,7 @@ Ga naar de naam ruimte van een resource provider:
 > | Resourcetype | Modus voor volledige verwijdering |
 > | ------------- | ----------- |
 > | providerRegistrations | No |
+> | providerRegistrations / defaultRollouts | No |
 > | providerRegistrations / resourceTypeRegistrations | No |
 > | implementaties | Yes |
 
@@ -1905,6 +1916,8 @@ Ga naar de naam ruimte van een resource provider:
 > | iotSecuritySolutions / analyticsModels | No |
 > | iotSecuritySolutions / analyticsModels / aggregatedAlerts | No |
 > | iotSecuritySolutions / analyticsModels / aggregatedRecommendations | No |
+> | iotSecuritySolutions / iotAlerts | No |
+> | iotSecuritySolutions / iotAlertTypes | No |
 > | jitNetworkAccessPolicies | No |
 > | policies | No |
 > | prijzen | No |

@@ -1,24 +1,24 @@
 ---
 title: Klanten en gedelegeerde resources weergeven en beheren
-description: Als service provider met behulp van Azure delegated Resource Management kunt u al uw gedelegeerte klant bronnen en abonnementen weer geven door naar mijn klanten te gaan in de Azure Portal.
-ms.date: 01/22/2020
+description: Als service provider die gebruikmaakt van Azure Lighthouse, kunt u al uw gedelegeerte klant bronnen en abonnementen weer geven door naar mijn klanten te gaan in de Azure Portal.
+ms.date: 07/06/2020
 ms.topic: how-to
-ms.openlocfilehash: 4b069c2e78021c31a85ea8fca005152e2d28231e
-ms.sourcegitcommit: ce44069e729fce0cf67c8f3c0c932342c350d890
+ms.openlocfilehash: a850dc8cfe7667a75ced64ef0bd0afc352b20daa
+ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84636475"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86026267"
 ---
 # <a name="view-and-manage-customers-and-delegated-resources"></a>Klanten en gedelegeerde resources weergeven en beheren
 
-Service providers die gebruikmaken van [Azure delegated resource management](../concepts/azure-delegated-resource-management.md) kunnen de pagina **mijn klanten** in het [Azure Portal](https://portal.azure.com) gebruiken om gedelegeerde klant resources en abonnementen weer te geven. Hoewel we hier naar service providers en klanten verwijzen, kunnen bedrijven die meerdere tenants beheren, hetzelfde proces gebruiken om hun beheer ervaring te consolideren.
+Service providers die Azure Lighthouse gebruiken, kunnen de pagina **mijn klanten** in het [Azure Portal](https://portal.azure.com) gebruiken om gedelegeerde klant resources en abonnementen weer te geven. Hoewel we hier naar service providers en klanten verwijzen, kunnen bedrijven die meerdere tenants beheren, hetzelfde proces gebruiken om hun beheer ervaring te consolideren.
 
 Als u toegang wilt krijgen tot de pagina **mijn klanten** in de Azure Portal, selecteert u **alle services**, zoekt u naar **mijn klanten** en selecteert u deze. U kunt deze ook vinden door ' mijn klanten ' in te voeren in het zoekvak boven aan de Azure Portal.
 
-Houd er rekening mee dat de meeste **klanten** sectie van de pagina **mijn klanten** alleen informatie weer geven over klanten die gedelegeerde abonnementen of resource groepen hebben. Als u met andere klanten werkt (zoals via het [Cloud Solution Provider-programma](https://docs.microsoft.com/partner-center/csp-overview)), ziet u geen informatie over deze klanten in het gedeelte **klanten** , tenzij u de resources voor Azure delegated resource management hebt voor bereid.
+Houd er rekening mee dat de meeste **klanten** sectie van de pagina **mijn klanten** alleen informatie weer geven over klanten die gedelegeerde abonnementen of resource groepen hebben. Als u met andere klanten werkt (zoals via het [Cloud Solution Provider-programma](/partner-center/csp-overview)), ziet u geen informatie over deze klanten in het gedeelte **klanten** , tenzij u de resources voor [Azure delegated resource management](../concepts/azure-delegated-resource-management.md)hebt voor bereid.
 
-Lager op de pagina, een afzonderlijke sectie met de naam **Cloud Solution Provider (preview)** toont facturerings gegevens en resources voor uw CSP [-klanten die de micro soft-klant overeenkomst (MCA) hebben ondertekend](https://docs.microsoft.com/partner-center/confirm-customer-agreement) en [onder het Azure-abonnement](https://docs.microsoft.com/partner-center/azure-plan-get-started)vallen. Zie [aan de slag met uw micro soft-partner overeenkomst](../../billing/mpa-overview.md)voor meer informatie. Dergelijke CSP-klanten worden in deze sectie weer gegeven, ongeacht of u deze ook hebt opvolgd voor Azure delegated resource management. Op dezelfde manier hoeft een CSP-klant niet te worden weer gegeven in de sectie **Cloud Solution Provider (preview)** van **mijn klanten** , zodat u deze kunt uitbrengen voor het beheer van de gedelegeerde resources van Azure.
+Lager op de pagina, een afzonderlijke sectie met de naam **Cloud Solution Provider (preview)** toont facturerings gegevens en resources voor uw CSP [-klanten die de micro soft-klant overeenkomst (MCA) hebben ondertekend](/partner-center/confirm-customer-agreement) en [onder het Azure-abonnement](/partner-center/azure-plan-get-started)vallen. Zie [aan de slag met uw micro soft-partner overeenkomst](../../billing/mpa-overview.md)voor meer informatie. Dergelijke CSP-klanten worden in deze sectie weer gegeven, ongeacht of u deze ook hebt opvolgd voor Azure delegated resource management. Op dezelfde manier hoeft een CSP-klant niet te worden weer gegeven in de sectie **Cloud Solution Provider (preview)** van **mijn klanten** , zodat u deze kunt uitbrengen voor het beheer van de gedelegeerde resources van Azure.
 
 > [!NOTE]
 > Uw klanten kunnen informatie over service providers weer geven door te navigeren naar **service providers** in de Azure Portal. Zie [service providers weer geven en beheren](view-manage-service-providers.md)voor meer informatie.
@@ -54,7 +54,6 @@ De gebruikers en machtigingen die aan elke delegatie zijn gekoppeld, worden weer
 
 Als u gebruikers met de functie voor het verwijderen van de [registratie toewijzing van beheerde services](../../role-based-access-control/built-in-roles.md#managed-services-registration-assignment-delete-role) hebt toegevoegd tijdens het voorbereiden van een klant voor Azure delegated resource management, kunnen die gebruikers een overdracht verwijderen door het pictogram Prullenbak te selecteren dat in de rij voor die delegatie wordt weer gegeven. Als dit het geval is, kunnen gebruikers in de Tenant van de service provider geen toegang krijgen tot de resources die eerder zijn gedelegeerd.
 
-
 ## <a name="work-in-the-context-of-a-delegated-subscription"></a>Werken in de context van een gedelegeerd abonnement
 
 U kunt rechtstreeks in de context van een gedelegeerd abonnement in de Azure Portal werken zonder de directory waarin u werkt te scha kelen. Dit doet u als volgt:
@@ -71,5 +70,5 @@ U hebt ook toegang tot functionaliteit die betrekking heeft op gedelegeerde abon
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- Meer informatie over de [ervaring op het beheer van cross-tenants](../concepts/cross-tenant-management-experience.md).
+- Meer informatie over [beheerervaring in meerdere tenants](../concepts/cross-tenant-management-experience.md).
 - Meer informatie over hoe uw klanten [service providers kunnen weer geven en beheren](view-manage-service-providers.md) door naar **service providers** te gaan in de Azure Portal.

@@ -12,12 +12,12 @@ metadata:
   author: dlepow
   ms.author: danlep
   ms.date: 11/08/2019
-  ms.openlocfilehash: f73794898f00d78c5253c19f985f8ff531ae3c11
-  ms.sourcegitcommit: 253d4c7ab41e4eb11cd9995190cd5536fcec5a3c
+  ms.openlocfilehash: 55ac9d470f85059bd8ebb6949da08f651fb2289b
+  ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
   ms.translationtype: HT
   ms.contentlocale: nl-NL
-  ms.lasthandoff: 03/25/2020
-  ms.locfileid: "74895531"
+  ms.lasthandoff: 07/07/2020
+  ms.locfileid: "86027117"
 landingContent:
 - title: Over Azure Container Registry
   linkLists:
@@ -35,6 +35,8 @@ landingContent:
       url: container-registry-get-started-azure-cli.md
     - text: Een containerregister maken - Portal
       url: container-registry-get-started-portal.md
+    - text: Een containerregister maken - ARM-sjabloon
+      url: container-registry-get-started-geo-replication-template.md
     - text: Push- en pull-acties voor installatiekopie met Docker
       url: container-registry-get-started-docker-cli.md
   - linkListType: concept
@@ -65,7 +67,7 @@ landingContent:
     links:
     - text: Geo-replicatie
       url: container-registry-geo-replication.md
-    - text: Authentication
+    - text: Verificatie
       url: container-registry-authentication.md
     - text: Aanbevolen procedures
       url: container-registry-best-practices.md

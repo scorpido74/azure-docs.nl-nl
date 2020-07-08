@@ -7,18 +7,18 @@ ms.reviewer: sngun
 ms.service: cosmos-db
 ms.topic: how-to
 ms.date: 06/18/2019
-ms.openlocfilehash: 157f0a710a0b3aed25455600bbf19d4ae84ed848
-ms.sourcegitcommit: b56226271541e1393a4b85d23c07fd495a4f644d
+ms.openlocfilehash: 5428de23eb0e1b8c31f4576881526ec08ccc9698
+ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/26/2020
-ms.locfileid: "85391941"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86027817"
 ---
 # <a name="monitor-and-debug-with-metrics-in-azure-cosmos-db"></a>Controleren en fouten opsporen met metrische gegevens in Azure Cosmos DB
 
 Azure Cosmos DB biedt metrische gegevens voor doorvoer, opslag, consistentie, beschikbaarheid en latentie. De Azure-portal biedt een geaggregeerde weergave van deze metrische gegevens. U kunt ook metrische gegevens uit Azure Cosmos DB bekijken vanuit de Azure Monitor API. Zie het artikel [metrische gegevens ophalen uit Azure monitor](cosmos-db-azure-monitor-metrics.md) voor meer informatie over het weer geven van metrische gegevens in azure monitor. 
 
-In dit artikel worden algemene use cases beschreven en wordt uitgelegd hoe Azure Cosmos DB meet waarden kunnen worden gebruikt om deze problemen te analyseren en op te lossen. Metrische gegevens worden elke vijf minuten verzameld en gedurende zeven dagen bewaard.
+In dit artikel worden algemene gebruikscases beschreven en wordt uitgelegd hoe metrische gegevens in Azure Cosmos DB kunnen worden gebruikt om deze problemen te analyseren en op te lossen. Metrische gegevens worden elke vijf minuten verzameld en gedurende zeven dagen bewaard.
 
 ## <a name="view-metrics-from-azure-portal"></a>Metrische gegevens van Azure Portal weer geven
 
@@ -56,7 +56,7 @@ De meest voorkomende fout status code is 429 (beperking of beperking). Deze fout
 
 Een goede kardinaliteit van uw partitie sleutels is essentieel voor elke schaal bare toepassing. Ga naar de **Blade metrische gegevens** in de [Azure Portal](https://portal.azure.com)om de doorvoer distributie te bepalen van een gepartitioneerde container die is onderverdeeld in partities. Op het tabblad **door Voer** wordt de opslag specificatie weer gegeven in de tabel **Max. aantal geconsumeerde ru/seconde per fysieke partitie** . In de volgende afbeelding ziet u een voor beeld van een slechte distributie van gegevens, zoals wordt weer gegeven door de gescheefe partitie helemaal links.
 
-![Eén partitie Zie zware gebruik om 3:05 uur](media/use-metrics/metrics-17.png)
+:::image type="content" source="media/use-metrics/metrics-17.png" alt-text="Enkelvoudige partitie Zie intensief gebruik":::
 
 Een ongelijke doorvoer distributie kan leiden tot *dynamische* partities, wat kan leiden tot getraagde aanvragen en mogelijk opnieuw partitioneert. Zie [partitioneren en schalen in azure Cosmos DB](./partition-data.md)voor meer informatie over partitioneren in azure Cosmos db.
 
