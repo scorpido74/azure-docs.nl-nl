@@ -9,10 +9,9 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
 ms.openlocfilehash: 7d7227a0eeaa496dd774eb962946a4ee85e22009
-ms.sourcegitcommit: 971a3a63cf7da95f19808964ea9a2ccb60990f64
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/19/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85080018"
 ---
 #    <a name="named-entity-recognition-cognitive-skill"></a>Herkennings vaardigheid van benoemde entiteiten
@@ -46,14 +45,14 @@ Parameters zijn hoofdlettergevoelig.
 
 ## <a name="skill-inputs"></a>Vaardigheids invoer
 
-| Invoer naam      | Beschrijving                   |
+| Invoer naam      | Description                   |
 |---------------|-------------------------------|
 | languageCode  | Optioneel. De standaardwaarde is `"en"`.  |
 | tekst          | De tekst die moet worden geanalyseerd.          |
 
 ## <a name="skill-outputs"></a>Vaardigheids uitvoer
 
-| Uitvoer naam     | Beschrijving                   |
+| Uitvoer naam     | Description                   |
 |---------------|-------------------------------|
 | personen      | Een matrix met teken reeksen waarbij elke teken reeks de naam van een persoon vertegenwoordigt. |
 | locaties  | Een matrix met teken reeksen waarbij elke teken reeks een locatie vertegenwoordigt. |
@@ -153,7 +152,7 @@ Parameters zijn hoofdlettergevoelig.
 ## <a name="error-cases"></a>Fout cases
 Als de taal code voor het document niet wordt ondersteund, wordt een fout geretourneerd en worden er geen entiteiten geëxtraheerd.
 
-## <a name="see-also"></a>Zie ook
+## <a name="see-also"></a>Zie tevens
 
 + [Ingebouwde vaardigheden](cognitive-search-predefined-skills.md)
 + [Een vaardig heden definiëren](cognitive-search-defining-skillset.md)

@@ -9,10 +9,9 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 06/17/2020
 ms.openlocfilehash: bec993c2b59aa03195b78a02668baf3f5fac6695
-ms.sourcegitcommit: 971a3a63cf7da95f19808964ea9a2ccb60990f64
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/19/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85080753"
 ---
 #    <a name="pii-detection-cognitive-skill"></a>PERSOONLIJKE detectie cognitieve vaardigheid
@@ -136,7 +135,7 @@ Als uw tekst groter is dan 50.000 tekens, worden alleen de eerste 50.000 tekens 
 
 Als de vaardigheid een waarschuwing retourneert, kan de uitvoer `maskedText` leeg zijn.  Dit betekent dat als u verwacht dat de uitvoer bestaat voor invoer in latere vaardig heden, deze niet werkt zoals bedoeld. Houd dit in acht wanneer u uw definitie van uw vaardig heden schrijft.
 
-## <a name="see-also"></a>Zie ook
+## <a name="see-also"></a>Zie tevens
 
 + [Ingebouwde vaardigheden](cognitive-search-predefined-skills.md)
 + [Een vaardig heden definiëren](cognitive-search-defining-skillset.md)

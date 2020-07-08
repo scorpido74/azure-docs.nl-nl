@@ -9,10 +9,9 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 06/17/2020
 ms.openlocfilehash: 15118c9c3d2d1a528c62b539ab7bdd8f174c19de
-ms.sourcegitcommit: 971a3a63cf7da95f19808964ea9a2ccb60990f64
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/19/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85080100"
 ---
 # <a name="sentiment-cognitive-skill"></a>Sentiment cognitieve vaardigheid
@@ -42,14 +41,14 @@ Parameters zijn hoofdlettergevoelig.
 
 ## <a name="skill-inputs"></a>Vaardigheids invoer 
 
-| Invoer naam | Beschrijving |
+| Invoer naam | Description |
 |--------------------|-------------|
 | `text` | De tekst die moet worden geanalyseerd.|
 | `languageCode`    |  Beschrijving Een teken reeks die de taal van de records aangeeft. Als deze para meter niet wordt opgegeven, is de standaard waarde "en". <br/>Bekijk de [volledige lijst met ondersteunde talen](../cognitive-services/text-analytics/text-analytics-supported-languages.md).|
 
 ## <a name="skill-outputs"></a>Vaardigheids uitvoer
 
-| Uitvoer naam | Beschrijving |
+| Uitvoer naam | Description |
 |--------------------|-------------|
 | `score` | Een waarde tussen 0 en 1 die de sentiment van de geanalyseerde tekst aangeeft. Waarden die dicht bij 0 liggen, hebben een negatieve sentiment, dicht bij 0,5 hebben neutrale sentiment en waarden die dicht bij 1 staan, hebben een positieve sentiment.|
 
@@ -116,7 +115,7 @@ Als deze leeg is, wordt er geen sentiment-Score geretourneerd voor die records.
 ## <a name="error-cases"></a>Fout cases
 Als een taal niet wordt ondersteund, wordt er een fout gegenereerd en wordt er geen sentiment Score geretourneerd.
 
-## <a name="see-also"></a>Zie ook
+## <a name="see-also"></a>Zie tevens
 
 + [Ingebouwde vaardigheden](cognitive-search-predefined-skills.md)
 + [Een vaardig heden definiëren](cognitive-search-defining-skillset.md)

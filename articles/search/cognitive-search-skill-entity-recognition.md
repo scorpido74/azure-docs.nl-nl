@@ -9,10 +9,9 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 06/17/2020
 ms.openlocfilehash: 716951616a82dfd13d6bdcf127c4c4382576e792
-ms.sourcegitcommit: 971a3a63cf7da95f19808964ea9a2ccb60990f64
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/19/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85080847"
 ---
 #    <a name="entity-recognition-cognitive-skill"></a>Herkennings vaardigheid van entity erkennen
@@ -45,7 +44,7 @@ Para meters zijn hoofdletter gevoelig en zijn allemaal optioneel.
 
 ## <a name="skill-inputs"></a>Vaardigheids invoer
 
-| Invoer naam      | Beschrijving                   |
+| Invoer naam      | Description                   |
 |---------------|-------------------------------|
 | `languageCode`    | Optioneel. De standaardwaarde is `"en"`.  |
 | `text`          | De tekst die moet worden geanalyseerd.          |
@@ -55,7 +54,7 @@ Para meters zijn hoofdletter gevoelig en zijn allemaal optioneel.
 > [!NOTE]
 > Niet alle entiteits categorieën worden ondersteund voor alle talen. De `"Person"` `"Location"` categorie typen,, en `"Organization"` entiteit worden ondersteund voor de volledige lijst met talen hierboven. Alleen _de_modules _, en,_ _es_, _fr_en _zh-Hans_ ondersteunen extra heren,,, `"Quantity"` `"Datetime"` `"URL"` en `"Email"` typen. Zie [taal-en regio ondersteuning voor de Text Analytics-API](https://docs.microsoft.com/azure/cognitive-services/text-analytics/language-support)voor meer informatie.  
 
-| Uitvoer naam      | Beschrijving                   |
+| Uitvoer naam      | Description                   |
 |---------------|-------------------------------|
 | `persons`       | Een matrix met teken reeksen waarbij elke teken reeks de naam van een persoon vertegenwoordigt. |
 | `locations`  | Een matrix met teken reeksen waarbij elke teken reeks een locatie vertegenwoordigt. |
@@ -192,7 +191,7 @@ Houd er rekening mee dat de verplaatsingen die worden geretourneerd voor entitei
 ## <a name="error-cases"></a>Fout cases
 Als de taal code voor het document niet wordt ondersteund, wordt een fout geretourneerd en worden er geen entiteiten geëxtraheerd.
 
-## <a name="see-also"></a>Zie ook
+## <a name="see-also"></a>Zie tevens
 
 + [Ingebouwde vaardigheden](cognitive-search-predefined-skills.md)
 + [Een vaardig heden definiëren](cognitive-search-defining-skillset.md)

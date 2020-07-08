@@ -9,10 +9,9 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 06/04/2020
 ms.openlocfilehash: ee742eae38ae95756cf31d60b877f18629c569d4
-ms.sourcegitcommit: 971a3a63cf7da95f19808964ea9a2ccb60990f64
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/19/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85080494"
 ---
 # <a name="security-filters-for-trimming-azure-cognitive-search-results-using-active-directory-identities"></a>Beveiligings filters voor het verkleinen van Azure Cognitive Search-resultaten met behulp van Active Directory-identiteiten
@@ -186,7 +185,7 @@ Het antwoord bevat een gefilterde lijst met documenten, die bestaan uit degene d
 
 In dit overzicht hebt u technieken geleerd voor het gebruik van AAD-aanmeldingen om documenten te filteren in azure Cognitive Search resultaten, waardoor de resultaten van documenten die niet overeenkomen met het filter dat is opgegeven in de aanvraag, worden afgekapt.
 
-## <a name="see-also"></a>Zie ook
+## <a name="see-also"></a>Zie tevens
 
 + [Toegangs beheer op basis van identiteiten met behulp van Azure Cognitive Search filters](search-security-trimming-for-azure-search.md)
 + [Filters in azure Cognitive Search](search-filters.md)

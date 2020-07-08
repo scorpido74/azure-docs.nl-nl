@@ -17,10 +17,9 @@ ms.author: ajburnle
 ms.reviewer: ''
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 1d54c4e5980383c721629143910eafbd5ae6a527
-ms.sourcegitcommit: 971a3a63cf7da95f19808964ea9a2ccb60990f64
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/19/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85078940"
 ---
 # <a name="create-a-new-access-package-in-azure-ad-entitlement-management"></a>Een nieuw toegangs pakket maken in het beheer van rechten van Azure AD
@@ -57,7 +56,7 @@ Dit zijn de stappen op hoog niveau voor het maken van een nieuw toegangs pakket.
 
 **Vereiste rol:** Globale beheerder, gebruikers beheerder, catalogus eigenaar of toegangs pakket beheer
 
-1. Meld u aan bij de [Azure-portal](https://portal.azure.com).
+1. Meld u aan bij [Azure Portal](https://portal.azure.com).
 
 1. Klik op **Azure Active Directory** en klik vervolgens op **Identity governance**.
 

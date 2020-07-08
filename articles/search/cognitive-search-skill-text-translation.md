@@ -9,10 +9,9 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
 ms.openlocfilehash: b35af58141dc46e0cc36efe009023c1bf52850e7
-ms.sourcegitcommit: 971a3a63cf7da95f19808964ea9a2ccb60990f64
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/19/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85080073"
 ---
 #   <a name="text-translation-cognitive-skill"></a>Tekst vertaling cognitieve vaardigheid
@@ -38,7 +37,7 @@ De maximale grootte van een record moet 50.000 tekens zijn, zoals gemeten door [
 
 Parameters zijn hoofdlettergevoelig.
 
-| Invoerwaarden                | Beschrijving |
+| Invoerwaarden                | Description |
 |---------------------|-------------|
 | defaultToLanguageCode | Lang De taal code voor het vertalen van documenten in voor documenten die de naar-taal niet expliciet opgeven. <br/> Bekijk de [volledige lijst met ondersteunde talen](https://docs.microsoft.com/azure/cognitive-services/translator/language-support). |
 | defaultFromLanguageCode | Beschrijving De taal code voor het vertalen van documenten uit voor documenten die niet expliciet zijn opgegeven in de taal van.  Als de defaultFromLanguageCode niet is opgegeven, wordt de automatische taal detectie die is opgegeven door de Translator Text-API, gebruikt om de van-taal te bepalen. <br/> Bekijk de [volledige lijst met ondersteunde talen](https://docs.microsoft.com/azure/cognitive-services/translator/language-support). |
@@ -46,7 +45,7 @@ Parameters zijn hoofdlettergevoelig.
 
 ## <a name="skill-inputs"></a>Vaardigheids invoer
 
-| Invoer naam     | Beschrijving |
+| Invoer naam     | Description |
 |--------------------|-------------|
 | tekst | De tekst die moet worden vertaald.|
 | toLanguageCode    | Een teken reeks die de taal aangeeft waarnaar de tekst moet worden vertaald. Als deze invoer niet is opgegeven, wordt de defaultToLanguageCode gebruikt om de tekst te vertalen. <br/>[Volledige lijst met ondersteunde talen](https://docs.microsoft.com/azure/cognitive-services/translator/language-support) weer geven|
@@ -54,7 +53,7 @@ Parameters zijn hoofdlettergevoelig.
 
 ## <a name="skill-outputs"></a>Vaardigheids uitvoer
 
-| Uitvoer naam    | Beschrijving |
+| Uitvoer naam    | Description |
 |--------------------|-------------|
 | translatedText | Het teken reeks resultaat van de tekst omzetting van de translatedFromLanguageCode naar de translatedToLanguageCode.|
 | translatedToLanguageCode  | Een teken reeks die de taal code aangeeft waarnaar de tekst is vertaald. Dit is handig als u vertaalt naar meerdere talen en u wilt bijhouden welke tekst de taal is.|
@@ -148,7 +147,7 @@ Als u een niet-ondersteunde taal code opgeeft voor de van-of-naar-taal, wordt er
 Als uw tekst leeg is, wordt er een waarschuwing gegenereerd.
 Als uw tekst groter is dan 50.000 tekens, worden alleen de eerste 50.000 tekens vertaald en wordt er een waarschuwing gegeven.
 
-## <a name="see-also"></a>Zie ook
+## <a name="see-also"></a>Zie tevens
 
 + [Ingebouwde vaardigheden](cognitive-search-predefined-skills.md)
 + [Een vaardig heden definiëren](cognitive-search-defining-skillset.md)

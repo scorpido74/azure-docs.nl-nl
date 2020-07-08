@@ -12,10 +12,9 @@ manager: daveba
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: aab57d48e8bd95f1ce2aec2dde42303d5d991a58
-ms.sourcegitcommit: 74ba70139781ed854d3ad898a9c65ef70c0ba99b
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/26/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85444247"
 ---
 # <a name="plan-your-azure-active-directory-device-deployment"></a>De implementatie van uw Azure Active Directory-apparaat plannen
@@ -66,7 +65,7 @@ Wanneer technologie projecten mislukken, worden ze doorgaans als gevolg van niet
 
 Voor dit abonnement voegt u de volgende belanghebbenden toe aan uw lijst:
 
-| Rol| Beschrijving |
+| Rol| Description |
 | - | - |
 | Apparaat-beheerder| Een vertegenwoordiger van het team dat kan controleren of het plan voldoet aan de apparaat vereisten van uw organisatie. |
 | Netwerk beheerder| Een vertegenwoordiger van het netwerk team die ervoor kan zorgen dat aan de netwerk vereisten wordt voldaan. |
@@ -102,7 +101,7 @@ Gebruik deze structuur om opties te bepalen voor apparaten die eigendom zijn van
 
 iOS-en Android-apparaten kunnen alleen worden geregistreerd bij Azure AD. De volgende tabel geeft een hoog niveau van overwegingen voor Windows-client apparaten. Gebruik dit als een overzicht en verken de verschillende integratie methoden uitvoerig.
 
-| | Geregistreerd bij Azure AD| Azure AD-koppeling| Hybride Azure AD-koppeling |
+| | Azure AD-geregistreerd| Azure AD-koppeling| Hybride Azure AD-koppeling |
 | - | - | - | - |
 | **Client besturingssystemen**| | |  |
 | Windows 10-apparaten| ![Kijk](./media/plan-device-deployment/check.png)| ![Kijk](./media/plan-device-deployment/check.png)| ![Kijk](./media/plan-device-deployment/check.png) |
@@ -183,7 +182,7 @@ U kunt bepalen dat Azure AD-deelname de beste oplossing voor een apparaat is, en
 | - | - | - |
 | On-premises domein toegevoegd| Azure AD-Join| Het apparaat loskoppelen van het on-premises domein voordat u deelneemt aan Azure AD |
 | Hybride Azure AD-deelname| Azure AD-Join| Het apparaat loskoppelen van on-premises domein en van Azure AD voordat u deelneemt aan Azure AD |
-| Geregistreerd bij Azure AD| Azure AD-Join| De registratie van het apparaat ongedaan maken voordat u deelneemt aan Azure AD |
+| Azure AD-geregistreerd| Azure AD-Join| De registratie van het apparaat ongedaan maken voordat u deelneemt aan Azure AD |
 
 
 ## <a name="hybrid-azure-ad-join"></a>Hybride Azure AD-koppeling
@@ -241,7 +240,7 @@ Beheerders kunnen deze geregistreerde en gekoppelde apparaten beveiligen en verd
 
 Ondersteunde en niet-ondersteunde platforms voor geïntegreerde apparaten bekijken:
 
-| Hulpprogram ma's voor Apparaatbeheer| Geregistreerd bij Azure AD| Azure AD-koppeling| Hybride Azure AD-koppeling|
+| Hulpprogram ma's voor Apparaatbeheer| Azure AD-geregistreerd| Azure AD-koppeling| Hybride Azure AD-koppeling|
 | - | - | - | - |
 | [Beheer van mobiele apparaten (MDM)](https://docs.microsoft.com/windows/client-management/mdm/azure-active-directory-integration-with-mdm) <br>Voor beeld: Microsoft Intune| ![Kijk](./media/plan-device-deployment/check.png)| ![Kijk](./media/plan-device-deployment/check.png)| ![Kijk](./media/plan-device-deployment/check.png)|  |
 | [Co-beheer met Microsoft Intune en micro soft-eind punt Configuration Manager](https://docs.microsoft.com/mem/configmgr/comanage/overview) <br>(Windows 10 en hoger)| | ![Kijk](./media/plan-device-deployment/check.png)| ![Kijk](./media/plan-device-deployment/check.png)|  |

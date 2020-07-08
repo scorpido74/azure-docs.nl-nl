@@ -9,10 +9,9 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
 ms.openlocfilehash: 59d181d8f4c176a8fc00ac0fb8ab0216c6ae27f4
-ms.sourcegitcommit: 971a3a63cf7da95f19808964ea9a2ccb60990f64
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/19/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85080032"
 ---
 # <a name="built-in-cognitive-skills-for-text-and-image-processing-during-indexing-azure-cognitive-search"></a>Ingebouwde cognitieve vaardig heden voor tekst-en afbeeldings verwerking tijdens het indexeren (Azure Cognitive Search)
@@ -31,7 +30,7 @@ In dit artikel vindt u informatie over de cognitieve vaardig heden van Azure Cog
 
 Verschillende vaardig heden zijn flexibel in wat ze gebruiken of produceren. Over het algemeen zijn de meeste vaardig heden gebaseerd op vooraf getrainde modellen, wat betekent dat u het model niet kunt trainen met uw eigen trainings gegevens. In de volgende tabel worden de vaardig heden van micro soft opgesomd en beschreven. 
 
-| Eigen | Beschrijving |
+| Eigen | Description |
 |-------|-------------|
 |[Micro soft. skills. Text. CustomEntityLookupSkill](cognitive-search-skill-custom-entity-lookup.md)| Zoekt naar tekst uit een aangepaste, door de gebruiker gedefinieerde lijst met woorden en zinsdelen.|
 | [Micro soft. skills. Text. KeyPhraseSkill](cognitive-search-skill-keyphrases.md) | Deze vaardigheid maakt gebruik van een voortraind model voor het detecteren van belang rijke zinnen op basis van de term plaatsing, taal kundige regels, nabij de andere voor waarden en hoe ongebruikelijk de term binnen de bron gegevens valt. |
@@ -53,7 +52,7 @@ Verschillende vaardig heden zijn flexibel in wat ze gebruiken of produceren. Ove
 
 Zie [een aangepaste interface definiëren](cognitive-search-custom-skill-interface.md) voor meer informatie over het maken van een aangepaste [vaardigheid](cognitive-search-custom-skill-web-api.md). voor [Beeld: een aangepaste vaardigheid maken voor AI-verrijking](cognitive-search-create-custom-skill-example.md).
 
-## <a name="see-also"></a>Zie ook
+## <a name="see-also"></a>Zie tevens
 
 + [Een vaardig heden definiëren](cognitive-search-defining-skillset.md)
 + [Definitie van aangepaste vaardigheden interface](cognitive-search-custom-skill-interface.md)

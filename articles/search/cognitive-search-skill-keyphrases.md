@@ -9,10 +9,9 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
 ms.openlocfilehash: 529e79abbd7fa8f9733254d207af570237044305
-ms.sourcegitcommit: 971a3a63cf7da95f19808964ea9a2ccb60990f64
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/19/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85080813"
 ---
 #   <a name="key-phrase-extraction-cognitive-skill"></a>Sleuteltermextractie cognitieve vaardigheid
@@ -37,21 +36,21 @@ De maximale grootte van een record moet 50.000 tekens zijn, zoals gemeten door [
 
 Parameters zijn hoofdlettergevoelig.
 
-| Invoerwaarden                | Beschrijving |
+| Invoerwaarden                | Description |
 |---------------------|-------------|
 | `defaultLanguageCode` | Beschrijving De taal code die moet worden toegepast op documenten die geen taal expliciet opgeven.  Als de standaard taal code niet wordt opgegeven, wordt Engels (en) gebruikt als de standaard taal code. <br/> Bekijk de [volledige lijst met ondersteunde talen](https://docs.microsoft.com/azure/cognitive-services/text-analytics/text-analytics-supported-languages). |
 | `maxKeyPhraseCount`   | Beschrijving Het maximum aantal sleutel zinnen dat moet worden geproduceerd. |
 
 ## <a name="skill-inputs"></a>Vaardigheids invoer
 
-| Invoer  | Beschrijving |
+| Invoer  | Description |
 |--------------------|-------------|
 | `text` | De tekst die moet worden geanalyseerd.|
 | `languageCode`    |  Een teken reeks die de taal van de records aangeeft. Als deze para meter niet wordt opgegeven, wordt de standaardtaal code gebruikt voor het analyseren van de records. <br/>[Volledige lijst met ondersteunde talen](https://docs.microsoft.com/azure/cognitive-services/text-analytics/text-analytics-supported-languages) weer geven|
 
 ## <a name="skill-outputs"></a>Vaardigheids uitvoer
 
-| Uitvoer     | Beschrijving |
+| Uitvoer     | Description |
 |--------------------|-------------|
 | `keyPhrases` | Een lijst met tref woorden die zijn geëxtraheerd uit de invoer tekst. De sleutel zinnen worden geretourneerd op volg orde van belang. |
 
@@ -114,7 +113,7 @@ Als u een niet-ondersteunde taal code opgeeft, wordt er een fout gegenereerd en 
 Als uw tekst leeg is, wordt er een waarschuwing gegenereerd.
 Als uw tekst groter is dan 50.000 tekens, worden alleen de eerste 50.000 tekens geanalyseerd en wordt er een waarschuwing gegeven.
 
-## <a name="see-also"></a>Zie ook
+## <a name="see-also"></a>Zie tevens
 
 + [Ingebouwde vaardigheden](cognitive-search-predefined-skills.md)
 + [Een vaardig heden definiëren](cognitive-search-defining-skillset.md)

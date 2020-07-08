@@ -9,10 +9,9 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 06/17/2020
 ms.openlocfilehash: bac2f86f4134cc8d22e9f388b46bc76ab2d0e5ff
-ms.sourcegitcommit: 971a3a63cf7da95f19808964ea9a2ccb60990f64
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/19/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85080781"
 ---
 #   <a name="language-detection-cognitive-skill"></a>Herkennings vaardigheid van taal detectie
@@ -39,13 +38,13 @@ De maximale grootte van een record moet 50.000 tekens zijn, zoals gemeten door [
 
 Parameters zijn hoofdlettergevoelig.
 
-| Invoerwaarden     | Beschrijving |
+| Invoerwaarden     | Description |
 |--------------------|-------------|
 | `text` | De tekst die moet worden geanalyseerd.|
 
 ## <a name="skill-outputs"></a>Vaardigheids uitvoer
 
-| Uitvoer naam    | Beschrijving |
+| Uitvoer naam    | Description |
 |--------------------|-------------|
 | `languageCode` | De ISO 6391-taal code voor de geïdentificeerde taal. Bijvoorbeeld ' en '. |
 | `languageName` | De naam van de taal. Bijvoorbeeld ' Engels '. |
@@ -134,7 +133,7 @@ Parameters zijn hoofdlettergevoelig.
 ## <a name="error-cases"></a>Fout cases
 Als de tekst wordt weer gegeven in een niet-ondersteunde taal, wordt er een fout gegenereerd en wordt er geen taal-id geretourneerd.
 
-## <a name="see-also"></a>Zie ook
+## <a name="see-also"></a>Zie tevens
 
 + [Ingebouwde vaardigheden](cognitive-search-predefined-skills.md)
 + [Een vaardig heden definiëren](cognitive-search-defining-skillset.md)
