@@ -6,17 +6,16 @@ ms.date: 4/11/2019
 ms.topic: conceptual
 ms.custom: mvc
 ms.openlocfilehash: 9129d10071a4c8da0376cbad3d64c10cbaceb8b9
-ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/25/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "83835781"
 ---
 # <a name="unlink-workspace-from-automation-account-for-update-management"></a>De werk ruimte ontkoppelen van het Automation-account voor Updatebeheer
 
 U kunt ervoor kiezen uw Automation-account niet te integreren met een Log Analytics-werk ruimte tijdens [updatebeheer](automation-update-management.md) bewerkingen. In dit artikel leest u hoe u de werk ruimte ontkoppelt van uw account.
 
-1. Meld u aan bij Azure op https://portal.azure.com .
+1. Aanmelden bij Azure op https://portal.azure.com.
 
 2. Verwijder Updatebeheer voor uw virtuele machines. Zie [Vm's verwijderen uit updatebeheer](automation-remove-vms-from-update-management.md).
 

@@ -7,10 +7,9 @@ author: bwren
 ms.author: bwren
 ms.date: 05/22/2019
 ms.openlocfilehash: ecd66500fdf968a773d3bc4f3d93363bfe86c763
-ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/25/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "83836036"
 ---
 # <a name="overview-of-insights-in-azure-monitor"></a>Overzicht van inzichten in Azure Monitor
@@ -20,7 +19,7 @@ Inzichten bieden een aangepaste bewakings ervaring voor bepaalde toepassingen en
 In de volgende secties vindt u een korte beschrijving van de inzichten die momenteel beschikbaar zijn in Azure Monitor. Raadpleeg de gedetailleerde documentatie voor meer informatie.
 
 ## <a name="application-insights"></a>Application Insights
-Application Insights is een uitbreidbare APM-service (Application Performance Management) voor webontwikkelaars op meerdere platforms. Hiermee kunt u uw livewebtoepassing controleren. Het werkt voor toepassingen op een groot aantal verschillende platformen, waaronder .NET, node. js en Java EE, lokaal gehost, hybride of een open bare Cloud. Het kan ook worden geïntegreerd met uw DevOps-proces en heeft verbindings punten naar verschillende ontwikkel hulpprogramma's.
+Application Insights is een uitbreidbare APM-service (Application Performance Management) voor webontwikkelaars op meerdere platforms. Hiermee kunt u uw livewebtoepassing controleren. Het werkt voor toepassingen op een groot aantal verschillende platformen, waaronder .NET, Node.js en Java EE, lokaal gehost, hybride of een open bare Cloud. Het kan ook worden geïntegreerd met uw DevOps-proces en heeft verbindings punten naar verschillende ontwikkel hulpprogramma's.
 
 Zie [Wat is Application Insights?](../app/app-insights-overview.md).
 
@@ -41,7 +40,7 @@ Zie [resource groepen bewaken met Azure monitor (preview)](../insights/resource-
 ![Azure Monitor voor resource groepen](media/insights-overview/resource-group-insights.png)
 
 ## <a name="azure-monitor-for-vms-preview"></a>Azure Monitor voor VM's (preview-versie)
-Azure Monitor voor VM's bewaakt uw Azure virtual machines (VM) en virtuele-machine schaal sets op schaal. De service analyseert de prestaties en status van uw Windows- en Linux-VM's en bewaakt hun processen en afhankelijkheden van andere resources en externe processen.
+Azure Monitor voor VM's bewaakt uw virtuele Azure-machines (VM) en virtuele-machineschaalsets op schaal. De service analyseert de prestaties en status van uw Windows- en Linux-VM's en bewaakt hun processen en afhankelijkheden van andere resources en externe processen.
 
 Zie [Wat is Azure monitor voor VM's?](vminsights-overview.md)
 

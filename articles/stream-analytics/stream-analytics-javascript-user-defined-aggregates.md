@@ -8,10 +8,9 @@ ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 10/28/2017
 ms.openlocfilehash: d33cc14612b5c00c8102bd035e7331bef670a4dd
-ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/25/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "83836444"
 ---
 # <a name="azure-stream-analytics-javascript-user-defined-aggregates"></a>Door de gebruiker gedefinieerde Java script-functies Azure Stream Analytics
@@ -76,7 +75,7 @@ function main() {
 
 Elke Java script-UDA wordt gedefinieerd door een functie object declaratie. Hier volgen de belangrijkste elementen in een UDA-definitie.
 
-### <a name="function-alias"></a>Functie alias
+### <a name="function-alias"></a>Functiealias
 
 De functie alias is de UDA-id. Gebruik in Stream Analytics query altijd UDA-alias in combi natie met een ' UDA '. 'com.microsoft.intune.mam'.
 
@@ -84,7 +83,7 @@ De functie alias is de UDA-id. Gebruik in Stream Analytics query altijd UDA-alia
 
 Voor UDA moet het functie type **Java script-UDA**zijn.
 
-### <a name="output-type"></a>Uitvoer type
+### <a name="output-type"></a>Uitvoertype
 
 Een specifiek type dat Stream Analytics taak wordt ondersteund of ' any ' als u het type wilt afhandelen in uw query.
 

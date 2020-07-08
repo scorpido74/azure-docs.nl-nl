@@ -4,10 +4,9 @@ description: Meer informatie over het beveiligen van uw resource hiërarchie met
 ms.date: 05/21/2020
 ms.topic: conceptual
 ms.openlocfilehash: 60c184d176ae62c1af525db656c56a83422cb94a
-ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/25/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "83837414"
 ---
 # <a name="how-to-protect-your-resource-hierarchy"></a>Uw resource hiërarchie beveiligen
@@ -39,7 +38,7 @@ Als u deze instelling wilt configureren, worden de [hiërarchie-instellingen](/r
   PUT https://management.azure.com/providers/Microsoft.Management/managementGroups/{rootMgID}/settings/default?api-version=2020-02-01
   ```
 
-- Aanvraagbody
+- Aanvraagtekst
 
   ```json
   {
@@ -63,7 +62,7 @@ Als u deze instelling wilt configureren, worden de [hiërarchie-instellingen](/r
   PUT https://management.azure.com/providers/Microsoft.Management/managementGroups/{rootMgID}/settings/default?api-version=2020-02-01
   ```
 
-- Aanvraagbody
+- Aanvraagtekst
 
   ```json
   {

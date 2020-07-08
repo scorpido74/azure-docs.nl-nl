@@ -9,10 +9,9 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
 ms.openlocfilehash: 4d2ee2bccf94dca933981c3070323b659eab6cfa
-ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/25/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "83836087"
 ---
 # <a name="how-to-implement-faceted-navigation-in-azure-cognitive-search"></a>Facet navigatie in azure Cognitive Search implementeren
@@ -321,7 +320,7 @@ Onder bepaalde omstandigheden is het mogelijk dat facet aantallen niet overeenko
 
 De facet aantallen kunnen onnauwkeurig zijn als gevolg van de sharding-architectuur. Elke zoek index heeft meerdere Shards en elke Shard rapporteert de bovenste N facetten per document telling, die vervolgens in één resultaat wordt gecombineerd. Als sommige Shards veel overeenkomende waarden hebben, terwijl anderen minder hebben, is het mogelijk dat sommige facet waarden ontbreken of worden ondergeteld in de resultaten.
 
-Hoewel dit gedrag op elk gewenst moment kan worden gewijzigd, kunt u dit probleem omzeilen door de telling van het aantal \<> naar een groot aantal te beperken om de volledige rapportage van elke Shard af te dwingen. Als de waarde van Count: groter is dan of gelijk is aan het aantal unieke waarden in het veld, worden nauw keurige resultaten gegarandeerd. Maar wanneer het aantal documenten hoog is, is er sprake van prestatie vermindering. Gebruik deze optie daarom verstandig.
+Hoewel dit gedrag op elk gewenst moment kan worden gewijzigd, kunt u dit probleem omzeilen door het aantal: \<number> naar een groot aantal te deruimen om de volledige rapportage van elke Shard af te dwingen. Als de waarde van Count: groter is dan of gelijk is aan het aantal unieke waarden in het veld, worden nauw keurige resultaten gegarandeerd. Maar wanneer het aantal documenten hoog is, is er sprake van prestatie vermindering. Gebruik deze optie daarom verstandig.
 
 ### <a name="user-interface-tips"></a>Tips voor de gebruikers interface
 **Labels voor elk veld in de facet navigatie toevoegen**
@@ -395,7 +394,7 @@ Bekijk bij het werken met zoek resultaten de URL voor wijzigingen in de bouw van
    
 <a name="nextstep"></a>
 
-## <a name="learn-more"></a>Meer informatie
+## <a name="learn-more"></a>Lees meer
 Bekijk [Azure Cognitive Search diep gaande](https://channel9.msdn.com/Events/TechEd/Europe/2014/DBI-B410). Bij 45:25 is er een demo over het implementeren van facetten.
 
 Voor meer informatie over ontwerp principes voor facet navigatie raden wij de volgende koppelingen aan:

@@ -7,10 +7,9 @@ ms.date: 01/13/2020
 ms.topic: conceptual
 ms.custom: has-adal-ref
 ms.openlocfilehash: 3c5901dbd45cc0ce82c7fcd8117705eaeed7b4ba
-ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/25/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "83837124"
 ---
 # <a name="manage-connections-in-azure-automation"></a>Verbindingen in Azure Automation beheren
@@ -41,7 +40,7 @@ In de meeste gevallen hoeft u geen verbindings bron te maken omdat deze wordt ge
 
 Met de cmdlets in de volgende tabel worden Automation-verbindingen met Power shell gemaakt en beheerd. Ze worden geleverd als onderdeel van de [AZ-modules](shared-resources/modules.md#az-modules).
 
-|Cmdlet|Beschrijving|
+|Cmdlet|Description|
 |---|---|
 |[Get-AzAutomationConnection](https://docs.microsoft.com/powershell/module/az.automation/get-azautomationconnection?view=azps-3.7.0)|Hiermee haalt u informatie op over een verbinding.|
 |[New-AzAutomationConnection](https://docs.microsoft.com/powershell/module/az.automation/new-azautomationconnection?view=azps-3.7.0)|Hiermee maakt u een nieuwe verbinding.|
@@ -52,7 +51,7 @@ Met de cmdlets in de volgende tabel worden Automation-verbindingen met Power she
 
 De interne cmdlet in de volgende tabel wordt gebruikt voor toegang tot verbindingen in uw runbooks en DSC-configuraties. Deze cmdlet wordt geleverd met de globale module `Orchestrator.AssetManagement.Cmdlets` . Zie [interne cmdlets](shared-resources/modules.md#internal-cmdlets)voor meer informatie.
 
-|Interne cmdlet|Beschrijving|
+|Interne cmdlet|Description|
 |---|---|
 |`Get-AutomationConnection` | Haalt de waarden van de verschillende velden in de verbinding op en retourneert deze als een [hashtabel](https://go.microsoft.com/fwlink/?LinkID=324844). U kunt deze hashtabel vervolgens gebruiken met de juiste opdrachten in het runbook of de DSC-configuratie.|
 
@@ -97,7 +96,7 @@ Wanneer u uw Automation-account maakt, bevat het standaard verschillende globale
 
 ## <a name="add-a-connection-type"></a>Een verbindings type toevoegen
 
-Als uw runbook of DSC-configuratie verbinding maakt met een externe service, moet u een verbindings type definiëren in een [aangepaste module](shared-resources/modules.md#custom-modules) die een integratie module wordt genoemd. Deze module bevat een meta gegevensbestand dat eigenschappen van het verbindings type specificeert en de naam ** &lt; module &gt; -Automation. json**, die zich bevindt in de map module van het gecomprimeerde **zip** -bestand. Dit bestand bevat de velden van een verbinding die vereist zijn om verbinding te maken met het systeem of de service die door de module wordt vertegenwoordigd. Met dit bestand kunt u de veld namen, gegevens typen, versleutelings status en optionele status voor het verbindings type instellen. 
+Als uw runbook of DSC-configuratie verbinding maakt met een externe service, moet u een verbindings type definiëren in een [aangepaste module](shared-resources/modules.md#custom-modules) die een integratie module wordt genoemd. Deze module bevat een meta gegevensbestand dat eigenschappen van het verbindings type specificeert en de naam ** &lt; module &gt;-Automation.jsheeft op**. Deze bevindt zich in de map module van het gecomprimeerde **zip** -bestand. Dit bestand bevat de velden van een verbinding die vereist zijn om verbinding te maken met het systeem of de service die door de module wordt vertegenwoordigd. Met dit bestand kunt u de veld namen, gegevens typen, versleutelings status en optionele status voor het verbindings type instellen. 
 
 Het volgende voor beeld is een sjabloon in de **JSON** -bestands indeling die de gebruikers naam-en wachtwoord eigenschappen definieert voor een aangepast verbindings type met de naam `MyModuleConnection` :
 

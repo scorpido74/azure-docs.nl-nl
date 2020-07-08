@@ -4,10 +4,9 @@ description: Meer informatie over het uitschakelen en inschakelen van functies i
 ms.topic: conceptual
 ms.date: 04/08/2020
 ms.openlocfilehash: ee701e8df8faddef9bbdb16e7a1048c4dc2e40a5
-ms.sourcegitcommit: 1f25aa993c38b37472cf8a0359bc6f0bf97b6784
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/26/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "83848736"
 ---
 # <a name="how-to-disable-functions-in-azure-functions"></a>Functies in Azure Functions uitschakelen
@@ -87,15 +86,15 @@ public static class QueueFunctions
 Met deze methode kunt u de functie in-en uitschakelen door de app-instelling te wijzigen zonder opnieuw te compileren of opnieuw te implementeren. Als u een app-instelling wijzigt, wordt de functie-app opnieuw gestart, zodat de status wijziging in de modus onmiddellijk wordt herkend.
 
 > [!IMPORTANT]
-> Het `Disabled` kenmerk is de enige manier om een klassen bibliotheek functie uit te scha kelen. Het gegenereerde *Function. json* -bestand voor een klassen bibliotheek functie is niet bedoeld om rechtstreeks te worden bewerkt. Als u het bestand bewerkt, heeft alles wat u naar de `disabled` eigenschap doet geen effect.
+> Het `Disabled` kenmerk is de enige manier om een klassen bibliotheek functie uit te scha kelen. Het gegenereerde *function.js* voor een Class Library-functie is niet bedoeld om rechtstreeks te worden bewerkt. Als u het bestand bewerkt, heeft alles wat u naar de `disabled` eigenschap doet geen effect.
 >
-> Hetzelfde geldt voor de **functie status** switch op het tabblad **beheren** , omdat deze werkt door het bestand *Function. json* te wijzigen.
+> Hetzelfde geldt voor de **functie status** switch op het tabblad **beheren** , omdat deze werkt door de *function.jsin* het bestand te wijzigen.
 >
 > Houd er ook rekening mee dat de portal kan aangeven dat de functie is uitgeschakeld wanneer dat niet het geval is.
 
 ### <a name="functions-1x---scripting-languages"></a>Functions 1. x-script talen
 
-In versie 1. x kunt u ook de `disabled` eigenschap van het bestand *Function. json* gebruiken om te bepalen dat de runtime geen functie moet activeren. Deze methode werkt alleen voor script talen als C#-script en Java script. De `disabled` eigenschap kan worden ingesteld op `true` de naam van een app-instelling:
+In versie 1. x kunt u ook de `disabled` eigenschap van de *function.jsin* het bestand gebruiken om te laten zien dat de runtime geen functie moet activeren. Deze methode werkt alleen voor script talen als C#-script en Java script. De `disabled` eigenschap kan worden ingesteld op `true` de naam van een app-instelling:
 
 ```json
 {
@@ -123,7 +122,7 @@ of
 In het tweede voor beeld is de functie uitgeschakeld wanneer er een app-instelling met de naam IS_DISABLED is en is ingesteld op `true` of 1.
 
 >[!IMPORTANT]  
->De portal gebruikt nu toepassings instellingen om v1. x-functies uit te scha kelen. Wanneer een toepassings instelling een conflict veroorzaakt met het bestand function. json, treedt er een fout op. U moet de `disabled` eigenschap uit het bestand function. json verwijderen om fouten te voor komen. 
+>De portal gebruikt nu toepassings instellingen om v1. x-functies uit te scha kelen. Wanneer een toepassings instelling een conflict veroorzaakt met de function.jsvoor een bestand, treedt er een fout op. U moet de `disabled` eigenschap verwijderen uit het function.jsbestand om fouten te voor komen. 
 
 
 ## <a name="next-steps"></a>Volgende stappen

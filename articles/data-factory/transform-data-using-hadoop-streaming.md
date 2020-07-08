@@ -11,15 +11,14 @@ ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 05/08/2020
 ms.openlocfilehash: 5acfef94a98f105a7cc09c5b72b65e8c228ed87d
-ms.sourcegitcommit: 1f25aa993c38b37472cf8a0359bc6f0bf97b6784
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/26/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "83844606"
 ---
 # <a name="transform-data-using-hadoop-streaming-activity-in-azure-data-factory"></a>Gegevens transformeren met behulp van Hadoop streaming-activiteit in Azure Data Factory
-> [!div class="op_single_selector" title1="Selecteer de versie van Data Factory service die u gebruikt:"]
-> * [Versie 1](v1/data-factory-hadoop-streaming-activity.md)
+> [!div class="op_single_selector" title1="Selecteer de versie van de Data Factory-service die u gebruikt:"]
+> * [Versie 1:](v1/data-factory-hadoop-streaming-activity.md)
 > * [Huidige versie](transform-data-using-hadoop-streaming.md)
 
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
@@ -71,8 +70,8 @@ Als u geen ervaring hebt met Azure Data Factory, lees dan [Inleiding tot Azure D
 
 | Eigenschap          | Beschrijving                              | Vereist |
 | ----------------- | ---------------------------------------- | -------- |
-| name              | Naam van de activiteit                     | Yes      |
-| beschrijving       | Tekst waarin wordt beschreven waarvoor de activiteit wordt gebruikt | No       |
+| naam              | Naam van de activiteit                     | Yes      |
+| description       | Tekst waarin wordt beschreven waarvoor de activiteit wordt gebruikt | No       |
 | type              | Voor Hadoop streaming-activiteit is het type activiteit HDInsightStreaming | Yes      |
 | linkedServiceName | Verwijzing naar het HDInsight-cluster dat is geregistreerd als een gekoppelde service in Data Factory. Zie het artikel [Compute linked Services](compute-linked-services.md) (Engelstalig) voor meer informatie over deze gekoppelde service. | Yes      |
 | toewijzing            | Hiermee geeft u de naam van het uitvoer bare toewijzings programma | Yes      |

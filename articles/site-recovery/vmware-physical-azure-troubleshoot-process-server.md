@@ -8,10 +8,9 @@ ms.topic: troubleshooting
 ms.date: 09/09/2019
 ms.author: raynew
 ms.openlocfilehash: 7657d614645bb00235db2701773bc15fa260b70d
-ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/25/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "83835798"
 ---
 # <a name="troubleshoot-the-process-server"></a>Problemen met de proces server oplossen
@@ -168,18 +167,18 @@ Controleer of de proces server bezig is met het pushen van gegevens naar Azure.
 
   1. Open taak beheer op de proces server (druk op CTRL + SHIFT + ESC).
   2. Selecteer het tabblad **prestaties** > **Open Broncontrole**.
-  3. Op **Broncontrole** pagina selecteert u het tabblad **netwerk** . Controleer onder **processen met netwerk activiteit**of cbengine. exe actief een grote hoeveelheid gegevens verzendt.
+  3. Op **Broncontrole** pagina selecteert u het tabblad **netwerk** . Controleer onder **processen met netwerk activiteit**of cbengine.exe actief een grote hoeveelheid gegevens verzendt.
 
        ![Volumes onder processen met netwerk activiteit](./media/vmware-physical-azure-troubleshoot-process-server/cbengine.png)
 
-  Als cbengine. exe geen grote hoeveelheid gegevens verstuurt, voert u de stappen in de volgende secties uit.
+  Als cbengine.exe geen grote hoeveelheid gegevens verstuurt, voltooit u de stappen in de volgende secties.
 
 ## <a name="step-9-check-the-process-server-connection-to-azure-blob-storage"></a>Stap 9: de verbinding tussen de proces server en Azure Blob-opslag controleren
 
-1. In Broncontrole selecteert u **cbengine. exe**.
+1. Selecteer **cbengine.exe**in Broncontrole.
 2. Controleer onder **TCP-verbindingen**of er verbinding is tussen de proces server en de Azure-opslag.
 
-  ![Connectiviteit tussen cbengine. exe en de Azure Blob Storage-URL](./media/vmware-physical-azure-troubleshoot-process-server/rmonitor.png)
+  ![Connectiviteit tussen cbengine.exe en de URL van de Azure Blob Storage](./media/vmware-physical-azure-troubleshoot-process-server/rmonitor.png)
 
 ### <a name="check-services"></a>Services controleren
 

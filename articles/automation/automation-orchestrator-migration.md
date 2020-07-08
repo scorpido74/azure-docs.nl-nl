@@ -6,10 +6,9 @@ ms.subservice: process-automation
 ms.date: 03/16/2018
 ms.topic: conceptual
 ms.openlocfilehash: b6778c4eab4dee382ec38d6218aa647e8aedc4cc
-ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/25/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "83836750"
 ---
 # <a name="migrate-from-orchestrator-to-azure-automation-beta"></a>Migreren van Orchestrator naar Azure Automation (bèta)
@@ -41,7 +40,7 @@ Gebruik het [conversie pakket Converter](https://docs.microsoft.com/system-cente
 
 Alle eigenschappen van een activiteit in het integratie pakket worden geconverteerd naar para meters van de bijbehorende cmdlet in de integratie module.  Windows Power shell-cmdlets hebben een aantal [algemene para meters](https://technet.microsoft.com/library/hh847884.aspx) die kunnen worden gebruikt met alle cmdlets. De para meter-verbose zorgt er bijvoorbeeld voor dat een cmdlet gedetailleerde informatie over de bijbehorende bewerking uitvoert.  Geen cmdlet kan een para meter hebben met dezelfde naam als een gemeen schappelijke para meter. Als een activiteit een eigenschap heeft die dezelfde naam heeft als een gemeen schappelijke para meter, wordt u door de wizard gevraagd een andere naam op te geven voor de para meter.
 
-### <a name="monitor-activities"></a>Activiteiten bewaken
+### <a name="monitor-activities"></a>Activiteiten controleren
 
 Runbooks in Orchestrator bewaken start met een [monitor activiteit](https://technet.microsoft.com/library/hh403827.aspx) en voert voortdurend wachten om te worden aangeroepen door een bepaalde gebeurtenis. Azure Automation biedt geen ondersteuning voor het controleren van runbooks, waardoor monitor activiteiten in het integratie pakket niet worden geconverteerd. In plaats daarvan wordt een tijdelijke aanduiding voor cmdlets gemaakt in de integratie module voor de monitor activiteit.  Deze cmdlet heeft geen functionaliteit, maar kan elk geconverteerde runbook dat gebruikt wordt, wel installeren. Dit runbook kan niet worden uitgevoerd in Azure Automation, maar kan wel worden geïnstalleerd, zodat u het kunt wijzigen.
 
@@ -83,7 +82,7 @@ ConvertFrom-SCORunbook -RunbookPath "c:\runbooks\MyRunbooks.ois_export" -Module 
 
 Met het Runbook-conversie programma maakt u de volgende logboek bestanden op dezelfde locatie als het geconverteerde Runbook.  Als de bestanden al bestaan, worden deze overschreven met informatie van de laatste conversie.
 
-| File | Inhoud |
+| Bestand | Inhoud |
 |:--- |:--- |
 | Runbook-Converter-Progress. log |Gedetailleerde stappen van de conversie, inclusief informatie voor elke activiteit die is geconverteerd en waarschuwing voor elke activiteit die niet wordt geconverteerd. |
 | Runbook-Converter-samenvattings. log |Samen vatting van de laatste conversie, inclusief waarschuwingen en opvolgings taken die u moet uitvoeren, zoals het maken van een variabele die vereist is voor het geconverteerde runbook. |

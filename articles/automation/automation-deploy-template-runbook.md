@@ -7,10 +7,9 @@ ms.date: 03/16/2018
 ms.topic: conceptual
 keywords: Power shell, runbook, JSON, Azure Automation
 ms.openlocfilehash: 921d878c585b811700b1c112524e314f0af53c24
-ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/25/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "83837073"
 ---
 # <a name="deploy-an-azure-resource-manager-template-in-a-powershell-runbook"></a>Een Azure Resource Manager-sjabloon implementeren in een Power shell-runbook
@@ -84,11 +83,11 @@ Kopieer de volgende tekst in een tekst editor:
 }
 ```
 
-Sla het bestand lokaal op als **TemplateTest. json**.
+Sla het bestand lokaal **op alsTemplateTest.jsop**.
 
 ## <a name="save-the-resource-manager-template-in-azure-storage"></a>Sla de Resource Manager-sjabloon op in Azure Storage
 
-Nu gebruiken we Power shell om een Azure Storage bestands share te maken en het bestand **TemplateTest. json** te uploaden.
+Nu gebruiken we Power shell om een Azure Storage bestands share te maken en de **TemplateTest.jsop** bestand te uploaden.
 Zie [aan de slag met Azure file storage in Windows](../storage/files/storage-dotnet-how-to-use-files.md)voor instructies over het maken van een bestands share en het uploaden van een bestand in de Azure Portal.
 
 Start Power shell op uw lokale machine en voer de volgende opdrachten uit om een bestands share te maken en de Resource Manager-sjabloon te uploaden naar die bestands share.
@@ -114,7 +113,7 @@ Set-AzStorageFileContent -ShareName $fileShare.Name -Context $context -Source $t
 
 ## <a name="create-the-powershell-runbook-script"></a>Het Power shell-runbook-script maken
 
-Nu gaan we een Power shell-script maken waarmee het bestand **TemplateTest. json** wordt opgehaald van Azure Storage en de sjabloon implementeert voor het maken van een nieuw Azure Storage-account.
+Nu gaan we een Power shell-script maken waarmee de **TemplateTest.js** worden opgehaald uit Azure Storage en de sjabloon wordt geïmplementeerd om een nieuw Azure Storage-account te maken.
 
 Plak de volgende tekst in een tekst editor:
 
@@ -161,13 +160,13 @@ $TemplateFile = Join-Path -Path 'C:\Temp' -ChildPath $StorageFileName
 New-AzResourceGroupDeployment -ResourceGroupName $ResourceGroupName -TemplateFile $TemplateFile -TemplateParameterObject $Parameters 
 ``` 
 
-Sla het bestand lokaal op als **DeployTemplate. ps1**.
+Sla het bestand lokaal op als **DeployTemplate.ps1**.
 
 ## <a name="import-and-publish-the-runbook-into-your-azure-automation-account"></a>Importeer en publiceer het runbook in uw Azure Automation-account
 
 Nu gebruiken we Power shell om het runbook te importeren in uw Azure Automation-account en vervolgens het runbook te publiceren. Zie [Runbooks beheren in azure Automation](manage-runbooks.md)voor meer informatie over het importeren en publiceren van een runbook in de Azure Portal.
 
-Voer de volgende Power shell-opdrachten uit om **DeployTemplate. ps1** te importeren in uw Automation-account als een Power shell-runbook:
+Als u **DeployTemplate.ps1** wilt importeren in uw Automation-account als een Power shell-runbook, voert u de volgende Power shell-opdrachten uit:
 
 ```powershell
 # MyPath is the path where you saved DeployTemplate.ps1
@@ -233,4 +232,4 @@ Get-AzStorageAccount
 * Zie [Inleiding tot Azure Storage](../storage/common/storage-introduction.md)om aan de slag te gaan met Azure Storage.
 * Zie [runbooks en modules in azure Automation gebruiken](automation-runbook-gallery.md)om andere nuttige Azure Automation runbooks te vinden.
 * Zie [Azure Quick](https://azure.microsoft.com/resources/templates/)start-sjablonen voor meer informatie over andere nuttige Resource Manager-sjablonen.
-* Zie [AZ. Automation](https://docs.microsoft.com/powershell/module/az.automation/?view=azps-3.7.0#automation)(Engelstalig) voor een Power shell-cmdlet-verwijzing.
+* Zie [Az.Automation](https://docs.microsoft.com/powershell/module/az.automation/?view=azps-3.7.0#automation) voor een naslagdocumentatie voor een PowerShell-cmdlet.
