@@ -9,10 +9,9 @@ ms.reviewer: estfan, logicappspm
 ms.topic: article
 ms.date: 05/30/2017
 ms.openlocfilehash: 97399635399c12022006ac95e60c5828bf2a9dc5
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "76905431"
 ---
 # <a name="migrate-your-apps-and-solutions-from-biztalk-services-to-azure-logic-apps"></a>Migreer uw apps en oplossingen van BizTalk Services naar Azure Logic Apps
@@ -32,7 +31,7 @@ BizTalk Services bestaat uit twee subservices:
 
 Deze tabel wijst BizTalk Services mogelijkheden toe aan Logic Apps.
 
-| BizTalk Services   | Logic Apps            | Doel                      |
+| BizTalk Services   | Logic Apps            | Functie                      |
 | ------------------ | --------------------- | ---------------------------- |
 | Connector          | Connector             | Gegevens verzenden en ontvangen   |
 | Bridge             | Logische apps             | Pijplijn processor           |
@@ -99,7 +98,7 @@ Logic Apps biedt geavanceerde logica mogelijkheden plus geavanceerde controle st
 
 ### <a name="enrich"></a>Verrijken
 
-Bij BizTalk Services verwerking voegt het verrijkte stadium eigenschappen toe aan de bericht context die is gekoppeld aan de ontvangen gegevens. U kunt bijvoorbeeld een eigenschap promoten die moet worden gebruikt voor route ring vanuit een zoek opdracht in de data base of door een waarde te extra heren met behulp van een XPath-expressie. Logic Apps biedt toegang tot alle contextuele gegevens uitvoer van de voor gaande acties, waardoor het eenvoudig is om hetzelfde gedrag te repliceren. Als u bijvoorbeeld de `Get Row` actie SQL-verbinding gebruikt, haalt u gegevens op uit een SQL Server-Data Base en gebruikt u de gegevens in een beslissings actie voor route ring. Daarnaast zijn eigenschappen van binnenkomende Service Bus berichten in de wachtrij door een trigger adresseerbaar, evenals XPath met behulp van de XPath-expressie voor de definitie taal van de werk stroom.
+Bij BizTalk Services verwerking voegt het verrijkte stadium eigenschappen toe aan de bericht context die is gekoppeld aan de ontvangen gegevens. U kunt bijvoorbeeld een eigenschap promoten die moet worden gebruikt voor route ring vanuit een zoek opdracht in de data base of door een waarde te extra heren met behulp van een XPath-expressie. Logic Apps biedt toegang tot alle contextuele gegevens uitvoer van de voor gaande acties, waardoor het eenvoudig is om hetzelfde gedrag te repliceren. `Get Row`Als u bijvoorbeeld de actie SQL-verbinding gebruikt, haalt u gegevens op uit een SQL Server-Data Base en gebruikt u de gegevens in een beslissings actie voor route ring. Daarnaast zijn eigenschappen van binnenkomende Service Bus berichten in de wachtrij door een trigger adresseerbaar, evenals XPath met behulp van de XPath-expressie voor de definitie taal van de werk stroom.
 
 ### <a name="run-custom-code"></a>Aangepaste code uitvoeren
 

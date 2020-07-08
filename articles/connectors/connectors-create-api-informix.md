@@ -10,10 +10,9 @@ ms.topic: article
 ms.date: 01/07/2020
 tags: connectors
 ms.openlocfilehash: dccb715c974037b4e3080f3e51576feae34c03df
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "76757965"
 ---
 # <a name="manage-ibm-informix-database-resources-by-using-azure-logic-apps"></a>IBM Informix-database bronnen beheren met behulp van Azure Logic Apps
@@ -39,20 +38,20 @@ In dit onderwerp wordt beschreven hoe u de connector in een logische app kunt ge
 
 1. Selecteer **nieuwe stap**onder de stap waar u de Informix-actie wilt toevoegen.
 
-   Als u een actie wilt toevoegen tussen de bestaande stappen, plaatst u de muis aanwijzer op de verbindings pijl. Selecteer het plus teken (**+**) dat wordt weer gegeven en selecteer vervolgens **een actie toevoegen**.
+   Als u een actie wilt toevoegen tussen de bestaande stappen, plaatst u de muis aanwijzer op de verbindings pijl. Selecteer het plus teken ( **+** ) dat wordt weer gegeven en selecteer vervolgens **een actie toevoegen**.
 
-1. Voer `informix` in het zoekvak in als uw filter. Selecteer in de lijst acties de gewenste actie, bijvoorbeeld:
+1. Voer in het zoekvak in `informix` als uw filter. Selecteer in de lijst acties de gewenste actie, bijvoorbeeld:
 
    ![Selecteer de Informix-actie die moet worden uitgevoerd](./media/connectors-create-api-informix/select-informix-connector-action.png)
 
    De connector biedt de volgende acties, waarmee de bijbehorende database bewerkingen worden uitgevoerd:
 
    * Tabellen ophalen-database tabellen weer geven met behulp van een `CALL` instructie
-   * Rijen ophalen: alle rijen lezen met behulp `SELECT *` van een instructie
-   * Rij ophalen: een rij lezen met behulp `SELECT WHERE` van een instructie
-   * Een rij toevoegen met behulp `INSERT` van een instructie
-   * Een rij bewerken met behulp `UPDATE` van een instructie
-   * Een rij verwijderen met behulp `DELETE` van een instructie
+   * Rijen ophalen: alle rijen lezen met behulp van een `SELECT *` instructie
+   * Rij ophalen: een rij lezen met behulp van een `SELECT WHERE` instructie
+   * Een rij toevoegen met behulp van een `INSERT` instructie
+   * Een rij bewerken met behulp van een `UPDATE` instructie
+   * Een rij verwijderen met behulp van een `DELETE` instructie
 
 1. Als u wordt gevraagd om de verbindings gegevens voor uw Informix-Data Base op te geven, volgt u de [stappen voor het maken van de verbinding](#create-connection)en gaat u verder met de volgende stap.
 
@@ -61,11 +60,11 @@ In dit onderwerp wordt beschreven hoe u de connector in een logische app kunt ge
    | Bewerking | Beschrijving | Eigenschappen en beschrijvingen |
    |--------|-------------|-----------------------------|
    | **Tabellen ophalen** | Database tabellen weer geven door een instructie voor een Informix-AANROEP uit te voeren. | Geen |
-   | **Rijen ophalen** | Alle rijen in de opgegeven tabel ophalen door een Informix `SELECT *` -instructie uit te voeren. | **Tabel naam**: de naam voor de Informix-tabel die u wilt <p><p>Als u andere eigenschappen aan deze actie wilt toevoegen, selecteert u deze in de lijst **nieuwe para meter toevoegen** . Zie het [naslag onderwerp van de connector](/connectors/informix/)voor meer informatie. |
-   | **Rij ophalen** | Een rij uit de opgegeven tabel ophalen door een Informix `SELECT WHERE` -instructie uit te voeren. | - **Tabel naam**: de naam voor de Informix-tabel die u wilt <br>- **Rij-id**: de unieke id voor de rij, bijvoorbeeld`9999` |
-   | **Rij invoegen** | Een rij toevoegen aan de opgegeven Informix-tabel door een Informix `INSERT` -instructie uit te voeren. | - **Tabel naam**: de naam voor de Informix-tabel die u wilt <br>- **item**: de rij met de toe te voegen waarden |
-   | **Rij bijwerken** | Een rij in de opgegeven Informix-tabel wijzigen door een Informix `UPDATE` -instructie uit te voeren. | - **Tabel naam**: de naam voor de Informix-tabel die u wilt <br>- **Rij-id**: de unieke id voor de rij die moet worden bijgewerkt, bijvoorbeeld`9999` <br>- **Row**: de rij met de bijgewerkte waarden, bijvoorbeeld`102` |
-   | **Rij verwijderen** | Een rij uit de opgegeven Informix-tabel verwijderen door een Informix `DELETE` -instructie uit te voeren. | - **Tabel naam**: de naam voor de Informix-tabel die u wilt <br>- **Rij-id**: de unieke id voor de rij die u wilt verwijderen, bijvoorbeeld`9999` |
+   | **Rijen ophalen** | Alle rijen in de opgegeven tabel ophalen door een Informix-instructie uit te voeren `SELECT *` . | **Tabel naam**: de naam voor de Informix-tabel die u wilt <p><p>Als u andere eigenschappen aan deze actie wilt toevoegen, selecteert u deze in de lijst **nieuwe para meter toevoegen** . Zie het [naslag onderwerp van de connector](/connectors/informix/)voor meer informatie. |
+   | **Rij ophalen** | Een rij uit de opgegeven tabel ophalen door een Informix-instructie uit te voeren `SELECT WHERE` . | - **Tabel naam**: de naam voor de Informix-tabel die u wilt <br>- **Rij-id**: de unieke id voor de rij, bijvoorbeeld`9999` |
+   | **Rij invoegen** | Een rij toevoegen aan de opgegeven Informix-tabel door een Informix-instructie uit te voeren `INSERT` . | - **Tabel naam**: de naam voor de Informix-tabel die u wilt <br>- **item**: de rij met de toe te voegen waarden |
+   | **Rij bijwerken** | Een rij in de opgegeven Informix-tabel wijzigen door een Informix-instructie uit te voeren `UPDATE` . | - **Tabel naam**: de naam voor de Informix-tabel die u wilt <br>- **Rij-id**: de unieke id voor de rij die moet worden bijgewerkt, bijvoorbeeld`9999` <br>- **Row**: de rij met de bijgewerkte waarden, bijvoorbeeld`102` |
+   | **Rij verwijderen** | Een rij uit de opgegeven Informix-tabel verwijderen door een Informix-instructie uit te voeren `DELETE` . | - **Tabel naam**: de naam voor de Informix-tabel die u wilt <br>- **Rij-id**: de unieke id voor de rij die u wilt verwijderen, bijvoorbeeld`9999` |
    ||||
 
 1. Sla uw logische app op. U kunt nu [uw logische app testen](#test-logic-app) of door gaan met het bouwen van uw logische app.
@@ -78,14 +77,14 @@ In dit onderwerp wordt beschreven hoe u de connector in een logische app kunt ge
 
 1. Geef deze verbindings gegevens op en selecteer **maken**.
 
-   | Eigenschap | JSON-eigenschap | Vereist | Voorbeeldwaarde | Beschrijving |
+   | Eigenschap | JSON-eigenschap | Vereist | Voorbeeldwaarde | Description |
    |----------|---------------|----------|---------------|-------------|
-   | Verbindingsnaam | `name` | Ja | `informix-demo-connection` | De naam die moet worden gebruikt voor de verbinding met uw Informix-data base |
-   | server | `server` | Ja | Cloud`informixdemo.cloudapp.net:9089` <br>-On-premises:`informixdemo:9089` | Het TCP/IP-adres of de alias in de IPv4-of IPv6-indeling, gevolgd door een dubbele punt en een TCP/IP-poort nummer |
-   | Database | `database` | Ja | `nwind` | De DRDA relationele database naam (RDBNAM) of de naam van de Informix-data base (dbname). Informix accepteert een teken reeks van 128 bytes. |
+   | Verbindingsnaam | `name` | Yes | `informix-demo-connection` | De naam die moet worden gebruikt voor de verbinding met uw Informix-data base |
+   | server | `server` | Yes | Cloud`informixdemo.cloudapp.net:9089` <br>-On-premises:`informixdemo:9089` | Het TCP/IP-adres of de alias in de IPv4-of IPv6-indeling, gevolgd door een dubbele punt en een TCP/IP-poort nummer |
+   | Database | `database` | Yes | `nwind` | De DRDA relationele database naam (RDBNAM) of de naam van de Informix-data base (dbname). Informix accepteert een teken reeks van 128 bytes. |
    | Verificatie | `authentication` | Alleen on-premises | **Basic** of **Windows** (Kerberos) | Het verificatie type dat vereist is voor uw Informix-data base. Deze eigenschap wordt alleen weer gegeven wanneer u **verbinding maken via een on-premises gegevens gateway**selecteert. |
-   | Gebruikersnaam | `username` | Nee | <*data base-gebruikers naam*> | Een gebruikers naam voor de data base |
-   | Wachtwoord | `password` | Nee | <*data base-wacht woord*> | Een wacht woord voor de data base |
+   | Gebruikersnaam | `username` | No | <*data base-gebruikers naam*> | Een gebruikers naam voor de data base |
+   | Wachtwoord | `password` | No | <*data base-wacht woord*> | Een wacht woord voor de data base |
    | Gateway | `gateway` | Alleen on-premises | -<*Azure-abonnement*> <br>-<*Azure-on-premises-gegevens gateway-bron*> | Het Azure-abonnement en de Azure-resource naam voor de on-premises gegevens gateway die u hebt gemaakt in de Azure Portal. De eigenschap **Gateway** en subeigenschappen worden alleen weer gegeven wanneer u **verbinding maken via een on-premises gegevens gateway**selecteert. |
    ||||||
 
@@ -107,7 +106,7 @@ In dit onderwerp wordt beschreven hoe u de connector in een logische app kunt ge
 
 1. Selecteer **uitvoeren**op de werk balk van de Logic app-ontwerp functie. Wanneer de logische app wordt uitgevoerd, kunt u de uitvoer van die uitvoering bekijken.
 
-1. Selecteer **overzicht**in het menu van de logische app. Selecteer in het deel venster Overzicht onder **overzicht** > van uitvoerings**runs**de meest recente uitvoering.
+1. Selecteer **overzicht**in het menu van de logische app. Selecteer in het deel venster Overzicht onder **overzicht**van uitvoerings  >  **runs**de meest recente uitvoering.
 
 1. Selecteer onder **Logic app run**de optie **Details uitvoeren**.
 

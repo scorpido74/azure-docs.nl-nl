@@ -5,10 +5,9 @@ ms.topic: conceptual
 ms.date: 12/09/2019
 ms.custom: sfrev
 ms.openlocfilehash: 9bd6e6a0a22f7568760f014897fd28ff47e9450b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "76934979"
 ---
 # <a name="configure-repository-credentials-for-your-application-to-download-container-images"></a>Opslagplaats referenties voor uw toepassing configureren om container installatie kopieën te downloaden
@@ -35,7 +34,7 @@ Zie [geheim beheer](service-fabric-application-secret-management.md) voor meer i
 
 Met Service Fabric kunt u referenties voor het hele cluster configureren die als standaard referenties voor de opslag plaats kunnen worden gebruikt door toepassingen.
 
-Deze functie kan worden in-of uitgeschakeld door het `UseDefaultRepositoryCredentials` kenmerk toe `ContainerHostPolicies` te voegen aan in ApplicationManifest `true` . `false` XML met een of-waarde.
+Deze functie kan worden in-of uitgeschakeld door het `UseDefaultRepositoryCredentials` kenmerk toe te voegen aan `ContainerHostPolicies` in ApplicationManifest.xml met een `true` of- `false` waarde.
 
 ```xml
 <ServiceManifestImport>
@@ -49,14 +48,14 @@ Deze functie kan worden in-of uitgeschakeld door het `UseDefaultRepositoryCreden
 </ServiceManifestImport>
 ```
 
-Service Fabric worden vervolgens de standaard opslagplaats referenties gebruikt, die kunnen worden opgegeven in de ClusterManifest `Hosting` onder de sectie.  Als `UseDefaultRepositoryCredentials` dat `true`het geval is, service Fabric leest de volgende waarden uit de ClusterManifest:
+Service Fabric worden vervolgens de standaard opslagplaats referenties gebruikt, die kunnen worden opgegeven in de ClusterManifest onder de `Hosting` sectie.  Als `UseDefaultRepositoryCredentials` dat `true` het geval is, service Fabric leest de volgende waarden uit de ClusterManifest:
 
 * DefaultContainerRepositoryAccountName (teken reeks)
 * DefaultContainerRepositoryPassword (teken reeks)
 * IsDefaultContainerRepositoryPasswordEncrypted (BOOL)
 * DefaultContainerRepositoryPasswordType (teken reeks)
 
-Hier volgt een voor beeld van wat kan worden toegevoegd in `Hosting` de sectie in het bestand ClusterManifestTemplate. json. De `Hosting` sectie kan worden toegevoegd tijdens het maken van een cluster of later in een configuratie-upgrade. Zie [azure service Fabric-cluster instellingen wijzigen](service-fabric-cluster-fabric-settings.md) en [Azure service Fabric-toepassings geheimen beheren](service-fabric-application-secret-management.md) voor meer informatie
+Hier volgt een voor beeld van wat kan worden toegevoegd `Hosting` in de sectie in de ClusterManifestTemplate.jsin het bestand. De `Hosting` sectie kan worden toegevoegd tijdens het maken van een cluster of later in een configuratie-upgrade. Zie [azure service Fabric-cluster instellingen wijzigen](service-fabric-cluster-fabric-settings.md) en [Azure service Fabric-toepassings geheimen beheren](service-fabric-application-secret-management.md) voor meer informatie
 
 ```json
 "fabricSettings": [
@@ -101,7 +100,7 @@ Service Fabric ondersteunt het gebruik van tokens als referenties voor het downl
 
     ![VM-Principal toevoegen aan ACR](./media/configure-container-repository-credentials/configure-container-repository-credentials-vmss-identity.png)
 
-3. Wijzig vervolgens het toepassings manifest. Voeg het `ContainerHostPolicies` kenmerk `‘UseTokenAuthenticationCredentials=”true”`toe aan de sectie.
+3. Wijzig vervolgens het toepassings manifest. `ContainerHostPolicies`Voeg het kenmerk toe aan de sectie `‘UseTokenAuthenticationCredentials=”true”` .
 
     ```xml
       <ServiceManifestImport>
@@ -116,7 +115,7 @@ Service Fabric ondersteunt het gebruik van tokens als referenties voor het downl
     ```
 
     > [!NOTE]
-    > Als de `UseDefaultRepositoryCredentials` vlag `UseTokenAuthenticationCredentials` is ingesteld op True, treedt er een fout op tijdens de implementatie.
+    > Als de vlag `UseDefaultRepositoryCredentials` is ingesteld op True `UseTokenAuthenticationCredentials` , treedt er een fout op tijdens de implementatie.
 
 ## <a name="next-steps"></a>Volgende stappen
 

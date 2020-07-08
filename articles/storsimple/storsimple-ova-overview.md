@@ -8,10 +8,9 @@ ms.topic: conceptual
 ms.date: 07/25/2019
 ms.author: alkohli
 ms.openlocfilehash: 32781a83aec996b23f161f5fe695f39a0de38685
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "76273874"
 ---
 # <a name="introduction-to-the-storsimple-virtual-array"></a>Inleiding tot de virtuele StorSimple-matrix
@@ -71,8 +70,8 @@ Hieronder vindt u een overzicht van de ondersteunde StorSimple-werk belastingen.
 
 |Scenario     |Workload     |Ondersteund      |Beperkingen               | Versies van toepassing|
 |-------------|-------------|---------------|---------------------------|--------------------|
-|Extern kantoor/filiaal (ROBO)  |Bestanden delen     |Ja      |Zie [maximum aantal limieten voor bestands server](storsimple-ova-limits.md).<br></br>Zie [systeem vereisten voor ondersteunde SMB-versies](storsimple-ova-system-requirements.md).| Alle versies     |
-|Cloud archivering  |Archiveren van bestands deling     |Ja      |Zie [maximum aantal limieten voor bestands server](storsimple-ova-limits.md).<br></br>Zie [systeem vereisten voor ondersteunde SMB-versies](storsimple-ova-system-requirements.md).| Alle versies     |
+|Extern kantoor/filiaal (ROBO)  |Bestanden delen     |Yes      |Zie [maximum aantal limieten voor bestands server](storsimple-ova-limits.md).<br></br>Zie [systeem vereisten voor ondersteunde SMB-versies](storsimple-ova-system-requirements.md).| Alle versies     |
+|Cloud archivering  |Archiveren van bestands deling     |Yes      |Zie [maximum aantal limieten voor bestands server](storsimple-ova-limits.md).<br></br>Zie [systeem vereisten voor ondersteunde SMB-versies](storsimple-ova-system-requirements.md).| Alle versies     |
 
 De virtuele StorSimple-matrix is het meest geschikt voor zelden gebruikte gegevens. Hoewel de virtuele matrix een lokale cache heeft om prestaties te verbeteren, moeten gebruikers aannemen dat de services van het apparaat op de laagste laag van opslag (de Cloud). Elke virtuele array kan op ongeveer 100 Mbps schrijven en lezen naar Azure Storage. Deze koppeling wordt gedeeld met alle aanvragen die binnenkomen op het apparaat en kan een knel punt worden, zoals wordt weer gegeven in het onderstaande diagram.
 

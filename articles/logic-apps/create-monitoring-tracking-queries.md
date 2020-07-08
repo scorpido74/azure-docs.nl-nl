@@ -7,10 +7,9 @@ ms.reviewer: divswa, logicappspm
 ms.topic: article
 ms.date: 01/30/2020
 ms.openlocfilehash: 46989ed2468469443d4e91a1834bc20b12c25a1e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "76908070"
 ---
 # <a name="view-and-create-queries-for-monitoring-and-tracking-in-azure-monitor-logs-for-azure-logic-apps"></a>Query's weer geven en maken voor het controleren en bijhouden van Azure Monitor logboeken voor Azure Logic Apps
@@ -53,7 +52,7 @@ Als u resultaten wilt zoeken of filteren op basis van specifieke eigenschappen o
 
 1. Beginnen met een lege query of beschik bare bestaande query's.
 
-   * Als u wilt controleren of er bestaande query's beschikbaar zijn, selecteert u op de werk balk van de query de**geschiedenis**query **query's** > , waarin query's van eerdere query-uitvoeringen worden weer gegeven, of selecteer **query Verkenner**, waarin vooraf samengestelde query's worden weer gegeven.
+   * Als u wilt controleren of er bestaande query's beschikbaar zijn, selecteert u op de werk balk van de query de geschiedenis query **query's**  >  **History**, waarin query's van eerdere query-uitvoeringen worden weer gegeven, of selecteer **query Verkenner**, waarin vooraf samengestelde query's worden weer gegeven.
 
      De Logische apps B2B oplossing biedt bijvoorbeeld deze vooraf opgebouwde query's:
 

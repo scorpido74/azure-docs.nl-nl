@@ -5,10 +5,9 @@ ms.topic: conceptual
 ms.date: 12/6/2016
 ms.subservice: autoscale
 ms.openlocfilehash: 2c335168683212337876c963a7cfdb441d0ac69a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "76845575"
 ---
 # <a name="azure-monitor-autoscaling-common-metrics"></a>Azure Monitor automatisch schalen van algemene metrische gegevens
@@ -22,7 +21,7 @@ Azure Monitor automatisch schalen is alleen van toepassing op [Virtual Machine S
 ## <a name="compute-metrics-for-resource-manager-based-vms"></a>Reken gegevens voor virtuele machines op basis van Resource Manager
 Standaard worden metrische gegevens op basis van Resource Manager Virtual Machines en Virtual Machine Scale Sets basis waarden (op het niveau van de host). Wanneer u de diagnostische gegevens verzameling voor een Azure-VM en VMSS configureert, worden de diagnostische Azure-extensie bovendien ook prestatie meter items van het gast besturingssysteem (meestal ' metrische gegevens van het besturings systeem ' genoemd).  U gebruikt al deze metrische gegevens in regels voor automatisch schalen.
 
-U kunt de `Get MetricDefinitions` API/posh/CLI gebruiken om de metrische gegevens weer te geven die beschikbaar zijn voor uw VMSS-resource.
+U kunt de `Get MetricDefinitions` API/PoSH/CLI gebruiken om de metrische gegevens weer te geven die beschikbaar zijn voor uw VMSS-resource.
 
 Als u VM-schaal sets gebruikt en er geen specifieke metriek wordt weer gegeven, is deze waarschijnlijk *uitgeschakeld* in de uitbrei ding voor diagnostische gegevens.
 
@@ -47,24 +46,24 @@ Get-AzMetricDefinition -ResourceId <resource_id> | Format-Table -Property Name,U
 
 U kunt een waarschuwing maken voor de volgende metrische gegevens:
 
-| Metrische naam | Eenheid |
+| Naam meetwaarde | Eenheid |
 | --- | --- |
 | \Processor(_Total)\% Processor Time |Percentage |
-| \Processor (_Total)\% beschermde tijd |Percentage |
-| Gebruikers tijd van \Processor\% (_Total) |Percentage |
+| \Processor (_Total) \% beschermde tijd |Percentage |
+| Gebruikers tijd van \Processor (_Total) \% |Percentage |
 | \Processor-frequentie \Processor Information (_Total) |Count |
 | \System\Processes |Count |
 | \Process (_Total) \Thread aantal |Count |
 | \Process (_Total) \Handle aantal |Count |
-| \Memory\% toegewezen bytes in gebruik |Percentage |
+| \Memory \% toegewezen bytes in gebruik |Percentage |
 | \Memory\Available Bytes |Bytes |
 | \Memory\Committed bytes |Bytes |
 | Limiet voor \Memory\Commit |Bytes |
 | \Memory\Pool bytes in wissel geheugen |Bytes |
 | Niet-wisselbaar \Memory\Pool bytes |Bytes |
-| \PhysicalDisk (_Total)\% schijf tijd |Percentage |
-| Lees tijd schijf \PhysicalDisk\% (_Total) |Percentage |
-| \PhysicalDisk (_Total)\% schrijf tijd schijf |Percentage |
+| \PhysicalDisk (_Total) \% schijf tijd |Percentage |
+| Lees tijd schijf \PhysicalDisk (_Total) \% |Percentage |
+| \PhysicalDisk (_Total) \% Schrijf tijd schijf |Percentage |
 | \PhysicalDisk (_Total) \Gelezen-overdrachten per seconde |CountPerSecond |
 | \PhysicalDisk (_Total) \Gelezen-Lees bewerkingen per seconde |CountPerSecond |
 | \PhysicalDisk (_Total) \Gelezen schrijf bewerkingen per seconde |CountPerSecond |
@@ -74,7 +73,7 @@ U kunt een waarschuwing maken voor de volgende metrische gegevens:
 | \PhysicalDisk (_Total) \Avg.-wachtrij lengte voor de schijf |Count |
 | \PhysicalDisk (_Total) \Avg.-wachtrij lengte voor lezen van schijf |Count |
 | \PhysicalDisk (_Total) \Avg. schijf lengte schrijf wachtrij |Count |
-| \LogicalDisk (_Total)\% beschik bare ruimte |Percentage |
+| \LogicalDisk (_Total) \% beschik bare ruimte |Percentage |
 | \LogicalDisk (_Total) \Resterende MB |Count |
 
 ### <a name="guest-os-metrics-linux-vms"></a>Gegevens van virtuele machines van het gast besturingssysteem Linux-Vm's
@@ -88,7 +87,7 @@ Get-AzMetricDefinition -ResourceId <resource_id> | Format-Table -Property Name,U
 
  U kunt een waarschuwing maken voor de volgende metrische gegevens:
 
-| Metrische naam | Eenheid |
+| Naam meetwaarde | Eenheid |
 | --- | --- |
 | \Memory\AvailableMemory |Bytes |
 | \Memory\PercentAvailableMemory |Percentage |
@@ -141,7 +140,7 @@ Get-AzMetricDefinition -ResourceId <resource_id> | Format-Table -Property Name,U
 
 U kunt een melding ontvangen over of schalen op basis van deze metrische gegevens.
 
-| Metrische naam | Eenheid |
+| Naam meetwaarde | Eenheid |
 | --- | --- |
 | CpuPercentage |Percentage |
 | MemoryPercentage |Percentage |

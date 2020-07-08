@@ -10,10 +10,9 @@ ms.topic: article
 ms.service: event-grid
 services: event-grid
 ms.openlocfilehash: 19f86b1d8233e05844201e1095c1f79324955cd7
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "76841826"
 ---
 # <a name="rest-api"></a>REST-API
@@ -164,7 +163,7 @@ Alle Api's retour neren een fout met de volgende Payload:
 **Antwoord**: http 200, lege nettolading
 
 ## <a name="manage-event-subscriptions"></a>Gebeurtenis abonnementen beheren
-Voor beelden in deze sectie `EndpointType=Webhook;`worden gebruikt. De JSON-voor `EndpointType=EdgeHub / EndpointType=EventGrid` beelden voor bevinden zich in de volgende sectie. 
+Voor beelden in deze sectie worden gebruikt `EndpointType=Webhook;` . De JSON-voor beelden voor `EndpointType=EdgeHub / EndpointType=EventGrid` bevinden zich in de volgende sectie. 
 
 ### <a name="put-event-subscription-create--update"></a>Gebeurtenis abonnement plaatsen (maken/bijwerken)
 
@@ -572,7 +571,7 @@ Hiermee stelt u een onderwerp in voor het vereisen van gebeurtenissen die moeten
 ```
 
 ### <a name="set-up-topic-with-custom-schema"></a>Onderwerp met aangepast schema instellen
-Hiermee stelt u een onderwerp in waarvoor gebeurtenissen moeten worden gepubliceerd `customschema`in.
+Hiermee stelt u een onderwerp in waarvoor gebeurtenissen moeten worden gepubliceerd in `customschema` .
 
 ```json
     {
@@ -585,7 +584,7 @@ Hiermee stelt u een onderwerp in waarvoor gebeurtenissen moeten worden gepublice
 ```
 
 ### <a name="set-up-topic-with-cloud-event-schema"></a>Onderwerp instellen met Cloud-gebeurtenis schema
-Hiermee stelt u een onderwerp in waarvoor gebeurtenissen moeten worden gepubliceerd `cloudeventschema`in.
+Hiermee stelt u een onderwerp in waarvoor gebeurtenissen moeten worden gepubliceerd in `cloudeventschema` .
 
 ```json
     {
@@ -673,7 +672,7 @@ EndpointUrl
 - De waarde mag niet null zijn.
 - Dit moet een absolute URL zijn.
 - Het pad `/api/events` moet worden gedefinieerd in het pad van de aanvraag-URL.
-- Deze moet in `api-version=2018-01-01` de query reeks staan.
+- Deze moet `api-version=2018-01-01` in de query reeks staan.
 - Als outbound__eventgrid__httpsOnly is ingesteld op True in de instellingen voor EventGridModule (standaard instelling), moet dit alleen HTTPS zijn.
 - Als outbound__eventgrid__httpsOnly is ingesteld op False, kan dit HTTP of HTTPS zijn.
 - Als outbound__eventgrid__allowInvalidHostnames is ingesteld op False (standaard instelling ONWAAR), moet dit een van de volgende eind punten zijn:
@@ -690,7 +689,7 @@ Onderwerpnaam:
 
 ## <a name="set-up-event-hubs-as-a-destination"></a>Event Hubs instellen als bestemming
 
-Als u wilt publiceren naar een event hub, `endpointType` stelt `eventHub` u de aan en geeft u het volgende op:
+Als u wilt publiceren naar een event hub, stelt `endpointType` u de aan `eventHub` en geeft u het volgende op:
 
 * Connections Tring: verbindings reeks voor de specifieke Event hub die u als doel hebt gegenereerd via een gedeeld toegangs beleid.
 
@@ -712,7 +711,7 @@ Als u wilt publiceren naar een event hub, `endpointType` stelt `eventHub` u de a
 
 ## <a name="set-up-service-bus-queues-as-a-destination"></a>Service Bus-wacht rijen instellen als bestemming
 
-Als u wilt publiceren naar een Service Bus wachtrij, `endpointType` stelt `serviceBusQueue` u de in en geeft u het volgende op:
+Als u wilt publiceren naar een Service Bus wachtrij, stelt `endpointType` u de in `serviceBusQueue` en geeft u het volgende op:
 
 * Connections Tring: een verbindings reeks voor de specifieke Service Bus wachtrij waarvan u de doel groep hebt gegenereerd via een gedeeld toegangs beleid.
 
@@ -734,7 +733,7 @@ Als u wilt publiceren naar een Service Bus wachtrij, `endpointType` stelt `servi
 
 ## <a name="set-up-service-bus-topics-as-a-destination"></a>Service Bus onderwerpen instellen als bestemming
 
-Als u wilt publiceren naar een Service Bus onderwerp, `endpointType` stelt `serviceBusTopic` u de in en geeft u het volgende op:
+Als u wilt publiceren naar een Service Bus onderwerp, stelt `endpointType` u de in `serviceBusTopic` en geeft u het volgende op:
 
 * Connections Tring: een verbindings reeks voor het specifieke Service Bus onderwerp dat wordt gegenereerd via een gedeeld toegangs beleid.
 
@@ -756,7 +755,7 @@ Als u wilt publiceren naar een Service Bus onderwerp, `endpointType` stelt `serv
 
 ## <a name="set-up-storage-queues-as-a-destination"></a>Opslag wachtrijen instellen als bestemming
 
-Als u wilt publiceren naar een opslag wachtrij, `endpointType` stelt `storageQueue` u de in en geeft u het volgende op:
+Als u wilt publiceren naar een opslag wachtrij, stelt `endpointType` u de in `storageQueue` en geeft u het volgende op:
 
 * wachtrijmap: de naam van de opslag wachtrij waarnaar u publiceert.
 * Connections Tring: de verbindings reeks voor het opslag account waarin de opslag wachtrij zich bevindt.

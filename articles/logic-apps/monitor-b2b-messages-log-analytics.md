@@ -7,13 +7,12 @@ ms.reviewer: divswa, logicappspm
 ms.topic: article
 ms.date: 01/30/2020
 ms.openlocfilehash: e9ba5a516293eb72a715dc9d0df7db4d5a4ea3c5
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "76907979"
 ---
-# <a name="set-up-azure-monitor-logs-and-collect-diagnostics-data-for-b2b-messages-in-azure-logic-apps"></a>Azure Monitor logboeken instellen en diagnostische gegevens verzamelen voor B2B-berichten in Azure Logic Apps
+# <a name="set-up-azure-monitor-logs-and-collect-diagnostics-data-for-b2b-messages-in-azure-logic-apps"></a>Azure Monitor-logboeken instellen en diagnostische gegevens verzamelen voor B2B-berichten in Azure Logic Apps
 
 Nadat u B2B-communicatie tussen handels partners in uw integratie account hebt ingesteld, kunnen deze partners berichten uitwisselen met behulp van protocollen zoals AS2, X12 en EDIFACT. Als u wilt controleren of deze communicatie werkt zoals verwacht, kunt u [Azure monitor logboeken](../azure-monitor/platform/data-platform-logs.md) instellen voor uw integratie account. [Azure monitor](../azure-monitor/overview.md) helpt u bij het bewaken van uw Cloud-en on-premises omgevingen, zodat u hun Beschik baarheid en prestaties gemakkelijker kunt onderhouden. Met Azure Monitor-Logboeken kunt u gegevens over runtime gegevens en-gebeurtenissen vastleggen en opslaan, zoals trigger gebeurtenissen, uitvoer gebeurtenissen en actie gebeurtenissen in een [log Analytics-werk ruimte](../azure-monitor/platform/resource-logs-collect-workspace.md). Voor berichten verzamelt ook logboek registratie informatie zoals:
 
@@ -44,7 +43,7 @@ In dit artikel wordt beschreven hoe u Azure Monitor logboek registratie inschake
 
 Voordat Azure Monitor Logboeken de B2B-berichten voor uw logische app kunt volgen, voegt u de **logische apps B2B** oplossing toe aan uw log Analytics-werk ruimte.
 
-1. Voer `log analytics workspaces`in het zoekvak van de [Azure Portal](https://portal.azure.com)in en selecteer vervolgens **log Analytics werk ruimten**.
+1. Voer in het zoekvak van de [Azure Portal](https://portal.azure.com)in `log analytics workspaces` en selecteer vervolgens **log Analytics werk ruimten**.
 
    ![Selecteer ' Log Analytics werk ruimten '](./media/monitor-b2b-messages-log-analytics/find-select-log-analytics-workspaces.png)
 
@@ -52,7 +51,7 @@ Voordat Azure Monitor Logboeken de B2B-berichten voor uw logische app kunt volge
 
    ![Uw Log Analytics-werk ruimte selecteren](./media/monitor-b2b-messages-log-analytics/select-log-analytics-workspace.png)
 
-1. Selecteer in het deel venster Overzicht onder **aan de slag met log Analytics** > **bewakings oplossingen configureren**de optie **oplossingen weer geven**.
+1. Selecteer in het deel venster Overzicht onder **aan de slag met log Analytics**  >  **bewakings oplossingen configureren**de optie **oplossingen weer geven**.
 
    ![Selecteer in het deel venster Overzicht de optie oplossingen weer geven.](./media/monitor-b2b-messages-log-analytics/log-analytics-workspace.png)
 
@@ -60,7 +59,7 @@ Voordat Azure Monitor Logboeken de B2B-berichten voor uw logische app kunt volge
 
    ![Voeg in het deel venster Overzicht een nieuwe oplossing toe](./media/monitor-b2b-messages-log-analytics/add-logic-apps-management-solution.png)
 
-1. Nadat de **Marketplace** is geopend, voert `logic apps b2b`u in het zoekvak in en selecteert u **logische apps B2B**.
+1. Nadat de **Marketplace** is geopend, voert u in het zoekvak in `logic apps b2b` en selecteert u **logische apps B2B**.
 
    ![Selecteer ' Logic Apps-beheer ' in Marketplace](./media/monitor-b2b-messages-log-analytics/select-logic-apps-b2b-solution.png)
 
@@ -116,7 +115,7 @@ Wanneer de logische app wordt uitgevoerd, kunt u de status en gegevens over die 
 
 1. Zoek in het zoekvak van [Azure Portal](https://portal.azure.com) uw log Analytics-werk ruimte en open deze.
 
-1. Selecteer in het menu van de werk ruimte de optie **werk ruimte samenvatting** > **logische apps B2B**.
+1. Selecteer in het menu van de werk ruimte de optie **werk ruimte samenvatting**  >  **logische apps B2B**.
 
    ![Deel venster werkruimte overzicht](./media/monitor-b2b-messages-log-analytics/b2b-overview-messages-summary.png)
 
@@ -183,14 +182,14 @@ Hier volgen de beschrijvingen van de eigenschappen voor elk AS2-bericht.
 | Eigenschap | Beschrijving |
 |----------|-------------|
 | **Afzender** | De gast partner die is opgegeven in de **instellingen voor ontvangen**of de host-partner die is opgegeven in instellingen voor het **verzenden** van een AS2-overeenkomst |
-| **Ontvanger** | De host-partner die is opgegeven in de instellingen voor **ontvangen**of de gast partner die is opgegeven in **instellingen verzenden** voor een AS2-overeenkomst |
-| **Logische apps** | De logische app waar de AS2 acties worden ingesteld |
+| **Ontvangst** | De host-partner die is opgegeven in de instellingen voor **ontvangen**of de gast partner die is opgegeven in **instellingen verzenden** voor een AS2-overeenkomst |
+| **Logische app** | De logische app waar de AS2 acties worden ingesteld |
 | **Status** | De status van het AS2-bericht <br>Geslaagd = er is een geldig AS2-bericht ontvangen of verzonden. Er is geen MDN ingesteld. <br>Geslaagd = er is een geldig AS2-bericht ontvangen of verzonden. MDN wordt ingesteld en ontvangen, of MDN wordt verzonden. <br>Mislukt = er is een ongeldig AS2-bericht ontvangen. Er is geen MDN ingesteld. <br>In behandeling = er is een geldig AS2-bericht ontvangen of verzonden. MDN is ingesteld en MDN wordt verwacht. |
 | **TERUG** | De status van het MDN-bericht <br>Geaccepteerd = er is een positief MDN ontvangen of verzonden. <br>In behandeling = wachten op ontvangen of verzenden van een MDN. <br>Afgewezen = er is een negatieve MDN ontvangen of verzonden. <br>Niet vereist = MDN is niet ingesteld in de overeenkomst. |
-| **Draaien** | De richting van het AS2-bericht |
+| **Richting** | De richting van het AS2-bericht |
 | **Tracerings-ID** | De ID die overeenkomt met alle triggers en acties in een logische app |
 | **Bericht-id** | De AS2 bericht-ID van de AS2-bericht koppen |
-| **Timestamp** | Het tijdstip waarop de AS2-actie het bericht heeft verwerkt |
+| **Tijdstempel** | Het tijdstip waarop de AS2-actie het bericht heeft verwerkt |
 |||
 
 <!--
@@ -216,16 +215,16 @@ Hier volgen de beschrijvingen van de eigenschappen voor elk X12-bericht.
 | Eigenschap | Beschrijving |
 |----------|-------------|
 | **Afzender** | De gast partner die is opgegeven in de **instellingen voor ontvangen**of de host-partner die is opgegeven in instellingen voor het **verzenden** van een X12-overeenkomst |
-| **Ontvanger** | De host-partner die is opgegeven in de instellingen voor **ontvangen**of de gast partner die is opgegeven in **instellingen verzenden** voor een X12-overeenkomst |
-| **Logische apps** | De logische app waar de X12 acties worden ingesteld |
+| **Ontvangst** | De host-partner die is opgegeven in de instellingen voor **ontvangen**of de gast partner die is opgegeven in **instellingen verzenden** voor een X12-overeenkomst |
+| **Logische app** | De logische app waar de X12 acties worden ingesteld |
 | **Status** | De status van het X12-bericht <br>Geslaagd = er is een geldig X12-bericht ontvangen of verzonden. Er is geen functionele ACK ingesteld. <br>Geslaagd = er is een geldig X12-bericht ontvangen of verzonden. Functionele ACK is ingesteld en ontvangen, of er wordt een functionele ACK verzonden. <br>Mislukt = er is een ongeldig X12-bericht ontvangen of verzonden. <br>In behandeling = er is een geldig X12-bericht ontvangen of verzonden. Functionele ACK is ingesteld en er wordt een functionele ACK verwacht. |
 | **TERUG** | Status van functionele ACK (997) <br>Geaccepteerd = een positieve functionele Ack ontvangen of verzonden. <br>Afgewezen = er is een negatieve functionele Ack ontvangen of verzonden. <br>In behandeling = er is een functionele ACK verwacht, maar deze is niet ontvangen. <br>In behandeling = er is een functionele ACK gegenereerd, maar er kan niet naar de partner worden verzonden. <br>Niet vereist = functionele ACK is niet ingesteld. |
-| **Draaien** | De richting van het X12-bericht |
+| **Richting** | De richting van het X12-bericht |
 | **Tracerings-ID** | De ID die overeenkomt met alle triggers en acties in een logische app |
 | **Msg-type** | Het EDI X12-bericht type |
 | **ICN** | Het uitwisselings controle nummer voor het X12-bericht |
 | **TSCN** | Het controle nummer voor de Transactieset voor het X12-bericht |
-| **Timestamp** | Het tijdstip waarop de X12-actie het bericht heeft verwerkt |
+| **Tijdstempel** | Het tijdstip waarop de X12-actie het bericht heeft verwerkt |
 |||
 
 <!--
@@ -251,16 +250,16 @@ Hier volgen de beschrijvingen van de eigenschappen voor elk EDIFACT-bericht.
 | Eigenschap | Beschrijving |
 |----------|-------------|
 | **Afzender** | De gast partner die is opgegeven in de **instellingen voor ontvangen**of de host-partner die is opgegeven in instellingen voor het **verzenden** van een Edifact-overeenkomst |
-| **Ontvanger** | De host-partner die is opgegeven in de instellingen voor **ontvangen**of de gast partner die is opgegeven in **instellingen verzenden** voor een Edifact-overeenkomst |
-| **Logische apps** | De logische app waar de EDIFACT acties worden ingesteld |
+| **Ontvangst** | De host-partner die is opgegeven in de instellingen voor **ontvangen**of de gast partner die is opgegeven in **instellingen verzenden** voor een Edifact-overeenkomst |
+| **Logische app** | De logische app waar de EDIFACT acties worden ingesteld |
 | **Status** | De status van het EDIFACT-bericht <br>Geslaagd = er is een geldig EDIFACT-bericht ontvangen of verzonden. Er is geen functionele ACK ingesteld. <br>Geslaagd = er is een geldig EDIFACT-bericht ontvangen of verzonden. Functionele ACK is ingesteld en ontvangen, of er wordt een functionele ACK verzonden. <br>Mislukt = er is een ongeldig EDIFACT-bericht ontvangen of verzonden <br>In behandeling = er is een geldig EDIFACT-bericht ontvangen of verzonden. Functionele ACK is ingesteld en er wordt een functionele ACK verwacht. |
 | **TERUG** | Status van functionele ACK (CONTRL) <br>Geaccepteerd = een positieve functionele Ack ontvangen of verzonden. <br>Afgewezen = er is een negatieve functionele Ack ontvangen of verzonden. <br>In behandeling = er is een functionele ACK verwacht, maar deze is niet ontvangen. <br>In behandeling = er is een functionele ACK gegenereerd, maar er kan niet naar de partner worden verzonden. <br>Niet vereist = functionele ACK is niet ingesteld. |
-| **Draaien** | De richting van het EDIFACT-bericht |
+| **Richting** | De richting van het EDIFACT-bericht |
 | **Tracerings-ID** | De ID die overeenkomt met alle triggers en acties in een logische app |
 | **Msg-type** | Het EDIFACT-bericht type |
 | **ICN** | Het uitwisselings controle nummer voor het EDIFACT-bericht |
 | **TSCN** | Het controle nummer voor de Transactieset voor het EDIFACT-bericht |
-| **Timestamp** | Het tijdstip waarop de EDIFACT-actie het bericht heeft verwerkt |
+| **Tijdstempel** | Het tijdstip waarop de EDIFACT-actie het bericht heeft verwerkt |
 |||
 
 <!--

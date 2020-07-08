@@ -10,10 +10,9 @@ services: azure-maps
 manager: ''
 ms.custom: codepen
 ms.openlocfilehash: 61d7a11df499e6b740adb45968721b6a9bb1af22
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "76988597"
 ---
 # <a name="add-a-tile-layer-to-a-map"></a>Een titellaag toevoegen aan een kaart
@@ -24,23 +23,23 @@ Een tegel laag wordt in tegels van een server geladen. Deze installatie kopieën
 
 * X, Y, zoom notatie-X is de kolom, Y is de rijpositie van de tegel in het tegel raster en de zoom notatie een waarde op basis van het zoom niveau.
 * Quadkey notatie: Hiermee wordt de x-, y-en zoom informatie gecombineerd tot één teken reeks waarde. Deze teken reeks waarde wordt een unieke id voor één tegel.
-* Begrenzingsvak: `{west},{south},{east},{north}`Geef een afbeelding op in de coördinaten notatie van het begrenzingsvak. Deze indeling wordt vaak gebruikt door [Web Mapping Services (WMS)](https://www.opengeospatial.org/standards/wms).
+* Begrenzingsvak: Geef een afbeelding op in de coördinaten notatie van het begrenzingsvak `{west},{south},{east},{north}` . Deze indeling wordt vaak gebruikt door [Web Mapping Services (WMS)](https://www.opengeospatial.org/standards/wms).
 
 > [!TIP]
 > Een [TileLayer](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.layer.tilelayer?view=azure-iot-typescript-latest) is een uitstekende manier om grote gegevens sets op de kaart te visualiseren. U kunt niet alleen een tegel laag genereren op basis van een afbeelding, maar u kunt ook vector gegevens weer geven als een tegel laag. Door vector gegevens als een tegel laag te renderen, hoeft u alleen de tegels te laden die kleiner zijn dan de vector gegevens die ze vertegenwoordigen. Deze techniek wordt vaak gebruikt om miljoenen rijen met gegevens op de kaart weer te geven.
 
 De tegel-URL die wordt door gegeven aan een tegel laag moet een HTTP-of HTTPS-URL zijn naar een TileJSON-resource of een tegel-URL-sjabloon die gebruikmaakt van de volgende para meters: 
 
-* `{x}`-X-positie van de tegel. Ook nodig `{y}` en `{z}`.
-* `{y}`-Y-positie van de tegel. Ook nodig `{x}` en `{z}`.
-* `{z}`-Zoom niveau van de tegel. Ook nodig `{x}` en `{y}`.
+* `{x}`-X-positie van de tegel. Ook nodig `{y}` en `{z}` .
+* `{y}`-Y-positie van de tegel. Ook nodig `{x}` en `{z}` .
+* `{z}`-Zoom niveau van de tegel. Ook nodig `{x}` en `{y}` .
 * `{quadkey}`-Tegel quadkey-id gebaseerd op de naam Conventie voor Bing Maps-tegel systeem.
-* `{bbox-epsg-3857}`-Een teken reeks voor selectie kader met de `{west},{south},{east},{north}` indeling in het EPSG 3857 Spatial Reference System.
-* `{subdomain}`-Een tijdelijke aanduiding voor de waarden van het subdomein, `subdomain` indien opgegeven, wordt toegevoegd.
+* `{bbox-epsg-3857}`-Een teken reeks voor selectie kader met de indeling `{west},{south},{east},{north}` in het EPSG 3857 Spatial Reference System.
+* `{subdomain}`-Een tijdelijke aanduiding voor de waarden van het subdomein, indien opgegeven, `subdomain` wordt toegevoegd.
 
 ## <a name="add-a-tile-layer"></a>Een titellaag toevoegen
 
- Dit voor beeld laat zien hoe u een tegel laag maakt die verwijst naar een set tegels. In dit voor beeld wordt gebruikgemaakt van het systeem x, y en zoomen. De bron van deze tegel laag is een weers radar-overlay van de [Iowa Environment Mesonet van de Iowa State University](https://mesonet.agron.iastate.edu/ogc/). Bij het weer geven van radar gegevens zien gebruikers in het ideale geval de labels van steden duidelijk wanneer ze door de kaart navigeren. Dit gedrag kan worden geïmplementeerd door de laag van de tegel onder `labels` de laag in te voegen.
+ Dit voor beeld laat zien hoe u een tegel laag maakt die verwijst naar een set tegels. In dit voor beeld wordt gebruikgemaakt van het systeem x, y en zoomen. De bron van deze tegel laag is een weers radar-overlay van de [Iowa Environment Mesonet van de Iowa State University](https://mesonet.agron.iastate.edu/ogc/). Bij het weer geven van radar gegevens zien gebruikers in het ideale geval de labels van steden duidelijk wanneer ze door de kaart navigeren. Dit gedrag kan worden geïmplementeerd door de laag van de tegel onder de laag in te voegen `labels` .
 
 ```javascript
 //Create a tile layer and add it to the map below the label layer.
@@ -56,7 +55,7 @@ Hieronder ziet u het volledige programma voor het uitvoeren van code van de bove
 
 <br/>
 
-<iframe height='500' scrolling='no' title='Tegel laag met X, Y en Z' src='//codepen.io/azuremaps/embed/BGEQjG/?height=500&theme-id=0&default-tab=js,result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>Bekijk de <a href='https://codepen.io/azuremaps/pen/BGEQjG/'>laag met de tegels van de pen met X, Y en Z</a> per Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) op <a href='https://codepen.io'>CodePen</a>.
+<iframe height='500' scrolling='no' title='Tegel laag met X, Y en Z' src='//codepen.io/azuremaps/embed/BGEQjG/?height=500&theme-id=0&default-tab=js,result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>Bekijk de <a href='https://codepen.io/azuremaps/pen/BGEQjG/'>laag met de tegels van de pen met X, Y en Z</a> per Azure Maps ( <a href='https://codepen.io/azuremaps'>@azuremaps</a> ) op <a href='https://codepen.io'>CodePen</a>.
 </iframe>
 
 ## <a name="customize-a-tile-layer"></a>Een laag voor een tegel aanpassen
@@ -65,7 +64,7 @@ De klasse van de tegel laag heeft veel stijl opties. Hier volgt een hulp program
 
 <br/>
 
-<iframe height='700' scrolling='no' title='Opties voor de laag van de tegel' src='//codepen.io/azuremaps/embed/xQeRWX/?height=700&theme-id=0&default-tab=result' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>Zie de <a href='https://codepen.io/azuremaps/pen/xQeRWX/'>laag opties</a> voor pen-tegels<a href='https://codepen.io/azuremaps'>@azuremaps</a>per Azure Maps () op <a href='https://codepen.io'>CodePen</a>.
+<iframe height='700' scrolling='no' title='Opties voor de laag van de tegel' src='//codepen.io/azuremaps/embed/xQeRWX/?height=700&theme-id=0&default-tab=result' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>Zie de laag opties voor pen- <a href='https://codepen.io/azuremaps/pen/xQeRWX/'>tegels</a> per Azure Maps ( <a href='https://codepen.io/azuremaps'>@azuremaps</a> ) op <a href='https://codepen.io'>CodePen</a>.
 </iframe>
 
 ## <a name="next-steps"></a>Volgende stappen

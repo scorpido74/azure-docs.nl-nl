@@ -9,10 +9,9 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
 ms.openlocfilehash: 65e483fd772e20daa73b465ea17dfa6ecde42233
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "76964886"
 ---
 # <a name="configure-a-connection-from-an-azure-cognitive-search-indexer-to-sql-managed-instance"></a>Een verbinding van een Azure Cognitive Search Indexeer functie configureren in een door SQL beheerd exemplaar
@@ -25,7 +24,7 @@ Maak een SQL-beheerd exemplaar met de optie **openbaar eind punt inschakelen** g
    ![Openbaar eind punt inschakelen](media/search-howto-connecting-azure-sql-mi-to-azure-search-using-indexers/enable-public-endpoint.png "Openbaar eind punt inschakelen")
 
 ## <a name="enable-azure-sql-managed-instance-public-endpoint"></a>Open bare eind punt van Azure SQL Managed instance inschakelen
-U kunt ook open**bare eind punten**inschakelen op een bestaand exemplaar van SQL Managed in het**open bare endpoint** > voor **beveiliging** > van het**virtuele netwerk** > .
+U kunt ook open bare eind punten inschakelen op een bestaand exemplaar van **Security**SQL Managed in het  >  **Virtual network**  >  **open bare endpoint**voor beveiliging van het virtuele netwerk  >  **Enable**.
 
    ![Openbaar eind punt inschakelen](media/search-howto-connecting-azure-sql-mi-to-azure-search-using-indexers/mi-vnet.png "Openbaar eind punt inschakelen")
 
@@ -36,13 +35,13 @@ Controleer of de netwerk beveiligings groep de juiste **regels voor binnenkomend
 
 > [!NOTE]
 > Indexeer functies vereisen nog steeds dat het beheerde exemplaar van SQL wordt geconfigureerd met een openbaar eind punt om gegevens te kunnen lezen.
-> U kunt echter ervoor kiezen de inkomende toegang tot dat open bare eind punt te beperken door de huidige regel`public_endpoint_inbound`() te vervangen door de volgende twee regels:
+> U kunt echter ervoor kiezen de inkomende toegang tot dat open bare eind punt te beperken door de huidige regel () te vervangen door `public_endpoint_inbound` de volgende twee regels:
 >
-> * Het toestaan van inkomende toegang `AzureCognitiveSearch` via [de servicetag (](https://docs.microsoft.com/azure/virtual-network/service-tags-overview#available-service-tags) source "= `AzureCognitiveSearch`," name "= `cognitive_search_inbound`)
+> * Het toestaan van inkomende toegang via de servicetag `AzureCognitiveSearch` [service tag](https://docs.microsoft.com/azure/virtual-network/service-tags-overview#available-service-tags) (source "= `AzureCognitiveSearch` ," name "= `cognitive_search_inbound` )
 >
-> * Het toestaan van binnenkomende toegang vanaf het IP-adres van de zoek service, die kan worden verkregen door de Fully Qualified Domain Name te pingen `<your-search-service-name>.search.windows.net`(bijvoorbeeld,). (' Bron ' = `IP address`, ' naam ' = `search_service_inbound`)
+> * Het toestaan van binnenkomende toegang vanaf het IP-adres van de zoek service, die kan worden verkregen door de Fully Qualified Domain Name te pingen (bijvoorbeeld, `<your-search-service-name>.search.windows.net` ). (' Bron ' = `IP address` , ' naam ' = `search_service_inbound` )
 >
-> Stel voor elk van deze twee regels ' poort ' = `3342`, ' Protocol ' = `TCP`, ' doel ' = `Any`, ' actie ' =`Allow`
+> Stel voor elk van deze twee regels ' poort ' = `3342` , ' Protocol ' = `TCP` , ' doel ' = `Any` , ' actie ' =`Allow`
 
 ## <a name="get-public-endpoint-connection-string"></a>connection string van open bare eind punten ophalen
 Zorg ervoor dat u de connection string gebruikt voor het **open bare eind punt** (poort 3342, niet poort 1433).

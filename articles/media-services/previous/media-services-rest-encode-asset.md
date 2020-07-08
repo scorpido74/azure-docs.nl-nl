@@ -15,10 +15,9 @@ ms.topic: article
 ms.date: 03/20/2019
 ms.author: juliako
 ms.openlocfilehash: 6854400f2152a5952a7b24dbd860d7ad4bfc943d
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "76774922"
 ---
 # <a name="how-to-encode-an-asset-by-using-media-encoder-standard"></a>Een Asset coderen met behulp van Media Encoder Standard
@@ -94,7 +93,7 @@ In het volgende voor beeld ziet u hoe u het kenmerk assets instelt:
 
 ## <a name="considerations"></a>Overwegingen
 * TaskBody-eigenschappen moeten letterlijke XML gebruiken om het aantal invoer-of uitvoer activa te definiëren dat door de taak wordt gebruikt. Het taak artikel bevat de XML-schema definitie voor de XML.
-* In de TaskBody-definitie moet elke interne waarde `<inputAsset>` voor `<outputAsset>` en worden ingesteld op JobInputAsset (waarde) of JobOutputAsset (waarde).
+* In de TaskBody-definitie moet elke interne waarde voor `<inputAsset>` en `<outputAsset>` worden ingesteld op JobInputAsset (waarde) of JobOutputAsset (waarde).
 * Een taak kan meerdere uitvoer assets hebben. Een JobOutputAsset (x) kan slechts één keer worden gebruikt als uitvoer van een taak in een taak.
 * U kunt JobInputAsset of JobOutputAsset als invoer element van een taak opgeven.
 * Taken mogen geen cyclus vormen.
@@ -279,5 +278,5 @@ Als dit lukt, wordt het volgende antwoord geretourneerd:
 ## <a name="next-steps"></a>Volgende stappen
 Nu u weet hoe u een taak kunt maken om een Asset te coderen, raadpleegt u de [voortgang van de taak controleren met Media Services](media-services-rest-check-job-progress.md).
 
-## <a name="see-also"></a>Zie ook
+## <a name="see-also"></a>Zie tevens
 [Media processors ophalen](media-services-rest-get-media-processor.md)

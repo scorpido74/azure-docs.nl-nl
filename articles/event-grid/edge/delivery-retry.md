@@ -10,10 +10,9 @@ ms.topic: article
 ms.service: event-grid
 services: event-grid
 ms.openlocfilehash: 7df283b12a0d04d2b785c13a2f12b03115581e79
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "76841709"
 ---
 # <a name="delivery-and-retry"></a>Leveren en opnieuw proberen
@@ -29,12 +28,12 @@ Event Grid wacht een reactie van 60 seconden nadat een bericht is afgeleverd. Al
 
 Er zijn twee vooraf geconfigureerde back-ups van wacht rijen die bepalen op welk schema een nieuwe poging wordt gedaan. Dit zijn:
 
-| Planning | Beschrijving |
+| Schema | Description |
 | ---------| ------------ |
 | 1 minuut | Berichten die hier worden beëindigd, worden elke minuut geprobeerd.
 | 10 minuten | Berichten die hier worden beëindigd, worden elke tien minuten geprobeerd.
 
-### <a name="how-it-works"></a>Hoe werkt het?
+### <a name="how-it-works"></a>Uitleg
 
 1. Bericht binnenkomt in de Event Grid-module. Er wordt geprobeerd deze direct te leveren.
 1. Als er een fout optreedt, wordt het bericht in de wachtrij van 1 minuut in de wacht gezet en na een minuut opnieuw geprobeerd.
@@ -54,7 +53,7 @@ Er wordt een gebeurtenis verwijderd als een van de limieten van het beleid voor 
 
 Er zijn twee eigenschappen: `brokers__defaultMaxDeliveryAttempts` en `broker__defaultEventTimeToLiveInSeconds` die kunnen worden geconfigureerd als onderdeel van de Event grid-implementatie, waarmee de standaard instellingen voor het beleid voor opnieuw proberen voor alle abonnees worden beheerd.
 
-| Naam van eigenschap | Beschrijving |
+| Naam van eigenschap | Description |
 | ---------------- | ------------ |
 | `broker__defaultMaxDeliveryAttempts` | Het maximum aantal pogingen om een gebeurtenis te leveren. Standaard waarde: 30.
 | `broker__defaultEventTimeToLiveInSeconds` | Gebeurtenis-TTL in seconden waarna een gebeurtenis wordt verwijderd als deze niet wordt bezorgd. Standaard waarde: **7200** seconden

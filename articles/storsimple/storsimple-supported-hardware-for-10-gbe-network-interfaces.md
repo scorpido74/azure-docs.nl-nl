@@ -15,10 +15,9 @@ ms.workload: TBD
 ms.date: 09/21/2016
 ms.author: alkohli
 ms.openlocfilehash: 7fafe177ea0c6c618dc4ab0727ba14c83cbb0102
-ms.sourcegitcommit: fad3aaac5af8c1b3f2ec26f75a8f06e8692c94ed
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/27/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "68965021"
 ---
 # <a name="supported-hardware-for-the-10-gbe-network-interfaces-on-your-storsimple-device"></a>Ondersteunde hardware voor de 10 GbE-netwerk interfaces op uw StorSimple-apparaat
@@ -73,7 +72,7 @@ Mellanox heeft de volgende kleine SFP-transceivers, kabels en switches van een v
 ### <a name="cables-and-modules-supported-by-mellanox"></a>Kabels en modules die worden ondersteund door Mellanox
 De volgende tabel geeft een lijst van de kabels en modules die door Mellanox worden ondersteund. Deze zijn niet getest door micro soft, maar werken waarschijnlijk met uw StorSimple-apparaat.
 
-| S. Nee. | Snelheid | Model | Beschrijving | Merk |
+| S. Nee. | Snelheid | Model | Description | Merk |
 | --- | --- | --- | --- | --- |
 | 1. |10 GbE |CAB-SFP-SFP-1M |passieve koper kabel SFP + 10 GB/s 1M |Arista |
 | 2. |10 GbE |CAB-SFP-SFP-2 MIN. |passieve koper kabel SFP + 10 GB/s 2 min. |Arista |
@@ -114,7 +113,7 @@ De volgende tabel geeft een lijst van de kabels en modules die door Mellanox wor
 ### <a name="switches-supported-by-mellanox"></a>Switches die door Mellanox worden ondersteund
 De volgende tabel geeft een lijst van de switches die door Mellanox worden ondersteund. Deze zijn niet getest door micro soft, maar werken waarschijnlijk met uw StorSimple-apparaat.
 
-| S. Nee. | Snelheid | Model | Beschrijving | Merk |
+| S. Nee. | Snelheid | Model | Description | Merk |
 | --- | --- | --- | --- | --- |
 | 1. |10GbE |516733-B21 |HP ProCurve 6120XG 10GbE Ethernet-Blade Switch |HP |
 | 2. |10GbE |538113-B21 |HP 10GbE Pass-Through-module (PTM) |HP |

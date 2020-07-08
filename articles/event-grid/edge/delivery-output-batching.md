@@ -10,10 +10,9 @@ ms.topic: article
 ms.service: event-grid
 services: event-grid
 ms.openlocfilehash: a6f033af34088081090251f2e5e7cd4a07ce43cc
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "76841744"
 ---
 # <a name="output-batching"></a>Batchverwerking van uitvoer
@@ -77,16 +76,16 @@ U kunt het batch gedrag van Event Grid per abonnee aanpassen door de volgende tw
 
 De volgende implementatie tijd instellingen bepalen de toegestane maximum waarde bij het maken van een gebeurtenis abonnement.
 
-| Naam van eigenschap | Beschrijving |
+| Naam van eigenschap | Description |
 | ------------- | ----------- | 
-| `api__deliveryPolicyLimits__maxpreferredBatchSizeInKilobytes` | De toegestane maximum waarde voor `PreferredBatchSizeInKilobytes` de knop. Standaard `1033`instelling.
-| `api__deliveryPolicyLimits__maxEventsPerBatch` | De toegestane maximum waarde voor `MaxEventsPerBatch` de knop. Standaard `50`instelling.
+| `api__deliveryPolicyLimits__maxpreferredBatchSizeInKilobytes` | De toegestane maximum waarde voor de `PreferredBatchSizeInKilobytes` knop. Standaard instelling `1033` .
+| `api__deliveryPolicyLimits__maxEventsPerBatch` | De toegestane maximum waarde voor de `MaxEventsPerBatch` knop. Standaard instelling `50` .
 
 ## <a name="configuring-runtime-default-values"></a>Standaard waarden voor runtime configureren
 
 De volgende implementatie tijd instellingen bepalen de runtime standaard waarde van elke knop wanneer deze niet is opgegeven in het gebeurtenis abonnement. Als u wilt herhalen, moet er ten minste één knop worden ingesteld op het gebeurtenis abonnement om batch-gedrag in te scha kelen.
 
-| Naam van eigenschap | Beschrijving |
+| Naam van eigenschap | Description |
 | ------------- | ----------- |
-| `broker__defaultMaxBatchSizeInBytes` | Maximale grootte van leverings aanvraag `MaxEventsPerBatch` wanneer alleen is opgegeven. Standaard `1_058_576`instelling.
-| `broker__defaultMaxEventsPerBatch` | Het maximum aantal gebeurtenissen dat aan een batch moet worden toegevoegd `MaxBatchSizeInBytes` als alleen wordt opgegeven. Standaard `10`instelling.
+| `broker__defaultMaxBatchSizeInBytes` | Maximale grootte van leverings aanvraag wanneer alleen `MaxEventsPerBatch` is opgegeven. Standaard instelling `1_058_576` .
+| `broker__defaultMaxEventsPerBatch` | Het maximum aantal gebeurtenissen dat aan een batch moet worden toegevoegd als alleen `MaxBatchSizeInBytes` wordt opgegeven. Standaard instelling `10` .

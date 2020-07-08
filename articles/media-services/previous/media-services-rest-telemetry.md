@@ -15,10 +15,9 @@ ms.topic: article
 ms.date: 03/20/2019
 ms.author: juliako
 ms.openlocfilehash: 4cf2bc919ecb8b39a23b23df95a6f37396f50603
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "76774870"
 ---
 # <a name="configuring-azure-media-services-telemetry-with-rest"></a>Azure Media Services telemetrie configureren met REST
@@ -34,7 +33,7 @@ De stappen die in dit onderwerp worden beschreven, zijn:
 - De meldings eindpunten ophalen
 - Een meldings eindpunt maken voor bewaking. 
 
-    Als u een meldings eindpunt wilt maken, stelt u de EndPointType in op AzureTable (2) en endPontAddress ingesteld op de opslag tabel (\/bijvoorbeeld https:/telemetryvalidationstore.table.core.Windows.net/).
+    Als u een meldings eindpunt wilt maken, stelt u de EndPointType in op AzureTable (2) en endPontAddress ingesteld op de opslag tabel (bijvoorbeeld https: \/ /telemetryvalidationstore.table.core.Windows.net/).
   
 - De bewakings configuraties ophalen
 
@@ -126,7 +125,7 @@ De stappen die in dit onderwerp worden beschreven, zijn:
     }
 
 > [!NOTE]
-> Vergeet niet om de waarde ' https:\//telemetryvalidationstore.table.core.Windows.net ' te wijzigen in uw opslag account.
+> Vergeet niet om de waarde ' https: \/ /telemetryvalidationstore.table.core.Windows.net ' te wijzigen in uw opslag account.
 
 ### <a name="response"></a>Antwoord
 

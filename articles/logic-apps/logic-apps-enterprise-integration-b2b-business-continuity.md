@@ -9,10 +9,9 @@ ms.reviewer: jonfan, estfan, logicappspm
 ms.topic: article
 ms.date: 04/10/2017
 ms.openlocfilehash: 09b77862ad3379efeb8b3063a9d6c60b062ca2d7
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "76905138"
 ---
 # <a name="set-up-cross-region-disaster-recovery-for-integration-accounts-in-azure-logic-apps"></a>Herstel na nood geval in meerdere regio's instellen voor integratie accounts in Azure Logic Apps
@@ -112,7 +111,7 @@ Als u herstel na nood gevallen voor inkomende berichten wilt inschakelen, select
 
    ![Controle nummers toevoegen of bijwerken](./media/logic-apps-enterprise-integration-b2b-business-continuity/x12cn5.png)
 
-7. Als u een actie wilt verbinden met een integratie account voor een secundaire regio, selecteert u **verbinding** > wijzigen een**nieuwe verbinding toevoegen** voor een lijst met beschik bare integratie accounts. Voer een verbindings naam in, selecteer het *integratie account van de secundaire regio* in de lijst en kies **maken**. 
+7. Als u een actie wilt verbinden met een integratie account voor een secundaire regio, selecteert u **verbinding wijzigen**  >  een**nieuwe verbinding toevoegen** voor een lijst met beschik bare integratie accounts. Voer een verbindings naam in, selecteer het *integratie account van de secundaire regio* in de lijst en kies **maken**. 
 
    ![Naam van het account voor de integratie van secundaire regio's](./media/logic-apps-enterprise-integration-b2b-business-continuity/x12cn6.png)
 
@@ -167,7 +166,7 @@ Als u herstel na nood gevallen voor inkomende berichten wilt inschakelen, select
 
    ![Controle nummers toevoegen of bijwerken](./media/logic-apps-enterprise-integration-b2b-business-continuity/EdifactChooseAction.png)
 
-8. Als u een actie wilt verbinden met een integratie account voor een secundaire regio, selecteert u **verbinding** > wijzigen een**nieuwe verbinding toevoegen** voor een lijst met beschik bare integratie accounts. Voer een verbindings naam in, selecteer het *integratie account van de secundaire regio* in de lijst en kies **maken**.
+8. Als u een actie wilt verbinden met een integratie account voor een secundaire regio, selecteert u **verbinding wijzigen**  >  een**nieuwe verbinding toevoegen** voor een lijst met beschik bare integratie accounts. Voer een verbindings naam in, selecteer het *integratie account van de secundaire regio* in de lijst en kies **maken**.
 
    ![Naam van het account voor de integratie van secundaire regio's](./media/logic-apps-enterprise-integration-b2b-business-continuity/x12cn6.png)
 
@@ -219,7 +218,7 @@ Bedrijfs continuïteit voor documenten die gebruikmaken van het AS2-protocol is 
 
    ![MIC toevoegen of bijwerken](./media/logic-apps-enterprise-integration-b2b-business-continuity/as2messageid5.png)
 
-7. Als u een actie wilt verbinden met een secundair integratie account, selecteert u **verbinding** > wijzigen een**nieuwe verbinding toevoegen** voor een lijst met beschik bare integratie accounts. Voer een verbindings naam in, selecteer het *integratie account van de secundaire regio* in de lijst en kies **maken**.
+7. Als u een actie wilt verbinden met een secundair integratie account, selecteert u **verbinding wijzigen**  >  een**nieuwe verbinding toevoegen** voor een lijst met beschik bare integratie accounts. Voer een verbindings naam in, selecteer het *integratie account van de secundaire regio* in de lijst en kies **maken**.
 
    ![Naam van het account voor de integratie van secundaire regio's](./media/logic-apps-enterprise-integration-b2b-business-continuity/as2messageid6.png)
 

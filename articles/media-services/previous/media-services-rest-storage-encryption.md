@@ -15,10 +15,9 @@ ms.topic: article
 ms.date: 03/20/2019
 ms.author: juliako
 ms.openlocfilehash: 2a5ef1837375cc395a871f9a9860fa8bde572a94
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "76773588"
 ---
 # <a name="encrypting-your-content-with-storage-encryption"></a>Uw inhoud versleutelen met opslag versleuteling 
@@ -46,7 +45,7 @@ Wanneer u entiteiten in Media Services opent, moet u specifieke header-velden en
 
 ### <a name="storage-side-encryption"></a>Versleuteling van opslag side
 
-|Versleutelings optie|Beschrijving|Media Services v2|Media Services v3|
+|Versleutelings optie|Description|Media Services v2|Media Services v3|
 |---|---|---|---|
 |Opslag versleuteling Media Services|AES-256-versleuteling, sleutel beheerd door Media Services|Ondersteund<sup>(1)</sup>|Niet ondersteund<sup>(2)</sup>|
 |[Storage Service Encryption voor Data-at-rest](https://docs.microsoft.com/azure/storage/common/storage-service-encryption)|Versleuteling aan de server zijde die wordt aangeboden door Azure Storage, sleutel die wordt beheerd door Azure of door de klant|Ondersteund|Ondersteund|
@@ -113,9 +112,9 @@ Hieronder vindt u algemene stappen voor het genereren van inhouds sleutels die u
 
     Voor opslag versleuteling moeten de volgende eigenschappen worden opgenomen in de hoofd tekst van de aanvraag.
 
-    Eigenschap aanvraag hoofdtekst    | Beschrijving
+    Eigenschap aanvraag hoofdtekst    | Description
     ---|---
-    Id | De ContentKey-ID wordt gegenereerd met de volgende indeling, "NB: Kid: UUID\<: NEW GUID>".
+    Id | De ContentKey-ID wordt gegenereerd met de volgende indeling, "NB: Kid: UUID: \<NEW GUID> ".
     ContentKeyType | Het type inhouds sleutel is een geheel getal dat de sleutel definieert. Voor de indeling van opslag versleuteling is de waarde 1.
     EncryptedContentKey | We maken een nieuwe waarde voor de inhouds sleutel die een 256-bits (32 bytes) waarde is. De sleutel wordt versleuteld met het 509-certificaat dat wordt opgehaald uit Microsoft Azure Media Services door een HTTP GET-aanvraag voor de methoden GetProtectionKeyId en GetProtectionKey uit te voeren. Zie voor beeld de volgende .NET-code: de methode **EncryptSymmetricKeyData** die [hier](https://github.com/Azure/azure-sdk-for-media-services/blob/dev/src/net/Client/Common/Common.FileEncryption/EncryptionUtils.cs)is gedefinieerd.
     ProtectionKeyId | Dit is de beveiligings sleutel-ID voor het 509-certificaat dat is gebruikt voor het versleutelen van onze inhouds sleutel.
@@ -242,7 +241,7 @@ Reactie:
     "ProtectionKeyType":0,
     "Checksum":"calculated checksum"}
 
-## <a name="create-an-asset"></a>Een Asset maken
+## <a name="create-an-asset"></a>Een asset maken
 In het volgende voor beeld ziet u hoe u een Asset maakt.
 
 **HTTP-aanvraag**

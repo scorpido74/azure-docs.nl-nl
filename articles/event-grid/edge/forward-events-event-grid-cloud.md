@@ -10,10 +10,9 @@ ms.topic: article
 ms.service: event-grid
 services: event-grid
 ms.openlocfilehash: 7184fb5c45ce41de2bd63b55fb67cbd9ba6361e3
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "76844714"
 ---
 # <a name="tutorial-forward-events-to-event-grid-cloud"></a>Zelf studie: gebeurtenissen door sturen naar Event Grid Cloud
@@ -34,9 +33,9 @@ Als u deze zelf studie wilt volt ooien, hebt u het volgende nodig:
 [!INCLUDE [event-grid-deploy-iot-edge](../../../includes/event-grid-deploy-iot-edge.md)] 
 ## <a name="create-event-grid-topic-and-subscription-in-cloud"></a>Een onderwerp en een abonnement op gebeurtenis raster maken in de Cloud
 
-Maak een event grid-onderwerp en-abonnement in de Cloud door [deze zelf studie](../custom-event-quickstart-portal.md)te volgen. Noteer omlaag `topicURL`, `sasKey`en `topicName` van het zojuist gemaakte onderwerp dat u later in de zelf studie gaat gebruiken.
+Maak een event grid-onderwerp en-abonnement in de Cloud door [deze zelf studie](../custom-event-quickstart-portal.md)te volgen. Noteer omlaag `topicURL` , `sasKey` en `topicName` van het zojuist gemaakte onderwerp dat u later in de zelf studie gaat gebruiken.
 
-Als u bijvoorbeeld een onderwerp hebt gemaakt met de `testegcloudtopic` naam in VS West, zien de waarden er ongeveer als volgt uit:
+Als u bijvoorbeeld een onderwerp hebt gemaakt `testegcloudtopic` met de naam in VS West, zien de waarden er ongeveer als volgt uit:
 
 * **TopicUrl**:`https://testegcloudtopic.westus2-1.eventgrid.azure.net/api/events`
 * **Onderwerpnaam**:`testegcloudtopic`
@@ -44,7 +43,7 @@ Als u bijvoorbeeld een onderwerp hebt gemaakt met de `testegcloudtopic` naam in 
 
 ## <a name="create-event-grid-topic-at-the-edge"></a>Event grid-onderwerp maken aan de rand
 
-1. Maak topic3. json met de volgende inhoud. Zie onze [API-documentatie](api.md) voor meer informatie over de payload.
+1. Maak topic3.jsmet de volgende inhoud. Zie onze [API-documentatie](api.md) voor meer informatie over de payload.
 
     ```json
         {
@@ -85,7 +84,7 @@ Als u bijvoorbeeld een onderwerp hebt gemaakt met de `testegcloudtopic` naam in 
 
 [!INCLUDE [event-grid-deploy-iot-edge](../../../includes/event-grid-edge-persist-event-subscriptions.md)]
 
-1. Maak subscription3. json met de volgende inhoud. Zie onze [API-documentatie](api.md) voor meer informatie over de payload.
+1. Maak subscription3.jsmet de volgende inhoud. Zie onze [API-documentatie](api.md) voor meer informatie over de payload.
 
    ```json
         {
@@ -157,7 +156,7 @@ Als u bijvoorbeeld een onderwerp hebt gemaakt met de `testegcloudtopic` naam in 
 
 ## <a name="publish-an-event-at-the-edge"></a>Een gebeurtenis aan de rand publiceren
 
-1. Maak event3. json met de volgende inhoud. Zie [API-documentatie](api.md) voor meer informatie over de payload.
+1. Maak event3.jsmet de volgende inhoud. Zie [API-documentatie](api.md) voor meer informatie over de payload.
 
     ```json
         [

@@ -10,10 +10,9 @@ ms.date: 12/18/2019
 ms.author: tamram
 ms.subservice: common
 ms.openlocfilehash: e134c69f5d602cb4369e9410e3e2b9d3478b11a0
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "76756246"
 ---
 # <a name="scalability-and-performance-targets-for-premium-page-blob-storage-accounts"></a>Schaalbaarheids-en prestatie doelen voor Premium-pagina-Blob Storage-accounts
@@ -43,7 +42,7 @@ Als u opslag accounts voor Premium-pagina-blobs gebruikt voor onbeheerde schijve
 
 Als u niet kunt migreren naar Managed disks, bouwt u uw toepassing voor het gebruik van meerdere opslag accounts en partitioneert u uw gegevens in deze opslag accounts. Als u bijvoorbeeld schijven van 51 TB wilt aansluiten op meerdere Vm's, moet u deze verdelen over twee opslag accounts. 35 TB is de limiet voor één Premium-opslag account. Zorg ervoor dat één Premium-prestatie opslag account nooit meer dan 35 TB aan ingerichte schijven heeft.
 
-## <a name="see-also"></a>Zie ook
+## <a name="see-also"></a>Zie tevens
 
 - [Schaalbaarheids-en prestatie doelen voor standaard opslag accounts](../common/scalability-targets-standard-account.md)
 - [Schaalbaarheids doelen voor Premium Block Blob Storage-accounts](../blobs/scalability-targets-premium-block-blobs.md)

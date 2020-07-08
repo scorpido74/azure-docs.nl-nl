@@ -10,10 +10,9 @@ ms.topic: article
 ms.service: event-grid
 services: event-grid
 ms.openlocfilehash: d0034810ff86de2a40e275ca54a2f0f9cbc856c2
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "76844697"
 ---
 # <a name="tutorial-forward-events-to-iothub"></a>Zelf studie: gebeurtenissen door sturen naar IoTHub
@@ -40,7 +39,7 @@ Als u deze zelf studie wilt volt ooien, hebt u het volgende nodig:
 
 Als uitgever van een gebeurtenis moet u een event grid-onderwerp maken. Het onderwerp verwijst naar een eind punt waarnaar uitgevers gebeurtenissen vervolgens naar kunnen verzenden.
 
-1. Maak topic4. json met de volgende inhoud. Zie onze [API-documentatie](api.md) voor meer informatie over de payload.
+1. Maak topic4.jsmet de volgende inhoud. Zie onze [API-documentatie](api.md) voor meer informatie over de payload.
 
    ```json
     {
@@ -84,7 +83,7 @@ Abonnees kunnen zich registreren voor gebeurtenissen die naar een onderwerp word
 
 [!INCLUDE [event-grid-deploy-iot-edge](../../../includes/event-grid-edge-persist-event-subscriptions.md)]
 
-1. Maak subscription4. json met de onderstaande inhoud. Raadpleeg onze [API-documentatie](api.md) voor meer informatie over de payload.
+1. Maak subscription4.jsmet de onderstaande inhoud. Raadpleeg onze [API-documentatie](api.md) voor meer informatie over de payload.
 
    ```json
     {
@@ -100,7 +99,7 @@ Abonnees kunnen zich registreren voor gebeurtenissen die naar een onderwerp word
    ```
 
    >[!NOTE]
-   > `endpointType` Hiermee geeft u op dat de `edgeHub`abonnee is. `outputName` Hiermee geeft u de uitvoer op waarop de Event grid-module gebeurtenissen stuurt die overeenkomen met dit abonnement op edgeHub. Bijvoorbeeld: gebeurtenissen die overeenkomen met het bovenstaande abonnement, worden geschreven `/messages/modules/eventgridmodule/outputs/sampleSub4`naar.
+   > `endpointType`Hiermee geeft u op dat de abonnee is `edgeHub` . `outputName`Hiermee geeft u de uitvoer op waarop de Event grid-module gebeurtenissen stuurt die overeenkomen met dit abonnement op edgeHub. Bijvoorbeeld: gebeurtenissen die overeenkomen met het bovenstaande abonnement, worden geschreven naar `/messages/modules/eventgridmodule/outputs/sampleSub4` .
 2. Voer de volgende opdracht uit om het abonnement te maken. De HTTP-status code van 200 OK moet worden geretourneerd.
 
     ```sh
@@ -135,7 +134,7 @@ Abonnees kunnen zich registreren voor gebeurtenissen die naar een onderwerp word
 
 Werk de route van de Edge hub bij om de gebeurtenissen van het gebeurtenis abonnement door te sturen naar IoTHub als volgt:
 
-1. Meld u aan bij de [Azure Portal](https://ms.portal.azure.com)
+1. Meld u aan bij [Azure Portal](https://ms.portal.azure.com)
 1. Navigeer naar het **IOT hub**.
 1. **IOT Edge** selecteren in het menu
 1. Selecteer de ID van het doel apparaat in de lijst met apparaten.
@@ -168,7 +167,7 @@ Raadpleeg de [zelf studie over IOT hub route ring](../../iot-hub/tutorial-routin
 
 ## <a name="publish-an-event"></a>Een gebeurtenis publiceren
 
-1. Maak event4. json met de volgende inhoud. Zie onze [API-documentatie](api.md) voor meer informatie over de payload.
+1. Maak event4.jsmet de volgende inhoud. Zie onze [API-documentatie](api.md) voor meer informatie over de payload.
 
     ```json
         [

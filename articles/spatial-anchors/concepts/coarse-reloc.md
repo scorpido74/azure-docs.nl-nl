@@ -9,10 +9,9 @@ ms.date: 09/18/2019
 ms.topic: conceptual
 ms.service: azure-spatial-anchors
 ms.openlocfilehash: 4c1604eaad1ebdedf6a360a647fe5b9f95c829c6
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "76844391"
 ---
 # <a name="coarse-relocalization"></a>Coarse-relokalisatie
@@ -123,9 +122,9 @@ Vervolgens moet u bepalen welke Sens oren u wilt gebruiken voor grove Herlokalis
 
 |             | Binnendeuren | Gek |
 |-------------|---------|----------|
-| GPS         | Uit | Aan |
-| WiFi        | Aan | Aan (optioneel) |
-| Conbakeners | Aan (optioneel met aanvullende opmerkingen, zie hieronder) | Uit |
+| GPS         | Aan | Uit |
+| WiFi        | Uit | Aan (optioneel) |
+| Conbakeners | Aan (optioneel met aanvullende opmerkingen, zie hieronder) | Aan |
 
 
 ### <a name="enabling-gps"></a>GPS inschakelen
@@ -592,9 +591,9 @@ anchorLocateCriteria.NearDevice(nearDeviceCriteria);
 
 ---
 
-De `DistanceInMeters` para meter bepaalt hoe ver de anker grafiek wordt verkend om inhoud op te halen. Stel dat u een ruimte hebt gevuld met ankers met een constante densiteit van 2 elke meter. Bovendien bewaart de camera op het apparaat een enkel anker en de service heeft deze gevonden. U bent waarschijnlijk geïnteresseerd in het ophalen van alle ankers die u in de buurt hebt geplaatst, in plaats van het ene anker dat u momenteel bekijkt. Ervan uitgaande dat de ankers die u hebt geplaatst in een grafiek zijn verbonden, kan de service alle in de buurt geplaatste ankers voor u ophalen door de randen in de grafiek te volgen. De mate waarin de grafiek wordt gepasseerd, `DistanceInMeters`wordt beheerd door. u krijgt alle ankers die zijn verbonden met het punt dat u hebt gevonden, die dichter bij zijn `DistanceInMeters`dan.
+De `DistanceInMeters` para meter bepaalt hoe ver de anker grafiek wordt verkend om inhoud op te halen. Stel dat u een ruimte hebt gevuld met ankers met een constante densiteit van 2 elke meter. Bovendien bewaart de camera op het apparaat een enkel anker en de service heeft deze gevonden. U bent waarschijnlijk geïnteresseerd in het ophalen van alle ankers die u in de buurt hebt geplaatst, in plaats van het ene anker dat u momenteel bekijkt. Ervan uitgaande dat de ankers die u hebt geplaatst in een grafiek zijn verbonden, kan de service alle in de buurt geplaatste ankers voor u ophalen door de randen in de grafiek te volgen. De mate waarin de grafiek wordt gepasseerd, wordt beheerd door `DistanceInMeters` . u krijgt alle ankers die zijn verbonden met het punt dat u hebt gevonden, die dichter bij zijn dan `DistanceInMeters` .
 
-Houd er bij dat grote waarden voor `MaxResultCount` de prestaties negatief kunnen beïnvloeden. Stel deze in op een bestellende waarde voor uw toepassing.
+Houd er bij dat grote waarden voor de `MaxResultCount` prestaties negatief kunnen beïnvloeden. Stel deze in op een bestellende waarde voor uw toepassing.
 
 Ten slotte moet u de sessie laten weten dat u de op de sensor gebaseerde zoek opdracht wilt gebruiken:
 

@@ -4,10 +4,9 @@ description: Meer informatie over het configureren van een test om ervoor te zor
 ms.topic: article
 ms.date: 01/30/2020
 ms.openlocfilehash: 64bb4a3e429ce820835abbf8e235600e592f7868
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "76935685"
 ---
 # <a name="configure-readiness-probes"></a>Gereedheidstests configureren
@@ -23,7 +22,7 @@ Azure Container Instances biedt ook ondersteuning voor [beproefde tests](contain
 
 ## <a name="yaml-configuration"></a>YAML-configuratie
 
-Maak een `readiness-probe.yaml` voor beeld van een bestand met het volgende code fragment dat een gereedheids test bevat. Dit bestand definieert een container groep die bestaat uit een container met een kleine web-app. De app wordt geïmplementeerd vanuit de open `mcr.microsoft.com/azuredocs/aci-helloworld` bare installatie kopie. Deze container-app wordt ook gedemonstreerd in [een container exemplaar implementeren in azure met behulp van de Azure cli](container-instances-quickstart.md) en andere Quick starts.
+Maak een voor beeld van een `readiness-probe.yaml` bestand met het volgende code fragment dat een gereedheids test bevat. Dit bestand definieert een container groep die bestaat uit een container met een kleine web-app. De app wordt geïmplementeerd vanuit de open bare `mcr.microsoft.com/azuredocs/aci-helloworld` installatie kopie. Deze container-app wordt ook gedemonstreerd in [een container exemplaar implementeren in azure met behulp van de Azure cli](container-instances-quickstart.md) en andere Quick starts.
 
 ```yaml
 apiVersion: 2018-10-01
@@ -65,7 +64,7 @@ type: Microsoft.ContainerInstance/containerGroups
 
 De implementatie bevat een `command` eigenschap waarmee een begin opdracht wordt gedefinieerd die wordt uitgevoerd wanneer de container voor het eerst wordt gestart. Deze eigenschap accepteert een matrix met teken reeksen. Met deze opdracht wordt een tijd gesimuleerd wanneer de web-app wordt uitgevoerd, maar de container niet gereed is. 
 
-Eerst wordt een shell-sessie gestart en wordt een `node` opdracht uitgevoerd om de web-app te starten. Er wordt ook een opdracht gestart voor een slaap stand van 240 seconden, waarna een bestand wordt `ready` gemaakt in `/tmp` de map:
+Eerst wordt een shell-sessie gestart en wordt een `node` opdracht uitgevoerd om de web-app te starten. Er wordt ook een opdracht gestart voor een slaap stand van 240 seconden, waarna een bestand wordt gemaakt `ready` in de `/tmp` map:
 
 ```console
 node /usr/src/app/index.js & (sleep 240; touch /tmp/ready); wait
@@ -73,7 +72,7 @@ node /usr/src/app/index.js & (sleep 240; touch /tmp/ready); wait
 
 ### <a name="readiness-command"></a>Gereedheids opdracht
 
-Dit YAML-bestand bevat `readinessProbe` een definitie van `exec` een die ondersteuning biedt voor een gereedheids opdracht die fungeert als gereedheids controle. In dit voor beeld wordt de gereedheids opdracht getest op het `ready` bestaan van het `/tmp` bestand in de map.
+Dit YAML-bestand bevat een definitie van een `readinessProbe` die ondersteuning biedt voor een `exec` gereedheids opdracht die fungeert als gereedheids controle. In dit voor beeld wordt de gereedheids opdracht getest op het bestaan van het `ready` bestand in de `/tmp` map.
 
 Als het `ready` bestand niet bestaat, wordt de gereedheids opdracht afgesloten met een waarde die niet gelijk is aan nul. de container blijft actief, maar is niet toegankelijk. Wanneer de opdracht is afgesloten met de afsluit code 0, is de container klaar om te worden geopend. 
 
@@ -91,7 +90,7 @@ az container create --resource-group myResourceGroup --file readiness-probe.yaml
 
 In dit voor beeld mislukt de gereedheids opdracht tijdens de eerste 240 seconden wanneer wordt gecontroleerd of het `ready` bestand bestaat. De status code heeft een signaal geretourneerd dat de container niet gereed is.
 
-Deze gebeurtenissen kunnen worden bekeken vanuit de Azure Portal of Azure CLI. De portal toont bijvoorbeeld gebeurtenissen van het type `Unhealthy` worden geactiveerd wanneer de gereedheids opdracht mislukt. 
+Deze gebeurtenissen kunnen worden bekeken vanuit de Azure Portal of Azure CLI. De portal toont bijvoorbeeld gebeurtenissen van `Unhealthy` het type worden geactiveerd wanneer de gereedheids opdracht mislukt. 
 
 ![De portal heeft een slechte gebeurtenis][portal-unhealthy]
 

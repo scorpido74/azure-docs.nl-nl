@@ -16,10 +16,9 @@ ms.workload: na
 ms.date: 05/31/2019
 ms.author: TomSh
 ms.openlocfilehash: 61afad1d9994fd703bd8df047d1861baddeae997
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "76845340"
 ---
 # <a name="azure-security-technical-capabilities"></a>Technische mogelijkheden van Azure-beveiliging
@@ -438,13 +437,13 @@ Security Center verzamelt, analyseert en integreert automatisch logboekgegevens 
 
 Cloud toepassingen zijn complex met veel bewegende onderdelen. Bewaking biedt gegevens om ervoor te zorgen dat uw toepassing in een goede staat actief blijft. Het helpt u ook om mogelijke problemen op te lossen of om Stave te oplossen.
 
-![Azure Monitor](./media/technical-capabilities/azure-security-technical-capabilities-fig10.png) Daarnaast kunt u bewakings gegevens gebruiken om grondige inzichten over uw toepassing te krijgen. Deze kennis kan u helpen bij het verbeteren van de prestaties of het onderhoud van toepassingen, of het automatiseren van acties waarvoor anders hand matige interventie nodig zou zijn.
+![Azure Monitor ](./media/technical-capabilities/azure-security-technical-capabilities-fig10.png) Daarnaast kunt u bewakings gegevens gebruiken om grondige inzichten over uw toepassing te krijgen. Deze kennis kan u helpen bij het verbeteren van de prestaties of het onderhoud van toepassingen, of het automatiseren van acties waarvoor anders hand matige interventie nodig zou zijn.
 
 Het controleren van de netwerk beveiliging is essentieel voor het detecteren van problemen met het netwerk en het controleren van de naleving van uw IT-beveiligings beleid en het regulerende governance model. Met de weer gave beveiligings groep kunt u de geconfigureerde netwerk beveiligings groep en beveiligings regels, evenals de juiste beveiligings regels, ophalen. Met de lijst met toegepaste regels kunt u bepalen welke poorten het beveiligings risico van open en SS hebben.
 
 ### <a name="network-watcher"></a>Network Watcher
 
-[Network Watcher](../../network-watcher/network-watcher-monitoring-overview.md) is een regionale service waarmee u voor waarden kunt controleren en diagnosticeren op netwerk niveau in, naar en Azure. Met behulp van de hulpprogram ma's voor netwerk diagnose en visualisatie die beschikbaar zijn bij Network Watcher, kunt u uw netwerk in azure begrijpen, vaststellen en er inzicht in krijgen. Deze service omvat pakket opname, volgende hop, IP-stroom controleren, beveiligings groep weer geven, NSG stroom Logboeken. Bewaking op scenario niveau biedt een end-to-end weer gave van netwerk bronnen in tegens telling tot afzonderlijke netwerk bron bewaking.
+[Network Watcher](../../network-watcher/network-watcher-monitoring-overview.md) is een regionale service waarmee u voor waarden kunt controleren en diagnosticeren op netwerk niveau in, naar en Azure. U kunt de beschikbare diagnostische en visualisatiehulpprogramma's voor netwerken in Network Watcher gebruiken om uw netwerk in Azure te begrijpen, te analyseren en inzichten voor uw netwerk te verkrijgen. Deze service omvat pakket opname, volgende hop, IP-stroom controleren, beveiligings groep weer geven, NSG stroom Logboeken. Bewaking op scenario niveau biedt een end-to-end weer gave van netwerk bronnen in tegens telling tot afzonderlijke netwerk bron bewaking.
 
 ### <a name="storage-analytics"></a>Opslaganalyse
 
@@ -452,7 +451,7 @@ Het controleren van de netwerk beveiliging is essentieel voor het detecteren van
 
 ### <a name="application-insights"></a>Application Insights
 
-[Application Insights](../../azure-monitor/app/app-insights-overview.md) is een UITBREID bare apm-service (Application Performance Management) voor webontwikkelaars op meerdere platforms. Hiermee kunt u uw livewebtoepassing controleren. Afwijkende prestaties worden automatisch gedetecteerd. Het bevat krachtige analyse hulpprogramma's waarmee u problemen kunt vaststellen en inzicht kunt krijgen in wat gebruikers met uw app doen. Het is bedoeld om u te helpen de prestaties en bruikbaarheid continu te verbeteren. Het werkt voor apps op een groot aantal verschillende platformen, zoals .NET, node. js en Java EE, lokaal gehost of in de Cloud. Het wordt geïntegreerd met uw devOps-proces en heeft verbindings punten naar verschillende ontwikkel hulpprogramma's.
+[Application Insights](../../azure-monitor/app/app-insights-overview.md) is een UITBREID bare apm-service (Application Performance Management) voor webontwikkelaars op meerdere platforms. Hiermee kunt u uw livewebtoepassing controleren. Afwijkende prestaties worden automatisch gedetecteerd. Het bevat krachtige analyse hulpprogramma's waarmee u problemen kunt vaststellen en inzicht kunt krijgen in wat gebruikers met uw app doen. Het is bedoeld om u te helpen de prestaties en bruikbaarheid continu te verbeteren. Het werkt voor apps op een groot aantal verschillende platformen, waaronder .NET, Node.js en Java EE, lokaal gehost of in de Cloud. Het wordt geïntegreerd met uw devOps-proces en heeft verbindings punten naar verschillende ontwikkel hulpprogramma's.
 
 Met deze service kunt u het volgende controleren:
 
@@ -513,8 +512,8 @@ Lees meer over beveiliging door enkele van onze diep gaande onderwerpen over bev
 
 - [Versleuteling](https://www.microsoft.com/en-us/trustcenter/security/encryption)
 
-- [Identiteits- en toegangsbeheer](https://www.microsoft.com/en-us/trustcenter/security/identity)
+- [Identiteits-en toegangs beheer](https://www.microsoft.com/en-us/trustcenter/security/identity)
 
-- [Netwerkbeveiliging](https://www.microsoft.com/en-us/trustcenter/security/networksecurity)
+- [Netwerk beveiliging](https://www.microsoft.com/en-us/trustcenter/security/networksecurity)
 
 - [Beveiligingsbeheer](https://www.microsoft.com/en-us/trustcenter/security/threatmanagement)

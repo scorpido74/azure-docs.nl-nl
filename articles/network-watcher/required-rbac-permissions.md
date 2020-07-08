@@ -13,10 +13,9 @@ ms.topic: article
 ms.date: 05/10/2018
 ms.author: damendo
 ms.openlocfilehash: f8743f19d6cd262ad140659be55a4fc57e842564
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "76840550"
 ---
 # <a name="role-based-access-control-permissions-required-to-use-network-watcher-capabilities"></a>Op rollen gebaseerde toegangs beheer machtigingen die zijn vereist voor het gebruik van Network Watcher mogelijkheden
@@ -102,9 +101,9 @@ Met op rollen gebaseerd toegangs beheer (RBAC) van Azure kunt u alleen de specif
 
 Voor Network Watcher mogelijkheden zijn ook de volgende acties vereist:
 
-| Actie (s)                                                           | Beschrijving                                                    |
+| Actie (s)                                                           | Description                                                    |
 | ---------                                                           | -------------                                                  |
-| Micro soft. Authorization/\*/Read                                     | Wordt gebruikt voor het ophalen van RBAC-Roltoewijzingen en beleids definities          |
+| Micro soft. Authorization/ \* /Read                                     | Wordt gebruikt voor het ophalen van RBAC-Roltoewijzingen en beleids definities          |
 | Micro soft. resources/abonnementen/resourceGroups/lezen               | Gebruikt voor het inventariseren van alle resource groepen in een abonnement    |
 | Micro soft. Storage/Storage accounts/lezen                              | Wordt gebruikt om de eigenschappen van het opgegeven opslag account op te halen   |
 | Micro soft. Storage/Storage accounts/listServiceSas/Action, </br> Micro soft. Storage/Storage accounts/listAccountSas/Action, <br> Micro soft. Storage/Storage accounts/Listkeys ophalen/Action| Gebruikt voor het ophalen van Shared Access signatures (SAS) om [beveiligde toegang tot het opslag account](https://docs.microsoft.com/azure/storage/common/storage-sas-overview) in te scha kelen en te schrijven naar het opslag account |

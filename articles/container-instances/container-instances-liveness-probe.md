@@ -4,10 +4,9 @@ description: Meer informatie over het configureren van Live-tests om beschadigde
 ms.topic: article
 ms.date: 01/30/2020
 ms.openlocfilehash: 11c6c9d39067c536bf4325f74eb24b2ab64ef515
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "76934166"
 ---
 # <a name="configure-liveness-probes"></a>Activiteitstests configureren
@@ -65,7 +64,7 @@ az container create --resource-group myResourceGroup --name livenesstest -f live
 
 De implementatie bevat een `command` eigenschap waarmee een begin opdracht wordt gedefinieerd die wordt uitgevoerd wanneer de container voor het eerst wordt gestart. Deze eigenschap accepteert een matrix met teken reeksen. Met deze opdracht wordt de container met een slechte status gesimuleerd.
 
-Eerst wordt een bash-sessie gestart en wordt een bestand gemaakt `healthy` dat wordt `/tmp` aangeroepen in de map. Vervolgens wordt er 30 seconden geslapend voordat het bestand wordt verwijderd. vervolgens wordt er een slaap stand van 10 minuten ingevoerd:
+Eerst wordt een bash-sessie gestart en wordt een bestand gemaakt dat wordt aangeroepen `healthy` in de `/tmp` map. Vervolgens wordt er 30 seconden geslapend voordat het bestand wordt verwijderd. vervolgens wordt er een slaap stand van 10 minuten ingevoerd:
 
 ```bash
 /bin/sh -c "touch /tmp/healthy; sleep 30; rm -rf /tmp/healthy; sleep 600"
@@ -73,7 +72,7 @@ Eerst wordt een bash-sessie gestart en wordt een bestand gemaakt `healthy` dat w
 
 ### <a name="liveness-command"></a>Opdracht van liveiteit
 
-Deze implementatie definieert een `livenessProbe` die ondersteuning biedt `exec` voor een opdracht van de online werking die als controle op de levens duur fungeert. Als deze opdracht wordt afgesloten met een waarde die niet gelijk is aan nul, wordt de container afgebroken en opnieuw `healthy` gestart, waardoor het bestand niet kan worden gevonden. Als de opdracht met de afsluit code 0 is voltooid, wordt er geen actie ondernomen.
+Deze implementatie definieert een `livenessProbe` die ondersteuning biedt voor een `exec` opdracht van de online werking die als controle op de levens duur fungeert. Als deze opdracht wordt afgesloten met een waarde die niet gelijk is aan nul, wordt de container afgebroken en opnieuw gestart, `healthy` waardoor het bestand niet kan worden gevonden. Als de opdracht met de afsluit code 0 is voltooid, wordt er geen actie ondernomen.
 
 De `periodSeconds` eigenschap geeft aan dat de opdracht voor de liveiteit elke vijf seconden moet worden uitgevoerd.
 
@@ -87,7 +86,7 @@ Deze gebeurtenissen kunnen worden bekeken vanuit de Azure Portal of Azure CLI.
 
 ![De portal heeft een slechte gebeurtenis][portal-unhealthy]
 
-Door de gebeurtenissen in de Azure Portal weer te geven, worden `Unhealthy` gebeurtenissen van het type geactiveerd op het moment dat de opdracht voor de bewerking wordt uitgevoerd. De volgende gebeurtenis is van het `Killing`type, waardoor een container wordt verwijderd, zodat het opnieuw opstarten kan worden gestart. Het aantal opnieuw te starten voor de container wordt telkens verhoogd wanneer deze gebeurtenis plaatsvindt.
+Door de gebeurtenissen in de Azure Portal weer te geven, worden gebeurtenissen van `Unhealthy` het type geactiveerd op het moment dat de opdracht voor de bewerking wordt uitgevoerd. De volgende gebeurtenis is van het type `Killing` , waardoor een container wordt verwijderd, zodat het opnieuw opstarten kan worden gestart. Het aantal opnieuw te starten voor de container wordt telkens verhoogd wanneer deze gebeurtenis plaatsvindt.
 
 Opnieuw opstarten is in-place voltooid, zodat resources zoals open bare IP-adressen en knooppunt afhankelijke inhoud behouden blijven.
 
@@ -97,7 +96,7 @@ Als de duur van de bewerking continu wordt uitgevoerd en er te veel opnieuw moet
 
 ## <a name="liveness-probes-and-restart-policies"></a>Online tests en beleid voor opnieuw opstarten
 
-Beleid voor opnieuw opstarten vervangt het gedrag voor opnieuw opstarten dat door de Live-tests wordt geactiveerd. Als u bijvoorbeeld een `restartPolicy = Never` - *en* een-test voor de duur instelt, wordt de container groep niet opnieuw opgestart vanwege een mislukte online controle. In plaats daarvan wordt de container groep gevolgd door het beleid voor het opnieuw `Never`opstarten van de container groep.
+Beleid voor opnieuw opstarten vervangt het gedrag voor opnieuw opstarten dat door de Live-tests wordt geactiveerd. Als u bijvoorbeeld een- `restartPolicy = Never` *en* een-test voor de duur instelt, wordt de container groep niet opnieuw opgestart vanwege een mislukte online controle. In plaats daarvan wordt de container groep gevolgd door het beleid voor het opnieuw opstarten van de container groep `Never` .
 
 ## <a name="next-steps"></a>Volgende stappen
 

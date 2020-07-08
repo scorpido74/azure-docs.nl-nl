@@ -6,10 +6,9 @@ ms.topic: reference
 ms.date: 1/16/2020
 ms.author: jejarry
 ms.openlocfilehash: 56efa15a7de3414f9c535e66bd80c94594cd5038
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "76906216"
 ---
 # <a name="sfctl"></a>sfctl
@@ -18,13 +17,13 @@ Opdrachten voor het beheren van Service Fabric clusters en entiteiten. Deze vers
 Opdrachten volgen het patroon van de zelfstandig naam woord. Zie subgroepen voor meer informatie.
 
 ## <a name="subgroups"></a>Subgroepen
-|Subgroep|Beschrijving|
+|Subgroep|Description|
 | --- | --- |
 | [toepassing](service-fabric-sfctl-application.md) | Toepassingen en toepassings typen maken, verwijderen en beheren. |
 | [chaos](service-fabric-sfctl-chaos.md) | Starten, stoppen en rapporteren op de chaos-test service. |
 | [cluster](service-fabric-sfctl-cluster.md) | Service Fabric clusters selecteren, beheren en uitvoeren. |
 | [Compose](service-fabric-sfctl-compose.md) | Docker opstellen toepassingen maken, verwijderen en beheren. |
-| [container](service-fabric-sfctl-container.md) | Container gerelateerde opdrachten uitvoeren op een cluster knooppunt. |
+| [verpakking](service-fabric-sfctl-container.md) | Container gerelateerde opdrachten uitvoeren op een cluster knooppunt. |
 | [evenementen](service-fabric-sfctl-events.md) | Gebeurtenissen ophalen uit het gebeurtenissen archief (als de Event Store-service al is geïnstalleerd). |
 | [ontbreekt](service-fabric-sfctl-is.md) | Query's uitvoeren en opdrachten verzenden naar de infrastructuur service. |
 | [mesh](service-fabric-sfctl-mesh.md) | Service Fabric-mesh-toepassingen verwijderen en beheren. |

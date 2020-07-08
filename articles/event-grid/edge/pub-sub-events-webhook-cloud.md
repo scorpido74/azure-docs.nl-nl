@@ -10,10 +10,9 @@ ms.topic: article
 ms.service: event-grid
 services: event-grid
 ms.openlocfilehash: c82f1edfc3acd73c1d38425f963aaaf2976a1cc5
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "76844583"
 ---
 # <a name="tutorial-publish-subscribe-to-events-in-cloud"></a>Zelf studie: publiceren, abonneren op gebeurtenissen in de Cloud
@@ -67,7 +66,7 @@ Selecteer in de nieuwe functie rechtsboven **functie-URL ophalen** , Selecteer s
 
 Als uitgever van een gebeurtenis moet u een event grid-onderwerp maken. Onderwerp verwijst naar een eind punt waarnaar uitgevers gebeurtenissen kunnen verzenden.
 
-1. Maak topic2. json met de volgende inhoud. Zie onze [API-documentatie](api.md) voor meer informatie over de payload.
+1. Maak topic2.jsmet de volgende inhoud. Zie onze [API-documentatie](api.md) voor meer informatie over de payload.
 
     ```json
          {
@@ -110,7 +109,7 @@ Abonnees kunnen zich registreren voor gebeurtenissen die naar een onderwerp word
 
 [!INCLUDE [event-grid-deploy-iot-edge](../../../includes/event-grid-edge-persist-event-subscriptions.md)]
 
-1. Maak subscription2. json met de volgende inhoud. Raadpleeg onze [API-documentatie](api.md) voor meer informatie over de payload.
+1. Maak subscription2.jsmet de volgende inhoud. Raadpleeg onze [API-documentatie](api.md) voor meer informatie over de payload.
 
     ```json
         {
@@ -159,7 +158,7 @@ Abonnees kunnen zich registreren voor gebeurtenissen die naar een onderwerp word
 
 ## <a name="publish-an-event"></a>Een gebeurtenis publiceren
 
-1. Maak event2. json met de volgende inhoud. Raadpleeg onze [API-documentatie](api.md) voor meer informatie over de payload.
+1. Maak event2.jsmet de volgende inhoud. Raadpleeg onze [API-documentatie](api.md) voor meer informatie over de payload.
 
     ```json
         [

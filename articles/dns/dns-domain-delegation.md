@@ -8,10 +8,9 @@ ms.date: 2/19/2019
 ms.author: rohink
 ms.topic: conceptual
 ms.openlocfilehash: 9304556edb5e6207296d8ee4e8392e345869cb92
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "76939055"
 ---
 # <a name="delegation-of-dns-zones-with-azure-dns"></a>Delegatie van DNS-zones met Azure DNS
@@ -54,11 +53,11 @@ In de volgende afbeelding ziet u een voorbeeld van een DNS-query. Contoso.net en
 1. De client vraagt `www.partners.contoso.net` aan van zijn lokale DNS-server.
 2. De lokale DNS-server beschikt niet over de record en vraagt deze daarom op bij de hoofdnaamserver.
 3. De hoofdnaamserver beschikt niet over de record, maar kent het adres van de `.net`-naamserver. Dit adres wordt aan de DNS-server doorgegeven
-4. De lokale DNS-server stuurt de aanvraag naar `.net` de naam server.
+4. De lokale DNS-server stuurt de aanvraag naar de `.net` naam server.
 5. De `.net` naam server beschikt niet over de record, maar kent het adres van de `contoso.net` naam server. In dit geval reageert de service met het adres van de naam server voor de DNS-zone die wordt gehost in Azure DNS.
-6. De lokale DNS-server stuurt de aanvraag naar de naam server voor `contoso.net` de zone die wordt gehost in azure DNS.
-7. De zone `contoso.net` beschikt niet over de record, maar kent de naam server `partners.contoso.net` voor en reageert met het adres. In dit geval is het een DNS-zone die wordt gehost in Azure DNS.
-8. De lokale DNS-server stuurt de aanvraag naar de naam server voor `partners.contoso.net` de zone.
+6. De lokale DNS-server stuurt de aanvraag naar de naam server voor de zone die wordt `contoso.net` gehost in azure DNS.
+7. De zone `contoso.net` beschikt niet over de record, maar kent de naam server voor `partners.contoso.net` en reageert met het adres. In dit geval is het een DNS-zone die wordt gehost in Azure DNS.
+8. De lokale DNS-server stuurt de aanvraag naar de naam server voor de `partners.contoso.net` zone.
 9. De `partners.contoso.net` zone heeft de A-record en reageert met het IP-adres.
 10. De lokale DNS-server levert het IP-adres aan de client
 11. De client maakt verbinding met de website `www.partners.contoso.net`.

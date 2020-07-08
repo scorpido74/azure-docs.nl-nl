@@ -15,10 +15,9 @@ ms.topic: article
 ms.date: 07/31/2019
 ms.author: apimpm
 ms.openlocfilehash: 6054c595bca26dc2a0432c53369a60a61e3efde0
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "76841860"
 ---
 # <a name="using-azure-api-management-service-with-an-internal-virtual-network"></a>Azure API Management-service gebruiken met een intern virtueel netwerk
@@ -63,7 +62,7 @@ De API Management-service in een intern virtueel netwerk wordt gehost achter een
 
 4. Selecteer **Opslaan**.
 
-Nadat de implementatie is voltooid, ziet u het **persoonlijke** virtuele IP-adres en het **open bare** virtuele IP-adres van uw API Management-service op de Blade overzicht. Het **persoonlijke** virtuele IP-adres is een IP-adres met taak verdeling vanuit het API Management overgedragen subnet waarover `gateway`, `portal` `management` en `scm` eind punten toegankelijk zijn. Het **open bare** virtuele IP-adres wordt **alleen** gebruikt voor controle vlak `management` verkeer naar het eind punt via poort 3443 en kan worden vergrendeld op de [ApiManagement][ServiceTags] servicetag.
+Nadat de implementatie is voltooid, ziet u het **persoonlijke** virtuele IP-adres en het **open bare** virtuele IP-adres van uw API Management-service op de Blade overzicht. Het **persoonlijke** virtuele IP-adres is een IP-adres met taak verdeling vanuit het API Management overgedragen subnet waarover `gateway` , `portal` `management` en `scm` eind punten toegankelijk zijn. Het **open bare** virtuele IP-adres wordt **alleen** gebruikt voor controle vlak verkeer naar `management` het eind punt via poort 3443 en kan worden vergrendeld op de [ApiManagement][ServiceTags] servicetag.
 
 ![API Management dash board met een intern virtueel netwerk geconfigureerd][api-management-internal-vnet-dashboard]
 
@@ -125,7 +124,7 @@ Als u een aangepaste DNS-server in een virtueel netwerk gebruikt, kunt u ook een
 ## <a name="routing"></a><a name="routing"> </a> Route ring
 
 * Een *privé* -IP-adres met gelijke taak verdeling van het subnet-bereik wordt gereserveerd en wordt gebruikt voor toegang tot de API Management service-eind punten vanuit het virtuele netwerk. Dit *privé* -IP-adres bevindt zich op de Blade overzicht voor de service in de Azure Portal. Dit adres moet worden geregistreerd bij de DNS-servers die worden gebruikt door het virtuele netwerk.
-* Een *openbaar* IP-adres (VIP) met gelijke taak verdeling wordt ook gereserveerd om toegang te bieden tot het beheer service-eind punt via poort 3443. Dit *open bare* IP-adres bevindt zich op de Blade overzicht voor de service in de Azure Portal. Het *open bare* IP-adres wordt alleen gebruikt voor het beheer van `management` het verkeer naar het eind punt via poort 3443 en kan worden vergrendeld op de [ApiManagement][ServiceTags] servicetag.
+* Een *openbaar* IP-adres (VIP) met gelijke taak verdeling wordt ook gereserveerd om toegang te bieden tot het beheer service-eind punt via poort 3443. Dit *open bare* IP-adres bevindt zich op de Blade overzicht voor de service in de Azure Portal. Het *open bare* IP-adres wordt alleen gebruikt voor het beheer van het verkeer naar het `management` eind punt via poort 3443 en kan worden vergrendeld op de [ApiManagement][ServiceTags] servicetag.
 * IP-adressen uit het subnet IP-bereik (DIP) worden toegewezen aan elke virtuele machine in de service en worden gebruikt voor toegang tot bronnen in het virtuele netwerk. Een openbaar IP-adres (VIP) wordt gebruikt voor toegang tot bronnen buiten het virtuele netwerk. Als er IP-beperkings lijsten worden gebruikt voor het beveiligen van resources binnen het virtuele netwerk, moet het hele bereik voor het subnet waarin de API Management-service is geïmplementeerd, worden opgegeven om de toegang tot de service te verlenen of te beperken.
 * U kunt de open bare en privé-IP-adressen met gelijke taak verdeling vinden op de Blade overzicht in het Azure Portal.
 * De IP-adressen die zijn toegewezen voor open bare en persoonlijke toegang, kunnen worden gewijzigd als de service wordt verwijderd uit en vervolgens weer wordt toegevoegd aan het virtuele netwerk. Als dit gebeurt, kan het nodig zijn om DNS-registraties, routerings regels en IP-beperkings lijsten in het virtuele netwerk bij te werken.

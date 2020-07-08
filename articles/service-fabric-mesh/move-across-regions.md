@@ -7,10 +7,9 @@ ms.topic: how-to
 ms.date: 01/14/2020
 ms.custom: subject-moving-resources
 ms.openlocfilehash: 376808a6d8f61d4dc03d17061323a473d48053a6
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "76908161"
 ---
 # <a name="move-a-service-fabric-mesh-application-to-another-azure-region"></a>Een Service Fabric mesh-toepassing verplaatsen naar een andere Azure-regio
@@ -22,7 +21,7 @@ In dit artikel wordt beschreven hoe u uw Service Fabric mesh-toepassing en de bi
 ## <a name="prerequisites"></a>Vereisten
 
 * Ingangs controller (zoals [Application Gateway](https://docs.microsoft.com/azure/application-gateway/)) die fungeert als intermediair voor het routeren van verkeer tussen clients en uw service Fabric mesh-toepassing
-* Beschik baarheid van service Fabric net (preview) in de Azure`westus`- `eastus`doel regio `westeurope`(, of)
+* Beschik baarheid van Service Fabric net (preview) in de Azure-doel regio ( `westus` , `eastus` of `westeurope` )
 
 ## <a name="prepare"></a>Voorbereiden
 

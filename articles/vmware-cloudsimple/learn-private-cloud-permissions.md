@@ -9,10 +9,9 @@ ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
 ms.openlocfilehash: 28c4dc7831f97d66eb4d47f08e640344d5cca0d1
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77014943"
 ---
 # <a name="cloudsimple-private-cloud-permission-model-of-vmware-vcenter"></a>CloudSimple Private Cloud permission model van VMware vCenter
@@ -24,7 +23,7 @@ CloudSimple behoudt volledige beheerders toegang tot de Privécloud. Elke CloudS
 Wanneer u een Privécloud maakt, wordt er een **CloudOwner** -gebruiker gemaakt in het vCenter-domein voor eenmalige aanmelding, met toegang tot de **rol van Cloud-eigenaar** om objecten in de privécloud te beheren. Deze gebruiker kan ook extra vCenter- [identiteits bronnen](set-vcenter-identity.md)instellen en andere gebruikers naar de privécloud van de Cloud.
 
 > [!NOTE]
-> De standaard gebruiker voor uw CloudSimple Private Cloud vCenter cloudowner@cloudsimple.local is wanneer er een privécloud wordt gemaakt.
+> De standaard gebruiker voor uw CloudSimple Private Cloud vCenter is cloudowner@cloudsimple.local wanneer er een privécloud wordt gemaakt.
 
 ## <a name="user-groups"></a>Gebruikersgroepen
 
@@ -32,7 +31,7 @@ Een groep met de naam **Cloud-eigenaar-groep** wordt gemaakt tijdens de implemen
 
 ### <a name="pre-created-groups"></a>Vooraf gemaakte groepen
 
-| Groepsnaam | Doel | Rol |
+| Groepsnaam | Functie | Rol |
 | -------- | ------- | ------ |
 | Cloud-eigenaar-groep | Leden van deze groep hebben beheerders bevoegdheden voor de vCenter van de Privécloud | [Cloud-eigenaar-rol](#cloud-owner-role) |
 | Cloud-globaal-Cluster-beheer groep | Leden van deze groep hebben beheerders bevoegdheden op het vCenter-cluster van de Privécloud | [Cloud-cluster-beheerder-rol](#cloud-cluster-admin-role) |
@@ -61,7 +60,7 @@ Als u afzonderlijke gebruikers machtigingen wilt verlenen voor het beheren van d
 | **Toestelnummer** | Extensie registreren <br> Registratie uitbrei ding opheffen <br> Extensie bijwerken |
 | **Externe statistieken provider**| Registreren <br> Registratie ongedaan maken <br> Bijwerken |
 | **Map** | Map maken <br> Map verwijderen <br> Map verplaatsen <br> Mapnaam wijzigen |
-| **Wereldwijd** | Taak annuleren <br> Capaciteitsplanning <br> Diagnostiek <br> Methoden uitschakelen <br> Methoden inschakelen <br> Global-Tag <br> Status <br> Licenties <br> Logboek gebeurtenis <br> Aangepaste kenmerken beheren <br> Proxy <br> Script actie <br> Service managers <br> Aangepast kenmerk instellen <br> Systeem label |
+| **Globaal** | Taak annuleren <br> Capaciteitsplanning <br> Diagnostiek <br> Methoden uitschakelen <br> Methoden inschakelen <br> Global-Tag <br> Gezondheidszorg <br> Licenties <br> Logboek gebeurtenis <br> Aangepaste kenmerken beheren <br> Proxy <br> Script actie <br> Service managers <br> Aangepast kenmerk instellen <br> Systeem label |
 | **Status update provider** | Registreren <br> Registratie ongedaan maken <br> Bijwerken |
 | **Configuratie van > host** | Configuratie van de opslag partitie |
 | **Host > inventaris** | Cluster wijzigen |

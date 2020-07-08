@@ -15,10 +15,9 @@ ms.workload: infrastructure-services
 ms.date: 09/19/2016
 ms.author: rohink
 ms.openlocfilehash: c497209e456ff838786edaa19e46ebc5c1858d5f
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "76938866"
 ---
 # <a name="create-dns-zones-and-record-sets-using-the-net-sdk"></a>DNS-zones en-record sets maken met behulp van de .NET SDK
@@ -34,7 +33,7 @@ Normaal gesp roken wordt programmatische toegang tot Azure-resources verleend vi
 3. Gebruik Azure RBAC om de machtigingen voor de DNS-zone bijdrager van het service-account te verlenen aan de resource groep ([hoe](../role-based-access-control/role-assignments-portal.md).)
 4. Als u het voorbeeld project van de Azure DNS SDK gebruikt, bewerkt u het bestand Program. CS als volgt:
 
-   * Voer de juiste waarden in voor `tenantId`de `clientId` , (ook wel account-id genoemd `secret` ), (Service Principal account password `subscriptionId` ) en is gebruikt in stap 1.
+   * Voer de juiste waarden in voor de `tenantId` , `clientId` (ook wel account-id genoemd), `secret` (Service Principal account password) en is `subscriptionId` gebruikt in stap 1.
    * Voer de naam in van de resource groep die u in stap 2 hebt gekozen.
    * Voer de naam van de DNS-zone van uw keuze in.
 
@@ -60,7 +59,7 @@ using Microsoft.Azure.Management.Dns.Models;
 
 ## <a name="initialize-the-dns-management-client"></a>De DNS-beheer client initialiseren
 
-De `DnsManagementClient` bevat de methoden en eigenschappen die nodig zijn voor het beheren van DNS-zones en-record sets.  De volgende code meldt zich aan bij het account van de `DnsManagementClient` Service-Principal en maakt een object.
+De `DnsManagementClient` bevat de methoden en eigenschappen die nodig zijn voor het beheren van DNS-zones en-record sets.  De volgende code meldt zich aan bij het account van de Service-Principal en maakt een `DnsManagementClient` object.
 
 ```cs
 // Build the service credentials and DNS management client
@@ -73,7 +72,7 @@ dnsClient.SubscriptionId = subscriptionId;
 
 Als u een DNS-zone wilt maken, maakt u eerst een ' zone '-object dat de para meters van de DNS-zone bevat. Omdat DNS-zones niet zijn gekoppeld aan een specifieke regio, wordt de locatie ingesteld op Global. In dit voor beeld wordt een [Azure Resource Manager ' tag '](https://azure.microsoft.com/updates/organize-your-azure-resources-with-tags/) ook toegevoegd aan de zone.
 
-Als u de zone in Azure DNS daad werkelijk wilt maken of bijwerken, wordt het zone-object dat de zone `DnsManagementClient.Zones.CreateOrUpdateAsyc` parameters bevat door gegeven aan de-methode.
+Als u de zone in Azure DNS daad werkelijk wilt maken of bijwerken, wordt het zone-object dat de zone parameters bevat door gegeven aan de- `DnsManagementClient.Zones.CreateOrUpdateAsyc` methode.
 
 > [!NOTE]
 > DnsManagementClient ondersteunt drie werk modi: synchroon (' CreateOrUpdate '), asynchroon (' CreateOrUpdateAsync ') of asynchroon met toegang tot het HTTP-antwoord (' CreateOrUpdateWithHttpMessagesAsync ').  U kunt een van deze modi kiezen, afhankelijk van de behoeften van uw toepassing.
@@ -99,7 +98,7 @@ var dnsZone = await dnsClient.Zones.CreateOrUpdateAsync(resourceGroupName, zoneN
 
 DNS-records worden beheerd als een recordset. Een recordset is een set records met dezelfde naam en hetzelfde record type in een zone.  De naam van de recordset is relatief ten opzichte van de zone naam en niet de volledig gekwalificeerde DNS-naam.
 
-Om een RecordSet te maken of bij te werken, wordt het object verzamelings parameters gemaakt en door `DnsManagementClient.RecordSets.CreateOrUpdateAsync`gegeven aan. Net als bij DNS-zones zijn er drie werk modi: synchroon (' CreateOrUpdate '), asynchroon (' CreateOrUpdateAsync ') of asynchroon met toegang tot het HTTP-antwoord (' CreateOrUpdateWithHttpMessagesAsync ').
+Om een RecordSet te maken of bij te werken, wordt het object verzamelings parameters gemaakt en door gegeven aan `DnsManagementClient.RecordSets.CreateOrUpdateAsync` . Net als bij DNS-zones zijn er drie werk modi: synchroon (' CreateOrUpdate '), asynchroon (' CreateOrUpdateAsync ') of asynchroon met toegang tot het HTTP-antwoord (' CreateOrUpdateWithHttpMessagesAsync ').
 
 Net als bij DNS-zones bevatten bewerkingen op record sets ondersteuning voor optimistische gelijktijdigheid.  In dit voor beeld, omdat geen if-Match of If-None-Match is opgegeven, wordt de recordset altijd gemaakt.  Deze aanroep overschrijft een bestaande recordset met dezelfde naam en hetzelfde record type in deze DNS-zone.
 
@@ -123,7 +122,7 @@ var recordSet = await dnsClient.RecordSets.CreateOrUpdateAsync(resourceGroupName
 
 ## <a name="get-zones-and-record-sets"></a>Zones en record sets ophalen
 
-Met `DnsManagementClient.Zones.Get` de `DnsManagementClient.RecordSets.Get` methoden en worden respectievelijk afzonderlijke zones en record sets opgehaald. Record sets worden geïdentificeerd aan de hand van het type, de naam en de zone en de resource groep waarin ze zich bevinden. Zones worden geïdentificeerd aan de hand van hun naam en de resource groep waarin ze zich bevinden.
+`DnsManagementClient.Zones.Get`Met de `DnsManagementClient.RecordSets.Get` methoden en worden respectievelijk afzonderlijke zones en record sets opgehaald. Record sets worden geïdentificeerd aan de hand van het type, de naam en de zone en de resource groep waarin ze zich bevinden. Zones worden geïdentificeerd aan de hand van hun naam en de resource groep waarin ze zich bevinden.
 
 ```cs
 var recordSet = dnsClient.RecordSets.Get(resourceGroupName, zoneName, recordSetName, RecordType.A);

@@ -9,10 +9,9 @@ ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
 ms.openlocfilehash: 44a0b8fe56477620c0ac47d5c5de8830dac46214
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77014994"
 ---
 # <a name="manage-your-cloudsimple-private-cloud-virtual-machines-in-azure"></a>Uw virtuele CloudSimple-Cloud machines beheren in azure
@@ -23,7 +22,7 @@ Als u de virtuele machines die u hebt [gemaakt voor uw CloudSimple-privécloud](
 
 De volgende besturings elementen zijn beschikbaar op de pagina **overzicht** voor de geselecteerde virtuele machine.
 
-| Beheer | Beschrijving |
+| Beheer | Description |
 | ------------ | ------------- |
 | Verbinding maken | Verbinding maken met de opgegeven virtuele machine.  |
 | Starten | Start de opgegeven VM.  |
@@ -40,7 +39,7 @@ De grafieken in het onderste gedeelte van de pagina **overzicht** presen teren p
 
 De volgende grafieken worden weer gegeven.
 
-| Item | Beschrijving |
+| Item | Description |
 | ------------ | ------------- |
 | CPU (gemiddeld) | Gemiddeld CPU-gebruik in procenten gedurende het geselecteerde interval.   |
 | Netwerk | Verkeer binnen en buiten het netwerk (MB) over het geselecteerde interval.  |
@@ -64,7 +63,7 @@ Als u een schijf wilt verwijderen, selecteert u deze en klikt u op **verwijderen
 
 Als u de capaciteit van de virtuele machine wilt wijzigen, opent u de pagina **grootte** voor de geselecteerde virtuele machine. Geef een van de volgende op en klik op **Opslaan**.
 
-| Item | Beschrijving |
+| Item | Description |
 | ------------ | ------------- |
 | Aantal kerngeheugens | Het aantal kern geheugens dat aan de virtuele machine is toegewezen.  |
 | Hardwarevirtualisatie | Schakel het selectie vakje in om de hardware-virtualisatie beschikbaar te maken voor het gast besturingssysteem. Zie het VMware-artikel een door [VMware ondersteunde virtualisatie beschikbaar](https://docs.vmware.com/en/VMware-vSphere/6.5/com.vmware.vsphere.vm_admin.doc/GUID-2A98801C-68E8-47AF-99ED-00C63E4857F6.html)maken. |

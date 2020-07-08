@@ -9,10 +9,9 @@ ms.service: azure-maps
 services: azure-maps
 manager: cpendle
 ms.openlocfilehash: e81b15b974469d319384a67b08512130b7876a30
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "76988784"
 ---
 # <a name="web-sdk-supported-browsers"></a>Browsers die Web-SDK ondersteunen
@@ -29,7 +28,7 @@ if (!atlas.isSupported()) {
 }
 ```
 
-## <a name="desktop"></a>Desktop
+## <a name="desktop"></a>Bureaublad
 
 De Azure Maps Web-SDK ondersteunt de volgende desktop browsers:
 
@@ -40,7 +39,7 @@ De Azure Maps Web-SDK ondersteunt de volgende desktop browsers:
 
 Zie ook [verouderde browsers bedoelen](#Target-Legacy-Browsers) verderop in dit artikel.
 
-## <a name="mobile"></a>Mobiele telefoon
+## <a name="mobile"></a>Mobiel
 
 De Azure Maps Web-SDK ondersteunt de volgende mobiele browsers:
 
@@ -57,9 +56,9 @@ De Azure Maps Web-SDK ondersteunt de volgende mobiele browsers:
 
 ## <a name="nodejs"></a>Node.js
 
-De volgende Web SDK-modules worden ook ondersteund in node. js:
+De volgende Web SDK-modules worden ook ondersteund in Node.js:
 
-- Services-module ([documentatie](how-to-use-services-module.md) | [NPM module](https://www.npmjs.com/package/azure-maps-rest))
+- Services-module ([documentatie](how-to-use-services-module.md)  |  [NPM module](https://www.npmjs.com/package/azure-maps-rest))
 
 ## <a name="target-legacy-browsers"></a><a name="Target-Legacy-Browsers"></a>Doel verouderde browsers
 
@@ -68,7 +67,7 @@ Het is raadzaam om oudere browsers te richten die geen ondersteuning bieden voor
 <br/>
 
 <iframe height="500" style="width: 100%;" scrolling="no" title="Azure Maps en bijsluiter" src="//codepen.io/azuremaps/embed/GeLgyx/?height=500&theme-id=0&default-tab=html,result" frameborder="no" allowtransparency="true" allowfullscreen="true">
-Zie de pen <a href='https://codepen.io/azuremaps/pen/GeLgyx/'>Azure Maps + bijsluiter</a> per Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) op <a href='https://codepen.io'>CodePen</a>.
+Zie de pen <a href='https://codepen.io/azuremaps/pen/GeLgyx/'>Azure Maps + bijsluiter</a> per Azure Maps ( <a href='https://codepen.io/azuremaps'>@azuremaps</a> ) op <a href='https://codepen.io'>CodePen</a>.
 </iframe>
 
 

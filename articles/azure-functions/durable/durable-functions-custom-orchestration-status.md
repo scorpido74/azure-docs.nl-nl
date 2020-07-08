@@ -5,10 +5,9 @@ ms.topic: conceptual
 ms.date: 11/02/2019
 ms.author: azfuncdf
 ms.openlocfilehash: 31b7d51293878c9d0e8567b6b4bd58c48d75ec63
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "76766275"
 ---
 # <a name="custom-orchestration-status-in-durable-functions-azure-functions"></a>Aangepaste indelings status in Durable Functions (Azure Functions)
@@ -51,7 +50,7 @@ public static string SayHello([ActivityTrigger] string name)
 }
 ```
 
-# <a name="javascript"></a>[Javascript](#tab/javascript)
+# <a name="javascript"></a>[JavaScript](#tab/javascript)
 
 `E1_HelloSequence`Orchestrator-functie:
 
@@ -83,7 +82,7 @@ module.exports = async function(context, name) {
 
 ---
 
-En de client ontvangt de uitvoer van de indeling alleen wanneer `CustomStatus` het veld is ingesteld op Amsterdam:
+En de client ontvangt de uitvoer van de indeling alleen wanneer het `CustomStatus` veld is ingesteld op Amsterdam:
 
 # <a name="c"></a>[C#](#tab/csharp)
 
@@ -118,7 +117,7 @@ public static async Task<HttpResponseMessage> Run(
 }
 ```
 
-# <a name="javascript"></a>[Javascript](#tab/javascript)
+# <a name="javascript"></a>[JavaScript](#tab/javascript)
 
 ```javascript
 const df = require("durable-functions");
@@ -148,7 +147,7 @@ module.exports = async function(context, req) {
 ```
 
 > [!NOTE]
-> In Java script wordt `customStatus` het veld ingesteld wanneer de volgende `yield` of `return` actie wordt gepland.
+> In Java script `customStatus` wordt het veld ingesteld wanneer de volgende `yield` of `return` actie wordt gepland.
 
 ---
 
@@ -194,7 +193,7 @@ public static void Run(
 }
 ```
 
-# <a name="javascript"></a>[Javascript](#tab/javascript)
+# <a name="javascript"></a>[JavaScript](#tab/javascript)
 
 ```javascript
 const df = require("durable-functions");
@@ -261,7 +260,7 @@ public static async Task<bool> Run(
 }
 ```
 
-# <a name="javascript"></a>[Javascript](#tab/javascript)
+# <a name="javascript"></a>[JavaScript](#tab/javascript)
 
 ```javascript
 const df = require("durable-functions");
@@ -309,7 +308,7 @@ public static async Task SetStatusTest([OrchestrationTrigger] IDurableOrchestrat
 }
 ```
 
-# <a name="javascript"></a>[Javascript](#tab/javascript)
+# <a name="javascript"></a>[JavaScript](#tab/javascript)
 
 ```javascript
 const df = require("durable-functions");

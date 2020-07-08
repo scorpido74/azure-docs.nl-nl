@@ -8,17 +8,16 @@ services: web-application-firewall
 ms.date: 08/21/2019
 ms.author: victorh
 ms.openlocfilehash: f48b683044bc727cda461fb64a743c055188962a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "76934657"
 ---
 # <a name="configure-bot-protection-for-web-application-firewall-preview"></a>Bot-beveiliging voor Web Application firewall configureren (preview-versie)
 In dit artikel wordt beschreven hoe u de bot-beveiligings regel configureert in azure Web Application firewall (WAF) voor de voor deur met behulp van Azure Portal. De bot-beveiligings regel kan ook worden geconfigureerd met een CLI-, Azure PowerShell-of Azure Resource Manager-sjabloon.
 
 > [!IMPORTANT]
-> De set bot Protection-regelset bevindt zich momenteel in een open bare preview en wordt weer gegeven met een preview-service level agreement. De reden hiervoor is dat bepaalde functies mogelijk niet worden ondersteund of beperkte mogelijkheden hebben.  Raadpleeg voor meer informatie de [aanvullende gebruiksrechtovereenkomst voor Microsoft Azure-previews](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+> De set met regels voor beveiliging tegen bots is momenteel in openbare preview en wordt aangeboden met een preview-SLA. De reden hiervoor is dat bepaalde functies mogelijk niet worden ondersteund of beperkte mogelijkheden hebben.  Raadpleeg voor meer informatie de [aanvullende gebruiksrechtovereenkomst voor Microsoft Azure-previews](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
 ## <a name="prerequisites"></a>Vereisten
 

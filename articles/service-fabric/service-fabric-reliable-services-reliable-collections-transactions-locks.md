@@ -5,10 +5,9 @@ ms.topic: conceptual
 ms.date: 5/1/2017
 ms.custom: sfrev
 ms.openlocfilehash: 5f7b3a4d43d35f0d2965dd33c8f69143f4b3a8f7
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "76938914"
 ---
 # <a name="transactions-and-lock-modes-in-azure-service-fabric-reliable-collections"></a>Trans acties en vergrendelings modi in azure Service Fabric reliable-verzamelingen
@@ -43,7 +42,7 @@ Hieronder ziet u de tabel waarin de standaard waarden voor het isolatie niveau w
 | Opsomming, aantal |Momentopname |Momentopname |
 
 > [!NOTE]
-> Algemene voor beelden voor bewerkingen met één `IReliableDictionary.TryGetValueAsync`entiteit `IReliableQueue.TryPeekAsync`zijn,.
+> Algemene voor beelden voor bewerkingen met één entiteit zijn `IReliableDictionary.TryGetValueAsync` , `IReliableQueue.TryPeekAsync` .
 > 
 
 Zowel de betrouw bare woorden lijst als de betrouw bare wachtrij ondersteunen *uw schrijf bewerkingen*.
@@ -55,8 +54,8 @@ In betrouw bare verzamelingen implementeren alle trans acties strikte twee fase 
 
 Een betrouw bare woorden lijst maakt gebruik van vergren deling op rijniveau voor alle bewerkingen van één entiteit.
 Betrouw bare wachtrij verhoudingen voor een strikte transactionele FIFO-eigenschap.
-Een betrouw bare wachtrij maakt gebruik van vergren delingen `TryPeekAsync` `TryDequeueAsync` `EnqueueAsync` op bewerking niveau, waarbij één trans actie met en/of en één trans actie per keer wordt uitgevoerd.
-Houd er rekening mee dat u FIFO kunt `TryPeekAsync` behouden `TryDequeueAsync` als er een of meer is dat de betrouw bare wachtrij leeg is `EnqueueAsync`, wordt deze ook vergrendeld.
+Een betrouw bare wachtrij maakt gebruik van vergren delingen op bewerking niveau, waarbij één trans actie met `TryPeekAsync` en/of `TryDequeueAsync` en één trans actie `EnqueueAsync` per keer wordt uitgevoerd.
+Houd er rekening mee dat u FIFO kunt behouden als er een `TryPeekAsync` of meer `TryDequeueAsync` is dat de betrouw bare wachtrij leeg is, wordt deze ook vergrendeld `EnqueueAsync` .
 
 Schrijf bewerkingen maken altijd exclusieve vergren delingen.
 Voor lees bewerkingen is de vergren deling afhankelijk van een aantal factoren:

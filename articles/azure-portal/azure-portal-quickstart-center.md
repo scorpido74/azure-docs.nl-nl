@@ -1,5 +1,5 @@
 ---
-title: Aan de slag met het Azure Quick Start Center
+title: Aan de slag met het Azure Quickstart Center
 description: Gebruik de begeleide ervaring van Azure Quick Start Center om aan de slag te gaan met Azure. Meer informatie over het instellen, migreren en innoveren.
 services: azure-portal
 keywords: ''
@@ -10,13 +10,12 @@ ms.topic: conceptual
 ms.service: azure-portal
 manager: mtillman
 ms.openlocfilehash: 21dd43b5179d0752699bb56b51a2c08976aa037b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "76900685"
 ---
-# <a name="get-started-with-the-azure-quickstart-center"></a>Aan de slag met het Azure Quick Start Center
+# <a name="get-started-with-the-azure-quickstart-center"></a>Aan de slag met het Azure Quickstart Center
 
 Het Snelstartgids centrum van Azure is een begeleide ervaring in de Azure Portal die beschikbaar is voor iedereen die hun kennis van Azure wil verbeteren. Voor organisaties die nieuw zijn voor Azure, is het de snelste manier om uw cloud omgeving vrij te maken en in te stellen.
 
@@ -32,11 +31,11 @@ Het Azure Quick Start Center heeft drie opties om aan de slag te gaan:
 
 ## <a name="how-to-use-azure-quickstart-center"></a>Het gebruik van Azure Quick Start Center
 
-1. Meld u aan bij de [Azure-portal](https://portal.azure.com).
+1. Meld u aan bij [Azure Portal](https://portal.azure.com).
 
 1. Selecteer **alle services** in het Azure Portal menu.
 
-1. Selecteer **Algemeen** > **Quick Start Center**.
+1. Selecteer **Algemeen**  >  **Quick Start Center**.
 
 Bekijk deze video voor een uitgebreid overzicht van wat Azure Quick Start Center voor u kan doen:
 > [!VIDEO https://www.youtube.com/embed/0bSA7RXrbAg]

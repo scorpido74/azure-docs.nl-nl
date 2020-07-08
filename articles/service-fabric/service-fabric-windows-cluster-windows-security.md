@@ -6,14 +6,13 @@ ms.topic: conceptual
 ms.date: 08/24/2017
 ms.author: dekapur
 ms.openlocfilehash: 46be6acc1ef08770826a2e020c8930eba0787791
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "76774451"
 ---
 # <a name="secure-a-standalone-cluster-on-windows-by-using-windows-security"></a>Een zelfstandige cluster in Windows beveiligen met behulp van Windows-beveiliging
-Als u ongeoorloofde toegang tot een Service Fabric cluster wilt voor komen, moet u het cluster beveiligen. Beveiliging is vooral belang rijk wanneer het cluster productie werkbelastingen uitvoert. In dit artikel wordt beschreven hoe u de beveiliging van knoop punt-naar-knoop punt en client-naar-knoop punt configureert met behulp van Windows-beveiliging in het bestand *ClusterConfig. json* .  Het proces komt overeen met de beveiligings stap configureren van [een zelfstandig cluster maken dat wordt uitgevoerd in Windows](service-fabric-cluster-creation-for-windows-server.md). Zie [cluster beveiligings scenario's](service-fabric-cluster-security.md)voor meer informatie over het gebruik van Windows-beveiliging met Service Fabric.
+Als u ongeoorloofde toegang tot een Service Fabric cluster wilt voor komen, moet u het cluster beveiligen. Beveiliging is vooral belang rijk wanneer het cluster productie werkbelastingen uitvoert. In dit artikel wordt beschreven hoe u de beveiliging van knoop punt-naar-knoop punt en client-naar-knoop punt configureert met behulp van Windows-beveiliging in de *ClusterConfig.JSvoor* het bestand.  Het proces komt overeen met de beveiligings stap configureren van [een zelfstandig cluster maken dat wordt uitgevoerd in Windows](service-fabric-cluster-creation-for-windows-server.md). Zie [cluster beveiligings scenario's](service-fabric-cluster-security.md)voor meer informatie over het gebruik van Windows-beveiliging met Service Fabric.
 
 > [!NOTE]
 > U moet de selectie van knoop punt-naar-knoop punt-beveiliging zorgvuldig overwegen, omdat er geen upgrade van het cluster van de ene beveiligings optie naar de andere wordt uitgevoerd. Als u de beveiligings selectie wilt wijzigen, moet u het volledige cluster opnieuw bouwen.
@@ -21,7 +20,7 @@ Als u ongeoorloofde toegang tot een Service Fabric cluster wilt voor komen, moet
 >
 
 ## <a name="configure-windows-security-using-gmsa"></a>Windows-beveiliging configureren met behulp van gMSA  
-Het voorbeeld configuratie bestand *ClusterConfig. gMSA. Windows. multimachine. json* is gedownload met [micro soft. Azure. ServiceFabric. Windowsserver\< . ](https://go.microsoft.com/fwlink/?LinkId=730690)het zelfstandige cluster pakket voor versie>. zip bevat een sjabloon voor het configureren van Windows-beveiliging met behulp van door de [groep beheerde service accounts (gMSA)](https://technet.microsoft.com/library/hh831782.aspx):  
+De voorbeeld *ClusterConfig.gMSA.Windows.MultiMachine.JSvan* het configuratie bestand dat is gedownload met [micro soft. Azure. ServiceFabric. Windowsserver. \<version> . ](https://go.microsoft.com/fwlink/?LinkId=730690)het zelfstandige zip-cluster pakket bevat een sjabloon voor het configureren van Windows-beveiliging met behulp van door de [groep beheerde service accounts (gMSA)](https://technet.microsoft.com/library/hh831782.aspx):  
 
 ```
 "security": {
@@ -52,7 +51,7 @@ Het voorbeeld configuratie bestand *ClusterConfig. gMSA. Windows. multimachine. 
 | IsAdmin |Stel deze waarde in op True om op te geven dat de domein gebruiker beheerders toegang of ONWAAR heeft voor toegang tot de client gebruiker. |
 
 > [!NOTE]
-> De waarde van ClustergMSAIdentity moet de indelingmysfgmsa@mydomain' ' hebben.
+> De waarde van ClustergMSAIdentity moet de indeling ' mysfgmsa@mydomain ' hebben.
 
 [Knoop punt-naar-knooppunt beveiliging](service-fabric-cluster-security.md#node-to-node-security) wordt geconfigureerd door **ClustergMSAIdentity** in te stellen wanneer service Fabric moet worden uitgevoerd onder gMSA. Om vertrouwens relaties tussen knoop punten te kunnen bouwen, moeten ze van elkaar op de hoogte worden gesteld. Dit kan op twee verschillende manieren worden uitgevoerd: Geef het beheerde service account van de groep op dat alle knoop punten in het cluster bevat of geef de computer groep van het domein op die alle knoop punten in het cluster bevat. We raden u ten zeerste aan de [gMSA-aanpak (Group Managed Service account)](https://technet.microsoft.com/library/hh831782.aspx) te gebruiken, met name voor grotere clusters (meer dan 10 knoop punten) of voor clusters die waarschijnlijk groter of kleiner zijn.  
 Voor deze methode is het maken van een domein groep waarvoor cluster beheerders toegangs rechten hebben gekregen om leden toe te voegen en te verwijderen, niet vereist. Deze accounts zijn ook handig voor automatische wachtwoord beheer. Zie aan de slag [met beheerde service accounts voor groepen](https://technet.microsoft.com/library/jj128431.aspx)voor meer informatie.  
@@ -77,7 +76,7 @@ In het volgende voor beeld van een **beveiligings** sectie wordt Windows-beveili
 ```
   
 ## <a name="configure-windows-security-using-a-machine-group"></a>Windows-beveiliging configureren met behulp van een computer groep  
-Dit model wordt afgeschaft. De aanbeveling is om gMSA te gebruiken zoals hierboven wordt beschreven. Het voorbeeld configuratie bestand *ClusterConfig. Windows. multimachine. json* is gedownload met de [Microsoft. Azure. ServiceFabric. Windowsserver\< . ](https://go.microsoft.com/fwlink/?LinkId=730690)het zelfstandige cluster pakket voor versie>. zip bevat een sjabloon voor het configureren van Windows-beveiliging.  Windows-beveiliging is geconfigureerd in de sectie **Eigenschappen** : 
+Dit model wordt afgeschaft. De aanbeveling is om gMSA te gebruiken zoals hierboven wordt beschreven. De voorbeeld *ClusterConfig.Windows.MultiMachine.JSvan* het configuratie bestand dat is gedownload met [micro soft. Azure. ServiceFabric. Windowsserver. \<version> . ](https://go.microsoft.com/fwlink/?LinkId=730690)het zelfstandige zip-cluster pakket bevat een sjabloon voor het configureren van Windows-beveiliging.  Windows-beveiliging is geconfigureerd in de sectie **Eigenschappen** : 
 
 ```
 "security": {
@@ -129,12 +128,12 @@ In het volgende voor beeld van een **beveiligings** sectie wordt Windows-beveili
 ```
 
 > [!NOTE]
-> Service Fabric moet niet worden geïmplementeerd op een domein controller. Zorg ervoor dat ClusterConfig. json het IP-adres van de domein controller niet bevat wanneer u een machine groep of groep Managed Service account (gMSA) gebruikt.
+> Service Fabric moet niet worden geïmplementeerd op een domein controller. Zorg ervoor dat ClusterConfig.jsop geen het IP-adres van de domein controller bevat wanneer u een machine groep of groep beheerd service account (gMSA) gebruikt.
 >
 >
 
 ## <a name="next-steps"></a>Volgende stappen
-Nadat u de Windows-beveiliging in het bestand *ClusterConfig. json* hebt geconfigureerd, hervat u het proces voor het maken van het cluster in [een zelfstandig cluster maken dat wordt uitgevoerd in Windows](service-fabric-cluster-creation-for-windows-server.md).
+Nadat u de Windows-beveiliging hebt geconfigureerd in de *ClusterConfig.JSop* bestand, hervat u het proces voor het maken van het cluster in [een zelfstandig cluster maken dat wordt uitgevoerd in Windows](service-fabric-cluster-creation-for-windows-server.md).
 
 Zie [scenario's voor cluster beveiliging](service-fabric-cluster-security.md)voor meer informatie over het beveiligen van knoop punten, de beveiliging van client naar knoop punt en toegangs beheer op basis van rollen.
 

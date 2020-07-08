@@ -9,10 +9,9 @@ ms.reviewer: jonfan, estfan, logicappspm
 ms.topic: article
 ms.date: 01/01/2020
 ms.openlocfilehash: c82f9cbfaf2e23ddaa5e4b05f4aac4795d3e16a9
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "76903063"
 ---
 # <a name="create-custom-tracking-schemas-that-monitor-end-to-end-workflows-in-azure-logic-a"></a>Aangepaste tracking schema's maken waarmee end-to-end werk stromen in azure Logic A worden bewaakt
@@ -51,22 +50,22 @@ Azure Logic Apps heeft ingebouwde tracking die u kunt inschakelen voor delen van
 }
 ```
 
-| Eigenschap | Vereist | Type | Beschrijving |
+| Eigenschap | Vereist | Type | Description |
 |----------|----------|------|-------------|
-| Type | Ja | Tekenreeks | Type van de uitvoerings bron met de volgende toegestane waarden `Microsoft.Logic/workflows`:,`custom` |
-| source | Ja | Teken reeks of JToken | Als het bron type is `Microsoft.Logic/workflows`, moeten de bron gegevens dit schema volgen. Als het bron type is `custom`, is het schema een JToken. |
+| Type | Ja | Tekenreeks | Type van de uitvoerings bron met de volgende toegestane waarden: `Microsoft.Logic/workflows` ,`custom` |
+| source | Yes | Teken reeks of JToken | Als het bron type is `Microsoft.Logic/workflows` , moeten de bron gegevens dit schema volgen. Als het bron type is `custom` , is het schema een JToken. |
 | systemId | Ja | Tekenreeks | Systeem-ID van Logic-app |
 | runId | Ja | Tekenreeks | Run-ID van logische app |
 | operationName | Ja | Tekenreeks | De naam van de bewerking, bijvoorbeeld actie of trigger |
-| repeatItemScopeName | Ja | Tekenreeks | Item naam herhalen als de actie binnen een `foreach`or `until` -lus ligt |
-| repeatItemIndex | Ja | Geheel getal | Geeft aan dat de actie binnen een `foreach` or `until` -lus ligt en het herhaalde item index nummer is. |
-| trackingId | Nee | Tekenreeks | Tracerings-ID voor het correleren van de berichten |
-| correlationId | Nee | Tekenreeks | Correlatie-ID voor het correleren van de berichten |
-| clientRequestId | Nee | Tekenreeks | De client kan deze eigenschap vullen voor het correleren van berichten |
+| repeatItemScopeName | Ja | Tekenreeks | Item naam herhalen als de actie binnen een `foreach` or- `until` lus ligt |
+| repeatItemIndex | Yes | Geheel getal | Geeft aan dat de actie binnen een `foreach` or- `until` lus ligt en het herhaalde item index nummer is. |
+| trackingId | No | Tekenreeks | Tracerings-ID voor het correleren van de berichten |
+| correlationId | No | Tekenreeks | Correlatie-ID voor het correleren van de berichten |
+| clientRequestId | No | Tekenreeks | De client kan deze eigenschap vullen voor het correleren van berichten |
 | eventLevel | Ja | Tekenreeks | Het niveau van de gebeurtenis |
-| eventTime | Ja | DateTime | Tijd van de gebeurtenis in UTC-notatie: *jjjj-mm-ddTuu: mm: SS. 00000Z* |
+| eventTime | Yes | DateTime | Tijd van de gebeurtenis in UTC-notatie: *jjjj-mm-ddTuu: mm: SS. 00000Z* |
 | Record type | Ja | Tekenreeks | Type track record met deze toegestane waarde:`custom` |
-| opnemen | Ja | JToken | Aangepast record type met alleen de JToken-indeling |
+| opnemen | Yes | JToken | Aangepast record type met alleen de JToken-indeling |
 |||||
 
 ## <a name="b2b-protocol-tracking-schemas"></a>Schema's voor het bijhouden van B2B-protocollen

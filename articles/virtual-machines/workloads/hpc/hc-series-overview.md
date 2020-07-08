@@ -13,10 +13,9 @@ ms.topic: article
 ms.date: 05/07/2019
 ms.author: amverma
 ms.openlocfilehash: a4cd74c9c85ee7413cde9f0fb4cf3ffb54c9b3d0
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "76906739"
 ---
 # <a name="hc-series-virtual-machine-overview"></a>Overzicht van de virtuele machine van de HC-serie
@@ -58,7 +57,7 @@ In het volgende diagram ziet u de schei ding van kernen die zijn gereserveerd vo
 | Aanvullende Frameworks       | Unified Communication X, libfabric, PGAS |
 | Ondersteuning voor Azure Storage       | Std + Premium (max. 4 schijven) |
 | Ondersteuning van het besturings systeem voor SRIOV RDMA   | CentOS/RHEL 7,6 +, SLES 12 SP4 +, WinServer 2016 + |
-| Ondersteuning voor Azure CycleCloud    | Ja                         |
+| Ondersteuning voor Azure CycleCloud    | Yes                         |
 | Ondersteuning voor Azure Batch         | Ja                         |
 
 ## <a name="next-steps"></a>Volgende stappen

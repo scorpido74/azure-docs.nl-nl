@@ -6,10 +6,9 @@ ms.topic: reference
 ms.date: 1/16/2020
 ms.author: jejarry
 ms.openlocfilehash: 29b365c48e405830e238945f1d94156f477c15b4
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "76906188"
 ---
 # <a name="sfctl-chaos-schedule"></a>sfctl chaos schedule
@@ -29,18 +28,18 @@ Hiermee haalt u de versie van de chaos-planning in gebruik en het chaos-schema d
 
 ### <a name="arguments"></a>Argumenten
 
-|Argument|Beschrijving|
+|Argument|Description|
 | --- | --- |
-| --time-out-t | De time-out van de server voor het uitvoeren van de bewerking in enkele seconden. Met deze time-out geeft u de tijds duur op die de client nodig heeft om te wachten tot de aangevraagde bewerking is voltooid. De standaard waarde voor deze para meter is 60 seconden.  Standaard\: 60. |
+| --time-out-t | De time-out van de server voor het uitvoeren van de bewerking in enkele seconden. Met deze time-out geeft u de tijds duur op die de client nodig heeft om te wachten tot de aangevraagde bewerking is voltooid. De standaard waarde voor deze para meter is 60 seconden.  Standaard \: 60. |
 
 ### <a name="global-arguments"></a>Algemene argumenten
 
-|Argument|Beschrijving|
+|Argument|Description|
 | --- | --- |
 | --fouten opsporen | Verg root logboek registratie uitgebreid om alle logboeken voor fout opsporing weer te geven. |
 | --Help-h | Dit Help-bericht weer geven en afsluiten. |
-| --uitvoer-o | Uitvoer indeling.  Toegestane waarden\: JSON, jsonc, Table, TSV.  Standaard\: JSON. |
-| --query | JMESPath-query reeks. Zie http\://jmespath.org/voor meer informatie en voor beelden. |
+| --uitvoer-o | Uitvoer indeling.  Toegestane waarden \: JSON, jsonc, Table, TSV.  Standaard \: JSON. |
+| --query | JMESPath-query reeks. Zie http \: //jmespath.org/voor meer informatie en voor beelden. |
 | --verbose | Uitgebreide logboek registratie verhogen. Gebruik--debug voor volledige logboeken voor fout opsporing. |
 
 ## <a name="sfctl-chaos-schedule-set"></a>sfctl chaos-schema instellen
@@ -50,23 +49,23 @@ Chaos wordt automatisch gepland op basis van het chaos-schema. Het chaos-schema 
 
 ### <a name="arguments"></a>Argumenten
 
-|Argument|Beschrijving|
+|Argument|Description|
 | --- | --- |
 | --chaos-para meters-Dictionary | JSON-gecodeerde lijst die een toewijzing van teken reeks namen vertegenwoordigt aan ChaosParameters die moeten worden gebruikt door taken. |
-| --verloop datum-UTC | De datum en tijd waarop wordt gebruikgemaakt van het schema om chaos te plannen.  Standaard\: : 9999-12-\:31T23\:59 59.999 z. |
+| --verloop datum-UTC | De datum en tijd waarop wordt gebruikgemaakt van het schema om chaos te plannen.  Standaard: \: 9999-12-31T23 \: 59 \: 59.999 z. |
 | --taken | JSON-gecodeerde lijst met ChaosScheduleJobs die aangeeft wanneer chaos moet worden uitgevoerd en met welke para meters chaos moeten worden uitgevoerd. |
-| --begin datum-UTC | De datum en tijd waarop het schema moet worden gebruikt om chaos te plannen.  Standaard\: 1601-01-01T00\:00\:00.000 z. |
-| --time-out-t | Standaard\: 60. |
+| --begin datum-UTC | De datum en tijd waarop het schema moet worden gebruikt om chaos te plannen.  Standaard \: 1601-01-01T00 \: 00 \: 00.000 z. |
+| --time-out-t | Standaard \: 60. |
 | --versie | Het versie nummer van het schema. |
 
 ### <a name="global-arguments"></a>Algemene argumenten
 
-|Argument|Beschrijving|
+|Argument|Description|
 | --- | --- |
 | --fouten opsporen | Verg root logboek registratie uitgebreid om alle logboeken voor fout opsporing weer te geven. |
 | --Help-h | Dit Help-bericht weer geven en afsluiten. |
-| --uitvoer-o | Uitvoer indeling.  Toegestane waarden\: JSON, jsonc, Table, TSV.  Standaard\: JSON. |
-| --query | JMESPath-query reeks. Zie http\://jmespath.org/voor meer informatie en voor beelden. |
+| --uitvoer-o | Uitvoer indeling.  Toegestane waarden \: JSON, jsonc, Table, TSV.  Standaard \: JSON. |
+| --query | JMESPath-query reeks. Zie http \: //jmespath.org/voor meer informatie en voor beelden. |
 | --verbose | Uitgebreide logboek registratie verhogen. Gebruik--debug voor volledige logboeken voor fout opsporing. |
 
 ### <a name="examples"></a>Voorbeelden

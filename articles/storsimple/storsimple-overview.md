@@ -15,10 +15,9 @@ ms.workload: TBD
 ms.date: 07/10/2017
 ms.author: timlt
 ms.openlocfilehash: 2a6650cac975c575415a329361da00d4fbfcaa9d
-ms.sourcegitcommit: fad3aaac5af8c1b3f2ec26f75a8f06e8692c94ed
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/27/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "68965119"
 ---
 # <a name="storsimple-8000-series-a-hybrid-cloud-storage-solution"></a>StorSimple 8000-serie: een Hybrid Cloud Storage oplossing
@@ -210,10 +209,10 @@ Hieronder vindt u een overzicht van de ondersteunde StorSimple-workloads.
 
 | Scenario | Workload | Ondersteund | Beperkingen | Versie |
 | --- | --- | --- | --- | --- |
-| Samenwerking |Bestanden delen |Ja | |Alle versies |
-| Samenwerking |Distributed File Sharing |Ja | |Alle versies |
+| Samenwerking |Bestanden delen |Yes | |Alle versies |
+| Samenwerking |Distributed File Sharing |Yes | |Alle versies |
 | Samenwerking |SharePoint |Ja* |Alleen ondersteund met lokaal vastgemaakte volumes |Update 2 en hoger |
-| Archivering |Eenvoudige bestands archivering |Ja | |Alle versies |
+| Archivering |Eenvoudige bestands archivering |Yes | |Alle versies |
 | Virtualisatie |Virtuele machines |Ja* |Alleen ondersteund met lokaal vastgemaakte volumes |Update 2 en hoger |
 | Database |SQL |Ja* |Alleen ondersteund met lokaal vastgemaakte volumes |Update 2 en hoger |
 | Videobewaking |Videobewaking |Ja* |Ondersteund wanneer het StorSimple-apparaat alleen aan deze werk belasting is toegewezen |Update 2 en hoger |
@@ -237,7 +236,7 @@ Hier volgt een lijst van de StorSimple-ondersteunde infrastructuur onderdelen.
 
 | Scenario | Workload | Ondersteund | Beperkingen | Versie |
 | --- | --- | --- | --- | --- |
-| Algemeen |ExpressRoute |Ja | |Alle versies |
+| Algemeen |ExpressRoute |Yes | |Alle versies |
 | Algemeen |DataCore FC |Ja* |Ondersteund met DataCore SANsymphony |Alle versies |
 | Algemeen |DFSR |Ja* |Alleen ondersteund met lokaal vastgemaakte volumes |Alle versies |
 | Algemeen |Indexeren |Ja* |Voor gelaagde volumes wordt alleen het indexeren van meta gegevens ondersteund (geen gegevens).<br>Voor lokaal vastgemaakte volumes wordt volledige indexering ondersteund. |Alle versies |
@@ -258,7 +257,7 @@ Hieronder volgt een lijst met andere software die wordt gebruikt met StorSimple 
 Voordat u uw Microsoft Azure StorSimple-oplossing implementeert, wordt u aangeraden de volgende voor waarden en definities te bekijken.
 
 ### <a name="key-terms-and-definitions"></a>Belangrijkste termen en definities
-| Term (acroniem of afkorting) | Beschrijving |
+| Term (acroniem of afkorting) | Description |
 | --- | --- |
 | Access Control Record (ACR) |Een record die is gekoppeld aan een volume op uw Microsoft Azure StorSimple-apparaat dat bepaalt welke hosts er verbinding mee kunnen maken. De bepaling is gebaseerd op de iSCSI Qualified Name (IQN) van de hosts (opgenomen in de ACR) die verbinding maken met uw StorSimple-apparaat. |
 | AES-256 |Een 256-bits Advanced Encryption Standard (AES)-algoritme voor het versleutelen van gegevens tijdens het verplaatsen van en naar de Cloud. |

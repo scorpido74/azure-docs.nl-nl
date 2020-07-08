@@ -16,10 +16,9 @@ ms.date: 03/20/2019
 ms.author: juliako
 ms.reviewer: johndeu
 ms.openlocfilehash: 597839f633ed2b925b86c5f859a0fb2d3b64dd59
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "76773664"
 ---
 # <a name="media-services-operations-rest-api-overview"></a>Overzicht van Media Services bewerkingen REST API 
@@ -58,10 +57,10 @@ De volgende overwegingen zijn van toepassing wanneer u REST gebruikt.
 ## <a name="standard-http-request-headers-supported-by-media-services"></a>Standaard-HTTP-aanvraag headers die worden ondersteund door Media Services
 Voor elke aanroep die u in Media Services maakt, moet u een set vereiste kopteksten opnemen in uw aanvraag en ook een set optionele kopteksten die u mogelijk wilt opnemen. De volgende tabel bevat de vereiste headers:
 
-| Header | Type | Waarde |
+| Koptekst | Type | Waarde |
 | --- | --- | --- |
 | Autorisatie |Drager |Bearer is het enige geaccepteerde autorisatie mechanisme. De waarde moet ook het toegangs token bevatten dat door Azure Active Directory is geleverd. |
-| x-MS-version |Decimal |2,17 (of meest recente versie)|
+| x-ms-version |Decimal |2,17 (of meest recente versie)|
 | DataServiceVersion |Decimal |3.0 |
 | MaxDataServiceVersion |Decimal |3.0 |
 
@@ -72,32 +71,32 @@ Voor elke aanroep die u in Media Services maakt, moet u een set vereiste kopteks
 
 Hier volgt een aantal optionele kopteksten:
 
-| Header | Type | Waarde |
+| Koptekst | Type | Waarde |
 | --- | --- | --- |
-| Date |RFC 1123-datum |Tijds tempel van de aanvraag |
-| Accepteren |Inhoudstype |Het aangevraagde inhouds type voor het antwoord, zoals de volgende:<p> -application/json; odata = verbose<p> -Application/Atom + XML<p> Antwoorden kunnen een ander inhouds type hebben, zoals het ophalen van een blob, waarbij een geslaagd antwoord de BLOB-stream als de payload bevat. |
+| Datum |RFC 1123-datum |Tijds tempel van de aanvraag |
+| Accepteren |Type inhoud |Het aangevraagde inhouds type voor het antwoord, zoals de volgende:<p> -application/json; odata = verbose<p> -Application/Atom + XML<p> Antwoorden kunnen een ander inhouds type hebben, zoals het ophalen van een blob, waarbij een geslaagd antwoord de BLOB-stream als de payload bevat. |
 | Accepteren-coderen |Gzip, verkleinen |GZIP-en deflate-code ring, indien van toepassing. Opmerking: voor grote bronnen kan Media Services deze header negeren en niet-gecomprimeerde gegevens retour neren. |
 | Accept-Language |"en", "ES", enzovoort. |Hiermee geeft u de voorkeurs taal op voor het antwoord. |
 | Accept-Charset |Charset-type like "UTF-8" |De standaard waarde is UTF-8. |
 | X-HTTP-methode |HTTP-methode |Biedt clients of firewalls die geen ondersteuning bieden voor HTTP-methoden zoals PUT of DELETE om deze methoden te gebruiken, via een GET-aanroep. |
-| Content-Type |Inhoudstype |Inhouds type van de aanvraag tekst in PUT-of POST-aanvragen. |
+| Content-Type |Type inhoud |Inhouds type van de aanvraag tekst in PUT-of POST-aanvragen. |
 | client-aanvraag-id |Tekenreeks |Een door een aanroeper gedefinieerde waarde die de opgegeven aanvraag aanduidt. Indien opgegeven, wordt deze waarde opgenomen in het antwoord bericht als een manier om de aanvraag toe te wijzen. <p><p>**Belangrijk**<p>De waarden moeten worden afgetopt op 2096b (2 KB). |
 
 ## <a name="standard-http-response-headers-supported-by-media-services"></a>Standaard-HTTP-antwoord headers die worden ondersteund door Media Services
 Hier volgt een reeks kopteksten die kunnen worden geretourneerd, afhankelijk van de resource die u hebt aangevraagd en de actie die u wilt uitvoeren.
 
-| Header | Type | Waarde |
+| Koptekst | Type | Waarde |
 | --- | --- | --- |
 | aanvraag-id |Tekenreeks |Een unieke id voor de huidige bewerking, gegenereerde service. |
 | client-aanvraag-id |Tekenreeks |Een id die is opgegeven door de aanroeper in de oorspronkelijke aanvraag, indien aanwezig. |
-| Date |RFC 1123-datum |De datum/tijd waarop de aanvraag is verwerkt. |
+| Datum |RFC 1123-datum |De datum/tijd waarop de aanvraag is verwerkt. |
 | Content-Type |Varieert |Het inhouds type van de antwoord tekst. |
 | Content-Encoding |Varieert |Gzip of verkleinen, indien van toepassing. |
 
 ## <a name="standard-http-verbs-supported-by-media-services"></a>Standaard HTTP-termen die worden ondersteund door Media Services
 Hier volgt een volledige lijst met HTTP-termen die kunnen worden gebruikt bij het maken van HTTP-aanvragen:
 
-| Verb | Beschrijving |
+| Verb | Description |
 | --- | --- |
 | GET |Retourneert de huidige waarde van een object. |
 | POST |Hiermee wordt een object gemaakt op basis van de verstrekte gegevens of wordt een opdracht verzonden. |

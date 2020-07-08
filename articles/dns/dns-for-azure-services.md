@@ -16,10 +16,9 @@ ms.workload: infrastructure-services
 ms.date: 09/21/2016
 ms.author: rohink
 ms.openlocfilehash: fa2c1ced6405c967ca33562d6215b304b8507e5a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "76937242"
 ---
 # <a name="how-azure-dns-works-with-other-azure-services"></a>Hoe Azure DNS werkt met andere Azure-Services?
@@ -31,12 +30,12 @@ Azure DNS is een gehoste DNS-beheer-en service voor naam omzetting. U kunt deze 
 
 De volgende tabel geeft een overzicht van de ondersteunde record typen die u voor verschillende Azure-Services kunt gebruiken. Zoals in de tabel wordt weer gegeven, ondersteunt Azure DNS alleen DNS-records voor netwerk bronnen op internet. Azure DNS kan niet worden gebruikt voor naam omzetting van interne, persoonlijke adressen.
 
-| Azure-service | Netwerkinterface | Beschrijving |
+| Azure-service | Netwerkinterface | Description |
 | --- | --- | --- |
 | Azure Application Gateway |[Openbaar IP-adres voor front-end](dns-custom-domain.md#public-ip-address) |U kunt een DNS A-of CNAME-record maken. |
 | Azure Load Balancer |[Openbaar IP-adres voor front-end](dns-custom-domain.md#public-ip-address) |U kunt een DNS A-of CNAME-record maken. Load Balancer kunnen een openbaar IP-adres voor IPv6 zijn dat dynamisch wordt toegewezen. Maak een CNAME-record voor een IPv6-adres. |
 | Azure Traffic Manager |Open bare naam |U kunt een alias record maken die verwijst naar de naam van de trafficmanager.net die is toegewezen aan uw Traffic Manager profiel. Zie [zelf studie: een alias record configureren ter ondersteuning van Apex-domein namen met Traffic Manager](tutorial-alias-tm.md)voor meer informatie. |
-| Azure Cloud Services |[Openbaar IP-adres](dns-custom-domain.md#public-ip-address) |Voor statisch toegewezen IP-adressen kunt u een DNS A-record maken. Voor dynamisch toegewezen IP-adressen moet u een CNAME-record maken die is toegewezen aan de naam van de *cloudapp.net* .|
+| Azure Cloud Services |[Openbare IP](dns-custom-domain.md#public-ip-address) |Voor statisch toegewezen IP-adressen kunt u een DNS A-record maken. Voor dynamisch toegewezen IP-adressen moet u een CNAME-record maken die is toegewezen aan de naam van de *cloudapp.net* .|
 | Azure App Service | [Extern IP-adres](dns-custom-domain.md#app-service-web-apps) |Voor externe IP-adressen kunt u een DNS A-record maken. Als dat niet het geval is, moet u een CNAME-record maken die is toegewezen aan de naam van de azurewebsites.net. Zie [een aangepaste domein naam toewijzen aan een Azure-app](../app-service/app-service-web-tutorial-custom-domain.md)voor meer informatie. |
-| Azure Resource Manager Vm's |[Openbaar IP-adres](dns-custom-domain.md#public-ip-address) |Resource Manager-Vm's kunnen open bare IP-adressen hebben. Een virtuele machine met een openbaar IP-adres kan zich ook achter een load balancer bevindt. U kunt een DNS A-, CNAME-of alias-record voor het open bare adres maken. U kunt deze aangepaste naam gebruiken om het VIP op de load balancer over te slaan. |
-| Klassieke VM's |[Openbaar IP-adres](dns-custom-domain.md#public-ip-address) |Klassieke Vm's die zijn gemaakt met behulp van Power shell of CLI, kunnen worden geconfigureerd met een dynamisch of statisch (gereserveerd) virtueel adres. U kunt respectievelijk een DNS CNAME of een A-record maken. |
+| Azure Resource Manager Vm's |[Openbare IP](dns-custom-domain.md#public-ip-address) |Resource Manager-Vm's kunnen open bare IP-adressen hebben. Een virtuele machine met een openbaar IP-adres kan zich ook achter een load balancer bevindt. U kunt een DNS A-, CNAME-of alias-record voor het open bare adres maken. U kunt deze aangepaste naam gebruiken om het VIP op de load balancer over te slaan. |
+| Klassieke VM's |[Openbare IP](dns-custom-domain.md#public-ip-address) |Klassieke Vm's die zijn gemaakt met behulp van Power shell of CLI, kunnen worden geconfigureerd met een dynamisch of statisch (gereserveerd) virtueel adres. U kunt respectievelijk een DNS CNAME of een A-record maken. |

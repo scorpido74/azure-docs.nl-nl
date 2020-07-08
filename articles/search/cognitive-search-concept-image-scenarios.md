@@ -9,10 +9,9 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
 ms.openlocfilehash: 98054060210f55803d6e2811e1f494fd3ff00e48
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "76838255"
 ---
 # <a name="how-to-process-and-extract-information-from-images-in-ai-enrichment-scenarios"></a>Informatie over het verwerken en extra heren van afbeeldingen in AI-verrijkings scenario's
@@ -29,7 +28,7 @@ Als onderdeel van het kraken van documenten zijn er een nieuwe set indexer confi
 
 U kunt het normaliseren van afbeeldingen niet uitschakelen. Vaardig heden die over installatie kopieën lopen, verwachten genormaliseerde installatie kopieën. Voor het inschakelen van installatie kopie normalisatie voor een Indexeer functie moet een vakkennisset aan die Indexeer functie worden gekoppeld.
 
-| Configuratie parameter | Beschrijving |
+| Configuratie parameter | Description |
 |--------------------|-------------|
 | imageAction   | Stel deze waarde in op geen als er geen actie moet worden ondernomen wanneer Inge sloten afbeeldingen of afbeeldings bestanden worden aangetroffen. <br/>Ingesteld op ' generateNormalizedImages ' om een matrix van genormaliseerde installatie kopieën te genereren als onderdeel van het kraken van documenten.<br/>Ingesteld op ' generateNormalizedImagePerPage ' om een matrix te genereren van genormaliseerde installatie kopieën waarbij voor Pdf's in uw gegevens bron elke pagina wordt weer gegeven in één uitvoer afbeelding.  De functionaliteit is hetzelfde als ' generateNormalizedImages ' voor niet-PDF-bestands typen.<br/>Voor elke optie die niet ' geen ' is, worden de afbeeldingen weer gegeven in het *normalized_images* veld. <br/>De standaard waarde is geen. Deze configuratie is alleen relevant voor BLOB-gegevens bronnen, wanneer ' dataToExtract ' is ingesteld op ' contentAndMetadata '. <br/>Er worden Maxi maal 1000 installatie kopieën geëxtraheerd uit een bepaald document. Als er meer dan 1000 installatie kopieën in een document zijn, wordt de eerste 1000 geëxtraheerd en wordt er een waarschuwing gegenereerd. |
 |  normalizedImageMaxWidth | De maximum breedte (in pixels) voor genormaliseerde afbeeldingen die worden gegenereerd. De standaardwaarde is 2000. De toegestane maximum waarde is 10000. | 
@@ -38,7 +37,7 @@ U kunt het normaliseren van afbeeldingen niet uitschakelen. Vaardig heden die ov
 > [!NOTE]
 > Als u de eigenschap *imageAction* op een andere waarde dan ' geen ' instelt, kunt u de eigenschap *parsingMode* niet instellen op een andere waarde dan default.  U kunt slechts een van deze twee eigenschappen instellen op een niet-standaard waarde in de configuratie van de Indexeer functie.
 
-Stel de **parsingMode** para meter parsingMode `json` in op (om elke BLOB als één document te indexeren `jsonArray` ) of (als uw blobs JSON-matrices bevatten en u wilt dat elk element van een matrix als een afzonderlijk document wordt behandeld).
+Stel de para meter **parsingMode** in op `json` (om elke BLOB als één document te indexeren) of `jsonArray` (als uw blobs JSON-matrices bevatten en u wilt dat elk element van een matrix als een afzonderlijk document wordt behandeld).
 
 De standaard waarde van 2000 pixels voor de genormaliseerde afbeeldingen maximale breedte en hoogte is gebaseerd op de maximale grootte die wordt ondersteund door de [OCR-vaardigheid](cognitive-search-skill-ocr.md) en de vaardigheid van de [afbeeldings analyse](cognitive-search-skill-image-analysis.md). De [OCR-vaardigheid](cognitive-search-skill-ocr.md) ondersteunt een maximale breedte en hoogte van 4200 voor niet-Engelse talen en 10000 voor Engels.  Als u de maximum limiet verhoogt, kan de verwerking op grotere afbeeldingen mislukken, afhankelijk van de definitie van uw vaardig heden en de taal van de documenten. 
 
@@ -60,9 +59,9 @@ U geeft de imageAction op in de definitie van de [Indexeer functie](https://docs
 
 Wanneer de *imageAction* is ingesteld op een andere waarde dan ' geen ', bevat het veld nieuwe *normalized_images* een matrix met installatie kopieën. Elke afbeelding is een complex type met de volgende leden:
 
-| Onderdeel van installatie kopie       | Beschrijving                             |
+| Onderdeel van installatie kopie       | Description                             |
 |--------------------|-----------------------------------------|
-| data               | BASE64-gecodeerde teken reeks van de genormaliseerde afbeelding in JPEG-indeling.   |
+| gegevens               | BASE64-gecodeerde teken reeks van de genormaliseerde afbeelding in JPEG-indeling.   |
 | breedte              | Breedte van de genormaliseerde afbeelding in pixels. |
 | hoogte             | De hoogte van de genormaliseerde afbeelding in pixels. |
 | originalWidth      | De oorspronkelijke breedte van de afbeelding vóór normalisatie. |
@@ -91,13 +90,13 @@ Wanneer de *imageAction* is ingesteld op een andere waarde dan ' geen ', bevat h
 
 Er zijn twee ingebouwde cognitieve vaardig heden die afbeeldingen als invoer maken: [OCR](cognitive-search-skill-ocr.md) en [afbeeldings analyse](cognitive-search-skill-image-analysis.md). 
 
-Momenteel werken deze vaardig heden alleen met installatie kopieën die zijn gegenereerd op basis van de stap voor het kraken van het document. Als zodanig is de enige invoer die wordt `"/document/normalized_images"`ondersteund.
+Momenteel werken deze vaardig heden alleen met installatie kopieën die zijn gegenereerd op basis van de stap voor het kraken van het document. Als zodanig is de enige invoer die wordt ondersteund `"/document/normalized_images"` .
 
 ### <a name="image-analysis-skill"></a>Vaardigheid van afbeeldings analyse
 
 De [Kwalificatie analyse van installatie kopieën](cognitive-search-skill-image-analysis.md) extraheert een uitgebreide set visuele functies op basis van de inhoud van de installatie kopie. U kunt bijvoorbeeld een bijschrift genereren op basis van een afbeelding, tags genereren of beroemdheden en bezienswaardigheden identificeren.
 
-### <a name="ocr-skill"></a>OCR-vaardigheid
+### <a name="ocr-skill"></a>Vaardigheid OCR
 
 De [OCR-vaardigheid](cognitive-search-skill-ocr.md) extraheert tekst uit afbeeldings bestanden zoals jpgs, PNGs en bitmaps. Het kan tekst ophalen en indelings informatie. De lay-outinformatie voorziet in omsluitende vakken voor elk van de geïdentificeerde teken reeksen.
 
@@ -106,7 +105,7 @@ De [OCR-vaardigheid](cognitive-search-skill-ocr.md) extraheert tekst uit afbeeld
 Een veelvoorkomend scenario bestaat uit het maken van een enkele teken reeks met alle bestands inhoud, tekst-en afbeeldings oorsprong, door de volgende stappen uit te voeren:  
 
 1. [Uitpakken normalized_images](#get-normalized-images)
-1. De OCR-vaardigheid uitvoeren `"/document/normalized_images"` met als invoer
+1. De OCR-vaardigheid uitvoeren met `"/document/normalized_images"` als invoer
 1. De tekst weergave van deze afbeeldingen samen voegen met de onbewerkte tekst uit het bestand. U kunt de [tekst samenvoegings](cognitive-search-skill-textmerger.md) vaardigheid gebruiken om beide tekst segmenten samen te voegen tot één grote teken reeks.
 
 In het volgende voor beeld wordt er een *merged_text* veld gemaakt met daarin de tekstuele inhoud van uw document. Het bevat ook de OCRed-tekst van elk van de Inge sloten afbeeldingen. 
@@ -213,10 +212,10 @@ Als helper moet u het volgende algoritme gebruiken als u genormaliseerde coördi
         }
 ```
 
-## <a name="see-also"></a>Zie ook
+## <a name="see-also"></a>Zie tevens
 + [Indexeer functie maken (REST)](https://docs.microsoft.com/rest/api/searchservice/create-indexer)
 + [Vaardigheid van afbeeldings analyse](cognitive-search-skill-image-analysis.md)
-+ [OCR-vaardigheid](cognitive-search-skill-ocr.md)
++ [Vaardigheid OCR](cognitive-search-skill-ocr.md)
 + [Tekst samenvoegings vaardigheid](cognitive-search-skill-textmerger.md)
 + [Een vaardig heden definiëren](cognitive-search-defining-skillset.md)
 + [Verrijkte velden toewijzen](cognitive-search-output-field-mapping.md)

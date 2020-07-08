@@ -7,15 +7,14 @@ ms.date: 03/29/2018
 ms.author: dekapur
 ms.custom: sfrev
 ms.openlocfilehash: 19343d370547cb5457f6bed70a8465187ff27102
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "76988393"
 ---
 # <a name="run-a-service-as-a-group-managed-service-account"></a>Een service uitvoeren als door een groep beheerd serviceaccount
 
-Op een zelfstandige Windows Server-cluster kunt u een service uitvoeren als een door een *groep beheerd service account* (gMSA) met behulp van een *runas* -beleid.  Service Fabric toepassingen worden standaard uitgevoerd onder het account waaronder het `Fabric.exe` proces wordt uitgevoerd. Door toepassingen onder verschillende accounts uit te voeren, zelfs in een gedeelde gehoste omgeving, zijn ze beter te beveiligen tegen elkaar. Als u een gMSA gebruikt, is er geen wacht woord of versleuteld wacht woord opgeslagen in het toepassings manifest.  U kunt ook een service uitvoeren als een [Active Directory gebruiker of groep](service-fabric-run-service-as-ad-user-or-group.md).
+Op een zelfstandige Windows Server-cluster kunt u een service uitvoeren als een door een *groep beheerd service account* (gMSA) met behulp van een *runas* -beleid.  Service Fabric toepassingen worden standaard uitgevoerd onder het account `Fabric.exe` waaronder het proces wordt uitgevoerd. Door toepassingen onder verschillende accounts uit te voeren, zelfs in een gedeelde gehoste omgeving, zijn ze beter te beveiligen tegen elkaar. Als u een gMSA gebruikt, is er geen wacht woord of versleuteld wacht woord opgeslagen in het toepassings manifest.  U kunt ook een service uitvoeren als een [Active Directory gebruiker of groep](service-fabric-run-service-as-ad-user-or-group.md).
 
 In het volgende voor beeld ziet u hoe u een gMSA-account met de naam *SVC-test $* maakt, hoe u dat beheerde service account implementeert voor de cluster knooppunten en hoe u de User Principal configureert.
 
@@ -27,13 +26,13 @@ Vereisten:
 - Het domein heeft een KDS-basis sleutel nodig.
 - Het domein moet ten minste één Windows Server 2012 (of R2)-domein controller bevatten.
 
-1. Laat een Active Directory domein beheerder een door een groep beheerd service account maken met `New-ADServiceAccount` behulp van de cmdlet `PrincipalsAllowedToRetrieveManagedPassword` en zorg ervoor dat het alle service Fabric cluster knooppunten bevat. `AccountName`, `DnsHostName`en `ServicePrincipalName` moeten uniek zijn.
+1. Laat een Active Directory domein beheerder een door een groep beheerd service account maken met behulp van de `New-ADServiceAccount` cmdlet en zorg ervoor dat het `PrincipalsAllowedToRetrieveManagedPassword` alle service Fabric cluster knooppunten bevat. `AccountName`, `DnsHostName` en `ServicePrincipalName` moeten uniek zijn.
 
     ```powershell
     New-ADServiceAccount -name svc-Test$ -DnsHostName svc-test.contoso.com  -ServicePrincipalNames http/svc-test.contoso.com -PrincipalsAllowedToRetrieveManagedPassword SfNode0$,SfNode1$,SfNode2$,SfNode3$,SfNode4$
     ```
 
-2. Installeer en test de gMSA op elk van de Service Fabric cluster `SfNode0$,SfNode1$,SfNode2$,SfNode3$,SfNode4$`knooppunten (bijvoorbeeld).
+2. Installeer en test de gMSA op elk van de Service Fabric cluster knooppunten (bijvoorbeeld `SfNode0$,SfNode1$,SfNode2$,SfNode3$,SfNode4$` ).
     
     ```powershell
     Add-WindowsFeature RSAT-AD-PowerShell

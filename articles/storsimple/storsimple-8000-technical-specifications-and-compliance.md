@@ -15,10 +15,9 @@ ms.workload: TBD
 ms.date: 06/02/2017
 ms.author: alkohli
 ms.openlocfilehash: 061194422a8c1bc449dbef0c4f04bb8e1db10dea
-ms.sourcegitcommit: fad3aaac5af8c1b3f2ec26f75a8f06e8692c94ed
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/27/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "68965293"
 ---
 # <a name="technical-specifications-and-compliance-for-the-storsimple-device"></a>Technische specificaties en naleving voor het StorSimple-apparaat
@@ -38,12 +37,12 @@ De EBOD Enclosure maakt gebruik van een 580 W PCM en de primaire behuizing maakt
 | Specificatie | 580 W PCM (EBOD) | 764 W PCM (primair) |
 | --- | --- | --- |
 | Maximale uitvoer kracht |580 W |764 |
-| Frequency |50/60 Hz |50/60 Hz |
+| Frequentie |50/60 Hz |50/60 Hz |
 | Selectie van voltage bereik |Automatisch variërend: 90 – 264 V AC, 47/63 Hz |Automatisch variërend: 90-264 V AC, 47/63 Hz |
 | Maximum inactieve stroom |20 A |20 A |
 | Correctie van de energie factor |>95% nominale invoer spanning |>95% nominale invoer spanning |
 | Harmonischen |Voldoet aan EN61000-3-2 |Voldoet aan EN61000-3-2 |
-| Uitvoer |5 v stand \@ -by-spanning 2,0 A |5 v stand \@ -by-spanning 2,7 A |
+| Uitvoer |5 v stand-by-spanning \@ 2,0 A |5 v stand-by-spanning \@ 2,7 A |
 | + 5V \@ 42 A |+ 5V \@ 40 A | |
 | + 12V \@ 38 A |+ 12V \@ 38 A | |
 | Hot pluggable |Ja |Ja |

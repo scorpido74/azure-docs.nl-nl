@@ -12,10 +12,9 @@ ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: damendo
 ms.openlocfilehash: 1f17463125cead64bd58a2d07e53eee4d3cfcd70
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "76840805"
 ---
 # <a name="introduction-to-variable-packet-capture-in-azure-network-watcher"></a>Inleiding tot het vastleggen van variabele pakketten in azure Network Watcher
@@ -25,7 +24,7 @@ Met Network Watcher-functie voor het vastleggen van pakketten kunt u pakket opna
 Pakket opname is een extensie voor virtuele machines die extern wordt gestart via Network Watcher. Deze mogelijkheid vereenvoudigt de belasting van het hand matig uitvoeren van een pakket opname op de gewenste virtuele machine, waardoor kost bare tijd wordt bespaard. Pakket opname kan worden geactiveerd via de portal, Power shell, CLI of REST API. Een voor beeld van hoe pakket opname kan worden geactiveerd, is met waarschuwingen voor virtuele machines. Er worden filters voor de opname sessie gegeven om ervoor te zorgen dat u verkeer vastlegt dat u wilt bewaken. Filters zijn gebaseerd op 5-tuple (protocol, lokaal IP-adres, extern IP-adres, lokale poort en externe poort). De vastgelegde gegevens worden opgeslagen op de lokale schijf of een opslag-blob. Er geldt een limiet van 10 pakket opname sessies per regio per abonnement. Deze limiet geldt alleen voor de sessies en is niet van toepassing op de opgeslagen pakket opname bestanden lokaal op de virtuele machine of in een opslag account.
 
 > [!IMPORTANT]
-> Voor pakket opname is een extensie `AzureNetworkWatcherExtension`van een virtuele machine vereist. Voor het installeren van de uitbrei ding op een Windows-VM gaat u naar [azure Network Watcher agent-extensie voor virtuele machines voor Windows](../virtual-machines/windows/extensions-nwa.md) en voor Linux VM gaat u naar de [Azure Network Watcher agent-extensie voor virtuele machines voor Linux](../virtual-machines/linux/extensions-nwa.md).
+> Voor pakket opname is een extensie van een virtuele machine vereist `AzureNetworkWatcherExtension` . Voor het installeren van de uitbrei ding op een Windows-VM gaat u naar [azure Network Watcher agent-extensie voor virtuele machines voor Windows](../virtual-machines/windows/extensions-nwa.md) en voor Linux VM gaat u naar de [Azure Network Watcher agent-extensie voor virtuele machines voor Linux](../virtual-machines/linux/extensions-nwa.md).
 
 De volgende opties zijn beschikbaar voor een sessie voor het vastleggen van pakketten, zodat u de informatie die u alleen naar de gewenste informatie vastlegt, kunt verminderen:
 
@@ -41,7 +40,7 @@ De volgende opties zijn beschikbaar voor een sessie voor het vastleggen van pakk
 
 |Eigenschap|Beschrijving|
 |---|---|
-|**Protocolsubstatus** | Het protocol dat moet worden gefilterd voor de pakket opname. De beschik bare waarden zijn TCP, UDP en alle.|
+|**Protocol** | Het protocol dat moet worden gefilterd voor de pakket opname. De beschik bare waarden zijn TCP, UDP en alle.|
 |**Lokaal IP-adres** | Met deze waarde wordt de pakket opname gefilterd op pakketten waarbij het lokale IP-adres overeenkomt met deze filter waarde.|
 |**Lokale poort** | Met deze waarde wordt de pakket opname gefilterd op pakketten waarbij de lokale poort overeenkomt met deze filter waarde.|
 |**Extern IP-adres** | Met deze waarde wordt de pakket opname gefilterd op pakketten waarbij het externe IP-adres overeenkomt met deze filter waarde.|

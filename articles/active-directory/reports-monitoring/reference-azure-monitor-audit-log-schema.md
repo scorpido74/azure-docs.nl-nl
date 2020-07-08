@@ -18,10 +18,9 @@ ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: d9f58b213e50a021651f35112a48d8f74ae59571
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "68987946"
 ---
 # <a name="interpret-the-azure-ad-audit-logs-schema-in-azure-monitor-preview"></a>Het Azure AD audit logs-schema interpreteren in Azure Monitor (preview)
@@ -167,11 +166,11 @@ In dit artikel wordt het schema voor het audit logboek voor Azure Active Directo
 
 <br>
 
-| Naam van eigenschap | Beschrijving |
+| Naam van eigenschap | Description |
 |---------------|-------------|
 | AuditEventCategory | Het type controle gebeurtenis. Dit kan *gebruikers beheer*, *toepassings beheer*of een ander type zijn.|
 | Identiteits type | Het type kan *toepassing* of *gebruiker*zijn. |
-| Type bewerking | Het type kan worden *toegevoegd*, *bijgewerkt*, *verwijderd*. of *andere*. |
+| Bewerkings type | Het type kan worden *toegevoegd*, *bijgewerkt*, *verwijderd*. of *andere*. |
 | Doel resource type | Hiermee geeft u het doel resource type op waarop de bewerking is uitgevoerd. Het type kan *toepassing*, *gebruiker*, *rol*, *beleid* zijn | 
 | Doel resource naam | De naam van de doel resource. Dit kan een toepassings naam, een rolnaam, een user principal name of een Service Principal Name zijn. |
 | additionalTargets | Een lijst met aanvullende eigenschappen voor specifieke bewerkingen. Voor een update bewerking worden bijvoorbeeld de oude waarden en de nieuwe waarden weer gegeven onder *targetUpdatedProperties*. | 
