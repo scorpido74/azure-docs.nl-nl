@@ -4,10 +4,10 @@ description: In dit artikel vindt u informatie over het bijhouden van de kosten 
 ms.topic: article
 ms.date: 06/26/2020
 ms.openlocfilehash: b8bf8b1db82983cd7e1ecc5a45bf2d47a2787cc2
-ms.sourcegitcommit: 1d9f7368fa3dadedcc133e175e5a4ede003a8413
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/27/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85482765"
 ---
 # <a name="track-costs-associated-with-a-lab-in-azure-devtest-labs"></a>Kosten bijhouden die zijn gekoppeld aan een lab in Azure DevTest Labs
@@ -18,7 +18,7 @@ In deze sectie leert u hoe u het **maandelijkse geschatte kosten trend** diagram
 
 Voer de volgende stappen uit om het diagram met maandelijkse geschatte kosten trend weer te geven: 
 
-1. Meld u aan bij de [Azure-portal](https://portal.azure.com).
+1. Meld u aan bij [Azure Portal](https://portal.azure.com).
 2. Selecteer **alle services**en selecteer vervolgens **DevTest Labs** in de lijst.
 3. Selecteer in de lijst met Labs uw Lab.  
 4. Selecteer **configuratie en beleid** in het menu links.  
@@ -74,7 +74,7 @@ Met DevTest Labs kunt u de kosten in uw Lab beter beheren door een bestedings do
 ## <a name="view-cost-by-resource"></a>Kosten per resource weer geven 
 Met de functie maandelijkse kosten trend in Labs kunt u zien hoeveel u hebt besteed in de huidige kalender maand. Het toont ook de projectie van de besteding tot het einde van de maand, op basis van uw uitgaven in de afgelopen zeven dagen. Om u te helpen begrijpen waarom de uitgaven in het lab in de loop van een vroeg stadium voldoen aan drempel waarden, kunt u de functie **kosten per resource** gebruiken waarmee u de maand tot heden **per resource** in een tabel weergeeft.
 
-1. Meld u aan bij de [Azure-portal](https://portal.azure.com).
+1. Meld u aan bij [Azure Portal](https://portal.azure.com).
 2. Selecteer **alle services**en selecteer vervolgens **DevTest Labs** in de lijst.
 3. Selecteer in de lijst met Labs het gewenste Lab.  
 4. Selecteer **configuratie en beleid** in het menu links.

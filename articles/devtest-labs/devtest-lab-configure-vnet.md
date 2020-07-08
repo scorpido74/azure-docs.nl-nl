@@ -4,10 +4,10 @@ description: Meer informatie over het configureren van een bestaand virtueel net
 ms.topic: article
 ms.date: 06/26/2020
 ms.openlocfilehash: 0819527cfc2a9dfd4e93226542acb7cb0c6d7273
-ms.sourcegitcommit: 1d9f7368fa3dadedcc133e175e5a4ede003a8413
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/27/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85482646"
 ---
 # <a name="configure-a-virtual-network-in-azure-devtest-labs"></a>Een virtueel netwerk configureren in Azure DevTest Labs
@@ -21,7 +21,7 @@ In dit artikel wordt uitgelegd hoe u uw bestaande virtuele netwerk kunt toevoege
 ## <a name="configure-a-virtual-network-for-a-lab-using-the-azure-portal"></a>Een virtueel netwerk voor een lab configureren met behulp van de Azure Portal
 De volgende stappen helpen u bij het toevoegen van een bestaand virtueel netwerk (en subnet) aan een Lab zodat het kan worden gebruikt bij het maken van een virtuele machine in hetzelfde lab. 
 
-1. Meld u aan bij de [Azure-portal](https://go.microsoft.com/fwlink/p/?LinkID=525040).
+1. Meld u aan bij [Azure Portal](https://go.microsoft.com/fwlink/p/?LinkID=525040).
 1. Selecteer **alle services**en selecteer vervolgens **DevTest Labs** in de lijst.
 1. Selecteer in de lijst met Labs het gewenste Lab. 
 1. Selecteer **configuratie en beleid**in het hoofd venster van het lab.

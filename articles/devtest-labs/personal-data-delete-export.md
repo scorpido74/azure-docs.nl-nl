@@ -4,10 +4,10 @@ description: Meer informatie over het verwijderen en exporteren van persoonlijke
 ms.topic: article
 ms.date: 06/26/2020
 ms.openlocfilehash: 2c44b2f3aa6f2dfad18ed53804842a5dad8bd94a
-ms.sourcegitcommit: 1d9f7368fa3dadedcc133e175e5a4ede003a8413
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/27/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85483513"
 ---
 # <a name="export-or-delete-personal-data-from-azure-devtest-labs"></a>Persoonlijke gegevens exporteren of verwijderen uit Azure DevTest Labs
@@ -151,7 +151,7 @@ Laten we nu eens kijken naar de geëxporteerde gegevens. Zoals eerder is vermeld
 
 De **virtualmachines.csv** bevat de volgende gegevens kolommen:
 
-| Kolomnaam | Beschrijving |
+| Kolomnaam | Description |
 | ----------- | ----------- | 
 | SubscriptionId | De abonnements-id waarin het lab zich bevindt. |
 | LabUId | De unieke GUID-id voor het lab. |
@@ -160,7 +160,7 @@ De **virtualmachines.csv** bevat de volgende gegevens kolommen:
 | ResourceGroupName | De naam van de resource groep die de virtuele machine bevat | 
 | ResourceId | De volledig gekwalificeerde Resource-ID voor de virtuele machine. |
 | ResourceUId | GUID voor de virtuele machine |
-| Naam | Naam van de virtuele machine. |
+| Name | Naam van de virtuele machine. |
 | CreatedTime | De datum/tijd waarop de virtuele machine is gemaakt. |
 | DeletedDate | De datum/tijd waarop de virtuele machine is verwijderd. Als het leeg is, is het verwijderen nog niet uitgevoerd. |
 | ResourceOwner | Eigenaar van de virtuele machine. Als de waarde leeg is, is het een claim bare VM of is deze gemaakt door een service-principal. |
@@ -179,7 +179,7 @@ De **virtualmachines.csv** bevat de volgende gegevens kolommen:
 
 De gegevens kolommen in **disks.csv** worden hieronder weer gegeven:
 
-| Kolomnaam | Beschrijving | 
+| Kolomnaam | Description | 
 | ----------- | ----------- | 
 | SubscriptionId | ID van het abonnement dat het Lab bevat |
 | LabUId | GUID voor het lab |
@@ -188,7 +188,7 @@ De gegevens kolommen in **disks.csv** worden hieronder weer gegeven:
 | ResourceGroupName | Naam van de resource groep die het Lab bevat | 
 | ResourceId | De volledig gekwalificeerde Resource-ID voor de virtuele machine. |
 | ResourceUId | GUID voor de virtuele machine |
- |Naam | De naam van de gekoppelde schijf |
+ |Name | De naam van de gekoppelde schijf |
 | CreatedTime |De datum en tijd waarop de gegevens schijf is gemaakt. |
 | DeletedDate | De datum en tijd waarop de gegevens schijf is verwijderd. |
 | ResourceStatus | De status van de resource. Actief, als de resource bestaat. Inactief na verwijdering. |

@@ -4,10 +4,10 @@ description: Meer informatie over het instellen van het beleid voor automatisch 
 ms.topic: article
 ms.date: 06/26/2020
 ms.openlocfilehash: a865d178bd4bcf9715cefc7c5a01b31a6d6a9435
-ms.sourcegitcommit: 1d9f7368fa3dadedcc133e175e5a4ede003a8413
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/27/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85482731"
 ---
 # <a name="configure-autoshutdown-for-lab-and-compute-virtual-machines-in-azure-devtest-labs"></a>Automatisch afsluiten configureren voor Lab-en Compute-virtuele machines in Azure DevTest Labs
@@ -31,7 +31,7 @@ Het beleid voor automatisch afsluiten helpt Lab-afval te minimaliseren door de t
 
 Voer de volgende stappen uit om de beleids regels voor een Lab weer te geven (en te wijzigen):
 
-1. Meld u aan bij de [Azure-portal](https://portal.azure.com).
+1. Meld u aan bij [Azure Portal](https://portal.azure.com).
 2. Selecteer **alle services**en selecteer vervolgens **DevTest Labs** in de lijst.
 3. Selecteer in de lijst met Labs het gewenste Lab.   
 4. Selecteer **configuratie en beleid**.

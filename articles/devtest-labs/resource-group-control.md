@@ -4,10 +4,10 @@ description: Meer informatie over het opgeven van een resource groep voor Vm's i
 ms.topic: article
 ms.date: 06/26/2020
 ms.openlocfilehash: 7b72048405d3025ca21b324b6ad3168dd0c9ac95
-ms.sourcegitcommit: 1d9f7368fa3dadedcc133e175e5a4ede003a8413
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/27/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85483360"
 ---
 # <a name="specify-a-resource-group-for-lab-virtual-machines-in-azure-devtest-labs"></a>Geef een resource groep op voor Lab-virtuele machines in Azure DevTest Labs
@@ -27,7 +27,7 @@ Met deze functie kunt u een script gebruiken om een nieuwe of bestaande resource
 ## <a name="use-azure-portal"></a>Azure Portal gebruiken
 Volg deze stappen om een resource groep op te geven voor alle Vm's die in het lab zijn gemaakt. 
 
-1. Meld u aan bij de [Azure-portal](https://portal.azure.com).
+1. Meld u aan bij [Azure Portal](https://portal.azure.com).
 2. Selecteer **alle services** in het navigatie menu links. 
 3. Selecteer **DevTest Labs** uit de lijst.
 4. Selecteer in de lijst met Labs uw **Lab**.  

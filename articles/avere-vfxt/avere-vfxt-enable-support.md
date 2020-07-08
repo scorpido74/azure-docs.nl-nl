@@ -7,10 +7,10 @@ ms.topic: how-to
 ms.date: 12/14/2019
 ms.author: rohogue
 ms.openlocfilehash: fc86cca1b73eb58a038a0a6da109e86b995709c9
-ms.sourcegitcommit: 374e47efb65f0ae510ad6c24a82e8abb5b57029e
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85505474"
 ---
 # <a name="enable-support-uploads"></a>Ondersteuningsuploads inschakelen
@@ -27,18 +27,18 @@ Voer de volgende stappen uit in het configuratie scherm van AVERE om ondersteuni
    ![Scherm opname van het configuratie scherm van AVERE en het pop-upvenster met de knop bevestigen om het privacybeleid te accepteren](media/avere-vfxt-privacy-policy.png)
 
 1. Open op de pagina ondersteunings configuratie de sectie **klant gegevens** door te klikken op de drie hoek aan de linkerkant.
-1. Klik op de knop **Upload gegevens opnieuw valideren** .
+1. Klik op de knop **Uploadgegevens opnieuw valideren**.
 1. Stel de ondersteunings naam van het cluster in de **unieke naam**van het cluster in. Zorg ervoor dat deze naam uw cluster op unieke wijze identificeert ter ondersteuning van mede werkers.
-1. Schakel de selectie vakjes in voor **Statistieken bewaking**, **algemene informatie uploaden**en **informatie over het uploaden van crashes**.
-1. Klik op **verzenden**.
+1. Schakel de selectievakjes in voor **Controle van statistieken**, **Upload van algemene gegevens** en **Upload van crashgegevens**.
+1. Klik op **Submit**
 
-   ![Scherm afbeelding met de sectie met voltooide klant gegevens van de pagina met ondersteunings instellingen](media/avere-vfxt-support-info.png)
+   ![Schermafbeelding met ingevulde sectie klantgegevens van de pagina instellingen voor ondersteuning](media/avere-vfxt-support-info.png)
 
-1. Klik op het drie hoekje links van **beveiligde proactieve ondersteuning (SPS)** om de sectie uit te vouwen.
-1. Schakel het selectie vakje in voor het inschakelen van de **SPS-koppeling**.
-1. Klik op **verzenden**.
+1. Klik op de driehoek links naast **Secure Proactive Support (SPS)** om de sectie uit te vouwen.
+1. Schakel het selectievakje **SPS Link inschakelen** in.
+1. Klik op **Submit**
 
-   ![Scherm afbeelding met de sectie beveiligde proactieve ondersteuning op de pagina ondersteunings instellingen](media/avere-vfxt-support-sps.png)
+   ![Schermafbeelding met ingevulde sectie Secure Proactive Support op de pagina met ondersteuningsinstellingen](media/avere-vfxt-support-sps.png)
 
 ## <a name="next-steps"></a>Volgende stappen
 

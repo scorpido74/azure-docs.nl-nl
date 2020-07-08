@@ -4,10 +4,10 @@ description: Meer informatie over het toevoegen van een artefact opslagplaats aa
 ms.topic: article
 ms.date: 06/26/2020
 ms.openlocfilehash: 0c2c1b5f93e2b4dcaae818b3f529dc16440c3c75
-ms.sourcegitcommit: 1d9f7368fa3dadedcc133e175e5a4ede003a8413
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/27/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85483904"
 ---
 # <a name="add-an-artifact-repository-to-your-lab-in-devtest-labs"></a>Een opslag plaats voor artefacten toevoegen aan uw Lab in DevTest Labs
@@ -55,7 +55,7 @@ Als u een opslag plaats aan uw Lab wilt toevoegen, moet u eerst belang rijke inf
 ## <a name="use-azure-portal"></a>Azure Portal gebruiken
 In deze sectie worden de stappen beschreven voor het toevoegen van een artefact opslagplaats aan een lab in de Azure Portal.
 
-1. Meld u aan bij de [Azure-portal](https://portal.azure.com).
+1. Meld u aan bij [Azure Portal](https://portal.azure.com).
 2. Selecteer **meer services**en selecteer vervolgens **DevTest Labs** in de lijst met Services.
 3. Selecteer in de lijst met Labs uw Lab.
 4. Selecteer **configuratie en beleid** in het menu links.
@@ -360,7 +360,7 @@ if ($ArtifactRepositoryName -eq $null){
 
 ### <a name="powershell-commands-used-in-the-script"></a>Power shell-opdrachten die in het script worden gebruikt
 
-| PowerShell-opdracht | Opmerkingen |
+| PowerShell-opdracht | Notities |
 | ------------------ | ----- |
 | [Get-AzResource](/powershell/module/az.resources/get-azresource) | Deze opdracht wordt gebruikt om details over het lab, zoals de locatie ervan, op te halen. |
 | [New-AzResource](/powershell/module/az.resources/new-azresource) | Er is geen specifieke opdracht voor het toevoegen van artefact opslagplaatsen. De algemene cmdlet [New-AzResource](/powershell/module/az.resources/new-azresource) voert de taak uit. Voor deze cmdlet **moet de waarde** **ResourceID** of de combi natie resourcenaam en **resource** type zijn ingesteld om te weten welk soort bron moet worden gemaakt. Dit voorbeeld script maakt gebruik van de resource naam en het resource type paar. <br/><br/>U ziet dat u de opslag plaats voor artefacten op dezelfde locatie en onder dezelfde resource groep maakt als het lab.|

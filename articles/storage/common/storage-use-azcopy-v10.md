@@ -1,6 +1,6 @@
 ---
 title: Gegevens kopiëren of verplaatsen naar Azure Storage met behulp van AzCopy V10 toevoegen | Microsoft Docs
-description: AzCopy is een opdracht regel programma dat u kunt gebruiken om gegevens naar, van of tussen opslag accounts te kopiëren. Dit artikel helpt u bij het downloaden van AzCopy, het maken van een verbinding met uw opslag account en het overdragen van bestanden.
+description: AzCopy is een opdracht regel programma dat u kunt gebruiken om gegevens naar, van of tussen opslag accounts te kopiëren. Dit artikel helpt u bij het downloaden van AzCopy, het verbinden met uw opslag account en het overdragen van bestanden.
 author: normesta
 ms.service: storage
 ms.topic: how-to
@@ -8,15 +8,15 @@ ms.date: 10/23/2019
 ms.author: normesta
 ms.subservice: common
 ms.openlocfilehash: f0d957c05aded6641377b47c3fe383c141480b30
-ms.sourcegitcommit: 374e47efb65f0ae510ad6c24a82e8abb5b57029e
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85504471"
 ---
 # <a name="get-started-with-azcopy"></a>Aan de slag met AzCopy
 
-AzCopy is een opdracht regel programma dat u kunt gebruiken voor het kopiëren van blobs of bestanden naar of van een opslag account. Dit artikel helpt u bij het downloaden van AzCopy, het maken van een verbinding met uw opslag account en het overdragen van bestanden.
+AzCopy is een opdrachtregelprogramma dat u kunt gebruiken om blobs of bestanden vanuit of naar een opslagaccount te kopiëren. Dit artikel helpt u bij het downloaden van AzCopy, het verbinden met uw opslag account en het overdragen van bestanden.
 
 > [!NOTE]
 > AzCopy **V10 toevoegen** is de momenteel ondersteunde versie van AzCopy.
@@ -42,7 +42,7 @@ Deze bestanden worden gecomprimeerd als een zip-bestand (Windows en Mac) of een 
 
 ## <a name="run-azcopy"></a>AzCopy uitvoeren
 
-Voor het gemak kunt u de maplocatie van het uitvoer bare bestand AzCopy toevoegen aan het systeempad om gebruiks gemak te gebruiken. Op die manier kunt u typen `azcopy` vanuit een wille keurige map op uw systeem.
+Voor het gemak kunt u de maplocatie van het uitvoerbare AzCopy-bestand toevoegen aan het systeempad. Op die manier kunt u typen `azcopy` vanuit een wille keurige map op uw systeem.
 
 Als u ervoor kiest om de AzCopy-map niet aan uw pad toe te voegen, moet u de mappen wijzigen op de locatie van het uitvoer bare AzCopy-bestand en-type `azcopy` of `.\azcopy` in Windows Power shell-opdracht prompts.
 

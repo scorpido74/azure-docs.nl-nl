@@ -4,10 +4,10 @@ description: Meer informatie over het toevoegen van een GitHub-of Azure DevOps S
 ms.topic: article
 ms.date: 06/26/2020
 ms.openlocfilehash: 225aae5e0a017b711f29a47829b06f8bb7a6a8ee
-ms.sourcegitcommit: 1d9f7368fa3dadedcc133e175e5a4ede003a8413
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/27/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85483139"
 ---
 # <a name="add-a-git-repository-to-store-custom-artifacts-and-resource-manager-templates"></a>Een Git-opslag plaats toevoegen voor het opslaan van aangepaste artefacten en Resource Manager-sjablonen
@@ -60,7 +60,7 @@ Als u een opslag plaats aan uw Lab wilt toevoegen, moet u eerst belang rijke inf
 10. Ga door naar de sectie [uw Lab verbinden met de opslag plaats](#connect-your-lab-to-the-repository) .
 
 ## <a name="connect-your-lab-to-the-repository"></a>Uw Lab verbinden met de opslag plaats
-1. Meld u aan bij de [Azure-portal](https://go.microsoft.com/fwlink/p/?LinkID=525040).
+1. Meld u aan bij [Azure Portal](https://go.microsoft.com/fwlink/p/?LinkID=525040).
 2. Selecteer **meer services**en selecteer vervolgens **DevTest Labs** in de lijst met Services.
 3. Selecteer in de lijst met Labs uw Lab. 
 4. Selecteer **configuratie en beleid**  >  **opslag**  >  **plaatsen + toevoegen**.

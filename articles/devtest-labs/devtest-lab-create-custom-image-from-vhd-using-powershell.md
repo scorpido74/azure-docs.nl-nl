@@ -4,10 +4,10 @@ description: Het maken van een aangepaste installatie kopie in Azure DevTest Lab
 ms.topic: article
 ms.date: 06/26/2020
 ms.openlocfilehash: 2ae2a6b6b2f904915a51b94ad931d6c97996d27b
-ms.sourcegitcommit: 1d9f7368fa3dadedcc133e175e5a4ede003a8413
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/27/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85483989"
 ---
 # <a name="create-a-custom-image-from-a-vhd-file-using-powershell"></a>Een aangepaste installatie kopie maken van een VHD-bestand met behulp van Power shell

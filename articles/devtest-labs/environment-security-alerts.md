@@ -4,10 +4,10 @@ description: In dit artikel leest u hoe u beveiligings waarschuwingen kunt weer 
 ms.topic: article
 ms.date: 06/26/2020
 ms.openlocfilehash: 9eea06066cfca5f67d920456f16e2eb7893dce39
-ms.sourcegitcommit: 1d9f7368fa3dadedcc133e175e5a4ede003a8413
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/27/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85483972"
 ---
 # <a name="security-alerts-for-environments-in-azure-devtest-labs"></a>Beveiligings waarschuwingen voor omgevingen in Azure DevTest Labs

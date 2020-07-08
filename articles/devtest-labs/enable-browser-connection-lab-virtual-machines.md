@@ -4,10 +4,10 @@ description: DevTest Labs kan nu worden geïntegreerd met Azure Bastion. als eig
 ms.topic: article
 ms.date: 06/26/2020
 ms.openlocfilehash: 23fb43fa7295006d8d3784d1dbb5d80c48411431
-ms.sourcegitcommit: 1d9f7368fa3dadedcc133e175e5a4ede003a8413
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/27/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85484125"
 ---
 # <a name="enable-browser-connection-on-lab-virtual-machines"></a>Browser verbinding inschakelen op virtuele lab-machines 
@@ -33,7 +33,7 @@ U kunt geen Lab Vm's maken in een Azure Bastion-subnet. Maak een ander subnet in
 ## <a name="enable-vm-creation-in-the-subnet"></a>Het maken van VM'S in het subnet inschakelen
 Nu kunt u de virtuele machines in dit subnet maken door de volgende stappen uit te voeren: 
 
-1. Meld u aan bij de [Azure-portal](https://portal.azure.com).
+1. Meld u aan bij [Azure Portal](https://portal.azure.com).
 1. Selecteer **alle services** in het navigatie menu links. 
 1. Selecteer **DevTest Labs** uit de lijst. 
 1. Selecteer in de lijst met Labs *uw Lab*. 

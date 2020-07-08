@@ -4,10 +4,10 @@ description: Meer informatie over het configureren van een galerie met gedeelde 
 ms.topic: article
 ms.date: 06/26/2020
 ms.openlocfilehash: f4a80062a245530c5d15e761a9eb7dc95fee091e
-ms.sourcegitcommit: 1d9f7368fa3dadedcc133e175e5a4ede003a8413
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/27/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85483785"
 ---
 # <a name="configure-a-shared-image-gallery-in-azure-devtest-labs"></a>Een gedeelde galerie met installatiekopieën configureren in Azure DevTest Labs
@@ -15,7 +15,7 @@ DevTest Labs ondersteunt nu de functie [gedeelde installatie kopie galerie](../v
 
 - Beheerde algemene replicatie van installatie kopieën
 - Versie beheer en groepering van installatie kopieën voor eenvoudiger beheer
-- Maak uw installatie kopieën Maxi maal beschikbaar met ZRS-accounts (zone redundant Storage) in regio's die beschikbaarheids zones ondersteunen. ZRS biedt betere flexibiliteit tegen zonegebonden-fouten.
+- Maak uw installatie kopieën Maxi maal beschikbaar met ZRS-accounts (zone redundant Storage) in regio's die beschikbaarheids zones ondersteunen. ZRS biedt betere flexibiliteit tegen zonegebonden fouten.
 - Delen via op rollen gebaseerd toegangs beheer (RBAC) en zelfs tussen tenants.
 
 Zie de documentatie van de [Galerie met gedeelde afbeeldingen](../virtual-machines/windows/shared-image-galleries.md)voor meer informatie. 
@@ -32,7 +32,7 @@ Als u een groot aantal beheerde installatie kopieën hebt dat u wilt behouden en
 - Hoewel in DevTest Labs automatisch een beste poging wordt gedaan om ervoor te zorgen dat de galerie met gedeelde afbeeldingen installatie kopieën repliceert naar de regio waarin het lab zich bevindt, is het niet altijd mogelijk. Om te voor komen dat gebruikers problemen hebben met het maken van Vm's van deze installatie kopieën, moet u ervoor zorgen dat de installatie kopieën al worden gerepliceerd naar de regio van het lab.
 
 ## <a name="use-azure-portal"></a>Azure Portal gebruiken
-1. Meld u aan bij de [Azure-portal](https://portal.azure.com).
+1. Meld u aan bij [Azure Portal](https://portal.azure.com).
 1. Selecteer **alle services** in het navigatie menu links.
 1. Selecteer **DevTest Labs** uit de lijst.
 1. Selecteer in de lijst met Labs uw **Lab**.

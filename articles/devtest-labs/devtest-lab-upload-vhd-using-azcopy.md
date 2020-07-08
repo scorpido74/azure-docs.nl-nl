@@ -4,10 +4,10 @@ description: In dit artikel vindt u een overzicht van het gebruik van het AzCopy
 ms.topic: article
 ms.date: 06/26/2020
 ms.openlocfilehash: cbed78af3e74af5cf72fd20866abf1ee79011ef4
-ms.sourcegitcommit: 1d9f7368fa3dadedcc133e175e5a4ede003a8413
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/27/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85483207"
 ---
 # <a name="upload-vhd-file-to-labs-storage-account-using-azcopy"></a>VHD-bestand uploaden naar het opslag account van de Lab met behulp van AzCopy
@@ -26,7 +26,7 @@ De volgende stappen begeleiden u bij het uploaden van een VHD-bestand naar Azure
 
 1. Haal de naam van het opslag account van de Lab op met behulp van de Azure Portal:
 
-1. Meld u aan bij de [Azure-portal](https://go.microsoft.com/fwlink/p/?LinkID=525040).
+1. Meld u aan bij [Azure Portal](https://go.microsoft.com/fwlink/p/?LinkID=525040).
 
 1. Selecteer **alle services**en selecteer vervolgens **DevTest Labs** in de lijst.
 
