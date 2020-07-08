@@ -4,10 +4,10 @@ description: Biedt een overzicht van het Azure Migrate apparaat dat in Server ev
 ms.topic: conceptual
 ms.date: 05/04/2020
 ms.openlocfilehash: a57ca67c89078143eba42d94e8d96e004200041a
-ms.sourcegitcommit: e04a66514b21019f117a4ddb23f22c7c016da126
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/19/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85106574"
 ---
 # <a name="azure-migrate-appliance"></a>Azure Migrate-apparaat
@@ -215,7 +215,7 @@ Toepassings detectie verzamelt geïnstalleerde toepassingen en gegevens van het 
 
 Hier zijn de geïnstalleerde toepassings gegevens die het apparaat verzamelt van elke VM die is ingeschakeld voor toepassings detectie. Deze gegevens worden naar Azure verzonden.
 
-**Gegevens** | **Registerlocatie** | **Prestatie**
+**Gegevens** | **Registerlocatie** | **Sleutel**
 --- | --- | ---
 Naam van de toepassing  | HKLM: \ Software\Microsoft\Windows\CurrentVersion\Uninstall\* <br/> HKLM: \ Software\Wow6432Node\Microsoft\Windows\CurrentVersion\Uninstall\*  | DisplayName
 Versie  | HKLM: \ Software\Microsoft\Windows\CurrentVersion\Uninstall\*  <br/> HKLM: \ Software\Wow6432Node\Microsoft\Windows\CurrentVersion\Uninstall\*  | DisplayVersion 
@@ -235,7 +235,7 @@ Bovenliggend  | Get-WindowsFeature  | Bovenliggend
 
 Dit zijn de SQL Server-meta gegevens die het apparaat verzamelt van Vm's waarop micro soft SQL Server wordt uitgevoerd voor toepassings detectie. Deze gegevens worden naar Azure verzonden.
 
-**Gegevens**  | **Registerlocatie**  | **Prestatie**
+**Gegevens**  | **Registerlocatie**  | **Sleutel**
 --- | --- | ---
 Name  | HKLM: \ SOFTWARE\Microsoft\Microsoft SQL Server\Instance Names\SQL  | installedInstance
 Editie  | HKLM: \ SOFTWARE\Microsoft\Microsoft SQL Server \\ \<InstanceName> \Setup  | Editie 

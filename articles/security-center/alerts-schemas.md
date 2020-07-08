@@ -13,10 +13,10 @@ ms.workload: na
 ms.date: 03/19/2020
 ms.author: memildin
 ms.openlocfilehash: 9b8d7f241f79b087f318c9c416dcadf92838b084
-ms.sourcegitcommit: 398fecceba133d90aa8f6f1f2af58899f613d1e3
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/21/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85126209"
 ---
 # <a name="security-alerts-schemas"></a>Schema's voor beveiligings waarschuwingen
@@ -147,7 +147,7 @@ U kunt de gebeurtenissen voor beveiligings waarschuwingen in het activiteiten lo
 |**beschrijvingen**|Beschrijving van de waarschuwing|
 |**eventDataId**|Zie correlationId|
 |**eventName**|De subvelden value en localizedValue bevatten de weergave naam van de waarschuwing|
-|**rubriek**|De subvelden value en localizedValue zijn constant-' Security '|
+|**category**|De subvelden value en localizedValue zijn constant-' Security '|
 |**eventTimestamp**|UTC-tijds tempel voor het moment waarop de waarschuwing is gegenereerd|
 |**id**|De volledig gekwalificeerde waarschuwings-ID|
 |**niveau**|Constante, ' informatief '|
@@ -161,7 +161,7 @@ U kunt de gebeurtenissen voor beveiligings waarschuwingen in het activiteiten lo
 |**subStatus**|De subvelden value en localizedValue zijn leeg|
 |**submissionTimestamp**|De UTC-tijds tempel van het verzenden van gebeurtenissen naar het activiteiten logboek|
 |**Abonnements**|De abonnements-ID van de aangetaste resource|
-|**eigenschappen**|Een JSON-verzameling extra eigenschappen die betrekking hebben op de waarschuwing. Deze kunnen worden gewijzigd van de ene waarschuwing naar de andere, maar de volgende velden worden in alle waarschuwingen weer gegeven:<br>-Ernst: de ernst van de aanval<br>-compromisedEntity: de naam van de aangetaste bron<br>-remediationSteps: matrix van herstels tappen die moeten worden genomen<br>-intentie: de bedoeling van de Kill-keten van de waarschuwing. Mogelijke intenties worden gedocumenteerd in de [tabel met bedoelingen](alerts-reference.md#intentions)|
+|**properties**|Een JSON-verzameling extra eigenschappen die betrekking hebben op de waarschuwing. Deze kunnen worden gewijzigd van de ene waarschuwing naar de andere, maar de volgende velden worden in alle waarschuwingen weer gegeven:<br>-Ernst: de ernst van de aanval<br>-compromisedEntity: de naam van de aangetaste bron<br>-remediationSteps: matrix van herstels tappen die moeten worden genomen<br>-intentie: de bedoeling van de Kill-keten van de waarschuwing. Mogelijke intenties worden gedocumenteerd in de [tabel met bedoelingen](alerts-reference.md#intentions)|
 |**relatedEvents**|Constante-lege matrix|
 |||
 

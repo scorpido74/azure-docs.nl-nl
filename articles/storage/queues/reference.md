@@ -9,10 +9,10 @@ ms.subservice: queues
 ms.topic: conceptual
 ms.reviewer: ripohane
 ms.openlocfilehash: fbf20b92edf5d8dce8438731c2812a78e457a402
-ms.sourcegitcommit: 9bfd94307c21d5a0c08fe675b566b1f67d0c642d
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/17/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84976656"
 ---
 # <a name="azure-queue-storage-reference"></a>Azure Queue Storage-verwijzing
@@ -26,7 +26,7 @@ De volgende tabel bevat Naslag informatie en voorbeeld documentatie voor Azure Q
 |  Versie  | Referentie documentatie | Pakket | Snelstart |
 | :-------: | ----------------------- | ------- | ---------- |
 | 12. x | [Naam ruimte Azure. storage. queues](/dotnet/api/azure.storage.queues) | [Pakket (NuGet)](https://www.nuget.org/packages/Azure.Storage.Queues/) | [Quick Start: Azure Queue Storage-client bibliotheek V12 voor .NET](/azure/storage/queues/storage-quickstart-queues-dotnet) |
-| 11. x | [Micro soft. Azure. storage. wachtrij naam ruimte](/dotnet/api/microsoft.azure.storage.queue) | [Pakket (NuGet)](https://www.nuget.org/packages/Microsoft.Azure.Storage.Queue/) | [Snelstartgids: de Azure Storage SDK V11 voor .NET gebruiken om een wachtrij te beheren](/azure/storage/queues/storage-quickstart-queues-dotnet-legacy) |
+| 11. x | [Micro soft. Azure. storage. wachtrij naam ruimte](/dotnet/api/microsoft.azure.storage.queue) | [Pakket (NuGet)](https://www.nuget.org/packages/Microsoft.Azure.Storage.Queue/) | [Quickstart: De Azure Storage SDK V11 voor .NET gebruiken om een wachtrij te beheren](/azure/storage/queues/storage-quickstart-queues-dotnet-legacy) |
 
 ### <a name="storage-management"></a>Opslag beheer
 
@@ -85,7 +85,7 @@ De volgende tabel bevat Naslag informatie en voorbeeld documentatie voor Azure Q
 
 | Referentie documentatie | Overzicht |
 | ----------------------- | -------- |
-| [Queue-service REST API](/rest/api/storageservices/queue-service-rest-api) | [Queue-service concepten](/rest/api/storageservices/queue-service-concepts) |
+| [Queue-service REST API](/rest/api/storageservices/queue-service-rest-api) | [Concepten van Queue-service](/rest/api/storageservices/queue-service-concepts) |
 
 ### <a name="other-rest-reference"></a>Andere REST-referentie
 

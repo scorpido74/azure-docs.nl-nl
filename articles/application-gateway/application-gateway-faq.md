@@ -9,10 +9,10 @@ ms.date: 05/26/2020
 ms.author: victorh
 ms.custom: references_regions
 ms.openlocfilehash: 578d674a197936c6222d4520893fdb1afa00161e
-ms.sourcegitcommit: 55b2bbbd47809b98c50709256885998af8b7d0c5
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/18/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84981990"
 ---
 # <a name="frequently-asked-questions-about-application-gateway"></a>Veelgestelde vragen over Application Gateway
@@ -105,7 +105,7 @@ Eén subnet biedt geen ondersteuning voor zowel v2-als v1 Application Gateway-Sk
 
 ### <a name="does-application-gateway-v2-support-user-defined-routes-udr"></a>Ondersteunt Application Gateway V2 door de gebruiker gedefinieerde routes (UDR)?
 
-Ja, maar alleen specifieke scenario's. Zie [Application Gateway configuratie-overzicht](configuration-overview.md#user-defined-routes-supported-on-the-application-gateway-subnet)voor meer informatie.
+Ja, maar alleen specifieke scenario's. Zie [Overzicht van Application Gateway-configuratie](configuration-overview.md#user-defined-routes-supported-on-the-application-gateway-subnet) voor meer informatie.
 
 ### <a name="does-application-gateway-support-x-forwarded-for-headers"></a>Ondersteunt Application Gateway x-doorgestuurd-voor kopteksten?
 

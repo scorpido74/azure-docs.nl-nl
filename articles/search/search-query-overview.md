@@ -9,10 +9,10 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 06/22/2020
 ms.openlocfilehash: 8f170d541ec314020702ab53606eed4d660cea9e
-ms.sourcegitcommit: 666303748238dfdf9da30d49d89b915af73b0468
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/22/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85130803"
 ---
 # <a name="query-types-and-composition-in-azure-cognitive-search"></a>Query typen en samen stelling in azure Cognitive Search
@@ -88,7 +88,7 @@ Alle andere zoek parameters zijn optioneel. Zie [Create Index (rest) (Engelstali
 
 De volgende tabel geeft een lijst van de Api's en hulp op basis van gereedschappen voor het verzenden van query's.
 
-| Methodologie | Beschrijving |
+| Methodologie | Description |
 |-------------|-------------|
 | [Search Explorer (portal)](search-explorer.md) | Voorziet in een zoek balk en opties voor selecties van index en API-versie. Resultaten worden geretourneerd als JSON-documenten. Aanbevolen voor verkennen, testen en valideren. <br/>[Meer informatie.](search-get-started-portal.md#query-index) | 
 | [Postman of andere REST-hulp middelen](search-get-started-postman.md) | Webtest-hulpprogram ma's zijn een uitstekende keuze voor het formuleren van REST-aanroepen. De REST API ondersteunt elke mogelijke bewerking in azure Cognitive Search. In dit artikel vindt u informatie over het instellen van een HTTP-aanvraag header en hoofd tekst voor het verzenden van aanvragen naar Azure Cognitive Search.  |
@@ -165,7 +165,7 @@ Als u wilt dat Azure Cognitive Search uw resultaten retourneert die zijn besteld
 ### <a name="hit-highlighting"></a>Markeren
 In azure Cognitive Search is het benadrukken van het exacte deel van de zoek resultaten dat overeenkomt met de zoek query, eenvoudig gemaakt met behulp van de **`highlight`** **`highlightPreTag`** **`highlightPostTag`** para meters, en. U kunt opgeven in welke *Doorzoek* bare velden de overeenkomende tekst moet worden benadrukt, evenals de exacte teken reeks tags die moeten worden toegevoegd aan het begin en het einde van de overeenkomende tekst die Azure Cognitive Search retourneert.
 
-## <a name="see-also"></a>Zie ook
+## <a name="see-also"></a>Zie tevens
 
 + [De manier waarop zoeken in volledige tekst werkt in azure Cognitive Search (architectuur voor het parseren van query's)](search-lucene-query-architecture.md)
 + [Zoek Verkenner](search-explorer.md)

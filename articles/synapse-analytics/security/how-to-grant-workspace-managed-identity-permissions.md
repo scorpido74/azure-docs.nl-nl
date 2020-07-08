@@ -9,10 +9,10 @@ ms.date: 04/15/2020
 ms.author: ronytho
 ms.reviewer: jrasnick
 ms.openlocfilehash: 8e33bd127fca9ddce7b15d144fd287ec4a6bf0e2
-ms.sourcegitcommit: 3988965cc52a30fc5fed0794a89db15212ab23d7
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/22/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85193461"
 ---
 # <a name="grant-permissions-to-workspace-managed-identity-preview"></a>Machtigingen verlenen voor beheerde identiteit van werk ruimte (preview-versie)
@@ -20,7 +20,7 @@ ms.locfileid: "85193461"
 In dit artikel leert u hoe u machtigingen kunt verlenen aan de beheerde identiteit in de Azure Synapse-werk ruimte. Machtigingen hebben op hun beurt toegang tot SQL-groepen in de werk ruimte en ADLS Gen2 opslag account via de Azure Portal.
 
 >[!NOTE]
->Deze beheerde identiteit van de werk ruimte wordt aangeduid als beheerde identiteit via de rest van dit document.
+>Deze beheerde identiteit van de werkruimte wordt aangeduid als beheerde identiteit in de rest van dit document.
 
 ## <a name="grant-the-managed-identity--permissions-to-the-sql-pool"></a>De beheerde identiteits machtigingen verlenen aan de SQL-groep
 

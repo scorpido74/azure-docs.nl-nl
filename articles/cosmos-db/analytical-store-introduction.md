@@ -7,10 +7,10 @@ ms.topic: conceptual
 ms.date: 05/19/2020
 ms.author: srchi
 ms.openlocfilehash: a6f486f15fb5967dfb14508115e2340e4953be81
-ms.sourcegitcommit: 23604d54077318f34062099ed1128d447989eea8
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/20/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85116023"
 ---
 # <a name="what-is-azure-cosmos-db-analytical-store-preview"></a>Wat is Azure Cosmos DB Analytical Store (preview)?
@@ -142,7 +142,7 @@ Als u een schatting wilt maken van de kosten op hoog niveau om analytische opsla
 
 ## <a name="analytical-time-to-live-ttl"></a><a id="analytical-ttl"></a>Analytische time-to-Live (TTL)
 
-Analytische TTL geeft aan hoe lang gegevens moeten worden bewaard in de analytische opslag voor een container. 
+Analytical TTL geeft aan hoe lang gegevens voor een container moeten worden bewaard in uw analytische opslag. 
 
 De toevoegingen, updates, verwijderingen van de operationele gegevens worden automatisch gesynchroniseerd vanuit transactioneel archief naar een analytische opslag, ongeacht de transactionele TTL-configuratie. De retentie van deze operationele gegevens in de analytische opslag kan worden bepaald door de analytische TTL-waarde op container niveau, zoals hieronder is aangegeven:
 
@@ -170,6 +170,6 @@ Raadpleeg de volgende documenten voor meer informatie:
 
 * [Aan de slag met Azure Synapse Link voor Azure Cosmos DB](configure-synapse-link.md)
 
-* [Veelgestelde vragen over de Synapse-koppeling voor Azure Cosmos DB](synapse-link-frequently-asked-questions.md)
+* [Veelgestelde vragen over Synapse Link voor Azure Cosmos DB](synapse-link-frequently-asked-questions.md)
 
 * [Use cases voor Azure Synapse Link voor Azure Cosmos DB](synapse-link-use-cases.md)

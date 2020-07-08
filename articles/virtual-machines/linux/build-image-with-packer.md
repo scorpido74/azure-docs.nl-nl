@@ -9,10 +9,10 @@ ms.workload: infrastructure
 ms.date: 05/07/2019
 ms.author: cynthn
 ms.openlocfilehash: 587e339f2c2d91792ef1c342f7a1f8363da63626
-ms.sourcegitcommit: e04a66514b21019f117a4ddb23f22c7c016da126
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/19/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85106014"
 ---
 # <a name="how-to-use-packer-to-create-linux-virtual-machine-images-in-azure"></a>Hoe kan ik met behulp van Packer installatie kopieën voor virtuele Linux-machines maken in azure?
@@ -22,7 +22,7 @@ Elke virtuele machine (VM) in azure wordt gemaakt op basis van een installatie k
 > Azure heeft nu een service, Azure Image Builder (preview), voor het definiëren en maken van uw eigen aangepaste installatie kopieën. Azure Image Builder is gebaseerd op Packer, dus u kunt zelfs uw bestaande scripts voor de inrichtings functie van de pakket shell gebruiken. Zie [een virtuele Linux-machine met Azure Image Builder maken](image-builder.md)om aan de slag te gaan met Azure Image Builder.
 
 
-## <a name="create-azure-resource-group"></a>Een Azure-resource groep maken
+## <a name="create-azure-resource-group"></a>Azure-resourcegroep maken
 Tijdens het bouw proces maakt verpakker tijdelijke Azure-resources tijdens het maken van de bron-VM. Als u wilt dat de bron-VM als een installatie kopie wordt gebruikt, moet u een resource groep definiëren. De uitvoer van het pakket voor het maken van pakketten wordt opgeslagen in deze resource groep.
 
 Maak een resourcegroep maken met [az group create](/cli/azure/group). In het volgende voorbeeld wordt een resourcegroep met de naam *myResourceGroup* gemaakt op de locatie *eastus*:
@@ -210,7 +210,7 @@ az vm create \
 
 Als u Vm's wilt maken in een andere resource groep of regio dan uw pakket afbeelding, geeft u de installatie kopie-ID op in plaats van de naam van de installatie kopie. U kunt de afbeeldings-ID verkrijgen met [AZ Image Show](/cli/azure/image#az-image-show).
 
-Het duurt enkele minuten om de virtuele machine te maken. Zodra de VM is gemaakt, noteert u de `publicIpAddress` weer gegeven door de Azure cli. Dit adres wordt gebruikt om toegang te krijgen tot de NGINX-site via een webbrowser.
+Het duurt een paar minuten om de virtuele machine te maken. Zodra de VM is gemaakt, noteert u de `publicIpAddress` weer gegeven door de Azure cli. Dit adres wordt gebruikt om toegang te krijgen tot de NGINX-site via een webbrowser.
 
 Open poort 80 via internet met [az vm open-port](/cli/azure/vm) zodat beveiligd webverkeer uw virtuele machine kan bereiken:
 

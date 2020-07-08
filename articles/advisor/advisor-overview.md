@@ -4,10 +4,10 @@ description: Gebruik Azure Advisor om uw Azure-implementaties te optimaliseren.
 ms.topic: article
 ms.date: 02/01/2019
 ms.openlocfilehash: 0c6c79dd764f92475b3b0121ae46706c0dfc0bcb
-ms.sourcegitcommit: 23604d54077318f34062099ed1128d447989eea8
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/20/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85117774"
 ---
 # <a name="introduction-to-azure-advisor"></a>Inleiding tot Azure Advisor

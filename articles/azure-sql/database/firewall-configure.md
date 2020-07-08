@@ -13,10 +13,10 @@ ms.author: vanto
 ms.reviewer: carlrab
 ms.date: 06/17/2020
 ms.openlocfilehash: 19560c3746c67f8eb8ae789b3d6009e8f2fa74d3
-ms.sourcegitcommit: 9bfd94307c21d5a0c08fe675b566b1f67d0c642d
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/17/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84976809"
 ---
 # <a name="azure-sql-database-and-azure-synapse-ip-firewall-rules"></a>Azure SQL Database-en Azure Synapse IP-firewall regels
@@ -37,7 +37,7 @@ Verbindings pogingen via internet en Azure moeten door de firewall worden door g
 
 ### <a name="server-level-ip-firewall-rules"></a>IP-firewallregels op serverniveau
 
-Met deze regels kunnen clients toegang krijgen tot uw hele server, dat wil zeggen, alle data bases die worden beheerd door de-server. De regels worden opgeslagen in de Data Base *Master* . U kunt Maxi maal 128 IP-firewall regels op server niveau voor een server hebben. Als u de instelling **Azure-Services en-resources toegang tot deze server toestaan** hebt ingeschakeld, telt dit als een enkele firewall regel voor de-server.
+Met deze regels kunnen clients toegang krijgen tot uw hele server, dat wil zeggen, alle databases die door de server worden beheerd. De regels worden opgeslagen in de Data Base *Master* . U kunt voor een server maximaal 128 firewallregels op serverniveau opgeven. Als u de instelling **Azure-Services en-resources toegang tot deze server toestaan** hebt ingeschakeld, telt dit als een enkele firewall regel voor de-server.
   
 U kunt IP-firewall regels op server niveau configureren met behulp van de instructies Azure Portal, Power shell of Transact-SQL.
 
@@ -54,7 +54,7 @@ Met IP-firewall regels op database niveau kunnen clients toegang krijgen tot bep
 
 ### <a name="recommendations-for-how-to-set-firewall-rules"></a>Aanbevelingen voor het instellen van firewall regels
 
-U wordt aangeraden IP-firewall regels op database niveau te gebruiken wanneer dit mogelijk is. Deze oefening verbetert de beveiliging en maakt uw data base draagbaarer. Gebruik IP-firewall regels op server niveau voor beheerders. Gebruik deze ook wanneer u veel data bases hebt die dezelfde toegangs vereisten hebben en u niet elke Data Base afzonderlijk wilt configureren.
+U wordt aangeraden IP-firewall regels op database niveau te gebruiken wanneer dit mogelijk is. Dit gebruik verbetert de beveiliging en maakt uw database draagbaarder. Gebruik IP-firewall regels op server niveau voor beheerders. Gebruik deze ook wanneer u veel data bases hebt die dezelfde toegangs vereisten hebben en u niet elke Data Base afzonderlijk wilt configureren.
 
 > [!NOTE]
 > Voor meer informatie over draagbare databases in de context van bedrijfscontinuïteit raadpleegt u [Authentication requirements for disaster recovery](active-geo-replication-security-configure.md) (Verificatievereisten voor herstel na noodgevallen).
@@ -105,7 +105,7 @@ Azure-verbindingen moeten zijn ingeschakeld om toepassingen die in Azure worden 
 
 ## <a name="permissions"></a>Machtigingen
 
-Als u IP-firewall regels voor de Azure SQL Server wilt maken en beheren, moet u het volgende zijn:
+Als u IP-firewallregels voor de Azure SQL Server wilt maken en beheren, moet u een van de volgende rollen hebben:
 
 - in de rol [inzender SQL Server](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#sql-server-contributor)
 - in de rol [SQL Security Manager](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#sql-security-manager)
@@ -118,7 +118,7 @@ U kunt de eerste firewall instelling op server niveau maken met behulp van de [A
 > [!IMPORTANT]
 > IP-firewall regels op database niveau kunnen alleen worden gemaakt en beheerd met behulp van Transact-SQL.
 
-Om de prestaties te verbeteren, worden IP-firewall regels op server niveau tijdelijk opgeslagen in de cache op database niveau. Zie [DBCC FLUSHAUTHCACHE](https://msdn.microsoft.com/library/mt627793.aspx) als u de cache wilt vernieuwen.
+Voor betere prestaties worden IP-firewallregels op serverniveau tijdelijk in de cache op databaseniveau opgeslagen. Zie [DBCC FLUSHAUTHCACHE](https://msdn.microsoft.com/library/mt627793.aspx) als u de cache wilt vernieuwen.
 
 > [!TIP]
 > U kunt [database controle](../../azure-sql/database/auditing-overview.md) gebruiken om wijzigingen in de firewall op server niveau en op database niveau te controleren.
@@ -152,7 +152,7 @@ De overzichts pagina voor de server wordt geopend. De volledig gekwalificeerde s
 
 ### <a name="use-transact-sql-to-manage-ip-firewall-rules"></a>Transact-SQL gebruiken voor het beheren van IP-firewall regels
 
-| Catalogus weergave of opgeslagen procedure | Niveau | Beschrijving |
+| Catalogus weergave of opgeslagen procedure | Niveau | Description |
 | --- | --- | --- |
 | [sys.firewall_rules](/sql/relational-databases/system-catalog-views/sys-firewall-rules-azure-sql-database) |server |Hiermee worden de huidige IP-firewall regels op server niveau weer gegeven |
 | [sp_set_firewall_rule](/sql/relational-databases/system-stored-procedures/sp-set-firewall-rule-azure-sql-database) |server |Hiermee worden IP-firewall regels op server niveau gemaakt of bijgewerkt |
@@ -186,7 +186,7 @@ EXECUTE sp_delete_firewall_rule @name = N'ContosoFirewallRule'
 > [!IMPORTANT]
 > De Power shell-Azure Resource Manager module wordt nog steeds ondersteund door Azure SQL Database, maar alle ontwikkeling is nu voor de module AZ. SQL. Zie [AzureRM. SQL](/powershell/module/AzureRM.Sql/)voor deze cmdlets. De argumenten voor de opdrachten in de modules AZ en AzureRm zijn aanzienlijk identiek.
 
-| Cmdlet | Niveau | Beschrijving |
+| Cmdlet | Niveau | Description |
 | --- | --- | --- |
 | [Get-AzSqlServerFirewallRule](/powershell/module/az.sql/get-azsqlserverfirewallrule) |server |Retourneert de huidige firewallregels op serverniveau |
 | [New-AzSqlServerFirewallRule](/powershell/module/az.sql/new-azsqlserverfirewallrule) |server |Maakt een nieuwe firewallregel op serverniveau |
@@ -208,7 +208,7 @@ New-AzSqlServerFirewallRule -ResourceGroupName "myResourceGroup" `
 
 ### <a name="use-cli-to-manage-server-level-ip-firewall-rules"></a>CLI gebruiken voor het beheren van IP-firewall regels op server niveau
 
-| Cmdlet | Niveau | Beschrijving |
+| Cmdlet | Niveau | Description |
 | --- | --- | --- |
 |[az sql server firewall-rule create](/cli/azure/sql/server/firewall-rule#az-sql-server-firewall-rule-create)|server|Hiermee maakt u een server-IP-firewall regel|
 |[AZ SQL Server firewall-Rule List](/cli/azure/sql/server/firewall-rule#az-sql-server-firewall-rule-list)|server|Een lijst met de IP-firewall regels op een server|
@@ -230,7 +230,7 @@ az sql server firewall-rule create --resource-group myResourceGroup --server $se
 
 ### <a name="use-a-rest-api-to-manage-server-level-ip-firewall-rules"></a>Een REST API gebruiken om IP-firewall regels op server niveau te beheren
 
-| API | Niveau | Beschrijving |
+| API | Niveau | Description |
 | --- | --- | --- |
 | [Firewall regels weer geven](https://docs.microsoft.com/rest/api/sql/firewallrules/listbyserver) |server |Hiermee worden de huidige IP-firewall regels op server niveau weer gegeven |
 | [Firewall regels maken of bijwerken](https://docs.microsoft.com/rest/api/sql/firewallrules/createorupdate) |server |Hiermee worden IP-firewall regels op server niveau gemaakt of bijgewerkt |

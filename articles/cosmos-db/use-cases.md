@@ -7,10 +7,10 @@ ms.author: sngun
 ms.topic: conceptual
 ms.date: 05/21/2019
 ms.openlocfilehash: 76016da2ec542091aa57d5081e275a1f9f6671cd
-ms.sourcegitcommit: 23604d54077318f34062099ed1128d447989eea8
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/20/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85114262"
 ---
 # <a name="common-azure-cosmos-db-use-cases"></a>Algemene Azure Cosmos DB use cases
@@ -23,7 +23,7 @@ Na het lezen van dit artikel kunt u de volgende vragen beantwoorden:
 * Wat zijn de voor delen van het gebruik van Azure Cosmos DB als een gegevens Archief voor Internet of Things-systemen (IoT)?
 * Wat zijn de voor delen van het gebruik van Azure Cosmos DB voor web-en mobiele toepassingen?
 
-## <a name="introduction"></a>Introductie
+## <a name="introduction"></a>Inleiding
 [Azure Cosmos DB](../cosmos-db/introduction.md) is de wereld wijd gedistribueerde database service van micro soft. De service is zo ontworpen dat klanten hun door Voer en opslag voor een wille keurig aantal geografische regio's elastisch (en onafhankelijk) kunnen schalen. Azure Cosmos DB is momenteel de eerste wereld wijd gedistribueerde database service in de markt om uitgebreide [service overeenkomsten](https://azure.microsoft.com/support/legal/sla/cosmos-db/) te bieden die de door Voer, latentie, Beschik baarheid en consistentie omvatten. 
 
 Azure Cosmos DB is een wereld wijd gedistribueerde, multi-model database die wordt gebruikt in een breed scala aan toepassingen en use cases. Het is een goede keuze voor elke [serverloze](https://azure.com/serverless) toepassing die een lage reactie tijd van milliseconden nodig heeft en snel en wereld wijd moet schalen. Het ondersteunt meerdere gegevens modellen (sleutel-waarde, documenten, grafieken en kolommen) en veel Api's voor gegevens toegang, waaronder [de API van Azure Cosmos DB voor MongoDb](mongodb-introduction.md), [SQL API](documentdb-introduction.md), [Gremlin API](graph-introduction.md)en [Table API](table-introduction.md) native en op een uitbreid bare manier. 

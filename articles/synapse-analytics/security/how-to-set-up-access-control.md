@@ -10,10 +10,10 @@ ms.date: 04/15/2020
 ms.author: mahi
 ms.reviewer: jrasnick
 ms.openlocfilehash: 1a8023a700e83892fae9a16bb2bfbe2a2eb0b307
-ms.sourcegitcommit: 3988965cc52a30fc5fed0794a89db15212ab23d7
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/22/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85193410"
 ---
 # <a name="secure-your-synapse-workspace-preview"></a>Uw Synapse-werk ruimte beveiligen (preview-versie)
@@ -36,7 +36,7 @@ Als u een Synapse-werk ruimte (preview-versie) wilt beveiligen, volgt u een patr
 
 In dit document worden standaard namen gebruikt om de instructies te vereenvoudigen. Vervang deze door een of meer namen van uw keuze.
 
-|Instelling | Voorbeeldwaarde | Beschrijving |
+|Instelling | Voorbeeldwaarde | Description |
 | :------ | :-------------- | :---------- |
 | **Synapse-werkruimte** | WS1 |  De naam die de Synapse-werk ruimte heeft. |
 | **ADLSGEN2-account** | STG1 | Het ADLS-account dat moet worden gebruikt met uw werk ruimte. |
@@ -86,7 +86,7 @@ Maak in het Azure Portal een Synapse-werk ruimte:
 
 De Synapse-werk ruimte moet toegang hebben tot STG1 en CNT1, zodat er pijp lijnen kunnen worden uitgevoerd en systeem taken worden uitgevoerd.
 
-- Open de Azure-portal
+- Open de Azure Portal
 - STG1 zoeken
 - Ga naar CNT1
 - Zorg ervoor dat het MSI-bestand (Managed Service Identity) voor WS1 is toegewezen aan de rol van de **BLOB-gegevens bijdrager voor opslag** op CNT1
@@ -95,7 +95,7 @@ De Synapse-werk ruimte moet toegang hebben tot STG1 en CNT1, zodat er pijp lijne
 
 ## <a name="step-5-configure-admin-access-for-sql-pools"></a>STAP 5: beheerders toegang voor SQL-groepen configureren
 
-- Open de Azure-portal
+- Open de Azure Portal
 - Ga naar WS1
 - Klik onder **instellingen**op **SQL Active Directory-beheerder**
 - Klik op **beheerder instellen** en kies WS1 \_ SQLAdmins

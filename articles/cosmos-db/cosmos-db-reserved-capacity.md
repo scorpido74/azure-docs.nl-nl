@@ -8,10 +8,10 @@ ms.date: 02/18/2020
 ms.author: tisande
 ms.reviewer: sngun
 ms.openlocfilehash: ea1fec022227aba1be09e988b5802f0c1ecd4e8e
-ms.sourcegitcommit: 23604d54077318f34062099ed1128d447989eea8
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/20/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85118930"
 ---
 # <a name="optimize-cost-with-reserved-capacity-in-azure-cosmos-db"></a>Kosten met gereserveerde capaciteit optimaliseren in Azure Cosmos DB
@@ -34,7 +34,7 @@ De omvang van de inkoop met gereserveerde capaciteit moet worden gebaseerd op de
 
 We berekenen aankoop aanbevelingen op basis van het gebruiks patroon van uw uur. Het gebruik van de afgelopen 7, 30 en 60 dagen is geanalyseerd en de aanschaf van gereserveerde capaciteit waarmee uw besparing wordt gemaximaliseerd, wordt aanbevolen. Met de volgende stappen kunt u de aanbevolen reserverings grootten weer geven in de Azure Portal:
 
-1. Meld u aan bij de [Azure-portal](https://portal.azure.com).  
+1. Meld u aan bij [Azure Portal](https://portal.azure.com).  
 
 2. Selecteer **alle services**-  >  **reserve ringen**  >  **toevoegen**.
 
@@ -58,7 +58,7 @@ Deze aanbeveling om een 30.000 RU/s-reserve ring te kopen, geeft aan dat de rese
 
 ## <a name="buy-azure-cosmos-db-reserved-capacity"></a>Azure Cosmos DB gereserveerde capaciteit kopen
 
-1. Meld u aan bij de [Azure-portal](https://portal.azure.com).  
+1. Meld u aan bij [Azure Portal](https://portal.azure.com).  
 
 2. Selecteer **alle services**-  >  **reserve ringen**  >  **toevoegen**.  
 
@@ -102,7 +102,7 @@ De reserverings korting wordt automatisch toegepast op de Azure Cosmos DB resour
 
 * Raadpleeg de volgende artikelen voor meer informatie over Azure-reserveringen:
 
-   * [Wat zijn Azure-reserve ringen?](../cost-management-billing/reservations/save-compute-costs-reservations.md)  
+   * [Wat zijn Azure-reserveringen?](../cost-management-billing/reservations/save-compute-costs-reservations.md)  
    * [Azure-reserve ringen beheren](../cost-management-billing/reservations/manage-reserved-vm-instance.md)  
    * [Inzicht in het gebruik van reserveringen voor Enterprise-inschrijvingen](../cost-management-billing/reservations/understand-reserved-instance-usage-ea.md)  
    * [Inzicht in het gebruik van reserveringen voor uw abonnement met betalen per gebruik](../cost-management-billing/reservations/understand-reserved-instance-usage.md)

@@ -12,10 +12,10 @@ ms.topic: conceptual
 ms.date: 06/22/2020
 ms.author: yexu
 ms.openlocfilehash: 6b172a6e15cbb22c3a0a16cb1e238ddfe45048bf
-ms.sourcegitcommit: 666303748238dfdf9da30d49d89b915af73b0468
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/22/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85130769"
 ---
 #  <a name="fault-tolerance-of-copy-activity-in-azure-data-factory"></a>Fouttolerantie van kopieeractiviteit in Azure Data Factory
@@ -124,7 +124,7 @@ Als u configureert om de overgeslagen bestands namen te registreren, kunt u het 
 
 De logboek bestanden moeten de CSV-bestanden zijn. Het schema van het logboek bestand is als volgt:
 
-Kolom | Beschrijving 
+Kolom | Description 
 -------- | -----------  
 Tijdstempel | Het tijds tempel wanneer ADF het bestand overs laat.
 Niveau | Het logboek niveau van dit item. Het wordt weer gegeven in het waarschuwings niveau voor het item met het overs laan van bestanden.
@@ -213,7 +213,7 @@ Als u configureert om de niet-compatibele rijen te registreren, kunt u het logbo
 
 De logboek bestanden worden de CSV-bestanden. Het schema van het logboek bestand is als volgt:
 
-Kolom | Beschrijving 
+Kolom | Description 
 -------- | -----------  
 Tijdstempel | Het tijds tempel voor het overs laan van de niet-compatibele rijen in de ADF
 Niveau | Het logboek niveau van dit item. Het wordt weer gegeven in het waarschuwings niveau als dit item de overgeslagen rijen weergeeft
