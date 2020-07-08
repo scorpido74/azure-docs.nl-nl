@@ -7,10 +7,10 @@ author: bwren
 ms.author: bwren
 ms.date: 06/25/2020
 ms.openlocfilehash: 7d3c4e0f4bd34f996bb39426af39a692a6f79c5c
-ms.sourcegitcommit: 374e47efb65f0ae510ad6c24a82e8abb5b57029e
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85507174"
 ---
 # <a name="enable-azure-monitor-for-vms-by-using-azure-policy"></a>Azure Monitor voor VM's inschakelen met Azure Policy
@@ -82,7 +82,7 @@ Voor meer informatie over het toewijzen van Azure Policy, raadpleegt u [Azure Po
 
 De beleids definities voor een virtuele machine van Azure worden weer gegeven in de volgende tabel.
 
-|Naam |Beschrijving |Type |
+|Naam |Description |Type |
 |-----|------------|-----|
 |Azure Monitor voor VM's inschakelen |Schakel Azure Monitor in voor de virtuele machines in het opgegeven bereik (beheer groep, abonnement of resource groep). Hiermee wordt Log Analytics werk ruimte als para meter gebruikt. |Initiatieven |
 |Implementatie van afhankelijkheids agent controleren – VM-installatie kopie (OS) niet vermeld |Rapporteert Vm's als niet-compatibel als de VM-installatie kopie (OS) niet is gedefinieerd in de lijst en de agent niet is geïnstalleerd. |Beleid |
@@ -133,7 +133,7 @@ Volg deze stappen om de beleids toewijzing te maken op de pagina **dekking van A
 
 Wanneer u het beleid of initiatief toewijst, kan het bereik dat u hebt geselecteerd in de toewijzing het bereik zijn dat hier wordt weer gegeven, of een subset ervan. U hebt bijvoorbeeld mogelijk een toewijzing voor het abonnement (beleids bereik) gemaakt en niet de beheer groep (dekkings bereik). In dit geval geeft het dekkings percentage de Vm's in het beleid of het initiatief bereik aan, gedeeld door de Vm's in het bereik van de dekking. In andere gevallen hebt u mogelijk enkele Vm's, of resource groepen of een abonnement uitgesloten van het beleids bereik. Als deze leeg is, wordt aangegeven dat het beleid of initiatief niet bestaat of dat u geen machtigingen hebt. Informatie wordt weer gegeven onder de **toewijzings status**.
 
-1. Meld u aan bij de [Azure-portal](https://portal.azure.com).
+1. Meld u aan bij [Azure Portal](https://portal.azure.com).
 
 2. Selecteer in de Azure Portal **monitor**. 
 
@@ -163,9 +163,9 @@ Nadat u de toewijzing hebt gemaakt, werkt de pagina **dekking van Azure monitor 
 
 De volgende matrix wijst elke mogelijke compatibiliteits status voor het initiatief toe.  
 
-| Nalevings status | Beschrijving | 
+| Nalevings status | Description | 
 |------------------|-------------|
-| **Compliant** | Voor alle Vm's in het bereik zijn de Log Analytics-en Dependency agents geïmplementeerd.|
+| **ACPI** | Voor alle Vm's in het bereik zijn de Log Analytics-en Dependency agents geïmplementeerd.|
 | **Niet compatibel** | Niet alle virtuele machines in het bereik hebben de Log Analytics-en Dependency-agents geïmplementeerd en vereisen mogelijk herstel.|
 | **Niet gestart** | Er is een nieuwe toewijzing toegevoegd. |
 | **Vergrendelen** | U hebt onvoldoende bevoegdheden voor de beheer groep. <sup>1</sup> | 
@@ -175,7 +175,7 @@ De volgende matrix wijst elke mogelijke compatibiliteits status voor het initiat
 
 In de volgende tabel wordt elke mogelijke toewijzings status voor het initiatief toegewezen.
 
-| Toewijzings status | Beschrijving | 
+| Toewijzings status | Description | 
 |------------------|-------------|
 | **Geslaagd** | Voor alle Vm's in het bereik zijn de Log Analytics-en Dependency agents geïmplementeerd.|
 | **Waarschuwing** | Het abonnement bevindt zich niet in een beheer groep.|
@@ -215,7 +215,7 @@ Op basis van de resultaten van de beleids regels die zijn opgenomen in het initi
 U kunt op elk gewenst moment nadat u een initiatief aan een beheer groep of abonnement hebt toegewezen, het bewerken om de volgende eigenschappen te wijzigen:
 
 - Toewijzings naam
-- Beschrijving
+- Description
 - Toegewezen door
 - Log Analytics-werkruimte
 - Uitzonderingen

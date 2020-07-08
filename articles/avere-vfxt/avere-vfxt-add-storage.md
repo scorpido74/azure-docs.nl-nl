@@ -7,10 +7,10 @@ ms.topic: how-to
 ms.date: 01/13/2020
 ms.author: rohogue
 ms.openlocfilehash: e011b349c9296fd0ca15d119b35c1e6ec6af268a
-ms.sourcegitcommit: 374e47efb65f0ae510ad6c24a82e8abb5b57029e
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85505746"
 ---
 # <a name="configure-storage"></a>Opslag configureren
@@ -133,7 +133,7 @@ Voer de volgende stappen uit om Blob-opslag toe te voegen na het maken van het c
    | Abonnement | subscription ID |
    | Toegangs sleutel voor opslag | Sleutel van het Azure-opslag account (gekopieerd in de vorige stap) |
 
-   Klik op **verzenden**.
+   Klik op **Submit**
 
    ![Het formulier voor de Cloud referentie in het configuratie scherm van AVERE is voltooid](media/avere-vfxt-new-credential-submit.png)
 
