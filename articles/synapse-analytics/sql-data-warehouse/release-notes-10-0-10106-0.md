@@ -12,12 +12,12 @@ ms.reviewer: jrasnick
 manager: craigg
 ms.custom: seo-lt-2019
 tags: azure-synapse
-ms.openlocfilehash: 6e2247d448807413d425dfec5d572fa895041938
-ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
+ms.openlocfilehash: 6af05a6c17253a2032f493a7d2cd6254dafd352c
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/23/2020
-ms.locfileid: "85206815"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85831417"
 ---
 # <a name="azure-synapse-analytics-release-notes"></a>Release opmerkingen bij Azure Synapse Analytics
 
@@ -40,6 +40,13 @@ Zorg ervoor dat de juiste versie is geïnstalleerd in de opmerking bij de releas
 >
 > SELECT SERVERPROPERTY('EngineEdition')
 > ```
+
+## <a name="july-2020"></a>Juli 2020
+| Service verbeteringen | Details |
+| --- | --- |
+|**Versleuteling op kolom niveau (open bare preview)**|Beveilig gevoelige informatie in uw Synapse SQL Data Warehouse door symmetrische versleuteling toe te passen op een kolom met gegevens met behulp van Transact-SQL. Versleuteling op kolom niveau heeft ingebouwde functies die u kunt gebruiken om gegevens te versleutelen met behulp van symmetrische sleutels die verder worden beveiligd met een certificaat, wacht woord, symmetrische sleutel of asymmetrische sleutel. Ga voor meer informatie naar [een kolom met gegevens versleutelen](/sql/relational-databases/security/encryption/encrypt-a-column-of-data?view=azure-sqldw-latest).|
+|**Ondersteuning voor compatibiliteits niveau (GA)**|Met deze release kunnen gebruikers nu het compatibiliteits niveau van een Data Base instellen om de Transact-SQL-taal en het verwerkings gedrag van query's te verkrijgen van een specifieke versie van de Synapse SQL-engine. Zie [sys. database_scoped_configurations](/sql/relational-databases/system-catalog-views/sys-database-scoped-configurations-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) en [ALTER data base scoped Configuration](/sql/t-sql/statements/alter-database-scoped-configuration-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)(Engelstalig) voor meer informatie.|
+|**Beveiliging op rijniveau**|Deze release bevat een verbetering voor update-en verwijderings bewerkingen op rijen waarop beveiliging op basis van een gebruikers beleid wordt afgedwongen. Met deze release, update-en verwijder bewerkingen met intrinsieke functies zoals is_rolemember, als de intrinsieke niet verwijst naar een kolom in de DML-doel tabel. Vóór deze verbetering is het mogelijk dat deze bewerkingen niet worden uitgevoerd omdat de onderliggende DML-bewerkingen zijn beperkt.|
 
 ## <a name="may-2020"></a>Mei 2020
 

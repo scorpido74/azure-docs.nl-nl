@@ -5,16 +5,16 @@ author: craigshoemaker
 ms.topic: conceptual
 ms.date: 03/25/2019
 ms.author: cshoe
-ms.openlocfilehash: 45a7de4f19b663823a5eff7ba4f352992c3aaf0d
-ms.sourcegitcommit: dfa5f7f7d2881a37572160a70bac8ed1e03990ad
+ms.openlocfilehash: 1f08d6b8a2ce2381c3bc85891a292ac05561cf34
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/25/2020
-ms.locfileid: "85374199"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85832556"
 ---
 # <a name="strategies-for-testing-your-code-in-azure-functions"></a>Strategieën voor het testen van uw code in Azure Functions
 
-In dit artikel wordt beschreven hoe u automatische tests voor Azure Functions maakt. 
+In dit artikel wordt beschreven hoe u automatische tests voor Azure Functions maakt.
 
 Testen van alle code wordt aanbevolen, maar u kunt wel de beste resultaten krijgen door de logica van een functie op te geven en tests buiten de functie te maken. Met abstractisatie logica worden de regels van code van een functie beperkt en is het mogelijk dat de functie alleen verantwoordelijk is voor het aanroepen van andere klassen of modules. In dit artikel wordt echter gedemonstreerd hoe u automatische tests kunt maken op basis van een HTTP-en door een timer geactiveerde functie.
 
@@ -38,7 +38,7 @@ Als u uw omgeving wilt instellen, maakt u een functie-en test-app. De volgende s
 1. [Een nieuwe functions-app maken](./functions-create-first-azure-function.md) en **hieraan** een naam toe te voegen
 2. [Maak een HTTP-functie op basis van de sjabloon](./functions-create-first-azure-function.md) en geef deze de naam **MyHttpTrigger**.
 3. [Maak een timer functie op basis van de sjabloon](./functions-create-scheduled-function.md) en noem deze **MyTimerTrigger**.
-4. [Maak een xUnit-test-app](https://xunit.github.io/docs/getting-started-dotnet-core) in de oplossing en geef deze de naam **Function. tests**. 
+4. [Maak een xUnit-test-app](https://xunit.github.io/docs/getting-started-dotnet-core) in de oplossing en geef deze de naam **Function. tests**.
 5. Gebruik NuGet om een verwijzing toe te voegen vanuit de test-app naar [micro soft. AspNetCore. MVC](https://www.nuget.org/packages/Microsoft.AspNetCore.Mvc/)
 6. [Raadpleeg de *functions* -app](https://docs.microsoft.com/visualstudio/ide/managing-references-in-a-project?view=vs-2017) vanuit *functions. app tests* .
 
@@ -127,7 +127,7 @@ namespace Functions.Tests
 }
 ```
 
-Met deze opsomming geeft u het type logboek registratie op dat wordt gebruikt door de tests. 
+Met deze opsomming geeft u het type logboek registratie op dat wordt gebruikt door de tests.
 
 Maak nu een nieuwe klasse in *functions. test* project met de naam **TestFactory.cs** en voer de volgende code in:
 
@@ -314,7 +314,7 @@ module.exports = {
 
 Deze module implementeert de `IsPastDue` eigenschap op standaard als een valse Timer-instantie. Timer configuraties zoals NCRONTAB-expressies zijn hier niet vereist omdat de test harnas de functie rechtstreeks aanroept om het resultaat te testen.
 
-Gebruik vervolgens de extensie VS code functions om [een nieuwe Java script HTTP-functie te maken](/azure/javascript/tutorial-vscode-serverless-node-01) en deze *http trigger*te noemen. Nadat de functie is gemaakt, voegt u een nieuw bestand toe aan dezelfde map met de naam **index.test.js**en voegt u de volgende code toe:
+Gebruik vervolgens de extensie VS code functions om [een nieuwe Java script HTTP-functie te maken](/azure/developer/javascript/tutorial-vscode-serverless-node-01) en deze *http trigger*te noemen. Nadat de functie is gemaakt, voegt u een nieuw bestand toe aan dezelfde map met de naam **index.test.js**en voegt u de volgende code toe:
 
 ```javascript
 const httpFunction = require('./index');

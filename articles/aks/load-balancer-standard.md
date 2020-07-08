@@ -6,24 +6,24 @@ services: container-service
 ms.topic: article
 ms.date: 06/14/2020
 ms.author: jpalma
-author: jpalma
-ms.openlocfilehash: 705cd9ae77217bdd3ac99c20e476d5673781df9c
-ms.sourcegitcommit: ad66392df535c370ba22d36a71e1bbc8b0eedbe3
+author: palma21
+ms.openlocfilehash: c03c8b385fc287737853c3cabd2e25f365a84578
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/16/2020
-ms.locfileid: "84808301"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85831519"
 ---
 # <a name="use-a-public-standard-load-balancer-in-azure-kubernetes-service-aks"></a>Een open bare Standard Load Balancer gebruiken in azure Kubernetes service (AKS)
 
 De Azure Load Balancer is een N4 van het OSI-model (Open Systems Interconnection) dat zowel binnenkomende als uitgaande scenario's ondersteunt. Hiermee worden inkomende stromen gedistribueerd die aan de front-end van de load balancer komen voor de back-endadresgroep.
 
-Een **open bare** Load Balancer in combi natie met AKS heeft twee doel einden:     
+Een **open bare** Load Balancer in combi natie met AKS heeft twee doel einden:
 
-1. Om uitgaande verbindingen te bieden met de cluster knooppunten in het virtuele AKS-netwerk. Deze doel stelling wordt bereikt door het privé IP-adres van knoop punten te vertalen naar een openbaar IP-adres dat deel uitmaakt van de *uitgaande groep*. 
+1. Om uitgaande verbindingen te bieden met de cluster knooppunten in het virtuele AKS-netwerk. Deze doel stelling wordt bereikt door het privé IP-adres van knoop punten te vertalen naar een openbaar IP-adres dat deel uitmaakt van de *uitgaande groep*.
 2. Om toegang te bieden tot toepassingen via Kubernetes services van het type `LoadBalancer` . Met IT kunt u uw toepassingen eenvoudig schalen en Maxi maal beschik bare Services maken.
 
-Een **intern (of privé)** Load Balancer wordt gebruikt wanneer alleen privé ip's zijn toegestaan als frontend. Interne load balancers worden gebruikt voor het verdelen van verkeer binnen een virtueel netwerk. Een load balancer frontend kan ook worden geopend vanuit een on-premises netwerk in een hybride scenario. 
+Een **intern (of privé)** Load Balancer wordt gebruikt wanneer alleen privé ip's zijn toegestaan als frontend. Interne load balancers worden gebruikt voor het verdelen van verkeer binnen een virtueel netwerk. Een load balancer frontend kan ook worden geopend vanuit een on-premises netwerk in een hybride scenario.
 
 In dit document wordt de integratie met de open bare Load Balancer beschreven. Zie de [AKS Internal Load Balancer-documentatie](internal-lb.md)voor interne integratie van Load Balancer.
 
@@ -81,14 +81,15 @@ Wanneer u de service details bekijkt, wordt het open bare IP-adres dat is gemaak
 ## <a name="configure-the-public-standard-load-balancer"></a>De open bare standaard load balancer configureren
 
 Wanneer u de open bare load balancer van de standaard-SKU gebruikt, is er een set opties die kan worden aangepast tijdens de aanmaak tijd of door het cluster bij te werken. Met deze opties kunt u de Load Balancer aanpassen zodat deze voldoet aan de behoeften van uw werk belastingen en moeten ze dienovereenkomstig worden gecontroleerd. Met de standaard load balancer kunt u het volgende doen:
-* Het aantal beheerde uitgaande Ip's instellen of schalen.
-* Uw eigen uitgaande Ip's of een uitgaand IP-voor voegsel meenemen;
-* Pas het aantal toegewezen uitgaande poorten aan op elk knoop punt van het cluster.
-* De time-outinstelling voor niet-actieve verbindingen configureren.
+
+* Het aantal beheerde uitgaande Ip's instellen of schalen
+* Uw eigen aangepaste [IP-adres of voor voegsel voor uitgaand](#provide-your-own-outbound-public-ips-or-prefixes) verkeer
+* Het aantal toegewezen uitgaande poorten aanpassen aan elk knoop punt van het cluster
+* De time-outinstelling voor niet-actieve verbindingen configureren
 
 ### <a name="scale-the-number-of-managed-outbound-public-ips"></a>Het aantal beheerde uitgaande open bare Ip's schalen
 
-Azure Load Balancer biedt een uitgaande verbinding van een virtueel netwerk naast binnenkomend. Met uitgaande regels kunt u de uitgaande Network Address Translation van open bare Standard Load Balancer eenvoudig configureren. 
+Azure Load Balancer biedt een uitgaande verbinding van een virtueel netwerk naast binnenkomend. Met uitgaande regels kunt u de uitgaande Network Address Translation van open bare Standard Load Balancer eenvoudig configureren.
 
 Net als alle Load Balancer regels volgen uitgaande regels dezelfde vertrouwde syntaxis als taak verdeling en binnenkomende NAT-regels:
 
@@ -115,7 +116,12 @@ U kunt ook de **`load-balancer-managed-ip-count`** para meter gebruiken om het e
 
 ### <a name="provide-your-own-outbound-public-ips-or-prefixes"></a>Uw eigen uitgaande open bare Ip's of voor voegsels opgeven
 
-Wanneer u een *standaard* -SKU Load Balancer gebruikt, maakt het AKS-cluster standaard automatisch een openbaar IP-adres in de resource groep voor de door aks beheerde infra structuur en wijst deze toe aan de Load Balancer uitgaande groep. U kunt ook uw eigen open bare IP-adres of openbaar IP-voor voegsel toewijzen tijdens het maken van het cluster of u kunt de load balancer eigenschappen van een bestaand cluster bijwerken.
+Wanneer u een *standaard* -SKU Load Balancer gebruikt, maakt het AKS-cluster standaard automatisch een openbaar IP-adres in de resource groep voor de door aks beheerde infra structuur en wijst deze toe aan de Load Balancer uitgaande groep.
+
+Een openbaar IP-adres dat door AKS is gemaakt, wordt beschouwd als een door AKS beheerde resource. Dit betekent dat de levens cyclus van het open bare IP-adres is bedoeld om te worden beheerd door AKS en vereist geen gebruikers actie rechtstreeks op de open bare IP-resource. U kunt ook uw eigen aangepaste open bare IP-adres of openbaar IP-voor voegsel toewijzen tijdens het maken van het cluster. Uw aangepaste Ip's kunnen ook worden bijgewerkt op de load balancer eigenschappen van een bestaand cluster.
+
+> [!NOTE]
+> Aangepaste open bare IP-adressen moeten worden gemaakt en het eigendom zijn van de gebruiker. Beheerde open bare IP-adressen die door AKS worden gemaakt, kunnen niet opnieuw worden gebruikt als een eigen aangepast IP-adres, omdat het beheer conflicten kan veroorzaken.
 
 Voordat u deze bewerking uitvoert, moet u ervoor zorgen dat u voldoet aan de [vereisten en beperkingen](../virtual-network/public-ip-address-prefix.md#constraints) die nodig zijn om uitgaande Ip's of uitgaande IP-voor voegsels te configureren.
 
@@ -181,6 +187,7 @@ az aks create \
 ```
 
 ### <a name="configure-the-allocated-outbound-ports"></a>De toegewezen uitgaande poorten configureren
+
 > [!IMPORTANT]
 > Als u toepassingen op uw cluster hebt die naar verwachting een groot aantal verbindingen tot stand brengen met een kleine set doelen, bijvoorbeeld. veel frontend-exemplaren die verbinding maken met een SQL-data base, hebt u een scenario dat kan leiden tot een SNAT-poort uitgeput (waardoor er geen poorten meer zijn om verbinding te maken). Voor deze scenario's wordt het ten zeerste aanbevolen om de toegewezen uitgaande poorten en uitgaande frontend-IP-adressen te verg Roten op de load balancer. De toename moet er rekening mee houden dat een (1) extra IP-adres 64 kB extra poorten toevoegt voor distributie over alle cluster knooppunten.
 
@@ -304,7 +311,7 @@ Hieronder vindt u een lijst met annotaties die worden ondersteund voor Kubernete
 
 ## <a name="troubleshooting-snat"></a>Problemen met SNAT oplossen
 
-Als u weet dat u veel uitgaande TCP-of UDP-verbindingen naar hetzelfde doel-IP-adres en dezelfde poort start, en u ziet dat uitgaande verbindingen mislukken of worden aanbevolen door de ondersteuning van de SNAT-poorten (vooraf toegewezen tijdelijke poorten die door PAT worden gebruikt), hebt u verschillende algemene beperkende opties. Bekijk deze opties en beslis wat er beschikbaar en beste is voor uw scenario. Het is mogelijk dat een of meer informatie kan helpen bij het beheren van dit scenario. Raadpleeg de hand leiding voor het [oplossen van problemen met uitgaande verbindingen](../load-balancer/troubleshoot-outbound-connection.md#snatexhaust)voor meer informatie.
+Als u weet dat u veel uitgaande TCP-of UDP-verbindingen naar hetzelfde doel-IP-adres en dezelfde poort start, en u ziet dat uitgaande verbindingen mislukken of worden aanbevolen door de ondersteuning van de SNAT-poorten (vooraf toegewezen tijdelijke poorten die door PAT worden gebruikt), hebt u verschillende algemene beperkende opties. Bekijk deze opties en beslis wat er beschikbaar en beste is voor uw scenario. Het is mogelijk dat een of meer informatie kan helpen bij het beheren van dit scenario. Raadpleeg de hand leiding voor het [oplossen van problemen met uitgaande verbindingen](../load-balancer/troubleshoot-outbound-connection.md)voor meer informatie.
 
 De belangrijkste oorzaak van SNAT-uitputting is vaak een antipatroon voor de manier waarop uitgaande verbindingen tot stand worden gebracht, worden beheerd of de standaardwaarden van configureerbare timers worden gewijzigd. Lees deze sectie aandachtig.
 
@@ -326,8 +333,7 @@ Gebruik verbindingspools om vorm te geven aan het volume van uw verbindingen.
 - Wijzig timerwaarden voor het sluiten door TCP op besturingssysteemniveau alleen als u uitgebreide kennis hebt van de gevolgen hiervan. Terwijl de TCP-stack wordt hersteld, kunnen de prestaties van uw toepassing negatief worden beïnvloed wanneer de eind punten van een verbinding niet overeenkomen met de verwachtingen. Het willen wijzigen van timers is doorgaans een teken van een onderliggend ontwerp probleem. Bestudeer de volgende aanbevelingen.
 
 
-In het bovenstaande voor beeld wordt de regel bijgewerkt zodat alleen binnenkomend extern verkeer van het *MY_EXTERNAL_IP_RANGE* bereik wordt toegestaan. Meer informatie over het gebruik van deze methode voor het beperken van de toegang tot de load balancer-service is beschikbaar in de [Kubernetes-documentatie][kubernetes-cloud-provider-firewall].
-
+In het bovenstaande voor beeld wordt de regel bijgewerkt zodat alleen binnenkomend extern verkeer van het *MY_EXTERNAL_IP_RANGE* bereik wordt toegestaan. Als u *MY_EXTERNAL_IP_RANGE* vervangt door het interne IP-adres van het subnet, wordt verkeer beperkt tot interne ip's van het cluster. Hiermee worden clients buiten uw Kubernetes-cluster niet toegestaan om toegang te krijgen tot de load balancer.
 
 ## <a name="moving-from-a-basic-sku-load-balancer-to-standard-sku"></a>Verplaatsen van een basis-SKU load balancer naar standaard-SKU
 
@@ -345,6 +351,7 @@ De volgende beperkingen zijn van toepassing wanneer u AKS-clusters maakt en behe
     * Geef uw eigen open bare Ip's op.
     * Geef uw eigen open bare IP-voor voegsels op.
     * Geef een waarde op van Maxi maal 100 zodat het AKS-cluster ervoor kan zorgen dat veel *standaard* -SKU open bare ip's in dezelfde resource groep zijn gemaakt als het AKS-cluster. Dit is meestal een naam met *MC_* aan het begin. AKS wijst het open bare IP-adres toe aan de *standaard* -SKU Load Balancer. Standaard wordt één openbaar IP-adres automatisch gemaakt in dezelfde resource groep als het AKS-cluster als er geen openbaar IP-adres, openbaar IP-voor voegsel of aantal Ip's is opgegeven. U moet ook open bare adressen toestaan en voor komen dat u een Azure Policy maakt waardoor het IP-adres niet kan worden gemaakt.
+* Een openbaar IP-adres dat is gemaakt door AKS, kan niet opnieuw worden gebruikt als aangepaste zet uw eigen open bare IP-adressen. Alle aangepaste IP-adressen moeten worden gemaakt en beheerd door de gebruiker.
 * Het definiëren van de load balancer SKU kan alleen worden uitgevoerd wanneer u een AKS-cluster maakt. U kunt de load balancer SKU niet wijzigen nadat er een AKS-cluster is gemaakt.
 * U kunt slechts één type load balancer SKU (Basic of Standard) gebruiken in één cluster.
 * *Standaard* Load balancers van SKU bieden alleen ondersteuning voor *standaard* -SKU-IP-adressen.
@@ -358,7 +365,6 @@ Meer informatie over het gebruik van interne Load Balancer voor binnenkomend ver
 
 <!-- LINKS - External -->
 [kubectl]: https://kubernetes.io/docs/user-guide/kubectl/
-[kubernetes-cloud-provider-firewall]: https://kubernetes.io/docs/tasks/access-application-cluster/configure-cloud-provider-firewall/#restrict-access-for-loadbalancer-service
 [kubectl-delete]: https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#delete
 [kubectl-get]: https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#get
 [kubectl-apply]: https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#apply
@@ -388,7 +394,7 @@ Meer informatie over het gebruik van interne Load Balancer voor binnenkomend ver
 [azure-lb]: ../load-balancer/load-balancer-overview.md
 [azure-lb-comparison]: ../load-balancer/skus.md
 [azure-lb-outbound-rules]: ../load-balancer/load-balancer-outbound-rules-overview.md#snatports
-[azure-lb-outbound-connections]: ../load-balancer/load-balancer-outbound-connections.md#snat
+[azure-lb-outbound-connections]: ../load-balancer/load-balancer-outbound-connections.md
 [azure-lb-outbound-preallocatedports]: ../load-balancer/load-balancer-outbound-connections.md#preallocatedports
 [azure-lb-outbound-rules-overview]: ../load-balancer/load-balancer-outbound-rules-overview.md
 [install-azure-cli]: /cli/azure/install-azure-cli

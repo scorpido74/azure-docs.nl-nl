@@ -6,12 +6,12 @@ ms.suite: integration
 ms.reviewer: klam, logicappspm
 ms.topic: conceptual
 ms.date: 02/28/2020
-ms.openlocfilehash: 58d2efd0c61045739930ce36ba317b1aa6a40ce8
-ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
+ms.openlocfilehash: a4811bcb47120ba37337c73604e33826d9affcbb
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/11/2020
-ms.locfileid: "84685998"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85830023"
 ---
 # <a name="add-resources-to-your-integration-service-environment-ise-in-azure-logic-apps"></a>Resources toevoegen aan uw integratie service omgeving (ISE) in Azure Logic Apps
 
@@ -26,7 +26,7 @@ Nadat u een [ISE (Integration service Environment)](../logic-apps/connect-virtua
 
 * De ISE die u hebt gemaakt om uw Logic apps uit te voeren. Als u nog geen ISE hebt, [maakt u eerst een ISE](../logic-apps/connect-virtual-network-vnet-isolated-environment.md).
 
-* Als u resources wilt maken, toevoegen of bijwerken die zijn geïmplementeerd in een ISE, moet u de rol eigenaar of Inzender toewijzen aan die ISE, of u hebt machtigingen overgenomen via het Azure-abonnement of de Azure-resource groep die is gekoppeld aan de ISE. Voor personen die geen eigenaar, bijdrager of overgenomen machtigingen hebben, kunnen ze de rol Integratieserviceomgeving Inzender of de rol van Integratieserviceomgeving ontwikkelaar toewijzen. Zie [Wat is op rollen gebaseerd toegangs beheer (RBAC) voor Azure-resources](../role-based-access-control/overview.md)? voor meer informatie over op rollen gebaseerd toegangs beheer (RBAC).
+* Als u resources wilt maken, toevoegen of bijwerken die zijn geïmplementeerd in een ISE, moet u de rol eigenaar of Inzender toewijzen aan die ISE, of u hebt machtigingen overgenomen via het Azure-abonnement of de Azure-resource groep die is gekoppeld aan de ISE. Voor personen die geen eigenaar, bijdrager of overgenomen machtigingen hebben, kunnen ze de rol Integratieserviceomgeving Inzender of de rol van Integratieserviceomgeving ontwikkelaar toewijzen. Zie [Wat is Azure Role-based Access Control (Azure RBAC)](../role-based-access-control/overview.md)? voor meer informatie.
 
 <a name="create-logic-apps-environment"></a>
 
@@ -50,7 +50,7 @@ Voer de volgende stappen uit om Logic apps te bouwen die worden uitgevoerd in uw
    | **Locatie** | Yes | Onder **integratie service omgevingen**selecteert u het te gebruiken ISE, als dit nog niet is geselecteerd. <p><p> **Belang rijk**: als u uw Logic Apps wilt gebruiken met een integratie account, moeten beide dezelfde ISE gebruiken. |
    ||||
 
-1. Als u gereed bent, selecteert u **Maken**.
+1. Selecteer **Maken** als u klaar bent.
 
 1. Blijf [op de gebruikelijke manier door gaan met het maken van uw logische app](../logic-apps/quickstart-create-first-logic-app-workflow.md).
 
@@ -83,7 +83,7 @@ Voer de volgende stappen uit om een integratie account te maken dat gebruikmaakt
    | **Locatie** | Yes | Onder **integratie service omgevingen**selecteert u dezelfde ISE als uw Logic apps, als deze nog niet is geselecteerd. <p><p> **Belang rijk**: als u uw integratie account wilt gebruiken met Logic apps, moeten beide dezelfde ISE gebruiken. |
    ||||
 
-1. Als u gereed bent, selecteert u **Maken**.
+1. Selecteer **Maken** als u klaar bent.
 
 1. [Koppel uw logische app op de gebruikelijke manier aan uw integratie account](../logic-apps/logic-apps-enterprise-integration-create-integration-account.md#link-account).
 

@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 04/10/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: 7cb99ee9f52a26bd432a506ddc3ea4c9b13275b5
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: e9c4d70bcd0b991d90c68d310f94b21757fe2437
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82185112"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85830210"
 ---
 # <a name="azure-security-baseline-for-key-vault"></a>Azure-beveiligingsbasislijn voor Key Vault
 
@@ -32,7 +32,7 @@ Zie [overzicht van Azure Security-basis lijnen](https://docs.microsoft.com/azure
 
 Met Azure Private Link service kunt u toegang krijgen tot Azure-Services (bijvoorbeeld Azure Key Vault) en Azure hosted Customer/partner-services via een persoonlijk eind punt in uw virtuele netwerk.
 
-Een persoonlijk Azure-eind punt is een netwerk interface waarmee u privé en veilig een service kunt verbinden met een persoonlijke Azure-koppeling. Het persoonlijke eind punt maakt gebruik van een privé-IP-adres uit uw VNet, waardoor de service effectief in uw VNet wordt gezet. Al het verkeer naar de service kan worden gerouteerd via het persoonlijke eind punt, zodat er geen gateways, NAT-apparaten, ExpressRoute of VPN-verbindingen of open bare IP-adressen nodig zijn. Verkeer tussen uw virtuele netwerk en de services wordt via het backbonenetwerk van Microsoft geleid, waarmee de risico's van het openbare internet worden vermeden. U kunt verbinding maken met een exemplaar van een Azure-resource, zodat u het hoogste granulatie niveau krijgt in toegangs beheer.
+Een privé-eindpunt in Azure is een netwerkinterface waarmee u privé en veilig verbinding maakt met een service die door Azure Private Link mogelijk wordt gemaakt. Het privé-eindpunt maakt gebruik van een privé-IP-adres van uw VNet, waardoor de service feitelijk in uw VNet wordt geplaatst. Al het verkeer naar de service kan worden gerouteerd via het privé-eindpunt, zodat er geen gateways, NAT-apparaten, ExpressRoute of VPN-verbindingen of openbare IP-adressen nodig zijn. Verkeer tussen uw virtuele netwerk en de services wordt via het backbonenetwerk van Microsoft geleid, waarmee de risico's van het openbare internet worden vermeden. U kunt verbinding maken met een exemplaar van een Azure-resource, zodat u het hoogste granulariteit krijgt in toegangsbeheer.
 
 Key Vault integreren met een persoonlijke Azure-koppeling:
 
@@ -134,7 +134,7 @@ Overzicht van Azure-service Tags:https://docs.microsoft.com/azure/virtual-networ
 
 **Hulp**: Definieer en implementeer standaard beveiligings configuraties voor netwerk resources die zijn gekoppeld aan uw Azure Key Vault-instanties met Azure Policy. Gebruik Azure Policy aliassen in de naam ruimten ' micro soft. sleutel kluis ' en ' micro soft. Network ' om aangepaste beleids regels te maken om de netwerk configuratie van uw Azure Key Vault instanties te controleren of af te dwingen. U kunt ook gebruik maken van ingebouwde beleids definities die betrekking hebben op Azure Key Vault, zoals:
 
-Key Vault moet een service-eind punt van een virtueel netwerk gebruiken
+Key Vault moet gebruikmaken van een virtuele-netwerkservice-eindpunt
 
 Zelf studie: beleid maken en beheren om naleving af te dwingen:
 
@@ -709,7 +709,7 @@ Ontvang abonnementen waartoe het huidige account toegang heeft.:
 
 https://docs.microsoft.com/powershell/module/az.accounts/get-azsubscription?view=azps-3.0.0
 
-Wat is op rollen gebaseerd toegangsbeheer (RBAC) voor Azure-resources?
+Wat is Azure op rollen gebaseerd toegangs beheer (Azure RBAC)?
 
 https://docs.microsoft.com/azure/role-based-access-control/overview
 
@@ -869,15 +869,15 @@ https://docs.microsoft.com/azure/role-based-access-control/conditional-access-az
 
 **Hulp**: gebruik Azure Policy aliassen in de naam ruimte ' micro soft.-sleutel kluis ' om aangepaste beleids regels te maken om de configuratie van uw Azure Key Vault instanties te controleren of af te dwingen. U kunt ook ingebouwde Azure Policy definities gebruiken voor Azure Key Vault zoals:
 
-Key Vault objecten moeten worden hersteld
+Key Vault-objecten moeten herstelbaar zijn
 
-Diagnostische instellingen voor Key Vault implementeren op Log Analytics werk ruimte
+Diagnostische instellingen implementeren voor Key Vault naar Log Analytics-werkruimte
 
-Diagnostische logboeken in Key Vault moeten worden ingeschakeld
+Diagnostische logboeken in Key Vault moeten zijn ingeschakeld
 
-Key Vault moet een service-eind punt van een virtueel netwerk gebruiken
+Key Vault moet gebruikmaken van een virtuele-netwerkservice-eindpunt
 
-Diagnostische instellingen voor Key Vault implementeren in Event hub
+Diagnostische instellingen voor Key Vault toepassen op Event Hub
 
 Gebruik aanbevelingen van Azure Security Center als een veilige configuratie basislijn voor uw Azure Key Vault exemplaren.
 

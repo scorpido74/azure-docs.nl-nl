@@ -5,12 +5,12 @@ ms.assetid: bc497d71-75e7-47b1-babd-a060a664adca
 ms.topic: how-to
 ms.date: 04/28/2020
 ms.custom: cc996988-fb4f-47
-ms.openlocfilehash: c16bd728fe81796d671762615ec8dc4ad6e1d87d
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.openlocfilehash: c7dc18d8186d7262154cc0718bb6ad77ebbb5d2e
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83123734"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85829836"
 ---
 # <a name="create-a-function-triggered-by-azure-cosmos-db"></a>Een door Azure Cosmos DB geactiveerde functie maken
 
@@ -20,15 +20,15 @@ Leer hoe u een functie maakt die wordt geactiveerd wanneer gegevens worden toege
 
 ## <a name="prerequisites"></a>Vereisten
 
-Vereisten om deze zelfstudie te voltooien:
+Vereisten voor het voltooien van deze zelfstudie:
 
-+ Als u nog geen abonnement voor Azure hebt, maakt u een [gratis account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) voordat u begint.
++ Als u nog geen abonnement op Azure hebt, maak dan een [gratis account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) aan voordat u begint.
 
 > [!NOTE]
 > [!INCLUDE [SQL API support only](../../includes/functions-cosmosdb-sqlapi-note.md)]
 
 ## <a name="sign-in-to-azure"></a>Aanmelden bij Azure
-Meld u aan bij de [Azure Portal](https://portal.azure.com/) met uw Azure-account.
+Meld u met uw Azure-account aan bij [Azure Portal](https://portal.azure.com/).
 
 ## <a name="create-an-azure-cosmos-db-account"></a>Maak een Azure Cosmos DB-account
 
@@ -59,10 +59,10 @@ Vervolgens maakt u een functie in de nieuwe functie-app.
     | ------------ | ---------------- | ------------------------------------------ |
     | **Nieuwe functie** | Accepteer de standaard naam | De naam van de functie. |
     | **Cosmos DB-accountverbinding** | De standaard nieuwe naam accepteren | Selecteer **Nieuw**, het **Database account** dat u eerder hebt gemaakt en klik vervolgens op **OK**. Met deze actie wordt een toepassings instelling voor uw account verbinding gemaakt. Deze instelling wordt gebruikt door de binding om verbinding te maken met de database. |
-    | **Database naam** | Taken | De naam van de data base die de verzameling bevat die moet worden bewaakt. |
+    | **Databasenaam** | Taken | De naam van de data base die de verzameling bevat die moet worden bewaakt. |
     | **Naam van verzameling** | Items | De naam van de verzameling die moet worden bewaakt. |
     | **Naam van de verzameling voor leases** | leases | De naam van de verzameling waarin de leases moeten worden opgeslagen. |
-    | **Een lease verzameling maken als deze nog niet bestaat** | Ja | Controleert op de aanwezigheid van de lease verzameling en maakt deze automatisch. |
+    | **Een lease verzameling maken als deze nog niet bestaat** | Yes | Controleert op de aanwezigheid van de lease verzameling en maakt deze automatisch. |
 
     :::image type="content" source="./media/functions-create-cosmos-db-triggered-function/functions-cosmosdb-trigger-settings.png" alt-text="Maak de door Azure Cosmos DB geactiveerde functie":::
 
@@ -99,7 +99,7 @@ Vervolgens gaat u verbinding maken met uw Azure Cosmos DB-account en maakt u de 
     | Instelling|Voorgestelde waarde|Beschrijving |
     | ---|---|--- |
     | **Database-id** | Taken |De naam voor de nieuwe database. Dit moet overeenkomen met de naam die is gedefinieerd in de functiebinding. |
-    | **Container-ID** | Items | De naam voor de nieuwe container. Dit moet overeenkomen met de naam die is gedefinieerd in de functiebinding.  |
+    | **Container-id** | Items | De naam voor de nieuwe container. Dit moet overeenkomen met de naam die is gedefinieerd in de functiebinding.  |
     | **[Partitiesleutel](../cosmos-db/partition-data.md)** | /category|Een partitiesleutel waarmee gegevens gelijkmatig worden gedistribueerd naar elke partitie. Het is belang rijk dat u de juiste partitie sleutel selecteert bij het maken van een uitvoerende container. | 
     | **Doorvoer** |400 RU| Gebruik de standaardwaarde. U kunt de doorvoer later opschalen als u de latentie wilt beperken. |    
 
@@ -115,11 +115,13 @@ Nadat de container die in de functie binding is opgegeven, bestaat, kunt u de fu
 
 1. Vervang de inhoud van het nieuwe item door de volgende inhoud en kies vervolgens **Opslaan**.
 
-        {
-            "id": "task1",
-            "category": "general",
-            "description": "some task"
-        }
+    ```yaml
+    {
+        "id": "task1",
+        "category": "general",
+        "description": "some task"
+    }
+    ```
 
 1. Schakel over naar het eerste browsertabblad dat de functie in de portal bevat. Vouw de functielogboeken uit en controleer of de functie is geactiveerd met behulp van het nieuwe document. U ziet nu dat de waarde voor de `task1`-document-id naar de logboeken is geschreven. 
 

@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 08/29/2018
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: dffa9571706c067834e47a656ec1d47cb884fb48
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 73ee2165b8750b79bc33c76604ffed295fd1ea48
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82128708"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85831876"
 ---
 # <a name="certificates-and-the-app-service-environment"></a>Certificaten en de App Service Environment 
 
@@ -41,13 +41,16 @@ U kunt de ASE niet maken en het certificaat uploaden als één actie in de porta
 
 Als u een zelf ondertekend certificaat snel wilt maken voor het testen, kunt u de volgende bit van Power shell gebruiken:
 
-    $certificate = New-SelfSignedCertificate -certstorelocation cert:\localmachine\my -dnsname "*.internal-contoso.com","*.scm.internal-contoso.com"
+```azurepowershell-interactive
+$certificate = New-SelfSignedCertificate -certstorelocation cert:\localmachine\my -dnsname "*.internal-contoso.com","*.scm.internal-contoso.com"
 
-    $certThumbprint = "cert:\localMachine\my\" + $certificate.Thumbprint
-    $password = ConvertTo-SecureString -String "CHANGETHISPASSWORD" -Force -AsPlainText
+$certThumbprint = "cert:\localMachine\my\" + $certificate.Thumbprint
+$password = ConvertTo-SecureString -String "CHANGETHISPASSWORD" -Force -AsPlainText
 
-    $fileName = "exportedcert.pfx"
-    Export-PfxCertificate -cert $certThumbprint -FilePath $fileName -Password $password     
+$fileName = "exportedcert.pfx"
+Export-PfxCertificate -cert $certThumbprint -FilePath $fileName -Password $password
+```
+
 Wanneer u een zelfondertekend certificaat maakt, moet u ervoor zorgen dat de onderwerpnaam de indeling CN = {ASE_NAME_HERE} _InternalLoadBalancingASE heeft.
 
 ## <a name="application-certificates"></a>Toepassings certificaten 
@@ -72,7 +75,7 @@ Upload het certificaat naar uw app in uw ASE:
 
 1. Genereer een *CER* -bestand voor uw certificaat. 
 2. Ga naar de app waarvoor het certificaat is vereist in de Azure Portal
-3. Ga naar SSL-instellingen in de app. Klik op Certificaat uploaden. Select Openbaar. Selecteer lokale machine. Geef een naam op. Blader en selecteer uw *CER* -bestand. Selecteer uploaden. 
+3. Ga naar SSL-instellingen in de app. Klik op Certificaat uploaden. Selecteer Openbaar. Selecteer lokale machine. Geef een naam op. Blader en selecteer uw *CER* -bestand. Selecteer uploaden. 
 4. Kopieer de vinger afdruk.
 5. Ga naar toepassings instellingen. Maak een app-instelling WEBSITE_LOAD_ROOT_CERTIFICATES met de vinger afdruk als waarde. Als u meerdere certificaten hebt, kunt u deze in dezelfde instelling plaatsen, gescheiden door komma's, en geen witruimte als 
 
@@ -80,15 +83,18 @@ Upload het certificaat naar uw app in uw ASE:
 
 Het certificaat is beschikbaar voor alle apps in hetzelfde app service-plan als de app die deze instelling heeft geconfigureerd. Als u wilt dat de app beschikbaar is voor apps in een ander App Service-abonnement, moet u de bewerking voor het instellen van apps in een app in dat App Service plan herhalen. Als u wilt controleren of het certificaat is ingesteld, gaat u naar de kudu-console en geeft u de volgende opdracht op in de Power shell-console voor fout opsporing:
 
-    dir cert:\localmachine\root
+```azurepowershell-interactive
+dir cert:\localmachine\root
+```
 
 Als u tests wilt uitvoeren, kunt u een zelfondertekend certificaat maken en een *. CER* -bestand genereren met de volgende Power shell: 
 
-    $certificate = New-SelfSignedCertificate -certstorelocation cert:\localmachine\my -dnsname "*.internal-contoso.com","*.scm.internal-contoso.com"
+```azurepowershell-interactive
+$certificate = New-SelfSignedCertificate -certstorelocation cert:\localmachine\my -dnsname "*.internal-contoso.com","*.scm.internal-contoso.com"
 
-    $certThumbprint = "cert:\localMachine\my\" + $certificate.Thumbprint
-    $password = ConvertTo-SecureString -String "CHANGETHISPASSWORD" -Force -AsPlainText
+$certThumbprint = "cert:\localMachine\my\" + $certificate.Thumbprint
+$password = ConvertTo-SecureString -String "CHANGETHISPASSWORD" -Force -AsPlainText
 
-    $fileName = "exportedcert.cer"
-    export-certificate -Cert $certThumbprint -FilePath $fileName -Type CERT
-
+$fileName = "exportedcert.cer"
+export-certificate -Cert $certThumbprint -FilePath $fileName -Type CERT
+```

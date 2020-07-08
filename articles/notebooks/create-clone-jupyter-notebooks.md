@@ -3,18 +3,18 @@ title: Jupyter-notebooks maken en klonen-Azure Notebooks preview
 description: Azure Notebooks preview-projecten een verzameling van notitie blokken en gerelateerde bestanden beheren, die u kunt maken van een nieuwe of een kloon vanuit een andere bron.
 ms.topic: how-to
 ms.date: 02/25/2019
-ms.openlocfilehash: b29ff336c09a3bbf05a57c8a3a503b1875b76e54
-ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
+ms.openlocfilehash: e1321afc2ce294c8a39ba8d55574e2ca949f632e
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/11/2020
-ms.locfileid: "84710385"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85831281"
 ---
 # <a name="create-and-clone-projects-in-azure-notebooks-preview"></a>Projecten maken en klonen in Azure Notebooks preview
 
-Azure Notebooks worden uw Jupyter-notebooks en gerelateerde bestanden ingedeeld in logische groepen die *projecten*worden genoemd. U maakt eerst een project als container en vervolgens maakt of kloont u een of meer notitie blokken in een map naast andere project bestanden. (Dit proces wordt in de [zelf studie](tutorial-create-run-jupyter-notebook.md)gedemonstreerd.)
-
 [!INCLUDE [notebooks-status](../../includes/notebooks-status.md)]
+
+Azure Notebooks worden uw Jupyter-notebooks en gerelateerde bestanden ingedeeld in logische groepen die *projecten*worden genoemd. U maakt eerst een project als container en vervolgens maakt of kloont u een of meer notitie blokken in een map naast andere project bestanden. (Dit proces wordt in de [zelf studie](tutorial-create-run-jupyter-notebook.md)gedemonstreerd.)
 
 Een project houdt ook meta gegevens en andere configuratie-instellingen bij die van invloed zijn op de server waarop notitie blokken worden uitgevoerd, met inbegrip van aangepaste installatie stappen en pakket installatie. Zie [projecten beheren en configureren](configure-manage-azure-notebooks-projects.md)voor meer informatie.
 
@@ -26,7 +26,7 @@ In het dash board **Mijn projecten** op kunt `https://notebooks.azure.com/<userI
 
 Wat u op het dash board kunt doen, is afhankelijk van het feit of u bent aangemeld met het account dat eigenaar is van de gebruikers-ID:
 
-| Opdracht | Beschikbaar voor | Beschrijving |
+| Opdracht | Beschikbaar voor | Description |
 | --- | --- | --- |
 | **Uitvoeren** | Eigenaar | Start de Project Server en opent de projectmap in Jupyter. (In de meeste gevallen gaat u eerst naar een projectmap en vervolgens een notitie blok starten.) |
 | **Downloaden** | Iedereen | Hiermee wordt een kopie van het geselecteerde project gedownload als een ZIP-bestand. |

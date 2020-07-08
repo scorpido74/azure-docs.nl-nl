@@ -3,20 +3,20 @@ title: Pakketten in Jupyter-notebooks installeren-Azure Notebooks preview
 description: 'Meer informatie over het installeren van python-, R-en F #-pakketten in een Jupyter-notebook dat wordt uitgevoerd op Azure.'
 ms.topic: how-to
 ms.date: 12/04/2018
-ms.openlocfilehash: f6359b4c010834ffaee00b6208d309997339f36e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 43d38c9f3a4b0095967ab3e103ea729ec86ea2bd
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75646225"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85831213"
 ---
 # <a name="install-packages-from-within-azure-notebooks-preview"></a>Pakketten installeren vanuit Azure Notebooks preview
+
+[!INCLUDE [notebooks-status](../../includes/notebooks-status.md)]
 
 Hoewel u de [omgeving voor uw notitie blok kunt configureren op project niveau](configure-manage-azure-notebooks-projects.md#configure-the-project-environment), wilt u mogelijk pakketten rechtstreeks in een afzonderlijk notitie blok installeren.
 
 Pakketten die vanaf het notitie blok zijn geïnstalleerd, zijn alleen van toepassing op de huidige Server sessie. Pakket installaties blijven niet behouden zodra de server is afgesloten.
-
-[!INCLUDE [notebooks-status](../../includes/notebooks-status.md)]
 
 ## <a name="python"></a>Python
 
@@ -32,7 +32,7 @@ Als de uitvoer van de opdracht aangeeft dat de vereiste al is voldaan, dan kan A
 
 ## <a name="r"></a>R
 
-Pakketten in R kunnen worden geïnstalleerd vanuit KRANen of GitHub met `install.packages` behulp van de functie in een code-cel:
+Pakketten in R kunnen worden geïnstalleerd vanuit KRANen of GitHub met behulp van de `install.packages` functie in een code-cel:
 
 ```r
 install.packages("package_name")

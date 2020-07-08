@@ -3,14 +3,16 @@ title: Gebruikers profiel en-ID voor gebruik met Azure Notebooks preview
 description: Uw gebruikers profiel en gebruikers-ID maken en beheren met Azure Notebooks, dat onderdeel wordt van de URL van gedeelde notitie blokken.
 ms.topic: conceptual
 ms.date: 02/25/2019
-ms.openlocfilehash: d90eebf1b7b463e038bc5e54f51df0eb6ca746c4
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 9a1ff7f92faec21f537f068f0a33473700ddfed8
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75646276"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85831349"
 ---
 # <a name="your-profile-and-user-id-for-azure-notebooks-preview"></a>Uw profiel en gebruikers-ID voor Azure Notebooks preview
+
+[!INCLUDE [notebooks-status](../../includes/notebooks-status.md)]
 
 Binnen de krachtige, samenwerkings ruimte van Azure Notebooks presenteert uw gebruikers profiel uw open bare installatie kopie voor anderen:
 
@@ -23,8 +25,6 @@ Uw gebruikers-ID maakt deel uit van de Url's die u gebruikt om projecten en noti
 - `https://notebooks.azure.com/<user_id>/projects/<project_id>`: Project bestanden.
 - `https://notebooks.azure.com/<user_id>/projects/<project_id>/clones`: Klonen van een bepaalde projecten.
 - `https://notebooks.azure.com/<user_id>/projects/<project_id>/html/<notebook>.ipynb`: De HTML-preview van een specifiek notitie blok of bestand.
-
-[!INCLUDE [notebooks-status](../../includes/notebooks-status.md)]
 
 ## <a name="your-user-id"></a>Uw gebruikers-id
 
@@ -45,7 +45,7 @@ Een gebruikers-ID moet bestaan uit vier tot zestien letters, cijfers en afbreek 
 
 ## <a name="your-profile"></a>Uw profiel
 
-Uw profiel bestaat uit openbaar zicht bare informatie op de URL `https://notebooks.azure.com/<user_id>`. Uw profiel pagina bevat ook uw recent gebruikte projecten en gemarkeerd-projecten.
+Uw profiel bestaat uit openbaar zicht bare informatie op de URL `https://notebooks.azure.com/<user_id>` . Uw profiel pagina bevat ook uw recent gebruikte projecten en gemarkeerd-projecten.
 
 Als u uw profiel wilt bewerken, gebruikt u de opdracht **Profiel gegevens bewerken** op de profiel pagina. De secties van uw profiel zijn als volgt:
 
@@ -55,10 +55,10 @@ Als u uw profiel wilt bewerken, gebruikt u de opdracht **Profiel gegevens bewerk
 | Accountgegevens | Uw weergave naam, gebruikers-ID en open bare e-mail account. Het e-mail account biedt andere gebruikers een gemiddelde om contact met u op te nemen en kan afwijken van het [account](azure-notebooks-user-account.md) dat u gebruikt om u aan te melden Azure notebooks zichzelf. |
 | Profiel gegevens | Uw locatie, bedrijf, functie titel, website en een korte beschrijving van uzelf. |
 | Sociale profielen | Uw GItHub-, Twitter-en Facebook-Id's als u ze wilt delen. |
-| Privacy-instellingen | Biedt twee opdrachten:<ul><li>**Mijn profiel exporteren**: maakt en downloadt een *zip* -bestand met alle informatie die Azure notebooks opgeslagen in uw profiel, inclusief uw foto, profiel gegevens en beveiligings Logboeken.</li><li>**Mijn account verwijderen**: alle persoonlijke gegevens die zijn opgeslagen in azure notebooks, worden permanent verwijderd.</li></ul> |
+| Privacyinstellingen | Biedt twee opdrachten:<ul><li>**Mijn profiel exporteren**: maakt en downloadt een *zip* -bestand met alle informatie die Azure notebooks opgeslagen in uw profiel, inclusief uw foto, profiel gegevens en beveiligings Logboeken.</li><li>**Mijn account verwijderen**: alle persoonlijke gegevens die zijn opgeslagen in azure notebooks, worden permanent verwijderd.</li></ul> |
 | Site functies inschakelen | Hiermee kunt u aspecten van het gedrag van Azure Notebooks beheren:<ul><li>**Unified frontend voor notebooks**: Hiermee kunt u sneller opstarten van notebooks en betere persistentie.</li><li>Wordt **standaard uitgevoerd in jjupyterlab**: Azure notebooks biedt standaard een eenvoudige gebruikers interface die geschikt is voor de meeste gebruikers. Jjupyterlab biedt een rijkere maar complexere interface voor ervaren gebruikers.</li><li>**VNext-website**: Hiermee wordt de moderne webindeling ingeschakeld die in deze documentatie wordt weer gegeven.</li></ul> |
 
 ## <a name="next-steps"></a>Volgende stappen  
 
 > [!div class="nextstepaction"]
-> [Zelf studie: een Jupyter-notitie blok maken om een lineaire regressie uit te voeren](tutorial-create-run-jupyter-notebook.md)
+> [Zelf studie: een Jupyter-notebook maken en uitvoeren om lineaire regressie uit te voeren](tutorial-create-run-jupyter-notebook.md)

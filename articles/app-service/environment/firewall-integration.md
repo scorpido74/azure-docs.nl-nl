@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 03/31/2020
 ms.author: ccompy
 ms.custom: seodec18, references_regions
-ms.openlocfilehash: 937f84d1b918eb7b9f38a62caef5dea7cede6d4d
-ms.sourcegitcommit: bf8c447dada2b4c8af017ba7ca8bfd80f943d508
+ms.openlocfilehash: 8e63c0678967a21a6b2763574e594a1a6c2ba25b
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/25/2020
-ms.locfileid: "85367883"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85832981"
 ---
 # <a name="locking-down-an-app-service-environment"></a>Een App Service Environment vergren delen
 
@@ -96,8 +96,10 @@ Dit gebruik van de Application Gateway is slechts één voor beeld van het confi
 
 Azure Firewall kunt logboeken naar Azure Storage, Event hub of Azure Monitor logboeken verzenden. Als u uw app wilt integreren met een ondersteunde bestemming, gaat u naar de Azure Firewall-Portal > Diagnostische logboeken en schakelt u de logboeken voor de gewenste bestemming in. Als u integreert met Azure Monitor-logboeken, kunt u de logboek registratie voor elk verkeer dat naar Azure Firewall wordt verzonden, weer geven. Als u het niet-toegestane verkeer wilt zien, opent u de Log Analytics werkruimte Portal > logboeken en voert u een query in zoals 
 
-    AzureDiagnostics | where msg_s contains "Deny" | where TimeGenerated >= ago(1h)
- 
+```kusto
+AzureDiagnostics | where msg_s contains "Deny" | where TimeGenerated >= ago(1h)
+```
+
 Het integreren van uw Azure Firewall met Azure Monitor-Logboeken is handig wanneer u voor het eerst van een toepassing werkt wanneer u niet op de hoogte bent van alle toepassings afhankelijkheden. Meer informatie over Azure Monitor Logboeken vindt u [in azure monitor logboek gegevens analyseren](https://docs.microsoft.com/azure/azure-monitor/log-query/log-query-overview).
  
 ## <a name="dependencies"></a>Afhankelijkheden

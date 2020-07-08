@@ -16,12 +16,12 @@ ms.date: 10/20/2017
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 04f523a2615892268d56c167a682987453dc997c
-ms.sourcegitcommit: f98ab5af0fa17a9bba575286c588af36ff075615
+ms.openlocfilehash: f0c8134cdb72f8bff74fa68dff81fc9d6f1f5ccc
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/25/2020
-ms.locfileid: "85359735"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85830448"
 ---
 # <a name="renew-federation-certificates-for-office-365-and-azure-active-directory"></a>Federatie certificaten vernieuwen voor Office 365 en Azure Active Directory
 ## <a name="overview"></a>Overzicht
@@ -62,7 +62,9 @@ Azure AD probeert de federatieve meta gegevens te bewaken en de token handtekeni
 ### <a name="step-1-check-the-autocertificaterollover-state"></a>Stap 1: Controleer de status van de AutoCertificateRollover
 Open Power shell op uw AD FS-server. Controleer of de AutoCertificateRollover-waarde is ingesteld op True.
 
-    Get-Adfsproperties
+```azurepowershell-interactive
+Get-Adfsproperties
+```
 
 ![AutoCertificateRollover](./media/how-to-connect-fed-o365-certs/autocertrollover.png)
 
@@ -78,16 +80,22 @@ Open de MSOnline Power shell-prompt op uw AD FS-server en maak verbinding met Az
 > 
 >
 
-    Install-Module MSOnline
+```azurepowershell-interactive
+Install-Module MSOnline
+```
 
 Maak verbinding met Azure AD met behulp van de MSOnline Power shell-module.
 
-    Import-Module MSOnline
-    Connect-MsolService
+```azurepowershell-interactive
+Import-Module MSOnline
+Connect-MsolService
+```
 
 Controleer de certificaten die zijn geconfigureerd in AD FS en eigenschappen van de Azure AD-vertrouwens relatie voor het opgegeven domein.
 
-    Get-MsolFederationProperty -DomainName <domain.name> | FL Source, TokenSigningCertificate
+```azurepowershell-interactive
+Get-MsolFederationProperty -DomainName <domain.name> | FL Source, TokenSigningCertificate
+```
 
 ![Get-MsolFederationProperty](./media/how-to-connect-fed-o365-certs/certsync.png)
 
@@ -99,8 +107,8 @@ In de uitvoer van Get-MsolFederationProperty of Get-AdfsCertificate controleert 
 | AutoCertificateRollover | Certificaten die zijn gesynchroniseerd met Azure AD | Federatieve meta gegevens zijn openbaar toegankelijk | Controleert | Bewerking |
 |:---:|:---:|:---:|:---:|:---:|
 | Ja |Ja |Ja |- |Geen actie nodig. Zie [token handtekening certificaat automatisch vernieuwen](#autorenew). |
-| Ja |Nee |- |Minder dan 15 dagen |Vernieuw direct. Zie [token handtekening certificaat hand matig vernieuwen](#manualrenew). |
-| Nee |- |- |Minder dan 30 dagen |Vernieuw direct. Zie [token handtekening certificaat hand matig vernieuwen](#manualrenew). |
+| Yes |Nee |- |Minder dan 15 dagen |Vernieuw direct. Zie [token handtekening certificaat hand matig vernieuwen](#manualrenew). |
+| No |- |- |Minder dan 30 dagen |Vernieuw direct. Zie [token handtekening certificaat hand matig vernieuwen](#manualrenew). |
 
 \[-] Is niet van belang
 

@@ -5,13 +5,13 @@ author: rachel-msft
 ms.author: raagyema
 ms.service: postgresql
 ms.topic: conceptual
-ms.date: 10/25/2019
-ms.openlocfilehash: fb13e4f062976e39c3cec607001e6982db228873
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 6/30/2020
+ms.openlocfilehash: 056962483fe10e8b6558d2ca0aeb92d1ec970734
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "74765627"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85830990"
 ---
 # <a name="how-to-backup-and-restore-a-server-in-azure-database-for-postgresql---single-server-using-the-azure-portal"></a>Een back-up maken en herstellen van een server in Azure Database for PostgreSQL-één server met behulp van de Azure Portal
 
@@ -33,7 +33,7 @@ Wanneer u een server maakt via de Azure Portal, selecteert u in het venster **pr
 Zie de [Snelstartgids van Azure database for postgresql server](quickstart-create-server-database-portal.md)voor meer informatie over het instellen van deze waarden tijdens het maken.
 
 De Bewaar periode van een back-up van een server kan worden gewijzigd door de volgende stappen uit te voeren:
-1. Meld u aan bij de [Azure Portal](https://portal.azure.com/).
+1. Meld u aan bij [Azure Portal](https://portal.azure.com/).
 2. Selecteer uw Azure Database for PostgreSQL-server. Met deze actie wordt de pagina **overzicht** geopend.
 3. Selecteer **prijs categorie** in het menu onder **instellingen**. Met de schuif regelaar kunt u de **Bewaar periode voor back-ups** wijzigen van 7 tot 35 dagen.
 In de onderstaande scherm afbeelding is meer dan 34 dagen verg root.
@@ -69,30 +69,55 @@ Met de volgende stappen wordt de voorbeeld server hersteld naar een bepaald tijd
 
 De nieuwe server die door een herstel punt is gemaakt, heeft dezelfde aanmeldings naam en hetzelfde wacht woord voor de server beheerder als de bestaande server op het tijdstip van de tijd. U kunt het wacht woord wijzigen op de pagina **overzicht** van de nieuwe server.
 
-De nieuwe server die tijdens een herstel bewerking is gemaakt, heeft geen firewall regels of VNet-service-eind punten die bestonden op de oorspronkelijke server. Deze regels moeten afzonderlijk worden ingesteld voor deze nieuwe server.
-
+De nieuwe server die is gemaakt tijdens een herstelbewerking, bevat niet de firewallregels of VNet-service-eindpunten die bestonden op de oorspronkelijke server. Deze regels moeten afzonderlijk worden ingesteld voor deze nieuwe server.
 
 ## <a name="geo-restore"></a>Geo-herstel
 
 Als u uw server voor geografisch redundante back-ups hebt geconfigureerd, kan een nieuwe server worden gemaakt op basis van de back-up van die bestaande server. Deze nieuwe server kan worden gemaakt in elke regio die Azure Database for PostgreSQL beschikbaar is.  
 
-1. Selecteer de knop **een resource maken** (+) in de linkerbovenhoek van de portal. **Data bases** > **Azure database for PostgreSQL**selecteren.
+1. Selecteer de knop **een resource maken** (+) in de linkerbovenhoek van de portal. **Data bases**  >  **Azure database for PostgreSQL**selecteren.
 
-   ![De optie Azure Database for PostgreSQL](./media/howto-restore-server-portal/1-navigate-to-postgres.png)
+   :::image type="content" source="./media/howto-restore-server-portal/1-navigate-to-postgres.png" alt-text="Navigeer naar Azure Database for PostgreSQL.":::
 
-2. Kies in de vervolg keuzelijst **bron selecteren** de optie **back-up**. Met deze actie wordt een lijst met servers geladen waarvoor geo redundante back-ups zijn ingeschakeld. Selecteer een van deze back-ups om de bron van de nieuwe server te zijn.
-   ![Bron selecteren: back-up en lijst met geo redundante back-ups](./media/howto-restore-server-portal/2-georestore.png)
+2. Selecteer de implementatie optie voor **één server** .
 
+   :::image type="content" source="./media/howto-restore-server-portal/2-select-deployment-option.png" alt-text="Selecteer Azure Database for PostgreSQL-implementatie optie voor één server.":::
+ 
+3. Geef het abonnement, de resource groep en de naam van de nieuwe server op. 
+
+4. Selecteer **back-up** als **gegevens bron**. Met deze actie wordt een vervolg keuzelijst geladen die een lijst met servers bevat waarvoor geo redundante back-ups zijn ingeschakeld.
+   
+   :::image type="content" source="./media/howto-restore-server-portal/4-geo-restore.png" alt-text="Selecteer de gegevensbron.":::
+    
    > [!NOTE]
    > Wanneer een server voor het eerst wordt gemaakt, is deze mogelijk niet onmiddellijk beschikbaar voor geo Restore. Het kan enkele uren duren voordat de benodigde meta gegevens zijn gevuld.
    >
 
-3. Vul de rest van het formulier in met uw voor keuren. U kunt een wille keurige **locatie**selecteren. Nadat u de locatie hebt geselecteerd, kunt u **prijs categorie**selecteren. Standaard worden de para meters weer gegeven voor de bestaande server waarvan u wilt herstellen. U kunt op **OK** klikken zonder dat u wijzigingen hoeft aan te brengen. Of u kunt de **generatie** van de berekening wijzigen (indien beschikbaar in de regio die u hebt gekozen), het aantal **vCores**, de **Bewaar periode voor back-ups**en de optie voor de **redundantie van back-ups**. Het wijzigen van de **prijs categorie** (Basic, algemeen of Optimized memory) of **opslag** grootte tijdens het terugzetten wordt niet ondersteund.
+5. Selecteer de vervolg keuzelijst **back-up** .
+   
+   :::image type="content" source="./media/howto-restore-server-portal/5-geo-restore-backup.png" alt-text="Selecteer vervolg keuzelijst voor back-up.":::
 
+6. Selecteer de bron server waarvan u wilt herstellen.
+   
+   :::image type="content" source="./media/howto-restore-server-portal/6-select-backup.png" alt-text="Selecteer back-up.":::
 
-De nieuwe server die is gemaakt met geo Restore heeft dezelfde aanmeldings naam en hetzelfde wacht woord voor de server beheerder als voor de bestaande server op het moment dat de herstel bewerking werd gestart. Het wacht woord kan worden gewijzigd op de pagina **overzicht** van de nieuwe server.
+7. De server wordt standaard ingesteld op waarden voor het aantal **vCores**, de **Bewaar periode voor back-ups**, de optie voor de **redundantie van back-ups**, de **Engine versie**en de **beheerders referenties**. Selecteer **Doorgaan**. 
+   
+   :::image type="content" source="./media/howto-restore-server-portal/7-accept-backup.png" alt-text="Ga door met de back-up.":::
 
-De nieuwe server die tijdens een herstel bewerking is gemaakt, heeft geen firewall regels of VNet-service-eind punten die bestonden op de oorspronkelijke server. Deze regels moeten afzonderlijk worden ingesteld voor deze nieuwe server.
+8. Vul de rest van het formulier in met uw voor keuren. U kunt een wille keurige **locatie**selecteren.
+
+    Nadat u de locatie hebt geselecteerd, kunt **u server configureren** selecteren om de **generatie** van de berekening bij te werken (indien beschikbaar in de regio die u hebt gekozen), het aantal **vCores**, de **Bewaar periode voor back-ups**en de optie voor de **redundantie van back-ups**. Het wijzigen van de **prijs categorie** (Basic, algemeen of Optimized memory) of **opslag** grootte tijdens het terugzetten wordt niet ondersteund.
+
+   :::image type="content" source="./media/howto-restore-server-portal/8-create.png" alt-text="Formulier opvulling."::: 
+
+9. Selecteer **controleren + maken** om uw selecties te controleren. 
+
+10. Selecteer **Maken** om de server in te richten. Deze bewerking kan enkele minuten duren.
+
+De nieuwe server die is gemaakt met geo Restore heeft dezelfde aanmeldings naam en hetzelfde wacht woord voor de server beheerder als voor de bestaande server op het moment dat de herstel bewerking werd gestart. Het wachtwoord kan worden gewijzigd op de pagina **Overzicht** van de nieuwe server.
+
+De nieuwe server die is gemaakt tijdens een herstelbewerking, bevat niet de firewallregels of VNet-service-eindpunten die bestonden op de oorspronkelijke server. Deze regels moeten afzonderlijk worden ingesteld voor deze nieuwe server.
 
 
 ## <a name="next-steps"></a>Volgende stappen

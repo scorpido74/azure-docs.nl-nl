@@ -7,20 +7,20 @@ ms.topic: article
 ms.date: 06/08/2020
 ms.author: ccompy
 ms.custom: seodec18, fasttrack-edit
-ms.openlocfilehash: 07fc4fbf9305cb2688bae6356f44b80bb6a6c115
-ms.sourcegitcommit: 20e246e86e25d63bcd521a4b4d5864fbc7bad1b0
+ms.openlocfilehash: d55d1c0d72f0122472813fc6e79ba021e8b86e89
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/08/2020
-ms.locfileid: "84488151"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85831247"
 ---
-# <a name="azure-app-service-hybrid-connections"></a>Azure App Service Hybride verbindingen
+# <a name="azure-app-service-hybrid-connections"></a>Hybride verbindingen in Azure App Service
 
 Hybride verbindingen is zowel een service in azure als een functie in Azure App Service. Als service heeft het gebruik en de mogelijkheden die groter zijn dan de functies die worden gebruikt in App Service. Zie [Azure Relay hybride verbindingen][HCService]voor meer informatie over hybride verbindingen en het gebruik ervan buiten app service.
 
 In App Service kan Hybride verbindingen worden gebruikt om toegang te krijgen tot toepassings bronnen in elk netwerk waarmee uitgaande oproepen naar Azure via poort 443 kunnen worden gemaakt. Hybride verbindingen biedt toegang vanuit uw app tot een TCP-eind punt en biedt geen nieuwe manier om toegang te krijgen tot uw app. De hybride verbinding wordt gebruikt in App Service en is afgestemd op één combi natie van TCP-host en poort. Hiermee kunnen uw apps toegang krijgen tot bronnen in elk besturings systeem, op voor waarde dat het een TCP-eind punt is. Met de functie Hybride verbindingen weet u niet of u weet wat het toepassings protocol is of wat u opent. Het biedt gewoon toegang tot het netwerk.  
 
-## <a name="how-it-works"></a>Hoe werkt het? ##
+## <a name="how-it-works"></a>Uitleg ##
 Hybride verbindingen moet een relay-agent worden geïmplementeerd, waar deze zowel het gewenste eind punt als aan Azure kan bereiken. De relay-agent, Hybrid Connection Manager (HCM), belt naar Azure Relay via poort 443. Vanuit de Web-App-site maakt de App Service-infra structuur ook verbinding met Azure Relay namens de toepassing. Via de gekoppelde verbindingen kan uw app toegang krijgen tot het gewenste eind punt. De verbinding maakt gebruik van TLS 1,2 voor beveiliging en SAS-sleutels (Shared Access Signature) voor verificatie en autorisatie.    
 
 ![Diagram van de stroom op hoog niveau van hybride verbinding][1]
@@ -117,7 +117,7 @@ De functie Hybride verbindingen vereist een relay-agent in het netwerk dat als h
 
 Dit hulp programma kan worden uitgevoerd op Windows Server 2012 en hoger. De HCM wordt uitgevoerd als een service en maakt verbinding met het uitgaande verkeer naar Azure Relay op poort 443.  
 
-Nadat u HCM hebt geïnstalleerd, kunt u HybridConnectionManagerUi. exe uitvoeren om de gebruikers interface voor het hulp programma te gebruiken. Dit bestand bevindt zich in de installatiemap van Hybrid Connection Manager. In Windows 10 kunt u ook alleen zoeken naar *Hybrid Connection Manager gebruikers interface* in het zoekvak.  
+Nadat u HCM hebt geïnstalleerd, kunt u HybridConnectionManagerUi.exe uitvoeren om de gebruikers interface voor het hulp programma te gebruiken. Dit bestand bevindt zich in de installatiemap van Hybrid Connection Manager. In Windows 10 kunt u ook alleen zoeken naar *Hybrid Connection Manager gebruikers interface* in het zoekvak.  
 
 ![Scherm opname van Hybrid Connection Manager][7]
 
@@ -168,26 +168,30 @@ De Hybrid Connection Manager bevatten periodieke updates om problemen op te loss
 
 Er is ondersteuning voor Azure CLI voor Hybride verbindingen. De opdrachten die worden uitgevoerd, worden zowel toegepast op de app als op het niveau van het App Service plan.  De opdrachten op app-niveau zijn:
 
-    az webapp hybrid-connection
+```azurecli
+az webapp hybrid-connection
 
-    Group
-        az webapp hybrid-connection : Methods that list, add and remove hybrid-connections from webapps.
-            This command group is in preview. It may be changed/removed in a future release.
-    Commands:
-        add    : Add a hybrid-connection to a webapp.
-        list   : List the hybrid-connections on a webapp.
-        remove : Remove a hybrid-connection from a webapp.
+Group
+    az webapp hybrid-connection : Methods that list, add and remove hybrid-connections from webapps.
+        This command group is in preview. It may be changed/removed in a future release.
+Commands:
+    add    : Add a hybrid-connection to a webapp.
+    list   : List the hybrid-connections on a webapp.
+    remove : Remove a hybrid-connection from a webapp.
+```
 
 Met de App Service plan opdrachten kunt u instellen welke sleutel een bepaalde hybride verbinding zal gebruiken. Er zijn twee sleutels ingesteld op elke hybride verbinding, een primaire en een secundaire. U kunt ervoor kiezen om de primaire of secundaire sleutel met de onderstaande opdrachten te gebruiken. Zo kunt u scha kelen tussen sleutels voor wanneer u uw sleutels periodiek opnieuw wilt genereren. 
 
-    az appservice hybrid-connection --help
+```azurecli
+az appservice hybrid-connection --help
 
-    Group
-        az appservice hybrid-connection : A method that sets the key a hybrid-connection uses.
-            This command group is in preview. It may be changed/removed in a future release.
-    Commands:
-        set-key : Set the key that all apps in an appservice plan use to connect to the hybrid-
-                  connections in that appservice plan.
+Group
+    az appservice hybrid-connection : A method that sets the key a hybrid-connection uses.
+        This command group is in preview. It may be changed/removed in a future release.
+Commands:
+    set-key : Set the key that all apps in an appservice plan use to connect to the hybrid-
+                connections in that appservice plan.
+```
 
 ## <a name="secure-your-hybrid-connections"></a>Uw Hybride verbindingen beveiligen ##
 

@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.custom: subject-moving-resources
 ms.date: 06/26/2020
 ms.subservice: alerts
-ms.openlocfilehash: 65c2e3dbe7cb99c9b7c6e1a84178fd28d5013a69
-ms.sourcegitcommit: 374e47efb65f0ae510ad6c24a82e8abb5b57029e
+ms.openlocfilehash: 8e917d279d8de3dbe6de540a4ea1ef8cec1b6ffc
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/28/2020
-ms.locfileid: "85507939"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85830057"
 ---
 # <a name="how-to-update-alert-rules-or-action-rules-when-their-target-resource-moves-to-a-different-azure-region"></a>Waarschuwings regels of actie regels bijwerken wanneer de doel resource wordt verplaatst naar een andere Azure-regio
 
@@ -68,6 +68,8 @@ Als **slechts een deel** van de resources in het bereik is verplaatst, moet u de
 ### <a name="identifying-rules-associated-with-a-moved-resource-from-the-azure-portal"></a>Het identificeren van regels die zijn gekoppeld aan een verplaatste resource vanuit het Azure Portal
 
 - **Voor waarschuwings regels** : Navigeer naar waarschuwingen > het beheren van waarschuwings regels > filteren op het betreffende abonnement en de verplaatste resource.
+> [!NOTE]
+> Waarschuwings regels van het activiteiten logboek bieden geen ondersteuning voor dit proces. Het is niet mogelijk om het bereik van een waarschuwings regel voor het activiteiten logboek bij te werken en deze te laten verwijzen naar een resource in een ander abonnement. In plaats daarvan kunt u een nieuwe regel maken waarmee de oude wordt vervangen.
 
 - **Voor actie regels** : Navigeer naar waarschuwingen > acties beheren > actie regels (preview) > filteren op het insluitende abonnement en de verplaatste resource.
 

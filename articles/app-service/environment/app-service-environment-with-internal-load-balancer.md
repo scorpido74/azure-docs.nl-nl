@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 07/11/2017
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: 0c03905017629e28e41cce2adaa65eac347b8185
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 009b1ff08f9a3a0b840a20a01be5b16cd28d4533
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80294722"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85833100"
 ---
 # <a name="using-an-internal-load-balancer-with-an-app-service-environment"></a>Een interne Load Balancer gebruiken met een App Service Environment
 
@@ -118,9 +118,10 @@ De extra beheer items zijn certificaat beheer en DNS-beheer. U moet het certific
 #### <a name="dns-configuration"></a>DNS-configuratie
 Wanneer u een extern VIP-adres gebruikt, wordt de DNS beheerd door Azure. Elke app die is gemaakt in de AS-omgeving wordt automatisch toegevoegd aan Azure DNS, wat een openbaar DNS is. In een ILB AS-omgeving moet u uw eigen DNS beheren. Voor een bepaald subdomein, zoals contoso.corp.net, moet u DNS A-records maken die verwijzen naar uw ILB-adres voor:
 
-    * 
-    *. scm FTP-publicatie 
-
+- \*
+- *. scm
+- ftp
+- publish
 
 ## <a name="getting-started"></a>Aan de slag
 Zie [Inleiding tot app service omgevingen][WhatisASE] om aan de slag te gaan met app service omgevingen

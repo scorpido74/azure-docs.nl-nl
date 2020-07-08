@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 07/05/2019
 ms.author: panosper
-ms.openlocfilehash: 19b8be83a3678164197ec0650b07091e941a04d7
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: f647727c01bbddafe3b10877af3e1d5652bedd29
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "74110508"
+ms.lasthandoff: 07/01/2020
+ms.locfileid: "85833584"
 ---
 # <a name="text-to-speech-frequently-asked-questions"></a>Veelgestelde vragen over Text to Speech
 
@@ -59,7 +59,7 @@ We bieden extra services die u helpen bij het voorbereiden van scripts voor de o
 
 **V: mijn aanvragen worden beperkt?**
 
-**A**: de rest API beperkt aanvragen tot 25 per 5 seconden. Meer informatie vindt u op onze pagina's voor [Text to speech](text-to-speech.md).
+**A**: de rest API beperkt aanvragen tot 25 per vijf seconden voor standaard abonnementen. De gratis laag (F0) is beperkt tot 20 aanvragen per minuut.
 
 ## <a name="next-steps"></a>Volgende stappen
 

@@ -4,22 +4,22 @@ description: Meer informatie over toegang tot bestanden, REST-Api's, data bases 
 ms.topic: how-to
 ms.date: 12/04/2018
 ms.custom: tracking-python
-ms.openlocfilehash: a7e242c000b57cbbfafebc1e11191199a7a4b95f
-ms.sourcegitcommit: 01cd19edb099d654198a6930cebd61cae9cb685b
+ms.openlocfilehash: e0473a885860fad71c066f9d129f859528fa16e1
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/24/2020
-ms.locfileid: "85319132"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85833482"
 ---
 # <a name="access-cloud-data-in-a-notebook"></a>Toegang tot cloudgegevens in een notebook
+
+[!INCLUDE [notebooks-status](../../includes/notebooks-status.md)]
 
 Voor het uitvoeren van interessante werkzaamheden in een Jupyter-notebook zijn gegevens vereist. Gegevens zijn inderdaad de lifeblood van notebooks.
 
 U kunt [gegevens bestanden zeker importeren in een project](work-with-project-data-files.md), zelfs met opdrachten zoals `curl` in een notitie blok, om een bestand rechtstreeks te downloaden. Het is echter waarschijnlijk dat u veel meer uitgebreide gegevens moet gebruiken die beschikbaar zijn vanuit niet-bestands bronnen, zoals REST Api's, relationele data bases en Cloud opslag, zoals Azure-tabellen.
 
 In dit artikel vindt u een korte beschrijving van deze verschillende opties. Omdat de toegang tot gegevens het beste wordt gezien in actie, kunt u uitvoer bare code vinden in de [Azure notebooks-voor beelden: toegang tot uw gegevens](https://github.com/Microsoft/AzureNotebooks/blob/master/Samples/Access%20your%20data%20in%20Azure%20Notebooks.ipynb).
-
-[!INCLUDE [notebooks-status](../../includes/notebooks-status.md)]
 
 ## <a name="rest-apis"></a>REST-API’s
 

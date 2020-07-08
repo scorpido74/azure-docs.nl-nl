@@ -3,22 +3,22 @@ title: Meld u aan Azure Notebooks preview
 description: Configureer uw gebruikers account voor Azure Notebooks met behulp van een Microsoft-account of een werk-of school account.
 ms.topic: conceptual
 ms.date: 04/15/2019
-ms.openlocfilehash: 2a19803ec0a621b981fa9198766c58376ba50534
-ms.sourcegitcommit: 398fecceba133d90aa8f6f1f2af58899f613d1e3
+ms.openlocfilehash: 929a21785b5b48c81c2d2016874feed61021d3c0
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/21/2020
-ms.locfileid: "85125835"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85832182"
 ---
 # <a name="your-user-account-for-azure-notebooks-preview"></a>Uw gebruikers account voor Azure Notebooks preview
+
+[!INCLUDE [notebooks-status](../../includes/notebooks-status.md)]
 
 U kunt Azure Notebooks gebruiken met of zonder u aan te melden met een gebruikers account:
 
 - U kunt zonder u aan te melden, notitie blokken maken en uitvoeren, maar u kunt geen notitie blokken of gegevens bestanden behouden als onderdeel van projecten. Gebruikers die een koppeling naar een Azure-notebook ontvangen, kunnen bijvoorbeeld genieten van het notitie blok zonder dat ze zich hoeven aan te melden.
 - Wanneer u bent aangemeld, worden alle projecten met uw account door Azure Notebooks bewaard. Aangemelde gebruikers hebben ook een gebruikers-ID waarmee ze hun projecten en notitie blokken met anderen kunnen delen.
 - Wanneer het account dat wordt gebruikt voor Azure Notebooks ook is gekoppeld aan een Azure-abonnement, krijgt u extra voor delen, zoals het uitvoeren van notebooks op krachtigere servers, het maken van persoonlijke notitie blokken en het verlenen van machtigingen aan notebooks aan individuele gebruikers.
-
-[!INCLUDE [notebooks-status](../../includes/notebooks-status.md)]
 
 Voor het aanmelden bij Azure Notebooks is een micro soft-account of een werk-of school account vereist. U wordt gevraagd om uw account te selecteren wanneer u de **aanmeld** opdracht in de rechter bovenhoek van de pagina met notitie blokken selecteert:
 

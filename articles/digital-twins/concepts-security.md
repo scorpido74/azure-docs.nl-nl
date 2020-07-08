@@ -7,17 +7,14 @@ ms.author: baanders
 ms.date: 3/18/2020
 ms.topic: conceptual
 ms.service: digital-twins
-ROBOTS: NOINDEX, NOFOLLOW
-ms.openlocfilehash: 1a54ec54823d8d002344e26f97db7043433f6da0
-ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
+ms.openlocfilehash: 0f1f9e17646c4432d9c1103b3c579fc6bb0d2f13
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/12/2020
-ms.locfileid: "84736846"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85833161"
 ---
 # <a name="secure-azure-digital-twins-with-role-based-access-control"></a>Azure Digital Apparaatdubbels beveiligen met op rollen gebaseerd toegangs beheer
-
-[!INCLUDE [Azure Digital Twins current preview status](../../includes/digital-twins-preview-status.md)]
 
 Voor de beveiliging biedt Azure Digital Apparaatdubbels nauw keurige toegangs controle over specifieke gegevens, resources en acties in uw implementatie. Dit wordt gedaan via een gedetailleerde beheer strategie voor rollen en machtigingen die **op rollen gebaseerd toegangs beheer (RBAC)** wordt genoemd. Meer informatie over de algemene principes van RBAC voor Azure vindt u [hier](../role-based-access-control/overview.md).
 
@@ -51,6 +48,9 @@ Met beheerde identiteiten beheert het Azure-platform deze runtime-identiteit. U 
 Azure biedt de onderstaande ingebouwde RBAC-rollen voor het verlenen van toegang tot een Azure Digital Apparaatdubbels-resource:
 * Azure Digital Apparaatdubbels-eigenaar (preview): gebruik deze rol om volledige toegang te geven tot Azure Digital Apparaatdubbels-resources.
 * Azure Digital Apparaatdubbels Reader (preview): gebruik deze functie om alleen-lezen toegang te verlenen aan Azure Digital Apparaatdubbels-resources.
+
+> [!TIP]
+> De rol Azure Digital Apparaatdubbels Reader (preview) biedt nu ook ondersteuning voor Browse relaties.
 
 Zie voor meer informatie over hoe ingebouwde rollen worden gedefinieerd [begrijpen functie definities](../role-based-access-control/role-definitions.md) in de documentatie van Azure RBAC. Zie [aangepaste rollen voor Azure-resources](../role-based-access-control/custom-roles.md)voor meer informatie over het maken van aangepaste RBAC-rollen.
 

@@ -6,12 +6,12 @@ ms.service: storsimple
 ms.topic: how-to
 ms.date: 03/14/2019
 ms.author: alkohli
-ms.openlocfilehash: 4956c511f67fc5929eef2e39797cbe93b5b1d73e
-ms.sourcegitcommit: 374e47efb65f0ae510ad6c24a82e8abb5b57029e
+ms.openlocfilehash: 36f416183bd44180bee59142714e924e0ac8fefe
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/28/2020
-ms.locfileid: "85515515"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85830040"
 ---
 # <a name="use-the-storsimple-device-manager-service-to-view-and-manage-storsimple-alerts"></a>De StorSimple Apparaatbeheer-service gebruiken voor het weer geven en beheren van StorSimple-waarschuwingen
 
@@ -120,6 +120,7 @@ De volgende tabellen geven een lijst van enkele van de Microsoft Azure StorSimpl
 * [Prestatie waarschuwingen](#performance-alerts)
 * [Beveiligingswaarschuwingen](#security-alerts)
 * [Ondersteunings pakket waarschuwingen](#support-package-alerts)
+* [Meldingen van behuizing-omgeving](#enclosure-environment-alerts)
 
 ### <a name="cloud-connectivity-alerts"></a>Connectiviteits waarschuwingen voor de Cloud
 

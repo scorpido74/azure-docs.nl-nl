@@ -6,21 +6,21 @@ manager: andneil
 ms.author: getroyer
 ms.topic: how-to
 ms.date: 06/13/2019
-ms.openlocfilehash: b4da63b7b2a6da4316215b85a09ca7420745251c
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 291f1ac093568f50ad6146b70fa1ef69263b7b5b
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "78898404"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85830300"
 ---
 # <a name="use-azure-data-science-virtual-machines"></a>Azure data Science Virtual Machines gebruiken
+
+[!INCLUDE [notebooks-status](../../includes/notebooks-status.md)]
 
 Standaard worden projecten uitgevoerd op de **gratis Compute** -laag. Dit is beperkt tot 4 GB aan geheugen en 1 GB aan gegevens om misbruik te voor komen. U kunt deze beperkingen overs Laan door een andere virtuele machine te gebruiken die u in een Azure-abonnement hebt ingericht. Voor dit doel is de beste keuze een Azure Data Science Virtual Machine (DSVM) met behulp **van de data Science virtual machine voor Linux-installatie kopie (Ubuntu)** . Een dergelijke DSVM is vooraf geconfigureerd met alles wat u nodig hebt voor Azure Notebooks en wordt automatisch weer gegeven in de vervolg keuzelijst voor het **uitvoeren** van Azure notebooks.
 
 > [!Note]
 > Azure Notebooks wordt alleen ondersteund op Dsvm die zijn gemaakt met de Ubuntu-installatie kopie op Linux. Notebooks worden niet ondersteund in Windows 2012-, Windows 2016-of Linux CentOS-installatie kopieën.
-
-[!INCLUDE [notebooks-status](../../includes/notebooks-status.md)]
 
 ## <a name="create-a-dsvm-instance"></a>Een DSVM-exemplaar maken
 
@@ -49,7 +49,7 @@ U kunt deze waarden verkrijgen op de pagina DSVM in de Azure Portal.
 
 ## <a name="accessing-azure-notebooks-files-from-the-dsvm"></a>Azure Notebooks-bestanden openen vanuit de DSVM
 
-Toegang tot bestands systeem wordt ondersteund voor DSVM-versies 19.06.15 of hoger. Als u de versie wilt controleren, maakt u eerst verbinding met uw DSVM via SSH en voert u `curl -H Metadata:true "http://169.254.169.254/metadata/instance?api-version=2018-10-01"` vervolgens de volgende opdracht uit: (u moet het exacte IP-adres gebruiken dat hier wordt weer gegeven). Het versie nummer wordt weer gegeven in de uitvoer voor ' versie '.
+Toegang tot bestands systeem wordt ondersteund voor DSVM-versies 19.06.15 of hoger. Als u de versie wilt controleren, maakt u eerst verbinding met uw DSVM via SSH en voert u vervolgens de volgende opdracht uit: `curl -H Metadata:true "http://169.254.169.254/metadata/instance?api-version=2018-10-01"` (u moet het exacte IP-adres gebruiken dat hier wordt weer gegeven). Het versie nummer wordt weer gegeven in de uitvoer voor ' versie '.
 
 Als u de pariteit van bestands paden met de **gratis Compute** -laag wilt behouden, kunt u slechts één project tegelijk op een DSVM openen. Als u een nieuw project wilt openen, moet u eerst het openstaande project afsluiten.
 
@@ -63,7 +63,7 @@ Als meerdere gebruikers een DSVM delen, kunt u voor komen dat elkaar worden gebl
 
 1. Ga op het [Azure Portal](https://portal.azure.com)naar de virtuele machine.
 1. Onder **ondersteuning en probleem oplossing** in de linkermarge selecteert u **wacht woord opnieuw instellen**.
-1. Geef een nieuwe **gebruikers naam**op. De gebruikers naam moet een kleine letter zijn om deze te gebruiken met JupyterHub. Voer een wacht woord in. Selecteer vervolgens **bijwerken**. (Bestaande gebruikers namen worden niet beïnvloed.)
+1. Geef een nieuwe **gebruikers naam**op. De gebruikers naam moet een kleine letter zijn om deze te gebruiken met JupyterHub. Voer een wachtwoord in. Selecteer vervolgens **bijwerken**. (Bestaande gebruikers namen worden niet beïnvloed.)
 1. Herhaal de vorige stap voor extra gebruikers.
 
 ## <a name="next-steps"></a>Volgende stappen

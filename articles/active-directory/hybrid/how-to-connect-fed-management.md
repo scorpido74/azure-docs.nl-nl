@@ -18,12 +18,12 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.custom: seohack1
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d64be7350b373dcceb8c192f0859fa2ee7f47334
-ms.sourcegitcommit: f98ab5af0fa17a9bba575286c588af36ff075615
+ms.openlocfilehash: 58bc154f4ffb234df52faf3c02b5ed7ecaf77c2e
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/25/2020
-ms.locfileid: "85360075"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85830924"
 ---
 # <a name="manage-and-customize-active-directory-federation-services-by-using-azure-ad-connect"></a>Active Directory Federation Services beheren en aanpassen met behulp van Azure AD Connect
 In dit artikel wordt beschreven hoe u Active Directory Federation Services (AD FS) kunt beheren en aanpassen met behulp van Azure Active Directory (Azure AD) Connect. Het bevat ook andere veelvoorkomende AD FS taken die u mogelijk moet uitvoeren voor een volledige configuratie van een AD FS-farm.
@@ -192,7 +192,9 @@ Als u het logo van het bedrijf wilt wijzigen dat wordt weer gegeven op de **aanm
 > [!NOTE]
 > De aanbevolen afmetingen voor het logo zijn 260 x 35 \@ 96 dpi met een bestands grootte die niet groter is dan 10 KB.
 
-    Set-AdfsWebTheme -TargetName default -Logo @{path="c:\Contoso\logo.PNG"}
+```azurepowershell-interactive
+Set-AdfsWebTheme -TargetName default -Logo @{path="c:\Contoso\logo.PNG"}
+```
 
 > [!NOTE]
 > De *TargetName* -para meter is vereist. Het standaard thema dat wordt uitgebracht met AD FS is standaard genoemd.
@@ -200,7 +202,9 @@ Als u het logo van het bedrijf wilt wijzigen dat wordt weer gegeven op de **aanm
 ## <a name="add-a-sign-in-description"></a><a name="addsignindescription"></a>Een beschrijving van een aanmelding toevoegen 
 Als u een beschrijving van de aanmeldings pagina wilt toevoegen aan de **aanmeldings pagina**, gebruikt u de volgende Windows Power shell-cmdlet en syntaxis.
 
-    Set-AdfsGlobalWebContent -SignInPageDescriptionText "<p>Sign-in to Contoso requires device registration. Click <A href='http://fs1.contoso.com/deviceregistration/'>here</A> for more information.</p>"
+```azurepowershell-interactive
+Set-AdfsGlobalWebContent -SignInPageDescriptionText "<p>Sign-in to Contoso requires device registration. Click <A href='http://fs1.contoso.com/deviceregistration/'>here</A> for more information.</p>"
+```
 
 ## <a name="modify-ad-fs-claim-rules"></a><a name="modclaims"></a>AD FS claim regels wijzigen 
 AD FS ondersteunt een uitgebreide claim taal die u kunt gebruiken om aangepaste claim regels te maken. Zie [de rol van de taal van de claim regel](https://technet.microsoft.com/library/dd807118.aspx)voor meer informatie.
@@ -214,8 +218,10 @@ U kunt bijvoorbeeld **MS-DS-consistencyguid** als het kenmerk voor het bron anke
 
 **Regel 1: query kenmerken**
 
-    c:[Type == "http://schemas.microsoft.com/ws/2008/06/identity/claims/windowsaccountname"]
-    => add(store = "Active Directory", types = ("http://contoso.com/ws/2016/02/identity/claims/objectguid", "http://contoso.com/ws/2016/02/identity/claims/msdsconsistencyguid"), query = "; objectGuid,ms-ds-consistencyguid;{0}", param = c.Value);
+```claim-rule-language
+c:[Type == "http://schemas.microsoft.com/ws/2008/06/identity/claims/windowsaccountname"]
+=> add(store = "Active Directory", types = ("http://contoso.com/ws/2016/02/identity/claims/objectguid", "http://contoso.com/ws/2016/02/identity/claims/msdsconsistencyguid"), query = "; objectGuid,ms-ds-consistencyguid;{0}", param = c.Value);
+```
 
 In deze regel zoekt u een query uit op de waarden **MS-DS-consistencyguid** en **objectGuid** voor de gebruiker van Active Directory. Wijzig de archief naam in een geschikte archief naam in uw AD FS-implementatie. Wijzig ook het claim type in een juist claim type voor uw Federatie, zoals gedefinieerd voor **objectGuid** en **MS-DS-consistencyguid**.
 
@@ -223,23 +229,29 @@ Daarnaast kunt u met behulp van **toevoegen** en niet bij niet- **probleem**voor
 
 **Regel 2: controleren of MS-DS-consistencyguid bestaat voor de gebruiker**
 
-    NOT EXISTS([Type == "http://contoso.com/ws/2016/02/identity/claims/msdsconsistencyguid"])
-    => add(Type = "urn:anandmsft:tmp/idflag", Value = "useguid");
+```claim-rule-language
+NOT EXISTS([Type == "http://contoso.com/ws/2016/02/identity/claims/msdsconsistencyguid"])
+=> add(Type = "urn:anandmsft:tmp/idflag", Value = "useguid");
+```
 
 Deze regel definieert een tijdelijke vlag met de naam **idflag** die is ingesteld op **useguid** als er geen **MS-DS-consistencyguid** voor de gebruiker is ingevuld. De logica achter dit is het feit dat AD FS geen lege claims toestaat. Dus wanneer u claims `http://contoso.com/ws/2016/02/identity/claims/objectguid` en `http://contoso.com/ws/2016/02/identity/claims/msdsconsistencyguid` in regel 1 toevoegt, wordt er alleen een **msdsconsistencyguid** claim gemaakt als de waarde voor de gebruiker wordt ingevuld. Als deze niet is ingevuld, ziet AD FS dat deze een lege waarde heeft en deze onmiddellijk wegvalt. Alle objecten hebben **objectGuid**, zodat de claim altijd aanwezig is nadat regel 1 is uitgevoerd.
 
 **Regel 3: MS-DS-consistencyguid als onveranderbare ID uitgeven als deze aanwezig is**
 
-    c:[Type == "http://contoso.com/ws/2016/02/identity/claims/msdsconsistencyguid"]
-    => issue(Type = "http://schemas.microsoft.com/LiveID/Federation/2008/05/ImmutableID", Value = c.Value);
+```claim-rule-language
+c:[Type == "http://contoso.com/ws/2016/02/identity/claims/msdsconsistencyguid"]
+=> issue(Type = "http://schemas.microsoft.com/LiveID/Federation/2008/05/ImmutableID", Value = c.Value);
+```
 
 Dit is **een impliciete** controle. Als de waarde voor de claim bestaat, moet u deze als onveranderlijke ID uitgeven. In het vorige voor beeld wordt de claim **nameidentifier** gebruikt. U moet dit wijzigen in het juiste claim type voor de onveranderbare ID in uw omgeving.
 
 **Regel 4: objectGuid als onveranderlijke ID uitgeven als MS-DS-consistencyGuid niet aanwezig is**
 
-    c1:[Type == "urn:anandmsft:tmp/idflag", Value =~ "useguid"]
-    && c2:[Type == "http://contoso.com/ws/2016/02/identity/claims/objectguid"]
-    => issue(Type = "http://schemas.microsoft.com/LiveID/Federation/2008/05/ImmutableID", Value = c2.Value);
+```claim-rule-language
+c1:[Type == "urn:anandmsft:tmp/idflag", Value =~ "useguid"]
+&& c2:[Type == "http://contoso.com/ws/2016/02/identity/claims/objectguid"]
+=> issue(Type = "http://schemas.microsoft.com/LiveID/Federation/2008/05/ImmutableID", Value = c2.Value);
+```
 
 In deze regel controleert u gewoon de tijdelijke vlag **idflag**. U bepaalt of de claim moet worden uitgegeven op basis van de waarde.
 

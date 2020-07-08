@@ -3,12 +3,12 @@ title: .NET-traceer Logboeken in Application Insights verkennen
 description: Zoek logboeken die zijn gegenereerd door Trace, NLog of Log4Net.
 ms.topic: conceptual
 ms.date: 05/08/2019
-ms.openlocfilehash: bcd21286a547e0b0a6b5b93e8b05921e8e8cc1e2
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: d010fe4389e22c9909800f5329911b6b5619d7b6
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83647918"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85829530"
 ---
 # <a name="explore-netnet-core-and-python-trace-logs-in-application-insights"></a>.NET/.NET core-en python-traceer Logboeken in Application Insights verkennen
 
@@ -19,7 +19,7 @@ Verzend Diagnostische logboeken voor uw ASP.NET/ASP.NET-kern toepassing vanuit I
 >
 >
 ## <a name="install-logging-on-your-app"></a>Logboek registratie voor uw app installeren
-Installeer uw gekozen Framework voor logboek registratie in uw project. dit moet resulteren in een vermelding in app. config of web. config.
+Installeer uw gekozen Framework voor logboek registratie in uw project. dit moet resulteren in een vermelding in app.config of web.config.
 
 ```XML
  <configuration>
@@ -64,7 +64,7 @@ Gebruik deze methode als uw project type niet wordt ondersteund door het Applica
    - [Micro soft. ApplicationInsights. EventSourceListener](https://www.nuget.org/packages/Microsoft.ApplicationInsights.EventSourceListener/) 
  [ ![ Nuget](https://img.shields.io/nuget/vpre/Microsoft.ApplicationInsights.EventSourceListener.svg)](https://www.nuget.org/packages/Microsoft.ApplicationInsights.EventSourceListener/)
 
-Het NuGet-pakket installeert de benodigde assembly's en wijzigt web. config of app. config als dat van toepassing is.
+Het NuGet-pakket installeert de benodigde assembly's en wijzigt web.config of app.config als dit van toepassing is.
 
 ## <a name="ilogger"></a>ILogger
 
@@ -73,14 +73,18 @@ Zie [ApplicationInsightsLoggerProvider voor .net core ILogger-logboeken](ilogger
 ## <a name="insert-diagnostic-log-calls"></a>Diagnostische logboek aanroepen invoegen
 Als u System. Diagnostics. trace gebruikt, zou een typische oproep het volgende zijn:
 
-    System.Diagnostics.Trace.TraceWarning("Slow response - database01");
+```csharp
+System.Diagnostics.Trace.TraceWarning("Slow response - database01");
+```
 
 Als u liever log4net of NLog, gebruikt u:
 
+```csharp
     logger.Warn("Slow response - database01");
+```
 
 ## <a name="use-eventsource-events"></a>Event source-gebeurtenissen gebruiken
-U kunt [System. Diagnostics. tracing. Event source](https://msdn.microsoft.com/library/system.diagnostics.tracing.eventsource.aspx) -gebeurtenissen configureren die moeten worden verzonden naar Application Insights als traceringen. Installeer eerst het `Microsoft.ApplicationInsights.EventSourceListener` pakket NuGet. Bewerk vervolgens de `TelemetryModules` sectie van het bestand [ApplicationInsights. config](../../azure-monitor/app/configuration-with-applicationinsights-config.md) .
+U kunt [System. Diagnostics. tracing. Event source](https://msdn.microsoft.com/library/system.diagnostics.tracing.eventsource.aspx) -gebeurtenissen configureren die moeten worden verzonden naar Application Insights als traceringen. Installeer eerst het `Microsoft.ApplicationInsights.EventSourceListener` pakket NuGet. Bewerk vervolgens de `TelemetryModules` sectie van het [ApplicationInsights.config](../../azure-monitor/app/configuration-with-applicationinsights-config.md) -bestand.
 
 ```xml
     <Add Type="Microsoft.ApplicationInsights.EventSourceListener.EventSourceTelemetryModule, Microsoft.ApplicationInsights.EventSourceListener">
@@ -96,7 +100,7 @@ Voor elke bron kunt u de volgende para meters instellen:
  * **Tref woorden** (optioneel) Geef de integere waarde op van trefwoord combinaties die moeten worden gebruikt.
 
 ## <a name="use-diagnosticsource-events"></a>DiagnosticSource-gebeurtenissen gebruiken
-U kunt [System. Diagnostics. DiagnosticSource](https://github.com/dotnet/corefx/blob/master/src/System.Diagnostics.DiagnosticSource/src/DiagnosticSourceUsersGuide.md) -gebeurtenissen configureren die moeten worden verzonden naar Application Insights als traceringen. Installeer eerst het [`Microsoft.ApplicationInsights.DiagnosticSourceListener`](https://www.nuget.org/packages/Microsoft.ApplicationInsights.DiagnosticSourceListener) pakket NuGet. Bewerk vervolgens de sectie ' TelemetryModules ' van het bestand [ApplicationInsights. config](../../azure-monitor/app/configuration-with-applicationinsights-config.md) .
+U kunt [System. Diagnostics. DiagnosticSource](https://github.com/dotnet/corefx/blob/master/src/System.Diagnostics.DiagnosticSource/src/DiagnosticSourceUsersGuide.md) -gebeurtenissen configureren die moeten worden verzonden naar Application Insights als traceringen. Installeer eerst het [`Microsoft.ApplicationInsights.DiagnosticSourceListener`](https://www.nuget.org/packages/Microsoft.ApplicationInsights.DiagnosticSourceListener) pakket NuGet. Bewerk vervolgens de sectie ' TelemetryModules ' van het [ApplicationInsights.config](../../azure-monitor/app/configuration-with-applicationinsights-config.md) -bestand.
 
 ```xml
     <Add Type="Microsoft.ApplicationInsights.DiagnosticSourceListener.DiagnosticSourceTelemetryModule, Microsoft.ApplicationInsights.DiagnosticSourceListener">
@@ -109,7 +113,7 @@ U kunt [System. Diagnostics. DiagnosticSource](https://github.com/dotnet/corefx/
 Voor elke DiagnosticSource die u wilt traceren, voegt u een vermelding toe met het kenmerk **name** ingesteld op de naam van uw DiagnosticSource.
 
 ## <a name="use-etw-events"></a>ETW-gebeurtenissen gebruiken
-U kunt Event Tracing for Windows (ETW)-gebeurtenissen configureren die naar Application Insights worden verzonden als traceringen. Installeer eerst het `Microsoft.ApplicationInsights.EtwCollector` pakket NuGet. Bewerk vervolgens de sectie ' TelemetryModules ' van het bestand [ApplicationInsights. config](../../azure-monitor/app/configuration-with-applicationinsights-config.md) .
+U kunt Event Tracing for Windows (ETW)-gebeurtenissen configureren die naar Application Insights worden verzonden als traceringen. Installeer eerst het `Microsoft.ApplicationInsights.EtwCollector` pakket NuGet. Bewerk vervolgens de sectie ' TelemetryModules ' van het [ApplicationInsights.config](../../azure-monitor/app/configuration-with-applicationinsights-config.md) -bestand.
 
 > [!NOTE] 
 > ETW-gebeurtenissen kunnen alleen worden verzameld als het proces dat als host fungeert voor de SDK wordt uitgevoerd onder een identiteit die lid is van prestatie logboek gebruikers of beheerders.
@@ -133,17 +137,21 @@ U kunt de Application Insights Trace-API rechtstreeks aanroepen. De logboek regi
 
 Bijvoorbeeld:
 
-    var telemetry = new Microsoft.ApplicationInsights.TelemetryClient();
-    telemetry.TrackTrace("Slow response - database01");
+```csharp
+var telemetry = new Microsoft.ApplicationInsights.TelemetryClient();
+telemetry.TrackTrace("Slow response - database01");
+```
 
 Een voor deel van TrackTrace is dat u relatief lange gegevens in het bericht kunt plaatsen. U kunt bijvoorbeeld POST-gegevens coderen.
 
 U kunt ook een Ernst niveau aan uw bericht toevoegen. En, net als bij andere telemetrie, kunt u eigenschaps waarden toevoegen om te helpen bij het filteren of zoeken naar verschillende sets traceringen. Bijvoorbeeld:
 
-    var telemetry = new Microsoft.ApplicationInsights.TelemetryClient();
-    telemetry.TrackTrace("Slow database response",
-                   SeverityLevel.Warning,
-                   new Dictionary<string,string> { {"database", db.ID} });
+  ```csharp
+  var telemetry = new Microsoft.ApplicationInsights.TelemetryClient();
+  telemetry.TrackTrace("Slow database response",
+                 SeverityLevel.Warning,
+                 new Dictionary<string,string> { {"database", db.ID} });
+  ```
 
 Zo kunt u eenvoudig filteren op het [zoeken][diagnostic] in alle berichten van een bepaald Ernst niveau die betrekking hebben op een bepaalde data base.
 
@@ -192,11 +200,11 @@ Als u de Java-SDK gebruikt, gebruikt u de [Java-logboek adapters](../../azure-mo
 
 ### <a name="theres-no-log-adapter-option-in-the-configuration-tool"></a>Er is geen optie voor de logboek adapter in het configuratie hulpprogramma
 * Installeer eerst het Framework voor logboek registratie.
-* Als u System. Diagnostics. trace gebruikt, zorg er dan voor dat u deze hebt [geconfigureerd in *Web. config*](https://msdn.microsoft.com/library/system.diagnostics.eventlogtracelistener.aspx).
+* Als u System. Diagnostics. trace gebruikt, zorg er dan voor dat u deze [in *web.config*hebt geconfigureerd ](https://msdn.microsoft.com/library/system.diagnostics.eventlogtracelistener.aspx).
 * Zorg ervoor dat u beschikt over de nieuwste versie van Application Insights. Ga in Visual Studio naar **hulpprogram ma's**voor  >  **uitbrei dingen en updates**en open het tabblad **updates** . Als **Developer Analytics-Hulpprogram ma's** er is, selecteert u deze om het bij te werken.
 
 ### <a name="i-get-the-instrumentation-key-cannot-be-empty-error-message"></a><a name="emptykey"></a>Fout bericht ' de instrumentatie sleutel mag niet leeg zijn '
-Waarschijnlijk hebt u het Nuget-pakket voor de logboek registratie adapter geïnstalleerd zonder Application Insights te installeren. Klik in Solution Explorer met de rechter muisknop op *ApplicationInsights. config*en selecteer **Update Application Insights**. U wordt gevraagd om u aan te melden bij Azure en een Application Insights resource te maken of een bestaande te hergebruiken. Dat het probleem moet oplossen.
+Waarschijnlijk hebt u het Nuget-pakket voor de logboek registratie adapter geïnstalleerd zonder Application Insights te installeren. Klik in Solution Explorer met de rechter muisknop op *ApplicationInsights.config*en selecteer **Update Application Insights**. U wordt gevraagd om u aan te melden bij Azure en een Application Insights resource te maken of een bestaande te hergebruiken. Dat het probleem moet oplossen.
 
 ### <a name="i-can-see-traces-but-not-other-events-in-diagnostic-search"></a>Ik zie traceringen maar geen andere gebeurtenissen in diagnostische Zoek opdrachten
 Het kan even duren voordat alle gebeurtenissen en aanvragen worden ontvangen via de pijp lijn.

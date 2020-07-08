@@ -7,15 +7,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.date: 06/07/2019
+ms.date: 07/01/2019
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 2d9fb98da40602837eee57914036742994b4eb9c
-ms.sourcegitcommit: b56226271541e1393a4b85d23c07fd495a4f644d
+ms.openlocfilehash: 63c15b13134f17cd2e1d0bf7b8d11a168dca5b2a
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/26/2020
-ms.locfileid: "85385056"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85829946"
 ---
 # <a name="tutorial-create-user-flows-in-azure-active-directory-b2c"></a>Zelf studie: gebruikers stromen maken in Azure Active Directory B2C
 
@@ -40,13 +40,13 @@ Als u nog geen abonnement op Azure hebt, maak dan een [gratis account](https://a
 
 Met de registratie-en aanmeldings gebruikers stroom worden zowel registratie-als aanmeldings ervaringen met één configuratie afgehandeld. Gebruikers van uw toepassing ondervinden het juiste pad, afhankelijk van de context.
 
-1. Meld u aan bij de [Azure-portal](https://portal.azure.com).
+1. Meld u aan bij [Azure Portal](https://portal.azure.com).
 1. Selecteer het pictogram voor het adres van de map en het **abonnement** op de werk balk van de portal en selecteer vervolgens de map die uw Azure AD B2C Tenant bevat.
 
     ![B2C-Tenant, het deel venster mappen en abonnementen, Azure Portal](./media/tutorial-create-user-flows/directory-subscription-pane.png)
 
 1. Zoek in het Azure Portal naar en selecteer **Azure AD B2C**.
-1. Onder **beleids regels**selecteert u **gebruikers stromen (beleid)** en selecteert u vervolgens **nieuwe gebruikers stroom**.
+1. Onder **beleids regels**selecteert u **gebruikers stromen**en selecteert u vervolgens **nieuwe gebruikers stroom**.
 
     ![De pagina Gebruikers stromen in de portal met de knop nieuwe gebruikers stroom gemarkeerd](./media/tutorial-create-user-flows/signup-signin-user-flow.png)
 
@@ -82,7 +82,7 @@ Met de registratie-en aanmeldings gebruikers stroom worden zowel registratie-als
 
 Als u gebruikers in staat wilt stellen hun profiel te bewerken in uw toepassing, gebruikt u een gebruikers stroom voor het bewerken van profielen.
 
-1. Selecteer in het menu van de pagina overzicht van Azure AD B2C tenants de optie **gebruikers stromen (beleid)** en selecteer vervolgens **nieuwe gebruikers stroom**.
+1. Selecteer in het menu van de pagina overzicht van Azure AD B2C tenants de optie **gebruikers stromen**en selecteer vervolgens **nieuwe gebruikers stroom**.
 1. Selecteer de gebruikers stroom voor het **bewerken van profielen** op het tabblad **Aanbevolen** .
 1. Voer een **Naam** in voor de gebruikersstroom. Bijvoorbeeld *profileediting1*.
 1. Voor **id-providers**selecteert u **lokaal account aanmelden**.
@@ -100,7 +100,7 @@ Als u gebruikers in staat wilt stellen hun profiel te bewerken in uw toepassing,
 
 Als u gebruikers van uw toepassing de mogelijkheid wilt bieden hun wacht woord opnieuw in te stellen, gebruikt u een gebruikers stroom voor het opnieuw instellen van wacht woorden.
 
-1. Selecteer in het menu Azure AD B2C overzicht tenants de optie **gebruikers stromen (beleid)** en selecteer vervolgens **nieuwe gebruikers stroom**.
+1. Selecteer in het menu Azure AD B2C overzicht tenants de optie **gebruikers stromen**en selecteer vervolgens **nieuwe gebruikers stroom**.
 1. Selecteer de gebruikers stroom voor **wacht woord opnieuw instellen** op het tabblad **Aanbevolen** .
 1. Voer een **Naam** in voor de gebruikersstroom. Bijvoorbeeld *passwordreset1*.
 1. Schakel **wacht woord opnieuw instellen met e-mail adres**in bij **id-providers**.

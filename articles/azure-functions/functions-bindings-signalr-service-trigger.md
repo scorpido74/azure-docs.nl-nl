@@ -5,12 +5,12 @@ author: chenyl
 ms.topic: reference
 ms.date: 05/11/2020
 ms.author: chenyl
-ms.openlocfilehash: 4f68a3c8bb70c720f9d0c1870ead723b7b4c179c
-ms.sourcegitcommit: ba8df8424d73c8c4ac43602678dae4273af8b336
+ms.openlocfilehash: c2ad9b6c4410a62d5652050406e05be4cde5fab0
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/05/2020
-ms.locfileid: "84457447"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85830703"
 ---
 # <a name="signalr-service-trigger-binding-for-azure-functions"></a>Binding van de signaal service-trigger voor Azure Functions
 
@@ -67,9 +67,9 @@ public static async Task Run([SignalRTrigger("SignalRTest", "messages", "SendMes
 
 # <a name="c-script"></a>[C#-script](#tab/csharp-script)
 
-Hier vindt u de bindings gegevens in het bestand *Function. json* :
+Hier vindt u een bindings gegevens in de *function.jsvoor* het volgende bestand:
 
-Voor beeld van function. json:
+Voor beeld function.jsop:
 
 ```json
 {
@@ -101,9 +101,9 @@ public static void Run(InvocationContext invocation, string message, ILogger log
 
 # <a name="javascript"></a>[JavaScript](#tab/javascript)
 
-Hier vindt u de bindings gegevens in het bestand *Function. json* :
+Hier vindt u een bindings gegevens in de *function.jsvoor* het volgende bestand:
 
-Voor beeld van function. json:
+Voor beeld function.jsop:
 
 ```json
 {
@@ -130,9 +130,9 @@ module.exports = function (context, invocation) {
 
 # <a name="python"></a>[Python](#tab/python)
 
-Hier vindt u de bindings gegevens in het bestand *Function. json* :
+Hier vindt u een bindings gegevens in de *function.jsvoor* het volgende bestand:
 
-Voor beeld van function. json:
+Voor beeld function.jsop:
 
 ```json
 {
@@ -166,15 +166,15 @@ def main(invocation) -> None:
 
 ### <a name="signalrtrigger"></a>SignalRTrigger
 
-De volgende tabel bevat informatie over de binding configuratie-eigenschappen die u hebt ingesteld in het bestand *Function. json* en het- `SignalRTrigger` kenmerk.
+De volgende tabel bevat uitleg over de binding configuratie-eigenschappen die u hebt ingesteld in de *function.jsvoor* het bestand en het `SignalRTrigger` kenmerk.
 
-|function. json-eigenschap | Kenmerk eigenschap |Beschrijving|
+|function.jsbij eigenschap | Kenmerk eigenschap |Description|
 |---------|---------|----------------------|
 |**type**| N.v.t. | Moet worden ingesteld op `SignalRTrigger` .|
 |**direction**| N.v.t. | Moet worden ingesteld op `in` .|
 |**naam**| N.v.t. | De naam van de variabele die wordt gebruikt in de functie code voor het aanroep context object voor de trigger. |
 |**hubName**|**HubName**| Deze waarde moet worden ingesteld op de naam van de seingevings hub voor de functie die moet worden geactiveerd.|
-|**rubriek**|**Categorie**| Deze waarde moet worden ingesteld als de berichten categorie voor de functie die moet worden geactiveerd. De categorie kan een van de volgende waarden hebben: <ul><li>**verbindingen**: inclusief *verbonden* en *verbroken* gebeurtenissen</li><li>**berichten**: inclusief alle andere gebeurtenissen behalve die in de categorie *verbindingen*</li></ul> |
+|**category**|**Categorie**| Deze waarde moet worden ingesteld als de berichten categorie voor de functie die moet worden geactiveerd. De categorie kan een van de volgende waarden hebben: <ul><li>**verbindingen**: inclusief *verbonden* en *verbroken* gebeurtenissen</li><li>**berichten**: inclusief alle andere gebeurtenissen behalve die in de categorie *verbindingen*</li></ul> |
 |**gebeurtenislog**|**Gebeurtenis**| Deze waarde moet worden ingesteld als gebeurtenis van berichten voor de functie die moeten worden geactiveerd. Voor *bericht* categorie is gebeurtenis het *doel* in het [aanroep bericht](https://github.com/dotnet/aspnetcore/blob/master/src/SignalR/docs/specs/HubProtocol.md#invocation-message-encoding) dat clients verzenden. Voor de categorie *verbindingen* wordt alleen *verbinding* gemaakt met en de *verbinding is verbroken* . |
 |**parameterNames**|**ParameterNames**| Beschrijving Een lijst met namen die zijn gekoppeld aan de para meters. |
 |**connectionStringSetting**|**ConnectionStringSetting**| De naam van de app-instelling die de seingevings service connection string bevat (standaard ingesteld op ' AzureSignalRConnectionString ') |
@@ -187,7 +187,7 @@ Het invoer type van de trigger wordt gedeclareerd als ofwel `InvocationContext` 
 
 InvocationContext bevat alle inhoud in het bericht verzenden van de signalerings service.
 
-|Eigenschap in InvocationContext | Beschrijving|
+|Eigenschap in InvocationContext | Description|
 |------------------------------|------------|
 |Argumenten| Beschikbaar voor *berichten* categorie. Bevat *argumenten* in het [aanroep bericht](https://github.com/dotnet/aspnetcore/blob/master/src/SignalR/docs/specs/HubProtocol.md#invocation-message-encoding)|
 |Fout| Beschikbaar voor gebeurtenis waarbij de *verbinding is verbroken* . Het kan leeg zijn als de verbinding is gesloten zonder fout of de fout berichten bevat.|
@@ -196,7 +196,7 @@ InvocationContext bevat alle inhoud in het bericht verzenden van de signalerings
 |Gebeurtenis| De gebeurtenis van het bericht.|
 |ConnectionId| De verbindings-ID van de client die het bericht verzendt.|
 |UserId| De gebruikers-id van de client die het bericht verzendt.|
-|Kopteksten| De headers van de aanvraag.|
+|Headers| De headers van de aanvraag.|
 |Query’s uitvoeren| De query van de aanvraag wanneer clients verbinding maken met de service.|
 |Claims| De claims van de client.|
 
@@ -222,7 +222,9 @@ Voor de para meter binding is de volg orde van belang. Als u gebruikt `Parameter
 
 De Azure-functie genereert een URL voor de binding van de signaal service-trigger en wordt als volgt opgemaakt:
 
-    https://<APP_NAME>.azurewebsites.net/runtime/webhooks/signalr?code=<API_KEY>
+```http
+https://<APP_NAME>.azurewebsites.net/runtime/webhooks/signalr?code=<API_KEY>
+```
 
 De `API_KEY` wordt gegenereerd door de Azure-functie. U kunt de `API_KEY` van Azure Portal ophalen, omdat u de trigger voor signaal service-Triggers gebruikt.
 :::image type="content" source="media/functions-bindings-signalr-service/signalr-keys.png" alt-text="API-sleutel":::

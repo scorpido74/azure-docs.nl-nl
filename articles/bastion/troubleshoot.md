@@ -7,12 +7,12 @@ ms.service: bastion
 ms.topic: troubleshooting
 ms.date: 10/16/2019
 ms.author: charwen
-ms.openlocfilehash: ab4cc288f2a505baaa8f3a70db0a1fe76fb20c96
-ms.sourcegitcommit: 24f31287b6a526e23ff5b5469113522d1ccd4467
+ms.openlocfilehash: f3c142491363f30513877ae4368f291430aa3675
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/12/2020
-ms.locfileid: "84744065"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85831927"
 ---
 # <a name="troubleshoot-azure-bastion"></a>Problemen met Azure Bastion oplossen
 
@@ -28,7 +28,7 @@ In dit artikel leest u hoe u problemen met Azure Bastion kunt oplossen.
 2. Logboek registratie van diagnostische gegevens en anderen: uitgaand op 443 tot Cloud (regionale Tags in deze servicetag worden nog niet ondersteund.)
 3. Doel-VM: uitgaand voor 3389 en 22 tot VirtualNetwork
 
-Een voor beeld van de NSG-regels is beschikbaar als referentie in de Quick Start- [sjabloon](https://github.com/Azure/azure-quickstart-templates/tree/master/101-azure-bastion).
+Een voor beeld van de NSG-regels is beschikbaar als referentie in de Quick Start- [sjabloon](https://github.com/Azure/azure-quickstart-templates/tree/master/101-azure-bastion-nsg).
 Zie [NSG-richt lijnen voor Azure Bastion](bastion-nsg.md)voor meer informatie.
 
 ## <a name="unable-to-use-my-ssh-key-with-azure-bastion"></a><a name="sshkey"></a>Mijn SSH-sleutel kan niet worden gebruikt met Azure Bastion
