@@ -16,12 +16,12 @@ ms.date: 05/11/2020
 ms.author: curtand
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 284e05e372ef18877f02d11525fd70b0ecf977b1
-ms.sourcegitcommit: 24f31287b6a526e23ff5b5469113522d1ccd4467
+ms.openlocfilehash: 8e3791da8f8a990f62de0052e1662fd6037e936b
+ms.sourcegitcommit: cec9676ec235ff798d2a5cad6ee45f98a421837b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/12/2020
-ms.locfileid: "84743640"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85849289"
 ---
 # <a name="powershell-for-azure-ad-roles-in-privileged-identity-management"></a>Power shell voor Azure AD-rollen in Privileged Identity Management
 
@@ -36,14 +36,18 @@ Dit artikel bevat instructies voor het gebruik van Azure Active Directory (Azure
 
 1. De Azure AD-preview-module installeren
 
-        Install-module AzureADPreview
+    ```powershell
+    Install-module AzureADPreview
+    ```
 
 1. Zorg ervoor dat u over de vereiste rolmachtigingen beschikt voordat u doorgaat. Als u probeert beheer taken uit te voeren, zoals het toewijzen van een roltoewijzing of het bijwerken van de rolinstellingen, moet u ervoor zorgen dat u de rol beheerder van globale beheerder of bevoorrechte rol hebt. Als u alleen probeert uw eigen toewijzing te activeren, zijn er geen machtigingen vereist die niet langer zijn dan de standaard gebruikers machtigingen.
 
 1. Verbinding maken met Azure AD.
 
-        $AzureAdCred = Get-Credential  
-        Connect-AzureAD -Credential $AzureAdCred
+    ```powershell
+    $AzureAdCred = Get-Credential  
+    Connect-AzureAD -Credential $AzureAdCred
+    ```
 
 1. Zoek de Tenant-id voor uw Azure AD-organisatie door naar de map met **Azure Active Directory**  >  **Properties**  >  **-** eigenschappen te gaan. Gebruik in de sectie cmdlets deze ID wanneer u de resourceId wilt opgeven.
 
@@ -58,7 +62,9 @@ Gebruik de volgende cmdlet om alle ingebouwde en aangepaste Azure AD-rollen in u
 
 De Roledefinitionid hebben is specifiek voor uw Azure AD-organisatie en wijkt af van de Roledefinitionid hebben die worden geretourneerd door de functie beheer-API.
 
-    Get-AzureADMSPrivilegedRoleDefinition -ProviderId aadRoles -ResourceId 926d99e7-117c-4a6a-8031-0cc481e9da26
+```powershell
+Get-AzureADMSPrivilegedRoleDefinition -ProviderId aadRoles -ResourceId 926d99e7-117c-4a6a-8031-0cc481e9da26
+```
 
 Resultaat:
 
@@ -68,15 +74,21 @@ Resultaat:
 
 Gebruik de volgende cmdlet om alle roltoewijzingen in uw Azure AD-organisatie op te halen.
 
-    Get-AzureADMSPrivilegedRoleAssignment -ProviderId "aadRoles" -ResourceId "926d99e7-117c-4a6a-8031-0cc481e9da26"
+```powershell
+Get-AzureADMSPrivilegedRoleAssignment -ProviderId "aadRoles" -ResourceId "926d99e7-117c-4a6a-8031-0cc481e9da26"
+```
 
 Gebruik de volgende cmdlet om alle roltoewijzingen voor een bepaalde gebruiker op te halen. Deze lijst staat ook bekend als ' mijn rollen ' in de Azure AD-Portal. Het enige verschil is hier dat u een filter voor de onderwerp-ID hebt toegevoegd. De onderwerp-ID in deze context is de gebruikers-ID of de groeps-ID.
 
-    Get-AzureADMSPrivilegedRoleAssignment -ProviderId "aadRoles" -ResourceId "926d99e7-117c-4a6a-8031-0cc481e9da26" -Filter "subjectId eq 'f7d1887c-7777-4ba3-ba3d-974488524a9d'" 
+```powershell
+Get-AzureADMSPrivilegedRoleAssignment -ProviderId "aadRoles" -ResourceId "926d99e7-117c-4a6a-8031-0cc481e9da26" -Filter "subjectId eq 'f7d1887c-7777-4ba3-ba3d-974488524a9d'" 
+```
 
 Gebruik de volgende cmdlet om alle roltoewijzingen voor een bepaalde functie op te halen. De Roledefinitionid hebben hier is de ID die wordt geretourneerd door de vorige cmdlet.
 
-    Get-AzureADMSPrivilegedRoleAssignment -ProviderId "aadRoles" -ResourceId "926d99e7-117c-4a6a-8031-0cc481e9da26" -Filter "roleDefinitionId eq '0bb54a22-a3df-4592-9dc7-9e1418f0f61c'"
+```powershell
+Get-AzureADMSPrivilegedRoleAssignment -ProviderId "aadRoles" -ResourceId "926d99e7-117c-4a6a-8031-0cc481e9da26" -Filter "roleDefinitionId eq '0bb54a22-a3df-4592-9dc7-9e1418f0f61c'"
+```
 
 De cmdlets resulteren in een lijst van de hieronder weer gegeven roltoewijzings objecten. De onderwerp-ID is de gebruikers-ID van de gebruiker aan wie de rol is toegewezen. De toewijzings status kan actief of in aanmerking komen. Als de gebruiker actief is en er een ID in het veld LinkedEligibleRoleAssignmentId staat, betekent dit dat de rol momenteel is geactiveerd.
 
@@ -88,14 +100,18 @@ Resultaat:
 
 Gebruik de volgende cmdlet om een in aanmerking komende toewijzing te maken.
 
-    Open-AzureADMSPrivilegedRoleAssignmentRequest -ProviderId 'aadRoles' -ResourceId '926d99e7-117c-4a6a-8031-0cc481e9da26' -RoleDefinitionId 'ff690580-d1c6-42b1-8272-c029ded94dec' -SubjectId 'f7d1887c-7777-4ba3-ba3d-974488524a9d' -Type 'adminAdd' -AssignmentState 'Eligible' -schedule $schedule -reason "dsasdsas" 
+```powershell
+Open-AzureADMSPrivilegedRoleAssignmentRequest -ProviderId 'aadRoles' -ResourceId '926d99e7-117c-4a6a-8031-0cc481e9da26' -RoleDefinitionId 'ff690580-d1c6-42b1-8272-c029ded94dec' -SubjectId 'f7d1887c-7777-4ba3-ba3d-974488524a9d' -Type 'adminAdd' -AssignmentState 'Eligible' -schedule $schedule -reason "dsasdsas" 
+```
 
 De planning, waarmee de begin-en eind tijd van de toewijzing wordt gedefinieerd, is een object dat kan worden gemaakt zoals in het volgende voor beeld:
 
-    $schedule = New-Object Microsoft.Open.MSGraph.Model.AzureADMSPrivilegedSchedule
-    $schedule.Type = "Once"
-    $schedule.StartDateTime = (Get-Date).ToUniversalTime().ToString("yyyy-MM-ddTHH:mm:ss.fffZ")
-    $schedule.endDateTime = "2020-07-25T20:49:11.770Z"
+```powershell
+$schedule = New-Object Microsoft.Open.MSGraph.Model.AzureADMSPrivilegedSchedule
+$schedule.Type = "Once"
+$schedule.StartDateTime = (Get-Date).ToUniversalTime().ToString("yyyy-MM-ddTHH:mm:ss.fffZ")
+$schedule.endDateTime = "2020-07-25T20:49:11.770Z"
+```
 > [!Note]
 > Als de waarde van endDateTime is ingesteld op NULL, wordt een permanente toewijzing aangeduid.
 
@@ -103,7 +119,9 @@ De planning, waarmee de begin-en eind tijd van de toewijzing wordt gedefinieerd,
 
 Gebruik de volgende cmdlet om een in aanmerking komende toewijzing te activeren.
 
-    Open-AzureADMSPrivilegedRoleAssignmentRequest -ProviderId 'aadRoles' -ResourceId '926d99e7-117c-4a6a-8031-0cc481e9da26' -RoleDefinitionId 'f55a9a68-f424-41b7-8bee-cee6a442d418' -SubjectId 'f7d1887c-7777-4ba3-ba3d-974488524a9d' -Type 'UserAdd' -AssignmentState 'Active' -schedule $schedule -reason "dsasdsas" 
+```powershell
+Open-AzureADMSPrivilegedRoleAssignmentRequest -ProviderId 'aadRoles' -ResourceId '926d99e7-117c-4a6a-8031-0cc481e9da26' -RoleDefinitionId 'f55a9a68-f424-41b7-8bee-cee6a442d418' -SubjectId 'f7d1887c-7777-4ba3-ba3d-974488524a9d' -Type 'UserAdd' -AssignmentState 'Active' -schedule $schedule -reason "dsasdsas"
+``` 
 
 Deze cmdlet is bijna identiek aan de cmdlet voor het maken van een roltoewijzing. Het belangrijkste verschil tussen de cmdlets is dat voor de para meter – type activering ' userAdd ' is in plaats van ' adminAdd '. Het andere verschil is dat de para meter – AssignmentState is "actief" in plaats van "in aanmerking". "
 
@@ -116,7 +134,9 @@ Deze cmdlet is bijna identiek aan de cmdlet voor het maken van een roltoewijzing
 
 Gebruik de volgende cmdlet om alle rolinstellingen in uw Azure AD-organisatie op te halen.
 
-    Get-AzureADMSPrivilegedRoleSetting -ProviderId 'aadRoles' -Filter "ResourceId eq '926d99e7-117c-4a6a-8031-0cc481e9da26'" 
+```powershell
+Get-AzureADMSPrivilegedRoleSetting -ProviderId 'aadRoles' -Filter "ResourceId eq '926d99e7-117c-4a6a-8031-0cc481e9da26'" 
+```
 
 Er zijn vier hoofd objecten in de instelling. Slechts drie van deze objecten worden momenteel door PIM gebruikt. De UserMemberSettings zijn activerings instellingen, AdminEligibleSettings zijn toewijzings instellingen voor in aanmerking komende toewijzingen en de AdminmemberSettings zijn toewijzings instellingen voor actieve toewijzingen.
 
@@ -124,12 +144,16 @@ Er zijn vier hoofd objecten in de instelling. Slechts drie van deze objecten wor
 
 Als u de functie-instelling wilt bijwerken, moet u het bestaande instellings object voor een bepaalde rol ophalen en wijzigingen aanbrengen:
 
-    $setting = Get-AzureADMSPrivilegedRoleSetting -ProviderId 'aadRoles' -Filter "roleDefinitionId eq 'xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx'"
-    $setting.UserMemberSetting.justificationRule = '{"required":false}'
+```powershell
+$setting = Get-AzureADMSPrivilegedRoleSetting -ProviderId 'aadRoles' -Filter "roleDefinitionId eq 'xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx'"
+$setting.UserMemberSetting.justificationRule = '{"required":false}'
+```
 
 U kunt de instelling vervolgens vooraf Toep assen op een van de objecten voor een bepaalde rol, zoals hieronder wordt weer gegeven. De ID is hier de instellings-ID van de rol die kan worden opgehaald uit het resultaat van de cmdlet lijst rolinstellingen.
 
-    Set-AzureADMSPrivilegedRoleSetting -ProviderId 'aadRoles' -Id 'ff518d09-47f5-45a9-bb32-71916d9aeadf' -ResourceId '3f5887ed-dd6e-4821-8bde-c813ec508cf9' -RoleDefinitionId '2387ced3-4e95-4c36-a915-73d803f93702' -UserMemberSettings $setting 
+```powershell
+Set-AzureADMSPrivilegedRoleSetting -ProviderId 'aadRoles' -Id 'ff518d09-47f5-45a9-bb32-71916d9aeadf' -ResourceId '3f5887ed-dd6e-4821-8bde-c813ec508cf9' -RoleDefinitionId '2387ced3-4e95-4c36-a915-73d803f93702' -UserMemberSettings $setting 
+```
 
 ## <a name="next-steps"></a>Volgende stappen
 

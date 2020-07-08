@@ -6,18 +6,18 @@ ms.service: cosmos-db
 ms.topic: how-to
 ms.date: 06/16/2020
 ms.author: jawilley
-ms.openlocfilehash: ce0bc73fd21210e7cd5cd48c8134abd5f014b026
-ms.sourcegitcommit: b56226271541e1393a4b85d23c07fd495a4f644d
+ms.openlocfilehash: 30fdc3c2b75d8ae567acfc612514ab080b929c5f
+ms.sourcegitcommit: cec9676ec235ff798d2a5cad6ee45f98a421837b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/26/2020
-ms.locfileid: "85392417"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85850256"
 ---
 # <a name="performance-tips-for-azure-cosmos-db-and-net"></a>Tips voor betere prestaties van Azure Cosmos DB en .NET
 
 > [!div class="op_single_selector"]
 > * [.NET SDK v3](performance-tips-dotnet-sdk-v3-sql.md)
-> * [.NET-SDK v2](performance-tips.md)
+> * [.NET SDK v2](performance-tips.md)
 > * [Java SDK v4](performance-tips-java-sdk-v4-sql.md)
 > * [Async Java-SDK v2](performance-tips-async-java.md)
 > * [Sync Java-SDK v2](performance-tips-java.md)
@@ -99,7 +99,7 @@ Omdat TCP alleen wordt ondersteund in de directe modus, als u de gateway modus g
 
 :::image type="content" source="./media/performance-tips/connection-policy.png" alt-text="Het Azure Cosmos DB verbindings beleid" border="false":::
 
-**Tijdelijke poort uitputting**
+**Tijdelijke poortuitputting**
 
 Als u een hoog verbindings volume of een hoog poort gebruik voor uw instanties ziet, controleert u eerst of uw client exemplaren Singleton zijn. Met andere woorden, de client exemplaren moeten uniek zijn voor de levens duur van de toepassing.
 
@@ -201,7 +201,7 @@ Zie [het aantal threads/taken](#increase-threads) in het gedeelte netwerken van 
 
 ## <a name="indexing-policy"></a>Indexeringsbeleid
  
-**Niet-gebruikte paden uitsluiten van indexeren voor snellere schrijf bewerkingen**
+**Niet-gebruikte paden uitsluiten van indexering voor snellere schrijfbewerkingen**
 
 Met het Azure Cosmos DB-indexerings beleid kunt u ook opgeven welke document paden moeten worden opgenomen of uitgesloten van indexeren met behulp van index paden (IndexingPolicy. IncludedPaths en IndexingPolicy. ExcludedPaths). Als u alleen de paden indexeert die u nodig hebt, kunt u de schrijf prestaties verbeteren, de RU-kosten voor schrijf bewerkingen verlagen en de index opslag beperken voor scenario's waarin de query patronen vooraf bekend zijn. Dit komt doordat de index kosten direct overeenkomen met het aantal unieke paden dat is geïndexeerd. Deze code laat bijvoorbeeld zien hoe u een volledige sectie van de documenten (een substructuur) uitsluit van indexeren met behulp van het Joker teken ' * ':
 
@@ -247,9 +247,11 @@ De aanvraag kosten die in deze header worden geretourneerd, zijn een fractie van
 
 Wanneer een client de gereserveerde door Voer voor een account probeert te overschrijden, is er geen prestatie vermindering op de server en wordt er geen gebruik van de doorvoer capaciteit meer dan het gereserveerde niveau. De server preventief de aanvraag met RequestRateTooLarge te beëindigen (HTTP-status code 429). Het retourneert een [x-MS-retry-after-MS](/rest/api/cosmos-db/common-cosmosdb-rest-response-headers) -header die de hoeveelheid tijd, in milliseconden, aangeeft dat de gebruiker moet wachten voordat de aanvraag opnieuw wordt geprobeerd.
 
+```xml
     HTTP Status 429,
     Status Line: RequestRateTooLarge
     x-ms-retry-after-ms :100
+```
 
 De Sdk's ondervangen dit antwoord impliciet, respecteert de door de server opgegeven nieuwe poging na de header en voert de aanvraag opnieuw uit. Tenzij uw account gelijktijdig wordt geopend door meerdere clients, zal de volgende poging slagen.
 

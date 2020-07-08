@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 05/28/2019
 ms.author: maquaran
-ms.openlocfilehash: df48be038635799c08be409f7f1600e324cd8380
-ms.sourcegitcommit: b56226271541e1393a4b85d23c07fd495a4f644d
+ms.openlocfilehash: d4fbadd03f443d28376a122c7ecb06c475c2247d
+ms.sourcegitcommit: cec9676ec235ff798d2a5cad6ee45f98a421837b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/26/2020
-ms.locfileid: "85392162"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85850699"
 ---
 # <a name="going-social-with-azure-cosmos-db"></a>Sociaal met Azure Cosmos DB
 
@@ -39,22 +39,24 @@ U kunt een enorm SQL-exemplaar met voldoende kracht gebruiken voor het oplossen 
 
 In dit artikel wordt u begeleid bij het model leren van de gegevens van uw sociale platform met de NoSQL-data base van Azure [Azure Cosmos DB](https://azure.microsoft.com/services/cosmos-db/) kosten effectief. Ook wordt uitgelegd hoe u andere Azure Cosmos DB-functies gebruikt, zoals de [Gremlin-API](../cosmos-db/graph-introduction.md). Met behulp van een [NoSQL](https://en.wikipedia.org/wiki/NoSQL) -benadering, het opslaan van gegevens, in JSON-indeling en het Toep assen van [denormalisatie](https://en.wikipedia.org/wiki/Denormalization), kan de voorheen gecompliceerde post worden omgezet in één [document](https://en.wikipedia.org/wiki/Document-oriented_database):
 
-    {
-        "id":"ew12-res2-234e-544f",
-        "title":"post title",
-        "date":"2016-01-01",
-        "body":"this is an awesome post stored on NoSQL",
-        "createdBy":User,
-        "images":["https://myfirstimage.png","https://mysecondimage.png"],
-        "videos":[
-            {"url":"https://myfirstvideo.mp4", "title":"The first video"},
-            {"url":"https://mysecondvideo.mp4", "title":"The second video"}
-        ],
-        "audios":[
-            {"url":"https://myfirstaudio.mp3", "title":"The first audio"},
-            {"url":"https://mysecondaudio.mp3", "title":"The second audio"}
-        ]
-    }
+```json
+{
+    "id":"ew12-res2-234e-544f",
+    "title":"post title",
+    "date":"2016-01-01",
+    "body":"this is an awesome post stored on NoSQL",
+    "createdBy":User,
+    "images":["https://myfirstimage.png","https://mysecondimage.png"],
+    "videos":[
+        {"url":"https://myfirstvideo.mp4", "title":"The first video"},
+        {"url":"https://mysecondvideo.mp4", "title":"The second video"}
+    ],
+    "audios":[
+        {"url":"https://myfirstaudio.mp3", "title":"The first audio"},
+        {"url":"https://mysecondaudio.mp3", "title":"The second audio"}
+    ]
+}
+```
 
 En kan worden bevraagd met één query en zonder samen voegingen. Deze query is veel eenvoudig en eenvoudig, en voor het budget is er minder bronnen nodig om een beter resultaat te krijgen.
 
@@ -62,39 +64,45 @@ Azure Cosmos DB zorgt ervoor dat alle eigenschappen worden geïndexeerd met de a
 
 Opmerkingen bij een bericht kunnen worden behandeld als andere berichten met een bovenliggende eigenschap. (Deze procedure vereenvoudigt de object toewijzing.)
 
-    {
-        "id":"1234-asd3-54ts-199a",
-        "title":"Awesome post!",
-        "date":"2016-01-02",
-        "createdBy":User2,
-        "parent":"ew12-res2-234e-544f"
-    }
+```json
+{
+    "id":"1234-asd3-54ts-199a",
+    "title":"Awesome post!",
+    "date":"2016-01-02",
+    "createdBy":User2,
+    "parent":"ew12-res2-234e-544f"
+}
 
-    {
-        "id":"asd2-fee4-23gc-jh67",
-        "title":"Ditto!",
-        "date":"2016-01-03",
-        "createdBy":User3,
-        "parent":"ew12-res2-234e-544f"
-    }
+{
+    "id":"asd2-fee4-23gc-jh67",
+    "title":"Ditto!",
+    "date":"2016-01-03",
+    "createdBy":User3,
+    "parent":"ew12-res2-234e-544f"
+}
+```
 
 En alle sociale interacties kunnen worden opgeslagen op een afzonderlijk object als tellers:
 
-    {
-        "id":"dfe3-thf5-232s-dse4",
-        "post":"ew12-res2-234e-544f",
-        "comments":2,
-        "likes":10,
-        "points":200
-    }
+```json
+{
+    "id":"dfe3-thf5-232s-dse4",
+    "post":"ew12-res2-234e-544f",
+    "comments":2,
+    "likes":10,
+    "points":200
+}
+```
 
 Het maken van feeds is slechts een kwestie van het maken van documenten die een lijst met post-Id's met een opgegeven relevantie volgorde kunnen bevatten:
 
-    [
-        {"relevance":9, "post":"ew12-res2-234e-544f"},
-        {"relevance":8, "post":"fer7-mnb6-fgh9-2344"},
-        {"relevance":7, "post":"w34r-qeg6-ref6-8565"}
-    ]
+```json
+[
+    {"relevance":9, "post":"ew12-res2-234e-544f"},
+    {"relevance":8, "post":"fer7-mnb6-fgh9-2344"},
+    {"relevance":7, "post":"w34r-qeg6-ref6-8565"}
+]
+```
 
 U kunt een ' laatste ' stream hebben met berichten die zijn besteld op aanmaak datum. Of u kunt een ' beste ' stroom hebben met deze berichten die in de afgelopen 24 uur meer leuk zijn. U kunt zelfs een aangepaste stroom implementeren voor elke gebruiker op basis van logica als volgers en interesses. Dit is nog steeds een lijst met berichten. Het is een kwestie van het bouwen van deze lijsten, maar de Lees prestaties blijven onbelemmerd. Zodra u een van deze lijsten hebt aangeschaft, geeft u één query op om Cosmos DB met behulp van het [sleutel woord in](sql-query-keywords.md#in) om pagina's van berichten tegelijk op te halen.
 
@@ -104,28 +112,32 @@ Punten en leuk vindt plaats op een bericht dat op dezelfde manier kan worden ver
 
 Volgers zijn trickier. Cosmos DB heeft een maximale document grootte en het lezen/schrijven van grote documenten kan invloed hebben op de schaal baarheid van uw toepassing. U kunt bijvoorbeeld nadenken over het opslaan van volgers als een document met deze structuur:
 
-    {
-        "id":"234d-sd23-rrf2-552d",
-        "followersOf": "dse4-qwe2-ert4-aad2",
-        "followers":[
-            "ewr5-232d-tyrg-iuo2",
-            "qejh-2345-sdf1-ytg5",
-            //...
-            "uie0-4tyg-3456-rwjh"
-        ]
-    }
+```json
+{
+    "id":"234d-sd23-rrf2-552d",
+    "followersOf": "dse4-qwe2-ert4-aad2",
+    "followers":[
+        "ewr5-232d-tyrg-iuo2",
+        "qejh-2345-sdf1-ytg5",
+        //...
+        "uie0-4tyg-3456-rwjh"
+    ]
+}
+```
 
 Deze structuur kan worden gebruikt voor een gebruiker met een paar duizenden volgers. Als sommige beroemdheden worden toegevoegd aan de rang schikkingen, leidt deze methode echter tot een grote document grootte en kan het uiteindelijk de grootte van het document aanpassen.
 
 U kunt dit probleem oplossen door een gemengde benadering te gebruiken. Als onderdeel van het document met de gebruikers statistieken kunt u het aantal volgers opslaan:
 
-    {
-        "id":"234d-sd23-rrf2-552d",
-        "user": "dse4-qwe2-ert4-aad2",
-        "followers":55230,
-        "totalPosts":452,
-        "totalPoints":11342
-    }
+```json
+{
+    "id":"234d-sd23-rrf2-552d",
+    "user": "dse4-qwe2-ert4-aad2",
+    "followers":55230,
+    "totalPosts":452,
+    "totalPoints":11342
+}
+```
 
 U kunt de werkelijke grafiek van volgers opslaan met behulp van Azure Cosmos DB [GREMLIN API](../cosmos-db/graph-introduction.md) om [hoek punten](http://mathworld.wolfram.com/GraphVertex.html) te maken voor elke gebruiker en [randen](http://mathworld.wolfram.com/GraphEdge.html) die de relaties ' A-follow-B ' behouden. Met de Gremlin-API kunt u de volgers van een bepaalde gebruiker ophalen en complexere query's maken om gebruikers gemeen schappelijk te Voorst Ellen. Als u toevoegt aan de grafiek de inhouds categorieën die mensen leuk of geniet, kunt u een patroon ervaring met detectie van slimme inhoud maken, inhoud Voorst Ellen die de personen zijn die u ondervindt, of mensen zoeken die mogelijk veel worden gebruikt met.
 
@@ -141,19 +153,21 @@ U gaat dit oplossen door de sleutel kenmerken te identificeren van een gebruiker
 
 Laten we de gebruikers gegevens als voor beeld aannemen:
 
-    {
-        "id":"dse4-qwe2-ert4-aad2",
-        "name":"John",
-        "surname":"Doe",
-        "address":"742 Evergreen Terrace",
-        "birthday":"1983-05-07",
-        "email":"john@doe.com",
-        "twitterHandle":"\@john",
-        "username":"johndoe",
-        "password":"some_encrypted_phrase",
-        "totalPoints":100,
-        "totalPosts":24
-    }
+```json
+{
+    "id":"dse4-qwe2-ert4-aad2",
+    "name":"John",
+    "surname":"Doe",
+    "address":"742 Evergreen Terrace",
+    "birthday":"1983-05-07",
+    "email":"john@doe.com",
+    "twitterHandle":"\@john",
+    "username":"johndoe",
+    "password":"some_encrypted_phrase",
+    "totalPoints":100,
+    "totalPosts":24
+}
+```
 
 Door deze informatie te bekijken, kunt u snel detecteren wat essentiële informatie is en wat niet het geval is, dus het maken van een ' ladder ':
 
@@ -167,26 +181,30 @@ De grootste is de uitgebreide gebruiker. Het bevat de essentiële gebruikers geg
 
 Waarom zou u de gebruiker splitsen en deze informatie zelfs opslaan op verschillende plaatsen? Vanwege het prestatie punt van de weer gave zijn de costlier de query's groter. Bewaar documenten dun, met de juiste informatie om al uw prestatie afhankelijke query's voor uw sociale netwerk uit te voeren. Sla de overige aanvullende informatie op voor scenario's die het volledige profiel beslaan, aanmeldingen en gegevens analyse voor gebruiks analyses en Big Data-initiatieven. Het is niet belang rijk dat het verzamelen van gegevens voor gegevens analyse langzamer is, omdat deze wordt uitgevoerd op Azure SQL Database. U hebt al het belang om uw gebruikers een snelle en compacte ervaring te bieden. Een gebruiker die is opgeslagen op Cosmos DB ziet er als volgt uit:
 
-    {
-        "id":"dse4-qwe2-ert4-aad2",
-        "name":"John",
-        "surname":"Doe",
-        "username":"johndoe"
-        "email":"john@doe.com",
-        "twitterHandle":"\@john"
-    }
+```json
+{
+    "id":"dse4-qwe2-ert4-aad2",
+    "name":"John",
+    "surname":"Doe",
+    "username":"johndoe"
+    "email":"john@doe.com",
+    "twitterHandle":"\@john"
+}
+```
 
 En een bericht zou er als volgt uitzien:
 
-    {
-        "id":"1234-asd3-54ts-199a",
-        "title":"Awesome post!",
-        "date":"2016-01-02",
-        "createdBy":{
-            "id":"dse4-qwe2-ert4-aad2",
-            "username":"johndoe"
-        }
+```json
+{
+    "id":"1234-asd3-54ts-199a",
+    "title":"Awesome post!",
+    "date":"2016-01-02",
+    "createdBy":{
+        "id":"dse4-qwe2-ert4-aad2",
+        "username":"johndoe"
     }
+}
+```
 
 Wanneer een bewerking zich voordoet wanneer een segment kenmerk wordt beïnvloed, kunt u de betrokken documenten eenvoudig vinden. Gebruik alleen query's die verwijzen naar de geïndexeerde kenmerken, zoals `SELECT * FROM posts p WHERE p.createdBy.id == "edited_user_id"` en werk vervolgens de segmenten bij.
 
@@ -212,7 +230,7 @@ Maar wat kunt u zien? Enkele eenvoudige voor beelden zijn [sentiment analyse](ht
 
 Nu u bent gehookd, denkt u waarschijnlijk dat u een aantal PhD in math Science nodig hebt om deze patronen en informatie uit eenvoudige data bases en bestanden uit te pakken, maar dat is niet juist.
 
-[Azure machine learning](https://azure.microsoft.com/services/machine-learning/), een deel van de [Cortana Intelligence Suite](https://social.technet.microsoft.com/wiki/contents/articles/36688.introduction-to-cortana-intelligence-suite.aspx), is een volledig beheerde Cloud service waarmee u werk stromen kunt maken met behulp van algoritmen in een eenvoudige interface voor slepen en neerzetten, uw eigen algoritmen codeert in [R](https://en.wikipedia.org/wiki/R_\(programming_language\))of een aantal van de al ontwikkelde en kant-en-klare api's gebruikt, zoals: [Text Analytics](https://gallery.cortanaanalytics.com/MachineLearningAPI/Text-Analytics-2), [content moderator of [aanbevelingen](https://gallery.azure.ai/Solution/Recommendations-Solution).
+[Azure machine learning](https://azure.microsoft.com/services/machine-learning/), een deel van de [Cortana Intelligence Suite](https://social.technet.microsoft.com/wiki/contents/articles/36688.introduction-to-cortana-intelligence-suite.aspx), is een volledig beheerde Cloud service waarmee u werk stromen kunt maken met behulp van algoritmen in een eenvoudige interface voor slepen en neerzetten, uw eigen algoritmen codeert in [R](https://en.wikipedia.org/wiki/R_\(programming_language\))of een aantal van de al ontwikkelde en kant-en-klare api's gebruikt, zoals: [Text Analytics](https://gallery.cortanaanalytics.com/MachineLearningAPI/Text-Analytics-2), content moderator of [aanbevelingen](https://gallery.azure.ai/Solution/Recommendations-Solution).
 
 Als u een van deze Machine Learning scenario's wilt behaalt, kunt u [Azure data Lake](https://azure.microsoft.com/services/data-lake-store/) gebruiken om de gegevens uit verschillende bronnen op te nemen. U kunt ook [u-SQL](https://azure.microsoft.com/documentation/videos/data-lake-u-sql-query-execution/) gebruiken om de informatie te verwerken en een uitvoer te genereren die kan worden verwerkt door Azure machine learning.
 

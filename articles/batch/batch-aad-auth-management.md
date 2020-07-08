@@ -4,34 +4,34 @@ description: Verken het gebruik van Azure Active Directory om te verifiëren van
 ms.topic: how-to
 ms.date: 04/27/2017
 ms.custom: has-adal-ref
-ms.openlocfilehash: ec9cf15f37c3ca7e4e477c628733d34cac21c141
-ms.sourcegitcommit: 6fd8dbeee587fd7633571dfea46424f3c7e65169
+ms.openlocfilehash: b82d6b5f166f67752ea809353e074c01ac953a48
+ms.sourcegitcommit: cec9676ec235ff798d2a5cad6ee45f98a421837b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83726890"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85848975"
 ---
 # <a name="authenticate-batch-management-solutions-with-active-directory"></a>Oplossingen voor Batch Management verifiëren met Active Directory
 
-Toepassingen die de verificatie van de Azure Batch-beheer service aanroepen met [Azure Active Directory][aad_about] (Azure AD). Azure AD is de multi tenant-Cloud service van micro soft voor het beheren van Directory-en identiteits beheer. Azure zelf gebruikt Azure AD voor de verificatie van zijn klanten, service beheerders en gebruikers van de organisatie.
+Toepassingen die de verificatie van de Azure Batch-beheer service aanroepen met [Azure Active Directory](../active-directory/fundamentals/active-directory-whatis.md) (Azure AD). Azure AD is de multi tenant-Cloud service van micro soft voor het beheren van Directory-en identiteits beheer. Azure zelf gebruikt Azure AD voor de verificatie van zijn klanten, service beheerders en gebruikers van de organisatie.
 
-In de Batch Management .NET-bibliotheek worden typen weer gegeven voor het werken met batch-accounts, account sleutels, toepassingen en toepassings pakketten. De Batch Management .NET-bibliotheek is een Azure resource provider-client en wordt samen met [Azure Resource Manager][resman_overview] gebruikt voor het programmatisch beheren van deze resources. Azure AD is vereist voor de verificatie van aanvragen die worden gedaan via elke client van een Azure-resource provider, met inbegrip van de Batch Management .NET-bibliotheek en via [Azure Resource Manager][resman_overview].
+In de Batch Management .NET-bibliotheek worden typen weer gegeven voor het werken met batch-accounts, account sleutels, toepassingen en toepassings pakketten. De Batch Management .NET-bibliotheek is een Azure resource provider-client en wordt samen met [Azure Resource Manager](../azure-resource-manager/management/overview.md) gebruikt voor het programmatisch beheren van deze resources. Azure AD is vereist voor de verificatie van aanvragen die worden gedaan via elke client van een Azure-resource provider, met inbegrip van de Batch Management .NET-bibliotheek en via Azure Resource Manager.
 
-In dit artikel verkennen we het gebruik van Azure AD voor het verifiëren van toepassingen die gebruikmaken van de Batch Management .NET-bibliotheek. We laten zien hoe u met behulp van geïntegreerde verificatie een abonnements beheerder of mede beheerder kunt verifiëren met Azure AD. We maken gebruik van het [AccountManagement][acct_mgmt_sample] -voorbeeld project, beschikbaar op github, om Azure ad te laten door lopen met de Batch Management .net-bibliotheek.
+In dit artikel verkennen we het gebruik van Azure AD voor het verifiëren van toepassingen die gebruikmaken van de Batch Management .NET-bibliotheek. We laten zien hoe u met behulp van geïntegreerde verificatie een abonnements beheerder of mede beheerder kunt verifiëren met Azure AD. We maken gebruik van het [AccountManagement](https://github.com/Azure/azure-batch-samples/tree/master/CSharp/AccountManagement) -voorbeeld project, beschikbaar op github, om Azure ad te laten door lopen met de Batch Management .net-bibliotheek.
 
 Zie voor meer informatie over het gebruik van de Batch Management .NET-bibliotheek en het AccountManagement- [voor beeld batch-accounts en Quota's beheren met de Batch Management-client bibliotheek voor .net](batch-management-dotnet.md).
 
 ## <a name="register-your-application-with-azure-ad"></a>Uw toepassing registreren bij Azure AD
 
-Azure [Active Directory Authentication Library][aad_adal] (ADAL) biedt een programmatische interface voor Azure AD voor gebruik in uw toepassingen. Als u ADAL vanuit uw toepassing wilt aanroepen, moet u uw toepassing registreren in een Azure AD-Tenant. Wanneer u uw toepassing registreert, geeft u Azure AD op met informatie over uw toepassing, met inbegrip van een naam voor de app in de Azure AD-Tenant. Azure AD biedt vervolgens een toepassings-ID die u gebruikt om uw toepassing te koppelen aan Azure AD tijdens runtime. Zie voor meer informatie over de toepassings-ID [toepassings-en Service-Principal-objecten in azure Active Directory](../active-directory/develop/app-objects-and-service-principals.md).
+De [Azure Active Directory Authentication Library](../active-directory/active-directory-authentication-libraries.md) (ADAL) biedt een programmatische interface voor Azure AD voor gebruik in uw toepassingen. Als u ADAL vanuit uw toepassing wilt aanroepen, moet u uw toepassing registreren in een Azure AD-Tenant. Wanneer u uw toepassing registreert, geeft u Azure AD op met informatie over uw toepassing, met inbegrip van een naam voor de app in de Azure AD-Tenant. Azure AD biedt vervolgens een toepassings-ID die u gebruikt om uw toepassing te koppelen aan Azure AD tijdens runtime. Zie voor meer informatie over de toepassings-ID [toepassings-en Service-Principal-objecten in azure Active Directory](../active-directory/develop/app-objects-and-service-principals.md).
 
-Als u de voorbeeld toepassing AccountManagement wilt registreren, volgt u de stappen in de sectie [een toepassing toevoegen](../active-directory/develop/quickstart-register-app.md) in [toepassingen integreren met Azure Active Directory][aad_integrate]. Geef een **systeem eigen client toepassing** op voor het type toepassing. De standaard OAuth 2,0 URI voor de **omleidings-URI** is `urn:ietf:wg:oauth:2.0:oob` . U kunt echter een wille keurige geldige URI opgeven `http://myaccountmanagementsample` voor de **omleidings-URI**, omdat deze geen echt eind punt hoeft te zijn:
+Als u de voorbeeld toepassing AccountManagement wilt registreren, volgt u de stappen in de sectie [een toepassing toevoegen](../active-directory/develop/quickstart-register-app.md) in [toepassingen integreren met Azure Active Directory](../active-directory/active-directory-integrating-applications.md). Geef een **systeem eigen client toepassing** op voor het type toepassing. De standaard OAuth 2,0 URI voor de **omleidings-URI** is `urn:ietf:wg:oauth:2.0:oob` . U kunt echter een wille keurige geldige URI opgeven `http://myaccountmanagementsample` voor de **omleidings-URI**, omdat deze geen echt eind punt hoeft te zijn.
 
-![](./media/batch-aad-auth-management/app-registration-management-plane.png)
+![Een toepassing toevoegen](./media/batch-aad-auth-management/app-registration-management-plane.png)
 
 Zodra u het registratie proces hebt voltooid, ziet u de toepassings-ID en de object-ID (Service-Principal) die voor uw toepassing wordt vermeld.
 
-![](./media/batch-aad-auth-management/app-registration-client-id.png)
+![Registratie proces is voltooid](./media/batch-aad-auth-management/app-registration-client-id.png)
 
 ## <a name="grant-the-azure-resource-manager-api-access-to-your-application"></a>De Azure Resource Manager API-toegang verlenen tot uw toepassing
 
@@ -83,7 +83,7 @@ Uw client toepassing maakt gebruik van de toepassings-ID (ook wel de client-ID g
 // Specify the unique identifier (the "Client ID") for your application. This is required so that your
 // native client application (i.e. this sample) can access the Microsoft Graph API. For information
 // about registering an application in Azure Active Directory, please see "Register an application with the Microsoft identity platform" here:
-// https://docs.microsoft.com/en-us/azure/active-directory/develop/quickstart-register-app
+// https://docs.microsoft.com/azure/active-directory/develop/quickstart-register-app
 private const string ClientId = "<application-id>";
 ```
 Kopieer ook de omleidings-URI die u tijdens het registratie proces hebt opgegeven. De omleidings-URI die is opgegeven in de code moet overeenkomen met de omleidings-URI die u hebt opgegeven tijdens het registreren van de toepassing.
@@ -114,17 +114,7 @@ Nadat u uw referenties hebt verstrekt, kan de voorbeeld toepassing geverifieerde
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Zie voor meer informatie over het uitvoeren van de [AccountManagement-voorbeeld toepassing][acct_mgmt_sample] [batch-accounts en quota's beheren met de Batch Management-client bibliotheek voor .net](batch-management-dotnet.md).
-
-Zie de [Azure Active Directory-documentatie](https://docs.microsoft.com/azure/active-directory/)voor meer informatie over Azure AD. Gedetailleerde voor beelden waarin wordt getoond hoe u ADAL kunt gebruiken, zijn beschikbaar in de [Azure code samples](https://azure.microsoft.com/resources/samples/?service=active-directory) -bibliotheek.
-
-Zie [batch-service oplossingen verifiëren met Active Directory](batch-aad-auth.md)voor het verifiëren van batch service toepassingen met Azure AD.
-
-
-[aad_about]:../active-directory/fundamentals/active-directory-whatis.md "Wat is Azure Active Directory?"
-[aad_adal]: ../active-directory/active-directory-authentication-libraries.md
-[aad_auth_scenarios]:../active-directory/develop/authentication-scenarios.md "Verificatie Scenario's voor Azure AD"
-[aad_integrate]: ../active-directory/active-directory-integrating-applications.md "Toepassingen integreren met Azure Active Directory"
-[acct_mgmt_sample]: https://github.com/Azure/azure-batch-samples/tree/master/CSharp/AccountManagement
-[azure_portal]: https://portal.azure.com
-[resman_overview]: ../azure-resource-manager/management/overview.md
+- Zie voor meer informatie over het uitvoeren van de [AccountManagement-voorbeeld toepassing](https://github.com/Azure/azure-batch-samples/tree/master/CSharp/AccountManagement) [batch-accounts en quota's beheren met de Batch Management-client bibliotheek voor .net](batch-management-dotnet.md).
+- Zie de [Azure Active Directory-documentatie](../active-directory/index.yml)voor meer informatie over Azure AD.
+- Gedetailleerde voor beelden waarin wordt getoond hoe u ADAL kunt gebruiken, zijn beschikbaar in de [Azure code samples](https://azure.microsoft.com/resources/samples/?service=active-directory) -bibliotheek.
+- Zie [batch-service oplossingen verifiëren met Active Directory](batch-aad-auth.md)voor het verifiëren van batch service toepassingen met Azure AD.

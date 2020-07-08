@@ -10,12 +10,12 @@ ms.topic: article
 ms.workload: infrastructure-services
 ms.date: 03/12/2020
 ms.author: kumud
-ms.openlocfilehash: 7d3fff80dcae3f97ca947504390ebc4a824e5f0d
-ms.sourcegitcommit: bf99428d2562a70f42b5a04021dde6ef26c3ec3a
+ms.openlocfilehash: 097d2b4dffd1dda02d8e342a11b3a907bad4e90a
+ms.sourcegitcommit: cec9676ec235ff798d2a5cad6ee45f98a421837b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/23/2020
-ms.locfileid: "85255089"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85851641"
 ---
 # <a name="azure-networking-services-overview"></a>Overzicht van Azure Networking Services
 
@@ -120,7 +120,7 @@ Raadpleeg de [Azure firewall documentatie](../firewall/overview.md)voor meer inf
 
 ![Firewalloverzicht](./media/networking-overview/firewall-threat.png)
 
-### <a name="network-security-groups"></a><a name="nsg"></a>Netwerkbeveiligingsgroepen
+### <a name="network-security-groups"></a><a name="nsg"></a>Netwerk beveiligings groepen
 U kunt netwerkverkeer naar en van Azure-resources in een virtueel Azure-netwerk filteren met een netwerkbeveiligingsgroep. Zie [Security Overview](../virtual-network/security-overview.md)(Engelstalig) voor meer informatie.
 
 ### <a name="service-endpoints"></a><a name="serviceendpoints"></a>Service-eindpunten
@@ -141,10 +141,10 @@ In deze sectie worden de netwerk services in azure beschreven waarmee u toepassi
 
 |Service|Waarom gebruiken?|Scenario|
 |---|---|---|
-|[Content Delivery Network](#cdn)|Levert inhoud met hoge band breedte aan gebruikers. Cdn's slaat inhoud in de cache op rand servers op in POP-locaties (Point-of-Presence) die zich dicht bij eind gebruikers bevinden, om latentie te minimaliseren|<p>[CDN toevoegen aan een web-app](../cdn/cdn-add-to-web-app.md)</p> <p>[-Toegang tot opslag-blobs met behulp van een Azure CDN aangepast domein via HTTPS](..//cdn/cdn-storage-custom-domain-https.md)</p> <p>[Een aangepast domein toevoegen aan uw Azure CDN-eindpunt](../cdn/cdn-map-content-to-custom-domain.md)</p> <p>[HTTPS configureren op een Azure CDN aangepast domein](../cdn/cdn-custom-ssl.md?tabs=option-1-default-enable-https-with-a-cdn-managed-certificate)</p>|
+|[Content Delivery Network](#cdn)|Levert inhoud met hoge band breedte aan gebruikers. Cdn's slaat inhoud in de cache op rand servers op in POP-locaties (Point-of-Presence) die zich dicht bij eind gebruikers bevinden, om latentie te minimaliseren|<p>[CDN toevoegen aan een web-app](../cdn/cdn-add-to-web-app.md)</p> <p>[-Toegang tot opslag-blobs met behulp van een Azure CDN aangepast domein via HTTPS](..//cdn/cdn-storage-custom-domain-https.md)</p> <p>[Een aangepast domein toevoegen aan uw Azure CDN-eindpunt](../cdn/cdn-map-content-to-custom-domain.md)</p> <p>[HTTPS op een aangepast domein van Azure CDN configureren](../cdn/cdn-custom-ssl.md?tabs=option-1-default-enable-https-with-a-cdn-managed-certificate)</p>|
 |[Azure Front Door Service](#frontdoor)|Hiermee kunt u de wereld wijde route ring voor uw webverkeer definiëren, beheren en bewaken door te optimaliseren voor de beste prestaties en directe globale failover voor hoge Beschik baarheid.|<p>[Een aangepast domein toevoegen aan de Azure Front Door Service](../frontdoor/front-door-custom-domain.md)</p> <p>[HTTPS configureren in een aangepast Front Door-domein](../frontdoor/front-door-custom-domain-https.md)</p><p>[Beleid voor geofiltering Web Application firewall instellen](../frontdoor/front-door-tutorial-geo-filtering.md)|
 |[Traffic Manager](#trafficmanager)|Distribueert verkeer op basis van DNS naar Services in wereld wijde Azure-regio's, en biedt hoge Beschik baarheid en reactie snelheid|<p> [Verkeer routeren voor lage latentie](../traffic-manager/tutorial-traffic-manager-improve-website-response.md)</p><p>[Verkeer routeren naar een prioriteitseindpunt](../traffic-manager/traffic-manager-configure-priority-routing-method.md)</p><p> [Verkeer beheren met gewogen eindpunten](../traffic-manager/tutorial-traffic-manager-weighted-endpoint-routing.md)</p><p>[Verkeer routeren op basis van de geografische locatie van het eind punt](../traffic-manager/traffic-manager-configure-geographic-routing-method.md)</p> <p> [Verkeer routeren op basis van het subnet van de gebruiker](../traffic-manager/tutorial-traffic-manager-subnet-routing.md)</p>|
-|[Load Balancer](#loadbalancer)|Voorziet in regionale taak verdeling door verkeer te routeren tussen beschikbaarheids zones en in uw VNets. Voorziet in interne taak verdeling door verkeer tussen en tussen uw resources te routeren om uw regionale toepassing te bouwen.|<p> [Internetverkeer gelijkmatig verdelen over VM's](../load-balancer/tutorial-load-balancer-standard-manage-portal.md)</p> <p>[Taak verdeling van verkeer tussen virtuele machines in een virtueel netwerk](../load-balancer/tutorial-load-balancer-basic-internal-portal.md)<p>[Poort verkeer door sturen naar een specifieke poort op specifieke Vm's](../load-balancer/tutorial-load-balancer-port-forwarding-portal.md)</p><p> [Taak verdeling en uitgaande regels configureren](../load-balancer/configure-load-balancer-outbound-cli.md)</p>|
+|[Load Balancer](#loadbalancer)|Voorziet in regionale taak verdeling door verkeer te routeren tussen beschikbaarheids zones en in uw VNets. Voorziet in interne taak verdeling door verkeer tussen en tussen uw resources te routeren om uw regionale toepassing te bouwen.|<p> [Internetverkeer gelijkmatig verdelen over VM's](../load-balancer/tutorial-load-balancer-standard-manage-portal.md)</p> <p>[Taak verdeling van verkeer tussen virtuele machines in een virtueel netwerk](../load-balancer/tutorial-load-balancer-standard-internal-portal.md)<p>[Poort verkeer door sturen naar een specifieke poort op specifieke Vm's](../load-balancer/tutorial-load-balancer-port-forwarding-portal.md)</p><p> [Taak verdeling en uitgaande regels configureren](../load-balancer/configure-load-balancer-outbound-cli.md)</p>|
 |[Application Gateway](#applicationgateway)|Azure Application Gateway is een load balancer voor webverkeer waarmee u het verkeer naar uw webapps kunt beheren.|<p>[Webverkeer omleiden met Azure Application Gateway](../application-gateway/quick-create-portal.md)</p><p>[Zelfstudie: Een toepassingsgateway configureren met TLS-beëindiging met de Azure-portal](../application-gateway/create-ssl-portal.md)</p><p>[Een toepassingsgateway maken met een omleiding op basis van een URL-pad](../application-gateway/create-url-route-portal.md) </p>|
 |
 

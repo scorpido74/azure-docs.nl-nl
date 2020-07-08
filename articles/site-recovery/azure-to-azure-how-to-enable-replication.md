@@ -5,12 +5,12 @@ author: sideeksh
 manager: rochakm
 ms.topic: how-to
 ms.date: 04/29/2018
-ms.openlocfilehash: 1c6b7cfbf193f02598052b6922efec17fb16ec83
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 58ddb7363ece5ebdb06df29c27ff76b27da627a4
+ms.sourcegitcommit: cec9676ec235ff798d2a5cad6ee45f98a421837b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75973693"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85851168"
 ---
 # <a name="replicate-azure-vms-to-another-azure-region"></a>Virtuele Azure-machines repliceren naar een andere Azure-regio
 
@@ -113,12 +113,13 @@ U kunt de standaard doel instellingen wijzigen die door Site Recovery worden geb
     - Als u wilt dat Linux-Vm's deel uitmaken van een replicatie groep, zorgt u ervoor dat het uitgaande verkeer op poort 20004 hand matig wordt geopend volgens de richt lijnen voor de specifieke Linux-versie.
 ![Replicatie inschakelen](./media/site-recovery-replicate-azure-to-azure/multivmsettings.PNG)
 
-5. Klik op **doel resource** > maken**replicatie inschakelen**.
+5. Klik op **doel resource maken**  >  **replicatie inschakelen**.
 6. Nadat de Vm's zijn ingeschakeld voor replicatie, kunt u de status van de VM controleren onder **gerepliceerde items**
 
 >[!NOTE]
->Tijdens de eerste replicatie kan het enige tijd duren voordat de status wordt vernieuwd, zonder dat er een voortgang wordt gemaakt. Klik op de knop **vernieuwen** om de meest recente status op te halen.
 >
+> - Tijdens de eerste replicatie kan het enige tijd duren voordat de status wordt vernieuwd, zonder dat er een voortgang wordt gemaakt. Klik op de knop **vernieuwen** om de meest recente status op te halen.
+> - Als er in de afgelopen 60 minuten geen herstel punt is gegenereerd, wordt de replicatie status van de virtuele machine kritiek.
 
 ## <a name="next-steps"></a>Volgende stappen
 

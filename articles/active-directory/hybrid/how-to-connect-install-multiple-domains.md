@@ -16,12 +16,12 @@ ms.date: 05/31/2017
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 59f252eac53f3aab2263f2019c9d4b13b0f68dce
-ms.sourcegitcommit: f98ab5af0fa17a9bba575286c588af36ff075615
+ms.openlocfilehash: 7a49abdea9d5b80687c53fbaa3d41480825ed504
+ms.sourcegitcommit: cec9676ec235ff798d2a5cad6ee45f98a421837b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/25/2020
-ms.locfileid: "85358885"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85849947"
 ---
 # <a name="multiple-domain-support-for-federating-with-azure-ad"></a>Ondersteuning voor meerdere domeinen voor federatie met Azure AD
 De volgende documentatie bevat richt lijnen voor het gebruik van meerdere domeinen op het hoogste niveau en subdomeinen wanneer u federeren met Office 365 of Azure AD-domeinen.
@@ -73,7 +73,9 @@ Als de UPN van een gebruiker bijvoorbeeld is bsimon@bmcontoso.com , wordt het Is
 
 Hier volgt de aangepaste claim regel die deze logica implementeert:
 
-    c:[Type == "http://schemas.xmlsoap.org/claims/UPN"] => issue(Type = "http://schemas.microsoft.com/ws/2008/06/identity/claims/issuerid", Value = regexreplace(c.Value, ".+@(?<domain>.+)", "http://${domain}/adfs/services/trust/"));
+```
+c:[Type == "http://schemas.xmlsoap.org/claims/UPN"] => issue(Type = "http://schemas.microsoft.com/ws/2008/06/identity/claims/issuerid", Value = regexreplace(c.Value, ".+@(?<domain>.+)", "http://${domain}/adfs/services/trust/"));
+```
 
 
 > [!IMPORTANT]
@@ -144,7 +146,9 @@ Om dit gedrag te omzeilen, moet de AD FS Relying Party Trust voor micro soft onl
 
 Deze claim gaat als volgt:
 
-    c:[Type == "http://schemas.xmlsoap.org/claims/UPN"] => issue(Type = "http://schemas.microsoft.com/ws/2008/06/identity/claims/issuerid", Value = regexreplace(c.Value, "^.*@([^.]+\.)*?(?<domain>([^.]+\.?){2})$", "http://${domain}/adfs/services/trust/"));
+```    
+c:[Type == "http://schemas.xmlsoap.org/claims/UPN"] => issue(Type = "http://schemas.microsoft.com/ws/2008/06/identity/claims/issuerid", Value = regexreplace(c.Value, "^.*@([^.]+\.)*?(?<domain>([^.]+\.?){2})$", "http://${domain}/adfs/services/trust/"));
+```
 
 [!NOTE]
 Het laatste nummer in de reguliere expressie set is het aantal bovenliggende domeinen in het hoofd domein. Hier wordt bmcontoso.com gebruikt, zodat er twee bovenliggende domeinen nodig zijn. Als er drie bovenliggende domeinen moeten worden bewaard (bijvoorbeeld: corp.bmcontoso.com), is het aantal drie. Uiteindelijk kan een bereik worden aangegeven, de overeenkomst wordt altijd gemaakt met het maximum aantal domeinen. " {2,3} " komt overeen met twee tot drie domeinen (dat wil zeggen: bmfabrikam.com en Corp.bmcontoso.com).
@@ -156,11 +160,14 @@ Gebruik de volgende stappen om een aangepaste claim toe te voegen ter ondersteun
 3. Selecteer de derde claim regel en vervang ![ claim bewerken](./media/how-to-connect-install-multiple-domains/sub1.png)
 4. De huidige claim vervangen:
 
-        c:[Type == "http://schemas.xmlsoap.org/claims/UPN"] => issue(Type = "http://schemas.microsoft.com/ws/2008/06/identity/claims/issuerid", Value = regexreplace(c.Value, ".+@(?<domain>.+)","http://${domain}/adfs/services/trust/"));
+   ```
+   c:[Type == "http://schemas.xmlsoap.org/claims/UPN"] => issue(Type = "http://schemas.microsoft.com/ws/2008/06/identity/claims/issuerid", Value = regexreplace(c.Value, ".+@(?<domain>.+)","http://${domain}/adfs/services/trust/"));
+   ```
+    wordt uitgevoerd met
 
-       with
-
-        c:[Type == "http://schemas.xmlsoap.org/claims/UPN"] => issue(Type = "http://schemas.microsoft.com/ws/2008/06/identity/claims/issuerid", Value = regexreplace(c.Value, "^.*@([^.]+\.)*?(?<domain>([^.]+\.?){2})$", "http://${domain}/adfs/services/trust/"));
+   ```
+   c:[Type == "http://schemas.xmlsoap.org/claims/UPN"] => issue(Type = "http://schemas.microsoft.com/ws/2008/06/identity/claims/issuerid", Value = regexreplace(c.Value, "^.*@([^.]+\.)*?(?<domain>([^.]+\.?){2})$", "http://${domain}/adfs/services/trust/"));
+   ```
 
     ![Claim vervangen](./media/how-to-connect-install-multiple-domains/sub2.png)
 

@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 05/20/2020
 ms.author: bwren
 ms.custom: subject-monitoring
-ms.openlocfilehash: 0d675bd53eac728918c951b1db0dae0188f75df1
-ms.sourcegitcommit: 635114a0f07a2de310b34720856dd074aaf4f9cd
+ms.openlocfilehash: cd100fca074e63c56cd6a19843cc68e1a1ddf214
+ms.sourcegitcommit: cec9676ec235ff798d2a5cad6ee45f98a421837b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/23/2020
-ms.locfileid: "85262783"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85850287"
 ---
 # <a name="monitoring-azure-cosmos-db"></a>Bewakings Azure Cosmos DB
 
@@ -62,7 +62,7 @@ Azure Cosmos DB worden dezelfde soorten bewakings gegevens verzameld als andere 
 
 De **overzichts** pagina in de Azure portal voor elke Azure Cosmos-Data Base bevat een korte weer gave van het database gebruik, inclusief de aanvraag en het facturerings gebruik per uur. Dit is nuttige informatie, maar slechts een kleine hoeveelheid beschik bare bewakings gegevens. Sommige van deze gegevens worden automatisch verzameld en beschikbaar voor analyse zodra u de data base maakt terwijl u extra gegevens verzameling kunt inschakelen met een bepaalde configuratie.
 
-:::image type="content" source="media/monitor-cosmos-db/overview-page.png" alt-text="Overzichts pagina":::
+:::image type="content" source="media/monitor-cosmos-db/overview-page.png" alt-text="Overzichtspagina":::
 
 ## <a name="analyzing-metric-data"></a><a id="analyze-metric-data"></a>Metrische gegevens analyseren
 
@@ -78,7 +78,7 @@ U kunt metrische gegevens voor Azure Cosmos DB met metrische gegevens uit andere
 
 ### <a name="view-operation-level-metrics-for-azure-cosmos-db"></a>Metrische gegevens van het bewerkings niveau voor Azure Cosmos DB weer geven
 
-1. Meld u aan bij de [Azure-portal](https://portal.azure.com/).
+1. Meld u aan bij [Azure Portal](https://portal.azure.com/).
 
 1. Selecteer **monitor** in de navigatie balk aan de linkerkant en selecteer **metrische gegevens**.
 
@@ -157,11 +157,15 @@ De metrische gegevens op account niveau die beschikbaar zijn in de portal, zoals
 
 Gebruik de [SDK van Azure monitor](https://www.nuget.org/packages/Microsoft.Azure.Insights)om toegang te krijgen tot extra metrische gegevens. Beschik bare metrische definities kunnen worden opgehaald door aan te roepen:
 
-    https://management.azure.com/subscriptions/{SubscriptionId}/resourceGroups/{ResourceGroup}/providers/Microsoft.DocumentDb/databaseAccounts/{DocumentDBAccountName}/metricDefinitions?api-version=2015-04-08
+```http
+https://management.azure.com/subscriptions/{SubscriptionId}/resourceGroups/{ResourceGroup}/providers/Microsoft.DocumentDb/databaseAccounts/{DocumentDBAccountName}/metricDefinitions?api-version=2015-04-08
+```
 
 Query's voor het ophalen van afzonderlijke metrieken gebruiken de volgende indeling:
 
-    https://management.azure.com/subscriptions/{SubscriptionId}/resourceGroups/{ResourceGroup}/providers/Microsoft.DocumentDb/databaseAccounts/{DocumentDBAccountName}/metrics?api-version=2015-04-08&$filter=%28name.value%20eq%20%27Total%20Requests%27%29%20and%20timeGrain%20eq%20duration%27PT5M%27%20and%20startTime%20eq%202016-06-03T03%3A26%3A00.0000000Z%20and%20endTime%20eq%202016-06-10T03%3A26%3A00.0000000Z
+```http
+https://management.azure.com/subscriptions/{SubscriptionId}/resourceGroups/{ResourceGroup}/providers/Microsoft.DocumentDb/databaseAccounts/{DocumentDBAccountName}/metrics?api-version=2015-04-08&$filter=%28name.value%20eq%20%27Total%20Requests%27%29%20and%20timeGrain%20eq%20duration%27PT5M%27%20and%20startTime%20eq%202016-06-03T03%3A26%3A00.0000000Z%20and%20endTime%20eq%202016-06-10T03%3A26%3A00.0000000Z
+```
 
 ## <a name="next-steps"></a>Volgende stappen
 

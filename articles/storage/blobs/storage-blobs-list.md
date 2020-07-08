@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 06/05/2020
 ms.author: tamram
 ms.subservice: blobs
-ms.openlocfilehash: 0f0b3488bd34a31002449b9b7635064d5d835072
-ms.sourcegitcommit: 813f7126ed140a0dff7658553a80b266249d302f
+ms.openlocfilehash: ff7eac9e004a06925fbfa657278e6ec848a7d600
+ms.sourcegitcommit: cec9676ec235ff798d2a5cad6ee45f98a421837b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/06/2020
-ms.locfileid: "84465572"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85851282"
 ---
 # <a name="list-blobs-with-net"></a>Blobs weer geven met .NET
 
@@ -81,6 +81,8 @@ Als u uw Blobs een naam geven met behulp van een scheidings teken, kunt u ervoor
 Standaard retourneert een lijst bewerking blobs in een platte vermelding. In een platte lijst worden blobs niet ingedeeld op virtuele map.
 
 In het volgende voor beeld worden de blobs in de opgegeven container weer gegeven met een platte vermelding, met een optionele segment grootte die is opgegeven, en wordt de naam van de BLOB naar een console venster geschreven.
+
+Als u de functie hiërarchische naam ruimte hebt ingeschakeld voor uw account, zijn mappen niet virtueel. In plaats daarvan zijn ze concreet, onafhankelijk objecten. Daarom worden directory's in de lijst weer gegeven als blobs met een lengte van nul.
 
 # <a name="net-v12-sdk"></a>[.NET V12-SDK](#tab/dotnet)
 

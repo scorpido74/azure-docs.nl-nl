@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: jairoc
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 690582638451f1691b2ed7a4d0d4d6a7880fd80a
-ms.sourcegitcommit: bf99428d2562a70f42b5a04021dde6ef26c3ec3a
+ms.openlocfilehash: cf3fd50b907e69311c475af844c7969f081a3094
+ms.sourcegitcommit: cec9676ec235ff798d2a5cad6ee45f98a421837b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/23/2020
-ms.locfileid: "85253202"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85849940"
 ---
 # <a name="how-to-require-managed-devices-for-cloud-app-access-with-conditional-access"></a>Procedure: beheerde apparaten vereisen voor toegang tot Cloud-apps met voorwaardelijke toegang
 
@@ -95,6 +95,28 @@ Voor een apparaat dat is gemarkeerd als compatibel, kunt u aannemen dat:
 - Mobiele apps die uw werk nemers gebruiken, worden beheerd
 - Uw bedrijfs gegevens worden beveiligd door u te helpen de manier te bepalen waarop uw werk nemers toegang krijgen en delen
 - Het apparaat en de bijbehorende apps voldoen aan de beveiligings vereisten van het bedrijf
+
+### <a name="scenario-require-device-enrollment-for-ios-and-android-devices"></a>Scenario: apparaatregistratie vereisen voor iOS-en Android-apparaten
+
+In dit scenario heeft Contoso besloten dat alle mobiele toegang tot Office 365-resources een geregistreerd apparaat moeten gebruiken. Al hun gebruikers aanmelden met Azure AD-referenties en hebben licenties toegewezen die Azure AD Premium P1 of P2 en Microsoft Intune bevatten.
+
+Organisaties moeten de volgende stappen uitvoeren om het gebruik van een Inge schreven mobiel apparaat te vereisen.
+
+1. Meld u aan bij de **Azure Portal** als globale beheerder, beveiligings beheerder of beheerder van de voorwaardelijke toegang.
+1. Blader naar **Azure Active Directory**  >  **beveiligings**  >  **voorwaardelijke toegang**.
+1. Selecteer **Nieuw beleid**.
+1. Geef uw beleid een naam. Het is raadzaam dat organisaties een zinvolle norm maken voor de namen van hun beleid.
+1. Onder **toewijzingen**selecteert u **gebruikers en groepen**
+   1. Onder **opnemen**selecteert u **alle gebruikers** of de specifieke **gebruikers en groepen** waarop u dit beleid wilt Toep assen. 
+   1. Selecteer **Voltooid**.
+1. Onder **Cloud-apps of-acties**  >  **gaat**u naar **Office 365 (preview-versie)**.
+1. Onder **voor waarden**selecteert u **apparaat platforms**.
+   1. Stel **configureren** in op **Ja**.
+   1. Voeg **Android** en **IOS**toe.
+1. Selecteer onder **toegangs beheer**  >  **verlenen**de volgende opties:
+   - **Vereisen dat het apparaat moet worden gemarkeerd als compatibel**
+1. Bevestig de instellingen en stel **beleid inschakelen** in **op aan**.
+1. Selecteer **maken** om uw beleid te maken en in te scha kelen.
 
 ### <a name="known-behavior"></a>Bekend gedrag
 

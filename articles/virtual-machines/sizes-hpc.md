@@ -9,12 +9,12 @@ ms.workload: infrastructure-services
 ms.date: 02/03/2020
 ms.author: amverma
 ms.reviewer: jushiman
-ms.openlocfilehash: 961e5a0febc0212b8a747b052b3fd6f696689351
-ms.sourcegitcommit: f01c2142af7e90679f4c6b60d03ea16b4abf1b97
+ms.openlocfilehash: 2d52287d1c343ada58ed4f7e5e1d3e85a4e7162e
+ms.sourcegitcommit: cec9676ec235ff798d2a5cad6ee45f98a421837b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/10/2020
-ms.locfileid: "84678627"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85850438"
 ---
 # <a name="high-performance-computing-vm-sizes"></a>High Performance Computing VM-grootten
 
@@ -38,13 +38,13 @@ De meeste HPC VM-grootten (HBv2, HB, HC, H16r, H16mr, A8 en A9) beschikken over 
 Met deze interface kunnen de RDMA-compatibele instanties communiceren via een InfiniBand (IB)-netwerk, op basis van de HDR-tarieven voor HBv2, EDR-tarieven voor HB, HC, FDR-tarieven voor H16r, H16mr en een RDMA-functionaliteit voor A8-en A9-Vm's. Deze RDMA-mogelijkheden kunnen de schaal baarheid en prestaties van bepaalde MPI-toepassingen (Message Passing Interface) verhogen. Zie de details in de tabellen op deze pagina voor meer informatie over de snelheid.
 
 > [!NOTE]
-> In azure HPC zijn er twee klassen Vm's, afhankelijk van het feit of SR-IOV is ingeschakeld voor InfiniBand. Momenteel zijn de SR-IOV voor InfiniBand ingeschakelde Vm's: HBv2, HB, HC en NCv3. Voor de rest van de InfiniBand ingeschakelde Vm's is SR-IOV niet ingeschakeld.
+> In azure HPC zijn er twee klassen Vm's, afhankelijk van het feit of SR-IOV is ingeschakeld voor InfiniBand. Momenteel zijn de SR-IOV voor InfiniBand ingeschakelde Vm's: HBv2, HB, HC, NCv3 en NDv2. Voor de rest van de InfiniBand ingeschakelde Vm's is SR-IOV niet ingeschakeld.
 > RDMA via IB wordt ondersteund voor alle virtuele machines met RDMA-functionaliteit.
 > IP over IB wordt alleen ondersteund op Vm's met SR-IOV-functionaliteit.
 
-- **Besturings systeem** : Linux wordt zeer goed ondersteund voor HPC-vm's, distributies zoals CENTOS, RHEL, Ubuntu, SuSE. Windows Server 2016 wordt ondersteund op alle virtuele machines van de HPC-serie met betrekking tot Windows-ondersteuning. Windows Server 2012 R2, Windows Server 2012 wordt ook ondersteund op Vm's waarvoor geen SR-IOV is ingeschakeld.
+- **Besturings systeem** : Linux wordt zeer goed ondersteund voor HPC-vm's. distributies zoals CentOS, RHEL, Ubuntu, SUSE worden meestal gebruikt. Met betrekking tot Windows-ondersteuning worden Windows Server 2016 en nieuwere versies ondersteund op alle virtuele machines van de HPC-serie. Windows Server 2012 R2, Windows Server 2012 wordt ook ondersteund op virtuele machines die niet zijn beveiligd met SR-IOV (H16r, H16mr, A8 en A9). Houd er rekening mee dat [Windows Server 2012 R2 niet wordt ondersteund voor HBv2 en andere vm's met meer dan 64 (virtuele of fysieke) kernen](https://docs.microsoft.com/windows-server/virtualization/hyper-v/supported-windows-guest-operating-systems-for-hyper-v-on-windows).
 
-- **Mpi** : met de VM-grootten van SR-IOV op Azure (HBV2, HB, HC, NCv3) kunt u bijna alle mpi gebruiken met Mellanox OFED.
+- **Mpi** : met de VM-grootten van SR-IOV op Azure (HBV2, HB, HC, NCv3, NDv2) is bijna elke basis van mpi in combi natie met Mellanox OFED toegestaan.
 Op Vm's waarvoor geen SR-IOV is ingeschakeld, wordt in ondersteunde MPI-implementaties de micro soft Network direct (ND)-interface gebruikt voor communicatie tussen Vm's. Daarom worden alleen micro soft MPI (MS-MPI) 2012 R2 of hoger en Intel MPI 5. x-versies ondersteund. Latere versies (2017, 2018) van de Intel MPI runtime-bibliotheek kunnen al dan niet compatibel zijn met de Azure RDMA-Stuur Programma's.
 
 - **InfiniBandDriver<Linux | Windows> VM-extensie** -op RDMA-compatibele vm's, voeg de InfiniBandDriver<Linux toe | Extensie voor Windows-> om InfiniBand in te scha kelen. Op Linux installeert de InfiniBandDriverLinux-VM-extensie de Mellanox OFED-Stuur programma's (op SR-IOV-Vm's) voor RDMA-connectiviteit. In Windows installeert de InfiniBandDriverWindows-VM-extensie Windows-netwerk directe Stuur programma's (op niet-SR-IOV-Vm's) of Mellanox OFED-Stuur programma's (op SR-IOV-Vm's) voor RDMA-connectiviteit.

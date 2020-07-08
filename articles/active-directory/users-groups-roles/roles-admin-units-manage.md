@@ -14,12 +14,12 @@ ms.author: curtand
 ms.reviewer: anandy
 ms.custom: oldportal;it-pro;
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 00ed10ece042446e941832b27c58b0032f852ad9
-ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
+ms.openlocfilehash: 977a90419c142e576fcf484562875d12c8dad451
+ms.sourcegitcommit: cec9676ec235ff798d2a5cad6ee45f98a421837b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/12/2020
-ms.locfileid: "84732256"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85851760"
 ---
 # <a name="manage-administrative-units-in-azure-active-directory"></a>Beheer eenheden in Azure Active Directory beheren
 
@@ -57,20 +57,24 @@ Voor gedetailleerdere administratieve controle in Azure Active Directory (Azure 
 
 Installeer Azure AD Power shell (preview) voordat u probeert de volgende opdrachten uit te voeren:
 
-    Connect-AzureAD
-    New-AzureADAdministrativeUnit -Description "West Coast region" -DisplayName "West Coast"
+```powershell
+Connect-AzureAD
+New-AzureADAdministrativeUnit -Description "West Coast region" -DisplayName "West Coast"
+```
 
 U kunt de waarden die zijn Inge sloten tussen aanhalings tekens, indien nodig, wijzigen.
 
 ### <a name="use-microsoft-graph"></a>Microsoft Graph gebruiken
 
-    Http Request
-    POST /administrativeUnits
-    Request body
-    {
-        "displayName": "North America Operations",
-        "description": "North America Operations administration"
-    }
+```http
+Http Request
+POST /administrativeUnits
+Request body
+{
+  "displayName": "North America Operations",
+  "description": "North America Operations administration"
+}
+```
 
 ## <a name="remove-an-administrative-unit"></a>Een beheer eenheid verwijderen
 
@@ -86,17 +90,21 @@ In azure AD kunt u een administratieve eenheid verwijderen die u niet meer nodig
 
 ### <a name="use-powershell"></a>PowerShell gebruiken
 
-    $delau = Get-AzureADAdministrativeUnit -Filter "displayname eq 'DeleteMe Admin Unit'"
-    Remove-AzureADAdministrativeUnit -ObjectId $delau.ObjectId
+```powershell
+$delau = Get-AzureADAdministrativeUnit -Filter "displayname eq 'DeleteMe Admin Unit'"
+Remove-AzureADAdministrativeUnit -ObjectId $delau.ObjectId
+```
 
 U kunt de waarden tussen aanhalings tekens, zoals vereist voor de specifieke omgeving, wijzigen.
 
 ### <a name="use-the-graph-api"></a>De Graph API gebruiken
 
-    HTTP request
-    DELETE /administrativeUnits/{Admin id}
-    Request body
-    {}
+```http
+HTTP request
+DELETE /administrativeUnits/{Admin id}
+Request body
+{}
+```
 
 ## <a name="next-steps"></a>Volgende stappen
 

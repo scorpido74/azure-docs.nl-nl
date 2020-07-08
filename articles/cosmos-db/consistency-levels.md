@@ -6,12 +6,12 @@ ms.author: mjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 04/06/2020
-ms.openlocfilehash: 5b80a0b03959ec3fba90ed21e291c1fd021916c2
-ms.sourcegitcommit: 23604d54077318f34062099ed1128d447989eea8
+ms.openlocfilehash: 5ba3fc70a2ccfbe342e222dbb475658629ec60a4
+ms.sourcegitcommit: cec9676ec235ff798d2a5cad6ee45f98a421837b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/20/2020
-ms.locfileid: "85119287"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85851696"
 ---
 # <a name="consistency-levels-in-azure-cosmos-db"></a>Consistentie niveaus in Azure Cosmos DB
 
@@ -31,7 +31,7 @@ Lees consistentie is van toepassing op één Lees bewerking binnen een logische 
 
 ## <a name="configure-the-default-consistency-level"></a>Het standaardconsistentieniveau configureren
 
-U kunt op elk gewenst moment het standaard consistentie niveau configureren voor uw Azure Cosmos-account. Het standaard consistentie niveau dat voor uw account is geconfigureerd, is van toepassing op alle Azure Cosmos-data bases en containers onder dat account. Alle Lees bewerkingen en query's die zijn uitgegeven voor een container of een Data Base, gebruiken standaard het opgegeven consistentie niveau. Zie [het standaard consistentie niveau configureren](how-to-manage-consistency.md#configure-the-default-consistency-level)voor meer informatie.
+U kunt op elk gewenst moment het standaard consistentie niveau configureren voor uw Azure Cosmos-account. Het standaard consistentie niveau dat voor uw account is geconfigureerd, is van toepassing op alle Azure Cosmos-data bases en containers onder dat account. Alle Lees bewerkingen en query's die zijn uitgegeven voor een container of een Data Base, gebruiken standaard het opgegeven consistentie niveau. Zie [het standaard consistentie niveau configureren](how-to-manage-consistency.md#configure-the-default-consistency-level)voor meer informatie. U kunt ook het standaard consistentie niveau voor een specifieke aanvraag overschrijven. Zie How to [override the default Consistency level](how-to-manage-consistency.md?#override-the-default-consistency-level) article voor meer informatie.
 
 ## <a name="guarantees-associated-with-consistency-levels"></a>Garanties die zijn gekoppeld aan de consistentie niveaus
 

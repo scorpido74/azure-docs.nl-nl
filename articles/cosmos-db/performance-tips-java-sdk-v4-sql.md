@@ -7,12 +7,12 @@ ms.devlang: java
 ms.topic: how-to
 ms.date: 06/11/2020
 ms.author: anfeldma
-ms.openlocfilehash: d4e21e03770591229416c1f70bbd5a715b43362c
-ms.sourcegitcommit: 635114a0f07a2de310b34720856dd074aaf4f9cd
+ms.openlocfilehash: c6ff105a03181b588a9074675c97930696ac5e87
+ms.sourcegitcommit: cec9676ec235ff798d2a5cad6ee45f98a421837b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/23/2020
-ms.locfileid: "85263463"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85850198"
 ---
 # <a name="performance-tips-for-azure-cosmos-db-java-sdk-v4"></a>Tips voor betere prestaties voor Azure Cosmos DB Java SDK v4
 
@@ -21,7 +21,7 @@ ms.locfileid: "85263463"
 > * [Async Java-SDK v2](performance-tips-async-java.md)
 > * [Sync Java-SDK v2](performance-tips-java.md)
 > * [.NET SDK v3](performance-tips-dotnet-sdk-v3-sql.md)
-> * [.NET-SDK v2](performance-tips.md)
+> * [.NET SDK v2](performance-tips.md)
 > 
 
 > [!IMPORTANT]  
@@ -65,7 +65,7 @@ Als u daarom vraagt hoe u de prestaties van mijn Data Base kunt verbeteren? Houd
         .buildAsyncClient();
     ```
 
-    #### <a name="sync"></a>[Sync](#tab/api-sync)
+    #### <a name="sync"></a>[Synchroniseren](#tab/api-sync)
 
     ### <a name="java-sdk-v4-maven-comazureazure-cosmos-sync-api"></a><a id="java4-connection-policy-sync"></a>Java SDK v4 (maven com. Azure:: Azure-Cosmos) Sync API
 
@@ -138,7 +138,7 @@ Raadpleeg de [Windows](https://docs.microsoft.com/azure/virtual-network/create-v
 
     De volgende code fragmenten laten zien hoe u uw Azure Cosmos DB-client voor respectievelijk de asynchrone API-of API-bewerking voor de synchronisatie kunt initialiseren:
 
-    ### <a name="java-v4-sdk"></a><a id="override-default-consistency-javav4"></a>Java v4-SDK
+    ### <a name="java-v4-sdk"></a><a id="override-default-consistency-javav4"></a> Java V4 SDK
 
     # <a name="async"></a>[Async](#tab/api-async)
 
@@ -146,7 +146,7 @@ Raadpleeg de [Windows](https://docs.microsoft.com/azure/virtual-network/create-v
 
     [!code-java[](~/azure-cosmos-java-sql-api-samples/src/main/java/com/azure/cosmos/examples/documentationsnippets/async/SampleDocumentationSnippetsAsync.java?name=PerformanceClientAsync)]
 
-    # <a name="sync"></a>[Sync](#tab/api-sync)
+    # <a name="sync"></a>[Synchroniseren](#tab/api-sync)
 
     Java SDK V4 (Maven com.azure::azure-cosmos) Sync API
 
@@ -296,7 +296,7 @@ Raadpleeg de [Windows](https://docs.microsoft.com/azure/virtual-network/create-v
 
     [!code-java[](~/azure-cosmos-java-sql-api-samples/src/main/java/com/azure/cosmos/examples/documentationsnippets/async/SampleDocumentationSnippetsAsync.java?name=PerformanceNoPKAsync)]
 
-    # <a name="sync"></a>[Sync](#tab/api-sync)
+    # <a name="sync"></a>[Synchroniseren](#tab/api-sync)
 
     Java SDK V4 (Maven com.azure::azure-cosmos) Sync API
 
@@ -312,7 +312,7 @@ Raadpleeg de [Windows](https://docs.microsoft.com/azure/virtual-network/create-v
 
     [!code-java[](~/azure-cosmos-java-sql-api-samples/src/main/java/com/azure/cosmos/examples/documentationsnippets/async/SampleDocumentationSnippetsAsync.java?name=PerformanceAddPKAsync)]
 
-    # <a name="sync"></a>[Sync](#tab/api-sync)
+    # <a name="sync"></a>[Synchroniseren](#tab/api-sync)
 
     Java SDK V4 (Maven com.azure::azure-cosmos) Sync API
 
@@ -324,7 +324,7 @@ Raadpleeg de [Windows](https://docs.microsoft.com/azure/virtual-network/create-v
 
 ## <a name="indexing-policy"></a>Indexeringsbeleid
  
-* **Niet-gebruikte paden uitsluiten van indexeren voor snellere schrijf bewerkingen**
+* **Niet-gebruikte paden uitsluiten van indexering voor snellere schrijfbewerkingen**
 
     Met het indexerings beleid van Azure Cosmos DB kunt u opgeven welke document paden moeten worden opgenomen of uitgesloten van indexering door gebruik te maken van indexerings paden (setIncludedPaths en setExcludedPaths). Het gebruik van indexerings paden biedt verbeterde schrijf prestaties en een lagere index opslag voor scenario's waarin de query patronen vooraf bekend zijn, aangezien index kosten direct worden gecorreleerd aan het aantal unieke paden dat is geïndexeerd. De volgende code laat bijvoorbeeld zien hoe u een volledige sectie van de documenten (ook wel een substructuur genoemd) uitsluit van indexering met behulp van het Joker teken ' * '.
 
@@ -359,7 +359,7 @@ Raadpleeg de [Windows](https://docs.microsoft.com/azure/virtual-network/create-v
 
     [!code-java[](~/azure-cosmos-java-sql-api-samples/src/main/java/com/azure/cosmos/examples/documentationsnippets/async/SampleDocumentationSnippetsAsync.java?name=PerformanceRequestChargeAsync)]
 
-    # <a name="sync"></a>[Sync](#tab/api-sync)
+    # <a name="sync"></a>[Synchroniseren](#tab/api-sync)
 
     Java SDK V4 (Maven com.azure::azure-cosmos) Sync API
 
@@ -374,9 +374,11 @@ Raadpleeg de [Windows](https://docs.microsoft.com/azure/virtual-network/create-v
 
     Wanneer een client de gereserveerde door Voer voor een account probeert te overschrijden, is er geen prestatie vermindering op de server en wordt er geen gebruik van de doorvoer capaciteit meer dan het gereserveerde niveau. De-server preventief de aanvraag met RequestRateTooLarge (HTTP-status code 429) beëindigen en retourneert de header [x-MS-after-MS](/rest/api/cosmos-db/common-cosmosdb-rest-request-headers) , waarmee de hoeveelheid tijd in milliseconden wordt aangegeven dat de gebruiker moet wachten voordat de aanvraag opnieuw wordt geprobeerd.
 
+    ```xml
         HTTP Status 429,
         Status Line: RequestRateTooLarge
         x-ms-retry-after-ms :100
+    ```
 
     De Sdk's ondervangen dit antwoord impliciet, respecteert de door de server opgegeven nieuwe poging na de header en voert de aanvraag opnieuw uit. Tenzij uw account gelijktijdig wordt geopend door meerdere clients, zal de volgende poging slagen.
 

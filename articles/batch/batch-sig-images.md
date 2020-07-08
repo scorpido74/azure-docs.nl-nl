@@ -1,19 +1,19 @@
 ---
-title: De galerie met gedeelde afbeeldingen gebruiken om een aangepaste groep te maken
-description: Aangepaste installatie kopieën zijn een efficiënte manier om reken knooppunten te configureren om uw batch-workloads uit te voeren.
+title: De galerie met gedeelde afbeeldingen gebruiken om een aangepaste installatie kopie groep te maken
+description: Aangepaste installatie kopie groepen zijn een efficiënte manier om reken knooppunten te configureren om uw batch-workloads uit te voeren.
 ms.topic: conceptual
-ms.date: 05/22/2020
+ms.date: 07/01/2020
 ms.custom: tracking-python
-ms.openlocfilehash: 8e81d0954d391210563641531b4c572325ae946f
-ms.sourcegitcommit: 5a8c8ac84c36859611158892422fc66395f808dc
+ms.openlocfilehash: 962b3c84e7f3cecc5f4d64febbfca635733a0bae
+ms.sourcegitcommit: cec9676ec235ff798d2a5cad6ee45f98a421837b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/10/2020
-ms.locfileid: "84656606"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85851711"
 ---
-# <a name="use-the-shared-image-gallery-to-create-a-custom-pool"></a>De galerie met gedeelde afbeeldingen gebruiken om een aangepaste groep te maken
+# <a name="use-the-shared-image-gallery-to-create-a-custom-image-pool"></a>De galerie met gedeelde afbeeldingen gebruiken om een aangepaste installatie kopie groep te maken
 
-Wanneer u een Azure Batch groep maakt met behulp van de configuratie van de virtuele machine, geeft u een VM-installatie kopie op die het besturings systeem levert voor elk reken knooppunt in de pool. U kunt een pool met virtuele machines maken met een ondersteunde installatie kopie van Azure Marketplace of een aangepaste installatie kopie maken met de [Galerie met gedeelde afbeeldingen](../virtual-machines/windows/shared-image-galleries.md).
+Wanneer u een Azure Batch groep maakt met behulp van de configuratie van de virtuele machine, geeft u een VM-installatie kopie op die het besturings systeem levert voor elk reken knooppunt in de pool. U kunt een groep virtuele machines maken met behulp van een ondersteunde installatie kopie van Azure Marketplace of een aangepaste installatie kopie maken met een afbeelding van de [Galerie met gedeelde installatie kopieën](../virtual-machines/windows/shared-image-galleries.md).
 
 ## <a name="benefits-of-the-shared-image-gallery"></a>Voor delen van de galerie met gedeelde afbeeldingen
 
@@ -30,7 +30,7 @@ Het gebruik van een gedeelde installatie kopie die voor uw scenario is geconfigu
 - **Installeer toepassingen vooraf.** Het vooraf installeren van toepassingen op de besturingssysteem schijf is efficiënter en minder fout gevoelig dan het installeren van toepassingen na het inrichten van de reken knooppunten met een begin taak.
 - **Kopieer een grote hoeveelheid gegevens eenmaal.** Statische gegevens delen van de beheerde gedeelde installatie kopie maken door deze te kopiëren naar de gegevens schijven van een beheerde installatie kopie. Dit hoeft slechts één keer te worden gedaan en er worden gegevens beschikbaar gemaakt voor elk knoop punt van de groep.
 - **Verg root Pools tot grotere grootten.** Met de galerie gedeelde afbeeldingen kunt u met uw aangepaste installatie kopieën grote groepen maken, samen met meer gedeelde afbeeldings replica's.
-- **Betere prestaties dan aangepaste installatie kopie.** Als u gedeelde installatie kopieën gebruikt, is de tijd die nodig is om de groep te bereiken, tot 25% sneller en is de latentie van de virtuele machine niet langer dan 30%.
+- **Betere prestaties dan het gebruik van alleen een beheerde installatie kopie als een aangepaste installatie kopie.** Voor een aangepaste installatie kopie groep moet de tijd voor het bereiken van de stationaire status tot 25% fasterm en de latentie van de VM-inactiviteit Maxi maal 30% korter zijn.
 - **Installatie kopie versie en groepering voor eenvoudiger beheer.** De definitie van de groepering van installatie kopieën bevat informatie over waarom de installatie kopie is gemaakt, waarvoor het besturings systeem is en informatie over het gebruik van de installatie kopie. Door installatie kopieën te groeperen kunt u het beheer van afbeeldingen vereenvoudigen. Zie [afbeeldings definities](../virtual-machines/windows/shared-image-galleries.md#image-definitions)voor meer informatie.
 
 ## <a name="prerequisites"></a>Vereisten
@@ -47,9 +47,9 @@ Het gebruik van een gedeelde installatie kopie die voor uw scenario is geconfigu
 
 Als u een Azure AD-toepassing gebruikt om een aangepaste installatie kopie groep te maken met een installatie kopie van een gedeelde installatie kopie, moet aan die toepassing een [ingebouwde rol van Azure](../role-based-access-control/rbac-and-directory-admin-roles.md#azure-roles) zijn toegewezen waarmee deze toegang krijgt tot de gedeelde installatie kopie. U kunt deze toegang verlenen in de Azure Portal door te navigeren naar de gedeelde installatie kopie, **toegangs beheer (IAM)** te selecteren en een roltoewijzing voor de toepassing toe te voegen.
 
-## <a name="prepare-a-custom-image"></a>Een aangepaste installatie kopie voorbereiden
+## <a name="prepare-a-shared-image"></a>Een gedeelde installatie kopie voorbereiden
 
-In azure kunt u een aangepaste installatie kopie voorbereiden van:
+In azure kunt u een gedeelde installatie kopie voorbereiden op basis van een beheerde installatie kopie, die kan worden gemaakt op basis van:
 
 - Moment opnamen van het besturings systeem en de gegevens schijven van een virtuele machine van Azure
 - Een gegeneraliseerde Azure-VM met beheerde schijven
@@ -203,7 +203,7 @@ client.pool.add(new_pool)
 
 Gebruik de volgende stappen om een groep te maken op basis van een gedeelde installatie kopie in de Azure Portal.
 
-1. Open [Azure Portal](https://portal.azure.com).
+1. Open de [Azure Portal](https://portal.azure.com).
 1. Ga naar **batch-accounts** en selecteer uw account.
 1. Selecteer **Pools** en voeg vervolgens **toe** om een nieuwe groep te maken.
 1. Selecteer in de sectie **type installatie** kopie de **Galerie gedeelde installatie kopieën**.

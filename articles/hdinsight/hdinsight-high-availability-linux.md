@@ -9,12 +9,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: conceptual
 ms.date: 10/28/2019
-ms.openlocfilehash: 767d87efcf94d720159dcf3b9dc42981ec957ef0
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 21ecf33291924097f076aa28088eb4eac652ce67
+ms.sourcegitcommit: cec9676ec235ff798d2a5cad6ee45f98a421837b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81381398"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85849658"
 ---
 # <a name="availability-and-reliability-of-apache-hadoop-clusters-in-hdinsight"></a>Beschik baarheid en betrouw baarheid van Apache Hadoop clusters in HDInsight
 
@@ -64,11 +64,11 @@ Toegang tot het cluster via internet wordt via een open bare gateway gegeven. De
 
 Toegang via de open bare gateway is beperkt tot poorten 443 (HTTPS), 22 en 23.
 
-|Poort |Beschrijving |
+|Poort |Description |
 |---|---|
 |443|Wordt gebruikt voor toegang tot Ambari en andere web-UI of REST-Api's die worden gehost op de hoofd knooppunten.|
 |22|Wordt gebruikt om toegang te krijgen tot het primaire knoop punt of Edge-knoop punt met SSH.|
-|23|Wordt gebruikt voor toegang tot het secundaire hoofd knooppunt met SSH. Maakt bijvoorbeeld verbinding met het primaire hoofd knooppunt van het cluster met de naam **mycluster.** `ssh username@mycluster-ssh.azurehdinsight.net`|
+|23|Wordt gebruikt voor toegang tot het secundaire hoofd knooppunt met SSH. `ssh username@mycluster-ssh.azurehdinsight.net`Maakt bijvoorbeeld verbinding met het primaire hoofd knooppunt van het cluster met de naam **mycluster**.|
 
 Zie het document [SSH gebruiken met HDInsight](hdinsight-hadoop-linux-use-ssh-unix.md) voor meer informatie over het gebruik van SSH.
 
@@ -85,7 +85,7 @@ export clusterName="CLUSTERNAME"
 curl -u admin:$password "https://$clusterName.azurehdinsight.net/api/v1/clusters/$clusterName/configurations?type=oozie-site&tag=TOPOLOGY_RESOLVED" | grep oozie.base.url
 ```
 
-Met deze opdracht wordt een waarde geretourneerd die vergelijkbaar is met de volgende, die de interne URL bevat `oozie` die moet worden gebruikt met de opdracht:
+Met deze opdracht wordt een waarde geretourneerd die vergelijkbaar is met de volgende, die de interne URL bevat die moet worden gebruikt met de `oozie` opdracht:
 
 ```output
 "oozie.base.url": "http://<ACTIVE-HEADNODE-NAME>cx.internal.cloudapp.net:11000/oozie"
@@ -109,7 +109,7 @@ Als u de status wilt controleren van services die worden uitgevoerd op de hoofd 
 
 ### <a name="ambari-web-ui"></a>Ambari-webgebruikersinterface
 
-De Ambari-webgebruikersinterface is zichtbaar `https://CLUSTERNAME.azurehdinsight.net`op. Vervang **clustername** door de naam van uw cluster. Als u hierom wordt gevraagd, voert u de HTTP-gebruikers referenties voor uw cluster in. De standaard-HTTP-gebruikers naam is **beheerder** en het wacht woord is het wacht woord dat u hebt ingevoerd bij het maken van het cluster.
+De Ambari-webgebruikersinterface is zichtbaar op `https://CLUSTERNAME.azurehdinsight.net` . Vervang **clustername** door de naam van uw cluster. Als u hierom wordt gevraagd, voert u de HTTP-gebruikers referenties voor uw cluster in. De standaard-HTTP-gebruikers naam is **beheerder** en het wacht woord is het wacht woord dat u hebt ingevoerd bij het maken van het cluster.
 
 Wanneer u op de pagina Ambari, worden de geïnstalleerde services weer gegeven aan de linkerkant van de pagina.
 
@@ -119,7 +119,7 @@ Er kan een reeks pictogrammen naast een service worden weer gegeven om de status
 
 De volgende waarschuwingen helpen bij het bewaken van de beschik baarheid van een cluster:
 
-| Naam van waarschuwing                               | Beschrijving                                                                                                                                                                                  |
+| Naam van waarschuwing                               | Description                                                                                                                                                                                  |
 |------------------------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | Status van metrische monitor                    | Deze waarschuwing geeft de status van het bewakings proces voor metrische gegevens aan, zoals bepaald door het controle status script.                                                                                   |
 | Heartbeat van de Ambari-agent                   | Deze waarschuwing wordt geactiveerd als de server contact met een agent heeft verloren.                                                                                                                        |
@@ -139,7 +139,7 @@ De volgende waarschuwingen helpen bij het bewaken van de beschik baarheid van ee
 | Oozie-server status                      | Deze waarschuwing op hostniveau wordt geactiveerd als de Oozie-server niet kan worden vastgesteld om te reageren op client aanvragen.                                                                      |
 | Hive-meta Store-proces                   | Deze waarschuwing op hostniveau wordt geactiveerd als het proces van de Hive-meta Store niet kan worden vastgesteld om op het netwerk te worden geluisterd.                                                                 |
 | HiveServer2-proces                      | Deze waarschuwing op hostniveau wordt geactiveerd als de HiveServer niet kan worden vastgesteld om te reageren op client aanvragen.                                                                        |
-| WebHCat-server status                    | Deze waarschuwing op hostniveau wordt geactiveerd als de `templeton` server status niet in orde is.                                                                                                            |
+| WebHCat-server status                    | Deze waarschuwing op hostniveau wordt geactiveerd als de `templeton` Server status niet in orde is.                                                                                                            |
 | Percentage beschik bare ZooKeeper-servers      | Deze waarschuwing wordt geactiveerd als het aantal ZooKeeper-servers in het cluster hoger is dan de geconfigureerde kritieke drempel waarde. Hiermee worden de resultaten van ZooKeeper-proces controles geaggregeerd.     |
 | Spark2 livy-server                       | Deze waarschuwing op hostniveau wordt geactiveerd als de Livy2-server niet kan worden vastgesteld.                                                                                                        |
 | Spark2-geschiedenis server                    | Deze waarschuwing op hostniveau wordt geactiveerd als de Spark2-geschiedenis server niet kan worden vastgesteld.                                                                                               |
@@ -241,14 +241,16 @@ Elk hoofd knooppunt kan unieke logboek vermeldingen hebben, dus controleer de lo
 
 U kunt ook verbinding maken met het hoofd knooppunt met behulp van de SSH-File Transfer Protocol of beveiligde File Transfer Protocol (SFTP) en de logboek bestanden rechtstreeks downloaden.
 
-Net als bij het gebruik van een SSH-client, moet u bij het maken van verbinding met het cluster de naam van het SSH-gebruikers account en het SSH-adres van het cluster opgeven. Bijvoorbeeld `sftp username@mycluster-ssh.azurehdinsight.net`. Geef het wacht woord voor het account op wanneer u daarom wordt gevraagd of geef een `-i` open bare sleutel op met behulp van de para meter.
+Net als bij het gebruik van een SSH-client, moet u bij het maken van verbinding met het cluster de naam van het SSH-gebruikers account en het SSH-adres van het cluster opgeven. Bijvoorbeeld `sftp username@mycluster-ssh.azurehdinsight.net`. Geef het wacht woord voor het account op wanneer u daarom wordt gevraagd of geef een open bare sleutel op met behulp van de `-i` para meter.
 
-Zodra de verbinding is gemaakt, krijgt u `sftp>` een prompt. Vanuit deze prompt kunt u mappen wijzigen, bestanden uploaden en downloaden. Met de volgende opdrachten worden bijvoorbeeld directory's gewijzigd in de **/var/log/Hadoop/hdfs** -map en worden alle bestanden in de map gedownload.
+Zodra de verbinding is gemaakt, krijgt u een `sftp>` prompt. Vanuit deze prompt kunt u mappen wijzigen, bestanden uploaden en downloaden. Met de volgende opdrachten worden bijvoorbeeld directory's gewijzigd in de **/var/log/Hadoop/hdfs** -map en worden alle bestanden in de map gedownload.
 
-    cd /var/log/hadoop/hdfs
-    get *
+```bash
+cd /var/log/hadoop/hdfs
+get *
+```
 
-Voer `help` bij de `sftp>` prompt een lijst met beschik bare opdrachten in.
+Voer bij de prompt een lijst met beschik bare opdrachten `help` in `sftp>` .
 
 > [!NOTE]  
 > Er zijn ook grafische interfaces waarmee u het bestands systeem kunt visualiseren wanneer u verbinding maakt via SFTP. Met [MobaXTerm](https://mobaxterm.mobatek.net/) kunt u bijvoorbeeld bladeren in het bestands systeem met behulp van een interface die lijkt op Windows Verkenner.
@@ -272,9 +274,9 @@ Wanneer u een cluster maakt, kunt u de grootte van de knoop punten opgeven. De v
 
     ![Afbeelding van de wizard voor het maken van een cluster met een knooppunt grootte selectie](./media/hdinsight-high-availability-linux/azure-portal-cluster-configuration-pricing-hadoop.png)
 
-* **Azure cli**: wanneer u de [`az hdinsight create`](https://docs.microsoft.com/cli/azure/hdinsight?view=azure-cli-latest#az-hdinsight-create) opdracht gebruikt, kunt u de grootte van de hoofd-, werk-en ZooKeeper-knoop punten `--headnode-size`instellen `--workernode-size`met behulp van de para meters, en `--zookeepernode-size` .
+* **Azure cli**: wanneer u de [`az hdinsight create`](https://docs.microsoft.com/cli/azure/hdinsight?view=azure-cli-latest#az-hdinsight-create) opdracht gebruikt, kunt u de grootte van de hoofd-, werk-en ZooKeeper-knoop punten instellen met behulp van de `--headnode-size` `--workernode-size` `--zookeepernode-size` para meters, en.
 
-* **Azure PowerShell**: wanneer u de cmdlet [New-AzHDInsightCluster](https://docs.microsoft.com/powershell/module/az.hdinsight/new-azhdinsightcluster) gebruikt, kunt u de grootte van de hoofd-, werk-en ZooKeeper-knoop punten `-HeadNodeSize`instellen `-WorkerNodeSize`met behulp van de para meters, en `-ZookeeperNodeSize` .
+* **Azure PowerShell**: wanneer u de cmdlet [New-AzHDInsightCluster](https://docs.microsoft.com/powershell/module/az.hdinsight/new-azhdinsightcluster) gebruikt, kunt u de grootte van de hoofd-, werk-en ZooKeeper-knoop punten instellen met behulp van de `-HeadNodeSize` `-WorkerNodeSize` `-ZookeeperNodeSize` para meters, en.
 
 ## <a name="next-steps"></a>Volgende stappen
 

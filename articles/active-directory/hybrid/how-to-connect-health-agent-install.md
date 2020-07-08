@@ -16,12 +16,12 @@ ms.topic: how-to
 ms.date: 07/18/2017
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 10e6d3a419bdf8b14675f0edabd63ed4b4f4b86f
-ms.sourcegitcommit: f98ab5af0fa17a9bba575286c588af36ff075615
+ms.openlocfilehash: 86e7f1fc18738eef39f8ec29da8763b862cdcc2b
+ms.sourcegitcommit: cec9676ec235ff798d2a5cad6ee45f98a421837b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/25/2020
-ms.locfileid: "85359446"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85849968"
 ---
 # <a name="azure-ad-connect-health-agent-installation"></a>De Azure AD Connect Health-agent installeren
 
@@ -31,7 +31,7 @@ In dit document wordt beschreven hoe u de Azure AD Connect Health-agents install
 
 In de volgende tabel ziet u een lijst vereisten voor het gebruik van Azure AD Connect Health.
 
-| Vereiste | Beschrijving |
+| Vereiste | Description |
 | --- | --- |
 | Azure AD Premium |Azure AD Connect Health is een Azure AD Premium-functie waarvoor Azure AD Premium is vereist. <br /><br />Zie [aan de slag met Azure AD Premium](../fundamentals/active-directory-get-started-premium.md) voor meer informatie. <br />Als u gebruik wilt maken van een gratis proefversie van 30 dagen, raadpleegt u [Gratis proberen](https://azure.microsoft.com/trial/get-started-active-directory/). |
 | U moet hoofdbeheerder van uw Azure AD zijn om aan de slag te gaan met Azure AD Connect Health |Standaard kunnen alleen hoofdbeheerders de Health-agents installeren en configureren om aan de slag te gaan, de Portal openen en bewerkingen uitvoeren in Azure AD Connect Health. Voor meer informatie raadpleegt u [Uw Azure AD-directory beheren](../fundamentals/active-directory-administer.md). <br /><br /> Met behulp van op rollen gebaseerd toegangsbeheer kunt u toegang tot Azure AD Connect Health verlenen aan andere gebruikers binnen uw organisatie. Zie voor meer informatie [op rollen gebaseerd Access Control voor Azure AD Connect Health.](how-to-connect-health-operations.md#manage-access-with-role-based-access-control) <br /><br />**Belangrijk:** het account dat u gebruikt tijdens het installeren van agents, moet een werk- of schoolaccount zijn. Het mag geen Microsoft-account zijn. Zie [registreren voor Azure als organisatie](../fundamentals/sign-up-organization.md) voor meer informatie. |
@@ -329,19 +329,25 @@ U hebt de volgende opties voor het configureren van de Azure AD Connect Health-a
 
 Internet Explorer HTTP-proxy-instellingen kunnen worden geïmporteerd om te worden gebruikt door de Azure AD Connect Health-Agents. Voer op elke server waarop de Health-agent wordt uitgevoerd de volgende PowerShell-opdracht uit:
 
-    Set-AzureAdConnectHealthProxySettings -ImportFromInternetSettings
+```powershell
+Set-AzureAdConnectHealthProxySettings -ImportFromInternetSettings
+```
 
 ##### <a name="import-from-winhttp"></a>Importeren vanaf WinHTTP
 
 WinHTTP-proxy-instellingen kunnen worden geïmporteerd om te worden gebruikt door de Azure AD Connect Health-Agents. Voer op elke server waarop de Health-agent wordt uitgevoerd de volgende PowerShell-opdracht uit:
 
-    Set-AzureAdConnectHealthProxySettings -ImportFromWinHttp
+```powershell
+Set-AzureAdConnectHealthProxySettings -ImportFromWinHttp
+```
 
 #### <a name="specify-proxy-addresses-manually"></a>Handmatig proxyadressen opgeven
 
 U kunt handmatig een proxyserver opgeven door de volgende PowerShell-opdracht uit te voeren op elke server waarop de Health-agent wordt uitgevoerd:
 
-    Set-AzureAdConnectHealthProxySettings -HttpsProxyAddress address:port
+```powershell
+Set-AzureAdConnectHealthProxySettings -HttpsProxyAddress address:port
+```
 
 Voorbeeld: *Set-AzureAdConnectHealthProxySettings -HttpsProxyAddress myproxyserver:443*
 
@@ -352,15 +358,17 @@ Voorbeeld: *Set-AzureAdConnectHealthProxySettings -HttpsProxyAddress myproxyserv
 
 U kunt de bestaande proxyconfiguratie wissen door de volgende opdracht uit te voeren:
 
-    Set-AzureAdConnectHealthProxySettings -NoProxy
-
+```powershell
+Set-AzureAdConnectHealthProxySettings -NoProxy
+```
 
 ### <a name="read-current-proxy-settings"></a>De huidige proxyinstellingen lezen
 
 U kunt de volgende opdracht gebruiken om de momenteel geconfigureerde proxyinstellingen te lezen:
 
-    Get-AzureAdConnectHealthProxySettings
-
+```powershell
+Get-AzureAdConnectHealthProxySettings
+```
 
 ## <a name="test-connectivity-to-azure-ad-connect-health-service"></a>De verbinding met de Azure AD Connect Health-service testen
 
@@ -368,7 +376,9 @@ Het is mogelijk dat er problemen optreden waardoor de verbinding tussen de Azure
 
 Als de agent gedurende meer dan twee uur geen gegevens kan verzenden naar de Azure AD Connect Health-service, wordt er een waarschuwing weergegeven waarin staat dat de Health-servicegegevens niet up-to-date zijn. U kunt bevestigen dat de betrokken Azure AD Connect Health-agent gegevens kan uploaden naar de Azure AD Connect Health-service door de volgende PowerShell-opdracht uit te voeren:
 
-    Test-AzureADConnectHealthConnectivity -Role ADFS
+```powershell
+Test-AzureADConnectHealthConnectivity -Role ADFS
+```
 
 De rolparameter heeft momenteel de volgende waarden:
 

@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 1/27/2020
 ms.author: raynew
-ms.openlocfilehash: 1fee761c8377824773fa56ba25edd2a779c33547
-ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
+ms.openlocfilehash: da2cc3dade843b1ea207eb4ec5bf33a41a289d7e
+ms.sourcegitcommit: cec9676ec235ff798d2a5cad6ee45f98a421837b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/11/2020
-ms.locfileid: "84710215"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85851475"
 ---
 # <a name="support-matrix-for-disaster-recovery-of-on-premises-hyper-v-vms-to-azure"></a>Ondersteunings matrix voor herstel na nood gevallen van on-premises virtuele Hyper-V-machines naar Azure
 
@@ -55,8 +55,8 @@ Gastbesturingssysteem | Elk gast besturingssysteem dat wordt [ondersteund voor A
 
 **Actie** | **Details**
 --- | ---
-Grootte van schijf op gerepliceerde Hyper-V-VM wijzigen | Niet ondersteund. Schakel replicatie uit, breng de wijziging aan en schakel de replicatie voor de virtuele machine opnieuw in.
-Een schijf toevoegen aan een gerepliceerde Hyper-V-VM | Niet ondersteund. Schakel replicatie uit, breng de wijziging aan en schakel de replicatie voor de virtuele machine opnieuw in.
+Grootte van schijf op gerepliceerde Hyper-V-VM wijzigen | Wordt niet ondersteund. Schakel replicatie uit, breng de wijziging aan en schakel de replicatie voor de virtuele machine opnieuw in.
+Een schijf toevoegen aan een gerepliceerde Hyper-V-VM | Wordt niet ondersteund. Schakel replicatie uit, breng de wijziging aan en schakel de replicatie voor de virtuele machine opnieuw in.
 
 ## <a name="hyper-v-network-configuration"></a>Configuratie van Hyper-V-netwerk
 
@@ -137,6 +137,7 @@ Blok-blobs | Nee | Nee
 Versleuteling op rest (SSE)| Ja | Ja
 Versleuteling in rust (CMK) <br></br> (Alleen voor failover naar beheerde schijven)| Ja (via Power shell AZ 3.3.0 module) | Ja (via Power shell AZ 3.3.0 module)
 Premium Storage | Ja | Ja
+Standard Storage | Ja | Ja
 Import/export-service | Nee | Nee
 Azure Storage accounts waarvoor Firewall is ingeschakeld | Ja. Voor doel opslag en cache. | Ja. Voor doel opslag en cache.
 Opslag account wijzigen | Nee. Het doel Azure Storage account kan niet worden gewijzigd nadat de replicatie is ingeschakeld. Als u herstel na nood gevallen wilt wijzigen, uitschakelen en opnieuw inschakelen. | No

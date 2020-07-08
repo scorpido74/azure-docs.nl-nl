@@ -1,21 +1,23 @@
 ---
-title: Een aangepaste groep inrichten vanuit een beheerde installatie kopie
-description: Maak een batch-pool van een beheerde installatie kopie bron om reken knooppunten in te richten met de software en gegevens voor uw toepassing.
+title: Een beheerde installatie kopie gebruiken om een aangepaste installatie kopie groep te maken
+description: Maak een aangepaste batch-installatie kopie groep van een beheerde installatie kopie om reken knooppunten in te richten met de software en gegevens voor uw toepassing.
 ms.topic: conceptual
-ms.date: 05/22/2020
-ms.openlocfilehash: fbb336ff9d3d53cc53004c577e291afdba7702f6
-ms.sourcegitcommit: 1f25aa993c38b37472cf8a0359bc6f0bf97b6784
+ms.date: 07/01/2020
+ms.openlocfilehash: 45bf0f8b3cb335b7025ff06189bf6bc4e0a896ad
+ms.sourcegitcommit: cec9676ec235ff798d2a5cad6ee45f98a421837b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/26/2020
-ms.locfileid: "83847987"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85851296"
 ---
-# <a name="use-a-managed-image-to-create-a-pool-of-virtual-machines"></a>Een beheerde installatie kopie gebruiken om een pool van virtuele machines te maken
+# <a name="use-a-managed-image-to-create-a-custom-image-pool"></a>Een beheerde installatie kopie gebruiken om een aangepaste installatie kopie groep te maken
 
-Als u een aangepaste installatie kopie wilt maken voor de virtuele machines (Vm's) van uw batch-pool, kunt u een beheerde installatie kopie gebruiken om een [Galerie met gedeelde afbeeldingen](batch-sig-images.md)te maken. Het gebruik van alleen een beheerde installatie kopie wordt ook ondersteund, maar alleen voor API-versies tot en met 2019-08-01.
+Als u een aangepaste installatie kopie groep wilt maken voor de virtuele machines (Vm's) van uw batch-pool, kunt u een beheerde installatie kopie gebruiken om een afbeelding van de [Galerie met gedeelde afbeeldingen](batch-sig-images.md)te maken. Het gebruik van alleen een beheerde installatie kopie wordt ook ondersteund, maar alleen voor API-versies tot en met 2019-08-01. 
 
 > [!IMPORTANT]
 > In de meeste gevallen moet u aangepaste installatie kopieën maken met behulp van de galerie met gedeelde afbeeldingen. Met de galerie gedeelde afbeeldingen kunt u Pools sneller inrichten, grotere aantallen Vm's schalen en de betrouw baarheid verbeteren bij het inrichten van Vm's. Zie [de galerie met gedeelde afbeeldingen gebruiken om een aangepaste groep te maken](batch-sig-images.md)voor meer informatie.
+
+In dit onderwerp wordt uitgelegd hoe u een aangepaste installatie kopie groep maakt met behulp van alleen een beheerde installatie kopie.
 
 ## <a name="prerequisites"></a>Vereisten
 
@@ -26,7 +28,7 @@ Als u een aangepaste installatie kopie wilt maken voor de virtuele machines (Vm'
 
 - **Azure Active Directory-verificatie (Azure AD)**. De batch-client-API moet gebruikmaken van Azure AD-verificatie. Azure Batch-ondersteuning voor Azure AD wordt beschreven in [Oplossingen van Batch-service verifiëren met Active Directory](batch-aad-auth.md).
 
-## <a name="prepare-a-custom-image"></a>Een aangepaste installatie kopie voorbereiden
+## <a name="prepare-a-managed-image"></a>Een beheerde installatie kopie voorbereiden
 
 In azure kunt u een beheerde installatie kopie voorbereiden vanaf:
 
@@ -57,7 +59,7 @@ Een moment opname is een volledige, alleen-lezen kopie van een VHD. Als u een mo
 
 Als u een beheerde installatie kopie wilt maken op basis van een moment opname, gebruikt u de opdracht regel Programma's van Azure, zoals de opdracht [AZ image Create](/cli/azure/image) . U kunt een installatie kopie maken door een moment opname van de besturingssysteem schijf en eventueel een of meer moment opnamen van de gegevens schijf op te geven.
 
-## <a name="create-a-pool-from-a-custom-image"></a>Een groep maken op basis van een aangepaste installatie kopie
+## <a name="create-a-pool-from-a-managed-image"></a>Een groep maken op basis van een beheerde installatie kopie
 
 Wanneer u de resource-ID van de beheerde installatie kopie hebt gevonden, maakt u een aangepaste installatie kopie groep van die installatie kopie. De volgende stappen laten zien hoe u een aangepaste installatie kopie groep maakt met behulp van batch-service of batch-beheer.
 
@@ -104,7 +106,7 @@ REST API-URI
  PUT https://management.azure.com/subscriptions/{sub id}/resourceGroups/{resource group name}/providers/Microsoft.Batch/batchAccounts/{account name}/pools/{pool name}?api-version=2020-03-01
 ```
 
-Aanvraagbody
+Aanvraagtekst
 
 ```json
  {

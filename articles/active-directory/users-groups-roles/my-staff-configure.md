@@ -13,12 +13,12 @@ ms.date: 05/08/2020
 ms.author: curtand
 ms.reviewer: sahenry
 ms.custom: oldportal;it-pro;
-ms.openlocfilehash: 40d1efd5d5e8dc5fed07bf5b9ab1cfa70927b5cf
-ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
+ms.openlocfilehash: dc4e71f4283d78c2b241441810a8c1313f002152
+ms.sourcegitcommit: cec9676ec235ff798d2a5cad6ee45f98a421837b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/12/2020
-ms.locfileid: "84732579"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85850905"
 ---
 # <a name="manage-your-users-with-my-staff-preview"></a>Uw gebruikers beheren met mijn personeel (preview)
 
@@ -38,10 +38,10 @@ U hebt de volgende resources en bevoegdheden nodig om dit artikel te volt ooien:
 
 * Een actief Azure-abonnement.
 
-  * Als u geen Azure-abonnement hebt, [maakt u een account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
+  * Als u nog geen Azure-abonnement hebt, [maakt u een account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 * Een Azure Active Directory-Tenant die aan uw abonnement is gekoppeld.
 
-  * Als dat nodig is, [maakt u een Azure Active Directory-Tenant](../fundamentals/sign-up-organization.md) of [koppelt u een Azure-abonnement aan uw account](../fundamentals/active-directory-how-subscriptions-associated-directory.md).
+  * [Maak zo nodig een Azure Active Directory-tenant](../fundamentals/sign-up-organization.md) of [koppel een Azure-abonnement aan uw account](../fundamentals/active-directory-how-subscriptions-associated-directory.md).
 * U hebt *globale beheerders* bevoegdheden nodig in uw Azure AD-Tenant om verificatie op basis van SMS in te scha kelen.
 * Voor elke gebruiker die is ingeschakeld in het beleid voor tekst bericht authenticatie, moet een licentie worden verleend, zelfs als ze deze niet gebruiken. Elke ingeschakelde gebruiker moet een van de volgende Azure AD-of Microsoft 365-licenties hebben:
 
@@ -71,9 +71,10 @@ We raden u ten zeerste aan om mijn personeel te beschermen met het [beleid voor 
 1. Installeer de [Microsoft Graph Beta Power shell-cmdlets](https://github.com/microsoftgraph/msgraph-sdk-powershell/blob/dev/samples/0-InstallModule.ps1).
 1. Voer de volgende opdrachten uit:
 
-        Connect-Graph -Scopes "Directory.AccessAsUser.All"
-        New-MgServicePrincipal -DisplayName "My Staff" -AppId "ba9ff945-a723-4ab5-a977-bd8c9044fe61"
-
+   ```powershell
+   Connect-Graph -Scopes "Directory.AccessAsUser.All"
+   New-MgServicePrincipal -DisplayName "My Staff" -AppId "ba9ff945-a723-4ab5-a977-bd8c9044fe61"
+   ```
 1. Een beleid voor voorwaardelijke toegang maken dat van toepassing is op de Cloud toepassing mijn personeel.
 
     ![Een beleid voor voorwaardelijke toegang maken voor de app mijn personeel](media/my-staff-configure/conditional-access.png)

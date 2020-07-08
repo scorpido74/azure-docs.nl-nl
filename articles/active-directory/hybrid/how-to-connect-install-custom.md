@@ -14,12 +14,12 @@ ms.date: 06/10/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4e7fafd556add81d089dc67f0a4f9428de6d1b5e
-ms.sourcegitcommit: f98ab5af0fa17a9bba575286c588af36ff075615
+ms.openlocfilehash: 84b5635d934b15c7ddd289e3a9deb014361d3c94
+ms.sourcegitcommit: cec9676ec235ff798d2a5cad6ee45f98a421837b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/25/2020
-ms.locfileid: "85359327"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85850166"
 ---
 # <a name="custom-installation-of-azure-ad-connect"></a>Aangepaste installatie van Azure AD Connect
 Voor meer opties voor de installatie gaat u naar **Aangepaste instellingen**. Deze instellingen gebruikt u wanneer u meerdere forests hebt of als u optionele functies wilt configureren die niet in de snelle installatie voorkomen. De aangepaste instellingen worden gebruikt in alle gevallen waarin de optie [**snelle installatie**](how-to-connect-install-express.md) niet aan uw implementatie of topologie voldoet.
@@ -37,7 +37,7 @@ Wanneer u de synchronisatieservices installeert, kunt de optie voor optionele co
 
 ![Vereiste onderdelen](./media/how-to-connect-install-custom/requiredcomponents2.png)
 
-| Optionele configuratie | Beschrijving |
+| Optionele configuratie | Description |
 | --- | --- |
 | Een bestaande SQL Server gebruiken |Hiermee kunt u de naam van de SQL Server en de exemplaarnaam opgeven. Kies deze optie als u al een databaseserver heeft die u wilt gebruiken. Voer de exemplaarnaam, gevolgd door een komma en poortnummer, in bij **Exemplaarnaam** als bladeren niet is ingeschakeld voor uw SQL Server.  Geef vervolgens de naam op van de Azure AD Connect-Data Base.  Uw SQL-bevoegdheden bepalen of er een nieuwe Data Base wordt gemaakt of dat de SQL-beheerder de data base vooraf moet maken.  Als u SQL-SA-machtigingen hebt, ziet u [hoe u kunt installeren met behulp van een bestaande data base](how-to-connect-install-existing-database.md).  Zie [Install Azure AD Connect with SQL delegated Administrator Permissions](how-to-connect-install-sql-delegation.md)(Engelstalig) als u bent gedelegeerde machtigingen (dbo). |
 | Een bestaand serviceaccount gebruiken |Azure AD Connect maakt standaard gebruik van een virtueel serviceaccount voor de synchronisatieservices. Als u een externe SQL-server gebruikt of een proxyserver waarvoor verificatie is vereist, hebt u een **beheerd serviceaccount** of een serviceaccount in het domein nodig en moet u het wachtwoord kennen. Voer in dat geval het te gebruiken account in. Zorg dat de gebruiker die de installatie uitvoert een SA in SQL is, zodat een aanmelding voor het serviceaccount kan worden aangemaakt.  Zie [Azure AD Connect accounts en machtigingen](reference-connect-accounts-permissions.md#adsync-service-account). </br></br>In de laatste versie kan de inrichting van de database out-of-band worden uitgevoerd door de SQL-beheerder en vervolgens worden geïnstalleerd door de Azure AD Connect-beheerder met eigendomsrechten voor de database.  Raadpleeg [Install Azure AD Connect using SQL delegated administrator permissions](how-to-connect-install-sql-delegation.md) (Azure AD Connect installeren met SQL-gedelegeerde beheerdersmachtigingen) voor meer informatie.|
@@ -48,7 +48,7 @@ Nadat de vereiste onderdelen zijn geïnstalleerd, wordt u gevraagd een eenmalige
 
 ![Aanmelding door een gebruiker](./media/how-to-connect-install-custom/usersignin4.png)
 
-| Optie voor eenmalige aanmelding | Beschrijving |
+| Optie voor eenmalige aanmelding | Description |
 | --- | --- |
 | Wachtwoordhashsynchronisatie |Gebruikers kunnen zich bij Microsoft-cloudservices, zoals Office 365, aanmelden met hetzelfde wachtwoord als ze in hun on-premises netwerk gebruiken. De wachtwoorden van gebruikers worden gesynchroniseerd naar Azure AD als een wachtwoord-hash en verificatie vindt plaats in de cloud. Zie [Wachtwoordhashsynchronisatie](how-to-connect-password-hash-synchronization.md) voor meer informatie. |
 |Pass-through-verificatie|Gebruikers kunnen zich bij Microsoft-cloudservices, zoals Office 365, aanmelden met hetzelfde wachtwoord als ze in hun on-premises netwerk gebruiken.  Het wachtwoord van de gebruiker wordt doorgegeven aan de on-premises Active Directory-domeincontroller voor validatie.
@@ -79,7 +79,7 @@ Azure AD Connect heeft de forestnaam en de referenties van een account met de ju
 
 Nadat u de forestnaam hebt ingevoerd en op **Map toevoegen** hebt geklikt, wordt een pop-upvenster met de volgende opties weergegeven:
 
-| Optie | Beschrijving |
+| Optie | Description |
 | --- | --- |
 | Nieuw account maken | Selecteer deze optie als u wilt dat de Azure AD Connect-wizard het AD DS-account maakt dat Azure AD Connect nodig heeft om verbinding te maken met de AD-forest tijdens directorysynchronisatie. Voer wanneer deze optie is geselecteerd de gebruikersnaam en het wachtwoord in voor een enterprisebeheerdersaccount. Het opgegeven enterprisebeheerdersaccount wordt door de Azure AD Connect-wizard gebruikt om het vereiste AD DS-account te maken. U kunt het domeingedeelte in NetBios- of FQDN-indeling invoeren, dat wil zeggen FABRIKAM\administrator of fabrikam.com\administrator. |
 | Bestaand account gebruiken | Selecteer deze optie als u wilt toestaan dat een bestaand AD DS-account wordt gebruikt door Azure AD Connect om verbinding te maken met de AD-forest tijdens directorysynchronisatie. U kunt het domeingedeelte in NetBios- of FQDN-indeling invoeren, dat wil zeggen FABRIKAM\syncuser of fabrikam.com\syncuser. Dit account mag een normaal gebruikersaccount zijn, omdat alleen de standaard leesmachtigingen nodig zijn. Afhankelijk van uw scenario heeft u echter mogelijk meer machtigingen nodig. Zie [Azure AD Connect Accounts and permissions](reference-connect-accounts-permissions.md#create-the-ad-ds-connector-account) voor meer informatie. |
@@ -174,7 +174,7 @@ In dit scherm kunt u de optionele functies voor uw specifieke scenario's selecte
 
 
 
-| Optionele functies | Beschrijving |
+| Optionele functies | Description |
 | --- | --- |
 | Hybride implementatie voor Exchange |Met de functie Hybride implementatie voor Exchange kunnen on-premises en in Office 365 meerdere Exchange-postbussen naast elkaar bestaan. Azure AD Connect synchroniseert een specifieke set [kenmerken](reference-connect-sync-attributes-synchronized.md#exchange-hybrid-writeback) vanuit Azure AD naar uw on-premises directory. |
 | Openbare e-mailmappen van Exchange | Met de functie Openbare e-mailmappen van Exchange kunt u de voor e-mail ingeschakelde openbare mapobjecten van Active Directory synchroniseren naar Azure AD. |
@@ -230,12 +230,7 @@ Op een computer met de hulpprogramma's voor Groepsbeleidsbeheer.
 1.  Open de hulpprogramma's voor Groepsbeleidsbeheer
 2.  Bewerk het groepsbeleid dat op alle gebruikers wordt toegepast. Bijvoorbeeld het standaard domeinbeleid.
 3.  Ga naar **Gebruikersconfiguratie\Beheersjablonen\Windows-onderdelen\Internet Explorer\Onderdeel Internetopties van het Configuratiescherm\Het tabblad Beveiliging** en selecteer **Lijst van zonetoewijzingen voor websites**, zoals in de afbeelding hieronder.
-4.  Schakel het beleid in en geef het volgende item op in het dialoogvenster.
-
-        Value: `https://autologon.microsoftazuread-sso.com`  
-        Data: 1  
-
-
+4.  Schakel het beleid in en voer `https://autologon.microsoftazuread-sso.com` in het dialoog venster de waarde naam en waarde van `1` in.
 5.  Het moet er ongeveer als volgt uitzien:  
 ![Intranetzones](./media/how-to-connect-install-custom/sitezone.png)
 

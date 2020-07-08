@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 11/27/2018
 ms.author: apimpm
-ms.openlocfilehash: bf8d8a2c11962467300ae8d65fe5bbbe9a65cf92
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: d4113205b47b4c6cab8b133d89c35520aa8505c1
+ms.sourcegitcommit: cec9676ec235ff798d2a5cad6ee45f98a421837b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75708352"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85851199"
 ---
 # <a name="add-caching-to-improve-performance-in-azure-api-management"></a>Opslaan in cache toevoegen om de prestaties in Azure API Management te verbeteren
 
@@ -41,7 +41,7 @@ Wat u leert:
 
 ## <a name="prerequisites"></a>Vereisten
 
-Vereisten om deze zelfstudie te voltooien:
+Vereisten voor het voltooien van deze zelfstudie:
 
 + [Een Azure API Management-exemplaar maken](get-started-create-service-instance.md)
 + [Import and publish an API](import-and-publish.md) (API's importeren en publiceren)
@@ -56,21 +56,25 @@ Met de cachebeleidsregels in dit voorbeeld wordt met de eerste aanvraag voor de 
 4. Klik in de API-lijst op **Demo Conference API**.
 5. Selecteer **GetSpeakers**.
 6. Selecteer boven in het scherm het tabblad **Ontwerp**.
-7. Klik in de sectie **Binnenkomende verwerking** op het pictogram **</>**.
+7. Klik in de sectie **Binnenkomende verwerking** op het pictogram **</>** .
 
     ![code-editor](media/api-management-howto-cache/code-editor.png)
 
 8. Voeg aan het **inkomende** element de volgende beleidsregel toe:
 
-        <cache-lookup vary-by-developer="false" vary-by-developer-groups="false">
-            <vary-by-header>Accept</vary-by-header>
-            <vary-by-header>Accept-Charset</vary-by-header>
-            <vary-by-header>Authorization</vary-by-header>
-        </cache-lookup>
+   ```
+   <cache-lookup vary-by-developer="false" vary-by-developer-groups="false">
+       <vary-by-header>Accept</vary-by-header>
+       <vary-by-header>Accept-Charset</vary-by-header>
+       <vary-by-header>Authorization</vary-by-header>
+   </cache-lookup>
+   ```
 
 9. Voeg aan het **uitgaande** element de volgende beleidsregel toe:
 
-        <cache-store duration="20" />
+   ```
+   <cache-store duration="20" />
+   ```
 
     Met **Duur** wordt het vervalinterval opgegeven van de antwoorden in de cache. In dit voorbeeld bedraagt het interval **20** seconden.
 

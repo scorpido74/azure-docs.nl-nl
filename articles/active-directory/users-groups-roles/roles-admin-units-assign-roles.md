@@ -14,12 +14,12 @@ ms.author: curtand
 ms.reviewer: anandy
 ms.custom: oldportal;it-pro;
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7b29ddd5c46f8d6def7e598b7ed443892b345c18
-ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
+ms.openlocfilehash: 578fb481ec858e65ede49bdce2d8bc26470aa2ca
+ms.sourcegitcommit: cec9676ec235ff798d2a5cad6ee45f98a421837b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/12/2020
-ms.locfileid: "84732307"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85850765"
 ---
 # <a name="assign-scoped-roles-to-an-administrative-unit"></a>Scoped rollen toewijzen aan een beheer eenheid
 
@@ -52,25 +52,29 @@ Selecteer de rol die u wilt toewijzen en selecteer vervolgens **toewijzingen toe
 
 ### <a name="powershell"></a>PowerShell
 
-    $administrative = Get-AzureADAdministrativeUnit -Filter "displayname eq 'Test administrative unit 2'"
-    $AdminUser = Get-AzureADUser -ObjectId 'janedoe@fabidentity.onmicrosoft.com'
-    $uaRoleMemberInfo = New-Object -TypeName Microsoft.Open.AzureAD.Model.RoleMemberInfo -Property @{ObjectId = $AdminUser.ObjectId}
-    Add-AzureADScopedRoleMembership -RoleObjectId $UserAdminRole.ObjectId -ObjectId $administrative unitObj.ObjectId -RoleMemberInfo  $uaRoleMemberInfo
+```powershell
+$administrative = Get-AzureADAdministrativeUnit -Filter "displayname eq 'Test administrative unit 2'"
+$AdminUser = Get-AzureADUser -ObjectId 'janedoe@fabidentity.onmicrosoft.com'
+$uaRoleMemberInfo = New-Object -TypeName Microsoft.Open.AzureAD.Model.RoleMemberInfo -Property @{ObjectId = $AdminUser.ObjectId}
+Add-AzureADScopedRoleMembership -RoleObjectId $UserAdminRole.ObjectId -ObjectId $administrative unitObj.ObjectId -RoleMemberInfo  $uaRoleMemberInfo
+```
 
 De gemarkeerde sectie kan worden gewijzigd als vereist voor de specifieke omgeving.
 
 ### <a name="microsoft-graph"></a>Microsoft Graph
 
-    Http request
-    POST /administrativeUnits/{id}/scopedRoleMembers
+```http
+Http request
+POST /administrativeUnits/{id}/scopedRoleMembers
     
-    Request body
-    {
-      "roleId": "roleId-value",
-      "roleMemberInfo": {
-        "id": "id-value"
-      }
-    }
+Request body
+{
+  "roleId": "roleId-value",
+  "roleMemberInfo": {
+    "id": "id-value"
+  }
+}
+```
 
 ## <a name="list-the-scoped-admins-on-an-au"></a>De scoped Administrators op een AU weer geven
 
@@ -80,17 +84,21 @@ Alle roltoewijzingen die met een bereik van een beheer eenheid worden uitgevoerd
 
 ### <a name="powershell"></a>PowerShell
 
-    $administrative unitObj = Get-AzureADAdministrativeUnit -Filter "displayname eq 'Test administrative unit 2'"
-    Get-AzureADScopedRoleMembership -ObjectId $administrative unitObj.ObjectId | fl *
+```powershell
+$administrative unitObj = Get-AzureADAdministrativeUnit -Filter "displayname eq 'Test administrative unit 2'"
+Get-AzureADScopedRoleMembership -ObjectId $administrative unitObj.ObjectId | fl *
+```
 
 De gemarkeerde sectie kan worden gewijzigd als vereist voor de specifieke omgeving.
 
 ### <a name="microsoft-graph"></a>Microsoft Graph
 
-    Http request
-    GET /administrativeUnits/{id}/scopedRoleMembers
-    Request body
-    {}
+```http
+Http request
+GET /administrativeUnits/{id}/scopedRoleMembers
+Request body
+{}
+```
 
 ## <a name="next-steps"></a>Volgende stappen
 

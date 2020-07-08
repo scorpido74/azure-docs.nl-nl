@@ -16,12 +16,12 @@ ms.date: 04/13/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 61e772d7a55577c263edc83ccface31932f5b2dd
-ms.sourcegitcommit: f98ab5af0fa17a9bba575286c588af36ff075615
+ms.openlocfilehash: 3aad90a3894d3abc1a850ae21946e8895619a188
+ms.sourcegitcommit: cec9676ec235ff798d2a5cad6ee45f98a421837b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/25/2020
-ms.locfileid: "85358358"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85849875"
 ---
 # <a name="azure-active-directory-pass-through-authentication-quickstart"></a>Pass-Through-verificatie Azure Active Directory: Quick Start
 
@@ -153,13 +153,17 @@ Ten tweede kunt u een script voor installatie zonder toezicht maken en uitvoeren
 1. Voer de volgende opdracht uit om een verificatie-agent te installeren: `AADConnectAuthAgentSetup.exe REGISTERCONNECTOR="false" /q` .
 2. U kunt de verificatie agent met onze service registreren met behulp van Windows Power shell. Maak een Power shell-referentie object `$cred` dat een globale gebruikers naam en wacht woord voor uw Tenant bevat. Voer de volgende opdracht uit, vervang *\<username\>* en *\<password\>* :
 
-        $User = "<username>"
-        $PlainPassword = '<password>'
-        $SecurePassword = $PlainPassword | ConvertTo-SecureString -AsPlainText -Force
-        $cred = New-Object -TypeName System.Management.Automation.PSCredential -ArgumentList $User, $SecurePassword
+  ```powershell
+  $User = "<username>"
+  $PlainPassword = '<password>'
+  $SecurePassword = $PlainPassword | ConvertTo-SecureString -AsPlainText -Force
+  $cred = New-Object -TypeName System.Management.Automation.PSCredential -ArgumentList $User, $SecurePassword
+  ```
 3. Ga naar **C:\Program Files\Microsoft Azure AD Connect authentication agent** en voer het volgende script uit met behulp van het `$cred` object dat u hebt gemaakt:
 
-        RegisterConnector.ps1 -modulePath "C:\Program Files\Microsoft Azure AD Connect Authentication Agent\Modules\" -moduleName "PassthroughAuthPSModule" -Authenticationmode Credentials -Usercredentials $cred -Feature PassthroughAuthentication
+  ```powershell
+  RegisterConnector.ps1 -modulePath "C:\Program Files\Microsoft Azure AD Connect Authentication Agent\Modules\" -moduleName "PassthroughAuthPSModule" -Authenticationmode Credentials -Usercredentials $cred -Feature PassthroughAuthentication
+  ```
 
 >[!IMPORTANT]
 >Als er een verificatie agent is geïnstalleerd op een virtuele machine, kunt u de virtuele machine niet klonen om een andere verificatie agent te installeren. Deze methode wordt **niet ondersteund**.
