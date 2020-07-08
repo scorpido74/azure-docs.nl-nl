@@ -11,10 +11,10 @@ ms.date: 11/09/2019
 ms.author: mimart
 ms.subservice: B2C
 ms.openlocfilehash: 5d6d6169f8662c9b973fb7f624a590322f62b0b5
-ms.sourcegitcommit: b56226271541e1393a4b85d23c07fd495a4f644d
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/26/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85387521"
 ---
 # <a name="use-the-azure-portal-to-create-and-delete-consumer-users-in-azure-ad-b2c"></a>Gebruik de Azure Portal om consumenten gebruikers te maken en te verwijderen in Azure AD B2C
@@ -31,7 +31,7 @@ Zoals beschreven in [overzicht van gebruikers accounts in azure AD B2C](user-ove
 
 * Werk
 * Gast
-* Gebruikers
+* Consument
 
 In dit artikel wordt aandacht besteed aan het werken met **consumenten accounts** in de Azure Portal. Zie [gebruikers toevoegen of verwijderen met Azure Active Directory](../active-directory/fundamentals/add-users-azure-active-directory.md)voor meer informatie over het maken en verwijderen van accounts voor werk en gast.
 

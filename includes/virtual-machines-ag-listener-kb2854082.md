@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 10/26/2018
 ms.author: cynthn
 ms.openlocfilehash: 28aab15dc67e051190e8d4e35e92240a56fe54a6
-ms.sourcegitcommit: 6a4fbc5ccf7cca9486fe881c069c321017628f20
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/27/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "67175983"
 ---
 Als op servers op het cluster Windows Server 2008 R2 of Windows Server 2012 wordt uitgevoerd, moet u controleren of de hotfix [KB2854082](https://support.microsoft.com/kb/2854082) is geïnstalleerd op elk van de on-premises servers of Azure-vm's die deel uitmaken van het cluster. Voor alle servers of VM'S die zich in het cluster bevinden, maar niet in de beschikbaarheids groep, moet deze hotfix ook zijn geïnstalleerd.

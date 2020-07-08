@@ -12,10 +12,10 @@ ms.date: 02/14/2020
 ms.author: mimart
 ms.subservice: B2C
 ms.openlocfilehash: 411fa207323a9bff6cfcc3b17769203c444dd844
-ms.sourcegitcommit: b56226271541e1393a4b85d23c07fd495a4f644d
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/26/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85388677"
 ---
 # <a name="deploy-custom-policies-with-azure-pipelines"></a>Aangepaste beleids regels implementeren met Azure-pijp lijnen
@@ -131,7 +131,7 @@ Als uw opslag plaats is geïnitialiseerd en gevuld met uw aangepaste beleids bes
 1. Selecteer het tabblad **variabelen** .
 1. Voeg de volgende variabelen onder **pijplijn variabelen** toe en stel de waarden in zoals opgegeven:
 
-    | Naam | Waarde |
+    | Name | Waarde |
     | ---- | ----- |
     | `clientId` | **Toepassings-id (client)** van de toepassing die u eerder hebt geregistreerd. |
     | `clientSecret` | De waarde van het **client geheim** dat u eerder hebt gemaakt. <br /> Wijzig het variabele type in **geheim** (Selecteer het vergrendelings pictogram). |

@@ -12,10 +12,10 @@ ms.date: 01/23/2020
 ms.author: mimart
 ms.subservice: B2C
 ms.openlocfilehash: 5e44e2e1eb37e808e60134a6fba5051552e84029
-ms.sourcegitcommit: b56226271541e1393a4b85d23c07fd495a4f644d
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/26/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85389340"
 ---
 # <a name="cookies-definitions-for-azure-ad-b2c"></a>Cookie definities voor Azure AD B2C
@@ -39,7 +39,7 @@ Zie voor meer informatie:
 
 De volgende tabel geeft een lijst van de cookies die worden gebruikt in Azure AD B2C.
 
-| Naam | Domain | Verloopdatum | Doel |
+| Name | Domain | Verloopdatum | Functie |
 | ----------- | ------ | -------------------------- | --------- |
 | `x-ms-cpim-admin` | main.b2cadmin.ext.azure.com | Einde van [browser sessie](session-behavior.md) | Bevat gegevens van het lidmaatschap van gebruikers via tenants. De tenants een gebruiker is lid van en het niveau van lidmaatschap (beheerder of gebruiker). |
 | `x-ms-cpim-slice` | b2clogin.com, login.microsoftonline.com, brandend domein | Einde van [browser sessie](session-behavior.md) | Wordt gebruikt voor het routeren van aanvragen naar het geschikte productie-exemplaar. |

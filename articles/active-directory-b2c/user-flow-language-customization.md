@@ -11,10 +11,10 @@ ms.date: 08/13/2019
 ms.author: mimart
 ms.subservice: B2C
 ms.openlocfilehash: dd6e22052d2fab6d39382b21eec7a7bd379adb82
-ms.sourcegitcommit: b56226271541e1393a4b85d23c07fd495a4f644d
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/26/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85384070"
 ---
 # <a name="language-customization-in-azure-active-directory-b2c"></a>Taal aanpassing in Azure Active Directory B2C
@@ -245,8 +245,8 @@ Azure AD B2C biedt ondersteuning voor de volgende talen. De talen van de gebruik
 | Russisch               | ru            | ![ja](./media/user-flow-language-customization/yes.png) | ![ja](./media/user-flow-language-customization/yes.png) |
 | Slowaaks                | SK            | ![ja](./media/user-flow-language-customization/yes.png) | ![ja](./media/user-flow-language-customization/yes.png) |
 | Sloveens             | lineaire            | ![nee](./media/user-flow-language-customization/no.png) | ![ja](./media/user-flow-language-customization/yes.png) |
-| Servisch-cyrillisch    | SR-Cryl-CS    | ![nee](./media/user-flow-language-customization/no.png) | ![ja](./media/user-flow-language-customization/yes.png) |
-| Servisch-Latijn       | SR-latn-cs    | ![nee](./media/user-flow-language-customization/no.png) | ![ja](./media/user-flow-language-customization/yes.png) |
+| Servisch - Cyrillisch    | SR-Cryl-CS    | ![nee](./media/user-flow-language-customization/no.png) | ![ja](./media/user-flow-language-customization/yes.png) |
+| Servisch - Latijn       | SR-latn-cs    | ![nee](./media/user-flow-language-customization/no.png) | ![ja](./media/user-flow-language-customization/yes.png) |
 | Zweeds               | sv            | ![ja](./media/user-flow-language-customization/yes.png) | ![ja](./media/user-flow-language-customization/yes.png) |
 | Tamil                 | &            | ![ja](./media/user-flow-language-customization/yes.png) | ![nee](./media/user-flow-language-customization/no.png) |
 | Telugu                | Ken            | ![ja](./media/user-flow-language-customization/yes.png) | ![nee](./media/user-flow-language-customization/no.png) |
@@ -254,5 +254,5 @@ Azure AD B2C biedt ondersteuning voor de volgende talen. De talen van de gebruik
 | Turks               | formulieren            | ![ja](./media/user-flow-language-customization/yes.png) | ![ja](./media/user-flow-language-customization/yes.png) |
 | Oekraïens             | rijk            | ![nee](./media/user-flow-language-customization/no.png) | ![ja](./media/user-flow-language-customization/yes.png) |
 | Vietnamees            | beschreven            | ![nee](./media/user-flow-language-customization/no.png) | ![ja](./media/user-flow-language-customization/yes.png) |
-| Chinees-vereenvoudigd  | zh-Hans       | ![ja](./media/user-flow-language-customization/yes.png) | ![ja](./media/user-flow-language-customization/yes.png) |
-| Chinees-traditioneel | zh-hant       | ![ja](./media/user-flow-language-customization/yes.png) | ![ja](./media/user-flow-language-customization/yes.png) |
+| Chinese - vereenvoudigd  | zh-Hans       | ![ja](./media/user-flow-language-customization/yes.png) | ![ja](./media/user-flow-language-customization/yes.png) |
+| Chinese - traditioneel | zh-hant       | ![ja](./media/user-flow-language-customization/yes.png) | ![ja](./media/user-flow-language-customization/yes.png) |

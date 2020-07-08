@@ -16,10 +16,10 @@ ms.date: 03/27/2019
 ms.author: arvinh
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: a8b7fa5aea835329be8f65a3bb1775ba5b0d97d4
-ms.sourcegitcommit: b56226271541e1393a4b85d23c07fd495a4f644d
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/26/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85389854"
 ---
 # <a name="tutorial-configure-slack-for-automatic-user-provisioning"></a>Zelf studie: toegestane vertraging voor automatische gebruikers inrichting configureren
@@ -68,7 +68,7 @@ In deze sectie wordt u begeleid bij het verbinden van de API voor het inrichten 
 
 ### <a name="to-configure-automatic-user-account-provisioning-to-slack-in-azure-ad"></a>Automatische toewijzing van gebruikers accounts configureren voor toegestane vertraging in azure AD:
 
-1. Meld u aan bij de [Azure-portal](https://portal.azure.com). Selecteer **bedrijfs toepassingen**en selecteer **alle toepassingen**.
+1. Meld u aan bij [Azure Portal](https://portal.azure.com). Selecteer **bedrijfs toepassingen**en selecteer **alle toepassingen**.
 
     ![De blade Bedrijfstoepassingen](common/enterprise-applications.png)
 
@@ -107,7 +107,7 @@ In deze sectie wordt u begeleid bij het verbinden van de API voor het inrichten 
 
    |Kenmerk|Type|
    |---|---|
-   |actief|Booleaans|
+   |actief|Boolean-waarde|
    |externalId|Tekenreeks|
    |displayName|Tekenreeks|
    |naam. familielid|Tekenreeks|
@@ -131,7 +131,7 @@ In deze sectie wordt u begeleid bij het verbinden van de API voor het inrichten 
    |tijd zone|Tekenreeks|
    |User type|Tekenreeks|
    |urn: scim: schemas: extensie: Enter prise: 1.0. Department|Tekenreeks|
-   |urn: scim: schemas: extensie: Enter prise: 1.0. Manager|Naslaginformatie|
+   |urn: scim: schemas: extensie: Enter prise: 1.0. Manager|Verwijzing|
    |urn: scim: schemas: extension: Enter prise: 1.0. employeeNumber|Tekenreeks|
    |urn: scim: schemas: extension: Enter prise: 1.0. costCenter|Tekenreeks|
    |urn: scim: schemas: extension: Enter prise: 1.0. Organization|Tekenreeks|
@@ -144,7 +144,7 @@ In deze sectie wordt u begeleid bij het verbinden van de API voor het inrichten 
       |Kenmerk|Type|
       |---|---|
       |displayName|Tekenreeks|
-      |leden|Naslaginformatie|
+      |leden|Verwijzing|
 
 14. Raadpleeg de volgende instructies in de [zelf studie](../manage-apps/define-conditional-rules-for-provisioning-user-accounts.md)voor het filteren op bereik voor het configureren van bereik filters.
 

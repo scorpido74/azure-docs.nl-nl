@@ -12,10 +12,10 @@ ms.date: 03/26/2020
 ms.author: mimart
 ms.subservice: B2C
 ms.openlocfilehash: 9592afbf74e65bcb2fe9319da764bf06d8d4eb6c
-ms.sourcegitcommit: b56226271541e1393a4b85d23c07fd495a4f644d
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/26/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85385719"
 ---
 # <a name="define-a-one-time-password-technical-profile-in-an-azure-ad-b2c-custom-policy"></a>Een eenmalige wachtwoord technische profiel definiëren in een Azure AD B2C aangepast beleid
@@ -53,7 +53,7 @@ Het **InputClaims** -element bevat een lijst met claims die vereist zijn voor ve
 
 | ClaimReferenceId | Vereist | Beschrijving |
 | --------- | -------- | ----------- |
-| identifier | Ja | De id waarmee de gebruiker wordt geïdentificeerd die de code later moet verifiëren. Dit wordt vaak gebruikt als de id van de bestemming waarnaar de code wordt geleverd, bijvoorbeeld e-mail adres of telefoon nummer. |
+| identifier | Yes | De id waarmee de gebruiker wordt geïdentificeerd die de code later moet verifiëren. Dit wordt vaak gebruikt als de id van de bestemming waarnaar de code wordt geleverd, bijvoorbeeld e-mail adres of telefoon nummer. |
 
 Het **InputClaimsTransformations** -element kan een verzameling **InputClaimsTransformation** -elementen bevatten die worden gebruikt om de invoer claims te wijzigen of nieuwe te genereren voordat deze naar de eenmalige wachtwoord protocol provider worden verzonden.
 
@@ -63,7 +63,7 @@ Het **OutputClaims** -element bevat een lijst met claims die zijn gegenereerd do
 
 | ClaimReferenceId | Vereist | Beschrijving |
 | --------- | -------- | ----------- |
-| otpGenerated | Ja | De gegenereerde code waarvan de sessie wordt beheerd door Azure AD B2C. |
+| otpGenerated | Yes | De gegenereerde code waarvan de sessie wordt beheerd door Azure AD B2C. |
 
 Het **OutputClaimsTransformations** -element kan een verzameling **OutputClaimsTransformation** -elementen bevatten die worden gebruikt voor het wijzigen van de uitvoer claims of voor het genereren van nieuwe.
 
@@ -73,12 +73,12 @@ De volgende instellingen kunnen worden gebruikt voor het configureren van de mod
 
 | Kenmerk | Vereist | Beschrijving |
 | --------- | -------- | ----------- |
-| CodeExpirationInSeconds | Nee | Tijd in seconden totdat de code verloopt. Minimum: `60` ; Maximum: `1200` ; Standaard: `600` . |
-| CodeLength | Nee | Lengte van de code. De standaardwaarde is `6`. |
-| CharacterSet | Nee | De tekenset voor de code, opgemaakt voor gebruik in een reguliere expressie. Bijvoorbeeld `a-z0-9A-Z`. De standaardwaarde is `0-9`. De tekenset moet mini maal tien verschillende tekens bevatten in de opgegeven set. |
-| NumRetryAttempts | Nee | Het aantal verificatie pogingen voordat de code als ongeldig wordt beschouwd. De standaardwaarde is `5`. |
-| Bewerking | Ja | De bewerking die moet worden uitgevoerd. Mogelijke waarde: `GenerateCode` . |
-| ReuseSameCode | Nee | Of er een dubbele code moet worden gegeven in plaats van een nieuwe code te genereren wanneer de gegeven code niet is verlopen en nog geldig is. De standaardwaarde is `false`. |
+| CodeExpirationInSeconds | No | Tijd in seconden totdat de code verloopt. Minimum: `60` ; Maximum: `1200` ; Standaard: `600` . |
+| CodeLength | No | Lengte van de code. De standaardwaarde is `6`. |
+| CharacterSet | No | De tekenset voor de code, opgemaakt voor gebruik in een reguliere expressie. Bijvoorbeeld `a-z0-9A-Z`. De standaardwaarde is `0-9`. De tekenset moet mini maal tien verschillende tekens bevatten in de opgegeven set. |
+| NumRetryAttempts | No | Het aantal verificatie pogingen voordat de code als ongeldig wordt beschouwd. De standaardwaarde is `5`. |
+| Bewerking | Yes | De bewerking die moet worden uitgevoerd. Mogelijke waarde: `GenerateCode` . |
+| ReuseSameCode | No | Of er een dubbele code moet worden gegeven in plaats van een nieuwe code te genereren wanneer de gegeven code niet is verlopen en nog geldig is. De standaardwaarde is `false`. |
 
 ### <a name="example"></a>Voorbeeld
 
@@ -115,8 +115,8 @@ Het **InputClaims** -element bevat een lijst met claims die vereist zijn voor ve
 
 | ClaimReferenceId | Vereist | Beschrijving |
 | --------- | -------- | ----------- |
-| identifier | Ja | De id voor het identificeren van de gebruiker die eerder een code heeft gegenereerd. Dit wordt vaak gebruikt als de id van de bestemming waarnaar de code wordt geleverd, bijvoorbeeld e-mail adres of telefoon nummer. |
-| otpToVerify | Ja | De verificatie code van de gebruiker. |
+| identifier | Yes | De id voor het identificeren van de gebruiker die eerder een code heeft gegenereerd. Dit wordt vaak gebruikt als de id van de bestemming waarnaar de code wordt geleverd, bijvoorbeeld e-mail adres of telefoon nummer. |
+| otpToVerify | Yes | De verificatie code van de gebruiker. |
 
 Het **InputClaimsTransformations** -element kan een verzameling **InputClaimsTransformation** -elementen bevatten die worden gebruikt om de invoer claims te wijzigen of nieuwe te genereren voordat deze naar de eenmalige wachtwoord protocol provider worden verzonden.
 
@@ -132,7 +132,7 @@ De volgende instellingen kunnen worden gebruikt voor de code verificatie modus:
 
 | Kenmerk | Vereist | Beschrijving |
 | --------- | -------- | ----------- |
-| Bewerking | Ja | De bewerking die moet worden uitgevoerd. Mogelijke waarde: `VerifyCode` . |
+| Bewerking | Yes | De bewerking die moet worden uitgevoerd. Mogelijke waarde: `VerifyCode` . |
 
 
 ### <a name="ui-elements"></a>UI-elementen
@@ -141,11 +141,11 @@ De volgende meta gegevens kunnen worden gebruikt voor het configureren van de fo
 
 | Kenmerk | Vereist | Beschrijving |
 | --------- | -------- | ----------- |
-| UserMessageIfSessionDoesNotExist | Nee | Het bericht dat wordt weer gegeven aan de gebruiker als de sessie met de code verificatie is verlopen. Het is de code verlopen of de code is nooit voor een bepaalde id gegenereerd. |
-| UserMessageIfMaxRetryAttempted | Nee | Het bericht dat aan de gebruiker wordt weer gegeven als het maximum aantal toegestane verificatie pogingen is overschreden. |
-| UserMessageIfInvalidCode | Nee | Het bericht dat wordt weer gegeven aan de gebruiker als deze een ongeldige code heeft gegeven. |
-| UserMessageIfVerificationFailedRetryAllowed | Nee | Het bericht dat wordt weer gegeven aan de gebruiker als deze een ongeldige code heeft verstrekt en de gebruiker de juiste code kan opgeven.  |
-|UserMessageIfSessionConflict|Nee| Het bericht dat wordt weer gegeven aan de gebruiker als de code niet kan worden geverifieerd.|
+| UserMessageIfSessionDoesNotExist | No | Het bericht dat wordt weer gegeven aan de gebruiker als de sessie met de code verificatie is verlopen. Het is de code verlopen of de code is nooit voor een bepaalde id gegenereerd. |
+| UserMessageIfMaxRetryAttempted | No | Het bericht dat aan de gebruiker wordt weer gegeven als het maximum aantal toegestane verificatie pogingen is overschreden. |
+| UserMessageIfInvalidCode | No | Het bericht dat wordt weer gegeven aan de gebruiker als deze een ongeldige code heeft gegeven. |
+| UserMessageIfVerificationFailedRetryAllowed | No | Het bericht dat wordt weer gegeven aan de gebruiker als deze een ongeldige code heeft verstrekt en de gebruiker de juiste code kan opgeven.  |
+|UserMessageIfSessionConflict|No| Het bericht dat wordt weer gegeven aan de gebruiker als de code niet kan worden geverifieerd.|
 
 ### <a name="example"></a>Voorbeeld
 

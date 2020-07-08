@@ -12,10 +12,10 @@ ms.date: 03/16/2020
 ms.author: mimart
 ms.subservice: B2C
 ms.openlocfilehash: 5b7eea37cbd926046c6b923b003cd47e0a0c2b0c
-ms.sourcegitcommit: b56226271541e1393a4b85d23c07fd495a4f644d
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/26/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85387623"
 ---
 # <a name="manage-azure-ad-b2c-user-accounts-with-microsoft-graph"></a>Azure AD B2C gebruikers accounts beheren met Microsoft Graph
@@ -59,7 +59,7 @@ Een gebruiker met een klant account kan zich aanmelden met meerdere identiteiten
 
 In de Microsoft Graph-API worden lokale en federatieve identiteiten opgeslagen in het `identities` kenmerk gebruiker, dat van het type [objectIdentity][graph-objectIdentity]is. De `identities` verzameling vertegenwoordigt een set met identiteiten die worden gebruikt om u aan te melden bij een gebruikers account. Met deze verzameling kan de gebruiker zich aanmelden bij het gebruikers account met een van de bijbehorende identiteiten.
 
-| Eigenschap   | Type |Beschrijving|
+| Eigenschap   | Type |Description|
 |:---------------|:--------|:----------|
 |signInType|tekenreeks| Hiermee geeft u de aanmeldings typen voor gebruikers in uw Directory. Voor een lokaal account:,,,, `emailAddress` `emailAddress1` `emailAddress2` `emailAddress3` `userName` of een ander type dat u wilt. Er moet een sociaal account worden ingesteld op `federated` .|
 |uitgever|tekenreeks|Hiermee geeft u de uitgever van de identiteit. Voor lokale accounts (waarbij **signInType** niet is `federated` ), is deze eigenschap de lokale standaard domein naam van de B2C-Tenant, bijvoorbeeld `contoso.onmicrosoft.com` . Voor sociale identiteit (waarbij **signInType** is `federated` ), is de waarde de naam van de verlener, bijvoorbeeld`facebook.com`|

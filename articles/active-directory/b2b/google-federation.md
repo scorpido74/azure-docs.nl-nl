@@ -13,10 +13,10 @@ ms.reviewer: mal
 ms.custom: it-pro, seo-update-azuread-jan
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: e4b895054f8fa81526bf72cadd2fea1a3691d758
-ms.sourcegitcommit: b56226271541e1393a4b85d23c07fd495a4f644d
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/26/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85387113"
 ---
 # <a name="add-google-as-an-identity-provider-for-b2b-guest-users"></a>Google toevoegen als een id-provider voor B2B-gast gebruikers
@@ -118,7 +118,7 @@ U kunt de installatie van Google Federation verwijderen. Als u dit doet, kunnen 
    
    ![Scherm afbeelding van de optie verwijderen voor de sociale ID-provider](media/google-federation/google-social-identity-providers.png)
 
-1. Selecteer **Ja** om de verwijdering te bevestigen. 
+1. Selecteer **Ja** om het verwijderen te bevestigen. 
 
 ### <a name="to-delete-google-federation-by-using-powershell"></a>Google Federation verwijderen met behulp van Power shell: 
 1. Installeer de nieuwste versie van de Azure AD Power shell for Graph-module ([AzureADPreview](https://www.powershellgallery.com/packages/AzureADPreview)).

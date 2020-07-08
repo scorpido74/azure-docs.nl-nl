@@ -14,10 +14,10 @@ ms.reviewer: jlu
 ms.custom: aaddev
 ROBOTS: NOINDEX
 ms.openlocfilehash: 7bb572e9e22519491290e54417f5ca350d6c0b5c
-ms.sourcegitcommit: b56226271541e1393a4b85d23c07fd495a4f644d
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/26/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85383714"
 ---
 # <a name="how-to-reactivate-disabled-access-control-service-namespaces"></a>Procedure: uitgeschakelde Access Control Service naam ruimten opnieuw activeren
@@ -94,7 +94,7 @@ Verdere extensies worden niet meer automatisch goedgekeurd. Als u meer tijd nodi
 
     | Ondersteuningsaanvraag veld | Waarde |
     |-----------------------|--------------------|
-    | **Probleem type** | `Technical` |
+    | **Type probleem** | `Technical` |
     | **Abonnement** | Ingesteld op uw abonnement |
     | **Service** | `All services` |
     | **Resource** | `General question/Resource not available` |

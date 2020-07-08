@@ -12,10 +12,10 @@ ms.date: 11/04/2019
 ms.author: mimart
 ms.subservice: B2C
 ms.openlocfilehash: fad29c32731ee2470354a51acf32e350eb0c4cfc
-ms.sourcegitcommit: b56226271541e1393a4b85d23c07fd495a4f644d
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/26/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85384869"
 ---
 # <a name="collect-azure-active-directory-b2c-logs-with-application-insights"></a>Azure Active Directory B2C-logboeken met Application Insights verzamelen
@@ -31,7 +31,7 @@ De gedetailleerde activiteiten logboeken die hier worden beschreven, moeten **al
 
 Als u er nog geen hebt, maakt u een instantie van Application Insights in uw abonnement.
 
-1. Meld u aan bij de [Azure-portal](https://portal.azure.com).
+1. Meld u aan bij [Azure Portal](https://portal.azure.com).
 1. Selecteer het filter **Directory + abonnement** in het bovenste menu en selecteer vervolgens de map die uw Azure-abonnement bevat (niet uw Azure AD B2C Directory).
 1. Selecteer **een resource maken** in het navigatie menu aan de linkerkant.
 1. Zoek en selecteer **Application Insights**en selecteer vervolgens **maken**.
@@ -93,7 +93,7 @@ Er is een korte vertraging, meestal minder dan vijf minuten, voordat u nieuwe lo
 
 Hier volgt een lijst met query's die u kunt gebruiken om de logboeken weer te geven:
 
-| Query’s uitvoeren | Beschrijving |
+| Query’s uitvoeren | Description |
 |---------------------|--------------------|
 `traces` | Alle logboeken weer geven die zijn gegenereerd door Azure AD B2C |
 `traces | where timestamp > ago(1d)` | Alle logboeken weer geven die zijn gegenereerd door Azure AD B2C voor de afgelopen dag

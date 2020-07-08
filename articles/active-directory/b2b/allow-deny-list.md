@@ -13,10 +13,10 @@ ms.reviewer: sasubram
 ms.custom: it-pro, seo-update-azuread-jan
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: aa2ac203f92d401095194bb3f1b5f3ef3c52093b
-ms.sourcegitcommit: b56226271541e1393a4b85d23c07fd495a4f644d
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/26/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85387283"
 ---
 # <a name="allow-or-block-invitations-to-b2b-users-from-specific-organizations"></a>Uitnodigingen aan B2B-gebruikers van specifieke organisaties toestaan of blokkeren
@@ -41,7 +41,7 @@ Dit is het meest typische scenario, waarbij uw organisatie bijna elke organisati
 
 Een weiger lijst toevoegen:
 
-1. Meld u aan bij de [Azure-portal](https://portal.azure.com).
+1. Meld u aan bij [Azure Portal](https://portal.azure.com).
 2. Selecteer **Azure Active Directory**  >  **gebruikers**  >  **instellingen**.
 3. Onder **externe gebruikers**selecteert u **externe instellingen voor samen werking beheren**.
 4. Onder **samenwerkings beperkingen**selecteert **u uitnodigingen voor de opgegeven domeinen weigeren**.
@@ -62,7 +62,7 @@ Als u een acceptatie lijst wilt gebruiken, moet u ervoor zorgen dat u de tijd he
 
 Een acceptatie lijst toevoegen:
 
-1. Meld u aan bij de [Azure-portal](https://portal.azure.com).
+1. Meld u aan bij [Azure Portal](https://portal.azure.com).
 2. Selecteer **Azure Active Directory**  >  **gebruikers**  >  **instellingen**.
 3. Onder **externe gebruikers**selecteert u **externe instellingen voor samen werking beheren**.
 4. Selecteer onder **samenwerkings beperkingen** **alleen uitnodigingen toestaan voor de opgegeven domeinen (het meest beperkend)**.

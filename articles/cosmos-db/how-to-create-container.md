@@ -7,10 +7,10 @@ ms.topic: how-to
 ms.date: 04/24/2020
 ms.author: mjbrown
 ms.openlocfilehash: 22c51497a9c9a331f1337134fbaf7c781b9c8ba7
-ms.sourcegitcommit: b56226271541e1393a4b85d23c07fd495a4f644d
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/26/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85390887"
 ---
 # <a name="create-an-azure-cosmos-container"></a>Een Azure Cosmos-container maken
@@ -24,7 +24,7 @@ In dit artikel worden de verschillende manieren beschreven voor het maken van ee
 
 ### <a name="sql-api"></a><a id="portal-sql"></a>SQL-API
 
-1. Meld u aan bij de [Azure-portal](https://portal.azure.com/).
+1. Meld u aan bij [Azure Portal](https://portal.azure.com/).
 
 1. [Maak een nieuw Azure Cosmos-account](create-sql-api-dotnet.md#create-account)of selecteer een bestaand account.
 
@@ -40,7 +40,7 @@ In dit artikel worden de verschillende manieren beschreven voor het maken van ee
 
 ### <a name="azure-cosmos-db-api-for-mongodb"></a><a id="portal-mongodb"></a>Azure Cosmos DB-API voor MongoDB
 
-1. Meld u aan bij de [Azure-portal](https://portal.azure.com/).
+1. Meld u aan bij [Azure Portal](https://portal.azure.com/).
 
 1. [Maak een nieuw Azure Cosmos-account](create-mongodb-dotnet.md#create-a-database-account)of selecteer een bestaand account.
 
@@ -56,7 +56,7 @@ In dit artikel worden de verschillende manieren beschreven voor het maken van ee
 
 ### <a name="cassandra-api"></a><a id="portal-cassandra"></a>Cassandra-API
 
-1. Meld u aan bij de [Azure-portal](https://portal.azure.com/).
+1. Meld u aan bij [Azure Portal](https://portal.azure.com/).
 
 1. [Maak een nieuw Azure Cosmos-account](create-cassandra-dotnet.md#create-a-database-account)of selecteer een bestaand account.
 
@@ -75,7 +75,7 @@ In dit artikel worden de verschillende manieren beschreven voor het maken van ee
 
 ### <a name="gremlin-api"></a><a id="portal-gremlin"></a>Gremlin-API
 
-1. Meld u aan bij de [Azure-portal](https://portal.azure.com/).
+1. Meld u aan bij [Azure Portal](https://portal.azure.com/).
 
 1. [Maak een nieuw Azure Cosmos-account](create-graph-dotnet.md#create-a-database-account)of selecteer een bestaand account.
 
@@ -92,7 +92,7 @@ In dit artikel worden de verschillende manieren beschreven voor het maken van ee
 
 ### <a name="table-api"></a><a id="portal-table"></a>Tabel-API
 
-1. Meld u aan bij de [Azure-portal](https://portal.azure.com/).
+1. Meld u aan bij [Azure Portal](https://portal.azure.com/).
 
 1. [Maak een nieuw Azure Cosmos-account](create-table-dotnet.md#create-a-database-account)of selecteer een bestaand account.
 

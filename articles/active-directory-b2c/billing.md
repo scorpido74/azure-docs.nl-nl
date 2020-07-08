@@ -11,10 +11,10 @@ ms.date: 10/25/2019
 ms.author: mimart
 ms.subservice: B2C
 ms.openlocfilehash: f88993db2ca7fa697aadb584fdfcbd9fe200b11c
-ms.sourcegitcommit: b56226271541e1393a4b85d23c07fd495a4f644d
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/26/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85386059"
 ---
 # <a name="billing-model-for-azure-active-directory-b2c"></a>Facturerings model voor Azure Active Directory B2C
@@ -91,7 +91,7 @@ Een abonnement dat is gekoppeld aan een Azure AD B2C-Tenant kan worden gebruikt 
 
 ### <a name="create-the-link"></a>De koppeling maken
 
-1. Meld u aan bij de [Azure-portal](https://portal.azure.com).
+1. Meld u aan bij [Azure Portal](https://portal.azure.com).
 1. Selecteer het filter **Directory + abonnement** in het bovenste menu en selecteer vervolgens de map met het Azure-abonnement dat u wilt gebruiken (*niet* de map die de Azure AD B2C Tenant bevat).
 1. Selecteer **een resource maken**, Voer `Active Directory B2C` in het veld **Marketplace doorzoeken** in en selecteer vervolgens **Azure Active Directory B2C**.
 1. Selecteer **Maken**
@@ -113,7 +113,7 @@ U kunt deze resource gebruiken voor het volgende:
 * Navigeer naar het abonnement om facturerings gegevens te bekijken
 * De Tenant-ID van de Azure AD B2C Tenant in GUID-indeling ophalen
 * Ga naar uw Azure AD B2C-Tenant
-* Een ondersteunings aanvraag indienen
+* Een ondersteuningsaanvraag indienen
 * Uw Azure AD B2C Tenant resource verplaatsen naar een ander Azure-abonnement of een andere resource groep
 
 ![De pagina B2C-bron instellingen in de Azure Portal](./media/billing/portal-02-b2c-resource-overview.png)

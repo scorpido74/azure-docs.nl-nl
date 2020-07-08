@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 06/16/2020
 ms.author: spelluru
 ms.openlocfilehash: 75311675ae24f4836ed8f1adb8a7d9802b4d7f0d
-ms.sourcegitcommit: b56226271541e1393a4b85d23c07fd495a4f644d
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/26/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85390598"
 ---
 # <a name="monitor-event-grid-message-delivery"></a>Bezorging van Event Grid bericht bewaken 
@@ -45,7 +45,7 @@ Als u een aangepast onderwerp hebt gepubliceerd, kunt u de metrische gegevens we
 1. Meld u aan bij de [Azure-portal](https://portal.azure.com/).
 2. Typ in de zoek balk van het onderwerp **Event grid onderwerpen**en selecteer vervolgens **Event grid onderwerpen** in de vervolg keuzelijst. 
 
-    :::image type="content" source="./media/custom-event-quickstart-portal/select-event-grid-topics.png" alt-text="Event Grid onderwerpen zoeken en selecteren":::
+    :::image type="content" source="./media/custom-event-quickstart-portal/select-event-grid-topics.png" alt-text="Event Grid-onderwerpen zoeken en selecteren":::
 3. Selecteer uw aangepaste onderwerp in de lijst met onderwerpen. 
 
     :::image type="content" source="./media/monitor-event-delivery/select-custom-topic.png" alt-text="Uw aangepaste onderwerp selecteren":::
@@ -68,7 +68,7 @@ Zie bijvoorbeeld het grafiek met metrische gegevens voor de metrische gegevens v
 1. Ga naar de pagina met het **Event grid-onderwerp** door de stappen uit de vorige sectie te volgen. 
 2. Selecteer het abonnement in het onderste deel venster, zoals in het volgende voor beeld wordt weer gegeven. 
 
-    :::image type="content" source="./media/monitor-event-delivery/select-event-subscription.png" alt-text="Gebeurtenis abonnement selecteren":::    
+    :::image type="content" source="./media/monitor-event-delivery/select-event-subscription.png" alt-text="Selecteer gebeurtenisabonnement":::    
 
     U kunt ook zoeken naar **Event grid-abonnementen** in de zoek balk van de Azure Portal, **het type onderwerp**, het **abonnement**en de **locatie** selecteren om een gebeurtenis abonnement te zien. 
 

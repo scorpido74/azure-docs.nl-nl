@@ -13,10 +13,10 @@ ms.author: ajburnle
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: c439bbded7fe55f1edd5eb1597f98b339e340956
-ms.sourcegitcommit: b56226271541e1393a4b85d23c07fd495a4f644d
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/26/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85386331"
 ---
 # <a name="azure-active-directory-deployment-plans"></a>Azure Active Directory-implementatieplannen
@@ -29,7 +29,7 @@ Wanneer u begint met het plannen van uw implementatie voor een nieuwe functie, i
 
 Rollen kunnen de volgende zijn: 
 
-|Rol |Beschrijving |
+|Rol |Description |
 |-|-|
 |Eind gebruiker|Een representatieve groep gebruikers waarvoor de functionaliteit wordt geïmplementeerd. Bekijkt vaak een voor beeld van de wijzigingen in een test programma.
 |IT-ondersteunings Manager|De IT-afdeling ondersteunt organisaties die in het perspectief van een helpdesk medewerker invoer kunnen bieden over de ondersteuning van deze wijziging.  

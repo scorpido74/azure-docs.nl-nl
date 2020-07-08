@@ -12,10 +12,10 @@ ms.date: 02/11/2019
 ms.author: mimart
 ms.subservice: B2C
 ms.openlocfilehash: 165529697949bba0233567b89c5a8a077d48a28b
-ms.sourcegitcommit: b56226271541e1393a4b85d23c07fd495a4f644d
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/26/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85384019"
 ---
 # <a name="configure-complexity-requirements-for-passwords-in-azure-active-directory-b2c"></a>Complexiteits vereisten configureren voor wacht woorden in Azure Active Directory B2C
@@ -37,7 +37,7 @@ Als u aangepast beleid gebruikt, kunt u[de complexiteit van het wacht woord conf
 
 ## <a name="configure-password-complexity"></a>Wachtwoord complexiteit configureren
 
-1. Meld u aan bij de [Azure-portal](https://portal.azure.com).
+1. Meld u aan bij [Azure Portal](https://portal.azure.com).
 2. Selecteer het pictogram voor het adres van de map en het **abonnement** op de werk balk van de portal en selecteer vervolgens de map die uw Azure AD B2C Tenant bevat.
 3. Zoek in het Azure Portal naar en selecteer **Azure AD B2C**.
 4. Selecteer **gebruikers stromen (beleid)**.
@@ -46,7 +46,7 @@ Als u aangepast beleid gebruikt, kunt u[de complexiteit van het wacht woord conf
 
 ### <a name="comparison-chart"></a>Vergelijkings grafiek
 
-| Complexiteit | Beschrijving |
+| Complexiteit | Description |
 | --- | --- |
 | Eenvoudig | Een wacht woord van ten minste 8 tot 64 tekens. |
 | Sterk | Een wacht woord van ten minste 8 tot 64 tekens. Hiervoor zijn 3 van de 4 van kleine letters, hoofd letters, cijfers of symbolen vereist. |

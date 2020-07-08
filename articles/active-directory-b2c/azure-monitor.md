@@ -12,10 +12,10 @@ ms.author: mimart
 ms.subservice: B2C
 ms.date: 02/10/2020
 ms.openlocfilehash: 3106e5a640ed66828558078e6986979ad7195450
-ms.sourcegitcommit: b56226271541e1393a4b85d23c07fd495a4f644d
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/26/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85386212"
 ---
 # <a name="monitor-azure-ad-b2c-with-azure-monitor"></a>Azure AD B2C met Azure Monitor bewaken
@@ -211,7 +211,7 @@ Nadat u de sjabloon hebt geïmplementeerd en een paar minuten hebt gewacht totda
 
 Diagnostische instellingen bepalen waar logboeken en metrische gegevens voor een resource moeten worden verzonden. Mogelijke bestemmingen zijn:
 
-- [Azure Storage-account](../azure-monitor/platform/resource-logs-collect-storage.md)
+- [Azure-opslag account](../azure-monitor/platform/resource-logs-collect-storage.md)
 - [Event hubs](../azure-monitor/platform/resource-logs-stream-event-hubs.md) -oplossingen.
 - [Log Analytics werk ruimte](../azure-monitor/platform/resource-logs-collect-workspace.md)
 
@@ -223,7 +223,7 @@ U kunt nu [Diagnostische instellingen maken](../active-directory/reports-monitor
 
 Controle-instellingen voor Azure AD B2C activiteiten logboeken configureren:
 
-1. Meld u aan bij de [Azure-portal](https://portal.azure.com/).
+1. Meld u aan bij [Azure Portal](https://portal.azure.com/).
 1. Selecteer het pictogram voor het adres van de map en het **abonnement** op de werk balk van de portal en selecteer vervolgens de map die uw Azure AD B2C Tenant bevat.
 1. **Azure Active Directory** selecteren
 1. Selecteer **Diagnostische instellingen** onder **Controle**.

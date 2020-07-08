@@ -12,10 +12,10 @@ ms.date: 06/08/2020
 ms.author: mimart
 ms.subservice: B2C
 ms.openlocfilehash: d34bb14dd0f474ff9350fec513c02fbb470d6738
-ms.sourcegitcommit: b56226271541e1393a4b85d23c07fd495a4f644d
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/26/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85385651"
 ---
 # <a name="tutorial-for-configuring-idology-with-azure-active-directory-b2c"></a>Zelf studie voor het configureren van IDology met Azure Active Directory B2C 
@@ -75,7 +75,7 @@ U hebt de URL van de geïmplementeerde service nodig om Azure AD te configureren
 
 Toepassings instellingen kunnen worden [geconfigureerd in app service in azure](https://docs.microsoft.com/azure/app-service/configure-common#configure-app-settings). Met deze methode kunnen instellingen veilig worden geconfigureerd zonder deze in een opslag plaats te controleren. U moet de volgende instellingen opgeven voor de rest-API:
 
-| Toepassingsinstellingen | Bron | Opmerkingen |
+| Toepassingsinstellingen | Bron | Notities |
 | :-------- | :------------| :-----------|
 |IdologySettings:ApiUsername | IDology-account configuratie |     |
 |IdologySettings:ApiPassword | IDology-account configuratie |     |

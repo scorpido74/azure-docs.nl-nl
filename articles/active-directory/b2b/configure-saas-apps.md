@@ -13,10 +13,10 @@ ms.reviewer: mal
 ms.custom: it-pro, seo-update-azuread-jan
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 9b8f38d42003645e6d6544d5c2064a0c8e692c0f
-ms.sourcegitcommit: b56226271541e1393a4b85d23c07fd495a4f644d
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/26/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85387347"
 ---
 # <a name="configure-saas-apps-for-b2b-collaboration"></a>SaaS-toepassingen configureren voor B2B-samenwerking
@@ -32,7 +32,7 @@ Voordat u de app-specifieke instructies bekijkt, zijn hier enkele vuist regels:
 * Stel in de gebruikers kenmerken de **gebruikers-id** altijd in op **gebruiker. mail**om problemen met een vervormde gebruikers profiel schijf (UPD) te beperken in gast gebruikers.
 
 
-## <a name="dropbox-business"></a>Dropbox-bedrijven
+## <a name="dropbox-business"></a>Dropbox Business
 
 Als u gebruikers in staat wilt stellen om zich aan te melden met hun organisatie account, moet u de Dropbox-onderneming hand matig configureren voor gebruik van Azure AD als Security Assertion Markup Language (SAML)-ID-provider. Als Dropbox Business niet is geconfigureerd om dit te doen, kan de gebruiker zich niet vragen of op een andere manier toestaan zich aan te melden met Azure AD.
 

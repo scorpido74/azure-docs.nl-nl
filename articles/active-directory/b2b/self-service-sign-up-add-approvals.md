@@ -12,10 +12,10 @@ manager: celestedg
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: c4b40c284c8d034d92f29eb25d754d9294ac2e3d
-ms.sourcegitcommit: b56226271541e1393a4b85d23c07fd495a4f644d
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/26/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85386773"
 ---
 # <a name="add-a-custom-approval-workflow-to-self-service-sign-up"></a>Een aangepaste goedkeurings werk stroom toevoegen aan self-service registratie
@@ -305,13 +305,13 @@ Content-type: application/json
 
 | Parameter                                           | Vereist | Beschrijving                                                                                                                                                            |
 | --------------------------------------------------- | -------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| userPrincipalName                                   | Ja      | Kan worden gegenereerd door de `email_address` claim te verzenden naar de API, het teken te vervangen door `@` `_` en vooraf in behandeling te nemen tot `#EXT@<tenant-name>.onmicrosoft.com` . |
-| accountEnabled                                      | Ja      | Moet worden ingesteld op `true` .                                                                                                                                                 |
-| mail                                                | Ja      | Gelijk aan de `email_address` claim die wordt verzonden naar de API.                                                                                                               |
-| User type                                            | Ja      | Moet zijn `Guest` . Hiermee wordt deze gebruiker aangeduid als een gast gebruiker.                                                                                                                 |
-| identiteit                                          | Ja      | De gegevens voor federatieve identiteiten.                                                                                                                                    |
-| \<otherBuiltInAttribute>                            | Nee       | Andere ingebouwde kenmerken `displayName` , zoals, `city` en anderen. Parameter namen zijn hetzelfde als de para meters die worden verzonden door de API-connector.                            |
-| \<extension\_\{extensions-app-id}\_CustomAttribute> | Nee       | Aangepaste kenmerken van de gebruiker. Parameter namen zijn hetzelfde als de para meters die worden verzonden door de API-connector.                                                            |
+| userPrincipalName                                   | Yes      | Kan worden gegenereerd door de `email_address` claim te verzenden naar de API, het teken te vervangen door `@` `_` en vooraf in behandeling te nemen tot `#EXT@<tenant-name>.onmicrosoft.com` . |
+| accountEnabled                                      | Yes      | Moet worden ingesteld op `true` .                                                                                                                                                 |
+| mail                                                | Yes      | Gelijk aan de `email_address` claim die wordt verzonden naar de API.                                                                                                               |
+| User type                                            | Yes      | Moet zijn `Guest` . Hiermee wordt deze gebruiker aangeduid als een gast gebruiker.                                                                                                                 |
+| identiteit                                          | Yes      | De gegevens voor federatieve identiteiten.                                                                                                                                    |
+| \<otherBuiltInAttribute>                            | No       | Andere ingebouwde kenmerken `displayName` , zoals, `city` en anderen. Parameter namen zijn hetzelfde als de para meters die worden verzonden door de API-connector.                            |
+| \<extension\_\{extensions-app-id}\_CustomAttribute> | No       | Aangepaste kenmerken van de gebruiker. Parameter namen zijn hetzelfde als de para meters die worden verzonden door de API-connector.                                                            |
 
 ### <a name="for-a-federated-azure-active-directory-user"></a>Voor een federatieve Azure Active Directory gebruiker
 

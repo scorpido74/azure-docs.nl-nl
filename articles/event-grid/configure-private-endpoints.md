@@ -8,10 +8,10 @@ ms.topic: how-to
 ms.date: 04/22/2020
 ms.author: spelluru
 ms.openlocfilehash: 816d1f762698deeed38afe01899916b491809db2
-ms.sourcegitcommit: b56226271541e1393a4b85d23c07fd495a4f644d
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/26/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85390462"
 ---
 # <a name="configure-private-endpoints-for-azure-event-grid-topics-or-domains"></a>Privé-eind punten voor Azure Event Grid onderwerpen of domeinen configureren
@@ -81,7 +81,7 @@ Er zijn vier inrichtingsstatussen:
 ###  <a name="how-to-manage-a-private-endpoint-connection"></a>Een verbinding met een privé-eind punt beheren
 In de volgende secties ziet u hoe u een verbinding met een privé-eind punt kunt goed keuren of afwijzen. 
 
-1. Meld u aan bij de [Azure-portal](https://portal.azure.com).
+1. Meld u aan bij [Azure Portal](https://portal.azure.com).
 1. Typ in de zoek balk **Event grid onderwerpen** of **Event grid domeinen**.
 1. Selecteer het **onderwerp** dat of het **domein** dat u wilt beheren.
 1. Selecteer het tabblad **netwerken** .

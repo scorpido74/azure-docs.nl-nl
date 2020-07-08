@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 10/26/2018
 ms.author: cynthn
 ms.openlocfilehash: 760bb5b62e9bba9b7a83f99760f7fe5d8c399dfb
-ms.sourcegitcommit: 6a4fbc5ccf7cca9486fe881c069c321017628f20
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/27/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "67175986"
 ---
 1. In Failoverclusterbeheer vouwt u **rollen**uit en markeert u vervolgens uw beschikbaarheids groep.  
@@ -31,7 +31,7 @@ ms.locfileid: "67175986"
 
 8. Start SQL Server Management Studio en maak vervolgens verbinding met de primaire replica.
 
-9. Ga naar **AlwaysOn** > **beschikbaarheids groepen** > **\<\>** met hoge Beschik baarheid AvailabilityGroupName > -**listeners**.  
+9. Ga naar AlwaysOn-beschikbaarheids groepen voor de beschikbaarheids groep met **hoge Beschik baarheid**  >  **Availability Groups**  >  **\<AvailabilityGroupName\>**  >  **Availability Group Listeners**.  
     De naam van de listener die u hebt gemaakt in Failoverclusterbeheer moet worden weer gegeven.
 
 10. Klik met de rechter muisknop op de naam van de listener en klik vervolgens op **Eigenschappen**.

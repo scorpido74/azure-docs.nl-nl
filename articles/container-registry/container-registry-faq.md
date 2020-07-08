@@ -6,10 +6,10 @@ ms.topic: article
 ms.date: 03/18/2020
 ms.author: sajaya
 ms.openlocfilehash: f160910024d9d64d22028c72825b98d93f66f15d
-ms.sourcegitcommit: b56226271541e1393a4b85d23c07fd495a4f644d
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/26/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85390360"
 ---
 # <a name="frequently-asked-questions-about-azure-container-registry"></a>Veelgestelde vragen over Azure Container Registry
@@ -501,10 +501,10 @@ GitLab wordt momenteel niet ondersteund voor bron triggers.
 
 | Git-service | Bron context | Hand matige build | Trigger voor automatisch samen stellen via door voeren |
 |---|---|---|---|
-| GitHub | `https://github.com/user/myapp-repo.git#mybranch:myfolder` | Ja | Ja |
-| Azure-opslagplaatsen | `https://dev.azure.com/user/myproject/_git/myapp-repo#mybranch:myfolder` | Ja | Ja |
-| GitLab | `https://gitlab.com/user/myapp-repo.git#mybranch:myfolder` | Ja | Nee |
-| BitBucket | `https://user@bitbucket.org/user/mayapp-repo.git#mybranch:myfolder` | Ja | Nee |
+| GitHub | `https://github.com/user/myapp-repo.git#mybranch:myfolder` | Ja | Yes |
+| Azure-opslagplaatsen | `https://dev.azure.com/user/myproject/_git/myapp-repo#mybranch:myfolder` | Ja | Yes |
+| GitLab | `https://gitlab.com/user/myapp-repo.git#mybranch:myfolder` | Yes | Nee |
+| BitBucket | `https://user@bitbucket.org/user/mayapp-repo.git#mybranch:myfolder` | Yes | Nee |
 
 ## <a name="run-error-message-troubleshooting"></a>Problemen met het uitvoeren van fout berichten oplossen
 
