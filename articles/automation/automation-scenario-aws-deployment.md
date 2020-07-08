@@ -5,12 +5,12 @@ services: automation
 ms.subservice: process-automation
 ms.date: 03/16/2018
 ms.topic: conceptual
-ms.openlocfilehash: 4dcc095648111348a6935225a6aa10798109f76e
-ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
+ms.openlocfilehash: d67e2639c2d4b168babeb7c29ef977d39d9e11cb
+ms.sourcegitcommit: 9b5c20fb5e904684dc6dd9059d62429b52cb39bc
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/25/2020
-ms.locfileid: "83832229"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85855294"
 ---
 # <a name="deploy-an-amazon-web-services-vm-with-a-runbook"></a>Een Amazon Web Services-VM implementeren met een runbook
 
@@ -64,7 +64,7 @@ Zodra de Power shell-module AWS is geïmplementeerd, kunt u nu een runbook ontwe
 
 8. Als u een lijst met namen van installatie kopieën wilt ophalen uit uw AWS-abonnement, start u Power shell ISE en importeert u de AWS Power shell-module. Verifieer bij AWS door te vervangen `Get-AutomationPSCredential` in uw ISE-omgeving met `AWScred = Get-Credential` . Met deze instructie wordt om uw referenties gevraagd en kunt u uw toegangs sleutel-ID opgeven voor de gebruikers naam en uw geheime toegangs sleutel voor het wacht woord. 
 
-        ```powershell
+      ```powershell
         #Sample to get the AWS VM available images
         #Please provide the path where you have downloaded the AWS PowerShell module
         Import-Module AWSPowerShell
@@ -78,7 +78,7 @@ Zodra de Power shell-module AWS is geïmplementeerd, kunt u nu een runbook ontwe
         Set-DefaultAWSRegion -Region $AwsRegion
    
         Get-EC2ImageByName -ProfileName AWSProfile
-        ```
+      ```
         
     De volgende uitvoer wordt geretourneerd:<br><br>
    ![AWS-installatie kopieën ophalen](./media/automation-scenario-aws-deployment/powershell-ise-output.png)<br>  
@@ -93,7 +93,7 @@ Zorg ervoor dat de Power shell-module AWS is geïmporteerd in Azure Automation.
 3. Stel in Azure Automation **uitgebreide records** in het logboek in en **Registreer eventueel voortgangs records** onder de logboek registratie **van**de runbook-bewerking **en tracering** naar.<br><br> ![Runbook-logboek registratie en tracering ](./media/automation-scenario-aws-deployment/runbook-settings-logging-and-tracing.png) .  
 4. Klik op **Start** om het runbook te starten en klik vervolgens op **OK** wanneer het deel venster runbook starten wordt geopend.
 5. Geef in het deel venster Runbook starten een VM-naam op. Accepteer de standaard waarden voor de andere para meters die u vooraf hebt geconfigureerd in het script. Klik op **OK** om de runbook-taak te starten.<br><br> ![Nieuw runbook starten-AwsVM](./media/automation-scenario-aws-deployment/runbook-start-job-parameters.png)
-6. Er wordt een taak venster geopend voor de runbook-taak die u hebt gemaakt. Sluit dit deel venster.
+6. Er wordt een taakdeelvenster geopend voor de runbooktaak die u hebt gemaakt. Sluit dit deel venster.
 7. U kunt de voortgang van de taak bekijken en uitvoer stromen weer geven door **alle logboeken** te selecteren in het deel venster Runbook-taak.<br><br> ![Uitvoer van stream](./media/automation-scenario-aws-deployment/runbook-job-streams-output.png)
 8. Als u wilt controleren of de virtuele machine wordt ingericht, meldt u zich aan bij de AWS-beheer console als u momenteel niet bent aangemeld.<br><br> ![Geïmplementeerde VM in AWS-console](./media/automation-scenario-aws-deployment/aws-instances-status.png)
 
@@ -103,5 +103,5 @@ Zorg ervoor dat de Power shell-module AWS is geïmporteerd in Azure Automation.
 * Zie [Runbooks beheren in azure Automation](manage-runbooks.md)voor het werken met runbooks.
 * Zie [Power shell docs](https://docs.microsoft.com/powershell/scripting/overview)(Engelstalig) voor meer informatie over Power shell.
 * Zie [systeem eigen ondersteuning voor Power shell-scripts in azure Automation](https://azure.microsoft.com/blog/announcing-powershell-script-support-azure-automation-2/)voor script ondersteuning.
-* Zie [AZ. Automation](https://docs.microsoft.com/powershell/module/az.automation/?view=azps-3.7.0#automation
-)(Engelstalig) voor een Power shell-cmdlet-verwijzing.
+* Zie [Az.Automation](https://docs.microsoft.com/powershell/module/az.automation/?view=azps-3.7.0#automation
+) voor een naslagdocumentatie voor een PowerShell-cmdlet.

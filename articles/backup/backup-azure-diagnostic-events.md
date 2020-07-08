@@ -3,12 +3,12 @@ title: Diagnostische instellingen voor Recovery Services kluizen gebruiken
 description: In dit artikel wordt beschreven hoe u de oude en nieuwe diagnostische gebeurtenissen voor Azure Backup gebruikt.
 ms.topic: conceptual
 ms.date: 10/30/2019
-ms.openlocfilehash: 4efc00da96493c751c4a85dbdcc280d1ca0ef5ac
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: be99b73a4dac12c9e70e4cb8a85f34b97f5c42d7
+ms.sourcegitcommit: 9b5c20fb5e904684dc6dd9059d62429b52cb39bc
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82183701"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85854805"
 ---
 # <a name="use-diagnostics-settings-for-recovery-services-vaults"></a>Diagnostische instellingen voor Recovery Services kluizen gebruiken
 
@@ -28,6 +28,8 @@ Azure Backup biedt de volgende diagnostische gebeurtenissen. Elke gebeurtenis bi
 * AddonAzureBackupJobs
 * AddonAzureBackupPolicy
 * AddonAzureBackupStorage
+
+Als u de [verouderde gebeurtenis](https://docs.microsoft.com/azure/backup/backup-azure-diagnostic-events#legacy-event) AzureBackupReport gebruikt, kunt u het beste overschakelen naar de bovenstaande gebeurtenissen op het eerste gebruik.
 
 Zie voor meer informatie [gegevens model voor Azure backup diagnostische gebeurtenissen](https://docs.microsoft.com/azure/backup/backup-azure-reports-data-model).
 
@@ -112,7 +114,7 @@ Azure Backup-en Azure Site Recovery-gebeurtenissen worden vanaf dezelfde Recover
 
 ![Site Recovery gebeurtenissen](./media/backup-azure-diagnostics-events/site-recovery-settings.png)
 
-Samenvattend:
+Samenvatting:
 
 * Als u al Log Analytics diagnostische gegevens hebt ingesteld met Azure Diagnostics en aangepaste query's bovenop deze hebt geschreven, houdt u die instelling *intact* totdat u uw query's migreert voor het gebruik van gegevens uit de nieuwe gebeurtenissen.
 * Als u ook op nieuwe tabellen wilt worden geadviseerd, maakt u een **nieuwe** diagnostische instelling, selecteert u **resource specifiek**en selecteert u de zes nieuwe gebeurtenissen.

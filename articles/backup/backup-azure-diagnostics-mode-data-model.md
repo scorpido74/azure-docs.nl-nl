@@ -3,12 +3,12 @@ title: Gegevens model van Azure Monitor logboeken
 description: In dit artikel vindt u informatie over de Azure Monitor Log Analytics gegevens model gegevens voor Azure Backup gegevens.
 ms.topic: conceptual
 ms.date: 02/26/2019
-ms.openlocfilehash: ba50e10eee61c571249a9b99c7e3b53d74474382
-ms.sourcegitcommit: 8017209cc9d8a825cc404df852c8dc02f74d584b
+ms.openlocfilehash: e776649ff22e3249e2472adbe298c869ff5c946a
+ms.sourcegitcommit: 9b5c20fb5e904684dc6dd9059d62429b52cb39bc
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/01/2020
-ms.locfileid: "84248920"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85854754"
 ---
 # <a name="log-analytics-data-model-for-azure-backup-data"></a>Log Analytics gegevens model voor Azure Backup gegevens
 
@@ -28,12 +28,12 @@ U kunt de volgende velden gebruiken als onderdeel van het gegevens model voor he
 
 Deze tabel bevat details over velden die betrekking hebben op waarschuwingen.
 
-| Veld | Gegevenstype | Beschrijving |
+| Veld | Gegevenstype | Description |
 | --- | --- | --- |
 | AlertUniqueId_s |Tekst |De unieke id van de gegenereerde waarschuwing |
 | AlertType_s |Tekst |Type waarschuwing, bijvoorbeeld back-up |
 | AlertStatus_s |Tekst |De status van de waarschuwing, bijvoorbeeld actief |
-| AlertOccurrenceDateTime_s |Datum/tijd |Datum en tijd waarop de waarschuwing is gemaakt |
+| AlertOccurrenceDateTime_s |Datum en tijd |Datum en tijd waarop de waarschuwing is gemaakt |
 | AlertSeverity_s |Tekst |Ernst van de waarschuwing, bijvoorbeeld kritiek |
 |AlertTimeToResolveInMinutes_s    | Aantal        |De tijd die nodig is om een waarschuwing op te lossen. Leeg voor actieve waarschuwingen.         |
 |AlertConsolidationStatus_s   |Tekst         |Vaststellen of de waarschuwing een geconsolideerde waarschuwing is         |
@@ -62,7 +62,7 @@ Deze tabel bevat details over velden die betrekking hebben op waarschuwingen.
 
 Deze tabel bevat details over velden die betrekking hebben op Back-upitems.
 
-| Veld | Gegevenstype | Beschrijving |
+| Veld | Gegevenstype | Description |
 | --- | --- | --- |
 | EventName_s |Tekst |De naam van de gebeurtenis. Altijd AzureBackupCentralReport |  
 | BackupItemUniqueId_s |Tekst |De unieke id van het back-upitem |
@@ -92,7 +92,7 @@ Deze tabel bevat details over velden die betrekking hebben op Back-upitems.
 
 Deze tabel bevat details over koppelingen van back-upitems met verschillende entiteiten.
 
-| Veld | Gegevenstype | Beschrijving |
+| Veld | Gegevenstype | Description |
 | --- | --- | --- |
 | EventName_s |Tekst |Dit veld vertegenwoordigt de naam van deze gebeurtenis, maar is altijd AzureBackupCentralReport |  
 | BackupItemUniqueId_s |Tekst |De unieke ID van het back-upitem |
@@ -117,7 +117,7 @@ Deze tabel bevat details over koppelingen van back-upitems met verschillende ent
 
 Deze tabel bevat details over koppelingen van back-upitems met verschillende entiteiten.
 
-| Veld | Gegevenstype | Beschrijving |
+| Veld | Gegevenstype | Description |
 | --- | --- | --- |
 |BackupManagementServerName_s     |Tekst         |Naam van de server voor back-upbeheer        |
 |AzureBackupAgentVersion_s     |Tekst         |Versie van de Azure Backup-Agent op de server voor back-upbeheer          |
@@ -136,7 +136,7 @@ Deze tabel bevat details over koppelingen van back-upitems met verschillende ent
 
 Deze tabel bevat details over projectgerelateerde velden.
 
-| Veld | Gegevenstype | Beschrijving |
+| Veld | Gegevenstype | Description |
 | --- | --- | --- |
 | EventName_s |Tekst |De naam van de gebeurtenis. Altijd AzureBackupCentralReport |
 | BackupItemUniqueId_s |Tekst |De unieke id van het back-upitem |
@@ -152,7 +152,7 @@ Deze tabel bevat details over projectgerelateerde velden.
 | JobOperation_s |Tekst |Bewerking waarvoor de taak wordt uitgevoerd bijvoorbeeld back-ups maken, herstellen, back-up configureren |
 | JobStatus_s |Tekst |De status van de voltooide taak, bijvoorbeeld voltooid, is mislukt |
 | JobFailureCode_s |Tekst |De teken reeks voor de fout code omdat de taak fout is opgetreden |
-| JobStartDateTime_s |Datum/tijd |Datum en tijd waarop de taak is gestart |
+| JobStartDateTime_s |Datum en tijd |Datum en tijd waarop de taak is gestart |
 | BackupStorageDestination_s |Tekst |Doel van back-upopslag, bijvoorbeeld Cloud, schijf  |
 | AdHocOrScheduledJob_s |Tekst | Veld om op te geven of de taak ad-hoc of gepland is |
 | JobDurationInSecs_s | Aantal |Totale taak duur in seconden |
@@ -172,7 +172,7 @@ Deze tabel bevat details over projectgerelateerde velden.
 
 Deze tabel bevat details over velden die betrekking hebben op het beleid.
 
-| Veld | Gegevenstype | Versies van toepassing | Beschrijving |
+| Veld | Gegevenstype | Versies van toepassing | Description |
 | --- | --- | --- | --- |
 | EventName_s |Tekst ||Dit veld vertegenwoordigt de naam van deze gebeurtenis, maar is altijd AzureBackupCentralReport |
 | SchemaVersion_s |Tekst ||Dit veld geeft de huidige versie van het schema aan. Dit is **v2** |
@@ -220,7 +220,7 @@ Deze tabel bevat details over velden die betrekking hebben op het beleid.
 
 Deze tabel bevat details over beleids koppelingen met verschillende entiteiten.
 
-| Veld | Gegevenstype | Versies van toepassing | Beschrijving |
+| Veld | Gegevenstype | Versies van toepassing | Description |
 | --- | --- | --- | --- |
 | EventName_s |Tekst ||Dit veld vertegenwoordigt de naam van deze gebeurtenis, maar is altijd AzureBackupCentralReport |
 | SchemaVersion_s |Tekst ||Dit veld geeft de huidige versie van het schema aan. Dit is **v2** |
@@ -243,7 +243,7 @@ Deze tabel bevat details over beleids koppelingen met verschillende entiteiten.
 
 Deze tabel bevat basis velden over beveiligde containers. (Was ProtectedServer in v1)
 
-| Veld | Gegevenstype | Beschrijving |
+| Veld | Gegevenstype | Description |
 | --- | --- | --- |
 | ProtectedContainerUniqueId_s |Tekst | Veld om een beveiligde container op unieke wijze te identificeren |
 | ProtectedContainerOSType_s |Tekst |Type besturings systeem van de beveiligde container |
@@ -262,7 +262,7 @@ Deze tabel bevat basis velden over beveiligde containers. (Was ProtectedServer i
 
 Deze tabel bevat details over velden die betrekking hebben op opslag.
 
-| Veld | Gegevenstype | Beschrijving |
+| Veld | Gegevenstype | Description |
 | --- | --- | --- |
 | CloudStorageInBytes_s |Decimaal getal |Back-upopslag voor de cloud die wordt gebruikt voor back-ups, berekend op basis van de meest recente waarde (dit veld is alleen voor v1-schema)|
 | ProtectedInstances_s |Decimaal getal |Aantal beveiligde instanties dat wordt gebruikt voor het berekenen van de front-end opslag in de facturering, berekend op basis van de nieuwste waarde |
@@ -290,7 +290,7 @@ Deze tabel bevat details over velden die betrekking hebben op opslag.
 
 Deze tabel bevat basis velden die betrekking hebben op opslag en die opslag aan andere entiteiten koppelen.
 
-| Veld | Gegevenstype | Beschrijving |
+| Veld | Gegevenstype | Description |
 | --- | --- |  --- |
 | StorageUniqueId_s |Tekst |Unieke ID die wordt gebruikt voor het identificeren van de opslag entiteit |
 | SchemaVersion_s |Tekst |Dit veld geeft de huidige versie van het schema aan. Dit is **v2** |
@@ -304,7 +304,7 @@ Deze tabel bevat basis velden die betrekking hebben op opslag en die opslag aan 
 
 Deze tabel bevat details over aan de kluis gerelateerde velden.
 
-| Veld | Gegevenstype | Beschrijving |
+| Veld | Gegevenstype | Description |
 | --- | --- | --- |
 | EventName_s |Tekst |Dit veld vertegenwoordigt de naam van deze gebeurtenis, maar is altijd AzureBackupCentralReport |
 | SchemaVersion_s |Tekst |Dit veld geeft de huidige versie van het schema aan. Dit is **v2** |
@@ -327,7 +327,7 @@ Deze tabel bevat details over aan de kluis gerelateerde velden.
 
 Deze tabel bevat basis velden over back-upbeheerser vers.
 
-|Veld  |Gegevenstype  | Beschrijving  |
+|Veld  |Gegevenstype  | Description  |
 |---------|---------|----------|
 |BackupManagementServerName_s     |Tekst         |Naam van de server voor back-upbeheer        |
 |AzureBackupAgentVersion_s     |Tekst         |Versie van de Azure Backup-Agent op de server voor back-upbeheer          |
@@ -340,7 +340,7 @@ Deze tabel bevat basis velden over back-upbeheerser vers.
 
 In deze tabel worden de werk belasting (s) aangegeven waaraan een volume is gekoppeld.
 
-| Veld | Gegevenstype | Beschrijving |
+| Veld | Gegevenstype | Description |
 | --- | --- | --- |
 | StorageUniqueId_s |Tekst |Unieke ID die wordt gebruikt voor het identificeren van de opslag entiteit |
 | BackupItemType_s |Tekst |De werk belastingen waarvoor dit volume de voorkeurs opslag is|
@@ -349,7 +349,7 @@ In deze tabel worden de werk belasting (s) aangegeven waaraan een volume is geko
 
 Deze tabel bevat basis velden die betrekking hebben op een beveiligd exemplaar.
 
-| Veld | Gegevenstype |Versies van toepassing | Beschrijving |
+| Veld | Gegevenstype |Versies van toepassing | Description |
 | --- | --- | --- | --- |
 | BackupItemUniqueId_s |Tekst |v2|Unieke ID die wordt gebruikt voor het identificeren van het back-upitem voor Vm's waarvan een back-up is gemaakt met DPM, MABS|
 | ProtectedContainerUniqueId_s |Tekst |v2|Unieke ID die wordt gebruikt om de beveiligde container te identificeren voor alles behalve Vm's waarvoor een back-up is gemaakt met behulp van DPM, MABS|
@@ -359,7 +359,7 @@ Deze tabel bevat basis velden die betrekking hebben op een beveiligd exemplaar.
 
 Deze tabel bevat algemene velden voor herstel punten.
 
-| Veld | Gegevenstype | Beschrijving |
+| Veld | Gegevenstype | Description |
 | --- | --- | --- |
 | BackupItemUniqueId_s |Tekst |Unieke ID die wordt gebruikt voor het identificeren van het back-upitem voor Vm's waarvan een back-up is gemaakt met DPM, MABS|
 | OldestRecoveryPointTime_s |Tekst |Datum en tijd van het oudste herstel punt voor het back-upitem|
@@ -466,6 +466,30 @@ Eerder werden de diagnostische gegevens voor Azure Backup Agent en Azure VM-back
 Om redenen van achterwaartse compatibiliteit, worden diagnostische gegevens voor Azure Backup-Agent en Azure VM-back-up momenteel verzonden naar Azure Diagnostics tabel in zowel het v1-als het v2-schema (met v1-schema nu op een afschaffing-pad). U kunt bepalen welke records in Log Analytics van v1-schema door records te filteren voor SchemaVersion_s = "v1" in uw logboek query's. 
 
 Raadpleeg de derde kolom ' description ' in het hierboven beschreven [gegevens model](https://docs.microsoft.com/azure/backup/backup-azure-diagnostics-mode-data-model#using-azure-backup-data-model) om te bepalen welke kolommen alleen bij v1-schema horen.
+
+### <a name="modifying-your-queries-to-use-the-v2-schema"></a>Uw query's wijzigen om het v2-schema te gebruiken
+Omdat het v1-schema zich op een afschaffing pad bevindt, wordt u aangeraden alleen het v2-schema te gebruiken in alle aangepaste query's op Azure Backup diagnostische gegevens. Hieronder ziet u een voor beeld van hoe u uw query's bijwerkt om afhankelijkheden van v1-schema te verwijderen:
+
+1. Bepaal of uw query een veld gebruikt dat alleen van toepassing is op v1-schema. Stel dat u een query hebt om alle back-upitems en de bijbehorende beveiligde servers als volgt weer te geven:
+
+````Kusto
+AzureDiagnostics
+| where Category=="AzureBackupReport"
+| where OperationName=="BackupItemAssociation"
+| distinct BackupItemUniqueId_s, ProtectedServerUniqueId_s
+````
+
+De bovenstaande query gebruikt het veld ProtectedServerUniqueId_s dat alleen van toepassing is op het v1-schema. Het v2-schema equivalent van dit veld is ProtectedContainerUniqueId_s (zie tabellen hierboven). Het veld BackupItemUniqueId_s is van toepassing op zelfs het v2-schema en hetzelfde veld kan worden gebruikt in deze query.
+
+2. Werk de query bij om de v2-schema veld namen te gebruiken. Het is raadzaam om het filter ' where SchemaVersion_s = = ' v2 ' in al uw query's te gebruiken, zodat alleen records die overeenkomen met het v2-schema worden geparseerd door de query:
+
+````Kusto
+AzureDiagnostics
+| where Category=="AzureBackupReport"
+| where OperationName=="BackupItemAssociation"
+| where SchemaVersion_s=="V2"
+| distinct BackupItemUniqueId_s, ProtectedContainerUniqueId_s 
+````
 
 ## <a name="next-steps"></a>Volgende stappen
 

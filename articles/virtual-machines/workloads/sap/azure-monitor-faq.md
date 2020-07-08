@@ -1,0 +1,82 @@
+---
+title: Veelgestelde vragen-Azure Monitor voor SAP-oplossingen | Microsoft Docs
+description: In dit artikel vindt u antwoorden op veelgestelde vragen over Azure monitor for SAP-oplossingen
+services: virtual-machines-windows,virtual-network,storage
+documentationcenter: saponazure
+author: rdeltcheva
+manager: juergent
+editor: ''
+tags: azure-resource-manager
+keywords: ''
+ms.assetid: 5e514964-c907-4324-b659-16dd825f6f87
+ms.service: virtual-machines-windows
+ms.topic: article
+ms.tgt_pltfrm: vm-windows
+ms.workload: infrastructure-services
+ms.date: 06/30/2020
+ms.author: radeltch
+ms.openlocfilehash: cf0366300c4fab18a0f6231a97ca050eddd50132
+ms.sourcegitcommit: cec9676ec235ff798d2a5cad6ee45f98a421837b
+ms.translationtype: MT
+ms.contentlocale: nl-NL
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85852323"
+---
+# <a name="azure-monitor-for-sap-solutions-faq-preview"></a>Veelgestelde vragen over Azure monitor voor SAP-oplossingen (preview-versie)
+## <a name="frequently-asked-questions"></a>Veelgestelde vragen
+
+In dit artikel vindt u antwoorden op veelgestelde vragen over Azure monitor for SAP-oplossingen.  
+
+ - **Moet ik betalen voor Azure Monitor voor SAP-oplossingen?**  
+Er zijn geen licentie kosten voor Azure Monitor voor SAP-oplossingen.  
+Klanten zijn echter verantwoordelijk voor de kosten van de onderdelen van de beheerde resource groep.  
+
+ - **In welke regio's is deze service beschikbaar voor een open bare preview?**  
+Voor een open bare preview is deze service beschikbaar in VS-Oost 2, VS-West 2, VS-Oost en Europa-west.  
+
+ - **Moet ik machtigingen opgeven voor het toestaan van de implementatie van een beheerde resource groep in mijn abonnement?**  
+Nee, expliciete machtigingen zijn niet vereist.  
+
+ - **Waar bevindt de Collector-VM zich?**  
+Op het moment van de implementatie van Azure Monitor voor SAP-oplossingen, raden we klanten aan om hetzelfde VNET te kiezen voor het bewaken van resources als hun SAP HANA server. Daarom wordt de virtuele machine van de Collector aanbevolen om zich te bevinden in hetzelfde VNET als SAP HANA-server. Als klanten een niet-HANA-Data Base gebruiken, bevinden de virtuele machine van de Collector zich in hetzelfde VNET als de niet-HANA-data base.  
+
+ - **Welke versies van HANA worden ondersteund?**  
+HANA 1,0 SPS 12 (Rev. 120 of hoger) en HANA 2,0 SPS03 of hoger  
+
+ - **Welke HANA-implementatie configuraties worden ondersteund?**  
+De volgende configuraties worden ondersteund:
+   - Eén knoop punt (omhoog schalen) en meerdere knoop punten (uitschalen)  
+   - Eén database container (HANA 1,0 SPS 12) en meerdere database containers (HANA 1,0 SPS 12 of HANA 2,0)  
+   - Failover van automatische host (n + 1) en HSR  
+
+ - **Welke SQL Server versies worden ondersteund?**  
+SQL Server 2012 SP4 of hoger.  
+
+ - **Welke SQL Server configuraties worden ondersteund?**  
+De volgende configuraties worden ondersteund:
+   - Standaard of benoemde zelfstandige instanties in een virtuele machine  
+   - Geclusterde instanties of instanties in een AlwaysOn-configuratie wanneer u de virtuele naam van de geclusterde bron of de AlwaysOn-listener-naam gebruikt. Er zijn momenteel geen cluster-of AlwaysOn-specifieke metrische gegevens verzameld    
+   - Azure SQL Database (PAAS) wordt momenteel niet ondersteund  
+
+ - **Wat gebeurt er als ik de beheerde resource groep per ongeluk verwijder?**  
+De beheerde resource groep is standaard vergrendeld. Daarom is de kans op onopzettelijke verwijdering van de beheerde resource groep door klanten minuscule.  
+Als een klant de beheerde resource groep verwijdert, werkt Azure Monitor voor SAP-oplossingen niet meer. De klant moet een nieuwe Azure Monitor voor de SAP-oplossingen resource implementeren en opnieuw starten.  
+
+ - **Welke rollen heb ik nodig in mijn Azure-abonnement om Azure Monitor voor SAP-oplossingen te implementeren?**  
+Rol Inzender.  
+
+ - **Wat is de SLA van dit product?**  
+Previews worden uitgesloten van service overeenkomsten. Lees de volledige licentie termijn via Azure Monitor voor SAP Solutions Marketplace-installatie kopie.  
+
+ - **Kan ik mijn hele landschap bewaken via deze oplossing?**  
+U kunt de HANA-data base, de onderliggende infra structuur, het cluster met hoge Beschik baarheid en micro soft SQL Server op een open bare preview controleren.  
+
+ - **Wordt SAP Solution Manager vervangen door deze service?**  
+Nee. Klanten kunnen nog steeds SAP Solution Manager gebruiken voor de bewaking van bedrijfs processen.  
+
+ - **Wat is de waarde van deze service via traditionele oplossingen, zoals SAP HANA cockpit/Studio?**  
+Azure Monitor voor SAP-oplossingen is geen HANA-data base-specifiek. Azure Monitor voor SAP-oplossingen ondersteunt ook AnyDB.  
+
+## <a name="next-steps"></a>Volgende stappen
+
+- Maak uw eerste Azure Monitor voor SAP-oplossingen resource.

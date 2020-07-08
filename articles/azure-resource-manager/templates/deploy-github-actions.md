@@ -2,13 +2,13 @@
 title: Resource Manager-sjablonen implementeren met behulp van GitHub-acties
 description: Hierin wordt beschreven hoe u Azure Resource Manager-sjablonen implementeert met behulp van GitHub-acties.
 ms.topic: conceptual
-ms.date: 05/05/2020
-ms.openlocfilehash: f2e0d73c838d16c161605972b87d6f07ef8869b9
-ms.sourcegitcommit: 64fc70f6c145e14d605db0c2a0f407b72401f5eb
+ms.date: 07/02/2020
+ms.openlocfilehash: 313354499901bc69ec6e00f0ba7c385065cae615
+ms.sourcegitcommit: 9b5c20fb5e904684dc6dd9059d62429b52cb39bc
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "83869180"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85854737"
 ---
 # <a name="deploy-azure-resource-manager-templates-by-using-github-actions"></a>Azure Resource Manager sjablonen implementeren met behulp van GitHub-acties
 
@@ -78,11 +78,11 @@ Voeg een resource manager-sjabloon toe aan de GitHub-opslag plaats. Als u er nog
 https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-storage-account-create/azuredeploy.json
 ```
 
-U kunt het bestand plaatsen op een wille keurige plaats in de opslag plaats. In het voor beeld van de werk stroom in de volgende sectie wordt ervan uitgegaan dat het sjabloon bestand de naam **azuredeploy. json**heeft en dat het wordt opgeslagen in een map met de naam **sjablonen** in de hoofdmap van uw opslag plaats.
+U kunt het bestand plaatsen op een wille keurige plaats in de opslag plaats. In het workflow-voor beeld in de volgende sectie wordt ervan uitgegaan dat het sjabloon bestand de naam **azuredeploy.js**heeft en het is opgeslagen in een map met de naam **sjablonen** in de hoofdmap van uw opslag plaats.
 
 ## <a name="create-workflow"></a>Werk stroom maken
 
-Het werk stroom bestand moet worden opgeslagen in de map **. github/werk stroom** in de hoofdmap van uw opslag plaats. De extensie van een werk stroom bestand kan **. yml** of **. yaml**.
+Het werk stroom bestand moet worden opgeslagen in de map **. github/werk stromen** in de hoofdmap van uw opslag plaats. De extensie van een werk stroom bestand kan **. yml** of **. yaml**.
 
 U kunt een werk stroom bestand maken en het bestand vervolgens pushen/uploaden naar de opslag plaats of de volgende procedure gebruiken:
 

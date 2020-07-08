@@ -3,12 +3,12 @@ title: Uw ontwikkel omgeving instellen in Linux
 description: Installeer de runtime en SDK en maak een lokaal ontwikkelcluster in Linux. Zodra u dit hebt gedaan, kunt u toepassingen bouwen.
 ms.topic: conceptual
 ms.date: 2/23/2018
-ms.openlocfilehash: 346230c0363bf58926cc46cb8bac2de61b81d68b
-ms.sourcegitcommit: f98ab5af0fa17a9bba575286c588af36ff075615
+ms.openlocfilehash: cfc97a540ed8c4c17ca4030c45b16021b926d7c5
+ms.sourcegitcommit: 9b5c20fb5e904684dc6dd9059d62429b52cb39bc
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/25/2020
-ms.locfileid: "85361969"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85854788"
 ---
 # <a name="prepare-your-development-environment-on-linux"></a>Uw ontwikkelomgeving voorbereiden in Linux
 > [!div class="op_single_selector"]
@@ -68,7 +68,7 @@ Voor het installeren van de SDK en het bijbehorende runtimepakket via het apt-ge
     sudo dpkg -i packages-microsoft-prod.deb
     ```
 
-3. Voeg de nieuwe Gnu Privacy Guard-code (GnuPG of GPG) toe aan uw APT-sleutelring.
+3. Voeg de nieuwe MS open tech GNU Privacy Guard-sleutel (GnuPG of GPG) toe aan uw APT-sleutel hanger.
 
     ```bash
     sudo curl -fsSL https://packages.microsoft.com/keys/msopentech.asc | sudo apt-key add -
@@ -80,26 +80,20 @@ Voor het installeren van de SDK en het bijbehorende runtimepakket via het apt-ge
     sudo curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
     ```
 
-5. Voeg de MS open tech GPG-sleutel toe aan uw APT-sleutel hanger.
-
-    ```bash
-    sudo curl -fsSL https://packages.microsoft.com/keys/msopentech.asc | apt-key add -
-    ```
-
-6. Stel de Docker-opslagplaats in.
+5. Stel de Docker-opslagplaats in.
 
     ```bash
     sudo add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable"
     ```
 
-7. Voeg Azul JDK-sleutel toe aan uw APT sleutel hanger en stel de opslag plaats in.
+6. Voeg Azul JDK-sleutel toe aan uw APT sleutel hanger en stel de opslag plaats in.
 
     ```bash
     sudo apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys 0xB1998361219BD9C9
     sudo apt-add-repository "deb http://repos.azul.com/azure-only/zulu/apt stable main"
     ```
 
-8. Vernieuw uw pakketlijsten op basis van de net toegevoegde opslagplaatsen.
+7. Vernieuw uw pakketlijsten op basis van de net toegevoegde opslagplaatsen.
 
     ```bash
     sudo apt-get update

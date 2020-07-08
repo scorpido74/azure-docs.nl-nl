@@ -3,12 +3,12 @@ title: De Microsoft Azure Recovery Services-agent (MARS) installeren
 description: Meer informatie over het installeren van de Microsoft Azure Recovery Services-agent (MARS) voor het maken van back-ups van Windows-machines.
 ms.topic: conceptual
 ms.date: 03/03/2020
-ms.openlocfilehash: 767e04e45f88294ac4ffa58ec263a9a6d05eafb6
-ms.sourcegitcommit: 5504d5a88896c692303b9c676a7d2860f36394c1
+ms.openlocfilehash: 7a43f585e978b7d6974ac89fbb5d93f15aebb1d7
+ms.sourcegitcommit: 9b5c20fb5e904684dc6dd9059d62429b52cb39bc
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/08/2020
-ms.locfileid: "84508757"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85855226"
 ---
 # <a name="install-the-azure-backup-mars-agent"></a>Installeer de Azure Backup MARS-agent
 
@@ -61,7 +61,7 @@ Het type opslag replicatie wijzigen:
 > U kunt het type opslag replicatie niet wijzigen nadat de kluis is ingesteld en back-upitems bevat. Als u dit wilt doen, moet u de kluis opnieuw maken.
 >
 
-### <a name="verify-internet-access"></a>Internet toegang controleren
+### <a name="verify-internet-access"></a>Internettoegang controleren
 
 Als uw computer beperkte internet toegang heeft, moet u ervoor zorgen dat de firewall instellingen op de computer of de proxy de volgende Url's en IP-adressen toestaan:
 
@@ -71,6 +71,7 @@ Als uw computer beperkte internet toegang heeft, moet u ervoor zorgen dat de fir
   * `*.WindowsAzure.com`
   * `*.microsoftonline.com`
   * `*.windows.net`
+  * `www.msftconnecttest.com`
 * IP-adressen
   * 20.190.128.0/18
   * 40.126.0.0/18
@@ -82,6 +83,7 @@ U kunt een back-up van uw gegevens via Azure ExpressRoute maken met behulp van o
 Als u open bare peering wilt gebruiken, zorg er dan voor dat u toegang hebt tot de volgende domeinen en adressen:
 
 * `http://www.msftncsi.com/ncsi.txt`
+* `http://www.msftconnecttest.com/connecttest.txt`
 * `microsoft.com`
 * `.WindowsAzure.com`
 * `.microsoftonline.com`
@@ -133,7 +135,7 @@ Als u de agent al op alle computers hebt geïnstalleerd, moet u ervoor zorgen da
 
 ## <a name="install-and-register-the-agent"></a>De agent installeren en registreren
 
-1. Voer het bestand *MARSagentinstaller. exe* uit op de computers waarvan u een back-up wilt maken.
+1. Voer het *MARSagentinstaller.exe* -bestand uit op de computers waarvan u een back-up wilt maken.
 1. In de installatie wizard van de MARS-agent selecteert u **installatie-instellingen**. Hier kunt u kiezen waar u de agent wilt installeren en kiest u een locatie voor de cache. Selecteer vervolgens **Volgende**.
    * Azure Backup gebruikt de cache om moment opnamen van gegevens op te slaan voordat ze naar Azure worden verzonden.
    * De cache locatie moet vrije ruimte hebben die gelijk is aan ten minste 5 procent van de grootte van de gegevens waarvan u een back-up maakt.

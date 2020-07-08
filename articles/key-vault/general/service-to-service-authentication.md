@@ -3,21 +3,23 @@ title: Service-naar-service-verificatie voor het Azure Key Vault met behulp van 
 description: Gebruik de bibliotheek micro soft. Azure. Services. AppAuthentication om u te verifiëren bij het Azure Key Vault met behulp van .NET.
 keywords: lokale referenties voor Azure Key-kluis verificatie
 author: msmbaldwin
-manager: rkarlin
 services: key-vault
 ms.author: mbaldwin
-ms.date: 08/28/2019
+ms.date: 06/30/2020
 ms.topic: conceptual
 ms.service: key-vault
 ms.subservice: general
-ms.openlocfilehash: 22f727688de46ae95f128a1589c8ae5d6792f232
-ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
+ms.openlocfilehash: 7ad3af46be26816231a15156d13fbec3275a5559
+ms.sourcegitcommit: 9b5c20fb5e904684dc6dd9059d62429b52cb39bc
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/11/2020
-ms.locfileid: "84707018"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85855084"
 ---
 # <a name="service-to-service-authentication-to-azure-key-vault-using-net"></a>Service-naar-service-verificatie voor het Azure Key Vault met behulp van .NET
+
+> [!NOTE]
+> De verificatie methoden die in dit artikel worden beschreven, worden niet langer beschouwd als aanbevolen procedures. We raden u aan de bijgewerkte verificatie methoden te gebruiken in de verificatie van [Azure Key Vault](authentication.md).
 
 Als u zich wilt verifiëren bij Azure Key Vault, hebt u een Azure Active Directory (Azure AD)-referentie nodig, ofwel een gedeeld geheim of een certificaat.
 
