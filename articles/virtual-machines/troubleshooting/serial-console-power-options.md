@@ -15,17 +15,16 @@ ms.workload: infrastructure-services
 ms.date: 8/6/2019
 ms.author: alsin
 ms.openlocfilehash: 11c2549d7282bae5654ede1ac34d63a43cd0f059
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75451203"
 ---
 # <a name="power-options-available-from-the-azure-serial-console"></a>Beschik bare energie opties in de Azure seriële console
 
 De seriële console van Azure biedt verschillende krachtige hulpprogram ma's voor energie beheer op uw VM of virtuele-machine schaalset. Deze opties voor energie beheer zijn mogelijk verwarrend voor sommige. Dit is een overzicht van elk hulp programma en de beoogde gebruiks voorbeeld.
 
-Functie seriële console | Beschrijving | Use-case
+Functie seriële console | Description | Use-case
 :----------------------|:------------|:---------
 VM opnieuw opstarten | De virtuele machine of het exemplaar van de VM-schaalset is zonder problemen opnieuw opgestart. Deze bewerking is hetzelfde als het aanroepen van de herstart-functie die beschikbaar is op de pagina overzicht. | In de meeste gevallen moet deze optie uw eerste hulp programma zijn bij het opnieuw starten van de virtuele machine. Uw seriële console verbinding heeft een korte onderbreking en wordt automatisch hervat zodra de virtuele machine opnieuw is opgestart.
 VM opnieuw instellen | Een geforceerde-energie cyclus van uw VM of virtuele-machine schaalset door het Azure-platform. | Deze optie wordt gebruikt om het besturings systeem onmiddellijk opnieuw op te starten, ongeacht de huidige status. Omdat deze bewerking niet kan worden uitgevoerd, is er een risico dat er gegevens verloren gaan of beschadigd raken. Er is geen onderbreking in de seriële console verbinding, wat nuttig kan zijn voor het vroeg in de opstart tijd verzenden van opdrachten (bijvoorbeeld het ophalen van GRUB op een virtuele Linux-machine of in een veilige modus in een Windows-VM).

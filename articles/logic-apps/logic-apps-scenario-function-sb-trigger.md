@@ -7,10 +7,9 @@ ms.reviewer: jehollan, klam, logicappspm
 ms.topic: article
 ms.date: 11/08/2019
 ms.openlocfilehash: afd2735bae2a79ad942c347219019ef200b61070
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75428708"
 ---
 # <a name="call-or-trigger-logic-apps-by-using-azure-functions-and-azure-service-bus"></a>Logische apps aanroepen of activeren met behulp van Azure Functions en Azure Service Bus
@@ -113,13 +112,13 @@ Maak vervolgens de functie die als trigger fungeert en luistert naar de wachtrij
 
      ![Selecteer een sjabloon voor de bestaande functie-app](./media/logic-apps-scenario-function-sb-trigger/legacy-add-queue-trigger-template.png)
 
-1. Geef in het deel venster **Azure service bus wachtrij activeren** een naam op voor de trigger en stel de **Service Bus verbinding** voor de wachtrij in, die gebruikmaakt van de Azure service bus `OnMessageReceive()` SDK-listener en selecteer **maken**.
+1. Geef in het deel venster **Azure service bus wachtrij activeren** een naam op voor de trigger en stel de **Service Bus verbinding** voor de wachtrij in, die gebruikmaakt van de Azure service bus SDK `OnMessageReceive()` -listener en selecteer **maken**.
 
 1. Schrijf een Basic-functie om het eerder gemaakte logische app-eind punt aan te roepen met behulp van het wachtrij bericht als een trigger. Lees de volgende overwegingen voordat u de functie schrijft:
 
-   * In dit voor beeld `application/json` wordt het inhouds type bericht gebruikt, maar u kunt dit type zo nodig wijzigen.
+   * In dit voor beeld wordt het `application/json` inhouds type bericht gebruikt, maar u kunt dit type zo nodig wijzigen.
    
-   * Als gevolg van mogelijke gelijktijdig uitgevoerde functies, grote volumes of zware belastingen, moet u voor komen dat u de httpclient maakt `using` - [klasse](https://docs.microsoft.com/dotnet/api/system.net.http.httpclient) bij de-instructie instantiëren en rechtstreeks httpclient maakt-exemplaren per aanvraag maakt. Zie [HttpClientFactory gebruiken voor het implementeren van flexibele HTTP-aanvragen](https://docs.microsoft.com/dotnet/architecture/microservices/implement-resilient-applications/use-httpclientfactory-to-implement-resilient-http-requests#issues-with-the-original-httpclient-class-available-in-net-core)voor meer informatie.
+   * Als gevolg van mogelijke gelijktijdig uitgevoerde functies, grote volumes of zware belastingen, moet u voor komen dat u de [httpclient maakt-klasse](https://docs.microsoft.com/dotnet/api/system.net.http.httpclient) bij de-instructie instantiëren `using` en rechtstreeks httpclient maakt-exemplaren per aanvraag maakt. Zie [HttpClientFactory gebruiken voor het implementeren van flexibele HTTP-aanvragen](https://docs.microsoft.com/dotnet/architecture/microservices/implement-resilient-applications/use-httpclientfactory-to-implement-resilient-http-requests#issues-with-the-original-httpclient-class-available-in-net-core)voor meer informatie.
    
    * Gebruik, indien mogelijk, het exemplaar van HTTP-clients opnieuw. Zie [verbindingen beheren in azure functions](../azure-functions/manage-connections.md)voor meer informatie.
 

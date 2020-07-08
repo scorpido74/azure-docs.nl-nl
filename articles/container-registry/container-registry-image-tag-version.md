@@ -6,10 +6,9 @@ ms.topic: article
 ms.date: 07/10/2019
 ms.author: stevelas
 ms.openlocfilehash: b483317960409fe1fbea181706f12375606fe659
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75445735"
 ---
 # <a name="recommendations-for-tagging-and-versioning-container-images"></a>Aanbevelingen voor het labelen en versie beheer van container installatie kopieën
@@ -53,11 +52,11 @@ Unieke labels betekenen gewoon dat elke afbeelding die naar een REGI ster is gep
 * **Manifest Digest** : elke container installatie kopie die naar een container register is gepusht, is gekoppeld aan een manifest, geïdentificeerd door een unieke SHA-256-Hash, of Digest. Hoewel uniek, is de samen vatting lang, moeilijk te lezen en niet-gecorreleerd met uw build-omgeving.
 * **Build-id** : deze optie is mogelijk het beste omdat deze waarschijnlijk incrementeel is, en Hiermee kunt u weer correleren met de specifieke build om alle artefacten en logboeken te vinden. Net als bij een samen vatting van een manifest is het echter mogelijk moeilijk te lezen.
 
-  Als uw organisatie verschillende build-systemen heeft, wordt het voor voegsel van de tag met de naam van het build-systeem `<build-system>-<build-id>`een variant voor deze optie:. U kunt bijvoorbeeld samen stellingen onderscheiden van het Jenkins build-systeem van het API-team en het build-systeem van Azure pipelines van het webteam.
+  Als uw organisatie verschillende build-systemen heeft, wordt het voor voegsel van de tag met de naam van het build-systeem een variant voor deze optie: `<build-system>-<build-id>` . U kunt bijvoorbeeld samen stellingen onderscheiden van het Jenkins build-systeem van het API-team en het build-systeem van Azure pipelines van het webteam.
 
 ### <a name="lock-deployed-image-tags"></a>Geïmplementeerde afbeeldings Tags vergren delen
 
-Als best practice wordt u aangeraden de code van de geïmplementeerde installatie kopie te [vergren delen](container-registry-image-lock.md) door het kenmerk ervan `write-enabled` in te stellen op `false`. In deze oefening wordt voor komen dat u per ongeluk een installatie kopie uit het REGI ster verwijdert en mogelijk uw implementaties verstoort. U kunt de vergrendelings stap in uw release pijplijn toevoegen.
+Als best practice wordt u aangeraden de code van de geïmplementeerde installatie kopie te [vergren delen](container-registry-image-lock.md) door het `write-enabled` kenmerk ervan in te stellen op `false` . In deze oefening wordt voor komen dat u per ongeluk een installatie kopie uit het REGI ster verwijdert en mogelijk uw implementaties verstoort. U kunt de vergrendelings stap in uw release pijplijn toevoegen.
 
 Als u een geïmplementeerde installatie kopie vergrendelt, kunt u andere, niet-geïmplementeerde installatie kopieën uit het REGI ster verwijderen met Azure Container Registry-functies om uw REGI ster te onderhouden. U kunt bijvoorbeeld niet-gelabelde manifesten of niet-vergrendelde installatie kopieën die ouder zijn dan een opgegeven duur [automatisch opschonen](container-registry-auto-purge.md) of een [Bewaar beleid](container-registry-retention-policy.md) voor niet-gecodeerde manifesten instellen.
 

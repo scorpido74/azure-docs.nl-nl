@@ -6,17 +6,16 @@ ms.topic: conceptual
 ms.date: 11/02/2017
 ms.author: vturecek
 ms.openlocfilehash: 876c4f5f45ff6c81a53274cf32e8bebecc1acfce
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75349304"
 ---
 # <a name="notes-on-service-fabric-reliable-actors-type-serialization"></a>Opmerkingen over Service Fabric Reliable Actors type serialisatie
 De argumenten van alle methoden, resultaat typen van de taken die worden geretourneerd door elke methode in een actor-interface, en objecten die zijn opgeslagen in de status Manager van een actor moeten [serialiseerbaar](/dotnet/framework/wcf/feature-details/types-supported-by-the-data-contract-serializer)zijn. Dit geldt ook voor de argumenten van de methoden die in [actor-gebeurtenis interfaces](service-fabric-reliable-actors-events.md)zijn gedefinieerd. (De interface methoden van actor-gebeurtenissen retour neren altijd void.)
 
 ## <a name="custom-data-types"></a>Aangepaste gegevens typen
-In dit voor beeld definieert de volgende actor-interface een methode die resulteert in een aangepast gegevens `VoicemailBox`type met de naam:
+In dit voor beeld definieert de volgende actor-interface een methode die resulteert in een aangepast gegevens type met de naam `VoicemailBox` :
 
 ```csharp
 public interface IVoiceMailBoxActor : IActor
@@ -32,7 +31,7 @@ public interface VoiceMailBoxActor extends Actor
 }
 ```
 
-De interface wordt geïmplementeerd door een actor die gebruikmaakt van de status Manager voor het `VoicemailBox` opslaan van een object:
+De interface wordt geïmplementeerd door een actor die gebruikmaakt van de status Manager voor het opslaan van een `VoicemailBox` object:
 
 ```csharp
 [StatePersistence(StatePersistence.Persisted)]
@@ -68,7 +67,7 @@ public class VoiceMailBoxActorImpl extends FabricActor implements VoicemailBoxAc
 
 ```
 
-In dit voor beeld wordt `VoicemailBox` het object geserialiseerd wanneer:
+In dit voor beeld `VoicemailBox` wordt het object geserialiseerd wanneer:
 
 * Het object wordt verzonden tussen een actor-exemplaar en een aanroeper.
 * Het object wordt opgeslagen in de status Manager, waar het wordt bewaard op schijf en gerepliceerd naar andere knoop punten.

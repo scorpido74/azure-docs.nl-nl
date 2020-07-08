@@ -8,10 +8,9 @@ ms.topic: conceptual
 ms.service: iot-dps
 services: iot-dps
 ms.openlocfilehash: e0dec0a67ed33186797ccec8066aaad89ceb8dcb
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75434743"
 ---
 # <a name="how-to-provision-for-multitenancy"></a>Inrichten voor multitenancy 
@@ -198,9 +197,9 @@ In deze sectie kloont u de Azure IoT C SDK op elke VM. De SDK bevat een voor bee
     sudo apt-get install cmake build-essential libssl-dev libcurl4-openssl-dev uuid-dev git-all
     ```
 
-1. Zoek de code naam voor de [nieuwste versie](https://github.com/Azure/azure-iot-sdk-c/releases/latest) van de SDK.
+1. Zoek de tagnaam voor de [nieuwste versie](https://github.com/Azure/azure-iot-sdk-c/releases/latest) van de SDK.
 
-1. Kloon de [Azure IOT C-SDK](https://github.com/Azure/azure-iot-sdk-c) op beide vm's.  Gebruik het label dat u in de vorige stap hebt gevonden als waarde voor `-b` de para meter:
+1. Kloon de [Azure IOT C-SDK](https://github.com/Azure/azure-iot-sdk-c) op beide vm's.  Gebruik de tag die u in de vorige stap hebt gevonden als waarde voor de parameter `-b`:
 
     ```bash
     git clone -b <release-tag> https://github.com/Azure/azure-iot-sdk-c.git
@@ -304,7 +303,7 @@ Met de voorbeeld code wordt een opstart volgorde voor apparaten gesimuleerd die 
 
     ![Device Provisioning Service-eindpuntgegevens uit de portalblade extraheren](./media/quick-create-simulated-device-x509/extract-dps-endpoints.png) 
 
-1. Open **~/Azure-IOT-SDK-c/Provisioning\_client/samples/\_Prov\_dev\_client sample/\_Prov\_dev\_client sample. c** voor bewerking op beide vm's.
+1. Open **~/Azure-IOT-SDK-c/Provisioning \_ client/samples/Prov \_ dev \_ client sample \_ /Prov \_ dev \_ client \_ sample. c** voor bewerking op beide vm's.
 
     ```bash
     vi ~/azure-iot-sdk-c/provisioning_client/samples/prov_dev_client_sample/prov_dev_client_sample.c
@@ -316,7 +315,7 @@ Met de voorbeeld code wordt een opstart volgorde voor apparaten gesimuleerd die 
     static const char* id_scope = "0ne00002193";
     ```
 
-1. Zoek de definitie voor de functie `main()` op in hetzelfde bestand. Zorg ervoor dat `hsm_type` de variabele is ingesteld `SECURE_DEVICE_TYPE_SYMMETRIC_KEY` op zoals hieronder wordt weer gegeven, zodat deze overeenkomt met de Attestation-methode van de registratie groep. 
+1. Zoek de definitie voor de functie `main()` op in hetzelfde bestand. Zorg ervoor dat de `hsm_type` variabele is ingesteld op `SECURE_DEVICE_TYPE_SYMMETRIC_KEY` zoals hieronder wordt weer gegeven, zodat deze overeenkomt met de Attestation-methode van de registratie groep. 
 
     Sla de wijzigingen in de bestanden op beide Vm's op.
 
@@ -327,7 +326,7 @@ Met de voorbeeld code wordt een opstart volgorde voor apparaten gesimuleerd die 
     hsm_type = SECURE_DEVICE_TYPE_SYMMETRIC_KEY;
     ```
 
-1. Zoek op beide Vm's de aanroep `prov_dev_set_symmetric_key_info()` naar in **Prov\_dev\_client\_sample. c** . Dit is een opmerking.
+1. Zoek op beide Vm's de aanroep naar `prov_dev_set_symmetric_key_info()` in **Prov \_ dev \_ client \_ sample. c** . Dit is een opmerking.
 
     ```c
     // Set the symmetric key if using they auth type
@@ -357,7 +356,7 @@ Met de voorbeeld code wordt een opstart volgorde voor apparaten gesimuleerd die 
     cmake --build . --target prov_dev_client_sample --config Debug
     ```
 
-1. Zodra de build is gelukt, **voert\_u\_Prov\_dev client sample. exe** uit op beide vm's om een Tenant apparaat uit elke regio te simuleren. U ziet dat elk apparaat wordt toegewezen aan de Tenant IoT-hub die het dichtst bij de regio's van het gesimuleerde apparaat ligt.
+1. Zodra de build is gelukt, voert u **Prov \_ dev \_ client \_sample.exe** op beide vm's uit om een Tenant apparaat uit elke regio te simuleren. U ziet dat elk apparaat wordt toegewezen aan de Tenant IoT-hub die het dichtst bij de regio's van het gesimuleerde apparaat ligt.
 
     De simulatie uitvoeren:
     ```bash
@@ -410,7 +409,7 @@ In de volgende stappen wordt ervan uitgegaan dat u alle resources in dit artikel
 
 De resource groep op naam verwijderen:
 
-1. Meld u aan bij de [Azure-portal](https://portal.azure.com) en klik op **Resourcegroepen**.
+1. Meld u aan bij [Azure Portal](https://portal.azure.com) en klik op **Resourcegroepen**.
 
 2. Typ in het tekstvak **filteren op naam...** de naam van de resource groep met uw resources, **Contoso-US-Resource-Group**. 
 

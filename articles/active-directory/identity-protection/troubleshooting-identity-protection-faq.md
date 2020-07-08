@@ -12,10 +12,9 @@ manager: daveba
 ms.reviewer: sahandle
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 140ad45d9c4f6b6f49a4ea4aefb9298e58a2cf10
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75443576"
 ---
 # <a name="frequently-asked-questions-identity-protection-in-azure-active-directory"></a>Veelgestelde vragen over identiteits beveiliging in Azure Active Directory
@@ -24,7 +23,7 @@ ms.locfileid: "75443576"
 
 **Gebruikers risico** voor klassieke identiteits beveiliging sluiten Hiermee wordt de actor in de risico geschiedenis van de gebruiker in identiteits beveiliging ingesteld op **Azure AD**.
 
-**Gebruikers risico** voor identiteits beveiliging negeren Hiermee wordt de actor in de risico geschiedenis van de gebruiker in identiteits beveiliging ingesteld op ** \<de naam van de beheerder met\>een Hyper link die verwijst naar de Blade van de gebruiker**.
+**Gebruikers risico negeren** in identiteits beveiliging stelt de actor in de risico geschiedenis van de gebruiker in identiteits beveiliging in op **\<Admin’s name with a hyperlink pointing to user’s blade\>** .
 
 Er is een huidige bekend probleem waardoor er een latentie in de stroom van de gebruikers risico is ontstaan. Als u een ' gebruikers risico beleid ' hebt, wordt dit beleid niet meer toegepast op genegeerde gebruikers binnen enkele minuten na het klikken op risico van gebruikers. Er zijn echter bekende vertragingen met de UX waarmee de ' risico status ' van genegeerde gebruikers wordt vernieuwd. Als tijdelijke oplossing kunt u de pagina op het niveau van de browser vernieuwen om de nieuwste gebruiker ' risico status ' te zien.
 
@@ -85,7 +84,7 @@ Alle risico detecties worden beschreven in het artikel [Wat is risico](concept-i
 
 **Bevestig veilig** (bij een aanmelding): informeert Azure AD Identity Protection dat de aanmelding is uitgevoerd door de eigenaar van de identiteit en geeft geen inbreuk op.
 
-- Wanneer deze feedback wordt ontvangen, verplaatsen we de risico status aanmelden (niet de gebruiker) om **veilig** en risico niveau te **-** bevestigen.
+- Wanneer deze feedback wordt ontvangen, verplaatsen we de risico status aanmelden (niet de gebruiker) om veilig en risico niveau te **bevestigen** **-** .
 
 - Daarnaast bieden we de informatie aan onze machine learning systemen voor toekomstige verbeteringen in de risico beoordeling.
 

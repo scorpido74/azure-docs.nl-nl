@@ -15,10 +15,9 @@ ms.topic: article
 ms.date: 04/21/2019
 ms.author: juliako
 ms.openlocfilehash: 126700e6290650221a9cb9711b22472301409fca
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "74974169"
 ---
 # <a name="tutorial-encrypt-video-with-aes-128-and-use-the-key-delivery-service"></a>Zelf studie: video versleutelen met AES-128 en de key delivery service gebruiken
@@ -30,7 +29,7 @@ U kunt Media Services gebruiken om HTTP Live Streaming (HLS), MPEG-DASH en Smoot
 
 U kunt elke asset met meerdere versleutelingstypen versleutelen (AES-128, PlayReady, Widevine, FairPlay). Zie [Streamingprotocollen en versleutelingstypen](content-protection-overview.md#streaming-protocols-and-encryption-types) voor nuttige combinaties. Zie ook [hoe u met DRM kunt beveiligen](protect-with-drm.md).
 
-De uitvoer van het voor beeld dit artikel bevat een URL naar de Azure Media Player, manifest-URL en het AES-token dat nodig is voor het afspelen van de inhoud. In het voor beeld wordt de verval datum van het token van de JSON Web Token (JWT) ingesteld op 1 uur. U kunt een browser openen en de resulterende URL plakken om de Azure Media Player demo pagina te starten met de URL en het token dat u in de volgende indeling hebt ingevuld ```https://ampdemo.azureedge.net/?url= {dash Manifest URL} &aes=true&aestoken=Bearer%3D{ JWT Token here}```:.
+De uitvoer van het voor beeld dit artikel bevat een URL naar de Azure Media Player, manifest-URL en het AES-token dat nodig is voor het afspelen van de inhoud. In het voor beeld wordt de verval datum van het token van de JSON Web Token (JWT) ingesteld op 1 uur. U kunt een browser openen en de resulterende URL plakken om de Azure Media Player demo pagina te starten met de URL en het token dat u in de volgende indeling hebt ingevuld: ```https://ampdemo.azureedge.net/?url= {dash Manifest URL} &aes=true&aestoken=Bearer%3D{ JWT Token here}``` .
 
 In deze handleiding ontdekt u hoe u:
 
@@ -57,7 +56,7 @@ Hieronder wordt aangegeven wat de vereisten zijn om de zelfstudie te voltooien.
 
 * Lees het artikel [Content protection overview](content-protection-overview.md) (Overzicht inhoudsbeveiliging).
 * Installeer Visual Studio Code of Visual Studio.
-* [Een Azure Media Services-account maken](create-account-cli-quickstart.md).
+* [Maak een Media Services-account](create-account-cli-quickstart.md).
 * Referenties ophalen die nodig zijn voor het gebruik van Media Services Api's door [toegangs-api's](access-api-cli-how-to.md)te volgen.
 
 ## <a name="download-code"></a>Code downloaden
@@ -105,7 +104,7 @@ In deze zelf studie maken we de invoer van de taak op basis van een bestand dat 
 
 Het duurt enige tijd voordat de taak is voltooid. Wanneer dit het geval is, wilt u een melding ontvangen. In het onderstaande codevoorbeeld ziet u hoe de status van de [taak](https://docs.microsoft.com/rest/api/media/jobs) kan worden opgevraagd in de service. Polling is geen aanbevolen best practice voor productie-apps vanwege een mogelijke latentie. Polling kan worden beperkt bij een te intensief gebruik op een account. Ontwikkelaars moeten in plaats daarvan Event Grid gebruiken. Zie voor meer informatie [route gebeurtenissen naar een aangepast webeindpunt](job-state-events-cli-how-to.md).
 
-De **taak** doorloopt meestal de volgende statussen: **gepland**, **in wachtrij**, **wordt verwerkt**, **voltooid** (definitieve status). Als er een fout is opgetreden in de taak, krijgt u de **fout** status. Als de taak wordt geannuleerd, wordt deze **geannuleerd** en **geannuleerd** wanneer deze is voltooid...
+De **taak** doorloopt doorgaans de volgende statussen: **gepland**, **in de wachtrij geplaatst**, **verwerkt**, **voltooid** (de eind status). Als er een fout is opgetreden in de taak, krijgt u de **fout** status. Als de taak wordt geannuleerd, wordt deze **geannuleerd** en **geannuleerd** wanneer deze is voltooid...
 
 [!code-csharp[Main](../../../media-services-v3-dotnet-tutorials/AMSV3Tutorials/EncryptWithAES/Program.cs#WaitForJobToFinish)]
 
@@ -169,7 +168,7 @@ Bekijk het [Azure Media Services Community](media-services-community.md) -artike
 
 ## <a name="additional-notes"></a>Aanvullende opmerkingen
 
-* Widevine is een service van Google Inc. en is onderworpen aan de service voorwaarden en het privacybeleid van Google, Inc.
+* Widevine is een service van Google Inc. en is onderworpen aan de servicevoorwaarden en het privacybeleid van Google Inc.
 
 ## <a name="next-steps"></a>Volgende stappen
 

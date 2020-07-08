@@ -6,10 +6,9 @@ ms.topic: conceptual
 ms.date: 11/02/2017
 ms.author: vturecek
 ms.openlocfilehash: 9962d4333e458243670d1005ad2ccfbc0bb7c92a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75348917"
 ---
 # <a name="reliable-actors-state-management"></a>Beheer van Reliable Actors status
@@ -72,9 +71,9 @@ class MyActorImpl extends FabricActor implements MyActor
 Deze instelling maakt gebruik van een status provider met alleen geheugen en stelt het aantal replica's in op 1.
 
 ### <a name="defaults-and-generated-settings"></a>Standaard waarden en gegenereerde instellingen
-Wanneer u het `StatePersistence` kenmerk gebruikt, wordt tijdens runtime automatisch een status provider geselecteerd wanneer de actor-service wordt gestart. Het aantal replica's wordt echter ingesteld op het tijdstip van compilatie door de Visual Studio actor build-hulpprogram ma's. De build-hulpprogram ma's genereren automatisch een *standaard service* voor de actor-service in ApplicationManifest. XML. Er zijn para meters gemaakt voor de minimale grootte van de **replicaset** en de grootte van de **doel replicaset**.
+Wanneer u het kenmerk gebruikt `StatePersistence` , wordt tijdens runtime automatisch een status provider geselecteerd wanneer de actor-service wordt gestart. Het aantal replica's wordt echter ingesteld op het tijdstip van compilatie door de Visual Studio actor build-hulpprogram ma's. De build-hulpprogram ma's genereren automatisch een *standaard service* voor de actor-service in ApplicationManifest.xml. Er zijn para meters gemaakt voor de minimale grootte van de **replicaset** en de grootte van de **doel replicaset**.
 
-U kunt deze para meters hand matig wijzigen. Maar telkens wanneer het `StatePersistence` kenmerk wordt gewijzigd, worden de para meters ingesteld op de standaard waarden voor de replicaset `StatePersistence` voor het geselecteerde kenmerk, waarbij alle vorige waarden worden overschreven. Met andere woorden, de waarden die u hebt ingesteld in ServiceManifest. XML worden tijdens het bouwen *alleen* overschreven wanneer u de `StatePersistence` waarde van het kenmerk wijzigt.
+U kunt deze para meters hand matig wijzigen. Maar telkens wanneer het `StatePersistence` kenmerk wordt gewijzigd, worden de para meters ingesteld op de standaard waarden voor de replicaset voor het geselecteerde `StatePersistence` kenmerk, waarbij alle vorige waarden worden overschreven. Met andere woorden: de waarden die u in ServiceManifest.xml instelt, worden tijdens het bouwen *alleen* overschreven wanneer u de `StatePersistence` waarde van het kenmerk wijzigt.
 
 ```xml
 <ApplicationManifest xmlns:xsd="https://www.w3.org/2001/XMLSchema" xmlns:xsi="https://www.w3.org/2001/XMLSchema-instance" ApplicationTypeName="Application12Type" ApplicationTypeVersion="1.0.0" xmlns="http://schemas.microsoft.com/2011/01/fabric">

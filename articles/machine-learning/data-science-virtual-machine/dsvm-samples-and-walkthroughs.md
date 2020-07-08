@@ -11,10 +11,9 @@ ms.author: vijetaj
 ms.topic: conceptual
 ms.date: 09/24/2018
 ms.openlocfilehash: d064e940997d13e51be4fd38e9f678b778ce31f4
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "74900053"
 ---
 # <a name="samples-on-azure-data-science-virtual-machines"></a>Voor beelden van Azure data Science Virtual Machines
@@ -28,7 +27,7 @@ Azure data Science Virtual Machines (Dsvm) bevat een uitgebreide set voorbeeld c
 Als u deze voor beelden wilt uitvoeren, moet u een Data Science Virtual Machine hebben ingericht. Bekijk de Quick starts voor [Windows](./provision-vm.md) en [Ubuntu](./dsvm-ubuntu-intro.md).
 
 ## <a name="available-samples"></a>Beschikbare voorbeelden
-| Categorie voor beelden | Beschrijving | Locaties |
+| Categorie voor beelden | Description | Locaties |
 | ------------- | ------------- | ------------- |
 | R-taal  | Voor beelden illustreren scenario's zoals het maken van verbinding met gegevens archieven op basis van Azure en het vergelijken van open source R en Microsoft Machine Learning Server. Er wordt ook uitgelegd hoe u operationeel maken modellen op Microsoft Machine Learning Server en SQL Server. <br/> [R-taal](#r-language) | <br/>`~notebooks` <br/> <br/> `~samples/MicrosoftR` <br/> <br/> `~samples/RSqlDemo` <br/> <br/> `~samples/SQLRServices`<br/> <br/>|
 | Python-taal  | Voor beelden van scenario's zoals het maken van verbinding met gegevens archieven op basis van Azure en het werken met Azure Machine Learning.  <br/> [Python-taal](#python-language) | <br/>`~notebooks` <br/><br/>|
@@ -46,7 +45,7 @@ Als u deze voor beelden wilt uitvoeren, moet u een Data Science Virtual Machine 
 
 ## <a name="access-jupyter"></a>Toegang tot Jupyter 
 
-Om toegang te krijgen tot Jupyter, selecteert u het pictogram **Jupyter** in het menu bureau blad of toepassing. U hebt ook toegang tot Jupyter op een Linux-editie van een DSVM. Als u extern vanuit een webbrowser wilt openen, gaat `https://<Full Domain Name or IP Address of the DSVM>:8000` u naar op Ubuntu.
+Om toegang te krijgen tot Jupyter, selecteert u het pictogram **Jupyter** in het menu bureau blad of toepassing. U hebt ook toegang tot Jupyter op een Linux-editie van een DSVM. Als u extern vanuit een webbrowser wilt openen, gaat u naar `https://<Full Domain Name or IP Address of the DSVM>:8000` op Ubuntu.
 
 Gebruik de volgende richt lijnen om uitzonde ringen toe te voegen en de toegang tot Jupyter via een browser beschikbaar te maken:
 

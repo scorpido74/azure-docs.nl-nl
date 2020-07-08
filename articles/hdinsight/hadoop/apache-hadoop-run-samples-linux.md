@@ -9,10 +9,9 @@ ms.topic: conceptual
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.date: 12/12/2019
 ms.openlocfilehash: 58f7d99af638c8d03bbce46b7fcf8204aaca11d9
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75435756"
 ---
 # <a name="run-the-mapreduce-examples-included-in-hdinsight"></a>De MapReduce-voor beelden uit HDInsight uitvoeren
@@ -29,7 +28,7 @@ Meer informatie over het uitvoeren van de MapReduce-voor beelden die zijn opgeno
 
 ## <a name="the-mapreduce-examples"></a>De MapReduce-voor beelden
 
-De voor beelden bevinden zich in het HDInsight `/usr/hdp/current/hadoop-mapreduce-client/hadoop-mapreduce-examples.jar`-cluster op. De bron code voor deze steek proeven is opgenomen in het HDInsight `/usr/hdp/current/hadoop-client/src/hadoop-mapreduce-project/hadoop-mapreduce-examples`-cluster op.
+De voor beelden bevinden zich in het HDInsight-cluster op `/usr/hdp/current/hadoop-mapreduce-client/hadoop-mapreduce-examples.jar` . De bron code voor deze steek proeven is opgenomen in het HDInsight-cluster op `/usr/hdp/current/hadoop-client/src/hadoop-mapreduce-project/hadoop-mapreduce-examples` .
 
 De volgende voor beelden zijn opgenomen in dit archief:
 
@@ -60,7 +59,7 @@ De volgende voor beelden zijn opgenomen in dit archief:
 
 ## <a name="run-the-wordcount-example"></a>Het WordCount-voor beeld uitvoeren
 
-1. Verbinding maken met HDInsight via SSH. Vervang `CLUSTER` door de naam van uw cluster en voer de volgende opdracht in:
+1. Verbinding maken met HDInsight via SSH. Vervang door `CLUSTER` de naam van uw cluster en voer de volgende opdracht in:
 
     ```cmd
     ssh sshuser@CLUSTER-ssh.azurehdinsight.net
@@ -94,10 +93,10 @@ De volgende voor beelden zijn opgenomen in dit archief:
     yarn jar /usr/hdp/current/hadoop-mapreduce-client/hadoop-mapreduce-examples.jar wordcount /example/data/gutenberg/davinci.txt /example/data/davinciwordcount
     ```
 
-    Invoer voor deze taak is gelezen uit `/example/data/gutenberg/davinci.txt`. De uitvoer van dit voor beeld is `/example/data/davinciwordcount`opgeslagen in. Beide paden bevinden zich in de standaard opslag voor het cluster, niet op het lokale bestands systeem.
+    Invoer voor deze taak is gelezen uit `/example/data/gutenberg/davinci.txt` . De uitvoer van dit voor beeld is opgeslagen in `/example/data/davinciwordcount` . Beide paden bevinden zich in de standaard opslag voor het cluster, niet op het lokale bestands systeem.
 
    > [!NOTE]  
-   > Zoals vermeld in de Help voor het WordCount-voor beeld, kunt u ook meerdere invoer bestanden opgeven. Telt bijvoorbeeld `hadoop jar /usr/hdp/current/hadoop-mapreduce-client/hadoop-mapreduce-examples.jar wordcount /example/data/gutenberg/davinci.txt /example/data/gutenberg/ulysses.txt /example/data/twowordcount` woorden in zowel DaVinci. txt als Ulysses. txt.
+   > Zoals vermeld in de Help voor het WordCount-voor beeld, kunt u ook meerdere invoer bestanden opgeven. `hadoop jar /usr/hdp/current/hadoop-mapreduce-client/hadoop-mapreduce-examples.jar wordcount /example/data/gutenberg/davinci.txt /example/data/gutenberg/ulysses.txt /example/data/twowordcount`Telt bijvoorbeeld woorden in zowel davinci.txt als ulysses.txt.
 
 5. Wanneer de taak is voltooid, gebruikt u de volgende opdracht om de uitvoer weer te geven:
 
@@ -122,7 +121,7 @@ De volgende voor beelden zijn opgenomen in dit archief:
 * Elke kolom kan een getal bevatten of `?` (waarmee een lege cel wordt aangegeven)
 * Cellen worden gescheiden door een spatie
 
-Er is een bepaalde manier om Sudoku-puzzels samen te stellen. u kunt een getal in een kolom of rij niet herhalen. Er is een voor beeld van het HDInsight-cluster dat op de juiste manier is gebouwd. Deze bevindt `/usr/hdp/*/hadoop/src/hadoop-mapreduce-project/hadoop-mapreduce-examples/src/main/java/org/apache/hadoop/examples/dancing/puzzle1.dta` zich in en bevat de volgende tekst:
+Er is een bepaalde manier om Sudoku-puzzels samen te stellen. u kunt een getal in een kolom of rij niet herhalen. Er is een voor beeld van het HDInsight-cluster dat op de juiste manier is gebouwd. Deze bevindt zich in `/usr/hdp/*/hadoop/src/hadoop-mapreduce-project/hadoop-mapreduce-examples/src/main/java/org/apache/hadoop/examples/dancing/puzzle1.dta` en bevat de volgende tekst:
 
     8 5 ? 3 9 ? ? ? ?
     ? ? 2 ? ? ? ? ? ?
@@ -184,13 +183,13 @@ In dit voor beeld worden drie sets MapReduce-Program ma's gebruikt:
 
 Gebruik de volgende stappen om gegevens te genereren, te sorteren en de uitvoer te valideren:
 
-1. 10 GB aan gegevens genereren, die worden opgeslagen in de standaard opslag van het HDInsight- `/example/data/10GB-sort-input`cluster op:
+1. 10 GB aan gegevens genereren, die worden opgeslagen in de standaard opslag van het HDInsight-cluster op `/example/data/10GB-sort-input` :
 
     ```bash
     yarn jar /usr/hdp/current/hadoop-mapreduce-client/hadoop-mapreduce-examples.jar teragen -Dmapred.map.tasks=50 100000000 /example/data/10GB-sort-input
     ```
 
-    De `-Dmapred.map.tasks` vertelt Hadoop hoeveel toewijzings taken voor deze taak moeten worden gebruikt. De laatste twee para meters geven de taak de opdracht om 10 GB aan gegevens te maken `/example/data/10GB-sort-input`en op te slaan in.
+    De `-Dmapred.map.tasks` vertelt Hadoop hoeveel toewijzings taken voor deze taak moeten worden gebruikt. De laatste twee para meters geven de taak de opdracht om 10 GB aan gegevens te maken en op te slaan in `/example/data/10GB-sort-input` .
 
 2. Gebruik de volgende opdracht om de gegevens te sorteren:
 

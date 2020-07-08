@@ -9,10 +9,9 @@ ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 12/16/2019
 ms.openlocfilehash: 1cdee99378feb381d75edef0d150089132d1bbc2
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75435700"
 ---
 # <a name="submit-apache-hadoop-jobs-in-hdinsight"></a>Apache Hadoop-taken in HDInsight verzenden
@@ -40,6 +39,6 @@ U kunt Apache Hadoop taken in azure HDInsight verzenden met behulp van de Micros
   - [Apache Sqoop gebruiken met Apache Hadoop in HDInsight](apache-hadoop-use-sqoop-powershell.md)
   - [MapReduce-taken uitvoeren met Apache Hadoop in HDInsight met behulp van Power shell](apache-hadoop-use-mapreduce-powershell.md)
 
-## <a name="see-also"></a>Zie ook
+## <a name="see-also"></a>Zie tevens
 
 - [Documentatie voor Azure HDInsight](https://docs.microsoft.com/azure/hdinsight/)

@@ -9,10 +9,9 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 06/19/2019
 ms.openlocfilehash: 73d1478ec2d6c90428f22a30ec82634df115d2f5
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75435256"
 ---
 # <a name="submit-jobs-from-r-tools-for-visual-studio"></a>Taken verzenden vanuit R-hulpprogramma's voor Visual Studio
@@ -32,9 +31,9 @@ RTVS breidt uw R-werk stroom uit door hulpprogram ma's te bieden zoals het [R In
 3. U moet open bare en persoonlijke sleutels hebben voor SSH-verificatie.
    <!-- {TODO tbd, no such file yet}[use SSH with HDInsight](hdinsight-hadoop-linux-use-ssh-windows.md) -->
 
-4. Installeer [ml server](https://msdn.microsoft.com/microsoft-r/rserver-install-windows) op de computer. ML Server biedt de [`RevoScaleR`](https://msdn.microsoft.com/microsoft-r/scaler/scaler) functies `RxSpark` en.
+4. Installeer [ml server](https://msdn.microsoft.com/microsoft-r/rserver-install-windows) op de computer. ML Server biedt de [`RevoScaleR`](https://msdn.microsoft.com/microsoft-r/scaler/scaler) `RxSpark` functies en.
 
-5. Installeer [putty](https://www.putty.org/) om een compute-context te `RevoScaleR` bieden voor het uitvoeren van functies van uw lokale client naar uw HDInsight-cluster.
+5. Installeer [putty](https://www.putty.org/) om een compute-context te bieden voor het uitvoeren `RevoScaleR` van functies van uw lokale client naar uw HDInsight-cluster.
 
 6. U hebt de optie om de data Science-instellingen toe te passen op uw Visual Studio-omgeving, die een nieuwe indeling biedt voor uw werk ruimte voor de R-hulpprogram ma's.
    1. Als u de huidige Visual Studio-instellingen wilt opslaan, gebruikt u de opdracht **Hulpprogram ma's > instellingen voor importeren en exporteren** en selecteert u **geselecteerde omgevings instellingen exporteren** en geeft u een bestands naam op. Als u deze instellingen wilt herstellen, gebruikt u dezelfde opdracht en selecteert u **geselecteerde omgevings instellingen importeren**.
@@ -64,9 +63,9 @@ RTVS breidt uw R-werk stroom uit door hulpprogram ma's te bieden zoals het [R In
 
 ## <a name="submit-jobs-to-an-hdinsight-ml-services-cluster"></a>Taken verzenden naar een HDInsight ML Services-cluster
 
-Als u een micro soft ML Server/micro soft R-client gebruikt vanaf een Windows-computer met PuTTy, kunt u een COMPUTE `RevoScaleR` -context maken waarmee gedistribueerde functies van uw lokale client naar uw HDInsight-cluster worden uitgevoerd. Gebruik `RxSpark` om de compute-context te maken, waarbij u uw gebruikers naam opgeeft, het Edge-knoop punt van het Apache Hadoop cluster, SSH-switches, enzovoort.
+Als u een micro soft ML Server/micro soft R-client gebruikt vanaf een Windows-computer met PuTTy, kunt u een compute-context maken waarmee gedistribueerde `RevoScaleR` functies van uw lokale client naar uw HDInsight-cluster worden uitgevoerd. Gebruik `RxSpark` om de compute-context te maken, waarbij u uw gebruikers naam opgeeft, het Edge-knoop punt van het Apache Hadoop cluster, SSH-switches, enzovoort.
 
-1. Het knooppunt adres van de ML van het service `CLUSTERNAME-ed-ssh.azurehdinsight.net` - `CLUSTERNAME` Edge op HDInsight is de naam van uw cluster met ml-Services.
+1. Het knooppunt adres van de ML van het service-Edge op HDInsight is `CLUSTERNAME-ed-ssh.azurehdinsight.net` `CLUSTERNAME` de naam van uw cluster met ml-Services.
 
 1. Plak de volgende code in het venster R Interactive in Visual Studio en wijzig de waarden van de installatie variabelen zodat deze overeenkomen met uw omgeving.
 
@@ -108,8 +107,8 @@ Als u een micro soft ML Server/micro soft R-client gebruikt vanaf een Windows-co
 
     Als het goed is, wordt ongeveer de volgende uitvoer weergegeven:
 
-    ![Geslaagde RX-](./media/r-server-submit-jobs-r-tools-vs/successful-rx-commands.png) opdracht voor het uitvoeren van een
-1. Controleer of het `rxHadoopCopy` `people.json` bestand is gekopieerd van de map voorbeeld gegevens naar de zojuist gemaakte `/user/RevoShare/newUser` map:
+    ![Geslaagde RX-opdracht voor het uitvoeren van ](./media/r-server-submit-jobs-r-tools-vs/successful-rx-commands.png) een
+1. Controleer of het `rxHadoopCopy` bestand is gekopieerd `people.json` van de map voorbeeld gegevens naar de zojuist gemaakte `/user/RevoShare/newUser` map:
 
     1. Selecteer in het deel venster cluster van HDInsight ML-Services in azure **opslag accounts** in het menu links.
 
@@ -121,7 +120,7 @@ Als u een micro soft ML Server/micro soft R-client gebruikt vanaf een Windows-co
 
         ![Azure HDInsight Storage-containers](./media/r-server-submit-jobs-r-tools-vs/hdi-storage-containers.png)
 
-    4. Selecteer de container naam van uw cluster, blader naar de map **gebruiker** (mogelijk moet u op *extra laden* onder aan de lijst) en selecteer vervolgens *RevoShare*en **newuser**. Het `people.json` bestand moet in de `newUser` map worden weer gegeven.
+    4. Selecteer de container naam van uw cluster, blader naar de map **gebruiker** (mogelijk moet u op *extra laden* onder aan de lijst) en selecteer vervolgens *RevoShare*en **newuser**. Het `people.json` bestand moet in de map worden weer gegeven `newUser` .
 
         ![Locatie van gekopieerde bestandsmap van HDInsight](./media/r-server-submit-jobs-r-tools-vs/hdinsight-copied-file.png)
 

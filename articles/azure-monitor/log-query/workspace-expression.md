@@ -7,10 +7,9 @@ author: bwren
 ms.author: bwren
 ms.date: 09/10/2018
 ms.openlocfilehash: 255888acf5da6149b6a964b23ed038b99715481c
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75364948"
 ---
 # <a name="workspace-expression-in-azure-monitor-log-query"></a>de expressie Workspace () in Azure Monitor-logboek query
@@ -18,7 +17,7 @@ ms.locfileid: "75364948"
 De `workspace` expressie wordt gebruikt in een Azure monitor query om gegevens op te halen uit een specifieke werk ruimte in dezelfde resource groep, een andere resource groep of een ander abonnement. Dit is handig als u logboek gegevens in een Application Insights query wilt gebruiken en gegevens wilt opvragen over meerdere werk ruimten in een logboek query.
 
 
-## <a name="syntax"></a>Syntaxis
+## <a name="syntax"></a>Syntax
 
 `workspace(`*Progid's*`)`
 
@@ -34,7 +33,7 @@ De `workspace` expressie wordt gebruikt in een Azure monitor query om gegevens o
 | Azure-Resource-ID | Id voor de Azure-resource | werk ruimte ("/subscriptions/e4227-645-44e-9c67-3b84b5982/resourcegroups/ContosoAzureHQ/providers/Microsoft.OperationalInsights/workspaces/contosoretail") |
 
 
-## <a name="notes"></a>Opmerkingen
+## <a name="notes"></a>Notities
 
 * U moet lees toegang hebben tot de werk ruimte.
 * Een gerelateerde expressie is `app` waarmee u een query kunt uitvoeren op Application Insights toepassingen.

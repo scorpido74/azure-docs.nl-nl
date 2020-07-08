@@ -7,10 +7,9 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 08/01/2019
 ms.openlocfilehash: dd75ad4ed1024292868f113e474fe8b8b73679b0
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75445132"
 ---
 # <a name="optimize-query-cost-in-azure-cosmos-db"></a>Kosten van query's optimaliseren in Azure Cosmos DB
@@ -33,7 +32,7 @@ Query's waarmee gegevens van een of meer partities worden gelezen, hebben een ho
 
 Zodra u enkele gegevens in uw Azure Cosmos-containers hebt opgeslagen, kunt u de Data Explorer in de Azure Portal gebruiken om uw query's te maken en uit te voeren. U kunt de kosten van de query's ook ophalen met behulp van Data Explorer. Deze methode geeft u een idee van de werkelijke kosten die worden betrokken bij typische query's en bewerkingen die uw systeem ondersteunt.
 
-U kunt de kosten van query's ook programmatisch ophalen met behulp van de Sdk's. Als u de overhead van elke bewerking wilt meten, zoals maken, bijwerken of verwijderen, `x-ms-request-charge` moet u de koptekst controleren bij gebruik van rest API. Als u .NET of de Java SDK gebruikt, is de `RequestCharge` eigenschap de equivalente eigenschap om de aanvraag kosten op te halen en deze eigenschap is aanwezig in de ResourceResponse of FeedResponse.
+U kunt de kosten van query's ook programmatisch ophalen met behulp van de Sdk's. Als u de overhead van elke bewerking wilt meten, zoals maken, bijwerken of verwijderen, moet u de `x-ms-request-charge` koptekst controleren bij gebruik van rest API. Als u .NET of de Java SDK gebruikt, `RequestCharge` is de eigenschap de equivalente eigenschap om de aanvraag kosten op te halen en deze eigenschap is aanwezig in de ResourceResponse of FeedResponse.
 
 ```csharp
 // Measure the performance (request units) of writes 

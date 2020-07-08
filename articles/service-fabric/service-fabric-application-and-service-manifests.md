@@ -4,19 +4,18 @@ description: Beschrijft hoe manifesten worden gebruikt voor het beschrijven van 
 ms.topic: conceptual
 ms.date: 8/12/2019
 ms.openlocfilehash: 6014ef6a9b6ec810aafd5e5be96223b8ed92d576
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75349969"
 ---
 # <a name="service-fabric-application-and-service-manifests"></a>Toepassings-en service manifesten Service Fabric
-In dit artikel wordt beschreven hoe Service Fabric toepassingen en-services worden gedefinieerd en geversiond met behulp van de bestanden ApplicationManifest. XML en ServiceManifest. XML.  Zie voor beelden van toepassings- [en service manifesten](service-fabric-manifest-examples.md)voor meer gedetailleerde voor beelden.  Het XML-schema voor deze manifest bestanden wordt beschreven in de [documentatie bij ServiceFabricServiceModel. XSD-schema](service-fabric-service-model-schema.md).
+In dit artikel wordt beschreven hoe Service Fabric toepassingen en-services worden gedefinieerd en geversied met behulp van de ApplicationManifest.xml en ServiceManifest.xml bestanden.  Zie voor beelden van toepassings- [en service manifesten](service-fabric-manifest-examples.md)voor meer gedetailleerde voor beelden.  Het XML-schema voor deze manifest bestanden wordt beschreven in de [documentatie bij ServiceFabricServiceModel. XSD-schema](service-fabric-service-model-schema.md).
 
 > [!WARNING]
 > Het XML-manifest bestand schema afdwingt de juiste volg orde van onderliggende elementen af.  Als gedeeltelijke tijdelijke oplossing opent u ' C:\Program Files\Microsoft SDKs\Service Fabric\schemas\ServiceFabricServiceModel.xsd ' in Visual Studio tijdens het ontwerpen of wijzigen van een van de Service Fabric-manifesten. Zo kunt u de volg orde van de onderliggende elementen controleren en beschikt.
 
-## <a name="describe-a-service-in-servicemanifestxml"></a>Een service beschrijven in ServiceManifest. XML
+## <a name="describe-a-service-in-servicemanifestxml"></a>Een service in ServiceManifest.xml beschrijven
 Het service manifest definieert declaratief het Service type en de versie. Hiermee worden de meta gegevens van de service, zoals service type, eigenschappen van de taak verdeling, metrische gegevens over de belasting en configuratie bestanden opgegeven.  Een andere manier, hierin worden de code, configuratie en gegevens pakketten beschreven voor het samen stellen van een service pakket ter ondersteuning van een of meer service typen. Een service manifest kan meerdere code-, configuratie-en gegevens pakketten bevatten, die onafhankelijk van de versie kunnen worden verwerkt. Hier vindt u een service manifest voor de ASP.NET Core web-front-end-service van de [toepassing stem voorbeeld](https://github.com/Azure-Samples/service-fabric-dotnet-quickstart) (en hier vindt u een aantal [gedetailleerde voor beelden](service-fabric-manifest-examples.md)):
 
 ```xml
@@ -65,16 +64,16 @@ Het uitvoer bare bestand dat is opgegeven met **Entry Point** is doorgaans de la
 
 Typische scenario's voor het gebruik van **SetupEntryPoint** zijn wanneer u een uitvoerbaar bestand uitvoert voordat de service wordt gestart of een bewerking uitvoert met verhoogde bevoegdheden. Bijvoorbeeld:
 
-* Instellen en initialiseren van omgevings variabelen die voor het uitvoer bare bestand van de service nodig zijn. Dit is niet beperkt tot uitvoer bare bestanden die zijn geschreven via de Service Fabric-programmeer modellen. NPM. exe vereist bijvoorbeeld enkele omgevings variabelen die zijn geconfigureerd voor het implementeren van een node. js-toepassing.
+* Instellen en initialiseren van omgevings variabelen die voor het uitvoer bare bestand van de service nodig zijn. Dit is niet beperkt tot uitvoer bare bestanden die zijn geschreven via de Service Fabric-programmeer modellen. npm.exe hebt bijvoorbeeld bepaalde omgevings variabelen nodig die zijn geconfigureerd voor het implementeren van een node.js toepassing.
 * Toegangs beheer instellen door beveiligings certificaten te installeren.
 
 Zie voor meer informatie over het configureren van de SetupEntryPoint [het beleid configureren voor een toegangs punt voor een service-instelling](service-fabric-application-runas-security.md)
 
-**Omgevings variabelen** (niet ingesteld in het voor gaande voor beeld) bevat een lijst met omgevings variabelen die zijn ingesteld voor dit code pakket. Omgevings variabelen kunnen worden overschreven in `ApplicationManifest.xml` de om verschillende waarden te bieden voor verschillende service-exemplaren. 
+**Omgevings variabelen** (niet ingesteld in het voor gaande voor beeld) bevat een lijst met omgevings variabelen die zijn ingesteld voor dit code pakket. Omgevings variabelen kunnen worden overschreven in de `ApplicationManifest.xml` om verschillende waarden te bieden voor verschillende service-exemplaren. 
 
 **Sectie gegevens pakket** (niet ingesteld in het voor gaande voor beeld) declareert een map, met de **naam** kenmerk, die wille keurige statische gegevens bevat die tijdens de uitvoering door het proces moeten worden gebruikt.
 
-**ConfigPackage** declareert een map met de naam van het kenmerk **name** , dat een bestand *Settings. XML* bevat. Het instellingen bestand bevat secties van door de gebruiker gedefinieerde combi natie van sleutel waarden waarmee het proces tijdens runtime terugkeert. Als er tijdens een upgrade alleen de **ConfigPackage** - **versie** is gewijzigd, wordt het proces dat wordt uitgevoerd, niet opnieuw gestart. In plaats daarvan wordt met een call back het proces gewaarschuwd dat de configuratie-instellingen zijn gewijzigd zodat ze dynamisch opnieuw kunnen worden geladen. Hier volgt een voor beeld van *instellingen. XML-* bestand:
+**ConfigPackage** declareert een map met de naam van het kenmerk **name** , dat een *Settings.xml* bestand bevat. Het instellingen bestand bevat secties van door de gebruiker gedefinieerde combi natie van sleutel waarden waarmee het proces tijdens runtime terugkeert. Als er tijdens een upgrade alleen de **ConfigPackage** - **versie** is gewijzigd, wordt het proces dat wordt uitgevoerd, niet opnieuw gestart. In plaats daarvan wordt met een call back het proces gewaarschuwd dat de configuratie-instellingen zijn gewijzigd zodat ze dynamisch opnieuw kunnen worden geladen. Hier volgt een voor beeld *Settings.xml* bestand:
 
 ```xml
 <Settings xmlns:xsd="https://www.w3.org/2001/XMLSchema" xmlns:xsi="https://www.w3.org/2001/XMLSchema-instance" xmlns="http://schemas.microsoft.com/2011/01/fabric">
@@ -101,7 +100,7 @@ For more information about other features supported by service manifests, refer 
 *TODO: Configuration overrides
 -->
 
-## <a name="describe-an-application-in-applicationmanifestxml"></a>Een toepassing beschrijven in ApplicationManifest. XML
+## <a name="describe-an-application-in-applicationmanifestxml"></a>Een toepassing beschrijven in ApplicationManifest.xml
 Het toepassings manifest beschrijft declaratief het toepassings type en de versie. Hierin worden de meta gegevens van de service compositie opgegeven, zoals stabiele namen, het partitioneren van het schema, het aantal exemplaren/de replicatie factor, het beveiligings beleid, de plaatsings beperkingen, de configuratie-onderdrukkingen en de service typen van het onderdeel. De taakverdelings domeinen waarin de toepassing wordt geplaatst, worden ook beschreven.
 
 Een toepassings manifest beschrijft dus elementen op toepassings niveau en verwijst naar een of meer service manifesten om een toepassings type samen te stellen. Hier volgt het toepassings manifest voor de [toepassing stem voorbeeld](https://github.com/Azure-Samples/service-fabric-dotnet-quickstart) (en hier vindt u een aantal [gedetailleerde voor beelden](service-fabric-manifest-examples.md)):
@@ -151,7 +150,7 @@ Evenals service manifesten zijn **versie** -kenmerken ongestructureerde teken re
 
 **Para meters** definieert de para meters die worden gebruikt in het toepassings manifest. De waarden van deze para meters kunnen worden opgegeven wanneer de toepassing wordt geïnstantieerd en de configuratie-instellingen van de toepassing of service kunnen worden overschreven.  De standaard parameter waarde wordt gebruikt als de waarde niet wordt gewijzigd tijdens het instantiëren van de toepassing. Zie [toepassings parameters voor meerdere omgevingen beheren](service-fabric-manage-multiple-environment-app-configuration.md)voor meer informatie over het onderhouden van verschillende toepassings-en service parameters voor afzonderlijke omgevingen.
 
-**ServiceManifestImport** bevat verwijzingen naar service manifesten die dit toepassings type vormen. Een toepassings manifest kan meerdere service manifest-import bewerkingen bevatten, die elk afzonderlijk kunnen worden geversied. Geïmporteerde service manifesten bepalen welke service typen geldig zijn binnen dit toepassings type. Binnen de ServiceManifestImport overschrijft u de configuratie waarden in Settings. XML en omgevings variabelen in ServiceManifest. XML-bestanden. **Beleids regels** (die niet in het voor gaande voor beeld zijn ingesteld) voor binding van eind punten, beveiliging en toegang en het delen van pakketten kunnen worden ingesteld voor geïmporteerde service manifesten.  Zie [beveiligings beleid voor uw toepassing configureren](service-fabric-application-runas-security.md)voor meer informatie.
+**ServiceManifestImport** bevat verwijzingen naar service manifesten die dit toepassings type vormen. Een toepassings manifest kan meerdere service manifest-import bewerkingen bevatten, die elk afzonderlijk kunnen worden geversied. Geïmporteerde service manifesten bepalen welke service typen geldig zijn binnen dit toepassings type. Binnen de ServiceManifestImport overschrijft u de configuratie waarden in Settings.xml en omgevings variabelen in ServiceManifest.xml-bestanden. **Beleids regels** (die niet in het voor gaande voor beeld zijn ingesteld) voor binding van eind punten, beveiliging en toegang en het delen van pakketten kunnen worden ingesteld voor geïmporteerde service manifesten.  Zie [beveiligings beleid voor uw toepassing configureren](service-fabric-application-runas-security.md)voor meer informatie.
 
 **DefaultServices** declareert service-exemplaren die automatisch worden gemaakt wanneer een toepassing wordt geïnstantieerd voor dit toepassings type. Standaard services zijn slechts een gemak en gedragen zich als normale Services in elk opzicht nadat ze zijn gemaakt. Ze worden samen met andere services in het toepassings exemplaar bijgewerkt en kunnen ook worden verwijderd. Een toepassings manifest kan meerdere standaard services bevatten.
 

@@ -6,10 +6,9 @@ ms.topic: conceptual
 ms.date: 09/20/2017
 ms.author: vturecek
 ms.openlocfilehash: 0d59275f25931a11b2d551a2e9eb019838e4c1b3
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75433872"
 ---
 # <a name="service-remoting-in-c-with-reliable-services"></a>Externe service in C# met Reliable Services
@@ -26,11 +25,11 @@ Voor services die niet zijn gekoppeld aan een bepaald communicatie protocol of s
 
 U kunt in twee eenvoudige stappen externe toegang instellen voor een service:
 
-1. Maak een interface voor uw service die u wilt implementeren. Deze interface definieert de methoden die beschikbaar zijn voor een externe procedure aanroep voor uw service. De methoden moeten asynchrone methoden van het taak resultaat hebben. De interface moet worden `Microsoft.ServiceFabric.Services.Remoting.IService` geïmplementeerd om aan te geven dat de service een interface voor externe toegang heeft.
-2. Gebruik een externe listener in uw service. Een externe listener is een `ICommunicationListener` implementatie die mogelijkheden biedt voor externe communicatie. De `Microsoft.ServiceFabric.Services.Remoting.Runtime` naam ruimte bevat de uitbreidings `CreateServiceRemotingInstanceListeners` methode voor stateless en stateful services die kunnen worden gebruikt om een externe listener te maken met behulp van het standaard externe transport protocol.
+1. Maak een interface voor uw service die u wilt implementeren. Deze interface definieert de methoden die beschikbaar zijn voor een externe procedure aanroep voor uw service. De methoden moeten asynchrone methoden van het taak resultaat hebben. De interface moet `Microsoft.ServiceFabric.Services.Remoting.IService` worden geïmplementeerd om aan te geven dat de service een interface voor externe toegang heeft.
+2. Gebruik een externe listener in uw service. Een externe listener is een `ICommunicationListener` implementatie die mogelijkheden biedt voor externe communicatie. De `Microsoft.ServiceFabric.Services.Remoting.Runtime` naam ruimte bevat de uitbreidings methode `CreateServiceRemotingInstanceListeners` voor stateless en stateful services die kunnen worden gebruikt om een externe listener te maken met behulp van het standaard externe transport protocol.
 
 >[!NOTE]
->De `Remoting` naam ruimte is beschikbaar als een afzonderlijk NuGet- `Microsoft.ServiceFabric.Services.Remoting`pakket met de naam.
+>De `Remoting` naam ruimte is beschikbaar als een afzonderlijk NuGet-pakket met de naam `Microsoft.ServiceFabric.Services.Remoting` .
 
 De volgende stateless service biedt bijvoorbeeld een enkele methode om Hallo wereld te verkrijgen via een externe procedure aanroep.
 
@@ -71,7 +70,7 @@ class MyService : StatelessService, IMyService
 
 ## <a name="call-remote-service-methods"></a>Externe service methoden aanroepen
 
-Het aanroepen van methoden voor een service met behulp van de externe stack wordt uitgevoerd door middel van een lokale proxy `Microsoft.ServiceFabric.Services.Remoting.Client.ServiceProxy` voor de service via de-klasse. Met `ServiceProxy` de-methode wordt een lokale proxy gemaakt met behulp van de interface die door de service wordt geïmplementeerd. Met die proxy kunt u op afstand methoden op de interface aanroepen.
+Het aanroepen van methoden voor een service met behulp van de externe stack wordt uitgevoerd door middel van een lokale proxy voor de service via de- `Microsoft.ServiceFabric.Services.Remoting.Client.ServiceProxy` klasse. Met de- `ServiceProxy` methode wordt een lokale proxy gemaakt met behulp van de interface die door de service wordt geïmplementeerd. Met die proxy kunt u op afstand methoden op de interface aanroepen.
 
 ```csharp
 
@@ -81,15 +80,15 @@ string message = await helloWorldClient.HelloWorldAsync();
 
 ```
 
-Het externe Framework geeft uitzonde ringen door de service door aan de client. Als gevolg hiervan `ServiceProxy`wordt de client verantwoordelijk voor het verwerken van de uitzonde ringen die door de service worden veroorzaakt.
+Het externe Framework geeft uitzonde ringen door de service door aan de client. Als gevolg hiervan wordt `ServiceProxy` de client verantwoordelijk voor het verwerken van de uitzonde ringen die door de service worden veroorzaakt.
 
 ## <a name="service-proxy-lifetime"></a>Levens duur van Service proxy
 
-Het maken van een Service proxy is een licht gewicht bewerking, zodat u zoveel mogelijk kunt maken. Service proxy-exemplaren kunnen opnieuw worden gebruikt zolang ze nodig zijn. Als een externe procedure aanroep een uitzonde ring genereert, kunt u nog steeds hetzelfde proxy-exemplaar gebruiken. Elke service proxy bevat een communicatie client die wordt gebruikt voor het verzenden van berichten via de kabel. Tijdens het aanroepen van externe aanroepen worden interne controles uitgevoerd om te bepalen of de communicatie client geldig is. Op basis van de resultaten van die controles wordt de communicatie client, indien nodig, opnieuw gemaakt. Als er een uitzonde ring optreedt, hoeft u dus niet opnieuw te maken `ServiceProxy`.
+Het maken van een Service proxy is een licht gewicht bewerking, zodat u zoveel mogelijk kunt maken. Service proxy-exemplaren kunnen opnieuw worden gebruikt zolang ze nodig zijn. Als een externe procedure aanroep een uitzonde ring genereert, kunt u nog steeds hetzelfde proxy-exemplaar gebruiken. Elke service proxy bevat een communicatie client die wordt gebruikt voor het verzenden van berichten via de kabel. Tijdens het aanroepen van externe aanroepen worden interne controles uitgevoerd om te bepalen of de communicatie client geldig is. Op basis van de resultaten van die controles wordt de communicatie client, indien nodig, opnieuw gemaakt. Als er een uitzonde ring optreedt, hoeft u dus niet opnieuw te maken `ServiceProxy` .
 
 ### <a name="service-proxy-factory-lifetime"></a>Levens duur van Service proxy-Factory
 
-[ServiceProxyFactory](https://docs.microsoft.com/dotnet/api/microsoft.servicefabric.services.remoting.client.serviceproxyfactory) is een Factory waarmee proxy-instanties voor verschillende externe interfaces worden gemaakt. Als u de API `ServiceProxyFactory.CreateServiceProxy` gebruikt om een proxy te maken, maakt het Framework een singleton-Service proxy.
+[ServiceProxyFactory](https://docs.microsoft.com/dotnet/api/microsoft.servicefabric.services.remoting.client.serviceproxyfactory) is een Factory waarmee proxy-instanties voor verschillende externe interfaces worden gemaakt. Als u de API gebruikt `ServiceProxyFactory.CreateServiceProxy` om een proxy te maken, maakt het Framework een singleton-Service proxy.
 Het is handig om een hand matig te maken wanneer u [IServiceRemotingClientFactory](https://docs.microsoft.com/dotnet/api/microsoft.servicefabric.services.remoting.v1.client.iserviceremotingclientfactory) -eigenschappen wilt overschrijven.
 Het maken van de fabriek is een dure bewerking. Een Service proxy-Factory houdt een interne cache van de communicatie-client bij.
 Een best practice is de Service proxy-Factory zo lang mogelijk in de cache op te slaan.
@@ -313,7 +312,7 @@ Volg deze stappen:
 Als u een upgrade wilt uitvoeren van v1 naar v2 (interface compatibel, bekend als V2_1), zijn upgrades in twee stappen vereist. Volg de stappen in deze reeks.
 
 > [!NOTE]
-> Bij de upgrade van v1 naar v2 moet u `Remoting` controleren of de naam ruimte is bijgewerkt voor het gebruik van v2. Voor beeld: ' micro soft. ServiceFabric. Services. Remoting. v2. FabricTransport. client '
+> Bij de upgrade van v1 naar v2 moet u controleren of de `Remoting` naam ruimte is bijgewerkt voor het gebruik van v2. Voor beeld: ' micro soft. ServiceFabric. Services. Remoting. v2. FabricTransport. client '
 >
 >
 
@@ -521,7 +520,7 @@ Volg deze stappen:
     }
     ```
 
-2. De standaard-serialization-provider `JsonSerializationProvider` vervangen door voor een externe listener.
+2. De standaard-serialization-provider vervangen door `JsonSerializationProvider` voor een externe listener.
 
    ```csharp
    protected override IEnumerable<ServiceInstanceListener> CreateServiceInstanceListeners()
@@ -537,7 +536,7 @@ Volg deze stappen:
    }
    ```
 
-3. De standaard-serialization-provider `JsonSerializationProvider` vervangen door voor een externe client-Factory.
+3. De standaard-serialization-provider vervangen door `JsonSerializationProvider` voor een externe client-Factory.
 
     ```csharp
     var proxyFactory = new ServiceProxyFactory((c) =>

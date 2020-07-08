@@ -1,6 +1,6 @@
 ---
-title: Aanbevolen procedures en probleem oplossing voor node. js
-description: Meer informatie over de aanbevolen procedures en stappen voor het oplossen van problemen met node. js-toepassingen die worden uitgevoerd in Azure App Service.
+title: Node.js aanbevolen procedures en probleem oplossing
+description: Meer informatie over de aanbevolen procedures en stappen voor het oplossen van Node.js toepassingen die in Azure App Service worden uitgevoerd.
 author: msangapu-msft
 ms.assetid: 387ea217-7910-4468-8987-9a1022a99bef
 ms.devlang: nodejs
@@ -9,10 +9,9 @@ ms.date: 11/09/2017
 ms.author: msangapu
 ms.custom: seodec18
 ms.openlocfilehash: 682884d11b298a97e27056af3c10802dfd410e4c
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75430567"
 ---
 # <a name="best-practices-and-troubleshooting-guide-for-node-applications-on-azure-app-service-windows"></a>Aanbevolen procedures en richt lijnen voor probleem oplossing voor knooppunt toepassingen op Azure App Service Windows
@@ -29,38 +28,38 @@ In dit [schema bestand](https://github.com/Azure/iisnode/blob/master/src/config/
 
 ### <a name="nodeprocesscountperapplication"></a>nodeProcessCountPerApplication
 
-Met deze instelling bepaalt u het aantal knooppunt processen dat per IIS-toepassing wordt gestart. De standaardwaarde is 1. U kunt net zoveel node. exe starten als het aantal vCPU van uw virtuele machine door de waarde te wijzigen in 0. De aanbevolen waarde is 0 voor de meeste toepassingen, zodat u alle Vcpu's op uw computer kunt gebruiken. Node. exe heeft één thread, waardoor één node. exe een maximum van 1 vCPU verbruikt. Als u de maximale prestaties van uw knooppunt toepassing wilt ontvangen, wilt u alle Vcpu's gebruiken.
+Met deze instelling bepaalt u het aantal knooppunt processen dat per IIS-toepassing wordt gestart. De standaardwaarde is 1. U kunt zoveel node.exes als uw VM-vCPU starten door de waarde te wijzigen in 0. De aanbevolen waarde is 0 voor de meeste toepassingen, zodat u alle Vcpu's op uw computer kunt gebruiken. Node.exe is één thread, waardoor één node.exe een maximum van 1 vCPU verbruikt. Als u de maximale prestaties van uw knooppunt toepassing wilt ontvangen, wilt u alle Vcpu's gebruiken.
 
 ### <a name="nodeprocesscommandline"></a>nodeProcessCommandLine
 
-Met deze instelling bepaalt u het pad naar het knoop punt. exe. U kunt deze waarde instellen om naar de versie van node. exe te verwijzen.
+Met deze instelling bepaalt u het pad naar het node.exe. U kunt deze waarde instellen om naar uw node.exe versie te verwijzen.
 
 ### <a name="maxconcurrentrequestsperprocess"></a>maxConcurrentRequestsPerProcess
 
-Met deze instelling bepaalt u het maximum aantal gelijktijdige aanvragen dat door iisnode wordt verzonden naar elk node. exe. Op Azure App Service is de standaard waarde oneindig. U kunt de waarde configureren, afhankelijk van het aantal aanvragen dat door uw toepassing wordt ontvangen en hoe snel uw toepassing elke aanvraag verwerkt.
+Met deze instelling bepaalt u het maximum aantal gelijktijdige aanvragen dat door iisnode naar elke node.exe wordt verzonden. Op Azure App Service is de standaard waarde oneindig. U kunt de waarde configureren, afhankelijk van het aantal aanvragen dat door uw toepassing wordt ontvangen en hoe snel uw toepassing elke aanvraag verwerkt.
 
 ### <a name="maxnamedpipeconnectionretry"></a>maxNamedPipeConnectionRetry
 
-Met deze instelling bepaalt u het maximum aantal keren dat iisnode nieuwe pogingen om de verbinding te maken op de named pipe om de aanvragen naar node. exe te verzenden. Deze instelling in combi natie met namedPipeConnectionRetryDelay bepaalt de totale time-out van elke aanvraag in iisnode. De standaard waarde is 200 op Azure App Service. Totale time-out in seconden = \* (maxNamedPipeConnectionRetry namedPipeConnectionRetryDelay)/1000
+Met deze instelling bepaalt u het maximum aantal keren dat iisnode nieuwe pogingen om de verbinding te maken op de named pipe om de aanvragen naar node.exe te verzenden. Deze instelling in combi natie met namedPipeConnectionRetryDelay bepaalt de totale time-out van elke aanvraag in iisnode. De standaard waarde is 200 op Azure App Service. Totale time-out in seconden = (maxNamedPipeConnectionRetry \* namedPipeConnectionRetryDelay)/1000
 
 ### <a name="namedpipeconnectionretrydelay"></a>namedPipeConnectionRetryDelay
 
-Met deze instelling bepaalt u de hoeveelheid tijd (in MS) iisnode wacht op elke poging om de aanvraag te verzenden naar node. exe via de named pipe. De standaard waarde is 250 ms.
-Totale time-out in seconden = \* (maxNamedPipeConnectionRetry namedPipeConnectionRetryDelay)/1000
+Met deze instelling bepaalt u de hoeveelheid tijd (in MS) iisnode wacht op elke poging om de aanvraag te verzenden naar node.exe via de named pipe. De standaard waarde is 250 ms.
+Totale time-out in seconden = (maxNamedPipeConnectionRetry \* namedPipeConnectionRetryDelay)/1000
 
-De totale time-out in iisnode op Azure App Service is standaard 200 \* 250 ms = 50 seconden.
+De totale time-out in iisnode op Azure App Service is standaard 200 \* 250 MS = 50 seconden.
 
 ### <a name="logdirectory"></a>logDirectory
 
-Met deze instelling bepaalt u de map waarin iisnode de logboeken stdout/stderr. De standaard waarde is iisnode, die relatief is ten opzichte van de hoofdmap van het script (directory waarin main server. js aanwezig is)
+Met deze instelling bepaalt u de map waarin iisnode de logboeken stdout/stderr. De standaard waarde is iisnode, die relatief is ten opzichte van de hoofdmap van het script (directory waarin de hoofd server.js aanwezig is)
 
 ### <a name="debuggerextensiondll"></a>debuggerExtensionDll
 
-Met deze instelling bepaalt u welke versie van node-Inspector iisnode wordt gebruikt bij het opsporen van fouten in uw knooppunt toepassing. Momenteel zijn iisnode-Inspector-0.7.3. dll en iisnode-Inspector. dll de enige twee geldige waarden voor deze instelling. De standaard waarde is iisnode-Inspector-0.7.3. dll. De iisnode-Inspector-0.7.3. dll-versie maakt gebruik van node-Inspector-0.7.3 en maakt gebruik van websockets. Schakel Web sockets in op uw Azure webapp om deze versie te gebruiken. Zie <https://ranjithblogs.azurewebsites.net/?p=98> voor meer informatie over het configureren van iisnode voor het gebruik van het nieuwe knoop punt-Inspector.
+Met deze instelling bepaalt u welke versie van node-Inspector iisnode wordt gebruikt bij het opsporen van fouten in uw knooppunt toepassing. Momenteel zijn de enige twee geldige waarden voor deze instelling iisnode-inspector-0.7.3.dll en iisnode-inspector.dll. De standaard waarde is iisnode-inspector-0.7.3.dll. De iisnode-inspector-0.7.3.dll versie maakt gebruik van node-Inspector-0.7.3 en maakt gebruik van websockets. Schakel Web sockets in op uw Azure webapp om deze versie te gebruiken. Zie <https://ranjithblogs.azurewebsites.net/?p=98> voor meer informatie over het configureren van iisnode voor het gebruik van het nieuwe knoop punt-Inspector.
 
 ### <a name="flushresponse"></a>flushResponse
 
-Het standaard gedrag van IIS is dat er antwoord gegevens worden gebufferd tot 4 MB vóór het leegmaken of tot aan het einde van de reactie, afhankelijk van wat het eerste komt. iisnode biedt een configuratie-instelling om dit gedrag te negeren: als u een fragment van de hoofd tekst van de antwoord entiteit wilt leegmaken zodra iisnode het ontvangt van node. exe, iisnode/@flushResponse moet u het kenmerk in web. config instellen op ' True ':
+Het standaard gedrag van IIS is dat er antwoord gegevens worden gebufferd tot 4 MB vóór het leegmaken of tot aan het einde van de reactie, afhankelijk van wat het eerste komt. iisnode biedt een configuratie-instelling om dit gedrag te negeren: als u een fragment van de hoofd tekst van de antwoord entiteit wilt leegmaken zodra iisnode deze ontvangt van node.exe, moet u het iisnode/@flushResponse kenmerk in web.config instellen op ' True ':
 
 ```xml
 <configuration>
@@ -71,7 +70,7 @@ Het standaard gedrag van IIS is dat er antwoord gegevens worden gebufferd tot 4 
 </configuration>
 ```
 
-Als u het leegmaken van elk fragment van de hoofd tekst van de antwoord functie inschakelt, worden er prestatie overhead kosten in mindering geplaatst die de door Voer van het systeem reduceert door ~ 5% (vanaf v 0.1.13). U kunt deze instelling het beste alleen bereiken voor eind punten waarvoor het streamen van antwoorden is vereist ( `<location>` bijvoorbeeld door het-element te gebruiken in web. config).
+Als u het leegmaken van elk fragment van de hoofd tekst van de antwoord functie inschakelt, worden er prestatie overhead kosten in mindering geplaatst die de door Voer van het systeem reduceert door ~ 5% (vanaf v 0.1.13). Het is het beste om deze instelling alleen te beperken tot eind punten waarvoor het streamen van antwoorden is vereist (bijvoorbeeld door het `<location>` -element in de web.config te gebruiken)
 
 Daarnaast moet u voor streaming-toepassingen ook responseBufferLimit van uw iisnode-handler instellen op 0.
 
@@ -87,7 +86,7 @@ Een door punt komma's gescheiden lijst met bestanden die worden bekeken voor wij
 
 ### <a name="recyclesignalenabled"></a>recycleSignalEnabled
 
-De standaardwaarde is false. Als deze functie is ingeschakeld, kan de knooppunt toepassing verbinding maken met een named pipe\_(\_omgevings variabele IISNODE Control pipe) en een ' recycle ' bericht verzenden. Dit zorgt ervoor dat de W3wp zonder problemen wordt gerecycled.
+De standaardwaarde is false. Als deze functie is ingeschakeld, kan de knooppunt toepassing verbinding maken met een named pipe (omgevings variabele IISNODE \_ Control \_ pipe) en een ' recycle ' bericht verzenden. Dit zorgt ervoor dat de W3wp zonder problemen wordt gerecycled.
 
 ### <a name="idlepageouttimeperiod"></a>idlePageOutTimePeriod
 
@@ -99,7 +98,7 @@ De standaard waarde is 0, wat betekent dat deze functie is uitgeschakeld. Wannee
 
 ### <a name="debugheaderenabled"></a>debugHeaderEnabled
 
-De standaardwaarde is false. Als deze eigenschap is ingesteld op True, voegt iisnode een `iisnode-debug` http-antwoord header toe aan elke `iisnode-debug` http-reactie die de waarde van de header verzendt, is een URL. Afzonderlijke stukjes diagnostische gegevens kunnen worden verkregen door te kijken naar het URL-fragment, maar een visualisatie is beschikbaar door de URL in een browser te openen.
+De standaardwaarde is false. Als deze eigenschap is ingesteld op True, voegt iisnode een HTTP-antwoord header `iisnode-debug` toe aan elke HTTP-reactie die de waarde van de header verzendt, `iisnode-debug` is een URL. Afzonderlijke stukjes diagnostische gegevens kunnen worden verkregen door te kijken naar het URL-fragment, maar een visualisatie is beschikbaar door de URL in een browser te openen.
 
 ### <a name="loggingenabled"></a>loggingEnabled
 
@@ -111,9 +110,9 @@ De standaardwaarde is false. Als deze eigenschap is ingesteld op True, worden in
 
 ### <a name="debuggingenabled-do-not-enable-on-live-production-site"></a>debuggingEnabled (niet inschakelen op de live productie site)
 
-Met deze instelling wordt de functie fout opsporing bepaald. Iisnode is geïntegreerd met node-Inspector. Als u deze instelling inschakelt, schakelt u fout opsporing van de knooppunt toepassing in. Wanneer u deze instelling inschakelt, maakt iisnode knooppunt-Inspector-bestanden in de map debuggerVirtualDir op de eerste aanvraag voor fout opsporing naar uw knooppunt toepassing. U kunt de node-Inspector laden door een aanvraag te verzenden `http://yoursite/server.js/debug`naar. U kunt het fout opsporingsprogramma-URL-segment beheren met de instelling ' debuggerPathSegment '. Standaard debuggerPathSegment = ' debug '. U kunt bijvoorbeeld `debuggerPathSegment` een GUID instellen, zodat deze moeilijker te detecteren is door anderen.
+Met deze instelling wordt de functie fout opsporing bepaald. Iisnode is geïntegreerd met node-Inspector. Als u deze instelling inschakelt, schakelt u fout opsporing van de knooppunt toepassing in. Wanneer u deze instelling inschakelt, maakt iisnode knooppunt-Inspector-bestanden in de map debuggerVirtualDir op de eerste aanvraag voor fout opsporing naar uw knooppunt toepassing. U kunt de node-Inspector laden door een aanvraag te verzenden naar `http://yoursite/server.js/debug` . U kunt het fout opsporingsprogramma-URL-segment beheren met de instelling ' debuggerPathSegment '. Standaard debuggerPathSegment = ' debug '. U kunt `debuggerPathSegment` bijvoorbeeld een GUID instellen, zodat deze moeilijker te detecteren is door anderen.
 
-Lees [debug node. js-toepassingen in Windows](https://tomasz.janczuk.org/2011/11/debug-nodejs-applications-on-windows.html) voor meer informatie over fout opsporing.
+Lees [Debug node.js-toepassingen in Windows](https://tomasz.janczuk.org/2011/11/debug-nodejs-applications-on-windows.html) voor meer informatie over fout opsporing.
 
 ## <a name="scenarios-and-recommendationstroubleshooting"></a>Scenario's en aanbevelingen/probleem oplossing
 
@@ -121,7 +120,7 @@ Lees [debug node. js-toepassingen in Windows](https://tomasz.janczuk.org/2011/11
 
 Veel toepassingen zouden uitgaande verbindingen willen maken als onderdeel van hun normale werking. Als er bijvoorbeeld een aanvraag binnenkomt in, zou uw node-app graag contact willen opnemen met een REST API elders en zo informatie ontvangen om de aanvraag te verwerken. U wilt een Keep Alive-agent gebruiken bij het maken van http-of https-aanroepen. U kunt de agentkeepalive-module gebruiken als Keep Alive-agent wanneer u deze uitgaande aanroepen maakt.
 
-De agentkeepalive-module zorgt ervoor dat sockets opnieuw worden gebruikt op uw Azure webapp VM. Bij het maken van een nieuwe socket voor elke uitgaande aanvraag, wordt de overhead toegevoegd aan uw toepassing. Als u uw toepassing sockets voor uitgaande aanvragen opnieuw wilt gebruiken, zorgt u ervoor dat uw toepassing niet groter is dan de maxSockets die worden toegewezen per VM. De aanbeveling op Azure App Service is om de agentKeepAlive maxSockets-waarde in te stellen op een totaal van (4 exemplaren van \* node. exe 40 maxSockets/instance) 160-sockets per VM.
+De agentkeepalive-module zorgt ervoor dat sockets opnieuw worden gebruikt op uw Azure webapp VM. Bij het maken van een nieuwe socket voor elke uitgaande aanvraag, wordt de overhead toegevoegd aan uw toepassing. Als u uw toepassing sockets voor uitgaande aanvragen opnieuw wilt gebruiken, zorgt u ervoor dat uw toepassing niet groter is dan de maxSockets die worden toegewezen per VM. De aanbeveling op Azure App Service is om de agentKeepAlive maxSockets-waarde in te stellen op een totaal van (4 exemplaren van node.exe \* 40 maxSockets/instance) 160 sockets per VM.
 
 Voor beeld van [agentKeepALive](https://www.npmjs.com/package/agentkeepalive) -configuratie:
 
@@ -135,7 +134,7 @@ let keepaliveAgent = new Agent({
 ```
 
 > [!IMPORTANT]
-> In dit voor beeld wordt ervan uitgegaan dat er 4 node. exe op uw virtuele machine wordt uitgevoerd. Als er een ander aantal knoop punten. exe wordt uitgevoerd op de VM, moet u de maxSockets-instelling dienovereenkomstig aanpassen.
+> In dit voor beeld wordt ervan uitgegaan dat er 4 node.exe worden uitgevoerd op uw VM. Als u een ander aantal node.exe uitvoert op de virtuele machine, moet u de maxSockets-instelling dienovereenkomstig aanpassen.
 >
 
 #### <a name="my-node-application-is-consuming-too-much-cpu"></a>Mijn knooppunt toepassing verbruikt te veel CPU
@@ -174,8 +173,8 @@ Ga naar de map van uw site/wwwroot. U ziet een opdracht prompt zoals in het volg
 
 Voer de opdracht `npm install v8-profiler` uit.
 
-Met deze opdracht wordt de V8-Profiler geïnstalleerd onder node\_modules directory en alle bijbehorende afhankelijkheden.
-Bewerk nu uw server. js om de toepassing te profileren.
+Met deze opdracht wordt de V8-Profiler geïnstalleerd onder node \_ modules directory en alle bijbehorende afhankelijkheden.
+Bewerk nu uw server.js om uw toepassing te profileren.
 
 ```nodejs
 const http = require('http');
@@ -215,63 +214,63 @@ U kunt zien dat 95% van de tijd is verbruikt door de functie WriteConsoleLog. In
 
 Als uw toepassing te veel geheugen verbruikt, wordt er een melding weer gegeven van Azure App Service in uw portal over hoog geheugen gebruik. U kunt monitors instellen om te controleren op bepaalde [metrische gegevens](web-sites-monitor.md). Controleer bij het controleren van het geheugen gebruik in het [dash board](../azure-monitor/app/web-monitor-performance.md)van de Azure-Portal de maximum waarden voor het geheugen, zodat u de piek waarden niet kunt missen.
 
-#### <a name="leak-detection-and-heap-diff-for-nodejs"></a>Lekkage detectie en heap-diff voor node. js
+#### <a name="leak-detection-and-heap-diff-for-nodejs"></a>Lekkage detectie en heap-verschil voor node.js
 
 U kunt [node-memwatch](https://github.com/lloyd/node-memwatch) gebruiken om geheugen lekkages te identificeren.
-U kunt net `memwatch` als V8-Profiler installeren en uw code bewerken om heaps vast te leggen en te vergelijken om de geheugen lekken in uw toepassing te identificeren.
+U kunt `memwatch` net als V8-Profiler installeren en uw code bewerken om heaps vast te leggen en te vergelijken om de geheugen lekken in uw toepassing te identificeren.
 
-### <a name="my-nodeexes-are-getting-killed-randomly"></a>De knoop punten van mijn node. exe worden wille keurig gedood
+### <a name="my-nodeexes-are-getting-killed-randomly"></a>Mijn node.exe worden wille keurig afgebroken
 
-Er zijn een aantal redenen waarom node. exe wille keurig wordt afgesloten:
+Er zijn een aantal redenen waarom node.exe wille keurig wordt afgesloten:
 
-1. Uw toepassing ontstaat niet-onderschepte uitzonde\\ringen\\– check\\d\\: Start Logboeken van de toepassing logging-Errors. txt voor meer informatie over de uitzonde ring die wordt gegenereerd. Dit bestand heeft de stack-tracering om uw toepassing te debuggen en te herstellen.
-2. Uw toepassing verbruikt te veel geheugen, wat invloed heeft op andere processen om aan de slag te gaan. Als het totale geheugen van de virtuele machine bijna 100% is, kan het knoop punt. exe worden afgebroken door de proces beheerder. Proces beheer beëindigt een aantal processen om andere processen in staat te stellen bepaalde werkzaamheden uit te voeren. U kunt dit probleem oplossen door uw toepassing te profileren voor geheugen lekkages. Als uw toepassing grote hoeveel heden geheugen vereist, schaalt u tot een grotere VM (waardoor het RAM-geheugen voor de virtuele machine groter wordt).
+1. Uw toepassing ontstaat niet-onderschepte uitzonde ringen – check d: \\ Start \\ Logboeken \\ van de toepassing \\logging-errors.txt bestand voor meer informatie over de uitzonde ring die is opgetreden. Dit bestand heeft de stack-tracering om uw toepassing te debuggen en te herstellen.
+2. Uw toepassing verbruikt te veel geheugen, wat invloed heeft op andere processen om aan de slag te gaan. Als het totale geheugen van de virtuele machine zich op 100% bevindt, kan de node.exe worden afgebroken door de proces beheerder. Proces beheer beëindigt een aantal processen om andere processen in staat te stellen bepaalde werkzaamheden uit te voeren. U kunt dit probleem oplossen door uw toepassing te profileren voor geheugen lekkages. Als uw toepassing grote hoeveel heden geheugen vereist, schaalt u tot een grotere VM (waardoor het RAM-geheugen voor de virtuele machine groter wordt).
 
 ### <a name="my-node-application-does-not-start"></a>Mijn knooppunt toepassing wordt niet gestart
 
 Als uw toepassing 500 fouten retourneert wanneer deze wordt gestart, kan dit een aantal oorzaken hebben:
 
-1. Node. exe is niet aanwezig op de juiste locatie. Controleer de instelling van nodeProcessCommandLine.
-2. Het hoofd script bestand is niet aanwezig op de juiste locatie. Controleer web. config en controleer of de naam van het hoofd script bestand in de sectie handlers overeenkomt met het hoofd script bestand.
-3. De configuratie van het web. config-bestand is onjuist. Controleer de instellingen namen/waarden.
+1. Node.exe is niet aanwezig op de juiste locatie. Controleer de instelling van nodeProcessCommandLine.
+2. Het hoofd script bestand is niet aanwezig op de juiste locatie. Controleer web.config en controleer of de naam van het hoofd script bestand in de sectie handlers overeenkomt met het hoofd script bestand.
+3. De configuratie van de Web.config is onjuist. Controleer de instellingen namen/waarden.
 4. Koud start: uw toepassing duurt te lang om te starten. Als uw toepassing langer duurt dan (maxNamedPipeConnectionRetry \* namedPipeConnectionRetryDelay)/1000 seconden, retourneert iisnode een 500-fout. Verhoog de waarden van deze instellingen zodat deze overeenkomen met de start tijd van uw toepassing om te voor komen dat iisnode uit time-out optreedt en de 500-fout te retour neren.
 
 ### <a name="my-node-application-crashed"></a>Mijn knooppunt toepassing is vastgelopen
 
-Uw toepassing ontstaat niet-onderschepte `d:\\home\\LogFiles\\Application\\logging-errors.txt` uitzonde ringen. Controleer het bestand voor meer informatie over de uitzonde ring die is opgetreden. Dit bestand heeft de stack-tracering om uw toepassing te diagnosticeren en op te lossen.
+Uw toepassing ontstaat niet-onderschepte uitzonde ringen `d:\\home\\LogFiles\\Application\\logging-errors.txt` . Controleer het bestand voor meer informatie over de uitzonde ring die is opgetreden. Dit bestand heeft de stack-tracering om uw toepassing te diagnosticeren en op te lossen.
 
 ### <a name="my-node-application-takes-too-much-time-to-start-cold-start"></a>Het starten van mijn knooppunt toepassing vergt te veel tijd (koude start)
 
-De veelvoorkomende oorzaak van de start tijden van toepassingen is een groot aantal bestanden in de\_knooppunt modules. De toepassing probeert het meren deel van deze bestanden te laden tijdens het starten. Omdat uw bestanden standaard worden opgeslagen op de netwerk share op Azure App Service, kan het laden van veel bestanden tijd duren.
+De veelvoorkomende oorzaak van de start tijden van toepassingen is een groot aantal bestanden in de knooppunt \_ modules. De toepassing probeert het meren deel van deze bestanden te laden tijdens het starten. Omdat uw bestanden standaard worden opgeslagen op de netwerk share op Azure App Service, kan het laden van veel bestanden tijd duren.
 Enkele oplossingen om dit proces sneller uit te voeren:
 
 1. Zorg ervoor dat u een platte afhankelijkheids structuur hebt en geen dubbele afhankelijkheden met behulp van npm3 om uw modules te installeren.
-2. Probeer de knooppunt\_modules langzaam te laden en laad niet alle modules in de start van de toepassing. Voor Lazy load modules moet de aanroep to vereist (' module ') worden uitgevoerd wanneer u de module in de functie daad werkelijk nodig hebt vóór de eerste uitvoering van module code.
-3. Azure App Service biedt een functie met de naam lokale cache. Deze functie kopieert uw inhoud van de netwerk share naar de lokale schijf op de virtuele machine. Omdat de bestanden lokaal zijn, is de laad tijd van\_knooppunt modules veel sneller.
+2. Probeer de knooppunt modules langzaam te laden \_ en laad niet alle modules in de start van de toepassing. Voor Lazy load modules moet de aanroep to vereist (' module ') worden uitgevoerd wanneer u de module in de functie daad werkelijk nodig hebt vóór de eerste uitvoering van module code.
+3. Azure App Service biedt een functie met de naam lokale cache. Deze functie kopieert uw inhoud van de netwerk share naar de lokale schijf op de virtuele machine. Omdat de bestanden lokaal zijn, is de laad tijd van knooppunt \_ modules veel sneller.
 
 ## <a name="iisnode-http-status-and-substatus"></a>Http-status en-substatus IISNODE
 
-In `cnodeconstants` het [bron bestand](https://github.com/Azure/iisnode/blob/master/src/iisnode/cnodeconstants.h) worden alle mogelijke combi Naties van status/substatus weer gegeven die iisnode kunnen retour neren vanwege een fout.
+In het `cnodeconstants` [bron bestand](https://github.com/Azure/iisnode/blob/master/src/iisnode/cnodeconstants.h) worden alle mogelijke combi Naties van status/substatus weer gegeven die iisnode kunnen retour neren vanwege een fout.
 
 Schakel FREB in voor uw toepassing om de Win32-fout code te bekijken (zorg ervoor dat u FREB alleen op niet-productie sites inschakelt om de prestaties te verbeteren).
 
 | Http-status | Http-substatus | Mogelijke reden? |
 | --- | --- | --- |
-| 500 |1000 |Er is een probleem opgetreden bij het verzenden van de aanvraag naar IISNODE: Controleer of node. exe is gestart. Node. exe is tijdens het starten gecrasht. Controleer de web. config-configuratie op fouten. |
-| 500 |1001 |-Win32Error 0x2: de app reageert niet op de URL. Controleer de regels voor het herschrijven van de URL of Controleer of uw Express-app de juiste routes heeft gedefinieerd. -Win32Error 0x6d-named pipe is bezet: node. exe accepteert geen aanvragen omdat de pipe bezet is. Controleer het hoge CPU-gebruik. -Andere fouten: Controleer of node. exe is vastgelopen. |
-| 500 |1002 |Node. exe is vastgelopen – Controleer d:\\Home\\-logboek\\bestanden logging-Errors. txt voor Stack tracering. |
+| 500 |1000 |Er is een probleem opgetreden bij het verzenden van de aanvraag naar IISNODE: Controleer of node.exe is gestart. Node.exe is mogelijk vastgelopen tijdens het starten. Controleer de web.config configuratie op fouten. |
+| 500 |1001 |-Win32Error 0x2: de app reageert niet op de URL. Controleer de regels voor het herschrijven van de URL of Controleer of uw Express-app de juiste routes heeft gedefinieerd. -Win32Error 0x6d-named pipe is bezet: Node.exe accepteert geen aanvragen omdat de pipe bezet is. Controleer het hoge CPU-gebruik. -Andere fouten: Controleer of node.exe vastgelopen. |
+| 500 |1002 |Node.exe vastgelopen – Controleer d: \\ Home- \\ logboeken \\logging-errors.txt voor Stack tracering. |
 | 500 |1003 |Probleem met de configuratie van de pipe: de configuratie van de named pipe is onjuist. |
-| 500 |1004-1018 |Er is een fout opgetreden tijdens het verzenden van de aanvraag of het verwerken van de reactie van node. exe. Controleer of node. exe is vastgelopen. Controleer d:\\Home\\-logboek\\bestanden logging-Errors. txt voor Stack tracering. |
+| 500 |1004-1018 |Er is een fout opgetreden tijdens het verzenden van de aanvraag of het verwerken van de reactie naar/van node.exe. Controleer of node.exe is vastgelopen. Controleer d: \\ Home- \\ logboeken \\logging-errors.txt voor Stack tracering. |
 | 503 |1000 |Er is onvoldoende geheugen om meer named pipe verbindingen toe te wijzen. Controleer waarom uw app zoveel geheugen verbruikt. Controleer de waarde van de maxConcurrentRequestsPerProcess-instelling. Als het niet oneindig is en u veel aanvragen hebt, verhoogt u deze waarde om deze fout te voor komen. |
-| 503 |1001 |De aanvraag kan niet worden verzonden naar node. exe omdat de toepassing wordt gerecycled. Nadat de toepassing is gerecycled, moeten aanvragen normaal worden aangeboden. |
-| 503 |1002 |Controleer de Win32-fout code op werkelijke reden: de aanvraag kan niet worden verzonden naar een node. exe. |
-| 503 |1003 |Named pipe is bezet: Controleer of het knoop punt. exe buitensporige CPU verbruikt |
+| 503 |1001 |De aanvraag kan niet worden verzonden naar node.exe omdat de toepassing wordt gerecycled. Nadat de toepassing is gerecycled, moeten aanvragen normaal worden aangeboden. |
+| 503 |1002 |Controleer de Win32-fout code op werkelijke reden: de aanvraag kan niet worden verzonden naar een node.exe. |
+| 503 |1003 |Named pipe is bezet: Controleer of node.exe buitensporige CPU verbruikt |
 
-Voor NODE. exe is een instelling `NODE_PENDING_PIPE_INSTANCES`met de naam. Op Azure App Service is deze waarde ingesteld op 5000. Dit betekent dat node. exe 5000 aanvragen tegelijk kan accepteren op de named pipe. Deze waarde moet voldoende zijn voor de meeste knooppunt toepassingen die op Azure App Service worden uitgevoerd. U moet 503,1003 niet zien op Azure App Service vanwege de hoge waarde voor`NODE_PENDING_PIPE_INSTANCES`
+NODE.exe heeft een instelling met de naam `NODE_PENDING_PIPE_INSTANCES` . Op Azure App Service is deze waarde ingesteld op 5000. Dit betekent dat node.exe op de named pipe 5000-aanvragen tegelijk kunt accepteren. Deze waarde moet voldoende zijn voor de meeste knooppunt toepassingen die op Azure App Service worden uitgevoerd. U moet 503,1003 niet zien op Azure App Service vanwege de hoge waarde voor`NODE_PENDING_PIPE_INSTANCES`
 
 ## <a name="more-resources"></a>Meer bronnen
 
-Volg deze koppelingen voor meer informatie over node. js-toepassingen op Azure App Service.
+Volg deze koppelingen voor meer informatie over node.js toepassingen op Azure App Service.
 
 * [Aan de slag met Node.js-web-apps in Azure App Service](app-service-web-get-started-nodejs.md)
 * [Fouten opsporen in een Node.js web-app in Azure App Service](https://blogs.msdn.microsoft.com/azureossds/2018/08/03/debugging-node-js-apps-on-azure-app-services/)

@@ -6,10 +6,9 @@ ms.topic: conceptual
 ms.date: 08/18/2017
 ms.author: masnider
 ms.openlocfilehash: ea21502cdab35b261e20af7f23b7b522f77c6667
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75451998"
 ---
 # <a name="managing-resource-consumption-and-load-in-service-fabric-with-metrics"></a>Resource gebruik beheren en laden in Service Fabric met metrische gegevens
@@ -27,7 +26,7 @@ Stel dat u aan de slag wilt gaan met het schrijven en implementeren van uw servi
 | Gegevens | Stateless instantie laden | Stateful secundaire belasting | Stateful primaire belasting | Gewicht |
 | --- | --- | --- | --- | --- |
 | PrimaryCount |0 |0 |1 |Hoog |
-| ReplicaCount |0 |1 |1 |Middelgroot |
+| ReplicaCount |0 |1 |1 |Normaal |
 | Count |1 |1 |1 |Laag |
 
 
@@ -183,7 +182,7 @@ De lijst met metrische gegevens die aan de service zijn gekoppeld en de eigensch
   - het inschakelen van een nieuwe metriek pas nadat de code al is geïmplementeerd en gevalideerd via andere mechanismen
   - de standaard belasting voor een service wijzigen op basis van waargenomen gedrag en verbruik
 
-De belangrijkste Api's voor het wijzigen van de `FabricClient.ServiceManagementClient.UpdateServiceAsync` metrische configuratie zijn `Update-ServiceFabricService` in C# en in Power shell. Welke gegevens u met deze Api's opgeeft, vervangt de bestaande metrische gegevens voor de service onmiddellijk. 
+De belangrijkste Api's voor het wijzigen van de metrische configuratie zijn `FabricClient.ServiceManagementClient.UpdateServiceAsync` in C# en `Update-ServiceFabricService` in Power shell. Welke gegevens u met deze Api's opgeeft, vervangt de bestaande metrische gegevens voor de service onmiddellijk. 
 
 ## <a name="mixing-default-load-values-and-dynamic-load-reports"></a>Standaard waarden voor laden en dynamische laad rapporten mengen
 Standaard belasting en dynamische belasting kunnen voor dezelfde service worden gebruikt. Wanneer een service zowel standaard loads als dynamische laad rapporten gebruikt, fungeert standaard load als een schatting totdat dynamische rapporten worden weer gegeven. De standaard belasting is goed, omdat het cluster resource manager er iets mee moet doen om mee te werken. Met de standaard belasting kan cluster bron beheer de service objecten op goede locaties plaatsen wanneer ze worden gemaakt. Als er geen standaard laad informatie wordt verstrekt, wordt de plaatsing van services in feite wille keurig. Wanneer het laden van rapporten later afneemt, is de eerste wille keurige plaatsing vaak onjuist en de cluster resource manager moet Services verplaatsen.

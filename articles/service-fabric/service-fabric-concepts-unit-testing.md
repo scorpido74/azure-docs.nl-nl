@@ -4,10 +4,9 @@ description: Meer informatie over de concepten en procedures voor het testen van
 ms.topic: conceptual
 ms.date: 09/04/2018
 ms.openlocfilehash: 12e8a47d9685dee12594f4e2afaa848d9688d185
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75433911"
 ---
 # <a name="unit-testing-stateful-services-in-service-fabric"></a>Statusloze Services voor het testen van eenheden in Service Fabric
@@ -40,13 +39,13 @@ Daarnaast kunnen de tests met meerdere instanties de rollen van elk van deze ins
 De status manager moet worden behandeld als een externe resource en daarom worden gesimuleerd. Wanneer de status Manager wordt getraceerd, moet er een onderliggende opslag ruimte in het geheugen zijn voor het bijhouden van wat wordt opgeslagen in de status Manager, zodat deze kan worden gelezen en geverifieerd. Een eenvoudige manier om dit te doen is door exemplaren van de modellen van elk van de typen betrouw bare verzamelingen te maken. In deze gegevens typen kunt u het type Data gebruiken dat nauw keurig wordt uitgelijnd met de bewerkingen die voor die verzameling worden uitgevoerd. Hieronder vindt u enkele aanbevolen gegevens typen voor elke betrouw bare verzameling
 
 - IReliableDictionary<TKey, TValue>-> System. Collections. gelijktijdige. ConcurrentDictionary<TKey, TValue>
-- IReliableQueue\<T>-> System. Collections. generic.\<Queue T>
-- IReliableConcurrentQueue\<T>-> System. Collections. gelijktijdige.\<ConcurrentQueue T>
+- IReliableQueue \<T> -> System. Collections. generic. Queue\<T>
+- IReliableConcurrentQueue \<T> -> System. Collections. gelijktijdige. ConcurrentQueue\<T>
 
 #### <a name="many-state-manager-instances-single-storage"></a>Veel instanties van State Manager, één opslag
 Zoals eerder vermeld, moeten de status Manager en de betrouw bare verzamelingen worden behandeld als een externe bron. Deze resources moeten daarom worden gesimuleerd binnen de eenheids testen. Bij het uitvoeren van meerdere exemplaren van een stateful service is het echter een uitdaging om elke gesimuleerde status Manager te synchroniseren in verschillende stateful service exemplaren. Wanneer de stateful service op het cluster wordt uitgevoerd, zorgt de Service Fabric ervoor dat de status Manager van de secundaire replica consistent blijft met de primaire replica. Daarom moeten de tests hetzelfde zijn, zodat ze wijzigingen in de rol kunnen simuleren.
 
-Een eenvoudige manier om deze synchronisatie te bereiken, is het gebruik van een singleton patroon voor het onderliggende object waarin de gegevens worden opgeslagen die naar elke betrouw bare verzameling zijn geschreven. Als een stateful service bijvoorbeeld een `IReliableDictionary<string, string>`gebruikt. De model State manager moet een model van `IReliableDictionary<string, string>`hebben geretourneerd. Deze Modeler kan gebruikmaken `ConcurrentDictionary<string, string>` van een om de geschreven sleutel/waarde-paren bij te houden. De `ConcurrentDictionary<string, string>` moet een singleton zijn die wordt gebruikt door alle instanties van de status managers die zijn door gegeven aan de service.
+Een eenvoudige manier om deze synchronisatie te bereiken, is het gebruik van een singleton patroon voor het onderliggende object waarin de gegevens worden opgeslagen die naar elke betrouw bare verzameling zijn geschreven. Als een stateful service bijvoorbeeld een gebruikt `IReliableDictionary<string, string>` . De model State manager moet een model van hebben geretourneerd `IReliableDictionary<string, string>` . Deze Modeler kan gebruikmaken `ConcurrentDictionary<string, string>` van een om de geschreven sleutel/waarde-paren bij te houden. De `ConcurrentDictionary<string, string>` moet een singleton zijn die wordt gebruikt door alle instanties van de status managers die zijn door gegeven aan de service.
 
 #### <a name="keep-track-of-cancellation-tokens"></a>Annulerings tokens bijhouden
 Annulerings tokens zijn een belang rijk, nog veel overziend aspect van stateful Services. Wanneer Service Fabric een primaire replica voor een stateful service start, wordt er een annulerings token gegeven. Dit annulerings token is bedoeld om te Signa leren op de service wanneer deze wordt verwijderd of verlaagd naar een andere rol. Het stateful service moet alle langdurige of asynchrone bewerkingen stoppen, zodat Service Fabric de werk stroom voor de functie wijziging kan volt ooien.
@@ -68,7 +67,7 @@ Eenheids tests moeten zo veel mogelijk van de toepassings code worden uitgevoerd
     Then the request should should return the "John Smith" employee
 ```
 
-Deze test beweringt dat de gegevens die op één replica worden vastgelegd, beschikbaar zijn voor een secundaire replica wanneer deze wordt gepromoveerd tot primaire. Ervan uitgaande dat een betrouw bare verzameling de back-upopslag voor de gegevens van de werk nemer is, geldt een mogelijke storing van AA die bij deze test kan `CommitAsync` worden onderschept als de toepassings code niet is uitgevoerd op de trans actie om de nieuwe werk nemer op te slaan. In dat geval retourneert de tweede aanvraag om werk nemers op te halen geen werk nemer die is toegevoegd door de eerste aanvraag.
+Deze test beweringt dat de gegevens die op één replica worden vastgelegd, beschikbaar zijn voor een secundaire replica wanneer deze wordt gepromoveerd tot primaire. Ervan uitgaande dat een betrouw bare verzameling de back-upopslag voor de gegevens van de werk nemer is, geldt een mogelijke storing van AA die bij deze test kan worden onderschept als de toepassings code niet is uitgevoerd `CommitAsync` op de trans actie om de nieuwe werk nemer op te slaan. In dat geval retourneert de tweede aanvraag om werk nemers op te halen geen werk nemer die is toegevoegd door de eerste aanvraag.
 
 ### <a name="acting"></a>Raad
 #### <a name="mimic-service-fabric-replica-orchestration"></a>Service Fabric replica-indeling nabootsen

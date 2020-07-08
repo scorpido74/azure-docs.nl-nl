@@ -14,10 +14,9 @@ ms.topic: article
 ms.date: 06/20/2018
 ms.author: apimpm
 ms.openlocfilehash: ed0cd51fc686735f2d9c110ce46d5904107cafc2
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75430616"
 ---
 # <a name="how-to-use-role-based-access-control-in-azure-api-management"></a>Op rollen gebaseerd toegangsbeheer gebruiken in API Management
@@ -32,7 +31,7 @@ API Management biedt momenteel drie ingebouwde rollen en voegt twee meer rollen 
 
 De volgende tabel bevat korte beschrijvingen van de ingebouwde rollen. U kunt deze rollen toewijzen met behulp van de Azure Portal of andere hulpprogram ma's, zoals Azure [Power shell](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-powershell), [azure cli](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-cli)en [rest API](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-rest). Zie [roltoewijzingen gebruiken voor het beheren van de toegang tot uw Azure-abonnements resources](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-portal)voor meer informatie over het toewijzen van ingebouwde rollen.
 
-| Rol          | Lees toegang<sup>[1]</sup> | Schrijf toegang<sup>[2]</sup> | Service maken, verwijderen, schalen, VPN en aangepaste domein configuratie | Toegang tot de verouderde Publisher-Portal | Beschrijving
+| Rol          | Lees toegang<sup>[1]</sup> | Schrijf toegang<sup>[2]</sup> | Service maken, verwijderen, schalen, VPN en aangepaste domein configuratie | Toegang tot de verouderde Publisher-Portal | Description
 | ------------- | ---- | ---- | ---- | ---- | ---- 
 | Inzender van API Management-service | ✓ | ✓ | ✓ | ✓ | Super gebruiker. Heeft volledige ruwe toegang tot API Management Services en entiteiten (bijvoorbeeld Api's en beleids regels). Heeft toegang tot de verouderde Publisher-Portal. |
 | API Management-service lezer | ✓ | | || Heeft alleen-lezen toegang tot API Management Services en entiteiten. |
@@ -51,7 +50,7 @@ De volgende tabel bevat korte beschrijvingen van de ingebouwde rollen. U kunt de
 Als geen van de ingebouwde rollen aan uw specifieke behoeften voldoet, kunnen er aangepaste rollen worden gemaakt voor meer gedetailleerd toegangs beheer voor API Management entiteiten. U kunt bijvoorbeeld een aangepaste rol maken met alleen-lezen toegang tot een API Management-service, maar heeft alleen schrijf toegang tot een specifieke API. Zie [aangepaste rollen in azure RBAC](https://docs.microsoft.com/azure/role-based-access-control/custom-roles)voor meer informatie over aangepaste rollen. 
 
 > [!NOTE]
-> Een aangepaste rol moet de ```Microsoft.ApiManagement/service/read``` actie bevatten om een API Management-exemplaar in het Azure portal te kunnen zien.
+> Een aangepaste rol moet de actie bevatten om een API Management-exemplaar in het Azure Portal te kunnen zien ```Microsoft.ApiManagement/service/read``` .
 
 Wanneer u een aangepaste rol maakt, is het gemakkelijker om te beginnen met een van de ingebouwde rollen. Bewerk de kenmerken om **acties**, **intact**of **AssignableScopes**toe te voegen en sla de wijzigingen vervolgens op als een nieuwe rol. Het volgende voor beeld begint met de rol ' API Management service lezer ' en maakt een aangepaste rol met de naam ' Rekenmachine API-editor '. U kunt de aangepaste rol toewijzen aan een specifieke API. Daarom heeft deze rol alleen toegang tot die API. 
 

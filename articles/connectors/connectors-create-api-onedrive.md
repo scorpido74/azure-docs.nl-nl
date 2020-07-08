@@ -8,10 +8,9 @@ ms.topic: article
 ms.date: 10/18/2016
 tags: connectors
 ms.openlocfilehash: edfbf090c3409d583cda6fd2c9957c37be5dfb7a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75378429"
 ---
 # <a name="access-and-manage-files-in-onedrive-connector-by-using-azure-logic-apps"></a>Bestanden in OneDrive connector openen en beheren met behulp van Azure Logic Apps
@@ -38,7 +37,7 @@ Voordat uw logische app toegang kan krijgen tot een service, maakt u eerst een *
 
 Een trigger is een gebeurtenis die kan worden gebruikt om de werk stroom te starten die is gedefinieerd in een logische app. Hiermee wordt de service ' Poll ' geactiveerd met een interval en frequentie die u wilt. Meer [informatie over triggers](../logic-apps/logic-apps-overview.md#logic-app-concepts).
 
-1. Typ `onedrive` in de ontwerp functie voor logische apps om een lijst van de triggers op te halen:  
+1. Typ in de ontwerp functie voor logische apps `onedrive` om een lijst van de triggers op te halen:  
 
    ![](./media/connectors-create-api-onedrive/onedrive-1.png)
 
@@ -66,7 +65,7 @@ Een actie is een bewerking die wordt uitgevoerd door de werk stroom die is gedef
 
 2. Kies **een actie toevoegen**.
 
-3. Typ `onedrive` in het zoekvak om een lijst met alle beschik bare acties op te halen.
+3. Typ in het zoekvak `onedrive` om een lijst met alle beschik bare acties op te halen.
 
    ![](./media/connectors-create-api-onedrive/onedrive-actions.png) 
 

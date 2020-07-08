@@ -12,16 +12,15 @@ ms.date: 03/27/2018
 ms.author: jingwang
 robots: noindex
 ms.openlocfilehash: 8ffaee75154fd5fe025bdb683c89f16799d6e86b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "74926156"
 ---
 # <a name="add-fault-tolerance-in-copy-activity-by-skipping-incompatible-rows"></a>Fout tolerantie in Kopieer activiteit toevoegen door incompatibele rijen over te slaan
 
-> [!div class="op_single_selector" title1="Selecteer de versie van Data Factory service die u gebruikt:"]
-> * [Versie 1](data-factory-copy-activity-fault-tolerance.md)
+> [!div class="op_single_selector" title1="Selecteer de versie van de Data Factory-service die u gebruikt:"]
+> * [Versie 1:](data-factory-copy-activity-fault-tolerance.md)
 > * [Versie 2 (huidige versie)](../copy-activity-fault-tolerance.md)
 
 > [!NOTE]
@@ -37,7 +36,7 @@ De Kopieer activiteit ondersteunt drie scenario's voor het detecteren, overs Laa
 
 - **Incompatibiliteit tussen het gegevenstype van de bron en het systeemeigen gegevenstype van de sink**
 
-    Bijvoorbeeld: gegevens uit een CSV-bestand in de Blob-opslag kopiëren naar een SQL database met een schema definitie die drie typen kolommen van het type **int** bevat. De rijen met het CSV-bestand die numerieke gegevens bevatten `123,456,789` , zoals worden gekopieerd naar het sink-archief. De rijen met niet-numerieke waarden, zoals `123,456,abc` gedetecteerd als incompatibel, worden echter overgeslagen.
+    Bijvoorbeeld: gegevens uit een CSV-bestand in de Blob-opslag kopiëren naar een SQL database met een schema definitie die drie typen kolommen van het type **int** bevat. De rijen met het CSV-bestand die numerieke gegevens bevatten, zoals `123,456,789` worden gekopieerd naar het sink-archief. De rijen met niet-numerieke waarden, zoals `123,456,abc` gedetecteerd als incompatibel, worden echter overgeslagen.
 
 - **Het aantal kolommen tussen de bron en de sink komt niet overeen**
 
@@ -71,17 +70,17 @@ In het volgende voor beeld wordt een JSON-definitie geboden voor het overs laan 
 
 | Eigenschap | Beschrijving | Toegestane waarden | Vereist |
 | --- | --- | --- | --- |
-| **enableSkipIncompatibleRow** | Het overs laan van incompatibele rijen tijdens het kopiëren inschakelen of niet. | True<br/>False (standaard) | Nee |
-| **redirectIncompatibleRowSettings** | Een groep eigenschappen die kan worden opgegeven wanneer u de niet-compatibele rijen wilt vastleggen. | &nbsp; | Nee |
-| **linkedServiceName** | De gekoppelde service van Azure Storage om het logboek op te slaan dat de overgeslagen rijen bevat. | De naam van een gekoppelde [opslag](data-factory-azure-blob-connector.md#azure-storage-linked-service) -of [azurestoragesas zijn](data-factory-azure-blob-connector.md#azure-storage-sas-linked-service) -service, die verwijst naar het opslag exemplaar dat u wilt gebruiken om het logboek bestand op te slaan. | Nee |
-| **programmapad** | Het pad naar het logboek bestand dat de overgeslagen rijen bevat. | Geef het pad op naar de Blob-opslag die u wilt gebruiken om de niet-compatibele gegevens te registreren. Als u geen pad opgeeft, maakt de service een container voor u. | Nee |
+| **enableSkipIncompatibleRow** | Het overs laan van incompatibele rijen tijdens het kopiëren inschakelen of niet. | True<br/>False (standaard) | No |
+| **redirectIncompatibleRowSettings** | Een groep eigenschappen die kan worden opgegeven wanneer u de niet-compatibele rijen wilt vastleggen. | &nbsp; | No |
+| **linkedServiceName** | De gekoppelde service van Azure Storage om het logboek op te slaan dat de overgeslagen rijen bevat. | De naam van een gekoppelde [opslag](data-factory-azure-blob-connector.md#azure-storage-linked-service) -of [azurestoragesas zijn](data-factory-azure-blob-connector.md#azure-storage-sas-linked-service) -service, die verwijst naar het opslag exemplaar dat u wilt gebruiken om het logboek bestand op te slaan. | No |
+| **programmapad** | Het pad naar het logboek bestand dat de overgeslagen rijen bevat. | Geef het pad op naar de Blob-opslag die u wilt gebruiken om de niet-compatibele gegevens te registreren. Als u geen pad opgeeft, maakt de service een container voor u. | No |
 
 ## <a name="monitoring"></a>Bewaking
 Nadat het uitvoeren van de Kopieer activiteit is voltooid, kunt u het aantal overgeslagen rijen bekijken in de sectie bewaking:
 
 ![Monitor heeft incompatibele rijen overgeslagen](./media/data-factory-copy-activity-fault-tolerance/skip-incompatible-rows-monitoring.png)
 
-Als u configureert om de niet-compatibele rijen te registreren, kunt u het logboek bestand vinden op dit `https://[your-blob-account].blob.core.windows.net/[path-if-configured]/[copy-activity-run-id]/[auto-generated-GUID].csv` pad: in het logboek bestand ziet u de rijen die zijn overgeslagen en de hoofd oorzaak van de incompatibiliteit.
+Als u configureert om de niet-compatibele rijen te registreren, kunt u het logboek bestand vinden op dit pad: `https://[your-blob-account].blob.core.windows.net/[path-if-configured]/[copy-activity-run-id]/[auto-generated-GUID].csv` in het logboek bestand ziet u de rijen die zijn overgeslagen en de hoofd oorzaak van de incompatibiliteit.
 
 Zowel de oorspronkelijke gegevens als de bijbehorende fout worden geregistreerd in het bestand. Een voor beeld van de inhoud van het logboek bestand is als volgt:
 ```

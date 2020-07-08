@@ -13,15 +13,14 @@ ms.date: 01/10/2018
 ms.author: jingwang
 robots: noindex
 ms.openlocfilehash: e5d2c6b0460c3a7566adb17601aceb57e57f4d0b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "74931790"
 ---
 # <a name="move-data-from-db2-by-using-azure-data-factory-copy-activity"></a>Gegevens van DB2 verplaatsen met behulp van Azure Data Factory Kopieer activiteit
-> [!div class="op_single_selector" title1="Selecteer de versie van Data Factory service die u gebruikt:"]
-> * [Versie 1](data-factory-onprem-db2-connector.md)
+> [!div class="op_single_selector" title1="Selecteer de versie van de Data Factory-service die u gebruikt:"]
+> * [Versie 1:](data-factory-onprem-db2-connector.md)
 > * [Versie 2 (huidige versie)](../connector-db2.md)
 
 > [!NOTE]
@@ -80,14 +79,14 @@ De volgende tabel geeft een lijst van de JSON-eigenschappen die specifiek zijn v
 
 | Eigenschap | Beschrijving | Vereist |
 | --- | --- | --- |
-| **voert** |Deze eigenschap moet worden ingesteld op **OnPremisesDb2**. |Ja |
-| **naam** |De naam van de DB2-Server. |Ja |
-| **enddatabase** |De naam van de DB2-Data Base. |Ja |
-| **schema** |De naam van het schema in de DB2-Data Base. Deze eigenschap is hoofdletter gevoelig. |Nee |
-| **authenticationType** |Het type verificatie dat wordt gebruikt om verbinding te maken met de DB2-Data Base. De mogelijke waarden zijn: anoniem, basis en Windows. |Ja |
-| **gebruikers** |De naam voor het gebruikers account als u basis-of Windows-verificatie gebruikt. |Nee |
-| **wachtwoord** |Het wacht woord voor het gebruikers account. |Nee |
-| **gatewayName** |De naam van de gateway die de Data Factory-service moet gebruiken om verbinding te maken met de on-premises DB2-Data Base. |Ja |
+| **type** |Deze eigenschap moet worden ingesteld op **OnPremisesDb2**. |Yes |
+| **naam** |De naam van de DB2-Server. |Yes |
+| **enddatabase** |De naam van de DB2-Data Base. |Yes |
+| **schema** |De naam van het schema in de DB2-Data Base. Deze eigenschap is hoofdletter gevoelig. |No |
+| **authenticationType** |Het type verificatie dat wordt gebruikt om verbinding te maken met de DB2-Data Base. De mogelijke waarden zijn: anoniem, basis en Windows. |Yes |
+| **gebruikers** |De naam voor het gebruikers account als u basis-of Windows-verificatie gebruikt. |No |
+| **wachtwoord** |Het wacht woord voor het gebruikers account. |No |
+| **gatewayName** |De naam van de gateway die de Data Factory-service moet gebruiken om verbinding te maken met de on-premises DB2-Data Base. |Yes |
 
 ## <a name="dataset-properties"></a>Eigenschappen van gegevensset
 Zie het artikel [gegevens sets maken](data-factory-create-datasets.md) voor een lijst met de secties en eigenschappen die beschikbaar zijn voor het definiëren van gegevens sets. Secties, zoals **structuur**, **Beschik baarheid**en het **beleid** voor een gegevensset-JSON, zijn vergelijkbaar voor alle typen gegevens sets (Azure SQL, Azure Blob Storage, Azure-tabel opslag, enzovoort).
@@ -310,14 +309,14 @@ De volgende toewijzingen worden gebruikt wanneer Kopieer activiteit de gegevens 
 | SmallInt |Int16 |
 | Geheel getal |Int32 |
 | BigInt |Int64 |
-| Realistische |Enkel |
-| Double |Double |
-| Drijvend |Double |
+| Realistische |Enkelvoudig |
+| Dubbel |Dubbel |
+| Float |Dubbel |
 | Decimal |Decimal |
 | DecimalFloat |Decimal |
 | Numeriek |Decimal |
 | Date |DateTime |
-| Time |TimeSpan |
+| Tijd |TimeSpan |
 | Tijdstempel |DateTime |
 | Xml |Byte [] |
 | Char |Tekenreeks |
@@ -336,14 +335,14 @@ De volgende toewijzingen worden gebruikt wanneer Kopieer activiteit de gegevens 
 | SmallInt |Int16 |
 | Geheel getal |Int32 |
 | BigInt |Int64 |
-| Realistische |Enkel |
-| Double |Double |
-| Drijvend |Double |
+| Realistische |Enkelvoudig |
+| Dubbel |Dubbel |
+| Float |Dubbel |
 | Decimal |Decimal |
 | DecimalFloat |Decimal |
 | Numeriek |Decimal |
 | Date |DateTime |
-| Time |TimeSpan |
+| Tijd |TimeSpan |
 | Tijdstempel |DateTime |
 | Xml |Byte [] |
 | Char |Tekenreeks |

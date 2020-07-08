@@ -7,10 +7,9 @@ author: bwren
 ms.author: bwren
 ms.date: 08/16/2018
 ms.openlocfilehash: a394fee7178b2e3e167c8bd905ab175b25d1d813
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75397475"
 ---
 # <a name="work-with-strings-in-azure-monitor-log-queries"></a>Werken met teken reeksen in Azure Monitor-logboek query's
@@ -27,7 +26,7 @@ Elk teken in een teken reeks heeft een index nummer, afhankelijk van de locatie.
 
 
 ## <a name="strings-and-escaping-them"></a>Teken reeksen en Escapes
-Teken reeks waarden worden verpakt met één of dubbele aanhalings tekens. Back slash\\() wordt gebruikt om tekens naar het volgende teken te escapen, zoals \t voor Tab, \n voor nieuwe regel \" en het aanhalings teken zelf.
+Teken reeks waarden worden verpakt met één of dubbele aanhalings tekens. Back slash ( \\ ) wordt gebruikt om tekens naar het volgende teken te escapen, zoals \t voor Tab, \n voor nieuwe regel en \" het aanhalings teken zelf.
 
 ```Kusto
 print "this is a 'string' literal in double \" quotes"
@@ -37,7 +36,7 @@ print "this is a 'string' literal in double \" quotes"
 print 'this is a "string" literal in single \' quotes'
 ```
 
-Als u wilt\\voor komen dat "" als escape teken fungeert,\@voegt u "" toe als voor voegsel voor de teken reeks:
+Als u wilt voor komen dat " \\ " als escape teken fungeert, voegt \@ u "" toe als voor voegsel voor de teken reeks:
 
 ```Kusto
 print @"C:\backslash\not\escaped\with @ prefix"
@@ -46,46 +45,46 @@ print @"C:\backslash\not\escaped\with @ prefix"
 
 ## <a name="string-comparisons"></a>Teken reeks vergelijkingen
 
-Operator       |Beschrijving                         |Hoofdletter gevoelig|Voor beeld (opbrengst `true`)
+Operator       |Beschrijving                         |Hoofdletter gevoelig|Voor beeld (opbrengst `true` )
 ---------------|------------------------------------|--------------|-----------------------
-`==`           |Is gelijk aan                              |Ja           |`"aBc" == "aBc"`
-`!=`           |Niet gelijk aan                          |Ja           |`"abc" != "ABC"`
-`=~`           |Is gelijk aan                              |Nee            |`"abc" =~ "ABC"`
-`!~`           |Niet gelijk aan                          |Nee            |`"aBc" !~ "xyz"`
-`has`          |Aan de rechter kant is een hele term aan de linkerkant |Nee|`"North America" has "america"`
-`!has`         |Rechts aan de rechter kant is geen volledige term aan de linkerkant       |Nee            |`"North America" !has "amer"` 
-`has_cs`       |Aan de rechter kant is een hele term aan de linkerkant |Ja|`"North America" has_cs "America"`
-`!has_cs`      |Rechts aan de rechter kant is geen volledige term aan de linkerkant       |Ja            |`"North America" !has_cs "amer"` 
-`hasprefix`    |Rechts aan de rechter kant is een voor voegsel van de term aan de linkerkant         |Nee            |`"North America" hasprefix "ame"`
-`!hasprefix`   |Rechts aan de rechter kant is geen term voorvoegsel in links     |Nee            |`"North America" !hasprefix "mer"` 
-`hasprefix_cs`    |Rechts aan de rechter kant is een voor voegsel van de term aan de linkerkant         |Ja            |`"North America" hasprefix_cs "Ame"`
-`!hasprefix_cs`   |Rechts aan de rechter kant is geen term voorvoegsel in links     |Ja            |`"North America" !hasprefix_cs "CA"` 
-`hassuffix`    |Rechts aan de rechter kant is een term achtervoegsel aan de linkerkant         |Nee            |`"North America" hassuffix "ica"`
-`!hassuffix`   |Rechts aan de rechter kant is geen term achtervoegsel aan de linkerkant     |Nee            |`"North America" !hassuffix "americ"`
-`hassuffix_cs`    |Rechts aan de rechter kant is een term achtervoegsel aan de linkerkant         |Ja            |`"North America" hassuffix_cs "ica"`
-`!hassuffix_cs`   |Rechts aan de rechter kant is geen term achtervoegsel aan de linkerkant     |Ja            |`"North America" !hassuffix_cs "icA"`
-`contains`     |Aan de rechter kant vindt u een subreeks van links  |Nee            |`"FabriKam" contains "BRik"`
-`!contains`    |Aan de rechter kant komt niet aan de linkerkant           |Nee            |`"Fabrikam" !contains "xyz"`
-`contains_cs`   |Aan de rechter kant vindt u een subreeks van links  |Ja           |`"FabriKam" contains_cs "Kam"`
-`!contains_cs`  |Aan de rechter kant komt niet aan de linkerkant           |Ja           |`"Fabrikam" !contains_cs "Kam"`
-`startswith`   |Aan de rechter kant is een eerste subreeks van links aan de linkerkant|Nee            |`"Fabrikam" startswith "fab"`
-`!startswith`  |Rechts aan de rechter kant is geen eerste subreeks van links aan de linkerkant|Nee        |`"Fabrikam" !startswith "kam"`
-`startswith_cs`   |Aan de rechter kant is een eerste subreeks van links aan de linkerkant|Ja            |`"Fabrikam" startswith_cs "Fab"`
-`!startswith_cs`  |Rechts aan de rechter kant is geen eerste subreeks van links aan de linkerkant|Ja        |`"Fabrikam" !startswith_cs "fab"`
-`endswith`     |Rechts aan de rechter kant is een afsluitende subreeks van links|Nee             |`"Fabrikam" endswith "Kam"`
-`!endswith`    |Rechts aan de rechter kant is geen afsluitende subreeks van links aan de linkerkant|Nee         |`"Fabrikam" !endswith "brik"`
-`endswith_cs`     |Rechts aan de rechter kant is een afsluitende subreeks van links|Ja             |`"Fabrikam" endswith "Kam"`
-`!endswith_cs`    |Rechts aan de rechter kant is geen afsluitende subreeks van links aan de linkerkant|Ja         |`"Fabrikam" !endswith "brik"`
-`matches regex`|links van de rechter kant bevat een overeenkomst voor rechts        |Ja           |`"Fabrikam" matches regex "b.*k"`
-`in`           |Is gelijk aan een van de elementen       |Ja           |`"abc" in ("123", "345", "abc")`
-`!in`          |Is niet gelijk aan een van de elementen   |Ja           |`"bca" !in ("123", "345", "abc")`
+`==`           |Is gelijk aan                              |Yes           |`"aBc" == "aBc"`
+`!=`           |Niet gelijk aan                          |Yes           |`"abc" != "ABC"`
+`=~`           |Is gelijk aan                              |No            |`"abc" =~ "ABC"`
+`!~`           |Niet gelijk aan                          |No            |`"aBc" !~ "xyz"`
+`has`          |Aan de rechter kant is een hele term aan de linkerkant |No|`"North America" has "america"`
+`!has`         |Rechts aan de rechter kant is geen volledige term aan de linkerkant       |No            |`"North America" !has "amer"` 
+`has_cs`       |Aan de rechter kant is een hele term aan de linkerkant |Yes|`"North America" has_cs "America"`
+`!has_cs`      |Rechts aan de rechter kant is geen volledige term aan de linkerkant       |Yes            |`"North America" !has_cs "amer"` 
+`hasprefix`    |Rechts aan de rechter kant is een voor voegsel van de term aan de linkerkant         |No            |`"North America" hasprefix "ame"`
+`!hasprefix`   |Rechts aan de rechter kant is geen term voorvoegsel in links     |No            |`"North America" !hasprefix "mer"` 
+`hasprefix_cs`    |Rechts aan de rechter kant is een voor voegsel van de term aan de linkerkant         |Yes            |`"North America" hasprefix_cs "Ame"`
+`!hasprefix_cs`   |Rechts aan de rechter kant is geen term voorvoegsel in links     |Yes            |`"North America" !hasprefix_cs "CA"` 
+`hassuffix`    |Rechts aan de rechter kant is een term achtervoegsel aan de linkerkant         |No            |`"North America" hassuffix "ica"`
+`!hassuffix`   |Rechts aan de rechter kant is geen term achtervoegsel aan de linkerkant     |No            |`"North America" !hassuffix "americ"`
+`hassuffix_cs`    |Rechts aan de rechter kant is een term achtervoegsel aan de linkerkant         |Yes            |`"North America" hassuffix_cs "ica"`
+`!hassuffix_cs`   |Rechts aan de rechter kant is geen term achtervoegsel aan de linkerkant     |Yes            |`"North America" !hassuffix_cs "icA"`
+`contains`     |Aan de rechter kant vindt u een subreeks van links  |No            |`"FabriKam" contains "BRik"`
+`!contains`    |Aan de rechter kant komt niet aan de linkerkant           |No            |`"Fabrikam" !contains "xyz"`
+`contains_cs`   |Aan de rechter kant vindt u een subreeks van links  |Yes           |`"FabriKam" contains_cs "Kam"`
+`!contains_cs`  |Aan de rechter kant komt niet aan de linkerkant           |Yes           |`"Fabrikam" !contains_cs "Kam"`
+`startswith`   |Aan de rechter kant is een eerste subreeks van links aan de linkerkant|No            |`"Fabrikam" startswith "fab"`
+`!startswith`  |Rechts aan de rechter kant is geen eerste subreeks van links aan de linkerkant|No        |`"Fabrikam" !startswith "kam"`
+`startswith_cs`   |Aan de rechter kant is een eerste subreeks van links aan de linkerkant|Yes            |`"Fabrikam" startswith_cs "Fab"`
+`!startswith_cs`  |Rechts aan de rechter kant is geen eerste subreeks van links aan de linkerkant|Yes        |`"Fabrikam" !startswith_cs "fab"`
+`endswith`     |Rechts aan de rechter kant is een afsluitende subreeks van links|No             |`"Fabrikam" endswith "Kam"`
+`!endswith`    |Rechts aan de rechter kant is geen afsluitende subreeks van links aan de linkerkant|No         |`"Fabrikam" !endswith "brik"`
+`endswith_cs`     |Rechts aan de rechter kant is een afsluitende subreeks van links|Yes             |`"Fabrikam" endswith "Kam"`
+`!endswith_cs`    |Rechts aan de rechter kant is geen afsluitende subreeks van links aan de linkerkant|Yes         |`"Fabrikam" !endswith "brik"`
+`matches regex`|links van de rechter kant bevat een overeenkomst voor rechts        |Yes           |`"Fabrikam" matches regex "b.*k"`
+`in`           |Is gelijk aan een van de elementen       |Yes           |`"abc" in ("123", "345", "abc")`
+`!in`          |Is niet gelijk aan een van de elementen   |Yes           |`"bca" !in ("123", "345", "abc")`
 
 
 ## <a name="countof"></a>countof
 
 Telt het aantal exemplaren van een subtekenreeks in een teken reeks. Kan teken reeksen overeenkomen of regex gebruiken. Niet-overeenkomende teken reeks overeenkomsten kunnen overlappen terwijl regex-overeenkomsten niet zijn toegestaan.
 
-### <a name="syntax"></a>Syntaxis
+### <a name="syntax"></a>Syntax
 ```
 countof(text, search [, kind])
 ```
@@ -93,9 +92,9 @@ countof(text, search [, kind])
 ### <a name="arguments"></a>Opmerkingen
 - `text`-De invoer teken reeks 
 - `search`-Teken reeks of reguliere expressie die in tekst moet worden gezocht.
-- `kind` - _normale_ | _regex_ (standaard: normaal).
+- `kind` - _normaal_  |  _regex_ (standaard: normaal).
 
-### <a name="returns"></a>Retourneert
+### <a name="returns"></a>Retouren
 
 Het aantal keren dat de zoek teken reeks in de container kan worden gevonden. Niet-overeenkomende teken reeks overeenkomsten kunnen overlappen terwijl regex-overeenkomsten niet zijn toegestaan.
 
@@ -137,7 +136,7 @@ extract(regex, captureGroup, text [, typeLiteral])
 - `text`-Een teken reeks die moet worden gezocht.
 - `typeLiteral`-Een optioneel type letterlijke waarde (bijvoorbeeld typeof (Long)). Als deze wordt vermeld, wordt de geëxtraheerde subtekenreeks geconverteerd naar dit type.
 
-### <a name="returns"></a>Retourneert
+### <a name="returns"></a>Retouren
 De subtekenreeks die overeenkomt met de aangegeven captureGroup van de opname groep, optioneel geconverteerd naar typeLiteral.
 Als er geen overeenkomst is, of als het type conversie mislukt, retourneert u null.
 
@@ -174,7 +173,7 @@ print Duration_seconds =  extract("Duration=([0-9.]+)", 1, Trace, typeof(real)) 
 - *IsEmpty* retourneert True als het argument een lege teken reeks of null is (Zie ook *IsNull*).
 - *isnotempty* retourneert ' True ' als het argument geen lege teken reeks of null is (Zie ook *isnotnull*). alias: de *neiging*.
 
-### <a name="syntax"></a>Syntaxis
+### <a name="syntax"></a>Syntax
 
 ```Kusto
 isempty(value)
@@ -200,7 +199,7 @@ Heartbeat | where isnotempty(ComputerIP) | take 1  // return 1 Heartbeat record 
 
 Hiermee wordt een URL gesplitst in de onderdelen (protocol, host, poort enzovoort) en wordt een Dictionary-object geretourneerd dat de onderdelen als teken reeksen bevat.
 
-### <a name="syntax"></a>Syntaxis
+### <a name="syntax"></a>Syntax
 
 ```
 parseurl(urlstring)
@@ -243,7 +242,7 @@ replace(regex, rewrite, input_text)
 - `rewrite`-De vervangende regex voor een overeenkomst die is gemaakt door de overeenkomende regex. Gebruik \ 0 om te verwijzen naar de volledige overeenkomst, \ 1 voor de eerste vastleg groep, \ 2, enzovoort voor volgende opname groepen.
 - `input_text`-De invoer teken reeks waarnaar moet worden gezocht.
 
-### <a name="returns"></a>Retourneert
+### <a name="returns"></a>Retouren
 De tekst na het vervangen van alle treffers van regex met evaluaties van herschrijven. Overeenkomsten overlappen elkaar niet.
 
 ### <a name="examples"></a>Voorbeelden
@@ -266,7 +265,7 @@ Activiteit                                        |Geplaatst
 
 Splitst een opgegeven teken reeks volgens een opgegeven scheidings teken en retourneert een matrix van de resulterende subtekenreeksen.
 
-### <a name="syntax"></a>Syntaxis
+### <a name="syntax"></a>Syntax
 ```
 split(source, delimiter [, requestedIndex])
 ```
@@ -293,7 +292,7 @@ print split("aabbcc", "bb");        // result: ["aa","cc"]
 
 Voegt teken reeks argumenten samen (ondersteunt 1-16-argumenten).
 
-### <a name="syntax"></a>Syntaxis
+### <a name="syntax"></a>Syntax
 ```
 strcat("string1", "string2", "string3")
 ```
@@ -308,7 +307,7 @@ print strcat("hello", " ", "world") // result: "hello world"
 
 Retourneert de lengte van een teken reeks.
 
-### <a name="syntax"></a>Syntaxis
+### <a name="syntax"></a>Syntax
 ```
 strlen("text_to_evaluate")
 ```
@@ -323,7 +322,7 @@ print strlen("hello")   // result: 5
 
 Hiermee wordt een subtekenreeks geëxtraheerd uit een bepaalde bron teken reeks, beginnend bij de opgegeven index. Optioneel: de lengte van de aangevraagde subtekenreeks kan worden opgegeven.
 
-### <a name="syntax"></a>Syntaxis
+### <a name="syntax"></a>Syntax
 ```
 substring(source, startingIndex [, length])
 ```
@@ -347,7 +346,7 @@ print substring("ABCD", 0, 2);  // result: "AB"
 
 Converteert een opgegeven teken reeks naar een kleine letter of een hoofd letters.
 
-### <a name="syntax"></a>Syntaxis
+### <a name="syntax"></a>Syntax
 ```
 tolower("value")
 toupper("value")

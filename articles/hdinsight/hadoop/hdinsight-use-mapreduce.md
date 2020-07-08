@@ -9,10 +9,9 @@ ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 12/06/2019
 ms.openlocfilehash: 238f37cc1e8cbc8d3260693181d6e54ac5f592f7
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75435712"
 ---
 # <a name="use-mapreduce-in-apache-hadoop-on-hdinsight"></a>MapReduce gebruiken in Apache Hadoop in HDInsight
@@ -21,13 +20,13 @@ Meer informatie over het uitvoeren van MapReduce-taken op HDInsight-clusters.
 
 ## <a name="example-data"></a>Voorbeeldgegevens
 
-HDInsight biedt diverse voor beelden van gegevens sets, die worden opgeslagen `/example/data` in `/HdiSamples` de map en. Deze directory's bevinden zich in de standaard opslag voor uw cluster. In dit document gebruiken we het `/example/data/gutenberg/davinci.txt` bestand. Dit bestand bevat de notebooks van Leonardo da Vinci.
+HDInsight biedt diverse voor beelden van gegevens sets, die worden opgeslagen in de `/example/data` `/HdiSamples` map en. Deze directory's bevinden zich in de standaard opslag voor uw cluster. In dit document gebruiken we het `/example/data/gutenberg/davinci.txt` bestand. Dit bestand bevat de notebooks van Leonardo da Vinci.
 
 ## <a name="example-mapreduce"></a>Voor beeld MapReduce
 
-Het HDInsight-cluster bevat een voor beeld van een toepassing met het aantal woorden MapReduce. Dit voor beeld bevindt zich `/example/jars/hadoop-mapreduce-examples.jar` op de standaard opslag voor uw cluster.
+Het HDInsight-cluster bevat een voor beeld van een toepassing met het aantal woorden MapReduce. Dit voor beeld bevindt zich op `/example/jars/hadoop-mapreduce-examples.jar` de standaard opslag voor uw cluster.
 
-De volgende Java-code is de bron van de MapReduce-toepassing die `hadoop-mapreduce-examples.jar` zich in het bestand bevindt:
+De volgende Java-code is de bron van de MapReduce-toepassing die zich in het bestand bevindt `hadoop-mapreduce-examples.jar` :
 
 ```java
 package org.apache.hadoop.examples;

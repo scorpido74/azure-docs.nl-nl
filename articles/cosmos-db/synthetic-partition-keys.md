@@ -7,10 +7,9 @@ ms.date: 12/03/2019
 author: markjbrown
 ms.author: mjbrown
 ms.openlocfilehash: e8786c2d6e93c18a5bf9856a5555d6b528f842c5
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75441223"
 ---
 # <a name="create-a-synthetic-partition-key"></a>Een synthetische partitiesleutel maken
@@ -19,7 +18,7 @@ Het is de best practice om een partitie sleutel te hebben met veel verschillende
 
 ## <a name="concatenate-multiple-properties-of-an-item"></a>Meerdere eigenschappen van een item samen voegen
 
-U kunt een partitie sleutel maken door meerdere eigenschaps waarden samen te voegen tot `partitionKey` één kunst matige eigenschap. Deze sleutels worden synthetische sleutels genoemd. Bekijk bijvoorbeeld het volgende voorbeeld document:
+U kunt een partitie sleutel maken door meerdere eigenschaps waarden samen te voegen tot één kunst matige `partitionKey` eigenschap. Deze sleutels worden synthetische sleutels genoemd. Bekijk bijvoorbeeld het volgende voorbeeld document:
 
 ```JavaScript
 {
@@ -28,7 +27,7 @@ U kunt een partitie sleutel maken door meerdere eigenschaps waarden samen te voe
 }
 ```
 
-Voor het vorige document is één optie om/deviceId of/date in te stellen als de partitie sleutel. Gebruik deze optie als u uw container wilt partitioneren op basis van de apparaat-ID of-datum. Een andere optie is om deze twee waarden samen te voegen `partitionKey` in een synthetische eigenschap die wordt gebruikt als de partitie sleutel.
+Voor het vorige document is één optie om/deviceId of/date in te stellen als de partitie sleutel. Gebruik deze optie als u uw container wilt partitioneren op basis van de apparaat-ID of-datum. Een andere optie is om deze twee waarden samen te voegen in een synthetische `partitionKey` eigenschap die wordt gebruikt als de partitie sleutel.
 
 ```JavaScript
 {
@@ -44,15 +43,15 @@ In realtime scenario's kunt u duizenden items in een Data Base hebben. In plaats
 
 Een andere mogelijke strategie om de werk belasting gelijkmatiger te verdelen is om een wille keurig getal toe te voegen aan het einde van de waarde van de partitie sleutel. Wanneer u items op deze manier distribueert, kunt u parallelle schrijf bewerkingen uitvoeren op meerdere partities.
 
-Een voor beeld is een partitie sleutel die een datum voor stelt. U kunt een wille keurig getal tussen 1 en 400 kiezen en dit samen voegen als een achtervoegsel voor de datum. Deze methode resulteert in de partitie sleutel waarden `2018-08-09.1`zoals`2018-08-09.2`,, enzovoort, tot en `2018-08-09.400`met. Omdat u de partitie sleutel wille keurig maakt, worden de schrijf bewerkingen op de container op elke dag gelijkmatig verdeeld over meerdere partities. Deze methode resulteert in een betere parallellisme en een hogere door voer.
+Een voor beeld is een partitie sleutel die een datum voor stelt. U kunt een wille keurig getal tussen 1 en 400 kiezen en dit samen voegen als een achtervoegsel voor de datum. Deze methode resulteert in de partitie sleutel waarden zoals  `2018-08-09.1` , `2018-08-09.2` , enzovoort, tot en met  `2018-08-09.400` . Omdat u de partitie sleutel wille keurig maakt, worden de schrijf bewerkingen op de container op elke dag gelijkmatig verdeeld over meerdere partities. Deze methode resulteert in een betere parallellisme en een hogere door voer.
 
 ## <a name="use-a-partition-key-with-pre-calculated-suffixes"></a>Een partitie sleutel met vooraf berekende achtervoegsels gebruiken 
 
 De strategie voor wille keurige achtervoegsels kan de schrijf doorvoer aanzienlijk verbeteren, maar het is moeilijk om een specifiek item te lezen. U weet niet welke achtervoegsel waarde is gebruikt toen u het item schreef. Gebruik de vooraf berekende achtervoegsels strategie om het gemakkelijker te maken om afzonderlijke items te lezen. In plaats van een wille keurig getal te gebruiken om de items te verdelen over de partities, gebruikt u een getal dat wordt berekend op basis van iets dat u wilt opvragen.
 
-Bekijk het vorige voor beeld, waarbij een container een datum als de partitie sleutel gebruikt. Stel nu dat elk item een `Vehicle-Identification-Number` kenmerk (`VIN`) heeft dat we willen gebruiken. Stel dat u vaak query's uitvoert om items te vinden op de `VIN`, naast datum. Voordat uw toepassing het item naar de container schrijft, kan het een hash-achtervoegsel berekenen op basis van het chassis nummer en dit toevoegen aan de datum van de partitie sleutel. Tijdens de berekening wordt mogelijk een getal tussen 1 en 400 gegenereerd dat gelijkmatig is gedistribueerd. Dit resultaat is vergelijkbaar met de resultaten die door de strategie methode wille keurig achtervoegsel worden geproduceerd. De waarde van de partitie sleutel is vervolgens de datum die wordt samengevoegd met het berekende resultaat.
+Bekijk het vorige voor beeld, waarbij een container een datum als de partitie sleutel gebruikt. Stel nu dat elk item een  `Vehicle-Identification-Number` kenmerk ( `VIN` ) heeft dat we willen gebruiken. Stel dat u vaak query's uitvoert om items te vinden op de `VIN` , naast datum. Voordat uw toepassing het item naar de container schrijft, kan het een hash-achtervoegsel berekenen op basis van het chassis nummer en dit toevoegen aan de datum van de partitie sleutel. Tijdens de berekening wordt mogelijk een getal tussen 1 en 400 gegenereerd dat gelijkmatig is gedistribueerd. Dit resultaat is vergelijkbaar met de resultaten die door de strategie methode wille keurig achtervoegsel worden geproduceerd. De waarde van de partitie sleutel is vervolgens de datum die wordt samengevoegd met het berekende resultaat.
 
-Met deze strategie worden de schrijf bewerkingen gelijkmatig verdeeld over de waarden van de partitie sleutel en over de partities. U kunt eenvoudig een bepaald item en datum lezen, omdat u de partitie sleutel waarde voor een specifieke `Vehicle-Identification-Number`kunt berekenen. Het voor deel van deze methode is dat u voor komt dat u een enkele Hot-partitie sleutel maakt, dat wil zeggen een partitie sleutel die alle werk belasting neemt. 
+Met deze strategie worden de schrijf bewerkingen gelijkmatig verdeeld over de waarden van de partitie sleutel en over de partities. U kunt eenvoudig een bepaald item en datum lezen, omdat u de partitie sleutel waarde voor een specifieke kunt berekenen `Vehicle-Identification-Number` . Het voor deel van deze methode is dat u voor komt dat u een enkele Hot-partitie sleutel maakt, dat wil zeggen een partitie sleutel die alle werk belasting neemt. 
 
 ## <a name="next-steps"></a>Volgende stappen
 

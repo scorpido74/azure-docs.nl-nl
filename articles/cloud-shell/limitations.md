@@ -15,10 +15,9 @@ ms.topic: article
 ms.date: 02/15/2018
 ms.author: damaerte
 ms.openlocfilehash: 092dccab82326bb9983f11ff64fe50aee7b1084d
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "74951476"
 ---
 # <a name="limitations-of-azure-cloud-shell"></a>Beperkingen van Azure Cloud Shell
@@ -33,7 +32,7 @@ De computer die uw Cloud Shell-sessie levert, is tijdelijk en wordt gerecycled n
 
 * Bij gekoppelde opslag worden alleen wijzigingen in de `$Home` Directory bewaard.
 * Azure-bestands shares kunnen alleen worden gekoppeld vanuit uw [toegewezen regio](persisting-shell-storage.md#mount-a-new-clouddrive).
-  * Voer `env` in bash de opdracht uit om uw regio in `ACC_LOCATION`te stellen als.
+  * Voer in bash `env` de opdracht uit om uw regio in te stellen als `ACC_LOCATION` .
 
 ### <a name="browser-support"></a>Browserondersteuning
 
@@ -45,7 +44,7 @@ Cloud Shell ondersteunt de nieuwste versies van micro soft Edge, micro soft Inte
 
 ### <a name="for-a-given-user-only-one-shell-can-be-active"></a>Voor een bepaalde gebruiker kan slechts één shell actief zijn
 
-Gebruikers kunnen slechts één type shell tegelijk starten, hetzij **bash** of **Power shell**. Het is echter mogelijk dat er meerdere exemplaren van bash of Power shell tegelijk worden uitgevoerd. Als u het menu verwisselt tussen bash of Power shell, worden Cloud Shell opnieuw opgestart, waardoor bestaande sessies worden beëindigd. U kunt ook bash uitvoeren in Power shell door te typen `bash`en Power shell in bash uit te voeren door te `pwsh`typen.
+Gebruikers kunnen slechts één type shell tegelijk starten, hetzij **bash** of **Power shell**. Het is echter mogelijk dat er meerdere exemplaren van bash of Power shell tegelijk worden uitgevoerd. Als u het menu verwisselt tussen bash of Power shell, worden Cloud Shell opnieuw opgestart, waardoor bestaande sessies worden beëindigd. U kunt ook bash uitvoeren in Power shell door te typen `bash` en Power shell in bash uit te voeren door te typen `pwsh` .
 
 ### <a name="usage-limits"></a>Gebruiks limieten
 
@@ -65,7 +64,7 @@ Let op wanneer u het bestand bewerkt. bashrc of Power shell $PROFILE. Dit kan le
 
 ### <a name="azuread-module-name"></a>`AzureAD`module naam
 
-De `AzureAD` module naam is momenteel `AzureAD.Standard.Preview`, de module biedt dezelfde functionaliteit.
+De `AzureAD` module naam is momenteel `AzureAD.Standard.Preview` , de module biedt dezelfde functionaliteit.
 
 ### <a name="sqlserver-module-functionality"></a>`SqlServer`module functionaliteit
 
@@ -73,11 +72,11 @@ De `SqlServer` module die is opgenomen in Cloud Shell heeft alleen ondersteuning
 
 ### <a name="default-file-location-when-created-from-azure-drive"></a>Standaard bestands locatie bij het maken van een Azure-station:
 
-Met Power shell-cmdlets kunnen gebruikers geen bestanden maken in het Azure:-station. Wanneer gebruikers nieuwe bestanden maken met andere hulpprogram ma's, zoals vim of nano, worden de bestanden standaard opgeslagen op `$HOME` de. 
+Met Power shell-cmdlets kunnen gebruikers geen bestanden maken in het Azure:-station. Wanneer gebruikers nieuwe bestanden maken met andere hulpprogram ma's, zoals vim of nano, worden de bestanden standaard opgeslagen op de `$HOME` . 
 
 ### <a name="gui-applications-are-not-supported"></a>GUI-toepassingen worden niet ondersteund
 
-Als de gebruiker een opdracht uitvoert waarmee een Windows-dialoog venster wordt gemaakt, ziet u een fout bericht zoals: `Unable to load DLL 'IEFRAME.dll': The specified module could not be found. (Exception from HRESULT: 0x8007007E)`.
+Als de gebruiker een opdracht uitvoert waarmee een Windows-dialoog venster wordt gemaakt, ziet u een fout bericht zoals: `Unable to load DLL 'IEFRAME.dll': The specified module could not be found. (Exception from HRESULT: 0x8007007E)` .
 
 ### <a name="large-gap-after-displaying-progress-bar"></a>Grote tussen ruimte na het weer geven van de voortgangs balk
 

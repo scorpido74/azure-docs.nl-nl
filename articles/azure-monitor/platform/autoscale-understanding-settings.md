@@ -5,10 +5,9 @@ ms.topic: conceptual
 ms.date: 12/18/2017
 ms.subservice: autoscale
 ms.openlocfilehash: 9a2b94208de7ce490a0e7acfbb71175b4a7c846e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75364302"
 ---
 # <a name="understand-autoscale-settings"></a>Inzicht in instellingen voor automatisch schalen
@@ -85,14 +84,14 @@ Ter illustratie van het instellings schema voor automatisch schalen wordt de vol
 }
 ```
 
-| Sectie | Elementnaam | Beschrijving |
+| Sectie | Elementnaam | Description |
 | --- | --- | --- |
 | Instelling | Id | De resource-ID van de instelling voor automatisch schalen. Instellingen voor automatisch schalen zijn een Azure Resource Manager resource. |
-| Instelling | name | De naam van de instelling voor automatisch schalen. |
+| Instelling | naam | De naam van de instelling voor automatisch schalen. |
 | Instelling | location | De locatie van de instelling voor automatisch schalen. Deze locatie kan afwijken van de locatie van de resource die wordt geschaald. |
 | properties | targetResourceUri | De resource-ID van de resource die wordt geschaald. U kunt slechts één instelling voor automatisch schalen per resource hebben. |
 | properties | profielen | Een instelling voor automatisch schalen bestaat uit een of meer profielen. Telkens wanneer de engine voor automatisch schalen wordt uitgevoerd, wordt er één profiel uitgevoerd. |
-| profiel | name | De naam van het profiel. U kunt een wille keurige naam kiezen die u helpt bij het identificeren van het profiel. |
+| profiel | naam | De naam van het profiel. U kunt een wille keurige naam kiezen die u helpt bij het identificeren van het profiel. |
 | profiel | Capaciteit. maximum | De Maxi maal toegestane capaciteit. Het zorgt ervoor dat automatisch schalen tijdens het uitvoeren van dit profiel uw resource boven dit nummer niet kan schalen. |
 | profiel | Capaciteit. minimum | De toegestane minimum capaciteit. Het zorgt ervoor dat automatisch schalen tijdens het uitvoeren van dit profiel de resource onder dit nummer niet kan schalen. |
 | profiel | Capaciteit. standaard | Als er een probleem is opgetreden bij het lezen van de bron metriek (in dit geval de CPU van ' vmss1 ') en de huidige capaciteit lager is dan de standaard waarde, schaalt automatisch schalen naar de standaard waarde. Hiermee wordt de beschik baarheid van de resource gegarandeerd. Als de huidige capaciteit al hoger is dan de standaard capaciteit, wordt automatisch schalen niet geschaald in. |

@@ -6,10 +6,9 @@ ms.topic: conceptual
 ms.date: 11/27/2017
 ms.author: rapatchi
 ms.openlocfilehash: 0a243c1cd0ab0dcb93a1cc6169c89ba18606f346
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75451672"
 ---
 # <a name="azure-service-fabric-java-client-apis"></a>Api's van Azure Service Fabric Java-client
@@ -62,7 +61,7 @@ Volg de onderstaande stappen om Service Fabric Java-client code te genereren met
     autorest --input-file=servicefabric.json --java --output-folder=java-rest-api-code --namespace=servicefabricrest
     ```
    
-   Met de volgende opdracht ``servicefabric.json`` wordt een specificatie bestand gebruikt als invoer en wordt Java ``java-rest-api-     code`` -client code in map gegenereerd en ``servicefabricrest`` wordt de code in de naam ruimte Inge sloten. Na deze stap vindt u twee mappen ``models``en twee ``implementation`` bestanden ``ServiceFabricClientAPIs.java`` die in de ``package-info.java`` ``java-rest-api-code`` map zijn gegenereerd.
+   Met de volgende opdracht wordt een ``servicefabric.json`` specificatie bestand gebruikt als invoer en wordt Java-client code in ``java-rest-api-     code`` map gegenereerd en wordt de code in de ``servicefabricrest`` naam ruimte Inge sloten. Na deze stap vindt u twee mappen ``models`` ``implementation`` en twee bestanden die ``ServiceFabricClientAPIs.java`` ``package-info.java`` in de map zijn gegenereerd ``java-rest-api-code`` .
 
 
 ## <a name="include-and-use-the-generated-client-in-your-project"></a>De gegenereerde client in uw project insluiten en gebruiken
@@ -114,14 +113,14 @@ Volg de onderstaande stappen om Service Fabric Java-client code te genereren met
         ```
 
 ## <a name="understanding-the-generated-code"></a>Uitleg over de gegenereerde code
-Voor elke API vindt u vier overbelasting van de implementatie. Als er optionele para meters zijn, kunt u nog vier variaties vinden, inclusief deze optionele para meters. Denk bijvoorbeeld aan de API ``removeReplica``.
+Voor elke API vindt u vier overbelasting van de implementatie. Als er optionele para meters zijn, kunt u nog vier variaties vinden, inclusief deze optionele para meters. Denk bijvoorbeeld aan de API ``removeReplica`` .
  1. **openbaar void removeReplica (String nodenaam, UUID partitionId, String replicaId, Boolean forceRemove, lange time-out)**
     * Dit is de synchrone variant van de API-aanroep van removeReplica
- 2. **open bare\<ServiceFuture void> RemoveReplicaAsync (String nodenaam, uuid PartitionId, String ReplicaID, Boolean ForceRemove, Long timeout, finale\<ServiceCallback void> ServiceCallback)**
+ 2. **open bare ServiceFuture \<Void> removeReplicaAsync (String nodenaam, uuid partitionId, String replicaId, Boolean forceRemove, Long timeout, Final ServiceCallback \<Void> ServiceCallback)**
     * Deze variant van de API-aanroep kan worden gebruikt als u asynchrone programmering wilt gebruiken en retour aanroepen wilt gebruiken
- 3. **openbaar waarneembaar\<void> RemoveReplicaAsync (String nodenaam, uuid PartitionId, String replicaId)**
+ 3. **openbaar waarneem bare \<Void> removeReplicaAsync (String nodenaam, uuid partitionId, String replicaId)**
     * Deze variant van de API-aanroep kan worden gebruikt als u een reactieve asynchrone programmering wilt gebruiken
- 4. **openbaar waarneem bare\<ServiceResponse\<void>> removeReplicaWithServiceResponseAsync (String nodenaam, uuid partitionId, String replicaId)**
+ 4. **openbaar waarneem bare \<ServiceResponse\<Void>> removeReplicaWithServiceResponseAsync (String nodenaam, uuid partitionId, String replicaId)**
     * Deze variant van de API-aanroep kan worden gebruikt als u asynchrone programmering wilt gebruiken en wilt omgaan met onbewerkt rest-antwoord
 
 ## <a name="next-steps"></a>Volgende stappen

@@ -8,10 +8,9 @@ ms.topic: article
 ms.date: 07/05/2017
 ms.author: tagore
 ms.openlocfilehash: fa48953e5e86ffa758fe556b7fb1072be9d74647
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75360307"
 ---
 # <a name="how-to-configure-and-run-startup-tasks-for-a-cloud-service"></a>Opstart taken voor een Cloud service configureren en uitvoeren
@@ -27,7 +26,7 @@ Opstart taken zijn acties die worden uitgevoerd voordat de rollen beginnen en wo
 
 Omgevings variabelen geven informatie door aan een opstart taak en lokale opslag kan worden gebruikt om gegevens uit een opstart taak door te geven. Een omgevings variabele kan bijvoorbeeld het pad opgeven naar een programma dat u wilt installeren, en bestanden kunnen worden geschreven naar lokale opslag die vervolgens later door uw rollen kan worden gelezen.
 
-De opstart taak kan informatie en fouten registreren in de map die is opgegeven door de omgevings variabele **temp** . Tijdens de opstart taak wordt de omgevings variabele **temp** omgezet in de *map C\\:\\resources\\Temp [GUID]. [ Rolnaam]\\RoleTemp* map wanneer deze wordt uitgevoerd in de Cloud.
+De opstart taak kan informatie en fouten registreren in de map die is opgegeven door de omgevings variabele **temp** . Tijdens de opstart taak wordt de omgevings variabele **temp** omgezet in de *map C: \\ resources \\ temp \\ [GUID]. [ Rolnaam] \\ RoleTemp* map wanneer deze wordt uitgevoerd in de Cloud.
 
 Opstarttaken kunnen ook verschillende keren worden uitgevoerd tussen het opnieuw opstarten. De opstarttaak wordt bijvoorbeeld uitgevoerd telkens wanneer de rol opnieuw wordt gebruikt, en bij het opnieuw gebruiken van rollen wordt niet altijd opnieuw opgestart. Opstart taken moeten zodanig worden geschreven dat ze meerdere keren zonder problemen kunnen worden uitgevoerd.
 
@@ -68,7 +67,7 @@ In dit voor beeld wordt een omgevings variabele, **MyVersionNumber**, gemaakt vo
 </Startup>
 ```
 
-In het volgende voor beeld schrijft het batch bestand **Startup. cmd** de regel ' de huidige versie is 1.0.0.0 ' naar het StartupLog. txt-bestand in de map die is opgegeven door de omgevings variabele TEMP. De `EXIT /B 0` regel zorgt ervoor dat de opstart taak eindigt met een **Error level** van nul.
+In het volgende voor beeld schrijft het batch bestand **Startup. cmd** de regel ' de huidige versie is 1.0.0.0 ' naar het StartupLog.txt-bestand in de map die is opgegeven door de omgevings variabele TEMP. De `EXIT /B 0` regel zorgt ervoor dat de opstart taak eindigt met een **Error level** van nul.
 
 ```cmd
 ECHO The current version is %MyVersionNumber% >> "%TEMP%\StartupLog.txt" 2>&1
@@ -76,7 +75,7 @@ EXIT /B 0
 ```
 
 > [!NOTE]
-> In Visual Studio moet de eigenschap **kopiëren naar uitvoermap** voor het batch bestand voor opstarten altijd worden ingesteld op **kopiëren** om ervoor te zorgen dat uw opstart batch bestand correct is geïmplementeerd in uw project op Azure (**AppRoot\\bin** voor webrollen en **AppRoot** voor werk rollen).
+> In Visual Studio moet de eigenschap **kopiëren naar uitvoermap** voor het batch bestand voor opstarten altijd worden ingesteld op **kopiëren** om ervoor te zorgen dat uw opstart batch bestand correct is geïmplementeerd in uw project op Azure (**AppRoot \\ bin** voor webrollen en **AppRoot** voor werk rollen).
 > 
 > 
 
@@ -87,7 +86,7 @@ Hieronder worden de kenmerken van het element **Task** in het bestand [ServiceDe
 
 * De opdracht, met optionele opdracht regel parameters, waarmee de opstart taak wordt gestart.
 * Vaak is dit de bestands naam van een. cmd-of. bat batch-bestand.
-* De taak is relatief ten opzichte van de AppRoot\\bin-map voor de implementatie. Omgevings variabelen worden niet uitgebreid bij het bepalen van het pad en het bestand van de taak. Als omgevings uitbreiding vereist is, kunt u een klein. cmd-script maken dat de opstart taak aanroept.
+* De taak is relatief ten opzichte van de AppRoot \\ bin-map voor de implementatie. Omgevings variabelen worden niet uitgebreid bij het bepalen van het pad en het bestand van de taak. Als omgevings uitbreiding vereist is, kunt u een klein. cmd-script maken dat de opstart taak aanroept.
 * Dit kan een console toepassing zijn of een batch bestand waarmee een [Power shell-script](cloud-services-startup-tasks-common.md#create-a-powershell-startup-task)wordt gestart.
 
 **executionContext** : Hiermee geeft u het bevoegdheden niveau voor de opstart taak op. Het bevoegdheden niveau kan worden beperkt of verhoogd:
@@ -112,8 +111,8 @@ Hieronder worden de kenmerken van het element **Task** in het bestand [ServiceDe
   > 
   > 
   
-    Om ervoor te zorgen dat uw batch bestand eindigt met een **Error level** van nul, `EXIT /B 0` voert u de opdracht uit aan het einde van het batch-bestand proces.
-* **achtergrondbitmap**  
+    Om ervoor te zorgen dat uw batch bestand eindigt met een **Error level** van nul, voert u de opdracht `EXIT /B 0` uit aan het einde van het batch-bestand proces.
+* **background**  
   Taken worden asynchroon uitgevoerd, parallel met het opstarten van de rol.
 * **vormen**  
   Taken worden asynchroon uitgevoerd, parallel met het opstarten van de rol. Het belangrijkste verschil tussen een voor **grond** en een **achtergrond** taak is dat een **voorgrond** taak voor komt dat de rol wordt gerecycled of afgesloten totdat de taak is beëindigd. Voor de **achtergrond** taken gelden deze beperkingen niet.

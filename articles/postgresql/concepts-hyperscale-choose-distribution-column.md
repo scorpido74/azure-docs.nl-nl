@@ -8,10 +8,9 @@ ms.subservice: hyperscale-citus
 ms.topic: conceptual
 ms.date: 05/06/2019
 ms.openlocfilehash: 8ced9767d81affceef851820ee587f4f3dd24deb
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "74975666"
 ---
 # <a name="choose-distribution-columns-in-azure-database-for-postgresql--hyperscale-citus"></a>Kies distributie kolommen in Azure Database for PostgreSQL – grootschalige (Citus)
@@ -28,18 +27,18 @@ De architectuur met meerdere tenants maakt gebruik van een hiërarchische indeli
 
 Grootschalige (Citus) inspecteert query's om te zien welke Tenant-ID ze hebben en vindt de overeenkomende tabel Shard. De query wordt doorgestuurd naar één worker-knoop punt dat de Shard bevat. Het uitvoeren van een query waarbij alle relevante gegevens op hetzelfde knoop punt worden geplaatst, wordt de locatie ' uplocation ' genoemd.
 
-In het volgende diagram ziet u de co-locatie in het gegevens model met meerdere tenants. Het bevat twee tabellen, accounts en campagnes, die elk worden `account_id`gedistribueerd door. De gearceerde vakken vertegenwoordigen Shards. Groene Shards worden samen op één werk knooppunt opgeslagen en blauwe Shards worden opgeslagen op een ander worker-knoop punt. U ziet hoe een koppelings query tussen accounts en campagnes alle benodigde gegevens op één knoop punt heeft wanneer beide tabellen zijn beperkt tot dezelfde account\_-id.
+In het volgende diagram ziet u de co-locatie in het gegevens model met meerdere tenants. Het bevat twee tabellen, accounts en campagnes, die elk worden gedistribueerd door `account_id` . De gearceerde vakken vertegenwoordigen Shards. Groene Shards worden samen op één werk knooppunt opgeslagen en blauwe Shards worden opgeslagen op een ander worker-knoop punt. U ziet hoe een koppelings query tussen accounts en campagnes alle benodigde gegevens op één knoop punt heeft wanneer beide tabellen zijn beperkt tot dezelfde account \_ -id.
 
 ![Multi tenant-co-locatie](media/concepts-hyperscale-choosing-distribution-column/multi-tenant-colocation.png)
 
-Als u dit ontwerp wilt Toep assen in uw eigen schema, identificeert u wat een Tenant in uw toepassing vormt. Algemene instanties zijn onder andere bedrijf, account, organisatie of klant. De naam van de kolom is bijvoorbeeld `company_id` of `customer_id`. Onderzoek elk van uw query's en vraag uzelf, zou het werken als er aanvullende WHERE-componenten zijn die alle tabellen met dezelfde Tenant-ID kunnen beperken.
+Als u dit ontwerp wilt Toep assen in uw eigen schema, identificeert u wat een Tenant in uw toepassing vormt. Algemene instanties zijn onder andere bedrijf, account, organisatie of klant. De naam van de kolom is bijvoorbeeld `company_id` of `customer_id` . Onderzoek elk van uw query's en vraag uzelf, zou het werken als er aanvullende WHERE-componenten zijn die alle tabellen met dezelfde Tenant-ID kunnen beperken.
 Query's in het model met meerdere tenants zijn scoped voor een Tenant. Query's over de verkoop of de inventaris zijn bijvoorbeeld binnen een bepaald archief.
 
 #### <a name="best-practices"></a>Aanbevolen procedures
 
--   **Gedistribueerde tabellen partitioneren op\_basis van een gemeen schappelijke Tenant-id kolom.** In een SaaS-toepassing waarbij tenants bijvoorbeeld bedrijven zijn, is de Tenant\_-id waarschijnlijk de bedrijfs\_-id.
+-   **Gedistribueerde tabellen partitioneren op basis van een gemeen schappelijke Tenant \_ -id kolom.** In een SaaS-toepassing waarbij tenants bijvoorbeeld bedrijven zijn, is de Tenant \_ -id waarschijnlijk de bedrijfs \_ -id.
 -   **Converteer kleine tabellen met meerdere tenants naar verwijzings tabellen.** Wanneer meerdere tenants een kleine tabel met gegevens delen, distribueer deze dan als een verwijzings tabel.
--   **Filter voor alle toepassings query's beperken op\_Tenant-id.** Elke query moet informatie voor één Tenant tegelijk aanvragen.
+-   **Filter voor alle toepassings query's beperken op Tenant \_ -id.** Elke query moet informatie voor één Tenant tegelijk aanvragen.
 
 Lees de [multi tenant-zelf studie](./tutorial-design-database-hyperscale-multi-tenant.md) voor een voor beeld van hoe u dit type toepassing kunt bouwen.
 

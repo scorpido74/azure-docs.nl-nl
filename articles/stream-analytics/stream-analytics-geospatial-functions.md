@@ -8,10 +8,9 @@ ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 12/06/2018
 ms.openlocfilehash: f47f34b60c858bb9a0feafd25176e4a811046630
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75426231"
 ---
 # <a name="introduction-to-stream-analytics-geospatial-functions"></a>Inleiding tot Stream Analytics georuimtelijke functies
@@ -32,7 +31,7 @@ Stream Analytics query taal heeft zeven ingebouwde georuimtelijke functies: **Cr
 
 De `CreateLineString` functie accepteert punten en retourneert een geojson-Lines Tring, die als een lijn op een kaart kan worden getekend. U moet ten minste twee punten hebben om een Lines Tring te maken. De Lines Tring punten worden in de aangegeven volg orde verbonden.
 
-De volgende query maakt `CreateLineString` gebruik van om een Lines Tring te maken met behulp van drie punten. Het eerste punt wordt gemaakt op basis van streaming-invoer gegevens, terwijl de andere twee hand matig worden gemaakt.
+De volgende query maakt gebruik `CreateLineString` van om een Lines Tring te maken met behulp van drie punten. Het eerste punt wordt gemaakt op basis van streaming-invoer gegevens, terwijl de andere twee hand matig worden gemaakt.
 
 ```SQL 
 SELECT  
@@ -59,7 +58,7 @@ Ga voor meer informatie naar de [CreateLineString](https://docs.microsoft.com/st
 
 De `CreatePoint` functie accepteert een breedte graad en lengte graad en retourneert een geojson-punt, dat op een kaart kan worden getekend. Uw breedte graad en lengte graad moeten een **float** -gegevens type zijn.
 
-In het volgende voor beeld `CreatePoint` wordt een-query gebruikt om een punt te maken met behulp van de breedte graad en de lengte graad van streaming-invoer gegevens.
+In het volgende voor beeld wordt een-query gebruikt `CreatePoint` om een punt te maken met behulp van de breedte graad en de lengte graad van streaming-invoer gegevens.
 
 ```SQL 
 SELECT  
@@ -84,9 +83,9 @@ Ga voor meer informatie naar de [CreatePoint](https://docs.microsoft.com/stream-
 
 ## <a name="createpolygon"></a>CreatePolygon
 
-De `CreatePolygon` functie accepteert punten en retourneert een geojson-veelhoek record. De volg orde van de punten moet volgen op de juiste ring richting of linksom. Stel dat u vanaf het ene punt naar het andere wilt lopen in de volg orde waarin ze zijn gedeclareerd. Het midden van de veelhoek is de gehele tijd aan uw linkerkant.
+De `CreatePolygon` functie accepteert punten en retourneert een GEOjson-veelhoek record. De volg orde van de punten moet volgen op de juiste ring richting of linksom. Stel dat u vanaf het ene punt naar het andere wilt lopen in de volg orde waarin ze zijn gedeclareerd. Het midden van de veelhoek is de gehele tijd aan uw linkerkant.
 
-Met de volgende voorbeeld query `CreatePolygon` maakt u een veelhoek van drie punten. De eerste twee punten worden hand matig gemaakt en het laatste punt wordt gemaakt op basis van de invoer gegevens.
+Met de volgende voorbeeld query maakt `CreatePolygon` u een veelhoek van drie punten. De eerste twee punten worden hand matig gemaakt en het laatste punt wordt gemaakt op basis van de invoer gegevens.
 
 ```SQL 
 SELECT  
@@ -126,7 +125,7 @@ Ga voor meer informatie naar de [ST_DISTANCE](https://docs.microsoft.com/stream-
 ## <a name="st_overlaps"></a>ST_OVERLAPS
 De `ST_OVERLAPS` functie vergelijkt twee veelhoeken. Als de veelhoeken elkaar overlappen, retourneert de functie een 1. De functie retourneert 0 als de veelhoeken elkaar niet overlappen. 
 
-De volgende query maakt `ST_OVERLAPS` gebruik van om een gebeurtenis te genereren wanneer een gebouw zich binnen een mogelijke Flooding-zone bevindt.
+De volgende query maakt gebruik `ST_OVERLAPS` van om een gebeurtenis te genereren wanneer een gebouw zich binnen een mogelijke Flooding-zone bevindt.
 
 ```SQL
 SELECT Building.Polygon, Building.Polygon 
@@ -147,7 +146,7 @@ Ga voor meer informatie naar de [ST_OVERLAPS](https://docs.microsoft.com/stream-
 ## <a name="st_intersects"></a>ST_INTERSECTS
 De `ST_INTERSECTS` functie vergelijkt twee Lines Tring. Als de Lines Tring Intersect, retourneert de functie 1. De functie retourneert 0 als de Lines Tring niet INTERSECT.
 
-De volgende voorbeeld query wordt `ST_INTERSECTS` gebruikt om te bepalen of een paved-weg een wegsnij punt kruist.
+De volgende voorbeeld query wordt gebruikt `ST_INTERSECTS` om te bepalen of een paved-weg een wegsnij punt kruist.
 
 ```SQL 
 SELECT  
@@ -173,7 +172,7 @@ Ga voor meer informatie naar de [ST_INTERSECTS](https://docs.microsoft.com/strea
 ## <a name="st_within"></a>ST_WITHIN
 De `ST_WITHIN` functie bepaalt of een punt of veelhoek zich binnen een veelhoek bevindt. Als de veelhoek het punt of de veelhoek bevat, wordt de functie 1 geretourneerd. De functie retourneert 0 als het punt of de veelhoek zich niet in de gedeclareerde veelhoek bevindt.
 
-In de volgende voorbeeld query `ST_WITHIN` wordt gebruikt om te bepalen of het bezorgings doel punt zich binnen de opgegeven Warehouse-veelhoek bevindt.
+In de volgende voorbeeld query wordt gebruikt `ST_WITHIN` om te bepalen of het bezorgings doel punt zich binnen de opgegeven Warehouse-veelhoek bevindt.
 
 ```SQL 
 SELECT  

@@ -9,10 +9,9 @@ ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 12/17/2019
 ms.openlocfilehash: 006310f1a0efa69881bbe6d6ea4403b9c50402e6
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75435400"
 ---
 # <a name="streaming-at-scale-in-hdinsight"></a>Schaalbaar streamen in HDInsight
@@ -49,7 +48,7 @@ Er zijn voor delen voor het loskoppelen van technologieën. Kafka is bijvoorbeel
 
 ### <a name="scale-the-stream-buffering-layer"></a>De laag van de stroom buffer schalen
 
-De technologieën voor het bufferen van streams Event Hubs en Kafka beide partities gebruiken en consumenten lezen van deze partities. Het schalen van de invoer doorvoer vereist het schalen van het aantal partities en het toevoegen van partities zorgt voor een groeiende parallelle uitvoering. In Event Hubs kan het aantal partities niet worden gewijzigd na de implementatie, zodat het belang rijk is om te beginnen met de doel schaal. Met Kafka is het mogelijk om [partities toe te voegen](https://kafka.apache.org/documentation.html#basic_ops_cluster_expansion), zelfs wanneer Kafka gegevens verwerkt. Kafka biedt een hulp programma waarmee u partities opnieuw `kafka-reassign-partitions.sh`kunt toewijzen. HDInsight biedt een [hulp programma voor het herverdelen van partitie replica's](https://github.com/hdinsight/hdinsight-kafka-tools), `rebalance_rackaware.py`. Dit hulp programma roept het `kafka-reassign-partitions.sh` hulp programma op een zodanige manier aan dat elke replica zich in een afzonderlijk fout domein en een update domein bevindt, waardoor Kafka rack bewust wordt en fout tolerantie wordt verhoogd.
+De technologieën voor het bufferen van streams Event Hubs en Kafka beide partities gebruiken en consumenten lezen van deze partities. Het schalen van de invoer doorvoer vereist het schalen van het aantal partities en het toevoegen van partities zorgt voor een groeiende parallelle uitvoering. In Event Hubs kan het aantal partities niet worden gewijzigd na de implementatie, zodat het belang rijk is om te beginnen met de doel schaal. Met Kafka is het mogelijk om [partities toe te voegen](https://kafka.apache.org/documentation.html#basic_ops_cluster_expansion), zelfs wanneer Kafka gegevens verwerkt. Kafka biedt een hulp programma waarmee u partities opnieuw kunt toewijzen `kafka-reassign-partitions.sh` . HDInsight biedt een [hulp programma voor het herverdelen van partitie replica's](https://github.com/hdinsight/hdinsight-kafka-tools), `rebalance_rackaware.py` . Dit hulp programma roept het `kafka-reassign-partitions.sh` hulp programma op een zodanige manier aan dat elke replica zich in een afzonderlijk fout domein en een update domein bevindt, waardoor Kafka rack bewust wordt en fout tolerantie wordt verhoogd.
 
 ### <a name="scale-the-stream-processing-layer"></a>De laag voor stream processing schalen
 
@@ -57,7 +56,7 @@ Zowel Apache Storm als Spark-streaming ondersteunen worker-knoop punten toe te v
 
 Als u wilt profiteren van nieuwe knoop punten die zijn toegevoegd door het schalen van stormen, moet u eventuele Storm-topologieën die zijn gestart voordat de cluster grootte werd verhoogd, opnieuw verdelen. Deze herverdeling kan worden uitgevoerd met behulp van de Storm-webgebruikersinterface of de CLI. Zie de [Apache Storm-documentatie](https://storm.apache.org/documentation/Understanding-the-parallelism-of-a-Storm-topology.html)voor meer informatie.
 
-Apache Spark gebruikt drie belang rijke para meters voor het configureren van de omgeving, afhankelijk `spark.executor.instances`van `spark.executor.cores`de toepassings `spark.executor.memory`vereisten:, en. Een uitvoerder *is een proces dat wordt gestart* voor een Spark-toepassing. Een uitvoerder wordt uitgevoerd op het worker-knoop punt en is verantwoordelijk voor het uitvoeren van de taken van de toepassing. Het standaard aantal uitvoerende agents en de uitvoerings grootte voor elk cluster worden berekend op basis van het aantal worker-knoop punten en de grootte van het worker-knoop punt. Deze getallen worden opgeslagen in het `spark-defaults.conf`bestand op elk cluster hoofd knooppunt.
+Apache Spark gebruikt drie belang rijke para meters voor het configureren van de omgeving, afhankelijk van de toepassings vereisten: `spark.executor.instances` , `spark.executor.cores` en `spark.executor.memory` . Een uitvoerder *is een proces dat wordt gestart* voor een Spark-toepassing. Een uitvoerder wordt uitgevoerd op het worker-knoop punt en is verantwoordelijk voor het uitvoeren van de taken van de toepassing. Het standaard aantal uitvoerende agents en de uitvoerings grootte voor elk cluster worden berekend op basis van het aantal worker-knoop punten en de grootte van het worker-knoop punt. Deze getallen worden opgeslagen in het `spark-defaults.conf` bestand op elk cluster hoofd knooppunt.
 
 Deze drie para meters kunnen worden geconfigureerd op cluster niveau voor alle toepassingen die op het cluster worden uitgevoerd en kunnen ook voor elke afzonderlijke toepassing worden opgegeven. Zie [resources beheren voor Apache Spark-clusters](spark/apache-spark-resource-manager.md)voor meer informatie.
 

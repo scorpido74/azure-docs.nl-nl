@@ -14,10 +14,9 @@ ms.topic: article
 ms.date: 07/19/2019
 ms.author: tehnoonr
 ms.openlocfilehash: a09c15466a4a9f62b2696b087cb7ab23cc767379
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75430581"
 ---
 # <a name="failed-to-update-api-management-service-hostnames"></a>Kan de hostnamen van de API Management-service niet bijwerken
@@ -28,7 +27,7 @@ In dit artikel wordt de fout ' kan de hostnamen van de API Management-service ni
 
 Wanneer u een aangepast domein probeert toe te voegen voor uw API Management-service met behulp van een certificaat van Azure Key Vault, wordt het volgende fout bericht weer gegeven:
 
-- Kan de hostnamen van de API Management-service niet bijwerken. De aanvraag voor dehttps://vaultname.vault.azure.net/secrets/secretname/?api-version=7.0resource is mislukt met status code: verboden voor aanvraag-{1}:. Uitzonderings bericht: de bewerking heeft een ongeldige status code ' verboden ' geretourneerd.
+- Kan de hostnamen van de API Management-service niet bijwerken. De aanvraag voor de resource https://vaultname.vault.azure.net/secrets/secretname/?api-version=7.0 is mislukt met status code: verboden voor aanvraag-{1}:. Uitzonderings bericht: de bewerking heeft een ongeldige status code ' verboden ' geretourneerd.
 
 ## <a name="cause"></a>Oorzaak
 

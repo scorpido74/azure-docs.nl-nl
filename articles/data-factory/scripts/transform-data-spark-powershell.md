@@ -11,10 +11,9 @@ ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 09/12/2017
 ms.openlocfilehash: c09d0532b845472d0ccaac1ad57e3772630bb5c9
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "74932053"
 ---
 # <a name="powershell-script---transform-data-in-cloud-using-azure-data-factory"></a>Power shell-script: gegevens transformeren in de Cloud met behulp van Azure Data Factory
@@ -26,7 +25,7 @@ Met dit Power shell-voorbeeld script maakt u een pijp lijn waarmee gegevens in d
 [!INCLUDE [sample-powershell-install](../../../includes/sample-powershell-install-no-ssh-az.md)]
 
 ## <a name="prerequisites"></a>Vereisten
-* **Azure Storage-account**. Maak een python-script en een invoer bestand en upload deze naar de Azure-opslag. De uitvoer van het Spark-programma wordt opgeslagen in dit opslagaccount. Het Spark-cluster op aanvraag gebruikt hetzelfde opslagaccount als de primaire opslag.  
+* **Een Azure Storage-account**. Maak een python-script en een invoer bestand en upload deze naar de Azure-opslag. De uitvoer van het Spark-programma wordt opgeslagen in dit opslagaccount. Het Spark-cluster op aanvraag gebruikt hetzelfde opslagaccount als de primaire opslag.  
 
 ### <a name="upload-python-script-to-your-blob-storage-account"></a>Python-script uploaden naar het Blob-opslagaccount
 1. Maak een Python-bestand met de naam **WordCount_Spark.py** met de volgende inhoud: 
@@ -54,7 +53,7 @@ Met dit Power shell-voorbeeld script maakt u een pijp lijn waarmee gegevens in d
     if __name__ == "__main__":
         main()
     ```
-2. Vervang ** &lt;storageAccountName&gt; ** door de naam van uw Azure Storage-account. Sla het bestand vervolgens op. 
+2. Vervang ** &lt; storageAccountName &gt; ** door de naam van uw Azure Storage-account. Sla het bestand vervolgens op. 
 3. Maak in de Azure Blob-opslag een container met de naam **adftutorial** als deze nog niet bestaat. 
 4. Maak een map met de naam **spark**.
 5. Maak in de map **spark** een submap met de naam **script**. 
@@ -63,7 +62,7 @@ Met dit Power shell-voorbeeld script maakt u een pijp lijn waarmee gegevens in d
 
 ### <a name="upload-the-input-file"></a>Invoerbestand uploaden
 1. Maak een bestand met de naam **minecraftstory.txt** met wat tekst. In het Spark-programma wordt het aantal woorden in deze tekst geteld. 
-2. Maak een submap met de `inputfiles` naam in `spark` de map van de BLOB-container. 
+2. Maak een submap `inputfiles` met de naam in de `spark` map van de BLOB-container. 
 3. Upload de `minecraftstory.txt` naar de submap`inputfiles`. 
 
 ## <a name="sample-script"></a>Voorbeeldscript
@@ -91,8 +90,8 @@ In dit script worden de volgende opdrachten gebruikt:
 
 | Opdracht | Opmerkingen |
 |---|---|
-| [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup) | Hiermee wordt een resourcegroep gemaakt waarin alle resources worden opgeslagen. |
-| [Set-AzDataFactoryV2](/powershell/module/az.datafactory/set-Azdatafactoryv2) | Een gegevensfactory maken. |
+| [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup) | Hiermee maakt u een resourcegroep waarin alle resources worden opgeslagen. |
+| [Set-AzDataFactoryV2](/powershell/module/az.datafactory/set-Azdatafactoryv2) | Een data factory maken. |
 | [Set-AzDataFactoryV2LinkedService](/powershell/module/az.datafactory/set-Azdatafactoryv2linkedservice) | Hiermee maakt u een gekoppelde service in de data factory. Een gekoppelde service koppelt een gegevens archief of kan worden berekend op een data factory. |
 | [Set-AzDataFactoryV2Pipeline](/powershell/module/az.datafactory/set-Azdatafactoryv2pipeline) | Hiermee maakt u een pijp lijn in de data factory. Een pijp lijn bevat een of meer activiteiten die een bepaalde bewerking uitvoeren. In deze pijp lijn transformeert een Spark-activiteit gegevens door een programma uit te voeren op een Azure HDInsight Spark cluster. |
 | [Invoke-AzDataFactoryV2Pipeline](/powershell/module/az.datafactory/invoke-Azdatafactoryv2pipeline) | Hiermee maakt u een uitvoering voor de pijp lijn. Met andere woorden, de pijp lijn uitvoeren. |

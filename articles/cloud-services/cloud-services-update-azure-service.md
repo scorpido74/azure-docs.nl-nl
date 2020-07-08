@@ -8,10 +8,9 @@ ms.topic: article
 ms.date: 04/19/2017
 ms.author: tagore
 ms.openlocfilehash: 731f4e8cc8a93f33d6887f44fc8d09585e92a75a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75360341"
 ---
 # <a name="how-to-update-a-cloud-service"></a>Een Cloud service bijwerken
@@ -47,13 +46,13 @@ In de volgende tabel ziet u de wijzigingen die zijn toegestaan voor een service 
 
 | Wijzigingen die zijn toegestaan voor hosting, services en rollen | In-place update | Gefaseerd (VIP swap) | Verwijderen en opnieuw implementeren |
 | --- | --- | --- | --- |
-| Besturingssysteem |Ja |Ja |Ja |
+| Versie van besturingssysteem |Ja |Ja |Ja |
 | .NET-vertrouwens niveau |Ja |Ja |Ja |
 | Grootte van virtuele machine<sup>1</sup> |Ja<sup>2</sup> |Ja |Ja |
 | Instellingen voor lokale opslag |Meer dan<sup>2</sup> |Ja |Ja |
 | Rollen toevoegen aan of verwijderen uit een service |Ja |Ja |Ja |
 | Aantal exemplaren van een bepaalde rol |Ja |Ja |Ja |
-| Aantal of type eind punten voor een service |Ja<sup>2</sup> |Nee |Ja |
+| Aantal of type eind punten voor een service |Ja<sup>2</sup> |Nee |Yes |
 | Namen en waarden van configuratie-instellingen |Ja |Ja |Ja |
 | Waarden (maar geen namen) van configuratie-instellingen |Ja |Ja |Ja |
 | Nieuwe certificaten toevoegen |Ja |Ja |Ja |
@@ -124,7 +123,7 @@ Azure biedt flexibiliteit bij het beheer van services tijdens een update door u 
 Het terugdraaien van een update die in voortgang is, heeft de volgende gevolgen voor de implementatie:
 
 * Alle rolinstanties die nog niet zijn bijgewerkt of bijgewerkt naar de nieuwe versie, worden niet bijgewerkt of bijgewerkt, omdat deze instanties al de doel versie van de service uitvoeren.
-* Alle rolinstanties die al zijn bijgewerkt of bijgewerkt naar de nieuwe versie van het bestand met het service pakket\*(. cspkg) of het service configuratie bestand\*(. cscfg) (of beide bestanden), worden teruggezet naar de pre-upgrade versie van deze bestanden.
+* Alle rolinstanties die al zijn bijgewerkt of bijgewerkt naar de nieuwe versie van het bestand met het service pakket ( \* . cspkg) of het service configuratie \* bestand (. cscfg) (of beide bestanden), worden teruggezet naar de pre-upgrade versie van deze bestanden.
 
 Deze functie wordt uitgevoerd met de volgende functies:
 

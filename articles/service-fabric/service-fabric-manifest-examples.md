@@ -6,10 +6,9 @@ ms.topic: conceptual
 ms.date: 06/11/2018
 ms.author: pepogors
 ms.openlocfilehash: 6f44d2ddaac11545a3a3dc52fd20e02263c6ad67
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75451645"
 ---
 # <a name="service-fabric-application-and-service-manifest-examples"></a>Voor beelden van Service Fabric-toepassingen en-services
@@ -34,7 +33,7 @@ Hier volgt een index van de weer gegeven functies en de manifesten waarvan ze de
 |[Verificatie containerregister configureren](service-fabric-get-started-containers.md#configure-container-repository-authentication)|[Manifest van container toepassing](service-fabric-manifest-example-container-app.md#application-manifest)|
 |[Isolatie modus instellen](service-fabric-get-started-containers.md#configure-isolation-mode)|[Manifest van container toepassing](service-fabric-manifest-example-container-app.md#application-manifest)|
 |[Specifieke container installatie kopieën voor het besturings systeem opgeven](service-fabric-get-started-containers.md#specify-os-build-specific-container-images)|[Manifest van container toepassing](service-fabric-manifest-example-container-app.md#application-manifest)|
-|[Omgevingsvariabelen instellen](service-fabric-get-started-containers.md#configure-and-set-environment-variables)|[Container FrontEndService service-manifest](service-fabric-manifest-example-container-app.md#frontendservice-service-manifest), [container BackEndService-service manifest](service-fabric-manifest-example-container-app.md#backendservice-service-manifest)|
+|[Omgevings variabelen instellen](service-fabric-get-started-containers.md#configure-and-set-environment-variables)|[Container FrontEndService service-manifest](service-fabric-manifest-example-container-app.md#frontendservice-service-manifest), [container BackEndService-service manifest](service-fabric-manifest-example-container-app.md#backendservice-service-manifest)|
 |[Een eind punt configureren](service-fabric-get-started-containers.md#configure-communication)|[Container FrontEndService service](service-fabric-manifest-example-container-app.md#frontendservice-service-manifest)manifest, [container BackEndService service manifest](service-fabric-manifest-example-container-app.md#backendservice-service-manifest), [VotingData service-manifest](service-fabric-manifest-example-reliable-services-app.md#votingdata-service-manifest)|
 |opdrachten door geven aan de container|[Container FrontEndService-service manifest](service-fabric-manifest-example-container-app.md#frontendservice-service-manifest)|
 |[Een certificaat importeren in een container](service-fabric-securing-containers.md)|[Container FrontEndService-service manifest](service-fabric-manifest-example-container-app.md#frontendservice-service-manifest)|

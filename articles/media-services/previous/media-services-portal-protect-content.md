@@ -15,10 +15,9 @@ ms.topic: article
 ms.date: 03/19/2019
 ms.author: juliako
 ms.openlocfilehash: 0c2a9612fab6c685cbc690aa9bbc12d1c7b7b746
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/27/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "74978199"
 ---
 # <a name="configure-content-protection-policies-by-using-the-azure-portal"></a>Beveiligings beleid voor inhoud configureren met behulp van de Azure Portal
@@ -38,7 +37,7 @@ Voer de volgende stappen uit om de portal te gebruiken voor het configureren van
 
 1. Selecteer uw Media Services-account in de [Portal](https://portal.azure.com/).
 
-1. Selecteer **instellingen** > **Content Protection**.
+1. Selecteer **instellingen**  >  **Content Protection**.
 
     ![Inhoudsbeveiliging](./media/media-services-portal-content-protection/media-services-content-protection001.png)
 
@@ -90,7 +89,7 @@ Als u FairPlay-versleuteling wilt inschakelen, selecteert u **Fairplay-configura
 Als u gebruik wilt maken van dynamische versleuteling, moet u het bron bestand coderen in een set adaptieve-bitrate MP4-bestanden.
 
 ### <a name="select-an-asset-that-you-want-to-encrypt"></a>Een activum selecteren dat u wilt versleutelen
-Als u al uw assets wilt zien, selecteert u **instellingen** > **activa**.
+Als u al uw assets wilt zien, selecteert u **instellingen**  >  **activa**.
 
 ![Activa optie](./media/media-services-portal-content-protection/media-services-content-protection007.png)
 
@@ -126,7 +125,7 @@ AES Clear Key-versleuteling is ingeschakeld op alle streaming-protocollen: Smoot
 
 ## <a name="additional-notes"></a>Aanvullende opmerkingen
 
-* Widevine is een service van Google Inc. en is onderworpen aan de service voorwaarden en het privacybeleid van Google, Inc.
+* Widevine is een service van Google Inc. en is onderworpen aan de servicevoorwaarden en het privacybeleid van Google Inc.
 
 ## <a name="next-steps"></a>Volgende stappen
 [!INCLUDE [media-services-learning-paths-include](../../../includes/media-services-learning-paths-include.md)]

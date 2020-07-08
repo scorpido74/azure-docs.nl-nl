@@ -6,10 +6,9 @@ ms.topic: conceptual
 ms.date: 11/02/2017
 ms.author: vturecek
 ms.openlocfilehash: 4e485463f41cdfbadeb166ecbb3a86d4a32c1589
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75348924"
 ---
 # <a name="polymorphism-in-the-reliable-actors-framework"></a>Polymorfisme in het Reliable Actors Framework
@@ -21,7 +20,7 @@ Het Reliable Actors-Framework vereist dat u ten minste één interface definieer
 ![Interface hiërarchie voor actors van vorm][shapes-interface-hierarchy]
 
 ## <a name="types"></a>Typen
-U kunt ook een hiërarchie van actor types maken die zijn afgeleid van de basis actor klasse die door het platform wordt verschaft. In het geval van vormen is het mogelijk dat u een `Shape`basis-(C# `ShapeImpl`) of (Java) type hebt:
+U kunt ook een hiërarchie van actor types maken die zijn afgeleid van de basis actor klasse die door het platform wordt verschaft. In het geval van vormen is het mogelijk dat u een basis `Shape` -(C#) of `ShapeImpl` (Java) type hebt:
 
 ```csharp
 public abstract class Shape : Actor, IShape
@@ -40,7 +39,7 @@ public abstract class ShapeImpl extends FabricActor implements Shape
 }
 ```
 
-Subtypen van `Shape`(C#) of `ShapeImpl`(Java) kunnen methoden van de basis onderdrukken.
+Subtypen van `Shape` (C#) of `ShapeImpl` (Java) kunnen methoden van de basis onderdrukken.
 
 ```csharp
 [ActorService(Name = "Circle")]

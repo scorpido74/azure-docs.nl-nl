@@ -15,10 +15,9 @@ ms.workload: infrastructure-services
 ms.date: 8/20/2019
 ms.author: alsin
 ms.openlocfilehash: e09e08f8ba36cf576bc27551254225adee3bb0fd
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75451308"
 ---
 # <a name="enable-and-disable-the-azure-serial-console"></a>De Azure Serial console in-en uitschakelen
@@ -34,7 +33,7 @@ De seriële console kan worden uitgeschakeld voor een specifieke VM of schaalset
 ## <a name="subscription-level-enabledisable"></a>Op het niveau van het abonnement inschakelen/uitschakelen
 
 > [!NOTE]
-> Zorg ervoor dat u zich in de juiste Cloud bevindt (Azure Public Cloud, Azure U.S. Government Cloud) voordat u deze opdracht uitvoert. U kunt controleren met `az cloud list` en uw Cloud instellen met `az cloud set -n <Name of cloud>`.
+> Zorg ervoor dat u zich in de juiste Cloud bevindt (Azure Public Cloud, Azure U.S. Government Cloud) voordat u deze opdracht uitvoert. U kunt controleren met `az cloud list` en uw Cloud instellen met `az cloud set -n <Name of cloud>` .
 
 ### <a name="azure-cli"></a>Azure CLI
 

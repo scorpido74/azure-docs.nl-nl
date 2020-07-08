@@ -8,10 +8,9 @@ ms.date: 06/13/2017
 ms.author: ccompy
 ms.custom: seodec18
 ms.openlocfilehash: 6c4838e3226b91cbb5d6f86b83266a986418c120
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75430518"
 ---
 # <a name="create-an-external-app-service-environment"></a>Een externe App Service omgeving maken
@@ -40,7 +39,7 @@ Nadat u uw ASE hebt gemaakt, kunt u het volgende niet meer wijzigen:
 - Grootte van subnet
 
 > [!NOTE]
-> Wanneer u een VNet kiest en een subnet opgeeft, moet u ervoor zorgen dat het groot genoeg is om te voldoen aan toekomstige groei-en schaal behoeften. U kunt het beste een `/24` grootte van met 256-adressen aanraden.
+> Wanneer u een VNet kiest en een subnet opgeeft, moet u ervoor zorgen dat het groot genoeg is om te voldoen aan toekomstige groei-en schaal behoeften. U kunt het beste een grootte van `/24` met 256-adressen aanraden.
 >
 
 ## <a name="three-ways-to-create-an-ase"></a>Drie manieren om een ASE te maken
@@ -59,7 +58,7 @@ Het App Service plan is een container met apps. Wanneer u een app maakt in App S
 
 Een ASE maken tijdens het maken van een App Service-abonnement:
 
-1. Selecteer in de [Azure Portal](https://portal.azure.com/) **een resource** > maken**Web en mobiel** > **Web-app**.
+1. Selecteer in de [Azure Portal](https://portal.azure.com/) **een resource maken**  >  **Web en mobiel**  >  **Web-app**.
 
     ![Web-app maken][1]
 
@@ -83,13 +82,13 @@ Een ASE maken tijdens het maken van een App Service-abonnement:
 
     ![Naam van nieuw App Service plan][4]
 
-9. Geef de details op van uw virtuele Azure-netwerk. Selecteer **Nieuw maken** of **Selecteer bestaande**. De optie om een bestaand VNet te selecteren, is alleen beschikbaar als u een VNet hebt in de geselecteerde regio. Als u **Nieuw maken**selecteert, voert u een naam in voor het VNet. Er wordt een nieuw Resource Manager VNet met die naam gemaakt. Er wordt gebruikgemaakt van `192.168.250.0/23` de adres ruimte in de geselecteerde regio. Als u **bestaande selecteren**selecteert, moet u het volgende doen:
+9. Geef de details op van uw virtuele Azure-netwerk. Selecteer **Nieuw maken** of **Selecteer bestaande**. De optie om een bestaand VNet te selecteren, is alleen beschikbaar als u een VNet hebt in de geselecteerde regio. Als u **Nieuw maken**selecteert, voert u een naam in voor het VNet. Er wordt een nieuw Resource Manager VNet met die naam gemaakt. Er wordt gebruikgemaakt van de adres ruimte `192.168.250.0/23` in de geselecteerde regio. Als u **bestaande selecteren**selecteert, moet u het volgende doen:
 
     a. Selecteer het VNet-adres blok als u meer dan één hebt.
 
     b. Voer een nieuwe subnetnaam in.
 
-    c. Selecteer de grootte van het subnet. *Vergeet niet om een omvang te selecteren die groot genoeg is voor toekomstige groei van uw ASE.* We raden `/24`aan dat 128-adressen heeft en een ASE met maximale grootte kunnen verwerken. We raden `/28`u aan om bijvoorbeeld alleen 16 adressen beschikbaar te stellen. Infra structuur gebruikt ten minste zeven adressen en Azure-netwerken gebruiken een andere 5. In een `/28` subnet hebt u een maximum schaal van vier app service exemplaren plannen voor een externe ASE en slechts 3 app service plan instanties voor een ILB ASE.
+    c. Selecteer de grootte van het subnet. *Vergeet niet om een omvang te selecteren die groot genoeg is voor toekomstige groei van uw ASE.* We raden `/24` aan dat 128-adressen heeft en een ASE met maximale grootte kunnen verwerken. We raden u `/28` aan om bijvoorbeeld alleen 16 adressen beschikbaar te stellen. Infra structuur gebruikt ten minste zeven adressen en Azure-netwerken gebruiken een andere 5. In een `/28` subnet hebt u een maximum schaal van vier app service exemplaren plannen voor een externe ASE en slechts 3 app service plan instanties voor een ILB ASE.
 
     d. Selecteer het IP-adres bereik van het subnet.
 
@@ -97,7 +96,7 @@ Een ASE maken tijdens het maken van een App Service-abonnement:
 
 ## <a name="create-an-ase-and-a-linux-web-app-using-a-custom-docker-image-together"></a>Een ASE en een Linux-web-app maken met behulp van een aangepaste docker-installatie kopie
 
-1. Maak in [Azure portal](https://portal.azure.com/)de Azure Portal **een resource** > **Web en mobiel** > **Web App for containers.** 
+1. Maak in [Azure portal](https://portal.azure.com/)de Azure Portal **een resource**  >  **Web en mobiel**  >  **Web App for containers.** 
 
     ![Web-app maken][7]
 
@@ -119,13 +118,13 @@ Een ASE maken tijdens het maken van een App Service-abonnement:
 
     ![Naam van nieuw App Service plan][4]
 
-1. Geef de details op van uw virtuele Azure-netwerk. Selecteer **Nieuw maken** of **Selecteer bestaande**. De optie om een bestaand VNet te selecteren, is alleen beschikbaar als u een VNet hebt in de geselecteerde regio. Als u **Nieuw maken**selecteert, voert u een naam in voor het VNet. Er wordt een nieuw Resource Manager VNet met die naam gemaakt. Er wordt gebruikgemaakt van `192.168.250.0/23` de adres ruimte in de geselecteerde regio. Als u **bestaande selecteren**selecteert, moet u het volgende doen:
+1. Geef de details op van uw virtuele Azure-netwerk. Selecteer **Nieuw maken** of **Selecteer bestaande**. De optie om een bestaand VNet te selecteren, is alleen beschikbaar als u een VNet hebt in de geselecteerde regio. Als u **Nieuw maken**selecteert, voert u een naam in voor het VNet. Er wordt een nieuw Resource Manager VNet met die naam gemaakt. Er wordt gebruikgemaakt van de adres ruimte `192.168.250.0/23` in de geselecteerde regio. Als u **bestaande selecteren**selecteert, moet u het volgende doen:
 
     a. Selecteer het VNet-adres blok als u meer dan één hebt.
 
     b. Voer een nieuwe subnetnaam in.
 
-    c. Selecteer de grootte van het subnet. *Vergeet niet om een omvang te selecteren die groot genoeg is voor toekomstige groei van uw ASE.* We raden `/24`aan dat 128-adressen heeft en een ASE met maximale grootte kunnen verwerken. We raden `/28`u aan om bijvoorbeeld alleen 16 adressen beschikbaar te stellen. Infra structuur gebruikt ten minste zeven adressen en Azure-netwerken gebruiken een andere 5. In een `/28` subnet hebt u een maximum schaal van vier app service exemplaren plannen voor een externe ASE en slechts 3 app service plan instanties voor een ILB ASE.
+    c. Selecteer de grootte van het subnet. *Vergeet niet om een omvang te selecteren die groot genoeg is voor toekomstige groei van uw ASE.* We raden `/24` aan dat 128-adressen heeft en een ASE met maximale grootte kunnen verwerken. We raden u `/28` aan om bijvoorbeeld alleen 16 adressen beschikbaar te stellen. Infra structuur gebruikt ten minste zeven adressen en Azure-netwerken gebruiken een andere 5. In een `/28` subnet hebt u een maximum schaal van vier app service exemplaren plannen voor een externe ASE en slechts 3 app service plan instanties voor een ILB ASE.
 
     d. Selecteer het IP-adres bereik van het subnet.
 
@@ -141,7 +140,7 @@ Een ASE maken tijdens het maken van een App Service-abonnement:
 
 Als u een zelfstandige ASE maakt, heeft deze niets. Een lege ASE maakt nog steeds een maandelijkse kosten voor de infra structuur. Volg deze stappen om een ASE te maken met een ILB of om een ASE in een eigen resource groep te maken. Nadat u uw ASE hebt gemaakt, kunt u er apps in maken met behulp van het normale proces. Selecteer de nieuwe ASE als de locatie.
 
-1. Zoek in de Azure Marketplace naar **app service Environment**of selecteer **een resource** > maken**Web mobiele** > **app service Environment**. 
+1. Zoek in de Azure Marketplace naar **app service Environment**of selecteer **een resource maken**  >  **Web mobiele**  >  **app service Environment**. 
 
 1. Voer de naam van uw ASE in. Deze naam wordt gebruikt voor de apps die in de ASE zijn gemaakt. Als de naam *mynewdemoase*is, is de naam van het subdomein *. mynewdemoase.p.azurewebsites.net*. Als u een app met de naam *mytestapp*maakt, is deze beschikbaar op mytestapp.mynewdemoase.p.azurewebsites.net. U kunt geen witruimte gebruiken in de naam. Als u hoofd letters gebruikt, is de domein naam de totale kleine letters versie van de naam. Als u een ILB gebruikt, wordt uw ASE-naam niet gebruikt in uw subdomein, maar wordt in plaats daarvan expliciet aangegeven tijdens het maken van ASE.
 

@@ -8,10 +8,9 @@ ms.topic: conceptual
 ms.date: 03/02/2018
 tags: connectors
 ms.openlocfilehash: b67d2e860e8c69f6f2f43441144ef2f60ed3a104
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75378446"
 ---
 # <a name="monitor-and-manage-your-github-repo-by-using-azure-logic-apps"></a>Bewaak en beheer uw GitHub-opslag plaats met behulp van Azure Logic Apps
@@ -26,7 +25,7 @@ Als u de GitHub-connector in een logische app wilt gebruiken, moet u eerst een *
 
 | Eigenschap | Vereist | Beschrijving | 
 | -------- | -------- | ----------- | 
-| Token | Ja | Geef uw GitHub-referenties op. |
+| Token | Yes | Geef uw GitHub-referenties op. |
 
 Nadat u de verbinding hebt gemaakt, kunt u de acties uitvoeren en Luis teren naar de triggers die in dit artikel worden beschreven.
 

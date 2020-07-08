@@ -10,10 +10,9 @@ ms.topic: article
 ms.date: 09/06/2016
 ms.author: tagore
 ms.openlocfilehash: 76cdffed813fd182980b36f848e0ae42f3226539
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75386541"
 ---
 # <a name="enable-diagnostics-in-azure-cloud-services-using-powershell"></a>Diagnostische gegevens inschakelen in azure Cloud Services met behulp van Power shell
@@ -37,7 +36,7 @@ $workerrole_diagconfig = New-AzureServiceDiagnosticsExtensionConfig -Role "Worke
 New-AzureDeployment -ServiceName $service_name -Slot Production -Package $service_package -Configuration $service_config -ExtensionConfiguration @($webrole_diagconfig,$workerrole_diagconfig)
 ```
 
-Als in het configuratie bestand voor diagnostische `StorageAccount` gegevens een element met de naam van een opslag `New-AzureServiceDiagnosticsExtensionConfig` account is opgegeven, gebruikt de cmdlet automatisch dat opslag account. Om dit te laten werken, moet het opslag account zich in hetzelfde abonnement benemen als de Cloud service die wordt geïmplementeerd.
+Als in het configuratie bestand voor diagnostische gegevens een `StorageAccount` element met de naam van een opslag account is opgegeven, `New-AzureServiceDiagnosticsExtensionConfig` gebruikt de cmdlet automatisch dat opslag account. Om dit te laten werken, moet het opslag account zich in hetzelfde abonnement benemen als de Cloud service die wordt geïmplementeerd.
 
 Vanuit Azure SDK 2,6 gaat u naar de extensie configuratie bestanden die worden gegenereerd door de MSBuild-doel uitvoer, de naam van het opslag account op basis van de diagnostische configuratie teken reeks die is opgegeven in het service configuratie bestand (. cscfg). In het onderstaande script ziet u hoe u de extensie configuratie bestanden kunt parseren vanuit de uitvoer van de publicatie doel en de uitbrei ding diagnostische gegevens configureren voor elke rol bij het implementeren van de Cloud service.
 
@@ -80,9 +79,9 @@ foreach ($extPath in $diagnosticsExtensions)
 New-AzureDeployment -ServiceName $service_name -Slot Production -Package $service_package -Configuration $service_config -ExtensionConfiguration $diagnosticsConfigurations
 ```
 
-Visual Studio Online maakt gebruik van een vergelijk bare methode voor automatische implementaties van Cloud Services met de uitbrei ding voor diagnostische gegevens. Zie [Publish-AzureCloudDeployment. ps1](https://github.com/Microsoft/azure-pipelines-tasks/blob/master/Tasks/AzureCloudPowerShellDeploymentV1/Publish-AzureCloudDeployment.ps1) voor een volledig voor beeld.
+Visual Studio Online maakt gebruik van een vergelijk bare methode voor automatische implementaties van Cloud Services met de uitbrei ding voor diagnostische gegevens. Zie [Publish-AzureCloudDeployment.ps1](https://github.com/Microsoft/azure-pipelines-tasks/blob/master/Tasks/AzureCloudPowerShellDeploymentV1/Publish-AzureCloudDeployment.ps1) voor een volledig voor beeld.
 
-Als er `StorageAccount` geen is opgegeven in de diagnostische configuratie, moet u de para meter *StorageAccountName* door geven aan de cmdlet. Als de para meter *StorageAccountName* is opgegeven, gebruikt de cmdlet altijd het opslag account dat is opgegeven in de para meter en niet de-naam die is opgegeven in het configuratie bestand voor diagnostische gegevens.
+Als er geen `StorageAccount` is opgegeven in de diagnostische configuratie, moet u de para meter *StorageAccountName* door geven aan de cmdlet. Als de para meter *StorageAccountName* is opgegeven, gebruikt de cmdlet altijd het opslag account dat is opgegeven in de para meter en niet de-naam die is opgegeven in het configuratie bestand voor diagnostische gegevens.
 
 Als het diagnostische opslag account zich in een ander abonnement dan de Cloud service bevindt, moet u de para meters *StorageAccountName* en *StorageAccountKey* expliciet door geven aan de cmdlet. De para meter *StorageAccountKey* is niet nodig wanneer het diagnostische opslag account zich in hetzelfde abonnement bevindt, omdat de cmdlet automatisch de sleutel waarde kan opvragen en instellen bij het inschakelen van de uitbrei ding voor diagnostische gegevens. Als het opslag account voor diagnostische gegevens echter zich in een ander abonnement bevindt, kan de cmdlet de sleutel mogelijk niet automatisch ophalen en moet u de sleutel expliciet opgeven via de para meter *StorageAccountKey* .
 

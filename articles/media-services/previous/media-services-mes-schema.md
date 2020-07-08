@@ -14,10 +14,9 @@ ms.topic: article
 ms.date: 03/19/2019
 ms.author: juliako
 ms.openlocfilehash: 622f14beabb1f2f109dff5d28c1591ffdd5aa000
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/27/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "74901438"
 ---
 # <a name="media-encoder-standard-schema"></a>Media Encoder Standard-schema
@@ -28,15 +27,15 @@ Hiermee wordt een vooraf ingestelde code ring gedefinieerd.
 
 ### <a name="elements"></a>Elementen
 
-| Naam | Type | Beschrijving |
+| Naam | Type | Description |
 | --- | --- | --- |
 | **Encoding** |[Encoding](media-services-mes-schema.md#Encoding) |Hoofd element, geeft aan dat de invoer bronnen moeten worden gecodeerd. |
-| **Uitvoer** |[Uitvoer](media-services-mes-schema.md#Output) |Verzameling gewenste uitvoer bestanden. |
+| **Uitvoerwaarden** |[Uitvoerwaarden](media-services-mes-schema.md#Output) |Verzameling gewenste uitvoer bestanden. |
 | **StretchMode**<br/>minOccurs = "0"<br/>standaard instelling = "AutoSize|XS: teken reeks|De kader grootte, opvulling, pixel of weergave hoogte-breedte verhouding van het video besturings element beheren. **StretchMode** kan een van de volgende waarden hebben: **geen**, **AutoSize** (standaard) of **AutoAanpassen**.<br/><br/>**Geen**: de uitvoer resolutie (bijvoorbeeld de **breedte** en de **hoogte** in de voor instelling) volgen zonder rekening te houden met de pixel verhouding of de hoogte-breedte verhouding van de invoer video. Aanbevolen in scenario's zoals [bijsnijden](media-services-crop-video.md), waarbij de video met uitvoer een andere hoogte-breedte verhouding heeft dan de invoer. <br/><br/>**AutoSize**: de uitvoer resolutie past in het venster (breedte * hoogte) dat is opgegeven met de voor instelling. Het coderings programma produceert echter een uitvoer video met een vier kante pixel verhouding (1:1). Daarom kan de uitvoer breedte of uitvoer hoogte worden overschreven zodat deze overeenkomt met de weergave hoogte-breedte verhouding van de invoer, zonder opvulling. Als de invoer bijvoorbeeld 1920 is en de voor instelling voor code ring vraagt om 1280x1280, wordt de waarde van Height in de voor instelling overschreven en wordt de uitvoer op 1280x720, die de invoer hoogte-breedte verhouding van 16:9 houdt. <br/><br/>**AutoAanpassen**: als dat nodig is, kunt u de uitvoer video (met ofwel letterbox of pillarbox) aanvullen om te voldoen aan de gewenste uitvoer resolutie, terwijl u ervoor zorgt dat de actieve video regio in de uitvoer dezelfde hoogte-breedte verhouding heeft als de invoer. Stel bijvoorbeeld dat de invoer 1920 is en dat de voor instelling voor code ring vraagt om 1280x1280. De uitvoer video gaat dan op 1280x1280, maar bevat een binnenste 1280x720-rechthoek van ' actieve video ' met een hoogte-breedte verhouding van 16:9 en letterbox regio's 280 pixels hoog aan de bovenkant en de onderkant. Een ander voor beeld: als de invoer is 1440x1080 en de voor instelling voor code ring vraagt om 1280x720, is de uitvoer op 1280x720, die een binnenste rechthoek bevat van 960x720 met een hoogte-breedte verhouding van 4:3 en de regio's in de pijler Box 160 pixels breed aan de linkerkant en de rechter kant. 
 
 ### <a name="attributes"></a>Kenmerken
 
-| Naam | Type | Beschrijving |
+| Naam | Type | Description |
 | --- | --- | --- |
 | **Versie**<br/><br/> Vereist |**XS: decimaal** |De vooraf ingestelde versie. De volgende beperkingen zijn van toepassing: XS: fractionDigits-waarde = "1" en XS: minInclusive-waarde = "1" bijvoorbeeld **Version = "1.0"**. |
 
@@ -45,7 +44,7 @@ Bevat een reeks van de volgende elementen:
 
 ### <a name="elements"></a>Elementen
 
-| Naam | Type | Beschrijving |
+| Naam | Type | Description |
 | --- | --- | --- |
 | **H264Video** |[H264Video](media-services-mes-schema.md#H264Video) |Instellingen voor de H. 264-code ring van de video. |
 | **AACAudio** |[AACAudio](media-services-mes-schema.md#AACAudio) |Instellingen voor AAC-code ring van audio. |
@@ -56,7 +55,7 @@ Bevat een reeks van de volgende elementen:
 ## <a name="h264video"></a><a name="H264Video"></a>H264Video
 ### <a name="elements"></a>Elementen
 
-| Naam | Type | Beschrijving |
+| Naam | Type | Description |
 | --- | --- | --- |
 | **TwoPass**<br/><br/> minOccurs = "0" |**XS: Boolean** |Op dit moment wordt slechts één pass-code ring ondersteund. |
 | **KeyFrameInterval**<br/><br/> minOccurs = "0"<br/><br/> **standaard instelling = "00:00:02"** |**XS: tijd** |Bepaalt de vaste afstand tussen IDR frames in eenheden van seconden. Wordt ook wel de GOP terug-duur genoemd. Zie **SceneChangeDetection** om te bepalen of het coderings programma kan afwijken van deze waarde. |
@@ -67,7 +66,7 @@ Bevat een reeks van de volgende elementen:
 
 ### <a name="attributes"></a>Kenmerken
 
-| Naam | Type | Beschrijving |
+| Naam | Type | Description |
 | --- | --- | --- |
 | **Voorwaarde** |**XS: teken reeks** | Wanneer de invoer geen video bevat, wilt u mogelijk het coderings programma dwingen om een monochroom video spoor in te voegen. Gebruik hiervoor voor waarde = "InsertBlackIfNoVideoBottomLayerOnly" (om een video te plaatsen bij alleen de laagste bitrate) of voor waarde = "InsertBlackIfNoVideo" (om een video in te voegen bij alle uitvoer bitrates). Zie [Dit](media-services-advanced-encoding-with-mes.md#no_video) artikel voor meer informatie.|
 
@@ -77,7 +76,7 @@ Standaard, als u een invoer verzendt naar het coderings programma dat alleen aud
               
 ### <a name="elements"></a>Elementen
 
-| Naam | Type | Beschrijving |
+| Naam | Type | Description |
 | --- | --- | --- |
 | **H264Layer**<br/><br/> minOccurs = "0" maxOccurs = "onbegrensd" |[H264Layer](media-services-mes-schema.md#H264Layer) |Een verzameling H264-lagen. |
 
@@ -89,10 +88,10 @@ Standaard, als u een invoer verzendt naar het coderings programma dat alleen aud
 
 ### <a name="elements"></a>Elementen
 
-| Naam | Type | Beschrijving |
+| Naam | Type | Description |
 | --- | --- | --- |
 | **Profiel**<br/><br/> minOccurs = "0"<br/><br/> standaard = ' auto ' |**XS: teken reeks** |Dit kan een van de volgende **XS: teken reeks** waarden zijn **: auto**, **baseline**, **Main**, **High**. |
-| **Niveau**<br/><br/> minOccurs = "0"<br/><br/> standaard = ' auto ' |**XS: teken reeks** | |
+| **Afvlakking**<br/><br/> minOccurs = "0"<br/><br/> standaard = ' auto ' |**XS: teken reeks** | |
 | **Bitsnelheid**<br/><br/> minOccurs = "0" |**XS: int** |De bitrate die wordt gebruikt voor deze videolaag, opgegeven in kbps. |
 | **MaxBitrate**<br/><br/> minOccurs = "0" |**XS: int** |De maximale bitsnelheid die wordt gebruikt voor deze videolaag, opgegeven in kbps. |
 | **BufferWindow**<br/><br/> minOccurs = "0"<br/><br/> standaard instelling = "00:00:05" |**XS: tijd** |Lengte van de video buffer. |
@@ -112,19 +111,19 @@ Standaard, als u een invoer verzendt naar het coderings programma dat alleen aud
 
 ### <a name="elements"></a>Elementen
 
-| Naam | Type | Beschrijving |
+| Naam | Type | Description |
 | --- | --- | --- |
 | **Profiel**<br/><br/> minOccurs = "0"<br/><br/> standaard instelling = "AACLC" |**XS: teken reeks** |Dit kan een van de volgende waarden zijn: **AACLC**, **HEAACV1**of **HEAACV2**. |
 
 ### <a name="attributes"></a>Kenmerken
 
-| Naam | Type | Beschrijving |
+| Naam | Type | Description |
 | --- | --- | --- |
 | **Voorwaarde** |**XS: teken reeks** |Geef de ' InsertSilenceIfNoAudio-waarde op als u wilt afdwingen dat het coderings programma een Asset produceert die een Silent audio-track bevat wanneer de invoer geen audio heeft.<br/><br/> Standaard, als u een invoer verzendt naar het coderings programma dat alleen video bevat en geen audio, bevat het uitvoer element alleen bestanden die alleen video gegevens bevatten. Sommige spelers kunnen dergelijke uitvoer stromen mogelijk niet verwerken. U kunt deze instelling gebruiken om ervoor te zorgen dat het coderings programma een Silent audio-track toevoegt aan de uitvoer in dat scenario. |
 
 ### <a name="groups"></a>Groepen
 
-| Naslaginformatie | Beschrijving |
+| Verwijzing | Description |
 | --- | --- |
 | [AudioGroup](media-services-mes-schema.md#AudioGroup)<br/><br/> minOccurs = "0" |Zie beschrijving van [AudioGroup](media-services-mes-schema.md#AudioGroup) om het juiste aantal kanalen, de sampling frequentie en de bitsnelheid te weten die voor elk profiel kunnen worden ingesteld. |
 
@@ -133,7 +132,7 @@ Zie de tabel ' Details van audiocodec ' verderop voor meer informatie over welke
 
 ### <a name="elements"></a>Elementen
 
-| Naam | Type | Beschrijving |
+| Naam | Type | Description |
 | --- | --- | --- |
 | **Kanalen**<br/><br/> minOccurs = "0" |**XS: int** |Het aantal gecodeerde audio kanalen. Hier volgen geldige opties: 1, 2, 5, 6, 8.<br/><br/> Standaard waarde: 2. |
 | **SamplingRate**<br/><br/> minOccurs = "0" |**XS: int** |De steekproef frequentie van de audio, opgegeven in Hz. |
@@ -143,14 +142,14 @@ Zie de tabel ' Details van audiocodec ' verderop voor meer informatie over welke
 
 Audiocodec|Details  
 -----------------|---  
-**AACLC** |1:<br/><br/> -11025:8 &lt;= bitrate &lt; 16<br/><br/> -12000:8 &lt;= bitrate &lt; 16<br/><br/> -16000:8 &lt;= bitrate &lt;32<br/><br/>-22050:24 &lt;= bitrate &lt; 32<br/><br/> -24000:24 &lt;= bitrate &lt; 32<br/><br/> -32000:32 &lt;= bitrate &lt;= 192<br/><br/> -44100:56 &lt;= bitrate &lt;= 288<br/><br/> -48000:56 &lt;= bitrate &lt;= 288<br/><br/> -88200:128 &lt;= bitrate &lt;= 288<br/><br/> -96000:128 &lt;= bitrate &lt;= 288<br/><br/> 2:<br/><br/> -11025:16 &lt;= bitrate &lt; 24<br/><br/> -12000:16 &lt;= bitrate &lt; 24<br/><br/> -16000:16 &lt;= bitrate &lt; 40<br/><br/> -22050:32 &lt;= bitrate &lt; 40<br/><br/> -24000:32 &lt;= bitrate &lt; 40<br/><br/> -32000:40 &lt;= bitrate &lt;= 384<br/><br/> -44100:96 &lt;= bitrate &lt;= 576<br/><br/> -48000:96 &lt;= bitrate &lt;= 576<br/><br/> -88200:256 &lt;= bitrate &lt;= 576<br/><br/> -96000:256 &lt;= bitrate &lt;= 576<br/><br/> 5/6:<br/><br/> -32000:160 &lt;= bitrate &lt;= 896<br/><br/> -44100:240 &lt;= bitrate &lt;= 1024<br/><br/> -48000:240 &lt;= bitrate &lt;= 1024<br/><br/> -88200:640 &lt;= bitrate &lt;= 1024<br/><br/> -96000:640 &lt;= bitrate &lt;= 1024<br/><br/> 8:<br/><br/> -32000:224 &lt;= bitrate &lt;= 1024<br/><br/> -44100:384 &lt;= bitrate &lt;= 1024<br/><br/> -48000:384 &lt;= bitrate &lt;= 1024<br/><br/> -88200:896 &lt;= bitrate &lt;= 1024<br/><br/> -96000:896 &lt;= bitrate &lt;= 1024  
-**HEAACV1** |1:<br/><br/> -22050: bitrate = 8<br/><br/> -24000:8 &lt;= bitrate &lt;= 10<br/><br/> -32000:12 &lt;= bitrate &lt;= 64<br/><br/> -44100:20 &lt;= bitrate &lt;= 64<br/><br/> -48000:20 &lt;= bitrate &lt;= 64<br/><br/> -88200: bitrate = 64<br/><br/> 2:<br/><br/> -32000:16 &lt;= bitrate &lt;= 128<br/><br/> -44100:16 &lt;= bitrate &lt;= 128<br/><br/> -48000:16 &lt;= bitrate &lt;= 128<br/><br/> -88200:96 &lt;= bitrate &lt;= 128<br/><br/> -96000:96 &lt;= bitrate &lt;= 128<br/><br/> 5/6:<br/><br/> -32000:64 &lt;= bitrate &lt;= 320<br/><br/> -44100:64 &lt;= bitrate &lt;= 320<br/><br/> -48000:64 &lt;= bitrate &lt;= 320<br/><br/> -88200:256 &lt;= bitrate &lt;= 320<br/><br/> -96000:256 &lt;= bitrate &lt;= 320<br/><br/> 8:<br/><br/> -32000:96 &lt;= bitrate &lt;= 448<br/><br/> -44100:96 &lt;= bitrate &lt;= 448<br/><br/> -48000:96 &lt;= bitrate &lt;= 448<br/><br/> -88200:384 &lt;= bitrate &lt;= 448<br/><br/> -96000:384 &lt;= bitrate &lt;= 448  
-**HEAACV2** |2:<br/><br/> -22050:8 &lt;= bitrate &lt;= 10<br/><br/> -24000:8 &lt;= bitrate &lt;= 10<br/><br/> -32000:12 &lt;= bitrate &lt;= 64<br/><br/> -44100:20 &lt;= bitrate &lt;= 64<br/><br/> -48000:20 &lt;= bitrate &lt;= 64<br/><br/> -88200:64 &lt;= bitrate &lt;= 64  
+**AACLC** |1:<br/><br/> -11025:8 &lt; = bitrate &lt; 16<br/><br/> -12000:8 &lt; = bitrate &lt; 16<br/><br/> -16000:8 &lt; = bitrate &lt; 32<br/><br/>-22050:24 &lt; = bitrate &lt; 32<br/><br/> -24000:24 &lt; = bitrate &lt; 32<br/><br/> -32000:32 &lt; = bitrate &lt; = 192<br/><br/> -44100:56 &lt; = bitrate &lt; = 288<br/><br/> -48000:56 &lt; = bitrate &lt; = 288<br/><br/> -88200:128 &lt; = bitrate &lt; = 288<br/><br/> -96000:128 &lt; = bitrate &lt; = 288<br/><br/> 2:<br/><br/> -11025:16 &lt; = bitrate &lt; 24<br/><br/> -12000:16 &lt; = bitrate &lt; 24<br/><br/> -16000:16 &lt; = bitrate &lt; 40<br/><br/> -22050:32 &lt; = bitrate &lt; 40<br/><br/> -24000:32 &lt; = bitrate &lt; 40<br/><br/> -32000:40 &lt; = bitrate &lt; = 384<br/><br/> -44100:96 &lt; = bitrate &lt; = 576<br/><br/> -48000:96 &lt; = bitrate &lt; = 576<br/><br/> -88200:256 &lt; = bitrate &lt; = 576<br/><br/> -96000:256 &lt; = bitrate &lt; = 576<br/><br/> 5/6:<br/><br/> -32000:160 &lt; = bitrate &lt; = 896<br/><br/> -44100:240 &lt; = bitrate &lt; = 1024<br/><br/> -48000:240 &lt; = bitrate &lt; = 1024<br/><br/> -88200:640 &lt; = bitrate &lt; = 1024<br/><br/> -96000:640 &lt; = bitrate &lt; = 1024<br/><br/> 8:<br/><br/> -32000:224 &lt; = bitrate &lt; = 1024<br/><br/> -44100:384 &lt; = bitrate &lt; = 1024<br/><br/> -48000:384 &lt; = bitrate &lt; = 1024<br/><br/> -88200:896 &lt; = bitrate &lt; = 1024<br/><br/> -96000:896 &lt; = bitrate &lt; = 1024  
+**HEAACV1** |1:<br/><br/> -22050: bitrate = 8<br/><br/> -24000:8 &lt; = bitrate &lt; = 10<br/><br/> -32000:12 &lt; = bitrate &lt; = 64<br/><br/> -44100:20 &lt; = bitrate &lt; = 64<br/><br/> -48000:20 &lt; = bitrate &lt; = 64<br/><br/> -88200: bitrate = 64<br/><br/> 2:<br/><br/> -32000:16 &lt; = bitrate &lt; = 128<br/><br/> -44100:16 &lt; = bitrate &lt; = 128<br/><br/> -48000:16 &lt; = bitrate &lt; = 128<br/><br/> -88200:96 &lt; = bitrate &lt; = 128<br/><br/> -96000:96 &lt; = bitrate &lt; = 128<br/><br/> 5/6:<br/><br/> -32000:64 &lt; = bitrate &lt; = 320<br/><br/> -44100:64 &lt; = bitrate &lt; = 320<br/><br/> -48000:64 &lt; = bitrate &lt; = 320<br/><br/> -88200:256 &lt; = bitrate &lt; = 320<br/><br/> -96000:256 &lt; = bitrate &lt; = 320<br/><br/> 8:<br/><br/> -32000:96 &lt; = bitrate &lt; = 448<br/><br/> -44100:96 &lt; = bitrate &lt; = 448<br/><br/> -48000:96 &lt; = bitrate &lt; = 448<br/><br/> -88200:384 &lt; = bitrate &lt; = 448<br/><br/> -96000:384 &lt; = bitrate &lt; = 448  
+**HEAACV2** |2:<br/><br/> -22050:8 &lt; = bitrate &lt; = 10<br/><br/> -24000:8 &lt; = bitrate &lt; = 10<br/><br/> -32000:12 &lt; = bitrate &lt; = 64<br/><br/> -44100:20 &lt; = bitrate &lt; = 64<br/><br/> -48000:20 &lt; = bitrate &lt; = 64<br/><br/> -88200:64 &lt; = bitrate &lt; = 64  
   
 ## <a name="clip"></a><a name="Clip"></a>Clip
 ### <a name="attributes"></a>Kenmerken
 
-| Naam | Type | Beschrijving |
+| Naam | Type | Description |
 | --- | --- | --- |
 | **StartTime** |**XS: duration** |Hiermee geeft u de begin tijd van een presentatie op. De waarde van StartTime moet overeenkomen met de absolute tijds tempels van de invoer video. Als bijvoorbeeld het eerste frame van de invoer video een tijds tempel van 12:00:10.000 heeft, moet StartTime ten minste 12:00:10.000 of hoger zijn. |
 | **Duur** |**XS: duration** |Hiermee geeft u de duur van een presentatie op (bijvoorbeeld de weer gave van een overlay in de video). |
@@ -158,15 +157,15 @@ Audiocodec|Details
 ## <a name="output"></a><a name="Output"></a>Uitvoer
 ### <a name="attributes"></a>Kenmerken
 
-| Naam | Type | Beschrijving |
+| Naam | Type | Description |
 | --- | --- | --- |
 | **Bestands** |**XS: teken reeks** |De naam van het uitvoer bestand.<br/><br/> U kunt de macro's die in de volgende tabel worden beschreven, gebruiken om de namen van de uitvoer bestanden te maken. Bijvoorbeeld:<br/><br/> **"Uitvoer": [{"FileName": "{Basenaam}*{Resolution}*{bitrate}. mp4", "Format": {"type": "MP4Format"}}]** |
 
 ### <a name="macros"></a>Schrijft
 
-| Macro | Beschrijving |
+| Macro | Description |
 | --- | --- |
-| **{Basispad}** |Als u VoD-code ring uitvoert, is {basispad} de eerste 32 tekens van de eigenschap AssetFile.Name van het primaire bestand in de invoer Asset.<br/><br/> Als het invoer element een live archief is, wordt {basispad} afgeleid van de kenmerken voor naam bijhouden in het server manifest. Als u een subclip verzendt met behulp van de TopBitrate, zoals in: "<\>VideoStream TopBitrate<\>/videostream" en het uitvoer bestand bevat video, is {basispad} de eerste 32 tekens van de naam van de laag met de hoogste bitsnelheid.<br/><br/> Als u in plaats daarvan een subfragment verzendt met behulp van alle invoer bitrates, zoals "<VideoStream\>* </videostream\>" en het uitvoer bestand bevat een video, is {basispad} de eerste 32 tekens van de naam van de tracering van de bijbehorende videolaag. |
+| **{Basispad}** |Als u VoD-code ring uitvoert, is {basispad} de eerste 32 tekens van de eigenschap AssetFile.Name van het primaire bestand in de invoer Asset.<br/><br/> Als het invoer element een live archief is, wordt {basispad} afgeleid van de kenmerken voor naam bijhouden in het server manifest. Als u een subclip verzendt met behulp van de TopBitrate, zoals in: "<VideoStream \> TopBitrate</videostream \> " en het uitvoer bestand bevat video, is {basispad} de eerste 32 tekens van de naam van de laag met de hoogste bitsnelheid.<br/><br/> Als u in plaats daarvan een subfragment verzendt met behulp van alle invoer bitrates, zoals "<VideoStream \> * </videostream \> " en het uitvoer bestand bevat een video, is {basispad} de eerste 32 tekens van de naam van de tracering van de bijbehorende videolaag. |
 | **Videocodec** |Wordt toegewezen aan ' H264 ' voor video en ' AAC ' voor audio. |
 | **Bitsnelheid** |De doel video-bitsnelheid als het uitvoer bestand video en audio bevat of als het uitvoer bestand alleen audio bevat. De gebruikte waarde is de bitsnelheid in kbps. |
 | **Kanalen** |Aantal audio kanalen als het bestand audio bevat. |
@@ -178,10 +177,10 @@ Audiocodec|Details
 ## <a name="video-complex-type-inherits-from-codec"></a><a name="Video"></a>Video (complex type neemt van codec over)
 ### <a name="attributes"></a>Kenmerken
 
-| Naam | Type | Beschrijving |
+| Naam | Type | Description |
 | --- | --- | --- |
 | **Begin** |**XS: teken reeks** | |
-| **Wizardstap** |**XS: teken reeks** | |
+| **Stap** |**XS: teken reeks** | |
 | **Bereik** |**XS: teken reeks** | |
 | **PreserveResolutionAfterRotation** |**XS: Boolean** |Zie de volgende sectie voor gedetailleerde uitleg: [PreserveResolutionAfterRotation](media-services-mes-schema.md#PreserveResolutionAfterRotation) |
 
@@ -203,7 +202,7 @@ U kunt ook het gebruik van de vlag **PreserveResolutionAfterRotation** maken en 
 ## <a name="formatgroup-group"></a><a name="FormatGroup"></a>FormatGroup (groep)
 ### <a name="elements"></a>Elementen
 
-| Naam | Type | Beschrijving |
+| Naam | Type | Description |
 | --- | --- | --- |
 | **BmpFormat** |**BmpFormat** | |
 | **PngFormat** |**PngFormat** | |
@@ -212,35 +211,35 @@ U kunt ook het gebruik van de vlag **PreserveResolutionAfterRotation** maken en 
 ## <a name="bmplayer"></a><a name="BmpLayer"></a>BmpLayer
 ### <a name="element"></a>Element
 
-| Naam | Type | Beschrijving |
+| Naam | Type | Description |
 | --- | --- | --- |
 | **Width**<br/><br/> minOccurs = "0" |**XS: int** | |
 | **Height**<br/><br/> minOccurs = "0" |**XS: int** | |
 
 ### <a name="attributes"></a>Kenmerken
 
-| Naam | Type | Beschrijving |
+| Naam | Type | Description |
 | --- | --- | --- |
 | **Voorwaarde** |**XS: teken reeks** | |
 
 ## <a name="pnglayer"></a><a name="PngLayer"></a>PngLayer
 ### <a name="element"></a>Element
 
-| Naam | Type | Beschrijving |
+| Naam | Type | Description |
 | --- | --- | --- |
 | **Width**<br/><br/> minOccurs = "0" |**XS: int** | |
 | **Height**<br/><br/> minOccurs = "0" |**XS: int** | |
 
 ### <a name="attributes"></a>Kenmerken
 
-| Naam | Type | Beschrijving |
+| Naam | Type | Description |
 | --- | --- | --- |
 | **Voorwaarde** |**XS: teken reeks** | |
 
 ## <a name="jpglayer"></a><a name="JpgLayer"></a>JpgLayer
 ### <a name="element"></a>Element
 
-| Naam | Type | Beschrijving |
+| Naam | Type | Description |
 | --- | --- | --- |
 | **Width**<br/><br/> minOccurs = "0" |**XS: int** | |
 | **Height**<br/><br/> minOccurs = "0" |**XS: int** | |
@@ -248,49 +247,49 @@ U kunt ook het gebruik van de vlag **PreserveResolutionAfterRotation** maken en 
 
 ### <a name="attributes"></a>Kenmerken
 
-| Naam | Type | Beschrijving |
+| Naam | Type | Description |
 | --- | --- | --- |
 | **Voorwaarde** |**XS: teken reeks** | |
 
 ## <a name="pnglayers"></a><a name="PngLayers"></a>PngLayers
 ### <a name="elements"></a>Elementen
 
-| Naam | Type | Beschrijving |
+| Naam | Type | Description |
 | --- | --- | --- |
 | **PngLayer**<br/><br/> minOccurs = "0" maxOccurs = "onbegrensd" |[PngLayer](media-services-mes-schema.md#PngLayer) | |
 
 ## <a name="bmplayers"></a><a name="BmpLayers"></a>BmpLayers
 ### <a name="elements"></a>Elementen
 
-| Naam | Type | Beschrijving |
+| Naam | Type | Description |
 | --- | --- | --- |
 | **BmpLayer**<br/><br/> minOccurs = "0" maxOccurs = "onbegrensd" |[BmpLayer](media-services-mes-schema.md#BmpLayer) | |
 
 ## <a name="jpglayers"></a><a name="JpgLayers"></a>JpgLayers
 ### <a name="elements"></a>Elementen
 
-| Naam | Type | Beschrijving |
+| Naam | Type | Description |
 | --- | --- | --- |
 | **JpgLayer**<br/><br/> minOccurs = "0" maxOccurs = "onbegrensd" |[JpgLayer](media-services-mes-schema.md#JpgLayer) | |
 
 ## <a name="bmpimage-complex-type-inherits-from-video"></a><a name="BmpImage"></a>BmpImage (complex type neemt uit video over)
 ### <a name="elements"></a>Elementen
 
-| Naam | Type | Beschrijving |
+| Naam | Type | Description |
 | --- | --- | --- |
 | **PngLayers**<br/><br/> minOccurs = "0" |[PngLayers](media-services-mes-schema.md#PngLayers) |PNG-lagen |
 
 ## <a name="jpgimage-complex-type-inherits-from-video"></a><a name="JpgImage"></a>JpgImage (complex type neemt uit video over)
 ### <a name="elements"></a>Elementen
 
-| Naam | Type | Beschrijving |
+| Naam | Type | Description |
 | --- | --- | --- |
 | **PngLayers**<br/><br/> minOccurs = "0" |[PngLayers](media-services-mes-schema.md#PngLayers) |PNG-lagen |
 
 ## <a name="pngimage-complex-type-inherits-from-video"></a><a name="PngImage"></a>PngImage (complex type neemt uit video over)
 ### <a name="elements"></a>Elementen
 
-| Naam | Type | Beschrijving |
+| Naam | Type | Description |
 | --- | --- | --- |
 | **PngLayers**<br/><br/> minOccurs = "0" |[PngLayers](media-services-mes-schema.md#PngLayers) |PNG-lagen |
 

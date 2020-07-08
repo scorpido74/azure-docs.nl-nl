@@ -16,10 +16,9 @@ ms.date: 03/14/2019
 ms.author: Juliako
 ms.reviewer: willzhan
 ms.openlocfilehash: 29a344c739d8d99da2e5c81d41a11c601e48022e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/27/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "74969136"
 ---
 # <a name="using-castlabs-to-deliver-widevine-licenses-to-azure-media-services"></a>castLabs gebruiken om Widevine-licenties te leveren aan Azure Media Services 
@@ -84,7 +83,7 @@ De [voorbeeld oplossing](https://github.com/AzureMediaServicesSamples/CastlabsIn
 
 De console toepassing gebruiken:
 
-1. Wijzig de instellingen van de app. config in AMS, cast Labs-referenties, STS-configuratie en gedeelde sleutel.
+1. Wijzig de app.config voor het instellen van AMS-referenties, cast Labs-referenties, STS-configuratie en gedeelde sleutel.
 2. Upload een asset in AMS.
 3. Haal de UUID op uit de geüploade Asset en wijzig regel 32 in het Program.cs-bestand:
    
@@ -96,7 +95,7 @@ De console toepassing gebruiken:
 
 De Web Application (STS) gebruiken:
 
-1. Wijzig de web. config in instellen cast Labs handelaar-ID, de STS-configuratie en de gedeelde sleutel.
+1. Wijzig de web.config in Setup cast Labs handelaar-ID, de STS-configuratie en de gedeelde sleutel.
 2. Implementeren naar Azure websites.
 3. Ga naar de website.
 
@@ -117,7 +116,7 @@ Als u een video wilt afspelen die is versleuteld met een gemeen schappelijke ver
 
 ## <a name="additional-notes"></a>Aanvullende opmerkingen
 
-* Widevine is een service van Google Inc. en is onderworpen aan de service voorwaarden en het privacybeleid van Google, Inc.
+* Widevine is een service van Google Inc. en is onderworpen aan de servicevoorwaarden en het privacybeleid van Google Inc.
 
 ## <a name="media-services-learning-paths"></a>Media Services-leertrajecten
 [!INCLUDE [media-services-learning-paths-include](../../../includes/media-services-learning-paths-include.md)]

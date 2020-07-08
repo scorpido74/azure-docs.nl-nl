@@ -9,10 +9,9 @@ ms.topic: conceptual
 ms.custom: H1Hack27Feb2017,hdinsightactive
 ms.date: 12/16/2019
 ms.openlocfilehash: f3705170be28f33e5994bd00e363dc7ec7f94642
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75435621"
 ---
 # <a name="analyze-twitter-data-using-apache-hive-and-apache-hadoop-on-hdinsight"></a>Twitter-gegevens analyseren met Apache Hive en Apache Hadoop op HDInsight
@@ -28,7 +27,7 @@ Met Twitter kunt u de gegevens voor elke Tweet ophalen als een JavaScript Object
 
 ### <a name="create-a-twitter-application"></a>Een Twitter-toepassing maken
 
-1. Meld u vanuit een webbrowser aan [https://developer.twitter.com/apps/](https://developer.twitter.com/apps/)bij. Selecteer de koppeling **nu aanmelden** als u geen Twitter-account hebt.
+1. Meld u vanuit een webbrowser aan bij [https://developer.twitter.com/apps/](https://developer.twitter.com/apps/) . Selecteer de koppeling **nu aanmelden** als u geen Twitter-account hebt.
 
 2. Selecteer **nieuwe app maken**.
 
@@ -37,7 +36,7 @@ Met Twitter kunt u de gegevens voor elke Tweet ophalen als een JavaScript Object
    | Veld | Waarde |
    |--- |--- |
    | Naam |MyHDInsightApp |
-   | Beschrijving |MyHDInsightApp |
+   | Description |MyHDInsightApp |
    | Website |`https://www.myhdinsightapp.com` |
 
 4. Selecteer **Ja, ik ga akkoord**en selecteer vervolgens **uw Twitter-toepassing maken**.
@@ -54,7 +53,7 @@ Met Twitter kunt u de gegevens voor elke Tweet ophalen als een JavaScript Object
 
 ### <a name="download-tweets"></a>Tweets downloaden
 
-Met de volgende python-code wordt 10.000 tweets van Twitter gedownload en opgeslagen in een bestand met de naam **tweets. txt**.
+Met de volgende python-code wordt 10.000 tweets van Twitter gedownload en opgeslagen in een bestand met de naam **tweets.txt**.
 
 > [!NOTE]  
 > De volgende stappen worden uitgevoerd op het HDInsight-cluster, omdat python al is geïnstalleerd.
@@ -84,7 +83,7 @@ Met de volgende python-code wordt 10.000 tweets van Twitter gedownload en opgesl
    nano gettweets.py
    ```
 
-1. Bewerk de code hieronder door de `Your consumer secret`relevante `Your consumer key`gegevens `Your access token`van uw `Your access token secret` Twitter-toepassing te vervangen. Plak vervolgens de bewerkte code als de inhoud van het **gettweets.py** -bestand.
+1. Bewerk de code hieronder door `Your consumer secret` `Your consumer key` `Your access token` `Your access token secret` de relevante gegevens van uw Twitter-toepassing te vervangen. Plak vervolgens de bewerkte code als de inhoud van het **gettweets.py** -bestand.
 
    ```python
    #!/usr/bin/python
@@ -306,7 +305,7 @@ Met deze opdrachten worden de gegevens opgeslagen op een locatie waartoe alle kn
     Deze query retourneert Maxi maal 10 tweets die het woord **Azure** bevatten in de tekst van het bericht.
 
     > [!NOTE]  
-    > Als u het filter in het `gettweets.py` script hebt gewijzigd, vervangt u **Azure** door een van de filters die u hebt gebruikt.
+    > Als u het filter in het script hebt gewijzigd `gettweets.py` , vervangt u **Azure** door een van de filters die u hebt gebruikt.
 
 ## <a name="next-steps"></a>Volgende stappen
 

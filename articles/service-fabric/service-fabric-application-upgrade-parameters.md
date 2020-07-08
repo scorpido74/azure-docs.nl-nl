@@ -4,10 +4,9 @@ description: Beschrijft para meters met betrekking tot het bijwerken van een Ser
 ms.topic: conceptual
 ms.date: 11/08/2018
 ms.openlocfilehash: 42b5c52181cfb006ae57e43c183b96a059a9c63a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75377970"
 ---
 # <a name="application-upgrade-parameters"></a>Parameters toepassingsupgrade
@@ -33,7 +32,7 @@ De upgrade parameters voor Visual Studio Service Fabric-toepassing worden ingest
 ### <a name="required-parameters"></a>Vereiste para meters
 (PS = Power shell, VS = Visual Studio)
 
-| Parameter | Van toepassing op | Beschrijving |
+| Parameter | Van toepassing op | Description |
 | --- | --- | --- |
 ApplicationName |PS| De naam van de toepassing die wordt bijgewerkt. Voor beelden: Fabric:/VisualObjects, Fabric:/ClusterMonitor. |
 ApplicationTypeVersion|PS|De versie van het toepassings type dat de upgrade doelen. |
@@ -45,10 +44,10 @@ UnmonitoredManual | PS | Geeft aan dat de upgrade modus niet-bewaakt hand matig 
 
 ### <a name="optional-parameters"></a>Optionele parameters
 
-De para meters voor de status evaluatie zijn optioneel. Als de criteria voor de status evaluatie niet zijn opgegeven wanneer een upgrade wordt gestart, gebruikt Service Fabric het toepassings status beleid dat is opgegeven in ApplicationManifest. XML van het toepassings exemplaar.
+De para meters voor de status evaluatie zijn optioneel. Als de criteria voor de status evaluatie niet zijn opgegeven wanneer een upgrade wordt gestart, gebruikt Service Fabric het toepassings status beleid dat is opgegeven in de ApplicationManifest.xml van het toepassings exemplaar.
 
 > [!div class="mx-tdBreakAll"]
-> | Parameter | Van toepassing op | Beschrijving |
+> | Parameter | Van toepassing op | Description |
 > | --- | --- | --- |
 > | ApplicationParameter |PS, VS| Hiermee geeft u de onderdrukkingen voor toepassings parameters op.<br>Power shell-toepassings parameters zijn opgegeven als hash-naam/waarde-paren. Bijvoorbeeld: @ {"VotingData_MinReplicaSetSize" = "3"; "VotingData_PartitionCount" = "1"}.<br>Visual Studio-toepassings parameters kunnen worden opgegeven in het dialoog venster Service Fabric toepassing publiceren in het veld **toepassings parameters bestand** .
 > | Bevestigen |PS| Toegestane waarden zijn **waar** en **Onwaar**. Vraagt om bevestiging voordat de cmdlet wordt uitgevoerd. |
@@ -80,7 +79,7 @@ Service Fabric toepassings upgrades via de Service Fabric CLI gebruik de [sfctl-
 
 | Parameter | Beschrijving |
 | --- | --- |
-| toepassings-id  |ID van de toepassing die wordt bijgewerkt. <br> Dit is doorgaans de volledige naam van de toepassing zonder het URI-schema ' Fabric: '. Vanaf versie 6,0 worden hiërarchische namen gescheiden met het\~teken. Als de naam van de toepassing bijvoorbeeld ' Fabric:/Mijntoep/app1 ' is, is de toepassings-id ' Mijntoep\~app1 ' in 6.0 + en ' Mijntoep/app1 ' in vorige versies.|
+| toepassings-id  |ID van de toepassing die wordt bijgewerkt. <br> Dit is doorgaans de volledige naam van de toepassing zonder het URI-schema ' Fabric: '. Vanaf versie 6,0 worden hiërarchische namen gescheiden met het \~ teken. Als de naam van de toepassing bijvoorbeeld ' Fabric:/Mijntoep/app1 ' is, is de toepassings-id ' Mijntoep \~ app1 ' in 6.0 + en ' Mijntoep/app1 ' in vorige versies.|
 toepassings versie |De versie van het toepassings type dat de upgrade doelen.|
 parameters  |Een JSON-gecodeerde lijst van toepassings parameters onderdrukkingen die moeten worden toegepast bij het upgraden van de toepassing.|
 

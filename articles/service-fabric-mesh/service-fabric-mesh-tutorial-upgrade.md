@@ -7,10 +7,9 @@ ms.date: 11/29/2018
 ms.author: dekapur
 ms.custom: mvc, devcenter
 ms.openlocfilehash: 7cdb8868f760ef0f35ab90c06b411110f871738c
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75351720"
 ---
 # <a name="tutorial-learn-how-to-upgrade-a-service-fabric-application-using-visual-studio"></a>Zelf studie: meer informatie over het bijwerken van een Service Fabric-toepassing met Visual Studio
@@ -45,27 +44,27 @@ In dit artikel wordt beschreven hoe u een micro service binnen een toepassing bi
 
 Wanneer u een Service Fabric mesh-app maakt, voegt Visual Studio een yaml-bestand voor **para meters** toe voor elke implementatie omgeving (Cloud en lokaal). In deze bestanden kunt u para meters en hun waarden definiëren waarnaar vervolgens kan worden verwezen vanuit uw net *. YAML-bestanden zoals service. yaml of Network. yaml.  Visual Studio biedt een aantal variabelen voor u, zoals hoeveel CPU de service kan gebruiken.
 
-De `WebFrontEnd_cpu` para meter wordt bijgewerkt om de CPU-Resources bij `1.5` te werken naar in afwachting dat de Webfront- **End** -service intensief wordt gebruikt.
+De `WebFrontEnd_cpu` para meter wordt bijgewerkt om de CPU-Resources bij te werken naar `1.5` in afwachting dat de Webfront- **End** -service intensief wordt gebruikt.
 
-1. Open in het project **todolistapp** onder **environments** > **Cloud**het bestand **para meters. yaml** . Wijzig de `WebFrontEnd_cpu`waarde, in `1.5`. De parameter naam wordt voorafgegaan door de service naam `WebFrontEnd_` als een best practice om deze te onderscheiden van para meters met dezelfde naam die van toepassing zijn op verschillende services.
+1. Open in het project **todolistapp** onder **environments**  >  **Cloud**het bestand **para meters. yaml** . Wijzig de `WebFrontEnd_cpu` waarde, in `1.5` . De parameter naam wordt voorafgegaan door de service naam `WebFrontEnd_` als een best practice om deze te onderscheiden van para meters met dezelfde naam die van toepassing zijn op verschillende services.
 
     ```xml
     WebFrontEnd_cpu: 1.5
     ```
 
-2. Open het bestand **service. yaml** van het **webfrontend** onder **webfrontend** > -**service resources**.
+2. Open het bestand **service. yaml** van het **webfrontend** onder **webfrontend**-  >  **service resources**.
 
-    Houd er rekening mee `resources:` dat de `cpu:` in-sectie `"[parameters('WebFrontEnd_cpu')]"`is ingesteld op. Als het project wordt gebouwd voor de Cloud, wordt de waarde voor `'WebFrontEnd_cpu` opgehaald **uit het** > yaml- `1.5`bestand**Cloud** > **para meters.** Als het project wordt gebouwd om lokaal te worden uitgevoerd, wordt de waarde opgehaald uit het yaml-bestand van de **omgeving** > **Local** > **para meters** en wordt ' 0,5 '.
+    Houd er rekening mee dat de in `resources:` -sectie `cpu:` is ingesteld op `"[parameters('WebFrontEnd_cpu')]"` . Als het project wordt gebouwd voor de Cloud, wordt de waarde voor `'WebFrontEnd_cpu` opgehaald uit het **Environments**  >  **Cloud**  >  yaml-bestand Cloud**para meters.** `1.5` Als het project wordt gebouwd om lokaal te worden uitgevoerd, wordt de waarde opgehaald uit het yaml-bestand van de **omgeving**  >  **Local**  >  **para meters** en wordt ' 0,5 '.
 
 > [!Tip]
 > Standaard wordt het parameter bestand dat een peer is van het profiel. yaml-bestand gebruikt om de waarden voor dat profiel. yaml-bestand op te geven.
 > Bijvoorbeeld: omgevingen > Cloud > para meters. yaml biedt de parameter waarden voor omgevingen > Cloud > profile. yaml.
 >
-> U kunt dit overschrijven door het volgende toe te voegen aan het profiel.`parametersFilePath=”relative or full path to the parameters file”` yaml- `parametersFilePath=”C:\MeshParms\CustomParameters.yaml”` bestand: bijvoorbeeld of`parametersFilePath=”..\CommonParameters.yaml”`
+> U kunt dit overschrijven door het volgende toe te voegen aan het profiel. yaml-bestand: `parametersFilePath=”relative or full path to the parameters file”` bijvoorbeeld `parametersFilePath=”C:\MeshParms\CustomParameters.yaml”` of`parametersFilePath=”..\CommonParameters.yaml”`
 
 ## <a name="modify-the-model"></a>Het model wijzigen
 
-Als u een code wijziging wilt introduceren `Category` , voegt u `ToDoItem` een eigenschap toe `ToDoItem.cs` aan de klasse in het bestand.
+Als u een code wijziging wilt introduceren, voegt `Category` u een eigenschap toe aan de `ToDoItem` klasse in het `ToDoItem.cs` bestand.
 
 ```csharp
 public class ToDoItem
@@ -93,7 +92,7 @@ public static ToDoItem Load(string description, int index, bool completed)
 
 ## <a name="modify-the-service"></a>De service wijzigen
 
-Het `WebFrontEnd` project is een ASP.net core-toepassing met een webpagina waarop taken lijst items worden weer gegeven. Open `Index.cshtml` in `WebFrontEnd` het project en voeg de volgende twee regels toe, zoals hieronder aangegeven, om de categorie van de taak weer te geven:
+Het `WebFrontEnd` project is een ASP.net core-toepassing met een webpagina waarop taken lijst items worden weer gegeven. Open in het `WebFrontEnd` project `Index.cshtml` en voeg de volgende twee regels toe, zoals hieronder aangegeven, om de categorie van de taak weer te geven:
 
 ```HTML
 <div>
@@ -127,7 +126,7 @@ Of u nu een code-upgrade of een configuratie-upgrade uitvoert (in dit geval gaan
 
 Vervolgens ziet u het dialoogvenster **Service Fabric-toepassing publiceren**.
 
-Gebruik de vervolg keuzelijst **doel profiel** om het bestand profile. yaml te selecteren dat u voor deze implementatie wilt gebruiken. Er wordt een upgrade uitgevoerd van de app in de Cloud, dus we selecteren de **Cloud. yaml** in de vervolg keuzelijst `WebFrontEnd_cpu` , die de waarde 1,0 gebruikt die in dat bestand is gedefinieerd.
+Gebruik de vervolg keuzelijst **doel profiel** om het bestand profile. yaml te selecteren dat u voor deze implementatie wilt gebruiken. Er wordt een upgrade uitgevoerd van de app in de Cloud, dus we selecteren de **Cloud. yaml** in de vervolg keuzelijst, die de `WebFrontEnd_cpu` waarde 1,0 gebruikt die in dat bestand is gedefinieerd.
 
 ![Dialoogvenster in Visual Studio over Service Fabric Mesh-publicatie](./media/service-fabric-mesh-tutorial-deploy-dotnetcore/visual-studio-publish-dialog.png)
 

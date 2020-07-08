@@ -11,10 +11,9 @@ ms.author: tamram
 ms.reviewer: fryu
 ms.subservice: common
 ms.openlocfilehash: 81c9a8fe9513f1f8fc65ad64b34f0fb04383569b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/27/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75371799"
 ---
 # <a name="enable-secure-tls-for-azure-storage-client"></a>Beveiligde TLS voor Azure Storage-client inschakelen
@@ -27,9 +26,9 @@ Om te zorgen voor een veilige en compatibele verbinding met Azure Storage, moet 
 
 ## <a name="enable-tls-12-in-net-client"></a>TLS 1.2 activeren in .NET-client
 
-Voor de client om te onderhandelen over TLS 1,2, moeten het besturings systeem en de versie van de .NET Framework TLS 1,2 ondersteunen. Meer informatie vindt u in [ondersteuning voor TLS 1,2](https://docs.microsoft.com/dotnet/framework/network-programming/tls#support-for-tls-12).
+Het besturingssysteem en de versie van .NET Framework moeten beide TLS 1.2 ondersteunen om de client met TLS 1.2 te laten werken. Meer informatie vindt u in [ondersteuning voor TLS 1,2](https://docs.microsoft.com/dotnet/framework/network-programming/tls#support-for-tls-12).
 
-In het volgende voor beeld ziet u hoe u TLS 1,2 in uw .NET-client inschakelt.
+In het volgende voorbeeld ziet u hoe u TLS 1.2 in uw .NET-client inschakelt.
 
 ```csharp
 
@@ -77,7 +76,7 @@ De volgende scherm afbeelding is een voor beeld van de verificatie.
 
 ![scherm opname van het controleren van de TLS-versie in Fiddler](./media/storage-security-tls/storage-security-tls-verify-in-fiddler.png)
 
-## <a name="see-also"></a>Zie ook
+## <a name="see-also"></a>Zie tevens
 
 * [Transport Layer Security (TLS)](https://en.wikipedia.org/wiki/Transport_Layer_Security#SSL_1.0.2C_2.0_and_3.0)
 * [PCI-naleving van TLS](https://blog.pcisecuritystandards.org/migrating-from-ssl-and-early-tls)

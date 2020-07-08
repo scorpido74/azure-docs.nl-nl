@@ -14,10 +14,9 @@ ms.date: 01/22/2018
 ms.author: jingwang
 robots: noindex
 ms.openlocfilehash: 8b872cc30ae66e83274f189138dad6d609e3f536
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "74927058"
 ---
 # <a name="copy-or-move-data-easily-with-azure-data-factory-copy-wizard"></a>Gegevens eenvoudig kopiëren of verplaatsen met Azure Data Factory wizard kopiëren
@@ -57,7 +56,7 @@ De wizard kopiëren wijst automatisch kolommen in het bron schema toe aan kolomm
 Met de wizard kunt u Bron gegevens filteren om alleen de gegevens te selecteren die moeten worden gekopieerd naar het gegevens archief doel/sink. Filteren vermindert het volume van de gegevens die moeten worden gekopieerd naar de Sink-gegevens opslag en verhoogt daarom de door Voer van de Kopieer bewerking. Het biedt een flexibele manier om gegevens in een relationele data base te filteren met behulp van de SQL-query taal (of) bestanden in een Azure Blob-map door gebruik te maken van [Data Factory-functies en-variabelen](data-factory-functions-variables.md).   
 
 ### <a name="filtering-of-data-in-a-database"></a>Filteren van gegevens in een Data Base
-In het voor beeld gebruikt de SQL-query `Text.Format` de functie `WindowStart` en de variabele. 
+In het voor beeld gebruikt de SQL-query de `Text.Format` functie en de `WindowStart` variabele. 
 
 ![Expressies valideren](./media/data-factory-copy-wizard/validate-expressions.png)
 

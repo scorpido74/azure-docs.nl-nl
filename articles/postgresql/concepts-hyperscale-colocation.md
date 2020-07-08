@@ -8,10 +8,9 @@ ms.subservice: hyperscale-citus
 ms.topic: conceptual
 ms.date: 05/06/2019
 ms.openlocfilehash: 7e4073ec45f4c21f33d20924a9948e72f961c7f8
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "74967334"
 ---
 # <a name="table-colocation-in-azure-database-for-postgresql--hyperscale-citus"></a>Tabel co-locatie in Azure Database for PostgreSQL – grootschalige (Citus)
@@ -109,7 +108,7 @@ De gegevens worden verspreid, zodat de query's kunnen worden geparallelleerd. He
 
 ### <a name="distribute-tables-by-tenant"></a>Tabellen distribueren op Tenant
 
-In grootschalige (Citus) zijn rijen met dezelfde waarde voor de distributie kolom gegarandeerd dat deze zich op hetzelfde knoop punt bevinden. Als u begint met het maken van de tabel `tenant_id` , kunnen we de tabellen met de kolom distributie aanmaken.
+In grootschalige (Citus) zijn rijen met dezelfde waarde voor de distributie kolom gegarandeerd dat deze zich op hetzelfde knoop punt bevinden. Als u begint met het maken van de tabel, kunnen we de tabellen met `tenant_id` de kolom distributie aanmaken.
 
 ```sql
 -- co-locate tables by using a common distribution column

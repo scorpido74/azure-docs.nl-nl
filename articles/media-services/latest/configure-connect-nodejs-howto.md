@@ -1,6 +1,6 @@
 ---
-title: Verbinding maken met Azure Media Services v3 API-node. js
-description: In dit artikel wordt beschreven hoe u verbinding maakt met Media Services v3 API met node. js.
+title: Verbinding maken met Azure Media Services v3 API-Node.js
+description: In dit artikel wordt beschreven hoe u verbinding maakt met Media Services v3 API met Node.js.
 services: media-services
 documentationcenter: ''
 author: Juliako
@@ -14,27 +14,26 @@ ms.topic: article
 ms.date: 03/25/2019
 ms.author: juliako
 ms.openlocfilehash: 0381a2e2b8fd2a8b60e7cb702e0336a5678df057
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "74896101"
 ---
-# <a name="connect-to-media-services-v3-api---nodejs"></a>Verbinding maken met Media Services v3 API-node. js
+# <a name="connect-to-media-services-v3-api---nodejs"></a>Verbinding maken met Media Services v3 API-Node.js
 
-In dit artikel wordt beschreven hoe u verbinding maakt met de Azure Media Services v3 node. js-SDK met behulp van de aanmeldings methode voor de Service-Principal.
+In dit artikel wordt beschreven hoe u verbinding maakt met de Azure Media Services v3 node.js SDK met behulp van de aanmeldings methode voor de Service-Principal.
 
 ## <a name="prerequisites"></a>Vereisten
 
-- Installeer [node. js](https://nodejs.org/en/download/).
-- [Een Azure Media Services-account maken](create-account-cli-how-to.md). Zorg ervoor dat u de naam van de resource groep en de naam van het Media Services account vergeet.
+- [Node.js](https://nodejs.org/en/download/) installeren.
+- [Maak een Media Services-account](create-account-cli-how-to.md). Zorg ervoor dat u de naam van de resource groep en de naam van het Media Services account vergeet.
 
 > [!IMPORTANT]
 > Bekijk [naam conventies](media-services-apis-overview.md#naming-conventions).
 
-## <a name="create-packagejson"></a>Package. json maken
+## <a name="create-packagejson"></a>package.jsmaken op
 
-1. Maak een package. JSON-bestand met behulp van uw favoriete editor.
+1. Maak een package.jsin het bestand met behulp van uw favoriete editor.
 1. Open het bestand en plak de volgende code:
 
 ```json
@@ -54,7 +53,7 @@ In dit artikel wordt beschreven hoe u verbinding maakt met de Azure Media Servic
 
 De volgende pakketten moeten worden opgegeven:
 
-|Pakket|Beschrijving|
+|Pakket|Description|
 |---|---|
 |`azure-arm-mediaservices`|Azure Media Services SDK. <br/>Om ervoor te zorgen dat u het meest recente Azure Media Services-pakket gebruikt, controleert u [NPM Azure-arm-Media Services installeren](https://www.npmjs.com/package/azure-arm-mediaservices/).|
 |`azure-storage`|Opslag-SDK. Wordt gebruikt bij het uploaden van bestanden naar assets.|
@@ -66,7 +65,7 @@ U kunt de volgende opdracht uitvoeren om ervoor te zorgen dat u het meest recent
 npm install azure-arm-mediaservices
 ```
 
-## <a name="connect-to-nodejs-client"></a>Verbinding maken met node. js-client
+## <a name="connect-to-nodejs-client"></a>Verbinding maken met Node.js-client
 
 1. Maak een JS-bestand met behulp van uw favoriete editor.
 1. Open het bestand en plak de volgende code.
@@ -123,7 +122,7 @@ npm install
 node index.js
 ```
 
-## <a name="see-also"></a>Zie ook
+## <a name="see-also"></a>Zie tevens
 
 - [Media Services concepten](concepts-overview.md)
 - [NPM install azure-arm-mediaservices](https://www.npmjs.com/package/azure-arm-mediaservices/)

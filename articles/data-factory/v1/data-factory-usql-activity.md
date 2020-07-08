@@ -13,15 +13,14 @@ ms.author: abnarain
 manager: anandsub
 robots: noindex
 ms.openlocfilehash: c6d3510dfdd02bf2eb07d656c706c44d895c582d
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "74927908"
 ---
 # <a name="transform-data-by-running-u-sql-scripts-on-azure-data-lake-analytics"></a>Gegevens transformeren door U-SQL-scripts uit te voeren in Azure Data Lake Analytics 
-> [!div class="op_single_selector" title1="Selecteer de versie van Data Factory service die u gebruikt:"]
-> * [Versie 1](data-factory-usql-activity.md)
+> [!div class="op_single_selector" title1="Selecteer de versie van de Data Factory-service die u gebruikt:"]
+> * [Versie 1:](data-factory-usql-activity.md)
 > * [Versie 2 (huidige versie)](../transform-data-using-data-lake-analytics.md)
 
 > [!NOTE]
@@ -47,9 +46,9 @@ De volgende tabel bevat beschrijvingen van de algemene eigenschappen die in de J
 
 | Eigenschap | Beschrijving | Vereist |
 | --- | --- | --- |
-| **voert** |De eigenschap type moet worden ingesteld op: **AzureDataLakeAnalytics**. |Ja |
-| **accountName** |Azure Data Lake Analytics account naam. |Ja |
-| **dataLakeAnalyticsUri** |Azure Data Lake Analytics-URI. |Nee |
+| **type** |De eigenschap type moet worden ingesteld op: **AzureDataLakeAnalytics**. |Yes |
+| **accountName** |Azure Data Lake Analytics account naam. |Yes |
+| **dataLakeAnalyticsUri** |Azure Data Lake Analytics-URI. |No |
 | **Abonnements** |Azure-abonnements-id |Nee (als dit niet wordt opgegeven, wordt het abonnement van de data factory gebruikt). |
 | **resourceGroupName** |Naam van Azure-resourcegroep |Nee (als dit niet is opgegeven, wordt de resource groep van de data factory gebruikt). |
 
@@ -63,9 +62,9 @@ Gebruik Service-Principal-verificatie door de volgende eigenschappen op te geven
 
 | Eigenschap | Beschrijving | Vereist |
 |:--- |:--- |:--- |
-| **servicePrincipalId** | Geef de client-ID van de toepassing op. | Ja |
-| **servicePrincipalKey** | Geef de sleutel van de toepassing op. | Ja |
-| **bouw** | Geef de Tenant gegevens op (domein naam of Tenant-ID) waaronder uw toepassing zich bevindt. U kunt deze ophalen door de muis in de rechter bovenhoek van de Azure Portal aan te wijzen. | Ja |
+| **servicePrincipalId** | Geef de client-ID van de toepassing op. | Yes |
+| **servicePrincipalKey** | Geef de sleutel van de toepassing op. | Yes |
+| **tenant** | Geef de Tenant gegevens op (domein naam of Tenant-ID) waaronder uw toepassing zich bevindt. U kunt deze ophalen door de muis in de rechter bovenhoek van de Azure Portal aan te wijzen. | Yes |
 
 **Voor beeld: Service-Principal-verificatie**
 ```json
@@ -91,8 +90,8 @@ U kunt ook verificatie van de gebruikers referenties voor Data Lake Analytics ge
 
 | Eigenschap | Beschrijving | Vereist |
 |:--- |:--- |:--- |
-| **autorisatie** | Klik op de knop **machtigen** in de Data Factory editor en voer uw referenties in die de automatisch gegenereerde autorisatie-URL aan deze eigenschap toewijzen. | Ja |
-| **sessionId** | OAuth-sessie-ID van de OAuth-autorisatie sessie. Elke sessie-ID is uniek en kan slechts één keer worden gebruikt. Deze instelling wordt automatisch gegenereerd wanneer u de Data Factory editor gebruikt. | Ja |
+| **autorisatie** | Klik op de knop **machtigen** in de Data Factory editor en voer uw referenties in die de automatisch gegenereerde autorisatie-URL aan deze eigenschap toewijzen. | Yes |
+| **sessionId** | OAuth-sessie-ID van de OAuth-autorisatie sessie. Elke sessie-ID is uniek en kan slechts één keer worden gebruikt. Deze instelling wordt automatisch gegenereerd wanneer u de Data Factory editor gebruikt. | Yes |
 
 **Voor beeld: verificatie van de gebruikers referenties**
 ```json
@@ -117,7 +116,7 @@ De autorisatie code die u hebt gegenereerd met behulp van de knop **autorisatie*
 
 | Gebruikers type | Verloopt na |
 |:--- |:--- |
-| Gebruikers accounts die niet worden beheerd door@hotmail.comAzure Active Directory @live.com(, enz.) |12 uur |
+| Gebruikers accounts die niet worden beheerd door Azure Active Directory ( @hotmail.com , @live.com enz.) |12 uur |
 | Gebruikers accounts die worden beheerd door Azure Active Directory (AAD) |14 dagen na de laatste uitvoering van het segment. <br/><br/>90 dagen, als een segment op basis van op OAuth gebaseerde gekoppelde service ten minste één keer per 14 dagen wordt uitgevoerd. |
 
 Als u deze fout wilt voor komen of oplossen, autoriseert u de knop **autoriseren** wanneer het **token verloopt** en implementeert u de gekoppelde service opnieuw. U kunt ook met behulp van code op een programmatische manier waarden genereren voor **SessionID** -en **autorisatie** -eigenschappen:
@@ -147,7 +146,7 @@ if (linkedService.Properties.TypeProperties is AzureDataLakeStoreLinkedService |
 }
 ```
 
-Zie de onderwerpen [AzureDataLakeStoreLinkedService class](https://msdn.microsoft.com/library/microsoft.azure.management.datafactories.models.azuredatalakestorelinkedservice.aspx), [AzureDataLakeAnalyticsLinkedService class](https://msdn.microsoft.com/library/microsoft.azure.management.datafactories.models.azuredatalakeanalyticslinkedservice.aspx)en [AuthorizationSessionGetResponse](https://msdn.microsoft.com/library/microsoft.azure.management.datafactories.models.authorizationsessiongetresponse.aspx) voor meer informatie over de Data Factory klassen die in de code worden gebruikt. Voeg een verwijzing toe naar: micro soft. Identity model. clients. ActiveDirectory. WindowsForms. dll voor de klasse WindowsFormsWebAuthenticationDialog. 
+Zie de onderwerpen [AzureDataLakeStoreLinkedService class](https://msdn.microsoft.com/library/microsoft.azure.management.datafactories.models.azuredatalakestorelinkedservice.aspx), [AzureDataLakeAnalyticsLinkedService class](https://msdn.microsoft.com/library/microsoft.azure.management.datafactories.models.azuredatalakeanalyticslinkedservice.aspx)en [AuthorizationSessionGetResponse](https://msdn.microsoft.com/library/microsoft.azure.management.datafactories.models.authorizationsessiongetresponse.aspx) voor meer informatie over de Data Factory klassen die in de code worden gebruikt. Voeg een verwijzing toe naar: Microsoft.IdentityModel.Clients.ActiveDirectory.WindowsForms.dll voor de klasse WindowsFormsWebAuthenticationDialog. 
 
 ## <a name="data-lake-analytics-u-sql-activity"></a>Data Lake Analytics U-SQL-activiteit
 Het volgende JSON-code fragment definieert een pijp lijn met een Data Lake Analytics U-SQL-activiteit. De definitie van de activiteit bevat een verwijzing naar de Azure Data Lake Analytics gekoppelde service die u eerder hebt gemaakt.   
@@ -207,18 +206,18 @@ In de volgende tabel worden namen en beschrijvingen van eigenschappen beschreven
 
 | Eigenschap            | Beschrijving                              | Vereist                                 |
 | :------------------ | :--------------------------------------- | :--------------------------------------- |
-| type                | De eigenschap type moet worden ingesteld op **DataLakeAnalyticsU-SQL**. | Ja                                      |
-| linkedServiceName   | Verwijzing naar de Azure Data Lake Analytics geregistreerd als een gekoppelde service in Data Factory | Ja                                      |
+| type                | De eigenschap type moet worden ingesteld op **DataLakeAnalyticsU-SQL**. | Yes                                      |
+| linkedServiceName   | Verwijzing naar de Azure Data Lake Analytics geregistreerd als een gekoppelde service in Data Factory | Yes                                      |
 | scriptPath          | Pad naar de map die het U-SQL-script bevat. De naam van het bestand is hoofdletter gevoelig. | Nee (als u script gebruikt)                   |
 | scriptLinkedService | Gekoppelde service die de opslag met het script koppelt aan de data factory | Nee (als u script gebruikt)                   |
-| uit              | Geef inline-script op in plaats van scriptPath en scriptLinkedService op te geven. Bijvoorbeeld: `"script": "CREATE DATABASE test"`. | Nee (als u scriptPath en scriptLinkedService gebruikt) |
-| degreeOfParallelism | Het maximum aantal knoop punten dat tegelijkertijd wordt gebruikt om de taak uit te voeren. | Nee                                       |
-| priority            | Hiermee wordt bepaald welke taken uit de wachtrij moeten worden geselecteerd om eerst te worden uitgevoerd. Hoe lager het getal, des te hoger de prioriteit. | Nee                                       |
-| parameters          | Para meters voor het U-SQL-script          | Nee                                       |
-| runtimeVersion      | Te gebruiken runtime versie van de U-SQL-engine | Nee                                       |
-| compilationMode     | <p>De compilatie modus van U-SQL. Moet een van de volgende waarden zijn:</p> <ul><li>**Semantisch:** Voer alleen semantische controles en benodigde Sanity controles uit.</li><li>**Volledig:** Voer de volledige compilatie uit, inclusief syntaxis controle, optimalisatie, het genereren van code, enzovoort.</li><li>**SingleBox:** Voer de volledige compilatie uit met de instelling target type ingesteld op SingleBox.</li></ul><p>Als u geen waarde opgeeft voor deze eigenschap, bepaalt de server de optimale compilatie modus. </p> | Nee                                       |
+| script              | Geef inline-script op in plaats van scriptPath en scriptLinkedService op te geven. Bijvoorbeeld: `"script": "CREATE DATABASE test"`. | Nee (als u scriptPath en scriptLinkedService gebruikt) |
+| degreeOfParallelism | Het maximum aantal knoop punten dat tegelijkertijd wordt gebruikt om de taak uit te voeren. | No                                       |
+| priority            | Hiermee wordt bepaald welke taken uit de wachtrij moeten worden geselecteerd om eerst te worden uitgevoerd. Hoe lager het getal, des te hoger de prioriteit. | No                                       |
+| parameters          | Para meters voor het U-SQL-script          | No                                       |
+| runtimeVersion      | Te gebruiken runtime versie van de U-SQL-engine | No                                       |
+| compilationMode     | <p>De compilatie modus van U-SQL. Moet een van de volgende waarden zijn:</p> <ul><li>**Semantisch:** Voer alleen semantische controles en benodigde Sanity controles uit.</li><li>**Volledig:** Voer de volledige compilatie uit, inclusief syntaxis controle, optimalisatie, het genereren van code, enzovoort.</li><li>**SingleBox:** Voer de volledige compilatie uit met de instelling target type ingesteld op SingleBox.</li></ul><p>Als u geen waarde opgeeft voor deze eigenschap, bepaalt de server de optimale compilatie modus. </p> | No                                       |
 
-Zie de [script definitie SearchLogProcessing. txt](#sample-u-sql-script) voor de script definitie. 
+Zie [SearchLogProcessing.txt script definitie](#sample-u-sql-script) voor de script definitie. 
 
 ## <a name="sample-input-and-output-datasets"></a>Voor beelden van invoer-en uitvoer gegevens sets
 ### <a name="input-dataset"></a>Invoer gegevensset
@@ -316,7 +315,7 @@ OUTPUT @rs1
       USING Outputters.Tsv(quoting:false, dateTimeFormat:null);
 ```
 
-De waarden voor ** \@** de para meters in en ** \@uit** in het U-SQL-script worden dynamisch door ADF door gegeven met behulp van de sectie para meters. Zie de sectie ' para meters ' in de definitie van de pijp lijn.
+De waarden voor de para meters ** \@ in** en ** \@ uit** in het U-SQL-script worden dynamisch door ADF door gegeven met behulp van de sectie para meters. Zie de sectie ' para meters ' in de definitie van de pijp lijn.
 
 U kunt ook andere eigenschappen, zoals degreeOfParallelism en prioriteit, opgeven in de pijplijn definitie voor de taken die worden uitgevoerd op de Azure Data Lake Analytics-service.
 

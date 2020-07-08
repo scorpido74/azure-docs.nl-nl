@@ -9,10 +9,9 @@ ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 11/27/2019
 ms.openlocfilehash: 3bb58334e96bf5378fb78b70125f9c7994a7c2fc
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75435645"
 ---
 # <a name="authorize-users-for-apache-ambari-views"></a>Gebruikers machtigen voor Apache Ambari-weergaven
@@ -28,7 +27,7 @@ Als u dit nog niet hebt gedaan, volgt u [deze instructies](./domain-joined/apach
 
 ## <a name="access-the-ambari-management-page"></a>Toegang tot de Ambari-beheer pagina
 
-Als u naar de **Ambari-beheer pagina** van de [Apache AMBARI-webgebruikersinterface](hdinsight-hadoop-manage-ambari.md)wilt `https://CLUSTERNAME.azurehdinsight.net`gaan, bladert u naar. Voer de gebruikers naam en het wacht woord in van de Cluster beheerder die u hebt gedefinieerd bij het maken van het cluster. Selecteer vervolgens in het Ambari-dash board de optie **Ambari beheren** onder het menu **beheerder** :
+Als u naar de **Ambari-beheer pagina** van de [Apache AMBARI-webgebruikersinterface](hdinsight-hadoop-manage-ambari.md)wilt gaan, bladert u naar `https://CLUSTERNAME.azurehdinsight.net` . Voer de gebruikers naam en het wacht woord in van de Cluster beheerder die u hebt gedefinieerd bij het maken van het cluster. Selecteer vervolgens in het Ambari-dash board de optie **Ambari beheren** onder het menu **beheerder** :
 
 ![Apache Ambari-dash board beheren](./media/hdinsight-authorize-users-to-ambari/manage-apache-ambari.png)
 
@@ -46,7 +45,7 @@ Als u naar de **Ambari-beheer pagina** van de [Apache AMBARI-webgebruikersinterf
 
 ### <a name="add-users-through-powershell"></a>Gebruikers toevoegen via Power shell
 
-Bewerk de onderstaande variabelen door te `CLUSTERNAME`vervangen `NEWUSER`, en `PASSWORD` met de juiste waarden.
+Bewerk de onderstaande variabelen door te vervangen `CLUSTERNAME` , `NEWUSER` en `PASSWORD` met de juiste waarden.
 
 ```powershell
 # Set-ExecutionPolicy Unrestricted
@@ -135,7 +134,7 @@ Write-Output $zookeeperHosts
 
 ### <a name="add-users-through-curl"></a>Gebruikers toevoegen via krul
 
-Bewerk de onderstaande variabelen door te `CLUSTERNAME`vervangen `ADMINPASSWORD`, `NEWUSER`, en `USERPASSWORD` met de juiste waarden. Het script is ontworpen om te worden uitgevoerd met bash. Er zijn kleine wijzigingen nodig voor een Windows-opdracht prompt.
+Bewerk de onderstaande variabelen door te vervangen `CLUSTERNAME` , `ADMINPASSWORD` , `NEWUSER` en `USERPASSWORD` met de juiste waarden. Het script is ontworpen om te worden uitgevoerd met bash. Er zijn kleine wijzigingen nodig voor een Windows-opdracht prompt.
 
 ```bash
 export clusterName="CLUSTERNAME"
@@ -179,9 +178,9 @@ Ambari wordt geleverd met View instances voor [Apache Hive](https://hive.apache.
 
 3. Schuif naar de onderkant van de pagina weer geven. In het gedeelte *machtigingen* hebt u twee opties voor het verlenen van domein gebruikers hun machtigingen voor de weer gave:
 
-**Machtigingen verlenen aan deze gebruikers** ![machtigingen verlenen aan deze gebruikers](./media/hdinsight-authorize-users-to-ambari/hdi-add-user-to-view.png)
+**Machtigingen verlenen aan deze gebruikers** ![ Machtigingen verlenen aan deze gebruikers](./media/hdinsight-authorize-users-to-ambari/hdi-add-user-to-view.png)
 
-**Machtigingen verlenen aan deze groepen** ![machtiging verlenen aan deze groepen](./media/hdinsight-authorize-users-to-ambari/add-group-to-view-permission.png)
+**Machtigingen verlenen aan deze groepen** ![ Machtigingen verlenen aan deze groepen](./media/hdinsight-authorize-users-to-ambari/add-group-to-view-permission.png)
 
 1. Als u een gebruiker wilt toevoegen, selecteert u de knop **gebruiker toevoegen** .
 

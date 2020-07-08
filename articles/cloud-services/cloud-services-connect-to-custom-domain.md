@@ -8,10 +8,9 @@ ms.topic: article
 ms.date: 07/18/2017
 ms.author: tagore
 ms.openlocfilehash: d40e392984d2675c748bda00c61cdaeb1c0932da
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75387017"
 ---
 # <a name="connecting-azure-cloud-services-roles-to-a-custom-ad-domain-controller-hosted-in-azure"></a>Azure Cloud Services-rollen koppelen aan een aangepaste AD-domein controller die wordt gehost in azure
@@ -26,7 +25,7 @@ Volg deze stapsgewijze hand leiding en als u problemen ondervindt, kunt u aan he
 
 Het netwerk waarnaar wordt verwezen door de Cloud service moet een **klassiek virtueel netwerk**zijn.
 
-## <a name="create-a-virtual-network"></a>Een virtueel netwerk maken
+## <a name="create-a-virtual-network"></a>Een Virtual Network maken
 U kunt een Virtual Network in azure maken met behulp van de Azure Portal of Power shell. Voor deze zelf studie wordt Power shell gebruikt. Zie [een virtueel netwerk maken](../virtual-network/quick-create-portal.md)voor het maken van een virtueel netwerk met behulp van de Azure Portal. In het artikel wordt beschreven hoe u een virtueel netwerk (Resource Manager) maakt, maar u moet een virtueel netwerk (klassiek) maken voor Cloud Services. Als u dit wilt doen, selecteert u in de Portal de optie **een resource maken**, type *virtueel netwerk* in het **zoekvak** en drukt u vervolgens op **Enter**. In de zoek resultaten, onder **Alles**, selecteert u **virtueel netwerk**. Selecteer onder **een implementatie model selecteren de**optie **klassiek**en selecteer vervolgens **maken**. U kunt vervolgens de stappen in het artikel volgen.
 
 ```powershell

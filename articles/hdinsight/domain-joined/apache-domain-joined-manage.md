@@ -9,10 +9,9 @@ ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 12/04/2019
 ms.openlocfilehash: 93880269edd72477f3aa85b2dbdc9d9f3ec8ef25
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75435887"
 ---
 # <a name="manage-hdinsight-clusters-with-enterprise-security-package"></a>HDInsight-clusters beheren met Enterprise Security Package
@@ -21,7 +20,7 @@ Meer informatie over de gebruikers en de rollen in HDInsight Enterprise Security
 
 ## <a name="use-vscode-to-link-to-domain-joined-cluster"></a>Gebruik VSCode om een koppeling te maken met een cluster dat aan een domein is toegevoegd
 
-U kunt een normaal cluster koppelen met behulp van Apache Ambari Managed username, ook een beveiligings Apache Hadoop cluster koppelen met behulp van domein `user1@contoso.com`gebruikers naam (zoals:).
+U kunt een normaal cluster koppelen met behulp van Apache Ambari Managed username, ook een beveiligings Apache Hadoop cluster koppelen met behulp van domein gebruikers naam (zoals: `user1@contoso.com` ).
 
 1. Open [Visual Studio code](https://code.visualstudio.com/). Zorg ervoor dat de extensie van de [Spark-& Hive-Hulpprogram ma's](../hdinsight-for-vscode.md) is geïnstalleerd.
 
@@ -29,7 +28,7 @@ U kunt een normaal cluster koppelen met behulp van Apache Ambari Managed usernam
 
 ## <a name="use-intellij-to-link-to-domain-joined-cluster"></a>Gebruik IntelliJ om een koppeling te maken met een cluster dat aan een domein is toegevoegd
 
-U kunt een normaal cluster koppelen met behulp van Ambari Managed username, ook een beveiligings-Hadoop-cluster koppelen met behulp `user1@contoso.com`van domein gebruikers naam (zoals:).
+U kunt een normaal cluster koppelen met behulp van Ambari Managed username, ook een beveiligings-Hadoop-cluster koppelen met behulp van domein gebruikers naam (zoals: `user1@contoso.com` ).
 
 1. Open IntelliJ IDEA. Zorg ervoor dat aan alle [vereisten](../spark/apache-spark-intellij-tool-plugin.md#prerequisites) wordt voldaan.
 
@@ -37,7 +36,7 @@ U kunt een normaal cluster koppelen met behulp van Ambari Managed username, ook 
 
 ## <a name="use-eclipse-to-link-to-domain-joined-cluster"></a>Gebruik Eclipse om een koppeling te maken met een cluster dat aan een domein is toegevoegd
 
-U kunt een normaal cluster koppelen met behulp van Ambari Managed username, ook een beveiligings-Hadoop-cluster koppelen met behulp `user1@contoso.com`van domein gebruikers naam (zoals:).
+U kunt een normaal cluster koppelen met behulp van Ambari Managed username, ook een beveiligings-Hadoop-cluster koppelen met behulp van domein gebruikers naam (zoals: `user1@contoso.com` ).
 
 1. Open Eclipse. Zorg ervoor dat aan alle [vereisten](../spark/apache-spark-eclipse-tool-plugin.md#prerequisites) wordt voldaan.
 
@@ -87,7 +86,7 @@ Als u wilt zoeken naar de Fully Qualified Domain Name van een hoofd knooppunt, g
 
 Een niet-ESP HDInsight-cluster heeft twee gebruikers accounts die worden gemaakt tijdens het maken van het cluster:
 
-- **Ambari beheerder**: dit account wordt ook een *Hadoop-gebruiker* of *http-gebruiker*genoemd. Dit account kan worden gebruikt om u aan te melden bij `https://CLUSTERNAME.azurehdinsight.net`Ambari op. Het kan ook worden gebruikt om query's uit te voeren op Ambari-weer gaven, taken uit te voeren via externe hulpprogram ma's (bijvoorbeeld Power shell, Templeton, Visual Studio) en te verifiëren met het Hive ODBC-stuur programma en BI-hulpprogram ma's (bijvoorbeeld Excel, Power BI of tableau).
+- **Ambari beheerder**: dit account wordt ook een *Hadoop-gebruiker* of *http-gebruiker*genoemd. Dit account kan worden gebruikt om u aan te melden bij Ambari op `https://CLUSTERNAME.azurehdinsight.net` . Het kan ook worden gebruikt om query's uit te voeren op Ambari-weer gaven, taken uit te voeren via externe hulpprogram ma's (bijvoorbeeld Power shell, Templeton, Visual Studio) en te verifiëren met het Hive ODBC-stuur programma en BI-hulpprogram ma's (bijvoorbeeld Excel, Power BI of tableau).
 
 Een HDInsight-cluster met ESP heeft naast Ambari-beheerder drie nieuwe gebruikers.
 

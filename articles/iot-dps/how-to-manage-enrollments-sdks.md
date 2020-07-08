@@ -8,10 +8,9 @@ ms.topic: conceptual
 ms.service: iot-dps
 services: iot-dps
 ms.openlocfilehash: 5cb0e25ec70956e66f7b867f0d0b9473160fc3ad
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "74975071"
 ---
 # <a name="how-to-manage-device-enrollments-with-azure-device-provisioning-service-sdks"></a>Registratie van apparaten beheren met de Sdk's van Azure Device Provisioning Service
@@ -28,7 +27,7 @@ Een *apparaatregistratie* maakt een record van één apparaat of een groep appar
         * Registratie groep: het [CA/basis certificaat](/azure/iot-dps/concepts-security#root-certificate) of het [tussenliggende certificaat](/azure/iot-dps/concepts-security#intermediate-certificate), dat wordt gebruikt om een apparaat certificaat te maken op een fysiek apparaat.  Het kan ook worden gegenereerd met de SDK-codec-emulator.
 * Exacte API-aanroepen kunnen verschillen vanwege taal verschillen. Bekijk de voor beelden die worden weer gegeven op GitHub voor meer informatie:
    * [Voor beelden van Java Provisioning Service-client](https://github.com/Azure/azure-iot-sdk-java/tree/master/provisioning/provisioning-samples)
-   * [Voor beelden van het inrichten van de service-client voor node. js](https://github.com/Azure/azure-iot-sdk-node/tree/master/provisioning/service/samples)
+   * [Voor beelden vanNode.js inrichten service-clients](https://github.com/Azure/azure-iot-sdk-node/tree/master/provisioning/service/samples)
    * [Voor beelden van .NET Provisioning Service-client](https://github.com/Azure/azure-iot-sdk-csharp/tree/master/provisioning/service/samples)
 
 ## <a name="create-a-device-enrollment"></a>Een apparaatregistratie maken
@@ -39,18 +38,18 @@ Er zijn twee manieren waarop u uw apparaten kunt inschrijven bij de inrichtings 
     U kunt een registratie groep maken met de Sdk's die volgen op deze werk stroom:
 
     1. Voor de registratie groep gebruikt het Attestation-mechanisme X. 509-basis certificaat.  Roep Service SDK API ```X509Attestation.createFromRootCertificate``` met basis certificaat om Attestation voor registratie te maken.  X. 509-basis certificaat is opgenomen in een PEM-bestand of als een teken reeks.
-    1. Maak een nieuwe ```EnrollmentGroup``` variabele met behulp van de ```attestation``` maakt ```enrollmentGroupId```en een unieke.  U kunt eventueel ook para meters instellen ```Device ID```, ```IoTHubHostName```zoals ```ProvisioningStatus```,,.
-    2. Roep Service SDK API ```createOrUpdateEnrollmentGroup``` aan in uw back- ```EnrollmentGroup``` end-toepassing met om een registratie groep te maken.
+    1. Maak een nieuwe ```EnrollmentGroup``` variabele met behulp van de maakt ```attestation``` en een unieke ```enrollmentGroupId``` .  U kunt eventueel ook para meters instellen, zoals ```Device ID``` , ```IoTHubHostName``` , ```ProvisioningStatus``` .
+    2. Roep Service SDK API aan ```createOrUpdateEnrollmentGroup``` in uw back-end-toepassing met ```EnrollmentGroup``` om een registratie groep te maken.
 
 * Een **afzonderlijke inschrijving** is een vermelding voor één apparaat dat kan worden geregistreerd. Individuele inschrijvingen kunnen X. 509-certificaten of SAS-tokens (van een fysieke of virtuele TPM) gebruiken als Attestation-mechanismen. We raden u aan om afzonderlijke inschrijvingen te gebruiken voor apparaten die unieke initiële configuraties vereisen, of voor apparaten die alleen SAS-tokens via TPM of virtuele TPM kunnen gebruiken als Attestation-mechanisme. Afzonderlijke inschrijvingen hebben mogelijk de gewenste apparaat-id voor IoT Hub die is opgegeven.
 
     U kunt een afzonderlijke inschrijving maken met de Sdk's die volgen op deze werk stroom:
     
     1. Kies uw ```attestation``` mechanisme. Dit kan TPM of X. 509 zijn.
-        1. **TPM**: met behulp van de goedkeurings sleutel van een fysiek apparaat of van TPM Simulator als invoer, kunt u de service ```TpmAttestation``` SDK API aanroepen om Attestation voor registratie te maken. 
-        2. **X. 509**: als u het client certificaat gebruikt als invoer, kunt u de Service SDK ```X509Attestation.createFromClientCertificate``` API aanroepen om Attestation voor registratie te maken.
-    2. Maak een nieuwe ```IndividualEnrollment``` variabele met behulp ```attestation``` van het gemaakte en ```registrationId``` unieke als-invoer, dat zich op uw apparaat bevindt of dat is gegenereerd op basis van de TPM-Simulator.  U kunt eventueel ook para meters instellen ```Device ID```, ```IoTHubHostName```zoals ```ProvisioningStatus```,,.
-    3. Roep Service SDK API ```createOrUpdateIndividualEnrollment``` aan in uw back- ```IndividualEnrollment``` end-toepassing met om een afzonderlijke inschrijving te maken.
+        1. **TPM**: met behulp van de goedkeurings sleutel van een fysiek apparaat of van TPM Simulator als invoer, kunt u de Service SDK API aanroepen ```TpmAttestation``` om Attestation voor registratie te maken. 
+        2. **X. 509**: als u het client certificaat gebruikt als invoer, kunt u de Service SDK API aanroepen ```X509Attestation.createFromClientCertificate``` om Attestation voor registratie te maken.
+    2. Maak een nieuwe ```IndividualEnrollment``` variabele met behulp van het ```attestation``` gemaakte en unieke ```registrationId``` als-invoer, dat zich op uw apparaat bevindt of dat is gegenereerd op basis van de TPM-Simulator.  U kunt eventueel ook para meters instellen, zoals ```Device ID``` , ```IoTHubHostName``` , ```ProvisioningStatus``` .
+    3. Roep Service SDK API aan ```createOrUpdateIndividualEnrollment``` in uw back-end-toepassing met ```IndividualEnrollment``` om een afzonderlijke inschrijving te maken.
 
 Nadat u een inschrijving hebt gemaakt, retourneert de Device Provisioning-Service een registratie resultaat. Deze werk stroom wordt gedemonstreerd in de [eerder genoemde](#prerequisites)voor beelden.
 
@@ -60,11 +59,11 @@ Nadat u een inschrijvings vermelding hebt gemaakt, wilt u de registratie wellich
 
 U kunt een inschrijvings vermelding die volgt op deze werk stroom bijwerken:
 * **Afzonderlijke inschrijving**:
-    1. Ontvang eerst de meest recente inschrijving van de inrichtings service met de ```getIndividualEnrollment```Service SDK API.
+    1. Ontvang eerst de meest recente inschrijving van de inrichtings service met de Service SDK API ```getIndividualEnrollment``` .
     2. Wijzig indien nodig de para meter van de meest recente registratie. 
     3. Gebruik de laatste inschrijvings Service SDK API ```createOrUpdateIndividualEnrollment``` om uw inschrijvings vermelding bij te werken.
 * **Groeps registratie**:
-    1. Ontvang eerst de meest recente inschrijving van de inrichtings service met de ```getEnrollmentGroup```Service SDK API.
+    1. Ontvang eerst de meest recente inschrijving van de inrichtings service met de Service SDK API ```getEnrollmentGroup``` .
     2. Wijzig indien nodig de para meter van de meest recente registratie.
     3. Gebruik de laatste inschrijvings Service SDK API ```createOrUpdateEnrollmentGroup``` om uw inschrijvings vermelding bij te werken.
 
@@ -72,8 +71,8 @@ Deze werk stroom wordt gedemonstreerd in de [eerder genoemde](#prerequisites)voo
 
 ## <a name="remove-an-enrollment-entry"></a>Een inschrijvings vermelding verwijderen
 
-* **Individuele inschrijving** kan worden verwijderd door de Service SDK API ```deleteIndividualEnrollment``` te ```registrationId```roepen met behulp van.
-* **Groeps registratie** kan worden verwijderd door de Service SDK ```deleteEnrollmentGroup``` API ```enrollmentGroupId```te roepen met behulp van.
+* **Individuele inschrijving** kan worden verwijderd door de Service SDK API te roepen ```deleteIndividualEnrollment``` met behulp van ```registrationId``` .
+* **Groeps registratie** kan worden verwijderd door de Service SDK API te roepen ```deleteEnrollmentGroup``` met behulp van ```enrollmentGroupId``` .
 
 Deze werk stroom wordt gedemonstreerd in de [eerder genoemde](#prerequisites)voor beelden.
 
@@ -81,7 +80,7 @@ Deze werk stroom wordt gedemonstreerd in de [eerder genoemde](#prerequisites)voo
 
 U kunt een bulk bewerking uitvoeren om meerdere afzonderlijke inschrijvingen te maken, bij te werken of te verwijderen volgens deze werk stroom:
 
-1. Maak een variabele die meerdere ```IndividualEnrollment```bevat.  De implementatie van deze variabele verschilt voor elke taal.  Bekijk het voor beeld van bulk bewerking op GitHub voor meer informatie.
+1. Maak een variabele die meerdere bevat ```IndividualEnrollment``` .  De implementatie van deze variabele verschilt voor elke taal.  Bekijk het voor beeld van bulk bewerking op GitHub voor meer informatie.
 2. Roep Service SDK API ```runBulkOperation``` met een ```BulkOperationMode``` gewenste bewerking en uw variabele voor afzonderlijke registraties. Vier modi worden ondersteund: Create, update, updateIfMatchEtag en DELETE.
 
 Nadat u een bewerking hebt uitgevoerd, retourneert de Device Provisioning-Service een resultaat van een bulk bewerking.

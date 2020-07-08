@@ -8,10 +8,9 @@ ms.topic: conceptual
 ms.date: 12/09/2019
 ms.author: robinsh
 ms.openlocfilehash: c54853717f7e0b234df013e5aee575682d0d3d97
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75429157"
 ---
 # <a name="how-to-clone-an-azure-iot-hub-to-another-region"></a>Een Azure IoT hub klonen naar een andere regio
@@ -107,7 +106,7 @@ Deze sectie bevat specifieke instructies voor het migreren van de hub.
 
 ### <a name="find-the-original-hub-and-export-it-to-a-resource-template"></a>Zoek de oorspronkelijke hub en exporteer deze naar een resource sjabloon.
 
-1. Meld u aan bij de [Azure Portal](https://portal.azure.com). 
+1. Meld u aan bij [Azure Portal](https://portal.azure.com). 
 
 1. Ga naar **resource groepen** en selecteer de resource groep die de hub bevat die u wilt verplaatsen. U kunt ook naar **resources** gaan en de hub op die manier vinden. Selecteer de hub.
 
@@ -121,7 +120,7 @@ Deze sectie bevat specifieke instructies voor het migreren van de hub.
 
 ### <a name="view-the-template"></a>De sjabloon weer geven 
 
-1. Ga naar de map met Down loads (of naar de map die u hebt gebruikt tijdens het exporteren van de sjabloon) en zoek het zip-bestand. Open het zip-bestand en zoek het bestand `template.json`met de naam. Selecteer deze en selecteer vervolgens CTRL + C om de sjabloon te kopiëren. Ga naar een andere map die zich niet in het zip-bestand bevindt en plak het bestand (CTRL + V). Nu kunt u deze bewerken.
+1. Ga naar de map met Down loads (of naar de map die u hebt gebruikt tijdens het exporteren van de sjabloon) en zoek het zip-bestand. Open het zip-bestand en zoek het bestand met de naam `template.json` . Selecteer deze en selecteer vervolgens CTRL + C om de sjabloon te kopiëren. Ga naar een andere map die zich niet in het zip-bestand bevindt en plak het bestand (CTRL + V). Nu kunt u deze bewerken.
  
     Het volgende voor beeld is voor een generieke hub zonder routerings configuratie. Het is een hub met S1-laag (met 1 eenheid) met de naam **ContosoTestHub29358** in de regio **westus**. Dit is de geëxporteerde sjabloon.
 
@@ -308,7 +307,7 @@ Wanneer u de Resource Manager-sjabloon exporteert voor een hub waarvoor route ri
    "containerName": "fabrikamresults",
    ```
 
-1. Nadat u de account sleutel voor het opslag account hebt opgehaald, plaatst u deze in de sjabloon in `AccountKey=****` de-component in de plaats van de sterretjes. 
+1. Nadat u de account sleutel voor het opslag account hebt opgehaald, plaatst u deze in de sjabloon in de-component in `AccountKey=****` de plaats van de sterretjes. 
 
 1. Voor service bus-wacht rijen haalt u de gedeelde toegangs sleutel op die overeenkomt met de SharedAccessKeyName. Dit zijn de sleutel en `SharedAccessKeyName` in de JSON:
 
@@ -347,7 +346,7 @@ U hebt nu een sjabloon waarmee een nieuwe hub wordt gemaakt die bijna precies zo
 
 Maak de nieuwe hub op de nieuwe locatie met behulp van de sjabloon. Als u routerings resources hebt die u wilt verplaatsen, moeten de resources worden ingesteld op de nieuwe locatie en moeten de verwijzingen in de sjabloon worden bijgewerkt. Als u de routerings resources niet verplaatst, moeten ze zich in de sjabloon bevinden met de bijgewerkte sleutels.
 
-1. Meld u aan bij de [Azure Portal](https://portal.azure.com).
+1. Meld u aan bij [Azure Portal](https://portal.azure.com).
 
 1. Selecteer **Een resource maken**. 
 
@@ -487,7 +486,7 @@ Nu hebt u de omgevings variabelen in een bestand met de SET-opdrachten en weet u
 
 1. Open een opdrachtpromptvenster. Selecteer Windows en typ in `command prompt` om het opdracht prompt venster te openen.
 
-1. Kopieer de opdrachten die de omgevings variabelen in één keer instellen en plak ze in het opdracht prompt venster en selecteer ENTER. Wanneer u klaar bent, typt `SET` u in het opdracht prompt venster om de omgevings variabelen en de waarden ervan weer te geven. Nadat u deze hebt gekopieerd naar het opdracht prompt venster, hoeft u deze niet opnieuw te kopiëren, tenzij u een nieuw opdracht prompt venster opent.
+1. Kopieer de opdrachten die de omgevings variabelen in één keer instellen en plak ze in het opdracht prompt venster en selecteer ENTER. Wanneer u klaar bent, typt u `SET` in het opdracht prompt venster om de omgevings variabelen en de waarden ervan weer te geven. Nadat u deze hebt gekopieerd naar het opdracht prompt venster, hoeft u deze niet opnieuw te kopiëren, tenzij u een nieuw opdracht prompt venster opent.
 
 1. Wijzig in het opdracht prompt venster de mappen totdat u zich in./ImportExportDevicesSample (waarbij het bestand ImportExportDevicesSample. csproj bestaat). Typ vervolgens het volgende en voeg uw opdracht regel argumenten toe.
 
@@ -549,7 +548,7 @@ U kunt de apparaten weer geven in de [Azure Portal](https://portal.azure.com) en
 
 1. Ga naar de nieuwe hub met behulp van de [Azure Portal](https://portal.azure.com). Selecteer uw hub en selecteer **IOT-apparaten**. U ziet de apparaten die u zojuist hebt gekopieerd van de oude hub naar de gekloonde hub. U kunt ook de eigenschappen voor de gekloonde hub weer geven. 
 
-1. Controleer op import/export-fouten door naar het Azure-opslag account in de [Azure Portal](https://portal.azure.com) te gaan en `devicefiles` te zoeken in `ImportErrors.log`de container voor. Als dit bestand leeg is (de grootte is 0), zijn er geen fouten opgetreden. Als u hetzelfde apparaat meer dan één keer probeert te importeren, wordt het apparaat de tweede keer geweigerd en wordt er een fout bericht aan het logboek bestand toegevoegd.
+1. Controleer op import/export-fouten door naar het Azure-opslag account in de [Azure Portal](https://portal.azure.com) te gaan en te zoeken in de `devicefiles` container voor `ImportErrors.log` . Als dit bestand leeg is (de grootte is 0), zijn er geen fouten opgetreden. Als u hetzelfde apparaat meer dan één keer probeert te importeren, wordt het apparaat de tweede keer geweigerd en wordt er een fout bericht aan het logboek bestand toegevoegd.
 
 ### <a name="committing-the-changes"></a>De wijzigingen worden doorgevoerd 
 

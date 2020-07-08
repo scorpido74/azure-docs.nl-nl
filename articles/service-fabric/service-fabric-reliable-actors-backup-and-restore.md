@@ -6,10 +6,9 @@ ms.topic: conceptual
 ms.date: 10/29/2018
 ms.author: vturecek
 ms.openlocfilehash: 41ba3f9c7d362756b800005d0c140c23dd96caa6
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75370456"
 ---
 # <a name="implement-reliable-actors-backup-and-restore"></a>Reliable Actors back-up en herstel implementeren
@@ -18,7 +17,7 @@ ms.locfileid: "75370456"
 > Micro soft raadt u aan om [periodieke back-ups en herstel bewerkingen](service-fabric-backuprestoreservice-quickstart-azurecluster.md) te gebruiken voor het configureren van gegevens back-ups van betrouw bare stateful services en reliable actors. 
 > 
 
-In het volgende voor beeld bevat een aangepaste actor service een methode voor het maken van back-ups van actor gegevens door gebruik te maken van de externe listener `ActorService`die al aanwezig is in:
+In het volgende voor beeld bevat een aangepaste actor service een methode voor het maken van back-ups van actor gegevens door gebruik te maken van de externe listener die al aanwezig is in `ActorService` :
 
 ```csharp
 public interface IMyActorService : IService
@@ -94,7 +93,7 @@ class MyActorServiceImpl extends ActorService implements MyActorService
 }
 ```
 
-In dit voor beeld `IMyActorService` is een extern contract dat implementeert `IService` (C#) en `Service` (Java) en wordt vervolgens geïmplementeerd door. `MyActorService` Door dit externe contract toe te voegen, `IMyActorService` zijn methoden nu ook beschikbaar voor een-client door een externe proxy te `ActorServiceProxy`maken via:
+In dit voor beeld `IMyActorService` is een extern contract dat implementeert `IService` (C#) en `Service` (Java) en wordt vervolgens geïmplementeerd door `MyActorService` . Door dit externe contract toe te voegen, `IMyActorService` zijn methoden nu ook beschikbaar voor een-client door een externe proxy te maken via `ActorServiceProxy` :
 
 ```csharp
 IMyActorService myActorServiceProxy = ActorServiceProxy.Create<IMyActorService>(

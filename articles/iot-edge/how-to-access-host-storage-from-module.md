@@ -9,10 +9,9 @@ ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
 ms.openlocfilehash: 079d5845917e63fadcf0466e5a744ed637d704ca
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75434523"
 ---
 # <a name="give-modules-access-to-a-devices-local-storage"></a>Modules toegang geven tot de lokale opslag van een apparaat
@@ -70,11 +69,11 @@ U kunt de lokale opslag ook rechtstreeks in het implementatie manifest configure
 }
 ```
 
-Vervang `<HostStoragePath>` en `<ModuleStoragePath>` door het opslagpad van uw host en module; beide waarden moeten een absoluut pad zijn.
+Vervang `<HostStoragePath>` en `<ModuleStoragePath>` door de opslag locatie van uw host en module; beide waarden moeten een absoluut pad zijn.
 
-Bijvoorbeeld: op een Linux- `"Binds":["/etc/iotedge/storage/:/iotedge/storage/"]` systeem wordt de map **/etc/iotedge/Storage** op uw hostsysteem toegewezen aan de Directory **/iotedge/Storage/** in de container. In een Windows-systeem `"Binds":["C:\\temp:C:\\contemp"]` betekent een ander voor beeld dat de map **c:\\Temp** op uw hostsysteem is toegewezen aan de Directory **c\\:** in de container.
+Bijvoorbeeld: op een Linux-systeem `"Binds":["/etc/iotedge/storage/:/iotedge/storage/"]` wordt de map **/etc/iotedge/Storage** op uw hostsysteem toegewezen aan de Directory **/iotedge/Storage/** in de container. In een Windows-systeem betekent een ander voor beeld `"Binds":["C:\\temp:C:\\contemp"]` dat de map **c: \\ temp** op uw hostsysteem is toegewezen aan de Directory **c \\ :** in de container.
 
-Daarnaast moet u op Linux-apparaten ervoor zorgen dat het gebruikers profiel voor uw module de vereiste machtigingen lezen, schrijven en uitvoeren heeft voor de map van het hostsysteem. Als u terugkeert naar het vorige voor beeld van het inschakelen van IoT Edge hub om berichten op te slaan in de lokale opslag van uw apparaat, moet u machtigingen verlenen aan het gebruikers profiel, UID 1000. (De IoT Edge-agent fungeert als root, zodat er geen aanvullende machtigingen nodig zijn.) Er zijn verschillende manieren om mapmachtigingen te beheren op Linux-systemen, waaronder `chown` het gebruik van om de Directory- `chmod` eigenaar te wijzigen en de machtigingen te wijzigen, zoals:
+Daarnaast moet u op Linux-apparaten ervoor zorgen dat het gebruikers profiel voor uw module de vereiste machtigingen lezen, schrijven en uitvoeren heeft voor de map van het hostsysteem. Als u terugkeert naar het vorige voor beeld van het inschakelen van IoT Edge hub om berichten op te slaan in de lokale opslag van uw apparaat, moet u machtigingen verlenen aan het gebruikers profiel, UID 1000. (De IoT Edge-agent fungeert als root, zodat er geen aanvullende machtigingen nodig zijn.) Er zijn verschillende manieren om mapmachtigingen te beheren op Linux-systemen, waaronder `chown` het gebruik van om de directory-eigenaar te wijzigen en `chmod` de machtigingen te wijzigen, zoals:
 
 ```bash
 sudo chown 1000 <HostStoragePath>

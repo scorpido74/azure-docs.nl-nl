@@ -4,10 +4,9 @@ description: Dit artikel heeft betrekking op enkele veelvoorkomende problemen bi
 ms.topic: conceptual
 ms.date: 2/23/2018
 ms.openlocfilehash: d462f2c2482e0fbb4d252967754a9675ed362674
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75377919"
 ---
 # <a name="troubleshoot-application-upgrades"></a>Problemen met toepassingsupgrades oplossen
@@ -190,7 +189,7 @@ De upgrade wordt voortgezet vanuit het upgrade domein waar het voor het laatst i
 
 Mogelijke oorzaak 1:
 
-Service Fabric worden alle percentages omgezet in het werkelijke aantal entiteiten (bijvoorbeeld replica's, partities en Services) voor de status evaluatie en worden er altijd naar hele entiteiten afgerond. Als de maximale *MaxPercentUnhealthyReplicasPerPartition* bijvoorbeeld 21% is en er vijf replica's zijn, kunt Service Fabric Maxi maal twee beschadigde replica's (dat wil zeggen`Math.Ceiling (5*0.21)`). Daarom moet het status beleid dienovereenkomstig worden ingesteld.
+Service Fabric worden alle percentages omgezet in het werkelijke aantal entiteiten (bijvoorbeeld replica's, partities en Services) voor de status evaluatie en worden er altijd naar hele entiteiten afgerond. Als de maximale *MaxPercentUnhealthyReplicasPerPartition* bijvoorbeeld 21% is en er vijf replica's zijn, kunt Service Fabric Maxi maal twee beschadigde replica's (dat wil zeggen `Math.Ceiling (5*0.21)` ). Daarom moet het status beleid dienovereenkomstig worden ingesteld.
 
 Mogelijke oorzaak 2:
 
@@ -200,7 +199,7 @@ Tijdens de upgrade kan D echter in orde worden, terwijl C slecht wordt. De upgra
 
 ### <a name="i-did-not-specify-a-health-policy-for-application-upgrade-but-the-upgrade-still-fails-for-some-time-outs-that-i-never-specified"></a>Ik heb geen status beleid opgegeven voor de upgrade van de toepassing, maar de upgrade mislukt voor een aantal time-outs die ik nooit heb opgegeven
 
-Wanneer het status beleid niet aan de upgrade aanvraag wordt door gegeven, worden ze opgehaald uit de *ApplicationManifest. XML* van de huidige toepassings versie. Als u bijvoorbeeld toepassing X bijwerkt van versie 1,0 naar versie 2,0, worden de beleids regels voor de status van de toepassing gebruikt die in versie 1,0 zijn opgegeven. Als voor de upgrade een ander status beleid moet worden gebruikt, moet het beleid worden opgegeven als onderdeel van de API-aanroep van de toepassings upgrade. De beleids regels die zijn opgegeven als onderdeel van de API-aanroep, zijn alleen van toepassing tijdens de upgrade. Zodra de upgrade is voltooid, worden de beleids regels die zijn opgegeven in *ApplicationManifest. XML* gebruikt.
+Wanneer het status beleid niet aan de upgrade aanvraag wordt door gegeven, worden ze opgehaald uit de *ApplicationManifest.xml* van de huidige versie van de toepassing. Als u bijvoorbeeld toepassing X bijwerkt van versie 1,0 naar versie 2,0, worden de beleids regels voor de status van de toepassing gebruikt die in versie 1,0 zijn opgegeven. Als voor de upgrade een ander status beleid moet worden gebruikt, moet het beleid worden opgegeven als onderdeel van de API-aanroep van de toepassings upgrade. De beleids regels die zijn opgegeven als onderdeel van de API-aanroep, zijn alleen van toepassing tijdens de upgrade. Zodra de upgrade is voltooid, worden de beleids regels die in de *ApplicationManifest.xml* zijn opgegeven, gebruikt.
 
 ### <a name="incorrect-time-outs-are-specified"></a>Er zijn onjuiste time-outs opgegeven
 
@@ -212,9 +211,9 @@ De tijd voor het volt ooien van een upgrade is afhankelijk van de status control
 
 Hier volgt een snelle hernieuwde informatie over hoe de time-outs communiceren met de upgrade tijden:
 
-Upgrades voor een upgrade domein kunnen niet sneller worden uitgevoerd dan *HealthCheckWaitDuration* + *HealthCheckStableDuration*.
+Upgrades voor een upgrade domein kunnen niet sneller worden uitgevoerd dan *HealthCheckWaitDuration*  +  *HealthCheckStableDuration*.
 
-De upgrade fout kan sneller worden uitgevoerd dan *HealthCheckWaitDuration* + *HealthCheckRetryTimeout*.
+De upgrade fout kan sneller worden uitgevoerd dan *HealthCheckWaitDuration*  +  *HealthCheckRetryTimeout*.
 
 De upgrade tijd voor een upgrade domein wordt beperkt door *UpgradeDomainTimeout*.  Als *HealthCheckRetryTimeout* en *HealthCheckStableDuration* beide niet-nul zijn en de status van de toepassing wordt omgeschakeld, wordt er uiteindelijk een time-out voor de upgrade uitgevoerd op *UpgradeDomainTimeout*. *UpgradeDomainTimeout* begint met tellen zodra de upgrade voor het huidige upgrade domein begint.
 

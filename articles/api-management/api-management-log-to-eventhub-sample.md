@@ -16,10 +16,9 @@ ms.topic: article
 ms.date: 01/23/2018
 ms.author: apimpm
 ms.openlocfilehash: 4a0717bf7a284668af4808acae3050cc7f42f836
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75442531"
 ---
 # <a name="monitor-your-apis-with-azure-api-management-event-hubs-and-moesif"></a>Bewaak uw Api's met Azure API Management, Event Hubs en Moesif
@@ -46,7 +45,7 @@ Event Hubs kan gebeurtenissen streamen naar meerdere consumenten groepen. Hierdo
 ## <a name="a-policy-to-send-applicationhttp-messages"></a>Een beleid voor het verzenden van toepassings-/HTTP-berichten
 Een event hub accepteert gebeurtenis gegevens als een eenvoudige teken reeks. De inhoud van de teken reeks is aan u toe. Als u een HTTP-aanvraag wilt inpakken en naar Event Hubs wilt verzenden, moet u de teken reeks opmaken met de aanvraag-of antwoord gegevens. In de volgende situaties, als er een bestaande indeling is die we opnieuw kunnen gebruiken, is het wellicht niet mogelijk om onze eigen code te schrijven. In eerste instantie wordt gekeken naar het gebruik van de [har](http://www.softwareishard.com/blog/har-12-spec/) voor het verzenden van HTTP-aanvragen en-antwoorden. Deze indeling is echter geoptimaliseerd voor het opslaan van een reeks HTTP-aanvragen in een JSON-indeling. Het bevat een aantal verplichte elementen die onnodige complexiteit hebben toegevoegd voor het scenario van het door sturen van het HTTP-bericht over de kabel.
 
-Een alternatieve optie was het `application/http` media type te gebruiken zoals beschreven in de HTTP-specificatie [RFC 7230](https://tools.ietf.org/html/rfc7230). Dit media type maakt gebruik van de exacte indeling die wordt gebruikt voor het daad werkelijk verzenden van HTTP-berichten via de kabel, maar het hele bericht kan worden geplaatst in de hoofd tekst van een andere HTTP-aanvraag. In ons geval gaan we de hoofd tekst gebruiken als ons bericht om naar Event Hubs te verzenden. In de [micro soft ASP.net Web API 2,2-client](https://www.nuget.org/packages/Microsoft.AspNet.WebApi.Client/) bibliotheken vindt u een parser die deze indeling kan parseren en converteren naar de systeem eigen `HttpRequestMessage` en `HttpResponseMessage` -objecten.
+Een alternatieve optie was het `application/http` media type te gebruiken zoals beschreven in de HTTP-specificatie [RFC 7230](https://tools.ietf.org/html/rfc7230). Dit media type maakt gebruik van de exacte indeling die wordt gebruikt voor het daad werkelijk verzenden van HTTP-berichten via de kabel, maar het hele bericht kan worden geplaatst in de hoofd tekst van een andere HTTP-aanvraag. In ons geval gaan we de hoofd tekst gebruiken als ons bericht om naar Event Hubs te verzenden. In de [micro soft ASP.net Web API 2,2-client](https://www.nuget.org/packages/Microsoft.AspNet.WebApi.Client/) bibliotheken vindt u een parser die deze indeling kan parseren en converteren naar de systeem eigen `HttpRequestMessage` en- `HttpResponseMessage` objecten.
 
 Om dit bericht te kunnen maken, moeten we profiteren van [beleids expressies](/azure/api-management/api-management-policy-expressions) op basis van C# in azure API management. Dit is het beleid dat een HTTP-aanvraag bericht verzendt naar Azure Event Hubs.
 
@@ -83,13 +82,13 @@ Er zijn enkele specifieke dingen die van deze beleids expressie moeten worden ve
 Om ervoor te zorgen dat onze berichten aan consumenten worden geleverd en dat ze profiteren van de capaciteit van de belasting verdeling van partities, heb ik ervoor gekozen om HTTP-aanvraag berichten te verzenden naar één partitie en HTTP-antwoord berichten naar een tweede partitie. Dit zorgt voor een gelijkmatige verdeling van de belasting en we kunnen garanderen dat alle aanvragen op volg orde worden verbruikt en dat alle antwoorden in de juiste volg orde worden verbruikt. Het is mogelijk dat een reactie vóór de bijbehorende aanvraag wordt verbruikt, maar omdat er geen probleem is, omdat er een ander mechanisme is voor het correleren van aanvragen naar antwoorden en we weten dat aanvragen altijd vóór antwoorden worden ontvangen.
 
 ### <a name="http-payloads"></a>HTTP-nettoladingen
-Na het maken `requestLine`van de, kijken we of de aanvraag tekst moet worden afgekapt. De aanvraag tekst is afgekapt tot 1024. Dit kan worden verg root, maar afzonderlijke Event hub-berichten zijn beperkt tot 256 KB. het is dus waarschijnlijk dat sommige HTTP-bericht teksten niet in één bericht passen. Bij het uitvoeren van een logboek registratie en analyse van een aanzienlijke hoeveelheid informatie kan alleen worden afgeleid van de regel en de regels van de HTTP-aanvraag. Daarnaast kunnen veel Api's aanvragen alleen kleine lichamen retour neren, waardoor het verlies van de informatie waarde door grote instanties te verminderen in vergelijking met de reductie van overdracht, verwerking en opslag kosten om alle inhoud van de hoofd tekst te bewaren. Een laatste opmerking over het verwerken van de hoofd tekst is dat we `true` aan de `As<string>()` methode moeten door geven omdat we de inhoud van de hoofd tekst lezen, maar dat de back-end-API ook de hoofd tekst moet kunnen lezen. Als deze methode is ingesteld op True, wordt de hoofd tekst in de buffer opgeslagen zodat deze een tweede keer kan worden gelezen. Dit is belang rijk om rekening mee te houden als u een API hebt waarmee grote bestanden worden geüpload of lange polling wordt gebruikt. In dergelijke gevallen is het raadzaam om te voor komen dat de hoofd tekst helemaal wordt gelezen.
+Na het maken van de `requestLine` , kijken we of de aanvraag tekst moet worden afgekapt. De aanvraag tekst is afgekapt tot 1024. Dit kan worden verg root, maar afzonderlijke Event hub-berichten zijn beperkt tot 256 KB. het is dus waarschijnlijk dat sommige HTTP-bericht teksten niet in één bericht passen. Bij het uitvoeren van een logboek registratie en analyse van een aanzienlijke hoeveelheid informatie kan alleen worden afgeleid van de regel en de regels van de HTTP-aanvraag. Daarnaast kunnen veel Api's aanvragen alleen kleine lichamen retour neren, waardoor het verlies van de informatie waarde door grote instanties te verminderen in vergelijking met de reductie van overdracht, verwerking en opslag kosten om alle inhoud van de hoofd tekst te bewaren. Een laatste opmerking over het verwerken van de hoofd tekst is dat we `true` aan de methode moeten door geven `As<string>()` omdat we de inhoud van de hoofd tekst lezen, maar dat de back-end-API ook de hoofd tekst moet kunnen lezen. Als deze methode is ingesteld op True, wordt de hoofd tekst in de buffer opgeslagen zodat deze een tweede keer kan worden gelezen. Dit is belang rijk om rekening mee te houden als u een API hebt waarmee grote bestanden worden geüpload of lange polling wordt gebruikt. In dergelijke gevallen is het raadzaam om te voor komen dat de hoofd tekst helemaal wordt gelezen.
 
 ### <a name="http-headers"></a>HTTP-headers
 HTTP-headers kunnen worden overgebracht naar de bericht indeling in een eenvoudige sleutel/waarde-paar notatie. We hebben ervoor gekozen bepaalde beveiligings gevoelige velden te verwijderen om te voor komen dat referentie gegevens onnodig worden gelekt. Het is niet waarschijnlijk dat de API-sleutels en andere referenties worden gebruikt voor analyse doeleinden. Als we analyses willen uitvoeren voor de gebruiker en het specifieke product dat ze gebruiken, kunnen we die van het `context` object ophalen en toevoegen aan het bericht.
 
 ### <a name="message-metadata"></a>Meta gegevens van bericht
-Bij het bouwen van het volledige bericht dat naar de Event Hub wordt verzonden, maakt de eerste regel geen deel `application/http` uit van het bericht. De eerste regel is aanvullende meta gegevens die bestaan uit het feit of het bericht een aanvraag-of antwoord bericht is en een bericht-ID, die wordt gebruikt voor het correleren van aanvragen op antwoorden. De bericht-ID wordt gemaakt met behulp van een ander beleid dat er als volgt uitziet:
+Bij het bouwen van het volledige bericht dat naar de Event Hub wordt verzonden, maakt de eerste regel geen deel uit van het `application/http` bericht. De eerste regel is aanvullende meta gegevens die bestaan uit het feit of het bericht een aanvraag-of antwoord bericht is en een bericht-ID, die wordt gebruikt voor het correleren van aanvragen op antwoorden. De bericht-ID wordt gemaakt met behulp van een ander beleid dat er als volgt uitziet:
 
 ```xml
 <set-variable name="message-id" value="@(Guid.NewGuid())" />
@@ -160,13 +159,13 @@ Het beleid voor het verzenden van het HTTP-antwoord bericht ziet er ongeveer uit
 Het `set-variable` beleid maakt een waarde die toegankelijk is via het `log-to-eventhub` beleid in de `<inbound>` sectie en in de `<outbound>` sectie.
 
 ## <a name="receiving-events-from-event-hubs"></a>Gebeurtenissen ontvangen van Event Hubs
-Gebeurtenissen van Azure Event hub worden ontvangen via het [AMQP-protocol](https://www.amqp.org/). Het micro soft Service Bus-team heeft client bibliotheken beschikbaar gemaakt om het verbruik van gebeurtenissen gemakkelijker te maken. Er worden twee verschillende benaderingen ondersteund, een is een *directe Consumer* en de andere is van de `EventProcessorHost` -klasse. Voor beelden van deze twee benaderingen vindt u in de [Event hubs-programmeer gids](../event-hubs/event-hubs-programming-guide.md). De korte versie van de verschillen is, `Direct Consumer` geeft u volledige controle en het `EventProcessorHost` biedt een deel van het sanitaire werk voor u, maar maakt bepaalde veronderstellingen over hoe u deze gebeurtenissen verwerkt.
+Gebeurtenissen van Azure Event hub worden ontvangen via het [AMQP-protocol](https://www.amqp.org/). Het micro soft Service Bus-team heeft client bibliotheken beschikbaar gemaakt om het verbruik van gebeurtenissen gemakkelijker te maken. Er worden twee verschillende benaderingen ondersteund, een is een *directe Consumer* en de andere is van de- `EventProcessorHost` klasse. Voor beelden van deze twee benaderingen vindt u in de [Event hubs-programmeer gids](../event-hubs/event-hubs-programming-guide.md). De korte versie van de verschillen is, `Direct Consumer` geeft u volledige controle en het `EventProcessorHost` biedt een deel van het sanitaire werk voor u, maar maakt bepaalde veronderstellingen over hoe u deze gebeurtenissen verwerkt.
 
 ### <a name="eventprocessorhost"></a>EventProcessorHost
 In dit voor beeld gebruiken we de `EventProcessorHost` voor-eenvoud, maar dit is mogelijk niet de beste keuze voor dit specifieke scenario. `EventProcessorHost`is het moeilijk om ervoor te zorgen dat u zich geen zorgen hoeft te maken over thread problemen binnen een bepaalde gebeurtenis verwerkings klasse. In ons scenario wordt het bericht echter geconverteerd naar een andere indeling en door gegeven aan een andere service met behulp van een async-methode. Het is niet nodig om de gedeelde status bij te werken en daarom geen risico voor threading-problemen. Voor de meeste scenario's `EventProcessorHost` is het waarschijnlijk de beste keuze en het is zeker de makkelijkste optie.
 
 ### <a name="ieventprocessor"></a>IEventProcessor
-Het centrale concept bij het `EventProcessorHost` gebruik van is het maken van een `IEventProcessor` implementatie van de interface, die `ProcessEventAsync`de methode bevat. De essentie van deze methode wordt hier weer gegeven:
+Het centrale concept bij het gebruik `EventProcessorHost` van is het maken van een implementatie van de `IEventProcessor` Interface, die de methode bevat `ProcessEventAsync` . De essentie van deze methode wordt hier weer gegeven:
 
 ```csharp
 async Task IEventProcessor.ProcessEventsAsync(PartitionContext context, IEnumerable<EventData> messages)
@@ -208,10 +207,10 @@ public class HttpMessage
 }
 ```
 
-Het `HttpMessage` exemplaar bevat een `MessageId` GUID waarmee de HTTP-aanvraag kan worden verbonden met het bijbehorende HTTP-antwoord en een Booleaanse waarde die aangeeft of het object een exemplaar van een HttpRequestMessage en HttpResponseMessage bevat. Door gebruik te maken van de ingebouwde HTTP- `System.Net.Http`klassen van kan ik profiteren van de `application/http` code voor parseren die is opgenomen in `System.Net.Http.Formatting`.  
+Het `HttpMessage` exemplaar bevat een `MessageId` GUID waarmee de HTTP-aanvraag kan worden verbonden met het bijbehorende HTTP-antwoord en een Booleaanse waarde die aangeeft of het object een exemplaar van een HttpRequestMessage en HttpResponseMessage bevat. Door gebruik te maken van de ingebouwde HTTP-klassen van kan `System.Net.Http` ik profiteren van de code voor `application/http` parseren die is opgenomen in `System.Net.Http.Formatting` .  
 
 ### <a name="ihttpmessageprocessor"></a>IHttpMessageProcessor
-Het `HttpMessage` exemplaar wordt vervolgens doorgestuurd naar de implementatie `IHttpMessageProcessor`van. Dit is een interface die is gemaakt om de ontvangst en interpretatie van de gebeurtenis van Azure Event hub en de daad werkelijke verwerking ervan te ontkoppelen.
+Het `HttpMessage` exemplaar wordt vervolgens doorgestuurd naar de implementatie van `IHttpMessageProcessor` . Dit is een interface die is gemaakt om de ontvangst en interpretatie van de gebeurtenis van Azure Event hub en de daad werkelijke verwerking ervan te ontkoppelen.
 
 ## <a name="forwarding-the-http-message"></a>Het HTTP-bericht door sturen
 Voor dit voor beeld heeft ik besloten dat het HTTP-verzoek moet worden gepusht naar [MOESIF API Analytics](https://www.moesif.com). Moesif is een Cloud service die is gespecialiseerd in HTTP-analyse en fout opsporing. Ze hebben een gratis laag, dus het kan eenvoudig worden geprobeerd om de HTTP-aanvragen in realtime te laten lopen via onze API Management service.
@@ -294,12 +293,12 @@ public class MoesifHttpMessageProcessor : IHttpMessageProcessor
 }
 ```
 
-De `MoesifHttpMessageProcessor` voor delen van een [C# API library voor Moesif](https://www.moesif.com/docs/api?csharp#events) , waarmee u eenvoudig http-gebeurtenis gegevens in hun service kunt pushen. Als u HTTP-gegevens wilt verzenden naar de Moesif Collector-API, hebt u een account en een toepassings-id nodig. U krijgt een Moesif-toepassings-id door een account te maken op de [website van Moesif](https://www.moesif.com) en vervolgens naar de _meest rechter menu_ -> -_app-installatie_te gaan.
+De voor `MoesifHttpMessageProcessor` delen van een [C# API library voor Moesif](https://www.moesif.com/docs/api?csharp#events) , waarmee u eenvoudig http-gebeurtenis gegevens in hun service kunt pushen. Als u HTTP-gegevens wilt verzenden naar de Moesif Collector-API, hebt u een account en een toepassings-id nodig. U krijgt een Moesif-toepassings-id door een account te maken op de [website van Moesif](https://www.moesif.com) en vervolgens naar de _meest rechter menu_-  ->  _app-installatie_te gaan.
 
 ## <a name="complete-sample"></a>Voor beeld volt ooien
 De [bron code](https://github.com/dgilling/ApimEventProcessor) en tests voor het voor beeld bevinden zich op github. U hebt een [API Management-service](get-started-create-service-instance.md), [een verbonden Event hub](api-management-howto-log-event-hubs.md)en een [opslag account](../storage/common/storage-create-storage-account.md) nodig om het voor beeld voor uzelf uit te voeren.   
 
-Het voor beeld is slechts een eenvoudige console toepassing die luistert naar gebeurtenissen die afkomstig zijn van Event hub, converteert ze `EventRequestModel` naar `EventResponseModel` een Moesif en objecten en stuurt ze vervolgens door naar de Moesif Collector API.
+Het voor beeld is slechts een eenvoudige console toepassing die luistert naar gebeurtenissen die afkomstig zijn van Event hub, converteert ze naar een Moesif `EventRequestModel` en `EventResponseModel` objecten en stuurt ze vervolgens door naar de MOESIF Collector API.
 
 In de volgende afbeelding met animatie ziet u een aanvraag voor een API in de ontwikkelaars Portal, de console toepassing met het bericht dat wordt ontvangen, verwerkt en doorgestuurd, en vervolgens de aanvraag en het antwoord dat wordt weer gegeven in de gebeurtenis stroom.
 

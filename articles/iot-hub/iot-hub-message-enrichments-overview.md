@@ -9,10 +9,9 @@ ms.topic: conceptual
 ms.date: 05/10/2019
 ms.author: robinsh
 ms.openlocfilehash: c3dbd01faf61c164c88f09b0da03c07be4abd187
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75429126"
 ---
 # <a name="message-enrichments-for-device-to-cloud-iot-hub-messages"></a>Verrijkingen van berichten voor IoT Hub berichten van apparaat-naar-Cloud
@@ -29,7 +28,7 @@ Een bericht verrijking heeft drie belang rijke elementen:
 
 * Een of meer [eind punten](iot-hub-devguide-endpoints.md) waarvoor de verrijking moet worden toegepast.
 
-De **sleutel** is een teken reeks. Een sleutel mag alleen alfanumerieke tekens bevatten of deze speciale tekens: hyphen`-`(), onderstrepings teken (`_`) en`.`punt ().
+De **sleutel** is een teken reeks. Een sleutel mag alleen alfanumerieke tekens bevatten of deze speciale tekens: hyphen ( `-` ), onderstrepings teken ( `_` ) en punt ( `.` ).
 
 De **waarde** kan een van de volgende voor beelden zijn:
 
@@ -60,9 +59,9 @@ Verrijkingen worden toegepast per eind punt. Als u vijf verrijkingen voor een be
 
 Verrijkingen kunnen worden geconfigureerd met behulp van de volgende methoden:
 
-| **Methode** | **Cmd** |
+| **Methode** | **Opdracht** |
 | ----- | -----| 
-| Portal | [Azure Portal](https://portal.azure.com) | Raadpleeg de [zelf studie](tutorial-message-enrichments.md) voor het verbeteren van een bericht | 
+| Portal | [Azure-portal](https://portal.azure.com) | Raadpleeg de [zelf studie](tutorial-message-enrichments.md) voor het verbeteren van een bericht | 
 | Azure CLI   | [AZ IOT hub-bericht-verrijking](https://docs.microsoft.com/cli/azure/iot/hub/message-enrichment?view=azure-cli-latest) |
 | Azure PowerShell | [Add-AzIotHubMessageEnrichment](https://docs.microsoft.com/powershell/module/az.iothub/add-aziothubmessageenrichment?view=azps-2.8.0) |
 

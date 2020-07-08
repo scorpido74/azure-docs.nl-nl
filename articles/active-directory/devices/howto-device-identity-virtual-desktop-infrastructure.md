@@ -12,10 +12,9 @@ manager: daveba
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 7b431cee3b8e5fc168dec2766442d6f6b9869d1e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "74900376"
 ---
 # <a name="device-identity-and-desktop-virtualization"></a>Apparaat-id en desktop-virtualisatie
@@ -43,20 +42,20 @@ Voordat u apparaat-id's configureert in azure AD voor uw VDI-omgeving, moet u ve
 
 | Type apparaat-id | Identiteits infrastructuur | Windows-apparaten | VDI-platform versie | Ondersteund |
 | --- | --- | --- | --- | --- |
-| lid is van hybride Azure Active Directory | Federatie | Windows huidige * * * en Windows down level * * * * | Permanent | Ja |
-|   |   | Windows actueel | Niet-persistent | Nee |
-|   |   | Downlevel Windows | Niet-persistent | Ja |
-|   | Beheerd * * | Windows huidige en Windows down level | Permanent | Ja |
-|   |   | Windows actueel | Niet-persistent | Nee |
-|   |   | Downlevel Windows | Niet-persistent | Ja |
-| Neemt deel aan Azure AD | Federatief | Windows actueel | Permanent | Nee |
-|   |   |   | Niet-persistent | Nee |
-|   | Beheerd | Windows actueel | Permanent | Nee |
-|   |   |   | Niet-persistent | Nee |
-| Azure AD-geregistreerd | Federatief | Windows actueel | Permanent | Nee |
-|   |   |   | Niet-persistent | Nee |
-|   | Beheerd | Windows actueel | Permanent | Nee |
-|   |   |   | Niet-persistent | Nee |
+| Hybride Azure AD-deelname | Federatie | Windows huidige * * * en Windows down level * * * * | Permanent | Yes |
+|   |   | Windows actueel | Niet-persistent | No |
+|   |   | Downlevel Windows | Niet-persistent | Yes |
+|   | Beheerd * * | Windows huidige en Windows down level | Permanent | Yes |
+|   |   | Windows actueel | Niet-persistent | No |
+|   |   | Downlevel Windows | Niet-persistent | Yes |
+| Azure AD-deelname | Federatief | Windows actueel | Permanent | No |
+|   |   |   | Niet-persistent | No |
+|   | Beheerd | Windows actueel | Permanent | No |
+|   |   |   | Niet-persistent | No |
+| Azure AD-geregistreerd | Federatief | Windows actueel | Permanent | No |
+|   |   |   | Niet-persistent | No |
+|   | Beheerd | Windows actueel | Permanent | No |
+|   |   |   | Niet-persistent | No |
 
 \*Een **federatieve** infra structuur voor identiteiten vertegenwoordigt een omgeving met een id-provider, zoals AD FS of een andere IDP van derden.
 
@@ -73,7 +72,7 @@ Beheerders moeten verwijzen naar de volgende artikelen, op basis van hun identit
 - [Hybride Azure Active Directory-koppeling configureren voor federatieve omgeving](hybrid-azuread-join-federated-domains.md)
 - [Hybride Azure Active Directory-deelname configureren voor een beheerde omgeving](hybrid-azuread-join-managed-domains.md)
 
-Als u afhankelijk bent van het hulp programma voor systeem voorbereiding (Sysprep. exe) en als u een installatie kopie van vóór Windows 10 1809 gebruikt, moet u ervoor zorgen dat de installatie kopie niet afkomstig is van een apparaat dat al is geregistreerd bij Azure AD als hybride Azure AD join.
+Als u afhankelijk bent van het hulp programma voor systeem voorbereiding (sysprep.exe) en als u een installatie kopie van vóór Windows 10 1809 gebruikt, moet u ervoor zorgen dat de installatie kopie niet afkomstig is van een apparaat dat al is geregistreerd bij Azure AD als hybride lid van Azure AD.
 
 Als u een moment opname van een virtuele machine (VM) vertrouwt om extra Vm's te maken, moet u ervoor zorgen dat de moment opname niet afkomstig is van een VM die al is geregistreerd bij Azure AD als hybride Azure AD-deelname.
 
@@ -81,7 +80,7 @@ Bij het implementeren van niet-persistente VDI, moeten IT-beheerders bijna de aa
 
 - Maak en gebruik een voor voegsel voor de weergave naam van de computer die het bureau blad als VDI-gebaseerd geeft.
 - Implementeer de volgende opdracht als onderdeel van het afmeldings script. Met deze opdracht wordt een beste poging tot Azure AD geactiveerd om het apparaat te verwijderen.
-   - Voor Windows-apparaten op lagere niveaus: autowerkplek. exe/Leave
+   - Voor Windows-apparaten op lagere niveaus – autoworkplace.exe/Leave
 - Definieer en implementeer het proces voor het [beheren van verouderde apparaten](manage-stale-devices.md).
    - Zodra u een strategie hebt voor het identificeren van uw niet-permanente hybride Azure AD-apparaten, kunt u zich op het opschonen van deze apparaten agressief maken om ervoor te zorgen dat uw Directory niet wordt gebruikt met veel verouderde apparaten.
  

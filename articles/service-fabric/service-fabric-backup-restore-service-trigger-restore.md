@@ -6,10 +6,9 @@ ms.topic: conceptual
 ms.date: 10/30/2018
 ms.author: aagup
 ms.openlocfilehash: 1737102ee652cc2263bd0a908c1336bc93a6757b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75377902"
 ---
 # <a name="restoring-backup-in-azure-service-fabric"></a>Back-up herstellen in azure Service Fabric
@@ -34,7 +33,7 @@ U kunt bijvoorbeeld een service configureren om een back-up te maken van de gege
     Install-Module -Name Microsoft.ServiceFabric.Powershell.Http -AllowPrerelease
 ```
 
-- Zorg ervoor dat het cluster is verbonden met `Connect-SFCluster` behulp van de opdracht voordat u een configuratie aanvraag maakt met behulp van de module micro soft. ServiceFabric. Power shell. http.
+- Zorg ervoor dat het cluster is verbonden met behulp van de `Connect-SFCluster` opdracht voordat u een configuratie aanvraag maakt met behulp van de module micro soft. ServiceFabric. Power shell. http.
 
 ```powershell
 
@@ -65,7 +64,7 @@ Get-SFBackupsFromBackupLocation -Application -ApplicationName 'fabric:/SampleApp
 
 #### <a name="rest-call-using-powershell"></a>Rest-aanroep met Power shell
 
-Voer een Power shell-script uit om de REST API te gebruiken om een lijst te retour neren met de back- `SampleApp` ups die zijn gemaakt voor alle partities in de toepassing. De API vereist de back-upopslaggegevens om de beschik bare back-ups weer te geven.
+Voer een Power shell-script uit om de REST API te gebruiken om een lijst te retour neren met de back-ups die zijn gemaakt voor alle partities in de `SampleApp` toepassing. De API vereist de back-upopslaggegevens om de beschik bare back-ups weer te geven.
 
 ```powershell
 $StorageInfo = @{
@@ -152,7 +151,7 @@ Voor de Restore API moet u de _BackupId_ -en _sleutel backuplocation_ -gegevens 
 
 U moet ook een doel partitie in het alternatieve cluster kiezen, zoals wordt beschreven in het [partitie schema](service-fabric-concepts-partitioning.md#get-started-with-partitioning). De alternatieve cluster back-up wordt teruggezet naar de partitie die is opgegeven in het partitie schema van het oorspronkelijke verloren cluster.
 
-Als de partitie-ID op het alternatieve `1c42c47f-439e-4e09-98b9-88b8f60800c6`cluster is, kunt u deze toewijzen aan de oorspronkelijke cluster `974bd92a-b395-4631-8a7f-53bd4ae9cf22` partitie-id door de hoge sleutel en de lage sleutel te vergelijken voor _partitioneren met een bereik (UniformInt64Partition)_.
+Als de partitie-ID op het alternatieve cluster is `1c42c47f-439e-4e09-98b9-88b8f60800c6` , kunt u deze toewijzen aan de oorspronkelijke cluster partitie-id `974bd92a-b395-4631-8a7f-53bd4ae9cf22` door de hoge sleutel en de lage sleutel te vergelijken voor _partitioneren met een bereik (UniformInt64Partition)_.
 
 Bij _benoemde partitionering_wordt de waarde name vergeleken om de doel partitie in een alternatief cluster te identificeren.
 
@@ -201,7 +200,7 @@ U kunt een terugzet bewerking activeren vanuit Service Fabric Explorer. Zorg erv
 
     ![Trigger partitie herstellen bestands share][3]
 
-### <a name="data-restore-for-_data-corruption__data-loss_"></a>Gegevens herstel voor gegevens _beschadiging_/_gegevens verlies_
+### <a name="data-restore-for-_data-corruption__data-loss_"></a>Gegevens herstel voor gegevens _beschadiging_ / _gegevens verlies_
 
 Voor _gegevens verlies_ of _beschadiging van gegevens_, kunnen back-ups van partities voor betrouw bare stateful Services en reliable actors partities worden hersteld naar een van de gekozen back-ups.
 
@@ -209,7 +208,7 @@ Het volgende voor beeld is een voortzetting van het [inschakelen van periodieke 
 
 Selecteer een back-up in de uitvoer van [GetBackupAPI](service-fabric-backuprestoreservice-quickstart-azurecluster.md#list-backups). In dit scenario wordt de back-up van hetzelfde cluster als voorheen gegenereerd.
 
-Als u de herstel bewerking wilt starten, kiest u een back-up in de lijst. Voor de_gegevens beschadiging_van het huidige _gegevens verlies_/selecteert u de volgende back-up:
+Als u de herstel bewerking wilt starten, kiest u een back-up in de lijst. Voor de gegevens beschadiging van het huidige _gegevens verlies_ / _data corruption_selecteert u de volgende back-up:
 
 ```
 BackupId                : b0035075-b327-41a5-a58f-3ea94b68faa4
@@ -317,7 +316,7 @@ De herstel aanvraag vordert in de volgende volg orde:
 
 ## <a name="automatic-restore"></a>Automatisch herstellen
 
-U kunt betrouw bare stateful service-en Reliable Actors partities configureren in het Service Fabric-cluster voor _automatisch herstel_. Stel `AutoRestore` in het back-upbeleid in op _waar_. Als u _automatisch terugzetten_ inschakelt, worden gegevens automatisch teruggezet vanaf de nieuwste partitie back-up wanneer gegevens verlies wordt gerapporteerd. Zie voor meer informatie:
+U kunt betrouw bare stateful service-en Reliable Actors partities configureren in het Service Fabric-cluster voor _automatisch herstel_. Stel in het back-upbeleid in `AutoRestore` op _waar_. Als u _automatisch terugzetten_ inschakelt, worden gegevens automatisch teruggezet vanaf de nieuwste partitie back-up wanneer gegevens verlies wordt gerapporteerd. Zie voor meer informatie:
 
 - [Activering automatisch herstellen in back-upbeleid](service-fabric-backuprestoreservice-configure-periodic-backup.md#auto-restore-on-data-loss)
 - [RestorePartition API-naslag informatie](https://docs.microsoft.com/rest/api/servicefabric/sfclient-api-restorepartition)

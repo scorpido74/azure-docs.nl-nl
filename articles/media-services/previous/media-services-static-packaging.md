@@ -15,10 +15,9 @@ ms.topic: article
 ms.date: 04/15/2019
 ms.author: juliako
 ms.openlocfilehash: e99d72a0bce51d5d61e5f248f5ba279afe13a405
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/27/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "74970122"
 ---
 # <a name="using-azure-media-packager-to-accomplish-static-packaging-tasks"></a>Azure media packager gebruiken voor het uitvoeren van statische pakket taken  
@@ -83,7 +82,7 @@ Als u uw MP4-bestanden met Media Services packager wilt valideren, moet u uw eig
 
 Zodra u de Adaptive bitrate MP4 hebt ingesteld, kunt u gebruikmaken van dynamische pakketten. Met dynamische pakketten kunt u stromen leveren in het opgegeven protocol zonder verdere verpakking. Zie [dynamische verpakking](media-services-dynamic-packaging-overview.md)voor meer informatie.
 
-Het volgende code voorbeeld maakt gebruik van Azure Media Services .NET SDK-extensies.  Zorg ervoor dat u de code bijwerkt zodat deze naar de map verwijst waarin de invoer-MP4-bestanden en het ISM-bestand zich bevinden. En ook waar uw MediaPackager_ValidateTask. XML-bestand zich bevindt. Dit XML-bestand wordt gedefinieerd in de [taak voorinstelling voor het artikel Azure media packager](https://msdn.microsoft.com/library/azure/hh973635.aspx) .
+Het volgende code voorbeeld maakt gebruik van Azure Media Services .NET SDK-extensies.  Zorg ervoor dat u de code bijwerkt zodat deze naar de map verwijst waarin de invoer-MP4-bestanden en het ISM-bestand zich bevinden. En ook waar uw MediaPackager_ValidateTask.xml-bestand zich bevindt. Dit XML-bestand wordt gedefinieerd in de [taak voorinstelling voor het artikel Azure media packager](https://msdn.microsoft.com/library/azure/hh973635.aspx) .
 
 ```csharp
     using Microsoft.WindowsAzure.MediaServices.Client;
@@ -272,9 +271,9 @@ Media Services biedt nu een service voor het leveren van micro soft PlayReady-li
 
 Zorg ervoor dat u de volgende code bijwerkt zodat deze verwijst naar de map waarin het bestand met de invoer-MP4 zich bevindt.
 
-En ook waar uw MediaPackager_MP4ToSmooth. XML-en MediaEncryptor_PlayReadyProtection. XML-bestanden zich bevinden. MediaPackager_MP4ToSmooth. XML is gedefinieerd in de [taak voorinstelling voor Azure media packager](https://msdn.microsoft.com/library/azure/hh973635.aspx) en MediaEncryptor_PlayReadyProtection. XML is gedefinieerd in de [taak voorinstelling voor Azure media Encryption](https://msdn.microsoft.com/library/azure/hh973610.aspx) -artikel. 
+En ook waar uw MediaPackager_MP4ToSmooth.xml-en MediaEncryptor_PlayReadyProtection.xml-bestanden zich bevinden. MediaPackager_MP4ToSmooth.xml is gedefinieerd in de [taak voorinstelling voor Azure media packager](https://msdn.microsoft.com/library/azure/hh973635.aspx) en MediaEncryptor_PlayReadyProtection.xml is gedefinieerd in de [taak voorinstelling voor Azure media Encryption](https://msdn.microsoft.com/library/azure/hh973610.aspx) -artikel. 
 
-In het voor beeld wordt de methode UpdatePlayReadyConfigurationXMLFile gedefinieerd die u kunt gebruiken om het bestand MediaEncryptor_PlayReadyProtection. XML dynamisch bij te werken. Als u de sleutel Seed beschikbaar hebt, kunt u de methode CommonEncryption. GeneratePlayReadyContentKey gebruiken om de inhouds sleutel te genereren op basis van de waarden keySeedValue en KeyId.
+In het voor beeld wordt de methode UpdatePlayReadyConfigurationXMLFile gedefinieerd die u kunt gebruiken om het MediaEncryptor_PlayReadyProtection.xml bestand dynamisch bij te werken. Als u de sleutel Seed beschikbaar hebt, kunt u de methode CommonEncryption. GeneratePlayReadyContentKey gebruiken om de inhouds sleutel te genereren op basis van de waarden keySeedValue en KeyId.
 
 ```csharp
     using System;
@@ -716,12 +715,12 @@ Als u uw HLS met AES-128 wilt versleutelen, kunt u gebruikmaken van dynamische v
 
 > [!NOTE]
 > Als u uw inhoud wilt converteren naar HLS, moet u uw inhoud eerst converteren/coderen in Smooth Streaming.
-> Zorg er ook voor dat HLS wordt versleuteld met AES door de volgende eigenschappen in te stellen in uw MediaPackager_SmoothToHLS. XML-bestand: Stel de eigenschap encryption in op True, stel de sleutel waarde in en de keyuri-waarde om naar uw authentication\authorization-server te verwijzen.
+> Zorg er ook voor dat de HLS versleuteld met AES wordt ingesteld door de volgende eigenschappen in uw MediaPackager_SmoothToHLS.xml-bestand in te stellen: Stel de eigenschap encryption in op True, stel de sleutel waarde in en de keyuri-waarde om naar uw authentication\authorization-server te verwijzen.
 > Media Services maakt een sleutel bestand en plaatst het in de-container. Kopieer het bestand/Asset-containerguid/*. key naar uw server (of maak uw eigen sleutel bestand) en verwijder vervolgens het bestand *. key uit de container Asset.
 > 
 > 
 
-In het voor beeld in deze sectie wordt een mezzanine-bestand (in dit geval MP4) gecodeerd in MP4-bestanden met multibitrate en worden vervolgens pakketten Mp4's naar Smooth Streaming. Vervolgens worden ze Smooth Streaming in HTTP Live Streaming (HLS) versleuteld met Advanced Encryption Standard (AES) 128-bits gegevensstroom versleuteling. Zorg ervoor dat u de volgende code bijwerkt zodat deze verwijst naar de map waarin het bestand met de invoer-MP4 zich bevindt. En ook waar uw MediaPackager_MP4ToSmooth. XML-en MediaPackager_SmoothToHLS. xml-configuratie bestanden zich bevinden. U kunt de definitie voor deze bestanden vinden in de [taak voorinstelling voor het artikel Azure media packager](https://msdn.microsoft.com/library/azure/hh973635.aspx) .
+In het voor beeld in deze sectie wordt een mezzanine-bestand (in dit geval MP4) gecodeerd in MP4-bestanden met multibitrate en worden vervolgens pakketten Mp4's naar Smooth Streaming. Vervolgens worden ze Smooth Streaming in HTTP Live Streaming (HLS) versleuteld met Advanced Encryption Standard (AES) 128-bits gegevensstroom versleuteling. Zorg ervoor dat u de volgende code bijwerkt zodat deze verwijst naar de map waarin het bestand met de invoer-MP4 zich bevindt. En ook waar uw MediaPackager_MP4ToSmooth.xml en MediaPackager_SmoothToHLS.xml configuratie bestanden zich bevinden. U kunt de definitie voor deze bestanden vinden in de [taak voorinstelling voor het artikel Azure media packager](https://msdn.microsoft.com/library/azure/hh973635.aspx) .
 
 ```csharp
     using System;
@@ -1009,7 +1008,7 @@ In het voor beeld in deze sectie wordt een mezzanine-bestand (in dit geval MP4) 
 
 Media Services biedt nu een service voor het leveren van micro soft PlayReady-licenties. In het voor beeld in dit artikel ziet u hoe u de Media Services PlayReady-service voor het leveren van licenties kunt configureren (Zie de **ConfigureLicenseDeliveryService** -methode die in de onderstaande code is gedefinieerd). 
 
-Zorg ervoor dat u de volgende code bijwerkt zodat deze verwijst naar de map waarin het bestand met de invoer-MP4 zich bevindt. En ook waar uw MediaPackager_MP4ToSmooth. XML-, MediaPackager_SmoothToHLS. XML-en MediaEncryptor_PlayReadyProtection. XML-bestanden zich bevinden. MediaPackager_MP4ToSmooth. XML en MediaPackager_SmoothToHLS. XML worden gedefinieerd in de [taak voorinstelling voor Azure media packager](https://msdn.microsoft.com/library/azure/hh973635.aspx) en MediaEncryptor_PlayReadyProtection. XML is gedefinieerd in de [taak voorinstelling voor Azure media Encryption](https://msdn.microsoft.com/library/azure/hh973610.aspx) -artikel.
+Zorg ervoor dat u de volgende code bijwerkt zodat deze verwijst naar de map waarin het bestand met de invoer-MP4 zich bevindt. En ook waar uw MediaPackager_MP4ToSmooth.xml, MediaPackager_SmoothToHLS.xml en MediaEncryptor_PlayReadyProtection.xml bestanden zich bevinden. MediaPackager_MP4ToSmooth.xml en MediaPackager_SmoothToHLS.xml worden gedefinieerd in de [taak voorinstelling voor Azure media packager](https://msdn.microsoft.com/library/azure/hh973635.aspx) en MediaEncryptor_PlayReadyProtection.xml wordt gedefinieerd in de [taak voorinstelling voor Azure media Encryption](https://msdn.microsoft.com/library/azure/hh973610.aspx) -artikel.
 
 ```csharp
     using System;
@@ -1481,7 +1480,7 @@ Zorg ervoor dat u de volgende code bijwerkt zodat deze verwijst naar de map waar
 
 ## <a name="additional-notes"></a>Aanvullende opmerkingen
 
-* Widevine is een service van Google Inc. en is onderworpen aan de service voorwaarden en het privacybeleid van Google, Inc.
+* Widevine is een service van Google Inc. en is onderworpen aan de servicevoorwaarden en het privacybeleid van Google Inc.
 
 ## <a name="media-services-learning-paths"></a>Media Services-leertrajecten
 [!INCLUDE [media-services-learning-paths-include](../../../includes/media-services-learning-paths-include.md)]
