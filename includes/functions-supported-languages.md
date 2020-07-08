@@ -10,16 +10,16 @@ ms.date: 12/09/2019
 ms.author: glenga
 ms.custom: include file
 ms.openlocfilehash: 879b971511238ab02a43896edaed074b8b0b447d
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81007839"
 ---
 |Taal                                 |1.x         |2.x| controleert |
 |-----------------------------------------|------------|---| --- |
 |[C#](../articles/azure-functions/functions-reference-csharp.md)|GA (.NET Framework 4,7)|GA (.NET Core 2,2)| GA (.NET Core 3,1) |
-|[Javascript](../articles/azure-functions/functions-reference-node.md#node-version)|GA (node 6)|GA (knoop punt 8 & 10)| GA (knoop punt 10 & 12) |
+|[JavaScript](../articles/azure-functions/functions-reference-node.md#node-version)|GA (node 6)|GA (knoop punt 8 & 10)| GA (knoop punt 10 & 12) |
 |[F#](../articles/azure-functions/functions-reference-fsharp.md)|GA (.NET Framework 4,7)|GA (.NET Core 2,2)| GA (.NET Core 3,1) |
 |[Java](../articles/azure-functions/functions-reference-java.md)|N.v.t.|GA (Java 8)| GA (Java 8)|
 |[PowerShell](../articles/azure-functions/functions-reference-powershell.md) |N.v.t.|GA (Power shell Core 6)| GA (Power shell Core 6)|

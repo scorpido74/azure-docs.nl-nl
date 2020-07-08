@@ -9,10 +9,10 @@ ms.date: 03/17/2020
 ms.author: cherylmc
 ms.custom: include file
 ms.openlocfilehash: 55fa01d100c60c6411774373428ff4bbd9a56822
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80986713"
 ---
 ## <a name="windows-clients"></a><a name="windows"></a>Windows-clients
@@ -25,12 +25,12 @@ ms.locfileid: "80986713"
    * [VPN gateway](../articles/vpn-gateway/vpn-gateway-certificates-point-to-site.md#clientexport) instructies
    
    * [Virtuele WAN](../articles/virtual-wan/certificates-point-to-site.md#clientexport) -instructies
-5. Pak de persoonlijke sleutel en de base64-vinger afdruk uit vanuit *PFX*. Er zijn meerdere manieren om dit te doen. Het gebruik van OpenSSL op uw computer is een manier. Het bestand *profileinfo. txt* bevat de persoonlijke sleutel en de vinger afdruk voor de CA en het client certificaat. Zorg ervoor dat u de vinger afdruk van het client certificaat gebruikt.
+5. Pak de persoonlijke sleutel en de base64-vinger afdruk uit vanuit *PFX*. Er zijn meerdere manieren om dit te doen. Het gebruik van OpenSSL op uw computer is een manier. Het *profileinfo.txt* bestand bevat de persoonlijke sleutel en de vinger afdruk voor de CA en het client certificaat. Zorg ervoor dat u de vinger afdruk van het client certificaat gebruikt.
 
    ```
    openssl pkcs12 -in "filename.pfx" -nodes -out "profileinfo.txt"
    ```
-6. Open *profileinfo. txt* in Klad blok. Als u de vinger afdruk van het certificaat van de client (onderliggend) wilt ophalen, selecteert u de tekst (inclusief en tussen) "-----BEGIN CERTIFICATE-----" en "-----END CERTIFICATE-----" voor het onderliggende certificaat en kopieert u het. U kunt het onderliggende certificaat identificeren door te kijken naar het onderwerp =/regel.
+6. Open *profileinfo.txt* in Klad blok. Als u de vinger afdruk van het certificaat van de client (onderliggend) wilt ophalen, selecteert u de tekst (inclusief en tussen) "-----BEGIN CERTIFICATE-----" en "-----END CERTIFICATE-----" voor het onderliggende certificaat en kopieert u het. U kunt het onderliggende certificaat identificeren door te kijken naar het onderwerp =/regel.
 7. Ga in stap 3 naar het bestand *vpnconfig. ovpn* dat u in Klad blok hebt geopend. Ga naar de sectie die hieronder wordt weer gegeven en vervang alles tussen "Cert" en "/Cert".
 
    ```
@@ -40,7 +40,7 @@ ms.locfileid: "80986713"
    $CLIENTCERTIFICATE
    </cert>
    ```
-8. Open *profileinfo. txt* in Klad blok. Als u de persoonlijke sleutel wilt ophalen, selecteert u de tekst (inclusief en tussen) "-----BEGIN persoonlijke sleutel-----" en "-----END PRIVATE KEY-----" en kopieert u deze.
+8. Open de *profileinfo.txt* in Klad blok. Als u de persoonlijke sleutel wilt ophalen, selecteert u de tekst (inclusief en tussen) "-----BEGIN persoonlijke sleutel-----" en "-----END PRIVATE KEY-----" en kopieert u deze.
 9. Ga terug naar het bestand vpnconfig. ovpn in Klad blok en zoek deze sectie. Plak de persoonlijke sleutel en vervang alles tussen en "Key" en "/Key".
 
    ```
@@ -132,9 +132,9 @@ ms.locfileid: "80986713"
     ```
     openssl pkcs12 -in "filename.pfx" -nodes -out "profileinfo.txt"
     ```
-   Het bestand *profileinfo. txt* bevat de persoonlijke sleutel en de vinger afdruk voor de CA en het client certificaat. Zorg ervoor dat u de vinger afdruk van het client certificaat gebruikt.
+   Het *profileinfo.txt* bestand bevat de persoonlijke sleutel en de vinger afdruk voor de certificerings instantie en het client certificaat. Zorg ervoor dat u de vinger afdruk van het client certificaat gebruikt.
 
-6. Open *profileinfo. txt* in een tekst editor. Als u de vinger afdruk van het client (onderliggend) certificaat wilt ophalen, selecteert u de tekst met inbegrip van en tussen "-----BEGIN CERTIFICATE-----" en "-----END CERTIFICATE-----" voor het onderliggende certificaat en kopieert u het. U kunt het onderliggende certificaat identificeren door te kijken naar het onderwerp =/regel.
+6. Open *profileinfo.txt* in een tekst editor. Als u de vinger afdruk van het client (onderliggend) certificaat wilt ophalen, selecteert u de tekst met inbegrip van en tussen "-----BEGIN CERTIFICATE-----" en "-----END CERTIFICATE-----" voor het onderliggende certificaat en kopieert u het. U kunt het onderliggende certificaat identificeren door te kijken naar het onderwerp =/regel.
 
 7. Open het bestand *vpnconfig. ovpn* en ga naar de sectie die hieronder wordt weer gegeven. Vervang alles tussen de en "Cert" en "/Cert".
 
@@ -145,7 +145,7 @@ ms.locfileid: "80986713"
    $CLIENTCERTIFICATE
    </cert>
    ```
-8. Open profileinfo. txt in een tekst editor. Als u de persoonlijke sleutel wilt ophalen, selecteert u de tekst inclusief en tussen "-----BEGIN persoonlijke sleutel-----" en "-----END PRIVATE KEY-----" en kopieert u deze.
+8. Open de profileinfo.txt in een tekst editor. Als u de persoonlijke sleutel wilt ophalen, selecteert u de tekst inclusief en tussen "-----BEGIN persoonlijke sleutel-----" en "-----END PRIVATE KEY-----" en kopieert u deze.
 
 9. Open het bestand vpnconfig. ovpn in een tekst editor en zoek deze sectie. Plak de persoonlijke sleutel en vervang alles tussen en "Key" en "/Key".
 

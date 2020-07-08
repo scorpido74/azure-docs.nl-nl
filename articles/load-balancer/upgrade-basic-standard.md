@@ -8,10 +8,10 @@ ms.topic: how-to
 ms.date: 01/23/2020
 ms.author: irenehua
 ms.openlocfilehash: 66c56ae6730043022a0d8bf3c94f7c6ce14d9852
-ms.sourcegitcommit: ad66392df535c370ba22d36a71e1bbc8b0eedbe3
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/16/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84809340"
 ---
 # <a name="upgrade-azure-public-load-balancer"></a>Open bare Azure-Load Balancer bijwerken
@@ -80,7 +80,7 @@ Het script uitvoeren:
    * **newLBName: [string]: vereist** : dit is de naam voor de Standard Load Balancer die u wilt maken.
 1. Voer het script uit met de juiste para meters. Het kan vijf tot zeven minuten duren voordat de bewerking is voltooid.
 
-    **Hierbij**
+    **Voorbeeld**
 
    ```azurepowershell
    AzurePublicLBUpgrade.ps1 -oldRgName "test_publicUpgrade_rg" -oldLBName "LBForPublic" -newrgName "test_userInput3_rg" -newlocation "centralus" -newLbName "LBForUpgrade"

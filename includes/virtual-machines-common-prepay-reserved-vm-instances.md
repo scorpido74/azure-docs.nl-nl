@@ -5,10 +5,10 @@ ms.service: virtual-machines-windows
 ms.topic: include
 ms.date: 03/27/2020
 ms.openlocfilehash: d41affc55134ad34c325c12ab4a14f4013c58f9e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80371651"
 ---
 Wanneer u een gereserveerde VM-instantie voor Azure doorvoert, kunt u geld besparen. De reserverings korting wordt automatisch toegepast op het aantal actieve virtuele machines die overeenkomen met het reserverings bereik en de kenmerken. U hoeft geen reserve ring aan een virtuele machine toe te wijzen om de kortingen te krijgen. Voor een gereserveerde instantie aankoop geldt alleen het reken onderdeel van uw VM-gebruik. Voor virtuele Windows-machines wordt de gebruiks meter gesplitst in twee afzonderlijke meters. Er is een compute-meter, die gelijk is aan de Linux meter en een Windows IP-meter. De kosten die u ziet wanneer u de aankoop uitvoert, zijn alleen voor de reken kosten. Kosten zijn niet van toepassing op Windows-software. Zie [software kosten die niet zijn opgenomen in azure reserved VM instances](../articles/cost-management-billing/reservations/reserved-instance-windows-software-costs.md)voor meer informatie over software kosten.
@@ -57,7 +57,7 @@ Zie [Flexibiliteit van de VM-grootte met gereserveerde VM-instanties](../article
 
 ### <a name="analyze-your-usage-information"></a>Uw gebruiks gegevens analyseren
 
-Analyseer uw gebruiks gegevens om te helpen bepalen welke reserve ringen u moet aanschaffen. Gebruiks gegevens zijn beschikbaar in het gebruiks bestand en Api's. Gebruik ze samen om te bepalen welke reserve ring moet worden gekocht. Controleren op VM-exemplaren met hoog gebruik op dagelijkse basis om het aantal te kopen reserve ringen te bepalen. Vermijd de `Meter` subcategorie en `Product` velden in gebruiks gegevens. Ze maken geen onderscheid tussen VM-grootten die Premium-opslag gebruiken. Als u deze velden gebruikt om de grootte van de virtuele machine te bepalen voor de reserve ring, kunt u de verkeerde grootte aanschaffen. Vervolgens krijgt u niet de verwachte reserverings korting. In plaats daarvan raadpleegt `AdditionalInfo` u het veld in uw gebruiks bestand of gebruiks-API om de juiste VM-grootte te bepalen.
+Analyseer uw gebruiks gegevens om te helpen bepalen welke reserve ringen u moet aanschaffen. Gebruiks gegevens zijn beschikbaar in het gebruiks bestand en Api's. Gebruik ze samen om te bepalen welke reserve ring moet worden gekocht. Controleren op VM-exemplaren met hoog gebruik op dagelijkse basis om het aantal te kopen reserve ringen te bepalen. Vermijd de `Meter` subcategorie en `Product` velden in gebruiks gegevens. Ze maken geen onderscheid tussen VM-grootten die Premium-opslag gebruiken. Als u deze velden gebruikt om de grootte van de virtuele machine te bepalen voor de reserve ring, kunt u de verkeerde grootte aanschaffen. Vervolgens krijgt u niet de verwachte reserverings korting. In plaats daarvan raadpleegt u het `AdditionalInfo` veld in uw gebruiks bestand of gebruiks-API om de juiste VM-grootte te bepalen.
 
 Uw gebruiks bestand toont uw kosten per facturerings periode en dagelijks gebruik. Zie [uw Azure-gebruik en-kosten bekijken en downloaden](../articles/cost-management-billing/understand/download-azure-daily-usage.md)voor meer informatie over het downloaden van uw gebruiks bestand. Vervolgens kunt u met behulp van de informatie in het gebruiks bestand [bepalen welke reserve ring moet worden gekocht](../articles/cost-management-billing/reservations/determine-reservation-purchase.md).
 
@@ -87,7 +87,7 @@ Deze vereisten zijn van toepassing op het kopen van een gereserveerde VM-instant
 Een exemplaar kopen:
 
 1. Meld u aan bij de [Azure-portal](https://portal.azure.com).
-1. Selecteer **alle services** > -**reserve ringen**.
+1. Selecteer **Alle services** > **Reserveringen**.
 1. Selecteer **toevoegen** om een nieuwe reserve ring te kopen en klik vervolgens op **virtuele machine**.
 1. Vul de verplichte velden in. Actieve VM-instanties die overeenkomen met de kenmerken die u selecteert, komen in aanmerking voor de reserveringskorting. Het werkelijke aantal VM-exemplaren dat de korting krijgt, is afhankelijk van het bereik en de geselecteerde hoeveelheid.
 
@@ -131,9 +131,9 @@ U kunt de volgende typen wijzigingen na de aankoop niet rechtstreeks aanbrengen:
 
 U kunt echter wel een reserve ring *uitwisselen* als u wijzigingen wilt aanbrengen.
 
-## <a name="cancel-exchange-or-refund-reservations"></a>Annulering, omwisseling of terugbetaling van reserveringen
+## <a name="cancel-exchange-or-refund-reservations"></a>Reserveringen annuleren, ruilen of terugbetalen
 
-Annulering, ruiling of terugbetaling van reserveringen is mogelijk met bepaalde beperkingen. Zie [self-service-uitwisseling en terugbetalingen voor Azure Reservations](../articles/cost-management-billing/reservations/exchange-and-refund-azure-reservations.md)voor meer informatie.
+Annulering, ruiling of terugbetaling van reserveringen is mogelijk met bepaalde beperkingen. Zie [Selfserviceopties voor inwisselen en retourneren van Azure-reserveringen](../articles/cost-management-billing/reservations/exchange-and-refund-azure-reservations.md) voor meer informatie.
 
 ## <a name="need-help-contact-us"></a>Hebt u hulp nodig? Neem contact met ons op.
 
@@ -143,7 +143,7 @@ Als u vragen hebt of hulp nodig hebt, [kunt u een ondersteuningsaanvraag maken](
 
 - Zie [Azure-reserveringen beheren](../articles/cost-management-billing/reservations/manage-reserved-vm-instance.md) voor meer informatie over het beheren van een reservering.
 - Raadpleeg de volgende artikelen voor meer informatie over Azure-reserveringen:
-    - [Wat zijn Azure Reservations?](../articles/cost-management-billing/reservations/save-compute-costs-reservations.md)
+    - [Wat zijn Azure-reserveringen?](../articles/cost-management-billing/reservations/save-compute-costs-reservations.md)
     - [Reserveringen beheren in Azure](../articles/cost-management-billing/reservations/manage-reserved-vm-instance.md)
     - [Begrijpen hoe de reserveringskorting wordt toegepast](../articles/cost-management-billing/manage/understand-vm-reservation-charges.md)
     - [Inzicht in het gebruik van reserveringen voor uw abonnement met betalen per gebruik](../articles/cost-management-billing/reservations/understand-reserved-instance-usage.md)

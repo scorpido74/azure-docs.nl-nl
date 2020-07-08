@@ -7,10 +7,10 @@ ms.service: load-balancer
 ms.topic: how-to
 ms.date: 03/25/2020
 ms.openlocfilehash: 8e55b2a87813da802ec1b00c610b33da4461c008
-ms.sourcegitcommit: ad66392df535c370ba22d36a71e1bbc8b0eedbe3
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/16/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84809448"
 ---
 # <a name="configure-a-virtual-machine-scale-set-with-an-existing-azure-load-balancer-using-the-azure-portal"></a>Een schaalset voor virtuele machines configureren met een bestaande Azure Load Balancer met behulp van de Azure Portal
@@ -45,7 +45,7 @@ In deze sectie maakt u een schaalset voor virtuele machines in de Azure Portal m
     | Instelling                        | Waarde                                                                                                 |
     |--------------------------------|-------------------------------------------------------------------------------------------------------|
     | **Projectgegevens**            |                                                                                                       |
-    | Abonnement                   | selecteer uw Azure-abonnement                                                                        |
+    | Abonnement                   | Selecteer uw Azure-abonnement                                                                        |
     | Resourcegroep                 | Selecteer Nieuw maken, Voer **myResourceGroup**in en selecteer OK of selecteer een bestaande resource groep. |
     | **Details van schaal sets**          |                                                                                                       |
     | Naam van virtuele-machineschaalset | **MyVMSS** invoeren                                                                                      |
@@ -55,7 +55,7 @@ In deze sectie maakt u een schaalset voor virtuele machines in de Azure Portal m
     | Installatiekopie                          | Selecteer **Ubuntu Server 18,04 LTS**                                                                    |
     | Azure spot-instantie            | **Nee** selecteren                                                                                         |
     | Grootte                           | Standaard behouden                                                                                      |
-    | **Administrator-account**      |                                                                                                       |
+    | **Beheerdersaccount**      |                                                                                                       |
     | Verificatietype            | **Wacht woord** selecteren                                                                                   |
     | Gebruikersnaam                       | Voer uw gebruikers naam voor de beheerder in        |
     | Wachtwoord                       | Voer uw beheerders wachtwoord in    |

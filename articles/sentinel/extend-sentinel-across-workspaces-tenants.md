@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 06/11/2020
 ms.author: yelevin
 ms.openlocfilehash: d76f8e2d750b8ab2d82e9424f929d8b8353ac25a
-ms.sourcegitcommit: 1383842d1ea4044e1e90bd3ca8a7dc9f1b439a54
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/16/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84816457"
 ---
 # <a name="extend-azure-sentinel-across-workspaces-and-tenants"></a>Azure-Sentinel uitbreiden in werkruimten en tenants
@@ -29,7 +29,7 @@ Azure Sentinel is gebaseerd op een Log Analytics-werk ruimte. U ziet dat de eers
 
 U kunt het volledige voor deel van de Azure-Sentinel-ervaring krijgen wanneer u één werk ruimte gebruikt. Er zijn ook enkele omstandigheden waarin u mogelijk meerdere werk ruimten moet hebben. In de volgende tabel worden enkele van deze situaties vermeld en wordt, indien mogelijk, voorgesteld hoe aan de vereiste kan worden voldaan met één werk ruimte:
 
-| Vereiste | Beschrijving | Manieren om het aantal werk ruimten te verminderen |
+| Vereiste | Description | Manieren om het aantal werk ruimten te verminderen |
 |-------------|-------------|--------------------------------|
 | Soevereiniteit en naleving van regelgeving | Een werk ruimte is gekoppeld aan een bepaalde regio. Als gegevens in verschillende [Azure-regio's](https://azure.microsoft.com/global-infrastructure/geographies/) moeten worden bewaard om te voldoen aan de wettelijke vereisten, moet deze worden opgesplitst in afzonderlijke werk ruimten. |  |
 | Eigendom van gegevens | De grenzen van gegevens eigendom, bijvoorbeeld door dochter ondernemingen of gelieerde ondernemingen, worden beter afgebakend met afzonderlijke werk ruimten. |  |
