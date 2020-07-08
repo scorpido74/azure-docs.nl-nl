@@ -5,14 +5,15 @@ description: Meer informatie over het exporteren van gegevenslabels uit uw Azure
 author: nibaccam
 ms.author: nibaccam
 ms.service: machine-learning
+ms.subservice: core
 ms.topic: how-to
 ms.date: 05/14/2020
-ms.openlocfilehash: 6401d620aea720584df0838cacc6df2f837ca699
-ms.sourcegitcommit: dfa5f7f7d2881a37572160a70bac8ed1e03990ad
+ms.openlocfilehash: 80932ebbedeca3f5e0a1b4cc2e68d73ef5b0d63a
+ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/25/2020
-ms.locfileid: "85374471"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86025723"
 ---
 # <a name="create-and-explore-azure-machine-learning-dataset-with-labels-preview"></a>Azure Machine Learning gegevensset maken en verkennen met labels (preview-versie)
 
