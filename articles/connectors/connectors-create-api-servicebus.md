@@ -8,10 +8,9 @@ ms.topic: conceptual
 ms.date: 09/19/2019
 tags: connectors
 ms.openlocfilehash: 50f43283d1113a5beb05b5898514623be37e5de9
-ms.sourcegitcommit: f0b206a6c6d51af096a4dc6887553d3de908abf3
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84141990"
 ---
 # <a name="exchange-messages-in-the-cloud-by-using-azure-logic-apps-and-azure-service-bus"></a>Berichten uitwisselen in de Cloud met behulp van Azure Logic Apps en Azure Service Bus
@@ -45,7 +44,7 @@ U kunt triggers gebruiken die reacties ophalen van Service Bus en de uitvoer bes
 
 Controleer of uw logische app machtigingen heeft om toegang te krijgen tot uw Service Bus-naam ruimte.
 
-1. Meld u aan bij de [Azure-portal](https://portal.azure.com).
+1. Meld u aan bij [Azure Portal](https://portal.azure.com).
 
 1. Ga naar uw Service Bus *naam ruimte*. Selecteer op de pagina naam ruimte onder **instellingen**de optie **beleid voor gedeelde toegang**. Onder **claims**controleert u of u machtigingen voor het **beheren** van die naam ruimte hebt.
 
@@ -150,7 +149,7 @@ Controleer of uw logische app machtigingen heeft om toegang te krijgen tot uw Se
 
    U kunt bijvoorbeeld een actie toevoegen waarmee een e-mail wordt verzonden om te bevestigen dat uw bericht is verzonden.
 
-1. Sla uw logische app op. Selecteer **Opslaan**op de werk balk van de ontwerp functie.
+1. Sla uw logische app op. Selecteer **Opslaan** op de werkbalk van de ontwerper.
 
 <a name="sequential-convoy"></a>
 

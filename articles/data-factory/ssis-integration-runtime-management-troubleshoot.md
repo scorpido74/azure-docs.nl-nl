@@ -12,10 +12,9 @@ manager: mflasko
 ms.custom: seo-lt-2019
 ms.date: 07/08/2019
 ms.openlocfilehash: e928a6b54e53f9076ffe184ed4868e7741661d7e
-ms.sourcegitcommit: 6a9f01bbef4b442d474747773b2ae6ce7c428c1f
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/27/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84118821"
 ---
 # <a name="troubleshoot-ssis-integration-runtime-management-in-azure-data-factory"></a>Problemen met SSIS Integration Runtime Management in Azure Data Factory oplossen
@@ -124,7 +123,7 @@ Deze fout kan om verschillende redenen optreden. Raadpleeg de secties [Forbidden
 
 ### <a name="forbidden"></a>Verboden
 
-Dit soort fout kan er als volgt uitzien: "SubnetId is niet ingeschakeld voor het huidige account. De resource provider micro soft. batch is niet geregistreerd onder hetzelfde abonnement van VNet. "
+Dit soort fout kan er als volgt uitzien: "SubnetId is niet ingeschakeld voor het huidige account. Microsoft.BatCH-resource provider is niet geregistreerd onder hetzelfde abonnement van VNet.
 
 Deze details geven aan dat Azure Batch geen toegang heeft tot uw virtuele netwerk. Registreer de Microsoft.Batch-resourceprovider onder hetzelfde abonnement als Virtual Network.
 

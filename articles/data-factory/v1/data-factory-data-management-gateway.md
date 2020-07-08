@@ -13,10 +13,9 @@ ms.date: 01/10/2018
 ms.author: abnarain
 robots: noindex
 ms.openlocfilehash: a2d4c9ad5a64fecaad023907351101942c4edac2
-ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/29/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84188309"
 ---
 # <a name="data-management-gateway"></a>Gegevensbeheergateway
@@ -140,7 +139,7 @@ Er zijn twee firewalls die u moet overwegen: **bedrijfs firewall** die wordt uit
 
 Op het niveau van de bedrijfs firewall moet u de volgende domeinen en uitgaande poorten configureren:
 
-| Domeinnamen | Poorten | Beschrijving |
+| Domeinnamen | Poorten | Description |
 | --- | --- | --- |
 | *.servicebus.windows.net |443 |Wordt gebruikt voor communicatie met de back-end van de service voor gegevens verplaatsing |
 | *.core.windows.net |443 |Gebruikt voor gefaseerde kopie met behulp van Azure-Blob (indien geconfigureerd)|
@@ -180,15 +179,15 @@ De gateway maakt gebruik van de proxy server om verbinding te maken met de Cloud
 Er zijn drie configuratie opties:
 
 * **Proxy niet gebruiken**: gateway maakt geen expliciet gebruik van een proxy om verbinding te maken met Cloud Services.
-* **Systeem proxy gebruiken**: gateway maakt gebruik van de proxy-instelling die is geconfigureerd in diahost. exe. config en diawp. exe. config. Als er geen proxy is geconfigureerd in diahost. exe. config en diawp. exe. config, maakt gateway rechtstreeks verbinding met de Cloud service zonder dat de proxy wordt door lopen.
-* **Aangepaste proxy gebruiken**: Configureer de http-proxy-instelling voor gebruik voor gateway in plaats van configuraties te gebruiken in diahost. exe. config en diawp. exe. config. Adres en poort zijn vereist. Gebruikers naam en wacht woord zijn optioneel, afhankelijk van de verificatie-instelling van uw proxy. Alle instellingen worden versleuteld met het referentie certificaat van de gateway en lokaal opgeslagen op de hostserver van de gateway.
+* **Systeem proxy gebruiken**: gateway maakt gebruik van de proxy instelling die is geconfigureerd in diahost.exe.config en diawp.exe.config. Als er geen proxy is geconfigureerd in diahost.exe.config en diawp.exe.config, maakt de gateway rechtstreeks verbinding met de Cloud service zonder dat hiervoor een proxy wordt door lopen.
+* **Aangepaste proxy gebruiken**: Configureer de http-proxy-instelling die moet worden gebruikt voor de gateway in plaats van configuraties te gebruiken in diahost.exe.config en diawp.exe.config. Adres en poort zijn vereist. Gebruikers naam en wacht woord zijn optioneel, afhankelijk van de verificatie-instelling van uw proxy. Alle instellingen worden versleuteld met het referentie certificaat van de gateway en lokaal opgeslagen op de hostserver van de gateway.
 
 De Data Management Gateway-hostservice wordt automatisch opnieuw opgestart nadat u de bijgewerkte proxy-instellingen hebt opgeslagen.
 
 Nadat de registratie van de gateway is voltooid, gebruikt u Data Management Gateway Configuration Manager om de proxy-instellingen weer te geven of bij te werken.
 
 1. Start **Data Management Gateway Configuration Manager**.
-2. Ga naar het tabblad **instellingen** .
+2. Schakel over naar het tabblad **Instellingen**.
 3. Klik op koppeling **wijzigen** in de sectie **http-proxy** om het dialoog venster **http-proxy instellen** te openen.
 4. Nadat u op de knop **volgende** hebt geklikt, wordt er een waarschuwings venster weer gegeven waarin u wordt gevraagd om de proxy instelling op te slaan en de gateway-hostservice opnieuw op te starten.
 
@@ -202,10 +201,10 @@ U kunt de HTTP-proxy bekijken en bijwerken met behulp van Configuration Manager-
 >
 
 ### <a name="configure-proxy-server-settings"></a>Proxyserver instellingen configureren
-Als u de instelling **systeem proxy gebruiken** voor de http-proxy selecteert, gebruikt gateway de proxy-instelling in diahost. exe. config en diawp. exe. config. Als er geen proxy is opgegeven in diahost. exe. config en diawp. exe. config, maakt gateway rechtstreeks verbinding met de Cloud service zonder dat de proxy wordt door gegeven. De volgende procedure bevat instructies voor het bijwerken van het bestand diahost. exe. config.
+Als u de instelling **systeem proxy gebruiken** voor de http-proxy selecteert, gebruikt gateway de proxy instelling in diahost.exe.config en diawp.exe.config. Als er geen proxy is opgegeven in diahost.exe.config en diawp.exe.config, maakt de gateway rechtstreeks verbinding met de Cloud service zonder dat hiervoor een proxy wordt door gegeven. De volgende procedure bevat instructies voor het bijwerken van het diahost.exe.config-bestand.
 
-1. Maak in Verkenner een veilige kopie van *C: \\ \\ Program Files \\ micro soft data management gateway \\ 2,0 \\ Shared \\ diahost. exe. config* om een back-up van het oorspronkelijke bestand te maken.
-2. Start Notepad. exe, dat wordt uitgevoerd als beheerder en open tekst bestand *C: \\ \\ Program Files \\ micro soft data management gateway \\ 2,0 \\ Shared \\ diahost. exe. config*. U vindt de standaard code voor system.net, zoals wordt weer gegeven in de volgende code:
+1. Maak in Verkenner een veilige kopie van *C: \\ \\ Program Files \\ micro soft data management gateway \\ 2,0 \\ gedeelde \\diahost.exe.config* om een back-up van het oorspronkelijke bestand te maken.
+2. Start Notepad.exe uitgevoerd als beheerder en open tekst bestand *C: \\ \\ Program Files \\ micro soft data management gateway \\ 2,0 \\ gedeelde \\diahost.exe.config*. U vindt de standaard code voor system.net, zoals wordt weer gegeven in de volgende code:
 
     ```
     <system.net>
@@ -231,7 +230,7 @@ Als u de instelling **systeem proxy gebruiken** voor de http-proxy selecteert, g
 3. Sla het configuratie bestand op de oorspronkelijke locatie op en start de Data Management Gateway host-service opnieuw op om de wijzigingen op te halen. Als u de service opnieuw wilt starten, gebruikt u het onderdeel Services van het configuratie scherm of klikt u in het **Data Management Gateway Configuration Manager** > op de knop **service stoppen** en klikt u vervolgens op service **starten**. Als de service niet wordt gestart, is er waarschijnlijk een onjuiste syntaxis voor de XML-code toegevoegd aan het configuratie bestand van de toepassing dat is bewerkt.
 
 > [!IMPORTANT]
-> Vergeet niet om **zowel** diahost. exe. config als diawp. exe. config bij te werken.
+> Vergeet niet om **zowel** diahost.exe.config als diawp.exe.config bij te werken.
 
 Naast deze punten moet u er ook voor zorgen dat Microsoft Azure zich in de white list van uw bedrijf bevindt. U kunt de lijst met geldige IP-adressen van Microsoft Azure downloaden van het [micro soft Download centrum](https://www.microsoft.com/download/details.aspx?id=41653).
 
@@ -309,7 +308,7 @@ U kunt de functie voor automatisch bijwerken uitschakelen of inschakelen door de
 Nadat u de gateway hebt geïnstalleerd, kunt u Data Management Gateway Configuration Manager op een van de volgende manieren starten:
 
 1. Typ in het venster **zoeken** **Data Management Gateway** voor toegang tot dit hulp programma.
-2. Voer het uitvoer bare bestand *ConfigManager. exe* uit in de map: *C: \\ \\ Program Files \\ micro soft data management gateway \\ 2,0 \\ gedeeld*.
+2. Voer het uitvoer bare *ConfigManager.exe* uit in de map: *C: \\ \\ Program Files \\ micro soft data management gateway \\ 2,0 \\ Shared*.
 
 ### <a name="home-page"></a>Startpagina
 Op de start pagina kunt u de volgende acties uitvoeren:
@@ -320,7 +319,7 @@ Op de start pagina kunt u de volgende acties uitvoeren:
 * **Updates plannen** op een specifiek tijdstip van de dagen.
 * De datum weer geven waarop de gateway voor het **laatst is bijgewerkt**.
 
-### <a name="settings-page"></a>De pagina Instellingen
+### <a name="settings-page"></a>Pagina Instellingen
 Op de pagina instellingen kunt u de volgende acties uitvoeren:
 
 * Het **certificaat** dat door de gateway wordt gebruikt, weer geven, wijzigen en exporteren. Dit certificaat wordt gebruikt om referenties voor de gegevens bron te versleutelen.
@@ -364,7 +363,7 @@ De volgende tabel bevat beschrijvingen van de kolommen in de lijst met **Gateway
 
 Bewakings eigenschap | Beschrijving
 :------------------ | :----------
-Name | De naam van de logische gateway en knoop punten die zijn gekoppeld aan de gateway. Knoop punt is een on-premises Windows-computer waarop de gateway is geïnstalleerd. Zie [Data Management Gateway-hoge Beschik baarheid en schaal baarheid](data-factory-data-management-gateway-high-availability-scalability.md)voor meer informatie over het gebruik van meer dan één knoop punt (Maxi maal vier knoop punten) in één logische gateway.
+Naam | De naam van de logische gateway en knoop punten die zijn gekoppeld aan de gateway. Knoop punt is een on-premises Windows-computer waarop de gateway is geïnstalleerd. Zie [Data Management Gateway-hoge Beschik baarheid en schaal baarheid](data-factory-data-management-gateway-high-availability-scalability.md)voor meer informatie over het gebruik van meer dan één knoop punt (Maxi maal vier knoop punten) in één logische gateway.
 Status | Status van de logische gateway en de gateway knooppunten. Voor beeld: online/offline/beperkt/etc. Zie de sectie [Gateway status](#gateway-status) voor meer informatie over deze statussen.
 Versie | Hier wordt de versie van de logische gateway en elk gateway knooppunt weer gegeven. De versie van de logische gateway wordt bepaald op basis van de versie van de knoop punten in de groep. Als er knoop punten met verschillende versies in de installatie van de logische gateway zijn, hebben alleen de knoop punten met hetzelfde versie nummer als de logische gateway goed functioneren. Andere bevinden zich in de beperkte modus en moeten hand matig worden bijgewerkt (alleen als de automatische update mislukt).
 Beschikbaar geheugen | Beschikbaar geheugen op een gateway-knoop punt. Deze waarde is een bijna realtime moment opname.
@@ -510,7 +509,7 @@ In deze sectie wordt beschreven hoe u een gateway maakt en registreert met behul
     Key               : ADF#00000000-0000-4fb8-a867-947877aef6cb@fda06d87-f446-43b1-9485-78af26b8bab0@4707262b-dc25-4fe5-881c-c8a7c3c569fe@wu#nfU4aBlq/heRyYFZ2Xt/CD+7i73PEO521Sj2AFOCmiI
     ```
 
-1. Ga in azure PowerShell naar de map: *C: \\ \\ Program Files \\ Microsoft Integration runtime \\ 3,0 \\ PowerShellScript \\ *. Voer *RegisterGateway. ps1* uit die is gekoppeld aan de lokale variabele **$Key** , zoals wordt weer gegeven in de volgende opdracht. Met dit script wordt de client agent die op uw computer is geïnstalleerd, geregistreerd met de logische gateway die u eerder hebt gemaakt.
+1. Ga in azure PowerShell naar de map: *C: \\ \\ Program Files \\ Microsoft Integration runtime \\ 3,0 \\ PowerShellScript \\ *. Voer *RegisterGateway.ps1* uit die is gekoppeld aan de lokale variabele **$Key** , zoals wordt weer gegeven in de volgende opdracht. Met dit script wordt de client agent die op uw computer is geïnstalleerd, geregistreerd met de logische gateway die u eerder hebt gemaakt.
 
     ```powershell
     PS C:\> .\RegisterGateway.ps1 $MyDMG.Key

@@ -9,10 +9,9 @@ ms.devlang: dotnet
 ms.topic: reference
 ms.date: 08/17/2018
 ms.openlocfilehash: 419c3f21c8606bb16112fd18cfe141655fd7b868
-ms.sourcegitcommit: 1692e86772217fcd36d34914e4fb4868d145687b
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/29/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84168145"
 ---
 # <a name="azure-cosmos-db-table-net-api-download-and-release-notes"></a>Azure Cosmos DB Table .NET API: Download-en release-opmerkingen
@@ -27,12 +26,12 @@ ms.locfileid: "84168145"
 |   |   |
 |---|---|
 |**SDK downloaden**|[NuGet](https://www.nuget.org/packages/Microsoft.Azure.CosmosDB.Table)|
-|**Snelstart**|[Azure Cosmos DB: een app bouwen met .NET en de Table-API](create-table-dotnet.md)|
+|**Snelstartgids**|[Azure Cosmos DB: een app bouwen met .NET en de Table-API](create-table-dotnet.md)|
 |**Zelfstudie**|[Azure Cosmos DB: ontwikkelen met de tabel-API in .NET](tutorial-develop-table-dotnet.md)|
 |**Huidig ondersteund Framework**|[Microsoft .NET Framework 4.5.1](https://www.microsoft.com/en-us/download/details.aspx?id=40779)|
 
 > [!IMPORTANT]
-> De .NET Framework SDK [micro soft. Azure. CosmosDB. table](https://www.nuget.org/packages/Microsoft.Azure.CosmosDB.Table) bevindt zich in de onderhouds modus en zal binnenkort worden afgeschaft. Voer een upgrade uit naar de nieuwe .NET Standard-bibliotheek [micro soft. Azure. Cosmos. table](https://www.nuget.org/packages/Microsoft.Azure.Cosmos.Table) om door te gaan met de nieuwste functies die worden ondersteund door de Table-API.
+> De .NET Framework SDK [Microsoft.Azure.CosmosDB.Table ](https://www.nuget.org/packages/Microsoft.Azure.CosmosDB.Table) bevindt zich in de onderhoudsmodus en wordt binnenkort beëindigd. Voer een upgrade uit naar de nieuwe .NET Standaard bibliotheek [Microsoft.Azure.Cosmos.table](https://www.nuget.org/packages/Microsoft.Azure.Cosmos.Table) om door te gaan met de nieuwste functies die door de Table-API worden ondersteund.
 
 > Als u tijdens de preview een tabel-API-account hebt gemaakt, moet u een [nieuw tabel-API-account](create-table-dotnet.md#create-a-database-account) maken om te kunnen werken met de algemeen beschikbare SDK’s voor tabel-API's.
 >
@@ -50,11 +49,11 @@ ms.locfileid: "84168145"
 ### <a name="200"></a><a name="2.0.0"></a>2.0.0
 
 * Ondersteuning voor het schrijven van meerdere regio's toegevoegd
-* Afhankelijkheden voor NuGet-pakketten op micro soft. Azure. DocumentDB, micro soft. OData. core, micro soft. OData. EDM, micro soft. Spatial
+* Afhankelijkheden van NuGet-pakketten op Microsoft.Azure.DocumentDB, micro soft. OData. core, micro soft. OData. EDM, micro soft. Spatial
 
 ### <a name="113"></a><a name="1.1.3"></a>1.1.3
 
-* Afhankelijkheden voor NuGet-pakketten op micro soft. Azure. storage. common en micro soft. Azure. DocumentDB.
+* Afhankelijkheden van NuGet-pakketten op micro soft. Azure. storage. common en Microsoft.Azure.DocumentDB.
 * Fout oplossingen voor tabel-serialisatie wanneer JsonConvert. DefaultSettings worden geconfigureerd.
 
 ### <a name="111"></a><a name="1.1.1"></a>1.1.1
@@ -87,7 +86,7 @@ Het preview-pakket voor [WindowsAzure. Storage-PremiumTable](https://www.nuget.o
 Aanvragen voor het Azure Cosmos DB met behulp van een buiten gebruik gestelde SDK worden geweigerd door de service.
 <br/>
 
-| Versie | Release datum | Buitengebruikstellings datum |
+| Versie | Release datum | Buitengebruikstellingsdatum |
 | --- | --- | --- |
 | [2.1.2](#2.1.2) |16 september 2019| |
 | [2.1.0](#2.1.0) |22 januari 2019|01 april 2020 |
@@ -122,6 +121,6 @@ Wanneer u probeert het pakket micro soft. Azure. CosmosDB. table NuGet te gebrui
 
 [!INCLUDE [cosmos-db-sdk-faq](../../includes/cosmos-db-sdk-faq.md)]
 
-## <a name="see-also"></a>Zie ook
+## <a name="see-also"></a>Zie tevens
 
 Zie [Inleiding tot Azure Cosmos DB Table-API](table-introduction.md)voor meer informatie over de Azure Cosmos db table-API. 

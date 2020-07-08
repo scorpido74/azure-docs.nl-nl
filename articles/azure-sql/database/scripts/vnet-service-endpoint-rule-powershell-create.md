@@ -13,10 +13,9 @@ ms.date: 04/17/2019
 ms.custom: sqldbrb=1
 tags: azure-synapse
 ms.openlocfilehash: ae92d2000bb2c0dfd7e7a42c6070c143e5b787e3
-ms.sourcegitcommit: 1692e86772217fcd36d34914e4fb4868d145687b
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/29/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84170865"
 ---
 # <a name="powershell-create-a-virtual-service-endpoint-and-vnet-rule-for-azure-sql-database"></a>Power shell: een virtueel service-eind punt en een VNet-regel voor Azure SQL Database maken
@@ -122,7 +121,7 @@ Write-Host 'Completed script 1, the "Variables".';
 Met dit script wordt het volgende script voor bereid, waarbij de eindpunt actie is. Met dit script maakt u de volgende items in de lijst, maar alleen als ze nog niet bestaan. U kunt script 2 overs Laan als u zeker weet dat deze items al bestaan:
 
 - Azure-resourcegroep
-- Logische SQL-Server
+- Logische SQL-server
 
 ### <a name="powershell-script-2-source-code"></a>Bron code voor Power shell-script 2
 
@@ -297,7 +296,7 @@ Write-Host 'Completed script 3, the "Virtual-Network-Rule".';
 
 Met dit laatste script verwijdert u de resources die de vorige scripts hebben gemaakt voor de demonstratie. Het script vraagt echter om bevestiging voordat het volgende wordt verwijderd:
 
-- Logische SQL-Server
+- Logische SQL-server
 - Azure-resource groep
 
 U kunt script 4 telkens uitvoeren nadat het script 1 is voltooid.

@@ -6,10 +6,9 @@ ms.author: flborn
 ms.date: 03/06/2020
 ms.topic: how-to
 ms.openlocfilehash: e3be1f9ec900655f4dae45abd402ff8e6a56e283
-ms.sourcegitcommit: 2721b8d1ffe203226829958bee5c52699e1d2116
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84147937"
 ---
 # <a name="configure-the-model-conversion"></a>De modelconversie configureren
@@ -178,7 +177,7 @@ Deze indelingen zijn toegestaan voor de respectieve onderdelen:
 
 De geheugen footprint van de indelingen zijn als volgt:
 
-| Indeling | Beschrijving | Bytes per:::no-loc text="vertex"::: |
+| Indeling | Description | Bytes per:::no-loc text="vertex"::: |
 |:-------|:------------|:---------------|
 |32_32_FLOAT|twee onderdelen met een volledige zwevende komma precisie|8
 |16_16_FLOAT|twee onderdelen, half zwevende punt precisie|4
@@ -207,7 +206,7 @@ Als u zeker weet dat u nooit dynamische verlichting nodig hebt voor het model en
 
 Het geheugen gebruik van geladen inhoud kan een knel punt op het rendering-systeem worden. Als de nettolading van het geheugen te groot wordt, kan dit de weergave prestaties in beslag nemen of kan het model niet samen worden geladen. In dit artikel worden enkele belang rijke strategieën besproken om het geheugen gebruik te verminderen.
 
-### <a name="instancing"></a>Instancing
+### <a name="instancing"></a>Instantiëren
 
 Instancing is een concept waarbij netten opnieuw worden gebruikt voor onderdelen met afzonderlijke ruimtelijke trans formaties, in tegens telling tot elk onderdeel dat verwijst naar een eigen unieke geometrie. Instancing heeft aanzienlijke invloed op de geheugen ruimte.
 Voor beelden van use cases voor instancing zijn de schroeven in een engine model of stoelen in een architectuur model.
@@ -281,7 +280,7 @@ In deze gebruiks gevallen hebben de modellen vaak zeer veel details binnen een k
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* [Model conversie](model-conversion.md)
+* [Modelconversie](model-conversion.md)
 * [Kleurmaterialen](../../overview/features/color-materials.md)
 * [PBR-materialen](../../overview/features/pbr-materials.md)
 * [Materialen overschrijven tijden modelconversie](override-materials.md)

@@ -5,10 +5,9 @@ ms.topic: conceptual
 ms.date: 05/04/2020
 ms.author: dikamath
 ms.openlocfilehash: 1649b5649bd18b7ab53f3cc0196d7dff0f6f5b2c
-ms.sourcegitcommit: 6a9f01bbef4b442d474747773b2ae6ce7c428c1f
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/27/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84112691"
 ---
 # <a name="frequently-asked-questions-about-azure-vmware-solution-avs-preview"></a>Veelgestelde vragen over de preview-versie van Azure VMware Solution (AVS)
@@ -95,7 +94,7 @@ ESXi-hosts ondersteunen connectiviteits bandbreedte van Maxi maal 25 Gbps.
 
 Ja, alle VSAN-gegevens worden standaard versleuteld met sleutels die zijn opgeslagen in Azure Key Vault.
 
-## <a name="hosts-clusters-and-private-clouds"></a>Hosts, clusters en privé-Clouds
+## <a name="hosts-clusters-and-private-clouds"></a>Hosts, clusters en privéclouds
 
 **Wordt de onderliggende infra structuur gedeeld?**
 
@@ -216,7 +215,7 @@ U kunt een quotum verhoging aanvragen door [een ondersteunings aanvraag](..\azur
 > ```azurecli-interactive
 > az provider register -n Microsoft.AVS --subscription <your subscription ID>
 > ```
-> Zie [Azure-resource providers en-typen](https://docs.microsoft.com/azure/azure-resource-manager/management/resource-providers-and-types)voor meer manieren om de resource provider te registreren.
+> Zie [Azure-resourceproviders en -typen](https://docs.microsoft.com/azure/azure-resource-manager/management/resource-providers-and-types) voor meer manieren om de Azure Synapse-resourceprovider te registeren.
 
 1. Maak in uw Azure Portal onder **Help en ondersteuning**een **nieuwe ondersteunings aanvraag** en geef de volgende informatie op voor het ticket:
    - **Type probleem:** Documentatie

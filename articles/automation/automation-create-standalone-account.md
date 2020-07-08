@@ -6,10 +6,9 @@ ms.subservice: process-automation
 ms.date: 01/15/2019
 ms.topic: conceptual
 ms.openlocfilehash: 3739f8691a144f183e72af19233f776a24066cbc
-ms.sourcegitcommit: 6a9f01bbef4b442d474747773b2ae6ce7c428c1f
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/27/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84118800"
 ---
 # <a name="create-a-standalone-azure-automation-account"></a>Een zelfstandig Azure Automation-account maken
@@ -38,7 +37,7 @@ Als u geen lid bent van het Active Directory exemplaar van het abonnement voorda
 Als een gebruiker eerst wordt toegevoegd aan de rol globale beheerder/cobeheerdersrol, kunt u de gebruiker uit het Active Directory-exemplaar van het abonnement verwijderen. U kunt de gebruiker lezen voor de gebruikersrol in Active Directory. Gebruikers rollen controleren:
 
 1. Ga in het Azure Portal naar het deel venster Azure Active Directory.
-1. Selecteer **gebruikers en groepen**.
+1. Selecteer **Gebruikers en groepen**.
 1. Selecteer **alle gebruikers**.
 1. Nadat u een specifieke gebruiker hebt geselecteerd, selecteert u **profiel**. De waarde van het kenmerk **gebruikers type** onder het profiel van de gebruiker mag niet **gast**zijn.
 
@@ -64,7 +63,7 @@ Voer de volgende stappen uit om een Azure Automation-account te maken in de Azur
 1. Voer in het deel venster Automation-account toevoegen een naam in voor uw nieuwe Automation-account in het veld **naam** . U kunt deze naam niet wijzigen nadat deze is gekozen. 
 
     > [!NOTE]
-    > De namen van Automation-accounts zijn uniek per regio en resource groep. Namen voor verwijderde Automation-accounts zijn mogelijk niet onmiddellijk beschikbaar.
+    > Automation-accountnamen zijn uniek per regio en resourcegroep. Namen voor verwijderde Automation-accounts zijn mogelijk niet onmiddellijk beschikbaar.
 
 1. Als u meer dan één abonnement hebt, gebruikt u het veld **abonnement** om het abonnement op te geven dat voor het nieuwe account moet worden gebruikt.
 1. Voor **resource groep**, voert u een nieuwe of bestaande resource groep in of selecteert u deze.
@@ -83,7 +82,7 @@ Voer de volgende stappen uit om een Azure Automation-account te maken in de Azur
 
 Wanneer het Automation-account is gemaakt, worden er automatisch verschillende resources voor u gemaakt. Na het maken kunnen deze runbooks veilig worden verwijderd als u deze niet wilt blijven gebruiken. De uitvoeren als-accounts kunnen worden gebruikt om te verifiëren bij uw account in een runbook, en moet blijven staan, tenzij u een andere maakt of niet nodig hebt. In de volgende tabel vindt u een overzicht van de bronnen voor het Uitvoeren als-account.
 
-| Resource | Beschrijving |
+| Resource | Description |
 | --- | --- |
 | AzureAutomationTutorial Runbook |Een voor beeld van een grafisch runbook dat laat zien hoe u kunt verifiëren met behulp van het uitvoeren als-account. Het runbook haalt alle Resource Manager-resources op. |
 | AzureAutomationTutorialScript Runbook |Een voor beeld van een Power shell-runbook dat laat zien hoe u kunt verifiëren met behulp van het uitvoeren als-account. Het runbook haalt alle Resource Manager-resources op. |
@@ -105,5 +104,5 @@ Klassieke uitvoeren als-accounts worden niet meer standaard gemaakt wanneer u ee
 * Zie [zelf studie: een Power shell-Runbook maken](learn/automation-tutorial-runbook-textual-powershell.md)om aan de slag te gaan met Power shell-runbooks.
 * Zie [zelf studie: een Power shell workflow-Runbook maken](learn/automation-tutorial-runbook-textual.md)om aan de slag te gaan met Power shell workflow-runbooks.
 * Zie [zelf studie: een python 2-Runbook maken](learn/automation-tutorial-runbook-textual-python2.md)om aan de slag te gaan met python 2-runbooks.
-* Zie [AZ. Automation](https://docs.microsoft.com/powershell/module/az.automation/?view=azps-3.7.0#automation
-)(Engelstalig) voor een Power shell-cmdlet-verwijzing.
+* Zie [Az.Automation](https://docs.microsoft.com/powershell/module/az.automation/?view=azps-3.7.0#automation
+) voor een naslagdocumentatie voor een PowerShell-cmdlet.

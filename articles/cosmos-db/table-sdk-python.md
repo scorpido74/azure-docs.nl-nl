@@ -9,10 +9,9 @@ ms.date: 11/20/2018
 author: sakash279
 ms.author: akshanka
 ms.openlocfilehash: 66a53840d6002731910baf63a331a79a6f654078
-ms.sourcegitcommit: 1692e86772217fcd36d34914e4fb4868d145687b
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/29/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84167958"
 ---
 # <a name="azure-cosmos-db-table-api-sdk-for-python-release-notes-and-resources"></a>Azure Cosmos DB Table-API SDK voor python: release opmerkingen en bronnen
@@ -51,7 +50,7 @@ Nieuwe functies en functionaliteiten en Optima Lise ringen worden alleen toegevo
 
 <br/>
 
-| Versie | Release datum | Buitengebruikstellings datum |
+| Versie | Release datum | Buitengebruikstellingsdatum |
 | --- | --- | --- |
 | [1.0.0](#1.0.0) |15 november 2017 |--- |
 | [0.37.1](#0.37.1) |05 oktober 2017 |--- |
@@ -60,6 +59,6 @@ Nieuwe functies en functionaliteiten en Optima Lise ringen worden alleen toegevo
 ## <a name="faq"></a>Veelgestelde vragen
 [!INCLUDE [cosmos-db-sdk-faq](../../includes/cosmos-db-sdk-faq.md)]
 
-## <a name="see-also"></a>Zie ook
+## <a name="see-also"></a>Zie tevens
 Zie [Microsoft Azure Cosmos DB](https://azure.microsoft.com/services/cosmos-db/) service-pagina voor meer informatie over Cosmos db. 
 

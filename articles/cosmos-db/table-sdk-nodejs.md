@@ -1,5 +1,5 @@
 ---
-title: Azure Cosmos DB Table-API voor node. js
+title: Azure Cosmos DB Table-API voor Node.js
 description: Meer informatie over de Azure Cosmos DB Table-API, inclusief release datums, pensioen datums en wijzigingen die zijn aangebracht tussen elke versie.
 ms.service: cosmos-db
 ms.subservice: cosmosdb-table
@@ -9,13 +9,12 @@ ms.date: 11/20/2018
 author: sakash279
 ms.author: akshanka
 ms.openlocfilehash: 52aebf5a4f2e5ea7b3b09ae105c9ea632416c27e
-ms.sourcegitcommit: 1692e86772217fcd36d34914e4fb4868d145687b
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/29/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84167975"
 ---
-# <a name="azure-cosmos-db-table-api-for-nodejs-release-notes-and-resources"></a>Azure Cosmos DB Table-API voor node. js: release opmerkingen en bronnen
+# <a name="azure-cosmos-db-table-api-for-nodejs-release-notes-and-resources"></a>Azure Cosmos DB Table-API voor Node.js: release opmerkingen en bronnen
 > [!div class="op_single_selector"]
 > * [.NET](table-sdk-dotnet.md)
 > * [.NET Standard](table-sdk-dotnet-standard.md)
@@ -27,7 +26,7 @@ ms.locfileid: "84167975"
 |   |   |
 |---|---|
 |**SDK downloaden**|[NPM](https://www.npmjs.com/package/azure-storage)|
-|**API-documentatie**|[Naslag informatie over node. js API-documentatie](https://azure.github.io/azure-storage-node/)|
+|**API-documentatie**|[Referentie documentatie voorNode.js-API](https://azure.github.io/azure-storage-node/)|
 |**Bijdragen aan SDK**|[GitHub](https://github.com/Azure/azure-storage-node#contribute)|
 
 > [!IMPORTANT]
@@ -44,13 +43,13 @@ Micro soft zal ten minste **twaalf maanden** vóór het buiten gebruik stellen v
 
 Nieuwe functies en functionaliteiten en Optima Lise ringen worden alleen toegevoegd aan de huidige SDK. het wordt daarom aangeraden dat u zo snel mogelijk een upgrade naar de nieuwste SDK-versie uitvoert. 
 
-| Versie | Release datum | Buitengebruikstellings datum |
+| Versie | Release datum | Buitengebruikstellingsdatum |
 | --- | --- | --- |
 | [1.0.0](#1.0.0) |15 november 2017 |--- |
 
 ## <a name="faq"></a>Veelgestelde vragen
 [!INCLUDE [cosmos-db-sdk-faq](../../includes/cosmos-db-sdk-faq.md)]
 
-## <a name="see-also"></a>Zie ook
+## <a name="see-also"></a>Zie tevens
 Zie [Microsoft Azure Cosmos DB](https://azure.microsoft.com/services/cosmos-db/) service-pagina voor meer informatie over Cosmos db. 
 

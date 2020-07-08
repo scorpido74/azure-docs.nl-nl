@@ -13,10 +13,9 @@ ms.custom: seo-lt-2019
 ms.topic: article
 ms.date: 01/08/2020
 ms.openlocfilehash: 31dfae60b1967e221e294195f66bb7fe59a15e64
-ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/29/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84187525"
 ---
 # <a name="network-topologies-for-azure-sql-managed-instance-migrations-using-azure-database-migration-service"></a>Netwerk topologieën voor Azure SQL Managed instance-migraties met Azure Database Migration Service
@@ -90,7 +89,7 @@ Gebruik deze netwerk topologie als uw omgeving een of meer van de volgende scena
 | SMB-share                 | 445                                                   | TCP          | Alle        | On-premises adresruimte | Toestaan      | SMB-netwerk share voor DMS voor het opslaan van back-upbestanden van data bases voor migraties naar Azure SQL Database MI-en SQL-servers op Azure VM <br/>(Als u site-naar-site-connectiviteit hebt, hebt u deze regel mogelijk niet nodig). |
 | DMS_subnet                | Alle                                                   | Alle          | Alle        | DMS_Subnet                | Toestaan      |                                                                                                                                                                                                  |
 
-## <a name="see-also"></a>Zie ook
+## <a name="see-also"></a>Zie tevens
 
 - [SQL Server migreren naar een beheerd exemplaar van SQL](https://docs.microsoft.com/azure/dms/tutorial-sql-server-to-managed-instance)
 - [Overzicht van vereisten voor het gebruik van Azure Database Migration Service](https://docs.microsoft.com/azure/dms/pre-reqs)

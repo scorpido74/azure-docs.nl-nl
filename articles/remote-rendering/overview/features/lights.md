@@ -1,18 +1,17 @@
 ---
-title: Scène verlichting
+title: Afbeeldingsbelichting
 description: Beschrijving van de licht bron en eigenschappen
 author: florianborn71
 ms.author: flborn
 ms.date: 02/10/2020
 ms.topic: article
 ms.openlocfilehash: e33e012480c876dc5befbb93404bdb131ea9329a
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/27/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84022143"
 ---
-# <a name="scene-lighting"></a>Scène verlichting
+# <a name="scene-lighting"></a>Afbeeldingsbelichting
 
 Standaard worden de extern gerenderde objecten niet gebrand met een [lucht licht](sky.md). Voor de meeste toepassingen is dit al voldoende, maar u kunt verdere licht bronnen toevoegen aan de scène.
 

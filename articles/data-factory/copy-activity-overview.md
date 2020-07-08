@@ -12,16 +12,15 @@ ms.topic: conceptual
 ms.date: 03/25/2020
 ms.author: jingwang
 ms.openlocfilehash: 74210864332319dabb16eda865da9dc9793e3dbd
-ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/29/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84187670"
 ---
 # <a name="copy-activity-in-azure-data-factory"></a>Kopieer activiteit in Azure Data Factory
 
 > [!div class="op_single_selector" title1="Selecteer de versie van Data Factory die u gebruikt:"]
-> * [Versie 1](v1/data-factory-data-movement-activities.md)
+> * [Versie 1:](v1/data-factory-data-movement-activities.md)
 > * [Huidige versie](copy-activity-overview.md)
 
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
@@ -75,7 +74,7 @@ Als u de Kopieer activiteit in Azure Data Factory wilt gebruiken, moet u het vol
 2. **Gegevens sets maken voor de bron en Sink.** Raadpleeg de sectie eigenschappen van gegevensset van de bron-en Sink-connector artikelen voor informatie over de configuratie en ondersteunde eigenschappen.
 3. **Maak een pijp lijn met de Kopieer activiteit.** In de volgende sectie vindt u een voor beeld.
 
-### <a name="syntax"></a>Syntaxis
+### <a name="syntax"></a>Syntax
 
 De volgende sjabloon van een Kopieer activiteit bevat een volledige lijst met ondersteunde eigenschappen. Geef de waarden op die passen bij uw scenario.
 

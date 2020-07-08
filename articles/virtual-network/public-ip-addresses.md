@@ -15,10 +15,9 @@ ms.workload: infrastructure-services
 ms.date: 05/28/2020
 ms.author: allensu
 ms.openlocfilehash: 9f3d95d7ae725dba700b0a060ba74552d6b83ad5
-ms.sourcegitcommit: 1692e86772217fcd36d34914e4fb4868d145687b
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/29/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84172366"
 ---
 # <a name="public-ip-addresses"></a>Openbare IP-adressen
@@ -173,7 +172,7 @@ In de volgende tabel ziet u de eigenschap waarmee een openbaar IP-adres kan word
 | --- | --- | --- | --- |
 | Virtuele machine |Netwerkinterface |Ja |Ja |
 | Internetgerichte load balancer |Front-end-configuratie |Ja |Ja |
-| VPN-gateway |Gateway-IP-configuratie |Ja |Nee |
+| VPN-gateway |Gateway-IP-configuratie |Yes |Nee |
 | Toepassingsgateway |Front-end-configuratie |Ja (alleen V1) |Ja (alleen V2) |
 
 ## <a name="limits"></a>Limieten

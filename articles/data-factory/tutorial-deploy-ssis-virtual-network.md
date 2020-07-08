@@ -12,10 +12,9 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 1/10/2020
 ms.openlocfilehash: 0b83049e154afc48334cc6deb576c700ed71d844
-ms.sourcegitcommit: 6a9f01bbef4b442d474747773b2ae6ce7c428c1f
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/27/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84118146"
 ---
 # <a name="configure-an-azure-sql-server-integration-services-ssis-integration-runtime-ir-to-join-a-virtual-network"></a>Een Azure-SQL Server Integration Services (SSIS) Integration runtime (IR) configureren om lid te worden van een virtueel netwerk
@@ -72,7 +71,7 @@ Gebruik de Azure Portal om een virtueel netwerk te configureren voordat u probee
 
 1. Start micro soft Edge of Google Chrome. Momenteel ondersteunen alleen deze webbrowsers de Data Factory-gebruikers interface.
 
-1. Meld u aan bij de [Azure-portal](https://portal.azure.com).
+1. Meld u aan bij [Azure Portal](https://portal.azure.com).
 
 1. Selecteer **meer services**. Filter voor en selecteer **virtuele netwerken**.
 
@@ -94,11 +93,11 @@ Gebruik de Azure Portal om een virtueel netwerk te configureren voordat u probee
 
    1. Selecteer uw abonnement.
 
-   1. Selecteer aan de linkerkant **resource providers**en controleer of **micro soft. batch** een geregistreerde provider is.
+   1. Selecteer aan de linkerkant **resource providers**en controleer of **Microsoft.BatCH** een geregistreerde provider is.
 
    ![Bevestiging van de status ' geregistreerd '](media/join-azure-ssis-integration-runtime-virtual-network/batch-registered-confirmation.png)
 
-   Als u **micro soft. batch** niet in de lijst ziet, [maakt u een leeg Azure batch account](../batch/batch-account-create-portal.md) in uw abonnement om het te registreren. U kunt deze later verwijderen.
+   Als **Microsoft.BatCH** niet in de lijst wordt weer geven, [maakt u een leeg Azure batch-account](../batch/batch-account-create-portal.md) in uw abonnement om het te registreren. U kunt deze later verwijderen.
 
 ## <a name="join-the-azure-ssis-ir-to-a-virtual-network"></a>De Azure-SSIS IR toevoegen aan een virtueel netwerk
 

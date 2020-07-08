@@ -8,10 +8,9 @@ ms.topic: article
 ms.date: 07/06/2016
 ms.custom: seodec18
 ms.openlocfilehash: 9cb672f2ada88b1fc67bcd8f022c5faeeac6dddf
-ms.sourcegitcommit: 1692e86772217fcd36d34914e4fb4868d145687b
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/29/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84170797"
 ---
 # <a name="troubleshoot-http-errors-of-502-bad-gateway-and-503-service-unavailable-in-azure-app-service"></a>Problemen met HTTP-fouten van "502 ongeldige gateway" en "503-Service niet beschikbaar" in Azure App Service
@@ -99,7 +98,7 @@ Daarnaast kunt u ervoor kiezen om uw toepassing uit te voeren op meer dan één 
 U kunt de schaal instellen op hand matig of automatisch.
 
 #### <a name="use-autoheal"></a>Automatisch herstellen gebruiken
-Met auto Retoucheer wordt het werk proces voor uw app gerecycled op basis van de instellingen die u kiest (zoals configuratie wijzigingen, aanvragen, limieten op basis van geheugen of de tijd die nodig is om een aanvraag uit te voeren). In de meeste gevallen is het recyclen van het proces de snelste manier om een probleem op te lossen. Hoewel u de app altijd rechtstreeks vanuit Azure Portal kunt opnieuw opstarten, wordt deze automatisch door hergebruikt. U hoeft alleen maar enkele triggers toe te voegen in de hoofdmap web. config voor uw app. Houd er rekening mee dat deze instellingen op dezelfde manier werken, zelfs als uw toepassing geen .NET-versie is.
+Met auto Retoucheer wordt het werk proces voor uw app gerecycled op basis van de instellingen die u kiest (zoals configuratie wijzigingen, aanvragen, limieten op basis van geheugen of de tijd die nodig is om een aanvraag uit te voeren). In de meeste gevallen is het recyclen van het proces de snelste manier om een probleem op te lossen. Hoewel u de app altijd rechtstreeks vanuit Azure Portal kunt opnieuw opstarten, wordt deze automatisch door hergebruikt. U hoeft alleen maar enkele triggers toe te voegen aan het hoofd web.config voor uw app. Houd er rekening mee dat deze instellingen op dezelfde manier werken, zelfs als uw toepassing geen .NET-versie is.
 
 Zie voor meer informatie [automatisch herstel van Azure web sites](https://azure.microsoft.com/blog/auto-healing-windows-azure-web-sites/).
 

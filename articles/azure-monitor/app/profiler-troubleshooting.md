@@ -7,10 +7,9 @@ ms.author: cweining
 ms.date: 08/06/2018
 ms.reviewer: mbullwin
 ms.openlocfilehash: 7c9dd20aea410aecb34811ca6e08e0f641be292b
-ms.sourcegitcommit: 2721b8d1ffe203226829958bee5c52699e1d2116
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84148341"
 ---
 # <a name="troubleshoot-problems-enabling-or-viewing-application-insights-profiler"></a>Problemen met het inschakelen of weer geven van Application Insights Profiler oplossen
@@ -169,7 +168,7 @@ De instellingen controleren die zijn gebruikt voor het configureren van Azure Di
 
 1. Zorg ervoor dat de iKey op de opdracht regel van Profiler juist is. 
 
-1. Ga naar het logboek bestand met de naam **Boots trapn. log**in het vorige bestand *config. json* . De informatie over fout opsporing geeft de instellingen aan die door Profiler worden gebruikt. Er worden ook status-en fout berichten van Profiler weer gegeven.  
+1. Op het pad dat in de voor gaande *config.jsin* het bestand is gevonden, controleert u het logboek bestand van de Profiler, met de naam **Boots trapn. log**. De informatie over fout opsporing geeft de instellingen aan die door Profiler worden gebruikt. Er worden ook status-en fout berichten van Profiler weer gegeven.  
 
     Voor Vm's is het bestand doorgaans hier:
     ```

@@ -12,10 +12,9 @@ ms.author: sstein
 ms.reviewer: ''
 ms.date: 12/18/2018
 ms.openlocfilehash: 4c3a141525f650d6e254f79ce9e3396f2c35a95f
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/27/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84051883"
 ---
 # <a name="general-guidance-for-working-with-wingtip-tickets-sample-saas-apps"></a>Algemene richt lijnen voor het werken met Wingtip tickets voor beelden van SaaS-apps
@@ -33,7 +32,7 @@ Uitvoer bare inhoud (scripts, dll's) wordt mogelijk door Windows geblokkeerd wan
     - [WingtipTicketsSaaS-MultiTenantDb](https://github.com/Microsoft/WingtipTicketsSaaS-MultiTenantDb)
 2. Klik op **klonen of downloaden**.
 3. Klik op **zip downloaden** en sla het bestand op.
-4. Klik met de rechter muisknop op het zip-bestand en selecteer **Eigenschappen**. De naam van het zip-bestand komt overeen met de naam van de opslag plaats. kade. _WingtipTicketsSaaS-DbPerTenant-Master. zip_)
+4. Klik met de rechter muisknop op het zip-bestand en selecteer **Eigenschappen**. De naam van het zip-bestand komt overeen met de naam van de opslag plaats. kade. _WingtipTicketsSaaS-DbPerTenant-master.zip_)
 5. Selecteer op het tabblad **Algemeen** de optie **blok kering opheffen**.
 6. Klik op **OK**.
 7. Pak de bestanden uit.

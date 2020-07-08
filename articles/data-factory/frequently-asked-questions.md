@@ -10,10 +10,9 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 02/10/2020
 ms.openlocfilehash: b8bd471c5fd5346fcc7e95b9afb49e833e7c6384
-ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/29/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84187279"
 ---
 # <a name="azure-data-factory-faq"></a>Veelgestelde vragen over Azure Data Factory
@@ -127,7 +126,7 @@ Gekoppelde services zijn te vergelijken met verbindingsreeksen, die de verbindin
 Gekoppelde services hebben twee doelen in Data Factory:
 
 - Voor het vertegenwoordigen van een *gegevens archief* met, maar niet beperkt tot, een SQL Server exemplaar, een Oracle data base-exemplaar, een bestands share of een Azure Blob Storage-account. Zie [activiteit kopiëren in azure Data Factory](copy-activity-overview.md)voor een lijst met ondersteunde gegevens archieven.
-- Om een *Compute-resource* voor te stellen die de uitvoering van een activiteit kan hosten. De HDInsight Hive-activiteit wordt bijvoorbeeld uitgevoerd op een HDInsight Hadoop-cluster. Zie [gegevens transformeren in azure Data Factory](transform-data.md)voor een lijst met transformatie activiteiten en ondersteunde reken omgevingen.
+- Ter vertegenwoordiging van een *rekenresource* die de uitvoering van een activiteit kan hosten. De HDInsight Hive-activiteit wordt bijvoorbeeld uitgevoerd op een HDInsight Hadoop-cluster. Zie [gegevens transformeren in azure Data Factory](transform-data.md)voor een lijst met transformatie activiteiten en ondersteunde reken omgevingen.
 
 ### <a name="triggers"></a>Triggers
 Triggers vertegenwoordigen de verwerkings eenheden die bepalen wanneer een pijplijn uitvoering is gestart. Er zijn verschillende soorten triggers voor verschillende soorten gebeurtenissen. 
@@ -150,7 +149,7 @@ Zie de volgende artikelen voor meer informatie over Data Factory-concepten:
 
 - [Gegevenssets en gekoppelde services](concepts-datasets-linked-services.md)
 - [Pijplijnen en activiteiten](concepts-pipelines-activities.md)
-- [Integratie-runtime](concepts-integration-runtime.md)
+- [Integration Runtime](concepts-integration-runtime.md)
 
 ## <a name="what-is-the-pricing-model-for-data-factory"></a>Wat is het prijs model voor Data Factory?
 Zie [Data Factory prijs informatie](https://azure.microsoft.com/pricing/details/data-factory/)voor Azure Data Factory prijs informatie.

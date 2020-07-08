@@ -14,10 +14,9 @@ ms.author: sawinark
 ms.reviewer: douglasl
 manager: anandsub
 ms.openlocfilehash: 0023bcc4a7c31a0e337683fa3d3080a45445fc49
-ms.sourcegitcommit: 6a9f01bbef4b442d474747773b2ae6ce7c428c1f
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/27/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84117911"
 ---
 # <a name="how-to-start-and-stop-azure-ssis-integration-runtime-on-a-schedule"></a>Azure-SSIS Integration Runtime gepland starten en stoppen
@@ -55,7 +54,7 @@ Als u een derde trigger maakt die gepland is om dagelijks om middernacht te word
    
 3. Voer op de pagina **nieuw Data Factory** **Gegevensfactory myazuressisdatafactory** in als **naam**. 
       
-   ![Pagina Nieuwe gegevensfactory](./media/tutorial-create-azure-ssis-runtime-portal/new-azure-data-factory.png)
+   ![De pagina Nieuwe data factory](./media/tutorial-create-azure-ssis-runtime-portal/new-azure-data-factory.png)
  
    De naam van uw ADF moet globaal uniek zijn. Als het volgende fout bericht wordt weer gegeven, wijzigt u de naam van de ADF (bijvoorbeeld Uwnaammyazuressisdatafactory) en probeert u deze opnieuw te maken. Zie [het artikel Data Factory naamgevings regels](naming-rules.md) voor meer informatie over naamgevings regels voor ADF-artefacten.
   
@@ -64,7 +63,7 @@ Als u een derde trigger maakt die gepland is om dagelijks om middernacht te word
 4. Selecteer uw Azure- **abonnement** waaronder u uw ADF wilt maken. 
 5. Voer een van de volgende stappen uit voor de **resource groep**:
      
-   - Selecteer **bestaande gebruiken**en selecteer een bestaande resource groep in de vervolg keuzelijst. 
+   - Selecteer **Bestaande gebruiken** en selecteer een bestaande resourcegroep in de vervolgkeuzelijst. 
    - Selecteer **nieuwe maken**en voer de naam van de nieuwe resource groep in.   
          
    Zie [resource groepen gebruiken om uw Azure-resources te beheren](../azure-resource-manager/management/overview.md) voor meer informatie over resource groepen.
@@ -72,7 +71,7 @@ Als u een derde trigger maakt die gepland is om dagelijks om middernacht te word
 6. Selecteer voor **versie** **v2** .
 7. Selecteer bij **locatie**een van de locaties die worden ondersteund voor het maken van ADF vanuit de vervolg keuzelijst.
 8. Selecteer **Vastmaken aan dashboard**.     
-9. Klik op **Maken**.
+9. Klik op **Create**.
 10. In het Azure-dash board ziet u de volgende tegel met de status: **Data Factory implementeren**. 
 
     ![tegel met de status 'gegevensfactory implementeren'](media/tutorial-create-azure-ssis-runtime-portal/deploying-data-factory.png)

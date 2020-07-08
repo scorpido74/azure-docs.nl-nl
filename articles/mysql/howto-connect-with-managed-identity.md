@@ -7,15 +7,14 @@ ms.service: mysql
 ms.topic: conceptual
 ms.date: 05/19/2020
 ms.openlocfilehash: 156d960571f4d5f28f64823ecbe8f0465739bb23
-ms.sourcegitcommit: f0b206a6c6d51af096a4dc6887553d3de908abf3
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84141718"
 ---
 # <a name="connect-with-managed-identity-to-azure-database-for-mysql"></a>Verbinding maken met beheerde identiteit voor Azure Database for MySQL
 
-In dit artikel leest u hoe u een door de gebruiker toegewezen identiteit voor een virtuele Azure-machine (VM) gebruikt om toegang te krijgen tot een Azure Database for MySQL-server. Managed Service Identity's worden automatisch beheerd in Azure en stellen u in staat om te verifiëren bij services die Azure AD-verificatie ondersteunen, zonder referenties in code te hoeven invoegen. Procedures voor:
+In dit artikel leest u hoe u een door de gebruiker toegewezen identiteit voor een virtuele Azure-machine (VM) gebruikt om toegang te krijgen tot een Azure Database for MySQL-server. Managed Service Identity's worden automatisch beheerd in Azure en stellen u in staat om te verifiëren bij services die Azure AD-verificatie ondersteunen, zonder referenties in code te hoeven invoegen. In deze zelfstudie leert u procedures om het volgende te doen:
 
 > [!div class="checklist"]
 > * Uw VM toegang verlenen tot een Azure Database for MySQL server
@@ -103,7 +102,7 @@ U bent nu verbonden met de data base die u eerder hebt geconfigureerd.
 
 In deze sectie wordt beschreven hoe u een toegangs token krijgt met behulp van de door de gebruiker toegewezen beheerde identiteit van de virtuele machine en deze gebruikt om Azure Database for MySQL aan te roepen. Azure Database for MySQL biedt systeem eigen ondersteuning voor Azure AD-verificatie, zodat het rechtstreeks de toegangs tokens kan accepteren die zijn verkregen met beheerde identiteiten voor Azure-resources. Wanneer u een verbinding met MySQL maakt, geeft u het toegangs token door in het veld wacht woord.
 
-Hier volgt een voor beeld van een .NET-code voor het openen van een verbinding met MySQL met behulp van een toegangs token. Deze code moet worden uitgevoerd op de virtuele machine om toegang te krijgen tot het eind punt van de door de gebruiker toegewezen beheerde identiteit van de virtuele machine. .NET Framework 4,6 of hoger of .NET Core 2,2 of hoger is vereist voor het gebruik van de methode voor toegangs tokens. Vervang de waarden van HOST, gebruiker, data base en CLIENT_ID.
+Hier volgt een voor beeld van een .NET-code voor het openen van een verbinding met MySQL met behulp van een toegangs token. Deze code moet worden uitgevoerd op de virtuele machine om toegang te krijgen tot het eind punt van de door de gebruiker toegewezen beheerde identiteit van de virtuele machine. .NET framework 4.6 of hoger of .NET Core 2.2 is vereist voor het gebruik van de toegangsmethode met een toegangstoken. Vervang de waarden van HOST, gebruiker, data base en CLIENT_ID.
 
 ```csharp
 using System;

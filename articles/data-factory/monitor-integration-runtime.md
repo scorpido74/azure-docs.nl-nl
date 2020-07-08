@@ -11,10 +11,9 @@ author: djpmsft
 ms.author: daperlov
 manager: anandsub
 ms.openlocfilehash: cfb40375fe841dd363681aea3d2cf6355046cd51
-ms.sourcegitcommit: 6a9f01bbef4b442d474747773b2ae6ce7c428c1f
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/27/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84113692"
 ---
 # <a name="monitor-an-integration-runtime-in-azure-data-factory"></a>Een IR bewaken in Azure Data Factory
@@ -50,7 +49,7 @@ De volgende tabel bevat beschrijvingen van de eigenschappen die worden geretourn
 | Locatie | Locatie van de Azure Integration runtime. Zie [Inleiding tot Integration runtime](concepts-integration-runtime.md)voor meer informatie over de locatie van een Azure Integration runtime. |
 | DataFactoryName | De naam van de data factory waarvan de Azure Integration runtime deel uitmaakt. | 
 | ResourceGroupName | De naam van de resource groep waartoe de data factory behoort.  |
-| Beschrijving | Beschrijving van de Integration runtime.  |
+| Description | Beschrijving van de Integration runtime.  |
 
 ### <a name="status"></a>Status
 De volgende tabel bevat mogelijke statussen van een Azure Integration runtime:
@@ -159,7 +158,7 @@ Azure-SSIS Integration runtime is een volledig beheerd cluster van virtuele Azur
 
 ### <a name="properties"></a>Eigenschappen
 
-| Eigenschap/status | Beschrijving |
+| Eigenschap/status | Description |
 | --------------- | ----------- |
 | CreateTime | De UTC-tijd waarop uw Azure SSIS Integration runtime is gemaakt. |
 | Knooppunten | De toegewezen/beschik bare knoop punten van uw Azure-SSIS-integratie-runtime met knooppunt statussen (gestart/beschikbaar/recycling/niet beschikbaar) en bruikbare fouten. |
@@ -180,8 +179,8 @@ Azure-SSIS Integration runtime is een volledig beheerd cluster van virtuele Azur
 | Type | Het type (beheerd/zelf-Hostend) van uw Azure SSIS Integration runtime. |
 | ResourceGroupName | De naam van uw Azure-resource groep waarin uw data factory en Azure-SSIS Integration runtime zijn gemaakt. |
 | DataFactoryName | De naam van uw Azure-data factory. |
-| Naam | De naam van uw Azure SSIS Integration runtime. |
-| Beschrijving | De beschrijving van uw Azure SSIS Integration runtime. |
+| Name | De naam van uw Azure SSIS Integration runtime. |
+| Description | De beschrijving van uw Azure SSIS Integration runtime. |
 
   
 ### <a name="status-per-node"></a>Status (per knoop punt)
@@ -195,7 +194,7 @@ Azure-SSIS Integration runtime is een volledig beheerd cluster van virtuele Azur
 
 ### <a name="status-overall-azure-ssis-integration-runtime"></a>Status (algehele Azure-SSIS Integration runtime)
 
-| Algemene status | Beschrijving | 
+| Algemene status | Description | 
 | -------------- | ----------- | 
 | Eerste | De knoop punten van uw Azure SSIS Integration runtime zijn niet toegewezen/voor bereid. | 
 | Starten | De knoop punten van uw Azure SSIS Integration runtime worden toegewezen/voor bereid en de facturering is gestart. |

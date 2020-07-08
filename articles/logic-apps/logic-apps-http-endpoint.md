@@ -7,10 +7,9 @@ ms.reviewer: jonfan, logicappspm
 ms.topic: article
 ms.date: 05/28/2020
 ms.openlocfilehash: b5c4005c95a88a40a836b9c0f6d1fd01e0417ed0
-ms.sourcegitcommit: 1692e86772217fcd36d34914e4fb4868d145687b
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/29/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84170270"
 ---
 # <a name="call-trigger-or-nest-logic-apps-by-using-https-endpoints-in-azure-logic-apps"></a>Logische apps aanroepen, activeren of nesten met behulp van HTTPS-eind punten in Azure Logic Apps
@@ -36,7 +35,7 @@ Als u geen ervaring hebt met Logic apps, raadpleegt u [Wat is Azure Logic apps](
 
 ## <a name="create-a-callable-endpoint"></a>Een aanroepbaar eind punt maken
 
-1. Meld u aan bij de [Azure-portal](https://portal.azure.com). Een lege logische app maken en openen in de ontwerp functie voor logische apps.
+1. Meld u aan bij [Azure Portal](https://portal.azure.com). Een lege logische app maken en openen in de ontwerp functie voor logische apps.
 
    In dit voor beeld wordt de trigger voor aanvragen gebruikt, maar u kunt elke trigger gebruiken die binnenkomende HTTPS-aanvragen kan ontvangen. Alle principes zijn identiek van toepassing op deze triggers. Zie voor meer informatie over de aanvraag trigger [binnenkomende https-aanroepen ontvangen en erop reageren met behulp van Azure Logic apps](../connectors/connectors-native-reqres.md).
 
@@ -357,10 +356,10 @@ In de antwoord tekst kunt u meerdere kopteksten en elk type inhoud toevoegen. De
 
 Antwoorden hebben de volgende eigenschappen:
 
-| Eigenschap (weer geven) | Eigenschap (JSON) | Beschrijving |
+| Eigenschap (weer geven) | Eigenschap (JSON) | Description |
 |--------------------|-----------------|-------------|
 | **Status code** | `statusCode` | De HTTPS-status code die moet worden gebruikt in het antwoord op de binnenkomende aanvraag. Deze code kan een geldige status code zijn die begint met 2xx, 4xx of 5xx. 3xx-status codes zijn echter niet toegestaan. |
-| **Kopteksten** | `headers` | Een of meer headers die moeten worden meegenomen in het antwoord |
+| **Headers** | `headers` | Een of meer headers die moeten worden meegenomen in het antwoord |
 | **Hoofdtekst** | `body` | Een body-object dat een teken reeks, een JSON-object of zelfs binaire inhoud waarnaar wordt verwezen vanuit een vorige stap kan zijn. |
 ||||
 

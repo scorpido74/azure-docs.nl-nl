@@ -9,10 +9,9 @@ ms.devlang: dotnet
 ms.topic: reference
 ms.date: 03/18/2019
 ms.openlocfilehash: 097868c0f6c64ad8b58dce365a2232bb02b786e2
-ms.sourcegitcommit: 1692e86772217fcd36d34914e4fb4868d145687b
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/29/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84168196"
 ---
 # <a name="azure-cosmos-db-table-net-standard-api-download-and-release-notes"></a>Azure Cosmos DB Table .NET Standard API: Download-en release-opmerkingen
@@ -28,7 +27,7 @@ ms.locfileid: "84168196"
 |---|---|
 |**SDK downloaden**|[NuGet](https://www.nuget.org/packages/Microsoft.Azure.Cosmos.Table)|
 |**Voorbeeld**|[Cosmos DB Table-API .NET-voor beeld](https://github.com/Azure-Samples/azure-cosmos-table-dotnet-core-getting-started)|
-|**Snelstart**|[Snelstart](create-table-dotnet.md)|
+|**Snelstartgids**|[Snelstartgids](create-table-dotnet.md)|
 |**Zelfstudie**|[Zelfstudie](tutorial-develop-table-dotnet.md)|
 |**Huidig ondersteund Framework**|[Microsoft .NET standaard 2,0](https://www.nuget.org/packages/NETStandard.Library)|
 |**Probleem melden**|[Probleem melden](https://github.com/Azure/azure-cosmos-table-dotnet/issues)|
@@ -40,10 +39,10 @@ de 2.0.0-serie neemt de afhankelijkheid van [micro soft. Azure. Cosmos](https://
 * eerste preview van 2.0.0 Table SDK die afhankelijk is van [micro soft. Azure. Cosmos](https://www.nuget.org/packages/Microsoft.Azure.Cosmos/), met prestatie verbeteringen en naam ruimte consolidatie op Cosmos DB eind punt. De open bare API blijft hetzelfde.
 
 ## <a name="release-notes-for-100-series"></a>Release opmerkingen voor de 1.0.0-serie
-de 1.0.0-serie neemt de afhankelijkheid van [micro soft. Azure. DocumentDB. core](https://www.nuget.org/packages/Microsoft.Azure.DocumentDB.Core/).
+de 1.0.0-serie neemt de afhankelijkheid op [Microsoft.Azure.DocumentDB. core](https://www.nuget.org/packages/Microsoft.Azure.DocumentDB.Core/).
 
 ### <a name="107"></a><a name="1.0.7"></a>1.0.7
-* Prestaties verbeteren door het standaard tracerings niveau van de tabel-SDK in te stellen op SourceLevels. off, dat kan worden gekozen via app. config
+* Prestaties verbeteren door het standaard tracerings niveau van de tabel-SDK in te stellen op SourceLevels. off, dat kan worden gekozen via app.config
 
 ### <a name="105"></a><a name="1.0.5"></a>1.0.5
 * Nieuwe configuratie introduceren onder TableClientConfiguration om rest-uitvoerder te gebruiken om te communiceren met Cosmos DB Table-API
@@ -91,18 +90,18 @@ Micro soft biedt een kennisgeving van ten minste **twaalf maanden** voor het bui
 In deze platformoverschrijdende .NET Standard-bibliotheek [micro soft. Azure. Cosmos. table](https://www.nuget.org/packages/Microsoft.Azure.Cosmos.Table) wordt de .NET Framework bibliotheek [micro soft. Azure. CosmosDB. table](https://www.nuget.org/packages/Microsoft.Azure.CosmosDB.Table)vervangen.
 
 ### <a name="200-series"></a>2.0.0-serie
-| Versie | Release datum | Buitengebruikstellings datum |
+| Versie | Release datum | Buitengebruikstellingsdatum |
 | --- | --- | --- |
-| [2.0.0-Preview](#2.0.0-preview) |Auguest 22, 2019 |--- |
+| [2.0.0-preview](#2.0.0-preview) |Auguest 22, 2019 |--- |
 
 ### <a name="100-series"></a>1.0.0-serie
-| Versie | Release datum | Buitengebruikstellings datum |
+| Versie | Release datum | Buitengebruikstellingsdatum |
 | --- | --- | --- |
 | [1.0.5](#1.0.5) |13 september 2019 |--- |
 | [1.0.5-preview](#1.0.5-preview) |Auguest 20, 2019 |--- |
 | [1.0.4](#1.0.4) |Auguest 12, 2019 |--- |
 | [1.0.4-preview](#1.0.4-preview) |26 juli 2019 |--- |
-| 1.0.2-Preview |2 mei 2019 |--- |
+| 1.0.2-preview |2 mei 2019 |--- |
 | [1.0.1](#1.0.1) |19 april 2019 |--- |
 | [1.0.0](#1.0.0) |13 maart 2019 |--- |
 | [0.11.0-Preview](#0.11.0-preview) |5 maart 2019 |--- |
@@ -115,5 +114,5 @@ In deze platformoverschrijdende .NET Standard-bibliotheek [micro soft. Azure. Co
 
 [!INCLUDE [cosmos-db-sdk-faq](../../includes/cosmos-db-sdk-faq.md)]
 
-## <a name="see-also"></a>Zie ook
+## <a name="see-also"></a>Zie tevens
 Zie [Inleiding tot Azure Cosmos DB Table-API](table-introduction.md)voor meer informatie over de Azure Cosmos db table-API.
