@@ -4,21 +4,21 @@ description: In dit artikel wordt beschreven hoe u Server beheerders beheert voo
 author: minewiskan
 ms.service: azure-analysis-services
 ms.topic: conceptual
-ms.date: 04/15/2020
+ms.date: 07/07/2020
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 944a84405bd7e03b72b2610278f9f0e4d3cfaf38
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 9edc43f9b2b62a3d9da9d6fba5ab52318e8b6427
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81454234"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86077504"
 ---
 # <a name="manage-server-administrators"></a>Serverbeheerders beheren
 
-Server beheerders moeten een geldige gebruiker of beveiligings groep zijn in de Azure Active Directory (Azure AD) voor de Tenant waarin de server zich bevindt. U kunt **Analysis Services beheerders** voor uw server gebruiken in azure Portal, Server eigenschappen in SSMS, Power shell of rest API voor het beheren van Server beheerders. 
+Server beheerders moeten een geldige gebruiker, Service-Principal of beveiligings groep in de Azure Active Directory (Azure AD) zijn voor de Tenant waarin de server zich bevindt. U kunt **Analysis Services beheerders** voor uw server gebruiken in azure Portal, Server eigenschappen in SSMS, Power shell of rest API voor het beheren van Server beheerders. 
 
-Gebruik wanneer u een **beveiligings groep**toevoegt `obj:groupid@tenantid` .
+Gebruik wanneer u een **beveiligings groep**toevoegt `obj:groupid@tenantid` . Service-principals worden niet ondersteund in beveiligings groepen die zijn toegevoegd aan de rol Server beheerder.
 
 ## <a name="to-add-server-administrators-by-using-azure-portal"></a>Server beheerders toevoegen met behulp van Azure Portal
 

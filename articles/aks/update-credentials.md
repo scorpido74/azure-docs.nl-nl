@@ -5,12 +5,12 @@ description: Meer informatie over het bijwerken of opnieuw instellen van de refe
 services: container-service
 ms.topic: article
 ms.date: 03/11/2019
-ms.openlocfilehash: 914e043e2c0cf39c18480b5ca5e34332398806f4
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 7dcbd91063d4f36c4d78023b6548db0c968eda74
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84905371"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86077691"
 ---
 # <a name="update-or-rotate-the-credentials-for-azure-kubernetes-service-aks"></a>De referenties voor de Azure Kubernetes-service bijwerken of draaien (AKS)
 
@@ -30,6 +30,16 @@ Wanneer u de referenties voor een AKS-cluster wilt bijwerken, kunt u het volgend
 
 * werk de referenties bij voor de bestaande service-principal die wordt gebruikt door het cluster of
 * Maak een Service-Principal en werk het cluster bij om deze nieuwe referenties te gebruiken.
+
+### <a name="check-the-expiration-date-of-your-service-principal"></a>Controleer de verval datum van de Service-Principal
+
+Als u de verval datum van de Service-Principal wilt controleren, gebruikt u de opdracht [AZ AD SP Credential List][az-ad-sp-credential-list] . In het volgende voor beeld wordt de Service-Principal-ID voor het cluster met de naam *myAKSCluster* in de resource groep *myResourceGroup* opgehaald met de opdracht [AZ AKS show][az-aks-show] . De Service-Principal-ID wordt ingesteld als een variabele met de naam *SP_ID* voor gebruik met de opdracht [AZ AD SP Credential List][az-ad-sp-credential-list] .
+
+```azurecli
+SP_ID=$(az aks show --resource-group myResourceGroup --name myAKSCluster \
+    --query servicePrincipalProfile.clientId -o tsv)
+az ad sp credential list --id $SP_ID --query "[].endDate" -o tsv
+```
 
 ### <a name="reset-existing-service-principal-credential"></a>Bestaande Service-Principal-referenties opnieuw instellen
 
@@ -88,7 +98,7 @@ az aks update-credentials \
     --name myAKSCluster \
     --reset-service-principal \
     --service-principal $SP_ID \
-    --client-secret $SP_SECRET
+    --client-secret "$SP_SECRET"
 ```
 
 Het duurt enkele minuten voordat de referenties van de service-principal worden bijgewerkt in het AKS.
@@ -120,4 +130,5 @@ In dit artikel is de service-principal voor het AKS-cluster zelf en de AAD-integ
 [aad-integration]: azure-ad-integration.md
 [create-aad-app]: azure-ad-integration.md#create-the-server-application
 [az-ad-sp-create]: /cli/azure/ad/sp#az-ad-sp-create-for-rbac
+[az-ad-sp-credential-list]: /cli/azure/ad/sp/credential#az-ad-sp-credential-list
 [az-ad-sp-credential-reset]: /cli/azure/ad/sp/credential#az-ad-sp-credential-reset

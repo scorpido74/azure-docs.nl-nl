@@ -3,12 +3,12 @@ title: Sjabloon functies-datum
 description: Hierin worden de functies beschreven die u kunt gebruiken in een Azure Resource Manager sjabloon om met datums te werken.
 ms.topic: conceptual
 ms.date: 06/22/2020
-ms.openlocfilehash: e1d9c354c53404bddc31d565b45e608567b218d6
-ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
+ms.openlocfilehash: abdc88ce15279b90f8f9dc05a38a2ae236498f12
+ms.sourcegitcommit: bcb962e74ee5302d0b9242b1ee006f769a94cfb8
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/23/2020
-ms.locfileid: "85205166"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86058041"
 ---
 # <a name="date-functions-for-arm-templates"></a>Datum functies voor ARM-sjablonen
 
@@ -29,7 +29,7 @@ Voegt een tijds duur toe aan een basis waarde. ISO 8601-indeling wordt verwacht.
 |:--- |:--- |:--- |:--- |
 | base | Yes | tekenreeks | De begin datum/tijd-waarde voor de toevoeging. [ISO 8601-time stamp notatie](https://en.wikipedia.org/wiki/ISO_8601)gebruiken. |
 | duur | Yes | tekenreeks | De tijd waarde die aan de basis moet worden toegevoegd. Dit kan een negatieve waarde zijn. Gebruik de [ISO 8601-duur notatie](https://en.wikipedia.org/wiki/ISO_8601#Durations). |
-| formaat | No | tekenreeks | De uitvoer indeling voor het resultaat van de datum en tijd. Als u dit niet opgeeft, wordt de indeling van de basis waarde gebruikt. Gebruik [standaard notatie teken reeksen](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings) of [teken reeksen met aangepaste notaties](https://docs.microsoft.com/dotnet/standard/base-types/custom-date-and-time-format-strings). |
+| indeling | No | tekenreeks | De uitvoer indeling voor het resultaat van de datum en tijd. Als u dit niet opgeeft, wordt de indeling van de basis waarde gebruikt. Gebruik [standaard notatie teken reeksen](/dotnet/standard/base-types/standard-date-and-time-format-strings) of [teken reeksen met aangepaste notaties](/dotnet/standard/base-types/custom-date-and-time-format-strings). |
 
 ### <a name="return-value"></a>Retourwaarde
 
@@ -144,7 +144,7 @@ Retourneert de huidige (UTC) datum/tijd-waarde in de opgegeven notatie. Als er g
 
 | Parameter | Vereist | Type | Description |
 |:--- |:--- |:--- |:--- |
-| formaat |No |tekenreeks |De gecodeerde URI-waarde die moet worden geconverteerd naar een teken reeks. Gebruik [standaard notatie teken reeksen](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings) of [teken reeksen met aangepaste notaties](https://docs.microsoft.com/dotnet/standard/base-types/custom-date-and-time-format-strings). |
+| indeling |No |tekenreeks |De gecodeerde URI-waarde die moet worden geconverteerd naar een teken reeks. Gebruik [standaard notatie teken reeksen](/dotnet/standard/base-types/standard-date-and-time-format-strings) of [teken reeksen met aangepaste notaties](/dotnet/standard/base-types/custom-date-and-time-format-strings). |
 
 ### <a name="remarks"></a>Opmerkingen
 

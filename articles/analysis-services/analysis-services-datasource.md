@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 05/19/2020
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 83a5543aa2d1f30696bed05caf85b04ed6685bae
-ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
+ms.openlocfilehash: dc25c853a37de5c310d37e7ee64c6f762283cb0a
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84197205"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86077436"
 ---
 # <a name="data-sources-supported-in-azure-analysis-services"></a>Ondersteunde gegevensbronnen in Azure Analysis Services
 
@@ -20,30 +20,30 @@ Gegevens bronnen en connectors die worden weer gegeven in de wizard gegevens oph
 
 ## <a name="azure-data-sources"></a>Azure-gegevensbronnen
 
-|Gegevensbron  |In het geheugen  |DirectQuery  |Opmerkingen |
+|Gegevensbron  |In het geheugen  |DirectQuery  |Notities |
 |---------|---------|---------|---------|
-|Azure SQL Database      |   Ja      |    Ja      |<sup>[2](#azprovider)</sup>, <sup> [3](#azsqlmanaged)</sup>|
-|Azure Synapse Analytics (SQL Data Warehouse)      |   Ja      |   Ja       |<sup>[twee](#azprovider)</sup>|
-|Azure Blob Storage      |   Yes       |    Nee      | <sup>[i](#tab1400a)</sup> |
-|Azure-tabelopslag     |   Yes       |    Nee      | <sup>[i](#tab1400a)</sup>|
-|Azure Cosmos DB     |  Yes        |  Nee        |<sup>[i](#tab1400a)</sup> |
-|Azure Data Lake Store Gen1      |   Yes       |    Nee      |<sup>[i](#tab1400a)</sup> |
+|Azure SQL Database      |   Ja      |    Yes      |<sup>[2](#azprovider)</sup>, <sup> [3](#azsqlmanaged)</sup>|
+|Azure Synapse Analytics (SQL DW)      |   Ja      |   Yes       |<sup>[2](#azprovider)</sup>|
+|Azure Blob Storage      |   Yes       |    Nee      | <sup>[1](#tab1400a)</sup> |
+|Azure Table Storage     |   Yes       |    Nee      | <sup>[1](#tab1400a)</sup>|
+|Azure Cosmos DB     |  Yes        |  Nee        |<sup>[1](#tab1400a)</sup> |
+|Azure Data Lake Store Gen1      |   Yes       |    Nee      |<sup>[1](#tab1400a)</sup> |
 |Azure Data Lake Store Gen2       |   Yes       |    Nee      |<sup>[1](#tab1400a)</sup>, <sup> [5](#gen2)</sup>|
-|Azure HDInsight HDFS    |     Yes     |   Nee       |<sup>[i](#tab1400a)</sup> |
+|Azure HDInsight HDFS    |     Yes     |   Nee       |<sup>[1](#tab1400a)</sup> |
 |Azure HDInsight Spark     |   Yes       |   Nee       |<sup>[1](#tab1400a)</sup>, <sup> [4](#databricks)</sup>|
 ||||
 
-**Noten**
+**Opmerkingen:**
 
 <a name="tab1400a">1</a> : alleen modellen in tabel vorm 1400 en hoger.  
 <a name="azprovider">2</a> -als de gegevens bron van een *provider* in tabellaire 1200 en hoger modellen is opgegeven, is voor zowel in-Memory als DirectQuery-modellen micro soft OLE DB-stuur programma vereist voor SQL Server MSOLEDBSQL (aanbevolen), SQL Server Native Client 11,0 of .NET Framework gegevens provider voor SQL Server.  
-<a name="azsqlmanaged">3</a> -Azure SQL Managed instance wordt ondersteund. Omdat beheerde exemplaren worden uitgevoerd in azure VNet met een privé-IP-adres, moet het open bare eind punt zijn ingeschakeld voor het exemplaar. Als deze niet is ingeschakeld, is een [on-premises gegevens gateway](analysis-services-gateway.md) vereist.  
+<a name="azsqlmanaged">3</a> -Azure SQL Managed instance wordt ondersteund. Omdat het beheerde exemplaar van SQL wordt uitgevoerd in azure VNet met een privé-IP-adres, moet het open bare eind punt zijn ingeschakeld voor het exemplaar. Als deze niet is ingeschakeld, is een [on-premises gegevens gateway](analysis-services-gateway.md) vereist.  
 <a name="databricks">4</a> -Azure Databricks het gebruik van de Spark-connector wordt momenteel niet ondersteund.  
 <a name="gen2">5</a> -ADLS Gen2 connector wordt momenteel niet ondersteund, maar de Azure Blob Storage-connector kan worden gebruikt met een ADLS Gen2-gegevens bron.
 
 ## <a name="other-data-sources"></a>Andere gegevensbronnen
 
-|Gegevensbron | In het geheugen | DirectQuery |Opmerkingen   |
+|Gegevensbron | In het geheugen | DirectQuery |Notities   |
 |  --- | --- | --- | --- |
 |Access-database     |  Yes | Nee |  |
 |Active Directory     |  Yes | Nee | <sup>[6,5](#tab1400b)</sup>  |
@@ -53,7 +53,7 @@ Gegevens bronnen en connectors die worden weer gegeven in de wizard gegevens oph
 |Dynamics 365     |  Yes | Nee | <sup>[6,5](#tab1400b)</sup> |
 |Excel-werkmap     |  Yes | Nee |  |
 |Exchange      |  Yes | Nee | <sup>[6,5](#tab1400b)</sup> |
-|Map      |Yes | Nee | <sup>[6,5](#tab1400b)</sup> |
+|Map      |Ja | Nee | <sup>[6,5](#tab1400b)</sup> |
 |IBM Informix  |Yes | Nee |  |
 |JSON-document      |  Yes | Nee | <sup>[6,5](#tab1400b)</sup> |
 |Regels van binair bestand      | Yes | Nee | <sup>[6,5](#tab1400b)</sup> |
@@ -61,22 +61,22 @@ Gegevens bronnen en connectors die worden weer gegeven in de wizard gegevens oph
 |OData-feed      |  Yes | Nee | <sup>[6,5](#tab1400b)</sup> |
 |ODBC-query     | Yes | Nee |  |
 |OLE DB     |   Yes | Nee |  |
-|Oracle  | Ja  |Ja  | <sup>[9,4](#oracle)</sup> |
+|Oracle  | Ja  |Yes  | <sup>[9](#oracle)</sup> |
 |PostgreSQL-database   | Yes | Nee | <sup>[6,5](#tab1400b)</sup> |
 |Salesforce-objecten|  Yes | Nee | <sup>[6,5](#tab1400b)</sup> |
 |Salesforce-rapporten |Yes | Nee | <sup>[6,5](#tab1400b)</sup> |
 |SAP HANA     |  Yes | Nee |  |
 |SAP Business Warehouse    |  Yes | Nee | <sup>[6,5](#tab1400b)</sup> |
 |SharePoint-lijst      |   Yes | Nee | <sup>[6](#tab1400b)</sup>, <sup> [11](#filesSP)</sup> |
-|SQL Server |Ja   | Ja  | <sup>[7](#sqlim)</sup>, <sup> [8](#instgw)</sup> |
-|SQL Server Data Warehouse |Ja   | Ja  | <sup>[7](#sqlim)</sup>, <sup> [8](#instgw)</sup> |
+|SQL Server |Ja   | Yes  | <sup>[7](#sqlim)</sup>, <sup> [8](#instgw)</sup> |
+|SQL Server Data Warehouse |Ja   | Yes  | <sup>[7](#sqlim)</sup>, <sup> [8](#instgw)</sup> |
 |Sybase-database     |  Yes | Nee |  |
-|Teradata | Ja  | Ja  | <sup>[6](#teradata)</sup> |
+|Teradata | Ja  | Yes  | <sup>[10](#teradata)</sup> |
 |TXT-bestand  |Yes | Nee |  |
 |XML-tabel    |  Yes | Nee | <sup>[6,5](#tab1400b)</sup> |
 | | | |
 
-**Noten**  
+**Opmerkingen:**  
 <a name="tab1400b">6</a> : alleen in tabel vorm 1400 en hoger.  
 <a name="sqlim">7</a> -als de gegevens bron van een *provider* is opgegeven in tabellaire 1200 en hoger, geeft u micro soft OLE DB driver op voor SQL Server MSOLEDBSQL (aanbevolen), SQL Server Native Client 11,0 of .NET Framework gegevens provider voor SQL Server.  
 <a name="instgw">8</a> -als MSOLEDBSQL als gegevens provider worden opgegeven, kan het nodig zijn om het [micro soft OLE DB-stuur programma voor SQL Server](https://docs.microsoft.com/sql/connect/oledb/oledb-driver-for-sql-server) te downloaden en te installeren op dezelfde computer als de on-premises gegevens gateway.  

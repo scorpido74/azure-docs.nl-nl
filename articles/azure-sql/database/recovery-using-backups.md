@@ -3,8 +3,8 @@ title: Een Data Base herstellen vanuit een back-up
 titleSuffix: Azure SQL Database & SQL Managed Instance
 description: Meer informatie over herstel naar een bepaald tijdstip, waarmee u een data base in Azure SQL Database of een exemplaar in Azure SQL Managed Instance kunt terugdraaien tot 35 dagen.
 services: sql-database
-ms.service: sql-database
-ms.subservice: operations
+ms.service: sql-db-mi
+ms.subservice: service
 ms.custom: ''
 ms.devlang: ''
 ms.topic: conceptual
@@ -12,12 +12,12 @@ author: anosov1960
 ms.author: sashan
 ms.reviewer: mathoma, carlrab, danil
 ms.date: 09/26/2019
-ms.openlocfilehash: 848b8afa6070cb8b0141602f3bb62f24868a9d64
-ms.sourcegitcommit: a8928136b49362448e992a297db1072ee322b7fd
+ms.openlocfilehash: e12d5d7e9cfc6cfa80de1032e3d4d5659c44c0a7
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/11/2020
-ms.locfileid: "84718601"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86075879"
 ---
 # <a name="recover-using-automated-database-backups---azure-sql-database--sql-managed-instance"></a>Herstellen met behulp van automatische database back-ups-Azure SQL Database & door SQL beheerd exemplaar
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -51,11 +51,11 @@ Voor een grote of zeer actieve Data Base kan het herstellen enkele uren duren. A
 
 Voor één abonnement gelden beperkingen voor het aantal gelijktijdige herstel aanvragen. Deze beperkingen gelden voor elke combi natie van tijdgebonden herstel bewerkingen, geo-restores en herstel bewerkingen van back-ups op lange termijn.
 
-| | **Maximum aantal gelijktijdige aanvragen dat wordt verwerkt** | **Maximum aantal gelijktijdige aanvragen dat wordt verzonden** |
+|| **Maximum aantal gelijktijdige aanvragen dat wordt verwerkt** | **Maximum aantal gelijktijdige aanvragen dat wordt verzonden** |
 | :--- | --: | --: |
-|Eén data base (per abonnement)|10|60|
-|Elastische pool (per groep)|4|200|
-||||
+|**Eén data base (per abonnement)**|10|60|
+|**Elastische pool (per groep)**|4|200|
+
 
 Er is geen ingebouwde methode om de volledige server te herstellen. Zie [Azure SQL database: volledige server herstel](https://gallery.technet.microsoft.com/Azure-SQL-Database-Full-82941666)voor een voor beeld van hoe u deze taak uitvoert.
 
@@ -64,7 +64,7 @@ Er is geen ingebouwde methode om de volledige server te herstellen. Zie [Azure S
 
 ## <a name="point-in-time-restore"></a>Terugzetten naar eerder tijdstip
 
-U kunt een zelfstandige, gepoolde of exemplaar database herstellen naar een eerder tijdstip met behulp van de Azure Portal, [Power shell](https://docs.microsoft.com/powershell/module/az.sql/restore-azsqldatabase)of de [rest API](https://docs.microsoft.com/rest/api/sql/databases). De aanvraag kan een servicelaag of reken grootte voor de herstelde data base opgeven. Zorg ervoor dat u voldoende resources hebt op de server waarop u de Data Base wilt herstellen. 
+U kunt een zelfstandige, gepoolde of exemplaar database herstellen naar een eerder tijdstip met behulp van de Azure Portal, [Power shell](https://docs.microsoft.com/powershell/module/az.sql/restore-azsqldatabase)of de [rest API](https://docs.microsoft.com/rest/api/sql/databases/createorupdate#creates-a-database-from-pointintimerestore.). De aanvraag kan een servicelaag of reken grootte voor de herstelde data base opgeven. Zorg ervoor dat u voldoende resources hebt op de server waarop u de Data Base wilt herstellen. 
 
 Wanneer dit is voltooid, wordt door de herstel bewerking een nieuwe data base gemaakt op dezelfde server als de oorspronkelijke data base. De herstelde data base wordt in rekening gebracht tegen normale tarieven, op basis van de servicelaag en de reken grootte. Er worden geen kosten in rekening gebracht totdat het herstellen van de data base is voltooid.
 
@@ -84,7 +84,7 @@ U kunt een Data Base met één of een exemplaar herstellen naar een bepaald tijd
 
 #### <a name="sql-database"></a>SQL Database
 
-Als u een enkele of gegroepeerde Data Base wilt herstellen naar een bepaald tijdstip met behulp van de Azure Portal, opent u de pagina overzicht van de data base en selecteert u **herstellen** op de werk balk. Kies de back-upbron en selecteer het punt-in-time back-uppunt van waaruit een nieuwe Data Base wordt gemaakt.
+Als u een Data Base wilt herstellen naar een bepaald tijdstip met behulp van de Azure Portal, opent u de pagina overzicht van de data base en selecteert u **herstellen** op de werk balk. Kies de back-upbron en selecteer het punt-in-time back-uppunt van waaruit een nieuwe Data Base wordt gemaakt.
 
   ![Scherm opname van opties voor het herstellen van data bases](./media/recovery-using-backups/pitr-backup-sql-database-annotated.png)
 
@@ -110,7 +110,7 @@ U kunt verwijderde data bases herstellen van de Azure Portal van de bron van de 
 
 #### <a name="sql-database"></a>SQL Database
 
-Als u een enkele of een gegroepeerde verwijderde data base wilt herstellen naar de verwijderings tijd met behulp van de Azure Portal, opent u de pagina overzicht van de server en selecteert u **Verwijderde data bases**. Selecteer een verwijderde data base die u wilt herstellen en typ de naam voor de nieuwe Data Base die wordt gemaakt met de gegevens die worden teruggezet vanuit de back-up.
+Als u een verwijderde data base wilt herstellen naar de verwijderings tijd met behulp van de Azure Portal, opent u de pagina overzicht van de server en selecteert u **Verwijderde data bases**. Selecteer een verwijderde data base die u wilt herstellen en typ de naam voor de nieuwe Data Base die wordt gemaakt met de gegevens die worden teruggezet vanuit de back-up.
 
   ![Scherm opname van verwijderde data base herstellen](./media/recovery-using-backups/restore-deleted-sql-database-annotated.png)
 
@@ -208,7 +208,7 @@ U kunt ook Azure PowerShell of de REST API voor herstel gebruiken. De volgende t
 
 Als u een zelfstandige of gegroepeerde Data Base wilt herstellen, raadpleegt u [Restore-AzSqlDatabase](/powershell/module/az.sql/restore-azsqldatabase).
 
-  | Cmdlet | Beschrijving |
+  | Cmdlet | Description |
   | --- | --- |
   | [Get-AzSqlDatabase](/powershell/module/az.sql/get-azsqldatabase) |Hiermee haalt u een of meer databases op. |
   | [Get-AzSqlDeletedDatabaseBackup](/powershell/module/az.sql/get-azsqldeleteddatabasebackup) | Hiermee haalt u een verwijderde database die u kunt herstellen op. |
@@ -222,7 +222,7 @@ Als u een zelfstandige of gegroepeerde Data Base wilt herstellen, raadpleegt u [
 
 Zie [Restore-AzSqlInstanceDatabase](/powershell/module/az.sql/restore-azsqlinstancedatabase)voor informatie over het herstellen van een beheerde exemplaar database.
 
-  | Cmdlet | Beschrijving |
+  | Cmdlet | Description |
   | --- | --- |
   | [Get-AzSqlInstance](/powershell/module/az.sql/get-azsqlinstance) |Hiermee worden een of meer beheerde exemplaren opgehaald. |
   | [Get-AzSqlInstanceDatabase](/powershell/module/az.sql/get-azsqlinstancedatabase) | Hiermee haalt u een exemplaar database op. |
@@ -230,9 +230,9 @@ Zie [Restore-AzSqlInstanceDatabase](/powershell/module/az.sql/restore-azsqlinsta
 
 ### <a name="rest-api"></a>REST-API
 
-Een enkele of gegroepeerde Data Base herstellen met behulp van de REST API:
+Een Data Base herstellen met behulp van de REST API:
 
-| API | Beschrijving |
+| API | Description |
 | --- | --- |
 | [REST (createMode = herstel)](https://docs.microsoft.com/rest/api/sql/databases) |Hiermee herstelt u een database. |
 | [Database status van maken of bijwerken ophalen](https://docs.microsoft.com/rest/api/sql/operations) |Retourneert de status tijdens een herstel bewerking. |
@@ -241,7 +241,7 @@ Een enkele of gegroepeerde Data Base herstellen met behulp van de REST API:
 
 #### <a name="sql-database"></a>SQL Database
 
-Zie [AZ SQL DB Restore](/cli/azure/sql/db#az-sql-db-restore)voor meer informatie over het herstellen van een enkele of gegroepeerde Data Base met behulp van de Azure cli.
+Zie [AZ SQL DB Restore](/cli/azure/sql/db#az-sql-db-restore)voor informatie over het herstellen van een Data Base met behulp van de Azure cli.
 
 #### <a name="sql-managed-instance"></a>SQL Managed Instance
 

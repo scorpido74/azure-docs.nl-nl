@@ -16,11 +16,12 @@ ms.date: 02/17/2017
 ms.author: mathoma
 ms.reviewer: jroth
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 7439aa360395490f31a638ac690ed7e5cad1054b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: eb6b678cad4de2039e252b7dd666d78b6c2549b6
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84195840"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86078235"
 ---
 # <a name="configure-azure-key-vault-integration-for-sql-server-on-azure-virtual-machines-classic"></a>Azure Key Vault integratie configureren voor SQL Server op Azure Virtual Machines (klassiek)
 > [!div class="op_single_selector"]
@@ -63,18 +64,23 @@ De volgende tabel bevat de para meters die vereist zijn om het Power shell-scrip
 Met de cmdlet **New-AzureVMSqlServerKeyVaultCredentialConfig** maakt u een configuratie object voor de functie integratie van Azure Key Vault. Met de **set-AzureVMSqlServerExtension** configureert u deze integratie met de para meter **KeyVaultCredentialSettings** . De volgende stappen laten zien hoe u deze opdrachten kunt gebruiken.
 
 1. In Azure PowerShell configureert u eerst de invoer parameters met uw specifieke waarden zoals beschreven in de vorige secties van dit onderwerp. Het volgende script is een voor beeld.
-   
-        $akvURL = "https:\//contosokeyvault.vault.azure.net/"
-        $spName = "fde2b411-33d5-4e11-af04eb07b669ccf2"
-        $spSecret = "9VTJSQwzlFepD8XODnzy8n2V01Jd8dAjwm/azF1XDKM="
-        $credName = "mycred1"
-        $vmName = "myvmname"
-        $serviceName = "mycloudservicename"
+
+    ```azurepowershell
+    $akvURL = "https:\//contosokeyvault.vault.azure.net/"
+    $spName = "fde2b411-33d5-4e11-af04eb07b669ccf2"
+    $spSecret = "9VTJSQwzlFepD8XODnzy8n2V01Jd8dAjwm/azF1XDKM="
+    $credName = "mycred1"
+    $vmName = "myvmname"
+    $serviceName = "mycloudservicename"
+    ```
+
 2. Gebruik vervolgens het volgende script om Azure-integratie te configureren en in te scha kelen.
-   
-        $secureakv =  $spSecret | ConvertTo-SecureString -AsPlainText -Force
-        $akvs = New-AzureVMSqlServerKeyVaultCredentialConfig -Enable -CredentialName $credname -AzureKeyVaultUrl $akvURL -ServicePrincipalName $spName -ServicePrincipalSecret $secureakv
-        Get-AzureVM -ServiceName $serviceName -Name $vmName | Set-AzureVMSqlServerExtension -KeyVaultCredentialSettings $akvs | Update-AzureVM
+
+    ```azurepowershell
+    $secureakv =  $spSecret | ConvertTo-SecureString -AsPlainText -Force
+    $akvs = New-AzureVMSqlServerKeyVaultCredentialConfig -Enable -CredentialName $credname -AzureKeyVaultUrl $akvURL -ServicePrincipalName $spName -ServicePrincipalSecret $secureakv
+    Get-AzureVM -ServiceName $serviceName -Name $vmName | Set-AzureVMSqlServerExtension -KeyVaultCredentialSettings $akvs | Update-AzureVM
+    ```
 
 De SQL IaaS agent-extensie werkt de SQL-VM bij met deze nieuwe configuratie.
 

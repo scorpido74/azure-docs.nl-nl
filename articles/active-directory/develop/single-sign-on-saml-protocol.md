@@ -14,12 +14,12 @@ ms.date: 05/18/2020
 ms.author: ryanwi
 ms.custom: aaddev
 ms.reviewer: hirsin
-ms.openlocfilehash: 155816a9cd171b42e1def5cafa09cb9e310d5ee7
-ms.sourcegitcommit: 318d1bafa70510ea6cdcfa1c3d698b843385c0f6
+ms.openlocfilehash: a68c0248ce364be486610c406388586b69cbb3f4
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83771669"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86076943"
 ---
 # <a name="single-sign-on-saml-protocol"></a>SAML-protocol voor eenmalige aanmelding
 
@@ -46,7 +46,7 @@ xmlns:samlp="urn:oasis:names:tc:SAML:2.0:protocol">
 </samlp:AuthnRequest>
 ```
 
-| Parameter |  | Beschrijving |
+| Parameter | Type | Beschrijving |
 | --- | --- | --- |
 | Id | Vereist | Azure AD gebruikt dit kenmerk om het `InResponseTo` kenmerk van het geretourneerde antwoord in te vullen. De ID mag niet beginnen met een getal, dus een algemene strategie is om een teken reeks als ' id ' te laten voorafgaan door naar de teken reeks representatie van een GUID. `id6c1c178c166d486687be4aaf5e482730`Is bijvoorbeeld een geldige id. |
 | Versie | Vereist | Deze para meter moet worden ingesteld op **2,0**. |
@@ -86,6 +86,8 @@ Als `NameIDPolicy` u een optioneel kenmerk opgeeft, kunt u het toevoegen `Format
 * `urn:oasis:names:tc:SAML:1.1:nameid-format:unspecified`: Met deze waarde kan Azure Active Directory de indeling van de claim selecteren. Azure Active Directory wordt het NameID als een Pairwise-id uitgegeven.
 * `urn:oasis:names:tc:SAML:2.0:nameid-format:transient`: Azure Active Directory geeft de NameID-claim als een wille keurig gegenereerde waarde die uniek is voor de huidige SSO-bewerking. Dit betekent dat de waarde tijdelijk is en niet kan worden gebruikt om de verifiërende gebruiker te identificeren.
 
+Als `SPNameQualifier` is opgegeven, neemt Azure AD hetzelfde `SPNameQualifier` op in het antwoord.
+
 Het kenmerk wordt genegeerd door Azure AD `AllowCreate` .
 
 ### <a name="requestauthncontext"></a>RequestAuthnContext
@@ -97,7 +99,7 @@ Het `Scoping` element, dat een lijst met id-providers bevat, is optioneel in `Au
 Als deze niet wordt ondersteund, neemt u het `ProxyCount` kenmerk `IDPListOption` of element niet op `RequesterID` .
 
 ### <a name="signature"></a>Handtekening
-Neem geen `Signature` element op in `AuthnRequest` elementen. Azure AD valideert ondertekende verificatie aanvragen niet. Er wordt een aanvrager verificatie gegeven voor door alleen de geregistreerde service-Url's van de consument te reageren.
+Een `Signature` element in `AuthnRequest` elementen is optioneel. Azure AD valideert ondertekende verificatie aanvragen niet als er een hand tekening aanwezig is. Er wordt een aanvrager verificatie gegeven voor door alleen de geregistreerde service-Url's van de consument te reageren.
 
 ### <a name="subject"></a>Onderwerp
 Neem geen `Subject` element op. Azure AD biedt geen ondersteuning voor het opgeven van een onderwerp voor een aanvraag en er wordt een fout geretourneerd als er een wordt opgegeven.
@@ -157,7 +159,7 @@ Het `Response` element bevat het resultaat van de autorisatie aanvraag. Azure AD
 
 ### <a name="issuer"></a>Verlener
 
-Azure AD stelt het `Issuer` element in op `https://sts.windows.net/<TenantIDGUID>/` waar \< TenantIDGUID> de Tenant-id is van de Azure AD-Tenant.
+Azure AD stelt het `Issuer` element in op de `https://sts.windows.net/<TenantIDGUID>/` locatie \<TenantIDGUID> van de Tenant-id van de Azure AD-Tenant.
 
 Een antwoord met het element Issuer kan er bijvoorbeeld als volgt uitzien:
 
@@ -192,7 +194,7 @@ Naast de `ID` `IssueInstant` en `Version` , stelt Azure AD de volgende elementen
 
 #### <a name="issuer"></a>Verlener
 
-Dit is ingesteld op `https://sts.windows.net/<TenantIDGUID>/` waar \< TenantIDGUID> de Tenant-id is van de Azure AD-Tenant.
+Dit is ingesteld op `https://sts.windows.net/<TenantIDGUID>/` waar \<TenantIDGUID> de Tenant-id is van de Azure AD-Tenant.
 
 ```
 <Issuer>https://sts.windows.net/82869000-6ad1-48f0-8171-272ed18796e9/</Issuer>

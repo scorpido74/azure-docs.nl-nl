@@ -5,12 +5,12 @@ author: masnider
 ms.topic: conceptual
 ms.date: 08/26/2019
 ms.author: masnider
-ms.openlocfilehash: 17827342b67d37d9fbeb56654824e004367823ef
-ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
+ms.openlocfilehash: 1780cb47696813b5d26035f54e0685969482dba6
+ms.sourcegitcommit: bcb962e74ee5302d0b9242b1ee006f769a94cfb8
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/11/2020
-ms.locfileid: "84710691"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86058109"
 ---
 # <a name="scaling-in-service-fabric"></a>Schalen in Service Fabric
 Azure Service Fabric maakt het eenvoudig om schaal bare toepassingen te bouwen door de services, partities en replica's op de knoop punten van een cluster te beheren. Door veel werk belastingen op dezelfde hardware uit te voeren, is het mogelijk om Maxi maal het resource gebruik te maken, maar biedt ook flexibiliteit voor het schalen van uw workloads. In deze Channel 9-video wordt beschreven hoe u schaal bare micro Services-toepassingen kunt bouwen:
@@ -127,7 +127,7 @@ Maar u kunt zelfs proberen om één partitie schema voor alle gebruikers te kiez
 Houd rekening met het volgende dynamische patroon bij het bouwen voor schaal. Mogelijk moet u het aanpassen aan uw situatie:
 
 1. In plaats van een partitie schema voor iedereen op de voor grond te kiezen, moet u een ' Manager-service ' bouwen.
-2. De taak van de Manager-service is om klant gegevens te bekijken wanneer ze zich aanmelden voor uw service. Afhankelijk van die informatie maakt de Manager-service een exemplaar van uw _daad werkelijke_ contact-opslag service _alleen voor die klant_. Als er een bepaalde configuratie, isolatie of upgrades vereist zijn, kunt u ook besluiten om een toepassings exemplaar voor deze klant in te stellen. 
+2. De taak van de Manager-service is om klant gegevens te bekijken wanneer ze zich aanmelden voor uw service. Afhankelijk van die informatie maakt de Manager-service een exemplaar van uw _daad werkelijke_ contact-opslag service _voor die klant_. Als er een bepaalde configuratie, isolatie of upgrades vereist zijn, kunt u ook besluiten om een toepassings exemplaar voor deze klant in te stellen. 
 
 Dit dynamische patroon voor het maken van veel voor delen:
 

@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/19/2019
 ms.author: juliako
-ms.openlocfilehash: 8580bafd4d68ef6567b09fefcaa01c682ae2cafe
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 9b81d58bbb79b05ea54af8b3f06f29b4a45a6555
+ms.sourcegitcommit: bcb962e74ee5302d0b9242b1ee006f769a94cfb8
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/27/2020
-ms.locfileid: "74968787"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86058160"
 ---
 # <a name="configure-a-content-key-authorization-policy"></a>Een autorisatie beleid voor de inhouds sleutel configureren
 [!INCLUDE [media-services-selector-content-key-auth-policy](../../../includes/media-services-selector-content-key-auth-policy.md)]
@@ -42,7 +42,7 @@ Als u van plan bent meerdere inhouds sleutels te hebben of een andere URL wilt o
 * Wanneer uw Media Services-account is gemaakt, wordt er een standaard streaming-eindpunt met de status Gestopt aan uw account toegevoegd. Als u uw inhoud wilt streamen en gebruik wilt maken van dynamische pakketten en dynamische versleuteling, moet het streaming-eind punt de status ' running ' hebben. 
 * Uw asset moet een set adaptieve bitsnelheid Mp4's of een adaptieve bitrate Smooth Streaming-bestanden bevatten. Zie [een Asset coderen](media-services-encode-asset.md)voor meer informatie.
 * De key delivery service slaat ContentKeyAuthorizationPolicy en de bijbehorende objecten (beleids opties en-beperkingen) gedurende 15 minuten op. U kunt een ContentKeyAuthorizationPolicy maken en opgeven dat u een token beperking wilt gebruiken, deze wilt testen en vervolgens het beleid wilt bijwerken naar de beperking open. Dit proces duurt ongeveer 15 minuten voordat het beleid overschakelt naar de open-versie.
-* Een Media Services streaming-eind punt stelt de waarde van het CORS Access-Control-Allow-Origin-header in het Preflight-\*antwoord in als het Joker teken. Deze waarde is goed geschikt voor de meeste spelers, waaronder Azure Media Player, Roku en JWPlayer, en andere. Sommige spelers die gebruikmaken van streepje. js werken echter niet omdat, waarbij de referenties modus is ingesteld op ' include ' XMLHttpRequest in hun streepje. js het Joker teken\*niet toestaat als waarde voor Access-Control-Allow-Origin. Als tijdelijke oplossing voor deze beperking in streepje. js, als u uw client vanuit één domein host, kan Media Services dat domein opgeven in de kop van het Preflight-antwoord. Open een ondersteunings ticket via de Azure Portal voor hulp.
+* Een Media Services streaming-eind punt stelt de waarde van het CORS Access-Control-Allow-Origin-header in het Preflight-antwoord in als het Joker teken \* . Deze waarde is goed geschikt voor de meeste spelers, waaronder Azure Media Player, Roku en JWPlayer, en andere. Sommige spelers die gebruikmaken van dash.js, werken echter niet omdat met de modus referenties ingesteld op ' include ' XMLHttpRequest in hun dash.js het Joker teken niet toestaan \* als de waarde voor Access-Control-Allow-Origin. Als u een tijdelijke oplossing hebt voor deze beperking in dash.js, kunt u, als u uw client vanuit één domein host, Media Services dat domein opgeven in de kopregel van het Preflight-antwoord. Open een ondersteunings ticket via de Azure Portal voor hulp.
 
 ## <a name="configure-the-key-authorization-policy"></a>Het sleutel autorisatie beleid configureren
 Als u het sleutel autorisatie beleid wilt configureren, selecteert u de pagina **beveiliging van inhoud** .
@@ -66,23 +66,25 @@ Wanneer u het token beperkt beleid configureert, moet u de para meters voor de p
 ### <a name="playready"></a>PlayReady
 Wanneer u uw inhoud beveiligt met PlayReady, is een van de dingen die u in uw autorisatie beleid moet opgeven, een XML-teken reeks die de PlayReady-licentie sjabloon definieert. Standaard is het volgende beleid ingesteld:
 
-    <PlayReadyLicenseResponseTemplate xmlns:i="https://www.w3.org/2001/XMLSchema-instance" xmlns="http://schemas.microsoft.com/Azure/MediaServices/KeyDelivery/PlayReadyTemplate/v1">
-          <LicenseTemplates>
-            <PlayReadyLicenseTemplate><AllowTestDevices>true</AllowTestDevices>
-              <ContentKey i:type="ContentEncryptionKeyFromHeader" />
-              <LicenseType>Nonpersistent</LicenseType>
-              <PlayRight>
-                <AllowPassingVideoContentToUnknownOutput>Allowed</AllowPassingVideoContentToUnknownOutput>
-              </PlayRight>
-            </PlayReadyLicenseTemplate>
-          </LicenseTemplates>
-        </PlayReadyLicenseResponseTemplate>
+```xml
+<PlayReadyLicenseResponseTemplate xmlns:i="https://www.w3.org/2001/XMLSchema-instance" xmlns="http://schemas.microsoft.com/Azure/MediaServices/KeyDelivery/PlayReadyTemplate/v1">
+  <LicenseTemplates>
+    <PlayReadyLicenseTemplate><AllowTestDevices>true</AllowTestDevices>
+      <ContentKey i:type="ContentEncryptionKeyFromHeader" />
+      <LicenseType>Nonpersistent</LicenseType>
+      <PlayRight>
+        <AllowPassingVideoContentToUnknownOutput>Allowed</AllowPassingVideoContentToUnknownOutput>
+      </PlayRight>
+    </PlayReadyLicenseTemplate>
+  </LicenseTemplates>
+</PlayReadyLicenseResponseTemplate>
+```
 
 U kunt de knop **beleid XML importeren** selecteren en een andere XML opgeven die voldoet aan het XML-schema dat is gedefinieerd in het overzicht van de [Media Services PlayReady-licentie sjabloon](media-services-playready-license-template-overview.md).
 
 ## <a name="additional-notes"></a>Aanvullende opmerkingen
 
-* Widevine is een service van Google Inc. en is onderworpen aan de service voorwaarden en het privacybeleid van Google, Inc.
+* Widevine is een service van Google Inc. en is onderworpen aan de servicevoorwaarden en het privacybeleid van Google Inc.
 
 ## <a name="next-steps"></a>Volgende stappen
 [!INCLUDE [media-services-learning-paths-include](../../../includes/media-services-learning-paths-include.md)]

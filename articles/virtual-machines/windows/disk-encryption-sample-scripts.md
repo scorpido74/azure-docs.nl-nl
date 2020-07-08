@@ -8,12 +8,12 @@ ms.topic: article
 ms.author: mbaldwin
 ms.date: 08/06/2019
 ms.custom: seodec18
-ms.openlocfilehash: e5e0a970df680df43a7bd303636b3d81bda3e141
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 1a0bac96c3daa0d81786b1a3facf6ccd328cd579
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82085702"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86076756"
 ---
 # <a name="azure-disk-encryption-sample-scripts"></a>Voorbeeldscripts voor Azure Disk Encryption 
 
@@ -76,22 +76,30 @@ Configureer de instelling van de BitLocker-groepsbeleid **BitLocker-stationsvers
 ### <a name="install-bitlocker-feature-components"></a>BitLocker-functie onderdelen installeren
 Voor Windows Server 2012 en hoger, gebruikt u de volgende opdracht:
 
-    dism /online /Enable-Feature /all /FeatureName:BitLocker /quiet /norestart
+```console
+dism /online /Enable-Feature /all /FeatureName:BitLocker /quiet /norestart
+```
 
 Voor Windows Server 2008 R2 gebruikt u de volgende opdracht:
 
-    ServerManagerCmd -install BitLockers
+```console
+ServerManagerCmd -install BitLockers
+```
 
 ### <a name="prepare-the-os-volume-for-bitlocker-by-using-bdehdcfg"></a>Het volume van het besturings systeem voorbereiden voor BitLocker met behulp van`bdehdcfg`
 Als u de besturingssysteem partitie wilt comprimeren en de machine wilt voorbereiden voor BitLocker, voert u de [bdehdcfg](https://docs.microsoft.com/windows/security/information-protection/bitlocker/bitlocker-basic-deployment) indien nodig uit:
 
-    bdehdcfg -target c: shrink -quiet 
+```console
+bdehdcfg -target c: shrink -quiet 
+```
 
 ### <a name="protect-the-os-volume-by-using-bitlocker"></a>Het volume van het besturings systeem beveiligen met BitLocker
 Gebruik de [`manage-bde`](https://technet.microsoft.com/library/ff829849.aspx) opdracht om versleuteling op het opstart volume in te scha kelen met behulp van een externe-sleutel beveiliging. Plaats ook de externe sleutel (. bek-bestand) op het externe station of volume. Versleuteling wordt ingeschakeld op het systeem-of opstart volume nadat de computer opnieuw is opgestart.
 
-    manage-bde -on %systemdrive% -sk [ExternalDriveOrVolume]
-    reboot
+```console
+manage-bde -on %systemdrive% -sk [ExternalDriveOrVolume]
+reboot
+```
 
 > [!NOTE]
 > Bereid de virtuele machine voor met een afzonderlijke gegevens-en resource-VHD voor het ophalen van de externe sleutel met behulp van BitLocker.

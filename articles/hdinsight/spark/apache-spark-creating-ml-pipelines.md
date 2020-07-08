@@ -6,14 +6,14 @@ author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.custom: hdinsightactive
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 07/22/2019
-ms.openlocfilehash: b0de9103fd022dc74e7c75017a602eb6701686fe
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: c270e9865aff30184ea236f56ab20ede78c5d577
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "73494662"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86075447"
 ---
 # <a name="create-an-apache-spark-machine-learning-pipeline"></a>Een machine learning-pijplijn in Apache Spark maken
 
@@ -132,6 +132,6 @@ only showing top 20 rows
 
 Het `model` object kan nu worden gebruikt voor het maken van voor spellingen. Zie voor het volledige voor beeld van deze machine learning-toepassing en stapsgewijze instructies voor het uitvoeren van het programma [Apache Spark machine learning-toepassingen in azure HDInsight bouwen](apache-spark-ipython-notebook-machine-learning.md).
 
-## <a name="see-also"></a>Zie ook
+## <a name="see-also"></a>Zie tevens
 
 * [Data Science met scala en Apache Spark op Azure](../../machine-learning/team-data-science-process/scala-walkthrough.md)

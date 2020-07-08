@@ -3,15 +3,23 @@ title: Pod-beveiligings beleid gebruiken in azure Kubernetes service (AKS)
 description: Meer informatie over het beheren van pod-toelatingen met behulp van PodSecurityPolicy in azure Kubernetes service (AKS)
 services: container-service
 ms.topic: article
-ms.date: 04/08/2020
-ms.openlocfilehash: 5bd4e1b85513ed5473b4136b458d20fef4faa79c
-ms.sourcegitcommit: dfa5f7f7d2881a37572160a70bac8ed1e03990ad
+ms.date: 06/30/2020
+ms.openlocfilehash: eb2e7fca3a808a1e2c4f7d1f81b8dc1d64deeee7
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/25/2020
-ms.locfileid: "85374488"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86077623"
 ---
 # <a name="preview---secure-your-cluster-using-pod-security-policies-in-azure-kubernetes-service-aks"></a>Voor beeld: uw cluster beveiligen met behulp van pod-beveiligings beleid in azure Kubernetes service (AKS)
+
+<!--
+> [!WARNING]
+> **The pod security policy feature on AKS is set for deprecation** in favor of [Azure Policy for AKS](use-pod-security-on-azure-policy.md). The feature described in this document is not moving to general availability and is set for removal in September 2020.
+> It is highly recommended to begin testing with the Azure Policy Add-on which offers unique policies which support scenarios captured by pod security policy.
+
+**This document and feature are set for deprecation.**
+-->
 
 Als u de beveiliging van uw AKS-cluster wilt verbeteren, kunt u het aantal peulen dat kan worden gepland, beperken. De meeste resources die u niet toestaat, kunnen niet worden uitgevoerd in het AKS-cluster. U definieert deze toegang met behulp van pod-beveiligings beleid. Dit artikel laat u zien hoe u pod-beveiligings beleid kunt gebruiken om de implementatie van een van de peulen in AKS te beperken.
 
@@ -106,7 +114,7 @@ Het beveiligings beleid *privileged* pod wordt toegepast op elke geverifieerde g
 kubectl get rolebindings default:privileged -n kube-system -o yaml
 ```
 
-Zoals wordt weer gegeven in de volgende verkorte uitvoer, wordt de *PSP: beperkte* ClusterRole toegewezen aan elk *systeem: geverifieerde* gebruikers. Deze mogelijkheid biedt een basis niveau van beperkingen zonder dat uw eigen beleid wordt gedefinieerd.
+Zoals wordt weer gegeven in de volgende verkorte uitvoer, wordt de *PSP: Privileged* ClusterRole toegewezen aan elk *systeem: geverifieerde* gebruikers. Deze mogelijkheid biedt een basis niveau van bevoegdheid zonder dat uw eigen beleid wordt gedefinieerd.
 
 ```
 apiVersion: rbac.authorization.k8s.io/v1
@@ -164,7 +172,7 @@ alias kubectl-nonadminuser='kubectl --as=system:serviceaccount:psp-aks:nonadmin-
 
 ## <a name="test-the-creation-of-a-privileged-pod"></a>Het maken van een privileged pod testen
 
-We gaan eerst testen wat er gebeurt wanneer u een pod plant met de beveiligings context van `privileged: true` . Met deze beveiligings context worden de bevoegdheden van de pod geëscaleerd. In de vorige sectie waarin het standaard beleid voor AKS-pod wordt weer gegeven, moet het *beperkte* beleid deze aanvraag weigeren.
+We gaan eerst testen wat er gebeurt wanneer u een pod plant met de beveiligings context van `privileged: true` . Met deze beveiligings context worden de bevoegdheden van de pod geëscaleerd. In de vorige sectie waarin het standaard beleid voor AKS-pod wordt weer gegeven, moet het *bevoegdheids* beleid deze aanvraag weigeren.
 
 Maak een bestand `nginx-privileged.yaml` met de naam en plak het volgende YAML-manifest:
 
@@ -199,7 +207,7 @@ Het Pod is niet bereikbaar voor de plannings fase, dus er zijn geen resources om
 
 ## <a name="test-creation-of-an-unprivileged-pod"></a>Het maken van een niet-gemachtigde pod testen
 
-In het vorige voor beeld heeft de pod-specificatie geautoriseerde escalatie aangevraagd. Deze aanvraag is geweigerd door het standaard beleid voor *beperkte* pod-beveiliging, waardoor de pod niet kan worden gepland. We gaan nu proberen om dezelfde NGINX-pod uit te voeren zonder de escalatie aanvraag van de bevoegdheid.
+In het vorige voor beeld heeft de pod-specificatie geautoriseerde escalatie aangevraagd. Deze aanvraag is geweigerd door het standaard beveiligings beleid van de *bevoegdheid* Pod, zodat de pod niet kan worden gepland. We gaan nu proberen om dezelfde NGINX-pod uit te voeren zonder de escalatie aanvraag van de bevoegdheid.
 
 Maak een bestand `nginx-unprivileged.yaml` met de naam en plak het volgende YAML-manifest:
 
@@ -232,7 +240,7 @@ Het Pod is niet bereikbaar voor de plannings fase, dus er zijn geen resources om
 
 ## <a name="test-creation-of-a-pod-with-a-specific-user-context"></a>Het maken van een pod met een specifieke gebruikers context testen
 
-In het vorige voor beeld heeft de container installatie kopie automatisch geprobeerd de root te gebruiken om NGINX te binden aan poort 80. Deze aanvraag is geweigerd door het standaard beleid voor *beperkte* pod-beveiliging, waardoor de pod niet kan worden gestart. We gaan nu proberen om dezelfde NGINX-pod uit te voeren met een specifieke gebruikers context, zoals `runAsUser: 2000` .
+In het vorige voor beeld heeft de container installatie kopie automatisch geprobeerd de root te gebruiken om NGINX te binden aan poort 80. Deze aanvraag is geweigerd door het standaard pod-beveiligings beleid voor *bevoegdheden* , waardoor de pod niet kan worden gestart. We gaan nu proberen om dezelfde NGINX-pod uit te voeren met een specifieke gebruikers context, zoals `runAsUser: 2000` .
 
 Maak een bestand `nginx-unprivileged-nonroot.yaml` met de naam en plak het volgende YAML-manifest:
 
@@ -298,7 +306,7 @@ Maak het beleid met behulp van de opdracht [kubectl apply][kubectl-apply] en gee
 kubectl apply -f psp-deny-privileged.yaml
 ```
 
-Als u de beschik bare beleids regels wilt weer geven, gebruikt u de opdracht [kubectl Get PSP][kubectl-get] , zoals in het volgende voor beeld wordt weer gegeven. Vergelijk het beleid voor *PSP-deny-privileges* met het standaard *beperkte* beleid dat in de voor gaande voor beelden is afgedwongen om een pod te maken. Alleen het gebruik van *PRIV* -escalatie wordt door uw beleid geweigerd. Er zijn geen beperkingen voor de gebruiker of groep voor het beleid voor *PSP-deny-privileged* .
+Als u de beschik bare beleids regels wilt weer geven, gebruikt u de opdracht [kubectl Get PSP][kubectl-get] , zoals in het volgende voor beeld wordt weer gegeven. Vergelijk het beleid voor *PSP-deny-privileges* met het standaard *machtigings* beleid dat in de voor gaande voor beelden is afgelegd om een pod te maken. Alleen het gebruik van *PRIV* -escalatie wordt door uw beleid geweigerd. Er zijn geen beperkingen voor de gebruiker of groep voor het beleid voor *PSP-deny-privileged* .
 
 ```console
 $ kubectl get psp

@@ -5,15 +5,15 @@ author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
-ms.topic: conceptual
+ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 04/14/2020
-ms.openlocfilehash: 9bdf7360ce00637b0eed3de7a3349da8656a3ed0
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 09fef350a0ff8cc8c2481acd7b8f74cee15d1b9d
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81314165"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86075549"
 ---
 # <a name="use-ssh-tunneling-to-access-apache-ambari-web-ui-jobhistory-namenode-apache-oozie-and-other-uis"></a>SSH-tunneling gebruiken om toegang te krijgen tot Apache Ambari Web UI, JobHistory, NameNode, Apache Oozie en andere UIs
 
@@ -56,24 +56,24 @@ Met het [tunnelen van Secure Shell (SSH)](https://en.wikipedia.org/wiki/Tunnelin
 
 ## <a name="create-a-tunnel-using-the-ssh-command"></a><a name="usessh"></a>Een tunnel maken met behulp van de SSH-opdracht
 
-Gebruik de volgende opdracht om een SSH-tunnel te maken `ssh` met behulp van de opdracht. Vervang `sshuser` door een ssh-gebruiker voor uw hdinsight-cluster en `CLUSTERNAME` Vervang door de naam van uw hdinsight-cluster:
+Gebruik de volgende opdracht om een SSH-tunnel te maken met behulp van de `ssh` opdracht. Vervang door `sshuser` een ssh-gebruiker voor uw hdinsight-cluster en vervang door `CLUSTERNAME` de naam van uw hdinsight-cluster:
 
 ```cmd
 ssh -C2qTnNf -D 9876 sshuser@CLUSTERNAME-ssh.azurehdinsight.net
 ```
 
-Met deze opdracht maakt u een verbinding die verkeer naar lokale poort 9876 naar het cluster via SSH routeert. De opties zijn:
+Met deze opdracht maakt u een verbinding die verkeer naar lokale poort 9876 naar het cluster via SSH routeert. U kunt kiezen uit de volgende opties:
 
-    |Optie |Beschrijving |
-    |---|---|
-    |D 9876|De lokale poort die verkeer via de tunnel routeert.|
-    |C|Comprimeer alle gegevens, omdat webverkeer voornamelijk tekst is.|
-    |2|Forceer SSH om alleen Protocol versie 2 te proberen.|
-    |q|Stille modus.|
-    |T|Schakel pseudo-tty-toewijzing uit omdat u alleen een poort doorstuurt.|
-    |n|Lezen van STDIN voor komen, omdat u zojuist een poort doorstuurt.|
-    |N|Voer geen externe opdracht uit, omdat u zojuist een poort doorstuurt.|
-    |v|Op de achtergrond uitvoeren.|
+|Optie |Description |
+|---|---|
+|D 9876|De lokale poort die verkeer via de tunnel routeert.|
+|C|Comprimeer alle gegevens, omdat webverkeer voornamelijk tekst is.|
+|2|Forceer SSH om alleen Protocol versie 2 te proberen.|
+|q|Stille modus.|
+|T|Schakel pseudo-tty-toewijzing uit omdat u alleen een poort doorstuurt.|
+|n|Lezen van STDIN voor komen, omdat u zojuist een poort doorstuurt.|
+|N|Voer geen externe opdracht uit, omdat u zojuist een poort doorstuurt.|
+|v|Op de achtergrond uitvoeren.|
 
 Zodra de opdracht is voltooid, wordt verkeer dat is verzonden naar poort 9876 op de lokale computer doorgestuurd naar het hoofd knooppunt van het cluster.
 
@@ -93,7 +93,7 @@ Zodra de opdracht is voltooid, wordt verkeer dat is verzonden naar poort 9876 op
     |Poort|22|
     |Verbindingstype|SSH|
 
-1. Selecteer **Opslaan**
+1. Selecteer **Opslaan**.
 
     ![Maken van een putty-sessie HDInsight](./media/hdinsight-linux-ambari-ssh-tunnel/hdinsight-create-putty-session.png)
 
@@ -125,7 +125,7 @@ Zodra de opdracht is voltooid, wordt verkeer dat is verzonden naar poort 9876 op
    > [!NOTE]  
    > Als u **externe DNS** selecteert, worden er Domain Name System (DNS)-aanvragen via het HDInsight-cluster. Met deze instelling wordt DNS omgezet met behulp van het hoofd knooppunt van het cluster.
 
-2. Controleer of de tunnel werkt door een site te bezoeken, [https://www.whatismyip.com/](https://www.whatismyip.com/)zoals. Het geretourneerde IP-adres moet één worden gebruikt door het Microsoft Azure Data Center.
+2. Controleer of de tunnel werkt door een site te bezoeken, zoals [https://www.whatismyip.com/](https://www.whatismyip.com/) . Het geretourneerde IP-adres moet één worden gebruikt door het Microsoft Azure Data Center.
 
 ## <a name="verify-with-ambari-web-ui"></a>Controleren met Ambari-webgebruikersinterface
 
@@ -134,7 +134,7 @@ Nadat het cluster is gemaakt, volgt u de volgende stappen om te controleren of u
 1. Ga in uw browser naar `http://headnodehost:8080`. Het `headnodehost` adres wordt via de tunnel naar het cluster verzonden en omgezet naar het hoofd knooppunt waarop Ambari wordt uitgevoerd. Wanneer u hierom wordt gevraagd, voert u de gebruikers naam van de beheerder (admin) en het wacht woord voor uw cluster in. Mogelijk wordt u een tweede keer gevraagd door de Ambari-webgebruikersinterface. Als dit het geval is, voert u de gegevens opnieuw in.
 
    > [!NOTE]  
-   > Wanneer u het `http://headnodehost:8080` adres gebruikt om verbinding te maken met het cluster, maakt u verbinding via de tunnel. Communicatie wordt beveiligd met behulp van de SSH-tunnel in plaats van HTTPS. Als u via het Internet verbinding wilt maken met `https://clustername.azurehdinsight.net`behulp `clustername` van HTTPS, gebruikt u, waarbij de naam van het cluster is.
+   > Wanneer u het `http://headnodehost:8080` adres gebruikt om verbinding te maken met het cluster, maakt u verbinding via de tunnel. Communicatie wordt beveiligd met behulp van de SSH-tunnel in plaats van HTTPS. Als u via het Internet verbinding wilt maken met behulp van HTTPS, gebruikt u `https://clustername.azurehdinsight.net` , waarbij `clustername` de naam van het cluster is.
 
 2. Selecteer in de Ambari-webgebruikersinterface de optie HDFS in de lijst aan de linkerkant van de pagina.
 
@@ -154,7 +154,7 @@ Nadat het cluster is gemaakt, volgt u de volgende stappen om te controleren of u
     ![Afbeelding van de Hadoop NameNode-gebruikers interface](./media/hdinsight-linux-ambari-ssh-tunnel/hdinsight-namenode-ui.png)
 
     > [!NOTE]  
-    > Let op de URL voor deze pagina. Dit moet vergelijkbaar zijn met `http://hn1-CLUSTERNAME.randomcharacters.cx.internal.cloudapp.net:8088/cluster`. Deze URI gebruikt de interne Fully Qualified Domain Name (FQDN) van het knoop punt en is alleen toegankelijk als u een SSH-tunnel gebruikt.
+    > Let op de URL voor deze pagina. Dit moet vergelijkbaar zijn met `http://hn1-CLUSTERNAME.randomcharacters.cx.internal.cloudapp.net:8088/cluster` . Deze URI gebruikt de interne Fully Qualified Domain Name (FQDN) van het knoop punt en is alleen toegankelijk als u een SSH-tunnel gebruikt.
 
 ## <a name="next-steps"></a>Volgende stappen
 

@@ -11,12 +11,12 @@ author: csteegz
 ms.reviewer: larryfr
 ms.date: 06/17/2020
 ms.custom: tracking-python
-ms.openlocfilehash: c115b641ca5c22ebe227af5349d7ef133e198b44
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 344112e19adbfaa1b06eebab309f31ed4e070c7d
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84976741"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86076994"
 ---
 # <a name="deploy-a-deep-learning-model-for-inference-with-gpu"></a>Een diep leer model implementeren voor demijnen met GPU
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -161,6 +161,9 @@ channels:
 In dit voor beeld wordt het bestand opgeslagen als `myenv.yml` .
 
 ## <a name="define-the-deployment-configuration"></a>De implementatie configuratie definiëren
+
+> [!IMPORTANT]
+> AKS is niet toegestaan om Gpu's te delen. u kunt slechts evenveel replica's van een GPU-webservice hebben als er Gpu's in het cluster zijn.
 
 De implementatie configuratie definieert de Azure Kubernetes-service omgeving die wordt gebruikt om de webservice uit te voeren:
 

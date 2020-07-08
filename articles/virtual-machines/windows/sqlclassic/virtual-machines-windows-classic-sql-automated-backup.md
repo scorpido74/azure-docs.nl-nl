@@ -15,11 +15,12 @@ ms.workload: iaas-sql-server
 ms.date: 01/23/2018
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: c792b217f49121b6d3d6eaf2d8f8380997683bd8
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: f62004f01e48a42702c93493e3b0dc1c11f6eb30
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84014669"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86078103"
 ---
 # <a name="automated-backup-for-sql-server-in-azure-virtual-machines-classic"></a>Automatische back-up voor SQL Server in azure Virtual Machines (klassiek)
 > [!div class="op_single_selector"]
@@ -78,25 +79,29 @@ In de volgende tabel worden de opties beschreven die kunnen worden geconfigureer
 ## <a name="configuration-with-powershell"></a>Configuratie met Power shell
 In het volgende Power shell-voor beeld wordt automatische back-up geconfigureerd voor een bestaande SQL Server 2014 VM. De opdracht **New-AzureVMSqlServerAutoBackupConfig** configureert de automatische back-upinstellingen voor het opslaan van back-ups in het Azure-opslag account dat is opgegeven door de $storageaccount variabele. Deze back-ups worden 10 dagen bewaard. Met de opdracht **set-AzureVMSqlServerExtension** wordt de opgegeven virtuele machine van Azure met deze instellingen bijgewerkt.
 
-    $storageaccount = "<storageaccountname>"
-    $storageaccountkey = (Get-AzureStorageKey -StorageAccountName $storageaccount).Primary
-    $storagecontext = New-AzureStorageContext -StorageAccountName $storageaccount -StorageAccountKey $storageaccountkey
-    $autobackupconfig = New-AzureVMSqlServerAutoBackupConfig -StorageContext $storagecontext -Enable -RetentionPeriod 10
+```azurepowershell
+$storageaccount = "<storageaccountname>"
+$storageaccountkey = (Get-AzureStorageKey -StorageAccountName $storageaccount).Primary
+$storagecontext = New-AzureStorageContext -StorageAccountName $storageaccount -StorageAccountKey $storageaccountkey
+$autobackupconfig = New-AzureVMSqlServerAutoBackupConfig -StorageContext $storagecontext -Enable -RetentionPeriod 10
 
-    Get-AzureVM -ServiceName <vmservicename> -Name <vmname> | Set-AzureVMSqlServerExtension -AutoBackupSettings $autobackupconfig | Update-AzureVM
+Get-AzureVM -ServiceName <vmservicename> -Name <vmname> | Set-AzureVMSqlServerExtension -AutoBackupSettings $autobackupconfig | Update-AzureVM
+```
 
 Het kan enkele minuten duren om de SQL Server IaaS-agent te installeren en configureren.
 
 Als u versleuteling wilt inschakelen, wijzigt u het vorige script om de para meter EnableEncryption samen met een wacht woord (beveiligde teken reeks) door te geven voor de para meter CertificatePassword. Met het volgende script kunt u de automatische back-upinstellingen in het vorige voor beeld inschakelen en versleuteling toevoegen.
 
-    $storageaccount = "<storageaccountname>"
-    $storageaccountkey = (Get-AzureStorageKey -StorageAccountName $storageaccount).Primary
-    $storagecontext = New-AzureStorageContext -StorageAccountName $storageaccount -StorageAccountKey $storageaccountkey
-    $password = "P@ssw0rd"
-    $encryptionpassword = $password | ConvertTo-SecureString -AsPlainText -Force  
-    $autobackupconfig = New-AzureVMSqlServerAutoBackupConfig -StorageContext $storagecontext -Enable -RetentionPeriod 10 -EnableEncryption -CertificatePassword $encryptionpassword
+```azurepowershell
+$storageaccount = "<storageaccountname>"
+$storageaccountkey = (Get-AzureStorageKey -StorageAccountName $storageaccount).Primary
+$storagecontext = New-AzureStorageContext -StorageAccountName $storageaccount -StorageAccountKey $storageaccountkey
+$password = "P@ssw0rd"
+$encryptionpassword = $password | ConvertTo-SecureString -AsPlainText -Force  
+$autobackupconfig = New-AzureVMSqlServerAutoBackupConfig -StorageContext $storagecontext -Enable -RetentionPeriod 10 -EnableEncryption -CertificatePassword $encryptionpassword
 
-    Get-AzureVM -ServiceName <vmservicename> -Name <vmname> | Set-AzureVMSqlServerExtension -AutoBackupSettings $autobackupconfig | Update-AzureVM
+Get-AzureVM -ServiceName <vmservicename> -Name <vmname> | Set-AzureVMSqlServerExtension -AutoBackupSettings $autobackupconfig | Update-AzureVM
+```
 
 Als u automatische back-ups wilt uitschakelen, voert u hetzelfde script uit zonder de para meter **-Enable** voor de **New-AzureVMSqlServerAutoBackupConfig**. Net als bij de installatie kan het enkele minuten duren om automatische back-ups uit te scha kelen.
 

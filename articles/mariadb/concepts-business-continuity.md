@@ -5,13 +5,13 @@ author: ajlam
 ms.author: andrela
 ms.service: mariadb
 ms.topic: conceptual
-ms.date: 3/18/2020
-ms.openlocfilehash: c01e0df1f420c8489ca3445d9fa025b251a870f2
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 7/7/2020
+ms.openlocfilehash: c1f4945cda9db0f99799ea072737d4524f04e481
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "79532388"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86076569"
 ---
 # <a name="understand-business-continuity-in-azure-database-for-mariadb"></a>Inzicht in de bedrijfs continuïteit in Azure Database for MariaDB
 
@@ -48,11 +48,12 @@ De andere optie is het gebruik van de functie geo-Restore van de Azure Database 
 > [!IMPORTANT]
 > Geo-herstel is alleen mogelijk als u de server hebt ingericht met geografisch redundante back-upopslag.
 
+## <a name="cross-region-read-replicas"></a>Meerdere regio's replica's lezen
+
+U kunt Kruis regio's gebruiken om replica's te verg Roten om uw bedrijfs continuïteit en herstel na nood gevallen te verbeteren. Lees replica's worden asynchroon bijgewerkt met de binaire logboek replicatie technologie van MariaDB. Meer informatie over het lezen van replica's, beschik bare regio's en hoe u een failover kunt uitvoeren vanuit het [artikel concepten van replica's lezen](concepts-read-replicas.md). 
+
 ## <a name="next-steps"></a>Volgende stappen
 
-- Zie [back-ups in azure database for MariaDB](concepts-backup.md)voor meer informatie over de automatische back-ups.
-- Als u wilt herstellen naar een bepaald tijdstip met behulp van de Azure Portal, raadpleegt u [Data Base herstellen naar een bepaald tijdstip met behulp van de Azure Portal](howto-restore-server-portal.md).
-
-<!--
-- To restore to a point in time using Azure CLI, see [restore database to a point in time using CLI](howto-restore-server-cli.md). 
--->
+- Meer informatie over de [automatische back-ups in azure database for MariaDB](concepts-backup.md).
+- Meer informatie over het herstellen met behulp van [de Azure Portal](howto-restore-server-portal.md) of [de Azure cli](howto-restore-server-cli.md).
+- Meer informatie over het [lezen van replica's in azure database for MariaDB](concepts-read-replicas.md).

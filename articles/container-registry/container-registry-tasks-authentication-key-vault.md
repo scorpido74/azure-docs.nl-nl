@@ -2,13 +2,13 @@
 title: Externe verificatie van ACR-taak
 description: Configureer een Azure Container Registry taak (ACR taak) om docker hub-referenties te lezen die zijn opgeslagen in een Azure-sleutel kluis met behulp van een beheerde identiteit voor Azure-resources.
 ms.topic: article
-ms.date: 01/14/2020
-ms.openlocfilehash: 47d3d643ee1287ef4f444095a2c6cfe6dcab294b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 07/06/2020
+ms.openlocfilehash: 0bc43f958a14016146160a06372af0b36a9fff75
+ms.sourcegitcommit: bcb962e74ee5302d0b9242b1ee006f769a94cfb8
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "76842517"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86058126"
 ---
 # <a name="external-authentication-in-an-acr-task-using-an-azure-managed-identity"></a>Externe authenticatie in een ACR-taak met behulp van een door Azure beheerde identiteit 
 
@@ -16,7 +16,7 @@ In een [ACR-taak](container-registry-tasks-overview.md)kunt u [een beheerde iden
 
 In dit artikel leert u hoe u een beheerde identiteit kunt inschakelen in een taak die is opgeslagen in een Azure-sleutel kluis. 
 
-Voor het maken van de Azure-resources moet u voor dit artikel de Azure CLI-versie 2.0.68 of hoger uitvoeren. Voer `az --version` uit om de versie te bekijken. Als u Azure CLI 2.0 wilt installeren of upgraden, raadpleegt u [Azure CLI 2.0 installeren][azure-cli].
+Voor het maken van de Azure-resources moet u voor dit artikel de Azure CLI-versie 2.0.68 of hoger uitvoeren. Voer `az --version` uit om de versie te bekijken. Zie [Azure CLI installeren][azure-cli] als u de CLI wilt installeren of een upgrade wilt uitvoeren.
 
 ## <a name="scenario-overview"></a>Overzicht van scenario's
 
@@ -68,7 +68,7 @@ In een praktijk scenario zouden geheimen waarschijnlijk in een afzonderlijk proc
 
 ## <a name="define-task-steps-in-yaml-file"></a>Taak stappen definiëren in het YAML-bestand
 
-De stappen voor deze voorbeeld taak worden gedefinieerd in een [yaml-bestand](container-registry-tasks-reference-yaml.md). Maak een bestand met `dockerhubtask.yaml` de naam in een lokale werkmap en plak de volgende inhoud. Zorg ervoor dat u de naam van de sleutel kluis in het bestand vervangt door de naam van de sleutel kluis.
+De stappen voor deze voorbeeld taak worden gedefinieerd in een [yaml-bestand](container-registry-tasks-reference-yaml.md). Maak een bestand `dockerhubtask.yaml` met de naam in een lokale werkmap en plak de volgende inhoud. Zorg ervoor dat u de naam van de sleutel kluis in het bestand vervangt door de naam van de sleutel kluis.
 
 ```yml
 version: v1.1.0
@@ -91,7 +91,7 @@ steps:
 Met de taak stappen gaat u als volgt te werk:
 
 * Geheime referenties beheren voor verificatie met docker hub.
-* Verifieer met docker hub door de geheimen door te geven `docker login` aan de opdracht.
+* Verifieer met docker hub door de geheimen door te geven aan de `docker login` opdracht.
 * Bouw een installatie kopie met behulp van een voor beeld-Dockerfile in de opslag plaats van [Azure-samples/ACR-tasks](https://github.com/Azure-Samples/acr-tasks.git) .
 * Push de installatie kopie naar de opslag plaats van de privé-docker-hub.
 
@@ -104,7 +104,7 @@ Met de stappen in deze sectie maakt u een taak en schakelt u een door de gebruik
 
 ### <a name="create-task"></a>Taak maken
 
-Maak de taak *dockerhubtask* door de volgende [AZ ACR Task Create][az-acr-task-create] -opdracht uit te voeren. De taak wordt uitgevoerd zonder een bron code context en de opdracht verwijst naar het `dockerhubtask.yaml` bestand in de werkmap. De `--assign-identity` para meter geeft de resource-id van de door de gebruiker toegewezen identiteit door. 
+Maak de taak *dockerhubtask* door de volgende [AZ ACR Task Create][az-acr-task-create] -opdracht uit te voeren. De taak wordt uitgevoerd zonder een bron code context en de opdracht verwijst naar het bestand `dockerhubtask.yaml` in de werkmap. De `--assign-identity` para meter geeft de resource-id van de door de gebruiker toegewezen identiteit door. 
 
 ```azurecli
 az acr task create \
@@ -117,13 +117,27 @@ az acr task create \
 
 [!INCLUDE [container-registry-tasks-user-id-properties](../../includes/container-registry-tasks-user-id-properties.md)]
 
+
+### <a name="grant-identity-access-to-key-vault"></a>Identiteits toegang verlenen aan de sleutel kluis
+
+Voer de volgende [AZ-set-Policy][az-keyvault-set-policy] opdracht uit om een toegangs beleid in te stellen op de sleutel kluis. In het volgende voor beeld kan de identiteit geheimen van de sleutel kluis lezen. 
+
+```azurecli
+az keyvault set-policy --name mykeyvault \
+  --resource-group myResourceGroup \
+  --object-id $principalID \
+  --secret-permissions get
+```
+
+[Voer de taak hand matig uit](#manually-run-the-task).
+
 ## <a name="option-2-create-task-with-system-assigned-identity"></a>Optie 2: een taak maken met een door het systeem toegewezen identiteit
 
 Met de stappen in deze sectie maakt u een taak en schakelt u een door het systeem toegewezen identiteit in. Als u in plaats daarvan een door de gebruiker toegewezen identiteit wilt inschakelen, raadpleegt u [optie 1: taak maken met door de gebruiker toegewezen identiteit](#option-1-create-task-with-user-assigned-identity). 
 
 ### <a name="create-task"></a>Taak maken
 
-Maak de taak *dockerhubtask* door de volgende [AZ ACR Task Create][az-acr-task-create] -opdracht uit te voeren. De taak wordt uitgevoerd zonder een bron code context en de opdracht verwijst naar het `dockerhubtask.yaml` bestand in de werkmap. Met `--assign-identity` de para meter zonder waarde kan de door het systeem toegewezen identiteit voor de taak worden ingeschakeld.  
+Maak de taak *dockerhubtask* door de volgende [AZ ACR Task Create][az-acr-task-create] -opdracht uit te voeren. De taak wordt uitgevoerd zonder een bron code context en de opdracht verwijst naar het bestand `dockerhubtask.yaml` in de werkmap. `--assign-identity`Met de para meter zonder waarde kan de door het systeem toegewezen identiteit voor de taak worden ingeschakeld.  
 
 ```azurecli
 az acr task create \
@@ -136,7 +150,7 @@ az acr task create \
 
 [!INCLUDE [container-registry-tasks-system-id-properties](../../includes/container-registry-tasks-system-id-properties.md)]
 
-## <a name="grant-identity-access-to-key-vault"></a>Identiteits toegang verlenen aan de sleutel kluis
+### <a name="grant-identity-access-to-key-vault"></a>Identiteits toegang verlenen aan de sleutel kluis
 
 Voer de volgende [AZ-set-Policy][az-keyvault-set-policy] opdracht uit om een toegangs beleid in te stellen op de sleutel kluis. In het volgende voor beeld kan de identiteit geheimen van de sleutel kluis lezen. 
 
@@ -202,7 +216,7 @@ Sending build context to Docker daemon    129kB
 Run ID: cf24 was successful after 15s
 ```
 
-Als u wilt bevestigen dat de installatie kopie is gepusht,`cf24` controleert u op de tag (in dit voor beeld) in de privé docker hub opslag plaats.
+Als u wilt bevestigen dat de installatie kopie is gepusht, controleert u op de tag ( `cf24` in dit voor beeld) in de privé docker hub opslag plaats.
 
 ## <a name="next-steps"></a>Volgende stappen
 

@@ -11,11 +11,12 @@ ms.workload: na
 ms.topic: article
 ms.date: 06/03/2020
 ms.author: juliako
-ms.openlocfilehash: 6abb44012035f31f970a347687964afb0c715d29
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: d09fba2130dc302378a59200349a569cc248234b
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84983372"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86075430"
 ---
 # <a name="azure-media-services-v3-release-notes"></a>Release opmerkingen bij Azure Media Services v3
 
@@ -42,6 +43,16 @@ Om u op de hoogte te houden van de nieuwste ontwikkelingen, biedt dit artikel u 
 De preview-versie van live video Analytics op IoT Edge openbaar geworden. Zie [release opmerkingen](../live-video-analytics-edge/release-notes.md)voor meer informatie.
 
 Live video Analytics op IoT Edge is een uitbrei ding van de media service familie. Zo kunt u live video analyseren met AI-modellen van uw keuze op uw eigen edge-apparaten en deze video optioneel vastleggen en opnemen. U kunt nu apps bouwen met realtime video analyses aan de rand zonder dat u zich zorgen hoeft te maken over de complexiteit van het bouwen en gebruiken van een live video pijplijn.
+
+### <a name="search-by-topics"></a>Zoeken op onderwerpen
+
+U kunt nu de zoek-API gebruiken om te zoeken naar Video's met specifieke onderwerpen (alleen API).
+
+Onderwerpen worden toegevoegd als onderdeel van de `textScope` (optionele para meter). Zie de [API](https://api-portal.videoindexer.ai/docs/services/Operations/operations/Search-Videos) voor meer informatie.  
+
+### <a name="labels-enhancement"></a>Uitbrei ding van labels
+
+Het label Tagger is bijgewerkt en bevat nu meer visuele labels die kunnen worden geïdentificeerd.
 
 ## <a name="may-2020"></a>Mei 2020
 

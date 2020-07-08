@@ -5,11 +5,12 @@ description: Meer informatie over de aanbevolen procedures voor cluster operator
 services: container-service
 ms.topic: conceptual
 ms.date: 11/26/2018
-ms.openlocfilehash: 00643dc1699d1cbd47efd271738015ea05e895e2
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 12c65f3b4241d3e732c51acb6ffa95ff314efb50
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80668340"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86077760"
 ---
 # <a name="best-practices-for-cluster-isolation-in-azure-kubernetes-service-aks"></a>Aanbevolen procedures voor cluster isolatie in azure Kubernetes service (AKS)
 
@@ -29,7 +30,7 @@ Kubernetes biedt functies waarmee u teams en werk belastingen logisch kunt isole
   * Meer geavanceerde functies van scheduler zijn onder andere taints en verdragen, knooppunt selecties en node-en pod-affiniteit of anti-affiniteit. Zie [Aanbevolen procedures voor geavanceerde functies van scheduler in AKS][aks-best-practices-advanced-scheduler]voor meer informatie over deze functies.
 * **Netwerken** omvatten het gebruik van netwerk beleid om de stroom van verkeer in en uit te best uren.
 * **Verificatie en autorisatie** omvatten de gebruiker van op rollen gebaseerd toegangs beheer (RBAC) en Azure Active Directory (AD) integratie, Pod-identiteiten en geheimen in azure Key Vault. Zie [Aanbevolen procedures voor verificatie en autorisatie in AKS][aks-best-practices-identity]voor meer informatie over deze functies.
-* **Containers** bevatten pod-beveiligings beleid, Pod-beveiligings contexten, scan afbeeldingen en Runtimes voor beveiligings problemen. Hiervoor moet u ook app-beveiliging of Seccomp (beveiligd Computing) gebruiken om toegang tot de container te beperken tot het onderliggende knoop punt.
+* **Containers** bevat de Azure Policy-invoeg toepassing voor AKS voor het afdwingen van pod-beveiliging, het gebruik van pod-beveiligings contexten en het scannen van installatie kopieën en de runtime voor beveiligings problemen. Hiervoor moet u ook app-beveiliging of Seccomp (beveiligd Computing) gebruiken om toegang tot de container te beperken tot het onderliggende knoop punt.
 
 ## <a name="logically-isolate-clusters"></a>Clusters logisch isoleren
 

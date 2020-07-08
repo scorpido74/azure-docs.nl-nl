@@ -5,15 +5,15 @@ author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
-ms.topic: conceptual
+ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 12/23/2019
-ms.openlocfilehash: 52f90f3ce6d6cd53fcf17f7c735dafe5411303c4
-ms.sourcegitcommit: 374e47efb65f0ae510ad6c24a82e8abb5b57029e
+ms.openlocfilehash: 48a5c192051d8e715deb7e354827ff4cd4152bcd
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/28/2020
-ms.locfileid: "85514509"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86077878"
 ---
 # <a name="create-a-non-interactive-authentication-net-hdinsight-application"></a>Een niet-interactieve verificatie-app voor .NET HDInsight maken
 
@@ -35,7 +35,7 @@ Wijs uw Azure AD-toepassing een [rol](../role-based-access-control/built-in-role
 
 **De rol van eigenaar toevoegen aan de Azure AD-toepassing**
 
-1. Meld u aan bij de [Azure-portal](https://portal.azure.com).
+1. Meld u aan bij [Azure Portal](https://portal.azure.com).
 1. Ga naar de resource groep met het HDInsight-cluster waarop u de Hive-query wilt uitvoeren, verderop in dit artikel. Als u een groot aantal resource groepen hebt, kunt u het filter gebruiken om het gewenste item te vinden.
 1. Selecteer **toegangs beheer (IAM)** in het menu resource groep.
 1. Selecteer het **tabblad roltoewijzingen om de huidige** roltoewijzingen weer te geven.
@@ -47,9 +47,9 @@ Wijs uw Azure AD-toepassing een [rol](../role-based-access-control/built-in-role
 1. Maak een C#-consoletoepassing.
 2. Voeg de volgende [NuGet](https://www.nuget.org/) -pakketten toe:
 
-        Install-Package Microsoft.Azure.Common.Authentication -Pre
-        Install-Package Microsoft.Azure.Management.HDInsight -Pre
-        Install-Package Microsoft.Azure.Management.Resources -Pre
+    * `Install-Package Microsoft.Azure.Common.Authentication -Pre`
+    * `Install-Package Microsoft.Azure.Management.HDInsight -Pre`
+    * `Install-Package Microsoft.Azure.Management.Resources -Pre`
 
 3. Voer de volgende code uit:
 

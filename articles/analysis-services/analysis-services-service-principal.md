@@ -4,15 +4,15 @@ description: Meer informatie over het maken van een service-principal voor het a
 author: minewiskan
 ms.service: azure-analysis-services
 ms.topic: conceptual
-ms.date: 05/26/2020
+ms.date: 07/07/2020
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: f2ffd1ea098bcf98e25958ca40318a65b0ef6605
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 28947d1fa4ece5d6285651ef07342cae06ad8bc8
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85361452"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86077368"
 ---
 # <a name="automation-with-service-principals"></a>Automatisering met service-principals
 
@@ -38,7 +38,7 @@ Referenties van de Service-Principal en certificaten kunnen veilig worden opgesl
 
 ## <a name="add-service-principals-to-server-admin-role"></a>Service-principals toevoegen aan de server beheerdersrol
 
-Voordat u een service-principal voor Analysis Services server beheer bewerkingen kunt gebruiken, moet u deze toevoegen aan de rol Server Administrators. Zie [een Service-Principal toevoegen aan de rol Server beheerder](analysis-services-addservprinc-admins.md)voor meer informatie.
+Voordat u een service-principal voor Analysis Services server beheer bewerkingen kunt gebruiken, moet u deze toevoegen aan de rol Server Administrators. Service-principals moeten rechtstreeks aan de rol Server beheerder worden toegevoegd. Het toevoegen van een service-principal aan een beveiligings groep en het toevoegen van die beveiligings groep aan de rol Server beheerder wordt niet ondersteund. Zie [een Service-Principal toevoegen aan de rol Server beheerder](analysis-services-addservprinc-admins.md)voor meer informatie.
 
 ## <a name="service-principals-in-connection-strings"></a>Service-principals in verbindings reeksen
 

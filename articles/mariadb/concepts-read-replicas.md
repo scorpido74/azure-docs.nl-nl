@@ -5,13 +5,13 @@ author: ajlam
 ms.author: andrela
 ms.service: mariadb
 ms.topic: conceptual
-ms.date: 6/24/2020
-ms.openlocfilehash: d1d1dbb273ed1da3835f533b5f38743db73816c7
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 7/7/2020
+ms.openlocfilehash: bed89b325ce28ab969bad5ed30802bdb67a21a96
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85367326"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86076552"
 ---
 # <a name="read-replicas-in-azure-database-for-mariadb"></a>Leesreplica's in Azure Database for MariaDB
 
@@ -108,6 +108,25 @@ Wanneer u ervoor kiest om de replicatie naar een replica te stoppen, gaan alle k
 > Voordat u de replicatie op een lees replica stopt, moet u ervoor zorgen dat de replica over alle gegevens beschikt die u nodig hebt.
 
 Meer informatie over het [stoppen van replicatie naar een replica](howto-read-replicas-portal.md).
+
+## <a name="failover"></a>Failover
+
+Er is geen automatische failover tussen hoofd-en replica servers. 
+
+Omdat replicatie asynchroon is, is er sprake van een vertraging tussen de Master en de replica. De hoeveelheid vertraging kan worden beïnvloed door een aantal factoren, zoals hoe zwaar de werk belasting die wordt uitgevoerd op de master server en de latentie tussen data centers. In de meeste gevallen variëren de replica vertraging tussen enkele seconden en een paar minuten. U kunt uw werkelijke replicatie vertraging bijhouden met behulp van de metrische *replica vertraging*, die beschikbaar is voor elke replica. Met deze metriek wordt de tijd weer gegeven sinds de laatste geplayte trans actie. U wordt aangeraden om te bepalen wat uw gemiddelde vertraging is door uw replica vertraging te bestuderen gedurende een bepaalde periode. U kunt een waarschuwing instellen voor replica vertraging, zodat u actie kunt ondernemen als deze buiten het verwachte bereik komt.
+
+> [!Tip]
+> Als u een failover naar de replica doorzoekt, geeft de vertraging op het moment dat u de replica loskoppelt van de Master aan hoeveel gegevens er verloren zijn gegaan.
+
+Zodra u hebt vastgesteld dat u een failover naar een replica wilt uitvoeren, 
+
+1. Replicatie naar de replica stoppen<br/>
+   Deze stap is nodig om de replica-server in staat te stellen schrijf bewerkingen te accepteren. Als onderdeel van dit proces wordt de replica server ontkoppeld van de Master. Zodra u stopt met de replicatie, duurt het back-end doorgaans ongeveer twee minuten om te volt ooien. Zie de sectie [Replicatie stoppen](#stop-replication) in dit artikel voor meer informatie over de implicaties van deze actie.
+    
+2. Uw toepassing naar de (voormalige) replica laten wijzen<br/>
+   Elke server heeft een unieke connection string. Werk uw toepassing bij zodat deze verwijst naar de (voormalige) replica in plaats van het hoofd bestand.
+    
+Zodra uw toepassing Lees-en schrijf bewerkingen heeft verwerkt, hebt u de failover voltooid. De uitval tijd van uw toepassings ervaring is afhankelijk van wanneer u een probleem detecteert en de stappen 1 en 2 hierboven uitvoert.
 
 ## <a name="considerations-and-limitations"></a>Overwegingen en beperkingen
 

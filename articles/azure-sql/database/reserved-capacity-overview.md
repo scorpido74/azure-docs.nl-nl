@@ -3,8 +3,8 @@ title: Reken kosten met gereserveerde capaciteit opslaan
 titleSuffix: Azure SQL Database & SQL Managed Instance
 description: Meer informatie over het kopen van Azure SQL Database en de gereserveerde capaciteit van SQL Managed instance om uw reken kosten op te slaan.
 services: sql-database
-ms.service: sql-database
-ms.subservice: service
+ms.service: sql-db-mi
+ms.subservice: features
 ms.custom: sqldbrb=2
 ms.devlang: ''
 ms.topic: conceptual
@@ -12,12 +12,12 @@ author: anosov1960
 ms.author: sashan
 ms.reviewer: sstein, carlrab
 ms.date: 08/29/2019
-ms.openlocfilehash: 1a733ea631b5c11b9686682420311a0d35cf46a5
-ms.sourcegitcommit: a8928136b49362448e992a297db1072ee322b7fd
+ms.openlocfilehash: 81e3547dbd86c840baed8e044a84afd3b63f5be5
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/11/2020
-ms.locfileid: "84718570"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86075770"
 ---
 # <a name="save-costs-for-resources-with-reserved-capacity---azure-sql-database--sql-managed-instance"></a>Bespaar kosten voor resources met gereserveerde capaciteit-Azure SQL Database & SQL Managed instance
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)] 
@@ -44,7 +44,7 @@ Stel bijvoorbeeld dat u één algemeen doel, GEN5-16 vCore elastische pool en tw
 1. Meld u aan bij de [Azure-portal](https://portal.azure.com).
 2. Selecteer **Alle services** > **Reserveringen**.
 3. Selecteer **toevoegen** en selecteer vervolgens in het deel venster **reserve ringen** **SQL database** om een nieuwe reserve ring voor SQL database aan te schaffen.
-4. Vul de vereiste velden in. Bestaande data bases (enkele of gegroepeerde) of beheerde exemplaren die overeenkomen met de kenmerken die u selecteert, komen in aanmerking voor de gereserveerde capaciteits korting. Het werkelijke aantal data bases of beheerde instanties dat de korting krijgt, is afhankelijk van het bereik en de geselecteerde hoeveelheid.
+4. Vul de vereiste velden in. Bestaande data bases in SQL Database en SQL Managed instance die overeenkomen met de kenmerken die u selecteert, komen in aanmerking voor de gereserveerde capaciteits korting. Het werkelijke aantal data bases of beheerde instanties dat de korting krijgt, is afhankelijk van het bereik en de geselecteerde hoeveelheid.
 
     ![Scherm afbeelding voor het verzenden van de gereserveerde capaciteits aankoop](./media/reserved-capacity-overview/sql-reserved-vcores-purchase.png)
 

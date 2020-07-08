@@ -4,19 +4,23 @@ description: Meer informatie over het toevoegen van een Automation-Service-Princ
 author: minewiskan
 ms.service: azure-analysis-services
 ms.topic: conceptual
-ms.date: 05/19/2020
+ms.date: 07/07/2020
 ms.author: owend
 ms.reviewer: minewiskan
 ms.custom: fasttrack-edit
-ms.openlocfilehash: bc3e17ce5becf039703585167e1ef3aa825cf2ab
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 4ce23e9da84d01a288c1c37c6a6d884db2ed3969
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83697529"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86077555"
 ---
 # <a name="add-a-service-principal-to-the-server-administrator-role"></a>Een Service-Principal toevoegen aan de rol Server beheerder 
 
- Voor het automatiseren van Power shell-taken zonder toezicht moet een service-principal over **Server beheerders** rechten beschikken voor de Analysis Services server die wordt beheerd. In dit artikel wordt beschreven hoe u een Service-Principal kunt toevoegen aan de rol Server Administrators op een Azure AS-server. U kunt dit doen met behulp van SQL Server Management Studio of een resource manager-sjabloon.
+ Voor het automatiseren van Power shell-taken zonder toezicht moet een service-principal over **Server beheerders** rechten beschikken voor de Analysis Services server die wordt beheerd. In dit artikel wordt beschreven hoe u een Service-Principal kunt toevoegen aan de rol Server Administrators op een Azure AS-server. U kunt dit doen met behulp van SQL Server Management Studio of een resource manager-sjabloon. 
+
+> [!NOTE]
+> Service-principals moeten rechtstreeks aan de rol Server beheerder worden toegevoegd. Het toevoegen van een service-principal aan een beveiligings groep en het toevoegen van die beveiligings groep aan de rol Server beheerder wordt niet ondersteund. 
 
 ## <a name="before-you-begin"></a>Voordat u begint
 Voordat u deze taak voltooit, moet u een Service-Principal hebben geregistreerd in Azure Active Directory.

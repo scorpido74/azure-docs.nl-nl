@@ -5,15 +5,15 @@ author: ashishthaps
 ms.author: ashishth
 ms.reviewer: jasonh
 ms.service: hdinsight
-ms.topic: conceptual
+ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 12/19/2019
-ms.openlocfilehash: c6d33158b581bf4394a0d1bac2b277830328e110
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: b1830ddef44ef33d19c953622951779632e33e71
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75495944"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86076739"
 ---
 # <a name="set-up-backup-and-replication-for-apache-hbase-and-apache-phoenix-on-hdinsight"></a>Back-up en replicatie instellen voor Apache HBase en Apache Phoenix op HDInsight
 
@@ -36,19 +36,15 @@ Met deze aanpak kopieert u alle HBase-gegevens, zonder dat u een subset van tabe
 
 HBase in HDInsight maakt gebruik van de standaard opslag die is geselecteerd bij het maken van het cluster, hetzij Azure Storage blobs of Azure Data Lake Storage. In beide gevallen slaat HBase de gegevens-en meta gegevens bestanden op onder het volgende pad:
 
-    /hbase
+`/hbase`
 
 * De `hbase` map bevindt zich in een Azure Storage account in de hoofdmap van de BLOB-container:
 
-    ```
-    wasbs://<containername>@<accountname>.blob.core.windows.net/hbase
-    ```
+  `wasbs://<containername>@<accountname>.blob.core.windows.net/hbase`
 
-* In Azure Data Lake Storage bevindt de `hbase` map zich onder het hoofdpad dat u hebt opgegeven bij het inrichten van een cluster. Dit hoofdpad heeft doorgaans een `clusters` map met een submap met de naam na uw HDInsight-cluster:
+* In Azure Data Lake Storage `hbase` bevindt de map zich onder het hoofdpad dat u hebt opgegeven bij het inrichten van een cluster. Dit hoofdpad heeft doorgaans een `clusters` map met een submap met de naam na uw HDInsight-cluster:
 
-    ```
-    /clusters/<clusterName>/hbase
-    ```
+  `/clusters/<clusterName>/hbase`
 
 In beide gevallen bevat de `hbase` map alle gegevens die HBase naar de schijf heeft leeg gemaakt, maar de gegevens in het geheugen kunnen niet voor komen. Voordat u deze map kunt gebruiken als een nauw keurige weer gave van de HBase-gegevens, moet u het cluster uitschakelen.
 
@@ -62,58 +58,67 @@ Nadat u het cluster hebt verwijderd, kunt u de gegevens op de gewenste plaats la
 
 Gebruik op het bron HDInsight-cluster het [export programma](https://hbase.apache.org/book.html#export) (opgenomen in HBase) om gegevens uit een bron tabel te exporteren naar de standaard Attached Storage. U kunt de geëxporteerde map vervolgens kopiëren naar de locatie van de doel opslag en het [hulp programma importeren](https://hbase.apache.org/book.html#import) uitvoeren op het HDInsight-doel cluster.
 
-Als u tabel gegevens wilt exporteren, moet u eerst SSH in het hoofd knooppunt van uw bron-HDInsight- `hbase` cluster en vervolgens de volgende opdracht uitvoeren:
+Als u tabel gegevens wilt exporteren, moet u eerst SSH in het hoofd knooppunt van uw bron-HDInsight-cluster en vervolgens de volgende `hbase` opdracht uitvoeren:
 
-    hbase org.apache.hadoop.hbase.mapreduce.Export "<tableName>" "/<path>/<to>/<export>"
+```console
+hbase org.apache.hadoop.hbase.mapreduce.Export "<tableName>" "/<path>/<to>/<export>"
+```
 
 De exportmap mag niet al bestaan. De tabel naam is hoofdletter gevoelig.
 
-Als u tabel gegevens wilt importeren, moet u SSH in het hoofd knooppunt van uw doel-HDInsight- `hbase` cluster en vervolgens de volgende opdracht uitvoeren:
+Als u tabel gegevens wilt importeren, moet u SSH in het hoofd knooppunt van uw doel-HDInsight-cluster en vervolgens de volgende `hbase` opdracht uitvoeren:
 
-    hbase org.apache.hadoop.hbase.mapreduce.Import "<tableName>" "/<path>/<to>/<export>"
+```console
+hbase org.apache.hadoop.hbase.mapreduce.Import "<tableName>" "/<path>/<to>/<export>"
+```
 
 De tabel moet al bestaan.
 
 Geef het volledige exportpad op naar de standaard opslag of naar een van de gekoppelde opslag opties. Bijvoorbeeld in Azure Storage:
 
-    wasbs://<containername>@<accountname>.blob.core.windows.net/<path>
+`wasbs://<containername>@<accountname>.blob.core.windows.net/<path>`
 
 In Azure Data Lake Storage Gen2 is de syntaxis:
 
-    abfs://<containername>@<accountname>.dfs.core.windows.net/<path>
+`abfs://<containername>@<accountname>.dfs.core.windows.net/<path>`
 
 In Azure Data Lake Storage Gen1 is de syntaxis:
 
-    adl://<accountName>.azuredatalakestore.net:443/<path>
+`adl://<accountName>.azuredatalakestore.net:443/<path>`
 
 Deze benadering biedt granulatie op tabel niveau. U kunt ook een datum bereik opgeven voor de rijen die u wilt toevoegen, zodat u het proces incrementeel kunt uitvoeren. Elke datum is in milliseconden sinds de UNIX-epoche.
 
-    hbase org.apache.hadoop.hbase.mapreduce.Export "<tableName>" "/<path>/<to>/<export>" <numberOfVersions> <startTimeInMS> <endTimeInMS>
+```console
+hbase org.apache.hadoop.hbase.mapreduce.Export "<tableName>" "/<path>/<to>/<export>" <numberOfVersions> <startTimeInMS> <endTimeInMS>
+```
 
-Houd er rekening mee dat u het aantal versies van elke rij moet opgeven dat u wilt exporteren. Als u alle versies in het datum bereik wilt gebruiken `<numberOfVersions>` , stelt u in op een waarde die hoger is dan de Maxi maal mogelijke rij-versies, zoals 100000.
+Houd er rekening mee dat u het aantal versies van elke rij moet opgeven dat u wilt exporteren. Als u alle versies in het datum bereik wilt gebruiken, stelt `<numberOfVersions>` u in op een waarde die hoger is dan de Maxi maal mogelijke rij-versies, zoals 100000.
 
 ## <a name="copy-tables"></a>Tabellen kopiëren
 
 Het [hulp programma CopyTable](https://hbase.apache.org/book.html#copy.table) kopieert gegevens van een bron tabel, rij voor rij, naar een bestaande doel tabel met hetzelfde schema als de bron. De doel tabel kan zich in hetzelfde cluster of een ander HBase-cluster bevindt. De tabel namen zijn hoofdletter gevoelig.
 
-Als u CopyTable binnen een cluster wilt gebruiken, SSH dan in het hoofd knooppunt van uw bron-HDInsight- `hbase` cluster en voert u deze opdracht uit:
+Als u CopyTable binnen een cluster wilt gebruiken, SSH dan in het hoofd knooppunt van uw bron-HDInsight-cluster en voert u deze `hbase` opdracht uit:
 
-    hbase org.apache.hadoop.hbase.mapreduce.CopyTable --new.name=<destTableName> <srcTableName>
+```console
+hbase org.apache.hadoop.hbase.mapreduce.CopyTable --new.name=<destTableName> <srcTableName>
+```
 
+Als u CopyTable wilt gebruiken om te kopiëren naar een tabel in een ander cluster, voegt u de `peer` switch toe met het adres van het doel cluster:
 
-Als u CopyTable wilt gebruiken om te kopiëren naar een tabel in een ander cluster `peer` , voegt u de switch toe met het adres van het doel cluster:
-
-    hbase org.apache.hadoop.hbase.mapreduce.CopyTable --new.name=<destTableName> --peer.adr=<destinationAddress> <srcTableName>
+```console
+hbase org.apache.hadoop.hbase.mapreduce.CopyTable --new.name=<destTableName> --peer.adr=<destinationAddress> <srcTableName>
+```
 
 Het doel adres bestaat uit de volgende drie onderdelen:
 
-    <destinationAddress> = <ZooKeeperQuorum>:<Port>:<ZnodeParent>
+`<destinationAddress> = <ZooKeeperQuorum>:<Port>:<ZnodeParent>`
 
 * `<ZooKeeperQuorum>`is een door komma's gescheiden lijst met Apache ZooKeeper knooppunten, bijvoorbeeld:
 
     zk0-hdizc 2.54 o2oqawzlwevlfxgay2500xtg. DX. internal. cloudapp. net, ZK4-hdizc 2.54 o2oqawzlwevlfxgay2500xtg. DX. internal. cloudapp. net, zk3-hdizc2.54o2oqawzlwevlfxgay2500xtg.dx.internal.cloudapp.net
 
-* `<Port>`op HDInsight worden standaard ingesteld op 2181 `<ZnodeParent>` en `/hbase-unsecure`is de volledige `<destinationAddress>` waarde:
+* `<Port>`op HDInsight worden standaard ingesteld op 2181 en `<ZnodeParent>` is `/hbase-unsecure` de volledige waarde `<destinationAddress>` :
 
     zk0-hdizc 2.54 o2oqawzlwevlfxgay2500xtg. DX. internal. cloudapp. net, ZK4-hdizc 2.54 o2oqawzlwevlfxgay2500xtg. DX. internal. cloudapp. net, zk3-hdizc 2.54 o2oqawzlwevlfxgay2500xtg. DX. internal. cloudapp. net: 2181:/hbase-UNSECURE
 
@@ -121,12 +126,14 @@ Zie [hand matig de Apache ZooKeeper-quorum lijst](#manually-collect-the-apache-z
 
 Het hulp programma CopyTable biedt ook ondersteuning voor para meters om het tijds bereik op te geven van rijen die moeten worden gekopieerd en om de subset van kolom families op te geven in een tabel die moet worden gekopieerd. Als u de volledige lijst met para meters wilt zien die worden ondersteund door CopyTable, voert u CopyTable zonder para meters uit:
 
-    hbase org.apache.hadoop.hbase.mapreduce.CopyTable
+```console
+hbase org.apache.hadoop.hbase.mapreduce.CopyTable
+```
 
 CopyTable scant de volledige inhoud van de bron tabel die wordt gekopieerd naar de doel tabel. Dit kan de prestaties van uw HBase-cluster verminderen terwijl CopyTable wordt uitgevoerd.
 
 > [!NOTE]  
-> Voor het automatiseren van het kopiëren van gegevens tussen tabellen, `hdi_copy_table.sh` raadpleegt u het script in de [Azure HBase utils](https://github.com/Azure/hbase-utils/tree/master/replication) -opslag plaats op github.
+> Voor het automatiseren van het kopiëren van gegevens tussen tabellen, raadpleegt u het `hdi_copy_table.sh` script in de [Azure HBase utils](https://github.com/Azure/hbase-utils/tree/master/replication) -opslag plaats op github.
 
 ### <a name="manually-collect-the-apache-zookeeper-quorum-list"></a>De Apache ZooKeeper-quorum lijst hand matig verzamelen
 
@@ -134,63 +141,81 @@ Wanneer beide HDInsight-clusters zich in hetzelfde virtuele netwerk bevinden, zo
 
 Voer de volgende krul opdracht uit om de namen van de quorum-hostnamen te verkrijgen:
 
-    curl -u admin:<password> -X GET -H "X-Requested-By: ambari" "https://<clusterName>.azurehdinsight.net/api/v1/clusters/<clusterName>/configurations?type=hbase-site&tag=TOPOLOGY_RESOLVED" | grep "hbase.zookeeper.quorum"
+```console
+curl -u admin:<password> -X GET -H "X-Requested-By: ambari" "https://<clusterName>.azurehdinsight.net/api/v1/clusters/<clusterName>/configurations?type=hbase-site&tag=TOPOLOGY_RESOLVED" | grep "hbase.zookeeper.quorum"
+```
 
 Met de krul opdracht wordt een JSON-document met HBase-configuratie gegevens opgehaald en de grep-opdracht retourneert alleen de vermelding ' HBase. Zookeeper. quorum ', bijvoorbeeld:
 
-    "hbase.zookeeper.quorum" : "zk0-hdizc2.54o2oqawzlwevlfxgay2500xtg.dx.internal.cloudapp.net,zk4-hdizc2.54o2oqawzlwevlfxgay2500xtg.dx.internal.cloudapp.net,zk3-hdizc2.54o2oqawzlwevlfxgay2500xtg.dx.internal.cloudapp.net"
+```output
+"hbase.zookeeper.quorum" : "zk0-hdizc2.54o2oqawzlwevlfxgay2500xtg.dx.internal.cloudapp.net,zk4-hdizc2.54o2oqawzlwevlfxgay2500xtg.dx.internal.cloudapp.net,zk3-hdizc2.54o2oqawzlwevlfxgay2500xtg.dx.internal.cloudapp.net"
+```
 
 De waarde van de quorum host is de volledige teken reeks rechts van de dubbele punt.
 
 Als u de IP-adressen voor deze hosts wilt ophalen, gebruikt u de volgende krul opdracht voor elke host in de vorige lijst:
 
-    curl -u admin:<password> -X GET -H "X-Requested-By: ambari" "https://<clusterName>.azurehdinsight.net/api/v1/clusters/<clusterName>/hosts/<zookeeperHostFullName>" | grep "ip"
+```console
+curl -u admin:<password> -X GET -H "X-Requested-By: ambari" "https://<clusterName>.azurehdinsight.net/api/v1/clusters/<clusterName>/hosts/<zookeeperHostFullName>" | grep "ip"
+```
 
-In deze krul opdracht `<zookeeperHostFullName>` bevindt zich de volledige DNS-naam van een ZooKeeper-host, `zk0-hdizc2.54o2oqawzlwevlfxgay2500xtg.dx.internal.cloudapp.net`zoals het voor beeld. De uitvoer van de opdracht bevat het IP-adres voor de opgegeven host, bijvoorbeeld:
+In deze krul opdracht `<zookeeperHostFullName>` bevindt zich de volledige DNS-naam van een ZooKeeper-host, zoals het voor beeld `zk0-hdizc2.54o2oqawzlwevlfxgay2500xtg.dx.internal.cloudapp.net` . De uitvoer van de opdracht bevat het IP-adres voor de opgegeven host, bijvoorbeeld:
 
-    100    "ip" : "10.0.0.9",
+`100    "ip" : "10.0.0.9",`
 
 Nadat u de IP-adressen voor alle ZooKeeper-knoop punten in uw quorum hebt verzameld, bouwt u het doel adres opnieuw op:
 
-    <destinationAddress>  = <Host_1_IP>,<Host_2_IP>,<Host_3_IP>:<Port>:<ZnodeParent>
+`<destinationAddress>  = <Host_1_IP>,<Host_2_IP>,<Host_3_IP>:<Port>:<ZnodeParent>`
 
 In ons voor beeld:
 
-    <destinationAddress> = 10.0.0.9,10.0.0.8,10.0.0.12:2181:/hbase-unsecure
+`<destinationAddress> = 10.0.0.9,10.0.0.8,10.0.0.12:2181:/hbase-unsecure`
 
 ## <a name="snapshots"></a>Momentopnamen
 
 Met [moment opnamen](https://hbase.apache.org/book.html#ops.snapshots) kunt u een tijdrovende back-up maken van gegevens in uw HBase-opslag plaats. Moment opnamen hebben minimale overhead en zijn binnen enkele seconden voltooid, omdat een momentopname bewerking in feite een meta gegevens bewerking is die de namen van alle bestanden in de opslag op dat moment vastlegt. Op het moment van een moment opname worden er geen werkelijke gegevens gekopieerd. Moment opnamen zijn afhankelijk van het onveranderbare karakter van de gegevens die zijn opgeslagen in HDFS, waarbij updates, verwijderingen en invoegingen worden weer gegeven als nieuwe gegevens. U kunt een moment opname op hetzelfde cluster herstellen (*klonen*) of een moment opname exporteren naar een ander cluster.
 
-Als u een moment opname wilt maken, maakt u een SSH-verbinding met het hoofd knooppunt van `hbase` uw HDInsight HBase-cluster en start u de shell:
+Als u een moment opname wilt maken, maakt u een SSH-verbinding met het hoofd knooppunt van uw HDInsight HBase-cluster en start u de `hbase` shell:
 
-    hbase shell
+```console
+hbase shell
+```
 
 Gebruik in de hbase-shell de opdracht snap shot met de namen van de tabel en van deze moment opname:
 
-    snapshot '<tableName>', '<snapshotName>'
+```console
+snapshot '<tableName>', '<snapshotName>'
+```
 
-Als u een moment opname met de naam `hbase` in de shell wilt herstellen, schakelt u eerst de tabel uit, herstelt u de moment opname en schakelt u de tabel opnieuw in:
+Als u een moment opname met de naam in de shell wilt herstellen `hbase` , schakelt u eerst de tabel uit, herstelt u de moment opname en schakelt u de tabel opnieuw in:
 
-    disable '<tableName>'
-    restore_snapshot '<snapshotName>'
-    enable '<tableName>'
+```console
+disable '<tableName>'
+restore_snapshot '<snapshotName>'
+enable '<tableName>'
+```
 
 Als u een moment opname wilt herstellen naar een nieuwe tabel, gebruikt u clone_snapshot:
 
-    clone_snapshot '<snapshotName>', '<newTableName>'
+```console
+clone_snapshot '<snapshotName>', '<newTableName>'
+```
 
-Als u een moment opname naar HDFS wilt exporteren voor gebruik door een ander cluster, maakt u eerst de moment opname zoals eerder beschreven en gebruikt u vervolgens het hulp programma ExportSnapshot. Voer dit hulp programma uit vanuit de SSH-sessie naar het hoofd knooppunt, niet `hbase` in de shell:
+Als u een moment opname naar HDFS wilt exporteren voor gebruik door een ander cluster, maakt u eerst de moment opname zoals eerder beschreven en gebruikt u vervolgens het hulp programma ExportSnapshot. Voer dit hulp programma uit vanuit de SSH-sessie naar het hoofd knooppunt, niet in de `hbase` shell:
 
-     hbase org.apache.hadoop.hbase.snapshot.ExportSnapshot -snapshot <snapshotName> -copy-to <hdfsHBaseLocation>
+```console
+hbase org.apache.hadoop.hbase.snapshot.ExportSnapshot -snapshot <snapshotName> -copy-to <hdfsHBaseLocation>
+```
 
 Dit `<hdfsHBaseLocation>` kan elk van de opslag locaties zijn die toegankelijk zijn voor uw bron cluster en moet verwijzen naar de map hbase die wordt gebruikt door uw doel cluster. Als u bijvoorbeeld een secundaire Azure Storage-account hebt gekoppeld aan uw bron cluster en dat account toegang biedt tot de container die wordt gebruikt door de standaard opslag van het doel cluster, kunt u de volgende opdracht gebruiken:
 
-    hbase org.apache.hadoop.hbase.snapshot.ExportSnapshot -snapshot 'Snapshot1' -copy-to 'wasbs://secondcluster@myaccount.blob.core.windows.net/hbase'
+```console
+hbase org.apache.hadoop.hbase.snapshot.ExportSnapshot -snapshot 'Snapshot1' -copy-to 'wasbs://secondcluster@myaccount.blob.core.windows.net/hbase'
+```
 
 Nadat de moment opname is geëxporteerd, gaat u naar het hoofd knooppunt van het doel cluster en herstelt u de moment opname met de restore_snapshot opdracht, zoals eerder is beschreven.
 
-Moment opnamen bieden een volledige back-up van een tabel op het moment `snapshot` van de opdracht. Met moment opnamen kunt u niet de mogelijkheid bieden om incrementele moment opnamen op te zetten en kunt u geen subsets van kolom families opgeven die moeten worden opgenomen in de moment opname.
+Moment opnamen bieden een volledige back-up van een tabel op het moment van de `snapshot` opdracht. Met moment opnamen kunt u niet de mogelijkheid bieden om incrementele moment opnamen op te zetten en kunt u geen subsets van kolom families opgeven die moeten worden opgenomen in de moment opname.
 
 ## <a name="replication"></a>Replicatie
 

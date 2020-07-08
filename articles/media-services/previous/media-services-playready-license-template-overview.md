@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/19/2019
 ms.author: juliako
-ms.openlocfilehash: fb0630f3f7a4acebcfe5dcad343030c9d1184263
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 93be10c130c1ddbdd7bd4f0c236cddc01df4961d
+ms.sourcegitcommit: bcb962e74ee5302d0b9242b1ee006f769a94cfb8
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/27/2020
-ms.locfileid: "74976397"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86058177"
 ---
 # <a name="media-services-playready-license-template-overview"></a>Overzicht van sjablonen voor Media Services PlayReady-licentie
 Azure Media Services biedt nu een service voor het leveren van PlayReady-licenties. Als de speler (bijvoorbeeld Silverlight) probeert uw met PlayReady beveiligde inhoud af te spelen, wordt een aanvraag verzonden naar de service voor levering van licenties om een licentie te verkrijgen. Als de licentie service de aanvraag goedkeurt, wordt de licentie die naar de client wordt verzonden, uitgegeven en wordt de opgegeven inhoud gedecodeerd en afgespeeld.
@@ -43,16 +43,18 @@ Als u PlayReady-licenties wilt configureren met behulp van Media Services, moet 
 
 In het volgende voor beeld ziet u de meest eenvoudige (en meest voorkomende) sjabloon waarmee een basis-streaming-licentie wordt geconfigureerd. Met deze licentie kunnen uw clients uw inhoud die is beveiligd met PlayReady, afspelen.
 
-    <?xml version="1.0" encoding="utf-8"?>
-    <PlayReadyLicenseResponseTemplate xmlns:i="https://www.w3.org/2001/XMLSchema-instance" 
-                                      xmlns="http://schemas.microsoft.com/Azure/MediaServices/KeyDelivery/PlayReadyTemplate/v1">
-      <LicenseTemplates>
-        <PlayReadyLicenseTemplate>
-          <ContentKey i:type="ContentEncryptionKeyFromHeader" />
-          <PlayRight />
-        </PlayReadyLicenseTemplate>
-      </LicenseTemplates>
-    </PlayReadyLicenseResponseTemplate>
+```xml
+<?xml version="1.0" encoding="utf-8"?>
+<PlayReadyLicenseResponseTemplate xmlns:i="https://www.w3.org/2001/XMLSchema-instance" 
+                                  xmlns="http://schemas.microsoft.com/Azure/MediaServices/KeyDelivery/PlayReadyTemplate/v1">
+  <LicenseTemplates>
+    <PlayReadyLicenseTemplate>
+      <ContentKey i:type="ContentEncryptionKeyFromHeader" />
+      <PlayRight />
+    </PlayReadyLicenseTemplate>
+  </LicenseTemplates>
+</PlayReadyLicenseResponseTemplate>
+```
 
 De XML voldoet aan het XML-schema voor de PlayReady-licentie sjabloon dat is gedefinieerd in de sectie ' XML-schema van PlayReady-licentie sjablonen '.
 
@@ -84,231 +86,232 @@ Als de klasse op het hoogste niveau in de sjabloon hiërarchie bevat de antwoord
 Zie [Silverlight-ondersteuning voor uitvoer beveiliging](https://go.microsoft.com/fwlink/?LinkId=617318)voor een voor beeld van de beveiligings niveaus die Silverlight ondersteunt.
 
 ## <a name="playready-license-template-xml-schema"></a><a id="schema"></a>XML-schema voor PlayReady-licentie sjablonen
-    <?xml version="1.0" encoding="utf-8"?>
-    <xs:schema xmlns:tns="http://schemas.microsoft.com/Azure/MediaServices/KeyDelivery/PlayReadyTemplate/v1" xmlns:ser="http://schemas.microsoft.com/2003/10/Serialization/" elementFormDefault="qualified" targetNamespace="http://schemas.microsoft.com/Azure/MediaServices/KeyDelivery/PlayReadyTemplate/v1" xmlns:xs="https://www.w3.org/2001/XMLSchema">
-      <xs:import namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
-      <xs:complexType name="AgcAndColorStripeRestriction">
-        <xs:sequence>
-          <xs:element minOccurs="0" name="ConfigurationData" type="xs:unsignedByte" />
-        </xs:sequence>
-      </xs:complexType>
-      <xs:element name="AgcAndColorStripeRestriction" nillable="true" type="tns:AgcAndColorStripeRestriction" />
-      <xs:simpleType name="ContentType">
-        <xs:restriction base="xs:string">
-          <xs:enumeration value="Unspecified" />
-          <xs:enumeration value="UltravioletDownload" />
-          <xs:enumeration value="UltravioletStreaming" />
-        </xs:restriction>
-      </xs:simpleType>
-      <xs:element name="ContentType" nillable="true" type="tns:ContentType" />
-      <xs:complexType name="ExplicitAnalogTelevisionRestriction">
-        <xs:sequence>
-          <xs:element minOccurs="0" name="BestEffort" type="xs:boolean" />
-          <xs:element minOccurs="0" name="ConfigurationData" type="xs:unsignedByte" />
-        </xs:sequence>
-      </xs:complexType>
-      <xs:element name="ExplicitAnalogTelevisionRestriction" nillable="true" type="tns:ExplicitAnalogTelevisionRestriction" />
-      <xs:complexType name="PlayReadyContentKey">
+```xml
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://schemas.microsoft.com/Azure/MediaServices/KeyDelivery/PlayReadyTemplate/v1" xmlns:ser="http://schemas.microsoft.com/2003/10/Serialization/" elementFormDefault="qualified" targetNamespace="http://schemas.microsoft.com/Azure/MediaServices/KeyDelivery/PlayReadyTemplate/v1" xmlns:xs="https://www.w3.org/2001/XMLSchema">
+  <xs:import namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
+  <xs:complexType name="AgcAndColorStripeRestriction">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="ConfigurationData" type="xs:unsignedByte" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="AgcAndColorStripeRestriction" nillable="true" type="tns:AgcAndColorStripeRestriction" />
+  <xs:simpleType name="ContentType">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="Unspecified" />
+      <xs:enumeration value="UltravioletDownload" />
+      <xs:enumeration value="UltravioletStreaming" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element name="ContentType" nillable="true" type="tns:ContentType" />
+  <xs:complexType name="ExplicitAnalogTelevisionRestriction">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="BestEffort" type="xs:boolean" />
+      <xs:element minOccurs="0" name="ConfigurationData" type="xs:unsignedByte" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ExplicitAnalogTelevisionRestriction" nillable="true" type="tns:ExplicitAnalogTelevisionRestriction" />
+  <xs:complexType name="PlayReadyContentKey">
+    <xs:sequence />
+  </xs:complexType>
+  <xs:element name="PlayReadyContentKey" nillable="true" type="tns:PlayReadyContentKey" />
+  <xs:complexType name="ContentEncryptionKeyFromHeader">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:PlayReadyContentKey">
         <xs:sequence />
-      </xs:complexType>
-      <xs:element name="PlayReadyContentKey" nillable="true" type="tns:PlayReadyContentKey" />
-      <xs:complexType name="ContentEncryptionKeyFromHeader">
-        <xs:complexContent mixed="false">
-          <xs:extension base="tns:PlayReadyContentKey">
-            <xs:sequence />
-          </xs:extension>
-        </xs:complexContent>
-      </xs:complexType>
-      <xs:element name="ContentEncryptionKeyFromHeader" nillable="true" type="tns:ContentEncryptionKeyFromHeader" />
-      <xs:complexType name="ContentEncryptionKeyFromKeyIdentifier">
-        <xs:complexContent mixed="false">
-          <xs:extension base="tns:PlayReadyContentKey">
-            <xs:sequence>
-              <xs:element minOccurs="0" name="KeyIdentifier" type="ser:guid" />
-            </xs:sequence>
-          </xs:extension>
-        </xs:complexContent>
-      </xs:complexType>
-      <xs:element name="ContentEncryptionKeyFromKeyIdentifier" nillable="true" type="tns:ContentEncryptionKeyFromKeyIdentifier" />
-      <xs:complexType name="PlayReadyLicenseResponseTemplate">
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="ContentEncryptionKeyFromHeader" nillable="true" type="tns:ContentEncryptionKeyFromHeader" />
+  <xs:complexType name="ContentEncryptionKeyFromKeyIdentifier">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:PlayReadyContentKey">
         <xs:sequence>
-          <xs:element name="LicenseTemplates" nillable="true" type="tns:ArrayOfPlayReadyLicenseTemplate" />
-          <xs:element minOccurs="0" name="ResponseCustomData" nillable="true" type="xs:string">
-            <xs:annotation>
-              <xs:appinfo>
-                <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
-              </xs:appinfo>
-            </xs:annotation>
-          </xs:element>
+          <xs:element minOccurs="0" name="KeyIdentifier" type="ser:guid" />
         </xs:sequence>
-      </xs:complexType>
-      <xs:element name="PlayReadyLicenseResponseTemplate" nillable="true" type="tns:PlayReadyLicenseResponseTemplate" />
-      <xs:complexType name="ArrayOfPlayReadyLicenseTemplate">
-        <xs:sequence>
-          <xs:element minOccurs="0" maxOccurs="unbounded" name="PlayReadyLicenseTemplate" nillable="true" type="tns:PlayReadyLicenseTemplate" />
-        </xs:sequence>
-      </xs:complexType>
-      <xs:element name="ArrayOfPlayReadyLicenseTemplate" nillable="true" type="tns:ArrayOfPlayReadyLicenseTemplate" />
-      <xs:complexType name="PlayReadyLicenseTemplate">
-        <xs:sequence>
-          <xs:element minOccurs="0" name="AllowTestDevices" type="xs:boolean" />
-          <xs:element minOccurs="0" name="BeginDate" nillable="true" type="xs:dateTime">
-            <xs:annotation>
-              <xs:appinfo>
-                <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
-              </xs:appinfo>
-            </xs:annotation>
-          </xs:element>
-          <xs:element name="ContentKey" nillable="true" type="tns:PlayReadyContentKey" />
-          <xs:element minOccurs="0" name="ContentType" type="tns:ContentType">
-            <xs:annotation>
-              <xs:appinfo>
-                <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
-              </xs:appinfo>
-            </xs:annotation>
-          </xs:element>
-          <xs:element minOccurs="0" name="ExpirationDate" nillable="true" type="xs:dateTime">
-            <xs:annotation>
-              <xs:appinfo>
-                <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
-              </xs:appinfo>
-            </xs:annotation>
-          </xs:element>
-          <xs:element minOccurs="0" name="GracePeriod" nillable="true" type="ser:duration">
-            <xs:annotation>
-              <xs:appinfo>
-                <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
-              </xs:appinfo>
-            </xs:annotation>
-          </xs:element>
-          <xs:element minOccurs="0" name="LicenseType" type="tns:PlayReadyLicenseType" />
-          <xs:element minOccurs="0" name="PlayRight" nillable="true" type="tns:PlayReadyPlayRight" />
-        </xs:sequence>
-      </xs:complexType>
-      <xs:element name="PlayReadyLicenseTemplate" nillable="true" type="tns:PlayReadyLicenseTemplate" />
-      <xs:simpleType name="PlayReadyLicenseType">
-        <xs:restriction base="xs:string">
-          <xs:enumeration value="Nonpersistent" />
-          <xs:enumeration value="Persistent" />
-        </xs:restriction>
-      </xs:simpleType>
-      <xs:element name="PlayReadyLicenseType" nillable="true" type="tns:PlayReadyLicenseType" />
-      <xs:complexType name="PlayReadyPlayRight">
-        <xs:sequence>
-          <xs:element minOccurs="0" name="AgcAndColorStripeRestriction" nillable="true" type="tns:AgcAndColorStripeRestriction">
-            <xs:annotation>
-              <xs:appinfo>
-                <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
-              </xs:appinfo>
-            </xs:annotation>
-          </xs:element>
-          <xs:element minOccurs="0" name="AllowPassingVideoContentToUnknownOutput" type="tns:UnknownOutputPassingOption">
-            <xs:annotation>
-              <xs:appinfo>
-                <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
-              </xs:appinfo>
-            </xs:annotation>
-          </xs:element>
-          <xs:element minOccurs="0" name="AnalogVideoOpl" nillable="true" type="xs:int">
-            <xs:annotation>
-              <xs:appinfo>
-                <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
-              </xs:appinfo>
-            </xs:annotation>
-          </xs:element>
-          <xs:element minOccurs="0" name="CompressedDigitalAudioOpl" nillable="true" type="xs:int">
-            <xs:annotation>
-              <xs:appinfo>
-                <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
-              </xs:appinfo>
-            </xs:annotation>
-          </xs:element>
-          <xs:element minOccurs="0" name="CompressedDigitalVideoOpl" nillable="true" type="xs:int">
-            <xs:annotation>
-              <xs:appinfo>
-                <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
-              </xs:appinfo>
-            </xs:annotation>
-          </xs:element>
-          <xs:element minOccurs="0" name="DigitalVideoOnlyContentRestriction" type="xs:boolean">
-            <xs:annotation>
-              <xs:appinfo>
-                <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
-              </xs:appinfo>
-            </xs:annotation>
-          </xs:element>
-          <xs:element minOccurs="0" name="ExplicitAnalogTelevisionOutputRestriction" nillable="true" type="tns:ExplicitAnalogTelevisionRestriction">
-            <xs:annotation>
-              <xs:appinfo>
-                <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
-              </xs:appinfo>
-            </xs:annotation>
-          </xs:element>
-          <xs:element minOccurs="0" name="FirstPlayExpiration" nillable="true" type="ser:duration">
-            <xs:annotation>
-              <xs:appinfo>
-                <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
-              </xs:appinfo>
-            </xs:annotation>
-          </xs:element>
-          <xs:element minOccurs="0" name="ImageConstraintForAnalogComponentVideoRestriction" type="xs:boolean">
-            <xs:annotation>
-              <xs:appinfo>
-                <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
-              </xs:appinfo>
-            </xs:annotation>
-          </xs:element>
-          <xs:element minOccurs="0" name="ImageConstraintForAnalogComputerMonitorRestriction" type="xs:boolean">
-            <xs:annotation>
-              <xs:appinfo>
-                <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
-              </xs:appinfo>
-            </xs:annotation>
-          </xs:element>
-          <xs:element minOccurs="0" name="ScmsRestriction" nillable="true" type="tns:ScmsRestriction">
-            <xs:annotation>
-              <xs:appinfo>
-                <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
-              </xs:appinfo>
-            </xs:annotation>
-          </xs:element>
-          <xs:element minOccurs="0" name="UncompressedDigitalAudioOpl" nillable="true" type="xs:int">
-            <xs:annotation>
-              <xs:appinfo>
-                <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
-              </xs:appinfo>
-            </xs:annotation>
-          </xs:element>
-          <xs:element minOccurs="0" name="UncompressedDigitalVideoOpl" nillable="true" type="xs:int">
-            <xs:annotation>
-              <xs:appinfo>
-                <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
-              </xs:appinfo>
-            </xs:annotation>
-          </xs:element>
-        </xs:sequence>
-      </xs:complexType>
-      <xs:element name="PlayReadyPlayRight" nillable="true" type="tns:PlayReadyPlayRight" />
-      <xs:simpleType name="UnknownOutputPassingOption">
-        <xs:restriction base="xs:string">
-          <xs:enumeration value="NotAllowed" />
-          <xs:enumeration value="Allowed" />
-          <xs:enumeration value="AllowedWithVideoConstriction" />
-        </xs:restriction>
-      </xs:simpleType>
-      <xs:element name="UnknownOutputPassingOption" nillable="true" type="tns:UnknownOutputPassingOption" />
-      <xs:complexType name="ScmsRestriction">
-        <xs:sequence>
-          <xs:element minOccurs="0" name="ConfigurationData" type="xs:unsignedByte" />
-        </xs:sequence>
-      </xs:complexType>
-      <xs:element name="ScmsRestriction" nillable="true" type="tns:ScmsRestriction" />
-    </xs:schema>
-
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="ContentEncryptionKeyFromKeyIdentifier" nillable="true" type="tns:ContentEncryptionKeyFromKeyIdentifier" />
+  <xs:complexType name="PlayReadyLicenseResponseTemplate">
+    <xs:sequence>
+      <xs:element name="LicenseTemplates" nillable="true" type="tns:ArrayOfPlayReadyLicenseTemplate" />
+      <xs:element minOccurs="0" name="ResponseCustomData" nillable="true" type="xs:string">
+        <xs:annotation>
+          <xs:appinfo>
+            <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="PlayReadyLicenseResponseTemplate" nillable="true" type="tns:PlayReadyLicenseResponseTemplate" />
+  <xs:complexType name="ArrayOfPlayReadyLicenseTemplate">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="PlayReadyLicenseTemplate" nillable="true" type="tns:PlayReadyLicenseTemplate" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfPlayReadyLicenseTemplate" nillable="true" type="tns:ArrayOfPlayReadyLicenseTemplate" />
+  <xs:complexType name="PlayReadyLicenseTemplate">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="AllowTestDevices" type="xs:boolean" />
+      <xs:element minOccurs="0" name="BeginDate" nillable="true" type="xs:dateTime">
+        <xs:annotation>
+          <xs:appinfo>
+            <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="ContentKey" nillable="true" type="tns:PlayReadyContentKey" />
+      <xs:element minOccurs="0" name="ContentType" type="tns:ContentType">
+        <xs:annotation>
+          <xs:appinfo>
+            <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" name="ExpirationDate" nillable="true" type="xs:dateTime">
+        <xs:annotation>
+          <xs:appinfo>
+            <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" name="GracePeriod" nillable="true" type="ser:duration">
+        <xs:annotation>
+          <xs:appinfo>
+            <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" name="LicenseType" type="tns:PlayReadyLicenseType" />
+      <xs:element minOccurs="0" name="PlayRight" nillable="true" type="tns:PlayReadyPlayRight" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="PlayReadyLicenseTemplate" nillable="true" type="tns:PlayReadyLicenseTemplate" />
+  <xs:simpleType name="PlayReadyLicenseType">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="Nonpersistent" />
+      <xs:enumeration value="Persistent" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element name="PlayReadyLicenseType" nillable="true" type="tns:PlayReadyLicenseType" />
+  <xs:complexType name="PlayReadyPlayRight">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="AgcAndColorStripeRestriction" nillable="true" type="tns:AgcAndColorStripeRestriction">
+        <xs:annotation>
+          <xs:appinfo>
+            <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" name="AllowPassingVideoContentToUnknownOutput" type="tns:UnknownOutputPassingOption">
+        <xs:annotation>
+          <xs:appinfo>
+            <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" name="AnalogVideoOpl" nillable="true" type="xs:int">
+        <xs:annotation>
+          <xs:appinfo>
+            <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" name="CompressedDigitalAudioOpl" nillable="true" type="xs:int">
+        <xs:annotation>
+          <xs:appinfo>
+            <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" name="CompressedDigitalVideoOpl" nillable="true" type="xs:int">
+        <xs:annotation>
+          <xs:appinfo>
+            <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" name="DigitalVideoOnlyContentRestriction" type="xs:boolean">
+        <xs:annotation>
+          <xs:appinfo>
+            <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" name="ExplicitAnalogTelevisionOutputRestriction" nillable="true" type="tns:ExplicitAnalogTelevisionRestriction">
+        <xs:annotation>
+          <xs:appinfo>
+            <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" name="FirstPlayExpiration" nillable="true" type="ser:duration">
+        <xs:annotation>
+          <xs:appinfo>
+            <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" name="ImageConstraintForAnalogComponentVideoRestriction" type="xs:boolean">
+        <xs:annotation>
+          <xs:appinfo>
+            <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" name="ImageConstraintForAnalogComputerMonitorRestriction" type="xs:boolean">
+        <xs:annotation>
+          <xs:appinfo>
+            <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" name="ScmsRestriction" nillable="true" type="tns:ScmsRestriction">
+        <xs:annotation>
+          <xs:appinfo>
+            <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" name="UncompressedDigitalAudioOpl" nillable="true" type="xs:int">
+        <xs:annotation>
+          <xs:appinfo>
+            <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" name="UncompressedDigitalVideoOpl" nillable="true" type="xs:int">
+        <xs:annotation>
+          <xs:appinfo>
+            <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="PlayReadyPlayRight" nillable="true" type="tns:PlayReadyPlayRight" />
+  <xs:simpleType name="UnknownOutputPassingOption">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="NotAllowed" />
+      <xs:enumeration value="Allowed" />
+      <xs:enumeration value="AllowedWithVideoConstriction" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element name="UnknownOutputPassingOption" nillable="true" type="tns:UnknownOutputPassingOption" />
+  <xs:complexType name="ScmsRestriction">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="ConfigurationData" type="xs:unsignedByte" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ScmsRestriction" nillable="true" type="tns:ScmsRestriction" />
+</xs:schema>
+```
 
 ## <a name="additional-notes"></a>Aanvullende opmerkingen
 
-* Widevine is een service van Google Inc. en is onderworpen aan de service voorwaarden en het privacybeleid van Google, Inc.
+* Widevine is een service van Google Inc. en is onderworpen aan de servicevoorwaarden en het privacybeleid van Google Inc.
 
 ## <a name="media-services-learning-paths"></a>Media Services-leertrajecten
 [!INCLUDE [media-services-learning-paths-include](../../../includes/media-services-learning-paths-include.md)]

@@ -8,11 +8,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 08/02/2019
 ms.author: sutalasi
-ms.openlocfilehash: 4146553d59607e1512d8f15391d143d44815cea9
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 4bdca30c82b31bda2e843b3712cfbe772952f3e8
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84016471"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86077300"
 ---
 # <a name="set-up-disaster-recovery-for-sql-server"></a>Herstel na nood geval instellen voor SQL Server
 
@@ -37,7 +38,7 @@ SQL Server op een Azure-infra structuur als een service (IaaS) virtuele machine 
 SQL Server op een Azure IaaS-VM of on-premises.| [Failover Clustering (altijd op FCI)](https://docs.microsoft.com/sql/sql-server/failover-clusters/windows/windows-server-failover-clustering-wsfc-with-sql-server?view=sql-server-2017) | De tijd die nodig is voor failover tussen de knoop punten. | Omdat FCI altijd gebruikmaakt van gedeelde opslag, is dezelfde weer gave van het opslag exemplaar beschikbaar voor failover.
 SQL Server op een Azure IaaS-VM of on-premises.| [Database spiegeling (modus met hoge prestaties)](https://docs.microsoft.com/sql/database-engine/database-mirroring/database-mirroring-sql-server?view=sql-server-2017) | De tijd die nodig is om de service af te dwingen, waarbij gebruik wordt gemaakt van de spiegel server als een warme server voor stand-by. | Replicatie is asynchroon. De spiegel database kan enigszins vertraging oplopen achter de hoofd database. De vertraging is doorgaans klein. Maar het kan groot worden als het systeem van de hoofd-of spiegel server zwaar belast is.<br/><br/>De back-upfunctie voor logboeken kan een aanvulling zijn op database spiegeling. Het is een gunstig alternatief voor het asynchroon spie gelen van data bases.
 SQL as a Service (PaaS) in Azure.<br/><br/>Dit implementatie type omvat afzonderlijke data bases en elastische Pools. | Actieve geo-replicatie | 30 seconden nadat de failover is geactiveerd.<br/><br/>Wanneer failover wordt geactiveerd voor een van de secundaire data bases, worden alle andere secundairen automatisch gekoppeld aan de nieuwe primaire. | RPO van vijf seconden.<br/><br/>Actieve geo-replicatie maakt gebruik van de always on-technologie van SQL Server. Hiermee worden doorgevoerde trans acties op de primaire data base asynchroon gerepliceerd naar een secundaire data base met behulp van snap shot-isolatie.<br/><br/>De secundaire gegevens worden gegarandeerd nooit gedeeltelijk trans acties.
-SQL als PaaS geconfigureerd met actieve geo-replicatie in Azure.<br/><br/>Dit implementatie type bevat een SQL Database beheerde instanties, elastische Pools en afzonderlijke data bases. | Automatische failover-groepen | RTO van één uur. | RPO van vijf seconden.<br/><br/>Groepen voor automatische failover bieden de groeps semantiek boven op actieve geo-replicatie. Maar hetzelfde mechanisme voor asynchrone replicatie wordt gebruikt.
+SQL als PaaS geconfigureerd met actieve geo-replicatie in Azure.<br/><br/>Dit implementatie type bevat beheerde instanties, elastische Pools en afzonderlijke data bases. | Automatische failover-groepen | RTO van één uur. | RPO van vijf seconden.<br/><br/>Groepen voor automatische failover bieden de groeps semantiek boven op actieve geo-replicatie. Maar hetzelfde mechanisme voor asynchrone replicatie wordt gebruikt.
 SQL Server op een Azure IaaS-VM of on-premises.| Replicatie met Azure Site Recovery | RTO is doorgaans minder dan 15 minuten. Lees voor meer informatie de [RTO-sla van site Recovery](https://azure.microsoft.com/support/legal/sla/site-recovery/v1_2/). | Een uur voor toepassings consistentie en vijf minuten voor crash consistentie. Als u op zoek bent naar een lagere RPO, moet u andere BCDR-technologieën gebruiken.
 
 > [!NOTE]

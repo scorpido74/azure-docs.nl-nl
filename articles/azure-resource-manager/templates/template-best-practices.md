@@ -3,12 +3,12 @@ title: Aanbevolen procedures voor sjablonen
 description: Hierin worden aanbevolen benaderingen beschreven voor het ontwerpen van Azure Resource Manager sjablonen. Biedt suggesties om veelvoorkomende problemen te voor komen bij het gebruik van sjablonen.
 ms.topic: conceptual
 ms.date: 06/09/2020
-ms.openlocfilehash: c00a3a1162ffec4ce89c43ef2f76796fb5943438
-ms.sourcegitcommit: bf99428d2562a70f42b5a04021dde6ef26c3ec3a
+ms.openlocfilehash: a85e9afd64c416628c35bd36d16086f28d0732d3
+ms.sourcegitcommit: bcb962e74ee5302d0b9242b1ee006f769a94cfb8
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/23/2020
-ms.locfileid: "85254086"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86058058"
 ---
 # <a name="arm-template-best-practices"></a>Aanbevolen procedures voor ARM-sjablonen
 
@@ -230,7 +230,7 @@ De volgende informatie kan nuttig zijn wanneer u met [resources](template-syntax
    * [WinRM-toegang instellen voor virtuele machines in Azure Resource Manager](../../virtual-machines/windows/winrm.md)
    * [Externe toegang tot uw virtuele machine toestaan met behulp van de Azure Portal](../../virtual-machines/windows/nsg-quickstart-portal.md)
    * [Externe toegang tot uw virtuele machine toestaan met behulp van Power shell](../../virtual-machines/windows/nsg-quickstart-powershell.md)
-   * [Externe toegang tot uw virtuele Linux-machine toestaan met behulp van Azure CLI](../../virtual-machines/virtual-machines-linux-nsg-quickstart.md)
+   * [Externe toegang tot uw virtuele Linux-machine toestaan met behulp van Azure CLI](../../virtual-machines/linux/nsg-quickstart.md)
 
 * De eigenschap **domeinnaam label** voor open bare IP-adressen moet uniek zijn. De **domeinnaam label** -waarde moet tussen de 3 en 63 tekens lang zijn en de regels volgen die zijn opgegeven met deze reguliere expressie: `^[a-z][a-z0-9-]{1,61}[a-z0-9]$` . Omdat de functie **Unique string** een teken reeks genereert die 13 tekens lang is, is de para meter **dnsPrefixString** beperkt tot 50 tekens:
 

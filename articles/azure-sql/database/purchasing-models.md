@@ -3,8 +3,8 @@ title: Aankoopmodellen
 titleSuffix: Azure SQL Database & Azure SQL Managed Instance
 description: Meer informatie over de inkoop modellen die beschikbaar zijn voor Azure SQL Database en Azure SQL Managed instance.
 services: sql-database
-ms.service: sql-database
-ms.subservice: service
+ms.service: sql-db-mi
+ms.subservice: features
 ms.custom: sqldbrb=1
 ms.devlang: ''
 ms.topic: conceptual
@@ -12,12 +12,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: carlrab
 ms.date: 05/28/2020
-ms.openlocfilehash: f54af4832f2885611420c33209ca873bc5cd5908
-ms.sourcegitcommit: a8928136b49362448e992a297db1072ee322b7fd
+ms.openlocfilehash: a11894eb94b73d8d31ca7135be2ba9c05eca5e04
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/11/2020
-ms.locfileid: "84718866"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86075874"
 ---
 # <a name="choose-between-the-vcore-and-dtu-purchasing-models---azure-sql-database-and-sql-managed-instance"></a>Kiezen tussen de vCore-en DTU-aankoop modellen-Azure SQL Database en SQL Managed instance
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -41,6 +41,10 @@ In de volgende tabel en grafiek worden de vCore en de op DTU gebaseerde inkoop m
 ||||  
 
 ![Prijs model vergelijking](./media/purchasing-models/pricing-model.png)
+
+Wilt u uw Cloud uitgaven optimaliseren en opslaan?
+
+[!INCLUDE [cost-management-horizontal](../../../includes/cost-management-horizontal.md)]
 
 ## <a name="compute-costs"></a>Reken kosten
 

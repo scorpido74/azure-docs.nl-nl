@@ -7,16 +7,16 @@ ms.subservice: sizes
 ms.topic: article
 ms.date: 02/03/2020
 ms.author: jushiman
-ms.openlocfilehash: 07e11e3dbd7141ed3f54debfe4bafbda9431486b
-ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
+ms.openlocfilehash: 44f9261c8054ea0575f2fcab0dc8bb6c0d6f0ce4
+ms.sourcegitcommit: bcb962e74ee5302d0b9242b1ee006f769a94cfb8
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/11/2020
-ms.locfileid: "84703876"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86058262"
 ---
 # <a name="fsv2-series"></a>Fsv2-serie
 
-De Fsv2-serie wordt uitgevoerd op de Intel® Xeon® Platinum 8272CL (Cascade Lake)-processors en Intel® Xeon® Platinum 8168-processors. De IT-service heeft een zeer hoge Turbo klok snelheid van 3,4 GHz en een maximale Turbo frequentie van 3,7 GHz met één kern. Intel® AVX-512-instructies zijn nieuw op schaal bare Intel-processors. Deze instructies bieden een 2X hoge prestatie verbetering van de werk belasting voor vector verwerking op bewerkingen met een drijvende komma van zowel één als dubbele precisie. Met andere woorden, ze zijn heel snel voor elke reken werk belasting.
+De Fsv2-serie wordt uitgevoerd op de Intel® Xeon® Platinum 8272CL (Cascade Lake)-processors en Intel® Xeon® Platinum 8168-processors (Skylake). De IT-service heeft een zeer hoge Turbo klok snelheid van 3,4 GHz en een maximale Turbo frequentie van 3,7 GHz met één kern. Intel® AVX-512-instructies zijn nieuw op schaal bare Intel-processors. Deze instructies bieden een 2X hoge prestatie verbetering van de werk belasting voor vector verwerking op bewerkingen met een drijvende komma van zowel één als dubbele precisie. Met andere woorden, ze zijn heel snel voor elke reken werk belasting.
 
 Virtuele machines uit de Fsv2-serie bieden een Intel® Hyper-Threading-technologie.
 

@@ -5,11 +5,12 @@ description: Meer informatie over de aanbevolen procedures voor cluster operator
 services: container-service
 ms.topic: conceptual
 ms.date: 11/26/2018
-ms.openlocfilehash: f63db0efb509223715efd4848a91d0435ab54af7
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 5b003c9f0c3b47779bd7da92fb64c57830911fae
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85340841"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86077844"
 ---
 # <a name="best-practices-for-advanced-scheduler-features-in-azure-kubernetes-service-aks"></a>Aanbevolen procedures voor geavanceerde functies van scheduler in azure Kubernetes service (AKS)
 
@@ -100,7 +101,7 @@ Taints en verdragen worden gebruikt voor het logisch isoleren van resources met 
 Laten we eens kijken naar een voor beeld van knoop punten met een grote hoeveelheid geheugen. Deze knoop punten kunnen een voor keur geven aan de belangrijkste die een grote hoeveelheid geheugen aanvragen. Om ervoor te zorgen dat de resources niet inactief zijn, kunnen ze ook andere peulen uitvoeren.
 
 ```console
-kubectl label node aks-nodepool1 hardware:highmem
+kubectl label node aks-nodepool1 hardware=highmem
 ```
 
 Een pod-specificatie voegt vervolgens de `nodeSelector` eigenschap toe om een knooppunt kiezer te definiëren die overeenkomt met het label dat op een knoop punt is ingesteld:

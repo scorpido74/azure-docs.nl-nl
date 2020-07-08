@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/19/2019
 ms.author: juliako
-ms.openlocfilehash: 873bc4ab5e435b91ff4400a39c92db0d0bb9baa8
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 3ad06d0e37b7cf464c311e28e546e1b7f1ebd183
+ms.sourcegitcommit: bcb962e74ee5302d0b9242b1ee006f769a94cfb8
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/27/2020
-ms.locfileid: "74968762"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86058245"
 ---
 # <a name="protect-your-hls-content-with-apple-fairplay-or-microsoft-playready"></a>Uw HLS-inhoud beschermen met Apple FairPlay of micro soft PlayReady
 
@@ -65,15 +65,15 @@ De volgende zaken moeten worden ingesteld op Media Services de belangrijkste bez
 
       In de volgende stappen wordt beschreven hoe u een pfx-certificaat bestand genereert voor FairPlay:
 
-    1. Installeer OpenSSL van https://slproweb.com/products/Win32OpenSSL.html.
+    1. Installeer OpenSSL van https://slproweb.com/products/Win32OpenSSL.html .
 
         Ga naar de map waarin het FairPlay-certificaat en andere bestanden die door Apple worden geleverd, zijn.
     2. Voer de volgende opdracht uit via de opdrachtregel. Hiermee wordt het CER-bestand geconverteerd naar een. pem-bestand.
 
-        "C:\OpenSSL-Win32\bin\openssl.exe" x509-in FairPlay. CER-out FairPlay-out. pem
+        "C:\OpenSSL-Win32\bin\openssl.exe" x509: Informeer de FairPlay. CER-out FairPlay-out. pem
     3. Voer de volgende opdracht uit via de opdrachtregel. Hiermee converteert u het. pem-bestand naar een. pfx-bestand met de persoonlijke sleutel. Het wacht woord voor het pfx-bestand wordt vervolgens gevraagd door OpenSSL.
 
-        "C:\OpenSSL-Win32\bin\openssl.exe" pkcs12/pfx-Profiel-export-out FairPlay-out. pfx-INKEY privatekey. pem-in FairPlay-out. pem-Passin File: privatekey-PEM-Pass. txt
+        "C:\OpenSSL-Win32\bin\openssl.exe" pkcs12/pfx-Profiel-export FairPlay-out. pfx-INKEY privatekey. pem-in FairPlay-out. pem-Passin file:privatekey-pem-pass.txt
   * **Wacht woord voor app-certificaat**: het wacht woord voor het maken van het pfx-bestand.
   * **Wacht woord-id van het app-certificaat**: u moet het wacht woord uploaden, vergelijkbaar met het uploaden van andere Media Services sleutels. Gebruik de Enum-waarde **ContentKeyType. FairPlayPfxPassword** om de Media Services-id op te halen. Dit is wat ze nodig hebben in de optie voor de sleutel leverings beleid.
   * **IV**: dit is een wille keurige waarde van 16 bytes. De waarde moet overeenkomen met de IV in het beleid voor de levering van activa. U genereert de IV en plaatst deze op beide locaties: het leverings beleid voor assets en de optie voor de sleutel leverings beleid.
@@ -127,7 +127,7 @@ Hieronder vindt u algemene stappen voor het beveiligen van uw assets met FairPla
 ## <a name="use-fairplay-key-delivery-by-player-apps"></a>FairPlay-sleutel levering gebruiken met apps van de speler
 U kunt speler-apps ontwikkelen met behulp van de iOS-SDK. Als u FairPlay-inhoud wilt afspelen, moet u het License Exchange-protocol implementeren. Dit protocol is niet opgegeven door Apple. Het is aan elke app voor het verzenden van aanvragen voor sleutel levering. De Media Services FairPlay key delivery service verwacht dat SPC als een www-form-URL gecodeerd post bericht wordt gegeven in de volgende vorm:
 
-    spc=<Base64 encoded SPC>
+`spc=<Base64 encoded SPC>`
 
 > [!NOTE]
 > Azure Media Player ondersteunt het afspelen van FairPlay. Raadpleeg de [documentatie van Azure Media Player](https://amp.azure.net/libs/amp/latest/docs/index.html) voor meer informatie.
@@ -149,7 +149,7 @@ De volgende overwegingen zijn van toepassing:
 
 ## <a name="create-and-configure-a-visual-studio-project"></a>Maak en configureer een Visual Studio-project.
 
-1. Stel uw ontwikkel omgeving in en vul in het bestand app. config de verbindings informatie in, zoals beschreven in [Media Services ontwikkeling met .net](media-services-dotnet-how-to-use.md). 
+1. Stel uw ontwikkel omgeving in en vul het app.config bestand in met verbindings informatie, zoals beschreven in [Media Services ontwikkeling met .net](media-services-dotnet-how-to-use.md). 
 2. Voeg de volgende elementen toe aan **appSettings** dat in het bestand app.config is gedefinieerd:
 
     ```xml
@@ -557,7 +557,7 @@ namespace DynamicEncryptionWithFairPlay
 
 ## <a name="additional-notes"></a>Aanvullende opmerkingen
 
-* Widevine is een service van Google Inc. en is onderworpen aan de service voorwaarden en het privacybeleid van Google, Inc.
+* Widevine is een service van Google Inc. en is onderworpen aan de servicevoorwaarden en het privacybeleid van Google Inc.
 
 ## <a name="next-steps-media-services-learning-paths"></a>Volgende stappen: Media Services-leertrajecten
 [!INCLUDE [media-services-learning-paths-include](../../../includes/media-services-learning-paths-include.md)]

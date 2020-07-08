@@ -5,13 +5,14 @@ services: firewall
 author: vhorne
 ms.service: firewall
 ms.topic: conceptual
-ms.date: 06/08/2020
+ms.date: 07/07/2020
 ms.author: victorh
-ms.openlocfilehash: cf896f6783cca0a61892c43860328d87ada56a9c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 27cdff24672f70407e8f8f89c6c49a8c2de87d0a
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84791483"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86078422"
 ---
 # <a name="azure-firewall-faq"></a>Veelgestelde vragen over Azure Firewall
 
@@ -218,3 +219,7 @@ Nee. het verplaatsen van een IP-groep naar een andere resource groep wordt momen
 ## <a name="what-is-the-tcp-idle-timeout-for-azure-firewall"></a>Wat is de time-out voor inactiviteit van TCP voor Azure Firewall?
 
 Een standaard gedrag van een netwerk firewall is om ervoor te zorgen dat TCP-verbindingen in stand worden gehouden en ze onmiddellijk sluiten als er geen activiteit is. Azure Firewall TCP-time-out voor inactiviteit is vier minuten. Deze instelling kan niet worden geconfigureerd. Als een periode van inactiviteit langer is dan de time-outwaarde, is er geen garantie dat de TCP-of HTTP-sessie wordt onderhouden. Een veelvoorkomende procedure is het gebruik van een TCP-Keep-Alive. Deze procedure houdt de verbinding gedurende een langere periode actief. Zie de [.net-voor beelden](https://docs.microsoft.com/dotnet/api/system.net.servicepoint.settcpkeepalive?redirectedfrom=MSDN&view=netcore-3.1#System_Net_ServicePoint_SetTcpKeepAlive_System_Boolean_System_Int32_System_Int32_)voor meer informatie.
+
+## <a name="can-i-deploy-azure-firewall-without-a-public-ip-address"></a>Kan ik Azure Firewall implementeren zonder een openbaar IP-adres?
+
+Nee, momenteel moet u Azure Firewall implementeren met een openbaar IP-adres.

@@ -5,15 +5,15 @@ author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
-ms.topic: conceptual
+ms.topic: how-to
 ms.custom: hdinsightactive,seoapr2020
 ms.date: 04/16/2020
-ms.openlocfilehash: 2c0e95b71ec21b384f17a44ebf5cfd4f33b45f0f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: f3244ec3f85d5085d3dbc2e503eab59af5572c56
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82232850"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86075753"
 ---
 # <a name="manage-hdinsight-clusters-by-using-the-apache-ambari-web-ui"></a>HDInsight-clusters beheren met behulp van de Apache Ambari-webinterface
 
@@ -49,7 +49,7 @@ Wanneer de pagina wordt geopend, ziet u de balk aan de bovenkant. Deze balk beva
 
 ![Overzicht van Apache Ambari-dash board](./media/hdinsight-hadoop-manage-ambari/apache-ambari-dashboard.png)
 
-|Item |Beschrijving |
+|Item |Description |
 |---|---|
 |Ambari-logo|Hiermee opent u het dash board, dat kan worden gebruikt voor het bewaken van het cluster.|
 |Cluster naam # OPS|Hiermee wordt het aantal actieve Ambari-bewerkingen weer gegeven. Als u de cluster naam of **# OPS** selecteert, wordt een lijst met achtergrond bewerkingen weer gegeven.|
@@ -61,7 +61,7 @@ Wanneer de pagina wordt geopend, ziet u de balk aan de bovenkant. Deze balk beva
 |Beheerder|Software stack/services die zijn geïnstalleerd op het cluster, informatie over service accounts en Kerberos-beveiliging.|
 |Knop beheer|Ambari-beheer, gebruikers instellingen en afmelden.|
 
-## <a name="monitoring"></a>Controleren
+## <a name="monitoring"></a>Bewaking
 
 ### <a name="alerts"></a>Waarschuwingen
 
@@ -153,7 +153,7 @@ Op de pagina **hosts** worden alle hosts in het cluster weer gegeven. Voer de vo
 
 2. Gebruik het menu **acties** om de actie te selecteren die u wilt uitvoeren:
 
-    |Item |Beschrijving |
+    |Item |Description |
     |---|---|
     |Alle onderdelen starten|Start alle onderdelen op de host.|
     |Alle onderdelen stoppen|Stop alle onderdelen op de host.|
@@ -161,7 +161,7 @@ Op de pagina **hosts** worden alle hosts in het cluster weer gegeven. Voer de vo
     |Onderhouds modus inschakelen|Onderdrukt waarschuwingen voor de host. Deze modus moet zijn ingeschakeld als u acties uitvoert waarmee waarschuwingen worden gegenereerd. Bijvoorbeeld, het stoppen en starten van een service.|
     |Onderhouds modus uitschakelen|Retourneert de host naar normale waarschuwingen.|
     |Stoppen|Stopt DataNode of NodeManagers op de host.|
-    |start|Start DataNode of NodeManagers op de host.|
+    |Starten|Start DataNode of NodeManagers op de host.|
     |Opnieuw starten|Stopt en start DataNode of NodeManagers op de host.|
     |Uit bedrijf nemen|Hiermee verwijdert u een host uit het cluster. **Gebruik deze actie niet op HDInsight-clusters.**|
     |Opnieuw provisie|Voegt een eerder buiten gebruik gestelde host toe aan het cluster. **Gebruik deze actie niet op HDInsight-clusters.**|

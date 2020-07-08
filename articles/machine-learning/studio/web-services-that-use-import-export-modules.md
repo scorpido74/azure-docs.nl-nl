@@ -11,12 +11,12 @@ ms.service: machine-learning
 ms.subservice: studio
 ms.topic: how-to
 ms.date: 03/28/2017
-ms.openlocfilehash: 634c8b118a9d1f041e536f17cc9588f3a85fa4d6
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: b844a18a5acbd7a631bfe3b650dfa155d0e064ba
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85321815"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86076654"
 ---
 # <a name="deploy-azure-machine-learning-studio-classic-web-services-that-use-data-import-and-data-export-modules"></a>Azure Machine Learning Studio (klassieke) webservices implementeren die gebruikmaken van modules voor het importeren en exporteren van gegevens
 
@@ -41,8 +41,8 @@ De gegevens uit de Azure SQL-tabel lezen:
 6. In de velden **database server naam**, **database naam**, **gebruikers naam**en **wacht woord** voert u de juiste informatie in voor uw data base.
 7. Voer in het veld database query de volgende query in.
 
-     Selecteer [leeftijd],
-
+    ```tsql
+     select [age],
         [workclass],
         [fnlwgt],
         [education],
@@ -57,7 +57,8 @@ De gegevens uit de Azure SQL-tabel lezen:
         [hours-per-week],
         [native-country],
         [income]
-     van dbo. censusdata;
+     from dbo.censusdata;
+    ```
 8. Klik onder aan het canvas op **uitvoeren**.
 
 ## <a name="create-the-predictive-experiment"></a>Het voorspellende experiment maken
@@ -105,13 +106,15 @@ Als u de service als een klassieke webservice wilt implementeren en een toepassi
 8. Werk de waarde van de variabele *apiKey* bij met de API-sleutel die u eerder hebt opgeslagen.
 9. Zoek de aanvraag declaratie en werk de waarden bij van de para meters van de webservice die worden door gegeven aan de modules *gegevens importeren* en *exporteren* . In dit geval gebruikt u de oorspronkelijke query, maar definieert u een nieuwe tabel naam.
 
-        var request = new BatchExecutionRequest()
-        {
-            GlobalParameters = new Dictionary<string, string>() {
-                { "Query", @"select [age], [workclass], [fnlwgt], [education], [education-num], [marital-status], [occupation], [relationship], [race], [sex], [capital-gain], [capital-loss], [hours-per-week], [native-country], [income] from dbo.censusdata" },
-                { "Table", "dbo.ScoredTable2" },
-            }
-        };
+    ```csharp
+    var request = new BatchExecutionRequest()
+    {
+        GlobalParameters = new Dictionary<string, string>() {
+            { "Query", @"select [age], [workclass], [fnlwgt], [education], [education-num], [marital-status], [occupation], [relationship], [race], [sex], [capital-gain], [capital-loss], [hours-per-week], [native-country], [income] from dbo.censusdata" },
+            { "Table", "dbo.ScoredTable2" },
+        }
+    };
+    ```
 10. Voer de toepassing uit.
 
 Als de uitvoering is voltooid, wordt er een nieuwe tabel toegevoegd aan de data base met de Score resultaten.
@@ -133,15 +136,17 @@ Als u een nieuwe webservice wilt implementeren en een toepassing wilt maken om d
 8. Werk de waarde van de variabele *apiKey* bij met de **primaire sleutel** in de sectie **basis informatie over verbruik** .
 9. Zoek de *scoreRequest* -declaratie en werk de waarden bij van de webservice-para meters die worden door gegeven aan de modules *gegevens importeren* en *exporteren* . In dit geval gebruikt u de oorspronkelijke query, maar definieert u een nieuwe tabel naam.
 
-        var scoreRequest = new
+    ```csharp
+    var scoreRequest = new
+    {
+        Inputs = new Dictionary<string, StringTable>()
         {
-            Inputs = new Dictionary<string, StringTable>()
-            {
-            },
-            GlobalParameters = new Dictionary<string, string>() {
-                { "Query", @"select [age], [workclass], [fnlwgt], [education], [education-num], [marital-status], [occupation], [relationship], [race], [sex], [capital-gain], [capital-loss], [hours-per-week], [native-country], [income] from dbo.censusdata" },
-                { "Table", "dbo.ScoredTable3" },
-            }
-        };
+        },
+        GlobalParameters = new Dictionary<string, string>() {
+            { "Query", @"select [age], [workclass], [fnlwgt], [education], [education-num], [marital-status], [occupation], [relationship], [race], [sex], [capital-gain], [capital-loss], [hours-per-week], [native-country], [income] from dbo.censusdata" },
+            { "Table", "dbo.ScoredTable3" },
+        }
+    };
+    ```
 10. Voer de toepassing uit.
 
