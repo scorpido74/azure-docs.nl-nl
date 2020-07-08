@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 02/18/2020
-ms.openlocfilehash: da7a47bf61453c30f5c735b1282ae93d2442598c
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: f6594bbeb9899a255d0c38b6a5b2a378388501b8
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82127682"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85552519"
 ---
 # <a name="monitor-query-requests-in-azure-cognitive-search"></a>Query aanvragen bewaken in azure Cognitive Search
 
@@ -36,7 +36,7 @@ Volume wordt gemeten als **Zoek Query's per seconde** (qps), een ingebouwde metr
 
 Het is gebruikelijk om query's uit te voeren in milliseconden, zodat alleen query's die als seconden worden gemeten, worden weer gegeven in metrische gegevens.
 
-| Aggregatietype | Beschrijving |
+| Aggregatietype | Description |
 |------------------|-------------|
 | Average | Het gemiddelde aantal seconden binnen een minuut gedurende welke de uitvoering van de query heeft plaatsgevonden.|
 | Count | Het aantal metrische gegevens dat is verzonden naar het logboek binnen het interval van één minuut. |
@@ -128,11 +128,11 @@ Wanneer u bron logboek registratie inschakelt, worden query aanvragen in de tabe
    AzureDiagnostics
    | project OperationName, Query_s, IndexName_s, Documents_d
    | where OperationName == "Query.Search"
-   | where Query_s != "?api-version=2019-05-06&search=*"
+   | where Query_s != "?api-version=2020-06-30&search=*"
    | where IndexName_s != "realestate-us-sample-index"
    ```
 
-1. U kunt eventueel een kolom filter op *Query_s* instellen om te zoeken naar een specifieke syntaxis of teken reeks. U kunt bijvoorbeeld filteren op *is gelijk aan* `?api-version=2019-05-06&search=*&%24filter=HotelName`).
+1. U kunt eventueel een kolom filter op *Query_s* instellen om te zoeken naar een specifieke syntaxis of teken reeks. U kunt bijvoorbeeld filteren op *is gelijk aan* `?api-version=2020-06-30&search=*&%24filter=HotelName` ).
 
    ![Teken reeksen van vastgelegde query's](./media/search-monitor-usage/log-query-strings.png "Teken reeksen van vastgelegde query's")
 
@@ -179,9 +179,9 @@ Bij het pushen van de limieten van een bepaalde replica partitie, is het instell
 
 1. Geef als laatste de waarschuwings Details op. Geef een naam en beschrijving van de waarschuwing, wijs een Ernst waarde toe en specificeer of u de regel in de status ingeschakeld of uitgeschakeld wilt maken.
 
-   ![Waarschuwings Details](./media/search-monitor-usage/alert-details.png "Meldingsdetails")
+   ![Meldingsdetails](./media/search-monitor-usage/alert-details.png "Meldingsdetails")
 
-Als u een e-mail melding hebt opgegeven, ontvangt u een e-mail bericht van ' Microsoft Azure ' met een onderwerpregel van ' Azure: geactiveerde Ernst: ' 3 `<your rule name>`'.
+Als u een e-mail melding hebt opgegeven, ontvangt u een e-mail bericht van ' Microsoft Azure ' met een onderwerpregel van ' Azure: geactiveerde Ernst: ' 3 `<your rule name>` '.
 
 <!-- ## Report query data
 

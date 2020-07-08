@@ -17,12 +17,12 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.custom: seohack1
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e662d2c6d7939756dee6eb25ca62fef171b7d6d0
-ms.sourcegitcommit: be32c9a3f6ff48d909aabdae9a53bd8e0582f955
+ms.openlocfilehash: 7263d6a73a78b4b804cddd77f979898008ebadd6
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/26/2020
-ms.locfileid: "67109336"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85555379"
 ---
 # <a name="define-a-hybrid-identity-adoption-strategy"></a>Een strategie voor het implementeren van een hybride identiteit definiëren
 In deze taak definieert u de strategie voor het implementeren van de hybride identiteit voor uw hybride identiteits oplossing om te voldoen aan de bedrijfs vereisten die worden beschreven in:
@@ -63,7 +63,7 @@ De strategie die u gebruikt, bepaalt de aanmeldings ervaring van de gebruiker.  
 
 **Domain-en privé-netwerk toepassingen**:
 
-|  | Gesynchroniseerde identiteit | Federatieve identiteit |
+| Toepassing | Gesynchroniseerde identiteit | Federatieve identiteit |
 | --- | --- | --- |
 | Webbrowsers |Verificatie op basis van formulieren |eenmalige aanmelding, soms vereist voor het leveren van organisatie-ID |
 | Outlook |Vragen om referenties |Vragen om referenties |
@@ -73,7 +73,7 @@ De strategie die u gebruikt, bepaalt de aanmeldings ervaring van de gebruiker.  
 
 **Externe of niet-vertrouwde bronnen**:
 
-|  | Gesynchroniseerde identiteit | Federatieve identiteit |
+| Toepassing | Gesynchroniseerde identiteit | Federatieve identiteit |
 | --- | --- | --- |
 | Webbrowsers |Verificatie op basis van formulieren |Verificatie op basis van formulieren |
 | Outlook, Skype voor bedrijven (Lync), OneDrive voor bedrijven, Office-abonnement |Vragen om referenties |Vragen om referenties |
@@ -111,7 +111,7 @@ Over de jaren zijn er verschillende synchronisatie hulpprogramma's bevonden en g
 ### <a name="supported-topologies"></a>Ondersteunde topologieën
 Bij het definiëren van een synchronisatie strategie moet de gebruikte topologie worden bepaald. Afhankelijk van de informatie die u in stap 2 hebt vastgesteld, kunt u bepalen welke topologie het meest geschikte is voor gebruik. De enkelvoudige forest, één Azure AD-topologie is het meest gebruikelijk en bestaat uit één Active Directory-forest en één exemplaar van Azure AD.  Dit wordt gebruikt in een meerderheid van de scenario's en is de verwachte topologie bij gebruik van Azure AD Connect snelle installatie, zoals wordt weer gegeven in de afbeelding hieronder.
 
-![Ondersteund topologieën](./media/plan-hybrid-identity-design-considerations/single-forest.png) met één forest het is gebruikelijk voor grote en zelfs kleine organisaties om meerdere forests te hebben, zoals wordt weer gegeven in afbeelding 5.
+![Ondersteund topologieën ](./media/plan-hybrid-identity-design-considerations/single-forest.png) met één forest het is gebruikelijk voor grote en zelfs kleine organisaties om meerdere forests te hebben, zoals wordt weer gegeven in afbeelding 5.
 
 > [!NOTE]
 > Lees de artikel [topologieën voor Azure AD Connect](plan-connect-topologies.md)voor meer informatie over de verschillende on-premises en Azure AD-topologieën met Azure AD Connect Sync.
@@ -213,6 +213,6 @@ Multi-factor Authentication is standaard beschikbaar voor globale beheerders die
 ## <a name="next-steps"></a>Volgende stappen
 [Vereisten voor gegevens beveiliging bepalen](plan-hybrid-identity-design-considerations-dataprotection-requirements.md)
 
-## <a name="see-also"></a>Zie ook
+## <a name="see-also"></a>Zie tevens
 [Overzicht van ontwerp overwegingen](plan-hybrid-identity-design-considerations-overview.md)
 

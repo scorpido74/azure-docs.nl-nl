@@ -15,89 +15,70 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/24/2019
 ms.author: Zhchia
-ms.openlocfilehash: f5f163109d648a4fc021b41325c6d585a5a7a3e7
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 2de7bb81726bcb4aa1943b3f1816d6171f6ac97d
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77057563"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85554616"
 ---
 # <a name="tutorial-configure-ideo-for-automatic-user-provisioning"></a>Zelf studie: IDEO configureren voor automatische gebruikers inrichting
 
-Het doel van deze zelf studie is het demonstreren van de stappen die moeten worden uitgevoerd in IDEO en Azure Active Directory (Azure AD) om Azure AD te configureren voor het automatisch inrichten en ongedaan maken van de inrichting van gebruikers en/of groepen in IDEO.
+Het doel van deze zelf studie is het demonstreren van de stappen die moeten worden uitgevoerd in IDEO en Azure Active Directory (Azure AD) om Azure AD te configureren voor het automatisch inrichten en ongedaan maken van de inrichting van gebruikers en/of groepen in IDEO. Zie [Gebruikers inrichten en de inrichting ongedaan maken voor SaaS-toepassingen met Azure Active Directory](../app-provisioning/user-provisioning.md)voor belang rijke informatie over de werking van deze service, hoe deze werkt en veelgestelde vragen.
 
 > [!NOTE]
-> In deze zelf studie wordt een connector beschreven die boven op de Azure AD User Provisioning-Service is gebouwd. Zie [Gebruikers inrichten en de inrichting ongedaan maken voor SaaS-toepassingen met Azure Active Directory](../app-provisioning/user-provisioning.md)voor belang rijke informatie over de werking van deze service, hoe deze werkt en veelgestelde vragen.
->
 > Deze connector bevindt zich momenteel in de open bare preview. Zie [aanvullende gebruiksrecht overeenkomst voor Microsoft Azure previews](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)voor meer informatie over de algemene Microsoft Azure gebruiksrecht overeenkomst voor preview-functies.
+
+
+## <a name="capabilities-supported"></a>Ondersteunde mogelijkheden
+> [!div class="checklist"]
+> * Gebruikers maken in IDEO
+> * Gebruikers in IDEO verwijderen wanneer ze niet meer toegang nodig hebben
+> * Gebruikers kenmerken gesynchroniseerd laten tussen Azure AD en IDEO
+> * Inrichtings groepen en groepslid maatschappen in IDEO
+> * Eenmalige aanmelding bij IDEO (aanbevolen)
 
 ## <a name="prerequisites"></a>Vereisten
 
 In het scenario dat in deze zelf studie wordt beschreven, wordt ervan uitgegaan dat u al beschikt over de volgende vereisten:
 
-* Een Azure AD-Tenant
+* [Een Azure AD-Tenant](https://docs.microsoft.com/azure/active-directory/develop/quickstart-create-new-tenant).
+* Een gebruikers account in azure AD met [toestemming](https://docs.microsoft.com/azure/active-directory/users-groups-roles/directory-assign-admin-roles) voor het configureren van inrichting (bijvoorbeeld toepassings beheerder, Cloud toepassings beheerder, eigenaar van de toepassing of globale beheerder).
 * [Een IDEO-Tenant](https://www.shape.space/product/pricing)
 * Een gebruikers account op IDEO | Vorm met beheerders machtigingen.
 
-## <a name="assign-users-to-ideo"></a>Gebruikers toewijzen aan IDEO
 
-Azure Active Directory gebruikt een concept met de naam toewijzingen om te bepalen welke gebruikers toegang moeten krijgen tot geselecteerde apps. In de context van het automatisch inrichten van gebruikers worden alleen de gebruikers en/of groepen die zijn toegewezen aan een toepassing in azure AD gesynchroniseerd.
+## <a name="step-1-plan-your-provisioning-deployment"></a>Stap 1. Uw inrichtings implementatie plannen
+1. Meer informatie over [de werking van de inrichtings service](https://docs.microsoft.com/azure/active-directory/manage-apps/user-provisioning).
+2. Bepaal wie binnen het [bereik van de inrichting](https://docs.microsoft.com/azure/active-directory/manage-apps/define-conditional-rules-for-provisioning-user-accounts)valt.
+3. Bepaal welke gegevens moeten worden [toegewezen tussen Azure AD en ideo](https://docs.microsoft.com/azure/active-directory/manage-apps/customize-application-attributes). 
 
-Voordat u automatische gebruikers inrichting configureert en inschakelt, moet u beslissen welke gebruikers en/of groepen in azure AD toegang nodig hebben tot IDEO. Eenmaal besloten, kunt u deze gebruikers en/of groepen toewijzen aan IDEO door de volgende instructies te volgen:
-
-* [Een gebruiker of groep toewijzen aan een bedrijfs-app](../manage-apps/assign-user-or-group-access-portal.md)
-
-### <a name="important-tips-for-assigning-users-to-ideo"></a>Belang rijke tips voor het toewijzen van gebruikers aan IDEO
-
-* U wordt aangeraden één Azure AD-gebruiker toe te wijzen aan IDEO om de configuratie van automatische gebruikers inrichting te testen. Extra gebruikers en/of groepen kunnen later worden toegewezen.
-
-* Wanneer u een gebruiker toewijst aan IDEO, moet u een geldige toepassingsspecifieke rol (indien beschikbaar) selecteren in het dialoog venster toewijzing. Gebruikers met de rol **standaard toegang** worden uitgesloten van het inrichten.
-
-## <a name="set-up-ideo-for-provisioning"></a>IDEO instellen voor inrichting
+## <a name="step-2-configure-ideo-to-support-provisioning-with-azure-ad"></a>Stap 2. IDEO configureren voor ondersteuning bij het inrichten met Azure AD
 
 Voordat u IDEO configureert voor het automatisch inrichten van gebruikers met Azure AD, moet u bepaalde inrichtings gegevens ophalen van IDEO.
 
-1. Neem contact op met het ondersteunings productsupport@ideo.comteam van ideo voor **geheime tokens** op. Deze waarde wordt ingevoerd in het veld **geheime token** op het tabblad inrichten van uw ideo-toepassing in de Azure Portal. 
+* Neem contact op met het ondersteunings team van IDEO voor **geheime tokens** op productsupport@ideo.com . Deze waarde wordt ingevoerd in het veld **geheime token** op het tabblad inrichten van uw ideo-toepassing in de Azure Portal. 
 
-## <a name="add-ideo-from-the-gallery"></a>IDEO toevoegen vanuit de galerie
+## <a name="step-3-add-ideo-from-the-azure-ad-application-gallery"></a>Stap 3. IDEO toevoegen vanuit de Azure AD-toepassings galerie
 
-Als u IDEO wilt configureren voor het automatisch inrichten van gebruikers met Azure AD, moet u IDEO van de Azure AD-toepassings galerie toevoegen aan uw lijst met beheerde SaaS-toepassingen.
+Voeg IDEO toe vanuit de Azure AD-toepassings galerie om het beheren van de inrichting van IDEO te starten. Als u eerder IDEO voor SSO hebt ingesteld, kunt u dezelfde toepassing gebruiken. Het is echter raadzaam dat u een afzonderlijke app maakt wanneer u de integratie in eerste instantie test. Meer informatie over het toevoegen van een toepassing uit [de galerie.](https://docs.microsoft.com/azure/active-directory/manage-apps/add-gallery-app)
 
-1. Selecteer in de **[Azure Portal](https://portal.azure.com)** in het navigatie venster links **Azure Active Directory**.
+## <a name="step-4-define-who-will-be-in-scope-for-provisioning"></a>Stap 4. Definiëren wie binnen het bereik van de inrichting valt 
 
-    ![De knop Azure Active Directory](common/select-azuread.png)
+Met de Azure AD-inrichtings service kunt u bereiken die worden ingericht op basis van de toewijzing aan de toepassing en of op basis van kenmerken van de gebruiker/groep. Als u ervoor kiest om te bepalen wie wordt ingericht voor uw app op basis van de toewijzing, kunt u de volgende [stappen](../manage-apps/assign-user-or-group-access-portal.md) gebruiken om gebruikers en groepen toe te wijzen aan de toepassing. Als u kiest voor het bereik dat alleen wordt ingericht op basis van kenmerken van de gebruiker of groep, kunt u een bereik filter gebruiken zoals [hier](https://docs.microsoft.com/azure/active-directory/manage-apps/define-conditional-rules-for-provisioning-user-accounts)wordt beschreven. 
 
-2. Ga naar **bedrijfs toepassingen**en selecteer **alle toepassingen**.
+* Wanneer u gebruikers en groepen toewijst aan IDEO, moet u een andere rol dan **standaard toegang**selecteren. Gebruikers met de rol standaard toegang worden uitgesloten van inrichting en worden gemarkeerd als niet effectief in de inrichtings Logboeken. Als de enige rol die beschikbaar is op de toepassing de standaard rol Access is, kunt u [het toepassings manifest bijwerken](https://docs.microsoft.com/azure/active-directory/develop/howto-add-app-roles-in-azure-ad-apps) om extra rollen toe te voegen. 
 
-    ![De blade Bedrijfstoepassingen](common/enterprise-applications.png)
+* Begin klein. Test met een klein aantal gebruikers en groepen voordat u naar iedereen uitrolt. Wanneer het bereik voor inrichting is ingesteld op toegewezen gebruikers en groepen, kunt u dit beheren door een of twee gebruikers of groepen toe te wijzen aan de app. Wanneer bereik is ingesteld op alle gebruikers en groepen, kunt u een [kenmerk op basis van bereik filteren](https://docs.microsoft.com/azure/active-directory/manage-apps/define-conditional-rules-for-provisioning-user-accounts)opgeven. 
 
-3. Als u een nieuwe toepassing wilt toevoegen, selecteert u de knop **nieuwe toepassing** boven aan het deel venster.
 
-    ![De knop Nieuwe toepassing](common/add-new-app.png)
-
-4. Typ **ideo**in het zoekvak en selecteer **ideo** in het deel venster resultaten. 
-
-    ![IDEO in de lijst met resultaten](common/search-new-app.png)
-
-5. Selecteer de knop **Aanmelden voor ideo** , waarmee u wordt doorgestuurd naar de aanmeldings pagina van ideo. 
-
-    ![IDEO OIDC toevoegen](media/ideo-provisioning-tutorial/signup.png)
-
-6. Als IDEO een OpenIDConnect-app is, kiest u aanmelden bij IDEO met uw micro soft-werk account.
-
-    ![IDEO OIDC-aanmelding](media/ideo-provisioning-tutorial/login.png)
-
-7. Accepteer na een geslaagde verificatie de toestemming prompt voor de pagina toestemming. De toepassing wordt vervolgens automatisch toegevoegd aan uw Tenant en u wordt doorgestuurd naar uw IDEO-account.
-
-    ![IDEO OIDc toestemming](media/ideo-provisioning-tutorial/consent.png)
-
-## <a name="configure-automatic-user-provisioning-to-ideo"></a>Automatische gebruikers inrichting configureren voor IDEO 
+## <a name="step-5-configure-automatic-user-provisioning-to-ideo"></a>Stap 5. Automatische gebruikers inrichting configureren voor IDEO 
 
 In deze sectie wordt u begeleid bij de stappen voor het configureren van de Azure AD-inrichtings service om gebruikers en/of groepen in IDEO te maken, bij te werken en uit te scha kelen op basis van gebruikers-en/of groeps toewijzingen in azure AD.
 
 ### <a name="to-configure-automatic-user-provisioning-for-ideo-in-azure-ad"></a>Automatische gebruikers inrichting configureren voor IDEO in azure AD:
 
-1. Meld u aan bij de [Azure-portal](https://portal.azure.com). Selecteer **bedrijfs toepassingen**en selecteer **alle toepassingen**.
+1. Meld u aan bij [Azure Portal](https://portal.azure.com). Selecteer **bedrijfs toepassingen**en selecteer **alle toepassingen**.
 
     ![De blade Bedrijfstoepassingen](common/enterprise-applications.png)
 
@@ -113,7 +94,7 @@ In deze sectie wordt u begeleid bij de stappen voor het configureren van de Azur
 
     ![Tabblad inrichten](common/provisioning-automatic.png)
 
-5. Selecteer in de sectie **beheerders referenties** de `https://profile.ideo.com/api/scim/v2` invoer in de **Tenant-URL**. Voer de waarde in die u hebt opgehaald uit het IDEO-ondersteunings team in een **geheim token**. Klik op **verbinding testen** om te controleren of Azure AD verbinding kan maken met ideo. Als de verbinding mislukt, zorg er dan voor dat uw IDEO-account beheerders machtigingen heeft en probeer het opnieuw.
+5. In het gedeelte **beheerders referenties** voert u de **scim 2,0-basis-URL en toegangs token** waarden in die u eerder hebt opgehaald van het ideo-ondersteunings team in de velden **Tenant-URL** en **geheime token** . Klik op **verbinding testen** om te controleren of Azure AD verbinding kan maken met ideo. Als de verbinding mislukt, zorg er dan voor dat uw IDEO-account beheerders machtigingen heeft en probeer het opnieuw.
 
     ![Tenant-URL + token](common/provisioning-testconnection-tenanturltoken.png)
 
@@ -125,34 +106,56 @@ In deze sectie wordt u begeleid bij de stappen voor het configureren van de Azur
 
 8. Selecteer in de sectie **toewijzingen** de optie **Azure Active Directory gebruikers synchroniseren met ideo**.
 
-    ![IDEO-gebruikers toewijzingen](media/ideo-provisioning-tutorial/usermappings.png)
-
 9. Controleer de gebruikers kenmerken die zijn gesynchroniseerd vanuit Azure AD naar IDEO in de sectie **kenmerk toewijzing** . De kenmerken die zijn geselecteerd als **overeenkomende** eigenschappen worden gebruikt om te voldoen aan de gebruikers accounts in ideo voor bijwerk bewerkingen. Selecteer de knop **Opslaan** om eventuele wijzigingen door te voeren.
 
-    ![IDEO-gebruikers kenmerken](media/ideo-provisioning-tutorial/userattributes.png)
+   |Kenmerk|Type|
+   |---|---|
+   |userName|Tekenreeks|
+   |e-mail berichten [type EQ "werk]. waarde|Tekenreeks|
+   |actief|Boolean-waarde|
+   |name. naam|Tekenreeks|
+   |naam. familielid|Tekenreeks|
 
-10. Raadpleeg de volgende instructies in de [zelf studie](../app-provisioning/define-conditional-rules-for-provisioning-user-accounts.md)voor het filteren op bereik voor het configureren van bereik filters.
+10. Selecteer in de sectie **toewijzingen** de optie **Azure Active Directory groepen synchroniseren met ideo**.
+   
+11. Controleer de groeps kenmerken die zijn gesynchroniseerd vanuit Azure AD naar ideo in de sectie **kenmerk toewijzing** . De kenmerken die zijn geselecteerd als **overeenkomende** eigenschappen, worden gebruikt om de groepen in ideo te vergelijken voor bijwerk bewerkingen. Selecteer de knop **Opslaan** om eventuele wijzigingen door te voeren.
 
-11. Als u de Azure AD-inrichtings service voor **ideo wilt inschakelen, wijzigt u de** **inrichtings status** in in het gedeelte **instellingen** .
+      |Kenmerk|Type|
+      |---|---|
+      |displayName|Tekenreeks|
+      |leden|Verwijzing|
 
-    ![Inrichtings status inschakelt op](media/ideo-provisioning-tutorial/groupmappings.png)
+12. Raadpleeg de volgende instructies in de [zelf studie](../manage-apps/define-conditional-rules-for-provisioning-user-accounts.md)voor het filteren op bereik voor het configureren van bereik filters.
 
-12. Definieer de gebruikers en/of groepen die u wilt inrichten voor IDEO door de gewenste waarden in het **bereik** te kiezen in de sectie **instellingen** .
+13. Als u de Azure AD-inrichtings service voor **ideo wilt inschakelen, wijzigt u de** **inrichtings status** in in het gedeelte **instellingen** .
 
-    ![Inrichtings bereik](media/ideo-provisioning-tutorial/groupattributes.png)
+    ![Inrichtings status inschakelt op](common/provisioning-toggle-on.png)
 
-13. Wanneer u klaar bent om in te richten, klikt u op **Opslaan**.
+14. Definieer de gebruikers en/of groepen die u wilt inrichten voor IDEO door de gewenste waarden in het **bereik** te kiezen in de sectie **instellingen** .
+
+    ![Inrichtings bereik](common/provisioning-scope.png)
+
+15. Wanneer u klaar bent om in te richten, klikt u op **Opslaan**.
 
     ![Inrichtings configuratie opslaan](common/provisioning-configuration-save.png)
 
-Met deze bewerking wordt de eerste synchronisatie gestart van alle gebruikers en/of groepen die in het **bereik** zijn gedefinieerd in de sectie **instellingen** . Het duurt langer voordat de initiële synchronisatie is uitgevoerd dan volgende synchronisaties, die ongeveer elke 40 minuten optreden, zolang de Azure AD-inrichtings service wordt uitgevoerd. U kunt de sectie **synchronisatie Details** gebruiken om de voortgang te bewaken en koppelingen naar het rapport inrichtings activiteiten te volgen, waarin alle acties worden beschreven die worden uitgevoerd door de Azure AD Provisioning-Service op ideo.
+Met deze bewerking wordt de eerste synchronisatie gestart van alle gebruikers en/of groepen die in het **bereik** zijn gedefinieerd in de sectie **instellingen** . Het duurt langer voordat de initiële synchronisatie is uitgevoerd dan volgende synchronisaties, die ongeveer elke 40 minuten optreden, zolang de Azure AD-inrichtings service wordt uitgevoerd. 
 
-Zie [rapportage over het automatisch inrichten van gebruikers accounts](../app-provisioning/check-status-user-account-provisioning.md)voor meer informatie over het lezen van de Azure AD-inrichtings Logboeken.
+## <a name="step-6-monitor-your-deployment"></a>Stap 6. Uw implementatie bewaken
+Nadat u het inrichten hebt geconfigureerd, gebruikt u de volgende bronnen om uw implementatie te bewaken:
 
-## <a name="additional-resources"></a>Extra resources
+1. De [inrichtings logboeken](https://docs.microsoft.com/azure/active-directory/reports-monitoring/concept-provisioning-logs) gebruiken om te bepalen welke gebruikers al dan niet met succes zijn ingericht
+2. Controleer de [voortgangs balk](https://docs.microsoft.com/azure/active-directory/manage-apps/application-provisioning-when-will-provisioning-finish-specific-user) om de status van de inrichtings cyclus te bekijken en te bepalen hoe dicht deze is voltooid
+3. Als de inrichtings configuratie een slechte status heeft, gaat de toepassing in quarantaine. Meer informatie over de quarantaine statussen [vindt u hier](https://docs.microsoft.com/azure/active-directory/manage-apps/application-provisioning-quarantine-status).  
+
+## <a name="change-log"></a>Wijzigingenlogboek
+
+* 06/15/2020-ondersteuning toegevoegd voor het gebruik van PATCH bewerkingen voor groepen in plaats van PUT.
+
+## <a name="additional-resources"></a>Aanvullende bronnen
 
 * [Inrichten van gebruikers accounts voor zakelijke apps beheren](../app-provisioning/configure-automatic-user-provisioning-portal.md)
-* [Wat is toegang tot toepassingen en eenmalige aanmelding met Azure Active Directory?](../manage-apps/what-is-single-sign-on.md)
+* [What is application access and single sign-on with Azure Active Directory?](../manage-apps/what-is-single-sign-on.md) (Wat houden toegang tot toepassingen en eenmalige aanmelding met Azure Active Directory in?)
 
 ## <a name="next-steps"></a>Volgende stappen
 

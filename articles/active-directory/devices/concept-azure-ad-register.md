@@ -11,20 +11,20 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7e2a8cad7cd4410a95a6ebd60ada22de456737bf
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: b1ce0723c0064cee711e851d16f4080a722e7539
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "67462757"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85554862"
 ---
 # <a name="azure-ad-registered-devices"></a>Azure AD-geregistreerde apparaten
 
 Het doel van geregistreerde Azure AD-apparaten is om uw gebruikers ondersteuning te bieden voor de scenario's voor het nemen van uw eigen apparaten (BYOD) of mobiele apparaten. In deze scenario's heeft een gebruiker toegang tot de Azure Active Directory beheerde resources van uw organisatie met behulp van een persoonlijk apparaat.
 
-|   | Geregistreerde Azure AD |
+| Geregistreerde Azure AD | Description |
 | --- | --- |
-| **Definitie** | Geregistreerd bij Azure AD zonder organisatie account om u aan te melden bij het apparaat |
+| **Beschrijving** | Geregistreerd bij Azure AD zonder organisatie account om u aan te melden bij het apparaat |
 | **Primaire doel groep** | Van toepassing op alle gebruikers met de volgende criteria: |
 |   | BYOD (Bring Your Own Device) |
 |   | Mobiele apparaten |

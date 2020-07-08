@@ -10,13 +10,13 @@ ms.topic: conceptual
 author: dimitri-furman
 ms.author: dfurman
 ms.reviewer: carlrab
-ms.date: 03/13/2019
-ms.openlocfilehash: 1db8eeecf411ae219474029e09cb866aaf0d5bbe
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.date: 06/29/2020
+ms.openlocfilehash: d35b4691bcf6e40edd57d4caeae00e18a8298925
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84045723"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85558875"
 ---
 # <a name="resource-management-in-dense-elastic-pools"></a>Resourcebeheer in dichte elastische pools
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -52,7 +52,7 @@ Om te voor komen dat de prestaties afnemen als gevolg van bron conflicten, moete
 
 Azure SQL Database biedt diverse metrische gegevens die relevant zijn voor dit type bewaking. Het overschrijden van de aanbevolen gemiddelde waarde voor elke metriek duidt op bron conflicten in de groep en moet worden aangepakt met een van de eerder genoemde acties.
 
-|Naam van meetwaarde|Beschrijving|Aanbevolen gemiddelde waarde|
+|Naam van metrische gegevens|Description|Aanbevolen gemiddelde waarde|
 |----------|--------------------------------|------------|
 |`avg_instance_cpu_percent`|CPU-gebruik van het SQL-proces dat is gekoppeld aan een elastische pool, zoals gemeten door het onderliggende besturings systeem. Beschikbaar in de weer gave [sys. dm_db_resource_stats](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-db-resource-stats-azure-sql-database?view=azuresqldb-current) in elke Data Base en in de weer gave [sys. elastic_pool_resource_stats](https://docs.microsoft.com/sql/relational-databases/system-catalog-views/sys-elastic-pool-resource-stats-azure-sql-database) in de- `master` Data Base. Deze metrische gegevens worden ook verzonden naar Azure Monitor, waar ze worden [genoemd](https://docs.microsoft.com/azure/azure-monitor/platform/metrics-supported#microsoftsqlserverselasticpools) `sqlserver_process_core_percent` en kunnen worden weer gegeven in azure Portal. Deze waarde is hetzelfde voor elke data base in dezelfde elastische pool.|Minder dan 70%. Incidentele korte pieken tot 90% kunnen acceptabel zijn.|
 |`max_worker_percent`|Gebruik van [worker-thread]( https://docs.microsoft.com/sql/relational-databases/thread-and-task-architecture-guide) . Voor elke data base in de groep, evenals voor de groep zelf. Er zijn verschillende limieten voor het aantal werkthreads op database niveau en op groeps niveau, daarom is het raadzaam deze metrische gegevens op beide niveaus te controleren. Beschikbaar in de weer gave [sys. dm_db_resource_stats](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-db-resource-stats-azure-sql-database?view=azuresqldb-current) in elke Data Base en in de weer gave [sys. elastic_pool_resource_stats](https://docs.microsoft.com/sql/relational-databases/system-catalog-views/sys-elastic-pool-resource-stats-azure-sql-database) in de- `master` Data Base. Deze metrische gegevens worden ook verzonden naar Azure Monitor, waar ze worden [genoemd](https://docs.microsoft.com/azure/azure-monitor/platform/metrics-supported#microsoftsqlserverselasticpools) `workers_percent` en kunnen worden weer gegeven in azure Portal.|Minder dan 80%. Pieken tot 100% leidt ertoe dat verbindings pogingen en query's mislukken.|
@@ -60,12 +60,12 @@ Azure SQL Database biedt diverse metrische gegevens die relevant zijn voor dit t
 |`avg_log_write_percent`|Doorvoer gebruik voor schrijf-i/o van transactie Logboeken. Voor elke data base in de groep, evenals voor de groep zelf. Er zijn verschillende limieten voor de door Voer van het logboek op database niveau en op het niveau van de groep, daarom is het raadzaam deze metrische gegevens op beide niveaus te controleren. Beschikbaar in de weer gave [sys. dm_db_resource_stats](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-db-resource-stats-azure-sql-database) in elke Data Base en in de weer gave [sys. elastic_pool_resource_stats](https://docs.microsoft.com/sql/relational-databases/system-catalog-views/sys-elastic-pool-resource-stats-azure-sql-database) in de- `master` Data Base. Deze metrische gegevens worden ook verzonden naar Azure Monitor, waar ze worden [genoemd](https://docs.microsoft.com/azure/azure-monitor/platform/metrics-supported#microsoftsqlserverselasticpools) `log_write_percent` en kunnen worden weer gegeven in azure Portal. Wanneer deze metriek zich in de buurt van 100% bevindt, worden alle database wijzigingen (INVOEG-, UPDATE-, DELETE-en MERGe-instructies geselecteerd... IN, BULK INSERT, enz.) is langzamer.|Minder dan 90%. Incidentele korte pieken tot 100% kunnen acceptabel zijn.|
 |`oom_per_second`|De frequentie van OOM-fouten (out-of-Memory) in een elastische pool. Dit is een indicatie van de geheugen belasting. Beschikbaar in de weer gave [sys. dm_resource_governor_resource_pools_history_ex](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-resource-governor-resource-pools-history-ex-azure-sql-database?view=azuresqldb-current) . Bekijk voor [beelden](#examples) voor een voorbeeld query om deze metrische gegevens te berekenen.|0|
 |`avg_storage_percent`|Het gebruik van de opslag ruimte op het niveau van de elastische groep. Beschikbaar in de weer gave [sys. elastic_pool_resource_stats](https://docs.microsoft.com/sql/relational-databases/system-catalog-views/sys-elastic-pool-resource-stats-azure-sql-database) in de- `master` Data Base. Deze metrische gegevens worden ook verzonden naar Azure Monitor, waar ze worden [genoemd](https://docs.microsoft.com/azure/azure-monitor/platform/metrics-supported#microsoftsqlserverselasticpools) `storage_percent` en kunnen worden weer gegeven in azure Portal.|Minder dan 80%. Kan 100% voor Pools benaderen zonder gegevens groei.|
-|`tempdb_log_used_percent`|Ruimte gebruik van het transactie logboek in de- `tempdb` Data Base. Hoewel tijdelijke objecten die zijn gemaakt in de ene data base niet zichtbaar zijn in andere data bases in dezelfde elastische pool, `tempdb` is een gedeelde resource voor alle data bases in dezelfde groep. Een langlopende of niet-actieve trans actie in `tempdb` begonnen vanuit de ene data base in de pool kan een groot deel van het transactie logboek verbruiken en fouten veroorzaken voor query's in andere data bases in dezelfde groep. Beschikbaar in de weer gave [sys. dm_db_log_space_usage](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-db-log-space-usage-transact-sql) . Deze metrische gegevens worden ook verzonden naar Azure Monitor en kunnen worden weer gegeven in Azure Portal. Zie voor [beelden](#examples) voor een voorbeeld query om de huidige waarde van deze metriek te retour neren.|Minder dan 50%. Incidentele pieken tot 80% zijn acceptabel.|
+|`tempdb_log_used_percent`|Ruimte gebruik van het transactie logboek in de- `tempdb` Data Base. Hoewel tijdelijke objecten die zijn gemaakt in de ene data base niet zichtbaar zijn in andere data bases in dezelfde elastische pool, `tempdb` is een gedeelde resource voor alle data bases in dezelfde groep. Een langlopende of zwevende trans actie in `tempdb` begonnen vanuit een data base in de groep kan een groot deel van het transactie logboek verbruiken en fouten veroorzaken voor query's in andere data bases in dezelfde groep. Afgeleid van de weer gaven [sys. dm_db_log_space_usage](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-db-log-space-usage-transact-sql) en [sys. database_files](https://docs.microsoft.com/sql/relational-databases/system-catalog-views/sys-database-files-transact-sql) . Deze metrische gegevens worden ook verzonden naar Azure Monitor en kunnen worden weer gegeven in Azure Portal. Zie voor [beelden](#examples) voor een voorbeeld query om de huidige waarde van deze metriek te retour neren.|Minder dan 50%. Incidentele pieken tot 80% zijn acceptabel.|
 |||
 
 Naast deze metrische gegevens bevat Azure SQL Database een weer gave die de werkelijke governance limieten van resources retourneert, evenals aanvullende weer gaven die de statistieken van het resource gebruik op het niveau van de resource groep retour neren, en op het niveau van de werkbelasting groep.
 
-|Weergave naam|Beschrijving|  
+|Weergave naam|Description|  
 |-----------------|--------------------------------|  
 |[sys. dm_user_db_resource_governance](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-user-db-resource-governor-azure-sql-database)|Retourneert werkelijke configuratie-en capaciteits instellingen die worden gebruikt door resource governance mechanismen in de huidige data base of elastische pool.|
 |[sys. dm_resource_governor_resource_pools](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-resource-governor-resource-pools-transact-sql)|Retourneert informatie over de huidige status van de resource groep, de huidige configuratie van resource groepen en de statistieken van de cumulatieve resource groep.|
@@ -114,11 +114,17 @@ ORDER BY pool_id;
 
 ### <a name="monitoring-tempdb-log-space-utilization"></a>Gebruik van controle `tempdb` logboek ruimte
 
-Met deze query wordt de huidige waarde van de `tempdb_log_used_percent` metriek geretourneerd. Deze query kan worden uitgevoerd in elke data base in een elastische pool.
+Met deze query wordt de huidige waarde van de `tempdb_log_used_percent` metriek geretourneerd, waarbij het relatieve gebruik van het transactie logboek wordt weer gegeven `tempdb` ten opzichte van de Maxi maal toegestane grootte. Deze query kan worden uitgevoerd in elke data base in een elastische pool.
 
 ```sql
-SELECT used_log_space_in_percent AS tempdb_log_used_percent
-FROM tempdb.sys.dm_db_log_space_usage;
+SELECT (lsu.used_log_space_in_bytes / df.log_max_size_bytes) * 100 AS tempdb_log_space_used_percent
+FROM tempdb.sys.dm_db_log_space_usage AS lsu
+CROSS JOIN (
+           SELECT SUM(CAST(max_size AS bigint)) * 8 * 1024. AS log_max_size_bytes
+           FROM tempdb.sys.database_files
+           WHERE type_desc = N'LOG'
+           ) AS df
+;
 ```
 
 ## <a name="next-steps"></a>Volgende stappen

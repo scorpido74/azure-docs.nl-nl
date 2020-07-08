@@ -7,17 +7,17 @@ ms.topic: conceptual
 ms.date: 09/13/2019
 ms.author: girobins
 ms.custom: query-reference
-ms.openlocfilehash: d50b08ab85c7e299c465c3eb6f34e867d6634006
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 2ac3235191952702f2acc39a25e948511901050b
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "78303899"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85555886"
 ---
 # <a name="getcurrentdatetime-azure-cosmos-db"></a>GetCurrentDateTime (Azure Cosmos DB)
  Retourneert de huidige UTC-datum en-tijd (Coordinated Universal Time) als een ISO 8601-teken reeks.
   
-## <a name="syntax"></a>Syntaxis
+## <a name="syntax"></a>Syntax
   
 ```sql
 GetCurrentDateTime ()
@@ -27,7 +27,7 @@ GetCurrentDateTime ()
   
   Retourneert de huidige UTC-datum en-8601 tijd in de notatie `YYYY-MM-DDThh:mm:ss.fffffffZ` waar:
   
-  |||
+  |Indeling|Description|
   |-|-|
   |DD|jaar met vier cijfers|
   |MM|maand van twee cijfers (01 = januari, etc.)|

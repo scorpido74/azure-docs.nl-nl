@@ -11,12 +11,12 @@ ms.topic: troubleshooting
 ms.date: 05/21/2019
 ms.author: kenwith
 ms.reviewer: japere
-ms.openlocfilehash: e944c25f39903f8a78a949206bc8037f34508698
-ms.sourcegitcommit: bc943dc048d9ab98caf4706b022eb5c6421ec459
+ms.openlocfilehash: e61ea30f01e8ae141d24c9bd91b08edef4dbe74e
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/14/2020
-ms.locfileid: "84764635"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85555060"
 ---
 # <a name="debug-application-proxy-application-issues"></a>Toepassingsproblemen met toepassingsproxy oplossen 
 
@@ -39,7 +39,7 @@ Dit stroom diagram leidt u door de stappen voor het opsporen van fouten in een a
 
 ![Stroom diagram met stappen voor het opsporen van fouten in een toepassing](media/application-proxy-debug-apps/application-proxy-apps-debugging-flowchart.png)
 
-|  | Bewerking | Beschrijving | 
+| Stap | Bewerking | Beschrijving |
 |---------|---------|---------|
 |1 | Open een browser, ga naar de app en voer uw referenties in | Gebruik uw referenties om u aan te melden bij de app en controleer wat gebruikers fouten hebben, zoals [deze zakelijke app niet kan worden geopend](application-proxy-sign-in-bad-gateway-timeout-error.md). |
 |2 | De gebruikers toewijzing voor de app controleren | Zorg ervoor dat uw gebruikers account gemachtigd is om toegang te krijgen tot de app vanuit het bedrijfs netwerk en test vervolgens het aanmelden bij de app door de stappen in de [toepassing testen](application-proxy-add-on-premises-application.md#test-the-application)te volgen. Zie [problemen met aanmelden oplossen](../reports-monitoring/concept-provisioning-logs.md?context=azure/active-directory/manage-apps/context/manage-apps-context)als de aanmeldings problemen zich blijven voordoen.  |

@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 06/04/2020
-ms.openlocfilehash: 09747b1ed739dc424f91b027fa741f4eb9dbc513
-ms.sourcegitcommit: b55d1d1e336c1bcd1c1a71695b2fd0ca62f9d625
+ms.openlocfilehash: e97f607c17f746c3cb16a17b7f579a58d4914608
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/04/2020
-ms.locfileid: "84429540"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85553143"
 ---
 # <a name="security-filters-for-trimming-results-in-azure-cognitive-search"></a>Beveiligings filters voor het verkleinen van de resultaten in azure Cognitive Search
 
@@ -60,7 +60,7 @@ We gaan ervan uit dat we een index van beveiligde bestanden hebben en dat elk be
 Een HTTP POST-aanvraag verzenden naar het URL-eind punt van uw index. De hoofd tekst van de HTTP-aanvraag is een JSON-object dat de documenten bevat die moeten worden toegevoegd:
 
 ```
-POST https://[search service].search.windows.net/indexes/securedfiles/docs/index?api-version=2019-05-06  
+POST https://[search service].search.windows.net/indexes/securedfiles/docs/index?api-version=2020-06-30  
 Content-Type: application/json
 api-key: [admin key]
 ```
@@ -118,7 +118,7 @@ Houd er rekening mee dat in dit voor beeld wordt uitgelegd hoe u met een POST-aa
 De HTTP POST-aanvraag uitgeven:
 
 ```
-POST https://[service name].search.windows.net/indexes/securedfiles/docs/search?api-version=2019-05-06
+POST https://[service name].search.windows.net/indexes/securedfiles/docs/search?api-version=2020-06-30
 Content-Type: application/json  
 api-key: [admin or query key]
 ```
@@ -153,7 +153,7 @@ U moet de documenten weer geven `group_ids` met ' group_id1 ' of ' group_id2 '. 
 
 Zo kunt u resultaten filteren op basis van de gebruikers-id en Azure Cognitive Search- `search.in()` functie. U kunt deze functie gebruiken om te voldoen aan principe-id's waarmee de gebruiker die de aanvraag heeft ingediend, overeenkomt met de principal-id's die zijn gekoppeld aan elk doel document. Wanneer een zoek opdracht wordt verwerkt, `search.in` filtert de functie de zoek resultaten op waarvoor geen van de principals van de gebruiker lees toegang heeft. De principal-id's kunnen dingen vertegenwoordigen, zoals beveiligings groepen, rollen of zelfs de eigen identiteit van de gebruiker.
  
-## <a name="see-also"></a>Zie ook
+## <a name="see-also"></a>Zie tevens
 
 + [Active Directory toegangs beheer op basis van een id met behulp van Azure Cognitive Search filters](search-security-trimming-for-azure-search-with-aad.md)
 + [Filters in azure Cognitive Search](search-filters.md)

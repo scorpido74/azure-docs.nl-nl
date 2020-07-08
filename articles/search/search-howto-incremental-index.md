@@ -9,21 +9,21 @@ ms.service: cognitive-search
 ms.devlang: rest-api
 ms.topic: conceptual
 ms.date: 01/06/2020
-ms.openlocfilehash: 66bac2a063a3257a2101ca2f30e5946264adb9ae
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 75b533368a01b2e98bece0751f45b12f36796658
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "76989549"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85556271"
 ---
 # <a name="how-to-configure-caching-for-incremental-enrichment-in-azure-cognitive-search"></a>Caching configureren voor incrementele verrijking in azure Cognitive Search
 
 > [!IMPORTANT] 
-> Incrementele verrijking is momenteel beschikbaar als open bare preview. Deze preview-versie wordt aangeboden zonder service level agreement en wordt niet aanbevolen voor productieworkloads. Zie voor meer informatie [aanvullende gebruiks voorwaarden voor Microsoft Azure-previews](https://azure.microsoft.com/support/legal/preview-supplemental-terms/). De [rest API versie 2019-05-06-preview](search-api-preview.md) biedt deze functie. Er is op dit moment geen portal-of .NET SDK-ondersteuning.
+> Incrementele verrijking is momenteel beschikbaar als open bare preview. Deze preview-versie wordt aangeboden zonder service level agreement en wordt niet aanbevolen voor productieworkloads. Zie [Supplemental Terms of Use for Microsoft Azure Previews (Aanvullende gebruiksvoorwaarden voor Microsoft Azure-previews)](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) voor meer informatie. De [rest API versies 2019-05-06-preview en 2020-06-30-preview](search-api-preview.md) bieden deze functie. Er is op dit moment geen portal-of .NET SDK-ondersteuning.
 
 In dit artikel wordt beschreven hoe u caching toevoegt aan een verrijkings pijplijn, zodat u de stappen kunt aanpassen zonder dat elke keer opnieuw moet worden opgebouwd. Een vaardig heden is standaard stateless en het wijzigen van een deel van de samen stelling vereist een volledige herinstallatie van de Indexeer functie. Met incrementele verrijking kan de Indexeer functie bepalen welke delen van de document structuur moeten worden vernieuwd op basis van wijzigingen die zijn gedetecteerd in de vaardig heden of indexer definities. Bestaande verwerkte uitvoer blijft behouden en kan waar mogelijk opnieuw worden gebruikt. 
 
-Inhoud in de cache wordt in Azure Storage geplaatst met behulp van de account gegevens die u opgeeft. De container met de `ms-az-search-indexercache-<alpha-numerc-string>`naam wordt gemaakt wanneer u de Indexeer functie uitvoert. Het moet worden beschouwd als een intern onderdeel dat wordt beheerd door uw zoek service en niet moet worden gewijzigd.
+Inhoud in de cache wordt in Azure Storage geplaatst met behulp van de account gegevens die u opgeeft. De container met `ms-az-search-indexercache-<alpha-numerc-string>` de naam wordt gemaakt wanneer u de Indexeer functie uitvoert. Het moet worden beschouwd als een intern onderdeel dat wordt beheerd door uw zoek service en niet moet worden gewijzigd.
 
 Als u niet bekend bent met het instellen van Indexeer functies, start u met [Indexeer functie-overzicht](search-indexer-overview.md) en gaat u verder met [vaardig heden](cognitive-search-working-with-skillsets.md) voor meer informatie over verrijkings pijplijnen. Zie [incrementele verrijking](cognitive-search-incremental-indexing-conceptual.md)voor meer achtergrond informatie over de belangrijkste concepten.
 
@@ -41,7 +41,7 @@ Begin met een geldige, bestaande Indexeer functie die deze onderdelen bevat: geg
 Maak met behulp van een API-client een [Get Indexeer functie-aanvraag](https://docs.microsoft.com/rest/api/searchservice/get-indexer) om de huidige configuratie van de Indexeer functie op te halen. Wanneer u de preview-API-versie gebruikt voor de Indexeer functie ophalen, `cache` wordt een eigenschap ingesteld op null toegevoegd aan de definities.
 
 ```http
-GET https://[YOUR-SEARCH-SERVICE].search.windows.net/indexers/[YOUR-INDEXER-NAME]?api-version=2019-05-06-Preview
+GET https://[YOUR-SEARCH-SERVICE].search.windows.net/indexers/[YOUR-INDEXER-NAME]?api-version=2020-06-30-Preview
 Content-Type: application/json
 api-key: [YOUR-ADMIN-KEY]
 ```
@@ -54,8 +54,8 @@ De `cache` eigenschap is standaard NULL. Gebruik een API-client om de cache conf
 
 Wijzig het cache object zodat de volgende vereiste en optionele eigenschappen zijn opgegeven: 
 
-+ De `storageConnectionString` is vereist en moet worden ingesteld op een Azure storage-Connection String. 
-+ De `enableReprocessing` Booleaanse eigenschap is optioneel (`true` standaard) en geeft aan dat incrementele verrijking is ingeschakeld. Als dat nodig is, kunt u deze `false` instellen op om incrementele verwerking uit te stellen, terwijl andere resources in de resource worden uitgevoerd, zoals het indexeren van nieuwe documenten, `true` en deze vervolgens weer spie gelen naar een later tijdstip.
++ De `storageConnectionString` is vereist en moet worden ingesteld op een Azure Storage-Connection String. 
++ De `enableReprocessing` Booleaanse eigenschap is optioneel ( `true` standaard) en geeft aan dat incrementele verrijking is ingeschakeld. Als dat nodig is, kunt u deze instellen op `false` om incrementele verwerking uit te stellen, terwijl andere resources in de resource worden uitgevoerd, zoals het indexeren van nieuwe documenten, en deze vervolgens weer spie gelen naar een `true` later tijdstip.
 
 ```json
 {
@@ -78,17 +78,17 @@ Wijzig het cache object zodat de volgende vereiste en optionele eigenschappen zi
 Het opnieuw instellen van de Indexeer functie is vereist bij het instellen van incrementele verrijking voor bestaande Indexeer functies om ervoor te zorgen dat alle documenten een consistente status hebben. U kunt de portal of een API-client en de [rest API voor het opnieuw instellen van de Indexeer functie](https://docs.microsoft.com/rest/api/searchservice/reset-indexer) voor deze taak gebruiken.
 
 ```http
-POST https://[YOUR-SEARCH-SERVICE].search.windows.net/indexers/[YOUR-INDEXER-NAME]/reset?api-version=2019-05-06-Preview
+POST https://[YOUR-SEARCH-SERVICE].search.windows.net/indexers/[YOUR-INDEXER-NAME]/reset?api-version=2020-06-30-Preview
 Content-Type: application/json
 api-key: [YOUR-ADMIN-KEY]
 ```
 
 ### <a name="step-4-save-the-updated-definition"></a>Stap 4: de bijgewerkte definitie opslaan
 
-[De Indexeer functie bijwerken](https://docs.microsoft.com/rest/api/searchservice/2019-05-06-preview/update-indexer) met een put-aanvraag, de hoofd tekst van de aanvraag moet de bijgewerkte indexerings definitie bevatten met de cache-eigenschap. Als u een 400 krijgt, controleert u de definitie van de Indexeer functie om er zeker van te zijn dat aan alle vereisten wordt voldaan (gegevens bron, vaardig heden, index).
+[De Indexeer functie bijwerken](https://docs.microsoft.com/rest/api/searchservice/preview-api/update-indexer) met een put-aanvraag, de hoofd tekst van de aanvraag moet de bijgewerkte indexerings definitie bevatten met de cache-eigenschap. Als u een 400 krijgt, controleert u de definitie van de Indexeer functie om er zeker van te zijn dat aan alle vereisten wordt voldaan (gegevens bron, vaardig heden, index).
 
 ```http
-PUT https://[YOUR-SEARCH-SERVICE].search.windows.net/indexers/[YOUR-INDEXER-NAME]?api-version=2019-05-06-Preview
+PUT https://[YOUR-SEARCH-SERVICE].search.windows.net/indexers/[YOUR-INDEXER-NAME]?api-version=2020-06-30-Preview
 Content-Type: application/json
 api-key: [YOUR-ADMIN-KEY]
 {
@@ -101,7 +101,7 @@ api-key: [YOUR-ADMIN-KEY]
 }
 ```
 
-Als u nu een nieuwe GET-aanvraag voor de Indexeer functie levert, bevat het antwoord van de service `ID` een eigenschap in het cache-object. De alfanumerieke teken reeks wordt toegevoegd aan de naam van de container die alle in de cache opgeslagen resultaten en de tussenliggende status van elk document verwerkt door deze Indexeer functie bevat. De ID wordt gebruikt om de cache in Blob Storage een unieke naam te krijgen.
+Als u nu een nieuwe GET-aanvraag voor de Indexeer functie levert, bevat het antwoord van de service een `ID` eigenschap in het cache-object. De alfanumerieke teken reeks wordt toegevoegd aan de naam van de container die alle in de cache opgeslagen resultaten en de tussenliggende status van elk document verwerkt door deze Indexeer functie bevat. De ID wordt gebruikt om de cache in Blob Storage een unieke naam te krijgen.
 
     "cache": {
         "ID": "<ALPHA-NUMERIC STRING>",
@@ -116,7 +116,7 @@ Als u Indexeer functie wilt uitvoeren, kunt u de portal of de API gebruiken. Sel
 U kunt ook REST gebruiken om [de Indexeer functie uit te voeren](https://docs.microsoft.com/rest/api/searchservice/run-indexer):
 
 ```http
-POST https://[YOUR-SEARCH-SERVICE].search.windows.net/indexers/[YOUR-INDEXER-NAME]/run?api-version=2019-05-06-Preview
+POST https://[YOUR-SEARCH-SERVICE].search.windows.net/indexers/[YOUR-INDEXER-NAME]/run?api-version=2020-06-30-Preview
 Content-Type: application/json
 api-key: [YOUR-ADMIN-KEY]
 ```
@@ -129,13 +129,13 @@ Nadat de Indexeer functie is uitgevoerd, kunt u de cache vinden in Azure Blob-op
 
 ### <a name="step-6-modify-a-skillset-and-confirm-incremental-enrichment"></a>Stap 6: een vaardig heden wijzigen en een incrementele verrijking bevestigen
 
-Als u een vaardig heden wilt aanpassen, kunt u de portal of de API gebruiken. Als u bijvoorbeeld tekst vertalingen gebruikt, is een eenvoudige inline wijziging van `en` naar `es` of een andere taal voldoende voor het testen van het concept van incrementele verrijking.
+Als u een vaardig heden wilt aanpassen, kunt u de portal of de API gebruiken. Als u bijvoorbeeld tekst vertalingen gebruikt, is een eenvoudige inline wijziging van `en` naar of een `es` andere taal voldoende voor het testen van het concept van incrementele verrijking.
 
 Voer de Indexeer functie opnieuw uit. Alleen de onderdelen van een verrijkte document structuur worden bijgewerkt. Als u de [Portal Snelstartgids](cognitive-search-quickstart-blob.md) hebt gebruikt als concept van het proef versie niveau en de tekst Vertaal vaardigheid wijzigt in es, zult u merken dat slechts 8 documenten worden bijgewerkt in plaats van de oorspronkelijke 14. Afbeeldings bestanden die niet worden beïnvloed door het Vertaal proces, worden opnieuw gebruikt vanuit de cache.
 
 ## <a name="enable-caching-on-new-indexers"></a>Opslaan in cache inschakelen voor nieuwe Indexeer functies
 
-Als u incrementele verrijking wilt instellen voor een nieuwe Indexeer functie, hoeft u alleen de `cache` eigenschap op te geven in de nettolading van de definitie van de Indexeer functie bij het aanroepen van [Create indexeer functie (2019-05-06-preview)](https://docs.microsoft.com/rest/api/searchservice/2019-05-06-preview/create-indexer). 
+Als u incrementele verrijking wilt instellen voor een nieuwe Indexeer functie, hoeft u alleen de `cache` eigenschap op te geven in de nettolading van de definitie van de Indexeer functie bij het aanroepen van [Create Indexeer functie (2020-06-30-preview)](https://docs.microsoft.com/rest/api/searchservice/preview-api/create-indexer). 
 
 
 ```json
@@ -169,10 +169,10 @@ De volgende tabel bevat een overzicht van de werking van verschillende Api's met
 
 | API           | Cache-impact     |
 |---------------|------------------|
-| [Indexeer functie maken (2019-05-06-preview)](https://docs.microsoft.com/rest/api/searchservice/2019-05-06-preview/create-indexer) | Maakt en voert een indexer uit bij het eerste gebruik, inclusief het maken van een cache als de definitie van de Indexeer functie deze specificeert. |
+| [Indexeer functie maken (2020-06-30-preview)](https://docs.microsoft.com/rest/api/searchservice/preview-api/create-indexer) | Maakt en voert een indexer uit bij het eerste gebruik, inclusief het maken van een cache als de definitie van de Indexeer functie deze specificeert. |
 | [Indexeer functie uitvoeren](https://docs.microsoft.com/rest/api/searchservice/run-indexer) | Voert een verrijkings pijplijn op aanvraag uit. Deze API leest uit de cache als deze bestaat, of maakt een cache als u de cache hebt toegevoegd aan een bijgewerkte indexers definitie. Wanneer u een Indexeer functie uitvoert waarvoor caching is ingeschakeld, worden stappen door de Indexeer functie wegge laten als de in de cache geplaatste uitvoer kan worden gebruikt. U kunt de algemeen beschik bare of preview-API-versie van deze API gebruiken.|
 | [Indexeer functie opnieuw instellen](https://docs.microsoft.com/rest/api/searchservice/reset-indexer)| Hiermee wist u de Indexeer functie van alle incrementele indexerings gegevens. De volgende uitvoering van de Indexeer functie (op aanvraag of planning) is volledig opnieuw verwerken, inclusief het opnieuw uitvoeren van alle vaardig heden en het opnieuw opbouwen van de cache. Het is functioneel equivalent om de Indexeer functie te verwijderen en opnieuw te maken. U kunt de algemeen beschik bare of preview-API-versie van deze API gebruiken.|
-| [Vaardig heden opnieuw instellen (2019-05-06-preview)](https://docs.microsoft.com/rest/api/searchservice/2019-05-06-preview/reset-skills) | Hiermee geeft u op welke vaardig heden moeten worden uitgevoerd bij het uitvoeren van de volgende Indexeer functie, zelfs als u geen enkele vaardig heden hebt gewijzigd. De cache wordt dienovereenkomstig bijgewerkt. Uitvoer, zoals een kennis archief of een zoek index, worden vernieuwd met herbruikbare gegevens uit de cache plus nieuwe inhoud per de bijgewerkte vaardigheid. |
+| [Vaardig heden opnieuw instellen](https://docs.microsoft.com/rest/api/searchservice/reset-skills) | Hiermee geeft u op welke vaardig heden moeten worden uitgevoerd bij het uitvoeren van de volgende Indexeer functie, zelfs als u geen enkele vaardig heden hebt gewijzigd. De cache wordt dienovereenkomstig bijgewerkt. Uitvoer, zoals een kennis archief of een zoek index, worden vernieuwd met herbruikbare gegevens uit de cache plus nieuwe inhoud per de bijgewerkte vaardigheid. |
 
 Zie [cache beheer](cognitive-search-incremental-indexing-conceptual.md#cache-management)voor meer informatie over het beheren van wat er gebeurt met de cache.
 
@@ -183,5 +183,5 @@ Incrementele verrijking is van toepassing op Indexeer functies die vaardig heden
 Wanneer u de cache inschakelt, moet u ook weten over de para meters en Api's die in de cache worden opgeslagen, inclusief het negeren of afdwingen van bepaalde gedragingen. Zie de volgende koppelingen voor meer informatie.
 
 + [Concepten en samen stelling van vaardig heden](cognitive-search-working-with-skillsets.md)
-+ [Een vaardig heden maken](cognitive-search-defining-skillset.md)
++ [Een vaardighedenset maken](cognitive-search-defining-skillset.md)
 + [Inleiding tot incrementele verrijking en caching](cognitive-search-incremental-indexing-conceptual.md)

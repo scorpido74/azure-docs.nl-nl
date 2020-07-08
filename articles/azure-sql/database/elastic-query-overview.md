@@ -11,12 +11,12 @@ author: MladjoA
 ms.author: mlandzic
 ms.reviewer: sstein
 ms.date: 12/05/2019
-ms.openlocfilehash: 9069ec574af54c5c44efac5a6a9df1da62053219
-ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
+ms.openlocfilehash: 0497356e536632d179f4f64a6a9df8551a7a1897
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84195090"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85557857"
 ---
 # <a name="azure-sql-database-elastic-query-overview-preview"></a>Overzicht van elastische query's Azure SQL Database (preview-versie)
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -148,7 +148,7 @@ Elastische query's zijn opgenomen in de kosten van Azure SQL Database. Houd er r
 * Kolom statistieken over externe tabellen worden momenteel niet ondersteund. Tabel statistieken worden ondersteund, maar moeten hand matig worden gemaakt.
 * Elastische query's werken alleen met Azure SQL Database. U kunt deze niet gebruiken voor het uitvoeren van een query op een SQL Server-exemplaar.
 
-## <a name="feedback"></a>Feedback
+## <a name="share-your-feedback"></a>Uw feedback delen
 
 Deel uw feedback over uw ervaring met elastische query's met ons hieronder, op de MSDN-Forums of op Stack Overflow. We zijn geïnteresseerd in alle soorten feedback over de service (defecten, ruwe randen, hiaten in de functie).
 

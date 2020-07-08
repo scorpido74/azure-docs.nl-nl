@@ -15,12 +15,12 @@ ms.date: 09/27/2019
 ms.author: kenwith
 ms.reviewer: mimart
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: aeffcfc919a6aeeae61ed79286d613d72c6b183c
-ms.sourcegitcommit: bc943dc048d9ab98caf4706b022eb5c6421ec459
+ms.openlocfilehash: 8b8a74c85b63e3a532e49136ba3b33437d907694
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/14/2020
-ms.locfileid: "84761167"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85555310"
 ---
 # <a name="plan-an-azure-active-directory-access-panel-deployment"></a>Een Azure Active Directory implementatie van het toegangs paneel plannen
 
@@ -63,7 +63,7 @@ Het toegangs venster is gratis en er zijn geen licenties nodig om op basis nivea
 
 * [Groepslid maatschap](https://docs.microsoft.com/azure/active-directory/active-directory-manage-groups)
 
-* [Self-service voor wacht woord opnieuw instellen](https://docs.microsoft.com/azure/active-directory/authentication/quickstart-sspr)
+* [Self-service voor wachtwoord opnieuw instellen](https://docs.microsoft.com/azure/active-directory/authentication/quickstart-sspr)
 
 * [Azure Active Directory Identity Protection](https://docs.microsoft.com/azure/active-directory/active-directory-identityprotection)
 
@@ -81,7 +81,7 @@ Voer de volgende vereisten uit voordat u met dit project begint:
 
 De volgende tabel geeft een overzicht van de belangrijkste use cases voor een implementatie van het toegangs paneel:
 
-| Gebied| Beschrijving |
+| Onderwerp| Beschrijving |
 | - | - |
 | Access| De portal voor het toegangs paneel is toegankelijk vanaf zakelijke en persoonlijke apparaten in het bedrijfs netwerk. |
 |Access | De portal voor het toegangs paneel is toegankelijk vanaf zakelijke apparaten buiten het bedrijfs netwerk. |
@@ -261,7 +261,7 @@ Als u wilt plannen voor een self-service groepslid maatschap, bepaalt u of u wil
 
 Azure AD biedt [rapporten die technische en zakelijke inzichten bieden](https://azure.microsoft.com/documentation/articles/active-directory-view-access-usage-reports/). Werk samen met de eigen aren van zakelijke en technische toepassingen om het eigendom van deze rapporten te aannemen en ze regel matig te gebruiken. De volgende tabel bevat enkele voor beelden van typische rapportage scenario's.
 
-|   | beheer risico's.| Productiviteit verhogen| Governance en naleving |
+| Voorbeeld | beheer risico's.| Productiviteit verhogen| Governance en naleving |
 |  - |- | - | - |
 | Rapporttypen|  Toepassings machtigingen en-gebruik| Activiteit voor het inrichten van accounts| Controleren wie toegang heeft tot de toepassingen |
 | Mogelijke acties| Toegang controleren; machtigingen intrekken| Eventuele inrichtings fouten herstellen| Toegang intrekken |

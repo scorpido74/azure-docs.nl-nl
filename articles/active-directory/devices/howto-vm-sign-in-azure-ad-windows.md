@@ -12,21 +12,19 @@ manager: daveba
 ms.reviewer: sandeo
 ms.custom: references_regions
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 700e8f2ae29ad41ceaecf58c3ffde4a27725c25c
-ms.sourcegitcommit: bf99428d2562a70f42b5a04021dde6ef26c3ec3a
+ms.openlocfilehash: 152f7ab6ccb9f01c7fe70553501c8cf8afa1c650
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/23/2020
-ms.locfileid: "85252794"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85554891"
 ---
 # <a name="sign-in-to-windows-virtual-machine-in-azure-using-azure-active-directory-authentication-preview"></a>Aanmelden bij een virtuele Windows-machine in azure met Azure Active Directory authenticatie (preview-versie)
 
 Organisaties kunnen nu gebruikmaken van Azure Active Directory (AD)-verificatie voor hun Azure virtual machines (Vm's) met **Windows Server 2019 Data Center Edition** of **Windows 10 1809** of hoger. Het gebruik van Azure AD voor de verificatie bij Vm's biedt u een manier om beleid centraal te beheren en af te dwingen. Met hulpprogram ma's als Azure Role-based Access Control (RBAC) en de voorwaardelijke toegang van Azure AD kunt u bepalen wie toegang heeft tot een virtuele machine. In dit artikel wordt beschreven hoe u een Windows Server 2019-VM maakt en configureert voor het gebruik van Azure AD-verificatie.
 
-|     |
-| --- |
-| Aanmelden bij Azure AD voor Azure Windows-Vm's is een open bare preview-functie van Azure Active Directory. Zie [aanvullende gebruiks voorwaarden voor Microsoft Azure-previews](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) voor meer informatie over Previews|
-|     |
+> [!NOTE]
+> Aanmelden bij Azure AD voor Azure Windows-Vm's is een open bare preview-functie van Azure Active Directory. Zie [Supplemental Terms of Use for Microsoft Azure Previews](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) (Aanvullende gebruiksvoorwaarden voor Microsoft Azure-previews) voor meer informatie.
 
 Er zijn veel voor delen van het gebruik van Azure AD-verificatie om u aan te melden bij Windows-Vm's in azure, met inbegrip van:
 

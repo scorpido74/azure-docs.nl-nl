@@ -4,12 +4,12 @@ description: Meer informatie over toegang en identiteit in azure Kubernetes serv
 services: container-service
 ms.topic: conceptual
 ms.date: 02/28/2019
-ms.openlocfilehash: e4945535417f7d8d33308121267ba97e1f835e13
-ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
+ms.openlocfilehash: ffb3f0a7aee63f8b655e7056ee870de80c2f814e
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/11/2020
-ms.locfileid: "84690418"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85558174"
 ---
 # <a name="access-and-identity-options-for-azure-kubernetes-service-aks"></a>Toegangs- en identiteitsopties voor Azure Kubernetes Service (AKS)
 
@@ -67,6 +67,9 @@ Zodra rollen zijn gedefinieerd om machtigingen te verlenen voor bronnen, wijst u
 Roltoewijzingen worden gebruikt voor het toewijzen van rollen voor een bepaalde naam ruimte. Met deze benadering kunt u een enkel AKS-cluster logisch scheiden, met gebruikers die alleen toegang hebben tot de toepassings resources in hun toegewezen naam ruimte. Als u rollen moet binden in het hele cluster of als u cluster bronnen buiten een bepaalde naam ruimte wilt koppelen, kunt u in plaats daarvan *ClusterRoleBindings*gebruiken.
 
 Een ClusterRoleBinding werkt op dezelfde manier om rollen aan gebruikers te binden, maar kan worden toegepast op resources in het hele cluster, niet op een specifieke naam ruimte. Met deze aanpak kunt u beheerders of ondersteunings technici toegang verlenen tot alle resources in het AKS-cluster.
+
+> [!NOTE]
+> Alle cluster acties die door micro soft-ondersteuning worden uitgevoerd, worden gemaakt met de toestemming van de gebruiker onder een ingebouwde Kubernetes [' bewerken '](https://kubernetes.io/docs/reference/access-authn-authz/rbac/#user-facing-roles) van de naam `aks-support-rolebinding` . Deze functie AKS-ondersteuning is ingeschakeld voor het bewerken van de cluster configuratie en-bronnen om cluster problemen op te lossen en te diagnosticeren, maar de rol kan geen machtigingen wijzigen en er kunnen geen rollen of functie bindingen worden gemaakt. Rollen toegang is alleen ingeschakeld onder actieve ondersteunings tickets met Just-in-time-toegang. Meer informatie over [AKS-ondersteunings beleid](support-policies.md).
 
 ## <a name="next-steps"></a>Volgende stappen
 

@@ -6,12 +6,12 @@ ms.author: lufittl
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 01/22/2019
-ms.openlocfilehash: a94b2897b3e84688cd7dc5c7bca96a0f7a4449d1
-ms.sourcegitcommit: f0b206a6c6d51af096a4dc6887553d3de908abf3
+ms.openlocfilehash: 12316abd4a738d54e01f88873498e4b299d6053d
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/28/2020
-ms.locfileid: "84142075"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85556365"
 ---
 # <a name="use-azure-active-directory-for-authenticating-with-mysql"></a>Azure Active Directory gebruiken voor verificatie met MySQL
 
@@ -40,15 +40,15 @@ Gebruik het volgende proces om Azure Active Directory-verificatie te configurere
 
 ## <a name="architecture"></a>Architectuur
 
-In het volgende diagram op hoog niveau wordt een overzicht gegeven van hoe verificatie werkt met Azure AD-verificatie met Azure Database for MySQL. De pijlen geven communicatie paden aan.
+In het volgende diagram op hoog niveau wordt een overzicht gegeven van hoe verificatie werkt met Azure AD-verificatie met Azure Database for MySQL. De pijlen geven communicatiepaden aan.
 
 ![verificatie stroom][1]
 
-## <a name="administrator-structure"></a>Beheerder structuur
+## <a name="administrator-structure"></a>Beheerdersstructuur
 
-Wanneer u Azure AD-verificatie gebruikt, zijn er twee beheerders accounts voor de MySQL-server. de oorspronkelijke MySQL-beheerder en de Azure AD-beheerder. Alleen de beheerder op basis van een Azure AD-account kan de eerste Azure AD-database gebruiker in een gebruikers database maken. De aanmelding van de Azure AD-beheerder kan een Azure AD-gebruiker of een Azure AD-groep zijn. Wanneer de beheerder een groeps account is, kan dit worden gebruikt door elk groepslid om meerdere Azure AD-beheerders voor de MySQL-server in te scha kelen. Het gebruik van een groeps account als beheerder verbetert de beheer baarheid, zodat u groeps leden in azure AD centraal kunt toevoegen en verwijderen zonder dat u de gebruikers of machtigingen op de MySQL-server hoeft te wijzigen. Er kan slechts één Azure AD-beheerder (een gebruiker of groep) op elk gewenst moment worden geconfigureerd.
+Wanneer u Azure AD-verificatie gebruikt, zijn er twee beheerders accounts voor de MySQL-server. de oorspronkelijke MySQL-beheerder en de Azure AD-beheerder. Alleen de beheerder op basis van een Azure AD-account kan de eerste Azure AD-databasegebruiker in een gebruikersdatabase maken. De aanmelding van de Azure AD-beheerder kan een Azure AD-gebruiker of een Azure AD-groep zijn. Wanneer de beheerder een groeps account is, kan dit worden gebruikt door elk groepslid om meerdere Azure AD-beheerders voor de MySQL-server in te scha kelen. Het gebruik van een groeps account als beheerder verbetert de beheer baarheid, zodat u groeps leden in azure AD centraal kunt toevoegen en verwijderen zonder dat u de gebruikers of machtigingen op de MySQL-server hoeft te wijzigen. Er kan maar één Azure AD-beheerder (een gebruiker of groep) tegelijk worden geconfigureerd.
 
-![beheerder structuur][2]
+![beheerdersstructuur][2]
 
 ## <a name="permissions"></a>Machtigingen
 
@@ -60,14 +60,17 @@ Een Azure AD-verificatie is alleen mogelijk als de Azure AD-beheerder is gemaakt
 
 ## <a name="connecting-using-azure-ad-identities"></a>Verbinding maken met Azure AD-identiteiten
 
-Azure Active Directory-verificatie ondersteunt de volgende methoden om verbinding te maken met een Data Base met behulp van Azure AD-identiteiten:
+Azure Active Directory-verificatie ondersteunt de volgende methoden om verbinding te maken met een database met behulp van Azure AD-identiteiten:
 
-- Azure Active Directory wacht woord
-- Azure Active Directory geïntegreerd
-- Azure Active Directory Universal met MFA
+- Azure Active Directory – wachtwoord
+- Azure Active Directory – geïntegreerd
+- Azure Active Directory – Universal met MFA
 - Active Directory toepassings certificaten of client geheimen gebruiken
+- [Beheerde identiteit](howto-connect-with-managed-identity.md)
 
 Zodra u hebt geverifieerd op basis van de Active Directory, haalt u een token op. Dit token is uw wacht woord voor het aanmelden.
+
+Houd er rekening mee dat beheer bewerkingen, zoals het toevoegen van nieuwe gebruikers, alleen worden ondersteund voor Azure AD-gebruikers rollen op dit moment.
 
 > [!NOTE]
 > Zie voor meer informatie over het maken van verbinding met een Active Directory-token [configureren en aanmelden met Azure AD voor Azure database for MySQL](howto-configure-sign-in-azure-ad-authentication.md).
@@ -76,7 +79,7 @@ Zodra u hebt geverifieerd op basis van de Active Directory, haalt u een token op
 
 - Azure Active Directory-verificatie is alleen beschikbaar voor MySQL 5,7 en nieuwer.
 - Er kan slechts één Azure AD-beheerder op elk gewenst moment worden geconfigureerd voor een Azure Database for MySQL-server.
-- Alleen een Azure AD-beheerder voor MySQL kan eerst verbinding maken met de Azure Database for MySQL met behulp van een Azure Active Directory-account. De beheerder van de Active Directory kan nieuwe Azure AD-database gebruikers configureren.
+- Alleen een Azure AD-beheerder voor MySQL kan eerst verbinding maken met de Azure Database for MySQL met behulp van een Azure Active Directory-account. De Active Directory-beheerder kan vervolgens nieuwe Azure AD-databasegebruikers configureren.
 - Als een gebruiker uit Azure AD wordt verwijderd, kan die gebruiker niet langer worden geverifieerd bij Azure AD, waardoor het niet langer mogelijk is om een toegangs token voor die gebruiker te verkrijgen. In dit geval, hoewel de overeenkomende gebruiker zich nog steeds in de Data Base bevindt, is het niet mogelijk om verbinding te maken met de server met die gebruiker.
 > [!NOTE]
 > Aanmelding met de verwijderde Azure AD-gebruiker kan nog steeds worden uitgevoerd, totdat het token verloopt (Maxi maal 60 minuten van het uitgeven van tokens).  Als u de gebruiker ook verwijdert uit Azure Database for MySQL wordt deze toegang onmiddellijk ingetrokken.

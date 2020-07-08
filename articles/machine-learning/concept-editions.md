@@ -8,23 +8,16 @@ ms.topic: conceptual
 author: j-martens
 ms.author: jmartens
 ms.date: 06/11/2020
-ms.openlocfilehash: d870cb8d90573ab0c9661804aa1dd17b64d1600d
-ms.sourcegitcommit: 55b2bbbd47809b98c50709256885998af8b7d0c5
+ms.openlocfilehash: 173ff8b638c40773ca2c4bdac5021f2ea4b84549
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/18/2020
-ms.locfileid: "84982625"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85555526"
 ---
 # <a name="enterprise-and-basic-editions-of-azure-machine-learning"></a>Enter prise-en Basic-edities van Azure Machine Learning 
 
 Azure Machine Learning biedt twee edities die zijn afgestemd op uw machine learning behoeften. Deze edities bepalen welke tools voor machine learning beschikbaar zijn voor ontwikkelaars en gegevenswetenschappers in hun werkruimte.
-
-<br/>
-<br/>
-
-| Basic-editie | Enter prise Edition                 |
-|------------------------------------------------------------------------------------|-----------|
-|Ideaal voor: <br/>+ open-source-ontwikkeling <br/>+ op Cloud schaal met een<br/>+ code-eerste ervaring <br/><br/>Met eenvoudige werk ruimten kunt u Azure Machine Learning blijven gebruiken en [betaalt u alleen voor de Azure-resources](concept-plan-manage-cost.md) die tijdens het ml-proces zijn verbruikt. |Alle Basic-edities, plus:<br/>+ de Studio Web Interface <br/>+ veilig, uitgebreid ML levenscyclus beheer <br/>+ voor alle vaardigheids niveaus<br/><br/>Enter prise Edition-werk ruimten worden alleen in rekening gebracht voor hun Azure-verbruik tijdens de preview-versie. |
 
 ## <a name="choose-an-edition"></a>Een editie kiezen
 
@@ -111,7 +104,6 @@ Lees hier meer over het [upgraden van een Basic-werkruimte naar de Enterprise-ed
 | Batch-deinterferentie                                                                  | Alles                     |
 | Op FPGA gebaseerd Modellen met hardwareversnelling                                             | Alles                     |
 | Model profilering                                                                    | Alles                     |
-| Uitleg bij de gebruikers interface                                                               | Alleen Enter prise Edition |
 
 <br/>
 <br/>

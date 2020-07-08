@@ -6,12 +6,12 @@ author: jnoller
 ms.topic: article
 ms.date: 01/24/2020
 ms.author: jenoller
-ms.openlocfilehash: 147fc33d068909fa892023ec00cfc2827203607f
-ms.sourcegitcommit: b56226271541e1393a4b85d23c07fd495a4f644d
+ms.openlocfilehash: 775992d090b951c8de6fce36377dc91d6e017399
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/26/2020
-ms.locfileid: "85389935"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85558075"
 ---
 # <a name="support-policies-for-azure-kubernetes-service"></a>Ondersteunings beleid voor de Azure Kubernetes-service
 
@@ -50,6 +50,9 @@ Omdat worker-knoop punten gevoelig zijn, neemt micro soft er goed aan om het beh
 ## <a name="aks-support-coverage"></a>AKS-ondersteunings dekking
 
 Micro soft biedt technische ondersteuning voor het volgende:
+
+> [!NOTE]
+> Alle cluster acties die door micro soft-ondersteuning worden uitgevoerd, worden gemaakt met de toestemming van de gebruiker onder een ingebouwde Kubernetes [' bewerken '](https://kubernetes.io/docs/reference/access-authn-authz/rbac/#user-facing-roles) van de naam `aks-support-rolebinding` . Deze functie AKS-ondersteuning is ingeschakeld voor het bewerken van de cluster configuratie en-bronnen om cluster problemen op te lossen en te diagnosticeren, maar de rol kan geen machtigingen wijzigen en er kunnen geen rollen of functie bindingen worden gemaakt. Rollen toegang is alleen ingeschakeld onder actieve ondersteunings tickets met Just-in-time-toegang.
 
 * Connectiviteit met alle Kubernetes-onderdelen die de Kubernetes-service biedt en ondersteunt, zoals de API-server.
 * Beheer, uptime, QoS en bewerkingen van Kubernetes Control vlak-Services (bijvoorbeeld Kubernetes-hoofd knooppunten, API-server, etcd en uitvoeren-DNS).

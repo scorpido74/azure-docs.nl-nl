@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 07/12/2019
-ms.openlocfilehash: a20884c33d5232661e858e0b3ec722f139825aea
-ms.sourcegitcommit: a6d477eb3cb9faebb15ed1bf7334ed0611c72053
+ms.openlocfilehash: dc9425b25fa594d06473865f1add9c91c7760a97
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/08/2020
-ms.locfileid: "82928003"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85557226"
 ---
 # <a name="integrate-system-center-operations-manager-with-azure-monitor-for-vms-map-feature"></a>System Center Operations Manager integreren met Azure Monitor voor VM's kaart functie
 
@@ -29,7 +29,7 @@ In Azure Monitor voor VM's kunt u gedetecteerde toepassings onderdelen weer geve
 
 ## <a name="install-the-service-map-management-pack"></a>Installeer de Servicetoewijzing management pack
 
-U schakelt de integratie tussen Operations Manager en de kaart functie in door het importeren van micro soft. System Center. ServiceMap management pack bundel (micro soft. System Center. ServiceMap. MPB). U kunt de management pack bundel downloaden van het [micro soft Download centrum](https://www.microsoft.com/download/details.aspx?id=55763). De bundel bevat de volgende Management Packs:
+U schakelt de integratie tussen Operations Manager en de kaart functie in door de Microsoft.SystemCenter. ServiceMap management pack bundel te importeren (Microsoft.SystemCenter. ServiceMap. MPB). U kunt de management pack bundel downloaden van het [micro soft Download centrum](https://www.microsoft.com/download/details.aspx?id=55763). De bundel bevat de volgende Management Packs:
 
 * Micro soft Servicetoewijzing-toepassings weergaven
 * Micro soft System Center Servicetoewijzing intern
@@ -106,7 +106,7 @@ De map Servicetoewijzing heeft vier knoop punten:
 
 ## <a name="edit-or-delete-the-workspace"></a>De werk ruimte bewerken of verwijderen
 
-U kunt de geconfigureerde werk ruimte bewerken of verwijderen via het servicetoewijzing deel venster **overzicht** (**beheer** venster > **Operations Management Suite** > **servicetoewijzing**).
+U kunt de geconfigureerde werk ruimte bewerken of verwijderen via het servicetoewijzing deel venster **overzicht** (**beheer** venster > **Operations Management Suite**  >  **servicetoewijzing**).
 
 > [!NOTE]
 > [Operations Management Suite is een verzameling services](../terminology.md#april-2018---retirement-of-operations-management-suite-brand) die log Analytics bevat, die nu deel uitmaakt van [Azure monitor](../overview.md).
@@ -117,7 +117,7 @@ U kunt slechts één Log Analytics werkruimte configureren in deze huidige versi
 
 ## <a name="configure-rules-and-overrides"></a>Regels en onderdrukkingen configureren
 
-Met een regel, *micro soft. System Center. ServiceMapImport. rule*, wordt regel matig gegevens opgehaald van Azure monitor voor VM's kaart functie. Als u het synchronisatie-interval wilt wijzigen, kunt u de regel overschrijven en de waarde voor de para meter **IntervalMinutes**wijzigen.
+Met een regel, *Microsoft.SystemCenter. ServiceMapImport. rule*, wordt regel matig informatie opgehaald van de functie Azure monitor voor VM's map. Als u het synchronisatie-interval wilt wijzigen, kunt u de regel overschrijven en de waarde voor de para meter **IntervalMinutes**wijzigen.
 
 ![Het venster Eigenschappen van Operations Manager onderdrukkingen](media/service-map-scom/scom-overrides.png)
 
@@ -142,5 +142,6 @@ Zie voor officiële Azure-documentatie over het maken van een Service-Principal:
 * [Een service-principal maken met behulp van Azure CLI](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-authenticate-service-principal-cli)
 * [Een service-principal maken met behulp van de Azure Portal](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-create-service-principal-portal)
 
-### <a name="feedback"></a>Feedback
+### <a name="suggestions"></a>Suggesties
+
 Hebt u feedback voor ons over de integratie met Azure Monitor voor VM's kaart functie of deze documentatie? Ga naar onze [pagina met gebruikers spraak](https://feedback.azure.com/forums/267889-log-analytics/category/184492-service-map), waar u functies kunt suggereren of stem op bestaande suggesties.

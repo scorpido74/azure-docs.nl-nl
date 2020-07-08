@@ -12,12 +12,12 @@ manager: daveba
 ms.reviewer: rogoya
 ms.collection: M365-identity-device-management
 ms.custom: contperfq4
-ms.openlocfilehash: 93f38210e3529ea4252f43db134667d3426a6599
-ms.sourcegitcommit: 374e47efb65f0ae510ad6c24a82e8abb5b57029e
+ms.openlocfilehash: 385107f3bb5dd30a118d3a5f7a5f14213f0ad1c8
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/28/2020
-ms.locfileid: "85505814"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85554525"
 ---
 # <a name="what-are-security-defaults"></a>Wat zijn de standaard beveiligings instellingen?
 
@@ -122,7 +122,7 @@ De volgende aanvullende overwegingen zijn gerelateerd aan de implementatie van s
 
 Met deze gratis standaard beveiligings instellingen wordt de registratie en het gebruik van Azure Multi-Factor Authentication voor het gebruik van **de Microsoft Authenticator app**met behulp van meldingen toegestaan. Voorwaardelijke toegang staat het gebruik toe van elke verificatie methode die de beheerder inschakelt.
 
-|   | Standaardinstellingen voor de beveiliging | Voorwaardelijke toegang |
+| Methode | Standaardinstellingen voor de beveiliging | Voorwaardelijke toegang |
 | --- | --- | --- |
 | Melding via mobiele app | X | X |
 | Verificatie code van de mobiele app of het hardware-token | X * * | X |
@@ -147,7 +147,7 @@ Hier vindt u stapsgewijze hand leidingen over hoe u voorwaardelijke toegang kunt
 
 - [MFA vereisen voor beheerders](../conditional-access/howto-conditional-access-policy-admin-mfa.md)
 - [MFA vereisen voor Azure-beheer](../conditional-access/howto-conditional-access-policy-azure-management.md)
-- [Verouderde verificatie blokkeren](../conditional-access/howto-conditional-access-policy-block-legacy.md)
+- [Verouderde verificatie blok keren](../conditional-access/howto-conditional-access-policy-block-legacy.md)
 - [MFA vereisen voor alle gebruikers](../conditional-access/howto-conditional-access-policy-all-users-mfa.md)
 - [Azure MFA-registratie vereisen](../identity-protection/howto-identity-protection-configure-mfa-policy.md) : vereist Azure AD Identity Protection onderdeel van Azure AD Premium P2.
 

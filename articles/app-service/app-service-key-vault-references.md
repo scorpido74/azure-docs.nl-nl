@@ -6,12 +6,12 @@ ms.topic: article
 ms.date: 10/09/2019
 ms.author: mahender
 ms.custom: seodec18
-ms.openlocfilehash: 6ce11e806c514aa4a2074d120cb64ecdce222528
-ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
+ms.openlocfilehash: 5b76c940066539995dbefa76d503b5412ce0c359
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/12/2020
-ms.locfileid: "84735605"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85557908"
 ---
 # <a name="use-key-vault-references-for-app-service-and-azure-functions"></a>Gebruik Key Vault verwijzingen voor App Service en Azure Functions
 
@@ -72,7 +72,7 @@ Als u een Key Vault referentie voor een toepassings instelling wilt gebruiken, s
 
 Wanneer u de implementatie van resources via Azure Resource Manager sjablonen automatiseert, moet u mogelijk uw afhankelijkheden in een bepaalde volg orde rangschikken om deze functie te kunnen gebruiken. Houd er rekening mee dat u de toepassings instellingen moet definiëren als hun eigen resource, in plaats van een `siteConfig` eigenschap in de site definitie te gebruiken. Dit komt doordat de site eerst moet worden gedefinieerd, zodat de door het systeem toegewezen identiteit wordt gemaakt en kan worden gebruikt in het toegangs beleid.
 
-Een voor beeld van een psuedo-sjabloon voor een functie-app kan er als volgt uitzien:
+Een voor beeld van een pseudo-sjabloon voor een functie-app kan er als volgt uitzien:
 
 ```json
 {

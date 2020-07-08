@@ -8,12 +8,12 @@ ms.author: luisca
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 43251783cbcd6501562913b7b9cafb4f9f7cb3f1
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: bdbe157198ad62578613d86f3b3a55b72ca0acf8
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75754561"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85557450"
 ---
 # <a name="how-to-create-a-skillset-in-an-ai-enrichment-pipeline-in-azure-cognitive-search"></a>Een vakkennisset maken in een AI-pijp lijn in azure Cognitive Search 
 
@@ -55,7 +55,7 @@ In het diagram wordt de stap voor het kraken van het *document* automatisch uitg
 Een vakkennisset wordt gedefinieerd als een matrix met vaardig heden. Elke vaardigheid definieert de bron van de invoer en de naam van de geproduceerde uitvoer. Met de [rest API vaardig heden maken](https://docs.microsoft.com/rest/api/searchservice/create-skillset)kunt u een vaardighedenset definiëren die overeenkomt met het vorige diagram: 
 
 ```http
-PUT https://[servicename].search.windows.net/skillsets/[skillset name]?api-version=2019-05-06
+PUT https://[servicename].search.windows.net/skillsets/[skillset name]?api-version=2020-06-30
 api-key: [admin key]
 Content-Type: application/json
 ```
@@ -126,7 +126,7 @@ Content-Type: application/json
 
 ## <a name="create-a-skillset"></a>Een set vaardigheden maken
 
-Tijdens het maken van een vaardig heden kunt u een beschrijving opgeven om de vaardig heden zelf documenteren te maken. Een beschrijving is optioneel, maar is handig voor het bijhouden van wat een vakkennisset doet. Omdat vaardig heden een JSON-document is dat geen opmerkingen toestaat, moet u hiervoor een `description` element gebruiken.
+Tijdens het maken van een vaardig heden kunt u een beschrijving opgeven om de vaardig heden zelf documenteren te maken. Een beschrijving is optioneel, maar is handig voor het bijhouden van wat een vakkennisset doet. Omdat vaardig heden een JSON-document is dat geen opmerkingen toestaat, moet u `description` hiervoor een element gebruiken.
 
 ```json
 {
@@ -163,13 +163,13 @@ Laten we eens kijken naar de eerste vaardigheid, de ingebouwde [vaardigheid voor
     }
 ```
 
-* Elke ingebouwde vaardigheid heeft `odata.type`de eigenschappen, `input`en. `output` Specifieke eigenschappen bieden aanvullende informatie die van toepassing is op die kwalificatie. Voor entiteit herkenning `categories` is één entiteit onder een vaste set entiteits typen die het voortrainde model kan herkennen.
+* Elke ingebouwde vaardigheid heeft de `odata.type` Eigenschappen, `input` en `output` . Specifieke eigenschappen bieden aanvullende informatie die van toepassing is op die kwalificatie. Voor entiteit herkenning `categories` is één entiteit onder een vaste set entiteits typen die het voortrainde model kan herkennen.
 
-* Elke vaardigheid moet een ```"context"```hebben. De context vertegenwoordigt het niveau waarop bewerkingen worden uitgevoerd. In de bovenstaande vaardigheid is de context het hele document, wat inhoudt dat de kwalificatie voor entiteits herkenning één keer per document wordt genoemd. Er worden ook outputs geproduceerd op dat niveau. Meer specifiek ```"organizations"``` worden gegenereerd als lid van ```"/document"```. In downstream-vaardig heden kunt u deze zojuist gemaakte gegevens als ```"/document/organizations"```volgt raadplegen.  Als het ```"context"``` veld niet expliciet is ingesteld, is de standaard context het document.
+* Elke vaardigheid moet een hebben ```"context"``` . De context vertegenwoordigt het niveau waarop bewerkingen worden uitgevoerd. In de bovenstaande vaardigheid is de context het hele document, wat inhoudt dat de kwalificatie voor entiteits herkenning één keer per document wordt genoemd. Er worden ook outputs geproduceerd op dat niveau. Meer specifiek ```"organizations"``` worden gegenereerd als lid van ```"/document"``` . In downstream-vaardig heden kunt u deze zojuist gemaakte gegevens als volgt raadplegen ```"/document/organizations"``` .  Als het ```"context"``` veld niet expliciet is ingesteld, is de standaard context het document.
 
-* De vaardigheid heeft één invoer met de naam ' text ', waarbij een bron invoer ```"/document/content"```is ingesteld op. De vaardigheid (entiteits herkenning) wordt uitgevoerd op het *inhouds* veld van elk document, een standaard veld dat wordt gemaakt door de indexer van Azure Blob. 
+* De vaardigheid heeft één invoer met de naam ' text ', waarbij een bron invoer is ingesteld op ```"/document/content"``` . De vaardigheid (entiteits herkenning) wordt uitgevoerd op het *inhouds* veld van elk document, een standaard veld dat wordt gemaakt door de indexer van Azure Blob. 
 
-* De vaardigheid heeft één uitvoer met ```"organizations"```de naam. Outputs bestaan alleen tijdens de verwerking. Als u deze uitvoer wilt koppelen aan de invoer van een downstream-vaardigheid, ```"/document/organizations"```verwijst u naar de uitvoer als.
+* De vaardigheid heeft één uitvoer met de naam ```"organizations"``` . Outputs bestaan alleen tijdens de verwerking. Als u deze uitvoer wilt koppelen aan de invoer van een downstream-vaardigheid, verwijst u naar de uitvoer als ```"/document/organizations"``` .
 
 * Voor een bepaald document is de waarde van ```"/document/organizations"``` een matrix van organisaties die zijn geëxtraheerd uit de tekst. Bijvoorbeeld:
 
@@ -177,9 +177,9 @@ Laten we eens kijken naar de eerste vaardigheid, de ingebouwde [vaardigheid voor
   ["Microsoft", "LinkedIn"]
   ```
 
-In sommige situaties wordt een aanroep voor elk element van een matrix afzonderlijk bepaald. Stel bijvoorbeeld dat u elk element van ```"/document/organizations"``` afzonderlijk wilt door geven aan een andere vaardigheid (zoals de aangepaste Bing-entiteit Zoek verrijker). U kunt naar elk element van de matrix verwijzen door een asterisk toe te voegen aan het pad:```"/document/organizations/*"``` 
+In sommige situaties wordt een aanroep voor elk element van een matrix afzonderlijk bepaald. Stel bijvoorbeeld dat u elk element van afzonderlijk wilt door geven ```"/document/organizations"``` aan een andere vaardigheid (zoals de aangepaste Bing-entiteit Zoek verrijker). U kunt naar elk element van de matrix verwijzen door een asterisk toe te voegen aan het pad:```"/document/organizations/*"``` 
 
-De tweede vaardigheid voor sentiment extractie volgt hetzelfde patroon als de eerste verrijker. Het duurt ```"/document/content"``` als invoer en retourneert een sentiment-score voor elk inhouds exemplaar. Omdat u het ```"context"``` veld niet expliciet hebt ingesteld, is de uitvoer (mySentiment) nu een onderliggend element van ```"/document"```.
+De tweede vaardigheid voor sentiment extractie volgt hetzelfde patroon als de eerste verrijker. Het duurt ```"/document/content"``` als invoer en retourneert een sentiment-score voor elk inhouds exemplaar. Omdat u het veld niet expliciet hebt ingesteld ```"context"``` , is de uitvoer (mySentiment) nu een onderliggend element van ```"/document"``` .
 
 ```json
     {
@@ -229,13 +229,13 @@ De structuur van de aangepaste Bing entity Search-verrijker intrekken:
 
 Deze definitie is een [aangepaste vaardigheid](cognitive-search-custom-skill-web-api.md) die een web-API aanroept als onderdeel van het verrijkings proces. Voor elke organisatie die wordt geïdentificeerd door entiteits herkenning, roept deze vaardigheid een web-API aan om de beschrijving van die organisatie te vinden. De indeling van wanneer de Web-API moet worden aangeroepen en hoe de ontvangen informatie wordt intern verwerkt door de verrijkings engine. De initialisatie die nodig is voor het aanroepen van deze aangepaste API moet echter worden gegeven in de JSON (zoals URI, httpHeaders en de invoer wordt verwacht). Zie [een aangepaste interface definiëren](cognitive-search-custom-skill-interface.md)voor hulp bij het maken van een aangepaste web-API voor de verrijkings pijplijn.
 
-U ziet dat het veld context is ingesteld op ```"/document/organizations/*"``` met een asterisk, wat betekent dat de verrijkings stap wordt aangeroepen *voor elke* organisatie onder. ```"/document/organizations"``` 
+U ziet dat het veld context is ingesteld op ```"/document/organizations/*"``` met een asterisk, wat betekent dat de verrijkings stap wordt aangeroepen *voor elke* organisatie onder ```"/document/organizations"``` . 
 
 In dit geval wordt de beschrijving van het bedrijf voor elke geïdentificeerde organisatie gegenereerd. Wanneer u verwijst naar de beschrijving in een downstream-stap (bijvoorbeeld in extractie van sleutel zinnen), gebruikt u het pad ```"/document/organizations/*/description"``` om dit te doen. 
 
 ## <a name="add-structure"></a>Structuur toevoegen
 
-De vaardig heden genereren gestructureerde informatie uit ongestructureerde gegevens. Kijk een naar het volgende voorbeeld:
+De vaardig heden genereren gestructureerde informatie uit ongestructureerde gegevens. Kijk eens naar het volgende voorbeeld:
 
 *"In het vierde kwar taal heeft micro soft $1.100.000.000 in de opbrengst van LinkedIn, het sociale netwerk dat het vorig jaar is gekocht. Dankzij de aanschaf mogelijkheden van micro soft kunnen LinkedIn-mogelijkheden worden gecombineerd met de CRM-en Office-functies. Aandeel houders zijn enthousiast over de voortgang tot nu toe. "*
 
@@ -247,7 +247,7 @@ Tot nu toe is deze structuur alleen intern, alleen geheugen en alleen gebruikt i
 
 ## <a name="add-a-knowledge-store"></a>Een kennis archief toevoegen
 
-[Knowledge Store](knowledge-store-concept-intro.md) is een preview-functie in azure Cognitive Search om uw verrijkte document op te slaan. Een kennis archief dat u maakt, ondersteund door een Azure Storage-account, is de opslag plaats waar uw verrijkte gegevens worden gelandd. 
+Het [kennis archief](knowledge-store-concept-intro.md) is een functie in azure Cognitive Search om uw verrijkte document op te slaan. Een kennis archief dat u maakt, ondersteund door een Azure Storage-account, is de opslag plaats waar uw verrijkte gegevens worden gelandd. 
 
 Een definitie van een kennis archief wordt toegevoegd aan een vaardig heden. Zie voor een overzicht van het hele proces [een kennis archief maken in rest](knowledge-store-create-rest.md).
 

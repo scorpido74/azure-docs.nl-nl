@@ -9,19 +9,19 @@ ms.devlang: dotnet
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: bd89e3366fbaa60109be9ef3552970936f0a6715
-ms.sourcegitcommit: 971a3a63cf7da95f19808964ea9a2ccb60990f64
+ms.openlocfilehash: 4714fbb5d9f08e0b02dbc8f6cb32845642911e51
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/19/2020
-ms.locfileid: "85080564"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85556297"
 ---
 # <a name="how-to-use-azure-cognitive-search-from-a-net-application"></a>Azure Cognitive Search gebruiken vanuit een .NET-toepassing
 
 Dit artikel bevat een overzicht om u te helpen met de [Azure Cognitive Search .NET SDK](https://docs.microsoft.com/dotnet/api/overview/azure/search). U kunt de .NET SDK gebruiken om een uitgebreide zoek ervaring in uw toepassing te implementeren met behulp van Azure Cognitive Search.
 
 ## <a name="whats-in-the-azure-cognitive-search-sdk"></a>Wat is de Azure Cognitive Search SDK?
-De SDK bestaat uit een aantal client bibliotheken waarmee u uw indexen, gegevens bronnen, Indexeer functies en synoniemen kunt beheren, evenals documenten kunt uploaden en beheren, en query's kunt uitvoeren, zonder dat u de details van HTTP en JSON hoeft te hoeven afhandelen. Deze client bibliotheken zijn allemaal gedistribueerd als NuGet-pakketten.
+De SDK bestaat uit een aantal client bibliotheken waarmee u uw indexen, gegevens bronnen, Indexeer functies en synoniemen kunt beheren, evenals documenten kunt uploaden en beheren, en query's kunt uitvoeren, zonder dat u de details van HTTP en JSON hoeft te hoeven afhandelen. Deze clientbibliotheken worden allemaal gedistribueerd als NuGet-pakketten.
 
 Het belangrijkste NuGet-pakket is `Microsoft.Azure.Search` , een meta pakket dat alle andere pakketten als afhankelijkheden bevat. Gebruik dit pakket als u zojuist aan de slag bent of als u weet dat uw toepassing alle functies van Azure Cognitive Search nodig heeft.
 
@@ -38,7 +38,7 @@ De verschillende client bibliotheken definiëren klassen zoals `Index` , `Field`
 
 Als u feedback wilt geven voor een toekomstige update van de SDK, raadpleegt u onze [feedback pagina](https://feedback.azure.com/forums/263029-azure-search/) of maakt u een probleem op [github](https://github.com/azure/azure-sdk-for-net/issues) en vermeldt u ' Azure Cognitive Search ' in de titel van het probleem.
 
-De .NET SDK ondersteunt `2019-05-06` de versie van de [Azure Cognitive Search rest API](https://docs.microsoft.com/rest/api/searchservice/). Deze versie bevat ondersteuning voor [complexe typen](search-howto-complex-data-types.md), [AI-verrijking](cognitive-search-concept-intro.md), [automatisch aanvullen](https://docs.microsoft.com/rest/api/searchservice/autocomplete)en [JsonLines-parserings modus bij het indexeren van](search-howto-index-json-blobs.md) Azure-blobs. 
+De .NET SDK streeft naar de versie `2019-05-06` van de [Azure Cognitive Search rest API](https://docs.microsoft.com/rest/api/searchservice/). Deze versie bevat ondersteuning voor [complexe typen](search-howto-complex-data-types.md), [AI-verrijking](cognitive-search-concept-intro.md), [automatisch aanvullen](https://docs.microsoft.com/rest/api/searchservice/autocomplete)en [JsonLines-parserings modus bij het indexeren van](search-howto-index-json-blobs.md) Azure-blobs. 
 
 Deze SDK biedt geen ondersteuning voor [beheer bewerkingen](https://docs.microsoft.com/rest/api/searchmanagement/) , zoals het maken en schalen van zoek services en het beheren van API-sleutels. Als u uw Zoek resources wilt beheren vanuit een .NET-toepassing, kunt u de [Azure Cognitive Search .net Management SDK](https://aka.ms/search-mgmt-sdk)gebruiken.
 

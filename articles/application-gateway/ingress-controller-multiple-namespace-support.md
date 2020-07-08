@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: how-to
 ms.date: 11/4/2019
 ms.author: caya
-ms.openlocfilehash: 2c519792bcf9251f926d305c9611320a18b7c346
-ms.sourcegitcommit: ad66392df535c370ba22d36a71e1bbc8b0eedbe3
+ms.openlocfilehash: 953430421bd30aaa1df352451b549994aeaa1a70
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/16/2020
-ms.locfileid: "84806990"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85556155"
 ---
 # <a name="enable-multiple-namespace-support-in-an-aks-cluster-with-application-gateway-ingress-controller"></a>Ondersteuning van meerdere naam ruimten in een AKS-cluster met Application Gateway ingangs controller inschakelen
 
@@ -45,6 +45,7 @@ Boven aan de hiërarchie- **listeners** (IP-adres, poort en host) en **routering
 Op de andere hand paden kunnen back-endservers, HTTP-instellingen en TLS-certificaten door slechts één naam ruimte worden gemaakt en dubbele items worden verwijderd.
 
 Bekijk bijvoorbeeld de volgende dubbele ingangs resources gedefinieerde naam ruimten `staging` en `production` voor `www.contoso.com` :
+
 ```yaml
 apiVersion: extensions/v1beta1
 kind: Ingress
@@ -101,6 +102,7 @@ Standaard AGIC configureert Application Gateway op basis van inkomende aantekeni
   - [Role/RoleBinding](https://docs.microsoft.com/azure/aks/azure-ad-rbac) gebruiken om de AGIC te beperken tot specifieke naam ruimten
 
 ## <a name="sample-helm-config-file"></a>Voor beeld van helm-configuratie bestand
+
 ```yaml
     # This file contains the essential configs for the ingress controller helm chart
 
@@ -152,5 +154,5 @@ Standaard AGIC configureert Application Gateway op basis van inkomende aantekeni
     # Specify aks cluster related information. THIS IS BEING DEPRECATED.
     aksClusterConfiguration:
         apiServerAddress: <aks-api-server-address>
-    ```
+```
 

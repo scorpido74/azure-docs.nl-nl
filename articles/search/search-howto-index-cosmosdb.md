@@ -9,18 +9,18 @@ ms.devlang: rest-api
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 01/02/2020
-ms.openlocfilehash: d1723b6c5d56554fbff576f6a07e37455845bda4
-ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
+ms.openlocfilehash: 13c55f2a7470a0d33e12e9e6f0da9df3421242fb
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/11/2020
-ms.locfileid: "84688871"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85556252"
 ---
 # <a name="how-to-index-cosmos-db-data-using-an-indexer-in-azure-cognitive-search"></a>Cosmos DB-gegevens indexeren met behulp van een indexeerfunctie in Azure Cognitive Search 
 
 > [!IMPORTANT] 
 > SQL API is algemeen beschikbaar.
-> MongoDB-API, Gremlin-API en Cassandra-API-ondersteuning zijn momenteel beschikbaar als open bare preview. Deze previewfunctie wordt aangeboden zonder service level agreement en wordt niet aanbevolen voor productieworkloads. Zie [Supplemental Terms of Use for Microsoft Azure Previews (Aanvullende gebruiksvoorwaarden voor Microsoft Azure-previews)](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) voor meer informatie. U kunt toegang tot de voor beelden aanvragen door [dit formulier](https://aka.ms/azure-cognitive-search/indexer-preview)in te vullen. De [rest API versie 2019-05-06-preview](search-api-preview.md) biedt preview-functies. Er is momenteel beperkte ondersteuning voor portals en geen .NET SDK-ondersteuning.
+> MongoDB-API, Gremlin-API en Cassandra-API-ondersteuning zijn momenteel beschikbaar als open bare preview. Deze previewfunctie wordt aangeboden zonder service level agreement en wordt niet aanbevolen voor productieworkloads. Zie [Supplemental Terms of Use for Microsoft Azure Previews (Aanvullende gebruiksvoorwaarden voor Microsoft Azure-previews)](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) voor meer informatie. U kunt toegang tot de voor beelden aanvragen door [dit formulier](https://aka.ms/azure-cognitive-search/indexer-preview)in te vullen. De [rest API versie 2020-06-30-preview](search-api-preview.md) biedt preview-functies. Er is momenteel beperkte ondersteuning voor portals en geen ondersteuning voor de .NET-SDK.
 
 > [!WARNING]
 > Alleen Cosmos DB verzamelingen waarvoor een [indexerings beleid](https://docs.microsoft.com/azure/cosmos-db/index-policy) is ingesteld op [consistent](https://docs.microsoft.com/azure/cosmos-db/index-policy#indexing-mode) , worden ondersteund door Azure Cognitive Search. Het indexeren van verzamelingen met een Lazy-indexerings beleid wordt niet aanbevolen en kan leiden tot ontbrekende gegevens. Verzamelingen waarvoor indexeren is uitgeschakeld, worden niet ondersteund.
@@ -33,9 +33,9 @@ Met de Cosmos DB Indexeer functie in azure Cognitive Search kunt u [Azure Cosmos
 
 + Voor [SQL API](https://docs.microsoft.com/azure/cosmos-db/sql-api-query-reference), die algemeen beschikbaar is, kunt u de [Portal](#cosmos-indexer-portal), [rest API](https://docs.microsoft.com/rest/api/searchservice/indexer-operations)of [.NET SDK](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.indexer?view=azure-dotnet) gebruiken om de gegevens bron en Indexeer functie te maken.
 
-+ Voor de [MongoDb-API (preview)](https://docs.microsoft.com/azure/cosmos-db/mongodb-introduction)kunt u de [portal](#cosmos-indexer-portal) of de [rest API versie 2019-05-06-preview](search-api-preview.md) gebruiken om de gegevens bron en Indexeer functie te maken.
++ Voor de [MongoDb-API (preview)](https://docs.microsoft.com/azure/cosmos-db/mongodb-introduction)kunt u de [portal](#cosmos-indexer-portal) of de [rest API versie 2020-06-30-preview](search-api-preview.md) gebruiken om de gegevens bron en Indexeer functie te maken.
 
-+ Voor [Cassandra-API (preview)](https://docs.microsoft.com/azure/cosmos-db/cassandra-introduction) en [Gremlin-API (preview)](https://docs.microsoft.com/azure/cosmos-db/graph-introduction)kunt u alleen de [rest API versie 2019-05-06-preview](search-api-preview.md) gebruiken om de gegevens bron en Indexeer functie te maken.
++ Voor [Cassandra-API (preview)](https://docs.microsoft.com/azure/cosmos-db/cassandra-introduction) en [Gremlin-API (preview)](https://docs.microsoft.com/azure/cosmos-db/graph-introduction)kunt u alleen de [rest API versie 2020-06-30-preview](search-api-preview.md) gebruiken om de gegevens bron en Indexeer functie te maken.
 
 
 > [!Note]
@@ -123,7 +123,7 @@ Wanneer het indexeren is voltooid, kunt u [Search Explorer](search-explorer.md) 
 U kunt de REST API gebruiken om Azure Cosmos DB gegevens te indexeren, het volgen van een werk stroom die uit drie delen is gemeen schappelijk voor alle Indexeer functies in azure Cognitive Search: een gegevens bron maken, een index maken, een Indexeer functie maken. Gegevens extractie van Cosmos DB vindt plaats wanneer u de aanvraag voor het maken van een index verzendt. Nadat deze aanvraag is voltooid, hebt u een query die kan worden geïndexeerd. 
 
 > [!NOTE]
-> Voor het indexeren van gegevens uit Cosmos DB Gremlin API of Cosmos DB Cassandra-API moet u eerst toegang tot de gefeedte previews aanvragen door [dit formulier](https://aka.ms/azure-cognitive-search/indexer-preview)in te vullen. Zodra de aanvraag is verwerkt, ontvangt u instructies voor het gebruik van de [rest API versie 2019-05-06-preview](search-api-preview.md) om de gegevens bron te maken.
+> Voor het indexeren van gegevens uit Cosmos DB Gremlin API of Cosmos DB Cassandra-API moet u eerst toegang tot de gefeedte previews aanvragen door [dit formulier](https://aka.ms/azure-cognitive-search/indexer-preview)in te vullen. Zodra de aanvraag is verwerkt, ontvangt u instructies voor het gebruik van de [rest API versie 2020-06-30-preview](search-api-preview.md) om de gegevens bron te maken.
 
 Eerder in dit artikel wordt vermeld dat [Azure Cosmos DB](https://docs.microsoft.com/azure/cosmos-db/index-overview) indexering en indexering van [Azure Cognitive Search](search-what-is-an-index.md) een afzonderlijke bewerking zijn. Voor het indexeren van Cosmos DB worden standaard alle documenten automatisch geïndexeerd, behalve met de Cassandra-API. Als u automatisch indexeren uitschakelt, kan alleen toegang worden verkregen tot documenten via hun eigen koppelingen of door query's met behulp van de document-ID. Voor het indexeren van Azure-Cognitive Search moet Cosmos DB automatisch indexeren zijn ingeschakeld in de verzameling die wordt geïndexeerd door Azure Cognitive Search. Wanneer u zich aanmeldt voor de Cosmos DB Cassandra-API Indexeer functie preview, krijgt u instructies voor het instellen van Cosmos DB indexeren.
 
@@ -154,7 +154,7 @@ Een **gegevens bron** geeft de gegevens aan die moeten worden geïndexeerd, refe
 
 Als u een gegevens bron wilt maken, moet u een POST-aanvraag formuleren:
 
-    POST https://[service name].search.windows.net/datasources?api-version=2019-05-06
+    POST https://[service name].search.windows.net/datasources?api-version=2020-06-30
     Content-Type: application/json
     api-key: [Search service admin key]
 
@@ -223,7 +223,7 @@ Query voor het afvlakken van matrices:
 
 [Maak een doel-Azure-Cognitive search index](/rest/api/searchservice/create-index) als u er nog geen hebt. In het volgende voor beeld wordt een index gemaakt met het veld ID en beschrijving:
 
-    POST https://[service name].search.windows.net/indexes?api-version=2019-05-06
+    POST https://[service name].search.windows.net/indexes?api-version=2020-06-30
     Content-Type: application/json
     api-key: [Search service admin key]
 
@@ -267,7 +267,7 @@ Zorg ervoor dat het schema van uw doel index compatibel is met het schema van de
 
 Zodra de index en gegevens bron zijn gemaakt, kunt u de Indexeer functie nu maken:
 
-    POST https://[service name].search.windows.net/indexers?api-version=2019-05-06
+    POST https://[service name].search.windows.net/indexers?api-version=2020-06-30
     Content-Type: application/json
     api-key: [admin key]
 
@@ -340,7 +340,7 @@ Als u een aangepaste query gebruikt, zorg er dan voor dat de eigenschap waarnaar
 
 In het volgende voor beeld wordt een gegevens bron gemaakt met een voorlopig verwijderings beleid:
 
-    POST https://[service name].search.windows.net/datasources?api-version=2019-05-06
+    POST https://[service name].search.windows.net/datasources?api-version=2020-06-30
     Content-Type: application/json
     api-key: [Search service admin key]
 

@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 68a17b8b3587077222a9ed2057927c8f16253c1e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 8a4c862cd6b6f9b01c0b56c2a21e228fdfd0f6e8
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "72794376"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85553337"
 ---
 # <a name="create-and-manage-api-keys-for-an-azure-cognitive-search-service"></a>API-sleutels voor een Azure Cognitive Search-service maken en beheren
 
@@ -29,23 +29,23 @@ Een API-sleutel is een teken reeks die bestaat uit wille keurig gegenereerde cij
 
 Er worden twee soorten sleutels gebruikt om toegang te krijgen tot uw zoek service: beheerder (lezen/schrijven) en query (alleen-lezen).
 
-|Sleutel|Beschrijving|Limieten|  
+|Sleutel|Description|Limieten|  
 |---------|-----------------|------------|  
 |Beheerder|Verleent volledige rechten voor alle bewerkingen, met inbegrip van de mogelijkheid om de service te beheren, indexen, Indexeer functies en gegevens bronnen te maken en te verwijderen.<br /><br /> Twee beheer sleutels, aangeduid als *primaire* en *secundaire* sleutels in de portal, worden gegenereerd wanneer de service wordt gemaakt en kunnen op aanvraag afzonderlijk opnieuw worden gegenereerd. Als u twee sleutels hebt, kunt u één sleutel gebruiken terwijl u de tweede toets gebruikt voor verdere toegang tot de service.<br /><br /> Beheerders sleutels worden alleen opgegeven in HTTP-aanvraag headers. U kunt geen beheerder-API-sleutel in een URL plaatsen.|Maximum van 2 per service|  
-|Query’s uitvoeren|Geeft alleen-lezen toegang tot indexen en documenten, en wordt doorgaans gedistribueerd naar client toepassingen die zoek aanvragen uitgeven.<br /><br /> Query sleutels worden op aanvraag gemaakt. U kunt ze hand matig maken in de portal of via een programma via de [beheer rest API](https://docs.microsoft.com/rest/api/searchmanagement/).<br /><br /> Query sleutels kunnen worden opgegeven in een header van een HTTP-aanvraag voor zoeken, suggestie of opzoek bewerking. U kunt ook een query sleutel als een para meter door geven op een URL. Afhankelijk van hoe uw client toepassing de aanvraag opvraagt, is het wellicht eenvoudiger om de sleutel als een query parameter door te geven:<br /><br /> `GET /indexes/hotels/docs?search=*&$orderby=lastRenovationDate desc&api-version=2019-05-06&api-key=[query key]`|50 per service|  
+|Query’s uitvoeren|Geeft alleen-lezen toegang tot indexen en documenten, en wordt doorgaans gedistribueerd naar client toepassingen die zoek aanvragen uitgeven.<br /><br /> Query sleutels worden op aanvraag gemaakt. U kunt ze hand matig maken in de portal of via een programma via de [beheer rest API](https://docs.microsoft.com/rest/api/searchmanagement/).<br /><br /> Query sleutels kunnen worden opgegeven in een header van een HTTP-aanvraag voor zoeken, suggestie of opzoek bewerking. U kunt ook een query sleutel als een para meter door geven op een URL. Afhankelijk van hoe uw client toepassing de aanvraag opvraagt, is het wellicht eenvoudiger om de sleutel als een query parameter door te geven:<br /><br /> `GET /indexes/hotels/docs?search=*&$orderby=lastRenovationDate desc&api-version=2020-06-30&api-key=[query key]`|50 per service|  
 
  Er is visueel geen onderscheid tussen een beheer sleutel of query sleutel. Beide sleutels zijn teken reeksen die bestaan uit 32 wille keurig gegenereerde alfanumerieke tekens. Als u het bijhouden van welk type sleutel is opgegeven in uw toepassing kwijtraakt, kunt u [de sleutel waarden controleren in de portal](https://portal.azure.com) of de [rest API](https://docs.microsoft.com/rest/api/searchmanagement/) gebruiken om de waarde en het sleutel type te retour neren.  
 
 > [!NOTE]  
->  Het wordt gezien als een slechte beveiligings procedure om gevoelige gegevens op te geven `api-key` , zoals een in de aanvraag-URI. Daarom accepteert Azure Cognitive Search alleen een query sleutel als een `api-key` in de query teken reeks en moet u dit voor komen, tenzij de inhoud van uw index openbaar moet zijn. Als algemene regel wordt u aangeraden om uw `api-key` als aanvraag header door te geven.  
+>  Het wordt gezien als een slechte beveiligings procedure om gevoelige gegevens op te geven, zoals een `api-key` in de aanvraag-URI. Daarom accepteert Azure Cognitive Search alleen een query sleutel als een `api-key` in de query teken reeks en moet u dit voor komen, tenzij de inhoud van uw index openbaar moet zijn. Als algemene regel wordt u aangeraden om uw `api-key` als aanvraag header door te geven.  
 
 ## <a name="find-existing-keys"></a>Bestaande sleutels zoeken
 
 U kunt toegangs sleutels verkrijgen in de portal of via de [beheer rest API](https://docs.microsoft.com/rest/api/searchmanagement/). Zie [beheer-en query-API-sleutels beheren](search-security-api-keys.md)voor meer informatie.
 
-1. Meld u aan bij de [Azure-portal](https://portal.azure.com).
+1. Meld u aan bij [Azure Portal](https://portal.azure.com).
 2. Vermeld de [Zoek Services](https://portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Search%2FsearchServices) voor uw abonnement.
-3. Selecteer de service en klik op de pagina overzicht op **instellingen** >**sleutels** om de beheer-en query sleutels weer te geven.
+3. Selecteer de service en klik op de pagina overzicht op **instellingen**  > **sleutels** om de beheer-en query sleutels weer te geven.
 
    ![Portal-pagina, instellingen, sectie sleutels](media/search-security-overview/settings-keys.png)
 
@@ -55,9 +55,9 @@ Query sleutels worden gebruikt voor alleen-lezen toegang tot documenten in een i
 
 Het beperken van toegang en bewerkingen in client-apps is essentieel voor het beveiligen van de zoek assets op uw service. Gebruik altijd een query sleutel in plaats van een beheerders sleutel voor query's die afkomstig zijn uit een client-app.
 
-1. Meld u aan bij de [Azure-portal](https://portal.azure.com).
+1. Meld u aan bij [Azure Portal](https://portal.azure.com).
 2. Vermeld de [Zoek Services](https://portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Search%2FsearchServices) voor uw abonnement.
-3. Selecteer de service en klik op de pagina overzicht op **instellingen** >**sleutels**.
+3. Selecteer de service en klik op de pagina overzicht op **instellingen**  > **sleutels**.
 4. Klik op **query sleutels beheren**.
 5. Gebruik de query sleutel die al is gegenereerd voor uw service of maak 50 nieuwe query sleutels. De standaard query sleutel heeft geen naam, maar aanvullende query sleutels kunnen worden benoemd voor beheer baarheid.
 
@@ -72,7 +72,7 @@ Het beperken van toegang en bewerkingen in client-apps is essentieel voor het be
 
 Voor elke service worden twee beheer sleutels gemaakt, zodat u een primaire sleutel kunt draaien met behulp van de secundaire sleutel voor bedrijfs continuïteit.
 
-1. Op de pagina **instellingen** >**sleutels** kopieert u de secundaire sleutel.
+1. Op de pagina **instellingen**  > **sleutels** kopieert u de secundaire sleutel.
 2. Voor alle toepassingen moet u de API-sleutel instellingen bijwerken voor gebruik van de secundaire sleutel.
 3. Genereer de primaire sleutel opnieuw.
 4. Werk alle toepassingen bij om de nieuwe primaire sleutel te gebruiken.
@@ -93,7 +93,7 @@ Leden van de volgende rollen kunnen sleutels weer geven en opnieuw genereren: ei
 > [!Note]
 > Voor toegang op basis van identiteiten via zoek resultaten kunt u beveiligings filters maken om de resultaten te beperken op basis van identiteit, en documenten te verwijderen waarvoor de aanvrager geen toegang moet hebben. Zie [beveiligings filters](search-security-trimming-for-azure-search.md) en [veilig met Active Directory](search-security-trimming-for-azure-search-with-aad.md)voor meer informatie.
 
-## <a name="see-also"></a>Zie ook
+## <a name="see-also"></a>Zie tevens
 
 + [Toegangs beheer op basis van rollen in azure Cognitive Search](search-security-rbac.md)
 + [Beheren met PowerShell](search-manage-powershell.md) 

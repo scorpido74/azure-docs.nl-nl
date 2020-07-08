@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 03/20/2018
-ms.openlocfilehash: 2471c29f559df5c347c62ceb4c7fd9b4ae1e5eec
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 385f4a9ff1c299f49a514ad63bb3c8d633d8c191
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77657330"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85552816"
 ---
 # <a name="gather-insights-about-your-dns-infrastructure-with-the-dns-analytics-preview-solution"></a>Inzichten over uw DNS-infra structuur verzamelen met de preview-oplossing van DNS-analyse
 
@@ -35,10 +35,10 @@ De volgende tabel beschrijft de verbonden bronnen die worden ondersteund door de
 
 | **Verbonden bron** | **Ondersteuning** | **Beschrijving** |
 | --- | --- | --- |
-| [Windows-agents](../platform/agent-windows.md) | Ja | De oplossing verzamelt DNS-gegevens van Windows-agents. |
-| [Linux-agents](../learn/quick-collect-linux-computer.md) | Nee | De oplossing verzamelt geen DNS-gegevens van direct Linux-agents. |
-| [Beheergroep System Center Operations Manager](../platform/om-agents.md) | Ja | De oplossing verzamelt DNS-gegevens van agents in een verbonden Operations Manager-beheer groep. Een directe verbinding van de Operations Manager agent naar Azure Monitor is niet vereist. Gegevens worden doorgestuurd van de beheer groep naar de Log Analytics-werk ruimte. |
-| [Azure-opslag account](../platform/collect-azure-metrics-logs.md) | Nee | Azure Storage wordt niet gebruikt door de oplossing. |
+| [Windows-agents](../platform/agent-windows.md) | Yes | De oplossing verzamelt DNS-gegevens van Windows-agents. |
+| [Linux-agents](../learn/quick-collect-linux-computer.md) | No | De oplossing verzamelt geen DNS-gegevens van direct Linux-agents. |
+| [Beheergroep System Center Operations Manager](../platform/om-agents.md) | Yes | De oplossing verzamelt DNS-gegevens van agents in een verbonden Operations Manager-beheer groep. Een directe verbinding van de Operations Manager agent naar Azure Monitor is niet vereist. Gegevens worden doorgestuurd van de beheer groep naar de Log Analytics-werk ruimte. |
+| [Azure-opslag account](../platform/collect-azure-metrics-logs.md) | No | Azure Storage wordt niet gebruikt door de oplossing. |
 
 ### <a name="data-collection-details"></a>Details van gegevens verzameling
 
@@ -74,7 +74,7 @@ Als u micro soft monitoring agent gebruikt om verbinding te maken met uw Log Ana
 Als uw Operations Manager-beheer groep is verbonden met uw Log Analytics-werk ruimte, worden de volgende Management Packs geïnstalleerd in Operations Manager wanneer u deze oplossing toevoegt. Er is geen vereiste configuratie of onderhoud van deze Management Packs:
 
 - Micro soft DNS data collector Intelligence Pack (micro soft. intelligence packs. DNS)
-- Micro soft System Center Advisor DNS-analyse-configuratie (micro soft. intelligence Pack. DNS. Configuration)
+- Micro soft System Center Advisor DNS-analyse-configuratie (Microsoft.IntelligencePack.Dns.Configuratie)
 
 Zie [Operations Manager koppelen aan Log Analytics](../platform/om-agents.md) voor meer informatie over de manier waarop uw management packs voor oplossingen worden bijgewerkt.
 
@@ -159,7 +159,7 @@ U kunt deze query's gebruiken als uitgangs punt voor het maken van uw eigen quer
 
 Op de pagina zoeken in Logboeken kunt u een query maken. U kunt de zoek resultaten filteren met behulp van facet besturings elementen. U kunt ook geavanceerde query's maken om uw resultaten te transformeren, te filteren en te rapporteren. Begin met de volgende query's:
 
-1. Typ `DnsEvents` in het **vak Zoek opdracht**om alle DNS-gebeurtenissen weer te geven die zijn gegenereerd door de DNS-servers die worden beheerd door de oplossing. De resultaten lijst de logboek gegevens voor alle gebeurtenissen met betrekking tot opzoek query's, dynamische registraties en configuratie wijzigingen.
+1. Typ in het **vak Zoek opdracht** `DnsEvents` om alle DNS-gebeurtenissen weer te geven die zijn gegenereerd door de DNS-servers die worden beheerd door de oplossing. De resultaten lijst de logboek gegevens voor alle gebeurtenissen met betrekking tot opzoek query's, dynamische registraties en configuratie wijzigingen.
 
     ![Zoeken in DnsEvents-logboek](./media/dns-analytics/log-search-dnsevents.png)  
 
@@ -169,7 +169,7 @@ Op de pagina zoeken in Logboeken kunt u een query maken. U kunt de zoek resultat
 
     c. Als u de logboek gegevens voor configuratie wijzigingen wilt weer geven, selecteert u **ConfigurationChange** als **subtype** filter in het facet besturings element aan de linkerkant. Een tabel met een lijst met alle configuratie wijzigings gebeurtenissen voor de geselecteerde tijds periode wordt weer gegeven.
 
-1. Typ `DnsInventory` in het **vak Zoek opdracht**om alle DNS-inventaris gegevens weer te geven voor de DNS-servers die worden beheerd door de oplossing. De resultaten lijst met de logboek gegevens voor DNS-servers, DNS-zones en bron records.
+1. Typ in het **vak Zoek opdracht** `DnsInventory` om alle DNS-inventaris gegevens weer te geven voor de DNS-servers die worden beheerd door de oplossing. De resultaten lijst met de logboek gegevens voor DNS-servers, DNS-zones en bron records.
 
     ![Zoeken in DnsInventory-logboek](./media/dns-analytics/log-search-dnsinventory.png)
     
@@ -179,7 +179,7 @@ Veelvoorkomende stappen voor probleem oplossing:
 
 1. Ontbrekende DNS-Zoek gegevens: als u dit probleem wilt oplossen, probeert u het configuratie bestand opnieuw in te stellen of zojuist de configuratie pagina in de portal te laden. Als u de instelling opnieuw wilt instellen, wijzigt u een instelling in een andere waarde, wijzigt u deze in de oorspronkelijke waarde en slaat u de configuratie op.
 
-## <a name="feedback"></a>Feedback
+## <a name="suggestions"></a>Suggesties
 
 Als u feedback wilt geven, gaat u naar de [pagina log Analytics UserVoice](https://aka.ms/dnsanalyticsuservoice) om ideeën te plaatsen voor DNS-analyse functies waarmee u kunt werken. 
 

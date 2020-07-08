@@ -1,14 +1,14 @@
 ---
-title: Veelvoorkomende problemen oplossen
+title: Veelvoorkomende fouten oplossen
 description: Meer informatie over het oplossen van problemen met het maken, toewijzen en verwijderen van blauw drukken, zoals beleids schendingen en Blue para meter-functies.
-ms.date: 01/15/2020
+ms.date: 06/29/2020
 ms.topic: troubleshooting
-ms.openlocfilehash: 7306e344a479008a87164a954c4444d375950b0b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: d1dcd88fd6f7a9ab5035a5977ab5d50f3e6caf54
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "76157080"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85557518"
 ---
 # <a name="troubleshoot-errors-using-azure-blueprints"></a>Problemen met Azure-blauw drukken oplossen
 
@@ -55,11 +55,11 @@ Blauw drukken-para meters die zijn functies worden verwerkt voordat ze worden do
 
 #### <a name="cause"></a>Oorzaak
 
-Het door geven van een blauw druk-para meter die `[resourceGroup().tags.myTag]`gebruikmaakt van een functie, zoals, naar een artefact resulteert in het verwerkte resultaat van de functie die wordt ingesteld op het artefact in plaats van de dynamische functie.
+Het door geven van een blauw druk-para meter die gebruikmaakt van een functie, zoals `[resourceGroup().tags.myTag]` , naar een artefact resulteert in het verwerkte resultaat van de functie die wordt ingesteld op het artefact in plaats van de dynamische functie.
 
 #### <a name="resolution"></a>Oplossing
 
-Als u een functie wilt door geven door middel van `[` een para meter, moet u de volledige teken reeks escapen, zodat de blauw druk-para meter eruit ziet. `[[resourceGroup().tags.myTag]` Het escape teken resulteert in blauw drukken om de waarde te behandelen als een teken reeks bij het verwerken van de blauw druk. Blauw drukken plaatst vervolgens de functie op het artefact, zodat deze dynamisch kan worden uitgevoerd. Zie [syntaxis en expressies in azure Resource Manager-sjablonen](../../../azure-resource-manager/templates/template-expressions.md)voor meer informatie.
+Als u een functie wilt door geven door middel van een para meter, moet u de volledige teken reeks escapen, `[` zodat de blauw druk-para meter eruit ziet `[[resourceGroup().tags.myTag]` . Het escape teken resulteert in blauw drukken om de waarde te behandelen als een teken reeks bij het verwerken van de blauw druk. Blauw drukken plaatst vervolgens de functie op het artefact, zodat deze dynamisch kan worden uitgevoerd. Zie [syntaxis en expressies in azure Resource Manager-sjablonen](../../../azure-resource-manager/templates/template-expressions.md)voor meer informatie.
 
 ## <a name="delete-errors"></a>Fouten verwijderen
 
@@ -82,5 +82,5 @@ Blauw druk-toewijzingen in een niet-Terminal status worden automatisch gemarkeer
 Als u het probleem niet ziet of als u het probleem niet kunt oplossen, gaat u naar een van de volgende kanalen voor meer ondersteuning:
 
 - Krijg antwoorden van Azure-experts via [Azure-forums](https://azure.microsoft.com/support/forums/).
-- Maak verbinding [@AzureSupport](https://twitter.com/azuresupport) met – het officiële Microsoft Azure account voor het verbeteren van de gebruikers ervaring door de Azure-community te verbinden met de juiste resources: antwoorden, ondersteuning en experts.
+- Maak verbinding met [@AzureSupport](https://twitter.com/azuresupport) – het officiële Microsoft Azure account voor het verbeteren van de gebruikers ervaring door de Azure-community te verbinden met de juiste resources: antwoorden, ondersteuning en experts.
 - Als u meer hulp nodig hebt, kunt u een ondersteunings incident voor Azure opslaan. Ga naar de [ondersteunings site van Azure](https://azure.microsoft.com/support/options/) en selecteer **ondersteuning verkrijgen**.

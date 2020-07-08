@@ -1,6 +1,6 @@
 ---
 title: Gegevens bronnen verbinden met Azure Sentinel | Microsoft Docs
-description: Meer informatie over hoe u gegevens bronnen verbindt met Azure Sentinel.
+description: Meer informatie over hoe u verbinding maakt met gegevens bronnen zoals micro soft Threat Protection, Microsoft 365 en Office 365, Azure AD, ATP en Cloud App Security aan Azure Sentinel.
 services: sentinel
 documentationcenter: na
 author: yelevin
@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/04/2019
 ms.author: yelevin
-ms.openlocfilehash: 3ff031cb9e4dd45de180eca4b726aa47f0fd52e1
-ms.sourcegitcommit: bf8c447dada2b4c8af017ba7ca8bfd80f943d508
+ms.openlocfilehash: a2b9c1602ead56b35c46508ef4d414145eb07432
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/25/2020
-ms.locfileid: "85367281"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85555511"
 ---
 # <a name="connect-data-sources"></a>Verbinding maken met gegevensbronnen
 
@@ -67,7 +67,7 @@ De volgende gegevens verbindings methoden worden ondersteund door Azure Sentinel
     - [Citrix Analytics (Security)](connect-citrix-analytics.md)
     - [F5 BIG-IP](connect-f5-big-ip.md)
     - [Forcepoint DLP](connect-forcepoint-dlp.md)
-    - [Perimeter 81-logboeken](connect-perimeter-81-logs.md)
+    - [Perimeter 81 logs](connect-perimeter-81-logs.md)
     - [Squadra Technologies secRMM](connect-squadra-secrmm.md)
     - [Symantec ICDX](connect-symantec.md)
     - [Zimperium](connect-zimperium-mtd.md)
@@ -80,7 +80,7 @@ De volgende gegevens verbindings methoden worden ondersteund door Azure Sentinel
     De Azure Sentinel-agent, die in feite de Log Analytics-agent is, converteert CEF-Logboeken in een indeling die door Log Analytics kan worden opgenomen. Afhankelijk van het type apparaat, wordt de agent rechtstreeks op het apparaat geïnstalleerd of op een speciale, op Linux gebaseerde logboek doorstuur server. De agent voor Linux ontvangt gebeurtenissen van de syslog-daemon via UDP, maar als een Linux-machine verwacht een hoog volume aan syslog-gebeurtenissen te verzamelen, worden ze via TCP van de syslog-daemon naar de agent verzonden en van daaruit naar Log Analytics.
 
     - **Firewalls, proxy's en eind punten:**
-        - [AI Vectra-detectie](connect-ai-vectra-detect.md)
+        - [AI Vectra Detect](connect-ai-vectra-detect.md)
         - [Check Point](connect-checkpoint.md)
         - [Cisco ASA](connect-cisco.md)
         - [ExtraHop Reveal(x)](connect-extrahop.md)

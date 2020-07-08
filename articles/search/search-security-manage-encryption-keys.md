@@ -8,12 +8,12 @@ ms.author: natinimn
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 01/08/2020
-ms.openlocfilehash: 548ebf5b0d5836383b74326516fbe47b1b25f60f
-ms.sourcegitcommit: 971a3a63cf7da95f19808964ea9a2ccb60990f64
+ms.openlocfilehash: f6bda61960efd9a5e176f8792601e315ba96bcca
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/19/2020
-ms.locfileid: "85080182"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85553284"
 ---
 # <a name="encryption-at-rest-of-content-in-azure-cognitive-search-using-customer-managed-keys-in-azure-key-vault"></a>Versleuteling: op rest van inhoud in azure Cognitive Search met door de klant beheerde sleutels in Azure Key Vault
 
@@ -26,7 +26,7 @@ Versleuteling met door de klant beheerde sleutels wordt geconfigureerd op het ka
 Sleutels hoeven niet allemaal in hetzelfde Key Vault te zijn. Eén zoek service kan fungeren als host voor meerdere versleutelde indexen of synoniemen die zijn versleuteld met hun eigen door de klant beheerde versleutelings sleutels die zijn opgeslagen in verschillende sleutel kluizen.  U kunt ook indexen en synoniemen toewijzen in dezelfde service die niet zijn versleuteld met door de klant beheerde sleutels. 
 
 > [!IMPORTANT] 
-> Deze functie is beschikbaar in de [rest API versie 2019-05-06](https://docs.microsoft.com/rest/api/searchservice/) en [.net SDK versie 8,0-Preview](search-dotnet-sdk-migration-version-9.md). Er is momenteel geen ondersteuning voor het configureren van door de klant beheerde versleutelings sleutels in de Azure Portal. De zoek service moet na januari 2019 zijn gemaakt en kan geen gratis (gedeelde) service zijn.
+> Deze functie is beschikbaar in de [rest API](https://docs.microsoft.com/rest/api/searchservice/) en [.net SDK versie 8,0-Preview](search-dotnet-sdk-migration-version-9.md). Er is momenteel geen ondersteuning voor het configureren van door de klant beheerde versleutelings sleutels in de Azure Portal. De zoek service moet na januari 2019 zijn gemaakt en kan geen gratis (gedeelde) service zijn.
 
 ## <a name="prerequisites"></a>Vereisten
 

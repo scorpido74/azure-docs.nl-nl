@@ -8,12 +8,12 @@ ms.author: luisca
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: fc1f1b5f7015efc604d461a5e292184398cba44f
-ms.sourcegitcommit: ac4a365a6c6ffa6b6a5fbca1b8f17fde87b4c05e
+ms.openlocfilehash: c9b0b34202f35babcaa3dce37331d31edf641254
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/10/2020
-ms.locfileid: "83005496"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85557264"
 ---
 # <a name="how-to-map-ai-enriched-fields-to-a-searchable-index"></a>AI-verrijkte velden toewijzen aan een Doorzoek bare index
 
@@ -25,10 +25,10 @@ Uitvoer veld Toewijzingen zijn vereist voor het verplaatsen van inhoud van verri
 > We hebben onlangs de functionaliteit van toewijzings functies ingeschakeld voor uitvoer veld toewijzingen. Zie [veld toewijzings functies](https://docs.microsoft.com/azure/search/search-indexer-field-mappings#field-mapping-functions) voor meer informatie over het toewijzen van functies
 
 ## <a name="use-outputfieldmappings"></a>OutputFieldMappings gebruiken
-Als u velden wilt toewijzen `outputFieldMappings` , voegt u deze toe aan de definitie van de Indexeer functie, zoals hieronder wordt weer gegeven:
+Als u velden wilt toewijzen, voegt `outputFieldMappings` u deze toe aan de definitie van de Indexeer functie, zoals hieronder wordt weer gegeven:
 
 ```http
-PUT https://[servicename].search.windows.net/indexers/[indexer name]?api-version=2019-05-06
+PUT https://[servicename].search.windows.net/indexers/[indexer name]?api-version=2020-06-30
 api-key: [admin key]
 Content-Type: application/json
 ```
@@ -78,7 +78,7 @@ Het pad in een sourceFieldName kan bestaan uit één element of meerdere element
 
 Als er meerdere elementen zijn, worden deze ' afgevlakt ' in een matrix die elk van de elementen bevat. 
 
-In het ```/document/content/organizations/*/description``` voor beeld worden de gegevens in het veld *beschrijvingen* als een vlakke matrix met beschrijvingen weer gegeven voordat de indexering wordt geïndexeerd:
+```/document/content/organizations/*/description```In het voor beeld worden de gegevens in het veld *beschrijvingen* als een vlakke matrix met beschrijvingen weer gegeven voordat de indexering wordt geïndexeerd:
 
 ```
  ["Microsoft is a company in Seattle","LinkedIn's office is in San Francisco"]
@@ -117,7 +117,7 @@ Dit is een belang rijk beginsel, dus we bieden een ander voor beeld. Stel dat u 
 
 We gaan ervan uit dat uw index een veld bevat met de naam ' ziekten ' van het type verzameling (EDM. String), waar u elk van de namen van de entiteiten wilt opslaan. 
 
-Dit kan eenvoudig worden gedaan met behulp van\*het symbool ' ', als volgt:
+Dit kan eenvoudig worden gedaan met behulp van het \* symbool ' ', als volgt:
 
 ```json
     "outputFieldMappings": [

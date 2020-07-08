@@ -11,14 +11,14 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 22ab3e7403069ed1b579631b88c2ac2c41191ecd
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: bf21f2ea5aacb36f3a76034e99b748bf4c6c363b
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82181321"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85554762"
 ---
-# <a name="how-to-plan-your-hybrid-azure-active-directory-join-implementation"></a>Procedure: uw hybride Azure Active Directory deelname-implementatie plannen
+# <a name="how-to-plan-your-hybrid-azure-active-directory-join-implementation"></a>Procedure: de implementatie van uw hybride Azure Active Directory-koppeling plannen
 
 Op een vergelijk bare manier als een gebruiker is een apparaat een andere core-identiteit die u wilt beveiligen en gebruiken om uw resources op elk gewenst moment en vanaf elke locatie te beveiligen. Met een van de volgende methoden kunt u dit doel bereiken door apparaat-id's in azure AD te maken en beheren:
 
@@ -41,13 +41,12 @@ In dit artikel wordt ervan uitgegaan dat u bekend bent met de [Inleiding tot app
 
 Als u uw hybride implementatie van Azure AD wilt plannen, moet u vertrouwd zijn met:
 
-|   |   |
-| --- | --- |
-| ![Selecteren][1] | Ondersteunde apparaten controleren |
-| ![Selecteren][1] | Bekijk de dingen die u moet weten |
-| ![Selecteren][1] | Gecontroleerde validatie van hybride Azure AD-deelname controleren |
-| ![Selecteren][1] | Selecteer uw scenario op basis van uw identiteits infrastructuur |
-| ![Selecteren][1] | On-premises AD-UPN-ondersteuning voor hybride Azure AD-deelname controleren |
+> [!div class="checklist"]
+> - Ondersteunde apparaten controleren
+> - Bekijk de dingen die u moet weten
+> - Gecontroleerde validatie van hybride Azure AD-deelname controleren
+> - Selecteer uw scenario op basis van uw identiteits infrastructuur
+> - On-premises AD-UPN-ondersteuning voor hybride Azure AD-deelname controleren
 
 ## <a name="review-supported-devices"></a>Ondersteunde apparaten controleren
 
@@ -121,14 +120,14 @@ Hybride Azure AD-deelname werkt met zowel beheerde als federatieve omgevingen, a
 
 Een beheerde omgeving kan worden geïmplementeerd via een [PHS (Password Hash Sync)](/azure/active-directory/hybrid/whatis-phs) of door [middel van verificatie (PTA)](/azure/active-directory/hybrid/how-to-connect-pta) met [naadloze eenmalige aanmelding](/azure/active-directory/hybrid/how-to-connect-sso).
 
-Voor deze scenario's is het niet nodig om een Federatie server te configureren voor authenticatie.
+Voor deze scenario's is het niet nodig om een federatieve server te configureren voor authenticatie.
 
 ### <a name="federated-environment"></a>Federatieve omgeving
 
 Een gefedereerde omgeving moet een id-provider hebben die de volgende vereisten ondersteunt. Als u een gefedereerde omgeving hebt met Active Directory Federation Services (AD FS), worden de onderstaande vereisten al ondersteund.
 
-- **WIAORMULTIAUTHN claim:** Deze claim is vereist voor het uitvoeren van hybride Azure AD-deelname voor Windows-apparaten op lagere niveaus.
-- **WS-Trust-Protocol:** Dit protocol is vereist voor de verificatie van Windows Current Hybrid Azure AD gekoppelde apparaten met Azure AD. Wanneer u AD FS gebruikt, moet u de volgende WS-Trust-eind punten inschakelen:`/adfs/services/trust/2005/windowstransport`  
+- **WIAORMULTIAUTHN-claim:** Deze claim is verwijst voor een hybride Azure AD-koppeling oplossen voor downlevel Windows-apparaten.
+- **WS-Trust-protocol:** Dit protocol is vereist voor de verificatie van Windows Current Hybrid Azure AD gekoppelde apparaten met Azure AD. Wanneer u AD FS gebruikt, moet u de volgende WS-Trust-eind punten inschakelen: `/adfs/services/trust/2005/windowstransport`  
 `/adfs/services/trust/13/windowstransport`  
   `/adfs/services/trust/2005/usernamemixed` 
   `/adfs/services/trust/13/usernamemixed`
@@ -136,7 +135,7 @@ Een gefedereerde omgeving moet een id-provider hebben die de volgende vereisten 
   `/adfs/services/trust/13/certificatemixed` 
 
 > [!WARNING] 
-> **ADFS/Services/Trust/2005/windowstransport** of **ADFS/Services/Trust/13/windowstransport** moeten alleen worden ingeschakeld als intranet gerichte eind punten en mogen niet worden weer gegeven als een extranet gerichte eind punten via de Web Application proxy. Zie [Windows-eind punten van WS-Trust uitschakelen op de proxy](/windows-server/identity/ad-fs/deployment/best-practices-securing-ad-fs#disable-ws-trust-windows-endpoints-on-the-proxy-ie-from-extranet)voor meer informatie over het uitschakelen van WS-Trust Windows-eind punten. U kunt zien welke eind punten zijn ingeschakeld via de AD FS-beheer console onder **service** > -**eind punten**.
+> **ADFS/Services/Trust/2005/windowstransport** of **ADFS/Services/Trust/13/windowstransport** moeten alleen worden ingeschakeld als intranet gerichte eind punten en mogen niet worden weer gegeven als een extranet gerichte eind punten via de Web Application proxy. Zie voor meer informatie over het uitschakelen van WS-Trust Windows eindpunten [Disable WS-Trust Windows endpoints on the proxy](/windows-server/identity/ad-fs/deployment/best-practices-securing-ad-fs#disable-ws-trust-windows-endpoints-on-the-proxy-ie-from-extranet). Onder **Service** > **Eindpunten** in de AD FS-beheerconsole kunt u zien welke eindpunten zijn ingeschakeld.
 
 > [!NOTE]
 > Azure AD biedt geen ondersteuning voor Smart Cards of certificaten in beheerde domeinen.
@@ -160,7 +159,7 @@ Soms kunnen de UPN-namen van uw on-premises AD-gebruikers afwijken van uw Azure 
 
 De onderstaande tabel bevat gedetailleerde informatie over de ondersteuning voor deze on-premises AD-Upn's in Windows 10 Hybrid Azure AD-deelname
 
-| Type on-premises AD-UPN | Domeintype | Windows 10-versie | Beschrijving |
+| Type on-premises AD-UPN | Domeintype | Windows 10-versie | Description |
 | ----- | ----- | ----- | ----- |
 | Bare | Federatief | Van 1703 release | Algemeen verkrijgbaar |
 | Niet-routeerbaar | Federatief | Van 1803 release | Algemeen verkrijgbaar |
@@ -170,8 +169,8 @@ De onderstaande tabel bevat gedetailleerde informatie over de ondersteuning voor
 ## <a name="next-steps"></a>Volgende stappen
 
 > [!div class="nextstepaction"]
-> [Hybride Azure Active Directory-koppeling configureren voor de federatieve omgeving](hybrid-azuread-join-federated-domains.md)
-> [Hybrid Azure Active Directory-koppeling configureren voor een beheerde omgeving](hybrid-azuread-join-managed-domains.md)
+> [Hybride Azure Active Directory-koppeling configureren voor federatieve omgeving](hybrid-azuread-join-federated-domains.md) 
+>  [Hybride Azure Active Directory-deelname configureren voor een beheerde omgeving](hybrid-azuread-join-managed-domains.md)
 
 <!--Image references-->
 [1]: ./media/hybrid-azuread-join-plan/12.png

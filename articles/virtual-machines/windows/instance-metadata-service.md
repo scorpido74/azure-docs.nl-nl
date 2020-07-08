@@ -11,12 +11,12 @@ ms.workload: infrastructure-services
 ms.date: 03/30/2020
 ms.author: sukumari
 ms.reviewer: azmetadatadev
-ms.openlocfilehash: 195d9f6da88639cc3b4299519e90bf682bc743d9
-ms.sourcegitcommit: e3c28affcee2423dc94f3f8daceb7d54f8ac36fd
+ms.openlocfilehash: 102808d716c080102cce4c02921637101da9fab7
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/17/2020
-ms.locfileid: "84888595"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85553084"
 ---
 # <a name="azure-instance-metadata-service"></a>Meta gegevens service van Azure-exemplaar
 
@@ -24,7 +24,8 @@ De Azure Instance Metadata Service (IMDS) bevat informatie over actieve exemplar
 Deze informatie omvat de gebeurtenissen SKU, opslag, netwerk configuraties en gepland onderhoud. Zie [meta data api's](#metadata-apis)voor een volledige lijst van de beschik bare gegevens.
 Instance Metadata Service is beschikbaar voor exemplaren van de VM-schaalset en de virtuele machine. Het is alleen beschikbaar voor het uitvoeren van Vm's die zijn gemaakt/beheerd met behulp van [Azure Resource Manager](https://docs.microsoft.com/rest/api/resources/).
 
-De Instance Metadata Service van Azure is een REST-eind punt dat beschikbaar is via een bekend, niet-routeerbaar IP-adres ( `169.254.169.254` ), het kan alleen worden geopend vanuit de VM.
+De IMDS van Azure is een REST-eind punt dat beschikbaar is via een bekend, niet-routeerbaar IP-adres ( `169.254.169.254` ). het kan alleen worden geopend vanuit de virtuele machine. De communicatie tussen de virtuele machine en de IMDS verlaat nooit de host.
+Het is best practice om ervoor te hebben dat uw HTTP-clients Web-proxy's in de virtuele machine overs Laan tijdens het uitvoeren van een query op IMDS en behandelen `169.254.169.254` hetzelfde als [`168.63.129.16`](https://docs.microsoft.com/azure/virtual-network/what-is-ip-address-168-63-129-16) .
 
 ## <a name="security"></a>Beveiliging
 
@@ -46,7 +47,7 @@ Hieronder ziet u de voorbeeld code voor het ophalen van alle meta gegevens voor 
 **Aanvraag**
 
 ```powershell
-Invoke-RestMethod -Headers @{"Metadata"="true"} -Method GET -Uri http://169.254.169.254/metadata/instance?api-version=2019-06-01
+Invoke-RestMethod -Headers @{"Metadata"="true"} -Method GET -NoProxy -Uri http://169.254.169.254/metadata/instance?api-version=2019-06-01
 ```
 
 **Beantwoord**
@@ -181,7 +182,7 @@ API | Standaard gegevens indeling | Andere indelingen
 Om toegang te krijgen tot een niet-standaard antwoord indeling, geeft u de aangevraagde indeling op als een query reeks parameter in de aanvraag. Bijvoorbeeld:
 
 ```powershell
-Invoke-RestMethod -Headers @{"Metadata"="true"} -Method GET -Uri "http://169.254.169.254/metadata/instance?api-version=2017-08-01&format=text"
+Invoke-RestMethod -Headers @{"Metadata"="true"} -Method GET -NoProxy -Uri "http://169.254.169.254/metadata/instance?api-version=2017-08-01&format=text"
 ```
 
 > [!NOTE]
@@ -205,7 +206,7 @@ Als er geen versie is opgegeven, wordt er een fout geretourneerd met een lijst m
 **Aanvraag**
 
 ```powershell
-Invoke-RestMethod -Headers @{"Metadata"="true"} -Method GET -Uri http://169.254.169.254/metadata/instance
+Invoke-RestMethod -Headers @{"Metadata"="true"} -Method GET -NoProxy -Uri http://169.254.169.254/metadata/instance
 ```
 
 **Beantwoord**
@@ -225,7 +226,7 @@ Invoke-RestMethod -Headers @{"Metadata"="true"} -Method GET -Uri http://169.254.
 
 Metadata Service bevat meerdere Api's die verschillende gegevens bronnen vertegenwoordigen.
 
-API | Beschrijving | Geïntroduceerde versie
+API | Description | Geïntroduceerde versie
 ----|-------------|-----------------------
 /attested | Zie [attested data](#attested-data) | 2018-10-01
 /identity | Zie [een toegangs Token ophalen](../../active-directory/managed-identities-azure-resources/how-to-use-vm-token.md) | 2018-02-01
@@ -236,7 +237,7 @@ API | Beschrijving | Geïntroduceerde versie
 
 Met instance API worden de belang rijke meta gegevens voor de VM-exemplaren weer gegeven, met inbegrip van de VM, het netwerk en de opslag. U kunt toegang krijgen tot de volgende categorieën via instance/Compute:
 
-Gegevens | Beschrijving | Geïntroduceerde versie
+Gegevens | Description | Geïntroduceerde versie
 -----|-------------|-----------------------
 azEnvironment | Azure-omgeving waarin de virtuele machine wordt uitgevoerd | 2018-10-01
 customData | Deze functie is momenteel uitgeschakeld. Deze documentatie wordt bijgewerkt wanneer deze beschikbaar wordt | 2019-02-01
@@ -271,7 +272,7 @@ Als service provider kan het nodig zijn om het aantal Vm's waarop de software wo
 **Aanvraag**
 
 ```powershell
-Invoke-RestMethod -Headers @{"Metadata"="true"} -Method GET -Uri "http://169.254.169.254/metadata/instance/compute/vmId?api-version=2017-08-01&format=text"
+Invoke-RestMethod -Headers @{"Metadata"="true"} -Method GET -NoProxy -Uri "http://169.254.169.254/metadata/instance/compute/vmId?api-version=2017-08-01&format=text"
 ```
 
 **Beantwoord**
@@ -289,7 +290,7 @@ U kunt deze gegevens rechtstreeks opvragen via de Instance Metadata Service.
 **Aanvraag**
 
 ```powershell
-Invoke-RestMethod -Headers @{"Metadata"="true"} -Method GET -Uri "http://169.254.169.254/metadata/instance/compute/platformFaultDomain?api-version=2017-08-01&format=text"
+Invoke-RestMethod -Headers @{"Metadata"="true"} -Method GET -NoProxy -Uri "http://169.254.169.254/metadata/instance/compute/platformFaultDomain?api-version=2017-08-01&format=text"
 ```
 
 **Beantwoord**
@@ -305,7 +306,7 @@ Als service provider kunt u een ondersteunings oproep krijgen waarin u meer info
 **Aanvraag**
 
 ```powershell
-Invoke-RestMethod -Headers @{"Metadata"="true"} -Method GET -Uri http://169.254.169.254/metadata/instance/compute?api-version=2019-06-01
+Invoke-RestMethod -Headers @{"Metadata"="true"} -Method GET -NoProxy -Uri http://169.254.169.254/metadata/instance/compute?api-version=2019-06-01
 ```
 
 **Beantwoord**
@@ -405,7 +406,7 @@ Azure heeft verschillende soevereine Clouds, zoals [Azure Government](https://az
 **Aanvraag**
 
 ```powershell
-Invoke-RestMethod -Headers @{"Metadata"="true"} -Method GET -Uri "http://169.254.169.254/metadata/instance/compute/azEnvironment?api-version=2018-10-01&format=text"
+Invoke-RestMethod -Headers @{"Metadata"="true"} -Method GET -NoProxy -Uri "http://169.254.169.254/metadata/instance/compute/azEnvironment?api-version=2018-10-01&format=text"
 ```
 
 **Beantwoord**
@@ -427,7 +428,7 @@ De Cloud en de waarden van de Azure-omgeving worden hieronder weer gegeven.
 
 De meta gegevens van het netwerk maken deel uit van de exemplaar-API. De volgende netwerk categorieën zijn beschikbaar via het eind punt van het exemplaar/netwerk.
 
-Gegevens | Beschrijving | Geïntroduceerde versie
+Gegevens | Description | Geïntroduceerde versie
 -----|-------------|-----------------------
 IPv4-privateIpAddress | Lokaal IPv4-adres van de virtuele machine | 2017-04-02
 IPv4-publicIpAddress | Openbaar IPv4-adres van de virtuele machine | 2017-04-02
@@ -444,7 +445,7 @@ macAddress | Mac-adres van VM | 2017-04-02
 **Aanvraag**
 
 ```powershell
-Invoke-RestMethod -Headers @{"Metadata"="true"} -Method GET -Uri http://169.254.169.254/metadata/instance/network?api-version=2017-08-01
+Invoke-RestMethod -Headers @{"Metadata"="true"} -Method GET -NoProxy -Uri http://169.254.169.254/metadata/instance/network?api-version=2017-08-01
 ```
 
 **Beantwoord**
@@ -483,7 +484,7 @@ Invoke-RestMethod -Headers @{"Metadata"="true"} -Method GET -Uri http://169.254.
 #### <a name="sample-2-retrieving-public-ip-address"></a>Voor beeld 2: een openbaar IP-adres ophalen
 
 ```powershell
-Invoke-RestMethod -Headers @{"Metadata"="true"} -Method GET -Uri "http://169.254.169.254/metadata/instance/network/interface/0/ipv4/ipAddress/0/publicIpAddress?api-version=2017-08-01&format=text"
+Invoke-RestMethod -Headers @{"Metadata"="true"} -Method GET -NoProxy -Uri "http://169.254.169.254/metadata/instance/network/interface/0/ipv4/ipAddress/0/publicIpAddress?api-version=2017-08-01&format=text"
 ```
 
 ## <a name="storage-metadata"></a>Meta gegevens van opslag
@@ -495,7 +496,7 @@ Het opslag profiel van een virtuele machine is onderverdeeld in drie categorieë
 
 Het verwijzings object voor de afbeelding bevat de volgende informatie over de installatie kopie van het besturings systeem:
 
-Gegevens    | Beschrijving
+Gegevens    | Description
 --------|-----------------
 id      | Resource-id
 offer   | Aanbieding van de installatie kopie van het platform of de Marketplace
@@ -505,7 +506,7 @@ versie | Versie van de installatie kopie van het platform of de Marketplace
 
 Het object van de besturingssysteem schijf bevat de volgende informatie over de besturingssysteem schijf die wordt gebruikt door de virtuele machine:
 
-Gegevens    | Beschrijving
+Gegevens    | Description
 --------|-----------------
 in | Cache vereisten
 createOption | Informatie over de manier waarop de virtuele machine is gemaakt
@@ -520,7 +521,7 @@ writeAcceleratorEnabled | Hiermee wordt aangegeven of Write Accelerator is inges
 
 De matrix gegevens schijven bevat een lijst met gegevens schijven die zijn gekoppeld aan de VM. Elk gegevens schijf object bevat de volgende informatie:
 
-Gegevens    | Beschrijving
+Gegevens    | Description
 --------|-----------------
 in | Cache vereisten
 createOption | Informatie over de manier waarop de virtuele machine is gemaakt
@@ -539,7 +540,7 @@ In het volgende voor beeld ziet u hoe u de opslag gegevens van de virtuele machi
 **Aanvraag**
 
 ```powershell
-Invoke-RestMethod -Headers @{"Metadata"="true"} -Method GET -Uri http://169.254.169.254/metadata/instance/compute/storageProfile?api-version=2019-06-01
+Invoke-RestMethod -Headers @{"Metadata"="true"} -Method GET -NoProxy -Uri http://169.254.169.254/metadata/instance/compute/storageProfile?api-version=2019-06-01
 ```
 
 **Beantwoord**
@@ -611,7 +612,7 @@ Labels zijn mogelijk toegepast op uw virtuele Azure-machine om ze logisch in een
 **Aanvraag**
 
 ```powershell
-Invoke-RestMethod -Headers @{"Metadata"="true"} -Method GET -Uri "http://169.254.169.254/metadata/instance/compute/tags?api-version=2018-10-01&format=text"
+Invoke-RestMethod -Headers @{"Metadata"="true"} -Method GET -NoProxy -Uri "http://169.254.169.254/metadata/instance/compute/tags?api-version=2018-10-01&format=text"
 ```
 
 **Beantwoord**
@@ -625,7 +626,7 @@ Het `tags` veld is een teken reeks met de Tags gescheiden door punt komma's. Dez
 **Aanvraag**
 
 ```powershell
-Invoke-RestMethod -Headers @{"Metadata"="true"} -Method GET -Uri http://169.254.169.254/metadata/instance/compute/tagsList?api-version=2019-06-04
+Invoke-RestMethod -Headers @{"Metadata"="true"} -Method GET -NoProxy -Uri http://169.254.169.254/metadata/instance/compute/tagsList?api-version=2019-06-04
 ```
 
 **Beantwoord**
@@ -659,7 +660,7 @@ Een deel van het scenario dat wordt verzorgd door Instance Metadata Service is o
 **Aanvraag**
 
 ```powershell
-Invoke-RestMethod -Headers @{"Metadata"="true"} -Method GET -Uri "http://169.254.169.254/metadata/attested/document?api-version=2018-10-01&nonce=1234567890"
+Invoke-RestMethod -Headers @{"Metadata"="true"} -Method GET -NoProxy -Uri "http://169.254.169.254/metadata/attested/document?api-version=2018-10-01&nonce=1234567890"
 ```
 
 > [!NOTE]
@@ -682,7 +683,7 @@ Nonce is een optionele teken reeks van tien cijfers. Als u dit niet opgeeft, ret
 De hand tekening-blob is een ondertekende [pkcs7](https://aka.ms/pkcs7) -versie van het document. Het bevat het certificaat dat wordt gebruikt voor het ondertekenen samen met de VM-Details zoals vmId, SKU, nonce, subscriptionId, time stamp voor het maken en verlopen van het document en de plannings informatie over de installatie kopie. De plan gegevens worden alleen ingevuld voor installatie kopieën van Azure Marketplace. Het certificaat kan worden geëxtraheerd uit het antwoord en wordt gebruikt om te valideren dat het antwoord geldig is en afkomstig is van Azure.
 Het document bevat de volgende velden:
 
-Gegevens | Beschrijving
+Gegevens | Description
 -----|------------
 nonce | Een teken reeks die optioneel kan worden meegeleverd met de aanvraag. Als er geen nonce is opgegeven, wordt de huidige UTC-tijds tempel gebruikt
 plannen | Het [abonnement op de Azure Marketplace-installatie kopie](https://docs.microsoft.com/rest/api/compute/virtualmachines/createorupdate#plan). Bevat de plan-id (naam), product afbeelding of aanbieding (product) en uitgever-ID (uitgever).
@@ -698,7 +699,7 @@ Marketplace-leveranciers willen ervoor zorgen dat hun software alleen in azure w
 
 ```powershell
 # Get the signature
-$attestedDoc = Invoke-RestMethod -Headers @{"Metadata"="true"} -Method GET -Uri http://169.254.169.254/metadata/attested/document?api-version=2019-04-30
+$attestedDoc = Invoke-RestMethod -Headers @{"Metadata"="true"} -Method GET -NoProxy -Uri http://169.254.169.254/metadata/attested/document?api-version=2019-04-30
 # Decode the signature
 $signature = [System.Convert]::FromBase64String($attestedDoc.signature)
 ```

@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: identity-protection
 ms.topic: how-to
-ms.date: 10/18/2019
+ms.date: 06/29/2020
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahandle
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 324737611d2d05411012050fcf7140bee48d35b0
-ms.sourcegitcommit: 374e47efb65f0ae510ad6c24a82e8abb5b57029e
+ms.openlocfilehash: 2f5e5a4075705e43dc0ac37181bf33b078013177
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/28/2020
-ms.locfileid: "85505831"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85555219"
 ---
 # <a name="get-started-with-azure-active-directory-identity-protection-and-microsoft-graph"></a>Aan de slag met Azure Active Directory Identity Protection en Microsoft Graph
 
@@ -30,113 +30,56 @@ Microsoft Graph is het micro soft Unified API-eind punt en de start van [Azure A
 
 Er zijn vier stappen voor het verkrijgen van toegang tot identiteits beveiligings gegevens via Microsoft Graph:
 
-1. Haal uw domein naam op.
-2. Maak een nieuwe app-registratie. 
-3. Gebruik dit geheim en enkele andere informatie over de verificatie bij Microsoft Graph, waar u een verificatie token ontvangt. 
-4. Gebruik dit token om aanvragen voor het API-eind punt te maken en gegevens van identiteits beveiliging terug te halen.
+- [Domein naam ophalen](#retrieve-your-domain-name)
+- [Een nieuwe app-registratie maken](#create-a-new-app-registration)
+- [API-machtigingen configureren](#configure-api-permissions)
+- [Een geldige referentie configureren](#configure-a-valid-credential)
 
-Voordat u aan de slag gaat, hebt u het volgende nodig:
+### <a name="retrieve-your-domain-name"></a>Domein naam ophalen 
 
-* Beheerders bevoegdheden voor het maken van de toepassing in azure AD
-* De naam van het domein van de Tenant (bijvoorbeeld contoso.onmicrosoft.com)
+1. Meld u aan bij [Azure Portal](https://portal.azure.com).  
+1. Blader naar **Azure Active Directory**  >  **aangepaste domein namen**. 
+1. Noteer het `.onmicrosoft.com` domein, u hebt deze informatie nodig in een latere stap.
 
-## <a name="retrieve-your-domain-name"></a>Domein naam ophalen 
+### <a name="create-a-new-app-registration"></a>Een nieuwe app-registratie maken
 
-1. [Meld](https://portal.azure.com) u aan bij uw Azure portal als beheerder. 
-1. Klik op **Active Directory**in het navigatie deel venster aan de linkerkant. 
-
-   ![Een toepassing maken](./media/howto-identity-protection-graph-api/41.png)
-
-1. Klik in de sectie **beheren** op **Eigenschappen**.
-
-   ![Een toepassing maken](./media/howto-identity-protection-graph-api/42.png)
-
-1. Kopieer uw domein naam.
-
-## <a name="create-a-new-app-registration"></a>Een nieuwe app-registratie maken
-
-1. Klik op de pagina **Active Directory** in de sectie **beheren** op **app-registraties**.
-
-   ![Een toepassing maken](./media/howto-identity-protection-graph-api/42.png)
-
-1. Klik in het menu aan de bovenkant op **nieuwe toepassing registreren**.
-
-   ![Een toepassing maken](./media/howto-identity-protection-graph-api/43.png)
-
+1. Ga in het Azure Portal naar **Azure Active Directory**  >  **app-registraties**.
+1. Selecteer **Nieuwe registratie**.
 1. Voer de volgende stappen uit op de pagina **maken** :
-
-   ![Een toepassing maken](./media/howto-identity-protection-graph-api/44.png)
-
-   1. Typ in het tekstvak **naam** een naam voor de toepassing (bijvoorbeeld: Azure AD Risk Detection API-toepassing).
-
-   1. Als **type**, selecteer **Webtoepassing en/of Web-API**.
-
-   1. Typ in het tekstvak **URL voor aanmelden** `http://localhost` .
-
-   1. Klik op **Create**.
-1. Als u de pagina **instellingen** wilt openen, klikt u in de lijst toepassingen op uw zojuist gemaakte app-registratie. 
+   1. Typ in het tekstvak **naam** een naam voor de toepassing (bijvoorbeeld: Azure AD-risico detectie-API).
+   1. Selecteer onder **ondersteunde account typen**het type accounts dat de api's gaat gebruiken.
+   1. Selecteer **Registreren**.
 1. Kopieer de **toepassings-id**.
 
-## <a name="grant-your-application-permission-to-use-the-api"></a>Uw toepassing machtigen om de API te gebruiken
+### <a name="configure-api-permissions"></a>API-machtigingen configureren
 
-1. Klik op de pagina **instellingen** op **vereiste machtigingen**.
-
-   ![Een toepassing maken](./media/howto-identity-protection-graph-api/15.png)
-
-1. Klik op de pagina **vereiste machtigingen** in de werk balk aan de bovenkant op **toevoegen**.
-
-   ![Een toepassing maken](./media/howto-identity-protection-graph-api/16.png)
-
+1. Selecteer de **API-machtigingen**van de **toepassing** die u hebt gemaakt.
+1. Klik op de pagina **geconfigureerde machtigingen** in de werk balk aan de bovenkant op **een machtiging toevoegen**.
 1. Klik op de pagina **API-toegang toevoegen** op **een API selecteren**.
-
-   ![Een toepassing maken](./media/howto-identity-protection-graph-api/17.png)
-
 1. Selecteer **Microsoft Graph**op de pagina **een API selecteren** en klik vervolgens op **selecteren**.
+1. Op de pagina **API-machtigingen voor aanvragen** : 
+   1. Selecteer **Toepassingsmachtigingen**.
+   1. Schakel de selectie vakjes naast `IdentityRiskEvent.Read.All` en in `IdentityRiskyUser.Read.All` .
+   1. Selecteer **Machtigingen toevoegen**.
+1. **Toestemming van beheerder voor domein verlenen** selecteren 
 
-   ![Een toepassing maken](./media/howto-identity-protection-graph-api/18.png)
+### <a name="configure-a-valid-credential"></a>Een geldige referentie configureren
 
-1. Klik op de pagina **API-toegang toevoegen** op **machtigingen selecteren**.
+1. Selecteer **certificaten & geheimen**uit de **toepassing** die u hebt gemaakt.
+1. Onder **client geheimen**selecteert u **Nieuw client geheim**.
+   1. Geef het client geheim een **Beschrijving** en stel de verval periode in op basis van het beleid van uw organisatie.
+   1. Selecteer **Toevoegen**.
 
-   ![Een toepassing maken](./media/howto-identity-protection-graph-api/19.png)
-
-1. Klik op de pagina **toegang inschakelen** op **alle informatie over identiteits risico lezen**en klik vervolgens op **selecteren**.
-
-   ![Een toepassing maken](./media/howto-identity-protection-graph-api/20.png)
-
-1. Klik op de pagina **API-toegang toevoegen** op **gereed**.
-
-   ![Een toepassing maken](./media/howto-identity-protection-graph-api/21.png)
-
-1. Klik op de pagina **vereiste machtigingen** op **machtigingen verlenen**en klik vervolgens op **Ja**.
-
-   ![Een toepassing maken](./media/howto-identity-protection-graph-api/22.png)
-
-## <a name="get-an-access-key"></a>Een toegangssleutel opvragen
-
-1. Klik op de pagina **instellingen** op **sleutels**.
-
-   ![Een toepassing maken](./media/howto-identity-protection-graph-api/23.png)
-
-1. Voer de volgende stappen uit op de pagina **sleutels** :
-
-   ![Een toepassing maken](./media/howto-identity-protection-graph-api/24.png)
-
-   1. Typ een beschrijving in het tekstvak **sleutel beschrijving** (bijvoorbeeld *Azure AD-risico detectie*).
-   1. Als **duur**, selecteert u **in 1 jaar**.
-   1. Klik op **Opslaan**.
-   1. Kopieer de sleutel waarde en plak deze in een veilige locatie.   
-   
    > [!NOTE]
    > Als u deze sleutel kwijtraakt, gaat u terug naar deze sectie en maakt u een nieuwe sleutel. Bewaar deze sleutel een geheim: iedereen met toegang tot uw gegevens kan.
-   > 
 
 ## <a name="authenticate-to-microsoft-graph-and-query-the-identity-risk-detections-api"></a>Verificatie bij Microsoft Graph en query uitvoeren op de API voor detectie van identiteits Risico's
 
 Op dit moment hebt u het volgende nodig:
 
 - De naam van het domein van de Tenant
-- De client-ID 
-- De sleutel 
+- De toepassings-ID (client) 
+- Het client geheim of-certificaat 
 
 Als u zich wilt verifiëren, verzendt u een post-aanvraag naar `https://login.microsoft.com` met de volgende para meters in de hoofd tekst:
 
@@ -145,7 +88,7 @@ Als u zich wilt verifiëren, verzendt u een post-aanvraag naar `https://login.mi
 - client_id:\<your client ID\>
 - client_secret:\<your key\>
 
-Als dit is gelukt, wordt er een verificatie token geretourneerd.  
+Als deze aanvraag is voltooid, wordt een verificatie token geretourneerd.  
 Maak een header met de volgende para meter om de API aan te roepen:
 
 ```
@@ -154,9 +97,11 @@ Maak een header met de volgende para meter om de API aan te roepen:
 
 Bij het verifiëren vindt u het token type en toegangs token in het geretourneerde token.
 
-Deze header verzenden als een aanvraag naar de volgende API-URL:`https://graph.microsoft.com/beta/identityRiskEvents`
+Deze header verzenden als een aanvraag naar de volgende API-URL:`https://graph.microsoft.com/v1.0/identityProtection/riskDetections`
 
 Het antwoord, indien geslaagd, is een verzameling identiteits risico detecties en gekoppelde gegevens in de OData-JSON-indeling, die kan worden geparseerd en verwerkt zoals u dat wilt.
+
+### <a name="sample"></a>Voorbeeld
 
 Hier volgt een voorbeeld code voor het verifiëren en aanroepen van de API met behulp van Power shell.  
 Voeg gewoon uw client-ID, de geheime sleutel en het Tenant domein toe.
@@ -177,7 +122,7 @@ Voeg gewoon uw client-ID, de geheime sleutel en het Tenant domein toe.
     if ($oauth.access_token -ne $null) {
         $headerParams = @{'Authorization'="$($oauth.token_type) $($oauth.access_token)"}
 
-        $url = "https://graph.microsoft.com/beta/identityRiskEvents"
+        $url = "https://graph.microsoft.com/v1.0/identityProtection/riskDetections"
         Write-Output $url
 
         $myReport = (Invoke-WebRequest -UseBasicParsing -Headers $headerParams -Uri $url)

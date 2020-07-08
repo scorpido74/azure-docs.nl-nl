@@ -8,12 +8,12 @@ ms.author: yanacai
 ms.reviewer: jasonwhowell
 ms.topic: conceptual
 ms.date: 03/01/2017
-ms.openlocfilehash: 51d9060eaf4b30c696ef2a3b5f798a31e2f2a98a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 481b17651afbd2c0e0cf7a683ae0838a7f3fd88f
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "71309685"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85555589"
 ---
 # <a name="run-and-test-u-sql-with-azure-data-lake-u-sql-sdk"></a>U-SQL uitvoeren en testen met Azure Data Lake U-SQL SDK
 
@@ -36,7 +36,9 @@ De Data Lake U-SQL SDK vereist de volgende afhankelijkheden:
 
     ![Windows 10 SDK voor Data Lake-Hulpprogram Ma's voor Visual Studio](./media/data-lake-analytics-data-lake-tools-local-run/data-lake-tools-for-visual-studio-local-run-windows-10-sdk.png)
 
-  - Installeer [Data Lake-Hulpprogram ma's voor Visual Studio](https://aka.ms/adltoolsvs). U kunt de voorverpakte Visual C++-en Windows SDK-bestanden vinden in C:\Program Files (x86) \Microsoft Visual Studio 14 \ Common7\IDE\Extensions\Microsoft\ADL Tools\X.X.XXXX.X\CppSDK. In dit geval kan de lokale U-SQL-compiler de afhankelijkheden niet automatisch vinden. U moet het pad naar de CppSDK opgeven. U kunt de bestanden kopiëren naar een andere locatie of gebruiken als.
+  - Installeer [Data Lake-Hulpprogram ma's voor Visual Studio](https://aka.ms/adltoolsvs). U kunt de voorverpakte Visual C++-en Windows SDK-bestanden vinden op`C:\Program Files (x86)\Microsoft Visual Studio 14.0\Common7\IDE\Extensions\Microsoft\ADL Tools\X.X.XXXX.X\CppSDK.`
+
+    In dit geval kan de lokale U-SQL-compiler de afhankelijkheden niet automatisch vinden. U moet het pad naar de CppSDK opgeven. U kunt de bestanden kopiëren naar een andere locatie of gebruiken als.
 
 ## <a name="understand-basic-concepts"></a>Basis concepten begrijpen
 
@@ -63,44 +65,46 @@ U kunt zowel een relatief pad als een lokaal absoluut pad gebruiken in U-SQL-scr
 
 Bij het lokaal uitvoeren van het U-SQL-script wordt een werkmap gemaakt tijdens de compilatie onder de huidige actieve directory. Naast de compilatie uitvoer worden de benodigde runtime bestanden voor lokale uitvoeringen schaduw kopie gekopieerd naar deze werkmap. De hoofdmap van de werkmap heet ' ScopeWorkDir ' en de bestanden in de werkmap zijn als volgt:
 
-|Map/bestand|Map/bestand|Map/bestand|Definitie|Beschrijving|
+|Map/bestand|Map/bestand|Map/bestand|Definitie|Description|
 |--------------|--------------|--------------|----------|-----------|
 |C6A101DDCB470506| | |Hash-teken reeks van runtime versie|Schaduw kopie van runtime-bestanden die nodig zijn voor lokale uitvoering|
 | |Script_66AE4909AA0ED06C| |Script naam + hash-teken reeks van scriptpad|Compilatie-uitvoer en logboek registratie van uitvoerings stappen|
-| | |\_script\_. ABR|Uitvoer van compiler|Algebra-bestand|
-| | |\_ScopeCodeGen\_. *|Uitvoer van compiler|Gegenereerde beheerde code|
-| | |\_ScopeCodeGenEngine\_. *|Uitvoer van compiler|Gegenereerde systeem eigen code|
+| | |\_script \_ . ABR|Uitvoer van compiler|Algebra-bestand|
+| | |\_ScopeCodeGen \_ . *|Uitvoer van compiler|Gegenereerde beheerde code|
+| | |\_ScopeCodeGenEngine \_ . *|Uitvoer van compiler|Gegenereerde systeem eigen code|
 | | |assembly's waarnaar wordt verwezen|Assembly-verwijzing|Assembly bestanden waarnaar wordt verwezen|
 | | |deployed_resources|Resource-implementatie|Resource-implementatie bestanden|
-| | |xxxxxxxx. xxx [1.. n]\_\*. *|Uitvoerings logboek|Logboek van uitvoerings stappen|
-
+| | |xxxxxxxx. xxx [1.. n] \_ \* . *|Uitvoerings logboek|Logboek van uitvoerings stappen|
 
 ## <a name="use-the-sdk-from-the-command-line"></a>De SDK vanaf de opdracht regel gebruiken
 
 ### <a name="command-line-interface-of-the-helper-application"></a>Opdracht regel interface van de Help-toepassing
 
-Onder SDK directory\build\runtime is LocalRunHelper. exe de opdracht regel hulpprogramma toepassing die interfaces biedt voor de meeste veelgebruikte functies voor lokaal uitvoeren. Houd er rekening mee dat zowel de opdracht als de para meters hoofdletter gevoelig zijn. Om het te activeren:
+Onder SDK directory\build\runtime is LocalRunHelper.exe de opdracht regel hulpprogramma toepassing die interfaces biedt voor de meeste veelgebruikte functies voor lokaal uitvoeren. Houd er rekening mee dat zowel de opdracht als de para meters hoofdletter gevoelig zijn. Om het te activeren:
 
-    LocalRunHelper.exe <command> <Required-Command-Arguments> [Optional-Command-Arguments]
+```console
+LocalRunHelper.exe <command> <Required-Command-Arguments> [Optional-Command-Arguments]
+```
 
-Voer LocalRunHelper. exe uit zonder argumenten of de **Help** -schakelaar om de Help-informatie weer te geven:
+Voer LocalRunHelper.exe uit zonder argumenten of met de schakel optie **Help** om de Help-informatie weer te geven:
 
-    > LocalRunHelper.exe help
-
-        Command 'help' :  Show usage information
-        Command 'compile' :  Compile the script
-        Required Arguments :
-            -Script param
-                    Script File Path
-        Optional Arguments :
-            -Shallow [default value 'False']
-                    Shallow compile
+```console
+> LocalRunHelper.exe help
+    Command 'help' :  Show usage information
+    Command 'compile' :  Compile the script
+    Required Arguments :
+        -Script param
+                Script File Path
+    Optional Arguments :
+        -Shallow [default value 'False']
+                Shallow compile
+```
 
 In de Help-informatie:
 
--  **Opdracht** geeft de naam van de opdracht.  
--  Het **vereiste argument** bevat de argumenten die moeten worden opgegeven.  
--  **Optioneel argument** bevat argumenten die optioneel zijn, met standaard waarden.  Optionele Booleaanse argumenten hebben geen para meters en hun vormgeving betekent negatief voor de standaard waarde.
+- **Opdracht** geeft de naam van de opdracht.  
+- Het **vereiste argument** bevat de argumenten die moeten worden opgegeven.  
+- **Optioneel argument** bevat argumenten die optioneel zijn, met standaard waarden.  Optionele Booleaanse argumenten hebben geen para meters en hun vormgeving betekent negatief voor de standaard waarde.
 
 ### <a name="return-value-and-logging"></a>Retour waarde en logboek registratie
 
@@ -112,19 +116,19 @@ Voor de lokale uitvoering van U-SQL is een opgegeven Data root vereist als lokal
 
 - Stel de omgevings variabele **SCOPE_CPP_SDK** in.
 
-    Als u micro soft Visual C++ en de Windows SDK krijgt door Data Lake-Hulpprogram Ma's voor Visual Studio te installeren, controleert u of u de volgende map hebt:
+  Als u micro soft Visual C++ en de Windows SDK krijgt door Data Lake-Hulpprogram Ma's voor Visual Studio te installeren, controleert u of u de volgende map hebt:
 
-        C:\Program Files (x86)\Microsoft Visual Studio 14.0\Common7\IDE\Extensions\Microsoft\Microsoft Azure Data Lake Tools for Visual Studio 2015\X.X.XXXX.X\CppSDK
+    `C:\Program Files (x86)\Microsoft Visual Studio 14.0\Common7\IDE\Extensions\Microsoft\Microsoft Azure Data Lake Tools for Visual Studio 2015\X.X.XXXX.X\CppSDK`
 
-    Definieer een nieuwe omgevings variabele met de naam **SCOPE_CPP_SDK** om naar deze map te verwijzen. Of kopieer de map naar de andere locatie en geef **SCOPE_CPP_SDK** op als dat.
+  Definieer een nieuwe omgevings variabele met de naam **SCOPE_CPP_SDK** om naar deze map te verwijzen. Of kopieer de map naar de andere locatie en geef **SCOPE_CPP_SDK** op als dat.
 
-    Naast het instellen van de omgevings variabele, kunt u het argument **-CppSDK** opgeven wanneer u de opdracht regel gebruikt. Dit argument overschrijft uw standaard omgevings variabele CppSDK.
+  Naast het instellen van de omgevings variabele, kunt u het argument **-CppSDK** opgeven wanneer u de opdracht regel gebruikt. Dit argument overschrijft uw standaard omgevings variabele CppSDK.
 
 - Stel de omgevings variabele **LOCALRUN_DATAROOT** in.
 
-    Definieer een nieuwe omgevings variabele met de naam **LOCALRUN_DATAROOT** die verwijst naar de hoofdmap van de gegevens.
+  Definieer een nieuwe omgevings variabele met de naam **LOCALRUN_DATAROOT** die verwijst naar de hoofdmap van de gegevens.
 
-    Naast het instellen van de omgevings variabele, kunt u het argument **-Data root** opgeven met het pad naar de hoofdmap wanneer u een opdracht regel gebruikt. Met dit argument wordt de standaard omgevings variabele van de gegevens basis overschreven. U moet dit argument toevoegen aan elke opdracht regel die u uitvoert, zodat u de standaard omgevings variabele van de gegevens basis voor alle bewerkingen kunt overschrijven.
+  Naast het instellen van de omgevings variabele, kunt u het argument **-Data root** opgeven met het pad naar de hoofdmap wanneer u een opdracht regel gebruikt. Met dit argument wordt de standaard omgevings variabele van de gegevens basis overschreven. U moet dit argument toevoegen aan elke opdracht regel die u uitvoert, zodat u de standaard omgevings variabele van de gegevens basis voor alle bewerkingen kunt overschrijven.
 
 ### <a name="sdk-command-line-usage-samples"></a>Voor beelden van SDK-opdracht regel gebruik
 
@@ -132,10 +136,11 @@ Voor de lokale uitvoering van U-SQL is een opgegeven Data root vereist als lokal
 
 De opdracht **uitvoeren** wordt gebruikt om het script te compileren en vervolgens gecompileerde resultaten uit te voeren. De opdracht regel argumenten zijn een combi natie van deze van **compileren** en **uitvoeren**.
 
-    LocalRunHelper run -Script path_to_usql_script.usql [optional_arguments]
+```console
+LocalRunHelper run -Script path_to_usql_script.usql [optional_arguments]
+```
 
 Hier volgen enkele optionele argumenten voor **uitvoeren**:
-
 
 |Argument|Standaardwaarde|Beschrijving|
 |--------|-------------|-----------|
@@ -153,10 +158,9 @@ Hier volgen enkele optionele argumenten voor **uitvoeren**:
 |-ScopeCEPTempPath|ratuur|Tijdelijk pad dat moet worden gebruikt voor het streamen van gegevens|
 |-OptFlags| |Door komma's gescheiden lijst met optimalisatie vlaggen|
 
-
 Hier volgt een voorbeeld:
 
-    LocalRunHelper run -Script d:\test\test1.usql -WorkDir d:\test\bin -CodeBehind -References "d:\asm\ref1.dll;d:\asm\ref2.dll" -UseDatabase testDB –Parallel 5 -Verbose
+`LocalRunHelper run -Script d:\test\test1.usql -WorkDir d:\test\bin -CodeBehind -References "d:\asm\ref1.dll;d:\asm\ref2.dll" -UseDatabase testDB –Parallel 5 -Verbose`
 
 Naast het combi neren van **compileren** en **uitvoeren**, kunt u de gecompileerde uitvoer bare bestanden afzonderlijk compileren en uitvoeren.
 
@@ -164,12 +168,13 @@ Naast het combi neren van **compileren** en **uitvoeren**, kunt u de gecompileer
 
 De **compiler** opdracht wordt gebruikt voor het compileren van een U-SQL-script naar uitvoer bare bestanden.
 
-    LocalRunHelper compile -Script path_to_usql_script.usql [optional_arguments]
+```console
+LocalRunHelper compile -Script path_to_usql_script.usql [optional_arguments]
+```
 
 Hier volgen enkele optionele argumenten voor **compileren**:
 
-
-|Argument|Beschrijving|
+|Argument|Description|
 |--------|-----------|
 | -CodeBehind [standaard waarde ' false ']|Het script heeft. cs-code achter|
 | -CppSDK [standaard waarde]|CppSDK Directory|
@@ -184,26 +189,33 @@ Hier volgen enkele optionele argumenten voor **compileren**:
 | -ScopeCEPTempPath [standaard waarde]|Tijdelijk pad dat moet worden gebruikt voor het streamen van gegevens|
 | -OptFlags [standaard waarde]|Door komma's gescheiden lijst met optimalisatie vlaggen|
 
-
 Hier volgen enkele gebruiks voorbeelden.
 
 Een U-SQL-script compileren:
 
-    LocalRunHelper compile -Script d:\test\test1.usql
+```console
+LocalRunHelper compile -Script d:\test\test1.usql
+```
 
 Compileer een U-SQL-script en stel de map Data-root in. Houd er rekening mee dat hiermee de omgevings variabele set wordt overschreven.
 
-    LocalRunHelper compile -Script d:\test\test1.usql –DataRoot c:\DataRoot
+```console
+LocalRunHelper compile -Script d:\test\test1.usql –DataRoot c:\DataRoot
+```
 
 Een U-SQL-script compileren en een werkmap, referentie-assembly en data base instellen:
 
-    LocalRunHelper compile -Script d:\test\test1.usql -WorkDir d:\test\bin -References "d:\asm\ref1.dll;d:\asm\ref2.dll" -UseDatabase testDB
+```console
+LocalRunHelper compile -Script d:\test\test1.usql -WorkDir d:\test\bin -References "d:\asm\ref1.dll;d:\asm\ref2.dll" -UseDatabase testDB
+```
 
 #### <a name="execute-compiled-results"></a>Gecompileerde resultaten uitvoeren
 
-De opdracht **uitvoeren** wordt gebruikt om gecompileerde resultaten uit te voeren.   
+De opdracht **uitvoeren** wordt gebruikt om gecompileerde resultaten uit te voeren.
 
-    LocalRunHelper execute -Algebra path_to_compiled_algebra_file [optional_arguments]
+```console
+LocalRunHelper execute -Algebra path_to_compiled_algebra_file [optional_arguments]
+```
 
 Hier volgen enkele optionele argumenten voor **uitvoeren**:
 
@@ -216,27 +228,28 @@ Hier volgen enkele optionele argumenten voor **uitvoeren**:
 
 Hier volgt een voor beeld van het gebruik:
 
-    LocalRunHelper execute -Algebra d:\test\workdir\C6A101DDCB470506\Script_66AE4909AA0ED06C\__script__.abr –DataRoot c:\DataRoot –Parallel 5
-
+```console
+LocalRunHelper execute -Algebra d:\test\workdir\C6A101DDCB470506\Script_66AE4909AA0ED06C\__script__.abr –DataRoot c:\DataRoot –Parallel 5
+```
 
 ## <a name="use-the-sdk-with-programming-interfaces"></a>De SDK met programmeer interfaces gebruiken
 
-De programmeer interfaces bevinden zich allemaal in LocalRunHelper. exe. U kunt ze gebruiken om de functionaliteit van de U-SQL-SDK en het C#-test raamwerk te integreren om uw U-SQL-script lokale test te schalen. In dit artikel gebruikt u het standaard test project van C#-eenheid om te laten zien hoe u deze interfaces kunt gebruiken om uw U-SQL-script te testen.
+De programmeer interfaces bevinden zich allemaal in de LocalRunHelper.exe. U kunt ze gebruiken om de functionaliteit van de U-SQL-SDK en het C#-test raamwerk te integreren om uw U-SQL-script lokale test te schalen. In dit artikel gebruikt u het standaard test project van C#-eenheid om te laten zien hoe u deze interfaces kunt gebruiken om uw U-SQL-script te testen.
 
 ### <a name="step-1-create-c-unit-test-project-and-configuration"></a>Stap 1: test project en configuratie van C#-eenheid maken
 
 - Maak een test project van een C#-eenheid via file > New > project > Visual C# > test project > unit test.
-- Voeg LocalRunHelper. exe toe als referentie voor het project. LocalRunHelper. exe bevindt zich in \build\runtime\LocalRunHelper.exe in Nuget package.
+- Voeg LocalRunHelper.exe toe als referentie voor het project. Het LocalRunHelper.exe bevindt zich op \build\runtime\LocalRunHelper.exe in het Nuget-pakket.
 
-    ![Naslag informatie voor Azure Data Lake U-SQL SDK toevoegen](./media/data-lake-analytics-u-sql-sdk/data-lake-analytics-u-sql-sdk-add-reference.png)
+   ![Naslag informatie voor Azure Data Lake U-SQL SDK toevoegen](./media/data-lake-analytics-u-sql-sdk/data-lake-analytics-u-sql-sdk-add-reference.png)
 
 - U-SQL SDK ondersteunt **alleen** x64-omgeving. Stel platform doel bouwen in op x64. U kunt instellen dat via Project eigenschap > bouwen > platform doel.
 
-    ![X64-project Azure Data Lake U-SQL-SDK configureren](./media/data-lake-analytics-u-sql-sdk/data-lake-analytics-u-sql-sdk-configure-x64.png)
+   ![X64-project Azure Data Lake U-SQL-SDK configureren](./media/data-lake-analytics-u-sql-sdk/data-lake-analytics-u-sql-sdk-configure-x64.png)
 
 - Zorg ervoor dat u uw test omgeving als x64 hebt ingesteld. In Visual Studio kunt u deze instellen met behulp van test-> test instellingen > architectuur van de standaard processor > x64.
 
-    ![X64-test omgeving Azure Data Lake U-SQL SDK configureren](./media/data-lake-analytics-u-sql-sdk/data-lake-analytics-u-sql-sdk-configure-test-x64.png)
+   ![X64-test omgeving Azure Data Lake U-SQL SDK configureren](./media/data-lake-analytics-u-sql-sdk/data-lake-analytics-u-sql-sdk-configure-test-x64.png)
 
 - Zorg ervoor dat u alle afhankelijkheids bestanden onder NugetPackage\build\runtime\ naar een werk directory van project kopieert die meestal onder ProjectFolder\bin\x64\Debug.
 
@@ -244,101 +257,88 @@ De programmeer interfaces bevinden zich allemaal in LocalRunHelper. exe. U kunt 
 
 Hieronder ziet U de voorbeeld code voor de U-SQL-script test. Voor het testen moet u scripts, invoer bestanden en verwachte uitvoer bestanden voorbereiden.
 
-    using System;
-    using Microsoft.VisualStudio.TestTools.UnitTesting;
-    using System.IO;
-    using System.Text;
-    using System.Security.Cryptography;
-    using Microsoft.Analytics.LocalRun;
-
-    namespace UnitTestProject1
+```usql
+using System;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
+using System.IO;
+using System.Text;
+using System.Security.Cryptography;
+using Microsoft.Analytics.LocalRun;
+namespace UnitTestProject1
+{
+    [TestClass]
+    public class USQLUnitTest
     {
-        [TestClass]
-        public class USQLUnitTest
+        [TestMethod]
+        public void TestUSQLScript()
         {
-            [TestMethod]
-            public void TestUSQLScript()
-            {
-                //Specify the local run message output path
-                StreamWriter MessageOutput = new StreamWriter("../../../log.txt");
-
-                LocalRunHelper localrun = new LocalRunHelper(MessageOutput);
-
-                //Configure the DateRoot path, Script Path and CPPSDK path
-                localrun.DataRoot = "../../../";
-                localrun.ScriptPath = "../../../Script/Script.usql";
-                localrun.CppSdkDir = "../../../CppSDK";
-
-                //Run U-SQL script
-                localrun.DoRun();
-
-                //Script output 
-                string Result = Path.Combine(localrun.DataRoot, "Output/result.csv");
-
-                //Expected script output
-                string ExpectedResult = "../../../ExpectedOutput/result.csv";
-
-                Test.Helpers.FileAssert.AreEqual(Result, ExpectedResult);
-
-                //Don't forget to close MessageOutput to get logs into file
-                MessageOutput.Close();
-            }
+            //Specify the local run message output path
+            StreamWriter MessageOutput = new StreamWriter("../../../log.txt");
+            LocalRunHelper localrun = new LocalRunHelper(MessageOutput);
+            //Configure the DateRoot path, Script Path and CPPSDK path
+            localrun.DataRoot = "../../../";
+            localrun.ScriptPath = "../../../Script/Script.usql";
+            localrun.CppSdkDir = "../../../CppSDK";
+            //Run U-SQL script
+            localrun.DoRun();
+            //Script output
+            string Result = Path.Combine(localrun.DataRoot, "Output/result.csv");
+            //Expected script output
+            string ExpectedResult = "../../../ExpectedOutput/result.csv";
+            Test.Helpers.FileAssert.AreEqual(Result, ExpectedResult);
+            //Don't forget to close MessageOutput to get logs into file
+            MessageOutput.Close();
         }
     }
-
-    namespace Test.Helpers
+}
+namespace Test.Helpers
+{
+    public static class FileAssert
     {
-        public static class FileAssert
+        static string GetFileHash(string filename)
         {
-            static string GetFileHash(string filename)
+            Assert.IsTrue(File.Exists(filename));
+            using (var hash = new SHA1Managed())
             {
-                Assert.IsTrue(File.Exists(filename));
-
-                using (var hash = new SHA1Managed())
-                {
-                    var clearBytes = File.ReadAllBytes(filename);
-                    var hashedBytes = hash.ComputeHash(clearBytes);
-                    return ConvertBytesToHex(hashedBytes);
-                }
-            }
-
-            static string ConvertBytesToHex(byte[] bytes)
-            {
-                var sb = new StringBuilder();
-
-                for (var i = 0; i < bytes.Length; i++)
-                {
-                    sb.Append(bytes[i].ToString("x"));
-                }
-                return sb.ToString();
-            }
-
-            public static void AreEqual(string filename1, string filename2)
-            {
-                string hash1 = GetFileHash(filename1);
-                string hash2 = GetFileHash(filename2);
-
-                Assert.AreEqual(hash1, hash2);
+                var clearBytes = File.ReadAllBytes(filename);
+                var hashedBytes = hash.ComputeHash(clearBytes);
+                return ConvertBytesToHex(hashedBytes);
             }
         }
+        static string ConvertBytesToHex(byte[] bytes)
+        {
+            var sb = new StringBuilder();
+            for (var i = 0; i < bytes.Length; i++)
+            {
+                sb.Append(bytes[i].ToString("x"));
+            }
+            return sb.ToString();
+        }
+        public static void AreEqual(string filename1, string filename2)
+        {
+            string hash1 = GetFileHash(filename1);
+            string hash2 = GetFileHash(filename2);
+            Assert.AreEqual(hash1, hash2);
+        }
     }
+}
+```
 
+### <a name="programming-interfaces-in-localrunhelperexe"></a>Programmeer interfaces in LocalRunHelper.exe
 
-### <a name="programming-interfaces-in-localrunhelperexe"></a>Programmeer interfaces in LocalRunHelper. exe
+LocalRunHelper.exe biedt de programmeer interfaces voor lokale U-SQL-compilatie,-uitvoering, enzovoort. De interfaces worden als volgt weer gegeven.
 
-LocalRunHelper. exe biedt de programmeer interfaces voor lokale U-SQL-compilatie,-uitvoering, enzovoort. De interfaces worden als volgt weer gegeven.
-
-**Constructor**
+### <a name="constructor"></a>Constructor
 
 open bare LocalRunHelper ([System. IO. TextWriter messageOutput = NULL])
 
-|Parameter|Type|Beschrijving|
+|Parameter|Type|Description|
 |---------|----|-----------|
 |messageOutput|System. IO. TextWriter|Stel voor uitvoer berichten in op NULL om console te gebruiken|
 
-**Eigenschappen**
+### <a name="properties"></a>Eigenschappen
 
-|Eigenschap|Type|Beschrijving|
+|Eigenschap|Type|Description|
 |--------|----|-----------|
 |AlgebraPath|tekenreeks|Het pad naar het algebra-bestand (algebra-bestand is een van de compilatie resultaten)|
 |CodeBehindReferences|tekenreeks|Als het script extra code achter verwijzingen bevat, geeft u de paden op, gescheiden door|
@@ -361,8 +361,7 @@ open bare LocalRunHelper ([System. IO. TextWriter messageOutput = NULL])
 |UseDataBase|tekenreeks|Geef de Data Base op die moet worden gebruikt voor code achter tijdelijke assembly registratie, standaard model|
 |WorkDir|tekenreeks|Voorkeurs werkmap|
 
-
-**Methode**
+### <a name="method"></a>Methode
 
 |Methode|Beschrijving|Opvragen|Parameter|
 |------|-----------|------|---------|
@@ -371,22 +370,21 @@ open bare LocalRunHelper ([System. IO. TextWriter messageOutput = NULL])
 |open bare BOOL DoRun ()|Het U-SQL-script uitvoeren (compileren en uitvoeren)|Waar op geslaagd| |
 |open bare BOOL IsValidRuntimeDir (pad naar teken reeks)|Controleren of het opgegeven pad een geldig runtime-pad is|Waar geldig|Het pad van de runtime Directory|
 
-
 ## <a name="faq-about-common-issue"></a>Veelgestelde vragen over het algemene probleem
 
-### <a name="error-1"></a>Fout 1:
-E_CSC_SYSTEM_INTERNAL: interne fout. Kan bestand of Assembly ' ScopeEngineManaged. dll ' of een van de bijbehorende afhankelijkheden niet laden. De opgegeven module is niet gevonden.
+### <a name="error-1"></a>Fout 1
+
+E_CSC_SYSTEM_INTERNAL: interne fout. Kan bestand of Assembly ' ScopeEngineManaged.dll ' of een van de bijbehorende afhankelijkheden niet laden. De opgegeven module is niet gevonden.
 
 Controleer het volgende:
 
 - Zorg ervoor dat u beschikt over een x64-omgeving. Het doel platform van de build en de test omgeving moeten x64 zijn, Zie **stap 1: C#-eenheids test project en configuratie hierboven maken** .
 - Zorg ervoor dat u alle afhankelijkheids bestanden onder NugetPackage\build\runtime\ naar werk directory van project hebt gekopieerd.
 
-
 ## <a name="next-steps"></a>Volgende stappen
 
-* Zie [Aan de slag met de Azure Data Lake Analytics U-SQL-taal](data-lake-analytics-u-sql-get-started.md) om U-SQL te leren.
-* Zie [toegang tot Diagnostische logboeken voor Azure data Lake Analytics voor](data-lake-analytics-diagnostic-logs.md)informatie over het vastleggen van diagnostische gegevens.
-* Zie [website logboeken analyseren met Azure data Lake Analytics](data-lake-analytics-analyze-weblogs.md)voor een complexere query.
-* Zie [taak browser en taak weergave gebruiken voor Azure data Lake Analytics taken voor](data-lake-analytics-data-lake-tools-view-jobs.md)het weer geven van taak Details.
-* Zie [de weer gave vertex Execution gebruiken in data Lake-Hulpprogram ma's voor Visual Studio](data-lake-analytics-data-lake-tools-use-vertex-execution-view.md)voor meer informatie over het gebruik van de vertex Execution-weer gave.
+- Zie [Aan de slag met de Azure Data Lake Analytics U-SQL-taal](data-lake-analytics-u-sql-get-started.md) om U-SQL te leren.
+- Zie [toegang tot Diagnostische logboeken voor Azure data Lake Analytics voor](data-lake-analytics-diagnostic-logs.md)informatie over het vastleggen van diagnostische gegevens.
+- Zie [website logboeken analyseren met Azure data Lake Analytics](data-lake-analytics-analyze-weblogs.md)voor een complexere query.
+- Zie [taak browser en taak weergave gebruiken voor Azure data Lake Analytics taken voor](data-lake-analytics-data-lake-tools-view-jobs.md)het weer geven van taak Details.
+- Zie [de weer gave vertex Execution gebruiken in data Lake-Hulpprogram ma's voor Visual Studio](data-lake-analytics-data-lake-tools-use-vertex-execution-view.md)voor meer informatie over het gebruik van de vertex Execution-weer gave.

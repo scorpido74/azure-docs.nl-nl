@@ -11,12 +11,12 @@ ms.topic: troubleshooting
 ms.date: 05/21/2019
 ms.author: kenwith
 ms.reviewer: japere
-ms.openlocfilehash: 9254e0ce9f27d95edb01359e53888078c1087381
-ms.sourcegitcommit: bc943dc048d9ab98caf4706b022eb5c6421ec459
+ms.openlocfilehash: 39a27ce3b3e7946504298451233b6054302c45f0
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/14/2020
-ms.locfileid: "84764650"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85555038"
 ---
 # <a name="debug-application-proxy-connector-issues"></a>Fouten opsporen in connector van toepassingsproxy 
 
@@ -40,7 +40,7 @@ Dit stroom diagram leidt u door de stappen voor het opsporen van fouten in een a
 
 ![Stroom diagram met stappen voor het opsporen van fouten in een connector](media/application-proxy-debug-connectors/application-proxy-connector-debugging-flowchart.png)
 
-|  | Bewerking | Beschrijving | 
+| Stap | Bewerking | Beschrijving |
 |---------|---------|---------|
 |1 | De connector groep zoeken die is toegewezen aan de app | U hebt waarschijnlijk een connector op meerdere servers geïnstalleerd. in dat geval moeten de connectors worden [toegewezen aan connector groepen](application-proxy-connector-groups.md#assign-applications-to-your-connector-groups). Zie [toepassingen op verschillende netwerken en locaties publiceren met connector groepen](application-proxy-connector-groups.md)voor meer informatie over connector groepen. |
 |2 | De connector installeren en een groep toewijzen | Als u geen connector hebt geïnstalleerd, raadpleegt u [een connector installeren en registreren](application-proxy-add-on-premises-application.md#install-and-register-a-connector).<br></br> Zie [probleem met het](application-proxy-connector-installation-problem.md)installeren van de connector als u problemen ondervindt bij het installeren van de connector.<br></br> Als de connector niet is toegewezen aan een groep, raadpleegt [u de connector toewijzen aan een groep](application-proxy-connector-groups.md#create-connector-groups).<br></br>Als de toepassing niet is toegewezen aan een connector groep, raadpleegt [u de toepassing toewijzen aan een connector groep](application-proxy-connector-groups.md#assign-applications-to-your-connector-groups).|

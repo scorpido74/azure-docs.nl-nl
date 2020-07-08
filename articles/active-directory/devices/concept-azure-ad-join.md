@@ -11,18 +11,18 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8e4521cb67ae95a1cd4a3e728a13e43bfd5773ab
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
+ms.openlocfilehash: ca08b81a71cd61e727b11bbeb88c0c235d25c5e6
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83737024"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85554905"
 ---
 # <a name="azure-ad-joined-devices"></a>Azure AD-gekoppelde apparaten
 
 Deelname aan Azure AD is bedoeld voor organisaties die alleen in de Cloud of alleen in de Cloud moeten worden opgenomen. Elke organisatie kan aan Azure AD gekoppelde apparaten implementeren, ongeacht de omvang of de branche. Azure AD-deelname werkt zelfs in een hybride omgeving en biedt toegang tot zowel Cloud-als on-premises apps en bronnen.
 
-|   | Azure AD-Join |
+| Azure AD-Join | Description |
 | --- | --- |
 | **Beschrijving** | Alleen opgenomen in azure AD waarvoor een organisatie account is vereist om zich aan te melden bij het apparaat |
 | **Primaire doel groep** | Alleen geschikt voor Cloud-en hybride organisaties. |

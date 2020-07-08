@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 17e6660548084d64fce38617ba4e80ccf197f3d3
-ms.sourcegitcommit: bf99428d2562a70f42b5a04021dde6ef26c3ec3a
+ms.openlocfilehash: d43e6e89faa8eca720e3aeafc873af1a18b9753b
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/23/2020
-ms.locfileid: "85253066"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85555016"
 ---
 # <a name="how-to-plan-your-azure-ad-join-implementation"></a>Procedure: uw Azure AD-koppelings implementatie plannen
 
@@ -32,15 +32,14 @@ In dit artikel wordt ervan uitgegaan dat u bekend bent met de [Inleiding tot App
 
 Als u de implementatie van Azure AD-deelname wilt plannen, moet u vertrouwd zijn met:
 
-|   |   |
-|---|---|
-|![Selecteren][1]|Uw scenario's controleren|
-|![Selecteren][1]|Uw identiteits infrastructuur controleren|
-|![Selecteren][1]|Uw Apparaatbeheer beoordelen|
-|![Selecteren][1]|Aandachtspunten voor toepassingen en bronnen|
-|![Selecteren][1]|Inzicht in uw inrichtings opties|
-|![Selecteren][1]|Enter prise State roaming configureren|
-|![Selecteren][1]|Voorwaardelijke toegang configureren|
+> [!div class="checklist"]
+> - Uw scenario's controleren
+> - Uw identiteits infrastructuur controleren
+> - Uw Apparaatbeheer beoordelen
+> - Aandachtspunten voor toepassingen en bronnen
+> - Inzicht in uw inrichtings opties
+> - Enter prise State roaming configureren
+> - Voorwaardelijke toegang configureren
 
 ## <a name="review-your-scenarios"></a>Uw scenario's controleren 
 
@@ -197,7 +196,7 @@ U kunt Azure AD-deelname inrichten met behulp van de volgende methoden:
  
 Hier volgt een vergelijking van deze drie benaderingen 
  
-|   | Self-service instellen | Windows Autopilot | Bulkinschrijving |
+| Element | Self-service instellen | Windows Autopilot | Bulkinschrijving |
 | --- | --- | --- | --- |
 | Gebruikers interactie vereist voor het instellen van | Ja | Ja | Nee |
 | IT-inspanningen vereisen | Nee | Ja | Ja |

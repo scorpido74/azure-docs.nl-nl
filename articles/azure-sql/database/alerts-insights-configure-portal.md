@@ -11,12 +11,12 @@ author: aamalvea
 ms.author: aamalvea
 ms.reviewer: jrasnik, carlrab
 ms.date: 05/04/2020
-ms.openlocfilehash: c48bc2602da70e20e2fb86d54697d42d70775846
-ms.sourcegitcommit: 58ff2addf1ffa32d529ee9661bbef8fbae3cddec
+ms.openlocfilehash: d03c1cad9692058c47dd643be9770284b207bb74
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/03/2020
-ms.locfileid: "84324660"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85553497"
 ---
 # <a name="create-alerts-for-azure-sql-database-and-azure-synapse-analytics-using-the-azure-portal"></a>Waarschuwingen maken voor Azure SQL Database en Azure Synapse Analytics met behulp van de Azure Portal
 [!INCLUDE[appliesto-sqldb-asa](../includes/appliesto-sqldb-asa.md)]
@@ -24,7 +24,7 @@ ms.locfileid: "84324660"
 
 ## <a name="overview"></a>Overzicht
 
-Dit artikel laat u zien hoe u waarschuwingen instelt voor data bases in Azure SQL Database en Azure Synapse Analytics (voorheen Azure SQL Data Warehouse) met behulp van de Azure Portal. Waarschuwingen kunnen u een e-mail sturen of een webhook aanroepen wanneer bepaalde metrische gegevens (zoals de grootte van de data base of het CPU-gebruik) de drempel waarde hebben bereikt. Dit artikel bevat ook aanbevolen procedures voor het instellen van waarschuwings perioden.
+Dit artikel laat u zien hoe u waarschuwingen instelt voor data bases in Azure SQL Database en Azure Synapse Analytics (voorheen Azure SQL Data Warehouse) met behulp van de Azure Portal. Waarschuwingen kunnen u een e-mail sturen of een webhook aanroepen wanneer bepaalde metrische gegevens (zoals de grootte van de data base of het CPU-gebruik) de drempel waarde hebben bereikt.
 
 > [!NOTE]
 > Zie [Create Alerts for Azure SQL Managed instance](../managed-instance/alerts-create.md)(Engelstalig) voor Azure SQL Managed instance-specifieke instructies.
@@ -52,7 +52,7 @@ U kunt informatie over waarschuwings regels configureren en ophalen met behulp v
 1. Zoek in de [Portal](https://portal.azure.com/)de resource die u wilt bewaken en selecteer deze.
 2. Selecteer **waarschuwingen** in het gedeelte bewaking. De tekst en het pictogram kunnen enigszins verschillen voor verschillende resources.  
 
-   ![Controleren](./media/alerts-insights-configure-portal/Alerts.png)
+   ![Bewaking](./media/alerts-insights-configure-portal/Alerts.png)
   
 3. Selecteer de knop **nieuwe waarschuwings regel** om de pagina **regel maken** te openen.
   ![Regel maken](./media/alerts-insights-configure-portal/create-rule.png)

@@ -12,12 +12,12 @@ ms.date: 10/24/2019
 ms.author: kenwith
 ms.reviewer: arvinh,luleon
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9691ecb8d742952ba4364dcda2b62c3829f79d60
-ms.sourcegitcommit: bc943dc048d9ab98caf4706b022eb5c6421ec459
+ms.openlocfilehash: cbefcec884fcf179c182cd50efeb58a0fc357378
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/14/2020
-ms.locfileid: "84760317"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85555128"
 ---
 # <a name="add-an-unlisted-non-gallery-application-to-your-azure-ad-organization"></a>Een niet-gevermeldde (niet-Gallery) toepassing toevoegen aan uw Azure AD-organisatie
 
@@ -58,19 +58,19 @@ In dit artikel wordt beschreven hoe u een niet-galerie toepassing kunt toevoegen
 
 ## <a name="configure-user-sign-in-properties"></a>Eigenschappen voor gebruikersaanmelding configureren
 
-1. Selecteer **Eigenschappen** om het deel venster Eigenschappen te openen om het te bewerken.
+1. Selecteer **Eigenschappen** om het deelvenster Eigenschappen te openen voor bewerken.
 
     ![Eigenschappen venster bewerken](media/add-non-gallery-app/edit-properties.png)
 
 2. Stel de volgende opties in om te bepalen hoe gebruikers die zijn toegewezen aan of niet zijn toegewezen aan de toepassing, zich kunnen aanmelden bij de toepassing en of een gebruiker de toepassing kan zien in het toegangs venster.
 
-    - Met **Ingeschakeld voor gebruikers voor aanmelden** wordt bepaald of gebruikers die zijn toegewezen aan de toepassing, zich kunnen aanmelden.
+    - **Ingeschakeld voor gebruikers om zich aan te melden,** wordt bepaald of gebruikers die zijn toegewezen aan de toepassing zich kunnen aanmelden.
     - **Gebruikers toewijzing vereist** bepaalt of gebruikers die niet zijn toegewezen aan de toepassing zich kunnen aanmelden.
     - Met **Zichtbaar voor gebruiker** wordt bepaald of gebruikers die zijn toegewezen aan een app, deze kunnen zien in het toegangsvenster en het startprogramma voor O365.
 
       Gedrag voor **toegewezen** gebruikers:
 
-       | Instellingen voor toepassingseigenschappen | | | Toegewezen gebruikerservaring | |
+       | Toepassings eigenschap | Toepassings eigenschap | Toepassings eigenschap | Toegewezen gebruikerservaring | Toegewezen gebruikerservaring |
        |---|---|---|---|---|
        | Ingeschakeld voor gebruikers voor aanmelden? | Gebruikerstoewijzing vereist? | Zichtbaar voor gebruiker? | Kunnen toegewezen gebruikers zich aanmelden? | Kunnen toegewezen gebruikers de toepassing zien?* |
        | ja | ja | ja | ja | ja  |
@@ -84,9 +84,9 @@ In dit artikel wordt beschreven hoe u een niet-galerie toepassing kunt toevoegen
 
       Gedrag voor **niet-toegewezen** gebruikers:
 
-       | Instellingen voor toepassingseigenschappen | | | Niet-toegewezen gebruikerservaring | |
+       | Toepassings eigenschap | Toepassings eigenschap | Toepassings eigenschap | Niet-toegewezen gebruikerservaring | Niet-toegewezen gebruikerservaring |
        |---|---|---|---|---|
-       | Ingeschakeld voor gebruikers om zich aan te melden? | Gebruikerstoewijzing vereist? | Zichtbaar voor gebruiker? | Kunnen niet-toegewezen gebruikers zich aanmelden? | Kunnen niet-toegewezen gebruikers de toepassing zien?* |
+       | Ingeschakeld voor gebruikers voor aanmelden? | Gebruikerstoewijzing vereist? | Zichtbaar voor gebruiker? | Kunnen niet-toegewezen gebruikers zich aanmelden? | Kunnen niet-toegewezen gebruikers de toepassing zien?* |
        | ja | ja | ja | nee  | nee   |
        | ja | ja | nee  | nee  | nee   |
        | ja | nee  | ja | ja | nee   |
@@ -102,12 +102,12 @@ In dit artikel wordt beschreven hoe u een niet-galerie toepassing kunt toevoegen
 
     ![Het logo wijzigen](media/add-non-gallery-app/change-logo.png)
 
-4. Wanneer u klaar bent, selecteert u **Opslaan**.
+4. Selecteer **Opslaan** wanneer u klaar bent.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Nu u de toepassing aan uw Azure AD-organisatie hebt toegevoegd, [kiest u de methode voor eenmalige aanmelding](what-is-single-sign-on.md#choosing-a-single-sign-on-method) die u wilt gebruiken en raadpleegt u het juiste artikel hieronder:
+Nu u de toepassing aan uw Azure AD-organisatie hebt toegevoegd, [kiest u de methode voor eenmalige aanmelding](what-is-single-sign-on.md#choosing-a-single-sign-on-method) die u wilt gebruiken. Raadpleeg hieronder het relevante artikel:
 
 - [Eenmalige aanmelding op basis van SAML configureren](configure-single-sign-on-non-gallery-applications.md)
-- [Eenmalige aanmelding met een wacht woord configureren](configure-password-single-sign-on-non-gallery-applications.md)
+- [Eenmalige aanmelding op basis van wachtwoord configureren](configure-password-single-sign-on-non-gallery-applications.md)
 - [Gekoppelde aanmelding configureren](configure-linked-sign-on.md)

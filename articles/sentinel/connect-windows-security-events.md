@@ -1,6 +1,6 @@
 ---
 title: Gegevens van Windows-beveiligings gebeurtenissen verbinden met Azure Sentinel | Microsoft Docs
-description: Meer informatie over het verbinden van Windows-beveiligings gebeurtenis gegevens met Azure Sentinel.
+description: Meer informatie over het gebruik van de connector voor beveiligings gebeurtenissen voor het streamen van alle beveiligings gebeurtenissen van uw Windows-systemen naar uw Azure Sentinel-werk ruimte. 
 services: sentinel
 documentationcenter: na
 author: yelevin
@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/22/2020
 ms.author: yelevin
-ms.openlocfilehash: 30055ba1befc68d015e3e3162d8db11a2916f3d4
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 8da05da1b4aa9966b7743bc38b09d1c4b34c8cc8
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80124972"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85555723"
 ---
 # <a name="connect-windows-security-events"></a>Verbinding maken met Windows-beveiligingsgebeurtenissen 
 
@@ -81,7 +81,7 @@ Uw Windows-beveiligings gebeurtenissen in azure-Sentinel verzamelen:
 
 1. Klik op **Update**.
 
-1. Als u het relevante schema in Log Analytics voor Windows-beveiligings gebeurtenissen wilt `SecurityEvent` gebruiken, typt u in het query venster.
+1. Als u het relevante schema in Log Analytics voor Windows-beveiligings gebeurtenissen wilt gebruiken, typt u `SecurityEvent` in het query venster.
 
 ## <a name="validate-connectivity"></a>Connectiviteit valideren
 
@@ -90,7 +90,7 @@ Het kan ongeveer 20 minuten duren totdat uw logboeken in Log Analytics worden we
 
 
 ## <a name="next-steps"></a>Volgende stappen
-In dit document hebt u geleerd hoe u Windows-beveiligings gebeurtenissen verbindt met Azure Sentinel. Raadpleeg de volgende artikelen voor meer informatie over Azure Sentinel:
-- Meer informatie over hoe u [inzicht krijgt in uw gegevens en mogelijke bedreigingen](quickstart-get-visibility.md).
+In dit document hebt u geleerd hoe u Windows-beveiligings gebeurtenissen verbindt met Azure Sentinel. Zie de volgende artikelen voor meer informatie over Azure Sentinel:
+- Meer informatie over het [verkrijgen van inzicht in uw gegevens en mogelijke bedreigingen](quickstart-get-visibility.md).
 - Ga aan de slag met het detecteren van bedreigingen met Azure Sentinel, met behulp [van ingebouwde](tutorial-detect-threats-built-in.md) of [aangepaste](tutorial-detect-threats-custom.md) regels.
 

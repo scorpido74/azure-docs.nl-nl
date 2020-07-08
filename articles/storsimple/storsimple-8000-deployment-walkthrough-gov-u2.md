@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 06/22/2017
 ms.author: alkohli
-ms.openlocfilehash: 22084f9c59070c2efaa112ebfbb0c5ecc647145e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: fbbb298dd9e5b568e6a1dc2c4ef731b8521f8308
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "68965890"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85556019"
 ---
 # <a name="deploy-your-on-premises-storsimple-device-in-the-government-portal"></a>Uw on-premises StorSimple-apparaat implementeren in de overheids Portal
 
@@ -28,7 +28,7 @@ ms.locfileid: "68965890"
 ## <a name="overview"></a>Overzicht
 Welkom bij de implementatie van Microsoft Azure StorSimple-apparaten. Deze zelf studies voor implementatie zijn van toepassing op de StorSimple 8000-serie met update 3-software of later in de Azure Government Portal. Deze reeks zelf studies bevat een configuratie controlelijst, een lijst met configuratie vereisten en gedetailleerde configuratie stappen voor uw StorSimple-apparaat.
 
-Bij de informatie in deze zelfstudies wordt ervan uitgegaan dat u de voorzorgsmaatregelen hebt gelezen en uw StorSimple-apparaat hebt uitgepakt, geplaatst en alle kabels hebt aangesloten. Als u dit nog moet doen, lees dan eerst de [voorzorgsmaatregelen](storsimple-safety.md). Volg de specifieke instructies van het apparaat om het apparaat uit te pakken, in het rek te plaatsen en alle kabels aan te sluiten.
+Bij de informatie in deze zelfstudies wordt ervan uitgegaan dat u de voorzorgsmaatregelen hebt gelezen en uw StorSimple-apparaat hebt uitgepakt, geplaatst en alle kabels hebt aangesloten. Als u dit nog moet doen, lees dan eerst de [voorzorgsmaatregelen](storsimple-8000-safety.md). Volg de specifieke instructies van het apparaat om het apparaat uit te pakken, in het rek te plaatsen en alle kabels aan te sluiten.
 
 * [De 8100 uitpakken, op het rek monteren en bekabelen](storsimple-8100-hardware-installation.md)
 * [De 8600 uitpakken, op het rek monteren en bekabelen](storsimple-8600-hardware-installation.md)
@@ -36,7 +36,7 @@ Bij de informatie in deze zelfstudies wordt ervan uitgegaan dat u de voorzorgsma
 U hebt beheerdersbevoegdheden nodig om het installatie- en configuratieproces uit te voeren. U wordt geadviseerd om de configuratiecontrolelijst te raadplegen voordat u begint. Het implementatie- en configuratieproces kan enige tijd duren.
 
 > [!NOTE]
-> De StorSimple-implementatiegegevens die zijn gepubliceerd op de website van Microsoft Azure zijn alleen van toepassing op apparaten uit de StorSimple 8000-serie. Ga voor volledige informatie over de 7000-serie apparaten naar: [http://onlinehelp.storsimple.com/](http://onlinehelp.storsimple.com). Raadpleeg de [Introductiehandleiding van het StorSimple-systeem](http://onlinehelp.storsimple.com/111_Appliance/) voor informatie over de implementatie van de 7000-serie.
+> De StorSimple-implementatiegegevens die zijn gepubliceerd op de website van Microsoft Azure zijn alleen van toepassing op apparaten uit de StorSimple 8000-serie. Ga voor volledige informatie over de 7000-serie apparaten naar: [http://onlinehelp.storsimple.com/](http://onlinehelp.storsimple.com) . Raadpleeg de [Introductiehandleiding van het StorSimple-systeem](http://onlinehelp.storsimple.com/111_Appliance/) voor informatie over de implementatie van de 7000-serie.
 
 
 ## <a name="deployment-steps"></a>Implementatiestappen

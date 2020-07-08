@@ -3,12 +3,12 @@ title: Naamgevings beperkingen voor resources
 description: Hier worden de regels en beperkingen voor het benoemen van Azure-resources weer gegeven.
 ms.topic: conceptual
 ms.date: 05/21/2020
-ms.openlocfilehash: 7d5a7d82aceae6902ad953e314434f1a3736a5e1
-ms.sourcegitcommit: 23604d54077318f34062099ed1128d447989eea8
+ms.openlocfilehash: ca13203b6d31c1eeb939c668a58e67f0d462a905
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/20/2020
-ms.locfileid: "85117536"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85554348"
 ---
 # <a name="naming-rules-and-restrictions-for-azure-resources"></a>Naamgevingsregels en -beperkingen voor Azure-resources
 
@@ -36,7 +36,7 @@ In de volgende tabellen verwijst de term alfanumeriek naar:
 > [!div class="mx-tableFixed"]
 > | Entiteit | Bereik | Lengte | Geldige tekens |
 > | --- | --- | --- | --- |
-> | service | internationaal | 1-50 | Alfanumerieke tekens.<br><br>Begin met letter. |
+> | service | internationaal | 1-50 | Alfanumerieke tekens en afbreek streepjes.<br><br>Begin met letter en sluit af met een alfanumerieke teken. |
 > | Service/api's | service | 1-256 | Kan niet gebruiken:<br> `*#&+:<>?` |
 > | Service/api's/problemen | api | 1-256 | Kan niet gebruiken:<br> `*#&+:<>?` |
 > | Service/api's/problemen/bijlagen | name | 1-256 | Kan niet gebruiken:<br> `*#&+:<>?` |
@@ -262,7 +262,7 @@ In de volgende tabellen verwijst de term alfanumeriek naar:
 > | fabrieken/linkedservices | standaard | 1-260 | Kan niet gebruiken:<br>`<>*#.%&:\\+?/`<br><br>Begin met alfanumeriek. |
 > | fabrieken/pijp lijnen | standaard | 1-260 | Kan niet gebruiken:<br>`<>*#.%&:\\+?/`<br><br>Begin met alfanumeriek. |
 > | fabrieken/triggers | standaard | 1-260 | Kan niet gebruiken:<br>`<>*#.%&:\\+?/`<br><br>Begin met alfanumeriek. |
-> | fabrieken/triggers/rerunTriggers | trigger | 1-260 | Kan niet gebruiken:<br>`<>*#.%&:\\+?/`<br><br>Begin met alfanumeriek. |
+> | fabrieken/triggers/rerunTriggers | activeren | 1-260 | Kan niet gebruiken:<br>`<>*#.%&:\\+?/`<br><br>Begin met alfanumeriek. |
 
 ## <a name="microsoftdatalakeanalytics"></a>Microsoft.DataLakeAnalytics
 

@@ -5,15 +5,15 @@ services: databox
 author: alkohli
 ms.service: databox
 ms.subservice: pod
-ms.topic: how-to
+ms.topic: troubleshooting
 ms.date: 04/30/2020
 ms.author: alkohli
-ms.openlocfilehash: 461c5b1603a4c06e680aab671238a1c8ccd5dacd
-ms.sourcegitcommit: 1de57529ab349341447d77a0717f6ced5335074e
+ms.openlocfilehash: 3aa48f42c767a8f1fb1c7bf0ad78fef8b8af1594
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84609077"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85558535"
 ---
 # <a name="troubleshoot-issues-related-to-azure-data-box-and-azure-data-box-heavy"></a>Problemen oplossen die verband houden met Azure Data Box en Azure Data Box Heavy
 
@@ -23,7 +23,7 @@ In dit artikel vindt u informatie over het oplossen van problemen die kunnen opt
 
 De fouten in Data Box en Data Box Heavy worden als volgt samenvatten:
 
-| Fout categorie *        | Beschrijving        | Aanbevolen actie    |
+| Fout categorie *        | Description        | Aanbevolen actie    |
 |----------------------------------------------|---------|--------------------------------------|
 | Container-of share namen | De container-of share namen volgen niet de Azure-naamgevings regels.  |Down load de fout lijsten. <br> Wijzig de naam van de containers of shares. [Meer informatie](#container-or-share-name-errors).  |
 | Maximale grootte van container of share | De totale gegevens in containers of shares overschrijden de limiet van Azure.   |Down load de fout lijsten. <br> Verminder de totale hoeveelheid gegevens in de container of de share. [Meer informatie](#container-or-share-size-limit-errors).|

@@ -5,12 +5,12 @@ services: automation
 ms.subservice: process-automation
 ms.date: 12/04/2018
 ms.topic: conceptual
-ms.openlocfilehash: fb7ddce34a32d7108587bf1a3d47be4b31214535
-ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
+ms.openlocfilehash: 387e100a05cb51eb034f737b259bad4e5812465c
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/25/2020
-ms.locfileid: "83832279"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85557887"
 ---
 # <a name="monitor-runbook-output"></a>Runbook-uitvoer bewaken
 
@@ -18,7 +18,7 @@ De meeste Azure Automation runbooks hebben een vorm van uitvoer. Deze uitvoer ka
 
 De volgende tabel geeft een korte beschrijving van elke stroom met het gedrag ervan in de Azure Portal voor gepubliceerde runbooks en tijdens [het testen van een runbook](automation-testing-runbook.md). De uitvoer stroom is de hoofd stroom die wordt gebruikt voor de communicatie tussen runbooks. De andere stromen worden geclassificeerd als berichten stromen, bedoeld om informatie naar de gebruiker te communiceren. 
 
-| Streamen | Beschrijving | Gepubliceerd | Testen |
+| Streamen | Description | Gepubliceerd | Testen |
 |:--- |:--- |:--- |:--- |
 | Fout |Foutbericht bedoeld voor de gebruiker. In tegens telling tot een uitzonde ring, wordt het runbook na een fout bericht standaard voortgezet. |Naar taak geschiedenis geschreven |Weer gegeven in het deel venster test uitvoer |
 | Fouten opsporen |Berichten die zijn bedoeld voor een interactieve gebruiker. Mag niet worden gebruikt in runbooks. |Niet naar taak geschiedenis geschreven |Niet weer gegeven in het deel venster test uitvoer |
@@ -88,7 +88,7 @@ Hier volgen enkele voor beelden van uitvoer gegevens typen:
 
 #### <a name="declare-output-data-type-in-a-workflow"></a>Het uitvoer gegevens type in een werk stroom declareren
 
-In een werk stroom wordt het gegevens type van de uitvoer opgegeven met behulp van het [kenmerk output](https://technet.microsoft.com/library/hh847785.aspx)schema. Dit kenmerk heeft geen effect tijdens runtime, maar biedt u een indicatie tijdens de ontwerp fase van de verwachte uitvoer van het runbook. Wanneer het hulp programma voor runbooks blijft ontwikkelen, neemt het belang van het declareren van uitvoer gegevens typen tijdens de ontwerp fase toe. Daarom is het een best practice om deze declaratie in te voegen in een runbooks die u maakt.
+In een werk stroom wordt het gegevens type van de uitvoer opgegeven met behulp van het [kenmerk output](/powershell/module/microsoft.powershell.core/about/about_functions_outputtypeattribute)schema. Dit kenmerk heeft geen effect tijdens runtime, maar biedt u een indicatie tijdens de ontwerp fase van de verwachte uitvoer van het runbook. Wanneer het hulp programma voor runbooks blijft ontwikkelen, neemt het belang van het declareren van uitvoer gegevens typen tijdens de ontwerp fase toe. Daarom is het een best practice om deze declaratie in te voegen in een runbooks die u maakt.
 
 Het volgende voorbeeldrunbook voert een tekenreeksobject uit en bevat een declaratie van het uitvoertype. Als uw runbook een matrix van een bepaald type uitvoert, moet u nog steeds het type opgeven in tegenstelling tot een matrix van het type.
 
@@ -237,7 +237,7 @@ Tenzij u deze informatie nodig hebt voor het volgen van de voortgang van een run
 **Tracering op activiteit niveau inschakelen:**
 
 1. Open uw Automation-account in Azure Portal.
-2. Selecteer **runbooks** onder **proces automatisering** om de lijst met Runbooks te openen.
+2. Selecteer **Runbooks** onder **Procesautomatisering** om de lijst van runbooks te openen.
 3. Selecteer op de pagina Runbooks een grafisch runbook in de lijst met Runbooks.
 4. Klik onder **instellingen**op **logboek registratie en tracering**.
 5. Klik op de pagina logboek registratie en tracering onder **uitgebreide records vastleggen**op **ingeschakeld** om uitgebreide logboek registratie in te scha kelen.
@@ -261,5 +261,5 @@ Zie voor meer informatie over het configureren van de integratie met Azure Monit
 
 * Zie [Runbooks beheren in azure Automation](manage-runbooks.md)voor het werken met runbooks.
 * Zie [Power shell docs](https://docs.microsoft.com/powershell/scripting/overview)(Engelstalig) voor meer informatie over Power shell.
-* * Zie [AZ. Automation](https://docs.microsoft.com/powershell/module/az.automation/?view=azps-3.7.0#automation
-)(Engelstalig) voor een Power shell-cmdlet-verwijzing.
+* * Zie [Az.Automation](https://docs.microsoft.com/powershell/module/az.automation/?view=azps-3.7.0#automation
+) voor een naslagdocumentatie voor een PowerShell-cmdlet.
