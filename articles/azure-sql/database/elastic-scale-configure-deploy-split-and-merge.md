@@ -12,10 +12,9 @@ ms.author: sstein
 ms.reviewer: ''
 ms.date: 12/04/2018
 ms.openlocfilehash: 200a6b1bc2f960555fae1d910dfebde66628d13a
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/27/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84045646"
 ---
 # <a name="deploy-a-split-merge-service-to-move-data-between-sharded-databases"></a>Een service voor splitsen en samen voegen implementeren om gegevens te verplaatsen tussen Shard-data bases
@@ -27,7 +26,7 @@ Met het gereedschap splitsen en samen voegen kunt u gegevens verplaatsen tussen 
 
 1. Down load de nieuwste versie van NuGet van [NuGet](https://docs.nuget.org/docs/start-here/installing-nuget).
 
-1. Open een opdracht prompt en ga naar de map waarin u nuget. exe hebt gedownload. De down load bevat Power shell-opdrachten.
+1. Open een opdracht prompt en ga naar de map waarin u nuget.exe hebt gedownload. De down load bevat Power shell-opdrachten.
 
 1. Down load het nieuwste pakket voor splitsen en samen voegen in de huidige map met de onderstaande opdracht:
 
@@ -141,7 +140,7 @@ Houd er rekening mee dat voor productie-implementaties afzonderlijke certificate
 
 ## <a name="deploy-your-service"></a>Uw service implementeren
 
-1. Ga naar de [Azure Portal](https://portal.azure.com)
+1. Ga naar de [Azure-portal](https://portal.azure.com)
 2. Selecteer de Cloud service die u eerder hebt gemaakt.
 3. Klik op **Overzicht**.
 4. Kies de faserings omgeving en klik vervolgens op **uploaden**.
@@ -176,9 +175,9 @@ De implementatie en uw omgeving kunnen worden getest door de meegeleverde Power 
 
 De volgende script bestanden zijn opgenomen:
 
-1. *SetupSampleSplitMergeEnvironment. ps1* : Hiermee wordt een gegevenslaag voor een test ingesteld voor splitsen/samen voegen (Zie de tabel hieronder voor een gedetailleerde beschrijving)
-2. *ExecuteSampleSplitMerge. ps1* -test bewerkingen uitvoeren op de gegevenslaag van de test (Zie de tabel hieronder voor een gedetailleerde beschrijving)
-3. *GetMappings. ps1* : het voorbeeld script op het hoogste niveau waarmee de huidige status van de Shard-toewijzingen wordt afgedrukt.
+1. *SetupSampleSplitMergeEnvironment.ps1* -een gegevenslaag voor een test instellen voor splitsen/samen voegen (Zie de tabel hieronder voor een gedetailleerde beschrijving)
+2. *ExecuteSampleSplitMerge.ps1* -test bewerkingen uitvoeren op de gegevenslaag van de test (Zie de tabel hieronder voor een gedetailleerde beschrijving)
+3. *GetMappings.ps1* -voorbeeld script op het hoogste niveau waarmee de huidige status van de Shard-toewijzingen wordt afgedrukt.
 4. *ShardManagement. psm1* -hulp script dat de SHARDMANAGEMENT-API verpakt
 5. *SqlDatabaseHelpers. psm1* -hulp script voor het maken en beheren van data bases in SQL database
 
@@ -188,7 +187,7 @@ De volgende script bestanden zijn opgenomen:
        <th>Stappen</th>
      </tr>
      <tr>
-       <th rowspan="5">SetupSampleSplitMergeEnvironment. ps1</th>
+       <th rowspan="5">SetupSampleSplitMergeEnvironment.ps1</th>
        <td>1. Hiermee maakt u een Shard-toewijzings beheer database</td>
      </tr>
      <tr>
@@ -210,7 +209,7 @@ De volgende script bestanden zijn opgenomen:
        <th>Stappen</th>
      </tr>
    <tr>
-       <th rowspan="4">ExecuteSampleSplitMerge. ps1 </th>
+       <th rowspan="4">ExecuteSampleSplitMerge.ps1 </th>
        <td>1. Hiermee verzendt u een splits aanvraag naar de web-frontend van de Split-Merge-service, die de helft van de gegevens van de eerste Shard opsplitst in de tweede Shard.</td>
      </tr>
      <tr>
@@ -231,13 +230,13 @@ De volgende script bestanden zijn opgenomen:
 2. Maak een server (of kies een bestaande server) waar Shard-toewijzings beheer en Shards worden gemaakt.
 
    > [!NOTE]
-   > Het script *SetupSampleSplitMergeEnvironment. ps1* maakt standaard al deze data bases op dezelfde server, zodat het script eenvoudig te gebruiken is. Dit is geen beperking van de service voor splitsen en samen voegen.
+   > Het *SetupSampleSplitMergeEnvironment.ps1* script maakt standaard al deze data bases op dezelfde server, zodat het script eenvoudig te gebruiken is. Dit is geen beperking van de service voor splitsen en samen voegen.
 
    Er is een SQL-verificatie aanmelding met lees-/schrijftoegang tot de Db's vereist voor de Split-Merge-service om gegevens te verplaatsen en de Shard-kaart bij te werken. Omdat de service voor splitsen en samen voegen in de Cloud wordt uitgevoerd, biedt deze momenteel geen ondersteuning voor geïntegreerde verificatie.
 
    Zorg ervoor dat de server is geconfigureerd voor toegang vanaf het IP-adres van de computer waarop deze scripts worden uitgevoerd. U kunt deze instelling vinden onder SQL Server/firewalls en virtuele netwerken/client-IP-adressen.
 
-3. Voer het script *SetupSampleSplitMergeEnvironment. ps1* uit om de voorbeeld omgeving te maken.
+3. Voer het *SetupSampleSplitMergeEnvironment.ps1* script uit om de voorbeeld omgeving te maken.
 
    Als u dit script uitvoert, worden alle bestaande Shard-toewijzings beheer gegevens structuren in de Shard-toewijzings beheer database en de Shards gewist. Het kan handig zijn om het script opnieuw uit te voeren als u de Shard-kaart of Shards opnieuw wilt initialiseren.
 
@@ -248,14 +247,14 @@ De volgende script bestanden zijn opgenomen:
     -UserName 'mysqluser' -Password 'MySqlPassw0rd' -ShardMapManagerServerName 'abcdefghij.database.windows.net'
    ```
 
-4. Voer het script Getmappings. ps1 uit om de toewijzingen weer te geven die momenteel bestaan in de voorbeeld omgeving.
+4. Voer het Getmappings.ps1 script uit om de toewijzingen weer te geven die momenteel bestaan in de voorbeeld omgeving.
 
    ```cmd
    .\GetMappings.ps1
     -UserName 'mysqluser' -Password 'MySqlPassw0rd' -ShardMapManagerServerName 'abcdefghij.database.windows.net'
    ```
 
-5. Voer het script *ExecuteSampleSplitMerge. ps1* uit om een splits bewerking uit te voeren (waarbij de helft van de gegevens op de eerste Shard wordt verplaatst naar de tweede Shard) en vervolgens een samenvoeg bewerking (waarbij de gegevens weer naar de eerste Shard worden verplaatst). Als u TLS hebt geconfigureerd en het http-eind punt is uitgeschakeld, controleert u of u in plaats daarvan het https://-eind punt gebruikt.
+5. Voer het *ExecuteSampleSplitMerge.ps1* script uit om een splits bewerking uit te voeren (het verplaatsen van de helft van de gegevens op de eerste Shard naar de tweede Shard) en vervolgens een samenvoeg bewerking (waarbij de gegevens weer worden verplaatst naar de eerste Shard). Als u TLS hebt geconfigureerd en het http-eind punt is uitgeschakeld, controleert u of u in plaats daarvan het https://-eind punt gebruikt.
 
     Voor beeld van opdracht regel:
 
@@ -324,7 +323,7 @@ Als u een bewerking voor splitsen en samen voegen wilt uitvoeren, moet u de Shar
 4. Een verwijzing naar een **ShardMapManager** -object ophalen en **GetSchemaInfoCollection**aanroepen.
 5. Voeg de **waarde** toe aan de **SchemaInfoCollection**, waarbij u de naam van de Shard-toewijzing opgeeft.
 
-Een voor beeld hiervan is te zien in het script SetupSampleSplitMergeEnvironment. ps1.
+Een voor beeld hiervan is te zien in het SetupSampleSplitMergeEnvironment.ps1 script.
 
 De Split-Merge-service maakt niet de doel database (of schema voor tabellen in de data base) voor u. Deze moeten vooraf worden gemaakt voordat een aanvraag naar de service wordt verzonden.
 

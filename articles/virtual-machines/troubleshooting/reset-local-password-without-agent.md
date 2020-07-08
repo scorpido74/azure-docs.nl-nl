@@ -14,10 +14,9 @@ ms.workload: infrastructure-services
 ms.date: 04/25/2019
 ms.author: genli
 ms.openlocfilehash: 11d1a4743f9aaf70d96e6cfd1f22ff31def440f1
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/27/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84021259"
 ---
 # <a name="reset-local-windows-password-for-azure-vm-offline"></a>Offline een lokaal Windows-wachtwoord opnieuw instellen voor een virtuele Azure-machine
@@ -45,7 +44,7 @@ Probeer altijd een wacht woord opnieuw in te stellen met behulp van de [Azure po
 
 1. Maak een moment opname van de besturingssysteem schijf van de betreffende virtuele machine, maakt een schijf van de moment opname en koppel de schijf vervolgens aan een virtuele machine voor probleem oplossing. Zie [problemen met een Windows-VM oplossen door de besturingssysteem schijf te koppelen aan een herstel-VM met behulp van de Azure Portal](troubleshoot-recovery-disks-portal-windows.md)voor meer informatie.
 2. Maak verbinding met de virtuele machine voor probleem oplossing met behulp van Extern bureaublad.
-3. Maak `gpt.ini` in `\Windows\System32\GroupPolicy` op het station van de bron-VM (als GPT. ini bestaat, wijzig de naam in GPT. ini. bak):
+3. Maken `gpt.ini` in `\Windows\System32\GroupPolicy` op het station van de bron-VM (als gpt.ini bestaat, wijzigt u de naam in gpt.ini. bak):
    
    > [!WARNING]
    > Zorg ervoor dat u niet per ongeluk de volgende bestanden in C:\Windows maakt, het station van het besturings systeem voor de virtuele machine voor probleem oplossing. Maak de volgende bestanden in het station met het besturings systeem voor de bron-VM die is gekoppeld als een gegevens schijf.
@@ -59,7 +58,7 @@ Probeer altijd een wacht woord opnieuw in te stellen met behulp van de [Azure po
      Version=1
      ```
      
-     ![GPT maken. ini](./media/reset-local-password-without-agent/create-gpt-ini.png)
+     ![gpt.ini maken](./media/reset-local-password-without-agent/create-gpt-ini.png)
 
 4. Maken `scripts.ini` in `\Windows\System32\GroupPolicy\Machine\Scripts\` . Zorg ervoor dat verborgen mappen worden weer gegeven. Als dat nodig is, maakt u de `Machine` `Scripts` mappen of.
    
@@ -71,7 +70,7 @@ Probeer altijd een wacht woord opnieuw in te stellen met behulp van de [Azure po
      0Parameters=
      ```
      
-     ![Scripts. ini maken](./media/reset-local-password-without-agent/create-scripts-ini.png)
+     ![scripts.ini maken](./media/reset-local-password-without-agent/create-scripts-ini.png)
 
 5. Maak `FixAzureVM.cmd` in `\Windows\System32` met de volgende inhoud, vervang `<username>` en `<newpassword>` door uw eigen waarden:
    
@@ -96,9 +95,9 @@ Probeer altijd een wacht woord opnieuw in te stellen met behulp van de [Azure po
     * Van%windir%\System32
       * FixAzureVM. cmd verwijderen
     * Van%windir%\System32\GroupPolicy\Machine\Scripts
-      * scripts. ini verwijderen
+      * scripts.ini verwijderen
     * Van%windir%\System32\GroupPolicy
-      * Verwijder GPT. ini (als GPT. ini aanwezig was en u de naam ervan hebt gewijzigd in GPT. ini. bak, wijzig de naam van het bak-bestand weer in GPT. ini)
+      * Verwijder gpt.ini (als gpt.ini eerder bestond en u de naam ervan hebt gewijzigd in gpt.ini. bak, wijzig de naam van het bak-bestand weer in gpt.ini)
 
 ## <a name="detailed-steps-for-classic-vm"></a>Gedetailleerde stappen voor de klassieke VM
 
@@ -163,7 +162,7 @@ Probeer altijd een wacht woord opnieuw in te stellen met behulp van de [Azure po
      Version=1
      ```
      
-     ![GPT maken. ini](./media/reset-local-password-without-agent/create-gpt-ini-classic.png)
+     ![gpt.ini maken](./media/reset-local-password-without-agent/create-gpt-ini-classic.png)
 
 5. Maken `scripts.ini` in `\Windows\System32\GroupPolicy\Machines\Scripts\` . Zorg ervoor dat verborgen mappen worden weer gegeven. Als dat nodig is, maakt u de `Machine` `Scripts` mappen of.
    
@@ -175,7 +174,7 @@ Probeer altijd een wacht woord opnieuw in te stellen met behulp van de [Azure po
      0Parameters=
      ```
      
-     ![Scripts. ini maken](./media/reset-local-password-without-agent/create-scripts-ini-classic.png)
+     ![scripts.ini maken](./media/reset-local-password-without-agent/create-scripts-ini-classic.png)
 
 6. Maak `FixAzureVM.cmd` in `\Windows\System32` met de volgende inhoud, vervang `<username>` en `<newpassword>` door uw eigen waarden:
    

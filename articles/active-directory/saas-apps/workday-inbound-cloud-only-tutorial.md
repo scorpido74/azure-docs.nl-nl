@@ -15,10 +15,9 @@ ms.workload: identity
 ms.date: 05/26/2020
 ms.author: chmutali
 ms.openlocfilehash: 6fb80af84379a1a0bc174a7318c8150a98bea95e
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/27/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84041811"
 ---
 # <a name="tutorial-configure-workday-to-azure-ad-user-provisioning"></a>Zelf studie: workday configureren voor Azure AD-gebruikers inrichten
@@ -97,7 +96,7 @@ In de volgende secties worden de stappen beschreven voor het configureren van ge
 
 1. Ga naar <https://portal.azure.com>.
 
-2. Zoek in het Azure Portal naar en selecteer **Azure Active Directory**.
+2. Zoek en selecteer in de Azure-portal de optie **Azure Active Directory**.
 
 3. Selecteer **bedrijfs toepassingen**en vervolgens **alle toepassingen**.
 
@@ -119,9 +118,9 @@ In de volgende secties worden de stappen beschreven voor het configureren van ge
    
      | URL-indeling | WWS API-versie gebruikt | XPATH-wijzigingen vereist |
      |------------|----------------------|------------------------|
-     | https://####.workday.com/ccx/service/tenantName | v 21.1 | Nee |
-     | https://####.workday.com/ccx/service/tenantName/Human_Resources | v 21.1 | Nee |
-     | https://####.workday.com/ccx/service/tenantName/Human_Resources/v##.# | v # #. # | Ja |
+     | https://####.workday.com/ccx/service/tenantName | v 21.1 | No |
+     | https://####.workday.com/ccx/service/tenantName/Human_Resources | v 21.1 | No |
+     | https://####.workday.com/ccx/service/tenantName/Human_Resources/v##.# | v # #. # | Yes |
 
       > [!NOTE]
      > Als er geen versie gegevens zijn opgegeven in de URL, gebruikt de app workday Web Services (WWS) v 21.1 en zijn er geen wijzigingen vereist voor de standaard XPATH API-expressies die worden geleverd bij de app. Als u een specifieke API-versie van WWS wilt gebruiken, geeft u het versie nummer op in de URL <br>

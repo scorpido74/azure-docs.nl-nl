@@ -13,10 +13,9 @@ ms.author: rohitna
 ms.reviewer: genemi, amagarwa, maboja, jrasnick, vanto
 ms.date: 05/14/2019
 ms.openlocfilehash: 3acbdd5c933bc2010a26e2039ece378774055d30
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/27/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84050399"
 ---
 # <a name="powershell-for-dns-alias-to-azure-sql-database"></a>Power shell voor het Azure SQL Database van DNS-alias
@@ -59,7 +58,7 @@ De volgende cmdlets worden gebruikt:
 
 Zie [Azure PowerShell-module installeren](/powershell/azure/install-az-ps) om de module te installeren of te upgraden.
 
-Gebruik `Get-Module -ListAvailable Az` in *Power shell \_ ISE. exe*om de versie te vinden.
+Gebruik `Get-Module -ListAvailable Az` in *power shell \_ise.exe*om de versie te vinden.
 
 ```powershell
 $subscriptionName = '<subscriptionName>';
@@ -103,7 +102,7 @@ De volgende opdrachten worden gebruikt:
 - [AZ SQL Server DNS-alias set](https://docs.microsoft.com/powershell/module/az.Sql/Set-azSqlServerDnsAlias): wijzigt de server naam waarmee de alias is geconfigureerd, van Server 1 naar Server 2.
 - [AZ SQL Server DNS-alias delete](https://docs.microsoft.com/powershell/module/az.Sql/Remove-azSqlServerDnsAlias): Verwijder de alias van Server 2 met behulp van de naam van de alias.
 
-Als u wilt installeren of upgraden, raadpleegt u [Azure cli installeren](/cli/azure/install-azure-cli).
+Zie [Azure CLI installeren](/cli/azure/install-azure-cli) als u CLI wilt installeren of upgraden.
 
 ```azurecli-interactive
 $subscriptionName = '<subscriptionName>';

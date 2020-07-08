@@ -12,10 +12,9 @@ ms.author: sstein
 ms.reviewer: ''
 ms.date: 03/12/2019
 ms.openlocfilehash: 9303d84b2862b556a9ccc286ffa118bf1e52b715
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/27/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84047522"
 ---
 # <a name="moving-data-between-scaled-out-cloud-databases"></a>Gegevens verplaatsen tussen uitgeschaalde clouddatabases
@@ -141,7 +140,7 @@ Het service pakket voor splitsen en samen voegen bevat een werk rollen en een we
 
 - **Bron bereik (splitsen en samen voegen)**
 
-  Met een bewerking voor splitsen en samen voegen wordt een bereik verwerkt met de lage en hoge sleutel. Als u een bewerking met een niet-gebonden hoge sleutel waarde wilt opgeven, schakelt u het selectie vakje hoge sleutel is Max in en laat u het veld hoge sleutel leeg. De bereik sleutel waarden die u opgeeft, hoeven niet exact overeen te komen met een toewijzing en de grenzen daarvan in uw Shard-kaart. Als u geen bereik grenzen opgeeft bij alle services, wordt het dichtstbijzijnde bereik automatisch afleiden. U kunt het Power shell-script GetMappings. ps1 gebruiken om de huidige toewijzingen op te halen in een bepaalde Shard-toewijzing.
+  Met een bewerking voor splitsen en samen voegen wordt een bereik verwerkt met de lage en hoge sleutel. Als u een bewerking met een niet-gebonden hoge sleutel waarde wilt opgeven, schakelt u het selectie vakje hoge sleutel is Max in en laat u het veld hoge sleutel leeg. De bereik sleutel waarden die u opgeeft, hoeven niet exact overeen te komen met een toewijzing en de grenzen daarvan in uw Shard-kaart. Als u geen bereik grenzen opgeeft bij alle services, wordt het dichtstbijzijnde bereik automatisch afleiden. U kunt het Power shell-script GetMappings.ps1 gebruiken om de huidige toewijzingen in een bepaalde Shard-toewijzing op te halen.
 
 - **Gesplitste bron gedrag (splitsen)**
 
@@ -177,7 +176,7 @@ De huidige implementatie van de service Split-Merge is onderhevig aan de volgend
 - Tijdens de verwerking van aanvragen kunnen bepaalde shardlet gegevens aanwezig zijn op de bron-en doel-Shard. Dit is nodig om te beschermen tegen fouten tijdens de shardlet-verplaatsing. De integratie van splitsen en samen voegen met de Shard-kaart zorgt ervoor dat verbindingen via de gegevens afhankelijke routerings-Api's die gebruikmaken van de methode **OpenConnectionForKey** op de Shard-kaart, geen inconsistente tussenliggende statussen zien. Wanneer u echter verbinding maakt met de bron-of doel-Shards zonder de methode **OpenConnectionForKey** te gebruiken, zijn inconsistente tussenliggende statussen mogelijk zichtbaar wanneer er aanvragen voor splitsen/samen voegen of verplaatsen worden verzonden. Deze verbindingen kunnen gedeeltelijke of dubbele resultaten weer geven, afhankelijk van de timing of de Shard onderliggende verbinding. Deze beperking omvat momenteel de verbindingen die zijn gemaakt door elastische schaal multi-Shard-Query's.
 - De meta gegevens database voor de service voor splitsen en samen voegen mag niet worden gedeeld tussen verschillende rollen. Een rol van de service voor splitsen en samen voegen die wordt uitgevoerd in staging moet bijvoorbeeld verwijzen naar een andere meta gegevens database dan de rol van productie.
 
-## <a name="billing"></a>Facturering
+## <a name="billing"></a>Billing
 
 De Split-Merge-service wordt uitgevoerd als een Cloud service in uw Microsoft Azure-abonnement. Kosten voor Cloud Services zijn daarom van toepassing op uw exemplaar van de service. Tenzij u regel matig splitsen/samen voegen/verplaatsen uitvoert, raden we u aan de Cloud service voor splitsen en samen voegen te verwijderen. Hiermee bespaart u kosten voor het uitvoeren of implementeren van Cloud service-exemplaren. U kunt de uitvoer bare-configuratie opnieuw implementeren en starten wanneer u een split-of samenvoeg bewerking moet uitvoeren.
 
@@ -187,7 +186,7 @@ De Split-Merge-service wordt uitgevoerd als een Cloud service in uw Microsoft Az
 
 De Split-Merge-service biedt de **RequestStatus** -tabel in de meta gegevensopslag database voor de bewaking van voltooide en lopende aanvragen. De tabel bevat een rij voor elke aanvraag voor splitsen en samen voegen die is verzonden naar dit exemplaar van de service voor splitsen en samen voegen. Het geeft de volgende informatie voor elke aanvraag:
 
-- **Neem**
+- **Tijdstempel**
 
   De datum en tijd waarop de aanvraag is gestart.
 

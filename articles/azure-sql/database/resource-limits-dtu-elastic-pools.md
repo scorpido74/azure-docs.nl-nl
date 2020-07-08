@@ -12,10 +12,9 @@ ms.author: sachinp
 ms.reviewer: carlrab
 ms.date: 04/17/2020
 ms.openlocfilehash: 10b792a642f6c22ab804d6c5e5c3f7f722f0d3be
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/27/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84043112"
 ---
 # <a name="resources-limits-for-elastic-pools-using-the-dtu-purchasing-model"></a>Bronnen limieten voor elastische Pools met behulp van het DTU-aankoop model
@@ -30,7 +29,7 @@ In dit artikel vindt u gedetailleerde resource limieten voor data bases in Azure
 
 Voor Azure SQL Database elastische Pools tonen de volgende tabellen de resources die beschikbaar zijn in elke servicelaag en de berekenings grootte. U kunt de servicelaag, de reken grootte en de opslag hoeveelheid instellen met behulp van:
 
-* [Azure Portal](elastic-pool-manage.md#azure-portal)
+* [Azure-portal](elastic-pool-manage.md#azure-portal)
 * [PowerShell](elastic-pool-manage.md#powershell)
 * [Azure-CLI](elastic-pool-manage.md#azure-cli)
 * [REST API](elastic-pool-manage.md#rest-api).

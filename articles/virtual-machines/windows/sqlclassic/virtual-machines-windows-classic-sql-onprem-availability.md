@@ -15,10 +15,9 @@ ms.workload: iaas-sql-server
 ms.date: 05/31/2017
 ms.author: mikeray
 ms.openlocfilehash: 928162282ca973811315728a07b4fbe40100324e
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/27/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84017576"
 ---
 # <a name="extend-on-premises-always-on-availability-groups-to-azure"></a>On-premises AlwaysOn-beschikbaarheidsgroepen uitbreiden naar Azure
@@ -62,10 +61,10 @@ In deze sectie wordt beschreven hoe u de **wizard Azure replica toevoegen** gebr
    | **VM-naam** |Geef een unieke naam op voor de nieuwe virtuele machine. De naam moet tussen de 3 en 15 tekens bevatten, mag alleen letters, cijfers en afbreek streepjes bevatten en moet beginnen met een letter en eindigen op een letter of cijfer. |
    | **VM-gebruikers naam** |Geef een gebruikers naam op die het Administrator-account wordt op de VM |
    | **Beheerders wachtwoord voor de VM** |Geef een wacht woord op voor het nieuwe account |
-   | **Wacht woord bevestigen** |Bevestig het wacht woord van het nieuwe account |
+   | **Wachtwoord bevestigen** |Bevestig het wacht woord van het nieuwe account |
    | **Virtual Network** |Geef het virtuele netwerk van Azure op dat door de nieuwe virtuele machine moet worden gebruikt. Zie [Virtual Network Overview](../../../virtual-network/virtual-networks-overview.md)voor meer informatie over virtuele netwerken. |
    | **Virtual Network subnet** |Geef het subnet van het virtuele netwerk op dat door de nieuwe virtuele machine moet worden gebruikt |
-   | **Domain** |Controleren of de vooraf ingevulde waarde voor het domein juist is |
+   | **Domein** |Controleren of de vooraf ingevulde waarde voor het domein juist is |
    | **Domein gebruikers naam** |Geef een account op dat zich in de lokale groep Administrators op de knoop punten van het lokale cluster bevindt |
    | **Wachtwoord** |Geef het wacht woord voor de gebruikers naam van het domein op |
 8. Klik op **OK** om de implementatie-instellingen te valideren.

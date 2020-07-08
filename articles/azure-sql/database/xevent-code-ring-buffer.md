@@ -12,10 +12,9 @@ ms.author: genemi
 ms.reviewer: jrasnik
 ms.date: 12/19/2018
 ms.openlocfilehash: faba9eaf59f5d1c941bacb58ba1faf9f817d39cf
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/27/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84046983"
 ---
 # <a name="ring-buffer-target-code-for-extended-events-in-azure-sql-database"></a>Doel code ring buffer voor uitgebreide gebeurtenissen in Azure SQL Database
@@ -47,8 +46,8 @@ Dit onderwerp bevat een voor beeld van een Transact-SQL-code die:
 * Elke Data Base waarin u een tabel kunt maken.
   
   * U kunt desgewenst binnen enkele minuten [een **AdventureWorksLT** -demonstratie database maken](single-database-create-quickstart.md) .
-* SQL Server Management Studio (SSMS. exe), de meest recente maandelijkse update versie.
-  U kunt de nieuwste versie van SSMS. exe downloaden van:
+* SQL Server Management Studio (ssms.exe), de meest recente maandelijkse update versie.
+  U kunt de nieuwste ssms.exe downloaden van:
   
   * Onderwerp met de titel [down load SQL Server Management Studio](https://msdn.microsoft.com/library/mt238290.aspx).
   * [Een directe koppeling naar de down load.](https://go.microsoft.com/fwlink/?linkid=616025)
@@ -220,7 +219,7 @@ We hebben gebruikt `ssms.exe` om het code voorbeeld uit te voeren.
 
 Als u de resultaten wilt weer geven, klikt u op de cel onder de kolomkop **target_data_XML**.
 
-Vervolgens klikt u in het resultaten venster op de cel onder de kolomkop **target_data_XML**. Klik op een ander bestand tabblad gemaakt in SSMS. exe waarin de inhoud van de resultaat cel is weer gegeven als XML.
+Vervolgens klikt u in het resultaten venster op de cel onder de kolomkop **target_data_XML**. Klik op het tabblad nog een bestand maken in ssms.exe waarin de inhoud van de resultaat cel is weer gegeven als XML.
 
 De uitvoer wordt weer gegeven in het volgende blok. Het lijkt lang, maar het is slechts twee **\<event>** elementen.
 

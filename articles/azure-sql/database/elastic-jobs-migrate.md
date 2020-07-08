@@ -12,10 +12,9 @@ ms.author: joke
 ms.reviewer: sstein
 ms.date: 03/13/2019
 ms.openlocfilehash: bb5f7c441ae25e24857d0709b32e17931c3c63a6
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/27/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84050126"
 ---
 # <a name="migrate-to-the-new-elastic-database-jobs"></a>Migreren naar de nieuwe taak voor Elastic Database
@@ -28,9 +27,9 @@ Als u een bestaande door de klant gehoste versie van Elastic Database Jobs hebt,
 
 ## <a name="prerequisites"></a>Vereisten
 
-De bijgewerkte versie van taak voor Elastic Database heeft een nieuwe set Power shell-cmdlets voor gebruik tijdens de migratie. Met deze nieuwe cmdlets kunt u al uw bestaande taak referenties, doelen (inclusief data bases, servers, aangepaste verzamelingen), taak triggers, taak planningen, taak inhoud en taken naar een nieuwe elastische taak agent overdragen.
+De bijgewerkte versie van Elastic Database-taken heeft een nieuwe set PowerShell-cmdlets voor gebruik tijdens de migratie. Met deze nieuwe cmdlets kunt u al uw bestaande taakreferenties, doelen (inclusief databases, servers, aangepaste collecties), taaktriggers, taakschema's, taakinhoud en taken overdragen naar een nieuwe Elastic Job-agent.
 
-### <a name="install-the-latest-elastic-jobs-cmdlets"></a>De meest recente cmdlets voor elastische taken installeren
+### <a name="install-the-latest-elastic-jobs-cmdlets"></a>De meest recente Elastic Jobs-cmdlets installeren
 
 Als u nog geen abonnement op Azure hebt, [Maak dan een gratis account](https://azure.microsoft.com/free/) aan voordat u begint.
 

@@ -7,10 +7,9 @@ ms.subservice: dsc
 ms.date: 08/21/2018
 ms.topic: conceptual
 ms.openlocfilehash: ef8145f0b447f24265ff4576884b0977190b063e
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/27/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84020350"
 ---
 # <a name="compose-dsc-configurations"></a>DSC-configuraties samenstellen
@@ -23,7 +22,7 @@ Azure Automation maakt het mogelijk om [samengestelde resources te importeren en
 
 Voordat u een configuratie kunt toewijzen van samengestelde resources in de Azure Portal, moet u de configuratie opstellen. Samen stelling maakt gebruik van de **opstel configuratie** op de pagina State Configuration (DSC) en op het tabblad **configuraties** of de **gecompileerde configuraties** .
 
-1. Meld u aan bij de [Azure-portal](https://portal.azure.com).
+1. Meld u aan bij [Azure Portal](https://portal.azure.com).
 1. Klik aan de linkerkant op **alle resources** en vervolgens op de naam van uw Automation-account.
 1. Selecteer op de pagina Automation-account **status configuratie (DSC)** onder **configuratie beheer**.
 1. Klik op de pagina status configuratie (DSC) op het tabblad **configuraties** of **gecompileerde configuraties** en klik vervolgens op **configuratie opstellen** in het menu boven aan de pagina.
@@ -46,5 +45,5 @@ Wanneer de compilatie is voltooid, wordt de nieuwe configuratie weer gegeven op 
 - Zie [DSC-configuraties compileren in azure Automation status configuratie](automation-dsc-compile.md)voor meer informatie over het compileren van DSC-configuraties zodat u ze aan doel knooppunten kunt toewijzen.
 - Zie [continue implementatie instellen met chocolade](automation-dsc-cd-chocolatey.md)voor een voor beeld van het gebruik van Azure Automation status configuratie in een pijp lijn voor continue implementatie.
 - Zie [prijzen voor Azure Automation status configuratie](https://azure.microsoft.com/pricing/details/automation/)voor prijs informatie.
-- Zie [AZ. Automation](https://docs.microsoft.com/powershell/module/az.automation/?view=azps-3.7.0#automation
-)(Engelstalig) voor een Power shell-cmdlet-verwijzing.
+- Zie [Az.Automation](https://docs.microsoft.com/powershell/module/az.automation/?view=azps-3.7.0#automation
+) voor een naslagdocumentatie voor een PowerShell-cmdlet.

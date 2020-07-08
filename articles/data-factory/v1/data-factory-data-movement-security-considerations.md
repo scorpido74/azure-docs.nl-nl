@@ -12,10 +12,9 @@ ms.date: 01/10/2018
 ms.author: abnarain
 robots: noindex
 ms.openlocfilehash: c22168aade11bbba66682efea0e2f5a1fcc2ac1f
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/27/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84021497"
 ---
 # <a name="azure-data-factory---security-considerations-for-data-movement"></a>Azure Data Factory-beveiligings overwegingen voor gegevens verplaatsing
@@ -117,7 +116,7 @@ Data Management Gateway gebruikt momenteel één **certificaat**. Dit certificaa
 | > = 2.4. xxxx. x | On-premises | Beveiligd via DPAPI | 
   
 
-### <a name="encryption-in-transit"></a>Versleuteling 'in transit'
+### <a name="encryption-in-transit"></a>Versleuteling tijdens overdracht
 Alle gegevens overdrachten zijn via Secure Channel **https** en **TLS via TCP** om te voor komen dat man-in-the-middle-aanvallen optreden tijdens de communicatie met Azure-Services.
  
 U kunt ook [IPSec VPN](../../vpn-gateway/vpn-gateway-about-vpn-devices.md) of [Express route](../../expressroute/expressroute-introduction.md) gebruiken om het communicatie kanaal te beveiligen tussen uw on-premises netwerk en Azure.
@@ -149,7 +148,7 @@ In een onderneming wordt een **bedrijfs firewall** uitgevoerd op de centrale rou
 
 De volgende tabel bevat de **uitgaande poort** -en domein vereisten voor de **bedrijfs firewall**.
 
-| Domeinnamen | Uitgaande poorten | Beschrijving |
+| Domeinnamen | Uitgaande poorten | Description |
 | ------------ | -------------- | ----------- | 
 | `*.servicebus.windows.net` | 443, 80 | Vereist door de gateway om verbinding te maken met Services voor gegevens verplaatsing in Data Factory |
 | `*.core.windows.net` | 443 | Wordt gebruikt door de gateway om verbinding te maken met Azure Storage account wanneer u de functie voor [gefaseerd kopiëren](data-factory-copy-activity-performance.md#staged-copy) gebruikt. | 
@@ -162,7 +161,7 @@ De volgende tabel bevat de **uitgaande poort** -en domein vereisten voor de **be
 
 De volgende tabel bevat de **Binnenkomende poort** vereisten voor de **Windows Firewall**.
 
-| Poorten voor inkomend verkeer | Beschrijving | 
+| Poorten voor inkomend verkeer | Description | 
 | ------------- | ----------- | 
 | 8050 (TCP) | Vereist door de Credential Manager-toepassing om veilig referenties in te stellen voor on-premises gegevens archieven op de gateway. | 
 

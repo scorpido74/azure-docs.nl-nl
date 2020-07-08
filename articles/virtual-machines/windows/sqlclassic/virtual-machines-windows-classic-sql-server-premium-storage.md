@@ -16,10 +16,9 @@ ms.date: 06/01/2017
 ms.author: mathoma
 ms.reviewer: jroth
 ms.openlocfilehash: ca11fce252192cbf8e5f0bc2cfb5fcd38f5d4443
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/27/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84020877"
 ---
 # <a name="use-azure-premium-storage-with-sql-server-on-virtual-machines"></a>Azure Premium Storage gebruiken met SQL Server op virtuele machines
@@ -747,7 +746,7 @@ Get-ClusterResource $ListenerName| Set-ClusterParameter -Name "HostRecordTTL" 12
 > [!NOTE]
 > De lagere ' HostRecordTTL ' is een hogere hoeveelheid DNS-verkeer.
 
-##### <a name="client-application-settings"></a>Instellingen voor client toepassing
+##### <a name="client-application-settings"></a>Clienttoepassingsinstellingen
 
 Als uw SQL-client toepassing .NET 4,5 SQLClient ondersteunt, kunt u het tref woord ' MULTISUBNETFAILOVER = TRUE ' gebruiken. Dit sleutel woord moet worden toegepast, omdat het een snellere verbinding met de beschikbaarheids groep SQL always tijdens de failover mogelijk maakt. Het inventariseren van alle IP-adressen die zijn gekoppeld aan de always on-listener parallel, en voert een agressieve snelheid van de TCP-verbinding tijdens een failover uit.
 

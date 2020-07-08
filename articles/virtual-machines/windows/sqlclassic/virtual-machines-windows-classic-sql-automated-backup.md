@@ -16,10 +16,9 @@ ms.date: 01/23/2018
 ms.author: mathoma
 ms.reviewer: jroth
 ms.openlocfilehash: c792b217f49121b6d3d6eaf2d8f8380997683bd8
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/27/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84014669"
 ---
 # <a name="automated-backup-for-sql-server-in-azure-virtual-machines-classic"></a>Automatische back-up voor SQL Server in azure Virtual Machines (klassiek)
@@ -66,11 +65,11 @@ Als u automatische back-ups wilt gebruiken, moet u rekening houden met de volgen
 ## <a name="settings"></a>Instellingen
 In de volgende tabel worden de opties beschreven die kunnen worden geconfigureerd voor automatische back-ups. Voor klassieke Vm's moet u Power shell gebruiken om deze instellingen te configureren.
 
-| Instelling | Bereik (standaard) | Beschrijving |
+| Instelling | Bereik (standaard) | Description |
 | --- | --- | --- |
 | **Automatische back-up** |Inschakelen/uitschakelen (uitgeschakeld) |Hiermee wordt automatische back-ups voor een Azure-VM met SQL Server 2014 Standard of ENTER prise in-of uitgeschakeld. |
 | **Bewaar periode** |1-30 dagen (30 dagen) |Het aantal dagen dat een back-up moet worden bewaard. |
-| **Opslagaccount** |Azure Storage-account (het opslag account dat is gemaakt voor de opgegeven VM) |Een Azure-opslag account dat moet worden gebruikt voor het opslaan van automatische back-upbestanden in Blob Storage. Er wordt een container gemaakt op deze locatie om alle back-upbestanden op te slaan. De naamgevings regels voor back-ups bevatten de datum, de tijd en de machine naam. |
+| **Opslag account** |Azure Storage-account (het opslag account dat is gemaakt voor de opgegeven VM) |Een Azure-opslag account dat moet worden gebruikt voor het opslaan van automatische back-upbestanden in Blob Storage. Er wordt een container gemaakt op deze locatie om alle back-upbestanden op te slaan. De naamgevings regels voor back-ups bevatten de datum, de tijd en de machine naam. |
 | **Versleuteling** |Inschakelen/uitschakelen (uitgeschakeld) |Hiermee wordt versleuteling in-of uitgeschakeld. Als versleuteling is ingeschakeld, bevinden de certificaten die worden gebruikt voor het herstellen van de back-up zich in het opgegeven opslag account in dezelfde automaticbackup-container met dezelfde naam Conventie. Als het wacht woord wordt gewijzigd, wordt er een nieuw certificaat met dat wacht woord gegenereerd, maar blijft het oude certificaat voor het herstellen van eerdere back-ups. |
 | **Wachtwoord** |Wachtwoord tekst (geen) |Een wacht woord voor versleutelings sleutels. Dit is alleen vereist als versleuteling is ingeschakeld. Als u een versleutelde back-up wilt herstellen, moet u het juiste wacht woord en het bijbehorende certificaat hebben dat is gebruikt op het moment dat de back-up werd gemaakt. |
 | **Back-up maken van systeemdatabases** | Inschakelen/uitschakelen (uitgeschakeld) | Volledige back-ups maken van Master, model en MSDB |

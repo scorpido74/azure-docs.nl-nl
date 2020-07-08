@@ -15,10 +15,9 @@ ms.workload: iaas-sql-server
 ms.date: 03/17/2017
 ms.author: mikeray
 ms.openlocfilehash: 7f20d79ea353830b41290c7b91d8d1de2b1b3abe
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/27/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84014856"
 ---
 # <a name="configure-the-always-on-availability-group-on-an-azure-vm-with-powershell"></a>De AlwaysOn-beschikbaarheids groep configureren op een virtuele Azure-machine met Power shell
@@ -179,7 +178,7 @@ De domein controller Server is nu ingericht. Vervolgens configureert u het domei
 ## <a name="configure-the-domain-controller"></a>De domein controller configureren
 1. Maak verbinding met de domein controller Server door het extern bureau blad-bestand te starten. Gebruik de gebruikers naam AzureAdmin en het wacht woord **Contoso! 000**dat u hebt opgegeven tijdens het maken van de nieuwe virtuele machine.
 2. Open een Power shell-venster in de beheerders modus.
-3. Voer de volgende **dcpromo uit. EXE** -opdracht voor het instellen van het domein **Corp.contoso.com** , met de gegevens Directory's op station M.
+3. Voer de volgende **DCPROMO.EXE** opdracht uit om het domein **Corp.contoso.com** in te stellen met de gegevens directory's op station M.
 
         dcpromo.exe `
             /unattend `
@@ -377,7 +376,7 @@ De domein controller Server is nu ingericht. Vervolgens configureert u het domei
     De SQL Server Vm's worden nu ingericht en uitgevoerd, maar ze worden met SQL Server geïnstalleerd met de standaard opties.
 
 ## <a name="initialize-the-failover-cluster-vms"></a>Virtuele failover-cluster-Vm's initialiseren
-In deze sectie moet u de drie servers wijzigen die u gaat gebruiken in het failovercluster en de SQL Server-installatie. Met name:
+In deze sectie moet u de drie servers wijzigen die u gaat gebruiken in het failovercluster en de SQL Server-installatie. Specifiek:
 
 * Alle servers: u moet het onderdeel **failover clustering** installeren.
 * Alle servers: u moet **CORP\Install** toevoegen als machine **beheerder**.
@@ -481,7 +480,7 @@ Ten slotte bent u klaar om de beschikbaarheids groep te configureren. U gebruikt
         $svc2.WaitForStatus([System.ServiceProcess.ServiceControllerStatus]::Stopped,$timeout)
         $svc2.Start();
         $svc2.WaitForStatus([System.ServiceProcess.ServiceControllerStatus]::Running,$timeout)
-7. Down load **CreateAzureFailoverCluster. ps1** van het maken van een failovercluster voor AlwaysOn- [beschikbaarheids groepen in azure VM](https://gallery.technet.microsoft.com/scriptcenter/Create-WSFC-Cluster-for-7c207d3a) naar de lokale werkmap. U gebruikt dit script om u te helpen bij het maken van een functioneel failovercluster. Zie [hoge Beschik baarheid en herstel na nood gevallen voor SQL Server in azure virtual machines](../../../azure-sql/virtual-machines/windows/business-continuity-high-availability-disaster-recovery-hadr-overview.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fsqlclassic%2ftoc.json)voor belang rijke informatie over de interactie van Windows Failover Clustering met het Azure-netwerk.
+7. Down load **CreateAzureFailoverCluster.ps1** van het maken van een failovercluster voor AlwaysOn- [beschikbaarheids groepen in azure VM](https://gallery.technet.microsoft.com/scriptcenter/Create-WSFC-Cluster-for-7c207d3a) naar de lokale werkmap. U gebruikt dit script om u te helpen bij het maken van een functioneel failovercluster. Zie [hoge Beschik baarheid en herstel na nood gevallen voor SQL Server in azure virtual machines](../../../azure-sql/virtual-machines/windows/business-continuity-high-availability-disaster-recovery-hadr-overview.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fsqlclassic%2ftoc.json)voor belang rijke informatie over de interactie van Windows Failover Clustering met het Azure-netwerk.
 8. Ga naar uw werkmap en maak het failovercluster met het gedownloade script.
 
         Set-ExecutionPolicy Unrestricted -Force

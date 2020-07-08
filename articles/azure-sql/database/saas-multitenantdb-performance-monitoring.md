@@ -12,10 +12,9 @@ ms.author: sstein
 ms.reviewer: ''
 ms.date: 01/25/2019
 ms.openlocfilehash: e4f26b21ad7458b4f5bcad9a902f4e048d726f1f
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/27/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84042433"
 ---
 # <a name="monitor-and-manage-performance-of-sharded-multi-tenant-azure-sql-database-in-a-multi-tenant-saas-app"></a>Prestaties van Shard multi tenant-Azure SQL Database bewaken en beheren in een multi tenant-SaaS-app
@@ -64,7 +63,7 @@ Voor een goed beeld van de werking van prestatie bewaking en-beheer op schaal, m
 
 Als u al een batch tenants in een vorige zelf studie hebt ingericht, gaat u naar de sectie [gebruik simuleren op alle Tenant databases](#simulate-usage-on-all-tenant-databases) .
 
-1. Open in de **Power shell-ISE**.. \\ . Leer modules \\ prestaties bewaken en beheren \\ *demo-PerformanceMonitoringAndManagement. ps1*. Houd dit script open; u gaat verschillende scenario's uitvoeren tijdens deze zelfstudie.
+1. Open in de **Power shell-ISE**.. \\ . Leer modules \\ prestaties bewaken en beheren \\ *Demo-PerformanceMonitoringAndManagement.ps1*. Houd dit script open; u gaat verschillende scenario's uitvoeren tijdens deze zelfstudie.
 1. **$DemoScenario**  =  **1**instellen, _een batch met tenants inrichten_
 1. Druk op **F5** om het script uit te voeren.
 
@@ -74,7 +73,7 @@ Met het script *New-TenantBatch* worden nieuwe tenants met unieke Tenant sleutel
 
 ## <a name="simulate-usage-on-all-tenant-databases"></a>Gebruik simuleren op alle tenantdatabases
 
-Het script *demo-PerformanceMonitoringAndManagement. ps1* wordt gebruikt voor het simuleren van een werk belasting die wordt uitgevoerd op de multi tenant-data base. De belasting wordt gegenereerd met behulp van een van de beschik bare laad scenario's:
+Het *Demo-PerformanceMonitoringAndManagement.ps1* script is bedoeld voor het simuleren van een werk belasting die wordt uitgevoerd op de multi tenant-data base. De belasting wordt gegenereerd met behulp van een van de beschik bare laad scenario's:
 
 | Demo | Scenario |
 |:--|:--|
@@ -85,7 +84,7 @@ Het script *demo-PerformanceMonitoringAndManagement. ps1* wordt gebruikt voor he
 
 De load-generator past een *synthetische* load alleen voor CPU toe op elke tenantdatabase. De generator start voor elke tenantdatabase een taak, die periodiek een opgeslagen procedure aanroept die de load genereert. De laad niveaus (in Dtu's), duur en intervallen zijn in alle data bases gevarieerd, zodat er onvoorspelbare Tenant activiteiten worden gesimuleerd.
 
-1. Open in de **Power shell-ISE**.. \\ . Leer modules \\ prestaties bewaken en beheren \\ *demo-PerformanceMonitoringAndManagement. ps1*. Houd dit script open; u gaat verschillende scenario's uitvoeren tijdens deze zelfstudie.
+1. Open in de **Power shell-ISE**.. \\ . Leer modules \\ prestaties bewaken en beheren \\ *Demo-PerformanceMonitoringAndManagement.ps1*. Houd dit script open; u gaat verschillende scenario's uitvoeren tijdens deze zelfstudie.
 1. Stel **$DemoScenario**  =  **2**in, _Genereer normale intensiteits belasting_
 1. Druk op **F5** om een belasting toe te passen op al uw tenants.
 
@@ -154,7 +153,7 @@ Met het Shard multi tenant-model kunt u kiezen of u een nieuwe Tenant in een mul
 
 Als u al een nieuwe Tenant in een eigen data base hebt ingericht, kunt u de volgende stappen overs Laan.
 
-1. Open in de **Power shell-ISE**.. \\ . Learning modules \\ ProvisionTenants \\ *demo-ProvisionTenants. ps1*. 
+1. Open in de **Power shell-ISE**.. \\ . Learning modules \\ ProvisionTenants \\ *Demo-ProvisionTenants.ps1*. 
 1. Modify **$TenantName = "Salix Salsa"** en **$VenueType = "dans"**
 1. Instellen **$scenario**  =  **2**, _een Tenant inrichten in een nieuwe Data Base met één Tenant_
 1. Druk op **F5** om het script uit te voeren.
@@ -167,7 +166,7 @@ Als één Tenant in een multi tenant-Data Base een aanhoudende hoge belasting on
 
 Deze oefening simuleert het effect van Salix Salsa die een hoge belasting ondervindt wanneer tickets voor een populaire gebeurtenis op de verkoop gaan.
 
-1. Open de.. \\ . Script *demo-PerformanceMonitoringAndManagement. ps1* .
+1. Open de.. \\ . *Demo-PerformanceMonitoringAndManagement.ps1* script.
 1. Stel **$DemoScenario = 5** _in, Genereer een normale belasting plus een hoge belasting voor één tenant (ongeveer 90 DTU)._
 1. **$SingleTenantName instellen = Salix Salsa**
 1. Voer het script uit met **F5**.

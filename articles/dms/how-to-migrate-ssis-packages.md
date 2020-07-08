@@ -13,10 +13,9 @@ ms.custom: seo-lt-2019
 ms.topic: article
 ms.date: 02/20/2020
 ms.openlocfilehash: 483f60138dcaa6252999b9d15e846fbd1c68e9a2
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/27/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84021514"
 ---
 # <a name="redeploy-ssis-packages-to-azure-sql-database-with-azure-database-migration-service"></a>SSIS-pakketten opnieuw implementeren om te Azure SQL Database met Azure Database Migration Service
@@ -78,7 +77,7 @@ Voer de volgende stappen uit om SSIS-projecten/-pakketten naar Azure SQL Databas
 
     ![Wizard implementatie bron pagina selecteren](media/how-to-migrate-ssis-packages/dms-deployment-wizard-select-source-page.png)
  
-8. Selecteer **Next**.
+8. Selecteer **Volgende**.
 9. Geef op de pagina **doel selecteren** het doel voor uw project op.
 
     a. Voer in het tekstvak Server naam de volledig gekwalificeerde server naam in (<server_name>. database.windows.net).
@@ -96,7 +95,7 @@ Voer de volgende stappen uit om SSIS-projecten/-pakketten naar Azure SQL Databas
 
     ![Pagina validatie van wizard implementatie](media/how-to-migrate-ssis-packages/dms-deployment-wizard-validate-page.png)
 
-11. Selecteer **Next**.
+11. Selecteer **Volgende**.
 
 12. Controleer de implementatie-instellingen op de pagina **controleren** .
 

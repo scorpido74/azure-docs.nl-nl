@@ -12,10 +12,9 @@ ms.author: sstein
 ms.reviewer: sstein
 ms.date: 01/14/2019
 ms.openlocfilehash: 70d21170bfc172f30b01c2af093bc82a54c80dd3
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/27/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84043126"
 ---
 # <a name="use-geo-restore-to-recover-a-multitenant-saas-application-from-database-backups"></a>Geo-herstel gebruiken om een multi tenant-SaaS-toepassing te herstellen vanuit back-ups van data bases
@@ -30,7 +29,7 @@ Geo-Restore is de voordeligste oplossing voor herstel na nood geval voor Azure S
 > [!NOTE]
 > Herstel toepassingen met de laagst mogelijke RPO en RTO met behulp van geo-replicatie in plaats van geo-herstel.
 
-In deze zelf studie worden zowel herstel-als repatriër-werk stromen besproken. Procedures voor:
+In deze zelf studie worden zowel herstel-als repatriër-werk stromen besproken. In deze zelfstudie leert u procedures om het volgende te doen:
 > [!div class="checklist"]
 > 
 > * Data Base-en configuratie gegevens van elastische groepen synchroniseren met de Tenant catalogus.
@@ -172,7 +171,7 @@ Het herstel proces voert het volgende uit:
 
 Stel dat er een storing optreedt in de regio waarin de toepassing wordt geïmplementeerd en voer het herstel script uit:
 
-1. Stel in het Power shell-ISE in het script. ..\Learning Modules\Business continuïteit en nood Recovery\DR-RestoreFromBackup\Demo-RestoreFromBackup.ps1 de volgende waarde in:
+1. Stel in het Power shell-ISE in het script. ..\Learning Modules\Business continuïteit en ramp Recovery\DR-RestoreFromBackup\Demo-RestoreFromBackup.ps1 de volgende waarde in:
 
     $DemoScenario = 2: herstel de app in een herstel regio door geografisch redundante back-ups te herstellen.
 
@@ -207,7 +206,7 @@ Wanneer het eind punt van de toepassing in Traffic Manager is uitgeschakeld, is 
 ## <a name="provision-a-new-tenant-in-the-recovery-region"></a>Een nieuwe Tenant inrichten in de herstel regio
 Zelfs voordat Tenant databases worden hersteld, kunt u nieuwe tenants inrichten in de herstel regio. Nieuwe Tenant databases die in de herstel regio worden ingericht, worden later hersteld met de herstelde data bases.   
 
-1. Stel in het Power shell-ISE in het script. ..\Learning Modules\Business continuïteit en nood Recovery\DR-RestoreFromBackup\Demo-RestoreFromBackup.ps1 de volgende eigenschap in:
+1. Stel in het Power shell-ISE in het script. ..\Learning Modules\Business continuïteit en ramp Recovery\DR-RestoreFromBackup\Demo-RestoreFromBackup.ps1 de volgende eigenschap in:
 
     $DemoScenario = 3: een nieuwe Tenant inrichten in de herstel regio.
 
@@ -260,7 +259,7 @@ In deze taak werkt u een van de herstelde Tenant databases bij. In het proces vo
 
 1. Ga in uw browser naar de lijst met gebeurtenissen voor de concert zaal van contoso, blader door de gebeurtenissen en Let op de laatste gebeurtenis, serieus Strauss.
 
-2. Stel in het Power shell-ISE in het script. ..\Learning Modules\Business continuïteit en nood Recovery\DR-RestoreFromBackup\Demo-RestoreFromBackup.ps1 de volgende waarde in:
+2. Stel in het Power shell-ISE in het script. ..\Learning Modules\Business continuïteit en ramp Recovery\DR-RestoreFromBackup\Demo-RestoreFromBackup.ps1 de volgende waarde in:
 
     $DemoScenario = 4: een gebeurtenis verwijderen van een Tenant in de herstel regio.
 
@@ -318,7 +317,7 @@ Stel dat de storing is opgelost en het repatriërings script uit te voeren.
 
 Als u de zelf studie hebt gevolgd, wordt fabrikam Jazz Club en Dogwood Dojo in de oorspronkelijke regio onmiddellijk opnieuw geactiveerd door het script, omdat deze ongewijzigd zijn. Vervolgens worden de nieuwe Tenant, het Hawthorne hal en de concert zaal van Contoso hersteld, omdat deze is gewijzigd. Met het script wordt ook de catalogus gemaakt die is bijgewerkt toen Hawthorn Hall werd ingericht.
   
-1. Controleer in de Power shell-ISE in het script. ..\Learning Modules\Business continuïteit en nood Recovery\DR-RestoreFromBackup\Demo-RestoreFromBackup.ps1 het proces van de catalogus synchronisatie nog steeds wordt uitgevoerd in het Power shell-exemplaar. Als dat nodig is, start u deze opnieuw met de instelling:
+1. Controleer in de Power shell-ISE in het script. ..\Learning Modules\Business-continuïteit en nood Recovery\DR-RestoreFromBackup\Demo-RestoreFromBackup.ps1 op dat het catalogus synchronisatie proces nog steeds wordt uitgevoerd in het Power shell-exemplaar. Als dat nodig is, start u deze opnieuw met de instelling:
 
     $DemoScenario = 1: begin met het synchroniseren van de configuratie gegevens van de Tenant server, de groep en de data base in de catalogus.
 
@@ -350,7 +349,7 @@ Nadat de repatriëring is voltooid, is het veilig om de resources in de herstel 
 
 Het herstel proces maakt alle herstel resources in een herstel resource groep. Het opschonings proces verwijdert deze resource groep en verwijdert alle verwijzingen naar de resources uit de catalogus. 
 
-1. Stel in het Power shell-ISE in het script. ..\Learning Modules\Business continuïteit en nood Recovery\DR-RestoreFromBackup\Demo-RestoreFromBackup.ps1 het volgende in:
+1. Stel in het Power shell-ISE in het script. ..\Learning Modules\Business continuïteit en ramp Recovery\DR-RestoreFromBackup\Demo-RestoreFromBackup.ps1 het volgende in:
     
     $DemoScenario = 6: Verwijder verouderde resources uit de herstel regio.
 

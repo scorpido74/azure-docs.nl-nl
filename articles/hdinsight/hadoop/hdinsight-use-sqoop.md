@@ -8,10 +8,9 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 12/06/2019
 ms.openlocfilehash: 091ce1cc0b2540a02e62e1e85c5515f6aa62b93c
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/27/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84018834"
 ---
 # <a name="use-apache-sqoop-with-hadoop-in-hdinsight"></a>Apache Sqoop gebruiken met Hadoop in HDInsight
@@ -53,7 +52,7 @@ HDInsight-cluster wordt geleverd met een aantal voorbeeld gegevens. U gebruikt d
   | devicemake |tekenreeks |
   | devicemodel |tekenreeks |
   | state |tekenreeks |
-  | land |tekenreeks |
+  | country |tekenreeks |
   | querydwelltime |double |
   | SessionID |bigint |
   | sessionpagevieworder |bigint |
@@ -85,11 +84,11 @@ Het cluster, SQL database en andere objecten worden via de Azure Portal gemaakt 
     |Locatie |Selecteer een regio in de vervolg keuzelijst.|
     |Clusternaam |Voer een naam in voor het Hadoop-cluster. Alleen kleine letters gebruiken.|
     |Gebruikersnaam voor clusteraanmelding |Behoud de vooraf ingevulde waarde `admin` .|
-    |Wachtwoord voor clusteraanmelding |Voer een wacht woord in.|
+    |Wachtwoord voor clusteraanmelding |Voer een wachtwoord in.|
     |SSH-gebruikers naam |Behoud de vooraf ingevulde waarde `sshuser` .|
-    |SSH-wacht woord |Voer een wacht woord in.|
+    |SSH-wacht woord |Voer een wachtwoord in.|
     |Aanmelding voor SQL-beheerder |Behoud de vooraf ingevulde waarde `sqluser` .|
-    |Wacht woord voor SQL-beheerder |Voer een wacht woord in.|
+    |Wacht woord voor SQL-beheerder |Voer een wachtwoord in.|
     |_artifacts locatie | Gebruik de standaard waarde tenzij u uw eigen Bacpac-bestand op een andere locatie wilt gebruiken.|
     |SAS-token _artifacts locatie |Leeg laten.|
     |Bacpac-bestands naam |Gebruik de standaard waarde tenzij u uw eigen Bacpac-bestand wilt gebruiken.|
