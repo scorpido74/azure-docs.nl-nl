@@ -1,15 +1,15 @@
 ---
 title: Ethereum proof-of-Authority consortium-oplossings sjabloon implementeren in azure
 description: Gebruik de Ethereum proof-of-Authority consortium-oplossing voor het implementeren en configureren van een consortium Ethereum Network voor meerdere leden op Azure
-ms.date: 06/04/2020
+ms.date: 07/07/2020
 ms.topic: how-to
 ms.reviewer: ravastra
-ms.openlocfilehash: 127aa860fe0c80f4d12a373c00ad2f53447c3497
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 859be5d779663e429ef333c8fd8163c0aa60eab5
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85210113"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86085919"
 ---
 # <a name="deploy-ethereum-proof-of-authority-consortium-solution-template-on-azure"></a>Ethereum proof-of-Authority consortium-oplossings sjabloon implementeren in azure
 
@@ -17,15 +17,17 @@ U kunt [de Azure-oplossings sjabloon Ethereum proof-of-Authority consortium prev
 
 De oplossings sjabloon kan door elk consortium onderdeel worden gebruikt om een Block chain-netwerk footprint in te richten met behulp van Microsoft Azure compute-, netwerk-en opslag Services. De netwerk footprint van elk consortium bestaat uit een verzameling knoop punten met gelijke taak verdeling die een toepassing of gebruiker kan gebruiken voor het indienen van Ethereum-trans acties.
 
+[!INCLUDE [Preview note](./includes/preview.md)]
+
 ## <a name="choose-an-azure-blockchain-solution"></a>Een Azure Block Chain-oplossing kiezen
 
 Voordat u kiest voor het gebruik van de sjabloon Ethereum proof-of-Authority consortium, vergelijkt u uw scenario met de algemene use-cases van de beschik bare Azure Block Chain-opties.
 
 Optie | Service model | Algemene use-case
 -------|---------------|-----------------
-Oplossingssjablonen | IaaS | Oplossings sjablonen zijn Azure Resource Manager sjablonen die u kunt gebruiken om een volledig geconfigureerde Block chain-netwerk topologie in te richten. De sjablonen implementeren en configureren Microsoft Azure compute-, netwerk-en opslag Services voor een bepaald Block chain-netwerk type.
+Oplossingssjablonen | IaaS | Oplossings sjablonen zijn Azure Resource Manager sjablonen die u kunt gebruiken om een volledig geconfigureerde Block chain-netwerk topologie in te richten. De sjablonen implementeren en configureren Microsoft Azure compute-, netwerk-en opslag Services voor een bepaald Block chain-netwerk type. Er zijn oplossings sjablonen zonder service level agreement. Gebruik de [pagina micro soft Q&een vraag](https://docs.microsoft.com/answers/topics/azure-blockchain-workbench.html) voor ondersteuning.
 [Azure Blockchain-service](../service/overview.md) | PaaS | De preview-versie van Azure Block Chain Service vereenvoudigt de vorming, het beheer en de governance van consortium Block Chain Networks. Gebruik Azure Block Chain Service voor oplossingen waarvoor PaaS, consortium beheer of de privacy van contracten en trans acties vereist is.
-[Azure Blockchain Workbench](../workbench/overview.md) | IaaS en PaaS | Azure Blockchain Workbench (preview-versie) is een verzameling Azure-services en -functies die zijn ontworpen om u te helpen bij het maken en implementeren van blockchain-toepassingen voor het delen van bedrijfsprocessen en gegevens met andere organisaties. Gebruik Azure Block Chain Workbench voor het prototypen van een Block Chain-oplossing of een Block Chain-toepassings bewijs van een concept.
+[Azure Blockchain Workbench](../workbench/overview.md) | IaaS en PaaS | Azure Blockchain Workbench (preview-versie) is een verzameling Azure-services en -functies die zijn ontworpen om u te helpen bij het maken en implementeren van blockchain-toepassingen voor het delen van bedrijfsprocessen en gegevens met andere organisaties. Gebruik Azure Block Chain Workbench voor het prototypen van een Block Chain-oplossing of een Block Chain-toepassings bewijs van een concept. Azure Blockchain Workbench wordt zonder Service Level Agreement geleverd. Gebruik de [pagina micro soft Q&een vraag](https://docs.microsoft.com/answers/topics/azure-blockchain-workbench.html) voor ondersteuning.
 
 ## <a name="solution-architecture"></a>Architectuur voor de oplossing
 
@@ -729,7 +731,7 @@ Als u feedback over producten wilt geven of nieuwe functies wilt aanvragen, kunt
 
 In contact komen met Microsoft-technici en experts uit de Azure Blockchain-community.
 
-* [Micro soft Q&een vraag pagina voor de Azure Block Chain-Service](https://docs.microsoft.com/answers/topics/azure-blockchain-workbench.html). Technische ondersteuning voor Block Chain-sjablonen is beperkt tot implementatie problemen.
+* [Micro soft Q&een vraag pagina](https://docs.microsoft.com/answers/topics/azure-blockchain-workbench.html). Technische ondersteuning voor Block Chain-sjablonen is beperkt tot implementatie problemen.
 * [Microsoft Tech Community](https://techcommunity.microsoft.com/t5/Blockchain/bd-p/AzureBlockchain)
 * [Stack Overflow](https://stackoverflow.com/questions/tagged/azure-blockchain-workbench)
 

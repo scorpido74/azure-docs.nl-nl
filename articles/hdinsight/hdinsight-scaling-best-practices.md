@@ -5,15 +5,15 @@ author: ashishthaps
 ms.author: ashish
 ms.reviewer: jasonh
 ms.service: hdinsight
-ms.topic: conceptual
+ms.topic: how-to
 ms.custom: seoapr2020
 ms.date: 04/29/2020
-ms.openlocfilehash: 2dae0f662eefa7f7b1f56d057cd47f1cb92244ce
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: fc14c3bd069162c390c09fddbfe9169b90bf66ce
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82592057"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86086004"
 ---
 # <a name="scale-azure-hdinsight-clusters"></a>Azure HDInsight-clusters schalen
 
@@ -30,7 +30,7 @@ U kunt een cluster hand matig schalen met behulp van een van de hieronder beschr
 
 Micro soft biedt de volgende hulpprogram ma's om clusters te schalen:
 
-|Hulpprogramma | Beschrijving|
+|Hulpprogramma | Description|
 |---|---|
 |[PowerShell Az](https://docs.microsoft.com/powershell/azure)|[`Set-AzHDInsightClusterSize`](https://docs.microsoft.com/powershell/module/az.hdinsight/set-azhdinsightclustersize) `-ClusterName CLUSTERNAME -TargetInstanceCount NEWSIZE`|
 |[PowerShell AzureRM](https://docs.microsoft.com/powershell/azure/azurerm) |[`Set-AzureRmHDInsightClusterSize`](https://docs.microsoft.com/powershell/module/azurerm.hdinsight/set-azurermhdinsightclustersize) `-ClusterName CLUSTERNAME -TargetInstanceCount NEWSIZE`|

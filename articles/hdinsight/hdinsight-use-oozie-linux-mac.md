@@ -5,15 +5,15 @@ author: omidm1
 ms.author: omidm
 ms.reviewer: jasonh
 ms.service: hdinsight
-ms.topic: conceptual
+ms.topic: how-to
 ms.custom: seoapr2020
 ms.date: 04/27/2020
-ms.openlocfilehash: 35835e1508311bd31008a2335a8c543e558686c2
-ms.sourcegitcommit: 01cd19edb099d654198a6930cebd61cae9cb685b
+ms.openlocfilehash: 1e88fc64ea297f70f56478588312675fb233f221
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/24/2020
-ms.locfileid: "85319375"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86085936"
 ---
 # <a name="use-apache-oozie-with-apache-hadoop-to-define-and-run-a-workflow-on-linux-based-azure-hdinsight"></a>Apache Oozie gebruiken met Apache Hadoop voor het definiëren en uitvoeren van een werkstroom in Azure HDInsight op basis van Linux
 
@@ -47,9 +47,11 @@ De werk stroom die in dit document wordt gebruikt, bevat twee acties. Acties zij
 
 1. Een Hive-actie voert een HiveQL-script uit om records op te halen uit de `hivesampletable` die zijn opgenomen in HDInsight. In elke rij met gegevens wordt een bezoek van een specifiek mobiel apparaat beschreven. De record indeling wordt weer gegeven zoals in de volgende tekst:
 
-        8       18:54:20        en-US   Android Samsung SCH-i500        California     United States    13.9204007      0       0
-        23      19:19:44        en-US   Android HTC     Incredible      Pennsylvania   United States    NULL    0       0
-        23      19:19:46        en-US   Android HTC     Incredible      Pennsylvania   United States    1.4757422       0       1
+    ```output
+    8       18:54:20        en-US   Android Samsung SCH-i500        California     United States    13.9204007      0       0
+    23      19:19:44        en-US   Android HTC     Incredible      Pennsylvania   United States    NULL    0       0
+    23      19:19:46        en-US   Android HTC     Incredible      Pennsylvania   United States    1.4757422       0       1
+    ```
 
     Het Hive-script dat in dit document wordt gebruikt, telt de totale bezoeken voor elk platform, zoals Android of iPhone, en slaat de tellingen op in een nieuwe Hive-tabel.
 
@@ -240,11 +242,13 @@ Oozie-werk stroom definities worden geschreven in Hadoop process Definition Lang
 
     U ontvangt uitvoer zoals de volgende tekst:
 
-        locale is "en_US.UTF-8"
-        locale charset is "UTF-8"
-        using default charset "UTF-8"
-        Default database being set to oozietest
-        1>
+    ```output
+    locale is "en_US.UTF-8"
+    locale charset is "UTF-8"
+    using default charset "UTF-8"
+    Default database being set to oozietest
+    1>
+    ```
 
 3. Voer de volgende regels in bij de prompt `1>`:
 
@@ -268,8 +272,10 @@ Oozie-werk stroom definities worden geschreven in Hadoop process Definition Lang
 
     U ziet uitvoer als de volgende tekst:
 
-        TABLE_CATALOG   TABLE_SCHEMA    TABLE_NAME      TABLE_TYPE
-        oozietest       dbo             mobiledata      BASE TABLE
+    ```output
+    TABLE_CATALOG   TABLE_SCHEMA    TABLE_NAME      TABLE_TYPE
+    oozietest       dbo             mobiledata      BASE TABLE
+    ```
 
 4. Sluit het hulp programma TSQL af door `exit` op de vraag te typen `1>` .
 
@@ -424,20 +430,22 @@ De volgende stappen gebruiken de Oozie-opdracht voor het indienen en beheren van
 
     Dit retourneert informatie als de volgende tekst:
 
-        Job ID : 0000005-150622124850154-oozie-oozi-W
-        ------------------------------------------------------------------------------------------------------------------------------------
-        Workflow Name : useooziewf
-        App Path      : wasb:///tutorials/useoozie
-        Status        : PREP
-        Run           : 0
-        User          : USERNAME
-        Group         : -
-        Created       : 2015-06-22 15:06 GMT
-        Started       : -
-        Last Modified : 2015-06-22 15:06 GMT
-        Ended         : -
-        CoordAction ID: -
-        ------------------------------------------------------------------------------------------------------------------------------------
+    ```output
+    Job ID : 0000005-150622124850154-oozie-oozi-W
+    ------------------------------------------------------------------------------------------------------------------------------------
+    Workflow Name : useooziewf
+    App Path      : wasb:///tutorials/useoozie
+    Status        : PREP
+    Run           : 0
+    User          : USERNAME
+    Group         : -
+    Created       : 2015-06-22 15:06 GMT
+    Started       : -
+    Last Modified : 2015-06-22 15:06 GMT
+    Ended         : -
+    CoordAction ID: -
+    ------------------------------------------------------------------------------------------------------------------------------------
+    ```
 
     Deze taak heeft de status `PREP` . Deze status geeft aan dat de taak is gemaakt, maar niet is gestart.
 
@@ -464,14 +472,16 @@ De volgende stappen gebruiken de Oozie-opdracht voor het indienen en beheren van
 
     De informatie die wordt geretourneerd, is vergelijkbaar met de volgende tekst:
 
-        deviceplatform  count
-        Android 31591
-        iPhone OS       22731
-        proprietary development 3
-        RIM OS  3464
-        Unknown 213
-        Windows Phone   1791
-        (6 rows affected)
+    ```output
+    deviceplatform  count
+    Android 31591
+    iPhone OS       22731
+    proprietary development 3
+    RIM OS  3464
+    Unknown 213
+    Windows Phone   1791
+    (6 rows affected)
+    ```
 
 Zie het [opdracht regel programma Apache Oozie](https://oozie.apache.org/docs/4.1.0/DG_CommandLineTool.html)voor meer informatie over de Oozie-opdracht.
 
