@@ -4,10 +4,10 @@ description: In dit artikel wordt beschreven hoe u Azure Service Bus kunt gebrui
 ms.topic: article
 ms.date: 06/23/2020
 ms.openlocfilehash: d969607a28759af3b6ee36d79638bb27d0d53808
-ms.sourcegitcommit: 61d92af1d24510c0cc80afb1aebdc46180997c69
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/24/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85340190"
 ---
 # <a name="use-service-bus-from-net-with-amqp-10"></a>Gebruik Service Bus van .NET met AMQP 1,0
@@ -78,7 +78,7 @@ Gebruik voor het vereenvoudigen van de interoperabiliteit met non-.NET-clients a
 | Streamen |binair |AMQP-gegevens (mogelijk meerdere). De gegevens secties bevatten de onbewerkte bytes die zijn gelezen van het Stream-object. |
 | Ander object |binair |AMQP-gegevens (mogelijk meerdere). Bevat het geserialiseerde binaire bestand van het object dat gebruikmaakt van de DataContractSerializer of een serialisatiefunctie die door de toepassing wordt geleverd. |
 
-| .NET-type | Type beschrijving van toegewezen AMQP | Opmerkingen |
+| .NET-type | Type beschrijving van toegewezen AMQP | Notities |
 | --- | --- | --- |
 | Uri |`<type name=”uri” class=restricted source=”string”> <descriptor name=”com.microsoft:uri” /></type>` |URI. AbsoluteUri |
 | Date time offset |`<type name=”datetime-offset” class=restricted source=”long”> <descriptor name=”com.microsoft:datetime-offset” /></type>` |Date time offset. UtcTicks |

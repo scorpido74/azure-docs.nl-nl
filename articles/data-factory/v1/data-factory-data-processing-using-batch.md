@@ -12,10 +12,10 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/10/2018
 ms.openlocfilehash: ab4e2f480ab0ef2deea3909d56f4fe1da17bbd07
-ms.sourcegitcommit: 01cd19edb099d654198a6930cebd61cae9cb685b
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/24/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85321402"
 ---
 # <a name="process-large-scale-datasets-by-using-data-factory-and-batch"></a>Grootschalige gegevens sets verwerken met behulp van Data Factory en batch
@@ -180,7 +180,7 @@ De-methode heeft enkele belang rijke onderdelen die u moet begrijpen:
 
    a. Start Visual Studio 2012/2013/2015.
 
-   b. Selecteer **bestand**  >  **Nieuw**  >  **project**.
+   b. Selecteer **Bestand** > **Nieuw** > **Project**.
 
    c. Vouw **sjablonen**uit en selecteer **Visual C \# **. In dit scenario gebruikt u C \# , maar u kunt elke .net-taal gebruiken om de aangepaste activiteit te ontwikkelen.
 
@@ -190,7 +190,7 @@ De-methode heeft enkele belang rijke onderdelen die u moet begrijpen:
 
    f. Selecteer **C: \\ ADF** voor de **locatie**. Maak de map **ADF** als deze nog niet bestaat.
 
-   g. Selecteer **OK** om het project te maken.
+   bijvoorbeeld Selecteer **OK** om het project te maken.
 
 1. Selecteer **Hulpprogramma's** > **NuGet Package Manager** > **Package Manager-console**.
 
@@ -964,7 +964,7 @@ Nadat u gegevens hebt verwerkt, kunt u deze gebruiken met online hulpprogram ma'
 * [Gegevens vernieuwen in Power BI](https://powerbi.microsoft.com/documentation/powerbi-refresh-data/)
 * [Azure en Power BI: basis overzicht](https://powerbi.microsoft.com/documentation/powerbi-azure-and-power-bi/)
 
-## <a name="references"></a>Verwijzingen
+## <a name="references"></a>Referenties
 * [Azure Data Factory](https://azure.microsoft.com/documentation/services/data-factory/)
 
   * [Inleiding tot de Data Factory-Service](data-factory-introduction.md)

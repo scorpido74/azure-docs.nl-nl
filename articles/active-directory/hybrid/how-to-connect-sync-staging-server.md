@@ -17,10 +17,10 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 18c982b09aa8a28d520c709c9b8db2c9be4c7bb4
-ms.sourcegitcommit: f98ab5af0fa17a9bba575286c588af36ff075615
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/25/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85356947"
 ---
 # <a name="azure-ad-connect-staging-server-and-disaster-recovery"></a>Azure AD Connect: staging-server en herstel na nood gevallen
@@ -52,7 +52,7 @@ Voer de volgende stappen uit om deze methode toe te passen:
 1. [Voorbereiden](#prepare)
 2. [Configuratie](#configuration)
 3. [Importeren en synchroniseren](#import-and-synchronize)
-4. [Controleren](#verify)
+4. [Verifiëren](#verify)
 5. [Scha kelen tussen actieve server](#switch-active-server)
 
 #### <a name="prepare"></a>Voorbereiden

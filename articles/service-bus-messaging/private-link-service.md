@@ -6,10 +6,10 @@ ms.author: spelluru
 ms.date: 06/23/2020
 ms.topic: article
 ms.openlocfilehash: 4516405472abf733c8ef06fb5ee5855f8e97d396
-ms.sourcegitcommit: 61d92af1d24510c0cc80afb1aebdc46180997c69
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/24/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85340445"
 ---
 # <a name="integrate-azure-service-bus-with-azure-private-link"></a>Azure Service Bus integreren met een persoonlijke Azure-koppeling
@@ -55,7 +55,7 @@ Uw privé-eindpunt en het virtueel netwerk moeten zich in dezelfde regio bevinde
 
 Als u al een bestaande naam ruimte hebt, kunt u een persoonlijk eind punt maken door de volgende stappen uit te voeren:
 
-1. Meld u aan bij de [Azure-portal](https://portal.azure.com). 
+1. Meld u aan bij [Azure Portal](https://portal.azure.com). 
 2. Typ **Service Bus**in de zoek balk.
 3. Selecteer de **naam ruimte** in de lijst waaraan u een persoonlijk eind punt wilt toevoegen.
 4. Selecteer het tabblad **netwerken** onder **instellingen**.

@@ -17,10 +17,10 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 4dc1754eb8818df894e67c1748517b2e2f4356d6
-ms.sourcegitcommit: f98ab5af0fa17a9bba575286c588af36ff075615
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/25/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85356862"
 ---
 # <a name="azure-ad-connect-sync-understand-and-customize-synchronization"></a>Azure AD Connect synchronisatie: synchronisatie begrijpen en aanpassen
@@ -64,7 +64,7 @@ De synchronisatie service bestaat uit twee onderdelen: het on-premises **Azure A
 | **Meer informatie en verwijzingen** | |
 | [Poorten](reference-connect-ports.md) |Een lijst met poorten die u moet openen tussen de synchronisatie-engine en uw on-premises directory's en Azure AD. |
 | [Kenmerken gesynchroniseerd naar Azure Active Directory](reference-connect-sync-attributes-synchronized.md) |Een lijst met alle kenmerken die worden gesynchroniseerd tussen on-premises AD en Azure AD. |
-| [Functieverwijzing](reference-connect-sync-functions-reference.md) |Een lijst met alle functies die beschikbaar zijn in declaratieve inrichting. |
+| [Naslag informatie over functies](reference-connect-sync-functions-reference.md) |Een lijst met alle functies die beschikbaar zijn in declaratieve inrichting. |
 
 ## <a name="additional-resources"></a>Aanvullende resources
 * [Integrating your on-premises identities with Azure Active Directory (Engelstalig)](whatis-hybrid-identity.md)

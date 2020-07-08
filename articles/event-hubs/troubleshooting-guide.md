@@ -4,10 +4,10 @@ description: Dit artikel bevat informatie over het oplossen van verbindings prob
 ms.topic: article
 ms.date: 06/23/2020
 ms.openlocfilehash: 15c93873a25e70b0f9a88fc5ea621b90d58e7581
-ms.sourcegitcommit: 01cd19edb099d654198a6930cebd61cae9cb685b
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/24/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85322384"
 ---
 # <a name="troubleshoot-connectivity-issues---azure-event-hubs"></a>Verbindings problemen oplossen-Azure Event Hubs

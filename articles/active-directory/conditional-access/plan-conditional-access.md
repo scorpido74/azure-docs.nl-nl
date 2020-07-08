@@ -12,10 +12,10 @@ manager: daveba
 ms.reviewer: joflore
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 83cc75c1d69ee7232edf0c21643d25027b97f088
-ms.sourcegitcommit: 61d92af1d24510c0cc80afb1aebdc46180997c69
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/24/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85339725"
 ---
 # <a name="plan-a-conditional-access-deployment"></a>Een implementatie van voorwaardelijke toegang plannen
@@ -279,7 +279,7 @@ Naast uw actieve beleid, implementeert u uitgeschakeld beleid dat fungeert als s
 
 * Een Volg nummer van een volg orde om de beheerder te helpen weten in welke volg orde het order beleid moet worden ingeschakeld.
 
-**Hierbij**
+**Voorbeeld**
 
 De volgende naam geeft aan dat dit beleid het eerste van vier beleids regels is om in te scha kelen als er sprake is van een MFA-onderbreking:
 

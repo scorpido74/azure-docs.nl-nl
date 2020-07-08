@@ -4,10 +4,10 @@ description: In dit artikel wordt uitgelegd hoe u Azure Monitor kunt gebruiken o
 ms.topic: article
 ms.date: 06/23/2020
 ms.openlocfilehash: 57b791e67157908447956a14fae99545843f3bc0
-ms.sourcegitcommit: 61d92af1d24510c0cc80afb1aebdc46180997c69
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/24/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85340286"
 ---
 # <a name="azure-service-bus-metrics-in-azure-monitor"></a>Azure Service Bus metrische gegevens in Azure Monitor
@@ -54,7 +54,7 @@ Alle waarden voor metrische gegevens worden elke minuut naar Azure Monitor verzo
 
 Telt het aantal gegevens-en beheer bewerkings aanvragen.
 
-| Naam meetwaarde | Beschrijving |
+| Naam meetwaarde | Description |
 | ------------------- | ----------------- |
 | Binnenkomende aanvragen| Het aantal aanvragen voor de Service Bus-service gedurende een opgegeven periode. <br/><br/> Eenheid: aantal <br/> Aggregatie type: totaal <br/> Dimensie: EntityName|
 |Geslaagde aanvragen|Het aantal geslaagde aanvragen voor de Service Bus-service gedurende een opgegeven periode.<br/><br/> Eenheid: aantal <br/> Aggregatie type: totaal <br/> Dimensie: EntityName|
@@ -72,9 +72,9 @@ De volgende twee typen fouten worden geclassificeerd als gebruikers fouten:
 
 ## <a name="message-metrics"></a>Metrische gegevens van bericht
 
-| Naam meetwaarde | Beschrijving |
+| Naam meetwaarde | Description |
 | ------------------- | ----------------- |
-|Inkomende berichten|Het aantal gebeurtenissen of berichten dat is verzonden naar Service Bus gedurende een opgegeven periode.<br/><br/> Eenheid: aantal <br/> Aggregatie type: totaal <br/> Dimensie: EntityName|
+|Binnenkomende berichten|Het aantal gebeurtenissen of berichten dat is verzonden naar Service Bus gedurende een opgegeven periode.<br/><br/> Eenheid: aantal <br/> Aggregatie type: totaal <br/> Dimensie: EntityName|
 |Uitgaande berichten|Het aantal gebeurtenissen of berichten dat is ontvangen van Service Bus gedurende een opgegeven periode.<br/><br/> Eenheid: aantal <br/> Aggregatie type: totaal <br/> Dimensie: EntityName|
 | Berichten| Aantal berichten in een wachtrij/onderwerp. <br/><br/> Eenheid: aantal <br/> Aggregatie type: gemiddeld <br/> Dimensie: EntityName |
 | ActiveMessages| Aantal actieve berichten in een wachtrij/onderwerp. <br/><br/> Eenheid: aantal <br/> Aggregatie type: gemiddeld <br/> Dimensie: EntityName |
@@ -90,7 +90,7 @@ De volgende twee typen fouten worden geclassificeerd als gebruikers fouten:
 
 ## <a name="connection-metrics"></a>Verbindings gegevens
 
-| Naam meetwaarde | Beschrijving |
+| Naam meetwaarde | Description |
 | ------------------- | ----------------- |
 |ActiveConnections|Het aantal actieve verbindingen op een naam ruimte en op een entiteit.<br/><br/> Eenheid: aantal <br/> Aggregatie type: totaal <br/> Dimensie: EntityName|
 |Geopende verbindingen |Het aantal geopende verbindingen.<br/><br/> Eenheid: aantal <br/> Aggregatie type: totaal <br/> Dimensie: EntityName|
@@ -105,7 +105,7 @@ De volgende twee typen fouten worden geclassificeerd als gebruikers fouten:
 > 
 > De andere metriek die u kunt bewaken is: **vertraagde aanvragen**. Het is niet mogelijk om een probleem op te lossen, omdat de naam ruimte binnen het geheugen, de CPU en de brokered Connections limieten blijft. Zie [beperking in azure service bus Premium-laag](service-bus-throttling.md#throttling-in-azure-service-bus-premium-tier) voor meer informatie.
 
-| Naam meetwaarde | Beschrijving |
+| Naam meetwaarde | Description |
 | ------------------- | ----------------- |
 |CPU-gebruik per naam ruimte|Het percentage CPU-gebruik van de naam ruimte.<br/><br/> Eenheid: percentage <br/> Aggregatie type: maximum <br/> Dimensie: EntityName|
 |Gebruik van geheugen grootte per naam ruimte|Het percentage geheugen gebruik van de naam ruimte.<br/><br/> Eenheid: percentage <br/> Aggregatie type: maximum <br/> Dimensie: EntityName|
@@ -114,7 +114,7 @@ De volgende twee typen fouten worden geclassificeerd als gebruikers fouten:
 
 Azure Service Bus ondersteunt de volgende dimensies voor metrische gegevens in Azure Monitor. Het toevoegen van dimensies aan uw metrische gegevens is optioneel. Als u geen dimensies toevoegt, worden metrische gegevens opgegeven op het niveau van de naam ruimte. 
 
-|Dimensie naam|Beschrijving|
+|Dimensie naam|Description|
 | ------------------- | ----------------- |
 |EntityName| Service Bus ondersteunt Messa ging-entiteiten in de naam ruimte.|
 

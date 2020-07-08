@@ -13,10 +13,10 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 6fe9fe10b66aa6eb5fcdaafbf8e0132918e9645c
-ms.sourcegitcommit: f98ab5af0fa17a9bba575286c588af36ff075615
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/25/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85356676"
 ---
 # <a name="migrate-from-federation-to-password-hash-synchronization-for-azure-active-directory"></a>Migreren van Federatie naar wacht woord hash synchronisatie voor Azure Active Directory
@@ -112,7 +112,7 @@ Get-MsolDomainFederationSettings -DomainName Contoso.com | fl *
 
 Controleer alle instellingen die mogelijk zijn aangepast voor uw Federatie-ontwerp en implementatie documentatie. Zoek in het bijzonder naar aanpassingen in **PreferredAuthenticationProtocol**, **SupportsMfa**en **PromptLoginBehavior**.
 
-Raadpleeg voor meer informatie de volgende artikelen:
+Raadpleeg deze artikelen voor meer informatie:
 
 * [AD FS prompt = ondersteuning voor aanmeld parameters](https://docs.microsoft.com/windows-server/identity/ad-fs/operations/ad-fs-prompt-login)
 * [Set-MsolDomainAuthentication](https://docs.microsoft.com/powershell/module/msonline/set-msoldomainauthentication?view=azureadps-1.0)

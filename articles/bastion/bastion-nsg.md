@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 04/20/2020
 ms.author: charwen
 ms.openlocfilehash: e4782213b38ad9e265cc66c3073dc5f357c50561
-ms.sourcegitcommit: 01cd19edb099d654198a6930cebd61cae9cb685b
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/24/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85321662"
 ---
 # <a name="working-with-nsg-access-and-azure-bastion"></a>Werken met NSG-toegang en Azure Bastion
@@ -28,7 +28,7 @@ In dit diagram:
 * Connect Integration-een RDP/SSH-sessie met één klik binnen de browser
 * Op de Azure-VM is geen openbaar IP-adres vereist.
 
-## <a name="network-security-groups"></a><a name="nsg"></a>Netwerkbeveiligingsgroepen
+## <a name="network-security-groups"></a><a name="nsg"></a>Netwerk beveiligings groepen
 
 In deze sectie ziet u het netwerk verkeer tussen de gebruiker en Azure Bastion, en tot doel-Vm's in uw virtuele netwerk:
 

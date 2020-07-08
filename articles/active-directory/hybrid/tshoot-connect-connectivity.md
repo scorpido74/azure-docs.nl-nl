@@ -18,10 +18,10 @@ ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.custom: has-adal-ref
 ms.openlocfilehash: a329ec32e241d88a56fc7031904777888ac194ae
-ms.sourcegitcommit: f98ab5af0fa17a9bba575286c588af36ff075615
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/25/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85356403"
 ---
 # <a name="troubleshoot-azure-ad-connectivity"></a>Problemen met Azure AD-connectiviteit oplossen
@@ -44,7 +44,7 @@ De proxy server moet ook de vereiste Url's hebben geopend. De officiële lijst w
 
 Van deze Url's is de volgende tabel mini maal de absoluut bare waarde om te kunnen verbinden met Azure AD. Deze lijst bevat geen optionele functies, zoals wacht woord terugschrijven of Azure AD Connect Health. Dit wordt hier beschreven om te helpen bij het oplossen van problemen met de initiële configuratie.
 
-| URL | Poort | Beschrijving |
+| URL | Poort | Description |
 | --- | --- | --- |
 | mscrl.microsoft.com |HTTP/80 |Wordt gebruikt voor het downloaden van CRL-lijsten. |
 | \*. verisign.com |HTTP/80 |Wordt gebruikt voor het downloaden van CRL-lijsten. |
@@ -122,7 +122,7 @@ Hier volgt een dump van een echt proxy logboek en de pagina van de wizard instal
 | 1/11/2016 8:33 |connect://provisioningapi.microsoftonline.com:443 |
 | 1/11/2016 8:33 |connect://*bwsc02-relay*. microsoftonline.com:443 |
 
-**Configureerer**
+**Configureren**
 
 | Tijd | URL |
 | --- | --- |

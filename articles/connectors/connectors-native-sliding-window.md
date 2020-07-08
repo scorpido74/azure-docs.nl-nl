@@ -7,10 +7,10 @@ ms.reviewer: deli, logicappspm
 ms.topic: conceptual
 ms.date: 03/25/2020
 ms.openlocfilehash: 103805fbf395dc120acc96fbcee273abcf14939d
-ms.sourcegitcommit: 01cd19edb099d654198a6930cebd61cae9cb685b
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/24/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85322108"
 ---
 # <a name="schedule-and-run-tasks-for-contiguous-data-by-using-the-sliding-window-trigger-in-azure-logic-apps"></a>Taken plannen en uitvoeren voor aaneengesloten gegevens met behulp van de taak verschuiving van het venster in Azure Logic Apps
@@ -38,7 +38,7 @@ Zie [terugkerende geautomatiseerde taken, processen en werk stromen plannen en u
 
 ## <a name="add-sliding-window-trigger"></a>Verschuivings venster trigger toevoegen
 
-1. Meld u aan bij de [Azure-portal](https://portal.azure.com). Een lege, logische app maken.
+1. Meld u aan bij [Azure Portal](https://portal.azure.com). Een lege, logische app maken.
 
 1. Wanneer de ontwerp functie voor logische apps wordt weer gegeven, voert u in het zoekvak in `sliding window` als uw filter. Selecteer in de lijst triggers het **Schuif venster** om de eerste stap in de werk stroom van de logische app te activeren.
 

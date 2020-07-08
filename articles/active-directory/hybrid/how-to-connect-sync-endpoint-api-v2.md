@@ -13,10 +13,10 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 7a2e8bb6da4cf126a9dbd955b082d77965772f6f
-ms.sourcegitcommit: f98ab5af0fa17a9bba575286c588af36ff075615
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/25/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85357576"
 ---
 # <a name="azure-ad-connect-sync-v2-endpoint-api-public-preview"></a>Azure AD Connect Sync v2-eind punt-API (open bare preview) 
@@ -125,7 +125,7 @@ De volgende stappen kunnen worden gebruikt om de limiet voor lidmaatschappen te 
 
 8. Werk op de pagina trans **formaties** de **bron** waarde voor de **leden** transformatie bij en vervang ' 50000 ' door een waarde tussen 50001 en 250000. Met deze vervanging wordt de maximale grootte van het lidmaatschap van groepen die worden gesynchroniseerd met Azure AD verg root. We raden aan om te beginnen met een aantal 100.000 om inzicht te krijgen in de gevolgen die het synchroniseren van grote groepen op de synchronisatie prestaties heeft. 
  
- **Hierbij** 
+ **Voorbeeld** 
  
  `IIF((ValueCount("member")> 75000),Error("Maximum Group member count exceeded"),IgnoreThisFlow)` 
  

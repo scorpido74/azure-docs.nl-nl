@@ -4,10 +4,10 @@ description: In deze artikelen vindt u technieken voor het beveiligen van toepas
 ms.topic: article
 ms.date: 06/23/2020
 ms.openlocfilehash: e6dba5e6cf4700dfab354a434ac4d48f9a95b76a
-ms.sourcegitcommit: 61d92af1d24510c0cc80afb1aebdc46180997c69
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/24/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85339650"
 ---
 # <a name="best-practices-for-insulating-applications-against-service-bus-outages-and-disasters"></a>Best practices voor de isolatie van toepassingen tegen Service Bus-uitval en -noodgevallen
@@ -23,7 +23,7 @@ Concepten voor hoge Beschik baarheid en herstel na nood gevallen zijn ingebouwd 
 
 ### <a name="geo-disaster-recovery"></a>Geo-nood herstel
 
-Service Bus Premium ondersteunt geo-nood herstel op het niveau van de naam ruimte. Zie [Azure service bus geo-nood herstel](service-bus-geo-dr.md)voor meer informatie. De functie voor nood herstel, alleen beschikbaar voor de [Premium-SKU](service-bus-premium-messaging.md) , implementeert herstel na nood gevallen van meta gegevens en maakt gebruik van primaire en secundaire naam ruimten voor nood herstel.
+Service Bus Premium ondersteunt geo-nood herstel op het niveau van de naam ruimte. Zie [Azure Service Bus Geo-disaster recovery](service-bus-geo-dr.md) (Geo-herstel na noodgeval in Azure Service Bus) voor meer informatie. De functie voor nood herstel, alleen beschikbaar voor de [Premium-SKU](service-bus-premium-messaging.md) , implementeert herstel na nood gevallen van meta gegevens en maakt gebruik van primaire en secundaire naam ruimten voor nood herstel.
 
 ### <a name="availability-zones"></a>Beschikbaarheidszones
 

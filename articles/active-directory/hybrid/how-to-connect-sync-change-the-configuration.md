@@ -13,10 +13,10 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: ea7f2fbd910f574a6486f1db2eaa9b99a4e3ca3e
-ms.sourcegitcommit: f98ab5af0fa17a9bba575286c588af36ff075615
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/25/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85357865"
 ---
 # <a name="azure-ad-connect-sync-make-a-change-to-the-default-configuration"></a>Azure AD Connect synchronisatie: een wijziging in de standaard configuratie aanbrengen
@@ -264,8 +264,8 @@ De regel voor binnenkomende synchronisatie maakt het mogelijk dat de kenmerk waa
 
     | Kenmerk | Waarde | Details |
     | --- | --- | --- |
-    | Naam | *Geef een naam op* | Bijvoorbeeld *in van AD: gebruiker user type* |
-    | Beschrijving | *Geef een beschrijving op* |  |
+    | Name | *Geef een naam op* | Bijvoorbeeld *in van AD: gebruiker user type* |
+    | Description | *Geef een beschrijving op* |  |
     | Verbonden systeem | *Kies de on-premises AD-connector* |  |
     | Type verbonden systeem object | **Gebruiker** |  |
     | Omgekeerd object type | **Person** |  |
@@ -290,7 +290,7 @@ De regel voor binnenkomende synchronisatie maakt het mogelijk dat de kenmerk waa
 
     | Stroom type | Doel kenmerk | Bron | Eenmaal Toep assen | Type samen voeging |
     | --- | --- | --- | --- | --- |
-    | Expressie | UserType | IIF (IsPresent ([userPrincipalName]), IIF (CBool (/gebruiker) (LCase ([userPrincipalName]), " @partners.fabrikam123.org ") = 0), "lid", "gast"), fout ("userPrincipalName is niet aanwezig om User type te bepalen")) | Niet ingeschakeld | Bijwerken |
+    | Expression | UserType | IIF (IsPresent ([userPrincipalName]), IIF (CBool (/gebruiker) (LCase ([userPrincipalName]), " @partners.fabrikam123.org ") = 0), "lid", "gast"), fout ("userPrincipalName is niet aanwezig om User type te bepalen")) | Niet ingeschakeld | Bijwerken |
 
 7. Klik op **toevoegen** om de regel voor binnenkomend verkeer te maken.
 
@@ -306,8 +306,8 @@ De regel voor uitgaande synchronisatie maakt het mogelijk dat de waarde van het 
 
     | Kenmerk | Waarde | Details |
     | ----- | ------ | --- |
-    | Naam | *Geef een naam op* | Bijvoorbeeld voor *Aad: gebruiker user type* |
-    | Beschrijving | *Geef een beschrijving op* ||
+    | Name | *Geef een naam op* | Bijvoorbeeld voor *Aad: gebruiker user type* |
+    | Description | *Geef een beschrijving op* ||
     | Verbonden systeem | *De AAD-connector selecteren* ||
     | Type verbonden systeem object | **Gebruiker** ||
     | Omgekeerd object type | **Person** ||

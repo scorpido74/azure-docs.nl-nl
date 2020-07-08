@@ -13,15 +13,15 @@ ms.workload: infrastructure-services
 ms.date: 4/30/2020
 ms.author: mebeatty
 ms.openlocfilehash: d00ed607322205daefd80c111b83483524c4a742
-ms.sourcegitcommit: 01cd19edb099d654198a6930cebd61cae9cb685b
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/24/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85321517"
 ---
 # <a name="whats-new-in-azure-front-door"></a>Wat is er nieuw in azure front-deur?
 
-De front-deur van Azure wordt doorlopend bijgewerkt. Dit artikel bevat informatie over het volgende om te blijven werken met de meest recente ontwikkelingen:
+De front-deur van Azure wordt doorlopend bijgewerkt. Om u op de hoogte te houden van de nieuwste ontwikkelingen, biedt dit artikel u informatie over:
 
 - De nieuwste releases
 - Bekende problemen

@@ -17,10 +17,10 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 597e322536703560fad8a0ba562cc70ce3aa1775
-ms.sourcegitcommit: f98ab5af0fa17a9bba575286c588af36ff075615
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/25/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85357406"
 ---
 # <a name="azure-active-directory-connect-sync-configure-preferred-data-location-for-office-365-resources"></a>Azure Active Directory Connect synchronisatie: de voorkeurs locatie van gegevens voor Office 365-resources configureren
@@ -62,7 +62,7 @@ De geografische gebieden in Office 365 is beschikbaar voor meerdere geografische
 
 ### <a name="azure-ad-connect-support-for-synchronization"></a>Azure AD Connect ondersteuning voor synchronisatie
 
-Azure AD Connect ondersteunt synchronisatie van het kenmerk **preferredDataLocation** voor **gebruikers** objecten in versie 1.1.524.0 en hoger. Met name:
+Azure AD Connect ondersteunt synchronisatie van het kenmerk **preferredDataLocation** voor **gebruikers** objecten in versie 1.1.524.0 en hoger. Specifiek:
 
 * Het schema van de **gebruiker** van het object type in de Azure AD-connector wordt uitgebreid met het kenmerk **preferredDataLocation** . Het kenmerk is van het type teken reeks met één waarde.
 * Het schema van de **persoon** van het object type in de tekst wordt uitgebreid met het kenmerk **preferredDataLocation** . Het kenmerk is van het type teken reeks met één waarde.
@@ -142,8 +142,8 @@ Met de regel voor binnenkomende synchronisatie kan de kenmerk waarde worden gest
 
     | Kenmerk | Waarde | Details |
     | --- | --- | --- |
-    | Naam | *Geef een naam op* | Bijvoorbeeld ' in van AD: gebruiker preferredDataLocation ' |
-    | Beschrijving | *Geef een aangepaste beschrijving op* |  |
+    | Name | *Geef een naam op* | Bijvoorbeeld ' in van AD: gebruiker preferredDataLocation ' |
+    | Description | *Geef een aangepaste beschrijving op* |  |
     | Verbonden systeem | *Kies de on-premises Active Directory-connector* |  |
     | Type verbonden systeem object | **Gebruiker** |  |
     | Omgekeerd object type | **Person** |  |
@@ -171,8 +171,8 @@ De regel voor uitgaande synchronisatie maakt het mogelijk dat de waarde van het 
 
     | Kenmerk | Waarde | Details |
     | ----- | ------ | --- |
-    | Naam | *Geef een naam op* | Bijvoorbeeld ' naar Azure AD: User preferredDataLocation ' |
-    | Beschrijving | *Geef een beschrijving op* ||
+    | Name | *Geef een naam op* | Bijvoorbeeld ' naar Azure AD: User preferredDataLocation ' |
+    | Description | *Geef een beschrijving op* ||
     | Verbonden systeem | *De Azure AD-connector selecteren* ||
     | Type verbonden systeem object | **Gebruiker** ||
     | Omgekeerd object type | **Person** ||

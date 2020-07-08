@@ -4,10 +4,10 @@ description: Protocol gids voor expressies en beschrijving van AMQP 1,0 in Azure
 ms.topic: article
 ms.date: 06/23/2020
 ms.openlocfilehash: 17f2f6da88e585d770a0a04825dc817f870089f1
-ms.sourcegitcommit: 61d92af1d24510c0cc80afb1aebdc46180997c69
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/24/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85337897"
 ---
 # <a name="amqp-10-in-azure-service-bus-and-event-hubs-protocol-guide"></a>AMQP 1,0 in Azure Service Bus en Event Hubs protocol gids
@@ -359,14 +359,14 @@ Het aanvraag bericht heeft de volgende toepassings eigenschappen:
 
 | Sleutel | Optioneel | Waardetype | Inhoud van waarde |
 | --- | --- | --- | --- |
-| schijf |Nee |tekenreeks |**put-token** |
-| type |Nee |tekenreeks |Het type van het token dat wordt geplaatst. |
-| naam |Nee |tekenreeks |De "doel groep" waarop het token van toepassing is. |
-| verval |Ja |tijdstempel |De verloop tijd van het token. |
+| schijf |No |tekenreeks |**put-token** |
+| type |No |tekenreeks |Het type van het token dat wordt geplaatst. |
+| naam |No |tekenreeks |De "doel groep" waarop het token van toepassing is. |
+| verval |Yes |tijdstempel |De verloop tijd van het token. |
 
 De eigenschap *name* identificeert de entiteit waaraan het token moet worden gekoppeld. In Service Bus is het het pad naar de wachtrij, of onderwerp/abonnement. De eigenschap *type* geeft het token type aan:
 
-| Token type | Beschrijving van het token | Type hoofd tekst | Opmerkingen |
+| Token type | Beschrijving van het token | Type hoofd tekst | Notities |
 | --- | --- | --- | --- |
 | AMQP: JWT |JSON Web Token (JWT) |AMQP-waarde (teken reeks) |Nog niet beschikbaar. |
 | AMQP: swt |Eenvoudig webtoken (SWT) |AMQP-waarde (teken reeks) |Alleen ondersteund voor SWT-tokens die zijn uitgegeven door AAD/ACS |
@@ -378,8 +378,8 @@ Het antwoord bericht heeft de volgende *eigenschaps* waarden van de toepassing:
 
 | Sleutel | Optioneel | Waardetype | Inhoud van waarde |
 | --- | --- | --- | --- |
-| status-code |Nee |int |HTTP-antwoord code **[RFC2616]**. |
-| status-beschrijving |Ja |tekenreeks |De beschrijving van de status. |
+| status-code |No |int |HTTP-antwoord code **[RFC2616]**. |
+| status-beschrijving |Yes |tekenreeks |De beschrijving van de status. |
 
 De client kan *put-token* herhaaldelijk aanroepen en voor elke entiteit in de infra structuur voor berichten. De tokens zijn toegewezen aan de huidige client en verankerd op de huidige verbinding, wat betekent dat de server behouden tokens verwijdert wanneer de verbinding wordt verbroken.
 

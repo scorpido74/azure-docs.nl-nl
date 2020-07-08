@@ -4,10 +4,10 @@ description: In dit artikel wordt beschreven hoe u een Azure Automation runbook 
 ms.topic: how-to
 ms.date: 06/23/2020
 ms.openlocfilehash: 52f5b13b482739bfa56ff606f684fd5a9c7d3b6e
-ms.sourcegitcommit: 61d92af1d24510c0cc80afb1aebdc46180997c69
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/24/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85341492"
 ---
 # <a name="automatically-update-messaging-units-of-an-azure-service-bus-namespace"></a>Bericht eenheden van een Azure Service Bus naam ruimte automatisch bijwerken 
