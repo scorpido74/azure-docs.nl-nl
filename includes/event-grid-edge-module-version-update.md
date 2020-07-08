@@ -1,6 +1,6 @@
 ---
-title: Include-bestand
-description: Include-bestand
+title: bestand opnemen
+description: bestand opnemen
 services: event-grid
 author: femila
 ms.service: event-grid
@@ -9,10 +9,10 @@ ms.date: 01/16/2020
 ms.author: femila
 ms.custom: include file
 ms.openlocfilehash: 16272ffceea6db5ced839d3ed957d11aec580a91
-ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/09/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84562281"
 ---
 >[!NOTE]

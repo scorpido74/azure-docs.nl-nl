@@ -17,10 +17,10 @@ ms.author: curtand
 ms.custom: pim
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: f389bfe19eb6dde5416d8cba0b67d964e69bc860
-ms.sourcegitcommit: 24f31287b6a526e23ff5b5469113522d1ccd4467
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/12/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84743164"
 ---
 # <a name="activate-an-azure-ad-custom-role-in-privileged-identity-management"></a>Een aangepaste Azure AD-rol activeren in Privileged Identity Management
@@ -56,7 +56,7 @@ Wanneer u een aangepaste Azure AD-rol moet activeren, kunt u de activering aanvr
 
 1. Geef indien nodig een aangepaste begin tijd voor de activering op. Wanneer u dit gebruikt, wordt het rollidmaatschap geactiveerd op het opgegeven tijdstip.
 1. Voer in het vak **reden** de reden voor de activerings aanvraag in. Deze kunnen worden opgegeven, of niet in de instelling van de rol.
-1. Selecteer **activeren**.
+1. Selecteer **Activate**.
 
 Als voor de rol geen goed keuring is vereist, wordt deze geactiveerd volgens uw instellingen en wordt deze toegevoegd aan de lijst met actieve rollen. Als u de geactiveerde functie wilt gebruiken, begint u met de stappen in [een aangepaste Azure AD-rol toewijzen in privileged Identity Management](azure-ad-custom-roles-assign.md).
 

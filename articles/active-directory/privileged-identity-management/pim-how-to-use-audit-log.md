@@ -15,10 +15,10 @@ ms.author: curtand
 ms.custom: pim
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: b0a5a20498ccd0a133c6e02d366af690acf2665e
-ms.sourcegitcommit: 24f31287b6a526e23ff5b5469113522d1ccd4467
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/12/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84742263"
 ---
 # <a name="view-audit-history-for-azure-ad-roles-in-privileged-identity-management"></a>De controle geschiedenis voor Azure AD-rollen in Privileged Identity Management weer geven
@@ -88,14 +88,14 @@ Volg deze stappen om de controle geschiedenis voor Azure AD-rollen weer te geven
 
     Onder aan de pagina wordt een tabel weer gegeven met informatie over elke actie in de beschik bare controle geschiedenis. De kolommen hebben de volgende betekenissen:
 
-    | Kolom | Beschrijving |
+    | Kolom | Description |
     | --- | --- |
     | Tijd | Wanneer de actie is uitgevoerd. |
     | Requestor | Gebruiker die de functie activeert of wijzigt. Als de waarde **Azure System**is, controleert u de controle geschiedenis van Azure voor meer informatie. |
     | Bewerking | Acties die door de aanvrager worden uitgevoerd. Acties kunnen toewijzen, intrekken, activeren, deactiveren of AddedOutsidePIM bevatten. |
     | Lid | Gebruiker die een rol activeert of toewijst. |
     | Rol | De rol die is toegewezen of geactiveerd door de gebruiker. |
-    | Redenering | Tekst die tijdens de activering is ingevoerd in het veld reden. |
+    | Redenen geven | Tekst die tijdens de activering is ingevoerd in het veld reden. |
     | Verloopdatum | Wanneer een geactiveerde rol verloopt. Is alleen van toepassing op in aanmerking komende roltoewijzingen. |
 
 1. Als u de controle geschiedenis wilt sorteren, klikt u op de knoppen **tijd**, **actie**en **rol** .

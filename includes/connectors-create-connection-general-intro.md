@@ -5,10 +5,10 @@ author: ecfan
 ms.author: estfan
 ms.date: 06/06/2020
 ms.openlocfilehash: 1113201941ce0757b58e361c08c9d79d7dd374cc
-ms.sourcegitcommit: 0a5bb9622ee6a20d96db07cc6dd45d8e23d5554a
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/05/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84449055"
 ---
 Wanneer u een trigger of actie toevoegt die voor het eerst verbinding maakt met een service of systeem, wordt u door de ontwerp functie voor logische apps gevraagd om een *verbinding* te maken door de benodigde gegevens op te geven, zoals is afhankelijk van de verbinding, bijvoorbeeld:

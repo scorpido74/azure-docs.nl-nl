@@ -17,10 +17,10 @@ ms.author: curtand
 ms.custom: pim
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 8091890d174ae68f012a6ec24685a0e705100f8b
-ms.sourcegitcommit: 24f31287b6a526e23ff5b5469113522d1ccd4467
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/12/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84743674"
 ---
 # <a name="review-access-to-azure-resource-roles-in-privileged-identity-management"></a>Toegang tot Azure-resource rollen controleren in Privileged Identity Management
@@ -37,7 +37,7 @@ U kunt toegang goed keuren of weigeren op basis van het al dan niet gebruiken va
 
 Volg deze stappen om de toegangs beoordeling te vinden en te volt ooien:
 
-1. Meld u aan bij de [Azure-portal](https://portal.azure.com/).
+1. Meld u aan bij [Azure Portal](https://portal.azure.com/).
 1. Selecteer **Azure Active Directory** en open **privileged Identity Management**.
 1. Selecteer **toegang controleren**.
 

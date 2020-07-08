@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 06/08/2020
 ms.author: ccompy
 ms.openlocfilehash: ee81b391587b994bd79e9f0950d041de70153b5c
-ms.sourcegitcommit: 20e246e86e25d63bcd521a4b4d5864fbc7bad1b0
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/08/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84488784"
 ---
 Door gebruik te maken van regionale VNet-integratie kan uw app toegang tot:
@@ -19,7 +19,7 @@ Door gebruik te maken van regionale VNet-integratie kan uw app toegang tot:
 * Bronnen in azure ExpressRoute-verbindingen.
 * Resources in het VNet waarmee u bent geïntegreerd.
 * Bronnen tussen peered verbindingen, waaronder Azure ExpressRoute-verbindingen.
-* Privé-eind punten 
+* Privé-eindpunten 
 
 Wanneer u VNet-integratie met VNets in dezelfde regio gebruikt, kunt u de volgende Azure-netwerk functies gebruiken:
 
@@ -88,7 +88,7 @@ Nadat uw app met uw VNet is geïntegreerd, maakt deze gebruik van dezelfde DNS-s
 
 Met deze instellingen worden al uw uitgaande oproepen vanuit uw app naar uw VNet verzonden en kan uw app Azure DNS privé zones gebruiken.
 
-### <a name="private-endpoints"></a>Privé-eind punten
+### <a name="private-endpoints"></a>Privé-eindpunten
 
 Als u aanroepen naar [persoonlijke eind punten][privateendpoints]wilt maken, moet u de integratie met Azure DNS private zones of het persoonlijke eind punt beheren in de DNS-server die door uw app wordt gebruikt. 
 

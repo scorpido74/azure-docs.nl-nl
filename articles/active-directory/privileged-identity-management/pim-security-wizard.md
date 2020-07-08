@@ -15,10 +15,10 @@ ms.author: curtand
 ms.custom: pim ; H1Hack27Feb2017
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 1cc7aed1cc79a8c08a7ff11382a1c7a51455d5c3
-ms.sourcegitcommit: 24f31287b6a526e23ff5b5469113522d1ccd4467
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/12/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84743657"
 ---
 # <a name="azure-ad-roles-security-wizard-in-privileged-identity-management"></a>De wizard Beveiliging van Azure AD-rollen in Privileged Identity Management
@@ -40,7 +40,7 @@ De tweede stap van de wizard biedt u de mogelijkheid om de roltoewijzingen van d
 
 ## <a name="run-the-wizard"></a>De wizard uitvoeren
 
-1. Meld u aan bij de [Azure-portal](https://portal.azure.com/).
+1. Meld u aan bij [Azure Portal](https://portal.azure.com/).
 
 1. Open **Azure AD privileged Identity Management**.
 

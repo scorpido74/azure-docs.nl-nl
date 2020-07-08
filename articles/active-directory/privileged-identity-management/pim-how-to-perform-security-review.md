@@ -15,10 +15,10 @@ ms.author: curtand
 ms.custom: pim
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 4096c65fa4375152f44891d4a0a5aac4b9077cf2
-ms.sourcegitcommit: 24f31287b6a526e23ff5b5469113522d1ccd4467
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/12/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84743844"
 ---
 # <a name="review-access-to-azure-ad-roles-in-privileged-identity-management"></a>Toegang tot Azure AD-rollen in Privileged Identity Management controleren
@@ -33,7 +33,7 @@ Als u een beheerder van een bevoorrechte rol of globale beheerder bent die geïn
 
 Als u de Privileged Identity Management-service niet hebt vastgemaakt aan uw dash board in uw Azure Portal, voert u de volgende stappen uit om aan de slag te gaan.
 
-1. Meld u aan bij de [Azure-portal](https://portal.azure.com/).
+1. Meld u aan bij [Azure Portal](https://portal.azure.com/).
 2. Selecteer uw gebruikers naam in de rechter bovenhoek van de Azure Portal en selecteer de Azure AD-organisatie waar u gaat werken.
 3. Selecteer **Alle services** en gebruik het tekstvak Filteren om te zoeken naar **Azure AD Privileged Identity Management**.
 4. Schakel **Vastmaken aan dashboard** in en klik op de knop **Maken**. De Privileged Identity Management-toepassing wordt geopend.
