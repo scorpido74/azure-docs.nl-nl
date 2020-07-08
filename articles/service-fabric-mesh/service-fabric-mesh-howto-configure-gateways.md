@@ -7,10 +7,9 @@ ms.date: 11/28/2018
 ms.author: dekapur
 ms.custom: mvc, devcenter
 ms.openlocfilehash: ec408403d4baa0f211c6bfe867a15c96513693cb
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75461965"
 ---
 # <a name="configure-a-gateway-resource-to-route-requests"></a>Een gateway bron configureren om aanvragen te routeren
@@ -21,7 +20,7 @@ Gateway resources moeten worden gedeclareerd als onderdeel van uw implementatie 
 
 ## <a name="options-for-configuring-your-gateway-resource"></a>Opties voor het configureren van uw gateway bron
 
-Omdat de gateway resource fungeert als een brug tussen het netwerk van uw toepassing en het netwerk van de onderliggende infra `open` structuur (het netwerk). U hoeft slechts één te configureren (in de preview-versie van het net-voor beeld is er een limiet van één gateway per app). De declaratie voor de resource bestaat uit twee hoofd onderdelen: de meta gegevens van de bron en de eigenschappen. 
+Omdat de gateway resource fungeert als een brug tussen het netwerk van uw toepassing en het netwerk van de onderliggende infra structuur (het `open` netwerk). U hoeft slechts één te configureren (in de preview-versie van het net-voor beeld is er een limiet van één gateway per app). De declaratie voor de resource bestaat uit twee hoofd onderdelen: de meta gegevens van de bron en de eigenschappen. 
 
 ### <a name="gateway-resource-metadata"></a>Meta gegevens van Gateway bron
 
@@ -55,7 +54,7 @@ De sectie eigenschappen wordt gebruikt voor het definiëren van de netwerken waa
 
 #### <a name="source-and-destination-network"></a>Bron-en doelnet netwerk 
 
-Elke gateway vereist a `sourceNetwork` en `destinationNetwork`. Het bron netwerk wordt gedefinieerd als het netwerk van waaruit uw app binnenkomende aanvragen ontvangt. De eigenschap name moet altijd worden ingesteld op open. Het doelnet netwerk is het netwerk waarop de aanvragen zijn gericht. De naam waarde voor dit moet worden ingesteld op de resource naam van het lokale netwerk van uw app (moet volledige verwijzing naar de resource bevatten). Hieronder vindt u een voor beeld van een configuratie in een netwerk met de naam ' myNetwork '.
+Elke gateway vereist a `sourceNetwork` en `destinationNetwork` . Het bron netwerk wordt gedefinieerd als het netwerk van waaruit uw app binnenkomende aanvragen ontvangt. De eigenschap name moet altijd worden ingesteld op open. Het doelnet netwerk is het netwerk waarop de aanvragen zijn gericht. De naam waarde voor dit moet worden ingesteld op de resource naam van het lokale netwerk van uw app (moet volledige verwijzing naar de resource bevatten). Hieronder vindt u een voor beeld van een configuratie in een netwerk met de naam ' myNetwork '.
 
 ```json 
 "properties": {
@@ -81,7 +80,7 @@ Routerings regels worden opgegeven per poort. Elke ingangs poort heeft een eigen
 Een TCP-routerings regel bestaat uit de volgende eigenschappen: 
 * `name`-verwijzing naar de regel die een wille keurige teken reeks van uw keuze kan zijn 
 * `port`-poort voor het Luis teren naar binnenkomende aanvragen 
-* `destination`-eindpunt specificatie met `applicationName`, `serviceName`en `endpointName`, voor waar de aanvragen moeten worden doorgestuurd
+* `destination`-eindpunt specificatie met `applicationName` , `serviceName` en, `endpointName` voor waar de aanvragen moeten worden doorgestuurd
 
 Hier volgt een voor beeld van een TCP-routerings regel:
 
@@ -112,12 +111,12 @@ Een HTTP-routerings regel bestaat uit de volgende eigenschappen:
     * `name`-de DNS-naam van de host waarvoor de volgende routerings regels zijn opgegeven. Door ' * ' te gebruiken, worden er routerings regels voor alle hosts gemaakt.
     * `routes`-een matrix met beleids regels voor deze specifieke host
         * `match`-specificatie van de structuur van de binnenkomende aanvraag voor deze regel die moet worden toegepast, op basis van een`path`
-            * `path`-bevat een `value` (binnenkomende URI), `rewrite` (hoe u de aanvraag wilt door sturen) en een `type` (op dit moment kan alleen ' prefix ' zijn)
+            * `path`-bevat een `value` (binnenkomende URI), `rewrite` (hoe u de aanvraag wilt door sturen) en een (op `type` dit moment kan alleen ' prefix ' zijn)
             * `header`-is een optionele matrix met koptekst waarden die overeenkomen in de koptekst van de aanvraag, wanneer de aanvraag overeenkomt met de padspecificatie (hierboven).
-              * elke vermelding bevat `name` (teken reeks naam van de header die moet worden `value` vergeleken), (teken reeks waarde van de koptekst in de aanvraag `type` ) en een (op dit moment kan alleen ' exact ' zijn)
-        * `destination`-Als de aanvraag overeenkomt, wordt deze doorgestuurd naar deze bestemming, die wordt opgegeven met behulp `applicationName`van `serviceName`een, en`endpointName`
+              * elke vermelding bevat `name` (teken reeks naam van de header die moet worden vergeleken), `value` (teken reeks waarde van de koptekst in de aanvraag) en een `type` (op dit moment kan alleen ' exact ' zijn)
+        * `destination`-Als de aanvraag overeenkomt, wordt deze doorgestuurd naar deze bestemming, die wordt opgegeven met behulp van een `applicationName` , `serviceName` en`endpointName`
 
-Hier volgt een voor beeld van een HTTP-routerings regel die van toepassing zou zijn op aanvragen die afkomstig zijn van poort 80, naar alle hosts die worden aangeboden door apps in dit netwerk. Als de aanvraag-URL een structuur heeft die overeenkomt met de padspecificatie, dat `<IPAddress>:80/pickme/<requestContent>`wil zeggen, wordt deze omgeleid naar `myListener` het eind punt.  
+Hier volgt een voor beeld van een HTTP-routerings regel die van toepassing zou zijn op aanvragen die afkomstig zijn van poort 80, naar alle hosts die worden aangeboden door apps in dit netwerk. Als de aanvraag-URL een structuur heeft die overeenkomt met de padspecificatie, dat wil zeggen, `<IPAddress>:80/pickme/<requestContent>` wordt deze omgeleid naar het `myListener` eind punt.  
 
 ```json
 "properties": {
@@ -219,8 +218,8 @@ Hier ziet u hoe een volledige gateway bron configuratie eruitziet (dit is gebase
 ```
 
 Deze gateway is geconfigureerd voor een Linux-toepassing, ' meshAppLinux ', die bestaat uit ten minste twee services, ' helloWorldService ' en ' counterService ', die luistert op poort 80. Afhankelijk van de URL-structuur van de binnenkomende aanvraag, stuurt de aanvraag door naar een van deze services. 
-* "\<Ipaddress>:80/helloWorld/\<aanvraag\>" zouden ertoe leiden dat een aanvraag wordt doorgestuurd naar de "helloWorldListener" in de helloWorldService. 
-* "\<Ipaddress>:80/Counter/\<Request\>" zouden ertoe leiden dat een aanvraag wordt doorgestuurd naar de "counterListener" in de counterService. 
+* " \<IPAddress> : 80/helloWorld/ \<request\> " zou ertoe leiden dat een aanvraag wordt doorgestuurd naar de "helloWorldListener" in de helloWorldService. 
+* " \<IPAddress> : 80/Counter/ \<request\> " zou ertoe leiden dat een aanvraag wordt doorgestuurd naar de "counterListener" in de counterService. 
 
 ## <a name="next-steps"></a>Volgende stappen
 * Het voor [beeld](https://github.com/Azure-Samples/service-fabric-mesh/tree/2018-09-01-preview/templates/ingress) van de ingang implementeren om gateways in actie te zien

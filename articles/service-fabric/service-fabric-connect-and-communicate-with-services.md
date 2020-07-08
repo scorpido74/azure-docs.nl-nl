@@ -6,10 +6,9 @@ ms.topic: conceptual
 ms.date: 11/01/2017
 ms.author: vturecek
 ms.openlocfilehash: e57d169decf482f8b8be1e3b31a07690bc222c5d
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75458243"
 ---
 # <a name="connect-and-communicate-with-services-in-service-fabric"></a>Verbinding maken en communiceren met Services in Service Fabric
@@ -18,7 +17,7 @@ In Service Fabric wordt een service ergens in een Service Fabric cluster uitgevo
 Een Service Fabric-toepassing bestaat over het algemeen uit een groot aantal verschillende services, waarbij elke service een gespecialiseerde taak uitvoert. Deze services kunnen met elkaar communiceren om een volledige functie te vormen, zoals het weer geven van verschillende onderdelen van een webtoepassing. Er zijn ook client toepassingen die verbinding maken met en communiceren met Services. In dit document wordt beschreven hoe u communicatie met en tussen uw services instelt in Service Fabric.
 
 ## <a name="bring-your-own-protocol"></a>Uw eigen protocol meenemen
-Service Fabric helpt de levens cyclus van uw services te beheren, maar maakt geen beslissingen over wat uw services doen. Dit omvat communicatie. Wanneer uw service wordt geopend door Service Fabric, is dat de mogelijkheid van de service om een eind punt in te stellen voor inkomende aanvragen, met behulp van het gewenste protocol of elke communicatie stack. Uw service luistert op een normaal **IP: poort** adres met behulp van een adresserings schema, zoals een URI. Meerdere service-exemplaren of replica's kunnen een hostproces delen. in dat geval moeten ze verschillende poorten gebruiken of een mechanisme voor het delen van de poort gebruiken, zoals het http. sys-kernelstuurprogramma in Windows. In beide gevallen moet elk service-exemplaar of elke replica in een host proces uniek zijn.
+Service Fabric helpt de levens cyclus van uw services te beheren, maar maakt geen beslissingen over wat uw services doen. Dit omvat communicatie. Wanneer uw service wordt geopend door Service Fabric, is dat de mogelijkheid van de service om een eind punt in te stellen voor inkomende aanvragen, met behulp van het gewenste protocol of elke communicatie stack. Uw service luistert op een normaal **IP: poort** adres met behulp van een adresserings schema, zoals een URI. Meerdere service-exemplaren of replica's kunnen een hostproces delen. in dat geval moeten ze verschillende poorten gebruiken of een mechanisme voor het delen van de poort gebruiken, zoals het http.sys kernelstuurprogramma in Windows. In beide gevallen moet elk service-exemplaar of elke replica in een host proces uniek zijn.
 
 ![Service-eind punten][1]
 
@@ -27,7 +26,7 @@ In een gedistribueerd systeem kunnen services van de ene machine naar de andere 
 
 ![Distributie van services][7]
 
-Service Fabric biedt een detectie-en oplossings service die de Naming Service wordt genoemd. De Naming Service onderhoudt een tabel die benoemde service-exemplaren toewijst aan de eindpunt adressen waarop ze Luis teren. Alle benoemde service-exemplaren in Service Fabric hebben unieke namen die als Uri's worden weer gegeven `"fabric:/MyApplication/MyService"`, bijvoorbeeld. De naam van de service wordt niet gewijzigd gedurende de levens duur van de service. Dit zijn alleen de eindpunt adressen die kunnen veranderen wanneer services worden verplaatst. Dit is vergelijkbaar met websites die constante Url's hebben, maar waarbij het IP-adres kan veranderen. En net als bij DNS op het web, waarmee website-Url's worden omgezet naar IP-adressen, heeft Service Fabric een registratie-instantie waarmee service namen worden toegewezen aan hun eindpunt adres.
+Service Fabric biedt een detectie-en oplossings service die de Naming Service wordt genoemd. De Naming Service onderhoudt een tabel die benoemde service-exemplaren toewijst aan de eindpunt adressen waarop ze Luis teren. Alle benoemde service-exemplaren in Service Fabric hebben unieke namen die als Uri's worden weer gegeven, bijvoorbeeld `"fabric:/MyApplication/MyService"` . De naam van de service wordt niet gewijzigd gedurende de levens duur van de service. Dit zijn alleen de eindpunt adressen die kunnen veranderen wanneer services worden verplaatst. Dit is vergelijkbaar met websites die constante Url's hebben, maar waarbij het IP-adres kan veranderen. En net als bij DNS op het web, waarmee website-Url's worden omgezet naar IP-adressen, heeft Service Fabric een registratie-instantie waarmee service namen worden toegewezen aan hun eindpunt adres.
 
 ![Service-eind punten][2]
 
@@ -67,7 +66,7 @@ Een Service Fabric cluster in azure wordt achter een Azure Load Balancer geplaat
 
 Als u bijvoorbeeld extern verkeer op poort **80**wilt accepteren, moet u de volgende zaken configureren:
 
-1. Schrijf een service die luistert op poort 80. Configureer poort 80 in de ServiceManifest. XML van de service en open een listener in de service, bijvoorbeeld een zelf-hostende webserver.
+1. Schrijf een service die luistert op poort 80. Configureer poort 80 in de ServiceManifest.xml van de service en open een listener in de service, bijvoorbeeld een zelf-hostende webserver.
 
     ```xml
     <Resources>
@@ -163,7 +162,7 @@ Het is belang rijk te weten dat de Azure Load Balancer en de test alleen weten o
 Het Reliable Services Framework wordt geleverd met verschillende vooraf ontwikkelde communicatie opties. De beslissing over welke het voor u het meest geschikt is, is afhankelijk van de keuze van het programmeer model, het communicatie raamwerk en de programmeer taal waarin uw services zijn geschreven.
 
 * **Geen specifiek Protocol:**  Als u geen specifieke communicatie raamwerk hebt, maar u al iets aan de slag wilt gaan, kunt u de ideale optie voor externe procedures gebruiken, waardoor het Reliable Services en Reliable Actors sterk getypte aanroepen op [afstand worden uitgevoerd](service-fabric-reliable-services-communication-remoting.md). Dit is de eenvoudigste en snelste manier om aan de slag te gaan met Service communicatie. Externe communicatie van service verzorgt de omzetting van service adressen, verbindingen, opnieuw proberen en fout afhandeling. Dit is beschikbaar voor zowel C#-als Java-toepassingen.
-* **Http**: voor neutraal-communicatie biedt http een industrie standaard keuze met hulpprogram MA'S en HTTP-servers die beschikbaar zijn in veel verschillende talen, die allemaal door service Fabric worden ondersteund. Services kunnen gebruikmaken van elke beschik bare HTTP-stack, waaronder [ASP.net Web API](service-fabric-reliable-services-communication-webapi.md) voor C#-toepassingen. Clients die zijn geschreven in C#, `ICommunicationClient` kunnen `ServicePartitionClient` gebruikmaken van de klassen en, terwijl u `CommunicationClient` voor `FabricServicePartitionClient` Java de klassen and gebruikt, [voor service omzetting, http-verbindingen en lussen](service-fabric-reliable-services-communication.md).
+* **Http**: voor neutraal-communicatie biedt http een industrie standaard keuze met hulpprogram MA'S en HTTP-servers die beschikbaar zijn in veel verschillende talen, die allemaal door service Fabric worden ondersteund. Services kunnen gebruikmaken van elke beschik bare HTTP-stack, waaronder [ASP.net Web API](service-fabric-reliable-services-communication-webapi.md) voor C#-toepassingen. Clients die zijn geschreven in C#, kunnen gebruikmaken `ICommunicationClient` `ServicePartitionClient` van de klassen en, terwijl u voor Java de `CommunicationClient` klassen and gebruikt `FabricServicePartitionClient` , [voor service omzetting, http-verbindingen en lussen](service-fabric-reliable-services-communication.md).
 * **WCF**: als u bestaande code hebt die gebruikmaakt van WCF als uw communicatie raamwerk, kunt u de `WcfCommunicationListener` voor de server zijde en `WcfCommunicationClient` en `ServicePartitionClient` klassen voor de client gebruiken. Dit is echter alleen beschikbaar voor C#-toepassingen op op Windows gebaseerde clusters. Zie dit artikel over [op WCF gebaseerde implementatie van de communicatie stack](service-fabric-reliable-services-communication-wcf.md)voor meer informatie.
 
 ## <a name="using-custom-protocols-and-other-communication-frameworks"></a>Aangepaste protocollen en andere communicatie raamwerken gebruiken

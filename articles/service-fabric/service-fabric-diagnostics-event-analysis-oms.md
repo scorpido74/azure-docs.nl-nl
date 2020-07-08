@@ -6,14 +6,13 @@ ms.topic: conceptual
 ms.date: 02/21/2019
 ms.author: srrengar
 ms.openlocfilehash: 40dd930aa21e3056d5ecc908359215d6874ed8ae
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75464734"
 ---
 # <a name="event-analysis-and-visualization-with-azure-monitor-logs"></a>Gebeurtenis analyse en visualisatie met Azure Monitor-logboeken
- Met Azure Monitor logboeken worden telemetrie verzameld en geanalyseerd op basis van toepassingen en services die worden gehost in de Cloud en worden er analyse hulpprogramma's geboden waarmee u hun Beschik baarheid en prestaties kunt maximaliseren. In dit artikel wordt beschreven hoe u query's uitvoert in Azure Monitor Logboeken om inzicht te krijgen in wat er in uw cluster gebeurt. De volgende veelgestelde vragen worden behandeld:
+ Met Azure Monitor-logboeken wordt telemetrie vastgelegd, verzameld en geanalyseerd op basis van toepassingen en services die worden gehost in de cloud en worden er analysehulpprogramma's geboden waarmee u de beschikbaarheid en prestaties hiervan kunt maximaliseren. In dit artikel wordt beschreven hoe u query's uitvoert in Azure Monitor Logboeken om inzicht te krijgen in wat er in uw cluster gebeurt. De volgende veelgestelde vragen worden behandeld:
 
 * Hoe kan ik problemen met status gebeurtenissen oplossen?
 * Hoe kan ik weet u wanneer een knoop punt uitvalt?
@@ -34,36 +33,36 @@ Nadat de gegevens zijn ontvangen door Azure Monitor-logboeken, heeft Azure versc
 
 Ga in [Azure Portal](https://portal.azure.com)naar de resource groep waarin u de service Fabric-analyse oplossing hebt gemaakt.
 
-Selecteer de resource **ServiceFabric\<nameOfOMSWorkspace\>**.
+Selecteer de resource **- \<nameOfOMSWorkspace\> ServiceFabric**.
 
-In `Summary`ziet u tegels in de vorm van een grafiek voor elk van de ingeschakelde oplossingen, met inbegrip van een voor service Fabric. Klik op de **service Fabric** grafiek om door te gaan naar de service Fabric-analyse oplossing.
+In `Summary` ziet u tegels in de vorm van een grafiek voor elk van de ingeschakelde oplossingen, met inbegrip van een voor service Fabric. Klik op de **Service Fabric**-grafiek om door te gaan naar de oplossing Service Fabric-analyse.
 
-![Service Fabric oplossing](media/service-fabric-diagnostics-event-analysis-oms/oms_service_fabric_summary.PNG)
+![Service Fabric-oplossing](media/service-fabric-diagnostics-event-analysis-oms/oms_service_fabric_summary.PNG)
 
-In de volgende afbeelding ziet u de start pagina van de Service Fabric-analyse oplossing. Deze start pagina bevat een moment opname van wat er in uw cluster gebeurt.
+De volgende afbeelding toont de startpagina van de oplossing Service Fabric-analyse. Deze startpagina bevat een momentopname van wat er in uw cluster gebeurt.
 
-![Service Fabric oplossing](media/service-fabric-diagnostics-event-analysis-oms/oms_service_fabric_solution.PNG)
+![Service Fabric-oplossing](media/service-fabric-diagnostics-event-analysis-oms/oms_service_fabric_solution.PNG)
 
- Als u Diagnostische gegevens hebt ingeschakeld bij het maken van het cluster, kunt u gebeurtenissen weer geven voor 
+ Als u diagnostische gegevens hebt ingeschakeld bij het maken van het cluster, kunt u de volgende gebeurtenissen weergeven: 
 
-* [Service Fabric cluster gebeurtenissen](service-fabric-diagnostics-event-generation-operational.md)
-* [Reliable Actors van de programmeer model gebeurtenissen](service-fabric-reliable-actors-diagnostics.md)
-* [Reliable Services van de programmeer model gebeurtenissen](service-fabric-reliable-services-diagnostics.md)
+* [Service Fabric-clustergebeurtenissen](service-fabric-diagnostics-event-generation-operational.md)
+* [Reliable Actors-programmeermodelgebeurtenissen](service-fabric-reliable-actors-diagnostics.md)
+* [Reliable Services-programmeermodelgebeurtenissen](service-fabric-reliable-services-diagnostics.md)
 
 >[!NOTE]
->Naast de Service Fabric Events uit het vak, kunnen meer gedetailleerde systeem gebeurtenissen worden verzameld door [de configuratie van de diagnostische extensie](service-fabric-diagnostics-event-aggregation-wad.md#log-collection-configurations)bij te werken.
+>Naast de kant-en-klare Service Fabric-gebeurtenissen, kunnen ook meer gedetailleerde systeemgebeurtenissen worden verzameld door [de configuratie van de extensie voor diagnostische gegevens](service-fabric-diagnostics-event-aggregation-wad.md#log-collection-configurations) bij te werken.
 
-## <a name="view-service-fabric-events-including-actions-on-nodes"></a>Service Fabric gebeurtenissen weer geven, met inbegrip van acties op knoop punten
+## <a name="view-service-fabric-events-including-actions-on-nodes"></a>Service Fabric-gebeurtenissen weergeven, met inbegrip van acties op knooppunten
 
 Klik op de pagina Service Fabric-analyse op de grafiek voor **service Fabric gebeurtenissen**.
 
 ![Operationele kanaal van Service Fabric oplossing](media/service-fabric-diagnostics-event-analysis-oms/oms_service_fabric_events_selection.png)
 
-Klik op **lijst** om de gebeurtenissen in een lijst weer te geven. Hier worden alle systeem gebeurtenissen weer gegeven die zijn verzameld. Ter referentie zijn deze van de **WADServiceFabricSystemEventsTable** in het Azure Storage-account en ook de betrouw bare Services en actors-gebeurtenissen die u hierna ziet, zijn afkomstig uit die respectieve tabellen.
+Klik op **lijst** om de gebeurtenissen in een lijst weer te geven. Hier worden alle systeem gebeurtenissen weer gegeven die zijn verzameld. Ter referentie: deze komen van de **WADServiceFabricSystemEventsTable** in het Azure Storage-account. De Reliable Services- en Actors-gebeurtenissen die u hierna ziet, komen ook uit de bijbehorende tabellen.
     
-![Operationeel kanaal opvragen](media/service-fabric-diagnostics-event-analysis-oms/oms_service_fabric_events.png)
+![Query's uitvoeren op het operationele kanaal](media/service-fabric-diagnostics-event-analysis-oms/oms_service_fabric_events.png)
 
-U kunt ook op het vergroot glas aan de linkerkant klikken en de Kusto-query taal gebruiken om te vinden wat u zoekt. Als u bijvoorbeeld alle acties wilt vinden die worden uitgevoerd op knoop punten in het cluster, kunt u de volgende query gebruiken. De onderstaande gebeurtenis-Id's vindt u in de [Naslag informatie voor operationele kanaal gebeurtenissen](service-fabric-diagnostics-event-generation-operational.md).
+U kunt ook op het vergroot glas aan de linkerkant klikken en de Kusto-query taal gebruiken om te vinden wat u zoekt. Als u bijvoorbeeld alle acties wilt vinden die worden uitgevoerd op knooppunten in het cluster, kunt u de volgende query gebruiken. De onderstaande gebeurtenis-id's vindt u in de [verwijzing voor gebeurtenissen op operationele kanalen](service-fabric-diagnostics-event-generation-operational.md).
 
 ```kusto
 ServiceFabricOperationalEvent
@@ -76,13 +75,13 @@ U kunt een query uitvoeren op veel meer velden, zoals de specifieke knoop punten
 
 Klik op de pagina Service Fabric-analyse op de grafiek voor **reliable Services**.
 
-![Service Fabric oplossing Reliable Services](media/service-fabric-diagnostics-event-analysis-oms/oms_reliable_services_events_selection.png)
+![Service Fabric-oplossing Reliable Services](media/service-fabric-diagnostics-event-analysis-oms/oms_reliable_services_events_selection.png)
 
 Klik op **lijst** om de gebeurtenissen in een lijst weer te geven. Hier kunt u gebeurtenissen van de betrouw bare Services bekijken. U kunt verschillende gebeurtenissen zien wanneer de service runasync wordt gestart en voltooid, wat doorgaans gebeurt bij implementaties en upgrades. 
 
 ![Query Reliable Services](media/service-fabric-diagnostics-event-analysis-oms/oms_reliable_service_events.png)
 
-Betrouw bare actor gebeurtenissen kunnen op een vergelijk bare manier worden weer gegeven. Als u gedetailleerdere gebeurtenissen voor betrouw bare actoren wilt configureren, moet `scheduledTransferKeywordFilter` u de in de configuratie voor de diagnostische extensie wijzigen (zie hieronder). Details over de waarden hiervoor vindt u in de [Naslag informatie over betrouw bare evenementen van actors](service-fabric-reliable-actors-diagnostics.md#keywords).
+Betrouw bare actor gebeurtenissen kunnen op een vergelijk bare manier worden weer gegeven. Als u gedetailleerdere gebeurtenissen voor betrouw bare actoren wilt configureren, moet u de `scheduledTransferKeywordFilter` in de configuratie voor de diagnostische extensie wijzigen (zie hieronder). Meer informatie over de waarden hiervoor vindt u in de [referentie voor Reliable Actors-gebeurtenissen](service-fabric-reliable-actors-diagnostics.md#keywords).
 
 ```json
 "EtwEventSourceProviderConfiguration": [
@@ -96,7 +95,7 @@ Betrouw bare actor gebeurtenissen kunnen op een vergelijk bare manier worden wee
                 },
 ```
 
-De Kusto-query taal is krachtig. U kunt ook een andere waardevolle query uitvoeren om te bepalen welke knoop punten de meeste gebeurtenissen genereren. In de query in de onderstaande scherm afbeelding ziet u Service Fabric operationele gebeurtenissen geaggregeerd met de specifieke service en het opgegeven knoop punt.
+Kusto is een krachtige querytaal. U kunt ook een andere waardevolle query uitvoeren om te bepalen welke knoop punten de meeste gebeurtenissen genereren. In de query in de onderstaande scherm afbeelding ziet u Service Fabric operationele gebeurtenissen geaggregeerd met de specifieke service en het opgegeven knoop punt.
 
 ![Query gebeurtenissen per knoop punt](media/service-fabric-diagnostics-event-analysis-oms/oms_kusto_query.png)
 

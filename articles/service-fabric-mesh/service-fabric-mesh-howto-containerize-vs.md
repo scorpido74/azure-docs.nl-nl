@@ -6,10 +6,9 @@ ms.author: dekapur
 ms.date: 11/08/2018
 ms.topic: conceptual
 ms.openlocfilehash: d67ea5bb7df5910ec87e69adf3c414c303bf0182
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75462046"
 ---
 # <a name="containerize-an-existing-net-app-for-service-fabric-mesh"></a>Een bestaande .NET-app in een container plaatsen voor Service Fabric Mesh
@@ -23,7 +22,7 @@ In Visual Studio 2017 kunt u ondersteuning voor plaatsing in containers toevoege
 
 ## <a name="prerequisites"></a>Vereisten
 
-* Als u nog geen abonnement op Azure hebt, kunt u een [gratis account maken](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) voordat u begint.
+* Als u geen Azure-abonnement hebt, kunt u [een gratis account maken](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) voordat u begint.
 
 * Zorg er voor dat u [uw ontwikkelomgeving hebt ingesteld](service-fabric-mesh-howto-setup-developer-environment-sdk.md). Dit omvat het installeren van de Service Fabric-runtime, SDK, Docker, Visual Studio 2017 en het maken van een lokaal cluster.
 

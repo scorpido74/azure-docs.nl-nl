@@ -4,10 +4,9 @@ description: Beheer toepassingsgeheimen zodat u veilig een Service Fabric Mesh-t
 ms.date: 4/2/2019
 ms.topic: conceptual
 ms.openlocfilehash: d7946092a0bebe374404870fcd711ad33cc98b11
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75461927"
 ---
 # <a name="manage-service-fabric-mesh-application-secrets"></a>Service Fabric Mesh-toepassingsgeheimen beheren
@@ -202,7 +201,7 @@ Geef **template-file** of **template-uri** door (maar niet beide).
 
 Bijvoorbeeld:
 - az mesh deployment create --c:\MyMeshTemplates\SecretTemplate1.txt
-- AZ net Deployment Create--https:\//www.fabrikam.com/MyMeshTemplates/SecretTemplate1.txt
+- AZ net Deployment Create--https: \/ /www.fabrikam.com/MyMeshTemplates/SecretTemplate1.txt
 
 ### <a name="show-a-secret"></a>Een geheim weergeven
 Retourneert de beschrijving van het geheim (maar niet de waarde).

@@ -9,10 +9,9 @@ ms.topic: article
 ms.date: 12/17/2019
 ms.author: raynew
 ms.openlocfilehash: ea5893f45962d67f4b6f3e9a261c65aa0ec926bf
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75497857"
 ---
 # <a name="fail-over-and-fail-back-physical-servers-replicated-to-azure"></a>Failover en failback van fysieke servers die zijn gerepliceerd naar Azure
@@ -42,14 +41,14 @@ Controleer de server eigenschappen en controleer of deze voldoet aan de [Azure-v
 
 ### <a name="fail-over-to-azure"></a>Failover naar Azure
 
-1. Klik in **instellingen** > **gerepliceerde items** op de machine > **failover**.
+1. Klik in **instellingen**  >  **gerepliceerde items** op de machine > **failover**.
 2. Selecteer in **Failover** een **Herstelpunt** waarnaar u de failover wilt uitvoeren. U kunt een van de volgende opties gebruiken:
    - **Laatste**: met deze optie worden eerst alle gegevens naar Site Recovery verzonden gegevens verwerkt. Dit biedt het laagste RPO (Recovery Point Objective), omdat de na de failover gemaakte Azure-VM alle gegevens heeft die naar Site Recovery is gerepliceerd toen de failover werd geactiveerd.
    - **Laatst verwerkte**: met deze optie wordt er een failover uitgevoerd van de machine naar het laatste herstel punt dat is verwerkt door site Recovery. Deze optie heeft een lage RTO (Recovery Time Objective), omdat er geen tijd wordt besteed aan het verwerken van niet-verwerkte gegevens.
    - **Nieuwste app-consistent**: met deze optie kan de computer worden overgeschakeld naar het nieuwste toepassings consistente herstel punt dat is verwerkt door site Recovery.
    - **Aangepast**: geef een herstelpunt op.
 
-3. Selecteer **Afsluiten machine voordat u de failover start** als u wilt dat site Recovery probeert de bron machine af te sluiten voordat de failover wordt geactiveerd. De failover wordt voortgezet zelfs als het afsluiten is mislukt. U kunt de voortgang van de failover op de pagina **taken** volgen.
+3. Selecteer **Afsluiten machine voordat u de failover start** als u wilt dat site Recovery probeert de bron machine af te sluiten voordat de failover wordt geactiveerd. De failover wordt voortgezet zelfs als het afsluiten is mislukt. U kunt de voortgang van de failover volgen op de pagina **Taken**.
 4. Als u de verbinding met de Azure VM hebt voorbereid, maakt u na de failover verbinding om deze te valideren.
 5. Na het verifiëren kunt u de failover **Doorvoeren**. Hiermee verwijdert u alle beschikbare herstelpunten.
 
@@ -95,7 +94,7 @@ Na een failover naar Azure, kunt u Azure-Vm's opnieuw beveiligen door ze te repl
 
 In deze procedure wordt ervan uitgegaan dat de on-premises VM niet beschikbaar is.
 
-1. Klik in de kluis > **instellingen** > **gerepliceerde items**met de rechter muisknop op de computer waarvoor een failover is uitgevoerd > **opnieuw te beveiligen**.
+1. Klik in de kluis > **instellingen**  >  **gerepliceerde items**met de rechter muisknop op de computer waarvoor een failover is uitgevoerd > **opnieuw te beveiligen**.
 2. Controleer in **Opnieuw beveiligen** of **Azure naar on-premises** is geselecteerd.
 3. Geef de on-premises hoofddoelserver en de processerver op.
 4. Selecteer in **Gegevensopslag** de gegevensopslag van het hoofddoel waarnaar u de on-premises schijven wilt herstellen.

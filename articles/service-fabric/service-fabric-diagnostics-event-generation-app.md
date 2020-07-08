@@ -6,10 +6,9 @@ ms.topic: conceptual
 ms.date: 11/21/2018
 ms.author: srrengar
 ms.openlocfilehash: 97c3be391dfbee7301ea47bf7234a9549d373370
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75464719"
 ---
 # <a name="application-logging"></a>Toepassingslogboeken
@@ -26,7 +25,7 @@ Application Insights heeft een uitgebreide integratie met Service Fabric uit het
 
 ## <a name="eventsource"></a>Source
 
-Wanneer u een Service Fabric oplossing maakt op basis van een sjabloon in Visual Studio, wordt een door **Event source**afgeleide klasse (**ServiceEventSource** of **ActorEventSource**) gegenereerd. Er wordt een sjabloon gemaakt waarin u gebeurtenissen voor uw toepassing of service kunt toevoegen. De naam van de **Event source** **moet** uniek zijn en moet worden gewijzigd van de standaard sjabloon teken reeks mijn bedrijf&lt;-&gt;-&lt;oplossings project&gt;. Als er meerdere **Event source** -definities zijn die dezelfde naam gebruiken, treedt er een probleem op tijdens de uitvoering. Elke gedefinieerde gebeurtenis moet een unieke id hebben. Als een id niet uniek is, treedt er een runtime-fout op. Sommige organisaties wijzen een reeks waarden voor id's toe om conflicten tussen afzonderlijke ontwikkel teams te voor komen. Raadpleeg de [blog van Vance](https://blogs.msdn.microsoft.com/vancem/2012/07/09/introduction-tutorial-logging-etw-events-in-c-system-diagnostics-tracing-eventsource/) of de [MSDN-documentatie](https://msdn.microsoft.com/library/dn774985(v=pandp.20).aspx)voor meer informatie.
+Wanneer u een Service Fabric oplossing maakt op basis van een sjabloon in Visual Studio, wordt een door **Event source**afgeleide klasse (**ServiceEventSource** of **ActorEventSource**) gegenereerd. Er wordt een sjabloon gemaakt waarin u gebeurtenissen voor uw toepassing of service kunt toevoegen. De naam van de **Event source** **moet** uniek zijn en moet worden gewijzigd van de standaard sjabloon teken reeks mijn bedrijf- &lt; oplossings &gt; - &lt; project &gt; . Als er meerdere **Event source** -definities zijn die dezelfde naam gebruiken, treedt er een probleem op tijdens de uitvoering. Elke gedefinieerde gebeurtenis moet een unieke id hebben. Als een id niet uniek is, treedt er een runtime-fout op. Sommige organisaties wijzen een reeks waarden voor id's toe om conflicten tussen afzonderlijke ontwikkel teams te voor komen. Raadpleeg de [blog van Vance](https://blogs.msdn.microsoft.com/vancem/2012/07/09/introduction-tutorial-logging-etw-events-in-c-system-diagnostics-tracing-eventsource/) of de [MSDN-documentatie](https://msdn.microsoft.com/library/dn774985(v=pandp.20).aspx)voor meer informatie.
 
 ## <a name="aspnet-core-logging"></a>ASP.NET Core logboek registratie
 

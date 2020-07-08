@@ -6,10 +6,9 @@ ms.topic: conceptual
 ms.date: 11/21/2018
 ms.author: srrengar
 ms.openlocfilehash: 30b9b8393007033a7c2e6798cd57d9cf0128820d
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75464697"
 ---
 # <a name="performance-metrics"></a>Metrische gegevens voor prestaties
@@ -71,11 +70,11 @@ Verzamel de volgende prestatie meter items als u .NET-Services implementeert in 
 
 Service Fabric genereert een aanzienlijke hoeveelheid aangepaste prestatie meter items. Als u de SDK hebt geïnstalleerd, kunt u de uitgebreide lijst op uw Windows-computer in uw toepassing prestatie meter weer geven (start > prestatie meter). 
 
-In de toepassingen die u in uw cluster implementeert, kunt u, als u Reliable Actors gebruikt, `Service Fabric Actor` items `Service Fabric Actor Method` toevoegen uit en categorieën (Zie [service Fabric reliable actors Diagnostics](service-fabric-reliable-actors-diagnostics.md)).
+In de toepassingen die u in uw cluster implementeert, kunt u, als u Reliable Actors gebruikt, items toevoegen uit `Service Fabric Actor` en `Service Fabric Actor Method` Categorieën (zie [service Fabric reliable actors Diagnostics](service-fabric-reliable-actors-diagnostics.md)).
 
-Als u gebruikmaakt van Reliable Services of service voor externe communicatie, hebben `Service Fabric Service` we `Service Fabric Service Method` ook en tellers categorieën waaruit u items moet verzamelen, Zie [bewaking met Service Remoting](service-fabric-reliable-serviceremoting-diagnostics.md) en [betrouw bare Services prestatie meter items](service-fabric-reliable-services-diagnostics.md#performance-counters). 
+Als u gebruikmaakt van Reliable Services of service voor externe communicatie, hebben we ook `Service Fabric Service` en `Service Fabric Service Method` tellers categorieën waaruit u items moet verzamelen, Zie [bewaking met Service Remoting](service-fabric-reliable-serviceremoting-diagnostics.md) en [betrouw bare Services prestatie meter items](service-fabric-reliable-services-diagnostics.md#performance-counters). 
 
-Als u gebruikmaakt van betrouw bare verzamelingen, raden `Avg. Transaction ms/Commit` we u `Service Fabric Transactional Replicator` aan de van de toe te voegen om de gemiddelde doorvoer latentie per trans actie te verzamelen.
+Als u gebruikmaakt van betrouw bare verzamelingen, raden we `Avg. Transaction ms/Commit` u aan de van de `Service Fabric Transactional Replicator` toe te voegen om de gemiddelde doorvoer latentie per trans actie te verzamelen.
 
 
 ## <a name="next-steps"></a>Volgende stappen

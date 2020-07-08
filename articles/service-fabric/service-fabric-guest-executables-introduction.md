@@ -4,14 +4,13 @@ description: Meer informatie over het verpakken van een bestaande toepassing als
 ms.topic: conceptual
 ms.date: 03/15/2018
 ms.openlocfilehash: 3d7aab28a32effa2caf7b04b830d72e5e3dfda56
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75457830"
 ---
 # <a name="deploy-an-existing-executable-to-service-fabric"></a>Een bestaand uitvoerbaar bestand implementeren naar Service Fabric
-U kunt elk type code, zoals node. js, Java of C++, uitvoeren in azure Service Fabric als een service. Service Fabric verwijst naar deze typen services als uitvoer bare gast bestanden.
+U kunt elk type code, zoals Node.js, Java of C++, uitvoeren in azure Service Fabric als een service. Service Fabric verwijst naar deze typen services als uitvoer bare gast bestanden.
 
 Uitvoer bare gast bestanden worden behandeld door Service Fabric zoals stateless Services. Als gevolg hiervan worden ze op knoop punten in een cluster geplaatst, op basis van Beschik baarheid en andere metrische gegevens. In dit artikel wordt beschreven hoe u een uitvoerbaar gast bestand verpakken en implementeert in een Service Fabric cluster met behulp van Visual Studio of een opdracht regel programma.
 
@@ -29,7 +28,7 @@ Er zijn verschillende voor delen voor het uitvoeren van een uitvoerbaar gast bes
 * [Voor beeld van twee gast uitvoer bare bestanden (C# en nodejs) die communiceren via de naamgevings service met REST](https://github.com/Azure-Samples/service-fabric-dotnet-containers)
 
 ## <a name="overview-of-application-and-service-manifest-files"></a>Overzicht van toepassings-en service manifest bestanden
-Als onderdeel van het implementeren van een uitvoerbaar gast bestand, is het handig om inzicht te krijgen in het model van Service Fabric-verpakking en-implementatie zoals beschreven in het [toepassings model](service-fabric-application-model.md). Het Service Fabric-verpakkende model is afhankelijk van twee XML-bestanden: de toepassings-en service manifesten. De schema definitie voor de bestanden ApplicationManifest. XML en ServiceManifest. XML wordt met de SDK van Service Fabric geïnstalleerd in *C:\Program Files\Microsoft SDKs\Service Fabric\schemas\ServiceFabricServiceModel.XSD*.
+Als onderdeel van het implementeren van een uitvoerbaar gast bestand, is het handig om inzicht te krijgen in het model van Service Fabric-verpakking en-implementatie zoals beschreven in het [toepassings model](service-fabric-application-model.md). Het Service Fabric-verpakkende model is afhankelijk van twee XML-bestanden: de toepassings-en service manifesten. De schema definitie voor de ApplicationManifest.xml-en ServiceManifest.xml-bestanden wordt geïnstalleerd met de SDK van Service Fabric in *C:\Program Files\Microsoft SDKs\Service Fabric\schemas\ServiceFabricServiceModel.XSD*.
 
 * **Toepassings manifest** Het toepassings manifest wordt gebruikt om de toepassing te beschrijven. Hierin worden de services weer gegeven die het samen stellen en andere para meters die worden gebruikt om te definiëren hoe een of meer services moeten worden geïmplementeerd, zoals het aantal exemplaren.
 
@@ -51,14 +50,14 @@ Als u een toepassing wilt implementeren op Service Fabric, moet de toepassing ee
     |-- ApplicationManifest.xml
 ```
 
-De Application Package root bevat het ApplicationManifest. XML-bestand dat de toepassing definieert. Een submap voor elke service die in de toepassing wordt opgenomen, wordt gebruikt voor alle artefacten die de service nodig heeft. Deze submappen zijn de ServiceManifest. XML en bevatten meestal het volgende:
+De Application Package root bevat het ApplicationManifest.xml bestand dat de toepassing definieert. Een submap voor elke service die in de toepassing wordt opgenomen, wordt gebruikt voor alle artefacten die de service nodig heeft. Deze submappen zijn de ServiceManifest.xml en meestal het volgende:
 
 * *Code*. Deze map bevat de service code.
-* *Configuratie*. Deze map bevat een bestand met instellingen. XML (en andere bestanden indien nodig) die de service tijdens runtime kan openen om specifieke configuratie-instellingen op te halen.
+* *Configuratie*. Deze map bevat een Settings.xml bestand (en andere bestanden indien nodig) die de service tijdens runtime kan openen om specifieke configuratie-instellingen op te halen.
 * *Gegevens*. Dit is een extra Directory voor het opslaan van aanvullende lokale gegevens die de service mogelijk nodig heeft. Gegevens moeten worden gebruikt om alleen tijdelijke gegevens op te slaan. Service Fabric kopieert of repliceert geen wijzigingen naar de gegevensdirectory als de service opnieuw moet worden gevonden (bijvoorbeeld tijdens failover).
 
 > [!NOTE]
-> Als u deze niet nodig hebt `config` , `data` hoeft u de-en-mappen niet te maken.
+> `config` `data` Als u deze niet nodig hebt, hoeft u de-en-mappen niet te maken.
 >
 >
 

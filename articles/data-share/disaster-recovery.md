@@ -7,10 +7,9 @@ ms.service: data-share
 ms.topic: conceptual
 ms.date: 12/18/2019
 ms.openlocfilehash: a736e3ddfcf785f9ce27140eed58374a0732c1f1
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75483178"
 ---
 # <a name="disaster-recovery-for-azure-data-share"></a>Herstel na nood geval voor Azure-gegevens share
@@ -34,7 +33,7 @@ Gegevens gebruikers kunnen een actief share-abonnement hebben dat is inactief vo
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Ga door naar de zelf studie [uw gegevens delen](share-your-data.md) voor meer informatie over het delen van gegevens.
+Voor meer informatie over hoe u gegevens kunt beginnen delen, gaat u verder naar de zelfstudie [uw gegevens delen](share-your-data.md).
 
 
 

@@ -6,10 +6,9 @@ ms.topic: conceptual
 ms.date: 06/15/2017
 ms.author: anmola
 ms.openlocfilehash: d5c770a4d823ebe9b2700b081c407c54dd1d18a3
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75465569"
 ---
 # <a name="introduction-to-the-fault-analysis-service"></a>Inleiding tot de fout analyse service
@@ -79,7 +78,7 @@ In Service Fabric wordt de fout analyse service Voorst Ellen om dit te omzeilen 
 Met Service Fabric, hoewel de schaal van storingen in de verschillende omgevingen anders zou zijn, zijn de daad werkelijke mechanismen identiek. Dit biedt een veel snellere pijp lijn voor het implementeren van code en de mogelijkheid om de services te testen onder praktijk belasting.
 
 ## <a name="using-the-fault-analysis-service"></a>De fout analyse service gebruiken
-**G #**
+**C#**
 
 De functies van de fout analyse service bevinden zich in de naam ruimte System. fabric in het NuGet-pakket van micro soft. ServiceFabric. Als u de fout Analysis Service-functies wilt gebruiken, neemt u het nuget-pakket op als referentie in uw project.
 

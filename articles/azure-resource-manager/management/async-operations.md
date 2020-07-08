@@ -5,10 +5,9 @@ ms.topic: conceptual
 ms.date: 12/09/2018
 ms.custom: seodec18
 ms.openlocfilehash: 1cf8898e5fd63e35447f6580e13347ba6d7fc413
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75485440"
 ---
 # <a name="track-asynchronous-azure-operations"></a>Asynchrone Azure-bewerkingen bijhouden
@@ -36,7 +35,7 @@ De asynchrone REST-bewerkingen retour neren koptekst waarden, die u gebruikt om 
 
 Niet elke asynchrone bewerking retourneert echter al deze waarden. U moet bijvoorbeeld de waarde van de Azure-AsyncOperation-header voor één bewerking en de waarde van de locatie header voor een andere bewerking evalueren. 
 
-U haalt de waarden van de header op zoals u een header waarde voor een aanvraag zou ophalen. In C# haalt u bijvoorbeeld de waarde header op van een `HttpWebResponse` object met de naam `response` met de volgende code:
+U haalt de waarden van de header op zoals u een header waarde voor een aanvraag zou ophalen. In C# haalt u bijvoorbeeld de waarde header op van een `HttpWebResponse` object `response` met de naam met de volgende code:
 
 ```cs
 response.Headers.GetValues("Azure-AsyncOperation").GetValue(0)
@@ -70,7 +69,7 @@ Alleen `status` voor alle antwoorden wordt geretourneerd. Het fout object wordt 
 
 ## <a name="provisioningstate-values"></a>provisioningState waarden
 
-Bewerkingen die een resource maken, bijwerken of verwijderen (PUT, PATCH, DELETE), retour neren doorgaans `provisioningState` een waarde. Wanneer een bewerking is voltooid, wordt een van de volgende drie waarden geretourneerd: 
+Bewerkingen die een resource maken, bijwerken of verwijderen (PUT, PATCH, DELETE), retour neren doorgaans een `provisioningState` waarde. Wanneer een bewerking is voltooid, wordt een van de volgende drie waarden geretourneerd: 
 
 * Geslaagd
 * Mislukt

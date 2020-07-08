@@ -5,17 +5,16 @@ author: vturecek
 ms.topic: conceptual
 ms.date: 11/02/2017
 ms.openlocfilehash: 7dc60c28b56982f82c1ac90db55ac752977ea2d6
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75457496"
 ---
 # <a name="how-data-serialization-affects-an-application-upgrade"></a>Hoe gegevens serialisatie van toepassing is op een toepassings upgrade
 Bij een [upgrade van een rolling toepassing](service-fabric-application-upgrade.md)wordt de upgrade toegepast op een subset knoop punten, één upgrade domein per keer. Tijdens dit proces bevinden sommige upgrade domeinen zich op de nieuwere versie van uw toepassing. sommige upgrade domeinen bevinden zich op de oudere versie van uw toepassing. Tijdens de implementatie moet de nieuwe versie van uw toepassing de oude versie van uw gegevens kunnen lezen, en de oude versie van uw toepassing moet de nieuwe versie van uw gegevens kunnen lezen. Als de gegevens indeling niet voorwaarts en achterwaarts compatibel is, kan de upgrade mislukken of kunnen de gegevens verloren gaan of beschadigd raken. In dit artikel wordt beschreven wat uw gegevens indeling vormt en worden aanbevolen procedures geboden om ervoor te zorgen dat uw gegevens voorwaarts en achterwaarts compatibel zijn.
 
 ## <a name="what-makes-up-your-data-format"></a>Wat is uw gegevens indeling?
-In azure Service Fabric worden de gegevens die persistent zijn en gerepliceerd afkomstig van uw C#-klassen. Voor toepassingen die gebruikmaken van [betrouw bare verzamelingen](service-fabric-reliable-services-reliable-collections.md), zijn deze gegevens de objecten in de betrouw bare woorden lijsten en wacht rijen. Voor toepassingen die gebruikmaken van [reliable actors](service-fabric-reliable-actors-introduction.md)is dit de status van de back-up voor de actor. Deze C#-klassen moeten serialiseerbaar zijn om persistent te kunnen worden gemaakt en gerepliceerd. Daarom wordt de gegevens indeling gedefinieerd door de velden en eigenschappen die geserialiseerd zijn, en hoe ze worden geserialiseerd. Een voor beeld: in `IReliableDictionary<int, MyClass>` een gegevens is een geserialiseerd `int` en een serialisatie. `MyClass`
+In azure Service Fabric worden de gegevens die persistent zijn en gerepliceerd afkomstig van uw C#-klassen. Voor toepassingen die gebruikmaken van [betrouw bare verzamelingen](service-fabric-reliable-services-reliable-collections.md), zijn deze gegevens de objecten in de betrouw bare woorden lijsten en wacht rijen. Voor toepassingen die gebruikmaken van [reliable actors](service-fabric-reliable-actors-introduction.md)is dit de status van de back-up voor de actor. Deze C#-klassen moeten serialiseerbaar zijn om persistent te kunnen worden gemaakt en gerepliceerd. Daarom wordt de gegevens indeling gedefinieerd door de velden en eigenschappen die geserialiseerd zijn, en hoe ze worden geserialiseerd. Een voor beeld: in een `IReliableDictionary<int, MyClass>` gegevens is een geserialiseerd `int` en een serialisatie `MyClass` .
 
 ### <a name="code-changes-that-result-in-a-data-format-change"></a>Code wijzigingen die resulteren in een wijziging in de gegevens indeling
 Omdat de gegevens indeling wordt bepaald door C#-klassen, kunnen wijzigingen aan de klassen een wijziging in de gegevens indeling veroorzaken. Zorg ervoor dat een rolling upgrade de wijziging van de gegevens indeling kan verwerken. Voor beelden die wijzigingen in de gegevens indeling kunnen veroorzaken:

@@ -8,10 +8,9 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 12/23/2019
 ms.openlocfilehash: 43875b87d26f144b85454077fd3c044c820132bf
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75494982"
 ---
 # <a name="improve-performance-of-apache-spark-workloads-using-azure-hdinsight-io-cache"></a>Verbeter de prestaties van Apache Spark werk belastingen met behulp van de Azure HDInsight IO-cache
@@ -28,13 +27,13 @@ De meeste Ssd's bieden meer dan 1 GByte per seconde band breedte. Deze band bree
 
 Het gebruik van een i/o-cache biedt een prestatie verhoging voor taken die gegevens van Azure Blob Storage lezen.
 
-U hoeft geen wijzigingen aan te brengen in uw Spark-taken om de prestatie verhogingen te bekijken wanneer u een i/o-cache gebruikt. Als i/o-cache is uitgeschakeld, zou deze Spark-code gegevens op afstand `spark.read.load('wasbs:///myfolder/data.parquet').count()`van Azure Blob Storage kunnen lezen:. Als i/o-cache is geactiveerd, veroorzaakt dezelfde regel code een lees-IO-cache door de cache. Bij de volgende Lees bewerkingen worden de gegevens lokaal van SSD gelezen. Worker-knoop punten in HDInsight-cluster zijn uitgerust met lokaal gekoppelde SSD-stations. De HDInsight IO-cache maakt gebruik van deze lokale Ssd's voor caching, wat een laag latentie niveau biedt en de band breedte maximaliseert.
+U hoeft geen wijzigingen aan te brengen in uw Spark-taken om de prestatie verhogingen te bekijken wanneer u een i/o-cache gebruikt. Als i/o-cache is uitgeschakeld, zou deze Spark-code gegevens op afstand van Azure Blob Storage kunnen lezen: `spark.read.load('wasbs:///myfolder/data.parquet').count()` . Als i/o-cache is geactiveerd, veroorzaakt dezelfde regel code een lees-IO-cache door de cache. Bij de volgende Lees bewerkingen worden de gegevens lokaal van SSD gelezen. Worker-knoop punten in HDInsight-cluster zijn uitgerust met lokaal gekoppelde SSD-stations. De HDInsight IO-cache maakt gebruik van deze lokale Ssd's voor caching, wat een laag latentie niveau biedt en de band breedte maximaliseert.
 
 ## <a name="getting-started"></a>Aan de slag
 
 De Azure HDInsight IO-cache is standaard uitgeschakeld in de preview-versie. I/o-cache is beschikbaar in azure HDInsight 3.6 + Spark-clusters, die Apache Spark 2,3 worden uitgevoerd.  Voer de volgende stappen uit om de i/o-cache te activeren op HDInsight 4,0:
 
-1. Ga in een webbrowser naar `https://CLUSTERNAME.azurehdinsight.net`, waarbij `CLUSTERNAME` de naam van het cluster is.
+1. Ga in een webbrowser naar `https://CLUSTERNAME.azurehdinsight.net` , waarbij `CLUSTERNAME` de naam van het cluster is.
 
 1. Selecteer de **i/o-cache** service aan de linkerkant.
 
@@ -67,7 +66,7 @@ Er kunnen schijf ruimte fouten optreden bij het uitvoeren van Spark-taken na het
 
 1. Selecteer **Opslaan** in de rechter bovenhoek.
 
-1. Selecteer **opnieuw opstarten** > **alle beïnvloed**.
+1. Selecteer **opnieuw opstarten**  >  **alle beïnvloed**.
 
     ![Apache Ambari start alle betrokken](./media/apache-spark-improve-performance-iocache/ambariui-restart-all-affected.png "Alle betrokken software opnieuw opstarten")
 

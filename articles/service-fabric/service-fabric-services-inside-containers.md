@@ -5,10 +5,9 @@ ms.topic: conceptual
 ms.date: 5/23/2018
 ms.author: anmola
 ms.openlocfilehash: 9fe5980c13f655f8f30cc42771971a5015460420
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75466181"
 ---
 # <a name="containerize-your-service-fabric-reliable-services-and-reliable-actors-on-windows"></a>Uw Reliable Services en Reliable Actors van Service Fabric in Windows in een container plaatsen
@@ -47,7 +46,7 @@ In dit document vindt u informatie over het uitvoeren van uw service in een Wind
 
 4. Bouw en [verpak](service-fabric-package-apps.md#Package-App) uw project. Als u een pakket wilt bouwen en maken, klikt u met de rechter muisknop op het toepassings project in Solution Explorer en kiest u de **pakket** opdracht.
 
-5. Voer voor elk code pakket dat u nodig hebt container plaatsen het Power shell-script [CreateDockerPackage. ps1](https://github.com/Azure/service-fabric-scripts-and-templates/blob/master/scripts/CodePackageToDockerPackage/CreateDockerPackage.ps1)uit. Het gebruik is als volgt:
+5. Voer voor elk code pakket dat u nodig hebt container plaatsen het Power shell-script [CreateDockerPackage.ps1](https://github.com/Azure/service-fabric-scripts-and-templates/blob/master/scripts/CodePackageToDockerPackage/CreateDockerPackage.ps1)uit. Het gebruik is als volgt:
 
     Volledige .NET
       ```powershell
@@ -63,11 +62,11 @@ In dit document vindt u informatie over het uitvoeren van uw service in een Wind
         $dotnetCoreDllName = 'Name of the Code package dotnet Core Dll.'
         CreateDockerPackage.ps1 -CodePackageDirectoryPath $codePackagePath -DockerPackageOutputDirectoryPath $dockerPackageOutputDirectoryPath -DotnetCoreDllName $dotnetCoreDllName
       ```
-      Met het script maakt u een map met docker-artefacten op $dockerPackageOutputDirectoryPath. Wijzig de gegenereerde Dockerfile `expose` in poorten, Voer installatie scripts uit, enzovoort. op basis van uw behoeften.
+      Met het script maakt u een map met docker-artefacten op $dockerPackageOutputDirectoryPath. Wijzig de gegenereerde Dockerfile in `expose` poorten, Voer installatie scripts uit, enzovoort. op basis van uw behoeften.
 
 6. Vervolgens moet u uw docker-container pakket [bouwen](service-fabric-get-started-containers.md#Build-Containers) en [pushen](service-fabric-get-started-containers.md#Push-Containers) naar uw opslag plaats.
 
-7. Wijzig ApplicationManifest. XML en ServiceManifest. XML om uw container installatie kopie, informatie over de opslag plaats, register verificatie en poort-naar-host-toewijzing toe te voegen. Zie [een Azure service Fabric-container toepassing maken](service-fabric-get-started-containers.md)voor het wijzigen van de manifesten. De code pakket definitie in het service manifest moet worden vervangen door de bijbehorende container installatie kopie. Zorg ervoor dat u het toegangs punt wijzigt in een ContainerHost-type.
+7. Wijzig de ApplicationManifest.xml en ServiceManifest.xml om uw container installatie kopie, gegevens opslag plaats, register verificatie en poort-naar-host-toewijzing toe te voegen. Zie [een Azure service Fabric-container toepassing maken](service-fabric-get-started-containers.md)voor het wijzigen van de manifesten. De code pakket definitie in het service manifest moet worden vervangen door de bijbehorende container installatie kopie. Zorg ervoor dat u het toegangs punt wijzigt in een ContainerHost-type.
 
    ```xml
    <!-- Code package is your service executable. -->

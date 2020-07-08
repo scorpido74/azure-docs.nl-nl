@@ -6,10 +6,9 @@ ms.topic: troubleshooting
 ms.date: 10/31/2018
 ms.author: genli
 ms.openlocfilehash: 41581ba48da2f2e717c5abf2a749f8fd2b86ac06
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75477666"
 ---
 # <a name="requestdisallowedbypolicy-error-with-azure-resource-policy"></a>RequestDisallowedByPolicy-fout met Azure-resource beleid
@@ -37,7 +36,7 @@ Gebruik een van de volgende methoden om details op te halen over het beleid dat 
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
-Geef in Power shell de beleids-id als `Id` de para meter op om details op te halen over het beleid dat uw implementatie heeft geblokkeerd.
+Geef in Power shell de beleids-id als de `Id` para meter op om details op te halen over het beleid dat uw implementatie heeft geblokkeerd.
 
 ```powershell
 (Get-AzPolicyDefinition -Id "/subscriptions/{guid}/providers/Microsoft.Authorization/policyDefinitions/regionPolicyDefinition").Properties.policyRule | ConvertTo-Json

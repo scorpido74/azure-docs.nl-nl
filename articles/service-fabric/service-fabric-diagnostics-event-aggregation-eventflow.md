@@ -6,10 +6,9 @@ ms.topic: conceptual
 ms.date: 2/25/2019
 ms.author: srrengar
 ms.openlocfilehash: cde24657cc8ed78b91e72df16d51df4077a6e030
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75463089"
 ---
 # <a name="event-aggregation-and-collection-using-eventflow"></a>Gebeurtenis aggregatie en verzameling met behulp van Event flow
@@ -18,7 +17,7 @@ ms.locfileid: "75463089"
 
 ## <a name="set-up-eventflow"></a>Event flow instellen
 
-Event flow binaire bestanden zijn beschikbaar als een set NuGet-pakketten. Om event flow toe te voegen aan een Service Fabric service project, klikt u met de rechter muisknop op het project in de Solution Explorer en kiest u NuGet-pakketten beheren. Ga naar het tabblad ' Bladeren ' en zoek naar '`Diagnostics.EventFlow`':
+Event flow binaire bestanden zijn beschikbaar als een set NuGet-pakketten. Om event flow toe te voegen aan een Service Fabric service project, klikt u met de rechter muisknop op het project in de Solution Explorer en kiest u NuGet-pakketten beheren. Ga naar het tabblad ' Bladeren ' en zoek naar ' `Diagnostics.EventFlow` ':
 
 ![Event flow NuGet-pakketten in Visual Studio NuGet Package Manager-gebruikers interface](./media/service-fabric-diagnostics-event-aggregation-eventflow/eventflow-nuget.png)
 
@@ -34,12 +33,12 @@ U ziet een lijst met verschillende pakketten die worden weer gegeven met "inputs
 Nadat alle pakketten zijn geïnstalleerd, is de volgende stap het configureren en inschakelen van Event flow in de service.
 
 ## <a name="configure-and-enable-log-collection"></a>Logboek verzameling configureren en inschakelen
-De Event flow-pijp lijn die verantwoordelijk is voor het verzenden van de logboeken wordt gemaakt op basis van een specificatie die is opgeslagen in een configuratie bestand. Het `Microsoft.Diagnostics.EventFlow.ServiceFabric` pakket installeert een start event flow-configuratie bestand `PackageRoot\Config` in de map Solution `eventFlowConfig.json`, met de naam. Dit configuratie bestand moet worden gewijzigd om gegevens op te halen uit de standaard `EventSource` service klasse en alle andere invoer die u wilt configureren, en om gegevens naar de juiste locatie te verzenden.
+De Event flow-pijp lijn die verantwoordelijk is voor het verzenden van de logboeken wordt gemaakt op basis van een specificatie die is opgeslagen in een configuratie bestand. Het `Microsoft.Diagnostics.EventFlow.ServiceFabric` pakket installeert een start event flow-configuratie bestand in de `PackageRoot\Config` map Solution, met de naam `eventFlowConfig.json` . Dit configuratie bestand moet worden gewijzigd om gegevens op te halen uit de standaard service `EventSource` klasse en alle andere invoer die u wilt configureren, en om gegevens naar de juiste locatie te verzenden.
 
 >[!NOTE]
->Als uw project bestand de Visual Studio 2017-indeling `eventFlowConfig.json` heeft, wordt het bestand niet automatisch toegevoegd. U kunt dit probleem oplossen door het bestand `Config` in de map te maken en de `Copy if newer`opbouw actie in te stellen op. 
+>Als uw project bestand de Visual Studio 2017-indeling heeft `eventFlowConfig.json` , wordt het bestand niet automatisch toegevoegd. U kunt dit probleem oplossen door het bestand in de map te maken `Config` en de opbouw actie in te stellen op `Copy if newer` . 
 
-Hier volgt een voor beeld van *eventFlowConfig. json* op basis van de hierboven genoemde NuGet-pakketten:
+Hier volgt een *voor beeldeventFlowConfig.jsop* basis van de hierboven genoemde NuGet-pakketten:
 ```json
 {
   "inputs": [
@@ -80,11 +79,11 @@ internal sealed class ServiceEventSource : EventSource
 }
 ```
 
-Houd er `eventFlowConfig.json` rekening mee dat het bestand deel uitmaakt van het service configuratie pakket. Wijzigingen in dit bestand kunnen worden opgenomen in alleen-of configuratie-upgrades van de service, afhankelijk van Service Fabric status controles voor upgrades en automatisch terugdraaien als er een upgrade fout optreedt. Zie [service Fabric Application upgrade](service-fabric-application-upgrade.md)(Engelstalig) voor meer informatie.
+Houd er rekening mee dat het `eventFlowConfig.json` bestand deel uitmaakt van het service configuratie pakket. Wijzigingen in dit bestand kunnen worden opgenomen in alleen-of configuratie-upgrades van de service, afhankelijk van Service Fabric status controles voor upgrades en automatisch terugdraaien als er een upgrade fout optreedt. Zie [service Fabric Application upgrade](service-fabric-application-upgrade.md)(Engelstalig) voor meer informatie.
 
 In het gedeelte *filters* van de configuratie kunt u de informatie die door de Event flow-pijp lijn wordt door gegeven aan de uitvoer verder aanpassen, zodat u bepaalde gegevens kunt neerzetten of toevoegen, of de structuur van de gebeurtenis gegevens kunt wijzigen. Zie [Event flow filters](https://github.com/Azure/diagnostics-eventflow#filters)voor meer informatie over filteren.
 
-De laatste stap bestaat uit het instantiëren van de Event flow-pijp lijn in de opstart code `Program.cs` van uw service, die zich in het bestand bevindt:
+De laatste stap bestaat uit het instantiëren van de Event flow-pijp lijn in de opstart code van uw service, die zich in het bestand bevindt `Program.cs` :
 
 ```csharp
 using System;
@@ -129,7 +128,7 @@ namespace Stateless1
 }
 ```
 
-De naam die `ServiceFabricDiagnosticsPipelineFactory` wordt door gegeven als de `CreatePipeline` para meter van de-methode is de naam van de *status entiteit* die de pijp lijn van de Event flow-logboek verzameling vertegenwoordigt. Deze naam wordt gebruikt als Event flow stuiten en fout en deze rapporteert via het subsysteem Service Fabric Health.
+De naam die wordt door gegeven als de para meter van de- `CreatePipeline` methode `ServiceFabricDiagnosticsPipelineFactory` is de naam van de *status entiteit* die de pijp lijn van de Event flow-logboek verzameling vertegenwoordigt. Deze naam wordt gebruikt als Event flow stuiten en fout en deze rapporteert via het subsysteem Service Fabric Health.
 
 ### <a name="use-service-fabric-settings-and-application-parameters-in-eventflowconfig"></a>Service Fabric instellingen en toepassings parameters gebruiken in eventFlowConfig
 

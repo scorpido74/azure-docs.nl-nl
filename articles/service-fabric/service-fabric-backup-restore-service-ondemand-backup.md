@@ -6,17 +6,16 @@ ms.topic: conceptual
 ms.date: 10/30/2018
 ms.author: aagup
 ms.openlocfilehash: d5eada62bec49fe771373671e9438d2786d6b165
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75458417"
 ---
 # <a name="on-demand-backup-in-azure-service-fabric"></a>Back-ups op aanvraag in azure Service Fabric
 
 U kunt back-ups maken van gegevens van betrouw bare stateful Services en Reliable Actors om scenario's met betrekking tot nood gevallen of gegevens verlies op te lossen.
 
-Azure Service Fabric heeft functies voor [periodieke back-ups van gegevens](service-fabric-backuprestoreservice-quickstart-azurecluster.md) en de back-up van gegevens op basis van behoefte. Back-ups op aanvraag is handig omdat deze bescherming biedt tegen gegevens _verlies_/_gegevens beschadiging_ vanwege geplande wijzigingen in de onderliggende service of in de omgeving.
+Azure Service Fabric heeft functies voor [periodieke back-ups van gegevens](service-fabric-backuprestoreservice-quickstart-azurecluster.md) en de back-up van gegevens op basis van behoefte. Back-ups op aanvraag is handig omdat deze bescherming biedt tegen gegevens _verlies_ / _gegevens beschadiging_ vanwege geplande wijzigingen in de onderliggende service of in de omgeving.
 
 De functies van de back-up op aanvraag zijn handig voor het vastleggen van de status van de Services voordat u de bewerking van een service of service omgeving hand matig start. Als u bijvoorbeeld een wijziging in de binaire bestanden van de service aanbrengt tijdens het bijwerken of Down graden van de service. In een dergelijk geval kan back-ups op aanvraag de gegevens helpen beschermen tegen beschadiging door toepassings code fouten.
 ## <a name="prerequisites"></a>Vereisten
@@ -27,7 +26,7 @@ De functies van de back-up op aanvraag zijn handig voor het vastleggen van de st
     Install-Module -Name Microsoft.ServiceFabric.Powershell.Http -AllowPrerelease
 ```
 
-- Zorg ervoor dat het cluster is verbonden met `Connect-SFCluster` behulp van de opdracht voordat u een configuratie aanvraag maakt met behulp van de module micro soft. ServiceFabric. Power shell. http.
+- Zorg ervoor dat het cluster is verbonden met behulp van de `Connect-SFCluster` opdracht voordat u een configuratie aanvraag maakt met behulp van de module micro soft. ServiceFabric. Power shell. http.
 
 ```powershell
 
@@ -56,7 +55,7 @@ Backup-SFPartition -PartitionId '974bd92a-b395-4631-8a7f-53bd4ae9cf22'
 
 #### <a name="rest-call-using-powershell"></a>Rest-aanroep met Power shell
 
-Gebruik de [BackupPartition](https://docs.microsoft.com/rest/api/servicefabric/sfclient-api-backuppartition) -API om triggering in te stellen voor de back-up op aanvraag `974bd92a-b395-4631-8a7f-53bd4ae9cf22`voor de partitie-id.
+Gebruik de [BackupPartition](https://docs.microsoft.com/rest/api/servicefabric/sfclient-api-backuppartition) -API om triggering in te stellen voor de back-up op aanvraag voor de partitie-id `974bd92a-b395-4631-8a7f-53bd4ae9cf22` .
 
 ```powershell
 $url = "https://mysfcluster.southcentralus.cloudapp.azure.com:19080/Partitions/974bd92a-b395-4631-8a7f-53bd4ae9cf22/$/Backup?api-version=6.4"
@@ -81,7 +80,7 @@ Backup-SFPartition -PartitionId '974bd92a-b395-4631-8a7f-53bd4ae9cf22' -AzureBlo
 
 #### <a name="rest-call-using-powershell"></a>Rest-aanroep met Power shell
 
-Gebruik de [BackupPartition](https://docs.microsoft.com/rest/api/servicefabric/sfclient-api-backuppartition) -API om triggering in te stellen voor de back-up op aanvraag `974bd92a-b395-4631-8a7f-53bd4ae9cf22`voor de partitie-id. Neem de volgende Azure Storage informatie op:
+Gebruik de [BackupPartition](https://docs.microsoft.com/rest/api/servicefabric/sfclient-api-backuppartition) -API om triggering in te stellen voor de back-up op aanvraag voor de partitie-id `974bd92a-b395-4631-8a7f-53bd4ae9cf22` . Neem de volgende Azure Storage informatie op:
 
 ```powershell
 $StorageInfo = @{

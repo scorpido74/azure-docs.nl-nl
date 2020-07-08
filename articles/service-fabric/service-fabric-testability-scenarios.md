@@ -6,10 +6,9 @@ ms.topic: conceptual
 ms.date: 10/1/2019
 ms.author: motanv
 ms.openlocfilehash: 206b02024ad052a12e87cfdf1773815027e8aec4
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75465534"
 ---
 # <a name="testability-scenarios"></a>Test scenario's
@@ -124,7 +123,7 @@ class Test
 
 PowerShell
 
-De Service Fabric Power shell-module bevat twee manieren om een chaos-scenario te starten. `Invoke-ServiceFabricChaosTestScenario`is gebaseerd op de client en als de client computer halverwege de test wordt afgesloten, worden er geen verdere fouten geïntroduceerd. U kunt ook een reeks opdrachten gebruiken om te zorgen dat de test wordt uitgevoerd bij het afsluiten van de computer. `Start-ServiceFabricChaos`maakt gebruik van een stateful en betrouw bare systeem service met de naam FaultAnalysisService, zodat fouten blijven worden geïntroduceerd totdat de TimeToRun is ingesteld. `Stop-ServiceFabricChaos`kan worden gebruikt om het scenario hand matig te stoppen `Get-ServiceFabricChaosReport` en er wordt een rapport ontvangen. Zie voor meer informatie de [Azure service Fabric Power shell-referentie](https://docs.microsoft.com/powershell/module/servicefabric/?view=azureservicefabricps) en het ontregelde [chaos in service Fabric-clusters](service-fabric-controlled-chaos.md).
+De Service Fabric Power shell-module bevat twee manieren om een chaos-scenario te starten. `Invoke-ServiceFabricChaosTestScenario`is gebaseerd op de client en als de client computer halverwege de test wordt afgesloten, worden er geen verdere fouten geïntroduceerd. U kunt ook een reeks opdrachten gebruiken om te zorgen dat de test wordt uitgevoerd bij het afsluiten van de computer. `Start-ServiceFabricChaos`maakt gebruik van een stateful en betrouw bare systeem service met de naam FaultAnalysisService, zodat fouten blijven worden geïntroduceerd totdat de TimeToRun is ingesteld. `Stop-ServiceFabricChaos`kan worden gebruikt om het scenario hand matig te stoppen en er `Get-ServiceFabricChaosReport` wordt een rapport ontvangen. Zie voor meer informatie de [Azure service Fabric Power shell-referentie](https://docs.microsoft.com/powershell/module/servicefabric/?view=azureservicefabricps) en het ontregelde [chaos in service Fabric-clusters](service-fabric-controlled-chaos.md).
 
 ```powershell
 $connection = "localhost:19000"
@@ -159,7 +158,7 @@ De failover-test veroorzaakt een gekozen fout en voert vervolgens validatie uit 
 * **WaitTimeBetweenFaults**: de hoeveelheid tijd die moet worden gewacht tussen elke fout en validatie cyclus.
 
 ### <a name="how-to-run-the-failover-test"></a>De failover-test uitvoeren
-**G #**
+**C#**
 
 ```csharp
 using System;

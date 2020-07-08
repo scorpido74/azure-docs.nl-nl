@@ -6,24 +6,23 @@ ms.topic: conceptual
 ms.date: 11/12/2018
 ms.author: dekapur
 ms.openlocfilehash: 0f9b625dfbe9c39bea7771dcc5fd58805ce19811
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75458372"
 ---
 # <a name="configuration-settings-for-a-standalone-windows-cluster"></a>Configuratie-instellingen voor een zelfstandig Windows-cluster
-In dit artikel worden de configuratie-instellingen van een zelfstandige Azure Service Fabric-cluster beschreven die kunnen worden ingesteld in het bestand *ClusterConfig. json* . U gebruikt dit bestand om informatie op te geven over de knoop punten van het cluster, beveiligings configuraties en de netwerk topologie in termen van fout-en upgrade domeinen.  Nadat u configuratie-instellingen hebt gewijzigd of toegevoegd, kunt u [een zelfstandig cluster maken](service-fabric-cluster-creation-for-windows-server.md) of [de configuratie van een zelfstandig cluster bijwerken](service-fabric-cluster-config-upgrade-windows-server.md).
+In dit artikel worden de configuratie-instellingen van een zelfstandige Azure Service Fabric-cluster beschreven die kunnen worden ingesteld in de *ClusterConfig.jsvoor* het bestand. U gebruikt dit bestand om informatie op te geven over de knoop punten van het cluster, beveiligings configuraties en de netwerk topologie in termen van fout-en upgrade domeinen.  Nadat u configuratie-instellingen hebt gewijzigd of toegevoegd, kunt u [een zelfstandig cluster maken](service-fabric-cluster-creation-for-windows-server.md) of [de configuratie van een zelfstandig cluster bijwerken](service-fabric-cluster-config-upgrade-windows-server.md).
 
-Wanneer u [het zelfstandige service Fabric-pakket downloadt](service-fabric-cluster-creation-for-windows-server.md#downloadpackage), worden ook ClusterConfig. json-voor beelden opgenomen. De voor beelden die "DevCluster" in hun namen hebben, maken een cluster met alle drie knoop punten op dezelfde computer, met behulp van logische knoop punten. Uit deze knoop punten moet ten minste één als primair knoop punt zijn gemarkeerd. Dit type cluster is handig voor ontwikkel-en test omgevingen. Het wordt niet ondersteund als een productie cluster. De voor beelden die "meerdere machines" in hun namen hebben, kunnen productie cluster clusters maken, met elk knoop punt op een afzonderlijke computer. Het aantal primaire knoop punten voor deze clusters is gebaseerd op het [betrouwbaarheids niveau](#reliability)van het cluster. In Release 5,7, API-versie 05-2017, is de eigenschap betrouwbaarheids niveau verwijderd. In plaats daarvan berekent onze code het meest geoptimaliseerde betrouwbaarheids niveau voor uw cluster. Probeer geen waarde in te stellen voor deze eigenschap in versie 5,7 en hoger.
+Wanneer u [het zelfstandige service Fabric-pakket downloadt](service-fabric-cluster-creation-for-windows-server.md#downloadpackage), worden er ook ClusterConfig.jsop voor beelden opgenomen. De voor beelden die "DevCluster" in hun namen hebben, maken een cluster met alle drie knoop punten op dezelfde computer, met behulp van logische knoop punten. Uit deze knoop punten moet ten minste één als primair knoop punt zijn gemarkeerd. Dit type cluster is handig voor ontwikkel-en test omgevingen. Het wordt niet ondersteund als een productie cluster. De voor beelden die "meerdere machines" in hun namen hebben, kunnen productie cluster clusters maken, met elk knoop punt op een afzonderlijke computer. Het aantal primaire knoop punten voor deze clusters is gebaseerd op het [betrouwbaarheids niveau](#reliability)van het cluster. In Release 5,7, API-versie 05-2017, is de eigenschap betrouwbaarheids niveau verwijderd. In plaats daarvan berekent onze code het meest geoptimaliseerde betrouwbaarheids niveau voor uw cluster. Probeer geen waarde in te stellen voor deze eigenschap in versie 5,7 en hoger.
 
-* ClusterConfig. unsecure. DevCluster. json en ClusterConfig. unsecure. de multimachine. json laat zien hoe u respectievelijk een niet-beveiligd test-of productie cluster maakt.
+* ClusterConfig.Unsecure.DevCluster.jsop en ClusterConfig.Unsecure.MultiMachine.jsop weer geven hoe u een niet-beveiligd test-of productie cluster wilt maken.
 
-* ClusterConfig. Windows. DevCluster. json en ClusterConfig. Windows. multimachine. json laten zien hoe u test-of productie clusters kunt maken die zijn beveiligd met [Windows-beveiliging](service-fabric-windows-cluster-windows-security.md).
+* ClusterConfig.Windows.DevCluster.jsop en ClusterConfig.Windows.MultiMachine.jsop laten zien hoe u test-of productie clusters kunt maken die zijn beveiligd met [Windows-beveiliging](service-fabric-windows-cluster-windows-security.md).
 
-* ClusterConfig. x509. DevCluster. json en ClusterConfig. x509. multimachine. json laten zien hoe u test-of productie clusters kunt maken die zijn beveiligd met behulp van [x509-beveiliging op basis van certificaten](service-fabric-windows-cluster-x509-security.md).
+* ClusterConfig.X509.DevCluster.jsop en ClusterConfig.X509.MultiMachine.jsop weer geven hoe u test-of productie clusters kunt maken die zijn beveiligd met een [x509-certificaat beveiliging](service-fabric-windows-cluster-x509-security.md).
 
-We gaan nu de verschillende secties van een ClusterConfig. JSON-bestand bekijken.
+Laten we nu de verschillende secties van een ClusterConfig.jsin het bestand bekijken.
 
 ## <a name="general-cluster-configurations"></a>Algemene cluster configuraties
 Algemene cluster configuraties dekken de brede cluster-specifieke configuraties, zoals wordt weer gegeven in het volgende JSON-fragment:
@@ -65,13 +64,13 @@ Een Service Fabric-cluster moet ten minste drie knoop punten bevatten. U kunt op
 | **Knooppuntconfiguratie** | **Beschrijving** |
 | --- | --- |
 | nodeName |U kunt het knoop punt een beschrijvende naam geven. |
-| IPAdres |Zoek het IP-adres van het knoop punt door een opdracht venster te openen `ipconfig`en te typen. Noteer het IPV4-adres en wijs dit toe aan de variabele iPAddress. |
+| IPAdres |Zoek het IP-adres van het knoop punt door een opdracht venster te openen en te typen `ipconfig` . Noteer het IPV4-adres en wijs dit toe aan de variabele iPAddress. |
 | nodeTypeRef |Aan elk knoop punt kan een ander type knoop punt worden toegewezen. De [knooppunt typen](#node-types) worden gedefinieerd in de volgende sectie. |
 | faultDomain |Met fout domeinen kunnen cluster beheerders de fysieke knoop punten definiëren die mogelijk op hetzelfde moment mislukken vanwege gedeelde fysieke afhankelijkheden. |
 | Upgrade Domain |Met upgrade domeinen worden sets van knoop punten beschreven die op ongeveer hetzelfde moment worden afgesloten voor Service Fabric upgrades. U kunt kiezen welke knoop punten moeten worden toegewezen aan de upgrade domeinen, omdat deze niet zijn beperkt door fysieke vereisten. |
 
 ## <a name="cluster-properties"></a>Cluster eigenschappen
-De sectie eigenschappen in ClusterConfig. json wordt gebruikt om het cluster te configureren zoals wordt weer gegeven:
+De sectie eigenschappen in de ClusterConfig.jsop wordt gebruikt om het cluster te configureren zoals wordt weer gegeven:
 
 ### <a name="reliability"></a>Betrouwbaarheid
 Het concept van reliabilityLevel definieert het aantal replica's of exemplaren van de Service Fabric systeem services dat kan worden uitgevoerd op de primaire knoop punten van het cluster. Hiermee wordt de betrouw baarheid van deze services en daarom het cluster bepaald. De waarde wordt berekend door het systeem tijdens het maken van het cluster en de upgrade tijd.
@@ -147,7 +146,7 @@ De naam is de beschrijvende naam voor dit specifieke knooppunt type. Als u een k
 * leaseDriverEndpointPort is de poort die wordt gebruikt door het cluster lease stuur programma om erachter te komen of de knoop punten nog actief zijn. 
 * serviceConnectionEndpointPort is de poort die wordt gebruikt door de toepassingen en services die zijn geïmplementeerd op een knoop punt om te communiceren met de Service Fabric-client op het desbetreffende knoop punt.
 * httpGatewayEndpointPort is de poort die wordt gebruikt door Service Fabric Explorer om verbinding te maken met het cluster.
-* ephemeralPorts overschrijven de [dynamische poorten die door het besturings systeem worden gebruikt](https://support.microsoft.com/kb/929851). Service Fabric gebruikt een deel van deze poorten als toepassings poorten en het resterende onderdeel is beschikbaar voor het besturings systeem. Dit bereik wordt ook toegewezen aan het bestaande bereik in het besturings systeem, zodat u voor alle doel einden de bereiken kunt gebruiken die zijn opgegeven in de voor beeld-JSON-bestanden. Zorg ervoor dat het verschil tussen de begin-en eind poort ten minste 255 is. U kunt conflicten ondertreden als dit verschil te laag is, omdat dit bereik wordt gedeeld met het besturings systeem. Voer uit `netsh int ipv4 show dynamicport tcp`om het geconfigureerde dynamische poort bereik weer te geven.
+* ephemeralPorts overschrijven de [dynamische poorten die door het besturings systeem worden gebruikt](https://support.microsoft.com/kb/929851). Service Fabric gebruikt een deel van deze poorten als toepassings poorten en het resterende onderdeel is beschikbaar voor het besturings systeem. Dit bereik wordt ook toegewezen aan het bestaande bereik in het besturings systeem, zodat u voor alle doel einden de bereiken kunt gebruiken die zijn opgegeven in de voor beeld-JSON-bestanden. Zorg ervoor dat het verschil tussen de begin-en eind poort ten minste 255 is. U kunt conflicten ondertreden als dit verschil te laag is, omdat dit bereik wordt gedeeld met het besturings systeem. Voer uit om het geconfigureerde dynamische poort bereik weer te geven `netsh int ipv4 show dynamicport tcp` .
 * applicationPorts zijn de poorten die worden gebruikt door de Service Fabric-toepassingen. Het bereik van de toepassings poort moet groot genoeg zijn om de eindpunt vereiste van uw toepassingen te kunnen voorzien. Dit bereik moet exclusief zijn van het dynamische poort bereik op de computer, dat wil zeggen, het ephemeralPorts-bereik dat is ingesteld in de configuratie. Service Fabric gebruikt deze poorten wanneer er nieuwe poorten zijn vereist en de firewall voor deze poorten wordt geopend. 
 * reverseProxyEndpointPort is een optioneel reverse-proxy-eind punt. Zie [service Fabric reverse proxy](service-fabric-reverseproxy.md)voor meer informatie. 
 
@@ -199,7 +198,7 @@ Alle beschik bare invoeg toepassingen kunnen worden weer gegeven in de [Naslag i
 Als u container ondersteuning wilt inschakelen voor zowel Windows Server-containers als Hyper-V-containers voor zelfstandige clusters, moet u de functie voor DNS toevoegen inschakelen.
 
 ## <a name="next-steps"></a>Volgende stappen
-Nadat u een volledig *ClusterConfig. json* -bestand hebt geconfigureerd volgens uw zelfstandige cluster installatie, kunt u uw cluster implementeren. Volg de stappen in [een zelfstandige service Fabric cluster maken](service-fabric-cluster-creation-for-windows-server.md). 
+Nadat u een volledigClusterConfig.jshebt voor het bestand dat is geconfigureerd *op basis van* uw zelfstandige cluster installatie, kunt u uw cluster implementeren. Volg de stappen in [een zelfstandige service Fabric cluster maken](service-fabric-cluster-creation-for-windows-server.md). 
 
 Als u een zelfstandig cluster hebt geïmplementeerd, kunt u ook [de configuratie van een zelfstandig cluster bijwerken](service-fabric-cluster-config-upgrade-windows-server.md). 
 

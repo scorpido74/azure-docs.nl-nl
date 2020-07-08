@@ -6,10 +6,9 @@ ms.topic: article
 ms.date: 11/04/2019
 ms.author: v-umha
 ms.openlocfilehash: a2115e9c1601c86cce8857c10baf12b91cc2b997
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75482567"
 ---
 # <a name="generate-soil-moisture-heatmap"></a>Bodem vocht heatmap genereren
@@ -51,7 +50,7 @@ Zodra u uw referenties hebt ingevoerd en **verzenden** hebt geselecteerd voor de
 Zodra u uw sensor account hebt gekoppeld aan Azure FarmBeats, moet u de bodem sensoren aan de gewenste farm toewijzen.
 
 1.  Op de start pagina selecteert u **Farms** in het menu. de lijst pagina **Farms** wordt weer gegeven.
-2.  Selecteer **MyFarm** > **apparaten toevoegen**.
+2.  Selecteer **MyFarm**  >  **apparaten toevoegen**.
 3.  Het venster **apparaten toevoegen** wordt weer gegeven. Selecteer een apparaat dat is gekoppeld aan de bodem sensoren voor uw farm.
 
     ![Maten van project-Farm](./media/get-sensor-data-from-sensor-partner/add-devices-1.png)

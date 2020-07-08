@@ -9,10 +9,9 @@ ms.date: 04/23/2018
 ms.author: sngun
 ms.subservice: tables
 ms.openlocfilehash: 41a588ddc0c1be8014a84d8fe181013d8566f68d
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75457639"
 ---
 # <a name="design-for-querying"></a>Ontwerp voor query's
@@ -35,7 +34,7 @@ Deze sectie richt zich op de belangrijkste problemen die u moet aanpakken wannee
 ## <a name="how-your-choice-of-partitionkey-and-rowkey-impacts-query-performance"></a>Hoe uw keuze van PartitionKey en RowKey gevolgen heeft voor de query prestaties
 In de volgende voor beelden wordt ervan uitgegaan dat de tabel service werk nemers-entiteiten opslaat met de volgende structuur (in de meeste voor beelden wordt de **Time Stamp** -eigenschap voor duidelijkheid wegge laten):  
 
-| *Kolom naam* | *Gegevens type* |
+| *Kolom naam* | *Gegevenstype* |
 | --- | --- |
 | **PartitionKey** (afdelings naam) |Tekenreeks |
 | **RowKey** (werk nemer-id) |Tekenreeks |

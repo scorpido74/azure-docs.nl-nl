@@ -4,10 +4,9 @@ description: Hierin wordt beschreven hoe u variabelen definieert in een Azure Re
 ms.topic: conceptual
 ms.date: 09/05/2019
 ms.openlocfilehash: cf135959d30702ea58b7a1d4fdd82625a39245d2
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75483815"
 ---
 # <a name="variables-in-azure-resource-manager-template"></a>Variabelen in Azure Resource Manager sjabloon
@@ -85,7 +84,7 @@ Als u instellingen voor de opgegeven omgeving wilt ophalen, gebruikt u de variab
 
 In de volgende voor beelden ziet u scenario's voor het gebruik van variabelen.
 
-|Template  |Beschrijving  |
+|Template  |Description  |
 |---------|---------|
 | [variabele definities](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/variables.json) | Toont de verschillende typen variabelen. De sjabloon implementeert geen resources. Er worden variabele waarden gemaakt en deze waarden worden geretourneerd. |
 | [configuratie variabele](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/variablesconfigurations.json) | Toont het gebruik van een variabele die configuratie waarden definieert. De sjabloon implementeert geen resources. Er worden variabele waarden gemaakt en deze waarden worden geretourneerd. |

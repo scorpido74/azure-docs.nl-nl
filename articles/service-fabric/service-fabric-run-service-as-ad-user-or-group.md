@@ -6,14 +6,13 @@ ms.topic: conceptual
 ms.date: 03/29/2018
 ms.author: dekapur
 ms.openlocfilehash: d440aadb66562e32331c9725a9367c12440a315d
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75464243"
 ---
 # <a name="run-a-service-as-an-active-directory-user-or-group"></a>Een service uitvoeren als een Active Directory gebruiker of groep
-Op een zelfstandige Windows Server-cluster kunt u een service uitvoeren als een Active Directory gebruiker of groep met behulp van een runas-beleid.  Service Fabric toepassingen worden standaard uitgevoerd onder het account waaronder het Fabric. exe-proces wordt uitgevoerd. Door toepassingen onder verschillende accounts uit te voeren, zelfs in een gedeelde gehoste omgeving, zijn ze beter te beveiligen tegen elkaar. Houd er rekening mee dat dit Active Directory on-premises binnen uw domein gebruikt en niet Azure Active Directory (Azure AD).  U kunt ook een service uitvoeren als een [beheerd service account voor een groep (gMSA)](service-fabric-run-service-as-gmsa.md).
+Op een zelfstandige Windows Server-cluster kunt u een service uitvoeren als een Active Directory gebruiker of groep met behulp van een runas-beleid.  Service Fabric toepassingen worden standaard uitgevoerd onder het account dat door het Fabric.exe proces wordt uitgevoerd. Door toepassingen onder verschillende accounts uit te voeren, zelfs in een gedeelde gehoste omgeving, zijn ze beter te beveiligen tegen elkaar. Houd er rekening mee dat dit Active Directory on-premises binnen uw domein gebruikt en niet Azure Active Directory (Azure AD).  U kunt ook een service uitvoeren als een [beheerd service account voor een groep (gMSA)](service-fabric-run-service-as-gmsa.md).
 
 Door een domein gebruiker of-groep te gebruiken, kunt u toegang krijgen tot andere bronnen in het domein (bijvoorbeeld bestands shares) waaraan machtigingen zijn verleend.
 

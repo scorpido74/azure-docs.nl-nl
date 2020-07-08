@@ -7,10 +7,9 @@ ms.date: 11/26/2018
 ms.author: dekapur
 ms.custom: mvc, devcenter
 ms.openlocfilehash: dc793e2991783cc9b7b46d92fcc8e0267feb529b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75459130"
 ---
 # <a name="introduction-to-networking-in-service-fabric-mesh-applications"></a>Inleiding tot netwerken in Service Fabric-mesh toepassingen
@@ -30,7 +29,7 @@ Een gateway wordt gebruikt voor het overbruggen van twee netwerken. De gateway r
 
 ![Netwerk en gateway][Image1]
 
-Wanneer de netwerk bron is gemaakt met `ingressConfig`, wordt een openbaar IP-adres toegewezen aan de netwerk bron. Het open bare IP-adres wordt gekoppeld aan de levens duur van de netwerk bron.
+Wanneer de netwerk bron is gemaakt met `ingressConfig` , wordt een openbaar IP-adres toegewezen aan de netwerk bron. Het open bare IP-adres wordt gekoppeld aan de levens duur van de netwerk bron.
 
 Wanneer een mesh-toepassing wordt gemaakt, moet deze verwijzen naar een bestaande netwerk bron. Nieuwe open bare poorten kunnen worden toegevoegd of bestaande poorten kunnen worden verwijderd uit de ingangs configuratie. Een Verwijder bewerking voor een netwerk bron mislukt als er wordt verwezen naar een toepassings bron. Wanneer de toepassing wordt verwijderd, wordt de netwerk bron verwijderd.
 

@@ -6,10 +6,9 @@ ms.topic: conceptual
 ms.date: 08/18/2017
 ms.author: masnider
 ms.openlocfilehash: b4d78b339bab02b5c44a31939e0da769dc21c3ec
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75452165"
 ---
 # <a name="throttling-the-service-fabric-cluster-resource-manager"></a>De Service Fabric cluster resource manager beperken
@@ -46,7 +45,7 @@ Wanneer u het bandbreedte percentage opgeeft, geeft u 5% op als 0,05. Het interv
 </Section>
 ```
 
-via ClusterConfig. json voor zelfstandige implementaties of sjabloon. json voor door Azure gehoste clusters:
+via ClusterConfig.jsop voor zelfstandige implementaties of Template.jsop voor door Azure gehoste clusters:
 
 ```json
 "fabricSettings": [

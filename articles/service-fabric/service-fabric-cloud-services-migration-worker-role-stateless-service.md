@@ -6,10 +6,9 @@ ms.topic: conceptual
 ms.date: 11/02/2017
 ms.author: vturecek
 ms.openlocfilehash: caf067f793ca2086bc068907e86a82266627d128
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75463341"
 ---
 # <a name="guide-to-converting-web-and-worker-roles-to-service-fabric-stateless-services"></a>Hand leiding voor het converteren van web-en werk rollen naar Service Fabric stateless Services
@@ -30,12 +29,12 @@ De rol van een werk nemer vertegenwoordigt een staatloze werk belasting, wat bet
 ## <a name="web-role-to-stateless-service"></a>stateless service van webrol
 Net als bij de rol van werk nemer vertegenwoordigt een webrole ook een staatloze werk belasting, en kan deze dus niet worden toegewezen aan een Service Fabric stateless service. Maar in tegens telling tot webrollen biedt Service Fabric geen ondersteuning voor IIS. Als u een webtoepassing van een webrole naar een stateless service wilt migreren, moet u eerst verplaatsen naar een webframework dat zelf kan worden gehost en niet afhankelijk zijn van IIS of System. Web, zoals ASP.NET Core 1.
 
-| **Toepassing** | **Geboden** | **Migratie traject** |
+| **Toepassing** | **Ondersteund** | **Migratie traject** |
 | --- | --- | --- |
-| Webformulieren voor ASP.NET |Nee |Converteren naar ASP.NET Core 1 MVC |
+| Webformulieren voor ASP.NET |No |Converteren naar ASP.NET Core 1 MVC |
 | ASP.NET MVC |Met migratie |Upgrade uitvoeren naar ASP.NET Core 1 MVC |
 | ASP.NET Web-API |Met migratie |Een zelf-hostende server of ASP.NET Core 1 gebruiken |
-| ASP.NET Core 1 |Ja |N.v.t. |
+| ASP.NET Core 1 |Yes |N.v.t. |
 
 ## <a name="entry-point-api-and-lifecycle"></a>Ingangs punt-API en levens cyclus
 De Worker-en Service Fabric service-Api's bieden vergelijk bare ingangs punten: 
@@ -97,12 +96,12 @@ namespace Stateless1
 
 ```
 
-Beide hebben een primaire ' uitvoeren '-onderdrukking waarbij kan worden begonnen met de verwerking. Service Fabric Services combi `Run`neren `Start`,, `Stop` en in één ingangs punt `RunAsync`. Uw service moet aan de slag `RunAsync` gaan wanneer het programma wordt gestart, en `RunAsync` moet niet meer werken wanneer de CancellationToken van de methode wordt gesignaleerd. 
+Beide hebben een primaire ' uitvoeren '-onderdrukking waarbij kan worden begonnen met de verwerking. Service Fabric Services combi neren `Run` , `Start` , en `Stop` in één ingangs punt `RunAsync` . Uw service moet aan de slag gaan wanneer `RunAsync` het programma wordt gestart, en moet niet meer werken wanneer de `RunAsync` CancellationToken van de methode wordt gesignaleerd. 
 
 Er zijn verschillende belang rijke verschillen tussen de levens cyclus en de levens duur van werk rollen en Service Fabric Services:
 
 * **Levens cyclus:** Het grootste verschil is dat een Werknemersrol een VM is en dat de levens cyclus is gekoppeld aan de virtuele machine, die gebeurtenissen bevat voor wanneer de virtuele machine wordt gestart en gestopt. Een Service Fabric-service heeft een levens cyclus die losstaat van de levens cyclus van de VM, dus bevat geen gebeurtenissen voor wanneer de host-VM of-machine wordt gestart en gestopt, omdat deze niet aan elkaar zijn gerelateerd.
-* **Levens duur:** Een instantie van een werk rollen wordt herhaald als `Run` de methode wordt afgesloten. De `RunAsync` methode in een service Fabric-service kan echter worden uitgevoerd om te worden voltooid en het service-exemplaar blijft actief. 
+* **Levens duur:** Een instantie van een werk rollen wordt herhaald als de `Run` methode wordt afgesloten. De `RunAsync` methode in een service Fabric-service kan echter worden uitgevoerd om te worden voltooid en het service-exemplaar blijft actief. 
 
 Service Fabric biedt een optioneel ingangs punt voor communicatie-installatie voor services die op client aanvragen Luis teren. Zowel het RunAsync als het communicatie-invoer punt zijn optionele onderdrukkingen in Service Fabric Services: uw service kan ervoor kiezen om alleen naar client aanvragen te Luis teren of alleen een verwerkings lus uit te voeren, of beide, waarom de methode RunAsync mag worden afgesloten zonder het service-exemplaar opnieuw te starten, omdat het mogelijk blijft Luis teren naar client aanvragen.
 
@@ -124,11 +123,11 @@ Configuratie-instellingen in Cloud Services worden ingesteld voor een VM-rol en 
 * **Configuratie:** alle configuratie bestanden en-instellingen voor een service.
 * **Gegevens:** statische gegevens bestanden die zijn gekoppeld aan de service.
 
-Elk van deze pakketten kan onafhankelijk van versie zijn en kan worden bijgewerkt. Net als bij Cloud Services is er via een API een configuratie pakket toegankelijk via een of meer gebeurtenissen waarmee de service van een wijziging in het configuratie pakket kan worden gewaarschuwd. U kunt een bestand settings. XML gebruiken voor de configuratie van de sleutel waarde en programmatische toegang, vergelijkbaar met de sectie app-instellingen van een app. config-bestand. In tegens telling tot Cloud Services, kan een Service Fabric configuratie pakket echter alle configuratie bestanden in een wille keurige indeling bevatten, of het nu XML, JSON, YAML of een aangepaste binaire indeling is. 
+Elk van deze pakketten kan onafhankelijk van versie zijn en kan worden bijgewerkt. Net als bij Cloud Services is er via een API een configuratie pakket toegankelijk via een of meer gebeurtenissen waarmee de service van een wijziging in het configuratie pakket kan worden gewaarschuwd. Een Settings.xml bestand kan worden gebruikt voor de configuratie van de sleutel waarde en programmatische toegang, vergelijkbaar met de sectie app-instellingen van een App.config bestand. In tegens telling tot Cloud Services, kan een Service Fabric configuratie pakket echter alle configuratie bestanden in een wille keurige indeling bevatten, of het nu XML, JSON, YAML of een aangepaste binaire indeling is. 
 
 ### <a name="accessing-configuration"></a>Configuratie openen
 #### <a name="cloud-services"></a>Cloud Services
-Configuratie-instellingen van ServiceConfiguration. *. cscfg kunnen worden geopend `RoleEnvironment`via. Deze instellingen zijn wereld wijd beschikbaar voor alle rolinstanties in dezelfde Cloud service-implementatie.
+Configuratie-instellingen van ServiceConfiguration. *. cscfg kunnen worden geopend via `RoleEnvironment` . Deze instellingen zijn wereld wijd beschikbaar voor alle rolinstanties in dezelfde Cloud service-implementatie.
 
 ```csharp
 
@@ -137,9 +136,9 @@ string value = RoleEnvironment.GetConfigurationSettingValue("Key");
 ```
 
 #### <a name="service-fabric"></a>Service Fabric
-Elke service heeft zijn eigen afzonderlijke configuratie pakket. Er is geen ingebouwd mechanisme voor globale configuratie-instellingen die toegankelijk zijn voor alle toepassingen in een cluster. Wanneer u het configuratie bestand met de speciale instellingen. XML van Service Fabric in een configuratie pakket gebruikt, kunnen waarden in Settings. XML worden overschreven op toepassings niveau, waardoor er configuratie-instellingen op toepassings niveau mogelijk zijn.
+Elke service heeft zijn eigen afzonderlijke configuratie pakket. Er is geen ingebouwd mechanisme voor globale configuratie-instellingen die toegankelijk zijn voor alle toepassingen in een cluster. Wanneer Service Fabric u een speciaal Settings.xml configuratie bestand gebruikt binnen een configuratie pakket, kunnen de waarden in Settings.xml worden overschreven op toepassings niveau, waardoor er configuratie-instellingen op toepassings niveau mogelijk zijn.
 
-Configuratie-instellingen zijn via de service geopend binnen elk service-exemplaar `CodePackageActivationContext`.
+Configuratie-instellingen zijn via de service geopend binnen elk service-exemplaar `CodePackageActivationContext` .
 
 ```csharp
 
@@ -224,7 +223,7 @@ In Cloud Services wordt een opstart toegangs punt geconfigureerd per rol in Serv
 ```
 
 ### <a name="service-fabric"></a>Service Fabric
-In Service Fabric wordt een opstart toegangs punt geconfigureerd per service in ServiceManifest. XML:
+In Service Fabric wordt een opstart toegangs punt geconfigureerd per service in ServiceManifest.xml:
 
 ```xml
 

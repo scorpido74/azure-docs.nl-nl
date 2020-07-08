@@ -4,10 +4,9 @@ description: Meer informatie over het beheren van persoonlijke gegevens die zijn
 ms.topic: conceptual
 ms.date: 05/14/2018
 ms.openlocfilehash: 22cfc1b6096980f3d10db404a1c4e02f2de355d2
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75485258"
 ---
 # <a name="manage-personal-data-associated-with-azure-resource-manager"></a>Persoonlijke gegevens beheren die zijn gekoppeld aan Azure Resource Manager
@@ -40,7 +39,7 @@ De naam van de resource groep blijft behouden totdat u de resource groep verwijd
 
 Als u **resource groepen**wilt weer geven, gebruikt u:
 
-* [Orderverzamellijst](/rest/api/resources/resourcegroups/list)
+* [List](/rest/api/resources/resourcegroups/list)
 * [Get-AzResourceGroup](/powershell/module/az.resources/Get-AzResourceGroup)
 * [AZ Group List](/cli/azure/group#az-group-list)
 
@@ -56,7 +55,7 @@ Tags namen en waarden blijven behouden totdat u de tag verwijdert of wijzigt. Al
 
 Als u **Tags**wilt weer geven, gebruikt u:
 
-* [Orderverzamellijst](/rest/api/resources/tags/list)
+* [List](/rest/api/resources/tags/list)
 * [Get-AzTag](/powershell/module/az.resources/Get-AzTag)
 * [AZ-label lijst](/cli/azure/tag#az-tag-list)
 

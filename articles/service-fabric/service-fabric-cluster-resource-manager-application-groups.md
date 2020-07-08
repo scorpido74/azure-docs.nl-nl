@@ -6,10 +6,9 @@ ms.topic: conceptual
 ms.date: 08/18/2017
 ms.author: masnider
 ms.openlocfilehash: 988c7ce52125800c16aa785d5b1458604a927ecd
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75452155"
 ---
 # <a name="introduction-to-application-groups"></a>Inleiding tot toepassings groepen
@@ -184,7 +183,7 @@ Update-ServiceFabricApplication –Name fabric:/MyApplication1 –RemoveApplicat
 
 ```
 
-Met deze opdracht worden alle beheer parameters voor toepassings capaciteit verwijderd uit het toepassings exemplaar. Dit omvat MinimumNodes, MaximumNodes en de metrische gegevens van de toepassing, indien aanwezig. Het effect van de opdracht is direct. Wanneer deze opdracht is voltooid, gebruikt cluster resource manager het standaard gedrag voor het beheren van toepassingen. De para meters voor de toepassings capaciteit `Update-ServiceFabricApplication` / `System.Fabric.FabricClient.ApplicationManagementClient.UpdateApplicationAsync()`kunnen opnieuw worden opgegeven via.
+Met deze opdracht worden alle beheer parameters voor toepassings capaciteit verwijderd uit het toepassings exemplaar. Dit omvat MinimumNodes, MaximumNodes en de metrische gegevens van de toepassing, indien aanwezig. Het effect van de opdracht is direct. Wanneer deze opdracht is voltooid, gebruikt cluster resource manager het standaard gedrag voor het beheren van toepassingen. De para meters voor de toepassings capaciteit kunnen opnieuw worden opgegeven via `Update-ServiceFabricApplication` / `System.Fabric.FabricClient.ApplicationManagementClient.UpdateApplicationAsync()` .
 
 ### <a name="restrictions-on-application-capacity"></a>Beperkingen voor de toepassings capaciteit
 Er zijn verschillende beperkingen voor de para meters van de toepassings capaciteit die moeten worden gerespecteerd. Als er validatie fouten zijn, worden er geen wijzigingen doorgevoerd.

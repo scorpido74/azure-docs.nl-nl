@@ -4,10 +4,9 @@ description: Gebruik de activiteiten Logboeken om de gebruikers acties en-fouten
 ms.topic: conceptual
 ms.date: 05/13/2019
 ms.openlocfilehash: 9511090099894fad6708843f106570ed029f0c1a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75478134"
 ---
 # <a name="view-activity-logs-to-monitor-actions-on-resources"></a>Activiteiten logboeken weer geven om acties op resources te controleren
@@ -20,7 +19,7 @@ Met activiteitenlogboeken kunt u het volgende bepalen:
 * de status van de bewerking
 * de waarden van andere eigenschappen die u kunnen helpen bij het onderzoeken van de bewerking
 
-Het activiteiten logboek bevat alle schrijf bewerkingen (PUT, POST, DELETE) voor uw resources. Het bevat geen leesbewerkingen (GET). Zie Azure Resource Manager-bewerkingen van de [resource provider](../../role-based-access-control/resource-provider-operations.md)voor een lijst met resource acties. U kunt de activiteitenlogboeken gebruiken om fouten te vinden bij foutoplossing of om te controleren hoe een gebruiker in uw organisatie een resource heeft gewijzigd.
+Het activiteitenlogboek bevat alle schrijfbewerkingen (PUT, POST, DELETE) voor uw resources. Het bevat geen leesbewerkingen (GET). Zie Azure Resource Manager-bewerkingen van de [resource provider](../../role-based-access-control/resource-provider-operations.md)voor een lijst met resource acties. U kunt de activiteitenlogboeken gebruiken om fouten te vinden bij foutoplossing of om te controleren hoe een gebruiker in uw organisatie een resource heeft gewijzigd.
 
 Activiteitenlogboek worden gedurende negentig dagen bewaard. U kunt een query uitvoeren voor een willekeurig datumbereik, zolang de begindatum niet meer dan negentig dagen in het verleden ligt.
 
@@ -186,7 +185,7 @@ U kunt resource grafiek gebruiken om de wijzigings geschiedenis voor een resourc
 
 ## <a name="rest-api"></a>REST-API
 
-De REST-bewerkingen voor het werken met het activiteiten logboek maken deel uit van de [inzichten rest API](/rest/api/monitor/). Zie [de beheer gebeurtenissen in een abonnement](/rest/api/monitor/activitylogs)weer geven om activiteiten logboek gebeurtenissen op te halen.
+De REST-bewerkingen voor het werken met het activiteitenlogboek maken deel uit van de [Insights-REST API](/rest/api/monitor/). Als u gebeurtenissen van activiteitenlogboeken wilt ophalen, raadpleegt u [de beheergebeurtenissen in een abonnement weergeven](/rest/api/monitor/activitylogs).
 
 ## <a name="next-steps"></a>Volgende stappen
 

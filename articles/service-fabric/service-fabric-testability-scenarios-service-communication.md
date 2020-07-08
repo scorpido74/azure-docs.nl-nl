@@ -6,10 +6,9 @@ ms.topic: conceptual
 ms.date: 11/02/2017
 ms.author: vturecek
 ms.openlocfilehash: 87b922cb9655588a22c739d26c9ce9e49d35781a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75465562"
 ---
 # <a name="service-fabric-testability-scenarios-service-communication"></a>Service Fabric scenario's voor testen: Service communicatie
@@ -79,7 +78,7 @@ PS > Invoke-ServiceFabricPartitionQuorumLoss -ServiceName fabric:/Myapplication/
 
 ```
 
-In dit voor beeld stellen `QuorumLossMode` we in `QuorumReplicas` om aan te geven dat we quorum verlies willen maken zonder alle replica's uit te voeren. Op deze manier kunnen Lees bewerkingen nog steeds worden uitgevoerd. Als u een scenario wilt testen waarbij een volledige partitie niet beschikbaar is, kunt u deze Schakel `AllReplicas`optie instellen op.
+In dit voor beeld stellen we `QuorumLossMode` in `QuorumReplicas` om aan te geven dat we quorum verlies willen maken zonder alle replica's uit te voeren. Op deze manier kunnen Lees bewerkingen nog steeds worden uitgevoerd. Als u een scenario wilt testen waarbij een volledige partitie niet beschikbaar is, kunt u deze schakel optie instellen op `AllReplicas` .
 
 ## <a name="next-steps"></a>Volgende stappen
 [Meer informatie over test acties](service-fabric-testability-actions.md)

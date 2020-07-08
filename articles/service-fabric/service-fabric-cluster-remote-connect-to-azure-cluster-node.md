@@ -4,10 +4,9 @@ description: Meer informatie over hoe u extern verbinding maakt met een exemplaa
 ms.topic: conceptual
 ms.date: 03/23/2018
 ms.openlocfilehash: c7ca4f0d5dce1b19837a44d5c9749f3e1293c6b8
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75458314"
 ---
 # <a name="remote-connect-to-a-virtual-machine-scale-set-instance-or-a-cluster-node"></a>Externe verbinding maken met een virtuele-machine Scale set-exemplaar of een cluster knooppunt
@@ -19,7 +18,7 @@ Voer de volgende stappen uit om een IP-adres en poort te vinden die u kunt gebru
 
     Normaal gesp roken heeft elk knooppunt type dat in uw cluster is gedefinieerd, een eigen virtueel IP-adres en een toegewezen load balancer. Standaard wordt de load balancer voor een knooppunt type met de volgende indeling genoemd: *lb-{cluster name}-{Node-type}*; bijvoorbeeld *lb-mycluster-front-end*. 
     
-    Selecteer op de pagina voor uw Load Balancer in azure Portal **instellingen** > **binnenkomende NAT-regels**: 
+    Selecteer op de pagina voor uw Load Balancer in azure Portal **instellingen**  >  **binnenkomende NAT-regels**: 
 
     ![Binnenkomende NAT-regels voor Load Balancer](./media/service-fabric-cluster-remote-connect-to-azure-cluster-node/lb-window.png)
 
@@ -29,7 +28,7 @@ Voer de volgende stappen uit om een IP-adres en poort te vinden die u kunt gebru
 
     Voor elk knoop punt wordt het IP-adres weer gegeven in de **doel** kolom, de **doel** kolom bevat het exemplaar van de schaalset en de kolom **service** geeft het poort nummer. Voor externe verbinding worden poorten toegewezen aan elk knoop punt in oplopende volg orde, beginnend met poort 3389.
 
-    U kunt ook de binnenkomende NAT-regels vinden in `Microsoft.Network/loadBalancers` de sectie van de Resource Manager-sjabloon voor uw cluster.
+    U kunt ook de binnenkomende NAT-regels vinden in de `Microsoft.Network/loadBalancers` sectie van de Resource Manager-sjabloon voor uw cluster.
     
 2. Als u de poort toewijzing van de binnenkomende poort voor een knoop punt wilt bevestigen, klikt u op de bijbehorende regel en kijkt u naar de waarde van de **doel poort** . De volgende scherm afbeelding toont de binnenkomende NAT-regel voor het front **-End-knoop punt (instance 1)** in de vorige stap. U ziet dat, hoewel het (inkomend) poort nummer 3390 is, de doel poort wordt toegewezen aan poort 3389, de poort voor de RDP-service op het doel.  
 

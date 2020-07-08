@@ -8,10 +8,9 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 12/19/2019
 ms.openlocfilehash: 752068af531c4a0ecc832d266f88105c14452ecb
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75494927"
 ---
 # <a name="performance-optimization-for-apache-kafka-hdinsight-clusters"></a>Prestaties van Apache Kafka HDInsight-clusters optimaliseren
@@ -44,13 +43,13 @@ Apache Kafka producenten groeperen groepen van berichten (batches genoemd) die a
 
 ### <a name="producer-required-acknowledgments"></a>Bevestigingen voor producer vereist
 
-De door de `acks` producent vereiste configuratie bepaalt het aantal bevestigingen dat de partitie leider vereist voordat een schrijf aanvraag als voltooid wordt beschouwd. Deze instelling is van invloed op de betrouw baarheid `0`van `1`gegevens en `-1`er worden waarden van, of gebruikt. De waarde van `-1` geeft aan dat er een bevestiging moet worden ontvangen van alle replica's voordat de schrijf bewerking is voltooid. Instelling `acks = -1` biedt betere garanties tegen gegevens verlies, maar resulteert ook in hogere latentie en een lagere door voer. Als uw aanvraag voor toepassings vereisten een hogere door Voer `acks = 0` heeft `acks = 1`, probeert u het in te stellen of. Denk eraan dat het niet bevestigen van alle replica's de betrouw baarheid van gegevens kan verminderen.
+De door de producent vereiste `acks` configuratie bepaalt het aantal bevestigingen dat de partitie leider vereist voordat een schrijf aanvraag als voltooid wordt beschouwd. Deze instelling is van invloed op de betrouw baarheid van gegevens en er worden waarden van `0` , `1` of gebruikt `-1` . De waarde van `-1` geeft aan dat er een bevestiging moet worden ontvangen van alle replica's voordat de schrijf bewerking is voltooid. Instelling `acks = -1` biedt betere garanties tegen gegevens verlies, maar resulteert ook in hogere latentie en een lagere door voer. Als uw aanvraag voor toepassings vereisten een hogere door Voer heeft, probeert u het in te stellen `acks = 0` of `acks = 1` . Denk eraan dat het niet bevestigen van alle replica's de betrouw baarheid van gegevens kan verminderen.
 
 ### <a name="compression"></a>Compressie
 
 Een Kafka-producer kan worden geconfigureerd om berichten te comprimeren voordat ze naar Brokers worden verzonden. De `compression.type` instelling geeft aan welke compressie-codec moet worden gebruikt. Ondersteunde compressie-codecs zijn ' gzip ', ' Snappy ' en ' LZ4 '. Compressie is nuttig en moet worden overwogen als er sprake is van een limiet voor de schijf capaciteit.
 
-Een van de twee veelgebruikte compressie- `gzip` codecs `snappy`en `gzip` heeft een hogere compressie ratio, wat resulteert in een lager schijf gebruik bij de kosten van een hogere CPU-belasting. De `snappy` codec biedt minder compressie met minder CPU-overhead. U kunt bepalen welke codec moet worden gebruikt op basis van de limieten van de Broker-schijf of de CPU van de producent. `gzip`kan gegevens comprimeren met een snelheid van vijf keer hoger `snappy`dan.
+Een van de twee veelgebruikte compressie-codecs `gzip` en `snappy` `gzip` heeft een hogere compressie ratio, wat resulteert in een lager schijf gebruik bij de kosten van een hogere CPU-belasting. De `snappy` codec biedt minder compressie met minder CPU-overhead. U kunt bepalen welke codec moet worden gebruikt op basis van de limieten van de Broker-schijf of de CPU van de producent. `gzip`kan gegevens comprimeren met een snelheid van vijf keer hoger dan `snappy` .
 
 Als u gegevens compressie gebruikt, wordt het aantal records dat op een schijf kan worden opgeslagen, verg root. Het kan ook CPU-overhead verhogen wanneer er niet overeenkomt tussen de compressie-indelingen die door de producent en de Broker worden gebruikt. Als de gegevens moeten worden gecomprimeerd voordat ze worden verzonden en gedecomprimeerd voordat ze worden verwerkt.
 

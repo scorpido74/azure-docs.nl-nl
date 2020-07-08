@@ -9,10 +9,9 @@ ms.service: industrial-iot
 services: iot-industrialiot
 manager: philmea
 ms.openlocfilehash: af5e511cbf273bc4e4fa0a08d089a955426fe75c
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75454198"
 ---
 # <a name="use-the-opc-vault-certificate-management-service"></a>De OPC-kluis certificaat beheer service gebruiken
@@ -36,7 +35,7 @@ Als u dit nog niet hebt gedaan, maakt u het CA-certificaat van de certificaat ve
 > [!IMPORTANT]
 > De rol schrijver is vereist voor het registreren van een toepassing.
 
-1. Open uw certificaat service op `https://myResourceGroup-app.azurewebsites.net`en meld u aan.
+1. Open uw certificaat service op `https://myResourceGroup-app.azurewebsites.net` en meld u aan.
 2. Ga naar **Nieuw registreren**. Voor een toepassings registratie moet aan een gebruiker ten minste de rol van schrijver zijn toegewezen.
 2. Het invoer formulier volgt naam conventies in OPC UA. Zo wordt in de volgende scherm afbeelding de instellingen voor het voor beeld van het [OPC UA-referentie server](https://github.com/OPCFoundation/UA-.NETStandard/tree/master/SampleApplications/Workshop/Reference) in de OPC ua .NET Standard stack weer gegeven:
 
@@ -71,7 +70,7 @@ Beveilig uw OPC UA-toepassing door een ondertekend certificaat uit te geven op b
 8. Nadat de persoonlijke sleutel is gedownload en veilig is opgeslagen, kunt u **persoonlijke sleutel verwijderen**selecteren. Het certificaat met de open bare sleutel blijft beschikbaar voor toekomstig gebruik.
 9. Als gevolg van het gebruik van een door een CA ondertekend certificaat, moeten het CA-certificaat en de certificaatintrekkingslijst (CRL) hier ook worden gedownload.
 
-Nu is het afhankelijk van het OPC UA-apparaat hoe het nieuwe sleutel paar moet worden toegepast. Normaal gesp roken worden het CA-certificaat en de CRL `trusted` gekopieerd naar een map, terwijl de open bare en persoonlijke sleutels van het toepassings certificaat `own` worden toegepast op een map in het certificaat archief. Sommige apparaten ondersteunen mogelijk al server push voor certificaat updates. Raadpleeg de documentatie van uw OPC UA-apparaat.
+Nu is het afhankelijk van het OPC UA-apparaat hoe het nieuwe sleutel paar moet worden toegepast. Normaal gesp roken worden het CA-certificaat en de CRL gekopieerd naar een `trusted` map, terwijl de open bare en persoonlijke sleutels van het toepassings certificaat worden toegepast op een `own` map in het certificaat archief. Sommige apparaten ondersteunen mogelijk al server push voor certificaat updates. Raadpleeg de documentatie van uw OPC UA-apparaat.
 
 #### <a name="request-a-new-certificate-with-a-csr"></a>Een nieuw certificaat aanvragen bij een CSR 
 
@@ -96,7 +95,7 @@ Nu is het afhankelijk van het OPC UA-apparaat hoe het nieuwe sleutel paar moet w
 10. Nadat het certificaat is gedownload en beveiligd is opgeslagen, kunt u **certificaat verwijderen**selecteren.
 11. Als gevolg van het gebruik van een door een CA ondertekend certificaat, moeten het CA-certificaat en de CRL ook hier worden gedownload.
 
-Nu is het afhankelijk van het OPC UA-apparaat hoe het nieuwe certificaat moet worden toegepast. Normaal gesp roken worden het CA-certificaat en de CRL `trusted` gekopieerd naar een map, terwijl het toepassings certificaat wordt `own` toegepast op een map in het certificaat archief. Sommige apparaten ondersteunen mogelijk al server push voor certificaat updates. Raadpleeg de documentatie van uw OPC UA-apparaat.
+Nu is het afhankelijk van het OPC UA-apparaat hoe het nieuwe certificaat moet worden toegepast. Normaal gesp roken worden het CA-certificaat en de CRL gekopieerd naar een `trusted` map, terwijl het toepassings certificaat wordt toegepast op een `own` map in het certificaat archief. Sommige apparaten ondersteunen mogelijk al server push voor certificaat updates. Raadpleeg de documentatie van uw OPC UA-apparaat.
 
 ### <a name="step-3-device-secured"></a>Stap 3: het apparaat is beveiligd
 

@@ -6,10 +6,9 @@ ms.topic: article
 ms.date: 05/09/2019
 ms.author: grzuber
 ms.openlocfilehash: 344fef70522240da2236a020c96308c472c9c545
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75463113"
 ---
 # <a name="diagnose-common-code-package-errors-by-using-service-fabric"></a>Veelvoorkomende code pakket fouten vaststellen met behulp van Service Fabric
@@ -41,7 +40,7 @@ Service Fabric kan verantwoordelijk zijn voor het beëindigen van uw code pakket
 >[!NOTE]
 > Als uw proces of container wordt beëindigd met een andere afsluit code dan de codes in de volgende tabel, is Service Fabric niet verantwoordelijk voor het beëindigen ervan.
 
-Afsluitcode | Beschrijving
+Afsluitcode | Description
 --------- | -----------
 7147 | Hiermee wordt aangegeven dat het proces of de container door Service Fabric op de juiste wijze is afgesloten door een CTRL + C-signaal te verzenden.
 7148 | Geeft aan dat het proces of de container is beëindigd Service Fabric. Deze fout code geeft soms aan dat het proces of de container niet tijdig heeft gereageerd na het verzenden van een CTRL + C-signaal en dat het is beëindigd.

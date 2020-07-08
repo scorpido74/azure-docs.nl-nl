@@ -8,10 +8,9 @@ ms.topic: conceptual
 ms.service: iot-dps
 services: iot-dps
 ms.openlocfilehash: 87ffca1957d4ec449753f1966ed05cf3948f5ca2
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75453947"
 ---
 # <a name="how-to-use-custom-allocation-policies"></a>Aangepaste toewijzings beleid gebruiken
@@ -41,9 +40,9 @@ U voert de volgende stappen uit in dit artikel:
 
 ## <a name="prerequisites"></a>Vereisten
 
-De volgende vereisten gelden voor een Windows-ontwikkel omgeving. Voor Linux of macOS raadpleegt u de desbetreffende sectie in [uw ontwikkel omgeving voorbereiden](https://github.com/Azure/azure-iot-sdk-c/blob/master/doc/devbox_setup.md) in de SDK-documentatie.
+De volgende vereisten gelden voor een ontwikkelomgeving in Windows. Voor Linux of macOS raadpleegt u het desbetreffende gedeelte in [Uw ontwikkelomgeving voorbereiden](https://github.com/Azure/azure-iot-sdk-c/blob/master/doc/devbox_setup.md) in de SDK-documentatie.
 
-* [Visual Studio](https://visualstudio.microsoft.com/vs/) 2019 met de workload [' Desktop Development with C++ '](https://docs.microsoft.com/cpp/?view=vs-2019#pivot=workloads) ingeschakeld. Visual Studio 2015 en Visual Studio 2017 worden ook ondersteund.
+* [Visual Studio](https://visualstudio.microsoft.com/vs/) 2019 met de workload [Desktopontwikkeling met C++](https://docs.microsoft.com/cpp/?view=vs-2019#pivot=workloads) ingeschakeld. Visual Studio 2015 en Visual Studio 2017 worden ook ondersteund.
 
 * Meest recente versie van [Git](https://git-scm.com/download/) geïnstalleerd.
 
@@ -77,7 +76,7 @@ In deze sectie gebruikt u de Azure Cloud Shell voor het maken van een inrichting
 
 3. Gebruik de Azure Cloud Shell om de **Contoso-pop-Uptaaks te delen** IOT hub met de opdracht [AZ IOT hub Create](/cli/azure/iot/hub#az-iot-hub-create) . De IoT-hub wordt toegevoegd aan *Contoso-US-Resource-Group*.
 
-    In het volgende voor beeld wordt een IoT-hub met de naam contoso--pop-upmodules *-hub-1098* in de locatie *westus* gemaakt. U moet een unieke naam voor de hub gebruiken. Maak uw eigen achtervoegsel in de naam van de hub in plaats van **1098**. De voorbeeld code voor het aangepaste toewijzings beleid `-toasters-` vereist de naam van de hub.
+    In het volgende voor beeld wordt een IoT-hub met de naam contoso--pop-upmodules *-hub-1098* in de locatie *westus* gemaakt. U moet een unieke naam voor de hub gebruiken. Maak uw eigen achtervoegsel in de naam van de hub in plaats van **1098**. De voorbeeld code voor het aangepaste toewijzings beleid vereist `-toasters-` de naam van de hub.
 
     ```azurecli-interactive 
     az iot hub create --name contoso-toasters-hub-1098 --resource-group contoso-us-resource-group --location westus --sku S1
@@ -87,7 +86,7 @@ In deze sectie gebruikt u de Azure Cloud Shell voor het maken van een inrichting
 
 4. Gebruik de Azure Cloud Shell voor het maken van de IOT-hub van de **Contoso hitte pompen** met de opdracht [AZ IOT hub Create](/cli/azure/iot/hub#az-iot-hub-create) . Deze IoT-hub wordt ook toegevoegd aan *Contoso-US-Resource-Group*.
 
-    In het volgende voor beeld wordt een IoT-hub met de naam *Contoso-heatpumps-hub-1098* in de locatie *westus* gemaakt. U moet een unieke naam voor de hub gebruiken. Maak uw eigen achtervoegsel in de naam van de hub in plaats van **1098**. De voorbeeld code voor het aangepaste toewijzings beleid `-heatpumps-` vereist de naam van de hub.
+    In het volgende voor beeld wordt een IoT-hub met de naam *Contoso-heatpumps-hub-1098* in de locatie *westus* gemaakt. U moet een unieke naam voor de hub gebruiken. Maak uw eigen achtervoegsel in de naam van de hub in plaats van **1098**. De voorbeeld code voor het aangepaste toewijzings beleid vereist `-heatpumps-` de naam van de hub.
 
     ```azurecli-interactive 
     az iot hub create --name contoso-heatpumps-hub-1098 --resource-group contoso-us-resource-group --location westus --sku S1
@@ -99,7 +98,7 @@ In deze sectie gebruikt u de Azure Cloud Shell voor het maken van een inrichting
 
 In deze sectie maakt u een Azure-functie waarmee u uw aangepaste toewijzings beleid implementeert. Deze functie bepaalt welke divisie een apparaat moet worden geregistreerd op basis van de vraag of de registratie-ID de teken reeks **-Contoso-tstrsd-007** of **-Contoso-hpsd-088**bevat. Ook wordt de initiële status van het apparaat bepaald op basis van het feit of het apparaat een pop-upprogramma of een hitte pomp is.
 
-1. Meld u aan bij de [Azure-portal](https://portal.azure.com). Selecteer op uw start pagina **+ een resource maken**.
+1. Meld u aan bij [Azure Portal](https://portal.azure.com). Selecteer op uw start pagina **+ een resource maken**.
 
 2. Typ ' functie-app ' in het zoekvak *Zoeken in Marketplace* . Selecteer **functie-app**in de vervolg keuzelijst en selecteer vervolgens **maken**.
 
@@ -122,7 +121,7 @@ In deze sectie maakt u een Azure-functie waarmee u uw aangepaste toewijzings bel
 
 4. Selecteer op de pagina **samen vatting** de optie **maken** om de functie-app te maken. De implementatie kan enkele minuten duren. Wanneer de bewerking is voltooid, selecteert **u naar resource**.
 
-5. Selecteer **+** in het linkerdeel venster van de pagina **overzicht** van functie-app naast **functies** om een nieuwe functie toe te voegen.
+5. Selecteer in het linkerdeel venster van de pagina **overzicht** van functie-app **+** naast **functies** om een nieuwe functie toe te voegen.
 
     ![Een functie toevoegen aan de functie-app](./media/how-to-use-custom-allocation-policies/create-function.png)
 
@@ -407,13 +406,13 @@ In deze sectie bereidt u de ontwikkelings omgeving voor die wordt gebruikt voor 
 
 Deze sectie is gericht op een Windows-werk station. Zie voor een Linux-voor beeld de installatie van de virtuele machines in het [inrichten van multitenancy](how-to-provision-multitenant.md).
 
-1. Down load het [cmake build-systeem](https://cmake.org/download/).
+1. Download het [CMake-buildsysteem](https://cmake.org/download/).
 
     Het is belangrijk dat de vereisten voor Visual Studio met (Visual Studio en de workload Desktopontwikkeling met C++) op uw computer zijn geïnstalleerd **voordat** de `CMake`-installatie wordt gestart. Zodra aan de vereisten is voldaan en de download is geverifieerd, installeert u het CMake-bouwsysteem.
 
-2. Zoek de code naam voor de [nieuwste versie](https://github.com/Azure/azure-iot-sdk-c/releases/latest) van de SDK.
+2. Zoek de tagnaam voor de [nieuwste versie](https://github.com/Azure/azure-iot-sdk-c/releases/latest) van de SDK.
 
-3. Open een opdrachtprompt of Git Bash-shell. Voer de volgende opdrachten uit om de nieuwste versie van de [Azure IOT C SDK](https://github.com/Azure/azure-iot-sdk-c) github-opslag plaats te klonen. Gebruik het label dat u in de vorige stap hebt gevonden als waarde voor `-b` de para meter:
+3. Open een opdrachtprompt of Git Bash-shell. Voer de volgende opdrachten uit om de nieuwste release van de GitHub-opslagplaats van de [Azure IoT C-SDK](https://github.com/Azure/azure-iot-sdk-c) te klonen. Gebruik de tag die u in de vorige stap hebt gevonden als waarde voor de parameter `-b`:
 
     ```cmd/sh
     git clone -b <release-tag> https://github.com/Azure/azure-iot-sdk-c.git
@@ -423,7 +422,7 @@ Deze sectie is gericht op een Windows-werk station. Zie voor een Linux-voor beel
 
     Deze bewerking kan enkele minuten in beslag nemen.
 
-4. Maak de submap `cmake` in de hoofdmap van de Git-opslagplaats en navigeer naar die map. Voer de volgende opdrachten uit vanuit `azure-iot-sdk-c` de map:
+4. Maak de submap `cmake` in de hoofdmap van de Git-opslagplaats en navigeer naar die map. Voer de volgende opdrachten uit vanuit de map `azure-iot-sdk-c`:
 
     ```cmd/sh
     mkdir cmake
@@ -456,7 +455,7 @@ Deze sectie is gericht op een Windows-werk station. Zie voor een Linux-voor beel
 
 ## <a name="simulate-the-devices"></a>De apparaten simuleren
 
-In deze sectie werkt u een inrichtings voorbeeld met **de\_naam\_Prov\_dev client sample** bij die u eerder hebt ingesteld in de Azure IOT C-SDK.
+In deze sectie werkt u een inrichtings voorbeeld met de naam **Prov \_ dev \_ client \_ sample** bij die u eerder hebt ingesteld in de Azure IOT C-SDK.
 
 Met deze voorbeeld code wordt een opstart volgorde voor apparaten gesimuleerd die de inrichtings aanvraag naar uw Device Provisioning service-exemplaar verzendt. De opstart procedure zorgt ervoor dat het apparaat voor de pop-upmodus wordt herkend en toegewezen aan de IoT-hub met behulp van het aangepaste toewijzings beleid.
 
@@ -491,7 +490,7 @@ Met deze voorbeeld code wordt een opstart volgorde voor apparaten gesimuleerd di
 
 ### <a name="simulate-the-contoso-toaster-device"></a>Het contoso-pop-upapparaat simuleren
 
-1. Als u het apparaat voor de pop-uptaak wilt simuleren, gaat u naar de aanroep `prov_dev_set_symmetric_key_info()` naar in **Prov\_dev\_client\_sample. c** .
+1. Als u het apparaat voor de pop-uptaak wilt simuleren, gaat u naar de aanroep naar `prov_dev_set_symmetric_key_info()` in **Prov \_ dev \_ client \_ sample. c** .
 
     ```c
     // Set the symmetric key if using they auth type
@@ -507,7 +506,7 @@ Met deze voorbeeld code wordt een opstart volgorde voor apparaten gesimuleerd di
 
     Sla het bestand op.
 
-2. Selecteer in het menu Visual Studio de optie **fout opsporing** > **starten zonder fout opsporing** om de oplossing uit te voeren. In de prompt om het project opnieuw op te bouwen, selecteert u **Ja**om het project opnieuw te bouwen voordat u het uitvoert.
+2. Selecteer in het menu Visual Studio de optie **fout opsporing**  >  **starten zonder fout opsporing** om de oplossing uit te voeren. In de prompt om het project opnieuw op te bouwen, selecteert u **Ja**om het project opnieuw te bouwen voordat u het uitvoert.
 
     De volgende uitvoer is een voor beeld van het gesimuleerde computer apparaat dat wordt opgestart en verbinding maakt met het exemplaar van de inrichtings service dat moet worden toegewezen aan de opties voor de IoT-hub van de pop-up via het aangepaste toewijzings beleid:
 
@@ -527,7 +526,7 @@ Met deze voorbeeld code wordt een opstart volgorde voor apparaten gesimuleerd di
 
 ### <a name="simulate-the-contoso-heat-pump-device"></a>Het apparaat van de contoso hitte pomp simuleren
 
-1. Als u het apparaat voor de hitte pomp wilt simuleren, `prov_dev_set_symmetric_key_info()` werkt u de aanroep naar in **Prov\_dev\_client\_sample. c** opnieuw met de warmte pomp registratie-id en de afgeleide apparaatcode die u eerder hebt gegenereerd. De sleutel waarde **6uejA9PfkQgmYylj8Zerp3kcbeVrGZ172YLa7VSnJzg =** hieronder weer gegeven, wordt ook alleen als voor beeld gegeven.
+1. Als u het apparaat voor de hitte pomp wilt simuleren, werkt u de aanroep naar `prov_dev_set_symmetric_key_info()` in **Prov \_ dev \_ client \_ sample. c** opnieuw met de warmte pomp registratie-id en de afgeleide apparaatcode die u eerder hebt gegenereerd. De sleutel waarde **6uejA9PfkQgmYylj8Zerp3kcbeVrGZ172YLa7VSnJzg =** hieronder weer gegeven, wordt ook alleen als voor beeld gegeven.
 
     ```c
     // Set the symmetric key if using they auth type
@@ -536,7 +535,7 @@ Met deze voorbeeld code wordt een opstart volgorde voor apparaten gesimuleerd di
 
     Sla het bestand op.
 
-2. Selecteer in het menu Visual Studio de optie **fout opsporing** > **starten zonder fout opsporing** om de oplossing uit te voeren. In de prompt om het project opnieuw op te bouwen, selecteert u **Ja** om het project opnieuw samen te stellen voordat u het uitvoert.
+2. Selecteer in het menu Visual Studio de optie **fout opsporing**  >  **starten zonder fout opsporing** om de oplossing uit te voeren. In de prompt om het project opnieuw op te bouwen, selecteert u **Ja** om het project opnieuw samen te stellen voordat u het uitvoert.
 
     De volgende uitvoer is een voor beeld van het gesimuleerde hitte pomp-apparaat dat wordt opgestart en er verbinding mee wordt gemaakt met het exemplaar van de inrichtings service dat moet worden toegewezen aan de groep van de aangepaste toewijzings beleid van de contoso hitte pompen IoT-hub:
 
@@ -579,7 +578,7 @@ In de volgende stappen wordt ervan uitgegaan dat u alle resources in dit artikel
 
 De resource groep op naam verwijderen:
 
-1. Meld u aan bij de [Azure-portal](https://portal.azure.com) en selecteer **Resourcegroepen**.
+1. Meld u aan bij [Azure Portal](https://portal.azure.com) en selecteer **Resourcegroepen**.
 
 2. Typ in het tekstvak **filteren op naam...** de naam van de resource groep met uw resources, **Contoso-US-Resource-Group**. 
 

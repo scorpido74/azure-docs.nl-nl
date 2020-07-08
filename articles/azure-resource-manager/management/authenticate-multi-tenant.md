@@ -4,10 +4,9 @@ description: Hierin wordt beschreven hoe Azure Resource Manager verificatie aanv
 ms.topic: conceptual
 ms.date: 10/11/2019
 ms.openlocfilehash: 7a13ba6f6cbfc10c52484c45e4011da7a0d8ee4c
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75478823"
 ---
 # <a name="authenticate-requests-across-tenants"></a>Aanvragen verifiëren via tenants
@@ -18,10 +17,10 @@ Wanneer u een multi tenant toepassing maakt, moet u mogelijk verificatie aanvrag
 
 De aanvraag heeft de volgende waarden voor de verificatie-header:
 
-| Headernaam | Beschrijving | Voorbeeldwaarde |
+| Headernaam | Description | Voorbeeldwaarde |
 | ----------- | ----------- | ------------ |
-| Autorisatie | Primair token | &lt;Primaire token van Bearer&gt; |
-| x-MS-autorisatie-hulp | Hulp tokens | &lt;&gt;Bearer-token1, &lt;EncryptedBearer hulp token2&gt;, Bearer &lt;-token3&gt; |
+| Autorisatie | Primair token | Primaire token van Bearer &lt;&gt; |
+| x-MS-autorisatie-hulp | Hulp tokens | Bearer &lt; -token1 &gt; , EncryptedBearer &lt; hulp token2 &gt; , Bearer &lt; -token3&gt; |
 
 De hulp header kan Maxi maal drie hulp tokens bevatten. 
 
