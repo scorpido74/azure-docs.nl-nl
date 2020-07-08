@@ -10,10 +10,10 @@ ms.topic: how-to
 ms.reviewer: dineshm
 ms.custom: seo-javascript-september2019
 ms.openlocfilehash: 4b8f15831c02a74bbba85ca4327369af6a4dbb2a
-ms.sourcegitcommit: ad66392df535c370ba22d36a71e1bbc8b0eedbe3
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/16/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84808791"
 ---
 # <a name="use-azure-queue-service-to-create-and-delete-queues-from-nodejs"></a>Azure Queue-service gebruiken voor het maken en verwijderen van wacht rijen van Node.js
@@ -37,7 +37,7 @@ Maak een lege Node.js-toepassing. Zie [een Node.js web-app maken in azure app se
 ## <a name="configure-your-application-to-access-storage"></a>Uw toepassing configureren voor toegang tot opslag
 Als u Azure Storage wilt gebruiken, hebt u de Azure Storage SDK voor Node.js nodig. Dit omvat een aantal gebruiks vriendelijke bibliotheken die communiceren met de opslag REST-services.
 
-### <a name="use-node-package-manager-npm-to-obtain-the-package"></a>Gebruik node Package Manager (NPM) om het pakket te verkrijgen
+### <a name="use-node-package-manager-npm-to-obtain-the-package"></a>Node Package Manager (NPM) gebruiken om het pakket te verkrijgen
 1. Gebruik een opdracht regel interface zoals **Power shell** (Windows,) **Terminal** (Mac,) of **bash** (UNIX), navigeer naar de map waarin u uw voorbeeld toepassing hebt gemaakt.
 2. Typ **npm install azure-storage** in het opdrachtvenster. De uitvoer van de opdracht is vergelijkbaar met het volgende voorbeeld.
  
@@ -54,7 +54,7 @@ Als u Azure Storage wilt gebruiken, hebt u de Azure Storage SDK voor Node.js nod
     +-- request@2.57.0 (caseless@0.10.0, aws-sign2@0.5.0, forever-agent@0.6.1, stringstream@0.0.4, oauth-sign@0.8.0, tunnel-agent@0.4.1, isstream@0.1.2, json-stringify-safe@5.0.1, bl@0.9.4, combined-stream@1.0.5, qs@3.1.0, mime-types@2.0.14, form-data@0.2.0, http-signature@0.11.0, tough-cookie@2.0.0, hawk@2.3.1, har-validator@1.8.0)
     ```
 
-3. U kunt de **ls** -opdracht hand matig uitvoeren om te controleren of er een map met **knooppunt \_ modules** is gemaakt. In deze map vindt u het **azure-storage**-pakket. Dit pakket bevat de bibliotheken die u nodig hebt om toegang te krijgen tot opslag.
+3. U kunt handmatig de opdracht **ls** uitvoeren om te controleren of de map **node\_modules** is gemaakt. In deze map vindt u het **azure-storage**-pakket. Dit pakket bevat de bibliotheken die u nodig hebt om toegang te krijgen tot opslag.
 
 ### <a name="import-the-package"></a>Het pakket importeren
 Als u Klad blok of een andere tekst editor gebruikt, voegt u het volgende toe aan de bovenkant van het **server.js** -bestand van de toepassing waarin u opslag wilt gebruiken:
@@ -86,7 +86,7 @@ queueSvc.createQueueIfNotExists('myqueue', function(error, results, response){
 Als de wachtrij is gemaakt, `result.created` is waar. Als de wachtrij bestaat, `result.created` is onwaar.
 
 ### <a name="filters"></a>Filters
-Optionele filter bewerkingen kunnen worden toegepast op bewerkingen die worden uitgevoerd met behulp van **QueueService**. Filter bewerkingen kunnen logboek registratie, automatisch opnieuw proberen, enzovoort zijn. Filters zijn objecten die een methode implementeren met de hand tekening:
+Optionele filter bewerkingen kunnen worden toegepast op bewerkingen die worden uitgevoerd met behulp van **QueueService**. Filterbewerkingen kunnen logboekregistratie, automatische nieuwe pogingen, enzovoort bevatten. Filters zijn objecten die een methode implementeren met de handtekening:
 
 ```javascript
 function handle (requestOptions, next)

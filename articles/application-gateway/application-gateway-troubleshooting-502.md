@@ -8,10 +8,10 @@ ms.topic: troubleshooting
 ms.date: 11/16/2019
 ms.author: amsriva
 ms.openlocfilehash: 1b0abe998540c4fcc0a9b83f6d1175e18a560871
-ms.sourcegitcommit: ad66392df535c370ba22d36a71e1bbc8b0eedbe3
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/16/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84808161"
 ---
 # <a name="troubleshooting-bad-gateway-errors-in-application-gateway"></a>Fouten met ongeldige gateway oplossen in Application Gateway
@@ -87,7 +87,7 @@ De volgende tabel geeft een lijst van de waarden die zijn gekoppeld aan de stand
 | Test-URL |`http://127.0.0.1/` |URL-pad |
 | Interval |30 |Test interval in seconden |
 | Time-out |30 |Time-out van de test in seconden |
-| Drempelwaarde voor onjuiste status |3 |Aantal nieuwe pogingen testen. De back-endserver is gemarkeerd wanneer het aantal opeenvolgende test fouten de drempel waarde voor de onjuiste status bereikt. |
+| Drempelwaarde voor beschadigde status |3 |Aantal nieuwe pogingen testen. De back-endserver is gemarkeerd wanneer het aantal opeenvolgende test fouten de drempel waarde voor de onjuiste status bereikt. |
 
 ### <a name="solution"></a>Oplossing
 
@@ -114,7 +114,7 @@ De volgende aanvullende eigenschappen worden toegevoegd:
 | Pad |Het relatieve pad van de test. Het geldige pad wordt gestart vanaf/. De test wordt verzonden naar \<protocol\> :// \<host\> :\<port\>\<path\> |
 | Interval |Test interval in seconden. Dit is het tijds interval tussen twee opeenvolgende tests. |
 | Time-out |Time-out van de test (in seconden). Als er binnen deze time-outperiode geen geldig antwoord wordt ontvangen, wordt de test als mislukt gemarkeerd. |
-| Drempelwaarde voor onjuiste status |Aantal nieuwe pogingen testen. De back-endserver is gemarkeerd wanneer het aantal opeenvolgende test fouten de drempel waarde voor de onjuiste status bereikt. |
+| Drempelwaarde voor beschadigde status |Aantal nieuwe pogingen testen. De back-endserver is gemarkeerd wanneer het aantal opeenvolgende test fouten de drempel waarde voor de onjuiste status bereikt. |
 
 ### <a name="solution"></a>Oplossing
 

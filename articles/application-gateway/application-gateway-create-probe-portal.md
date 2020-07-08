@@ -9,10 +9,10 @@ ms.topic: how-to
 ms.date: 11/14/2019
 ms.author: victorh
 ms.openlocfilehash: bc599eef349c2d65483de18b0cc8c04c5c2e53ad
-ms.sourcegitcommit: ad66392df535c370ba22d36a71e1bbc8b0eedbe3
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/16/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84808221"
 ---
 # <a name="create-a-custom-probe-for-application-gateway-by-using-the-portal"></a>Een aangepaste test maken voor Application Gateway met behulp van de portal
@@ -34,7 +34,7 @@ Tests worden in een proces in twee stappen geconfigureerd via de portal. De eers
 
 ### <a name="enter-probe-properties"></a><a name="createprobe"></a>Test eigenschappen invoeren
 
-1. Meld u aan bij de [Azure-portal](https://portal.azure.com). Als u nog geen account hebt, kunt u zich aanmelden voor een [gratis proef versie van één maand](https://azure.microsoft.com/free)
+1. Meld u aan bij [Azure Portal](https://portal.azure.com). Als u nog geen account hebt, kunt u zich aanmelden voor een [gratis proef versie van één maand](https://azure.microsoft.com/free)
 
 2. Klik in het deelvenster Favorieten van Azure Portal op Alle resources. Klik in de Blade alle resources op de toepassings gateway. Als het abonnement dat u hebt geselecteerd, al verschillende resources heeft, kunt u partners.contoso.net invoeren in het vak Filteren op naam… voor eenvoudige toegang tot de toepassingsgateway.
 
@@ -83,7 +83,7 @@ Tests worden in een proces in twee stappen geconfigureerd via de portal. De eers
 
 ### <a name="create-the-probe"></a><a name="createprobe"></a>De test maken
 
-1. Meld u aan bij de [Azure-portal](https://portal.azure.com). Als u nog geen account hebt, kunt u zich aanmelden voor een [gratis proef versie van één maand](https://azure.microsoft.com/free)
+1. Meld u aan bij [Azure Portal](https://portal.azure.com). Als u nog geen account hebt, kunt u zich aanmelden voor een [gratis proef versie van één maand](https://azure.microsoft.com/free)
 
 2. Selecteer in het deelvenster Favorieten in Azure Portal **Alle resources**. Selecteer de toepassings gateway op de pagina **alle resources** . Als het abonnement dat u hebt geselecteerd, al verschillende resources heeft, kunt u partners.contoso.net invoeren in het vak Filteren op naam… voor eenvoudige toegang tot de toepassingsgateway.
 

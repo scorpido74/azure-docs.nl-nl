@@ -5,10 +5,10 @@ author: ecfan
 ms.author: estfan
 ms.date: 11/09/2018
 ms.openlocfilehash: 89c2467843d7abc7c005804fd5263fe3beb668b6
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "74793444"
 ---
 Als u nauw keuriger verbruiks kosten wilt ramen, moet u rekening houden met het mogelijke aantal berichten of gebeurtenissen dat op een wille keurige dag kan arriveren, in plaats van uw berekeningen alleen op het polling-interval te baseren. Wanneer een gebeurtenis of bericht voldoet aan de trigger criteria, proberen veel triggers elke en alle andere wacht gebeurtenissen of berichten die voldoen aan de criteria, direct te lezen. Dit gedrag houdt in dat zelfs wanneer u een langere polling-interval selecteert, de trigger wordt geactiveerd op basis van het aantal wachtende gebeurtenissen of berichten die in aanmerking komen voor het starten van werk stromen. Triggers die volgen op dit gedrag zijn onder andere Azure Service Bus en Azure Event hub.

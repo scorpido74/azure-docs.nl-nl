@@ -14,10 +14,10 @@ ms.topic: article
 ms.date: 11/04/2019
 ms.author: apimpm
 ms.openlocfilehash: 4a2038b44cf55f2a322b6bda202b8c33372f3716
-ms.sourcegitcommit: ad66392df535c370ba22d36a71e1bbc8b0eedbe3
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/16/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84808296"
 ---
 # <a name="authorize-developer-accounts-by-using-azure-active-directory-in-azure-api-management"></a>Ontwikkelaarsaccounts autoriseren met behulp van Azure Active Directory in Azure API Management
@@ -26,14 +26,14 @@ Dit artikel laat u zien hoe u toegang tot de ontwikkelaars Portal kunt inschakel
 
 ## <a name="prerequisites"></a>Vereisten
 
-- Lees de volgende snelstartgids: [Een Azure API Management-exemplaar maken](get-started-create-service-instance.md).
+- Voltooi de volgende quickstart: [Een Azure API Management-exemplaar maken](get-started-create-service-instance.md).
 - Importeer en publiceer een Azure API Management-exemplaar. Zie [importeren en publiceren](import-and-publish.md)voor meer informatie.
 
 [!INCLUDE [premium-dev-standard.md](../../includes/api-management-availability-premium-dev-standard.md)]
 
 ## <a name="authorize-developer-accounts-by-using-azure-ad"></a>Ontwikkel ontwikkelaars accounts met behulp van Azure AD
 
-1. Meld u aan bij de [Azure-portal](https://portal.azure.com). 
+1. Meld u aan bij [Azure Portal](https://portal.azure.com). 
 2. Selecteer ![pijl](./media/api-management-howto-aad/arrow.png).
 3. Typ **API** in het zoekvak.
 4. Selecteer **API Management Services**.
@@ -60,7 +60,7 @@ Dit artikel laat u zien hoe u toegang tot de ontwikkelaars Portal kunt inschakel
 
 14.  Nadat de toepassing is geregistreerd, kopieert u de **toepassings-id (client)** van de pagina **overzicht** . 
 15. Ga terug naar uw API Management-exemplaar. Plak in het venster **ID-provider toevoegen** de waarde van de **toepassing (client)** in het vak **client-id** .
-16. Ga terug naar de Azure AD-configuratie en selecteer **certificaten & geheimen** onder **beheren**. Selecteer de knop **Nieuw clientgeheim**. Voer een waarde in voor **Beschrijving**, selecteer een optie voor **Verloopt** en kies **Toevoegen**. Kopieer de waarde van het client geheim voordat u de pagina verlaat. U hebt deze nodig in de volgende stap. 
+16. Ga terug naar de Azure AD-configuratie en selecteer **certificaten & geheimen** onder **beheren**. Selecteer de knop **Nieuw clientgeheim**. Voer een waarde in voor **Beschrijving**, selecteer een optie voor **Verloopt** en kies **Toevoegen**. Kopieer de waarde van het client geheim voordat u de pagina verlaat. U hebt deze gegevens nodig in de volgende stap. 
 17. Selecteer onder **beheren**de optie **verificatie** en selecteer **id-tokens** onder **impliciete toekenning**
 18. Ga terug naar uw API Management-exemplaar en plak het geheim in het vak **client Secret** .
 

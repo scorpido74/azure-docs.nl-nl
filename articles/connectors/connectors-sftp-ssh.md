@@ -9,13 +9,13 @@ ms.topic: article
 ms.date: 06/17/2020
 tags: connectors
 ms.openlocfilehash: c2f3af4b0e2fafdd95798b412f37ed20204cd42f
-ms.sourcegitcommit: ad66392df535c370ba22d36a71e1bbc8b0eedbe3
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/16/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84807751"
 ---
-# <a name="monitor-create-and-manage-sftp-files-by-using-ssh-and-azure-logic-apps"></a>SFTP-bestanden bewaken, maken en beheren met SSH en Azure Logic Apps
+# <a name="monitor-create-and-manage-sftp-files-by-using-ssh-and-azure-logic-apps"></a>SFTP-bestanden bewaken, maken en beheren met behulp van SSH en Azure Logic Apps
 
 U kunt met behulp van het SSH-protocol [(Secure Shell)](https://www.ssh.com/ssh/protocol/) werk stromen met behulp van Azure Logic apps en de SFTP-SSH-connector maken en automatiseren om taken te automatiseren die bestanden op een [beveiligde File Transfer Protocol (SFTP)](https://www.ssh.com/ssh/sftp/) -server bewaken, maken, verzenden en ontvangen. SFTP is een netwerkprotocol dat bestandstoegang, bestandsoverdracht en bestandsbeheer mogelijk maakt via elke betrouwbare gegevensstroom.
 
@@ -108,7 +108,7 @@ Hier volgen andere belang rijke verschillen tussen de SFTP-SSH-connector en de S
 
 * De logische app waar u toegang wilt krijgen tot uw SFTP-account. [Maak een lege logische app](../logic-apps/quickstart-create-first-logic-app-workflow.md)om te beginnen met een SFTP-SSH-trigger. Als u een SFTP-SSH-actie wilt gebruiken, start u uw logische app met een andere trigger, bijvoorbeeld de trigger voor **terugkeer patroon** .
 
-## <a name="how-sftp-ssh-triggers-work"></a>Hoe SFTP-SSH-triggers werken?
+## <a name="how-sftp-ssh-triggers-work"></a>Hoe werken SFTP-SSH-triggers
 
 SFTP-SSH-triggers werken door het SFTP-bestands systeem te pollen en te zoeken naar een bestand dat sinds de laatste poll is gewijzigd. Met sommige hulpprogram ma's kunt u de tijds tempel behouden wanneer de bestanden worden gewijzigd. In deze gevallen moet u deze functie uitschakelen zodat de trigger kan werken. Hier volgen enkele algemene instellingen:
 

@@ -9,10 +9,10 @@ ms.topic: how-to
 ms.date: 04/16/2020
 ms.author: victorh
 ms.openlocfilehash: c7a0022c5cff405a993f30cdf2ab5900485c84a1
-ms.sourcegitcommit: ad66392df535c370ba22d36a71e1bbc8b0eedbe3
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/16/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84808115"
 ---
 # <a name="configure-an-application-gateway-with-an-internal-load-balancer-ilb-endpoint"></a>Een toepassings gateway met een ILB-eind punt (interne load balancer) configureren
@@ -101,11 +101,11 @@ Hiervoor gaat u als volgt te werk:
 6. Accepteer de standaard instellingen en selecteer **volgende: netwerken**.
 7. Zorg ervoor dat **myVNet** is geselecteerd voor het virtuele netwerk en dat het subnet **myBackendSubnet** is.
 8. Accepteer de resterende standaard waarden en selecteer **volgende: beheer**.
-9. Selecteer **uitschakelen** om diagnostische gegevens over opstarten uit te scha kelen.
+9. Selecteer **Uit** om diagnostische gegevens over opstarten uit te schakelen.
 10. Accepteer de resterende standaard waarden en selecteer **volgende: Geavanceerd**.
 11. Selecteer **volgende: Tags**.
 12. Selecteer **volgende: controleren + maken**.
-13. Controleer de instellingen op de pagina samen vatting en selecteer vervolgens **maken**. Het maken van de virtuele machine kan enkele minuten duren. Wacht totdat de implementatie is voltooid voordat u doorgaat met de volgende sectie.
+13. Controleer de instellingen op de overzichtspagina en selecteer **Maken**. Het maken van de virtuele machine kan enkele minuten duren. Wacht totdat de implementatie is voltooid voordat u doorgaat met de volgende sectie.
 
 ### <a name="install-iis"></a>IIS installeren
 

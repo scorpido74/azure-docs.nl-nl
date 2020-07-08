@@ -10,10 +10,10 @@ author: likebupt
 ms.author: keli19
 ms.date: 05/26/2020
 ms.openlocfilehash: 9673b3260425fd9244c635beaf77d367a14cac54
-ms.sourcegitcommit: ad66392df535c370ba22d36a71e1bbc8b0eedbe3
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/16/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84810192"
 ---
 # <a name="split-image-directory"></a>Map om afbeeldingen te splitsen
@@ -35,19 +35,19 @@ Deze module is met name handig wanneer u afbeeldings gegevens moet scheiden in t
 
 ### <a name="expected-inputs"></a>Verwachte invoer
 
-| Naam                  | Type           | Beschrijving              |
+| Naam                  | Type           | Description              |
 | --------------------- | -------------- | ------------------------ |
 | Map met invoer afbeeldingen | ImageDirectory | Te splitsen map voor afbeeldingen |
 
 ### <a name="module-parameters"></a>Module parameters
 
-| Naam                                   | Type  | Bereik | Optioneel | Beschrijving                            | Standaard |
+| Naam                                   | Type  | Bereik | Optioneel | Description                            | Standaard |
 | -------------------------------------- | ----- | ----- | -------- | -------------------------------------- | ------- |
 | Fractie van afbeeldingen in de eerste uitvoer | Float | 0-1   | Vereist | Fractie van afbeeldingen in de eerste uitvoer | 0.9     |
 
 ### <a name="outputs"></a>Uitvoerwaarden
 
-| Naam                    | Type           | Beschrijving                              |
+| Naam                    | Type           | Description                              |
 | ----------------------- | -------------- | ---------------------------------------- |
 | Uitvoer afbeelding directory1 | ImageDirectory | Afbeelding van de map met geselecteerde installatie kopieën |
 | Uitvoer afbeelding directory2 | ImageDirectory | Map met installatie kopieën die alle andere installatie kopieën bevat |

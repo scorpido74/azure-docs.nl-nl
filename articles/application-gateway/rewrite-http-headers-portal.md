@@ -9,10 +9,10 @@ ms.date: 11/13/2019
 ms.author: absha
 ms.custom: mvc
 ms.openlocfilehash: 4626d40acc9ae84e7fcc5da16add0de7ffe6ffcc
-ms.sourcegitcommit: ad66392df535c370ba22d36a71e1bbc8b0eedbe3
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/16/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84807901"
 ---
 # <a name="rewrite-http-request-and-response-headers-with-azure-application-gateway---azure-portal"></a>HTTP-aanvraag-en-antwoord headers herschrijven met Azure-toepassing gateway-Azure Portal
@@ -67,7 +67,7 @@ In dit voor beeld wijzigen we een omleidings-URL door de locatie header te hersc
 
    - Voer de naam in voor de herschrijfset in het vak **naam** .
    - Selecteer een of meer regels die worden vermeld in de lijst **gekoppelde routerings regels** . U kunt alleen regels selecteren die niet zijn gekoppeld aan andere herschrijf sets. De regels die al zijn gekoppeld aan andere herschrijf sets, worden grijs weer gegeven.
-   - Selecteer **Next**.
+   - Selecteer **Volgende**.
    
      ![Naam en koppeling toevoegen](media/rewrite-http-headers-portal/name-and-association.png)
 

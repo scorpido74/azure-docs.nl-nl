@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 06/16/2020
 ms.author: daperlov
 ms.openlocfilehash: 5e75f2203552a69e50ed16176525429c6c9d8810
-ms.sourcegitcommit: ad66392df535c370ba22d36a71e1bbc8b0eedbe3
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/16/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84807817"
 ---
 # <a name="common-data-model-format-in-azure-data-factory"></a>Gemeen schappelijke gegevens model indeling in Azure Data Factory
@@ -34,7 +34,7 @@ De onderstaande tabel geeft een lijst van de eigenschappen die worden ondersteun
 
 | Naam | Beschrijving | Vereist | Toegestane waarden | Eigenschap gegevens stroom script |
 | ---- | ----------- | -------- | -------------- | ---------------- |
-| Indeling | Indeling moet`cdm` | ja | `cdm` | formaat |
+| Indeling | Indeling moet`cdm` | ja | `cdm` | indeling |
 | Meta gegevens indeling | Waar de entiteits verwijzing naar de gegevens zich bevindt. Als u CDM versie 1,0 gebruikt, kiest u Manifest. Als u vóór 1,0 een CDM-versie gebruikt, kiest u model.jsop. | Yes | `'manifest'` of `'model'` | manifestType |
 | Hoofd locatie: container | Container naam van de map CDM | ja | Tekenreeks | System |
 | Hoofd locatie: mappad | Locatie van de hoofdmap van de map CDM | ja | Tekenreeks | folderPath |
@@ -84,7 +84,7 @@ De onderstaande tabel geeft een lijst van de eigenschappen die worden ondersteun
 
 | Naam | Beschrijving | Vereist | Toegestane waarden | Eigenschap gegevens stroom script |
 | ---- | ----------- | -------- | -------------- | ---------------- |
-| Indeling | Indeling moet`cdm` | ja | `cdm` | formaat |
+| Indeling | Indeling moet`cdm` | ja | `cdm` | indeling |
 | Hoofd locatie: container | Container naam van de map CDM | ja | Tekenreeks | System |
 | Hoofd locatie: mappad | Locatie van de hoofdmap van de map CDM | ja | Tekenreeks | folderPath |
 | Manifest bestand: pad naar entiteit | Mappad van de entiteit binnen de hoofdmap | nee | Tekenreeks | entityPath |

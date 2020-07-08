@@ -9,10 +9,10 @@ ms.date: 03/15/2019
 ms.author: cherylmc
 ms.custom: include file
 ms.openlocfilehash: 4c232e1ce183c6935d625b5bc9987a4981865ae4
-ms.sourcegitcommit: fad3aaac5af8c1b3f2ec26f75a8f06e8692c94ed
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/27/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "67175915"
 ---
 Als u werkt met het Resource Manager-implementatie model, kunt u overschakelen naar de nieuwe gateway-Sku's. Wanneer u overstapt van een verouderde gateway-SKU naar een nieuwe SKU, verwijdert u de bestaande VPN-gateway en maakt u een nieuwe VPN-gateway.

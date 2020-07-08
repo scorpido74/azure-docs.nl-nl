@@ -9,10 +9,10 @@ ms.subservice: queues
 ms.topic: how-to
 ms.reviewer: dineshm
 ms.openlocfilehash: aefd03b9d0ce726e086dff96a648e5f3a6b28e6e
-ms.sourcegitcommit: ad66392df535c370ba22d36a71e1bbc8b0eedbe3
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/16/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84809208"
 ---
 # <a name="how-to-use-queue-storage-from-php"></a>Queue Storage gebruiken met PHP
@@ -37,7 +37,7 @@ In deze hand leiding gebruikt u de functies van Queue Storage-service die lokaal
 
 ### <a name="install-via-composer"></a>Installeren via Composer
 
-1. Maak een bestand met de naam **composer.js** in de hoofdmap van het project en voeg de volgende code toe:
+1. Maak een bestand met de naam **composer.json** in de hoofdmap van uw project en voeg de volgende code toe:
    
     ```json
     {
@@ -46,8 +46,8 @@ In deze hand leiding gebruikt u de functies van Queue Storage-service die lokaal
       }
     }
     ```
-2. Down load **[Composer. Phar][composer-phar]** in de hoofdmap van het project.
-3. Open een opdracht prompt en voer de volgende opdracht uit in de project root
+2. Download **[composer.phar][composer-phar]** naar de hoofdmap van uw project.
+3. Open een opdrachtprompt en voer de volgende opdracht uit in de hoofdmap van uw project
    
     ```
     php composer.phar install

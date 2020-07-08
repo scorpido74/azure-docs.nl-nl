@@ -1,6 +1,6 @@
 ---
-title: Include-bestand
-description: Include-bestand
+title: bestand opnemen
+description: bestand opnemen
 services: virtual-machines
 author: axayjo
 ms.service: virtual-machines
@@ -9,10 +9,10 @@ ms.date: 04/25/2019
 ms.author: akjosh; cynthn
 ms.custom: include file
 ms.openlocfilehash: 40ba5a935e78cd75c4fcd7729e44f1cdf6c2859b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75772917"
 ---
 Als u problemen ondervindt tijdens het uitvoeren van bewerkingen op galerieën met gedeelde installatiekopieën, definities van installatiekopieën en versies van installatiekopieën, voert u de mislukte opdracht opnieuw uit in de foutopsporingsmodus. De foutopsporingsmodus wordt geactiveerd door de switch **debug** te geven met CLI en de switch **debug** met Power shell. Wanneer u de fout hebt gevonden, volgt u dit document om de fouten op te lossen.
@@ -24,7 +24,7 @@ Mogelijke oorzaken:
 
 *De naam van de galerie is ongeldig.*
 
-Toegestane tekens voor de naam van de galerie bestaan uit hoofd letters of kleine letters, cijfers, punten en punten. De naam van de galerie mag geen streepjes bevatten. Wijzig de naam van de galerie en probeer het opnieuw. 
+De naam van de galerie kan bestaan uit hoofdletters en kleine letters, cijfers en punten. De naam van de galerie kan geen liggende streepjes bevatten. Wijzig de naam van de galerie en probeer het opnieuw. 
 
 *De naam van de galerie is niet uniek in uw abonnement.*
 
@@ -52,7 +52,7 @@ Mogelijke oorzaken:
 
 *De naam van de installatie kopie versie is ongeldig.*
 
-Toegestane tekens voor de versie van de installatie kopie zijn getallen en punten. Getallen moeten binnen het bereik van een 32-bits geheel getal zijn. Indeling: *MajorVersion. MinorVersion. patch*. Wijzig de versie naam van de installatie kopie en probeer het opnieuw.
+Toegestane tekens voor een installatiekopieversie zijn cijfers en punten. Cijfers moeten binnen het bereik van een 32-bits geheel getal zijn. Indeling: *MajorVersion. MinorVersion. patch*. Wijzig de versie naam van de installatie kopie en probeer het opnieuw.
 
 *Een door de bron beheerde installatie kopie van waaruit de installatie kopie versie wordt gemaakt, is niet gevonden.* 
 

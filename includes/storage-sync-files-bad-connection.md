@@ -9,15 +9,15 @@ ms.date: 07/08/2018
 ms.author: rogarana
 ms.custom: include file
 ms.openlocfilehash: b2ff542d2782293e89b66e5d25cb67a9bcde6da8
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75772908"
 ---
 Deze fout kan optreden wanneer de Azure File Sync-service niet toegankelijk is vanaf de server. U kunt deze fout oplossen door de volgende stappen te doorlopen:
 
-1. Controleer of de Windows `FileSyncSvc.exe` -service niet is geblokkeerd door uw firewall.
+1. Controleer of de Windows-service `FileSyncSvc.exe` niet is geblokkeerd door uw firewall.
 2. Controleer of poort 443 is geopend voor uitgaande verbindingen met de Azure File Sync-Service. U kunt dit doen met de `Test-NetConnection` cmdlet. De URL voor de onderstaande tijdelijke aanduiding `<azure-file-sync-endpoint>` vindt u in het document [Azure File Sync-proxy en -firewallinstellingen](../articles/storage/files/storage-sync-files-firewall-and-proxy.md#firewall). 
 
     ```powershell

@@ -10,10 +10,10 @@ ms.author: tamram
 ms.reviewer: ozgun
 ms.subservice: common
 ms.openlocfilehash: 93a142ddca360b3d85519a0531a221794ad3a892
-ms.sourcegitcommit: ad66392df535c370ba22d36a71e1bbc8b0eedbe3
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/16/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84808824"
 ---
 # <a name="client-side-encryption-and-azure-key-vault-for-microsoft-azure-storage"></a>Versleuteling aan client zijde en Azure Key Vault voor Microsoft Azure Storage
@@ -34,7 +34,7 @@ Versleuteling via de envelop techniek werkt op de volgende manier:
 
 1. De Azure Storage-client bibliotheek genereert een coderings sleutel voor inhoud (CEK). Dit is een eenmalige symmetrische sleutel.
 2. Gebruikers gegevens worden versleuteld met behulp van deze CEK.
-3. De CEK wordt vervolgens gewrappt (versleuteld) met behulp van de sleutel versleutelings sleutel (KEK). De KEK wordt geïdentificeerd aan de hand van een sleutel-id en kan een asymmetrisch sleutel paar of een symmetrische sleutel zijn en kan lokaal worden beheerd of opgeslagen in azure-sleutel kluizen.
+3. De CEK wordt vervolgens verpakt (versleuteld) met behulp van de versleutelingssleutel voor sleutel (KEK). De KEK wordt geïdentificeerd aan de hand van een sleutel-id en kan een asymmetrisch sleutel paar of een symmetrische sleutel zijn en kan lokaal worden beheerd of opgeslagen in azure-sleutel kluizen.
    
     De Storage-client bibliotheek zelf heeft nooit toegang tot KEK. De bibliotheek roept de sleutel terugloop algoritme aan die wordt verschaft door Key Vault. Gebruikers kunnen ervoor kiezen om aangepaste providers te gebruiken voor sleutel terugloop/uitpakken, indien gewenst.
 

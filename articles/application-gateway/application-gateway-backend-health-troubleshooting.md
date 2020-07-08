@@ -8,10 +8,10 @@ ms.topic: troubleshooting
 ms.date: 06/09/2020
 ms.author: surmb
 ms.openlocfilehash: b5524d0612bf8f5d69979a8392f664e417c5f98d
-ms.sourcegitcommit: ad66392df535c370ba22d36a71e1bbc8b0eedbe3
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/16/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84808179"
 ---
 <a name="troubleshoot-backend-health-issues-in-application-gateway"></a>Problemen met back-endservers oplossen in Application Gateway
@@ -109,7 +109,7 @@ Voer de volgende stappen uit om de time-outwaarde te verhogen:
 
 **Oorzaak:** Als de back-end-pool van het type IP-adres/FQDN of App Service is, wordt Application Gateway omgezet naar het IP-adres van de FQDN die is ingevoerd via Domain Name System (DNS) (aangepaste of Azure-standaard) en wordt geprobeerd verbinding te maken met de server op de TCP-poort die wordt vermeld in de HTTP-instellingen. Maar als dit bericht wordt weer gegeven, wordt voorgesteld dat Application Gateway het opgegeven IP-adres van de ingevoerde FQDN niet succesvol kan oplossen.
 
-**Opgelost**
+**Oplossing:**
 
 1.  Controleer of de FQDN die is opgegeven in de back-end-groep juist is en of deze een openbaar domein is, en probeer deze vervolgens op te lossen vanaf uw lokale computer.
 

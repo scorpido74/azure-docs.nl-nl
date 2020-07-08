@@ -10,10 +10,10 @@ ms.date: 05/05/2020
 ms.author: tamram
 ms.reviewer: ozgun
 ms.openlocfilehash: 61f27d81cda2e57eb5730016dcc22252508fdd01
-ms.sourcegitcommit: ad66392df535c370ba22d36a71e1bbc8b0eedbe3
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/16/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84809010"
 ---
 # <a name="manage-anonymous-read-access-to-containers-and-blobs"></a>Anonieme leestoegang tot containers en blobs beheren
@@ -70,7 +70,7 @@ Stel vervolgens de eigenschap **PublicAccess** in op het [BlobContainerPermissio
 
 Als laatste moet u een van de volgende methoden aanroepen om de machtigingen van de container bij te werken:
 
-- [Recht](/dotnet/api/microsoft.azure.storage.blob.cloudblobcontainer.setpermissions)
+- [SetPermissions](/dotnet/api/microsoft.azure.storage.blob.cloudblobcontainer.setpermissions)
 - [SetPermissionsAsync](/dotnet/api/microsoft.azure.storage.blob.cloudblobcontainer.setpermissionsasync)
 
 In het volgende voor beeld worden de machtigingen van de container ingesteld op volledige open bare Lees toegang. Als u machtigingen wilt instellen op open bare Lees toegang voor blobs, stelt u de eigenschap **PublicAccess** in op **BlobContainerPublicAccessType. blob**. Als u alle machtigingen voor anonieme gebruikers wilt verwijderen, stelt u de eigenschap in op **BlobContainerPublicAccessType. off**.

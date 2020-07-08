@@ -9,10 +9,10 @@ ms.date: 10/30/2019
 ms.author: zivr
 ms.custom: include file
 ms.openlocfilehash: fb2eb2d237a1245627bbdb6f4f2eacbb9966a2c6
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81422022"
 ---
 Het plaatsen van Vm's in één regio vermindert de fysieke afstand tussen de exemplaren. Als u ze in één beschikbaarheids zone plaatst, worden deze ook fysiek dichter bij elkaar gebracht. Naarmate de Azure-footprint groeit, kan één beschikbaarheids zone echter meerdere fysieke data centers omvatten, wat kan leiden tot een netwerk latentie die van invloed is op uw toepassing. 
@@ -51,6 +51,6 @@ Proximity-plaatsings groepen bieden een co-locatie in hetzelfde Data Center. Omd
 ## <a name="best-practices"></a>Aanbevolen procedures 
 - Voor de laagste latentie gebruikt u proximity-plaatsings groepen samen met versneld netwerken. Zie [een virtuele Linux-machine maken met versneld netwerken](https://docs.microsoft.com/azure/virtual-network/create-vm-accelerated-networking-cli?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) of [een virtuele Windows-machine maken met versneld netwerken](/azure/virtual-network/create-vm-accelerated-networking-powershell?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)voor meer informatie.
 - Implementeer alle VM-grootten in één sjabloon. Als u wilt voor komen dat er op hardware wordt gelandd die geen ondersteuning biedt voor alle VM-Sku's en-groottes die u nodig hebt, moet u alle toepassings lagen in één sjabloon toevoegen, zodat ze allemaal tegelijk worden geïmplementeerd.
-- Als u uw implementatie met Power shell, CLI of de SDK bijwerkt, wordt er mogelijk een `OverconstrainedAllocationRequest`toewijzings fout weer geven. In dit geval moet u de toewijzing van alle bestaande Vm's stoppen of ongedaan maken en de volg orde wijzigen in het implementatie script om te beginnen met de VM-SKU/-grootten die zijn mislukt. 
+- Als u uw implementatie met Power shell, CLI of de SDK bijwerkt, wordt er mogelijk een toewijzings fout weer geven `OverconstrainedAllocationRequest` . In dit geval moet u de toewijzing van alle bestaande Vm's stoppen of ongedaan maken en de volg orde wijzigen in het implementatie script om te beginnen met de VM-SKU/-grootten die zijn mislukt. 
 - Wanneer u een bestaande plaatsings groep hergebruikt van waaruit Vm's zijn verwijderd, wacht u totdat de verwijdering volledig is voltooid voordat u virtuele machines toevoegt.
 - Als latentie uw eerste prioriteit is, plaatst u Vm's in een proximity-plaatsings groep en de volledige oplossing in een beschikbaarheids zone. Maar als tolerantie uw hoogste prioriteit is, kunt u uw instanties verspreiden over meerdere beschikbaarheids zones (een enkele proximity-plaatsings groep kan geen zones omvatten).

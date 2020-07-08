@@ -9,10 +9,10 @@ ms.date: 01/17/2019
 ms.author: avneet723
 ms.custom: include file
 ms.openlocfilehash: 1f567b3d083853f9bb342bfad462e8545caa6480
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "67176468"
 ---
 ## <a name="download-the-source-code"></a>De bron code downloaden
@@ -62,7 +62,7 @@ Als u de vereiste Azure-resources nog niet hebt gemaakt, voert u de volgende sta
      Het script voegt ook een set omgevings variabelen met een voor voegsel- **pc's** toe aan uw lokale computer. Deze omgevings variabelen bieden de Details voor externe controle om te kunnen lezen van een Azure Key Vault bron. Deze Key Vault resource is waar de configuratie waarden van de externe controle van worden gelezen.
 
      > [!TIP]
-     > Wanneer het script is voltooid, worden de omgevings variabelen ook opgeslagen in een bestand ** \<dat uw basismap\>\\heet.\\\<PC-\>oplossing naam. env**. U kunt deze gebruiken voor toekomstige oplossings versnelle implementaties. Houd er rekening mee dat omgevings variabelen die op uw lokale computer zijn ingesteld, waarden in het bestand **Local\\\\. env van de Services-scripts\\** worden overschreven wanneer u **docker-opstellen**uitvoert.
+     > Wanneer het script is voltooid, worden de omgevings variabelen ook opgeslagen in een bestand met de naam ** \<your home folder\> \\ PCs. \\ \<solution name\> env**. U kunt deze gebruiken voor toekomstige oplossings versnelle implementaties. Houd er rekening mee dat omgevings variabelen die op uw lokale computer zijn ingesteld, waarden in het bestand ** \\ \\ Local \\ . env** van de Services-scripts worden overschreven wanneer u **docker-opstellen**uitvoert.
 
 1. Sluit af vanaf uw opdracht regel omgeving.
 
@@ -74,6 +74,6 @@ Stel de omgevings variabelen voor het volgende in:
 * **PCS_AAD_APPID** -de Aad-toepassings-id
 * **PCS_AAD_APPSECRET** -het Aad-toepassings geheim
 
-Configuratie waarden worden gelezen uit deze Azure Key Vault bron. Deze omgevings variabelen kunnen worden opgeslagen in het ** \<bestand uw\>\\basismap.\\\<PC Solution\>naam. env** van de implementatie. Houd er rekening mee dat omgevings variabelen die op uw lokale computer zijn ingesteld, waarden in het bestand **Local\\\\. env van Services-scripts\\** worden vervangen wanneer u **docker-opstellen**uitvoert.
+Configuratie waarden worden gelezen uit deze Azure Key Vault bron. Deze omgevings variabelen kunnen worden opgeslagen in het bestand ** \<your home folder\> \\ . pc's \\ \<solution name\> . env** van de implementatie. Houd er rekening mee dat omgevings variabelen die op uw lokale computer zijn ingesteld, waarden in het bestand ** \\ \\ Local \\ . env van Services-scripts** worden vervangen wanneer u **docker-opstellen**uitvoert.
 
 Een deel van de configuratie die nodig is voor de micro service, wordt opgeslagen in een exemplaar van **Key Vault** dat is gemaakt tijdens de eerste implementatie. De bijbehorende variabelen in de sleutel kluis moeten zo nodig worden gewijzigd.

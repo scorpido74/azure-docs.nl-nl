@@ -14,10 +14,10 @@ ms.workload: infrastructure-services
 ms.date: 05/05/2020
 ms.author: allensu
 ms.openlocfilehash: 1c8acd2d8055359288608f7bd2e5f54f8c4f6cc3
-ms.sourcegitcommit: ad66392df535c370ba22d36a71e1bbc8b0eedbe3
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/16/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84809198"
 ---
 # <a name="azure-monitor-logs-for-public-basic-load-balancer"></a>Azure Monitor-logboeken voor openbare Basic Azure Load Balancer
@@ -35,7 +35,7 @@ U kunt verschillende typen logboeken in azure gebruiken om Basic load balancers 
 
 Activiteitenlogboekregistratie is automatisch ingeschakeld voor elke Resource Manager-resource. Schakel logboek registratie voor gebeurtenis-en status controle in om te beginnen met het verzamelen van de gegevens die beschikbaar zijn via deze logboeken. Gebruik de volgende stappen om logboek registratie in te scha kelen.
 
-Meld u aan bij de [Azure-portal](https://portal.azure.com). Als u nog geen load balancer hebt, [maakt u een Load Balancer](https://docs.microsoft.com/azure/load-balancer/quickstart-create-basic-load-balancer-portal) voordat u doorgaat.
+Meld u aan bij [Azure Portal](https://portal.azure.com). Als u nog geen load balancer hebt, [maakt u een Load Balancer](https://docs.microsoft.com/azure/load-balancer/quickstart-create-basic-load-balancer-portal) voordat u doorgaat.
 
 1. Klik in de portal op **resource groepen**.
 2. Selecteer **\<resource-group-name>** waar uw Load Balancer is.

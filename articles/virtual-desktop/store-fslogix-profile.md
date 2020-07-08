@@ -9,17 +9,17 @@ ms.date: 10/14/2019
 ms.author: helohr
 manager: lizross
 ms.openlocfilehash: 3dfa5d6bc5707679bbe5dada9f28046202e7aae5
-ms.sourcegitcommit: ad66392df535c370ba22d36a71e1bbc8b0eedbe3
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/16/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84808519"
 ---
 # <a name="storage-options-for-fslogix-profile-containers-in-windows-virtual-desktop"></a>Opslag opties voor FSLogix-profiel containers in virtueel bureau blad van Windows
 
 Azure biedt meerdere opslag oplossingen die u kunt gebruiken om uw FSLogix-profiel container op te slaan. In dit artikel worden opslag oplossingen vergeleken die door Azure worden geboden voor FSLogix-gebruikers profiel containers voor Windows-virtueel bureau blad. We raden u aan om FSLogix-profiel containers op Azure Files voor de meeste van onze klanten op te slaan. 
 
-Windows Virtual Desktop biedt FSLogix-profiel containers als de aanbevolen gebruikers profiel oplossing. FSLogix is ontworpen om profielen te roamen in omgevingen met externe computers, zoals Windows virtueel bureau blad. Bij het aanmelden wordt deze container dynamisch gekoppeld aan de computer omgeving met behulp van een systeem eigen ondersteunde virtuele harde schijf (VHD) en een virtuele harde schijf (VHDX) van Hyper-V. Het gebruikers profiel is onmiddellijk beschikbaar en wordt in het systeem weer gegeven op dezelfde manier als een systeem eigen gebruikers profiel.
+Windows Virtual Desktop biedt FSLogix-profiel containers als de aanbevolen gebruikers profiel oplossing. FSLogix is ontworpen om profielen te roamen in omgevingen met externe computers, zoals Windows Virtual Desktop. Bij het aanmelden wordt deze container dynamisch gekoppeld aan de computer omgeving met behulp van een systeem eigen ondersteunde virtuele harde schijf (VHD) en een virtuele harde schijf (VHDX) van Hyper-V. Het gebruikers profiel is onmiddellijk beschikbaar en wordt in het systeem weer gegeven op dezelfde manier als een systeem eigen gebruikers profiel.
 
 De volgende tabel bevat een vergelijking van de opslag oplossingen Azure Storage aanbiedingen voor FSLogix profiel container gebruikers profielen van Windows-virtueel bureau blad.
 
