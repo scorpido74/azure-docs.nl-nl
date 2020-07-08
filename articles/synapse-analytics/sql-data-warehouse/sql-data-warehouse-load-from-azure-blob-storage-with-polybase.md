@@ -12,17 +12,16 @@ ms.author: kevin
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
 ms.openlocfilehash: 90da35b76bbe6ec933b3a1fd200f0f5bad643759
-ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/23/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85213309"
 ---
 # <a name="load-contoso-retail-data-to-synapse-sql"></a>Retail-gegevens van Contoso laden in Synapse SQL 
 
 In deze zelf studie leert u hoe u poly base-en T-SQL-opdrachten gebruikt om twee tabellen uit de Retail gegevens van Contoso te laden in een Synapse SQL-Data Warehouse.
 
-In deze zelf studie doet u het volgende:
+In deze zelfstudie gaat u:
 
 1. Poly base configureren om te laden vanuit Azure Blob-opslag
 2. Open bare gegevens in uw data base laden

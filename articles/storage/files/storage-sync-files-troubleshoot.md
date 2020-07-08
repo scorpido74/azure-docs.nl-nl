@@ -8,14 +8,13 @@ ms.date: 6/12/2020
 ms.author: jeffpatt
 ms.subservice: files
 ms.openlocfilehash: ec7469210bcfae53407a157a325c749aee2c2b08
-ms.sourcegitcommit: 374e47efb65f0ae510ad6c24a82e8abb5b57029e
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85512049"
 ---
 # <a name="troubleshoot-azure-file-sync"></a>Problemen met Azure Files Sync oplossen
-Gebruik Azure File Sync om de bestands shares van uw organisatie in Azure Files te centraliseren, terwijl u de flexibiliteit, prestaties en compatibiliteit van een on-premises Bestands server bijhoudt. Door Azure File Sync wordt Windows Server getransformeerd in een snelle cache van uw Azure-bestandsshare. U kunt elk protocol dat beschikbaar is op Windows Server gebruiken voor toegang tot uw gegevens lokaal, zoals SMB, NFS en FTPS. U kunt zoveel caches hebben als u nodig hebt in de hele wereld.
+Gebruik Azure File Sync om de bestands shares van uw organisatie in Azure Files te centraliseren, terwijl u de flexibiliteit, prestaties en compatibiliteit van een on-premises Bestands server bijhoudt. Door Azure File Sync wordt Windows Server getransformeerd in een snelle cache van uw Azure-bestandsshare. U kunt elk protocol dat beschikbaar is in Windows Server, inclusief SMB, NFS en FTPS, gebruiken voor lokale toegang tot uw gegevens. U kunt zoveel caches hebben als u nodig hebt in de hele wereld.
 
 Dit artikel is bedoeld om u te helpen bij het oplossen van problemen die kunnen optreden met uw Azure File Sync-implementatie. We beschrijven ook hoe belang rijke logboeken van het systeem moeten worden verzameld als een grondig onderzoek van het probleem is vereist. Als u het antwoord op uw vraag niet ziet, kunt u contact met ons opnemen via de volgende kanalen (in de volg orde waarin ze worden doorzocht):
 
@@ -204,7 +203,7 @@ Op de server die wordt weer gegeven als ' offline weer geven ' in de portal, kij
     ```
 <a id="endpoint-noactivity-sync"></a>**Server-eind punt heeft de status ' geen activiteit ' en de status van de server op de Blade geregistreerde servers is ' online '**  
 
-De status van het server eindpunt van ' geen activiteit ' betekent dat het server-eind punt in de afgelopen twee uur geen synchronisatie activiteiten heeft geregistreerd.
+Als een servereindpunt de status 'Geen activiteit' heeft, betekent dit dat het servereindpunt de afgelopen twee uur geen synchronisatieactiviteit heeft gelogd.
 
 Zie [Hoe kan ik de voortgang van een huidige synchronisatie sessie controleren](#how-do-i-monitor-the-progress-of-a-current-sync-session)als u de huidige synchronisatie activiteit op een server wilt controleren.
 
@@ -259,10 +258,10 @@ Soms mislukken synchronisatie sessies volledig of hebben ze een PerItemErrorCoun
 
 ### <a name="how-do-i-monitor-the-progress-of-a-current-sync-session"></a>Hoe controleer ik de voortgang van een synchronisatiesessie?
 # <a name="portal"></a>[Portal](#tab/portal1)
-Ga in de synchronisatie groep naar het server eindpunt in kwestie en Bekijk de sectie synchronisatie activiteit om het aantal bestanden te zien dat in de huidige synchronisatie sessie is geüpload of gedownload. Houd er rekening mee dat deze status ongeveer 5 minuten wordt uitgesteld. als uw synchronisatie sessie binnen deze periode klein genoeg is om te worden voltooid, wordt deze mogelijk niet gerapporteerd in de portal. 
+Ga in de synchronisatie groep naar het server eindpunt in kwestie en Bekijk de sectie synchronisatie activiteit om het aantal bestanden te zien dat in de huidige synchronisatie sessie is geüpload of gedownload. Houd er rekening mee dat deze status ongeveer 5 minuten achterloopt, en dat als uw synchronisatiesessie klein genoeg is om binnen deze periode te worden voltooid, deze mogelijk niet in de portal wordt gerapporteerd. 
 
 # <a name="server"></a>[Server](#tab/server)
-Bekijk de meest recente 9302-gebeurtenis in het logboek van de telemetrie op de server (Ga in het Logboeken naar toepassingen en services Logs\Microsoft\FileSync\Agent\Telemetry). Deze gebeurtenis geeft de status van de huidige synchronisatie sessie aan. TotalItemCount geeft aan hoeveel bestanden moeten worden gesynchroniseerd, AppliedItemCount het aantal bestanden dat tot nu toe is gesynchroniseerd en PerItemErrorCount het aantal bestanden dat niet kan worden gesynchroniseerd (zie hieronder voor meer informatie over hoe u dit kunt doen).
+Bekijk de meest recente 9302-gebeurtenis in het logboek van de telemetrie op de server (Ga in het Logboeken naar toepassingen en services Logs\Microsoft\FileSync\Agent\Telemetry). Deze gebeurtenis geeft de status van de huidige synchronisatiesessie aan. TotalItemCount geeft aan hoeveel bestanden moeten worden gesynchroniseerd, AppliedItemCount het aantal bestanden dat tot nu toe is gesynchroniseerd en PerItemErrorCount het aantal bestanden dat niet kan worden gesynchroniseerd (zie hieronder voor meer informatie over hoe u dit kunt doen).
 
 ```
 Replica Sync Progress. 
@@ -1284,7 +1283,7 @@ Voor Agent versie V10 toevoegen en eerder:
 5. Reproduceer het probleem. Wanneer u klaar bent, voert u **D**in.
 6. Een zip-bestand dat Logboeken en tracerings bestanden bevat, wordt opgeslagen in de uitvoermap die u hebt opgegeven.
 
-## <a name="see-also"></a>Zie ook
+## <a name="see-also"></a>Zie tevens
 - [Azure File Sync bewaken](storage-sync-files-monitoring.md)
 - [Veelgestelde vragen over Azure Files](storage-files-faq.md)
 - [Problemen met Azure Files in Windows oplossen](storage-troubleshoot-windows-file-connection-problems.md)

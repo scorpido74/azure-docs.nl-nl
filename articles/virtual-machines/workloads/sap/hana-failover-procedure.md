@@ -14,10 +14,9 @@ ms.date: 04/22/2019
 ms.author: saghorpa
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: 6454903a7c37da30e317e29c126109b39b14efbc
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/19/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "83660575"
 ---
 # <a name="disaster-recovery-failover-procedure"></a>Procedure bij failover van het noodherstel
@@ -56,7 +55,7 @@ Als u meerdere exemplaren van SAP HANA wilt testen, voert u het script meerdere 
 
       In de uitvoer moet het **hdbdaemon** -proces worden weer gegeven met de status gestopt en zijn er geen andere Hana-processen in de actieve of gestarte toestand.
 1. Bepaal op welke naam van de moment opname of SAP HANA back-upserver de nood herstel site moet worden hersteld. In het geval van echt nood herstel cases is deze moment opname doorgaans de laatste moment opname. Als u verloren gegevens wilt herstellen, kiest u een eerdere moment opname.
-1. Neem contact op met de ondersteuning van Azure via een ondersteunings aanvraag met hoge prioriteit. Vraag naar het herstellen van die moment opname met de naam en datum van de moment opname of de HANA-back-upid op de DR-site. De standaard instelling is dat de bewerkingen kant alleen het/Hana/data-volume herstelt. Als u de/Hana/logbackups-volumes ook wilt hebben, moet u deze specifiek aangeven. *Herstel het/Hana/Shared-volume niet.* Kies in plaats daarvan specifieke bestanden als Global. ini uit de map **. snap shot** en de bijbehorende submappen nadat u het/Hana/Shared-volume voor PRD opnieuw hebt gekoppeld. 
+1. Neem contact op met de ondersteuning van Azure via een ondersteunings aanvraag met hoge prioriteit. Vraag naar het herstellen van die moment opname met de naam en datum van de moment opname of de HANA-back-upid op de DR-site. De standaard instelling is dat de bewerkingen kant alleen het/Hana/data-volume herstelt. Als u de/Hana/logbackups-volumes ook wilt hebben, moet u deze specifiek aangeven. *Herstel het/Hana/Shared-volume niet.* Kies in plaats daarvan specifieke bestanden, zoals global.ini van de map **. snap shot** en de bijbehorende submappen, nadat u het/Hana/Shared-volume voor PRD opnieuw hebt gekoppeld. 
 
    Aan de kant van de bewerkingen worden de volgende stappen uitgevoerd:
 

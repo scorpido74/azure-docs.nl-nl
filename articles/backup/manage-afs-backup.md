@@ -4,10 +4,9 @@ description: In dit artikel worden algemene taken beschreven voor het beheren en
 ms.topic: conceptual
 ms.date: 01/07/2020
 ms.openlocfilehash: cb764fa441c063328dc350cf26f42c5bc7a0ca99
-ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/11/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84712085"
 ---
 # <a name="manage-azure-file-share-backups"></a>Back-ups van Azure-bestandsshares beheren

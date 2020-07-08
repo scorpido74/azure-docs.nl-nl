@@ -7,18 +7,20 @@ ms.reviewer: gamal
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 11/01/2019
-ms.openlocfilehash: 0a0947a5e2b57f728023b0f923428814b3e439ec
-ms.sourcegitcommit: 1895459d1c8a592f03326fcb037007b86e2fd22f
-ms.translationtype: MT
+ms.openlocfilehash: e63c3f329cb9c1fd5ca91274540f5145c3ad098a
+ms.sourcegitcommit: dee7b84104741ddf74b660c3c0a291adf11ed349
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/01/2020
-ms.locfileid: "82626680"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85921550"
 ---
 # <a name="transformation-functions-in-wrangling-data-flow"></a>Transformatie functies in wrangling-gegevens stroom
 
 [!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
 
 Met Wrangling data flow in Azure Data Factory kunt u met code gratis flexibele gegevens voorbereiding en Wrangling op Cloud schaal uitvoeren. De Wrangling-gegevens stroom is geïntegreerd met [Power query online](https://docs.microsoft.com/powerquery-m/power-query-m-reference) en maakt Power query M-functies beschikbaar voor gegevens Wrangling via Spark-uitvoering. 
+
+> [!NOTE]
+> Wrangling-gegevens stroom is momenteel beschik bare in open bare preview
 
 Momenteel niet alle Power Query M-functies worden ondersteund voor gegevens wrangling ondanks dat deze beschikbaar zijn tijdens het ontwerpen. Tijdens het maken van uw wrangling-gegevens stromen wordt u met het volgende fout bericht gevraagd als een functie niet wordt ondersteund:
 
@@ -39,7 +41,7 @@ Gebruik M Function [Table. SelectRows](https://docs.microsoft.com/powerquery-m/t
 
 * Gelijkheid en ongelijkheid
 * Cijfers, tekst en datum vergelijkingen (maar geen DateTime)
-* Numerieke gegevens, zoals [Number. isEven](https://docs.microsoft.com/powerquery-m/number-iseven)/[oneven](https://docs.microsoft.com/powerquery-m/number-iseven)
+* Numerieke gegevens, zoals [Number. isEven](https://docs.microsoft.com/powerquery-m/number-iseven) / [oneven](https://docs.microsoft.com/powerquery-m/number-iseven)
 * Tekst insluiting met behulp van [tekst. contains](https://docs.microsoft.com/powerquery-m/text-contains), [Text. StartsWith](https://docs.microsoft.com/powerquery-m/text-startswith)of [Text. EndsWith](https://docs.microsoft.com/powerquery-m/text-endswith)
 * Datumbereiken, inclusief alle ' IsIn' [date-functies](https://docs.microsoft.com/powerquery-m/date-functions)) 
 * Combi Naties van deze met en, of of geen voor waarden
@@ -55,7 +57,7 @@ Met de volgende functies worden kolommen toegevoegd of omgezet: [Table. AddColum
 * De meeste standaard-, weten schappelijke en trigonometrische numerieke functies (alle functies onder [bewerkingen](https://docs.microsoft.com/powerquery-m/number-functions#operations), [afronding](https://docs.microsoft.com/powerquery-m/number-functions#rounding)en [trigonometrie](https://docs.microsoft.com/powerquery-m/number-functions#trigonometry) , *behalve* aantal. faculteit, aantal permutaties en aantal combi Naties)
 * Vervangen (vervanging[. ReplaceText](https://docs.microsoft.com/powerquery-m/replacer-replacetext), vervanging [. ReplaceValue](https://docs.microsoft.com/powerquery-m/replacer-replacevalue), [Text. Replace](https://docs.microsoft.com/powerquery-m/text-replace), [Text. Remove](https://docs.microsoft.com/powerquery-m/text-remove))
 * Positie tekst extractie ([tekst. PositionOf](https://docs.microsoft.com/powerquery-m/text-positionof), [tekst. lengte](https://docs.microsoft.com/powerquery-m/text-length), [tekst. begin](https://docs.microsoft.com/powerquery-m/text-start), [tekst. End](https://docs.microsoft.com/powerquery-m/text-end), [tekst. Midden](https://docs.microsoft.com/powerquery-m/text-middle), [tekst. ReplaceRange](https://docs.microsoft.com/powerquery-m/text-replacerange), [Text. RemoveRange](https://docs.microsoft.com/powerquery-m/text-removerange))
-* Basic-tekst opmaak[(tekst. Lower](https://docs.microsoft.com/powerquery-m/text-lower), [tekst. Upper](https://docs.microsoft.com/powerquery-m/text-upper), [tekst.](https://docs.microsoft.com/powerquery-m/text-trim)/[begin](https://docs.microsoft.com/powerquery-m/text-trimstart)/[datum](https://docs.microsoft.com/powerquery-m/text-trimend)bijsnijden, [tekst. PadStart](https://docs.microsoft.com/powerquery-m/text-padstart)/[einde](https://docs.microsoft.com/powerquery-m/text-padend), [tekst. omgekeerde](https://docs.microsoft.com/powerquery-m/text-reverse))
+* Basic-tekst opmaak ([tekst. Lower](https://docs.microsoft.com/powerquery-m/text-lower), [tekst. Upper](https://docs.microsoft.com/powerquery-m/text-upper), [tekst. begin datum bijsnijden](https://docs.microsoft.com/powerquery-m/text-trim) / [Start](https://docs.microsoft.com/powerquery-m/text-trimstart) / [End](https://docs.microsoft.com/powerquery-m/text-trimend), [tekst. PadStart](https://docs.microsoft.com/powerquery-m/text-padstart) / [einde](https://docs.microsoft.com/powerquery-m/text-padend), [tekst. omgekeerde](https://docs.microsoft.com/powerquery-m/text-reverse))
 * Datum-en tijd functies ([datum. dag](https://docs.microsoft.com/powerquery-m/date-day), [datum. maand](https://docs.microsoft.com/powerquery-m/date-month), [datum. jaar](https://docs.microsoft.com/powerquery-m/date-year) [. uur](https://docs.microsoft.com/powerquery-m/time-hour), [tijd. minuut](https://docs.microsoft.com/powerquery-m/time-minute), [tijd. seconde](https://docs.microsoft.com/powerquery-m/time-second), [datum. DayOfWeek](https://docs.microsoft.com/powerquery-m/date-dayofweek), [datum. DayOfYear](https://docs.microsoft.com/powerquery-m/date-dayofyear), [date. DaysInMonth](https://docs.microsoft.com/powerquery-m/date-daysinmonth))
 * Als-expressies (maar vertakkingen moeten overeenkomende typen hebben)
 * Rij filters als logische kolom
@@ -87,7 +89,7 @@ Hoog behoud en verwijderen, bereik (overeenkomende M-functies, alleen ondersteun
 
 | Functie | Status |
 | -- | -- |
-| Table.PromoteHeaders | Niet ondersteund. U kunt hetzelfde resultaat bereiken door in de gegevensset ' eerste rij als koptekst ' in te stellen. |
+| Table.PromoteHeaders | Wordt niet ondersteund. U kunt hetzelfde resultaat bereiken door in de gegevensset ' eerste rij als koptekst ' in te stellen. |
 | Table.CombineColumns | Dit is een veelvoorkomend scenario dat niet rechtstreeks wordt ondersteund, maar kan worden bereikt door een nieuwe kolom toe te voegen waarmee twee opgegeven kolommen worden samengevoegd.  Bijvoorbeeld Table. AddColumn (RemoveEmailColumn, "name", elk [FirstName] & "" & [LastName]) |
 | Table.TransformColumnTypes | Dit wordt in de meeste gevallen ondersteund. De volgende scenario's worden niet ondersteund: het transformeren van de teken reeks naar het valuta type, het transformeren van de teken reeks naar het type tijd, het transformeren van de teken reeks naar het type percentage. |
 | Table.NestedJoin | Als u een koppeling uitvoert, treedt er een validatie fout op. De kolommen moeten worden uitgevouwen om te kunnen werken. |

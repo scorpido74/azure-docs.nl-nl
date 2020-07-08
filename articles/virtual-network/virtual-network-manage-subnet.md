@@ -14,10 +14,9 @@ ms.workload: infrastructure-services
 ms.date: 03/20/2020
 ms.author: kumud
 ms.openlocfilehash: b43fb027116d746a60c9cd4e690e63181fff4ade
-ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/11/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84711014"
 ---
 # <a name="add-change-or-delete-a-virtual-network-subnet"></a>Een subnet van een virtueel netwerk maken, wijzigen of verwijderen
@@ -59,7 +58,7 @@ Het account waarmee u zich aanmeldt bij of verbinding maakt met Azure met, moet 
 
 5. Selecteer **OK**om het subnet toe te voegen aan het virtuele netwerk dat u hebt geselecteerd.
 
-### <a name="commands"></a>Opdracht
+### <a name="commands"></a>Opdrachten
 
 | Hulpprogramma | Opdracht |
 | ---- | ------- |
@@ -88,7 +87,7 @@ Het account waarmee u zich aanmeldt bij of verbinding maakt met Azure met, moet 
 
 6. Selecteer **Opslaan**.
 
-### <a name="commands"></a>Opdracht
+### <a name="commands"></a>Opdrachten
 
 | Hulpprogramma | Opdracht |
 | ---- | ------- |
@@ -109,7 +108,7 @@ U kunt een subnet alleen verwijderen als er geen resources in het subnet aanwezi
 
 5. Selecteer **verwijderen**en selecteer vervolgens **Ja** in het bevestigings venster.
 
-### <a name="commands"></a>Opdracht
+### <a name="commands"></a>Opdrachten
 
 | Hulpprogramma | Opdracht |
 | ---- | ------- |

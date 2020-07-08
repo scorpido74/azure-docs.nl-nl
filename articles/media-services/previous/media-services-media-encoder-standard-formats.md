@@ -15,10 +15,9 @@ ms.date: 03/18/2019
 ms.author: juliako
 ms.reviewer: anilmur
 ms.openlocfilehash: e2ccce13e4ef09426d0f3a02dcbce2f330b0ead8
-ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/11/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84712289"
 ---
 # <a name="media-encoder-standard-formats-and-codecs"></a>Media Encoder Standard Formats and Codecs (Indelingen en codecs voor Media Encoder Standard)
@@ -112,7 +111,7 @@ De volgende tabel geeft een lijst van de codecs en bestands indelingen die worde
 ## <a name="provide-feedback"></a>Feedback geven
 [!INCLUDE [media-services-user-voice-include](../../../includes/media-services-user-voice-include.md)]
 
-## <a name="see-also"></a>Zie ook
+## <a name="see-also"></a>Zie tevens
 [Inhoud op aanvraag coderen met Azure Media Services](media-services-encode-asset.md)
 
 [Coderen met Media Encoder Standard](media-services-dotnet-encode-with-media-encoder-standard.md)

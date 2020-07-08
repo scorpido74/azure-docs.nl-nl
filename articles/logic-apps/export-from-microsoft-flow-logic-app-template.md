@@ -7,10 +7,9 @@ ms.reviewer: jonfan, logicappspm
 ms.topic: conceptual
 ms.date: 06/03/2020
 ms.openlocfilehash: b8bf409d759b74e6a5ef0d840aebbe807a04448a
-ms.sourcegitcommit: 58ff2addf1ffa32d529ee9661bbef8fbae3cddec
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/03/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84324833"
 ---
 # <a name="export-flows-from-power-automate-and-deploy-to-azure-logic-apps"></a>Stromen exporteren vanuit Power Automate en implementeren in Azure Logic Apps
@@ -120,13 +119,13 @@ Als u Visual Studio hebt ingesteld met de [vereisten](../logic-apps/quickstart-c
 
    ![Een Azure-resourcegroepproject maken](./media/export-from-microsoft-flow-logic-app-template/create-azure-resource-group-project.png)
 
-1. Nadat de oplossing is gemaakt, opent u in Solution Explorer het bestand **LogicApp. json** als het bestand nog niet is geopend.
+1. Nadat de oplossing is gemaakt, opent u in Solution Explorer de **LogicApp.jsin** het bestand als het bestand nog niet is geopend.
 
-1. Kopieer de inhoud van de geëxporteerde sjabloon en vervang de inhoud in het bestand **LogicApp. json** .
+1. Kopieer de inhoud van de geëxporteerde sjabloon en vervang de inhoud in de **LogicApp.js** in het bestand.
 
 1. Voordat u uw logische app implementeert, moet u de volgende stappen uitvoeren om nieuwe verbindingen te autoriseren:
 
-   1. Open het **LogicApp. json** -snelmenu en selecteer vervolgens **openen met Logic app Designer**.
+   1. Open de **LogicApp.jsin** het snelmenu en selecteer vervolgens **openen met Logic app Designer**.
 
       ![Sjabloon openen met Logic app Designer](./media/export-from-microsoft-flow-logic-app-template/open-logic-app-designer.png)
 

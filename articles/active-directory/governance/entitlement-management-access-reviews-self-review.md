@@ -17,10 +17,9 @@ ms.author: ajburnle
 ms.reviewer: ''
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 6f8037ef1324cb10777511c4c363a62a2edab438
-ms.sourcegitcommit: 971a3a63cf7da95f19808964ea9a2ccb60990f64
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/19/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85078426"
 ---
 # <a name="self-review-of-an-access-package-in-azure-ad-entitlement-management"></a>Zelf beoordeling van een toegangs pakket in het beheer van rechten van Azure AD
@@ -56,7 +55,7 @@ Zodra u de toegangs beoordeling hebt geopend, ziet u uw toegang. Gebruik de volg
 
 1.  Als u op **Ja**hebt geklikt, moet u mogelijk een instructie voor de motivering in het vak **reden** toevoegen.
 
-1.  Klik op **verzenden**.
+1.  Klik op **Submit**
 
 U kunt teruggaan naar de beoordeling als u van gedachten verandert en besluit uw antwoord te wijzigen voor het einde van de beoordeling.
 

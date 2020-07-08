@@ -15,10 +15,9 @@ ms.workload: na
 ms.date: 05/19/2020
 ms.author: yelevin
 ms.openlocfilehash: ded28ef872bbc3147793ea3d68c94f8dde35f74e
-ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/20/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "83674173"
 ---
 # <a name="set-up-azure-sentinel-customer-managed-key"></a>Door de klant beheerde sleutel met Azure-Sentinel instellen
@@ -129,8 +128,8 @@ U kunt de vorige versie van de sleutel na 24 uur uitschakelen, of nadat de Azure
 Als u dezelfde sleutel gebruikt in azure Sentinel en in Log Analytics, is het nood zakelijk om een sleutel rotatie uit te voeren. u moet de cluster bron in Log Analytics expliciet bijwerken met de nieuwe Azure Key Vault sleutel versie. Zie [Azure monitor CMK Rotation](../azure-monitor/platform/customer-managed-keys.md#cmk-kek-rotation)(Engelstalig) voor meer informatie.
 
 ## <a name="next-steps"></a>Volgende stappen
-In dit document hebt u geleerd hoe u een door de klant beheerde sleutel instelt in azure Sentinel. Raadpleeg de volgende artikelen voor meer informatie over Azure Sentinel:
-- Meer informatie over hoe u [inzicht krijgt in uw gegevens en mogelijke bedreigingen](quickstart-get-visibility.md).
-- Ga aan de slag [met het detecteren van bedreigingen met Azure Sentinel](tutorial-detect-threats.md).
+In dit document hebt u geleerd hoe u een door de klant beheerde sleutel instelt in azure Sentinel. Zie de volgende artikelen voor meer informatie over Azure Sentinel:
+- Meer informatie over het [verkrijgen van inzicht in uw gegevens en mogelijke bedreigingen](quickstart-get-visibility.md).
+- Ga aan de slag met [het detecteren van bedreigingen met Azure Sentinel](tutorial-detect-threats.md).
 - [Gebruik werkmappen](tutorial-monitor-your-data.md) om uw gegevens te bewaken.
 

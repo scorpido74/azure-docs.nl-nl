@@ -16,10 +16,9 @@ ms.author: barclayn
 ms.reviewer: mwahl
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 33d946c47a17bb537c7644937547ad479b4637e5
-ms.sourcegitcommit: 971a3a63cf7da95f19808964ea9a2ccb60990f64
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/19/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85077928"
 ---
 # <a name="review-access-for-yourself-to-groups-or-applications-in-azure-ad-access-reviews"></a>Toegang tot groepen of toepassingen in azure AD-toegangs beoordelingen bekijken
@@ -73,7 +72,7 @@ Zodra u de toegangs beoordeling hebt geopend, kunt u uw toegang zien.
 
     ![Voltooide toegangs beoordeling waarin u wordt gevraagd of u nog steeds toegang tot een groep nodig hebt](./media/review-your-access/perform-access-review-submit.png)
 
-1. Klik op **verzenden**.
+1. Klik op **Submit**
 
     Uw selectie wordt verzonden en u keert terug naar de portal mijn apps.
 
@@ -154,7 +153,7 @@ U kunt de openstaande toegangs beoordelingen ook weer geven met behulp van uw br
 
     ![Voltooide toegangs beoordeling waarin u wordt gevraagd of u nog steeds toegang tot een groep nodig hebt](./media/review-your-access/review-access-yes-preview.png)
 
-1. Klik op **verzenden**.
+1. Klik op **Submit**
 
     Uw selectie wordt verzonden en u keert terug naar de pagina Mijn toegang.
 

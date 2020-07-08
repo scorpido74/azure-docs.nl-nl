@@ -10,10 +10,9 @@ ms.workload: infrastructure
 ms.date: 10/14/2019
 ms.author: haroldw
 ms.openlocfilehash: 51abfd1cbb438d0987554040867625f7fb71630b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81758229"
 ---
 # <a name="deploy-openshift-container-platform-or-okd-in-azure-stack"></a>Open Shift container platform of OKD implementeren in Azure Stack
@@ -28,7 +27,7 @@ U kunt een van de volgende methoden gebruiken om open Shift container platform o
 - U kunt ook een bestaande [Resource Manager-sjabloon](https://github.com/Microsoft/openshift-container-platform/) gebruiken die de implementatie van het open Shift container platform-cluster vereenvoudigt.
 - U kunt ook een bestaande [Resource Manager-sjabloon](https://github.com/Microsoft/openshift-origin) gebruiken die de implementatie van het OKD-cluster vereenvoudigt.
 
-Als u de Resource Manager-sjabloon gebruikt, selecteert u de juiste vertakking (azurestack-release-3. x). De sjablonen voor Azure werken niet omdat de API-versies verschillen van Azure en Azure Stack. De verwijzing naar de RHEL-afbeelding is momenteel vastgelegd als een variabele in het bestand azuredeploy. json en moet worden gewijzigd om overeen te komen met uw installatie kopie.
+Als u de Resource Manager-sjabloon gebruikt, selecteert u de juiste vertakking (azurestack-release-3. x). De sjablonen voor Azure werken niet omdat de API-versies verschillen van Azure en Azure Stack. De verwijzing naar de RHEL-afbeelding is momenteel vastgelegd als een variabele in de azuredeploy.jsin het bestand en moet worden gewijzigd om overeen te komen met uw installatie kopie.
 
 ```json
 "imageReference": {
@@ -40,7 +39,7 @@ Als u de Resource Manager-sjabloon gebruikt, selecteert u de juiste vertakking (
 ```
 
 Voor alle opties is een Red Hat-abonnement vereist. Tijdens de implementatie wordt het Red Hat Enterprise Linux-exemplaar geregistreerd bij het Red Hat-abonnement en gekoppeld aan de groeps-ID die de rechten voor open Shift container platform bevat.
-Zorg ervoor dat u een geldige gebruikers naam, wacht woord en groeps-ID voor Red Hat Subscription Manager (RHSM) hebt. U kunt ook een activerings sleutel, organisatie-ID en groeps-ID gebruiken.  U kunt deze informatie controleren door u aan te https://access.redhat.commelden bij.
+Zorg ervoor dat u een geldige gebruikers naam, wacht woord en groeps-ID voor Red Hat Subscription Manager (RHSM) hebt. U kunt ook een activerings sleutel, organisatie-ID en groeps-ID gebruiken.  U kunt deze informatie controleren door u aan te melden bij https://access.redhat.com .
 
 ## <a name="azure-stack-prerequisites"></a>Azure Stack vereisten
 
@@ -56,10 +55,10 @@ Als u wilt implementeren met behulp van de Resource Manager-sjabloon, gebruikt u
 
 Enkele algemene aanpassings opties zijn, maar zijn niet beperkt tot:
 
-- Bastion VM-grootte (variabele in azuredeploy. json)
-- Naamgevings regels (variabelen in azuredeploy. json)
+- Bastion VM-grootte (variabele in azuredeploy.jsop)
+- Naam conventies (variabelen in azuredeploy.jsop)
 - Details van open Shift-cluster, gewijzigd via een hosts-bestand (deployOpenShift.sh)
-- RHEL-afbeeldings verwijzing (variabele in azuredeploy. json)
+- RHEL-afbeeldings verwijzing (variabele in azuredeploy.jsaan)
 
 Voor de stappen voor de implementatie met behulp van de Azure CLI, volgt u de toepasselijke sectie in het gedeelte open [SHIFT container platform](./openshift-container-platform-3x.md) of de sectie [OKD](./openshift-okd.md) .
 

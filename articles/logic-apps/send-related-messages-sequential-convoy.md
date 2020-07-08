@@ -7,10 +7,9 @@ ms.reviewer: apseth, divswa, logicappspm
 ms.topic: conceptual
 ms.date: 05/29/2020
 ms.openlocfilehash: bd6b05489d13f835de4dce2aa3d885132285efca
-ms.sourcegitcommit: 55b2bbbd47809b98c50709256885998af8b7d0c5
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/18/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84987605"
 ---
 # <a name="send-related-messages-in-order-by-using-a-sequential-convoy-in-azure-logic-apps-with-azure-service-bus"></a>Verzend gerelateerde berichten in de juiste volg orde door gebruik te maken van een opeenvolgende verwerkings in Azure Logic Apps met Azure Service Bus
@@ -47,7 +46,7 @@ Zie voor meer informatie [sequentieel verwerkings-patroon: Azure Architecture Cl
 
 Als u niet zeker weet of uw logische app machtigingen heeft voor toegang tot uw Service Bus naam ruimte, moet u deze machtigingen bevestigen.
 
-1. Meld u aan bij de [Azure-portal](https://portal.azure.com). Zoek en selecteer uw Service Bus *naam ruimte*.
+1. Meld u aan bij [Azure Portal](https://portal.azure.com). Zoek en selecteer uw Service Bus *naam ruimte*.
 
 1. Selecteer in het menu naam ruimte onder **instellingen**de optie **beleid voor gedeelde toegang**. Onder **claims**controleert u of u machtigingen voor het **beheren** van die naam ruimte hebt.
 
@@ -144,7 +143,7 @@ Dit is de stroom op het hoogste niveau in de `Try` [bereik actie](../logic-apps/
 
 #### <a name="branch-1-complete-initial-message-in-queue"></a>Vertakking #1: het eerste bericht in de wachtrij volt ooien
 
-| Naam | Beschrijving |
+| Naam | Description |
 |------|-------------|
 | `Complete initial message in queue` | Met deze Service Bus actie wordt het ophalen van een bericht als voltooid gemarkeerd en wordt het bericht uit de wachtrij verwijderd om te voor komen dat de bewerking opnieuw wordt uitgevoerd. Zie [het eerste bericht afhandelen](#handle-initial-message)voor meer informatie. |
 | `While there are more messages for the session in the queue` | De [lus wordt **pas** ](../logic-apps/logic-apps-control-flow-loops.md#until-loop) uitgevoerd als er berichten worden ontvangen terwijl er berichten bestaan of totdat het één uur duurt. Zie voor meer informatie over de acties in deze lus, [terwijl er meer berichten zijn voor de sessie in de wachtrij](#while-more-messages-for-session). |
@@ -168,7 +167,7 @@ Dit is de stroom op het hoogste niveau in de `Catch` bereik actie wanneer de det
 
 ![Werk stroom voor bereik acties catch](./media/send-related-messages-sequential-convoy/catch-scope-action.png)
 
-| Naam | Beschrijving |
+| Naam | Description |
 |------|-------------|
 | **`Close a session in a queue and fail`** | Met deze Service Bus actie wordt de sessie in de wachtrij gesloten, zodat de sessie vergrendeling niet actief blijft. Zie [een sessie in een wachtrij sluiten](#close-session-fail)voor meer informatie. |
 | **`Find failure msg from 'Try' block`** | Met deze actie voor de [ **filter matrix** ](../logic-apps/logic-apps-perform-data-operations.md#filter-array-action) wordt een matrix gemaakt op basis van de invoer en uitvoer van alle acties binnen het `Try` bereik op basis van de opgegeven criteria. In dit geval retourneert deze actie de uitvoer van de acties die de status hebben veroorzaakt `Failed` . Zie [fout bericht in try-blok zoeken](#find-failure-message)voor meer informatie. |
@@ -416,7 +415,7 @@ Hier is de JSON-definitie voor deze actie:
 
 ## <a name="save-and-run-logic-app"></a>Logische app opslaan en uitvoeren
 
-Nadat u de sjabloon hebt voltooid, kunt u de logische app nu opslaan. Selecteer **Opslaan**op de werk balk van de ontwerp functie.
+Nadat u de sjabloon hebt voltooid, kunt u de logische app nu opslaan. Selecteer **Opslaan** op de werkbalk van de ontwerper.
 
 Als u uw logische app wilt testen, verzendt u berichten naar uw Service Bus wachtrij. 
 

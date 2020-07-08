@@ -10,12 +10,11 @@ services: time-series-insights
 ms.topic: conceptual
 ms.date: 01/07/2020
 ms.custom: seodec18
-ms.openlocfilehash: c117510749abcf997e414371faa6dea1dc79ea7a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: 06f235b7f1c20681beee1f5be4c18de60d53a690
+ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75861758"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86037304"
 ---
 # <a name="azure-time-series-insights-preview-explorer"></a>Preview Explorer Azure Time Series Insights
 
@@ -75,11 +74,11 @@ De Azure Time Series Insights preview ondersteunt volledige bewerkingen voor mak
 * **Hiërarchie van Time Series-model**: hiërarchieën zijn systematische organisaties van uw gegevens. Hiërarchieën zijn de relaties tussen verschillende entiteiten in uw Time Series Insights gegevens.
 * **Exemplaar van de time series-model**: exemplaren zijn de tijd reeks zelf. In de meeste gevallen zijn het **DeviceID** of **AssetID**, de unieke id van de asset in de omgeving.
 
-Lees [Times-serie modellen](./time-series-insights-update-tsm.md)voor meer informatie over het time series-model.
+Lees [Times-serie modellen](./concepts-model-overview.md)voor meer informatie over het time series-model.
 
 ## <a name="3-hierarchy-tree-and-search-panel"></a>3. hiërarchie structuur en zoek paneel
 
-Met de hiërarchie structuur en het zoek paneel kunt u eenvoudig uw [Time Series-model](./time-series-insights-update-tsm.md) hiërarchie doorzoeken en ernaar bladeren om de specifieke time series-exemplaren te vinden die u wilt weer geven in de grafiek. Wanneer u uw instanties selecteert, worden deze niet alleen toegevoegd aan de huidige grafiek, maar ook toegevoegd aan de gegevens bron. 
+Met de hiërarchie structuur en het zoek paneel kunt u eenvoudig uw [Time Series-model](./concepts-model-overview.md) hiërarchie doorzoeken en ernaar bladeren om de specifieke time series-exemplaren te vinden die u wilt weer geven in de grafiek. Wanneer u uw instanties selecteert, worden deze niet alleen toegevoegd aan de huidige grafiek, maar ook toegevoegd aan de gegevens bron. 
 
 [![Hiërarchie structuur en zoek paneel](media/v2-update-explorer/tsi-preview-explorer-hierarchy-search.png)](media/v2-update-explorer/tsi-preview-explorer-hierarchy-search.png#lightbox)
 
@@ -171,7 +170,7 @@ Het navigatie venster Time Series Insights Preview wordt boven aan uw Time Serie
 
 ### <a name="current-session-share-link-control"></a>Koppelings besturings element huidige sessie delen
 
-  [![Pictogram delen](media/v2-update-explorer/tsi-preview-explorer-share-icon.png)](media/v2-update-explorer/tsi-preview-explorer-share-icon.png#lightbox)
+  [![Deelpictogram](media/v2-update-explorer/tsi-preview-explorer-share-icon.png)](media/v2-update-explorer/tsi-preview-explorer-share-icon.png#lightbox)
 
 Selecteer het pictogram nieuwe **share** om een URL-koppeling met uw team te delen.
 
@@ -215,7 +214,7 @@ In het deel venster Preview-voor beelden van Time Series Insights de volgende pa
 
 **Waar**: gebruik de component WHERE om snel uw gebeurtenissen te filteren met behulp van de set operands die in de volgende tabel worden weer gegeven. Als u een zoek opdracht uitvoert door een operand te selecteren, wordt het predikaat automatisch bijgewerkt op basis van die zoek opdracht. Ondersteunde typen operanden zijn onder andere:
 
-| Bewerking | Ondersteunde typen   | Opmerkingen |
+| Bewerking | Ondersteunde typen   | Notities |
 | --- | --- | --- |
 | `<`, `>`, `<=`, `>=` | Double, DateTime, time span | |
 | `=`, `!=`, `<>` | Teken reeks, BOOL, double, DateTime, time span, NULL |
@@ -240,8 +239,10 @@ U kunt elementen weer geven en verbergen in het deel venster grafiek door het zi
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- Meer informatie over [opslag en](./time-series-insights-update-storage-ingress.md) inkomend verkeer in de preview-versie van Azure time series Insights.
+- Meer informatie over het opnemen van [gegevens](./concepts-ingestion-overview.md) in uw omgeving.
 
-- Lees het Time Series Insights preview-document in [gegevens modellering](./time-series-insights-update-tsm.md).
+- Bekijk het artikel over [opslag](concepts-storage.md)
+
+- Lees het Time Series Insights preview-document in [gegevens modellering](./concepts-model-overview.md).
 
 - Meer informatie [over het vaststellen en oplossen van problemen met](./time-series-insights-update-how-to-troubleshoot.md) uw time series Insights-exemplaar.

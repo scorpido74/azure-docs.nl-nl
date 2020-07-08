@@ -1,7 +1,7 @@
 ---
 title: Integreren met een client-app met de Speech-SDK
 titleSuffix: Azure Cognitive Services
-description: In dit artikel leert u hoe u aanvragen maakt voor een gepubliceerde aangepaste opdrachten toepassing vanuit de Speech SDK die in een UWP-toepassing wordt uitgevoerd.
+description: aanvragen indienen bij een gepubliceerde aangepaste opdrachten toepassing vanuit de Speech SDK die wordt uitgevoerd in een UWP-toepassing.
 services: cognitive-services
 author: xiaojul
 manager: yetian
@@ -10,16 +10,15 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 06/18/2020
 ms.author: xiaojul
-ms.openlocfilehash: 6aa63c49328848ca707e938dada6ce3af9f75694
-ms.sourcegitcommit: fdaad48994bdb9e35cdd445c31b4bac0dd006294
-ms.translationtype: MT
+ms.openlocfilehash: 1d84646fcb6769b7489cc0e03085e95fc47ef56c
+ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/26/2020
-ms.locfileid: "85414353"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86027627"
 ---
 # <a name="integrate-with-a-client-application-using-speech-sdk"></a>Integreren met een client toepassing met behulp van Speech SDK
 
-In dit artikel leert u hoe u aanvragen maakt voor een gepubliceerde aangepaste opdrachten toepassing vanuit de Speech SDK die in een UWP-toepassing wordt uitgevoerd. Als u verbinding wilt maken met de toepassing voor aangepaste opdrachten, voert u de volgende taken uit:
+In dit artikel leert u hoe u aanvragen maakt voor een gepubliceerde aangepaste opdrachten toepassing vanuit de Speech SDK die in een UWP-toepassing wordt uitgevoerd. Als u verbinding wilt maken met de toepassing voor aangepaste opdrachten, hebt u het volgende nodig:
 
 - Een toepassing voor aangepaste opdrachten publiceren en een toepassings-id ophalen (App-ID)
 - Een Universeel Windows-platform-client-app (UWP) maken met behulp van de Speech SDK zodat u kunt praten met uw toepassing voor aangepaste opdrachten
@@ -32,13 +31,19 @@ Er is een toepassing voor aangepaste opdrachten vereist om dit artikel te volt o
 
 U hebt ook het volgende nodig:
 > [!div class = "checklist"]
-> * [Visual Studio 2019](https://visualstudio.microsoft.com/downloads/)
+> * [Visual Studio 2019](https://visualstudio.microsoft.com/downloads/) of hoger. Deze hand leiding is gebaseerd op Visual Studio 2019.
 > * Een Azure-abonnements sleutel voor spraak Services. [Ontvang een gratis versie](get-started.md) of maak deze op de [Azure Portal](https://portal.azure.com)
 > * [Uw apparaat inschakelen voor ontwikkeling](https://docs.microsoft.com/windows/uwp/get-started/enable-your-device-for-development)
 
 ## <a name="step-1-publish-custom-commands-application"></a>Stap 1: de toepassing voor het publiceren van aangepaste opdrachten
 
-1. Open uw eerder gemaakte toepassing voor aangepaste opdrachten en selecteer **publiceren**
+1. Open uw eerder gemaakte toepassing voor aangepaste opdrachten
+1. Ga naar **instellingen**, selecteer **Luis resource**
+1. Als er geen **Voorspellings resource** is toegewezen, selecteert u een query Voorspellings sleutel of maakt u een nieuwe.
+
+    De query Voorspellings sleutel is altijd vereist voor het publiceren van een toepassing. Voor meer informatie over LUIS-bronnen verwijzen we naar [Create Luis resource](https://docs.microsoft.com/azure/cognitive-services/luis/luis-how-to-azure-subscription)
+
+1. Ga terug naar bewerkings opdrachten, selecteer **publiceren**
 
    > [!div class="mx-imgBorder"]
    > ![Uw toepassing publiceren](media/custom-commands/setup-speech-sdk-publish-application.png)
@@ -131,11 +136,8 @@ Voeg als volgt de code-behind bron toe:
    using Microsoft.CognitiveServices.Speech.Audio;
    using Microsoft.CognitiveServices.Speech.Dialog;
    using System;
-   using System.Diagnostics;
    using System.IO;
    using System.Text;
-   using Windows.Foundation;
-   using Windows.Storage.Streams;
    using Windows.UI.Xaml;
    using Windows.UI.Xaml.Controls;
    using Windows.UI.Xaml.Media;
@@ -324,7 +326,7 @@ Voeg als volgt de code-behind bron toe:
    // speech recognition results, and other information.
    //
    // ActivityReceived is the main way your client will receive messages, audio, and events
-   connector.ActivityReceived += async (sender, activityReceivedEventArgs) =>
+   connector.ActivityReceived += (sender, activityReceivedEventArgs) =>
    {
        NotifyUser(
            $"Activity received, hasAudio={activityReceivedEventArgs.HasAudio} activity={activityReceivedEventArgs.Activity}");

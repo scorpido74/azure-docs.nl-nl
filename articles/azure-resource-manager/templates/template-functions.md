@@ -4,10 +4,9 @@ description: Hierin worden de functies beschreven die u kunt gebruiken in een Az
 ms.topic: conceptual
 ms.date: 04/27/2020
 ms.openlocfilehash: d237f5c42c1d1eaab7b2236b15a3122bcb55865b
-ms.sourcegitcommit: 79508e58c1f5c58554378497150ffd757d183f30
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/03/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84331403"
 ---
 # <a name="arm-template-functions"></a>ARM-sjabloon functies
@@ -38,7 +37,7 @@ De meeste functies werken hetzelfde wanneer ze worden geïmplementeerd in een re
 
 Resource Manager biedt verschillende functies voor het werken met matrices.
 
-* [matrix](template-functions-array.md#array)
+* [array](template-functions-array.md#array)
 * [concat](template-functions-array.md#concat)
 * [daarin](template-functions-array.md#contains)
 * [createArray](template-functions-array.md#createarray)
@@ -66,10 +65,10 @@ Resource Manager biedt verschillende functies voor het werken met matrices.
 Resource Manager biedt verschillende functies voor het maken van vergelijkingen in uw sjablonen.
 
 * [Voeg](template-functions-comparison.md#coalesce)
-* [equals](template-functions-comparison.md#equals)
+* [is gelijk aan](template-functions-comparison.md#equals)
 * [less](template-functions-comparison.md#less)
 * [lessOrEquals](template-functions-comparison.md#lessorequals)
-* [greater](template-functions-comparison.md#greater)
+* [groter](template-functions-comparison.md#greater)
 * [greaterOrEquals](template-functions-comparison.md#greaterorequals)
 
 <a id="deployment" aria-hidden="true"></a>

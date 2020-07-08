@@ -13,10 +13,9 @@ ms.author: ryanwi
 ms.reviewer: hirsin
 ms.custom: aaddev
 ms.openlocfilehash: 537d609c1281929203d1891f37614b7627e1683a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81868669"
 ---
 # <a name="admin-consent-on-the-microsoft-identity-platform"></a>Toestemming van de beheerder op het micro soft Identity-platform
@@ -45,16 +44,16 @@ https://graph.microsoft.com/mail.send
 ```
 
 
-| Parameter     | Voorwaarde     | Beschrijving                                                                               |
+| Parameter     | Voorwaarde     | Description                                                                               |
 |--------------:|--------------:|:-----------------------------------------------------------------------------------------:|
-| `tenant` | Vereist | De Directory-Tenant waarvan u toestemming wilt aanvragen. Kan worden geleverd in de indeling GUID of beschrijvende naam of in het algemeen `organizations` , zoals wordt weer gegeven in het voor beeld. Gebruik ' common ' niet, omdat persoonlijke accounts geen toestemming van de beheerder kunnen bieden, behalve in de context van een Tenant. Gebruik, indien mogelijk, de Tenant-ID om te zorgen voor optimale compatibiliteit met persoonlijke accounts die tenants beheren. |
+| `tenant` | Vereist | De Directory-Tenant waarvan u toestemming wilt aanvragen. Kan worden geleverd in de indeling GUID of beschrijvende naam of in `organizations` het algemeen, zoals wordt weer gegeven in het voor beeld. Gebruik ' common ' niet, omdat persoonlijke accounts geen toestemming van de beheerder kunnen bieden, behalve in de context van een Tenant. Gebruik, indien mogelijk, de Tenant-ID om te zorgen voor optimale compatibiliteit met persoonlijke accounts die tenants beheren. |
 | `client_id` | Vereist | De **client-id** van de toepassing die de [Azure Portal – app-registraties](https://go.microsoft.com/fwlink/?linkid=2083908) ervaring die aan uw app is toegewezen. |
 | `redirect_uri` | Vereist |De omleidings-URI waar u het antwoord voor uw app wilt laten afhandelen. Het moet exact overeenkomen met een van de omleidings-Uri's die u hebt geregistreerd in de app-registratie Portal. |
 | `state` | Aanbevolen | Een waarde die in de aanvraag is opgenomen en die ook wordt geretourneerd in de token reactie. Dit kan een teken reeks zijn van elke gewenste inhoud. Gebruik de status om informatie over de status van de gebruiker in de app te coderen voordat de verificatie aanvraag is uitgevoerd, zoals de pagina of weer gave waarin deze zijn aangemeld. |
-|`scope`        | Vereist      | Hiermee wordt de set machtigingen gedefinieerd die worden aangevraagd door de toepassing. Dit kan statisch zijn (met behulp van/.default) of dynamische bereiken.  Dit kan de OIDC-bereiken (`openid`, `profile`, `email`) bevatten. |
+|`scope`        | Vereist      | Hiermee wordt de set machtigingen gedefinieerd die worden aangevraagd door de toepassing. Dit kan statisch zijn (met behulp van/.default) of dynamische bereiken.  Dit kan de OIDC-bereiken ( `openid` , `profile` ,) bevatten `email` . |
 
 
-Op dit moment heeft Azure AD een Tenant beheerder nodig om zich aan te melden om de aanvraag te volt ooien. De beheerder wordt gevraagd om alle machtigingen die u in de `scope` para meter hebt aangevraagd goed te keuren.  Als u een statische (`/.default`)-waarde hebt gebruikt, werkt deze als het eind punt v 1.0-beheerder toestemming en vraagt u toestemming aan voor alle scopes die zijn gevonden in de vereiste machtigingen voor de app.
+Op dit moment heeft Azure AD een Tenant beheerder nodig om zich aan te melden om de aanvraag te volt ooien. De beheerder wordt gevraagd om alle machtigingen die u in de para meter hebt aangevraagd goed te keuren `scope` .  Als u een statische ()- `/.default` waarde hebt gebruikt, werkt deze als het eind punt v 1.0-beheerder toestemming en vraagt u toestemming aan voor alle scopes die zijn gevonden in de vereiste machtigingen voor de app.
 
 ### <a name="successful-response"></a>Geslaagde reactie
 
@@ -69,7 +68,7 @@ http://localhost/myapp/permissions?admin_consent=True&tenant=fa00d692-e9c7-4460-
 | `tenant`| De Directory-Tenant die uw toepassing heeft toegewezen aan de aangevraagde machtigingen, in GUID-indeling.|
 | `state`           | Een waarde die in de aanvraag is opgenomen en die ook wordt geretourneerd in het token antwoord. Dit kan een teken reeks zijn van elke gewenste inhoud. De status wordt gebruikt voor het coderen van informatie over de status van de gebruiker in de app voordat de verificatie aanvraag is uitgevoerd, zoals de pagina of weer gave waarin ze zich bevonden.|
 | `scope`          | De set machtigingen waaraan toegang is verleend voor de toepassing.|
-| `admin_consent`   | Wordt ingesteld op `True`.|
+| `admin_consent`   | Wordt ingesteld op `True` .|
 
 ### <a name="error-response"></a>Fout bericht
 

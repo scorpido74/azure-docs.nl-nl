@@ -4,10 +4,9 @@ description: In dit artikel worden de standaard-en Premium-lagen van Azure Servi
 ms.topic: conceptual
 ms.date: 06/23/2020
 ms.openlocfilehash: eb2d3dda18eb08809a5c8f1020490acdb1e9a21c
-ms.sourcegitcommit: 61d92af1d24510c0cc80afb1aebdc46180997c69
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/24/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85337413"
 ---
 # <a name="service-bus-premium-and-standard-messaging-tiers"></a>Prijscategorieën voor Service Bus Premium en Standard Messaging

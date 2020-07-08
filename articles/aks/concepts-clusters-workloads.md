@@ -5,13 +5,12 @@ services: container-service
 ms.topic: conceptual
 ms.date: 06/03/2019
 ms.openlocfilehash: 9b54bdbfcbc37d3863d4e6b86ae6fe5522bb5be9
-ms.sourcegitcommit: 61d92af1d24510c0cc80afb1aebdc46180997c69
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/24/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85336630"
 ---
-# <a name="kubernetes-core-concepts-for-azure-kubernetes-service-aks"></a>Kubernetes core-concepten voor Azure Kubernetes service (AKS)
+# <a name="kubernetes-core-concepts-for-azure-kubernetes-service-aks"></a>Kubernetes-kernconcepten voor Azure Kubernetes Service (AKS)
 
 Wanneer toepassings ontwikkeling naar een op een container gebaseerde aanpak gaat, is het belang rijk om resources te organiseren en te beheren. Kubernetes is het toonaangevende platform dat de mogelijkheid biedt om een betrouw bare planning te bieden voor werk belastingen voor fout tolerante toepassingen. Azure Kubernetes service (AKS) is een beheerde Kubernetes-aanbieding waarmee de implementatie en het beheer van toepassingen op basis van containers worden vereenvoudigd.
 
@@ -36,7 +35,7 @@ Een Kubernetes-cluster is onderverdeeld in twee onderdelen:
 
 ![Kubernetes en knooppunt onderdelen](media/concepts-clusters-workloads/control-plane-and-nodes.png)
 
-## <a name="control-plane"></a>Besturings vlak
+## <a name="control-plane"></a>Besturingsvlak
 
 Wanneer u een AKS-cluster maakt, wordt automatisch een besturings vlak gemaakt en geconfigureerd. Dit besturings element wordt gegeven als een beheerde Azure-resource die is afgeleid van de gebruiker. Er zijn geen kosten verbonden aan het besturings vlak, alleen de knoop punten die deel uitmaken van het AKS-cluster.
 

@@ -1,5 +1,5 @@
 ---
-title: Een interne Basic-Load Balancer maken-Azure CLI
+title: Een interne Load Balancer maken-Azure CLI
 titleSuffix: Azure Load Balancer
 description: In dit artikel leest u hoe u een interne load balancer maakt met behulp van Azure CLI
 services: load-balancer
@@ -11,14 +11,13 @@ ms.topic: how-to
 ms.custom: seodec18
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 06/27/2018
+ms.date: 07/02/2020
 ms.author: allensu
-ms.openlocfilehash: 9bcd476f0e1418227f6ab290ad84ac9737e52bbd
-ms.sourcegitcommit: ad66392df535c370ba22d36a71e1bbc8b0eedbe3
-ms.translationtype: MT
+ms.openlocfilehash: 2557ac6f3fb8e9091faad5c9c219db529838495d
+ms.sourcegitcommit: dee7b84104741ddf74b660c3c0a291adf11ed349
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/16/2020
-ms.locfileid: "84808554"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85921727"
 ---
 # <a name="create-an-internal-load-balancer-to-load-balance-vms-using-azure-cli"></a>Een interne load balancer maken met Azure CLI om taken te verdelen over VM's
 
@@ -52,7 +51,7 @@ Maak met [az network vnet create](https://docs.microsoft.com/cli/azure/network/v
     --subnet-name mySubnet
 ```
 
-## <a name="create-basic-load-balancer"></a>Load balancer van het type Basic maken
+## <a name="create-standard-load-balancer"></a>Een Standard Load Balancer maken
 
 In deze sectie wordt beschreven hoe u de volgende onderdelen van de load balancer kunt maken en configureren:
   - een front-end-IP-configuratie die het binnenkomende netwerkverkeer op de load balancer ontvangt.
@@ -62,12 +61,15 @@ In deze sectie wordt beschreven hoe u de volgende onderdelen van de load balance
 
 ### <a name="create-the-load-balancer"></a>Load balancer maken
 
-Maak een interne Load Balancer met [AZ Network lb Create](https://docs.microsoft.com/cli/azure/network/lb?view=azure-cli-latest) met de naam **myLoadBalancer** die een front-end-IP-configuratie met de naam **myFrontEnd**bevat, een back-end-pool met de naam **myBackEndPool** die is gekoppeld aan een privé-IP-adres * * 10.0.0.7.
+Maak een interne Load Balancer met [AZ Network lb Create](https://docs.microsoft.com/cli/azure/network/lb?view=azure-cli-latest) met de naam **myLoadBalancer** die een front-end-IP-configuratie met de naam **myFrontEnd**bevat, een back-end-pool met de naam **myBackEndPool** die is gekoppeld aan een privé-IP-adres **10.0.0.7**. 
+
+Gebruiken `--sku basic` voor het maken van een basis Load Balancer. Micro soft raadt standaard-SKU aan voor productie werkbelastingen.
 
 ```azurecli-interactive
   az network lb create \
     --resource-group myResourceGroupILB \
     --name myLoadBalancer \
+    --sku standard \
     --frontend-ip-name myFrontEnd \
     --private-ip-address 10.0.0.7 \
     --backend-pool-name myBackEndPool \
@@ -85,7 +87,7 @@ Een statustest controleert alle exemplaren van de virtuele machines om ervoor te
     --lb-name myLoadBalancer \
     --name myHealthProbe \
     --protocol tcp \
-    --port 80   
+    --port 80
 ```
 
 ### <a name="create-the-load-balancer-rule"></a>Load balancer-regel maken
@@ -103,6 +105,12 @@ Een load balancer-regel definieert de front-end-IP-configuratie voor het binnenk
     --frontend-ip-name myFrontEnd \
     --backend-pool-name myBackEndPool \
     --probe-name myHealthProbe  
+```
+
+U kunt ook een [ha-poort](load-balancer-ha-ports-overview.md) maken Load Balancer regel met behulp van de onderstaande configuratie met Standard Load Balancer.
+
+```azurecli-interactive
+az network lb rule create --resource-group myResourceGroupILB --lb-name myLoadBalancer --name haportsrule --protocol all --frontend-port 0 --backend-port 0 --frontend-ip-name myFrontEnd --backend-address-pool-name myBackEndPool
 ```
 
 ## <a name="create-servers-for-the-backend-address-pool"></a>Servers voor de back-end-adresgroep maken

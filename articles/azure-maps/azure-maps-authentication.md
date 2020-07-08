@@ -11,10 +11,9 @@ services: azure-maps
 manager: philmea
 ms.custom: mvc
 ms.openlocfilehash: fe79b630291959ce4dc8b4743127986088a876ae
-ms.sourcegitcommit: 55b2bbbd47809b98c50709256885998af8b7d0c5
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/18/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84987543"
 ---
 # <a name="authentication-with-azure-maps"></a>Verificatie met Azure Maps
@@ -90,7 +89,7 @@ Wanneer u Azure RBAC configureert, kiest u een beveiligingsprincipal en past u d
 
 De volgende roldefinitie typen bestaan ter ondersteuning van toepassings scenario's.
 
-| Azure Role definition       | Beschrijving                                                                                              |
+| Azure Role definition       | Description                                                                                              |
 | :-------------------------- | :------------------------------------------------------------------------------------------------------- |
 | Gegevens lezer Azure Maps      | Biedt toegang tot onveranderbare Azure Maps REST Api's.                                                       |
 | Inzender voor Azure Maps gegevens | Biedt toegang tot onveranderlijke Azure Maps REST-Api's. Veranderlijkheid wordt gedefinieerd door de acties: schrijven en verwijderen. |

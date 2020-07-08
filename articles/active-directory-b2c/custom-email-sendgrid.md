@@ -12,10 +12,9 @@ ms.date: 06/25/2020
 ms.author: mimart
 ms.subservice: B2C
 ms.openlocfilehash: d2716c49c72674b53e52b021972a90cf89bd843a
-ms.sourcegitcommit: b56226271541e1393a4b85d23c07fd495a4f644d
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/26/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85392890"
 ---
 # <a name="custom-email-verification-with-sendgrid"></a>Aangepaste e-mail verificatie met SendGrid
@@ -36,7 +35,7 @@ Zorg ervoor dat u de sectie waarin u [een SENDGRID API-sleutel maakt](../sendgri
 
 Sla vervolgens de SendGrid API-sleutel op in een Azure AD B2C-beleids sleutel voor uw beleids regels waarnaar moet worden verwezen.
 
-1. Meld u aan bij de [Azure-portal](https://portal.azure.com/).
+1. Meld u aan bij [Azure Portal](https://portal.azure.com/).
 1. Zorg ervoor dat u de map gebruikt die uw Azure AD B2C-Tenant bevat. Selecteer het filter **Directory + abonnement** in het bovenste menu en kies uw Azure AD B2C Directory.
 1. Kies **Alle services** linksboven in de Azure Portal, zoek **Azure AD B2C** en selecteer deze.
 1. Selecteer op de pagina overzicht **identiteits ervaring-Framework**.

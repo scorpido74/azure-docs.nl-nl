@@ -4,10 +4,9 @@ description: Meer informatie over het gebruik van REST API voor het maken van ba
 ms.topic: conceptual
 ms.date: 02/16/2020
 ms.openlocfilehash: 2cf385830ec1be17cb62432e6ef9cba7d82a9db1
-ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/11/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84710606"
 ---
 # <a name="backup-azure-file-share-using-azure-backup-via-rest-api"></a>Back-up maken van Azure-bestands share met Azure Backup via rest API
@@ -467,7 +466,7 @@ POST https://management.azure.com/subscriptions/00000000-0000-0000-0000-00000000
 
 Als u een back-up op aanvraag wilt activeren, volgt u de onderdelen van de hoofd tekst van de aanvraag.
 
-| Naam       | Type                       | Beschrijving                       |
+| Naam       | Type                       | Description                       |
 | ---------- | -------------------------- | --------------------------------- |
 | Eigenschappen | AzurefilesharebackupReques | BackupRequestResource-eigenschappen |
 

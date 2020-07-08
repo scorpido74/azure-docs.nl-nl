@@ -15,10 +15,9 @@ ms.topic: troubleshooting
 ms.date: 05/05/2020
 ms.author: v-miegge
 ms.openlocfilehash: 118c81dd52951729bfbbb97a510e693861666ee6
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/19/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "83665136"
 ---
 # <a name="troubleshoot-windows-stop-error--directory-service-initialization-failure"></a>Problemen oplossen met Windows stop error – initialisatie fout van Directory service
@@ -35,7 +34,7 @@ Wanneer u [Diagnostische gegevens over opstarten](https://docs.microsoft.com/azu
 
 De fout code **0xC00002E2** vertegenwoordigt **STATUS_DS_INIT_FAILURE**en de fout code **0xC00002E1** vertegenwoordigt **STATUS_DS_CANT_START**. Beide fouten treden op wanneer er een probleem is met de Directory service.
 
-Wanneer het besturings systeem wordt opgestart, wordt het vervolgens gedwongen om automatisch opnieuw op te starten door de lokale beveiligings verificatie server (**Lsass. exe**), waarmee gebruikers aanmeldingen worden geverifieerd. Verificatie kan niet plaatsvinden wanneer het besturings systeem op de virtuele machine een domein controller is die geen lees-/schrijftoegang heeft tot de lokale Active Directory-Data Base. Vanwege een gebrek aan toegang tot **Active Directory (AD)** kan Lsass. exe niet verifiëren en wordt het besturings systeem geforceerd opnieuw opgestart.
+Wanneer het besturings systeem wordt opgestart, wordt het vervolgens gedwongen om automatisch opnieuw op te starten door de lokale beveiligings verificatie server (**LSASS.exe**), waarmee gebruikers aanmeldingen worden geverifieerd. Verificatie kan niet plaatsvinden wanneer het besturings systeem op de virtuele machine een domein controller is die geen lees-/schrijftoegang heeft tot de lokale Active Directory-Data Base. Vanwege een gebrek aan toegang tot **Active Directory (AD)**, kan LSASS.exe niet worden geverifieerd en wordt het systeem geforceerd opnieuw opgestart.
 
 Deze fout kan worden veroorzaakt door een van de volgende voor waarden:
 

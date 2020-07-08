@@ -13,10 +13,9 @@ ms.date: 04/10/2019
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: fb9d46adf63f9cd0f4b19e4eace0a2f4a7129226
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/27/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84022604"
 ---
 # <a name="ibm-db2-azure-virtual-machines-dbms-deployment-for-sap-workload"></a>DBMS-implementatie voor SAP-werkbelasting in virtuele Azure-machines voor IBM Db2
@@ -71,7 +70,7 @@ U kunt ook Windows-opslag groepen (alleen beschikbaar in Windows Server 2012 en 
 
 <!-- sapdata and saptmp are terms in the SAP and DB2 world and now spelling errors -->
 
-Voor de schijven met de Db2-opslag paden voor uw sapdata-en saptmp-directory's moet u een sector grootte van fysieke schijven opgeven van 512 KB. Wanneer u Windows-opslag groepen gebruikt, moet u de opslag groepen hand matig maken via de opdracht regel interface met behulp van de para meter `-LogicalSectorSizeDefault` . Zie <https://technet.microsoft.com/itpro/powershell/windows/storage/new-storagepool> voor meer informatie.
+Voor de schijven met de Db2-opslag paden voor uw sapdata-en saptmp-directory's moet u een sector grootte van fysieke schijven opgeven van 512 KB. Wanneer u Windows-opslag groepen gebruikt, moet u de opslag groepen hand matig maken via de opdracht regel interface met behulp van de para meter `-LogicalSectorSizeDefault` . Voor meer informatie raadpleegt u <https://technet.microsoft.com/itpro/powershell/windows/storage/new-storagepool>.
 
 Voor virtuele machines uit de M-serie van Azure kan de latentie die in de transactie Logboeken wordt geschreven, worden verminderd met factoren, vergeleken met de prestaties van Azure Premium Storage, wanneer u Azure Write Accelerator gebruikt. Daarom moet u Azure Write Accelerator implementeren voor de VHD (s) die het volume vormen voor de Db2-transactie Logboeken. Details kunnen worden gelezen in het document [Write Accelerator](https://docs.microsoft.com/azure/virtual-machines/windows/how-to-enable-write-accelerator).
 

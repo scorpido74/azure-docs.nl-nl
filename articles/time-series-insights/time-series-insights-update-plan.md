@@ -10,12 +10,11 @@ services: time-series-insights
 ms.topic: conceptual
 ms.date: 04/27/2020
 ms.custom: seodec18
-ms.openlocfilehash: 4b61df52df45cb2ee01407390ce3e34d86350ef7
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: b57a7c04db0e601b90bc19059df70e63795784bf
+ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82189246"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86036947"
 ---
 # <a name="plan-your-azure-time-series-insights-preview-environment"></a>Uw Azure Time Series Insights-voorbeeld omgeving plannen
 
@@ -41,7 +40,7 @@ Azure Time Series Insights maakt gebruik van een zakelijk model voor betalen per
 Wanneer u een Time Series Insights preview-omgeving inricht, maakt u twee Azure-resources:
 
 * Een Azure Time Series Insights preview-omgeving
-* Een Azure Storage v1-account voor algemeen gebruik
+* Een Azure Storage-account
 
 Als onderdeel van het inrichtings proces geeft u op of u een warme Store wilt inschakelen. Warme Store biedt u een gelaagde query-ervaring. Wanneer deze functie is ingeschakeld, moet u een Bewaar periode tussen 7 en 30 dagen opgeven. Query's die in de warme Bewaar periode worden uitgevoerd, bieden doorgaans snellere reactie tijden. Wanneer een query de Bewaar periode van het warme archief overschrijdt, wordt deze uit de koude Store bediend.
 
@@ -52,7 +51,7 @@ Query's in de warme Store zijn gratis, terwijl query's voor de koude opslag kost
 
 Als u wilt beginnen, hebt u drie extra items nodig:
 
-* Een [Time Series-model](./time-series-insights-update-tsm.md)
+* Een [Time Series-model](./concepts-model-overview.md)
 * Een [gebeurtenis bron die is verbonden met Time Series Insights](./time-series-insights-how-to-add-an-event-source-iothub.md)
 * [Gebeurtenissen die in de gebeurtenis bron stromen](./time-series-insights-send-events.md) die beide zijn toegewezen aan het model en in een geldige JSON-indeling zijn
 
@@ -67,7 +66,7 @@ Selecteer een tijd reeks-ID om een nieuwe Time Series Insights omgeving te maken
 > [!IMPORTANT]
 > Time Series-Id's *kunnen later niet worden gewijzigd*. Verifieer elk één voor de uiteindelijke selectie en het eerste gebruik.
 
-U kunt Maxi maal drie sleutels selecteren om uw resources uniek te onderscheiden. Lees voor meer informatie [Aanbevolen procedures voor het kiezen van een tijd reeks-id](./time-series-insights-update-how-to-id.md) en [opslag en ingang](./time-series-insights-update-storage-ingress.md).
+U kunt Maxi maal drie sleutels selecteren om uw resources uniek te onderscheiden. Lees [Aanbevolen procedures voor het kiezen van een tijd reeks-id](./time-series-insights-update-how-to-id.md) en [opname regels](concepts-json-flattening-escaping-rules.md)voor meer informatie.
 
 De **tijds tempel** eigenschap is ook belang rijk. U kunt deze eigenschap aanwijzen wanneer u gebeurtenis bronnen toevoegt. Elke gebeurtenis bron heeft een optionele time stamp-eigenschap die wordt gebruikt om gebeurtenis bronnen na verloop van tijd bij te houden. Time Stamp-waarden zijn hoofdletter gevoelig en moeten worden opgemaakt als afzonderlijke specificatie van elke bron van de gebeurtenis.
 
@@ -78,7 +77,7 @@ Als dit veld leeg blijft, wordt de tijd voor het plaatsen van gebeurtenissen van
 
 ## <a name="understand-the-time-series-model"></a>Meer informatie over het time series-model
 
-U kunt nu het time series-model van uw Time Series Insights omgeving configureren. Het nieuwe model maakt het eenvoudig om IoT-gegevens te vinden en analyseren. Hiermee wordt de inschakeling, het onderhoud en de verrijking van tijdreeks gegevens mogelijk en helpt u gegevens sets te voorbereiden. Het model maakt gebruik van Time Series-Id's, die zijn toegewezen aan een exemplaar dat de unieke resource koppelt aan variabelen, zoals typen en hiërarchieën. Meer informatie over het nieuwe [Time Series-model](./time-series-insights-update-tsm.md).
+U kunt nu het time series-model van uw Time Series Insights omgeving configureren. Het nieuwe model maakt het eenvoudig om IoT-gegevens te vinden en analyseren. Hiermee wordt de inschakeling, het onderhoud en de verrijking van tijdreeks gegevens mogelijk en helpt u gegevens sets te voorbereiden. Het model maakt gebruik van Time Series-Id's, die zijn toegewezen aan een exemplaar dat de unieke resource koppelt aan variabelen, zoals typen en hiërarchieën. Meer informatie over het nieuwe [Time Series-model](./concepts-model-overview.md).
 
 Het model is dynamisch, zodat het op elk gewenst moment kan worden gebouwd. Als u snel aan de slag wilt gaan, bouwt en uploadt u deze voordat u gegevens naar Time Series Insights pusht. Lees [het time series-model gebruiken](./time-series-insights-update-how-to-tsm.md)om uw model te bouwen.
 
@@ -100,5 +99,6 @@ Lees voor meer informatie [Shape-gebeurtenissen](./time-series-insights-send-eve
 ## <a name="next-steps"></a>Volgende stappen
 
 - Bekijk [Azure Advisor](../advisor/advisor-overview.md) om de configuratie opties voor uw bedrijfs herstel te plannen.
-- Meer informatie over [opslag en](./time-series-insights-update-storage-ingress.md) inkomend verkeer vindt u in de preview-versie van Time Series Insights.
-- Meer informatie over [gegevens modellering](./time-series-insights-update-tsm.md) in de time series Insights preview.
+- Meer informatie over [gegevens opname](./concepts-ingestion-overview.md).
+- Raadpleeg het artikel over [gegevens opslag](./concepts-storage.md)
+- Meer informatie over [gegevens modellering](./concepts-model-overview.md) in de time series Insights preview.

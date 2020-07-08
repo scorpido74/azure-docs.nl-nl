@@ -15,12 +15,11 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 07/23/2018
 ms.author: genli
-ms.openlocfilehash: 5821c72ae1be4759cf5aa76ff1f5af43337749c0
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: c418ed87bd74471ce8c2e8186bd6244eaf6f21de
+ms.sourcegitcommit: dee7b84104741ddf74b660c3c0a291adf11ed349
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80668581"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85921587"
 ---
 # <a name="configuration-and-management-issues-for-azure-cloud-services-frequently-asked-questions-faqs"></a>Configuratie-en beheer problemen voor Azure Cloud Services: veelgestelde vragen (FAQ)
 
@@ -97,11 +96,13 @@ De CSR is slechts een tekst bestand. U hoeft deze niet te maken op de computer w
 
 U kunt de volgende Power shell-opdrachten gebruiken om uw beheer certificaten te vernieuwen:
 
-    Add-AzureAccount
-    Select-AzureSubscription -Current -SubscriptionName <your subscription name>
-    Get-AzurePublishSettingsFile
+```powershell
+Add-AzureAccount
+Select-AzureSubscription -Current -SubscriptionName <your subscription name>
+Get-AzurePublishSettingsFile
+```
 
-De **Get-AzurePublishSettingsFile** maakt een nieuw beheer certificaat in **abonnements** > **beheer certificaten** in de Azure Portal. De naam van het nieuwe certificaat ziet eruit als ' YourSubscriptionNam]-[CurrentDate]-referenties '.
+De **Get-AzurePublishSettingsFile** maakt een nieuw beheer certificaat in **abonnements**  >  **beheer certificaten** in de Azure Portal. De naam van het nieuwe certificaat ziet eruit als ' YourSubscriptionNam]-[CurrentDate]-referenties '.
 
 ### <a name="how-to-automate-the-installation-of-main-tlsssl-certificatepfx-and-intermediate-certificatep7b"></a>Hoe kan ik de installatie van het hoofd-TLS/SSL-certificaat (. pfx) en het tussenliggende certificaat (. p7b) automatiseren?
 
@@ -137,7 +138,7 @@ U hebt de lokale opslag limiet voor het schrijven naar de logboekmap uitgeput.Al
 * Verhoog de quotum limiet voor lokale bronnen.
 
 Raadpleeg de volgende documenten voor meer informatie:
-* [Diagnostische gegevens opslaan en weer geven in Azure Storage](/azure/storage/common/storage-introduction)
+* [Diagnostische gegevens opslaan en weergeven in Azure Storage](/azure/storage/common/storage-introduction)
 * [IIS-logboeken stoppen met schrijven in Cloud service](https://blogs.msdn.microsoft.com/cie/2013/12/21/iis-logs-stops-writing-in-cloud-service/)
 
 ### <a name="how-do-i-enable-wad-logging-for-cloud-services"></a>Hoe kan ik WAD-logboek registratie inschakelen voor Cloud Services?
@@ -189,7 +190,7 @@ Micro soft bewaakt voortdurend servers, netwerken en toepassingen om bedreiginge
 
 Windows 10 en Windows Server 2016 worden geleverd met ondersteuning voor HTTP/2 op client-en server zijde. Als uw client (browser) verbinding maakt met de IIS-server via TLS die HTTP/2 via TLS-uitbrei dingen onderhandelt, hoeft u geen wijzigingen aan te brengen aan de server zijde. Dit komt doordat via TLS de H2-14-header die het gebruik van HTTP/2 opgeeft, standaard wordt verzonden. Als uw client op de andere kant een upgrade-header verzendt om een upgrade naar HTTP/2 uit te voeren, moet u de wijziging hieronder aan de server zijde door nemen om ervoor te zorgen dat de upgrade werkt en dat er een HTTP/2-verbinding wordt gemaakt. 
 
-1. Voer regedit. exe uit.
+1. Voer regedit.exe uit.
 2. Blader naar de register sleutel: HKEY_LOCAL_MACHINE \SYSTEM\CurrentControlSet\Services\HTTP\Parameters.
 3. Maak een nieuwe DWORD-waarde met de naam **DuoEnabled**.
 4. Stel de waarde in op 1.
@@ -253,7 +254,7 @@ Zie voor meer informatie over het inschakelen van Azure Diagnostics logboek regi
 ## <a name="generic"></a>Algemeen
 
 ### <a name="how-do-i-add-nosniff-to-my-website"></a>Kunt u ' all sniff ' toevoegen aan mijn website? Hoe kan ik
-Als u wilt voor komen dat clients de MIME-typen sniffen, voegt u een instelling toe in het bestand *Web. config* .
+Als u wilt voor komen dat clients de MIME-typen sniffen, voegt u een instelling toe in uw *web.config* -bestand.
 
 ```xml
 <configuration>
@@ -282,7 +283,7 @@ Zie [servicespecifieke limieten](../azure-resource-manager/management/azure-subs
 ### <a name="why-does-the-drive-on-my-cloud-service-vm-show-very-little-free-disk-space"></a>Waarom geeft het station op mijn Cloud service-VM weinig vrije schijf ruimte weer?
 Dit is normaal gedrag en er mag geen problemen met uw toepassing optreden. Logboeken is ingeschakeld voor het% AppRoot%-station in azure PaaS-Vm's, wat in feite de hoeveelheid ruimte in beslag neemt die normaal gesp roken wordt geconsumeerd. Er zijn echter verschillende zaken waarmee u rekening moet houden, waardoor dit een niet-probleem is.
 
-De grootte van het station% AppRoot% wordt \<berekend als grootte van. cspkg + maximum grootte van het logboek + een marge vrije ruimte>, of 1,5 GB, afhankelijk van wat groter is. De grootte van uw virtuele machine heeft geen invloed op deze berekening. (De grootte van de virtuele machine is alleen van invloed op de grootte van het tijdelijke station C:.) 
+De grootte van het station% AppRoot% wordt berekend als \<size of .cspkg + max journal size + a margin of free space> , of 1,5 GB, afhankelijk van wat groter is. De grootte van uw virtuele machine heeft geen invloed op deze berekening. (De grootte van de virtuele machine is alleen van invloed op de grootte van het tijdelijke station C:.) 
 
 Kan niet schrijven naar het station% AppRoot%. Als u naar de Azure-VM schrijft, moet u dit doen in een tijdelijke LocalStorage-resource (of een andere optie, zoals Blob Storage, Azure Files, enzovoort). De hoeveelheid vrije ruimte voor de map% AppRoot% is dus niet zinvol. Als u niet zeker weet of uw toepassing naar het% AppRoot%-station schrijft, kunt u de service in een paar dagen altijd laten uitvoeren en vervolgens de grootten ' voor ' en ' na ' vergelijkt. 
 
@@ -306,9 +307,11 @@ U kunt SNI inschakelen in Cloud Services met behulp van een van de volgende meth
 **Methode 1: Power shell gebruiken**
 
 De SNI-binding kan worden geconfigureerd met behulp van de Power shell-cmdlet **New-webbinding** in een opstart taak voor een Cloud service-rolinstantie, zoals hieronder wordt beschreven:
-    
-    New-WebBinding -Name $WebsiteName -Protocol "https" -Port 443 -IPAddress $IPAddress -HostHeader $HostHeader -SslFlags $sslFlags 
-    
+
+```powershell
+New-WebBinding -Name $WebsiteName -Protocol "https" -Port 443 -IPAddress $IPAddress -HostHeader $HostHeader -SslFlags $sslFlags
+```
+
 Zoals [hier](https://technet.microsoft.com/library/ee790567.aspx)wordt beschreven, kan de $sslFlags een van de volgende waarden zijn:
 
 |Waarde|Betekenis|
@@ -322,14 +325,15 @@ Zoals [hier](https://technet.microsoft.com/library/ee790567.aspx)wordt beschreve
 
 De SNI-binding kan ook worden geconfigureerd via code in het opstart proces van de functie zoals beschreven in dit [blog bericht](https://blogs.msdn.microsoft.com/jianwu/2014/12/17/expose-ssl-service-to-multi-domains-from-the-same-cloud-service/):
 
-    
-    //<code snip> 
-                    var serverManager = new ServerManager(); 
-                    var site = serverManager.Sites[0]; 
-                    var binding = site.Bindings.Add(":443:www.test1.com", newCert.GetCertHash(), "My"); 
-                    binding.SetAttributeValue("sslFlags", 1); //enables the SNI 
-                    serverManager.CommitChanges(); 
-    //</code snip> 
+```csharp
+//<code snip> 
+                var serverManager = new ServerManager(); 
+                var site = serverManager.Sites[0]; 
+                var binding = site.Bindings.Add(":443:www.test1.com", newCert.GetCertHash(), "My"); 
+                binding.SetAttributeValue("sslFlags", 1); //enables the SNI 
+                serverManager.CommitChanges(); 
+    //</code snip>
+```
     
 Als u een van de bovenstaande benaderingen gebruikt, moeten de respectieve certificaten (*. pfx) voor de specifieke hostnamen eerst worden geïnstalleerd in de rolinstanties met behulp van een opstart taak of via code om ervoor te zorgen dat de SNI-binding effectief is.
 
@@ -341,7 +345,9 @@ Cloud service is een klassieke resource. Alleen resources die zijn gemaakt via A
 
 We werken aan het gebruik van deze functie op het Azure Portal. Ondertussen kunt u de volgende Power shell-opdrachten gebruiken om de SDK-versie op te halen:
 
-    Get-AzureService -ServiceName "<Cloud Service name>" | Get-AzureDeployment | Where-Object -Property SdkVersion -NE -Value "" | select ServiceName,SdkVersion,OSVersion,Slot
+```powershell
+Get-AzureService -ServiceName "<Cloud Service name>" | Get-AzureDeployment | Where-Object -Property SdkVersion -NE -Value "" | select ServiceName,SdkVersion,OSVersion,Slot
+```
 
 ### <a name="i-want-to-shut-down-the-cloud-service-for-several-months-how-to-reduce-the-billing-cost-of-cloud-service-without-losing-the-ip-address"></a>Ik wil de Cloud service enkele maanden afsluiten. Hoe kan ik de facturerings kosten van de Cloud service verlagen zonder het IP-adres te verliezen?
 

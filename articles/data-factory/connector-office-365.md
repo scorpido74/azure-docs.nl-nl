@@ -12,10 +12,9 @@ ms.topic: conceptual
 ms.date: 10/20/2019
 ms.author: jingwang
 ms.openlocfilehash: dda761e12abe7ec866ad9426982563b6f629f6b2
-ms.sourcegitcommit: 374e47efb65f0ae510ad6c24a82e8abb5b57029e
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85513293"
 ---
 # <a name="copy-data-from-office-365-into-azure-using-azure-data-factory"></a>Gegevens kopiëren van Office 365 naar Azure met behulp van Azure Data Factory
@@ -66,7 +65,7 @@ U kunt met behulp van een van de volgende hulpprogram ma's of Sdk's een pijp lij
 
 - [Azure-portal](quickstart-create-data-factory-portal.md)
 - [.NET SDK](quickstart-create-data-factory-dot-net.md)
-- [Python-SDK](quickstart-create-data-factory-python.md)
+- [Python SDK](quickstart-create-data-factory-python.md)
 - [Azure PowerShell](quickstart-create-data-factory-powershell.md)
 - [REST API](quickstart-create-data-factory-rest-api.md)
 - [Azure Resource Manager sjabloon](quickstart-create-data-factory-resource-manager-template.md). 
@@ -124,7 +123,7 @@ Als u gegevens wilt kopiëren uit Office 365, worden de volgende eigenschappen o
 
 Als u hebt ingesteld `dateFilterColumn` , `startTime` , `endTime` en `userScopeFilterUri` in DataSet, wordt deze nog steeds ondersteund als-is, terwijl u het nieuwe model in de activiteit bron wilt gebruiken.
 
-**Hierbij**
+**Voorbeeld**
 
 ```json
 {

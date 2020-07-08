@@ -13,10 +13,9 @@ ms.workload: infrastructure-services
 ms.date: 01/10/2019
 ms.author: kumud
 ms.openlocfilehash: 3f0060944a2733c31c3bef67aa005e5476778ce2
-ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/11/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84710028"
 ---
 # <a name="create-change-or-delete-a-virtual-network"></a>Een virtueel netwerk maken, wijzigen of verwijderen
@@ -65,7 +64,7 @@ Voer de volgende taken uit voordat u de stappen in een van de secties van dit ar
      - **Resource groep**: Selecteer een bestaande [resource groep](../azure-resource-manager/management/overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json#resource-groups) of maak een nieuwe. Een Azure-resource waarmee u verbinding maakt met het virtuele netwerk, kan zich in dezelfde resource groep bevindt als het virtuele netwerk of in een andere resource groep.
      - **Locatie**: Selecteer een Azure- [locatie](https://azure.microsoft.com/regions/), ook wel een regio genoemd. Een virtueel netwerk kan zich op slechts één Azure-locatie bevindt. U kunt echter een virtueel netwerk op één locatie verbinden met een virtueel netwerk op een andere locatie met behulp van een VPN-gateway. Elke Azure-resource waarmee u verbinding maakt met het virtuele netwerk moet zich op dezelfde locatie bevindt als het virtuele netwerk.
 
-**Opdracht**
+**Opdrachten**
 
 - Azure CLI: [AZ Network vnet Create](/cli/azure/network/vnet)
 - Power shell: [New-AzVirtualNetwork](/powershell/module/az.network/new-azvirtualnetwork)
@@ -94,7 +93,7 @@ Voer de volgende taken uit voordat u de stappen in een van de secties van dit ar
      - [Vergren delingen](../azure-resource-manager/management/lock-resources.md?toc=%2fazure%2fvirtual-network%2ftoc.json)
      - [Automation-script](../azure-resource-manager/management/manage-resource-groups-portal.md#export-resource-groups-to-templates)
 
-**Opdracht**
+**Opdrachten**
 
 - Azure CLI: [AZ Network vnet show](/cli/azure/network/vnet)
 - Power shell: [Get-AzVirtualNetwork](/powershell/module/az.network/get-azvirtualnetwork)
@@ -125,7 +124,7 @@ Een adres bereik toevoegen of verwijderen:
     - **Verwijder een adres bereik**: Klik aan de rechter kant van het adres bereik dat u wilt verwijderen, selecteer **...** en selecteer vervolgens **verwijderen**. Als er een subnet in het adres bereik bestaat, kunt u het adres bereik niet verwijderen. Als u een adres bereik wilt verwijderen, moet u eerst alle subnetten (en alle resources in de subnetten) verwijderen die voor komen in het adres bereik.
 5. Selecteer **Opslaan**.
 
-**Opdracht**
+**Opdrachten**
 
 - Azure CLI: [AZ Network vnet update](/cli/azure/network/vnet)
 - Power shell: [set-AzVirtualNetwork](/powershell/module/az.network/set-azvirtualnetwork)
@@ -147,7 +146,7 @@ Alle virtuele machines die zijn verbonden met het virtuele netwerk, registreren 
 5. Selecteer **Opslaan**.
 6. Start de virtuele machines die zijn verbonden met het virtuele netwerk opnieuw op, zodat deze de nieuwe DNS-server instellingen krijgen. Vm's blijven hun huidige DNS-instellingen gebruiken totdat ze opnieuw zijn opgestart.
 
-**Opdracht**
+**Opdrachten**
 
 - Azure CLI: [AZ Network vnet update](/cli/azure/network/vnet)
 - Power shell: [set-AzVirtualNetwork](/powershell/module/az.network/set-azvirtualnetwork)
@@ -162,7 +161,7 @@ U kunt een virtueel netwerk alleen verwijderen als er geen resources zijn verbon
 4. Selecteer **Verwijderen**.
 5. Selecteer **Ja**om het verwijderen van het virtuele netwerk te bevestigen.
 
-**Opdracht**
+**Opdrachten**
 
 - Azure CLI: [Azure Network vnet verwijderen](/cli/azure/network/vnet)
 - Power shell: [Remove-AzVirtualNetwork](/powershell/module/az.network/remove-azvirtualnetwork)

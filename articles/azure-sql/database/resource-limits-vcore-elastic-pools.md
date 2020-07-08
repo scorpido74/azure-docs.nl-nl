@@ -12,10 +12,9 @@ ms.author: moslake
 ms.reviewer: carlrab, sstein
 ms.date: 06/10/2020
 ms.openlocfilehash: 4ffd92c0641b74682a74ffd2898e226999ac2dd4
-ms.sourcegitcommit: eeba08c8eaa1d724635dcf3a5e931993c848c633
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/10/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84668454"
 ---
 # <a name="resource-limits-for-elastic-pools-using-the-vcore-purchasing-model"></a>Resource limieten voor elastische Pools met behulp van het vCore-aankoop model
@@ -178,7 +177,7 @@ U kunt de servicelaag, de reken grootte (Service doelstelling) en de opslag hoev
 |vCores|72|
 |Geheugen (GB)|136,2|
 |Maximum aantal Db's per pool <sup>1</sup>|500|
-|Column Store-ondersteuning|Ja|
+|Column Store-ondersteuning|Yes|
 |OLTP-opslag in het geheugen (GB)|N.v.t.|
 |Maximale gegevens grootte (GB)|4096|
 |Maximale logboek grootte (GB)|1024|
@@ -347,7 +346,7 @@ U kunt de servicelaag, de reken grootte (Service doelstelling) en de opslag hoev
 |vCores|128|
 |Geheugen (GB)|3767,1|
 |Maximum aantal Db's per pool <sup>1</sup>|100|
-|Column Store-ondersteuning|Ja|
+|Column Store-ondersteuning|Yes|
 |OLTP-opslag in het geheugen (GB)|1768|
 |Maximale gegevens grootte (GB)|4096|
 |Maximale logboek grootte (GB)|2048|
@@ -361,8 +360,8 @@ U kunt de servicelaag, de reken grootte (Service doelstelling) en de opslag hoev
 |Maximaal aantal gelijktijdige sessies|30.000|
 |Min/max vCore keuzen voor elastische pool per data base|0-128|
 |Aantal replica's|4|
-|Meerdere AZ|Ja|
-|Uitschalen voor leesbewerking|Ja|
+|Meerdere AZ|Yes|
+|Uitschalen voor leesbewerking|Yes|
 |Opgenomen back-upopslag|1X-DB-grootte|
 
 <sup>1</sup> Zie [resource beheer in compacte elastische Pools](elastic-pool-resource-management.md) voor aanvullende overwegingen.
