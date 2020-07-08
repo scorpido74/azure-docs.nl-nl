@@ -49,16 +49,26 @@
               href: time-series-insights-parameterized-urls.md
     - name: Azure Time Series Insights preview
       items:
-        - name: Uw omgeving plannen
-          href: time-series-insights-update-plan.md
-        - name: Gegevensopslag en inkomend verkeer
-          href: time-series-insights-update-storage-ingress.md
         - name: Gebruiksvoorbeelden
           href: time-series-insights-update-use-cases.md
+        - name: Uw omgeving plannen
+          href: time-series-insights-update-plan.md
+        - name: Overzicht van gegevensopname
+          href: concepts-ingestion-overview.md
+        - name: Ondersteunde gegevenstypen
+          href: concepts-supported-data-types.md
+        - name: Gebeurtenisbronnen voor streamingopname
+          href: concepts-streaming-ingestion-event-sources.md
+        - name: JSON-afvlakking en escape-regels
+          href: concepts-json-flattening-escaping-rules.md
+        - name: Doorvoerbeperking voor streamingopname
+          href: concepts-streaming-throughput-limitations.md
+        - name: Storage
+          href: concepts-storage.md
         - name: Time Series-model
-          href: time-series-insights-update-tsm.md
+          href: concepts-model-overview.md
         - name: Time Series-query
-          href: time-series-insights-update-tsq.md
+          href: concepts-query-overview.md
         - name: Gegevens visualiseren in de verkenner - preview
           href: time-series-insights-update-explorer.md
         - name: Ontwikkelen

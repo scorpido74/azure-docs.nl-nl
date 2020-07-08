@@ -6,14 +6,14 @@ ms.service: azure-migrate
 ms.topic: conceptual
 ms.date: 06/21/2020
 ms.author: rajosh
-ms.openlocfilehash: 81132f0a6f8b57d8798a9a5c4f0a2b9c1ac736d4
-ms.sourcegitcommit: 01cd19edb099d654198a6930cebd61cae9cb685b
+ms.openlocfilehash: a7d22a6a2f7100826c865beec0d1cff09fc39660
+ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/24/2020
-ms.locfileid: "85317396"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86043237"
 ---
-# <a name="build-migration-plan-with-azure-migrate"></a>Migratie plan samen stellen met Azure Migrate
+# <a name="build-migration-plan-with-azure-migrate"></a>Migratieplan bouwen met Azure Migrate
 
 In dit artikel vindt u een korte hand leiding voor het bouwen van uw migratie plan naar Azure met [Azure migrate](migrate-services-overview.md).Als u andere vragen hebt, raadpleegt u deze bronnen:
 
@@ -83,7 +83,7 @@ Exporteer het Azure VM-evaluatie rapport en filtreer door de volgende gereedheid
 
 - **Gereedheid onbekend**: de Azure migrate kan de gereedheid van de machine niet bepalen vanwege onvoldoende meta gegevens
 
-Met behulp van de evaluatie van de Data Base kunt u de gereedheid voor het migreren van uw SQL Server-gegevens naar Azure SQL-data bases of Azure SQL Database beheerde instanties beoordelen. U ziet het percentage migratie gereedheids status voor elk exemplaar van SQL Server. Voor elk van de instanties kunt u ook het aanbevolen doel in azure zien, mogelijke migratie blok keringen, het aantal wijzigingen, de gereedheid voor Azure SQL DB/Azure SQL-VM en het compatibiliteits niveau. U kunt dieper ingrijpen om inzicht te krijgen in de gevolgen van de migratie blokken en aanbevelingen om ze te corrigeren.
+Met behulp van de evaluatie van de Data Base kunt u de gereedheid voor het migreren van uw SQL Server-Data-to-Azure SQL Database of Azure SQL Managed instances beoordelen. U ziet het percentage migratie gereedheids status voor elk exemplaar van SQL Server. Voor elk van de instanties kunt u ook het aanbevolen doel in azure zien, mogelijke migratie blok keringen, het aantal wijzigingen, de gereedheid voor Azure SQL DB/Azure SQL-VM en het compatibiliteits niveau. U kunt dieper ingrijpen om inzicht te krijgen in de gevolgen van de migratie blokken en aanbevelingen om ze te corrigeren.
 
  ![Database evaluaties](./media/concepts-migration-planning/database-assessment-portal.png)
 
