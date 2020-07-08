@@ -9,10 +9,10 @@ ms.date: 03/10/2020
 ms.author: memildin
 ms.custom: include file
 ms.openlocfilehash: 0b6864c3304b86e80549297fc073a2e387000d64
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80272845"
 ---
 ```json
@@ -71,7 +71,7 @@ ms.locfileid: "80272845"
 |**IsIncident**|Booleaanse waarde|Dit veld bepaalt of de waarschuwing een incident (een samengestelde groepering van verschillende waarschuwingen) of een enkele waarschuwing is. De standaard waarde voor het veld is ' false ' (wat betekent dat het een enkele waarschuwing is).|
 |**ProcessingEndTime**|DateTime|Het tijdstip waarop de waarschuwing voor de eind gebruiker toegankelijk is in het oorspronkelijke product dat de waarschuwing heeft.|
 |**ProductName**|Tekenreeks|De naam van het product dat deze waarschuwing heeft gepubliceerd (Azure Security Center, Azure ATP, micro soft Defender ATP, O365 ATP, MCAS, enzovoort).|
-|**RemediationSteps**|Lijst<String>|Hand matige actie-items die moeten worden uitgevoerd om de waarschuwing te herstellen.|
+|**RemediationSteps**|Orderverzamellijst<String>|Hand matige actie-items die moeten worden uitgevoerd om de waarschuwing te herstellen.|
 |**ResourceIdentifiers**|Lijst (resource-Id's)|De resource-id's voor deze waarschuwing die kunnen worden gebruikt om de waarschuwing te sturen naar de juiste product blootstellings groep (Tenant, werk ruimte, abonnement etc.). Er kunnen meerdere id's van hetzelfde type per waarschuwing zijn.|
 |**Ernst**|Enum|De ernst van de waarschuwing, zoals gerapporteerd door de provider. Mogelijke waarden: informatief, laag, gemiddeld en hoog.|
 |**StartTimeUtc**|DateTime|De tijd van de eerste gebeurtenis of activiteit die in de waarschuwing is opgenomen. Het veld moet een teken reeks zijn die voldoet aan de ISO8601-indeling, inclusief informatie over de UTC-tijd zone.|
