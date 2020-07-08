@@ -6,10 +6,9 @@ ms.subservice: process-automation
 ms.date: 04/01/2020
 ms.topic: conceptual
 ms.openlocfilehash: dde2c3e4cf496bb15ca91c72d9a41936af7051c5
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/21/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "83743760"
 ---
 # <a name="enable-startstop-vms-during-off-hours"></a>VM's buiten bedrijfsuren starten/stoppen inschakelen
@@ -55,7 +54,7 @@ Als de resource is gemaakt, wordt de pagina oplossing toevoegen weer gegeven. U 
    - Selecteer een **prijs categorie**. Kies de optie **per GB (zelfstandig)** . Azure Monitor-logboeken hebben bijgewerkte [prijzen](https://azure.microsoft.com/pricing/details/log-analytics/) en de laag per GB is de enige optie.
 
    > [!NOTE]
-   > Bij het inschakelen van functies worden alleen bepaalde regio's ondersteund voor het koppelen van een Log Analytics-werk ruimte en een Automation-account. Zie [regio toewijzing voor Automation-account en log Analytics-werk ruimte](how-to/region-mappings.md)voor een lijst met de ondersteunde toewijzings paren.
+   > Bij het inschakelen van functies worden alleen bepaalde regio's ondersteund voor het koppelen van een Log Analytics-werk ruimte en een Automation-account. Zie [Regio's toewijzen voor Automation-account en Log Analytics-werkruimte](how-to/region-mappings.md) voor een lijst van alle ondersteunde toewijzingsparen.
 
 3. Nadat u de vereiste gegevens op de pagina Log Analytics werk ruimte hebt opgegeven, klikt u op **maken**. U kunt de voortgang bijhouden onder **meldingen** in het menu, waarmee u wordt teruggebracht naar de pagina oplossing toevoegen wanneer u klaar bent.
 
@@ -98,7 +97,7 @@ VM's buiten bedrijfsuren starten/stoppen bevat geen vooraf gedefinieerde set met
 
 1. Nadat u de aanvankelijk vereiste instellingen voor de functie hebt geconfigureerd, klikt u op **OK** om de pagina para meters te sluiten.
 
-2. Klik op **Maken**. Nadat alle instellingen zijn gevalideerd, wordt de functie geïmplementeerd voor uw abonnement. Het kan enkele seconden duren voordat dit proces is voltooid en u kunt de voortgang bijhouden onder **meldingen** in het menu.
+2. Klik op **Create**. Nadat alle instellingen zijn gevalideerd, wordt de functie geïmplementeerd voor uw abonnement. Het kan enkele seconden duren voordat dit proces is voltooid en u kunt de voortgang bijhouden onder **meldingen** in het menu.
 
     > [!NOTE]
     > Als u een abonnement voor Azure Cloud Solution Provider (Azure CSP) hebt nadat de implementatie is voltooid, gaat u in uw Automation-account naar **variabelen** onder **gedeelde resources** en stelt u de [External_EnableClassicVMs](automation-solution-vm-management.md#variables) variabele in op **Onwaar**. Zo stopt de oplossing met het zoeken naar klassieke VM-resources.

@@ -9,17 +9,16 @@ ms.topic: article
 ms.date: 05/21/2020
 ms.author: victorh
 ms.openlocfilehash: 2572e30c02552859eb5c61915a9ef524c0c6cc70
-ms.sourcegitcommit: 0690ef3bee0b97d4e2d6f237833e6373127707a7
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/21/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "83758959"
 ---
 # <a name="configure-web-application-firewall-v2-on-application-gateway-with-a-custom-rule-using-azure-powershell"></a>Web Application firewall v2 op Application Gateway configureren met een aangepaste regel met behulp van Azure PowerShell
 
 <!--- If you make any changes to the PowerShell in this article, also make the change in the corresponding Sample file: azure-docs-powershell-samples/application-gateway/waf-rules/waf-custom-rules.ps1 --->
 
-Met aangepaste regels kunt u uw eigen regels maken die worden geëvalueerd voor elke aanvraag die wordt door gegeven via de Web Application firewall (WAF) v2. Deze regels bevatten een hogere prioriteit dan de rest van de regels in de beheerde regel sets. De aangepaste regels hebben een actie (voor toestaan of blok keren), een match voorwaarde en een operator om de volledige aanpassing toe te staan.
+Met aangepaste regels kunt u uw eigen regels maken die worden geëvalueerd voor elke aanvraag die wordt door gegeven via de Web Application firewall (WAF) v2. Deze regels hebben een hogere prioriteit dan de rest van de regels in de beheerde regelsets. De aangepaste regels hebben een actie (voor toestaan of blok keren), een match voorwaarde en een operator om de volledige aanpassing toe te staan.
 
 In dit artikel maakt u een Application Gateway WAF v2 die gebruikmaakt van een aangepaste regel. De aangepaste regel blokkeert het verkeer als de aanvraag header de *evilbot*van de gebruikers agent bevat.
 

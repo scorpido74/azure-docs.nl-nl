@@ -12,13 +12,12 @@ manager: daveba
 ms.reviewer: ravenn
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 3ccd51bd69c982aeae25dbf52d1e5d076542cf35
-ms.sourcegitcommit: 318d1bafa70510ea6cdcfa1c3d698b843385c0f6
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/21/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "83771193"
 ---
-# <a name="what-is-a-primary-refresh-token"></a>Wat is een primair vernieuwings token?
+# <a name="what-is-a-primary-refresh-token"></a>Wat is een primair vernieuwingstoken?
 
 Een primair vernieuwings token (PRT) is een sleutel artefact van Azure AD-verificatie op Windows 10-, iOS-en Android-apparaten. Het is een JSON Web Token (JWT) die speciaal is uitgegeven voor token Brokers van de eerste partij van micro soft om eenmalige aanmelding (SSO) in te scha kelen voor de toepassingen die op deze apparaten worden gebruikt. In dit artikel worden details gegeven over de manier waarop een PRT wordt uitgegeven, gebruikt en beveiligd op Windows 10-apparaten.
 

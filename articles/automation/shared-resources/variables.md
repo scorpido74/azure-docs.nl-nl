@@ -10,10 +10,9 @@ ms.date: 05/14/2019
 ms.topic: conceptual
 manager: carmonm
 ms.openlocfilehash: 28f69d3ef8301e00b470ce09353be6ae3259bbe3
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/21/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "83744965"
 ---
 # <a name="manage-variables-in-azure-automation"></a>Variabelen in Azure Automation beheren
@@ -42,7 +41,7 @@ Wanneer u een variabele met de Azure Portal maakt, moet u een gegevens type in d
 * Tekenreeks
 * Geheel getal
 * DateTime
-* Booleaans
+* Boolean-waarde
 * Null
 
 De variabele is niet beperkt tot het opgegeven gegevens type. U moet de variabele instellen met behulp van Windows Power shell als u een waarde van een ander type wilt opgeven. Als u opgeeft `Not defined` , wordt de waarde van de variabele ingesteld op null. U moet de waarde instellen met de cmdlet [set-AzAutomationVariable](https://docs.microsoft.com/powershell/module/az.automation/set-azautomationvariable?view=azps-3.5.0) of de interne `Set-AutomationVariable` cmdlet.
@@ -58,7 +57,7 @@ U kunt meerdere waarden opslaan voor één variabele door een matrix of hashtabe
 
 Met de cmdlets in de volgende tabel worden Automation-variabelen met Power shell gemaakt en beheerd. Ze worden geleverd als onderdeel van de [AZ-modules](modules.md#az-modules).
 
-| Cmdlet | Beschrijving |
+| Cmdlet | Description |
 |:---|:---|
 |[Get-AzAutomationVariable](https://docs.microsoft.com/powershell/module/az.automation/get-azautomationvariable?view=azps-3.5.0) | Hiermee haalt u de waarde van een bestaande variabele op. Als de waarde een eenvoudig type is, wordt hetzelfde type opgehaald. Als het een complex type is, wordt er een `PSCustomObject` type opgehaald. <br>**Opmerking:**  U kunt deze cmdlet niet gebruiken om de waarde van een versleutelde variabele op te halen. De enige manier om dit te doen is met behulp van de interne `Get-AutomationVariable` cmdlet in een runbook of DSC-configuratie. Zie [interne cmdlets voor toegang tot variabelen](#internal-cmdlets-to-access-variables). |
 |[New-AzAutomationVariable](https://docs.microsoft.com/powershell/module/az.automation/new-azautomationvariable?view=azps-3.5.0) | Hiermee maakt u een nieuwe variabele en stelt u de waarde ervan in.|
@@ -69,7 +68,7 @@ Met de cmdlets in de volgende tabel worden Automation-variabelen met Power shell
 
 De interne cmdlets in de volgende tabel worden gebruikt voor toegang tot variabelen in uw runbooks en DSC-configuraties. Deze cmdlets worden geleverd met de globale module `Orchestrator.AssetManagement.Cmdlets` . Zie [interne cmdlets](modules.md#internal-cmdlets)voor meer informatie.
 
-| Interne cmdlet | Beschrijving |
+| Interne cmdlet | Description |
 |:---|:---|
 |`Get-AutomationVariable`|Hiermee haalt u de waarde van een bestaande variabele op.|
 |`Set-AutomationVariable`|Hiermee stelt u de waarde voor een bestaande variabele in.|
@@ -88,7 +87,7 @@ Write-output "The encrypted value of the variable is: $mytestencryptvar"
 
 De functies in de volgende tabel worden gebruikt voor toegang tot variabelen in een python 2-runbook.
 
-|Python 2-functies|Beschrijving|
+|Python 2-functies|Description|
 |:---|:---|
 |`automationassets.get_automation_variable`|Hiermee haalt u de waarde van een bestaande variabele op. |
 |`automationassets.set_automation_variable`|Hiermee stelt u de waarde voor een bestaande variabele in. |

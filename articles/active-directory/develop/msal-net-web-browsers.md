@@ -14,10 +14,9 @@ ms.author: marsma
 ms.reviewer: saeeda
 ms.custom: aaddev
 ms.openlocfilehash: 4e62536b610595c7a53eb8333f06f147e628dec7
-ms.sourcegitcommit: 318d1bafa70510ea6cdcfa1c3d698b843385c0f6
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/21/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "83772043"
 ---
 # <a name="using-web-browsers-msalnet"></a>Webbrowsers (MSAL.NET) gebruiken
@@ -45,15 +44,15 @@ Over het algemeen is het raadzaam om de standaard waarde van het platform te geb
 
 ### <a name="at-a-glance"></a>In één oogopslag
 
-| Framework        | Geïntegreerde | Systeem | Standaard |
+| Framework        | Ingesloten | Systeem | Standaard |
 | ------------- |-------------| -----| ----- |
-| .NET-klassiek     | Ja | Ja ^ | Geïntegreerde |
-| .NET Core     | Nee | Ja ^ | Systeem |
-| .NET Standard | Nee | Ja ^ | Systeem |
-| UWP | Ja | Nee | Geïntegreerde |
+| .NET-klassiek     | Yes | Ja ^ | Ingesloten |
+| .NET Core     | No | Ja ^ | Systeem |
+| .NET Standard | No | Ja ^ | Systeem |
+| UWP | Yes | Nee | Ingesloten |
 | Xamarin.Android | Ja | Ja  | Systeem |
 | Xamarin.iOS | Ja | Ja  | Systeem |
-| Xamarin. Mac| Ja | Nee | Geïntegreerde |
+| Xamarin. Mac| Yes | Nee | Ingesloten |
 
 ^ Vereist de http://localhost omleidings-URI
 
@@ -154,7 +153,7 @@ Er zijn enkele visuele verschillen tussen de Inge sloten webweergave en de syste
 
 ![Systeem browser](media/msal-net-web-browsers/system-browser.png)
 
-### <a name="developer-options"></a>Opties voor ontwikkel aars
+### <a name="developer-options"></a>Ontwikkelaarsopties
 
 Als ontwikkelaar met behulp van MSAL.NET hebt u verschillende opties voor het weer geven van het interactieve dialoog venster van STS:
 

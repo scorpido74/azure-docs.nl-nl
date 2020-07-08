@@ -10,10 +10,9 @@ ms.date: 04/04/2019
 ms.topic: conceptual
 manager: carmonm
 ms.openlocfilehash: 557dc3ad48f8f21d8898e2beb5d940d66058e90c
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/21/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "83744982"
 ---
 # <a name="manage-schedules-in-azure-automation"></a>Schema's in Azure Automation beheren
@@ -30,7 +29,7 @@ Als u een runbook in Azure Automation wilt plannen om op een opgegeven tijdstip 
 
 Met de cmdlets in de volgende tabel worden Automation-schema's gemaakt en beheerd met Power shell. Ze worden geleverd als onderdeel van de [AZ-modules](modules.md#az-modules). 
 
-| Cmdlets | Beschrijving |
+| Cmdlets | Description |
 |:--- |:--- |
 | [Get-AzAutomationSchedule](https://docs.microsoft.com/powershell/module/Az.Automation/Get-AzAutomationSchedule?view=azps-3.7.0) |Hiermee wordt een planning opgehaald. |
 | [Get-AzAutomationScheduledRunbook](https://docs.microsoft.com/powershell/module/az.automation/get-azautomationscheduledrunbook?view=azps-3.7.0) |Hiermee worden geplande runbooks opgehaald. |
@@ -183,7 +182,7 @@ Wanneer u klaar bent om uw planningen te verwijderen, kunt u de Azure Portal of 
 
 1. Selecteer in uw Automation-account **schema's** onder **gedeelde resources**.
 2. Klik op de naam van een planning om het deel venster Details te openen.
-3. Klik op **verwijderen**.
+3. Klik op **Verwijderen**.
 
 ### <a name="remove-a-schedule-with-powershell"></a>Een schema verwijderen met Power shell
 

@@ -12,10 +12,9 @@ manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: a9aaab58acb00305f76b10847a0417d91d724ba8
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/21/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "83737636"
 ---
 # <a name="troubleshooting-conditional-access-using-the-what-if-tool"></a>Problemen met voorwaardelijke toegang oplossen met het What If-hulp programma
@@ -61,7 +60,7 @@ In deze lijst ziet u welke beleids regels voor voorwaardelijke toegang van toepa
 
 In deze lijst worden de beleids regels voor voorwaardelijke toegang weer gegeven die niet van toepassing zijn als de voor waarden worden toegepast. De lijst bevat alle beleids regels en de reden waarom ze niet van toepassing zijn. Voor beelden zijn onder meer gebruikers en groepen die kunnen worden uitgesloten van een beleid.
 
-## <a name="use-case"></a>Gebruiksvoorbeeld
+## <a name="use-case"></a>Toepassing
 
 Veel organisaties maken beleids regels op basis van netwerk locaties, waardoor vertrouwde locaties en het blok keren van toegang tot de locatie worden geblokkeerd.
 
@@ -76,6 +75,6 @@ Deze test kan worden uitgebreid om andere gegevens punten op te nemen om het ber
 ## <a name="next-steps"></a>Volgende stappen
 
 * [Wat is voorwaardelijke toegang?](overview.md)
-* [Wat is Azure Active Directory Identity Protection](../identity-protection/overview-v2.md)
+* [Wat is Azure Active Directory Identity Protection?](../identity-protection/overview-v2.md)
 * [Wat is een apparaat-id?](../devices/overview.md)
 * [Hoe werkt het - Azure Multi-Factor Authentication](../authentication/concept-mfa-howitworks.md)

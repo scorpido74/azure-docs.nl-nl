@@ -13,10 +13,9 @@ ms.date: 08/03/2018
 ms.author: curtand
 ms.reviewer: jairoc
 ms.openlocfilehash: 6c93f34068cd296cb2d3a59f208fa644cdbf2260
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/21/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "83745720"
 ---
 # <a name="join-your-work-device-to-your-organizations-network"></a>Uw werk apparaat toevoegen aan het netwerk van uw organisatie
@@ -61,7 +60,7 @@ U kunt er zeker van zijn dat u lid bent van uw instellingen.
 
     ![Accounts op het scherm instellingen](./media/user-help-join-device-on-network/join-device-settings-accounts.png)
 
-2. Selecteer **toegang tot werk of school**en zorg ervoor dat er tekst wordt weer geven die er ongeveer als volgt uitziet: **verbonden met * \< your_organization>* Azure AD**.
+2. Selecteer **toegang tot werk of school**en zorg ervoor dat er tekst wordt weer geven die er ongeveer als volgt uitziet: **verbonden met *\<your_organization>* Azure AD**.
 
     ![Het scherm werk of school openen met verbonden contoso-account](./media/user-help-join-device-on-network/join-device-oobe-verify.png)
 
@@ -106,7 +105,7 @@ U kunt er zeker van zijn dat u lid bent van uw instellingen.
 
     ![Accounts op het scherm instellingen](./media/user-help-join-device-on-network/join-device-settings-accounts.png)
 
-2. Selecteer **toegang tot werk of school**en zorg ervoor dat er tekst wordt weer geven die er ongeveer als volgt uitziet: **verbonden met * \< your_organization>* Azure AD**.
+2. Selecteer **toegang tot werk of school**en zorg ervoor dat er tekst wordt weer geven die er ongeveer als volgt uitziet: **verbonden met *\<your_organization>* Azure AD**.
 
     ![Het scherm werk of school openen met verbonden contoso-account](./media/user-help-join-device-on-network/join-device-setup-verify.png)
 

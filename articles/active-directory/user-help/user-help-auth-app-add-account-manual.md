@@ -12,10 +12,9 @@ ms.date: 01/24/2019
 ms.author: curtand
 ms.reviewer: olhaun
 ms.openlocfilehash: 3838234f9f65fcf91f8de33e3d7196aa13f2b903
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/21/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "83741721"
 ---
 # <a name="manually-add-an-account-to-the-app"></a>Een account hand matig toevoegen aan de app
@@ -25,7 +24,7 @@ Als uw camera de QR-code niet kan vastleggen, kunt u uw account gegevens hand ma
 De codes voor uw accounts zijn niet hoofdletter gevoelig en vereisen geen spaties wanneer ze worden toegevoegd aan de app van Microsoft Authenticator.
 
 >[!Important]
->Voordat u uw account kunt toevoegen, moet u de app Microsoft Authenticator downloaden en installeren. Als u dat nog niet hebt gedaan, volgt u de stappen in het artikel [app downloaden en installeren](user-help-auth-app-download-install.md) .
+>Voordat u uw account kunt toevoegen, moet u de app Microsoft Authenticator downloaden en installeren. Als u dat nog niet hebt gedaan, volgt u de stappen in het artikel [De app downloaden en installeren](user-help-auth-app-download-install.md).
 
 ## <a name="add-your-work-or-school-account"></a>Uw werk- of schoolaccount toevoegen
 
@@ -33,7 +32,7 @@ De codes voor uw accounts zijn niet hoofdletter gevoelig en vereisen geen spatie
 
     ![Scherm met de QR-code](./media/user-help-auth-app-add-account-manual/auth-app-barcode.png)
 
-2. Open de Microsoft Authenticator-app, selecteer **account toevoegen** uit het pictogram **aanpassen en beheer** in de rechter bovenhoek en selecteer vervolgens **werk-of school account**.
+2. Open de Microsoft Authenticator-app, selecteer **Account toevoegen** in het pictogram **Aanpassen en controle** in de rechterbovenhoek en selecteer vervolgens **Werk- of schoolaccount**.
 
 3. Selecteer **of typ code hand matig**.
 

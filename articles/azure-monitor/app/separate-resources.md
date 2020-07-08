@@ -4,10 +4,9 @@ description: Telemetrie omleiden naar verschillende bronnen voor ontwikkelings-,
 ms.topic: conceptual
 ms.date: 05/11/2020
 ms.openlocfilehash: 187d84b29e42aa3264417dd66e66c3886b17e92a
-ms.sourcegitcommit: 318d1bafa70510ea6cdcfa1c3d698b843385c0f6
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/21/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "83773698"
 ---
 # <a name="how-many-application-insights-resources-should-i-deploy"></a>Hoeveel Application Insights resources moeten worden geïmplementeerd
@@ -108,7 +107,7 @@ Er zijn verschillende methoden voor het instellen van de eigenschap toepassings 
     </DeploymentEvent>
 
     ```
-* [ASP.NET] Genereer BuildInfo. config automatisch in MSBuild. U kunt dit doen door een paar regels aan uw bestand toe te voegen `.csproj` :
+* [ASP.NET] BuildInfo.config automatisch in MSBuild genereren. U kunt dit doen door een paar regels aan uw bestand toe te voegen `.csproj` :
 
     ```XML
 
@@ -117,7 +116,7 @@ Er zijn verschillende methoden voor het instellen van de eigenschap toepassings 
     </PropertyGroup>
     ```
 
-    Hiermee wordt een bestand met de naam *yourProjectName*gegenereerd. BuildInfo. config. de naam van het publicatie proces wordt gewijzigd in BuildInfo. config.
+    Hiermee wordt een bestand met de naam *yourProjectName*.BuildInfo.config gegenereerd. De naam van het publicatie proces wordt gewijzigd in BuildInfo.config.
 
     Het build-label bevat een tijdelijke aanduiding (AutoGen_...) wanneer u met Visual Studio bouwt. Maar wanneer het is gebouwd met MSBuild, wordt het ingevuld met het juiste versie nummer.
 

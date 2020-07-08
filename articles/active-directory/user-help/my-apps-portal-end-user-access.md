@@ -13,10 +13,9 @@ ms.author: curtand
 ms.reviewer: kasimpso
 ms.custom: user-help, seo-update-azuread-jan
 ms.openlocfilehash: aa9813480425d179bdd11bac6f6f944f9f65e3ab
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/21/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "83741969"
 ---
 # <a name="sign-in-and-start-apps-from-the-my-apps-portal"></a>Meld u aan en start apps vanuit de portal mijn apps
@@ -33,7 +32,7 @@ Als u geen toegang hebt tot de portal **mijn apps** , neemt u contact op met de 
 [!INCLUDE [preview-notice](../../../includes/active-directory-end-user-my-apps-portal.md)]
 
 > [!Important]
-> Deze inhoud is bedoeld voor gebruikers van mijn apps. Als u een beheerder bent, kunt u meer informatie vinden over het instellen en beheren van uw Cloud-apps in de documentatie van [toepassings beheer](https://docs.microsoft.com/azure/active-directory/manage-apps).
+> Deze inhoud is bedoeld voor gebruikers van Mijn apps. Als u een beheerder bent, kunt u meer informatie vinden over het instellen en beheren van uw cloud-apps in [Documentatie voor Application Management](https://docs.microsoft.com/azure/active-directory/manage-apps).
 
 ## <a name="supported-browsers"></a>Ondersteunde browsers
 
@@ -179,12 +178,12 @@ U kunt een van de beschik bare Cloud-apps starten vanuit de portal **mijn apps**
 
 Nadat u toegang hebt tot de portal van **mijn apps** , kunt u het volgende doen:
 
-- Organiseer uw apps in de verschillende categorieën die door uw organisatie zijn gemaakt en verschaft. Zie voor meer informatie [verzamelingen openen en gebruiken in de portal mijn apps](my-applications-portal-workspaces.md).
+- Uw apps indelen in de verschillende categorieën die door uw organisatie zijn gemaakt en verstrekt. Zie [Verzamelingen openen en gebruiken in de portal Mijn apps](my-applications-portal-workspaces.md) voor meer informatie.
 
-- Machtigingen die zijn verleend aan toepassingen controleren, bijwerken of intrekken. Zie [toepassings machtigingen bewerken of intrekken in de portal mijn apps](my-applications-portal-permissions-saved-accounts.md)voor meer informatie.
+- Machtigingen die aan toepassingen zijn verleend, controleren, bijwerken of intrekken. Zie [App-toestemmingen bewerken of intrekken in de portal Mijn apps](my-applications-portal-permissions-saved-accounts.md) voor meer informatie.
 
 >[!Note]
->Als er geen verzamelingen of beschik bare categorieën worden weer geven, betekent dit dat uw beheerder geen met u heeft ingesteld of gedeeld. Neem contact op met de Help Desk van uw organisatie voor aanvullende assistentie of machtigingen om gedeelde verzamelingen te bekijken.
+>Als er geen verzamelingen of categorieën beschikbaar zijn, betekent dit dat uw beheerder die niet heeft ingesteld of met u gedeeld. Neem contact op met de helpdesk van uw organisatie voor aanvullende assistentie of machtigingen om gedeelde verzamelingen te bekijken.
 
 ## <a name="next-steps"></a>Volgende stappen
 

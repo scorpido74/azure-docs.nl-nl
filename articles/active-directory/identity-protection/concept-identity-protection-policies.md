@@ -12,10 +12,9 @@ manager: daveba
 ms.reviewer: sahandle
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 7587ed6d414a69cff67aca9446aebf6260c99fcd
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/21/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "83736497"
 ---
 # <a name="identity-protection-policies"></a>Identiteitsbeveiligingbeleid
@@ -45,7 +44,7 @@ Beheerders kunnen er ook voor kiezen om een aangepast beleid voor voorwaardelijk
 
 ![Beleid voor aangepaste aanmeldings Risico's voor voorwaardelijke toegang](./media/concept-identity-protection-policies/identity-protection-custom-sign-in-policy.png)
 
-## <a name="user-risk-policy"></a>Beleid voor gebruikers Risico's
+## <a name="user-risk-policy"></a>Beleid voor gebruikersrisico's
 
 Identiteits beveiliging kan berekenen wat het beste is voor het gedrag van een gebruiker en hoe het kan worden gebruikt om beslissingen te baseren op hun risico. Gebruikers risico is een berekening van de waarschijnlijkheid dat er is geknoeid met een identiteit. Beheerders kunnen een beslissing nemen op basis van dit signaal van een risico Score om de vereisten van de organisatie af te dwingen. Beheerders kunnen ervoor kiezen om de toegang te blok keren, toegang toe te staan of toegang toe te staan, maar u moet een wacht woord wijzigen met behulp van de [selfservice voor wachtwoord herstel van Azure AD](../authentication/howto-sspr-deployment.md).
 

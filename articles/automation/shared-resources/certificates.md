@@ -10,10 +10,9 @@ ms.date: 04/02/2019
 ms.topic: conceptual
 manager: carmonm
 ms.openlocfilehash: ebd4bf0ff91342229edb4295489f0cbd0970699a
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/21/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "83745027"
 ---
 # <a name="manage-certificates-in-azure-automation"></a>Certificaten in Azure Automation beheren
@@ -27,7 +26,7 @@ Azure Automation certificaten veilig opslaat voor toegang door runbooks en DSC-c
 
 Met de cmdlets in de volgende tabel worden Automation-certificaten met Power shell gemaakt en beheerd. Ze worden geleverd als onderdeel van de [AZ-modules](modules.md#az-modules).
 
-|Cmdlet |Beschrijving|
+|Cmdlet |Description|
 | --- | ---|
 |[Get-AzAutomationCertificate](https://docs.microsoft.com/powershell/module/Az.Automation/Get-AzAutomationCertificate?view=azps-3.7.0)|Haalt informatie op over een certificaat dat moet worden gebruikt in een runbook of DSC-configuratie. U kunt het certificaat zelf alleen ophalen met behulp van de interne `Get-AutomationCertificate` cmdlet.|
 |[New-AzAutomationCertificate](https://docs.microsoft.com/powershell/module/Az.Automation/New-AzAutomationCertificate?view=azps-3.7.0)|Hiermee maakt u een nieuw certificaat in Automation.|
@@ -40,7 +39,7 @@ De cmdlet [add-AzureCertificate](/powershell/module/servicemanagement/azure/add-
 
 De interne cmdlet in de volgende tabel wordt gebruikt voor toegang tot certificaten in uw runbooks. Deze cmdlet wordt geleverd met de globale module `Orchestrator.AssetManagement.Cmdlets` . Zie [interne cmdlets](modules.md#internal-cmdlets)voor meer informatie.
 
-| Interne cmdlet | Beschrijving |
+| Interne cmdlet | Description |
 |:---|:---|
 |`Get-AutomationCertificate`|Haalt een certificaat op dat moet worden gebruikt in een runbook-of DSC-configuratie. Retourneert een [System. Security. Cryptography. X509Certificates. X509Certificate2](/dotnet/api/system.security.cryptography.x509certificates.x509certificate2) -object.|
 

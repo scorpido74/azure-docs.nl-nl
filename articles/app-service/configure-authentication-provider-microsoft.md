@@ -8,10 +8,9 @@ ms.custom:
 - seodec18
 - fasttrack-edit
 ms.openlocfilehash: 68af882bf240b354bdad1afe322135c048576ed4
-ms.sourcegitcommit: 318d1bafa70510ea6cdcfa1c3d698b843385c0f6
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/21/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "83772833"
 ---
 # <a name="configure-your-app-service-or-azure-functions-app-to-use-microsoft-account-login"></a>Uw App Service of Azure Functions app configureren voor het gebruik van aanmelding met een micro soft-account
@@ -28,7 +27,7 @@ In dit onderwerp wordt beschreven hoe u Azure App Service of Azure Functions kun
 1. Ga naar [**app-registraties**](https://portal.azure.com/#blade/Microsoft_AAD_RegisteredApps/ApplicationsListBlade) in het Azure Portal. Meld u indien nodig aan met uw Microsoft-account.
 1. Selecteer **nieuwe registratie**en voer vervolgens een toepassings naam in.
 1. Onder **ondersteunde account typen**selecteert u **accounts in elke organisatie Directory (een Azure AD-adres lijst-multi tenant) en persoonlijke micro soft-accounts (bijvoorbeeld Skype, Xbox)**
-1. In **omleidings-uri's**selecteert u **Web**en voert u in `https://<app-domain-name>/.auth/login/aad/callback` . Vervang * \< app-domain-name>* door de domein naam van uw app.  Bijvoorbeeld `https://contoso.azurewebsites.net/.auth/login/aad/callback`. Zorg ervoor dat u het HTTPS-schema in de URL gebruikt.
+1. In **omleidings-uri's**selecteert u **Web**en voert u in `https://<app-domain-name>/.auth/login/aad/callback` . Vervang door *\<app-domain-name>* de domein naam van uw app.  Bijvoorbeeld `https://contoso.azurewebsites.net/.auth/login/aad/callback`. Zorg ervoor dat u het HTTPS-schema in de URL gebruikt.
 
 1. Selecteer **Registreren**.
 1. Kopieer de **toepassings-id (client)**. U hebt deze later nodig.
@@ -42,7 +41,7 @@ In dit onderwerp wordt beschreven hoe u Azure App Service of Azure Functions kun
 
 1. Ga naar uw toepassing in de [Azure Portal].
 1. Selecteer **instellingen**  >  **verificatie/autorisatie**en zorg ervoor dat **app service-verificatie** is **ingeschakeld**.
-1. Selecteer **Azure Active Directory**onder **verificatie providers**. Selecteer **Geavanceerd** onder **beheer modus**. Plak de client-ID en het client geheim die u eerder hebt verkregen. Gebruiken **`https://login.microsoftonline.com/9188040d-6c67-4c5b-b112-36a304b66dad/v2.0`** voor het **URL** -veld van de uitgever.
+1. Selecteer onder **Azure Active Directory** de optie **Verificatieproviders**. Selecteer **Geavanceerd** onder **beheer modus**. Plak de client-ID en het client geheim die u eerder hebt verkregen. Gebruiken **`https://login.microsoftonline.com/9188040d-6c67-4c5b-b112-36a304b66dad/v2.0`** voor het **URL** -veld van de uitgever.
 1. Selecteer **OK**.
 
    App Service biedt verificatie, maar beperkt de toegang tot uw site-inhoud en Api's niet. U moet gebruikers in uw app-code autoriseren.
@@ -63,4 +62,4 @@ U bent nu klaar om micro soft-account te gebruiken voor verificatie in uw app.
 <!-- URLs. -->
 
 [My Applications]: https://go.microsoft.com/fwlink/p/?LinkId=262039
-[Azure Portal]: https://portal.azure.com/
+[Azure-portal]: https://portal.azure.com/

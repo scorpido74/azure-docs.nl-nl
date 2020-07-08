@@ -14,10 +14,9 @@ ms.workload: na
 ms.date: 03/16/2020
 ms.author: memildin
 ms.openlocfilehash: 57e13f3ed619fa88f29397fe44b783bd3650f636
-ms.sourcegitcommit: 0690ef3bee0b97d4e2d6f237833e6373127707a7
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/21/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "83759163"
 ---
 # <a name="monitor-identity-and-access"></a>Identiteit en toegang bewaken
@@ -33,9 +32,9 @@ Door identiteits activiteiten te bewaken, kunt u proactieve acties uitvoeren voo
 
 Voor beelden van aanbevelingen die u kunt zien in het gedeelte over het beveiligen van de **identiteits-en toegangs** resource van Azure Security Center zijn:
 
-- MFA moet zijn ingeschakeld voor accounts met eigenaars machtigingen voor uw abonnement
-- Er moeten Maxi maal drie eigen aren worden opgegeven voor uw abonnement
-- Externe accounts met lees machtigingen moeten worden verwijderd uit uw abonnement
+- MFA moet zijn ingeschakeld voor accounts met eigenaarsmachtigingen voor uw abonnement
+- Er moeten maximaal drie eigenaren worden aangewezen voor uw abonnement
+- Externe accounts met leesmachtigingen moeten worden verwijderd uit uw abonnement
 - Afgeschafte accounts moeten worden verwijderd uit uw abonnement
 
 Zie [aanbevelingen voor identiteits-en toegangs rechten](recommendations-reference.md#recs-identity)voor meer informatie over deze aanbevelingen en een volledige lijst met aanbevelingen die hier kunnen worden weer gegeven.

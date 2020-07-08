@@ -12,10 +12,9 @@ manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 15d519e1cede27b3626d715c48790af620589e43
-ms.sourcegitcommit: 0690ef3bee0b97d4e2d6f237833e6373127707a7
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/21/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "83757598"
 ---
 # <a name="plan-an-azure-multi-factor-authentication-deployment"></a>Een Azure Multi-Factor Authentication-implementatie plannen
@@ -92,7 +91,7 @@ Het is raadzaam dat organisaties voorwaardelijke toegang gebruiken om hun netwer
 ### <a name="configuring-a-named-location"></a>Een benoemde locatie configureren
 
 1. Open **Azure Active Directory** in het Azure Portal
-2. Selecteer **Beveiliging**
+2. **Beveiliging** selecteren
 3. Kies onder **beheren**de optie **benoemde locaties**
 4. **Nieuwe locatie** selecteren
 5. Geef in het veld **naam** een zinvolle naam op
@@ -103,7 +102,7 @@ Het is raadzaam dat organisaties voorwaardelijke toegang gebruiken om hun netwer
    2. Als u *landen/regio's* gebruikt
       1. Vouw de vervolg keuzelijst uit en selecteer de landen of regio's die u voor deze benoemde locatie wilt definiëren.
       2. Bepaal of u *onbekende gebieden wilt toevoegen*. Onbekende gebieden zijn IP-adressen die niet kunnen worden toegewezen aan een land/regio.
-7. Selecteer **maken**
+7. Selecteer **Maken**
 
 ## <a name="plan-authentication-methods"></a>Verificatie methoden plannen
 
@@ -227,7 +226,7 @@ Het is belang rijk dat u niet per ongeluk uw Azure AD-Tenant kunt vergren delen.
 
 ### <a name="create-conditional-access-policy"></a>Beleid voor voorwaardelijke toegang maken
 
-1. Meld u aan bij de [Azure Portal](https://portal.azure.com) met behulp van een account voor globale beheerders.
+1. Meld u aan bij [Azure Portal](https://portal.azure.com) met een globale-beheerdersaccount.
 1. Blader naar **Azure Active Directory**  >  **beveiligings**  >  **voorwaardelijke toegang**.
 1. Selecteer **Nieuw beleid**.
    ![Een beleid voor voorwaardelijke toegang maken om MFA in te scha kelen voor Azure Portal gebruikers in de test groep](media/howto-mfa-getstarted/conditionalaccess-newpolicy.png)
@@ -247,7 +246,7 @@ Het is belang rijk dat u niet per ongeluk uw Azure AD-Tenant kunt vergren delen.
     * Klik op **Selecteren**.
 1. Sla de **sessie** sectie over.
 1. Stel de **Schakel** optie voor het inschakelen van beleid in **op aan**.
-1. Klik op **Maken**.
+1. Klik op **Create**.
 
 ## <a name="plan-integration-with-on-premises-systems"></a>Integratie met on-premises systemen plannen
 
@@ -354,7 +353,7 @@ Rapporten voor Azure MFA
 
 Azure Multi-Factor Authentication biedt rapporten via de Azure Portal:
 
-| Rapport | Locatie | Beschrijving |
+| Rapport | Locatie | Description |
 | --- | --- | --- |
 | Gebruiks-en fraude waarschuwingen | Aanmeldingen bij Azure AD-> | Bevat informatie over het algehele gebruik, de gebruikers samenvatting en de gebruikers gegevens. en een geschiedenis van fraude waarschuwingen die zijn ingediend tijdens het opgegeven datum bereik. |
 

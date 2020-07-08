@@ -15,10 +15,9 @@ ms.workload: na
 ms.date: 10/02/2019
 ms.author: TomSh
 ms.openlocfilehash: 4e64873cc2e7779c4d931018fd16bdca08596aa2
-ms.sourcegitcommit: 0690ef3bee0b97d4e2d6f237833e6373127707a7
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/21/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "83757820"
 ---
 # <a name="azure-best-practices-for-network-security"></a>Aanbevolen procedures voor Azure voor netwerk beveiliging
@@ -133,7 +132,7 @@ In een hybride IT-scenario is er meestal een deel van het type cross-premises-co
 * [Site-naar-site-VPN](../../vpn-gateway/vpn-gateway-howto-multi-site-to-site-resource-manager-portal.md). Het is een vertrouwde, betrouw bare en opgezette technologie, maar de verbinding vindt plaats via internet. De band breedte is beperkt tot een maximum van 1,25 Gbps. Site-naar-site-VPN is een wenselijke optie in sommige scenario's.
 * **Azure-ExpressRoute**. We raden u aan [ExpressRoute](../../expressroute/expressroute-introduction.md) te gebruiken voor uw cross-premises-connectiviteit. Met ExpressRoute kunt u uw on-premises netwerken in de Microsoft Cloud uitbreiden via een persoonlijke verbinding die wordt gefaciliteerd door een connectiviteitsprovider. Met ExpressRoute kunt u verbindingen tot stand brengen met micro soft-Cloud Services, zoals Azure, Office 365 en Dynamics 365. ExpressRoute is een specifieke WAN-verbinding tussen uw on-premises locatie of een micro soft Exchange host-provider. Omdat dit een telecommunicatie-verbinding is, worden uw gegevens niet via internet gereisd en worden ze niet blootgesteld aan de potentiële Risico's van Internet communicatie.
 
-De locatie van uw ExpressRoute-verbinding kan invloed hebben op de firewall capaciteit, schaal baarheid, betrouw baarheid en netwerk verkeer. U moet nagaan waar ExpressRoute wordt beëindigd in bestaande netwerken (on-premises). U kunt het volgende doen:
+De locatie van uw ExpressRoute-verbinding kan invloed hebben op de firewall capaciteit, schaal baarheid, betrouw baarheid en netwerk verkeer. U moet nagaan waar ExpressRoute wordt beëindigd in bestaande netwerken (on-premises). U kunt:
 
 - Beëindig buiten de firewall (het model van het perimeter netwerk) als u inzicht in het verkeer nodig hebt als u een bestaande praktijk van het isoleren van data centers moet voortzetten of als u alleen extranet resources op Azure plaatst.
 - Beëindig in de firewall (het paradigma van de netwerk extensie). Dit is de standaard aanbeveling. In alle andere gevallen raden we u aan Azure als een ne Data Center te behandelen.

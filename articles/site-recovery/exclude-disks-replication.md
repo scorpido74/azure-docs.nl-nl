@@ -4,10 +4,9 @@ description: Schijven uitsluiten van replicatie naar Azure met Azure Site Recove
 ms.topic: conceptual
 ms.date: 12/17/2019
 ms.openlocfilehash: aa2e3ef3906a03be649a1978c1d662056c4d0f25
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/21/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "83740515"
 ---
 # <a name="exclude-disks-from-disaster-recovery"></a>Schijven uitsluiten van herstel na nood gevallen
@@ -30,7 +29,7 @@ Ja | Ja | Ja | Ja
 
 ## <a name="exclude-limitations"></a>Beperkingen uitsluiten
 
-**Beperking** | **Azure-VM's** | **Virtuele VMware-machines** | **Virtuele Hyper-V-machines**
+**Beperking** | **Azure-VM's** | **VMware-VM's** | **Virtuele Hyper-V-machines**
 --- | --- | ---
 **Schijf typen** | U kunt basis schijven uitsluiten van replicatie.<br/><br/> U kunt geen besturingssysteem schijven of dynamische schijven uitsluiten. Tijdelijke schijven worden standaard uitgesloten. | U kunt basis schijven uitsluiten van replicatie.<br/><br/> U kunt geen besturingssysteem schijven of dynamische schijven uitsluiten. | U kunt basis schijven uitsluiten van replicatie.<br/><br/> Besturingssysteemschijven kunt u niet uitsluiten. We raden u aan geen dynamische schijven uit te sluiten. Site Recovery kan niet identificeren welke VHS Basic of Dynamic is in de gast-VM. Als niet alle afhankelijke dynamische volume schijven worden uitgesloten, wordt de beveiligde dynamische schijf een defecte schijf op een failover-VM. de gegevens op de schijf zijn dan niet toegankelijk.
 **Schijf repliceren** | U kunt een schijf die wordt gerepliceerd niet uitsluiten.<br/><br/> Schakel replicatie voor de virtuele machine uit en opnieuw in. |  U kunt een schijf die wordt gerepliceerd niet uitsluiten. |  U kunt een schijf die wordt gerepliceerd niet uitsluiten.
@@ -44,7 +43,7 @@ Ja | Ja | Ja | Ja
 
 ## <a name="typical-scenarios"></a>Typische scenario's
 
-Voor beelden van gegevens verloop die fantastische kandidaten zijn voor uitsluiting, zijn schrijf bewerkingen naar een wissel bestand (Pagefile. sys) en schrijven naar het TempDB-bestand van Microsoft SQL Server. Afhankelijk van de werk belasting en het opslag subsysteem kunnen de paginerings-en tempdb-bestanden een aanzienlijke hoeveelheid verloop registreren. Het repliceren van dit type gegevens naar Azure is resource-intensief.
+Voor beelden van gegevens verloop die fantastische kandidaten zijn voor uitsluiting, zijn schrijf bewerkingen naar een wissel bestand (pagefile.sys) en schrijven naar het TempDB-bestand van Microsoft SQL Server. Afhankelijk van de werk belasting en het opslag subsysteem kunnen de paginerings-en tempdb-bestanden een aanzienlijke hoeveelheid verloop registreren. Het repliceren van dit type gegevens naar Azure is resource-intensief.
 
 - Als u de replicatie voor een virtuele machine wilt optimaliseren, met één virtueel schijf die zowel het besturings systeem als het wissel bestand bevat, kunt u het volgende doen:
     1. Splits de virtuele schijf in twee virtuele schijven. De ene virtuele schijf bevat het besturingssysteem en de andere het wisselbestand.
@@ -185,7 +184,7 @@ DB-Disk4 | Disk4 | G:\ | Gebruikersdatabase2
 
 ## <a name="example-2-exclude-the-paging-file-disk"></a>Voor beeld 2: de wissel bestand schijf uitsluiten
 
-Laten we eens kijken hoe u schijf uitsluitingen, failover en failover kunt afhandelen voor een Windows-bron-VM waarvoor we de bestands schijf pagefile. sys op het station D en een alternatief station willen uitsluiten.
+Laten we eens kijken hoe u schijf uitsluiting, failover en failover kunt afhandelen voor een Windows-bron-VM waarvoor we de pagefile.sys bestands schijf op het D-station en een alternatief station willen uitsluiten.
 
 
 ### <a name="paging-file-on-the-d-drive"></a>Wissel bestand op het D-station
@@ -213,7 +212,7 @@ Na een failover heeft de Azure-VM de schijven in de tabel samenvatten.
 **Schijf naam** | **Gastbesturingssysteemschijf#** | **Stationsletter** | **Gegevenstype op de schijf**
 --- | --- | --- | ---
 DB-Disk0-OS | Disk0 | C:\ | Besturingssysteemschijf
-DB-Disk1 | Disk1 | D:\ | Tijdelijke opslag/pagefile. sys <br/><br/> Omdat DB-Disk1 (D:) is uitgesloten, D: is de eerste stationsletter in de lijst beschik bare.<br/><br/> Azure wijst D: toe aan het tijdelijke opslagvolume.<br/><br/> Omdat D: beschikbaar is, blijft de instelling van het wissel bestand van de virtuele machine hetzelfde.
+DB-Disk1 | Disk1 | D:\ | Tijdelijke opslag/pagefile.sys <br/><br/> Omdat DB-Disk1 (D:) is uitgesloten, D: is de eerste stationsletter in de lijst beschik bare.<br/><br/> Azure wijst D: toe aan het tijdelijke opslagvolume.<br/><br/> Omdat D: beschikbaar is, blijft de instelling van het wissel bestand van de virtuele machine hetzelfde.
 DB-Disk2 | Disk2 | E:\ | Gebruikersgegevens 1
 DB-Disk3 | Disk3 | F:\ | Gebruikersgegevens 2
 

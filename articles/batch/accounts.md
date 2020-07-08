@@ -4,10 +4,9 @@ description: Meer informatie over Azure Batch-accounts en hoe ze worden gebruikt
 ms.topic: conceptual
 ms.date: 05/12/2020
 ms.openlocfilehash: 20a2a28d0eaa2c7997ea93e66d07ecb99bf297a2
-ms.sourcegitcommit: a9784a3fd208f19c8814fe22da9e70fcf1da9c93
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/22/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "83791146"
 ---
 # <a name="batch-accounts-and-azure-storage-accounts"></a>Batch-accounts en Azure Storage accounts

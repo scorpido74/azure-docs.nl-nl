@@ -15,10 +15,9 @@ ms.devlang: azurecli
 ms.date: 11/22/2018
 ms.author: delhan
 ms.openlocfilehash: 5d8aa456a6454dd511b7dcda5d3f74a739033356
-ms.sourcegitcommit: 318d1bafa70510ea6cdcfa1c3d698b843385c0f6
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/21/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "83774344"
 ---
 # <a name="disable-the-guest-os-firewall-in-azure-vm"></a>De firewall van het gastbesturingssysteem uitschakelen in Azure VM
@@ -126,7 +125,7 @@ Als u een situatie hebt waarin u de virtuele machine niet op een wille keurige m
 
 4.  Voordat u wijzigingen aanbrengt, maakt u een kopie van de map \Windows\System32\Config als u de wijzigingen ongedaan wilt maken.
 
-5.  Start de REGI ster-editor (Regedit. exe) op de virtuele machine voor probleem oplossing. 
+5.  Start de REGI ster-editor (regedit.exe) op de virtuele machine voor probleem oplossing. 
 
 6.  Voor deze probleemoplossings procedure koppelen we de componenten als BROKENSYSTEM en BROKENSOFTWARE.
 

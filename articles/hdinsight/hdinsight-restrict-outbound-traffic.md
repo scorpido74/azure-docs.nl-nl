@@ -9,10 +9,9 @@ ms.topic: conceptual
 ms.custom: seoapr2020
 ms.date: 04/17/2020
 ms.openlocfilehash: d3e5f99edb8043b563f37a1710c973bf925338db
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/21/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "83745549"
 ---
 # <a name="configure-outbound-network-traffic-for-azure-hdinsight-clusters-using-firewall"></a>Uitgaand netwerk verkeer voor Azure HDInsight-clusters configureren met behulp van Firewall
@@ -69,13 +68,13 @@ Maak een toepassings regel verzameling waarmee het cluster belang rijke communic
 
     **Sectie FQDN-Tags**
 
-    | Name | Bron adres | FQDN-label | Opmerkingen |
+    | Name | Bron adres | FQDN-label | Notities |
     | --- | --- | --- | --- |
     | Rule_1 | * | WindowsUpdate en HDInsight | Vereist voor HDI-Services |
 
     **Sectie FQDN-doel items**
 
-    | Name | Bron adressen | `Protocol:Port` | Doel-FQDN-naam | Opmerkingen |
+    | Name | Bron adressen | `Protocol:Port` | Doel-FQDN-naam | Notities |
     | --- | --- | --- | --- | --- |
     | Rule_2 | * | https: 443 | login.windows.net | Windows-aanmeldings activiteit toestaan |
     | Rule_3 | * | https: 443 | login.microsoftonline.com | Windows-aanmeldings activiteit toestaan |
@@ -103,7 +102,7 @@ Maak de netwerk regels om uw HDInsight-cluster correct te configureren.
 
     **Sectie IP-adressen**
 
-    | Name | Protocol | Bron adressen | Doel adressen | Doelpoorten | Opmerkingen |
+    | Name | Protocol | Bron adressen | Doel adressen | Doelpoorten | Notities |
     | --- | --- | --- | --- | --- | --- |
     | Rule_1 | UDP | * | * | 123 | Time-service |
     | Rule_2 | Alle | * | DC_IP_Address_1, DC_IP_Address_2 | * | Als u Enterprise Security Package (ESP) gebruikt, voegt u een netwerk regel toe aan de sectie IP-adressen die communicatie met AAD-DS voor ESP-clusters mogelijk maakt. U kunt de IP-adressen van de domein controllers vinden in de sectie AAD-DS in de portal |
@@ -112,7 +111,7 @@ Maak de netwerk regels om uw HDInsight-cluster correct te configureren.
 
     **Sectie Service Tags**
 
-    | Name | Protocol | Bron adressen | Servicetags | Doel poorten | Opmerkingen |
+    | Name | Protocol | Bron adressen | Servicetags | Doel poorten | Notities |
     | --- | --- | --- | --- | --- | --- |
     | Rule_7 | TCP | * | SQL | 1433 | Configureer een netwerk regel in het gedeelte service tags voor SQL waarmee u SQL-verkeer kunt registreren en controleren. Tenzij u service-eind punten voor SQL Server op het HDInsight-subnet hebt geconfigureerd, waardoor de firewall wordt overgeslagen. |
     | Rule_8 | TCP | * | Azure Monitor | * | Beschrijving Klanten die de functie voor automatisch schalen willen gebruiken, moeten deze regel toevoegen. |

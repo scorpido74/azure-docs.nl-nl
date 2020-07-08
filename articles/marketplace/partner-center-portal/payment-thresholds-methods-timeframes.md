@@ -8,10 +8,9 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 04/24/2020
 ms.openlocfilehash: 33c4286c5a3fa8be68c1e6ec3bd331aa1e804cb4
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/21/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "83745017"
 ---
 # <a name="payment-thresholds-methods-and-time-frames"></a>Betalingsdrempels, methoden en tijdsbestek
@@ -44,64 +43,64 @@ Dit zijn de landen en regio's waarin de bovenstaande betalings methoden worden g
 | Albanië | Ja | Ja | Ja | Ja |
 | Algerije | Ja | Ja | Ja | Ja |
 | Andorra | Nee | Nee | Ja | Ja |
-| Angola | Ja | Ja | Ja | Nee |
-| Antigua en Barbuda | Ja | Ja | Nee | Ja |
+| Angola | Ja | Ja | Ja | No |
+| Antigua en Barbuda | Ja | Ja | No | Yes |
 | Argentinië | Ja | Ja | Ja | Ja |
 | Armenië | Ja | Ja | Nee | Nee |
 | Australië | Ja | Ja | Ja | Ja |
 | Oostenrijk | Ja | Ja | Ja | Ja |
-| Azerbeidzjan | Ja | Ja | Ja | Nee |
+| Azerbeidzjan | Ja | Ja | Ja | No |
 | Bahrein | Ja | Ja | Ja | Ja |
-| Bangladesh | Ja | Ja | Ja | Nee |
-| Belarus | Ja | Ja | Ja | Nee |
+| Bangladesh | Ja | Ja | Ja | No |
+| Belarus | Ja | Ja | Ja | No |
 | België | Ja | Ja | Ja | Ja |
-| Benin | Ja | Ja | Ja | Nee |
-| Bolivia | Ja | Ja | Ja | Nee |
+| Benin | Ja | Ja | Ja | No |
+| Bolivia | Ja | Ja | Ja | No |
 | Bosnië en Herzegovina | Ja | Ja | Ja | Ja |
-| Botswana | Ja | Ja | Nee | Ja |
+| Botswana | Ja | Ja | No | Yes |
 | Brazilië | Ja | Ja | Ja | Ja |
 | Bulgarije | Ja | Ja | Ja | Ja |
-| Burkina Faso | Ja | Ja | Ja | Nee |
-| Burundi | Ja | Ja | Ja | Nee |
-| Cambodja | Ja | Ja | Ja | Nee |
-| Kameroen | Ja | Ja | Ja | Nee |
+| Burkina Faso | Ja | Ja | Ja | No |
+| Burundi | Ja | Ja | Ja | No |
+| Cambodja | Ja | Ja | Ja | No |
+| Kameroen | Ja | Ja | Ja | No |
 | Canada | Ja | Ja | Ja | Ja |
-| Centraal-Afrikaanse Republiek | Ja | Ja | Ja | Nee |
-| Tsjaad | Ja | Ja | Ja | Nee |
+| Centraal-Afrikaanse Republiek | Ja | Ja | Ja | No |
+| Tsjaad | Ja | Ja | Ja | No |
 | Chili | Ja | Ja | Ja | Ja |
-| China | Nee | Ja | Ja | Ja |
+| China | No | Ja | Ja | Ja |
 | Colombia | Ja | Ja | Ja | Ja |
 | Comoren | Ja | Ja | Nee | Nee |
-| Congo (DRC) | Ja | Ja | Ja | Nee |
-| Congo, Republiek | Ja | Ja | Ja | Nee |
+| Congo (DRC) | Ja | Ja | Ja | No |
+| Congo, Republiek | Ja | Ja | Ja | No |
 | Costa Rica | Ja | Ja | Ja | Ja |
-| Ivoorkust | Ja | Ja | Ja | Nee |
-| Kroatië | Ja | Ja | Ja | Nee |
+| Ivoorkust | Ja | Ja | Ja | No |
+| Kroatië | Ja | Ja | Ja | No |
 | Cyprus | Ja | Ja | Ja | Ja |
 | Tsjechische Republiek | Ja | Ja | Ja | Ja |
 | Denemarken | Ja | Ja | Ja | Ja |
-| Dominica | Ja | Ja | Nee | Ja |
+| Dominica | Ja | Ja | No | Yes |
 | Dominicaanse Republiek | Ja | Ja | Ja | Ja |
 | Ecuador | Ja | Ja | Ja | Ja |
 | Egypte | Ja | Ja | Ja | Ja |
 | El Salvador | Ja | Ja | Ja | Ja |
-| Eritrea | Ja | Ja | Ja | Nee |
+| Eritrea | Ja | Ja | Ja | No |
 | Estland | Ja | Ja | Ja | Ja |
-| Ethiopië | Ja | Ja | Ja | Nee |
+| Ethiopië | Ja | Ja | Ja | No |
 | Fiji | Ja | Ja | Nee | Nee |
 | Finland | Ja | Ja | Ja | Ja |
 | Frankrijk | Ja | Ja | Ja | Ja |
 | Georgië | Ja | Ja | Ja | Ja |
 | Duitsland | Ja | Ja | Ja | Ja |
-| Ghana | Ja | Ja | Ja | Nee |
+| Ghana | Ja | Ja | Ja | No |
 | Griekenland | Ja | Ja | Ja | Ja |
 | Guatemala | Ja | Ja | Ja | Ja |
-| Guinee | Ja | Ja | Ja | Nee |
-| Haïti | Ja | Ja | Ja | Nee |
+| Guinee | Ja | Ja | Ja | No |
+| Haïti | Ja | Ja | Ja | No |
 | Honduras | Ja | Ja | Ja | Ja |
 | Hongkong | Ja | Ja | Ja | Ja |
 | Hongarije | Ja | Ja | Ja | Ja |
-| IJsland | Ja | Ja | Ja | Nee |
+| IJsland | Ja | Ja | Ja | No |
 | India | Ja | Ja | Ja | Ja |
 | Indonesië | Ja | Ja | Ja | Ja |
 | Irak | Ja | Ja | Nee | Nee |
@@ -113,75 +112,75 @@ Dit zijn de landen en regio's waarin de bovenstaande betalings methoden worden g
 | Jordanië | Ja | Ja | Ja | Ja |
 | Kazachstan | Ja | Ja | Ja | Ja |
 | Kenia | Ja | Ja | Ja | Ja |
-| Korea (Zuid) | Ja | Ja | Ja | Nee |
+| Korea (Zuid) | Ja | Ja | Ja | No |
 | Koeweit | Ja | Ja | Ja | Ja |
-| Kirgistan | Nee | Nee | Ja | Nee |
-| Laos | Ja | Ja | Ja | Nee |
-| Letland | Ja | Ja | Ja | Nee |
+| Kirgistan | Nee | Nee | Yes | No |
+| Laos | Ja | Ja | Ja | No |
+| Letland | Ja | Ja | Ja | No |
 | Libanon | Ja | Ja | Nee | Nee |
-| Liberia | Ja | Ja | Ja | Nee |
+| Liberia | Ja | Ja | Ja | No |
 | Liechtenstein | Ja | Ja | Ja | Ja |
-| Litouwen | Ja | Ja | Ja | Nee |
+| Litouwen | Ja | Ja | Ja | No |
 | Luxemburg | Ja | Ja | Ja | Ja |
-| Macedonië (FYROM) | Nee | Ja | Ja | Nee |
-| Madagaskar | Ja | Ja | Ja | Nee |
+| Macedonië (FYROM) | No | Ja | Ja | No |
+| Madagaskar | Ja | Ja | Ja | No |
 | Malawi | Ja | Ja | Ja | Ja |
 | Maleisië | Ja | Ja | Ja | Ja |
-| Mali | Ja | Ja | Ja | Nee |
+| Mali | Ja | Ja | Ja | No |
 | Malta | Ja | Ja | Ja | Ja |
-| Mauritius | Ja | Ja | Nee | Ja |
+| Mauritius | Ja | Ja | No | Yes |
 | Mexico | Ja | Ja | Ja | Ja |
 | Monaco | Ja | Ja | Nee | Nee |
-| Mongolië | Ja | Ja | Ja | Nee |
-| Montenegro | Ja | Ja | Ja | Nee |
-| Marokko | Ja | Ja | Ja | Nee |
+| Mongolië | Ja | Ja | Ja | No |
+| Montenegro | Ja | Ja | Ja | No |
+| Marokko | Ja | Ja | Ja | No |
 | Mozambique | Ja | Ja | Ja | Ja |
-| Nepal | Ja | Ja | Ja | Nee |
+| Nepal | Ja | Ja | Ja | No |
 | Nederland, de | Ja | Ja | Ja | Ja |
 | Nieuw-Zeeland | Ja | Ja | Ja | Ja |
 | Nicaragua | Ja | Ja | Ja | Ja |
-| Niger | Ja | Ja | Ja | Nee |
-| Nigeria | Ja | Ja | Ja | Nee |
+| Niger | Ja | Ja | Ja | No |
+| Nigeria | Ja | Ja | Ja | No |
 | Noorwegen | Ja | Ja | Ja | Ja |
 | Oman | Ja | Ja | Ja | Ja |
-| Pakistan | Ja | Ja | Ja | Nee |
+| Pakistan | Ja | Ja | Ja | No |
 | Panama | Ja | Ja | Ja | Ja |
-| Paraguay | Ja | Ja | Ja | Nee |
+| Paraguay | Ja | Ja | Ja | No |
 | Peru | Ja | Ja | Ja | Ja |
 | Filipijnen | Ja | Ja | Ja | Ja |
 | Polen | Ja | Ja | Ja | Ja |
 | Portugal | Ja | Ja | Ja | Ja |
-| Puerto Rico | Nee | Nee | Ja | Nee |
+| Puerto Rico | Nee | Nee | Yes | No |
 | Qatar | Ja | Ja | Ja | Ja |
-| Roemenië | Ja | Ja | Ja | Nee |
-| Rusland | Ja | Ja | Nee | Ja |
-| Rwanda | Ja | Ja | Ja | Nee |
-| Saint Vincent en de Grenadines | Nee | Ja | Nee | Nee |
+| Roemenië | Ja | Ja | Ja | No |
+| Rusland | Ja | Ja | No | Yes |
+| Rwanda | Ja | Ja | Ja | No |
+| Saint Vincent en de Grenadines | No | Yes | Nee | Nee |
 | Saoedi-Arabië | Ja | Ja | Ja | Ja |
-| Senegal | Ja | Ja | Ja | Nee |
-| Servië | Ja | Ja | Ja | Nee |
-| Sierra Leone | Ja | Ja | Ja | Nee |
+| Senegal | Ja | Ja | Ja | No |
+| Servië | Ja | Ja | Ja | No |
+| Sierra Leone | Ja | Ja | Ja | No |
 | Singapore | Ja | Ja | Ja | Ja |
 | Slowakije | Ja | Ja | Ja | Ja |
 | Slovenië | Ja | Ja | Ja | Ja |
-| Somalië | Ja | Ja | Ja | Nee |
+| Somalië | Ja | Ja | Ja | No |
 | Zuid-Afrika | Ja | Ja | Ja | Ja |
 | Spanje | Ja | Ja | Ja | Ja |
-| Sri Lanka | Ja | Ja | Ja | Nee |
+| Sri Lanka | Ja | Ja | Ja | No |
 | Zweden | Ja | Ja | Ja | Ja |
-| Zwitserland | Ja | Ja | Ja | Nee |
-| Taiwan | Nee | Ja | Ja | Ja |
+| Zwitserland | Ja | Ja | Ja | No |
+| Taiwan | No | Ja | Ja | Ja |
 | Tadzjikistan | Ja | Ja | Nee | Nee |
-| Tanzania | Ja | Ja | Ja | Nee |
+| Tanzania | Ja | Ja | Ja | No |
 | Thailand | Ja | Ja | Ja | Ja |
-| Timor-Leste | Ja | Ja | Ja | Nee |
-| Togo | Ja | Ja | Ja | Nee |
+| Timor-Leste | Ja | Ja | Ja | No |
+| Togo | Ja | Ja | Ja | No |
 | Tonga | Ja | Ja | Nee | Nee |
 | Trinidad en Tobago | Ja | Ja | Ja | Ja |
-| Tunesië | Ja | Ja | Ja | Nee |
-| Turkije | Ja | Ja | Ja | Nee |
+| Tunesië | Ja | Ja | Ja | No |
+| Turkije | Ja | Ja | Ja | No |
 | Turkmenistan | Ja | Ja | Nee | Nee |
-| Oeganda | Ja | Ja | Ja | Nee |
+| Oeganda | Ja | Ja | Ja | No |
 | Oekraïne | Ja | Ja | Nee | Nee |
 | Verenigde Arabische Emiraten | Ja | Ja | Ja | Ja |
 | Verenigd Koninkrijk | Ja | Ja | Ja | Ja |
@@ -190,8 +189,8 @@ Dit zijn de landen en regio's waarin de bovenstaande betalings methoden worden g
 | Oezbekistan | Ja | Ja | Nee | Nee |
 | Venezuela | Ja | Ja | Ja | Ja |
 | Vietnam | Ja | Ja | Ja | Ja |
-| Zambia | Ja | Ja | Ja | Nee |
-| Zimbabwe | Ja | Ja | Ja | Nee |
+| Zambia | Ja | Ja | Ja | No |
+| Zimbabwe | Ja | Ja | Ja | No |
 | | |
 
 ## <a name="next-step"></a>Volgende stap

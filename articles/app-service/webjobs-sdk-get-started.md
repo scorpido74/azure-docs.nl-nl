@@ -7,10 +7,9 @@ ms.topic: article
 ms.date: 02/18/2019
 ms.author: glenga
 ms.openlocfilehash: 287b58f85cad0082ac782a20cdfb0b9b9ea810e7
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/21/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "83743624"
 ---
 # <a name="get-started-with-the-azure-webjobs-sdk-for-event-driven-background-processing"></a>Aan de slag met de Azure WebJobs SDK voor gebeurtenisgestuurde verwerking op de achtergrond
@@ -203,7 +202,7 @@ De Azure Storage-emulator die lokaal wordt uitgevoerd, beschikt niet over alle f
 
 1. Selecteer **Maken**.
 
-   ![Opslag account maken](./media/webjobs-sdk-get-started/create-storage-account.png)
+   ![Een opslagaccount maken](./media/webjobs-sdk-get-started/create-storage-account.png)
 
 1. Selecteer het nieuwe opslag account onder het knoop punt **opslag** in **Server Explorer**. Selecteer in het venster **Eigenschappen** het weglatings teken (**...**) aan de rechter kant van het veld met de **verbindings reeks** waarde.
 
@@ -217,7 +216,7 @@ De Azure Storage-emulator die lokaal wordt uitgevoerd, beschikt niet over alle f
 
 De webjobs SDK zoekt naar de opslag connection string in de toepassings instellingen in Azure. Wanneer u lokaal uitvoert, zoekt het naar deze waarde in het lokale configuratie bestand of in omgevings variabelen.
 
-1. Klik met de rechter muisknop op het **Add**project, selecteer  >  **Nieuw item toevoegen...**, kies **Java script JSON Configuration File**, noem het nieuwe bestand *appSettings. json* file en selecteer **toevoegen**. 
+1. Klik met de rechter muisknop op het **Add**project, selecteer  >  **Nieuw item toevoegen...**, kies het **JSON-configuratie bestand van Java script**, geef het nieuwe bestand de naam *appsettings.jsop* bestand en selecteer **toevoegen**. 
 
 1. Voeg in het nieuwe bestand een `AzureWebJobsStorage` veld toe, zoals in het volgende voor beeld:
 
@@ -229,7 +228,7 @@ De webjobs SDK zoekt naar de opslag connection string in de toepassings instelli
 
 1. Vervang *{storage Connection String}* door de Connection String die u eerder hebt gekopieerd.
 
-1. Selecteer het bestand *appSettings. json* in Solution Explorer en stel in het venster **Eigenschappen** de optie **kopiëren naar uitvoer Directory** in op **kopiëren indien nieuwer**.
+1. Selecteer de *appsettings.js* in het Solution Explorer en stel in het venster **Eigenschappen** de optie **kopiëren naar uitvoer Directory** in op **kopiëren als u nieuwer**wilt.
 
 Later voegt u dezelfde connection string app-instelling in uw app toe in Azure App Service.
 
@@ -300,7 +299,7 @@ In deze sectie maakt en voert u het project lokaal uit en wordt de functie geact
 
 ## <a name="add-application-insights-logging"></a>Application Insights logboek registratie toevoegen
 
-Wanneer het project wordt uitgevoerd in azure, kunt u de uitvoering van functies niet bewaken door de console-uitvoer weer te geven. De bewakings oplossing die we aanraden, is [Application Insights](../azure-monitor/app/app-insights-overview.md). Zie [Azure functions bewaken](../azure-functions/functions-monitoring.md)voor meer informatie.
+Wanneer het project wordt uitgevoerd in azure, kunt u de uitvoering van functies niet bewaken door de console-uitvoer weer te geven. De bewakings oplossing die we aanraden, is [Application Insights](../azure-monitor/app/app-insights-overview.md). Zie [Monitor Azure Functions](../azure-functions/functions-monitoring.md) (Azure Functions bewaken) voor meer informatie.
 
 In deze sectie voert u de volgende taken uit om Application Insights logboek registratie in te stellen voordat u naar Azure implementeert:
 
@@ -340,7 +339,7 @@ In deze sectie voert u de volgende taken uit om Application Insights logboek reg
 
 1. Selecteer **Opslaan**.
 
-1. Voeg de Application Insights verbinding toe aan het project, zodat u deze lokaal kunt uitvoeren. Voeg in het bestand *appSettings. json* een `APPINSIGHTS_INSTRUMENTATIONKEY` veld toe, zoals in het volgende voor beeld:
+1. Voeg de Application Insights verbinding toe aan het project, zodat u deze lokaal kunt uitvoeren. Voeg in het *appsettings.js* bestand een veld toe `APPINSIGHTS_INSTRUMENTATIONKEY` , zoals in het volgende voor beeld:
 
     ```json
     {

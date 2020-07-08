@@ -14,13 +14,12 @@ ms.topic: conceptual
 ms.workload: identity
 ROBOTS: NOINDEX
 ms.openlocfilehash: 5c1c03a407315fc4f1b3eb967531e2800fc7497f
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/21/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "83738044"
 ---
-# <a name="developer-guidance-for-azure-active-directory-conditional-access"></a>Ontwikkelaars richtlijnen voor voorwaardelijke toegang Azure Active Directory
+# <a name="developer-guidance-for-azure-active-directory-conditional-access"></a>Hulp voor ontwikkelaars bij voorwaardelijke toegang van Azure Active Directory
 
 [!INCLUDE [active-directory-azuread-dev](../../../includes/active-directory-azuread-dev.md)]
 
@@ -46,7 +45,7 @@ Met name de volgende scenario's vereisen code voor het afhandelen van voorwaarde
 
 * Apps die namens de stroom uitvoeren
 * Apps die toegang krijgen tot meerdere Services/bronnen
-* Apps met één pagina met behulp van ADAL. js
+* Apps met één pagina met ADAL.js
 * Web Apps het aanroepen van een resource
 
 Beleid voor voorwaardelijke toegang kan worden toegepast op de app, maar kan ook worden toegepast op een web-API die toegang heeft tot uw app. Zie [common Conditional Access policies](../conditional-access/concept-conditional-access-policy-common.md)(Engelstalig) voor meer informatie over het configureren van een beleid voor voorwaardelijke toegang.
@@ -98,7 +97,7 @@ De volgende informatie is alleen van toepassing op deze scenario's voor voorwaar
 
 * Apps die namens de stroom uitvoeren
 * Apps die toegang krijgen tot meerdere Services/bronnen
-* Apps met één pagina met behulp van ADAL. js
+* Apps met één pagina met ADAL.js
 
 In de volgende secties worden algemene scenario's besproken die complexer zijn. Het basis principe van beleid is voorwaardelijke toegang wordt geëvalueerd op het moment dat het token wordt aangevraagd voor de service waarop een beleid voor voorwaardelijke toegang is toegepast.
 
@@ -147,11 +146,11 @@ claims={"access_token":{"polids":{"essential":true,"Values":["<GUID>"]}}}
 
 Als de app gebruikmaakt van de ADAL-bibliotheek, wordt een fout bij het ophalen van het token altijd opnieuw geprobeerd. Wanneer deze interactieve aanvraag plaatsvindt, heeft de eind gebruiker de mogelijkheid om te voldoen aan de voorwaardelijke toegang. Dit geldt alleen als de aanvraag a `AcquireTokenSilentAsync` of `PromptBehavior.Never` in welk geval de app een interactieve aanvraag moet uitvoeren ```AcquireToken``` om de eind gebruiker te voorzien van de kans dat deze aan het beleid voldoet.
 
-## <a name="scenario-single-page-app-spa-using-adaljs"></a>Scenario: een app met één pagina (SPA) met behulp van ADAL. js
+## <a name="scenario-single-page-app-spa-using-adaljs"></a>Scenario: een app met één pagina (SPA) met ADAL.js
 
-In dit scenario laten we de zaak door lopen wanneer we een app met één pagina (SPA) hebben, met behulp van ADAL. js voor het aanroepen van een beveiligde web-API met voorwaardelijke toegang. Dit is een eenvoudige architectuur, maar er zijn enkele nuances die rekening moeten houden bij het ontwikkelen van voorwaardelijke toegang.
+In dit scenario wordt de zaak door lopen wanneer we een app met één pagina (SPA) hebben, met behulp van ADAL.js om een beveiligde web-API met voorwaardelijke toegang aan te roepen. Dit is een eenvoudige architectuur, maar er zijn enkele nuances die rekening moeten houden bij het ontwikkelen van voorwaardelijke toegang.
 
-In ADAL. js zijn er een aantal functies die tokens verkrijgen: `login()` , `acquireToken(...)` , `acquireTokenPopup(…)` , en `acquireTokenRedirect(…)` .
+In ADAL.js zijn er enkele functies die tokens verkrijgen: `login()` , `acquireToken(...)` , `acquireTokenPopup(…)` , en `acquireTokenRedirect(…)` .
 
 * `login()`Hiermee wordt een ID-token opgehaald via een interactieve aanmeldings aanvraag, maar geen toegangs tokens voor een service ontvangen (inclusief een beveiligde web-API met voorwaardelijke toegang).
 * `acquireToken(…)`kan vervolgens worden gebruikt om een toegangs token op de achtergrond te verkrijgen, wat betekent dat de gebruikers interface in geen enkele omstandigheid wordt weer gegeven.
@@ -173,9 +172,9 @@ error_description=AADSTS50076: Due to a configuration change made by your admini
 
 Onze app moet worden onderschept `error=interaction_required` . De toepassing kan vervolgens ofwel `acquireTokenPopup()` of `acquireTokenRedirect()` op dezelfde resource gebruiken. De gebruiker is gedwongen een multi-factor Authentication uit te voeren. Nadat de gebruiker de multi-factor Authentication heeft voltooid, wordt er door de app een nieuw toegangs token uitgegeven voor de aangevraagde resource.
 
-Als u dit scenario wilt uitproberen, raadpleegt u ons [js Spa-code voorbeeld](https://github.com/Azure-Samples/active-directory-dotnet-webapi-onbehalfof-ca). Dit code voorbeeld maakt gebruik van het beleid voor voorwaardelijke toegang en de Web-API die u eerder hebt geregistreerd met een JS SPA om dit scenario te demonstreren. Hier ziet u hoe u de claim Challenge goed kunt afhandelen en een toegangs token krijgt dat kan worden gebruikt voor uw web-API. U kunt ook het algemene [hoek. js-code voorbeeld](https://github.com/Azure-Samples/active-directory-angularjs-singlepageapp) uitchecken voor hulp bij een hoek Spa
+Als u dit scenario wilt uitproberen, raadpleegt u ons [js Spa-code voorbeeld](https://github.com/Azure-Samples/active-directory-dotnet-webapi-onbehalfof-ca). Dit code voorbeeld maakt gebruik van het beleid voor voorwaardelijke toegang en de Web-API die u eerder hebt geregistreerd met een JS SPA om dit scenario te demonstreren. Hier ziet u hoe u de claim Challenge goed kunt afhandelen en een toegangs token krijgt dat kan worden gebruikt voor uw web-API. U kunt ook het voor beeld van de algemene [Angular.js code](https://github.com/Azure-Samples/active-directory-angularjs-singlepageapp) uitchecken voor hulp bij een hoek Spa
 
-## <a name="see-also"></a>Zie ook
+## <a name="see-also"></a>Zie tevens
 
 * Zie [voorwaardelijke toegang in azure Active Directory](../active-directory-conditional-access-azure-portal.md)voor meer informatie over de mogelijkheden.
 * Zie [github opslag plaats code samples](https://github.com/azure-samples?utf8=%E2%9C%93&q=active-directory)(Engelstalig) voor meer informatie over Azure ad-code voorbeelden.

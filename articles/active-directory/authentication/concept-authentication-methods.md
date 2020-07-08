@@ -12,13 +12,12 @@ manager: daveba
 ms.collection: M365-identity-device-management
 ms.custom: contperfq4
 ms.openlocfilehash: 642f2705f54fe8f84cfde7ff039c9a723be59595
-ms.sourcegitcommit: 318d1bafa70510ea6cdcfa1c3d698b843385c0f6
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/21/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "83770956"
 ---
-# <a name="what-authentication-and-verification-methods-are-available-in-azure-active-directory"></a>Welke verificatie-en verificatie methoden zijn er beschikbaar in Azure Active Directory?
+# <a name="what-authentication-and-verification-methods-are-available-in-azure-active-directory"></a>Welke authenticatie- en verificatiemethoden zijn er beschikbaar in Azure Active Directory?
 
 Als onderdeel van de aanmeldings ervaring voor accounts in Azure Active Directory (Azure AD), zijn er verschillende manieren waarop een gebruiker zichzelf kan verifiëren. Een gebruikers naam en wacht woord zijn de meest voorkomende manier waarop een gebruiker historische referenties zou opgeven. Met moderne verificatie-en beveiligings functies in azure AD kan het basis wachtwoord worden aangevuld of worden vervangen door extra verificatie methoden.
 
@@ -35,16 +34,16 @@ De volgende tabel geeft een overzicht van de methoden die beschikbaar zijn voor 
 
 | Methode | Primaire authenticatie | Secundaire verificatie |
 | --- | --- | --- |
-| [Wachtwoord](#password) | Ja | |
+| [Wachtwoord](#password) | Yes | |
 | [Microsoft Authenticator-app](#microsoft-authenticator-app) | Ja (preview-versie) | MFA en SSPR |
-| [FIDO2-beveiligings sleutels (preview-versie)](#fido2-security-keys) | Ja | Alleen MFA |
-| [OATH-software tokens](#oath-software-tokens) | Nee | MFA |
-| [OATH-hardware-tokens (preview-versie)](#oath-hardware-tokens-preview) | Ja | MFA |
+| [FIDO2-beveiligings sleutels (preview-versie)](#fido2-security-keys) | Yes | Alleen MFA |
+| [OATH-software tokens](#oath-software-tokens) | No | MFA |
+| [OATH-hardware-tokens (preview-versie)](#oath-hardware-tokens-preview) | Yes | MFA |
 | [Sms](#phone-options) | Ja (preview-versie) | MFA en SSPR |
-| [Spraakoproep](#phone-options) | Nee | MFA en SSPR |
-| [Beveiligingsvragen](#security-questions) | Nee | Alleen SSPR |
-| [E-mailadres](#email-address) | Nee | Alleen SSPR |
-| [App-wachtwoorden](#app-passwords) | Nee | Alleen in bepaalde gevallen MFA |
+| [Spraakoproep](#phone-options) | No | MFA en SSPR |
+| [Beveiligingsvragen](#security-questions) | No | Alleen SSPR |
+| [E-mailadres](#email-address) | No | Alleen SSPR |
+| [App-wachtwoorden](#app-passwords) | No | Alleen in bepaalde gevallen MFA |
 
 Dit artikel bevat een overzicht van de verschillende verificatie-en verificatie methoden die beschikbaar zijn in azure AD en alle specifieke beperkingen of beperkingen.
 

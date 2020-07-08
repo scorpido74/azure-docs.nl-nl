@@ -13,13 +13,12 @@ ms.date: 04/02/2020
 ms.author: curtand
 ms.reviewer: kexia
 ms.openlocfilehash: 8d2e34bcfd180dfeb814dace2a496f3ac593c5bf
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/21/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "83738605"
 ---
-# <a name="common-problems-with-two-factor-verification-and-your-work-or-school-account"></a>Veelvoorkomende problemen met twee ledige verificatie en uw werk-of school account
+# <a name="common-problems-with-two-factor-verification-and-your-work-or-school-account"></a>Veelvoorkomende problemen met verificatie in twee stappen en uw werk- of schoolaccount
 
 Wanneer uw Azure Active Directory-organisatie (Azure AD) de twee ledige verificatie inschakelt, moet uw werk-of school account een combi natie hebben van uw gebruikers naam, uw wacht woord en een mobiel apparaat of telefoon nummer. Het is veiliger dan alleen een wacht woord, afhankelijk van twee vormen van verificatie: iets wat u kent en wat u met u hebt. Verificatie op basis van twee factoren kan helpen voor komen dat kwaadwillende hackers zich voordoen, want zelfs als ze uw wacht woord hebben, zijn de conflicteert dat ze niet uw apparaat hebben.
 
@@ -99,7 +98,7 @@ App-wacht woorden vervangen uw normale wacht woord voor oudere desktop toepassin
 
 ## <a name="i-cant-turn-two-factor-verification-off"></a>Ik kan niet twee ledige verificatie uitschakelen
 
-Als u twee ledige verificatie met uw werk-of school account gebruikt (bijvoorbeeld alain@contoso.com ), betekent dit waarschijnlijk dat uw organisatie heeft besloten deze extra beveiligings functie te gebruiken. Omdat uw organisatie u heeft besloten om deze functie te gebruiken, is het niet mogelijk om deze afzonderlijk in te scha kelen. Als u echter twee ledige verificatie met een persoonlijk account gebruikt, alain@outlook.com hebt u de mogelijkheid om de functie in of uit te scha kelen. Zie voor meer informatie over het beheren van twee ledige verificatie voor uw persoonlijke accounts, [het inschakelen van twee ledige verificatie in-of uitschakelen voor uw Microsoft-account](https://support.microsoft.com/help/4028586/microsoft-account-turning-two-step-verification-on-or-off).
+Als u twee ledige verificatie met uw werk-of school account gebruikt (bijvoorbeeld alain@contoso.com ), betekent dit waarschijnlijk dat uw organisatie heeft besloten deze extra beveiligings functie te gebruiken. Omdat uw organisatie u heeft besloten dat u deze functie moet gebruiken, is het niet mogelijk deze afzonderlijk uit te schakelen. Als u echter twee ledige verificatie met een persoonlijk account gebruikt, alain@outlook.com hebt u de mogelijkheid om de functie in of uit te scha kelen. Zie voor meer informatie over het beheren van twee ledige verificatie voor uw persoonlijke accounts, [het inschakelen van twee ledige verificatie in-of uitschakelen voor uw Microsoft-account](https://support.microsoft.com/help/4028586/microsoft-account-turning-two-step-verification-on-or-off).
 
 Als u twee ledige verificatie niet kunt uitschakelen, kan dit ook worden veroorzaakt door de standaard beveiligings instellingen die zijn toegepast op het niveau van de organisatie. Zie [Wat zijn de standaard beveiligings instellingen?](../fundamentals/concept-fundamentals-security-defaults.md) voor meer informatie over de standaard instellingen van de beveiliging.
 
@@ -109,7 +108,7 @@ Als u deze stappen hebt uitgevoerd, maar nog steeds problemen ondervindt, neemt 
 
 ## <a name="related-articles"></a>Verwante artikelen:
 
-- [De instellingen voor de verificatie methode met twee factoren beheren](multi-factor-authentication-end-user-manage-settings.md)
+- [Instellingen voor tweeledige verificatiemethode beheren](multi-factor-authentication-end-user-manage-settings.md)
 
 - [Mijn account instellen voor verificatie in twee stappen](multi-factor-authentication-end-user-first-time.md)
 

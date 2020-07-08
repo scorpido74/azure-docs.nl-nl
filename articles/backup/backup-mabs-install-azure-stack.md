@@ -4,10 +4,9 @@ description: In dit artikel vindt u informatie over het gebruik van Azure Backup
 ms.topic: conceptual
 ms.date: 01/31/2019
 ms.openlocfilehash: 7a1f48c0987ed0eaea70d887709e52b9a1f1fe1d
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/21/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "83747439"
 ---
 # <a name="install-azure-backup-server-on-azure-stack"></a>Azure Backup Server installeren op Azure Stack
@@ -171,7 +170,7 @@ Nadat u alle bestanden naar uw Azure Stack virtuele machine hebt gedownload, gaa
 
 ![Down load Center 1](./media/backup-mabs-install-azure-stack/download-mabs-installer.png)
 
-1. Als u de installatie wilt starten, klikt u in de lijst met gedownloade bestanden op **MicrosoftAzureBackupserverInstaller. exe**.
+1. Als u de installatie wilt starten, klikt u in de lijst met gedownloade bestanden op **MicrosoftAzureBackupserverInstaller.exe**.
 
     > [!WARNING]
     > Er is ten minste 4 GB beschik bare ruimte nodig om de Setup-bestanden uit te pakken.
@@ -193,7 +192,7 @@ Nadat u alle bestanden naar uw Azure Stack virtuele machine hebt gedownload, gaa
 
    ![Wizard Microsoft Azure Backup-installatie](./media/backup-mabs-install-azure-stack/mabs-install-wizard-install-3.png)
 
-6. Zodra het uitpak proces is voltooid, klikt u op **volt ooien**. **Setup. exe uitvoeren** is standaard geselecteerd. Wanneer u op **volt ooien**klikt, installeert Setup. exe Microsoft Azure backup server op de opgegeven locatie.
+6. Zodra het uitpak proces is voltooid, klikt u op **volt ooien**. **setup.exe** is standaard ingeschakeld. Wanneer u op **volt ooien**klikt, installeert Setup.exe Microsoft Azure backup-server op de opgegeven locatie.
 
    ![Wizard Microsoft Azure Backup-installatie](./media/backup-mabs-install-azure-stack/mabs-install-wizard-finish-4.png)
 

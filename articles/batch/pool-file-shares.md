@@ -4,10 +4,9 @@ description: Een Azure Files-share koppelen vanuit reken knooppunten in een Linu
 ms.topic: how-to
 ms.date: 05/24/2018
 ms.openlocfilehash: cb7e6f158e246319e851ee2edd5b21bae33c3723
-ms.sourcegitcommit: a9784a3fd208f19c8814fe22da9e70fcf1da9c93
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/22/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "83780270"
 ---
 # <a name="use-an-azure-file-share-with-a-batch-pool"></a>Een Azure-bestands share gebruiken met een batch-pool
@@ -39,8 +38,8 @@ In batch moet u de share koppelen telkens wanneer een taak wordt uitgevoerd op e
 
 Neem bijvoorbeeld een `net use` opdracht op voor het koppelen van de bestands share als onderdeel van de opdracht regel van elke taak. De volgende referenties zijn nodig om de bestands share te koppelen:
 
-* **Gebruikers naam**: Azure \\ \< storageaccountname \> , bijvoorbeeld Azure \\ *mystorageaccountname*
-* **Wacht woord**: \< StorageAccountKeyWhichEnds in = =>, bijvoorbeeld *XXXXXXXXXXXXXXXXXXXXX = =*
+* **Gebruikers naam**: Azure \\ \<storageaccountname\> , bijvoorbeeld Azure \\ *mystorageaccountname*
+* **Wacht woord**: bijvoorbeeld \<StorageAccountKeyWhichEnds in==> *XXXXXXXXXXXXXXXXXXXXX = =*
 
 Met de volgende opdracht koppelt u een bestands share *myfileshare* in het opslag account *Mystorageaccountname* als station *S* :
 
@@ -116,8 +115,8 @@ apt-get update && apt-get install cifs-utils && sudo mkdir -p /mnt/MyAzureFileSh
 
 Voer vervolgens de `mount` opdracht uit om de bestands share te koppelen, zodat u deze referenties kunt opgeven:
 
-* **Gebruikers naam**: \< storageaccountname \> , bijvoorbeeld *mystorageaccountname*
-* **Wacht woord**: \< StorageAccountKeyWhichEnds in = =>, bijvoorbeeld *XXXXXXXXXXXXXXXXXXXXX = =*
+* **Gebruikers naam**: bijvoorbeeld \<storageaccountname\> *mystorageaccountname*
+* **Wacht woord**: bijvoorbeeld \<StorageAccountKeyWhichEnds in==> *XXXXXXXXXXXXXXXXXXXXX = =*
 
 Met de volgende opdracht koppelt u een bestands share *myfileshare* in het opslag account *mystorageaccountname* op */mnt/MyAzureFileShare*: 
 

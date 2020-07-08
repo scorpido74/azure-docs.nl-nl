@@ -8,10 +8,9 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 04/24/2020
 ms.openlocfilehash: 6639026d071b496027996036a81f6bc66e0185e3
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/21/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "83744816"
 ---
 # <a name="payout-summaries"></a>Betalingsoverzichten
@@ -45,7 +44,7 @@ Als u de transactie gegevens op deze pagina wilt exporteren, gebruikt u de pagin
 
 De totalen op deze pagina geven alle Program ma's aan waarvan u deel uitmaakt. U kunt filteren op deel nemer-ID, programma, betalings-ID en type verdienen. De bedragen worden in Amerikaanse dollars uitgedrukt. De betaalde waarde wordt ook weer gegeven in betalen aan valuta.
 
-| Gebied                   | Beschrijving                                                                                |
+| Onderwerp                   | Beschrijving                                                                                |
 |------------------------|---------------------------------------------------------------------------------------------|
 | Totaal betaald dit jaar   | Het gecombineerde totaal dat dit jaar, in Amerikaanse dollars, voor al uw Program ma's is betaald       |
 | Volgende geschatte betaling | De enkele volgende betaling die aan u wordt ontvangen (zelfs als er nog andere gebruikers binnenkort beschikbaar zijn), in Amerikaanse dollars |
@@ -68,19 +67,19 @@ Als u de transactie gegevens op deze pagina wilt exporteren, selecteert u **expo
 
 | Status verdienen           | Reden                                                                                                                                      | Partner actie vereist?                                   |
 |--------------------------|---------------------------------------------------------------------------------------------------------------------------------------------|------------------------------------------------------------|
-| Verwerkte              | Het verdienen komt in aanmerking voor betaling. Deze status blijft van toepassing op een koel periode zoals gedefinieerd in de programma gids voor het prestatie programma. | Nee                                                         |
-| Verschijnen                 | De betalings order is gegenereerd interne beoordelingen voordat de betaling wordt verwerkt                                                               | Nee                                                         |
+| Verwerkte              | Het verdienen komt in aanmerking voor betaling. Deze status blijft van toepassing op een koel periode zoals gedefinieerd in de programma gids voor het prestatie programma. | No                                                         |
+| Verschijnen                 | De betalings order is gegenereerd interne beoordelingen voordat de betaling wordt verwerkt                                                               | No                                                         |
 | Factuur met openstaande BTW      | Uw BTW-factuur is onvolledig of ongeldig                                                                                                  | U moet uw BTW-factuur bijwerken voordat u kunt betalen |
 | Afgewezen tijdens beoordeling   | De betaling is afgewezen tijdens de controle                                                                                                     | Neem contact op met [micro soft ondersteuning](https://developer.microsoft.com/windows/support) voor meer informatie                      |
 | Mislukt                   | De betaling is mislukt vanwege een micro soft-systeem fout                                                                                         | Neem contact op met [micro soft ondersteuning](https://developer.microsoft.com/windows/support) voor meer informatie                      |
-| Actief              | De betaling wordt uitgevoerd                                                                                                                 | Nee                                                         |
-| Onjuiste betaling        | Het terugkoppelings bedrag wordt uitgevoerd                                                                                                       | Nee                                                         |
-| Verzonden                     | De betaling is verzonden naar uw bank                                                                                                     | Nee                                                         |
-| Verwerkt             | De betaling heeft een micro soft-systeem fout aangetroffen en wordt opnieuw verwerkt                                                                  | Nee                                                         |
-| Reversed                 | De betaling is teruggedraaid door uw bank en wordt opnieuw verzonden in de volgende betalings cyclus                                                     | Nee                                                         |
+| Actief              | De betaling wordt uitgevoerd                                                                                                                 | No                                                         |
+| Onjuiste betaling        | Het terugkoppelings bedrag wordt uitgevoerd                                                                                                       | No                                                         |
+| Verzonden                     | De betaling is verzonden naar uw bank                                                                                                     | No                                                         |
+| Verwerkt             | De betaling heeft een micro soft-systeem fout aangetroffen en wordt opnieuw verwerkt                                                                  | No                                                         |
+| Reversed                 | De betaling is teruggedraaid door uw bank en wordt opnieuw verzonden in de volgende betalings cyclus                                                     | No                                                         |
 | Geweigerde BTW-factuur     | Uw belasting factuur is afgewezen tijdens de controle. Alle openstaande betalingen worden in de wacht stand gezet totdat de beoordeling van de belasting factuur is voltooid.                 | Neem contact op met [micro soft ondersteuning](https://developer.microsoft.com/windows/support) voor meer informatie                      |
-| Factuur belasting onder beoordeling | Uw belasting factuur wordt gecontroleerd. Uw betaling wordt vrijgegeven zodra de belasting factuur is goedgekeurd.                                   | Nee                                                         |
-| Geweigerd                 | De betaling is afgewezen door uw bank                                                                                                      | Neem contact op met uw bank voor meer informatie.                             |
+| Factuur belasting onder beoordeling | Uw belasting factuur wordt gecontroleerd. Uw betaling wordt vrijgegeven zodra de belasting factuur is goedgekeurd.                                   | No                                                         |
+| Afgewezen                 | De betaling is afgewezen door uw bank                                                                                                      | Neem contact op met uw bank voor meer informatie.                             |
 |||
 
 ## <a name="export-data-page"></a>Pagina gegevens exporteren
@@ -97,7 +96,7 @@ Het filter kan ertoe leiden dat er **geen gegevens beschikbaar zijn** . Dit bete
 
 Met deze optie kunt u de betalingen die u in uw bank hebt ontvangen, downloaden voor een bepaald programma, de bijbehorende belasting en het samengevoegde bedrag. Dit rapport wordt gebruikt voor veel Partner Center-Program ma's, waardoor sommige kolommen mogelijk niet van toepassing zijn op uw rapport. Deze kolommen worden hieronder gemarkeerd.
 
-| Kolomnaam              | Beschrijving                                                                                                                               |
+| Kolomnaam              | Description                                                                                                                               |
 |--------------------------|-----------------------------------------------------------------------------------------------------------------------------------------  |
 | participantID            | De primaire identiteit van de partner die onder het programma is aangegaan                                                                             |
 | participantIDType        | Doorgaans programma-ID voor prikkel Programma's en verkoper-ID voor Store-Program ma's                                                                |
@@ -123,7 +122,7 @@ Met deze optie kunt u de betalingen die u in uw bank hebt ontvangen, downloaden 
 
 Deze optie biedt een down load van elk verdienen regel item dat u ziet op de pagina transactie geschiedenis, het type, de datum, het bijbehorende transactie bedrag, de klant, het product en andere transactionele gegevens die van toepassing zijn op uw Program ma's.
 
-| Kolomnaam                    | Beschrijving                                                                                                                              | Toepasselijkheid voor prikkels/Store/Azure Marketplace           |
+| Kolomnaam                    | Description                                                                                                                              | Toepasselijkheid voor prikkels/Store/Azure Marketplace           |
 |--------------------------------|------------------------------------------------------------------------------------------------------------------------------------------|----------------------------------------------------------------|
 | earningId                      | Unieke id voor elk verdienen                                                                                                       | Alles                                                            |
 | participantId                  | De primaire identiteit van de partner die onder het programma is aangegaan                                                                            | Alles                                                            |
