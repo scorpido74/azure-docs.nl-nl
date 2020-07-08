@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/18/2019
 ms.author: juliako
-ms.openlocfilehash: c8d32a6434db0fad18b9fe7c2d6e2117795eb651
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 60d75a23609e962547c8c753086e9bef1d4c84eb
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80476735"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85956590"
 ---
 # <a name="deliver-content-to-customers"></a>Inhoud leveren aan klanten
 Wanneer u uw streaming-of video-on-demand inhoud levert aan klanten, is het doel om video van hoge kwaliteit te leveren aan verschillende apparaten onder verschillende netwerk omstandigheden.
@@ -92,22 +92,22 @@ U kunt alleen streamen via TLS als het streaming-eind punt van waaruit u uw inho
 ### <a name="mpeg-dash-format"></a>MPEG-DASH-indeling
 {streaming-eindpuntnaam-media services-accountnaam}.streaming.mediaservices.windows.net/{locator-id}/{bestandsnaam}.ism/Manifest(format=mpd-time-csf)
 
-http:\//testendpoint-testaccount.streaming.mediaservices.Windows.net/fecebb23-46f6-490d-8b70-203e86b0df58/BigBuckBunny.ISM/manifest (Format = mpd-time-KVP)
+http: \/ /testendpoint-testaccount.streaming.mediaservices.Windows.net/fecebb23-46f6-490d-8b70-203e86b0df58/BigBuckBunny.ISM/manifest (Format = mpd-time-KVP)
 
 ### <a name="apple-http-live-streaming-hls-v4-format"></a>Apple HTTP Live Streaming (HLS) v4-indeling
 {streaming-eindpuntnaam-media services-accountnaam}.streaming.mediaservices.windows.net/{locator-id}/{bestandsnaam}.ism/Manifest(format=m3u8-aapl)
 
-http:\//testendpoint-testaccount.streaming.mediaservices.Windows.net/fecebb23-46f6-490d-8b70-203e86b0df58/BigBuckBunny.ISM/manifest (Format = M3U8-AAPL)
+http: \/ /testendpoint-testaccount.streaming.mediaservices.Windows.net/fecebb23-46f6-490d-8b70-203e86b0df58/BigBuckBunny.ISM/manifest (Format = M3U8-AAPL)
 
 ### <a name="apple-http-live-streaming-hls-v3-format"></a>Indeling van Apple HTTP Live Streaming (HLS) v3
 {streaming-eindpunt naam-Media Services-account naam}. streaming. Media Services. Windows. net/{Locator-ID} bestands (Format = M3U8-AAPL-v3)
 
-http:\//testendpoint-testaccount.streaming.mediaservices.Windows.net/fecebb23-46f6-490d-8b70-203e86b0df58/BigBuckBunny.ISM/manifest (Format = M3U8-AAPL-v3)
+http: \/ /testendpoint-testaccount.streaming.mediaservices.Windows.net/fecebb23-46f6-490d-8b70-203e86b0df58/BigBuckBunny.ISM/manifest (Format = M3U8-AAPL-v3)
 
 ### <a name="apple-http-live-streaming-hls-format-with-audio-only-filter"></a>Apple HTTP Live Streaming-indeling (HLS) met filter voor alleen audio
 Audio-alleen tracks worden standaard opgenomen in het HLS-manifest. Dit is vereist voor de Apple Store-certificering voor mobiele netwerken. Als een client niet voldoende band breedte heeft of verbinding heeft via een 2G-verbinding, worden de afspeel switches alleen naar audio gestuurd. Zo kunt u het streamen van inhoud zonder buffering houden, maar er is geen video. In sommige gevallen is het mogelijk dat het bufferen van spelers de voor keur heeft voor alleen audio. Als u het audio schema alleen wilt verwijderen, voegt u **alleen audio toe = False** aan de URL.
 
-http:\//testendpoint-testaccount.streaming.mediaservices.Windows.net/fecebb23-46f6-490d-8b70-203e86b0df58/BigBuckBunny.ISM/manifest (Format = M3U8-AAPL-v3, alleen audio = false)
+http: \/ /testendpoint-testaccount.streaming.mediaservices.Windows.net/fecebb23-46f6-490d-8b70-203e86b0df58/BigBuckBunny.ISM/manifest (Format = M3U8-AAPL-v3, alleen audio = false)
 
 Zie voor meer informatie [dynamische manifest compositie ondersteuning en HLS uitvoer extra functies](https://azure.microsoft.com/blog/azure-media-services-release-dynamic-manifest-composition-remove-hls-audio-only-track-and-hls-i-frame-track-support/).
 
@@ -116,30 +116,30 @@ Zie voor meer informatie [dynamische manifest compositie ondersteuning en HLS ui
 
 Voorbeeld:
 
-http:\//testendpoint-testaccount.streaming.mediaservices.Windows.net/fecebb23-46f6-490d-8b70-203e86b0df58/BigBuckBunny.ISM/manifest
+http: \/ /testendpoint-testaccount.streaming.mediaservices.Windows.net/fecebb23-46f6-490d-8b70-203e86b0df58/BigBuckBunny.ISM/manifest
 
 ### <a name="smooth-streaming-20-manifest-legacy-manifest"></a><a id="fmp4_v20"></a>Smooth Streaming 2,0-manifest (verouderd manifest)
-Smooth Streaming manifest-indeling bevat standaard de herhalings code (r-tag). Sommige spelers bieden echter geen ondersteuning voor de r-tag. Clients met deze spelers kunnen een indeling gebruiken waarmee de r-code wordt uitgeschakeld:
+De Smooth Streaming manifest-indeling bevat standaard de herhalingstag (r-tag). Sommige spelers bieden echter geen ondersteuning voor de r-tag. Clients met deze spelers kunnen een indeling gebruiken waarmee de r-tag wordt uitgeschakeld:
 
 {streaming-eindpunt naam-Media Services-account naam}. streaming. Media Services. Windows. net/{Locator-ID} bestands (Format = fmp4-V20)
 
-    http://testendpoint-testaccount.streaming.mediaservices.windows.net/fecebb23-46f6-490d-8b70-203e86b0df58/BigBuckBunny.ism/Manifest(format=fmp4-v20)
+`http://testendpoint-testaccount.streaming.mediaservices.windows.net/fecebb23-46f6-490d-8b70-203e86b0df58/BigBuckBunny.ism/Manifest(format=fmp4-v20)`
 
 ## <a name="progressive-download"></a>Progressieve down load
 Met progressief downloaden kunt u beginnen met het afspelen van media voordat het hele bestand is gedownload. U kunt de bestanden van ISM * (ismv, ISMA, ismt en ismc) niet progressief downloaden.
 
 Als u inhoud progressief wilt downloaden, gebruikt u het OnDemandOrigin-type Locator. In het volgende voor beeld wordt de URL weer gegeven die is gebaseerd op het OnDemandOrigin type Locator:
 
-    http://amstest1.streaming.mediaservices.windows.net/3c5fe676-199c-4620-9b03-ba014900f214/BigBuckBunny_H264_650kbps_AAC_und_ch2_96kbps.mp4
+`http://amstest1.streaming.mediaservices.windows.net/3c5fe676-199c-4620-9b03-ba014900f214/BigBuckBunny_H264_650kbps_AAC_und_ch2_96kbps.mp4`
 
 U moet alle door opslag versleutelde assets ontsleutelen die u wilt streamen van de oorspronkelijke service voor progressief downloaden.
 
-## <a name="download"></a>Download
+## <a name="download"></a>Downloaden
 Als u uw inhoud wilt downloaden naar een client apparaat, moet u een SAS-Locator maken. De SAS-Locator geeft u toegang tot de Azure Storage-container waarin uw bestand zich bevindt. Als u de download-URL wilt maken, moet u de bestands naam tussen de host en de SAS-hand tekening insluiten.
 
 In het volgende voor beeld wordt de URL weer gegeven die is gebaseerd op de SAS-Locator:
 
-    https://test001.blob.core.windows.net/asset-ca7a4c3f-9eb5-4fd8-a898-459cb17761bd/BigBuckBunny.mp4?sv=2012-02-12&se=2014-05-03T01%3A23%3A50Z&sr=c&si=7c093e7c-7dab-45b4-beb4-2bfdff764bb5&sig=msEHP90c6JHXEOtTyIWqD7xio91GtVg0UIzjdpFscHk%3D
+`https://test001.blob.core.windows.net/asset-ca7a4c3f-9eb5-4fd8-a898-459cb17761bd/BigBuckBunny.mp4?sv=2012-02-12&se=2014-05-03T01%3A23%3A50Z&sr=c&si=7c093e7c-7dab-45b4-beb4-2bfdff764bb5&sig=msEHP90c6JHXEOtTyIWqD7xio91GtVg0UIzjdpFscHk%3D`
 
 De volgende overwegingen zijn van toepassing:
 
@@ -157,27 +157,30 @@ Een streaming-eind punt vertegenwoordigt een streaming-service die inhoud rechts
 ### <a name="changes-to-smooth-streaming-manifest-version"></a>Wijzigingen in Smooth Streaming manifest versie
 Vóór de release van de juli 2016-service: wanneer activa die zijn geproduceerd door Media Encoder Standard, Media Encoder Premium Workflow of de eerdere Azure Media Encoder gestreamd zijn met behulp van dynamische pakketten, wordt het resulterende Smooth Streaming-manifest in overeenstemming gebracht met versie 2,0. In versie 2,0 maken de fragment duur geen gebruik van de zogenaamde REPEAT-Tags (' r '). Bijvoorbeeld:
 
-
-    <?xml version="1.0" encoding="UTF-8"?>
-    <SmoothStreamingMedia MajorVersion="2" MinorVersion="0" Duration="8000" TimeScale="1000">
-        <StreamIndex Chunks="4" Type="video" Url="QualityLevels({bitrate})/Fragments(video={start time})" QualityLevels="3" Subtype="" Name="video" TimeScale="1000">
-            <QualityLevel Index="0" Bitrate="1000000" FourCC="AVC1" MaxWidth="640" MaxHeight="360" CodecPrivateData="00000001674D4029965201405FF2E02A100000030010000003032E0A000F42400040167F18E3050007A12000200B3F8C70ED0B16890000000168EB7352" />
-            <c t="0" d="2000" n="0" />
-            <c d="2000" />
-            <c d="2000" />
-            <c d="2000" />
-        </StreamIndex>
-    </SmoothStreamingMedia>
+```xml
+<?xml version="1.0" encoding="UTF-8"?>
+<SmoothStreamingMedia MajorVersion="2" MinorVersion="0" Duration="8000" TimeScale="1000">
+    <StreamIndex Chunks="4" Type="video" Url="QualityLevels({bitrate})/Fragments(video={start time})" QualityLevels="3" Subtype="" Name="video" TimeScale="1000">
+        <QualityLevel Index="0" Bitrate="1000000" FourCC="AVC1" MaxWidth="640" MaxHeight="360" CodecPrivateData="00000001674D4029965201405FF2E02A100000030010000003032E0A000F42400040167F18E3050007A12000200B3F8C70ED0B16890000000168EB7352" />
+        <c t="0" d="2000" n="0" />
+        <c d="2000" />
+        <c d="2000" />
+        <c d="2000" />
+    </StreamIndex>
+</SmoothStreamingMedia>
+```
 
 In de service release van juli 2016 voldoet het gegenereerde Smooth Streaming-manifest aan versie 2,2, met een fragment duur met behulp van herhalings codes. Bijvoorbeeld:
 
-    <?xml version="1.0" encoding="UTF-8"?>
-    <SmoothStreamingMedia MajorVersion="2" MinorVersion="2" Duration="8000" TimeScale="1000">
-        <StreamIndex Chunks="4" Type="video" Url="QualityLevels({bitrate})/Fragments(video={start time})" QualityLevels="3" Subtype="" Name="video" TimeScale="1000">
-            <QualityLevel Index="0" Bitrate="1000000" FourCC="AVC1" MaxWidth="640" MaxHeight="360" CodecPrivateData="00000001674D4029965201405FF2E02A100000030010000003032E0A000F42400040167F18E3050007A12000200B3F8C70ED0B16890000000168EB7352" />
-            <c t="0" d="2000" r="4" />
-        </StreamIndex>
-    </SmoothStreamingMedia>
+```xml
+<?xml version="1.0" encoding="UTF-8"?>
+<SmoothStreamingMedia MajorVersion="2" MinorVersion="2" Duration="8000" TimeScale="1000">
+    <StreamIndex Chunks="4" Type="video" Url="QualityLevels({bitrate})/Fragments(video={start time})" QualityLevels="3" Subtype="" Name="video" TimeScale="1000">
+        <QualityLevel Index="0" Bitrate="1000000" FourCC="AVC1" MaxWidth="640" MaxHeight="360" CodecPrivateData="00000001674D4029965201405FF2E02A100000030010000003032E0A000F42400040167F18E3050007A12000200B3F8C70ED0B16890000000168EB7352" />
+        <c t="0" d="2000" r="4" />
+    </StreamIndex>
+</SmoothStreamingMedia>
+```
 
 Sommige van de verouderde Smooth Streaming-clients bieden mogelijk geen ondersteuning voor de herhalings codes en kunnen het manifest niet laden. Als u dit probleem wilt verhelpen, kunt u de verouderde manifest indelings parameter gebruiken **(Format = fmp4-V20)** of uw client bijwerken naar de meest recente versie, die herhaalde Tags ondersteunt. Zie [Smooth Streaming 2,0](media-services-deliver-content-overview.md#fmp4_v20)voor meer informatie.
 

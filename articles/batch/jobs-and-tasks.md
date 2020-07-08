@@ -3,12 +3,12 @@ title: Taken en taken in Azure Batch
 description: Meer informatie over taken en taken en hoe deze worden gebruikt in een Azure Batch werk stroom vanuit een ontwikkelings oogpunt.
 ms.topic: conceptual
 ms.date: 05/12/2020
-ms.openlocfilehash: aeffd05a26066675ca320ab4b3c3c09e6807e6df
-ms.sourcegitcommit: a9784a3fd208f19c8814fe22da9e70fcf1da9c93
+ms.openlocfilehash: 5120b76f34e81c2ceeba88767a656b5ee0d40c2f
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/22/2020
-ms.locfileid: "83791076"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85955366"
 ---
 # <a name="jobs-and-tasks-in-azure-batch"></a>Taken en taken in Azure Batch
 
@@ -22,7 +22,7 @@ Een taak specificeert de [pool](nodes-and-pools.md#pools) waarin het werk moet w
 
 ### <a name="job-priority"></a>Jobprioriteit
 
-U kunt een optionele taak prioriteit toewijzen aan taken die u maakt. De Batch-service gebruikt de prioriteit van de job om de volgorde van de jobplanning binnen een account te bepalen (verwar dit niet met een [geplande job](#scheduled-jobs)). De prioriteitswaarden gaan van -1000 tot 1000, waarbij -1000 de laagste prioriteit is en 1000 de hoogste. U kunt de prioriteit van een job bijwerken door gebruik te maken van de bewerking [Update the properties of a job](https://docs.microsoft.com/rest/api/batchservice/job/update) (Batch REST) of door de eigenschap [CloudJob.Priority](https://docs.microsoft.com/dotnet/api/microsoft.azure.batch.cloudjob) (Batch .NET) te wijzigen.
+U kunt een optionele taak prioriteit toewijzen aan taken die u maakt. De Batch-service gebruikt de prioriteit van de job om de volgorde van de jobplanning binnen een account te bepalen (verwar dit niet met een [geplande job](#scheduled-jobs)). De prioriteitswaarden gaan van -1000 tot 1000, waarbij -1000 de laagste prioriteit is en 1000 de hoogste. U kunt de prioriteit van een job bijwerken door gebruik te maken van de bewerking [Update the properties of a job](/rest/api/batchservice/job/update) (Batch REST) of door de eigenschap [CloudJob.Priority](/dotnet/api/microsoft.azure.batch.cloudjob) (Batch .NET) te wijzigen.
 
 Binnen hetzelfde account hebben jobs met hogere prioriteit in de planning voorrang op jobs met lagere prioriteit. Een job met hogere prioriteit in het ene account heeft geen planningsvoorrang op een andere job met een lagere prioriteitswaarde in een ander account. Taken met lagere prioriteit die al worden uitgevoerd, kunnen niet worden verschoven.
 
@@ -39,13 +39,13 @@ Met beperkingen voor jobs kunt u bepaalde limieten aan uw taken stellen:
 
 De clienttoepassing kan taken toevoegen aan een taak, maar u kunt ook een [jobbeheertaak](#job-manager-task) opgeven. Een jobbeheertaak bevat de benodigde informatie om de vereiste taken voor een job te maken, waarbij de jobbeheertaak wordt uitgevoerd op een van de rekenknooppunten binnen de pool. De taak taak beheer wordt specifiek verwerkt door batch; Zodra de taak is gemaakt, wordt deze in de wachtrij geplaatst en opnieuw opgestart als deze mislukt. Taak beheer taak is vereist voor taken die zijn gemaakt met een [taak planning](#scheduled-jobs), omdat dit de enige manier is om de taken te definiëren voordat de taak wordt geïnstantieerd.
 
-Standaard blijven jobs in de actieve status wanneer alle taken binnen de job zijn voltooid. U kunt dit gedrag wijzigen zodat de job automatisch wordt beëindigd wanneer alle taken binnen de job zijn voltooid. Stel de eigenschap **onAllTasksComplete** ([OnAllTasksComplete](https://docs.microsoft.com/dotnet/api/microsoft.azure.batch.cloudjob) in Batch .NET) van de job in op *terminatejob* om de job automatisch te beëindigen wanneer alle taken de status Voltooid hebben.
+Standaard blijven jobs in de actieve status wanneer alle taken binnen de job zijn voltooid. U kunt dit gedrag wijzigen zodat de job automatisch wordt beëindigd wanneer alle taken binnen de job zijn voltooid. Stel de eigenschap **onAllTasksComplete** ([OnAllTasksComplete](/dotnet/api/microsoft.azure.batch.cloudjob) in Batch .NET) van de job in op *terminatejob* om de job automatisch te beëindigen wanneer alle taken de status Voltooid hebben.
 
 De batch-service beschouwt een taak *zonder taken om alle taken te* kunnen volt ooien. Daarom wordt deze optie meestal gebruikt met een [Jobbeheertaak](#job-manager-task). Als u de automatische beëindiging van een job wilt gebruiken zonder jobbeheer, moet u eerst de eigenschap **onAllTasksComplete** van een nieuwe job instellen op *noaction*. Vervolgens stelt u de eigenschap in op *terminatejob* als u klaar bent met taken toevoegen aan de job.
 
 ### <a name="scheduled-jobs"></a>Geplande jobs
 
-Met behulp van [jobplanningen](https://docs.microsoft.com/rest/api/batchservice/jobschedule) kunt u in de Batch-service terugkerende jobs maken. Een jobplanning geeft aan wanneer u jobs moet uitvoeren en bevat de specificaties voor de uit te voeren jobs. U kunt de duur van de planning opgeven (hoelang en wanneer de planning van kracht is) en hoe vaak taken worden gemaakt tijdens de geplande periode.
+Met behulp van [jobplanningen](/rest/api/batchservice/jobschedule) kunt u in de Batch-service terugkerende jobs maken. Een jobplanning geeft aan wanneer u jobs moet uitvoeren en bevat de specificaties voor de uit te voeren jobs. U kunt de duur van de planning opgeven (hoelang en wanneer de planning van kracht is) en hoe vaak taken worden gemaakt tijdens de geplande periode.
 
 ## <a name="tasks"></a>Taken
 
@@ -153,11 +153,11 @@ Zie voor meer informatie [taak afhankelijkheden in azure batch](batch-task-depen
 
 ### <a name="environment-settings-for-tasks"></a>Omgevingsinstellingen voor taken
 
-Elke taak die wordt uitgevoerd door de Batch-service heeft toegang tot de omgevingsvariabelen die zijn ingesteld op de rekenknooppunten. Hieronder vallen omgevings variabelen die zijn gedefinieerd door de batch-service (door de[service gedefinieerde](https://docs.microsoft.com/azure/batch/batch-compute-node-environment-variables) en aangepaste omgevings variabelen die u voor uw taken kunt definiëren. De toepassingen en scripts die door uw taken worden uitgevoerd, hebben tijdens de uitvoering toegang tot deze omgevingsvariabelen.
+Elke taak die wordt uitgevoerd door de Batch-service heeft toegang tot de omgevingsvariabelen die zijn ingesteld op de rekenknooppunten. Hieronder vallen omgevings variabelen die zijn gedefinieerd door de batch-service (door de[service gedefinieerde](./batch-compute-node-environment-variables.md) en aangepaste omgevings variabelen die u voor uw taken kunt definiëren. De toepassingen en scripts die door uw taken worden uitgevoerd, hebben tijdens de uitvoering toegang tot deze omgevingsvariabelen.
 
-U kunt aangepaste omgevingsvariabelen instellen op het niveau van de taak of de job door voor deze entiteiten de eigenschap voor *omgevingsinstellingen* in te vullen. Zie de bewerking [een taak toevoegen aan een taak](https://docs.microsoft.com/rest/api/batchservice/task/add?)(batch rest API) of de eigenschappen [CloudTask. EnvironmentSettings](https://docs.microsoft.com/dotnet/api/microsoft.azure.batch.cloudtask) en [eigenschap cloudjob. CommonEnvironmentSettings](https://docs.microsoft.com/dotnet/api/microsoft.azure.batch.cloudjob) in batch .net voor meer informatie.
+U kunt aangepaste omgevingsvariabelen instellen op het niveau van de taak of de job door voor deze entiteiten de eigenschap voor *omgevingsinstellingen* in te vullen. Zie de bewerking [een taak toevoegen aan een taak](/rest/api/batchservice/task/add?)(batch rest API) of de eigenschappen [CloudTask. EnvironmentSettings](/dotnet/api/microsoft.azure.batch.cloudtask) en [eigenschap cloudjob. CommonEnvironmentSettings](/dotnet/api/microsoft.azure.batch.cloudjob) in batch .net voor meer informatie.
 
-Uw clienttoepassing of -service kan de omgevingsvariabelen, zowel door de service gedefinieerde als aangepaste, verkrijgen met behulp van de bewerking [Get information about a task](https://docs.microsoft.com/rest/api/batchservice/task/get) (Batch REST) of via de eigenschap [CloudTask.EnvironmentSettings](https://docs.microsoft.com/dotnet/api/microsoft.azure.batch.cloudtask) (Batch .NET). Processen die op een rekenknooppunt worden uitgevoerd, kunnen ook toegang krijgen tot deze en andere omgevingsvariabelen in het knooppunt, bijvoorbeeld met behulp van de vertrouwde syntaxis van `%VARIABLE_NAME%` (Windows) of `$VARIABLE_NAME` (Linux).
+Uw clienttoepassing of -service kan de omgevingsvariabelen, zowel door de service gedefinieerde als aangepaste, verkrijgen met behulp van de bewerking [Get information about a task](/rest/api/batchservice/task/get) (Batch REST) of via de eigenschap [CloudTask.EnvironmentSettings](/dotnet/api/microsoft.azure.batch.cloudtask) (Batch .NET). Processen die op een rekenknooppunt worden uitgevoerd, kunnen ook toegang krijgen tot deze en andere omgevingsvariabelen in het knooppunt, bijvoorbeeld met behulp van de vertrouwde syntaxis van `%VARIABLE_NAME%` (Windows) of `$VARIABLE_NAME` (Linux).
 
 Een volledige lijst van alle gedefinieerde omgevingsvariabelen vindt u in [Compute node environment variables](batch-compute-node-environment-variables.md) (Knooppuntomgevingsvariabelen berekenen).
 

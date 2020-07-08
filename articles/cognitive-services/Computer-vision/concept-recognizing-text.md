@@ -1,7 +1,7 @@
 ---
-title: Tekst lezen uit afbeeldingen en documenten-Computer Vision
+title: Optische teken herkenning (OCR)-Computer Vision
 titleSuffix: Azure Cognitive Services
-description: Concepten met betrekking tot optische teken herkenning (OCR) en tekst van afbeeldingen en documenten voor gedrukte en handgeschreven tekst met behulp van de Computer Vision-API.
+description: Concepten met betrekking tot optische teken herkenning (OCR) van afbeeldingen en documenten met gedrukte en handgeschreven tekst met behulp van de Computer Vision-API.
 services: cognitive-services
 author: msbbonsu
 manager: netahw
@@ -11,14 +11,14 @@ ms.topic: conceptual
 ms.date: 06/23/2020
 ms.author: t-bebon
 ms.custom: seodec18
-ms.openlocfilehash: 416a7edfdcd7e7915aa7886a8f53cf822b43fe93
-ms.sourcegitcommit: 73ac360f37053a3321e8be23236b32d4f8fb30cf
+ms.openlocfilehash: d1c642a660b24cfc54c9c4308b8956582e13d50a
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/30/2020
-ms.locfileid: "85560810"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85954737"
 ---
-# <a name="read-text-from-images-and-documents"></a>Tekst van afbeeldingen en documenten lezen
+# <a name="optical-character-recognition-ocr"></a>Optische tekenherkenning (OCR)
 
 Computer Vision bevat nieuwe, op diep Learning gebaseerde mogelijkheden voor optische teken herkenning (OCR) waarmee gedrukte en handgeschreven tekst uit afbeeldingen en PDF-documenten worden geëxtraheerd. Computer Vision extraheert tekst uit zowel analoge documenten (afbeeldingen, gescande documenten) als gedigitaliseerde documenten. U kunt tekst uit afbeeldingen in het wild extra heren, zoals foto's van een licentie plaat of containers met serie nummers, en van documenten, facturen, facturen, financiële rapporten, artikelen en meer. Deze OCR-functionaliteit is beschikbaar als onderdeel van de beheerde service in de Cloud of on-premises (containers). Het ondersteunt ook virtuele netwerken en persoonlijke eind punten om te voldoen aan de vereisten voor naleving en privacy van uw onderneming.
 
@@ -26,7 +26,7 @@ Computer Vision bevat nieuwe, op diep Learning gebaseerde mogelijkheden voor opt
 
 De [Lees-API](https://westcentralus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-ga/operations/5d986960601faab4bf452005) van computer vision is de nieuwste OCR-technologie van micro soft waarmee gedrukte tekst (zeven talen), handgeschreven tekst (alleen Engels), cijfers en valuta symbolen van afbeeldingen en PDF-documenten met meerdere pagina's worden geëxtraheerd. Het is geoptimaliseerd voor het extra heren van tekst van in-the-Wild-tekst zware afbeeldingen en PDF-documenten met meerdere pagina's met gemengde talen. Het biedt ondersteuning voor het detecteren van gedrukte en handgeschreven tekst (alleen Engels) in dezelfde afbeelding of hetzelfde document. U kunt de volledige lijst met ondersteunde talen vinden op de pagina [taal ondersteuning voor computer vision](https://docs.microsoft.com/azure/cognitive-services/computer-vision/language-support#text-recognition) .
 
-### <a name="how-it-works"></a>Hoe werkt het?
+### <a name="how-it-works"></a>Uitleg
 
 De [Lees-API](https://westcentralus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-ga/operations/5d986960601faab4bf452005) ondersteunt tekst-zware documenten van maxi maal 2000 pagina's en wordt daarom asynchroon uitgevoerd. De eerste stap is het aanroepen van de Lees bewerking. De Lees bewerking neemt een afbeeldings-of PDF-document als invoer en retourneert een bewerkings-ID. 
 

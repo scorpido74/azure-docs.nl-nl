@@ -5,7 +5,7 @@ services: sentinel
 cloud: na
 documentationcenter: na
 author: yelevin
-manager: angrobe
+manager: rkarlin
 ms.assetid: ''
 ms.service: azure-sentinel
 ms.subservice: azure-sentinel
@@ -13,70 +13,84 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 12/09/2019
+ms.date: 06/28/2020
 ms.author: yelevin
-ms.openlocfilehash: 9fa10dd1b278b48eb714affb74af59140c8baa09
-ms.sourcegitcommit: 223cea58a527270fe60f5e2235f4146aea27af32
+ms.openlocfilehash: a43b2282974e30cfcf9fa6950e32008c06da98d2
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/01/2020
-ms.locfileid: "84259334"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85956794"
 ---
 # <a name="permissions-in-azure-sentinel"></a>Machtigingen in azure Sentinel
 
-Azure Sentinel maakt gebruik [van op rollen gebaseerde Access Control (RBAC)](../role-based-access-control/role-assignments-portal.md)om [ingebouwde rollen](../role-based-access-control/built-in-roles.md)te bieden   die kunnen worden toegewezen aan gebruikers, groepen en services in Azure.
+Azure Sentinel maakt gebruik [van op rollen gebaseerde Access Control (RBAC)](../role-based-access-control/role-assignments-portal.md) om [ingebouwde rollen](../role-based-access-control/built-in-roles.md)te bieden   die kunnen worden toegewezen aan gebruikers, groepen en services in Azure.
 
-Met RBAC kunt u rollen binnen uw beveiligings team gebruiken en maken om de juiste toegang tot Azure Sentinel te verlenen. Op basis van de rollen hebt u nauw keurige controle over wat gebruikers met toegang tot Azure Sentinel kunnen zien. U kunt RBAC-rollen rechtstreeks aan de Azure-Sentinel-werk ruimte toewijzen, of op een abonnement of resource groep waartoe de werk ruimte behoort.
+Gebruik RBAC om rollen binnen uw beveiligings team te maken en toe te wijzen om de juiste toegang tot Azure Sentinel te verlenen. De verschillende rollen bieden een nauw keurige controle over wat gebruikers van Azure Sentinel kunnen zien en doen. RBAC-rollen kunnen rechtstreeks worden toegewezen in de Azure Sentinel-werk ruimte (Zie de opmerking hieronder) of in een abonnement of resource groep waartoe de werk ruimte behoort, die wordt overgenomen door Azure Sentinel.
 
-Er zijn drie specifieke, ingebouwde Azure Sentinel-rollen.  
+## <a name="roles-for-working-in-azure-sentinel"></a>Rollen voor het werken in azure-Sentinel
+
+### <a name="azure-sentinel-specific-roles"></a>Sentinel-specifieke rollen van Azure
+
+Er zijn drie speciale, ingebouwde Azure-Sentinel rollen.
+
 **Alle ingebouwde Azure Sentinel-rollen verlenen Lees toegang tot de gegevens in uw Azure Sentinel-werk ruimte.**
-- [Azure Sentinel Reader](../role-based-access-control/built-in-roles.md#azure-sentinel-reader)
-- [Azure Sentinel responder](../role-based-access-control/built-in-roles.md#azure-sentinel-responder)
-- [Azure Sentinel-bijdrager](../role-based-access-control/built-in-roles.md#azure-sentinel-contributor)
 
-Naast Azure Sentinel dedicated RBAC-rollen zijn er Azure-en Log Analytics RBAC-rollen die een grotere set machtigingen kunnen verlenen die toegang hebben tot uw Azure Sentinel-werk ruimte en andere resources:
+- [Azure Sentinel Reader](../role-based-access-control/built-in-roles.md#azure-sentinel-reader) kan gegevens, incidenten, werkmappen en andere Azure Sentinel-bronnen weer geven.
+
+- [Azure Sentinel responder](../role-based-access-control/built-in-roles.md#azure-sentinel-responder) kan naast het bovenstaande ook incidenten beheren (toewijzen, verwijderen, enz.)
+
+- [Azure Sentinel contributor](../role-based-access-control/built-in-roles.md#azure-sentinel-contributor) kan naast het bovenstaande ook werkmappen, analyse regels en andere Azure-Sentinel-resources maken en bewerken.
+
+> [!NOTE]
+>
+> - Voor de beste resultaten moeten deze rollen worden toegewezen aan de **resource groep** die de Azure Sentinel-werk ruimte bevat. Op deze manier worden de rollen toegepast op alle resources die zijn geïmplementeerd ter ondersteuning van Azure Sentinel, omdat deze resources ook in dezelfde resource groep moeten worden geplaatst.
+>
+> - Een andere mogelijkheid is om de rollen rechtstreeks toe te wijzen aan de Azure Sentinel- **werk ruimte** zelf. Als u dit doet, moet u ook dezelfde rollen toewijzen aan de resource van de SecurityInsights- **oplossing** in die werk ruimte. Mogelijk moet u ze ook toewijzen aan andere resources, en moet u voortdurend roltoewijzingen voor resources beheren.
+
+### <a name="additional-roles-and-permissions"></a>Aanvullende rollen en machtigingen
+
+Gebruikers met bepaalde taak vereisten moeten mogelijk aanvullende rollen of specifieke machtigingen toewijzen om hun taken uit te voeren.
+
+- Werken met playbooks om reacties op bedreigingen te automatiseren
+
+    Azure Sentinel maakt gebruik van **playbooks** voor automatische reactie op bedreigingen. Playbooks zijn gebaseerd op **Azure Logic apps**en zijn een afzonderlijke Azure-resource. U kunt het beste aan specifieke leden van uw beveiligings team toewijzen om Logic Apps te gebruiken voor via-bewerkingen (Security Orchestration, Automation en Response). U kunt de rol [Inzender voor logische apps](../role-based-access-control/built-in-roles.md#logic-app-contributor) of de rol van [operator voor logische apps](../role-based-access-control/built-in-roles.md#logic-app-operator) gebruiken om expliciete machtigingen toe te wijzen voor het gebruik van playbooks.
+
+- Gegevens bronnen verbinden met Azure Sentinel
+
+    Als een gebruiker **gegevensconnectors**wilt toevoegen, moet u de schrijf machtigingen van de gebruiker toewijzen aan de Azure Sentinel-werk ruimte. Let ook op de vereiste extra machtigingen voor elke connector, zoals vermeld op de relevante connector pagina.
+
+Zie de [onderstaande tabel](#roles-and-allowed-actions)voor een vergelijking naast elkaar.
+
+### <a name="other-roles-you-might-see-assigned"></a>Andere functies die u kunt zien, zijn toegewezen
+
+Bij het toewijzen van Azure Sentinel-specifieke RBAC-rollen kunt u andere Azure-en Log Analytics RBAC-rollen vinden die voor andere doel einden aan gebruikers zijn toegewezen. Houd er rekening mee dat deze rollen een bredere set machtigingen verlenen die toegang hebben tot uw Azure Sentinel-werk ruimte en andere resources:
 
 - **Azure-rollen:** [eigenaar](../role-based-access-control/built-in-roles.md#owner), [bijdrager](../role-based-access-control/built-in-roles.md#contributor)en [lezer](../role-based-access-control/built-in-roles.md#reader). Azure-rollen verlenen toegang tot alle Azure-resources, waaronder Log Analytics-werk ruimten en Azure-Sentinel-resources.
 
--   **Log Analytics rollen:** [Log Analytics Inzender](../role-based-access-control/built-in-roles.md#log-analytics-contributor), [log Analytics Reader](../role-based-access-control/built-in-roles.md#log-analytics-reader). Log Analytics rollen verlenen toegang tot alle Log Analytics-werk ruimten. 
+- **Log Analytics rollen:** [Log Analytics Inzender](../role-based-access-control/built-in-roles.md#log-analytics-contributor) en [log Analytics lezer](../role-based-access-control/built-in-roles.md#log-analytics-reader). Log Analytics rollen verlenen toegang tot uw Log Analytics-werk ruimten. 
 
-> [!NOTE]
-> Log Analytics rollen verlenen ook lees toegang voor alle Azure-resources, maar ze kunnen alleen schrijf machtigingen toewijzen aan Log Analytics-resources.
-
-
-Bijvoorbeeld, een gebruiker die is toegewezen met rollen van **Azure Sentinel Reader** en **Azure contributor** (geen **Azure Sentinel contributor**), kan gegevens in azure Sentinel bewerken, hoewel ze alleen machtigingen voor **Sentinel Reader** hebben. Als u daarom machtigingen voor een gebruiker alleen in azure Sentinel wilt verlenen, moet u de vorige machtigingen van deze gebruiker echter zorgvuldig verwijderen, zodat u zeker weet dat u de benodigde machtiging voor een andere resource niet hebt verbroken.
-
-> [!NOTE]
->- Azure Sentinel maakt gebruik van playbooks voor automatische reactie op bedreigingen. Playbooks maakt gebruik van Azure Logic Apps en zijn een afzonderlijke Azure-resource. U kunt bepaalde leden van uw beveiligings team toewijzen met de optie om Logic Apps te gebruiken voor via-bewerkingen (Security Orchestration, Automation en Response). U kunt de rol [Inzender voor logische apps](../role-based-access-control/built-in-roles.md#logic-app-contributor) of de rol van [operator voor logische apps](../role-based-access-control/built-in-roles.md#logic-app-operator) gebruiken om expliciete machtigingen toe te wijzen voor het gebruik van playbooks.
->- Als u gegevens connectors wilt toevoegen, zijn de benodigde rollen voor elke connector per connector type en worden ze weer gegeven op de relevante connector-pagina. Daarnaast moet u voor de Azure-Sentinel-werk ruimte een schrijf machtiging hebben om verbinding te maken met een gegevens bron.
-
-
+Bijvoorbeeld, een gebruiker aan wie de rol van **Azure Sentinel Reader** is toegewezen, maar niet de rol **Azure Sentinel contributor** , kan nog steeds items in azure Sentinel bewerken als de rol **Inzender** op Azure-niveau is toegewezen. Als u daarom machtigingen voor een gebruiker alleen in azure Sentinel wilt verlenen, moet u de vorige machtigingen van deze gebruiker zorgvuldig verwijderen en ervoor zorgen dat u geen toegang hebt tot een andere bron.
 
 ## <a name="roles-and-allowed-actions"></a>Rollen en toegestane acties
 
-In de volgende tabel worden de rollen en toegestane acties in azure Sentinel weer gegeven. Een X geeft aan dat de actie is toegestaan voor die rol.
+De volgende tabel bevat een overzicht van de rollen en toegestane acties in azure Sentinel. 
 
-| Rol | Playbooks maken en uitvoeren| Dash boards, analytische regels en andere Azure Sentinel-resources maken en bewerken | Incidenten beheren (sluiten, toewijzen, enz.) | Gegevens, incidenten, Dash boards en andere Azure Sentinel-bronnen weer geven |
-|--- |---|---|---|---|
-| Azure Sentinel Reader | -- | -- | -- | X |
-| Azure Sentinel responder|--|--| X | X |
-| Azure Sentinel-bijdrager | -- | X | X | X |
-| Inzender voor Azure Sentinel contributor + Logic apps | X | X | X | X |
+| Rol | Playbooks maken en uitvoeren| Werkmappen, analytische regels en andere Azure Sentinel-resources maken en bewerken | Incidenten beheren (sluiten, toewijzen, enz.) | Gegevens, incidenten, werkmappen en andere Azure Sentinel-bronnen weer geven |
+|---|---|---|---|---|
+| Azure Sentinel Reader | -- | -- | -- | &#10003; |
+| Azure Sentinel responder | -- | -- | &#10003; | &#10003; |
+| Azure Sentinel-bijdrager | -- | &#10003; | &#10003; | &#10003; |
+| Inzender voor Azure Sentinel contributor + Logic apps | &#10003; | &#10003; | &#10003; | &#10003; |
 
+## <a name="custom-roles-and-advanced-rbac"></a>Aangepaste rollen en geavanceerde RBAC
 
-> [!NOTE]
-> - We raden u aan de rol toe te wijzen die gebruikers minimaal nodig hebben om hun taken uit te voeren. Wijs bijvoorbeeld de rol Azure Sentinel contributor alleen toe aan gebruikers die regels of Dash boards moeten maken.
-> - U wordt aangeraden machtigingen voor Azure Sentinel in het bereik van de resource groep in te stellen, zodat de gebruiker toegang kan hebben tot alle Azure-Sentinel-werk ruimten in dezelfde resource groep.
->
-## <a name="building-custom-rbac-roles"></a>Aangepaste RBAC-rollen bouwen
+- Naast of in plaats van het gebruik van ingebouwde RBAC-rollen, kunt u aangepaste RBAC-rollen maken voor Azure Sentinel. Aangepaste RBAC-rollen voor Azure Sentinel worden op dezelfde manier gemaakt als bij het maken van andere [aangepaste Azure RBAC](../role-based-access-control/custom-roles-rest.md#create-a-custom-role) -rollen, op basis van [specifieke machtigingen voor Azure Sentinel](../role-based-access-control/resource-provider-operations.md#microsoftsecurityinsights) en [Azure log Analytics-resources](../role-based-access-control/resource-provider-operations.md#microsoftoperationalinsights).
 
-Naast of in plaats van het gebruik van ingebouwde RBAC-rollen, kunt u aangepaste RBAC-rollen maken voor Azure Sentinel. Aangepaste RBAC-rollen voor Azure Sentinel worden op dezelfde manier gemaakt als bij het maken van andere [aangepaste Azure RBAC](../role-based-access-control/custom-roles-rest.md#create-a-custom-role) -rollen, op basis van [specifieke machtigingen voor Azure Sentinel](../role-based-access-control/resource-provider-operations.md#microsoftsecurityinsights) en [Azure log Analytics-resources](../role-based-access-control/resource-provider-operations.md#microsoftoperationalinsights).
-
-## <a name="advanced-rbac-on-the-data-you-store-in-azure-sentinel"></a>Geavanceerde RBAC voor de gegevens die u in Azure Sentinel opslaat
-  
-U kunt het Log Analytics geavanceerd toegangs beheer op basis van rollen gebruiken voor de gegevens in uw Azure Sentinel-werk ruimte. Dit geldt zowel voor op rollen gebaseerd toegangs beheer per gegevens type als voor resource gerichte toegangs beheer op basis van rollen. Zie [logboek gegevens en-werk ruimten beheren in azure monitor](../azure-monitor/platform/manage-access.md#manage-access-using-workspace-permissions)voor meer informatie over log Analytics rollen.
+- U kunt het Log Analytics geavanceerd toegangs beheer op basis van rollen gebruiken voor de gegevens in uw Azure Sentinel-werk ruimte. Dit omvat zowel RBAC op gegevens type als resource gerichte RBAC. Zie [logboek gegevens en-werk ruimten beheren in azure monitor](../azure-monitor/platform/manage-access.md#manage-access-using-workspace-permissions)voor meer informatie over log Analytics rollen.
 
 ## <a name="next-steps"></a>Volgende stappen
+
 In dit document hebt u geleerd hoe u kunt werken met rollen voor Azure Sentinel-gebruikers en wat elke rol gebruikers kan doen.
 
 * [Azure-verklikker blog](https://aka.ms/azuresentinelblog). Raadpleeg de blogberichten over beveiliging en naleving in Azure.

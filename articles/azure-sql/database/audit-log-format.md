@@ -10,12 +10,12 @@ ms.author: datrigan
 ms.reviewer: vanto
 ms.custom: sqldbrb=1
 ms.date: 06/03/2020
-ms.openlocfilehash: 760720d133dc382ba7af4aa5f0519d4d918e93cd
-ms.sourcegitcommit: 58ff2addf1ffa32d529ee9661bbef8fbae3cddec
+ms.openlocfilehash: 17d985681ab7a547bf715b1f8bb8d37cbf7ab662
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/03/2020
-ms.locfileid: "84322206"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85954108"
 ---
 # <a name="sql-database-audit-log-format"></a>Indeling van SQL Database audit logboek
 
@@ -31,7 +31,7 @@ Audit logboeken die zijn opgeslagen in Azure Blob-opslag worden opgeslagen in ee
 
 Voor de Data Base `Database1` op `Server1` het volgende is bijvoorbeeld een mogelijk geldig pad:
 
-    Server1/Database1/SqlDbAuditing_ServerAudit_NoRetention/2019-02-03/12_23_30_794_0.xel
+`Server1/Database1/SqlDbAuditing_ServerAudit_NoRetention/2019-02-03/12_23_30_794_0.xel`
 
 [Alleen-lezen replica's](read-scale-out.md) audit logboeken worden opgeslagen in dezelfde container. De Directory-hiërarchie in de container is van het formulier `<ServerName>/<DatabaseName>/<AuditName>/<Date>/RO/` . De naam van het BLOB-bestand deelt dezelfde indeling. De audit logboeken van alleen-lezen Replica's worden in dezelfde container opgeslagen.
 
@@ -46,7 +46,7 @@ Controle gebeurtenissen worden geschreven naar Log Analytics werk ruimte die tij
 
 ## <a name="audit-log-fields"></a><a id="subheading-1"></a>Controle logboek velden
 
-| Naam (BLOB) | Naam (Event Hubs/Log Analytics) | Beschrijving | Blob-type | Type Event Hubs/Log Analytics |
+| Naam (BLOB) | Naam (Event Hubs/Log Analytics) | Description | Blob-type | Type Event Hubs/Log Analytics |
 |-------------|---------------------------------|-------------|-----------|-------------------------------|
 | action_id | action_id_s | ID van de actie | varchar (4) | tekenreeks |
 | action_name | action_name_s | De naam van de actie | N.v.t. | tekenreeks |

@@ -3,12 +3,12 @@ title: Ondersteuning voor de beoordeling van fysieke servers in Azure Migrate
 description: Meer informatie over ondersteuning voor fysieke server beoordeling met Azure Migrate server-evaluatie
 ms.topic: conceptual
 ms.date: 06/03/2020
-ms.openlocfilehash: e60dc12b1f710fe771b90352872eb7113951a65d
-ms.sourcegitcommit: 971a3a63cf7da95f19808964ea9a2ccb60990f64
+ms.openlocfilehash: 1ceea394bd46f6ca239393f0e8367a028cd578f0
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/19/2020
-ms.locfileid: "85080519"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85955349"
 ---
 # <a name="support-matrix-for-physical-server-assessment"></a>Ondersteunings matrix voor fysieke server evaluatie 
 
@@ -34,8 +34,8 @@ Meer [informatie](concepts-assessment-calculation.md) over evaluaties.
 | **Ondersteuning**                | **Details**               
 | :-------------------       | :------------------- |
 | **Fysieke server implementatie**       | De fysieke server kan zelfstandig of in een cluster worden geïmplementeerd. |
-| **Machtigingen**           | **Windows:** U moet een domein beheerder of lokale beheerder zijn op alle Windows-servers die u wilt detecteren. Het gebruikers account moet worden toegevoegd aan deze groepen: gebruikers van extern beheer, gebruikers van prestatie meter en prestatie logboek gebruikers. <br/><br/> **Linux:** U hebt een hoofd account nodig op de Linux-servers die u wilt detecteren. |
-| **Besturingssysteem** | Alle besturings systemen kunnen worden geëvalueerd voor migratie. |
+| **Machtigingen**           | **Windows:** U moet een domein beheerder zijn op alle Windows-servers die u wilt detecteren. Het gebruikersaccount moet worden toegevoegd aan deze groepen: Gebruikers van extern beheer, prestatiemetergebruikers en gebruikers van prestatielogboeken. <br/><br/> **Linux:** U hebt een hoofdaccount nodig op de Linux-servers die u wilt detecteren. |
+| **Besturingssysteem** | Alle besturings systemen behalve Windows Server 2003 en SUSE Linux kunnen worden geëvalueerd voor migratie. |
 
 
 ## <a name="azure-migrate-appliance-requirements"></a>Azure Migrate-apparaatvereisten

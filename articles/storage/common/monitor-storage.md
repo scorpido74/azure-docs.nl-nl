@@ -9,12 +9,12 @@ ms.date: 05/19/2020
 ms.author: normesta
 ms.reviewer: fryu
 ms.custom: monitoring
-ms.openlocfilehash: 3ede22b5af942c3f0c0cd88d86b56a625c7656c0
-ms.sourcegitcommit: 309cf6876d906425a0d6f72deceb9ecd231d387c
+ms.openlocfilehash: 9810d29750e7c741c84b11b296099a37d67fc595
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/01/2020
-ms.locfileid: "84267610"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85955162"
 ---
 # <a name="monitor-azure-storage"></a>Azure Storage bewaken
 
@@ -78,7 +78,9 @@ Alle andere mislukte anonieme aanvragen worden niet geregistreerd. Zie voor een 
 
 De metrische gegevens van het platform en het activiteiten logboek worden automatisch verzameld, maar u moet een diagnostische instelling maken om bron logboeken te verzamelen of deze buiten Azure Monitor door te sturen. Zie [Diagnostische instelling maken voor het verzamelen van platform logboeken en metrische gegevens in azure](../../azure-monitor/platform/diagnostic-settings.md)voor het proces voor het maken van een diagnostische instelling met behulp van de Azure Portal, de Azure CLI of Power shell.
 
-Wanneer u een diagnostische instelling maakt, kiest u het type opslag waarvoor u logboeken wilt inschakelen, zoals een blob, wachtrij, tabel of bestand. Als u de diagnostische instelling in de Azure Portal maakt, kunt u de resource uit een lijst selecteren. Als u Power shell of de Azure CLI gebruikt, moet u de resource-ID van het opslag type gebruiken. U kunt de resource-ID vinden in de Azure Portal door de pagina **Eigenschappen** van uw opslag account te openen.
+Wanneer u een diagnostische instelling maakt, kiest u het type opslag waarvoor u logboeken wilt inschakelen, zoals een blob, wachtrij, tabel of bestand. Data Lake Storage Gen2 wordt niet weer gegeven als een opslag type. Dat komt omdat Data Lake Storage Gen2 een reeks mogelijkheden die beschikbaar is voor Blob Storage. 
+
+Als u de diagnostische instelling in de Azure Portal maakt, kunt u de resource uit een lijst selecteren. Als u Power shell of de Azure CLI gebruikt, moet u de resource-ID van het opslag type gebruiken. U kunt de resource-ID vinden in de Azure Portal door de pagina **Eigenschappen** van uw opslag account te openen.
 
 U moet ook de categorieën van bewerkingen opgeven waarvoor u logboeken wilt verzamelen. De categorieën voor Azure Storage worden weer gegeven in deze tabel.
 
@@ -104,7 +106,7 @@ Zie [metrische dimensies](monitor-storage-reference.md#metrics-dimensions)voor e
 
 Alle metrische gegevens voor Azure Storage bevinden zich in deze naam ruimten:
 
-- Micro soft. Storage/Storage accounts
+- Microsoft.Storage/storageAccounts
 - Micro soft. Storage/Storage accounts/blobServices
 - Micro soft. Storage/Storage accounts/fileServices
 - Micro soft. Storage/Storage accounts/queueServices
@@ -343,6 +345,8 @@ De gegevens worden opgeslagen in deze tabellen.
 |StorageFileLogs | Logboeken waarin de activiteit in bestands shares wordt beschreven. |
 |StorageQueueLogs | Logboeken waarin de activiteiten in wacht rijen worden beschreven.|
 |StorageTableLogs| Logboeken waarin de activiteit in tabellen wordt beschreven.|
+
+Logboeken voor Data Lake Storage Gen2 worden niet weer gegeven in een toegewezen tabel. Dat komt omdat Data Lake Storage Gen2 niet service is. Het is een reeks mogelijkheden die u kunt inschakelen voor een Blob Storage-account. Als u deze mogelijkheden hebt ingeschakeld, worden logboeken nog steeds weer gegeven in de tabel StorageBlobLogs. 
 
 ### <a name="azure-storage-log-analytics-queries-in-azure-monitor"></a>Azure Storage Log Analytics query's in Azure Monitor
 

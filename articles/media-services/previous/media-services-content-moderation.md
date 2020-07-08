@@ -14,12 +14,12 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 03/14/2019
 ms.author: sajagtap
-ms.openlocfilehash: 83fe7867a3128ac82597c028452863a1ad681ace
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 70d824522e1ae71bd49050779ff37e821d560783
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77914310"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85954702"
 ---
 # <a name="use-azure-media-content-moderator-to-detect-possible-adult-and-racy-content"></a>Azure Media Content Moderator gebruiken om mogelijke inhoud voor volwassenen en ongepaste te detecteren 
 
@@ -47,7 +47,7 @@ De JSON van de uitvoer bevat de volgende elementen:
 
 ### <a name="root-json-elements"></a>Wortel-JSON-elementen
 
-| Element | Beschrijving |
+| Element | Description |
 | --- | --- |
 | versie |De versie van Content Moderator. |
 | lijnen |' Ticks ' per seconde van de video. |
@@ -60,7 +60,7 @@ De JSON van de uitvoer bevat de volgende elementen:
 
 ### <a name="fragments-json-elements"></a>Fragmenten JSON-elementen
 
-|Element|Beschrijving|
+|Element|Description|
 |---|---|
 | start |De begin tijd van de eerste gebeurtenis in Ticks. |
 | duur |De lengte van het fragment, in Ticks. |
@@ -69,9 +69,9 @@ De JSON van de uitvoer bevat de volgende elementen:
 
 ### <a name="events-json-elements"></a>JSON-elementen van gebeurtenissen
 
-|Element|Beschrijving|
+|Element|Description|
 |---|---|
-| reviewRecommended | `true`of `false` afhankelijk van of de **adultScore** of **racyScore** de interne drempel waarden overschrijdt. |
+| reviewRecommended | `true`of `false` afhankelijk van of de **AdultScore** of **racyScore** de interne drempel waarden overschrijdt. |
 | adultScore | Betrouwbaarheids score voor mogelijke inhoud voor volwassenen, op een schaal van 0,00 tot 0,99. |
 | racyScore | Betrouw bare score voor mogelijke ongepaste-inhoud, op een schaal van 0,00 tot 0,99. |
 | TabIndex | index van het frame op een schaal van de eerste frame-index naar de laatste frame-index. |
@@ -84,9 +84,11 @@ De JSON van de uitvoer bevat de volgende elementen:
 ### <a name="task-configuration-preset"></a>Taak configuratie (voor instelling)
 Wanneer u een taak met **Azure Media Content moderator**maakt, moet u een voor instelling voor de configuratie opgeven. De volgende configuratie voorinstelling is alleen bedoeld voor inhouds toezicht.
 
-    {
-      "version":"2.0"
-    }
+```json
+{
+    "version":"2.0"
+}
+```
 
 ### <a name="net-code-sample"></a>Voor beeld van .NET-code
 
@@ -95,81 +97,83 @@ Bekijk de [Content moderator video Quick](../../cognitive-services/Content-Moder
 
 
 ```csharp
-    /// <summary>
-    /// Run the Content Moderator job on the designated Asset from local file or blob storage
-    /// </summary>
-    /// <param name="asset"></param>
-    static void RunContentModeratorJob(IAsset asset)
+/// <summary>
+/// Run the Content Moderator job on the designated Asset from local file or blob storage
+/// </summary>
+/// <param name="asset"></param>
+static void RunContentModeratorJob(IAsset asset)
+{
+    // Grab the presets
+    string configuration = File.ReadAllText(CONTENT_MODERATOR_PRESET_FILE);
+
+    // grab instance of Azure Media Content Moderator MP
+    IMediaProcessor mp = _context.MediaProcessors.GetLatestMediaProcessorByName(MEDIA_PROCESSOR);
+
+    // create Job with Content Moderator task
+    IJob job = _context.Jobs.Create(String.Format("Content Moderator {0}",
+               asset.AssetFiles.First() + "_" + Guid.NewGuid()));
+
+    ITask contentModeratorTask = job.Tasks.AddNew("Adult and racy classifier task",
+                                                  mp, configuration,
+                                                  TaskOptions.None);
+    contentModeratorTask.InputAssets.Add(asset);
+    contentModeratorTask.OutputAssets.AddNew("Adult and racy classifier output",
+                                             AssetCreationOptions.None);
+
+    job.Submit();
+
+
+    // Create progress printing and querying tasks
+    Task progressPrintTask = new Task(() =>
     {
-        // Grab the presets
-        string configuration = File.ReadAllText(CONTENT_MODERATOR_PRESET_FILE);
-
-        // grab instance of Azure Media Content Moderator MP
-        IMediaProcessor mp = _context.MediaProcessors.GetLatestMediaProcessorByName(MEDIA_PROCESSOR);
-
-        // create Job with Content Moderator task
-        IJob job = _context.Jobs.Create(String.Format("Content Moderator {0}",
-                asset.AssetFiles.First() + "_" + Guid.NewGuid()));
-
-        ITask contentModeratorTask = job.Tasks.AddNew("Adult and racy classifier task",
-                mp, configuration,
-                TaskOptions.None);
-        contentModeratorTask.InputAssets.Add(asset);
-        contentModeratorTask.OutputAssets.AddNew("Adult and racy classifier output",
-            AssetCreationOptions.None);
-
-        job.Submit();
-
-
-        // Create progress printing and querying tasks
-        Task progressPrintTask = new Task(() =>
+        IJob jobQuery = null;
+        do
         {
-            IJob jobQuery = null;
-            do
-            {
-                var progressContext = _context;
-                jobQuery = progressContext.Jobs
+            var progressContext = _context;
+            jobQuery = progressContext.Jobs
                 .Where(j => j.Id == job.Id)
-                    .First();
-                    Console.WriteLine(string.Format("{0}\t{1}",
-                    DateTime.Now,
-                    jobQuery.State));
-                    Thread.Sleep(10000);
-             }
-             while (jobQuery.State != JobState.Finished &&
-             jobQuery.State != JobState.Error &&
-             jobQuery.State != JobState.Canceled);
-        });
-        progressPrintTask.Start();
-
-        Task progressJobTask = job.GetExecutionProgressTask(
-        CancellationToken.None);
-        progressJobTask.Wait();
-
-        // If job state is Error, the event handling 
-        // method for job progress should log errors.  Here we check 
-        // for error state and exit if needed.
-        if (job.State == JobState.Error)
-        {
-            ErrorDetail error = job.Tasks.First().ErrorDetails.First();
-            Console.WriteLine(string.Format("Error: {0}. {1}",
-            error.Code,
-            error.Message));
+                .First();
+            Console.WriteLine(string.Format("{0}\t{1}",
+                                            DateTime.Now,
+                                            jobQuery.State));
+            Thread.Sleep(10000);
         }
+        while (jobQuery.State != JobState.Finished &&
+               jobQuery.State != JobState.Error &&
+               jobQuery.State != JobState.Canceled);
+    });
+    progressPrintTask.Start();
 
-        DownloadAsset(job.OutputMediaAssets.First(), OUTPUT_FOLDER);
+    Task progressJobTask = job.GetExecutionProgressTask(
+                           CancellationToken.None);
+    progressJobTask.Wait();
+
+    // If job state is Error, the event handling 
+    // method for job progress should log errors.  Here we check 
+    // for error state and exit if needed.
+    if (job.State == JobState.Error)
+    {
+        ErrorDetail error = job.Tasks.First().ErrorDetails.First();
+        Console.WriteLine(string.Format("Error: {0}. {1}",
+                          error.Code,
+                          error.Message));
     }
 
-For the full source code and the Visual Studio project, check out the [Content Moderator video quickstart](../../cognitive-services/Content-Moderator/video-moderation-api.md).
+    DownloadAsset(job.OutputMediaAssets.First(), OUTPUT_FOLDER);
+}
+```
 
-### JSON output
+Bekijk de Quick Start van [Content moderator video](../../cognitive-services/Content-Moderator/video-moderation-api.md)voor de volledige bron code en het Visual Studio-project.
 
-The following example of a Content Moderator JSON output was truncated.
+### <a name="json-output"></a>JSON-uitvoer
+
+Het volgende voor beeld van een Content Moderator JSON-uitvoer is afgekapt.
 
 > [!NOTE]
-> Location of a keyframe in seconds = timestamp/timescale
+> Locatie van een keyframe in seconden = tijds tempel/tijd schaal
 
-    {
+```json
+{
     "version": 2,
     "timescale": 90000,
     "offset": 0,
@@ -178,46 +182,46 @@ The following example of a Content Moderator JSON output was truncated.
     "height": 720,
     "totalDuration": 18696321,
     "fragments": [
-    {
-      "start": 0,
-      "duration": 18000
-    },
-    {
-      "start": 18000,
-      "duration": 3600,
-      "interval": 3600,
-      "events": [
-        [
-          {
-            "reviewRecommended": false,
-            "adultScore": 0.00001,
-            "racyScore": 0.03077,
-            "index": 5,
-            "timestamp": 18000,
-            "shotIndex": 0
-          }
-        ]
-      ]
-    },
-    {
-      "start": 18386372,
-      "duration": 119149,
-      "interval": 119149,
-      "events": [
-        [
-          {
-            "reviewRecommended": true,
-            "adultScore": 0.00000,
-            "racyScore": 0.91902,
-            "index": 5085,
-            "timestamp": 18386372,
-            "shotIndex": 62
-          }
-        ]
-      ]
-    }
+        {
+            "start": 0,
+            "duration": 18000
+        },
+        {
+            "start": 18000,
+            "duration": 3600,
+            "interval": 3600,
+            "events": [
+                [
+                    {
+                        "reviewRecommended": false,
+                        "adultScore": 0.00001,
+                        "racyScore": 0.03077,
+                        "index": 5,
+                        "timestamp": 18000,
+                        "shotIndex": 0
+                    }
+                ]
+            ]
+        },
+        {
+            "start": 18386372,
+            "duration": 119149,
+            "interval": 119149,
+            "events": [
+                [
+                    {
+                        "reviewRecommended": true,
+                        "adultScore": 0.00000,
+                        "racyScore": 0.91902,
+                        "index": 5085,
+                        "timestamp": 18386372,
+                        "shotIndex": 62
+                    }
+                ]
+            ]
+        }
     ]
-    }
+}
 ```
 
 ## <a name="media-services-learning-paths"></a>Media Services-leertrajecten

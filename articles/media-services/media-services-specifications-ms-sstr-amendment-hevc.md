@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/19/2019
 ms.author: johndeu
-ms.openlocfilehash: be4009d418f2f8f3dff755e2e990efee593f070b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 30ca3bb86426b144fa6cbf5c63888d9546919ebf
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "76514218"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85954686"
 ---
 # <a name="smooth-streaming-protocol-ms-sstr-amendment-for-hevc"></a>Wijziging van het Smooth Streaming Protocol (MS-SSTR) voor HEVC 
 
@@ -242,10 +242,12 @@ Het ProtectionElement moet aanwezig zijn als Common Encryption (CENC) is toegepa
 > 
 >   De syntaxis van de velden die in deze sectie zijn gedefinieerd, opgegeven in ABNF [[RFC5234],](https://go.microsoft.com/fwlink/?LinkId=123096) is als volgt:
 
-    FileType = MajorBrand MinorVersion CompatibleBrands
-    MajorBrand = STRING_UINT32
-    MinorVersion = STRING_UINT32
-    CompatibleBrands = "ccff" "iso8" 0\*(STRING_UINT32)
+```properties
+FileType = MajorBrand MinorVersion CompatibleBrands
+MajorBrand = STRING_UINT32
+MinorVersion = STRING_UINT32
+CompatibleBrands = "ccff" "iso8" 0\*(STRING_UINT32)
+```
 
 **Opmerking**: de compatibiliteits Brands ' ccff ' en ' iso8 ' geven aan dat fragmenten overeenkomen met ' common container File Format ' en common Encryption [ISO/IEC 23001-7] en ISO base Media File Format Edition 4 [ISO/IEC 14496-12].
 
@@ -288,14 +290,18 @@ Het ProtectionElement moet aanwezig zijn als Common Encryption (CENC) is toegepa
 > 
 >   Presentaties met HEVC-stromen moeten worden ingesteld op:
 
-    MajorVersion = 2
-    MinorVersion = 2
+```properties
+MajorVersion = 2
+MinorVersion = 2
+```
 
 >   LookaheadCount = 0 (Opmerking: vakken afgeschaft)
 > 
 >   Presentaties moeten ook worden ingesteld:
 
-    TimeScale = 90000
+```properties
+TimeScale = 90000
+```
 
 >   Stream-verzameling: een verzameling gegevens elementen van stream description, zoals beschreven in sectie *3.1.1.1.2*.
 > 

@@ -6,18 +6,18 @@ ms.author: andrela
 ms.service: mariadb
 ms.topic: conceptual
 ms.date: 6/9/2020
-ms.openlocfilehash: 95891e35d2f30bfceb6282c6d9b3f9e7e21b3df8
-ms.sourcegitcommit: 5a8c8ac84c36859611158892422fc66395f808dc
+ms.openlocfilehash: 7ded54e0116e6c6e58c0ca8019942dfaaaa88480
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/10/2020
-ms.locfileid: "84660871"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85954191"
 ---
 # <a name="azure-database-for-mariadb-pricing-tiers"></a>Azure Database for MariaDB prijs Categorieën
 
 U kunt een Azure Database for MariaDB-server maken in een van drie verschillende prijs Categorieën: basis, Algemeen en geoptimaliseerd voor geheugen. De prijs categorieën worden onderscheiden van de hoeveelheid Compute in vCores die kan worden ingericht, het geheugen per vCore en de opslag technologie die wordt gebruikt om de gegevens op te slaan. Alle resources worden ingericht op het niveau van de MariaDB-server. Een server kan een of meer data bases bevatten.
 
-|    | **Standaard** | **Algemeen gebruik** | **Geoptimaliseerd voor geheugen** |
+| Resource | **Standaard** | **Algemeen** | **Geoptimaliseerd voor geheugen** |
 |:---|:----------|:--------------------|:---------------------|
 | Compute genereren | Gen 5 |Gen 5 | Gen 5 |
 | vCores | 1, 2 | 2, 4, 8, 16, 32, 64 |2, 4, 8, 16, 32 |
@@ -43,7 +43,7 @@ Reken bronnen worden weer gegeven als vCores, die de logische CPU van de onderli
 
 De opslag ruimte die u inricht, is de hoeveelheid opslag capaciteit die beschikbaar is voor uw Azure Database for MariaDB-server. De opslag wordt gebruikt voor de database bestanden, tijdelijke bestanden, transactie logboeken en de MariaDB-server Logboeken. De totale hoeveelheid opslag ruimte die u hebt ingericht, definieert ook de I/O-capaciteit die beschikbaar is voor uw server.
 
-|    | **Standaard** | **Algemeen gebruik** | **Geoptimaliseerd voor geheugen** |
+| Opslag kenmerken   | Basic | Algemeen gebruik | Geoptimaliseerd geheugen |
 |:---|:----------|:--------------------|:---------------------|
 | Opslagtype | Basis opslag | Opslag Algemeen | Opslag Algemeen |
 | Opslag grootte | 5 GB tot 1 TB | 5 GB tot 4 TB | 5 GB tot 4 TB |
@@ -63,7 +63,7 @@ U kunt uw I/O-gebruik bewaken in de Azure Portal of met behulp van Azure CLI-opd
 
 We verg Roten de opslag limieten in onze lagen van Algemeen en geoptimaliseerd voor geheugen. Nieuw gemaakte servers die zich aanmelden voor de preview-versie, kunnen tot 16 TB aan opslag ruimte inrichten. De IOPS-schaal bij een verhouding van 3:1 tot 20.000 IOPS. Net zoals bij de huidige algemeen beschik bare opslag ruimte, kunt u extra opslag capaciteit toevoegen na het maken van de server en het systeem toestaan om opslag automatisch te laten groeien op basis van het opslag verbruik van uw werk belasting.
 
-|              | **Algemeen gebruik** | **Geoptimaliseerd voor geheugen** |
+| Opslag kenmerken | Algemeen gebruik | Geoptimaliseerd geheugen |
 |:-------------|:--------------------|:---------------------|
 | Opslagtype | Azure Premium Storage | Azure Premium Storage |
 | Opslag grootte | 32 GB tot 16 TB| 32 tot 16 TB |

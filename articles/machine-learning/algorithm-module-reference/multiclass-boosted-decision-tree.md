@@ -9,12 +9,12 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 02/19/2020
-ms.openlocfilehash: cfe35f81526a729092edf522f693ccd18494d1ec
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 023b731216605746e838306ce1ab69ebe8c6c6fd
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82137821"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85955774"
 ---
 # <a name="multiclass-boosted-decision-tree"></a>Versterkte beslissingsstructuur met meerdere klassen
 
@@ -40,21 +40,21 @@ U kunt dit type model trainen door het Train- [model](././train-model.md)te gebr
 
 1. Het **maximum aantal Leaves per structuur** beperkt het maximum aantal Terminal knooppunten (bladeren) dat in een wille keurige structuur kan worden gemaakt.
     
-        By increasing this value, you potentially increase the size of the tree and achieve higher precision, at the risk of overfitting and longer training time.
+    Door deze waarde te verg Roten, kunt u de grootte van de structuur verg Roten, waardoor het risico op overschrijding en langere leer tijd een grotere nauw keurigheid kan opleveren.
   
 1. **Minimum aantal steek proeven per blad knooppunt** geeft het aantal cases aan dat nodig is om een Terminal knooppunt (Leaf) in een structuur te maken.  
 
-         By increasing this value, you increase the threshold for creating new rules. For example, with the default value of 1, even a single case can cause a new rule to be created. If you increase the value to 5, the training data would have to contain at least five cases that meet the same conditions.
+    Door deze waarde te verhogen, verhoogt u de drempel voor het maken van nieuwe regels. Met de standaard waarde 1 kan zelfs een enkele case ertoe leiden dat een nieuwe regel wordt gemaakt. Als u de waarde op 5 verhoogt, moeten de trainings gegevens ten minste vijf gevallen bevatten die voldoen aan dezelfde voor waarden.
 
 1. Met het **leer tempo** wordt de stap grootte gedefinieerd tijdens het leren. Voer een getal tussen 0 en 1 in.
 
-         The learning rate determines how fast or slow the learner converges on an optimal solution. If the step size is too large, you might overshoot the optimal solution. If the step size is too small, training takes longer to converge on the best solution.
+    Het leer tempo bepaalt hoe snel of traag de kenniser convergeert met een optimale oplossing. Als de grootte van de stap te groot is, is het mogelijk dat u de optimale oplossing kunt overschrijden. Als de grootte van de stap te klein is, neemt de training meer tijd in beslag op de beste oplossing.
 
 1. **Aantal geconstrueerde structuren** geeft het totale aantal beslissings structuren aan dat in de ensemble moet worden gemaakt. Door meer beslissings structuren te maken, kunt u een betere dekking krijgen, maar wordt de trainings tijd verhoogd.
 
 1. **Wille keurig getal Seed** stelt optioneel een niet-negatief geheel getal in dat moet worden gebruikt als de wille keurige Seed-waarde. Het opgeven van een Seed zorgt voor een reproduceer baarheid van alle uitvoeringen die dezelfde gegevens en para meters hebben.  
 
-         The random seed is set by default to 42. Successive runs using different random seeds can have different results.
+    De wille keurige Seed wordt standaard ingesteld op 42. Opeenvolgende uitvoeringen met verschillende aselecte zaden kunnen verschillende resultaten hebben.
 
 1. Het model trainen:
 

@@ -9,12 +9,12 @@ ms.custom: tracking-python
 ms.author: gopalv
 ms.date: 09/11/2019
 ms.topic: reference
-ms.openlocfilehash: 4c4ac1d332c4348941963b90d25aefb4fdf30ce4
-ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
+ms.openlocfilehash: 34b4bbd9c2ed088aca10801c22c5f189264fdb1f
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84560221"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85955536"
 ---
 # <a name="reference-ubuntu-linux-data-science-virtual-machine"></a>Naslag informatie: Ubuntu (Linux) Data Science Virtual Machine
 
@@ -224,7 +224,7 @@ Bibliotheken zijn beschikbaar in R en python voor database toegang:
 * In R kunt u het RODBC-pakket of het dplyr-pakket gebruiken om SQL-instructies op de database server op te vragen of uit te voeren.
 * In python biedt de pyodbc-bibliotheek database toegang met ODBC als de onderliggende laag.  
 
-## <a name="azure-tools"></a>Azure-hulpprogram ma's
+## <a name="azure-tools"></a>Azure-hulpprogramma's
 
 De volgende Azure-hulpprogram ma's zijn geïnstalleerd op de VM:
 
@@ -263,8 +263,10 @@ De VM wordt geleverd met machine learning-hulpprogram ma's en-algoritmen die voo
 * **Python**: Anaconda python wordt geleverd met machine learning-algoritmen met bibliotheken zoals Scikit. U kunt andere bibliotheken installeren met behulp van de `pip install` opdracht.
 * **LightGBM**: een snelle, gedistribueerde, hoogwaardige kleur overgang voor het verbeteren van het Framework op basis van de beslissings structuur algoritmen.
 * **R**: er is een uitgebreide bibliotheek met machine learning functies beschikbaar voor R. vooraf geïnstalleerde bibliotheken zijn LM, GLM, randomForest en rpart. U kunt andere bibliotheken installeren door deze opdracht uit te voeren:
-  
-        install.packages(<lib name>)
+
+    ```r
+    install.packages(<lib name>)
+    ```
 
 Hier vindt u meer informatie over de eerste drie machine learning hulpprogram ma's in de lijst.
 
@@ -330,7 +332,7 @@ Nu wordt een grafische interface geopend met een reeks tabbladen. Gebruik de vol
 > [!NOTE]
 > Als u geen toegang hebt om het pakket te installeren in de systeemmap (de standaard instelling), ziet u mogelijk een prompt op uw R-console venster om pakketten te installeren in uw persoonlijke bibliotheek. Antwoord **y** als u deze prompts ziet.
 
-1. Selecteer **uitvoeren**.
+1. Selecteer **Uitvoeren**.
 1. Er wordt een dialoog venster weer gegeven waarin u wordt gevraagd of u de voor beeld-weer gegevens set wilt gebruiken. Selecteer **Ja** om het voor beeld te laden.
 1. Selecteer het tabblad **model** .
 1. Selecteer **uitvoeren** om een beslissings structuur te maken.

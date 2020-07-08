@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 08/07/2019
 ms.author: allensu
-ms.openlocfilehash: f911b36d4f38d9b769cf34e4e2326ed1cb52da80
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: 2192531aec7800314c6748740262f8746da0c4fc
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84022808"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85956369"
 ---
 # <a name="multiple-frontends-for-azure-load-balancer"></a>Meerdere frontends voor Azure Load Balancer
 
@@ -29,7 +29,7 @@ Wanneer u een Azure Load Balancer definieert, zijn een front-end-en een back-end
 
 De volgende tabel bevat enkele voor beelden van frontend-configuraties:
 
-| Front-end | IP-adres | Protocolsubstatus | poort |
+| Front-end | IP-adres | protocol | poort |
 | --- | --- | --- | --- |
 | 1 |65.52.0.1 |TCP |80 |
 | 2 |65.52.0.1 |TCP |*8080* |
@@ -53,7 +53,7 @@ We verkennen deze scenario's nog verder door te beginnen met het standaard gedra
 
 In dit scenario worden de front-ends als volgt geconfigureerd:
 
-| Front-end | IP-adres | Protocolsubstatus | poort |
+| Front-end | IP-adres | protocol | poort |
 | --- | --- | --- | --- |
 | ![groen front-end](./media/load-balancer-multivip-overview/load-balancer-rule-green.png) 1 |65.52.0.1 |TCP |80 |
 | ![paarse front-end](./media/load-balancer-multivip-overview/load-balancer-rule-purple.png) 2 |*65.52.0.2* |TCP |80 |
@@ -69,7 +69,7 @@ We definiëren twee regels:
 
 De volledige toewijzing in Azure Load Balancer is nu als volgt:
 
-| Regel | Frontend-IP-adres | Protocolsubstatus | poort | Doel | poort |
+| Regel | Frontend-IP-adres | protocol | poort | Doel | poort |
 | --- | --- | --- | --- | --- | --- |
 | ![groene regel](./media/load-balancer-multivip-overview/load-balancer-rule-green.png) 1 |65.52.0.1 |TCP |80 |IP-adres van DIP |80 |
 | ![paarse regel](./media/load-balancer-multivip-overview/load-balancer-rule-purple.png) 2 |65.52.0.2 |TCP |80 |IP-adres van DIP |81 |
@@ -102,20 +102,31 @@ Voor elke virtuele machine in de back-endadresgroep voert u de volgende opdracht
 
 Als u de lijst met interface namen op uw virtuele machine wilt ophalen, typt u de volgende opdracht:
 
-    netsh interface show interface 
+```console
+netsh interface show interface 
+```
 
 Voor de VM-NIC (beheerd door Azure) typt u deze opdracht:
 
-    netsh interface ipv4 set interface “interfacename” weakhostreceive=enabled
-   (Vervang InterfaceName door de naam van deze interface)
+```console
+netsh interface ipv4 set interface “interfacename” weakhostreceive=enabled
+```
+
+(Vervang InterfaceName door de naam van deze interface)
 
 Herhaal deze opdrachten voor elke loop back-interface die u hebt toegevoegd:
 
-    netsh interface ipv4 set interface “interfacename” weakhostreceive=enabled 
-   (Vervang InterfaceName door de naam van deze loop back-Interface)
-     
-    netsh interface ipv4 set interface “interfacename” weakhostsend=enabled 
-   (Vervang InterfaceName door de naam van deze loop back-Interface)
+```console
+netsh interface ipv4 set interface “interfacename” weakhostreceive=enabled 
+```
+
+(Vervang InterfaceName door de naam van deze loop back-Interface)
+
+```console
+netsh interface ipv4 set interface “interfacename” weakhostsend=enabled 
+```
+
+(Vervang InterfaceName door de naam van deze loop back-Interface)
 
 > [!IMPORTANT]
 > De configuratie van de loop back-interfaces wordt uitgevoerd in het gast besturingssysteem. Deze configuratie wordt niet uitgevoerd of wordt niet beheerd door Azure. Zonder deze configuratie werken de regels niet. Voor de definities van de status tests wordt de DIP van de virtuele machine gebruikt in plaats van de loop back-interface die het DSR-frontend vertegenwoordigt. Daarom moet uw service test reacties geven op een DIP-poort die de status weerspiegelt van de service die wordt aangeboden op de loop back-interface die het DSR-frontend vertegenwoordigt.
@@ -123,7 +134,7 @@ Herhaal deze opdrachten voor elke loop back-interface die u hebt toegevoegd:
 
 Laten we uitgaan van dezelfde frontend-configuratie als in het vorige scenario:
 
-| Front-end | IP-adres | Protocolsubstatus | poort |
+| Front-end | IP-adres | protocol | poort |
 | --- | --- | --- | --- |
 | ![groen front-end](./media/load-balancer-multivip-overview/load-balancer-rule-green.png) 1 |65.52.0.1 |TCP |80 |
 | ![paarse front-end](./media/load-balancer-multivip-overview/load-balancer-rule-purple.png) 2 |*65.52.0.2* |TCP |80 |
@@ -137,7 +148,7 @@ We definiëren twee regels:
 
 De volgende tabel bevat de volledige toewijzing in de load balancer:
 
-| Regel | Frontend-IP-adres | Protocolsubstatus | poort | Doel | poort |
+| Regel | Frontend-IP-adres | protocol | poort | Doel | poort |
 | --- | --- | --- | --- | --- | --- |
 | ![groene regel](./media/load-balancer-multivip-overview/load-balancer-rule-green.png) 1 |65.52.0.1 |TCP |80 |hetzelfde als frontend (65.52.0.1) |hetzelfde als frontend (80) |
 | ![paarse regel](./media/load-balancer-multivip-overview/load-balancer-rule-purple.png) 2 |65.52.0.2 |TCP |80 |hetzelfde als frontend (65.52.0.2) |hetzelfde als frontend (80) |

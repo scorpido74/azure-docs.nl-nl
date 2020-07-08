@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/26/2019
 ms.author: juliako
-ms.openlocfilehash: 39a1dd5c3d26eeb6545a96aa35f9457bd9859c21
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 9509a38dbe9655cd7f70096bc5f3283f35c190f0
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79251243"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85956710"
 ---
 # <a name="customizing-media-encoder-standard-presets"></a>Media Encoder Standard voor instellingen aanpassen  
 
@@ -36,11 +36,11 @@ In dit artikel wordt beschreven hoe u een vooraf ingestelde procedure kunt aanpa
 
 ### <a name="original-preset"></a>Oorspronkelijke voor instelling
 
-Sla de JSON op die is gedefinieerd in het artikel [H264 meerdere bitrate 720p](media-services-mes-preset-H264-Multiple-Bitrate-720p.md) in een bestand met de extensie. json. Bijvoorbeeld **CustomPreset_JSON. json**.
+Sla de JSON op die is gedefinieerd in het artikel [H264 meerdere bitrate 720p](media-services-mes-preset-H264-Multiple-Bitrate-720p.md) in een bestand met de extensie. json. Bijvoorbeeld **CustomPreset_JSON.jsop**.
 
 ### <a name="customized-preset"></a>Aangepaste voor instelling
 
-Open het bestand **CustomPreset_JSON. json** en Verwijder eerst drie lagen uit **H264Layers** zodat uw bestand er als volgt uitziet.
+Open de **CustomPreset_JSON.jsin** het bestand en Verwijder eerst drie lagen uit **H264Layers** zodat uw bestand er als volgt uitziet.
 
 ```json 
     {  
@@ -120,9 +120,11 @@ In het volgende code voorbeeld wordt Media Services .NET SDK gebruikt om de volg
 - Maak een coderings taak.
 - Een verwijzing naar de Media Encoder Standard encoder ophalen.
 - Laad de aangepaste JSON-voor instelling die u in de vorige sectie hebt gemaakt. 
-  
-        // Load the JSON from the local file.
-        string configuration = File.ReadAllText(fileName);  
+
+    ```csharp
+    // Load the JSON from the local file.
+    string configuration = File.ReadAllText(fileName);  
+    ```
 
 - Een coderings taak toevoegen aan de taak. 
 - Geef op welke invoer-Asset moet worden gecodeerd.
@@ -132,7 +134,7 @@ In het volgende code voorbeeld wordt Media Services .NET SDK gebruikt om de volg
    
 #### <a name="create-and-configure-a-visual-studio-project"></a>Maak en configureer een Visual Studio-project.
 
-Stel uw ontwikkel omgeving in en vul in het bestand app. config de verbindings informatie in, zoals beschreven in [Media Services ontwikkeling met .net](media-services-dotnet-how-to-use.md). 
+Stel uw ontwikkel omgeving in en vul het app.config bestand in met verbindings informatie, zoals beschreven in [Media Services ontwikkeling met .net](media-services-dotnet-how-to-use.md). 
 
 #### <a name="example"></a>Voorbeeld   
 
@@ -264,7 +266,7 @@ namespace CustomizeMESPresests
 }
 ```
 
-## <a name="see-also"></a>Zie ook
+## <a name="see-also"></a>Zie tevens
 
 - [Coderen met een aangepaste trans formatie met behulp van CLI](../latest/custom-preset-cli-howto.md)
 - [Coderen met Media Services v3](../latest/encoding-concept.md)

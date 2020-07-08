@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 06/22/2018
-ms.openlocfilehash: b4840ed30eb1f6dc8d6e6cef47da17807f9644d5
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 4f4b914fe5851df0928df9ccc41ca3b20c5d3469
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77658571"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85955952"
 ---
 # <a name="filters-in-azure-monitor-views"></a>Filters in Azure Monitor weer gaven
 Met een **filter** in een [Azure monitor weergave](view-designer.md) kunnen gebruikers de gegevens in de weer gave filteren op basis van de waarde van een bepaalde eigenschap zonder de weer gave zelf te wijzigen.  Zo kunt u gebruikers van uw weer gave toestaan om de weer gave alleen te filteren op gegevens van een bepaalde computer of een set computers.  U kunt meerdere filters maken op één weer gave zodat gebruikers meerdere eigenschappen kunnen filteren.  In dit artikel wordt beschreven hoe u een filter gebruikt en voegt u er een toe aan een aangepaste weer gave.
@@ -21,7 +21,7 @@ Klik op het datum-en tijd bereik boven aan een weer gave om de vervolg keuzelijs
 
 ![Filter voorbeeld](media/view-designer-filters/filters-example-time.png)
 
-Klik op **+** de om een filter toe te voegen met aangepaste filters die voor de weer gave zijn gedefinieerd. Selecteer een waarde voor het filter in de vervolg keuzelijst of typ een waarde. Blijf filters toevoegen door te klikken op **+** de. 
+Klik op de **+** om een filter toe te voegen met aangepaste filters die voor de weer gave zijn gedefinieerd. Selecteer een waarde voor het filter in de vervolg keuzelijst of typ een waarde. Blijf filters toevoegen door te klikken op de **+** . 
 
 
 ![Filter voorbeeld](media/view-designer-filters/filters-example-custom.png)
@@ -61,15 +61,19 @@ Een filter kan alleen effect hebben als u query's in de weer gave wijzigt om op 
 
 De syntaxis voor het gebruik van een filter waarde in een query is: 
 
-    where ${filter name}  
+`where ${filter name}`  
 
 Als uw weer gave bijvoorbeeld een query bevat die gebeurtenissen retourneert en een filter gebruikt met de naam _computers_, kunt u de volgende query gebruiken.
 
-    Event | where ${Computers} | summarize count() by EventLevelName
+```kusto
+Event | where ${Computers} | summarize count() by EventLevelName
+```
 
 Als u een ander filter met de naam Ernst hebt toegevoegd, kunt u de volgende query gebruiken om beide filters te gebruiken.
 
-    Event | where ${Computers} | where ${Severity} | summarize count() by EventLevelName
+```kusto
+Event | where ${Computers} | where ${Severity} | summarize count() by EventLevelName
+```
 
 ## <a name="next-steps"></a>Volgende stappen
 * Meer informatie over de [visualisatie onderdelen](view-designer-parts.md) die u kunt toevoegen aan uw aangepaste weer gave.
