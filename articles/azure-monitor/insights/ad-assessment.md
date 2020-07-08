@@ -7,10 +7,9 @@ author: bwren
 ms.author: bwren
 ms.date: 09/10/2019
 ms.openlocfilehash: 06c8949be681d13b9dc7d5c433197dd9371aeef8
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/19/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "83651855"
 ---
 # <a name="optimize-your-active-directory-environment-with-the-active-directory-health-check-solution-in-azure-monitor"></a>De Active Directory-omgeving optimaliseren met behulp van Active Directory-statuscontrole in Azure Monitor
@@ -40,7 +39,7 @@ Nadat u de oplossing hebt toegevoegd en een controle is voltooid, wordt de samen
 * Een Log Analytics-werk ruimte om de Active Directory Health Check-oplossing toe te voegen vanuit de Azure Marketplace in de Azure Portal. Er is geen aanvullende configuratie vereist.
 
   > [!NOTE]
-  > Nadat u de oplossing hebt toegevoegd, wordt het bestand AdvisorAssessment. exe toegevoegd aan servers met agents. Configuratie gegevens worden gelezen en vervolgens naar Azure Monitor in de Cloud verzonden voor verwerking. Logica wordt toegepast op de ontvangen gegevens en de gegevens worden vastgelegd door de cloudservice.
+  > Nadat u de oplossing hebt toegevoegd, wordt het AdvisorAssessment.exe-bestand toegevoegd aan servers met agents. Configuratie gegevens worden gelezen en vervolgens naar Azure Monitor in de Cloud verzonden voor verwerking. Logica wordt toegepast op de ontvangen gegevens en de gegevens worden vastgelegd door de cloudservice.
   >
   >
 
@@ -140,9 +139,9 @@ Hier volgt een scherm opname van de logboek query: <
 
 Kies de aanbevelingen die u wilt negeren. In de volgende procedure gebruikt u de waarden voor RecommendationId.
 
-### <a name="to-create-and-use-an-ignorerecommendationstxt-text-file"></a>Een IgnoreRecommendations. txt-tekst bestand maken en gebruiken
+### <a name="to-create-and-use-an-ignorerecommendationstxt-text-file"></a>Een IgnoreRecommendations.txt tekst bestand maken en gebruiken
 
-1. Maak een bestand met de naam IgnoreRecommendations. txt.
+1. Maak een bestand met de naam IgnoreRecommendations.txt.
 
 2. Plak of typ elke RecommendationId voor elke aanbeveling die Azure Monitor wilt negeren op een afzonderlijke regel en sla het bestand op en sluit het.
 
@@ -162,7 +161,7 @@ Nadat de volgende geplande status controle standaard elke zeven dagen wordt uitg
     ADAssessmentRecommendation | where RecommendationResult == "Ignored" | sort by Computer asc | project Computer, RecommendationId, Recommendation
     ```
 
-2. Als u later besluit dat u genegeerde aanbevelingen wilt zien, verwijdert u de IgnoreRecommendations. txt-bestanden of verwijdert u RecommendationIDs van de andere.
+2. Als u later besluit dat u genegeerde aanbevelingen wilt zien, verwijdert u eventuele IgnoreRecommendations.txt-bestanden of verwijdert u de RecommendationIDs uit deze.
 
 ## <a name="ad-health-check-solutions-faq"></a>Veelgestelde vragen over oplossingen van AD-statuscontrole
 
@@ -195,7 +194,7 @@ De resultaten kunnen vervolgens naar Excel worden geëxporteerd voor verdere con
 
 *Wat is de naam van het proces dat het verzamelen van gegevens doet?*
 
-* AdvisorAssessment. exe
+* AdvisorAssessment.exe
 
 *Hoe lang duurt het voordat gegevens worden verzameld?*
 

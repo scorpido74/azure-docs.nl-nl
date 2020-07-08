@@ -13,10 +13,9 @@ ms.topic: article
 ms.date: 01/08/2020
 ms.author: apimpm
 ms.openlocfilehash: dc8ca7296658f4113d86765f230ca0158727255f
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/19/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "83649211"
 ---
 # <a name="how-to-use-named-values-in-azure-api-management-policies"></a>Benoemde waarden gebruiken in azure API Management-beleid
@@ -40,7 +39,7 @@ Benoemde waarden kunnen letterlijke teken reeksen en [beleids expressies](/azure
 | ---------- | -------------------------- | ------ | ------------- |
 | Waarde      | 42                         | False  | cruciale cijfers |
 | Referentie | ••••••••••••••••••••••     | True   | security      |
-| Expressie | @ (DateTime. Now. ToString ()) | False  |               |
+| Expression | @ (DateTime. Now. ToString ()) | False  |               |
 
 > [!NOTE]
 > In plaats van benoemde waarden die zijn opgeslagen in een API Management-service, kunt u waarden gebruiken die zijn opgeslagen in de [Azure Key Vault](https://azure.microsoft.com/services/key-vault/) -service, zoals wordt geïllustreerd door dit [voor beeld](https://github.com/Azure/api-management-policy-snippets/blob/master/examples/Look%20up%20Key%20Vault%20secret%20using%20Managed%20Service%20Identity.policy.xml).
@@ -55,7 +54,7 @@ Benoemde waarden kunnen letterlijke teken reeksen en [beleids expressies](/azure
 
     Naam en waarde zijn vereiste waarden. Als de waarde een geheim is, schakelt u het selectie vakje _Dit is een geheim_ in. Voer een of meer optionele Tags in om u te helpen bij het ordenen van uw benoemde waarden en klik op opslaan.
 
-4. Klik op **Maken**.
+4. Klik op **Create**.
 
 Zodra de benoemde waarde is gemaakt, kunt u deze bewerken door erop te klikken. Als u de naam van de benoemde waarde wijzigt, worden alle beleids regels die verwijzen naar deze benoemde waarde, automatisch bijgewerkt voor gebruik van de nieuwe naam.
 

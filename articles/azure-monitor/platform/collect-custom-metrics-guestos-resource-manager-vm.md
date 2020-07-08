@@ -8,10 +8,9 @@ ms.date: 05/04/2020
 ms.author: bwren
 ms.subservice: metrics
 ms.openlocfilehash: 14079f42fd857495396a0c44fd3bdeaf4371ea5f
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/19/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "83650540"
 ---
 # <a name="send-guest-os-metrics-to-the-azure-monitor-metric-store-by-using-an-azure-resource-manager-template-for-a-windows-virtual-machine"></a>De metrische gegevens van het gast besturingssysteem naar het Azure Monitor metrische archief verzenden met behulp van een Azure Resource Manager sjabloon voor een virtuele Windows-machine
@@ -38,22 +37,22 @@ De uitbrei ding Azure Diagnostics gebruikt een functie met de naam ' gegevens-si
 ## <a name="author-resource-manager-template"></a>Resource Manager-sjabloon maken
 Voor dit voor beeld kunt u een openbaar beschik bare voorbeeld sjabloon gebruiken. De start sjablonen bevinden zich op https://github.com/Azure/azure-quickstart-templates/tree/master/101-vm-simple-windows .
 
-- **Azuredeploy. json** is een vooraf geconfigureerde Resource Manager-sjabloon voor de implementatie van een virtuele machine.
+- **Azuredeploy.js** is een vooraf geconfigureerde Resource Manager-sjabloon voor de implementatie van een virtuele machine.
 
-- **Azuredeploy. para meters. json** is een bestand met para meters waarin gegevens worden opgeslagen, zoals de gebruikers naam en het wacht woord die u wilt instellen voor uw VM. Tijdens de implementatie gebruikt de Resource Manager-sjabloon de para meters die in dit bestand zijn ingesteld.
+- **Azuredeploy.parameters.js** is een bestand met para meters waarin gegevens worden opgeslagen, zoals de gebruikers naam en het wacht woord die u voor uw VM wilt instellen. Tijdens de implementatie gebruikt de Resource Manager-sjabloon de para meters die in dit bestand zijn ingesteld.
 
 Down load en sla beide bestanden lokaal op.
 
-### <a name="modify-azuredeployparametersjson"></a>Azuredeploy. para meters. json wijzigen
-Open het bestand *azuredeploy. para meters. json*
+### <a name="modify-azuredeployparametersjson"></a>azuredeploy.parameters.jswijzigen op
+Het *azuredeploy.parameters.js* bestand openen
 
 1. Voer waarden in voor **adminUsername** en **adminPassword** voor de virtuele machine. Deze para meters worden gebruikt voor externe toegang tot de virtuele machine. Gebruik niet de waarden in deze sjabloon om te voor komen dat uw virtuele machine wordt overgenomen. Bots scannen op internet voor gebruikers namen en wacht woorden in open bare GitHub-opslag plaatsen. Waarschijnlijk worden er Vm's getest met deze standaard waarden.
 
 1. Maak een unieke dnsname voor de virtuele machine.
 
-### <a name="modify-azuredeployjson"></a>Azuredeploy. json wijzigen
+### <a name="modify-azuredeployjson"></a>azuredeploy.jswijzigen op
 
-Open het bestand *azuredeploy. json*
+Het *azuredeploy.js* bestand openen
 
 Voeg een opslag account-ID toe aan de sectie **variabelen** van de sjabloon na de vermelding voor **storageAccountName.**
 
@@ -263,7 +262,7 @@ We maken gebruik van Azure PowerShell om de Resource Manager-sjabloon te impleme
 1. Nadat de implementatie is voltooid, moet de virtuele machine zich in de Azure Portal bekomen, waarbij de metrische gegevens naar Azure Monitor worden verzonden.
 
    > [!NOTE]
-   > U kunt fouten rond de geselecteerde vmSkuSize uitvoeren. Als dit het geval is, gaat u terug naar het bestand azuredeploy. json en werkt u de standaard waarde van de vmSkuSize-para meter bij. In dit geval kunt u het beste ' Standard_DS1_v2 ').
+   > U kunt fouten rond de geselecteerde vmSkuSize uitvoeren. Als dit het geval is, gaat u terug naar uw azuredeploy.jsin het bestand en werkt u de standaard waarde van de para meter vmSkuSize bij. In dit geval kunt u het beste ' Standard_DS1_v2 ').
 
 ## <a name="chart-your-metrics"></a>Grafieken van uw metrische gegevens
 

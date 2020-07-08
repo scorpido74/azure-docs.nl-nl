@@ -15,10 +15,9 @@ ms.topic: article
 ms.date: 03/20/2019
 ms.author: juliako
 ms.openlocfilehash: 46d00df4970a7268c9856de6d7c090f2deffc7ea
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/19/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "83654522"
 ---
 # <a name="get-started-with-delivering-content-on-demand-using-rest"></a>Aan de slag met het leveren van inhoud op aanvraag met behulp van REST  
@@ -95,7 +94,7 @@ Een van de waarden die u moet opgeven bij het maken van een Asset, is opties voo
 * **CommonEncryptionProtected**  =  **2** : gebruik deze optie als u inhoud uploadt die al is versleuteld en beveiligd met common Encryption of playready DRM (bijvoorbeeld Smooth streaming beveiligd met PlayReady DRM).
 * **EnvelopeEncryptionProtected**  =  **4** : gebruik deze optie als u HLS versleuteld met AES uploadt. De bestanden moeten zijn gecodeerd en versleuteld door trans formatie Manager.
 
-### <a name="create-an-asset"></a>Een Asset maken
+### <a name="create-an-asset"></a>Een asset maken
 Een Asset is een container voor meerdere typen of verzamelingen van objecten in Media Services, zoals video, audio, afbeeldingen, miniatuur verzamelingen, tekst sporen en ondertitelings bestanden. In de REST API vereist het maken van een Asset POST-aanvraag verzenden naar Media Services en het plaatsen van eigenschaps informatie over uw asset in de hoofd tekst van de aanvraag.
 
 In het volgende voor beeld ziet u hoe u een Asset maakt.

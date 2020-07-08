@@ -16,10 +16,9 @@ ms.topic: article
 ms.date: 02/07/2017
 ms.author: jegeib
 ms.openlocfilehash: 074098c3adae0dd8ff2a127d819e2b3630b754da
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/19/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "83650081"
 ---
 # <a name="security-frame-exception-management--mitigations"></a>Beveiligings frame: uitzonderings beheer | Oplossingen 
@@ -33,7 +32,7 @@ ms.locfileid: "83650081"
 
 | Titel                   | Details      |
 | ----------------------- | ------------ |
-| **Component**               | WCF | 
+| **Onderdeel**               | WCF | 
 | **SDL-fase**               | Ontwikkelen |  
 | **Toepasselijke technologieën** | Algemeen, NET Framework 3 |
 | **Kenmerken**              | N.v.t.  |
@@ -57,7 +56,7 @@ Fout opsporingsgegevens in de service uitschakelen. Dit kan worden bereikt door 
 
 | Titel                   | Details      |
 | ----------------------- | ------------ |
-| **Component**               | WCF | 
+| **Onderdeel**               | WCF | 
 | **SDL-fase**               | Ontwikkelen |  
 | **Toepasselijke technologieën** | Algemeen |
 | **Kenmerken**              | Algemeen, NET Framework 3 |
@@ -68,7 +67,7 @@ Fout opsporingsgegevens in de service uitschakelen. Dit kan worden bereikt door 
 
 | Titel                   | Details      |
 | ----------------------- | ------------ |
-| **Component**               | Web-API | 
+| **Onderdeel**               | Web-API | 
 | **SDL-fase**               | Ontwikkelen |  
 | **Toepasselijke technologieën** | MVC 5, MVC 6 |
 | **Kenmerken**              | N.v.t.  |
@@ -186,7 +185,7 @@ Controleer de koppelingen in het gedeelte met verwijzingen voor meer informatie 
 
 | Titel                   | Details      |
 | ----------------------- | ------------ |
-| **Component**               | Webtoepassing | 
+| **Onderdeel**               | Webtoepassing | 
 | **SDL-fase**               | Ontwikkelen |  
 | **Toepasselijke technologieën** | Algemeen |
 | **Kenmerken**              | N.v.t.  |
@@ -197,29 +196,29 @@ Controleer de koppelingen in het gedeelte met verwijzingen voor meer informatie 
 
 | Titel                   | Details      |
 | ----------------------- | ------------ |
-| **Component**               | Webtoepassing | 
+| **Onderdeel**               | Webtoepassing | 
 | **SDL-fase**               | Ontwikkelen |  
 | **Toepasselijke technologieën** | Algemeen |
 | **Kenmerken**              | N.v.t.  |
 | **Referenties**              | [Het dialoogvenster Instellingen voor ASP.NET-foutpagina's bewerken](https://technet.microsoft.com/library/dd569096(WS.10).aspx) |
-| **Stappen** | <p>Wanneer een ASP.NET-toepassing mislukt en een interne server fout van HTTP/1. x 500 veroorzaakt, of een functie configuratie (zoals het filteren van aanvragen) voor komt dat een pagina wordt weer gegeven, wordt er een fout bericht gegenereerd. Beheerders kunnen kiezen of de toepassing een vriendelijk bericht moet weer geven voor de client, een gedetailleerd fout bericht naar de client of een gedetailleerd fout bericht dat alleen wordt localhost. De `<customErrors>` tag in web. config heeft drie modi:</p><ul><li>**Op:** Hiermee geeft u op dat aangepaste fouten worden ingeschakeld. Als er geen defaultRedirect-kenmerk is opgegeven, zien gebruikers een algemene fout. De aangepaste fouten worden weer gegeven op de externe clients en op de lokale host</li><li>**Uit:** Hiermee geeft u op dat aangepaste fouten moeten worden uitgeschakeld. De gedetailleerde ASP.NET-fouten worden weer gegeven op de externe clients en op de lokale host</li><li>**RemoteOnly:** Hiermee geeft u op dat aangepaste fouten alleen worden weer gegeven voor de externe clients en dat er ASP.NET-fouten worden weer gegeven aan de lokale host. Dit is de standaard waarde</li></ul><p>Open het `web.config` bestand voor de toepassing/site en zorg ervoor dat het label ofwel `<customErrors mode="RemoteOnly" />` of is `<customErrors mode="On" />` gedefinieerd.</p>|
+| **Stappen** | <p>Wanneer een ASP.NET-toepassing mislukt en een interne server fout van HTTP/1. x 500 veroorzaakt, of een functie configuratie (zoals het filteren van aanvragen) voor komt dat een pagina wordt weer gegeven, wordt er een fout bericht gegenereerd. Beheerders kunnen kiezen of de toepassing een vriendelijk bericht moet weer geven voor de client, een gedetailleerd fout bericht naar de client of een gedetailleerd fout bericht dat alleen wordt localhost. De `<customErrors>` tag in de web.config heeft drie modi:</p><ul><li>**Op:** Hiermee geeft u op dat aangepaste fouten worden ingeschakeld. Als er geen defaultRedirect-kenmerk is opgegeven, zien gebruikers een algemene fout. De aangepaste fouten worden weer gegeven op de externe clients en op de lokale host</li><li>**Uit:** Hiermee geeft u op dat aangepaste fouten moeten worden uitgeschakeld. De gedetailleerde ASP.NET-fouten worden weer gegeven op de externe clients en op de lokale host</li><li>**RemoteOnly:** Hiermee geeft u op dat aangepaste fouten alleen worden weer gegeven voor de externe clients en dat er ASP.NET-fouten worden weer gegeven aan de lokale host. Dit is de standaard waarde</li></ul><p>Open het `web.config` bestand voor de toepassing/site en zorg ervoor dat het label ofwel `<customErrors mode="RemoteOnly" />` of is `<customErrors mode="On" />` gedefinieerd.</p>|
 
 ## <a name="set-deployment-method-to-retail-in-iis"></a><a id="deployment"></a>Implementatie methode instellen op Retail in IIS
 
 | Titel                   | Details      |
 | ----------------------- | ------------ |
-| **Component**               | Webtoepassing | 
+| **Onderdeel**               | Webtoepassing | 
 | **SDL-fase**               | Implementatie |  
 | **Toepasselijke technologieën** | Algemeen |
 | **Kenmerken**              | N.v.t.  |
 | **Referenties**              | [implementatie-element (ASP.NET-instellingen schema)](https://msdn.microsoft.com/library/ms228298(VS.80).aspx) |
-| **Stappen** | <p>De `<deployment retail>` Switch is bedoeld voor gebruik door de productie-IIS-servers. Deze schakel optie wordt gebruikt om toepassingen te helpen uitvoeren met de best mogelijke prestaties en beveiligings lekken die kunnen worden gelekt door de mogelijkheid van de toepassing om tracerings uitvoer op een pagina te genereren uit te scha kelen, om gedetailleerde fout berichten weer te geven voor eind gebruikers en de schakel optie voor fout opsporing uit te scha kelen.</p><p>Vaak worden de switches en opties die gericht zijn op ontwikkel aars, zoals het traceren van mislukte aanvragen en fout opsporing, ingeschakeld tijdens de actieve ontwikkeling. Het is raadzaam om de implementatie methode op een productie server in te stellen op retail. Open het bestand Machine. config en zorg ervoor dat het is `<deployment retail="true" />` ingesteld op waar.</p>|
+| **Stappen** | <p>De `<deployment retail>` Switch is bedoeld voor gebruik door de productie-IIS-servers. Deze schakel optie wordt gebruikt om toepassingen te helpen uitvoeren met de best mogelijke prestaties en beveiligings lekken die kunnen worden gelekt door de mogelijkheid van de toepassing om tracerings uitvoer op een pagina te genereren uit te scha kelen, om gedetailleerde fout berichten weer te geven voor eind gebruikers en de schakel optie voor fout opsporing uit te scha kelen.</p><p>Vaak worden de switches en opties die gericht zijn op ontwikkel aars, zoals het traceren van mislukte aanvragen en fout opsporing, ingeschakeld tijdens de actieve ontwikkeling. Het is raadzaam om de implementatie methode op een productie server in te stellen op retail. Open het machine.config-bestand en zorg ervoor dat het is `<deployment retail="true" />` ingesteld op waar.</p>|
 
 ## <a name="exceptions-should-fail-safely"></a><a id="fail"></a>Uitzonde ringen moeten veilig mislukken
 
 | Titel                   | Details      |
 | ----------------------- | ------------ |
-| **Component**               | Webtoepassing | 
+| **Onderdeel**               | Webtoepassing | 
 | **SDL-fase**               | Ontwikkelen |  
 | **Toepasselijke technologieën** | Algemeen |
 | **Kenmerken**              | N.v.t.  |

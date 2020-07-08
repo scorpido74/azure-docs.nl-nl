@@ -6,10 +6,9 @@ ms.topic: conceptual
 ms.date: 10/15/2017
 ms.author: dekapur
 ms.openlocfilehash: 1277af2e8f9de575fbe51ea0f43bbcfd2812e610
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/19/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "83653636"
 ---
 # <a name="secure-a-standalone-cluster-on-windows-by-using-x509-certificates"></a>Een zelfstandige cluster in Windows beveiligen met behulp van X. 509-certificaten
@@ -18,7 +17,7 @@ In dit artikel wordt beschreven hoe u de communicatie tussen de verschillende kn
 Zie [scenario's voor cluster beveiliging](service-fabric-cluster-security.md)voor meer informatie over de beveiliging van het cluster, zoals de beveiliging van knoop punt naar knoop punt, beveiliging van client naar knoop punt en toegangs beheer op basis van rollen.
 
 ## <a name="which-certificates-do-you-need"></a>Welke certificaten hebt u nodig?
-Om te beginnen, moet u [het service Fabric voor Windows Server-pakket downloaden](service-fabric-cluster-creation-for-windows-server.md#download-the-service-fabric-for-windows-server-package) naar een van de knoop punten in uw cluster. In het gedownloade pakket vindt u een bestand met de naam ClusterConfig. x509. een. json. Open het bestand en controleer de sectie voor beveiliging in het gedeelte Eigenschappen:
+Om te beginnen, moet u [het service Fabric voor Windows Server-pakket downloaden](service-fabric-cluster-creation-for-windows-server.md#download-the-service-fabric-for-windows-server-package) naar een van de knoop punten in uw cluster. In het gedownloade pakket vindt u een ClusterConfig.X509.MultiMachine.jsin het bestand. Open het bestand en controleer de sectie voor beveiliging in het gedeelte Eigenschappen:
 
 ```JSON
 "security": {
@@ -265,7 +264,7 @@ Voor clusters die u voor test doeleinden gebruikt, kunt u ervoor kiezen om een z
 Raadpleeg [Veelgestelde vragen over certificaten](https://docs.microsoft.com/azure/service-fabric/cluster-security-certificate-management#troubleshooting-and-frequently-asked-questions)voor aanvullende vragen.
 
 ## <a name="optional-create-a-self-signed-certificate"></a>Optioneel: een zelfondertekend certificaat maken
-Eén manier om een zelfondertekend certificaat te maken dat goed kan worden beveiligd, is door het script CertSetup. ps1 in de map Service Fabric SDK in de map C:\Program Files\Microsoft SDKs\Service Fabric\ClusterSetup\Secure. te gebruiken. Bewerk dit bestand om de standaard naam van het certificaat te wijzigen. (Zoek naar de waarde CN = ServiceFabricDevClusterCert.) Voer dit script uit als `.\CertSetup.ps1 -Install` .
+Eén manier om een zelfondertekend certificaat te maken dat goed kan worden beveiligd, is door het CertSetup.ps1 script te gebruiken in de map Service Fabric SDK in de map C:\Program Files\Microsoft SDKs\Service Fabric\ClusterSetup\Secure. Bewerk dit bestand om de standaard naam van het certificaat te wijzigen. (Zoek naar de waarde CN = ServiceFabricDevClusterCert.) Voer dit script uit als `.\CertSetup.ps1 -Install` .
 
 Exporteer het certificaat nu naar een. pfx-bestand met een beveiligd wacht woord. Haal eerst de vinger afdruk van het certificaat op. 
 1. Voer in het menu **Start** de optie **computer certificaten beheren**uit. 
@@ -344,7 +343,7 @@ Nadat u certificaten hebt, kunt u deze installeren op de cluster knooppunten. Op
 4. Herhaal de vorige stappen voor elk server certificaat. U kunt deze stappen ook gebruiken om de client certificaten te installeren op de computers die u toegang wilt geven tot het cluster.
 
 ## <a name="create-the-secure-cluster"></a>Het beveiligde cluster maken
-Nadat u de sectie beveiliging van het bestand ClusterConfig. x509. een. json hebt geconfigureerd, kunt u door gaan naar de sectie [het cluster maken](service-fabric-cluster-creation-for-windows-server.md#create-the-cluster) voor het configureren van de knoop punten en het maken van het zelfstandige cluster. Vergeet niet om het bestand ClusterConfig. x509. json te gebruiken tijdens het maken van het cluster. Uw opdracht kan er bijvoorbeeld als volgt uitzien:
+Nadat u de sectie beveiliging van de ClusterConfig.X509.MultiMachine.jsin het bestand hebt geconfigureerd, kunt u door gaan naar de sectie [het cluster maken](service-fabric-cluster-creation-for-windows-server.md#create-the-cluster) voor het configureren van de knoop punten en het maken van het zelfstandige cluster. Vergeet niet om de ClusterConfig.X509.MultiMachine.jsin het bestand te gebruiken terwijl u het cluster maakt. Uw opdracht kan er bijvoorbeeld als volgt uitzien:
 
 ```powershell
 .\CreateServiceFabricCluster.ps1 -ClusterConfigFilePath .\ClusterConfig.X509.MultiMachine.json

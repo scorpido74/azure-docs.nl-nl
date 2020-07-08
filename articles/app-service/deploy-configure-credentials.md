@@ -6,10 +6,9 @@ ms.date: 08/14/2019
 ms.reviewer: byvinyal
 ms.custom: seodec18
 ms.openlocfilehash: c6f7c2422e043da6df498fe81da938576687b916
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/19/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "83649111"
 ---
 # <a name="configure-deployment-credentials-for-azure-app-service"></a>Implementatie referenties voor Azure App Service configureren
@@ -23,22 +22,22 @@ U kunt uw referenties op gebruikers niveau configureren op de [resource pagina](
 
 ### <a name="in-the-cloud-shell"></a>In de Cloud Shell
 
-Als u de implementatie gebruiker wilt configureren in de [Cloud shell](https://shell.azure.com), voert u de opdracht [AZ webapp Deployment User set](/cli/azure/webapp/deployment/user?view=azure-cli-latest#az-webapp-deployment-user-set) uit. Vervang gebruikers \<> naam en \< wacht woord> door een gebruikers naam en wacht woord voor de implementatie gebruiker. 
+Als u de implementatie gebruiker wilt configureren in de [Cloud shell](https://shell.azure.com), voert u de opdracht [AZ webapp Deployment User set](/cli/azure/webapp/deployment/user?view=azure-cli-latest#az-webapp-deployment-user-set) uit. Vervang \<username> en \<password> door een gebruikers naam en wacht woord voor de implementatie gebruiker. 
 
-- De gebruikers naam moet uniek zijn binnen Azure en voor lokale Git-pushes mag het symbool ' @ ' niet bevatten. 
-- Het wacht woord moet ten minste acht tekens lang zijn, met twee van de volgende drie elementen: letters, cijfers en symbolen. 
+- De gebruikersnaam moet uniek zijn binnen Azure en voor lokale Git-pushes en mag het symbool @ niet bevatten. 
+- Het wachtwoord moet ten minste acht tekens lang zijn en minimaal twee van de volgende drie typen elementen bevatten: letters, cijfers en symbolen. 
 
 ```azurecli-interactive
 az webapp deployment user set --user-name <username> --password <password>
 ```
 
-De JSON-uitvoer toont het wacht woord als `null` . Als er een `'Conflict'. Details: 409`-fout optreedt, wijzigt u de gebruikersnaam. Als er een `'Bad Request'. Details: 400`-fout optreedt, kiest u een sterker wachtwoord. 
+De JSON-uitvoer toont het wachtwoord als `null`. Als er een `'Conflict'. Details: 409`-fout optreedt, wijzigt u de gebruikersnaam. Als er een `'Bad Request'. Details: 400`-fout optreedt, kiest u een sterker wachtwoord. 
 
 ### <a name="in-the-portal"></a>In de portal
 
 In de Azure Portal moet u ten minste één app hebben voordat u toegang kunt krijgen tot de pagina implementatie referenties. Uw referenties op gebruikers niveau configureren:
 
-1. Selecteer in het menu links in het [Azure Portal](https://portal.azure.com) **app Services**  >  ** \< any_app>**  >  **Deployment Center**  >  **-FTP-**  >  **dash board**.
+1. Selecteer in het menu links in het [Azure Portal](https://portal.azure.com) **app Services**  >  **\<any_app>**  >  **Deployment Center**  >  **-FTP-**  >  **dash board**.
 
     ![](./media/app-service-deployment-credentials/access-no-git.png)
 

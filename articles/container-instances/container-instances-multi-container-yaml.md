@@ -4,10 +4,9 @@ description: In deze zelf studie leert u hoe u een container groep met meerdere 
 ms.topic: article
 ms.date: 04/03/2019
 ms.openlocfilehash: c029a9c605548b828c96fa741e12a43930ec4b01
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/19/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "83653497"
 ---
 # <a name="tutorial-deploy-a-multi-container-group-using-a-yaml-file"></a>Zelf studie: een groep met meerdere containers implementeren met behulp van een YAML-bestand
@@ -19,7 +18,7 @@ ms.locfileid: "83653497"
 
 Azure Container Instances ondersteunt de implementatie van meerdere containers op één host met behulp van een [container groep](container-instances-container-groups.md). Een container groep is handig bij het bouwen van een sollicitatie stick voor logboek registratie, bewaking of andere configuraties waarbij een service een tweede gekoppelde procedure nodig heeft.
 
-In deze zelf studie voert u de stappen uit voor het uitvoeren van een eenvoudige configuratie voor twee containers door een [yaml-bestand](container-instances-reference-yaml.md) te implementeren met behulp van de Azure cli. Een YAML-bestand biedt een beknopt formaat voor het opgeven van de instantie-instellingen. Procedures voor:
+In deze zelf studie voert u de stappen uit voor het uitvoeren van een eenvoudige configuratie voor twee containers door een [yaml-bestand](container-instances-reference-yaml.md) te implementeren met behulp van de Azure cli. Een YAML-bestand biedt een beknopt formaat voor het opgeven van de instantie-instellingen. In deze zelfstudie leert u procedures om het volgende te doen:
 
 > [!div class="checklist"]
 > * Een YAML-bestand configureren
@@ -29,7 +28,7 @@ In deze zelf studie voert u de stappen uit voor het uitvoeren van een eenvoudige
 > [!NOTE]
 > Groepen met meerdere containers zijn momenteel beperkt tot Linux-containers.
 
-Als u nog geen abonnement op Azure hebt, maak dan een [gratis account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) aan voordat u begint.
+Als u nog geen abonnement op Azure hebt, maakt u een [gratis account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) aan voordat u begint.
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 

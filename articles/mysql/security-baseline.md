@@ -8,10 +8,9 @@ ms.date: 03/23/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
 ms.openlocfilehash: 02050745e7c8a9aa05d3f2de63a4bc5f1ebf8318
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/19/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "83654787"
 ---
 # <a name="azure-security-baseline-for-azure-database-for-mysql"></a>Azure-beveiligings basislijn voor Azure Database for MySQL
@@ -28,7 +27,7 @@ Zie [overzicht van Azure Security-basis lijnen](https://docs.microsoft.com/azure
 
 ### <a name="11-protect-resources-using-network-security-groups-or-azure-firewall-on-your-virtual-network"></a>1,1: Beveilig bronnen met behulp van netwerk beveiligings groepen of Azure Firewall op de Virtual Network
 
-**Hulp**bij het configureren van een persoonlijke koppeling voor Azure database for MySQL met privé-eind punten. Met persoonlijke koppeling kunt u via een persoonlijk eind punt verbinding maken met verschillende PaaS-Services in Azure. Met Azure private link worden Azure-Services binnen uw persoonlijke Virtual Network (VNet) geplaatst. Verkeer tussen uw virtuele netwerk en MySQL-exemplaar wordt het micro soft-backbone-netwerk verplaatst.
+**Hulp**bij het configureren van een persoonlijke koppeling voor Azure database for MySQL met privé-eind punten. Met een Private Link kunt u via een privé-eindpunt verbinding maken met verschillende PaaS-services in Azure. Met Azure private link worden Azure-Services binnen uw persoonlijke Virtual Network (VNet) geplaatst. Verkeer tussen uw virtuele netwerk en MySQL-exemplaar wordt het micro soft-backbone-netwerk verplaatst.
 
 U kunt ook Virtual Network Service-eind punten gebruiken om de netwerk toegang tot uw Azure Database for MySQL-implementaties te beveiligen en te beperken. Regels voor virtuele netwerken zijn één firewall beveiligings functie die bepaalt of uw Azure Database for MySQL server communicatie accepteert die wordt verzonden vanuit bepaalde subnetten in virtuele netwerken.
 
@@ -128,9 +127,9 @@ Meer informatie over het gebruik van service tags voor Azure Database for MySQL:
 
 **Hulp**: Definieer en implementeer standaard beveiligings configuraties voor netwerk instellingen en netwerk resources die zijn gekoppeld aan uw Azure database for MySQL-instanties met Azure Policy. Gebruik Azure Policy aliassen in de naam ruimten ' micro soft. DBforMySQL ' en ' micro soft. Network ' om aangepaste beleids regels te maken om de netwerk configuratie van uw Azure Database for MySQL instanties te controleren of af te dwingen. U kunt ook gebruikmaken van ingebouwde beleids definities met betrekking tot netwerken of uw Azure Database for MySQL-instanties, zoals:
 
-- DDoS Protection standaard moet zijn ingeschakeld
+- De DDoS Protection-standaard moet zijn ingeschakeld
 
-- SSL-verbinding afdwingen moet zijn ingeschakeld voor MySQL-database servers
+- SSL-verbinding afdwingen moet worden ingeschakeld voor MySQL-databaseservers
 
 Azure Policy configureren en beheren:https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage
 
@@ -474,7 +473,7 @@ Lijst met door Klanten-lockbox ondersteunde services:https://docs.microsoft.com/
 
 **Verantwoordelijkheid**: n.v.t.
 
-## <a name="data-protection"></a>Gegevensbescherming
+## <a name="data-protection"></a>Gegevensbeveiliging
 
 *Zie [beveiligings beheer: gegevens beveiliging](https://docs.microsoft.com/azure/security/benchmarks/security-control-data-protection)voor meer informatie.*
 
@@ -792,7 +791,7 @@ Voorwaardelijke toegang configureren om de toegang tot Azure Resource Manager te
 
 **Richt lijnen**: standaard beveiligings configuraties voor uw Azure database for MySQL-instanties definiëren en implementeren met Azure Policy. Gebruik Azure Policy aliassen in de naam ruimte ' micro soft. DBforMySQL ' om aangepaste beleids regels te maken om de netwerk configuratie van uw Azure Database for MySQL instanties te controleren of af te dwingen. U kunt ook gebruikmaken van ingebouwde beleids definities die betrekking hebben op uw Azure Database for MySQL-instanties, zoals:
 
-SSL-verbinding afdwingen moet zijn ingeschakeld voor MySQL-database servers
+SSL-verbinding afdwingen moet worden ingeschakeld voor MySQL-databaseservers
 
 Beschik bare Azure Policy aliassen weer geven:https://docs.microsoft.com/powershell/module/az.resources/get-azpolicyalias?view=azps-3.3.0
 

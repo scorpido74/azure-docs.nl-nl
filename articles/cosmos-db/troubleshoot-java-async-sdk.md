@@ -10,10 +10,9 @@ ms.subservice: cosmosdb-sql
 ms.topic: troubleshooting
 ms.reviewer: sngun
 ms.openlocfilehash: 10ad2fa3eb03254894c51fff66389ec3a8da4c38
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/19/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "83651884"
 ---
 # <a name="troubleshoot-issues-when-you-use-the-azure-cosmos-db-async-java-sdk-v2-with-sql-api-accounts"></a>Problemen oplossen met de Azure Cosmos DB async Java SDK v2 met SQL API-accounts
@@ -193,7 +192,7 @@ De bovenstaande uitzonde ring wordt voorgesteld door een afhankelijkheid van een
 
 De tijdelijke oplossing voor dergelijke problemen is het identificeren van de andere afhankelijkheid in RxJava-1.2.2 en de transitieve afhankelijkheid uit te sluiten op RxJava-1.2.2 en CosmosDB SDK de nieuwere versie te laten halen.
 
-Als u wilt weten welke bibliotheek in RxJava-1.2.2 wordt geplaatst, voert u de volgende opdracht uit naast uw project pom. XML-bestand:
+Als u wilt weten welke bibliotheek in RxJava-1.2.2 wordt geplaatst, voert u de volgende opdracht uit naast uw project pom.xml-bestand:
 ```bash
 mvn dependency:tree
 ```

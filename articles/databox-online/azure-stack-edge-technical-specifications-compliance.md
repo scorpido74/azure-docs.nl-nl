@@ -9,10 +9,9 @@ ms.topic: article
 ms.date: 03/02/2020
 ms.author: alkohli
 ms.openlocfilehash: 5a4ac2342ca36d83d1a579851c090c4713814c8d
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/19/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "83652051"
 ---
 # <a name="azure-stack-edge-technical-specifications"></a>Technische specificaties van Azure Stack rand
@@ -45,7 +44,7 @@ Het Azure Stack edge-apparaat heeft twee 100-240 V-voedings eenheden (PSUs) met 
 | Maximale uitvoer kracht    | 750 W                     |
 | Frequentie               | 50/60 Hz                   |
 | Selectie van voltage bereik | Automatisch variërend: 100-240 V AC |
-| Hot pluggable           | Ja                        |
+| Hot pluggable           | Yes                        |
 
 ### <a name="azure-stack-edge-power-cord-specifications-by-region"></a>Specificaties van Azure Stack Edge-stroom kabel per regio
 
@@ -60,7 +59,7 @@ The following table lists the typical power consumption data (actual values may 
 
 Uw Azure Stack edge-apparaat heeft zes netwerk interfaces, PORT1-PORT6.
 
-| Specificatie           | Beschrijving                 |
+| Specificatie           | Description                 |
 |-------------------------|----------------------------|
 |  Netwerkinterfaces    | 2 X 1 GbE-interfaces: Eén beheerinterface, niet configureerbaar door gebruikers, gebruikt voor eerste installatie. De andere gegevensinterface kan door gebruikers worden geconfigureerd, kan worden gebruikt voor gegevensoverdracht en is standaard DHCP. <br>2 X 25 GbE-interfaces: Deze kunnen ook als 10 GbE-interfaces werken. Deze gegevensinterfaces kunnen door gebruikers worden geconfigureerd als DHCP (standaard) of statisch. <br> 2 X 25 GbE-interfaces: Deze gegevensinterfaces kunnen door gebruikers worden geconfigureerd als DHCP (standaard) of statisch.                  |
 

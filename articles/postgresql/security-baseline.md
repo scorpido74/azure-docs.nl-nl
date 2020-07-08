@@ -8,10 +8,9 @@ ms.date: 03/23/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
 ms.openlocfilehash: 89d760e28025f64b8cd8940fc08f06d23c969e12
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/19/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "83655750"
 ---
 # <a name="azure-security-baseline-for-azure-database-for-postgresql-single-server"></a>Azure-beveiligings basislijn voor Azure Database for PostgreSQL één server
@@ -28,7 +27,7 @@ Zie [overzicht van Azure Security-basis lijnen](https://docs.microsoft.com/azure
 
 ### <a name="11-protect-resources-using-network-security-groups-or-azure-firewall-on-your-virtual-network"></a>1,1: Beveilig bronnen met behulp van netwerk beveiligings groepen of Azure Firewall op de Virtual Network
 
-**Hulp**bij het configureren van een persoonlijke koppeling voor Azure database for PostgreSQL met privé-eind punten. Met persoonlijke koppeling kunt u via een persoonlijk eind punt verbinding maken met verschillende PaaS-Services in Azure. Met Azure private link worden Azure-Services binnen uw persoonlijke Virtual Network (VNet) geplaatst. Verkeer tussen uw virtuele netwerk en PostgreSQL-exemplaar wordt het micro soft-backbone-netwerk verplaatst.
+**Hulp**bij het configureren van een persoonlijke koppeling voor Azure database for PostgreSQL met privé-eind punten. Met een Private Link kunt u via een privé-eindpunt verbinding maken met verschillende PaaS-services in Azure. Met Azure private link worden Azure-Services binnen uw persoonlijke Virtual Network (VNet) geplaatst. Verkeer tussen uw virtuele netwerk en PostgreSQL-exemplaar wordt het micro soft-backbone-netwerk verplaatst.
 
 U kunt ook Virtual Network Service-eind punten gebruiken om de netwerk toegang tot uw Azure Database for PostgreSQL-implementaties te beveiligen en te beperken. Regels voor virtuele netwerken zijn één firewall beveiligings functie die bepaalt of uw Azure Database for PostgreSQL server communicatie accepteert die wordt verzonden vanuit bepaalde subnetten in virtuele netwerken.
 
@@ -128,7 +127,7 @@ Meer informatie over het gebruik van service tags voor Azure Database for Postgr
 
 **Hulp**: Definieer en implementeer standaard beveiligings configuraties voor netwerk instellingen en netwerk resources die zijn gekoppeld aan uw Azure database for PostgreSQL-instanties met Azure Policy. Gebruik Azure Policy aliassen in de naam ruimten ' micro soft. DBforPostgreSQL ' en ' micro soft. Network ' om aangepaste beleids regels te maken om de netwerk configuratie van uw Azure Database for PostgreSQL instanties te controleren of af te dwingen. U kunt ook gebruikmaken van ingebouwde beleids definities met betrekking tot netwerken of uw Azure Database for PostgreSQL-instanties, zoals:
 
-- DDoS Protection standaard moet zijn ingeschakeld
+- De DDoS Protection-standaard moet zijn ingeschakeld
 
 - Het afdwingen van een TLS-verbinding moet zijn ingeschakeld voor PostgreSQL-database servers
 
@@ -477,7 +476,7 @@ Lijst met door Klanten-lockbox ondersteunde services:https://docs.microsoft.com/
 
 **Verantwoordelijkheid**: klant
 
-## <a name="data-protection"></a>Gegevensbescherming
+## <a name="data-protection"></a>Gegevensbeveiliging
 
 *Zie [beveiligings beheer: gegevens beveiliging](https://docs.microsoft.com/azure/security/benchmarks/security-control-data-protection)voor meer informatie.*
 
@@ -796,7 +795,7 @@ Voorwaardelijke toegang configureren om de toegang tot Azure Resource Manager te
 
 - Het afdwingen van een TLS-verbinding moet zijn ingeschakeld voor PostgreSQL-database servers
 
-- Logboek verbindingen moeten zijn ingeschakeld voor PostgreSQL-database servers
+- Logboekverbindingen moeten zijn ingeschakeld voor PostgreSQL-databaseservers
 
 Beschik bare Azure Policy aliassen weer geven:https://docs.microsoft.com/powershell/module/az.resources/get-azpolicyalias?view=azps-3.3.0
 

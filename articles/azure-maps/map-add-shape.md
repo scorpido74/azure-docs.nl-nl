@@ -10,10 +10,9 @@ services: azure-maps
 manager: ''
 ms.custom: codepen
 ms.openlocfilehash: ecbb5d636b6a6e2fa89d34380e87b6979110f6e3
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/19/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "83648526"
 ---
 # <a name="add-a-polygon-layer-to-the-map"></a>Een polygoon laag toevoegen aan de kaart
@@ -88,7 +87,7 @@ De polygoon laag heeft slechts enkele opmaak opties. Hier volgt een hulp program
 
 <a id="addACircle"></a>
 
-## <a name="add-a-circle-to-the-map"></a>Een cirkel aan de kaart toevoegen
+## <a name="add-a-circle-to-the-map"></a>Een cirkel toevoegen aan de kaart
 
 Azure Maps gebruikt een uitgebreide versie van het geojson-schema dat een definitie voor cirkels bevat, zoals [hier](extend-geojson.md#circle)wordt vermeld. Een cirkel wordt weer gegeven op de kaart door een functie te maken `Point` . Dit `Point` heeft een `subType` eigenschap met de waarde `"Circle"` en een `radius` eigenschap met een getal dat de RADIUS in meters vertegenwoordigt. 
 

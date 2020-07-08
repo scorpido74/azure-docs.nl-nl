@@ -16,17 +16,16 @@ ms.topic: article
 ms.date: 02/07/2017
 ms.author: jegeib
 ms.openlocfilehash: 8e597fb9208430b8da447768608c48edef049d83
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/19/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "83653107"
 ---
 # <a name="security-frame-input-validation--mitigations"></a>Beveiligings frame: invoer validatie | Oplossingen 
 | Product/service | Artikel |
 | --------------- | ------- |
-| **Webtoepassing** | <ul><li>[XSLT-scripting uitschakelen voor alle trans formaties met niet-vertrouwde Style Sheets](#disable-xslt)</li><li>[Zorg ervoor dat elke pagina die door de gebruiker instel bare inhoud kan bevatten, wordt gebruikt voor automatische MIME-sniffing](#out-sniffing)</li><li>[Oplossing voor beveiliging of uitschakelen van XML-entiteit](#xml-resolution)</li><li>[Toepassingen die gebruikmaken van http. sys verificatie op URL-standaardisatie uitvoeren](#app-verification)</li><li>[Zorg ervoor dat de juiste besturings elementen worden uitgevoerd wanneer bestanden van gebruikers worden geaccepteerd](#controls-users)</li><li>[Zorg ervoor dat type veilige para meters worden gebruikt in webtoepassing voor gegevens toegang](#typesafe)</li><li>[Afzonderlijke model bindings klassen of bindings filter lijsten gebruiken om beveiligings problemen met een massale toewijzing voor komen](#binding-mvc)</li><li>[Niet-vertrouwde webuitvoer coderen vóór Rendering](#rendering)</li><li>[Invoer validatie en filteren uitvoeren op alle model eigenschappen van het teken reeks type](#typemodel)</li><li>[Opschonen moet worden toegepast op formulier velden waarin alle tekens worden geaccepteerd, bijvoorbeeld Rich Text Editor](#richtext)</li><li>[Wijs geen DOM-elementen toe aan sinks die geen ingebouwde code ring hebben](#inbuilt-encode)</li><li>[Alle omleidingen valideren binnen de toepassing worden gesloten of veilig uitgevoerd](#redirect-safe)</li><li>[Invoer validatie implementeren voor alle teken reeks type parameters die door controller methoden worden geaccepteerd](#string-method)</li><li>[Time-out voor de bovengrens instellen voor de verwerking van reguliere expressies om DoS door onjuiste reguliere expressies te voor komen](#dos-expression)</li><li>[Vermijd het gebruik van HTML. RAW in haar weer gaven](#html-razor)</li></ul> | 
-| **Enddatabase** | <ul><li>[Geen dynamische query's gebruiken in opgeslagen procedures](#stored-proc)</li></ul> |
+| **Webtoepassing** | <ul><li>[XSLT-scripting uitschakelen voor alle trans formaties met niet-vertrouwde Style Sheets](#disable-xslt)</li><li>[Zorg ervoor dat elke pagina die door de gebruiker instel bare inhoud kan bevatten, wordt gebruikt voor automatische MIME-sniffing](#out-sniffing)</li><li>[Oplossing voor beveiliging of uitschakelen van XML-entiteit](#xml-resolution)</li><li>[Toepassingen die gebruikmaken van http.sys verificatie van URL-standaardisatie uitvoeren](#app-verification)</li><li>[Zorg ervoor dat de juiste besturings elementen worden uitgevoerd wanneer bestanden van gebruikers worden geaccepteerd](#controls-users)</li><li>[Zorg ervoor dat type veilige para meters worden gebruikt in webtoepassing voor gegevens toegang](#typesafe)</li><li>[Afzonderlijke model bindings klassen of bindings filter lijsten gebruiken om beveiligings problemen met een massale toewijzing voor komen](#binding-mvc)</li><li>[Niet-vertrouwde webuitvoer coderen vóór Rendering](#rendering)</li><li>[Invoer validatie en filteren uitvoeren op alle model eigenschappen van het teken reeks type](#typemodel)</li><li>[Opschonen moet worden toegepast op formulier velden waarin alle tekens worden geaccepteerd, bijvoorbeeld Rich Text Editor](#richtext)</li><li>[Wijs geen DOM-elementen toe aan sinks die geen ingebouwde code ring hebben](#inbuilt-encode)</li><li>[Alle omleidingen valideren binnen de toepassing worden gesloten of veilig uitgevoerd](#redirect-safe)</li><li>[Invoer validatie implementeren voor alle teken reeks type parameters die door controller methoden worden geaccepteerd](#string-method)</li><li>[Time-out voor de bovengrens instellen voor de verwerking van reguliere expressies om DoS door onjuiste reguliere expressies te voor komen](#dos-expression)</li><li>[Vermijd het gebruik van HTML. RAW in haar weer gaven](#html-razor)</li></ul> | 
+| **Database** | <ul><li>[Geen dynamische query's gebruiken in opgeslagen procedures](#stored-proc)</li></ul> |
 | **Web-API** | <ul><li>[Controleren of model validatie is uitgevoerd op Web API-methoden](#validation-api)</li><li>[Invoer validatie implementeren voor alle teken reeks type parameters die worden geaccepteerd door Web API-methoden](#string-api)</li><li>[Zorg ervoor dat type veilige para meters worden gebruikt in Web-API voor gegevens toegang](#typesafe-api)</li></ul> | 
 | **Azure document DB** | <ul><li>[SQL-query's met para meters gebruiken voor Azure Cosmos DB](#sql-docdb)</li></ul> | 
 | **WCF** | <ul><li>[WCF-invoer validatie via schema binding](#schema-binding)</li><li>[Validatie van WCF-invoer via parameter controles](#parameters)</li></ul> |
@@ -35,7 +34,7 @@ ms.locfileid: "83653107"
 
 | Titel                   | Details      |
 | ----------------------- | ------------ |
-| **Component**               | Webtoepassing | 
+| **Onderdeel**               | Webtoepassing | 
 | **SDL-fase**               | Ontwikkelen |  
 | **Toepasselijke technologieën** | Algemeen |
 | **Kenmerken**              | N.v.t.  |
@@ -67,7 +66,7 @@ doc.setProperty("AllowXsltScript", false); // CORRECT. Setting to false disables
 
 | Titel                   | Details      |
 | ----------------------- | ------------ |
-| **Component**               | Webtoepassing | 
+| **Onderdeel**               | Webtoepassing | 
 | **SDL-fase**               | Ontwikkelen |  
 | **Toepasselijke technologieën** | Algemeen |
 | **Kenmerken**              | N.v.t.  |
@@ -77,7 +76,7 @@ doc.setProperty("AllowXsltScript", false); // CORRECT. Setting to false disables
 ### <a name="example"></a>Voorbeeld
 Als u de vereiste header globaal wilt inschakelen voor alle pagina's in de toepassing, kunt u een van de volgende handelingen uitvoeren: 
 
-* Voeg de header in het bestand Web. config toe als de toepassing wordt gehost door Internet Information Services (IIS) 7 
+* Voeg de header toe in het web.config-bestand als de toepassing wordt gehost door Internet Information Services (IIS) 7 
 
 ```
 <system.webServer> 
@@ -136,7 +135,7 @@ this.Response.Headers[""X-Content-Type-Options""] = ""nosniff"";
 
 | Titel                   | Details      |
 | ----------------------- | ------------ |
-| **Component**               | Webtoepassing | 
+| **Onderdeel**               | Webtoepassing | 
 | **SDL-fase**               | Ontwikkelen |  
 | **Toepasselijke technologieën** | Algemeen |
 | **Kenmerken**              | N.v.t.  |
@@ -183,7 +182,7 @@ XmlReader reader = XmlReader.Create(stream, settings);
 ```
 
 ### <a name="example"></a>Voorbeeld
-Als u inline-entiteiten moet omzetten, maar geen externe entiteiten hoeft op te lossen, stelt u de eigenschap XmlReaderSettings. XmlResolver in op null. Bijvoorbeeld: 
+Als u inline-entiteiten moet omzetten, maar geen externe entiteiten hoeft op te lossen, stelt u de eigenschap XmlReaderSettings.Xmlresolver in op null. Bijvoorbeeld: 
 
 ```csharp
 XmlReaderSettings settings = new XmlReaderSettings();
@@ -194,22 +193,22 @@ XmlReader reader = XmlReader.Create(stream, settings);
 ```
 Houd er rekening mee dat in MSXML6 ProhibitDTD standaard is ingesteld op True (DTD-verwerking uitschakelen). Voor Apple OSX/iOS-code zijn er twee XML-parsers die u kunt gebruiken: NSXMLParser en libXML2. 
 
-## <a name="applications-utilizing-httpsys-perform-url-canonicalization-verification"></a><a id="app-verification"></a>Toepassingen die gebruikmaken van http. sys verificatie op URL-standaardisatie uitvoeren
+## <a name="applications-utilizing-httpsys-perform-url-canonicalization-verification"></a><a id="app-verification"></a>Toepassingen die gebruikmaken van http.sys verificatie van URL-standaardisatie uitvoeren
 
 | Titel                   | Details      |
 | ----------------------- | ------------ |
-| **Component**               | Webtoepassing | 
+| **Onderdeel**               | Webtoepassing | 
 | **SDL-fase**               | Ontwikkelen |  
 | **Toepasselijke technologieën** | Algemeen |
 | **Kenmerken**              | N.v.t.  |
 | **Referenties**              | N.v.t.  |
-| **Stappen** | <p>Alle toepassingen die gebruikmaken van http. sys moeten de volgende richt lijnen volgen:</p><ul><li>De lengte van de URL beperken tot Maxi maal 16.384 tekens (ASCII of Unicode). Dit is de absolute maximale URL-lengte op basis van de standaard instelling voor Internet Information Services (IIS) 6. Websites moeten zo een korte lengte hebben als dat mogelijk is</li><li>Gebruik de standaard .NET Framework bestands-I/O-klassen (zoals FileStream), omdat deze gebruikmaken van de standaardisatie regels in de .NET FX</li><li>Een lijst met bekende bestands namen expliciet samen stellen</li><li>Bekende bestands types expliciet afwijzen die u niet wilt gebruiken voor UrlScan-weigeringen: exe, bat, cmd, com, HTW, Ida, idq, HTR, IDC, shtm [l], stm, printer, ini, Pol, dat bestanden</li><li>De volgende uitzonde ringen worden onderschept:<ul><li>System. ArgumentException (voor apparaatnamen)</li><li>System. NotSupportedException (voor gegevens stromen)</li><li>System. IO. FileNotFoundException (voor ongeldige bestands namen met escape)</li><li>System. IO. DirectoryNotFoundException (voor ongeldige mappen-Escape)</li></ul></li><li>*Niet* aanroepen naar Win32 I/O-api's voor bestanden. Op een ongeldige URL retourneert een fout melding van 400 naar de gebruiker en wordt de echte fout vastgelegd.</li></ul>|
+| **Stappen** | <p>Alle toepassingen die gebruikmaken van http.sys, moeten voldoen aan de volgende richt lijnen:</p><ul><li>De lengte van de URL beperken tot Maxi maal 16.384 tekens (ASCII of Unicode). Dit is de absolute maximale URL-lengte op basis van de standaard instelling voor Internet Information Services (IIS) 6. Websites moeten zo een korte lengte hebben als dat mogelijk is</li><li>Gebruik de standaard .NET Framework bestands-I/O-klassen (zoals FileStream), omdat deze gebruikmaken van de standaardisatie regels in de .NET FX</li><li>Een lijst met bekende bestands namen expliciet samen stellen</li><li>Bekende bestands types expliciet afwijzen die u niet wilt gebruiken voor UrlScan-weigeringen: exe, bat, cmd, com, HTW, Ida, idq, HTR, IDC, shtm [l], stm, printer, ini, Pol, dat bestanden</li><li>De volgende uitzonde ringen worden onderschept:<ul><li>System. ArgumentException (voor apparaatnamen)</li><li>System. NotSupportedException (voor gegevens stromen)</li><li>System. IO. FileNotFoundException (voor ongeldige bestands namen met escape)</li><li>System. IO. DirectoryNotFoundException (voor ongeldige mappen-Escape)</li></ul></li><li>*Niet* aanroepen naar Win32 I/O-api's voor bestanden. Op een ongeldige URL retourneert een fout melding van 400 naar de gebruiker en wordt de echte fout vastgelegd.</li></ul>|
 
 ## <a name="ensure-appropriate-controls-are-in-place-when-accepting-files-from-users"></a><a id="controls-users"></a>Zorg ervoor dat de juiste besturings elementen worden uitgevoerd wanneer bestanden van gebruikers worden geaccepteerd
 
 | Titel                   | Details      |
 | ----------------------- | ------------ |
-| **Component**               | Webtoepassing | 
+| **Onderdeel**               | Webtoepassing | 
 | **SDL-fase**               | Ontwikkelen |  
 | **Toepasselijke technologieën** | Algemeen |
 | **Kenmerken**              | N.v.t.  |
@@ -325,7 +324,7 @@ Raadpleeg de onderstaande klasse voor meer informatie over het laatste punt met 
 
 | Titel                   | Details      |
 | ----------------------- | ------------ |
-| **Component**               | Webtoepassing | 
+| **Onderdeel**               | Webtoepassing | 
 | **SDL-fase**               | Ontwikkelen |  
 | **Toepasselijke technologieën** | Algemeen |
 | **Kenmerken**              | N.v.t.  |
@@ -355,7 +354,7 @@ In het voor gaande code voorbeeld mag de invoer waarde niet langer zijn dan 11 t
 
 | Titel                   | Details      |
 | ----------------------- | ------------ |
-| **Component**               | Webtoepassing | 
+| **Onderdeel**               | Webtoepassing | 
 | **SDL-fase**               | Ontwikkelen |  
 | **Toepasselijke technologieën** | MVC5, MVC6 |
 | **Kenmerken**              | N.v.t.  |
@@ -366,7 +365,7 @@ In het voor gaande code voorbeeld mag de invoer waarde niet langer zijn dan 11 t
 
 | Titel                   | Details      |
 | ----------------------- | ------------ |
-| **Component**               | Webtoepassing | 
+| **Onderdeel**               | Webtoepassing | 
 | **SDL-fase**               | Ontwikkelen |  
 | **Toepasselijke technologieën** | Generic, webformulieren, MVC5, MVC6 |
 | **Kenmerken**              | N.v.t.  |
@@ -391,7 +390,7 @@ In het voor gaande code voorbeeld mag de invoer waarde niet langer zijn dan 11 t
 
 | Titel                   | Details      |
 | ----------------------- | ------------ |
-| **Component**               | Webtoepassing | 
+| **Onderdeel**               | Webtoepassing | 
 | **SDL-fase**               | Ontwikkelen |  
 | **Toepasselijke technologieën** | Generic, MVC5, MVC6 |
 | **Kenmerken**              | N.v.t.  |
@@ -402,7 +401,7 @@ In het voor gaande code voorbeeld mag de invoer waarde niet langer zijn dan 11 t
 
 | Titel                   | Details      |
 | ----------------------- | ------------ |
-| **Component**               | Webtoepassing | 
+| **Onderdeel**               | Webtoepassing | 
 | **SDL-fase**               | Ontwikkelen |  
 | **Toepasselijke technologieën** | Algemeen |
 | **Kenmerken**              | N.v.t.  |
@@ -413,7 +412,7 @@ In het voor gaande code voorbeeld mag de invoer waarde niet langer zijn dan 11 t
 
 | Titel                   | Details      |
 | ----------------------- | ------------ |
-| **Component**               | Webtoepassing | 
+| **Onderdeel**               | Webtoepassing | 
 | **SDL-fase**               | Ontwikkelen |  
 | **Toepasselijke technologieën** | Algemeen |
 | **Kenmerken**              | N.v.t.  |
@@ -435,7 +434,7 @@ Gebruik `innerHtml` in plaats daarvan `innerText` . Op dezelfde manier, in plaat
 
 | Titel                   | Details      |
 | ----------------------- | ------------ |
-| **Component**               | Webtoepassing | 
+| **Onderdeel**               | Webtoepassing | 
 | **SDL-fase**               | Ontwikkelen |  
 | **Toepasselijke technologieën** | Algemeen |
 | **Kenmerken**              | N.v.t.  |
@@ -446,7 +445,7 @@ Gebruik `innerHtml` in plaats daarvan `innerText` . Op dezelfde manier, in plaat
 
 | Titel                   | Details      |
 | ----------------------- | ------------ |
-| **Component**               | Webtoepassing | 
+| **Onderdeel**               | Webtoepassing | 
 | **SDL-fase**               | Ontwikkelen |  
 | **Toepasselijke technologieën** | Generic, MVC5, MVC6 |
 | **Kenmerken**              | N.v.t.  |
@@ -457,7 +456,7 @@ Gebruik `innerHtml` in plaats daarvan `innerText` . Op dezelfde manier, in plaat
 
 | Titel                   | Details      |
 | ----------------------- | ------------ |
-| **Component**               | Webtoepassing | 
+| **Onderdeel**               | Webtoepassing | 
 | **SDL-fase**               | Ontwikkelen |  
 | **Toepasselijke technologieën** | Generic, webformulieren, MVC5, MVC6  |
 | **Kenmerken**              | N.v.t.  |
@@ -475,7 +474,7 @@ Met de volgende configuratie wordt bijvoorbeeld een RegexMatchTimeoutException g
 
 | Titel                   | Details      |
 | ----------------------- | ------------ |
-| **Component**               | Webtoepassing | 
+| **Onderdeel**               | Webtoepassing | 
 | **SDL-fase**               | Ontwikkelen |  
 | **Toepasselijke technologieën** | MVC5, MVC6 |
 | **Kenmerken**              | N.v.t.  |
@@ -500,7 +499,7 @@ Gebruik dit `Html.Raw()` alleen als u opmaak wilt weer geven. Met deze methode w
 
 | Titel                   | Details      |
 | ----------------------- | ------------ |
-| **Component**               | Database | 
+| **Onderdeel**               | Database | 
 | **SDL-fase**               | Ontwikkelen |  
 | **Toepasselijke technologieën** | Algemeen |
 | **Kenmerken**              | N.v.t.  |
@@ -560,7 +559,7 @@ AS
 
 | Titel                   | Details      |
 | ----------------------- | ------------ |
-| **Component**               | Web-API | 
+| **Onderdeel**               | Web-API | 
 | **SDL-fase**               | Ontwikkelen |  
 | **Toepasselijke technologieën** | MVC5, MVC6 |
 | **Kenmerken**              | N.v.t.  |
@@ -617,7 +616,7 @@ namespace MyApi.Controllers
 
 | Titel                   | Details      |
 | ----------------------- | ------------ |
-| **Component**               | Web-API | 
+| **Onderdeel**               | Web-API | 
 | **SDL-fase**               | Ontwikkelen |  
 | **Toepasselijke technologieën** | Algemeen, MVC 5, MVC 6 |
 | **Kenmerken**              | N.v.t.  |
@@ -628,7 +627,7 @@ namespace MyApi.Controllers
 
 | Titel                   | Details      |
 | ----------------------- | ------------ |
-| **Component**               | Web-API | 
+| **Onderdeel**               | Web-API | 
 | **SDL-fase**               | Ontwikkelen |  
 | **Toepasselijke technologieën** | Algemeen |
 | **Kenmerken**              | N.v.t.  |
@@ -658,7 +657,7 @@ In het voor gaande code voorbeeld mag de invoer waarde niet langer zijn dan 11 t
 
 | Titel                   | Details      |
 | ----------------------- | ------------ |
-| **Component**               | Azure document DB | 
+| **Onderdeel**               | Azure document DB | 
 | **SDL-fase**               | Ontwikkelen |  
 | **Toepasselijke technologieën** | Algemeen |
 | **Kenmerken**              | N.v.t.  |
@@ -669,7 +668,7 @@ In het voor gaande code voorbeeld mag de invoer waarde niet langer zijn dan 11 t
 
 | Titel                   | Details      |
 | ----------------------- | ------------ |
-| **Component**               | WCF | 
+| **Onderdeel**               | WCF | 
 | **SDL-fase**               | Ontwikkelen |  
 | **Toepasselijke technologieën** | Algemeen, NET Framework 3 |
 | **Kenmerken**              | N.v.t.  |
@@ -680,7 +679,7 @@ In het voor gaande code voorbeeld mag de invoer waarde niet langer zijn dan 11 t
 
 | Titel                   | Details      |
 | ----------------------- | ------------ |
-| **Component**               | WCF | 
+| **Onderdeel**               | WCF | 
 | **SDL-fase**               | Ontwikkelen |  
 | **Toepasselijke technologieën** | Algemeen, NET Framework 3 |
 | **Kenmerken**              | N.v.t.  |

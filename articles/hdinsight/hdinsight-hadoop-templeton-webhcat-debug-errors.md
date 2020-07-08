@@ -9,10 +9,9 @@ ms.topic: troubleshooting
 ms.custom: hdinsightactive
 ms.date: 04/14/2020
 ms.openlocfilehash: 40d49d156b76db5e02ec48defbb82ed60819c478
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/19/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "83651106"
 ---
 # <a name="understand-and-resolve-errors-received-from-webhcat-on-hdinsight"></a>Fouten die vanuit WebHCat zijn ontvangen, begrijpen en oplossen op HDInsight
@@ -34,7 +33,7 @@ Als de volgende standaard waarden worden overschreden, kan dit de prestaties van
 | Instelling | Wat het doet | Standaardwaarde |
 | --- | --- | --- |
 | [garens. scheduler. capacity. maximum-toepassingen][maximum-applications] |Het maximum aantal taken dat gelijktijdig actief kan zijn (in behandeling of uitvoering) |10.000 |
-| [Templeton. exec. Max-procs][max-procs] |Het maximum aantal aanvragen dat gelijktijdig kan worden verwerkt |20 |
+| [templeton.exec. Max-procs][max-procs] |Het maximum aantal aanvragen dat gelijktijdig kan worden verwerkt |20 |
 | [MapReduce. jobhistory. max-age-MS][max-age-ms] |Het aantal dagen dat de taak geschiedenis wordt bewaard |7 dagen |
 
 ## <a name="too-many-requests"></a>Te veel aanvragen

@@ -13,10 +13,9 @@ ms.topic: article
 ms.date: 03/12/2019
 ms.author: apimpm
 ms.openlocfilehash: c1a9f3e76622523dde03cc2a639cce33227dff5f
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/19/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "83649214"
 ---
 # <a name="how-to-save-and-configure-your-api-management-service-configuration-using-git"></a>Configuratie van API Management-service opslaan en configureren met behulp van Git
@@ -148,7 +147,7 @@ Zie [Git-wijzigingen in de configuratie database implementeren met behulp](https
 
 De bestanden en mappen in de lokale Git-opslag plaats bevatten de configuratie-informatie over het service-exemplaar.
 
-| Item | Beschrijving |
+| Item | Description |
 | --- | --- |
 | hoofdmap-API-beheer map |Bevat configuratie op het hoogste niveau voor het service-exemplaar |
 | de map api's |Bevat de configuratie voor de api's in het service-exemplaar |
@@ -160,7 +159,7 @@ De bestanden en mappen in de lokale Git-opslag plaats bevatten de configuratie-i
 
 Elke map kan een of meer bestanden bevatten, en in sommige gevallen een of meer mappen, bijvoorbeeld een map voor elke API, product of groep. De bestanden in elke map zijn specifiek voor het entiteits type dat wordt beschreven door de naam van de map.
 
-| Bestands type | Doel |
+| Bestands type | Functie |
 | --- | --- |
 | json |Configuratie-informatie over de respectieve entiteit |
 | html |Beschrijvingen van de entiteit, vaak weer gegeven in de ontwikkelaars Portal |

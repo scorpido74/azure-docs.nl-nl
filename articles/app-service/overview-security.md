@@ -6,10 +6,9 @@ ms.topic: article
 ms.date: 08/24/2018
 ms.custom: seodec18
 ms.openlocfilehash: 0a4d3518c3325eff2b3c3db111babb9e784d5e31
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/19/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "83649054"
 ---
 # <a name="security-in-azure-app-service"></a>Beveiliging in Azure App Service
@@ -22,7 +21,7 @@ In de volgende secties ziet u hoe u uw App Service-app verder kunt beveiligen te
 
 ## <a name="https-and-certificates"></a>HTTPS en certificaten
 
-Met App Service kunt u uw apps beveiligen met [https](https://wikipedia.org/wiki/HTTPS). Wanneer uw app wordt gemaakt, is de standaard domein naam ( \< app_name>. azurewebsites.net) al toegankelijk met behulp van HTTPS. Als u [een aangepast domein voor uw app configureert](app-service-web-tutorial-custom-domain.md), moet u [dit ook beveiligen met een TLS/SSL-certificaat](configure-ssl-bindings.md) , zodat client browsers beveiligde HTTPS-verbindingen met uw aangepaste domein kunnen maken. Er worden verschillende soorten certificaten ondersteund door App Service:
+Met App Service kunt u uw apps beveiligen met [https](https://wikipedia.org/wiki/HTTPS). Wanneer uw app wordt gemaakt, is de standaard domein naam ( \<app_name> . azurewebsites.net) al toegankelijk met behulp van HTTPS. Als u [een aangepast domein voor uw app configureert](app-service-web-tutorial-custom-domain.md), moet u [dit ook beveiligen met een TLS/SSL-certificaat](configure-ssl-bindings.md) , zodat client browsers beveiligde HTTPS-verbindingen met uw aangepaste domein kunnen maken. Er worden verschillende soorten certificaten ondersteund door App Service:
 
 - Beheerd certificaat Free App Service
 - App Service certificaat
@@ -43,7 +42,7 @@ App Service ondersteunt zowel FTP-als FTPS voor het implementeren van uw bestand
 
 Standaard accepteert uw App Service-app aanvragen van alle IP-adressen van het Internet, maar u kunt de toegang tot een kleine subset van IP-adressen beperken. Met App Service in Windows kunt u een lijst met IP-adressen definiëren die toegang hebben tot uw app. De lijst met toegestane namen kan afzonderlijke IP-adressen bevatten of een bereik van IP-adressen die zijn gedefinieerd door een subnetmasker. Zie [Azure app service static IP-beperkingen](app-service-ip-restrictions.md)voor meer informatie.
 
-Voor App Service in Windows kunt u IP-adressen ook dynamisch beperken door het _Web. config_te configureren. Zie [ \< dynamicIpSecurity>voor dynamische IP-beveiliging ](https://docs.microsoft.com/iis/configuration/system.webServer/security/dynamicIpSecurity/)voor meer informatie.
+Voor App Service in Windows kunt u IP-adressen ook dynamisch beperken door de _web.config_te configureren. Zie [dynamische IP-beveiliging \<dynamicIpSecurity> ](https://docs.microsoft.com/iis/configuration/system.webServer/security/dynamicIpSecurity/)voor meer informatie.
 
 ## <a name="client-authentication-and-authorization"></a>Client verificatie en-autorisatie
 

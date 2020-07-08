@@ -4,10 +4,9 @@ description: Meer informatie over de beveiligings mogelijkheden in Azure Backup 
 ms.topic: conceptual
 ms.date: 03/12/2020
 ms.openlocfilehash: 178518f9f04a789f3cb634797cab650e24864337
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/19/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "83653798"
 ---
 # <a name="overview-of-security-features-in-azure-backup"></a>Overzicht van beveiligings functies in Azure Backup
@@ -60,7 +59,7 @@ Azure Backup biedt [ingebouwde mogelijkheden voor bewaking en waarschuwingen](ht
 
 ## <a name="security-features-to-help-protect-hybrid-backups"></a>Beveiligings functies voor het beveiligen van hybride back-ups
 
-Azure Backup-Service gebruikt de Microsoft Azure Recovery Services-agent (MARS) om back-ups te maken van bestanden, mappen en het volume of de systeem status van een on-premises computer naar Azure. MARS biedt nu beveiligings functies waarmee hybride back-ups kunnen worden beveiligd. Deze functies omvatten onder andere:
+Azure Backup-Service gebruikt de Microsoft Azure Recovery Services-agent (MARS) om back-ups te maken van bestanden, mappen en het volume of de systeem status van een on-premises computer naar Azure. MARS biedt nu beveiligings functies waarmee hybride back-ups kunnen worden beveiligd. Het gaat om de volgende functies:
 
 * Er wordt een extra beveiligingslaag toegevoegd wanneer een kritieke bewerking wordt uitgevoerd, zoals het wijzigen van een wachtwoordzin. Deze validatie is om ervoor te zorgen dat dergelijke bewerkingen alleen kunnen worden uitgevoerd door gebruikers die geldige Azure-referenties hebben. Meer [informatie over de functies die aanvallen verhinderen](https://docs.microsoft.com/azure/backup/backup-azure-security-feature#prevent-attacks).
 
