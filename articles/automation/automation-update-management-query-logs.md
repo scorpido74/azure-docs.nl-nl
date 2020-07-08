@@ -6,10 +6,9 @@ ms.subservice: update-management
 ms.date: 04/06/2020
 ms.topic: conceptual
 ms.openlocfilehash: b40357e71275d835a200f3bc08c618b6713001d8
-ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/25/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "83830766"
 ---
 # <a name="query-update-management-logs"></a>Query's uitvoeren op Updatebeheer-logboeken
@@ -33,13 +32,13 @@ Er wordt een record met een type `RequiredUpdate` gemaakt die de updates vertege
 | ManagementGroupName | De naam van de Operations Manager beheer groep of Log Analytics werk ruimte. | 
 | Product | De producten waarvoor de update van toepassing is. | 
 | PublishDate | De datum waarop de update gereed is om te worden gedownload en geïnstalleerd vanaf Windows Update. |
-| Server | | 
+| server | | 
 | SourceHealthServiceId | De unieke id die de Log Analytics Windows agent-ID vertegenwoordigt. |
 | SourceSystem | *OperationsManager* | 
 | TenantId | De unieke id die uw organisatie-exemplaar van Azure Active Directory vertegenwoordigt. | 
 | TimeGenerated | De datum en tijd waarop de record is gemaakt. | 
-| Type | *Bijwerk* | 
-| UpdateClassification | Hiermee wordt het type updates aangegeven dat kan worden toegepast. Voor Windows:<br> *Essentiële updates*<br> *Beveiligingsupdates*<br> *Updatepakketten*<br> *Functiepakketten*<br> *Servicepacks*<br> *Definitie-updates*<br> *Hulpprogramma's*<br> *Updates*. Voor Linux:<br> *Essentiële en beveiligingsupdates*<br> *Overige* |
+| Type | *Bijwerken* | 
+| UpdateClassification | Hiermee wordt het type updates aangegeven dat kan worden toegepast. Voor Windows:<br> *Essentiële updates*<br> *Beveiligings updates*<br> *Updatepakketten*<br> *Functiepakketten*<br> *Servicepacks*<br> *Definitie-updates*<br> *Hulpprogramma's*<br> *Updates*. Voor Linux:<br> *Essentiële en beveiligingsupdates*<br> *Overige* |
 | UpdateSeverity | Ernst classificatie voor het beveiligings probleem. Waarden zijn:<br> *Kritiek*<br> *Belangrijk*<br> *Matig*<br> *Laag* |
 | UpdateTitle | De titel van de update.|
 
@@ -92,7 +91,7 @@ Er wordt een record met `UpdateAgent` het type gemaakt met details van de Update
 | DaySinceLastUpdateBucket | | 
 | ManagementGroupName | De naam van de Operations Manager beheer groep of Log Analytics werk ruimte. |
 | OSVersion | De versie van het besturings systeem. |
-| Server | |
+| server | |
 | SourceHealthServiceId | De unieke id die de Log Analytics Windows agent-ID vertegenwoordigt. |
 | SourceSystem | Het bron systeem voor de record. De waarde is `OperationsManager` . | 
 | TenantId | De unieke id die het exemplaar van Azure Active Directory van uw organisatie vertegenwoordigt. |

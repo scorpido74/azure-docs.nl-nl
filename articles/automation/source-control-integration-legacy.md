@@ -6,10 +6,9 @@ ms.subservice: process-automation
 ms.date: 12/04/2019
 ms.topic: conceptual
 ms.openlocfilehash: e550489f34d84946d0a9e3df641a1484b85a60f0
-ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/25/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "83828930"
 ---
 # <a name="use-source-control-integration-in-azure-automation---legacy"></a>Broncode beheer integratie gebruiken in Azure Automation-verouderd
@@ -38,7 +37,7 @@ Als u al een GitHub-account en een opslag plaats hebt die u wilt koppelen aan Az
 
 2. De pagina broncode beheer wordt geopend, waar u uw GitHub-account gegevens kunt configureren. Hieronder volgt de lijst met te configureren parameters:  
 
-   | **Bepaalde** | **Beschrijving** |
+   | **Parameter** | **Beschrijving** |
    |:--- |:--- |
    | Bron kiezen |Selecteer de bron. Momenteel wordt alleen **github** ondersteund. |
    | Autorisatie |Klik op de knop **autoriseren** om Azure Automation toegang te verlenen tot uw github-opslag plaats. Als u al bent aangemeld bij uw GitHub-account in een ander venster, worden de referenties van dat account gebruikt. Zodra de autorisatie is geslaagd, wordt op de pagina uw GitHub-gebruikers naam weer gegeven onder **autorisatie-eigenschap**. |
@@ -60,15 +59,15 @@ Als u al een GitHub-account en een opslag plaats hebt die u wilt koppelen aan Az
 
    * De variabele **micro soft. Azure. Automation. SourceControl. Connection** bevat de waarden van de Connection String, zoals hieronder wordt weer gegeven.  
 
-     | **Bepaalde** | **Waarde** |
+     | **Parameter** | **Waarde** |
      |:--- |:--- |
      | `Name`  |Micro soft. Azure. Automation. SourceControl. Connection |
      | `Type`  |Tekenreeks |
-     | `Value` |{' Vertakking ': \< *De naam van de vertakking*>, ' RunbookFolderPath ': \< *pad naar de Runbookmap*>, ' ProviderType ': \< *heeft een waarde van 1 voor github*>, ' opslagplaats ': \< *naam van uw opslag plaats*>, ' gebruikers naam ': \< *uw github-gebruikers naam*>} |
+     | `Value` |{"Branch": \<*Your branch name*> , "RunbookFolderPath": \<*Runbook folder path*> , "ProviderType": \<*has a value 1 for GitHub*> , "opslagplaats": \<*Name of your repository*> , "username": \<*Your GitHub user name*> } |
 
    * De variabele **micro soft. Azure. Automation. SourceControl. OAuthToken**, bevat de beveiligde versleutelde waarde van uw OAuthToken.  
 
-     |**Bepaalde**            |**Waarde** |
+     |**Parameter**            |**Waarde** |
      |:---|:---|
      | `Name`  | `Microsoft.Azure.Automation.SourceControl.OAuthToken` |
      | `Type`  | `Unknown(Encrypted)` |

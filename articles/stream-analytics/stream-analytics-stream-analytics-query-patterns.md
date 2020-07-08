@@ -9,10 +9,9 @@ ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 12/18/2019
 ms.openlocfilehash: 78dde3f6706ecbc54daca162ac718911752fa0ca
-ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/25/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "83832959"
 ---
 # <a name="common-query-patterns-in-azure-stream-analytics"></a>Algemene query patronen in Azure Stream Analytics
@@ -35,14 +34,14 @@ Een eenvoudige Pass Through-query kan worden gebruikt om de gegevens van de invo
 
 **Invoer**:
 
-| Merk | Time | Gewicht |
+| Merk | Tijd | Gewicht |
 | --- | --- | --- |
 | Make1 |2015-01-01T00:00:01.0000000 Z |"1000" |
 | Make1 |2015-01-01T00:00:02.0000000 Z |"2000" |
 
 **Uitvoer**:
 
-| Merk | Time | Gewicht |
+| Merk | Tijd | Gewicht |
 | --- | --- | --- |
 | Make1 |2015-01-01T00:00:01.0000000 Z |"1000" |
 | Make1 |2015-01-01T00:00:02.0000000 Z |"2000" |
@@ -60,7 +59,7 @@ Een **Select** *-query projecten alle velden van een binnenkomende gebeurtenis e
 
 **Invoer**:
 
-| Merk | Time | Gewicht |
+| Merk | Tijd | Gewicht |
 | --- | --- | --- |
 | Make1 |2015-01-01T00:00:01.0000000 Z |1000 |
 | Make1 |2015-01-01T00:00:02.0000000 Z |2000 |
@@ -68,7 +67,7 @@ Een **Select** *-query projecten alle velden van een binnenkomende gebeurtenis e
 
 **Uitvoer**:
 
-| Merk | Time |
+| Merk | Tijd |
 | --- | --- |
 | Make1 |2015-01-01T00:00:01.0000000 Z |
 | Make1 |2015-01-01T00:00:02.0000000 Z |
@@ -88,7 +87,7 @@ Als u informatie wilt berekenen over een tijd venster, kunnen gegevens samen wor
 
 **Invoer**:
 
-| Merk | Time | Gewicht |
+| Merk | Tijd | Gewicht |
 | --- | --- | --- |
 | Make1 |2015-01-01T00:00:01.0000000 Z |1000 |
 | Make1 |2015-01-01T00:00:02.0000000 Z |2000 |
@@ -126,7 +125,7 @@ Gegevens kunnen in realtime worden omgezet met behulp van de **cast** -methode. 
 
 **Invoer**:
 
-| Merk | Time | Gewicht |
+| Merk | Tijd | Gewicht |
 | --- | --- | --- |
 | Make1 |2015-01-01T00:00:01.0000000 Z |"1000" |
 | Make1 |2015-01-01T00:00:02.0000000 Z |"2000" |
@@ -160,7 +159,7 @@ Voor meer informatie over [functies voor gegevens conversie](/stream-analytics-q
 
 **Invoer**:
 
-| Merk | License_plate | Time |
+| Merk | License_plate | Tijd |
 | --- | --- | --- |
 | Make1 |ABC-123 |2015-01-01T00:00:01.0000000 Z |
 | Make2 |AAA-999 |2015-01-01T00:00:02.0000000 Z |
@@ -168,7 +167,7 @@ Voor meer informatie over [functies voor gegevens conversie](/stream-analytics-q
 
 **Uitvoer**:
 
-| Merk | License_plate | Time |
+| Merk | License_plate | Tijd |
 | --- | --- | --- |
 | Make2 |AAA-999 |2015-01-01T00:00:02.0000000 Z |
 | Make3 |ABC-369 |2015-01-01T00:00:03.0000000 Z |
@@ -192,7 +191,7 @@ Gebruik de instructie **like** om de waarde van het **License_plate** veld te co
 
 **Invoer**:
 
-| Merk | Time |
+| Merk | Tijd |
 | --- | --- |
 | Make1 |2015-01-01T00:00:01.0000000 Z |
 | Make2 |2015-01-01T00:00:02.0000000 Z |
@@ -200,7 +199,7 @@ Gebruik de instructie **like** om de waarde van het **License_plate** veld te co
 
 **Uitvoer**:
 
-| Merk |Dispatch_to_lane | Time |
+| Merk |Dispatch_to_lane | Tijd |
 | --- | --- | --- |
 | Make1 |Één |2015-01-01T00:00:01.0000000 Z |
 | Make2 |B |2015-01-01T00:00:02.0000000 Z |
@@ -229,7 +228,7 @@ Meerdere **Select** -instructies kunnen worden gebruikt voor het uitvoeren van g
 
 **Invoer**:
 
-| Merk | Time |
+| Merk | Tijd |
 | --- | --- |
 | Make1 |2015-01-01T00:00:01.0000000 Z |
 | Make1 |2015-01-01T00:00:02.0000000 Z |
@@ -239,7 +238,7 @@ Meerdere **Select** -instructies kunnen worden gebruikt voor het uitvoeren van g
 
 **Uitvoer ArchiveOutput**:
 
-| Merk | Time |
+| Merk | Tijd |
 | --- | --- |
 | Make1 |2015-01-01T00:00:01.0000000 Z |
 | Make1 |2015-01-01T00:00:02.0000000 Z |
@@ -249,7 +248,7 @@ Meerdere **Select** -instructies kunnen worden gebruikt voor het uitvoeren van g
 
 **Uitvoer AlertOutput**:
 
-| Merk | Time | Count |
+| Merk | Tijd | Count |
 | --- | --- | --- |
 | Make2 |2015-01-01T00:00:10.0000000 Z |3 |
 
@@ -314,7 +313,7 @@ Raadpleeg de [ **with** -component](/stream-analytics-query/with-azure-stream-an
 
 **Invoer**:
 
-| Merk | Time |
+| Merk | Tijd |
 | --- | --- |
 | Make1 |2015-01-01T00:00:01.0000000 Z |
 | Make1 |2015-01-01T00:00:02.0000000 Z |
@@ -324,7 +323,7 @@ Raadpleeg de [ **with** -component](/stream-analytics-query/with-azure-stream-an
 
 **Uitvoer**
 
-| Count_make | Time |
+| Count_make | Tijd |
 | --- | --- |
 | 2 |2015-01-01T00:00:02.000 Z |
 | 1 |2015-01-01T00:00:04.000 Z |
@@ -349,14 +348,14 @@ De functie **lag** kan worden gebruikt om eerdere gebeurtenissen binnen een tijd
 
 **Invoer**:
 
-| Merk | Time |
+| Merk | Tijd |
 | --- | --- |
 | Make1 |2015-01-01T00:00:01.0000000 Z |
 | Make2 |2015-01-01T00:00:02.0000000 Z |
 
 **Uitvoer**:
 
-| Merk | Time |
+| Merk | Tijd |
 | --- | --- |
 | Make2 |2015-01-01T00:00:02.0000000 Z |
 
@@ -382,7 +381,7 @@ Raadpleeg voor meer informatie de [**vertraging**](/stream-analytics-query/lag-a
 
 **Invoer**:
 
-| License_plate | Merk | Time |
+| License_plate | Merk | Tijd |
 | --- | --- | --- |
 | DXE 5291 |Make1 |2015-07-27T00:00:05.0000000 Z |
 | YZK 5704 |Make3 |2015-07-27T00:02:17.0000000 Z |
@@ -394,7 +393,7 @@ Raadpleeg voor meer informatie de [**vertraging**](/stream-analytics-query/lag-a
 
 **Uitvoer**:
 
-| License_plate | Merk | Time |
+| License_plate | Merk | Tijd |
 | --- | --- | --- |
 | DXE 5291 |Make1 |2015-07-27T00:00:05.0000000 Z |
 | QYF 9358 |Make1 |2015-07-27T00:12:02.0000000 Z |
@@ -416,7 +415,7 @@ WHERE
 
 **Uitvoer**:
 
-| License_plate | Merk | Time |
+| License_plate | Merk | Tijd |
 | --- | --- | --- |
 | DXE 5291 |Make1 |2015-07-27T00:00:05.0000000 Z |
 | YZK 5704 |Make3 |2015-07-27T00:02:17.0000000 Z |
@@ -445,7 +444,7 @@ Wanneer gebeurtenissen in realtime door het systeem worden verbruikt, is er geen
 
 **Invoer**:
 
-| License_plate | Merk | Time |
+| License_plate | Merk | Tijd |
 | --- | --- | --- |
 | DXE 5291 |Make1 |2015-07-27T00:00:05.0000000 Z |
 | YZK 5704 |Make3 |2015-07-27T00:02:17.0000000 Z |
@@ -457,7 +456,7 @@ Wanneer gebeurtenissen in realtime door het systeem worden verbruikt, is er geen
 
 **Uitvoer**:
 
-| License_plate | Merk | Time |
+| License_plate | Merk | Tijd |
 | --- | --- | --- |
 | VFE 1616 |Make2 |2015-07-27T00:09:31.0000000 Z |
 | MDR 6128 |Make4 |2015-07-27T00:13:45.0000000 Z |
@@ -499,7 +498,7 @@ Het correleren van gebeurtenissen in dezelfde stroom kan worden uitgevoerd door 
 
 **Invoer**:
 
-| Merk | License_plate | Time |
+| Merk | License_plate | Tijd |
 | --- | --- | --- |
 | Make1 |ABC-123 |2015-01-01T00:00:01.0000000 Z |
 | Make1 |AAA-999 |2015-01-01T00:00:02.0000000 Z |
@@ -508,7 +507,7 @@ Het correleren van gebeurtenissen in dezelfde stroom kan worden uitgevoerd door 
 
 **Uitvoer**:
 
-| Merk | Time | Current_car_license_plate | First_car_license_plate | First_car_time |
+| Merk | Tijd | Current_car_license_plate | First_car_license_plate | First_car_time |
 | --- | --- | --- | --- | --- |
 | Make1 |2015-01-01T00:00:02.0000000 Z |AAA-999 |ABC-123 |2015-01-01T00:00:01.0000000 Z |
 
@@ -537,7 +536,7 @@ De duur van een gebeurtenis kan worden berekend door te kijken naar de laatste s
 
 **Invoer**:  
 
-| Gebruiker | Functie | Gebeurtenis | Time |
+| Gebruiker | Functie | Gebeurtenis | Tijd |
 | --- | --- | --- | --- |
 | user@location.com |RightMenu |Starten |2015-01-01T00:00:01.0000000 Z |
 | user@location.com |RightMenu |Beëindigen |2015-01-01T00:00:08.0000000 Z |
@@ -571,7 +570,7 @@ De functie **lag** kan worden gebruikt om de duur van de voor waarde vast te ste
 
 **Invoer**:
 
-| Merk | Time | Gewicht |
+| Merk | Tijd | Gewicht |
 | --- | --- | --- |
 | Make1 |2015-01-01T00:00:01.0000000 Z |2000 |
 | Make2 |2015-01-01T00:00:02.0000000 Z |25.000 |
@@ -618,7 +617,7 @@ Bij onregelmatig of ontbrekende gebeurtenissen kan een regel matige interval uit
 
 **Invoer**:
 
-| Time | Waarde |
+| Tijd | Waarde |
 | --- | --- |
 | "2014-01-01T06:01:00" |1 |
 | "2014-01-01T06:01:05" |2 |
@@ -665,7 +664,7 @@ Zo is de klok voor *TollID* 2 vijf seconden achter *TollID* 1, en de klok van he
 
 **Invoer**:
 
-| LicensePlate | Merk | Time | TollID |
+| LicensePlate | Merk | Tijd | TollID |
 | --- | --- | --- | --- |
 | DXE 5291 |Make1 |2015-07-27T00:00:01.0000000 Z | 1 |
 | YHN 6970 |Make2 |2015-07-27T00:00:05.0000000 Z | 1 |
@@ -708,7 +707,7 @@ Wanneer er een bewerking wordt uitgevoerd, zoals het berekenen van de gemiddelde
 
 **Invoer**:  
 
-| DeviceId | Time | Kenmerk | Waarde |
+| DeviceId | Tijd | Kenmerk | Waarde |
 | --- | --- | --- | --- |
 | 1 |2018-07-27T00:00:01.0000000 Z |Temperatuur |50 |
 | 1 |2018-07-27T00:00:01.0000000 Z |Temperatuur |50 |
@@ -759,13 +758,13 @@ Een gebruiker heeft bijvoorbeeld interactie met een webpagina waar het aantal kl
 
 **Invoer**:
 
-| User_id | Time | URL |
+| User_id | Tijd | URL |
 | --- | --- | --- |
-| 0 | 2017-01-26T00:00:00.0000000 Z | ' www.example.com/a.html ' |
-| 0 | 2017-01-26T00:00:20.0000000 Z | ' www.example.com/b.html ' |
-| 1 | 2017-01-26T00:00:55.0000000 Z | ' www.example.com/c.html ' |
-| 0 | 2017-01-26T00:01:10.0000000 Z | ' www.example.com/d.html ' |
-| 1 | 2017-01-26T00:01:15.0000000 Z | ' www.example.com/e.html ' |
+| 0 | 2017-01-26T00:00:00.0000000 Z | "www.example.com/a.html" |
+| 0 | 2017-01-26T00:00:20.0000000 Z | "www.example.com/b.html" |
+| 1 | 2017-01-26T00:00:55.0000000 Z | "www.example.com/c.html" |
+| 0 | 2017-01-26T00:01:10.0000000 Z | "www.example.com/d.html" |
+| 1 | 2017-01-26T00:01:15.0000000 Z | "www.example.com/e.html" |
 
 **Uitvoer**:
 
@@ -845,7 +844,7 @@ Zo wordt een ATM tijdens real-time gecontroleerd op fouten tijdens de werking va
 
 **Invoer**:
 
-| ATM_id | Operation_id | Return_Code | Time |
+| ATM_id | Operation_id | Return_Code | Tijd |
 | --- | --- | --- | --- |
 | 1 | "Pincode invoeren" | Geleverd | 2017-01-26T00:10:00.0000000 Z |
 | 2 | "Sleuf voor het openen van geld" | Geleverd | 2017-01-26T00:10:07.0000000 Z |
@@ -892,7 +891,7 @@ De productie zou de locatie van deze machines moeten bijhouden en moeten worden 
 
 **Invoer**:
 
-| Equipment_id | Equipment_current_location | Time |
+| Equipment_id | Equipment_current_location | Tijd |
 | --- | --- | --- |
 | 1 | "PUNT (-122.13288797982818 47.64082002051315)" | 2017-01-26T00:10:00.0000000 Z |
 | 1 | "PUNT (-122.13307252987875 47.64081350934929)" | 2017-01-26T00:11:00.0000000 Z |
@@ -907,7 +906,7 @@ De productie zou de locatie van deze machines moeten bijhouden en moeten worden 
 
 **Uitvoer**:
 
-| Equipment_id | Equipment_alert_location | Time |
+| Equipment_id | Equipment_alert_location | Tijd |
 | --- | --- | --- |
 | 1 | "PUNT (-122.13341048821462 47.64043760861279)" | 2017-01-26T00:13:00.0000000 Z |
 

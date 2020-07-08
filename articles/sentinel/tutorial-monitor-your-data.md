@@ -15,17 +15,16 @@ ms.workload: na
 ms.date: 05/04/2020
 ms.author: yelevin
 ms.openlocfilehash: 8d8f1343d92f66dc464ab7064949bbabb813268e
-ms.sourcegitcommit: cf7caaf1e42f1420e1491e3616cc989d504f0902
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/22/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "83798530"
 ---
 # <a name="tutorial-visualize-and-monitor-your-data"></a>Zelf studie: uw gegevens visualiseren en bewaken
 
 
 
-Zodra u [uw gegevens bronnen](quickstart-onboard.md)   aan Azure Sentinel hebt gekoppeld, kunt u de gegevens visualiseren en bewaken met behulp van de Azure Sentinel-acceptatie van Azure monitor werkmappen, die veelzijdigheid biedt bij het maken van aangepaste Dash boards. Hoewel de werkmappen anders worden weer gegeven in de Azure-Sentinel, kan het nuttig zijn om te zien hoe u [interactieve rapporten met Azure monitor werkmappen maakt](../azure-monitor/platform/workbooks-overview.md). Met Azure Sentinel kunt u aangepaste werkmappen maken voor uw gegevens en ook met ingebouwde werkmap sjablonen, zodat u snel inzicht kunt krijgen in uw gegevens zodra u verbinding maakt met een gegevens bron.
+Zodra u [uw gegevens bronnen](quickstart-onboard.md)   aan Azure Sentinel hebt gekoppeld, kunt u de gegevens visualiseren en bewaken met behulp van de Azure Sentinel-acceptatie van Azure monitor werkmappen, die veelzijdigheid biedt bij het maken van aangepaste Dash boards. Hoewel de werkmappen anders worden weer gegeven in de Azure-Sentinel, kan het nuttig zijn om te zien hoe u [interactieve rapporten met Azure monitor werkmappen maakt](../azure-monitor/platform/workbooks-overview.md). Met Azure Sentinel kunt u aangepaste werkmappen maken voor uw gegevens. Daarnaast bevat dit ingebouwde werkmapsjablonen, zodat u snel inzicht kunt krijgen in uw gegevens zodra u verbinding maakt met een gegevensbron.
 
 
 Deze zelf studie helpt u bij het visualiseren van uw gegevens in azure Sentinel.

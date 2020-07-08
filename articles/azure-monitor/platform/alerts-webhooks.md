@@ -7,10 +7,9 @@ ms.topic: conceptual
 ms.date: 04/03/2017
 ms.subservice: alerts
 ms.openlocfilehash: 0677c7a0521fe1f63c9c2c9fce65d8dbd8e6d5c4
-ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/25/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "83826907"
 ---
 # <a name="call-a-webhook-with-a-classic-metric-alert-in-azure-monitor"></a>Een webhook met een klassieke waarschuwing voor metrische gegevens in Azure Monitor aanroepen
@@ -68,30 +67,30 @@ De POST-bewerking bevat de volgende JSON-nettolading en het schema voor alle waa
 ```
 
 
-| Veld | Verplicht | Vaste set waarden | Opmerkingen |
+| Veld | Verplicht | Vaste set waarden | Notities |
 |:--- |:--- |:--- |:--- |
-| status |Y |Geactiveerd, opgelost |De status van de waarschuwing op basis van de voor waarden die u hebt ingesteld. |
-| context |Y | |De context van de waarschuwing. |
-| tijdstempel |Y | |Het tijdstip waarop de waarschuwing is geactiveerd. |
-| id |Y | |Elke waarschuwings regel heeft een unieke ID. |
-| name |Y | |De naam van de waarschuwing. |
-| description |Y | |Een beschrijving van de waarschuwing. |
-| conditionType |Y |Metrische gegevens, gebeurtenis |Er worden twee soorten waarschuwingen ondersteund: metric en Event. Metrische waarschuwingen zijn gebaseerd op een metrische voor waarde. Gebeurtenis waarschuwingen zijn gebaseerd op een gebeurtenis in het activiteiten logboek. Gebruik deze waarde om te controleren of de waarschuwing is gebaseerd op een metrische waarde of een gebeurtenis. |
-| regeling |Y | |De specifieke velden die moeten worden gecontroleerd op basis van de waarde van **conditionType** . |
+| status |J |Geactiveerd, opgelost |De status van de waarschuwing op basis van de voor waarden die u hebt ingesteld. |
+| context |J | |De context van de waarschuwing. |
+| tijdstempel |J | |Het tijdstip waarop de waarschuwing is geactiveerd. |
+| id |J | |Elke waarschuwings regel heeft een unieke ID. |
+| naam |J | |De naam van de waarschuwing. |
+| description |J | |Een beschrijving van de waarschuwing. |
+| conditionType |J |Metrische gegevens, gebeurtenis |Er worden twee soorten waarschuwingen ondersteund: metric en Event. Metrische waarschuwingen zijn gebaseerd op een metrische voor waarde. Gebeurtenis waarschuwingen zijn gebaseerd op een gebeurtenis in het activiteiten logboek. Gebruik deze waarde om te controleren of de waarschuwing is gebaseerd op een metrische waarde of een gebeurtenis. |
+| regeling |J | |De specifieke velden die moeten worden gecontroleerd op basis van de waarde van **conditionType** . |
 | metricName |Voor metrische waarschuwingen | |De naam van de metriek die definieert wat de regel controleert. |
 | metricUnit |Voor metrische waarschuwingen |Bytes, BytesPerSecond, aantal, CountPerSecond, percentage, seconden |De eenheid die is toegestaan in de metriek. Bekijk de [toegestane waarden](https://msdn.microsoft.com/library/microsoft.azure.insights.models.unit.aspx). |
 | metricValue |Voor metrische waarschuwingen | |De werkelijke waarde van de metriek die de waarschuwing heeft veroorzaakt. |
-| threshold |Voor metrische waarschuwingen | |De drempel waarde waarmee de waarschuwing wordt geactiveerd. |
+| spreek |Voor metrische waarschuwingen | |De drempel waarde waarmee de waarschuwing wordt geactiveerd. |
 | windowSize |Voor metrische waarschuwingen | |De periode die wordt gebruikt voor het bewaken van de waarschuwings activiteit op basis van de drempel waarde. De waarde moet tussen 5 minuten en 1 dag liggen. De waarde moet de ISO 8601-duur notatie hebben. |
 | timeAggregation |Voor metrische waarschuwingen |Gemiddelde, laatste, maximum, minimum, geen, totaal |Hoe de verzamelde gegevens in de loop van de tijd moeten worden gecombineerd. De standaard waarde is gemiddelde. Bekijk de [toegestane waarden](https://msdn.microsoft.com/library/microsoft.azure.insights.models.aggregationtype.aspx). |
 | operator |Voor metrische waarschuwingen | |De operator die wordt gebruikt om de huidige metrische gegevens te vergelijken met de ingestelde drempel waarde. |
-| subscriptionId |Y | |De ID van het Azure-abonnement. |
-| resourceGroupName |Y | |De naam van de resource groep voor de betrokken resource. |
-| resourceName |Y | |De resource naam van de betrokken resource. |
-| resourceType |Y | |Het resource type van de betrokken resource. |
-| resourceId |Y | |De resource-ID van de betrokken resource. |
-| resourceRegion |Y | |De regio of locatie van de betrokken resource. |
-| portalLink |Y | |Een directe koppeling naar de overzichts pagina van de portal-resource. |
+| subscriptionId |J | |De ID van het Azure-abonnement. |
+| resourceGroupName |J | |De naam van de resource groep voor de betrokken resource. |
+| resourceName |J | |De resource naam van de betrokken resource. |
+| resourceType |J | |Het resource type van de betrokken resource. |
+| resourceId |J | |De resource-ID van de betrokken resource. |
+| resourceRegion |J | |De regio of locatie van de betrokken resource. |
+| portalLink |J | |Een directe koppeling naar de overzichts pagina van de portal-resource. |
 | properties |N |Optioneel |Een set sleutel-waardeparen met details over de gebeurtenis. Bijvoorbeeld `Dictionary<String, String>`. Het veld eigenschappen is optioneel. In een aangepaste UI-of logische werk stroom op basis van een app kunnen gebruikers sleutel-waardeparen invoeren die kunnen worden door gegeven via de payload. Een alternatieve manier om aangepaste eigenschappen door te geven aan de webhook is via de webhook-URI zelf (als query parameters). |
 
 > [!NOTE]

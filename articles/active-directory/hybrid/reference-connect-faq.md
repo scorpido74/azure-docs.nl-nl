@@ -16,10 +16,9 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 7ad8990512cb09f6048b169c1d0c0a259a62b61b
-ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/25/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "83827145"
 ---
 # <a name="azure-active-directory-connect-faq"></a>Veelgestelde vragen over Azure Active Directory Connect
@@ -88,7 +87,7 @@ Hieronder vindt u een informatief document waarin een aantal van de best practic
     - Minder complexiteit
     - Resources moeten worden toegewezen aan SQL en overhead toestaan voor Azure AD Connect en besturings systeem
 - Proxy altijd overs Laan als u de proxy mogelijk niet kunt omzeilen, moet u ervoor zorgen dat de time-outwaarde langer is dan vijf minuten.
-- Als u een proxy hebt vereist, moet u de proxy toevoegen aan het bestand Machine. config
+- Als de proxy is vereist, moet u de proxy toevoegen aan het machine.config-bestand
 - Zorg dat u zich bewust bent van lokale SQL-taken en-onderhoud en hoe ze van invloed zijn op Azure AD Connect, met name opnieuw indexeren
 - Zorg ervoor dat DNS extern kan worden omgezet
 - Zorg ervoor dat de [server specificaties](how-to-connect-install-prerequisites.md#hardware-requirements-for-azure-ad-connect) per aanbeveling zijn, ongeacht of u fysieke of virtuele servers gebruikt.
@@ -203,7 +202,7 @@ Vorig jaar hebben we een versie van Azure AD Connect uitgebracht die in bepaalde
 
 Als u het Power shell-script wilt uitvoeren, [downloadt u het script](https://aka.ms/repairaadconnect) en voert u dit uit op uw Azure AD Connect server in een beheer-Power shell-venster. [Bekijk deze korte video](https://aka.ms/repairaadcau)voor meer informatie over het uitvoeren van het script.
 
-Als u hand matig wilt bijwerken, moet u de meest recente versie van het AADConnect. msi-bestand downloaden en uitvoeren.
+Als u hand matig wilt bijwerken, moet u de nieuwste versie van het AADConnect.msi-bestand downloaden en uitvoeren.
  
 -  Als uw huidige versie ouder is dan 1.1.750.0, [down load en upgrade dan naar de nieuwste versie](https://www.microsoft.com/download/details.aspx?id=47594).
 - Als uw Azure AD Connect-versie 1.1.750.0 of hoger is, is er geen verdere actie vereist. U gebruikt al de versie die de oplossing voor automatische upgrades bevat. 

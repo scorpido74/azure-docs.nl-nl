@@ -10,10 +10,9 @@ ms.date: 01/11/2020
 ms.topic: conceptual
 manager: kmadnani
 ms.openlocfilehash: 1cb70109657343f41a1b3a19f3426377d97e261e
-ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/25/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "83830120"
 ---
 # <a name="encryption-of-secure-assets-in-azure-automation"></a>Versleuteling van beveiligde activa in Azure Automation
@@ -33,7 +32,7 @@ Elke beveiligde Asset wordt versleuteld en opgeslagen in Azure Automation met be
 
 U kunt versleuteling van beveiligde assets voor uw Automation-account beheren met uw eigen sleutels. Wanneer u een door de klant beheerde sleutel opgeeft op het niveau van het Automation-account, wordt die sleutel gebruikt voor het beveiligen en beheren van de toegang tot de account versleutelings sleutel voor het Automation-account. Dit wordt op zijn beurt gebruikt voor het versleutelen en ontsleutelen van alle beveiligde assets. Door de klant beheerde sleutels bieden meer flexibiliteit voor het maken, draaien, uitschakelen en intrekken van toegangs beheer. U kunt ook de versleutelings sleutels voor het beveiligen van uw beveiligde assets controleren.
 
-Gebruik Azure Key Vault om door de klant beheerde sleutels op te slaan. U kunt zelf sleutels maken en deze opslaan in een sleutel kluis, of u kunt de Azure Key Vault-Api's gebruiken om sleutels te genereren.  Zie [Wat is Azure Key Vault?](../key-vault/general/overview.md) voor meer informatie over Azure Key Vault.
+Gebruik Azure Key Vault om door de klant beheerde sleutels op te slaan. U kunt uw eigen sleutels maken en deze opslaan in een sleutelkluis of u kunt de Azure Key Vault API's gebruiken om sleutels te genereren.  Zie [Wat is Azure Key Vault?](../key-vault/general/overview.md) voor meer informatie over Azure Key Vault.
 
 ## <a name="use-of-customer-managed-keys-for-an-automation-account"></a>Gebruik van door de klant beheerde sleutels voor een Automation-account
 

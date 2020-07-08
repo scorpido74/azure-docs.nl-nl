@@ -4,10 +4,9 @@ description: Ondersteunde resource typen via Azure resource Health
 ms.topic: conceptual
 ms.date: 01/29/2019
 ms.openlocfilehash: 38c7e0754649d650521cc510bcac326496bcec38
-ms.sourcegitcommit: fc0431755effdc4da9a716f908298e34530b1238
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/24/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "83816095"
 ---
 # <a name="resource-types-and-health-checks-in-azure-resource-health"></a>Resource typen en status controles in azure resource Health
@@ -23,7 +22,7 @@ Hieronder vindt u een volledige lijst met alle controles die worden uitgevoerd d
 |---|
 |<ul><li>Is de API Management-service actief?</li></ul>|
 
-## <a name="microsoftbatchbatchaccounts"></a>Micro soft. batch/batchAccounts
+## <a name="microsoftbatchbatchaccounts"></a>Microsoft.Bat-CH/batchAccounts
 |Controles uitgevoerd|
 |---|
 |<ul><li>Wordt het batch-account actief?</li><li>Is het groeps quotum overschreden voor dit batch-account?</li></ul>|
@@ -84,17 +83,17 @@ Hieronder vindt u een volledige lijst met alle controles die worden uitgevoerd d
 |---|
 |<ul><li>Is het gegevens share account actief?</li><li>Is het cluster dat als host fungeert voor de gegevens share beschikbaar?</li></ul>|
 
-## <a name="microsoftdbformariadbservers"></a>Micro soft. DBforMariaDB/servers
+## <a name="microsoftdbformariadbservers"></a>Microsoft.DBforMariaDB/servers
 |Controles uitgevoerd|
 |---|
 |<ul><li>Is de server niet beschikbaar vanwege onderhoud?</li><li>Is de server niet beschikbaar omdat deze opnieuw is geconfigureerd?</li></ul>|
 
-## <a name="microsoftdbformysqlservers"></a>Micro soft. DBforMySQL/servers
+## <a name="microsoftdbformysqlservers"></a>Microsoft.DBforMySQL/servers
 |Controles uitgevoerd|
 |---|
 |<ul><li>Is de server niet beschikbaar vanwege onderhoud?</li><li>Is de server niet beschikbaar omdat deze opnieuw is geconfigureerd?</li></ul>|
 
-## <a name="microsoftdbforpostgresqlservers"></a>Micro soft. DBforPostgreSQL/servers
+## <a name="microsoftdbforpostgresqlservers"></a>Microsoft.DBforPostgreSQL/servers
 |Controles uitgevoerd|
 |---|
 |<ul><li>Is de server niet beschikbaar vanwege onderhoud?</li><li>Is de server niet beschikbaar omdat deze opnieuw is geconfigureerd?</li></ul>|
@@ -104,7 +103,7 @@ Hieronder vindt u een volledige lijst met alle controles die worden uitgevoerd d
 |---|
 |<ul><li>Wordt de IoT-hub actief gemaakt?</li></ul>|
 
-## <a name="microsoftdocumentdbdatabaseaccounts"></a>Micro soft. documentdb/databaseAccounts
+## <a name="microsoftdocumentdbdatabaseaccounts"></a>Microsoft.documentdb/databaseAccounts
 |Controles uitgevoerd|
 |---|
 |<ul><li>Zijn er geen data base-of verzamelings aanvragen geleverd omdat er geen Azure Cosmos DB service beschikbaar is?</li><li>Zijn er niet-beschik bare document aanvragen verzonden door een Azure Cosmos DB Service?</li></ul>|
@@ -194,7 +193,7 @@ Hieronder vindt u een volledige lijst met alle controles die worden uitgevoerd d
 |---|
 |<ul><li>Ondervindt klanten die door de gebruiker zijn gegenereerd Service Bus fouten?</li><li>Ondervinden gebruikers een toename van tijdelijke fouten vanwege een upgrade van de naam ruimte van Service Bus?</li></ul>|
 
-## <a name="microsoftservicefabricclusters"></a>Micro soft. ServiceFabric/clusters
+## <a name="microsoftservicefabricclusters"></a>Microsoft.ServiceFabric/clusters
 |Controles uitgevoerd|
 |---|
 |<ul><li>Wordt het Service Fabric cluster actief?</li><li>Kan het Service Fabric-cluster via Azure Resource Manager worden beheerd?</li></ul>|
@@ -209,7 +208,7 @@ Hieronder vindt u een volledige lijst met alle controles die worden uitgevoerd d
 |---|
 |<ul><li>Hebt u aanmeldingen bij de data base?</li></ul>|
 
-## <a name="microsoftstoragestorageaccounts"></a>Micro soft. Storage/Storage accounts
+## <a name="microsoftstoragestorageaccounts"></a>Microsoft.Storage/storageAccounts
 |Controles uitgevoerd|
 |---|
 |<ul><li>Zijn er aanvragen voor het lezen van gegevens van het opslag account als gevolg van problemen met Azure Storage platform?</li><li>Worden aanvragen voor het schrijven van gegevens naar het opslag account mislukt als gevolg van problemen met de Azure Storage platform?</li><li>Is het opslag cluster waar het opslag account zich bevindt, niet beschikbaar?</li></ul>|

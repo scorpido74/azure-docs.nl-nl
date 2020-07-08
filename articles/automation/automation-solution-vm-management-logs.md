@@ -6,10 +6,9 @@ ms.subservice: process-automation
 ms.date: 04/01/2020
 ms.topic: conceptual
 ms.openlocfilehash: de013b6ccd924f50ffe12fcba1285b121eece5f7
-ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/25/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "83827553"
 ---
 # <a name="query-logs-from-startstop-vms-during-off-hours"></a>Query's uitvoeren op logboeken vanuit VM's buiten bedrijfsuren starten/stoppen
@@ -35,7 +34,7 @@ Azure Automation twee typen records worden doorgestuurd naar de gekoppelde Log A
 |SourceSystem | Hiermee wordt het bronsysteem voor de verzonden gegevens opgegeven. Voor Automation is de waarde OpsManager|
 |StreamType | Hiermee wordt het type gebeurtenis opgegeven. Mogelijke waarden zijn:<br>- Uitgebreid<br>- Uitvoer<br>- Fout<br>- Waarschuwing|
 |SubscriptionId | Hiermee wordt de abonnements-id van de taak opgegeven.
-|Time | Datum en tijd van uitvoering van de runbooktaak.|
+|Tijd | Datum en tijd van uitvoering van de runbooktaak.|
 
 ## <a name="job-streams"></a>Taakstromen
 
@@ -54,7 +53,7 @@ Azure Automation twee typen records worden doorgestuurd naar de gekoppelde Log A
 |RunbookName | De naam van het runbook.|
 |SourceSystem | Hiermee wordt het bronsysteem voor de verzonden gegevens opgegeven. Voor Automation is de waarde OpsManager.|
 |StreamType | Het type taakstroom. Mogelijke waarden zijn:<br>-Voortgang<br>- Uitvoer<br>- Waarschuwing<br>- Fout<br>- Foutopsporing<br>- Uitgebreid|
-|Time | Datum en tijd van uitvoering van de runbooktaak.|
+|Tijd | Datum en tijd van uitvoering van de runbooktaak.|
 
 Wanneer u een zoek opdracht in het logboek uitvoert waarmee categorie records van **JobLogs** of **JobStreams**worden geretourneerd, kunt u de weer gave **JobLogs** of **JobStreams** selecteren, waarin een reeks tegels wordt weer gegeven met een overzicht van de updates die worden geretourneerd door de zoek opdracht.
 
@@ -62,7 +61,7 @@ Wanneer u een zoek opdracht in het logboek uitvoert waarmee categorie records va
 
 De volgende tabel bevat voor beelden van zoek opdrachten in Logboeken voor taak records die worden verzameld door VM's buiten bedrijfsuren starten/stoppen.
 
-|Query’s uitvoeren | Beschrijving|
+|Query’s uitvoeren | Description|
 |----------|----------|
 |Taken zoeken voor runbook-ScheduledStartStop_Parent die zijn voltooid | <code>search Category == "JobLogs" <br>&#124;  where ( RunbookName_s == "ScheduledStartStop_Parent" ) <br>&#124;  where ( ResultType == "Completed" )  <br>&#124;  summarize AggregatedValue = count() by ResultType, bin(TimeGenerated, 1h) <br>&#124;  sort by TimeGenerated desc</code>|
 |Taken zoeken voor runbook-ScheduledStartStop_Parent die niet zijn voltooid | <code>search Category == "JobLogs" <br>&#124;  where ( RunbookName_s == "ScheduledStartStop_Parent" ) <br>&#124;  where ( ResultType == "Failed" )  <br>&#124;  summarize AggregatedValue = count() by ResultType, bin(TimeGenerated, 1h) <br>&#124;  sort by TimeGenerated desc</code>|

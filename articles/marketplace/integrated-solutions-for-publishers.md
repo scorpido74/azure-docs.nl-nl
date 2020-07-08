@@ -8,10 +8,9 @@ ms.topic: conceptual
 ms.date: 04/16/2020
 ms.author: dsindona
 ms.openlocfilehash: a2bce05288d0085306a59f3ff5ee62939941bbaf
-ms.sourcegitcommit: cf7caaf1e42f1420e1491e3616cc989d504f0902
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/22/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "83800604"
 ---
 # <a name="publish-an-integrated-solution"></a>Een geïntegreerde oplossing publiceren
@@ -40,7 +39,7 @@ Bekijk de [overzichts video voor partners](https://partner.microsoft.com/asset/d
     * Integratie van toepassingen
     * Beheer van toepassings levenscyclus
     * Cloud platform
-    * Data Analytics
+    * Gegevensanalyse
     * Datacenter
     * Gegevens platform
     * DevOps

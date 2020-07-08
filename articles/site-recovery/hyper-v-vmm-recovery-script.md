@@ -8,10 +8,9 @@ ms.topic: conceptual
 ms.date: 11/27/2018
 ms.author: rajanaki
 ms.openlocfilehash: 14c2a9a2ad818cc358535a91f9a6813ec7b91a6f
-ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/25/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "83826278"
 ---
 # <a name="add-a-vmm-script-to-a-recovery-plan"></a>Een VMM-script toevoegen aan een herstel plan
@@ -60,9 +59,9 @@ U kunt Power shell-scripts gebruiken in uw herstel plannen. Als u vanuit het her
 
 Als u een VMM-bron site hebt, kunt u een script maken op de VMM-server. Neem vervolgens het script op in het herstel plan.
 
-1. Maak een nieuwe map in de bibliotheek share. Bijvoorbeeld VMM- \< Server naam> \msscvmmlibrary\rpscripts. Plaats de map op de bron-en doel-VMM-servers.
+1. Maak een nieuwe map in de bibliotheek share. Bijvoorbeeld \<VMM server name> \MSSCVMMLibrary\RPScripts. Plaats de map op de bron-en doel-VMM-servers.
 1. Maak het script. Geef bijvoorbeeld het script de naam RPScript. Controleer of het script werkt zoals verwacht.
-1. Plaats het script in de \< naam van de VMM-server> map \msscvmmlibrary op de bron-en doel-VMM-servers.
+1. Plaats het script in de \<VMM server name> map \MSSCVMMLibrary op de bron-en doel-VMM-servers.
 
 ## <a name="add-the-script-to-a-recovery-plan"></a>Het script toevoegen aan een herstel plan
 
@@ -71,7 +70,7 @@ Nadat u Vm's of replicatie groepen hebt toegevoegd aan een herstel plan en het p
 1. Open het herstel plan.
 1. Selecteer een item in de **stap** lijst. Selecteer vervolgens **script** of **hand matige actie**.
 1. Geef op of het script of de actie vóór of na het geselecteerde item moet worden toegevoegd. Als u de positie van het script omhoog of omlaag wilt verplaatsen, selecteert u de knoppen **omhoog** en **omlaag** .
-1. Als u een VMM-script toevoegt, selecteert u **failover naar VMM-script**. In het pad naar het **script**voert u het relatieve pad naar de share in. Voer bijvoorbeeld **\RPScripts\RPScript.ps1**.
+1. Als u een VMM-script toevoegt, selecteert u **failover naar VMM-script**. In het pad naar het **script**voert u het relatieve pad naar de share in. Voer bijvoorbeeld **\RPScripts\RPScript.PS1**in.
 1. Als u een Azure Automation runbook toevoegt, geeft u het Automation-account op waarin het runbook zich bevindt. Selecteer vervolgens het Azure runbook-script dat u wilt gebruiken.
 1. Voer een testfailover van het herstel plan uit om ervoor te zorgen dat het script werkt zoals verwacht.
 

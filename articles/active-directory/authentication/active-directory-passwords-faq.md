@@ -12,10 +12,9 @@ manager: daveba
 ms.reviewer: sahenry
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 7997359fb29afc876b184b811e0409cfdbeb265a
-ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/25/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "83826465"
 ---
 # <a name="password-management-frequently-asked-questions"></a>Veelgestelde vragen over wachtwoord beheer
@@ -36,7 +35,7 @@ Deze veelgestelde vragen zijn onderverdeeld in de volgende secties:
 
 * **V: kunnen mijn gebruikers hun eigen wachtwoord herstel gegevens registreren?**
 
-  > **A:** Ja. Zolang het wacht woord opnieuw moet worden ingesteld en de licenties zijn ingeschakeld, kunnen gebruikers naar de registratie portal voor het opnieuw instellen van het wacht woord gaan ( https://aka.ms/ssprsetup) om hun verificatie gegevens te registreren. Gebruikers kunnen zich ook registreren via het toegangs venster ( https://myapps.microsoft.com) . Als u zich wilt registreren via het toegangs venster, moeten ze hun profiel afbeelding selecteren, **profiel**selecteren en vervolgens de optie **registreren voor wacht woord opnieuw instellen** selecteren.
+  > **A:** Klikt. Zolang het wacht woord opnieuw moet worden ingesteld en de licenties zijn ingeschakeld, kunnen gebruikers naar de registratie portal voor het opnieuw instellen van het wacht woord gaan ( https://aka.ms/ssprsetup) om hun verificatie gegevens te registreren. Gebruikers kunnen zich ook registreren via het toegangs venster ( https://myapps.microsoft.com) . Als u zich wilt registreren via het toegangs venster, moeten ze hun profiel afbeelding selecteren, **profiel**selecteren en vervolgens de optie **registreren voor wacht woord opnieuw instellen** selecteren.
   >
   >
 * **V: als ik het opnieuw instellen van het wacht woord inschakel voor een groep en vervolgens besluit dit voor iedereen in te scha kelen, moeten mijn gebruikers zich opnieuw registreren?**
@@ -56,7 +55,7 @@ Deze veelgestelde vragen zijn onderverdeeld in de volgende secties:
   >
 * **V: kunnen mijn gebruikers gegevens op een zodanige manier registreren dat andere gebruikers deze gegevens niet kunnen zien?**
 
-  > **A:** Ja. Wanneer gebruikers gegevens registreren met behulp van de registratie portal voor het opnieuw instellen van het wacht woord, worden de gegevens opgeslagen in particuliere verificatie velden die alleen zichtbaar zijn voor globale beheerders en de gebruiker.
+  > **A:** Klikt. Wanneer gebruikers gegevens registreren met behulp van de registratie portal voor het opnieuw instellen van het wacht woord, worden de gegevens opgeslagen in particuliere verificatie velden die alleen zichtbaar zijn voor globale beheerders en de gebruiker.
   >
   >
 * **V: moeten mijn gebruikers worden geregistreerd voordat ze het opnieuw instellen van het wacht woord kunnen gebruiken?**
@@ -124,7 +123,7 @@ Deze veelgestelde vragen zijn onderverdeeld in de volgende secties:
   >
 * **V: hebt u ondersteuning voor het ontgrendelen van lokale Active Directory-accounts wanneer gebruikers hun wacht woord opnieuw instellen?**
 
-  > **A:** Ja. Wanneer een gebruiker het wacht woord opnieuw instelt en het terugschrijven van wacht woorden via Azure AD Connect is geïmplementeerd, wordt het account van die gebruiker automatisch ontgrendeld wanneer ze hun wacht woord opnieuw instellen.
+  > **A:** Klikt. Wanneer een gebruiker het wacht woord opnieuw instelt en het terugschrijven van wacht woorden via Azure AD Connect is geïmplementeerd, wordt het account van die gebruiker automatisch ontgrendeld wanneer ze hun wacht woord opnieuw instellen.
   >
   >
 * **V: hoe kan ik het opnieuw instellen van het wacht woord rechtstreeks integreren in de aanmeld procedure van mijn gebruiker?**
@@ -230,12 +229,12 @@ Deze veelgestelde vragen zijn onderverdeeld in de volgende secties:
   >
 * **V: is er een maximum aantal rijen dat kan worden weer gegeven in de rapporten voor wachtwoord beheer?**
 
-  > **A:** Ja. Er kunnen Maxi maal 75.000 rijen worden weer gegeven op een van de wachtwoord beheer rapporten, ongeacht of ze worden weer gegeven in de gebruikers interface of worden gedownload.
+  > **A:** Klikt. Er kunnen Maxi maal 75.000 rijen worden weer gegeven op een van de wachtwoord beheer rapporten, ongeacht of ze worden weer gegeven in de gebruikers interface of worden gedownload.
   >
   >
 * **V: is er een API voor toegang tot de gegevens voor het opnieuw instellen van het wacht woord of registratie rapport?**
 
-  > **A:** Ja. Zie voor meer informatie over hoe u de rapportage gegevens voor het opnieuw instellen van het wacht woord kunt gebruiken de [referentie voor Azure Log Analytics rest API](/rest/api/loganalytics/).
+  > **A:** Klikt. Zie voor meer informatie over hoe u de rapportage gegevens voor het opnieuw instellen van het wacht woord kunt gebruiken de [referentie voor Azure Log Analytics rest API](/rest/api/loganalytics/).
   >
   >
 
@@ -268,7 +267,7 @@ Deze veelgestelde vragen zijn onderverdeeld in de volgende secties:
   >
 * **V: wacht woord terugschrijven dwingt het wachtwoord beleid van mijn domein af?**
 
-  > **A:** Ja. Wacht woord terugschrijven afdwingt wachtwoord leeftijd, geschiedenis, complexiteit, filters en eventuele andere beperkingen die u mogelijk in wacht woorden in uw lokale domein plaatst.
+  > **A:** Klikt. Wacht woord terugschrijven afdwingt wachtwoord leeftijd, geschiedenis, complexiteit, filters en eventuele andere beperkingen die u mogelijk in wacht woorden in uw lokale domein plaatst.
   >
   >
 * **V: is het terugschrijven van wacht woorden veilig?  Hoe weet ik zeker dat ik niet gekraakt kan worden?**

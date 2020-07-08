@@ -12,10 +12,9 @@ manager: daveba
 ms.reviewer: sahenry
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 95d1ffec6a849cb97a6151717c3e30dc362b1403
-ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/25/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "83826601"
 ---
 # <a name="how-to-enable-password-reset-from-the-windows-login-screen"></a>Procedure: wacht woord opnieuw instellen inschakelen vanuit het Windows-aanmeldings scherm
@@ -56,8 +55,8 @@ Voor computers met Windows 7, 8, 8,1 en 10 kunt u gebruikers in staat stellen hu
        - Poort 443 tot `passwordreset.microsoftonline.com` en`ajax.aspnetcdn.com`
        - Windows 10-apparaten ondersteunen alleen proxy configuratie op computer niveau
 - Voer ten minste Windows 10, versie april 2018 update (v1803) uit en de apparaten moeten zijn:
-    - Neemt deel aan Azure AD
-    - lid is van hybride Azure Active Directory
+    - Azure AD-deelname
+    - Hybride Azure AD-deelname
 
 ### <a name="enable-for-windows-10-using-intune"></a>Inschakelen voor Windows 10 met intune
 
@@ -128,8 +127,8 @@ Wanneer gebruikers hun wacht woord opnieuw instellen vanuit het aanmeldings sche
 
 #### <a name="silent-installation"></a>Installatie op de achtergrond
 
-- Gebruik de opdracht ' msiexec/i SsprWindowsLogon. PROD. msi/qn ' voor een installatie op de achtergrond.
-- Voor onachtergrond verwijderen gebruikt u de opdracht "msiexec/x SsprWindowsLogon. PROD. msi/qn"
+- Gebruik de opdracht ' msiexec/i SsprWindowsLogon.PROD.msi/qn ' voor een installatie op de achtergrond.
+- Gebruik de opdracht "msiexec/x SsprWindowsLogon.PROD.msi/qn" voor het ongedaan maken van de installatie.
 
 #### <a name="troubleshooting-windows-7-8-and-81-password-reset"></a>Problemen met het opnieuw instellen van wacht woorden in Windows 7, 8 en 8,1 oplossen
 

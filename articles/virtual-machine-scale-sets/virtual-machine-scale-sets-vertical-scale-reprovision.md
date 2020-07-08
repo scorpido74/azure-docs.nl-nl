@@ -10,10 +10,9 @@ ms.date: 04/18/2019
 ms.reviewer: avverma
 ms.custom: avverma
 ms.openlocfilehash: 565d98bd5f27351f16ff523aa017c4b980fbdd53
-ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/25/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "83827263"
 ---
 # <a name="vertical-autoscale-with-virtual-machine-scale-sets"></a>Verticaal automatisch schalen met schaal sets voor virtuele machines
@@ -153,7 +152,7 @@ Add-AzMetricAlertRule  -Name  $alertName `
 
 Raadpleeg de volgende artikelen voor meer informatie over het maken van waarschuwingen:
 
-* [Azure Monitor Power shell-voor beelden](../azure-monitor/samples/powershell-samples.md)
+* [Azure Monitor PowerShell-voorbeelden](../azure-monitor/samples/powershell-samples.md)
 * [Andere CLI-voor beelden van platformen Azure Monitor](../azure-monitor/samples/cli-samples.md)
 
 ## <a name="summary"></a>Samenvatting

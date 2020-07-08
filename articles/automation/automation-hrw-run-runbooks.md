@@ -6,10 +6,9 @@ ms.subservice: process-automation
 ms.date: 01/29/2019
 ms.topic: conceptual
 ms.openlocfilehash: 8ea32b2e393a13f1725ff7a83f4b4f2191b59ddb
-ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/25/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "83835305"
 ---
 # <a name="run-runbooks-on-a-hybrid-runbook-worker"></a>Runbooks uitvoeren op een Hybrid Runbook Worker
@@ -165,7 +164,7 @@ Get-AzAutomationAccount | Select-Object AutomationAccountName
 ```
 
 >[!NOTE]
->Voor Power shell-runbooks `Add-AzAccount` en `Add-AzureRMAccount` zijn aliassen voor `Connect-AzAccount` . Als u uw bibliotheek items zoekt, kunt u, als u deze niet ziet `Connect-AzAccount` , gebruiken `Add-AzAccount` , of u kunt uw modules bijwerken in uw Automation-account.
+>Voor PowerShell-runbooks zijn `Add-AzAccount` en `Add-AzureRMAccount` aliassen voor `Connect-AzAccount`. Als u uw bibliotheek items zoekt, kunt u, als u deze niet ziet `Connect-AzAccount` , gebruiken `Add-AzAccount` , of u kunt uw modules bijwerken in uw Automation-account.
 
 De voor bereiding van het uitvoeren als-account volt ooien:
 
@@ -309,4 +308,4 @@ Start-AzAutomationRunbook –AutomationAccountName "MyAutomationAccount" –Name
 
 * Als uw runbooks niet met succes worden voltooid, raadpleegt u de hand leiding voor het oplossen van de [runbook-uitvoerings fouten](troubleshoot/hybrid-runbook-worker.md#runbook-execution-fails).
 * Raadpleeg de [Power shell-documenten](https://docs.microsoft.com/powershell/scripting/overview)voor meer informatie over Power shell, inclusief taal referentie-en leer modules.
-* Zie [AZ. Automation](https://docs.microsoft.com/powershell/module/az.automation/?view=azps-3.7.0#automation)(Engelstalig) voor een Power shell-cmdlet-verwijzing.
+* Zie [Az.Automation](https://docs.microsoft.com/powershell/module/az.automation/?view=azps-3.7.0#automation) voor een naslagdocumentatie voor een PowerShell-cmdlet.

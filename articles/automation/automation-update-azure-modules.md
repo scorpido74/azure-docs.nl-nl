@@ -6,10 +6,9 @@ ms.subservice: process-automation
 ms.date: 06/14/2019
 ms.topic: conceptual
 ms.openlocfilehash: 892197c79285495f49a870bbe79eb75229af2940
-ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/25/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "83831021"
 ---
 # <a name="update-azure-powershell-modules"></a>Azure PowerShell-modules bijwerken
@@ -46,7 +45,7 @@ Als u dit runbook wilt gebruiken op soevereine Clouds, gebruikt u de `AzEnvironm
 
 ## <a name="use-the-update-runbook-to-update-a-specific-module-version"></a>Het update-runbook gebruiken om een specifieke module versie bij te werken
 
-Als u een specifieke Azure PowerShell module versie wilt gebruiken in plaats van de meest recente module die beschikbaar is op de PowerShell Gallery, geeft u deze versies door aan de optionele `ModuleVersionOverrides` para meter van het Runbook **Update-AutomationAzureModulesForAccount** . Zie het runbook [Update-AutomationAzureModulesForAccount. ps1](https://github.com/Microsoft/AzureAutomation-Account-Modules-Update/blob/master/Update-AutomationAzureModulesForAccount.ps1) voor voor beelden. Azure PowerShell-modules die niet in de `ModuleVersionOverrides` para meter worden vermeld, worden bijgewerkt met de nieuwste module versies op de PowerShell Gallery. Als u niets doorgeeft aan de `ModuleVersionOverrides` para meter, worden alle modules bijgewerkt met de nieuwste module versies op het PowerShell Gallery. Dit gedrag is hetzelfde voor de knop **Azure-modules bijwerken** in de Azure Portal.
+Als u een specifieke Azure PowerShell module versie wilt gebruiken in plaats van de meest recente module die beschikbaar is op de PowerShell Gallery, geeft u deze versies door aan de optionele `ModuleVersionOverrides` para meter van het Runbook **Update-AutomationAzureModulesForAccount** . Zie het [Update-AutomationAzureModulesForAccount.ps1](https://github.com/Microsoft/AzureAutomation-Account-Modules-Update/blob/master/Update-AutomationAzureModulesForAccount.ps1) runbook voor voor beelden. Azure PowerShell-modules die niet in de `ModuleVersionOverrides` para meter worden vermeld, worden bijgewerkt met de nieuwste module versies op de PowerShell Gallery. Als u niets doorgeeft aan de `ModuleVersionOverrides` para meter, worden alle modules bijgewerkt met de nieuwste module versies op het PowerShell Gallery. Dit gedrag is hetzelfde voor de knop **Azure-modules bijwerken** in de Azure Portal.
 
 ## <a name="next-steps"></a>Volgende stappen
 

@@ -8,10 +8,9 @@ ms.topic: conceptual
 ms.date: 05/11/2020
 ms.author: spelluru
 ms.openlocfilehash: f46b17fdffc870e6afc5f3b0711169db8270a540
-ms.sourcegitcommit: cf7caaf1e42f1420e1491e3616cc989d504f0902
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/22/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "83800445"
 ---
 # <a name="event-hub-as-an-event-handler-for-azure-event-grid-events"></a>Event hub als gebeurtenis-handler voor Azure Event Grid gebeurtenissen
@@ -30,7 +29,7 @@ Zie de volgende voorbeelden:
 ## <a name="message-properties"></a>Bericht eigenschappen
 Als u een **Event hub** als gebeurtenis-handler voor gebeurtenissen van Event grid gebruikt, stelt u de volgende bericht koppen in: 
 
-| Naam van eigenschap | Beschrijving |
+| Naam van eigenschap | Description |
 | ------------- | ----------- | 
 | AEG-abonnements naam | De naam van het gebeurtenis abonnement. |
 | AEG-levering | <p>Het aantal pogingen dat is gedaan voor de gebeurtenis.</p> <p>Voor beeld: "1"</p> |

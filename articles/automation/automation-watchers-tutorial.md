@@ -6,10 +6,9 @@ ms.subservice: process-automation
 ms.topic: conceptual
 ms.date: 10/30/2018
 ms.openlocfilehash: 3369a807410e9e959e8091d5b16c8480803d26bb
-ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/25/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "83830579"
 ---
 # <a name="track-updated-files-with-a-watcher-task"></a>Bijgewerkte bestanden bijhouden met een Watcher-taak
@@ -22,7 +21,7 @@ Azure Automation een Watcher-taak gebruikt om te zoeken naar gebeurtenissen en t
 > [!IMPORTANT]
 > Vanaf mei 2020 is het gebruik van Azure Logic Apps de ondersteunde manier om gebeurtenissen te controleren, terugkerende taken te plannen en acties te activeren. Zie [terugkerende geautomatiseerde taken, processen en werk stromen plannen en uitvoeren met Azure Logic apps](https://docs.microsoft.com/azure/logic-apps/concepts-schedule-automated-recurring-tasks-workflows).
 
-In deze zelf studie wordt u begeleid bij het maken van een Watcher-taak om te controleren wanneer een nieuw bestand wordt toegevoegd aan een map. Procedures voor:
+In deze zelf studie wordt u begeleid bij het maken van een Watcher-taak om te controleren wanneer een nieuw bestand wordt toegevoegd aan een map. In deze zelfstudie leert u procedures om het volgende te doen:
 
 > [!div class="checklist"]
 > * Een Watcher-runbook importeren
@@ -47,7 +46,7 @@ In deze zelf studie wordt een Watcher-runbook met de naam **Watch-NewFile** gebr
 
 Dit import proces kan worden uitgevoerd via de [PowerShell Gallery](https://www.powershellgallery.com).
 
-1. Ga naar de galerie pagina voor [Watch-newFile. ps1](https://gallery.technet.microsoft.com/scriptcenter/Watcher-runbook-that-looks-36fc82cd).
+1. Ga naar de galerie pagina voor [Watch-NewFile.ps1](https://gallery.technet.microsoft.com/scriptcenter/Watcher-runbook-that-looks-36fc82cd).
 2. Klik op het tabblad **Azure Automation** op **implementeren naar Azure Automation**.
 
 U kunt dit runbook ook vanuit de Portal importeren in uw Automation-account door de volgende stappen uit te voeren.
@@ -74,7 +73,7 @@ Een actie runbook wordt in een Watcher-taak gebruikt om te reageren op de gegeve
 
 Een actie runbook maken:
 
-1. Ga naar de galerie pagina voor [process-newFile. ps1](https://gallery.technet.microsoft.com/scriptcenter/Watcher-action-that-b4ff7cdf).
+1. Ga naar de galerie pagina voor [Process-NewFile.ps1](https://gallery.technet.microsoft.com/scriptcenter/Watcher-action-that-b4ff7cdf).
 2. Klik op het tabblad **Azure Automation** op **implementeren naar Azure Automation**.
 
 U kunt dit runbook ook importeren in uw Automation-account vanuit de Azure Portal:

@@ -8,10 +8,9 @@ ms.topic: conceptual
 ms.date: 11/01/2019
 tags: connectors
 ms.openlocfilehash: a5c00dc64dd39ba2fdbb734f4e9749fbe42e246e
-ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/25/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "83831922"
 ---
 # <a name="call-rest-endpoints-by-using-azure-logic-apps"></a>REST-eind punten aanroepen met behulp van Azure Logic Apps
@@ -42,7 +41,7 @@ Met [Azure Logic apps](../logic-apps/logic-apps-overview.md) en de ingebouwde ht
 
 Deze ingebouwde trigger verzendt een HTTP-aanvraag naar een URL voor een Swagger-bestand waarin een REST API wordt beschreven en een antwoord wordt geretourneerd dat de inhoud van het bestand bevat.
 
-1. Meld u aan bij de [Azure-portal](https://portal.azure.com). Open uw lege logische app in de ontwerp functie voor logische apps.
+1. Meld u aan bij [Azure Portal](https://portal.azure.com). Open uw lege logische app in de ontwerp functie voor logische apps.
 
 1. Voer op de ontwerp functie in het zoekvak ' Swagger ' in als uw filter. Selecteer in de lijst **Triggers** de **http + Swagger-** trigger.
 
@@ -72,13 +71,13 @@ Deze ingebouwde trigger verzendt een HTTP-aanvraag naar een URL voor een Swagger
 
 1. Ga door met het bouwen van de werk stroom van uw logische app met acties die worden uitgevoerd wanneer de trigger wordt geactiveerd.
 
-1. Wanneer u klaar bent, moet u uw logische app opslaan. Selecteer **Opslaan**op de werk balk van de ontwerp functie.
+1. Wanneer u klaar bent, moet u uw logische app opslaan. Selecteer **Opslaan** op de werkbalk van de ontwerper.
 
 ## <a name="add-an-http--swagger-action"></a>Een HTTP + Swagger-actie toevoegen
 
 Deze ingebouwde actie maakt een HTTP-aanvraag voor de URL voor het Swagger-bestand waarin een REST API wordt beschreven en retourneert een antwoord met daarin de inhoud van dat bestand.
 
-1. Meld u aan bij de [Azure-portal](https://portal.azure.com). Open uw logische app in de ontwerp functie voor logische apps.
+1. Meld u aan bij [Azure Portal](https://portal.azure.com). Open uw logische app in de ontwerp functie voor logische apps.
 
 1. Selecteer **nieuwe stap**onder de stap waar u de http + Swagger-actie wilt toevoegen.
 
@@ -110,7 +109,7 @@ Deze ingebouwde actie maakt een HTTP-aanvraag voor de URL voor het Swagger-besta
 
    Zie [verificatie toevoegen aan uitgaande oproepen](../logic-apps/logic-apps-securing-a-logic-app.md#add-authentication-outbound)voor meer informatie over de beschik bare verificatie typen voor http + Swagger.
 
-1. Wanneer u klaar bent, moet u uw logische app opslaan. Selecteer **Opslaan**op de werk balk van de ontwerp functie.
+1. Wanneer u klaar bent, moet u uw logische app opslaan. Selecteer **Opslaan** op de werkbalk van de ontwerper.
 
 <a name="host-swagger"></a>
 
@@ -127,7 +126,7 @@ U kunt verwijzen naar een Swagger-bestand dat niet wordt gehost of niet voldoet 
    | **Toegestane oorsprongen** | `*` |
    | **Toegestane methoden** | `GET`, `HEAD`, `PUT` |
    | **Toegestane headers** | `*` |
-   | **Weergegeven headers** | `*` |
+   | **Weer gegeven kopteksten** | `*` |
    | **Max. duur** (in seconden) | `200` |
    |||
 
@@ -145,7 +144,7 @@ U kunt verwijzen naar een Swagger-bestand dat niet wordt gehost of niet voldoet 
 
 Hier vindt u meer informatie over de uitvoer van een HTTP + Swagger-trigger of-actie. De HTTP + Swagger-aanroep retourneert deze informatie:
 
-| Naam van eigenschap | Type | Beschrijving |
+| Naam van eigenschap | Type | Description |
 |---------------|------|-------------|
 | koppen | object | De headers van de aanvraag |
 | body | object | JSON-object | Het object met de inhoud van de hoofd tekst van de aanvraag |

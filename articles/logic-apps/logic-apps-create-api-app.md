@@ -7,10 +7,9 @@ ms.reviewer: jonfan, logicappspm
 ms.topic: conceptual
 ms.date: 05/26/2017
 ms.openlocfilehash: 45b53b0e692a1272ba59719655c8d60c90fd6c96
-ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/25/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "83834489"
 ---
 # <a name="create-custom-apis-you-can-call-from-azure-logic-apps"></a>Aangepaste Api's maken die u kunt aanroepen vanuit Azure Logic Apps
@@ -21,7 +20,7 @@ Hoewel Azure Logic Apps [honderden connectors](../connectors/apis-list.md) biedt
 * Help klanten uw service te gebruiken voor het beheren van professionele of persoonlijke taken.
 * Breid het bereik, de vind baarheid en het gebruik voor uw service uit.
 
-Connectors zijn in principe Web-Api's die REST gebruiken voor pluggable interfaces, [Swagger-meta gegevens indeling](https://swagger.io/specification/) voor documentatie en JSON als gegevensuitwisselings indeling. Omdat connectors zijn REST-Api's die communiceren via HTTP-eind punten, kunt u elke taal, zoals .NET, Java, python of node. js, gebruiken voor het bouwen van connectors. U kunt ook uw Api's hosten op [Azure app service](../app-service/overview.md), een Paas-Aanbieding (platform-as-a-Service) die een van de beste, eenvoudigste en meest schaal bare manieren biedt voor API-hosting. 
+Connectors zijn in principe Web-Api's die REST gebruiken voor pluggable interfaces, [Swagger-meta gegevens indeling](https://swagger.io/specification/) voor documentatie en JSON als gegevensuitwisselings indeling. Omdat connectors zijn REST-Api's die communiceren via HTTP-eind punten, kunt u elke taal, zoals .NET, Java, python of Node.js, gebruiken voor het bouwen van connectors. U kunt ook uw Api's hosten op [Azure app service](../app-service/overview.md), een Paas-Aanbieding (platform-as-a-Service) die een van de beste, eenvoudigste en meest schaal bare manieren biedt voor API-hosting. 
 
 Voor aangepaste Api's voor het werken met Logic apps kan uw API [*acties*](./logic-apps-overview.md#logic-app-concepts) bieden waarmee specifieke taken in werk stromen voor logische apps worden uitgevoerd. Uw API kan ook fungeren als een [*trigger*](./logic-apps-overview.md#logic-app-concepts) waarmee een logische app-werk stroom wordt gestart wanneer nieuwe gegevens of een gebeurtenis aan een opgegeven voor waarde voldoet. In dit onderwerp worden algemene patronen beschreven die u kunt volgen voor het bouwen van acties en triggers in uw API, op basis van het gedrag dat u voor uw API wilt bieden.
 
@@ -41,7 +40,7 @@ U kunt uw Api's hosten op [Azure app service](../app-service/overview.md), een P
 
 ## <a name="how-do-custom-apis-differ-from-custom-connectors"></a>Wat zijn de verschillen tussen aangepaste Api's en aangepaste connectors?
 
-Aangepaste Api's en [aangepaste connectors](../logic-apps/custom-connector-overview.md) zijn web-API'S die rest gebruiken voor pluggable interfaces, [Swagger-meta gegevens indeling](https://swagger.io/specification/) voor documentatie en JSON als de Data Exchange-indeling. En omdat deze Api's en connectors REST Api's zijn die communiceren via HTTP-eind punten, kunt u elke taal, zoals .NET, Java, python of node. js, gebruiken voor het bouwen van aangepaste Api's en connectors.
+Aangepaste Api's en [aangepaste connectors](../logic-apps/custom-connector-overview.md) zijn web-API'S die rest gebruiken voor pluggable interfaces, [Swagger-meta gegevens indeling](https://swagger.io/specification/) voor documentatie en JSON als de Data Exchange-indeling. En omdat deze Api's en connectors REST Api's zijn die communiceren via HTTP-eind punten, kunt u elke taal, zoals .NET, Java, python of Node.js, gebruiken voor het bouwen van aangepaste Api's en connectors.
 
 Met aangepaste Api's kunt u Api's aanroepen die geen connectors zijn en eind punten bieden die u met HTTP + Swagger, Azure API Management of App Services aanroept. Aangepaste connectors werken als aangepaste Api's, maar hebben ook deze kenmerken:
 
@@ -173,8 +172,8 @@ Als u bijvoorbeeld uw service regel matig wilt controleren op nieuwe bestanden, 
 
 | Aanvraag bevat `triggerState` ? | API-antwoord | 
 | -------------------------------- | -------------| 
-| Nee | Retour neer een HTTP- `202 ACCEPTED` status plus een `location` header met `triggerState` ingesteld op de huidige tijd en het `retry-after` interval tot 15 seconden. | 
-| Ja | Controleer uw service op bestanden die worden toegevoegd na de `DateTime` for `triggerState` . | 
+| No | Retour neer een HTTP- `202 ACCEPTED` status plus een `location` header met `triggerState` ingesteld op de huidige tijd en het `retry-after` interval tot 15 seconden. | 
+| Yes | Controleer uw service op bestanden die worden toegevoegd na de `DateTime` for `triggerState` . | 
 ||| 
 
 | Aantal gevonden bestanden | API-antwoord | 

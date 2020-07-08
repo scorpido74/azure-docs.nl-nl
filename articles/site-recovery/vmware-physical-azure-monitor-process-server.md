@@ -8,10 +8,9 @@ ms.topic: conceptual
 ms.date: 11/14/2019
 ms.author: raynew
 ms.openlocfilehash: 296254db83a065623b692d7947c130dfd71cd413
-ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/25/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "83835050"
 ---
 # <a name="monitor-the-process-server"></a>De proces server bewaken
@@ -37,7 +36,7 @@ Er zijn een aantal situaties die de prestaties van de proces server meestal beï
 
 Al deze problemen kunnen van invloed zijn op de Recovery Point Objective (RPO) van Vm's. 
 
-**Hoe komt dat?** Omdat voor het genereren van een herstel punt voor een VM, moeten alle schijven op de virtuele machine een gemeen schappelijk punt hebben. Als één schijf een hoog verloop snelheid heeft, de replicatie traag is of de proces server niet optimaal is, is dit van invloed op hoe efficiënt herstel punten worden gemaakt.
+**Hoe kan dat?** Omdat voor het genereren van een herstel punt voor een VM, moeten alle schijven op de virtuele machine een gemeen schappelijk punt hebben. Als één schijf een hoog verloop snelheid heeft, de replicatie traag is of de proces server niet optimaal is, is dit van invloed op hoe efficiënt herstel punten worden gemaakt.
 
 ## <a name="monitor-proactively"></a>Proactief bewaken
 

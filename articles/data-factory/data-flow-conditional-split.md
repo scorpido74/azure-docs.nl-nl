@@ -9,10 +9,9 @@ ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 05/21/2020
 ms.openlocfilehash: eece6f97e82f3800d4f59ac1849b34c2a1e4635b
-ms.sourcegitcommit: cf7caaf1e42f1420e1491e3616cc989d504f0902
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/22/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "83800087"
 ---
 # <a name="conditional-split-transformation-in-mapping-data-flow"></a>Voorwaardelijke Splits Transform in toewijzing van gegevens stroom
@@ -33,7 +32,7 @@ Gebruik de opbouw functie voor de data flow-expressie om een expressie voor de S
 
 ## <a name="data-flow-script"></a>Script voor gegevensstroom
 
-### <a name="syntax"></a>Syntaxis
+### <a name="syntax"></a>Syntax
 
 ```
 <incomingStream>

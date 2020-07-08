@@ -6,10 +6,9 @@ ms.subservice: dsc
 ms.topic: conceptual
 ms.date: 08/08/2018
 ms.openlocfilehash: a45aa8299d61e89f2a21bc9c53de3a88f88cbb93
-ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/25/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "83827893"
 ---
 # <a name="configure-machines-to-a-desired-state"></a>Machines configureren met een gewenste status
@@ -51,7 +50,7 @@ Connect-AzAccount
 ## <a name="create-and-upload-a-configuration-to-azure-automation"></a>Een configuratie maken en uploaden naar Azure Automation
 
 
-Typ het volgende in een tekst editor en sla deze lokaal op als **TestConfig. ps1**.
+Typ het volgende in een tekst editor en sla deze lokaal op als **TestConfig.ps1**.
 
 ```powershell
 configuration TestConfig {
@@ -166,5 +165,5 @@ Als u de registratie van een knoop punt bij de configuratie service van Azure Au
 - Zie [DSC-configuraties compileren in azure Automation status configuratie](automation-dsc-compile.md)voor meer informatie over het compileren van DSC-configuraties zodat u ze aan doel knooppunten kunt toewijzen.
 - Zie [continue implementatie instellen met chocolade](automation-dsc-cd-chocolatey.md)voor een voor beeld van het gebruik van Azure Automation status configuratie in een pijp lijn voor continue implementatie.
 - Zie [prijzen voor Azure Automation status configuratie](https://azure.microsoft.com/pricing/details/automation/)voor prijs informatie.
-- Zie [AZ. Automation](https://docs.microsoft.com/powershell/module/az.automation/?view=azps-3.7.0#automation
-)(Engelstalig) voor een Power shell-cmdlet-verwijzing.
+- Zie [Az.Automation](https://docs.microsoft.com/powershell/module/az.automation/?view=azps-3.7.0#automation
+) voor een naslagdocumentatie voor een PowerShell-cmdlet.

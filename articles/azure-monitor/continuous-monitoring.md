@@ -7,10 +7,9 @@ author: bwren
 ms.author: bwren
 ms.date: 10/12/2018
 ms.openlocfilehash: 6df27dde997bd34e86b1bb340817648bfe68f2c4
-ms.sourcegitcommit: cf7caaf1e42f1420e1491e3616cc989d504f0902
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/22/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "83797604"
 ---
 # <a name="continuous-monitoring-with-azure-monitor"></a>Doorlopende bewaking met Azure Monitor
@@ -28,7 +27,7 @@ U moet bewaking inschakelen voor al uw webtoepassingen en-services om de beschik
 - [Azure DevOps projects](../devops-project/overview.md) bieden u een vereenvoudigde ervaring met uw bestaande code en git-opslag plaats, of u kunt kiezen uit een van de voorbeeld toepassingen om een doorlopende integratie (CI) en continue levering (cd)-pijp lijn te maken naar Azure.
 - Door [doorlopende bewaking in uw DevOps-release pijplijn](../azure-monitor/app/continuous-monitoring.md) kunt u uw implementatie op basis van bewakings gegevens dekoppelen of terugdraaien.
 - Met [status monitor](../azure-monitor/app/monitor-performance-live-website-now.md) kunt u een live .net-app op Windows met Azure-toepassing inzichten instrumenteren zonder dat u uw code hoeft te wijzigen of opnieuw te implementeren.
-- Als u toegang hebt tot de code voor uw toepassing, schakelt u volledige controle in met [Application Insights](../azure-monitor/app/app-insights-overview.md) door de Azure monitor Application Insights SDK voor [.net](../azure-monitor/learn/quick-monitor-portal.md), [Java](../azure-monitor/app/java-get-started.md), [node. js](../azure-monitor/learn/nodejs-quick-start.md)of [andere programmeer talen](../azure-monitor/app/platforms.md)te installeren. Hiermee kunt u aangepaste gebeurtenissen, metrische gegevens of pagina weergaven opgeven die relevant zijn voor uw toepassing en uw bedrijf.
+- Als u toegang hebt tot de code voor uw toepassing, schakelt u volledige controle in met [Application Insights](../azure-monitor/app/app-insights-overview.md) door de Azure monitor Application Insights SDK voor [.net](../azure-monitor/learn/quick-monitor-portal.md), [Java](../azure-monitor/app/java-get-started.md), [Node.js](../azure-monitor/learn/nodejs-quick-start.md)of [andere programmeer talen](../azure-monitor/app/platforms.md)te installeren. Hiermee kunt u aangepaste gebeurtenissen, metrische gegevens of pagina weergaven opgeven die relevant zijn voor uw toepassing en uw bedrijf.
 
 
 

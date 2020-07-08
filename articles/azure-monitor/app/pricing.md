@@ -7,10 +7,9 @@ ms.author: dalek
 ms.date: 5/7/2020
 ms.reviewer: mbullwin
 ms.openlocfilehash: 82ea6a27d5bd75c180928f6a8b5c9742c54ea5a1
-ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/25/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "83834421"
 ---
 # <a name="manage-usage-and-costs-for-application-insights"></a>Gebruik en kosten van Application Insights beheren
@@ -18,7 +17,7 @@ ms.locfileid: "83834421"
 > [!NOTE]
 > In dit artikel wordt beschreven hoe u de kosten voor Application Insights begrijpt en beheert.  Een verwant artikel, het [bewaken van het gebruik en de geschatte kosten](https://docs.microsoft.com/azure/azure-monitor/platform/usage-estimated-costs) , beschrijft het weer geven van het gebruik en de geschatte kosten in meerdere Azure-bewakings functies voor verschillende prijs modellen.
 
-Application Insights is ontworpen om alles wat u nodig hebt om de beschik baarheid, prestaties en het gebruik van uw webtoepassingen te bewaken, of ze nu worden gehost op Azure of on-premises. Application Insights ondersteunt populaire talen en frameworks, zoals .NET, Java en node. js, en kan worden geïntegreerd met DevOps-processen en-hulpprogram ma's zoals Azure DevOps, Jira en PagerDuty. Het is belang rijk om te begrijpen wat de kosten bepalen van het controleren van uw toepassingen. In dit artikel worden de kosten van uw toepassing gecontroleerd en wordt uitgelegd hoe u ze proactief kunt controleren en beheren.
+Application Insights is ontworpen om alles wat u nodig hebt om de beschik baarheid, prestaties en het gebruik van uw webtoepassingen te bewaken, of ze nu worden gehost op Azure of on-premises. Application Insights ondersteunt populaire talen en frameworks, zoals .NET, Java en Node.js, en kan worden geïntegreerd met DevOps-processen en-hulpprogram ma's zoals Azure DevOps, Jira en PagerDuty. Het is belang rijk om te begrijpen wat de kosten bepalen van het controleren van uw toepassingen. In dit artikel worden de kosten van uw toepassing gecontroleerd en wordt uitgelegd hoe u ze proactief kunt controleren en beheren.
 
 Als u vragen hebt over de werking van de prijzen voor Application Insights, kunt u een vraag stellen op [de pagina micro soft Q&een vraag](https://docs.microsoft.com/answers/topics/azure-monitor.html).
 
@@ -187,7 +186,7 @@ De hoeveelheid gegevens die u verzendt, kan worden beheerd met behulp van de vol
 
 * **Ajax-aanroepen beperken**: u kunt [het aantal Ajax-aanroepen beperken dat kan worden gerapporteerd](../../azure-monitor/app/javascript.md#configuration) in elke pagina weergave, of de Ajax-rapportage uitschakelen.
 
-* **Overbodige modules uitschakelen**: [Bewerk ApplicationInsights. config](../../azure-monitor/app/configuration-with-applicationinsights-config.md) om verzamelings modules die u niet nodig hebt, uit te scha kelen. U kunt bijvoorbeeld besluiten dat prestatie meter items of afhankelijkheids gegevens inessentieel zijn.
+* **Overbodige modules uitschakelen**: [Bewerk ApplicationInsights.config](../../azure-monitor/app/configuration-with-applicationinsights-config.md) om verzamelings modules uit te scha kelen die u niet nodig hebt. U kunt bijvoorbeeld besluiten dat prestatie meter items of afhankelijkheids gegevens inessentieel zijn.
 
 * **Cumulatieve metrische gegevens**: als u aanroepen naar TrackMetric in uw app opneemt, kunt u het verkeer verminderen door gebruik te maken van de overbelasting die uw berekening van de gemiddelde en standaard afwijking van een batch metingen accepteert. U kunt ook een pakket met [vooraf aggregatie](https://www.myget.org/gallery/applicationinsights-sdk-labs)gebruiken.
  
@@ -197,7 +196,7 @@ De hoeveelheid gegevens die u verzendt, kan worden beheerd met behulp van de vol
     
     Waarschuwings-e-mails over de dagelijkse limiet worden verzonden naar het account dat lid is van deze rollen voor uw Application Insights resource: ' ServiceAdmin ', ' AccountAdmin ', ' coadmin ', ' eigenaar '.
 
-    Wees voorzichtig wanneer u het dagelijks kapje instelt. Het is uw bedoeling om *nooit het dagelijkse kapje*te bereiken. Als u de dagelijkse limiet bereikt, verliest u gegevens voor de rest van de dag en kunt u uw toepassing niet bewaken. Als u de dagelijkse limiet wilt wijzigen, gebruikt u de optie **dagelijks volume limiet** . U kunt deze optie gebruiken in het deel venster **gebruik en geraamde kosten** (dit wordt verderop in het artikel meer gedetailleerder beschreven).
+    Wees voorzichtig bij het instellen van een daglimiet. Het is uw bedoeling om *nooit het dagelijkse kapje*te bereiken. Als u de daglimiet bereikt, verliest u gegevens voor de rest van de dag en kunt u uw toepassing niet bewaken. Als u de dagelijkse limiet wilt wijzigen, gebruikt u de optie **dagelijks volume limiet** . U kunt deze optie gebruiken in het deel venster **gebruik en geraamde kosten** (dit wordt verderop in het artikel meer gedetailleerder beschreven).
     
     We hebben de beperking verwijderd voor sommige abonnements typen waarvoor een tegoed is dat niet kan worden gebruikt voor Application Insights. Als er eerder een bestedings limiet voor het abonnement is, is het dialoog venster voor de dagelijkse Cap instructies om de bestedings limiet te verwijderen en het dagelijks kapje te activeren dat groter is dan 32,3 MB/dag.
     

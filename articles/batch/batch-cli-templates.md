@@ -5,10 +5,9 @@ ms.topic: how-to
 ms.date: 12/07/2018
 ms.custom: seodec18
 ms.openlocfilehash: 1029d2e156d219c88100a035f2ed4a51afa6ba36
-ms.sourcegitcommit: fc0431755effdc4da9a716f908298e34530b1238
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/24/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "83815992"
 ---
 # <a name="use-azure-batch-cli-templates-and-file-transfer"></a>Azure Batch CLI-sjablonen en-bestands overdracht gebruiken
@@ -133,7 +132,7 @@ Hier volgt een voor beeld van een sjabloon voor het maken van een groep virtuele
 }
 ```
 
-Als het sjabloon bestand _groep-ffmpeg. json_heet, roept u de sjabloon als volgt aan:
+Als de naam van het sjabloon bestand is _pool-ffmpeg.jsop_, roept u de sjabloon als volgt aan:
 
 ```azurecli
 az batch pool create --template pool-ffmpeg.json
@@ -152,7 +151,7 @@ De CLI vraagt u om waarden op te geven voor de `poolId` `nodeCount` para meters 
 }
 ```
 
-Als het JSON-bestand van de para meters de naam *pool-para meters. json*heeft, roept u de sjabloon als volgt aan:
+Als het JSON-bestand van de para meters de naam *pool-parameters.js*heeft, roept u de sjabloon als volgt aan:
 
 ```azurecli
 az batch pool create --template pool-ffmpeg.json --parameters pool-parameters.json
@@ -242,7 +241,7 @@ Hier volgt een voor beeld van een sjabloon waarmee een taak wordt gemaakt voor h
 }
 ```
 
-Als het sjabloon bestand de naam _Job-ffmpeg. json_heeft, roept u de sjabloon als volgt aan:
+Als de naam van het sjabloon bestand is _job-ffmpeg.jsop_, roept u de sjabloon als volgt aan:
 
 ```azurecli
 az batch job create --template job-ffmpeg.json

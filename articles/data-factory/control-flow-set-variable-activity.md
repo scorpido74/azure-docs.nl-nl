@@ -12,10 +12,9 @@ ms.author: daperlov
 manager: jroth
 ms.reviewer: maghan
 ms.openlocfilehash: a0b5fa16658d3e354bcb4f90ad998997fc844a84
-ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/25/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "83832779"
 ---
 # <a name="set-variable-activity-in-azure-data-factory"></a>Variabele activiteit instellen in Azure Data Factory
@@ -27,8 +26,8 @@ Gebruik de activiteit variabele instellen om de waarde in te stellen van een bes
 
 Eigenschap | Beschrijving | Vereist
 -------- | ----------- | --------
-name | De naam van de activiteit in de pijp lijn | ja
-beschrijving | Tekst die beschrijft wat de activiteit doet | nee
+naam | De naam van de activiteit in de pijp lijn | ja
+description | Tekst die beschrijft wat de activiteit doet | nee
 type | Moet worden ingesteld op **SetVariable** | ja
 waarde | Letterlijke teken reeks of waarde van het expressie object waaraan de variabele is toegewezen | ja
 variableName | Naam van de variabele die door deze activiteit wordt ingesteld | ja

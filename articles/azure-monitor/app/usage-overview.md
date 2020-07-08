@@ -4,10 +4,9 @@ description: Inzicht in uw gebruikers en wat ze met uw app doen.
 ms.topic: conceptual
 ms.date: 03/25/2019
 ms.openlocfilehash: 7f4f46f183291684fa59e5aa35b65c8ac3352563
-ms.sourcegitcommit: cf7caaf1e42f1420e1491e3616cc989d504f0902
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/22/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "83797781"
 ---
 # <a name="usage-analysis-with-application-insights"></a>Gebruiksanalyse met Application Insights
@@ -18,7 +17,7 @@ Welke functies van uw web-of mobiele app zijn het meest populair? Bereiken uw ge
 
 De beste ervaring wordt verkregen door Application Insights te installeren in de code van uw app-server en op uw webpagina's. De client-en Server onderdelen van uw app sturen telemetrie terug naar de Azure Portal voor analyse.
 
-1. **Server code:** Installeer de juiste module voor uw [ASP.net](../../azure-monitor/app/asp-net.md), [Azure](../../azure-monitor/app/app-insights-overview.md), [Java](../../azure-monitor/app/java-get-started.md), [node. js](../../azure-monitor/app/nodejs.md)of een [andere](../../azure-monitor/app/platforms.md) app.
+1. **Server code:** Installeer de juiste module voor uw [ASP.net](../../azure-monitor/app/asp-net.md), [Azure](../../azure-monitor/app/app-insights-overview.md), [Java](../../azure-monitor/app/java-get-started.md), [Node.js](../../azure-monitor/app/nodejs.md)of een [andere](../../azure-monitor/app/platforms.md) app.
 
     * *Wilt u geen server code installeren? U hoeft alleen maar [een Azure-toepassing Insights-resource te maken](../../azure-monitor/app/create-new-resource.md ).*
 

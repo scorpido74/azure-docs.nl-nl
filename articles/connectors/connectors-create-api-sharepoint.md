@@ -8,13 +8,12 @@ ms.topic: article
 ms.date: 08/25/2018
 tags: connectors
 ms.openlocfilehash: 06dfca4fc59ba6ff32714d7a92b0d4a65e262de5
-ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/25/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "83826006"
 ---
-# <a name="monitor-and-manage-sharepoint-resources-with-azure-logic-apps"></a>Share point-resources bewaken en beheren met Azure Logic Apps
+# <a name="monitor-and-manage-sharepoint-resources-with-azure-logic-apps"></a>SharePoint-resources bewaken en beheren met Azure Logic Apps
 
 Met Azure Logic Apps en de share point-connector kunt u geautomatiseerde taken en werk stromen maken voor het bewaken en beheren van resources, zoals bestanden, mappen, lijsten, items, personen, enzovoort, in share point online of in share Point server on-premises, bijvoorbeeld:
 

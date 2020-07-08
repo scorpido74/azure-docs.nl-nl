@@ -6,10 +6,9 @@ ms.subservice: update-management
 ms.date: 01/21/2020
 ms.topic: conceptual
 ms.openlocfilehash: 321146364897d46a403bdfd6789fcb219179d88c
-ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/25/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "83830596"
 ---
 # <a name="view-update-assessments"></a>Update-evaluaties bekijken
@@ -34,7 +33,7 @@ De volgende tabellen geven een lijst van de ondersteunde update classificaties i
 
 ### <a name="windows"></a>Windows
 
-|Classificatie  |Beschrijving  |
+|Classificatie  |Description  |
 |---------|---------|
 |Essentiële updates     | Updates voor specifieke problemen die kritiek zijn, niet-beveiligings fouten.        |
 |Beveiligingsupdates     | Updates voor productspecifieke, beveiligings problemen.        |
@@ -47,7 +46,7 @@ De volgende tabellen geven een lijst van de ondersteunde update classificaties i
 
 ### <a name="linux"></a><a name="linux-2"></a>Linux
 
-|Classificatie  |Beschrijving  |
+|Classificatie  |Description  |
 |---------|---------|
 |Essentiële en beveiligingsupdates     | Updates voor een specifiek probleem of een productspecifiek beveiligings probleem.         |
 |Andere Updates     | Alle andere updates die niet kritiek zijn of die geen beveiligings updates zijn.        |

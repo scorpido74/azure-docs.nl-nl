@@ -6,10 +6,9 @@ ms.subservice: process-automation
 ms.date: 12/10/2019
 ms.topic: conceptual
 ms.openlocfilehash: 3cc75fb34f0a828eccfed3951e84a1c463d4cfb7
-ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/25/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "83828879"
 ---
 # <a name="use-source-control-integration"></a>Integratie van bronbeheer gebruiken
@@ -62,7 +61,7 @@ Gebruik deze procedure voor het configureren van broncode beheer met behulp van 
     |Mappad     | De map die de runbooks bevat die moeten worden gesynchroniseerd, bijvoorbeeld **/Runbooks**. Alleen runbooks in de opgegeven map worden gesynchroniseerd. Recursie wordt niet ondersteund.        |
     |Automatische synchronisatie<sup>1</sup>     | Instelling waarmee automatische synchronisatie wordt in-of uitgeschakeld wanneer een door Voer in de bron beheer opslagplaats wordt gemaakt.        |
     |Runbook publiceren     | Instelling van op als runbooks automatisch worden gepubliceerd na synchronisatie vanuit broncode beheer, en anders uit.           |
-    |Beschrijving     | Tekst waarin aanvullende details over het broncode beheer worden opgegeven.        |
+    |Description     | Tekst waarin aanvullende details over het broncode beheer worden opgegeven.        |
 
     <sup>1</sup> als u automatische synchronisatie wilt inschakelen bij het configureren van de integratie van broncode beheer met Azure opslag plaatsen, moet u een project beheerder zijn.
 
@@ -111,7 +110,7 @@ Voor broncode beheer zijn enkele minimale machtigingen vereist voor PATs. De vol
 
 In de volgende tabel worden de minimale machtigingen voor PAT gedefinieerd die zijn vereist voor GitHub. Zie voor meer informatie over het maken van een PAT in GitHub [een persoonlijk toegangs token maken voor de opdracht regel](https://help.github.com/articles/creating-a-personal-access-token-for-the-command-line/).
 
-|Bereik  |Beschrijving  |
+|Bereik  |Description  |
 |---------|---------|
 |**`repo`**     |         |
 |`repo:status`     | Toegangs status voor door voeren         |

@@ -8,10 +8,9 @@ ms.topic: conceptual
 ms.date: 05/11/2020
 ms.author: spelluru
 ms.openlocfilehash: c9e1c9aa664065371595ed34a3af28330bd7e0db
-ms.sourcegitcommit: cf7caaf1e42f1420e1491e3616cc989d504f0902
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/22/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "83798867"
 ---
 # <a name="service-bus-queues-and-topics-as-event-handlers-for-azure-event-grid-events"></a>Service Bus-wacht rijen en-onderwerpen als gebeurtenis-handlers voor Azure Event Grid gebeurtenissen
@@ -57,7 +56,7 @@ az eventgrid event-subscription create \
 ## <a name="message-properties"></a>Bericht eigenschappen
 Als u een **Service Bus onderwerp of wachtrij** als gebeurtenis-handler voor gebeurtenissen van Event grid gebruikt, stelt u de volgende bericht koppen in: 
 
-| Naam van eigenschap | Beschrijving |
+| Naam van eigenschap | Description |
 | ------------- | ----------- | 
 | AEG-abonnements naam | De naam van het gebeurtenis abonnement. |
 | AEG-levering | <p>Het aantal pogingen dat is gedaan voor de gebeurtenis.</p> <p>Voor beeld: "1"</p> |
@@ -72,7 +71,7 @@ De gebeurtenis-ID wordt gehandhaafd over de herlevering van de gebeurtenis, zoda
 
 ## <a name="rest-examples-for-put"></a>REST-voor beelden (voor PUT)
 
-### <a name="service-bus-queue"></a>Service Bus-wachtrij
+### <a name="service-bus-queue"></a>Service Bus wachtrij
 
 ```json
 {

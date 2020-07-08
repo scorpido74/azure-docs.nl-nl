@@ -13,10 +13,9 @@ ms.workload: infrastructure
 ms.date: 05/21/2020
 ms.author: radeltch
 ms.openlocfilehash: ed53b77587e307926689b2c20d7223212f3394d4
-ms.sourcegitcommit: cf7caaf1e42f1420e1491e3616cc989d504f0902
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/22/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "83800264"
 ---
 # <a name="high-availability-of-sap-hana-on-azure-vms-on-red-hat-enterprise-linux"></a>Hoge Beschik baarheid van SAP HANA op virtuele machines van Azure op Red Hat Enterprise Linux
@@ -108,7 +107,7 @@ Voer de volgende stappen uit om de sjabloon te implementeren:
     * **SAP-systeem grootte**: Voer het aantal sap's in dat het nieuwe systeem moet bieden. Als u niet zeker weet hoeveel SAP'S het systeem nodig heeft, vraagt u uw SAP-technologie partner of systeem integrator.
     * **Systeem beschikbaarheid**: Selecteer **ha**.
     * **Beheerders naam, beheerders wachtwoord of SSH-sleutel**: er wordt een nieuwe gebruiker gemaakt die kan worden gebruikt om u aan te melden bij de computer.
-    * **Subnet-id**: als u de virtuele machine wilt implementeren in een bestaand VNet waarvoor u een subnet hebt gedefinieerd, moet de virtuele machine worden toegewezen aan, de id van het specifieke subnet benoemen. De ID is doorgaans hetzelfde als **/Subscriptions/ \< -abonnements-id>/ResourceGroups/naam van de \< resource groep>/providers/Microsoft.Network/virtualnetworks/naam van het \< virtuele netwerk>/subnets/- \< subnet naam>**. Laat dit leeg als u een nieuw virtueel netwerk wilt maken
+    * **Subnet-id**: als u de virtuele machine wilt implementeren in een bestaand VNet waarvoor u een subnet hebt gedefinieerd, moet de virtuele machine worden toegewezen aan, de id van het specifieke subnet benoemen. De ID is doorgaans hetzelfde als **/Subscriptions/ \<subscription ID> /resourceGroups/ \<resource group name> /providers/Microsoft.Network/virtualNetworks/ \<virtual network name> /subnets/ \<subnet name> **. Laat dit leeg als u een nieuw virtueel netwerk wilt maken
 
 ### <a name="manual-deployment"></a>Handmatige implementatie
 
@@ -545,7 +544,7 @@ Voor de stappen in deze sectie worden de volgende voor voegsels gebruikt:
    HDB start
    </code></pre>
 
-## <a name="create-a-pacemaker-cluster"></a>Een pacemaker-cluster maken
+## <a name="create-a-pacemaker-cluster"></a>Een Pacemaker-cluster maken
 
 Volg de stappen bij het [instellen van pacemaker op Red Hat Enterprise Linux in azure](high-availability-guide-rhel-pacemaker.md) om een basis pacemaker-cluster voor deze Hana-server te maken.
 

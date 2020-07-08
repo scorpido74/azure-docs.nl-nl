@@ -5,10 +5,9 @@ services: automation
 ms.date: 11/01/2018
 ms.topic: article
 ms.openlocfilehash: 20aaee5b699e9721bf9083030604df1385da1915
-ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/25/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "83828743"
 ---
 # <a name="monitor-runbooks-with-metric-alerts"></a>Runbooks bewaken met metrische waarschuwingen
@@ -62,7 +61,7 @@ Navigeer in het Azure Portal naar uw Automation-account. Onder **bewaking**selec
 
 1. Klik op **OK** op de pagina **E-mail/sms/push/spraak** om de pagina te sluiten en klik op **OK** om de pagina **Actiegroep toevoegen** te sluiten. De naam die u op deze pagina opgeeft, wordt opgeslagen als **actie naam**.
 
-1. Na het voltooien klikt u op **Opslaan**. Met deze actie wordt de regel gemaakt waarmee u wordt gewaarschuwd wanneer een runbook met een bepaalde status is voltooid.
+1. Wanneer u klaar bent, klikt u op **Opslaan**. Met deze actie wordt de regel gemaakt waarmee u wordt gewaarschuwd wanneer een runbook met een bepaalde status is voltooid.
 
 > [!NOTE]
 > Wanneer u een e-mail adres aan een actie groep toevoegt, wordt een e-mail melding verzonden met de mede deling dat het adres is toegevoegd aan een actie groep.

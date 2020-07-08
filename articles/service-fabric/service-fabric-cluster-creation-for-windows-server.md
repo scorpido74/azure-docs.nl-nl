@@ -6,10 +6,9 @@ ms.topic: conceptual
 ms.date: 2/21/2019
 ms.author: dekapur
 ms.openlocfilehash: a42797b51d811ee9427c9b77f8ea59a24c00feee
-ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/25/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "83827961"
 ---
 # <a name="create-a-standalone-cluster-running-on-windows-server"></a>Een zelfstandig cluster maken dat wordt uitgevoerd in Windows Server
@@ -55,9 +54,9 @@ Het cluster dat in dit artikel is gemaakt, is niet beveiligd.  Iedereen kan anon
 ### <a name="step-1-create-the-cluster"></a>Stap 1: het cluster maken
 
 #### <a name="scenario-a-create-an-unsecured-local-development-cluster"></a>Scenario A: een niet-beveiligd lokaal ontwikkel cluster maken
-Service Fabric kan worden geïmplementeerd in een ontwikkel cluster met één machine met behulp van het bestand *ClusterConfig. unsecure. DevCluster. json* dat is opgenomen in voor [beelden](https://github.com/Azure-Samples/service-fabric-dotnet-standalone-cluster-configuration/tree/master/Samples).
+Service Fabric kan worden geïmplementeerd in een ontwikkel cluster met één machine met behulp van de *ClusterConfig.Unsecure.DevCluster.jsvoor* het bestand dat is opgenomen in voor [beelden](https://github.com/Azure-Samples/service-fabric-dotnet-standalone-cluster-configuration/tree/master/Samples).
 
-Pak het zelfstandige pakket op uw computer uit, kopieer het voor beeld configuratie bestand naar de lokale machine en voer het script *CreateServiceFabricCluster. ps1* uit via een Power shell-sessie van een beheerder uit de map voor het zelfstandige pakket.
+Pak het zelfstandige pakket op uw computer uit, kopieer het voorbeeld configuratie bestand naar de lokale computer en voer vervolgens het *CreateServiceFabricCluster.ps1* script uit via een Power shell-sessie van een Administrator uit de map van het zelfstandige pakket.
 
 ```powershell
 .\CreateServiceFabricCluster.ps1 -ClusterConfigFilePath .\ClusterConfig.Unsecure.DevCluster.json -AcceptEULA
@@ -97,7 +96,7 @@ De clusterbeheerder die het cluster implementeert en configureert, moet administ
     Passed                     : True
     ```
 
-2. Het cluster maken: Voer het script *CreateServiceFabricCluster. Ps1* uit om het service Fabric cluster op elke computer in de configuratie te implementeren. 
+2. Het cluster maken: Voer het *CreateServiceFabricCluster.ps1* script uit om het service Fabric cluster op elke computer te implementeren in de configuratie. 
     ```powershell
     .\CreateServiceFabricCluster.ps1 -ClusterConfigFilePath .\ClusterConfig.json -AcceptEULA
     ```
@@ -115,7 +114,7 @@ Het runtime pakket kan afzonderlijk worden gedownload, van een andere computer d
 .\CreateServiceFabricCluster.ps1 -ClusterConfigFilePath .\ClusterConfig.json -FabricRuntimePackagePath .\MicrosoftAzureServiceFabric.cab
 ```
 
-*.\ClusterConfig.json* en *.\MicrosoftAzureServiceFabric.cab* zijn de paden naar respectievelijk de cluster configuratie en het bestand runtime. cab.
+*.\ClusterConfig.jsop* en *.\MicrosoftAzureServiceFabric.cab* zijn de paden naar respectievelijk de cluster configuratie en het bestand runtime. cab.
 
 ### <a name="step-2-connect-to-the-cluster"></a>Stap 2: verbinding maken met het cluster
 Maak verbinding met het cluster om te controleren of het cluster actief is en beschikbaar is. De Service Fabric PowerShell-module wordt met de runtime geïnstalleerd.  U kunt verbinding maken met het cluster vanaf een van de cluster knooppunten of vanaf een externe computer met de Service Fabric runtime.  De cmdlet [Connect-ServiceFabricCluster](/powershell/module/servicefabric/connect-servicefabriccluster?view=azureservicefabricps) brengt een verbinding met het cluster tot stand.

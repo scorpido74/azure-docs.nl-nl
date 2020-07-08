@@ -8,10 +8,9 @@ ms.date: 08/15/2017
 ms.author: luywang
 ms.subservice: disks
 ms.openlocfilehash: ee6800d2d0f589c43c96b240a74a86db488e0b46
-ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/25/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "83827791"
 ---
 # <a name="migrate-to-premium-storage-by-using-azure-site-recovery"></a>Migreren naar Premium Storage met behulp van Azure Site Recovery
@@ -73,7 +72,7 @@ U kunt Site Recovery gebruiken om virtuele Azure IaaS-machines te migreren tusse
 
 ### <a name="step-1-create-a-recovery-services-vault"></a>Stap 1: een Recovery Services kluis maken
 
-1. Open [Azure Portal](https://portal.azure.com).
+1. Open de [Azure Portal](https://portal.azure.com).
 2. Selecteer **een resource**  >  **beheer**-  >  **Backup en site Recovery (OMS)** maken. U kunt ook **Bladeren**  >  **Recovery Services kluis**  >  **toevoegen**selecteren.
    >[!NOTE]
    >Backup en Site Recovery waren voorheen onderdeel van het [OMS-pakket](/azure/azure-monitor/terminology#april-2018---retirement-of-operations-management-suite-brand).

@@ -5,10 +5,9 @@ ms.subservice: autoscale
 ms.topic: conceptual
 ms.date: 09/24/2018
 ms.openlocfilehash: 4403c2957cb2d2d9d4af98d64cdb5177ae3d0726
-ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/25/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "83828981"
 ---
 # <a name="overview-of-autoscale-in-microsoft-azure"></a>Overzicht van automatisch schalen in Microsoft Azure
@@ -21,7 +20,7 @@ Azure Monitor automatisch schalen is alleen van toepassing op [Virtual Machine S
 >
 
 ## <a name="what-is-autoscale"></a>Wat is automatisch schalen?
-Met automatisch schalen kunt u de juiste hoeveelheid resources uitvoeren om de belasting van uw toepassing af te handelen. U kunt hiermee resources toevoegen voor het afhandelen van toename van de belasting en bespaart u geld door resources te verwijderen die niet actief zijn. U geeft een minimum en maximum aantal exemplaren op dat moet worden uitgevoerd en die automatisch moeten worden toegevoegd of verwijderd op basis van een set regels. Als u Mini maal hebt, moet uw toepassing altijd worden uitgevoerd, zelfs onder geen belasting. Als u een maximum hebt, beperkt u het totale aantal kosten per uur. U kunt automatisch schalen tussen deze twee extremees met behulp van de regels die u maakt.
+Met automatisch schalen kunt u de juiste hoeveelheid resources uitvoeren om de belasting van uw toepassing te verwerken. U kunt hiermee resources toevoegen voor het afhandelen van toename van de belasting en bespaart u geld door resources te verwijderen die niet actief zijn. U geeft een minimum en maximum aantal exemplaren op dat moet worden uitgevoerd en die automatisch moeten worden toegevoegd of verwijderd op basis van een set regels. Als u Mini maal hebt, moet uw toepassing altijd worden uitgevoerd, zelfs onder geen belasting. Als u een maximum hebt, beperkt u het totale aantal kosten per uur. U kunt automatisch schalen tussen deze twee extremees met behulp van de regels die u maakt.
 
  ![Automatisch schalen uitgelegd. VM's toevoegen en verwijderen](./media/autoscale-overview/AutoscaleConcept.png)
 
@@ -38,7 +37,7 @@ Virtuele-machine schaal sets gebruiken telemetriegegevens van Azure Diagnostics-
 ## <a name="custom-metrics"></a>Aangepaste metrische gegevens
 U kunt ook uw eigen aangepaste metrische gegevens gebruiken die door uw toepassing (en) kunnen worden verzonden. Als u uw toepassing (en) hebt geconfigureerd voor het verzenden van metrische gegevens naar Application Insights, kunt u gebruikmaken van deze metrische gegevens om beslissingen te nemen over het al dan niet schalen.
 
-## <a name="time"></a>Time
+## <a name="time"></a>Tijd
 Regels op basis van een schema zijn gebaseerd op UTC. U moet uw tijd zone op de juiste wijze instellen bij het instellen van uw regels.  
 
 ## <a name="rules"></a>Regels
@@ -89,7 +88,7 @@ Verticaal schalen daarentegen wijkt af van elkaar af. Het houdt hetzelfde aantal
 ## <a name="methods-of-access"></a>Toegangs methoden
 U kunt automatisch schalen instellen via
 
-* [Azure Portal](autoscale-get-started.md)
+* [Azure-portal](autoscale-get-started.md)
 * [PowerShell](powershell-quickstart-samples.md#create-and-manage-autoscale-settings)
 * [Platformonafhankelijke opdrachtregelinterface (CLI)](../samples/cli-samples.md#autoscale)
 * [Azure Monitor REST API](https://msdn.microsoft.com/library/azure/dn931953.aspx)

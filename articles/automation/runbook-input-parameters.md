@@ -6,10 +6,9 @@ ms.subservice: process-automation
 ms.date: 02/14/2019
 ms.topic: conceptual
 ms.openlocfilehash: c996c51583d81905e7853323166407e38ae79225
-ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/25/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "83830035"
 ---
 # <a name="configure-runbook-input-parameters"></a>Invoerparameters voor een runbook configureren
@@ -27,7 +26,7 @@ Power shell-en Power shell-werk stroom-runbooks in Azure Automation ondersteunen
 | **Eigenschap** | **Beschrijving** |
 |:--- |:--- |
 | Type |Vereist. Het gegevens type wordt verwacht voor de parameter waarde. Elk .NET-type is geldig. |
-| Naam |Vereist. De naam van de para meter. Deze naam moet uniek zijn binnen het runbook, moet beginnen met een letter en mag alleen letters, cijfers of onderstrepings tekens bevatten. |
+| Name |Vereist. De naam van de para meter. Deze naam moet uniek zijn binnen het runbook, moet beginnen met een letter en mag alleen letters, cijfers of onderstrepings tekens bevatten. |
 | Verplicht |Optioneel. Booleaanse waarde die aangeeft of de para meter een waarde vereist. Als u dit instelt op waar, moet er een waarde worden opgegeven wanneer het runbook wordt gestart. Als u deze instelt op False, is een waarde optioneel. Als u geen waarde opgeeft voor de `Mandatory` eigenschap, wordt de invoer parameter standaard optioneel beschouwd door Power shell. |
 | Standaardwaarde |Optioneel. Een waarde die wordt gebruikt voor de para meter als er geen invoer waarde wordt door gegeven wanneer het runbook wordt gestart. Met het runbook kunt u een standaard waarde instellen voor elke para meter. |
 
@@ -277,7 +276,7 @@ In deze sectie wordt een voor beeld gebruikt waarin een Power shell [-script sta
 
 ### <a name="create-the-json-file"></a>Het JSON-bestand maken
 
-Typ de volgende code in een tekst bestand en sla deze op een plek op uw lokale computer op als **test. json** .
+Typ de volgende code in een tekst bestand en sla het op als **test.js** ergens op uw lokale computer.
 
 ```json
 {
@@ -323,7 +322,7 @@ Nu kunt u het runbook aanroepen vanaf uw lokale computer met behulp van Azure Po
    ```
 
     >[!NOTE]
-    >Voor Power shell-runbooks `Add-AzAccount` en `Add-AzureRMAccount` zijn aliassen voor `Connect-AzAccount` . Houd er rekening mee dat deze aliassen niet beschikbaar zijn voor grafische runbooks. Een grafisch runbook kan alleen worden gebruikt `Connect-AzAccount` .
+    >Voor PowerShell-runbooks zijn `Add-AzAccount` en `Add-AzureRMAccount` aliassen voor `Connect-AzAccount`. Houd er rekening mee dat deze aliassen niet beschikbaar zijn voor grafische runbooks. Een grafisch runbook kan alleen worden gebruikt `Connect-AzAccount` .
 
 1. De inhoud van het opgeslagen JSON-bestand ophalen en converteren naar een teken reeks. `JsonPath`Hiermee geeft u het pad op naar de locatie waar u het JSON-bestand hebt opgeslagen.
 

@@ -7,10 +7,9 @@ ms.author: daviste
 ms.date: 05/03/2017
 ms.reviewer: mbullwin
 ms.openlocfilehash: 654dba968ba4efec1c30c94082726da04059adc0
-ms.sourcegitcommit: cf7caaf1e42f1420e1491e3616cc989d504f0902
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/22/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "83797733"
 ---
 # <a name="user-retention-analysis-for-web-applications-with-application-insights"></a>Analyse van gebruikers retentie voor webtoepassingen met Application Insights
@@ -42,7 +41,7 @@ Meet gebeurtenissen die belang rijke bedrijfs activiteiten vertegenwoordigen om 
 
 Veel gebruikers kunnen bijvoorbeeld een pagina in uw app openen zonder het spel te spelen dat wordt weer gegeven. Het bijhouden van alleen de pagina weergaven levert daarom een onnauwkeurige schatting op van het aantal mensen dat het spel heeft geretourneerd nadat het eerder is geweest. Om een duidelijke afbeelding van het retour neren van spelers te krijgen, moet uw app een aangepaste gebeurtenis verzenden wanneer een gebruiker daad werkelijk speelt.  
 
-Het is een goed idee om aangepaste gebeurtenissen te coderen die belang rijke zakelijke acties vertegenwoordigen en deze te gebruiken voor de retentie analyse. Als u het resultaat van het spel wilt vastleggen, moet u een regel code schrijven om een aangepaste gebeurtenis naar Application Insights te verzenden. Als u het op de webpagina code of in node. JS schrijft, ziet het er als volgt uit:
+Het is een goed idee om aangepaste gebeurtenissen te coderen die belang rijke zakelijke acties vertegenwoordigen en deze te gebruiken voor de retentie analyse. Als u het resultaat van het spel wilt vastleggen, moet u een regel code schrijven om een aangepaste gebeurtenis naar Application Insights te verzenden. Als u het bestand in de webpagina code of in Node.JS schrijft, ziet het er als volgt uit:
 
 ```JavaScript
     appinsights.trackEvent("won game");

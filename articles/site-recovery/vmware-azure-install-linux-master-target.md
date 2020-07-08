@@ -9,10 +9,9 @@ ms.topic: conceptual
 ms.date: 03/06/2019
 ms.author: mayg
 ms.openlocfilehash: 9ab4db53086046ff831fe91d003599841aa8148c
-ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/25/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "83829780"
 ---
 # <a name="install-a-linux-master-target-server-for-failback"></a>Een Linux-hoofddoelserver voor failback installeren
@@ -244,7 +243,7 @@ Gebruik de volgende stappen om een Bewaar schijf te maken:
 
     ![ID voor meerdere paden](./media/vmware-azure-install-linux-master-target/image27.png)
 
-3. Format teer het station en maak vervolgens een bestands systeem op het nieuwe station: **mkfs. ext4/dev/mapper/ \< retentie schijf-id voor meerdere paden>**.
+3. Format teer het station en maak vervolgens een bestands systeem op het nieuwe station: **mkfs. ext4/dev/mapper/ \<Retention disk's multipath id> **.
     
     ![Bestandssysteem](./media/vmware-azure-install-linux-master-target/image23-centos.png)
 
@@ -261,7 +260,7 @@ Gebruik de volgende stappen om een Bewaar schijf te maken:
     
     Selecteer **Invoegen** om te beginnen met het bewerken van het bestand. Maak een nieuwe regel en voeg de volgende tekst toe. Bewerk de schijf-ID voor meerdere paden op basis van de gemarkeerde multipath ID van de vorige opdracht.
 
-    **/dev/mapper/ \< retentie schijven multipath id>/mnt/retention ext4 rw 0 0**
+    **/dev/mapper/ \<Retention disks multipath id> /mnt/retention ext4 rw 0 0**
 
     Selecteer **ESC**en typ **: wq** (schrijven en sluiten) om het editor venster te sluiten.
 
@@ -274,7 +273,7 @@ Gebruik de volgende stappen om een Bewaar schijf te maken:
 > [!NOTE]
 > Controleer voordat u de hoofddoel server installeert of het **bestand/etc/hosts** -bestand op de virtuele machine vermeldingen bevat waarmee de lokale hostnaam wordt toegewezen aan de IP-adressen die zijn gekoppeld aan alle netwerk adapters.
 
-1. Kopieer de wachtwoordzin van **C:\ProgramData\Microsoft Azure site Recovery\private\connection.passphrase** op de configuratie server. Sla het vervolgens op als **wachtwoordzin. txt** in dezelfde lokale map door de volgende opdracht uit te voeren:
+1. Kopieer de wachtwoordzin van **C:\ProgramData\Microsoft Azure site Recovery\private\connection.passphrase** op de configuratie server. Sla het vervolgens op als **passphrase.txt** in dezelfde lokale map door de volgende opdracht uit te voeren:
 
     `echo <passphrase> >passphrase.txt`
 

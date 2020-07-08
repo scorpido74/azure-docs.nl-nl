@@ -7,10 +7,9 @@ ms.reviewer: klam, logicappspm
 ms.topic: article
 ms.date: 10/08/2018
 ms.openlocfilehash: 4f24efc4ea306046ab09119b859fa1d0853b25b6
-ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/25/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "83834523"
 ---
 # <a name="create-switch-statements-that-run-workflow-actions-based-on-specific-values-in-azure-logic-apps"></a>Switch-instructies maken waarmee werk stroom acties worden uitgevoerd op basis van specifieke waarden in Azure Logic Apps
@@ -110,7 +109,7 @@ Nu u een logische app hebt gemaakt met behulp van een instructie switch, kijken 
 }
 ```
 
-| Label | Beschrijving |
+| Label | Description |
 |-------|-------------|
 | `"Switch"`         | De naam van de instructie switch, die u de naam van de Lees baarheid kunt wijzigen |
 | `"type": "Switch"` | Geeft aan dat de actie een switch instructie is |
