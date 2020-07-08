@@ -11,10 +11,9 @@ ms.custom:
 - amqp
 - mqtt
 ms.openlocfilehash: 7b3dcfc51df7f0fe4291e9c5babccc1444ad32e9
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81730757"
 ---
 # <a name="communicate-with-your-iot-hub-by-using-the-amqp-protocol"></a>Communiceren met uw IoT-hub met behulp van het AMQP-Protocol
@@ -34,7 +33,7 @@ De volgende informatie is vereist voor de service-client:
 | IoT hub-hostnaam | `<iot-hub-name>.azure-devices.net` |
 | Sleutelnaam | `service` |
 | Toegangssleutel | Een primaire of secundaire sleutel die is gekoppeld aan de service |
-| Handtekening voor gedeelde toegang | Een korte hand tekening voor gedeelde toegang in de volgende indeling: `SharedAccessSignature sig={signature-string}&se={expiry}&skn={policyName}&sr={URL-encoded-resourceURI}`. Zie [toegang tot IOT hub beheren](./iot-hub-devguide-security.md#security-token-structure)voor het verkrijgen van de code voor het genereren van deze hand tekening.
+| Handtekening voor gedeelde toegang | Een korte hand tekening voor gedeelde toegang in de volgende indeling: `SharedAccessSignature sig={signature-string}&se={expiry}&skn={policyName}&sr={URL-encoded-resourceURI}` . Zie [toegang tot IOT hub beheren](./iot-hub-devguide-security.md#security-token-structure)voor het verkrijgen van de code voor het genereren van deze hand tekening.
 
 In het volgende code fragment wordt de [uAMQP-bibliotheek in python](https://github.com/Azure/azure-uamqp-python) gebruikt om verbinding te maken met een IOT-hub via een afzender koppeling.
 
@@ -68,9 +67,9 @@ receive_client = uamqp.ReceiveClient(uri, debug=True)
 
 Zie [Cloud-naar-apparaat-berichten vanuit uw IOT-hub verzenden](iot-hub-devguide-messages-c2d.md)voor meer informatie over de Cloud-naar-apparaat-bericht uitwisseling tussen de service en de IOT-hub en tussen het apparaat en de IOT-hub. De service-client gebruikt twee koppelingen om berichten te verzenden en feedback te ontvangen voor eerder verzonden berichten van apparaten, zoals wordt beschreven in de volgende tabel:
 
-| Gemaakt door | Type koppeling | Pad van koppeling | Beschrijving |
+| Gemaakt door | Type koppeling | Pad van koppeling | Description |
 |------------|-----------|-----------|-------------|
-| Service | Koppeling naar afzender | `/messages/devicebound` | Cloud-naar-apparaat-berichten die bestemd zijn voor apparaten, worden door de service naar deze koppeling verzonden. Voor berichten die via deze koppeling worden `To` verzonden, wordt `/devices/<deviceID>/messages/devicebound`de eigenschap ingesteld op het pad van de ontvanger van het doel apparaat. |
+| Service | Koppeling naar afzender | `/messages/devicebound` | Cloud-naar-apparaat-berichten die bestemd zijn voor apparaten, worden door de service naar deze koppeling verzonden. Voor berichten die via deze koppeling `To` worden verzonden, wordt de eigenschap ingesteld op het pad van de ontvanger van het doel apparaat `/devices/<deviceID>/messages/devicebound` . |
 | Service | Koppeling ontvanger | `/messages/serviceBound/feedback` | Het volt ooien, afkeuren en afhandelen van feedback berichten die afkomstig zijn van apparaten die op deze koppeling door de service zijn ontvangen. Zie [Cloud-naar-apparaat-berichten verzenden vanuit een IOT-hub](./iot-hub-devguide-messages-c2d.md#message-feedback)voor meer informatie over feedback berichten. |
 
 Het volgende code fragment laat zien hoe u een Cloud-naar-apparaat-bericht maakt en het naar een apparaat verzendt met behulp van de [uAMQP-bibliotheek in python](https://github.com/Azure/azure-uamqp-python).
@@ -129,13 +128,13 @@ for msg in batch:
         print('unknown message:', msg.properties.content_type)
 ```
 
-Zoals u in de voor gaande code kunt zien, heeft een feedback bericht van Cloud naar apparaat het inhouds type *application/vnd. micro soft. iothub. feedback. json*. U kunt de eigenschappen in de JSON-hoofd tekst van het bericht gebruiken om de leverings status van het oorspronkelijke bericht af te leiden:
+Zoals u in de voor gaande code kunt zien, heeft een feedback bericht van Cloud naar apparaat het inhouds type *toepassing/vnd.microsoft.iothub.feedback.jsop*. U kunt de eigenschappen in de JSON-hoofd tekst van het bericht gebruiken om de leverings status van het oorspronkelijke bericht af te leiden:
 
-* De `statusCode` sleutel in de feedback tekst heeft een van de volgende waarden: *geslaagd*, *verlopen*, *DeliveryCountExceeded*, *afgewezen*of *verwijderd*.
+* `statusCode`De sleutel in de feedback tekst heeft een van de volgende waarden: *geslaagd*, *verlopen*, *DeliveryCountExceeded*, *afgewezen*of *verwijderd*.
 
-* De `deviceId` sleutel in de feedback tekst heeft de id van het doel apparaat.
+* De sleutel `deviceId` in de feedback tekst heeft de id van het doel apparaat.
 
-* De `originalMessageId` sleutel in de feedback tekst is de id van het oorspronkelijke Cloud-naar-apparaat-bericht dat is verzonden door de service. U kunt deze leverings status gebruiken om feedback voor Cloud-naar-apparaat-berichten te correleren.
+* De sleutel `originalMessageId` in de feedback tekst is de id van het oorspronkelijke Cloud-naar-apparaat-bericht dat is verzonden door de service. U kunt deze leverings status gebruiken om feedback voor Cloud-naar-apparaat-berichten te correleren.
 
 ### <a name="receive-telemetry-messages-service-client"></a>Telemetrie-berichten ontvangen (Service-client)
 
@@ -147,7 +146,7 @@ In elke stap moet de client de volgende informatie bevatten:
 
 * Geldige service referenties (Service Shared Access Signature token).
 
-* Een goed opgemaakt pad naar de groeps partitie van de Consumer waarvan het van plan is berichten op te halen. Voor een bepaalde Consumer groep en partitie-ID heeft het pad de volgende indeling `/messages/events/ConsumerGroups/<consumer_group>/Partitions/<partition_id>` : (de standaard Consumer `$Default`groep is).
+* Een goed opgemaakt pad naar de groeps partitie van de Consumer waarvan het van plan is berichten op te halen. Voor een bepaalde Consumer groep en partitie-ID heeft het pad de volgende indeling: `/messages/events/ConsumerGroups/<consumer_group>/Partitions/<partition_id>` (de standaard Consumer groep is `$Default` ).
 
 * Een optioneel filter predicaat voor het aanwijzen van een begin punt in de partitie. Dit predicaat kan de vorm hebben van een volgorde nummer, een verschuiving of een time stamp.
 
@@ -229,7 +228,7 @@ De volgende informatie is vereist voor de apparaatclient:
 |-------------|--------------|
 | IoT hub-hostnaam | `<iot-hub-name>.azure-devices.net` |
 | Toegangssleutel | Een primaire of secundaire sleutel die is gekoppeld aan het apparaat |
-| Handtekening voor gedeelde toegang | Een korte hand tekening voor gedeelde toegang in de volgende indeling: `SharedAccessSignature sig={signature-string}&se={expiry}&skn={policyName}&sr={URL-encoded-resourceURI}`. Zie [toegang tot IOT hub beheren](./iot-hub-devguide-security.md#security-token-structure)voor het verkrijgen van de code voor het genereren van deze hand tekening.
+| Handtekening voor gedeelde toegang | Een korte hand tekening voor gedeelde toegang in de volgende indeling: `SharedAccessSignature sig={signature-string}&se={expiry}&skn={policyName}&sr={URL-encoded-resourceURI}` . Zie [toegang tot IOT hub beheren](./iot-hub-devguide-security.md#security-token-structure)voor het verkrijgen van de code voor het genereren van deze hand tekening.
 
 In het volgende code fragment wordt de [uAMQP-bibliotheek in python](https://github.com/Azure/azure-uamqp-python) gebruikt om verbinding te maken met een IOT-hub via een afzender koppeling.
 
@@ -262,7 +261,7 @@ send_client = uamqp.SendClient(uri, debug=True)
 
 De volgende koppelings paden worden ondersteund als apparaat-bewerkingen:
 
-| Gemaakt door | Type koppeling | Pad van koppeling | Beschrijving |
+| Gemaakt door | Type koppeling | Pad van koppeling | Description |
 |------------|-----------|-----------|-------------|
 | Apparaten | Koppeling ontvanger | `/devices/<deviceID>/messages/devicebound` | Cloud-naar-apparaat-berichten die bestemd zijn voor apparaten, worden op deze koppeling door elk doel apparaat ontvangen. |
 | Apparaten | Koppeling naar afzender | `/devices/<deviceID>/messages/events` | Apparaat-naar-Cloud-berichten die vanaf een apparaat worden verzonden, worden via deze koppeling verzonden. |

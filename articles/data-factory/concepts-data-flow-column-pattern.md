@@ -8,10 +8,9 @@ ms.service: data-factory
 ms.topic: conceptual
 ms.date: 10/21/2019
 ms.openlocfilehash: aacec8830948e08f66d71da88897670f7ef43788
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81606121"
 ---
 # <a name="using-column-patterns-in-mapping-data-flow"></a>Kolom patronen gebruiken bij het toewijzen van gegevens stroom
@@ -31,9 +30,9 @@ Als u een kolom patroon wilt toevoegen in een afgeleide kolom of het tabblad agg
 
 ![kolom patronen](media/data-flow/columnpattern.png "Kolompatronen")
 
-Gebruik de [expressie Builder](concepts-data-flow-expression-builder.md) om de match-voor waarde in te voeren. Maak een Boole-expressie die overeenkomt met kolommen `name`op `type`basis `stream`van de `position` ,, en van de kolom. Het patroon is van invloed op een kolom, die is geplaatste of gedefinieerd, waarbij de voor waarde waar retourneert.
+Gebruik de [expressie Builder](concepts-data-flow-expression-builder.md) om de match-voor waarde in te voeren. Maak een Boole-expressie die overeenkomt met kolommen op basis van de `name` , `type` , en `stream` `position` van de kolom. Het patroon is van invloed op een kolom, die is geplaatste of gedefinieerd, waarbij de voor waarde waar retourneert.
 
-De twee expressie vakken onder de voor waarde match geven de nieuwe namen en waarden van de betrokken kolommen op. Wordt `$$` gebruikt om te verwijzen naar de bestaande waarde van het overeenkomende veld. In het vak linker expressie definieert u de naam en de rechter expressie Box definieert de waarde.
+De twee expressie vakken onder de voor waarde match geven de nieuwe namen en waarden van de betrokken kolommen op. `$$`Wordt gebruikt om te verwijzen naar de bestaande waarde van het overeenkomende veld. In het vak linker expressie definieert u de naam en de rechter expressie Box definieert de waarde.
 
 ![kolom patronen](media/data-flow/columnpattern2.png "Kolompatronen")
 
@@ -45,7 +44,7 @@ Als u wilt controleren of uw overeenkomende voor waarde juist is, kunt u het uit
 
 ## <a name="rule-based-mapping-in-select-and-sink"></a>Toewijzing op basis van een regel in SELECT en Sink
 
-Bij het toewijzen van kolommen in de bron en het selecteren van trans formaties, kunt u een vaste toewijzing of op regels gebaseerde toewijzingen toevoegen. Overeenkomst op basis van `name`de `type`kolommen `stream`,, `position` en. U kunt een combi natie van vaste en op regels gebaseerde toewijzingen hebben. Standaard worden alle projecties met meer dan 50 kolommen standaard ingesteld op een op een regel gebaseerde toewijzing die overeenkomt met elke kolom en de naam die is gegenereerd, wordt uitgevoerd. 
+Bij het toewijzen van kolommen in de bron en het selecteren van trans formaties, kunt u een vaste toewijzing of op regels gebaseerde toewijzingen toevoegen. Overeenkomst op basis van `name` de `type` kolommen,, en `stream` `position` . U kunt een combi natie van vaste en op regels gebaseerde toewijzingen hebben. Standaard worden alle projecties met meer dan 50 kolommen standaard ingesteld op een op een regel gebaseerde toewijzing die overeenkomt met elke kolom en de naam die is gegenereerd, wordt uitgevoerd. 
 
 Als u een op een regel gebaseerde toewijzing wilt toevoegen, klikt u op **toewijzing toevoegen** en selecteert u **toewijzing op basis van een regel**.
 
@@ -55,7 +54,7 @@ Voor elke op een regel gebaseerde toewijzing zijn twee invoer waarden vereist: d
 
 ![toewijzing op basis van een regel](media/data-flow/rule-based-mapping.png "Toewijzing op basis van een regel")
 
-Gebruik `$$` syntaxis om te verwijzen naar de invoer naam van een overeenkomende kolom. Gebruik de bovenstaande afbeelding als voor beeld. Stel dat een gebruiker wilt zoeken op alle teken reeks kolommen waarvan de namen korter zijn dan zes tekens. Als de naam van één binnenkomende `test`kolom is opgegeven `$$ + '_short'` , wordt de naam `test_short`van de kolom gewijzigd in de expressie. Als dat de enige toewijzing is die bestaat, worden alle kolommen verwijderd die niet aan de voor waarde voldoen.
+Gebruik `$$` syntaxis om te verwijzen naar de invoer naam van een overeenkomende kolom. Gebruik de bovenstaande afbeelding als voor beeld. Stel dat een gebruiker wilt zoeken op alle teken reeks kolommen waarvan de namen korter zijn dan zes tekens. Als de naam van één binnenkomende kolom is opgegeven `test` , `$$ + '_short'` wordt de naam van de kolom gewijzigd in de expressie `test_short` . Als dat de enige toewijzing is die bestaat, worden alle kolommen verwijderd die niet aan de voor waarde voldoen.
 
 Patronen komen overeen met zowel gedrijfde als gedefinieerde kolommen. Als u wilt zien welke gedefinieerde kolommen worden toegewezen door een regel, klikt u op het pictogram bril naast de regel. Controleer uw uitvoer met behulp van de voorbeeld gegevens.
 
@@ -65,7 +64,7 @@ Als u op het pictogram met de pijl omlaag klikt, kunt u een voor waarde voor reg
 
 ![toewijzing op basis van een regel](media/data-flow/regex-matching.png "Toewijzing op basis van een regel")
 
-Het bovenstaande voor beeld komt overeen met `(r)` het regex-patroon of een kolom naam die een kleine letter r bevat. Net als bij standaard toewijzing op basis van regels worden alle overeenkomende kolommen gewijzigd aan de hand van de voor waarde `$$` aan de rechter kant met de syntaxis.
+Het bovenstaande voor beeld komt overeen met het regex-patroon `(r)` of een kolom naam die een kleine letter r bevat. Net als bij standaard toewijzing op basis van regels worden alle overeenkomende kolommen gewijzigd aan de hand van de voor waarde aan de rechter kant met de `$$` syntaxis.
 
 ### <a name="rule-based-hierarchies"></a>Op regels gebaseerde hiërarchieën
 
@@ -73,7 +72,7 @@ Als uw gedefinieerde projectie een hiërarchie heeft, kunt u toewijzing op basis
 
 ![toewijzing op basis van een regel](media/data-flow/rule-based-hierarchy.png "Toewijzing op basis van een regel")
 
-Het bovenstaande voor beeld komt overeen met alle subkolomsen van `a`een complexe kolom. `a`bevat twee subkoloms `b` en `c`. Het uitvoer schema bevat twee kolommen `b` en `c` de voor waarde ' name als ' is. `$$`
+Het bovenstaande voor beeld komt overeen met alle subkolomsen van een complexe kolom `a` . `a`bevat twee subkoloms `b` en `c` . Het uitvoer schema bevat twee kolommen `b` en `c` de voor waarde ' name als ' is `$$` .
 
 ## <a name="pattern-matching-expression-values"></a>Patroon waarden die overeenkomen met de expressie.
 

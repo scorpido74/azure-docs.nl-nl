@@ -10,10 +10,9 @@ ms.topic: conceptual
 ms.date: 11/07/2018
 ms.custom: mqtt
 ms.openlocfilehash: 35337a99706f25d62964e08a5b16cd8e81f315c6
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81730297"
 ---
 # <a name="upload-files-with-iot-hub"></a>Bestanden uploaden met IoT Hub
@@ -42,7 +41,7 @@ De [Upload bestanden van uw apparaat naar de Cloud met IOT hub](iot-hub-csharp-c
 > De [Azure IOT sdk's](iot-hub-devguide-sdks.md) verwerken automatisch het ophalen van de SAS-URI, het uploaden van het bestand en het melden van IOT hub van een voltooide upload.
 
 ## <a name="initialize-a-file-upload"></a>Het uploaden van een bestand initialiseren
-IoT Hub heeft een eind punt dat specifiek is voor apparaten om een SAS-URI voor opslag aan te vragen voor het uploaden van een bestand. Om het proces voor het uploaden van bestanden te starten, verzendt het apparaat `{iot hub}.azure-devices.net/devices/{deviceId}/files` een post-aanvraag naar met de volgende JSON-hoofd tekst:
+IoT Hub heeft een eind punt dat specifiek is voor apparaten om een SAS-URI voor opslag aan te vragen voor het uploaden van een bestand. Om het proces voor het uploaden van bestanden te starten, verzendt het apparaat een POST-aanvraag naar `{iot hub}.azure-devices.net/devices/{deviceId}/files` met de volgende JSON-hoofd tekst:
 
 ```json
 {
@@ -67,7 +66,7 @@ IoT Hub retourneert de volgende gegevens, die door het apparaat worden gebruikt 
 > [!NOTE]
 > In deze sectie wordt de afgeschafte functionaliteit voor het ontvangen van een SAS-URI van IoT Hub beschreven. Gebruik de POST-methode die eerder is beschreven.
 
-IoT Hub heeft twee REST-eind punten ter ondersteuning van het uploaden van bestanden, een om de SAS-URI voor opslag te verkrijgen en de andere om de IoT-hub op de hoogte te stellen van een voltooide upload. Het apparaat start het upload proces van het bestand door een GET naar de IoT- `{iot hub}.azure-devices.net/devices/{deviceId}/files/{filename}`hub te verzenden naar. De IoT-hub retourneert:
+IoT Hub heeft twee REST-eind punten ter ondersteuning van het uploaden van bestanden, een om de SAS-URI voor opslag te verkrijgen en de andere om de IoT-hub op de hoogte te stellen van een voltooide upload. Het apparaat start het upload proces van het bestand door een GET naar de IoT-hub te verzenden naar `{iot hub}.azure-devices.net/devices/{deviceId}/files/{filename}` . De IoT-hub retourneert:
 
 * Een SAS-URI die specifiek is voor het bestand dat moet worden geüpload.
 
@@ -75,7 +74,7 @@ IoT Hub heeft twee REST-eind punten ter ondersteuning van het uploaden van besta
 
 ## <a name="notify-iot-hub-of-a-completed-file-upload"></a>IoT Hub informeren over het uploaden van voltooide bestanden
 
-Het apparaat uploadt het bestand naar opslag met behulp van de Azure Storage Sdk's. Wanneer het uploaden is voltooid, verzendt het apparaat een POST-aanvraag `{iot hub}.azure-devices.net/devices/{deviceId}/files/notifications` naar met de volgende JSON-hoofd tekst:
+Het apparaat uploadt het bestand naar opslag met behulp van de Azure Storage Sdk's. Wanneer het uploaden is voltooid, verzendt het apparaat een POST-aanvraag naar `{iot hub}.azure-devices.net/devices/{deviceId}/files/notifications` met de volgende JSON-hoofd tekst:
 
 ```json
 {
@@ -86,7 +85,7 @@ Het apparaat uploadt het bestand naar opslag met behulp van de Azure Storage Sdk
 }
 ```
 
-De waarde van `isSuccess` is een Boolean die aangeeft of het bestand is geüpload. De status code voor `statusCode` is de status van het uploaden van het bestand naar Storage en het `statusDescription` komt overeen met de `statusCode`.
+De waarde van `isSuccess` is een Boolean die aangeeft of het bestand is geüpload. De status code voor `statusCode` is de status van het uploaden van het bestand naar Storage en het `statusDescription` komt overeen met de `statusCode` .
 
 ## <a name="reference-topics"></a>Naslag onderwerpen:
 

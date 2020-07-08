@@ -12,10 +12,9 @@ ms.workload: infrastructure-services
 ms.date: 09/10/2018
 ms.author: sharadag
 ms.openlocfilehash: b7dd00d28ecfe844094677e0ae19f4fd359d97d0
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81687808"
 ---
 # <a name="front-door-routing-methods"></a>Routerings methoden voor voor deur
@@ -80,7 +79,7 @@ De cookie blijft even lang actief als de gebruikerssessie, omdat Front Door mome
 > [!NOTE]
 > Open bare proxy's kunnen problemen veroorzaken met sessie affiniteit. Dit komt doordat voor het maken van een sessie aan de voor deur een sessie affiniteits cookie moet worden toegevoegd aan het antwoord. Dit kan niet worden gedaan als het antwoord in de cache kan worden opgeslagen, omdat de cookies van andere clients die dezelfde bron aanvragen, worden verstoord. Als u dit wilt beveiligen, wordt de sessie affiniteit **niet** tot stand gebracht als de back-end een cachebaar antwoord stuurt wanneer dit wordt geprobeerd. Als de sessie al tot stand is gebracht, maakt het niet uit of het antwoord van de back-end in de cache kan worden opgeslagen.
 > Sessie affiniteit wordt in de volgende omstandigheden tot stand gebracht, **tenzij** het antwoord een HTTP 304-status code heeft:
-> - Het antwoord heeft specifieke waarden die zijn ingesteld ```Cache-Control``` voor de header, waardoor caching niet mogelijk is, zoals ' persoonlijk ' of no-Store '.
+> - Het antwoord heeft specifieke waarden die zijn ingesteld voor de ```Cache-Control``` header, waardoor caching niet mogelijk is, zoals ' persoonlijk ' of no-Store '.
 > - Het antwoord bevat een ```Authorization``` header die niet is verlopen.
 > - Het antwoord heeft een HTTP 302-status code.
 

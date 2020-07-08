@@ -4,10 +4,9 @@ description: Meer informatie over het instellen van een Azure Migrate apparaat o
 ms.topic: article
 ms.date: 04/16/2020
 ms.openlocfilehash: b32c6a9b703e4d341fe353d6b472ea7a18adadf3
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81538253"
 ---
 # <a name="set-up-an-appliance-for-vmware-vms"></a>Een apparaat instellen voor VMware-Vm's
@@ -18,10 +17,10 @@ Het [Azure migrate apparaat](migrate-appliance.md) is een licht gewicht dat door
 
 U kunt het apparaat implementeren met een aantal methoden:
 
-- Ingesteld op een virtuele VMware-machine met behulp van een gedownloade eicellen-sjabloon. Dit is de methode die in dit artikel wordt beschreven.
-- Ingesteld op een VMware-VM of fysieke machine met een Power shell-installatie script. [Deze methode](deploy-appliance-script.md) moet worden gebruikt als u geen virtuele machine kunt instellen met behulp van een eicellen-sjabloon of als u zich in azure Government bevindt.
+- Ingesteld op een virtuele VMware-machine met behulp van een gedownloade OVA-sjabloon. Dit is de methode die in dit artikel wordt beschreven.
+- Ingesteld op een VMware-VM of fysieke machine met een PowerShell-installatiescript. [Deze methode](deploy-appliance-script.md) moet worden gebruikt als u geen virtuele machine kunt instellen met behulp van een eicellen-sjabloon of als u zich in azure Government bevindt.
 
-Nadat u het apparaat hebt gemaakt, controleert u of er verbinding kan worden gemaakt met Azure Migrate: Server evaluatie, het voor de eerste keer configureren en registreren bij het Azure Migrate-project.
+Nadat u het apparaat hebt gemaakt, controleert u of er verbinding kan worden gemaakt met Azure Migrate-serverevaluatie, configureert u het voor de eerste keer en registreert u het bij het Azure Migrate-project.
 
 
 ## <a name="appliance-deployment-ova"></a>Implementatie van het apparaat (eicellen)
@@ -29,15 +28,15 @@ Nadat u het apparaat hebt gemaakt, controleert u of er verbinding kan worden gem
 Als u het apparaat wilt instellen met behulp van een eicellen-sjabloon, doet u het volgende:
 - Down load een bestand met een eicellen-sjabloon en importeer het naar vCenter Server.
 - Maak het apparaat en controleer of het verbinding kan maken met Azure Migrate server beoordeling.
-- Configureer het apparaat voor de eerste keer en registreer het bij het Azure Migrate-project.
+- Configureer het apparaat voor het eerst en registreer het bij het Azure Migrate-project.
 
-## <a name="download-the-ova-template"></a>De eicellen-sjabloon downloaden
+## <a name="download-the-ova-template"></a>De OVA-sjabloon downloaden
 
-1. In **migratie doelen** > **servers** > **Azure migrate: Server evaluatie**, klikt u op **detecteren**.
-2. **Zijn uw machines**in **Discover-computers** > gevirtualiseerd?, klikt u op **Ja, met VMware vSphere Hyper Visor**.
+1. In **Migratiedoelen** > **Servers** > **Azure Migrate: Serverevaluatie** klikt u op **Ontdekken**.
+2. In **Machines ontdekken** > **Zijn de machines gevirtualiseerd?** klikt u op **Ja, met VMWare vSphere-hypervisor**.
 3. Klik op **Downloaden** om het .OVA-sjabloonbestand te downloaden.
 
-  ![Selecties voor het downloaden van een bestand met een eicellen](./media/tutorial-assess-vmware/download-ova.png)
+  ![Selecties voor het downloaden van een OVA-bestand](./media/tutorial-assess-vmware/download-ova.png)
 
 ### <a name="verify-security"></a>Beveiliging controleren
 
@@ -51,25 +50,25 @@ Controleer of het bestand van de eicellen veilig is voordat u het implementeert.
 
 
 
-## <a name="create-the-appliance-vm"></a>De apparaat-VM maken
+## <a name="create-the-appliance-vm"></a>Het VM-apparaat maken
 
 Importeer het gedownloade bestand en maak een virtuele machine.
 
-1. Klik in de vSphere-client console op **bestand** > **implementeren OVF sjabloon**.
-![Menu opdracht voor het implementeren van een OVF-sjabloon](./media/tutorial-assess-vmware/deploy-ovf.png)
+1. Klik in de vSphere-client console op **bestand**  >  **implementeren OVF sjabloon**.
+![Menuopdracht voor het implementeren van een OVF-sjabloon](./media/tutorial-assess-vmware/deploy-ovf.png)
 
-2. Geef in de wizard OVF-sjabloon implementeren > **bron**de locatie op van het bestand van de eicellen.
-3. Geef bij **naam** en **locatie**een beschrijvende naam op voor de virtuele machine. Selecteer het inventaris object waarin de VM wordt gehost.
-5. Geef in **host/cluster**de host of het cluster op waarop de virtuele machine wordt uitgevoerd.
-6. Geef in **opslag**de opslag bestemming voor de virtuele machine op.
+2. Geef in de wizard OVF-sjabloon implementeren > **Bron** de locatie van het OVA-bestand op.
+3. Geef bij **Naam** en **Locatie** een beschrijvende naam op voor de virtuele machine. Selecteer het inventarisobject waarin de VM wordt gehost.
+5. Geef bij **Host/Cluster** de host of het cluster op waarop de VM wordt uitgevoerd.
+6. Geef bij **Opslag** de opslaglocatie voor de VM op.
 7. Geef in **Schijfindeling** het schijftype en de schijfgrootte op.
 8. Geef bij **netwerk toewijzing**het netwerk op waarmee de virtuele machine verbinding maakt. Het netwerk heeft Internet connectiviteit nodig om meta gegevens te verzenden naar Azure Migrate server-evaluatie.
 9. Controleer en bevestig de instellingen en klik op **Voltooien**.
 
 
-## <a name="verify-appliance-access-to-azure"></a>Toestel toegang tot Azure controleren
+## <a name="verify-appliance-access-to-azure"></a>Apparaattoegang tot Azure controleren
 
-Zorg ervoor dat de virtuele machine van het apparaat verbinding kan maken met Azure-Url's voor [open bare](migrate-appliance.md#public-cloud-urls) en [overheids](migrate-appliance.md#government-cloud-urls) Clouds.
+Zorg ervoor dat de apparaat-VM verbinding kan maken met Azure-URL's voor [openbare](migrate-appliance.md#public-cloud-urls) en [overheids](migrate-appliance.md#government-cloud-urls)clouds.
 
 
 ## <a name="configure-the-appliance"></a>Het apparaat configureren
@@ -77,17 +76,17 @@ Zorg ervoor dat de virtuele machine van het apparaat verbinding kan maken met Az
 Het apparaat voor de eerste keer instellen. Als u het apparaat implementeert met behulp van een script in plaats van een eicellen-sjabloon, zijn de eerste twee stappen in de procedure niet van toepassing.
 
 1. Klik in de vSphere Client-console met de rechtermuisknop op de VM > **Console openen**.
-2. Geef de taal, de tijd zone en het wacht woord op voor het apparaat.
-3. Open een browser op een computer die verbinding kan maken met de virtuele machine en open de URL van de Web-App van het apparaat: **https://*-apparaatnaam of IP-adres*: 44368**.
+2. Geef de taal, de tijdzone en een wachtwoord op voor het apparaat.
+3. Open een browser op een computer die verbinding kan maken met de VM en open de URL van de web-app van het apparaat: **https://*apparaatnaam of IP-adres*: 44368**.
 
-   U kunt de app ook vanuit het toestel bureau blad openen door te klikken op de snelkoppeling naar de app.
-4. Ga als volgt te werk in de web-app > vereisten in te **stellen**:
-    - **Licentie**: accepteer de licentie voorwaarden en lees de informatie van derden.
-    - **Connectiviteit**: de app controleert of de virtuele machine toegang heeft tot internet. Als de virtuele machine gebruikmaakt van een proxy:
-        - Klik op **proxy-instellingen**en geef het proxy adres en de luister poort op in http://ProxyIPAddress het http://ProxyFQDNformulier of.
+   U kunt de app ook openen vanaf het bureaublad van het apparaat door te klikken op de snelkoppeling naar de app.
+4. Ga als volgt te werk in de web-app > **Vereisten instellen**:
+    - **Licentie**: Accepteer de licentievoorwaarden en lees de informatie van derden.
+    - **Connectiviteit**: de app controleert of de virtuele machine toegang heeft tot internet. Als de virtuele machine een proxy gebruikt:
+        - Klik op **Proxyinstellingen** en geef het proxyadres en de controlepoort op in het formulier http://ProxyIPAddress of http://ProxyFQDN.
         - Geef referenties op als de proxy verificatie nodig heeft.
         - Alleen HTTP-proxy wordt ondersteund.
-    - **Tijd synchronisatie**: tijd wordt gecontroleerd. De tijd op het apparaat moet zijn gesynchroniseerd met internet tijd zodat detectie goed werkt.
+    - **Tijdsynchronisatie**: Tijd is geverifieerd. De tijd op het apparaat moet zijn gesynchroniseerd met internet tijd zodat detectie goed werkt.
     - **Updates installeren**: Azure migrate controleert of de nieuwste updates van het apparaat zijn geïnstalleerd.
     - **Installeer VdDK**: Azure migrate controleert of de VMware VSphere Virtual Disk Development Kit (vddk) is geïnstalleerd.
         - Azure Migrates maakt gebruik van de VDDK om machines te repliceren tijdens de migratie naar Azure.
@@ -95,19 +94,19 @@ Het apparaat voor de eerste keer instellen. Als u het apparaat implementeert met
 
 ## <a name="register-the-appliance-with-azure-migrate"></a>Het apparaat registreren bij Azure Migrate
 
-1. Klik op **Aanmelden**. Als deze niet wordt weer gegeven, controleert u of de pop-upblokkering in de browser is uitgeschakeld.
-2. Meld u aan met uw Azure-referenties op het tabblad Nieuw.
-    - Meld u aan met uw gebruikers naam en wacht woord.
+1. Klik op **Aanmelden**. Als dit niet wordt weergegeven, controleert u of de pop-upblokkering in de browser is uitgeschakeld.
+2. Meld u aan met uw Azure-referenties op het nieuwe tabblad.
+    - Meld u aan met uw gebruikersnaam en wachtwoord.
     - Aanmelden met een pincode wordt niet ondersteund.
 3. Nadat u zich hebt aangemeld, gaat u terug naar de web-app.
 2. Selecteer het abonnement waarin het Azure Migrate-project is gemaakt. Selecteer vervolgens het project.
 3. Geef een naam op voor het apparaat. De naam moet alfanumeriek zijn met 14 tekens of minder.
-4. Klik op **registreren**.
+4. Klik op **Registreren**.
 
 
 ## <a name="start-continuous-discovery-by-providing-vcenter-server-and-vm-credential"></a>Continue detectie starten door vCenter Server en VM-referentie op te geven
 
-Het apparaat moet verbinding maken met vCenter Server om de configuratie-en prestatie gegevens van de virtuele machines te detecteren.
+Het apparaat moet verbinding maken met vCenter Server om de configuratie- en prestatiegegevens van de virtuele machines te detecteren.
 
 ### <a name="specify-vcenter-server-details"></a>vCenter Server-gegevens opgeven
 1. Geef in **vCenter Server Details opgeven**de naam (FQDN) of het IP-adres van de vCenter Server op. U kunt de standaard poort verlaten of een aangepaste poort opgeven waarop uw vCenter Server luistert.

@@ -10,10 +10,9 @@ ms.topic: conceptual
 ms.date: 05/06/2019
 ms.custom: mqtt
 ms.openlocfilehash: 5c14e8cfcbf8df86b0f71d6b12025594d2e648c4
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81730106"
 ---
 # <a name="schedule-jobs-on-multiple-devices"></a>Taken op meerdere apparaten plannen
@@ -30,7 +29,7 @@ Overweeg het gebruik van taken wanneer u de voortgang van een van de volgende ac
 
 ## <a name="job-lifecycle"></a>Taak levenscyclus
 
-Taken worden geïnitieerd door de back-end van de oplossing en worden onderhouden door IoT Hub. U kunt een taak initiëren via een service gerichte URI (`PUT https://<iot hub>/jobs/v2/<jobID>?api-version=2018-06-30`) en een query uitvoeren op een uitvoering van een taak via een service gerichte URI (`GET https://<iot hub>/jobs/v2/<jobID?api-version=2018-06-30`). Als u de status van actieve taken wilt vernieuwen nadat een taak is gestart, voert u een taak query uit.
+Taken worden geïnitieerd door de back-end van de oplossing en worden onderhouden door IoT Hub. U kunt een taak initiëren via een service gerichte URI ( `PUT https://<iot hub>/jobs/v2/<jobID>?api-version=2018-06-30` ) en een query uitvoeren op een uitvoering van een taak via een service gerichte URI ( `GET https://<iot hub>/jobs/v2/<jobID?api-version=2018-06-30` ). Als u de status van actieve taken wilt vernieuwen nadat een taak is gestart, voert u een taak query uit.
 
 > [!NOTE]
 > Wanneer u een taak initieert, kunnen eigenschaps namen en-waarden alleen in de volgende gevallen een door ons ASCII afdruk bare alfanumerieke waarde bevatten:`$ ( ) < > @ , ; : \ " / [ ] ? = { } SP HT`
@@ -122,7 +121,7 @@ Content-Type: application/json; charset=utf-8
 ```
 
 > [!NOTE]
-> De eigenschap *updateTwin* vereist een geldige ETAG-overeenkomst; bijvoorbeeld `etag="*"`.
+> De eigenschap *updateTwin* vereist een geldige ETAG-overeenkomst; bijvoorbeeld `etag="*"` .
 
 Het volgende code fragment toont de aanvraag en het antwoord op een geplande taak voor het bijwerken van de dubbele eigenschappen van het apparaat voor een test apparaat op contoso-hub-1:
 
@@ -183,7 +182,7 @@ De volgende lijst bevat de eigenschappen en bijbehorende beschrijvingen die kunn
 | **jobId** |De door de toepassing meegeleverde ID voor de taak. |
 | **startTime** |De door de toepassing aangelegde start tijd (ISO-8601) voor de taak. |
 | **endTime** |IoT Hub gegeven datum (ISO-8601) voor wanneer de taak is voltooid. Alleen geldig nadat de taak de status voltooid heeft bereikt. |
-| **voert** |Typen taken: |
+| **type** |Typen taken: |
 | | **scheduleUpdateTwin**: een taak die wordt gebruikt om een set gewenste eigenschappen of labels bij te werken. |
 | | **scheduleDeviceMethod**: een taak die wordt gebruikt om een apparaat methode aan te roepen voor een set apparaat apparaatdubbels. |
 | **hebben** |Huidige status van de taak. Mogelijke waarden voor status: |

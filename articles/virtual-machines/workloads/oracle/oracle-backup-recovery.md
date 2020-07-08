@@ -15,10 +15,9 @@ ms.workload: infrastructure
 ms.date: 08/02/2018
 ms.author: borisb
 ms.openlocfilehash: c5f02117d3af7fb411c75d783df82f6008d8104e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81687008"
 ---
 # <a name="back-up-and-recover-an-oracle-database-12c-database-on-an-azure-linux-virtual-machine"></a>Back-ups maken en herstellen van een Oracle Database 12c-Data Base op een virtuele Azure Linux-machine
@@ -38,7 +37,7 @@ Voordat u begint, moet u ervoor zorgen dat Azure CLI is geïnstalleerd. Raadplee
 
 ### <a name="step-2-connect-to-the-vm"></a>Stap 2: verbinding maken met de virtuele machine
 
-*   Gebruik de volgende opdracht om een SSH-sessie (Secure Shell) met de virtuele machine te maken. Vervang het IP-adres en de hostnaam combi natie met `publicIpAddress` de waarde voor uw VM.
+*   Gebruik de volgende opdracht om een SSH-sessie (Secure Shell) met de virtuele machine te maken. Vervang het IP-adres en de hostnaam combi natie met de `publicIpAddress` waarde voor uw VM.
 
     ```bash
     ssh <publicIpAddress>
@@ -141,7 +140,7 @@ Toepassings consistente back-ups is een nieuwe functie in Azure Backup. U kunt s
 
 1. Down load het JSON-bestand.
 
-    Down load VMSnapshotScriptPluginConfig. json https://github.com/MicrosoftAzureBackup/VMSnapshotPluginConfigvan. De bestands inhoud ziet er ongeveer als volgt uit:
+    Down load VMSnapshotScriptPluginConfig.jsop van https://github.com/MicrosoftAzureBackup/VMSnapshotPluginConfig . De bestands inhoud ziet er ongeveer als volgt uit:
 
     ```output
     {
@@ -168,11 +167,11 @@ Toepassings consistente back-ups is een nieuwe functie in Azure Backup. U kunt s
 
 3. Kopieer het JSON-bestand.
 
-    Kopieer VMSnapshotScriptPluginConfig. json naar de map/etc/Azure.
+    Kopieer VMSnapshotScriptPluginConfig.jsnaar de map/etc/Azure.
 
 4. Bewerk het JSON-bestand.
 
-    Bewerk het bestand VMSnapshotScriptPluginConfig. json om de `PreScriptLocation` para meters en `PostScriptlocation` te bevatten. Bijvoorbeeld:
+    Bewerk de VMSnapshotScriptPluginConfig.jsin het bestand met de `PreScriptLocation` `PostScriptlocation` para meters en. Bijvoorbeeld:
 
     ```output
     {

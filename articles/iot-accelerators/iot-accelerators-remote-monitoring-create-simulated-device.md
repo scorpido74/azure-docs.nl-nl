@@ -10,10 +10,9 @@ ms.date: 03/08/2019
 ms.topic: conceptual
 ms.custom: mqtt
 ms.openlocfilehash: d31e520dac1c7e2a13fbd9e24a0cd3167f69e904
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81682012"
 ---
 # <a name="create-and-test-a-new-simulated-device"></a>Een nieuw gesimuleerd apparaat maken en testen
@@ -31,7 +30,7 @@ In het tweede scenario wil Contoso een nieuw Smart gloeilamp-apparaat testen. Al
 
 *Eigenschappen*
 
-| Naam                     | Waarden                      |
+| Name                     | Waarden                      |
 | ------------------------ | --------------------------- |
 | Kleur                    | Wit, rood, blauw            |
 | Helderheid               | 0 tot 100                    |
@@ -41,7 +40,7 @@ In het tweede scenario wil Contoso een nieuw Smart gloeilamp-apparaat testen. Al
 
 In de volgende tabel ziet u de gegevens die de gloeilamp rapporteert aan de Cloud als een gegevens stroom:
 
-| Naam   | Waarden      |
+| Name   | Waarden      |
 | ------ | ----------- |
 | Status | ' aan ', ' uit ' |
 | Temperatuur | Graden F |
@@ -54,7 +53,7 @@ In de volgende tabel ziet u de gegevens die de gloeilamp rapporteert aan de Clou
 
 In de volgende tabel ziet u de acties die het nieuwe apparaat ondersteunt:
 
-| Naam        |
+| Name        |
 | ----------- |
 | Scha kelen   |
 | Uitschakelen  |
@@ -63,7 +62,7 @@ In de volgende tabel ziet u de acties die het nieuwe apparaat ondersteunt:
 
 In de volgende tabel wordt de begin status van het apparaat weer gegeven:
 
-| Naam                     | Waarden |
+| Name                     | Waarden |
 | ------------------------ | -------|
 | Eerste kleur            | Wit  |
 | Eerste helderheid       | 75     |
@@ -108,11 +107,11 @@ Down load en pak de [device simulatie micro service](https://github.com/Azure/de
 
 Open de map **Remote-Monitoring-Services-DotNet-master\storage-adapter** in Visual Studio code. Klik op alle **herstel** knoppen om eventuele onopgeloste afhankelijkheden op te lossen.
 
-Open het bestand **Storage-Adapter/webservice/appSettings. ini** en wijs uw Cosmos DB toe Connection String aan de variabele **documentDBConnectionString** toe te wijzen.
+Open het bestand **Storage-Adapter/webservice/appsettings.ini** en wijs uw Cosmos DB connection string toe aan de **documentDBConnectionString** -variabele.
 
 Als u de micro service lokaal wilt uitvoeren, klikt u op **fouten opsporen > fout opsporing starten**.
 
-Het **Terminal** venster in Visual Studio code toont uitvoer van de actieve micro service, inclusief een URL voor de status controle van de [http://127.0.0.1:9022/v1/status](http://127.0.0.1:9022/v1/status)webservice:. Wanneer u naar dit adres navigeert, moet de status ' OK: Alive en well ' zijn.
+Het **Terminal** venster in Visual Studio code toont uitvoer van de actieve micro service, inclusief een URL voor de status controle van de webservice: [http://127.0.0.1:9022/v1/status](http://127.0.0.1:9022/v1/status) . Wanneer u naar dit adres navigeert, moet de status ' OK: Alive en well ' zijn.
 
 Verlaat de micro service voor de opslag adapter die wordt uitgevoerd in dit exemplaar van Visual Studio code terwijl u de volgende stappen uitvoert.
 
@@ -126,14 +125,14 @@ In deze sectie voegt u een nieuw type telemetrie voor **intern temperatuur** toe
 
     | Bron | Doel |
     | ------ | ----------- |
-    | Services\data\devicemodels\chiller-01.json | C:\temp\devicemodels\chiller-01.json |
+    | Services\data\devicemodels\chiller-01.jsop | C:\temp\devicemodels\chiller-01.jsop |
     | Services\data\devicemodels\scripts\chiller-01-state.js | C:\temp\devicemodels\scripts\chiller-01-state.js |
     | Services\data\devicemodels\scripts\Reboot-method.js | C:\temp\devicemodels\scripts\Reboot-method.js |
     | Services\data\devicemodels\scripts\FirmwareUpdate-method.js | C:\temp\devicemodels\scripts\FirmwareUpdate-method.js |
     | Services\data\devicemodels\scripts\EmergencyValveRelease-method.js | C:\temp\devicemodels\scripts\EmergencyValveRelease-method.js |
     | Services\data\devicemodels\scripts\IncreasePressure-method.js | C:\temp\devicemodels\scripts\IncreasePressure-method.js |
 
-1. Open het **C:\temp\devicemodels\chiller-01.json** -bestand.
+1. Open de **C:\temp\devicemodels\chiller-01.jsin** het bestand.
 
 1. Voeg in de sectie **InitialState** de volgende twee definities toe:
 
@@ -159,9 +158,9 @@ In deze sectie voegt u een nieuw type telemetrie voor **intern temperatuur** toe
     },
     ```
 
-1. Sla het **C:\temp\devicemodels\chiller-01.json** -bestand op.
+1. Sla de **C:\temp\devicemodels\chiller-01.jsop in** het bestand.
 
-1. Open het **C:\temp\devicemodels\scripts\chiller-01-State.js** -bestand.
+1. Open het **C:\temp\devicemodels\scripts\chiller-01-state.js** -bestand.
 
 1. Voeg de volgende velden toe aan de variabele **status** :
 
@@ -202,13 +201,13 @@ In deze sectie voegt u een nieuw type telemetrie voor **intern temperatuur** toe
     }
     ```
 
-1. Sla het **C:\temp\devicemodels\scripts\chiller-01-State.js** -bestand op.
+1. Sla het **C:\temp\devicemodels\scripts\chiller-01-state.js** bestand op.
 
 ## <a name="create-the-lightbulb"></a>De gloeilamp maken
 
 In deze sectie definieert u een nieuw **gloeilamp** -apparaattype:
 
-1. Maak een bestand **C:\temp\devicemodels\lightbulb-01.json** en voeg de volgende inhoud toe:
+1. Maak een bestand **C:\temp\devicemodels\lightbulb-01.jsop** en voeg de volgende inhoud toe:
 
     ```json
     {
@@ -272,9 +271,9 @@ In deze sectie definieert u een nieuw **gloeilamp** -apparaattype:
     }
     ```
 
-    Sla de wijzigingen op in **C:\temp\devicemodels\lightbulb-01.json**.
+    Sla de wijzigingen in **C:\temp\devicemodels\lightbulb-01.jsop**.
 
-1. Maak een bestand **C:\temp\devicemodels\scripts\lightbulb-01-State.js** en voeg de volgende inhoud toe:
+1. Maak een bestands **C:\temp\devicemodels\scripts\lightbulb-01-state.js** en voeg de volgende inhoud toe:
 
     ```javascript
     "use strict";
@@ -361,9 +360,9 @@ In deze sectie definieert u een nieuw **gloeilamp** -apparaattype:
     }
     ```
 
-    Sla de wijzigingen op in **C:\temp\devicemodels\scripts\lightbulb-01-State.js**.
+    Sla de wijzigingen in **C:\temp\devicemodels\scripts\lightbulb-01-state.js**op.
 
-1. Maak een bestand **C:\temp\devicemodels\scripts\SwitchOn-method.js** en voeg de volgende inhoud toe:
+1. Maak een bestands **C:\temp\devicemodels\scripts\SwitchOn-method.js** en voeg de volgende inhoud toe:
 
     ```javascript
     "use strict";
@@ -387,9 +386,9 @@ In deze sectie definieert u een nieuw **gloeilamp** -apparaattype:
     }
     ```
 
-    Sla de wijzigingen op in **C:\temp\devicemodels\scripts\SwitchOn-method.js**.
+    Sla de wijzigingen in **C:\temp\devicemodels\scripts\SwitchOn-method.js**op.
 
-1. Maak een bestand **C:\temp\devicemodels\scripts\SwitchOff-method.js** en voeg de volgende inhoud toe:
+1. Maak een bestands **C:\temp\devicemodels\scripts\SwitchOff-method.js** en voeg de volgende inhoud toe:
 
     ```javascript
     "use strict";
@@ -413,7 +412,7 @@ In deze sectie definieert u een nieuw **gloeilamp** -apparaattype:
     }
     ```
 
-    Sla de wijzigingen op in **C:\temp\devicemodels\scripts\SwitchOff-method.js**.
+    Sla de wijzigingen in **C:\temp\devicemodels\scripts\SwitchOff-method.js**op.
 
 U hebt nu een aangepaste versie van het **Chiller** -apparaattype gemaakt en een nieuw **gloeilamp** -apparaattype gemaakt.
 
@@ -425,7 +424,7 @@ In deze sectie test u de apparaattypen die u hebt gemaakt in de vorige gedeelten
 
 Open de map **device-simulatie-DotNet-Master** die u hebt gedownload van github in een nieuw exemplaar van Visual Studio code. Klik op alle **herstel** knoppen om eventuele onopgeloste afhankelijkheden op te lossen.
 
-Open het bestand **webservice/appSettings. ini** en wijs uw Cosmos DB toe connection string toe aan de variabele **documentdb_connstring** en wijzig de instellingen ook als volgt:
+Open het bestand **WebService appsettings.ini** en wijs uw Cosmos DB connection string toe aan de variabele **documentdb_connstring** en wijzig de instellingen als volgt.
 
 ```ini
 device_models_folder = C:\temp\devicemodels\

@@ -4,10 +4,9 @@ description: Meer informatie over het overschakelen van een Service Fabric clust
 ms.topic: conceptual
 ms.date: 09/06/2019
 ms.openlocfilehash: 1926b0501766eb0a5fe086ceada0c9bf45e3dcf6
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81272624"
 ---
 # <a name="change-cluster-from-certificate-thumbprint-to-common-name"></a>Cluster van vingerafdruk van certificaat wijzigen in algemene naam
@@ -118,7 +117,7 @@ Open vervolgens het sjabloon bestand in een tekst editor en maak drie updates te
 
     U kunt ook overwegen om de *certificateThumbprint*te verwijderen. er wordt mogelijk niet meer naar verwezen in de Resource Manager-sjabloon.
 
-2. In de resource **micro soft. Compute/virtualMachineScaleSets** werkt u de extensie van de virtuele machine bij voor het gebruik van de algemene naam in certificaat instellingen in plaats van de vinger afdruk.  In **virtualMachineProfile**->**extensionProfile**->**Extensions**->**settings****properties** `"thumbprint": "[parameters('certificateThumbprint')]",`**certificate**eigenschappen certificaat, toevoegen `"commonNames": ["[parameters('certificateCommonName')]"],` en verwijderen.->->
+2. In de resource **micro soft. Compute/virtualMachineScaleSets** werkt u de extensie van de virtuele machine bij voor het gebruik van de algemene naam in certificaat instellingen in plaats van de vinger afdruk.  In **virtualMachineProfile** -> **extensionProfile** -> **Extensions** -> **Eigenschappen** -> **settings** -> **certificaat**, toevoegen `"commonNames": ["[parameters('certificateCommonName')]"],` en verwijderen `"thumbprint": "[parameters('certificateThumbprint')]",` .
     ```json
         "virtualMachineProfile": {
         "extensionProfile": {

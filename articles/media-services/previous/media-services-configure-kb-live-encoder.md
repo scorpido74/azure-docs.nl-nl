@@ -15,10 +15,9 @@ ms.topic: article
 ms.date: 03/14/2019
 ms.author: juliako
 ms.openlocfilehash: babb5a10818c8108bae34402962fd2503dbecbdc
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81641685"
 ---
 # <a name="use-the-haivision-kb-live-encoder-to-send-a-single-bitrate-live-stream"></a>De Haivision KB Live Encoder gebruiken om een live stream met één bitsnelheid te verzenden  
@@ -83,7 +82,7 @@ Geluiden
     ![Scherm afbeelding 2017-08-14 bij 9.33.17 uur](./media/media-services-configure-kb-live-encoder/step7.png)
 8.  Klik op volgende en klik vervolgens op gereed.
 9.  Klik op de **afspeel knop** om het coderings kanaal te starten.  
-    ![Haivision KB. png](./media/media-services-configure-kb-live-encoder/step9.png)
+    ![Haivision KB.png](./media/media-services-configure-kb-live-encoder/step9.png)
 
 ## <a name="test-playback"></a>Afspelen testen
 Ga naar het hulp programma AMSE en klik met de rechter muisknop op het kanaal dat u wilt testen. Klik in het menu met de muis aanwijzer op het afspelen van de preview-versie en selecteer met Azure Media Player.

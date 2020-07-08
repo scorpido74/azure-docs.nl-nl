@@ -13,10 +13,9 @@ ms.workload: infrastructure-services
 ms.date: 08/14/2019
 ms.author: allensu
 ms.openlocfilehash: 9003d35ce2eea18aa912a866802b026bb923aa08
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81272692"
 ---
 # <a name="standard-load-balancer-diagnostics-with-metrics-alerts-and-resource-health"></a>Diagnose van Standard Load Balancer met metrische gegevens, meldingen en status van resources
@@ -35,16 +34,16 @@ Azure Load Balancer biedt multidimensionale metrische gegevens via de metrische 
 
 De verschillende Standard Load Balancer configuraties bieden de volgende metrische gegevens:
 
-| Gegevens | Resourcetype | Beschrijving | Aanbevolen aggregatie |
+| Gegevens | Resourcetype | Description | Aanbevolen aggregatie |
 | --- | --- | --- | --- |
-| Beschik baarheid gegevenspad | Open bare en interne load balancer | Standard Load Balancer doorlopend het gegevenspad vanuit een gebied naar de load balancer front-end, die helemaal naar de SDN-stack gaat die uw virtuele machine ondersteunt. Zolang de gezonde instanties blijven bestaan, volgt de meting hetzelfde pad als het verkeer met gelijke taak verdeling van uw toepassing. Het gegevenspad dat door uw klanten wordt gebruikt, wordt ook gevalideerd. De meting is onzichtbaar voor uw toepassing en heeft geen invloed op andere bewerkingen.| Average |
-| Status van Health probe | Open bare en interne load balancer | Standard Load Balancer maakt gebruik van een gedistribueerde status-probing-service die de status van uw toepassings eindpunt bewaakt volgens de configuratie-instellingen. Deze metriek levert een gefilterde weer gave van een aggregatie of per eind punt van elk eind punt van de instantie in de load balancer groep. U kunt zien hoe Load Balancer de status van uw toepassing weergeeft, zoals wordt aangegeven door de configuratie van uw Health probe. |  Average |
-| SYN-pakketten (synchroniseren) | Open bare en interne load balancer | Standard Load Balancer beëindigt Transmission Control Protocol (TCP)-verbindingen of communiceert niet met TCP-of UDP-pakket stromen. Stromen en hun hand shakes zijn altijd tussen de bron-en de VM-instantie. Voor een betere probleem oplossing van uw TCP-protocol scenario's kunt u de tellers van SYN-pakketten gebruiken om te begrijpen hoeveel TCP-verbindings pogingen er worden gedaan. De metriek rapporteert het aantal TCP SYN-pakketten dat is ontvangen.| Average |
-| SNAT-verbindingen | Open bare load balancer |Standard Load Balancer rapporteert het aantal uitgaande stromen dat is gemaskerd voor de front-end van het open bare IP-adres. De bron Network Address Translation SNAT-poorten zijn een exhaustible-bron. Met deze metriek kan worden aangegeven hoe sterk uw toepassing vertrouwt op SNAT voor uitgaande stroom stromen. Tellers voor geslaagde en mislukte uitgaande SNAT-stromen worden gerapporteerd en kunnen worden gebruikt om problemen op te lossen en de status van uw uitgaande stromen te begrijpen.| Average |
-| Toegewezen SNAT-poorten | Open bare load balancer | Standard Load Balancer rapporteert het aantal toegewezen SNAT-poorten per back-end-exemplaar | Evenredig. |
-| Gebruikte SNAT-poorten | Open bare load balancer | Standard Load Balancer rapporteert het aantal SNAT-poorten die worden gebruikt per back-end-exemplaar. | Average | 
-| Byte tellers |  Open bare en interne load balancer | Standard Load Balancer rapporteert de verwerkte gegevens per front-end. U ziet dat de bytes niet gelijkmatig over de back-end-instanties worden gedistribueerd. Dit wordt verwacht omdat het Load Balancer-algoritme van Azure is gebaseerd op stromen | Average |
-| Pakket items |  Open bare en interne load balancer | Standard Load Balancer rapporteert de verwerkte pakketten per front-end.| Average |
+| Gegevenspadbeschikbaarheid | Openbare en interne load balancer | Standard Load Balancer oefent doorlopend het gegevenspad vanuit een regio naar de front-end van de load balancer, helemaal tot de SDN-stack die ondersteuning biedt voor de VM. Zolang de gezonde instanties blijven bestaan, volgt de meting hetzelfde pad als het verkeer met gelijke taak verdeling van uw toepassing. Het gegevenspad dat uw klanten gebruiken, wordt ook gevalideerd. De meting is onzichtbaar voor de toepassing en heeft geen invloed op andere bewerkingen.| Average |
+| Status van statustest | Openbare en interne load balancer | Standard Load Balancer maakt gebruik van een gedistribueerde status-probing-service die de status van uw toepassings eindpunt bewaakt volgens de configuratie-instellingen. Deze metriek biedt een gefilterde weergave van een aggregatie of per-eindpunt van elk exemplaareindpunt in de load balancer-groep. U ziet hoe in Load Balancer de status van de toepassing wordt weergegeven, zoals aangeduid via de statustestconfiguratie. |  Average |
+| SYN-pakketten (synchroniseren) | Openbare en interne load balancer | Standard Load Balancer beëindigt TCP-verbindingen (Transmission Control Protocol) niet, of communiceert niet met TCP- of UDP-pakketstromen. Stromen en hun handshakes vinden altijd plaats de bron en het VM-exemplaar. U kunt tellers voor SYN-pakketten gebruiken om te ontdekken hoeveel TCP-verbindingspogingen zijn ondernomen, om problemen in uw scenario’s voor TCP-protocollen beter te kunnen oplossen. Via de metriek wordt het aantal TCP SYN-pakketten gerapporteerd dat is ontvangen.| Average |
+| SNAT-verbindingen | Openbare load balancer |Standard Load Balancer rapporteert het aantal uitgaande stromen dat is gemaskerd voor de front-end van het openbare IP-adres. SNAT-poorten (adresvertaling van bronnetwerk) zijn een onuitputtelijke resource. Met deze metriek kan een indicatie worden gegeven van hoe sterk de toepassing vertrouwt op SNAT voor uitgaande stromen. Tellers voor geslaagde en mislukte uitgaande SNAT-stromen worden gerapporteerd, en kunnen worden gebruikt om problemen op te lossen en de status van uitgaande stromen te begrijpen.| Average |
+| Toegewezen SNAT-poorten | Openbare load balancer | Standard Load Balancer rapporteert het aantal toegewezen SNAT-poorten per back-end-exemplaar | Gemiddelde. |
+| Gebruikte SNAT-poorten | Openbare load balancer | Standard Load Balancer rapporteert het aantal SNAT-poorten die worden gebruikt per back-end-exemplaar. | Average | 
+| Bytetellers |  Openbare en interne load balancer | Standard Load Balancer rapporteert de verwerkte gegevens per front-end. U ziet misschien dat de bytes niet gelijkmatig zijn verdeeld over de back-endexemplaren. Dit wordt verwacht omdat het Load Balancer-algoritme van Azure is gebaseerd op stromen | Average |
+| Pakkettellers |  Openbare en interne load balancer | Standard Load Balancer rapporteert de verwerkte pakketten per front-end.| Average |
 
 ### <a name="view-your-load-balancer-metrics-in-the-azure-portal"></a>Uw load balancer metrische gegevens weer geven in de Azure Portal
 
@@ -197,7 +196,7 @@ Gebruik **totaal** als de aggregatie voor de meeste scenario's.
 
 Statistieken voor byte of pakket aantal ophalen:
 1. Selecteer het waardetype **aantal bytes** en/of **aantal pakketten** , waarbij **Gem** als de aggregatie. 
-2. Voer een van de volgende bewerkingen uit:
+2. Gebruik een van de volgende methoden:
    * Een filter Toep assen op een specifieke front-end-IP, front-end-poort, back-end-IP of back-end-poort.
    * Bekijk de algemene statistieken voor uw load balancer resource zonder filters.
 
@@ -231,7 +230,7 @@ Met de grafiek kunnen klanten de implementatie zelf oplossen zonder dat ze hoeve
 De integriteits status voor de Standard Load Balancer bronnen wordt weer gegeven via de bestaande **resource status** onder **monitor > service Health**.
 
 De status van uw open bare Standard Load Balancer-resources weer geven:
-1. Selecteer **monitor** > **service Health**.
+1. Selecteer **monitor**  >  **service Health**.
 
    ![Pagina bewaken](./media/load-balancer-standard-diagnostics/LBHealth1.png)
 
@@ -251,10 +250,10 @@ De status van uw open bare Standard Load Balancer-resources weer geven:
  
 De verschillende statussen van de bron en de bijbehorende beschrijvingen worden weer gegeven in de volgende tabel: 
 
-| Status van resource status | Beschrijving |
+| Status van resource status | Description |
 | --- | --- |
 | Beschikbaar | Uw standaard load balancer resource is in orde en beschikbaar. |
-| Niet beschikbaar | Uw standaard load balancer resource is niet in orde. De status vaststellen door **Azure monitor** > **metrische gegevens**te selecteren.<br>(Niet-*beschik bare* status kan ook betekenen dat de resource niet is verbonden met uw standaard Load Balancer.) |
+| Niet beschikbaar | Uw standaard load balancer resource is niet in orde. De status vaststellen door **Azure monitor**  >  **metrische gegevens**te selecteren.<br>(Niet-*beschik bare* status kan ook betekenen dat de resource niet is verbonden met uw standaard Load Balancer.) |
 | Onbekend | De resource status voor de standaard load balancer resource is nog niet bijgewerkt.<br>(*Onbekende* status kan ook betekenen dat de bron niet is verbonden met uw standaard Load Balancer.)  |
 
 ## <a name="next-steps"></a>Volgende stappen

@@ -12,10 +12,9 @@ manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: bf50a8f58978a010fe3d8228ace8579fcf52eb38
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81309906"
 ---
 # <a name="when-to-use-an-azure-multi-factor-authentication-provider"></a>Wanneer een Azure Multi-Factor Authentication provider gebruiken?
@@ -48,11 +47,11 @@ Als de MFA-provider niet is gekoppeld aan een Azure AD-tenant, of als u de nieuw
 > [!CAUTION]
 > Er wordt geen bevestiging gevraagd wanneer u een verificatie provider verwijdert. Het selecteren van **verwijderen** is een permanent proces.
 
-Verificatie providers vindt u in de **Azure Portal** > **Azure Active Directory** > **Security** > **MFA** > -**providers**. Klik op vermelde providers om de details en configuraties te bekijken die aan deze provider zijn gekoppeld.
+Verificatie providers vindt u in de **Azure Portal**  >  **Azure Active Directory**  >  **Security**  >  **MFA**-  >  **providers**. Klik op vermelde providers om de details en configuraties te bekijken die aan deze provider zijn gekoppeld.
 
 Voordat u een verificatie provider verwijdert, moet u rekening houden met de aangepaste instellingen die zijn geconfigureerd in uw provider. Bepaal welke instellingen moeten worden gemigreerd naar algemene MFA-instellingen van uw provider en voltooi de migratie van deze instellingen. 
 
-Azure MFA-servers die zijn gekoppeld aan providers, moeten opnieuw worden geactiveerd met behulp van referenties die zijn gegenereerd onder **Azure Portal** > **Azure Active Directory** > instellingen voor de**beveiliging** > **MFA** > -**Server**. Voordat u opnieuw activeert, moeten de volgende bestanden worden verwijderd `\Program Files\Multi-Factor Authentication Server\Data\` uit de directory op de Azure MFA-servers in uw omgeving:
+Azure MFA-servers die zijn gekoppeld aan providers, moeten opnieuw worden geactiveerd met behulp van referenties die zijn gegenereerd onder **Azure Portal**  >  **Azure Active Directory**instellingen voor de  >  **beveiliging**  >  **MFA**-  >  **Server**. Voordat u opnieuw activeert, moeten de volgende bestanden worden verwijderd uit de `\Program Files\Multi-Factor Authentication Server\Data\` Directory op de Azure MFA-servers in uw omgeving:
 
 - caCert
 - certificaat
@@ -64,7 +63,7 @@ Azure MFA-servers die zijn gekoppeld aan providers, moeten opnieuw worden geacti
 
 ![Een authenticatie provider verwijderen uit de Azure Portal](./media/concept-mfa-authprovider/authentication-provider-removal.png)
 
-Wanneer u hebt gecontroleerd of alle instellingen zijn gemigreerd, kunt u naar de **Azure Portal** > **Azure Active Directory** > **Security** > **MFA** > -**providers** bladeren en de weglatings tekens selecteren.. **.** en selecteer **verwijderen**.
+Wanneer u hebt gecontroleerd of alle instellingen zijn gemigreerd, kunt u naar de **Azure Portal**  >  **Azure Active Directory**  >  **Security**  >  **MFA**-  >  **providers** bladeren en de weglatings tekens selecteren.. **.** en selecteer **verwijderen**.
 
 > [!WARNING]
 > Wanneer u een verificatie provider verwijdert, worden alle rapportage gegevens verwijderd die aan deze provider zijn gekoppeld. Het is raadzaam om activiteiten rapporten op te slaan voordat u uw provider verwijdert.

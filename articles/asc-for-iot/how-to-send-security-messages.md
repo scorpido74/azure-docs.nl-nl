@@ -16,10 +16,9 @@ ms.workload: na
 ms.date: 1/30/2020
 ms.author: mlottner
 ms.openlocfilehash: 4877493982671b1b5db686715ef854f25c2966ea
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81310982"
 ---
 # <a name="send-security-messages-sdk"></a>SDK voor beveiligings berichten verzenden
@@ -32,7 +31,7 @@ In deze handleiding leert u het volgende:
 > * Beveiligings berichten verzenden met behulp van de Azure IoT C-SDK
 > * Beveiligings berichten verzenden met behulp van de Azure IoT C# SDK
 > * Beveiligings berichten verzenden met behulp van de Azure IoT python SDK
-> * Beveiligings berichten verzenden met behulp van de Azure IoT node. js SDK
+> * Beveiligings berichten verzenden met behulp van de Azure IoT Node.js SDK
 > * Beveiligings berichten verzenden met behulp van de Azure IoT Java SDK
 
 ## <a name="azure-security-center-for-iot-capabilities"></a>Azure Security Center voor IoT-mogelijkheden
@@ -47,7 +46,7 @@ Azure Security Center voor IoT definieert een beveiligings bericht aan de hand v
 - Als het bericht voldoet aan het schema voor het [beveiligings bericht](https://aka.ms/iot-security-schemas)
 - Als het bericht is ingesteld als een beveiligings bericht voordat het wordt verzonden
 
-Elk beveiligings bericht bevat de meta gegevens van de afzender, `AgentId`zoals `AgentVersion`, `MessageSchemaVersion` en een lijst met beveiligings gebeurtenissen.
+Elk beveiligings bericht bevat de meta gegevens van de afzender, `AgentId` zoals `AgentVersion` , `MessageSchemaVersion` en een lijst met beveiligings gebeurtenissen.
 Het schema definieert de geldige en vereiste eigenschappen van het beveiligings bericht, met inbegrip van de typen gebeurtenissen.
 
 > [!NOTE]
@@ -58,7 +57,7 @@ Het schema definieert de geldige en vereiste eigenschappen van het beveiligings 
 
 ## <a name="valid-message-example"></a>Geldig bericht voorbeeld
 
-In het onderstaande voor beeld ziet u een geldig beveiligings bericht object. Het voor beeld bevat de meta gegevens van `ProcessCreate` het bericht en één beveiligings gebeurtenis.
+In het onderstaande voor beeld ziet u een geldig beveiligings bericht object. Het voor beeld bevat de meta gegevens van het bericht en één `ProcessCreate` beveiligings gebeurtenis.
 
 Eenmaal ingesteld als een beveiligings bericht en verzonden, wordt dit bericht verwerkt door Azure Security Center voor IoT.
 
@@ -92,7 +91,7 @@ Eenmaal ingesteld als een beveiligings bericht en verzonden, wordt dit bericht v
 
 ## <a name="send-security-messages"></a>Beveiligings berichten verzenden
 
-Beveiligings berichten verzenden *zonder* Azure Security Center te gebruiken voor IOT-agent, met behulp van de [Azure IOT C-SDK](https://github.com/Azure/azure-iot-sdk-c/tree/public-preview), [Azure IOT C# Device SDK](https://github.com/Azure/azure-iot-sdk-csharp/tree/preview), [Azure IoT node. js SDK](https://github.com/Azure/azure-iot-sdk-node), [Azure IOT python SDK](https://github.com/Azure/azure-iot-sdk-python)of [Azure IOT Java SDK](https://github.com/Azure/azure-iot-sdk-java).
+Verzend beveiligings berichten *zonder* Azure Security Center te gebruiken voor IOT-agent, met behulp van de [Azure IOT C-SDK](https://github.com/Azure/azure-iot-sdk-c/tree/public-preview), [Azure IOT C# Device sdk](https://github.com/Azure/azure-iot-sdk-csharp/tree/preview),, [Azure IOT Node.js SDK](https://github.com/Azure/azure-iot-sdk-node), [Azure IOT python SDK](https://github.com/Azure/azure-iot-sdk-python)of [Azure IOT Java SDK](https://github.com/Azure/azure-iot-sdk-java).
 
 Als u de apparaatgegevens van uw apparaten wilt verzenden voor verwerking door Azure Security Center voor IoT, gebruikt u een van de volgende Api's om berichten te markeren voor juiste route ring naar Azure Security Center voor IoT-verwerkings pijplijn.
 
@@ -100,7 +99,7 @@ Alle gegevens die worden verzonden, zelfs als deze zijn gemarkeerd met de juiste
 
 ### <a name="send-security-message-api"></a>Beveiligings bericht-API verzenden
 
-De API voor het **verzenden van beveiligings berichten** is momenteel beschikbaar in C en C#, Python, node. js en Java.
+De API voor het **verzenden van beveiligings berichten** is momenteel beschikbaar in C en C#, Python, Node.js en Java.
 
 #### <a name="c-api"></a>C API
 
@@ -160,7 +159,7 @@ private static async Task SendSecurityMessageAsync(string messageContent)
 }
 ```
 
-#### <a name="nodejs-api"></a>Node. js-API
+#### <a name="nodejs-api"></a>Node.js-API
 
 ```typescript
 var Protocol = require('azure-iot-device-mqtt').Mqtt

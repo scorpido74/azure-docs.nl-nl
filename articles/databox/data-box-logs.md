@@ -9,10 +9,9 @@ ms.topic: article
 ms.date: 08/08/2019
 ms.author: alkohli
 ms.openlocfilehash: 74d38af4a64a184b26bd6ba1105db0d2530d8ba6
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81676414"
 ---
 # <a name="tracking-and-event-logging-for-your-azure-data-box-and-azure-data-box-heavy"></a>Tracering en logboek registratie voor uw Azure Data Box en Azure Data Box Heavy
@@ -26,7 +25,7 @@ De volgende tabel bevat een samen vatting van de Data Box-of Data Box Heavy volg
 | Order maken               | [Toegangs beheer voor de order instellen via RBAC](#set-up-access-control-on-the-order)                                                    |
 | Order verwerkt            | [De volg orde volgen](#track-the-order) <ul><li> Azure Portal </li><li> Vervoerders website </li><li>E-mailmeldingen</ul> |
 | Apparaat instellen              | De toegang tot de referenties van het apparaat is geregistreerd in [activiteiten logboeken](#query-activity-logs-during-setup)                                              |
-| Gegevens kopiëren naar apparaat        | [ *Fout. XML-* bestanden](#view-error-log-during-data-copy) voor het kopiëren van gegevens weer geven                                                             |
+| Gegevens kopiëren naar apparaat        | [ *error.xml* bestanden](#view-error-log-during-data-copy) voor het kopiëren van gegevens weer geven                                                             |
 | Voorbereiding voor verzending            | [De stuk lijst bestanden](#inspect-bom-during-prepare-to-ship) of de manifest bestanden op het apparaat controleren                                      |
 | Gegevens uploaden naar Azure       | [Kopieer logboeken](#review-copy-log-during-upload-to-azure) voor fouten tijdens het uploaden van gegevens in azure Data Center                         |
 | Gegevens verwijdering van apparaat   | [Keten van Bewaar logboeken weer geven](#get-chain-of-custody-logs-after-data-erasure) , inclusief audit logboeken en order geschiedenis                |
@@ -64,7 +63,7 @@ U kunt uw bestelling volgen via de Azure Portal en via de website van de vervoer
 
 - Uw Data Box arriveert in uw bedrijf met een vergrendelde status. U kunt de referenties van het apparaat gebruiken die beschikbaar zijn in de Azure Portal voor uw order.  
 
-    Wanneer een Data Box is ingesteld, moet u mogelijk weten wie de referenties van het apparaat hebben geopend. Als u wilt weten wie de Blade referenties voor het **apparaat** heeft geopend, kunt u een query uitvoeren op de activiteiten Logboeken.  Alle acties die betrekking hebben op toegang tot **apparaatgegevens >** Blade referenties, worden geregistreerd `ListCredentials` in de activiteiten Logboeken als actie.
+    Wanneer een Data Box is ingesteld, moet u mogelijk weten wie de referenties van het apparaat hebben geopend. Als u wilt weten wie de Blade referenties voor het **apparaat** heeft geopend, kunt u een query uitvoeren op de activiteiten Logboeken.  Alle acties die betrekking hebben op toegang tot **apparaatgegevens >** Blade referenties, worden geregistreerd in de activiteiten Logboeken als `ListCredentials` actie.
 
     ![Logboeken met queryactiviteit](media/data-box-logs/query-activity-log-1.png)
 
@@ -74,14 +73,14 @@ U kunt uw bestelling volgen via de Azure Portal en via de website van de vervoer
 
 Tijdens het kopiëren van gegevens naar Data Box of Data Box Heavy, wordt een fout bestand gegenereerd als er problemen zijn met de gekopieerde gegevens.
 
-### <a name="errorxml-file"></a>Fout. XML-bestand
+### <a name="errorxml-file"></a>Error.xml-bestand
 
 Zorg ervoor dat de Kopieer taken zonder fouten zijn voltooid. Als er fouten optreden tijdens het kopieer proces, downloadt u de logboeken van de pagina **verbinding maken en kopiëren** .
 
 - Als u een bestand hebt gekopieerd dat niet 512 bytes is uitgelijnd op een map met beheerde schijven op uw Data Box, wordt het bestand niet geüpload als pagina-BLOB naar uw staging Storage-account. Er wordt een fout in de logboeken weer geven. Verwijder het bestand en kopieer een bestand dat 512 bytes is uitgelijnd.
 - Als u een VHDX of een dynamische VHD of een differentiërende VHD hebt gekopieerd (deze bestanden worden niet ondersteund), wordt er een fout in de logboeken weer geven.
 
-Hier volgt een voor beeld van de *fout. XML* voor verschillende fouten bij het kopiëren naar Managed disks.
+Hier volgt een voor beeld van de *error.xml* voor verschillende fouten bij het kopiëren naar Managed disks.
 
 ```xml
 <file error="ERROR_BLOB_OR_FILE_TYPE_UNSUPPORTED">\StandardHDD\testvhds\differencing-vhd-022019.vhd</file>
@@ -90,7 +89,7 @@ Hier volgt een voor beeld van de *fout. XML* voor verschillende fouten bij het k
 <file error="ERROR_BLOB_OR_FILE_TYPE_UNSUPPORTED">\StandardHDD\testvhds\insidediffvhd-022019.vhd</file>
 ```
 
-Hier volgt een voor beeld van de *fout. XML* voor verschillende fouten bij het kopiëren naar pagina-blobs.
+Hier volgt een voor beeld van de *error.xml* voor verschillende fouten bij het kopiëren naar pagina-blobs.
 
 ```xml
 <file error="ERROR_BLOB_OR_FILE_SIZE_ALIGNMENT">\PageBlob512NotAligned\File100Bytes</file>
@@ -101,7 +100,7 @@ Hier volgt een voor beeld van de *fout. XML* voor verschillende fouten bij het k
 ```
 
 
-Hier volgt een voor beeld van de *fout. XML* voor verschillende fouten bij het kopiëren naar blok-blobs.
+Hier volgt een voor beeld van de *error.xml* voor verschillende fouten bij het kopiëren naar blok-blobs.
 
 ```xml
 <file error="ERROR_CONTAINER_OR_SHARE_NAME_LENGTH">\ab</file>
@@ -129,7 +128,7 @@ Hier volgt een voor beeld van de *fout. XML* voor verschillende fouten bij het k
 <file error="ERROR_BLOB_OR_FILE_NAME_CHARACTER_ILLEGAL" name_encoding="Base64">XEludmFsaWRVbmljb2RlRmlsZXNcU3BjQ2hhci01NTI5Ny3vv70=</file>
 ```
 
-Hier volgt een voor beeld van de *fout. XML* voor verschillende fouten bij het kopiëren naar Azure files.
+Hier volgt een voor beeld van de *error.xml* voor verschillende fouten bij het kopiëren naar Azure files.
 
 ```xml
 <file error="ERROR_BLOB_OR_FILE_SIZE_LIMIT">\AzFileMorethan1TB\AzFile1.2TB</file>
@@ -203,7 +202,7 @@ Voor elke order die wordt verwerkt, maakt de Data Box-Service een kopie logboek 
 
 Er wordt een CRC-berekening (cyclische redundantie controle) uitgevoerd tijdens het uploaden naar Azure. De CRCs van de gegevens kopie en nadat de gegevens zijn geüpload, worden vergeleken. Een CRC komt niet overeen, geeft aan dat de bijbehorende bestanden niet kunnen worden geüpload.
 
-Standaard worden logboeken geschreven naar een container met de `copylog`naam. De logboeken worden opgeslagen met de volgende naam Conventie:
+Standaard worden logboeken geschreven naar een container met de naam `copylog` . De logboeken worden opgeslagen met de volgende naam Conventie:
 
 `storage-account-name/databoxcopylog/ordername_device-serial-number_CopyLog_guid.xml`.
 
@@ -270,7 +269,7 @@ De nieuwe unieke namen voor containers hebben de indeling `DataBox-GUID` en de g
 
 Hier volgt een voor beeld van een Kopieer logboek waarbij de naam van de blobs of bestanden die niet voldoen aan de Azure-naamgevings conventies, is gewijzigd tijdens het uploaden van gegevens naar Azure. De nieuwe BLOB-of bestands namen worden geconverteerd naar de SHA256-Digest van het relatieve pad naar de container en worden geüpload naar het pad op basis van het doel type. Het doel kan blok-blobs, pagina-blobs of Azure Files zijn.
 
-`copylog` Hiermee geeft u de oude en de nieuwe BLOB-of bestands naam en het pad in azure op.
+`copylog`Hiermee geeft u de oude en de nieuwe BLOB-of bestands naam en het pad in azure op.
 
 ```xml
 <ErroredEntity Path="TesDir028b4ba9-2426-4e50-9ed1-8e89bf30d285\Ã">

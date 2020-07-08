@@ -12,10 +12,9 @@ ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
 ms.openlocfilehash: bf69786f56f52874bd9358ae44a6b88b466e77f4
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81677464"
 ---
 # <a name="the-team-data-science-process-in-action-use-azure-hdinsight-hadoop-clusters"></a>Het proces van de team data Science in actie: Azure HDInsight Hadoop clusters gebruiken
@@ -45,16 +44,16 @@ De NYC-gegevens over de taxi zijn ongeveer 20 GB aan gecomprimeerde bestanden me
         DFD2202EE08F7A8DC9A57B02ACB81FE2,51EE87E3205C985EF8431D850C786310,CMT,2013-01-07 23:54:15,CSH,5,0.5,0.5,0,0,6
         DFD2202EE08F7A8DC9A57B02ACB81FE2,51EE87E3205C985EF8431D850C786310,CMT,2013-01-07 23:25:03,CSH,9.5,0.5,0.5,0,0,10.5
 
-De unieke sleutel voor deelname aan\_reis gegevens en\_reis tarief bestaat uit de velden: Medallion, Hack\_License en datum/\_tijd van ophalen. Om alle informatie te verkrijgen die relevant is voor een bepaalde reis, is het voldoende om deel te nemen aan deze drie sleutels.
+De unieke sleutel voor deelname aan reis \_ gegevens en reis \_ tarief bestaat uit de velden: Medallion, Hack \_ License en \_ datum/tijd van ophalen. Om alle informatie te verkrijgen die relevant is voor een bepaalde reis, is het voldoende om deel te nemen aan deze drie sleutels.
 
 ## <a name="examples-of-prediction-tasks"></a><a name="mltasks"></a>Voor beelden van voorspellings taken
-Bepaal het soort voor spellingen dat u wilt maken op basis van gegevens analyse, zodat u de vereiste proces taken kunt verduidelijken. Hier vindt u drie voor beelden van voorspellings problemen die we in deze walkthrough verpakken, allemaal op basis van het *fooien\_bedrag*:
+Bepaal het soort voor spellingen dat u wilt maken op basis van gegevens analyse, zodat u de vereiste proces taken kunt verduidelijken. Hier vindt u drie voor beelden van voorspellings problemen die we in deze walkthrough verpakken, allemaal op basis van het *fooien \_ bedrag*:
 
-- **Binaire classificatie**: voor spelt of er een tip voor een reis is betaald. Dat wil zeggen dat *een\_tip-bedrag* dat groter is dan $0 een positief voor beeld is, terwijl een *Tip\_-bedrag* van $0 een negatief voor beeld is.
+- **Binaire classificatie**: voor spelt of er een tip voor een reis is betaald. Dat wil zeggen dat een *Tip- \_ bedrag* dat groter is dan $0 een positief voor beeld is, terwijl een *tip- \_ bedrag* van $0 een negatief voor beeld is.
    
         Class 0: tip_amount = $0
         Class 1: tip_amount > $0
-- **Classificatie**van verschillende klassen: de hoeveelheid fooien voor de reis voors pellen. We delen het *fooien\_bedrag* in vijf klassen:
+- **Classificatie**van verschillende klassen: de hoeveelheid fooien voor de reis voors pellen. We delen het *fooien \_ bedrag* in vijf klassen:
    
         Class 0: tip_amount = $0
         Class 1: tip_amount > $0 and tip_amount <= $5
@@ -88,11 +87,11 @@ Als u de [NYC van de taxi trips](https://www.andresmh.com/nyctaxitrips/) naar uw
 
 Hier wordt beschreven hoe u AzCopy kunt gebruiken om de bestanden met gegevens over te dragen. Volg de instructies in aan [de slag met het AzCopy-opdracht regel programma](../../storage/common/storage-use-azcopy.md)om AzCopy te downloaden en te installeren.
 
-1. Voer vanuit een opdracht prompt venster de volgende AzCopy-opdrachten uit en vervang * \<path_to_data_folder>* door de gewenste bestemming:
+1. Voer vanuit een opdracht prompt venster de volgende AzCopy-opdrachten uit, vervangen *\<path_to_data_folder>* door de gewenste bestemming:
 
         "C:\Program Files (x86)\Microsoft SDKs\Azure\AzCopy\azcopy" /Source:https://nyctaxitrips.blob.core.windows.net/data /Dest:<path_to_data_folder> /S
 
-1. Wanneer de Kopieer bewerking is voltooid, ziet u in totaal 24 ingepakte bestanden in de map Data. Pak de gedownloade bestanden uit naar dezelfde map op uw lokale computer. Noteer de map waarin de niet-gecomprimeerde bestanden zich bevinden. Deze map wordt aangeduid als het * \<pad\_\_naar unzipped_data\_-bestanden\> * in wat volgt.
+1. Wanneer de Kopieer bewerking is voltooid, ziet u in totaal 24 ingepakte bestanden in de map Data. Pak de gedownloade bestanden uit naar dezelfde map op uw lokale computer. Noteer de map waarin de niet-gecomprimeerde bestanden zich bevinden. In deze map wordt de volgende informatie genoemd *\<path\_to\_unzipped_data\_files\>* .
 
 ## <a name="upload-the-data-to-the-default-container-of-the-hdinsight-hadoop-cluster"></a><a name="upload"></a>De gegevens uploaden naar de standaard container van het HDInsight Hadoop-cluster
 > [!NOTE]
@@ -102,10 +101,10 @@ Hier wordt beschreven hoe u AzCopy kunt gebruiken om de bestanden met gegevens o
 
 Vervang in de volgende AzCopy-opdrachten de volgende para meters door de werkelijke waarden die u hebt opgegeven bij het maken van het Hadoop-cluster en uitgepakt de gegevens bestanden.
 
-* *** \<path_to_data_folder>*** De map (samen met het pad) op de computer die de uitgepakte gegevens bestanden bevat.  
-* ***de naam van het opslag account van het Hadoop-cluster>\<*** Het opslag account dat is gekoppeld aan uw HDInsight-cluster.
-* ***standaard container van Hadoop-cluster>\<*** De standaard container die door uw cluster wordt gebruikt. De naam van de standaard container is doorgaans dezelfde naam als het cluster zelf. Als het cluster bijvoorbeeld ' abc123.azurehdinsight.net ' wordt genoemd, is de standaard container abc123.
-* ***sleutel>van het opslag account \<*** De sleutel voor het opslag account dat door uw cluster wordt gebruikt.
+* ***\<path_to_data_folder>*** De map (samen met het pad) op de computer die de uitgepakte gegevens bestanden bevat.  
+* ***\<storage account name of Hadoop cluster>*** Het opslag account dat is gekoppeld aan uw HDInsight-cluster.
+* ***\<default container of Hadoop cluster>*** De standaard container die door uw cluster wordt gebruikt. De naam van de standaard container is doorgaans dezelfde naam als het cluster zelf. Als het cluster bijvoorbeeld ' abc123.azurehdinsight.net ' wordt genoemd, is de standaard container abc123.
+* ***\<storage account key>*** De sleutel voor het opslag account dat door uw cluster wordt gebruikt.
 
 Voer de volgende twee AzCopy-opdrachten uit vanaf een opdracht prompt of een Windows Power shell-venster.
 
@@ -157,7 +156,7 @@ Voer de volgende opdracht uit in de opdracht regel van het Hive-bericht van het 
 
     hive -f "C:\temp\sample_hive_create_db_and_tables.hql"
 
-Dit is de inhoud van de **C:\temp\sample\_-\_component\_Create\_DB\_and tables. HQL** -bestand dat de Hive-data base maakt **nyctaxidb**, en de tabel **reis** en **ritbedrag**.
+Dit is de inhoud van de **C:\temp\sample \_ - \_ component Create \_ DB \_ and \_ Tables. HQL** -bestand dat de Hive-data base maakt **nyctaxidb**, en de tabel **reis** en **ritbedrag**.
 
     create database if not exists nyctaxidb;
 
@@ -215,7 +214,7 @@ De NYC taxi-gegevensset heeft een natuurlijke partitionering per maand, die we g
 
     for /L %i IN (1,1,12) DO (hive -hiveconf MONTH=%i -f "C:\temp\sample_hive_load_data_by_partitions.hql")
 
-De **component\_\_\_sample laadt\_gegevens\_per partitions. HQL** -bestand bevat de volgende **laad** opdrachten:
+De ** \_ component sample \_ laadt \_ gegevens \_ per \_ partitions. HQL** -bestand bevat de volgende **laad** opdrachten:
 
     LOAD DATA INPATH 'wasb:///nyctaxitripraw/trip_data_${hiveconf:MONTH}.csv' INTO TABLE nyctaxidb.trip PARTITION (month=${hiveconf:MONTH});
     LOAD DATA INPATH 'wasb:///nyctaxifareraw/trip_fare_${hiveconf:MONTH}.csv' INTO TABLE nyctaxidb.fare PARTITION (month=${hiveconf:MONTH});
@@ -386,7 +385,7 @@ In dit voor beeld wordt het Medallions (taxi nummer) geïdentificeerd dat groter
 
     hive -f "C:\temp\sample_hive_trip_count_by_medallion.hql" > C:\temp\queryoutput.tsv
 
-Dit is de inhoud van het **\_Medallion\_.\_HQL\_-\_** bestand van het onderdeel aantal voor beelden voor inspectie.
+Dit is de inhoud van het ** \_ \_ \_ \_ \_ Medallion. HQL** -bestand van het onderdeel aantal voor beelden voor inspectie.
 
     SELECT medallion, COUNT(*) as med_count
     FROM nyctaxidb.fare
@@ -397,7 +396,7 @@ Dit is de inhoud van het **\_Medallion\_.\_HQL\_-\_** bestand van het onderdeel 
 
 De Medallion in de NYC taxi-gegevensset duidt een unieke cab aan. U kunt nagaan welke cab-bestanden relatief bezig zijn door te vragen welke u meer dan een bepaald aantal reizen in een bepaalde periode hebt gemaakt. In het volgende voor beeld worden de cab-bestanden geïdentificeerd die tijdens de eerste drie maanden meer dan honderden zijn gemaakt en worden de query resultaten opgeslagen in een lokaal bestand, **C:\temp\queryoutput.TSV**.
 
-Dit is de inhoud van het **\_Medallion\_.\_HQL\_-\_** bestand van het onderdeel aantal voor beelden voor inspectie.
+Dit is de inhoud van het ** \_ \_ \_ \_ \_ Medallion. HQL** -bestand van het onderdeel aantal voor beelden voor inspectie.
 
     SELECT medallion, COUNT(*) as med_count
     FROM nyctaxidb.fare
@@ -418,7 +417,7 @@ Voer de volgende opdracht uit op de Hive-prompt:
 
 Bij het verkennen van een gegevensset willen we vaak de distributies van groepen waarden onderzoeken. Deze sectie bevat een voor beeld van hoe u deze analyse kunt uitvoeren voor Cab-en stuur Programma's.
 
-Met het **hack_license** **\_Medallion\_License. HQL-bestand wordt de ritbedrag-gegevensset op Medallion en hack_license gegroepeerd en worden de aantallen van elke combi natie\_\_\_\_** **medallion** Hier vindt u de inhoud:
+Met **het \_ \_ \_ \_ \_ Medallion \_ License. HQL** -bestand wordt de ritbedrag-gegevensset op **Medallion** en **hack_license**gegroepeerd en worden de aantallen van elke combi natie geretourneerd. Hier vindt u de inhoud:
 
     SELECT medallion, hack_license, COUNT(*) as trip_count
     FROM nyctaxidb.fare
@@ -443,7 +442,7 @@ De resultaten van de query worden geschreven naar een lokaal bestand, **C:\temp\
 
 Een gemeen schappelijke doel stelling voor de analyse van experimentele gegevens is om te voor komen dat er ongeldige of onjuiste records worden gebruikt. Het voor beeld in deze sectie bepaalt of de velden lengte graad en breedte graad uiterst buiten het gebied NYC bevatten. Omdat dergelijke records waarschijnlijk een onjuiste lengte graad-breedte hebben, willen we deze verwijderen uit de gegevens die moeten worden gebruikt voor model lering.
 
-Dit is de inhoud van **een\_voor\_beeld\_** van een HQL-bestand van de Hive voor inspectie.
+Dit is de inhoud van een voor beeld van een ** \_ \_ \_ HQL** -bestand van de Hive voor inspectie.
 
         SELECT COUNT(*) FROM nyctaxidb.trip
         WHERE month=1
@@ -467,10 +466,10 @@ Het argument *-S* dat is opgenomen in deze opdracht onderdrukt de status scherm 
 
 Voor het probleem van de binaire classificatie dat wordt beschreven in de sectie [voor beelden van voorspellings taken](hive-walkthrough.md#mltasks) , is het handig om te weten of een tip is opgegeven of niet. Deze verdeling van tips is binair:
 
-* Tip gegeven (klasse 1, tip\_-bedrag > $0)  
-* geen tip (klasse 0, fooi\_-waarde = $0)
+* Tip gegeven (klasse 1, tip \_ -bedrag > $0)  
+* geen tip (klasse 0, fooi \_ -waarde = $0)
 
-In het **volgende\_voor\_beeld van\_de component gekantelde frequenties. HQL** -bestand ziet u de opdracht die moet worden uitgevoerd:
+In het volgende voor beeld van de ** \_ component \_ gekantelde \_ frequenties. HQL** -bestand ziet u de opdracht die moet worden uitgevoerd:
 
     SELECT tipped, COUNT(*) AS tip_freq
     FROM
@@ -491,7 +490,7 @@ Voer de volgende opdracht uit vanaf de Hive-prompt:
 > 
 > 
 
-Voor het probleem met multi klasse-classificatie dat wordt beschreven in de sectie [voor beelden van voorspellings taken](hive-walkthrough.md#mltasks) , ondervindt deze gegevensset zich ook aan een natuurlijke classificatie om het aantal fooien te voors pellen. We kunnen met behulp van opslag locaties Tip-bereiken definiëren in de query. Als u de klasse-distributies voor de verschillende penpuntstijl-bereiken wilt ophalen, gebruikt u het HQL-bestand van de **voorbeeld\_component\_\_Tip Range.\_** Hier vindt u de inhoud.
+Voor het probleem met multi klasse-classificatie dat wordt beschreven in de sectie [voor beelden van voorspellings taken](hive-walkthrough.md#mltasks) , ondervindt deze gegevensset zich ook aan een natuurlijke classificatie om het aantal fooien te voors pellen. We kunnen met behulp van opslag locaties Tip-bereiken definiëren in de query. Als u de klasse-distributies voor de verschillende penpuntstijl-bereiken wilt ophalen, gebruikt u het HQL-bestand van de **voorbeeld \_ component \_ Tip \_ Range \_ .** Hier vindt u de inhoud.
 
     SELECT tip_class, COUNT(*) AS tip_freq
     FROM
@@ -548,13 +547,13 @@ Voer de volgende opdracht uit vanaf de Hive-prompt:
     hive -f "C:\temp\sample_hive_trip_direct_distance.hql"
 
 
-De query resultaten worden geschreven naar negen Azure-blobs (**queryoutputdir/\_000000 0** to **queryoutputdir/\_000008 0**), onder de standaard container van het Hadoop-cluster.
+De query resultaten worden geschreven naar negen Azure-blobs (**queryoutputdir/000000 \_ 0** to **queryoutputdir/000008 \_ 0**), onder de standaard container van het Hadoop-cluster.
 
 Als u de grootte van de afzonderlijke blobs wilt zien, voert u de volgende opdracht uit vanaf de Hive-prompt:
 
     hdfs dfs -ls wasb:///queryoutputdir
 
-Als u de inhoud van een bepaald bestand wilt bekijken, zegt u **000000\_0**, `copyToLocal` gebruikt u de opdracht Hadoop.
+Als u de inhoud van een bepaald bestand wilt bekijken, zegt u **000000 \_ 0**, gebruikt u de `copyToLocal` opdracht Hadoop.
 
     hdfs dfs -copyToLocal wasb:///queryoutputdir/000000_0 C:\temp\tempfile
 
@@ -574,11 +573,11 @@ Een belang rijk voor deel van het gebruik van deze gegevens bevindt zich in een 
 Na de experimentele gegevens analyse fase zijn we nu klaar om de gegevens voor het bouwen van modellen in Machine Learning voor te bereiden. In deze sectie laten we zien hoe u een Hive-query gebruikt om de gegevens te bemonsteren. Machine Learning opent deze vervolgens vanuit de module [gegevens importeren][import-data] .
 
 ### <a name="down-sampling-the-data"></a>Down sampling van de gegevens
-Er zijn twee stappen in deze procedure. Eerst voegen we de tabellen **nyctaxidb. trip** en **nyctaxidb. ritbedrag** toe op drie sleutels die aanwezig zijn in alle records: **Medallion**, **\_Hack License**en **datum/tijd van ophalen\_**. We genereren vervolgens een label met een binaire classificatie, **gekanteld**en een classificatie label met een klasse, **\_Tip-klasse**.
+Er zijn twee stappen in deze procedure. Eerst voegen we de tabellen **nyctaxidb. trip** en **nyctaxidb. ritbedrag** toe op drie sleutels die aanwezig zijn in alle records: **Medallion**, **Hack \_ License**en ** \_ datum/tijd van ophalen**. We genereren vervolgens een label met een binaire classificatie, **gekanteld**en een classificatie label met een klasse, **Tip- \_ klasse**.
 
 Als u de gegevens van de voor gaande steek proef rechtstreeks vanuit de module [gegevens importeren][import-data] in machine learning wilt gebruiken, moet u de resultaten van de vorige query opslaan in een interne Hive-tabel. In de volgende stappen maken we een interne Hive-tabel en vullen ze de inhoud ervan met de gekoppelde en bemonsterde gegevens.
 
-De query past standaard Hive-functies rechtstreeks toe om de volgende tijd parameters te genereren vanuit het veld **datum/\_** tijd van ophalen:
+De query past standaard Hive-functies rechtstreeks toe om de volgende tijd parameters te genereren vanuit het veld ** \_ datum/** tijd van ophalen:
 - uur van de dag
 - week van jaar
 - weekdag (' 1 ' staat voor maandag en ' 7 ' staat voor zondag)
@@ -587,7 +586,7 @@ Met de query wordt ook de directe afstand tussen de locaties voor ophalen en dro
 
 De query vervolgens omlaag: voor beelden van de gegevens, zodat de query resultaten in Azure Machine Learning Studio kunnen passen. Alleen ongeveer 1 procent van de oorspronkelijke gegevensset wordt in de Studio geïmporteerd.
 
-Hier vindt u de inhoud van een **voor\_beeld van een component\_die is voor bereid\_op\_AML\_Full. HQL** -bestand dat gegevens voorbereidt voor het bouwen van modellen in machine learning:
+Hier vindt u de inhoud van een voor beeld van een component die is ** \_ \_ \_ voor bereid op \_ AML \_ Full. HQL** -bestand dat gegevens voorbereidt voor het bouwen van modellen in machine learning:
 
         set R = 3959;
         set pi=radians(180);
@@ -721,7 +720,7 @@ Als u Hive-query's wilt uitgeven in de module [gegevens importeren][import-data]
 
 Hier volgen enkele details over de module [gegevens importeren][import-data] en de para meters die moeten worden ingevoerd:
 
-**URI van HCatalog-server**: als de cluster naam **abc123**is, gebruikt u:\/https:/abc123.azurehdinsight.net.
+**URI van HCatalog-server**: als de cluster naam **abc123**is, gebruikt u: https: \/ /abc123.azurehdinsight.net.
 
 **Hadoop-gebruikers accountnaam**: de gebruikers naam die voor het cluster is gekozen (niet de gebruikers naam voor externe toegang).
 
@@ -750,7 +749,7 @@ Hier volgt een scherm opname van de Hive-query en de module [gegevens importeren
 
 ![Scherm afbeelding van Hive-query voor module gegevens importeren](./media/hive-walkthrough/1eTYf52.png)
 
-Omdat de bemonsterde gegevens zich in de standaard container bevinden, is de resulterende Hive-query van Machine Learning eenvoudig. Het is slechts een **Select * from nyctaxidb. nyctaxi\_down sampling\_data**.
+Omdat de bemonsterde gegevens zich in de standaard container bevinden, is de resulterende Hive-query van Machine Learning eenvoudig. Het is slechts een **Select * from nyctaxidb. nyctaxi \_ down sampling \_ Data**.
 
 De gegevensset kan nu worden gebruikt als uitgangs punt voor het bouwen van Machine Learning modellen.
 
@@ -761,7 +760,7 @@ U kunt nu door gaan met het model leren van het bouwen en model implementeren in
 
   **Gebruikte informatieer:** Logistiek regressie met twee klassen
 
-  a. Voor dit probleem wordt het doel label (of klasse) **gekanteld**. De oorspronkelijke voor beeld van een gegevensset bevat enkele kolommen met een doel lekkage voor dit classificatie experiment. Met name **\_Tip class**, **Tip\_-hoeveelheid**en **totaal\_bedrag** geven informatie weer over het doel label dat niet beschikbaar is op het moment van testen. We verwijderen deze kolommen van overweging met behulp van de module [select columns in dataset][select-columns] .
+  a. Voor dit probleem wordt het doel label (of klasse) **gekanteld**. De oorspronkelijke voor beeld van een gegevensset bevat enkele kolommen met een doel lekkage voor dit classificatie experiment. Met name **Tip \_ Class**, **Tip- \_ hoeveelheid**en **totaal \_ bedrag** geven informatie weer over het doel label dat niet beschikbaar is op het moment van testen. We verwijderen deze kolommen van overweging met behulp van de module [select columns in dataset][select-columns] .
 
   In het volgende diagram ziet u het experiment om te voors pellen of er voor een bepaalde reis een tip is betaald:
 
@@ -781,7 +780,7 @@ U kunt nu door gaan met het model leren van het bouwen en model implementeren in
 
   **Gebruikte informatieer:** Multiklasse-logistieke regressie
 
-  a. Voor dit probleem is ons doel label (of klasse) een **Tip\_-klasse**, die een van de vijf waarden kan hebben (0, 1, 2, 3, 4). Net als bij het binaire classificatie geval hebben we een aantal kolommen met een doel lekkage voor dit experiment. Met name, **gekanteld**, aantal **\_fooien**en **\_totaal bedrag** wordt informatie weer geven over het doel label dat niet beschikbaar is tijdens de test tijd. Deze kolommen worden verwijderd met behulp van de module [select columns in dataset][select-columns] .
+  a. Voor dit probleem is ons doel label (of klasse) een **Tip- \_ klasse**, die een van de vijf waarden kan hebben (0, 1, 2, 3, 4). Net als bij het binaire classificatie geval hebben we een aantal kolommen met een doel lekkage voor dit experiment. Met name, **gekanteld**, aantal **fooien \_ **en **totaal \_ bedrag** wordt informatie weer geven over het doel label dat niet beschikbaar is tijdens de test tijd. Deze kolommen worden verwijderd met behulp van de module [select columns in dataset][select-columns] .
 
   In het volgende diagram ziet u het experiment waarbij wordt voor speld dat bin een tip waarschijnlijk zal vallen. De bakken zijn: klasse 0: Tip = $0, klasse 1: Tip > $0 en tip <= $5, klasse 2: Tip > $5 en tip <= $10, klasse 3: Tip > $10 en tip <= $20 en Class 4: Tip > $20.
 
@@ -801,7 +800,7 @@ U kunt nu door gaan met het model leren van het bouwen en model implementeren in
 
   **Gebruikte informatieer:** Versterkte beslissings structuur
 
-  a. Voor dit probleem is het doel label (of klasse) een **Tip\_-hoeveelheid**. De doel lekken in dit geval zijn: **gekanteld**, **Tip\_-klasse**en **totaal\_bedrag**. Al deze variabelen geven informatie over het fooie bedrag dat doorgaans niet beschikbaar is tijdens het testen. Deze kolommen worden verwijderd met behulp van de module [select columns in dataset][select-columns] .
+  a. Voor dit probleem is het doel label (of klasse) een **Tip- \_ hoeveelheid**. De doel lekken in dit geval zijn: **gekanteld**, **Tip- \_ klasse**en **totaal \_ bedrag**. Al deze variabelen geven informatie over het fooie bedrag dat doorgaans niet beschikbaar is tijdens het testen. Deze kolommen worden verwijderd met behulp van de module [select columns in dataset][select-columns] .
 
   Het volgende diagram toont het experiment om de hoeveelheid van de gegeven tip te voors pellen:
 
@@ -819,9 +818,9 @@ U kunt nu door gaan met het model leren van het bouwen en model implementeren in
 > 
 
 ## <a name="license-information"></a>Licentie gegevens
-Dit voorbeeld scenario en de bijbehorende scripts worden gedeeld door micro soft onder de MIT-licentie. Zie het bestand **License. txt** in de map van de voorbeeld code op github voor meer informatie.
+Dit voorbeeld scenario en de bijbehorende scripts worden gedeeld door micro soft onder de MIT-licentie. Zie het **LICENSE.txt** -bestand in de map van de voorbeeld code op github voor meer informatie.
 
-## <a name="references"></a>Verwijzingen
+## <a name="references"></a>Referenties
 • [Download pagina voor Andrés Monroy NYCe taxi](https://www.andresmh.com/nyctaxitrips/)  
 • [De taxi-reis gegevens van NYC door Chris Whong te folie](https://chriswhong.com/open-data/foil_nyc_taxi/)   
 • [NYC van de taxi en limousine](https://www1.nyc.gov/site/tlc/about/tlc-trip-record-data.page) van de Commissie

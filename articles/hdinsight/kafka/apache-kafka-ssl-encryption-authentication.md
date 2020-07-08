@@ -9,10 +9,9 @@ ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 05/01/2019
 ms.openlocfilehash: 02b64d77a4fb1af25e1022de3ac8e4775f916d9e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81261768"
 ---
 # <a name="set-up-tls-encryption-and-authentication-for-apache-kafka-in-azure-hdinsight"></a>TLS-versleuteling en-verificatie instellen voor Apache Kafka in azure HDInsight
@@ -20,7 +19,7 @@ ms.locfileid: "81261768"
 In dit artikel wordt beschreven hoe u Transport Layer Security (TLS)-versleuteling (voorheen bekend als Secure Sockets Layer (SSL)-versleuteling, kunt instellen tussen Apache Kafka-clients en Apache Kafka makelaars. Ook wordt uitgelegd hoe u verificatie van clients instelt (ook wel twee richtings-TLS genoemd).
 
 > [!Important]
-> Er zijn twee clients die u kunt gebruiken voor Kafka-toepassingen: een Java-client en een-console-client. Alleen de Java- `ProducerConsumer.java` client kan TLS gebruiken voor zowel produceren als verbruiken. De console-producer `console-producer.sh` -client werkt niet met TLS.
+> Er zijn twee clients die u kunt gebruiken voor Kafka-toepassingen: een Java-client en een-console-client. Alleen de Java-client `ProducerConsumer.java` kan TLS gebruiken voor zowel produceren als verbruiken. De console-producer-client `console-producer.sh` werkt niet met TLS.
 
 > [!Note]
 > De Kafka-console producent van HDInsight met versie 1,1 biedt geen ondersteuning voor SSL.
@@ -52,7 +51,7 @@ De samen vatting van het installatie proces van de Broker is als volgt:
 Gebruik de volgende gedetailleerde instructies om de Broker-installatie te volt ooien:
 
 > [!Important]
-> In de volgende code fragmenten wnX is een afkorting voor een van de drie worker-knoop punten en moet `wn0`worden `wn1` vervangen `wn2` door, of waar nodig. `WorkerNode0_Name`en `HeadNode0_Name` moet worden vervangen door de namen van de betreffende computers.
+> In de volgende code fragmenten wnX is een afkorting voor een van de drie worker-knoop punten en moet worden vervangen door `wn0` , `wn1` of `wn2` waar nodig. `WorkerNode0_Name`en `HeadNode0_Name` moet worden vervangen door de namen van de betreffende computers.
 
 1. Voer de eerste installatie uit op het hoofd knooppunt 0, dat voor HDInsight de rol van de certificerings instantie (CA) zal vullen.
 
@@ -133,7 +132,7 @@ Voer de volgende stappen uit om de configuratie wijziging te volt ooien:
 
     ![Kafka SSL-configuratie-eigenschappen bewerken in Ambari](./media/apache-kafka-ssl-encryption-authentication/editing-configuration-ambari.png)
 
-1. Stel de eigenschap **SSL. client. auth** onder **aangepast Kafka-Broker** in `required`op. Deze stap is alleen vereist als u verificatie en versleuteling instelt.
+1. Stel de eigenschap **SSL. client. auth** onder **aangepast Kafka-Broker** in op `required` . Deze stap is alleen vereist als u verificatie en versleuteling instelt.
 
     ![Kafka SSL-configuratie-eigenschappen bewerken in Ambari](./media/apache-kafka-ssl-encryption-authentication/editing-configuration-ambari2.png)
 
@@ -170,7 +169,7 @@ Als u geen verificatie nodig hebt, is het overzicht van de stappen voor het inst
 
 1. Meld u aan bij de CA (actief hoofd knooppunt).
 1. Kopieer het CA-certificaat naar de client computer vanaf de CA-computer (wn0).
-1. Meld u aan bij de client computer (HN1) en navigeer naar `~/ssl` de map.
+1. Meld u aan bij de client computer (HN1) en navigeer naar de `~/ssl` map.
 1. Importeer het CA-certificaat naar het truststore.
 1. Importeer het CA-certificaat naar de-opslag.
 
@@ -228,7 +227,7 @@ De volgende vier stappen zijn een overzicht van de taken die nodig zijn om de cl
 1. Meld u aan bij de client computer (stand-by-hoofd knooppunt).
 1. Een Java-opslag archief maken en een ondertekend certificaat voor de Broker ophalen. Kopieer vervolgens het certificaat naar de virtuele machine waarop de CA wordt uitgevoerd.
 1. Schakel over naar de CA-computer (actief hoofd knooppunt) om het client certificaat te ondertekenen.
-1. Ga naar de client computer (stand-by hoofd knooppunt) en navigeer `~/ssl` naar de map. Kopieer het ondertekende certificaat naar de client computer.
+1. Ga naar de client computer (stand-by hoofd knooppunt) en navigeer naar de `~/ssl` map. Kopieer het ondertekende certificaat naar de client computer.
 
 De details van elke stap worden hieronder gegeven.
 
@@ -323,13 +322,13 @@ Voer de volgende stappen uit op de client computer.
     /usr/hdp/current/kafka-broker/bin/kafka-topics.sh --zookeeper <ZOOKEEPER_NODE>:2181 --create --topic topic1 --partitions 2 --replication-factor 2
     ```
 
-1. Start de producent van de console en geef `client-ssl-auth.properties` het pad op als een configuratie bestand voor de producent.
+1. Start de producent van de console en geef het pad op `client-ssl-auth.properties` als een configuratie bestand voor de producent.
 
     ```bash
     /usr/hdp/current/kafka-broker/bin/kafka-console-producer.sh --broker-list <FQDN_WORKER_NODE>:9093 --topic topic1 --producer.config ~/ssl/client-ssl-auth.properties
     ```
 
-1. Open een andere SSH-verbinding met de client computer en start de consument van de `client-ssl-auth.properties` console en geef het pad op als een configuratie bestand voor de consumer.
+1. Open een andere SSH-verbinding met de client computer en start de consument van de console en geef het pad op `client-ssl-auth.properties` als een configuratie bestand voor de consumer.
 
     ```bash
     /usr/hdp/current/kafka-broker/bin/kafka-console-consumer.sh --bootstrap-server <FQDN_WORKER_NODE>:9093 --topic topic1 --consumer.config ~/ssl/client-ssl-auth.properties --from-beginning
@@ -349,7 +348,7 @@ Voer de volgende stappen uit op de client computer.
     /usr/hdp/current/kafka-broker/bin/kafka-console-producer.sh --broker-list <FQDN_WORKER_NODE>:9092 --topic topic1 
     ```
 
-1. Open een andere SSH-verbinding met de client computer en start de consument van de `client-ssl-auth.properties` console en geef het pad op als een configuratie bestand voor de consumer.
+1. Open een andere SSH-verbinding met de client computer en start de consument van de console en geef het pad op `client-ssl-auth.properties` als een configuratie bestand voor de consumer.
 
     ```bash
     $ /usr/hdp/current/kafka-broker/bin/kafka-console-consumer.sh --bootstrap-server <FQDN_WORKER_NODE>:9093 --topic topic1 --consumer.config ~/ssl/client-ssl-auth.properties --from-beginning

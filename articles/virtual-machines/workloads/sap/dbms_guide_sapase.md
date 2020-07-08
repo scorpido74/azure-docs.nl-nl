@@ -16,10 +16,9 @@ ms.date: 04/13/2020
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: 25d911869c95baba6ac9db3b893292e702e9c0e9
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81273202"
 ---
 # <a name="sap-ase-azure-virtual-machines-dbms-deployment-for-sap-workload"></a>DBMS-implementatie voor SAP-werkbelasting in virtuele Azure-machines voor SAP ASE
@@ -50,7 +49,7 @@ Het vergren delen van pagina's in het geheugen is een instelling waarmee wordt v
 
 
 ## <a name="linux-operating-system-specific-settings"></a>Specifieke instellingen voor Linux-besturings systeem
-Op Linux-Vm's voert `saptune` u uit met profiel SAP-ASE Linux enorme pagina's moet standaard zijn ingeschakeld en kunnen worden geverifieerd met de opdracht  
+Op Linux-Vm's voert u uit `saptune` met profiel SAP-ASE Linux enorme pagina's moet standaard zijn ingeschakeld en kunnen worden geverifieerd met de opdracht  
 
 `cat /proc/meminfo` 
 
@@ -211,7 +210,7 @@ SAP software Provisioning Manager (SWPM) biedt een optie voor het versleutelen v
 - Schijven samen voegen met behulp van Windows-opslag ruimten of Linux LVM2 met de juiste Stripe-grootte en het bestands systeem
 - Voldoende apparaten maken voor gegevens, logboeken, tijdelijke en back-updoeleinden
 - Overweeg het gebruik van UltraDisk voor x-grote systemen 
-- SAP `saptune` -ASE uitvoeren op Linux-besturings systeem 
+- `saptune`SAP-ASE uitvoeren op Linux-besturings systeem 
 - De data base beveiligen met DB-versleuteling: Hiermee worden sleutels in Azure Key Vault hand matig opgeslagen 
 - De [SAP on Azure controle lijst](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-deployment-checklist) volt ooien 
 - Logboek back-up en volledige back-up configureren 
@@ -221,7 +220,7 @@ SAP software Provisioning Manager (SWPM) biedt een optie voor het versleutelen v
 ## <a name="using-dbacockpit-to-monitor-database-instances"></a>Data base-exemplaren bewaken met behulp van DBACockpit
 Voor SAP-systemen, die gebruikmaken van SAP ASE als database platform, is de DBACockpit toegankelijk als Inge sloten browser vensters in trans actie DBACockpit of als Webdynpro. De volledige functionaliteit voor het bewaken en beheren van de data base is echter alleen beschikbaar in de Webdynpro-implementatie van de DBACockpit.
 
-Net als bij on-premises systemen zijn er verschillende stappen vereist om alle SAP NetWeaver-functionaliteit in te scha kelen die wordt gebruikt door de Webdynpro-implementatie van de DBACockpit. Volg de [SAP-ondersteunings opmerking #1245200](https://launchpad.support.sap.com/#/notes/1245200) om het gebruik van webdynpros in te scha kelen en de vereiste bestanden te genereren. Wanneer u de instructies in de bovenstaande opmerkingen volgt, configureert u ook Internet Communication Manager (`ICM`) samen met de poorten die moeten worden gebruikt voor http-en HTTPS-verbindingen. De standaard instelling voor http ziet er als volgt uit:
+Net als bij on-premises systemen zijn er verschillende stappen vereist om alle SAP NetWeaver-functionaliteit in te scha kelen die wordt gebruikt door de Webdynpro-implementatie van de DBACockpit. Volg de [SAP-ondersteunings opmerking #1245200](https://launchpad.support.sap.com/#/notes/1245200) om het gebruik van webdynpros in te scha kelen en de vereiste bestanden te genereren. Wanneer u de instructies in de bovenstaande opmerkingen volgt, configureert u ook Internet Communication Manager ( `ICM` ) samen met de poorten die moeten worden gebruikt voor http-en HTTPS-verbindingen. De standaard instelling voor http ziet er als volgt uit:
 
 > ICM/server_port_0 = vervoerder = HTTP, poort = 8000, PROCTIMEOUT = 600, TIMEOUT = 600
 > 
@@ -231,17 +230,17 @@ Net als bij on-premises systemen zijn er verschillende stappen vereist om alle S
 
 en de koppelingen die zijn gegenereerd in trans actie DBACockpit zien er ongeveer als volgt uit:
 
-> https:\//\<fullyqualifiedhostname>:44300/SAP/BC/webdynpro/SAP/dba_cockpit
+> https: \/ / \<fullyqualifiedhostname> : 44300/SAP/BC/webdynpro/SAP/dba_cockpit
 > 
-> http:\//\<fullyqualifiedhostname>:8000/SAP/BC/webdynpro/SAP/dba_cockpit
+> http: \/ / \<fullyqualifiedhostname> : 8000/SAP/BC/webdynpro/SAP/dba_cockpit
 > 
 > 
 
 Afhankelijk van de manier waarop de virtuele machine van Azure die als host fungeert voor het SAP-systeem is verbonden met uw AD en DNS, moet u ervoor zorgen dat ICM gebruikmaakt van een volledig gekwalificeerde hostnaam die kan worden opgelost op de computer waar u de DBACockpit van probeert te openen. Zie [SAP-ondersteunings opmerking #773830](https://launchpad.support.sap.com/#/notes/773830) als u wilt weten hoe ICM de volledige gekwalificeerde hostnaam bepaalt op basis van de profiel parameters en stel para meter ICM/host_name_full expliciet in als dat nodig is.
 
-Als u de virtuele machine hebt geïmplementeerd in een alleen-Cloud scenario zonder cross-premises-connectiviteit tussen on-premises en Azure, moet u een openbaar IP `domainlabel`-adres en een opgeven. De indeling van de open bare DNS-naam van de virtuele machine ziet er als volgt uit:
+Als u de virtuele machine hebt geïmplementeerd in een alleen-Cloud scenario zonder cross-premises-connectiviteit tussen on-premises en Azure, moet u een openbaar IP-adres en een opgeven `domainlabel` . De indeling van de open bare DNS-naam van de virtuele machine ziet er als volgt uit:
 
-> `<custom domainlabel`>. `<azure region`>. cloudapp.Azure.com
+> `<custom domainlabel`>. `<azure region`>. cloudapp.azure.com
 > 
 > 
 
@@ -249,9 +248,9 @@ Meer informatie over de DNS-naam kan worden gevonden [hier] [virtual-machines-az
 
 De SAP-profiel parameter ICM/host_name_full instellen op de DNS-naam van de virtuele machine van Azure de koppeling kan er ongeveer als volgt uitzien:
 
-> https:\//mydomainlabel.westeurope.cloudapp.net:44300/SAP/BC/webdynpro/SAP/dba_cockpit
+> https: \/ /mydomainlabel.westeurope.cloudapp.net:44300/SAP/BC/webdynpro/SAP/dba_cockpit
 > 
-> http:\//mydomainlabel.westeurope.cloudapp.net:8000/SAP/BC/webdynpro/SAP/dba_cockpit
+> http: \/ /mydomainlabel.westeurope.cloudapp.net:8000/SAP/BC/webdynpro/SAP/dba_cockpit
 
 In dat geval moet u het volgende doen:
 

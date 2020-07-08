@@ -12,10 +12,9 @@ ms.custom:
 - amqp
 - mqtt
 ms.openlocfilehash: c664d4859a306387b4eafa2f19ab5877ccf6eb1b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81686961"
 ---
 # <a name="run-opc-publisher"></a>OPC Publisher uitvoeren
@@ -24,7 +23,7 @@ In dit artikel wordt beschreven hoe u de Publisher-fout opsporing OPC uitvoert. 
 
 ## <a name="command-line-options"></a>Opdrachtregelopties
 
-Het gebruik van de toepassing wordt `--help` als volgt weer gegeven met behulp van de opdracht regel optie:
+Het gebruik van de toepassing wordt als volgt weer gegeven met behulp van de `--help` opdracht regel optie:
 
 ```sh/cmd
 Current directory is: /appdata
@@ -388,7 +387,7 @@ Als u OPC-uitgever als module wilt toevoegen aan uw IoT Edge-implementatie, gaat
     }
     ```
 
-    Met deze configuratie wordt IoT Edge geconfigureerd om een container met de naam **Publisher** te starten met behulp van de OPC Publisher-afbeelding. De hostnaam van het systeem van de container is ingesteld op **Uitgever**. OPC-uitgever wordt aangeroepen met het volgende opdracht regel argument: `--aa`. Met deze optie kan OPC uitgever de certificaten van de OPC UA-servers vertrouwt die verbinding maken met. U kunt alle OPC-opdracht regel opties voor Publisher gebruiken. De enige beperking is de grootte van de **container Create-opties** die worden ondersteund door IOT Edge.
+    Met deze configuratie wordt IoT Edge geconfigureerd om een container met de naam **Publisher** te starten met behulp van de OPC Publisher-afbeelding. De hostnaam van het systeem van de container is ingesteld op **Uitgever**. OPC-uitgever wordt aangeroepen met het volgende opdracht regel argument: `--aa` . Met deze optie kan OPC uitgever de certificaten van de OPC UA-servers vertrouwt die verbinding maken met. U kunt alle OPC-opdracht regel opties voor Publisher gebruiken. De enige beperking is de grootte van de **container Create-opties** die worden ondersteund door IOT Edge.
 
 1. Laat de overige instellingen ongewijzigd en selecteer **Opslaan**.
 1. Als u de uitvoer van de OPC-Uitgever lokaal wilt verwerken met een andere IoT Edge module, gaat u terug naar de pagina met **set-modules** . Ga vervolgens naar het tabblad **routes opgeven** en voeg een nieuwe route toe die eruitziet als de volgende JSON:
@@ -404,7 +403,7 @@ Als u OPC-uitgever als module wilt toevoegen aan uw IoT Edge-implementatie, gaat
 
 1. Klik op de pagina **modules instellen** op **volgende**totdat u de laatste pagina van de configuratie hebt bereikt.
 1. Selecteer **verzenden** om uw configuratie naar IOT Edge te verzenden.
-1. Wanneer u IoT Edge hebt gestart op uw edge-apparaat en de docker-container **Uitgever** wordt uitgevoerd, kunt u de logboek uitvoer van de OPC-Uitgever bekijken `docker logs -f publisher` met of door het logboek bestand te controleren. In het vorige voor beeld is het logboek bestand hierboven `d:\iiotegde\publisher-publisher.log`. U kunt ook het [hulp programma IOT-Edge-OPC-Uitgever-Diagnostics](https://github.com/Azure-Samples/iot-edge-opc-publisher-diagnostics)gebruiken.
+1. Wanneer u IoT Edge hebt gestart op uw edge-apparaat en de docker-container **Uitgever** wordt uitgevoerd, kunt u de logboek uitvoer van de OPC-Uitgever bekijken met `docker logs -f publisher` of door het logboek bestand te controleren. In het vorige voor beeld is het logboek bestand hierboven `d:\iiotegde\publisher-publisher.log` . U kunt ook het [hulp programma IOT-Edge-OPC-Uitgever-Diagnostics](https://github.com/Azure-Samples/iot-edge-opc-publisher-diagnostics)gebruiken.
 
 ### <a name="make-the-configuration-files-accessible-on-the-host"></a>De configuratie bestanden toegankelijk maken op de host
 
@@ -425,13 +424,13 @@ Als u de configuratie bestanden voor de IoT Edge module toegankelijk wilt maken 
 }
 ```
 
-Met deze opties wordt de OPC-Uitgever gelezen van de knoop punten die moeten `./pn.json` worden gepubliceerd vanuit het bestand en wordt de werkmap `/appdata` van de container ingesteld op bij het opstarten. Met deze instellingen, OPC Publisher leest het bestand `/appdata/pn.json` uit de container om de configuratie op te halen. Zonder deze `--pf` optie probeert OPC Publisher het standaard configuratie bestand `./publishednodes.json`te lezen.
+Met deze opties wordt de OPC-Uitgever gelezen van de knoop punten die moeten worden gepubliceerd vanuit het bestand `./pn.json` en wordt de werkmap van de container ingesteld op `/appdata` bij het opstarten. Met deze instellingen, OPC Publisher leest het bestand `/appdata/pn.json` uit de container om de configuratie op te halen. Zonder deze `--pf` optie probeert OPC Publisher het standaard configuratie bestand te lezen `./publishednodes.json` .
 
-Het logboek bestand, met de standaard naam `publisher-publisher.log`, wordt geschreven naar `/appdata` en de `CertificateStores` map wordt ook in deze map gemaakt.
+Het logboek bestand, met de standaard naam `publisher-publisher.log` , wordt geschreven naar `/appdata` en de `CertificateStores` map wordt ook in deze map gemaakt.
 
-Om ervoor te zorgen dat deze bestanden beschikbaar zijn in het bestands systeem van de host, is voor de container configuratie een bindings koppel volume vereist. De `d://iiotedge:/appdata` binding wijst de Directory `/appdata`, de huidige werkmap bij het opstarten van de container, toe aan de map `d://iiotedge`host. Zonder deze optie worden er geen bestands gegevens bewaard wanneer de container de volgende keer wordt gestart.
+Om ervoor te zorgen dat deze bestanden beschikbaar zijn in het bestands systeem van de host, is voor de container configuratie een bindings koppel volume vereist. De `d://iiotedge:/appdata` binding wijst de Directory `/appdata` , de huidige werkmap bij het opstarten van de container, toe aan de map host `d://iiotedge` . Zonder deze optie worden er geen bestands gegevens bewaard wanneer de container de volgende keer wordt gestart.
 
-Als u Windows-containers uitvoert, is de syntaxis van de `Binds` para meter niet hetzelfde. Bij het opstarten van de container is `c:\appdata`de werkmap. Als u het configuratie bestand in de map `d:\iiotedge`op de host wilt plaatsen, geeft u de volgende `HostConfig` toewijzing op in de sectie:
+Als u Windows-containers uitvoert, is de syntaxis van de `Binds` para meter niet hetzelfde. Bij het opstarten van de container is de werkmap `c:\appdata` . Als u het configuratie bestand in de map `d:\iiotedge` op de host wilt plaatsen, geeft u de volgende toewijzing op in de `HostConfig` sectie:
 
 ```json
 "HostConfig": {
@@ -441,7 +440,7 @@ Als u Windows-containers uitvoert, is de syntaxis van de `Binds` para meter niet
 }
 ```
 
-Als u Linux-containers in Linux uitvoert, is de syntaxis van `Binds` de para meter opnieuw. Bij het opstarten van de container is `/appdata`de werkmap. Als u het configuratie bestand in de map `/iiotedge` op de host wilt plaatsen, geeft u de volgende `HostConfig` toewijzing op in de sectie:
+Als u Linux-containers in Linux uitvoert, is de syntaxis van de `Binds` para meter opnieuw. Bij het opstarten van de container is de werkmap `/appdata` . Als u het configuratie bestand in de map `/iiotedge` op de host wilt plaatsen, geeft u de volgende toewijzing op in de `HostConfig` sectie:
 
 ```json
 "HostConfig": {
@@ -465,20 +464,20 @@ docker run -p 62222:62222 mcr.microsoft.com/iotedge/opc-publisher <applicationna
 
 ### <a name="enable-intercontainer-name-resolution"></a>Naam omzetting tussen meerdere containers inschakelen
 
-Als u naam omzetting vanuit de container naar andere containers wilt inschakelen, maakt u een gebruiker die een docker-brug netwerk definieert en verbindt u de container `--network` met dit netwerk met behulp van de optie. Wijs ook de container een naam met behulp van de `--name` optie als volgt toe:
+Als u naam omzetting vanuit de container naar andere containers wilt inschakelen, maakt u een gebruiker die een docker-brug netwerk definieert en verbindt u de container met dit netwerk met behulp van de `--network` optie. Wijs ook de container een naam met behulp van de `--name` optie als volgt toe:
 
 ```sh/cmd
 docker network create -d bridge iot_edge
 docker run --network iot_edge --name publisher mcr.microsoft.com/iotedge/opc-publisher <applicationname> [<IoT Hubconnectionstring>] [options]
 ```
 
-De container is nu bereikbaar met behulp van `publisher` de naam door andere containers op hetzelfde netwerk.
+De container is nu bereikbaar met behulp van de naam `publisher` door andere containers op hetzelfde netwerk.
 
 ### <a name="access-other-systems-from-within-the-container"></a>Toegang tot andere systemen vanuit de container
 
 Andere containers kunnen worden bereikt met de para meters die in de vorige sectie worden beschreven. Als het besturings systeem waarop docker wordt gehost, DNS is ingeschakeld, is het mogelijk om toegang te krijgen tot alle systemen die bekend zijn bij DNS.
 
-In netwerken die gebruikmaken van NetBIOS-naam omzetting, schakelt u toegang tot andere systemen in door de `--add-host` container te starten met de optie. Deze optie voegt effectief een vermelding toe aan het hostbestand van de container:
+In netwerken die gebruikmaken van NetBIOS-naam omzetting, schakelt u toegang tot andere systemen in door de container te starten met de `--add-host` optie. Deze optie voegt effectief een vermelding toe aan het hostbestand van de container:
 
 ```cmd/sh
 docker run --add-host mydevbox:192.168.178.23  mcr.microsoft.com/iotedge/opc-publisher <applicationname> [<IoT Hubconnectionstring>] [options]
@@ -486,7 +485,7 @@ docker run --add-host mydevbox:192.168.178.23  mcr.microsoft.com/iotedge/opc-pub
 
 ### <a name="assign-a-hostname"></a>Een hostnaam toewijzen
 
-OPC Publisher gebruikt de hostnaam van de computer waarop deze wordt uitgevoerd voor het genereren van certificaten en eind punten. Docker kiest een wille keurige hostnaam als deze niet is `-h` ingesteld met de optie. In het volgende voor beeld ziet u hoe u de interne hostnaam van de `publisher`container instelt op:
+OPC Publisher gebruikt de hostnaam van de computer waarop deze wordt uitgevoerd voor het genereren van certificaten en eind punten. Docker kiest een wille keurige hostnaam als deze niet is ingesteld met de `-h` optie. In het volgende voor beeld ziet u hoe u de interne hostnaam van de container instelt op `publisher` :
 
 ```sh/cmd
 docker run -h publisher mcr.microsoft.com/iotedge/opc-publisher <applicationname> [<IoT Hubconnectionstring>] [options]
@@ -494,11 +493,11 @@ docker run -h publisher mcr.microsoft.com/iotedge/opc-publisher <applicationname
 
 ### <a name="use-bind-mounts-shared-filesystem"></a>Bindings koppelingen gebruiken (gedeeld bestands systeem)
 
-In plaats van het container bestandssysteem te gebruiken, kunt u het host-bestands systeem kiezen om configuratie-informatie en logboek bestanden op te slaan. Als u deze optie wilt configureren, `-v` gebruikt u `docker run` de optie in de modus BIND koppelen.
+In plaats van het container bestandssysteem te gebruiken, kunt u het host-bestands systeem kiezen om configuratie-informatie en logboek bestanden op te slaan. Als u deze optie wilt configureren, gebruikt u de `-v` optie `docker run` in de modus BIND koppelen.
 
 ## <a name="opc-ua-x509-certificates"></a>OPC UA X. 509-certificaten
 
-OPC UA maakt gebruik van X. 509-certificaten om de OPC UA-client en-server te verifiëren wanneer ze een verbinding tot stand brengen en de communicatie tussen de clients te versleutelen. OPC Publisher gebruikt certificaat archieven die worden beheerd door de OPC UA-stack om alle certificaten te beheren. Bij het opstarten controleert OPC Publisher of er een certificaat voor zichzelf is. Als er zich geen certificaat in het certificaat archief bevindt en er één wordt door gegeven in de opdracht regel, wordt in OPC Publisher een zelfondertekend certificaat gemaakt. Zie de methode **InitApplicationSecurityAsync** in `OpcApplicationConfigurationSecurity.cs`voor meer informatie.
+OPC UA maakt gebruik van X. 509-certificaten om de OPC UA-client en-server te verifiëren wanneer ze een verbinding tot stand brengen en de communicatie tussen de clients te versleutelen. OPC Publisher gebruikt certificaat archieven die worden beheerd door de OPC UA-stack om alle certificaten te beheren. Bij het opstarten controleert OPC Publisher of er een certificaat voor zichzelf is. Als er zich geen certificaat in het certificaat archief bevindt en er één wordt door gegeven in de opdracht regel, wordt in OPC Publisher een zelfondertekend certificaat gemaakt. Zie de methode **InitApplicationSecurityAsync** in voor meer informatie `OpcApplicationConfigurationSecurity.cs` .
 
 Zelfondertekende certificaten bieden geen beveiliging, omdat ze niet zijn ondertekend door een vertrouwde certificerings instantie.
 
@@ -513,13 +512,13 @@ OPC Publisher biedt opdracht regel opties voor het volgende:
 
 Met al deze opties kunt u para meters door geven met behulp van bestanden of base64-gecodeerde teken reeksen.
 
-Het standaard opslaglocatie type voor alle certificaat archieven is het bestands systeem dat u kunt wijzigen met behulp van opdracht regel opties. Omdat de container geen permanente opslag in het bestands systeem biedt, moet u een ander opslag type kiezen. Gebruik de `-v` optie docker om de certificaat archieven in het host-bestands systeem of op een docker-volume te behouden. Als u een docker-volume gebruikt, kunt u certificaten door geven met base64-gecodeerde teken reeksen.
+Het standaard opslaglocatie type voor alle certificaat archieven is het bestands systeem dat u kunt wijzigen met behulp van opdracht regel opties. Omdat de container geen permanente opslag in het bestands systeem biedt, moet u een ander opslag type kiezen. Gebruik de optie docker `-v` om de certificaat archieven in het host-bestands systeem of op een docker-volume te behouden. Als u een docker-volume gebruikt, kunt u certificaten door geven met base64-gecodeerde teken reeksen.
 
 De runtime-omgeving heeft invloed op de persistentie van certificaten. Vermijd het maken van nieuwe certificaat archieven telkens wanneer u de toepassing uitvoert:
 
-- Als u systeem eigen op Windows uitvoert, kunt u een certificaat archief van het `Directory` type toepassing niet gebruiken, omdat de toegang tot de persoonlijke sleutel mislukt. In dit geval gebruikt u de optie `--at X509Store`.
-- Als Linux docker-container wordt uitgevoerd, kunt u de certificaat archieven toewijzen aan het bestands systeem van de host met de `-v <hostdirectory>:/appdata`optie docker run. Met deze optie wordt het certificaat persistent gemaakt voor alle toepassingen.
-- Als Linux docker-container wordt uitgevoerd en u een x509-archief wilt gebruiken voor het toepassings certificaat, gebruikt u de optie `-v x509certstores:/root/.dotnet/corefx/cryptography/x509stores` docker run en de optie toepassing`--at X509Store`
+- Als u systeem eigen op Windows uitvoert, kunt u een certificaat archief van het type toepassing niet gebruiken, `Directory` omdat de toegang tot de persoonlijke sleutel mislukt. In dit geval gebruikt u de optie `--at X509Store` .
+- Als Linux docker-container wordt uitgevoerd, kunt u de certificaat archieven toewijzen aan het bestands systeem van de host met de optie docker run `-v <hostdirectory>:/appdata` . Met deze optie wordt het certificaat persistent gemaakt voor alle toepassingen.
+- Als Linux docker-container wordt uitgevoerd en u een x509-archief wilt gebruiken voor het toepassings certificaat, gebruikt u de optie docker run `-v x509certstores:/root/.dotnet/corefx/cryptography/x509stores` en de optie toepassing`--at X509Store`
 
 ## <a name="performance-and-memory-considerations"></a>Overwegingen voor prestaties en geheugen
 
@@ -532,7 +531,7 @@ Wanneer u OPC Publisher uitvoert, moet u rekening houden met de prestatie vereis
 Het geheugen en de prestaties zijn afhankelijk van de configuratie van het aantal knoop punten dat u configureert om te publiceren. Zorg ervoor dat de volgende para meters aan uw vereisten voldoen:
 
 - Interval voor verzenden van IoT Hub:`--si`
-- Grootte van IoT Hub bericht ( `1`standaard):`--ms`
+- Grootte van IoT Hub bericht (standaard `1` ):`--ms`
 - Capaciteit van de wachtrij voor bewaakte items:`--mq`
 
 De `--mq` para meter bepaalt de bovengrens van de capaciteit van de interne wachtrij, die alle OPC-wijzigings meldingen voor knooppunt waarden buffert. Als OPC Publisher berichten niet kan verzenden naar IoT Hub snel genoeg is, buffert deze wachtrij de meldingen. Met de para meter wordt het aantal meldingen ingesteld dat in de buffer kan worden opgeslagen. Als u het aantal items in deze wachtrij verg root in uw test uitvoeringen ziet, kunt u voor komen dat er berichten verloren gaan:
@@ -540,15 +539,15 @@ De `--mq` para meter bepaalt de bovengrens van de capaciteit van de interne wach
 - Het interval voor het verzenden van IoT Hub verminderen
 - De grootte van het IoT Hub bericht verg Roten
 
-Met `--si` de para meter wordt de OPC-Uitgever gedwongen berichten te verzenden naar IOT hub met het opgegeven interval. OPC Publisher verzendt een bericht zodra de bericht grootte die is opgegeven door de `--ms` para meter is bereikt of zodra het interval dat is opgegeven door de `--si` para meter is bereikt. Als u de optie voor de bericht grootte `--ms 0`wilt uitschakelen, gebruikt u. In dit geval gebruikt OPC Publisher de grootst mogelijke IoT Hub bericht grootte van 256 kB aan batch gegevens.
+Met de `--si` para meter wordt de OPC-Uitgever gedwongen berichten te verzenden naar IOT hub met het opgegeven interval. OPC Publisher verzendt een bericht zodra de bericht grootte die is opgegeven door de `--ms` para meter is bereikt of zodra het interval dat is opgegeven door de `--si` para meter is bereikt. Als u de optie voor de bericht grootte wilt uitschakelen, gebruikt u `--ms 0` . In dit geval gebruikt OPC Publisher de grootst mogelijke IoT Hub bericht grootte van 256 kB aan batch gegevens.
 
-Met `--ms` de para meter kunt u batch berichten verzenden naar IOT hub. Het protocol dat u gebruikt, bepaalt of de overhead van het verzenden van een bericht naar IoT Hub hoog is vergeleken met de werkelijke tijd van verzen ding van de nettolading. Als uw scenario latentie toestaat wanneer gegevens worden opgenomen door IoT Hub, configureert u OPC Publisher voor het gebruiken van de grootste bericht grootte van 256 kB.
+`--ms`Met de para meter kunt u batch berichten verzenden naar IOT hub. Het protocol dat u gebruikt, bepaalt of de overhead van het verzenden van een bericht naar IoT Hub hoog is vergeleken met de werkelijke tijd van verzen ding van de nettolading. Als uw scenario latentie toestaat wanneer gegevens worden opgenomen door IoT Hub, configureert u OPC Publisher voor het gebruiken van de grootste bericht grootte van 256 kB.
 
 Voordat u OPC Publisher in productie scenario's gebruikt, moet u het prestatie-en geheugen gebruik onder productie omstandigheden testen. U kunt de `--di` para meter gebruiken om het interval (in seconden) op te geven dat OPC Publisher diagnostische gegevens schrijft.
 
 ### <a name="test-measurements"></a>Test metingen
 
-In de volgende voorbeeld diagnostiek worden metingen weer gegeven met verschillende `--si` waarden `--ms` voor en para meters die 500-knoop punten publiceren met een OPC-publicatie-interval van 1 seconde.  De test gebruikt een OPC Publisher debug build on Windows 10 native voor 120 seconden. Het IoT Hub-protocol was het standaard MQTT-protocol.
+In de volgende voorbeeld diagnostiek worden metingen weer gegeven met verschillende waarden voor `--si` en `--ms` para meters die 500-knoop punten publiceren met een OPC-publicatie-interval van 1 seconde.  De test gebruikt een OPC Publisher debug build on Windows 10 native voor 120 seconden. Het IoT Hub-protocol was het standaard MQTT-protocol.
 
 #### <a name="default-configuration---si-10---ms-262144"></a>Standaard configuratie (--si 10--MS 262144)
 
@@ -582,7 +581,7 @@ current working set in MB: 90
 ==========================================================================
 ```
 
-Met de standaard configuratie worden gegevens verzonden naar IoT Hub elke tien seconden of wanneer 256 kB aan gegevens beschikbaar is voor het opnemen van IoT Hub. Deze configuratie voegt een gemiddelde latentie van ongeveer 10 seconden toe, maar heeft de laagste kans dat gegevens verloren gaan als gevolg van de grote bericht grootte. In de diagnostische gegevens worden weer gegeven dat er geen OPC- `monitored item notifications enqueue failure: 0`knooppunt updates verloren zijn gegaan:.
+Met de standaard configuratie worden gegevens verzonden naar IoT Hub elke tien seconden of wanneer 256 kB aan gegevens beschikbaar is voor het opnemen van IoT Hub. Deze configuratie voegt een gemiddelde latentie van ongeveer 10 seconden toe, maar heeft de laagste kans dat gegevens verloren gaan als gevolg van de grote bericht grootte. In de diagnostische gegevens worden weer gegeven dat er geen OPC-knooppunt updates verloren zijn gegaan: `monitored item notifications enqueue failure: 0` .
 
 #### <a name="constant-send-interval---si-1---ms-0"></a>Interval voor constante verzen ding (--Si 1--MS 0)
 
@@ -650,7 +649,7 @@ current working set in MB: 96
 ==========================================================================
 ```
 
-Deze configuratie verzendt voor elke waarde van het OPC-knoop punt een bericht wijzigen in IoT Hub. De diagnostische gegevens tonen de gemiddelde bericht grootte is 234 bytes, wat klein is. Het voor deel van deze configuratie is dat de OPC-uitgever geen latentie toevoegt. Het aantal verloren OPC-knooppunt waarde-updates`monitored item notifications enqueue failure: 44624`() is hoog, waardoor deze configuratie niet geschikt is voor scenario's met grote hoeveel heden telemetrie die moeten worden gepubliceerd.
+Deze configuratie verzendt voor elke waarde van het OPC-knoop punt een bericht wijzigen in IoT Hub. De diagnostische gegevens tonen de gemiddelde bericht grootte is 234 bytes, wat klein is. Het voor deel van deze configuratie is dat de OPC-uitgever geen latentie toevoegt. Het aantal verloren OPC-knooppunt waarde-updates ( `monitored item notifications enqueue failure: 44624` ) is hoog, waardoor deze configuratie niet geschikt is voor scenario's met grote hoeveel heden telemetrie die moeten worden gepubliceerd.
 
 ### <a name="maximum-batching---si-0---ms-262144"></a>Maximum aantal batches (--si 0--MS 262144)
 

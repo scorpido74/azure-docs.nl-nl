@@ -8,10 +8,9 @@ ms.topic: conceptual
 ms.date: 01/04/2019
 ms.author: junhan
 ms.openlocfilehash: d85e0e967dd802a77ccbc11b884d7a9f2891524d
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81688103"
 ---
 # <a name="use-azure-iot-tools-for-visual-studio-code-for-azure-iot-hub-device-management"></a>Gebruik Azure IoT-Hulpprogram Ma's voor Visual Studio code voor Azure IoT Hub Apparaatbeheer
@@ -48,7 +47,7 @@ Voer Azure IoT-Hulpprogram Ma's voor Visual Studio code uit met verschillende be
 * Een actief Azure-abonnement.
 * Een Azure IoT hub onder uw abonnement.
 * [Visual Studio Code](https://code.visualstudio.com/)
-* [Azure IOT-Hulpprogram ma's voor VS code](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-tools) of kopieer deze URL en plak deze in een browser`vscode:extension/vsciot-vscode.azure-iot-tools`venster:.
+* [Azure IOT-Hulpprogram ma's voor VS code](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-tools) of kopieer deze URL en plak deze in een browser venster: `vscode:extension/vsciot-vscode.azure-iot-tools` .
 
 ## <a name="sign-in-to-access-your-iot-hub"></a>Meld u aan voor toegang tot uw IoT-hub
 
@@ -71,19 +70,19 @@ Voer Azure IoT-Hulpprogram Ma's voor Visual Studio code uit met verschillende be
 
 2. Voer de methode naam en payload in het invoervak in.
 
-3. De resultaten worden weer gegeven in de weer gave **uitvoer** > van**Azure IOT hub** .
+3. De resultaten worden weer gegeven in de weer gave **uitvoer**van  >  **Azure IOT hub** .
 
 ## <a name="read-device-twin"></a>Dubbele apparaten lezen
 
 1. Klik met de rechter muisknop op het apparaat en selecteer **apparaat twee bewerken**. 
 
-2. Er wordt een **Azure-IOT-Device-** onderliggend JSON-bestand geopend met de inhoud van het apparaat dubbele.
+2. Een **azure-iot-device-twin.jsin** het bestand wordt geopend met de inhoud van het apparaat dubbele.
 
 ## <a name="update-device-twin"></a>Dubbele update van apparaat
 
 1. Maak enkele bewerkingen van **Tags** of **Eigenschappen. gewenst** veld.
 
-2. Klik met de rechter muisknop op het bestand **Azure-IOT-Device-dubbele. json** .
+2. Klik met de rechter muisknop op het bestand **azure-iot-device-twin.js** .
 
 3. Selecteer **apparaat dubbele bijwerken** om het apparaat te updaten.
 
@@ -95,7 +94,7 @@ Voer de volgende stappen uit om een bericht van uw IoT-hub naar uw apparaat te v
 
 2. Voer het bericht in het invoervak in.
 
-3. De resultaten worden weer gegeven in de weer gave **uitvoer** > van**Azure IOT hub** .
+3. De resultaten worden weer gegeven in de weer gave **uitvoer**van  >  **Azure IOT hub** .
 
 ## <a name="next-steps"></a>Volgende stappen
 

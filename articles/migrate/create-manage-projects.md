@@ -4,10 +4,9 @@ description: U kunt projecten vinden, maken, beheren en verwijderen in Azure Mig
 ms.topic: how-to
 ms.date: 04/19/2020
 ms.openlocfilehash: f5079ed979d98f2c6f0c654c860c6f176f366497
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81676393"
 ---
 # <a name="create-and-manage-azure-migrate-projects"></a>Azure Migrate-projecten maken en beheren
@@ -78,8 +77,8 @@ Opmerking:
 
 1. Blader naar de Log Analytics werkruimte die aan het project is gekoppeld.
 
-    - Als u het Azure migrate project nog niet hebt verwijderd, kunt u de koppeling naar de werk ruimte in **Essentials** > **Server-evaluatie**vinden.
-       ![De werk](./media/create-manage-projects/loganalytics-workspace.png)ruimte La.
+    - Als u het Azure migrate project nog niet hebt verwijderd, kunt u de koppeling naar de werk ruimte in **Essentials**  >  **Server-evaluatie**vinden.
+       ![De werk ruimte LA ](./media/create-manage-projects/loganalytics-workspace.png) .
        
     - Als u het Azure Migrate project al hebt verwijderd, selecteert u **resource groepen** in het linkerdeel venster van de Azure Portal en zoekt u de werk ruimte.
        

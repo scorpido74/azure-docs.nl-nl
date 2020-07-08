@@ -11,10 +11,9 @@ ms.topic: article
 ms.date: 04/12/2020
 ms.author: ellbe
 ms.openlocfilehash: 3a71a29fdf4af10162e2f7961fb457d0e99b18e8
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81687126"
 ---
 # <a name="automatically-identify-the-spoken-language-with-language-identification-model"></a>Automatische identificatie van de gesp roken taal met taal identificatie model
@@ -35,9 +34,9 @@ Wanneer u Portal gebruikt, gaat u naar uw **account Video's** op de start pagina
 
 ## <a name="model-output"></a>Uitvoer van model
 
-Video Indexer transcribeert de video aan de hand van de meest waarschijnlijke taal als het vertrouwen voor `> 0.6`die taal is. Als de taal niet met vertrouwen kan worden geïdentificeerd, wordt ervan uitgegaan dat de gesp roken taal Engels is. 
+Video Indexer transcribeert de video aan de hand van de meest waarschijnlijke taal als het vertrouwen voor die taal is `> 0.6` . Als de taal niet met vertrouwen kan worden geïdentificeerd, wordt ervan uitgegaan dat de gesp roken taal Engels is. 
 
-De dominante taal van het model is beschikbaar in de `sourceLanguage` JSON Insights als het kenmerk (onder hoofdmap/Video's/inzichten). Er is ook een bijbehorende betrouwbaarheids Score beschikbaar `sourceLanguageConfidence` onder het-kenmerk.
+De dominante taal van het model is beschikbaar in de JSON Insights als het `sourceLanguage` kenmerk (onder hoofdmap/Video's/inzichten). Er is ook een bijbehorende betrouwbaarheids Score beschikbaar onder het- `sourceLanguageConfidence` kenmerk.
 
 ```json
 "insights": {
@@ -58,7 +57,7 @@ De dominante taal van het model is beschikbaar in de `sourceLanguage` JSON Insig
     Engels, Spaans, Frans, Duits, Italiaans, Mandarijn Chin, Japans, Russisch en Portugees (Brazilië).
 * Hoewel Video Indexer Arabisch (modern Standard en Levantine), Hindi en Koreaans ondersteunt, worden deze talen niet ondersteund in het deksel.
 * Als de audio andere talen dan de hierboven vermelde lijst bevat, is het resultaat onverwacht.
-* Als Video Indexer de taal niet kan identificeren met een hoge mate van`>0.6`betrouw baarheid (), is de terugval taal Engels.
+* Als Video Indexer de taal niet kan identificeren met een hoge mate van betrouw baarheid ( `>0.6` ), is de terugval taal Engels.
 * Er is geen huidige ondersteuning voor een bestand met audio voor gemengde talen. Als de audio gemengde talen bevat, is het resultaat onverwacht. 
 * Audio van lage kwaliteit kan van invloed zijn op de model resultaten.
 * Het model vereist ten minste één minuut spraak op de audio.

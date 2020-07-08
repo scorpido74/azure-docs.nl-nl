@@ -9,10 +9,9 @@ ms.date: 01/24/2020
 ms.author: victorh
 ms.topic: conceptual
 ms.openlocfilehash: 1301db56cab36ae623bb94cfac97b8e4bdb934e5
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81682485"
 ---
 # <a name="configure-per-site-waf-policies-using-azure-powershell"></a>WAF-beleid per site configureren met behulp van Azure PowerShell
@@ -26,7 +25,7 @@ Door WAF-beleid toe te passen op een listener, kunt u WAF-instellingen configure
 In dit artikel leert u het volgende:
 
 > [!div class="checklist"]
-> * Netwerk instellen
+> * Het netwerk instellen
 > * Een WAF-beleid maken
 > * Een toepassingsgateway maken met WAF ingeschakeld
 > * Het WAF-beleid globaal, per site en per URI Toep assen
@@ -368,7 +367,7 @@ Update-AzVmss `
 
 ## <a name="create-a-storage-account-and-configure-diagnostics"></a>Een opslagaccount maken en diagnostische gegevens configureren
 
-In dit artikel maakt de toepassings gateway gebruik van een opslag account voor het opslaan van gegevens voor detectie en preventie. U kunt ook Azure Monitor-logboeken of Event Hub gebruiken om gegevens vast te leggen.
+In dit artikel gebruikt de toepassingsgateway een opslagaccount voor het opslaan van gegevens voor detectie- en preventiedoeleinden. U kunt ook Azure Monitor-logboeken of Event Hub gebruiken om gegevens vast te leggen.
 
 ### <a name="create-the-storage-account"></a>Het opslagaccount maken
 

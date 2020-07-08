@@ -13,10 +13,9 @@ manager: mflasko
 ms.custom: seo-lt-2019
 ms.date: 04/15/2020
 ms.openlocfilehash: 4cb5b84f3889dcf4e0f28d525afb42cfeac5b54c
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81605499"
 ---
 # <a name="configure-a-self-hosted-ir-as-a-proxy-for-an-azure-ssis-ir-in-azure-data-factory"></a>Een zelf-hostende IR configureren als proxy voor een Azure-SSIS IR in Azure Data Factory
@@ -58,7 +57,7 @@ Als u dit nog niet hebt gedaan, maakt u een aan Azure Blob Storage gekoppelde se
 - Selecteer voor **verificatie methode** **account sleutel**, **SAS-URI**of service- **Principal**.  
 
     >[!TIP]
-    >Als u de **Service-Principal** -methode selecteert, geeft u de Service-Principal ten minste een rol voor *Storage BLOB data Inzender* . Zie [Azure Blob Storage-connector](connector-azure-blob-storage.md#linked-service-properties)voor meer informatie.
+    >Als u de **Service-Principal** -methode selecteert, geeft u de Service-Principal ten minste een rol voor *Storage BLOB data Inzender*   . Zie [Azure Blob Storage-connector](connector-azure-blob-storage.md#linked-service-properties)voor meer informatie.
 
 ![De aan Azure Blob Storage gekoppelde service voorbereiden voor fase ring](media/self-hosted-integration-runtime-proxy-ssis/shir-azure-blob-storage-linked-service.png)
 
@@ -118,7 +117,7 @@ Start-AzDataFactoryV2IntegrationRuntime -ResourceGroupName $ResourceGroupName `
 
 ## <a name="enable-ssis-packages-to-connect-by-proxy"></a>SSIS-pakketten inschakelen om verbinding te maken via proxy
 
-Door de nieuwste SSDT met SSIS projects-extensie voor Visual Studio of een zelfstandig installatie programma te gebruiken, kunt u `ConnectByProxy` een nieuwe eigenschap vinden die is toegevoegd in OLEDB-of plat file Connection-beheer.
+Door de nieuwste SSDT met SSIS projects-extensie voor Visual Studio of een zelfstandig installatie programma te gebruiken, kunt u een nieuwe `ConnectByProxy` eigenschap vinden die is toegevoegd in OLEDB-of plat file Connection-beheer.
 * [De SSDT met SSIS projects-extensie voor Visual Studio downloaden](https://marketplace.visualstudio.com/items?itemName=SSIS.SqlServerIntegrationServicesProjects)
 * [Het zelfstandige installatie programma downloaden](https://docs.microsoft.com/sql/ssdt/download-sql-server-data-tools-ssdt?view=sql-server-2017#ssdt-for-vs-2017-standalone-installer)   
 
@@ -135,11 +134,11 @@ U kunt deze eigenschap ook inschakelen wanneer u bestaande pakketten uitvoert, z
   
   ![ConnectByProxy property3 inschakelen](media/self-hosted-integration-runtime-proxy-ssis/shir-connection-managers-tab-ssis-activity.png)
 
-- **Optie B:** Implementeer het project met de pakketten opnieuw om het uit te voeren op uw SSIS-IR. U kunt de eigenschap vervolgens inschakelen door het pad naar de eigenschap `\Package.Connections[YourConnectionManagerName].Properties[ConnectByProxy]`op te geven, en deze in te stellen op *True* als eigenschaps onderdrukking op het tabblad **Geavanceerd** van het pop-upvenster **pakket uitvoeren** wanneer u pakketten uit SSMS uitvoert.
+- **Optie B:** Implementeer het project met de pakketten opnieuw om het uit te voeren op uw SSIS-IR. U kunt de eigenschap vervolgens inschakelen door het pad naar de eigenschap op te geven, `\Package.Connections[YourConnectionManagerName].Properties[ConnectByProxy]` en deze in te stellen op *True* als eigenschaps onderdrukking op het tabblad **Geavanceerd** van het pop-upvenster **pakket uitvoeren** wanneer u pakketten uit SSMS uitvoert.
 
   ![ConnectByProxy property4 inschakelen](media/self-hosted-integration-runtime-proxy-ssis/shir-advanced-tab-ssms.png)
 
-  U kunt de eigenschap ook inschakelen door het pad naar de eigenschap `\Package.Connections[YourConnectionManagerName].Properties[ConnectByProxy]`op te geven, en deze in te stellen op *True* als eigenschaps onderdrukking op het tabblad **Eigenschappen overschrijft** van de [activiteit uitvoering van SSIS-pakket](https://docs.microsoft.com/azure/data-factory/how-to-invoke-ssis-package-ssis-activity) wanneer u pakketten uitvoert in Data Factory pijp lijnen.
+  U kunt de eigenschap ook inschakelen door het pad naar de eigenschap op te geven, `\Package.Connections[YourConnectionManagerName].Properties[ConnectByProxy]` en deze in te stellen op *True* als eigenschaps onderdrukking op het tabblad **Eigenschappen overschrijft** van de [activiteit uitvoering van SSIS-pakket](https://docs.microsoft.com/azure/data-factory/how-to-invoke-ssis-package-ssis-activity) wanneer u pakketten uitvoert in Data Factory pijp lijnen.
   
   ![ConnectByProxy property5 inschakelen](media/self-hosted-integration-runtime-proxy-ssis/shir-property-overrides-tab-ssis-activity.png)
 
@@ -153,7 +152,7 @@ Op uw zelf-hostende IR vindt u de runtime-Logboeken in de map *C:\ProgramData\SS
 
 Als voor de faserings taken op uw zelf-hostende IR Windows-verificatie is vereist, [configureert u uw SSIS-pakketten voor gebruik van dezelfde Windows-verificatie](https://docs.microsoft.com/sql/integration-services/lift-shift/ssis-azure-connect-with-windows-auth?view=sql-server-ver15). 
 
-Uw faserings taken worden aangeroepen met het zelf-hostende IR-service account (standaard*NT SERVICE\DIAHostService*) en uw gegevens archieven worden geopend met het Windows-verificatie account. Voor beide accounts moet een bepaald beveiligings beleid worden toegewezen. Op de zelf-hostende IR-computer gaat u naar **lokaal** > **beleid lokale beleids regels** > **toewijzing van gebruikers rechten**en gaat u als volgt te werk:
+Uw faserings taken worden aangeroepen met het zelf-hostende IR-service account (standaard*NT SERVICE\DIAHostService*) en uw gegevens archieven worden geopend met het Windows-verificatie account. Voor beide accounts moet een bepaald beveiligings beleid worden toegewezen. Op de zelf-hostende IR-computer gaat u naar **lokaal**  >  **beleid lokale beleids regels**  >  **toewijzing van gebruikers rechten**en gaat u als volgt te werk:
 
 1. Wijs de *geheugen quota voor het aanpassen van een proces* toe en *Vervang een token beleid op proces niveau* naar het zelf-hostende IR-service account. Dit moet automatisch gebeuren wanneer u uw zelf-hostende IR installeert met het standaard service account. Als dat niet het geval is, moet u dit beleid hand matig toewijzen. Als u een ander service account gebruikt, wijst u hieraan hetzelfde beleid toe.
 
@@ -165,7 +164,7 @@ De eerste faserings taken die worden uitgevoerd op uw zelf-hostende IR, worden a
 
 De tweede faserings taken die op uw Azure-SSIS IR worden uitgevoerd, worden niet afzonderlijk in rekening gebracht, maar uw actieve Azure-SSIS IR wordt gefactureerd zoals is opgegeven in het artikel [Azure-SSIS IR prijzen](https://azure.microsoft.com/pricing/details/data-factory/ssis/) .
 
-## <a name="enabling-tls-12"></a>TLS 1,2 inschakelen
+## <a name="enabling-tls-12"></a>TLS 1.2 inschakelen
 
 Als u een krachtig crypto grafie/veiliger netwerk protocol (TLS 1,2) moet gebruiken en oudere SSL/TLS-versies op uw zelf-hostende IR wilt uitschakelen, kunt u het *Main. cmd* -script downloaden en uitvoeren dat u kunt vinden in de map *CustomSetupScript/UserScenarios/TLS 1,2* van de open bare preview-container.  Met [Azure Storage Explorer](https://storageexplorer.com/)kunt u verbinding maken met onze open bare preview-container door de volgende SAS-URI in te voeren:
 

@@ -9,10 +9,9 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 04/08/2020
 ms.openlocfilehash: 32ad34bcfb42bf8fc45ba7fdb7fba5e797ee6106
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81262431"
 ---
 # <a name="fuzzy-search-to-correct-misspellings-and-typos"></a>Fuzzy zoeken om spel fouten en typfouten te corrigeren
@@ -33,7 +32,7 @@ In azure Cognitive Search:
 
 + Fuzzy query is van toepassing op hele voor waarden, maar u kunt wel zinnen door lopen en bouwen. Zo komt ' Unviersty ~ van ~ ' Wshington ~ ' overeen met ' University of Washington '.
 
-+ De standaard afstand van een bewerking is 2. Een waarde van `~0` geeft aan dat er geen uitbrei ding is (alleen de exacte term wordt beschouwd als een overeenkomst `~1` ), maar u kunt wel een mate van verschil of één bewerking opgeven. 
++ De standaard afstand van een bewerking is 2. Een waarde van `~0` geeft aan dat er geen uitbrei ding is (alleen de exacte term wordt beschouwd als een overeenkomst), maar u kunt wel een `~1` mate van verschil of één bewerking opgeven. 
 
 + Met een fuzzy query kan een term worden uitgebreid tot 50 extra permutaties. Deze limiet kan niet worden geconfigureerd, maar u kunt het aantal uitbrei dingen effectief verminderen door de bewerkings afstand te verlagen tot 1.
 
@@ -58,13 +57,13 @@ Als test query's echter niet de overeenkomen die u verwacht, kunt u de Indexing 
 
 Fuzzy query's worden gemaakt met behulp van de volledige lucene-query syntaxis, waarbij de [lucene-query-parser](https://lucene.apache.org/core/6_6_1/queryparser/org/apache/lucene/queryparser/classic/package-summary.html)wordt aangeroepen.
 
-1. Stel de volledige lucene-parser in voor de`queryType=full`query ().
+1. Stel de volledige lucene-parser in voor de query ( `queryType=full` ).
 
-1. U kunt eventueel de aanvraag beperken tot specifieke velden, met behulp van`searchFields=<field1,field2>`deze para meter (). 
+1. U kunt eventueel de aanvraag beperken tot specifieke velden, met behulp van deze para meter ( `searchFields=<field1,field2>` ). 
 
-1. Voeg de tilde`~`()-operator aan het einde van de volledige`search=<string>~`term () toe.
+1. Voeg de tilde ( `~` )-operator aan het einde van de volledige term ( `search=<string>~` ) toe.
 
-   Neem een optionele para meter, een getal tussen 0 en 2 (standaard) op als u de bewerkings afstand (`~1`) wilt opgeven. Bijvoorbeeld: ' Blue ~ ' of ' Blue ~ 1 ' retourneert ' Blue ', ' blauw ' en ' lijm '.
+   Neem een optionele para meter, een getal tussen 0 en 2 (standaard) op als u de bewerkings afstand ( `~1` ) wilt opgeven. Bijvoorbeeld: ' Blue ~ ' of ' Blue ~ 1 ' retourneert ' Blue ', ' blauw ' en ' lijm '.
 
 In azure Cognitive Search, naast de term en afstand (Maxi maal 2), zijn er geen aanvullende para meters ingesteld voor de query.
 
@@ -82,7 +81,7 @@ Als de resultaten dubbel zinnig zijn, kunt u met [treffers markeren](search-pagi
 
 ### <a name="example-1-fuzzy-search-with-the-exact-term"></a>Voor beeld 1: fuzzy Search met de exacte term
 
-Stel dat de volgende teken reeks bestaat `"Description"` in een veld in een zoek document:`"Test queries with special characters, plus strings for MSFT, SQL and Java."`
+Stel dat de volgende teken reeks bestaat in een `"Description"` veld in een zoek document:`"Test queries with special characters, plus strings for MSFT, SQL and Java."`
 
 Begin met een zoek actie op ' Special ' en voeg treffers markeren toe aan het veld Beschrijving:
 
@@ -120,7 +119,7 @@ U ziet dat hetzelfde antwoord wordt geretourneerd, maar nu in plaats van te vold
 
 Het punt van dit uitgevouwen voor beeld is om de duidelijkheid te illustreren dat treffers markeren tot onduidelijke resultaten kan leiden. In alle gevallen wordt hetzelfde document geretourneerd. U hebt zich op document-Id's bevonden om een overeenkomst te controleren. u hebt de Shift-toets mogelijk niet van ' speciaal ' naar ' SQL ' gemist.
 
-## <a name="see-also"></a>Zie ook
+## <a name="see-also"></a>Zie tevens
 
 + [De manier waarop zoeken in volledige tekst werkt in azure Cognitive Search (architectuur voor het parseren van query's)](search-lucene-query-architecture.md)
 + [Zoek Verkenner](search-explorer.md)

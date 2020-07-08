@@ -12,10 +12,9 @@ manager: daveba
 ms.reviewer: annaba
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: d9760624afec111a271ae5aa0ebbe5533d6ba8d6
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81680213"
 ---
 # <a name="azure-active-directory-certificate-based-authentication-on-android"></a>Verificatie op basis van certificaten op Android Azure Active Directory
@@ -42,7 +41,7 @@ Deze functie is beschikbaar als preview-versie van Office 365 Amerikaanse overhe
 | OneDrive |![Vinkje voor ondersteuning voor deze toepassing][1] |
 | Outlook |![Vinkje voor ondersteuning voor deze toepassing][1] |
 | Power BI |![Vinkje voor ondersteuning voor deze toepassing][1] |
-| Skype voor Bedrijven |![Vinkje voor ondersteuning voor deze toepassing][1] |
+| Skype voor bedrijven |![Vinkje voor ondersteuning voor deze toepassing][1] |
 | Word/Excel/Power Point |![Vinkje voor ondersteuning voor deze toepassing][1] |
 | Yammer |![Vinkje voor ondersteuning voor deze toepassing][1] |
 

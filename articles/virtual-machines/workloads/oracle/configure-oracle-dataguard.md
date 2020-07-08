@@ -15,10 +15,9 @@ ms.workload: infrastructure
 ms.date: 08/02/2018
 ms.author: borisb
 ms.openlocfilehash: 96528dc34305e77602634110a0153f7623a15c96
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81676774"
 ---
 # <a name="implement-oracle-data-guard-on-an-azure-linux-virtual-machine"></a>Oracle Data Guard implementeren op een virtuele machine van Azure Linux 
@@ -28,7 +27,7 @@ Azure CLI wordt gebruikt voor het maken en beheren van Azure-resources vanaf de 
 Voordat u begint, moet u ervoor zorgen dat Azure CLI is geïnstalleerd. Raadpleeg de [installatie handleiding voor Azure cli](https://docs.microsoft.com/cli/azure/install-azure-cli)voor meer informatie.
 
 ## <a name="prepare-the-environment"></a>De omgeving voorbereiden
-### <a name="assumptions"></a>Veronderstellingen
+### <a name="assumptions"></a>Aannames
 
 Als u Oracle Data Guard wilt installeren, moet u twee virtuele Azure-machines maken op dezelfde beschikbaarheidsset:
 
@@ -71,7 +70,7 @@ az vm availability-set create \
 
 Maak een VM met de opdracht [az vm create](/cli/azure/vm). 
 
-In het volgende voor beeld worden twee `myVM1` virtuele `myVM2`machines gemaakt met de naam en. Ook worden er SSH-sleutels gemaakt, als deze nog niet bestaan op een standaard sleutel locatie. Als u een specifieke set sleutels wilt gebruiken, gebruikt u de optie `--ssh-key-value`.
+In het volgende voor beeld worden twee virtuele machines gemaakt met de naam `myVM1` en `myVM2` . Ook worden er SSH-sleutels gemaakt, als deze nog niet bestaan op een standaard sleutel locatie. Als u een specifieke set sleutels wilt gebruiken, gebruikt u de optie `--ssh-key-value`.
 
 MyVM1 maken (primair):
 ```azurecli
@@ -85,7 +84,7 @@ az vm create \
      --generate-ssh-keys \
 ```
 
-Nadat u de virtuele machine hebt gemaakt, toont Azure CLI soort gelijke informatie als in het volgende voor beeld. Noteer de waarde van `publicIpAddress`. U gebruikt dit adres voor toegang tot de virtuele machine.
+Nadat u de virtuele machine hebt gemaakt, toont Azure CLI soort gelijke informatie als in het volgende voor beeld. Noteer de waarde van `publicIpAddress` . U gebruikt dit adres voor toegang tot de virtuele machine.
 
 ```output
 {
@@ -162,7 +161,7 @@ az network nsg rule create --resource-group myResourceGroup\
 
 ### <a name="connect-to-the-virtual-machine"></a>Verbinding maken met de virtuele machine
 
-Gebruik de volgende opdracht om een SSH-sessie te starten voor de virtuele machine. Vervang het IP-adres door `publicIpAddress` de waarde voor de virtuele machine.
+Gebruik de volgende opdracht om een SSH-sessie te starten voor de virtuele machine. Vervang het IP-adres door de `publicIpAddress` waarde voor de virtuele machine.
 
 ```bash 
 $ ssh azureuser@<publicIpAddress>
@@ -282,7 +281,7 @@ SQL> ALTER DATABASE ADD STANDBY LOGFILE ('/u01/app/oracle/oradata/cdb1/standby_r
 SQL> ALTER DATABASE ADD STANDBY LOGFILE ('/u01/app/oracle/oradata/cdb1/standby_redo04.log') SIZE 50M;
 ```
 
-Schakel Flashback (waardoor herstel veel gemakkelijker te maken) in en stel stand\_-\_by bestands beheer in op automatisch. Sluit SQL * Plus daarna af.
+Schakel Flashback (waardoor herstel veel gemakkelijker te maken) in en stel stand-by \_ bestands \_ beheer in op automatisch. Sluit SQL * Plus daarna af.
 
 ```bash
 SQL> ALTER DATABASE FLASHBACK ON;
@@ -554,7 +553,7 @@ U hebt de installatie van Oracle Data Guard voltooid. In de volgende sectie ziet
 
 Werk het bestand bestand Tnsnames. ora op de client computer bij of maak het. Dit bestand bevindt zich doorgaans in $ORACLE _HOME \network\admin.
 
-Vervang de IP-adressen door `publicIpAddress` de waarden voor MyVM1 en myVM2:
+Vervang de IP-adressen door de `publicIpAddress` waarden voor myVM1 en myVM2:
 
 ```bash
 cdb1=

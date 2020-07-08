@@ -12,10 +12,9 @@ ms.custom:
 - amqp
 - mqtt
 ms.openlocfilehash: ef31bd74c73aa081c32031b71392f69a1ca14f75
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81730912"
 ---
 # <a name="understand-the-azure-iot-edge-runtime-and-its-architecture"></a>Inzicht in de runtime van Azure IoT Edge en de architectuur ervan
@@ -73,7 +72,7 @@ Als u een bericht wilt ontvangen, registreert u een call back waarmee berichten 
    await client.SetInputMessageHandlerAsync("input1", messageProcessor, userContext);
    ```
 
-Voor meer informatie over de ModuleClient-klasse en de communicatie methoden raadpleegt u de API-verwijzing voor uw voorkeurs taal van de SDK: [C#](https://docs.microsoft.com/dotnet/api/microsoft.azure.devices.client.moduleclient?view=azure-dotnet), [C](https://docs.microsoft.com/azure/iot-hub/iot-c-sdk-ref/iothub-module-client-h), [python](https://docs.microsoft.com/python/api/azure-iot-device/azure.iot.device.iothubmoduleclient?view=azure-python), [Java](https://docs.microsoft.com/java/api/com.microsoft.azure.sdk.iot.device.moduleclient?view=azure-java-stable)of [node. js](https://docs.microsoft.com/javascript/api/azure-iot-device/moduleclient?view=azure-node-latest).
+Voor meer informatie over de ModuleClient-klasse en de communicatie methoden raadpleegt u de API-verwijzing voor uw voorkeurs taal van de SDK: [C#](https://docs.microsoft.com/dotnet/api/microsoft.azure.devices.client.moduleclient?view=azure-dotnet), [C](https://docs.microsoft.com/azure/iot-hub/iot-c-sdk-ref/iothub-module-client-h), [python](https://docs.microsoft.com/python/api/azure-iot-device/azure.iot.device.iothubmoduleclient?view=azure-python), [Java](https://docs.microsoft.com/java/api/com.microsoft.azure.sdk.iot.device.moduleclient?view=azure-java-stable)of [Node.js](https://docs.microsoft.com/javascript/api/azure-iot-device/moduleclient?view=azure-node-latest).
 
 De oplossings ontwikkelaar is verantwoordelijk voor het opgeven van de regels die bepalen hoe IoT Edge hub berichten tussen modules doorgeeft. Routerings regels worden gedefinieerd in de Cloud en naar IoT Edge hub gepusht in de module dubbele. Dezelfde syntaxis voor IoT Hub routes wordt gebruikt voor het definiëren van routes tussen modules in Azure IoT Edge. Zie [informatie over het implementeren van modules en het tot stand brengen van routes in IOT Edge](module-composition.md)voor meer informatie.
 
@@ -87,7 +86,7 @@ De [IOT Edge Security daemon](iot-edge-security-manager.md) start de IOT Edge-ag
 
 Elk item in het implementatie manifest bevat specifieke informatie over een module en wordt gebruikt door de IoT Edge-agent voor het beheren van de levens cyclus van de module. Enkele van de interessantere eigenschappen zijn:
 
-* **Settings. image** : de container installatie kopie die door de IOT Edge-agent wordt gebruikt om de module te starten. De IoT Edge-agent moet worden geconfigureerd met referenties voor het container register als de installatie kopie wordt beveiligd met een wacht woord. Referenties voor het container register kunnen extern worden geconfigureerd met behulp van het implementatie manifest of op het IoT Edge apparaat zelf door `config.yaml` het bestand in de map IOT Edge programma bij te werken.
+* **Settings. image** : de container installatie kopie die door de IOT Edge-agent wordt gebruikt om de module te starten. De IoT Edge-agent moet worden geconfigureerd met referenties voor het container register als de installatie kopie wordt beveiligd met een wacht woord. Referenties voor het container register kunnen extern worden geconfigureerd met behulp van het implementatie manifest of op het IoT Edge apparaat zelf door het `config.yaml` bestand in de map IOT Edge programma bij te werken.
 * **Settings. createOptions** : een teken reeks die rechtstreeks wordt door gegeven aan de Moby-container-daemon bij het starten van de container van een module. Door de opties in deze eigenschap toe te voegen, kunt u geavanceerde configuraties configureren, zoals poort door sturing of het koppelen van volumes in de container van een module.  
 * **status** : de status waarin de IOT Edge agent de module plaatst. Normaal gesp roken is deze waarde ingesteld op *actief* , zodat de IOT Edge agent direct alle modules op het apparaat moet starten. U kunt echter de begin status van een module opgeven die moet worden gestopt en u moet wachten op een toekomstige tijd om de IoT Edge agent te laten weten dat een module moet worden gestart.De IoT Edge agent rapporteert de status van elke module terug naar de cloud in de gerapporteerde eigenschappen. Een verschil tussen de gewenste eigenschap en de gerapporteerde eigenschap is een indicator van een apparaat dat zich niet op de juiste manier bevindt. De ondersteunde statussen zijn:
 

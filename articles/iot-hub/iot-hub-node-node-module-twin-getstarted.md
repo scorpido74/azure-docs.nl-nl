@@ -1,6 +1,6 @@
 ---
-title: Beginnen met de identiteit van de Azure IoT Hub-module & de module dubbele (node. js)
-description: Meer informatie over het maken van module-identiteits-en update-modules, met behulp van IoT Sdk's voor node. js.
+title: Beginnen met de identiteit van de Azure IoT Hub-module &-module twee Node.js
+description: Meer informatie over het maken van module-identiteit en-update module, twee met IoT Sdk's voor Node.js.
 author: wesmc7777
 manager: philmea
 ms.author: wesmc
@@ -11,20 +11,19 @@ ms.topic: conceptual
 ms.date: 04/26/2018
 ms.custom: amqp
 ms.openlocfilehash: 8e1599b1bd5db5e410e8bbd76fffbe0beb5f066e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81732305"
 ---
-# <a name="get-started-with-iot-hub-module-identity-and-module-twin-nodejs"></a>Aan de slag met IoT Hub module identiteit en module dubbele (node. js)
+# <a name="get-started-with-iot-hub-module-identity-and-module-twin-nodejs"></a>Aan de slag met IoT Hub module-identiteit en-module dubbele (Node.js)
 
 [!INCLUDE [iot-hub-selector-module-twin-getstarted](../../includes/iot-hub-selector-module-twin-getstarted.md)]
 
 > [!NOTE]
 > [Module-id's en moduledubbels](iot-hub-devguide-module-twins.md) zijn vergelijkbaar met Azure IoT Hub-apparaat-id's en apparaatdubbels, maar bieden een hogere granulariteit. Hoewel Azure IoT Hub apparaat-id en-apparaat twee keer de back-endtoepassing in staat stellen om een apparaat te configureren en inzicht te krijgen in de voor waarden van het apparaat, bieden een module-identiteit en-module twee deze mogelijkheden voor afzonderlijke onderdelen van een apparaat. Op apparaten met meerdere onderdelen, zoals apparaten met een besturingssysteem of firmware, kunt u afzonderlijke configuraties en voorwaarden voor elk onderdeel instellen.
 
-Aan het einde van deze zelf studie hebt u twee node. js-apps:
+Aan het einde van deze zelf studie hebt u twee Node.js-apps:
 
 * **CreateIdentities**: deze toepassing maakt een apparaat-id, een module-id en de bijbehorende beveiligingssleutel waarmee uw apparaat- en moduleclients verbonden kunnen worden.
 
@@ -35,7 +34,7 @@ Aan het einde van deze zelf studie hebt u twee node. js-apps:
 
 ## <a name="prerequisites"></a>Vereisten
 
-* Node. js versie 10.0. x of hoger. [Uw ontwikkel omgeving voorbereiden](https://github.com/Azure/azure-iot-sdk-node/tree/master/doc/node-devbox-setup.md) hierin wordt beschreven hoe u node. js installeert voor deze zelf studie op Windows of Linux.
+* Node.js versie 10.0. x of hoger. [Uw ontwikkel omgeving voorbereiden](https://github.com/Azure/azure-iot-sdk-node/tree/master/doc/node-devbox-setup.md) bevat informatie over het installeren van Node.js voor deze zelf studie over Windows of Linux.
 
 * Een actief Azure-account. (Als u geen account hebt, kunt u binnen een paar minuten een [gratis account](https://azure.microsoft.com/pricing/free-trial/) maken.)
 
@@ -51,18 +50,18 @@ Aan het einde van deze zelf studie hebt u twee node. js-apps:
 
 ## <a name="create-a-device-identity-and-a-module-identity-in-iot-hub"></a>Een apparaat-id en een module-ID maken in IoT Hub
 
-In deze sectie maakt u een node. js-app die een apparaat-id en een module-ID maakt in het identiteits register van uw IoT-hub. Een apparaat of module kan alleen verbinding maken met de IoT-hub als het apparaat of de module is vermeld in het identiteitsregister. Zie de sectie identiteits register van de [IOT hub-ontwikkelaars handleiding](iot-hub-devguide-identity-registry.md)voor meer informatie. Als u deze consoletoepassing uitvoert, worden er een unieke id en een unieke sleutel gemaakt voor zowel het apparaat als de module. Deze waarden worden door het apparaat en de module gebruikt om zichzelf te identificeren bij het verzenden van apparaat-naar-cloud-berichten naar IoT Hub. De id's zijn hoofdlettergevoelig.
+In deze sectie maakt u een Node.js-app die een apparaat-id en een module-identiteit maakt in het identiteits register van uw IoT-hub. Een apparaat of module kan alleen verbinding maken met de IoT-hub als het apparaat of de module is vermeld in het identiteitsregister. Zie de sectie identiteits register van de [IOT hub-ontwikkelaars handleiding](iot-hub-devguide-identity-registry.md)voor meer informatie. Als u deze consoletoepassing uitvoert, worden er een unieke id en een unieke sleutel gemaakt voor zowel het apparaat als de module. Deze waarden worden door het apparaat en de module gebruikt om zichzelf te identificeren bij het verzenden van apparaat-naar-cloud-berichten naar IoT Hub. De id's zijn hoofdlettergevoelig.
 
 1. Maak een directory waarin u uw code kunt opslaan.
 
-2. Voer in de map eerst **NPM init-y** uit om een leeg pakket. json met de standaard waarden te maken. Dit is het project bestand voor uw code.
+2. Voer in de map eerst **NPM init-y** uit om een lege package.jste maken met de standaard instellingen. Dit is het project bestand voor uw code.
 
-3. Voer **NPM install-S Azure-iothub\@-modules uit. voor beeld** voor het installeren van de Service-SDK in de submap **node_modules** .
+3. Voer **NPM install-S Azure-iothub \@ -modules uit. voor beeld** voor het installeren van de Service-SDK in de submap **node_modules** .
 
     > [!NOTE]
     > De naam van de submap node_modules gebruikt de Word-module om "een knooppunt bibliotheek" te zeggen. De term hier heeft niets te maken met IoT Hub-modules.
 
-4. Maak het volgende. js-bestand in de map. Noem het **toevoegen. js**. Kopieer en plak de hub connection string en de naam van de hub.
+4. Maak het volgende. js-bestand in de map. Bel het **add.js**. Kopieer en plak de hub connection string en de naam van de hub.
 
     ```javascript
     var Registry = require('azure-iothub').Registry;
@@ -121,20 +120,20 @@ In deze sectie maakt u een node. js-app die een apparaat-id en een module-ID maa
 
 Met deze app maakt u een apparaat-id met de naam **myFirstDevice** en een module-ID met id **MyFirstModule** onder apparaat **myFirstDevice**. (Als deze module-ID al bestaat in het identiteits register, haalt de code gewoon de bestaande module gegevens op.) In de app wordt vervolgens de primaire sleutel voor die identiteit weer gegeven. U gebruikt deze sleutel in de gesimuleerde module-app om verbinding te maken met uw IoT-hub.
 
-Voer dit uit met behulp van node add. js. Hiermee krijgt u een connection string voor uw apparaat-id en een andere voor uw module-identiteit.
+Voer dit uit met behulp van knooppunt add.js. Hiermee krijgt u een connection string voor uw apparaat-id en een andere voor uw module-identiteit.
 
 > [!NOTE]
 > In het identiteitsregister van IoT Hub worden alleen apparaat- en module-id's opgeslagen waarmee veilig toegang tot de IoT-hub kan worden verkregen. In het identiteitsregister worden apparaat-id's en -sleutels opgeslagen die als beveiligingsreferenties worden gebruikt. In het identiteitsregister wordt ook een vlag ingeschakeld/uitgeschakeld voor elk apparaat opgeslagen die u kunt gebruiken om de toegang tot dat apparaat uit te schakelen. Als uw toepassing andere apparaatspecifieke metagegevens moet opslaan, moet deze een toepassingsspecifieke opslagmethode gebruiken. Er is geen vlag voor ingeschakeld/uitgeschakeld voor module-id's. Zie [IOT hub ontwikkelaars handleiding](iot-hub-devguide-identity-registry.md)voor meer informatie.
 
-## <a name="update-the-module-twin-using-nodejs-device-sdk"></a>De module bijwerken met behulp van node. js apparaat SDK
+## <a name="update-the-module-twin-using-nodejs-device-sdk"></a>De module bijwerken met behulp van de SDK van Node.js apparaat
 
-In deze sectie maakt u een node. js-app op uw gesimuleerde apparaat die de module dubbele gerapporteerde eigenschappen bijwerkt.
+In deze sectie maakt u een Node.js-app op uw gesimuleerde apparaat die de module dubbele gerapporteerde eigenschappen bijwerkt.
 
 1. **Uw module Connection String ophalen** : Meld u aan bij de [Azure Portal](https://portal.azure.com/). Navigeer naar uw IoT Hub en klik op IoT-apparaten. Zoek myFirstDevice, open het en controleer of myFirstModule is gemaakt. Kopieer de moduleverbindingsreeks. Deze is vereist voor de volgende stap.
 
    ![Details van de Azure Portal-module](./media/iot-hub-node-node-module-twin-getstarted/module-detail.png)
 
-2. Net als bij de bovenstaande stap maakt u een map voor uw apparaatcode en gebruikt u NPM om deze te initialiseren en de SDK van het apparaat te installeren (**NPM install-S Azure-IOT-\@Device-AMQP modules-preview**).
+2. Net als bij de bovenstaande stap maakt u een map voor uw apparaatcode en gebruikt u NPM om deze te initialiseren en de SDK van het apparaat te installeren (**NPM install-S Azure-IOT-Device-AMQP \@ modules-preview**).
 
    > [!NOTE]
    > De NPM-installatie opdracht kan traag zijn. Het is een ogen blik dat u veel code uit de pakket opslagplaats haalt.
@@ -142,7 +141,7 @@ In deze sectie maakt u een node. js-app op uw gesimuleerde apparaat die de modul
    > [!NOTE]
    > Als u een fout ziet met de tekst NPM ERR! register fout bij het parseren van JSON. Dit is veilig om te negeren. Als u een fout ziet met de tekst NPM ERR! register fout bij het parseren van JSON. Dit is veilig om te negeren.
 
-3. Maak een bestand met de naam dubbele. js. Kopieer en plak uw module identiteits teken reeks.
+3. Maak een bestand met de naam twin.js. Kopieer en plak uw module identiteits teken reeks.
 
     ```javascript
     var Client = require('azure-iot-device').Client;
@@ -193,7 +192,7 @@ In deze sectie maakt u een node. js-app op uw gesimuleerde apparaat die de modul
     });
     ```
 
-4. Voer dit nu uit met behulp van het opdracht **knooppunt dubbele. js**.
+4. Voer dit nu uit met behulp van het twin.jsvan het opdracht **knooppunt **.
 
    ```cmd/sh
    F:\temp\module_twin>node twin.js

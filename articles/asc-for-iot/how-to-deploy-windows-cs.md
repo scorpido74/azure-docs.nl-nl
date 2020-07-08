@@ -16,10 +16,9 @@ ms.workload: na
 ms.date: 07/23/2019
 ms.author: mlottner
 ms.openlocfilehash: 4d7d2f0a423a50f85160a856480eaa973be7e2b0
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81537607"
 ---
 # <a name="deploy-an-azure-security-center-for-iot-c-based-security-agent-for-windows"></a>Een beveiligingsagent voor Azure Security Center for IoT op basis van C# implementeren voor Windows
@@ -104,7 +103,7 @@ Als de agent niet kan worden gestart, schakelt u logboek registratie in (logboek
 
 Logboek registratie inschakelen:
 
-1. Open het configuratie bestand (General. config) voor bewerking met een standaard bestands editor.
+1. Open het configuratie bestand (General.config) voor bewerking met een standaard bestands editor.
 
 1. Bewerk de volgende waarden:
 

@@ -11,10 +11,9 @@ ms.topic: conceptual
 ms.date: 08/26/2019
 ms.custom: mqtt
 ms.openlocfilehash: 3ea2f0eec12d756a898f1761f6b22fd034c1bc3e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81732459"
 ---
 # <a name="get-started-with-device-twins-java"></a>Aan de slag met Device apparaatdubbels (Java)
@@ -37,7 +36,7 @@ In deze zelf studie maakt u twee Java Console-apps:
 
 * Een actief Azure-account. (Als u geen account hebt, kunt u binnen een paar minuten een [gratis account](https://azure.microsoft.com/pricing/free-trial/) maken.)
 
-* Zorg ervoor dat poort 8883 is geopend in uw firewall. Het voor beeld van het apparaat in dit artikel maakt gebruik van het MQTT-protocol, dat communiceert via poort 8883. Deze poort kan worden geblokkeerd in sommige bedrijfs-en educatieve netwerk omgevingen. Zie [verbinding maken met IOT hub (MQTT)](iot-hub-mqtt-support.md#connecting-to-iot-hub)voor meer informatie en manieren om dit probleem te omzeilen.
+* Zorg ervoor dat de poort 8883 is geopend in de firewall. Het voor beeld van het apparaat in dit artikel maakt gebruik van het MQTT-protocol, dat communiceert via poort 8883. Deze poort is in sommige netwerkomgevingen van bedrijven en onderwijsinstellingen mogelijk geblokkeerd. Zie [Verbinding maken met IoT Hub (MQTT)](iot-hub-mqtt-support.md#connecting-to-iot-hub) voor meer informatie en manieren om dit probleem te omzeilen.
 
 ## <a name="create-an-iot-hub"></a>Een IoT Hub maken
 
@@ -67,7 +66,7 @@ In deze sectie maakt u een Java-app waarmee de meta gegevens van een locatie wor
 
 3. Ga bij de opdracht prompt naar de map **Add-Tags-query** .
 
-4. Open met een tekst editor het bestand **pom. XML** in de map **Add-Tags-query** en voeg de volgende afhankelijkheden toe aan het knoop punt **afhankelijkheden** . Met deze afhankelijkheid kunt u het **IOT-service-client-** pakket in uw app gebruiken om te communiceren met uw IOT-hub:
+4. Open met een tekst editor het **pom.xml** bestand in de map **Add-Tags-query** en voeg de volgende afhankelijkheden toe aan het knoop punt **afhankelijkheden** . Met deze afhankelijkheid kunt u het **IOT-service-client-** pakket in uw app gebruiken om te communiceren met uw IOT-hub:
 
     ```xml
     <dependency>
@@ -114,7 +113,7 @@ In deze sectie maakt u een Java-app waarmee de meta gegevens van een locatie wor
     import java.util.Set;
     ```
 
-9. Voeg de volgende variabelen op klasseniveau toe aan de **App**-klasse. Vervang `{youriothubconnectionstring}` door de IOT hub-Connection String die u hebt gekopieerd in [de iot hub-Connection String ophalen](#get-the-iot-hub-connection-string).
+9. Voeg de volgende variabelen op klasseniveau toe aan de **App**-klasse. Vervang door `{youriothubconnectionstring}` de IOT hub-Connection String die u hebt gekopieerd in [de IOT hub-Connection String ophalen](#get-the-iot-hub-connection-string).
 
     ```java
     public static final String iotHubConnectionString = "{youriothubconnectionstring}";
@@ -124,7 +123,7 @@ In deze sectie maakt u een Java-app waarmee de meta gegevens van een locatie wor
     public static final String plant = "Redmond43";
     ```
 
-10. Werk de hand tekening van de **hoofd** methode bij `throws` zodat deze de volgende component bevat:
+10. Werk de hand tekening van de **hoofd** methode bij zodat deze de volgende `throws` component bevat:
 
     ```java
     public static void main( String[] args ) throws IOException
@@ -150,7 +149,7 @@ In deze sectie maakt u een Java-app waarmee de meta gegevens van een locatie wor
     }
     ```
 
-13. Voeg de volgende code toe aan het blok om de dubbele labels van de **regio** en het **centrale** apparaat in `try` het apparaat te wijzigen:
+13. Voeg de volgende code toe aan het blok om de dubbele labels van de **regio** en het **centrale** apparaat in het apparaat te wijzigen `try` :
 
     ```java
     // Get the device twin from IoT Hub
@@ -179,7 +178,7 @@ In deze sectie maakt u een Java-app waarmee de meta gegevens van een locatie wor
     System.out.println(device);
     ```
 
-14. Als u een query wilt uitvoeren voor het apparaat apparaatdubbels in IoT hub, voegt `try` u de volgende code toe aan de blok kering na de code die u in de vorige stap hebt toegevoegd. De code voert twee query's uit. Elke query retourneert een maximum van 100 apparaten.
+14. Als u een query wilt uitvoeren voor het apparaat apparaatdubbels in IoT hub, voegt u de volgende code toe aan de `try` blok kering na de code die u in de vorige stap hebt toegevoegd. De code voert twee query's uit. Elke query retourneert een maximum van 100 apparaten.
 
     ```java
     // Query the device twins in IoT Hub
@@ -228,7 +227,7 @@ In deze sectie maakt u een Java-Console-app waarmee een gerapporteerde eigenscha
 
 2. Ga bij de opdracht prompt naar de map **met gesimuleerde apparaten** .
 
-3. Open met een tekst editor het bestand **pom. XML** in de map **gesimuleerde apparaten** en voeg de volgende afhankelijkheden toe aan het knoop punt **afhankelijkheden** . Met deze afhankelijkheid kunt u het **IOT-apparaat-client-** pakket in uw app gebruiken om te communiceren met uw IOT-hub.
+3. Open met een tekst editor het **pom.xml** -bestand in de map **gesimuleerde apparaten** en voeg de volgende afhankelijkheden toe aan het knoop punt **afhankelijkheden** . Met deze afhankelijkheid kunt u het **IOT-apparaat-client-** pakket in uw app gebruiken om te communiceren met uw IOT-hub.
 
     ```xml
     <dependency>
@@ -284,7 +283,7 @@ In deze sectie maakt u een Java-Console-app waarmee een gerapporteerde eigenscha
     import java.util.Scanner;
     ```
 
-9. Voeg de volgende variabelen op klasseniveau toe aan de **App**-klasse. Vervang `{yourdeviceconnectionstring}` door het apparaat Connection String dat u hebt gekopieerd in [een nieuw apparaat registreren in de IOT-hub](#register-a-new-device-in-the-iot-hub).
+9. Voeg de volgende variabelen op klasseniveau toe aan de **App**-klasse. Vervang door `{yourdeviceconnectionstring}` het apparaat Connection String dat u hebt gekopieerd in [een nieuw apparaat registreren in de IOT-hub](#register-a-new-device-in-the-iot-hub).
 
     ```java
     private static String connString = "{yourdeviceconnectionstring}";

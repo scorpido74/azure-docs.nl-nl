@@ -10,10 +10,9 @@ ms.tgt_pltfrm: arduino
 ms.date: 07/18/2019
 ms.author: robinsh
 ms.openlocfilehash: 2720f9acfa308294b30f9203ba80e3f9b426e1e9
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81680720"
 ---
 # <a name="iot-remote-monitoring-and-notifications-with-azure-logic-apps-connecting-your-iot-hub-and-mailbox"></a>IoT-externe bewaking en meldingen met Azure Logic Apps verbinding maken met uw IoT hub en Postvak
@@ -28,9 +27,9 @@ ms.locfileid: "81680720"
 
 U leert hoe u een logische app maakt die uw IoT-hub en uw postvak verbindt voor temperatuur bewaking en meldingen.
 
-De client code die wordt uitgevoerd op uw apparaat stelt een toepassings `temperatureAlert`eigenschap in, op elke telemetrie-bericht naar uw IOT-hub. Wanneer de client code een Tempe ratuur van meer dan 30 C detecteert, wordt `true`deze eigenschap ingesteld op; Als dat niet het geval is, `false`wordt de eigenschap ingesteld op.
+De client code die wordt uitgevoerd op uw apparaat stelt een toepassings eigenschap `temperatureAlert` in, op elke telemetrie-bericht naar uw IOT-hub. Wanneer de client code een Tempe ratuur van meer dan 30 C detecteert, wordt deze eigenschap ingesteld op. als dat `true` niet het geval is, wordt de eigenschap ingesteld op `false` .
 
-Berichten die op uw IoT-hub arriveren, zien er ongeveer als volgt uit, met de telemetriegegevens in de hoofd `temperatureAlert` tekst en de eigenschap in de toepassings eigenschappen (systeem eigenschappen worden niet weer gegeven):
+Berichten die op uw IoT-hub arriveren, zien er ongeveer als volgt uit, met de telemetriegegevens in de hoofd tekst en de `temperatureAlert` eigenschap in de toepassings eigenschappen (systeem eigenschappen worden niet weer gegeven):
 
 ```json
 {
@@ -48,7 +47,7 @@ Berichten die op uw IoT-hub arriveren, zien er ongeveer als volgt uit, met de te
 
 Zie [IOT hub berichten maken en lezen](iot-hub-devguide-messages-construct.md)voor meer informatie over de indeling van IOT hub berichten.
 
-In dit onderwerp stelt u route ring in op uw IoT-hub om berichten te verzenden waarin `temperatureAlert` de eigenschap `true` naar een service bus eind punt gaat. Vervolgens stelt u een logische app in die de berichten activeert die binnenkomen op het Service Bus-eind punt en ontvangt u een e-mail melding.
+In dit onderwerp stelt u route ring in op uw IoT-hub om berichten te verzenden waarin de `temperatureAlert` eigenschap `true` naar een service bus eind punt gaat. Vervolgens stelt u een logische app in die de berichten activeert die binnenkomen op het Service Bus-eind punt en ontvangt u een e-mail melding.
 
 ## <a name="what-you-do"></a>Wat u doet
 
@@ -58,7 +57,7 @@ In dit onderwerp stelt u route ring in op uw IoT-hub om berichten te verzenden w
 
 ## <a name="what-you-need"></a>Wat u nodig hebt
 
-* Voltooi de zelf studie [Raspberry Pi online Simulator](iot-hub-raspberry-pi-web-simulator-get-started.md) of een van de zelf studies van het apparaat. bijvoorbeeld [Raspberry Pi met node. js](iot-hub-raspberry-pi-kit-node-get-started.md). Deze voldoen aan de volgende vereisten:
+* Voltooi de zelf studie [Raspberry Pi online Simulator](iot-hub-raspberry-pi-web-simulator-get-started.md) of een van de zelf studies van het apparaat. bijvoorbeeld [Raspberry Pi met node.js](iot-hub-raspberry-pi-kit-node-get-started.md). Deze voldoen aan de volgende vereisten:
 
   * Een actief Azure-abonnement.
   * Een Azure IoT hub onder uw abonnement.
@@ -70,7 +69,7 @@ Maak een Service Bus-naamruimte en -wachtrij. Verderop in dit onderwerp maakt u 
 
 ### <a name="create-a-service-bus-namespace"></a>Een Service Bus-naamruimte maken
 
-1. Selecteer op de [Azure Portal](https://portal.azure.com/) **+ een resource** > -**integratie** > **Service Bus**maken.
+1. Selecteer op de [Azure Portal](https://portal.azure.com/) **+ een resource**-  >  **integratie**  >  **Service Bus**maken.
 
 1. Geef in het deel venster **naam ruimte maken** de volgende informatie op:
 
@@ -96,7 +95,7 @@ Maak een Service Bus-naamruimte en -wachtrij. Verderop in dit onderwerp maakt u 
 
    ![Een service bus-wachtrij toevoegen in de Azure Portal](media/iot-hub-monitoring-notifications-with-azure-logic-apps/create-service-bus-queue.png)
 
-1. Ga terug naar het deel venster **Service Bus naam ruimte** , onder **entiteiten**, selecteer **wacht rijen**. Open de service bus wachtrij in de lijst en selecteer vervolgens **beleid** > voor gedeelde toegang **+ toevoegen**.
+1. Ga terug naar het deel venster **Service Bus naam ruimte** , onder **entiteiten**, selecteer **wacht rijen**. Open de service bus wachtrij in de lijst en selecteer vervolgens **beleid voor gedeelde toegang**  >  **+ toevoegen**.
 
 1. Voer een naam in voor het beleid, Controleer **beheren**en selecteer vervolgens **maken**.
 
@@ -104,7 +103,7 @@ Maak een Service Bus-naamruimte en -wachtrij. Verderop in dit onderwerp maakt u 
 
 ## <a name="add-a-custom-endpoint-and-routing-rule-to-your-iot-hub"></a>Een aangepast eind punt en een regel voor door sturen toevoegen aan uw IoT-hub
 
-Voeg een aangepast eind punt voor de Service Bus wachtrij toe aan uw IoT-hub en maak een bericht routering regel om berichten te sturen die een temperatuur waarschuwing bevatten voor dat eind punt, waar ze worden opgehaald door uw logische app. De routerings regel gebruikt een routerings `temperatureAlert = "true"`query om berichten door te sturen op basis van de `temperatureAlert` waarde van de eigenschap Application die is ingesteld door de client code die op het apparaat wordt uitgevoerd. Zie [bericht routerings query op basis van bericht eigenschappen](https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-routing-query-syntax#message-routing-query-based-on-message-properties)voor meer informatie.
+Voeg een aangepast eind punt voor de Service Bus wachtrij toe aan uw IoT-hub en maak een bericht routering regel om berichten te sturen die een temperatuur waarschuwing bevatten voor dat eind punt, waar ze worden opgehaald door uw logische app. De routerings regel gebruikt een routerings query `temperatureAlert = "true"` om berichten door te sturen op basis van de waarde van de `temperatureAlert` eigenschap Application die is ingesteld door de client code die op het apparaat wordt uitgevoerd. Zie [bericht routerings query op basis van bericht eigenschappen](https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-routing-query-syntax#message-routing-query-based-on-message-properties)voor meer informatie.
 
 ### <a name="add-a-custom-endpoint"></a>Een aangepast eind punt toevoegen
 
@@ -138,7 +137,7 @@ Voeg een aangepast eind punt voor de Service Bus wachtrij toe aan uw IoT-hub en 
 
    **Gegevens bron**: Selecteer de **telemetrie-berichten van apparaten**.
 
-   **Routerings query**: `temperatureAlert = "true"`invoeren.
+   **Routerings query**: invoeren `temperatureAlert = "true"` .
 
    ![Een regel voor door sturen toevoegen in de Azure Portal](media/iot-hub-monitoring-notifications-with-azure-logic-apps/4-add-routing-rule-azure-portal.png)
 
@@ -150,7 +149,7 @@ In de voor gaande sectie stelt u uw IoT-hub in voor het routeren van berichten m
 
 ### <a name="create-a-logic-app"></a>Een logische app maken
 
-1. Selecteer **een** > **logische app**voor het**integreren** > van resources maken.
+1. Selecteer **een**  >  **Integration**  >  **logische app**voor het integreren van resources maken.
 
 1. Voer de volgende informatie in:
 
@@ -218,7 +217,7 @@ In de voor gaande sectie stelt u uw IoT-hub in voor het routeren van berichten m
 
       ![E-mail velden voor SMTP-verbindingen kiezen](media/iot-hub-monitoring-notifications-with-azure-logic-apps/smtp-connection-choose-fields.png)
 
-   1. Voer uw e-mail adres **in voor van** en naar, en `High temperature detected` voor **het** **onderwerp** en de **hoofd tekst**. Als het dialoog venster **dynamische inhoud toevoegen van de apps en connectors in deze stroom** wordt geopend, selecteert u **verbergen** om het bestand te sluiten. In deze zelf studie gebruikt u geen dynamische inhoud.
+   1. Voer uw e-mail adres **in voor van** en naar, en voor **het** `High temperature detected` **onderwerp** en de **hoofd tekst**. Als het dialoog venster **dynamische inhoud toevoegen van de apps en connectors in deze stroom** wordt geopend, selecteert u **verbergen** om het bestand te sluiten. In deze zelf studie gebruikt u geen dynamische inhoud.
 
       ![E-mail velden voor SMTP-verbindingen invullen](media/iot-hub-monitoring-notifications-with-azure-logic-apps/fill-in-smtp-connection-fields.png)
 

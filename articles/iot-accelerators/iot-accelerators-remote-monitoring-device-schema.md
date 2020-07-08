@@ -12,10 +12,9 @@ ms.custom:
 - amqp
 - mqtt
 ms.openlocfilehash: ac681bb13ccea49c7a2f566a6fcdb6adb8cec5bb
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81683748"
 ---
 # <a name="understand-the-device-model-schema"></a>Het schema van het apparaatmodel begrijpen
@@ -71,14 +70,14 @@ U kunt de schema bestanden voor de standaard gesimuleerde apparaten weer geven i
 
 In de volgende tabel worden de schema vermeldingen op het hoogste niveau beschreven:
 
-| Schema vermelding | Beschrijving |
+| Schema vermelding | Description |
 | -- | --- |
 | `SchemaVersion` | De schema versie is altijd `1.0.0` en is specifiek voor de indeling van dit bestand. |
 | `Id` | Een unieke ID voor dit model. |
 | `Version` | Hiermee wordt de versie van het model van het apparaat geïdentificeerd. |
 | `Name` | Een beschrijvende naam voor het model van het apparaat. |
 | `Description` | Een beschrijving van het model van het apparaat. |
-| `Protocol` | Het verbindings protocol dat door het apparaat wordt gebruikt. Dit kan een van `AMQP`, `MQTT`, en `HTTP`zijn. |
+| `Protocol` | Het verbindings protocol dat door het apparaat wordt gebruikt. Dit kan een van `AMQP` , `MQTT` , en zijn `HTTP` . |
 
 In de volgende secties worden de andere secties in het JSON-schema beschreven:
 
@@ -115,7 +114,7 @@ In het volgende voor beeld ziet u de definitie van het object Apparaatstatus voo
 }
 ```
 
-De service simulatie voert het bestand **Chiller-01-State. js** elke vijf seconden uit om de status van het apparaat bij te werken. U kunt de Java script-bestanden voor de standaard gesimuleerde apparaten bekijken in de [map scripts](https://github.com/Azure/device-simulation-dotnet/tree/master/Services/data/devicemodels/scripts) op github. Deze Java script-bestanden hebben de achtervoegsel **-status** om ze te onderscheiden van de bestanden waarmee methode gedrag wordt geïmplementeerd.
+De simulatie service voert het **chiller-01-state.js** bestand elke vijf seconden uit om de apparaatstatus bij te werken. U kunt de Java script-bestanden voor de standaard gesimuleerde apparaten bekijken in de [map scripts](https://github.com/Azure/device-simulation-dotnet/tree/master/Services/data/devicemodels/scripts) op github. Deze Java script-bestanden hebben de achtervoegsel **-status** om ze te onderscheiden van de bestanden waarmee methode gedrag wordt geïmplementeerd.
 
 ## <a name="properties"></a>Eigenschappen
 
@@ -130,13 +129,13 @@ De `Properties` sectie van het schema definieert de eigenschaps waarden die het 
 }
 ```
 
-Wanneer de oplossing wordt gestart, wordt een query uitgevoerd op alle gesimuleerde apparaten om `Type` een lijst met waarden te maken die in de gebruikers interface moeten worden gebruikt. De oplossing gebruikt de `Latitude` eigenschappen `Longitude` en om de locatie van het apparaat toe te voegen aan de kaart op het dash board.
+Wanneer de oplossing wordt gestart, wordt een query uitgevoerd op alle gesimuleerde apparaten om een lijst met `Type` waarden te maken die in de gebruikers interface moeten worden gebruikt. De oplossing gebruikt de `Latitude` `Longitude` Eigenschappen en om de locatie van het apparaat toe te voegen aan de kaart op het dash board.
 
 ## <a name="telemetry"></a>Telemetrie
 
 De `Telemetry` matrix bevat alle typen telemetrie die het gesimuleerde apparaat verzendt naar de oplossing.
 
-In het volgende voor beeld wordt een JSON-telemetrie- `floor`bericht `vibration`elke tien `temperature` seconden verzonden met, en gegevens van de Sens oren van de lift:
+In het volgende voor beeld wordt een JSON-telemetrie-bericht elke tien seconden verzonden met `floor` , `vibration` en `temperature` gegevens van de Sens oren van de lift:
 
 ```json
 "Telemetry": [
@@ -158,7 +157,7 @@ In het volgende voor beeld wordt een JSON-telemetrie- `floor`bericht `vibration`
 ]
 ```
 
-`MessageTemplate`Hiermee definieert u de structuur van het JSON-bericht dat is verzonden door het gesimuleerde apparaat. De tijdelijke aanduidingen `MessageTemplate` in gebruiken de `${NAME}` syntaxis `NAME` , waarbij een sleutel is van het [object status](#simulation). Teken reeksen moeten aanhalings tekens zijn.
+`MessageTemplate`Hiermee definieert u de structuur van het JSON-bericht dat is verzonden door het gesimuleerde apparaat. De tijdelijke aanduidingen in `MessageTemplate` gebruiken de `${NAME}` syntaxis `NAME` , waarbij een sleutel is van het [object status](#simulation). Teken reeksen moeten aanhalings tekens zijn.
 
 `MessageSchema`Hiermee wordt het schema van het bericht gedefinieerd dat door het gesimuleerde apparaat wordt verzonden. Het bericht schema wordt ook gepubliceerd op IoT Hub zodat back-end-toepassingen de gegevens opnieuw kunnen gebruiken om de binnenkomende telemetrie te interpreteren.
 
@@ -167,12 +166,12 @@ Op dit moment kunt u alleen JSON-bericht schema's gebruiken. De velden die in he
 * Object-geserialiseerd met JSON
 * Binair geserialiseerd met base64
 * Tekst
-* Booleaans
+* Boolean-waarde
 * Geheel getal
-* Double
+* Dubbel
 * DateTime
 
-Als u telemetrie-berichten met verschillende intervallen wilt verzenden, voegt u `Telemetry` meerdere typen telemetrie toe aan de matrix. In het volgende voor beeld worden de gegevens over de Tempe ratuur en de vochtigheid elke 10 seconden en de status van het licht elke minuut verzonden:
+Als u telemetrie-berichten met verschillende intervallen wilt verzenden, voegt u meerdere typen telemetrie toe aan de `Telemetry` matrix. In het volgende voor beeld worden de gegevens over de Tempe ratuur en de vochtigheid elke 10 seconden en de status van het licht elke minuut verzonden:
 
 ```json
 "Telemetry": [

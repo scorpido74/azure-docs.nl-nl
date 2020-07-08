@@ -14,10 +14,9 @@ ms.topic: article
 ms.date: 04/01/2019
 ms.author: juliako
 ms.openlocfilehash: 8e1aeaf105ce371e965b433ac78e2b257f4bc18b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81682051"
 ---
 # <a name="access-the-azure-media-services-api-with-azure-ad-authentication"></a>Toegang tot de API van Azure Media Services met Azure Active Directory-verificatie  
@@ -79,13 +78,13 @@ In het voor gaande diagram vertegenwoordigt de getallen de stroom van de aanvrag
        De gegevens van de Tenant kunnen worden opgehaald uit de Azure Portal. Plaats de cursor op de naam van de aangemelde gebruiker in de rechter bovenhoek.
    * Media Services resource-URI. 
 
-       Deze URI is hetzelfde voor Media Services accounts die zich in dezelfde Azure-omgeving (bijvoorbeeld https:\//rest.media.Azure.net) bevinden.
+       Deze URI is hetzelfde voor Media Services accounts die zich in dezelfde Azure-omgeving (bijvoorbeeld https: \/ /rest.media.Azure.net) bevinden.
 
    * Media Services (systeem eigen) client-ID van toepassing.
    * Media Services (systeem eigen) URI voor omleiding van toepassing.
    * Resource-URI voor REST-Media Services.
         
-       De URI vertegenwoordigt het REST API-eind punt (bijvoorbeeld https://test03.restv2.westus.media.azure.net/api/).
+       De URI vertegenwoordigt het REST API-eind punt (bijvoorbeeld https://test03.restv2.westus.media.azure.net/api/) .
 
      Zie [de Azure Portal gebruiken om toegang te krijgen tot Azure AD-verificatie-instellingen](media-services-portal-get-started-with-aad.md) met behulp van de optie gebruikers verificatie om waarden voor deze para meters op te halen.
 
@@ -121,11 +120,11 @@ In de voor gaande afbeelding vertegenwoordigen de getallen de stroom van de aanv
        De gegevens van de Tenant kunnen worden opgehaald uit de Azure Portal. Plaats de cursor op de naam van de aangemelde gebruiker in de rechter bovenhoek.
    * Media Services resource-URI. 
 
-       Deze URI is hetzelfde voor Media Services accounts die zich in dezelfde Azure-omgeving bevinden (bijvoorbeeld https:\//rest.media.Azure.net).
+       Deze URI is hetzelfde voor Media Services accounts die zich in dezelfde Azure-omgeving bevinden (bijvoorbeeld https: \/ /rest.media.Azure.net).
 
    * Resource-URI voor REST-Media Services.
 
-       De URI vertegenwoordigt het REST API-eind punt (bijvoorbeeld https://test03.restv2.westus.media.azure.net/api/).
+       De URI vertegenwoordigt het REST API-eind punt (bijvoorbeeld https://test03.restv2.westus.media.azure.net/api/) .
 
    * Azure AD-toepassings waarden: de client-ID en het client geheim.
     

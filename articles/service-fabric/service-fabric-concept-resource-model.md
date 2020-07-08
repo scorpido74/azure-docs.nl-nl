@@ -5,10 +5,9 @@ ms.topic: conceptual
 ms.date: 10/21/2019
 ms.custom: sfrev
 ms.openlocfilehash: 7a9f59e3e44d3302ac19c7a9e7e77beb51947ce4
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81682633"
 ---
 # <a name="service-fabric-application-resource-model"></a>Resource model van Service Fabric toepassing
@@ -50,7 +49,7 @@ U kunt een bestaand opslag account opnieuw gebruiken of u kunt een nieuw opslag 
 
 ### <a name="configure-your-storage-account"></a>Uw opslag account configureren
 
-Nadat het opslag account is gemaakt, maakt u een BLOB-container waarin de toepassingen kunnen worden klaargezet. Ga in het Azure Portal naar het Azure Storage account waar u uw toepassingen wilt opslaan. Selecteer **blobs** > **container toevoegen**. 
+Nadat het opslag account is gemaakt, maakt u een BLOB-container waarin de toepassingen kunnen worden klaargezet. Ga in het Azure Portal naar het Azure Storage account waar u uw toepassingen wilt opslaan. Selecteer **blobs**  >  **container toevoegen**. 
 
 Resources in uw cluster kunnen worden beveiligd door het open bare toegangs niveau in te stellen op **privé**. U kunt op verschillende manieren toegang verlenen:
 
@@ -71,7 +70,7 @@ In deze zelf studie gebruiken we de [toepassing stem voorbeeld](https://github.c
 1. Klik in Visual Studio met de rechter muisknop op het project **stem** en selecteer vervolgens **pakket**.
 
    ![Pakket toepassing][PackageApplication]  
-1. Ga naar de *.\service-Fabric-DotNet-quickstart\Voting\pkg\Debug* -map. De inhoud naar een bestand met de naam *stem. zip*zip. Het bestand *ApplicationManifest. XML* moet zich in de hoofdmap van het zip-bestand bevindt.
+1. Ga naar de *.\service-Fabric-DotNet-quickstart\Voting\pkg\Debug* -map. De inhoud wordt gezip naar een bestand met de naam *Voting.zip*. Het *ApplicationManifest.xml* bestand moet zich in de hoofdmap van het zip-bestand bevindt.
 
    ![Zip-toepassing][ZipApplication]  
 1. Wijzig de naam van het bestand om de extensie van. zip te wijzigen in *. sfpkg*.
@@ -84,10 +83,10 @@ Nu wordt de toepassing nu klaargezet en kunt u de Resource Manager-sjabloon make
 
 ### <a name="create-the-resource-manager-template"></a>Het Resource Manager-sjabloon maken
 
-De voorbeeld toepassing bevat [Azure Resource Manager sjablonen](https://github.com/Azure-Samples/service-fabric-dotnet-quickstart/tree/master/ARM) die u kunt gebruiken om de toepassing te implementeren. De namen van de sjabloon bestanden zijn *UserApp. json* en *UserApp. para meters. json*.
+De voorbeeld toepassing bevat [Azure Resource Manager sjablonen](https://github.com/Azure-Samples/service-fabric-dotnet-quickstart/tree/master/ARM) die u kunt gebruiken om de toepassing te implementeren. De namen van de sjabloon bestanden worden *UserApp.jsop* en *UserApp.Parameters.js*.
 
 > [!NOTE]
-> Het bestand *UserApp. para meters. json* moet worden bijgewerkt met de naam van uw cluster.
+> De *UserApp.Parameters.jsin* het bestand moet worden bijgewerkt met de naam van uw cluster.
 >
 >
 
@@ -95,11 +94,11 @@ De voorbeeld toepassing bevat [Azure Resource Manager sjablonen](https://github.
 | ---------------------- | ------------------------------------------- | ------------------------------------------------------------ | ------------------------------------------------------------ |
 | clusterName            | De naam van het cluster waarnaar u wilt implementeren | SF-cluster123                                                |                                                              |
 | toepassing            | De naam van de toepassing                 | Stemmen                                                       |
-| applicationTypeName    | De type naam van de toepassing           | VotingType                                                   | Moet overeenkomen met ApplicationManifest. XML                 |
-| applicationTypeVersion | De versie van het toepassings type         | 1.0.0                                                        | Moet overeenkomen met ApplicationManifest. XML                 |
+| applicationTypeName    | De type naam van de toepassing           | VotingType                                                   | Moet overeenkomen met ApplicationManifest.xml                 |
+| applicationTypeVersion | De versie van het toepassings type         | 1.0.0                                                        | Moet overeenkomen met ApplicationManifest.xml                 |
 | serviceName            | De naam van de service         | Stemmen ~ VotingWeb                                             | Moet de indeling ApplicationName ~ Service type hebben            |
-| serviceTypeName        | De type naam van de service                | VotingWeb                                                    | Moet overeenkomen met ServiceManifest. XML                 |
-| appPackageUrl          | De URL van de Blob-opslag van de toepassing     | https:\//servicefabricapps.blob.core.Windows.net/apps/voting.sfpkg | De URL van het toepassings pakket in Blob Storage (de procedure voor het instellen van de URL wordt verderop in het artikel beschreven) |
+| serviceTypeName        | De type naam van de service                | VotingWeb                                                    | Moet overeenkomen met ServiceManifest.xml                 |
+| appPackageUrl          | De URL van de Blob-opslag van de toepassing     | https: \/ /servicefabricapps.blob.core.Windows.net/apps/voting.sfpkg | De URL van het toepassings pakket in Blob Storage (de procedure voor het instellen van de URL wordt verderop in het artikel beschreven) |
 
 ```json
 {
@@ -140,7 +139,7 @@ New-AzResourceGroupDeployment -ResourceGroupName "sf-cluster-rg" -TemplateParame
 
 U kunt een van de volgende redenen voor een upgrade uitvoeren van een toepassing die al is geïmplementeerd naar een Service Fabric cluster:
 
-* Er wordt een nieuwe service toegevoegd aan de toepassing. Een service definitie moet worden toegevoegd aan *service-manifest. XML* en *Application-manifest. XML-* bestanden wanneer een service wordt toegevoegd aan de toepassing. Als u een nieuwe versie van een toepassing wilt weer geven, moet u ook de versie van het toepassings type wijzigen van 1.0.0 in 1.0.1 in [UserApp. para meters. json](https://github.com/Azure-Samples/service-fabric-dotnet-quickstart/blob/master/ARM/UserApp.Parameters.json):
+* Er wordt een nieuwe service toegevoegd aan de toepassing. Een service definitie moet worden toegevoegd aan *service-manifest.xml* en *application-manifest.xml* bestanden wanneer een service wordt toegevoegd aan de toepassing. Als u een nieuwe versie van een toepassing wilt weer geven, moet u ook de versie van het toepassings type wijzigen van 1.0.0 in 1.0.1 in [UserApp.Parameters.jsop](https://github.com/Azure-Samples/service-fabric-dotnet-quickstart/blob/master/ARM/UserApp.Parameters.json):
 
     ```json
     "applicationTypeVersion": {
@@ -154,7 +153,7 @@ U kunt een van de volgende redenen voor een upgrade uitvoeren van een toepassing
     }
     ```
 
-* Er wordt een nieuwe versie van een bestaande service toegevoegd aan de toepassing. Voor beelden zijn wijzigingen in toepassings codes en updates voor versie en naam van het app-type. Voor deze upgrade werkt u UserApp. para meters. json als volgt bij:
+* Er wordt een nieuwe versie van een bestaande service toegevoegd aan de toepassing. Voor beelden zijn wijzigingen in toepassings codes en updates voor versie en naam van het app-type. Voor deze upgrade werkt u UserApp.Parameters.jsals volgt bij:
 
     ```json
      "applicationTypeVersion": {

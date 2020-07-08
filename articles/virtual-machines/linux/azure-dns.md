@@ -7,10 +7,9 @@ ms.topic: article
 ms.date: 10/19/2016
 ms.author: rclaus
 ms.openlocfilehash: 0910b31685aa408c319b40ea23782b11724b6237
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81641715"
 ---
 # <a name="dns-name-resolution-options-for-linux-virtual-machines-in-azure"></a>Opties voor DNS-naam omzetting voor virtuele Linux-machines in azure
@@ -23,7 +22,7 @@ Welk type naam omzetting u gebruikt, is afhankelijk van hoe uw virtuele machines
 
 In de volgende tabel ziet u scenario's en bijbehorende oplossingen voor naam omzetting:
 
-| **Scenario** | **Oplossen** | **Achtervoegsel** |
+| **Scenario** | **Oplossing** | **Achtervoegsel** |
 | --- | --- | --- |
 | Naam omzetting tussen rolinstanties of virtuele machines in hetzelfde virtuele netwerk |Naam omzetting die Azure biedt |hostnaam of FQDN-naam (FULLy Qualified Domain Name) |
 | Naam omzetting tussen rolinstanties of virtuele machines in verschillende virtuele netwerken |Door de klant beheerde DNS-servers die query's door sturen tussen virtuele netwerken voor omzetting door Azure (DNS-proxy). Zie [naam omzetting met uw eigen DNS-server](#name-resolution-using-your-own-dns-server). |Alleen FQDN |

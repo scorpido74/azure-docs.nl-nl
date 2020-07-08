@@ -10,10 +10,9 @@ ms.topic: article
 ms.date: 04/17/2020
 ms.custom: seodec18
 ms.openlocfilehash: 63a708f80ad18309269e37c354b047c304a260d3
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81641295"
 ---
 # <a name="shape-json-to-maximize-query-performance"></a>JSON van shape om query prestaties te maximaliseren
@@ -97,16 +96,16 @@ Houd rekening met de volgende JSON-nettolading die wordt verzonden naar uw Time 
 
    | deviceId | messageId | deviceLocation |
    | --- | --- | --- |
-   | FXXX | LIJN\_gegevens | EU |
-   | FYYY | LIJN\_gegevens | VS |
+   | FXXX | LIJN \_ gegevens | EU |
+   | FYYY | LIJN \_ gegevens | VS |
 
 * Time Series Insights gebeurtenis tabel na afvlakking:
 
    | deviceId | messageId | deviceLocation | tijdstempel | reeks. Stroom verhouding FT3/s | reeks. Snelheid van de motor olie druk psi |
    | --- | --- | --- | --- | --- | --- |
-   | FXXX | LIJN\_gegevens | EU | 2018-01-17T01:17:00Z | 1.0172575712203979 | 34,7 |
-   | FXXX | LIJN\_gegevens | EU | 2018-01-17T01:17:00Z | 2.445906400680542 | 49,2 |
-   | FYYY | LIJN\_gegevens | VS | 2018-01-17T01:18:00Z | 0.58015072345733643 | 22,2 |
+   | FXXX | LIJN \_ gegevens | EU | 2018-01-17T01:17:00Z | 1.0172575712203979 | 34,7 |
+   | FXXX | LIJN \_ gegevens | EU | 2018-01-17T01:17:00Z | 2.445906400680542 | 49,2 |
+   | FYYY | LIJN \_ gegevens | VS | 2018-01-17T01:18:00Z | 0.58015072345733643 | 22,2 |
 
 > [!NOTE]
 > - De kolom **deviceId** fungeert als de kolomkop voor de verschillende apparaten in een vloot. Als u voor de **deviceId** -waarde een eigen eigenschaps naam instelt, wordt het totale aantal apparaten beperkt tot 595 (voor S1-omgevingen) of 795 (voor S2-omgevingen) met de andere vijf kolommen.
@@ -167,21 +166,21 @@ Voor beeld van JSON-nettolading:
 
    | deviceId | reeks. tagId | messageId | deviceLocation | type | eenheid |
    | --- | --- | --- | --- | --- | --- |
-   | FXXX | pumpRate | LIJN\_gegevens | EU | Stroom verhouding | FT3/s |
-   | FXXX | oilPressure | LIJN\_gegevens | EU | Olie druk van de motor | psi |
-   | FYYY | pumpRate | LIJN\_gegevens | VS | Stroom verhouding | FT3/s |
-   | FYYY | oilPressure | LIJN\_gegevens | VS | Olie druk van de motor | psi |
+   | FXXX | pumpRate | LIJN \_ gegevens | EU | Stroom verhouding | FT3/s |
+   | FXXX | oilPressure | LIJN \_ gegevens | EU | Olie druk van de motor | psi |
+   | FYYY | pumpRate | LIJN \_ gegevens | VS | Stroom verhouding | FT3/s |
+   | FYYY | oilPressure | LIJN \_ gegevens | VS | Olie druk van de motor | psi |
 
 * Time Series Insights gebeurtenis tabel na afvlakking:
 
    | deviceId | reeks. tagId | messageId | deviceLocation | type | eenheid | tijdstempel | reeks. waarde |
    | --- | --- | --- | --- | --- | --- | --- | --- |
-   | FXXX | pumpRate | LIJN\_gegevens | EU | Stroom verhouding | FT3/s | 2018-01-17T01:17:00Z | 1.0172575712203979 | 
-   | FXXX | oilPressure | LIJN\_gegevens | EU | Olie druk van de motor | psi | 2018-01-17T01:17:00Z | 34,7 |
-   | FXXX | pumpRate | LIJN\_gegevens | EU | Stroom verhouding | FT3/s | 2018-01-17T01:17:00Z | 2.445906400680542 | 
-   | FXXX | oilPressure | LIJN\_gegevens | EU | Olie druk van de motor | psi | 2018-01-17T01:17:00Z | 49,2 |
-   | FYYY | pumpRate | LIJN\_gegevens | VS | Stroom verhouding | FT3/s | 2018-01-17T01:18:00Z | 0.58015072345733643 |
-   | FYYY | oilPressure | LIJN\_gegevens | VS | Olie druk van de motor | psi | 2018-01-17T01:18:00Z | 22,2 |
+   | FXXX | pumpRate | LIJN \_ gegevens | EU | Stroom verhouding | FT3/s | 2018-01-17T01:17:00Z | 1.0172575712203979 | 
+   | FXXX | oilPressure | LIJN \_ gegevens | EU | Olie druk van de motor | psi | 2018-01-17T01:17:00Z | 34,7 |
+   | FXXX | pumpRate | LIJN \_ gegevens | EU | Stroom verhouding | FT3/s | 2018-01-17T01:17:00Z | 2.445906400680542 | 
+   | FXXX | oilPressure | LIJN \_ gegevens | EU | Olie druk van de motor | psi | 2018-01-17T01:17:00Z | 49,2 |
+   | FYYY | pumpRate | LIJN \_ gegevens | VS | Stroom verhouding | FT3/s | 2018-01-17T01:18:00Z | 0.58015072345733643 |
+   | FYYY | oilPressure | LIJN \_ gegevens | VS | Olie druk van de motor | psi | 2018-01-17T01:18:00Z | 22,2 |
 
 > [!NOTE]
 > - De kolommen **deviceId** en **Series. tagId** fungeren als de kolom koppen voor de verschillende apparaten en tags in een vloot. Als een eigen kenmerk wordt gebruikt, wordt de query beperkt tot 594 (voor S1-omgevingen) of 794 (voor S2-omgevingen) met het totale aantal apparaten met de andere zes kolommen.

@@ -1,6 +1,6 @@
 ---
-title: Apparaten inrichten voor externe bewaking in node. js-Azure | Microsoft Docs
-description: Hierin wordt beschreven hoe u een apparaat verbindt met de oplossings versneller voor externe controle met behulp van een toepassing die is geschreven in node. js.
+title: Apparaten inrichten voor externe bewaking in Node.js-Azure | Microsoft Docs
+description: Hierin wordt beschreven hoe u een apparaat verbindt met de oplossings versneller voor externe bewaking met behulp van een toepassing die is geschreven in Node.js.
 author: dominicbetts
 manager: timlt
 ms.service: iot-accelerators
@@ -10,25 +10,24 @@ ms.date: 01/24/2018
 ms.author: dobett
 ms.custom: mqtt
 ms.openlocfilehash: 76692c7d923e261d1e3beefa0e2ea76b94282a46
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81683977"
 ---
-# <a name="connect-your-device-to-the-remote-monitoring-solution-accelerator-nodejs"></a>Uw apparaat aansluiten op de oplossings versneller voor externe controle (node. js)
+# <a name="connect-your-device-to-the-remote-monitoring-solution-accelerator-nodejs"></a>Uw apparaat aansluiten op de oplossings versneller voor externe controle (Node.js)
 
 [!INCLUDE [iot-suite-selector-connecting](../../includes/iot-suite-selector-connecting.md)]
 
-In deze zelf studie leert u hoe u een echt apparaat verbindt met de oplossings versneller voor externe controle. In deze zelf studie gebruikt u node. js. Dit is een goede optie voor omgevingen met minimale resource beperkingen.
+In deze zelf studie leert u hoe u een echt apparaat verbindt met de oplossings versneller voor externe controle. In deze zelf studie gebruikt u Node.js. Dit is een goede optie voor omgevingen met minimale resource beperkingen.
 
 Als u liever een apparaat simuleert, raadpleegt u [een nieuw gesimuleerd apparaat maken en testen](iot-accelerators-remote-monitoring-create-simulated-device.md).
 
-## <a name="create-a-nodejs-solution"></a>Een node. js-oplossing maken
+## <a name="create-a-nodejs-solution"></a>Een Node.js-oplossing maken
 
-Zorg ervoor dat [node. js](https://nodejs.org/) versie 4.0.0 of hoger is geïnstalleerd op uw ontwikkel computer. U kunt uitvoeren `node --version` op de opdracht regel om de versie te controleren.
+Zorg ervoor dat [Node.js](https://nodejs.org/) versie 4.0.0 of hoger is geïnstalleerd op uw ontwikkel computer. U kunt uitvoeren `node --version` op de opdracht regel om de versie te controleren.
 
-1. Maak een map met `remotemonitoring` de naam op uw ontwikkel computer. Navigeer naar deze map in uw opdracht regel omgeving.
+1. Maak een map `remotemonitoring` met de naam op uw ontwikkel computer. Navigeer naar deze map in uw opdracht regel omgeving.
 
 1. Voer de volgende opdrachten uit om de pakketten te downloaden en te installeren die u nodig hebt om de voor beeld-app te volt ooien:
 
@@ -37,9 +36,9 @@ Zorg ervoor dat [node. js](https://nodejs.org/) versie 4.0.0 of hoger is geïnst
     npm install async azure-iot-device azure-iot-device-mqtt --save
     ```
 
-1. Maak in `remotemonitoring` de map een bestand met de naam **remote_monitoring. js**. Open dit bestand in een teksteditor.
+1. Maak in de `remotemonitoring` map een bestand met de naam **remote_monitoring.js**. Open dit bestand in een teksteditor.
 
-1. Voeg in het bestand **remote_monitoring. js** de volgende `require` instructies toe:
+1. Voeg in het **remote_monitoring.js** -bestand de volgende- `require` instructies toe:
 
     ```javascript
     var Protocol = require('azure-iot-device-mqtt').Mqtt;
@@ -48,7 +47,7 @@ Zorg ervoor dat [node. js](https://nodejs.org/) versie 4.0.0 of hoger is geïnst
     var async = require('async');
     ```
 
-1. Voeg de volgende variabelendeclaraties achter de `require`-instructies toe. Vervang de waarde `{device connection string}` van de tijdelijke aanduiding door de waarde die u hebt genoteerd voor het apparaat dat u in de oplossing voor externe controle hebt ingericht:
+1. Voeg de volgende variabelendeclaraties achter de `require`-instructies toe. Vervang de waarde van de tijdelijke aanduiding door de waarde die u hebt `{device connection string}` genoteerd voor het apparaat dat u in de oplossing voor externe controle hebt ingericht:
 
     ```javascript
     var connectionString = '{device connection string}';
@@ -329,7 +328,7 @@ Zorg ervoor dat [node. js](https://nodejs.org/) versie 4.0.0 of hoger is geïnst
       });
       ```
 
-1. Sla de wijzigingen in het bestand **remote_monitoring. js** op.
+1. Sla de wijzigingen in het **remote_monitoring.js** bestand op.
 
 1. Als u de voorbeeld toepassing wilt starten, voert u de volgende opdracht uit vanaf een opdracht prompt:
 

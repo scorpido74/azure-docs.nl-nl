@@ -6,10 +6,9 @@ ms.topic: conceptual
 ms.date: 11/03/2019
 ms.author: azfuncdf
 ms.openlocfilehash: 427ab6c4e0e769ab881af0af3023d514c1b092c6
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81604615"
 ---
 # <a name="task-hubs-in-durable-functions-azure-functions"></a>Taak hubs in Durable Functions (Azure Functions)
@@ -41,9 +40,9 @@ Taak hubs worden geïdentificeerd aan de hand van een naam die voldoet aan deze 
 * Begint met een letter
 * Heeft een lengte van Mini maal drie tekens en een maximale lengte van 45 tekens
 
-De naam van de taak-hub wordt gedeclareerd in het bestand *host. json* , zoals wordt weer gegeven in het volgende voor beeld:
+De naam van de taak-hub wordt gedeclareerd in de *host.jsvoor* het bestand, zoals wordt weer gegeven in het volgende voor beeld:
 
-### <a name="hostjson-functions-20"></a>host. json (functions 2,0)
+### <a name="hostjson-functions-20"></a>host.js(functies 2,0)
 
 ```json
 {
@@ -56,7 +55,7 @@ De naam van de taak-hub wordt gedeclareerd in het bestand *host. json* , zoals w
 }
 ```
 
-### <a name="hostjson-functions-1x"></a>host. json (functions 1. x)
+### <a name="hostjson-functions-1x"></a>host.js(functions 1. x)
 
 ```json
 {
@@ -66,9 +65,9 @@ De naam van de taak-hub wordt gedeclareerd in het bestand *host. json* , zoals w
 }
 ```
 
-Taak hubs kunnen ook worden geconfigureerd met behulp van app-instellingen, zoals `host.json` wordt weer gegeven in het volgende voorbeeld bestand:
+Taak hubs kunnen ook worden geconfigureerd met behulp van app-instellingen, zoals wordt weer gegeven in het volgende `host.json` voorbeeld bestand:
 
-### <a name="hostjson-functions-10"></a>host. json (functions 1,0)
+### <a name="hostjson-functions-10"></a>host.js(functies 1,0)
 
 ```json
 {
@@ -78,7 +77,7 @@ Taak hubs kunnen ook worden geconfigureerd met behulp van app-instellingen, zoal
 }
 ```
 
-### <a name="hostjson-functions-20"></a>host. json (functions 2,0)
+### <a name="hostjson-functions-20"></a>host.js(functies 2,0)
 
 ```json
 {
@@ -91,7 +90,7 @@ Taak hubs kunnen ook worden geconfigureerd met behulp van app-instellingen, zoal
 }
 ```
 
-De naam van de taak-hub wordt ingesteld op de waarde `MyTaskHub` van de app-instelling. In het `local.settings.json` volgende voor beeld ziet u hoe `MyTaskHub` u de `samplehubname`instelling definieert als:
+De naam van de taak-hub wordt ingesteld op de waarde van de `MyTaskHub` app-instelling. In het volgende `local.settings.json` voor beeld ziet u hoe u de `MyTaskHub` instelling definieert als `samplehubname` :
 
 ```json
 {
@@ -125,9 +124,9 @@ public static async Task<HttpResponseMessage> Run(
 ```
 
 > [!NOTE]
-> Het vorige C#-voor beeld is voor Durable Functions 2. x. Voor Durable Functions 1. x moet u in plaats `DurableOrchestrationContext` van `IDurableOrchestrationContext`gebruiken. Zie het artikel [Durable functions versies](durable-functions-versions.md) voor meer informatie over de verschillen tussen versies.
+> Het vorige C#-voor beeld is voor Durable Functions 2. x. Voor Durable Functions 1. x moet u `DurableOrchestrationContext` in plaats van gebruiken `IDurableOrchestrationContext` . Zie het artikel [Durable functions versies](durable-functions-versions.md) voor meer informatie over de verschillen tussen versies.
 
-# <a name="javascript"></a>[Javascript](#tab/javascript)
+# <a name="javascript"></a>[JavaScript](#tab/javascript)
 
 De eigenschap task hub in het `function.json` bestand is ingesteld via de app-instelling:
 
@@ -146,13 +145,13 @@ Namen van taak hubs moeten beginnen met een letter en mogen alleen letters en ci
 
 | Duurzame extensie versie | Naam van de standaard taak-hub |
 | - | - |
-| 2.x | Bij implementatie in azure wordt de naam van de taak-hub afgeleid van de naam van de _functie-app_. Bij uitvoering buiten Azure is `TestHubName`de standaard naam van de taak hub. |
-| 1.x | De standaard naam van de taak hub voor alle `DurableFunctionsHub`omgevingen is. |
+| 2.x | Bij implementatie in azure wordt de naam van de taak-hub afgeleid van de naam van de _functie-app_. Bij uitvoering buiten Azure is de standaard naam van de taak hub `TestHubName` . |
+| 1.x | De standaard naam van de taak hub voor alle omgevingen is `DurableFunctionsHub` . |
 
 Zie het artikel [Durable functions versies](durable-functions-versions.md) voor meer informatie over de verschillen tussen extensies.
 
 > [!NOTE]
-> De naam is wat een taak hub onderscheidt van een andere als er meerdere taak hubs in een gedeeld opslag account zijn. Als u meerdere functie-apps hebt die een gedeeld opslag account delen, moet u expliciet verschillende namen configureren voor elke Task hub in de *host. json* -bestanden. Anders kunnen de meerdere functie-apps met elkaar concurreren voor berichten. Dit kan leiden tot ongedefinieerd gedrag, met inbegrip van Orchestrations die onverwacht ' vastgelopen ' in `Pending` de `Running` of-status.
+> De naam is wat een taak hub onderscheidt van een andere als er meerdere taak hubs in een gedeeld opslag account zijn. Als u meerdere functie-apps hebt die een gedeeld opslag account delen, moet u expliciet verschillende namen configureren voor elke taak hub in de *host.jsop* bestanden. Anders kunnen de meerdere functie-apps met elkaar concurreren voor berichten. Dit kan leiden tot ongedefinieerd gedrag, met inbegrip van Orchestrations die onverwacht ' vastgelopen ' in de `Pending` of- `Running` status.
 
 ## <a name="next-steps"></a>Volgende stappen
 

@@ -7,10 +7,9 @@ ms.service: media-services
 ms.topic: reference
 ms.date: 04/20/2020
 ms.openlocfilehash: d1ad0cbe30ce20e61a31f0534a47fe031f6f257b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81727266"
 ---
 # <a name="api"></a>API #
@@ -19,7 +18,7 @@ Met de Azure Media Player-API kunt u communiceren met de video via Java script, 
 
 ## <a name="referencing-the-player"></a>Verwijzen naar de speler ##
 
-Als u de API-functies wilt gebruiken, moet u toegang hebben tot het Player-object. Gelukkig is eenvoudig te krijgen. U hoeft alleen maar te controleren of uw video code een ID heeft. De code voor het insluiten van voor beelden `vid1`bevat een id van. Als u meerdere Video's op één pagina hebt, zorg er dan voor dat elke video code een unieke ID heeft.
+Als u de API-functies wilt gebruiken, moet u toegang hebben tot het Player-object. Gelukkig is eenvoudig te krijgen. U hoeft alleen maar te controleren of uw video code een ID heeft. De code voor het insluiten van voor beelden bevat een ID van `vid1` . Als u meerdere Video's op één pagina hebt, zorg er dan voor dat elke video code een unieke ID heeft.
 
 `var myPlayer = amp('vid1');`
 
@@ -73,4 +72,4 @@ Gebeurtenissen moeten rechtstreeks worden geregistreerd nadat de speler voor het
 ## <a name="next-steps"></a>Volgende stappen ##
 
 <!---Some context for the following links goes here--->
-- [Snelstartgids Azure Media Player](azure-media-player-quickstart.md)
+- [Quickstart voor Azure Media Player](azure-media-player-quickstart.md)

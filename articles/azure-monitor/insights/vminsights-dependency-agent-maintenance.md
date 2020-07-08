@@ -7,10 +7,9 @@ author: bwren
 ms.author: bwren
 ms.date: 04/16/2020
 ms.openlocfilehash: 01dd8422658aa0c8982733e48782efd27c1bf5be
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81617849"
 ---
 # <a name="how-to-upgrade-the-azure-monitor-for-vms-dependency-agent"></a>De Azure Monitor voor VM's-afhankelijkheids agent bijwerken
@@ -29,7 +28,7 @@ De afhankelijkheids agent voor Windows en Linux kan hand matig worden bijgewerkt
 
 ## <a name="upgrade-windows-agent"></a>Windows-agent bijwerken 
 
-Als u de agent op een virtuele Windows-machine wilt bijwerken naar de nieuwste versie die niet is geïnstalleerd met behulp van de VM-extensie van de afhankelijkheids agent, voert u uit vanaf de opdracht prompt, het script of andere Automation-oplossing of met de installatie wizard van InstallDependencyAgent-Windows. exe.  
+Als u de agent op een virtuele Windows-machine wilt bijwerken naar de nieuwste versie die niet is geïnstalleerd met behulp van de VM-extensie voor de afhankelijkheids agent, voert u uit vanaf de opdracht prompt, het script of een andere Automation-oplossing of met behulp van de wizard Setup van InstallDependencyAgent-Windows.exe.  
 
 U kunt [hier](https://aka.ms/dependencyagentwindows)de meest recente versie van de Windows-agent downloaden.
 
@@ -37,7 +36,7 @@ U kunt [hier](https://aka.ms/dependencyagentwindows)de meest recente versie van 
 
 1. Meld u aan bij de computer met een account met beheerders rechten.
 
-2. Voer **InstallDependencyAgent-Windows. exe** uit om de installatie wizard te starten.
+2. Voer **InstallDependencyAgent-Windows.exe** uit om de installatie wizard te starten.
    
 3. Volg de **installatie** wizard van dependency agent om de vorige versie van de afhankelijkheids agent te verwijderen en vervolgens de nieuwste versie te installeren.
 
@@ -52,9 +51,9 @@ U kunt [hier](https://aka.ms/dependencyagentwindows)de meest recente versie van 
     InstallDependencyAgent-Windows.exe /S /RebootMode=manual
     ```
 
-    Met `/RebootMode=manual` de para meter voor komt u dat de upgrade van de computer automatisch opnieuw wordt opgestart als sommige processen gebruikmaken van bestanden uit de vorige versie en een vergren deling hebben. 
+    `/RebootMode=manual`Met de para meter voor komt u dat de upgrade van de computer automatisch opnieuw wordt opgestart als sommige processen gebruikmaken van bestanden uit de vorige versie en een vergren deling hebben. 
 
-3. Om te bevestigen dat de upgrade is geslaagd, `install.log` raadpleegt u de voor gedetailleerde informatie over de installatie. De logboekmap is *%ProgramFiles%\Microsoft dependency Agent\logs*.
+3. Om te bevestigen dat de upgrade is geslaagd, raadpleegt u de `install.log` voor gedetailleerde informatie over de installatie. De logboekmap is *%ProgramFiles%\Microsoft dependency Agent\logs*.
 
 ## <a name="upgrade-linux-agent"></a>Linux-agent bijwerken 
 
@@ -64,7 +63,7 @@ U kunt [hier](https://aka.ms/dependencyagentlinux)de meest recente versie van de
 
 1. Meld u aan bij de computer met een account met beheerders rechten.
 
-2. Voer de volgende opdracht uit als`sh InstallDependencyAgent-Linux64.bin -s`basis. 
+2. Voer de volgende opdracht uit als basis `sh InstallDependencyAgent-Linux64.bin -s` . 
 
 Als de afhankelijkheids agent niet kan worden gestart, raadpleegt u de logboeken voor gedetailleerde informatie over de fout. Op Linux-agents is de logboekmap */var/opt/Microsoft/dependency-agent/log*. 
 

@@ -12,10 +12,9 @@ ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
 ms.openlocfilehash: 1198d3cc7ccc0013e7c894488027d8e162470247
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81677604"
 ---
 # <a name="the-team-data-science-process-in-action---using-an-azure-hdinsight-hadoop-cluster-on-a-1-tb-dataset"></a>Het proces voor team gegevens wetenschap in actie-een Azure HDInsight Hadoop cluster op een gegevensset van 1 TB gebruiken
@@ -75,13 +74,13 @@ U kunt de [Criteo](https://labs.criteo.com/downloads/download-terabyte-click-log
 
 Klik op **door gaan om te downloaden** voor meer informatie over de gegevensset en de beschik baarheid ervan.
 
-De gegevens bevinden zich in een [Azure Blob](../../storage/blobs/storage-dotnet-how-to-use-blobs.md) - wasb://criteo@azuremlsampleexperiments.blob.core.windows.net/raw/opslag locatie:. De wasb verwijst naar de locatie van Azure Blob Storage.
+De gegevens bevinden zich in een [Azure Blob-opslag](../../storage/blobs/storage-dotnet-how-to-use-blobs.md) locatie: wasb://criteo@azuremlsampleexperiments.blob.core.windows.net/raw/ . De wasb verwijst naar de locatie van Azure Blob Storage.
 
 1. De gegevens in deze Azure Blob-opslag bestaan uit drie submappen van ongecomprimeerde gegevens.
 
-   1. De submap *RAW/Count/* bevat de eerste 21 dagen aan gegevens-van dag\_00 tot dag 20\_
-   2. De submap *RAW/Train/* bestaat uit één dag van de gegevens, dag\_21
-   3. De submap *RAW/test/* bestaat uit twee dagen aan gegevens, dag\_22 en dag 23\_
+   1. De submap *RAW/Count/* bevat de eerste 21 dagen aan gegevens-van dag \_ 00 tot dag \_ 20
+   2. De submap *RAW/Train/* bestaat uit één dag van de gegevens, dag \_ 21
+   3. De submap *RAW/test/* bestaat uit twee dagen aan gegevens, dag \_ 22 en dag \_ 23
 2. De onbewerkte gzip-gegevens zijn ook beschikbaar in de hoofdmap *RAW/* als day_NN. gz, waarbij nn van 00 tot 23 loopt.
 
 Een alternatieve benadering voor het openen, verkennen en model leren van deze gegevens waarvoor geen lokale down loads nodig zijn, wordt verderop in dit overzicht uitgelegd wanneer u Hive-tabellen maakt.
@@ -115,9 +114,9 @@ Nadat de Hive-functie REPL wordt weer gegeven met het teken ' hive > ', knipt en
 
 Met de volgende code wordt een data base ' Criteo ' gemaakt en worden vervolgens vier tabellen gegenereerd:
 
-* een *tabel voor het genereren van aantallen* die zijn\_gebouwd op dagen\_dag 00 tot en met dag 20,
-* een *tabel voor gebruik als de Train-gegevensset die* is\_gebouwd op dag 21, en
-* twee *tabellen die moeten worden gebruikt als de test gegevens sets die* respectievelijk\_op\_dag 22 en 23 zijn gebouwd.
+* een *tabel voor het genereren van aantallen* die zijn gebouwd op dagen dag \_ 00 tot en met dag \_ 20,
+* een *tabel voor gebruik als de Train-gegevensset die* is gebouwd op dag \_ 21, en
+* twee *tabellen die moeten worden gebruikt als de test gegevens sets die* respectievelijk op dag \_ 22 en 23 zijn gebouwd \_ .
 
 Splits de gegevensset van de test in twee verschillende tabellen, omdat een van de dagen een feestdag is. Het doel is om te bepalen of het model verschillen kan detecteren tussen een feestdag en een vrije dag vanaf het door lopen van de klik.
 
@@ -222,7 +221,7 @@ Op de gebruikelijke manier kunt u het script ook aanroepen vanuit de Hive bin/di
 
         hive -f C:\temp\sample_hive_count_criteo_test_day_22_table_examples.hql
 
-Ten slotte bekijkt u het aantal test voorbeelden in de test-gegevensset op basis van\_de dag 23.
+Ten slotte bekijkt u het aantal test voorbeelden in de test-gegevensset op basis van de dag \_ 23.
 
 De opdracht die u hiervoor moet volgen, is vergelijkbaar met de voor beeld die wordt weer gegeven (Raadpleeg de [voorbeeld&#95;hive&#95;aantal&#95;criteo&#95;test&#95;dag&#95;23&#95;voor beelden. HQL](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/DataScienceProcess/DataScienceScripts/sample_hive_count_criteo_test_day_23_examples.hql)):
 
@@ -247,7 +246,7 @@ Dit geeft de label distributie als resultaat:
 Het percentage positieve labels ligt ongeveer 3,3% (consistent met de oorspronkelijke gegevensset).
 
 ### <a name="histogram-distributions-of-some-numeric-variables-in-the-train-dataset"></a>Histogram distributies van sommige numerieke variabelen in de Train-gegevensset
-U kunt de functie ' histogram\_numeriek ' van de Hive gebruiken om erachter te komen hoe de numerieke variabelen eruitzien. Hier vindt u de inhoud van de [voorbeeld&#95;-hive&#95;criteo&#95;histogram&#95;numeriek. HQL](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/DataScienceProcess/DataScienceScripts/sample_hive_criteo_histogram_numeric.hql):
+U kunt de functie ' histogram numeriek ' van de Hive gebruiken \_ om erachter te komen hoe de numerieke variabelen eruitzien. Hier vindt u de inhoud van de [voorbeeld&#95;-hive&#95;criteo&#95;histogram&#95;numeriek. HQL](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/DataScienceProcess/DataScienceScripts/sample_hive_criteo_histogram_numeric.hql):
 
         SELECT CAST(hist.x as int) as bin_center, CAST(hist.y as bigint) as bin_height FROM
             (SELECT
@@ -284,7 +283,7 @@ Dit resulteert in het volgende:
 Met de ZIJDELINGSe weer gave-combi natie in Hive kunt u een SQL-achtige uitvoer maken in plaats van de gebruikelijke lijst. In deze tabel komt de eerste kolom overeen met het bin Center en de tweede naar de frequentie van de opslag locatie.
 
 ### <a name="approximate-percentiles-of-some-numeric-variables-in-the-train-dataset"></a>Percentielen van sommige numerieke variabelen in de Train-gegevensset benaderen
-Het is ook belang rijke percentielen voor het berekenen van de geschatte waarden. Het systeem eigen percentiel\_van de component bevat dit voor ons. De inhoud van de voor [beeld-&#95;hive&#95;criteo&#95;geschatte&#95;percentielen. HQL](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/DataScienceProcess/DataScienceScripts/sample_hive_criteo_approximate_percentiles.hql) zijn:
+Het is ook belang rijke percentielen voor het berekenen van de geschatte waarden. Het systeem eigen percentiel van de component \_ bevat dit voor ons. De inhoud van de voor [beeld-&#95;hive&#95;criteo&#95;geschatte&#95;percentielen. HQL](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/DataScienceProcess/DataScienceScripts/sample_hive_criteo_approximate_percentiles.hql) zijn:
 
         SELECT MIN(Col2) AS Col2_min, PERCENTILE_APPROX(Col2, 0.1) AS Col2_01, PERCENTILE_APPROX(Col2, 0.3) AS Col2_03, PERCENTILE_APPROX(Col2, 0.5) AS Col2_median, PERCENTILE_APPROX(Col2, 0.8) AS Col2_08, MAX(Col2) AS Col2_max FROM criteo.criteo_train;
 
@@ -365,7 +364,7 @@ Dit resulteert in het volgende:
         Time taken: 12.22 seconds
         Time taken: 298.98 seconds
 
-Het [voorbeeld script&#95;hive&#95;criteo&#95;down sampling&#95;test&#95;dag&#95;22&#95;DataSet. HQL](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/DataScienceProcess/DataScienceScripts/sample_hive_criteo_downsample_test_day_22_dataset.hql) voor test gegevens, dag\_22:
+Het [voorbeeld script&#95;hive&#95;criteo&#95;down sampling&#95;test&#95;dag&#95;22&#95;DataSet. HQL](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/DataScienceProcess/DataScienceScripts/sample_hive_criteo_downsample_test_day_22_dataset.hql) voor test gegevens, dag \_ 22:
 
         --- Now for test data (day_22)
 
@@ -383,7 +382,7 @@ Dit resulteert in het volgende:
         Time taken: 317.66 seconds
 
 
-Ten slotte wordt het script [voorbeeld&#95;hive&#95;criteo&#95;down sampling&#95;test&#95;dag&#95;23&#95;DataSet. HQL](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/DataScienceProcess/DataScienceScripts/sample_hive_criteo_downsample_test_day_23_dataset.hql) voor test gegevens, dag\_23:
+Ten slotte wordt het script [voorbeeld&#95;hive&#95;criteo&#95;down sampling&#95;test&#95;dag&#95;23&#95;DataSet. HQL](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/DataScienceProcess/DataScienceScripts/sample_hive_criteo_downsample_test_day_23_dataset.hql) voor test gegevens, dag \_ 23:
 
         --- Finally test data day_23
         CREATE TABLE criteo.criteo_test_day_23_downsample_1perc (
@@ -424,7 +423,7 @@ Het bouw proces voor modellen in Azure Machine Learning volgt deze stappen:
 Nu bent u klaar om modellen te bouwen in Azure Machine Learning Studio. De gegevens van een voor beeld worden opgeslagen als Hive-tabellen in het cluster. Gebruik de module Azure Machine Learning **gegevens importeren** om deze gegevens te lezen. De referenties voor toegang tot het opslag account van dit cluster zijn op de volgende manier beschikbaar.
 
 ### <a name="step-1-get-data-from-hive-tables-into-azure-machine-learning-using-the-import-data-module-and-select-it-for-a-machine-learning-experiment"></a><a name="step1"></a>Stap 1: gegevens uit Hive-tabellen ophalen in Azure Machine Learning met behulp van de module gegevens importeren en deze selecteren voor een machine learning experiment
-Begin met het selecteren van een**leeg experiment**met **+ nieuwe** -> **experimenten** -> . Zoek vervolgens **in het zoekvak** linksboven op ' gegevens importeren '. Sleep de module **gegevens importeren** naar het canvas op het experiment (het middelste gedeelte van het scherm) om de module voor gegevens toegang te gebruiken.
+Begin met het selecteren van een leeg experiment met **+ nieuwe**  ->  **experimenten**  ->  **Blank Experiment**. Zoek vervolgens **in het zoekvak** linksboven op ' gegevens importeren '. Sleep de module **gegevens importeren** naar het canvas op het experiment (het middelste gedeelte van het scherm) om de module voor gegevens toegang te gebruiken.
 
 Dit is de manier waarop de **import gegevens** eruitzien tijdens het ophalen van gegevens uit de Hive-tabel:
 
@@ -433,8 +432,8 @@ Dit is de manier waarop de **import gegevens** eruitzien tijdens het ophalen van
 Voor de module **gegevens importeren** zijn de waarden van de para meters die in de afbeelding worden opgegeven, alleen voor beelden van de sorteer waarden die u moet opgeven. Hier volgen enkele algemene richt lijnen voor het invullen van de para meters die zijn ingesteld voor de module **gegevens importeren** .
 
 1. Kies Hive-query voor de **gegevens bron**
-2. In het **query vak Hive-data base** is dit een eenvoudige SELECT *\_van\_<de naam\_van\_uw data base. de tabel naam>-is voldoende.
-3. **URI van Hcatalog-server**: als uw cluster ' ABC ' is, is dit simpelweg: https\/:/ABC.azurehdinsight.net
+2. In het **query vak Hive-data base** is dit een eenvoudige SELECT * van <de naam van uw \_ Data Base \_ . de \_ tabel \_ naam>-is voldoende.
+3. **URI van Hcatalog-server**: als uw cluster ' ABC ' is, is dit simpelweg: https: \/ /ABC.azurehdinsight.net
 4. **Hadoop-gebruikers accountnaam**: de gebruikers naam die is gekozen op het moment van het cluster. (Niet de gebruikers naam voor externe toegang.)
 5. **Hadoop-gebruikers account wacht woord**: het wacht woord voor de gebruikers naam die is gekozen op het moment dat het cluster wordt ingesteld. (Niet het wacht woord voor externe toegang!)
 6. **Locatie van uitvoer gegevens**: Kies Azure
@@ -477,8 +476,8 @@ Er kunnen miljoenen unieke waarden zijn voor sommige categorische-functies van g
 ##### <a name="building-counting-transforms"></a>Trans formaties voor het tellen van aantallen
 Als u functies wilt maken, gebruikt u de module **Build Counting Transform** die beschikbaar is in azure machine learning. De module ziet er als volgt uit:
 
-![De module eigenschappen](./media/hive-criteo-walkthrough/e0eqKtZ.png)
-![van het tellen van de trans formatie bouwen](./media/hive-criteo-walkthrough/OdDN0vw.png)
+![De module eigenschappen van het tellen van de trans ](./media/hive-criteo-walkthrough/e0eqKtZ.png)
+ formatie bouwen ![](./media/hive-criteo-walkthrough/OdDN0vw.png)
 
 > [!IMPORTANT]
 > Voer in het vak **aantal kolommen** de kolommen in waarvoor u de aantallen wilt uitvoeren. Normaal gesp roken zijn dit (zoals vermeld) hoog-dimensionale categorische-kolommen. Houd er rekening mee dat de Criteo-gegevensset 26 categorische-kolommen heeft: van Col15 tot Col40. Hier telt het aantal op alle objecten en geven ze hun indices (van 15 tot 40 gescheiden door komma's zoals weer gegeven).
@@ -518,7 +517,7 @@ Het tweede R-script houdt de verdeling over van positieve en negatieve klassen (
 
 ![Tweede R-script](./media/hive-criteo-walkthrough/91wvcwN.png)
 
-In dit eenvoudige R-script wordt de '\_POS\_NEG-verhouding ' gebruikt om de hoeveelheid saldo tussen de positieve en negatieve klassen in te stellen. Dit is belang rijk om te doen omdat het verbeteren van de klasse niet normaal gesp roken prestatie voordelen biedt voor classificatie problemen waarbij de klasse-distributie wordt schuingetrokken (in dit geval is er 3,3% positieve klasse en 96,7% negatieve klasse).
+In dit eenvoudige R-script wordt de ' POS \_ NEG- \_ verhouding ' gebruikt om de hoeveelheid saldo tussen de positieve en negatieve klassen in te stellen. Dit is belang rijk om te doen omdat het verbeteren van de klasse niet normaal gesp roken prestatie voordelen biedt voor classificatie problemen waarbij de klasse-distributie wordt schuingetrokken (in dit geval is er 3,3% positieve klasse en 96,7% negatieve klasse).
 
 ##### <a name="applying-the-count-transformation-on-our-data"></a>Het aantal trans formatie op de gegevens Toep assen
 Ten slotte kunt u de module **trans formatie Toep assen** gebruiken om het aantal transformaties op onze trein-en test gegevens sets toe te passen. Deze module neemt de trans formatie van het opgeslagen aantal als één invoer en de gegevens sets voor de trein of test als de andere invoer en retourneert gegevens met de functies aantal. Dit wordt hier weer gegeven:

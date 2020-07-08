@@ -7,15 +7,14 @@ ms.author: cweining
 ms.date: 02/23/2018
 ms.reviewer: mbullwin
 ms.openlocfilehash: d845e245a242a88d16a2597f0144a0ae4a727cb0
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81640979"
 ---
 # <a name="profile-aspnet-core-azure-linux-web-apps-with-application-insights-profiler"></a>Profiel ASP.NET Core Azure Linux-web-apps met Application Insights Profiler
 
-Deze functie is momenteel beschikbaar als preview-product.
+Deze functie is momenteel in preview.
 
 Ontdek hoeveel tijd wordt besteed aan elke methode van uw Live Web-app wanneer u [Application Insights](../../azure-monitor/app/app-insights-overview.md)gebruikt. Application Insights Profiler is nu beschikbaar voor ASP.NET Core web-apps die worden gehost in Linux op Azure App Service. Deze hand leiding bevat stapsgewijze instructies voor het verzamelen van de profilerings traceringen voor ASP.NET Core Linux-web-apps.
 

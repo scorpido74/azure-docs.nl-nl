@@ -13,10 +13,9 @@ ms.custom:
 - amqp
 - mqtt
 ms.openlocfilehash: c568dddcbbf57ebd6ed5906bb83af01a84dafa41
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81683833"
 ---
 # <a name="create-an-advanced-device-model"></a>Een geavanceerd apparaatmodel maken
@@ -47,9 +46,9 @@ U definieert een model met behulp van een JSON-apparaat definitie bestand en een
 
 Een typisch model voor apparaten is:
 
-* Eén JSON-bestand voor elk model apparaat (bijvoorbeeld lift. json).
-* Eén java script-gedrag script bestand voor elk model apparaat (bijvoorbeeld Elevator-State. js)
-* Eén java script-methode script bestand voor elke-methode (bijvoorbeeld Elevator-go-down. js)
+* Eén JSON-bestand voor elk model apparaat (bijvoorbeeld elevator.jsop).
+* Eén java script-gedrag script bestand voor elk model apparaat (bijvoorbeeld elevator-state.js)
+* Eén java script-methode script bestand voor elke methode (bijvoorbeeld elevator-go-down.js)
 
 > [!NOTE]
 > Niet alle apparaten modellen definiëren methoden. Daarom kan een model van het apparaat geen methode scripts bevatten. Alle apparaatprofielen moeten echter een gedrags script hebben.
@@ -165,9 +164,9 @@ De velden die in het schema worden weer gegeven, kunnen van de volgende typen zi
 * Object-geserialiseerd met JSON
 * Binair geserialiseerd met base64
 * Tekst
-* Booleaans
+* Boolean-waarde
 * Geheel getal
-* Double
+* Dubbel
 * DateTime
 
 ### <a name="supported-methods"></a>Ondersteunde methoden
@@ -187,7 +186,7 @@ Gesimuleerde apparaten kunnen ook reageren op methode aanroepen, in welk geval z
 
 In deze hand leiding ziet u hoe u een model maakt voor een drone. De drone keert wille keurig rond een initiële set coördinaten om locatie en hoogte te wijzigen.
 
-Kopieer de volgende JSON naar een tekst editor en sla deze op als **drone. json**.
+Kopieer de volgende JSON naar een tekst editor en sla deze **op alsdrone.jsop**.
 
 ### <a name="device-definition-json-example"></a>JSON-voor beeld van Device definition
 
@@ -277,7 +276,7 @@ function main(context, state) {
 
 ## <a name="create-a-behavior-script-file"></a>Een script bestand voor gedrag maken
 
-Kopieer de volgende Java script in een tekst editor en sla het op als **drone-State. js**.
+Kopieer de volgende Java script in een tekst editor en sla het op als **drone-state.js**.
 
 ### <a name="device-model-javascript-simulation-example"></a>Voor beeld van Java script-simulatie van Device model
 
@@ -406,7 +405,7 @@ Methode scripts zijn vergelijkbaar met gedrags scripts. Hiermee wordt het gedrag
 
 Het drone-aanroepen script stelt de coördinaten van de Drone in op een vast punt om de drone terugkerende start te simuleren.
 
-Kopieer de volgende Java script in een tekst editor en sla het op als **droneRecall-method. js**.
+Kopieer de volgende Java script in een tekst editor en sla het op als **droneRecall-method.js**.
 
 ### <a name="device-model-javascript-simulation-example"></a>Voor beeld van Java script-simulatie van Device model
 

@@ -7,10 +7,9 @@ ms.service: media-services
 ms.topic: reference
 ms.date: 04/20/2020
 ms.openlocfilehash: e5595620a2f888b06ad5b35d2e8a008f23861463
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81727227"
 ---
 # <a name="feature-list"></a>Functielijst #
@@ -64,7 +63,7 @@ Hier volgt een lijst met geteste functies en niet-ondersteunde functies:
 | Alleen video                              |        |                  |          | X           | Kan in sommige techs werken voor adaptieve streaming, maar wordt momenteel niet ondersteund en werkt niet in AzureHtml5JS.      |
 | Presentaties met meerdere Peri Oden               |        |                  |          | X                                                                                                                                  |
 | Meerdere camera hoeken                  |        |                  |          | X           |                                                                                                                      |
-| Afspeel snelheid                          |        | X                |          |             | De afspeel snelheid wordt in de meeste scenario's ondersteund, met uitzonde ring van de mobiele situatie als gevolg van een gedeeltelijke bug in Chrome                 |
+| Afspeelsnelheid                          |        | X                |          |             | De afspeel snelheid wordt in de meeste scenario's ondersteund, met uitzonde ring van de mobiele situatie als gevolg van een gedeeltelijke bug in Chrome                 |
 
 ## <a name="next-steps"></a>Volgende stappen ##
-- [Snelstartgids Azure Media Player](azure-media-player-quickstart.md)
+- [Quickstart voor Azure Media Player](azure-media-player-quickstart.md)

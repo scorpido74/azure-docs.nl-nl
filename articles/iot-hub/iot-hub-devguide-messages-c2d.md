@@ -10,10 +10,9 @@ ms.topic: conceptual
 ms.date: 03/15/2018
 ms.custom: mqtt
 ms.openlocfilehash: 307ab47c1f7498f71e61108a616d35ef1d4f61c9
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81729999"
 ---
 # <a name="send-cloud-to-device-messages-from-an-iot-hub"></a>Cloud-naar-apparaat-berichten verzenden vanuit een IoT-hub
@@ -97,8 +96,8 @@ De hoofd tekst is een JSON-serialisatie matrix met records, elk met de volgende 
 | ------------------ | ----------- |
 | EnqueuedTimeUtc    | Een tijds tempel die aangeeft wanneer de uitkomst van het bericht is opgetreden (bijvoorbeeld omdat de hub het feedback bericht heeft ontvangen of het oorspronkelijke bericht is verlopen) |
 | OriginalMessageId  | De *MessageId* van het Cloud-naar-apparaat-bericht waarop deze feedback informatie betrekking heeft |
-| Status code         | Een vereiste teken reeks die wordt gebruikt in feedback berichten die door de IoT hub worden gegenereerd: <br/> *Geslaagd* <br/> *Verlopen* <br/> *DeliveryCountExceeded* <br/> *Geweigerd* <br/> *Opgeschoond* |
-| Beschrijving        | Teken reeks waarden voor *status* code |
+| Status code         | Een vereiste teken reeks die wordt gebruikt in feedback berichten die door de IoT hub worden gegenereerd: <br/> *Geleverd* <br/> *Verlopen* <br/> *DeliveryCountExceeded* <br/> *Afgewezen* <br/> *Opgeschoond* |
+| Description        | Teken reeks waarden voor *status* code |
 | DeviceId           | De *DeviceID* van het doel apparaat van het Cloud-naar-apparaat-bericht waarop dit feedback-item betrekking heeft |
 | DeviceGenerationId | De *DeviceGenerationId* van het doel apparaat van het Cloud-naar-apparaat-bericht waarop dit feedback-item betrekking heeft |
 

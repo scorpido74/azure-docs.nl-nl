@@ -12,10 +12,9 @@ manager: daveba
 ms.reviewer: sahenry
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 053b052abf6f23c385dc7447639aa40b6c2c58a1
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81680191"
 ---
 # <a name="authentication-methods-usage--insights-preview"></a>Gebruik van de verificatie methoden & Insights (preview-versie)
@@ -33,17 +32,17 @@ De volgende rollen hebben toegang tot het gebruik en inzichten:
 
 Er is geen aanvullende licentie vereist voor toegang tot gebruik en inzichten. De licentie gegevens voor Azure Multi-Factor Authentication en self-service voor het opnieuw instellen van wacht woorden (SSPR) zijn te vinden op de [Azure Active Directory-prijs site](https://azure.microsoft.com/pricing/details/active-directory/).
 
-## <a name="how-it-works"></a>Hoe werkt het?
+## <a name="how-it-works"></a>Uitleg
 
 Voor toegang tot het gebruik van de verificatie methode en inzichten:
 
 1. Blader naar [Azure Portal](https://portal.azure.com).
-1. Blader naar **Azure Active Directory** > het gebruik van**wacht woord opnieuw instellen** > **& inzichten**.
+1. Blader naar **Azure Active Directory**het gebruik van  >  **wacht woord opnieuw instellen**  >  **& inzichten**.
 1. Vanuit de overzichten van de **registratie** of het **gebruik** kunt u ervoor kiezen om de vooraf gefilterde rapporten te openen om te filteren op basis van uw behoeften.
 
 ![Overzicht van gebruiks & Insights](./media/howto-authentication-methods-usage-insights/usage-insights-overview.png)
 
-Als u rechtstreeks toegang wilt krijgen tot gebruik & [https://portal.azure.com/#blade/Microsoft_AAD_IAM/AuthMethodsOverviewBlade](https://portal.azure.com/#blade/Microsoft_AAD_IAM/AuthMethodsOverviewBlade)Insights, gaat u naar. Met deze koppeling gaat u naar het registratie overzicht.
+Als u rechtstreeks toegang wilt krijgen tot gebruik & Insights, gaat u naar [https://portal.azure.com/#blade/Microsoft_AAD_IAM/AuthMethodsOverviewBlade](https://portal.azure.com/#blade/Microsoft_AAD_IAM/AuthMethodsOverviewBlade) . Met deze koppeling gaat u naar het registratie overzicht.
 
 De tegels gebruikers die zijn geregistreerd, gebruikers ingeschakeld en gebruikers kunnen de volgende registratie gegevens voor uw gebruikers tonen:
 
@@ -65,7 +64,7 @@ Door te klikken op de gebruikers die zijn **geregistreerd**, **gebruikers ingesc
 
 In het rapport registratie Details wordt de volgende informatie weer gegeven voor elke gebruiker:
 
-- Naam
+- Name
 - Gebruikersnaam
 - Registratie status (alle, geregistreerd, niet geregistreerd)
 - Ingeschakelde status (alle, ingeschakeld, niet ingeschakeld)
@@ -80,7 +79,7 @@ Als u op de registraties klikt of opnieuw instelt, worden de gegevens opnieuw in
 
 Het rapport opnieuw instellen Details toont de registratie-en reset gebeurtenissen van de afgelopen 30 dagen, inclusief:
 
-- Naam
+- Name
 - Gebruikersnaam
 - Functie (alle, registratie, opnieuw instellen)
 - Verificatie methode (app-melding, app-code, telefoon gesprek, Office-oproep, SMS, E-mail, beveiligings vragen)

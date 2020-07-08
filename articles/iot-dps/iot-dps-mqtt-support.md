@@ -11,10 +11,9 @@ ms.custom:
 - amqp
 - mqtt
 ms.openlocfilehash: 213fc3412a2dfad77946e52a355a30774d6860c7
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81680677"
 ---
 # <a name="communicate-with-your-dps-using-the-mqtt-protocol"></a>Communiceren met uw DPS met het MQTT-Protocol
@@ -44,11 +43,11 @@ Als een apparaat de Sdk's van het apparaat niet kan gebruiken, kan het nog steed
 
 * Gebruik **registratie**voor het veld **ClientId** .
 
-* Voor het veld **username** gebruikt u `{idScope}/registrations/{registration_id}/api-version=2019-03-31`, waarbij `{idScope}` de [idScope](https://docs.microsoft.com/azure/iot-dps/concepts-device#id-scope) van de DPS is.
+* Voor het veld **username** gebruikt u `{idScope}/registrations/{registration_id}/api-version=2019-03-31` , waarbij `{idScope}` de [idScope](https://docs.microsoft.com/azure/iot-dps/concepts-device#id-scope) van de DPS is.
 
 * Gebruik voor het **wachtwoord** veld een SAS-token. De indeling van de SAS-token is hetzelfde als voor de HTTPS-en AMQP-protocollen:
 
-  `SharedAccessSignature sr={URL-encoded-resourceURI}&sig={signature-string}&se={expiry}&skn=registration`De resourceURI moet de indeling `{idScope}/registrations/{registration_id}`hebben. De naam van het beleid `registration`moet zijn.
+  `SharedAccessSignature sr={URL-encoded-resourceURI}&sig={signature-string}&se={expiry}&skn=registration`De resourceURI moet de indeling hebben `{idScope}/registrations/{registration_id}` . De naam van het beleid moet zijn `registration` .
 
   > [!NOTE]
   > Als u X. 509-certificaat authenticatie gebruikt, zijn SAS-token wachtwoorden niet vereist.
@@ -68,17 +67,17 @@ Als u het MQTT-protocol direct wilt gebruiken, *moet* de client verbinding maken
 
 ## <a name="registering-a-device"></a>Een apparaat registreren
 
-Als u een apparaat wilt registreren via DPS, moet een apparaat `$dps/registrations/res/#` zich abonneren met als een **onderwerps filter**. Het Joker teken `#` op meerdere niveaus in het onderwerps filter wordt alleen gebruikt om het apparaat in staat te stellen extra eigenschappen in de onderwerpnaam te ontvangen. DPS staat het gebruik van de `#` of `?` -joker tekens voor het filteren van subonderwerpen niet toe. Omdat DPS geen algemene pub-berichten Broker is, worden alleen de gedocumenteerde onderwerps namen en onderwerps filters ondersteund.
+Als u een apparaat wilt registreren via DPS, moet een apparaat zich abonneren met `$dps/registrations/res/#` als een **onderwerps filter**. Het Joker teken op meerdere niveaus `#` in het onderwerps filter wordt alleen gebruikt om het apparaat in staat te stellen extra eigenschappen in de onderwerpnaam te ontvangen. DPS staat het gebruik van de of- `#` `?` joker tekens voor het filteren van subonderwerpen niet toe. Omdat DPS geen algemene pub-berichten Broker is, worden alleen de gedocumenteerde onderwerps namen en onderwerps filters ondersteund.
 
-Het apparaat moet een REGI ster-bericht publiceren naar `$dps/registrations/PUT/iotdps-register/?$rid={request_id}` DPS met als **onderwerpnaam**. De payload moet het [apparaatregistratie](https://docs.microsoft.com/rest/api/iot-dps/runtimeregistration/registerdevice#deviceregistration) -object in JSON-indeling bevatten.
+Het apparaat moet een REGI ster-bericht publiceren naar DPS met `$dps/registrations/PUT/iotdps-register/?$rid={request_id}` als **onderwerpnaam**. De payload moet het [apparaatregistratie](https://docs.microsoft.com/rest/api/iot-dps/runtimeregistration/registerdevice#deviceregistration) -object in JSON-indeling bevatten.
 In een geslaagd scenario krijgt het apparaat een antwoord op de `$dps/registrations/res/202/?$rid={request_id}&retry-after=x` onderwerpnaam waarbij x de waarde voor opnieuw proberen (in seconden) is. De nettolading van het antwoord bevat het object [RegistrationOperationStatus](https://docs.microsoft.com/rest/api/iot-dps/runtimeregistration/registerdevice#registrationoperationstatus) in JSON-indeling.
 
 ## <a name="polling-for-registration-operation-status"></a>Polling voor de status van de registratie bewerking
 
-Het apparaat moet de service periodiek pollen om het resultaat van de registratie van het apparaat te ontvangen. Ervan uitgaande dat het apparaat al is geabonneerd op het `$dps/registrations/res/#` onderwerp zoals hierboven aangegeven, kan het een Get operationstatus-bericht publiceren naar `$dps/registrations/GET/iotdps-get-operationstatus/?$rid={request_id}&operationId={operationId}` de onderwerpnaam. De bewerkings-ID in dit bericht moet de waarde zijn die wordt ontvangen in het RegistrationOperationStatus-respons bericht in de vorige stap. In het geval van succes reageert de service op het `$dps/registrations/res/200/?$rid={request_id}` onderwerp. De nettolading van het antwoord bevat het object RegistrationOperationStatus. Op het apparaat moet de service worden gecontroleerd als de antwoord code 202 na een vertraging gelijk is aan de periode voor opnieuw proberen. De registratie van het apparaat slaagt als de service een 200-status code retourneert.
+Het apparaat moet de service periodiek pollen om het resultaat van de registratie van het apparaat te ontvangen. Ervan uitgaande dat het apparaat al is geabonneerd op het `$dps/registrations/res/#` onderwerp zoals hierboven aangegeven, kan het een Get operationstatus-bericht publiceren naar de `$dps/registrations/GET/iotdps-get-operationstatus/?$rid={request_id}&operationId={operationId}` onderwerpnaam. De bewerkings-ID in dit bericht moet de waarde zijn die wordt ontvangen in het RegistrationOperationStatus-respons bericht in de vorige stap. In het geval van succes reageert de service op het `$dps/registrations/res/200/?$rid={request_id}` onderwerp. De nettolading van het antwoord bevat het object RegistrationOperationStatus. Op het apparaat moet de service worden gecontroleerd als de antwoord code 202 na een vertraging gelijk is aan de periode voor opnieuw proberen. De registratie van het apparaat slaagt als de service een 200-status code retourneert.
 
 ## <a name="connecting-over-websocket"></a>Verbinding maken via WebSocket
-Wanneer u verbinding maakt via WebSocket, geeft u het `mqtt`subprotocol op als. Volg [RFC 6455](https://tools.ietf.org/html/rfc6455).
+Wanneer u verbinding maakt via WebSocket, geeft u het subprotocol op als `mqtt` . Volg [RFC 6455](https://tools.ietf.org/html/rfc6455).
 
 ## <a name="next-steps"></a>Volgende stappen
 

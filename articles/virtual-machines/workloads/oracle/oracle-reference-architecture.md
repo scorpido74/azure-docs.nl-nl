@@ -13,10 +13,9 @@ ms.date: 12/13/2019
 ms.author: borisb
 ms.custom: ''
 ms.openlocfilehash: bbb6665299ce9b6521eeb8801d8621dfbdc17f4a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81683488"
 ---
 # <a name="reference-architectures-for-oracle-database-enterprise-edition-on-azure"></a>Referentie architecturen voor Oracle Database Enterprise Edition op Azure
@@ -25,7 +24,7 @@ Deze hand leiding bevat informatie over het implementeren van een Maxi maal besc
 
 Zie [architect a Oracle DB](oracle-design.md)als u meer wilt weten over het maximaliseren van de prestaties van uw Oracle-data base.
 
-## <a name="assumptions"></a>Veronderstellingen
+## <a name="assumptions"></a>Aannames
 
 - U hebt een goed idee van de verschillende concepten van Azure, zoals [beschikbaarheids zones](../../../availability-zones/az-overview.md)
 - U werkt Oracle Database Enterprise Edition 12c of hoger
@@ -154,7 +153,7 @@ Oracle sharding bestaat voornamelijk uit de volgende onderdelen. Meer informatie
 
 - **Shard-data** bases-Shard-data bases zijn uw Oracle-data bases. Elke Data Base wordt met behulp van Oracle Data Guard gerepliceerd in een Broker-configuratie met snelle start failover (FSFO) ingeschakeld. U hoeft geen Data Guard-failover en replicatie in te stellen op elke Shard. Dit wordt automatisch geconfigureerd en geïmplementeerd wanneer de gedeelde data base wordt gemaakt. Als een bepaalde Shard mislukt, wordt het delen van Oracle automatisch uitgevoerd via database verbindingen van de primaire naar de stand-by.
 
-U kunt Oracle Shard-data bases met twee interfaces implementeren en beheren: Oracle Enter prise Manager-interface voor `GDSCTL` Cloud beheer en/of het opdracht regel programma. U kunt de verschillende Shards zelfs controleren op Beschik baarheid en prestaties met behulp van Cloud beheer. Met `GDSCTL DEPLOY` deze opdracht worden automatisch de Shards en hun respectieve listeners gemaakt. Bovendien implementeert deze opdracht automatisch de replicatie Configuratie die wordt gebruikt voor Shard hoge Beschik baarheid die is opgegeven door de beheerder.
+U kunt Oracle Shard-data bases met twee interfaces implementeren en beheren: Oracle Enter prise Manager-interface voor Cloud beheer en/of het `GDSCTL` opdracht regel programma. U kunt de verschillende Shards zelfs controleren op Beschik baarheid en prestaties met behulp van Cloud beheer. `GDSCTL DEPLOY`Met deze opdracht worden automatisch de Shards en hun respectieve listeners gemaakt. Bovendien implementeert deze opdracht automatisch de replicatie Configuratie die wordt gebruikt voor Shard hoge Beschik baarheid die is opgegeven door de beheerder.
 
 Er zijn verschillende manieren om een Data Base te Shard:
 

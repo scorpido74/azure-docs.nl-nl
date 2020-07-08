@@ -15,10 +15,9 @@ ms.topic: article
 ms.date: 03/18/2019
 ms.author: juliako
 ms.openlocfilehash: f875b4a5c4f1322f4a992dc3738ab1ce6431149d
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81641127"
 ---
 # <a name="overview-of-live-streaming-using-media-services"></a>Overzicht van live streamen met Media Services
@@ -74,17 +73,17 @@ De volgende tabel bevat een hand leiding voor het vergelijken van de twee typen 
 
 | Functie | Pass-Through-kanaal | Standaard kanaal |
 | --- | --- | --- |
-| Invoer met één bitsnelheid wordt gecodeerd in meerdere bitrates in de Cloud |Nee |Ja |
+| Invoer met één bitsnelheid wordt gecodeerd in meerdere bitrates in de Cloud |Nee |Yes |
 | Maximum resolutie, aantal lagen |1080p, 8 lagen, 60 + fps |720p, 6 lagen, 30 fps |
 | Invoer protocollen |RTMP, Smooth Streaming |RTMP, Smooth Streaming |
 | Prijs |Bekijk de [pagina met prijzen](https://azure.microsoft.com/pricing/details/media-services/) en klik op het tabblad live video |De [pagina met prijzen](https://azure.microsoft.com/pricing/details/media-services/) bekijken |
 | Maximale uitvoerings tijd |24x7 |8 uur |
-| Ondersteuning voor het invoegen van pastels |Nee |Ja |
-| Ondersteuning voor AD-Signa lering |Nee |Ja |
+| Ondersteuning voor het invoegen van pastels |Nee |Yes |
+| Ondersteuning voor AD-Signa lering |Nee |Yes |
 | Pass-Through CEA 608/708-bijschriften |Ja |Ja |
-| Ondersteuning voor niet-uniforme invoer GOPs |Ja |Nee – invoer moet worden vastgesteld 2sec GOPs |
-| Ondersteuning voor variabele frame-rate invoer |Ja |Nee – invoer moet een vaste frame frequentie zijn.<br/>Kleine variaties zijn toegestaan, bijvoorbeeld tijdens hoge bewegende scènes. Code ring kan echter niet worden verwijderd uit 10 frames per seconde. |
-| Automatische shutoff van kanalen wanneer invoer toevoer verloren gaat |Nee |Na 12 uur, als er geen programma wordt uitgevoerd |
+| Ondersteuning voor niet-uniforme invoer GOPs |Yes |Nee – invoer moet worden vastgesteld 2sec GOPs |
+| Ondersteuning voor variabele frame-rate invoer |Yes |Nee – invoer moet een vaste frame frequentie zijn.<br/>Kleine variaties zijn toegestaan, bijvoorbeeld tijdens hoge bewegende scènes. Code ring kan echter niet worden verwijderd uit 10 frames per seconde. |
+| Automatische shutoff van kanalen wanneer invoer toevoer verloren gaat |No |Na 12 uur, als er geen programma wordt uitgevoerd |
 
 ## <a name="working-with-channels-that-receive-multi-bitrate-live-stream-from-on-premises-encoders-pass-through"></a>Werken met kanalen die een multi-bitrate livestream van on-premises encoders ontvangen (pass-through)
 
@@ -153,7 +152,7 @@ In de volgende tabel ziet u hoe kanaal statussen worden toegewezen aan de factur
 | Starten |Starten |Nee (tijdelijke status) |
 | In uitvoering |Gereed (geen actieve Program ma's)<br/>of<br/>Streaming (ten minste één programma dat wordt uitgevoerd) |JA |
 | Stoppen |Stoppen |Nee (tijdelijke status) |
-| Gestopt |Gestopt |Nee |
+| Gestopt |Gestopt |No |
 
 ## <a name="media-services-learning-paths"></a>Media Services-leertrajecten
 [!INCLUDE [media-services-learning-paths-include](../../../includes/media-services-learning-paths-include.md)]

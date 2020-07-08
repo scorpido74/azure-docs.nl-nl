@@ -8,10 +8,9 @@ ms.devlang: azurecli
 ms.topic: conceptual
 ms.date: 4/13/2020
 ms.openlocfilehash: 75efdd8ed855fe78651fce5828aacb2384052ae5
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81270533"
 ---
 # <a name="configure-and-access-slow-query-logs-by-using-azure-cli"></a>Langzame query logboeken configureren en openen met behulp van Azure CLI
@@ -24,9 +23,9 @@ Als u deze hand leiding wilt door lopen, hebt u het volgende nodig:
 
 ## <a name="configure-logging"></a>Logboek registratie configureren
 U kunt de server configureren voor toegang tot het langzame Slow-query logboek door de volgende stappen uit te voeren:
-1. Schakel logboek registratie voor langzame query's in door **de\_langzame\_para meter voor query LOGBOEKEN** in te stellen op on.
-2. Selecteer waar de logboeken moeten worden uitgevoerd om de **logboek\_uitvoer**te gebruiken. Selecteer **bestand**om logboeken naar zowel lokale opslag als Azure monitor Diagnostische logboeken te verzenden. Als u Logboeken alleen naar Azure Monitor logboeken wilt verzenden, selecteert u **geen**
-3. Pas andere para meters aan **,\_zoals\_lange query tijd** en **logboek\_langzame\_beheer\_instructies**.
+1. Schakel logboek registratie voor langzame query's in door de langzame para meter voor ** \_ query \_ Logboeken** in te stellen op on.
+2. Selecteer waar de logboeken moeten worden uitgevoerd om de **logboek \_ uitvoer**te gebruiken. Selecteer **bestand**om logboeken naar zowel lokale opslag als Azure monitor Diagnostische logboeken te verzenden. Als u Logboeken alleen naar Azure Monitor logboeken wilt verzenden, selecteert u **geen**
+3. Pas andere para meters aan, zoals **lange \_ query \_ tijd** en **logboek \_ langzame \_ beheer \_ instructies**.
 
 Zie [server parameters configureren](howto-configure-server-parameters-cli.md)voor meer informatie over het instellen van de waarde van deze para meters via Azure cli.
 
@@ -42,7 +41,7 @@ az mariadb server configuration list --resource-group myresourcegroup --server m
 ## <a name="list-logs-for-azure-database-for-mariadb-server"></a>Logboeken voor Azure Database for MariaDB server weer geven
 Als **log_output** is geconfigureerd voor "bestand", hebt u rechtstreeks toegang tot logboeken vanuit de lokale opslag van de server. Als u de beschik bare langzame query logboek bestanden voor uw server wilt weer geven, voert u de opdracht [AZ mariadb server-logs List](/cli/azure/mariadb/server-logs#az-mariadb-server-logs-list) uit.
 
-U kunt de logboek bestanden voor server **mydemoserver.mariadb.database.Azure.com** weer geven onder de resource groep **myresourcegroup**. Ga vervolgens naar de lijst met logboek bestanden naar een tekst bestand met de naam **logboek\_bestanden\_lijst. txt**.
+U kunt de logboek bestanden voor server **mydemoserver.mariadb.database.Azure.com** weer geven onder de resource groep **myresourcegroup**. Ga vervolgens naar de lijst met logboek bestanden naar een tekst bestand met de naam **logboek \_ bestanden \_list.txt**.
 ```azurecli-interactive
 az mariadb server-logs list --resource-group myresourcegroup --server mydemoserver > log_files_list.txt
 ```

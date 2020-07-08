@@ -7,10 +7,9 @@ ms.service: media-services
 ms.topic: reference
 ms.date: 04/20/2020
 ms.openlocfilehash: e26215115b4c4484e5e05a2fd94a4d2c6680a4d0
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81727162"
 ---
 # <a name="options"></a>Opties #
@@ -30,12 +29,12 @@ Ten slotte, als u niet het data-setup-kenmerk gebruikt voor het activeren van de
 `amp("vid1", { "controls": true, "autoplay": false });`
 
 > [!NOTE]
-> De opties in de constructor worden alleen ingesteld bij de eerste initialisatie voordat de bron is ingesteld.  Als u de opties voor hetzelfde geinitialiseerde Azure Media Player element wilt wijzigen, moet u de opties bijwerken voordat u de bron wijzigt. U kunt de opties in Java script bijwerken met `myPlayer.options({/*updated options*/});`behulp van. Houd er rekening mee dat alleen gewijzigde opties worden beïnvloed. alle andere eerder ingestelde opties blijven behouden.
+> De opties in de constructor worden alleen ingesteld bij de eerste initialisatie voordat de bron is ingesteld.  Als u de opties voor hetzelfde geinitialiseerde Azure Media Player element wilt wijzigen, moet u de opties bijwerken voordat u de bron wijzigt. U kunt de opties in Java script bijwerken met behulp van `myPlayer.options({/*updated options*/});` . Houd er rekening mee dat alleen gewijzigde opties worden beïnvloed. alle andere eerder ingestelde opties blijven behouden.
 
 ## <a name="individual-options"></a>Afzonderlijke opties ##
 
 > [!NOTE]
->Kenmerken van video Tags kunnen alleen waar of ONWAAR (Booleaans) zijn, u hoeft alleen het kenmerk op te nemen (geen gelijkteken) om het in te scha kelen, of het uit te sluiten om het uit te scha kelen. Als u bijvoorbeeld de besturings elementen wilt inschakelen: `<video controls="true" ...>` onjuist `<video controls ...>` recht op het grootste probleem dat gebruikers uitvoeren in, wordt geprobeerd deze waarden in te stellen op False met ONWAAR als de waarde (bijvoorbeeld Controls = "false") die werkelijk het tegenovergestelde doet en de waarde ingesteld op True, omdat het kenmerk nog steeds is opgenomen.
+>Kenmerken van video Tags kunnen alleen waar of ONWAAR (Booleaans) zijn, u hoeft alleen het kenmerk op te nemen (geen gelijkteken) om het in te scha kelen, of het uit te sluiten om het uit te scha kelen. Als u bijvoorbeeld de besturings elementen wilt inschakelen: onjuist `<video controls="true" ...>` recht op `<video controls ...>` het grootste probleem dat gebruikers uitvoeren in, wordt geprobeerd deze waarden in te stellen op False met ONWAAR als de waarde (bijvoorbeeld Controls = "false") die werkelijk het tegenovergestelde doet en de waarde ingesteld op True, omdat het kenmerk nog steeds is opgenomen.
 
 ### <a name="controls"></a>besturingselementen ###
 
@@ -79,7 +78,7 @@ Zie [invoeg toepassingen schrijven](azure-media-player-writing-plugins.md) voor 
 
 ### <a name="other-options"></a>andere opties ###
 
-Andere opties kunnen worden ingesteld voor de `<video>` tag met behulp `data-setup` van de para meter die een JSON gebruikt.
+Andere opties kunnen worden ingesteld voor de `<video>` tag met behulp van de `data-setup` para meter die een JSON gebruikt.
 `<video ... data-setup='{"nativeControlsForTouch": false}'>`
 
 #### <a name="nativecontrolsfortouch"></a>nativeControlsForTouch ####
@@ -92,11 +91,11 @@ Als u deze optie instelt op True video-element krijgt de volledige breedte van d
 
 `<video ... data-setup='{"fluid": true}'>`
 
-`fluid`optie overschrijft expliciete `width` en `height` instellingen. Deze optie is alleen beschikbaar in Azure Media Player- `2.0.0` versie en hoger.
+`fluid`optie overschrijft expliciete `width` en `height` instellingen. Deze optie is alleen beschikbaar in Azure Media Player-versie `2.0.0` en hoger.
 
 ### <a name="playbackspeed"></a>playbackSpeed ###
 
-`playbackSpeed`Option Controls playbackSpeed Control en set met instellingen voor de afspeel snelheid die beschikbaar zijn voor de gebruiker. `playbackSpeed`neemt een object. Als u het besturings element voor de afspeel snelheid wilt inschakelen op de `enabled` werk balk, moet de eigenschap van het object worden ingesteld op True. Een voor beeld van het inschakelen van afspeel snelheid in Markeringen:
+`playbackSpeed`Option Controls playbackSpeed Control en set met instellingen voor de afspeel snelheid die beschikbaar zijn voor de gebruiker. `playbackSpeed`neemt een object. Als u het besturings element voor de afspeel snelheid wilt inschakelen op de werk balk, `enabled` moet de eigenschap van het object worden ingesteld op True. Een voor beeld van het inschakelen van afspeel snelheid in Markeringen:
 
 `<video ... data-setup='{"playbackSpeed": {"enabled": true}}'>`
 
@@ -148,4 +147,4 @@ Deze optie is alleen beschikbaar in Azure Media Player versie 2.1.1 en hoger.
 
 ## <a name="next-steps"></a>Volgende stappen ##
 
-- [Snelstartgids Azure Media Player](azure-media-player-quickstart.md)
+- [Quickstart voor Azure Media Player](azure-media-player-quickstart.md)

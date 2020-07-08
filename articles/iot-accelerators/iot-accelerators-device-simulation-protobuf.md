@@ -12,10 +12,9 @@ ms.custom:
 ms.date: 11/06/2018
 ms.author: dobett
 ms.openlocfilehash: c49745b30d2c4acc115a72af095f3e941dc4d509
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81683993"
 ---
 # <a name="serialize-telemetry-using-protocol-buffers"></a>Telemetrie serialiseren met protocol buffers
@@ -65,14 +64,14 @@ Down load en pak de [device simulatie micro service](https://github.com/Azure/de
 
 Open de map **Remote-Monitoring-Services-DotNet-master\storage-adapter** in Visual Studio code. Klik op alle **herstel** knoppen om niet-opgeloste afhankelijkheden op te lossen.
 
-Open het bestand **. vscode/Launch. json** en wijs uw Cosmos DB connection string toe aan de omgevings variabele **PCs\_STORAGEADAPTER\_DOCUMENTDB\_CONNSTRING** .
+Open de **vscode/launch.jsin** het bestand en wijs uw Cosmos DB connection string toe aan de omgevings variabele **PCs \_ STORAGEADAPTER \_ DOCUMENTDB \_ CONNSTRING** .
 
 > [!NOTE]
 > Wanneer u de micro service lokaal op uw computer uitvoert, moet er nog een Cosmos DB-exemplaar in azure goed werken.
 
-Als u de micro service voor de opslag adapter lokaal wilt uitvoeren, klikt u op ** \> fout opsporing starten**.
+Als u de micro service voor de opslag adapter lokaal wilt uitvoeren, klikt u op **fout \> opsporing starten**.
 
-Het **Terminal** venster in Visual Studio code toont uitvoer van de actieve micro service, inclusief een URL voor de status controle van de <http://127.0.0.1:9022/v1/status>webservice:. Wanneer u naar dit adres navigeert, moet de status ' OK: Alive en well ' zijn.
+Het **Terminal** venster in Visual Studio code toont uitvoer van de actieve micro service, inclusief een URL voor de status controle van de webservice: <http://127.0.0.1:9022/v1/status> . Wanneer u naar dit adres navigeert, moet de status ' OK: Alive en well ' zijn.
 
 Verlaat de micro service voor de opslag adapter die wordt uitgevoerd in dit exemplaar van Visual Studio code wanneer u de volgende stappen uitvoert.
 
@@ -82,9 +81,9 @@ Open de map **device-simulatie-DotNet-Master** die u hebt gedownload van github 
 
 In deze hand leiding maakt u een nieuw apparaat model voor een Asset Tracker:
 
-1. Maak een nieuw apparaat model bestand met de naam **assettracker-01. json** in de map **Services\data\devicemodels** .
+1. Maak een nieuw apparaat model bestand met de naam **assettracker-01.js** in de map **Services\data\devicemodels** .
 
-1. Definieer de functionaliteit van het apparaat in het **assettracker-01. json-** bestand van het model. Het gedeelte telemetrie van een protobuf-apparaat moet:
+1. Definieer de functionaliteit van het apparaat in het **assettracker-01.jsvan** het apparaat in het bestand. Het gedeelte telemetrie van een protobuf-apparaat moet:
 
    * Neem de naam op van de protobuf-klasse die u voor uw apparaat genereert. In de volgende sectie ziet u hoe u deze klasse kunt genereren.
    * Geef protobuf op als de bericht indeling.
@@ -190,17 +189,17 @@ In deze sectie gaat u het Asset tracker-apparaat dat u in de vorige gedeelten he
 
 ### <a name="run-the-device-simulation-microservice"></a>De Device simulatie micro service uitvoeren
 
-Open het bestand **. vscode/Launch. json** en wijs het volgende toe:
+Open de **vscode/launch.jsin** het bestand en wijs het volgende toe:
 
-* IoT Hub connection string aan de omgevings variabele **\_PCs IOTHUB\_CONNSTRING** .
-* Het opslag account connection string de omgevings variabele **pc's\_\_Azure Storage\_-account** .
-* Cosmos DB connection string aan de omgevings variabele **PCs\_\_STORAGEADAPTER DOCUMENTDB\_CONNSTRING** .
+* IoT Hub connection string aan de omgevings variabele **PCs \_ IOTHUB \_ CONNSTRING** .
+* Het opslag account connection string de omgevings variabele **pc's \_ Azure \_ Storage- \_ account** .
+* Cosmos DB connection string aan de omgevings variabele **PCs \_ STORAGEADAPTER \_ DOCUMENTDB \_ CONNSTRING** .
 
-Open het bestand **webservice/eigenschappen/launchSettings. json** en wijs het volgende toe:
+Open het bestand **webservice/eigenschappen/launchSettings.js** en wijs het volgende toe:
 
-* IoT Hub connection string aan de omgevings variabele **\_PCs IOTHUB\_CONNSTRING** .
-* Het opslag account connection string de omgevings variabele **pc's\_\_Azure Storage\_-account** .
-* Cosmos DB connection string aan de omgevings variabele **PCs\_\_STORAGEADAPTER DOCUMENTDB\_CONNSTRING** .
+* IoT Hub connection string aan de omgevings variabele **PCs \_ IOTHUB \_ CONNSTRING** .
+* Het opslag account connection string de omgevings variabele **pc's \_ Azure \_ Storage- \_ account** .
+* Cosmos DB connection string aan de omgevings variabele **PCs \_ STORAGEADAPTER \_ DOCUMENTDB \_ CONNSTRING** .
 
 Open het **WebService\appsettings.ini** -bestand en wijzig de instellingen als volgt:
 
@@ -219,7 +218,7 @@ Voeg een vermelding toe aan het **services\services.csproj** -bestand voor elk b
 </None>
 ```
 
-Als u de micro service lokaal wilt uitvoeren, klikt u op ** \> fout opsporing starten**.
+Als u de micro service lokaal wilt uitvoeren, klikt u op **fout \> opsporing starten**.
 
 In het **Terminal** venster in Visual Studio code wordt uitvoer van de actieve micro service weer gegeven.
 
@@ -249,9 +248,9 @@ Postman instellen:
 
 1. Open postman op uw lokale machine.
 
-1. Klik **op \> bestand importeren**. Klik vervolgens op **bestanden kiezen**.
+1. Klik op **bestand \> importeren**. Klik vervolgens op **bestanden kiezen**.
 
-1. Selecteer de **Azure IOT-oplossings versneller\_voor apparaat simulatie. postman verzameling** en **Azure IOT-\_oplossings versneller.** **Open**
+1. Selecteer de **Azure IOT-oplossings versneller voor apparaat simulatie. postman \_ verzameling** en **Azure IOT- \_ oplossings versneller.** **Open**
 
 1. Vouw de **Azure IOT Device simulatie Solution Accelerator** uit om de aanvragen weer te geven die u kunt verzenden.
 
@@ -269,7 +268,7 @@ Als u de simulatie wilt stoppen, selecteert u de aanvraag voor het stoppen van d
 
 ### <a name="clean-up-resources"></a>Resources opschonen
 
-U kunt de twee lokaal uitgevoerde micro Services in hun Visual Studio code-instanties stoppen (**fouten \> opsporen Stop fout opsporing**).
+U kunt de twee lokaal uitgevoerde micro Services in hun Visual Studio code-instanties stoppen (fouten opsporen** \> Stop fout opsporing**).
 
 Als u de IoT Hub en Cosmos DB instanties niet meer nodig hebt, verwijdert u deze uit uw Azure-abonnement om overbodige kosten te voor komen.
 

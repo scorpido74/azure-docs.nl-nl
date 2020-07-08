@@ -9,10 +9,9 @@ ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 04/08/2020
 ms.openlocfilehash: ade2fd6011bbcdaed4ce31ce70bfb4235429bb0d
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81606297"
 ---
 # <a name="surrogate-key-transformation-in-mapping-data-flow"></a>Surrogaat sleutel transformatie bij toewijzing van gegevens stroom 
@@ -47,7 +46,7 @@ Gebruik een SQL-query optie om MAX () te selecteren in de bron. Bijvoorbeeld:`Se
 
 #### <a name="file-sources"></a>Bestands bronnen
 
-Als uw vorige maximum waarde zich in een bestand bevindt `max()` , gebruikt u de functie in de cumulatieve trans formatie om de vorige maximum waarde op te halen:
+Als uw vorige maximum waarde zich in een bestand bevindt, gebruikt u de `max()` functie in de cumulatieve trans formatie om de vorige maximum waarde op te halen:
 
 ![Surrogaat sleutel bestand](media/data-flow/sk008.png "Surrogaat sleutel bestand")
 
@@ -57,7 +56,7 @@ In beide gevallen moet u uw inkomende nieuwe gegevens samen voegen met de bron d
 
 ## <a name="data-flow-script"></a>Script voor gegevensstroom
 
-### <a name="syntax"></a>Syntaxis
+### <a name="syntax"></a>Syntax
 
 ```
 <incomingStream> 

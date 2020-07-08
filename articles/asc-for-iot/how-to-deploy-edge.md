@@ -16,10 +16,9 @@ ms.workload: na
 ms.date: 1/30/2020
 ms.author: mlottner
 ms.openlocfilehash: 4dd7ca8f926862487b9505731c0662e68ee3d7c0
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81311284"
 ---
 # <a name="deploy-a-security-module-on-your-iot-edge-device"></a>Een beveiligings module op uw IoT Edge-apparaat implementeren
@@ -131,7 +130,7 @@ Voltooi elke stap om uw IoT Edge-implementatie voor Azure Security Center voor I
 
 1. Selecteer **Opslaan**.
 
-1. Selecteer **Next**.
+1. Selecteer **Volgende**.
 
 #### <a name="step-3-specify-routes"></a>Stap 3: routes opgeven
 
@@ -147,7 +146,7 @@ Voltooi elke stap om uw IoT Edge-implementatie voor Azure Security Center voor I
     "ASCForIoTRoute": "FROM /messages/modules/azureiotsecurity/* INTO $upstream"
     ```
 
-1. Selecteer **Next**.
+1. Selecteer **Volgende**.
 
 #### <a name="step-4-review-deployment"></a>Stap 4: de implementatie controleren
 
@@ -165,7 +164,7 @@ Als er een probleem optreedt, zijn container Logboeken de beste manier om meer t
 
 1. Controleer of de volgende containers worden uitgevoerd:
 
-   | Naam | AFBEELDING |
+   | Name | AFBEELDING |
    | --- | --- |
    | azureiotsecurity | mcr.microsoft.com/ascforiot/azureiotsecurity:1.0.2 |
    | edgeHub | mcr.microsoft.com/azureiotedge-hub:1.0.8.3 |
@@ -179,7 +178,7 @@ Als er een probleem optreedt, zijn container Logboeken de beste manier om meer t
 
    `sudo docker logs azureiotsecurity`
 
-1. Voor uitgebreidere logboeken voegt u de volgende omgevings variabele toe **azureiotsecurity** aan de implementatie van `logLevel=Debug`de azureiotsecurity-module:.
+1. Voor uitgebreidere logboeken voegt u de volgende omgevings variabele toe aan de implementatie van de **azureiotsecurity** -module: `logLevel=Debug` .
 
 ## <a name="next-steps"></a>Volgende stappen
 

@@ -9,10 +9,9 @@ ms.service: iot-edge
 services: iot-edge
 ms.custom: amqp
 ms.openlocfilehash: 270e6a0173ed0088ff5d37c989947f5272634200
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81687188"
 ---
 # <a name="configure-an-iot-edge-device-to-communicate-through-a-proxy-server"></a>Een IoT Edge-apparaat configureren om te communiceren via een proxyserver
@@ -53,7 +52,7 @@ Proxy-Url's hebben de volgende indeling: **protocol**://**proxy_host**:**proxy_p
 
 * Het **protocol** is http of https. De docker-daemon kan gebruikmaken van een van beide protocollen, afhankelijk van de Register instellingen van uw container, maar de IoT Edge-daemon-en runtime-containers moeten altijd HTTP gebruiken om verbinding te maken met de proxy.
 
-* De **proxy_host** is een adres voor de proxy server. Als voor uw proxy server verificatie is vereist, kunt u uw referenties opgeven als onderdeel van de proxy-host met de volgende indeling: **gebruiker**:**wacht woord**\@**proxy_host**.
+* De **proxy_host** is een adres voor de proxy server. Als voor uw proxy server verificatie is vereist, kunt u uw referenties opgeven als onderdeel van de proxy-host met de volgende indeling: **gebruiker**:**wacht woord** \@ **proxy_host**.
 
 * De **proxy_port** is de netwerk poort waarop de proxy reageert op netwerk verkeer.
 
@@ -69,7 +68,7 @@ Als u de IoT Edge runtime op een Linux-apparaat installeert, configureert u pakk
 
 Als u de IoT Edge runtime op een Windows-apparaat installeert, moet u de proxy server twee keer door lopen. De eerste verbinding downloadt het installatie script bestand en de tweede verbinding tijdens de installatie om de benodigde onderdelen te downloaden. U kunt proxy gegevens in Windows-instellingen configureren of uw proxy gegevens rechtstreeks in de Power shell-opdrachten toevoegen.
 
-In de volgende stappen ziet u een voor beeld van een Windows `-proxy` -installatie met behulp van het argument:
+In de volgende stappen ziet u een voor beeld van een Windows-installatie met behulp van het `-proxy` argument:
 
 1. De opdracht invoke-WebRequest heeft proxy gegevens nodig om toegang te krijgen tot het installatie script. Vervolgens moet de opdracht Deploy-IoTEdge de proxy gegevens hebben om de installatie bestanden te downloaden.
 
@@ -83,7 +82,7 @@ In de volgende stappen ziet u een voor beeld van een Windows `-proxy` -installat
    . {Invoke-WebRequest -proxy <proxy URL> -useb aka.ms/iotedge-win} | Invoke-Expression; Initialize-IoTEdge
    ```
 
-Als u gecompliceerde referenties hebt voor de proxy server die niet kan worden opgenomen in de URL, `-ProxyCredential` gebruikt u `-InvokeWebRequestParameters`de para meter in. Bijvoorbeeld:
+Als u gecompliceerde referenties hebt voor de proxy server die niet kan worden opgenomen in de URL, gebruikt u de `-ProxyCredential` para meter in `-InvokeWebRequestParameters` . Bijvoorbeeld:
 
 ```powershell
 $proxyCredential = (Get-Credential).GetNetworkCredential()
@@ -122,7 +121,7 @@ Open een editor in de terminal om de IoT Edge daemon te configureren.
 sudo systemctl edit iotedge
 ```
 
-Voer de volgende tekst in, ** \<** waarbij u de proxy-URL>met het adres en de poort van de proxy server. Sla het bestand vervolgens op en sluit het af.
+Voer de volgende tekst in en vervang **\<proxy URL>** door het adres en de poort van uw proxy server. Sla het bestand vervolgens op en sluit het af.
 
 ```ini
 [Service]
@@ -149,7 +148,7 @@ systemctl show --property=Environment iotedge
 
 #### <a name="windows"></a>Windows
 
-Open een Power shell-venster als beheerder en voer de volgende opdracht uit om het REGI ster te bewerken met de nieuwe omgevings variabele. Vervang ** \<de proxy-URL>** door het adres en de poort van uw proxy server.
+Open een Power shell-venster als beheerder en voer de volgende opdracht uit om het REGI ster te bewerken met de nieuwe omgevings variabele. Vervang door **\<proxy url>** het adres en de poort van uw proxy server.
 
 ```powershell
 reg add HKLM\SYSTEM\CurrentControlSet\Services\iotedge /v Environment /t REG_MULTI_SZ /d https_proxy=<proxy URL>
@@ -167,7 +166,7 @@ De IoT Edge-agent is de eerste module die op een IoT Edge apparaat kan worden ge
 
 Deze stap vindt eenmaal plaats op het IoT Edge apparaat tijdens de eerste installatie van het apparaat.
 
-1. Open het bestand config. yaml op uw IoT Edge-apparaat. Op Linux-systemen bevindt dit bestand zich op **/etc/iotedge/config.yaml**. Op Windows-systemen bevindt dit bestand zich op **C:\ProgramData\iotedge\config.yaml**. Het configuratie bestand is beveiligd, dus u hebt beheerders bevoegdheden nodig om het te openen. Op Linux-systemen gebruikt u `sudo` de opdracht voordat u het bestand opent in de gewenste tekst editor. Open in Windows een tekst editor zoals Klad blok als beheerder en open vervolgens het bestand.
+1. Open het bestand config. yaml op uw IoT Edge-apparaat. Op Linux-systemen bevindt dit bestand zich op **/etc/iotedge/config.yaml**. Op Windows-systemen bevindt dit bestand zich op **C:\ProgramData\iotedge\config.yaml**. Het configuratie bestand is beveiligd, dus u hebt beheerders bevoegdheden nodig om het te openen. Op Linux-systemen gebruikt u de `sudo` opdracht voordat u het bestand opent in de gewenste tekst editor. Open in Windows een tekst editor zoals Klad blok als beheerder en open vervolgens het bestand.
 
 2. Zoek in het bestand config. yaml de sectie met de **rand Agent module specificatie** . De definitie van de IoT Edge-agent bevat een **env** -para meter waar u omgevings variabelen kunt toevoegen.
 

@@ -6,10 +6,9 @@ ms.author: flborn
 ms.date: 02/11/2020
 ms.topic: how-to
 ms.openlocfilehash: fd510f90887353d7486908ee076d5308db72c59d
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81687068"
 ---
 # <a name="get-service-access-tokens"></a>Tokens voor servicetoegang ophalen
@@ -24,7 +23,7 @@ In dit artikel wordt beschreven hoe u een dergelijk toegangs token maakt.
 
 ## <a name="token-service-rest-api"></a>Token Service REST API
 
-Voor het maken van toegangs tokens biedt de *Secure token service* een enkele rest API. De URL voor de ARR STS-service is https\/:/STS.mixedreality.Azure.com.
+Voor het maken van toegangs tokens biedt de *Secure token service* een enkele rest API. De URL voor de ARR STS-service is https: \/ /STS.mixedreality.Azure.com.
 
 ### <a name="get-token-request"></a>Aanvraag voor Token ophalen
 
@@ -32,7 +31,7 @@ Voor het maken van toegangs tokens biedt de *Secure token service* een enkele re
 |-----------|:-----------|
 | /accounts/**accountId**/token | GET |
 
-| Header | Waarde |
+| Koptekst | Waarde |
 |--------|:------|
 | Autorisatie | "Bearer- **accountId**:**accountKey**" |
 
@@ -44,7 +43,7 @@ Vervang *accountId* en *accountKey* door uw respectieve gegevens.
 |-----------|:-----------|:-----------|
 | 200 | AccessToken: teken reeks | Geslaagd |
 
-| Header | Doel |
+| Koptekst | Functie |
 |--------|:------|
 | MS-CV | Deze waarde kan worden gebruikt om de aanroep binnen de service te traceren |
 

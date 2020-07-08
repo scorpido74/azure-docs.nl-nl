@@ -10,10 +10,9 @@ ms.date: 03/11/2019
 ms.author: nberdy
 ms.custom: amqp
 ms.openlocfilehash: edbc3431c860794c7cd1dd8e5011c0d7d11d692d
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81732225"
 ---
 # <a name="iot-hub-operations-monitoring-deprecated"></a>Bewaking van IoT Hub bewerkingen (afgeschaft)
@@ -26,7 +25,7 @@ Met IoT Hub bewerkingen bewaken kunt u de status van de bewerkingen op uw IoT-hu
 IoT Hub bewaken zes categorieën gebeurtenissen:
 
 * Bewerkingen voor apparaat-id's
-* Telemetrie van apparaat
+* Apparaattelemetrie
 * Cloud-naar-apparaat-berichten
 * Verbindingen
 * Uploads van bestanden
@@ -43,7 +42,7 @@ IoT Hub bewaken zes categorieën gebeurtenissen:
 
     ![Configuratie van bewerkings bewaking openen in de portal](./media/iot-hub-operations-monitoring/enable-OM-1.png)
 
-3. Selecteer de bewakings categorieën die u wilt bewaken en klik vervolgens op **Opslaan**. De gebeurtenissen zijn beschikbaar voor het lezen van het eind punt dat compatibel is met Event hub, vermeld in **bewakings instellingen**. Het IoT Hub-eind punt `messages/operationsmonitoringevents`wordt aangeroepen.
+3. Selecteer de bewakings categorieën die u wilt bewaken en klik vervolgens op **Opslaan**. De gebeurtenissen zijn beschikbaar voor het lezen van het eind punt dat compatibel is met Event hub, vermeld in **bewakings instellingen**. Het IoT Hub-eind punt wordt aangeroepen `messages/operationsmonitoringevents` .
 
     ![Bewaking van bewerkingen op uw IoT-hub configureren](./media/iot-hub-operations-monitoring/enable-OM-2.png)
 
@@ -73,7 +72,7 @@ De categorie apparaat-id bewerkingen houdt fouten bij die optreden wanneer u pro
 }
 ```
 
-### <a name="device-telemetry"></a>Telemetrie van apparaat
+### <a name="device-telemetry"></a>Apparaattelemetrie
 
 De telemetrie-categorie van het apparaat houdt fouten bij die zich op de IoT-hub voordoen en zijn gerelateerd aan de telemetrie-pijp lijn. Deze categorie bevat fouten die optreden bij het verzenden van telemetrie-gebeurtenissen (zoals het beperken) en het ontvangen van telemetrie-gebeurtenissen (zoals niet-geautoriseerde lezer). Deze categorie kan geen fouten ondervangen die worden veroorzaakt door code die op het apparaat wordt uitgevoerd.
 

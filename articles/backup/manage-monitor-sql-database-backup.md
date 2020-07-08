@@ -4,10 +4,9 @@ description: In dit artikel wordt beschreven hoe u SQL Server-data bases die wor
 ms.topic: conceptual
 ms.date: 09/11/2019
 ms.openlocfilehash: 14e3a4797fe60a3d1857f1e6d947fa0c669bdcfe
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81537301"
 ---
 # <a name="manage-and-monitor-backed-up-sql-server-databases"></a>Back-ups van SQL Server-databases beheren en bewaken
@@ -38,7 +37,7 @@ Omdat logboek back-ups om de 15 minuten worden uitgevoerd, kan het lastig zijn o
 
 Database back-upwaarschuwingen bewaken:
 
-1. Meld u aan bij de [Azure-portal](https://portal.azure.com).
+1. Meld u aan bij [Azure Portal](https://portal.azure.com).
 
 2. Selecteer **waarschuwingen en gebeurtenissen**op het kluis dashboard.
 
@@ -142,7 +141,7 @@ Wijzig het beleid om de back-upfrequentie of het Bewaar bereik te wijzigen.
 > [!NOTE]
 > Elke wijziging in de retentie periode wordt retro actief toegepast op alle oudere herstel punten, naast de nieuwe.
 
-Ga in het kluis dashboard naar beleid voor het **beheren** > van**back-ups** en kies het beleid dat u wilt bewerken.
+Ga in het kluis dashboard naar beleid voor het **beheren**van  >  **back-ups** en kies het beleid dat u wilt bewerken.
 
   ![Back-upbeleid beheren](./media/backup-azure-sql-database/modify-backup-policy.png)
 

@@ -4,10 +4,9 @@ description: Stream Analytics kunt de gegevens die u exporteert, continu transfo
 ms.topic: conceptual
 ms.date: 01/08/2019
 ms.openlocfilehash: 15d1efa3a632024429d41f27fc23c569cd85bec2
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81536876"
 ---
 # <a name="use-stream-analytics-to-process-exported-data-from-application-insights"></a>Gebruik Stream Analytics voor het verwerken van geëxporteerde gegevens van Application Insights
@@ -95,7 +94,7 @@ Het voorvoegsel patroon van het pad geeft aan waar Stream Analytics de invoer be
 
     webapplication27_12345678123412341234123456789abcdef0/PageViews/{date}/{time}
 
-In dit voorbeeld:
+In dit voorbeeld geldt het volgende:
 
 * `webapplication27`is de naam van de Application Insights resource **alle kleine letters**.
 * `1234...`is de instrumentatie sleutel van de Application Insights resource, waarbij **streepjes worden wegge laten**. 
@@ -107,7 +106,7 @@ In dit voorbeeld:
 > 
 
 ## <a name="add-new-output"></a>Nieuwe uitvoer toevoegen
-Selecteer nu uw taak > **uitvoer** > **toevoegen**.
+Selecteer nu uw taak > **uitvoer**  >  **toevoegen**.
 
 ![](./media/export-stream-analytics/SA006.png)
 

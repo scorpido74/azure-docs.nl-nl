@@ -9,10 +9,9 @@ ms.topic: conceptual
 ms.date: 02/14/2019
 ms.author: wesmc
 ms.openlocfilehash: 03f9d58cab725335b0f4090ac1a7289c32c0af7f
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81640546"
 ---
 # <a name="connect-raspberry-pi-to-azure-iot-hub-c"></a>Raspberry Pi verbinden met Azure IoT Hub (C)
@@ -117,9 +116,9 @@ Bereid de microSD-kaart voor op de installatie van de Raspbian-installatie kopie
 
 ### <a name="enable-ssh-and-spi"></a>SSH en SPI inschakelen
 
-1. Verbind Pi met de monitor, het toetsen bord en de muis, start Pi en meld u vervolgens `pi` aan bij Raspbian door de `raspberry` gebruikers naam en het wacht woord te gebruiken.
+1. Verbind Pi met de monitor, het toetsen bord en de muis, start Pi en meld u vervolgens aan bij Raspbian door `pi` de gebruikers naam en `raspberry` het wacht woord te gebruiken.
  
-2. Klik op het pictogram Raspberry > **voor keuren** > **Raspberry Pi-configuratie**.
+2. Klik op het pictogram Raspberry > **voor keuren**  >  **Raspberry Pi-configuratie**.
 
    ![Het menu Raspbian-voor keuren](./media/iot-hub-raspberry-pi-kit-c-get-started/1-raspbian-preferences-menu.png)
 
@@ -180,7 +179,7 @@ Schakel pi in met behulp van de micro USB-kabel en de voeding. Gebruik de Ethern
 
    Gebruik de ingebouwde SSH-client op Ubuntu of macOS. Mogelijk moet u uitvoeren `ssh pi@<ip address of pi>` om pi via SSH te verbinden.
    > [!NOTE]
-   > De standaard gebruikersnaam is `pi` en het wacht woord `raspberry`.
+   > De standaard gebruikersnaam is `pi` en het wacht woord `raspberry` .
 
 
 ### <a name="configure-the-sample-application"></a>De voorbeeldtoepassing configureren

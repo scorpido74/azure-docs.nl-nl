@@ -8,10 +8,9 @@ ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 10/15/2019
 ms.openlocfilehash: 38ec2d4619f47bf9fc4d1815cb6e9990cef72dcf
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81606503"
 ---
 # <a name="derived-column-transformation-in-mapping-data-flow"></a>Afgeleide kolom transformatie bij toewijzing van gegevens stroom
@@ -42,7 +41,7 @@ Zie [JSON handling in mapping data flow](format-json.md#mapping-data-flow-proper
 
 ## <a name="data-flow-script"></a>Script voor gegevensstroom
 
-### <a name="syntax"></a>Syntaxis
+### <a name="syntax"></a>Syntax
 
 ```
 <incomingStream>
@@ -59,7 +58,7 @@ Zie [JSON handling in mapping data flow](format-json.md#mapping-data-flow-proper
 
 ### <a name="example"></a>Voorbeeld
 
-Het onderstaande voor beeld is een afgeleide kolom met de `CleanData` naam `MoviesYear` die een inkomende stroom gebruikt en twee afgeleide kolommen maakt. De eerste afgeleide kolom `Rating` vervangt de kolom met de classificatie waarde als een geheel getal. De tweede afgeleide kolom is een patroon dat overeenkomt met elke kolom waarvan de naam begint met ' films '. Voor elke overeenkomende kolom wordt een kolom `movie` gemaakt die gelijk is aan de waarde van de overeenkomende kolom, voorafgegaan door ' movie_ '. 
+Het onderstaande voor beeld is een afgeleide kolom met de naam `CleanData` die een inkomende stroom gebruikt `MoviesYear` en twee afgeleide kolommen maakt. De eerste afgeleide kolom vervangt de kolom `Rating` met de classificatie waarde als een geheel getal. De tweede afgeleide kolom is een patroon dat overeenkomt met elke kolom waarvan de naam begint met ' films '. Voor elke overeenkomende kolom wordt een kolom gemaakt `movie` die gelijk is aan de waarde van de overeenkomende kolom, voorafgegaan door ' movie_ '. 
 
 In de Data Factory UX ziet deze trans formatie er als volgt uit:
 

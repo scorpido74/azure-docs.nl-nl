@@ -15,15 +15,14 @@ ms.workload: infrastructure
 ms.date: 08/02/2018
 ms.author: borisb
 ms.openlocfilehash: ad446180b3bd864c5b6df808e6e4efac7d6c1c65
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81687526"
 ---
 # <a name="design-and-implement-an-oracle-database-in-azure"></a>Een Oracle-data base ontwerpen en implementeren in azure
 
-## <a name="assumptions"></a>Veronderstellingen
+## <a name="assumptions"></a>Aannames
 
 - U bent van plan om een Oracle-data base van on-premises naar Azure te migreren.
 - U hebt het [Diagnostische pakket](https://docs.oracle.com/cd/E11857_01/license.111/e11987/database_management.htm) voor de Oracle database u wilt migreren
@@ -146,7 +145,7 @@ Op basis van de vereisten voor de netwerk bandbreedte zijn er verschillende gate
 - Gebruik Virtual Machines met [versneld netwerken](https://docs.microsoft.com/azure/virtual-network/create-vm-accelerated-networking-cli) voor betere netwerk prestaties.
 - Voor bepaalde Linux-distrubutions kunt u [ondersteuning voor knippen/](https://docs.microsoft.com/azure/virtual-machines/linux/configure-lvm#trimunmap-support)ontkoppelen inschakelen.
 - Installeer [Oracle Enter prise Manager](https://www.oracle.com/technetwork/oem/enterprise-manager/overview/index.html) op een afzonderlijke virtuele machine.
-- Zeer grote pagina's zijn standaard niet ingeschakeld op Linux. Overweeg om zeer grote pagina's in `use_large_pages = ONLY` te scha kelen en in te stellen op de Oracle DB. Dit kan helpen om de prestaties te verbeteren. Meer informatie vindt u [hier](https://docs.oracle.com/en/database/oracle/oracle-database/12.2/refrn/USE_LARGE_PAGES.html#GUID-1B0F4D27-8222-439E-A01D-E50758C88390).
+- Zeer grote pagina's zijn standaard niet ingeschakeld op Linux. Overweeg om zeer grote pagina's in te scha kelen en in te stellen `use_large_pages = ONLY` op de Oracle DB. Dit kan helpen om de prestaties te verbeteren. Meer informatie vindt u [hier](https://docs.oracle.com/en/database/oracle/oracle-database/12.2/refrn/USE_LARGE_PAGES.html#GUID-1B0F4D27-8222-439E-A01D-E50758C88390).
 
 ### <a name="disk-types-and-configurations"></a>Schijf typen en configuraties
 

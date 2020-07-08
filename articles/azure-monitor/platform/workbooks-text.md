@@ -10,10 +10,9 @@ ms.topic: conceptual
 ms.date: 10/23/2019
 ms.author: mbullwin
 ms.openlocfilehash: c804cc8942a40e2f30c980636194daa82e0fb0e8
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81687329"
 ---
 # <a name="workbook-text-parameters"></a>Werkmap tekst parameters
@@ -40,7 +39,7 @@ Zo ziet de werkmap eruit als Lees modus.
 ![Afbeelding waarin een tekst parameter wordt weer gegeven in Lees modus](./media/workbooks-text/text-readmode.png)
 
 ## <a name="referencing-a-text-parameter"></a>Verwijzen naar een tekst parameter
-1. Voeg een besturings element query toe aan de werkmap door de `Add query` blauwe koppeling te selecteren en een Application Insights resource te selecteren.
+1. Voeg een besturings element query toe aan de werkmap door de blauwe koppeling te selecteren `Add query` en een Application Insights resource te selecteren.
 2. Voeg in het vak KQL dit fragment toe:
     ```kusto
     requests
@@ -60,7 +59,7 @@ Zo ziet de werkmap eruit als Lees modus.
     ![Afbeelding met een tekst parameter waarnaar wordt verwezen in KQL](./media/workbooks-text/text-reference.png)
 
 > [!NOTE]
-> In het bovenstaande voor beeld `{SlowRequestThreshold}` vertegenwoordigt een geheel getal. Als u een query uitvoert voor een teken reeks `{ComputerName}` zoals u zou moeten uw Kusto-query wijzigen om aanhalings tekens `"{ComputerName}"` toe te voegen, moet u voor het parameter veld een invoer accepteren zonder aanhalings tekens.
+> In het bovenstaande voor beeld `{SlowRequestThreshold}` vertegenwoordigt een geheel getal. Als u een query uitvoert voor een teken reeks zoals `{ComputerName}` u zou moeten uw Kusto-query wijzigen om aanhalings tekens toe te voegen, moet u `"{ComputerName}"` voor het parameter veld een invoer accepteren zonder aanhalings tekens.
 
 ## <a name="setting-default-values"></a>Standaard waarden instellen
 1. Beginnen met een lege werkmap in de bewerkings modus.

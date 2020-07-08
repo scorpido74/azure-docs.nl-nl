@@ -11,10 +11,9 @@ ms.topic: conceptual
 ms.date: 08/20/2019
 ms.custom: mqtt
 ms.openlocfilehash: 75d89b54bae6eb8166d44e08ea020a0da67ad20c
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81732560"
 ---
 # <a name="get-started-with-device-management-java"></a>Aan de slag met Apparaatbeheer (Java)
@@ -60,7 +59,7 @@ Aan het einde van deze zelf studie hebt u twee Java Console-apps:
 
 * Een actief Azure-account. (Als u geen account hebt, kunt u binnen een paar minuten een [gratis account](https://azure.microsoft.com/pricing/free-trial/) maken.)
 
-* Zorg ervoor dat poort 8883 is geopend in uw firewall. Het voor beeld van het apparaat in dit artikel maakt gebruik van het MQTT-protocol, dat communiceert via poort 8883. Deze poort kan worden geblokkeerd in sommige bedrijfs-en educatieve netwerk omgevingen. Zie [verbinding maken met IOT hub (MQTT)](iot-hub-mqtt-support.md#connecting-to-iot-hub)voor meer informatie en manieren om dit probleem te omzeilen.
+* Zorg ervoor dat de poort 8883 is geopend in de firewall. Het voor beeld van het apparaat in dit artikel maakt gebruik van het MQTT-protocol, dat communiceert via poort 8883. Deze poort is in sommige netwerkomgevingen van bedrijven en onderwijsinstellingen mogelijk geblokkeerd. Zie [Verbinding maken met IoT Hub (MQTT)](iot-hub-mqtt-support.md#connecting-to-iot-hub) voor meer informatie en manieren om dit probleem te omzeilen.
 
 ## <a name="create-an-iot-hub"></a>Een IoT Hub maken
 
@@ -98,7 +97,7 @@ Met deze console-app maakt u verbinding met uw IoT Hub om de directe methode aan
 
 3. Ga bij de opdracht prompt naar de map **trigger-reboot** .
 
-4. Open met een tekst editor het bestand **pom. XML** in de map **trigger-reboot** en voeg de volgende afhankelijkheden toe aan het knoop punt **afhankelijkheden** . Met deze afhankelijkheid kunt u het IOT-service-client-pakket in uw app gebruiken om te communiceren met uw IoT-hub:
+4. Open met een tekst editor het **pom.xml** bestand in de map **trigger-reboot** en voeg de volgende afhankelijkheden toe aan het knoop punt **afhankelijkheden** . Met deze afhankelijkheid kunt u het IOT-service-client-pakket in uw app gebruiken om te communiceren met uw IoT-hub:
 
     ```xml
     <dependency>
@@ -149,7 +148,7 @@ Met deze console-app maakt u verbinding met uw IoT Hub om de directe methode aan
     import java.util.concurrent.ExecutorService;
     ```
 
-9. Voeg de volgende variabelen op klasseniveau toe aan de **App**-klasse. Vervang `{youriothubconnectionstring}` door de IOT hub Connection String u eerder hebt gekopieerd in [de IoT hub-Connection String ophalen](#get-the-iot-hub-connection-string):
+9. Voeg de volgende variabelen op klasseniveau toe aan de **App**-klasse. Vervang door `{youriothubconnectionstring}` de IoT Hub Connection String u eerder hebt gekopieerd in [de IOT Hub-Connection String ophalen](#get-the-iot-hub-connection-string):
 
     ```java
     public static final String iotHubConnectionString = "{youriothubconnectionstring}";
@@ -249,7 +248,7 @@ In deze sectie maakt u een Java-Console-app die een apparaat simuleert. De app l
 
 2. Ga bij de opdracht prompt naar de map **met gesimuleerde apparaten** .
 
-3. Open met een tekst editor het bestand **pom. XML** in de map **gesimuleerde apparaten** en voeg de volgende afhankelijkheden toe aan het knoop punt **afhankelijkheden** . Met deze afhankelijkheid kunt u het IOT-service-client-pakket in uw app gebruiken om te communiceren met uw IoT-hub:
+3. Open met een tekst editor het **pom.xml** -bestand in de map **gesimuleerde apparaten** en voeg de volgende afhankelijkheden toe aan het knoop punt **afhankelijkheden** . Met deze afhankelijkheid kunt u het IOT-service-client-pakket in uw app gebruiken om te communiceren met uw IoT-hub:
 
     ```xml
     <dependency>
@@ -308,7 +307,7 @@ In deze sectie maakt u een Java-Console-app die een apparaat simuleert. De app l
     import java.util.HashSet;
     ```
 
-9. Voeg de volgende variabelen op klasseniveau toe aan de **App**-klasse. Vervang `{yourdeviceconnectionstring}` door het apparaat Connection String u hebt genoteerd in het gedeelte [een nieuw apparaat registreren in de IOT-hub](#register-a-new-device-in-the-iot-hub) :
+9. Voeg de volgende variabelen op klasseniveau toe aan de **App**-klasse. Vervang door `{yourdeviceconnectionstring}` het apparaat Connection String u hebt genoteerd in het gedeelte [een nieuw apparaat registreren in de IOT-hub](#register-a-new-device-in-the-iot-hub) :
 
     ```java
     private static final int METHOD_SUCCESS = 200;

@@ -15,15 +15,14 @@ ms.workload: infrastructure
 ms.date: 08/02/2018
 ms.author: borisb
 ms.openlocfilehash: adf4c54d4f43f806ae985f7c1523303cf574b4c1
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81687470"
 ---
 # <a name="disaster-recovery-for-an-oracle-database-12c-database-in-an-azure-environment"></a>Herstel na nood geval voor een Oracle Database 12c-data base in een Azure-omgeving
 
-## <a name="assumptions"></a>Veronderstellingen
+## <a name="assumptions"></a>Aannames
 
 - U hebt een goed idee van het ontwerp van Oracle Data Guard en Azure-omgevingen.
 

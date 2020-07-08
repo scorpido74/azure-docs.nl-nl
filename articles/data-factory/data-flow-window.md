@@ -9,10 +9,9 @@ ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 01/30/2019
 ms.openlocfilehash: 1f440a5877dcefeca8c1baa82fad4299b5ce7bce
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81606228"
 ---
 # <a name="azure-data-factory-window-transformation"></a>Trans formatie van Azure Data Factory-venster
@@ -24,12 +23,12 @@ Met de venster transformatie definieert u op venster gebaseerde aggregaties van 
 ![Venster Opties](media/data-flow/windows1.png "Windows 1")
 
 ## <a name="over"></a>Verloop
-De partitionering van kolom gegevens voor uw venster transformatie instellen. Het equivalent van SQL is ```Partition By``` de in de component over in SQL. Als u een berekening wilt maken of een expressie wilt maken die voor de partitionering moet worden gebruikt, kunt u dit doen door de muis aanwijzer over de kolom naam te bewegen en "berekende kolom" te selecteren.
+De partitionering van kolom gegevens voor uw venster transformatie instellen. Het equivalent van SQL is de ```Partition By``` in de component over in SQL. Als u een berekening wilt maken of een expressie wilt maken die voor de partitionering moet worden gebruikt, kunt u dit doen door de muis aanwijzer over de kolom naam te bewegen en "berekende kolom" te selecteren.
 
 ![Venster Opties](media/data-flow/windows4.png "Windows 4")
 
 ## <a name="sort"></a>Sorteren
-Een ander deel van de component over is het ```Order By```instellen van de. Hiermee wordt de volg orde van de sortering van gegevens ingesteld. U kunt ook een expressie maken voor een waarde berekenen in dit kolom veld voor het sorteren.
+Een ander deel van de component over is het instellen van de ```Order By``` . Hiermee wordt de volg orde van de sortering van gegevens ingesteld. U kunt ook een expressie maken voor een waarde berekenen in dit kolom veld voor het sorteren.
 
 ![Venster Opties](media/data-flow/windows5.png "Windows 5")
 
@@ -45,7 +44,7 @@ Gebruik ten slotte de opbouw functie voor expressies om de aggregaties te defini
 
 ![Venster Opties](media/data-flow/windows7.png "Windows 7")
 
-De volledige lijst met aggregatie-en analytische functies die u kunt gebruiken in de taal van de ADF-gegevens stroom expressie via de opbouw functie https://aka.ms/dataflowexpressionsvoor expressies vindt u hier:.
+De volledige lijst met aggregatie-en analytische functies die u kunt gebruiken in de taal van de ADF-gegevens stroom expressie via de opbouw functie voor expressies vindt u hier: https://aka.ms/dataflowexpressions .
 
 ## <a name="next-steps"></a>Volgende stappen
 

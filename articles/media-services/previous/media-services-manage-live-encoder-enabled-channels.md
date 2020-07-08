@@ -16,10 +16,9 @@ ms.date: 03/18/2019
 ms.author: anilmur
 ms.reviewer: juliako
 ms.openlocfilehash: 6210d6ee4877c6ba84178340cf0a6610e402da31
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81641107"
 ---
 # <a name="live-streaming-using-azure-media-services-to-create-multi-bitrate-streams"></a>Live streamen met Azure Media Services om multi-bitrate streams te maken
@@ -51,7 +50,7 @@ Als u begint met de release van Media Services 2,10, kunt u, wanneer u een kanaa
 > 
 
 ## <a name="billing-implications"></a>Facturerings implicaties
-Een live coderings kanaal begint met factureren zodra de status overgangen via de API wordt uitgevoerd.   U kunt ook de status weer geven in de Azure Portal of in het hulp programma Azure Media Services Verkennerhttps://aka.ms/amse)(.
+Een live coderings kanaal begint met factureren zodra de status overgangen via de API wordt uitgevoerd.   U kunt ook de status weer geven in de Azure Portal of in het hulp programma Azure Media Services Verkenner ( https://aka.ms/amse) .
 
 In de volgende tabel ziet u hoe kanaal statussen worden toegewezen aan facturerings statussen in de API en Azure Portal. De statussen zijn iets anders tussen de API en de portal UX. Zodra een kanaal zich in de status ' running ' bevindt via de API of in de status ' gereed ' of ' streaming ' in de Azure Portal, wordt de facturering actief.
 Als u het kanaal niet meer wilt factureren, moet u het kanaal stoppen via de API of in de Azure Portal.
@@ -73,7 +72,7 @@ In de volgende tabel ziet u hoe kanaal statussen worden toegewezen aan de factur
 | Starten |Starten |Nee (tijdelijke status) |
 | In uitvoering |Gereed (geen actieve Program ma's)<br/>of<br/>Streaming (ten minste één programma dat wordt uitgevoerd) |JA |
 | Stoppen |Stoppen |Nee (tijdelijke status) |
-| Gestopt |Gestopt |Nee |
+| Gestopt |Gestopt |No |
 
 ### <a name="automatic-shut-off-for-unused-channels"></a>Automatisch afsluiten voor ongebruikte kanalen
 Vanaf 25 januari 2016 Media Services de implementatie van een update die automatisch een kanaal stopt (met Live encoding ingeschakeld) nadat het is uitgevoerd in een ongebruikte status gedurende een lange periode. Dit geldt voor kanalen zonder actieve Program Ma's en die gedurende een lange periode geen invoer bijdrage hebben ontvangen.
@@ -313,9 +312,9 @@ In de volgende tabel ziet u hoe kanaal statussen worden toegewezen aan de factur
 | Kanaal status | UI-indica toren van portal | Gefactureerd? |
 | --- | --- | --- |
 | Starten |Starten |Nee (tijdelijke status) |
-| In uitvoering |Gereed (geen actieve Program ma's)<br/>of<br/>Streaming (ten minste één programma dat wordt uitgevoerd) |Ja |
+| In uitvoering |Gereed (geen actieve Program ma's)<br/>of<br/>Streaming (ten minste één programma dat wordt uitgevoerd) |Yes |
 | Stoppen |Stoppen |Nee (tijdelijke status) |
-| Gestopt |Gestopt |Nee |
+| Gestopt |Gestopt |No |
 
 > [!NOTE]
 > Op dit moment is het begin gemiddelde van het kanaal ongeveer 2 minuten, maar het kan Maxi maal 20 minuten duren. Het opnieuw instellen van het kanaal kan tot vijf minuten duren.
@@ -340,7 +339,7 @@ In de volgende tabel ziet u hoe kanaal statussen worden toegewezen aan de factur
 * Pastel afbeeldingen moeten voldoen aan de beperkingen die [hier](media-services-manage-live-encoder-enabled-channels.md#default_slate)worden beschreven. Als u probeert een kanaal te maken met een standaard kleur die groter is dan 1920, wordt de aanvraag uiteindelijk afgemeld.
 * Nog een keer.... Vergeet niet om uw kanalen te stoppen wanneer u klaar bent met streamen. Als u dat niet doet, wordt de facturering voortgezet.
 
-## <a name="need-help"></a>Hebt u hulp nodig?
+## <a name="need-help"></a>Hulp nodig?
 
 U kunt een ondersteunings ticket openen door te navigeren naar de [nieuwe ondersteunings aanvraag](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest)
 

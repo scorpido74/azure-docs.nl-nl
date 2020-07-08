@@ -1,6 +1,6 @@
 ---
 title: Aan de slag met Azure IoT Hub apparaat apparaatdubbels (node) | Microsoft Docs
-description: Azure IoT Hub Device apparaatdubbels gebruiken om labels toe te voegen en vervolgens een IoT Hub query te gebruiken. U gebruikt de Azure IoT Sdk's voor node. js voor het implementeren van de gesimuleerde apparaat-app en een service-app waarmee de tags worden toegevoegd en de IoT Hub query wordt uitgevoerd.
+description: Azure IoT Hub Device apparaatdubbels gebruiken om labels toe te voegen en vervolgens een IoT Hub query te gebruiken. U gebruikt de Azure IoT-Sdk's voor Node.js voor het implementeren van de gesimuleerde apparaat-app en een service-app waarmee de tags worden toegevoegd en de IoT Hub-query wordt uitgevoerd.
 author: fsautomata
 ms.service: iot-hub
 services: iot-hub
@@ -10,21 +10,20 @@ ms.date: 08/26/2019
 ms.author: elioda
 ms.custom: mqtt
 ms.openlocfilehash: e65c781bd5cb62bdaa693b854caafd5f91fd497e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81732282"
 ---
-# <a name="get-started-with-device-twins-nodejs"></a>Aan de slag met apparaatdubbels (node. js)
+# <a name="get-started-with-device-twins-nodejs"></a>Aan de slag met apparaatdubbels (Node.js)
 
 [!INCLUDE [iot-hub-selector-twin-get-started](../../includes/iot-hub-selector-twin-get-started.md)]
 
-Aan het einde van deze zelf studie hebt u twee node. js-console-apps:
+Aan het einde van deze zelf studie hebt u twee Node.js console-apps:
 
-* **AddTagsAndQuery. js**, een back-end-app voor node. js, waarmee labels en query's voor apparaat-apparaatdubbels worden toegevoegd.
+* **AddTagsAndQuery.js**, een Node.js back-end-app, waarmee Tags en apparaatdubbels worden toegevoegd.
 
-* **TwinSimulatedDevice. js**, een node. js-app, die een apparaat simuleert dat verbinding maakt met uw IOT-hub met de apparaat-id die u eerder hebt gemaakt, en rapporteert de connectiviteits voorwaarde.
+* **TwinSimulatedDevice.js**, een Node.js-app, die een apparaat simuleert dat verbinding maakt met uw IOT-hub met de apparaat-id die u eerder hebt gemaakt, en rapporteert de connectiviteits voorwaarde.
 
 > [!NOTE]
 > Het artikel [Azure IOT sdk's](iot-hub-devguide-sdks.md) bevat informatie over de Azure IOT-sdk's die u kunt gebruiken om zowel apparaat-als back-end-apps te bouwen.
@@ -34,11 +33,11 @@ Aan het einde van deze zelf studie hebt u twee node. js-console-apps:
 
 Voor deze zelfstudie hebt u het volgende nodig:
 
-* Node. js versie 10.0. x of hoger.
+* Node.js versie 10.0. x of hoger.
 
 * Een actief Azure-account. (Als u geen account hebt, kunt u binnen een paar minuten een [gratis account](https://azure.microsoft.com/pricing/free-trial/) maken.)
 
-* Zorg ervoor dat poort 8883 is geopend in uw firewall. Het voor beeld van het apparaat in dit artikel maakt gebruik van het MQTT-protocol, dat communiceert via poort 8883. Deze poort kan worden geblokkeerd in sommige bedrijfs-en educatieve netwerk omgevingen. Zie [verbinding maken met IOT hub (MQTT)](iot-hub-mqtt-support.md#connecting-to-iot-hub)voor meer informatie en manieren om dit probleem te omzeilen.
+* Zorg ervoor dat de poort 8883 is geopend in de firewall. Het voor beeld van het apparaat in dit artikel maakt gebruik van het MQTT-protocol, dat communiceert via poort 8883. Deze poort is in sommige netwerkomgevingen van bedrijven en onderwijsinstellingen mogelijk geblokkeerd. Zie [Verbinding maken met IoT Hub (MQTT)](iot-hub-mqtt-support.md#connecting-to-iot-hub) voor meer informatie en manieren om dit probleem te omzeilen.
 
 ## <a name="create-an-iot-hub"></a>Een IoT Hub maken
 
@@ -56,9 +55,9 @@ Voor deze zelfstudie hebt u het volgende nodig:
 
 ## <a name="create-the-service-app"></a>De service-app maken
 
-In deze sectie maakt u een node. JS-Console-app waarmee de meta gegevens van de locatie worden toegevoegd aan het apparaat dat is gekoppeld aan **myDeviceId**. Vervolgens wordt een query uitgevoerd op het apparaat apparaatdubbels dat is opgeslagen in de IoT-hub en worden de apparaten die zich in de Verenigde Staten bevinden, geselecteerd en vervolgens de apparatuur die een mobiele verbinding rapporteert.
+In deze sectie maakt u een Node.js-console-app die de locatie van meta gegevens toevoegt aan het apparaat dat is gekoppeld aan **myDeviceId**. Vervolgens wordt een query uitgevoerd op het apparaat apparaatdubbels dat is opgeslagen in de IoT-hub en worden de apparaten die zich in de Verenigde Staten bevinden, geselecteerd en vervolgens de apparatuur die een mobiele verbinding rapporteert.
 
-1. Maak een nieuwe lege map met de naam **addtagsandqueryapp**. Maak in de map **addtagsandqueryapp** een nieuw package. JSON-bestand met de volgende opdracht achter de opdracht prompt. De `--yes` para meter accepteert alle standaard waarden.
+1. Maak een nieuwe lege map met de naam **addtagsandqueryapp**. Maak in de map **addtagsandqueryapp** een nieuw package.jsin het bestand met behulp van de volgende opdracht bij de opdracht prompt. De `--yes` para meter accepteert alle standaard waarden.
 
     ```cmd/sh
     npm init --yes
@@ -70,9 +69,9 @@ In deze sectie maakt u een node. JS-Console-app waarmee de meta gegevens van de 
     npm install azure-iothub --save
     ```
 
-3. Maak een nieuw **AddTagsAndQuery. js** -bestand in de map **addtagsandqueryapp** met behulp van een tekst editor.
+3. Maak met een tekst editor een nieuw **AddTagsAndQuery.js** -bestand in de map **addtagsandqueryapp** .
 
-4. Voeg de volgende code toe aan het bestand **AddTagsAndQuery. js** . Vervang `{iot hub connection string}` door de IoT Hub-Connection String die u hebt gekopieerd in [de IoT hub-Connection String ophalen](#get-the-iot-hub-connection-string).
+4. Voeg de volgende code toe aan het **AddTagsAndQuery.js** -bestand. Vervang door `{iot hub connection string}` de IOT hub-Connection String die u hebt gekopieerd in [de IOT Hub-Connection String ophalen](#get-the-iot-hub-connection-string).
 
    ``` javascript
         'use strict';
@@ -109,7 +108,7 @@ In deze sectie maakt u een node. JS-Console-app waarmee de meta gegevens van de 
 
     Na het bijwerken van de tags wordt de functie **queryTwins** aangeroepen.
 
-5. Voeg de volgende code toe aan het einde van **AddTagsAndQuery. js** om de **queryTwins** -functie te implementeren:
+5. Voeg de volgende code toe aan het einde van **AddTagsAndQuery.js** voor het implementeren van de functie **queryTwins** :
 
    ```javascript
         var queryTwins = function() {
@@ -151,9 +150,9 @@ In de volgende sectie maakt u een apparaat-app die de connectiviteits gegevens r
 
 ## <a name="create-the-device-app"></a>De apparaat-app maken
 
-In deze sectie maakt u een node. JS-Console-app die als **myDeviceId**verbinding maakt met uw hub en vervolgens de gerapporteerde eigenschappen van het apparaat vervolgens bijwerkt met de informatie die is verbonden met behulp van een mobiel netwerk.
+In deze sectie maakt u een Node.js-console-app die als **myDeviceId**verbinding maakt met uw hub, en vervolgens de gerapporteerde eigenschappen van het apparaat bijwerkt met de informatie die is verbonden met een mobiel netwerk.
 
-1. Maak een nieuwe lege map met de naam **reportconnectivity**. Maak in de map **reportconnectivity** een nieuw package. JSON-bestand met de volgende opdracht achter de opdracht prompt. De `--yes` para meter accepteert alle standaard waarden.
+1. Maak een nieuwe lege map met de naam **reportconnectivity**. Maak in de map **reportconnectivity** een nieuw package.jsin het bestand met behulp van de volgende opdracht bij de opdracht prompt. De `--yes` para meter accepteert alle standaard waarden.
 
     ```cmd/sh
     npm init --yes
@@ -165,9 +164,9 @@ In deze sectie maakt u een node. JS-Console-app die als **myDeviceId**verbinding
     npm install azure-iot-device azure-iot-device-mqtt --save
     ```
 
-3. Maak een nieuw **ReportConnectivity. js** -bestand in de map **ReportConnectivity** met behulp van een tekst editor.
+3. Maak met een tekst editor een nieuw **ReportConnectivity.js** -bestand in de map **reportconnectivity** .
 
-4. Voeg de volgende code toe aan het bestand **ReportConnectivity. js** . Vervang `{device connection string}` door het apparaat Connection String u hebt gekopieerd tijdens het maken van de **myDeviceId** -apparaat-id bij het [registreren van een nieuw apparaat in de IOT-hub](#register-a-new-device-in-the-iot-hub).
+4. Voeg de volgende code toe aan het **ReportConnectivity.js** -bestand. Vervang door `{device connection string}` het apparaat Connection String u hebt gekopieerd tijdens het maken van de **myDeviceId** -apparaat-id bij het [registreren van een nieuw apparaat in de IOT-hub](#register-a-new-device-in-the-iot-hub).
 
     ```javascript
         'use strict';

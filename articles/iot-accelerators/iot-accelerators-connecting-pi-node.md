@@ -1,6 +1,6 @@
 ---
-title: 'Raspberry Pi verbinden met de oplossing voor externe bewaking: node. js-Azure | Microsoft Docs'
-description: Hierin wordt beschreven hoe u met behulp van een toepassing die is geschreven in node. js verbinding maakt tussen een Raspberry Pi-apparaat en de oplossing voor externe controle.
+title: Raspberry Pi verbinden met de oplossing voor externe bewaking-Node.js-Azure | Microsoft Docs
+description: Hierin wordt beschreven hoe u een Raspberry Pi-apparaat verbindt met de oplossings versneller voor externe bewaking met behulp van een toepassing die is geschreven in Node.js.
 author: dominicbetts
 manager: timlt
 ms.service: iot-accelerators
@@ -10,17 +10,16 @@ ms.date: 01/24/2018
 ms.author: dobett
 ms.custom: mqtt
 ms.openlocfilehash: 9335c45688752ea41801e988157740f4170cfcb4
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81683947"
 ---
-# <a name="connect-your-raspberry-pi-device-to-the-remote-monitoring-solution-accelerator-nodejs"></a>Uw Raspberry Pi-apparaat koppelen aan de oplossings versneller voor externe controle (node. js)
+# <a name="connect-your-raspberry-pi-device-to-the-remote-monitoring-solution-accelerator-nodejs"></a>Sluit uw Raspberry Pi-apparaat aan op de oplossings versneller voor externe controle (Node.js)
 
 [!INCLUDE [iot-suite-selector-connecting](../../includes/iot-suite-selector-connecting.md)]
 
-In deze zelf studie leert u hoe u een echt apparaat verbindt met de oplossings versneller voor externe controle. In deze zelf studie gebruikt u node. js. Dit is een goede optie voor omgevingen met minimale resource beperkingen.
+In deze zelf studie leert u hoe u een echt apparaat verbindt met de oplossings versneller voor externe controle. In deze zelf studie gebruikt u Node.js. Dit is een goede optie voor omgevingen met minimale resource beperkingen.
 
 Als u liever een apparaat simuleert, raadpleegt u [een nieuw gesimuleerd apparaat maken en testen](iot-accelerators-remote-monitoring-create-simulated-device.md).
 
@@ -44,9 +43,9 @@ U hebt SSH-client op uw computer nodig om u in staat te stellen op afstand toega
 
 ### <a name="required-raspberry-pi-software"></a>Vereiste Raspberry Pi-software
 
-Als u dit nog niet hebt gedaan, installeert u node. js versie 4.0.0 of hoger op uw Raspberry pi. De volgende stappen laten zien hoe u node. js V6 installeert op uw Raspberry PI:
+Als u dit nog niet hebt gedaan, installeert u Node.js versie 4.0.0 of hoger op uw Raspberry pi. De volgende stappen laten zien hoe u Node.js V6 installeert op uw Raspberry PI:
 
-1. Maak verbinding met uw Raspberry Pi `ssh`met. Zie [SSH (Secure Shell)](https://www.raspberrypi.org/documentation/remote-access/ssh/README.md) op de [Raspberry Pi-website](https://www.raspberrypi.org/)voor meer informatie.
+1. Maak verbinding met uw Raspberry Pi met `ssh` . Zie [SSH (Secure Shell)](https://www.raspberrypi.org/documentation/remote-access/ssh/README.md) op de [Raspberry Pi-website](https://www.raspberrypi.org/)voor meer informatie.
 
 1. Gebruik de volgende opdracht om uw Raspberry Pi bij te werken:
 
@@ -54,7 +53,7 @@ Als u dit nog niet hebt gedaan, installeert u node. js versie 4.0.0 of hoger op 
     sudo apt-get update
     ```
 
-1. Gebruik de volgende opdrachten om een bestaande installatie van node. js te verwijderen uit uw Raspberry PI:
+1. Gebruik de volgende opdrachten voor het verwijderen van een bestaande installatie van Node.js van uw Raspberry PI:
 
     ```sh
     sudo apt-get remove nodered -y
@@ -62,24 +61,24 @@ Als u dit nog niet hebt gedaan, installeert u node. js versie 4.0.0 of hoger op 
     sudo apt-get remove npm  -y
     ```
 
-1. Gebruik de volgende opdracht om node. js V6 te downloaden en te installeren op uw Raspberry PI:
+1. Gebruik de volgende opdracht om Node.js V6 te downloaden en installeren op uw Raspberry PI:
 
     ```sh
     curl -sL https://deb.nodesource.com/setup_6.x | sudo bash -
     sudo apt-get install nodejs npm
     ```
 
-1. Gebruik de volgende opdracht om te controleren of node. js v 6.11.4 is geïnstalleerd:
+1. Gebruik de volgende opdracht om te controleren of u Node.js v 6.11.4 hebt geïnstalleerd:
 
     ```sh
     node --version
     ```
 
-## <a name="create-a-nodejs-solution"></a>Een node. js-oplossing maken
+## <a name="create-a-nodejs-solution"></a>Een Node.js-oplossing maken
 
-Voer de volgende stappen uit met `ssh` behulp van de verbinding met uw Raspberry PI:
+Voer de volgende stappen uit met behulp van de `ssh` verbinding met uw Raspberry PI:
 
-1. Maak een map met `remotemonitoring` de naam in uw basismap op de Raspberry pi. Ga naar deze map op de opdracht regel:
+1. Maak een map met de naam `remotemonitoring` in uw basismap op de Raspberry pi. Ga naar deze map op de opdracht regel:
 
     ```sh
     cd ~
@@ -93,9 +92,9 @@ Voer de volgende stappen uit met `ssh` behulp van de verbinding met uw Raspberry
     npm install async azure-iot-device azure-iot-device-mqtt
     ```
 
-1. Maak in `remotemonitoring` de map een bestand met de naam **remote_monitoring. js**. Open dit bestand in een teksteditor. Op de Raspberry Pi kunt u de `nano` of `vi` tekst editors gebruiken.
+1. Maak in de `remotemonitoring` map een bestand met de naam **remote_monitoring.js**. Open dit bestand in een teksteditor. Op de Raspberry Pi kunt u de `nano` of `vi` tekst editors gebruiken.
 
-1. Voeg in het bestand **remote_monitoring. js** de volgende `require` instructies toe:
+1. Voeg in het **remote_monitoring.js** -bestand de volgende- `require` instructies toe:
 
     ```javascript
     var Protocol = require('azure-iot-device-mqtt').Mqtt;
@@ -104,7 +103,7 @@ Voer de volgende stappen uit met `ssh` behulp van de verbinding met uw Raspberry
     var async = require('async');
     ```
 
-1. Voeg de volgende variabelendeclaraties achter de `require`-instructies toe. Vervang de waarde `{device connection string}` van de tijdelijke aanduiding door de waarde die u hebt genoteerd voor het apparaat dat u in de oplossing voor externe controle hebt ingericht:
+1. Voeg de volgende variabelendeclaraties achter de `require`-instructies toe. Vervang de waarde van de tijdelijke aanduiding door de waarde die u hebt `{device connection string}` genoteerd voor het apparaat dat u in de oplossing voor externe controle hebt ingericht:
 
     ```javascript
     var connectionString = '{device connection string}';
@@ -385,7 +384,7 @@ Voer de volgende stappen uit met `ssh` behulp van de verbinding met uw Raspberry
       });
       ```
 
-1. Sla de wijzigingen in het bestand **remote_monitoring. js** op.
+1. Sla de wijzigingen in het **remote_monitoring.js** bestand op.
 
 1. Als u de voorbeeld toepassing wilt starten, voert u de volgende opdracht uit bij de opdracht prompt op de Raspberry PI:
 
