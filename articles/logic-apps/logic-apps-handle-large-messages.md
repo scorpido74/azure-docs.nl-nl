@@ -8,10 +8,9 @@ ms.author: daberry
 ms.topic: article
 ms.date: 12/03/2019
 ms.openlocfilehash: 54828dded5196c86946d99a9cd8cec7a42533661
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/12/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "83117560"
 ---
 # <a name="handle-large-messages-with-chunking-in-azure-logic-apps"></a>Grote berichten verwerken met Chunking in Azure Logic Apps
@@ -113,7 +112,7 @@ In deze stappen wordt het gedetailleerde proces beschreven Logic Apps gebruikt v
 
 1. Uw logische app verzendt een eerste HTTP POST-of PUT-aanvraag met een lege bericht tekst. De aanvraag header bevat de volgende informatie over de inhoud die uw logische app wil uploaden in segmenten:
 
-   | Veld aanvraag header Logic Apps | Waarde | Type | Beschrijving |
+   | Veld aanvraag header Logic Apps | Waarde | Type | Description |
    |---------------------------------|-------|------|-------------|
    | **x-MS-overdracht-modus** | gesegmenteerde | Tekenreeks | Geeft aan dat de inhoud is geüpload in segmenten |
    | **x-MS-content-length** | <*content-length*> | Geheel getal | De volledige inhouds grootte in bytes voordat deze wordt gesegmenteerd |
@@ -123,7 +122,7 @@ In deze stappen wordt het gedetailleerde proces beschreven Logic Apps gebruikt v
 
    | Veld koptekst eindpunt reactie | Type | Vereist | Beschrijving |
    |--------------------------------|------|----------|-------------|
-   | **x-MS-chunk-grootte** | Geheel getal | Nee | De voorgestelde segment grootte in bytes |
+   | **x-MS-chunk-grootte** | Geheel getal | No | De voorgestelde segment grootte in bytes |
    | **Locatie** | Tekenreeks | Ja | De URL-locatie waarnaar de HTTP-PATCH berichten moeten worden verzonden |
    ||||
 
@@ -133,10 +132,10 @@ In deze stappen wordt het gedetailleerde proces beschreven Logic Apps gebruikt v
 
    * Deze header gegevens over het inhouds segment dat is verzonden in elk PATCH bericht:
 
-     | Veld aanvraag header Logic Apps | Waarde | Type | Beschrijving |
+     | Veld aanvraag header Logic Apps | Waarde | Type | Description |
      |---------------------------------|-------|------|-------------|
      | **Content-Range** | <*bereik*> | Tekenreeks | Het bereik van de byte voor het huidige inhouds segment, met inbegrip van de begin waarde, de eind waarde en de totale inhouds grootte, bijvoorbeeld: ' bytes = 0-1023/10100 ' |
-     | **Inhouds type** | <*inhouds type*> | Tekenreeks | Het type van de gesegmenteerde inhoud |
+     | **Content-Type** | <*inhouds type*> | Tekenreeks | Het type van de gesegmenteerde inhoud |
      | **Content-length** | <*content-length*> | Tekenreeks | De lengte van de grootte in bytes van het huidige segment |
      |||||
 
@@ -145,7 +144,7 @@ In deze stappen wordt het gedetailleerde proces beschreven Logic Apps gebruikt v
    | Veld koptekst eindpunt reactie | Type | Vereist | Beschrijving |
    |--------------------------------|------|----------|-------------|
    | **Bereik** | Tekenreeks | Ja | Het bereik van de bytes voor inhoud die door het eind punt is ontvangen, bijvoorbeeld: "bytes = 0-1023" |   
-   | **x-MS-chunk-grootte** | Geheel getal | Nee | De voorgestelde segment grootte in bytes |
+   | **x-MS-chunk-grootte** | Geheel getal | No | De voorgestelde segment grootte in bytes |
    ||||
 
 Deze actie definitie toont bijvoorbeeld een HTTP POST-aanvraag voor het uploaden van gesegmenteerde inhoud naar een eind punt. In de eigenschap van de actie `runTimeConfiguration` `contentTransfer` wordt de eigenschap `transferMode` ingesteld op `chunked` :

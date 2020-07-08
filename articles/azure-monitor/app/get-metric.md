@@ -8,19 +8,18 @@ author: mrbullwinkle
 ms.author: mbullwin
 ms.date: 04/28/2020
 ms.openlocfilehash: 94525ce901a89935c4ee7800ada44a9dff84b27a
-ms.sourcegitcommit: a6d477eb3cb9faebb15ed1bf7334ed0611c72053
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/08/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82927901"
 ---
 # <a name="custom-metric-collection-in-net-and-net-core"></a>Aangepaste metrische verzameling in .NET en .NET core
 
-De Azure Monitor Application Insights .NET en .NET core Sdk's hebben twee verschillende methoden voor het verzamelen van aangepaste metrische `TrackMetric()`gegevens, `GetMetric()`en. Het belangrijkste verschil tussen deze twee methoden is lokale aggregatie. `TrackMetric()``GetMetric()` er ontbreken vooraf aggregatie met vooraf aggregatie. De aanbevolen aanpak is het gebruik van aggregatie, dus `TrackMetric()` is niet langer de voorkeurs methode voor het verzamelen van aangepaste metrische gegevens. Dit artikel begeleidt u stapsgewijs door het gebruik van de methode GetMetric () en een deel van de motivering achter de werking ervan.
+De Azure Monitor Application Insights .NET en .NET core Sdk's hebben twee verschillende methoden voor het verzamelen van aangepaste metrische gegevens, `TrackMetric()` en `GetMetric()` . Het belangrijkste verschil tussen deze twee methoden is lokale aggregatie. `TrackMetric()`Er ontbreken vooraf aggregatie met `GetMetric()` vooraf aggregatie. De aanbevolen aanpak is het gebruik van aggregatie, dus `TrackMetric()` is niet langer de voorkeurs methode voor het verzamelen van aangepaste metrische gegevens. Dit artikel begeleidt u stapsgewijs door het gebruik van de methode GetMetric () en een deel van de motivering achter de werking ervan.
 
 ## <a name="trackmetric-versus-getmetric"></a>TrackMetric versus GetMetric
 
-`TrackMetric()`Hiermee verzendt u een ruwe telemetrie die een metriek aangeeft. Het is niet efficiënt om één telemetrie-item voor elke waarde te verzenden. `TrackMetric()`is ook inefficiënt in termen van prestaties, omdat `TrackMetric(item)` elke keer de volledige SDK-pijp lijn van de telemetrie-initialisatie functies en-processors doorloopt. In tegens telling tot `TrackMetric()`, worden `GetMetric()` lokale vooraf aggregatie voor u verwerkt en wordt vervolgens alleen een statistische samenvattings waarde verzonden met een vast interval van één minuut. Als u dus een aantal aangepaste metrische gegevens wilt bewaken op het tweede of zelfs milliseconde niveau, kunt u dit doen, waarbij alleen de kosten voor opslag en netwerk verkeer van elke minuut worden bewaakt. Dit vermindert ook aanzienlijk het risico van beperking, omdat het totale aantal telemetriegegevens dat voor een geaggregeerde metriek moet worden verzonden, sterk wordt verminderd.
+`TrackMetric()`Hiermee verzendt u een ruwe telemetrie die een metriek aangeeft. Het is niet efficiënt om één telemetrie-item voor elke waarde te verzenden. `TrackMetric()`is ook inefficiënt in termen van prestaties, omdat elke keer `TrackMetric(item)` de volledige SDK-pijp lijn van de telemetrie-initialisatie functies en-processors doorloopt. In tegens telling tot `TrackMetric()` , worden `GetMetric()` lokale vooraf aggregatie voor u verwerkt en wordt vervolgens alleen een statistische samenvattings waarde verzonden met een vast interval van één minuut. Als u dus een aantal aangepaste metrische gegevens wilt bewaken op het tweede of zelfs milliseconde niveau, kunt u dit doen, waarbij alleen de kosten voor opslag en netwerk verkeer van elke minuut worden bewaakt. Dit vermindert ook aanzienlijk het risico van beperking, omdat het totale aantal telemetriegegevens dat voor een geaggregeerde metriek moet worden verzonden, sterk wordt verminderd.
 
 In Application Insights worden aangepaste metrische gegevens verzameld via `TrackMetric()` en `GetMetric()` niet onderhevig aan [steek proeven](https://docs.microsoft.com/azure/azure-monitor/app/sampling). Het bemonsteren van belang rijke metrische gegevens kan leiden tot scenario's waarbij waarschuwingen die u mogelijk hebt gemaakt om deze metrische gegevens onbetrouwbaar te raken. Door nooit uw aangepaste metrische gegevens te bemonsteren, kunt u er in het algemeen zeker van zijn dat wanneer uw waarschuwings drempels worden geschonden, een waarschuwing wordt geactiveerd.  Maar omdat aangepaste metrische gegevens niet worden bemonsterd, zijn er mogelijke problemen.
 
@@ -30,12 +29,12 @@ Als u elke seconde trends moet volgen, of als u een even nauw keuriger interval 
 - Verbeterde netwerk verkeer/prestatie overhead. (In sommige scenario's kan dit zowel een monetaire als een toepassings prestatie kosten hebben.)
 - Risico op opname beperking. (De Azure Monitor-service daalt gegevens punten (' Throttles ') wanneer uw app een zeer hoog aantal telemetrie verstuurt in een korte periode.)
 
-Het beperken van een beperking is met name van belang als de steek proef kan leiden tot gemiste waarschuwingen omdat de voor waarde voor het activeren van een waarschuwing lokaal kan optreden en vervolgens op het opname-eind punt wordt neergezet omdat er te veel gegevens worden verzonden. Daarom wordt het gebruik `TrackMetric()` van .NET en .net Core niet aanbevolen, tenzij u uw eigen lokale aggregatie logica hebt geïmplementeerd. Als u probeert om elke instantie bij te houden die een gebeurtenis binnen een bepaalde periode vindt, is het mogelijk [`TrackEvent()`](https://docs.microsoft.com/azure/azure-monitor/app/api-custom-events-metrics#trackevent) dat deze beter past. In tegens telling tot aangepaste metrische gegevens worden aangepaste gebeurtenissen onderworpen aan steek proeven. U kunt natuurlijk nog steeds gebruiken `TrackMetric()` zonder uw eigen lokale vooraf-aggregatie te schrijven, maar als u dit wel weet, weet u zeker dat u de Valk uilen kent.
+Het beperken van een beperking is met name van belang als de steek proef kan leiden tot gemiste waarschuwingen omdat de voor waarde voor het activeren van een waarschuwing lokaal kan optreden en vervolgens op het opname-eind punt wordt neergezet omdat er te veel gegevens worden verzonden. Daarom wordt het gebruik van .NET en .NET Core niet aanbevolen `TrackMetric()` , tenzij u uw eigen lokale aggregatie logica hebt geïmplementeerd. Als u probeert om elke instantie bij te houden die een gebeurtenis binnen een bepaalde periode vindt, is het mogelijk dat deze [`TrackEvent()`](https://docs.microsoft.com/azure/azure-monitor/app/api-custom-events-metrics#trackevent) beter past. In tegens telling tot aangepaste metrische gegevens worden aangepaste gebeurtenissen onderworpen aan steek proeven. U kunt natuurlijk nog steeds gebruiken `TrackMetric()` zonder uw eigen lokale vooraf-aggregatie te schrijven, maar als u dit wel weet, weet u zeker dat u de Valk uilen kent.
 
-In samen `GetMetric()` vatting is de aanbevolen benadering, omdat deze vooraf aggregatie is, worden waarden van alle track ()-aanroepen verzameld en wordt één keer per minuut een samen vatting/aggregatie verzonden. Dit kan de kosten en de prestatie overhead aanzienlijk verminderen door minder gegevens punten te verzenden, terwijl alle relevante gegevens worden verzameld.
+In samen vatting `GetMetric()` is de aanbevolen benadering, omdat deze vooraf aggregatie is, worden waarden van alle track ()-aanroepen verzameld en wordt één keer per minuut een samen vatting/aggregatie verzonden. Dit kan de kosten en de prestatie overhead aanzienlijk verminderen door minder gegevens punten te verzenden, terwijl alle relevante gegevens worden verzameld.
 
 > [!NOTE]
-> Alleen de .NET-en .NET core Sdk's hebben een GetMetric ()-methode. Als u Java gebruikt, kunt u [metrische gegevens over micrometer](https://docs.microsoft.com/azure/azure-monitor/app/micrometer-java) of `TrackMetric()`gebruiken. Voor python kunt u [Opentellingen. stats](https://docs.microsoft.com/azure/azure-monitor/app/opencensus-python#metrics) gebruiken om aangepaste metrische gegevens te verzenden. Voor Java script en node. js kunt u nog `TrackMetric()`steeds gebruikmaken van de voor behoud die in de vorige sectie werden beschreven.
+> Alleen de .NET-en .NET core Sdk's hebben een GetMetric ()-methode. Als u Java gebruikt, kunt u [metrische gegevens over micrometer](https://docs.microsoft.com/azure/azure-monitor/app/micrometer-java) of gebruiken `TrackMetric()` . Voor python kunt u [Opentellingen. stats](https://docs.microsoft.com/azure/azure-monitor/app/opencensus-python#metrics) gebruiken om aangepaste metrische gegevens te verzenden. Voor Java script en Node.js u zou blijven gebruiken `TrackMetric()` , maar houd wel wel de voor behoud die in de vorige sectie werden beschreven.
 
 ## <a name="getting-started-with-getmetric"></a>Aan de slag met GetMetric
 
@@ -109,7 +108,7 @@ Als we onze Application Insights-resource in de logboeken-ervaring onderzoeken, 
 ![Query weergave Log Analytics](./media/get-metric/log-analytics.png)
 
 > [!NOTE]
-> Hoewel het onbewerkte telemetriegegevens geen expliciete Sum-eigenschap/-veld bevat, hebben we er een voor u gemaakt. In dit geval vertegenwoordigen de `value` and `valueSum` -eigenschap hetzelfde.
+> Hoewel het onbewerkte telemetriegegevens geen expliciete Sum-eigenschap/-veld bevat, hebben we er een voor u gemaakt. In dit geval vertegenwoordigen de `value` and- `valueSum` eigenschap hetzelfde.
 
 U kunt ook toegang krijgen tot uw aangepaste metrische telemetriegegevens in het gedeelte [_metrische gegevens_](https://docs.microsoft.com/azure/azure-monitor/platform/metrics-charts) van de portal. Als een [op een logboek gebaseerd en aangepaste metrische gegevens](pre-aggregated-metrics-log-metrics.md). (In de onderstaande scherm afbeelding ziet u een voor beeld van op een logboek gebaseerd.) ![Weer gave metrische gegevens Verkenner](./media/get-metric/metrics-explorer.png)
 
@@ -140,7 +139,7 @@ In dit geval heeft het bovenstaande voor beeld bijvoorbeeld een zoek opdracht ui
 
 ```
 
-Naast het in de cache plaatsen van de metrische gegevens verlaagt het `Task.Delay` bovenstaande voor beeld ook de tot 50 milliseconden zodat de lus vaker wordt uitgevoerd `TrackValue()` , wat resulteert in 772 aanroepen.
+Naast het in de cache plaatsen van de metrische gegevens verlaagt het bovenstaande voor beeld ook de `Task.Delay` tot 50 milliseconden zodat de lus vaker wordt uitgevoerd, wat resulteert in 772 `TrackValue()` aanroepen.
 
 ## <a name="multi-dimensional-metrics"></a>Multi-dimensionale metrische gegevens
 
@@ -190,7 +189,7 @@ Multidimensionale metrische gegevens in de metrische Explorer-ervaring zijn niet
 
 ### <a name="enable-multi-dimensional-metrics"></a>Multidimensionale metrische gegevens inschakelen
 
-Als u multidimensionale metrische gegevens wilt inschakelen voor een Application Insights resource, selecteert u **gebruik en geschatte kosten** > **aangepaste metrische gegevens** > Hiermee**kunt u waarschuwingen op aangepaste metrische dimensies** > **OK**maken. Meer informatie hierover vindt u [hier](pre-aggregated-metrics-log-metrics.md#custom-metrics-dimensions-and-pre-aggregation).
+Als u multidimensionale metrische gegevens wilt inschakelen voor een Application Insights resource, selecteert u **gebruik en geschatte kosten**  >  **aangepaste metrische gegevens**Hiermee  >  **kunt u waarschuwingen op aangepaste metrische dimensies maken**  >  **OK**. Meer informatie hierover vindt u [hier](pre-aggregated-metrics-log-metrics.md#custom-metrics-dimensions-and-pre-aggregation).
 
 Zodra u hebt vastgesteld dat er nieuwe multi-dimensionale telemetrie is gewijzigd en verzonden, kunt u **splitsen Toep assen**.
 
@@ -205,7 +204,7 @@ En Bekijk uw metrische aggregaties voor elke _FormFactor_ -dimensie:
 
 ### <a name="how-to-use-metricidentifier-when-there-are-more-than-three-dimensions"></a>MetricIdentifier gebruiken wanneer er meer dan drie dimensies zijn
 
-Momenteel worden 10 dimensies ondersteund, maar voor meer dan drie dimensies is het gebruik `MetricIdentifier`van vereist:
+Momenteel worden 10 dimensies ondersteund, maar voor meer dan drie dimensies is het gebruik van vereist `MetricIdentifier` :
 
 ```csharp
 // Add "using Microsoft.ApplicationInsights.Metrics;" to use MetricIdentifier
@@ -221,9 +220,9 @@ Als u de metrische configuratie wilt wijzigen, moet u dit doen in de locatie waa
 
 ### <a name="special-dimension-names"></a>Speciale dimensie namen
 
-Metrische gegevens maken geen gebruik van de telemetrie- `TelemetryClient` context van de gebruikt om ze te openen. speciale dimensie namen `MetricDimensionNames` die beschikbaar zijn als constanten in klasse, zijn de beste oplossing voor deze beperking.
+Metrische gegevens maken geen gebruik van de telemetrie-context van de `TelemetryClient` gebruikt om ze te openen. speciale dimensie namen die beschikbaar zijn als constanten in `MetricDimensionNames` klasse, zijn de beste oplossing voor deze beperking.
 
-Metrische aggregaties die worden verzonden door de onderstaande ' speciale grootte van bewerkings **not** aanvraag '- `Context.Operation.Name` metrische gegevens zijn niet ingesteld op ' speciale bewerking '. Terwijl `TrackMetric()` of een andere TrackXXX () correct is `OperationName` ingesteld op ' speciale bewerking '.
+Metrische aggregaties die worden verzonden door de onderstaande ' speciale grootte van bewerkings aanvraag '-metrische gegevens zijn **niet** `Context.Operation.Name` ingesteld op ' speciale bewerking '. Terwijl `TrackMetric()` of een andere TrackXXX () correct is `OperationName` ingesteld op ' speciale bewerking '.
 
 ``` csharp
         //...
@@ -250,13 +249,13 @@ Metrische aggregaties die worden verzonden door de onderstaande ' speciale groot
 
 In dit geval gebruikt u de speciale dimensie namen in de `MetricDimensionNames` klasse om waarden op te geven `TelemetryContext` .
 
-Als bijvoorbeeld de metrische statistische waarde die voortkomt uit de volgende instructie wordt verzonden naar het Application Insights Cloud-eind `Context.Operation.Name` punt, wordt het gegevens veld ervan ingesteld op ' speciale bewerking ':
+Als bijvoorbeeld de metrische statistische waarde die voortkomt uit de volgende instructie wordt verzonden naar het Application Insights Cloud-eind punt, `Context.Operation.Name` wordt het gegevens veld ervan ingesteld op ' speciale bewerking ':
 
 ```csharp
 _telemetryClient.GetMetric("Request Size", MetricDimensionNames.TelemetryContext.Operation.Name).TrackValue(requestSize, "Special Operation");
 ```
 
-De waarden van deze speciale dimensie worden gekopieerd naar `TelemetryContext` en worden niet gebruikt als een ' normale ' dimensie. Als u ook een bewerkings dimensie voor normale metrische gegevens wilt gebruiken, moet u hiervoor een afzonderlijke dimensie maken:
+De waarden van deze speciale dimensie worden gekopieerd naar en worden `TelemetryContext` niet gebruikt als een ' normale ' dimensie. Als u ook een bewerkings dimensie voor normale metrische gegevens wilt gebruiken, moet u hiervoor een afzonderlijke dimensie maken:
 
 ```csharp
 _telemetryClient.GetMetric("Request Size", "Operation Name", MetricDimensionNames.TelemetryContext.Operation.Name).TrackValue(requestSize, "Special Operation", "Special Operation");
@@ -266,9 +265,9 @@ _telemetryClient.GetMetric("Request Size", "Operation Name", MetricDimensionName
 
  Om te voor komen dat het telemetrie-subsysteem per ongeluk uw resources gebruikt, kunt u het maximum aantal gegevens reeksen per metriek beheren. De standaard limieten zijn niet meer dan 1000 totale gegevens reeksen per metriek en niet meer dan 100 verschillende waarden per dimensie.
 
- In de context van dimensie-en tijd Series die we gebruiken `Metric.TrackValue(..)` om ervoor te zorgen dat de limieten worden waargenomen. Als de limieten al zijn bereikt `Metric.TrackValue(..)` , retourneert ' false ' en wordt de waarde niet bijgehouden. Als dat niet het geval is, wordt ' True ' geretourneerd. Dit is handig als de gegevens voor een metriek afkomstig zijn van gebruikers invoer.
+ In de context van dimensie-en tijd Series die we gebruiken `Metric.TrackValue(..)` om ervoor te zorgen dat de limieten worden waargenomen. Als de limieten al zijn bereikt, `Metric.TrackValue(..)` retourneert ' false ' en wordt de waarde niet bijgehouden. Als dat niet het geval is, wordt ' True ' geretourneerd. Dit is handig als de gegevens voor een metriek afkomstig zijn van gebruikers invoer.
 
-De `MetricConfiguration` constructor maakt deel uit van een aantal opties voor het beheren van verschillende reeksen binnen de respectieve metriek en een object van `IMetricSeriesConfiguration` een klasse die wordt geïmplementeerd en waarmee aggregatie gedrag wordt opgegeven voor elke afzonderlijke reeks van de metriek:
+De `MetricConfiguration` constructor maakt deel uit van een aantal opties voor het beheren van verschillende reeksen binnen de respectieve metriek en een object van een klasse `IMetricSeriesConfiguration` die wordt geïmplementeerd en waarmee aggregatie gedrag wordt opgegeven voor elke afzonderlijke reeks van de metriek:
 
 ``` csharp
 var metConfig = new MetricConfiguration(seriesCountLimit: 100, valuesPerDimensionLimit:2,
@@ -285,7 +284,7 @@ computersSold.TrackValue(100, "Dim1Value1", "Dim2Value3");
 // The above call does not track the metric, and returns false.
 ```
 
-* `seriesCountLimit`is het maximum aantal gegevens tijd reeksen dat een metrieke waarde kan bevatten. Wanneer deze limiet is bereikt, wordt het `TrackValue()`aangeroepen.
+* `seriesCountLimit`is het maximum aantal gegevens tijd reeksen dat een metrieke waarde kan bevatten. Wanneer deze limiet is bereikt, wordt het aangeroepen `TrackValue()` .
 * `valuesPerDimensionLimit`beperkt het aantal afzonderlijke waarden per dimensie op een vergelijk bare manier.
 * `restrictToUInt32Values`Hiermee wordt bepaald of alleen niet-negatieve gehele waarden moeten worden bijgehouden.
 

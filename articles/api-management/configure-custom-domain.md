@@ -13,15 +13,14 @@ ms.topic: article
 ms.date: 01/13/2020
 ms.author: apimpm
 ms.openlocfilehash: 380b61df8a774e69454577d201cebf1c495b4f74
-ms.sourcegitcommit: ac4a365a6c6ffa6b6a5fbca1b8f17fde87b4c05e
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/10/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "83004749"
 ---
 # <a name="configure-a-custom-domain-name"></a>Een aangepaste domeinnaam configureren
 
-Wanneer u een Azure API Management service-exemplaar maakt, wijst Azure hieraan een subdomein van `azure-api.net` toe (bijvoorbeeld `apim-service-name.azure-api.net`). U kunt uw API Management-eind punten echter beschikbaar maken met uw eigen aangepaste domein naam, zoals **contoso.com**. Deze zelf studie laat zien hoe u een bestaande aangepaste DNS-naam toewijst aan eind punten die door een API Management-exemplaar worden weer gegeven.
+Wanneer u een Azure API Management service-exemplaar maakt, wijst Azure hieraan een subdomein van toe `azure-api.net` (bijvoorbeeld `apim-service-name.azure-api.net` ). U kunt uw API Management-eind punten echter beschikbaar maken met uw eigen aangepaste domein naam, zoals **contoso.com**. Deze zelf studie laat zien hoe u een bestaande aangepaste DNS-naam toewijst aan eind punten die door een API Management-exemplaar worden weer gegeven.
 
 > [!IMPORTANT]
 > API Management accepteert alleen aanvragen met de waarden van de [host-header](https://tools.ietf.org/html/rfc2616#section-14.23) die overeenkomen met de standaard domein naam of een van de geconfigureerde aangepaste domein namen.
@@ -49,11 +48,11 @@ Voor het uitvoeren van de stappen die in dit artikel worden beschreven, hebt u h
 
     Er zijn een aantal eind punten waaraan u een aangepaste domein naam kunt toewijzen. Momenteel zijn de volgende eind punten beschikbaar:
 
-    - **Gateway** (standaard is: `<apim-service-name>.azure-api.net`),
-    - **Portal** (standaard is: `<apim-service-name>.portal.azure-api.net`),
-    - **Beheer** (standaard is: `<apim-service-name>.management.azure-api.net`),
-    - **SCM** (standaard is: `<apim-service-name>.scm.azure-api.net`),
-    - **NewPortal** (standaard is: `<apim-service-name>.developer.azure-api.net`).
+    - **Gateway** (standaard is: `<apim-service-name>.azure-api.net` ),
+    - **Portal** (standaard is: `<apim-service-name>.portal.azure-api.net` ),
+    - **Beheer** (standaard is: `<apim-service-name>.management.azure-api.net` ),
+    - **SCM** (standaard is: `<apim-service-name>.scm.azure-api.net` ),
+    - **NewPortal** (standaard is: `<apim-service-name>.developer.azure-api.net` ).
 
     > [!NOTE]
     > Alleen het **Gateway** -eind punt is beschikbaar voor configuratie in de laag verbruik.
@@ -68,7 +67,7 @@ Voor het uitvoeren van de stappen die in dit artikel worden beschreven, hebt u h
     - Selecteer in het **certificaat**een certificaat van Key Vault. U kunt ook een geldige uploaden. PFX-bestand en geef het **wacht woord**op als het certificaat is beveiligd met een wacht woord.
 
     > [!NOTE]
-    > Domein namen met Joker tekens, `*.contoso.com` zoals worden ondersteund in alle lagen, behalve de laag verbruik.
+    > Domein namen met Joker tekens, zoals `*.contoso.com` worden ondersteund in alle lagen, behalve de laag verbruik.
 
     > [!TIP]
     > U kunt het beste [Azure Key Vault gebruiken voor het beheren van certificaten](https://docs.microsoft.com/azure/key-vault/certificates/about-certificates) en het instellen ervan op autorenew.
@@ -78,7 +77,7 @@ Voor het uitvoeren van de stappen die in dit artikel worden beschreven, hebt u h
     >
     > Als het certificaat is ingesteld op autorenew, neemt API Management de nieuwste versie automatisch op zonder uitval tijd voor de service (als uw API Management laag SLA-i. e heeft in alle lagen, behalve de laag voor ontwikkel aars).
 
-1. Klik op Toep assen.
+1. Klik op Toepassen.
 
     > [!NOTE]
     > Het proces voor het toewijzen van het certificaat kan 15 minuten of langer duren, afhankelijk van de grootte van de implementatie. Ontwikkel aars-SKU heeft downtime, Basic-en hogere Sku's hebben geen downtime.

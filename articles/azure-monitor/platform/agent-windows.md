@@ -7,10 +7,9 @@ author: bwren
 ms.author: bwren
 ms.date: 10/07/2019
 ms.openlocfilehash: 644d1094ec57e148804941297d50398e36b1b068
-ms.sourcegitcommit: 309a9d26f94ab775673fd4c9a0ffc6caa571f598
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/09/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82996425"
 ---
 # <a name="connect-windows-computers-to-azure-monitor"></a>Windows-computers verbinden met Azure Monitor
@@ -60,9 +59,9 @@ Als u het [TLS 1,2](https://docs.microsoft.com/windows-server/security/tls/tls-r
 
 Configureer .NET Framework 4,6 of hoger voor de ondersteuning van beveiligde crypto grafie, omdat deze standaard is uitgeschakeld. De [sterke crypto grafie](https://docs.microsoft.com/dotnet/framework/network-programming/tls#schusestrongcrypto) maakt gebruik van veiliger netwerk protocollen zoals TLS 1,2 en blokkeert protocollen die niet beveiligd zijn. 
 
-1. Ga naar de volgende registersubsleutel: **HKEY_LOCAL_MACHINE \Software\Microsoft\\. NETFramework\v4.0.30319**.  
+1. Ga naar de volgende registersubsleutel: **HKEY_LOCAL_MACHINE \Software\Microsoft \\ . NETFramework\v4.0.30319**.  
 2. Maak de DWORD-waarde **schusestrongcrypto toe** onder deze subsleutel met de waarde **1**.  
-3. Ga naar de volgende registersubsleutel: **HKEY_LOCAL_MACHINE \software\wow6432node\microsoft\\. NETFramework\v4.0.30319**.  
+3. Ga naar de volgende registersubsleutel: **HKEY_LOCAL_MACHINE \software\wow6432node\microsoft \\ . NETFramework\v4.0.30319**.  
 4. Maak de DWORD-waarde **schusestrongcrypto toe** onder deze subsleutel met de waarde **1**. 
 5. Start het systeem opnieuw op om de instellingen van kracht te laten worden. 
 
@@ -92,7 +91,7 @@ Het gedownloade bestand voor de agent is een op zichzelf staand installatie pakk
 
 De volgende tabel bevat de specifieke para meters die worden ondersteund door de installatie voor de agent, waaronder wanneer geïmplementeerd met Automation DSC.
 
-|MMA-specifieke opties                   |Opmerkingen         |
+|MMA-specifieke opties                   |Notities         |
 |---------------------------------------|--------------|
 | NOAPM=1                               | Optionele parameter. Hiermee wordt de agent geïnstalleerd zonder bewaking van .NET-toepassings prestaties.|   
 |ADD_OPINSIGHTS_WORKSPACE               | 1 = de agent configureren om te rapporteren aan een werk ruimte                |
@@ -103,7 +102,7 @@ De volgende tabel bevat de specifieke para meters die worden ondersteund door de
 |OPINSIGHTS_PROXY_USERNAME               | Gebruikers naam voor toegang tot een geverifieerde proxy |
 |OPINSIGHTS_PROXY_PASSWORD               | Wacht woord voor toegang tot een geverifieerde proxy |
 
-1. Als u de installatie bestanden van de agent wilt extra heren, vanaf een `MMASetup-<platform>.exe /c` opdracht prompt met verhoogde bevoegdheid, wordt u gevraagd om het pad naar de bestanden uit te pakken.  U kunt ook het pad opgeven door de argumenten `MMASetup-<platform>.exe /c /t:<Full Path>`door te geven.  
+1. Als u de installatie bestanden van de agent wilt extra heren, vanaf een opdracht prompt met verhoogde bevoegdheid, `MMASetup-<platform>.exe /c` wordt u gevraagd om het pad naar de bestanden uit te pakken.  U kunt ook het pad opgeven door de argumenten door te geven `MMASetup-<platform>.exe /c /t:<Full Path>` .  
 2. Als u de agent op de achtergrond wilt installeren en configureren om te rapporteren aan een werk ruimte in de commerciële cloud van Azure, vanuit de map die u de installatie bestanden hebt uitgepakt, typt u: 
    
      ```dos
@@ -122,7 +121,7 @@ De volgende tabel bevat de specifieke para meters die worden ondersteund door de
 
 U kunt het volgende script voorbeeld gebruiken om de agent te installeren met behulp van Azure Automation DSC.   Als u geen Automation-account hebt, raadpleegt u aan de [slag met Azure Automation](/azure/automation/) om inzicht te krijgen in de vereisten en stappen voor het maken van een Automation-account dat is vereist voor het gebruik van Automation DSC.  Als u niet bekend bent met Automation DSC, raadpleegt u [aan de slag met Automation DSC](../../automation/automation-dsc-getting-started.md).
 
-In het volgende voor beeld wordt de 64-bits agent geïnstalleerd, `URI` geïdentificeerd door de waarde. U kunt ook de 32-bits versie gebruiken door de URI-waarde te vervangen. De Uri's voor beide versies zijn:
+In het volgende voor beeld wordt de 64-bits agent geïnstalleerd, geïdentificeerd door de `URI` waarde. U kunt ook de 32-bits versie gebruiken door de URI-waarde te vervangen. De Uri's voor beide versies zijn:
 
 - Windows 64-bits agent-https://go.microsoft.com/fwlink/?LinkId=828603
 - Windows 32-bits agent-https://go.microsoft.com/fwlink/?LinkId=828604
@@ -131,13 +130,13 @@ In het volgende voor beeld wordt de 64-bits agent geïnstalleerd, `URI` geïdent
 >[!NOTE]
 >Deze procedure en het script voorbeeld bieden geen ondersteuning voor de upgrade van de agent die al is geïmplementeerd op een Windows-computer.
 
-De 32-bits en 64-bits versies van het agent pakket hebben verschillende product codes en nieuwe versies die zijn uitgebracht, hebben ook een unieke waarde.  De product code is een GUID die de principal-identificatie vormt van een toepassing of product en wordt vertegenwoordigd door de **eigenschap van** de Windows Installer.  De `ProductId` waarde in het script **MMAgent. ps1** moet overeenkomen met de product code van het 32-bits-of 64-bits agent-installatie pakket.
+De 32-bits en 64-bits versies van het agent pakket hebben verschillende product codes en nieuwe versies die zijn uitgebracht, hebben ook een unieke waarde.  De product code is een GUID die de principal-identificatie vormt van een toepassing of product en wordt vertegenwoordigd door de **eigenschap van** de Windows Installer.  De `ProductId` waarde in het **MMAgent.ps1** script moet overeenkomen met de product code van het 32-bits-of 64-bits agent-installatie pakket.
 
-Als u de product code rechtstreeks uit het installatie pakket van de agent wilt ophalen, kunt u Orca. exe gebruiken uit de [Windows SDK onderdelen voor Windows Installer ontwikkel aars](https://msdn.microsoft.com/library/windows/desktop/aa370834%28v=vs.85%29.aspx) die een onderdeel zijn van de Windows Software Development Kit of met behulp van Power shell volgens een [voorbeeld script](https://www.scconfigmgr.com/2014/08/22/how-to-get-msi-file-information-with-powershell/) dat is geschreven door een micro soft Valuable Professional (MVP).  Voor beide benaderingen moet u eerst het **MOMagent. msi** -bestand extra heren uit het MMASetup-installatie pakket.  Dit wordt eerder weer gegeven in de eerste stap onder de sectie de [agent installeren met de opdracht regel](#install-the-agent-using-the-command-line).  
+Als u de product code rechtstreeks van het agent-installatie pakket wilt ophalen, kunt u Orca.exe van de [Windows SDK-onderdelen gebruiken voor Windows Installer ontwikkel aars](https://msdn.microsoft.com/library/windows/desktop/aa370834%28v=vs.85%29.aspx) die een onderdeel zijn van de Windows Software Development Kit of met behulp van Power shell volgens een [voorbeeld script](https://www.scconfigmgr.com/2014/08/22/how-to-get-msi-file-information-with-powershell/) dat is geschreven door een micro soft Valuable Professional (MVP).  Voor beide benaderingen moet u eerst het **MOMagent.msi** bestand extra heren uit het installatie pakket MMASetup.  Dit wordt eerder weer gegeven in de eerste stap onder de sectie de [agent installeren met de opdracht regel](#install-the-agent-using-the-command-line).  
 
-1. Importeer de xPSDesiredStateConfiguration DSC-module [https://www.powershellgallery.com/packages/xPSDesiredStateConfiguration](https://www.powershellgallery.com/packages/xPSDesiredStateConfiguration) vanuit naar Azure Automation.  
+1. Importeer de xPSDesiredStateConfiguration DSC-module vanuit [https://www.powershellgallery.com/packages/xPSDesiredStateConfiguration](https://www.powershellgallery.com/packages/xPSDesiredStateConfiguration) naar Azure Automation.  
 2.    Maak Azure Automation variabele assets voor *OPSINSIGHTS_WS_ID* en *OPSINSIGHTS_WS_KEY*. Stel *OPSINSIGHTS_WS_ID* in op uw log Analytics werk ruimte-id en stel *OPSINSIGHTS_WS_KEY* in op de primaire sleutel van uw werk ruimte.
-3.    Kopieer het script en sla het op als MMAgent. ps1.
+3.    Kopieer het script en sla het op als MMAgent.ps1.
 
 ```powershell
 Configuration MMAgent
@@ -176,7 +175,7 @@ Configuration MMAgent
 ```
 
 4. Werk de `ProductId` waarde in het script bij met de product code die is geëxtraheerd uit de nieuwste versie van het installatie pakket van de agent met behulp van de hierboven aanbevolen methoden. 
-5. [Importeer het configuratie script MMAgent. ps1](../../automation/automation-dsc-getting-started.md#import-a-configuration-into-azure-automation) in uw Automation-account. 
+5. [Importeer het MMAgent.ps1 configuratie script](../../automation/automation-dsc-getting-started.md#import-a-configuration-into-azure-automation) in uw Automation-account. 
 6. [Wijs een Windows-computer of-knoop punt](../../automation/automation-dsc-getting-started.md#enable-an-azure-resource-manager-vm-for-management-with-state-configuration) toe aan de configuratie. Binnen 15 minuten controleert het knoop punt de configuratie en wordt de agent naar het knoop punt gepusht.
 
 ## <a name="verify-agent-connectivity-to-log-analytics"></a>Agent connectiviteit met Log Analytics controleren

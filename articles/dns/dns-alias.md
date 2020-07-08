@@ -8,10 +8,9 @@ ms.topic: article
 ms.date: 08/09/2019
 ms.author: rohink
 ms.openlocfilehash: 3378036c4800b274d879743abf937c7860e63ded
-ms.sourcegitcommit: a6d477eb3cb9faebb15ed1bf7334ed0611c72053
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/08/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82926227"
 ---
 # <a name="azure-dns-alias-records-overview"></a>Overzicht van Azure DNS-aliasrecords
@@ -27,7 +26,7 @@ Een aliasset wordt ondersteund voor de volgende record typen in een Azure DNS zo
 > [!NOTE]
 > Als u van plan bent een alias record te gebruiken voor de A-of AAAA-record typen om te verwijzen naar een [Azure Traffic Manager-profiel](../traffic-manager/quickstart-create-traffic-manager-profile.md) , moet u ervoor zorgen dat het Traffic Manager profiel alleen [externe eind punten](../traffic-manager/traffic-manager-endpoint-types.md#external-endpoints)heeft. U moet het IPv4-of IPv6-adres opgeven voor externe eind punten in Traffic Manager. U kunt geen volledig gekwalificeerde domein namen (FQDN) in eind punten gebruiken. In het ideale geval gebruikt u statische IP-adressen.
 
-## <a name="capabilities"></a>Functionaliteit
+## <a name="capabilities"></a>Functies
 
 - **Wijs naar een open bare IP-bron van een DNS A/AAAA-Recordset.** U kunt een A/AAAA-recordset maken en hiervan een alias instellen om te verwijzen naar een open bare IP-resource (standaard of basis). De DNS-record sets worden automatisch gewijzigd als het open bare IP-adres wordt gewijzigd of verwijderd. Dangling DNS-records die verwijzen naar onjuiste IP-adressen, worden vermeden.
 
@@ -60,13 +59,13 @@ Deze beperking geeft een probleem met de eigen aren van toepassingen die toepass
 
 Dit probleem wordt opgelost met behulp van alias records. In tegens telling tot CNAME-records worden alias records gemaakt op de zone Apex en de eigen aren van toepassingen kunnen deze gebruiken om hun zone Apex-record te laten verwijzen naar een Traffic Manager profiel met externe eind punten. Toepassings eigenaren verwijzen naar hetzelfde Traffic Manager-profiel dat wordt gebruikt voor elk ander domein binnen hun DNS-zone.
 
-Contoso.com en www\.contoso.com kunnen bijvoorbeeld verwijzen naar hetzelfde Traffic Manager-profiel. Zie de sectie volgende stappen voor meer informatie over het gebruik van alias records met Azure Traffic Manager-profielen.
+Contoso.com en www \. contoso.com kunnen bijvoorbeeld verwijzen naar hetzelfde Traffic Manager-profiel. Zie de sectie volgende stappen voor meer informatie over het gebruik van alias records met Azure Traffic Manager-profielen.
 
 ### <a name="point-zone-apex-to-azure-cdn-endpoints"></a>Punt zone Apex naar Azure CDN-eind punten
 
 Net als bij een Traffic Manager profiel kunt u ook alias records gebruiken om uw DNS-zone te laten verwijzen naar Azure CDN-eind punten. Dit is handig wanneer u statische websites maakt met behulp van Azure Storage en Azure CDN. U kunt vervolgens toegang krijgen tot de website zonder ' www ' in behandeling te nemen in uw DNS-naam.
 
-Als uw statische website bijvoorbeeld een naam `www.contoso.com`heeft, hebben uw gebruikers toegang tot uw site met `contoso.com` behulp van zonder de nood zaak om www-laten voorafgaan door te maken met de DNS-naam.
+Als uw statische website bijvoorbeeld een naam heeft `www.contoso.com` , hebben uw gebruikers toegang tot uw site met behulp van `contoso.com` zonder de nood zaak om www-laten voorafgaan door te maken met de DNS-naam.
 
 Zoals eerder beschreven, worden CNAME-records niet ondersteund op de zone Apex. U kunt dus geen CNAME-record gebruiken om contoso.com te verwijzen naar uw CDN-eind punt. In plaats daarvan kunt u een alias record gebruiken om de zone rechtstreeks naar een CDN-eind punt te wijzen.
 

@@ -9,10 +9,9 @@ ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 12/06/2019
 ms.openlocfilehash: 8407aafdb9b9dadcbc8e220ac42e5d7856116959
-ms.sourcegitcommit: 309a9d26f94ab775673fd4c9a0ffc6caa571f598
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/09/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82996785"
 ---
 # <a name="migrate-on-premises-apache-hadoop-clusters-to-azure-hdinsight---infrastructure-best-practices"></a>On-premises Apache Hadoop clusters migreren naar de aanbevolen procedures voor Azure HDInsight-infra structuur
@@ -23,7 +22,7 @@ Dit artikel bevat aanbevelingen voor het beheren van de infra structuur van Azur
 
 De belangrijkste keuzes voor het maken van de capaciteits planning voor HDInsight-clusters zijn als volgt:
 
-**Deel**  
+**Regio**  
 De Azure-regio bepaalt waar het cluster fysiek wordt ingericht. Het cluster moet zich in dezelfde regio bevinden als de gegevens om de latentie van lees-en schrijf bewerkingen te minimaliseren.
 
 **Opslag locatie en-grootte**  
@@ -68,7 +67,7 @@ Toepassingen of onderdelen die beschikbaar waren in on-premises clusters, maar d
 |Python 2|PaaS 
 |Python 3|PaaS 
 |R|PaaS 
-|GEBASEERD|IaaS 
+|SAS|IaaS 
 |Vertica|IaaS (SQLDW een alternatief op Azure)
 |Tableau|IaaS 
 |Toestand|HDInsight Edge-knoop punt
@@ -109,7 +108,7 @@ Raadpleeg voor meer informatie de volgende artikelen:
 
 ## <a name="customize-hdinsight-configs-using-bootstrap"></a>HDInsight-configuratie aanpassen met Boots trap
 
-Wijzigingen in configuratie `core-site.xml`-instellingen in de configuratie bestanden, `hive-site.xml` zoals en `oozie-env.xml` kunnen worden gemaakt met Boots trap. Het volgende script is een voor beeld van het gebruik van de Power shell [AZ module](https://docs.microsoft.com/powershell/azure/new-azureps-module-az) [-cmdlet New-AzHDInsightClusterConfig](https://docs.microsoft.com/powershell/module/az.hdinsight/new-azhdinsightcluster):
+Wijzigingen in configuratie-instellingen in de configuratie bestanden `core-site.xml` , zoals `hive-site.xml` en `oozie-env.xml` kunnen worden gemaakt met Boots trap. Het volgende script is een voor beeld van het gebruik van de Power shell [AZ module](https://docs.microsoft.com/powershell/azure/new-azureps-module-az) [-cmdlet New-AzHDInsightClusterConfig](https://docs.microsoft.com/powershell/module/az.hdinsight/new-azhdinsightcluster):
 
 ```powershell
 # hive-site.xml configuration
@@ -144,7 +143,7 @@ Een lege Edge-knoop punt is een virtuele Linux-machine waarop dezelfde client hu
 - client toepassingen testen
 - client toepassingen hosten
 
-Edge-knoop punten kunnen worden gemaakt en verwijderd via de Azure Portal en kunnen worden gebruikt tijdens of na het maken van het cluster. Nadat u het Edge-knoop punt hebt gemaakt, kunt u via SSH verbinding maken met het Edge-knoop punt en client hulpprogramma's uitvoeren om toegang te krijgen tot het Hadoop-cluster in HDInsight. Het SSH-eind punt van `<EdgeNodeName>.<ClusterName>-ssh.azurehdinsight.net:22`het Edge-knoop punt is.
+Edge-knoop punten kunnen worden gemaakt en verwijderd via de Azure Portal en kunnen worden gebruikt tijdens of na het maken van het cluster. Nadat u het Edge-knoop punt hebt gemaakt, kunt u via SSH verbinding maken met het Edge-knoop punt en client hulpprogramma's uitvoeren om toegang te krijgen tot het Hadoop-cluster in HDInsight. Het SSH-eind punt van het Edge-knoop punt is `<EdgeNodeName>.<ClusterName>-ssh.azurehdinsight.net:22` .
 
 
 Zie het artikel [lege Edge-knoop punten op Apache Hadoop clusters in HDInsight gebruiken](../hdinsight-apps-use-edge-node.md)voor meer informatie.
@@ -175,7 +174,7 @@ HDInsight kan worden toegevoegd aan een nieuwe of bestaande Azure-Virtual Networ
 Raadpleeg voor meer informatie de volgende artikelen:
 
 - [Virtuele netwerken van Azure-overzicht](../../virtual-network/virtual-networks-overview.md)
-- [Azure HDInsight uitbreiden met behulp van een Azure-Virtual Network](../hdinsight-plan-virtual-network-deployment.md)
+- [Azure HDInsight uitbreiden met behulp van een virtueel Azure-netwerk](../hdinsight-plan-virtual-network-deployment.md).
 
 ## <a name="securely-connect-to-azure-services-with-azure-virtual-network-service-endpoints"></a>Veilig verbinding maken met Azure-Services met Azure Virtual Network Service-eind punten
 

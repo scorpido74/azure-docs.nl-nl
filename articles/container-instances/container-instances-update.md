@@ -4,10 +4,9 @@ description: Meer informatie over het bijwerken van actieve containers in uw Azu
 ms.topic: article
 ms.date: 04/17/2020
 ms.openlocfilehash: cfc27de8caae98dd1c3065b5ed06433c4baaa5d2
-ms.sourcegitcommit: a6d477eb3cb9faebb15ed1bf7334ed0611c72053
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/08/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82928717"
 ---
 # <a name="update-containers-in-azure-container-instances"></a>Containers in Azure Container Instances bijwerken
@@ -84,7 +83,7 @@ Dit artikel bevat meerdere keren de **container groep**. Elke container in Azure
 
 [Een groep met meerdere containers implementeren](container-instances-multi-container-group.md)
 
-[Containers in Azure Container Instances hand matig stoppen of starten](container-instances-stop-start.md)
+[Containers in Azure Container Instances handmatig stoppen of starten](container-instances-stop-start.md)
 
 <!-- LINKS - External -->
 

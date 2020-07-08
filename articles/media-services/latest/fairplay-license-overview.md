@@ -15,10 +15,9 @@ ms.date: 12/08/2018
 ms.author: juliako
 ms.custom: seodec18
 ms.openlocfilehash: d348f2696ef865616669af311477cb3a90a59a50
-ms.sourcegitcommit: 309a9d26f94ab775673fd4c9a0ffc6caa571f598
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/09/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82995872"
 ---
 # <a name="apple-fairplay-license-requirements-and-configuration"></a>Vereisten voor en configuratie van Apple FairPlay-licenties 
@@ -39,15 +38,15 @@ Het volgende is vereist wanneer u Media Services gebruikt voor het versleutelen 
 
         In de volgende stappen wordt beschreven hoe u een pfx-certificaat bestand genereert voor FairPlay:
 
-        1. Installeer OpenSSL van https://slproweb.com/products/Win32OpenSSL.html.
+        1. Installeer OpenSSL van https://slproweb.com/products/Win32OpenSSL.html .
 
             Ga naar de map waarin het FairPlay-certificaat en andere bestanden die door Apple worden geleverd, zijn.
         2. Voer de volgende opdracht uit via de opdrachtregel. Hiermee wordt het CER-bestand geconverteerd naar een. pem-bestand.
 
-            "C:\OpenSSL-Win32\bin\openssl.exe" x509-in FairPlay. CER-out FairPlay-out. pem
+            "C:\OpenSSL-Win32\bin\openssl.exe" x509: Informeer de FairPlay. CER-out FairPlay-out. pem
         3. Voer de volgende opdracht uit via de opdrachtregel. Hiermee converteert u het. pem-bestand naar een. pfx-bestand met de persoonlijke sleutel. Het wacht woord voor het pfx-bestand wordt vervolgens gevraagd door OpenSSL.
 
-            "C:\OpenSSL-Win32\bin\openssl.exe" pkcs12/pfx-Profiel-export-out FairPlay-out. pfx-INKEY privatekey. pem-in FairPlay-out. pem-Passin File: privatekey-PEM-Pass. txt
+            "C:\OpenSSL-Win32\bin\openssl.exe" pkcs12/pfx-Profiel-export FairPlay-out. pfx-INKEY privatekey. pem-in FairPlay-out. pem-Passin file:privatekey-pem-pass.txt
             
     * **Wacht woord voor app-certificaat**: het wacht woord voor het maken van het pfx-bestand.
     * **Vraag**: deze sleutel wordt ontvangen wanneer u het certificaat genereert met behulp van de Apple-ontwikkelaars Portal. Elk ontwikkel team ontvangt een unieke vraag. Sla een kopie van de vragen op en bewaar deze op een veilige plaats. U moet vragen als FairPlayAsk configureren met Media Services.

@@ -8,10 +8,9 @@ ms.topic: conceptual
 ms.date: 05/08/2020
 tags: connectors
 ms.openlocfilehash: 98da7e959e4b59ad2d0f3f3f79364391b4ceddbd
-ms.sourcegitcommit: 309a9d26f94ab775673fd4c9a0ffc6caa571f598
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/09/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82997098"
 ---
 # <a name="create-and-manage-records-in-common-data-service-by-using-azure-logic-apps"></a>Records in Common Data Service maken en beheren met behulp van Azure Logic Apps
@@ -51,9 +50,9 @@ Voor dit voor beeld voegt u de trigger Common Data Service toe die wordt geactiv
 
    | Eigenschap | Vereist | Beschrijving |
    |----------|----------|-------------|
-   | **Omgeving** | Ja | De omgeving waarin u bijvoorbeeld ' fabrikam Sales production ' wilt bewaken. Zie [overzicht van Power platform-omgevingen](https://docs.microsoft.com/power-platform/admin/environments-overview)voor meer informatie. |
-   | **Naam van entiteit** | Ja | De entiteit die u wilt bewaken, bijvoorbeeld ' leads ' |
-   | **Bereik** | Ja | De bron die de nieuwe record heeft gemaakt, bijvoorbeeld een gebruiker in uw bedrijfs eenheid of een gebruiker in uw organisatie. In dit voor beeld wordt ' Business Unit ' gebruikt. |
+   | **Omgeving** | Yes | De omgeving waarin u bijvoorbeeld ' fabrikam Sales production ' wilt bewaken. Zie [overzicht van Power platform-omgevingen](https://docs.microsoft.com/power-platform/admin/environments-overview)voor meer informatie. |
+   | **Naam van entiteit** | Yes | De entiteit die u wilt bewaken, bijvoorbeeld ' leads ' |
+   | **Bereik** | Yes | De bron die de nieuwe record heeft gemaakt, bijvoorbeeld een gebruiker in uw bedrijfs eenheid of een gebruiker in uw organisatie. In dit voor beeld wordt ' Business Unit ' gebruikt. |
    ||||
 
 ## <a name="add-common-data-service-action"></a>Common Data Service actie toevoegen
@@ -72,8 +71,8 @@ Voeg nu een Common Data Service actie toe waarmee een taak record voor een nieuw
 
    | Eigenschap | Vereist | Beschrijving |
    |----------|----------|-------------|
-   | **Organisatie naam** | Ja | De omgeving waarin u de record wilt maken, die niet dezelfde omgeving in uw trigger moet zijn, maar ' fabrikam Sales production ' in dit voor beeld is |
-   | **Naam van entiteit** | Ja | De entiteit waar u de record wilt maken, bijvoorbeeld ' taken ' |
+   | **Organisatie naam** | Yes | De omgeving waarin u de record wilt maken, die niet dezelfde omgeving in uw trigger moet zijn, maar ' fabrikam Sales production ' in dit voor beeld is |
+   | **Naam van entiteit** | Yes | De entiteit waar u de record wilt maken, bijvoorbeeld ' taken ' |
    | **Onderwerp** | Ja, op basis van de entiteit die in dit voor beeld is geselecteerd | Een korte beschrijving van de doel stelling voor deze taak |
    ||||
 
@@ -87,9 +86,9 @@ Voeg nu een Common Data Service actie toe waarmee een taak record voor een nieuw
 
       ![Trigger uitvoer selecteren voor gebruik in taak record](./media/connect-common-data-service/create-new-record-action-select-trigger-outputs.png)
 
-      | Uitvoer activeren | Beschrijving |
+      | Uitvoer activeren | Description |
       |----------------|-------------|
-      | **Voor naam** | De voor naam van de lead record die moet worden gebruikt als de primaire contact persoon in de taak record |
+      | **Voornaam** | De voor naam van de lead record die moet worden gebruikt als de primaire contact persoon in de taak record |
       | **Achternaam** | De achternaam van de lead record die moet worden gebruikt als de primaire contact persoon in de taak record |
       | **Beschrijving** | Andere uitvoer die moet worden opgenomen in de taak record, zoals e-mail adres en zakelijk telefoon nummer |
       |||
@@ -98,7 +97,7 @@ Voeg nu een Common Data Service actie toe waarmee een taak record voor een nieuw
 
    ![De actie ' een nieuwe record maken ' is voltooid](./media/connect-common-data-service/finished-create-record-action-details.png)
 
-1. Sla uw logische app op. Selecteer **Opslaan**op de werk balk van de ontwerp functie.
+1. Sla uw logische app op. Selecteer **Opslaan** op de werkbalk van de ontwerper.
 
 1. Als u de logische app hand matig wilt starten, selecteert u **uitvoeren**op de werk balk van de ontwerp functie. Als u uw logische app wilt testen, maakt u een nieuwe lead record.
 
@@ -126,7 +125,7 @@ Voor acties die records retour neren, zoals de actie **records weer** geven, kun
 
    ![ODATA-filter query voor het filteren van records invoeren](./media/connect-common-data-service/list-records-action-filter-query-value.png)
 
-Zie `$filter` [common data service-filter resultaten](https://docs.microsoft.com/powerapps/developer/common-data-service/webapi/query-data-web-api#filter-results)voor meer informatie over opties voor systeem query's.
+`$filter`Zie [common data service-filter resultaten](https://docs.microsoft.com/powerapps/developer/common-data-service/webapi/query-data-web-api#filter-results)voor meer informatie over opties voor systeem query's.
 
 ## <a name="list-records-based-on-an-order"></a>Records weer geven op basis van een order
 
@@ -140,7 +139,7 @@ Voor acties die records retour neren, zoals de actie **records lijst** , kunt u 
 
    ![ODATA-filter query voor het ordenen van records invoeren](./media/connect-common-data-service/list-records-action-order-by-value.png)
 
-Zie `$orderby` [common data service-order resultaten](https://docs.microsoft.com/powerapps/developer/common-data-service/webapi/query-data-web-api#order-results)voor meer informatie over opties voor systeem query's.
+`$orderby`Zie [common data service-order resultaten](https://docs.microsoft.com/powerapps/developer/common-data-service/webapi/query-data-web-api#order-results)voor meer informatie over opties voor systeem query's.
 
 ## <a name="field-data-types"></a>Veld gegevens typen
 
@@ -148,19 +147,19 @@ Ongeacht of u hand matig een waarde invoert of een waarde selecteert uit de lijs
 
 In deze tabel worden enkele veld typen en de gegevens typen beschreven die voor deze velden zijn vereist.
 
-| Veld | Gegevenstype | Beschrijving |
+| Veld | Gegevenstype | Description |
 |-------|-----------|-------------|
 | Tekst veld | Eén tekstregel | Vereist een enkele tekst regel of dynamische inhoud met het gegevens type Text, bijvoorbeeld deze eigenschappen: <p><p>- **Beschrijvingen** <br>- **Rubriek** |
 | Veld met gehele getallen | Geheel getal | Vereist een geheel getal of dynamische inhoud met het gegevens type geheel getal, bijvoorbeeld deze eigenschappen: <p><p>- **Percentage voltooid** <br>- **Hebben** |
 | Datum veld | Datum en tijd | Vereist een datum in de notatie MM/DD/YYY of dynamische inhoud met het gegevens type datum, bijvoorbeeld deze eigenschappen: <p><p>- **Gemaakt op** <br>- **Begin datum** <br>- **Werkelijke begin datum** <br>- **Werkelijk einde** <br>- **Verval datum** |
-| Veld dat verwijst naar een andere entiteits record | Primaire sleutel | Vereist zowel een record-ID, zoals een GUID, als een opzoek type, wat betekent dat waarden van de lijst met dynamische inhoud niet werken, bijvoorbeeld deze eigenschappen: <p><p>- **Eigenaar**: moet een geldige gebruikers-id of een team record-id zijn. <br>- **Type eigenaar**: moet een opzoek type zijn, zoals `systemusers` of `teams`. <p><p>- **Over**: moet een geldige record-id zijn, zoals een account-id of een record-id van een contact persoon. <br>- **Met betrekking tot type**: moet een opzoek type zijn `accounts` , `contacts`zoals of. <p><p>- **Klant**: moet een geldige record-id zijn, zoals een account-id of record-id van een contact persoon. <br>- **Klant type**: moet het type lookup zijn, zoals `accounts` of. `contacts` |
+| Veld dat verwijst naar een andere entiteits record | Primaire sleutel | Vereist zowel een record-ID, zoals een GUID, als een opzoek type, wat betekent dat waarden van de lijst met dynamische inhoud niet werken, bijvoorbeeld deze eigenschappen: <p><p>- **Eigenaar**: moet een geldige gebruikers-id of een team record-id zijn. <br>- **Type eigenaar**: moet een opzoek type zijn, zoals `systemusers` of `teams` . <p><p>- **Over**: moet een geldige record-id zijn, zoals een account-id of een record-id van een contact persoon. <br>- **Met betrekking tot type**: moet een opzoek type zijn `accounts` , zoals of `contacts` . <p><p>- **Klant**: moet een geldige record-id zijn, zoals een account-id of record-id van een contact persoon. <br>- **Klant type**: moet het type lookup zijn, zoals `accounts` of `contacts` . |
 ||||
 
 Dit voor beeld laat zien hoe met de actie **een nieuwe record maken** een nieuwe "tasks record" wordt gemaakt die is gekoppeld aan andere entiteit records, met name een gebruikers record en een account record. De actie specificeert de Id's en zoek typen voor die entiteit records met behulp van waarden die overeenkomen met de verwachte gegevens typen voor de relevante eigenschappen.
 
-* Op basis van de eigenschap **eigenaar** , die een gebruikers-id opgeeft, en de eigenschap **type eigenaar** , die `systemusers` het type lookup specificeert, koppelt de actie het nieuwe "tasks"-record aan een specifieke gebruiker.
+* Op basis van de eigenschap **eigenaar** , die een gebruikers-id opgeeft, en de eigenschap **type eigenaar** , die het `systemusers` type lookup specificeert, koppelt de actie het nieuwe "tasks"-record aan een specifieke gebruiker.
 
-* Op basis van de eigenschap **betreft** , waarmee een record-id wordt opgegeven, en de eigenschap **over** het type `accounts` ', waarmee het opzoek type wordt opgegeven, wordt de nieuwe "tasks record" gekoppeld aan een specifiek account.
+* Op basis van de eigenschap **betreft** , waarmee een record-id wordt opgegeven, en de eigenschap **over het type** ', waarmee het opzoek type wordt opgegeven, wordt `accounts` de nieuwe "tasks record" gekoppeld aan een specifiek account.
 
 ![Een "tasks"-record maken die is gekoppeld aan Id's en opzoek typen](./media/connect-common-data-service/create-new-record-task-properties.png)
 

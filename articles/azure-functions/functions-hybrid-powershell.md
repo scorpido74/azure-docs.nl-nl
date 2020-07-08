@@ -6,10 +6,9 @@ ms.topic: conceptual
 ms.date: 04/26/2020
 ms.author: eamono
 ms.openlocfilehash: 6034d1327d263eda49881af5eedf94ae06495128
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/12/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "83122125"
 ---
 # <a name="managing-hybrid-environments-with-powershell-in-azure-functions-and-app-service-hybrid-connections"></a>Hybride omgevingen beheren met Power shell in Azure Functions en App Service Hybride verbindingen
@@ -50,49 +49,49 @@ cmd.exe /C $Cmd
 
 De functie App Service Hybride verbindingen is alleen beschikbaar in de abonnementen Basic, Standard en geïsoleerd. Wanneer u de functie-app met Power Shell maakt, maakt of selecteert u een van deze plannen.
 
-1. Selecteer in het menu van Azure Portal of op de **startpagina** de optie **Een resource maken**.
+1. Selecteer vanuit het menu van Azure Portal of op de **startpagina** de optie **Een resource maken**.
 
-1. Selecteer op de pagina **Nieuw** de optie **reken**  >  **functie-app**.
+1. Selecteer op de pagina **Nieuw** **Reken** > **functie-app**.
 
-1. Gebruik de instellingen voor de functie-app, zoals opgegeven in de volgende tabel op de pagina **basis beginselen** .
+1. Op de pagina **Basics** gebruikt u de instellingen voor de functie-app zoals in de volgende tabel wordt vermeld.
 
     | Instelling      | Voorgestelde waarde  | Beschrijving |
     | ------------ | ---------------- | ----------- |
     | **Abonnement** | Uw abonnement | Het abonnement waarmee deze nieuwe functie-app is gemaakt. |
-    | **[Resource groep](../azure-resource-manager/management/overview.md)** |  *myResourceGroup* | Naam voor de nieuwe resourcegroep waarin uw functie-app moet worden gemaakt. |
-    | **functie-app naam** | Wereldwijd unieke naam | Naam waarmee uw nieuwe functie-app wordt aangeduid. Geldige tekens zijn `a-z` (niet hoofdletter gevoelig), `0-9` en `-` .  |
+    | **[Resourcegroep](../azure-resource-manager/management/overview.md)** |  *myResourceGroup* | Naam voor de nieuwe resourcegroep waarin uw functie-app moet worden gemaakt. |
+    | **Naam van de functie-app** | Wereldwijd unieke naam | Naam waarmee uw nieuwe functie-app wordt aangeduid. Geldige tekens zijn `a-z` (hoofdlettergevoelig), `0-9` en `-`.  |
     |**Publiceren**| Code | Optie voor het publiceren van codebestanden of een Docker-container. |
     | **Runtimestack** | Voorkeurstaal | Kies Power shell core. |
-    |**Versie**| Versienummer | Kies de versie van de geïnstalleerde runtime.  |
-    |**Deel**| Voorkeurs regio | Kies een [regio](https://azure.microsoft.com/regions/) in de buurt of in de buurt van andere services die door uw functie worden gebruikt. |
+    |**Versie**| Versienummer | Kies de versie van uw geïnstalleerde runtime.  |
+    |**Regio**| Voorkeursregio | Kies een [regio](https://azure.microsoft.com/regions/) in de buurt of in de buurt van andere services die door uw functie worden gebruikt. |
 
     :::image type="content" source="./media/functions-hybrid-powershell/function-app-create-basics.png" alt-text="Maak een functie-app-basis." border="true":::
 
-1. Selecteer **volgende: hosten**. Voer op de **Hosting** pagina de volgende instellingen in.
+1. Selecteer **Volgende : Hosting**. Voer op de pagina **Hosting** de volgende instellingen in.
 
     | Instelling      | Voorgestelde waarde  | Beschrijving |
     | ------------ | ---------------- | ----------- |
-    | **[Storage-account](../storage/common/storage-account-create.md)** |  Wereldwijd unieke naam |  Maak een opslagaccount die wordt gebruikt door uw functie-app. Namen van opslag accounts moeten tussen de 3 en 24 tekens lang zijn en mogen alleen cijfers en kleine letters bevatten. U kunt ook een bestaand account gebruiken dat moet voldoen aan de [vereisten voor het opslag account](../azure-functions/functions-scale.md#storage-account-requirements). |
-    |**Besturingssysteem**| Voor keur besturings systeem | Er wordt vooraf een besturings systeem geselecteerd voor u op basis van de selectie van de runtime stack, maar u kunt de instelling wijzigen, indien nodig. |
+    | **[Opslagaccount](../storage/common/storage-account-create.md)** |  Wereldwijd unieke naam |  Maak een opslagaccount die wordt gebruikt door uw functie-app. Namen van opslagaccounts moeten tussen 3 en 24 tekens lang zijn en kunnen alleen cijfers en kleine letters bevatten. U kunt ook een bestaand account gebruiken dat voldoet aan de [vereisten voor een opslagaccount](../azure-functions/functions-scale.md#storage-account-requirements). |
+    |**Besturingssysteem**| Voorkeurbesturingssysteem | Er wordt vooraf een besturingssysteem geselecteerd voor u op basis van de selectie van de runtimestack, maar u kunt de instelling wijzigen, indien nodig. |
     | **[Type abonnement](../azure-functions/functions-scale.md)** | **App service-plan** | Kies **app service-plan**. Wanneer u in een App Service-plan uitvoert, moet u het [Schalen van uw functie-app](../azure-functions/functions-scale.md) beheren.  |
 
     :::image type="content" source="./media/functions-hybrid-powershell/function-app-create-hosting.png" alt-text="Maak een functie-app-hosting." border="true":::
 
-1. Selecteer **volgende: bewaken**. Voer op de pagina **controle** de volgende instellingen in.
+1. Selecteer **Volgende : Bewaking**. Voer op de pagina **Bewaking** de volgende instellingen in.
 
     | Instelling      | Voorgestelde waarde  | Beschrijving |
     | ------------ | ---------------- | ----------- |
-    | **[Application Insights](../azure-functions/functions-monitoring.md)** | Standaard | Hiermee maakt u een Application Insights bron van dezelfde *app-naam* in de dichtstbijzijnde ondersteunde regio. Door deze instelling uit te vouwen of **nieuwe maken**te selecteren, kunt u de naam van de Application Insights wijzigen of een andere regio kiezen in een [Azure-geografie](https://azure.microsoft.com/global-infrastructure/geographies/) waar u uw gegevens wilt opslaan. |
+    | **[Application Insights](../azure-functions/functions-monitoring.md)** | Standaard | Hiermee maakt u een Application Insights-resource van dezelfde *app-naam* in de dichtstbijzijnde ondersteunde regio. Door deze instelling uit te vouwen of **Nieuwe maken** te selecteren, kunt u de naam van Application Insights wijzigen of een andere regio kiezen in een [Azure-geografie](https://azure.microsoft.com/global-infrastructure/geographies/) waar u uw gegevens wilt opslaan. |
 
     :::image type="content" source="./media/functions-hybrid-powershell/function-app-create-monitoring.png" alt-text="Maak een functie-app-bewaking." border="true":::
 
-1. Selecteer **controleren + maken** om de selecties van de app-configuratie te controleren.
+1. Selecteer **Beoordelen + maken** om de selecties van appconfiguratie te controleren.
 
-1. Controleer uw instellingen op de pagina **controleren en maken** en selecteer vervolgens **maken** om de functie-app in te richten en te implementeren.
+1. Controleer uw instellingen op de pagina **Beoordelen en maken** en selecteer vervolgens **Maken** om de functie-app in te richten en te implementeren.
 
-1. Selecteer het pictogram **meldingen** in de rechter bovenhoek van de portal en Bekijk het bericht **implementatie voltooid** .
+1. Selecteer het **Meldingspictogram** in de rechterbovenhoek van de portal en zoek het bericht **Implementatie voltooid**.
 
-1. Selecteer **Naar de resource gaan** om uw nieuwe functie-app te bekijken. U kunt ook **vastmaken aan dash board**selecteren. Vastmaken maakt het gemakkelijker om terug te gaan naar deze functie-app-resource vanuit uw dash board.
+1. Selecteer **Naar de resource gaan** om uw nieuwe functie-app te bekijken. U kunt ook **Vastmaken aan dashboard** selecteren. Vastmaken maakt het gemakkelijker om terug te gaan naar deze functie-app-resource vanuit uw dashboard.
 
 ## <a name="create-a-hybrid-connection-for-the-function-app"></a>Een hybride verbinding maken voor de functie-app
 
@@ -116,7 +115,7 @@ Hybride verbindingen worden geconfigureerd via het gedeelte netwerken van de fun
     | **Naam van hybride verbinding** | ContosoHybridOnPremisesServer |
     | **Endpoint-host** | finance1 |
     | **Eindpunt poort** | 5986 |
-    | **Servicebus-naam ruimte** | Nieuwe maken |
+    | **Servicebus-naam ruimte** | Create New |
     | **Locatie** | Een beschik bare locatie kiezen |
     | **Naam** | contosopowershellhybrid | 
 

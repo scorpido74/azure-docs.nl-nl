@@ -4,10 +4,9 @@ description: Leer hoe u uw eerste serverloze Azure-functie kunt maken met behulp
 ms.topic: how-to
 ms.date: 04/29/2020
 ms.openlocfilehash: 5aae60900a61c28f6c53f89b8e273daccb047eef
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/19/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "83116000"
 ---
 # <a name="create-a-function-app-on-linux-in-an-azure-app-service-plan"></a>Een functie-app in Linux maken in een Azure App Service plan
@@ -26,51 +25,51 @@ Meld u met uw Azure-account aan bij Azure Portal op <https://portal.azure.com>.
 
 U moet beschikken over een functie-app om de uitvoering van uw functies in Linux te hosten. De functie-app biedt een omgeving waarin uw functiecode kan worden uitgevoerd. Hiermee kunt u functies groeperen als logische eenheid, zodat u resources eenvoudiger kunt beheren, implementeren, schalen en delen. In dit artikel maakt u een App Service plan wanneer u de functie-app maakt.
 
-1. Selecteer in het menu van Azure Portal of op de **startpagina** de optie **Een resource maken**.
+1. Selecteer vanuit het menu van Azure Portal of op de **startpagina** de optie **Een resource maken**.
 
-1. Selecteer op de pagina **Nieuw** de optie **reken**  >  **functie-app**.
+1. Selecteer op de pagina **Nieuw** **Reken** > **functie-app**.
 
     :::image type="content" source="./media/create-function-app-linux-app-service-plan/function-app-create-flow.png" alt-text="Een functie-app maken in Azure Portal":::
 
-1. Gebruik de instellingen voor de functie-app, zoals opgegeven in de volgende tabel op de pagina **basis beginselen** .
+1. Op de pagina **Basics** gebruikt u de instellingen voor de functie-app zoals in de volgende tabel wordt vermeld.
 
     | Instelling      | Voorgestelde waarde  | Beschrijving |
     | ------------ | ---------------- | ----------- |
     | **Abonnement** | Uw abonnement | Het abonnement waarmee deze nieuwe functie-app is gemaakt. |
-    | **[Resource groep](../azure-resource-manager/management/overview.md)** |  *myResourceGroup* | Naam voor de nieuwe resourcegroep waarin uw functie-app moet worden gemaakt. |
-    | **functie-app naam** | Wereldwijd unieke naam | Naam waarmee uw nieuwe functie-app wordt aangeduid. Geldige tekens zijn `a-z` (niet hoofdletter gevoelig), `0-9` en `-` .  |
+    | **[Resourcegroep](../azure-resource-manager/management/overview.md)** |  *myResourceGroup* | Naam voor de nieuwe resourcegroep waarin uw functie-app moet worden gemaakt. |
+    | **Naam van de functie-app** | Wereldwijd unieke naam | Naam waarmee uw nieuwe functie-app wordt aangeduid. Geldige tekens zijn `a-z` (hoofdlettergevoelig), `0-9` en `-`.  |
     |**Publiceren**| **Code** (standaard) | Optie voor het publiceren van codebestanden of een Docker-container. |
-    | **Runtimestack** | Voorkeurstaal | Kies een runtime die uw favoriete functieprogrammeertaal ondersteunt. Kies **.net core** voor C#-en F #-functies. |
-    |**Versie**| Versienummer | Kies de versie van de geïnstalleerde runtime.  |
-    |**Regio**| Voorkeurs regio | Kies een [regio](https://azure.microsoft.com/regions/) in de buurt of in de buurt van andere services die door uw functie worden gebruikt. |
+    | **Runtimestack** | Voorkeurstaal | Kies een runtime die uw favoriete functieprogrammeertaal ondersteunt. Kies **.NET Core** voor C#- en F#-functies. |
+    |**Versie**| Versienummer | Kies de versie van uw geïnstalleerde runtime.  |
+    |**Regio**| Voorkeursregio | Kies een [regio](https://azure.microsoft.com/regions/) in de buurt of in de buurt van andere services die door uw functie worden gebruikt. |
 
-    :::image type="content" source="./media/create-function-app-linux-app-service-plan/function-app-create-basics-linux.png" alt-text="De pagina Basisinformatie":::
+    :::image type="content" source="./media/create-function-app-linux-app-service-plan/function-app-create-basics-linux.png" alt-text="Pagina Basisinformatie":::
 
-1. Selecteer **volgende: hosten**. Voer op de **Hosting** pagina de volgende instellingen in.
+1. Selecteer **Volgende : Hosting**. Voer op de pagina **Hosting** de volgende instellingen in.
 
     | Instelling      | Voorgestelde waarde  | Beschrijving |
     | ------------ | ---------------- | ----------- |
-    | **[Opslag account](../storage/common/storage-account-create.md)** |  Wereldwijd unieke naam |  Maak een opslagaccount die wordt gebruikt door uw functie-app. Namen van opslag accounts moeten tussen de 3 en 24 tekens lang zijn en mogen alleen cijfers en kleine letters bevatten. U kunt ook een bestaand account gebruiken dat moet voldoen aan de [vereisten voor het opslag account](../azure-functions/functions-scale.md#storage-account-requirements). |
-    |**Besturingssysteem**| **Linux** | Er wordt vooraf een besturings systeem geselecteerd voor u op basis van de selectie van de runtime stack, maar u kunt de instelling wijzigen, indien nodig. |
-    | **[Plannen](../azure-functions/functions-scale.md)** | **Verbruik (Serverloos)** | Hostingabonnement dat definieert hoe resources worden toegewezen aan uw functie-app. In het standaard **verbruiks** plan worden resources dynamisch toegevoegd als vereist door uw functies. In deze [serverloze](https://azure.microsoft.com/overview/serverless-computing/) hosting betaalt u alleen voor de tijd dat uw functies worden uitgevoerd. Wanneer u in een App Service-plan uitvoert, moet u het [Schalen van uw functie-app](../azure-functions/functions-scale.md) beheren.  |
+    | **[Opslagaccount](../storage/common/storage-account-create.md)** |  Wereldwijd unieke naam |  Maak een opslagaccount die wordt gebruikt door uw functie-app. Namen van opslagaccounts moeten tussen 3 en 24 tekens lang zijn en kunnen alleen cijfers en kleine letters bevatten. U kunt ook een bestaand account gebruiken dat voldoet aan de [vereisten voor een opslagaccount](../azure-functions/functions-scale.md#storage-account-requirements). |
+    |**Besturingssysteem**| **Linux** | Er wordt vooraf een besturingssysteem geselecteerd voor u op basis van de selectie van de runtimestack, maar u kunt de instelling wijzigen, indien nodig. |
+    | **[Plannen](../azure-functions/functions-scale.md)** | **Verbruik (serverloos)** | Hostingabonnement dat definieert hoe resources worden toegewezen aan uw functie-app. In het standaard **Verbruiksabonnement** worden resources dynamisch toegevoegd zoals door uw functies wordt vereist. Met hosten [zonder server](https://azure.microsoft.com/overview/serverless-computing/) betaalt u alleen voor de tijd dat uw functies actief zijn. Wanneer u in een App Service-plan uitvoert, moet u het [Schalen van uw functie-app](../azure-functions/functions-scale.md) beheren.  |
 
     :::image type="content" source="./media/create-function-app-linux-app-service-plan/function-app-create-hosting-linux.png" alt-text="Hosting pagina":::
 
-1. Selecteer **volgende: bewaken**. Voer op de pagina **controle** de volgende instellingen in.
+1. Selecteer **Volgende : Bewaking**. Voer op de pagina **Bewaking** de volgende instellingen in.
 
     | Instelling      | Voorgestelde waarde  | Beschrijving |
     | ------------ | ---------------- | ----------- |
-    | **[Application Insights](../azure-functions/functions-monitoring.md)** | **Ja** (standaard instelling) | Hiermee maakt u een Application Insights bron van dezelfde *app-naam* in de dichtstbijzijnde ondersteunde regio. Door deze instelling uit te vouwen of **nieuwe maken**te selecteren, kunt u de naam van de Application Insights wijzigen of een andere regio kiezen in een [Azure-geografie](https://azure.microsoft.com/global-infrastructure/geographies/) waar u uw gegevens wilt opslaan. |
+    | **[Application Insights](../azure-functions/functions-monitoring.md)** | **Ja** (standaard instelling) | Hiermee maakt u een Application Insights-resource van dezelfde *app-naam* in de dichtstbijzijnde ondersteunde regio. Door deze instelling uit te vouwen of **Nieuwe maken** te selecteren, kunt u de naam van Application Insights wijzigen of een andere regio kiezen in een [Azure-geografie](https://azure.microsoft.com/global-infrastructure/geographies/) waar u uw gegevens wilt opslaan. |
 
    :::image type="content" source="./media/create-function-app-linux-app-service-plan/function-app-create-monitoring-linux.png" alt-text="Bewakings pagina":::
 
-1. Selecteer **controleren + maken** om de selecties van de app-configuratie te controleren.
+1. Selecteer **Beoordelen + maken** om de selecties van appconfiguratie te controleren.
 
-1. Controleer uw instellingen op de pagina **controleren en maken** en selecteer vervolgens **maken** om de functie-app in te richten en te implementeren.
+1. Controleer uw instellingen op de pagina **Beoordelen en maken** en selecteer vervolgens **Maken** om de functie-app in te richten en te implementeren.
 
-1. Selecteer het pictogram **meldingen** in de rechter bovenhoek van de portal en Bekijk het bericht **implementatie voltooid** .
+1. Selecteer het **Meldingspictogram** in de rechterbovenhoek van de portal en zoek het bericht **Implementatie voltooid**.
 
-1. Selecteer **Naar de resource gaan** om uw nieuwe functie-app te bekijken. U kunt ook **vastmaken aan dash board**selecteren. Vastmaken maakt het gemakkelijker om terug te gaan naar deze functie-app-resource vanuit uw dash board.
+1. Selecteer **Naar de resource gaan** om uw nieuwe functie-app te bekijken. U kunt ook **Vastmaken aan dashboard** selecteren. Vastmaken maakt het gemakkelijker om terug te gaan naar deze functie-app-resource vanuit uw dashboard.
 
     ![Implementatiemelding](./media/create-function-app-linux-app-service-plan/function-app-create-notification2.png)
 
@@ -78,18 +77,18 @@ U moet beschikken over een functie-app om de uitvoering van uw functies in Linux
 
 Vervolgens maakt u een functie in de nieuwe functie-app.
 
-## <a name="create-an-http-trigger-function"></a><a name="create-function"></a>Een HTTP-trigger functie maken
+## <a name="create-an-http-trigger-function"></a><a name="create-function"></a>Een HTTP-triggerfunctie maken
 
 In deze sectie wordt beschreven hoe u een functie maakt in de nieuwe functie-app in de portal.
 
 > [!NOTE]
 > De portal-ontwikkelings ervaring kan handig zijn om Azure Functions uit te proberen. Voor de meeste scenario's kunt u uw functies lokaal ontwikkelen en het project publiceren naar uw functie-app met behulp van [Visual Studio code](functions-create-first-function-vs-code.md#create-an-azure-functions-project) of de [Azure functions core tools](functions-run-local.md#create-a-local-functions-project).  
 
-1. Selecteer in het menu links van het venster **functies** de optie **functies**en selecteer vervolgens **toevoegen** in het bovenste menu. 
+1. Selecteer in het menu links van het venster **Functies** de optie **Functies** en selecteer vervolgens **Toevoegen** in het bovenste menu. 
  
 1. Selecteer **http-trigger**in het venster **nieuwe functie** .
 
-    ![HTTP-trigger functie kiezen](./media/create-function-app-linux-app-service-plan/function-app-select-http-trigger.png)
+    ![HTTP-triggerfunctie kiezen](./media/create-function-app-linux-app-service-plan/function-app-select-http-trigger.png)
 
 1. Accepteer in het venster **nieuwe functie** de standaard naam voor de **nieuwe functie**of voer een nieuwe naam in. 
 

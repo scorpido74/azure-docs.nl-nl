@@ -9,10 +9,9 @@ ms.custom: hdinsightactive
 ms.topic: troubleshooting
 ms.date: 04/14/2020
 ms.openlocfilehash: 14b449590f6ffc5e735faa26baadfcc4e526450c
-ms.sourcegitcommit: 309a9d26f94ab775673fd4c9a0ffc6caa571f598
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/09/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82996402"
 ---
 # <a name="troubleshoot-cluster-creation-failures-with-azure-hdinsight"></a>Problemen met het maken van clusters oplossen met Azure HDInsight
@@ -29,7 +28,7 @@ De volgende problemen zijn de meest voorkomende oorzaken voor het maken van een 
 
 ## <a name="permissions-issues"></a>Problemen met machtigingen
 
-Als u Azure data Lake Storage Gen2 gebruikt en het volgende fout `AmbariClusterCreationFailedErrorCode`bericht wordt weer gegeven:::no-loc text="Internal server error occurred while processing the request. Please retry the request or contact support.":::: "", opent u de Azure Portal, gaat u naar uw opslag account en klikt u onder Access Control (IAM), zorgt u ervoor dat de rol **BLOB data contributor** van de opslag of de eigenaar van de blob van de **opslag** toegang heeft toegewezen aan de door de **gebruiker toegewezen beheerde identiteit** voor het abonnement. Zie [Machtigingen voor de beheerde identiteit instellen in het Data Lake Storage Gen2-account](../hdinsight-hadoop-use-data-lake-storage-gen2.md#set-up-permissions-for-the-managed-identity-on-the-data-lake-storage-gen2-account) voor gedetailleerde instructies.
+Als u Azure data Lake Storage Gen2 gebruikt en het volgende fout bericht wordt weer gegeven `AmbariClusterCreationFailedErrorCode` : " :::no-loc text="Internal server error occurred while processing the request. Please retry the request or contact support."::: ", opent u de Azure Portal, gaat u naar uw opslag account en klikt u onder Access Control (IAM), zorgt u ervoor dat de rol **BLOB data contributor** van de opslag of de eigenaar van de blob van de **opslag** toegang heeft toegewezen aan de door de **gebruiker toegewezen beheerde identiteit** voor het abonnement. Zie [Machtigingen voor de beheerde identiteit instellen in het Data Lake Storage Gen2-account](../hdinsight-hadoop-use-data-lake-storage-gen2.md#set-up-permissions-for-the-managed-identity-on-the-data-lake-storage-gen2-account) voor gedetailleerde instructies.
 
 Als u Azure Data Lake Storage Gen1 gebruikt, raadpleegt u de installatie-en configuratie-instructies [hier](../hdinsight-hadoop-use-data-lake-store.md). Data Lake Storage Gen1 wordt niet ondersteund voor HBase-clusters en wordt niet ondersteund in HDInsight-versie 4,0.
 
@@ -82,7 +81,7 @@ Controleer de [Azure-status](https://status.azure.com) op mogelijke storingen of
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* [Azure HDInsight uitbreiden met behulp van een Azure-Virtual Network](../hdinsight-plan-virtual-network-deployment.md)
+* [Azure HDInsight uitbreiden met behulp van een virtueel Azure-netwerk](../hdinsight-plan-virtual-network-deployment.md).
 * [Azure Data Lake Storage Gen2 gebruiken met Azure HDInsight-clusters](../hdinsight-hadoop-use-data-lake-storage-gen2.md)  
 * [Azure-opslag gebruiken met Azure HDInsight-clusters](../hdinsight-hadoop-use-blob-storage.md)
 * [Clusters in HDInsight instellen met Apache Hadoop, Apache Spark, Apache Kafka en meer](../hdinsight-hadoop-provision-linux-clusters.md)

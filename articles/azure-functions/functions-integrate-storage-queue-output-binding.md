@@ -6,10 +6,9 @@ ms.topic: how-to
 ms.date: 04/24/2020
 ms.custom: mvc
 ms.openlocfilehash: 5ae282750580ed5b4e53e78c52ca285e40365fd3
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/12/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "83121988"
 ---
 # <a name="add-messages-to-an-azure-storage-queue-using-functions"></a>Berichten aan een Azure Storage-wachtrij toevoegen met behulp van Functions
@@ -20,7 +19,7 @@ In Azure Functions bieden invoer- en uitvoerbindingen een verklarende manier om 
 
 Dit zijn de vereisten voor het voltooien van deze snelstart:
 
-- Een Azure-abonnement. Als u er nog geen hebt, maakt u een [gratis account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) voordat u begint.
+- Een Azure-abonnement. Als u nog geen abonnement hebt, maakt u een [gratis account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) voordat u begint.
 
 - Volg de instructies in [Uw eerste functie maken vanuit Azure Portal](functions-create-first-azure-function.md) en voer de stap **Resources opschonen** niet uit. In deze snelstartgids worden de functie-app en de functie gemaakt die u hier gebruikt.
 
@@ -76,7 +75,7 @@ In deze sectie voegt u code toe waarmee een bericht wordt geschreven naar de uit
     outputQueueItem.Add("Name passed to the function: " + name);
     ```
 
-    # <a name="javascript"></a>[Javascript](#tab/nodejs)
+    # <a name="javascript"></a>[JavaScript](#tab/nodejs)
 
     Voeg code toe die gebruikmaakt van de uitvoerbinding voor het object `context.bindings` om een wachtrijbericht te maken. Voeg deze code toe vóór de instructie `context.done`.
 
@@ -102,7 +101,7 @@ In deze sectie voegt u code toe waarmee een bericht wordt geschreven naar de uit
 
 1. Raadpleeg de logboeken om er zeker van te zijn dat de functie is voltooid. 
 
-Wanneer de uitvoerbinding voor het eerst wordt gebruikt, wordt er door de runtime van Functions een nieuwe wachtrij met de naam **outqueue** gemaakt in uw opslagaccount. U gebruikt Storage-account om te controleren of de wachtrij en een bericht in het bestand zijn gemaakt.
+Er wordt een nieuwe wachtrij met de naam **outqueue** in uw opslag account gemaakt door de functions-runtime wanneer de uitvoer binding voor het eerst wordt gebruikt. U gebruikt Storage-account om te controleren of de wachtrij en een bericht in het bestand zijn gemaakt.
 
 ### <a name="find-the-storage-account-connected-to-azurewebjobsstorage"></a>Het opslag account zoeken dat is verbonden met AzureWebJobsStorage
 
@@ -123,7 +122,7 @@ Wanneer de uitvoerbinding voor het eerst wordt gebruikt, wordt er door de runtim
 
 1. Selecteer onder **Queue-service** **wacht rijen** en selecteer de wachtrij met de naam **outwachtrij**. 
 
-   De wachtrij bevat het bericht dat met de Queue Storage-uitvoerbinding is gemaakt toen u de met HTTP geactiveerde functie hebt uitgevoerd. Als u de functie hebt aangeroepen met de standaardwaarde `name` van *Azure*, is het wachtrijbericht *Naam is doorgegeven aan de functie: Azure*.
+   De wachtrij bevat het bericht dat met de Queue Storage-uitvoerbinding is gemaakt toen u de met HTTP geactiveerde functie hebt uitgevoerd. Als u de functie hebt aangeroepen met de standaardwaarde voor `name`, namelijk *Azure*, is het wachtrijbericht *Naam is doorgegeven aan de functie: Azure*.
 
 1. Voer de functie opnieuw uit. Er wordt nu een nieuw bericht weergegeven in de wachtrij.  
 

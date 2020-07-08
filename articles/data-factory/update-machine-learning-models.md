@@ -12,10 +12,9 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/16/2018
 ms.openlocfilehash: e8fb39e8762d31f00029a0eeea33f1e630fb15a6
-ms.sourcegitcommit: a6d477eb3cb9faebb15ed1bf7334ed0611c72053
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/08/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82927391"
 ---
 # <a name="update-ml-studio-classicv-models-by-using-update-resource-activity"></a>ML Studio (klassieke) v-modellen bijwerken met resource activiteit bijwerken
@@ -61,13 +60,13 @@ In het volgende JSON-code fragment wordt een ML Studio (klassieke) batch uitvoer
 
 | Eigenschap                      | Beschrijving                              | Vereist |
 | :---------------------------- | :--------------------------------------- | :------- |
-| name                          | Naam van de activiteit in de pijp lijn     | Ja      |
-| description                   | Tekst die beschrijft wat de activiteit doet.  | Nee       |
-| type                          | Voor Azure Machine Learning bron activiteit bijwerken is het type activiteit **AzureMLUpdateResource**. | Ja      |
-| linkedServiceName             | Azure Machine Learning gekoppelde service die de eigenschap updateResourceEndpoint bevat. | Ja      |
-| trainedModelName              | De naam van de getrainde model module in het web service-experiment dat moet worden bijgewerkt | Ja      |
-| trainedModelLinkedServiceName | De naam van Azure Storage gekoppelde service die het ilearner-bestand bewaart dat door de update bewerking is geüpload | Ja      |
-| trainedModelFilePath          | Het relatieve bestandspad in trainedModelLinkedService dat het ilearner-bestand vertegenwoordigt dat door de update bewerking is geüpload | Ja      |
+| naam                          | Naam van de activiteit in de pijp lijn     | Yes      |
+| description                   | Tekst die beschrijft wat de activiteit doet.  | No       |
+| type                          | Voor Azure Machine Learning bron activiteit bijwerken is het type activiteit **AzureMLUpdateResource**. | Yes      |
+| linkedServiceName             | Azure Machine Learning gekoppelde service die de eigenschap updateResourceEndpoint bevat. | Yes      |
+| trainedModelName              | De naam van de getrainde model module in het web service-experiment dat moet worden bijgewerkt | Yes      |
+| trainedModelLinkedServiceName | De naam van Azure Storage gekoppelde service die het ilearner-bestand bewaart dat door de update bewerking is geüpload | Yes      |
+| trainedModelFilePath          | Het relatieve bestandspad in trainedModelLinkedService dat het ilearner-bestand vertegenwoordigt dat door de update bewerking is geüpload | Yes      |
 
 ## <a name="end-to-end-workflow"></a>End-to-end werkstroom
 
@@ -278,5 +277,5 @@ Raadpleeg de volgende artikelen waarin wordt uitgelegd hoe u gegevens op andere 
 * [MapReduce-activiteit](transform-data-using-hadoop-map-reduce.md)
 * [Hadoop streaming-activiteit](transform-data-using-hadoop-streaming.md)
 * [Spark-activiteit](transform-data-using-spark.md)
-* [.NET aangepaste activiteit](transform-data-using-dotnet-custom-activity.md)
+* [Aangepaste .NET-activiteit](transform-data-using-dotnet-custom-activity.md)
 * [Opgeslagen procedure activiteit](transform-data-using-stored-procedure.md)

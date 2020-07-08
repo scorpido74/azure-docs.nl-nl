@@ -8,10 +8,9 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 05/08/2020
 ms.openlocfilehash: 07210350826001bd3e0be6e04be211c9de43695a
-ms.sourcegitcommit: 309a9d26f94ab775673fd4c9a0ffc6caa571f598
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/09/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82997254"
 ---
 # <a name="enterprise-security-package-for-azure-hdinsight"></a>Enterprise Security Package voor Azure HDInsight
@@ -64,4 +63,4 @@ Zie [prijzen voor HDInsight](https://azure.microsoft.com/pricing/details/hdinsig
 * [Setup van het cluster voor Apache Hadoop, Spark en meer op HDInsight](hdinsight-hadoop-provision-linux-clusters.md)
 * [Werken in Apache Hadoop op HDInsight vanaf een Windows-computer](hdinsight-hadoop-windows-tools.md)
 * [Release opmerkingen voor Hortonworks die zijn gekoppeld aan Azure HDInsight-versies](./hortonworks-release-notes.md)
-* [Apache-onderdelen op HDInsight](./hdinsight-component-versioning.md)
+* [Apache-onderdelen in HDInsight](./hdinsight-component-versioning.md)

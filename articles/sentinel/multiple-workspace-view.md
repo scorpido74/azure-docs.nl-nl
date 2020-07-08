@@ -15,10 +15,9 @@ ms.workload: na
 ms.date: 04/20/2020
 ms.author: yelevin
 ms.openlocfilehash: 448998328ff15b74b0aa0b17e2435a7ff55c54a5
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/12/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "83124166"
 ---
 # <a name="work-with-incidents-in-many-workspaces-at-once"></a>Werk met incidenten in veel werk ruimten tegelijk 
@@ -53,7 +52,7 @@ In de **weer gave van meerdere werk ruimten**is alleen het scherm **incidenten**
 - Als u één incident kiest en op **volledige details weer geven** of **onderzoek**klikt, gaat u vervolgens naar de gegevens context van de werk ruimte van dat incident en geen andere.
 
 ## <a name="next-steps"></a>Volgende stappen
-In dit document hebt u geleerd hoe u incidenten tegelijk kunt weer geven en bewerken in meerdere Azure Sentinel-werk ruimten. Raadpleeg de volgende artikelen voor meer informatie over Azure Sentinel:
-- Meer informatie over hoe u [inzicht krijgt in uw gegevens en mogelijke bedreigingen](quickstart-get-visibility.md).
-- Ga aan de slag [met het detecteren van bedreigingen met Azure Sentinel](tutorial-detect-threats-built-in.md).
+In dit document hebt u geleerd hoe u incidenten tegelijk kunt weer geven en bewerken in meerdere Azure Sentinel-werk ruimten. Zie de volgende artikelen voor meer informatie over Azure Sentinel:
+- Meer informatie over het [verkrijgen van inzicht in uw gegevens en mogelijke bedreigingen](quickstart-get-visibility.md).
+- Ga aan de slag met [het detecteren van bedreigingen met Azure Sentinel](tutorial-detect-threats-built-in.md).
 

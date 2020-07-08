@@ -7,10 +7,9 @@ ms.reviewer: jonfan, logicappspm
 ms.topic: conceptual
 ms.date: 05/06/2020
 ms.openlocfilehash: 2132dc464ee404339d9de03c0c797426aea04ce2
-ms.sourcegitcommit: a6d477eb3cb9faebb15ed1bf7334ed0611c72053
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/08/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82927136"
 ---
 # <a name="set-up-a-single-ip-address-for-one-or-more-integration-service-environments-in-azure-logic-apps"></a>Stel één IP-adres in voor een of meer integratie service omgevingen in Azure Logic Apps
@@ -76,7 +75,7 @@ In dit onderwerp wordt beschreven hoe u uitgaand verkeer via een Azure Firewall 
    | Eigenschap | Waarde | Beschrijving |
    |----------|-------|-------------|
    | **Naam** | <*netwerk-regel-verzameling-naam*> | De naam voor uw netwerk regel verzameling |
-   | **Prioriteiten** | <*prioriteits niveau*> | De volg orde van prioriteit die moet worden gebruikt voor het uitvoeren van de regel verzameling. Zie [Wat zijn enkele Azure firewall concepten](../firewall/firewall-faq.md#what-are-some-azure-firewall-concepts)? voor meer informatie. |
+   | **Priority** | <*prioriteits niveau*> | De volg orde van prioriteit die moet worden gebruikt voor het uitvoeren van de regel verzameling. Zie [Wat zijn enkele Azure firewall concepten](../firewall/firewall-faq.md#what-are-some-azure-firewall-concepts)? voor meer informatie. |
    | **Actie** | **Toestaan** | Het actie type dat moet worden uitgevoerd voor deze regel |
    |||
 

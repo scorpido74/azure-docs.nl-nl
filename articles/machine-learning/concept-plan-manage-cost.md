@@ -11,10 +11,9 @@ ms.subservice: core
 ms.topic: conceptual
 ms.date: 05/08/2020
 ms.openlocfilehash: ae1beeebfddfe250ae20a70c3e78ec32774218d4
-ms.sourcegitcommit: 309a9d26f94ab775673fd4c9a0ffc6caa571f598
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/09/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82996320"
 ---
 # <a name="plan-and-manage-costs-for-azure-machine-learning"></a>Kosten plannen en beheren voor Azure Machine Learning
@@ -104,8 +103,8 @@ In sommige gevallen moet u uw trainings uitvoeringen configureren om de duur te 
 
 Hier volgen enkele opties die u hebt:
 * Definieer een para meter `max_run_duration_seconds` in uw RunConfiguration om de maximale duur te bepalen dat een uitvoering kan worden uitgebreid naar de compute die u kiest (lokale of externe Cloud Compute).
-* Voor [afstemming tuning](how-to-tune-hyperparameters.md#early-termination)definieert u een beleid voor vroegtijdige beëindiging van een Bandit-beleid, een mediaan stop beleid of een selectie beleid voor afkap ping. Gebruik para meters zoals of `max_total_runs` `max_duration_minutes`als u afstemming-sweeps verder wilt beheren.
-* Stel voor [automatische machine learning](how-to-configure-auto-train.md#exit)soort gelijke afsluitings beleid `enable_early_stopping` in met behulp van de vlag. Gebruik ook eigenschappen zoals `iteration_timeout_minutes` en `experiment_timeout_minutes` om de maximale duur van een uitvoering of voor het hele experiment te bepalen.
+* Voor [afstemming tuning](how-to-tune-hyperparameters.md#early-termination)definieert u een beleid voor vroegtijdige beëindiging van een Bandit-beleid, een mediaan stop beleid of een selectie beleid voor afkap ping. Gebruik para meters zoals of als u afstemming-sweeps verder wilt beheren `max_total_runs` `max_duration_minutes` .
+* Stel voor [automatische machine learning](how-to-configure-auto-train.md#exit)soort gelijke afsluitings beleid in met behulp van de `enable_early_stopping` vlag. Gebruik ook eigenschappen zoals `iteration_timeout_minutes` en `experiment_timeout_minutes` om de maximale duur van een uitvoering of voor het hele experiment te bepalen.
 
 ## <a name="use-low-priority-vms"></a>Virtuele machines met lage prioriteit gebruiken
 
@@ -125,7 +124,7 @@ Stel op een van de volgende manieren de prioriteit van de virtuele machine in:
                                                                max_nodes=4)
     ```
 
-* Stel met behulp van de `vm-priority`cli het volgende in:
+* Stel met behulp van de CLI het `vm-priority` volgende in:
 
     ```azurecli-interactive
     az ml computetarget create amlcompute --name lowpriocluster --vm-size Standard_NC6 --max-nodes 5 --vm-priority lowpriority

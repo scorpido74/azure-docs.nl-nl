@@ -7,15 +7,14 @@ ms.topic: conceptual
 ms.date: 05/08/2020
 ms.author: tisande
 ms.openlocfilehash: f33cf20b76655a893fe7eebd9e6e6569d35de98f
-ms.sourcegitcommit: ac4a365a6c6ffa6b6a5fbca1b8f17fde87b4c05e
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/10/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "83005958"
 ---
 # <a name="select-clause-in-azure-cosmos-db"></a>SELECT-component in Azure Cosmos DB
 
-Elke query bestaat uit een `SELECT` component en optioneel [van](sql-query-from.md) en [WHERE](sql-query-where.md) -componenten, per ANSI SQL-standaards. Normaal gesp roken wordt de bron `FROM` in de component geïnventariseerd en de `WHERE` component past een filter op de bron toe om een subset van JSON-items op te halen. De `SELECT` component vervolgens projecteert de gevraagde JSON-waarden in de selectie lijst.
+Elke query bestaat uit een `SELECT` component en optioneel [van](sql-query-from.md) en [WHERE](sql-query-where.md) -componenten, per ANSI SQL-standaards. Normaal gesp roken wordt de bron in de `FROM` component geïnventariseerd en de `WHERE` component past een filter op de bron toe om een SUBSET van JSON-items op te halen. De `SELECT` component vervolgens projecteert de gevraagde JSON-waarden in de selectie lijst.
 
 ## <a name="syntax"></a>Syntaxis
 
@@ -61,7 +60,7 @@ SELECT <select_specification>
 
 De `SELECT *` syntaxis is alleen geldig als from-component precies één alias heeft gedeclareerd. `SELECT *`biedt een identiteits projectie. Dit kan nuttig zijn als er geen projectie nodig is. SELECT * is alleen geldig als de component FROM is opgegeven en slechts één invoer bron heeft geïntroduceerd.  
   
-Beide `SELECT <select_list>` en `SELECT *` zijn ' syntactische ' en kunnen ook worden aangegeven met BEhulp van eenvoudige SELECT-instructies, zoals hieronder wordt weer gegeven.  
+Beide `SELECT <select_list>` en `SELECT *` zijn ' syntactische ' en kunnen ook worden aangegeven met behulp van eenvoudige SELECT-instructies, zoals hieronder wordt weer gegeven.  
   
 1. `SELECT * FROM ... AS from_alias ...`  
   
@@ -77,7 +76,7 @@ Beide `SELECT <select_list>` en `SELECT *` zijn ' syntactische ' en kunnen ook w
   
 ## <a name="examples"></a>Voorbeelden
 
-In het volgende voor beeld van `address` een `Families` Select `id` - `AndersenFamily`query wordt een resultaat van de overeenkomst geretourneerd:
+In het volgende voor beeld van een SELECT-query wordt een resultaat `address` van de `Families` overeenkomst geretourneerd `id` `AndersenFamily` :
 
 ```sql
     SELECT f.address

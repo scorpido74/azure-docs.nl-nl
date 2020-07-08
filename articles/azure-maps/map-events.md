@@ -10,10 +10,9 @@ services: azure-maps
 manager: ''
 ms.custom: codepen
 ms.openlocfilehash: 92108873d4a91c845f4a1f2685cf50942513510e
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/12/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "83124003"
 ---
 # <a name="interact-with-the-map"></a>Interactie met de kaart
@@ -49,7 +48,7 @@ Met de volgende code worden java script-toewijzings gebeurtenissen toegevoegd aa
 
 De volgende tabel geeft een overzicht van alle ondersteunde gebeurtenissen van de kaart klasse.
 
-| Gebeurtenis               | Beschrijving |
+| Gebeurtenis               | Description |
 |---------------------|-------------|
 | `boxzoomend`        | Deze gebeurtenis wordt geactiveerd wanneer een ' zoom functie ' in vak wordt beëindigd.|
 | `boxzoomstart`      | Deze gebeurtenis wordt geactiveerd wanneer een ' zoom functie ' in vak wordt gestart.|

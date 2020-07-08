@@ -12,10 +12,9 @@ ms.topic: article
 ms.date: 04/01/2020
 ms.author: juliako
 ms.openlocfilehash: 055f651552313732c000a2e91d2862cda22a9c26
-ms.sourcegitcommit: 309a9d26f94ab775673fd4c9a0ffc6caa571f598
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/09/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82995882"
 ---
 <!-- If you update limits in this topic, make sure to also update https://docs.microsoft.com/azure/azure-resource-manager/management/azure-subscription-service-limits#media-services-limits -->
@@ -90,7 +89,7 @@ Alle taak records in uw account die ouder zijn dan 90 dagen worden automatisch v
 | --- | --- | 
 | [Streaming-eind punten](streaming-endpoint-concept.md) (gestopt of actief) per Media Services-account|2 |
 | [Dynamisch-manifestfilters](filters-dynamic-manifest-overview.md)|100|
-| [Beleid voor streaming](streaming-policy-concept.md) | 100 <sup>(6)</sup> |
+| [Streaming-beleid](streaming-policy-concept.md) | 100 <sup>(6)</sup> |
 | Unieke [streaming-Locators](streaming-locators-concept.md) die zijn gekoppeld aan een asset in één keer | 100<sup>(7)</sup> (vast) |
 
 <sup>6</sup> wanneer u een aangepast [streaming-beleid](https://docs.microsoft.com/rest/api/media/streamingpolicies)gebruikt, moet u een beperkt aantal beleids regels voor uw media service-account ontwerpen en ze opnieuw gebruiken voor uw StreamingLocators wanneer dezelfde versleutelings opties en protocollen nodig zijn. U hoeft geen nieuw streaming-beleid te maken voor elke streaming-locator.

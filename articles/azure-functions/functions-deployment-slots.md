@@ -6,10 +6,9 @@ ms.topic: reference
 ms.date: 04/15/2020
 ms.author: cshoe
 ms.openlocfilehash: 7cfbd533921ba4d1757e7415a3bb8f70aeb71251
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/12/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "83122448"
 ---
 # <a name="azure-functions-deployment-slots"></a>Implementatie sleuven Azure Functions
@@ -135,7 +134,7 @@ U kunt een sleuf verwijderen via de [cli](https://docs.microsoft.com/cli/azure/f
 
     :::image type="content" source="./media/functions-deployment-slots/functions-navigate-slots.png" alt-text="Zoek naar sleuven in de Azure Portal." border="true":::
 
-1. Selecteer **verwijderen**.
+1. Selecteer **Verwijderen**.
 
     :::image type="content" source="./media/functions-deployment-slots/functions-delete-deployment-slot.png" alt-text="Verwijder de implementatie site in de Azure Portal." border="true":::
 
@@ -153,7 +152,7 @@ Met de [Azure cli](https://docs.microsoft.com/cli/azure/functionapp/deployment/s
 
 - [creëren](https://docs.microsoft.com/cli/azure/functionapp/deployment/slot?view=azure-cli-latest#az-functionapp-deployment-slot-create)
 - [verwijderd](https://docs.microsoft.com/cli/azure/functionapp/deployment/slot?view=azure-cli-latest#az-functionapp-deployment-slot-delete)
-- [list](https://docs.microsoft.com/cli/azure/functionapp/deployment/slot?view=azure-cli-latest#az-functionapp-deployment-slot-list)
+- [orderverzamellijst](https://docs.microsoft.com/cli/azure/functionapp/deployment/slot?view=azure-cli-latest#az-functionapp-deployment-slot-list)
 - [ruil](https://docs.microsoft.com/cli/azure/functionapp/deployment/slot?view=azure-cli-latest#az-functionapp-deployment-slot-swap)
 - [automatisch wisselen](https://docs.microsoft.com/cli/azure/functionapp/deployment/slot?view=azure-cli-latest#az-functionapp-deployment-slot-auto-swap)
 

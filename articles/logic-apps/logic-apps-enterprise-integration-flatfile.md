@@ -9,10 +9,9 @@ ms.reviewer: jonfan, estfan, logicappspm
 ms.topic: article
 ms.date: 05/09/2020
 ms.openlocfilehash: 81c1c95e2af7b537a12c8c86245b009005aa0aa2
-ms.sourcegitcommit: ac4a365a6c6ffa6b6a5fbca1b8f17fde87b4c05e
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/10/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "83005288"
 ---
 # <a name="encode-and-decode-flat-files-in-azure-logic-apps-by-using-the-enterprise-integration-pack"></a>Platte bestanden coderen en decoderen in Azure Logic Apps met behulp van de Enterprise Integration Pack
@@ -35,12 +34,12 @@ Voordat u XML-inhoud naar een zakelijke partner verzendt in een Business-to-busi
 
 1. Open in de [Azure Portal](https://portal.azure.com)uw logische app in de ontwerp functie voor logische apps.
 
-1. Selecteer **nieuwe stap** > **een actie toevoegen**onder de trigger of actie in uw logische app. In dit voor beeld wordt de trigger voor aanvragen gebruikt, die wordt genoemd **Wanneer een HTTP-aanvraag wordt ontvangen**, en worden binnenkomende aanvragen van buiten de logische app afgehandeld.
+1. Selecteer **nieuwe stap**  >  **een actie toevoegen**onder de trigger of actie in uw logische app. In dit voor beeld wordt de trigger voor aanvragen gebruikt, die wordt genoemd **Wanneer een HTTP-aanvraag wordt ontvangen**, en worden binnenkomende aanvragen van buiten de logische app afgehandeld.
 
    > [!TIP]
    > Het opgeven van een JSON-schema is optioneel. Als u een voor beeld van een nettolading van de inkomende aanvraag hebt, selecteert u **voor beeld Payload gebruiken om een schema te genereren**, voert u de voor beeld-nettolading in en selecteert u **gereed**. Het schema wordt weer gegeven in het vak **JSON-schema van aanvraag tekst** .
 
-1. Onder **Kies een actie**, voert `flat file`u in. Selecteer in de lijst acties deze actie: **platte bestands codering**
+1. Onder **Kies een actie**, voert u in `flat file` . Selecteer in de lijst acties deze actie: **platte bestands codering**
 
    ![Selecteer actie voor plat bestand coderen](./media/logic-apps-enterprise-integration-flatfile/select-flat-file-encoding.png)
 
@@ -63,16 +62,16 @@ Voordat u XML-inhoud naar een zakelijke partner verzendt in een Business-to-busi
 
 U bent nu klaar met het instellen van de actie voor het coderen van platte bestanden. In een echte wereld-app wilt u mogelijk de gecodeerde gegevens opslaan in een LOB-app (line-of-Business), zoals Sales Force. Of u kunt de gecodeerde gegevens verzenden naar een handels partner. Als u de uitvoer van de coderings actie naar Sales Force of naar uw handels partner wilt verzenden, gebruikt u de andere [Connect oren die beschikbaar zijn in azure Logic apps](../connectors/apis-list.md).
 
-## <a name="add-flat-file-decode-action"></a>Actie voor decoderen van plat bestand toevoegen
+## <a name="add-flat-file-decode-action"></a>Actie voor het decoderen van plat bestand toevoegen
 
 1. Open in de [Azure Portal](https://portal.azure.com)uw logische app in de ontwerp functie voor logische apps.
 
-1. Selecteer **nieuwe stap** > **een actie toevoegen**onder de trigger of actie in uw logische app. In dit voor beeld wordt de trigger voor aanvragen gebruikt, die wordt genoemd **Wanneer een HTTP-aanvraag wordt ontvangen**, en worden binnenkomende aanvragen van buiten de logische app afgehandeld.
+1. Selecteer **nieuwe stap**  >  **een actie toevoegen**onder de trigger of actie in uw logische app. In dit voor beeld wordt de trigger voor aanvragen gebruikt, die wordt genoemd **Wanneer een HTTP-aanvraag wordt ontvangen**, en worden binnenkomende aanvragen van buiten de logische app afgehandeld.
 
    > [!TIP]
    > Het opgeven van een JSON-schema is optioneel. Als u een voor beeld van een nettolading van de inkomende aanvraag hebt, selecteert u **voor beeld Payload gebruiken om een schema te genereren**, voert u de voor beeld-nettolading in en selecteert u **gereed**. Het schema wordt weer gegeven in het vak **JSON-schema van aanvraag tekst** .
 
-1. Onder **Kies een actie**, voert `flat file`u in. Selecteer in de lijst acties deze actie: **plat bestand decoderen**
+1. Onder **Kies een actie**, voert u in `flat file` . Selecteer in de lijst acties deze actie: **plat bestand decoderen**
 
    ![De actie voor het decoderen van een plat bestand selecteren](./media/logic-apps-enterprise-integration-flatfile/select-flat-file-decoding.png)
 

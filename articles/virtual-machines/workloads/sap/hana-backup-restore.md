@@ -14,10 +14,9 @@ ms.date: 10/16/2019
 ms.author: saghorpa
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: 9cb2647cc5ac2dc60f5ae7327ee39ed2ff625193
-ms.sourcegitcommit: 0fda81f271f1a668ed28c55dcc2d0ba2bb417edd
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/07/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82901379"
 ---
 # <a name="backup-and-restore"></a>Back-ups en herstellen
@@ -112,12 +111,12 @@ Zorg ervoor dat perl is geïnstalleerd op het Linux-besturings systeem op de HAN
 
 Voer de volgende stappen uit om moment opnamen van opslag met HANA grote instanties in te stellen.
 1. Zorg ervoor dat perl is geïnstalleerd op het Linux-besturings systeem op de HANA-server voor grote instanties.
-1. Wijzig de/etc/ssh/ssh\_-configuratie om de regel _Macs HMAC-SHA1_toe te voegen.
+1. Wijzig de/etc/ssh/ssh \_ -configuratie om de regel _Macs HMAC-SHA1_toe te voegen.
 1. Maak een SAP HANA back-upaccount op het hoofd knooppunt voor elk SAP HANA exemplaar dat u uitvoert, indien van toepassing.
 1. Installeer de SAP HANA HDB-client op alle SAP HANA Large Instances servers.
 1. Maak op de eerste SAP HANA Large Instances server van elke regio een open bare sleutel voor toegang tot de onderliggende opslag infrastructuur die het maken van moment opnamen beheert.
 1. Kopieer de scripts en het configuratie bestand van [github](https://github.com/Azure/hana-large-instances-self-service-scripts/blob/master/latest/release.md) naar de locatie van **hdbsql** in de SAP Hana-installatie.
-1. Wijzig zo nodig het *HANABackupDetails. txt* -bestand voor de juiste klant specificaties.
+1. Wijzig zo nodig het *HANABackupDetails.txt* -bestand voor de juiste klant specificaties.
 
 Down load de nieuwste momentopname scripts en documentatie van [github](https://github.com/Azure/hana-large-instances-self-service-scripts/blob/master/latest/release.md). Zie [micro soft snap shot tools for SAP Hana in azure](https://github.com/Azure/hana-large-instances-self-service-scripts/blob/master/latest/Microsoft%20Snapshot%20Tools%20for%20SAP%20HANA%20on%20Azure%20Guide.md)voor de eerder vermelde stappen.
 
@@ -131,7 +130,7 @@ Het Linux-besturings systeem dat is geïnstalleerd op SAP HANA op Azure (grote e
 
 Het is uw verantwoordelijkheid om de SAP HANA HDB-client te installeren op de HANA grote instantie-eenheden tijdens de installatie van SAP HANA.
 
-### <a name="step-2-change-the-etcsshssh_config"></a>Stap 2: de/etc/ssh/ssh\_-configuratie wijzigen
+### <a name="step-2-change-the-etcsshssh_config"></a>Stap 2: de/etc/ssh/ssh- \_ configuratie wijzigen
 
 Deze stap wordt beschreven in ' communicatie inschakelen met opslag ' in [micro soft snap shot tools for SAP Hana op Azure](https://github.com/Azure/hana-large-instances-self-service-scripts/blob/master/latest/Microsoft%20Snapshot%20Tools%20for%20SAP%20HANA%20on%20Azure%20Guide.md).
 
@@ -154,7 +153,7 @@ Zie ' communicatie inschakelen met SAP HANA ' in [github](https://github.com/Azu
 
 ### <a name="step-5-authorize-the-sap-hana-user-account"></a>Stap 5: het gebruikers account van de SAP HANA autoriseren
 
-In deze stap machtigt u het SAP HANA gebruikers account dat u hebt gemaakt, zodat de scripts tijdens runtime geen wacht woorden hoeven in te dienen. Met de SAP HANA `hdbuserstore` opdracht wordt het maken van een SAP Hana gebruikers sleutel ingeschakeld. De sleutel wordt opgeslagen op een of meer SAP HANA knoop punten. Met de gebruikers sleutel krijgt de gebruiker toegang tot SAP HANA zonder dat er wacht woorden hoeven te worden beheerd in het script proces. Het script proces wordt verderop in dit artikel besproken.
+In deze stap machtigt u het SAP HANA gebruikers account dat u hebt gemaakt, zodat de scripts tijdens runtime geen wacht woorden hoeven in te dienen. Met de SAP HANA opdracht wordt `hdbuserstore` het maken van een SAP Hana gebruikers sleutel ingeschakeld. De sleutel wordt opgeslagen op een of meer SAP HANA knoop punten. Met de gebruikers sleutel krijgt de gebruiker toegang tot SAP HANA zonder dat er wacht woorden hoeven te worden beheerd in het script proces. Het script proces wordt verderop in dit artikel besproken.
 
 >[!IMPORTANT]
 >Voer deze configuratie opdrachten uit met dezelfde gebruikers context als waarop de momentopname opdrachten worden uitgevoerd. Anders werken de opdrachten van de moment opname niet goed.
@@ -174,17 +173,17 @@ Het doel van de verschillende scripts en bestanden die zijn geïnstalleerd, word
 
 Voordat u de momentopname hulpprogramma's configureert, moet u ervoor zorgen dat u ook de HANA-back-uplocaties en-instellingen correct hebt geconfigureerd. Zie "SAP HANA-configuratie" in [micro soft snap shot tools for SAP Hana op Azure](https://github.com/Azure/hana-large-instances-self-service-scripts/blob/master/latest/Microsoft%20Snapshot%20Tools%20for%20SAP%20HANA%20on%20Azure%20Guide.md)voor meer informatie.
 
-De configuratie van het hulp programma set snap shots wordt beschreven in ' config file-HANABackupCustomerDetails. txt ' in [micro soft snap shot tools for SAP Hana op Azure](https://github.com/Azure/hana-large-instances-self-service-scripts/blob/master/latest/Microsoft%20Snapshot%20Tools%20for%20SAP%20HANA%20on%20Azure%20Guide.md).
+De configuratie van het hulp programma set snap shots wordt beschreven in ' config file-HANABackupCustomerDetails.txt ' in [micro soft snap shot tools for SAP Hana op Azure](https://github.com/Azure/hana-large-instances-self-service-scripts/blob/master/latest/Microsoft%20Snapshot%20Tools%20for%20SAP%20HANA%20on%20Azure%20Guide.md).
 
 #### <a name="test-connectivity-with-sap-hana"></a>De connectiviteit met SAP HANA testen
 
-Nadat u alle configuratie gegevens in het *HANABackupCustomerDetails. txt* -bestand hebt geplaatst, controleert u of de configuraties correct zijn voor de Hana-exemplaar gegevens. Gebruik het script `testHANAConnection`, dat onafhankelijk is van een SAP Hana scale-up of schaal bare configuratie.
+Nadat u alle configuratie gegevens in het *HANABackupCustomerDetails.txt* -bestand hebt geplaatst, controleert u of de configuraties correct zijn voor de Hana-exemplaar gegevens. Gebruik het script `testHANAConnection` , dat onafhankelijk is van een SAP Hana scale-up of schaal bare configuratie.
 
 Zie ' connectiviteit controleren met SAP HANA-testHANAConnection ' in [micro soft snap shot tools voor SAP Hana op Azure](https://github.com/Azure/hana-large-instances-self-service-scripts/blob/master/latest/Microsoft%20Snapshot%20Tools%20for%20SAP%20HANA%20on%20Azure%20Guide.md)voor meer informatie.
 
 #### <a name="test-storage-connectivity"></a>Opslag connectiviteit testen
 
-De volgende test stap is het controleren van de verbinding met de opslag op basis van de gegevens die u in het configuratie bestand *HANABackupCustomerDetails. txt* hebt geplaatst. Voer vervolgens een test momentopname uit. Voordat u de `azure_hana_backup` opdracht uitvoert, moet u deze test uitvoeren. Zie ' connectiviteit controleren met Storage-testStorageSnapshotConnection ' ' in [micro soft snap shot tools voor SAP Hana op Azure](https://github.com/Azure/hana-large-instances-self-service-scripts/blob/master/latest/Microsoft%20Snapshot%20Tools%20for%20SAP%20HANA%20on%20Azure%20Guide.md)voor de volg orde van opdrachten voor deze test.
+De volgende test stap is het controleren van de verbinding met de opslag op basis van de gegevens die u in het *HANABackupCustomerDetails.txt* configuratie bestand hebt geplaatst. Voer vervolgens een test momentopname uit. Voordat u de `azure_hana_backup` opdracht uitvoert, moet u deze test uitvoeren. Zie ' connectiviteit controleren met Storage-testStorageSnapshotConnection ' ' in [micro soft snap shot tools voor SAP Hana op Azure](https://github.com/Azure/hana-large-instances-self-service-scripts/blob/master/latest/Microsoft%20Snapshot%20Tools%20for%20SAP%20HANA%20on%20Azure%20Guide.md)voor de volg orde van opdrachten voor deze test.
 
 Na een geslaagde aanmelding bij de interfaces van de virtuele opslag machine wordt het script voortgezet met fase 2 en wordt een moment opname van de test gemaakt. De uitvoer wordt hier weer gegeven voor een scale-out configuratie met drie knoop punten van SAP HANA.
 
@@ -286,7 +285,7 @@ Nadat de eerste geslaagde opslag momentopnamen zijn uitgevoerd, verwijdert u de 
 
 ### <a name="monitor-the-number-and-size-of-snapshots-on-the-disk-volume"></a>Het aantal en de grootte van moment opnamen op het schijf volume bewaken
 
-Op een specifiek opslag volume kunt u het aantal moment opnamen en het opslag verbruik van deze moment opnamen bewaken. Met `ls` de opdracht wordt de map met moment opnamen of bestanden niet weer gegeven. De Linux-besturingssysteem `du` opdracht bevat details over deze opslag momentopnamen, omdat deze zijn opgeslagen op dezelfde volumes. Gebruik de opdracht met de volgende opties:
+Op een specifiek opslag volume kunt u het aantal moment opnamen en het opslag verbruik van deze moment opnamen bewaken. Met de `ls` opdracht wordt de map met moment opnamen of bestanden niet weer gegeven. De Linux-besturingssysteem opdracht `du` bevat details over deze opslag momentopnamen, omdat deze zijn opgeslagen op dezelfde volumes. Gebruik de opdracht met de volgende opties:
 
 - `du –sh .snapshot`: Deze optie biedt een totaal van alle moment opnamen in de map met moment opnamen.
 - `du –sh --max-depth=1`: Met deze optie worden alle moment opnamen vermeld die zijn opgeslagen in de map **. snap shot** en de grootte van elke moment opname.
@@ -298,7 +297,7 @@ Gebruik deze opdrachten om ervoor te zorgen dat de moment opnamen die worden gem
 >De moment opnamen van de opstart-LUN worden niet weer gegeven met de vorige opdrachten.
 
 ### <a name="get-details-of-snapshots"></a>Details van moment opnamen ophalen
-Gebruik het script `azure_hana_snapshot_details`om meer informatie over moment opnamen te krijgen. U kunt dit script uitvoeren op een van beide locaties als er een actieve server is op de locatie voor nood herstel. Het script biedt de volgende uitvoer, onderverdeeld op elk volume dat moment opnamen bevat: 
+Gebruik het script om meer informatie over moment opnamen te krijgen `azure_hana_snapshot_details` . U kunt dit script uitvoeren op een van beide locaties als er een actieve server is op de locatie voor nood herstel. Het script biedt de volgende uitvoer, onderverdeeld op elk volume dat moment opnamen bevat: 
    * De grootte van het totale aantal moment opnamen in een volume
    * De volgende details in elke moment opname in dat volume: 
       - Naam van moment opname 
@@ -332,7 +331,7 @@ Als u het script uitvoert met deze instelling, is het aantal moment opnamen, dat
 
 Als u een set met moment opnamen niet meer wilt onderhouden met het back-upvoorvoegsel **dailyhana** in de syntaxis voorbeelden, voert u het script uit met **0** als het Bewaar nummer. Alle moment opnamen die overeenkomen met dit label worden vervolgens verwijderd. Het verwijderen van alle moment opnamen kan invloed hebben op de mogelijkheden van de functionaliteit voor herstel na nood gevallen van HANA grote instanties.
 
-Een tweede optie voor het verwijderen van specifieke moment opnamen is het script `azure_hana_snapshot_delete`te gebruiken. Dit script is ontworpen om een moment opname of set met moment opnamen te verwijderen met behulp van de HANA-back-up-ID zoals gevonden in HANA Studio of via de naam van de moment opname zelf. Op dit moment is de back-upid alleen gekoppeld aan de moment opnamen die zijn gemaakt voor het **Hana** -momentopname type. Momentopname back-ups van het type **Logboeken** en **opstarten** voeren geen SAP Hana moment opname uit, dus er is geen back-upid voor deze moment opnamen. Als de naam van de moment opname wordt ingevoerd, zoekt deze naar alle moment opnamen op de verschillende volumes die overeenkomen met de opgegeven naam van de moment opname. 
+Een tweede optie voor het verwijderen van specifieke moment opnamen is het script te gebruiken `azure_hana_snapshot_delete` . Dit script is ontworpen om een moment opname of set met moment opnamen te verwijderen met behulp van de HANA-back-up-ID zoals gevonden in HANA Studio of via de naam van de moment opname zelf. Op dit moment is de back-upid alleen gekoppeld aan de moment opnamen die zijn gemaakt voor het **Hana** -momentopname type. Momentopname back-ups van het type **Logboeken** en **opstarten** voeren geen SAP Hana moment opname uit, dus er is geen back-upid voor deze moment opnamen. Als de naam van de moment opname wordt ingevoerd, zoekt deze naar alle moment opnamen op de verschillende volumes die overeenkomen met de opgegeven naam van de moment opname. 
 
 <!-- hana, logs and boot are no spelling errors as Acrolinx indicates, but terms of parameter values -->
 

@@ -10,13 +10,12 @@ ms.date: 10/10/2019
 ms.reviewer: mimckitt
 ms.custom: mimckitt
 ms.openlocfilehash: 1c93359486379ecfc8bf6df1f29978ba369f551a
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/12/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "83117254"
 ---
-# <a name="use-azure-disk-encryption-with-virtual-machine-scale-set-extension-sequencing"></a>Azure Disk Encryption gebruiken met uitbreidings reeksen voor de schaalset voor virtuele machines
+# <a name="use-azure-disk-encryption-with-virtual-machine-scale-set-extension-sequencing"></a>Azure Disk Encryption gebruiken met extensiereeksen voor virtuele-machineschaalsets
 
 Extensies, zoals Azure Disk Encryption, kunnen worden toegevoegd aan een schaalset voor virtuele Azure-machines in een opgegeven volg orde. U doet dit door gebruik te maken van [extensie volgorde bepaling](virtual-machine-scale-sets-extension-sequencing.md). 
 
@@ -155,13 +154,13 @@ Hier volgt een voor beeld van het gebruik van ' AzureDiskEncryption ', gevolgd d
 ```
 
 Voor een dieper sjabloon raadpleegt u:
-* Pas de Azure Disk Encryption-extensie toe na een aangepast shell-script waarmee de schijf (Linux) wordt geformatteerd: [Deploy-extseq-Linux-ade-after-customscript. json](https://github.com/Azure-Samples/compute-automation-configurations/blob/master/ade-vmss/deploy-extseq-linux-ADE-after-customscript.json)
+* Pas de Azure Disk Encryption-extensie toe na een aangepast shell-script waarmee de schijf (Linux) wordt geformatteerd: [deploy-extseq-linux-ADE-after-customscript.jsop](https://github.com/Azure-Samples/compute-automation-configurations/blob/master/ade-vmss/deploy-extseq-linux-ADE-after-customscript.json)
 
 
 ## <a name="next-steps"></a>Volgende stappen
 - Meer informatie over de volg orde van extensies: [Sequence-inrichting inrichten in virtuele-machine schaal sets](virtual-machine-scale-sets-extension-sequencing.md).
 - Meer informatie over de `provisionAfterExtensions` eigenschap: [micro soft. Compute virtualMachineScaleSets/Extensions Temp late Reference](/azure/templates/microsoft.compute/2018-10-01/virtualmachinescalesets/extensions).
-- [Azure Disk Encryption voor schaal sets voor virtuele machines](disk-encryption-overview.md)
-- [Een schaalset voor virtuele machines versleutelen met behulp van Azure CLI](disk-encryption-cli.md)
-- [Een schaal sets voor virtuele machines versleutelen met behulp van de Azure PowerShell](disk-encryption-powershell.md)
-- [Een sleutel kluis maken en configureren voor Azure Disk Encryption](disk-encryption-key-vault.md)
+- [Azure Disk Encryption voor virtuele-machineschaalsets](disk-encryption-overview.md)
+- [ Een virtuele-machineschaalset versleutelen met de Azure CLI](disk-encryption-cli.md)
+- [Een virtuele-machineschaalset versleutelen met de Azure PowerShell](disk-encryption-powershell.md)
+- [Een sleutelkluis voor Azure Disk Encryption maken en configureren](disk-encryption-key-vault.md)

@@ -16,10 +16,9 @@ ms.date: 06/15/2018
 ms.author: daberry
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: 78db1ba0eaff0dce83ed13e9f20c3c5a5b96bf9c
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/12/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "83120960"
 ---
 # <a name="troubleshoot-deployment-issues-when-creating-a-new-windows-vm-in-azure"></a>Implementatie problemen oplossen bij het maken van een nieuwe Windows-VM in azure
@@ -51,7 +50,7 @@ Om te beginnen met het oplossen van problemen, verzamelt u de activiteiten Logbo
 
 **N<sup>2</sup>:** Als het besturings systeem Windows gespecialiseerd is en het is geüpload als gegeneraliseerd, krijgt u een inrichtings fout bij de virtuele machine die is vastgelopen in het OOBE-scherm, omdat de nieuwe virtuele machine wordt uitgevoerd met de oorspronkelijke computer naam, gebruikers naam en wacht woord.
 
-**Oplossing**
+**Afsluiting**
 
 Als u beide fouten wilt oplossen, gebruikt u [add-AzVhd om de oorspronkelijke VHD te uploaden](https://docs.microsoft.com/powershell/module/az.compute/add-azvhd), die on-premises beschikbaar is, met dezelfde instelling als die voor het besturings systeem (gegeneraliseerd/gespecialiseerd). Als u wilt uploaden als gegeneraliseerd, moet u eerst Sysprep uitvoeren.
 
@@ -61,7 +60,7 @@ Als u beide fouten wilt oplossen, gebruikt u [add-AzVhd om de oorspronkelijke VH
 
 **N<sup>4</sup>:** Als het besturings systeem Windows gespecialiseerd is en het is vastgelegd als gegeneraliseerd, ontvangt u een fout bij het inrichten, omdat de nieuwe virtuele machine wordt uitgevoerd met de oorspronkelijke computer naam, gebruikers naam en wacht woord. De oorspronkelijke virtuele machine kan ook niet worden gebruikt omdat deze is gemarkeerd als gespecialiseerd.
 
-**Oplossing**
+**Afsluiting**
 
 Om beide fouten op te lossen, verwijdert u de huidige installatie kopie uit de portal en [legt u deze opnieuw vast vanaf de huidige vhd's](../windows/create-vm-specialized.md) met dezelfde instelling als voor het besturings systeem (gegeneraliseerd/gespecialiseerd).
 

@@ -8,10 +8,9 @@ ms.topic: conceptual
 ms.date: 04/09/2020
 ms.author: spelluru
 ms.openlocfilehash: f77a76d6acb67c739e0adf186d23e9b16ff7e2ee
-ms.sourcegitcommit: a6d477eb3cb9faebb15ed1bf7334ed0611c72053
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/08/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82928870"
 ---
 # <a name="azure-machine-learning-as-an-event-grid-source"></a>Azure Machine Learning als Event Grid bron
@@ -24,7 +23,7 @@ In dit artikel vindt u de eigenschappen en het schema voor machine learning werk
 
 Azure Machine Learning worden de volgende gebeurtenis typen meeverzonden:
 
-| Gebeurtenistype | Beschrijving |
+| Gebeurtenistype | Description |
 | ---------- | ----------- |
 | Micro soft. MachineLearningServices. ModelRegistered | Deze gebeurtenis treedt op wanneer een nieuw model of model versie is geregistreerd. |
 | Micro soft. MachineLearningServices. ModelDeployed | Deze gebeurtenis treedt op wanneer model (sen) met succes is geïmplementeerd op een eind punt. |
@@ -190,14 +189,14 @@ Deze sectie bevat een voor beeld van hoe de gegevens voor elke gebeurtenis eruit
 
 Een gebeurtenis heeft de volgende gegevens op het hoogste niveau:
 
-| Eigenschap | Type | Beschrijving |
+| Eigenschap | Type | Description |
 | -------- | ---- | ----------- |
 | onderwerp | tekenreeks | Volledige bronpad naar de bron van de gebeurtenis. Dit veld kan niet worden geschreven. Event Grid biedt deze waarde. |
 | Onderwerp | tekenreeks | Het door de uitgever gedefinieerde pad naar het gebeurtenisonderwerp. |
-| eventType | tekenreeks | Een van de geregistreerde gebeurtenistypen voor deze gebeurtenisbron. |
+| Type | tekenreeks | Een van de geregistreerde gebeurtenistypen voor deze gebeurtenisbron. |
 | eventTime | tekenreeks | Het tijdstip waarop de gebeurtenis is gegenereerd op basis van de UTC-tijd van de provider. |
 | id | tekenreeks | De unieke id voor de gebeurtenis. |
-| data | object | Gebeurtenis gegevens van Blob-opslag. |
+| gegevens | object | Gebeurtenis gegevens van Blob-opslag. |
 | dataVersion | tekenreeks | De schemaversie van het gegevensobject. De uitgever definieert de schemaversie. |
 | metadataVersion | tekenreeks | De schemaversie van de metagegevens van de gebeurtenis. Event Grid definieert het schema voor de eigenschappen op het hoogste niveau. Event Grid biedt deze waarde. |
 
@@ -205,7 +204,7 @@ Het gegevens object heeft de volgende eigenschappen voor elk gebeurtenis type:
 
 ### <a name="microsoftmachinelearningservicesmodelregistered"></a>Micro soft. MachineLearningServices. ModelRegistered
 
-| Eigenschap | Type | Beschrijving |
+| Eigenschap | Type | Description |
 | -------- | ---- | ----------- |
 | ModelName | tekenreeks | De naam van het model dat is geregistreerd. |
 | ModelVersion | tekenreeks | De versie van het model dat is geregistreerd. |
@@ -214,7 +213,7 @@ Het gegevens object heeft de volgende eigenschappen voor elk gebeurtenis type:
 
 ### <a name="microsoftmachinelearningservicesmodeldeployed"></a>Micro soft. MachineLearningServices. ModelDeployed
 
-| Eigenschap | Type | Beschrijving |
+| Eigenschap | Type | Description |
 | -------- | ---- | ----------- |
 | ServiceName | tekenreeks | De naam van de geïmplementeerde service. |
 | ServiceComputeType | tekenreeks | Het reken type (bijvoorbeeld ACI, AKS) van de geïmplementeerde service. |

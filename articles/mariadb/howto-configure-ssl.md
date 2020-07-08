@@ -7,17 +7,16 @@ ms.service: mariadb
 ms.topic: conceptual
 ms.date: 5/7/2020
 ms.openlocfilehash: 9c5f4b1602182b3f9dca45c11d572e1fec2ff07c
-ms.sourcegitcommit: a6d477eb3cb9faebb15ed1bf7334ed0611c72053
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/08/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82925963"
 ---
 # <a name="configure-ssl-connectivity-in-your-application-to-securely-connect-to-azure-database-for-mariadb"></a>SSL-connectiviteit in uw toepassing configureren om veilig verbinding te maken met Azure Database for MariaDB
 Azure Database for MariaDB ondersteunt het verbinden van uw Azure Database for MariaDB server met client toepassingen met behulp van Secure Sockets Layer (SSL). Het afdwingen van SSL-verbindingen tussen uw databaseserver en clienttoepassingen zorgt dat u bent beschermt tegen 'man in the middle'-aanvallen omdat de gegevensstroom tussen de server en uw toepassing wordt versleuteld.
 
 ## <a name="obtain-ssl-certificate"></a>SSL-certificaat verkrijgen
-Down load het certificaat dat nodig is om via SSL met uw Azure Database for MariaDB [https://www.digicert.com/CACerts/BaltimoreCyberTrustRoot.crt.pem](https://www.digicert.com/CACerts/BaltimoreCyberTrustRoot.crt.pem) -server te communiceren en sla het certificaat bestand op uw lokale station op (in deze zelf studie wordt c:\ssl bijvoorbeeld gebruikt).
+Down load het certificaat dat nodig is om via SSL met uw Azure Database for MariaDB-server te communiceren [https://www.digicert.com/CACerts/BaltimoreCyberTrustRoot.crt.pem](https://www.digicert.com/CACerts/BaltimoreCyberTrustRoot.crt.pem) en sla het certificaat bestand op uw lokale station op (in deze zelf studie wordt c:\ssl bijvoorbeeld gebruikt).
 **Voor micro soft Internet Explorer en micro soft Edge:** Wanneer het downloaden is voltooid, wijzigt u de naam van het certificaat in BaltimoreCyberTrustRoot. CRT. pem.
 
 ## <a name="bind-ssl"></a>SSL binden
@@ -43,7 +42,7 @@ mysql.exe -h mydemoserver.mariadb.database.azure.com -u Username@mydemoserver -p
 ```
 
 > [!NOTE]
-> Wanneer u de MySQL-opdracht regel interface in Windows gebruikt, wordt er mogelijk een `SSL connection error: Certificate signature check failed`fout bericht weer gegeven. Als dit het geval is, `--ssl-mode=REQUIRED --ssl-ca={filepath}` vervangt u `--ssl`de para meters door.
+> Wanneer u de MySQL-opdracht regel interface in Windows gebruikt, wordt er mogelijk een fout bericht weer gegeven `SSL connection error: Certificate signature check failed` . Als dit het geval is, vervangt u de `--ssl-mode=REQUIRED --ssl-ca={filepath}` para meters door `--ssl` .
 
 ## <a name="enforcing-ssl-connections-in-azure"></a>SSL-verbindingen afdwingen in azure 
 ### <a name="using-the-azure-portal"></a>Azure Portal gebruiken

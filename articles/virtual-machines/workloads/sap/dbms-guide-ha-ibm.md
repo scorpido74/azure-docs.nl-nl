@@ -15,10 +15,9 @@ ms.workload: infrastructure
 ms.date: 03/06/2020
 ms.author: juergent
 ms.openlocfilehash: a9041b373c215ac226764b737ee3bf35b008e5db
-ms.sourcegitcommit: 999ccaf74347605e32505cbcfd6121163560a4ae
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/08/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82978379"
 ---
 # <a name="high-availability-of-ibm-db2-luw-on-azure-vms-on-suse-linux-enterprise-server-with-pacemaker"></a>Hoge Beschik baarheid van IBM Db2 LUW op Azure Vm's op SUSE Linux Enterprise Server met pacemaker
@@ -33,7 +32,7 @@ De ondersteunde IBM Db2-versies zijn 10,5 en hoger, zoals beschreven in SAP Note
 
 Raadpleeg de volgende SAP-opmerkingen en-documentatie voordat u met de installatie begint:
 
-| SAP-Opmerking | Beschrijving |
+| SAP-Opmerking | Description |
 | --- | --- |
 | [1928533] | SAP-toepassingen op Azure: ondersteunde producten en Azure VM-typen |
 | [2015553] | SAP on Azure: vereisten voor ondersteuning |
@@ -136,7 +135,7 @@ Zorg ervoor dat het geselecteerde besturings systeem wordt ondersteund door IBM/
     + Selecteer de beschik baarheid van Azure die u hebt gemaakt in stap 3 of selecteer beschikbaarheids zone (niet dezelfde zone als in stap 3).
 1. Voeg gegevens schijven toe aan de Vm's en controleer vervolgens de aanbeveling van een bestandssysteem installatie in het artikel [IBM Db2 Azure virtual machines DBMS-implementatie voor SAP-workload][dbms-db2].
 
-## <a name="create-the-pacemaker-cluster"></a>Het pacemaker-cluster maken
+## <a name="create-the-pacemaker-cluster"></a>Het Pacemaker-cluster maken
     
 Als u een basis-pacemaker-cluster wilt maken voor deze IBM Db2-server, raadpleegt [u pacemaker instellen op SuSE Linux Enterprise Server in azure][sles-pacemaker]. 
 
@@ -174,7 +173,7 @@ Het primaire exemplaar van de IBM Db2 LUW-data base instellen:
 
 Voer de volgende stappen uit om de stand-by-database server in te stellen met behulp van de SAP-procedure voor het kopiëren van een systeem:
 
-1. Selecteer de optie kopiëren van het **systeem** >**gedistribueerd** > **Data Base-exemplaar**van het **doel systeem** > .
+1. Selecteer de optie **kopiëren** van het systeem > **Target systems**  >  **gedistribueerd**  >  **Data Base-exemplaar**van het doel systeem.
 1. Als Kopieer methode selecteert u **homo geen systeem** zodat u back-up kunt gebruiken om een back-up te herstellen op het stand-by-Server exemplaar.
 1. Wanneer u de stap afsluiten hebt bereikt om de data base te herstellen voor een homogene systeem kopie, sluit u het installatie programma af. Zet de data base terug vanuit een back-up van de primaire host. Alle volgende installatie fasen zijn al uitgevoerd op de primaire database server.
 1. Stel HADR in voor IBM Db2.
@@ -314,8 +313,8 @@ De volgende items worden voorafgegaan door een van beide:
 - **[2]**: alleen van toepassing op knoop punt 2
 
 **[A]** vereisten voor pacemaker-configuratie:
-1. Sluit beide database servers af met de sid\<van de gebruikers-db2-> met db2stop.
-1. Wijzig de shell-omgeving voor\<de DB2-sid> gebruiker in */bin/ksh*. U wordt aangeraden het YaST-hulp programma te gebruiken. 
+1. Sluit beide database servers met gebruikers-DB2 af \<sid> met db2stop.
+1. Wijzig de shell-omgeving voor de DB2- \<sid> gebruiker in */bin/ksh*. U wordt aangeraden het YaST-hulp programma te gebruiken. 
 
 
 ### <a name="pacemaker-configuration"></a>Pacemaker-configuratie
@@ -457,12 +456,12 @@ Als u Azure Load Balancer wilt configureren, is het raadzaam om de [Azure Standa
 ### <a name="make-changes-to-sap-profiles-to-use-virtual-ip-for-connection"></a>Wijzigingen aanbrengen in SAP-profielen voor het gebruik van een virtueel IP-adres voor verbinding
 Als u verbinding wilt maken met het primaire exemplaar van de HADR-configuratie, moet de SAP-toepassingslaag gebruikmaken van het virtuele IP-adres dat u hebt gedefinieerd en geconfigureerd voor de Azure Load Balancer. De volgende wijzigingen zijn vereist:
 
-/sapmnt/\<-sid>/profile/default. KON
+/sapmnt/ \<SID> /profile/default. KON
 <pre><code>SAPDBHOST = db-virt-hostname
 j2ee/dbhost = db-virt-hostname
 </code></pre>
 
-/sapmnt/\<-sid>/Global/db6/db2cli.ini
+/sapmnt/ \<SID> /global/db6/db2cli.ini
 <pre><code>Hostname=db-virt-hostname
 </code></pre>
 
@@ -480,7 +479,7 @@ Gebruik het J2EE-configuratie programma om de JDBC-URL te controleren of bij te 
  
 1. Meld u aan bij de primaire toepassings server van het J2EE-exemplaar en voer de volgende handelingen uit:`sudo /usr/sap/*SID*/*Instance*/j2ee/configtool/configtool.sh`
 1. Kies in het linkerdeel venster de optie **beveiligings archief**.
-1. Kies in het rechterdeel venster de sleutel JDBC/pool/\<SAPSID>/URL.
+1. Kies in het rechterdeel venster de sleutel JDBC/pool/ \<SAPSID> /URL.
 1. Wijzig de hostnaam in de JDBC-URL in de naam van de virtuele host.
      `jdbc:db2://db-virt-hostname:5912/TSP:deferPrepares=0`
 1. Selecteer **Toevoegen**.
@@ -541,7 +540,7 @@ De oorspronkelijke status in een SAP-systeem wordt beschreven in trans actie DBA
 > Voordat u met de test begint, moet u ervoor zorgen dat:
 > * Pacemaker heeft geen mislukte acties (CRM-status).
 > * Er zijn geen locatie beperkingen (resten van de migratie test)
-> * De synchronisatie van IBM Db2 HADR werkt. Controleren met de sid\<van de gebruikers-db2-> <pre><code>db2pd -hadr -db \<DBSID></code></pre>
+> * De synchronisatie van IBM Db2 HADR werkt. Controleren met gebruikers-DB2\<sid> <pre><code>db2pd -hadr -db \<DBSID></code></pre>
 
 
 Migreer het knoop punt waarop de primaire Db2-data base wordt uitgevoerd door de volgende opdracht uit te voeren:
@@ -575,9 +574,9 @@ Migreer de resource terug naar *azibmdb01* en wis de locatie beperkingen
 crm resource clear msl_<b>Db2_db2ptr_PTR</b>
 </code></pre>
 
-- **CRM resource migrate \<res_name \<> host>:** Maakt locatie beperkingen en kan problemen veroorzaken met overname
-- **CRM-resource \<gewist res_name>**: locatie beperkingen wissen
-- **CRM resource cleanup \<res_name>**: Hiermee wist u alle fouten van de resource
+- **CRM-resource migreren \<res_name> \<host> :** maakt locatie beperkingen en kan problemen veroorzaken met overname
+- **CRM-bron \<res_name> wissen **: Hiermee worden de beperkingen voor locaties gewist
+- **CRM-bron \<res_name> opschonen **: Hiermee worden alle fouten van de resource gewist
 
 ### <a name="test-the-fencing-agent"></a>De omheinings agent testen
 
@@ -750,7 +749,7 @@ stonith-sbd     (stonith:external/sbd): Started azibmdb01
      Masters: [ azibmdb01 ]
      Slaves: [ azibmdb02 ]</code></pre>
 
-Als gebruikers-\<DB2-sid> opdracht db2stop uitvoeren:
+Als User DB2 \<sid> Execute opdracht db2stop Force:
 <pre><code>azibmdb01:~ # su - db2ptr
 azibmdb01:db2ptr> db2stop force</code></pre>
 

@@ -9,10 +9,9 @@ ms.service: virtual-machines-linux
 ms.subservice: imaging
 ms.reviewer: danis
 ms.openlocfilehash: ccb622f786e6df5271684cf2aabba36cd2f5184f
-ms.sourcegitcommit: a6d477eb3cb9faebb15ed1bf7334ed0611c72053
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/08/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82930689"
 ---
 # <a name="preview-create-a-linux-image-and-distribute-it-to-a-shared-image-gallery"></a>Voor beeld: een Linux-installatie kopie maken en deze distribueren naar een gedeelde galerie met installatie kopieën 
@@ -20,13 +19,13 @@ ms.locfileid: "82930689"
 In dit artikel wordt beschreven hoe u de opbouw functie voor Azure-installatie kopieën en de Azure CLI kunt gebruiken om een installatie kopie versie te maken in een [Galerie met gedeelde afbeeldingen](https://docs.microsoft.com/azure/virtual-machines/windows/shared-image-galleries)en vervolgens de installatie kopie wereld wijd te distribueren. U kunt dit ook doen met behulp van [Azure PowerShell](../windows/image-builder-gallery.md).
 
 
-Er wordt een voor beeld van een JSON-sjabloon gebruikt voor het configureren van de installatie kopie. Het JSON-bestand dat we gebruiken, is hier: [helloImageTemplateforSIG. json](https://github.com/danielsollondon/azvmimagebuilder/blob/master/quickquickstarts/1_Creating_a_Custom_Linux_Shared_Image_Gallery_Image/helloImageTemplateforSIG.json). 
+Er wordt een voor beeld van een JSON-sjabloon gebruikt voor het configureren van de installatie kopie. Het JSON-bestand dat we gebruiken, is hier: [helloImageTemplateforSIG.jsop](https://github.com/danielsollondon/azvmimagebuilder/blob/master/quickquickstarts/1_Creating_a_Custom_Linux_Shared_Image_Gallery_Image/helloImageTemplateforSIG.json). 
 
 De sjabloon maakt gebruik van [sharedImage](image-builder-json.md#distribute-sharedimage) als de waarde voor de `distribute` sectie van de sjabloon om de installatie kopie naar een galerie met gedeelde afbeeldingen te distribueren.
 
 > [!IMPORTANT]
 > Azure Image Builder is momenteel beschikbaar als open bare preview.
-> Deze preview-versie wordt aangeboden zonder service level agreement en wordt niet aanbevolen voor productieworkloads. Misschien worden bepaalde functies niet ondersteund of zijn de mogelijkheden ervan beperkt. Zie voor meer informatie [aanvullende gebruiks voorwaarden voor Microsoft Azure-previews](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+> Deze preview-versie wordt aangeboden zonder service level agreement en wordt niet aanbevolen voor productieworkloads. Misschien worden bepaalde functies niet ondersteund of zijn de mogelijkheden ervan beperkt. Zie [Supplemental Terms of Use for Microsoft Azure Previews (Aanvullende gebruiksvoorwaarden voor Microsoft Azure-previews)](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) voor meer informatie.
 
 ## <a name="register-the-features"></a>De functies registreren
 Als u Azure Image Builder wilt gebruiken tijdens de preview, moet u de nieuwe functie registreren.
@@ -80,7 +79,7 @@ imageDefName=myIbImageDef
 runOutputName=aibLinuxSIG
 ```
 
-Maak een variabele voor uw abonnements-ID. U kunt dit doen met `az account show | grep id`.
+Maak een variabele voor uw abonnements-ID. U kunt dit doen met `az account show | grep id` .
 
 ```azurecli-interactive
 subscriptionID=<Subscription ID>
@@ -169,7 +168,7 @@ sed -i -e "s/<runOutputName>/$runOutputName/g" helloImageTemplateforSIG.json
 sed -i -e "s%<imgBuilderId>%$imgBuilderId%g" helloImageTemplateforSIG.json
 ```
 
-## <a name="create-the-image-version"></a>De versie van de installatie kopie maken
+## <a name="create-the-image-version"></a>De installatiekopieversie maken
 
 Met dit volgende deel wordt de installatie kopie versie gemaakt in de galerie. 
 
@@ -257,7 +256,7 @@ az role definition delete --name "$imageRoleDefName"
 az identity delete --ids $imgBuilderId
 ```
 
-De afbeeldings versie ophalen die is gemaakt door de opbouw functie voor `0.`afbeeldingen, dit wordt altijd gestart met en vervolgens de versie van de installatie kopie verwijderen
+De afbeeldings versie ophalen die is gemaakt door de opbouw functie voor afbeeldingen, dit wordt altijd gestart met `0.` en vervolgens de versie van de installatie kopie verwijderen
 
 ```azurecli-interactive
 sigDefImgVersion=$(az sig image-version list \

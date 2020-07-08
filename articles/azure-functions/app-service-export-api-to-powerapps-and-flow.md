@@ -5,10 +5,9 @@ ms.topic: conceptual
 ms.date: 04/28/2020
 ms.reviewer: sunayv
 ms.openlocfilehash: 8ded1c5fba902adeaeb883894452c00c4ae1d617
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/12/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "83115814"
 ---
 # <a name="exporting-an-azure-hosted-api-to-powerapps-and-microsoft-flow"></a>Een door Azure gehoste API exporteren naar PowerApps en Microsoft Flow
@@ -103,7 +102,7 @@ Voer de volgende stappen uit om de API-definitie te importeren in PowerApps en M
 
 4. Controleer op het tabblad **Algemeen** de informatie die afkomstig is van de OpenAPI-definitie.
 
-5. Als u wordt gevraagd om verificatie gegevens op het tabblad **beveiliging** op te geven, voert u de juiste waarden voor het verificatie type in. Klik op **Continue**.
+5. Als u wordt gevraagd om verificatie gegevens op het tabblad **beveiliging** op te geven, voert u de juiste waarden voor het verificatie type in. Klik op **Doorgaan**.
 
     ![Tabblad Beveiliging](media/app-service-export-api-to-powerapps-and-flow/tab-security.png)
 

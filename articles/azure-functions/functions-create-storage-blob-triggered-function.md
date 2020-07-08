@@ -6,10 +6,9 @@ ms.topic: how-to
 ms.date: 10/01/2018
 ms.custom: mvc, cc996988-fb4f-47
 ms.openlocfilehash: bf6865d2756579f457dded90b247326d2eec137c
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/12/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "83122975"
 ---
 # <a name="create-a-function-in-azure-thats-triggered-by-blob-storage"></a>Een functie in azure maken die wordt geactiveerd door Blob Storage
@@ -18,7 +17,7 @@ Meer informatie over het maken van een functie die wordt geactiveerd wanneer bes
 
 ## <a name="prerequisites"></a>Vereisten
 
-+ Een Azure-abonnement. Als u er nog geen hebt, maakt u een [gratis account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) voordat u begint.
++ Een Azure-abonnement. Als u nog geen abonnement hebt, maakt u een [gratis account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) voordat u begint.
 
 ## <a name="create-an-azure-function-app"></a>Een Azure-functie-app maken
 

@@ -10,13 +10,12 @@ services: azure-maps
 manager: ''
 ms.custom: codepen
 ms.openlocfilehash: 9c17c3cc22d478d81ed3c2b2ae9f61c173aad6cd
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/12/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "83123918"
 ---
-# <a name="show-traffic-on-the-map"></a>Verkeer op de kaart weer geven
+# <a name="show-traffic-on-the-map"></a>Verkeer weergeven op de kaart
 
 Er zijn twee soorten verkeers gegevens beschikbaar in Azure Maps:
 
@@ -43,13 +42,13 @@ Hieronder ziet u het volledige programma voor het uitvoeren van code van de bove
 <iframe height='500' scrolling='no' title='Verkeer op een kaart weer geven' src='//codepen.io/azuremaps/embed/WMLRPw/?height=500&theme-id=0&default-tab=js,result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>Zie het <a href='https://codepen.io/azuremaps/pen/WMLRPw/'>netwerk verkeer weer geven op een kaart</a> door Azure Maps ( <a href='https://codepen.io/azuremaps'>@azuremaps</a> ) op <a href='https://codepen.io'>CodePen</a>.
 </iframe>
 
-## <a name="traffic-overlay-options"></a>Opties voor Traffic overlay
+## <a name="traffic-overlay-options"></a>Opties voor verkeersgegevens als overlay
 
 Met het volgende hulp programma kunt u scha kelen tussen de verschillende instellingen van Traffic overlay om te zien hoe de rendering verandert. 
 
 <br/>
 
-<iframe height="700" style="width: 100%;" scrolling="no" title="Opties voor Traffic overlay" src="//codepen.io/azuremaps/embed/RwbPqRY/?height=700&theme-id=0&default-tab=result" frameborder="no" allowtransparency="true" allowfullscreen="true">
+<iframe height="700" style="width: 100%;" scrolling="no" title="Opties voor verkeersgegevens als overlay" src="//codepen.io/azuremaps/embed/RwbPqRY/?height=700&theme-id=0&default-tab=result" frameborder="no" allowtransparency="true" allowfullscreen="true">
 Zie de <a href='https://codepen.io/azuremaps/pen/RwbPqRY/'>bedekkings opties</a> voor pen-verkeer per Azure Maps ( <a href='https://codepen.io/azuremaps'>@azuremaps</a> ) op <a href='https://codepen.io'>CodePen</a>.
 </iframe>
 

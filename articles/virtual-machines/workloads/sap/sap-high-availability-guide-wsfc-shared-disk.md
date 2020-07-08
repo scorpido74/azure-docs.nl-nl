@@ -17,10 +17,9 @@ ms.date: 05/05/2017
 ms.author: radeltch
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: cf85632ff062bff5b71451379f37c14830bf6b68
-ms.sourcegitcommit: 999ccaf74347605e32505cbcfd6121163560a4ae
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/08/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82982952"
 ---
 # <a name="cluster-an-sap-ascsscs-instance-on-a-windows-failover-cluster-by-using-a-cluster-shared-disk-in-azure"></a>Een SAP ASCS/SCS-exemplaar op een Windows-failovercluster clusteren met behulp van een gedeelde cluster schijf in azure
@@ -60,15 +59,15 @@ In Windows bevat een SAP ASCS/SCS-instantie SAP Central Services, de SAP-bericht
 Een SAP ASCS/SCS-exemplaar heeft de volgende onderdelen:
 
 * SAP-Centrale Services:
-    * Twee processen, een bericht en een bewerkings server \<, en een ASCS/SCS-naam>, die wordt gebruikt voor toegang tot deze twee processen.
-    * Bestands structuur: S:\usr\sap\\&lt;sid&gt;\ ASCS/SCS\<-instantie nummer\>
+    * Twee processen, een bericht en een server voor plaatsen, en een \<ASCS/SCS virtual host name> , die wordt gebruikt voor toegang tot deze twee processen.
+    * Bestands structuur: S:\usr\sap \\ &lt; sid &gt; \ ASCS/SCS\<instance number\>
 
 
 * SAP Global host files:
-  * Bestands structuur: S:\usr\sap\\&lt;sid&gt;\SYS\...
-  * De bestands share sapmnt, waarmee toegang tot deze\\&lt;globale S:\usr\sap sid&gt;-\SYS\.mogelijk wordt. bestanden met behulp van het volgende UNC-pad:
+  * Bestands structuur: S:\usr\sap \\ &lt; sid &gt; \SYS \. ..
+  * De sapmnt-bestands share, waarmee u toegang tot deze globale S:\usr\sap \\ &lt; sid &gt; \SYS \. .. files mogelijk maakt met behulp van het volgende UNC-pad:
 
-    \\\\<ASCS/\>SCS-naam van virtuele\\&lt;host&gt;\sapmnt\.sid \SYS..
+    \\\\<ASCS/SCS-naam van virtuele host \> \Sapmnt \\ &lt; sid &gt; \SYS \. ..
 
 
 ![Afbeelding 2: processen, bestands structuur en globale host sapmnt-bestands share van een SAP ASCS/SCS-exemplaar][sap-ha-guide-figure-8001]
@@ -83,7 +82,7 @@ _**Afbeelding 3:** SAP ASCS/SCS HA-architectuur met gedeelde schijf_
 
 > [!IMPORTANT]
 > Deze twee onderdelen worden uitgevoerd onder hetzelfde SAP ASCS/SCS-exemplaar:
->* Dezelfde \<ASCS/SCS virtuele hostnaam> wordt gebruikt voor toegang tot het SAP-bericht en server processen in de wachtrij en de SAP Global host-bestanden via de bestands share sapmnt.
+>* Hetzelfde \<ASCS/SCS virtual host name> wordt gebruikt voor toegang tot het SAP-bericht en server processen in de wachtrij en de SAP Global host-bestanden via de bestands share sapmnt.
 >* Dezelfde gedeelde cluster schijf stations worden onderling gedeeld.
 >
 

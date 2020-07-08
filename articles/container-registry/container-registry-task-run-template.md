@@ -4,15 +4,14 @@ description: Een ACR-taak in een wachtrij plaatsen om een installatie kopie te b
 ms.topic: article
 ms.date: 04/22/2020
 ms.openlocfilehash: 7ad40d2e925d5e1443af9bce4115d45b0e8c06e1
-ms.sourcegitcommit: a6d477eb3cb9faebb15ed1bf7334ed0611c72053
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/08/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82927765"
 ---
 # <a name="run-acr-tasks-using-resource-manager-templates"></a>ACR-taken uitvoeren met behulp van Resource Manager-sjablonen
 
-[ACR-taken](container-registry-tasks-overview.md) is een reeks functies in azure container Registry die u helpen bij het beheren en wijzigen van container installatie kopieën in de levens cyclus van de container. 
+[ACR-taken](container-registry-tasks-overview.md) is een reeks functies in Azure Container Registry die u helpen bij het beheren en wijzigen van containerinstallatiekopieën gedurende de levenscyclus van de container. 
 
 In dit artikel vindt u voor beelden van Azure Resource Manager sjablonen voor het in de wachtrij plaatsen van een snelle taak, vergelijkbaar met een die u hand matig kunt maken met de opdracht [AZ ACR build][az-acr-build] .
 
@@ -44,7 +43,7 @@ Voor dit voor beeld geeft u waarden op voor de volgende sjabloon parameters:
 |registerpad     |De unieke naam van het REGI ster dat is gemaakt         |
 |opslag plaats     |Doel opslagplaats voor Build-taak        |
 |taskRunName     |De naam van de taak uitvoering, waarmee de afbeeldings code wordt opgegeven |
-|sourceLocation     |Externe context voor de taak maken, bijvoorbeeld https://github.com/Azure-Samples/acr-build-helloworld-node . De Dockerfile in de opslag plaats-hoofdmap bouwt een container installatie kopie voor een kleine node. js-web-app. Gebruik, indien gewenst, uw Fork van de opslag plaats als de context van de build.         |
+|sourceLocation     |Externe context voor de taak maken, bijvoorbeeld https://github.com/Azure-Samples/acr-build-helloworld-node . De Dockerfile in de opslag plaats root bouwt een container installatie kopie voor een kleine Node.js web-app. Gebruik, indien gewenst, uw Fork van de opslag plaats als de context van de build.         |
 
 ### <a name="deploy-the-template"></a>De sjabloon implementeren
 
@@ -125,7 +124,7 @@ Dit scenario is vergelijkbaar met [Cross-Registry-verificatie in een ACR-taak me
 
 ### <a name="prepare-base-registry"></a>Basis register voorbereiden
 
-Voor demonstratie doeleinden maakt u een afzonderlijk container register als het basis register en pusht u een node. js-basis installatie kopie die is opgehaald uit docker hub.
+Voor demonstratie doeleinden maakt u een afzonderlijk container register als basis register en pusht u een Node.js basis installatie kopie die is opgehaald uit docker hub.
 
 1. Maak een tweede container register, bijvoorbeeld *mybaseregistry*, om basis installatie kopieën op te slaan.
 1. Haal de `node:9-alpine` installatie kopie op uit docker hub, voorzie deze van het basis register en push het naar het basis register:
@@ -187,7 +186,7 @@ Voor dit voor beeld geeft u waarden op voor de volgende sjabloon parameters:
 |userAssignedIdentity |Resource-ID van de door de gebruiker toegewezen identiteit die in de taak is ingeschakeld|
 |customRegistryIdentity | De client-ID van de door de gebruiker toegewezen identiteit die in de taak wordt gebruikt voor verificatie met een aangepast REGI ster |
 |customRegistry |De naam van de aanmeldings server van het aangepaste REGI ster dat in de taak wordt geopend, bijvoorbeeld *mybaseregistry.azurecr.io*|
-|sourceLocation     |Externe context voor de taak maken, bijvoorbeeld * https://github.com/\<your-GitHub-ID\>/acr-build-helloworld-node .* |
+|sourceLocation     |Externe context voor de taak build, bijvoorbeeld * https://github.com/ \<your-GitHub-ID\> /ACR-build-HelloWorld-node.* |
 |dockerFilePath | Het pad naar de Dockerfile in de externe context, die wordt gebruikt om de installatie kopie te bouwen. |
 
 ### <a name="deploy-the-template"></a>De sjabloon implementeren

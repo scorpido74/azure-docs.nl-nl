@@ -14,10 +14,9 @@ ms.date: 01/16/2020
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: 4db072cf881c936db6721845e7823082388515b0
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/12/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "83117118"
 ---
 # <a name="how-to-install-and-configure-sap-hana-large-instances-on-azure"></a>SAP HANA (grote instanties) installeren en configureren in azure
@@ -144,8 +143,8 @@ De naam conventies van de opslag volumes worden weer gegeven in de volgende tabe
 
 | Opslag gebruik | Naam van koppeling | Volume naam | 
 | --- | --- | ---|
-| HANA-gegevens | /hana/data/SID/mnt0000 \< m> | Opslag-IP:/hana_data_SID_mnt00001_tenant_vol |
-| HANA-logboek | /hana/log/SID/mnt0000 \< m> | Opslag-IP:/hana_log_SID_mnt00001_tenant_vol |
+| HANA-gegevens | /hana/data/SID/mnt0000\<m> | Opslag-IP:/hana_data_SID_mnt00001_tenant_vol |
+| HANA-logboek | /hana/log/SID/mnt0000\<m> | Opslag-IP:/hana_log_SID_mnt00001_tenant_vol |
 | HANA-logboek back-up | /hana/log/backups | Opslag-IP:/hana_log_backups_SID_mnt00001_tenant_vol |
 | HANA gedeeld | /hana/shared/SID | Opslag-IP:/hana_shared_SID_mnt00001_tenant_vol/Shared |
 | usr/sap | /usr/sap/SID | Opslag-IP:/hana_shared_SID_mnt00001_tenant_vol/usr_sap |
@@ -198,7 +197,7 @@ U kunt de para meters na de installatie van de SAP HANA-data base ook configurer
 De opslag die wordt gebruikt in HANA grote instanties heeft een beperking voor de bestands grootte. De limiet voor de [grootte is 16 TB](https://docs.netapp.com/ontap-9/index.jsp?topic=%2Fcom.netapp.doc.dot-cm-vsmg%2FGUID-AA1419CF-50AB-41FF-A73C-C401741C847C.html) per bestand. In tegens telling tot beperkingen van de bestands grootte in de EXT3-bestands systemen is HANA niet impliciet van de opslag beperking die wordt afgedwongen door de HANA-opslag voor grote instanties. Als gevolg van een resultaat van HANA wordt niet automatisch een nieuw gegevens bestand gemaakt wanneer de maximale bestands grootte van 16TB is bereikt. Aangezien HANA probeert het bestand groter dan 16 TB te laten groeien, worden fouten gerapporteerd en de index server wordt aan het einde gecrasht.
 
 > [!IMPORTANT]
-> U moet de volgende para meters instellen in het SAP HANA Global. ini-configuratie bestand om te voor komen dat HANA probeert gegevens bestanden te verg Roten dan de bestands grootte limiet van 16 TB van HANA grote exemplaren.
+> U moet de volgende para meters instellen in het configuratie bestand SAP HANA global.ini om te voor komen dat HANA probeert gegevens bestanden te verg Roten die groter zijn dan de bestands grootte limiet van 16 TB van HANA-bestanden voor grote exemplaren.
 > 
 > - datavolume_striping = True
 > - datavolume_striping_size_gb = 15000

@@ -9,10 +9,9 @@ ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 02/03/2020
 ms.openlocfilehash: 5cab7f962a829ab8609325e8bb1b35498568726c
-ms.sourcegitcommit: 309a9d26f94ab775673fd4c9a0ffc6caa571f598
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/09/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82994182"
 ---
 # <a name="create-hdinsight-clusters-using-the-azure-cli"></a>HDInsight-clusters maken met behulp van Azure CLI
@@ -46,12 +45,12 @@ Azure CLI. Als u de Azure CLI nog niet hebt geïnstalleerd, raadpleegt u [Azure 
 
     |Parameter | Beschrijving |
     |---|---|
-    |`--workernode-count`| Het aantal worker-knoop punten in het cluster. In dit artikel wordt de `clusterSizeInNodes` variabele gebruikt als de waarde `--workernode-count`die wordt door gegeven aan. |
-    |`--version`| De versie van het HDInsight-cluster. In dit artikel wordt de `clusterVersion` variabele gebruikt als de waarde `--version`die wordt door gegeven aan. Zie ook: [ondersteunde HDInsight-versies](./hdinsight-component-versioning.md#supported-hdinsight-versions).|
-    |`--type`| Type HDInsight-cluster, zoals Hadoop, interactivehive, hbase, Kafka, Storm, Spark, Rserver, mlservices.  In dit artikel wordt de `clusterType` variabele gebruikt als de waarde `--type`die wordt door gegeven aan. Zie ook: [cluster typen en configuratie](./hdinsight-hadoop-provision-linux-clusters.md#cluster-type).|
-    |`--component-version`|De versies van verschillende Hadoop-onderdelen, in versies die zijn gescheiden in de indeling ' onderdeel = versie '. In dit artikel wordt de `componentVersion` variabele gebruikt als de waarde `--component-version`die wordt door gegeven aan. Zie ook: [Hadoop-onderdelen](./hdinsight-component-versioning.md#apache-components-available-with-different-hdinsight-versions).|
+    |`--workernode-count`| Het aantal worker-knoop punten in het cluster. In dit artikel wordt de variabele gebruikt `clusterSizeInNodes` als de waarde die wordt door gegeven aan `--workernode-count` . |
+    |`--version`| De versie van het HDInsight-cluster. In dit artikel wordt de variabele gebruikt `clusterVersion` als de waarde die wordt door gegeven aan `--version` . Zie ook: [ondersteunde HDInsight-versies](./hdinsight-component-versioning.md#supported-hdinsight-versions).|
+    |`--type`| Type HDInsight-cluster, zoals Hadoop, interactivehive, hbase, Kafka, Storm, Spark, Rserver, mlservices.  In dit artikel wordt de variabele gebruikt `clusterType` als de waarde die wordt door gegeven aan `--type` . Zie ook: [cluster typen en configuratie](./hdinsight-hadoop-provision-linux-clusters.md#cluster-type).|
+    |`--component-version`|De versies van verschillende Hadoop-onderdelen, in versies die zijn gescheiden in de indeling ' onderdeel = versie '. In dit artikel wordt de variabele gebruikt `componentVersion` als de waarde die wordt door gegeven aan `--component-version` . Zie ook: [Hadoop-onderdelen](./hdinsight-component-versioning.md#apache-components-available-with-different-hdinsight-versions).|
 
-    Vervang `RESOURCEGROUPNAME`, `LOCATION` `CLUSTERNAME`,, en `PASSWORD` door de gewenste waarden. `STORAGEACCOUNTNAME` Wijzig de waarden voor de andere variabelen naar wens. Voer vervolgens de CLI-opdrachten in.
+    Vervang `RESOURCEGROUPNAME` ,,, `LOCATION` `CLUSTERNAME` `STORAGEACCOUNTNAME` en `PASSWORD` door de gewenste waarden. Wijzig de waarden voor de andere variabelen naar wens. Voer vervolgens de CLI-opdrachten in.
 
     ```azurecli-interactive
     export resourceGroupName=RESOURCEGROUPNAME
@@ -76,7 +75,7 @@ Azure CLI. Als u de Azure CLI nog niet hebt geïnstalleerd, raadpleegt u [Azure 
         --name $resourceGroupName
     ```
 
-    Gebruik de `az account list-locations` opdracht voor een lijst met geldige locaties en gebruik vervolgens een van de locaties van de `name` waarde.
+    Gebruik de opdracht voor een lijst met geldige locaties `az account list-locations` en gebruik vervolgens een van de locaties van de `name` waarde.
 
 4. [Maak een Azure Storage-account](https://docs.microsoft.com/cli/azure/storage/account?view=azure-cli-latest#az-storage-account-create) door de onderstaande opdracht in te voeren:
 
@@ -136,7 +135,7 @@ Azure CLI. Als u de Azure CLI nog niet hebt geïnstalleerd, raadpleegt u [Azure 
 
 ## <a name="clean-up-resources"></a>Resources opschonen
 
-Nadat u het artikel hebt voltooid, kunt u het cluster verwijderen. Met HDInsight worden uw gegevens opgeslagen in Azure Storage, zodat u een cluster veilig kunt verwijderen wanneer deze niet in gebruik is. U betaalt ook voor een HDInsight-cluster, zelfs wanneer het niet in gebruik is. Omdat de kosten voor het cluster veel keren meer zijn dan de kosten voor opslag, is het economisch zinvol om clusters te verwijderen wanneer ze niet worden gebruikt.
+Nadat u het artikel hebt voltooid, kunt u het cluster verwijderen. Met HDInsight worden uw gegevens opgeslagen in Azure Storage zodat u een cluster veilig kunt verwijderen wanneer deze niet wordt gebruikt. U betaalt ook voor een HDInsight-cluster, zelfs wanneer het niet in gebruik is. Aangezien de kosten voor het cluster vaak zoveel hoger zijn dan de kosten voor opslag, is het financieel gezien logischer clusters te verwijderen wanneer ze niet worden gebruikt.
 
 Voer alle of enkele van de volgende opdrachten in om resources te verwijderen:
 

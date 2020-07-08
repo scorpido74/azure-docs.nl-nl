@@ -10,10 +10,9 @@ services: azure-maps
 manager: ''
 ms.custom: codepen
 ms.openlocfilehash: 274d1102649dade1b3295bd02feba03f64a26ad5
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/12/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "83123986"
 ---
 # <a name="get-information-from-a-coordinate"></a>Informatie ophalen uit een coördinaat
@@ -57,7 +56,7 @@ De wijziging van de cursor, het pop-upobject en de Click-gebeurtenis worden alle
 ## <a name="next-steps"></a>Volgende stappen
 
 > [!div class="nextstepaction"]
-> [Aanbevolen procedures voor het gebruik van de zoek service](how-to-use-best-practices-for-search.md)
+> [Aanbevolen procedures voor het gebruik van Zoekservice](how-to-use-best-practices-for-search.md)
 
 Meer informatie over de klassen en methoden die in dit artikel worden gebruikt:
 
@@ -65,7 +64,7 @@ Meer informatie over de klassen en methoden die in dit artikel worden gebruikt:
 > [Kaart](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest)
 
 > [!div class="nextstepaction"]
-> [Popup](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.popup?view=azure-iot-typescript-latest)
+> [Achtergrond](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.popup?view=azure-iot-typescript-latest)
 
 Raadpleeg de volgende artikelen voor voor beelden van volledige code:
 

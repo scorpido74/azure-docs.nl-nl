@@ -4,10 +4,9 @@ description: Meer informatie over het configureren van automatische Azure Event 
 ms.topic: conceptual
 ms.date: 04/25/2020
 ms.openlocfilehash: c0106f3754e0cdcbf1f295fbe3f1b5def8dc3ca1
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/19/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "83124237"
 ---
 # <a name="durable-functions-publishing-to-azure-event-grid-preview"></a>Durable Functions publiceren naar Azure Event Grid (preview-versie)
@@ -101,7 +100,7 @@ Een `notifications` sectie toevoegen aan de `durableTask` eigenschap van het bes
 }
 ```
 
-De mogelijke Azure Event Grid configuratie-eigenschappen vindt u in de [host. json-documentatie](../functions-host-json.md#durabletask). Nadat u het bestand hebt geconfigureerd `host.json` , verzendt uw functie-app levenscyclus gebeurtenissen naar het event grid onderwerp. Deze actie wordt gestart wanneer u de functie-app zowel lokaal als in azure uitvoert.
+De mogelijke Azure Event Grid configuratie-eigenschappen vindt u in de [host.jsop de documentatie](../functions-host-json.md#durabletask). Nadat u het bestand hebt geconfigureerd `host.json` , verzendt uw functie-app levenscyclus gebeurtenissen naar het event grid onderwerp. Deze actie wordt gestart wanneer u de functie-app zowel lokaal als in azure uitvoert.
 
 Stel de app-instelling in voor de sleutel van het onderwerp in de functie-app en `local.settings.json` . De volgende JSON is een voor beeld van de `local.settings.json` voor lokale fout opsporing. Vervang door `<topic_key>` de sleutel van het onderwerp.  
 

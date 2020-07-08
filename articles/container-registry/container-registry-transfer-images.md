@@ -5,10 +5,9 @@ ms.topic: article
 ms.date: 05/08/2020
 ms.custom: ''
 ms.openlocfilehash: fd551671422931a51f5aa6468de87e28e3a81b5b
-ms.sourcegitcommit: ac4a365a6c6ffa6b6a5fbca1b8f17fde87b4c05e
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/10/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "83006324"
 ---
 # <a name="transfer-artifacts-to-another-registry"></a>Artefacten overdragen naar een ander REGI ster
@@ -28,7 +27,7 @@ In dit artikel gebruikt u Azure Resource Manager sjabloon implementaties om de o
 Deze functie is beschikbaar in de service tier van het **Premium** -container register. Zie [Azure container Registry-lagen](container-registry-skus.md)voor meer informatie over de service lagen en limieten voor het REGI ster.
 
 > [!IMPORTANT]
-> Deze functie is momenteel in preview. Previews worden voor u beschikbaar gesteld op voorwaarde dat u akkoord gaat met de [aanvullende gebruiksvoorwaarden][terms-of-use]. Sommige aspecten van deze functionaliteit kunnen wijzigen voordat deze functionaliteit algemeen beschikbaar wordt.
+> Deze functie is momenteel beschikbaar als preview-product. Previews worden voor u beschikbaar gesteld op voorwaarde dat u akkoord gaat met de [aanvullende gebruiksvoorwaarden][terms-of-use]. Sommige aspecten van deze functionaliteit kunnen wijzigen voordat deze functionaliteit algemeen beschikbaar wordt.
 
 ## <a name="prerequisites"></a>Vereisten
 
@@ -132,7 +131,7 @@ Maak een ExportPipeline-resource voor uw bron container register met behulp van 
 
 Kopieer ExportPipeline Resource Manager- [sjabloon bestanden](https://github.com/Azure/acr/tree/master/docs/image-transfer/ExportPipelines) naar een lokale map.
 
-Voer de volgende parameter waarden in het bestand `azuredeploy.parameters.json`in:
+Voer de volgende parameter waarden in het bestand in `azuredeploy.parameters.json` :
 
 |Parameter  |Waarde  |
 |---------|---------|
@@ -162,7 +161,7 @@ az deployment group create \
   --parameters azuredeploy.parameters.json
 ```
 
-In de uitvoer van de opdracht noteert u de resource-`id`id () van de pijp lijn. U kunt deze waarde in een omgevings variabele opslaan voor later gebruik door de [AZ-implementatie groep weer geven][az-deployment-group-show]uit te voeren. Bijvoorbeeld:
+In de uitvoer van de opdracht noteert u de resource-ID ( `id` ) van de pijp lijn. U kunt deze waarde in een omgevings variabele opslaan voor later gebruik door de [AZ-implementatie groep weer geven][az-deployment-group-show]uit te voeren. Bijvoorbeeld:
 
 ```azurecli
 EXPORT_RES_ID=$(az group deployment show \
@@ -178,7 +177,7 @@ Maak een ImportPipeline-bron in uw doel container register met behulp van Azure 
 
 Kopieer ImportPipeline Resource Manager- [sjabloon bestanden](https://github.com/Azure/acr/tree/master/docs/image-transfer/ImportPipelines) naar een lokale map.
 
-Voer de volgende parameter waarden in het bestand `azuredeploy.parameters.json`in:
+Voer de volgende parameter waarden in het bestand in `azuredeploy.parameters.json` :
 
 Parameter  |Waarde  |
 |---------|---------|
@@ -208,7 +207,7 @@ az deployment group create \
   --name importPipeline
 ```
 
-Als u van plan bent om de import hand matig uit te voeren, noteert`id`u de resource-id () van de pijp lijn. U kunt deze waarde in een omgevings variabele opslaan voor later gebruik door de [AZ-implementatie groep weer geven][az-deployment-group-show]uit te voeren. Bijvoorbeeld:
+Als u van plan bent om de import hand matig uit te voeren, noteert u de resource-ID ( `id` ) van de pijp lijn. U kunt deze waarde in een omgevings variabele opslaan voor later gebruik door de [AZ-implementatie groep weer geven][az-deployment-group-show]uit te voeren. Bijvoorbeeld:
 
 ```azurecli
 IMPORT_RES_ID=$(az group deployment show \
@@ -224,7 +223,7 @@ Maak een PipelineRun-resource voor uw bron container register met behulp van Azu
 
 Kopieer PipelineRun Resource Manager- [sjabloon bestanden](https://github.com/Azure/acr/tree/master/docs/image-transfer/PipelineRun/PipelineRun-Export) naar een lokale map.
 
-Voer de volgende parameter waarden in het bestand `azuredeploy.parameters.json`in:
+Voer de volgende parameter waarden in het bestand in `azuredeploy.parameters.json` :
 
 |Parameter  |Waarde  |
 |---------|---------|
@@ -257,7 +256,7 @@ az storage blob list \
 
 Gebruik het hulp programma AzCopy of andere methoden voor het [overdragen van BLOB-gegevens](../storage/common/storage-use-azcopy-blobs.md#copy-blobs-between-storage-accounts) van het bron opslag account naar het doel opslag account.
 
-Met de volgende [`azcopy copy`](/azure/storage/common/storage-ref-azcopy-copy) opdracht wordt bijvoorbeeld myblob gekopieerd van de container *overdracht* in het bron account naar de container *overdracht* in het doel account. Als de BLOB in het doel account bestaat, wordt deze overschreven. Verificatie maakt gebruik van SAS-tokens met de juiste machtigingen voor de bron-en doel containers. (De stappen voor het maken van tokens worden niet weer gegeven.)
+Met de volgende opdracht wordt bijvoorbeeld [`azcopy copy`](/azure/storage/common/storage-ref-azcopy-copy) myblob gekopieerd van de container *overdracht* in het bron account naar de container *overdracht* in het doel account. Als de BLOB in het doel account bestaat, wordt deze overschreven. Verificatie maakt gebruik van SAS-tokens met de juiste machtigingen voor de bron-en doel containers. (De stappen voor het maken van tokens worden niet weer gegeven.)
 
 ```console
 azcopy copy \
@@ -282,7 +281,7 @@ U kunt ook een PipelineRun-Resource gebruiken om een ImportPipeline te activeren
 
 Kopieer PipelineRun Resource Manager- [sjabloon bestanden](https://github.com/Azure/acr/tree/master/docs/image-transfer/PipelineRun/PipelineRun-Import) naar een lokale map.
 
-Voer de volgende parameter waarden in het bestand `azuredeploy.parameters.json`in:
+Voer de volgende parameter waarden in het bestand in `azuredeploy.parameters.json` :
 
 |Parameter  |Waarde  |
 |---------|---------|
@@ -327,7 +326,7 @@ az deployment group delete \
 ## <a name="troubleshooting"></a>Problemen oplossen
 
 * **Sjabloonimlementatie fouten of-fouten**
-  * Als een pijp lijn niet kan worden uitgevoerd, kijkt `pipelineRunErrorMessage` u naar de eigenschap van de uitvoerings bron.
+  * Als een pijp lijn niet kan worden uitgevoerd, kijkt u naar de `pipelineRunErrorMessage` eigenschap van de uitvoerings bron.
   * Zie [problemen met arm-sjabloon implementaties oplossen](../azure-resource-manager/templates/template-tutorial-troubleshoot.md) voor veelvoorkomende fouten bij het implementeren van sjablonen
 * **Problemen met het exporteren of importeren van opslag-blobs**
   * SAS-token is mogelijk verlopen of heeft mogelijk onvoldoende machtigingen voor de opgegeven export-of import bewerking

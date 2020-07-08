@@ -7,23 +7,22 @@ ms.topic: conceptual
 ms.date: 05/08/2020
 ms.author: tisande
 ms.openlocfilehash: e4bbb27a2f49027ed5a456ad824f54b9c92a899c
-ms.sourcegitcommit: ac4a365a6c6ffa6b6a5fbca1b8f17fde87b4c05e
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/10/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "83005862"
 ---
 # <a name="from-clause-in-azure-cosmos-db"></a>De component FROM in Azure Cosmos DB
 
-De component FROM`FROM <from_specification>`() is optioneel, tenzij de bron wordt gefilterd of later in de query wordt geprojecteerd. Een query zoals `SELECT * FROM Families` een inventarisatie van de `Families` gehele container. U kunt ook de speciale id-HOOFDMAP voor de container gebruiken in plaats van de container naam te gebruiken.
+De component FROM ( `FROM <from_specification>` ) is optioneel, tenzij de bron wordt gefilterd of later in de query wordt geprojecteerd. Een query zoals een `SELECT * FROM Families` inventarisatie van de gehele `Families` container. U kunt ook de speciale id-HOOFDMAP voor de container gebruiken in plaats van de container naam te gebruiken.
 
 De `FROM` component afdwingt de volgende regels per query af:
 
-* Voor de container kunt u een alias gebruiken, zoals `SELECT f.id FROM Families AS f` of gewoon `SELECT f.id FROM Families f`. Dit `f` is de alias voor `Families`. Net als een optioneel sleutel woord voor het [aliassen](sql-query-working-with-json.md#aliasing) van de id.  
+* Voor de container kunt u een alias gebruiken, zoals `SELECT f.id FROM Families AS f` of gewoon `SELECT f.id FROM Families f`. Dit `f` is de alias voor `Families` . Net als een optioneel sleutel woord voor het [aliassen](sql-query-working-with-json.md#aliasing) van de id.  
 
-* Als de alias is gewijzigd, kan de oorspronkelijke bron naam niet worden gebonden. De syntaxis `SELECT Families.id FROM Families f` is bijvoorbeeld ongeldig omdat de id `Families` van de alias is en kan niet meer worden omgezet.  
+* Als de alias is gewijzigd, kan de oorspronkelijke bron naam niet worden gebonden. `SELECT Families.id FROM Families f`De syntaxis is bijvoorbeeld ongeldig omdat de id van de `Families` alias is en kan niet meer worden omgezet.  
 
-* Alle eigenschappen waarnaar wordt verwezen, moeten volledig gekwalificeerd zijn om ondubbelzinnige bindingen te voor komen zonder strikte schema's. De syntaxis `SELECT id FROM Families f` is bijvoorbeeld ongeldig omdat de eigenschap `id` niet is gekoppeld.
+* Alle eigenschappen waarnaar wordt verwezen, moeten volledig gekwalificeerd zijn om ondubbelzinnige bindingen te voor komen zonder strikte schema's. `SELECT id FROM Families f`De syntaxis is bijvoorbeeld ongeldig omdat de eigenschap `id` niet is gekoppeld.
 
 ## <a name="syntax"></a>Syntaxis
   
@@ -53,7 +52,7 @@ FROM <from_specification>
   
 -  Als de expressie een container_name is, wordt container_name als alias gebruikt.  
   
--  Als de expressie is `<container_expression>`, dan property_name, wordt property_name als alias gebruikt. Als de expressie een container_name is, wordt container_name als alias gebruikt.  
+-  Als de expressie is `<container_expression>` , dan property_name, wordt property_name als alias gebruikt. Als de expressie een container_name is, wordt container_name als alias gebruikt.  
   
 - ALSOOK`input_alias`  
   
@@ -61,7 +60,7 @@ FROM <from_specification>
  
 - `input_alias`Naast  
   
-  Specificeert dat `input_alias` de moet de set waarden vertegenwoordigen die worden verkregen door te herhalen over alle matrix elementen van elke matrix die wordt geretourneerd door de onderliggende container expressie. Elke waarde die wordt geretourneerd door de onderliggende container expressie die geen matrix is, wordt genegeerd.  
+  Specificeert dat de `input_alias` moet de set waarden vertegenwoordigen die worden verkregen door te herhalen over alle matrix elementen van elke matrix die wordt geretourneerd door de onderliggende container expressie. Elke waarde die wordt geretourneerd door de onderliggende container expressie die geen matrix is, wordt genegeerd.  
   
 - `<container_expression>`  
   
@@ -81,15 +80,15 @@ FROM <from_specification>
   
 - `<container_expression> '.' property_name`  
   
-  Hiermee wordt aangegeven dat het document moet worden opgehaald door `property_name` toegang te krijgen tot de eigenschap.  
+  Hiermee wordt aangegeven dat het document moet worden opgehaald door toegang te krijgen tot de `property_name` eigenschap.  
   
 - `<container_expression> '[' "property_name" | array_index ']'`  
   
-  Hiermee wordt aangegeven dat het document moet worden opgehaald door `property_name` toegang te krijgen tot het element van de eigenschap of het array_index matrix voor alle documenten die worden opgehaald door de opgegeven container expressie.  
+  Hiermee wordt aangegeven dat het document moet worden opgehaald door toegang te krijgen tot het `property_name` element van de eigenschap of het array_index matrix voor alle documenten die worden opgehaald door de opgegeven container expressie.  
   
 ## <a name="remarks"></a>Opmerkingen
   
-Alle aliassen die in de `<from_source>(`s zijn opgenomen of uitgesteld, moeten uniek zijn. De syntaxis `<container_expression>.`property_name is hetzelfde als `<container_expression>' ['"property_name"']'`. De laatste syntaxis kan echter worden gebruikt als de naam van een eigenschap een niet-id-teken bevat.  
+Alle aliassen die in de s zijn opgenomen of uitgesteld `<from_source>(` , moeten uniek zijn. De syntaxis `<container_expression>.` property_name is hetzelfde als `<container_expression>' ['"property_name"']'` . De laatste syntaxis kan echter worden gebruikt als de naam van een eigenschap een niet-id-teken bevat.  
   
 ### <a name="handling-missing-properties-missing-array-elements-and-undefined-values"></a>Ontbrekende eigenschappen, ontbrekende matrix elementen en niet-gedefinieerde waarden verwerken
   
@@ -99,9 +98,9 @@ Als een container expressie toegang heeft tot eigenschappen of matrix elementen 
   
 Een container expressie kan container-scoped of document-Scoped zijn:  
   
-- Een expressie is container-scoped als de onderliggende bron van de container expressie ROOT of `container_name`ofwel is. Een dergelijke expressie vertegenwoordigt een set documenten die rechtstreeks uit de container is opgehaald en is niet afhankelijk van de verwerking van andere container expressies.  
+- Een expressie is container-scoped als de onderliggende bron van de container expressie ROOT of ofwel is `container_name` . Een dergelijke expressie vertegenwoordigt een set documenten die rechtstreeks uit de container is opgehaald en is niet afhankelijk van de verwerking van andere container expressies.  
   
-- Een expressie is een document bereik, als de onderliggende bron van de container expressie eerder in `input_alias` de query is geïntroduceerd. Een dergelijke expressie vertegenwoordigt een reeks documenten die zijn verkregen door de container expressie te evalueren in het bereik van elk document dat deel uitmaakt van de set die is gekoppeld aan de container met alias. De resulterende set is een samen voeging van sets die zijn verkregen door de container expressie te evalueren voor elk van de documenten in de onderliggende set.
+- Een expressie is een document bereik, als de onderliggende bron van de container expressie `input_alias` eerder in de query is geïntroduceerd. Een dergelijke expressie vertegenwoordigt een reeks documenten die zijn verkregen door de container expressie te evalueren in het bereik van elk document dat deel uitmaakt van de set die is gekoppeld aan de container met alias. De resulterende set is een samen voeging van sets die zijn verkregen door de container expressie te evalueren voor elk van de documenten in de onderliggende set.
 
 ## <a name="examples"></a>Voorbeelden
 
@@ -147,7 +146,7 @@ U ziet deze uitvoer:
     ]
 ```
 
-De voor gaande query heeft een matrix als bron gebruikt, maar u kunt ook een object als bron gebruiken. De query beschouwt een geldige, gedefinieerde JSON-waarde in de bron voor opname in het resultaat. Het volgende voor beeld zou `Families` uitsluiten dat geen `address.state` waarde heeft.
+De voor gaande query heeft een matrix als bron gebruikt, maar u kunt ook een object als bron gebruiken. De query beschouwt een geldige, gedefinieerde JSON-waarde in de bron voor opname in het resultaat. Het volgende voor beeld zou uitsluiten `Families` dat geen `address.state` waarde heeft.
 
 ```sql
     SELECT *

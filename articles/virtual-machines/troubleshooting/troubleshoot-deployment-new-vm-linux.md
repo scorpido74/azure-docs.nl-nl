@@ -15,10 +15,9 @@ ms.topic: troubleshooting
 ms.date: 09/09/2016
 ms.author: daberry
 ms.openlocfilehash: f85389d8fc2269b346df22854bb7ddce08844a88
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/12/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "83118223"
 ---
 # <a name="troubleshoot-resource-manager-deployment-issues-with-creating-a-new-linux-virtual-machine-in-azure"></a>Problemen met de implementatie van Resource Manager oplossen met het maken van een nieuwe virtuele Linux-machine in azure
@@ -50,7 +49,7 @@ Om te beginnen met het oplossen van problemen, verzamelt u de activiteiten Logbo
 
 **N<sup>2</sup>:** Als het besturings systeem Linux gespecialiseerd is en het is geüpload als gegeneraliseerd, krijgt u een inrichtings fout, omdat de nieuwe virtuele machine wordt uitgevoerd met de oorspronkelijke computer naam, gebruikers naam en wacht woord.
 
-**Opgelost**
+**Oplossing:**
 
 Als u beide fouten wilt oplossen, uploadt u de oorspronkelijke VHD, die beschikbaar is op locatie, met dezelfde instelling als die voor het besturings systeem (gegeneraliseerd/gespecialiseerd). Als u wilt uploaden als gegeneraliseerd, moet u eerst de uitvoering van het programma uitvoeren.
 
@@ -60,7 +59,7 @@ Als u beide fouten wilt oplossen, uploadt u de oorspronkelijke VHD, die beschikb
 
 **N<sup>4</sup>:** Als het besturings systeem Linux gespecialiseerd is en het is vastgelegd als gegeneraliseerd, krijgt u een inrichtings fout omdat de nieuwe virtuele machine wordt uitgevoerd met de oorspronkelijke computer naam, gebruikers naam en wacht woord. De oorspronkelijke virtuele machine kan ook niet worden gebruikt omdat deze is gemarkeerd als gespecialiseerd.
 
-**Opgelost**
+**Oplossing:**
 
 Om beide fouten op te lossen, verwijdert u de huidige installatie kopie uit de portal en [legt u deze opnieuw vast vanaf de huidige vhd's](../linux/capture-image.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) met dezelfde instelling als voor het besturings systeem (gegeneraliseerd/gespecialiseerd).
 

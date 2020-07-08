@@ -10,10 +10,9 @@ services: azure-maps
 manager: timlt
 ms.custom: codepen
 ms.openlocfilehash: 1cde1aaa7c9dba3e28407439a46b0e0a3326e4fc
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/12/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "83123969"
 ---
 # <a name="show-directions-from-a-to-b"></a>Routebeschrijving van A naar B
@@ -69,7 +68,7 @@ De route query, gegevens bron, symbool, lijn lagen en camera grenzen worden in [
 ## <a name="next-steps"></a>Volgende stappen
 
 > [!div class="nextstepaction"]
-> [Aanbevolen procedures voor het gebruik van de Routing-service](how-to-use-best-practices-for-search.md)
+> [Best practices voor het gebruik van de routeringsservice](how-to-use-best-practices-for-search.md)
 
 Meer informatie over de klassen en methoden die in dit artikel worden gebruikt:
 
@@ -79,7 +78,7 @@ Meer informatie over de klassen en methoden die in dit artikel worden gebruikt:
 Raadpleeg de volgende artikelen voor voor beelden van volledige code:
 
 > [!div class="nextstepaction"]
-> [Verkeer op de kaart weer geven](./map-show-traffic.md)
+> [Verkeer weergeven op de kaart](./map-show-traffic.md)
 
 > [!div class="nextstepaction"]
 > [Interactie met de gebeurtenissen van de kaart muis](./map-events.md)

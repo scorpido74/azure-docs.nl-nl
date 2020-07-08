@@ -9,17 +9,16 @@ ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 05/07/2020
 ms.openlocfilehash: 805b51bf4e6d8feab9539f660dfc72ca78b82d5c
-ms.sourcegitcommit: 999ccaf74347605e32505cbcfd6121163560a4ae
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/08/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82982629"
 ---
 # <a name="exists-transformation-in-mapping-data-flow"></a>Er bestaat een trans formatie in de toewijzing van gegevens stroom
 
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
-De exists-trans formatie is een filter transformatie voor rijen waarmee wordt gecontroleerd of uw gegevens zich in een andere bron of stroom bevindt. De uitvoer stroom bevat alle rijen in de linker stroom die ofwel bestaan of niet voor komen in de juiste stroom. De exists-trans formatie ```SQL WHERE EXISTS``` is ```SQL WHERE NOT EXISTS```vergelijkbaar met en.
+De exists-trans formatie is een filter transformatie voor rijen waarmee wordt gecontroleerd of uw gegevens zich in een andere bron of stroom bevindt. De uitvoer stroom bevat alle rijen in de linker stroom die ofwel bestaan of niet voor komen in de juiste stroom. De exists-trans formatie is vergelijkbaar met ```SQL WHERE EXISTS``` en ```SQL WHERE NOT EXISTS``` .
 
 > [!VIDEO https://www.microsoft.com/en-us/videoplayer/embed/RE4vZKz]
 
@@ -54,7 +53,7 @@ Het is niet raadzaam om Broadcasting uit te scha kelen via de optie **uit** , te
 
 ## <a name="data-flow-script"></a>Script voor gegevensstroom
 
-### <a name="syntax"></a>Syntaxis
+### <a name="syntax"></a>Syntax
 
 ```
 <leftStream>, <rightStream>
@@ -67,7 +66,7 @@ Het is niet raadzaam om Broadcasting uit te scha kelen via de optie **uit** , te
 
 ### <a name="example"></a>Voorbeeld
 
-Het onderstaande voor beeld is een bestaande trans `checkForChanges` formatie met de naam `NameNorm2` die de stream `TypeConversions`en de juiste stroom gebruikt.  De exists-voor waarde `NameNorm2@EmpID == TypeConversions@EmpID && NameNorm2@Region == DimEmployees@Region` is de expressie die waar retourneert `EMPID` als `Region` de kolommen en in elke stroom overeenkomen. Als we controleren op bestaan, `negate` is onwaar. Het inschakelen van een broadcast op het tabblad Optimize heeft `broadcast` daarom geen `'none'`waarde.
+Het onderstaande voor beeld is een bestaande trans formatie met de naam die de stream `checkForChanges` `NameNorm2` en de juiste stroom gebruikt `TypeConversions` .  De exists-voor waarde is de expressie `NameNorm2@EmpID == TypeConversions@EmpID && NameNorm2@Region == DimEmployees@Region` die waar retourneert als de `EMPID` `Region` kolommen en in elke stroom overeenkomen. Als we controleren op bestaan, `negate` is onwaar. Het inschakelen van een broadcast op het tabblad Optimize heeft daarom geen `broadcast` waarde `'none'` .
 
 In de Data Factory UX ziet deze trans formatie er als volgt uit:
 

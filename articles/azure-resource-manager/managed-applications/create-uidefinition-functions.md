@@ -6,10 +6,9 @@ ms.topic: conceptual
 ms.date: 10/12/2017
 ms.author: tomfitz
 ms.openlocfilehash: a93f4ff2ddc0737692de9e5619cf7a7521936224
-ms.sourcegitcommit: 999ccaf74347605e32505cbcfd6121163560a4ae
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/08/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82980810"
 ---
 # <a name="createuidefinition-functions"></a>CreateUiDefinition-functies
@@ -39,16 +38,16 @@ Deze functies kunnen worden gebruikt om te verwijzen naar uitvoer van de eigensc
 ### <a name="basics"></a>bewerkingen
 Retourneert de uitvoer waarden van een element dat is gedefinieerd in de stap basis beginselen.
 
-In het volgende voor beeld wordt de uitvoer van het `foo` element met de naam in de stap basis beginselen geretourneerd:
+In het volgende voor beeld wordt de uitvoer van het element met `foo` de naam in de stap basis beginselen geretourneerd:
 
 ```json
 "[basics('foo')]"
 ```
 
 ### <a name="steps"></a>stappen
-Retourneert de uitvoer waarden van een element dat in de opgegeven stap is gedefinieerd. Als u de uitvoer waarden van elementen in de stap basis beginselen wilt `basics()` ophalen, gebruikt u in plaats daarvan.
+Retourneert de uitvoer waarden van een element dat in de opgegeven stap is gedefinieerd. Als u de uitvoer waarden van elementen in de stap basis beginselen wilt ophalen, gebruikt u `basics()` in plaats daarvan.
 
-In het volgende voor beeld wordt de uitvoer geretourneerd van `bar` het element met de `foo`naam in de stap met de naam:
+In het volgende voor beeld wordt de uitvoer geretourneerd van het element met `bar` de naam in de stap met de naam `foo` :
 
 ```json
 "[steps('foo').bar]"
@@ -57,7 +56,7 @@ In het volgende voor beeld wordt de uitvoer geretourneerd van `bar` het element 
 ### <a name="location"></a>location
 Retourneert de locatie die is geselecteerd in de stap basis beginselen of de huidige context.
 
-Het volgende voor beeld kan `"westus"`resulteren in:
+Het volgende voor beeld kan resulteren in `"westus"` :
 
 ```json
 "[location()]"
@@ -69,7 +68,7 @@ Deze functies kunnen alleen worden gebruikt met JSON-teken reeksen.
 ### <a name="concat"></a>concat
 Voegt een of meer teken reeksen samen.
 
-Als bijvoorbeeld de uitvoer waarde van `element1` if `"bar"`is, retourneert dit voor beeld de teken reeks `"foobar!"`:
+Als bijvoorbeeld de uitvoer waarde van `element1` if `"bar"` is, retourneert dit voor beeld de teken reeks `"foobar!"` :
 
 ```json
 "[concat('foo', steps('step1').element1, '!')]"
@@ -78,7 +77,7 @@ Als bijvoorbeeld de uitvoer waarde van `element1` if `"bar"`is, retourneert dit 
 ### <a name="substring"></a>subtekenreeks
 Retourneert de subtekenreeks van de opgegeven teken reeks. De subtekenreeks begint bij de opgegeven index en heeft de opgegeven lengte.
 
-In het volgende voor `"ftw"`beeld wordt geretourneerd:
+In het volgende voor beeld wordt geretourneerd `"ftw"` :
 
 ```json
 "[substring('azure-ftw!!!1one', 6, 3)]"
@@ -87,7 +86,7 @@ In het volgende voor `"ftw"`beeld wordt geretourneerd:
 ### <a name="replace"></a>vervangen
 Retourneert een teken reeks waarin alle instanties van de opgegeven teken reeks in de huidige teken reeks worden vervangen door een andere teken reeks.
 
-In het volgende voor `"Everything is awesome!"`beeld wordt geretourneerd:
+In het volgende voor beeld wordt geretourneerd `"Everything is awesome!"` :
 
 ```json
 "[replace('Everything is terrible!', 'terrible', 'awesome')]"
@@ -96,7 +95,7 @@ In het volgende voor `"Everything is awesome!"`beeld wordt geretourneerd:
 ### <a name="guid"></a>guid
 Hiermee wordt een globaal unieke teken reeks (GUID) gegenereerd.
 
-Het volgende voor beeld kan `"c7bc8bdc-7252-4a82-ba53-7c468679a511"`resulteren in:
+Het volgende voor beeld kan resulteren in `"c7bc8bdc-7252-4a82-ba53-7c468679a511"` :
 
 ```json
 "[guid()]"
@@ -105,7 +104,7 @@ Het volgende voor beeld kan `"c7bc8bdc-7252-4a82-ba53-7c468679a511"`resulteren i
 ### <a name="tolower"></a>toLower
 Retourneert een teken reeks die is geconverteerd naar kleine letters.
 
-In het volgende voor `"foobar"`beeld wordt geretourneerd:
+In het volgende voor beeld wordt geretourneerd `"foobar"` :
 
 ```json
 "[toLower('FOOBAR')]"
@@ -114,7 +113,7 @@ In het volgende voor `"foobar"`beeld wordt geretourneerd:
 ### <a name="toupper"></a>toUpper
 Retourneert een teken reeks die is geconverteerd naar hoofd letters.
 
-In het volgende voor `"FOOBAR"`beeld wordt geretourneerd:
+In het volgende voor beeld wordt geretourneerd `"FOOBAR"` :
 
 ```json
 "[toUpper('foobar')]"
@@ -127,21 +126,21 @@ Deze functies kunnen worden gebruikt in combi natie met verzamelingen, zoals JSO
 Retourneert `true` als een teken reeks de opgegeven subtekenreeks bevat, een matrix bevat de opgegeven waarde of een object de opgegeven sleutel bevat.
 
 #### <a name="example-1-string"></a>Voor beeld 1: teken reeks
-In het volgende voor `true`beeld wordt geretourneerd:
+In het volgende voor beeld wordt geretourneerd `true` :
 
 ```json
 "[contains('foobar', 'foo')]"
 ```
 
 #### <a name="example-2-array"></a>Voor beeld 2: matrix
-`element1` Retourneert als `[1, 2, 3]`resultaat. In het volgende voor `false`beeld wordt geretourneerd:
+`element1`Retourneert als resultaat `[1, 2, 3]` . In het volgende voor beeld wordt geretourneerd `false` :
 
 ```json
 "[contains(steps('foo').element1, 4)]"
 ```
 
 #### <a name="example-3-object"></a>Voor beeld 3: object
-Retourneert `element1` aannemen:
+`element1`Retourneert aannemen:
 
 ```json
 {
@@ -150,7 +149,7 @@ Retourneert `element1` aannemen:
 }
 ```
 
-In het volgende voor `true`beeld wordt geretourneerd:
+In het volgende voor beeld wordt geretourneerd `true` :
 
 ```json
 "[contains(steps('foo').element1, 'key1')]"
@@ -160,21 +159,21 @@ In het volgende voor `true`beeld wordt geretourneerd:
 Retourneert het aantal tekens in een teken reeks, het aantal waarden in een matrix of het aantal sleutels in een object.
 
 #### <a name="example-1-string"></a>Voor beeld 1: teken reeks
-In het volgende voor `6`beeld wordt geretourneerd:
+In het volgende voor beeld wordt geretourneerd `6` :
 
 ```json
 "[length('foobar')]"
 ```
 
 #### <a name="example-2-array"></a>Voor beeld 2: matrix
-`element1` Retourneert als `[1, 2, 3]`resultaat. In het volgende voor `3`beeld wordt geretourneerd:
+`element1`Retourneert als resultaat `[1, 2, 3]` . In het volgende voor beeld wordt geretourneerd `3` :
 
 ```json
 "[length(steps('foo').element1)]"
 ```
 
 #### <a name="example-3-object"></a>Voor beeld 3: object
-Retourneert `element1` aannemen:
+`element1`Retourneert aannemen:
 
 ```json
 {
@@ -183,7 +182,7 @@ Retourneert `element1` aannemen:
 }
 ```
 
-In het volgende voor `2`beeld wordt geretourneerd:
+In het volgende voor beeld wordt geretourneerd `2` :
 
 ```json
 "[length(steps('foo').element1)]"
@@ -193,21 +192,21 @@ In het volgende voor `2`beeld wordt geretourneerd:
 Retourneert `true` of de teken reeks, matrix of object null of leeg is.
 
 #### <a name="example-1-string"></a>Voor beeld 1: teken reeks
-In het volgende voor `true`beeld wordt geretourneerd:
+In het volgende voor beeld wordt geretourneerd `true` :
 
 ```json
 "[empty('')]"
 ```
 
 #### <a name="example-2-array"></a>Voor beeld 2: matrix
-`element1` Retourneert als `[1, 2, 3]`resultaat. In het volgende voor `false`beeld wordt geretourneerd:
+`element1`Retourneert als resultaat `[1, 2, 3]` . In het volgende voor beeld wordt geretourneerd `false` :
 
 ```json
 "[empty(steps('foo').element1)]"
 ```
 
 #### <a name="example-3-object"></a>Voor beeld 3: object
-Retourneert `element1` aannemen:
+`element1`Retourneert aannemen:
 
 ```json
 {
@@ -216,14 +215,14 @@ Retourneert `element1` aannemen:
 }
 ```
 
-In het volgende voor `false`beeld wordt geretourneerd:
+In het volgende voor beeld wordt geretourneerd `false` :
 
 ```json
 "[empty(steps('foo').element1)]"
 ```
 
 #### <a name="example-4-null-and-undefined"></a>Voor beeld 4: null en niet-gedefinieerd
-Hierbij `element1` wordt `null` ervan uitgegaan dat het niet is gedefinieerd. In het volgende voor `true`beeld wordt geretourneerd:
+Hierbij wordt ervan uitgegaan dat het `element1` niet is `null` gedefinieerd. In het volgende voor beeld wordt geretourneerd `true` :
 
 ```json
 "[empty(steps('foo').element1)]"
@@ -233,21 +232,21 @@ Hierbij `element1` wordt `null` ervan uitgegaan dat het niet is gedefinieerd. In
 Retourneert het eerste teken van de opgegeven teken reeks. de eerste waarde van de opgegeven matrix. of de eerste sleutel en waarde van het opgegeven object.
 
 #### <a name="example-1-string"></a>Voor beeld 1: teken reeks
-In het volgende voor `"f"`beeld wordt geretourneerd:
+In het volgende voor beeld wordt geretourneerd `"f"` :
 
 ```json
 "[first('foobar')]"
 ```
 
 #### <a name="example-2-array"></a>Voor beeld 2: matrix
-`element1` Retourneert als `[1, 2, 3]`resultaat. In het volgende voor `1`beeld wordt geretourneerd:
+`element1`Retourneert als resultaat `[1, 2, 3]` . In het volgende voor beeld wordt geretourneerd `1` :
 
 ```json
 "[first(steps('foo').element1)]"
 ```
 
 #### <a name="example-3-object"></a>Voor beeld 3: object
-Retourneert `element1` aannemen:
+`element1`Retourneert aannemen:
 
 ```json
 {
@@ -255,7 +254,7 @@ Retourneert `element1` aannemen:
   "key2": "raboof"
 }
 ```
-In het volgende voor `{"key1": "foobar"}`beeld wordt geretourneerd:
+In het volgende voor beeld wordt geretourneerd `{"key1": "foobar"}` :
 
 ```json
 "[first(steps('foo').element1)]"
@@ -265,21 +264,21 @@ In het volgende voor `{"key1": "foobar"}`beeld wordt geretourneerd:
 Retourneert het laatste teken van de opgegeven teken reeks, de laatste waarde van de opgegeven matrix of de laatste sleutel en waarde van het opgegeven object.
 
 #### <a name="example-1-string"></a>Voor beeld 1: teken reeks
-In het volgende voor `"r"`beeld wordt geretourneerd:
+In het volgende voor beeld wordt geretourneerd `"r"` :
 
 ```json
 "[last('foobar')]"
 ```
 
 #### <a name="example-2-array"></a>Voor beeld 2: matrix
-`element1` Retourneert als `[1, 2, 3]`resultaat. In het volgende voor `2`beeld wordt geretourneerd:
+`element1`Retourneert als resultaat `[1, 2, 3]` . In het volgende voor beeld wordt geretourneerd `2` :
 
 ```json
 "[last(steps('foo').element1)]"
 ```
 
 #### <a name="example-3-object"></a>Voor beeld 3: object
-Retourneert `element1` aannemen:
+`element1`Retourneert aannemen:
 
 ```json
 {
@@ -288,7 +287,7 @@ Retourneert `element1` aannemen:
 }
 ```
 
-In het volgende voor `{"key2": "raboof"}`beeld wordt geretourneerd:
+In het volgende voor beeld wordt geretourneerd `{"key2": "raboof"}` :
 
 ```json
 "[last(steps('foo').element1)]"
@@ -298,21 +297,21 @@ In het volgende voor `{"key2": "raboof"}`beeld wordt geretourneerd:
 Retourneert een opgegeven aantal aaneengesloten tekens vanaf het begin van de teken reeks, een opgegeven aantal aaneengesloten waarden vanaf het begin van de matrix of een opgegeven aantal aaneengesloten sleutels en waarden vanaf het begin van het object.
 
 #### <a name="example-1-string"></a>Voor beeld 1: teken reeks
-In het volgende voor `"foo"`beeld wordt geretourneerd:
+In het volgende voor beeld wordt geretourneerd `"foo"` :
 
 ```json
 "[take('foobar', 3)]"
 ```
 
 #### <a name="example-2-array"></a>Voor beeld 2: matrix
-`element1` Retourneert als `[1, 2, 3]`resultaat. In het volgende voor `[1, 2]`beeld wordt geretourneerd:
+`element1`Retourneert als resultaat `[1, 2, 3]` . In het volgende voor beeld wordt geretourneerd `[1, 2]` :
 
 ```json
 "[take(steps('foo').element1, 2)]"
 ```
 
 #### <a name="example-3-object"></a>Voor beeld 3: object
-Retourneert `element1` aannemen:
+`element1`Retourneert aannemen:
 
 ```json
 {
@@ -321,7 +320,7 @@ Retourneert `element1` aannemen:
 }
 ```
 
-In het volgende voor `{"key1": "foobar"}`beeld wordt geretourneerd:
+In het volgende voor beeld wordt geretourneerd `{"key1": "foobar"}` :
 
 ```json
 "[take(steps('foo').element1, 1)]"
@@ -331,21 +330,21 @@ In het volgende voor `{"key1": "foobar"}`beeld wordt geretourneerd:
 Hiermee wordt een opgegeven aantal elementen in een verzameling omzeild en worden de resterende elementen geretourneerd.
 
 #### <a name="example-1-string"></a>Voor beeld 1: teken reeks
-In het volgende voor `"bar"`beeld wordt geretourneerd:
+In het volgende voor beeld wordt geretourneerd `"bar"` :
 
 ```json
 "[skip('foobar', 3)]"
 ```
 
 #### <a name="example-2-array"></a>Voor beeld 2: matrix
-`element1` Retourneert als `[1, 2, 3]`resultaat. In het volgende voor `[3]`beeld wordt geretourneerd:
+`element1`Retourneert als resultaat `[1, 2, 3]` . In het volgende voor beeld wordt geretourneerd `[3]` :
 
 ```json
 "[skip(steps('foo').element1, 2)]"
 ```
 
 #### <a name="example-3-object"></a>Voor beeld 3: object
-Retourneert `element1` aannemen:
+`element1`Retourneert aannemen:
 
 ```json
 {
@@ -353,7 +352,7 @@ Retourneert `element1` aannemen:
   "key2": "raboof"
 }
 ```
-In het volgende voor `{"key2": "raboof"}`beeld wordt geretourneerd:
+In het volgende voor beeld wordt geretourneerd `{"key2": "raboof"}` :
 
 ```json
 "[skip(steps('foo').element1, 1)]"
@@ -362,22 +361,22 @@ In het volgende voor `{"key2": "raboof"}`beeld wordt geretourneerd:
 ## <a name="logical-functions"></a>Logische functies
 Deze functies kunnen worden gebruikt in voor waarden. Sommige functies bieden mogelijk geen ondersteuning voor alle JSON-gegevens typen.
 
-### <a name="equals"></a>equals
+### <a name="equals"></a>is gelijk aan
 Retourneert `true` als beide para meters hetzelfde type en dezelfde waarde hebben. Deze functie ondersteunt alle JSON-gegevens typen.
 
-In het volgende voor `true`beeld wordt geretourneerd:
+In het volgende voor beeld wordt geretourneerd `true` :
 
 ```json
 "[equals(0, 0)]"
 ```
 
-In het volgende voor `true`beeld wordt geretourneerd:
+In het volgende voor beeld wordt geretourneerd `true` :
 
 ```json
 "[equals('foo', 'foo')]"
 ```
 
-In het volgende voor `false`beeld wordt geretourneerd:
+In het volgende voor beeld wordt geretourneerd `false` :
 
 ```json
 "[equals('abc', ['a', 'b', 'c'])]"
@@ -386,13 +385,13 @@ In het volgende voor `false`beeld wordt geretourneerd:
 ### <a name="less"></a>less
 Retourneert `true` als de eerste para meter strikt kleiner is dan de tweede para meter. Deze functie ondersteunt alleen para meters van het type Number en string.
 
-In het volgende voor `true`beeld wordt geretourneerd:
+In het volgende voor beeld wordt geretourneerd `true` :
 
 ```json
 "[less(1, 2)]"
 ```
 
-In het volgende voor `false`beeld wordt geretourneerd:
+In het volgende voor beeld wordt geretourneerd `false` :
 
 ```json
 "[less('9', '10')]"
@@ -401,7 +400,7 @@ In het volgende voor `false`beeld wordt geretourneerd:
 ### <a name="lessorequals"></a>lessOrEquals
 Retourneert `true` als de eerste para meter kleiner is dan of gelijk is aan de tweede para meter. Deze functie ondersteunt alleen para meters van het type Number en string.
 
-In het volgende voor `true`beeld wordt geretourneerd:
+In het volgende voor beeld wordt geretourneerd `true` :
 
 ```json
 "[lessOrEquals(2, 2)]"
@@ -410,13 +409,13 @@ In het volgende voor `true`beeld wordt geretourneerd:
 ### <a name="greater"></a>greater
 Retourneert `true` als de eerste para meter strikt groter is dan de tweede para meter. Deze functie ondersteunt alleen para meters van het type Number en string.
 
-In het volgende voor `false`beeld wordt geretourneerd:
+In het volgende voor beeld wordt geretourneerd `false` :
 
 ```json
 "[greater(1, 2)]"
 ```
 
-In het volgende voor `true`beeld wordt geretourneerd:
+In het volgende voor beeld wordt geretourneerd `true` :
 
 ```json
 "[greater('9', '10')]"
@@ -425,52 +424,52 @@ In het volgende voor `true`beeld wordt geretourneerd:
 ### <a name="greaterorequals"></a>greaterOrEquals
 Retourneert `true` als de eerste para meter groter is dan of gelijk is aan de tweede para meter. Deze functie ondersteunt alleen para meters van het type Number en string.
 
-In het volgende voor `true`beeld wordt geretourneerd:
+In het volgende voor beeld wordt geretourneerd `true` :
 
 ```json
 "[greaterOrEquals(2, 2)]"
 ```
 
 ### <a name="and"></a>en
-Retourneert `true` of alle para meters worden `true`geëvalueerd. Deze functie biedt ondersteuning voor twee of meer para meters van het type Boolean.
+Retourneert `true` of alle para meters worden geëvalueerd `true` . Deze functie biedt ondersteuning voor twee of meer para meters van het type Boolean.
 
-In het volgende voor `true`beeld wordt geretourneerd:
+In het volgende voor beeld wordt geretourneerd `true` :
 
 ```json
 "[and(equals(0, 0), equals('foo', 'foo'), less(1, 2))]"
 ```
 
-In het volgende voor `false`beeld wordt geretourneerd:
+In het volgende voor beeld wordt geretourneerd `false` :
 
 ```json
 "[and(equals(0, 0), greater(1, 2))]"
 ```
 
 ### <a name="or"></a>of
-Retourneert `true` of ten minste één van de para meters wordt `true`geëvalueerd. Deze functie biedt ondersteuning voor twee of meer para meters van het type Boolean.
+Retourneert `true` of ten minste één van de para meters wordt geëvalueerd `true` . Deze functie biedt ondersteuning voor twee of meer para meters van het type Boolean.
 
-In het volgende voor `true`beeld wordt geretourneerd:
+In het volgende voor beeld wordt geretourneerd `true` :
 
 ```json
 "[or(equals(0, 0), equals('foo', 'foo'), less(1, 2))]"
 ```
 
-In het volgende voor `true`beeld wordt geretourneerd:
+In het volgende voor beeld wordt geretourneerd `true` :
 
 ```json
 "[or(equals(0, 0), greater(1, 2))]"
 ```
 
 ### <a name="not"></a>not
-Retourneert `true` of de para meter resulteert in `false`. Deze functie ondersteunt alleen para meters van het type Boolean.
+Retourneert `true` of de para meter resulteert in `false` . Deze functie ondersteunt alleen para meters van het type Boolean.
 
-In het volgende voor `true`beeld wordt geretourneerd:
+In het volgende voor beeld wordt geretourneerd `true` :
 
 ```json
 "[not(false)]"
 ```
 
-In het volgende voor `false`beeld wordt geretourneerd:
+In het volgende voor beeld wordt geretourneerd `false` :
 
 ```json
 "[not(equals(0, 0))]"
@@ -479,7 +478,7 @@ In het volgende voor `false`beeld wordt geretourneerd:
 ### <a name="coalesce"></a>Voeg
 Retourneert de waarde van de eerste para meter die niet null is. Deze functie ondersteunt alle JSON-gegevens typen.
 
-Aannemen `element1` dat `element2` en niet zijn gedefinieerd. In het volgende voor `"foobar"`beeld wordt geretourneerd:
+Aannemen dat `element1` en niet `element2` zijn gedefinieerd. In het volgende voor beeld wordt geretourneerd `"foobar"` :
 
 ```json
 "[coalesce(steps('foo').element1, steps('foo').element2, 'foobar')]"
@@ -487,7 +486,7 @@ Aannemen `element1` dat `element2` en niet zijn gedefinieerd. In het volgende vo
 
 Deze functie is vooral nuttig in de context van een optionele aanroep die plaatsvindt als gevolg van de gebruikers actie nadat de pagina is geladen. Een voor beeld is als de beperkingen voor één veld in de gebruikers interface afhankelijk zijn van de momenteel geselecteerde waarde van een andere, **niet-zicht bare** veld. In dit geval `coalesce()` kan de functie worden gebruikt om de syntaxis geldig te maken op het moment dat de pagina wordt geladen en het gewenste effect heeft wanneer de gebruiker met het veld communiceert.
 
-Bekijk dit `DropDown`, waarmee de gebruiker uit verschillende soorten data bases kan kiezen:
+Bekijk dit `DropDown` , waarmee de gebruiker uit verschillende soorten data bases kan kiezen:
 
 ```
 {
@@ -516,7 +515,7 @@ Bekijk dit `DropDown`, waarmee de gebruiker uit verschillende soorten data bases
     },
 ```
 
-Als voor waarde voor de actie van een ander veld op de huidige gekozen waarde van dit `coalesce()`veld, gebruikt u, zoals hier wordt weer gegeven:
+Als voor waarde voor de actie van een ander veld op de huidige gekozen waarde van dit veld, gebruikt u `coalesce()` , zoals hier wordt weer gegeven:
 
 ```
 "regex": "[concat('^jdbc:', coalesce(steps('section_database').databaseConnectionInfo.databaseType, ''), '.*$')]",
@@ -530,13 +529,13 @@ Deze functies kunnen worden gebruikt om waarden te converteren tussen JSON-gegev
 ### <a name="int"></a>int
 Zet de para meter om in een geheel getal. Deze functie ondersteunt para meters van het type nummer en de teken reeks.
 
-In het volgende voor `1`beeld wordt geretourneerd:
+In het volgende voor beeld wordt geretourneerd `1` :
 
 ```json
 "[int('1')]"
 ```
 
-In het volgende voor `2`beeld wordt geretourneerd:
+In het volgende voor beeld wordt geretourneerd `2` :
 
 ```json
 "[int(2.9)]"
@@ -545,13 +544,13 @@ In het volgende voor `2`beeld wordt geretourneerd:
 ### <a name="float"></a>float
 Zet de para meter om in een drijvende komma. Deze functie ondersteunt para meters van het type nummer en de teken reeks.
 
-In het volgende voor `1.0`beeld wordt geretourneerd:
+In het volgende voor beeld wordt geretourneerd `1.0` :
 
 ```json
 "[float('1.0')]"
 ```
 
-In het volgende voor `2.9`beeld wordt geretourneerd:
+In het volgende voor beeld wordt geretourneerd `2.9` :
 
 ```json
 "[float(2.9)]"
@@ -560,79 +559,79 @@ In het volgende voor `2.9`beeld wordt geretourneerd:
 ### <a name="string"></a>tekenreeks
 Zet de para meter om in een teken reeks. Deze functie biedt ondersteuning voor para meters van alle JSON-gegevens typen.
 
-In het volgende voor `"1"`beeld wordt geretourneerd:
+In het volgende voor beeld wordt geretourneerd `"1"` :
 
 ```json
 "[string(1)]"
 ```
 
-In het volgende voor `"2.9"`beeld wordt geretourneerd:
+In het volgende voor beeld wordt geretourneerd `"2.9"` :
 
 ```json
 "[string(2.9)]"
 ```
 
-In het volgende voor `"[1,2,3]"`beeld wordt geretourneerd:
+In het volgende voor beeld wordt geretourneerd `"[1,2,3]"` :
 
 ```json
 "[string([1,2,3])]"
 ```
 
-In het volgende voor `"{"foo":"bar"}"`beeld wordt geretourneerd:
+In het volgende voor beeld wordt geretourneerd `"{"foo":"bar"}"` :
 
 ```json
 "[string({\"foo\":\"bar\"})]"
 ```
 
-### <a name="bool"></a>Booleaanse waarde
-Zet de para meter om in een Boole-waarde. Deze functie biedt ondersteuning voor para meters van het type Number, String en Boolean. Vergelijkbaar met Boole-waarden in Java script, een `0` wille keurige waarde, behalve of `'false'` als resultaat `true`.
+### <a name="bool"></a>booleaans
+Zet de para meter om in een Boole-waarde. Deze functie biedt ondersteuning voor para meters van het type Number, String en Boolean. Vergelijkbaar met Boole-waarden in Java script, een wille keurige waarde, behalve `0` of `'false'` als resultaat `true` .
 
-In het volgende voor `true`beeld wordt geretourneerd:
+In het volgende voor beeld wordt geretourneerd `true` :
 
 ```json
 "[bool(1)]"
 ```
 
-In het volgende voor `false`beeld wordt geretourneerd:
+In het volgende voor beeld wordt geretourneerd `false` :
 
 ```json
 "[bool(0)]"
 ```
 
-In het volgende voor `true`beeld wordt geretourneerd:
+In het volgende voor beeld wordt geretourneerd `true` :
 
 ```json
 "[bool(true)]"
 ```
 
-In het volgende voor `true`beeld wordt geretourneerd:
+In het volgende voor beeld wordt geretourneerd `true` :
 
 ```json
 "[bool('true')]"
 ```
 
 ### <a name="parse"></a>parse
-Hiermee converteert u de para meter naar een systeem eigen type. Met andere woorden, deze functie is het omgekeerde van `string()`. Deze functie ondersteunt alleen para meters van het type String.
+Hiermee converteert u de para meter naar een systeem eigen type. Met andere woorden, deze functie is het omgekeerde van `string()` . Deze functie ondersteunt alleen para meters van het type String.
 
-In het volgende voor `1`beeld wordt geretourneerd:
+In het volgende voor beeld wordt geretourneerd `1` :
 
 ```json
 "[parse('1')]"
 ```
 
-In het volgende voor `true`beeld wordt geretourneerd:
+In het volgende voor beeld wordt geretourneerd `true` :
 
 ```json
 "[parse('true')]"
 ```
 
-In het volgende voor `[1,2,3]`beeld wordt geretourneerd:
+In het volgende voor beeld wordt geretourneerd `[1,2,3]` :
 
 ```json
 "[parse('[1,2,3]')]"
 ```
 
-In het volgende voor `{"foo":"bar"}`beeld wordt geretourneerd:
+In het volgende voor beeld wordt geretourneerd `{"foo":"bar"}` :
 
 ```json
 "[parse('{\"foo\":\"bar\"}')]"
@@ -641,7 +640,7 @@ In het volgende voor `{"foo":"bar"}`beeld wordt geretourneerd:
 ### <a name="encodebase64"></a>encodeBase64
 Codeert de para meter naar een gecodeerde base-64-teken reeks. Deze functie ondersteunt alleen para meters van het type String.
 
-In het volgende voor `"Zm9vYmFy"`beeld wordt geretourneerd:
+In het volgende voor beeld wordt geretourneerd `"Zm9vYmFy"` :
 
 ```json
 "[encodeBase64('foobar')]"
@@ -650,7 +649,7 @@ In het volgende voor `"Zm9vYmFy"`beeld wordt geretourneerd:
 ### <a name="decodebase64"></a>decodeBase64
 Decodeert de para meter uit een gecodeerde base-64-teken reeks. Deze functie ondersteunt alleen para meters van het type String.
 
-In het volgende voor `"foobar"`beeld wordt geretourneerd:
+In het volgende voor beeld wordt geretourneerd `"foobar"` :
 
 ```json
 "[decodeBase64('Zm9vYmFy')]"
@@ -659,7 +658,7 @@ In het volgende voor `"foobar"`beeld wordt geretourneerd:
 ### <a name="encodeuricomponent"></a>encodeUriComponent
 Codeert de para meter naar een URL-gecodeerde teken reeks. Deze functie ondersteunt alleen para meters van het type String.
 
-In het volgende voor `"https%3A%2F%2Fportal.azure.com%2F"`beeld wordt geretourneerd:
+In het volgende voor beeld wordt geretourneerd `"https%3A%2F%2Fportal.azure.com%2F"` :
 
 ```json
 "[encodeUriComponent('https://portal.azure.com/')]"
@@ -668,7 +667,7 @@ In het volgende voor `"https%3A%2F%2Fportal.azure.com%2F"`beeld wordt geretourne
 ### <a name="decodeuricomponent"></a>decodeUriComponent
 Decodeert de para meter van een URL-gecodeerde teken reeks. Deze functie ondersteunt alleen para meters van het type String.
 
-In het volgende voor `"https://portal.azure.com/"`beeld wordt geretourneerd:
+In het volgende voor beeld wordt geretourneerd `"https://portal.azure.com/"` :
 
 ```json
 "[decodeUriComponent('https%3A%2F%2Fportal.azure.com%2F')]"
@@ -678,7 +677,7 @@ In het volgende voor `"https://portal.azure.com/"`beeld wordt geretourneerd:
 ### <a name="add"></a>add
 Telt twee getallen op en retourneert het resultaat.
 
-In het volgende voor `3`beeld wordt geretourneerd:
+In het volgende voor beeld wordt geretourneerd `3` :
 
 ```json
 "[add(1, 2)]"
@@ -687,7 +686,7 @@ In het volgende voor `3`beeld wordt geretourneerd:
 ### <a name="sub"></a>sub
 Trekt het tweede getal af van het eerste getal en retourneert het resultaat.
 
-In het volgende voor `1`beeld wordt geretourneerd:
+In het volgende voor beeld wordt geretourneerd `1` :
 
 ```json
 "[sub(3, 2)]"
@@ -696,7 +695,7 @@ In het volgende voor `1`beeld wordt geretourneerd:
 ### <a name="mul"></a>mul
 Vermenigvuldigt twee getallen en retourneert het resultaat.
 
-In het volgende voor `6`beeld wordt geretourneerd:
+In het volgende voor beeld wordt geretourneerd `6` :
 
 ```json
 "[mul(2, 3)]"
@@ -705,7 +704,7 @@ In het volgende voor `6`beeld wordt geretourneerd:
 ### <a name="div"></a>div
 Deelt het eerste getal door het tweede getal en retourneert het resultaat. Het resultaat is altijd een geheel getal.
 
-In het volgende voor `2`beeld wordt geretourneerd:
+In het volgende voor beeld wordt geretourneerd `2` :
 
 ```json
 "[div(6, 3)]"
@@ -714,13 +713,13 @@ In het volgende voor `2`beeld wordt geretourneerd:
 ### <a name="mod"></a>mod
 Deelt het eerste getal door het tweede getal en retourneert de rest.
 
-In het volgende voor `0`beeld wordt geretourneerd:
+In het volgende voor beeld wordt geretourneerd `0` :
 
 ```json
 "[mod(6, 3)]"
 ```
 
-In het volgende voor `2`beeld wordt geretourneerd:
+In het volgende voor beeld wordt geretourneerd `2` :
 
 ```json
 "[mod(6, 4)]"
@@ -729,16 +728,16 @@ In het volgende voor `2`beeld wordt geretourneerd:
 ### <a name="min"></a>min.
 Retourneert de kleine van de twee getallen.
 
-In het volgende voor `1`beeld wordt geretourneerd:
+In het volgende voor beeld wordt geretourneerd `1` :
 
 ```json
 "[min(1, 2)]"
 ```
 
-### <a name="max"></a>aantal
+### <a name="max"></a>max
 Retourneert de grootste van de twee getallen.
 
-In het volgende voor `2`beeld wordt geretourneerd:
+In het volgende voor beeld wordt geretourneerd `2` :
 
 ```json
 "[max(1, 2)]"
@@ -747,7 +746,7 @@ In het volgende voor `2`beeld wordt geretourneerd:
 ### <a name="range"></a>bereik
 Hiermee wordt een reeks integraal cijfers binnen het opgegeven bereik gegenereerd.
 
-In het volgende voor `[1,2,3]`beeld wordt geretourneerd:
+In het volgende voor beeld wordt geretourneerd `[1,2,3]` :
 
 ```json
 "[range(1, 3)]"
@@ -756,7 +755,7 @@ In het volgende voor `[1,2,3]`beeld wordt geretourneerd:
 ### <a name="rand"></a>ASELECT
 Retourneert een wille keurig integraal getal binnen het opgegeven bereik. Met deze functie worden geen cryptografisch beveiligde wille keurige getallen gegenereerd.
 
-Het volgende voor beeld kan `42`resulteren in:
+Het volgende voor beeld kan resulteren in `42` :
 
 ```json
 "[rand(-100, 100)]"
@@ -765,7 +764,7 @@ Het volgende voor beeld kan `42`resulteren in:
 ### <a name="floor"></a>Floor
 Retourneert de grootste integer die kleiner dan of gelijk aan het opgegeven getal is.
 
-In het volgende voor `3`beeld wordt geretourneerd:
+In het volgende voor beeld wordt geretourneerd `3` :
 
 ```json
 "[floor(3.14)]"
@@ -774,7 +773,7 @@ In het volgende voor `3`beeld wordt geretourneerd:
 ### <a name="ceil"></a>ceil
 Retourneert het grootste gehele getal dat groter is dan of gelijk is aan het opgegeven getal.
 
-In het volgende voor `4`beeld wordt geretourneerd:
+In het volgende voor beeld wordt geretourneerd `4` :
 
 ```json
 "[ceil(3.14)]"
@@ -784,7 +783,7 @@ In het volgende voor `4`beeld wordt geretourneerd:
 ### <a name="utcnow"></a>utcNow
 Retourneert een teken reeks in de ISO 8601-notatie van de huidige datum en tijd op de lokale computer.
 
-Het volgende voor beeld kan `"1990-12-31T23:59:59.000Z"`resulteren in:
+Het volgende voor beeld kan resulteren in `"1990-12-31T23:59:59.000Z"` :
 
 ```json
 "[utcNow()]"
@@ -793,7 +792,7 @@ Het volgende voor beeld kan `"1990-12-31T23:59:59.000Z"`resulteren in:
 ### <a name="addseconds"></a>addSeconds
 Voegt een integraal aantal seconden toe aan de opgegeven tijds tempel.
 
-In het volgende voor `"1991-01-01T00:00:00.000Z"`beeld wordt geretourneerd:
+In het volgende voor beeld wordt geretourneerd `"1991-01-01T00:00:00.000Z"` :
 
 ```json
 "[addSeconds('1990-12-31T23:59:60Z', 1)]"
@@ -802,7 +801,7 @@ In het volgende voor `"1991-01-01T00:00:00.000Z"`beeld wordt geretourneerd:
 ### <a name="addminutes"></a>addMinutes
 Voegt een integraal aantal minuten toe aan de opgegeven tijds tempel.
 
-In het volgende voor `"1991-01-01T00:00:59.000Z"`beeld wordt geretourneerd:
+In het volgende voor beeld wordt geretourneerd `"1991-01-01T00:00:59.000Z"` :
 
 ```json
 "[addMinutes('1990-12-31T23:59:59Z', 1)]"
@@ -811,7 +810,7 @@ In het volgende voor `"1991-01-01T00:00:59.000Z"`beeld wordt geretourneerd:
 ### <a name="addhours"></a>addHours
 Voegt een integraal aantal uren toe aan de opgegeven tijds tempel.
 
-In het volgende voor `"1991-01-01T00:59:59.000Z"`beeld wordt geretourneerd:
+In het volgende voor beeld wordt geretourneerd `"1991-01-01T00:59:59.000Z"` :
 
 ```json
 "[addHours('1990-12-31T23:59:59Z', 1)]"

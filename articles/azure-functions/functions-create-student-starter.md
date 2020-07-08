@@ -7,10 +7,9 @@ ms.topic: how-to
 ms.date: 04/29/2020
 ms.author: alkarche
 ms.openlocfilehash: ffb6378d3dc4cc3fb23ea62157aad393d8ae6642
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/12/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "83122826"
 ---
 # <a name="create-a-function-using-azure-for-students-starter"></a>Een functie maken met behulp van Azure for students starter
@@ -31,23 +30,23 @@ Met Azure Functions kunt u uw code in een [serverloze](https://azure.microsoft.c
 
 ## <a name="sign-in-to-azure"></a>Aanmelden bij Azure
 
-Meld u aan bij de [Azure Portal](https://portal.azure.com) met uw Azure-account.
+Meld u met uw Azure-account aan bij [Azure Portal](https://portal.azure.com).
 
 ## <a name="create-a-function-app"></a>Een functie-app maken
 
-U moet een functie-app hebben die als host fungeert voor de uitvoering van uw functies. Met een functie-app kunt u functies groeperen als een logische eenheid, zodat u resources eenvoudiger kunt beheren, implementeren, schalen en delen.
+U moet een functie-app hebben die als host fungeert voor de uitvoering van uw functies. Met een functie-app kunt u functies groeperen in een logische eenheid, zodat u resources eenvoudiger kunt beheren, implementeren, schalen en delen.
 
 [!INCLUDE [Create function app Azure portal](../../includes/functions-create-function-app-portal.md)]
 
 Vervolgens maakt u een functie in de nieuwe functie-app.
 
-## <a name="create-an-http-trigger-function"></a><a name="create-function"></a>Een HTTP-trigger functie maken
+## <a name="create-an-http-trigger-function"></a><a name="create-function"></a>Een HTTP-triggerfunctie maken
 
-1. Selecteer in het menu links van het venster **functies** de optie **functies**en selecteer vervolgens **toevoegen** in het bovenste menu. 
+1. Selecteer in het menu links van het venster **Functies** de optie **Functies** en selecteer vervolgens **Toevoegen** in het bovenste menu. 
  
 1. Selecteer **http-trigger**in het venster **nieuwe functie** .
 
-    ![HTTP-trigger functie kiezen](./media/functions-create-student-starter/function-app-select-http-trigger.png)
+    ![HTTP-triggerfunctie kiezen](./media/functions-create-student-starter/function-app-select-http-trigger.png)
 
 1. Accepteer in het venster **nieuwe functie** de standaard naam voor de **nieuwe functie**of voer een nieuwe naam in. 
 
@@ -89,7 +88,7 @@ In azure for students starter hebt u toegang tot de meeste functies van de Azure
     * Alle invoer-en uitvoer bindingen worden ondersteund. [Bekijk hier de volledige lijst.](functions-triggers-bindings.md)
 * Ondersteunde talen: 
     * C# (.NET Core 2)
-    * Java script (node. js 8 & 10)
+    * Java script (Node.js 8 & 10)
     * F # (.NET Core 2)
     * [Bekijk hier de talen die in hogere plannen worden ondersteund](supported-languages.md)
 * Windows is het enige besturings systeem dat wordt ondersteund.
@@ -103,7 +102,7 @@ U bent nu klaar met het maken van een functie-app met een eenvoudige HTTP-active
 
  * [Uw eerste functie maken met Visual Studio](./functions-create-your-first-function-visual-studio.md)
  * [Uw eerste functie maken met Visual Studio Code](./functions-create-first-function-vs-code.md)
- * [Ontwikkelaars handleiding voor Azure Functions java script](./functions-reference-node.md)
+ * [Ontwikkelaarshandleiding voor Azure Functions Javascript](./functions-reference-node.md)
  * [Azure Functions gebruiken om verbinding te maken met een Azure SQL Database](./functions-scenario-database-table-cleanup.md)
  * [Meer informatie over Azure functions HTTP-bindingen](./functions-bindings-http-webhook.md).
  * [Uw Azure Functions bewaken](./functions-monitoring.md)

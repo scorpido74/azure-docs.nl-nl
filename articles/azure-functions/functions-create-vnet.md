@@ -7,10 +7,9 @@ ms.date: 4/23/2020
 ms.author: alkarche
 ms.reviewer: glenga
 ms.openlocfilehash: e1babfa188a29e79cb52cd14af19d552123345f1
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/12/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "83122644"
 ---
 # <a name="tutorial-integrate-functions-with-an-azure-virtual-network"></a>Zelfstudie: Azure Functions integreren met een virtueel Azure-netwerk
@@ -34,9 +33,9 @@ Functies die worden uitgevoerd in het Premium-abonnement hebben dezelfde hosting
 
 ## <a name="prerequisites"></a>Vereisten
 
-Voor deze zelf studie is het belang rijk dat u inzicht hebt in IP-adres sering en-subnetten. U kunt beginnen met [dit artikel voor informatie over de basis principes van adres sering en subnetten](https://support.microsoft.com/help/164015/understanding-tcp-ip-addressing-and-subnetting-basics). Er zijn veel meer artikelen en Video's online beschikbaar.
+Voor deze zelfstudie is het belangrijk dat u inzicht hebt in IP-adressering en subnetten. U kunt beginnen met [dit artikel waarin de basisprincipes van adressering en subnetten worden beschreven](https://support.microsoft.com/help/164015/understanding-tcp-ip-addressing-and-subnetting-basics). Er zijn veel meer artikelen en video's online beschikbaar.
 
-Als u nog geen abonnement op Azure hebt, maak dan een [gratis account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) aan voordat u begint.
+Als u nog geen abonnement op Azure hebt, maakt u een [gratis account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) aan voordat u begint.
 
 ## <a name="create-a-function-app-in-a-premium-plan"></a>Een functie-app maken in een Premium-abonnement
 
@@ -54,31 +53,31 @@ Maak vervolgens een vooraf geconfigureerde virtuele machine die WordPress in een
 
 1. Kies **WordPress LEMP max performance** in de zoek resultaten. Selecteer een software abonnement van **WordPress LEMP max performance voor CentOS** als het **Software abonnement** en selecteer **maken**.
 
-1. Op het tabblad **basis beginselen** gebruikt u de VM-instellingen zoals opgegeven in de tabel onder de installatie kopie:
+1. Gebruik in het tabblad **Basisbeginselen** de VM-instellingen die in de tabel onder de afbeelding zijn opgegeven:
 
     ![Tabblad basis voor het maken van een VM](./media/functions-create-vnet/create-vm-1.png)
 
     | Instelling      | Voorgestelde waarde  | Beschrijving      |
     | ------------ | ---------------- | ---------------- |
-    | **Abonnement** | Uw abonnement | Het abonnement waarmee uw resources worden gemaakt. | 
+    | **Abonnement** | Uw abonnement | Het abonnement waarmee deze nieuwe resources zijn gemaakt. | 
     | **[Resourcegroep](../azure-resource-manager/management/overview.md)**  | myResourceGroup | Kies `myResourceGroup` of de resource groep die u hebt gemaakt met uw functie-app. Als u dezelfde resource groep gebruikt voor de functie-app, WordPress VM en hosting plan, is het eenvoudiger om resources te verwijderen wanneer u klaar bent met deze zelf studie. |
-    | **Naam van de virtuele machine** | VNET-WordPress | De naam van de virtuele machine moet uniek zijn in de resource groep |
-    | **[Deel](https://azure.microsoft.com/regions/)** | Europa Europa - west | Kies een regio bij u in de buurt of in de buurt van de functies die toegang hebben tot de virtuele machine. |
+    | **Naam van virtuele machine** | VNET-WordPress | De VM-naam moet uniek zijn in de resourcegroep |
+    | **[Regio](https://azure.microsoft.com/regions/)** | Europa Europa - west | Kies een regio bij u in de buurt of in de buurt van de functies die toegang hebben tot de virtuele machine. |
     | **Grootte** | B1s | Kies **grootte wijzigen** en selecteer vervolgens de B1s standaard installatie kopie met 1 vCPU en 1 GB aan geheugen. |
-    | **Verificatie type** | Wachtwoord | Als u wachtwoord verificatie wilt gebruiken, moet u ook een **gebruikers naam**, een veilig **wacht woord**opgeven en vervolgens het **wacht woord bevestigen**. Voor deze zelf studie hoeft u zich niet aan te melden bij de VM, tenzij u problemen moet oplossen. |
+    | **Verificatietype** | Wachtwoord | Als u wachtwoord verificatie wilt gebruiken, moet u ook een **gebruikers naam**, een veilig **wacht woord**opgeven en vervolgens het **wacht woord bevestigen**. Voor deze zelf studie hoeft u zich niet aan te melden bij de VM, tenzij u problemen moet oplossen. |
 
 1. Kies het tabblad **netwerken** en selecteer onder virtuele netwerken configureren de optie **nieuwe maken**.
 
-1. In **virtueel netwerk maken**gebruikt u de instellingen in de tabel onder de installatie kopie:
+1. Gebruik in **Virtueel netwerk maken** de instellingen in de tabel onder de afbeelding:
 
     ![Tabblad netwerk van virtuele machine maken](./media/functions-create-vnet/create-vm-2.png)
 
     | Instelling      | Voorgestelde waarde  | Beschrijving      |
     | ------------ | ---------------- | ---------------- |
-    | **Naam** | myResourceGroup-vnet | U kunt de standaard naam die voor het virtuele netwerk is gegenereerd, gebruiken. |
-    | **Adresbereik** | 10.10.0.0/16 | Gebruik één adres bereik voor het virtuele netwerk. |
-    | **Subnetnaam** | Zelf studie-net | De naam van het subnet. |
-    | **Adres bereik** (subnet) | 10.10.1.0/24   | De subnet grootte definieert het aantal interfaces dat aan het subnet kan worden toegevoegd. Dit subnet wordt gebruikt door de WordPress-site.  Een `/24` subnet biedt 254 hostadressen. |
+    | **Naam** | myResourceGroup-vnet | U kunt de standaardnaam gebruiken die voor het virtuele netwerk is gegenereerd. |
+    | **Adresbereik** | 10.10.0.0/16 | Gebruik één adresbereik voor het virtuele netwerk. |
+    | **Subnetnaam** | Zelf studie-net | Naam van het subnet. |
+    | **Adresbereik** (subnet) | 10.10.1.0/24   | De subnetgrootte bepaalt hoeveel interfaces aan het subnet kunnen worden toegevoegd. Dit subnet wordt gebruikt door de WordPress-site.  Een `/24` subnet biedt 254 hostadressen. |
 
 1. Selecteer **OK** om het virtuele netwerk te maken.
 
@@ -86,7 +85,7 @@ Maak vervolgens een vooraf geconfigureerde virtuele machine die WordPress in een
 
 1. Kies het tabblad **beheer** en kies vervolgens in het **opslag account voor diagnostische gegevens**het opslag account dat u hebt gemaakt met uw functie-app.
 
-1. Selecteer **controleren + maken**. Nadat de validatie is voltooid, selecteert u **maken**. Het proces voor het maken van de virtuele machine duurt een paar minuten. De gemaakte VM heeft alleen toegang tot het virtuele netwerk.
+1. Selecteer **Controleren + maken**. Nadat de validatie is voltooid, selecteert u **Maken**. Het proces voor het maken van de virtuele machine duurt een paar minuten. De gemaakte VM heeft alleen toegang tot het virtuele netwerk.
 
 1. Nadat de VM is gemaakt, kiest u **naar resource gaan** om de pagina voor de nieuwe virtuele machine weer te geven. Kies vervolgens **netwerken** onder **instellingen**.
 
@@ -117,7 +116,7 @@ Met een WordPress-site die wordt uitgevoerd op een virtuele machine in een virtu
     | Instelling      | Voorgestelde waarde  | Beschrijving      |
     | ------------ | ---------------- | ---------------- |
     | **Virtual Network** | MyResourceGroup-vnet | Dit virtuele netwerk is de versie die u eerder hebt gemaakt. |
-    | **Subnetrouter** | Nieuw subnet maken | Maak een subnet in het virtuele netwerk voor de functie-app die u wilt gebruiken. VNet-integratie moet worden geconfigureerd voor het gebruik van een leeg subnet. Het maakt niet uit of uw functies een ander subnet dan uw VM gebruiken. Het virtuele netwerk routeert automatisch verkeer tussen de twee subnetten. |
+    | **Subnet** | Nieuw subnet maken | Maak een subnet in het virtuele netwerk voor de functie-app die u wilt gebruiken. VNet-integratie moet worden geconfigureerd voor het gebruik van een leeg subnet. Het maakt niet uit of uw functies een ander subnet dan uw VM gebruiken. Het virtuele netwerk routeert automatisch verkeer tussen de twee subnetten. |
     | **Subnetnaam** | Function-net | Naam van het nieuwe subnet. |
     | **Adres blok van virtueel netwerk** | 10.10.0.0/16 | Kies hetzelfde adres blok dat wordt gebruikt door de WordPress-site. Er mag slechts één adres blok zijn gedefinieerd. |
     | **Adresbereik** | 10.10.2.0/24   | De grootte van het subnet beperkt het totale aantal exemplaren dat kan worden uitgeschaald door uw Premium-plan functie-app. In dit voor beeld wordt een `/24` subnet met 254 beschik bare host-adressen gebruikt. Dit subnet is te veel ingericht, maar kan eenvoudig worden berekend. |
@@ -132,7 +131,7 @@ Als VNet-integratie is ingeschakeld, kunt u een proxy in uw functie-app maken om
 
 1. Selecteer in de functie-app **proxy's** in het menu links en selecteer vervolgens **toevoegen**. Gebruik de proxy instellingen in de tabel onder de installatie kopie:
 
-    :::image type="content" source="./media/functions-create-vnet/create-proxy.png" alt-text="De proxy-instellingen definiëren":::
+    :::image type="content" source="./media/functions-create-vnet/create-proxy.png" alt-text="Definieer de proxyinstellingen":::
 
     | Instelling  | Voorgestelde waarde  | Beschrijving      |
     | -------- | ---------------- | ---------------- |
@@ -142,7 +141,7 @@ Als VNet-integratie is ingeschakeld, kunt u een proxy in uw functie-app maken om
 
 1. Selecteer **maken** om de proxy toe te voegen aan uw functie-app.
 
-## <a name="try-it-out"></a>Beleid uitproberen
+## <a name="try-it-out"></a>Uitproberen
 
 1. Probeer in uw browser toegang te krijgen tot de URL die u hebt gebruikt als de **back-end-URL**. Zoals verwacht, is er een time-out voor de aanvraag. Er treedt een time-out op omdat uw WordPress-site alleen is verbonden met uw virtuele netwerk en niet via internet.
 
@@ -161,6 +160,6 @@ In deze zelf studie fungeert de WordPress-site als een API die wordt aangeroepen
 Functies die worden uitgevoerd in een Premium-abonnement, delen dezelfde onderliggende App Service-infra structuur als web-apps in PremiumV2-abonnementen. Alle documentatie voor [Web-apps in azure app service](../app-service/overview.md) is van toepassing op de functies van uw Premium-abonnement.
 
 > [!div class="nextstepaction"]
-> [Meer informatie over de netwerk opties in functions](./functions-networking-options.md)
+> [Meer informatie over de netwerkopties in Functions](./functions-networking-options.md)
 
 [Premium-abonnement]: functions-scale.md#premium-plan

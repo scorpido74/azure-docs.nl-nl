@@ -9,10 +9,9 @@ ms.service: azure-maps
 services: azure-maps
 manager: ''
 ms.openlocfilehash: e04f3d2f5ed575e9401c53faebd91b3bde004601
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/12/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "83123884"
 ---
 # <a name="azure-maps-routing-coverage"></a>Routerings dekking Azure Maps
@@ -23,7 +22,7 @@ Bekijk de dekking voor [**geocodering**](geocoding-coverage.md).
 Bekijk de dekking van [**verkeer**](traffic-coverage.md).  
 Bekijk de dekking voor [**weer gave**](render-coverage.md).
 <br>  
-**Labels**
+**Legenda**
 
 | Symbool             | Betekenis                                |
 |--------------------|----------------------------------------|
@@ -60,7 +59,7 @@ De volgende tabel bevat informatie over de dekking van Azure Maps route ring.
 | Lesotho                        |        Ø        |         ✓            |             |
 | Malawi                         |        ✓       |                       |              |
 | Mali                           |        ✓       |                       |             |
-| Mauretanië                     |        ✓       |                       |             |
+| Mauritanië                     |        ✓       |                       |             |
 | Mauritius, Mayotte en Réunion |        ✓      |                       |             |
 | Marokko                        |        ✓       |                       |             |
 | Mozambique                     |        ✓       |         ✓            |             |
@@ -103,7 +102,7 @@ De volgende tabel bevat informatie over de dekking van Azure Maps route ring.
 | Grenada                        |        ✓       |                      |             |
 | Guatemala                      |        ✓       |                      |             |
 | Guyana                         |        ✓       |                      |             |
-| Haiti                          |        ✓       |                      |             |
+| Haïti                          |        ✓       |                      |             |
 | Honduras                       |        ✓       |                      |             |
 | Jamaica                        |        ✓       |                      |             |
 | Mexico                         |        ✓       |         ✓            |     ✓      | 
@@ -166,7 +165,7 @@ De volgende tabel bevat informatie over de dekking van Azure Maps route ring.
 | Bulgarije                       |        ✓       |         ✓            |     ✓      | 
 | Kroatië                        |        ✓       |         ✓            |     ✓      |
 | Cyprus                         |        ✓       |                      |             |
-| Tsjechië                 |        ✓       |         ✓            |     ✓      |
+| Tsjechische Republiek                 |        ✓       |         ✓            |     ✓      |
 | Denemarken                        |        ✓       |         ✓            |     ✓      |
 | + Faeröer                 |        ✓       |                      |             |
 | Estland                        |        ✓       |         ✓            |     ✓      |
@@ -222,7 +221,7 @@ De volgende tabel bevat informatie over de dekking van Azure Maps route ring.
 | + Gibraltar                     |        ✓       |         ✓            |             | 
 | + Montserrat                    |        ✓       |                      |             |
 | + Turks-en Caicos-eilanden      |        ✓       |                      |             |
-| Vaticaan stad                   |        ✓       |         ✓            |             |
+| Vaticaanstad                   |        ✓       |         ✓            |             |
 | Isle of Man                    |        ✓       |                      |             |
 
 

@@ -6,10 +6,9 @@ ms.topic: how-to
 ms.date: 04/16/2020
 ms.custom: mvc, cc996988-fb4f-47
 ms.openlocfilehash: be539efdb66b0a9bda583960484f40fae1e18235
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/12/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "83123397"
 ---
 # <a name="create-a-function-in-azure-that-is-triggered-by-a-timer"></a>Maak een functie in Azure die wordt geactiveerd door een timer
@@ -18,7 +17,7 @@ Meer informatie over het gebruik van Azure Functions om een functie zonder [Serv
 
 ## <a name="prerequisites"></a>Vereisten
 
-Vereisten om deze zelfstudie te voltooien:
+Vereisten voor het voltooien van deze zelfstudie:
 
 + Als u nog geen abonnement op Azure hebt, maak dan een [gratis account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) aan voordat u begint.
 
@@ -49,7 +48,7 @@ Uw nieuwe functie-app is klaar voor gebruik. Vervolgens maakt u een functie in d
     | Instelling | Voorgestelde waarde | Beschrijving |
     |---|---|---|
     | **Naam** | Standaard | Bepaalt de naam van de door de timer geactiveerde functie. |
-    | **Planning** | 0 \* /1 \* \* \*\* | Een [CRON-expressie](functions-bindings-timer.md#ncrontab-expressions) met zes velden aan de hand waarvan uw functie elke minuut wordt uitgevoerd. |
+    | **Schema** | 0 \* /1 \* \* \*\* | Een [CRON-expressie](functions-bindings-timer.md#ncrontab-expressions) met zes velden aan de hand waarvan uw functie elke minuut wordt uitgevoerd. |
 
 ## <a name="test-the-function"></a>De functie testen
 

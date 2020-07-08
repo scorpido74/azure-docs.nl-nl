@@ -16,10 +16,9 @@ ms.date: 05/07/2020
 ms.author: willzhan
 ms.reviewer: dwgeo
 ms.openlocfilehash: 618803e8e94f96a63e0c39c27b40a933acac7cb4
-ms.sourcegitcommit: 309a9d26f94ab775673fd4c9a0ffc6caa571f598
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/09/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82995527"
 ---
 # <a name="offline-fairplay-streaming-for-ios"></a>Offline FairPlay-streaming voor iOS 
@@ -134,7 +133,7 @@ Ondersteuning voor de offline modus van FPS is alleen beschikbaar op iOS 10 en h
 
 Deze stappen laten zien hoe u een actieve iOS-speler kunt instellen. Als u begint met het HLSCatalog-voor beeld in FPS Server SDK version 4.0.1, moet u de volgende code wijzigingen aanbrengen:
 
-Implementeer de-methode `requestContentKeyFromKeySecurityModule(spcData: Data, assetID: String)` in HLSCatalog\Shared\Managers\ContentKeyDelegate.Swift met behulp van de volgende code. Stel ' drmUr ' een variabele toe die is toegewezen aan de HLS-URL.
+Implementeer de-methode in HLSCatalog\Shared\Managers\ContentKeyDelegate.swift `requestContentKeyFromKeySecurityModule(spcData: Data, assetID: String)` met behulp van de volgende code. Stel ' drmUr ' een variabele toe die is toegewezen aan de HLS-URL.
 
 ```swift
     var ckcData: Data? = nil
@@ -167,7 +166,7 @@ Implementeer de-methode `requestContentKeyFromKeySecurityModule(spcData: Data, a
     return ckcData
 ```
 
-Implementeer de-methode `requestApplicationCertificate()`in HLSCatalog\Shared\Managers\ContentKeyDelegate.Swift. Deze implementatie is afhankelijk van het feit of u het certificaat (alleen open bare sleutel) insluit met het apparaat of als host van het certificaat op het web. De volgende implementatie maakt gebruik van het certificaat van de gehoste toepassing die wordt gebruikt in de test voorbeelden. Laat ' certUrl ' een variabele zijn die de URL van het toepassings certificaat bevat.
+Implementeer de-methode in HLSCatalog\Shared\Managers\ContentKeyDelegate.swift `requestApplicationCertificate()` . Deze implementatie is afhankelijk van het feit of u het certificaat (alleen open bare sleutel) insluit met het apparaat of als host van het certificaat op het web. De volgende implementatie maakt gebruik van het certificaat van de gehoste toepassing die wordt gebruikt in de test voorbeelden. Laat ' certUrl ' een variabele zijn die de URL van het toepassings certificaat bevat.
 
 ```swift
 func requestApplicationCertificate() throws -> Data {
@@ -212,11 +211,11 @@ De volgende veelgestelde vragen bieden hulp bij het oplossen van problemen:
 `Microsoft.WindowsAzure.MediaServices.Client.FairPlay.FairPlayConfiguration.CreateSerializedFairPlayOptionConfiguration(objX509Certificate2, pfxPassword, pfxPasswordId, askId, iv, RentalAndLeaseKeyType.PersistentUnlimited, 0x9999);`
 
     Zie de [methode FairPlayConfiguration. CreateSerializedFairPlayOptionConfiguration](https://docs.microsoft.com/dotnet/api/microsoft.windowsazure.mediaservices.client.FairPlay.FairPlayconfiguration.createserializedFairPlayoptionconfiguration?view=azure-dotnet)voor de documentatie voor deze API. De para meter vertegenwoordigt de duur van de offline huur, met als tweede als eenheid.
-- **Wat is de gedownloade/offline bestands structuur op iOS-apparaten?** De gedownloade bestands structuur op een iOS-apparaat ziet eruit als in de volgende scherm afbeelding. De `_keys` map slaat de gedownloade fps-licenties op, met één archief bestand voor elke host van de licentie service. De `.movpkg` map slaat audio-en video-inhoud op. De eerste map met een naam die eindigt op een streepje gevolgd door een numeriek bevat video-inhoud. De numerieke waarde is de PeakBandwidth van de video weergaven. De tweede map met een naam die eindigt op een streepje gevolgd door 0, bevat audio-inhoud. De derde map met de naam ' data ' bevat de lijst Master van de FPS-inhoud. Ten slotte biedt boot. XML een volledige beschrijving van de `.movpkg` inhoud van de map. 
+- **Wat is de gedownloade/offline bestands structuur op iOS-apparaten?** De gedownloade bestands structuur op een iOS-apparaat ziet eruit als in de volgende scherm afbeelding. De `_keys` map slaat de gedownloade fps-licenties op, met één archief bestand voor elke host van de licentie service. De `.movpkg` map slaat audio-en video-inhoud op. De eerste map met een naam die eindigt op een streepje gevolgd door een numeriek bevat video-inhoud. De numerieke waarde is de PeakBandwidth van de video weergaven. De tweede map met een naam die eindigt op een streepje gevolgd door 0, bevat audio-inhoud. De derde map met de naam ' data ' bevat de lijst Master van de FPS-inhoud. Ten slotte biedt boot.xml een volledige beschrijving van de `.movpkg` inhoud van de map. 
 
 ![Bestands structuur van de offline-FairPlay iOS-voorbeeld toepassing](media/media-services-protect-hls-with-offline-FairPlay/media-services-offline-FairPlay-file-structure.png)
 
-Een voor beeld van een boot. XML-bestand:
+Een voor beeld van een boot.xml bestand:
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
 <HLSMoviePackage xmlns:xsi="https://www.w3.org/2001/XMLSchema-instance" xmlns="http://apple.com/IMG/Schemas/HLSMoviePackage" xsi:schemaLocation="http://apple.com/IMG/Schemas/HLSMoviePackage /System/Library/Schemas/HLSMoviePackage.xsd">
@@ -247,7 +246,7 @@ Een voor beeld van een boot. XML-bestand:
 
 ## <a name="additional-notes"></a>Aanvullende opmerkingen
 
-* Widevine is een service van Google Inc. en is onderworpen aan de service voorwaarden en het privacybeleid van Google, Inc.
+* Widevine is een service van Google Inc. en is onderworpen aan de servicevoorwaarden en het privacybeleid van Google Inc.
 
 ## <a name="summary"></a>Samenvatting
 Dit document bevat de volgende stappen en informatie die u kunt gebruiken voor het implementeren van de offline modus FPS:

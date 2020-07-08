@@ -8,10 +8,9 @@ ms.date: 11/14/2019
 ms.author: ant
 ms.topic: conceptual
 ms.openlocfilehash: 6fa959b1c9ed021a97031ba03822ae89fbbb7bbb
-ms.sourcegitcommit: 999ccaf74347605e32505cbcfd6121163560a4ae
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/08/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82983071"
 ---
 # <a name="troubleshoot-web-application-firewall-waf-for-azure-application-gateway"></a>Problemen met Web Application firewall (WAF) voor Azure-toepassing gateway oplossen
@@ -182,7 +181,7 @@ Dit is een veld dat u kunt uitsluiten. Zie voor meer informatie over uitsluiting
 
 U kunt ook de logboeken van de firewall bekijken om de informatie op te halen om te zien wat u moet toevoegen aan de uitsluitings lijst. Als u logboek registratie wilt inschakelen, raadpleegt u de [back-end status, bron logboeken en metrische gegevens voor Application Gateway](../../application-gateway/application-gateway-diagnostics.md).
 
-Bekijk het firewall logboek en Bekijk het bestand PT1H. json voor het uur dat de aanvraag die u wilt controleren, heeft plaatsgevonden.
+Bekijk het firewall logboek en Bekijk de PT1H.jsin het bestand voor het uur dat de aanvraag die u wilt controleren, heeft plaatsgevonden.
 
 In dit voor beeld ziet u dat u vier regels met dezelfde TransactionID hebt en dat deze allemaal op exact dezelfde tijd hebben plaatsgevonden:
 
@@ -301,7 +300,7 @@ Fiddler is opnieuw een handig hulp programma om namen van aanvraag headers te vi
 
 ![Fiddler](../media/web-application-firewall-troubleshoot/fiddler-2.png)
 
-Een andere manier om aanvraag-en reactie headers weer te geven, is door te kijken in de ontwikkel tools van Chrome. U kunt op F12 drukken of met de rechter muisknop >**Ontwikkelhulpprogramma's** **inspecteren** -> en het tabblad **netwerk** selecteren. Laad een webpagina en klik op de aanvraag die u wilt inspecteren.
+Een andere manier om aanvraag-en reactie headers weer te geven, is door te kijken in de ontwikkel tools van Chrome. U kunt op F12 drukken of met de rechter muisknop > Ontwikkelhulpprogramma's **inspecteren**  ->  **Developer Tools**en het tabblad **netwerk** selecteren. Laad een webpagina en klik op de aanvraag die u wilt inspecteren.
 
 ![Chrome F12](../media/web-application-firewall-troubleshoot/chrome-f12.png)
 

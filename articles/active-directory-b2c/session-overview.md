@@ -11,10 +11,9 @@ ms.date: 05/07/2020
 ms.author: mimart
 ms.subservice: B2C
 ms.openlocfilehash: ea8c40faad4ee709ae98f868e36fd42e46501bea
-ms.sourcegitcommit: a6d477eb3cb9faebb15ed1bf7334ed0611c72053
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/08/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82927034"
 ---
 # <a name="azure-ad-b2c-session"></a>Azure AD B2C sessie
@@ -37,7 +36,7 @@ Integratie met Azure AD B2C omvat drie typen SSO-sessies:
 
 ### <a name="azure-ad-b2c-sso"></a>Azure AD B2C SSO 
 
-Wanneer een gebruiker is geverifieerd met een lokaal of sociaal account, Azure AD B2C een cookie op basis van cookies opgeslagen op de browser van de gebruiker. De cookie wordt opgeslagen onder de domein naam van de Azure AD B2C Tenant, `https://contoso.b2clogin.com`zoals.
+Wanneer een gebruiker is geverifieerd met een lokaal of sociaal account, Azure AD B2C een cookie op basis van cookies opgeslagen op de browser van de gebruiker. De cookie wordt opgeslagen onder de domein naam van de Azure AD B2C Tenant, zoals `https://contoso.b2clogin.com` .
 
 Als een gebruiker zich voor het eerst aanmeldt met een federatief account en vervolgens tijdens het sessie tijd venster (time-to-Live of TTL) zich aanmeldt bij dezelfde app of een andere app, probeert Azure AD B2C een nieuw toegangs token op te halen uit de federatieve id-provider. Als de sessie van de federatieve id-provider is verlopen of ongeldig is, vraagt de federatieve id-provider de gebruiker om referenties. Als de sessie nog steeds actief is (of als de gebruiker zich heeft aangemeld met een lokaal account in plaats van een Federatie account), wordt de gebruiker door Azure AD B2C geautoriseerd en worden verdere prompts overbodig.
 
@@ -45,7 +44,7 @@ U kunt het gedrag van de sessie configureren, met inbegrip van de sessie-TTL en 
 
 ### <a name="federated-identity-provider-sso"></a>SSO van federatieve id-provider
 
-Een sociaal-of ENTER prise-ID-provider beheert zijn eigen sessie. De cookie wordt opgeslagen onder de domein naam van de identiteits provider, `https://login.salesforce.com`zoals. Azure AD B2C heeft geen invloed op de sessie van de federatieve id-provider. In plaats daarvan wordt het gedrag van de sessie bepaald door de federatieve id-provider. 
+Een sociaal-of ENTER prise-ID-provider beheert zijn eigen sessie. De cookie wordt opgeslagen onder de domein naam van de identiteits provider, zoals `https://login.salesforce.com` . Azure AD B2C heeft geen invloed op de sessie van de federatieve id-provider. In plaats daarvan wordt het gedrag van de sessie bepaald door de federatieve id-provider. 
 
 Denkt u zich het volgende scenario eens in:
 
@@ -57,7 +56,7 @@ Denkt u zich het volgende scenario eens in:
 
 Een web-, mobiele of toepassing met één pagina kan worden beveiligd door OAuth-toegang, ID-tokens of SAML-tokens. Wanneer een gebruiker probeert toegang te krijgen tot een beveiligde bron op de app, controleert de app of er een actieve sessie aan de kant van de toepassing is. Als er geen app-sessie is of de sessie is verlopen, wordt de gebruiker door de app Azure AD B2C op de aanmeldings pagina.
 
-De toepassings sessie kan een op cookies gebaseerde sessie zijn die is opgeslagen onder de naam van het toepassings `https://contoso.com`domein, zoals. Mobiele toepassingen kunnen de sessie op een andere manier opslaan, maar met een vergelijk bare methode.
+De toepassings sessie kan een op cookies gebaseerde sessie zijn die is opgeslagen onder de naam van het toepassings domein, zoals `https://contoso.com` . Mobiele toepassingen kunnen de sessie op een andere manier opslaan, maar met een vergelijk bare methode.
 
 ## <a name="azure-ad-b2c-session-configuration"></a>Configuratie van Azure AD B2C-sessie
 
@@ -95,7 +94,7 @@ Bij een afmeldings aanvraag Azure AD B2C:
 
 1. Hiermee wordt de Azure AD B2C cookie op basis van cookies ongeldig gemaakt.
 1. Pogingen om u af te melden bij federatieve id-providers:
-   - OpenID Connect Connect-als het-eind punt van de ID-provider met `end_session_endpoint` de bekende configuratie een locatie aangeeft.
+   - OpenID Connect Connect-als het-eind punt van de ID-provider met de bekende configuratie een `end_session_endpoint` locatie aangeeft.
    - SAML: als de meta gegevens van de identiteits provider de `SingleLogoutService` locatie bevatten.
 1. U kunt zich optioneel afmelden bij andere toepassingen. Zie de sectie voor [eenmalige afmelding](#single-sign-out) voor meer informatie.
 
@@ -107,10 +106,10 @@ Met de afmelding wordt de status voor eenmalige aanmelding van de gebruiker met 
 > [!NOTE]
 > Deze functie is beperkt tot [aangepast beleid](custom-policy-overview.md).
 
-Wanneer u de gebruiker omleidt naar het eind punt van de Azure AD B2C-afmelding (voor zowel OAuth2-als SAML-protocollen), Azure AD B2C de gebruikers sessie wissen uit de browser. De gebruiker kan echter nog steeds zijn aangemeld bij andere toepassingen die Azure AD B2C voor verificatie gebruiken. Om ervoor te zorgen dat deze toepassingen de gebruiker tegelijk kunnen ondertekenen, stuurt Azure AD B2C een HTTP GET-aanvraag `LogoutUrl` naar de registratie van alle toepassingen waarbij de gebruiker momenteel is aangemeld.
+Wanneer u de gebruiker omleidt naar het eind punt van de Azure AD B2C-afmelding (voor zowel OAuth2-als SAML-protocollen), Azure AD B2C de gebruikers sessie wissen uit de browser. De gebruiker kan echter nog steeds zijn aangemeld bij andere toepassingen die Azure AD B2C voor verificatie gebruiken. Om ervoor te zorgen dat deze toepassingen de gebruiker tegelijk kunnen ondertekenen, stuurt Azure AD B2C een HTTP GET-aanvraag naar de registratie `LogoutUrl` van alle toepassingen waarbij de gebruiker momenteel is aangemeld.
 
 
-Toepassingen moeten reageren op deze aanvraag door een wille keurige sessie te wissen waarmee de `200` gebruiker wordt geïdentificeerd en een antwoord wordt geretourneerd. Als u eenmalige afmelding in uw toepassing wilt ondersteunen, moet u een `LogoutUrl` in de code van uw toepassing implementeren. 
+Toepassingen moeten reageren op deze aanvraag door een wille keurige sessie te wissen waarmee de gebruiker wordt geïdentificeerd en een antwoord wordt geretourneerd `200` . Als u eenmalige afmelding in uw toepassing wilt ondersteunen, moet u een `LogoutUrl` in de code van uw toepassing implementeren. 
 
 ## <a name="next-steps"></a>Volgende stappen
 

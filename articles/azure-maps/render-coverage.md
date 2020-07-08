@@ -9,10 +9,9 @@ ms.service: azure-maps
 services: azure-maps
 manager: ''
 ms.openlocfilehash: e7fffa0e5ab75767ab36c83542ac0e3a9ffb1231
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/12/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "83123935"
 ---
 # <a name="azure-maps-render-coverage"></a>Azure Maps weergave dekking
@@ -61,10 +60,10 @@ Kaarten hebben echter niet hetzelfde niveau van informatie en nauw keurigheid vo
 | Lesotho                          | ✓ | ✓ |
 | Liberia                          | ✓ | Ø |
 | Libië                            | ✓ | Ø |
-| Madagascar                       | ✓ | Ø |
+| Madagaskar                       | ✓ | Ø |
 | Malawi                           | ✓ | ✓ |
 | Mali                             | ✓ | ✓ |
-| Mauretanië                       | ✓ | ✓ |
+| Mauritanië                       | ✓ | ✓ |
 | Mauritius                        | ✓ | ✓ |
 | Mayotte                          | ✓ | ✓ |
 | Marokko                          | ✓ | ✓ |
@@ -122,7 +121,7 @@ Kaarten hebben echter niet hetzelfde niveau van informatie en nauw keurigheid vo
 | Guadeloupe                | ✓ | ✓ |
 | Guatemala                 | ✓ | ✓ |
 | Guyana                    | ✓ | ✓ |
-| Haiti                     | ✓ | ✓ |
+| Haïti                     | ✓ | ✓ |
 | Honduras                  | ✓ | ✓ |
 | Jamaica                   | ✓ | ✓ |
 | Martinique                | ✓ | ✓ |
@@ -145,7 +144,7 @@ Kaarten hebben echter niet hetzelfde niveau van informatie en nauw keurigheid vo
 | Zuid-Georgië en de Zuidelijke Sandwich-eilanden | ✓ | ✓ |
 | Suriname                  | ✓ | ✓ |
 | Trinidad en Tobago       | ✓ | ✓ |
-| Turks- en Caicoseilanden  | ✓ | ✓ |
+| Turks- en Caicos-eilanden  | ✓ | ✓ |
 | Verenigde Staten             | ✓ | ✓ |
 | Uruguay                   | ✓ | ✓ |
 | Venezuela                 | ✓ | ✓ |
@@ -176,7 +175,7 @@ Kaarten hebben echter niet hetzelfde niveau van informatie en nauw keurigheid vo
 | Jordanië                    | ✓ | ✓ |
 | Kazachstan                |   | ✓ |
 | Koeweit                    | ✓ | ✓ |
-| Kirgizië                |   | Ø |
+| Kirgistan                |   | Ø |
 | Laos |   | Ø |
 | Libanon                   | ✓ | ✓ |
 | Macau SAR                 | ✓ | ✓ |
@@ -251,10 +250,10 @@ Kaarten hebben echter niet hetzelfde niveau van informatie en nauw keurigheid vo
 | Bulgarije                  | ✓ | ✓ |
 | Kroatië                   | ✓ | ✓ |
 | Cyprus                    | ✓ | ✓ |
-| Tsjechië            | ✓ | ✓ |
+| Tsjechische Republiek            | ✓ | ✓ |
 | Denemarken                   | ✓ | ✓ |
 | Estland                   | ✓ | ✓ |
-| Faeröer             | ✓ | Ø |
+| Faröer             | ✓ | Ø |
 | Finland                   | ✓ | ✓ |
 | Frankrijk                    | ✓ | ✓ |
 | Georgië                   | ✓ | Ø |
@@ -296,7 +295,7 @@ Kaarten hebben echter niet hetzelfde niveau van informatie en nauw keurigheid vo
 | Turkije                    | ✓ | ✓ |
 | Oekraïne                   | ✓ | ✓ |
 | Verenigd Koninkrijk            | ✓ | ✓ |
-| Vaticaan stad              | ✓ | ✓ |
+| Vaticaanstad              | ✓ | ✓ |
 
 ## <a name="next-steps"></a>Volgende stappen
 

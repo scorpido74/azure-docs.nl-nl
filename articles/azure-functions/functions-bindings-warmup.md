@@ -10,10 +10,9 @@ ms.topic: reference
 ms.date: 11/08/2019
 ms.author: alkarche
 ms.openlocfilehash: 013001eebeec232cc60e31f1a850aeab4fd6c905
-ms.sourcegitcommit: 999ccaf74347605e32505cbcfd6121163560a4ae
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/08/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82982238"
 ---
 # <a name="azure-functions-warm-up-trigger"></a>Opwarmende trigger Azure Functions
@@ -38,7 +37,7 @@ Houd er rekening mee dat de trigger opwarm alleen wordt aangeroepen tijdens scal
 
 ## <a name="trigger---example"></a>Trigger-voor beeld
 
-# <a name="c"></a>[G #](#tab/csharp)
+# <a name="c"></a>[C#](#tab/csharp)
 
 In het volgende voor beeld ziet u een [C#-functie](functions-dotnet-class-library.md) die wordt uitgevoerd op elk nieuw exemplaar wanneer deze wordt toegevoegd aan uw app. Een retour waarde-kenmerk is niet vereist.
 
@@ -76,11 +75,11 @@ namespace WarmupSample
 # <a name="c-script"></a>[C#-script](#tab/csharp-script)
 
 
-In het volgende voor beeld ziet u een opwarm-trigger in een *Function. json* -bestand en een [C#-script functie](functions-reference-csharp.md) die wordt uitgevoerd op elk nieuw exemplaar wanneer het wordt toegevoegd aan uw app.
+In het volgende voor beeld ziet u een opwarm-trigger in een *function.jsin* een bestand en een [C#-script functie](functions-reference-csharp.md) die wordt uitgevoerd op elk nieuw exemplaar wanneer deze wordt toegevoegd aan uw app.
 
 De functie moet de naam ```warmup``` (niet hoofdletter gevoelig) hebben en er mag slechts één opwarm-functie per app zijn.
 
-Hier is het bestand *Function. json* :
+Dit is de *function.jsvoor* het volgende bestand:
 
 ```json
 {
@@ -107,11 +106,11 @@ public static void Run(ILogger log)
 
 # <a name="javascript"></a>[JavaScript](#tab/javascript)
 
-In het volgende voor beeld ziet u een opwarm-trigger in een *Function. json* -bestand en een [Java script-functie](functions-reference-node.md) die wordt uitgevoerd op elk nieuw exemplaar wanneer het wordt toegevoegd aan uw app.
+In het volgende voor beeld ziet u een opwarm-trigger in een *function.jsin* een bestand en een [Java script-functie](functions-reference-node.md) die wordt uitgevoerd op elk nieuw exemplaar wanneer deze wordt toegevoegd aan uw app.
 
 De functie moet de naam ```warmup``` (niet hoofdletter gevoelig) hebben en er mag slechts één opwarm-functie per app zijn.
 
-Hier is het bestand *Function. json* :
+Dit is de *function.jsvoor* het volgende bestand:
 
 ```json
 {
@@ -137,11 +136,11 @@ module.exports = async function (context, warmupContext) {
 
 # <a name="python"></a>[Python](#tab/python)
 
-In het volgende voor beeld ziet u een opwarm-trigger in een *Function. json* -bestand en een [python-functie](functions-reference-python.md) die wordt uitgevoerd op elk nieuw exemplaar wanneer het wordt toegevoegd aan uw app.
+In het volgende voor beeld ziet u een opwarm-trigger in een *function.jsin* het bestand en een [python-functie](functions-reference-python.md) die wordt uitgevoerd op elk nieuw exemplaar wanneer deze wordt toegevoegd aan uw app.
 
 De functie moet de naam ```warmup``` (niet hoofdletter gevoelig) hebben en er mag slechts één opwarm-functie per app zijn.
 
-Hier is het bestand *Function. json* :
+Dit is de *function.jsvoor* het volgende bestand:
 
 ```json
 {
@@ -187,7 +186,7 @@ public void run( ExecutionContext context) {
 
 In [C#-klassen bibliotheken](functions-dotnet-class-library.md) `WarmupTrigger` is het kenmerk beschikbaar voor het configureren van de functie.
 
-# <a name="c"></a>[G #](#tab/csharp)
+# <a name="c"></a>[C#](#tab/csharp)
 
 In dit voor beeld ziet u hoe u het kenmerk [opwarm](https://github.com/Azure/azure-webjobs-sdk-extensions/blob/dev/src/WebJobs.Extensions/Extensions/Warmup/Trigger/WarmupTriggerAttribute.cs) gebruikt.
 
@@ -224,13 +223,13 @@ De trigger opwarm wordt niet ondersteund in Java als een kenmerk.
 
 ## <a name="trigger---configuration"></a>Trigger-configuratie
 
-De volgende tabel bevat informatie over de binding configuratie-eigenschappen die u hebt ingesteld in het bestand *Function. json* en het- `WarmupTrigger` kenmerk.
+De volgende tabel bevat uitleg over de binding configuratie-eigenschappen die u hebt ingesteld in de *function.jsvoor* het bestand en het `WarmupTrigger` kenmerk.
 
-|function. json-eigenschap | Kenmerk eigenschap |Beschrijving|
+|function.jsbij eigenschap | Kenmerk eigenschap |Description|
 |---------|---------|----------------------|
-| **voert** | n.v.t.| Vereist: moet worden ingesteld op `warmupTrigger` . |
-| **draaien** | n.v.t.| Vereist: moet worden ingesteld op `in` . |
-| **naam** | n.v.t.| Vereist: de naam van de variabele die wordt gebruikt in de functie code.|
+| **type** | N.v.t.| Vereist: moet worden ingesteld op `warmupTrigger` . |
+| **direction** | N.v.t.| Vereist: moet worden ingesteld op `in` . |
+| **naam** | N.v.t.| Vereist: de naam van de variabele die wordt gebruikt in de functie code.|
 
 ## <a name="trigger---usage"></a>Trigger-gebruik
 

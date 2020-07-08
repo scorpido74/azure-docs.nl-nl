@@ -11,10 +11,9 @@ ms.topic: article
 ms.date: 05/08/2020
 ms.author: juliako
 ms.openlocfilehash: 405533aad8247350d45cc53009abe6b58a511264
-ms.sourcegitcommit: ac4a365a6c6ffa6b6a5fbca1b8f17fde87b4c05e
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/10/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "83005932"
 ---
 # <a name="create-a-video-indexer-account-connected-to-azure"></a>Een Video Indexer-account maken dat is verbonden met Azure
@@ -131,7 +130,7 @@ Als de verbinding met Azure is mislukt, kunt u proberen om het probleem op te lo
     2. Selecteer de [verificatie methode](../previous/media-services-portal-get-started-with-aad.md)voor de Service-Principal.
     3. De client-ID en het client geheim ophalen
 
-        Nadat u **instellingen**->**sleutels**hebt geselecteerd, voegt u **Beschrijving**toe, drukt u op **Opslaan**en de sleutel waarde wordt ingevuld.
+        Nadat u **instellingen** -> **sleutels**hebt geselecteerd, voegt u **Beschrijving**toe, drukt u op **Opslaan**en de sleutel waarde wordt ingevuld.
 
         Als de sleutel verloopt, moet de eigenaar van het account contact opnemen met Video Indexer ondersteuning om de sleutel te vernieuwen.
 

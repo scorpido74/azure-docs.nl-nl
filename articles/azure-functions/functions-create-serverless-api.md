@@ -7,15 +7,14 @@ ms.date: 04/27/2020
 ms.author: mahender
 ms.custom: mvc
 ms.openlocfilehash: 5607a737fa4616d4eda3d174144c1717125f4181
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/12/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "83122767"
 ---
 # <a name="customize-an-http-endpoint-in-azure-functions"></a>Een HTTP-eind punt in Azure Functions aanpassen
 
-In dit artikel leert u hoe u met Azure Functions uiterst schaal bare Api's kunt bouwen. Azure Functions wordt geleverd met een verzameling ingebouwde HTTP-triggers en-bindingen, waarmee u eenvoudig een eind punt kunt ontwerpen in verschillende talen, waaronder node. js, C# en meer. In dit artikel gaat u een HTTP-trigger aanpassen voor het verwerken van specifieke acties in het API-ontwerp. U bereidt zich ook voor op het uitbreiden van uw API door deze te integreren met Azure Functions-proxy's en model-Api's in te stellen. Deze taken worden uitgevoerd boven op de serverloze Compute-omgeving, zodat u zich geen zorgen hoeft te maken over het schalen van resources. u kunt zich gewoon richten op uw API-logica.
+In dit artikel leert u hoe u met Azure Functions uiterst schaal bare Api's kunt bouwen. Azure Functions wordt geleverd met een verzameling ingebouwde HTTP-triggers en-bindingen, waarmee u eenvoudig een eind punt kunt ontwerpen in verschillende talen, waaronder Node.js, C# en meer. In dit artikel gaat u een HTTP-trigger aanpassen voor het verwerken van specifieke acties in het API-ontwerp. U bereidt zich ook voor op het uitbreiden van uw API door deze te integreren met Azure Functions-proxy's en model-Api's in te stellen. Deze taken worden uitgevoerd boven op de serverloze Compute-omgeving, zodat u zich geen zorgen hoeft te maken over het schalen van resources. u kunt zich gewoon richten op uw API-logica.
 
 ## <a name="prerequisites"></a>Vereisten 
 
@@ -25,7 +24,7 @@ De resulterende functie wordt gebruikt voor de rest van dit artikel.
 
 ## <a name="sign-in-to-azure"></a>Aanmelden bij Azure
 
-Meld u aan bij de [Azure Portal](https://portal.azure.com) met uw Azure-account.
+Meld u met uw Azure-account aan bij [Azure Portal](https://portal.azure.com).
 
 ## <a name="customize-your-http-function"></a>Uw HTTP-functie aanpassen
 
@@ -128,7 +127,7 @@ Als u deze model-API wilt maken, maakt u een nieuwe proxy met de [app service-ed
 
 Selecteer `proxies.json` in de linkernavigatiebalk. In dit bestand wordt de configuratie voor al uw proxy's opgeslagen. Als u een van de [functies voor implementatie methoden](https://docs.microsoft.com/azure/azure-functions/functions-continuous-deployment)gebruikt, onderhoudt u dit bestand in broncode beheer. Zie [Geavanceerde configuratie van proxy's](https://docs.microsoft.com/azure/azure-functions/functions-proxies#advanced-configuration) voor meer informatie over dit bestand.
 
-Als u tot nu toe hebt gevolgd, moeten uw proxy's. json er als volgt uitzien:
+Als u tot nu toe hebt gevolgd, moet uw proxies.jser als volgt uitzien:
 
 ```json
 {
@@ -144,7 +143,7 @@ Als u tot nu toe hebt gevolgd, moeten uw proxy's. json er als volgt uitzien:
 }
 ```
 
-Vervolgens voegt u de model-API toe. Vervang uw proxies. JSON-bestand door de volgende code:
+Vervolgens voegt u de model-API toe. Vervang uw proxies.jsdoor een bestand met de volgende code:
 
 ```json
 {

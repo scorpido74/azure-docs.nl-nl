@@ -6,10 +6,9 @@ ms.topic: conceptual
 ms.date: 04/13/2020
 ms.custom: cc996988-fb4f-47
 ms.openlocfilehash: 057c030b060343d5bc6f85c38d61feee0b01dfde
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/12/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "83122291"
 ---
 # <a name="manage-your-function-app"></a>Uw functie-app beheren 
@@ -67,7 +66,7 @@ az functionapp config appsettings set --name <FUNCTION_APP_NAME> \
 
 [!INCLUDE [functions-environment-variables](../../includes/functions-environment-variables.md)]
 
-Wanneer u een functie-app lokaal ontwikkelt, moet u lokale kopieën van deze waarden in het bestand local. settings. json project onderhouden. Zie [Local Settings file](functions-run-local.md#local-settings-file)(Engelstalig) voor meer informatie.
+Wanneer u een functie-app lokaal ontwikkelt, moet u lokale kopieën van deze waarden in de local.settings.jsvan het project bestand behouden. Zie [Local Settings file](functions-run-local.md#local-settings-file)(Engelstalig) voor meer informatie.
 
 ## <a name="platform-features"></a>Platform functies
 
@@ -149,4 +148,4 @@ Wanneer functies een HTTP-trigger gebruiken, kunt u vereisen dat aanroepen eerst
 + [Doorlopende implementatie voor Azure Functions](functions-continuous-deployment.md)
 
 [Azure-CLI]: /cli/azure/
-[Azure Portal]: https://portal.azure.com
+[Azure-portal]: https://portal.azure.com
