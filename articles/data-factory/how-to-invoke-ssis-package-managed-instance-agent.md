@@ -10,10 +10,9 @@ ms.author: lle
 author: lle
 ms.date: 04/14/2020
 ms.openlocfilehash: f911a8dad094949f0a515116a79fff698a326547
-ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/29/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84191074"
 ---
 # <a name="run-ssis-packages-by-using-azure-sql-managed-instance-agent"></a>SSIS-pakketten uitvoeren met behulp van de Azure SQL Managed instance agent
@@ -105,12 +104,12 @@ In deze procedure gebruikt u SQL Managed instance agent om een SSIS-pakket uit t
 ## <a name="cancel-ssis-package-execution"></a>Uitvoering van SSIS-pakket annuleren
 Als u de uitvoering van het pakket wilt annuleren vanuit een SQL Managed instance agent-taak, voert u de volgende stappen uit in plaats van de agent taak direct te stoppen:
 
-1. Zoek uw SQL Agent- **jobId** vanuit **msdb. dbo. sysjobs**.
+1. Zoek uw SQL Agent- **jobId** vanuit **msdb.dbo.systaken**.
 1. Zoek de overeenkomende SSIS- **executionid is vereist** op basis van de taak-id met behulp van deze query:
    ```sql
    select * from '{table for job execution}' where  parameter_value = 'SQL_Agent_Job_{jobId}' order by execution_id desc
    ```
-   Als uw SSIS-pakketten zich in SSISDB bevinden, gebruikt u **SSISDB. internal. execution_parameter_values** als tabel voor het uitvoeren van taken. Als uw SSIS-pakketten zich in het bestands systeem bevinden, gebruikt u **ssisdb. internal. execution_parameter_values_noncatalog**.
+   Als uw SSIS-pakketten zich in SSISDB bevinden, gebruikt u **ssisdb.internal.execution_parameter_values** als tabel voor het uitvoeren van taken. Als uw SSIS-pakketten zich in het bestands systeem bevinden, gebruikt u **ssisdb.internal.execution_parameter_values_noncatalog**.
 1. Klik met de rechter muisknop op de catalogus SSISDB en selecteer vervolgens **actieve bewerkingen**.
 
    ![Actieve bewerkingen in het snelmenu van de SSISDB-catalogus](./media/how-to-invoke-ssis-package-managed-instance-agent/catalog-active-operations.png)

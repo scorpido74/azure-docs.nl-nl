@@ -16,10 +16,9 @@ ms.author: barclayn
 ms.reviewer: mwahl
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 5b672cca97e70c97a5dccb1ca54daccd6c171932
-ms.sourcegitcommit: 971a3a63cf7da95f19808964ea9a2ccb60990f64
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/19/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85077974"
 ---
 # <a name="review-access-to-groups-and-applications-in-azure-ad-access-reviews"></a>Toegang tot groepen en toepassingen in azure AD-toegangs beoordelingen controleren
@@ -181,7 +180,7 @@ Er zijn twee manieren waarop u toegang kunt goed keuren of weigeren:
 
 4. De beheerder van de toegangs beoordeling vereist mogelijk dat u een reden opgeeft in het vak **reden** voor uw beslissing. Zelfs wanneer een reden niet vereist is. U kunt nog steeds een reden opgeven voor uw beslissing en de informatie die u opneemt, is voor controle beschikbaar voor andere goed keurders.
 
-5. Klik op **verzenden**.
+5. Klik op **Submit**
     - U kunt uw antwoord op elk gewenst moment wijzigen totdat de toegangs beoordeling is beëindigd. Als u uw antwoord wilt wijzigen, selecteert u de rij en werkt u het antwoord bij. U kunt bijvoorbeeld een eerder geweigerde gebruiker goed keuren of een eerder goedgekeurde gebruiker weigeren.
 
  >[!IMPORTANT]

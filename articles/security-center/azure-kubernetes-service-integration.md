@@ -10,28 +10,33 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 11/04/2019
+ms.date: 06/30/2020
 ms.author: memildin
-ms.openlocfilehash: 3f58afa41a27427f8deabb945261d96763edb4bc
-ms.sourcegitcommit: 398fecceba133d90aa8f6f1f2af58899f613d1e3
-ms.translationtype: MT
+ms.openlocfilehash: 94d1bccc9a7f45d24d8c5b92aecba54d9f7f630a
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/21/2020
-ms.locfileid: "85126175"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85800171"
 ---
 # <a name="azure-kubernetes-services-integration-with-security-center"></a>Integratie van Azure Kubernetes Services met Security Center
 
 Azure Kubernetes service (AKS) is de beheerde service van micro soft voor het ontwikkelen, implementeren en beheren van toepassingen in containers. 
 
-Gebruik AKS in combi natie met de standaardlaag van Azure Security Center (Zie [prijzen](security-center-pricing.md)) voor een diep gaande zicht baarheid van uw AKS knooppunten, Cloud verkeer en beveiligings controles.
+Als u zich in de Standard-laag van Azure Security Center bevindt, kunt u de AKS bundel ( [prijzen](security-center-pricing.md)bekijken) toevoegen om dieper inzicht te krijgen in uw AKS knooppunten, Cloud verkeer en beveiligings controles.
 
-Security Center zorgt voor een afdoende beveiliging voor uw AKS-clusters met behulp van gegevens die al zijn verzameld door het hoofd knooppunt AKS. 
+Security Center en AKS vormen samen de beste Cloud-native Kubernetes-beveiligings aanbieding.
 
-![Overzicht op hoog niveau van Azure Security Center en Azure Kubernetes service (AKS)](./media/azure-kubernetes-service-integration/aks-asc-integration-overview.png)
+## <a name="what-are-the-components-of-security-centers-kubernetes-protection"></a>Wat zijn de onderdelen van de Kubernetes-beveiliging van Security Center?
 
-Deze twee hulp middelen vormen samen de best mogelijke Cloud-native Kubernetes-beveiligings aanbieding. 
+Security Center beveiligingen voor Kubernetes worden gegeven door een combi natie van twee elementen:
 
-## <a name="benefits-of-integration"></a>Voor delen van integratie
+- **Azure Security Center bedreigings beveiliging voor virtuele machines** : met behulp van dezelfde log Analytics agent die Security Center gebruikt op andere vm's, kan Security Center u beveiligings problemen laten zien die zich voordoen op uw AKS-knoop punten. De agent bewaakt ook voor container-specifieke analyses.
+
+- **Azure Security Center optionele Kubernetes bundel** : de Kubernetes-bundel ontvangt logboeken en gegevens van het subsysteem Kubernetes via de AKS-service. Deze logboeken zijn al beschikbaar in azure via de AKS-service. Wanneer u de Kubernetes-bundel van Security Center inschakelt, verleent u Security Center toegang tot de logboeken. Security Center zorgt er daarom voor dat uw AKS-clusters worden beveiligd met gegevens die al zijn verzameld door het hoofd knooppunt AKS. Sommige van de gegevens die worden gescand door Azure Security Center in uw Kubernetes-omgeving kunnen gevoelige informatie bevatten.
+
+    ![Overzicht op hoog niveau van Azure Security Center en Azure Kubernetes service (AKS)](./media/azure-kubernetes-service-integration/aks-asc-integration-overview.png)
+
+## <a name="what-protections-are-provided"></a>Welke beveiligingen worden er gegeven?
 
 Het gebruik van de twee services biedt samen:
 
@@ -39,18 +44,25 @@ Het gebruik van de twee services biedt samen:
 
 * **Omgevings beveiliging** -Security Center continu de configuratie van uw Kubernetes-clusters en docker-configuraties bewaakt. Vervolgens worden beveiligings aanbevelingen gegenereerd die de industrie normen weer spie gelen.
 
-* **Run-time beveiliging** : door doorlopende analyse van de volgende AKS bronnen, Security Center u op de hoogte van bedreigingen en schadelijke activiteiten die zijn gedetecteerd op de host *en* het AKS-cluster niveau:
-    * Onbewerkte beveiligings gebeurtenissen, zoals netwerk gegevens en het maken van processen
-    * Het Kubernetes-controle logboek
+* **Run-time beveiliging** : door doorlopende analyse van de volgende AKS-bronnen, Security Center u naar bedreigingen en schadelijke activiteiten die zijn gedetecteerd op het cluster niveau host *en* AKS. Meer [informatie over bedreigings beveiliging voor containers](threat-protection.md#azure-containers).
 
-    Zie [Threat Protection for Azure containers](threat-protection.md#azure-containers) (Engelstalig) voor meer informatie.
 
-    Zie voor de lijst met mogelijke waarschuwingen deze secties in de naslag tabel waarschuwingen: [waarschuwingen op AKS-niveau](alerts-reference.md#alerts-akscluster) en [waarschuwingen op hostniveau op container](alerts-reference.md#alerts-containerhost)niveau.  
+     
 
 ![Azure Security Center en Azure Kubernetes service (AKS) meer details](./media/azure-kubernetes-service-integration/aks-asc-integration-detailed.png)
 
-> [!NOTE]
-> Sommige van de gegevens die worden gescand door Azure Security Center in uw Kubernetes-omgeving kunnen gevoelige informatie bevatten.
+
+
+## <a name="aks-with-security-center-faq"></a>AKS met veelgestelde vragen over Security Center
+
+### <a name="can-i-still-get-aks-protections-without-the-log-analytics-agent"></a>Kan ik nog steeds AKS-beveiligingen krijgen zonder de Log Analytics-agent?
+
+Zoals hierboven vermeld, biedt de optionele Kubernetes bundel beveiligingen op cluster niveau, de Log Analytics agent van Azure Security Center Standard-laag uw knoop punten te beveiligen. 
+
+We raden u aan beide te implementeren voor de meest volledige beveiliging.
+
+Als u ervoor kiest om de agent niet op uw hosts te installeren, ontvangt u alleen een subset van de voor delen van bedreigings beveiliging en beveiligings waarschuwingen. U ontvangt nog steeds waarschuwingen met betrekking tot netwerk analyse en communicatie met schadelijke servers.
+
 
 
 ## <a name="next-steps"></a>Volgende stappen

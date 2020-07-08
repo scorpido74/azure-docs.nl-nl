@@ -4,10 +4,9 @@ description: Hierin worden de functies beschreven die u kunt gebruiken in een Az
 ms.topic: conceptual
 ms.date: 04/27/2020
 ms.openlocfilehash: fede4d6c71e45b119e500d4c9c6f91765d052036
-ms.sourcegitcommit: f01c2142af7e90679f4c6b60d03ea16b4abf1b97
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/10/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84676791"
 ---
 # <a name="object-functions-for-arm-templates"></a>Object functies voor ARM-sjablonen
@@ -29,10 +28,10 @@ Controleert of een matrix een waarde bevat, een object bevat een sleutel of een 
 
 ### <a name="parameters"></a>Parameters
 
-| Parameter | Vereist | Type | Beschrijving |
+| Parameter | Vereist | Type | Description |
 |:--- |:--- |:--- |:--- |
-| container |Ja |matrix, object of teken reeks |De waarde die de te zoeken waarde bevat. |
-| itemToFind |Ja |teken reeks of int |De waarde die moet worden gevonden. |
+| container |Yes |matrix, object of teken reeks |De waarde die de te zoeken waarde bevat. |
+| itemToFind |Yes |teken reeks of int |De waarde die moet worden gevonden. |
 
 ### <a name="return-value"></a>Retourwaarde
 
@@ -110,9 +109,9 @@ Bepaalt of een matrix, een object of een teken reeks leeg is.
 
 ### <a name="parameters"></a>Parameters
 
-| Parameter | Vereist | Type | Beschrijving |
+| Parameter | Vereist | Type | Description |
 |:--- |:--- |:--- |:--- |
-| itemToTest |Ja |matrix, object of teken reeks |De waarde die moet worden gecontroleerd of deze leeg is. |
+| itemToTest |Yes |matrix, object of teken reeks |De waarde die moet worden gecontroleerd of deze leeg is. |
 
 ### <a name="return-value"></a>Retourwaarde
 
@@ -175,11 +174,11 @@ Retourneert een enkele matrix of een object met de algemene elementen van de par
 
 ### <a name="parameters"></a>Parameters
 
-| Parameter | Vereist | Type | Beschrijving |
+| Parameter | Vereist | Type | Description |
 |:--- |:--- |:--- |:--- |
-| Arg1 |Ja |matrix of object |De eerste waarde die moet worden gebruikt voor het zoeken van algemene elementen. |
-| Arg2 |Ja |matrix of object |De tweede waarde die moet worden gebruikt voor het zoeken van algemene elementen. |
-| aanvullende argumenten |Nee |matrix of object |Aanvullende waarden die moeten worden gebruikt voor het zoeken van algemene elementen. |
+| Arg1 |Yes |matrix of object |De eerste waarde die moet worden gebruikt voor het zoeken van algemene elementen. |
+| Arg2 |Yes |matrix of object |De tweede waarde die moet worden gebruikt voor het zoeken van algemene elementen. |
+| aanvullende argumenten |No |matrix of object |Aanvullende waarden die moeten worden gebruikt voor het zoeken van algemene elementen. |
 
 ### <a name="return-value"></a>Retourwaarde
 
@@ -241,9 +240,9 @@ Retourneert een JSON-object.
 
 ### <a name="parameters"></a>Parameters
 
-| Parameter | Vereist | Type | Beschrijving |
+| Parameter | Vereist | Type | Description |
 |:--- |:--- |:--- |:--- |
-| Arg1 |Ja |tekenreeks |De waarde die moet worden geconverteerd naar JSON. |
+| Arg1 |Yes |tekenreeks |De waarde die moet worden geconverteerd naar JSON. |
 
 ### <a name="return-value"></a>Retourwaarde
 
@@ -310,9 +309,9 @@ Retourneert het aantal elementen in een matrix, tekens in een teken reeks of hoo
 
 ### <a name="parameters"></a>Parameters
 
-| Parameter | Vereist | Type | Beschrijving |
+| Parameter | Vereist | Type | Description |
 |:--- |:--- |:--- |:--- |
-| Arg1 |Ja |matrix, teken reeks of object |De matrix die moet worden gebruikt voor het ophalen van het aantal elementen, de teken reeks die moet worden gebruikt voor het ophalen van het aantal tekens of het object dat moet worden gebruikt voor het ophalen van het aantal eigenschappen op hoofd niveau. |
+| Arg1 |Yes |matrix, teken reeks of object |De matrix die moet worden gebruikt voor het ophalen van het aantal elementen, de teken reeks die moet worden gebruikt voor het ophalen van het aantal tekens of het object dat moet worden gebruikt voor het ophalen van het aantal eigenschappen op hoofd niveau. |
 
 ### <a name="return-value"></a>Retourwaarde
 
@@ -386,11 +385,11 @@ Retourneert een enkele matrix of een object met alle elementen van de para meter
 
 ### <a name="parameters"></a>Parameters
 
-| Parameter | Vereist | Type | Beschrijving |
+| Parameter | Vereist | Type | Description |
 |:--- |:--- |:--- |:--- |
-| Arg1 |Ja |matrix of object |De eerste waarde die moet worden gebruikt voor het toevoegen van elementen. |
-| Arg2 |Ja |matrix of object |De tweede waarde die moet worden gebruikt voor het toevoegen van elementen. |
-| aanvullende argumenten |Nee |matrix of object |Aanvullende waarden die moeten worden gebruikt voor het toevoegen van elementen. |
+| Arg1 |Yes |matrix of object |De eerste waarde die moet worden gebruikt voor het toevoegen van elementen. |
+| Arg2 |Yes |matrix of object |De tweede waarde die moet worden gebruikt voor het toevoegen van elementen. |
+| aanvullende argumenten |No |matrix of object |Aanvullende waarden die moeten worden gebruikt voor het toevoegen van elementen. |
 
 ### <a name="return-value"></a>Retourwaarde
 

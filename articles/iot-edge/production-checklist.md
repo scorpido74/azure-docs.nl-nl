@@ -12,10 +12,9 @@ ms.custom:
 - amqp
 - mqtt
 ms.openlocfilehash: 128504c59690476afef03aa82a03d69769968e99
-ms.sourcegitcommit: b55d1d1e336c1bcd1c1a71695b2fd0ca62f9d625
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/04/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84431928"
 ---
 # <a name="prepare-to-deploy-your-iot-edge-solution-in-production"></a>De implementatie van uw IoT Edge oplossing in productie voorbereiden
@@ -131,7 +130,7 @@ De standaard waarde van de para meter timeToLiveSecs is 7200 seconden, die twee 
 
 Wanneer u overstapt van test scenario's naar productie scenario's, moet u de configuraties voor fout opsporing verwijderen uit implementatie manifesten. Controleer of geen enkele module installatie kopieën in de implementatie manifesten het achtervoegsel ** \. debug** hebben. Als u opties voor het maken hebt toegevoegd om poorten in de modules voor fout opsporing weer te geven, moet u deze opties voor maken ook verwijderen.
 
-## <a name="container-management"></a>Container beheer
+## <a name="container-management"></a>Containerbeheer
 
 * **Belangrijk**
   * Toegang tot uw container register beheren
@@ -181,7 +180,7 @@ Haal de installatie kopieën op met de docker-pull-opdracht die u in uw privé r
 | [Azure IoT Edge-agent](https://hub.docker.com/_/microsoft-azureiotedge-agent) | `docker pull mcr.microsoft.com/azureiotedge-agent` |
 | [Azure IoT Edge HUb](https://hub.docker.com/_/microsoft-azureiotedge-hub) | `docker pull mcr.microsoft.com/azureiotedge-hub` |
 
-Zorg er vervolgens voor dat u de afbeeldings verwijzingen in het bestand Deployment. Temp late. json voor de edgeAgent-en edgeHub-systeem modules bijwerkt. Vervang door `mcr.microsoft.com` de naam en server van uw REGI ster voor beide modules.
+Zorg er vervolgens voor dat u de afbeeldings verwijzingen in het deployment.template.jsbestand voor de systeem modules edgeAgent en edgeHub bijwerkt. Vervang door `mcr.microsoft.com` de naam en server van uw REGI ster voor beide modules.
 
 * edgeAgent:
 

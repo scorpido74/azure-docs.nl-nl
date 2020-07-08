@@ -9,10 +9,9 @@ ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
 ms.openlocfilehash: e2ded81c3525de6f9c49d774594c73f9da2b5696
-ms.sourcegitcommit: b55d1d1e336c1bcd1c1a71695b2fd0ca62f9d625
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/04/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84430658"
 ---
 # <a name="create-demo-certificates-to-test-iot-edge-device-features"></a>Demo certificaten maken om IoT Edge apparaatfuncties te testen
@@ -53,11 +52,11 @@ Als u demo certificaten wilt maken op een Windows-apparaat, moet u OpenSSL insta
 #### <a name="install-openssl"></a>OpenSSL installeren
 
 Installeer OpenSSL voor Windows op de computer die u gebruikt om de certificaten te genereren.
-Als OpenSSL al op uw Windows-apparaat is geïnstalleerd, kunt u deze stap overs Laan, maar u moet ervoor zorgen dat openssl. exe beschikbaar is in de omgevings variabele PATH.
+Als OpenSSL al op uw Windows-apparaat is geïnstalleerd, kunt u deze stap overs Laan, maar moet openssl.exe beschikbaar zijn in uw omgevings variabele PATH.
 
 Er zijn verschillende manieren om OpenSSL te installeren, met inbegrip van de volgende opties:
 
-* **Eenvoudiger:** Down load en installeer eventuele [binaire bestanden van openssl](https://wiki.openssl.org/index.php/Binaries)van derden, bijvoorbeeld van [openssl op sourceforge](https://sourceforge.net/projects/openssl/). Voeg het volledige pad naar openssl. exe toe aan de omgevings variabele PATH.
+* **Eenvoudiger:** Down load en installeer eventuele [binaire bestanden van openssl](https://wiki.openssl.org/index.php/Binaries)van derden, bijvoorbeeld van [openssl op sourceforge](https://sourceforge.net/projects/openssl/). Voeg het volledige pad naar openssl.exe toe aan de omgevings variabele PATH.
 
 * **Aanbevolen:** Down load de OpenSSL-bron code en bouw de binaire bestanden op uw machine door uzelf of via [vcpkg](https://github.com/Microsoft/vcpkg). De onderstaande instructies gebruiken vcpkg voor het downloaden van de bron code, het compileren en installeren van OpenSSL op uw Windows-computer, met eenvoudige stappen.
 
@@ -69,7 +68,7 @@ Er zijn verschillende manieren om OpenSSL te installeren, met inbegrip van de vo
       .\vcpkg install openssl:x64-windows
       ```
 
-   3. Voeg toe `<vcpkg path>\installed\x64-windows\tools\openssl` aan de omgevings variabele PATH zodat het bestand openssl. exe beschikbaar is voor aanroep.
+   3. Voeg toe `<vcpkg path>\installed\x64-windows\tools\openssl` aan de omgevings variabele PATH zodat het openssl.exe-bestand beschikbaar is voor aanroep.
 
 #### <a name="prepare-scripts-in-powershell"></a>Scripts voorbereiden in Power shell
 

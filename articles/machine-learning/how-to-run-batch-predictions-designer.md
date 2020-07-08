@@ -11,10 +11,9 @@ author: peterclu
 ms.date: 02/24/2020
 ms.custom: Ignite2019, designer
 ms.openlocfilehash: a464ab001eec877ffc6dc0ab5e33e82493c226ff
-ms.sourcegitcommit: b55d1d1e336c1bcd1c1a71695b2fd0ca62f9d625
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/04/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84429943"
 ---
 # <a name="run-batch-predictions-using-azure-machine-learning-designer-preview"></a>Batchvoorspellingen uitvoeren met de Azure Machine Learning-ontwerpfunctie (preview)
@@ -45,7 +44,7 @@ Uw trainings pijplijn moet ten minste één keer worden uitgevoerd om een inleid
 
 1. **Verzend** de pijp lijn.
 
-    ![De pijp lijn verzenden](./media/how-to-run-batch-predictions-designer/run-training-pipeline.png)
+    ![De pijplijn indienen](./media/how-to-run-batch-predictions-designer/run-training-pipeline.png)
 
 Nu de training-pijp lijn is uitgevoerd, kunt u een batch-uitstel pijp lijn maken.
 

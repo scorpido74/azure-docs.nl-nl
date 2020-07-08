@@ -12,10 +12,9 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/10/2018
 ms.openlocfilehash: 62da43879b581d6737eee1310cf642e9692051de
-ms.sourcegitcommit: bf99428d2562a70f42b5a04021dde6ef26c3ec3a
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/23/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85248442"
 ---
 # <a name="pipelines-and-activities-in-azure-data-factory"></a>Pijp lijnen en activiteiten in Azure Data Factory
@@ -92,7 +91,7 @@ We gaan dieper in op hoe een pijplijn wordt gedefinieerd in JSON-indeling. De al
 }
 ```
 
-| Label | Beschrijving | Vereist |
+| Label | Description | Vereist |
 | --- | --- | --- |
 | naam |Naam van de pijplijn. Geef een naam op die staat voor de actie die de pijplijn uitvoert. <br/><ul><li>Maximum aantal tekens: 260</li><li>Moet beginnen met een letter nummer of een onderstrepings teken ( \_ )</li><li>De volgende tekens zijn niet toegestaan: '. ', ' + ', '? ', '/', ' < ', ' > ', ' \* ', '% ', ' & ', ': ', ' \\ '</li></ul> |Yes |
 | description | Voer een beschrijving in van het doel waarvoor de pijplijn wordt gebruikt. |Yes |
@@ -130,7 +129,7 @@ De sectie **activities** kan één of meer activiteiten bevatten die zijn gedefi
 
 De volgende tabel beschrijft de eigenschappen in de JSON-definitie activity:
 
-| Label | Beschrijving | Vereist |
+| Label | Description | Vereist |
 | --- | --- | --- |
 | naam | De naam van de activiteit. Geef een naam op die staat voor de actie die de activiteit uitvoert. <br/><ul><li>Maximum aantal tekens: 260</li><li>Moet beginnen met een letter nummer of een onderstrepings teken ( \_ )</li><li>De volgende tekens zijn niet toegestaan: '. ', ' + ', '? ', '/', ' < ', ' > ', ' * ', '% ', ' & ' \\ , ': ', ' '</li></ul> |Yes |
 | description | Beschrijving van het doel waarvoor de activiteit of wordt gebruikt |Yes |

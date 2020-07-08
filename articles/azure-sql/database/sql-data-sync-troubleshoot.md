@@ -12,10 +12,9 @@ ms.author: sstein
 ms.reviewer: carlrab
 ms.date: 12/20/2018
 ms.openlocfilehash: f4a851377128577cc7e50af777b502c9f59211c7
-ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/29/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84188247"
 ---
 # <a name="troubleshoot-issues-with-sql-data-sync"></a>Problemen met SQL Data Sync oplossen
@@ -23,7 +22,7 @@ ms.locfileid: "84188247"
 
 In dit artikel wordt beschreven hoe u bekende problemen met SQL Data Sync in azure oplost. Als er een oplossing voor een probleem is, wordt deze hier weer gegeven.
 
-Zie [gegevens synchroniseren tussen meerdere Cloud-en on-premises data bases met SQL Data Sync in azure](sql-data-sync-data-sql-server-sql-database.md)voor een overzicht van SQL Data Sync.
+Zie [Gegevens synchroniseren tussen meerdere cloud- en on-premises databases met SQL Data Sync in Azure ](sql-data-sync-data-sql-server-sql-database.md) voor een overzicht van SQL Data Sync.
 
 > [!IMPORTANT]
 > SQL Data Sync biedt op dit moment **geen** ondersteuning voor het beheerde exemplaar van Azure SQL.
@@ -181,7 +180,7 @@ De poging om een synchronisatie groep te verwijderen, is mislukt. Een van de vol
     d. Klik met de rechter muisknop op de **SQL Data Sync** -service.  
     e. Als de service wordt uitgevoerd, stopt u deze.  
     f. Klik met de rechter muisknop op de service en selecteer **starten**.  
-    g. Controleer of de data base nog steeds is geregistreerd. Als deze niet meer is geregistreerd, bent u klaar. Als dat niet het geval is, gaat u verder met de volgende stap.
+    bijvoorbeeld Controleer of de data base nog steeds is geregistreerd. Als deze niet meer is geregistreerd, bent u klaar. Als dat niet het geval is, gaat u verder met de volgende stap.
   1. Open de client agent-app (SqlAzureDataSyncAgent).
   1. Selecteer **referenties bewerken**en voer vervolgens de referenties voor de data base in.
   1. Ga door met het opheffen van de registratie.
@@ -240,22 +239,22 @@ Het is niet mogelijk om een synchronisatie groep te verwijderen binnen drie minu
 Als u een verloren of beschadigde data base herstelt vanuit een back-up, is er mogelijk een niet-convergentie van gegevens in de synchronisatie groepen waartoe de data base behoort.
 
 ## <a name="next-steps"></a>Volgende stappen
-Voor meer informatie over SQL Data Sync raadpleegt u:
+Zie de volgende onderwerpen voor meer informatie over SQL Data Sync:
 
--   Overzicht: [gegevens synchroniseren tussen meerdere Cloud-en on-premises data bases met SQL Data Sync in azure](sql-data-sync-data-sql-server-sql-database.md)
+-   Overzicht: [Gegevens synchroniseren tussen meerdere cloud- en on-premises databases met SQL Data Sync in Azure](sql-data-sync-data-sql-server-sql-database.md)
 -   Data Sync instellen
     - In de portal- [zelf studie: SQL Data Sync instellen om gegevens te synchroniseren tussen Azure SQL database en SQL Server](sql-data-sync-sql-server-configure.md)
     - Met PowerShell
         -  [Power shell gebruiken om te synchroniseren tussen meerdere data bases in Azure SQL Database](scripts/sql-data-sync-sync-data-between-sql-databases.md)
         -  [Power shell gebruiken om te synchroniseren tussen een data base in Azure SQL Database en een data base in een SQL Server-exemplaar](scripts/sql-data-sync-sync-data-between-azure-onprem.md)
--   Gegevens synchronisatie agent- [Data Sync-agent voor SQL Data Sync in azure](sql-data-sync-agent-overview.md)
--   Aanbevolen procedures- [Aanbevolen procedures voor het SQL Data Sync van Azure](sql-data-sync-best-practices.md)
--   SQL Data Sync controleren [met Azure monitor-logboeken](sql-data-sync-monitor-sync.md)
+-   Data Sync Agent: [Data Sync Agent voor SQL Data Sync in Azure](sql-data-sync-agent-overview.md)
+-   Best practices: [Best practices voor SQL Data Sync in Azure](sql-data-sync-best-practices.md)
+-   Bewaken: [SQL Data Sync bewaken met Azure Monitor-logboeken](sql-data-sync-monitor-sync.md)
 -   Het synchronisatieschema bijwerken
     -   Met Transact-SQL- [de replicatie van schema wijzigingen in SQL Data Sync in azure automatiseren](sql-data-sync-update-sync-schema.md)
     -   Met PowerShell: [PowerShell gebruiken voor het bijwerken van het synchronisatieschema in een bestaande synchronisatiegroep](scripts/update-sync-schema-in-sync-group.md)
 
-Voor meer informatie over SQL Database raadpleegt u:
+Meer informatie over SQL Database vindt u in:
 
--   [Wat is de Azure SQL Database-service?](sql-database-paas-overview.md)
+-   [Overzicht van SQL Database](sql-database-paas-overview.md)
 -   [Database Lifecycle Management (DLM)](https://msdn.microsoft.com/library/jj907294.aspx)

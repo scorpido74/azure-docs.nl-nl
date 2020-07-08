@@ -4,12 +4,11 @@ description: Meer informatie over hoe u een AKS-cluster (Azure Kubernetes servic
 services: container-service
 ms.topic: article
 ms.date: 05/28/2020
-ms.openlocfilehash: 5f0391c10a99173e7a2d87c1dd08a36852fc0450
-ms.sourcegitcommit: e3c28affcee2423dc94f3f8daceb7d54f8ac36fd
-ms.translationtype: MT
+ms.openlocfilehash: ea9f0154c221fe99d683cc58d5f6dccfce8d948c
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/17/2020
-ms.locfileid: "84887979"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85800491"
 ---
 # <a name="upgrade-an-azure-kubernetes-service-aks-cluster"></a>Een AKS-cluster (Azure Kubernetes Service) upgraden
 
@@ -53,6 +52,8 @@ ERROR: Table output unavailable. Use the --query option to specify an appropriat
 
 > [!Important]
 > Voor het overschrijden van knoop punten is abonnements quota vereist voor het aangevraagde maximum piek aantal voor elke upgrade bewerking. Een cluster met vijf knooppunt groepen, elk met een aantal van vier knoop punten, heeft bijvoorbeeld een totaal van 20 knoop punten. Als elke knooppunt groep een maximale piek waarde van 50% heeft, is extra reken-en IP-quotum van 10 knoop punten (2 knoop punten * 5 groepen) vereist om de upgrade te volt ooien.
+>
+> Als u Azure CNI gebruikt, controleert u of er in het subnet beschik bare Ip's zijn en voldoen aan de [IP-vereisten van Azure cni](configure-azure-cni.md).
 
 AKS configureert standaard upgrades om met één extra knoop punt te overspanning. Met een standaard waarde van één voor de instelling Maximum pieken kan AKS de onderbreking van de werk belasting tot een minimum beperken door een extra knoop punt te maken vóór de Cordon/afvoer van bestaande toepassingen om een ouder versie knooppunt te vervangen. De maximale piek waarde kan worden aangepast per knooppunt groep om een afweging tussen upgrade snelheid en upgrade onderbreking mogelijk te maken. Door de maximale piek waarde te verhogen, wordt het upgrade proces sneller uitgevoerd, maar het instellen van een grote waarde voor maximale piek spanning kan onderbrekingen veroorzaken tijdens het upgrade proces. 
 

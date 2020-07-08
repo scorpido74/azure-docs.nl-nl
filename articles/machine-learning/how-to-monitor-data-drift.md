@@ -11,10 +11,9 @@ ms.author: copeters
 author: cody-dkdc
 ms.date: 11/04/2019
 ms.openlocfilehash: 0f56ab853983ebf9b3e27f38ae1737c0c2bce4ed
-ms.sourcegitcommit: b55d1d1e336c1bcd1c1a71695b2fd0ca62f9d625
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/04/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84430292"
 ---
 # <a name="detect-data-drift-preview-on-models-deployed-to-azure-kubernetes-service-aks"></a>Gegevens drift (preview) detecteren voor modellen die zijn geïmplementeerd in azure Kubernetes service (AKS)
@@ -123,7 +122,7 @@ RunDetails(dd_run).show()
 Nadat u de DataDriftDetector hebt verzonden, kunt u de metrische gegevens over de drift zien die zijn opgeslagen in elke uitvoerings herhaling voor een gegevens-drift:
 
 
-|Metrisch|Beschrijving|
+|Gegevens|Beschrijving|
 --|--|
 wasserstein_distance|Statistische afstand gedefinieerd voor eendimensionale sprei ding.|
 energy_distance|Statistische afstand gedefinieerd voor eendimensionale sprei ding.|

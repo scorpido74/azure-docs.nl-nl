@@ -4,10 +4,9 @@ description: Meer informatie over het gebruik van Dash boards voor een leslokaal
 ms.topic: article
 ms.date: 06/26/2020
 ms.openlocfilehash: 4e59917aa385a344d79a62441e208df970f42285
-ms.sourcegitcommit: 74ba70139781ed854d3ad898a9c65ef70c0ba99b
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/26/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85444315"
 ---
 # <a name="dashboard-for-classroom-labs"></a>Dash board voor klassikale Labs

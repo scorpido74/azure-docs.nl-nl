@@ -8,10 +8,9 @@ ms.author: danil
 ms.date: 02/21/2020
 ms.reviewer: carlrab
 ms.openlocfilehash: d1f8a30145cc0d61f110c0f47459a4f1db03325b
-ms.sourcegitcommit: bf99428d2562a70f42b5a04021dde6ef26c3ec3a
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/23/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85249411"
 ---
 # <a name="monitor-azure-sql-database-using-azure-sql-analytics-preview"></a>Azure SQL Database bewaken met behulp van Azure SQL-analyse (preview)
@@ -31,7 +30,7 @@ Zie de Inge sloten video voor een praktische beschrijving van het gebruik van Az
 
 Azure SQL-analyse is een bewakings oplossing die alleen in de Cloud wordt ondersteund voor het streamen van de telemetrie van diagnostische gegevens voor alle Azure SQL-data bases Omdat Azure SQL-analyse geen agents gebruikt om verbinding te maken met Azure Monitor, biedt het geen ondersteuning voor de bewaking van SQL Server die on-premises of in virtuele machines worden gehost.
 
-| Verbonden bron | Ondersteund | Beschrijving |
+| Verbonden bron | Ondersteund | Description |
 | --- | --- | --- |
 | [Diagnostische instellingen](../platform/diagnostic-settings.md) | **Ja** | Azure metrische en logboek gegevens worden rechtstreeks door Azure naar Azure Monitor logboeken verzonden. |
 | [Azure-opslag account](../platform/collect-azure-metrics-logs.md) | No | Azure Monitor leest de gegevens van een opslag account niet. |
@@ -43,7 +42,7 @@ Azure SQL-analyse is een bewakings oplossing die alleen in de Cloud wordt onders
 
 De onderstaande tabel bevat een overzicht van de ondersteunde opties voor twee versies van het dash board Azure SQL-analyse, één voor Azure SQL Database en de andere voor Azure SQL Managed instance-data bases.
 
-| Azure SQL-analyse optie | Beschrijving | Ondersteuning voor SQL Database | Ondersteuning voor SQL Managed instance |
+| Azure SQL-analyse optie | Description | Ondersteuning voor SQL Database | Ondersteuning voor SQL Managed instance |
 | --- | ------- | ----- | ----- |
 | Resource per type | Perspectief dat alle bewaakte resources telt. | Ja | Ja |
 | Inzichten | Voorziet in een hiërarchisch inzoomen op de prestaties van Intelligent Insights. | Ja | Ja |

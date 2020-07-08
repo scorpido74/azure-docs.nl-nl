@@ -15,10 +15,9 @@ ms.workload: NA
 ms.date: 10/13/2017
 ms.author: alkohli
 ms.openlocfilehash: 0c54b4e3015e255a6948202a6c3ea7a83362032f
-ms.sourcegitcommit: 374e47efb65f0ae510ad6c24a82e8abb5b57029e
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85514912"
 ---
 # <a name="automated-disaster-recovery-solution-using-azure-site-recovery-for-file-shares-hosted-on-storsimple"></a>Geautomatiseerde oplossing voor herstel na nood gevallen met Azure Site Recovery voor bestands shares die worden gehost op StorSimple
@@ -285,7 +284,7 @@ Raadpleeg de Active Directory hand leiding voor de [oplossing van Dr-oplossingen
 1. Klik op **OK** om te beginnen met de failover. U kunt de voortgang volgen door op de virtuele machine te klikken om de eigenschappen ervan te openen of op de **taak testfailover** in kluis naam &gt; **taken** &gt; **site Recovery taken**.
 1. Nadat de failover is voltooid, kunt u ook zien dat de replica Azure-machine wordt weer gegeven in de Azure Portal &gt; **virtual machines**. U kunt uw validaties uitvoeren.
 1. Nadat de validaties zijn uitgevoerd, klikt u op **validaties voltooid**. Hiermee worden de StorSimple-volumes verwijderd en worden de StorSimple Cloud Appliance afgesloten.
-1. Wanneer u klaar bent, klikt u op **testfailover opschonen** in het herstel plan. Leg in Notities eventuele opmerkingen over de testfailover vast en sla deze op. Hiermee wordt de virtuele machine verwijderd die tijdens de testfailover is gemaakt.
+1. Wanneer u klaar bent, klikt u op **testfailover opschonen** in het herstel plan. In Notes record en sla de opmerkingen op die zijn gekoppeld aan de testfailover. Hiermee wordt de virtuele machine verwijderd die tijdens de testfailover is gemaakt.
 
 ## <a name="perform-a-planned-failover"></a>Een geplande failover uitvoeren
    Tijdens een geplande failover wordt de on-premises bestands Server-VM zonder problemen afgesloten en wordt er een back-upmomentopname voor de cloud van de volumes op het StorSimple-apparaat gemaakt. Voor de StorSimple-volumes is een failover naar het virtuele apparaat uitgevoerd, een replica-VM wordt op Azure gebracht en de volumes zijn gekoppeld aan de virtuele machine.

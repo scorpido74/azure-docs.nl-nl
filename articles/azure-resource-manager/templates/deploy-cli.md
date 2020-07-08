@@ -4,10 +4,9 @@ description: Gebruik Azure Resource Manager en Azure CLI om resources te impleme
 ms.topic: conceptual
 ms.date: 06/04/2020
 ms.openlocfilehash: a2a1c1fe63d0a841f57407ed5402d7ddca3fcea4
-ms.sourcegitcommit: b55d1d1e336c1bcd1c1a71695b2fd0ca62f9d625
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/04/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84432077"
 ---
 # <a name="deploy-resources-with-arm-templates-and-azure-cli"></a>Resources implementeren met ARM-sjablonen en Azure CLI
@@ -145,7 +144,7 @@ az deployment group create \
 
 Het ophalen van een parameter waarde uit een bestand is handig wanneer u configuratie waarden moet opgeven. U kunt bijvoorbeeld [Cloud-init-waarden opgeven voor een virtuele Linux-machine](../../virtual-machines/linux/using-cloud-init.md).
 
-De indeling arrayContent. json is:
+De arrayContent.jsin de indeling is:
 
 ```json
 [
@@ -160,7 +159,7 @@ In plaats van para meters als inline waarden door te geven in uw script, is het 
 
 Zie voor meer informatie over het parameter bestand [Resource Manager-parameter bestand maken](parameter-files.md).
 
-Als u een lokaal parameter bestand wilt door geven, gebruikt `@` u om een lokaal bestand met de naam Storage. para meters. json op te geven.
+Als u een lokaal parameter bestand wilt door geven, gebruikt `@` u om een lokaal bestand met de naam storage.parameters.jsop te geven.
 
 ```azurecli-interactive
 az deployment group create \

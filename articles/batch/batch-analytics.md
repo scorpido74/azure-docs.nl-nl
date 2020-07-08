@@ -3,17 +3,16 @@ title: Azure Batch Analytics
 description: De onderwerpen in batch Analytics bevatten referentie-informatie voor de gebeurtenissen en waarschuwingen die beschikbaar zijn voor batch-service resources.
 ms.topic: reference
 ms.date: 04/20/2017
-ms.openlocfilehash: b07d362c3cc2d3b086cf0a82325025604907a393
-ms.sourcegitcommit: 6fd8dbeee587fd7633571dfea46424f3c7e65169
-ms.translationtype: MT
+ms.openlocfilehash: 9d0e5c90c7bade82d76c7dbdfd4276e9671c961c
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83726856"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85958103"
 ---
 # <a name="batch-analytics"></a>Batch-analyse
 De onderwerpen in batch Analytics bevatten referentie-informatie voor de gebeurtenissen en waarschuwingen die beschikbaar zijn voor batch-service resources.
 
-Zie [Azure batch diagnostische logboek registratie](https://azure.microsoft.com/documentation/articles/batch-diagnostics/) voor meer informatie over het inschakelen en gebruiken van batch diagnose Logboeken.
+Zie [Azure batch diagnostische logboek registratie](./batch-diagnostics.md) voor meer informatie over het inschakelen en gebruiken van batch diagnose Logboeken.
 
 ## <a name="diagnostic-logs"></a>Diagnostische logboeken
 

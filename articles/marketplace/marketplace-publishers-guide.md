@@ -7,19 +7,18 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 04/12/2020
 ms.author: dsindona
-ms.openlocfilehash: 03921a5bf5635ee001f78ca67e4ac24839bd03c5
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
-ms.translationtype: MT
+ms.openlocfilehash: 7ddea556ea4a9c7c0306ebdf1eca1f60769c5318
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83657855"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85958171"
 ---
 # <a name="commercial-marketplace-publishing-guide"></a>Publicatie handleiding voor commerciële Marketplace
 
 Deze publicatie handleiding is ontworpen om nieuwe en bestaande uitgevers te helpen bij het weer geven van toepassingen en services in de commerciële Marketplace-winkel, [Azure Marketplace](https://azuremarketplace.microsoft.com) en [Microsoft AppSource](https://appsource.microsoft.com), om hun bedrijf in samen werking met micro soft te laten groeien.
 
 >[!Note]
->De Marketplace verwijst naar Azure Marketplace en AppSource.  Bekijk [één Marketplace, twee winkelen](https://docs.microsoft.com/azure/marketplace/comparing-appsource-azure-marketplace) voor meer informatie.
+>De Marketplace verwijst naar Azure Marketplace en AppSource.  Bekijk [één Marketplace, twee winkelen](comparing-appsource-azure-marketplace.md) voor meer informatie.
 
 Deze hand leiding bevat de volgende onderwerpen: 
 *   Wat is de Marketplace en hoe werkt het? 
@@ -62,7 +61,7 @@ Nieuwe aanbiedingen in de Marketplace komen in aanmerking voor een verscheidenhe
 
 *   Samen verkopen: begin of Versnel uw reis om te verkopen met micro soft via Marketplace. Krijg toegang tot Program ma's en ondersteuning om gezamenlijke omzet te stimuleren met micro soft-teams.
 
-Nadat u [uw oplossing](https://partner.microsoft.com/dashboard/account/v3/enrollment/introduction/partnership) naar Marketplace hebt verzonden, neemt het voorbereidings team contact met u op om uw publicatie ervaring te ondersteunen.  Zie [een partner centrum-account maken](https://docs.microsoft.com/azure/marketplace/partner-center-portal/create-account) voor meer informatie.
+Nadat u [uw oplossing](https://partner.microsoft.com/dashboard/account/v3/enrollment/introduction/partnership) naar Marketplace hebt verzonden, neemt het voorbereidings team contact met u op om uw publicatie ervaring te ondersteunen.  Zie [een partner centrum-account maken](partner-center-portal/create-account.md) voor meer informatie.
 
 Meer informatie over de [voor delen van uw commerciële Marketplace](https://docs.microsoft.com//azure/marketplace/gtm-your-marketplace-benefits).
 

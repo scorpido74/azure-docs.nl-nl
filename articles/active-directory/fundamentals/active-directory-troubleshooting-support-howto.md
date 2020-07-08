@@ -7,7 +7,7 @@ author: msaburnley
 manager: daveba
 editor: ''
 ms.service: active-directory
-ms.topic: conceptual
+ms.topic: troubleshooting
 ms.subservice: fundamentals
 ms.workload: identity
 ms.date: 08/28/2017
@@ -15,12 +15,11 @@ ms.author: ajburnle
 ms.reviewer: jeffsta
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1193bfc08ccbd86d4da09c4de472f09bb49208f6
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: c49d795b80ed5e9536740e0d8fe877d070da87a2
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80049940"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85799361"
 ---
 # <a name="find-help-and-open-a-support-ticket-for-azure-active-directory"></a>Hulp zoeken en een ondersteunings ticket openen voor Azure Active Directory
 Micro soft biedt wereld wijde technische, voor verkoop-, facturerings-en abonnements ondersteuning voor Azure Active Directory (Azure AD). Ondersteuning is online en telefonisch beschikbaar voor Microsoft Azure betaalde en proef abonnementen. Telefonische ondersteuning en online-ondersteuning bij factureren zijn in meer talen beschikbaar. 
@@ -46,30 +45,29 @@ Als u geen antwoorden kunt vinden met behulp van Self-Help-bronnen, opent u een 
 
 1. Meld u aan bij [de Azure Portal](https://portal.azure.com) en open **Azure Active Directory**.
    
-2. Schuif omlaag naar **probleem oplossing en ondersteuning** en selecteer **nieuwe ondersteunings aanvraag**.
+1. Schuif omlaag naar **probleem oplossing en ondersteuning** en selecteer **nieuwe ondersteunings aanvraag**.
    
-3. Selecteer op de Blade **basis beginselen** , voor **type probleem**, de optie **technisch**.
+1. Selecteer op de Blade **basis beginselen** , voor **type probleem**, de optie **technisch**.
 
-4. Selecteer uw **abonnement**.
+1. Selecteer uw **abonnement**.
 
-5. Selecteer **Azure Active Directory**voor de **service**.
+1. Selecteer **Azure Active Directory**voor de **service**.
 
-6. Maak een **samen vatting** voor de aanvraag. De samen vatting moet langer zijn dan 140 tekens.
+1. Maak een **samen vatting** voor de aanvraag. De samen vatting moet langer zijn dan 140 tekens.
   
-7. Selecteer een **probleem type**en selecteer vervolgens een categorie voor dat type. U krijgt op dit moment zelf Help-informatie over uw probleem categorie.
+1. Selecteer een **probleem type**en selecteer vervolgens een categorie voor dat type. U krijgt op dit moment zelf Help-informatie over uw probleem categorie.
   
-7. Voeg de overige informatie over uw probleem toe en klik op **volgende**. 
+1. Voeg de overige informatie over uw probleem toe en klik op **volgende**. 
 
-8. Op dit moment worden er oplossingen en documentatie voor zelf ondersteuning aangeboden op de Blade **oplossingen** . Als geen van de oplossingen het probleem heeft opgelost, klikt u op **volgende**. 
+1. Op dit moment worden er oplossingen en documentatie voor zelf ondersteuning aangeboden op de Blade **oplossingen** . Als geen van de oplossingen het probleem heeft opgelost, klikt u op **volgende**. 
 
-9. Vul op de Blade **Details** de vereiste gegevens in en selecteer een [Ernst](https://azure.microsoft.com/support/plans/response/). 
+1. Vul op de Blade **Details** de vereiste gegevens in en selecteer een [Ernst](https://azure.microsoft.com/support/plans/response/). 
  
-![installatiekopie](https://user-images.githubusercontent.com/13383753/76565580-1c284900-6468-11ea-8c0f-85af98097b6f.png)
+    ![image](https://user-images.githubusercontent.com/13383753/76565580-1c284900-6468-11ea-8c0f-85af98097b6f.png)
  
-10. Geef uw contact gegevens op en selecteer **volgende**. 
+1. Geef uw contact gegevens op en selecteer **volgende**. 
 
-
-8. Geef uw contact gegevens op en selecteer **maken**.
+1. Geef uw contact gegevens op en selecteer **maken**.
   ![Scherm opname van de Help voor de probleem categorie](./media/active-directory-troubleshooting-support-howto/open-support-ticket.png)
 
 ### <a name="how-to-open-a-support-ticket-for-azure-ad-in-the-microsoft-365-admin-center"></a>Een ondersteunings ticket openen voor Azure AD in het Microsoft 365-beheer centrum
@@ -79,19 +77,19 @@ Als u geen antwoorden kunt vinden met behulp van Self-Help-bronnen, opent u een 
 
 1. Meld u aan bij het [Microsoft 365-beheer centrum](https://admin.microsoft.com) met een account met een Enterprise Mobility + Security-licentie (EMS).
 
-2. Selecteer **nieuwe service aanvraag**op de tegel **ondersteuning** :
+1. Selecteer **nieuwe service aanvraag**op de tegel **ondersteuning** :
 
-3. Op de pagina **overzicht van ondersteuning** selecteert u **identiteits beheer** of **gebruikers-en domein beheer**:
+1. Op de pagina **overzicht van ondersteuning** selecteert u **identiteits beheer** of **gebruikers-en domein beheer**:
 
-4. Voor **functie**selecteert u de Azure AD-functie waarvoor u ondersteuning wilt.
+1. Voor **functie**selecteert u de Azure AD-functie waarvoor u ondersteuning wilt.
 
-5. Selecteer voor **symptoom**een geschikt symptoom, vat uw probleem samen en geef de relevante gegevens op en selecteer **volgende**.
+1. Selecteer voor **symptoom**een geschikt symptoom, vat uw probleem samen en geef de relevante gegevens op en selecteer **volgende**.
 
-6. Selecteer een van de aangeboden Self-Help-bronnen of selecteer **Ja, door gaan** of **Nee, aanvraag annuleren**.
+1. Selecteer een van de aangeboden Self-Help-bronnen of selecteer **Ja, door gaan** of **Nee, aanvraag annuleren**.
 
-7. Als u doorgaat, wordt u gevraagd om meer informatie. U kunt alle bestanden toevoegen die het probleem vertegenwoordigen en vervolgens **volgende**selecteren.
+1. Als u doorgaat, wordt u gevraagd om meer informatie. U kunt alle bestanden toevoegen die het probleem vertegenwoordigen en vervolgens **volgende**selecteren.
 
-8. Geef uw contact gegevens op en selecteer **aanvraag verzenden**.
+1. Geef uw contact gegevens op en selecteer **aanvraag verzenden**.
 
 ## <a name="get-phone-support"></a>Telefonische ondersteuning krijgen
 

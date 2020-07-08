@@ -8,14 +8,13 @@ ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 03/30/2020
+ms.date: 07/06/2020
 ms.author: iainfou
-ms.openlocfilehash: d5c0878a5999f1d7d716d8caaf9f3fffa5e401dc
-ms.sourcegitcommit: 55b2bbbd47809b98c50709256885998af8b7d0c5
-ms.translationtype: MT
+ms.openlocfilehash: f4bfffe54fb87953ae737ecf83ea898cfe78743c
+ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/18/2020
-ms.locfileid: "84982345"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86040330"
 ---
 # <a name="how-trust-relationships-work-for-resource-forests-in-azure-active-directory-domain-services"></a>Hoe vertrouwens relaties werken voor bron-forests in Azure Active Directory Domain Services
 
@@ -26,6 +25,10 @@ Als u wilt controleren op deze vertrouwens relatie, berekent het Windows-beveili
 De toegangs beheer mechanismen van AD DS en het Windows-gedistribueerde beveiligings model bieden een omgeving voor de werking van domein-en forest-vertrouwens relaties. Voor een goede werking van deze vertrouwens relaties moet elke bron of computer een direct vertrouwenspad hebben naar een domein controller in het domein waarin deze zich bevindt.
 
 Het vertrouwenspad wordt geïmplementeerd door de Net Logon-service met een geverifieerde RPC-verbinding (Remote Procedure Call) naar de vertrouwde domein instantie. Een beveiligd kanaal kan ook worden uitgebreid naar andere AD DS domeinen door middel van vertrouwens relaties tussen domeinen. Dit beveiligde kanaal wordt gebruikt om beveiligings informatie, inclusief beveiligings-id's (Sid's) voor gebruikers en groepen, op te halen en te verifiëren.
+
+Zie [concepten en functies][create-forest-trust]van het resource-forest voor een overzicht van de manier waarop vertrouwens relaties van toepassing zijn op Azure AD DS.
+
+Om aan de slag te gaan met het gebruik van vertrouwens relaties in azure AD DS, moet u [een beheerd domein maken dat forest-vertrouwens relaties gebruikt][tutorial-create-advanced].
 
 ## <a name="trust-relationship-flows"></a>Stromen van vertrouwens relatie
 
@@ -128,7 +131,7 @@ Als de client Kerberos V5 gebruikt voor verificatie, vraagt het een ticket aan b
 
 2. Bestaat er een transitieve vertrouwens relatie tussen het huidige domein en het volgende domein op het vertrouwenspad?
     * Zo ja, stuur de client een verwijzing naar het volgende domein op het vertrouwenspad.
-    * Als dat niet het geval is, verzendt u de client een bericht dat de aanmelding is geweigerd.
+    * Als dat niet het geval is, verzendt u de client een bericht dat het aanmelden is geweigerd.
 
 ### <a name="ntlm-referral-processing"></a>NTLM-verwijzings verwerking
 
@@ -152,7 +155,7 @@ Wanneer twee forests zijn verbonden door een forestvertrouwensrelatie, kunnen ve
 
 Wanneer een forest-vertrouwens relatie voor het eerst tot stand is gebracht, verzamelt elk forest alle vertrouwde naam ruimten in het partner-forest en slaat de gegevens op in een [vertrouwd domein object](#trusted-domain-object). Voor beelden van vertrouwde naam ruimten zijn domein namen, achtervoegsels voor user principal name (UPN), achtervoegsels voor Service Principal Name (SPN) en beveiligings-id's (SID'S) die worden gebruikt in het andere forest. TDO-objecten worden gerepliceerd naar de globale catalogus.
 
-Voordat verificatie protocollen het pad naar de forestvertrouwensrelatie kunnen volgen, moet de Service Principal Name (SPN) van de bron computer worden omgezet naar een locatie in het andere forest. Een SPN kan een van de volgende zijn:
+Voordat verificatie protocollen het pad naar de forestvertrouwensrelatie kunnen volgen, moet de Service Principal Name (SPN) van de bron computer worden omgezet naar een locatie in het andere forest. Een SPN kan een van de volgende namen hebben:
 
 * De DNS-naam van een host.
 * De DNS-naam van een domein.
@@ -228,7 +231,7 @@ Een wachtwoord wijziging is pas voltooid als het wacht woord is geslaagd. Het ou
 
 Als verificatie met het nieuwe wacht woord mislukt omdat het wacht woord ongeldig is, probeert de vertrouwens relatie van de domein controller te verifiëren met het oude wacht woord. Als de verificatie met het oude wacht woord is gelukt, wordt het wachtwoord wijzigings proces binnen 15 minuten hervat.
 
-Updates voor een wacht woord moeten binnen 30 dagen worden gerepliceerd naar de domein controllers van beide zijden van de vertrouwens relatie. Als het wacht woord van de vertrouwens relatie na 30 dagen wordt gewijzigd en een domein controller dan alleen het N-2-wacht woord heeft, kan het geen vertrouwens relatie van de vertrouwens zijde gebruiken en kan er geen beveiligd kanaal op de vertrouwde zijde worden gemaakt.
+Updates voor een wacht woord moeten binnen 30 dagen worden gerepliceerd naar de domein controllers van beide zijden van de vertrouwens relatie. Als het wacht woord van de vertrouwens relatie na 30 dagen wordt gewijzigd en een domein controller alleen het N-2-wacht woord heeft, kan de vertrouwens relatie van de vertrouwens zijde niet worden gebruikt en kan er geen beveiligd kanaal op de vertrouwde zijde worden gemaakt.
 
 ## <a name="network-ports-used-by-trusts"></a>Netwerk poorten die worden gebruikt door vertrouwens relaties
 

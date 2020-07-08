@@ -7,12 +7,11 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: troubleshooting
 ms.date: 06/16/2020
-ms.openlocfilehash: dcf687a369b32b2055f579f2599a0c3097f9f9f3
-ms.sourcegitcommit: 9bfd94307c21d5a0c08fe675b566b1f67d0c642d
-ms.translationtype: MT
+ms.openlocfilehash: 7bd3f1a5b242ee5196e92456cb3fc8c97f8f5b27
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/17/2020
-ms.locfileid: "84977706"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85958528"
 ---
 # <a name="virtual-machine-certification---issues-and-solutions"></a>Certificering van virtuele machines: problemen en oplossingen
 
@@ -31,8 +30,8 @@ Deze fout treedt op wanneer u een basis installatie kopie gebruikt die deel uitm
 
 U kunt dit probleem oplossen door uw nieuwste installatie kopie op te halen van Azure Marketplace en wijzigingen aan te brengen in de installatie kopie. Raadpleeg het volgende voor het weer geven van goedgekeurde basis installatie kopieën waarin u kunt zoeken naar uw installatie kopie:
 
-- [Linux-installatie kopieën](https://docs.microsoft.com/azure/virtual-machines/linux/endorsed-distros?toc=/azure/virtual-machines/linux/toc.json)
-- [Windows-installatie kopieën](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/virtual-machine/cpp-create-vhd#select-an-approved-base)
+- [Linux-installatie kopieën](../../virtual-machines/linux/endorsed-distros.md?toc=/azure/virtual-machines/linux/toc.json)
+- [Windows-installatie kopieën](create-azure-vm-technical-asset.md#create-a-vm-image-using-an-approved-base))
 
 ## <a name="vm-extension-failure"></a>VM-extensie fout
 
@@ -55,11 +54,11 @@ Controleer of de VM-extensies correct zijn geactiveerd:
 
    ![Inrichting geslaagd](./media/vm-certification-issues-solutions-2.png)
 
-   Als de extensie van de virtuele machine mislukt, gaat u naar de [Diagnostische Linux-extensie gebruiken om metrische gegevens en logboeken te controleren](https://docs.microsoft.com/azure/virtual-machines/extensions/diagnostics-linux) om deze in te scha kelen. Als u niet wilt dat de VM-extensie wordt ingeschakeld, neemt u contact op met het ondersteunings team en vraagt u de uitbrei ding uit te scha kelen.
+   Als de extensie van de virtuele machine mislukt, gaat u naar de [Diagnostische Linux-extensie gebruiken om metrische gegevens en logboeken te controleren](../../virtual-machines/extensions/diagnostics-linux.md) om deze in te scha kelen. Als u niet wilt dat de VM-extensie wordt ingeschakeld, neemt u contact op met het ondersteunings team en vraagt u de uitbrei ding uit te scha kelen.
 
 ## <a name="virtual-machine-provisioning-issue"></a>Probleem met het inrichten van de virtuele machine
 
-Controleer of het inrichtings proces strikt wordt gevolgd voor de virtuele machine voordat u uw aanbieding verzendt. Als u de JSON-indeling voor het inrichten van de virtuele machine wilt weer geven, gaat u naar [CA-certificering van Azure virtual machine (VM)](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/virtual-machine/cpp-deploy-json-template).
+Controleer of het inrichtings proces strikt wordt gevolgd voor de virtuele machine voordat u uw aanbieding verzendt. Als u de JSON-indeling voor het inrichten van de virtuele machine wilt weer geven, gaat u naar [CA-certificering van Azure virtual machine (VM)](azure-vm-image-certification.md).
 
 Het inrichtings probleem kan de volgende fout scenario's omvatten:
 
@@ -71,8 +70,8 @@ Het inrichtings probleem kan de volgende fout scenario's omvatten:
 
 > [!NOTE]
 > Volg deze koppelingen voor documentatie over VM-generalisatie:
-> - [Linux](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/virtual-machine/cpp-configure-vm#generalize-the-image)
-> - [Windows](https://docs.microsoft.com/azure/virtual-machines/windows/capture-image-resource#generalize-the-windows-vm-using-sysprep)
+> - [Linux](create-azure-vm-technical-asset.md#generalize-the-image))
+> - [Windows](../../virtual-machines/windows/capture-image-resource.md#generalize-the-windows-vm-using-sysprep))
 
 ## <a name="software-compliance-for-windows"></a>Software compatibiliteit voor Windows
 
@@ -82,13 +81,13 @@ Maak geen eigen Windows-installatie kopie waarop SQL Server is geïnstalleerd. G
 
 Als u Visual Studio of een product met een Office-licentie wilt installeren, neemt u contact op met het ondersteunings team voor voorafgaande goed keuring.
 
-Ga voor meer informatie naar [de technische assets van uw virtuele Azure-machines maken](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/virtual-machine/cpp-create-vhd#select-an-approved-base) om een goedgekeurde basis te selecteren.
+Ga voor meer informatie naar [de technische assets van uw Azure virtual machine maken](create-azure-vm-technical-asset.md#create-a-vm-image-using-an-approved-base)om een goedgekeurde basis te selecteren.
 
 ## <a name="tool-kit-test-case-execution-failed"></a>Uitvoering van test case van Tool Kit is mislukt
 
 De micro soft-certificerings Toolkit helpt u bij het uitvoeren van test cases of uw VHD/Image compatibel is met de Azure-omgeving.
 
-Down load de [micro soft-certificerings Toolkit](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/virtual-machine/cpp-certify-vm).
+Down load de [micro soft-certificerings Toolkit](azure-vm-image-certification.md).
 
 ## <a name="linux-test-cases"></a>Linux-test cases
 
@@ -154,7 +153,7 @@ Verzend de aanvraag opnieuw met een grootte die kleiner is dan of gelijk is aan 
 
 Raadpleeg de volgende regels voor beperkingen op de schijf grootte van het besturings systeem. Wanneer u een aanvraag indient, controleert u of de grootte van de besturingssysteem schijf binnen de limiet voor Linux of Windows valt.
 
-|Besturingssysteem|Aanbevolen grootte voor VHD|
+|OS|Aanbevolen grootte voor VHD|
 |---|---|
 |Linux|30 GB tot 1023 GB|
 |Windows|30 GB tot 250 GB|
@@ -180,7 +179,7 @@ De versie van het installatie kopie bestand kan worden gecontroleerd vanuit `C:\
 > [!NOTE]
 > WindowsServer2019 heeft geen verplichte versie vereisten.
 
-|Besturingssysteem|versie|
+|OS|versie|
 |---|---|
 |WindowsServer2008R2|6.1.7601.23689|
 |WindowsServer2012|6.2.9200.22099|
@@ -249,7 +248,7 @@ Als uw installatie kopie niet is geïnstalleerd met een van de volgende versies 
 
 Alle Vhd's op Azure moeten een virtuele grootte hebben die is afgestemd op een veelvoud van 1 MB. Als uw VHD niet aan de aanbevolen virtuele grootte voldoet, wordt uw aanvraag mogelijk geweigerd.
 
-Volg de richt lijnen, wanneer u van een onbewerkte schijf naar VHD converteert, en zorg ervoor dat de onbewerkte schijf grootte een meervoud van 1 MB is. Zie voor meer informatie [informatie over niet-goedgekeurde distributies](https://docs.microsoft.com/azure/virtual-machines/linux/create-upload-generic)
+Volg de richt lijnen, wanneer u van een onbewerkte schijf naar VHD converteert, en zorg ervoor dat de onbewerkte schijf grootte een meervoud van 1 MB is. Zie voor meer informatie [informatie over niet-goedgekeurde distributies](../../virtual-machines/linux/create-upload-generic.md)
 
 ## <a name="vm-access-denied"></a>VM-toegang geweigerd
 

@@ -9,18 +9,17 @@ ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
 ms.topic: how-to
-ms.date: 03/31/2020
+ms.date: 07/06/2020
 ms.author: iainfou
-ms.openlocfilehash: 5f0bc803c8f05f34a46f9e496446a3ce07bad179
-ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
-ms.translationtype: MT
+ms.openlocfilehash: e0188a35289c22da784ca856c80212638052a609
+ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/12/2020
-ms.locfileid: "84734891"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86040279"
 ---
 # <a name="create-an-organizational-unit-ou-in-an-azure-active-directory-domain-services-managed-domain"></a>Een organisatie-eenheid (OE) maken in een Azure Active Directory Domain Services beheerd domein
 
-Organisatie-eenheden (Ou's) in Active Directory Domain Services (AD DS) kunt u objecten logisch groeperen, zoals gebruikers accounts, service accounts of computer accounts. U kunt vervolgens beheerders toewijzen aan specifieke organisatie-eenheden en groeps beleid Toep assen om specifieke configuratie-instellingen af te dwingen.
+Organisatie-eenheden (Ou's) in een door Active Directory Domain Services (AD DS) beheerd domein kunt u objecten logisch groeperen, zoals gebruikers accounts, service accounts of computer accounts. U kunt vervolgens beheerders toewijzen aan specifieke organisatie-eenheden en groeps beleid Toep assen om specifieke configuratie-instellingen af te dwingen.
 
 In azure AD DS beheerde domeinen zijn de volgende twee ingebouwde organisatie-eenheden:
 
@@ -29,7 +28,7 @@ In azure AD DS beheerde domeinen zijn de volgende twee ingebouwde organisatie-ee
 
 Bij het maken en uitvoeren van werk belastingen die gebruikmaken van Azure AD DS, moet u mogelijk service accounts voor toepassingen maken om zichzelf te verifiëren. Als u deze service accounts wilt ordenen, maakt u vaak een aangepaste OE in het beheerde domein en maakt u vervolgens service accounts binnen die organisatie-eenheid.
 
-In een hybride omgeving worden organisatie-eenheden die zijn gemaakt in een on-premises AD DS omgeving niet gesynchroniseerd met Azure AD DS. Beheerde domeinen gebruiken een platte OE-structuur. Alle gebruikers accounts en-groepen worden opgeslagen in de container *AADDC-gebruikers* , ondanks dat ze worden gesynchroniseerd vanuit verschillende on-premises domeinen of forests, zelfs als u daar een hiërarchische OE-structuur hebt geconfigureerd.
+In een hybride omgeving worden organisatie-eenheden die zijn gemaakt in een on-premises AD DS omgeving niet gesynchroniseerd met het beheerde domein. Beheerde domeinen gebruiken een platte OE-structuur. Alle gebruikers accounts en-groepen worden opgeslagen in de container *AADDC-gebruikers* , ondanks dat ze worden gesynchroniseerd vanuit verschillende on-premises domeinen of forests, zelfs als u daar een hiërarchische OE-structuur hebt geconfigureerd.
 
 In dit artikel wordt beschreven hoe u een organisatie-eenheid maakt in uw beheerde domein.
 
@@ -38,18 +37,18 @@ In dit artikel wordt beschreven hoe u een organisatie-eenheid maakt in uw beheer
 U hebt de volgende resources en bevoegdheden nodig om dit artikel te volt ooien:
 
 * Een actief Azure-abonnement.
-    * Als u geen Azure-abonnement hebt, [maakt u een account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
-* Een Azure Active Directory Tenant die aan uw abonnement is gekoppeld, gesynchroniseerd met een on-premises Directory of een alleen-Cloud Directory.
-    * Als dat nodig is, [maakt u een Azure Active Directory-Tenant][create-azure-ad-tenant] of [koppelt u een Azure-abonnement aan uw account][associate-azure-ad-tenant].
-* Een Azure Active Directory Domain Services beheerd domein ingeschakeld en geconfigureerd in uw Azure AD-Tenant.
+    * Als u nog geen Azure-abonnement hebt, [maakt u een account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
+* Een Azure Active Directory-tenant die aan uw abonnement is gekoppeld, gesynchroniseerd met een on-premises map of een cloudmap.
+    * [Maak zo nodig een Azure Active Directory-tenant][create-azure-ad-tenant] of [koppel een Azure-abonnement aan uw account][associate-azure-ad-tenant].
+* Een door Azure Active Directory Domain Services beheerd domein dat in uw Azure AD-tenant is ingeschakeld en geconfigureerd.
     * Als dat nodig is, voltooit u de zelf studie voor het [maken en configureren van een Azure Active Directory Domain Services beheerd domein][create-azure-ad-ds-instance].
 * Een Windows Server Management-VM die deel uitmaakt van het door Azure AD DS beheerde domein.
     * Als dat nodig is, voltooit u de zelf studie voor het [maken van een beheer-VM][tutorial-create-management-vm].
-* Een gebruikers account dat lid is van de groep *Azure AD DC-Administrators* in uw Azure AD-Tenant.
+* Een gebruikersaccount dat lid is van de *Azure AD DC-beheerdersgroep* in uw Azure AD-tenant.
 
 ## <a name="custom-ou-considerations-and-limitations"></a>Overwegingen en beperkingen voor aangepaste OE
 
-Wanneer u aangepaste organisatie-eenheden in een beheerd domein maakt, krijgt u extra flexibiliteit voor het beheer van gebruikers en het Toep assen van groeps beleid. Vergeleken met een on-premises AD DS omgeving, zijn er enkele beperkingen en overwegingen bij het maken en beheren van een aangepaste OE-structuur in azure AD DS:
+Wanneer u aangepaste organisatie-eenheden in een beheerd domein maakt, krijgt u extra flexibiliteit voor het beheer van gebruikers en het Toep assen van groeps beleid. Vergeleken met een on-premises AD DS omgeving, zijn er enkele beperkingen en overwegingen bij het maken en beheren van een aangepaste OE-structuur in een beheerd domein:
 
 * Gebruikers moeten lid zijn van de groep *Aad DC-Administrators* om aangepaste organisatie-eenheden te maken.
 * Een gebruiker die een aangepaste OE maakt, krijgt beheerders bevoegdheden (volledig beheer) over die organisatie-eenheid en is de eigenaar van de resource.

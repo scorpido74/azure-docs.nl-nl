@@ -7,10 +7,9 @@ ms.reviewer: klam, logicappspm
 ms.topic: conceptual
 ms.date: 02/28/2020
 ms.openlocfilehash: 786655f8e8ee7e21f2615361b0bb1ea336ccb479
-ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/29/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84190743"
 ---
 # <a name="common-scenarios-examples-tutorials-and-walkthroughs-for-azure-logic-apps"></a>Veelvoorkomende scenario's, voor beelden, zelf studies en scenario's voor Azure Logic Apps
@@ -31,7 +30,7 @@ Hier volgen enkele voor beelden van veelgebruikte triggers:
 
 * *Polling* triggers:
 
-  * Met de trigger voor [ **terugkeer patroon** ](../connectors/connectors-native-recurrence.md) kunt u de begin datum en-tijd en het terugkeer patroon instellen voor het activeren van uw logische app. U kunt bijvoorbeeld de dagen van de week en tijdstippen van de dag selecteren voor het activeren van uw logische app. Zie deze onderwerpen voor meer informatie:<p>
+  * Met de trigger voor [ **terugkeer patroon** ](../connectors/connectors-native-recurrence.md) kunt u de begin datum en-tijd en het terugkeer patroon instellen voor het activeren van uw logische app. U kunt bijvoorbeeld de dagen van de week en tijdstippen van de dag selecteren voor het activeren van uw logische app. Raadpleeg de volgende onderwerpen voor meer informatie:<p>
 
     * [Terugkerende en geautomatiseerde taken, processen en werkstromen plannen en uitvoeren met Azure Logic Apps](../logic-apps/concepts-schedule-automated-recurring-tasks-workflows.md)
     * [Zelf studie: automatische, op planning gebaseerde terugkerende werk stromen maken met behulp van Azure Logic Apps](../logic-apps/tutorial-build-schedule-recurring-logic-app-workflow.md)
@@ -39,9 +38,9 @@ Hier volgen enkele voor beelden van veelgebruikte triggers:
   * De trigger **Wanneer een e-mail wordt ontvangen** , laat uw logische app controleren op nieuwe e-mail van elke e-mail provider die wordt ondersteund door Logic apps, bijvoorbeeld [Office 365 Outlook](../connectors/connectors-create-api-office365-outlook.md), [Gmail](https://docs.microsoft.com/connectors/gmail/), [Outlook.com](https://docs.microsoft.com/connectors/outlook/), enzovoort.
 
     > [!IMPORTANT]
-    > Als u de Gmail-connector wilt gebruiken, kunnen alleen zakelijke accounts van G-Suite deze connector gebruiken zonder beperkingen in Logic apps. Als u een Gmail-Consumer-account hebt, kunt u deze connector gebruiken met alleen specifieke door Google goedgekeurde Services, of u kunt [een Google-client-app maken die voor verificatie met uw Gmail-connector wordt gebruikt](https://docs.microsoft.com/connectors/gmail/#authentication-and-bring-your-own-application). Zie voor meer informatie [beleid voor gegevens beveiliging en privacybeleid voor Google connectors in azure Logic apps](../connectors/connectors-google-data-security-privacy-policy.md).
+    > Als u de Gmail-connector wilt gebruiken, kunnen alleen bedrijfsaccounts van G Suite deze connector zonder beperking in logische apps gebruiken. Als u een Gmail-consumentenaccount hebt, kunt u deze connector alleen gebruiken met specifieke door Google goedgekeurde services, of u kunt [een Google-client-app maken voor verificatie bij uw Gmail-connector](https://docs.microsoft.com/connectors/gmail/#authentication-and-bring-your-own-application). Zie [Beleid voor gegevensbeveiliging en privacybeleid voor Google-connectors in Azure Logic Apps](../connectors/connectors-google-data-security-privacy-policy.md) voor meer informatie.
 
-    Zie deze onderwerpen voor meer informatie:<p>
+    Raadpleeg de volgende onderwerpen voor meer informatie:<p>
 
     * [Zelf studie: geautomatiseerde werk stromen op basis van goed keuring maken met behulp van Azure Logic Apps](../logic-apps/tutorial-process-mailing-list-subscriptions-workflow.md)
     * [Zelf studie: taken automatiseren voor het verwerken van e-mail berichten met behulp van Azure Logic Apps, Azure Functions en Azure Storage](../logic-apps/tutorial-process-email-attachments-workflow.md)
@@ -86,7 +85,7 @@ Voor systemen en services die geen connectors hebben gepubliceerd, kunt u ook lo
 Voor oplossingen voor bedrijfs integratie en naadloze communicatie tussen organisaties kunt u geautomatiseerde schaal bare werk stromen voor deze scenario's maken door de Enterprise Integration Pack (EIP) met Azure Logic Apps te gebruiken. Hoewel organisaties verschillende protocollen en indelingen gebruiken, kunnen ze berichten elektronisch uitwisselen. De EIP transformeert verschillende indelingen naar een indeling die de systemen van uw organisatie kunnen verwerken en ondersteunt industrie standaard protocollen, waaronder AS2, X12, EDIFACT en RosettaNet. Als u deze oplossingen wilt maken, maakt u een integratie account. Dit is een afzonderlijke Azure-resource die een veilige, schaal bare en beheersbare container biedt voor de artefacten die u definieert en gebruikt met uw logische app-werk stromen. Artefacten zijn bijvoorbeeld handels partners, overeenkomsten, kaarten, schema's, certificaten en batch configuraties.
 
 * [Overzicht: zakelijke oplossingen voor B2B-integratie met Azure Logic Apps en Enterprise Integration Pack](../logic-apps/logic-apps-enterprise-integration-overview.md)
-* [Integratie accounts voor B2B-ondernemings integraties maken en beheren in Azure Logic Apps](../logic-apps/logic-apps-enterprise-integration-create-integration-account.md)
+* [Integratieaccounts voor B2B-ondernemingsintegraties maken en beheren met behulp van Azure Logic Apps](../logic-apps/logic-apps-enterprise-integration-create-integration-account.md)
 
 ## <a name="access-azure-virtual-network-resources"></a>Toegang tot Azure Virtual Network-Resources
 
@@ -103,8 +102,8 @@ U kunt Logic apps volledig ontwikkelen en implementeren met Visual Studio, Azure
 
 * [Snelstartgids: geautomatiseerde taken, processen en werk stromen maken met behulp van Azure Logic Apps-Visual Studio](../logic-apps/quickstart-create-logic-apps-with-visual-studio.md)
 * [Overzicht: implementatie van logische apps automatiseren](../logic-apps/logic-apps-azure-resource-manager-templates-overview.md)
-* [Azure Resource Manager sjablonen maken voor het automatiseren van de implementatie voor Azure Logic Apps](../logic-apps/logic-apps-create-azure-resource-manager-templates.md)
-* [Azure Resource Manager sjablonen voor Azure Logic Apps implementeren](../logic-apps/logic-apps-deploy-azure-resource-manager-templates.md)
+* [Azure Resource Manager-sjablonen maken voor het automatiseren van de implementatie voor Azure Logic Apps](../logic-apps/logic-apps-create-azure-resource-manager-templates.md)
+* [Azure Resource Manager-sjablonen inzetten voor Azure Logic Apps](../logic-apps/logic-apps-deploy-azure-resource-manager-templates.md)
 * [Voor beeld: verbinding maken met Azure Service Bus wacht rijen van Azure Logic Apps en implementeren met Azure-pijp lijnen in azure DevOps](https://docs.microsoft.com/samples/azure-samples/azure-logic-apps-deployment-samples/connect-to-azure-service-bus-queues-from-azure-logic-apps-and-deploy-with-azure-devops-pipelines/)
 * [Voor beeld: verbinding maken met Azure Storage accounts vanuit Azure Logic Apps en implementeren met Azure-pijp lijnen in azure DevOps](https://docs.microsoft.com/samples/azure-samples/azure-logic-apps-deployment-samples/connect-to-azure-storage-accounts-from-azure-logic-apps-and-deploy-with-azure-devops-pipelines/)
 * [Voor beeld: een actie van een functie-app instellen voor Azure Logic Apps en implementeren met Azure-pijp lijnen in azure DevOps](https://docs.microsoft.com/samples/azure-samples/azure-logic-apps-deployment-samples/set-up-an-azure-function-app-action-for-azure-logic-apps-and-deploy-with-azure-devops-pipelines/)
@@ -119,9 +118,9 @@ U kunt Logic apps volledig ontwikkelen en implementeren met Visual Studio, Azure
 
 ### <a name="monitor"></a>Controleren
 
-* [De uitvoerings status controleren, de trigger geschiedenis controleren en waarschuwingen instellen voor Azure Logic Apps](../logic-apps/monitor-logic-apps.md)
+* [Uitvoeringsstatus bewaken, triggergeschiedenis controleren, en waarschuwingen instellen voor Azure Logic Apps](../logic-apps/monitor-logic-apps.md)
 * [Azure Monitor logboeken instellen en diagnostische gegevens verzamelen voor Azure Logic Apps](../logic-apps/monitor-logic-apps-log-analytics.md)
-* [Azure Monitor logboeken instellen en diagnostische gegevens verzamelen voor B2B-berichten in Azure Logic Apps](../logic-apps/monitor-b2b-messages-log-analytics.md)
+* [Azure Monitor-logboeken instellen en diagnostische gegevens verzamelen voor B2B-berichten in Azure Logic Apps](../logic-apps/monitor-b2b-messages-log-analytics.md)
 * [Query's weer geven en maken voor het controleren en bijhouden van Azure Monitor logboeken voor Azure Logic Apps](../logic-apps/create-monitoring-tracking-queries.md)
 
 ## <a name="handle-content-types-conversions-and-transformations"></a>Inhouds typen, conversies en trans formaties verwerken
@@ -141,7 +140,7 @@ Azure Logic Apps kan worden geïntegreerd met veel services, zoals Azure Functio
 * [Zelf studie: een streaming Customer Insights-dash board maken met Azure Logic Apps en Azure Functions](../logic-apps/logic-apps-scenario-social-serverless.md)
 * [Zelf studie: een functie maken die kan worden geïntegreerd met Azure Logic Apps en Azure Cognitive Services voor het analyseren van Twitter post sentiment](../azure-functions/functions-twitter-email.md)
 * [Zelf studie: een sociaal dash board met AI-energie maken met behulp van Power BI en Azure Logic Apps](https://aka.ms/logicappsdemo)
-* [Zelf studie: wijzigingen van virtuele machines bewaken met behulp van Azure Event Grid en Logic Apps](../event-grid/monitor-virtual-machine-changes-event-grid-logic-app.md)
+* [Zelfstudie: Wijzigingen in virtuele machines bewaken met Azure Event Grid en Logic Apps](../event-grid/monitor-virtual-machine-changes-event-grid-logic-app.md)
 * [Zelf studie: externe bewaking van IoT en meldingen met Azure Logic Apps verbinding maken met uw IoT hub en Postvak](../iot-hub/iot-hub-monitoring-notifications-with-azure-logic-apps.md)
 * [Blog: SOAP-services aanroepen met behulp van Azure Logic Apps](https://blogs.msdn.microsoft.com/logicapps/2016/04/07/using-soap-services-with-logic-apps/)
 

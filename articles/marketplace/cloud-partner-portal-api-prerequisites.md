@@ -7,12 +7,11 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 04/08/2020
 ms.author: dsindona
-ms.openlocfilehash: 1a20abf72ca25ba7c4b5600953766be4d62c708d
-ms.sourcegitcommit: 374e47efb65f0ae510ad6c24a82e8abb5b57029e
-ms.translationtype: MT
+ms.openlocfilehash: c435e171c7e3cabea4007c7b78cf60727bf55efd
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/28/2020
-ms.locfileid: "85516219"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85958226"
 ---
 <a name="api-prerequisites"></a>API-vereisten
 ================
@@ -26,7 +25,7 @@ Er zijn twee vereiste programmeer middelen die u nodig hebt voor het gebruik van
 <a name="create-a-service-principal-in-your-azure-active-directory-tenant"></a>Een service-principal maken in uw Azure Active Directory-Tenant
 ----------------------------------------------------------------
 
-Eerst moet u een service-principal maken in uw Azure AD-Tenant. Aan deze Tenant wordt een eigen set machtigingen toegewezen in de Cloud Partner-portal. De code roept Api's aan die als deze Tenant worden gebruikt in plaats van uw persoonlijke referenties te gebruiken.  Zie [Portal gebruiken om een Azure Active Directory toepassing en Service-Principal te maken voor toegang tot resources](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-create-service-principal-portal)voor een volledige uitleg bij het maken van een service-principal.
+Eerst moet u een service-principal maken in uw Azure AD-Tenant. Aan deze Tenant wordt een eigen set machtigingen toegewezen in de Cloud Partner-portal. De code roept Api's aan die als deze Tenant worden gebruikt in plaats van uw persoonlijke referenties te gebruiken.  Zie [How to: de portal gebruiken om een Azure AD-toepassing en Service-Principal te maken voor toegang tot resources](../active-directory/develop/howto-create-service-principal-portal.md)voor een volledige uitleg over het maken van een service-principal.
 
 
 <a name="add-the-service-principal-to-your-account"></a>De Service-Principal toevoegen aan uw account
@@ -63,7 +62,7 @@ De Cloud Partner-portal-Api's gebruiken de volgende assets en protocollen tijden
 
 - Een JSON Web Token (JWT) Bearer-token om toegang tot resources aan te vragen
 - Het [OpenID Connect Connect](https://openid.net/connect/) (OIDC)-protocol om identiteit te verifiëren
-- [Azure Active Directory (Azure AD)](https://docs.microsoft.com/azure/active-directory/active-directory-whatis) als de identiteits instantie
+- [Azure Active Directory (Azure AD)](../active-directory/fundamentals/active-directory-whatis.md) als de identiteits instantie
 
 Er zijn twee principe benaderingen voor het programmatisch ophalen van een JWT-token:
 

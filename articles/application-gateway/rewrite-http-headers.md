@@ -8,10 +8,9 @@ ms.topic: conceptual
 ms.date: 04/27/2020
 ms.author: absha
 ms.openlocfilehash: fb5196f9612cb4ce1f0a49be8b5a76f6703fdab6
-ms.sourcegitcommit: bf99428d2562a70f42b5a04021dde6ef26c3ec3a
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/23/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85248677"
 ---
 # <a name="rewrite-http-headers-with-application-gateway"></a>HTTP-headers herschrijven met Application Gateway
@@ -60,7 +59,7 @@ Application Gateway gebruikt Server variabelen om nuttige informatie over de ser
 
 Application Gateway ondersteunt deze server variabelen:
 
-| Naam van de variabele | Beschrijving                                                  |
+| Naam van de variabele | Description                                                  |
 | -------------------------- | :----------------------------------------------------------- |
 | add_x_forwarded_for_proxy  | Het veld X-doorgestuurde client aanvraag header met de `client_ip` variabele (Zie de uitleg verderop in deze tabel) in de NOTATIE IP1, IP2, IP3, enzovoort. Als het X-doorgestuurde-veld zich niet in de header van de client aanvraag `add_x_forwarded_for_proxy` bevindt, is de variabele gelijk aan de `$client_ip` variabele. Deze variabele is vooral handig wanneer u de X-doorgestuurde header wilt herschrijven, zodat deze door Application Gateway wordt ingesteld, zodat de header alleen het IP-adres zonder de poort gegevens bevat. |
 | ciphers_supported          | Een lijst met de code ringen die door de client worden ondersteund.          |

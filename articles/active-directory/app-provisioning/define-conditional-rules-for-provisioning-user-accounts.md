@@ -11,10 +11,9 @@ ms.topic: how-to
 ms.date: 06/08/2020
 ms.author: kenwith
 ms.openlocfilehash: 1e858f1141ade52a1872d8a9822f515796d9182c
-ms.sourcegitcommit: 52d2f06ecec82977a1463d54a9000a68ff26b572
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/15/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84781953"
 ---
 # <a name="attribute-based-application-provisioning-with-scoping-filters"></a>Toewijzing van toepassingen op basis van kenmerken met bereik filters
@@ -86,7 +85,7 @@ Bereik filters worden geconfigureerd als onderdeel van de kenmerk toewijzingen v
 
    f. **is niet null**. -Component retourneert ' True ' als het geëvalueerde kenmerk niet leeg is.
 
-   g. **regex match**. -Component retourneert ' True ' als het geëvalueerde kenmerk overeenkomt met een reguliere-expressie patroon. Bijvoorbeeld: ([1-9] [0-9]) komt overeen met een getal tussen 10 en 99.
+   bijvoorbeeld **regex match**. -Component retourneert ' True ' als het geëvalueerde kenmerk overeenkomt met een reguliere-expressie patroon. Bijvoorbeeld: ([1-9] [0-9]) komt overeen met een getal tussen 10 en 99.
 
    h. **geen regex-overeenkomst**. -Component retourneert ' True ' als het geëvalueerde kenmerk niet overeenkomt met een reguliere-expressie patroon.
    

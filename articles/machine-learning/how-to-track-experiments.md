@@ -13,10 +13,9 @@ ms.topic: how-to
 ms.date: 03/12/2020
 ms.custom: seodec18
 ms.openlocfilehash: 426c79c19b599127e2235f61e8c917062ede3b79
-ms.sourcegitcommit: f01c2142af7e90679f4c6b60d03ea16b4abf1b97
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/10/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84675199"
 ---
 # <a name="monitor-azure-ml-experiment-runs-and-metrics"></a>Uitvoeringen en metrische gegevens van Azure ML-experimenten bewaken
@@ -34,7 +33,7 @@ Verbeter het proces voor het maken van het model door de metrische gegevens voor
 
 De volgende metrische gegevens kunnen worden toegevoegd aan een run tijdens het trainen van een experiment. Zie de [referentie documentatie](https://docs.microsoft.com/python/api/azureml-core/azureml.core.run(class)?view=azure-ml-py)voor het uitvoeren van klassen voor een gedetailleerde lijst met wat er kan worden gevolgd bij een uitvoering.
 
-|Type| Python-functie | Opmerkingen|
+|Type| Python-functie | Notities|
 |----|:----|:----|
 |Scalaire waarden |Functieassembly<br>`run.log(name, value, description='')`<br><br>Voorbeeld:<br>run. log ("nauw keurig", 0,95) |Registreer een numerieke of teken reeks waarde voor de uitvoering met de opgegeven naam. Als u een metriek registreert voor een run, wordt de metrische waarde opgeslagen in het rapport uitvoeren in het experiment.  U kunt dezelfde metrische gegevens meerdere keren in een uitvoering registreren. het resultaat wordt gezien als een vector van die metriek.|
 |Lijsten|Functieassembly<br>`run.log_list(name, value, description='')`<br><br>Voorbeeld:<br>run. log_list ("keurigheden", [0,6, 0,7, 0,87]) | Een lijst met waarden vastleggen voor de uitvoering met de opgegeven naam.|
@@ -229,7 +228,7 @@ Er zijn verschillende manieren om de logboek registratie-Api's te gebruiken voor
 |Logboek tabel met 2 numerieke kolommen|`run.log_table(name='Sine Wave', value=sines)`|Lijn diagram met twee variabelen|
 
 
-## <a name="example-notebooks"></a>Voorbeeld notitieblokken
+## <a name="example-notebooks"></a>Voorbeeldnotebooks
 In de volgende notitie blokken worden concepten in dit artikel gedemonstreerd:
 * [instructies-to-use-azureml/training/training-binnen-notebook](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/training/train-within-notebook)
 * [instructies-to-use-azureml/training/trein-on-Local](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/training/train-on-local)

@@ -11,10 +11,9 @@ author: likebupt
 ms.date: 04/06/2020
 ms.custom: designer
 ms.openlocfilehash: c466684bf5c07b5e88e8052c29aa9fb0b8583a89
-ms.sourcegitcommit: b55d1d1e336c1bcd1c1a71695b2fd0ca62f9d625
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/04/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84430069"
 ---
 # <a name="retrain-models-with-azure-machine-learning-designer-preview"></a>Modellen opnieuw trainen met de Azure Machine Learning-ontwerpfunctie (preview)
@@ -25,7 +24,7 @@ In dit artikel leert u hoe u Azure Machine Learning Designer kunt gebruiken om e
 In dit artikel leert u het volgende:
 
 > [!div class="checklist"]
-> * Train een machine learning model.
+> * Een machine learning-model trainen.
 > * Een pijplijn parameter maken.
 > * Publiceer uw trainings pijplijn.
 > * Train uw model opnieuw met nieuwe para meters.
@@ -106,7 +105,7 @@ Voer de volgende stappen uit om een uit te voeren hulp programma voor het uitvoe
 1. Ga naar de pagina **eind punten** in uw studio-werk ruimte.
 1. Selecteer het tabblad **pijplijn eindpunten** . Selecteer vervolgens het eind punt van de pijp lijn.
 1. Selecteer het tabblad **gepubliceerde pijp lijnen** . Selecteer vervolgens de pijplijn versie die u wilt uitvoeren.
-1. Selecteer **Verzenden**.
+1. Selecteer **Indienen**.
 1. In het dialoog venster Setup kunt u de parameter waarden voor de run opgeven. Voor dit voor beeld werkt u het gegevenspad bij om uw model te trainen met een niet-Amerikaanse gegevensset.
 
 ![Scherm afbeelding die laat zien hoe u een door para meters uitgestelde pijplijn uitvoering kunt instellen in de ontwerp functie](./media/how-to-retrain-designer/published-pipeline-run.png)

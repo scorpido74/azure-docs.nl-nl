@@ -3,12 +3,11 @@ title: Azure Monitor configureren voor containers Prometheus-integratie | Micros
 description: In dit artikel wordt beschreven hoe u de Azure Monitor voor containers agent kunt configureren voor het opwaarderen van metrische gegevens uit Prometheus met uw Kubernetes-cluster.
 ms.topic: conceptual
 ms.date: 04/22/2020
-ms.openlocfilehash: fcf1a2e5d2cf11cd9d612506e1ec56a392309121
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: f7a43f00ce160829cc8e6ed3b6272ab14aaace66
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82186489"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85800457"
 ---
 # <a name="configure-scraping-of-prometheus-metrics-with-azure-monitor-for-containers"></a>Het opvallen van Prometheus-metrische gegevens met Azure Monitor voor containers configureren
 
@@ -17,7 +16,7 @@ ms.locfileid: "82186489"
 ![Architectuur voor container bewaking voor Prometheus](./media/container-insights-prometheus-integration/monitoring-kubernetes-architecture.png)
 
 >[!NOTE]
->De minimale agent versie die wordt ondersteund voor het terugvallen van Prometheus-metrische gegevens is ciprod07092019 of hoger, en de agent versie die wordt ondersteund voor `KubeMonAgentEvents` het schrijven van configuratie-en agent fouten in de tabel is ciprod10112019. Voor Azure Red Hat open Shift en Red Hat open Shift v4, ciprod04162020 of hoger. 
+>De minimale agent versie die wordt ondersteund voor het terugvallen van Prometheus-metrische gegevens is ciprod07092019 of hoger, en de agent versie die wordt ondersteund voor het schrijven van configuratie-en agent fouten in de `KubeMonAgentEvents` tabel is ciprod10112019. Voor Azure Red Hat open Shift en Red Hat open Shift v4, ciprod04162020 of hoger. 
 >
 >Zie [release opmerkingen](https://github.com/microsoft/Docker-Provider/tree/ci_feature_prod)voor de agent voor meer informatie over de agent versies en wat is opgenomen in elke release. 
 >Als u de versie van de agent wilt controleren, selecteert u een knoop punt op het tabblad **knoop** punt en noteert u in het deel venster Eigenschappen de waarde van de **Agent-installatie kopie label** eigenschap.
@@ -48,16 +47,16 @@ Wanneer een URL is opgegeven, wordt het eind punt alleen door Azure Monitor voor
 |------|-----|-----------|-------|-------------|
 | Cluster-breed | | | | Geef een van de volgende drie methoden op om eind punten voor metrische gegevens af te vallen. |
 | | `urls` | Tekenreeks | Door komma's gescheiden matrix | HTTP-eind punt (ofwel een IP-adres of een geldig URL-pad opgegeven). Bijvoorbeeld: `urls=[$NODE_IP/metrics]`. ($NODE _IP is een specifiek Azure Monitor voor de para meter containers en kan worden gebruikt in plaats van het IP-adres van het knoop punt. Mag alleen hoofd letters zijn.) |
-| | `kubernetes_services` | Tekenreeks | Door komma's gescheiden matrix | Een matrix met Kubernetes-Services voor het opwaarderen van metrische gegevens uit uitvoeren. Bijvoorbeeld`kubernetes_services = ["https://metrics-server.kube-system.svc.cluster.local/metrics",http://my-service-dns.my-namespace:9100/metrics]`.|
-| | `monitor_kubernetes_pods` | Booleaans | waar of onwaar | Als deze optie `true` is ingesteld op in de instellingen voor het hele cluster, worden de Kubernetes voor de volgende Prometheus-aantekeningen door Azure monitor voor de agent van containers.<br> `prometheus.io/scrape:`<br> `prometheus.io/scheme:`<br> `prometheus.io/path:`<br> `prometheus.io/port:` |
-| | `prometheus.io/scrape` | Booleaans | waar of onwaar | Hiermee schakelt u de pod in. `monitor_kubernetes_pods`moet worden ingesteld op `true`. |
-| | `prometheus.io/scheme` | Tekenreeks | http of https | De standaard instelling is het uitvallen van HTTP. Stel, indien nodig, `https`in op. | 
-| | `prometheus.io/path` | Tekenreeks | Door komma's gescheiden matrix | Het HTTP-bronpad waarvan de metrische gegevens moeten worden opgehaald. Als het pad naar metrische gegevens niet `/metrics`is, definieert u dit met deze aantekening. |
+| | `kubernetes_services` | Tekenreeks | Door komma's gescheiden matrix | Een matrix met Kubernetes-Services voor het opwaarderen van metrische gegevens uit uitvoeren. Bijvoorbeeld `kubernetes_services = ["https://metrics-server.kube-system.svc.cluster.local/metrics",http://my-service-dns.my-namespace:9100/metrics]`.|
+| | `monitor_kubernetes_pods` | Boolean-waarde | waar of onwaar | Als deze optie `true` is ingesteld op in de instellingen voor het hele cluster, worden de Kubernetes voor de volgende Prometheus-aantekeningen door Azure monitor voor de agent van containers.<br> `prometheus.io/scrape:`<br> `prometheus.io/scheme:`<br> `prometheus.io/path:`<br> `prometheus.io/port:` |
+| | `prometheus.io/scrape` | Boolean-waarde | waar of onwaar | Hiermee schakelt u de pod in. `monitor_kubernetes_pods`moet worden ingesteld op `true` . |
+| | `prometheus.io/scheme` | Tekenreeks | http of https | De standaard instelling is het uitvallen van HTTP. Stel, indien nodig, in op `https` . | 
+| | `prometheus.io/path` | Tekenreeks | Door komma's gescheiden matrix | Het HTTP-bronpad waarvan de metrische gegevens moeten worden opgehaald. Als het pad naar metrische gegevens niet is `/metrics` , definieert u dit met deze aantekening. |
 | | `prometheus.io/port` | Tekenreeks | 9102 | Geef een poort op waarvan u wilt uitvallen. Als poort niet is ingesteld, wordt de standaard waarde van 9102. |
 | | `monitor_kubernetes_pods_namespaces` | Tekenreeks | Door komma's gescheiden matrix | Een lijst met toegestane naam ruimten die de metrische gegevens van Kubernetes peul opwaarderen.<br> Bijvoorbeeld: `monitor_kubernetes_pods_namespaces = ["default1", "default2", "default3"]` |
 | Knooppunt-breed | `urls` | Tekenreeks | Door komma's gescheiden matrix | HTTP-eind punt (ofwel een IP-adres of een geldig URL-pad opgegeven). Bijvoorbeeld: `urls=[$NODE_IP/metrics]`. ($NODE _IP is een specifiek Azure Monitor voor de para meter containers en kan worden gebruikt in plaats van het IP-adres van het knoop punt. Mag alleen hoofd letters zijn.) |
 | Het hele knoop punt of het hele cluster | `interval` | Tekenreeks | 60s | De standaard waarde voor de verzamelings interval is 1 minuut (60 seconden). U kunt de verzameling voor *[prometheus_data_collection_settings. node]* en/of *[prometheus_data_collection_settings. cluster]* wijzigen in tijds eenheden zoals s, m, h. |
-| Het hele knoop punt of het hele cluster | `fieldpass`<br> `fielddrop`| Tekenreeks | Door komma's gescheiden matrix | U kunt bepaalde metrische gegevens opgeven die u wilt verzamelen of niet van het eind punt door de vermelding`fieldpass`toestaan () en weigeren`fielddrop`() in te stellen. U moet eerst de acceptatie lijst instellen. |
+| Het hele knoop punt of het hele cluster | `fieldpass`<br> `fielddrop`| Tekenreeks | Door komma's gescheiden matrix | U kunt bepaalde metrische gegevens opgeven die u wilt verzamelen of niet van het eind punt door de vermelding toestaan ( `fieldpass` ) en weigeren () in te stellen `fielddrop` . U moet eerst de acceptatie lijst instellen. |
 
 ConfigMaps is een globale lijst en er kan slechts één ConfigMap op de agent worden toegepast. U kunt de verzamelingen niet overConfigMapsen.
 
@@ -69,7 +68,7 @@ Voer de volgende stappen uit om uw ConfigMap-configuratie bestand voor de volgen
 * Azure Stack of on-premises
 * Azure Red Hat open Shift versie 4. x en Red Hat open Shift versie 4. x
 
-1. [Down load](https://github.com/microsoft/OMS-docker/blob/ci_feature_prod/Kubernetes/container-azm-ms-agentconfig.yaml) het sjabloon bestand ConfigMap yaml en sla het op als container-AZM-MS-agentconfig. yaml.
+1. [Down load](https://aka.ms/container-azm-ms-agentconfig) het sjabloon bestand ConfigMap yaml en sla het op als container-AZM-MS-agentconfig. yaml.
 
    >[!NOTE]
    >Deze stap is niet vereist bij het werken met Azure Red Hat open Shift omdat de ConfigMap-sjabloon al in het cluster bestaat.
@@ -77,7 +76,7 @@ Voer de volgende stappen uit om uw ConfigMap-configuratie bestand voor de volgen
 2. Bewerk het ConfigMap yaml-bestand met uw aanpassingen om Prometheus-metrische gegevens af te vallen.
 
     >[!NOTE]
-    >Als u het ConfigMap yaml-bestand voor Azure Red Hat open Shift bewerkt, voert u eerst de `oc edit configmaps container-azm-ms-agentconfig -n openshift-azure-logging` opdracht uit om het bestand in een tekst editor te openen.
+    >Als u het ConfigMap yaml-bestand voor Azure Red Hat open Shift bewerkt, voert u eerst de opdracht uit `oc edit configmaps container-azm-ms-agentconfig -n openshift-azure-logging` om het bestand in een tekst editor te openen.
 
     >[!NOTE]
     >De volgende aantekening `openshift.io/reconcile-protect: "true"` moet worden toegevoegd onder de meta gegevens van *container-AZM-MS-agentconfig* ConfigMap om afstemming te voor komen. 
@@ -147,13 +146,13 @@ Voer de volgende stappen uit om uw ConfigMap-configuratie bestand voor de volgen
            - prometheus.io/port:"8000" #If port is not 9102 use this annotation
            ```
     
-          Als u de bewaking wilt beperken tot specifieke naam ruimten voor peulen die aantekeningen bevatten, bijvoorbeeld alleen voor de werk belastingen die specifiek zijn toegewezen, stelt `monitor_kubernetes_pod` u `true` de in op in ConfigMap en voegt u `monitor_kubernetes_pods_namespaces` het naam ruimte filter toe om de naam ruimten op te geven waaruit u wilt terugvallen. Bijvoorbeeld: `monitor_kubernetes_pods_namespaces = ["default1", "default2", "default3"]`
+          Als u de bewaking wilt beperken tot specifieke naam ruimten voor peulen die aantekeningen bevatten, bijvoorbeeld alleen voor de werk belastingen die specifiek zijn toegewezen, stelt u de in op `monitor_kubernetes_pod` `true` in ConfigMap en voegt u het naam ruimte filter toe `monitor_kubernetes_pods_namespaces` om de naam ruimten op te geven waaruit u wilt terugvallen. Bijvoorbeeld: `monitor_kubernetes_pods_namespaces = ["default1", "default2", "default3"]`
 
-3. Voer de volgende kubectl-opdracht `kubectl apply -f <configmap_yaml_file.yaml>`uit:.
+3. Voer de volgende kubectl-opdracht uit: `kubectl apply -f <configmap_yaml_file.yaml>` .
     
     Bijvoorbeeld: `kubectl apply -f container-azm-ms-agentconfig.yaml`. 
 
-Het kan een paar minuten duren voordat de configuratie wijziging is doorgevoerd en alle omsagent in het cluster opnieuw worden opgestart. Het opnieuw opstarten is een rolling start voor alle omsagent-peulen, niet allemaal tegelijk opnieuw opstarten. Wanneer het opnieuw opstarten is voltooid, wordt een bericht weer gegeven dat er ongeveer als volgt uitziet en het resultaat bevat `configmap "container-azm-ms-agentconfig" created`:.
+Het kan een paar minuten duren voordat de configuratie wijziging is doorgevoerd en alle omsagent in het cluster opnieuw worden opgestart. Het opnieuw opstarten is een rolling start voor alle omsagent-peulen, niet allemaal tegelijk opnieuw opstarten. Wanneer het opnieuw opstarten is voltooid, wordt een bericht weer gegeven dat er ongeveer als volgt uitziet en het resultaat bevat: `configmap "container-azm-ms-agentconfig" created` .
 
 ## <a name="configure-and-deploy-configmaps---azure-red-hat-openshift-v3"></a>ConfigMaps configureren en implementeren: Azure Red Hat open Shift v3
 
@@ -177,7 +176,7 @@ NAME                  USERS
 osa-customer-admins   <your-user-account>@<your-tenant-name>.onmicrosoft.com
 ```
 
-Als u lid bent van de groep *Osa-klant-Administrators* , kunt u de `container-azm-ms-agentconfig` ConfigMap weer geven met behulp van de volgende opdracht:
+Als u lid bent van de groep *Osa-klant-Administrators* , kunt u de ConfigMap weer geven `container-azm-ms-agentconfig` met behulp van de volgende opdracht:
 
 ``` bash
 oc get configmaps container-azm-ms-agentconfig -n openshift-azure-logging
@@ -194,7 +193,7 @@ container-azm-ms-agentconfig   4         56m
 
 Voer de volgende stappen uit om uw ConfigMap-configuratie bestand voor uw Azure Red Hat open Shift v3. x-cluster te configureren.
 
-1. Bewerk het ConfigMap yaml-bestand met uw aanpassingen om Prometheus-metrische gegevens af te vallen. De ConfigMap-sjabloon bestaat al in het Red Hat open Shift v3-cluster. Voer de opdracht `oc edit configmaps container-azm-ms-agentconfig -n openshift-azure-logging` uit om het bestand in een tekst editor te openen.
+1. Bewerk het ConfigMap yaml-bestand met uw aanpassingen om Prometheus-metrische gegevens af te vallen. De ConfigMap-sjabloon bestaat al in het Red Hat open Shift v3-cluster. Voer de opdracht uit `oc edit configmaps container-azm-ms-agentconfig -n openshift-azure-logging` om het bestand in een tekst editor te openen.
 
     >[!NOTE]
     >De volgende aantekening `openshift.io/reconcile-protect: "true"` moet worden toegevoegd onder de meta gegevens van *container-AZM-MS-agentconfig* ConfigMap om afstemming te voor komen. 
@@ -264,13 +263,13 @@ Voer de volgende stappen uit om uw ConfigMap-configuratie bestand voor uw Azure 
            - prometheus.io/port:"8000" #If port is not 9102 use this annotation
            ```
     
-          Als u de bewaking wilt beperken tot specifieke naam ruimten voor peulen die aantekeningen bevatten, bijvoorbeeld alleen voor de werk belastingen die specifiek zijn toegewezen, stelt `monitor_kubernetes_pod` u `true` de in op in ConfigMap en voegt u `monitor_kubernetes_pods_namespaces` het naam ruimte filter toe om de naam ruimten op te geven waaruit u wilt terugvallen. Bijvoorbeeld: `monitor_kubernetes_pods_namespaces = ["default1", "default2", "default3"]`
+          Als u de bewaking wilt beperken tot specifieke naam ruimten voor peulen die aantekeningen bevatten, bijvoorbeeld alleen voor de werk belastingen die specifiek zijn toegewezen, stelt u de in op `monitor_kubernetes_pod` `true` in ConfigMap en voegt u het naam ruimte filter toe `monitor_kubernetes_pods_namespaces` om de naam ruimten op te geven waaruit u wilt terugvallen. Bijvoorbeeld: `monitor_kubernetes_pods_namespaces = ["default1", "default2", "default3"]`
 
 2. Sla uw wijzigingen op in de editor.
 
-Het kan een paar minuten duren voordat de configuratie wijziging is doorgevoerd en alle omsagent in het cluster opnieuw worden opgestart. Het opnieuw opstarten is een rolling start voor alle omsagent-peulen, niet allemaal tegelijk opnieuw opstarten. Wanneer het opnieuw opstarten is voltooid, wordt een bericht weer gegeven dat er ongeveer als volgt uitziet en het resultaat bevat `configmap "container-azm-ms-agentconfig" created`:.
+Het kan een paar minuten duren voordat de configuratie wijziging is doorgevoerd en alle omsagent in het cluster opnieuw worden opgestart. Het opnieuw opstarten is een rolling start voor alle omsagent-peulen, niet allemaal tegelijk opnieuw opstarten. Wanneer het opnieuw opstarten is voltooid, wordt een bericht weer gegeven dat er ongeveer als volgt uitziet en het resultaat bevat: `configmap "container-azm-ms-agentconfig" created` .
 
-U kunt de bijgewerkte ConfigMap weer geven door de opdracht uit `oc describe configmaps container-azm-ms-agentconfig -n openshift-azure-logging`te voeren. 
+U kunt de bijgewerkte ConfigMap weer geven door de opdracht uit te voeren `oc describe configmaps container-azm-ms-agentconfig -n openshift-azure-logging` . 
 
 ## <a name="applying-updated-configmap"></a>Bijgewerkte ConfigMap Toep assen
 
@@ -282,15 +281,15 @@ Voor de volgende Kubernetes omgevingen:
 - Azure Stack of on-premises
 - Azure Red Hat open Shift en Red Hat open Shift versie 4. x
 
-Voer de opdracht `kubectl apply -f <configmap_yaml_file.yaml`uit. 
+Voer de opdracht uit `kubectl apply -f <configmap_yaml_file.yaml` . 
 
-Voor een Azure Red Hat open Shift v3. x-cluster voert `oc edit configmaps container-azm-ms-agentconfig -n openshift-azure-logging` u de opdracht uit om het bestand te openen in de standaard editor om het te wijzigen en vervolgens op te slaan.
+Voor een Azure Red Hat open Shift v3. x-cluster voert u de opdracht uit `oc edit configmaps container-azm-ms-agentconfig -n openshift-azure-logging` om het bestand te openen in de standaard editor om het te wijzigen en vervolgens op te slaan.
 
-Het kan een paar minuten duren voordat de configuratie wijziging is doorgevoerd en alle omsagent in het cluster opnieuw worden opgestart. Het opnieuw opstarten is een rolling start voor alle omsagent-peulen, niet allemaal tegelijk opnieuw opstarten. Wanneer het opnieuw opstarten is voltooid, wordt een bericht weer gegeven dat er ongeveer als volgt uitziet en het resultaat bevat `configmap "container-azm-ms-agentconfig" updated`:.
+Het kan een paar minuten duren voordat de configuratie wijziging is doorgevoerd en alle omsagent in het cluster opnieuw worden opgestart. Het opnieuw opstarten is een rolling start voor alle omsagent-peulen, niet allemaal tegelijk opnieuw opstarten. Wanneer het opnieuw opstarten is voltooid, wordt een bericht weer gegeven dat er ongeveer als volgt uitziet en het resultaat bevat: `configmap "container-azm-ms-agentconfig" updated` .
 
 ## <a name="verify-configuration"></a>Configuratie controleren
 
-Als u wilt controleren of de configuratie is toegepast op een cluster, gebruikt u de volgende opdracht om de logboeken te controleren `kubectl logs omsagent-fdf58 -n=kube-system`vanuit een agent Pod:. 
+Als u wilt controleren of de configuratie is toegepast op een cluster, gebruikt u de volgende opdracht om de logboeken te controleren vanuit een agent Pod: `kubectl logs omsagent-fdf58 -n=kube-system` . 
 
 >[!NOTE]
 >Deze opdracht is niet van toepassing op Azure Red Hat open Shift v3. x-cluster.
@@ -320,9 +319,9 @@ Fouten met betrekking tot het Toep assen van configuratie wijzigingen zijn ook b
 
 - Raadpleeg de omsagent-Logboeken in de **ContainerLog** -tabel om te controleren of de logboek verzameling van open Shift-Azure-logging is ingeschakeld voor Azure Red Hat open Shift v3. x en v4. x.
 
-Fouten zorgen ervoor dat omsagent het bestand niet kan parseren, waardoor het opnieuw wordt gestart en de standaard configuratie wordt gebruikt. Nadat u de fout (en) in ConfigMap op andere clusters dan Azure Red Hat open Shift v3. x hebt gecorrigeerd, slaat u het yaml-bestand op en past u de bijgewerkte ConfigMaps `kubectl apply -f <configmap_yaml_file.yaml`toe door de opdracht uit te voeren:. 
+Fouten zorgen ervoor dat omsagent het bestand niet kan parseren, waardoor het opnieuw wordt gestart en de standaard configuratie wordt gebruikt. Nadat u de fout (en) in ConfigMap op andere clusters dan Azure Red Hat open Shift v3. x hebt gecorrigeerd, slaat u het yaml-bestand op en past u de bijgewerkte ConfigMaps toe door de opdracht uit te voeren: `kubectl apply -f <configmap_yaml_file.yaml` . 
 
-Voor Azure Red Hat open Shift v3. x kunt u de bijgewerkte ConfigMaps bewerken en opslaan door de opdracht uit `oc edit configmaps container-azm-ms-agentconfig -n openshift-azure-logging`te voeren:.
+Voor Azure Red Hat open Shift v3. x kunt u de bijgewerkte ConfigMaps bewerken en opslaan door de opdracht uit te voeren: `oc edit configmaps container-azm-ms-agentconfig -n openshift-azure-logging` .
 
 ## <a name="query-prometheus-metrics-data"></a>Prometheus metrische gegevens opvragen
 
@@ -337,13 +336,14 @@ Azure Monitor voor containers biedt ondersteuning voor het weer geven van gegeve
 De volgende query wordt gegeven voor het identificeren van het opname volume van elke metrische grootte in GB per dag om te begrijpen of deze hoog is.
 
 ```
-InsightsMetrics 
-| where Namespace == "prometheus"
+InsightsMetrics
+| where Namespace contains "prometheus"
 | where TimeGenerated > ago(24h)
 | summarize VolumeInGB = (sum(_BilledSize) / (1024 * 1024 * 1024)) by Name
 | order by VolumeInGB desc
 | render barchart
 ```
+
 De uitvoer ziet er ongeveer als volgt uit:
 
 ![Query resultaten van het volume gegevens opname vastleggen](./media/container-insights-prometheus-integration/log-query-example-usage-03.png)
@@ -351,7 +351,7 @@ De uitvoer ziet er ongeveer als volgt uit:
 Als u een schatting wilt maken van de grootte van elke metrische waarde in GB, kunt u de volgende query uitvoeren om te begrijpen of het volume van de gegevens die in de werk ruimte zijn opgenomen, hoog is.
 
 ```
-InsightsMetrics 
+InsightsMetrics
 | where Namespace contains "prometheus"
 | where TimeGenerated > ago(24h)
 | summarize EstimatedGBPer30dayMonth = (sum(_BilledSize) / (1024 * 1024 * 1024)) * 30 by Name

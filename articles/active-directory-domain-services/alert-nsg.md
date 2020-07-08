@@ -9,18 +9,17 @@ ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
 ms.topic: troubleshooting
-ms.date: 09/19/2019
+ms.date: 07/06/2020
 ms.author: iainfou
-ms.openlocfilehash: 6d0cde3d3615350658a06cf118ff38cebf8952c9
-ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
-ms.translationtype: MT
+ms.openlocfilehash: 584c03dc798bc21ddd5538e58d0f9047c55c5372
+ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/12/2020
-ms.locfileid: "84735010"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86040449"
 ---
 # <a name="known-issues-network-configuration-alerts-in-azure-active-directory-domain-services"></a>Bekende problemen: waarschuwingen voor netwerk configuratie in Azure Active Directory Domain Services
 
-Om ervoor te zorgen dat toepassingen en services op de juiste wijze communiceren met Azure Active Directory Domain Services (Azure AD DS), moeten specifieke netwerk poorten open zijn om verkeer toe te staan. In azure beheert u de stroom van verkeer met behulp van netwerk beveiligings groepen. In de status van een beheerd domein van Azure AD DS wordt een waarschuwing weer gegeven als de vereiste regels voor de netwerk beveiligings groep niet aanwezig zijn.
+Om ervoor te zorgen dat toepassingen en services op de juiste wijze communiceren met een door Azure Active Directory Domain Services (Azure AD DS) beheerd domein, moeten er specifieke netwerk poorten open zijn om verkeer toe te staan. In azure beheert u de stroom van verkeer met behulp van netwerk beveiligings groepen. In de status van een beheerd domein van Azure AD DS wordt een waarschuwing weer gegeven als de vereiste regels voor de netwerk beveiligings groep niet aanwezig zijn.
 
 Dit artikel helpt u bij het begrijpen en oplossen van veelvoorkomende waarschuwingen voor problemen met de configuratie van netwerk beveiligings groepen.
 
@@ -34,7 +33,7 @@ Ongeldige regels voor netwerk beveiligings groepen zijn de meest voorkomende oor
 
 ## <a name="default-security-rules"></a>Standaardbeveiligingsregels
 
-De volgende standaard regels voor binnenkomend en uitgaand verkeer worden toegepast op de netwerk beveiligings groep voor een beheerd domein. Met deze regels blijven Azure AD DS beveiligd en kan het Azure-platform het beheerde domein bewaken, beheren en bijwerken. Mogelijk hebt u ook een extra regel waarmee inkomend verkeer wordt toegestaan als u [beveiligde LDAP configureert][configure-ldaps].
+De volgende standaard regels voor binnenkomend en uitgaand verkeer worden toegepast op de netwerk beveiligings groep voor een beheerd domein. Met deze regels blijven Azure AD DS beveiligd en kan het Azure-platform het beheerde domein bewaken, beheren en bijwerken.
 
 ### <a name="inbound-security-rules"></a>Inkomende beveiligingsregels
 
@@ -46,6 +45,9 @@ De volgende standaard regels voor binnenkomend en uitgaand verkeer worden toegep
 | 65000    | AllVnetInBound | Alle | Alle | VirtualNetwork | VirtualNetwork | Toestaan |
 | 65001    | AllowAzureLoadBalancerInBound | Alle | Alle | AzureLoadBalancer | Alle | Toestaan |
 | 65500    | DenyAllInBound | Alle | Alle | Alle | Alle | Weigeren |
+
+> [!NOTE]
+> Mogelijk hebt u ook een extra regel waarmee inkomend verkeer wordt toegestaan als u [beveiligde LDAP configureert][configure-ldaps]. Deze extra regel is vereist voor de juiste LDAPS-communicatie.
 
 ### <a name="outbound-security-rules"></a>Uitgaande beveiligingsregels
 

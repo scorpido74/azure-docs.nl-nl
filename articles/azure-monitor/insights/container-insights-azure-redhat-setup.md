@@ -2,13 +2,12 @@
 title: Azure Red Hat open Shift v3. x configureren met Azure Monitor voor containers | Microsoft Docs
 description: In dit artikel wordt beschreven hoe u de bewaking van een Kubernetes-cluster configureert met Azure Monitor die worden gehost op Azure Red Hat open Shift versie 3 en hoger.
 ms.topic: conceptual
-ms.date: 04/02/2020
-ms.openlocfilehash: c39eda03fc5fb7521bcf08c52eaabc28d4cb1256
-ms.sourcegitcommit: 67bddb15f90fb7e845ca739d16ad568cbc368c06
-ms.translationtype: MT
+ms.date: 06/30/2020
+ms.openlocfilehash: e04ef42971756cffe0906e1ddfb8406e876588bc
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82204131"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85800508"
 ---
 # <a name="configure-azure-red-hat-openshift-v3-with-azure-monitor-for-containers"></a>Azure Red Hat open Shift v3 configureren met Azure Monitor voor containers
 
@@ -32,9 +31,47 @@ Azure Monitor voor containers biedt ondersteuning voor het bewaken van Azure Red
 
 ## <a name="prerequisites"></a>Vereisten
 
+- Een [log Analytics-werk ruimte](../platform/design-logs-deployment.md).
+
+    Azure Monitor voor containers ondersteunt een Log Analytics-werk ruimte in de regio's die worden vermeld in azure- [producten per regio](https://azure.microsoft.com/global-infrastructure/services/?regions=all&products=monitor). Om uw eigen werk ruimte te maken, kan deze worden gemaakt via [Azure Resource Manager](../platform/template-workspace-configuration.md), via [Power shell](../scripts/powershell-sample-create-workspace.md?toc=%2fpowershell%2fmodule%2ftoc.json)of in de [Azure Portal](../learn/quick-create-workspace.md).
+
 - Als u de functies in Azure Monitor voor containers wilt inschakelen en openen, moet u Mini maal lid zijn van de rol Azure *contributor* in het Azure-abonnement en een lid van de rol [*log Analytics Inzender*](../platform/manage-access.md#manage-access-using-azure-permissions) van de werk ruimte log Analytics die is geconfigureerd met Azure monitor voor containers.
 
 - Als u de bewakings gegevens wilt bekijken, bent u lid van de machtiging [*log Analytics lezer*](../platform/manage-access.md#manage-access-using-azure-permissions) -rol met de log Analytics werk ruimte die is geconfigureerd met Azure monitor voor containers.
+
+## <a name="identify-your-log-analytics-workspace-id"></a>Uw Log Analytics werk ruimte-ID identificeren
+
+ Als u wilt integreren met een bestaande Log Analytics-werk ruimte, moet u beginnen met het identificeren van de volledige Resource-ID van uw Log Analytics werk ruimte. De resource-ID van de werk ruimte is vereist voor de para meter `workspaceResourceId` Wanneer u controle inschakelt met behulp van de Azure Resource Manager sjabloon methode.
+
+1. Een lijst met alle abonnementen waartoe u toegang hebt door de volgende opdracht uit te voeren:
+
+    ```azurecli
+    az account list --all -o table
+    ```
+
+    De uitvoer ziet er als volgt uit:
+
+    ```azurecli
+    Name                                  CloudName    SubscriptionId                        State    IsDefault
+    ------------------------------------  -----------  ------------------------------------  -------  -----------
+    Microsoft Azure                       AzureCloud   0fb60ef2-03cc-4290-b595-e71108e8f4ce  Enabled  True
+    ```
+
+1. Kopieer de waarde voor **SubscriptionId**.
+
+1. Ga naar het abonnement dat als host fungeert voor de Log Analytics-werk ruimte door de volgende opdracht uit te voeren:
+
+    ```azurecli
+    az account set -s <subscriptionId of the workspace>
+    ```
+
+1. De lijst met werk ruimten in uw abonnementen weer geven in de standaard JSON-indeling door de volgende opdracht uit te voeren:
+
+    ```
+    az resource list --resource-type Microsoft.OperationalInsights/workspaces -o json
+    ```
+
+1. Zoek in de uitvoer de naam van de werk ruimte en kopieer de volledige Resource-ID van die Log Analytics werk ruimte onder de veld **-id**.
 
 ## <a name="enable-for-a-new-cluster-using-an-azure-resource-manager-template"></a>Inschakelen voor een nieuw cluster met behulp van een Azure Resource Manager sjabloon
 
@@ -54,7 +91,7 @@ Deze methode bevat twee JSON-sjablonen. Met één sjabloon wordt de configuratie
 
 - [Azure AD-beveiligings groep](../../openshift/howto-aad-app-configuration.md#create-an-azure-ad-security-group) genoteerd na het uitvoeren van de stappen voor het maken van een of een al gemaakte.
 
-- Resource-ID van een bestaande Log Analytics-werk ruimte.
+- Resource-ID van een bestaande Log Analytics-werk ruimte. Zie [uw log Analytics werk ruimte-id identificeren](#identify-your-log-analytics-workspace-id) voor meer informatie over hoe u deze gegevens kunt ophalen.
 
 - Het aantal hoofd knooppunten dat in het cluster moet worden gemaakt.
 
@@ -68,23 +105,21 @@ Als u niet bekend bent met het concept van het implementeren van resources met b
 
 - [Resources implementeren met Resource Manager-sjablonen en Azure CLI](../../azure-resource-manager/templates/deploy-cli.md)
 
-Als u ervoor kiest om de Azure CLI te gebruiken, moet u de CLI eerst lokaal installeren en gebruiken. U moet de Azure CLI-versie 2.0.65 of hoger uitvoeren. Voer uit `az --version`om uw versie te identificeren. Als u de Azure CLI wilt installeren of upgraden, raadpleegt u [de Azure cli installeren](https://docs.microsoft.com/cli/azure/install-azure-cli).
-
-De Log Analytics-werk ruimte moet worden gemaakt voordat u bewaking met behulp van Azure PowerShell of CLI inschakelt. Als u de werk ruimte wilt maken, kunt u deze instellen via [Azure Resource Manager](../../azure-monitor/platform/template-workspace-configuration.md), via [Power shell](../scripts/powershell-sample-create-workspace.md?toc=%2fpowershell%2fmodule%2ftoc.json)of in de [Azure Portal](../../azure-monitor/learn/quick-create-workspace.md).
+Als u ervoor kiest om de Azure CLI te gebruiken, moet u de CLI eerst lokaal installeren en gebruiken. U moet de Azure CLI-versie 2.0.65 of hoger uitvoeren. Voer uit om uw versie te identificeren `az --version` . Als u de Azure CLI wilt installeren of upgraden, raadpleegt u [de Azure cli installeren](https://docs.microsoft.com/cli/azure/install-azure-cli).
 
 1. Down load en sla de bestanden op in een lokale map, het Azure Resource Manager sjabloon en het parameter bestand, om een cluster met de invoeg toepassing voor bewaking te maken met behulp van de volgende opdrachten:
 
-    `curl -LO https://raw.githubusercontent.com/microsoft/OMS-docker/ci_feature/docs/aro/enable_monitoring_to_new_cluster/newClusterWithMonitoring.json`
+    `curl -LO https://raw.githubusercontent.com/microsoft/Docker-Provider/ci_dev/scripts/onboarding/aro/enable_monitoring_to_new_cluster/newClusterWithMonitoring.json`
 
-    `curl -LO https://raw.githubusercontent.com/microsoft/OMS-docker/ci_feature/docs/aro/enable_monitoring_to_new_cluster/newClusterWithMonitoringParam.json`
+    `curl -LO https://raw.githubusercontent.com/microsoft/Docker-Provider/ci_dev/scripts/onboarding/aro/enable_monitoring_to_new_cluster/newClusterWithMonitoringParam.json`
 
 2. Aanmelden bij Azure
 
     ```azurecli
-    az login    
+    az login
     ```
 
-    Als u toegang hebt tot meerdere abonnementen, voert `az account set -s {subscription ID}` u `{subscription ID}` de vervanging uit met het abonnement dat u wilt gebruiken.
+    Als u toegang hebt tot meerdere abonnementen, voert `az account set -s {subscription ID}` `{subscription ID}` u de vervanging uit met het abonnement dat u wilt gebruiken.
 
 3. Maak een resource groep voor het cluster als u er nog geen hebt. Zie [ondersteunde regio's](../../openshift/supported-resources.md#azure-regions)voor een lijst met Azure-regio's die openshift op Azure ondersteunen.
 
@@ -92,7 +127,7 @@ De Log Analytics-werk ruimte moet worden gemaakt voordat u bewaking met behulp v
     az group create -g <clusterResourceGroup> -l <location>
     ```
 
-4. Bewerk het JSON-parameter bestand **newClusterWithMonitoringParam. json** en werk de volgende waarden bij:
+4. Bewerk het JSON-parameter bestand **newClusterWithMonitoringParam.jsop** en werk de volgende waarden bij:
 
     - *locatie*
     - *clusterName*
@@ -123,7 +158,7 @@ Voer de volgende stappen uit om de bewaking in te scha kelen van een Azure Red H
 
 ### <a name="from-the-azure-portal"></a>Vanuit Azure Portal
 
-1. Meld u aan bij de [Azure-portal](https://portal.azure.com).
+1. Meld u aan bij [Azure Portal](https://portal.azure.com).
 
 2. Selecteer in het menu Azure Portal of op de start pagina **Azure monitor**. Selecteer in de sectie **insightss** de optie **containers**.
 
@@ -149,7 +184,7 @@ Deze methode bevat twee JSON-sjablonen. Met één sjabloon geeft u de configurat
 
 - De resource groep waarin het cluster is geïmplementeerd.
 
-- Een Log Analytics-werkruimte.
+- Een Log Analytics-werkruimte. Zie [uw log Analytics werk ruimte-id identificeren](#identify-your-log-analytics-workspace-id) voor meer informatie over hoe u deze gegevens kunt ophalen.
 
 Als u niet bekend bent met het concept van het implementeren van resources met behulp van een sjabloon, raadpleegt u:
 
@@ -157,23 +192,21 @@ Als u niet bekend bent met het concept van het implementeren van resources met b
 
 - [Resources implementeren met Resource Manager-sjablonen en Azure CLI](../../azure-resource-manager/templates/deploy-cli.md)
 
-Als u ervoor kiest om de Azure CLI te gebruiken, moet u de CLI eerst lokaal installeren en gebruiken. U moet de Azure CLI-versie 2.0.65 of hoger uitvoeren. Voer uit `az --version`om uw versie te identificeren. Als u de Azure CLI wilt installeren of upgraden, raadpleegt u [de Azure cli installeren](https://docs.microsoft.com/cli/azure/install-azure-cli).
-
-De Log Analytics-werk ruimte moet worden gemaakt voordat u bewaking met behulp van Azure PowerShell of CLI inschakelt. Als u de werk ruimte wilt maken, kunt u deze instellen via [Azure Resource Manager](../../azure-monitor/platform/template-workspace-configuration.md), via [Power shell](../scripts/powershell-sample-create-workspace.md?toc=%2fpowershell%2fmodule%2ftoc.json)of in de [Azure Portal](../../azure-monitor/learn/quick-create-workspace.md).
+Als u ervoor kiest om de Azure CLI te gebruiken, moet u de CLI eerst lokaal installeren en gebruiken. U moet de Azure CLI-versie 2.0.65 of hoger uitvoeren. Voer uit om uw versie te identificeren `az --version` . Als u de Azure CLI wilt installeren of upgraden, raadpleegt u [de Azure cli installeren](https://docs.microsoft.com/cli/azure/install-azure-cli).
 
 1. Down load de sjabloon en het parameter bestand om uw cluster bij te werken met de invoeg toepassing bewaking met behulp van de volgende opdrachten:
 
-    `curl -LO https://raw.githubusercontent.com/microsoft/OMS-docker/ci_feature/docs/aro/enable_monitoring_to_existing_cluster/existingClusterOnboarding.json`
+    `curl -LO https://raw.githubusercontent.com/microsoft/Docker-Provider/ci_dev/scripts/onboarding/aro/enable_monitoring_to_existing_cluster/existingClusterOnboarding.json`
 
-    `curl -LO https://raw.githubusercontent.com/microsoft/OMS-docker/ci_feature/docs/aro/enable_monitoring_to_existing_cluster/existingClusterParam.json`
+    `curl -LO https://raw.githubusercontent.com/microsoft/Docker-Provider/ci_dev/scripts/onboarding/aro/enable_monitoring_to_existing_cluster/existingClusterParam.json`
 
 2. Aanmelden bij Azure
 
     ```azurecli
-    az login    
+    az login
     ```
 
-    Als u toegang hebt tot meerdere abonnementen, voert `az account set -s {subscription ID}` u `{subscription ID}` de vervanging uit met het abonnement dat u wilt gebruiken.
+    Als u toegang hebt tot meerdere abonnementen, voert `az account set -s {subscription ID}` `{subscription ID}` u de vervanging uit met het abonnement dat u wilt gebruiken.
 
 3. Geef het abonnement van het Azure RedHat open Shift-cluster op.
 
@@ -187,7 +220,7 @@ De Log Analytics-werk ruimte moet worden gemaakt voordat u bewaking met behulp v
     az openshift show -g <clusterResourceGroup> -n <clusterName>
     ```
 
-5. Bewerk het JSON-parameter bestand **existingClusterParam. json** en werk de waarden *araResourceId* en *araResoruceLocation*bij. De waarde voor **workspaceResourceId** is de volledige resource-id van uw log Analytics-werk ruimte, met inbegrip van de naam van de werk ruimte.
+5. Bewerk het JSON-parameter bestandexistingClusterParam.jsen werk de waarden *aroResourceId* en *aroResourceLocation* **bij** . De waarde voor **workspaceResourceId** is de volledige resource-id van uw log Analytics-werk ruimte, met inbegrip van de naam van de werk ruimte.
 
 6. Als u wilt implementeren met Azure CLI, voert u de volgende opdrachten uit:
 

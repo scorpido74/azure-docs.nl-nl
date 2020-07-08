@@ -13,12 +13,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/11/2020
 ms.author: memildin
-ms.openlocfilehash: 93dde2e873a00303dcb8563caed4d56dbf11cc12
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: 8faff37e127e80447e0f066ef17e2885d4bcb597
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80435631"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85799731"
 ---
 # <a name="protect-your-machines-and-applications"></a>Uw computers en toepassingen beveiligen
 Wanneer Azure Security Center mogelijke beveiligings problemen identificeert, worden er aanbevelingen gemaakt die u door het proces van het configureren van de benodigde besturings elementen leiden om uw resources te beschermen en te beveiligen.
@@ -163,15 +162,13 @@ Wanneer u het tabblad **containers** opent, is het mogelijk dat er een van de dr
 
 ![Container host](./media/security-center-virtual-machine-recommendations/icon-container-host-rec.png) Container-hosts-Vm's met docker 
 
-![Kubernetes-service](./media/security-center-virtual-machine-recommendations/icon-kubernetes-service-rec.png) Clusters van Azure Kubernetes service (AKS)
+![Kubernetes service ](./media/security-center-virtual-machine-recommendations/icon-kubernetes-service-rec.png) Azure Kubernetes service (AKS)-clusters. [Meer informatie over de AKS bundel van Security Center](azure-kubernetes-service-integration.md)
 
-![Containerregister](./media/security-center-virtual-machine-recommendations/icon-container-registry-rec.png) Azure Container Registry (ACR) registers: alleen weer gegeven wanneer u zich in de prijs categorie Standard bevindt en wanneer u de Azure Container Registry bundel hebt ingeschakeld.
+![Register vermeldingen van container Registry ](./media/security-center-virtual-machine-recommendations/icon-container-registry-rec.png) Azure container Registry (ACR). [Meer informatie over de ACR bundel van Security Center](azure-container-registry-integration.md)
 
 Zie [de beveiliging van uw containers bewaken](monitor-container-security.md)voor instructies over het gebruik van de beveiligings functies van de container.
 
-De voor delen van de Azure Container Registry bundel worden [hier](azure-container-registry-integration.md) beschreven
 
-De voor delen van de Kubernetes Services bundel worden [hier](azure-kubernetes-service-integration.md) beschreven
 
 [![Tabblad containers](./media/security-center-virtual-machine-recommendations/container-recommendations-all-types.png)](./media/security-center-virtual-machine-recommendations/container-recommendations-all-types.png#lightbox)
 

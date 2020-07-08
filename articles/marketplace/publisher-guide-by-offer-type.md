@@ -7,18 +7,17 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 04/14/2020
 ms.author: dsindona
-ms.openlocfilehash: 9b39cbab71808aaf09f7dc38b3be77f6f35ab598
-ms.sourcegitcommit: 999ccaf74347605e32505cbcfd6121163560a4ae
-ms.translationtype: MT
+ms.openlocfilehash: 6e889fef16d8ad80d52810207f0328a765ca9cfe
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/08/2020
-ms.locfileid: "82982680"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85958494"
 ---
 # <a name="publishing-guide-by-offer-type"></a>Publicatiehandleiding op type aanbieding
 
 In dit artikel worden de soorten aanbiedingen beschreven die beschikbaar zijn in de commerciële Marketplace. Met het *aanbiedings type* wordt de structuur van de aanbieding gedefinieerd, inclusief de meta gegevens, artefacten en andere inhoud die wordt gebruikt om de aanbieding in Marketplace te presen teren.
 
-Voordat u een aanbieding kunt maken en nadat u [een publicatie optie](https://docs.microsoft.com/azure/marketplace/determine-your-listing-type)hebt gekozen, moet u een aanbiedings type kiezen dat wordt gebruikt om uw aanbieding te presen teren. Het type aanbieding komt overeen met het type van de oplossing, de app of het service aanbod dat u wilt publiceren, evenals de uitlijning van micro soft-producten en-services.
+Voordat u een aanbieding kunt maken en nadat u [een publicatie optie](determine-your-listing-type.md)hebt gekozen, moet u een aanbiedings type kiezen dat wordt gebruikt om uw aanbieding te presen teren. Het type aanbieding komt overeen met het type van de oplossing, de app of het service aanbod dat u wilt publiceren, evenals de uitlijning van micro soft-producten en-services.
 
 Eén type aanbieding kan op verschillende manieren worden geconfigureerd om verschillende publicatie opties, aanroepen naar actie, inrichting of prijzen in te scha kelen. De publicatie optie en configuratie van het aanbiedings type worden ook afgestemd op de beschik baarheid van de aanbieding en technische vereisten.
 

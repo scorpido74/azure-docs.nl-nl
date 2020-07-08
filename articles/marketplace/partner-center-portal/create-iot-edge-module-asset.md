@@ -7,12 +7,11 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 04/03/2020
-ms.openlocfilehash: fc35602b55e79f3351da0def800d2a2b2698e250
-ms.sourcegitcommit: c535228f0b77eb7592697556b23c4e436ec29f96
-ms.translationtype: MT
+ms.openlocfilehash: 36b56cdf5a2aaa57cc452db9054380528fa8c68b
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/06/2020
-ms.locfileid: "82856725"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85958579"
 ---
 # <a name="prepare-your-iot-edge-module-technical-assets"></a>De technische activa van uw IoT Edge module voorbereiden
 
@@ -22,8 +21,8 @@ In dit artikel worden de vereisten beschreven waaraan de technische activa van u
 
 Een IoT Edge module is een docker-compatibele container die wordt uitgevoerd op een IoT Edge apparaat.
 
-- Zie [Azure IOT Edge modules begrijpen](https://docs.microsoft.com/azure/iot-edge/iot-edge-modules)voor meer informatie over IOT Edge-modules.
-- Zie [uw eigen IOT Edge modules ontwikkelen](https://docs.microsoft.com/azure/iot-edge/module-development)om aan de slag te gaan met de ontwikkeling van uw IOT Edge-module.
+- Zie [Azure IOT Edge modules begrijpen](../../iot-edge/iot-edge-modules.md)voor meer informatie over IOT Edge-modules.
+- Zie [uw eigen IOT Edge modules ontwikkelen](../../iot-edge/module-development.md)om aan de slag te gaan met de ontwikkeling van uw IOT Edge-module.
 
 ## <a name="technical-requirements"></a>Technische vereisten
 
@@ -35,7 +34,7 @@ De module IoT Edge moet een van de volgende platform opties ondersteunen:
 
 #### <a name="tier-1-platforms-supported-by-iot-edge"></a>Platforms van laag 1 die door IoT Edge worden ondersteund
 
-Uw module moet ondersteuning bieden voor alle platforms van laag 1 die door IoT Edge worden ondersteund (zoals vastgelegd in [Azure IOT EDGE-ondersteuning](https://docs.microsoft.com/azure/iot-edge/support)). We raden u aan deze optie te kiezen omdat deze een betere klant ervaring biedt. De modules die aan deze criteria voldoen, worden weer gepresenteerd. Een module die gebruikmaakt van deze platform optie moet:
+Uw module moet ondersteuning bieden voor alle platforms van laag 1 die door IoT Edge worden ondersteund (zoals vastgelegd in [Azure IOT EDGE-ondersteuning](../../iot-edge/support.md)). We raden u aan deze optie te kiezen omdat deze een betere klant ervaring biedt. De modules die aan deze criteria voldoen, worden weer gepresenteerd. Een module die gebruikmaakt van deze platform optie moet:
 
 - Geef een van de nieuwste Tags en een versie label (bijvoorbeeld 1.0.1) op die zijn gemaakt met het [manifest hulp programma github](https://github.com/estesp/manifest-tool).
 
@@ -43,7 +42,7 @@ Uw module moet ondersteuning bieden voor alle platforms van laag 1 die door IoT 
 
 #### <a name="a-subset-of-tier-1-platforms-supported-by-iot-edge"></a>Een subset van laag 1-platforms die door IoT Edge worden ondersteund
 
-Uw module moet ondersteuning bieden voor een subset (ten minste één) van laag 1-platformen die door IoT Edge worden ondersteund (zoals vastgelegd in [Azure IOT EDGE-ondersteuning](https://docs.microsoft.com/azure/iot-edge/support)). Een module die gebruikmaakt van deze platform optie moet:
+Uw module moet ondersteuning bieden voor een subset (ten minste één) van laag 1-platformen die door IoT Edge worden ondersteund (zoals vastgelegd in [Azure IOT EDGE-ondersteuning](../../iot-edge/support.md)). Een module die gebruikmaakt van deze platform optie moet:
 
 - Geef een laatste tag en een versie label (bijvoorbeeld 1.0.1) op die zijn gemaakt met het GitHub [-manifest hulp programma](https://github.com/estesp/manifest-tool) als meer dan één platform wordt ondersteund. Manifest Tags zijn alleen optioneel wanneer één platform wordt ondersteund.
 - Gebruik het tabblad aanbiedings vermelding in het [partner centrum](https://partner.microsoft.com/dashboard/commercial-marketplace) om een koppeling toe te voegen onder de sectie **handige koppelingen** naar ten minste één IOT edge apparaat uit de [catalogus met Azure IOT Edge-gecertificeerde apparaten](https://catalog.azureiotsolutions.com/).
@@ -108,7 +107,7 @@ Modules die gebruikmaken van de IoT-module-SDK, moeten de unieke module-id inste
 Gebruik een van de volgende methoden van de IoT-module Sdk's om de product info in te stellen op deze id:
 
 - [C#](https://docs.microsoft.com/dotnet/api/microsoft.azure.devices.client.deviceclient.productinfo?view=azure-dotnet#Microsoft_Azure_Devices_Client_DeviceClient_ProductInfo)
-- [G](https://github.com/Azure/azure-iot-sdk-c/blob/master/doc/Iothub_sdk_options.md)
+- [C](https://github.com/Azure/azure-iot-sdk-c/blob/master/doc/Iothub_sdk_options.md)
 - [Python](https://github.com/Azure/azure-iot-sdk-c/blob/master/doc/Iothub_sdk_options.md)
 - [Java](https://docs.microsoft.com/java/api/com.microsoft.azure.sdk.iot.device.productinfo?view=azure-java-stable)
 
@@ -139,8 +138,8 @@ Uw aanbieding wordt ook opnieuw gecertificeerd als u deze bijwerkt, bijvoorbeeld
 
 ## <a name="host-module-in-azure-container-registry"></a>Host-module in Azure Container Registry
 
-Als u uw IoT Edge-module naar Azure Marketplace wilt uploaden, moet u deze eerst hosten in een [Azure container Registry](https://azure.microsoft.com/services/container-registry/) (ACR). De module moet alle labels bevatten die u wilt publiceren, met inbegrip van de afbeeldings Tags waarnaar wordt verwezen door een manifest-tag. Zie voor meer informatie de zelf studie [een Azure container Registry maken en een container installatie kopie pushen](https://docs.microsoft.com/azure/container-instances/container-instances-tutorial-prepare-acr).
+Als u uw IoT Edge-module naar Azure Marketplace wilt uploaden, moet u deze eerst hosten in een [Azure container Registry](https://azure.microsoft.com/services/container-registry/) (ACR). De module moet alle labels bevatten die u wilt publiceren, met inbegrip van de afbeeldings Tags waarnaar wordt verwezen door een manifest-tag. Zie voor meer informatie de zelf studie [een Azure container Registry maken en een container installatie kopie pushen](../../container-instances/container-instances-tutorial-prepare-acr.md).
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- [Aanbieding voor IoT Edge-module maken](https://docs.microsoft.com/azure/marketplace/partner-center-portal/azure-iot-edge-module-creation)
+- [Aanbieding voor IoT Edge-module maken](azure-iot-edge-module-creation.md)

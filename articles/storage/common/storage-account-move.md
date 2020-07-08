@@ -10,15 +10,14 @@ ms.date: 05/11/2020
 ms.author: normesta
 ms.reviewer: dineshm
 ms.openlocfilehash: a5b9b4c7d3bdd0c68d3a91a39972389e48ed910d
-ms.sourcegitcommit: 374e47efb65f0ae510ad6c24a82e8abb5b57029e
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85515014"
 ---
 # <a name="move-an-azure-storage-account-to-another-region"></a>Een Azure Storage-account naar een andere regio verplaatsen
 
-Als u een opslag account wilt verplaatsen, maakt u een kopie van uw opslag account in een andere regio. Verplaats uw gegevens vervolgens naar het account met behulp van AzCopy of een ander hulp programma van uw keuze.
+Als u een opslagaccount wilt verplaatsen, maak dan een kopie van uw opslagaccount in een andere regio. Verplaats uw gegevens vervolgens naar het account met behulp van AzCopy of een ander hulp programma van uw keuze.
 
 In dit artikel leert u het volgende:
 
@@ -33,9 +32,9 @@ In dit artikel leert u het volgende:
 
 ## <a name="prerequisites"></a>Vereisten
 
-- Zorg ervoor dat de services en functies die uw account gebruikt worden ondersteund in de doel regio.
+- Zorg ervoor dat de services en functies die uw account gebruikt, worden ondersteund in de doelregio.
 
-- Zorg ervoor dat uw abonnement white list is voor de doel regio voor preview-functies.
+- U kunt preview-functies alleen gebruiken als uw abonnement is goedgekeurd voor de doelregio.
 
 <a id="prepare"></a>
 
@@ -45,13 +44,13 @@ Om aan de slag te gaan, een resource manager-sjabloon te exporteren en vervolgen
 
 ### <a name="export-a-template"></a>Een sjabloon exporteren
 
-Deze sjabloon bevat instellingen die uw opslag account beschrijven. 
+Deze sjabloon bevat instellingen die uw opslagaccount beschrijven. 
 
 # <a name="portal"></a>[Portal](#tab/azure-portal)
 
-Een sjabloon exporteren met behulp van Azure Portal:
+Een sjabloon exporteren via de Azure-portal:
 
-1. Meld u aan bij de [Azure-portal](https://portal.azure.com).
+1. Meld u aan bij [Azure Portal](https://portal.azure.com).
 
 2. Selecteer **alle resources** en selecteer vervolgens uw opslag account.
 
@@ -95,23 +94,23 @@ Een sjabloon exporteren met behulp van Power shell:
 
 ### <a name="modify-the-template"></a>De sjabloon aanpassen 
 
-Wijzig de sjabloon door de naam en regio van het opslag account te wijzigen.
+Wijzig de sjabloon door de naam en regio van het opslagaccount te wijzigen.
 
 # <a name="portal"></a>[Portal](#tab/azure-portal)
 
 De sjabloon implementeren met behulp van Azure Portal:
 
-1. Selecteer in Azure Portal **Een resource maken**.
+1. Selecteer in de Azure Portal **een resource maken**.
 
-2. In **Marketplace doorzoeken** typt u **sjabloonimplementatie**. Druk vervolgens op **ENTER**.
+2. Typ in **de Marketplace zoeken de** **sjabloon implementatie**en druk vervolgens op **Enter**.
 
-3. Selecteer **Sjabloonimplementatie**.
+3. Selecteer **Sjabloonimlementatie**.
 
     ![Azure Resource Manager-sjabloonbibliotheek](./media/storage-account-move/azure-resource-manager-template-library.png)
 
 4. Selecteer **Maken**.
 
-5. Selecteer **Bouw uw eigen sjabloon in de editor**.
+5. Selecteer **uw eigen sjabloon bouwen in de editor**.
 
 6. Selecteer **bestand laden**en volg de instructies voor het laden van de **template.jsin** het bestand dat u in de laatste sectie hebt gedownload.
 
@@ -178,7 +177,7 @@ De sjabloon implementeren met behulp van Power shell:
 
 ## <a name="move"></a>Verplaatsen
 
-Implementeer de sjabloon om een nieuw opslag account te maken in de doel regio. 
+Implementeer de sjabloon om een nieuw opslagaccount te maken in de doelregio. 
 
 # <a name="portal"></a>[Portal](#tab/azure-portal)
 
@@ -213,13 +212,13 @@ Implementeer de sjabloon om een nieuw opslag account te maken in de doel regio.
    ```
 ---
 
-### <a name="configure-the-new-storage-account"></a>Het nieuwe opslag account configureren
+### <a name="configure-the-new-storage-account"></a>Het nieuwe opslagaccount configureren
 
-Sommige functies worden niet naar een sjabloon geëxporteerd, dus moet u deze toevoegen aan het nieuwe opslag account. 
+Sommige functies worden niet geëxporteerd naar een sjabloon. U moet deze dus toevoegen aan het nieuwe opslagaccount. 
 
-De volgende tabel bevat een overzicht van deze functies en richt lijnen voor het toevoegen van ze aan uw nieuwe opslag account.
+De volgende tabel bevat een overzicht van deze functies en richtlijnen voor het toevoegen ervan aan uw nieuwe opslagaccount.
 
-| Functie    | Richtlijnen    |
+| Functie    | Hulp    |
 |--------|-----------|
 | **Levenscyclus beheer beleid** | [De levenscyclus van Azure Blob-opslag beheren](../blobs/storage-lifecycle-management-concepts.md) |
 | **Statische websites** | [Een statische website hosten in Azure Storage](../blobs/storage-blob-static-website-how-to.md) |
@@ -230,16 +229,16 @@ De volgende tabel bevat een overzicht van deze functies en richt lijnen voor het
 > [!NOTE] 
 > Als u een CDN hebt ingesteld voor het bron-opslag account, wijzigt u alleen de oorsprong van uw bestaande CDN in het eind punt van de primaire BLOB-service (of het primaire eind punt van een statische website) van uw nieuwe account. 
 
-### <a name="move-data-to-the-new-storage-account"></a>Gegevens verplaatsen naar het nieuwe opslag account
+### <a name="move-data-to-the-new-storage-account"></a>Gegevens verplaatsen naar het nieuwe opslagaccount
 
-AzCopy is het voorkeurs programma waarmee u uw gegevens kunt verplaatsen. Het is geoptimaliseerd voor prestaties.  Een van de manieren waarop het sneller is, is dat gegevens rechtstreeks tussen opslag servers worden gekopieerd, zodat AzCopy niet de netwerk bandbreedte van uw computer gebruikt. Gebruik AzCopy op de opdracht regel of als onderdeel van een aangepast script. Zie [aan de slag met AzCopy](https://docs.microsoft.com/azure/storage/common/storage-use-azcopy-v10?toc=%2fazure%2fstorage%2fblobs%2ftoc.json).
+AzCopy is het voorkeurs programma waarmee u uw gegevens kunt verplaatsen. Deze is geoptimaliseerd voor prestaties.  Een van de manieren waarop het sneller gaat, is gegevens rechtstreeks tussen opslagservers kopiëren, zodat AzCopy niet de netwerkbandbreedte van uw computer gebruikt. Gebruik AzCopy bij de opdrachtregel of als onderdeel van een aangepast script. Zie [aan de slag met AzCopy](https://docs.microsoft.com/azure/storage/common/storage-use-azcopy-v10?toc=%2fazure%2fstorage%2fblobs%2ftoc.json).
 
 U kunt Azure Data Factory ook gebruiken om uw gegevens te verplaatsen. Het biedt een intuïtieve gebruikers interface. Als u Azure Data Factory wilt gebruiken, raadpleegt u een van de volgende koppelingen:. 
 
-  - [Gegevens kopiëren naar of van Azure Blob-opslag met behulp van Azure Data Factory](https://docs.microsoft.com/azure/data-factory/connector-azure-blob-storage)
-  - [Gegevens kopiëren naar of van Azure Data Lake Storage Gen2 met behulp van Azure Data Factory](https://docs.microsoft.com/azure/data-factory/connector-azure-data-lake-storage)
-  - [Gegevens kopiëren van of naar Azure File Storage met behulp van Azure Data Factory](https://docs.microsoft.com/azure/data-factory/connector-azure-file-storage)
-  - [Gegevens kopiëren van en naar Azure-tabel opslag met behulp van Azure Data Factory](https://docs.microsoft.com/azure/data-factory/connector-azure-table-storage)
+  - [Gegevens kopiëren naar of uit Azure Blob Storage met behulp van Azure Data Factory](https://docs.microsoft.com/azure/data-factory/connector-azure-blob-storage)
+  - [Gegevens kopiëren naar of vanuit Azure Data Lake Storage Gen2 met behulp van Azure Data Factory](https://docs.microsoft.com/azure/data-factory/connector-azure-data-lake-storage)
+  - [Gegevens kopiëren vanuit of naar Azure File Storage met behulp van Azure Data Factory](https://docs.microsoft.com/azure/data-factory/connector-azure-file-storage)
+  - [Gegevens kopiëren van en naar Azure Table Storage met behulp van Azure Data Factory](https://docs.microsoft.com/azure/data-factory/connector-azure-table-storage)
 
 ---
 
@@ -247,11 +246,11 @@ U kunt Azure Data Factory ook gebruiken om uw gegevens te verplaatsen. Het biedt
 
 Als u na de implementatie wilt beginnen, kunt u het doel opslag account verwijderen en de stappen herhalen die worden beschreven in de secties [voorbereiden](#prepare) en [verplaatsen](#move) van dit artikel.
 
-Als u de wijzigingen wilt door voeren en de verplaatsing van een opslag account wilt volt ooien, moet u het bron opslag account verwijderen.
+Voor het doorvoeren van de wijzigingen en het verplaatsen van een opslagaccount moet u het bronopslagaccount verwijderen.
 
 # <a name="portal"></a>[Portal](#tab/azure-portal)
 
-Een opslag account verwijderen met behulp van de Azure Portal:
+Een opslagaccount verwijderen via de Azure-portal:
 
 1. Vouw in het Azure Portal het menu aan de linkerkant uit om het menu met services te openen en kies **opslag accounts** om de lijst met uw opslag accounts weer te geven.
 

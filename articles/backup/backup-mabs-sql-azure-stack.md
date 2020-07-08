@@ -4,10 +4,9 @@ description: In dit artikel vindt u informatie over het configureren van Microso
 ms.topic: conceptual
 ms.date: 06/08/2018
 ms.openlocfilehash: b2d41bdccd67539205b74a0ce277b3b01a685c6c
-ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/29/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84192984"
 ---
 # <a name="back-up-sql-server-on-azure-stack"></a>Back-up maken van SQL Server op Azure Stack
@@ -96,7 +95,7 @@ Het beheer van SQL Server database back-up naar Azure en het herstel van Azure b
 
     ![Bewaarbeleid](./media/backup-azure-backup-sql/pg-retentionschedule.png)
 
-    In dit voorbeeld:
+    In dit voorbeeld geldt het volgende:
 
     * Back-ups worden eenmaal per dag om 12:00 uur en 8 uur (onderste deel van het scherm) gemaakt en blijven 180 dagen bewaard.
     * De back-up op zaterdag om 12:00 uur wordt 104 weken bewaard

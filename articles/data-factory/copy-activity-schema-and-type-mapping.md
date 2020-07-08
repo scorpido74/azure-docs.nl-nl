@@ -12,10 +12,9 @@ ms.topic: conceptual
 ms.date: 06/22/2020
 ms.author: jingwang
 ms.openlocfilehash: b48fb28a56cdc1c836233cd2bd03a1f9e750a0a7
-ms.sourcegitcommit: bf99428d2562a70f42b5a04021dde6ef26c3ec3a
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/23/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85249649"
 ---
 # <a name="schema-and-data-type-mapping-in-copy-activity"></a>Schema en gegevens type toewijzing in Kopieer activiteit
@@ -54,7 +53,7 @@ U kunt de toewijzing configureren voor Data Factory gebruikers interface-> Kopie
 | path     | De expressie JSON-pad voor elk veld dat moet worden uitgepakt of toegewezen. Toep assen op hiërarchische bron en Sink, bijvoorbeeld Cosmos DB, MongoDB of REST-connectors.<br>Voor velden onder het hoofd object begint het JSON-pad met root `$` . voor velden in de door eigenschap gekozen matrix wordt het `collectionReference` JSON-pad gestart vanuit het matrix element zonder `$` . | No       |
 | type     | Data Factory tussentijds gegevens type van de kolom Source of sink. Over het algemeen hoeft u deze eigenschap niet op te geven of te wijzigen. Meer informatie over [gegevens type toewijzing](#data-type-mapping). | No       |
 | culturele  | Cultuur van de kolom Source of sink. Toep assen wanneer type `Datetime` of is `Datetimeoffset` . De standaardwaarde is `en-us`.<br>Over het algemeen hoeft u deze eigenschap niet op te geven of te wijzigen. Meer informatie over [gegevens type toewijzing](#data-type-mapping). | No       |
-| formaat   | Indelings teken reeks die moet worden gebruikt wanneer type `Datetime` of is `Datetimeoffset` . Raadpleeg de [aangepaste datum-en tijd notatie teken reeksen](https://docs.microsoft.com/dotnet/standard/base-types/custom-date-and-time-format-strings) voor het opmaken van DateTime. Over het algemeen hoeft u deze eigenschap niet op te geven of te wijzigen. Meer informatie over [gegevens type toewijzing](#data-type-mapping). | No       |
+| indeling   | Indelings teken reeks die moet worden gebruikt wanneer type `Datetime` of is `Datetimeoffset` . Raadpleeg de [aangepaste datum-en tijd notatie teken reeksen](https://docs.microsoft.com/dotnet/standard/base-types/custom-date-and-time-format-strings) voor het opmaken van DateTime. Over het algemeen hoeft u deze eigenschap niet op te geven of te wijzigen. Meer informatie over [gegevens type toewijzing](#data-type-mapping). | No       |
 
 De volgende eigenschappen worden ondersteund onder `translator` naast `mappings` :
 
@@ -283,9 +282,9 @@ De Kopieer activiteit ondersteunt momenteel de volgende tussenliggende gegevens 
 
 De volgende gegevens type conversies worden ondersteund tussen de tussenliggende typen van bron naar sink.
 
-| Source\Sink | Booleaans | Byte matrix | Decimal | Datum/tijd <small>(1)</small> | Vlotter punt <small>(2)</small> | GUID | Geheel getal <small>(3)</small> | Tekenreeks | TimeSpan |
+| Source\Sink | Boolean-waarde | Byte matrix | Decimal | Datum/tijd <small>(1)</small> | Vlotter punt <small>(2)</small> | GUID | Geheel getal <small>(3)</small> | Tekenreeks | TimeSpan |
 | ----------- | ------- | ---------- | ------- | ---------------------------- | ------------------------------ | ---- | -------------------------- | ------ | -------- |
-| Booleaans     | ✓       |            | ✓       |                              | ✓                              |      | ✓                          | ✓      |          |
+| Boolean-waarde     | ✓       |            | ✓       |                              | ✓                              |      | ✓                          | ✓      |          |
 | Byte matrix  |         | ✓          |         |                              |                                |      |                            | ✓      |          |
 | Datum en tijd   |         |            |         | ✓                            |                                |      |                            | ✓      |          |
 | Decimal     | ✓       |            | ✓       |                              | ✓                              |      | ✓                          | ✓      |          |

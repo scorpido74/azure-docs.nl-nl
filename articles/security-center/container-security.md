@@ -10,24 +10,33 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 02/11/2020
+ms.date: 06/28/2020
 ms.author: memildin
-ms.openlocfilehash: d46e2a9820ec0c45d197f135428f1ace712b2fb8
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: c01ed6dbbd6e1f7febfb99df11d2ee67cb1e5465
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80125148"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85800597"
 ---
 # <a name="container-security-in-security-center"></a>Beveiliging van de container in Security Center
 
-Azure Security Center is de Azure-systeem eigen oplossing voor container beveiliging. Security Center is ook de optimale glas ervaring voor de beveiliging van uw Cloud werkbelastingen, Vm's, servers en containers.
+Azure Security Center is de Azure-systeem eigen oplossing voor het beveiligen van uw containers. Security Center kunt de volgende container resource typen beveiligen:
 
-In dit artikel wordt beschreven hoe Security Center u helpt bij het verbeteren, bewaken en onderhouden van de beveiliging van uw containers en hun apps. U leert hoe Security Center helpt bij het werken met deze kern aspecten van container beveiliging:
 
-* Beveiligings beheer
-* Versterking van de omgeving van de container
-* Runtime-beveiliging
+
+|Resource |Name  |Details  |
+|:---------:|---------|---------|
+|![Container host](./media/security-center-virtual-machine-recommendations/icon-container-host-rec.png)|Container-hosts (virtuele machines met docker)|Security Center scant uw Docker-configuraties en geeft u inzicht in onjuiste configuraties door een lijst op te stellen met alle mislukte regels die zijn beoordeeld. Security Center biedt richt lijnen die u helpen bij het snel oplossen van deze problemen en het besparen van tijd. Docker-configuraties worden doorlopend beoordeeld door Security Center en u ziet steeds wat de actuele status is.|
+|![Kubernetes-service](./media/security-center-virtual-machine-recommendations/icon-kubernetes-service-rec.png)|Clusters van Azure Kubernetes service (AKS)|Krijg meer inzicht in uw AKS-knoop punten, Cloud verkeer en beveiligings controles met [de optionele AKS-bundel van Security Center voor gebruikers van de](azure-kubernetes-service-integration.md) Standard-laag.|
+|![Containerregister](./media/security-center-virtual-machine-recommendations/icon-container-registry-rec.png)|Azure Container Registry (ACR) registers|Krijg meer inzicht in de kwets baarheid van de installatie kopieën in uw ACR-registers op basis van ARM met de [optionele ACR-bundel van Security Center](azure-kubernetes-service-integration.md) voor gebruikers van de Standard-laag.|
+||||
+
+
+In dit artikel wordt beschreven hoe u deze bundels kunt gebruiken om de beveiliging van uw containers en hun apps te verbeteren, bewaken en onderhouden. U leert hoe Security Center helpt bij het werken met deze kern aspecten van container beveiliging:
+
+- [Beveiligings beheer-container installatie kopieën scannen](#vulnerability-management---scanning-container-images)
+- [Omgevings beveiliging: doorlopende bewaking van uw docker-configuratie en Kubernetes-clusters](#environment-hardening)
+- [Run-time beveiliging-realtime detectie van bedreigingen](#run-time-protection---real-time-threat-detection)
 
 [![Tabblad Beveiliging van Azure Security Center container](media/container-security/container-security-tab.png)](media/container-security/container-security-tab.png#lightbox)
 
@@ -65,36 +74,13 @@ Zie de [sectie container](recommendations-reference.md#recs-containers) in de na
 
 ## <a name="run-time-protection---real-time-threat-detection"></a>Run-time beveiliging-realtime detectie van bedreigingen
 
-Security Center voorziet in realtime detectie van bedreigingen voor uw container omgevingen en genereert waarschuwingen voor verdachte activiteiten. U kunt deze informatie gebruiken om snel beveiligingsproblemen op te lossen en om de beveiliging van uw containers te verbeteren.
-
-We detecteren bedreigingen op het niveau van de host en het AKS-cluster. Zie [detectie van bedreigingen voor Azure-containers](threat-protection.md#azure-containers)voor volledige informatie.
+[!INCLUDE [AKS in ASC threat protection](../../includes/security-center-azure-kubernetes-threat-protection.md)]
 
 
-## <a name="container-security-faq"></a>Veelgestelde vragen over container beveiliging
 
-### <a name="what-types-of-images-can-azure-security-center-scan"></a>Welke typen installatie kopieën kunnen Azure Security Center scannen?
-Security Center scant installatie kopieën op basis van Linux-besturings systemen die shell toegang bieden. 
-
-De Qualys-scanner ondersteunt geen super minimale afbeeldingen zoals [docker](https://hub.docker.com/_/scratch/) -werk afbeeldingen, of Distroless-installatie kopieën die alleen uw toepassing en de runtime-afhankelijkheden bevatten zonder pakket beheer, shell of besturings systeem.
-
-### <a name="how-does-azure-security-center-scan-an-image"></a>Hoe scant Azure Security Center een afbeelding?
-De installatie kopie wordt opgehaald uit het REGI ster. Het wordt vervolgens uitgevoerd in een geïsoleerde sandbox met de Qualys-scanner die een lijst met bekende beveiligings problemen ophaalt.
-
-Security Center filters en classificeert de resultaten van de scanner. Wanneer een afbeelding in orde is, wordt deze als zodanig gemarkeerd door Security Center. Security Center genereert alleen beveiligings aanbevelingen voor installatie kopieën waarvoor problemen moeten worden opgelost. Als er alleen een melding wordt weer geven als er problemen zijn, vermindert Security Center het potentieel voor ongewenste informatieve waarschuwingen.
-
-### <a name="how-often-does-azure-security-center-scan-my-images"></a>Hoe vaak Azure Security Center mijn afbeeldingen scannen?
-Scans van afbeeldingen worden geactiveerd tijdens elke push.
-
-### <a name="can-i-get-the-scan-results-via-rest-api"></a>Kan ik de scan resultaten verkrijgen via REST API?
-Ja. De resultaten bevinden zich onder [Subevaluaties van de rest-API](/rest/api/securitycenter/subassessments/list/). U kunt ook Azure resource Graph (ARG), de Kusto-achtige API voor al uw resources, gebruiken: een query kan een specifieke scan ophalen.
- 
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Voor meer informatie over de beveiliging van de container in Azure Security Center raadpleegt u de volgende verwante artikelen:
-
-* Zie de sectie containers van [uw computers en toepassingen beveiligen](security-center-virtual-machine-protection.md#containers)als u de beveiligings postuur van uw container bronnen wilt weer geven.
-
-* Details van de [integratie met de Azure Kubernetes-service](azure-kubernetes-service-integration.md)
-
-* Details van de [integratie met Azure container Registry](azure-container-registry-integration.md)
+In dit overzicht hebt u geleerd over de kern elementen van de container beveiliging in Azure Security Center. Ga door met het [bewaken van de beveiliging van uw containers](monitor-container-security.md).
+> [!div class="nextstepaction"]
+> [De beveiliging van uw containers bewaken](monitor-container-security.md)

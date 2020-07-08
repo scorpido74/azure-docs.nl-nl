@@ -1,36 +1,35 @@
 ---
-title: Beveiligings basislijn voor Azure Synapse Analytics
-description: Azure-beveiligings basislijn voor Synapse Analytics
+title: Synapse Analytics Security Baseline voor Azure Security-benchmark
+description: De beveiligings basislijn van Synapse Analytics biedt procedure richtlijnen en resources voor het implementeren van de beveiligings aanbevelingen die zijn opgegeven in de Azure Security-Bench Mark.
 author: msmbaldwin
-ms.service: security
+ms.service: synapse-analytics
 ms.topic: conceptual
-ms.date: 06/22/2020
+ms.date: 07/02/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: ae5aba888077be9e15d327c9dc18c097b130c2ca
-ms.sourcegitcommit: bf99428d2562a70f42b5a04021dde6ef26c3ec3a
-ms.translationtype: MT
+ms.openlocfilehash: 4b40bdeb6f60aafea760c6c6e3e0b0f99b419614
+ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/23/2020
-ms.locfileid: "85255929"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86040653"
 ---
-# <a name="azure-security-baseline-for-synapse-analytics"></a>Azure-beveiligings basislijn voor Synapse Analytics
+# <a name="synapse-analytics-security-baseline-for-azure-security-benchmark"></a>Synapse Analytics Security Baseline voor Azure Security-benchmark
 
 De Azure Security Baseline voor Synapse Analytics bevat aanbevelingen waarmee u de beveiligings-postuur van uw implementatie kunt verbeteren.
 
 De basis lijn voor deze service wordt opgehaald uit de [Azure Security Bench Mark-versie 1,0](https://docs.microsoft.com/azure/security/benchmarks/overview), die aanbevelingen biedt over hoe u uw cloud oplossingen kunt beveiligen in azure met onze richt lijnen voor best practices.
 
-Zie het [overzicht van Azure Security-basis lijnen](https://docs.microsoft.com/azure/security/benchmarks/security-baselines-overview)voor meer informatie.
+Zie [overzicht van Azure Security-basis lijnen](https://docs.microsoft.com/azure/security/benchmarks/security-baselines-overview)voor meer informatie.
 
 ## <a name="network-security"></a>Netwerkbeveiliging
 
-*Zie [beveiligings beheer: netwerk beveiliging](https://docs.microsoft.com/azure/security/benchmarks/security-control-network-security)voor meer informatie.*
+*Zie [beveiligings beheer: netwerk beveiliging](/azure/security/benchmarks/security-control-network-security)voor meer informatie.*
 
 ### <a name="11-protect-azure-resources-within-virtual-networks"></a>1,1: Azure-resources in virtuele netwerken beveiligen
 
-**Hulp**: Beveilig uw Azure-SQL Server naar een virtueel netwerk via een persoonlijke koppeling. Met Azure private link kunt u toegang krijgen tot Azure PaaS Services via een persoonlijk eind punt in uw virtuele netwerk. Verkeer tussen uw virtuele netwerk en de service wordt via het Microsoft-backbonenetwerk verplaatst.
+**Hulp**: Beveilig Azure SQL database naar een virtueel netwerk via een persoonlijke koppeling. Met Azure private link kunt u toegang krijgen tot Azure PaaS Services via een persoonlijk eind punt in uw virtuele netwerk. Verkeer tussen uw virtuele netwerk en de service wordt via het Microsoft-backbonenetwerk verplaatst.
 
-U kunt ook bij het maken van verbinding met uw Synapse SQL-groep het bereik van de uitgaande verbinding met de SQL database beperken door een netwerk beveiligings groep te gebruiken. Schakel alle Azure-service verkeer naar het SQL database via het open bare eind punt door de instelling Azure-Services toestaan in te scha kelen. Zorg ervoor dat er geen open bare IP-adressen zijn toegestaan in de firewall regels.
+U kunt ook bij het maken van verbinding met uw Synapse SQL-pool het bereik van de uitgaande verbinding beperken tot SQL Database met behulp van een netwerk beveiligings groep. Schakel alle Azure-serviceverkeer uit naar SQL Database via het openbare eindpunt door Azure-services toestaan UIT te schakelen. Zorg ervoor dat er geen open bare IP-adressen zijn toegestaan in de firewall regels.
 
 * [Persoonlijke Azure-koppeling](https://docs.microsoft.com/azure/private-link/private-link-overview)
 
@@ -124,7 +123,7 @@ Schakel DDoS Protection standaard in op de virtuele netwerken die zijn gekoppeld
 
 **Richt lijnen**: gebruik Tags voor het virtuele netwerk om netwerk toegangs beheer te definiëren voor netwerk beveiligings groepen of Azure firewall. U kunt servicetags gebruiken in plaats van specifieke IP-adressen wanneer u beveiligingsregels maakt. Door de naam van de service label (bijvoorbeeld ApiManagement) op te geven in het juiste bron-of doel veld van een regel, kunt u het verkeer voor de bijbehorende service toestaan of weigeren. Micro soft beheert de adres voorvoegsels die zijn opgenomen in het servicetag van de service en werkt de servicetag automatisch bij met gewijzigde adressen.
 
-Wanneer u een service-eind punt voor uw Azure Synapse SQL-groep gebruikt, is uitgaand naar Azure SQL database open bare IP-adressen vereist: netwerk beveiligings groepen (Nsg's) moeten zijn geopend om te Azure SQL Database Ip's om verbinding te kunnen maken. U kunt dit doen met behulp van NSG-service tags voor Azure SQL Database.
+Wanneer u een service-eind punt voor uw Azure Synapse SQL-groep gebruikt, is uitgaand naar Azure SQL Database open bare IP-adressen vereist: netwerk beveiligings groepen (Nsg's) moeten zijn geopend om te Azure SQL Database Ip's om verbinding te kunnen maken. U kunt dit doen met behulp van NSG-service tags voor Azure SQL Database.
 
 * [Informatie over service tags met Service-eind punten voor Azure SQL Database](https://docs.microsoft.com/azure/sql-database/sql-database-vnet-service-endpoint-rule-overview#limitations)
 
@@ -136,7 +135,7 @@ Wanneer u een service-eind punt voor uw Azure Synapse SQL-groep gebruikt, is uit
 
 ### <a name="19-maintain-standard-security-configurations-for-network-devices"></a>1,9: standaard beveiligings configuraties voor netwerk apparaten onderhouden
 
-**Richt lijnen**: netwerk beveiligings configuraties voor resources die zijn gerelateerd aan uw SQL-groep definiëren en implementeren met Azure Policy. U kunt de naam ruimte ' micro soft. SQL ' gebruiken om aangepaste beleids definities te definiëren of een van de ingebouwde beleids definities te gebruiken die zijn ontworpen voor Azure SQL database/server-netwerk beveiliging. Een voor beeld van een toepasselijk ingebouwd netwerk beveiligings beleid voor Azure SQL Database Server is: ' SQL Server moet een service-eind punt van een virtueel netwerk gebruiken '.
+**Richt lijnen**: netwerk beveiligings configuraties voor resources die zijn gerelateerd aan uw SQL-groep definiëren en implementeren met Azure Policy. U kunt de naam ruimte ' micro soft. SQL ' gebruiken om aangepaste beleids definities te definiëren of een van de ingebouwde beleids definities te gebruiken die zijn ontworpen voor Azure SQL Database/Server-netwerk beveiliging. Een voor beeld van een toepasselijk ingebouwd netwerk beveiligings beleid voor Azure SQL Database Server is: ' SQL Server moet een service-eind punt van een virtueel netwerk gebruiken '.
 
 Gebruik Azure-blauw drukken om grootschalige Azure-implementaties te vereenvoudigen door essentiële omgevings artefacten, zoals Azure resource management-sjablonen, op rollen gebaseerd toegangs beheer (RBAC) en beleids regels, in één blauw definitie te voorzien. Pas de blauw druk toe op nieuwe abonnementen en omgevingen en Verfijn de controle en het beheer via versies.
 
@@ -176,7 +175,7 @@ U kunt Azure PowerShell of Azure CLI gebruiken om op basis van hun labels acties
 
 ## <a name="logging-and-monitoring"></a>Logboekregistratie en bewaking
 
-*Zie voor meer informatie [beveiligings beheer: logboek registratie en controle](https://docs.microsoft.com/azure/security/benchmarks/security-control-logging-monitoring).*
+*Zie voor meer informatie [beveiligings beheer: logboek registratie en controle](/azure/security/benchmarks/security-control-logging-monitoring).*
 
 ### <a name="21-use-approved-time-synchronization-sources"></a>2,1: goedgekeurde tijd synchronisatie bronnen gebruiken
 
@@ -190,7 +189,7 @@ U kunt Azure PowerShell of Azure CLI gebruiken om op basis van hun labels acties
 
 ### <a name="22-configure-central-security-log-management"></a>2,2: Centraal beveiligings logboek beheer configureren
 
-**Hulp**: er kan een controle beleid worden gedefinieerd voor een specifieke data base of als een standaard server beleid in azure (die als host fungeert voor SQL database of Azure Synapse). Een server beleid is van toepassing op alle bestaande en nieuw gemaakte data bases op de server.
+**Hulp**: er kan een controle beleid worden gedefinieerd voor een specifieke data base of als een standaard server beleid in azure (die als host fungeert voor Azure Synapse). Een server beleid is van toepassing op alle bestaande en nieuw gemaakte data bases op de server.
 
 Als server controle is ingeschakeld, is deze altijd van toepassing op de data base. De data base wordt gecontroleerd, ongeacht de controle-instellingen voor de data base.
 
@@ -213,6 +212,8 @@ U kunt ook gegevens in-of uitschakelen voor Azure Sentinel of een SIEM van derde
 Controle kan zowel op het niveau van de data base of op de server worden ingeschakeld en wordt voorgesteld om alleen te worden ingeschakeld op server niveau, tenzij u een afzonderlijke gegevens sink of retentie van een bepaalde data base moet configureren.
 
 * [Controle inschakelen voor Azure SQL Database](https://docs.microsoft.com/azure/sql-database/sql-database-auditing)
+
+* [Controle inschakelen voor uw server](https://docs.microsoft.com/azure/azure-sql/database/auditing-overview#setup-auditing)
 
 * [Verschillen in het controle beleid op server niveau versus database niveau](https://docs.microsoft.com/azure/sql-database/sql-database-auditing#server-vs-database-level)
 
@@ -304,19 +305,29 @@ U kunt ook gegevens naar Azure-Sentinel inschakelen en op het bord zetten.
 
 ## <a name="identity-and-access-control"></a>Identiteits- en toegangsbeheer
 
-*Zie [beveiligings beheer: identiteits-en toegangs beheer](https://docs.microsoft.com/azure/security/benchmarks/security-control-identity-access-control)voor meer informatie.*
+*Zie [beveiligings beheer: identiteits-en toegangs beheer](/azure/security/benchmarks/security-control-identity-access-control)voor meer informatie.*
 
 ### <a name="31-maintain-an-inventory-of-administrative-accounts"></a>3,1: een inventaris van beheerders accounts onderhouden
 
-**Richt lijnen**: toegangs beheer op basis van rollen (Azure RBAC) van Azure heeft ingebouwde rollen die expliciet moeten worden toegewezen en waarop query's kunnen worden uitgevoerd. Gebruik de Azure AD Power shell-module om ad-hoc-query's uit te voeren om accounts te detecteren die lid zijn van beheer groepen.
+**Hulp**: gebruikers worden geverifieerd met Azure Active Directory of SQL-verificatie.
 
-U kunt ook rollen configureren op database niveau, en aangepaste rollen maken voor gebruikers die toegang hebben tot uw Azure SQL Database-resources. Rollen op server niveau zijn momenteel niet beschikbaar voor Azure Synapse SQL.
+Wanneer u Azure SQL voor het eerst implementeert, geeft u een beheerders aanmelding en een bijbehorend wacht woord op voor die aanmelding. Dit beheerders account wordt Server beheerder genoemd. U kunt de beheerders accounts voor een Data Base identificeren door de Azure Portal te openen en te navigeren naar het tabblad Eigenschappen van de server of het beheerde exemplaar. U kunt ook een Azure AD-beheerders account met volledige beheerders machtigingen configureren. Dit is vereist als u Azure Active Directory verificatie wilt inschakelen.
+
+Voor beheer bewerkingen gebruikt u de ingebouwde Azure RBAC-rollen (op rollen gebaseerd toegangs beheer) die expliciet moeten worden toegewezen. Gebruik de Azure AD Power shell-module om ad-hoc-query's uit te voeren om accounts te detecteren die lid zijn van beheer groepen.
+
+* [Verificatie voor SQL Database](https://docs.microsoft.com/azure/azure-sql/database/security-overview#authentication)
+
+* [Accounts maken voor gebruikers die geen beheerder zijn](https://docs.microsoft.com/azure/azure-sql/database/logins-create-manage#create-accounts-for-non-administrator-users)
+
+* [Een Azure Active Directory-account gebruiken voor verificatie](https://docs.microsoft.com/azure/azure-sql/database/logins-create-manage#create-additional-logins-and-users-having-administrative-permissions)
 
 * [Een directory-rol verkrijgen in azure AD met Power shell](https://docs.microsoft.com/powershell/module/azuread/get-azureaddirectoryrole?view=azureadps-2.0)
 
 * [Leden van een directory-rol in azure AD ophalen met Power shell](https://docs.microsoft.com/powershell/module/azuread/get-azureaddirectoryrolemember?view=azureadps-2.0)
 
-* [Functies op database niveau begrijpen](https://docs.microsoft.com/sql/relational-databases/security/authentication-access/database-level-roles?view=sql-server-ver15)
+* [Bestaande aanmeldingen en beheerders accounts beheren in Azure SQL](https://docs.microsoft.com/azure/azure-sql/database/logins-create-manage#existing-logins-and-user-accounts-after-creating-a-new-database)
+
+* [Ingebouwde Azure RBAC-rollen](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles)
 
 **Azure Security Center bewaking**: niet van toepassing
 
@@ -324,9 +335,11 @@ U kunt ook rollen configureren op database niveau, en aangepaste rollen maken vo
 
 ### <a name="32-change-default-passwords-where-applicable"></a>3,2: standaard wachtwoorden wijzigen indien van toepassing
 
-**Hulp**: Azure Active Directory heeft niet het concept van standaard wachtwoorden. Bij het inrichten van een Azure SQL Database/Server-of Synapse SQL-groep wordt u aangeraden verificatie te integreren met Azure Active Directory.
+**Hulp**: Azure Active Directory heeft niet het concept van standaard wachtwoorden. Bij het inrichten van een Azure Synapse SQL-groep wordt u aangeraden verificatie te integreren met Azure Active Directory. Met deze verificatie methode verzendt de gebruiker de naam van een gebruikers account en vraagt de service de referentie gegevens te gebruiken die zijn opgeslagen in Azure Active Directory (Azure AD).
 
 * [Azure Active Directory-verificatie configureren en beheren met Azure SQL](https://docs.microsoft.com/azure/sql-database/sql-database-aad-authentication-configure?tabs=azure-powershell#active-directory-password-authentication)
+
+* [Verificatie begrijpen in Azure SQL](https://docs.microsoft.com/azure/azure-sql/database/logins-create-manage#existing-logins-and-user-accounts-after-creating-a-new-database)
 
 **Azure Security Center bewaking**: niet van toepassing
 
@@ -334,9 +347,13 @@ U kunt ook rollen configureren op database niveau, en aangepaste rollen maken vo
 
 ### <a name="33-use-dedicated-administrative-accounts"></a>3,3: speciale beheerders accounts gebruiken
 
-**Richt lijnen**: beleids regels en procedures voor het gebruik van specifieke beheerders accounts maken. Gebruik Azure Security Center identiteits-en toegangs beheer om het aantal beheerders accounts te bewaken.
+**Richt lijnen**: beleids regels en procedures voor het gebruik van specifieke beheerders accounts maken. Gebruik Azure Security Center identiteits-en toegangs beheer om het aantal beheerders accounts te controleren dat zich via Azure Active Directory aanmeldt.
+
+Als u de beheerders accounts voor een Data Base wilt identificeren, opent u de Azure Portal en navigeert u naar het tabblad Eigenschappen van de server of het beheerde exemplaar.
 
 * [Inzicht in Azure Security Center identiteit en toegang](https://docs.microsoft.com/azure/security-center/security-center-identity-access)
+
+* [Bestaande aanmeldingen en beheerders accounts beheren in Azure SQL](https://docs.microsoft.com/azure/azure-sql/database/logins-create-manage#existing-logins-and-user-accounts-after-creating-a-new-database)
 
 **Azure Security Center bewaking**: niet van toepassing
 
@@ -486,9 +503,9 @@ Bij het gebruik van SQL-verificatie maakt u Inge sloten database gebruikers in d
 
 **Verantwoordelijkheid**: klant
 
-## <a name="data-protection"></a>Gegevensbeveiliging
+## <a name="data-protection"></a>Gegevensbescherming
 
-*Zie [beveiligings beheer: gegevens beveiliging](https://docs.microsoft.com/azure/security/benchmarks/security-control-data-protection)voor meer informatie.*
+*Zie [beveiligings beheer: gegevens beveiliging](/azure/security/benchmarks/security-control-data-protection)voor meer informatie.*
 
 ### <a name="41-maintain-an-inventory-of-sensitive-information"></a>4,1: een inventaris van gevoelige informatie onderhouden
 
@@ -566,7 +583,7 @@ Daarnaast kunt u een beleid voor dynamische gegevens maskering (DDM) instellen i
 
 ### <a name="46-use-role-based-access-control-to-control-access-to-resources"></a>4,6: op rollen gebaseerd toegangs beheer gebruiken voor het beheren van de toegang tot bronnen
 
-**Hulp**: gebruik Azure op rollen gebaseerd toegangs beheer (RBAC) voor het beheren van de toegang tot Azure SQL-data bases in uw Synapse SQL-groep.
+**Hulp**: gebruik Azure op rollen gebaseerd toegangs beheer (RBAC) voor het beheren van de toegang tot Azure SQL database in uw Synapse SQL-groep.
 
 Autorisatie wordt beheerd door de databaserol lidmaatschappen en object machtigingen van uw gebruikers account. Het wordt aanbevolen om gebruikers de minimaal benodigde bevoegdheden te verlenen.
 
@@ -620,13 +637,13 @@ Daarnaast kunt u waarschuwingen instellen voor data bases in uw SQL Synapse-groe
 
 ## <a name="vulnerability-management"></a>Beheer van beveiligingsproblemen
 
-*Zie [beveiligings beheer: beveiligingslek beheer](https://docs.microsoft.com/azure/security/benchmarks/security-control-vulnerability-management)voor meer informatie.*
+*Zie [beveiligings beheer: beveiligingslek beheer](/azure/security/benchmarks/security-control-vulnerability-management)voor meer informatie.*
 
 ### <a name="51-run-automated-vulnerability-scanning-tools"></a>5,1: automatische hulpprogram ma's voor het scannen van beveiligings problemen uitvoeren
 
-**Richt lijnen**: geavanceerde gegevens beveiliging inschakelen en aanbevelingen volgen van Azure Security Center over het uitvoeren van evaluatie van beveiligings problemen op uw Azure SQL-data bases.
+**Richt lijnen**: geavanceerde gegevens beveiliging inschakelen en aanbevelingen volgen van Azure Security Center over het uitvoeren van evaluatie van beveiligings problemen op SQL database.
 
-* [Beveiligings evaluaties uitvoeren voor uw Azure SQL-data bases](https://docs.microsoft.com/azure/sql-database/sql-vulnerability-assessment)
+* [Beveiligings evaluaties uitvoeren op Azure SQL Database](https://docs.microsoft.com/azure/sql-database/sql-vulnerability-assessment)
 
 * [Geavanceerde gegevens beveiliging inschakelen](https://docs.microsoft.com/azure/sql-database/sql-database-advanced-data-security)
 
@@ -678,7 +695,7 @@ Classificatie van gegevens detectie &amp; is ingebouwd in azure Synapse SQL. Het
 
 ## <a name="inventory-and-asset-management"></a>Inventarisatie en asset-management
 
-*Zie voor meer informatie [beveiligings beheer: inventarisatie en activa beheer](https://docs.microsoft.com/azure/security/benchmarks/security-control-inventory-asset-management).*
+*Zie voor meer informatie [beveiligings beheer: inventarisatie en activa beheer](/azure/security/benchmarks/security-control-inventory-asset-management).*
 
 ### <a name="61-use-automated-asset-discovery-solution"></a>6,1: automatische Asset-detectie oplossing gebruiken
 
@@ -824,11 +841,12 @@ Gebruik Azure resource Graph voor het opvragen/detecteren van resources binnen u
 
 ## <a name="secure-configuration"></a>Veilige configuratie
 
-*Zie [beveiligings beheer: beveiligde configuratie](https://docs.microsoft.com/azure/security/benchmarks/security-control-secure-configuration)voor meer informatie.*
+*Zie [beveiligings beheer: beveiligde configuratie](/azure/security/benchmarks/security-control-secure-configuration)voor meer informatie.*
 
 ### <a name="71-establish-secure-configurations-for-all-azure-resources"></a>7,1: veilige configuraties instellen voor alle Azure-resources
 
-**Hulp**: gebruik Azure Policy aliassen in de naam ruimte ' micro soft. SQL ' om aangepaste beleids regels te maken voor het controleren of afdwingen van de configuratie van resources die zijn gerelateerd aan uw Synapse SQL-groep. U kunt ook gebruikmaken van ingebouwde beleids definities voor Azure Data Base/Server, zoals:
+**Hulp**: gebruik Azure Policy aliassen in de naam ruimte ' micro soft. SQL ' om aangepaste beleids regels te maken voor het controleren of afdwingen van de configuratie van resources die zijn gerelateerd aan uw Synapse SQL-groep. U kunt ook gebruikmaken van ingebouwde beleids definities voor Azure-data bases, zoals:
+
 - Detectie van bedreigingen implementeren op SQL-servers
 - SQL Server moet gebruikmaken van een service-eindpunt voor een virtueel netwerk
 
@@ -958,7 +976,7 @@ Gebruik Azure resource Graph voor het opvragen/detecteren van resources binnen u
 
 ## <a name="malware-defense"></a>Beveiliging tegen malware
 
-*Zie [beveiligings beheer: verdediging tegen malware](https://docs.microsoft.com/azure/security/benchmarks/security-control-malware-defense)voor meer informatie.*
+*Zie [beveiligings beheer: verdediging tegen malware](/azure/security/benchmarks/security-control-malware-defense)voor meer informatie.*
 
 ### <a name="81-use-centrally-managed-anti-malware-software"></a>8,1: centraal beheerde anti-malware-software gebruiken
 
@@ -990,7 +1008,7 @@ Scan vooraf op inhoud die wordt geüpload naar niet-reken resources van Azure, z
 
 ## <a name="data-recovery"></a>Gegevensherstel
 
-*Zie [beveiligings beheer: gegevens herstel](https://docs.microsoft.com/azure/security/benchmarks/security-control-data-recovery)voor meer informatie.*
+*Zie [beveiligings beheer: gegevens herstel](/azure/security/benchmarks/security-control-data-recovery)voor meer informatie.*
 
 ### <a name="91-ensure-regular-automated-back-ups"></a>9,1: controleren op regel matige automatische back-ups
 
@@ -1048,7 +1066,7 @@ Gegevens in een opslag account worden standaard versleuteld met door micro soft 
 
 ## <a name="incident-response"></a>Reageren op incidenten
 
-*Zie voor meer informatie [beveiligings beheer: reactie op incidenten](https://docs.microsoft.com/azure/security/benchmarks/security-control-incident-response).*
+*Zie voor meer informatie [beveiligings beheer: reactie op incidenten](/azure/security/benchmarks/security-control-incident-response).*
 
 ### <a name="101-create-an-incident-response-guide"></a>10,1: een hand leiding voor reactie op incidenten maken
 
@@ -1114,13 +1132,13 @@ Gegevens in een opslag account worden standaard versleuteld met door micro soft 
 
 ## <a name="penetration-tests-and-red-team-exercises"></a>Penetratietests en Red Team-oefeningen
 
-*Zie voor meer informatie [Security Control: Indringings tests en Red team-oefeningen](https://docs.microsoft.com/azure/security/benchmarks/security-control-penetration-tests-red-team-exercises).*
+*Zie voor meer informatie [Security Control: Indringings tests en Red team-oefeningen](/azure/security/benchmarks/security-control-penetration-tests-red-team-exercises).*
 
 ### <a name="111-conduct-regular-penetration-testing-of-your-azure-resources-and-ensure-remediation-of-all-critical-security-findings"></a>11,1: voert regel matig indringings tests van uw Azure-resources uit en zorgt voor herbemiddeling van alle essentiële beveiligings resultaten
 
-**Richt lijnen**: Volg de [micro soft-regels](https://www.microsoft.com/msrc/pentest-rules-of-engagement?rtc=1) om ervoor te zorgen dat de indringings tests niet worden geschonden door het micro soft-beleid.
+**Richt lijnen**: * [Volg de micro soft-regels voor betrokkenheid om ervoor te zorgen dat de indringings tests niet worden geschonden door het micro soft-beleid](https://www.microsoft.com/msrc/pentest-rules-of-engagement?rtc=1.)
 
-U vindt [hier](https://gallery.technet.microsoft.com/Cloud-Red-Teaming-b837392e)meer informatie over de strategie van micro soft en de uitvoering van Red Teaming en live site indringings tests ten opzichte van micro soft Managed Cloud Infrastructure, services en toepassingen.
+* [U vindt hier meer informatie over de strategie van micro soft en de uitvoering van Red Teaming en live site indringings tests ten opzichte van micro soft Managed Cloud Infrastructure, services en toepassingen.](https://gallery.technet.microsoft.com/Cloud-Red-Teaming-b837392e)
 
 **Azure Security Center bewaking**: niet van toepassing
 
@@ -1128,5 +1146,5 @@ U vindt [hier](https://gallery.technet.microsoft.com/Cloud-Red-Teaming-b837392e)
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- Zie de [Azure Security-Bench Mark](https://docs.microsoft.com/azure/security/benchmarks/overview)
-- Meer informatie over [Azure-beveiligings basislijnen](https://docs.microsoft.com/azure/security/benchmarks/security-baselines-overview)
+- Zie de [Azure Security-Bench Mark](/azure/security/benchmarks/overview)
+- Meer informatie over [Azure-beveiligings basislijnen](/azure/security/benchmarks/security-baselines-overview)

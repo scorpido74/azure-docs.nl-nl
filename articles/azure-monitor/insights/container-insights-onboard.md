@@ -2,13 +2,12 @@
 title: Azure Monitor inschakelen voor containers | Microsoft Docs
 description: In dit artikel wordt beschreven hoe u Azure Monitor voor containers inschakelt en configureert, zodat u kunt zien hoe uw container presteert en welke problemen met betrekking tot de prestaties zijn geïdentificeerd.
 ms.topic: conceptual
-ms.date: 06/15/2020
-ms.openlocfilehash: 519238837831a67714894ee44f4694321fb999d4
-ms.sourcegitcommit: 374e47efb65f0ae510ad6c24a82e8abb5b57029e
-ms.translationtype: MT
+ms.date: 06/30/2020
+ms.openlocfilehash: d85dd4f1eb89ddba96ec012acb7fb7550800ce7f
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/28/2020
-ms.locfileid: "85508109"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85800627"
 ---
 # <a name="enable-azure-monitor-for-containers"></a>Azure Monitor inschakelen voor containers
 
@@ -55,6 +54,8 @@ Voordat u begint, moet u ervoor zorgen dat u aan de volgende vereisten voldoet:
 
    [!INCLUDE [log-analytics-agent-note](../../../includes/log-analytics-agent-note.md)]
 
+- Als u de bewakings gegevens wilt bekijken, moet u de rol van [*log Analytics lezer*](../platform/manage-access.md#manage-access-using-azure-permissions) hebben in de log Analytics-werk ruimte, geconfigureerd met Azure monitor voor containers.
+
 - Prometheus-metrische gegevens worden niet standaard verzameld. Voordat u [de agent configureert](container-insights-prometheus-integration.md) voor het verzamelen van de metrische gegevens, is het belang rijk om de [Prometheus-documentatie](https://prometheus.io/) te controleren om te begrijpen welke informatie kan worden verzameld en welke methoden worden ondersteund.
 
 ## <a name="supported-configurations"></a>Ondersteunde configuraties
@@ -78,7 +79,7 @@ De volgende tabel geeft een lijst van de proxy-en firewall configuratie-informat
 
 De volgende tabel geeft een overzicht van de proxy-en firewall configuratie-informatie voor Azure China 21Vianet:
 
-|Agentresource|Poort |Beschrijving | 
+|Agentresource|Poort |Description | 
 |--------------|------|-------------|
 | `*.ods.opinsights.azure.cn` | 443 | Gegevensopname |
 | `*.oms.opinsights.azure.cn` | 443 | OMS-onboarding |
@@ -86,7 +87,7 @@ De volgende tabel geeft een overzicht van de proxy-en firewall configuratie-info
 
 De volgende tabel geeft een overzicht van de proxy-en firewall configuratie-informatie voor de Amerikaanse overheid van Azure:
 
-|Agentresource|Poort |Beschrijving | 
+|Agentresource|Poort |Description | 
 |--------------|------|-------------|
 | `*.ods.opinsights.azure.us` | 443 | Gegevensopname |
 | `*.oms.opinsights.azure.us` | 443 | OMS-onboarding |

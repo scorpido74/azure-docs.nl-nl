@@ -7,12 +7,11 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 03/20/2020
-ms.openlocfilehash: 450a97b0be1b11980d65477d396431170180d00f
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
-ms.translationtype: MT
+ms.openlocfilehash: 0271bd08e01cdbd442e64db0c04184995f7d8d09
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83746644"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85958443"
 ---
 # <a name="how-to-purchase-software-on-microsoft-appsource"></a>Software aanschaffen op Microsoft AppSource
 
@@ -57,7 +56,7 @@ Nadat uw bestelling is ontvangen, kan het enkele seconden duren voordat deze wor
     > [!Note]
     > Deze stap is verplicht en kan op elk gewenst moment worden uitgevoerd.
 
-## <a name="contact-support"></a>Contact opnemen met ondersteuning
+## <a name="contact-support"></a>Contact opnemen met de ondersteuning
 
 Een [ondersteunings ticket](https://admin.microsoft.com/Adminportal/Home?source=applauncher#/homepage) kan via het Microsoft 365-beheer centrum worden verzonden.
 
@@ -65,4 +64,4 @@ Een [ondersteunings ticket](https://admin.microsoft.com/Adminportal/Home?source=
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- Raadpleeg de [documentatie voor commerciële Marketplace](https://docs.microsoft.com/azure/marketplace/partner-center-portal/commercial-marketplace-overview) voor meer informatie.
+- Raadpleeg de [documentatie voor commerciële Marketplace](partner-center-portal/commercial-marketplace-overview.md) voor meer informatie.

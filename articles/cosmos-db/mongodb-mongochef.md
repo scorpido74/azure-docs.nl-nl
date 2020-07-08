@@ -8,12 +8,11 @@ ms.date: 03/20/2020
 author: timsander1
 ms.author: tisande
 ms.custom: seodec18
-ms.openlocfilehash: 0159f69dcef2a98a8597762902ff2f45f30b0bef
-ms.sourcegitcommit: 635114a0f07a2de310b34720856dd074aaf4f9cd
-ms.translationtype: MT
+ms.openlocfilehash: 18a9f97d2cee9dd17345a1c8c0ae0efe442d79a4
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/23/2020
-ms.locfileid: "85263106"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85799391"
 ---
 # <a name="connect-to-an-azure-cosmos-account-using-studio-3t"></a>Verbinding maken met een Azure Cosmos-account met Studio 3T gebruiken
 
@@ -63,25 +62,29 @@ Voer de volgende stappen uit om een Data Base, verzameling en documenten te make
     :::image type="content" source="./media/mongodb-mongochef/AddDocument1.png" alt-text="Scherm afbeelding van het menu-item Studio 3T gebruiken add document":::
 5. Plak het volgende in het dialoog venster document toevoegen en klik vervolgens op **document toevoegen**.
 
-        {
+    ```json
+    {
         "_id": "AndersenFamily",
         "lastName": "Andersen",
         "parents": [
-               { "firstName": "Thomas" },
-               { "firstName": "Mary Kay"}
+            { "firstName": "Thomas" },
+            { "firstName": "Mary Kay"}
         ],
         "children": [
-           {
-               "firstName": "Henriette Thaulow", "gender": "female", "grade": 5,
-               "pets": [{ "givenName": "Fluffy" }]
-           }
+            {
+                "firstName": "Henriette Thaulow", "gender": "female", "grade": 5,
+                "pets": [{ "givenName": "Fluffy" }]
+            }
         ],
         "address": { "state": "WA", "county": "King", "city": "seattle" },
         "isRegistered": true
-        }
+    }
+    ```
+    
 6. Voeg nog een document toe met de volgende inhoud:
 
-        {
+    ```json
+    {
         "_id": "WakefieldFamily",
         "parents": [
             { "familyName": "Wakefield", "givenName": "Robin" },
@@ -90,7 +93,7 @@ Voer de volgende stappen uit om een Data Base, verzameling en documenten te make
         "children": [
             {
                 "familyName": "Merriam",
-                 "givenName": "Jesse",
+                "givenName": "Jesse",
                 "gender": "female", "grade": 1,
                 "pets": [
                     { "givenName": "Goofy" },
@@ -99,13 +102,15 @@ Voer de volgende stappen uit om een Data Base, verzameling en documenten te make
             },
             {
                 "familyName": "Miller",
-                 "givenName": "Lisa",
-                 "gender": "female",
-                 "grade": 8 }
+                "givenName": "Lisa",
+                "gender": "female",
+                "grade": 8 }
         ],
         "address": { "state": "NY", "county": "Manhattan", "city": "NY" },
         "isRegistered": false
-        }
+    }
+    ```
+
 7. Een voorbeeld query uitvoeren. Zoek bijvoorbeeld naar families met de achternaam ' Splinter ' en retour neer de velden ouders en provincie.
 
     :::image type="content" source="./media/mongodb-mongochef/QueryDocument1.png" alt-text="Scherm opname van Mongo chef-query resultaten":::

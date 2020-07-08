@@ -9,10 +9,9 @@ ms.topic: conceptual
 ms.custom: hdinsightactive,seoapr2020
 ms.date: 04/27/2020
 ms.openlocfilehash: a2a9b149bd76ed276f3210f27ea0f60bbc7b7662
-ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/29/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84190893"
 ---
 # <a name="create-linux-based-clusters-in-hdinsight-by-using-the-azure-portal"></a>Op Linux gebaseerde clusters maken in HDInsight met behulp van de Azure Portal
@@ -31,7 +30,7 @@ Als u nog geen abonnement op Azure hebt, maak dan een [gratis account](https://a
 
 [!INCLUDE [secure-transfer-enabled-storage-account](../../includes/hdinsight-secure-transfer.md)]
 
-1. Meld u aan bij de [Azure-portal](https://portal.azure.com).
+1. Meld u aan bij [Azure Portal](https://portal.azure.com).
 
 1. Selecteer in het bovenste menu de optie **+ een resource maken**.
 
@@ -49,7 +48,7 @@ Geef op het tabblad **basis beginselen** de volgende informatie op:
 |---|---|
 |Abonnement|Selecteer in de vervolg keuzelijst het Azure-abonnement dat wordt gebruikt voor het cluster.|
 |Resourcegroep|Selecteer in de vervolg keuzelijst de bestaande resource groep of selecteer **nieuwe maken**.|
-|Clusternaam|Voer een wereldwijd unieke naam in.|
+|Clusternaam|Geef een wereldwijd unieke naam op.|
 |Regio|Selecteer in de vervolg keuzelijst een regio waar het cluster wordt gemaakt.|
 |Cluster type|Klik op **cluster type selecteren** om een lijst te openen. Selecteer in de lijst het gewenste cluster type. HDInsight-clusters komen in verschillende typen voor. Ze komen overeen met de werk belasting of technologie waarvoor het cluster is afgestemd. Er wordt geen ondersteunde methode gebruikt voor het maken van een cluster waarin meerdere typen worden gecombineerd.|
 |Versie|Selecteer een **versie**in de vervolg keuzelijst. Gebruik de standaard versie als u niet weet wat u moet kiezen. Zie [HDInsight-clusterversies](hdinsight-component-versioning.md) voor meer informatie.|
@@ -114,8 +113,8 @@ Geef op het tabblad **configuratie en prijzen** de volgende informatie op:
 |Eigenschap |Beschrijving |
 |---|---|
 |+ Toepassing toevoegen|Optioneel: Selecteer de gewenste toepassingen. Micro soft, Independent Software Vendors (Isv's), of u kunt deze toepassingen ontwikkelen. Zie [toepassingen installeren tijdens het maken](hdinsight-apps-install-applications.md#install-applications-during-cluster-creation)van een cluster voor meer informatie.|
-|Knooppunt grootte|Optioneel: Selecteer een knoop punt met verschillende afmetingen.|
-|Aantal knoop punten|Optioneel: Voer het aantal knoop punten in voor het opgegeven knooppunt type. Als u meer dan 32 worker-knoop punten wilt plannen, selecteert u een hoofd knooppunt grootte met ten minste acht kernen en een RAM van 14 GB. De knoop punten plannen bij het maken van een cluster of door het cluster na het maken te schalen.|
+|Knooppuntgrootte|Optioneel: Selecteer een knoop punt met verschillende afmetingen.|
+|Aantal knooppunten|Optioneel: Voer het aantal knoop punten in voor het opgegeven knooppunt type. Als u meer dan 32 worker-knoop punten wilt plannen, selecteert u een hoofd knooppunt grootte met ten minste acht kernen en een RAM van 14 GB. De knoop punten plannen bij het maken van een cluster of door het cluster na het maken te schalen.|
 |Automatisch schalen inschakelen|Optioneel: Schakel het selectie vakje in om de functie in te scha kelen. Zie [automatisch schalen van Azure HDInsight-clusters](./hdinsight-autoscale-clusters.md)voor meer informatie.|
 |+ Script actie toevoegen|Optioneel: deze optie werkt als u een aangepast script wilt gebruiken voor het aanpassen van een cluster, wanneer het cluster wordt gemaakt. Zie [HDInsight-clusters op basis van Linux aanpassen met behulp van script acties](hdinsight-hadoop-customize-cluster-linux.md)voor meer informatie over script acties.|
 

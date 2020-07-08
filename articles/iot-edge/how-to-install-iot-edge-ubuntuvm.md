@@ -7,14 +7,13 @@ ms.reviewer: kgremban
 ms.service: iot-edge
 services: iot-edge
 ms.topic: conceptual
-ms.date: 03/19/2020
+ms.date: 06/29/2020
 ms.author: pdecarlo
-ms.openlocfilehash: 64e2787aa282e75893fa34e6de1373e6afed09fe
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: 050631731a04e4c2ea89d8c7792ec093d6ab316e
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80349594"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85800559"
 ---
 # <a name="run-azure-iot-edge-on-ubuntu-virtual-machines"></a>Azure IoT Edge uitvoeren op Ubuntu Virtual Machines
 
@@ -34,7 +33,7 @@ Met de [knop implementeren in azure kunt u](../azure-resource-manager/templates/
 
 1. We gaan een Azure IoT Edge ingeschakelde Linux-VM implementeren met behulp van de sjabloon iotedge-VM-Deploy Azure Resource Manager.  Klik op de onderstaande knop om te beginnen:
 
-    [![De knop implementeren naar Azure voor iotedge-VM-Deploy](https://aka.ms/deploytoazurebutton)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2Fazure%2Fiotedge-vm-deploy%2Fmaster%2FedgeDeploy.json)
+    [![De knop Implementeren naar Azure voor iotedge-vm-Deploy](https://aka.ms/deploytoazurebutton)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2Fazure%2Fiotedge-vm-deploy%2Fmaster%2FedgeDeploy.json)
 
 1. Vul in het venster Nieuw gestart de beschik bare formulier velden in:
 
@@ -63,7 +62,7 @@ Met de [knop implementeren in azure kunt u](../azure-resource-manager/templates/
 
     Wanneer alle velden zijn ingevuld, schakelt u het selectie vakje onder aan de pagina in om de voor waarden te accepteren en selecteert u **kopen** om de implementatie te starten.
 
-1. Controleer of de implementatie is voltooid.  Een virtuele-machine resource moet zijn geïmplementeerd in de geselecteerde resource groep.  Noteer de naam van de computer. dit moet de volgende indeling `vm-0000000000000`hebben. Noteer ook de bijbehorende **DNS-naam**, die de indeling `<dnsLabelPrefix>`moet hebben. `<location>`. cloudapp.Azure.com.
+1. Controleer of de implementatie is voltooid.  Een virtuele-machine resource moet zijn geïmplementeerd in de geselecteerde resource groep.  Noteer de naam van de computer. dit moet de volgende indeling hebben `vm-0000000000000` . Noteer ook de bijbehorende **DNS-naam**, die de indeling moet hebben `<dnsLabelPrefix>` . `<location>` .. cloudapp.azure.com.
 
     De **DNS-naam** kan worden opgehaald uit de sectie **overzicht** van de zojuist geïmplementeerde virtuele machine in de Azure Portal.
 
@@ -108,11 +107,10 @@ Met de [knop implementeren in azure kunt u](../azure-resource-manager/templates/
 
 1. Een nieuwe virtuele machine maken:
 
-    Zie het volgende **authenticationType** voor beeld `password`als u een authenticationType van wilt gebruiken:
+    Zie het volgende voor beeld als u een **authenticationType** van wilt gebruiken `password` :
 
    ```azurecli-interactive
-   az group deployment create \
-   --name edgeVm \
+   az deployment group create \
    --resource-group IoTEdgeResources \
    --template-uri "https://aka.ms/iotedge-vm-deploy" \
    --parameters dnsLabelPrefix='my-edge-vm1' \
@@ -122,15 +120,14 @@ Met de [knop implementeren in azure kunt u](../azure-resource-manager/templates/
    --parameters adminPasswordOrKey="<REPLACE_WITH_SECRET_PASSWORD>"
    ```
 
-    Als u wilt verifiëren met een SSH-sleutel, kunt u dit doen **authenticationType** door een `sshPublicKey`authenticationType op te geven en vervolgens de waarde van de SSH-sleutel op te geven in de para meter **adminPasswordOrKey** .  Hieronder kunt u een voorbeeld bekijken.
+    Als u wilt verifiëren met een SSH-sleutel, kunt u dit doen door een **authenticationType** op `sshPublicKey` te geven en vervolgens de waarde van de SSH-sleutel op te geven in de para meter **adminPasswordOrKey** .  Hieronder kunt u een voorbeeld bekijken.
 
     ```azurecli-interactive
     #Generate the SSH Key
     ssh-keygen -m PEM -t rsa -b 4096 -q -f ~/.ssh/iotedge-vm-key -N ""  
 
     #Create a VM using the iotedge-vm-deploy script
-    az group deployment create \
-    --name edgeVm \
+    az deployment group create \
     --resource-group IoTEdgeResources \
     --template-uri "https://aka.ms/iotedge-vm-deploy" \
     --parameters dnsLabelPrefix='my-edge-vm1' \
@@ -138,10 +135,9 @@ Met de [knop implementeren in azure kunt u](../azure-resource-manager/templates/
     --parameters deviceConnectionString=$(az iot hub device-identity show-connection-string --device-id <REPLACE_WITH_DEVICE-NAME> --hub-name <REPLACE-WITH-HUB-NAME> -o tsv) \
     --parameters authenticationType='sshPublicKey' \
     --parameters adminPasswordOrKey="$(< ~/.ssh/iotedge-vm-key.pub)"
-     
     ```
 
-1. Controleer of de implementatie is voltooid.  Een virtuele-machine resource moet zijn geïmplementeerd in de geselecteerde resource groep.  Noteer de naam van de computer. dit moet de volgende indeling `vm-0000000000000`hebben. Noteer ook de bijbehorende **DNS-naam**, die de indeling `<dnsLabelPrefix>`moet hebben. `<location>`. cloudapp.Azure.com.
+1. Controleer of de implementatie is voltooid.  Een virtuele-machine resource moet zijn geïmplementeerd in de geselecteerde resource groep.  Noteer de naam van de computer. dit moet de volgende indeling hebben `vm-0000000000000` . Noteer ook de bijbehorende **DNS-naam**, die de indeling moet hebben `<dnsLabelPrefix>` . `<location>` .. cloudapp.azure.com.
 
     De **DNS-naam** kan worden opgehaald uit de JSON-indeling van de vorige stap, in de sectie **outputs** als onderdeel van de **open bare SSH** -vermelding.  De waarde van deze vermelding kan worden gebruikt voor SSH naar de zojuist geïmplementeerde machine.
 

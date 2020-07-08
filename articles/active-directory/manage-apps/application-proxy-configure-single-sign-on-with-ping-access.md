@@ -17,10 +17,9 @@ ms.reviewer: japere
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 53f644203b494e5baf087241e2a4fe669b7db07b
-ms.sourcegitcommit: 971a3a63cf7da95f19808964ea9a2ccb60990f64
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/19/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85077889"
 ---
 # <a name="header-based-authentication-for-single-sign-on-with-application-proxy-and-pingaccess"></a>Verificatie op basis van een header voor eenmalige aanmelding met toepassings proxy en PingAccess
@@ -141,7 +140,7 @@ U moet deze drie stukjes informatie (alle GUID'S) verzamelen om uw toepassing in
 | --- | --- | --- |
 | **(Client-)id van de app** | **Client-id** | GUID |
 | **(Tenant-)id van de map** | **Verlener** | GUID |
-| `PingAccess key` | **Client Secret** | Wille keurige teken reeks |
+| `PingAccess key` | **Clientgeheim** | Wille keurige teken reeks |
 
 Deze gegevens verzamelen:
 

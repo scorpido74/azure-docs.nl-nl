@@ -4,12 +4,11 @@ description: Batch ondersteunt Azure AD voor verificatie vanuit de batch-service
 ms.topic: how-to
 ms.date: 01/28/2020
 ms.custom: has-adal-ref
-ms.openlocfilehash: 186de47b61c25485cec602cbc9bb208a795a7785
-ms.sourcegitcommit: 0690ef3bee0b97d4e2d6f237833e6373127707a7
-ms.translationtype: MT
+ms.openlocfilehash: ed2bfb8e0fbaff0b7ad0ded734e33512c82a4040
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83757582"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85958205"
 ---
 # <a name="authenticate-batch-service-solutions-with-active-directory"></a>Batch-service oplossingen verifiëren met Active Directory
 
@@ -20,7 +19,7 @@ Wanneer u Azure AD-verificatie gebruikt met Azure Batch, kunt u op een van de vo
 - Door **geïntegreerde verificatie** te gebruiken om een gebruiker te verifiëren die met de toepassing communiceert. Een toepassing die gebruikmaakt van geïntegreerde verificatie, verzamelt de referenties van een gebruiker en gebruikt deze referenties om de toegang tot batch-resources te verifiëren.
 - Door gebruik te maken van een **Service-Principal** voor het verifiëren van een toepassing zonder toezicht. Een Service-Principal definieert het beleid en de machtigingen voor een toepassing om de toepassing te vertegenwoordigen bij het uitvoeren van toegang tot resources tijdens runtime.
 
-Zie de [Azure Active Directory-documentatie](https://docs.microsoft.com/azure/active-directory/)voor meer informatie over Azure AD.
+Zie de [Azure Active Directory-documentatie](../active-directory/index.yml)voor meer informatie over Azure AD.
 
 ## <a name="endpoints-for-authentication"></a>Eind punten voor verificatie
 
@@ -98,7 +97,7 @@ De sectie **API-machtigingen** geeft nu aan dat uw Azure AD-toepassing toegang h
 
 ![API-machtigingen verlenen](./media/batch-aad-auth/required-permissions-data-plane.png)
 
-## <a name="use-a-service-principal"></a>Een Service-Principal gebruiken
+## <a name="use-a-service-principal"></a>Een service-principal gebruiken
 
 Als u een toepassing wilt verifiëren die zonder toezicht wordt uitgevoerd, gebruikt u een service-principal. Nadat u uw toepassing hebt geregistreerd, voert u de volgende stappen uit in de Azure Portal om een service-principal te configureren:
 
@@ -140,20 +139,20 @@ Een aangepaste rol geeft een gedetailleerde machtiging voor een gebruiker voor h
 
 U kunt een aangepaste rol gebruiken om machtigingen te verlenen aan een Azure AD-gebruiker,-groep of-service-principal voor de volgende RBAC-bewerkingen:
 
-- Micro soft. batch/batchAccounts/Pools/schrijven
-- Micro soft. batch/batchAccounts/Pools/verwijderen
-- Micro soft. batch/batchAccounts/Pools/lezen
-- Micro soft. batch/batchAccounts/jobSchedules/schrijven
-- Micro soft. batch/batchAccounts/jobSchedules/verwijderen
-- Micro soft. batch/batchAccounts/jobSchedules/lezen
-- Micro soft. batch/batchAccounts/Jobs/schrijven
-- Micro soft. batch/batchAccounts/Jobs/verwijderen
-- Micro soft. batch/batchAccounts/Jobs/lezen
-- Micro soft. batch/batchAccounts/certificaten/schrijven
-- Micro soft. batch/batchAccounts/certificaten/verwijderen
-- Micro soft. batch/batchAccounts/certificaten/lezen
-- Micro soft. batch/batchAccounts/lezen (voor elke Lees bewerking)
-- Micro soft. batch/batchAccounts/Listkeys ophalen/actie (voor elke bewerking)
+- Microsoft.BatCH/batchAccounts/Pools/schrijven
+- Microsoft.BatCH/batchAccounts/Pools/verwijderen
+- Microsoft.BatCH/batchAccounts/Pools/lezen
+- Microsoft.BatCH/batchAccounts/jobSchedules/write
+- Microsoft.BatCH/batchAccounts/jobSchedules/verwijderen
+- Microsoft.BatCH/batchAccounts/jobSchedules/lezen
+- Microsoft.BatCH/batchAccounts/Jobs/schrijven
+- Microsoft.BatCH/batchAccounts/Jobs/verwijderen
+- Microsoft.BatCH/batchAccounts/Jobs/lezen
+- Microsoft.BatCH/batchAccounts/certificaten/schrijven
+- Microsoft.BatCH/batchAccounts/certificaten/verwijderen
+- Microsoft.BatCH/batchAccounts/certificaten/lezen
+- Microsoft.BatCH/batchAccounts/Read (voor elke Lees bewerking)
+- Microsoft.BatCH/batchAccounts/Listkeys ophalen/Action (voor een wille keurige bewerking)
 
 Aangepaste rollen zijn voor gebruikers die zijn geverifieerd door Azure AD, niet met de referenties van het batch-account (gedeelde sleutel). Houd er rekening mee dat de referenties van het batch-account volledige machtiging bieden voor het batch-account. Houd er ook rekening mee dat taken die gebruikmaken van de groeps beleidsniveau machtigingen vereisen.
 
@@ -419,7 +418,7 @@ Gebruik de referenties van de Service-Principal om een **BatchServiceClient** -o
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- Zie de [Azure Active Directory-documentatie](https://docs.microsoft.com/azure/active-directory/)voor meer informatie over Azure AD. Gedetailleerde voor beelden waarin wordt getoond hoe u ADAL kunt gebruiken, zijn beschikbaar in de [Azure code samples](https://azure.microsoft.com/resources/samples/?service=active-directory) -bibliotheek.
+- Zie de [Azure Active Directory-documentatie](../active-directory/index.yml)voor meer informatie over Azure AD. Gedetailleerde voor beelden waarin wordt getoond hoe u ADAL kunt gebruiken, zijn beschikbaar in de [Azure code samples](https://azure.microsoft.com/resources/samples/?service=active-directory) -bibliotheek.
 
 - Zie [toepassings-en Service-Principal-objecten in azure Active Directory](../active-directory/develop/app-objects-and-service-principals.md)voor meer informatie over service-principals. Als u een Service-Principal wilt maken met behulp van de Azure Portal, raadpleegt u [Portal gebruiken om Active Directory toepassing en Service-Principal te maken die toegang hebben tot resources](../active-directory/develop/howto-create-service-principal-portal.md). U kunt ook een service-principal maken met Power shell of Azure CLI.
 

@@ -6,10 +6,9 @@ ms.author: jakras
 ms.date: 04/22/2020
 ms.topic: troubleshooting
 ms.openlocfilehash: 082148ecfd4332abb42f96afcd94032d428069ce
-ms.sourcegitcommit: 52d2f06ecec82977a1463d54a9000a68ff26b572
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/15/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84782514"
 ---
 # <a name="azure-remote-rendering-support-options"></a>Ondersteunings opties voor Azure remote rendering
@@ -56,7 +55,7 @@ Als u feedback wilt geven, deelt u een idee of suggestie voor de externe renderi
 
 ## <a name="microsoft-qa"></a>Microsoft Q&A
 
-Voor snelle en betrouw bare antwoorden op uw technische product vragen van micro soft-technici, Azure Most Valuable Professionals (Mvp's) of onze expert Community, kunt u contact met ons opnemen op [micro soft Q&A](https://docs.microsoft.com/answers/topics/azure-remote-rendering.html), het voorkeurs doel van Azure voor ondersteuning van de community.
+Voor snelle en betrouwbare antwoorden op uw technische productvragen van Microsoft Engineers, Azure Most Valuable Professionals (MVP's) of de community van experts, neemt u contact met ons op via [Microsoft Q&A](https://docs.microsoft.com/answers/topics/azure-remote-rendering.html), de voorkeurslocatie van Azure voor ondersteuning uit de community.
 
 ## <a name="next-steps"></a>Volgende stappen
 
