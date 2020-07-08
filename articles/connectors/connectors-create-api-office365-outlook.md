@@ -8,10 +8,9 @@ ms.topic: article
 ms.date: 01/08/2020
 tags: connectors
 ms.openlocfilehash: b0f2b8b9c369fdb42c7e0e7f77fc090424ae3729
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75732671"
 ---
 # <a name="manage-email-contacts-and-calendars-in-office-365-outlook-by-using-azure-logic-apps"></a>E-mail, contactpersonen en agenda's beheren in Office 365 Outlook met behulp van Azure Logic Apps
@@ -25,7 +24,7 @@ Met [Azure Logic apps](../logic-apps/logic-apps-overview.md) en de [Office 365 O
 U kunt elke trigger gebruiken om uw werk stroom te starten, bijvoorbeeld wanneer er een nieuwe e-mail binnenkomt, wanneer een agenda-item wordt bijgewerkt of wanneer er een gebeurtenis optreedt in een diff-service, zoals Sales Force. U kunt acties gebruiken die reageren op de trigger gebeurtenis, bijvoorbeeld een e-mail bericht verzenden of een nieuwe agenda gebeurtenis maken. 
 
 > [!NOTE]
-> Voor het automatiseren van taken @outlook.com voor @hotmail.com een-of-account gebruikt u de [Outlook.com-connector](../connectors/connectors-create-api-outlook.md).
+> Voor het automatiseren van taken voor een @outlook.com @hotmail.com -of-account gebruikt u de [Outlook.com-connector](../connectors/connectors-create-api-outlook.md).
 
 ## <a name="prerequisites"></a>Vereisten
 
@@ -41,7 +40,7 @@ Een [trigger](../logic-apps/logic-apps-overview.md#logic-app-concepts) is een ge
 
 1. Open in de [Azure Portal](https://portal.azure.com)uw lege logische app in de ontwerp functie voor logische apps.
 
-1. Voer `office 365 outlook` in het zoekvak in als uw filter. In dit voor beeld **wordt geselecteerd wanneer een geplande gebeurtenis binnenkort wordt gestart**.
+1. Voer in het zoekvak in `office 365 outlook` als uw filter. In dit voor beeld **wordt geselecteerd wanneer een geplande gebeurtenis binnenkort wordt gestart**.
    
    ![Selecteer trigger om uw logische app te starten](./media/connectors-create-api-office365-outlook/office365-trigger.png)
 
@@ -53,11 +52,11 @@ Een [trigger](../logic-apps/logic-apps-overview.md#logic-app-concepts) is een ge
 
 1. Stel in de trigger de **frequentie** -en **interval** waarden in. Als u andere beschik bare trigger eigenschappen, zoals **tijd zone**, wilt toevoegen, selecteert u de eigenschappen in de lijst **nieuwe para meter toevoegen** .
 
-   Als u bijvoorbeeld wilt dat de trigger de kalender elke 15 minuten controleert, stelt u de **frequentie** in op **minuut**en stelt u **interval** in op `15`. 
+   Als u bijvoorbeeld wilt dat de trigger de kalender elke 15 minuten controleert, stelt u de **frequentie** in op **minuut**en stelt u **interval** in op `15` . 
 
    ![Stel de frequentie en het interval voor de trigger in](./media/connectors-create-api-office365-outlook/calendar-settings.png)
 
-1. Selecteer **Opslaan**op de werk balk van de ontwerp functie.
+1. Selecteer **Opslaan** op de werkbalk van de ontwerper.
 
 Voeg nu een actie toe die wordt uitgevoerd nadat de trigger wordt geactiveerd. U kunt bijvoorbeeld de Twilio-bericht actie voor **verzenden** toevoegen, waarmee een tekst wordt verzonden wanneer een agenda gebeurtenis in 15 minuten wordt gestart.
 
@@ -69,9 +68,9 @@ Een [actie](../logic-apps/logic-apps-overview.md#logic-app-concepts) is een bewe
 
 1. Selecteer **nieuwe stap**om een actie toe te voegen als de laatste stap in uw werk stroom. 
 
-   Als u een actie tussen de stappen wilt toevoegen, plaatst u de muis aanwijzer op de pijl tussen deze stappen. Selecteer het plus teken (**+**) dat wordt weer gegeven en selecteer vervolgens **een actie toevoegen**.
+   Als u een actie tussen de stappen wilt toevoegen, plaatst u de muis aanwijzer op de pijl tussen deze stappen. Selecteer het plus teken ( **+** ) dat wordt weer gegeven en selecteer vervolgens **een actie toevoegen**.
 
-1. Voer `office 365 outlook` in het zoekvak in als uw filter. In dit voor beeld wordt **contact maken**geselecteerd.
+1. Voer in het zoekvak in `office 365 outlook` als uw filter. In dit voor beeld wordt **contact maken**geselecteerd.
 
    ![Selecteer de actie die moet worden uitgevoerd in uw logische app](./media/connectors-create-api-office365-outlook/office365-actions.png) 
 
@@ -83,7 +82,7 @@ Een [actie](../logic-apps/logic-apps-overview.md#logic-app-concepts) is een bewe
 
    Als u andere beschik bare actie-eigenschappen wilt toevoegen, selecteert u deze eigenschappen in de lijst **nieuwe para meter toevoegen** .
 
-1. Selecteer **Opslaan**op de werk balk van de ontwerp functie.
+1. Selecteer **Opslaan** op de werkbalk van de ontwerper.
 
 ## <a name="connector-specific-details"></a>Connector-specifieke Details
 

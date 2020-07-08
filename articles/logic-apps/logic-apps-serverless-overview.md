@@ -9,10 +9,9 @@ ms.reviewer: klam, estfan, logicappspm
 ms.topic: article
 ms.date: 03/30/2017
 ms.openlocfilehash: 0f20bb5fb249ad6bac862afe2b0e8eee4b32e2a9
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75666547"
 ---
 # <a name="azure-serverless-overview-for-building-cloud-based-apps-and-solutions-with-azure-logic-apps-and-azure-functions"></a>Azure Serverloze: overzicht voor het bouwen van Cloud-apps en-oplossingen met Azure Logic Apps en Azure Functions
@@ -33,7 +32,7 @@ Begin met [het maken van uw eerste logische app](quickstart-create-first-logic-a
 
 ## <a name="what-is-azure-functions"></a>Wat is Azure Functions?
 
-Azure Functions is een service waarmee u eenvoudig stukjes code of ' functions ' in de cloud kunt uitvoeren. U kunt alleen de code schrijven die nodig is voor het huidige probleem, zonder dat u zich zorgen hoeft te maken over een volledige app of de vereiste infra structuur. Met functies kunnen ontwikkel aars nog productiever worden, en kunt u uw gewenste programmeer taal gebruiken, zoals C#, F #, node. js, python of PHP. U betaalt alleen voor de tijd dat uw code wordt uitgevoerd en Azure wordt zo nodig geschaald.
+Azure Functions is een service waarmee u eenvoudig stukjes code of ' functions ' in de cloud kunt uitvoeren. U kunt alleen de code schrijven die nodig is voor het huidige probleem, zonder dat u zich zorgen hoeft te maken over een volledige app of de vereiste infra structuur. Met functies kunnen ontwikkel aars nog productiever worden, en kunt u uw gewenste programmeer taal gebruiken, zoals C#, F #, Node.js, python of PHP. U betaalt alleen voor de tijd dat uw code wordt uitgevoerd en Azure wordt zo nodig geschaald.
 
 Begin met [het maken van uw eerste Azure-functie](../azure-functions/functions-create-first-azure-function.md)om aan de slag te gaan met Azure functions. Zie Naslag informatie voor [ontwikkel aars](../azure-functions/functions-reference.md)voor meer technische gegevens over functies.
 

@@ -9,10 +9,9 @@ ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 01/08/2020
 ms.openlocfilehash: b3c1abb7bff54e3e2d294b073b867c6c0e06f482
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75830068"
 ---
 # <a name="run-mapreduce-jobs-with-apache-hadoop-on-hdinsight-using-powershell"></a>MapReduce-taken uitvoeren met Apache Hadoop op HDInsight met behulp van Power shell
@@ -33,7 +32,7 @@ Azure PowerShell biedt *cmdlets* waarmee u op afstand MapReduce-taken kunt uitvo
 
 De volgende cmdlets worden gebruikt voor het uitvoeren van MapReduce-taken in een extern HDInsight-cluster.
 
-|Cmdlet | Beschrijving |
+|Cmdlet | Description |
 |---|---|
 |Connect-AzAccount|Verifieert Azure PowerShell aan uw Azure-abonnement.|
 |New-AzHDInsightMapReduceJobDefinition|Hiermee wordt een nieuwe *taak definitie* gemaakt met behulp van de opgegeven MapReduce-gegevens.|
@@ -43,11 +42,11 @@ De volgende cmdlets worden gebruikt voor het uitvoeren van MapReduce-taken in ee
 
 De volgende stappen laten zien hoe u deze cmdlets kunt gebruiken om een taak uit te voeren in uw HDInsight-cluster.
 
-1. Gebruik een editor om de volgende code op te slaan als **mapreducejob. ps1**.
+1. Gebruik een editor om de volgende code op te slaan als **mapreducejob.ps1**.
 
     [!code-powershell[main](../../../powershell_scripts/hdinsight/use-mapreduce/use-mapreduce.ps1?range=5-69)]
 
-2. Open een nieuwe **Azure PowerShell** opdracht prompt. Wijzig de mappen in de locatie van het bestand **mapreducejob. ps1** en gebruik vervolgens de volgende opdracht om het script uit te voeren:
+2. Open een nieuwe **Azure PowerShell** opdracht prompt. Wijzig de mappen in de locatie van het **mapreducejob.ps1** bestand en gebruik vervolgens de volgende opdracht om het script uit te voeren:
 
         .\mapreducejob.ps1
 
@@ -70,18 +69,18 @@ De volgende stappen laten zien hoe u deze cmdlets kunt gebruiken om een taak uit
     > [!NOTE]  
     > Zie [probleem oplossing](#troubleshooting)als de **ExitCode** een andere waarde dan 0 heeft.
 
-    In dit voor beeld worden de gedownloade bestanden ook opgeslagen in een **uitvoer. txt** -bestand in de map waarin u het script uitvoert.
+    In dit voor beeld worden de gedownloade bestanden ook opgeslagen in een **output.txt** -bestand in de map waarin u het script uitvoert.
 
 ### <a name="view-output"></a>Uitvoer weer geven
 
-Als u de woorden en aantallen wilt zien die door de taak worden geproduceerd, opent u het bestand **output. txt** in een tekst editor.
+Als u de woorden en aantallen wilt zien die door de taak worden geproduceerd, opent u het **output.txt** bestand in een tekst editor.
 
 > [!NOTE]  
 > De uitvoer bestanden van een MapReduce-taak zijn onveranderbaar. Dus als u dit voor beeld opnieuw uitvoert, moet u de naam van het uitvoer bestand wijzigen.
 
 ## <a name="troubleshooting"></a>Problemen oplossen
 
-Als er geen informatie wordt geretourneerd wanneer de taak is voltooid, kunt u de fouten voor de taak weer geven. U kunt de fout gegevens voor deze taak weer geven door de volgende opdracht toe te voegen aan het einde van het bestand **mapreducejob. ps1** . Sla het bestand op en voer het script opnieuw uit.
+Als er geen informatie wordt geretourneerd wanneer de taak is voltooid, kunt u de fouten voor de taak weer geven. Als u de fout gegevens voor deze taak wilt weer geven, voegt u de volgende opdracht toe aan het einde van het **mapreducejob.ps1** -bestand. Sla het bestand op en voer het script opnieuw uit.
 
 ```powershell
 # Print the output of the WordCount job.

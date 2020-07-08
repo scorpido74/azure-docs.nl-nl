@@ -6,10 +6,9 @@ ms.topic: conceptual
 ms.date: 09/05/2018
 ms.author: tomfitz
 ms.openlocfilehash: 61e1c9fe07fdd29ebc00e7e3491472d073bc4e5d
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75652487"
 ---
 # <a name="microsoftcommonfileupload-ui-element"></a>UI-element micro soft. common. FileUpload
@@ -82,7 +81,7 @@ Bij het testen van een CreateUiDefinition kapten sommige browsers (zoals Google 
 
 - `constraints.accept`Hiermee geeft u de typen bestanden die worden weer gegeven in het dialoog venster bestand van de browser. Zie de [HTML5-specificatie](https://html.spec.whatwg.org/multipage/input.html#attr-input-accept) voor toegestane waarden. De standaard waarde is **Null**.
 - Als `options.multiple` is ingesteld op **True**, mag de gebruiker meer dan één bestand selecteren in het dialoog venster bestand van de browser. De standaardwaarde is **onwaar**.
-- Dit element ondersteunt het uploaden van bestanden in twee modi, op basis `options.uploadMode`van de waarde van. Als het **bestand** is opgegeven, heeft de uitvoer de inhoud van het bestand als een blob. Als de **URL** is opgegeven, wordt het bestand geüpload naar een tijdelijke locatie en bevat de uitvoer de URL van de blob. Tijdelijke blobs worden na 24 uur leeg gemaakt. De standaard waarde is **File**.
+- Dit element ondersteunt het uploaden van bestanden in twee modi, op basis van de waarde van `options.uploadMode` . Als het **bestand** is opgegeven, heeft de uitvoer de inhoud van het bestand als een blob. Als de **URL** is opgegeven, wordt het bestand geüpload naar een tijdelijke locatie en bevat de uitvoer de URL van de blob. Tijdelijke blobs worden na 24 uur leeg gemaakt. De standaard waarde is **File**.
 - Een geüpload bestand is beveiligd. De uitvoer-URL bevat een [SAS-token](../../storage/common/storage-dotnet-shared-access-signature-part-1.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json) voor toegang tot het bestand tijdens de implementatie.
 - De waarde van `options.openMode` bepaalt hoe het bestand wordt gelezen. Als het bestand wordt verwacht als tekst zonder opmaak, geeft u **tekst**op. u kunt ook **binary**opgeven. De standaard waarde is **tekst**.
 - Als `options.uploadMode` is ingesteld op **File** en `options.openMode` is ingesteld op **binary**, is de uitvoer base64-gecodeerd.

@@ -6,10 +6,9 @@ ms.topic: conceptual
 ms.date: 10/23/2018
 ms.author: srrengar
 ms.openlocfilehash: 5bd3bda71943b2ba8a34cd4fbd0b20917b875670
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75645749"
 ---
 # <a name="service-fabric-linux-cluster-events-in-syslog"></a>Linux-cluster gebeurtenissen Service Fabric in syslog
@@ -28,7 +27,7 @@ Elke syslog-gebeurtenis heeft 4 onderdelen
 * Bericht
 * Severity
 
-De SyslogConsumer schrijft alle platform gebeurtenissen met behulp van faciliteit `Local0`. U kunt bijwerken naar een wille keurige geldige faciliteit door de configuratie configuratie te wijzigen. De gebruikte identiteit is `ServiceFabric`. Het veld bericht bevat de gehele gebeurtenis geserialiseerd in JSON, zodat deze kan worden opgevraagd en gebruikt door diverse hulpprogram ma's. 
+De SyslogConsumer schrijft alle platform gebeurtenissen met behulp van faciliteit `Local0` . U kunt bijwerken naar een wille keurige geldige faciliteit door de configuratie configuratie te wijzigen. De gebruikte identiteit is `ServiceFabric` . Het veld bericht bevat de gehele gebeurtenis geserialiseerd in JSON, zodat deze kan worden opgevraagd en gebruikt door diverse hulpprogram ma's. 
 
 ## <a name="enable-syslogconsumer"></a>SyslogConsumer inschakelen
 
@@ -75,9 +74,9 @@ Als u de SyslogConsumer wilt inschakelen, moet u een upgrade van het cluster uit
 ```
 
 Dit zijn de wijzigingen die u moet aanroepen
-1. In de sectie algemeen is er een nieuwe para meter met `LinuxStructuredTracesEnabled`de naam. **Dit is vereist om Linux-gebeurtenissen gestructureerd en geserialiseerd te hebben wanneer ze worden verzonden naar syslog.**
+1. In de sectie algemeen is er een nieuwe para meter met de naam `LinuxStructuredTracesEnabled` . **Dit is vereist om Linux-gebeurtenissen gestructureerd en geserialiseerd te hebben wanneer ze worden verzonden naar syslog.**
 2. In de sectie diagnostische gegevens is een nieuwe ConsumerInstance: SyslogConsumer toegevoegd. Dit geeft aan dat het platform een andere gebruiker van de gebeurtenissen is. 
-3. De nieuwe sectie SyslogConsumer moet even `IsEnabled` `true`zijn. Het is geconfigureerd voor het automatisch gebruiken van de Local0-faciliteit. U kunt dit overschrijven door een andere para meter toe te voegen.
+3. De nieuwe sectie SyslogConsumer moet even zijn `IsEnabled` `true` . Het is geconfigureerd voor het automatisch gebruiken van de Local0-faciliteit. U kunt dit overschrijven door een andere para meter toe te voegen.
 
 ```json
     {
@@ -101,7 +100,7 @@ U kunt deze syslog-gebeurtenissen lezen in een bewakings programma, zoals Azure 
 5. Ga naar de query Verkenner door te klikken `Logs` in het menu van de werkruimte resource om query's te starten
 
     ![Werkruimte logboeken](media/service-fabric-diagnostics-oms-syslog/workspace-logs.png)
-6. U kunt een query uitvoeren `Syslog` op de tabel `ServiceFabric` die wordt gezocht als proces naam. De onderstaande query is een voor beeld van het parseren van de JSON in de gebeurtenis en het weer geven van de inhoud ervan.
+6. U kunt een query uitvoeren op de `Syslog` tabel `ServiceFabric` die wordt gezocht als proces naam. De onderstaande query is een voor beeld van het parseren van de JSON in de gebeurtenis en het weer geven van de inhoud ervan.
 
 ```kusto
     Syslog | where ProcessName == "ServiceFabric" | extend $payload = parse_json(SyslogMessage) | project $payload

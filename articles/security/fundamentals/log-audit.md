@@ -16,13 +16,12 @@ ms.workload: na
 ms.date: 10/31/2019
 ms.author: terrylan
 ms.openlocfilehash: bd0f42507e22559690e2682a391c53b9c090aa6c
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75750785"
 ---
-# <a name="azure-security-logging-and-auditing"></a>Logboek registratie en controle van Azure-beveiliging
+# <a name="azure-security-logging-and-auditing"></a>Azure-logboekregistratie en -controle van beveiligingsgegevens
 
 Azure biedt een breed scala aan Configureer bare opties voor beveiligings controle en logboek registratie waarmee u hiaten in uw beveiligings beleid en-mechanismen kunt identificeren. In dit artikel vindt u informatie over het genereren, verzamelen en analyseren van beveiligings logboeken van services die worden gehost op Azure.
 
@@ -48,7 +47,7 @@ De volgende tabel bevat de belangrijkste typen logboeken die beschikbaar zijn in
 
 | Logboekcategorie | Logboek type | Gebruik | Integratie |
 | ------------ | -------- | ------ | ----------- |
-|[Activiteitenlogboeken](../../azure-monitor/platform/platform-logs-overview.md)|Gebeurtenissen op het vlak van het besturings element op Azure Resource Manager resources|  Biedt inzicht in de bewerkingen die zijn uitgevoerd voor de resources in uw abonnement.|    Rest API, [Azure monitor](../../azure-monitor/platform/platform-logs-overview.md)|
+|[Activiteiten logboeken](../../azure-monitor/platform/platform-logs-overview.md)|Gebeurtenissen op het vlak van het besturings element op Azure Resource Manager resources|  Biedt inzicht in de bewerkingen die zijn uitgevoerd voor de resources in uw abonnement.|    Rest API, [Azure monitor](../../azure-monitor/platform/platform-logs-overview.md)|
 |[Azure-resource logboeken](../../azure-monitor/platform/platform-logs-overview.md)|Frequente gegevens over de werking van Azure Resource Manager resources in het abonnement|   Biedt inzicht in de bewerkingen die uw resource zelf heeft uitgevoerd.| Azure Monitor|
 |[Azure Active Directory-rapportage](../../active-directory/reports-monitoring/overview-reports.md)|Logboeken en rapporten | Rapporteert aanmeldings activiteiten van gebruikers en informatie over systeem activiteiten over gebruikers en groeps beheer.|[Graph API](../../active-directory/develop/active-directory-graph-api-quickstart.md)|
 |[Virtuele machines en Cloud Services](../../azure-monitor/learn/quick-collect-azurevm.md)|Windows Event Log-service en Linux syslog|  Legt systeem gegevens vast en registreert gegevens op de virtuele machines en brengt deze gegevens over naar een opslag account van uw keuze.|   Windows (met behulp van Windows Azure Diagnostics [[wad](../../monitoring-and-diagnostics/azure-diagnostics.md)]-opslag) en Linux in azure monitor|

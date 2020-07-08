@@ -6,10 +6,9 @@ ms.topic: conceptual
 ms.date: 08/18/2017
 ms.author: masnider
 ms.openlocfilehash: 9aea157d03f344e07a81f0588d3e0127f17ca75d
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75834430"
 ---
 # <a name="placement-policies-for-service-fabric-services"></a>Plaatsings beleid voor service Fabric-Services
@@ -101,7 +100,7 @@ Replica's worden _normaal gesp roken_ gedistribueerd over fout-en upgrade domein
 > Zie [dit onderwerp](service-fabric-cluster-resource-manager-management-integration.md#constraint-priorities)voor meer informatie over de prioriteiten en beperkingen van de beperkingen in het algemeen.
 >
 
-Als u ooit een status bericht hebt gezien als '`The Load Balancer has detected a Constraint Violation for this Replica:fabric:/<some service name> Secondary Partition <some partition ID> is violating the Constraint: FaultDomain`', hebt u deze voor waarde bereikt of iets dergelijks. Meestal worden slechts één of twee replica's samen verpakt. Zolang er minder dan een quorum van replica's in een bepaald domein is, bent u veilig. Het verpakken is zeldzaam, maar het kan gebeuren en meestal zijn deze situaties tijdelijk omdat de knoop punten weer worden teruggestuurd. Als de knoop punten blijven bestaan en de cluster bron beheerder vervangingen moet maken, meestal zijn er andere knoop punten beschikbaar in het ideale fout domein.
+Als u ooit een status bericht hebt gezien als ' `The Load Balancer has detected a Constraint Violation for this Replica:fabric:/<some service name> Secondary Partition <some partition ID> is violating the Constraint: FaultDomain` ', hebt u deze voor waarde bereikt of iets dergelijks. Meestal worden slechts één of twee replica's samen verpakt. Zolang er minder dan een quorum van replica's in een bepaald domein is, bent u veilig. Het verpakken is zeldzaam, maar het kan gebeuren en meestal zijn deze situaties tijdelijk omdat de knoop punten weer worden teruggestuurd. Als de knoop punten blijven bestaan en de cluster bron beheerder vervangingen moet maken, meestal zijn er andere knoop punten beschikbaar in het ideale fout domein.
 
 Sommige werk belastingen hebben als voor keur altijd het doel aantal replica's, zelfs als ze in minder domeinen zijn verpakt. Deze werk belastingen zijn verwacht tegen het totale aantal gelijktijdige permanente domein storingen en kunnen de lokale status meestal herstellen. Andere werk belastingen zouden in plaats daarvan de uitval tijd in beslag nemen dan de juistheid van het risico of gegevens verlies. De meeste productie werkbelastingen worden uitgevoerd met meer dan drie replica's, meer dan drie fout domeinen en veel geldige knoop punten per fout domein. Als gevolg hiervan is het standaard gedrag van domein pakket standaard toegestaan. Met het standaard gedrag kunnen normale verdeling en failover deze extreme gevallen afhandelen, zelfs als dit betekent dat het tijdelijk domein wordt verpakt.
 

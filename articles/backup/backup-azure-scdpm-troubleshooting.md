@@ -4,10 +4,9 @@ description: In dit artikel detecteert u oplossingen voor problemen die kunnen o
 ms.topic: troubleshooting
 ms.date: 01/30/2019
 ms.openlocfilehash: bcb30fa7eb3e05099761fc751b09a9fb16134e34
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75664753"
 ---
 # <a name="troubleshoot-system-center-data-protection-manager"></a>Problemen oplossen met System Center Data Protection Manager
@@ -32,7 +31,7 @@ U kunt dit probleem oplossen door de volgende acties uit te voeren:
 - Als u de inconsistente status wilt verwijderen, voert u de consistentie controle hand matig uit of plant u een dagelijkse consistentie controle.
 - Zorg ervoor dat u de nieuwste versie van Microsoft Azure Backup Server en Data Protection Manager gebruikt.
 - Zorg ervoor dat de instelling **automatische consistentie** is ingeschakeld.
-- Probeer de services opnieuw te starten vanaf de opdracht prompt. Gebruik de `net stop dpmra` opdracht gevolgd door `net start dpmra`.
+- Probeer de services opnieuw te starten vanaf de opdracht prompt. Gebruik de `net stop dpmra` opdracht gevolgd door `net start dpmra` .
 - Zorg ervoor dat u voldoet aan de vereisten voor de netwerk verbinding en de band breedte.
 - Controleer of de bron machine onverwacht is afgesloten.
 - Zorg ervoor dat de schijf in orde is en dat er voldoende ruimte is voor de replica.
@@ -58,7 +57,7 @@ U kunt dit probleem oplossen door de volgende acties uit te voeren:
 
 - Zorg ervoor dat u de nieuwste versie van de Azure Backup-agent gebruikt.
 - Zorg ervoor dat er verbinding is (netwerk/firewall/proxy) tussen uw Data Protection Manager-server en de beveiligde server.
-- Als u een SQL server beveiligt, moet u ervoor zorgen dat de eigenschap voor **aanmeldings eigenschappen** > **NT AUTHORITY\SYSTEM** de instelling **sysadmin** bevat ingeschakeld.
+- Als u een SQL server beveiligt, moet u ervoor zorgen dat de eigenschap voor **aanmeldings eigenschappen**  >  **NT AUTHORITY\SYSTEM** de instelling **sysadmin** bevat ingeschakeld.
 
 ## <a name="error-server-not-registered-as-specified-in-vault-credential-file"></a>Fout: de server is niet geregistreerd zoals opgegeven in het kluis referentie bestand
 

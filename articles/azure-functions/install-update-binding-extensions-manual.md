@@ -4,10 +4,9 @@ description: Meer informatie over het installeren of bijwerken van Azure Functio
 ms.topic: reference
 ms.date: 09/26/2018
 ms.openlocfilehash: e8716f691a5d19ddac7fece47c423e1f7787b9db
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75768857"
 ---
 # <a name="manually-install-or-update-azure-functions-binding-extensions-from-the-portal"></a>Azure Functions bindings uitbreidingen hand matig installeren of bijwerken vanuit de portal
@@ -22,17 +21,17 @@ Gebruik de volgende stappen om uitbrei dingen hand matig te installeren of bij t
 
 1. Zoek in de [Azure Portal](https://portal.azure.com)de functie-app en selecteer deze. Kies het tabblad **overzicht** en selecteer **stoppen**.  Als u de functie-app stopt, worden bestanden ontgrendeld zodat er wijzigingen kunnen worden aangebracht.
 
-1. Kies het tabblad **platform functies** en selecteer onder **ontwikkelingsprogram ma's** **geavanceerde hulp middelen (kudu)**. Het kudu-eind`https://<APP_NAME>.scm.azurewebsites.net/`punt () wordt geopend in een nieuw venster.
+1. Kies het tabblad **platform functies** en selecteer onder **ontwikkelingsprogram ma's** **geavanceerde hulp middelen (kudu)**. Het kudu-eind punt ( `https://<APP_NAME>.scm.azurewebsites.net/` ) wordt geopend in een nieuw venster.
 
-1. Selecteer in het venster kudu de optie **debug console** > **cmd**.  
+1. Selecteer in het venster kudu de optie **debug console**  >  **cmd**.  
 
-1. In het opdracht venster navigeert u `D:\home\site\wwwroot` naar en selecteert u het pictogram verwijderen `bin` naast om de map te verwijderen. Selecteer **OK** om de verwijdering te bevestigen.
+1. In het opdracht venster navigeert u naar `D:\home\site\wwwroot` en selecteert u het pictogram verwijderen naast `bin` om de map te verwijderen. Selecteer **OK** om de verwijdering te bevestigen.
 
-1. Kies het bewerkings pictogram naast `extensions.csproj` het bestand, waarmee de bindings extensies voor de functie-app worden gedefinieerd. Het project bestand wordt geopend in de online editor.
+1. Kies het bewerkings pictogram naast het `extensions.csproj` bestand, waarmee de bindings extensies voor de functie-app worden gedefinieerd. Het project bestand wordt geopend in de online editor.
 
 1. Maak de vereiste toevoegingen en updates van **PackageReference** -items in de **ItemGroup**en selecteer vervolgens **Opslaan**. De huidige lijst met ondersteunde pakket versies vindt u in het artikel over [welke pakketten heb ik nodig?](https://github.com/Azure/azure-functions-host/wiki/Updating-your-function-app-extensions#what-nuget-packages-do-i-need) Voor alle drie de Azure Storage bindingen is het pakket micro soft. Azure. webjobs. Extensions. Storage vereist.
 
-1. Voer in `wwwroot` de map de volgende opdracht uit om de assembly's in de `bin` map te maken waarnaar wordt verwezen.
+1. Voer in de `wwwroot` map de volgende opdracht uit om de assembly's in de map te maken waarnaar wordt verwezen `bin` .
 
     ```cmd
     dotnet build extensions.csproj -o bin --no-incremental --packages D:\home\.nuget

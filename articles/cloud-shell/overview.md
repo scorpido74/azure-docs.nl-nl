@@ -15,15 +15,14 @@ ms.topic: article
 ms.date: 09/03/2019
 ms.author: damaerte
 ms.openlocfilehash: 513c3da8031774f5f111ee357b5a3c43e1d09d95
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75832477"
 ---
 # <a name="overview-of-azure-cloud-shell"></a>Overzicht van Azure Cloud Shell
-Azure Cloud Shell is een interactieve, geverifieerde, via de browser toegankelijke shell voor het beheren van Azure-resources.
-Deze biedt de mogelijkheid om zelf de shell-ervaring te kiezen die het beste past bij uw manier van werken: Bash of PowerShell.
+Azure Cloud Shell is een interactieve, geverifieerde en vanuit de browser toegankelijke shell voor het beheer van Azure-resources.
+Het biedt de flexibiliteit om de shell-ervaring te kiezen die het beste past bij de manier waarop u werkt, dan wel Bash of PowerShell.
 
 Probeer vanuit shell.azure.com door hieronder te klikken.
 
@@ -55,7 +54,7 @@ Cloud Shell wordt beheerd door micro soft, zodat het beschikt over populaire opd
 Bekijk de volledige [lijst met hulpprogram ma's die zijn geïnstalleerd in Cloud shell.](features.md#tools)
 
 ### <a name="integrated-cloud-shell-editor"></a>Geïntegreerde Cloud Shell editor
-Cloud Shell biedt een geïntegreerde grafische tekst editor op basis van de open-source-Monaco-editor. U kunt eenvoudig configuratie bestanden maken en bewerken `code .` door uit te voeren voor naadloze implementatie via Azure CLI of Azure PowerShell.
+Cloud Shell biedt een geïntegreerde grafische tekst editor op basis van de open-source-Monaco-editor. U kunt eenvoudig configuratie bestanden maken en bewerken door uit te voeren `code .` voor naadloze implementatie via Azure CLI of Azure PowerShell.
 
 Meer [informatie over de Cloud shell editor](using-cloud-shell-editor.md).
 
@@ -73,7 +72,7 @@ Cloud Shell is een flexibel hulp programma dat kan worden gebruikt vanuit:
 * [Visual Studio code Azure-account extensie](https://marketplace.visualstudio.com/items?itemName=ms-vscode.azure-account)
 
 ### <a name="connect-your-microsoft-azure-files-storage"></a>De opslag van uw Microsoft Azure-bestanden verbinden
-Cloud Shell machines zijn tijdelijk, maar uw bestanden worden op twee manieren bewaard: via een schijf installatie kopie en via een gekoppelde bestands share met de `clouddrive`naam.  De eerste keer dat u Cloud Shell opstart, verschijnt de vraag of er namens u een resourcegroep, opslagaccount en Azure Files-share kan worden gemaakt. Dit is een eenmalige stap die automatisch wordt gekoppeld voor alle sessies. Eén bestands share kan worden toegewezen en wordt gebruikt door zowel bash als Power shell in Cloud Shell.
+Cloud Shell machines zijn tijdelijk, maar uw bestanden worden op twee manieren bewaard: via een schijf installatie kopie en via een gekoppelde bestands share met de naam `clouddrive` .  De eerste keer dat u Cloud Shell opstart, verschijnt de vraag of er namens u een resourcegroep, opslagaccount en Azure Files-share kan worden gemaakt. Dit is een eenmalige stap die automatisch wordt gekoppeld voor alle sessies. Eén bestands share kan worden toegewezen en wordt gebruikt door zowel bash als Power shell in Cloud Shell.
 
 Lees meer voor meer informatie over het koppelen van een [Nieuw of bestaand opslag account](persisting-shell-storage.md) of voor meer informatie over de [persistentie mechanismen die worden gebruikt in Cloud shell](persisting-shell-storage.md#how-cloud-shell-storage-works).
 

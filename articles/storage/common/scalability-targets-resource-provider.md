@@ -9,10 +9,9 @@ ms.date: 12/18/2019
 ms.author: tamram
 ms.subservice: common
 ms.openlocfilehash: e7fb118dbc53b36e01c8188b9013a3f739bf0c59
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75747790"
 ---
 # <a name="scalability-and-performance-targets-for-the-azure-storage-resource-provider"></a>Schaalbaarheids-en prestatie doelen voor de resource provider van Azure Storage
@@ -23,7 +22,7 @@ ms.locfileid: "75747790"
 
 [!INCLUDE [azure-storage-limits-azure-resource-manager](../../../includes/azure-storage-limits-azure-resource-manager.md)]
 
-## <a name="see-also"></a>Zie ook
+## <a name="see-also"></a>Zie tevens
 
 - [Schaalbaarheids-en prestatie doelen voor standaard opslag accounts](scalability-targets-standard-account.md)
 - [Limieten en quota voor Azure-abonnementen](../../azure-resource-manager/management/azure-subscription-service-limits.md)

@@ -6,10 +6,9 @@ ms.topic: conceptual
 ms.date: 04/20/2017
 ms.author: pepogors
 ms.openlocfilehash: 182b35194a647f5de706f9ada07b8e9db51bb4c2
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75645579"
 ---
 # <a name="configure-fabrictransport-settings-for-reliable-actors"></a>FabricTransport-instellingen voor Reliable Actors configureren
@@ -49,9 +48,9 @@ U kunt een [configuratie pakket](service-fabric-application-and-service-manifest
 
 ### <a name="configure-fabrictransport-settings-for-the-actor-service"></a>FabricTransport-instellingen voor de actor service configureren
 
-Voeg een sectie TransportSettings toe in het bestand settings. XML.
+Voeg een sectie TransportSettings toe aan het settings.xml-bestand.
 
-Actor code zoekt standaard naar sectiekop als '&lt;actornaam&gt;TransportSettings '. Als dat niet het geval is, wordt gecontroleerd op sectie naam als ' TransportSettings '.
+Actor code zoekt standaard naar sectiekop als ' &lt; actornaam &gt; TransportSettings '. Als dat niet het geval is, wordt gecontroleerd op sectie naam als ' TransportSettings '.
 
   ```xml
   <Section Name="MyActorServiceTransportSettings">
@@ -70,7 +69,7 @@ Actor code zoekt standaard naar sectiekop als '&lt;actornaam&gt;TransportSetting
 
 ### <a name="configure-fabrictransport-settings-for-the-actor-client-assembly"></a>FabricTransport-instellingen configureren voor de actor-client-assembly
 
-Als de client niet wordt uitgevoerd als onderdeel van een service, kunt u een bestand '&lt;client exe name&gt;. settings. XML ' maken op dezelfde locatie als het client. exe-bestand. Voeg vervolgens een TransportSettings-sectie toe aan het bestand. Sectienaam moet ' TransportSettings ' zijn.
+Als de client niet wordt uitgevoerd als onderdeel van een service, kunt u een bestand ' &lt; client exe Name &gt;.settings.xml ' maken op dezelfde locatie als het client. exe-bestand. Voeg vervolgens een TransportSettings-sectie toe aan het bestand. Sectienaam moet ' TransportSettings ' zijn.
 
   ```xml
   <?xml version="1.0" encoding="utf-8"?>

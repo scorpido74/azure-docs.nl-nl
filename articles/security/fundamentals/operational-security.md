@@ -16,10 +16,9 @@ ms.workload: na
 ms.date: 11/21/2017
 ms.author: TomSh
 ms.openlocfilehash: 34c0c52945abc6e0ab74b1cb180581c76464bee8
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75749954"
 ---
 # <a name="azure-operational-security"></a>Operationele Azure-beveiliging
@@ -31,7 +30,7 @@ We weten dat de veiligheid taak in de Cloud is en hoe belang rijk het is dat u n
 Om klanten te helpen beter inzicht te krijgen in de matrix met beveiligings controles die zijn geïmplementeerd in Microsoft Azure van de perspectieven van de klant en micro soft, is dit technisch document, ' Azure Operational Security ', geschreven met een uitgebreid overzicht van de operationele beveiliging die beschikbaar is met Windows Azure.
 
 ### <a name="azure-platform"></a>Azure-platform
-Azure is een openbaar Cloud service platform dat ondersteuning biedt voor een groot aantal besturings systemen, programmeer talen, frameworks, hulpprogram ma's, data bases en apparaten. Het kan Linux-containers uitvoeren met docker-integratie; bouw apps met Java script, Python, .NET, PHP, Java en node. js; Maak back-ends voor iOS-, Android-en Windows-apparaten. De Azure-Cloud service ondersteunt dezelfde technologieën waarvan miljoenen ontwikkel aars en IT-professionals al vertrouwen.
+Azure is een openbaar Cloud service platform dat ondersteuning biedt voor een groot aantal besturings systemen, programmeer talen, frameworks, hulpprogram ma's, data bases en apparaten. Het kan Linux-containers uitvoeren met docker-integratie; bouw apps met Java script, Python, .NET, PHP, Java en Node.js; Maak back-ends voor iOS-, Android-en Windows-apparaten. De Azure-Cloud service ondersteunt dezelfde technologieën waarvan miljoenen ontwikkel aars en IT-professionals al vertrouwen.
 
 Wanneer u de IT-activa bouwt op of migreert naar, een open bare Cloud serviceprovider die u vertrouwt over de mogelijkheden van die organisatie om uw toepassingen en gegevens te beschermen met de services en de besturings elementen die ze bieden om de beveiliging van uw cloud-gebaseerde assets te beheren.
 
@@ -71,7 +70,7 @@ De kern functionaliteit van Azure Monitor Logboeken wordt verschaft door een set
 | Azure Monitor-logboeken | Bewaak en analyseer de beschikbaarheid en prestaties van verschillende resources, met inbegrip van fysieke en virtuele machines. |
 |Automation | Automatiseer handmatige processen en dwing configuraties af voor fysieke en virtuele machines. |
 | Backup | Back-ups maken van essentiële gegevens en deze herstellen. |
-| Site Recovery | Bied hoge beschikbaarheid voor kritieke toepassingen. |
+| Siteherstel | Bied hoge beschikbaarheid voor kritieke toepassingen. |
 
 ### <a name="azure-monitor-logs"></a>Azure Monitor-logboeken
 
@@ -128,7 +127,7 @@ In Security Center definieert u de beleidsregels op grond van de beveiligingsver
 Beleids regels die zijn ingeschakeld in het abonnements niveau, worden automatisch door gegeven aan alle resource groepen binnen het abonnement, zoals wordt weer gegeven in het diagram aan de rechter kant:
 
 
-### <a name="data-collection"></a>Gegevens verzamelen
+### <a name="data-collection"></a>Gegevensverzameling
 
 Met Security Center worden gegevens van uw virtuele machines (VM's) verzameld om de beveiligingsstatus van de VM's te beoordelen, aanbevelingen voor beveiliging te geven en u te waarschuwen bij bedreigingen. Wanneer u voor het eerst toegang Security Center, wordt gegevens verzameling ingeschakeld op alle virtuele machines in uw abonnement. Gegevensverzameling wordt aanbevolen, maar u kunt gegevensverzameling indien gewenst ook uitschakelen in het Security Center-beleid.
 
@@ -144,7 +143,7 @@ Met Security Center worden gegevens van uw virtuele machines (VM's) verzameld om
 
 -   Uw virtuele machines: gebruikt configuratie-informatie en informatie over beveiligingsgebeurtenissen, zoals Windows-gebeurtenis- en auditlogboeken, IIS-logboeken, syslog-berichten en crashdumpbestanden van uw virtuele machines.
 
-### <a name="data-protection"></a>Gegevensbeveiliging
+### <a name="data-protection"></a>Gegevensbescherming
 
 Om klanten te helpen bedreigingen te voorkomen, te detecteren en erop te reageren, verzamelt en verwerkt Azure Security Center gegevens over beveiliging, zoals configuratie-informatie, metagegevens, gebeurtenislogboeken, crashdumpbestanden en nog veel meer. Microsoft voldoet aan strikte nalevings- en beveiligingsrichtlijnen - van het schrijven van code tot de uitvoering van een service.
 
@@ -219,7 +218,7 @@ Het is de mogelijkheid binnen Azure om het verzamelen van diagnostische gegevens
 
 Het controleren van de netwerk beveiliging is essentieel voor het detecteren van problemen met het netwerk en het controleren van de naleving van uw IT-beveiligings beleid en het regulerende governance model. Met de weer gave beveiligings groep kunt u de geconfigureerde netwerk beveiligings groep en beveiligings regels en de juiste beveiligings regels ophalen. Met de lijst met toegepaste regels kunt u bepalen welke poorten zijn geopend en het netwerk probleem beoordelen.
 
-[Network Watcher](../../network-watcher/network-watcher-monitoring-overview.md) is een regionale service waarmee u voor waarden kunt controleren en diagnosticeren op netwerk niveau in, naar en Azure. Met behulp van de hulpprogram ma's voor netwerk diagnose en visualisatie die beschikbaar zijn bij Network Watcher, kunt u uw netwerk in azure begrijpen, vaststellen en er inzicht in krijgen. Deze service omvat pakket opname, volgende hop, IP-stroom controleren, beveiligings groep weer geven, NSG stroom Logboeken. Bewaking op scenario niveau biedt een end-to-end weer gave van netwerk bronnen in tegens telling tot afzonderlijke netwerk bron bewaking.
+[Network Watcher](../../network-watcher/network-watcher-monitoring-overview.md) is een regionale service waarmee u voor waarden kunt controleren en diagnosticeren op netwerk niveau in, naar en Azure. U kunt de beschikbare diagnostische en visualisatiehulpprogramma's voor netwerken in Network Watcher gebruiken om uw netwerk in Azure te begrijpen, te analyseren en inzichten voor uw netwerk te verkrijgen. Deze service omvat pakket opname, volgende hop, IP-stroom controleren, beveiligings groep weer geven, NSG stroom Logboeken. Bewaking op scenario niveau biedt een end-to-end weer gave van netwerk bronnen in tegens telling tot afzonderlijke netwerk bron bewaking.
 
 ![Azure Network Watcher](./media/operational-security/azure-operational-security-fig8.png)
 

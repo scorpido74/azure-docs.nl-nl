@@ -14,10 +14,9 @@ ms.topic: article
 ms.date: 06/03/2019
 ms.author: juliako
 ms.openlocfilehash: ef04b1b7b5030189482e89e26e4565397cbdd7c8
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75779243"
 ---
 # <a name="create-filters-with-media-services-net-sdk"></a>Filters maken met Media Services .NET SDK
@@ -34,7 +33,7 @@ In dit onderwerp wordt beschreven hoe u Media Services .NET SDK gebruikt om een 
 ## <a name="prerequisites"></a>Vereisten 
 
 - Controleer [filters en dynamische manifesten](filters-dynamic-manifest-overview.md).
-- [Een Azure Media Services-account maken](create-account-cli-how-to.md). Zorg ervoor dat u de naam van de resource groep en de naam van het Media Services account vergeet. 
+- [Maak een Media Services-account](create-account-cli-how-to.md). Zorg ervoor dat u de naam van de resource groep en de naam van het Media Services account vergeet. 
 - Gegevens ophalen die nodig zijn voor [toegang tot api's](access-api-cli-how-to.md)
 - Bekijk het [uploaden, coderen en streamen met behulp van Azure Media Services](stream-files-tutorial-with-api.md) om te zien hoe u [.NET SDK kunt gaan gebruiken](stream-files-tutorial-with-api.md#start_using_dotnet)
 
@@ -86,7 +85,7 @@ client.AssetFilters.CreateOrUpdate(config.ResourceGroup, config.AccountName, enc
 
 U kunt een lijst opgeven met activa of account filters die van toepassing zijn op uw streaming-Locator. Met de [dynamische pakket (streaming-eind punt)](dynamic-packaging-overview.md) wordt deze lijst met filters toegepast, samen met de gegevens die door uw client zijn opgegeven in de URL. Deze combi natie genereert een [dynamisch manifest](filters-dynamic-manifest-overview.md)dat is gebaseerd op filters in de URL + filters die u opgeeft in de streaming-Locator. U wordt aangeraden deze functie te gebruiken als u filters wilt Toep assen, maar niet de filter namen in de URL wilt weer geven.
 
-De volgende C#-code laat zien hoe u een streaming-Locator `StreamingLocator.Filters`maakt en opgeeft. Dit is een optionele eigenschap die een `IList<string>` filter naam in beslag neemt.
+De volgende C#-code laat zien hoe u een streaming-Locator maakt en opgeeft `StreamingLocator.Filters` . Dit is een optionele eigenschap die een `IList<string>` filter naam in beslag neemt.
 
 ```csharp
 IList<string> filters = new List<string>();

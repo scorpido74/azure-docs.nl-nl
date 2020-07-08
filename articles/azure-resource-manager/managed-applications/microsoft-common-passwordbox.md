@@ -6,10 +6,9 @@ ms.topic: conceptual
 ms.date: 06/27/2018
 ms.author: tomfitz
 ms.openlocfilehash: 5f7d3a47482ccec9778b102d3509b5f8ef343185
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75652305"
 ---
 # <a name="microsoftcommonpasswordbox-ui-element"></a>Micro soft. common. PasswordBox UI-element
@@ -51,8 +50,8 @@ Een besturings element dat kan worden gebruikt om een wacht woord op te geven en
 
 ## <a name="remarks"></a>Opmerkingen
 
-- Dit element biedt geen ondersteuning `defaultValue` voor de eigenschap.
-- Zie `constraints` [micro soft. common. TextBox](microsoft-common-textbox.md)voor meer informatie over de implementatie van.
+- Dit element biedt geen ondersteuning voor de `defaultValue` eigenschap.
+- `constraints`Zie [micro soft. common. TextBox](microsoft-common-textbox.md)voor meer informatie over de implementatie van.
 - Als `options.hideConfirmation` is ingesteld op **True**, wordt het tweede tekstvak voor het bevestigen van het wacht woord van de gebruiker verborgen. De standaardwaarde is **onwaar**.
 
 ## <a name="next-steps"></a>Volgende stappen

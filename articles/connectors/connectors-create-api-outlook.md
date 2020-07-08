@@ -8,10 +8,9 @@ ms.topic: article
 ms.date: 08/18/2016
 tags: connectors
 ms.openlocfilehash: 8d3b180b6f1e9dc4ec4b09dd81786cc81e8588da
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75707183"
 ---
 # <a name="manage-email-calendars-and-contacts-in-outlookcom-by-using-azure-logic-apps"></a>E-mail, agenda's en contact personen in Outlook.com beheren met Azure Logic Apps
@@ -25,7 +24,7 @@ Met [Azure Logic apps](../logic-apps/logic-apps-overview.md) en de [Outlook.com-
 U kunt elke trigger gebruiken om uw werk stroom te starten, bijvoorbeeld wanneer er een nieuwe e-mail binnenkomt, wanneer een agenda-item wordt bijgewerkt of wanneer er een gebeurtenis in een diff-service optreedt. U kunt acties gebruiken die reageren op de trigger gebeurtenis, bijvoorbeeld een e-mail bericht verzenden of een nieuwe agenda gebeurtenis maken.
 
 > [!NOTE]
-> Gebruik de [Office 365 Outlook-Connector](../connectors/connectors-create-api-office365-outlook.md)om taken te @fabrikam.onmicrosoft.comautomatiseren voor een micro soft-werk account, zoals.
+> @fabrikam.onmicrosoft.comGebruik de [Office 365 Outlook-Connector](../connectors/connectors-create-api-office365-outlook.md)om taken te automatiseren voor een micro soft-werk account, zoals.
 
 ## <a name="prerequisites"></a>Vereisten
 
@@ -61,7 +60,7 @@ Een [actie](../logic-apps/logic-apps-overview.md#logic-app-concepts) is een bewe
 
 1. Selecteer **nieuwe stap**om een actie toe te voegen als de laatste stap in uw werk stroom. 
 
-   Als u een actie tussen de stappen wilt toevoegen, plaatst u de muis aanwijzer op de pijl tussen deze stappen. Selecteer het plus teken (**+**) dat wordt weer gegeven en selecteer vervolgens **een actie toevoegen**.
+   Als u een actie tussen de stappen wilt toevoegen, plaatst u de muis aanwijzer op de pijl tussen deze stappen. Selecteer het plus teken ( **+** ) dat wordt weer gegeven en selecteer vervolgens **een actie toevoegen**.
 
 1. Voer in het zoekvak ' outlook.com ' in als uw filter. Selecteer voor dit voor beeld **een E-mail verzenden**. 
 

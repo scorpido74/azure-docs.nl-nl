@@ -14,10 +14,9 @@ ms.topic: troubleshooting
 ms.date: 09/18/2019
 ms.author: v-miegge
 ms.openlocfilehash: 176b0634fe2c7ee2f47162e439c4ea16bde77a8a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75772615"
 ---
 # <a name="troubleshoot-azure-virtual-machine-performance-on-linux-or-windows"></a>Problemen met prestaties van virtuele Azure-machines in Linux of Windows oplossen
@@ -139,7 +138,7 @@ Doorlopend en constant/constant continu gebruik: hoog geheugen gebruik is mogeli
 
 Het verbruik wordt gestaag verhoogd, een mogelijke opwarming van de toepassing. dit verbruik is gebruikelijk bij het opstarten van data base-engines. Het kan echter ook duiden op een geheugenlek in een toepassing. Identificeer de toepassing en begrijp of het probleem wordt verwacht.
 
-Gebruik van pagina of wissel bestand: Controleer of u het Windows-wissel bestand (dat zich op D\) : of Linux-wissel bestand bevindt `/dev/sdb`) gebruikt. Als u niets hebt met deze volumes, behalve deze bestanden, controleert u op deze schijven op hoog lezen/schrijven. Dit probleem duidt op weinig geheugen.
+Gebruik van pagina of wissel bestand: Controleer of u het Windows-wissel bestand (dat zich op D: \) of Linux-wissel bestand bevindt `/dev/sdb` ) gebruikt. Als u niets hebt met deze volumes, behalve deze bestanden, controleert u op deze schijven op hoog lezen/schrijven. Dit probleem duidt op weinig geheugen.
 
 ### <a name="high-memory-utilization-remediation"></a>Herstel met hoog geheugen gebruik
 
@@ -210,7 +209,7 @@ Met nieuwe schijf aanbiedingen onder standaard opslag kunnen de limieten voor IO
 
 * [Schaalbaarheids-en prestatie doelen voor VM-schijven in Windows](https://docs.microsoft.com/azure/virtual-machines/windows/disk-scalability-targets).
 
-#### <a name="references"></a>Verwijzingen
+#### <a name="references"></a>Referenties
 
 * [Schaalbaarheids-en prestatie doelen voor Premium-pagina-Blob Storage-accounts](../../storage/blobs/scalability-targets-premium-page-blobs.md)
 

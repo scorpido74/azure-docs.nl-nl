@@ -9,10 +9,9 @@ ms.topic: conceptual
 ms.date: 11/27/2019
 ms.author: prmitiki
 ms.openlocfilehash: a683ad71f5e80c91728262dc7bbabf36e9d68deb
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75775223"
 ---
 # <a name="peering-policy"></a>Peeringbeleid
@@ -65,7 +64,7 @@ De algemene vereisten van micro soft van uw netwerk worden uitgelegd in de volge
     | Europa                   |   2 Gbps                       |
     | LATAM                    |   2 Gbps                       |
     | Midden-Oosten              | 500 Mbps                       |
-    | N.v.t.                       |   2 Gbps                       |
+    | NA                       |   2 Gbps                       |
 
 * **Situaties**
     * In NA, Europa, APAC en LATAM, Interconnect in ten minste drie geografische locaties, indien mogelijk, en het onderhoud van diverse capaciteit zodat verkeer binnen elke metro lijn kan worden gefailoverd.

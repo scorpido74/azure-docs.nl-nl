@@ -6,10 +6,9 @@ ms.topic: conceptual
 ms.date: 06/27/2018
 ms.author: tomfitz
 ms.openlocfilehash: 999a7386ee7c5b3ef76f87280cc2d0cd45f143cd
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75652253"
 ---
 # <a name="microsoftcommonsection-ui-element"></a>Gebruikers interface-element van micro soft. common. Section
@@ -45,17 +44,17 @@ Een besturings element dat een of meer elementen onder een kop groepeert.
 
 ## <a name="remarks"></a>Opmerkingen
 
-- `elements`moet ten minste één element hebben en kan alle element typen behalve `Microsoft.Common.Section`bevatten.
-- Dit element biedt geen ondersteuning `toolTip` voor de eigenschap.
+- `elements`moet ten minste één element hebben en kan alle element typen behalve bevatten `Microsoft.Common.Section` .
+- Dit element biedt geen ondersteuning voor de `toolTip` eigenschap.
 
 ## <a name="sample-output"></a>Voorbeelduitvoer
-Als u de uitvoer waarden van elementen in `elements`wilt openen, gebruikt u de functies [()](create-uidefinition-functions.md#basics) of [stappen (](create-uidefinition-functions.md#steps) ) en punt notatie:
+Als u de uitvoer waarden van elementen in wilt openen `elements` , gebruikt u de functies [()](create-uidefinition-functions.md#basics) of [stappen (](create-uidefinition-functions.md#steps) ) en punt notatie:
 
 ```json
 steps('configuration').section1.text1
 ```
 
-Elementen van het `Microsoft.Common.Section` type hebben geen uitvoer waarden zelf.
+Elementen van het type `Microsoft.Common.Section` hebben geen uitvoer waarden zelf.
 
 ## <a name="next-steps"></a>Volgende stappen
 

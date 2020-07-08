@@ -7,17 +7,16 @@ ms.reviewer: klam, logicappspm
 ms.topic: conceptual
 ms.date: 07/20/2018
 ms.openlocfilehash: ae0abe288edda2ce01311d8533b1f104409efce0
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75666870"
 ---
 # <a name="handle-content-types-in-azure-logic-apps"></a>Inhouds typen in Azure Logic Apps verwerken
 
 Verschillende inhouds typen kunnen stromen via een logische app, zoals JSON, XML, platte bestanden en binaire gegevens. Hoewel Logic Apps alle inhouds typen ondersteunt, hebben sommige systeem eigen ondersteuning en hoeven ze geen casting of conversie in uw Logic apps te hebben. Andere typen kunnen indien nodig casts of conversie vereisen. In dit artikel wordt beschreven hoe Logic Apps inhouds typen verwerkt en hoe u deze typen correct kunt casten of omzetten wanneer dat nodig is.
 
-Voor het bepalen van de juiste manier voor het afhandelen van inhouds typen `Content-Type` , is Logic apps afhankelijk van de waarde van de header in http-aanroepen, bijvoorbeeld:
+Voor het bepalen van de juiste manier voor het afhandelen van inhouds typen, is Logic Apps afhankelijk van de `Content-Type` waarde van de header in HTTP-aanroepen, bijvoorbeeld:
 
 * [Application/JSON](#application-json) (systeem eigen type)
 * [tekst/zonder opmaak](#text-plain) (systeem eigen type)
@@ -28,7 +27,7 @@ Voor het bepalen van de juiste manier voor het afhandelen van inhouds typen `Con
 
 ## <a name="applicationjson"></a>application/json
 
-Logic Apps elke aanvraag met het inhouds type *Application/JSON* wordt opgeslagen en verwerkt als een JSON-object (Java script Notation). Standaard kunt u JSON-inhoud parseren zonder casting. Voor het parseren van een aanvraag met een kop met het inhouds type application/json kunt u een expressie gebruiken. In dit voor beeld wordt `dog` de waarde `animal-type` uit de matrix geretourneerd zonder cast: 
+Logic Apps elke aanvraag met het inhouds type *Application/JSON* wordt opgeslagen en verwerkt als een JSON-object (Java script Notation). Standaard kunt u JSON-inhoud parseren zonder casting. Voor het parseren van een aanvraag met een kop met het inhouds type application/json kunt u een expressie gebruiken. In dit voor beeld wordt de waarde `dog` uit de `animal-type` matrix geretourneerd zonder cast: 
  
 `@body('myAction')['animal-type'][0]` 
   
@@ -99,7 +98,7 @@ Logic Apps biedt de mogelijkheid om gebruikers vriendelijke tokens te genereren 
      }
      ```
 
-  3. Zorg ervoor dat u een `Content-Type` kop opneemt in uw aanvraag en stel de waarde van `application/json`de header in op.
+  3. Zorg ervoor dat u een kop opneemt in uw aanvraag `Content-Type` en stel de waarde van de header in op `application/json` .
 
 * **JSON-actie parseren**
 
@@ -113,14 +112,14 @@ Logic Apps biedt de mogelijkheid om gebruikers vriendelijke tokens te genereren 
 
 ## <a name="textplain"></a>tekst/zonder opmaak
 
-Wanneer uw logische app HTTP-berichten ontvangt waarbij de `Content-Type` header is ingesteld `text/plain`op, worden deze berichten opgeslagen in onbewerkte vorm. Als u deze berichten opneemt in volgende acties zonder Casting, worden aanvragen `Content-Type` uitgevoerd met de `text/plain`header ingesteld op. 
+Wanneer uw logische app HTTP-berichten ontvangt waarbij de `Content-Type` header is ingesteld op `text/plain` , worden deze berichten opgeslagen in onbewerkte vorm. Als u deze berichten opneemt in volgende acties zonder Casting, worden aanvragen uitgevoerd met de `Content-Type` header ingesteld op `text/plain` . 
 
 Wanneer u bijvoorbeeld met een plat bestand werkt, krijgt u mogelijk een HTTP-aanvraag met de `Content-Type` header ingesteld op `text/plain` inhouds type:
 
 `Date,Name,Address`</br>
 `Oct-1,Frank,123 Ave`
 
-Als u deze aanvraag vervolgens in een latere actie verzendt als de hoofd tekst van een andere aanvraag, bijvoorbeeld `@body('flatfile')`, heeft die tweede aanvraag ook een `Content-Type` koptekst die is ingesteld op. `text/plain` Als u werkt met onbewerkte gegevens, maar geen koptekst hebt opgegeven, kunt u die gegevens hand matig naar tekst casten met behulp van de [functie String ()](../logic-apps/workflow-definition-language-functions-reference.md#string) zoals deze expressie: 
+Als u deze aanvraag vervolgens in een latere actie verzendt als de hoofd tekst van een andere aanvraag, bijvoorbeeld, `@body('flatfile')` heeft die tweede aanvraag ook een `Content-Type` koptekst die is ingesteld op `text/plain` . Als u werkt met onbewerkte gegevens, maar geen koptekst hebt opgegeven, kunt u die gegevens hand matig naar tekst casten met behulp van de [functie String ()](../logic-apps/workflow-definition-language-functions-reference.md#string) zoals deze expressie: 
 
 `@string(triggerBody())`
 
@@ -128,11 +127,11 @@ Als u deze aanvraag vervolgens in een latere actie verzendt als de hoofd tekst v
 
 ## <a name="applicationxml-and-applicationoctet-stream"></a>Application/XML en application/octet-stream
 
-Met Logic Apps wordt de `Content-Type` in een ontvangen HTTP-aanvraag of-antwoord altijd bewaard. Dus als uw logische app inhoud ontvangt met `Content-Type` ingesteld op `application/octet-stream`en u deze inhoud opneemt in een latere actie zonder cast, is `Content-Type` de uitgaande aanvraag ook ingesteld `application/octet-stream`op. Op die manier kan Logic Apps garanderen dat er geen gegevens verloren gaan tijdens het door lopen van de werk stroom. De actie status, of invoer en uitvoer, wordt echter opgeslagen in een JSON-object terwijl de status door de werk stroom wordt verplaatst. 
+Met Logic Apps wordt de `Content-Type` in een ontvangen HTTP-aanvraag of-antwoord altijd bewaard. Dus als uw logische app inhoud ontvangt met `Content-Type` ingesteld op en `application/octet-stream` u deze inhoud opneemt in een latere actie zonder cast, is de uitgaande aanvraag ook `Content-Type` ingesteld op `application/octet-stream` . Op die manier kan Logic Apps garanderen dat er geen gegevens verloren gaan tijdens het door lopen van de werk stroom. De actie status, of invoer en uitvoer, wordt echter opgeslagen in een JSON-object terwijl de status door de werk stroom wordt verplaatst. 
 
 ## <a name="converter-functions"></a>Conversie functies
 
-Als u sommige gegevens typen wilt behouden, wordt de inhoud door Logic Apps geconverteerd naar een binaire base64-gecodeerde teken reeks met de juiste `$content` meta gegevens die `$content-type`zowel de payload als de, die automatisch worden geconverteerd, worden bewaard. 
+Als u sommige gegevens typen wilt behouden, wordt de inhoud door Logic Apps geconverteerd naar een binaire base64-gecodeerde teken reeks met de juiste meta gegevens die zowel de `$content` payload als de `$content-type` , die automatisch worden geconverteerd, worden bewaard. 
 
 In deze lijst wordt beschreven hoe Logic Apps inhoud converteert wanneer u deze [functies](../logic-apps/workflow-definition-language-functions-reference.md)gebruikt:
 
@@ -147,20 +146,20 @@ In deze lijst wordt beschreven hoe Logic Apps inhoud converteert wanneer u deze 
 * `dataUriToBinary()`: Converteert een gegevens-URI naar een binaire teken reeks
 * `dataUriToString()`: Converteert een gegevens-URI naar een teken reeks
 
-Als u bijvoorbeeld een HTTP-aanvraag ontvangt waarbij `Content-Type` deze is ingesteld `application/xml`op, zoals deze inhoud:
+Als u bijvoorbeeld een HTTP-aanvraag ontvangt waarbij `Content-Type` `application/xml` deze is ingesteld op, zoals deze inhoud:
 
 ```html
 <?xml version="1.0" encoding="UTF-8" ?>
 <CustomerName>Frank</CustomerName>
 ```
 
-U kunt deze inhoud casten met behulp van `@xml(triggerBody())` de `xml()` - `triggerBody()` expressie met de functies en en vervolgens deze inhoud later gebruiken. U kunt ook de `@xpath(xml(triggerBody()), '/CustomerName')` expressie gebruiken met de `xpath()` functies en `xml()` . 
+U kunt deze inhoud casten met behulp van de- `@xml(triggerBody())` expressie met de `xml()` `triggerBody()` functies en en vervolgens deze inhoud later gebruiken. U kunt ook de expressie gebruiken `@xpath(xml(triggerBody()), '/CustomerName')` met de `xpath()` functies en `xml()` . 
 
 ## <a name="other-content-types"></a>Andere inhouds typen
 
-Logic Apps werkt met en ondersteunt andere inhouds typen, maar het is mogelijk dat u de bericht tekst hand matig moet ophalen door `$content` de variabele te decoderen.
+Logic Apps werkt met en ondersteunt andere inhouds typen, maar het is mogelijk dat u de bericht tekst hand matig moet ophalen door de variabele te decoderen `$content` .
 
-Stel bijvoorbeeld dat uw logische app wordt geactiveerd door een aanvraag met het `application/x-www-url-formencoded` inhouds type. Om alle gegevens te behouden, heeft `$content` de variabele in de aanvraag tekst een nettolading die is gecodeerd als een base64-teken reeks:
+Stel bijvoorbeeld dat uw logische app wordt geactiveerd door een aanvraag met het `application/x-www-url-formencoded` inhouds type. Om alle gegevens te behouden, `$content` heeft de variabele in de aanvraag tekst een nettolading die is gecodeerd als een base64-teken reeks:
 
 `CustomerName=Frank&Address=123+Avenue`
 
@@ -184,4 +183,4 @@ U kunt de gegevens ook hand matig openen met behulp van een expressie, zoals in 
 
 `@string(body('formdataAction'))` 
 
-Als u wilt dat de uitgaande aanvraag dezelfde `application/x-www-url-formencoded` content type-header heeft, kunt u de aanvraag toevoegen aan de hoofd tekst van de actie zonder casting met behulp van `@body('formdataAction')`een expressie zoals. Deze methode werkt echter alleen wanneer de hoofd tekst de enige para meter in de `body` invoer is. Als u de `@body('formdataAction')` expressie in een `application/json` aanvraag probeert te gebruiken, wordt er een runtime-fout weer gegeven, omdat de hoofd tekst gecodeerd is verzonden.
+Als u wilt dat de uitgaande aanvraag dezelfde `application/x-www-url-formencoded` Content type-header heeft, kunt u de aanvraag toevoegen aan de hoofd tekst van de actie zonder casting met behulp van een expressie zoals `@body('formdataAction')` . Deze methode werkt echter alleen wanneer de hoofd tekst de enige para meter in de `body` invoer is. Als u de `@body('formdataAction')` expressie in een aanvraag probeert te gebruiken `application/json` , wordt er een runtime-fout weer gegeven, omdat de hoofd tekst gecodeerd is verzonden.

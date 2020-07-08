@@ -6,10 +6,9 @@ ms.topic: conceptual
 ms.date: 6/6/2019
 ms.author: srrengar
 ms.openlocfilehash: d23c8114bf10ef3225775accef6910c0ba539e15
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75645732"
 ---
 # <a name="eventstore-overview"></a>Overzicht van Event Store
@@ -20,7 +19,7 @@ ms.locfileid: "75645732"
 ## <a name="overview"></a>Overzicht
 
 De Event Store-service is geïntroduceerd in versie 6,2 en is een bewakings optie in Service Fabric. Event Store biedt een manier om inzicht te krijgen in de status van uw cluster of workloads op een bepaald moment.
-De Event Store is een stateful Service Fabric service die gebeurtenissen van het cluster onderhoudt. De gebeurtenis wordt weer gegeven via de Service Fabric Explorer, REST en Api's. Event Store vraagt het cluster rechtstreeks om diagnostische gegevens op te halen uit een wille keurige entiteit in uw cluster en moet worden gebruikt om het volgende te helpen:
+EventStore is een stateful Service Fabric-service die gebeurtenissen van het cluster bijhoudt. De gebeurtenis wordt weer gegeven via de Service Fabric Explorer, REST en Api's. Event Store vraagt het cluster rechtstreeks om diagnostische gegevens op te halen uit een wille keurige entiteit in uw cluster en moet worden gebruikt om het volgende te helpen:
 
 * Problemen met het ontwikkelen of testen vaststellen of een bewakings pijplijn gebruiken
 * Controleer of beheer acties die u uitvoert op het cluster correct worden verwerkt
@@ -48,13 +47,13 @@ De Event Store-service kan worden opgevraagd voor gebeurtenissen die beschikbaar
 
 Raadpleeg de [API-naslag](https://docs.microsoft.com/rest/api/servicefabric/sfclient-index-eventsstore)informatie voor Event Store voor meer informatie over de API.
 
-De Event Store-service biedt ook de mogelijkheid om gebeurtenissen in uw cluster te correleren. Door te kijken naar gebeurtenissen die op hetzelfde moment zijn geschreven van verschillende entiteiten die van invloed kunnen zijn op elkaar, kan de Event Store-service deze gebeurtenissen koppelen aan hulp bij het identificeren van de oorzaken van activiteiten in uw cluster. Als een van uw toepassingen bijvoorbeeld wordt beschadigd zonder dat er wijzigingen zijn aangebracht, kijken de Event Store ook naar andere gebeurtenissen die worden weer gegeven door het platform en kunnen deze met een `Error` of `Warning` -gebeurtenis worden gecorreleerd. Dit helpt bij snellere detectie van fouten en de oorzaak van analyses.
+De Event Store-service biedt ook de mogelijkheid om gebeurtenissen in uw cluster te correleren. Door te kijken naar gebeurtenissen die op hetzelfde moment zijn geschreven van verschillende entiteiten die van invloed kunnen zijn op elkaar, kan de Event Store-service deze gebeurtenissen koppelen aan hulp bij het identificeren van de oorzaken van activiteiten in uw cluster. Als een van uw toepassingen bijvoorbeeld wordt beschadigd zonder dat er wijzigingen zijn aangebracht, kijken de Event Store ook naar andere gebeurtenissen die worden weer gegeven door het platform en kunnen deze met een of-gebeurtenis worden gecorreleerd `Error` `Warning` . Dit helpt bij snellere detectie van fouten en de oorzaak van analyses.
 
 ## <a name="enable-eventstore-on-your-cluster"></a>Event Store inschakelen in uw cluster
 
 ### <a name="local-cluster"></a>Lokaal cluster
 
-Voeg in [fabricSettings. json in uw cluster](service-fabric-cluster-fabric-settings.md)EventStoreService als invoeg functie toe en voer een cluster upgrade uit.
+In [fabricSettings.jsin uw cluster](service-fabric-cluster-fabric-settings.md), voegt u EventStoreService als invoeg functie toe en voert u een upgrade van het cluster uit.
 
 ```json
     "addOnFeatures": [

@@ -9,10 +9,9 @@ ms.topic: conceptual
 ms.date: 02/15/2018
 ms.author: dobett
 ms.openlocfilehash: 7a2b167f90b4ec79f5fa515ded1c676ca7085e72
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75647710"
 ---
 # <a name="frequently-asked-questions-for-iot-solution-accelerators"></a>Veelgestelde vragen over IoT-oplossingsversnellers
@@ -30,7 +29,7 @@ De bron code wordt opgeslagen in de volgende GitHub-opslag plaatsen:
 
 ### <a name="what-sdks-can-i-use-to-develop-device-clients-for-the-solution-accelerators"></a>Welke Sdk's kan ik gebruiken om apparaatclients te ontwikkelen voor de oplossings Accelerators?
 
-U vindt koppelingen naar de verschillende talen (C, .NET, Java, node. js, python) IoT-apparaat-Sdk's in de [Microsoft Azure IOT sdk's](https://github.com/Azure/azure-iot-sdks) github-opslag plaatsen.
+U vindt koppelingen naar de verschillende talen (C, .NET, Java, Node.js, python) IoT-apparaat-Sdk's in de [Microsoft Azure IOT sdk's](https://github.com/Azure/azure-iot-sdks) github-opslag plaatsen.
 
 Als u het DevKit-apparaat gebruikt, kunt u bronnen en voor beelden vinden in de DevKit-opslag plaats van [IOT](https://github.com/Microsoft/devkit-sdk) github.
 
@@ -65,7 +64,7 @@ Als u zeker weet dat u een Azure-abonnement hebt, valideert u de Tenant toewijzi
 
 ### <a name="where-can-i-find-information-about-the-previous-version-of-the-remote-monitoring-solution"></a>Waar vind ik informatie over de vorige versie van de oplossing voor bewaking op afstand?
 
-De vorige versie van de oplossing voor controle op afstand van externe bewaking heette de IoT Suite vooraf geconfigureerde oplossing voor externe controle. U kunt de gearchiveerde documentatie vinden [https://docs.microsoft.com/previous-versions/azure/iot-suite/](https://docs.microsoft.com/previous-versions/azure/iot-suite/)op.
+De vorige versie van de oplossing voor controle op afstand van externe bewaking heette de IoT Suite vooraf geconfigureerde oplossing voor externe controle. U kunt de gearchiveerde documentatie vinden op [https://docs.microsoft.com/previous-versions/azure/iot-suite/](https://docs.microsoft.com/previous-versions/azure/iot-suite/) .
 
 ### <a name="is-the-new-solution-accelerator-available-in-the-same-geographic-region-as-the-existing-solution"></a>Is de nieuwe oplossings versneller beschikbaar in dezelfde geografische regio als de bestaande oplossing?
 
@@ -108,6 +107,6 @@ Zie het blog bericht over het [verwijderen van een Azure AD-Tenant met](https://
 U kunt ook enkele van de andere functies en mogelijkheden van de IoT-oplossingsversnellers bekijken:
 
 * [Bekijk de mogelijkheden van de oplossings versneller voor externe controle](quickstart-remote-monitoring-deploy.md)
-* [Een overzicht van de oplossingsversneller voor Predictief onderhoud](iot-accelerators-predictive-overview.md)
+* [Overzicht van de oplossingsversneller Voorspeld onderhoud](iot-accelerators-predictive-overview.md)
 * [Connected Factory Solution Accelerator implementeren](quickstart-connected-factory-deploy.md)
 * [Fundamentele IoT-beveiliging](/azure/iot-fundamentals/iot-security-ground-up)

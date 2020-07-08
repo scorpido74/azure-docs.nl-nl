@@ -14,10 +14,9 @@ ms.topic: article
 ms.date: 12/05/2019
 ms.author: juliako
 ms.openlocfilehash: 872dad95fc5b536c51e251612f40439da020a059
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75779634"
 ---
 # <a name="configure-postman-for-media-services-v3-rest-api-calls"></a>Postman configureren voor Media Services v3-REST API-aanroepen
@@ -28,7 +27,7 @@ Controleer voordat u begint met het ontwikkelen [met behulp van Media Services v
 
 ## <a name="prerequisites"></a>Vereisten
 
-- [Een Azure Media Services-account maken](create-account-cli-how-to.md). Zorg ervoor dat u de naam van de resource groep en de naam van het Media Services account vergeet. 
+- [Maak een Media Services-account](create-account-cli-how-to.md). Zorg ervoor dat u de naam van de resource groep en de naam van het Media Services account vergeet. 
 - Gegevens ophalen die nodig zijn voor [toegang tot api's](access-api-cli-how-to.md)
 - Installeer de [Postman](https://www.getpostman.com/) REST-client als u de REST-API's wilt uitvoeren die in een aantal AMS REST-zelfstudies worden weergegeven. 
 
@@ -97,7 +96,7 @@ Voordat u begint met het bewerken van AMS v3-resources, moet u Azure AD-token vo
 * Als uw toepassing mislukt met ' HTTP 504: time-out van gateway ', moet u ervoor zorgen dat de variabele locatie niet expliciet is ingesteld op een andere waarde dan de verwachte locatie van het Media Services-account. 
 * Als u een fout bericht ' account niet gevonden ' krijgt, controleert u ook of de eigenschap location in het JSON-bericht van de hoofd tekst is ingesteld op de locatie waar het Media Services-account zich bevindt. 
 
-## <a name="see-also"></a>Zie ook
+## <a name="see-also"></a>Zie tevens
 
 - [Bestanden uploaden naar een Media Services-account - REST](upload-files-rest-how-to.md)
 - [Filters maken met Media Services - REST](filters-dynamic-manifest-rest-howto.md)

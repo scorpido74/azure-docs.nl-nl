@@ -6,10 +6,9 @@ ms.topic: conceptual
 ms.date: 06/27/2018
 ms.author: tomfitz
 ms.openlocfilehash: e9f084badda9ea1905e43c6f00b29aaf957a6dbd
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75652279"
 ---
 # <a name="microsoftcommontextbox-ui-element"></a>Gebruikers interface-element van micro soft. common. TextBox
@@ -49,7 +48,7 @@ Een besturings element dat kan worden gebruikt voor het bewerken van niet-opgema
 - Als `constraints.required` is ingesteld op **waar**, moet het tekstvak een waarde hebben om te kunnen valideren. De standaardwaarde is **onwaar**.
 - `constraints.regex`is een reguliere java script-expressie patroon. Indien opgegeven, moet de waarde van het tekstvak overeenkomen met het patroon om te valideren. De standaard waarde is **Null**.
 - `constraints.validationMessage`is een teken reeks die moet worden weer gegeven wanneer de validatie van de waarde van het tekstvak mislukt. Als dat niet is opgegeven, worden de ingebouwde validatie berichten van het tekstvak gebruikt. De standaard waarde is **Null**.
-- Het is mogelijk om een waarde op te `constraints.regex` geven `constraints.required` voor wanneer is ingesteld op **Onwaar**. In dit scenario is er geen waarde vereist om het tekstvak te valideren. Als er een is opgegeven, moet deze overeenkomen met het reguliere-expressie patroon.
+- Het is mogelijk om een waarde op te geven voor `constraints.regex` Wanneer `constraints.required` is ingesteld op **Onwaar**. In dit scenario is er geen waarde vereist om het tekstvak te valideren. Als er een is opgegeven, moet deze overeenkomen met het reguliere-expressie patroon.
 
 ## <a name="next-steps"></a>Volgende stappen
 

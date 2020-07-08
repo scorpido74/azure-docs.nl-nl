@@ -6,10 +6,9 @@ ms.topic: conceptual
 ms.date: 03/19/2018
 ms.author: vturecek
 ms.openlocfilehash: 788c337a37ec66c5aa1521c5cd9f2816ed7a8bf9
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75645630"
 ---
 # <a name="access-save-and-remove-reliable-actors-state"></a>Reliable Actors status openen, opslaan en verwijderen
@@ -28,7 +27,7 @@ De status is toegankelijk via de status Manager per sleutel. Status Manager-meth
 * Een actor wordt opnieuw geactiveerd, hetzij na het deactiveren of na de fout.
 * Status van de status provider pagina's op schijf. Dit gedrag is afhankelijk van de implementatie van de State-provider. De standaard status provider voor de `Persisted` instelling heeft dit gedrag.
 
-U kunt de status ophalen met behulp van een standaard *Get* - `KeyNotFoundException`bewerking die wordt gegenereerd `NoSuchElementException`(C#) of (Java) als er geen vermelding voor de sleutel bestaat:
+U kunt de status ophalen met behulp van een standaard *Get* -bewerking die `KeyNotFoundException` wordt gegenereerd (C#) of `NoSuchElementException` (Java) als er geen vermelding voor de sleutel bestaat:
 
 ```csharp
 [StatePersistence(StatePersistence.Persisted)]
@@ -106,7 +105,7 @@ class MyActorImpl extends FabricActor implements  MyActor
 ## <a name="save-state"></a>Status opslaan
 De methode voor het ophalen van status Manager retourneert een verwijzing naar een object in het lokale geheugen. Als u dit object in alleen lokaal geheugen wijzigt, wordt het niet blijvend opgeslagen. Wanneer een object wordt opgehaald uit de status Manager en gewijzigd, moet het worden geplaatst in de status Manager om blijvend te kunnen opslaan.
 
-U kunt de status invoegen met behulp van een onvoorwaardelijke *set*, die overeenkomt `dictionary["key"] = value` met de syntaxis:
+U kunt de status invoegen met behulp van een onvoorwaardelijke *set*, die overeenkomt met de `dictionary["key"] = value` syntaxis:
 
 ```csharp
 [StatePersistence(StatePersistence.Persisted)]
@@ -139,7 +138,7 @@ class MyActorImpl extends FabricActor implements  MyActor
 }
 ```
 
-U kunt een status toevoegen met behulp van een *add* -methode. Deze methode genereert `InvalidOperationException`(C#) of `IllegalStateException`(Java) wanneer wordt geprobeerd een sleutel toe te voegen die al bestaat.
+U kunt een status toevoegen met behulp van een *add* -methode. Deze methode genereert `InvalidOperationException` (C#) of `IllegalStateException` (Java) wanneer wordt geprobeerd een sleutel toe te voegen die al bestaat.
 
 ```csharp
 [StatePersistence(StatePersistence.Persisted)]
@@ -217,7 +216,7 @@ class MyActorImpl extends FabricActor implements  MyActor
 
 Aan het einde van een actor-methode slaat de status Manager automatisch waarden op die zijn toegevoegd of gewijzigd door een INSERT-of update-bewerking. Een ' Save ' kan bestaan uit persistentie op schijf en replicatie, afhankelijk van de gebruikte instellingen. Waarden die niet zijn gewijzigd, blijven niet behouden of worden gerepliceerd. Als er geen waarden zijn gewijzigd, gebeurt er niets. Als het opslaan mislukt, wordt de gewijzigde status verwijderd en wordt de oorspronkelijke status opnieuw geladen.
 
-U kunt de status ook hand matig opslaan door `SaveStateAsync` de methode op de actor-basis aan te roepen:
+U kunt de status ook hand matig opslaan door de `SaveStateAsync` methode op de actor-basis aan te roepen:
 
 ```csharp
 async Task IMyActor.SetCountAsync(int count)
@@ -239,7 +238,7 @@ interface MyActor {
 ```
 
 ## <a name="remove-state"></a>Status verwijderen
-U kunt de status permanent verwijderen uit de status Manager van een actor door de methode *Remove* aan te roepen. Deze methode genereert `KeyNotFoundException`(C#) of `NoSuchElementException`(Java) wanneer wordt geprobeerd een sleutel te verwijderen die niet bestaat.
+U kunt de status permanent verwijderen uit de status Manager van een actor door de methode *Remove* aan te roepen. Deze methode genereert `KeyNotFoundException` (C#) of `NoSuchElementException` (Java) wanneer wordt geprobeerd een sleutel te verwijderen die niet bestaat.
 
 ```csharp
 [StatePersistence(StatePersistence.Persisted)]

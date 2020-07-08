@@ -14,10 +14,9 @@ ms.topic: article
 ms.date: 06/13/2019
 ms.author: juliako
 ms.openlocfilehash: f9134dd3bc926e6e2f454e5187e03365e91ed22a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75780331"
 ---
 # <a name="creating-filters-with-media-services-rest-api"></a>Filters maken met Media Services REST API
@@ -83,7 +82,7 @@ Hieronder ziet u het voor beeld van een **aanvraag tekst** waarin de selectie vo
 
 ## <a name="create-account-filters"></a>Account filters maken
 
-Selecteer in de verzameling die u hebt gedownload van de Postman, **account filters**->**een account filter maken of bijwerken**.
+Selecteer in de verzameling die u hebt gedownload van de Postman, **account filters** -> **een account filter maken of bijwerken**.
 
 De methode voor het **opnemen** van HTTP-aanvragen is vergelijkbaar met:
 
@@ -101,7 +100,7 @@ Zie [maken of bijwerken](https://docs.microsoft.com/rest/api/media/accountfilter
 
 ## <a name="create-asset-filters"></a>Activa filters maken  
 
-Selecteer in de Postman-verzameling Media Services v3 die u hebt gedownload, **activa**->**filter maken of bijwerken**.
+Selecteer in de Postman-verzameling Media Services v3 die u hebt gedownload, **activa** -> **filter maken of bijwerken**.
 
 De methode voor het **opnemen** van HTTP-aanvragen is vergelijkbaar met:
 
@@ -121,7 +120,7 @@ Zie [maken of bijwerken](https://docs.microsoft.com/rest/api/media/assetfilters/
 
 U kunt een lijst opgeven met activa of account filters die van toepassing zijn op uw streaming-Locator. Met de [dynamische pakket (streaming-eind punt)](dynamic-packaging-overview.md) wordt deze lijst met filters toegepast, samen met de gegevens die door uw client zijn opgegeven in de URL. Deze combi natie genereert een [dynamisch manifest](filters-dynamic-manifest-overview.md)dat is gebaseerd op filters in de URL + filters die u opgeeft in de streaming-Locator. U wordt aangeraden deze functie te gebruiken als u filters wilt Toep assen, maar niet de filter namen in de URL wilt weer geven.
 
-Als u filters met een streaming-Locator wilt maken en koppelen met behulp van REST, gebruikt u de [streams](https://docs.microsoft.com/rest/api/media/streaminglocators/create) voor het maken van een API en geeft `properties.filters` u in de [aanvraag tekst](https://docs.microsoft.com/rest/api/media/streaminglocators/create#request-body)op.
+Als u filters met een streaming-Locator wilt maken en koppelen met behulp van REST, gebruikt u de [streams](https://docs.microsoft.com/rest/api/media/streaminglocators/create) voor het maken van een API en geeft u `properties.filters` in de [aanvraag tekst](https://docs.microsoft.com/rest/api/media/streaminglocators/create#request-body)op.
                                 
 ## <a name="stream-using-filters"></a>Streamen met filters
 

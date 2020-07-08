@@ -9,10 +9,9 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 01/02/2020
 ms.openlocfilehash: 1c79d0390a80a1358ddb09707fbabf6a5a2affdc
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75660236"
 ---
 # <a name="azure-storage-solutions-for-ml-services-on-azure-hdinsight"></a>Azure Storage-oplossingen voor ML-Services in azure HDInsight
@@ -41,7 +40,7 @@ Als u meer dan één opslag account hebt opgegeven tijdens het maken van uw ML-c
 
 1. Gebruik een SSH-client om verbinding te maken met het Edge-knoop punt van uw cluster. Zie [SSH gebruiken met hdinsight](../hdinsight-hadoop-linux-use-ssh-unix.md)voor meer informatie over het gebruik van SSH met hdinsight-clusters.
   
-2. Kopieer een voorbeeld bestand, mysamplefile. CSV, naar de map/share.
+2. Kopieer een voorbeeld bestand, mysamplefile.csv, naar de/share-map.
 
     ```bash
     hadoop fs –mkdir /share
@@ -70,11 +69,11 @@ Als u meer dan één opslag account hebt opgegeven tijdens het maken van uw ML-c
     inputFile <-file.path(bigDataDirRoot,"mysamplefile.csv")
     ```
 
-Alle verwijzingen naar de map en het bestand verwijzen naar het `wasbs://container1@storage1.blob.core.windows.net`opslag account. Dit is het **standaard opslag account** dat is gekoppeld aan het HDInsight-cluster.
+Alle verwijzingen naar de map en het bestand verwijzen naar het opslag account `wasbs://container1@storage1.blob.core.windows.net` . Dit is het **standaard opslag account** dat is gekoppeld aan het HDInsight-cluster.
 
 ### <a name="use-the-additional-storage-with-ml-services-on-hdinsight"></a>De extra opslag gebruiken met ML-Services in HDInsight
 
-Stel nu dat u een bestand met de naam mysamplefile1. CSV wilt verwerken dat zich in de map/private van **container2** in **storage2**bevindt.
+Stel nu dat u een bestand met de naam mysamplefile1.csv wilt verwerken dat zich bevindt in de map/private van **container2** in **storage2**.
 
 In uw R-code wijst u de verwijzing naar het naam knooppunt naar het **storage2** -opslag account.
 
@@ -98,7 +97,7 @@ hdfsFS <- RxHdfsFileSystem(hostName=myNameNode, port=myPort)
 inputFile <-file.path(bigDataDirRoot,"mysamplefile1.csv")
 ```
 
-Alle directory-en bestands verwijzingen verwijzen nu naar het opslag account `wasbs://container2@storage2.blob.core.windows.net`. Dit is het **naam knooppunt** dat u hebt opgegeven.
+Alle directory-en bestands verwijzingen verwijzen nu naar het opslag account `wasbs://container2@storage2.blob.core.windows.net` . Dit is het **naam knooppunt** dat u hebt opgegeven.
 
 Configureer de `/user/RevoShare/<SSH username>` Directory op **storage2** als volgt:
 

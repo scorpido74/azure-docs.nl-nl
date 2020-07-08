@@ -4,10 +4,9 @@ description: Service Fabric ondersteunt het gebruik van Azure Files voor het mak
 ms.topic: conceptual
 ms.date: 6/10/2018
 ms.openlocfilehash: 514a0cb12359d58e38ebc30ae12cdb277757f2b2
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75750036"
 ---
 # <a name="azure-files-volume-driver-for-service-fabric"></a>Azure Files volume stuur programma voor Service Fabric
@@ -29,7 +28,7 @@ Het Azure Files-volume stuur programma is een [docker volume-invoeg toepassing](
 
 * U hebt [Power shell nodig met de service Fabric-module](/azure/service-fabric/service-fabric-get-started) of [SFCTL](https://docs.microsoft.com/azure/service-fabric/service-fabric-cli) geïnstalleerd.
 
-* Als u Hyper-V-containers gebruikt, moeten de volgende fragmenten worden toegevoegd aan de ClusterManifest (lokale cluster) of fabricSettings sectie in uw Azure Resource Manager-sjabloon (Azure cluster) of ClusterConfig. json (zelfstandige cluster).
+* Als u Hyper-V-containers gebruikt, moeten de volgende fragmenten worden toegevoegd aan de ClusterManifest (lokale cluster) of fabricSettings in uw Azure Resource Manager-sjabloon (Azure cluster) of ClusterConfig.json (zelfstandige cluster).
 
 In de ClusterManifest moet de volgende worden toegevoegd in de sectie hosting. In dit voor beeld is de volume naam **sfazurefile** en wordt de poort die wordt geluisterd naar op het cluster **19100**. Vervang deze door de juiste waarden voor uw cluster.
 
@@ -39,7 +38,7 @@ In de ClusterManifest moet de volgende worden toegevoegd in de sectie hosting. I
 </Section>
 ```
 
-In de sectie fabricSettings in uw Azure Resource Manager-sjabloon (voor Azure-implementaties) of ClusterConfig. json (voor zelfstandige implementaties) moet het volgende code fragment worden toegevoegd. En vervang opnieuw de volume naam en poort waarden met uw eigen waarde.
+In de sectie fabricSettings in uw Azure Resource Manager-sjabloon (voor Azure-implementaties) of ClusterConfig.js(voor zelfstandige implementaties) moet het volgende code fragment worden toegevoegd. En vervang opnieuw de volume naam en poort waarden met uw eigen waarde.
 
 ```json
 "fabricSettings": [
@@ -235,7 +234,7 @@ Wanneer u een volume-invoeg toepassing opgeeft, wordt Service Fabric automatisch
 </Volume>
 ```
 
-Toepassings parameters worden ondersteund voor volumes, zoals wordt weer gegeven in het voor gaande manifest `MyStorageVar` fragment (zoek naar een voor beeld).
+Toepassings parameters worden ondersteund voor volumes, zoals wordt weer gegeven in het voor gaande manifest fragment (zoek naar `MyStorageVar` een voor beeld).
 
 Als er een docker-logboek stuur programma is opgegeven, moet u agents (of containers) implementeren voor het afhandelen van de logboeken in het cluster. De label **DriverOption** kan worden gebruikt om opties voor het logboek stuur programma op te geven.
 

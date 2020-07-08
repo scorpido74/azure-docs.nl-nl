@@ -11,10 +11,9 @@ ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
 ms.openlocfilehash: d099d7c233c3f4b5e65bfdb7d4b875a0e4098499
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75864278"
 ---
 # <a name="tasks-for-the-team-lead-on-a-team-data-science-process-team"></a>Taken voor de team leider van een team data Science process team
@@ -77,7 +76,7 @@ Voor de namen die zijn opgegeven voor de opslag plaatsen en directory's in deze 
 - Een kleine gegevens Science-groep die geen meerdere data Science-teams heeft. 
 - Een grotere gegevens Science-groep met meerdere teams voor data technologie die de samen werking tussen teams wil optimaliseren met activiteiten zoals het plannen van Sprint op groepniveau. 
 
-Als teams ervoor kiezen hun team-specifieke opslag plaatsen te hebben onder één groeps project, moeten de team leiders de opslag plaatsen maken met namen als * \<team naam>-sjabloon* en * \<teamnaam>-hulpprogram ma's*. Bijvoorbeeld: *TeamATemplate* en *TeamAUtilities*. 
+Als teams ervoor kiezen hun team-specifieke opslag plaatsen te hebben onder één groeps project, moeten de team leiders de opslag plaatsen maken met namen als * \<TeamName> sjabloon* en * \<TeamName> hulpprogram ma's*. Bijvoorbeeld: *TeamATemplate* en *TeamAUtilities*. 
 
 In elk geval moeten team leiders hun team leden laten weten welke opslag plaatsen en hulpprogram ma's voor het instellen en klonen van de sjabloon moeten worden gemaakt. Project leiders moeten de [Project Lead taken volgen voor een Data Science-Team](project-lead-tasks.md) om project opslagplaatsen te maken, hetzij onder afzonderlijke projecten of één project. 
 
@@ -85,17 +84,17 @@ In elk geval moeten team leiders hun team leden laten weten welke opslag plaatse
 
 Een apart project maken voor uw team:
 
-1. Ga in uw webbrowser naar de start pagina van de Azure DevOps-organisatie van uw groep *op URL\//\<https: Server naam\<>/organisatie naam>* en selecteer **Nieuw project**. 
+1. Ga in uw webbrowser naar de start pagina van de Azure DevOps-organisatie van uw groep op URL *https: \/ / \<server name> / \<organization name> *en selecteer **Nieuw project**. 
    
    ![Selecteer Nieuw project](./media/team-lead-tasks/team-leads-2-create-new-team.png)
    
 1. Voer in het dialoog venster **project maken** de naam van uw team in, zoals *MyTeam*, onder **project naam**en selecteer **Geavanceerd**. 
    
-1. Onder **versie beheer**selecteert u **Git**en klikt u onder **werk item proces**op **Agile**. Selecteer vervolgens **maken**. 
+1. Onder **versie beheer**selecteert u **Git**en klikt u onder **werk item proces**op **Agile**. Selecteer vervolgens **Maken**. 
    
    ![Project maken](./media/team-lead-tasks/team-leads-3-create-new-team-2.png)
    
-De pagina **samen vatting** team project wordt geopend met pagina-URL *https:\//\<server naam\<>/organisatie naam\<>/team naam>*.
+De pagina **samen vatting** team project wordt geopend met pagina-URL *https: \/ / \<server name> / \<organization name> / \<team name> *.
 
 ### <a name="rename-the-myteam-default-repository-to-teamutilities"></a>Wijzig de naam van de MyTeam-standaard opslagplaats in TeamUtilities
 
@@ -140,9 +139,9 @@ Als u uw team opslagplaatsen wilt vullen met de inhoud van de groep algemene ops
    
    ![Import selecteren](./media/team-lead-tasks/import-repo.png)
    
-1. In het dialoog venster **een Git-opslag plaats importeren** selecteert u **Git** als **bron type**en voert u de URL in voor de opslag plaats van de gemeen schappelijke sjabloon onder **kloon-URL**. De URL is *https:\//\<server naam>/\<organisatie naam>/_git/\<naam van opslag plaats>*. Bijvoorbeeld: *https:\//dev.Azure.com/DataScienceUnit/GroupCommon/_git/GroupProjectTemplate*. 
+1. In het dialoog venster **een Git-opslag plaats importeren** selecteert u **Git** als **bron type**en voert u de URL in voor de opslag plaats van de gemeen schappelijke sjabloon onder **kloon-URL**. De URL is *https: \/ / \<server name> / \<organization name> /_git/ \<repository name> *. Bijvoorbeeld: *https: \/ /dev.Azure.com/DataScienceUnit/GroupCommon/_git/GroupProjectTemplate*. 
    
-1. Selecteer **importeren**. De inhoud van de opslag plaats van de groeps sjabloon wordt geïmporteerd in uw team sjabloon opslagplaats. 
+1. Selecteer **Importeren**. De inhoud van de opslag plaats van de groeps sjabloon wordt geïmporteerd in uw team sjabloon opslagplaats. 
    
    ![Opslag plaats algemene sjabloon import groep](./media/team-lead-tasks/import-repo-2.png)
    
@@ -199,7 +198,7 @@ Opslag plaatsen klonen:
    
 1. Ga naar de map die u hebt gemaakt.
    
-1. In Git Bash voert u de opdracht `git clone <clone URL>`uit, \<waarbij de kloon-URL> de URL is die u hebt gekopieerd in het dialoog venster **klonen** .
+1. Voer in Git-Bash de opdracht uit `git clone <clone URL>` , waarbij de \<clone URL> URL is die u hebt gekopieerd in het dialoog venster **klonen** .
    
    Gebruik bijvoorbeeld een van de volgende opdrachten om de **TeamUtilities** -opslag plaats te klonen naar de *MyTeam* -map op uw lokale computer. 
    
