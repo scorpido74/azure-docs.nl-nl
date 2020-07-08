@@ -9,16 +9,16 @@ ms.subservice: translator-text
 ms.date: 05/26/2020
 ms.author: swmachan
 ms.topic: conceptual
-ms.openlocfilehash: 510c75b6e1a06ab800128534a72c5e1f6e510600
-ms.sourcegitcommit: fc718cc1078594819e8ed640b6ee4bef39e91f7f
+ms.openlocfilehash: 826da5c3754ad03ac1fb62288f0b03ee2353d1f3
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "83997040"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85962259"
 ---
 # <a name="what-is-a-dictionary"></a>Wat is een woorden lijst?
 
-Een woorden lijst is een uitgelijnd paar documenten waarin een lijst met zinsdelen of zinnen en de bijbehorende vertalingen wordt opgegeven. Gebruik een woorden lijst in uw training als u wilt dat micro soft Translator altijd alle exemplaren van de bron woord groep of zin moet vertalen met behulp van de vertaling die u in de woorden lijst hebt gegeven. Woorden lijsten worden soms Glossaries of term bases genoemd. U kunt de woorden lijst beschouwen als een brute kracht ' kopiëren en vervangen ' voor alle termen die u vermeldt. Daarnaast bouwt micro soft Custom Translator service samen met een eigen woorden boek voor algemeen gebruik om de kwaliteit van de vertaling te verbeteren. Een door de klant verschafte woorden lijst heeft echter een broncel en zal eerst zoeken naar woorden of zinnen.
+Een woorden lijst is een uitgelijnd paar documenten waarin een lijst met zinsdelen of zinnen en de bijbehorende vertalingen wordt opgegeven. Gebruik een woorden lijst in uw training, wanneer u wilt dat vertaler altijd alle exemplaren van de bron frase of zin vertaalt met behulp van de vertaling die u in de woorden lijst hebt gegeven. Woorden lijsten worden soms Glossaries of term bases genoemd. U kunt de woorden lijst beschouwen als een brute kracht ' kopiëren en vervangen ' voor alle termen die u vermeldt. Daarnaast bouwt de functie Custom Translator en maakt gebruik van een eigen woorden boek voor algemene doel einden om de kwaliteit van de vertaling te verbeteren. Een door de klant verschafte woorden lijst heeft echter een broncel en zal eerst zoeken naar woorden of zinnen.
 
 Woorden boeken werken alleen voor projecten in taal paren met een volledig ondersteund micro soft General Neural-netwerk model achter de computers. [Bekijk de volledige lijst met talen](https://docs.microsoft.com/azure/cognitive-services/translator/language-support#customization).
 

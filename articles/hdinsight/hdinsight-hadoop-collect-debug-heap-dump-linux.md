@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 01/02/2020
-ms.openlocfilehash: 9134eb6922b0ed37bbe6051b138da2c7c082b175
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 1ef52d74f7ae6e7e0d8c58e3b1972a0a1227c6b5
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75658794"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85962200"
 ---
 # <a name="enable-heap-dumps-for-apache-hadoop-services-on-linux-based-hdinsight"></a>Heap-dumps inschakelen voor Apache Hadoop Services op HDInsight op basis van Linux
 
@@ -37,21 +37,21 @@ U kunt ook heap-dumps inschakelen voor de kaart en processen verminderen die doo
 
 Heap-dumps worden ingeschakeld door de opties voor het door geven (ook wel "kiest of para meters" genoemd) aan de JVM toe te staan wanneer een service wordt gestart. Voor de meeste [Apache Hadoop](https://hadoop.apache.org/) Services kunt u het shell script dat wordt gebruikt om de service te starten, zodanig wijzigen dat deze opties worden door gegeven.
 
-In elk script is er een export voor ** \* \_kiest**, die de opties bevat die zijn door gegeven aan de JVM. In het script **Hadoop-env.sh** bevat bijvoorbeeld de regel die begint met `export HADOOP_NAMENODE_OPTS=` de opties voor de NameNode-service.
+In elk script is er een export voor ** \* \_ kiest**, die de opties bevat die zijn door gegeven aan de JVM. In het script **Hadoop-env.sh** bevat bijvoorbeeld de regel die begint met `export HADOOP_NAMENODE_OPTS=` de opties voor de NameNode-service.
 
-Het toewijzen en verminderen van processen is iets anders, omdat deze bewerkingen een onderliggend proces van de MapReduce-service zijn. Elke kaart of vermindert proces wordt uitgevoerd in een onderliggende container en er zijn twee vermeldingen die de JVM-opties bevatten. Beide zijn opgenomen in **mapred-site. XML**:
+Het toewijzen en verminderen van processen is iets anders, omdat deze bewerkingen een onderliggend proces van de MapReduce-service zijn. Elke kaart of vermindert proces wordt uitgevoerd in een onderliggende container en er zijn twee vermeldingen die de JVM-opties bevatten. Beide bevinden zich in **mapred-site.xml**:
 
 * **MapReduce. admin. map. Child. java. kiest**
 * **MapReduce. admin. reduce. Child. java. kiest**
 
 > [!NOTE]  
-> We raden u aan [Apache Ambari](https://ambari.apache.org/) te gebruiken om de instellingen voor scripts en mapred-site. XML te wijzigen, omdat Ambari de replicatie van wijzigingen tussen knoop punten in het cluster moet afhandelen. Zie de sectie [Apache Ambari gebruiken](#using-apache-ambari) voor specifieke stappen.
+> We raden u aan [Apache Ambari](https://ambari.apache.org/) te gebruiken voor het wijzigen van de instellingen voor scripts en mapred-site.xml, omdat Ambari de replicatie van wijzigingen tussen knoop punten in het cluster wijzigt. Zie de sectie [Apache Ambari gebruiken](#using-apache-ambari) voor specifieke stappen.
 
 ### <a name="enable-heap-dumps"></a>Heapdumps inschakelen
 
 Met de volgende optie worden heap-dumps ingeschakeld wanneer er een OutOfMemoryError optreedt:
 
-    -XX:+HeapDumpOnOutOfMemoryError
+`-XX:+HeapDumpOnOutOfMemoryError`
 
 De **+** geeft aan dat deze optie is ingeschakeld. Uitgeschakeld is de standaardinstelling.
 
@@ -62,15 +62,15 @@ De **+** geeft aan dat deze optie is ingeschakeld. Uitgeschakeld is de standaard
 
 De standaard locatie voor het dump bestand is de huidige werkmap. U kunt bepalen waar het bestand wordt opgeslagen met behulp van de volgende optie:
 
-    -XX:HeapDumpPath=/path
+`-XX:HeapDumpPath=/path`
 
-Als u bijvoorbeeld gebruikt `-XX:HeapDumpPath=/tmp` , worden de dumps opgeslagen in de map/tmp-map.
+Als u bijvoorbeeld gebruikt, `-XX:HeapDumpPath=/tmp` worden de dumps opgeslagen in de map/tmp-map.
 
 ### <a name="scripts"></a>Scripts
 
 U kunt ook een script activeren als er een **OutOfMemoryError** optreedt. U kunt bijvoorbeeld een melding activeren, zodat u weet dat de fout is opgetreden. Gebruik de volgende optie om een script op een __OutOfMemoryError__te starten:
 
-    -XX:OnOutOfMemoryError=/path/to/script
+`-XX:OnOutOfMemoryError=/path/to/script`
 
 > [!NOTE]  
 > Omdat Apache Hadoop een gedistribueerd systeem is, moet elk gebruikt script op alle knoop punten in het cluster worden geplaatst waarop de-service wordt uitgevoerd.
@@ -81,7 +81,7 @@ U kunt ook een script activeren als er een **OutOfMemoryError** optreedt. U kunt
 
 Als u de configuratie voor een service wilt wijzigen, gebruikt u de volgende stappen:
 
-1. Ga in een webbrowser naar `https://CLUSTERNAME.azurehdinsight.net`, waarbij `CLUSTERNAME` de naam van het cluster is.
+1. Ga in een webbrowser naar `https://CLUSTERNAME.azurehdinsight.net` , waarbij `CLUSTERNAME` de naam van het cluster is.
 
 2. Selecteer in de lijst met aan de linkerkant het service gebied dat u wilt wijzigen. Bijvoorbeeld **HDFS**. Selecteer in het middelste gebied het tabblad **configuratie** .
 
@@ -91,7 +91,7 @@ Als u de configuratie voor een service wilt wijzigen, gebruikt u de volgende sta
 
     ![Gefilterde lijst Apache Ambari config](./media/hdinsight-hadoop-collect-debug-heap-dump-linux/hdinsight-filter-list.png)
 
-4. Zoek het ** \* \_item omlaag voor de service** waarvoor u de opslag van heap-dumps wilt inschakelen en voeg de opties toe die u wilt inschakelen. In de volgende afbeelding hebt `-XX:+HeapDumpOnOutOfMemoryError -XX:HeapDumpPath=/tmp/` u de vermelding **HADOOP\_NAMENODE\_kiest** :
+4. Zoek het **item omlaag voor \* \_ de service** waarvoor u de opslag van heap-dumps wilt inschakelen en voeg de opties toe die u wilt inschakelen. In de volgende afbeelding hebt `-XX:+HeapDumpOnOutOfMemoryError -XX:HeapDumpPath=/tmp/` u de vermelding **HADOOP \_ NAMENODE \_ kiest** :
 
     ![Apache Ambari Hadoop-namenode-kiest](./media/hdinsight-hadoop-collect-debug-heap-dump-linux/hadoop-namenode-opts.png)
 

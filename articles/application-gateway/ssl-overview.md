@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: conceptual
 ms.date: 5/13/2020
 ms.author: victorh
-ms.openlocfilehash: f9d55c3294cc28b6193371cdc6ede7ba1bc8167b
-ms.sourcegitcommit: bf99428d2562a70f42b5a04021dde6ef26c3ec3a
+ms.openlocfilehash: 1986955c7135cb9296937392b23635ae62d8d9f7
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/23/2020
-ms.locfileid: "85254800"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85962098"
 ---
 # <a name="overview-of-tls-termination-and-end-to-end-tls-with-application-gateway"></a>Overzicht van TLS-beëindiging en end-to-end TLS met Application Gateway
 
@@ -111,7 +111,7 @@ Verificatie certificaten zijn afgeschaft en vervangen door vertrouwde basis cert
 
 - Naast het basis certificaat komt met Application Gateway v2 ook te controleren of de host-instelling die is opgegeven in de back-end-http-instelling overeenkomt met die van de algemene naam (CN) die wordt gepresenteerd door het TLS/SSL-certificaat van de back-endserver. Wanneer u probeert een TLS-verbinding met de back-end tot stand te brengen, stelt Application Gateway v2 de uitbrei ding Servernaamindicatie (SNI) in op de host die is opgegeven in de back-end-http-instelling.
 
-- Als de optie **hostnaam uit het back-mailadres kiezen** wordt gekozen in plaats van het veld host in de http-instelling van de back-end, wordt de SNI-header altijd ingesteld op de FQDN-naam van de back-end en de CN op het TLS/SSL-server certificaat moet overeenkomen met de FQDN. Back-end-groeps leden met IP-adressen worden niet ondersteund in dit scenario.
+- Als de optie **hostnaam van back-end kiezen** wordt gekozen in plaats van het veld host in de back-end-http-instelling, wordt de SNI-header altijd ingesteld op de FQDN-naam van de back-end en de CN op het TLS/SSL-certificaat van de back-endserver moet overeenkomen met de FQDN. Back-end-groeps leden met IP-adressen worden niet ondersteund in dit scenario.
 
 - Het basis certificaat is een base64-gecodeerd basis certificaat van de back-end-server certificaten.
 
