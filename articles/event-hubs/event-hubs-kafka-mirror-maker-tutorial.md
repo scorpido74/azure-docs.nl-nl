@@ -4,10 +4,10 @@ description: Dit artikel bevat informatie over het gebruik van Kafka MirrorMaker
 ms.topic: how-to
 ms.date: 06/23/2020
 ms.openlocfilehash: aea8ebcfa65d5f4c90aa1908d03f0fcde8906bba
-ms.sourcegitcommit: 01cd19edb099d654198a6930cebd61cae9cb685b
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/24/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85320187"
 ---
 # <a name="use-kafka-mirrormaker-with-event-hubs-for-apache-kafka"></a>Gebruik Kafka MirrorMaker met Event Hubs voor Apache Kafka

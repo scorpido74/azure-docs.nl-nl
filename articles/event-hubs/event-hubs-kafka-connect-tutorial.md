@@ -4,16 +4,16 @@ description: In dit artikel vindt u informatie over het gebruik van Apache Spark
 ms.topic: how-to
 ms.date: 06/23/2020
 ms.openlocfilehash: 2e7a6b406b6d33c94c6fddea2f73b70c24f45f86
-ms.sourcegitcommit: 01cd19edb099d654198a6930cebd61cae9cb685b
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/24/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85320169"
 ---
 # <a name="integrate-apache-kafka-connect-support-on-azure-event-hubs-preview"></a>Apache Kafka Connect-ondersteuning integreren in Azure Event Hubs (preview)
 Naarmate de gegevensopname voor bedrijven toeneemt, neemt tevens de vereiste toe om diverse externe bronnen en sinks op te nemen. [Apache Kafka Connect](https://kafka.apache.org/documentation/#connect) biedt een framework om gegevens te verbinden met en te exporteren/importeren uit/in externe systemen als MySQL, HDFS, en een bestandssysteem via een Kafka-cluster. Deze zelf studie begeleidt u bij het gebruik van Kafka Connect Framework met Event Hubs.
 
-In deze zelf studie wordt u begeleid bij het integreren van Kafka Connect met een Event Hub en het implementeren van basis-FileStreamSource en FileStreamSink-connectors. Deze functie is momenteel beschikbaar als preview-product. Hoewel deze connectors niet bedoeld zijn voor gebruik in productieomgevingen, laten ze een end-to-end Kafka Connect-scenario zien waarin Azure Event Hubs als een Kafka-broker fungeert.
+In deze zelf studie wordt u begeleid bij het integreren van Kafka Connect met een Event Hub en het implementeren van basis-FileStreamSource en FileStreamSink-connectors. Deze functie is momenteel in preview. Hoewel deze connectors niet bedoeld zijn voor gebruik in productieomgevingen, laten ze een end-to-end Kafka Connect-scenario zien waarin Azure Event Hubs als een Kafka-broker fungeert.
 
 > [!NOTE]
 > Dit voorbeeld is beschikbaar op [GitHub](https://github.com/Azure/azure-event-hubs-for-kafka/tree/master/tutorials/connect).

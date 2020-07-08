@@ -12,10 +12,10 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/10/2018
 ms.openlocfilehash: f1e861bf9c6cc2a485ac9f153a0c932ec2e6fbb2
-ms.sourcegitcommit: 01cd19edb099d654198a6930cebd61cae9cb685b
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/24/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85318906"
 ---
 # <a name="azure-data-factory---samples"></a>Azure Data Factory-voor beelden
@@ -26,7 +26,7 @@ ms.locfileid: "85318906"
 ## <a name="samples-on-github"></a>Voorbeelden op GitHub
 De [github Azure-DataFactory-opslag plaats](https://github.com/azure/azure-datafactory) bevat verschillende voor beelden waarmee u snel kunt werken met Azure Data Factory Service (of) de scripts kunt wijzigen en deze in de eigen toepassing kunt gebruiken. De map Samples\JSON bevat JSON-fragmenten voor algemene scenario's.
 
-| Voorbeeld | Description |
+| Voorbeeld | Beschrijving |
 |:--- |:--- |
 | [ADF-walkthrough](https://github.com/Azure/Azure-DataFactory/tree/master/SamplesV1/ADFWalkthrough) |Dit voor beeld bevat een end-to-end-procedure voor het verwerken van logboek bestanden met behulp van Azure Data Factory om gegevens van logboek bestanden in te scha kelen naar inzichten. <br/><br/>In deze walkthrough verzamelt de Data Factory-pijp lijn voorbeeld logboeken, verwerkt en verrijkt de gegevens van logboeken met referentie gegevens, en worden de gegevens getransformeerd om de effectiviteit te beoordelen van een marketing campagne die onlangs is gestart. |
 | [JSON-voor beelden](https://github.com/Azure/Azure-DataFactory/tree/master/SamplesV1/JSON) |Dit voor beeld bevat JSON-voor beelden voor algemene scenario's. |

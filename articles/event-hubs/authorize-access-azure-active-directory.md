@@ -4,10 +4,10 @@ description: In dit artikel vindt u informatie over het verlenen van toegang tot
 ms.topic: conceptual
 ms.date: 06/23/2020
 ms.openlocfilehash: 734c95f6f26dbb646f641e4446287df52c86be6a
-ms.sourcegitcommit: 01cd19edb099d654198a6930cebd61cae9cb685b
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/24/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85317986"
 ---
 # <a name="authorize-access-to-event-hubs-resources-using-azure-active-directory"></a>Toegang tot Event Hubs resources autoriseren met behulp van Azure Active Directory

@@ -7,13 +7,13 @@ ms.reviewer: klam, logicappspm
 ms.topic: article
 ms.date: 07/26/2019
 ms.openlocfilehash: a9e6e8276733eeed88561ed39a6702aec76286a4
-ms.sourcegitcommit: 01cd19edb099d654198a6930cebd61cae9cb685b
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/24/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85317766"
 ---
-# <a name="create-azure-resource-manager-templates-to-automate-deployment-for-azure-logic-apps"></a>Azure Resource Manager sjablonen maken voor het automatiseren van de implementatie voor Azure Logic Apps
+# <a name="create-azure-resource-manager-templates-to-automate-deployment-for-azure-logic-apps"></a>Azure Resource Manager-sjablonen maken voor het automatiseren van de implementatie voor Azure Logic Apps
 
 In dit artikel worden de manieren beschreven waarop u een [Azure Resource Manager sjabloon](../azure-resource-manager/management/overview.md) voor uw logische app kunt maken om het maken en implementeren van uw logische app te automatiseren. Zie [overzicht: implementatie voor Logic apps met Azure Resource Manager sjablonen automatiseren](logic-apps-azure-resource-manager-templates-overview.md)voor een overzicht van de structuur en syntaxis voor een sjabloon die uw werk stroom definitie bevat en andere resources die nodig zijn voor implementatie.
 
@@ -34,7 +34,7 @@ Zie de volgende onderwerpen voor meer informatie over Azure Resource Manager sja
 
 Voor de eenvoudigste manier om geldige sjablonen voor logische apps met para meters te maken die in de meeste gevallen gereed zijn voor implementatie, gebruikt u Visual Studio (gratis Community Edition of hoger) en de Azure Logic Apps-Hulpprogram Ma's voor Visual Studio. U kunt vervolgens [uw logische app maken in Visual Studio](../logic-apps/quickstart-create-logic-apps-with-visual-studio.md) of [een bestaande logische app zoeken en downloaden van de Azure Portal naar Visual Studio](../logic-apps/manage-logic-apps-with-visual-studio.md).
 
-Door uw logische app te downloaden, krijgt u een sjabloon die de definities voor uw logische app en andere resources, zoals verbindingen, bevat. De sjabloon bevat ook *parameterizes*of definieert para meters voor de waarden die worden gebruikt voor het implementeren van uw logische app en andere resources. U kunt de waarden voor deze para meters opgeven in een afzonderlijk parameter bestand. Op die manier kunt u deze waarden gemakkelijker wijzigen op basis van uw implementatie behoeften. Zie deze onderwerpen voor meer informatie:
+Door uw logische app te downloaden, krijgt u een sjabloon die de definities voor uw logische app en andere resources, zoals verbindingen, bevat. De sjabloon bevat ook *parameterizes*of definieert para meters voor de waarden die worden gebruikt voor het implementeren van uw logische app en andere resources. U kunt de waarden voor deze para meters opgeven in een afzonderlijk parameter bestand. Op die manier kunt u deze waarden gemakkelijker wijzigen op basis van uw implementatie behoeften. Raadpleeg de volgende onderwerpen voor meer informatie:
 
 * [Logische apps maken met Visual Studio](../logic-apps/quickstart-create-logic-apps-with-visual-studio.md)
 * [Logische apps beheren met Visual Studio](../logic-apps/manage-logic-apps-with-visual-studio.md)

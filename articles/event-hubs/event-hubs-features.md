@@ -4,13 +4,13 @@ description: In dit artikel vindt u informatie over de functies en terminologie 
 ms.topic: article
 ms.date: 06/23/2020
 ms.openlocfilehash: 5b646c1a0730b046dd3e66a5d5324b659999f83a
-ms.sourcegitcommit: 01cd19edb099d654198a6930cebd61cae9cb685b
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/24/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85320703"
 ---
-# <a name="features-and-terminology-in-azure-event-hubs"></a>Functies en terminologie in Azure Event Hubs
+# <a name="features-and-terminology-in-azure-event-hubs"></a>Functies en terminologie in azure Event Hubs
 
 Azure Event Hubs is een schaal bare service voor gebeurtenis verwerking waarmee grote hoeveel heden gebeurtenissen en gegevens worden opgenomen en verwerkt, met lage latentie en hoge betrouw baarheid. Zie [Wat is Event hubs?](event-hubs-what-is-event-hubs.md) voor een overzicht op hoog niveau.
 
@@ -39,7 +39,7 @@ De keuze om AMQP of HTTPS te gebruiken, geldt specifiek voor het gebruiksscenari
 
 ![Event Hubs](./media/event-hubs-features/partition_keys.png)
 
-Event Hubs zorgt ervoor dat alle gebeurtenissen met een partitiesleutelwaarde op volgorde en aan dezelfde partitie worden geleverd. De identiteit van de uitgever en de waarde van de partitiesleutel moeten overeenkomen als er partitiesleutels met uitgeversbeleid worden gebruikt. Als deze niet overeenkomen, treedt er een fout op.
+Event Hubs zorgt ervoor dat alle gebeurtenissen met een partitiesleutelwaarde op volgorde en aan dezelfde partitie worden geleverd. De identiteit van de uitgever en de waarde van de partitiesleutel moeten overeenkomen als er partitiesleutels met uitgeversbeleid worden gebruikt. Anders treedt er een fout op.
 
 ### <a name="publisher-policy"></a>Uitgeversbeleid
 

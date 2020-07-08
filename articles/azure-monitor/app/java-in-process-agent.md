@@ -4,10 +4,10 @@ description: Bewaking van toepassings prestaties voor Java-toepassingen die word
 ms.topic: conceptual
 ms.date: 03/29/2020
 ms.openlocfilehash: 3e3d108603ad6210143deea58049ff7b230bb6fa
-ms.sourcegitcommit: 01cd19edb099d654198a6930cebd61cae9cb685b
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/24/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85319700"
 ---
 # <a name="java-codeless-application-monitoring-azure-monitor-application-insights---public-preview"></a>Bewaking van Java-toepassingen Azure Monitor Application Insights-open bare preview-versie
@@ -20,7 +20,7 @@ Het is niet meer nodig om de Application Insights Java-SDK toe te voegen aan uw 
 
 U kunt nog steeds aangepaste telemetrie verzenden vanuit uw toepassing. De 3,0-agent volgt deze samen met alle automatisch verzamelde telemetrie en correleert deze.
 
-## <a name="quickstart"></a>Snelstartgids
+## <a name="quickstart"></a>Snelstart
 
 **1. de agent downloaden**
 

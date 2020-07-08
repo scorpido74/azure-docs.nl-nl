@@ -4,10 +4,10 @@ description: In dit artikel vindt u informatie over het gebruik van Apache Spark
 ms.topic: how-to
 ms.date: 06/23/2020
 ms.openlocfilehash: 00925242d5685749aba27ad2fc537ffb07f4c68d
-ms.sourcegitcommit: 01cd19edb099d654198a6930cebd61cae9cb685b
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/24/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85320101"
 ---
 # <a name="connect-your-apache-spark-application-with-azure-event-hubs"></a>Uw Apache Spark-toepassing verbinden met Azure Event Hubs
