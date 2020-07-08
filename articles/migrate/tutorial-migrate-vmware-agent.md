@@ -4,12 +4,12 @@ description: Informatie over het uitvoeren van een migratie van VMware-VM’s op
 ms.topic: tutorial
 ms.date: 06/09/2020
 ms.custom: MVC
-ms.openlocfilehash: b01665e6ddb78ff95714004f4dbe5c97574aa5fb
-ms.sourcegitcommit: 99d016949595c818fdee920754618d22ffa1cd49
+ms.openlocfilehash: ca06dc9d5de9853915e2aaa0d86c1a444dab415a
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/15/2020
-ms.locfileid: "84769741"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86119256"
 ---
 # <a name="migrate-vmware-vms-to-azure-agent-based"></a>VMware-VM’s migreren naar Azure (op basis van een agent)
 
@@ -34,7 +34,7 @@ Als u nog geen abonnement op Azure hebt, maak dan een [gratis account](https://a
 
 ## <a name="prerequisites"></a>Vereisten
 
-Voordat u met deze zelfstudie begint, moet u de architectuur voor migratie op basis van een agent voor VMware [controleren](migrate-architecture.md).
+Voordat u met deze zelfstudie begint, moet u de architectuur voor migratie op basis van een agent voor VMware [controleren](./agent-based-migration-architecture.md).
 
 ## <a name="prepare-azure"></a>Azure voorbereiden
 
@@ -150,7 +150,7 @@ Als u een project hebt, voegt u het hulpprogramma als volgt toe:
 3. Klik in **Overzicht** op **Servers evalueren en migreren**.
 4. Klik onder **Servers detecteren, evalueren en migreren** op **Servers evalueren en migreren**.
 
-    ![Servers detecteren en evalueren] (./media/tutorial-migrate-vmware-agent/assess-migrate.png
+    ![Servers detecteren en evalueren](./media/tutorial-migrate-vmware-agent/assess-migrate.png)
 
 1. Klik in **Servers detecteren, evalueren en migreren** op **Hulpprogramma's toevoegen**.
 2. Selecteer in **Project migreren** uw Azure-abonnement en maak een resourcegroep als u er nog geen hebt.
@@ -355,7 +355,7 @@ Nadat u hebt geverifieerd dat de testmigratie naar verwachting werkt, kunt u de 
     - De replicatie van de on-premises machine wordt gestopt.
     - De machine wordt verwijderd uit het aantal **Replicerende servers** in Azure Migrate: Server Migration.
     - De informatie over de replicatiestatus voor de virtuele machine wordt opgeschoond.
-2. Installeer de Azure VM [Windows](https://docs.microsoft.com/azure/virtual-machines/extensions/agent-windows)- of [Linux](https://docs.microsoft.com/azure/virtual-machines/extensions/agent-linux)-agent op de gemigreerde computers.
+2. Installeer de Azure VM [Windows](../virtual-machines/extensions/agent-windows.md)- of [Linux](../virtual-machines/extensions/agent-linux.md)-agent op de gemigreerde computers.
 3. Voer correcties van de app uit na de migratie, zoals updates van de databaseverbindingsreeksen en webserverconfiguraties.
 4. Voer acceptatietesten van de toepassing en de migratie uit op de gemigreerde toepassing die nu wordt uitgevoerd in Azure.
 5. Leid het verkeer naar het gemigreerde Azure VM-exemplaar.
@@ -381,16 +381,16 @@ Nadat u hebt geverifieerd dat de testmigratie naar verwachting werkt, kunt u de 
     - Houd uw gegevens veilig door back-ups van virtuele Azure VM‘s te maken met behulp van de Azure Backup-service. [Meer informatie](../backup/quick-backup-vm-portal.md).
     - Houd workloads continu beschikbaar door Azure VM‘s naar een secundaire regio te repliceren met Site Recovery. [Meer informatie](../site-recovery/azure-to-azure-tutorial-enable-replication.md).
 - Voor betere beveiliging:
-    - Vergrendel en beperk de toegang van binnenkomend verkeer met [Just-in-time-beheer van Azure Security Center](https://docs.microsoft.com/azure/security-center/security-center-just-in-time).
-    - Beperk het netwerkverkeer naar beheereindpunten met [Netwerkbeveiligingsgroepen](https://docs.microsoft.com/azure/virtual-network/security-overview).
-    - Implementeer [Azure Disk Encryption](https://docs.microsoft.com/azure/security/azure-security-disk-encryption-overview) om schijven te beveiligen en gegevens te beschermen tegen diefstal en onbevoegde toegang.
+    - Vergrendel en beperk de toegang van binnenkomend verkeer met [Just-in-time-beheer van Azure Security Center](../security-center/security-center-just-in-time.md).
+    - Beperk het netwerkverkeer naar beheereindpunten met [Netwerkbeveiligingsgroepen](../virtual-network/security-overview.md).
+    - Implementeer [Azure Disk Encryption](../security/fundamentals/azure-disk-encryption-vms-vmss.md) om schijven te beveiligen en gegevens te beschermen tegen diefstal en onbevoegde toegang.
     - Lees meer informatie over [IaaS-resources beveiligen](https://azure.microsoft.com/services/virtual-machines/secure-well-managed-iaas/) en bezoek het [Azure Security Center](https://azure.microsoft.com/services/security-center/).
 - Voor controle en beheer:
-    - Overweeg de implementatie van [Azure Cost Management](https://docs.microsoft.com/azure/cost-management/overview) om uw resourcegebruik en uitgaven te bewaken.
+    - Overweeg de implementatie van [Azure Cost Management](../cost-management-billing/cloudyn/overview.md) om uw resourcegebruik en uitgaven te bewaken.
 
 
 
 
  ## <a name="next-steps"></a>Volgende stappen
 
-Onderzoek de [cloudmigratiereis](https://docs.microsoft.com/azure/architecture/cloud-adoption/getting-started/migrate) in het Azure Cloud Adoption Framework.
+Onderzoek de [cloudmigratiereis](/azure/architecture/cloud-adoption/getting-started/migrate) in het Azure Cloud Adoption Framework.

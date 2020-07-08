@@ -1,19 +1,14 @@
 ---
 title: 'Zelfstudie: Event Hubs-gegevens naar datawarehouse verzenden - Event Grid'
 description: 'Zelfstudie: In dit artikel wordt beschreven hoe u met Azure Event Grid en Event Hubs gegevens kunt migreren naar een SQL Data Warehouse. Er wordt een Azure-functie gebruikt om een |Capture-bestand op te halen.'
-services: event-grid
-author: spelluru
-manager: timlt
-ms.service: event-grid
 ms.topic: tutorial
-ms.date: 06/08/2020
-ms.author: spelluru
-ms.openlocfilehash: 76d63b508705bf426b8fc86b3d27d75241d6f246
-ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
+ms.date: 07/07/2020
+ms.openlocfilehash: 9373eb4902d1bc06b394385135d08236cfcea8f4
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/23/2020
-ms.locfileid: "85212173"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86117556"
 ---
 # <a name="tutorial-stream-big-data-into-a-data-warehouse"></a>Zelfstudie: Big data streamen naar een datawarehouse
 Azure [Event Grid](overview.md) is een intelligente service voor het routeren van gebeurtenissen waarmee u kunt reageren op meldingen (gebeurtenissen) van apps en services. Het kan bijvoorbeeld een Azure-functie activeren voor het verwerken van Event Hubs-gegevens die zijn opgenomen in een Azure Blob-opslag of Azure Data Lake Storage en de gegevens naar andere gegevensopslagplaatsen migreren. Dit [Event Hubs en Event Grid-voorbeeld](https://github.com/Azure/azure-event-hubs/tree/master/samples/e2e/EventHubsCaptureEventGridDemo) laat zien hoe u Event Hubs gebruikt met Event Grid voor het naadloos migreren van opgenomen gegevens van Event Hubs uit blob-opslag naar een SQL Data Warehouse.

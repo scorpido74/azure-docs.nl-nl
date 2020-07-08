@@ -1,18 +1,18 @@
 ---
 title: 'Zelfstudie: Azure Logic Apps triggeren met IoT Hub-gebeurtenissen'
 description: In deze zelfstudie leert u hoe u de functie voor het routeren van gebeurtenissen van Azure Event Grid gebruikt voor het maken van geautomatiseerde processen om acties van Azure Logic Apps uit te voeren op basis van IoT Hub-gebeurtenissen.
-services: iot-hub
+services: iot-hub, event-grid
 author: robinsh
 ms.service: iot-hub
 ms.topic: tutorial
-ms.date: 06/02/2020
+ms.date: 07/07/2020
 ms.author: robinsh
-ms.openlocfilehash: 2a0b25fc73bf0f549a199592d558c0097c2db8b8
-ms.sourcegitcommit: ba8df8424d73c8c4ac43602678dae4273af8b336
+ms.openlocfilehash: b9c2fc636b08e872b9ea5288eb6205d905885f0e
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/05/2020
-ms.locfileid: "84457062"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86120480"
 ---
 # <a name="tutorial-send-email-notifications-about-azure-iot-hub-events-using-event-grid-and-logic-apps"></a>Zelfstudie: E-mailmeldingen over gebeurtenissen van Azure IoT Hub verzenden met Event Grid en Logic Apps
 

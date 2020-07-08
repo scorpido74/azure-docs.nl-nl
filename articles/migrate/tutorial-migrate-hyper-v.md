@@ -6,12 +6,12 @@ ms.date: 06/08/2020
 ms.custom:
 - MVC
 - fasttrack-edit
-ms.openlocfilehash: 820b9b7e67e873d23bed5a1f9c6aa1a0a2128015
-ms.sourcegitcommit: 99d016949595c818fdee920754618d22ffa1cd49
+ms.openlocfilehash: 0e909a91d610c032bc1d9d003efae7c555afd8bc
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/15/2020
-ms.locfileid: "84770914"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86108223"
 ---
 # <a name="migrate-hyper-v-vms-to-azure"></a>Virtuele Hyper-V-machines naar Azure migreren 
 
@@ -213,7 +213,7 @@ Nadat u hebt geverifieerd dat de testmigratie naar verwachting werkt, kunt u de 
     - De replicatie van de on-premises machine wordt gestopt.
     - De machine wordt verwijderd uit het aantal **Replicerende servers** in Azure Migrate: Server Migration.
     - De informatie over de replicatiestatus voor de virtuele machine wordt opgeschoond.
-2. Installeer de Azure VM [Windows](https://docs.microsoft.com/azure/virtual-machines/extensions/agent-windows)- of [Linux](https://docs.microsoft.com/azure/virtual-machines/extensions/agent-linux)-agent op de gemigreerde computers.
+2. Installeer de Azure VM [Windows](../virtual-machines/extensions/agent-windows.md)- of [Linux](../virtual-machines/extensions/agent-linux.md)-agent op de gemigreerde computers.
 3. Voer correcties van de app uit na de migratie, zoals updates van de databaseverbindingsreeksen en webserverconfiguraties.
 4. Voer acceptatietesten van de toepassing en de migratie uit op de gemigreerde toepassing die nu wordt uitgevoerd in Azure.
 5. Leid het verkeer naar het gemigreerde Azure VM-exemplaar.
@@ -227,14 +227,14 @@ Nadat u hebt geverifieerd dat de testmigratie naar verwachting werkt, kunt u de 
     - Houd uw gegevens veilig door back-ups van virtuele Azure VM‘s te maken met behulp van de Azure Backup-service. [Meer informatie](../backup/quick-backup-vm-portal.md).
     - Houd workloads continu beschikbaar door Azure VM‘s naar een secundaire regio te repliceren met Site Recovery. [Meer informatie](../site-recovery/azure-to-azure-tutorial-enable-replication.md).
 - Voor betere beveiliging:
-    - Vergrendel en beperk de toegang van binnenkomend verkeer met [Just-in-time-beheer van Azure Security Center](https://docs.microsoft.com/azure/security-center/security-center-just-in-time).
-    - Beperk het netwerkverkeer naar beheereindpunten met [Netwerkbeveiligingsgroepen](https://docs.microsoft.com/azure/virtual-network/security-overview).
-    - Implementeer [Azure Disk Encryption](https://docs.microsoft.com/azure/security/azure-security-disk-encryption-overview) om schijven te beveiligen en gegevens te beschermen tegen diefstal en onbevoegde toegang.
+    - Vergrendel en beperk de toegang van binnenkomend verkeer met [Just-in-time-beheer van Azure Security Center](../security-center/security-center-just-in-time.md).
+    - Beperk het netwerkverkeer naar beheereindpunten met [Netwerkbeveiligingsgroepen](../virtual-network/security-overview.md).
+    - Implementeer [Azure Disk Encryption](../security/fundamentals/azure-disk-encryption-vms-vmss.md) om schijven te beveiligen en gegevens te beschermen tegen diefstal en onbevoegde toegang.
     - Lees meer informatie over [IaaS-resources beveiligen](https://azure.microsoft.com/services/virtual-machines/secure-well-managed-iaas/) en bezoek het [Azure Security Center](https://azure.microsoft.com/services/security-center/).
 - Voor controle en beheer:
--  Overweeg de implementatie van [Azure Cost Management](https://docs.microsoft.com/azure/cost-management/overview) om uw resourcegebruik en uitgaven te bewaken.
+-  Overweeg de implementatie van [Azure Cost Management](../cost-management-billing/cloudyn/overview.md) om uw resourcegebruik en uitgaven te bewaken.
 
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Onderzoek de [cloudmigratiereis](https://docs.microsoft.com/azure/architecture/cloud-adoption/getting-started/migrate) in het Azure Cloud Adoption Framework.
+Onderzoek de [cloudmigratiereis](/azure/architecture/cloud-adoption/getting-started/migrate) in het Azure Cloud Adoption Framework.

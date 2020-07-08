@@ -1,22 +1,16 @@
 ---
-title: 'Snelstartgids: aangepaste gebeurtenissen verzenden naar Event Hubs-Event Grid, Azure CLI'
-description: 'Snelstartgids: gebruik Azure Event Grid en Azure CLI om een onderwerp te publiceren en u te abonneren op deze gebeurtenis. Een event hub wordt gebruikt voor het eindpunt.'
-services: event-grid
-keywords: ''
-author: spelluru
-ms.author: spelluru
-ms.date: 11/05/2019
+title: 'Quickstart: Aangepaste gebeurtenissen verzenden naar Event Hubs - Event Grid, Azure CLI'
+description: 'Quickstart: Gebruik Azure Event Grid en Azure CLI om een onderwerp te publiceren en u te abonneren op deze gebeurtenis. Een event hub wordt gebruikt voor het eindpunt.'
+ms.date: 07/07/2020
 ms.topic: quickstart
-ms.service: event-grid
-ms.custom: seodec18
-ms.openlocfilehash: 832c4e453befc9e54051c968e0c364d22afd2bc2
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
-ms.translationtype: MT
+ms.openlocfilehash: 77268dde90959298c76813fb146e972ecfa3685d
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "73721420"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86104092"
 ---
-# <a name="quickstart-route-custom-events-to-azure-event-hubs-with-azure-cli-and-event-grid"></a>Snelstartgids: aangepaste gebeurtenissen door sturen naar Azure Event Hubs met Azure CLI en Event Grid
+# <a name="quickstart-route-custom-events-to-azure-event-hubs-with-azure-cli-and-event-grid"></a>Quickstart: Aangepaste gebeurtenissen naar Azure Event Hubs routeren met behulp van Azure CLI en Event Grid
 
 Azure Event Grid is een gebeurtenisservice voor de cloud. Azure Event Hubs is een van de ondersteunde gebeurtenishandlers. In dit artikel gebruikt u de Azure CLI om een aangepast onderwerp te maken, u op het aangepaste onderwerp te abonneren en de gebeurtenis te activeren om het resultaat weer te geven. U verzendt de gebeurtenissen naar een event hub.
 
@@ -59,7 +53,7 @@ az eventhubs eventhub create --name $hubname --namespace-name $namespace --resou
 
 ## <a name="subscribe-to-a-custom-topic"></a>Abonneren op een aangepast onderwerp
 
-U abonneert u op een event grid-onderwerp om te zien Event Grid welke gebeurtenissen u wilt bijhouden. In het volgende voor beeld wordt een abonnement genomen op het aangepaste onderwerp dat u hebt gemaakt en wordt de resource-ID van de Event Hub voor het eind punt door gegeven. Het eindpunt heeft deze indeling:
+U abonneert u op een Event Grid-onderwerp om Event Grid te laten weten welke gebeurtenissen u wilt traceren. In het volgende voorbeeld ziet u hoe u zich abonneert op het aangepaste onderwerp dat u hebt gemaakt, en hoe de resource-id van de Event Hub wordt doorgegeven voor het eindpunt. Het eindpunt heeft deze indeling:
 
 `/subscriptions/<subscription-id>/resourceGroups/<resource-group-name>/providers/Microsoft.EventHub/namespaces/<namespace-name>/eventhubs/<hub-name>`
 
@@ -87,7 +81,7 @@ endpoint=$(az eventgrid topic show --name $topicname -g gridResourceGroup --quer
 key=$(az eventgrid topic key list --name $topicname -g gridResourceGroup --query "key1" --output tsv)
 ```
 
-Ter vereenvoudiging van dit artikel gebruikt u voorbeeldgebeurtenisgegevens om naar het aangepaste onderwerp te verzenden. Meestal worden de gebeurtenisgegevens verzonden via een toepassing of Azure-service. CURL is een hulpprogramma waarmee HTTP-aanvragen worden verzonden. In dit artikel gebruiken we CURL om de gebeurtenis naar het aangepaste onderwerp te verzenden.  In het volgende voorbeeld worden drie gebeurtenissen verstuurd naar het onderwerp van Event Grid:
+Om dit artikel zo eenvoudig mogelijk te maken, gebruikt u voorbeeldgebeurtenisgegevens om naar het aangepaste onderwerp te verzenden. Meestal worden de gebeurtenisgegevens verzonden via een toepassing of Azure-service. CURL is een hulpprogramma waarmee HTTP-aanvragen worden verzonden. In dit artikel gebruiken we CURL om de gebeurtenis naar het aangepaste onderwerp te verzenden.  In het volgende voorbeeld worden drie gebeurtenissen verstuurd naar het onderwerp van Event Grid:
 
 ```azurecli-interactive
 for i in 1 2 3

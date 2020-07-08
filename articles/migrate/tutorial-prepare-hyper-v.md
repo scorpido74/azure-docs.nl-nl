@@ -4,12 +4,12 @@ description: Meer informatie over Hyper-V-VM's voorbereiden op evaluatie/migrati
 ms.topic: tutorial
 ms.date: 04/15/2020
 ms.custom: mvc
-ms.openlocfilehash: ca9020a9c306eea39d75c15c96b5f9fe9bcc11fe
-ms.sourcegitcommit: 99d016949595c818fdee920754618d22ffa1cd49
+ms.openlocfilehash: 5f669de6bd8d767ca7b947fca883187dad9fe29d
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/15/2020
-ms.locfileid: "84770540"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86109617"
 ---
 # <a name="prepare-for-assessment-and-migration-of-hyper-v-vms-to-azure"></a>Hyper-V-VM's voorbereiden op evaluatie en migratie naar Azure
 
@@ -74,13 +74,13 @@ De tenant/globale beheerder kan machtigingen als volgt verlenen:
     ![Azure AD-machtigingen](./media/tutorial-prepare-hyper-v/aad.png)
 
 > [!NOTE]
-> Dit is een standaardinstelling die niet gevoelig is. [Meer informatie](https://docs.microsoft.com/azure/active-directory/develop/active-directory-how-applications-are-added#who-has-permission-to-add-applications-to-my-azure-ad-instance).
+> Dit is een standaardinstelling die niet gevoelig is. [Meer informatie](../active-directory/develop/active-directory-how-applications-are-added.md#who-has-permission-to-add-applications-to-my-azure-ad-instance).
 
 
 
 #### <a name="assign-application-developer-role"></a>Rol toepassingsontwikkelaar toewijzen
 
-Een tenant/globale beheerder kan de rol van Toepassingsontwikkelaar toewijzen aan het account. [Meer informatie](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-users-assign-role-azure-portal).
+Een tenant/globale beheerder kan de rol van Toepassingsontwikkelaar toewijzen aan het account. [Meer informatie](../active-directory/fundamentals/active-directory-users-assign-role-azure-portal.md).
 
 ### <a name="assign-azure-account-permissions"></a>Machtigingen voor het Azure-account toewijzen
 
@@ -106,7 +106,7 @@ U kunt Hyper-V voor de VM-evaluatie handmatig voorbereiden of een configuratiesc
 **PowerShell-versie bevestigen** | Controleert of u het script uitvoert op een ondersteunde PowerShell-versie. | Controleer of u PowerShell versie 4.0 of hoger uitvoert op de Hyper-V-host.
 **Een account maken** | Controleert of u (de gebruiker die het script uitvoert) beheerdersbevoegdheden op de Hyper-V-host hebt.<br/><br/>  Hiermee kunt u een lokale gebruikersaccount (geen beheerder) maken dat de Azure Migrate-service gebruikt om te communiceren met de Hyper-V-host. Dit gebruikersaccount wordt toegevoegd aan deze groepen op de host:<br/><br/> - Gebruikers van extern beheer<br/><br/> - Hyper-V-beheerders<br/><br/>- Prestatiemetergebruikers | Stel een domein- of lokale gebruikersaccount in met beheerdersmachtigingen op de Hyper-V-hosts/het cluster.<br/><br/> - U hebt één individueel account nodig voor alle hosts en clusters die u wilt toevoegen in de detectie.<br/><br/> - Het account kan een lokaal of domeinaccount zijn. Het is raadzaam dat het beheerdersmachtigingen heeft op de Hyper-V-hosts of -clusters.<br/><br/> Als u geen beheerdersmachtigingen wilt toewijzen, zijn de volgende machtigingen nodig: Gebruikers van extern beheer, Hyper-V-administrators en Prestatiemetergebruikers.
 **Externe communicatie met PowerShell inschakelen** | Hiermee stelt u externe communicatie van PowerShell in op elke host, zodat het Azure Migrate-apparaat PowerShell-opdrachten op de host kan uitvoeren via een WinRM-verbinding.| U stelt dit in door op elke host een PowerShell-console als beheerder te openen en voer deze opdracht uit:<br/><br/>``` Enable-PSRemoting -force ```
-**Hyper-V-integratieservices instellen** | Hiermee wordt gecontroleerd of de Hyper-V-integratieservices zijn ingeschakeld op alle VM's die worden beheerd door de host. |  [Schakel Hyper-V-integratieservices in](https://docs.microsoft.com/windows-server/virtualization/hyper-v/manage/manage-hyper-v-integration-services) op elke VM.<br/><br/> Als u werkt met Windows Server 2003, [volgt u deze instructies](prepare-windows-server-2003-migration.md).
+**Hyper-V-integratieservices instellen** | Hiermee wordt gecontroleerd of de Hyper-V-integratieservices zijn ingeschakeld op alle VM's die worden beheerd door de host. |  [Schakel Hyper-V-integratieservices in](/windows-server/virtualization/hyper-v/manage/manage-hyper-v-integration-services) op elke VM.<br/><br/> Als u werkt met Windows Server 2003, [volgt u deze instructies](prepare-windows-server-2003-migration.md).
 **Referenties delegeren als VM-schijven zich op externe NFS-shares bevinden** | Neem het delegeren van referenties op in het script. | [Schakel CredSSP in](#enable-credssp-to-delegate-credentials) om referenties te delegeren.
 
 ### <a name="run-the-script"></a>Het script uitvoeren

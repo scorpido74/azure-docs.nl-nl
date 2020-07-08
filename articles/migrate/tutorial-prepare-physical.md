@@ -4,18 +4,18 @@ description: Leer hoe u voorbereidingen treft voor evaluatie/migratie van fysiek
 ms.topic: tutorial
 ms.date: 04/15/2020
 ms.custom: mvc
-ms.openlocfilehash: ed648458416bacb091212bb569a27ecdf13fe8ee
-ms.sourcegitcommit: 99d016949595c818fdee920754618d22ffa1cd49
+ms.openlocfilehash: 31db91b512a4532cca144dc012282ea58a87514f
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/15/2020
-ms.locfileid: "84771271"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86113248"
 ---
 # <a name="prepare-for-assessment-and-migration-of-physical-servers-to-azure"></a>Voorbereiden op evaluatie en migratie van fysieke servers naar Azure
 
 In dit artikel wordt beschreven hoe u voorbereidingen treft voor evaluatie van on-premises fysieke servers met [Azure Migrate](migrate-services-overview.md).
 
-[Azure Migrate](migrate-overview.md) biedt een hub aan hulpprogramma's waarmee u apps, infrastructuur en workloads op Microsoft Azure kunt detecteren, evalueren en migreren. De hub bevat Azure Migrate-hulpprogramma's en externe aanbiedingen van onafhankelijke softwareleveranciers (ISV’s). 
+[Azure Migrate](./migrate-services-overview.md) biedt een hub aan hulpprogramma's waarmee u apps, infrastructuur en workloads op Microsoft Azure kunt detecteren, evalueren en migreren. De hub bevat Azure Migrate-hulpprogramma's en externe aanbiedingen van onafhankelijke softwareleveranciers (ISV’s). 
 
 Deze zelfstudie is de eerste in een serie die laat zien hoe u fysieke servers evalueert met Azure Migrate. In deze zelfstudie leert u het volgende:
 
@@ -75,11 +75,11 @@ De tenant/globale beheerder kan machtigingen als volgt verlenen:
     ![Azure AD-machtigingen](./media/tutorial-prepare-hyper-v/aad.png)
 
 > [!NOTE]
-> Dit is een standaardinstelling die niet gevoelig is. [Meer informatie](https://docs.microsoft.com/azure/active-directory/develop/active-directory-how-applications-are-added#who-has-permission-to-add-applications-to-my-azure-ad-instance).
+> Dit is een standaardinstelling die niet gevoelig is. [Meer informatie](../active-directory/develop/active-directory-how-applications-are-added.md#who-has-permission-to-add-applications-to-my-azure-ad-instance).
 
 #### <a name="assign-application-developer-role"></a>Rol toepassingsontwikkelaar toewijzen
 
-Een tenant/globale beheerder kan de rol van Toepassingsontwikkelaar toewijzen aan het account. [Meer informatie](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-users-assign-role-azure-portal).
+Een tenant/globale beheerder kan de rol van Toepassingsontwikkelaar toewijzen aan het account. [Meer informatie](../active-directory/fundamentals/active-directory-users-assign-role-azure-portal.md).
 
 
 ## <a name="prepare-azure-for-physical-server-migration"></a>Azure voorbereiden op migratie van een fysieke server

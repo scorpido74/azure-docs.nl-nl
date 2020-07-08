@@ -4,12 +4,12 @@ description: Leer hoe u een migratie zonder agent voor VMware-VM's uitvoert met 
 ms.topic: tutorial
 ms.date: 06/09/2020
 ms.custom: mvc
-ms.openlocfilehash: ba0eda071bd677435e89fb2de57ce824574f1761
-ms.sourcegitcommit: 99d016949595c818fdee920754618d22ffa1cd49
+ms.openlocfilehash: 77fc621dc5e8013f49c261f7e0e265aad939bc2a
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/15/2020
-ms.locfileid: "84769892"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86113527"
 ---
 # <a name="migrate-vmware-vms-to-azure-agentless"></a>VMware-VM's migreren naar Azure (zonder agent)
 
@@ -185,7 +185,7 @@ Nadat u hebt geverifieerd dat de testmigratie naar verwachting werkt, kunt u de 
 ## <a name="complete-the-migration"></a>Migratie voltooien
 
 1. Nadat de migratie is voltooid, klikt u met de rechtermuisknop op de VM > **Replicatie stoppen**. Hiermee stopt de replicatie voor de on-premises machine, en worden de gegevens over de replicatiestatus voor de VM opgeschoond.
-2. Installeer de Azure VM [Windows](https://docs.microsoft.com/azure/virtual-machines/extensions/agent-windows)- of [Linux](https://docs.microsoft.com/azure/virtual-machines/extensions/agent-linux)-agent op de gemigreerde computers.
+2. Installeer de Azure VM [Windows](../virtual-machines/extensions/agent-windows.md)- of [Linux](../virtual-machines/extensions/agent-linux.md)-agent op de gemigreerde computers.
 3. Voer correcties van de app uit na de migratie, zoals updates van de databaseverbindingsreeksen en webserverconfiguraties.
 4. Voer acceptatietesten van de toepassing en de migratie uit op de gemigreerde toepassing die nu wordt uitgevoerd in Azure.
 5. Leid het verkeer naar het gemigreerde Azure VM-exemplaar.
@@ -199,14 +199,14 @@ Nadat u hebt geverifieerd dat de testmigratie naar verwachting werkt, kunt u de 
     - Houd uw gegevens veilig door back-ups van virtuele Azure VM‘s te maken met behulp van de Azure Backup-service. [Meer informatie](../backup/quick-backup-vm-portal.md).
     - Houd workloads continu beschikbaar door Azure VM‘s naar een secundaire regio te repliceren met Site Recovery. [Meer informatie](../site-recovery/azure-to-azure-tutorial-enable-replication.md).
 - Voor betere beveiliging:
-    - Vergrendel en beperk de toegang van binnenkomend verkeer met [Just-in-time-beheer van Azure Security Center](https://docs.microsoft.com/azure/security-center/security-center-just-in-time).
-    - Beperk het netwerkverkeer naar beheereindpunten met [Netwerkbeveiligingsgroepen](https://docs.microsoft.com/azure/virtual-network/security-overview).
-    - Implementeer [Azure Disk Encryption](https://docs.microsoft.com/azure/security/azure-security-disk-encryption-overview) om schijven te beveiligen en gegevens te beschermen tegen diefstal en onbevoegde toegang.
+    - Vergrendel en beperk de toegang van binnenkomend verkeer met [Just-in-time-beheer van Azure Security Center](../security-center/security-center-just-in-time.md).
+    - Beperk het netwerkverkeer naar beheereindpunten met [Netwerkbeveiligingsgroepen](../virtual-network/security-overview.md).
+    - Implementeer [Azure Disk Encryption](../security/fundamentals/azure-disk-encryption-vms-vmss.md) om schijven te beveiligen en gegevens te beschermen tegen diefstal en onbevoegde toegang.
     - Lees meer informatie over [IaaS-resources beveiligen](https://azure.microsoft.com/services/virtual-machines/secure-well-managed-iaas/) en bezoek het [Azure Security Center](https://azure.microsoft.com/services/security-center/).
 - Voor controle en beheer:
--  Overweeg de implementatie van [Azure Cost Management](https://docs.microsoft.com/azure/cost-management/overview) om uw resourcegebruik en uitgaven te bewaken.
+-  Overweeg de implementatie van [Azure Cost Management](../cost-management-billing/cloudyn/overview.md) om uw resourcegebruik en uitgaven te bewaken.
 
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Onderzoek de [cloudmigratiereis](https://docs.microsoft.com/azure/architecture/cloud-adoption/getting-started/migrate) in het Azure Cloud Adoption Framework.
+Onderzoek de [cloudmigratiereis](/azure/architecture/cloud-adoption/getting-started/migrate) in het Azure Cloud Adoption Framework.

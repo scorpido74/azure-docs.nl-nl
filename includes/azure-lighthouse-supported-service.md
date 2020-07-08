@@ -5,15 +5,15 @@ services: lighthouse
 author: JnHs
 ms.service: lighthouse
 ms.topic: include
-ms.date: 12/19/2019
+ms.date: 07/07/2020
 ms.author: jenhayes
 ms.custom: include file
-ms.openlocfilehash: f4e2395659659781da49159247991d0711491ff2
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 7da1a3501d74cc7f46d35597df5a985c3e571388
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "76846024"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86106051"
 ---
 > [!NOTE]
-> Deze service ondersteunt [door Azure gedelegeerd resourcebeheer](../articles/lighthouse/concepts/azure-delegated-resource-management.md), dat de serviceprovider laat aanmelden met een eigen tenant om abonnementen en resourcegroepen te beheren die klanten hebben gedelegeerd. Raadpleeg [Azure Lighthouse](../articles/lighthouse/overview.md) voor meer informatie.
+> Deze service ondersteunt [Azure Lighthouse](../articles/lighthouse/overview.md), waarmee service providers zich aanmelden bij hun eigen Tenant voor het beheren van abonnementen en resource groepen die door klanten zijn gedelegeerd.

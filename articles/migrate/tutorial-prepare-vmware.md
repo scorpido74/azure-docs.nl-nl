@@ -4,12 +4,12 @@ description: Meer informatie over het voorbereiden van VMware-VM's op evaluatie/
 ms.topic: tutorial
 ms.date: 06/08/2020
 ms.custom: mvc
-ms.openlocfilehash: f3bfaf7c2396e0f1091299375aae4bfaa1d7e8ff
-ms.sourcegitcommit: 99d016949595c818fdee920754618d22ffa1cd49
+ms.openlocfilehash: 8b812924c0922d460c631baec8b0e13a9f45cd76
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/15/2020
-ms.locfileid: "84771186"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86109572"
 ---
 # <a name="prepare-vmware-vms-for-assessment-and-migration-to-azure"></a>VMware-VM's voorbereiden op evaluatie en migratie naar Azure
 
@@ -64,7 +64,7 @@ Als u het apparaat wilt registreren, moet uw Azure-account gemachtigd zijn om Az
 Verleen als volgt machtigingen aan het account:
 
 1. Zorg ervoor dat u een tenant of een globale administrator bent. Navigeer in Azure AD naar **Azure Active Directory** > **Gebruikers** > **Gebruikersinstellingen**.
-2. Stel **App-registraties** in op **Ja**. Dit is een standaardinstelling die niet gevoelig is. [Meer informatie](https://docs.microsoft.com/azure/active-directory/develop/active-directory-how-applications-are-added#who-has-permission-to-add-applications-to-my-azure-ad-instance).
+2. Stel **App-registraties** in op **Ja**. Dit is een standaardinstelling die niet gevoelig is. [Meer informatie](../active-directory/develop/active-directory-how-applications-are-added.md#who-has-permission-to-add-applications-to-my-azure-ad-instance).
 
     ![Azure AD-machtigingen](./media/tutorial-prepare-vmware/aad.png)
 
@@ -72,7 +72,7 @@ Verleen als volgt machtigingen aan het account:
 
 #### <a name="method-2-assign-application-developer-role"></a>Methode 2: Rol toepassingsontwikkelaar toewijzen
 
-Als alternatief kan een tenant/globale beheerder de rol van toepassingsontwikkelaar toewijzen aan het account. [Meer informatie](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-users-assign-role-azure-portal) over het toewijzen van een rol.
+Als alternatief kan een tenant/globale beheerder de rol van toepassingsontwikkelaar toewijzen aan het account. [Meer informatie](../active-directory/fundamentals/active-directory-users-assign-role-azure-portal.md) over het toewijzen van een rol.
 
 ### <a name="assign-permissions-to-create-a-key-vault"></a>Machtigingen toewijzen voor het maken van een sleutelkluis
 

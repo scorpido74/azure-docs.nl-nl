@@ -1,18 +1,14 @@
 ---
 title: Herstel na noodgevallen voor aangepaste onderwerpen in Azure Event Grid
 description: In deze zelfstudie wordt u begeleid bij het instellen van uw gebeurtenisarchitectuur bij herstel als de Event Grid-service in een regio niet goed functioneert.
-services: event-grid
-author: femila
-ms.service: event-grid
 ms.topic: tutorial
-ms.date: 01/21/2020
-ms.author: femila
-ms.openlocfilehash: d2b6d8f8433d1eef34e554b0e0fccbf8b2cbab94
-ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
+ms.date: 07/07/2020
+ms.openlocfilehash: 1ee9c9566a70ba104f6c12866a631061672cb0c0
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84557783"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86115077"
 ---
 # <a name="build-your-own-disaster-recovery-for-custom-topics-in-event-grid"></a>Uw eigen herstel na noodgevallen bouwen voor aangepaste onderwerpen in Azure Event Grid
 Herstel na noodgevallen is gericht op het herstellen van een ernstig verlies van de functionaliteit van de toepassing. In deze zelfstudie wordt u begeleid bij het instellen van uw gebeurtenisarchitectuur bij herstel als de Event Grid-service in een bepaalde regio niet goed functioneert.

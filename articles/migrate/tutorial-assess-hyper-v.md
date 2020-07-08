@@ -4,12 +4,12 @@ description: Hier wordt beschreven hoe u met behulp van Azure Migrate-servereval
 ms.topic: tutorial
 ms.date: 06/03/2020
 ms.custom: mvc
-ms.openlocfilehash: 53cf4eea4bfe61951be9975bacf9adb2b3fcf435
-ms.sourcegitcommit: e04a66514b21019f117a4ddb23f22c7c016da126
+ms.openlocfilehash: 4c95916bf5f92f8a82b9dfae50aa311891857e7a
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/19/2020
-ms.locfileid: "85106481"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86114241"
 ---
 # <a name="assess-hyper-v-vms-with-azure-migrate-server-assessment"></a>Hyper-V-VM's beoordelen met Azure Migrate-serverevaluatie
 
@@ -130,7 +130,7 @@ Importeer het gedownloade bestand en maak de virtuele machine.
 2. Klik in **Importtype kiezen** op **De virtuele machine kopiëren (een nieuwe unieke id maken)** . Klik op **Volgende**.
 3. Laat in **Bestemming kiezen** de standaardinstelling ongewijzigd. Klik op **Volgende**.
 4. Laat in **Opslagmappen** de standaardinstelling ongewijzigd. Klik op **Volgende**.
-5. Geef in **Netwerk kiezen** de virtuele switch op die door de virtuele machine wordt gebruikt. De switch heeft internetverbinding nodig om gegevens naar Azure te verzenden. [Lees meer](https://docs.microsoft.com/windows-server/virtualization/hyper-v/get-started/create-a-virtual-switch-for-hyper-v-virtual-machines) over het maken van een virtuele switch.
+5. Geef in **Netwerk kiezen** de virtuele switch op die door de virtuele machine wordt gebruikt. De switch heeft internetverbinding nodig om gegevens naar Azure te verzenden. [Lees meer](/windows-server/virtualization/hyper-v/get-started/create-a-virtual-switch-for-hyper-v-virtual-machines) over het maken van een virtuele switch.
 6. Controleer de instellingen in **Samenvatting**. Klik vervolgens op **Voltooien**.
 7. Start de virtuele machine in Hyper-V-beheer > **Virtual Machines**.
 
