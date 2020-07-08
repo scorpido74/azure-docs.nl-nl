@@ -15,10 +15,9 @@ ms.workload: infrastructure-services
 ms.date: 07/10/2019
 ms.author: mimckitt
 ms.openlocfilehash: 6e6a8fddc61e05bc2e354d77c9e56c55e354a45b
-ms.sourcegitcommit: 69156ae3c1e22cc570dda7f7234145c8226cc162
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/03/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84309829"
 ---
 # <a name="proactively-ensuring-you-have-access-to-grub-and-sysrq-could-save-you-lots-of-down-time"></a>Proactief garanderen dat u toegang hebt tot GRUB en SYSRQ u veel tijd bespaart
@@ -105,7 +104,7 @@ De virtuele machine moet worden geconfigureerd om een waarde van 1 te accepteren
 [SYSRQ-video inschakelen](https://youtu.be/0doqFRrHz_Mc)
 
 
-Als u de virtuele machine wilt configureren voor het accepteren van een herstart via SysRq-opdrachten op de Azure Portal, moet u een waarde van 1 instellen voor de kernel-para meter kernel. SYSRQ
+Als u de virtuele machine wilt configureren voor het accepteren van een herstart via SysRq-opdrachten op de Azure Portal, moet u een waarde van 1 instellen voor de kernel-para meter kernel.sysRQ
 
 Als u deze configuratie wilt behouden, moet u een vermelding toevoegen aan het bestand **sysctl. conf**
 

@@ -1,18 +1,17 @@
 ---
-title: Verwijzingen
+title: Referenties
 description: ''
 author: sunasing
 ms.topic: article
 ms.date: 11/04/2019
 ms.author: sunasing
 ms.openlocfilehash: c3a70ed905edfcf1dc60e0a12f50aca19060230f
-ms.sourcegitcommit: 20e246e86e25d63bcd521a4b4d5864fbc7bad1b0
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/08/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84488032"
 ---
-# <a name="references"></a>Verwijzingen
+# <a name="references"></a>Referenties
 
 In dit artikel worden de Azure FarmBeats-Api's beschreven.
 
@@ -33,7 +32,7 @@ De FarmBeats-Api's bevatten technische documentatie voor Swagger. Zie [Swagger](
 
 De volgende tabel bevat een overzicht van alle objecten en resources in FarmBeats Datahub:
 
-| Objecten en bronnen | Beschrijving
+| Objecten en bronnen | Description
 --- | ---|
 Voorzien | De farm komt overeen met een fysieke locatie van belang in het FarmBeats-systeem. Elke farm heeft een farm naam en een unieke Farm-ID. |
 Apparaat  | Het apparaat komt overeen met een fysiek apparaat dat aanwezig is op de farm. Elk apparaat heeft een unieke apparaat-ID. Een apparaat wordt doorgaans ingericht in een farm met een farm-ID.
@@ -111,7 +110,7 @@ Als u bijvoorbeeld een query uitvoert op de lijst met apparaten (aanroep ophalen
 
 Azure FarmBeats Datahub Api's retour neren de standaard HTTP-fouten. De meest voorkomende fout codes zijn als volgt:
 
- |Foutcode             | Beschrijving |
+ |Foutcode             | Description |
  |---                    | --- |
  |200                    | Geslaagd |
  |201                    | Maken (post) geslaagd |
@@ -162,7 +161,7 @@ Azure FarmBeats-Api's kunnen worden gebruikt door een gebruiker of een app-regis
     - Ga terug naar **overzicht**en selecteer de koppeling naast **toepassing beheren in de lokale map**.
     - Ga naar **Eigenschappen** om de **object-id**vast te leggen.
 
-4. Ga naar uw Datahub Swagger (https:// <yourdatahub> . azurewebsites.net/Swagger/index.html) en voer de volgende handelingen uit:
+4. Ga naar uw Datahub Swagger (https:// <yourdatahub> . azurewebsites.net/swagger/index.html) en voer de volgende handelingen uit:
     - Ga naar de **RoleAssignment-API**.
     - Voer een bericht uit om een **RoleAssignment** -object te maken voor de **object-id** die u zojuist hebt gemaakt.
  

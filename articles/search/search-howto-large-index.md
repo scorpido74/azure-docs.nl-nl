@@ -9,15 +9,14 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 05/05/2020
 ms.openlocfilehash: e544e720f024b265e957e67d5bd2ee8af91f5c7f
-ms.sourcegitcommit: f57fa5f3ce40647eda93f8be4b0ab0726d479bca
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/07/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84484563"
 ---
 # <a name="how-to-index-large-data-sets-in-azure-cognitive-search"></a>Grote gegevens sets indexeren in azure Cognitive Search
 
-Azure Cognitive Search ondersteunt [twee basis benaderingen](search-what-is-data-import.md) voor het importeren van gegevens in een zoek index: het *pushen* van uw gegevens in de index via een programma of het aanwijzen van een [Azure Cognitive Search indexer](search-indexer-overview.md) bij een ondersteunde gegevens bron om de gegevens op te *halen* .
+In Azure Cognitive Search worden [twee basismethoden](search-what-is-data-import.md) voor het importeren van gegevens in een zoekindex ondersteund: het *pushen* van uw gegevens naar de index via een programma of het verwijzen van een [Azure Cognitive Search-indexeerfunctie](search-indexer-overview.md) naar een ondersteunde gegevensbron om de gegevens *op te halen*.
 
 Naarmate gegevens volumes groeien of verwerkings behoeften veranderen, is het mogelijk dat eenvoudige of standaard indexerings strategieën niet meer praktisch zijn. Voor Azure Cognitive Search zijn er verschillende benaderingen voor het maken van grotere gegevens sets, variërend van de manier waarop u een aanvraag voor het uploaden van gegevens structureert, voor het gebruik van een bron-specifieke Indexeer functie voor geplande en gedistribueerde werk belastingen.
 
@@ -52,15 +51,15 @@ Over het algemeen raden we u aan om extra eigenschappen toe te voegen aan velden
 
 Een van de eenvoudigste mechanismen voor het indexeren van een grotere gegevensset is het indienen van meerdere documenten of records in één aanvraag. Zolang de volledige Payload minder is dan 16 MB, kan een aanvraag tot 1000 documenten in een bulk upload bewerking verwerken. Deze limieten zijn van toepassing, ongeacht of u gebruikmaakt van de [rest API documenten toevoegen](https://docs.microsoft.com/rest/api/searchservice/addupdate-or-delete-documents) of de [methode index](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.documentsoperationsextensions.index?view=azure-dotnet) in de .NET SDK. Voor beide API'S, pakt u 1000-documenten in de hoofd tekst van elke aanvraag.
 
-Door batches te gebruiken om documenten te indexeren, worden de index prestaties aanzienlijk verbeterd. Het bepalen van de optimale Batch grootte voor uw gegevens is een belang rijk onderdeel van het optimaliseren van de index snelheid. De twee primaire factoren die van invloed zijn op de optimale Batch grootte zijn:
+Door batches te gebruiken om documenten te indexeren, worden de index prestaties aanzienlijk verbeterd. Het vaststellen van de optimale batchgrootte voor uw gegevens is een belangrijk onderdeel van voor het optimaliseren van de indexeringssnelheid. De twee primaire factoren die van invloed zijn op de optimale batchgrootte zijn:
 + Het schema van uw index
-+ De grootte van uw gegevens
++ De hoeveelheid gegevens
 
 Omdat de optimale Batch grootte afhankelijk is van uw index en uw gegevens, is de beste manier om verschillende batch grootten te testen om te bepalen wat resulteert in de snelste indexerings snelheden voor uw scenario. Deze [zelf studie](tutorial-optimize-indexing-push-api.md) bevat voorbeeld code voor het testen van batch groottes met behulp van de .NET SDK. 
 
 ### <a name="number-of-threadsworkers"></a>Aantal threads/werk rollen
 
-Als u optimaal gebruik wilt maken van de indexerings snelheden van Azure Cognitive Search, moet u waarschijnlijk meerdere threads gebruiken voor het gelijktijdig verzenden van batch-indexerings aanvragen naar de service.  
+Als u optimaal gebruik wilt maken van de indexeringssnelheden van Azure Cognitive Search, moet u waarschijnlijk meerdere threads gebruiken voor het gelijktijdig verzenden van aanvragen voor batchindexering naar de service.  
 
 Het optimale aantal threads wordt bepaald door:
 
@@ -69,21 +68,21 @@ Het optimale aantal threads wordt bepaald door:
 + De grootte van uw batches
 + Het schema van uw index
 
-U kunt dit voor beeld wijzigen en testen met verschillende thread aantallen om het optimale thread aantal voor uw scenario te bepalen. Als er echter meerdere threads gelijktijdig worden uitgevoerd, kunt u profiteren van de meeste efficiëntie-winsten van. 
+U kunt dit voorbeeld wijzigen en testen met verschillende aantallen threads om het optimale aantal voor uw scenario te bepalen. Als u echter meerdere threads gelijktijdig uitvoert, profiteert u van de meeste verbeteringen in de efficiëntie. 
 
 > [!NOTE]
 > Wanneer u de laag van uw zoek service verhoogt of de partities verg root, moet u ook het aantal gelijktijdige threads verg Roten.
 
-Wanneer u de aanvragen van de zoek service aanpast, kunnen er [HTTP-status codes](https://docs.microsoft.com/rest/api/searchservice/http-status-codes) worden weer gegeven die aangeven dat de aanvraag niet volledig is voltooid. Tijdens het indexeren zijn twee veelvoorkomende HTTP-status codes:
+Wanneer u de aanvragen van de zoekservice verhoogt, kunnen er [HTTP-statuscodes](https://docs.microsoft.com/rest/api/searchservice/http-status-codes) optreden die aangeven dat de aanvraag niet volledig is voltooid. Twee veelvoorkomende HTTP-statuscodes die zich tijdens het indexeren kunnen voordoen, zijn:
 
-+ **503-Service niet beschikbaar** : deze fout betekent dat het systeem zwaar wordt belast en dat de aanvraag op dit moment niet kan worden verwerkt.
-+ **207 multi-status** : deze fout betekent dat sommige documenten zijn geslaagd, maar dat er ten minste één is mislukt.
++ **503: service niet beschikbaar**: deze fout betekent dat het systeem zwaar belast wordt en uw aanvraag op dit moment niet kan worden verwerkt.
++ **207: meerdere statussen**: deze fout betekent dat sommige documenten zijn geslaagd, maar dat er ten minste één is mislukt.
 
 ### <a name="retry-strategy"></a>Strategie voor opnieuw proberen 
 
-Als er een fout optreedt, moeten aanvragen opnieuw worden geprobeerd met een [exponentiële uitstel-strategie voor opnieuw proberen](https://docs.microsoft.com/dotnet/architecture/microservices/implement-resilient-applications/implement-retries-exponential-backoff).
+Als er een fout optreedt, moeten aanvragen opnieuw worden ingediend met een [herhaalstrategie voor exponentieel uitstel](https://docs.microsoft.com/dotnet/architecture/microservices/implement-resilient-applications/implement-retries-exponential-backoff).
 
-Met de .NET SDK van Azure Cognitive Search worden automatisch 503s en andere mislukte aanvragen opnieuw geprobeerd, maar u moet uw eigen logica implementeren om 207s opnieuw uit te voeren. Open source-hulpprogram ma's, zoals [Polly](https://github.com/App-vNext/Polly) , kunnen ook worden gebruikt voor het implementeren van een strategie voor opnieuw proberen.
+Met de .NET SDK van Azure Cognitive Search worden aanvragen bij 503-fouten en andere mislukte aanvragen opnieuw uitgevoerd, maar u moet uw eigen logica implementeren om bij 207-fouten aanvragen opnieuw uit te voeren. Opensource-hulpprogramma's als [Polly](https://github.com/App-vNext/Polly) kunnen ook worden gebruikt voor het implementeren van een herhaalstrategie.
 
 ### <a name="network-data-transfer-speeds"></a>Netwerk gegevens overdrachts snelheden
 
@@ -156,7 +155,7 @@ Op de geplande tijd starten alle Indexeer functies, het laden van gegevens, het 
 > [!Note]
 > Bij het verg Roten van replica's, overweeg dan het aantal partities te verhogen als de index grootte wordt geprojecteerd om aanzienlijk te verg Roten. Partities bevatten segmenten van geïndexeerde inhoud; Hoe meer partities u hebt, des te kleiner het segment dat elke partitie bevat om op te slaan.
 
-## <a name="see-also"></a>Zie ook
+## <a name="see-also"></a>Zie tevens
 
 + [Overzicht van de indexeerfunctie](search-indexer-overview.md)
 + [Indexeren in de portal](search-import-data-portal.md)

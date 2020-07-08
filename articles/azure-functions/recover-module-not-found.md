@@ -7,10 +7,9 @@ ms.date: 05/12/2020
 ms.author: hazeng
 ms.custom: tracking-python
 ms.openlocfilehash: b2582caf407b3983b32c40482fa0f0275f00fb8d
-ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/09/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84554757"
 ---
 # <a name="troubleshoot-python-module-errors-in-azure-functions"></a>Problemen met python-module fouten in Azure Functions oplossen
@@ -86,9 +85,9 @@ Zie [uw pakket bijwerken naar de nieuwste versie](#update-your-package-to-the-la
 
 Open de `requirements.txt` met een tekst editor en controleer het pakket in `https://pypi.org/project/<package-name>` . Sommige pakketten worden alleen uitgevoerd op Windows-of macOS-platforms. Pywin32 wordt bijvoorbeeld alleen uitgevoerd in Windows.
 
-De `Module Not Found` fout treedt mogelijk niet op wanneer u Windows of macOS gebruikt voor lokale ontwikkeling. Het pakket kan echter niet worden geïmporteerd op Azure Functions, dat gebruikmaakt van Linux tijdens runtime. Dit is waarschijnlijk het gevolg van `pip freeze` het exporteren van een virtuele omgeving naar requirements. txt vanaf uw Windows-of macOS-computer tijdens de initialisatie van het project.
+De `Module Not Found` fout treedt mogelijk niet op wanneer u Windows of macOS gebruikt voor lokale ontwikkeling. Het pakket kan echter niet worden geïmporteerd op Azure Functions, dat gebruikmaakt van Linux tijdens runtime. Dit is waarschijnlijk te wijten `pip freeze` aan het gebruik van om een virtuele omgeving te exporteren naar requirements.txt vanaf uw Windows-of macOS-machine tijdens de initialisatie van het project.
 
-Zie [het pakket vervangen door equivalenten](#replace-the-package-with-equivalents) of [samen requirements. txt](#handcraft-requirementstxt) voor een oplossing.
+Zie [het pakket vervangen door equivalenten](#replace-the-package-with-equivalents) of [samen requirements.txt](#handcraft-requirementstxt) voor een oplossing.
 
 ## <a name="mitigate-modulenotfounderror"></a>ModuleNotFoundError beperken
 
@@ -98,7 +97,7 @@ Hieronder vindt u mogelijke oplossingen voor problemen met betrekking tot module
 
 Zorg ervoor dat externe build is ingeschakeld. Hoe u dit doet, is afhankelijk van uw implementatie methode.
 
-# <a name="visual-studio-code"></a>[Visual Studio code](#tab/vscode)
+# <a name="visual-studio-code"></a>[Visual Studio Code](#tab/vscode)
 Zorg ervoor dat de meest recente versie van de [uitbrei ding van de Azure functions voor Visual Studio code](https://marketplace.visualstudio.com/items?itemName=ms-azuretools.vscode-azurefunctions) is geïnstalleerd. Controleer of `.vscode/settings.json` Exists bestaat en de instelling bevat `"azureFunctions.scmDoBuildDuringDeployment": true` . Als dat niet het geval is, maakt u dit bestand met de `azureFunctions.scmDoBuildDuringDeployment` instelling ingeschakeld en implementeert u het project opnieuw.
 
 # <a name="azure-functions-core-tools"></a>[Azure Functions Core Tools](#tab/coretools)
@@ -119,19 +118,19 @@ Zorg ervoor dat de nieuwste versie van zowel **docker** als [Azure functions cor
 
 Blader door de nieuwste pakket versie in `https://pypi.org/project/<package-name>` en controleer de sectie **classificaties:** . Het pakket moet `OS Independent` of compatibel zijn met `POSIX` of in `POSIX :: Linux` het **besturings systeem**. Daarnaast moet de programmeer taal `Python :: 3` , `Python :: 3.6` , of bevatten `Python :: 3.7` `Python :: 3.8` .
 
-Als deze juist zijn, kunt u het pakket bijwerken naar de meest recente versie door de regel te wijzigen `<package-name>~=<latest-version>` in requirements. txt.
+Als deze juist zijn, kunt u het pakket bijwerken naar de meest recente versie door de regel `<package-name>~=<latest-version>` in requirements.txt te wijzigen.
 
-### <a name="handcraft-requirementstxt"></a>Samen-vereisten. txt
+### <a name="handcraft-requirementstxt"></a>Samen requirements.txt
 
 Sommige ontwikkel aars gebruiken `pip freeze > requirements.txt` om de lijst met Python-pakketten voor hun ontwikkel omgevingen te genereren. Hoewel dit gebruiks gemak in de meeste gevallen zou moeten werken, kunnen er problemen optreden in scenario's voor verschillende platforms, zoals het ontwikkelen van functies lokaal op Windows of macOS, maar het publiceren naar een functie-app die wordt uitgevoerd op Linux. In dit scenario `pip freeze` kunnen onverwachte afhankelijkheden of afhankelijkheden van besturings systemen worden geïntroduceerd voor uw lokale ontwikkel omgeving. Met deze afhankelijkheden kan de python-functie-app worden onderbroken wanneer deze wordt uitgevoerd op Linux.
 
-De best practice is om de import instructie van elk. py-bestand in de project bron code te controleren en deze modules alleen te controleren in het bestand requirements. txt. Dit garandeert dat de oplossing van pakketten goed kan worden afgehandeld op verschillende besturings systemen.
+De best practice is om de import instructie van elk. py-bestand in de project bron code te controleren en alleen deze modules in requirements.txt bestand in te checken. Dit garandeert dat de oplossing van pakketten goed kan worden afgehandeld op verschillende besturings systemen.
 
 ### <a name="replace-the-package-with-equivalents"></a>Vervang het pakket door equivalenten
 
 Eerst moet u de nieuwste versie van het pakket bekijken in `https://pypi.org/project/<package-name>` . Normaal gesp roken heeft dit pakket een eigen GitHub-pagina. Ga naar de sectie **problemen** op github en zoek naar het probleem. Als dit het geval is, werkt u het pakket bij naar de meest recente versie.
 
-Het is ook mogelijk dat het pakket is geïntegreerd in de [python-standaard bibliotheek](https://docs.python.org/3/library/) (zoals pathlib). Als dat het geval is, moet het pakket in uw vereiste. txt worden verwijderd omdat we een bepaalde python-distributie hebben in Azure Functions (python 3,6, python 3,7 en python 3,8).
+Het is ook mogelijk dat het pakket is geïntegreerd in de [python-standaard bibliotheek](https://docs.python.org/3/library/) (zoals pathlib). Als dat het geval is, moet het pakket in uw requirements.txt worden verwijderd omdat we een bepaalde python-distributie hebben in Azure Functions (python 3,6, python 3,7 en python 3,8).
 
 Als u echter een probleem ondervindt dat niet is opgelost en u een deadline hebt bereikt. Ik raden u aan om onderzoek uit te voeren en een soortgelijk pakket voor uw project te vinden. Normaal gesp roken biedt de python-Community u een groot aantal vergelijk bare bibliotheken die u kunt gebruiken.
 

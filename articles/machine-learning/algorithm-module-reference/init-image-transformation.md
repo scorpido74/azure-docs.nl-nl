@@ -10,10 +10,9 @@ author: likebupt
 ms.author: keli19
 ms.date: 05/26/2020
 ms.openlocfilehash: f54dd09ac82ddefeb2528462c7131aa921592d2a
-ms.sourcegitcommit: 20e246e86e25d63bcd521a4b4d5864fbc7bad1b0
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/08/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84487947"
 ---
 # <a name="init-image-transformation"></a>Afbeeldingstransformatie initiëren
@@ -67,33 +66,33 @@ Raadpleeg [https://pytorch.org/docs/stable/torchvision/transforms.html](https://
 
 ###  <a name="module-parameters"></a>Module parameters  
 
-| Naam                    | Bereik   | Type    | Standaard | Beschrijving                              |
+| Name                    | Bereik   | Type    | Standaard | Description                              |
 | ----------------------- | ------- | ------- | ------- | ---------------------------------------- |
 | Formaat wijzigen                  | Alle     | Boolean-waarde | True    | De opgegeven grootte van de PIL-invoer afbeelding aanpassen |
 | Grootte                    | >= 1     | Geheel getal | 256     | Geef de gewenste uitvoer grootte op          |
 | Midden bijsnijden             | Alle     | Boolean-waarde | True    | Hiermee wordt de opgegeven PIL-afbeelding in het midden bijgesneden  |
 | Bijsnijd grootte               | >= 1     | Geheel getal | 224     | Geef de gewenste uitvoer grootte van het gewas op |
-| Pad                     | Alle     | Booleaans | False   | De opgegeven PIL-installatie kopie op alle zijden met de opgegeven "pad"-waarde aanvullen |
+| Pad                     | Alle     | Boolean-waarde | False   | De opgegeven PIL-installatie kopie op alle zijden met de opgegeven "pad"-waarde aanvullen |
 | Opvulling                 | >= 0     | Geheel getal | 0       | Opvulling voor elke rand                   |
-| Kleur-jitter            | Alle     | Booleaans | False   | De helderheid, het contrast en de verzadiging van een afbeelding wille keurig wijzigen |
-| In grijs waarden               | Alle     | Booleaans | False   | Afbeelding naar grijs waarde converteren               |
-| Wille keurig aangepast gewas     | Alle     | Booleaans | False   | De opgegeven PIL-afbeelding bijsnijden naar een wille keurige grootte en hoogte-breedte verhouding |
+| Kleur-jitter            | Alle     | Boolean-waarde | False   | De helderheid, het contrast en de verzadiging van een afbeelding wille keurig wijzigen |
+| In grijs waarden               | Alle     | Boolean-waarde | False   | Afbeelding naar grijs waarde converteren               |
+| Wille keurig aangepast gewas     | Alle     | Boolean-waarde | False   | De opgegeven PIL-afbeelding bijsnijden naar een wille keurige grootte en hoogte-breedte verhouding |
 | Wille keurige grootte             | >= 1     | Geheel getal | 256     | Verwachte uitvoer grootte van elke rand        |
-| Wille keurig gewas             | Alle     | Booleaans | False   | De opgegeven PIL-installatie kopie op een wille keurige locatie bijsnijden |
+| Wille keurig gewas             | Alle     | Boolean-waarde | False   | De opgegeven PIL-installatie kopie op een wille keurige locatie bijsnijden |
 | Wille keurige snij grootte        | >= 1     | Geheel getal | 224     | Gewenste uitvoer grootte van het gewas          |
 | Wille keurige horizontale spie gelen  | Alle     | Boolean-waarde | True    | De opgegeven PIL-afbeelding wille keurig horizon taal spie gelen met een bepaalde kans |
-| Wille keurig verticaal spie gelen    | Alle     | Booleaans | False   | De opgegeven PIL-afbeelding wille keurig verticaal spie gelen met een bepaalde kans |
-| Wille keurige draaiing         | Alle     | Booleaans | False   | De afbeelding op hoek draaien                |
+| Wille keurig verticaal spie gelen    | Alle     | Boolean-waarde | False   | De opgegeven PIL-afbeelding wille keurig verticaal spie gelen met een bepaalde kans |
+| Wille keurige draaiing         | Alle     | Boolean-waarde | False   | De afbeelding op hoek draaien                |
 | Graden met wille keurige draaiing | [0180] | Geheel getal | 0       | Bereik van graden waaruit moet worden geselecteerd          |
-| Wille keurige affiniteit           | Alle     | Booleaans | False   | Wille keurige affiniteits transformatie van de afbeelding die in het midden wordt bewaard |
+| Wille keurige affiniteit           | Alle     | Boolean-waarde | False   | Wille keurige affiniteits transformatie van de afbeelding die in het midden wordt bewaard |
 | Wille keurige affiniteits graden   | [0180] | Geheel getal | 0       | Bereik van graden waaruit moet worden geselecteerd          |
-| Wille keurige grijs waarde        | Alle     | Booleaans | False   | Afbeelding kan wille keurig worden geconverteerd naar grijs waarden met kans 0,1 |
-| Wille keurig perspectief      | Alle     | Booleaans | False   | Hiermee wordt de perspectief transformatie van de opgegeven PIL-afbeelding wille keurig uitgevoerd met kans 0,5 |
-| Wille keurig wissen          | Alle     | Booleaans | False   | Hiermee wordt wille keurig een rechthoekige regio in een afbeelding geselecteerd en worden de pixels gewist met de kans 0,5 |
+| Wille keurige grijs waarde        | Alle     | Boolean-waarde | False   | Afbeelding kan wille keurig worden geconverteerd naar grijs waarden met kans 0,1 |
+| Wille keurig perspectief      | Alle     | Boolean-waarde | False   | Hiermee wordt de perspectief transformatie van de opgegeven PIL-afbeelding wille keurig uitgevoerd met kans 0,5 |
+| Wille keurig wissen          | Alle     | Boolean-waarde | False   | Hiermee wordt wille keurig een rechthoekige regio in een afbeelding geselecteerd en worden de pixels gewist met de kans 0,5 |
 
 ###  <a name="output"></a>Uitvoer  
 
-| Naam                        | Type                    | Beschrijving                              |
+| Naam                        | Type                    | Description                              |
 | --------------------------- | ----------------------- | ---------------------------------------- |
 | Trans formatie van uitvoer afbeelding | TransformationDirectory | Trans formatie van uitvoer afbeelding die kan worden verbonden om de **installatie kopie transformatie module toe te passen** . |
 

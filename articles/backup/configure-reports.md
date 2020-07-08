@@ -4,10 +4,9 @@ description: Rapporten voor Azure Backup configureren en weer geven met behulp v
 ms.topic: conceptual
 ms.date: 02/10/2020
 ms.openlocfilehash: 20dcf7f3f9bbc5626c4a05ef064203b3ae5020cd
-ms.sourcegitcommit: f57fa5f3ce40647eda93f8be4b0ab0726d479bca
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/07/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84484982"
 ---
 # <a name="configure-azure-backup-reports"></a>Azure Backup-rapporten configureren

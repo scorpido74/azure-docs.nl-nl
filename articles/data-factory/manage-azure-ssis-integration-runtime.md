@@ -12,10 +12,9 @@ ms.author: sawinark
 ms.reviewer: douglasl
 manager: anandsub
 ms.openlocfilehash: f609cfb0945d79cfa8ae21b786a5761b92b9dabb
-ms.sourcegitcommit: 58ff2addf1ffa32d529ee9661bbef8fbae3cddec
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/03/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84324620"
 ---
 # <a name="reconfigure-the-azure-ssis-integration-runtime"></a>De Azure-SSIS-integratieruntime opnieuw configureren
@@ -31,11 +30,11 @@ U kunt Data Factory gebruikers interface gebruiken om een Azure-SSIS IR te stopp
 2. Selecteer de hub **beheren** onder **Start**, **bewerken**en **controleren** hubs om het deel venster **verbindingen** weer te geven.
 
 ### <a name="to-reconfigure-an-azure-ssis-ir"></a>Een Azure-SSIS IR opnieuw configureren
-Ga in het deel venster **verbindingen** van hub **beheren** naar de pagina **Integration Runtimes** en selecteer **vernieuwen**. 
+Ga in het deelvenster **Verbindingen** van de hub **Beheren** naar de pagina **Integratieruntimes** en selecteer **Vernieuwen**. 
 
-   ![Deel venster verbindingen](./media/tutorial-create-azure-ssis-runtime-portal/connections-pane.png)
+   ![Deelvenster Verbindingen](./media/tutorial-create-azure-ssis-runtime-portal/connections-pane.png)
 
-   U kunt uw Azure-SSIS IR bewerken/opnieuw configureren door de naam ervan te selecteren. U kunt ook de relevante knoppen voor het bewaken/starten/stoppen/verwijderen van uw Azure-SSIS IR selecteren, automatisch een ADF-pijp lijn genereren met de activiteit voor het uitvoeren van SSIS-pakketten om op uw Azure-SSIS IR uit te voeren en de JSON-code/payload van uw Azure-SSIS IR weer te geven.  Het bewerken/verwijderen van uw Azure-SSIS IR kan alleen worden uitgevoerd wanneer het is gestopt.
+   U kunt uw Azure-SSIS IR bewerken/opnieuw configureren door de naam ervan te selecteren. U kunt ook de relevante knoppen voor het bewaken/starten/stoppen/verwijderen van uw Azure-SSIS IR selecteren, automatisch een ADF-pijplijn genereren met de activiteit voor het uitvoeren van SSIS-pakketten om deze op uw Azure-SSIS IR uit te voeren en de JSON-code/payload van uw Azure-SSIS IR weergeven.  U kunt uw Azure-SSIS IR alleen bewerken/verwijderen wanneer deze is gestopt.
 
 ## <a name="azure-powershell"></a>Azure PowerShell
 

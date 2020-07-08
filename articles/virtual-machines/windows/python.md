@@ -9,10 +9,9 @@ ms.date: 06/22/2017
 ms.author: cynthn
 ms.custom: tracking-python
 ms.openlocfilehash: b5f8b0e8f22a476ad379b55275d79c2874966852
-ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/09/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84551972"
 ---
 # <a name="create-and-manage-windows-vms-in-azure-using-python"></a>Windows-Vm's maken en beheren in azure met behulp van python
@@ -359,7 +358,7 @@ Nu u alle ondersteunende resources hebt gemaakt, kunt u een virtuele machine mak
 
 Tijdens de levenscyclus van een virtuele machine wilt u mogelijk beheertaken uitvoeren, zoals het starten, stoppen of verwijderen van een virtuele machine. U kunt ook code maken om herhaalde of complexe taken te automatiseren.
 
-### <a name="get-information-about-the-vm"></a>Informatie over de virtuele machine ophalen
+### <a name="get-information-about-the-vm"></a>Informatie over de VM ophalen
 
 1. Als u informatie over de virtuele machine wilt ophalen, voegt u deze functie toe na de variabelen in het. py-bestand:
 

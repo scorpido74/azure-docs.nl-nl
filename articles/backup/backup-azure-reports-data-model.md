@@ -4,10 +4,9 @@ description: Dit gegevens model is een verwijzing naar de resource-specifieke mo
 ms.topic: conceptual
 ms.date: 10/30/2019
 ms.openlocfilehash: af1e4159ff2794f8d4dd11480eb7f1789e034c06
-ms.sourcegitcommit: f57fa5f3ce40647eda93f8be4b0ab0726d479bca
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/07/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84484503"
 ---
 # <a name="data-model-for-azure-backup-diagnostics-events"></a>Gegevens model voor diagnostische gebeurtenissen van Azure Backup
@@ -55,7 +54,7 @@ Deze tabel bevat informatie over de belangrijkste back-upentiteiten, zoals kluiz
 | ResourceGroupName                 | Tekst          | De resource groep van de resource (bijvoorbeeld Recovery Services kluis) voor de gegevens die worden verzameld |
 | SchemaVersion                     | Tekst          | In dit veld wordt de huidige versie van het schema aangegeven, het is **v2** |
 | SecondaryBackupProtectionState    | Tekst          | Of secundaire beveiliging is ingeschakeld voor het back-upitem  |
-| Staat                             | Tekst          | Status van het object voor het back-upitem. Bijvoorbeeld actief, verwijderd |
+| Status                             | Tekst          | Status van het object voor het back-upitem. Bijvoorbeeld actief, verwijderd |
 | StorageReplicationType            | Tekst          | Type opslag replicatie voor de kluis. Bijvoorbeeld georedundant |
 | SubscriptionId                    | Tekst          | De abonnements-id van de resource (bijvoorbeeld Recovery Services kluis) waarvoor gegevens worden verzameld |
 | VaultName                         | Tekst          | Naam van de kluis                                            |
@@ -88,7 +87,7 @@ Deze tabel bevat details over velden die betrekking hebben op waarschuwingen.
 | ProtectedContainerUniqueId     | Tekst          | De unieke id van de beveiligde server die is gekoppeld aan de waarschuwing |
 | RecommendedAction              | Tekst          | Aanbevolen actie om de waarschuwing op te lossen                      |
 | SchemaVersion                  | Tekst          | Huidige versie van het schema, bijvoorbeeld **v2**            |
-| Staat                          | Tekst          | Huidige status van het waarschuwings object, bijvoorbeeld actief, verwijderd |
+| Status                          | Tekst          | Huidige status van het waarschuwings object, bijvoorbeeld actief, verwijderd |
 | StorageUniqueId                | Tekst          | Unieke ID die wordt gebruikt voor het identificeren van de opslag entiteit                |
 | VaultUniqueId                  | Tekst          | Unieke ID die wordt gebruikt om de kluis te identificeren die is gerelateerd aan de waarschuwing    |
 | SourceSystem                   | Tekst          | Bron systeem van de huidige gegevens-Azure                    |
@@ -108,7 +107,7 @@ Deze tabel bevat basis velden die betrekking hebben op een beveiligd exemplaar.
 | ProtectedContainerUniqueId     | Tekst          | Unieke ID voor het identificeren van de beveiligde container waarop de taak wordt uitgevoerd |
 | ProtectedInstanceCount         | Tekst          | Aantal beveiligde instanties voor het bijbehorende back-upitem of de beveiligde container op die datum-tijd |
 | SchemaVersion                  | Tekst          | Huidige versie van het schema, bijvoorbeeld **v2**            |
-| Staat                          | Tekst          | Status van het object voor het back-upitem, bijvoorbeeld actief, verwijderd |
+| Status                          | Tekst          | Status van het object voor het back-upitem, bijvoorbeeld actief, verwijderd |
 | VaultUniqueId                  | Tekst          | De unieke id van de beveiligde kluis die is gekoppeld aan het beveiligde exemplaar |
 | SourceSystem                   | Tekst          | Bron systeem van de huidige gegevens-Azure                    |
 
@@ -139,7 +138,7 @@ Deze tabel bevat details over projectgerelateerde velden.
 | RecoveryJobLocation            | Tekst          | De locatie waar het herstel punt dat wordt hersteld is opgeslagen |
 | RecoveryLocationType           | Tekst          | Type van de herstel locatie                                |
 | SchemaVersion                  | Tekst          | Huidige versie van het schema, bijvoorbeeld **v2**            |
-| Staat                          | Tekst          | Huidige status van het taak object, bijvoorbeeld actief, verwijderd |
+| Status                          | Tekst          | Huidige status van het taak object, bijvoorbeeld actief, verwijderd |
 | VaultUniqueId                  | Tekst          | De unieke id van de beveiligde kluis die is gekoppeld aan de taak |
 | SourceSystem                   | Tekst          | Bron systeem van de huidige gegevens-Azure                    |
 
@@ -177,7 +176,7 @@ Deze tabel bevat details over velden die betrekking hebben op het beleid.
 | RetentionDuration               | Tekst           | Bewaar periode voor geconfigureerde back-ups                    |
 | RetentionType                   | Tekst           | Type Bewaar periode                                            |
 | SchemaVersion                   | Tekst           | Dit veld geeft de huidige versie van het schema aan. Dit is **v2** |
-| Staat                           | Tekst           | Huidige status van het beleids object. Bijvoorbeeld actief, verwijderd |
+| Status                           | Tekst           | Huidige status van het beleids object. Bijvoorbeeld actief, verwijderd |
 | SynchronisationFrequencyPerDay  | Geheel getal   | Aantal keren per dag dat een back-up van een bestand wordt gesynchroniseerd voor SC DPM en MABS |
 | VaultUniqueId                   | Tekst           | De unieke ID van de kluis waartoe dit beleid behoort          |
 | WeeklyRetentionDaysOfTheWeek    | Tekst           | Dagen van de week geselecteerd voor een wekelijkse Bewaar periode               |
@@ -207,7 +206,7 @@ Deze tabel bevat details over velden die betrekking hebben op opslag.
 | PreferredWorkloadOnVolume      | Tekst          | De werk belasting waarvoor dit volume de voorkeurs opslag is      |
 | ProtectedContainerUniqueId     | Tekst          | De unieke id van de beveiligde container die is gekoppeld aan het back-upitem |
 | SchemaVersion                  | Tekst          | De versie van het schema. Bijvoorbeeld **v2**                   |
-| Staat                          | Tekst          | Status van het object voor het back-upitem. Bijvoorbeeld actief, verwijderd |
+| Status                          | Tekst          | Status van het object voor het back-upitem. Bijvoorbeeld actief, verwijderd |
 | StorageAllocatedInMBs          | Aantal        | Grootte van de opslag die wordt toegewezen door het bijbehorende back-upitem in de bijbehorende opslag van het type schijf |
 | StorageConsumedInMBs           | Aantal        | Grootte van de opslag die wordt gebruikt door het bijbehorende back-upitem in de bijbehorende opslag |
 | StorageName                    | Tekst          | De naam van de opslag entiteit. Bijvoorbeeld E:\                      |

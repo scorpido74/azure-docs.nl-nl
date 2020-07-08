@@ -9,10 +9,9 @@ ms.date: 04/21/2020
 ms.author: normesta
 ms.reviewer: jamsbak
 ms.openlocfilehash: cc9235f07c0829abfb8be42e83d05d8428bc1806
-ms.sourcegitcommit: 813f7126ed140a0dff7658553a80b266249d302f
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/06/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84465861"
 ---
 # <a name="filter-data-by-using-azure-data-lake-storage-query-acceleration-preview"></a>Gegevens filteren met behulp van Azure Data Lake Storage-query versnelling (preview-versie)
@@ -81,7 +80,7 @@ Query Acceleration (preview) is een nieuwe mogelijkheid voor Azure Data Lake Sto
 
 ### <a name="java"></a>[Java](#tab/java)
 
-1. Maak een map in de hoofdmap van het project. De hoofdmap is de map die het **pom. XML-** bestand bevat.
+1. Maak een map in de hoofdmap van het project. De hoofdmap is de map die het **pom.xml** -bestand bevat.
 
    > [!NOTE]
    > In de voor beelden in dit artikel wordt ervan uitgegaan dat de naam van de map **lib**is.
@@ -90,7 +89,7 @@ Query Acceleration (preview) is een nieuwe mogelijkheid voor Azure Data Lake Sto
 
 3. Pak de bestanden in dit zip-bestand uit naar de map die u hebt gemaakt. In ons voor beeld heet deze map **lib**. 
 
-4. Open het bestand *pom. XML* in de tekst editor. Voeg de volgende afhankelijkheids elementen toe aan de groep afhankelijkheden. 
+4. Open het bestand *pom.xml* in uw teksteditor. Voeg de volgende afhankelijkheidselementen toe aan de groep met afhankelijkheden. 
 
    ```xml
    <!-- Request static dependencies from Maven -->

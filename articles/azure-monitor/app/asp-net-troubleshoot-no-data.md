@@ -4,10 +4,9 @@ description: Ziet u geen gegevens in Azure-toepassing Insights? Probeer het hier
 ms.topic: conceptual
 ms.date: 05/21/2020
 ms.openlocfilehash: 59543adaf01a8e19f0e3eefd167234f6c5d18deb
-ms.sourcegitcommit: f57fa5f3ce40647eda93f8be4b0ab0726d479bca
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/07/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84485157"
 ---
 # <a name="troubleshooting-no-data---application-insights-for-netnet-core"></a>Problemen met geen gegevens Application Insights voor .NET/.NET core oplossen
@@ -104,9 +103,9 @@ De micro soft-aanmelding die u voor het laatst hebt gebruikt in uw standaard bro
 Mogelijke oorzaken:
 
 * De Application Insights resource voor uw toepassing is verwijderd. of
-* De instrumentatie sleutel is ingesteld of gewijzigd in ApplicationInsights. config door deze rechtstreeks te bewerken, zonder het project bestand bij te werken.
+* De instrumentatie sleutel is ingesteld of gewijzigd in ApplicationInsights.config door deze rechtstreeks te bewerken, zonder het project bestand bij te werken.
 
-De instrumentatie sleutel in ApplicationInsights. config bepaalt waar de telemetrie wordt verzonden. Een regel in het project bestand bepaalt welke resource wordt geopend wanneer u de opdracht in Visual Studio gebruikt.
+De instrumentatie sleutel in ApplicationInsights.config bepaalt waar de telemetrie wordt verzonden. Een regel in het project bestand bepaalt welke resource wordt geopend wanneer u de opdracht in Visual Studio gebruikt.
 
 Holpen
 
@@ -127,14 +126,14 @@ Holpen
   ![](./media/asp-net-troubleshoot-no-data/output-window.png)
 * Open in de Application Insights-Portal [Diagnostische gegevens zoeken](../../azure-monitor/app/diagnostic-search.md). Gegevens worden doorgaans als eerste weer gegeven.
 * Klik op de knop Vernieuwen. De Blade wordt regel matig vernieuwd, maar u kunt dit ook hand matig doen. Het Vernieuwings interval is langer voor grotere Peri Oden.
-* Controleer of de instrumentatie sleutels overeenkomen. Bekijk op de hoofd Blade voor uw app in de Application Insights-Portal in de vervolg keuzelijst **Essentials** de **instrumentatie sleutel**. Open vervolgens in het project in Visual Studio ApplicationInsights. config en zoek de `<instrumentationkey>` . Controleer of de twee sleutels gelijk zijn. Zo niet:  
+* Controleer of de instrumentatie sleutels overeenkomen. Bekijk op de hoofd Blade voor uw app in de Application Insights-Portal in de vervolg keuzelijst **Essentials** de **instrumentatie sleutel**. Open vervolgens in het project in Visual Studio ApplicationInsights.config en zoek de `<instrumentationkey>` . Controleer of de twee sleutels gelijk zijn. Zo niet:  
   * Klik in de portal op Application Insights en zoek de app-resource met de juiste sleutel. of
   * Klik in Visual Studio Solution Explorer met de rechter muisknop op het project en kies Application Insights, configureren. Stel de app opnieuw in om telemetrie naar de juiste resource te verzenden.
   * Als u de overeenkomende sleutels niet kunt vinden, controleert u of u dezelfde aanmeldings referenties in Visual Studio gebruikt als in voor de portal.
 * Ga in het [Microsoft Azure start-dash board](https://portal.azure.com)naar de service Health kaart. Als er enkele waarschuwings vermeldingen zijn, wacht u totdat ze zijn teruggekeerd naar OK. Sluit vervolgens de Blade Application Insights toepassing en open deze opnieuw.
 * Controleer ook [onze status blog](https://blogs.msdn.microsoft.com/servicemap-status/).
 * Hebt u code geschreven voor de SDK aan de [server zijde](../../azure-monitor/app/api-custom-events-metrics.md) die de instrumentatie sleutel in `TelemetryClient` instanties of in kan wijzigen `TelemetryContext` ? Of hebt u een [filter of sampling configuratie](../../azure-monitor/app/api-filtering-sampling.md) geschreven die te veel kan worden gefilterd?
-* Als u ApplicationInsights. config hebt bewerkt, controleert u de configuratie van [TelemetryInitializers en TelemetryProcessors](../../azure-monitor/app/api-filtering-sampling.md)zorgvuldig. Een type of para meter met een onjuiste naam kan ertoe leiden dat de SDK geen gegevens verzendt.
+* Als u ApplicationInsights.config hebt bewerkt, controleert u zorgvuldig de configuratie van [TelemetryInitializers en TelemetryProcessors](../../azure-monitor/app/api-filtering-sampling.md). Een type of para meter met een onjuiste naam kan ertoe leiden dat de SDK geen gegevens verzendt.
 
 ## <a name="no-data-on-page-views-browsers-usage"></a><a name="q04"></a>Geen gegevens op pagina weergaven, browsers, gebruik
 *Ik zie gegevens in de grafieken server reactietijd en server aanvragen, maar geen gegevens in de pagina weergave, of op de Blades browser of gebruik.*
@@ -152,9 +151,9 @@ Zie [afhankelijkheids telemetrie](../../azure-monitor/app/asp-net-dependencies.m
 Prestatie gegevens (CPU, i/o-snelheid, enzovoort) zijn beschikbaar voor [Java-webservices](../../azure-monitor/app/java-collectd.md), [Windows-bureau blad-apps](../../azure-monitor/app/windows-desktop.md), IIS-web- [apps en-services als u status monitor](../../azure-monitor/app/monitor-performance-live-website-now.md)en [Azure Cloud Services](../../azure-monitor/app/app-insights-overview.md)installeert. u vindt deze onder instellingen, servers.
 
 ## <a name="no-server-data-since-i-published-the-app-to-my-server"></a>Geen (Server) gegevens sinds ik de app heb gepubliceerd op mijn server
-* Controleer of u alle micro soft hebt gekopieerd. ApplicationInsights dll-bestanden naar de server, samen met micro soft. Diagnostics. instrumentatie. Extensions. Intercept. dll
+* Controleer of u alle micro soft hebt gekopieerd. ApplicationInsights dll-bestanden naar de server, samen met Microsoft.Diagnostics.Instrumentation.Extensions.Intercept.dll
 * In uw firewall moet u mogelijk [enkele TCP-poorten openen](../../azure-monitor/app/ip-addresses.md).
-* Als u een proxy moet gebruiken om uw bedrijfs netwerk te verzenden, stelt u [defaultProxy](https://msdn.microsoft.com/library/aa903360.aspx) in web. config in
+* Als u een proxy moet gebruiken om uw bedrijfs netwerk te verzenden, stelt u [defaultProxy](https://msdn.microsoft.com/library/aa903360.aspx) in Web.config
 * Windows Server 2008: Zorg ervoor dat u de volgende updates hebt geïnstalleerd: [KB2468871](https://support.microsoft.com/kb/2468871), [KB2533523](https://support.microsoft.com/kb/2533523), [KB2600217](https://support.microsoft.com/kb/2600217).
 
 ## <a name="i-used-to-see-data-but-it-has-stopped"></a>Ik heb de gegevens weer gegeven, maar deze zijn gestopt
@@ -187,7 +186,7 @@ Volg deze instructies om logboeken voor het oplossen van problemen vast te legge
 
 1. Installeer het pakket [micro soft. AspNet. ApplicationInsights. HostingStartup](https://www.nuget.org/packages/Microsoft.AspNet.ApplicationInsights.HostingStartup) van NuGet. De versie die u installeert, moet overeenkomen met de huidige geïnstalleerde versie van`Microsoft.ApplicationInsighs`
 
-2. Wijzig uw applicationinsights. config-bestand zodat het de volgende bevat:
+2. Wijzig het applicationinsights.config-bestand zodat het het volgende bevat:
 
     ```xml
     <TelemetryModules>

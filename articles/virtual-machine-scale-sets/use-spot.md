@@ -10,10 +10,9 @@ ms.date: 03/25/2020
 ms.reviewer: jagaveer
 ms.custom: jagaveer
 ms.openlocfilehash: 756e0d62927b67d26ae75af90c64facfe9c92d31
-ms.sourcegitcommit: 69156ae3c1e22cc570dda7f7234145c8226cc162
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/03/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84310560"
 ---
 # <a name="azure-spot-vms-for-virtual-machine-scale-sets"></a>Azure spot-Vm's voor schaal sets voor virtuele machines 
@@ -44,7 +43,7 @@ Gebruikers kunnen zich aanmelden om in-VM-meldingen te ontvangen via [Azure Sche
 ## <a name="deploying-spot-vms-in-scale-sets"></a>Implementatie-Vm's in schaal sets implementeren
 
 Als u virtuele-machine bewerkingen wilt implementeren op schaal sets, kunt u de vlag nieuwe *prioriteit* instellen op *Spot*. Alle virtuele machines in uw schaalset worden ingesteld op spot. Gebruik een van de volgende methoden voor het maken van een schaalset met behulp van spot-Vm's:
-- [Azure Portal](#portal)
+- [Azure-portal](#portal)
 - [Azure-CLI](#azure-cli)
 - [Azure PowerShell](#powershell)
 - [Azure Resource Manager-sjablonen](#resource-manager-templates)

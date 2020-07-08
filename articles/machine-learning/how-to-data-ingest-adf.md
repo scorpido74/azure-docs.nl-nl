@@ -13,10 +13,9 @@ ms.reviewer: larryfr
 ms.date: 03/01/2020
 ms.custom: tracking-python
 ms.openlocfilehash: 3e8d93c1f04dda9afbcfa0cab4e8fc9036ae7580
-ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/09/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84555665"
 ---
 # <a name="data-ingestion-with-azure-data-factory"></a>Gegevensopname met Azure Data Factory
@@ -41,11 +40,11 @@ Met Azure Functions kunt u kleine stukjes code (functies) uitvoeren zonder dat u
 
 De functie wordt aangeroepen met de [activiteit ADF Azure function](https://docs.microsoft.com/azure/data-factory/control-flow-azure-function-activity). Deze methode is een goede optie voor licht gewicht gegevens transformaties. 
 
-* -Professionals
+* Voordelen:
     * De gegevens worden verwerkt op een serverloze Compute met een relatief lage latentie
     * ADF-pijp lijn kan een [duurzame Azure-functie](/azure/azure-functions/durable/durable-functions-overview) aanroepen waarmee een geavanceerde gegevens transformatie stroom kan worden geïmplementeerd 
     * De details van de gegevens transformatie worden abstract gemaakt door de Azure-functie die opnieuw kan worden gebruikt en vanaf andere locaties kan worden aangeroepen.
-* Nadelen
+* Nadelen:
     * De Azure Functions moet worden gemaakt voor gebruik met ADF
     * Azure Functions is alleen geschikt voor het verwerken van langlopende gegevens
 
@@ -55,10 +54,10 @@ De functie wordt aangeroepen met de [activiteit ADF Azure function](https://docs
 
 In deze optie worden de gegevens verwerkt met aangepaste python-code die is ingepakt in een uitvoerbaar bestand. Deze wordt aangeroepen met een [aangepaste ADF-onderdeel activiteit](https://docs.microsoft.com/azure/data-factory/transform-data-using-dotnet-custom-activity). Deze aanpak is beter geschikt voor grote gegevens dan de vorige techniek.
 
-* -Professionals
+* Voordelen:
     * De gegevens worden verwerkt op [Azure batch](https://docs.microsoft.com/azure/batch/batch-technical-overview) pool, waardoor grootschalige parallelle en High-Performance Computing worden geboden
     * Kan worden gebruikt om zware algoritmen uit te voeren en grote hoeveel heden gegevens te verwerken
-* Nadelen
+* Nadelen:
     * Azure Batch groep moet worden gemaakt voor gebruik met ADF
     * Over technische technici met betrekking tot het inpakken van python-code naar een uitvoerbaar bestand Complexiteit van het verwerken van afhankelijkheden en para meters voor invoer/uitvoer
 
@@ -70,11 +69,11 @@ In deze optie worden de gegevens verwerkt met aangepaste python-code die is inge
 
 In deze techniek wordt de gegevens transformatie uitgevoerd door een [python-notebook](https://docs.microsoft.com/azure/data-factory/transform-data-using-databricks-notebook), dat wordt uitgevoerd op een Azure Databricks cluster. Dit is waarschijnlijk de meest voorkomende benadering die gebruikmaakt van de volledige kracht van een Azure Databricks service. Het is ontworpen voor de verwerking van gedistribueerde gegevens op schaal.
 
-* -Professionals
+* Voordelen:
     * De gegevens worden getransformeerd op de krach tigste Azure-service voor gegevens verwerking, waarvan een back-up wordt gemaakt door Apache Spark omgeving
     * Systeem eigen ondersteuning van python samen met data Science frameworks en Bibliotheken, waaronder tensor flow, PyTorch en scikit-Learn
     * Het is niet nodig om de python-code op te slaan in functions of uitvoer bare modules. De code werkt als volgt.
-* Nadelen
+* Nadelen:
     * Azure Databricks-infra structuur moet worden gemaakt voor gebruik met ADF
     * Kan duur zijn afhankelijk van Azure Databricks configuratie
     * Het draaien van reken clusters van de modus koud duurt enige tijd die hoge latentie voor de oplossing biedt 

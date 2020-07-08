@@ -6,10 +6,9 @@ ms.topic: conceptual
 description: Hierin worden de procedures beschreven voor het uitvoeren van uw code in azure Kubernetes service met Azure dev Spaces
 keywords: azds. yaml, Azure dev Spaces, dev Spaces, docker, Kubernetes, azure, AKS, Azure Kubernetes service, containers
 ms.openlocfilehash: 02b928009b1f82e2b6a193a41376265f8bfb9ea7
-ms.sourcegitcommit: 69156ae3c1e22cc570dda7f7234145c8226cc162
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/03/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84307466"
 ---
 # <a name="how-running-your-code-with-azure-dev-spaces-works"></a>Hoe u uw code uitvoert met Azure dev Spaces werkt
@@ -157,7 +156,7 @@ configurations:
 
 De controller gebruikt een Dockerfile om uw toepassing te bouwen en uit te voeren.
 
-De eigenschap *Build. context* bevat een lijst met de map waarin de Dockerfiles bestaat. De eigenschap *Build. dockerfile* definieert de naam van de dockerfile voor het bouwen van de productie versie van de toepassing. De eigenschap *configurations. develope. build. dockerfile* configureert de naam van de dockerfile voor de ontwikkelings versie van de toepassing.
+De eigenschap *Build. context* bevat een lijst met de map waarin de Dockerfiles bestaat. De eigenschap kerfile van de *build.doc* definieert de naam van de Dockerfile voor het bouwen van de productie versie van de toepassing. Met de eigenschap *configurations.develop.build.dockerfile* wordt de naam van de Dockerfile voor de ontwikkelings versie van de toepassing geconfigureerd.
 
 Met verschillende Dockerfiles voor ontwikkeling en productie kunt u bepaalde dingen tijdens de ontwikkeling inschakelen en deze items uitschakelen voor productie-implementaties. U kunt bijvoorbeeld fout opsporing of uitgebreide logboek registratie inschakelen tijdens de ontwikkeling en uitschakelen in een productie omgeving. U kunt deze eigenschappen ook bijwerken als uw Dockerfiles een andere naam hebben of zich op een andere locatie bevinden.
 
@@ -205,7 +204,7 @@ Om aan de slag te gaan met Azure dev Spaces om uw project uit te voeren, raadple
 
 * [Snel herhalen en fouten opsporen met Visual Studio code en Java][quickstart-java]
 * [Snel herhalen en fouten opsporen met Visual Studio code en .NET][quickstart-netcore]
-* [Snel herhalen en fouten opsporen met Visual Studio code en node. js][quickstart-node]
+* [Snel herhalen en fouten opsporen met Visual Studio code en Node.js][quickstart-node]
 * [Snel herhalen en fouten opsporen met Visual Studio en .NET core][quickstart-vs]
 * [De CLI gebruiken om een toepassing te ontwikkelen op Kubernetes][quickstart-cli]
 

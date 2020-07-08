@@ -8,10 +8,9 @@ ms.date: 06/05/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
 ms.openlocfilehash: 9d085ba494ea6bb6e9e80490d85e50f100fc0908
-ms.sourcegitcommit: f57fa5f3ce40647eda93f8be4b0ab0726d479bca
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/07/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84485649"
 ---
 # <a name="azure-security-baseline-for-stream-analytics"></a>Azure-beveiligings basislijn voor Stream Analytics
@@ -378,7 +377,7 @@ Zie het [overzicht van Azure Security-basis lijnen](https://docs.microsoft.com/a
 
 **Verantwoordelijkheid**: klant
 
-## <a name="data-protection"></a>Gegevensbeveiliging
+## <a name="data-protection"></a>Gegevensbescherming
 
 *Zie [beveiligings beheer: gegevens beveiliging](https://docs.microsoft.com/azure/security/benchmarks/security-control-data-protection)voor meer informatie.*
 

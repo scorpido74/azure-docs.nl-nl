@@ -12,10 +12,9 @@ ms.author: sstein
 ms.reviewer: carlrab
 ms.date: 04/30/2020
 ms.openlocfilehash: 84e9593884f40fce8affce628b7817c528b3c31d
-ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/03/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84343282"
 ---
 # <a name="scale-single-database-resources-in-azure-sql-database"></a>Enkele database resources in Azure SQL Database schalen
@@ -150,7 +149,7 @@ Meer dan 1 TB aan opslag ruimte in de Premium-laag is momenteel beschikbaar in a
 - Voor scenario's met actieve geo-replicatie:
   - Instellen van een geo-replicatie relatie: als de primaire data base P11 of P15 is, moeten de secundaire (s) ook P11 of P15 zijn. Een lagere reken grootte wordt afgewezen als secundaire data bases, omdat ze niet meer dan 1 TB kunnen ondersteunen.
   - Een upgrade uitvoeren van de primaire data base in een geo-replicatie relatie: als u de maximum grootte wijzigt in meer dan 1 TB op een primaire data base, wordt dezelfde wijziging geactiveerd voor de secundaire data base. Beide upgrades moeten worden uitgevoerd om de wijziging van kracht te laten worden. Er gelden beperkingen voor regio's voor de optie meer dan 1 TB. Als het secundaire deel uitmaakt van een regio die niet meer dan 1 TB ondersteunt, wordt de primaire niet geüpgraded.
-- Het is niet mogelijk om de import/export-service te gebruiken voor het laden van P11/P15-data bases met meer dan 1 TB. Gebruik SqlPackage. exe om gegevens te [importeren](database-import.md) en te [exporteren](database-export.md) .
+- Het is niet mogelijk om de import/export-service te gebruiken voor het laden van P11/P15-data bases met meer dan 1 TB. Gebruik SqlPackage.exe om gegevens te [importeren](database-import.md) en [exporteren](database-export.md) .
 
 ## <a name="next-steps"></a>Volgende stappen
 

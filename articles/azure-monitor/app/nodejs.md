@@ -4,15 +4,14 @@ description: Prestaties bewaken en problemen detecteren in Node.js-services met 
 ms.topic: conceptual
 ms.date: 06/01/2020
 ms.openlocfilehash: bb6ef87c99cbeeed4e8f3e5f98b8c57ce8667a71
-ms.sourcegitcommit: 69156ae3c1e22cc570dda7f7234145c8226cc162
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/03/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84309761"
 ---
 # <a name="monitor-your-nodejs-services-and-apps-with-application-insights"></a>Node.js-services en -apps bewaken met Application Insights
 
-[Application Insights](../../azure-monitor/app/app-insights-overview.md) controleert uw back-end-services en-onderdelen na de implementatie, zodat u de prestaties en andere problemen snel kunt ontdekken en analyseren. U kunt Application Insights gebruiken voor node. js-services die worden gehost in uw Data Center, Azure-Vm's en web-apps, en zelfs in andere open bare Clouds.
+[Application Insights](../../azure-monitor/app/app-insights-overview.md) controleert uw back-end-services en-onderdelen na de implementatie, zodat u de prestaties en andere problemen snel kunt ontdekken en analyseren. U kunt Application Insights gebruiken voor Node.js-services die worden gehost in uw Data Center, Azure-Vm's en web-apps, en zelfs in andere open bare Clouds.
 
 Neem de SDK op in de code en stel vervolgens een bijbehorende Application Insights-resource in Azure in om uw bewakingsgegevens te ontvangen, op te slaan en te onderzoeken. Met de SDK worden gegevens naar deze resource verzonden voor verdere analyse en onderzoek.
 
@@ -33,7 +32,7 @@ Voordat u begint, moet u ervoor zorgen dat u een Azure-abonnement hebt of moet u
 
 ### <a name="set-up-an-application-insights-resource"></a><a name="resource"></a>Een Application Insights resource instellen
 
-1. Meld u aan bij de [Azure-portal][portal].
+1. Meld u aan bij [Azure Portal][portal].
 2. [Create an Application Insights resource](create-new-resource.md) (Een Application Insights-resource maken)
 
 ### <a name="set-up-the-nodejs-sdk"></a><a name="sdk"></a> De Node.ja SDK instellen
@@ -68,7 +67,7 @@ Neem de SKD op in de app zodat gegevens kunnen worden verzameld.
 
 ### <a name="monitor-your-app"></a><a name="monitor"></a>Uw app controleren
 
-De SDK verzamelt automatisch telemetrie over de node. js-runtime en enkele algemene modules van derden. Gebruik de toepassing om een aantal van deze gegevens te genereren.
+De SDK verzamelt automatisch telemetrie over de Node.js runtime en enkele algemene modules van derden. Gebruik de toepassing om een aantal van deze gegevens te genereren.
 
 Ga vervolgen in [Azure Portal][portal] naar de Application Insights-resource die u hebt gemaakt. Zoek in de **Overzichtstijdlijn** naar de eerste gegevenspunten. Selecteer verschillende onderdelen in de grafieken om meer gedetailleerde gegevens te zien.
 
@@ -190,7 +189,7 @@ Gebruik om live Metrics van uw app naar Azure te verzenden `setSendLiveMetrics(t
 > [!NOTE]
 > De mogelijkheid om uitgebreide systeem eigen metrieken te verzenden is toegevoegd aan versie 1.4.0
 
-Om het verzenden van uitgebreide native metrische gegevens van uw app naar Azure mogelijk te maken, installeert u het afzonderlijke systeem eigen metrische meet pakket. De SDK wordt automatisch geladen wanneer deze is geïnstalleerd en begint met het verzamelen van de metrische gegevens van node. js.
+Om het verzenden van uitgebreide native metrische gegevens van uw app naar Azure mogelijk te maken, installeert u het afzonderlijke systeem eigen metrische meet pakket. De SDK wordt automatisch geladen wanneer deze is geïnstalleerd en het verzamelen van Node.js systeem eigen metrische gegevens wordt gestart.
 
 ```bash
 npm install applicationinsights-native-metrics

@@ -4,10 +4,9 @@ description: Meer informatie over hoe de Azure Backup-service virtuele Azure-mac
 ms.topic: conceptual
 ms.date: 05/20/2020
 ms.openlocfilehash: b9a2636a2144ea40457bdc3d88786785cb012e0d
-ms.sourcegitcommit: 58ff2addf1ffa32d529ee9661bbef8fbae3cddec
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/03/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84325822"
 ---
 # <a name="about-azure-vm-restore"></a>Over Azure-VM herstellen
@@ -31,7 +30,7 @@ In dit artikel wordt beschreven hoe de [Azure backup-service](https://docs.micro
 
 - **Beschik baarheid (replicatie typen)**: Azure Backup biedt twee typen replicatie om uw opslag/gegevens Maxi maal beschikbaar te stellen:
   - Met [lokaal redundante opslag LRS](../storage/common/storage-redundancy-lrs.md) worden uw gegevens drie keer gerepliceerd (er worden drie kopieën gemaakt van uw gegevens) in een opslagschaaleenheid in een datacenter. Alle kopieën van de gegevens komen binnen dezelfde regio voor. LRS is een goedkope optie voor het beschermen van uw gegevens tegen lokale hardwarefouten.
-  - [Geografisch redundante opslag (GRS)](../storage/common/storage-redundancy-grs.md) is de standaardinstelling en is de replicatieoptie die wordt aanbevolen. Met GRS worden uw gegevens gerepliceerd naar een secundaire regio (honderden kilometers verwijderd van de primaire locatie van de brongegevens). GRS kost meer dan LRS, maar GRS biedt een hoger duurzaamheids niveau voor uw gegevens, zelfs als er sprake is van een regionale storing.
+  - [Geografisch redundante opslag (GRS)](../storage/common/storage-redundancy-grs.md) is de standaardinstelling en is de replicatieoptie die wordt aanbevolen. Met GRS worden uw gegevens gerepliceerd naar een secundaire regio (honderden kilometers verwijderd van de primaire locatie van de brongegevens). GRS is duurder dan LRS, maar biedt een hoger duurzaamheidsniveau voor uw gegevens, zelfs in geval van een regionale onderbreking.
 
 - **Cross-Region Restore (CRR)**: als u een van de [Opties](https://docs.microsoft.com/azure/backup/backup-azure-arm-restore-vms#restore-options)voor het terugzetten van meerdere regio's (CRR) hebt, kunt u virtuele Azure-machines herstellen in een secundaire regio, een [Azure-gekoppelde regio](https://docs.microsoft.com/azure/best-practices-availability-paired-regions#what-are-paired-regions).
 

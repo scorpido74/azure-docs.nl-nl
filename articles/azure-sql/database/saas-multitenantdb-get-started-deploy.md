@@ -12,10 +12,9 @@ ms.author: sstein
 ms.reviewer: ''
 ms.date: 10/16/2018
 ms.openlocfilehash: 59a7fbbd6f948ec5207522814a1375b806536810
-ms.sourcegitcommit: 69156ae3c1e22cc570dda7f7234145c8226cc162
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/03/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84310084"
 ---
 # <a name="deploy-and-explore-a-sharded-multi-tenant-application"></a>Een Shard multi tenant-toepassing implementeren en verkennen
@@ -99,7 +98,7 @@ Wanneer de toepassing wordt geïmplementeerd, downloadt u de bron code-en beheer
 1. Blader naar [de WingtipTicketsSaaS-MultiTenantDb github opslag plaats](https://github.com/Microsoft/WingtipTicketsSaaS-MultiTenantDb).
 2. Klik op **klonen of downloaden**.
 3. Klik op **zip downloaden** en sla het bestand op.
-4. Klik met de rechter muisknop op het bestand **WingtipTicketsSaaS-MultiTenantDb-Master. zip** en selecteer **Eigenschappen**.
+4. Klik met de rechter muisknop op het **WingtipTicketsSaaS-MultiTenantDb-master.zip** -bestand en selecteer **Eigenschappen**.
 5. Selecteer op het tabblad **Algemeen** de optie **blok kering opheffen**en klik op **Toep assen**.
 6. Klik op **OK**.
 7. Pak de bestanden uit.
@@ -155,22 +154,22 @@ In een productie omgeving maakt u doorgaans een CNAME DNS-record om het [Interne
 
 Nu de app is geïmplementeerd, kunt u het beste aan de slag. Het Power shell *-script demo-LoadGenerator* start een werk belasting die wordt uitgevoerd voor elke Tenant. De werkelijke belasting van veel SaaS-apps is doorgaans sporadisch en onvoorspelbaar. Voor het simuleren van dit type belasting, produceert de generator een taak die wordt gedistribueerd over alle tenants. De belasting bevat wille keurige bursts op elke Tenant die wordt uitgevoerd met wille keurige intervallen. Het duurt enkele minuten voordat het laad patroon wordt weer geven. u kunt de generator het beste gedurende ten minste drie of vier minuten uitvoeren voordat u de belasting bewaken.
 
-1. Open in de *Power shell-ISE*de.. \\ . Het \\ script hulpprogram ma's voor learning modules \\ *demo-LoadGenerator. ps1* .
+1. Open in de *Power shell-ISE*de.. \\ . Hulpprogram ma's voor leer modules \\ \\ *Demo-LoadGenerator.ps1* script.
 2. Druk op **F5** om het script uit te voeren en de load-generator te starten (gebruik voorlopig de standaardwaarden van het script).
 
-Het script *demo-LoadGenerator. ps1* opent een Power shell-sessie waarin de load generator wordt uitgevoerd. De load generator wordt in deze sessie uitgevoerd als een voorgrond taak waarmee taken voor het genereren van de achtergrond worden gestart, één voor elke Tenant.
+Het *Demo-LoadGenerator.ps1* script opent een nieuwe Power shell-sessie waarin de load generator wordt uitgevoerd. De load generator wordt in deze sessie uitgevoerd als een voorgrond taak waarmee taken voor het genereren van de achtergrond worden gestart, één voor elke Tenant.
 
 Nadat de voorgrond taak is gestart, blijft deze in een status voor het aanroepen van taken. Met de taak worden extra achtergrond taken gestart voor nieuwe tenants die daarna worden ingericht.
 
 Het sluiten van de Power shell-sessie stopt alle taken.
 
-Mogelijk wilt u de load Generator-sessie opnieuw starten om andere parameter waarden te gebruiken. Als dit het geval is, sluit u de sessie van de Power shell-generatie en voert u de *demo-LoadGenerator. ps1*opnieuw uit.
+Mogelijk wilt u de load Generator-sessie opnieuw starten om andere parameter waarden te gebruiken. Als dit het geval is, sluit u de sessie van de Power shell-generatie en voert u de *Demo-LoadGenerator.ps1*opnieuw uit.
 
 ## <a name="provision-a-new-tenant-into-the-sharded-database"></a>Een nieuwe Tenant inrichten in de Shard-data base
 
 De eerste implementatie omvat drie voor beelden van tenants in de *Tenants1* -data base. We gaan een andere Tenant maken en de gevolgen ervan voor de geïmplementeerde toepassing naleven. In deze stap drukt u op één toets om een nieuwe Tenant te maken:
 
-1. Openen... \\ Learning modules \\ Provisioning and Catalog \\ *demo-ProvisionTenants. Ps1* in de *Power shell ISE*.
+1. Openen... \\ Leer modules \\ inrichten en Catalog \\ *Demo-ProvisionTenants.ps1* in *Power shell ISE*.
 2. Druk op **F5** (niet **F8**) om het script uit te voeren (behoud de standaard waarden voor nu).
 
    > [!NOTE]
@@ -193,7 +192,7 @@ U kunt ervoor kiezen om klanten met een gratis proef versie of economie te plaat
 
 Daarna inrichten we een andere Tenant, deze tijd in een eigen Data Base:
 
-1. In... \\ Learning modules \\ Provisioning and Catalog \\ *demo-ProvisionTenants. ps1*, Modify *$TenantName* to **Salix Salsa**, *$VenueType* to **dans** en *$scenario* to **2**.
+1. In... \\ Leer modules \\ inrichten en Catalog \\ *Demo-ProvisionTenants.ps1*, *$TenantName* wijzigen in **Salix Salsa**, *$VenueType* op **dans** en *$scenario* tot **2**.
 
 2. Druk op **F5** om het script opnieuw uit te voeren.
     - Op **F5** drukken wordt de nieuwe Tenant in een afzonderlijke data base ingericht. De data base en de Tenant zijn geregistreerd in de catalogus. Vervolgens wordt de browser geopend op de pagina gebeurtenissen van de Tenant.

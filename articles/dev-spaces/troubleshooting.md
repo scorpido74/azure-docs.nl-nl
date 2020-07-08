@@ -4,12 +4,11 @@ services: azure-dev-spaces
 ms.date: 09/25/2019
 ms.topic: troubleshooting
 description: Meer informatie over het oplossen van veelvoorkomende problemen bij het inschakelen en gebruiken van Azure dev Spaces
-keywords: 'Docker, Kubernetes, azure, AKS, Azure Kubernetes service, containers, helm, service-net, service mesh routing, kubectl, K8S '
+keywords: 'Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, containers, Helm, servicemesh, servicemeshroutering, kubectl, k8s '
 ms.openlocfilehash: 51846c8630e4e8c60205f8d92fb7f74f92de3f41
-ms.sourcegitcommit: 69156ae3c1e22cc570dda7f7234145c8226cc162
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/03/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84309642"
 ---
 # <a name="azure-dev-spaces-troubleshooting"></a>Problemen met Azure dev Spaces oplossen
@@ -112,7 +111,7 @@ Zorg ervoor dat de API-server beschikbaar is door kubectl-opdrachten uit te voer
 ## <a name="common-issues-when-preparing-your-project-for-azure-dev-spaces"></a>Veelvoorkomende problemen bij het voorbereiden van het project voor Azure-ontwikkel ruimten
 
 ### <a name="warning-dockerfile-could-not-be-generated-due-to-unsupported-language"></a>Waarschuwing "Dockerfile kan niet worden gegenereerd als gevolg van niet-ondersteunde taal"
-Azure dev Spaces biedt systeem eigen ondersteuning voor C# en node. js. Wanneer u uitvoert `azds prep` in een map met code die is geschreven in een van deze talen, worden door Azure dev Spaces automatisch een geschikte Dockerfile voor u gemaakt.
+Azure dev Spaces biedt systeem eigen ondersteuning voor C# en Node.js. Wanneer u uitvoert `azds prep` in een map met code die is geschreven in een van deze talen, worden door Azure dev Spaces automatisch een geschikte Dockerfile voor u gemaakt.
 
 U kunt nog steeds Azure dev Spaces gebruiken met code geschreven in andere talen, maar u moet de Dockerfile hand matig maken voordat u `azds up` voor de eerste keer wordt uitgevoerd.
 
@@ -392,7 +391,7 @@ spec:
 ### <a name="error-required-tools-and-configurations-are-missing"></a>Fout: de vereiste hulpprogram ma's en configuraties ontbreken
 
 Deze fout kan optreden bij het starten van code: "[Azure dev Spaces] de vereiste hulpprogram ma's en configuraties voor Build en debug [project name] ontbreken."
-De fout betekent dat azds. exe zich niet in de omgevings variabele PATH bevindt, zoals in VS code wordt weer gegeven.
+De fout betekent dat azds.exe zich niet in de omgevings variabele PATH bevindt, zoals in VS code wordt weer gegeven.
 
 Start VS code vanuit een opdracht prompt waarbij de omgevings variabele PATH correct is ingesteld.
 
@@ -430,9 +429,9 @@ Deze fout wordt mogelijk weer gegeven bij het uitvoeren van het fout opsporingsp
 
 U kunt dit probleem oplossen door Visual Studio code te sluiten en opnieuw te openen. Start het fout opsporingsprogramma opnieuw.
 
-### <a name="error-internal-watch-failed-watch-enospc-when-attaching-debugging-to-a-nodejs-application"></a>Fout ' interne controle mislukt: Watch ENOSPC ' bij het toevoegen van fout opsporing aan een node. js-toepassing
+### <a name="error-internal-watch-failed-watch-enospc-when-attaching-debugging-to-a-nodejs-application"></a>Fout ' interne controle mislukt: Bekijk ENOSPC ' bij het toevoegen van fout opsporing aan een Node.js-toepassing
 
-Deze fout treedt op wanneer het knoop punt waarop de Pod wordt uitgevoerd met de node. js-toepassing die u wilt koppelen met een fout opsporingsprogramma de waarde *FS. inotify. max_user_watches* overschrijdt. In sommige gevallen is [de standaard waarde *FS. inotify. max_user_watches* mogelijk te klein om het toevoegen van een fout opsporingsprogramma rechtstreeks aan een pod te kunnen afhandelen](https://github.com/Azure/AKS/issues/772).
+Deze fout treedt op wanneer het knoop punt met de Pod met de Node.js toepassing waarmee u probeert te koppelen met een fout opsporingsprogramma de waarde *FS. inotify. max_user_watches* overschrijdt. In sommige gevallen is [de standaard waarde *FS. inotify. max_user_watches* mogelijk te klein om het toevoegen van een fout opsporingsprogramma rechtstreeks aan een pod te kunnen afhandelen](https://github.com/Azure/AKS/issues/772).
 
 Een tijdelijke oplossing voor dit probleem is om de waarde *FS. inotify. max_user_watches* op elk knoop punt in het cluster te verhogen en het knoop punt opnieuw op te starten om de wijzigingen van kracht te laten worden.
 
@@ -545,7 +544,7 @@ Dit probleem oplossen:
 1. Als de container wordt gebouwd/geïmplementeerd, kunt u 2-3 seconden wachten en de service opnieuw proberen toegang te krijgen. 
 1. Controleer de poort configuratie in de volgende assets:
     * ** [Helm grafiek](https://docs.helm.sh):** Opgegeven door de `service.port` en `deployment.containerPort` in values. yaml met de `azds prep` opdracht.
-    * Poorten die in toepassings code worden geopend, bijvoorbeeld in node. js:`var server = app.listen(80, function () {...}`
+    * Alle poorten die in de toepassings code worden geopend, bijvoorbeeld in Node.js:`var server = app.listen(80, function () {...}`
 
 ### <a name="the-type-or-namespace-name-mylibrary-couldnt-be-found"></a>Het type of de naam van de naam ruimte ' MyLibrary ' is niet gevonden
 

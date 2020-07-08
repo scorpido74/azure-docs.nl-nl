@@ -11,10 +11,9 @@ ms.date: 07/18/2017
 ms.author: tagore
 ms.custom: tracking-python
 ms.openlocfilehash: 93e120a0519e1fc61a716e606e088801fdf508dd
-ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/09/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84556367"
 ---
 # <a name="python-web-and-worker-roles-with-python-tools-for-visual-studio"></a>Python-web- en -werkrollen met Python-tools voor Visual Studio
@@ -333,10 +332,10 @@ Zie de documentatie bij PTVS voor meer informatie over het werken met web- en we
 
 Zie de volgende artikelen voor meer informatie over het gebruik van Azure-services via uw web- en werkrollen, zoals het gebruik van Azure Storage of Service Bus:
 
-* [Blob-service][Blob Service]
+* [BLOB-service][Blob Service]
 * [Tabelservice][Table Service]
 * [Queue-service][Queue Service]
-* [Service Bus wachtrijen][Service Bus Queues]
+* [Service Bus-wachtrijen][Service Bus Queues]
 * [Service Bus-onderwerpen][Service Bus Topics]
 
 <!--Link references-->

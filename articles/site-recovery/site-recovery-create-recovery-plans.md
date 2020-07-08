@@ -4,10 +4,9 @@ description: Meer informatie over het maken en aanpassen van herstel plannen voo
 ms.topic: how-to
 ms.date: 01/23/2020
 ms.openlocfilehash: 0dcde98e8dcaef12896c18c25429f0ba7b1b27d4
-ms.sourcegitcommit: f57fa5f3ce40647eda93f8be4b0ab0726d479bca
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/07/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84485326"
 ---
 # <a name="create-and-customize-recovery-plans"></a>Herstel plannen maken en aanpassen
@@ -28,7 +27,7 @@ In dit artikel wordt beschreven hoe u een herstel plan voor failover kunt maken 
    Hyper-V naar Azure | De naam van de Hyper-V-site selecteren | Azure selecteren
    Hyper-V (beheerd door VMM) naar Azure  | De VMM-server selecteren | Azure selecteren
   
-    en let op het volgende:
+    Houd rekening met het volgende:
     - U kunt een herstel plan gebruiken voor zowel failover naar Azure als failback vanuit Azure.
     - De bron locatie moet machines hebben die zijn ingeschakeld voor failover en herstel.
     - Een herstel plan kan machines met dezelfde bron en hetzelfde doel bevatten.
@@ -76,7 +75,7 @@ U kunt een herstel plan aanpassen door een script of hand matige actie toe te vo
     1. Typ een naam voor de actie en voer de actie-instructies in. De persoon die de failover uitvoert, ziet deze instructies.
     1. Geef op of u de hand matige actie wilt toevoegen voor alle typen failover (testen, failover, geplande failover (indien van toepassing)). Klik vervolgens op **OK**.
 4. Als u een script wilt toevoegen, gaat u als volgt te werk:
-    1. Als u een VMM-script wilt toevoegen, selecteert u **failover naar VMM-script**en typt u bij **pad naar script** het relatieve pad naar de share. Als de share zich bijvoorbeeld op \MSSCVMMLibrary\RPScripts bevindt \\ \<VMMServerName> , geeft u het pad op: \RPScripts\RPScript.ps1.
+    1. Als u een VMM-script wilt toevoegen, selecteert u **failover naar VMM-script**en typt u bij **pad naar script** het relatieve pad naar de share. Als de share zich bijvoorbeeld op \MSSCVMMLibrary\RPScripts bevindt \\ \<VMMServerName> , geeft u het pad op: \RPScripts\RPScript.PS1.
     1. Als u een Azure Automation-boek wilt toevoegen, geeft u het **Azure Automation account** op waarin het runbook zich bevindt en selecteert u het juiste **Azure-runbook-script**.
 5. Voer een testfailover van het herstel plan uit om ervoor te zorgen dat het script werkt zoals verwacht.
 

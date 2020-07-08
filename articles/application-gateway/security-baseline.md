@@ -8,10 +8,9 @@ ms.date: 06/05/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
 ms.openlocfilehash: 562a0fbd64fca530598a58599160dbdd7e479557
-ms.sourcegitcommit: f57fa5f3ce40647eda93f8be4b0ab0726d479bca
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/07/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84485628"
 ---
 # <a name="azure-security-baseline-for-azure-application-gateway"></a>Azure-beveiligings basislijn voor Azure-toepassing gateway
@@ -495,7 +494,7 @@ U kunt dit proces stroom lijnen door Diagnostische instellingen voor Azure Activ
 
 **Verantwoordelijkheid**: niet van toepassing
 
-## <a name="data-protection"></a>Gegevensbeveiliging
+## <a name="data-protection"></a>Gegevensbescherming
 
 *Zie [beveiligings beheer: gegevens beveiliging](https://docs.microsoft.com/azure/security/benchmarks/security-control-data-protection)voor meer informatie.*
 
@@ -967,7 +966,7 @@ Diagnostische instellingen configureren voor uw Azure-toepassing gateway-impleme
 
 ### <a name="83-ensure-anti-malware-software-and-signatures-are-updated"></a>8,3: controleren of anti-malware-software en hand tekeningen zijn bijgewerkt
 
-**Richt lijnen**: wanneer u Azure Web Application firewall (WAF) gebruikt, kunt u WAF-beleid configureren. Een WAF-beleid bestaat uit twee typen beveiligings regels: aangepaste regels die door de klant zijn gemaakt en beheerde regel sets die een verzameling van door Azure beheerde vooraf geconfigureerde regels zijn. Door Azure beheerde regel sets bieden een eenvoudige manier om beveiliging te implementeren op basis van een gemeen schappelijke reeks beveiligings Risico's. Omdat dergelijke regel definities worden beheerd door Azure, worden de regels zo nodig bijgewerkt om te beschermen tegen nieuwe aanvals handtekeningen.
+**Richt lijnen**: wanneer u Azure Web Application firewall (WAF) gebruikt, kunt u WAF-beleid configureren. Een WAF-beleid bestaat uit twee typen beveiligings regels: aangepaste regels die door de klant zijn gemaakt en beheerde regel sets die een verzameling van door Azure beheerde vooraf geconfigureerde regels zijn. Door Azure beheerde regelsets bieden een eenvoudige manier om beveiliging te implementeren op basis van een gemeenschappelijke set beveiligingsbedreigingen. Aangezien dergelijke regelsets worden beheerd door Azure, worden de regels zo nodig bijgewerkt om ook bescherming te bieden tegen nieuwe aanvalshandtekeningen.
 
 * [Meer informatie over door Azure beheerde WAF-regel sets](https://docs.microsoft.com/azure/web-application-firewall/ag/ag-overview#waf-policy)
 

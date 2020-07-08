@@ -9,10 +9,9 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 06/05/2020
 ms.openlocfilehash: fc460abe65709f90ff22e1ec6f8e47b315db7f67
-ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/09/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84555234"
 ---
 # <a name="add-custom-analyzers-to-string-fields-in-an-azure-cognitive-search-index"></a>Aangepaste analyse functies toevoegen aan teken reeks velden in een Azure Cognitive Search-index
@@ -202,7 +201,7 @@ Voor analyse functies kunnen index kenmerken variëren, afhankelijk van het feit
 
 |||  
 |-|-|  
-|Naam|Het mag alleen letters, cijfers, spaties, streepjes of onderstrepings tekens bevatten, mag alleen beginnen en eindigen met een alfanumeriek teken en mag niet langer zijn dan 128 tekens.|  
+|Name|Het mag alleen letters, cijfers, spaties, streepjes of onderstrepings tekens bevatten, mag alleen beginnen en eindigen met een alfanumeriek teken en mag niet langer zijn dan 128 tekens.|  
 |Type|Het type analyse van de lijst met ondersteunde analyse functies. Zie de kolom **analyzer_type** in de tabel [geanalyseerde](#AnalyzerTable) tabellen.|  
 |Opties|Moet geldige opties zijn van een vooraf gedefinieerde analyse die wordt weer gegeven in de tabel [geanalyseerde](#AnalyzerTable) tabellen.|  
 
@@ -210,7 +209,7 @@ Voor analyse functies kunnen index kenmerken variëren, afhankelijk van het feit
 
 |||  
 |-|-|  
-|Naam|Het mag alleen letters, cijfers, spaties, streepjes of onderstrepings tekens bevatten, mag alleen beginnen en eindigen met een alfanumeriek teken en mag niet langer zijn dan 128 tekens.|  
+|Name|Het mag alleen letters, cijfers, spaties, streepjes of onderstrepings tekens bevatten, mag alleen beginnen en eindigen met een alfanumeriek teken en mag niet langer zijn dan 128 tekens.|  
 |Type|Moet ' #Microsoft. Azure. Search. CustomAnalyzer ' zijn.|  
 |CharFilters|Ingesteld op een van de vooraf gedefinieerde teken filters die worden vermeld in de tabel [char filters](#char-filters-reference) of een aangepast teken filter dat is opgegeven in de index definitie.|  
 |Tokenizer|Vereist. Ingesteld op een vooraf gedefinieerde tokenizers die wordt weer gegeven in de tabel [tokenizers](#Tokenizers) hieronder of een aangepaste tokenizer die is opgegeven in de index definitie.|  
@@ -227,7 +226,7 @@ Voor analyse functies kunnen index kenmerken variëren, afhankelijk van het feit
 
 |||  
 |-|-|  
-|Naam|Het mag alleen letters, cijfers, spaties, streepjes of onderstrepings tekens bevatten, mag alleen beginnen en eindigen met een alfanumeriek teken en mag niet langer zijn dan 128 tekens.|  
+|Name|Het mag alleen letters, cijfers, spaties, streepjes of onderstrepings tekens bevatten, mag alleen beginnen en eindigen met een alfanumeriek teken en mag niet langer zijn dan 128 tekens.|  
 |Type|Teken filter type uit de lijst met ondersteunde teken filters. Zie **char_filter_type** kolom in de tabel [char filters](#char-filters-reference) hieronder.|  
 |Opties|Moet geldige opties van het type [char filters](#char-filters-reference) zijn.|  
 
@@ -240,7 +239,7 @@ Een aangepaste Analyzer kan gebruikmaken van een vooraf gedefinieerde tokenizer 
 
 |||  
 |-|-|  
-|Naam|Het mag alleen letters, cijfers, spaties, streepjes of onderstrepings tekens bevatten, mag alleen beginnen en eindigen met een alfanumeriek teken en mag niet langer zijn dan 128 tekens.|  
+|Name|Het mag alleen letters, cijfers, spaties, streepjes of onderstrepings tekens bevatten, mag alleen beginnen en eindigen met een alfanumeriek teken en mag niet langer zijn dan 128 tekens.|  
 |Type|Tokenizer naam uit de lijst met ondersteunde tokenizers. Zie **tokenizer_type** kolom in de tabel [Tokenizers](#Tokenizers) hieronder.|  
 |Opties|Moet geldige opties van een opgegeven tokenizer-type zijn opgenomen in de onderstaande tabel [Tokenizers](#Tokenizers) .|  
 
@@ -251,7 +250,7 @@ U kunt meerdere token filters hebben in een aangepaste analyse functie. Token fi
 
 |||  
 |-|-|  
-|Naam|Het mag alleen letters, cijfers, spaties, streepjes of onderstrepings tekens bevatten, mag alleen beginnen en eindigen met een alfanumeriek teken en mag niet langer zijn dan 128 tekens.|  
+|Name|Het mag alleen letters, cijfers, spaties, streepjes of onderstrepings tekens bevatten, mag alleen beginnen en eindigen met een alfanumeriek teken en mag niet langer zijn dan 128 tekens.|  
 |Type|De naam van het token filter in de lijst met ondersteunde token filters. Zie **token_filter_type** kolom in de tabel [token filters](#TokenFilters) hieronder.|  
 |Opties|Moet [token filters](#TokenFilters) van een opgegeven token filter type zijn.|  
 
@@ -289,7 +288,7 @@ In de onderstaande tabel zijn de teken filters die zijn geïmplementeerd met Apa
 |**char_filter_name**|**char_filter_type** <sup>1</sup>|**Beschrijving en opties**|  
 |-|-|-|
 |[html_strip](https://lucene.apache.org/core/6_6_1/analyzers-common/org/apache/lucene/analysis/charfilter/HTMLStripCharFilter.html)|(type is alleen van toepassing wanneer opties beschikbaar zijn)  |Een char-filter dat een HTML-constructie probeert te verwijderen.|  
-|[mapping](https://lucene.apache.org/core/6_6_1/analyzers-common/org/apache/lucene/analysis/charfilter/MappingCharFilter.html)|MappingCharFilter|Een char-filter waarmee toewijzingen worden toegepast die zijn gedefinieerd met de optie toewijzingen. Overeenkomende is Greedy (langste patroon dat overeenkomt met een bepaald punt in WINS). Vervanging mag de lege teken reeks zijn.<br /><br /> **Opties**<br /><br /> toewijzingen (type: teken reeks matrix)-een lijst met toewijzingen van de volgende indeling: "a =>b" (alle exemplaren van het teken "a" worden vervangen door het teken "b"). Vereist.|  
+|[toewijzing](https://lucene.apache.org/core/6_6_1/analyzers-common/org/apache/lucene/analysis/charfilter/MappingCharFilter.html)|MappingCharFilter|Een char-filter waarmee toewijzingen worden toegepast die zijn gedefinieerd met de optie toewijzingen. Overeenkomende is Greedy (langste patroon dat overeenkomt met een bepaald punt in WINS). Vervanging mag de lege teken reeks zijn.<br /><br /> **Opties**<br /><br /> toewijzingen (type: teken reeks matrix)-een lijst met toewijzingen van de volgende indeling: "a =>b" (alle exemplaren van het teken "a" worden vervangen door het teken "b"). Vereist.|  
 |[pattern_replace](https://lucene.apache.org/core/6_6_1/analyzers-common/org/apache/lucene/analysis/pattern/PatternReplaceCharFilter.html)|PatternReplaceCharFilter|Een char-filter waarmee tekens in de invoer teken reeks worden vervangen. Er wordt gebruikgemaakt van een reguliere expressie om te identificeren welke teken reeksen moeten worden bewaard en een vervangend patroon om te bepalen welke tekens moeten worden vervangen. Bijvoorbeeld invoer tekst = "AA BB AA", patroon = "(AA) \\ \s + (BB)" vervangen = "$ 1 # $2", resultaat = "AA # BB AA # BB".<br /><br /> **Opties**<br /><br /> patroon (type: teken reeks)-vereist.<br /><br /> vervanging (type: teken reeks)-vereist.|  
 
  <sup>1</sup> char-filter typen worden altijd voorafgegaan door de code ' #Microsoft. Azure. Search ', zodat ' MappingCharFilter ' werkelijk wordt opgegeven als ' #Microsoft. Azure. Search. MappingCharFilter. We hebben het voor voegsel verwijderd om de breedte van de tabel te verminderen, maar vergeet niet om deze op te nemen in uw code. U ziet dat char_filter_type alleen wordt gegeven voor filters die kunnen worden aangepast. Als er geen opties zijn, zoals in het geval van html_strip, is er geen gekoppelde #Microsoft. Azure. search-type.
@@ -371,7 +370,7 @@ In de onderstaande tabel zijn de token filters die zijn geïmplementeerd met Apa
  <sup>1</sup> token filter typen worden altijd voorafgegaan door de code ' #Microsoft. Azure. Search ', zodat ' ArabicNormalizationTokenFilter ' werkelijk wordt opgegeven als ' #Microsoft. Azure. Search. ArabicNormalizationTokenFilter '.  We hebben het voor voegsel verwijderd om de breedte van de tabel te verminderen, maar vergeet niet om deze op te nemen in uw code.  
 
 
-## <a name="see-also"></a>Zie ook  
+## <a name="see-also"></a>Zie tevens  
  [REST-Api's voor Azure Cognitive Search](https://docs.microsoft.com/rest/api/searchservice/)   
  [Voor beelden van analyse functies in azure Cognitive Search >](search-analyzers.md#examples)    
  [Index maken &#40;Azure Cognitive Search REST API&#41;](https://docs.microsoft.com/rest/api/searchservice/create-index)  

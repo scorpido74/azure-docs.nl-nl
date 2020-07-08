@@ -9,10 +9,9 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 05/11/2020
 ms.openlocfilehash: e55dfc692bdd625de8873f6e61c9969ed7fbf2df
-ms.sourcegitcommit: 813f7126ed140a0dff7658553a80b266249d302f
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/06/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84466167"
 ---
 # <a name="create-a-private-endpoint-for-a-secure-connection-to-azure-cognitive-search"></a>Een persoonlijk eind punt maken voor een beveiligde verbinding met Azure Cognitive Search
@@ -46,7 +45,7 @@ In deze sectie maakt u een virtueel netwerk en een subnet voor het hosten van de
     | ------- | ----- |
     | Abonnement | Uw abonnement selecteren|
     | Resourcegroep | Selecteer **nieuwe maken**, Voer *myResourceGroup*in en selecteer **OK** . |
-    | Naam | *MyVirtualNetwork* invoeren |
+    | Name | *MyVirtualNetwork* invoeren |
     | Regio | Selecteer de gewenste regio |
     |||
 
@@ -62,9 +61,9 @@ In deze sectie maakt u een nieuwe Azure Cognitive Search-service met een persoon
 
     | Instelling | Waarde |
     | ------- | ----- |
-    | **PROJECT DETAILS** | |
+    | **PROJECTGEGEVENS** | |
     | Abonnement | Selecteer uw abonnement. |
-    | Resourcegroep | Selecteer **myResourceGroup**. U hebt dit gemaakt in de vorige sectie.|
+    | Resourcegroep | Selecteer **myResourceGroup**. U hebt deze in de vorige sectie gemaakt.|
     | **EXEMPLAARDETAILS** |  |
     | URL | Voer een unieke naam in. |
     | Locatie | Selecteer de gewenste regio. |
@@ -84,23 +83,23 @@ In deze sectie maakt u een nieuwe Azure Cognitive Search-service met een persoon
     | Instelling | Waarde |
     | ------- | ----- |
     | Abonnement | Selecteer uw abonnement. |
-    | Resourcegroep | Selecteer **myResourceGroup**. U hebt dit gemaakt in de vorige sectie.|
+    | Resourcegroep | Selecteer **myResourceGroup**. U hebt deze in de vorige sectie gemaakt.|
     | Locatie | Selecteer **VS - west**.|
-    | Naam | Voer *myPrivateEndpoint*in.  |
-    | Doel-subresource | De standaard **searchService**behouden. |
-    | **INBEL** |  |
+    | Name | Voer *myPrivateEndpoint*in.  |
+    | Stel subresource in | De standaard **searchService**behouden. |
+    | **NETWERKEN** |  |
     | Virtueel netwerk  | Selecteer *MyVirtualNetwork* in de resource groep *myResourceGroup*. |
     | Subnet | Selecteer *mySubnet*. |
-    | **INTEGRATIE VAN PARTICULIERE DNS** |  |
-    | Integreren met een privé-DNS-zone  | Accepteer de standaard waarde **Ja**. |
+    | **INTEGRATIE VAN PRIVÉ-DNS** |  |
+    | Integreren met privé-DNS-zone  | Accepteer de standaard waarde **Ja**. |
     | Privé-DNS-zone  | Wijzig de standaard waarde * * (nieuw) privatelink.search.windows.net * *. |
     |||
 
 1. Selecteer **OK**. 
 
-1. Selecteer **Controleren + maken**. U gaat naar de pagina **controleren en maken** waar Azure uw configuratie valideert. 
+1. Selecteer **Controleren + maken**. De pagina **Beoordelen en maken** wordt weergegeven, waar uw configuratie wordt gevalideerd in Azure. 
 
-1. Wanneer u het bericht **door gegeven validatie** ziet, selecteert u **maken**. 
+1. Als u het bericht **Validatie geslaagd** ziet, selecteert u **Maken**. 
 
 1. Zodra de inrichting van de nieuwe service is voltooid, bladert u naar de resource die u zojuist hebt gemaakt.
 
@@ -116,17 +115,17 @@ In deze sectie maakt u een nieuwe Azure Cognitive Search-service met een persoon
 
     | Instelling | Waarde |
     | ------- | ----- |
-    | **PROJECT DETAILS** | |
+    | **PROJECTGEGEVENS** | |
     | Abonnement | Selecteer uw abonnement. |
-    | Resourcegroep | Selecteer **myResourceGroup**. U hebt dit gemaakt in de vorige sectie.  |
+    | Resourcegroep | Selecteer **myResourceGroup**. U hebt deze in de vorige sectie gemaakt.  |
     | **EXEMPLAARDETAILS** |  |
-    | Naam van de virtuele machine | Voer *myVm*in. |
+    | Naam van de virtuele machine | Voer *myVm* in. |
     | Regio | Selecteer **VS-West** of de regio die u gebruikt. |
     | Beschikbaarheidsopties | Laat de standaardwaarde **Geen infrastructuurredundantie vereist** staan. |
-    | Installatiekopie | Selecteer **Windows Server 2019 Data Center**. |
+    | Installatiekopie | Selecteer **Windows Server 2019 Datacenter**. |
     | Grootte | Laat de standaardwaarde **Standard DS1 v2** staan. |
     | **ADMINISTRATOR-ACCOUNT** |  |
-    | Gebruikersnaam | Voer een gebruikers naam van uw keuze in. |
+    | Gebruikersnaam | Voer een gebruikersnaam naar keuze in. |
     | Wachtwoord | Voer een wachtwoord naar keuze in. Het wachtwoord moet minstens 12 tekens lang zijn en moet voldoen aan de [gedefinieerde complexiteitsvereisten](../virtual-machines/windows/faq.md?toc=%2fazure%2fvirtual-network%2ftoc.json#what-are-the-password-requirements-when-creating-a-vm).|
     | Wachtwoord bevestigen | Voer het wachtwoord opnieuw in. |
     | **REGELS VOOR BINNENKOMENDE POORT** |  |
@@ -136,45 +135,45 @@ In deze sectie maakt u een nieuwe Azure Cognitive Search-service met een persoon
     | Hebt u al een Windows-licentie? | Laat de standaardwaarde **Nee** staan. |
     |||
 
-1. Selecteer **volgende: schijven**.
+1. Selecteer **Volgende: Schijven**.
 
-1. In **een virtuele machine maken-schijven**, de standaard instellingen behouden en **volgende selecteren: netwerken**.
+1. Behoud de standaardinstellingen in **Een virtuele machine maken – schijven** en selecteer **Volgende: Netwerken**.
 
 1. Selecteer in **Een virtuele machine maken - Netwerken** de volgende gegevens:
 
     | Instelling | Waarde |
     | ------- | ----- |
-    | Virtueel netwerk | De standaard **MyVirtualNetwork**behouden.  |
-    | Adresruimte | De standaard **10.1.0.0/24**behouden.|
-    | Subnet | Behoud de standaard **mySubnet (10.1.0.0/24)**.|
+    | Virtueel netwerk | Laat de standaardwaarde **MyVirtualNetwork** staan.  |
+    | Adresruimte | Laat de standaardwaarde **10.1.0.0/24** staan.|
+    | Subnet | Laat de standaardwaarde **mySubnet (10.1.0.0/24)** staan.|
     | Openbare IP | Handhaaf de standaardinstelling **(new) myVm-ip**. |
     | Openbare poorten voor inkomend verkeer | Selecteer **Geselecteerde poorten toestaan**. |
     | Binnenkomende poorten selecteren | Selecteer **HTTP** en **RDP**.|
     ||
 
-1. Selecteer **Controleren + maken**. U gaat naar de pagina **controleren en maken** waar Azure uw configuratie valideert.
+1. Selecteer **Controleren + maken**. De pagina **Beoordelen en maken** wordt weergegeven, waar uw configuratie wordt gevalideerd in Azure.
 
-1. Wanneer u het bericht **door gegeven validatie** ziet, selecteert u **maken**. 
+1. Als u het bericht **Validatie geslaagd** ziet, selecteert u **Maken**. 
 
 
 ## <a name="connect-to-the-vm"></a>Verbinding maken met de virtuele machine
 
 Down load en maak vervolgens als volgt verbinding met de VM- *myVm* :
 
-1. Voer in de zoek balk van de portal *myVm*in.
+1. Voer in de zoekbalk van de portal *myVm* in.
 
 1. Selecteer de knop **Verbinding maken**. Na het selecteren van de knop **Verbinden** wordt **Verbinden met virtuele machine** geopend.
 
 1. Selecteer **RDP-bestand downloaden**. In Azure wordt een *RDP*-bestand (Remote Desktop Protocol) gemaakt en het bestand wordt gedownload naar de computer.
 
-1. Open het bestand gedownloade. rdp *.
+1. Open het downloaded.rdp*-bestand.
 
     1. Selecteer **Verbinding maken** wanneer hierom wordt gevraagd.
 
-    1. Voer de gebruikers naam en het wacht woord in die u hebt opgegeven bij het maken van de virtuele machine.
+    1. Voer de gebruikersnaam en het wachtwoord in die u hebt opgegeven bij het maken van de virtuele machine.
 
         > [!NOTE]
-        > Mogelijk moet u **meer opties**selecteren  >  **een ander account gebruiken**om de referenties op te geven die u hebt ingevoerd tijdens het maken van de virtuele machine.
+        > Mogelijk moet u **Meer opties** > **Een ander account gebruiken** selecteren om de referenties op te geven die u hebt ingevoerd tijdens het maken van de VM.
 
 1. Selecteer **OK**.
 

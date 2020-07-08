@@ -8,10 +8,9 @@ ms.topic: conceptual
 ms.date: 06/25/2019
 ms.subservice: alerts
 ms.openlocfilehash: 6c9bacfc4354351cbbf2eb735414ff3334cd7d0a
-ms.sourcegitcommit: 58ff2addf1ffa32d529ee9661bbef8fbae3cddec
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/03/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84323668"
 ---
 # <a name="webhook-actions-for-log-alert-rules"></a>Webhook-acties voor waarschuwings regels voor logboeken
@@ -37,7 +36,7 @@ Webhook-acties vereisen de eigenschappen in de volgende tabel.
 Webhooks bevatten een URL en een nettolading die in JSON is ingedeeld en die de gegevens die naar de externe service worden verzonden. De payload bevat standaard de waarden in de volgende tabel. U kunt ervoor kiezen om deze Payload te vervangen door een aangepaste versie. In dat geval gebruikt u de variabelen in de tabel voor elk van de para meters om hun waarden in uw aangepaste nettolading op te laten staan.
 
 
-| Parameter | Variabele | Beschrijving |
+| Parameter | Variabele | Description |
 |:--- |:--- |:--- |
 | *AlertRuleName* |#alertrulename |De naam van de waarschuwings regel. |
 | *Ernst* |#severity |Ernst ingesteld voor de waarschuwing voor het geactiveerde logboek. |

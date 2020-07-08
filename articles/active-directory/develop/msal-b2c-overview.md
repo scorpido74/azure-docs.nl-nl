@@ -1,7 +1,7 @@
 ---
-title: MSAL. js gebruiken met Azure AD B2C
+title: MSAL.js gebruiken met Azure AD B2C
 titleSuffix: Microsoft identity platform
-description: Met de micro soft-verificatie bibliotheek voor Java script (MSAL. js) kunnen toepassingen met Azure AD B2C werken en tokens verkrijgen voor het aanroepen van beveiligde web-Api's. Deze web-Api's kunnen worden Microsoft Graph, andere Api's van micro soft, Web-Api's van anderen of uw eigen web-API.
+description: Met micro soft-verificatie bibliotheek voor Java script (MSAL.js) kunnen toepassingen met Azure AD B2C werken en tokens verkrijgen om beveiligde web-Api's aan te roepen. Deze web-Api's kunnen worden Microsoft Graph, andere Api's van micro soft, Web-Api's van anderen of uw eigen web-API.
 services: active-directory
 author: negoe
 manager: CelesteDG
@@ -14,21 +14,20 @@ ms.author: negoe
 ms.reviewer: nacanuma
 ms.custom: aaddev
 ms.openlocfilehash: f43711652bb205c75870fdb969c44298087a2b07
-ms.sourcegitcommit: 69156ae3c1e22cc570dda7f7234145c8226cc162
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/03/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84308562"
 ---
 # <a name="use-microsoft-authentication-library-for-javascript-to-work-with-azure-ad-b2c"></a>Micro soft-verificatie bibliotheek voor Java script gebruiken om te werken met Azure AD B2C
 
-Met de [micro soft-verificatie bibliotheek voor Java script (MSAL. js)](https://github.com/AzureAD/microsoft-authentication-library-for-js) kunnen java script-ontwikkel aars gebruikers verifiëren met sociale en lokale identiteiten met behulp van [Azure Active Directory B2C](../../active-directory-b2c/overview.md) (Azure AD B2C).
+Met de [micro soft-verificatie bibliotheek voor Java script (MSAL.js)](https://github.com/AzureAD/microsoft-authentication-library-for-js) kunnen java script-ontwikkel aars gebruikers verifiëren met sociale en lokale identiteiten met behulp van [Azure Active Directory B2C](../../active-directory-b2c/overview.md) (Azure AD B2C).
 
 Door Azure AD B2C als een service voor identiteits beheer te gebruiken, kunt u aanpassen en bepalen hoe uw klanten zich registreren, aanmelden en hun profielen beheren wanneer ze uw toepassingen gebruiken. Met Azure AD B2C kunt u ook de gebruikers interface merken en aanpassen die door uw toepassing worden weer gegeven tijdens het verificatie proces.
 
 In de volgende secties ziet u hoe u:
 
-- Een node. js-Web-API beveiligen
+- Een Node.js Web-API beveiligen
 - Ondersteuning voor aanmelden in een toepassing met één pagina (SPA) en *de* beveiligde web-API aanroepen
 - Ondersteuning voor het opnieuw instellen van wacht woorden inschakelen
 
@@ -40,7 +39,7 @@ Als u dit nog niet hebt gedaan, maakt u een [Azure AD B2C-Tenant](../../active-d
 
 De volgende stappen laten zien hoe een **Web-API** Azure AD B2C kan gebruiken om zichzelf te beschermen en geselecteerde bereiken beschikbaar te maken voor een client toepassing.
 
-MSAL. js voor het knoop punt is momenteel in ontwikkeling. Zie het [schema](https://github.com/AzureAD/microsoft-authentication-library-for-js/wiki#roadmap) op github voor meer informatie. We raden u aan gebruik te maken van [Pass Port-Azure-AD](https://github.com/AzureAD/passport-azure-ad), een verificatie bibliotheek voor node. js die is ontwikkeld en ondersteund door micro soft.
+MSAL.js voor het knoop punt is momenteel in ontwikkeling. Zie het [schema](https://github.com/AzureAD/microsoft-authentication-library-for-js/wiki#roadmap) op github voor meer informatie. We raden u aan gebruik te maken van [Pass Port-Azure-AD](https://github.com/AzureAD/passport-azure-ad), een verificatie bibliotheek voor Node.js ontwikkeld en ondersteund door micro soft.
 
 ### <a name="step-1-register-your-application"></a>Stap 1: Uw toepassing registreren
 
@@ -67,7 +66,7 @@ const tenantId = "<your-tenant-ID>.onmicrosoft.com"; // Alternatively, you can u
 const policyName = "<Name of your sign in / sign up policy, e.g. B2C_1_signupsignin1>";
 ```
 
-Bekijk voor meer informatie dit [node. js B2C Web-API](https://github.com/Azure-Samples/active-directory-b2c-javascript-nodejs-webapi)-voor beeld.
+Bekijk dit [Node.js B2C Web API](https://github.com/Azure-Samples/active-directory-b2c-javascript-nodejs-webapi)-voor beeld voor meer informatie.
 
 ## <a name="javascript-spa"></a>Java script SPA
 
@@ -92,7 +91,7 @@ Er zijn twee belang rijke punten bij het configureren van uw toepassing:
 - API-eind punt en weer gegeven bereiken configureren
 - Verificatie parameters en Token scopes configureren
 
-1. Open het bestand *apiConfig. js* in het voor beeld.
+1. Open het *apiConfig.js* -bestand in het voor beeld.
 
 2. Configureer het voor beeld met de para meters die u eerder hebt verkregen tijdens het registreren van uw web-API. Wijzig de volgende regels code door de waarden te vervangen door het adres van uw web-API en weer gegeven bereiken.
 
@@ -104,7 +103,7 @@ Er zijn twee belang rijke punten bij het configureren van uw toepassing:
     };
    ```
 
-1. Open het bestand *authConfig. js* in het voor beeld.
+1. Open het *authConfig.js* -bestand in het voor beeld.
 
 1. Configureer het voor beeld met de para meters die u eerder hebt verkregen tijdens het registreren van uw toepassing met één pagina. Wijzig de volgende regels code door de waarden te vervangen door uw ClientId-, Authority-meta gegevens en Token aanvraag scopes.
 
@@ -132,7 +131,7 @@ Lees voor meer informatie dit [Java script B2C-voorbeeld toepassing voor één p
 
 ## <a name="support-password-reset"></a>Ondersteuning voor wacht woord opnieuw instellen
 
-In deze sectie breidt u uw toepassing met één pagina uit voor het gebruik van de Azure AD B2C wacht woord opnieuw instellen gebruikers stroom. Hoewel MSAL. js momenteel geen ondersteuning biedt voor meerdere gebruikers stromen of aangepaste beleids regels, kunt u de tape wisselaar gebruiken voor het afhandelen van veelvoorkomende gebruiks voorbeelden zoals het opnieuw instellen van wacht woorden.
+In deze sectie breidt u uw toepassing met één pagina uit voor het gebruik van de Azure AD B2C wacht woord opnieuw instellen gebruikers stroom. Hoewel MSAL.js momenteel niet meerdere gebruikers stromen of aangepaste beleids regels ondersteunt, kunt u de bibliotheek gebruiken voor het afhandelen van veelvoorkomende use-cases, zoals het opnieuw instellen van wacht woorden.
 
 Bij de volgende stappen wordt ervan uitgegaan dat u de stappen in de voor gaande [Java script-Spa](#javascript-spa) -sectie al hebt gevolgd.
 

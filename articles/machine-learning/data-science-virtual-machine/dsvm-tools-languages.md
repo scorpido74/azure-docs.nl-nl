@@ -12,10 +12,9 @@ ms.author: laobri
 ms.topic: conceptual
 ms.date: 12/12/2019
 ms.openlocfilehash: c81f2a23474ff98c202cdbe5b455dd3d15535c96
-ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/09/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84557475"
 ---
 # <a name="languages-supported-on-the-data-science-virtual-machine"></a>Talen die worden ondersteund op de Data Science Virtual Machine 
@@ -203,6 +202,6 @@ De Data Science Virtual Machine (DSVM) wordt geleverd met verschillende vooraf o
 
 **Java**: openjdk is beschikbaar op zowel de Linux-als Windows-edities van de DSVM en is ingesteld op het pad. Als u Java wilt gebruiken, typt u de `javac` of- `java` opdracht bij een opdracht prompt in Windows of op de bash-shell in Linux.
 
-**Node. js**: node. js is beschikbaar op zowel de Linux-als Windows-edities van de DSVM en is ingesteld op het pad. Als u toegang wilt krijgen tot node. js, typt u de `node` of- `npm` opdracht bij een opdracht prompt in Windows of op de bash-shell in Linux. In Windows is de Visual Studio-uitbrei ding voor de node. js-hulpprogram ma's geïnstalleerd om een grafische IDE te bieden om uw node. js-toepassing te ontwikkelen.
+**Node.js**: Node.js is beschikbaar op zowel de Linux-als Windows-edities van de DSVM en is ingesteld op het pad. Als u toegang wilt krijgen tot Node.js, typt u de `node` of- `npm` opdracht bij een opdracht prompt in Windows of op de bash-shell in Linux. In Windows is de Visual Studio-uitbrei ding voor de Node.js-hulpprogram ma's geïnstalleerd om een grafische IDE te bieden voor het ontwikkelen van uw Node.js-toepassing.
 
 **F #**: beschikbaar in Windows en toegankelijk via de Visual Studio Community Edition of op een `Developer Command Prompt for Visual Studio` , waar u de opdracht kunt uitvoeren `fsc` .

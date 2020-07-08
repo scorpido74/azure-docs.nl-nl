@@ -8,10 +8,9 @@ ms.topic: conceptual
 ms.date: 04/09/2020
 ms.author: femila
 ms.openlocfilehash: e233b5d27df3e25c2d7c1464aea9a1e80dfbffb0
-ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/09/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84553157"
 ---
 # <a name="azure-app-configuration-as-an-event-grid-source"></a>Configuratie Azure-app als Event Grid bron
@@ -23,7 +22,7 @@ In dit artikel vindt u de eigenschappen en het schema voor Azure-app configurati
 
 Azure-app configuratie worden de volgende gebeurtenis typen verzonden:
 
-| Gebeurtenistype | Beschrijving |
+| Gebeurtenistype | Description |
 | ---------- | ----------- |
 | Micro soft. AppConfiguration. KeyValueModified | Deze gebeurtenis treedt op wanneer een sleutel waarde wordt gemaakt of vervangen. |
 | Micro soft. AppConfiguration. KeyValueDeleted | Deze gebeurtenis treedt op wanneer een sleutel waarde wordt verwijderd. |
@@ -76,10 +75,10 @@ Een gebeurtenis heeft de volgende gegevens op het hoogste niveau:
 | -------- | ---- | ----------- |
 | onderwerp | tekenreeks | Volledige bronpad naar de bron van de gebeurtenis. Dit veld kan niet worden geschreven. Event Grid biedt deze waarde. |
 | Onderwerp | tekenreeks | Het door de uitgever gedefinieerde pad naar het gebeurtenisonderwerp. |
-| eventType | tekenreeks | Een van de geregistreerde gebeurtenistypen voor deze gebeurtenisbron. |
+| Type | tekenreeks | Een van de geregistreerde gebeurtenistypen voor deze gebeurtenisbron. |
 | eventTime | tekenreeks | Het tijdstip waarop de gebeurtenis is gegenereerd op basis van de UTC-tijd van de provider. |
 | Id | tekenreeks | De unieke id voor de gebeurtenis. |
-| data | object | Gebeurtenis gegevens voor app-configuratie. |
+| gegevens | object | Gebeurtenis gegevens voor app-configuratie. |
 | dataVersion | tekenreeks | De schemaversie van het gegevensobject. De uitgever definieert de schemaversie. |
 | metadataVersion | tekenreeks | De schemaversie van de metagegevens van de gebeurtenis. Event Grid definieert het schema voor de eigenschappen op het hoogste niveau. Event Grid biedt deze waarde. |
 

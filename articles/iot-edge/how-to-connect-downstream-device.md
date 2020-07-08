@@ -12,10 +12,9 @@ ms.custom:
 - amqp
 - mqtt
 ms.openlocfilehash: c7de0fdf6a22b1414be297b6958841ba5c251c4b
-ms.sourcegitcommit: 69156ae3c1e22cc570dda7f7234145c8226cc162
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/03/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84309217"
 ---
 # <a name="connect-a-downstream-device-to-an-azure-iot-edge-gateway"></a>Een downstreamapparaat verbinden met een Azure IoT Edge-gateway
@@ -130,9 +129,9 @@ Hebben twee dingen die klaar zijn voordat de voor beelden op toepassings niveau 
 
 Deze sectie bevat een voorbeeld toepassing om een Azure IoT NodeJS Device-client te verbinden met een IoT Edge-gateway. Voor NodeJS-toepassingen moet u het basis-CA-certificaat installeren op het niveau van de toepassing, zoals hier wordt weer gegeven. NodeJS-toepassingen gebruiken het certificaat archief van het systeem niet.
 
-1. Haal het voor beeld voor **edge_downstream_device. js** op uit de [Azure IOT Device SDK voor voor beelden van node. js opslag plaats](https://github.com/Azure/azure-iot-sdk-node/tree/master/device/samples).
+1. Haal het voor beeld voor **edge_downstream_device.js** van de [Azure IOT Device SDK voor Node.js samples opslag plaats](https://github.com/Azure/azure-iot-sdk-node/tree/master/device/samples).
 2. Zorg ervoor dat u beschikt over alle vereisten om het voor beeld uit te voeren door het **README.MD** -bestand te controleren.
-3. Werk de **Connections Tring** -en **edge_ca_cert_path** -variabelen bij in het bestand edge_downstream_device. js.
+3. Werk in het edge_downstream_device.js-bestand de **Connections Tring** -en **edge_ca_cert_path** -variabelen bij.
 4. Raadpleeg de SDK-documentatie voor instructies over het uitvoeren van het voor beeld op het apparaat.
 
 Het volgende code fragment is de manier waarop de client-SDK het certificaat bestand leest en gebruikt om een beveiligde TLS-verbinding tot stand te brengen om te begrijpen welk voor beeld wordt uitgevoerd:
@@ -151,7 +150,7 @@ In deze sectie wordt een voorbeeld toepassing geïntroduceerd om een Azure IoT .
 
 1. Haal het voor beeld voor **EdgeDownstreamDevice** op uit de [map met IOT Edge .net](https://github.com/Azure/iotedge/tree/master/samples/dotnet/EdgeDownstreamDevice)-voor beelden.
 2. Zorg ervoor dat u beschikt over alle vereisten om het voor beeld uit te voeren door het **README.MD** -bestand te controleren.
-3. Werk in het bestand **Properties/launchSettings. json** de variabelen **DEVICE_CONNECTION_STRING** en **CA_CERTIFICATE_PATH** bij. Als u het certificaat wilt gebruiken dat is geïnstalleerd in het vertrouwde certificaat archief op het hostsysteem, laat u deze variabele leeg.
+3. Werk de **DEVICE_CONNECTION_STRING** en de **CA_CERTIFICATE_PATH** variabelen bij in de **Eigenschappen/launchSettings.jsin** het bestand. Als u het certificaat wilt gebruiken dat is geïnstalleerd in het vertrouwde certificaat archief op het hostsysteem, laat u deze variabele leeg.
 4. Raadpleeg de SDK-documentatie voor instructies over het uitvoeren van het voor beeld op het apparaat.
 
 Raadpleeg de functie **InstallCACert ()** in het **EdgeDownstreamDevice/Program.cs-** bestand om programmatisch een vertrouwd certificaat in het certificaat archief te installeren via een .NET-toepassing. Deze bewerking is idempotent. kan daarom meerdere keren worden uitgevoerd met dezelfde waarden zonder extra effect.

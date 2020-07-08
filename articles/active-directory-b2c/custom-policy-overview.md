@@ -11,10 +11,9 @@ ms.date: 06/06/2019
 ms.author: mimart
 ms.subservice: B2C
 ms.openlocfilehash: 1a7cb964064e229ee29591ca14aa8ef33e393a7d
-ms.sourcegitcommit: f57fa5f3ce40647eda93f8be4b0ab0726d479bca
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/07/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84484170"
 ---
 # <a name="custom-policies-in-azure-active-directory-b2c"></a>Aangepast beleid in Azure Active Directory B2C
@@ -59,7 +58,7 @@ Azure AD B2C interactie met id-providers, gebruikers, andere systemen en met de 
 
 Het Framework voor identiteits ervaring is een volledig configureerbaar, op de cloud gebaseerd Azure-platform dat de vertrouwens relatie tussen entiteiten in standaard protocol indelingen, zoals OpenID Connect Connect, OAuth, SAML en enkele niet-standaard, vertrouwt, bijvoorbeeld REST API systeem claims uitwisseling. Het Framework maakt gebruikers vriendelijke, met witte labels ondervindt ervaringen die ondersteuning bieden voor HTML en CSS.
 
-Een aangepast beleid bestaat uit een of meer XML-bestanden die in een hiërarchische keten naar elkaar verwijzen. De XML-elementen definiëren het claim schema, claim transformaties, inhouds definities, claim providers, technische profielen en de stappen voor het door geven van de gebruikers, onder andere elementen. Een aangepast beleid is toegankelijk als een of meer XML-bestanden die worden uitgevoerd door het Framework voor identiteits ervaring wanneer het wordt aangeroepen door een Relying Party. Ontwikkel aars die aangepaste beleids regels configureren, moeten de vertrouwde relaties in zorgvuldige Details definiëren om eind punten van meta gegevens, exacte claim uitwisselings definities op te geven en geheimen, sleutels en certificaten te configureren die nodig zijn voor elke id-provider.
+Een aangepast beleid bestaat uit een of meer XML-bestanden die in een hiërarchische keten naar elkaar verwijzen. De XML-elementen definiëren het claim schema, claim transformaties, inhouds definities, claim providers, technische profielen en de stappen voor het door geven van de gebruikers, onder andere elementen. Een aangepast beleid is toegankelijk als een of meer XML-bestanden die worden uitgevoerd door het Framework voor identiteits ervaring wanneer het wordt aangeroepen door een Relying Party. Ontwikkelaars die aangepaste beleidsregels configureren, moeten de vertrouwde relaties zeer zorgvuldig definiëren en rekening houden met zaken zoals eindpunten van metagegevens, exacte definities voor claimuitwisseling, en het configureren van geheimen, sleutels en certificaten die nodig zijn voor elke id-provider.
 
 ### <a name="inheritance-model"></a>Overname model
 

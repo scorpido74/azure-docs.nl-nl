@@ -10,10 +10,9 @@ ms.topic: conceptual
 ms.date: 04/09/2020
 ms.author: kgremban
 ms.openlocfilehash: ba3e8b9d7649d56d1639f7f608d85a2da04ff74a
-ms.sourcegitcommit: 813f7126ed140a0dff7658553a80b266249d302f
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/06/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84465555"
 ---
 # <a name="install-the-azure-iot-edge-runtime-on-windows"></a>De Azure IoT Edge-runtime op Windows installeren
@@ -153,16 +152,16 @@ U kunt ook de para meter Offline installatiepad gebruiken om IoT Edge bij te wer
 
 2. Zoek de versie die u wilt installeren en down load de volgende bestanden van het gedeelte **assets** van de release opmerkingen op uw IOT-apparaat:
 
-   * IoTEdgeSecurityDaemon. ps1
-   * Microsoft-Azure-IoTEdge-amd64. cab van Releases 1.0.9 of recenter of Microsoft-Azure-IoTEdge. cab van Releases 1.0.8 en ouder.
+   * IoTEdgeSecurityDaemon.ps1
+   * Microsoft-Azure-IoTEdge-amd64.cab van Releases 1.0.9 of nieuwer, of Microsoft-Azure-IoTEdge.cab van Releases 1.0.8 en ouder.
 
-   Microsoft-Azure-IotEdge-arm32. cab is ook beschikbaar vanaf 1.0.9 alleen voor test doeleinden. IoT Edge wordt momenteel niet ondersteund op Windows ARM32-apparaten.
+   Microsoft-Azure-IotEdge-arm32.cab is ook alleen beschikbaar vanaf 1.0.9 voor test doeleinden. IoT Edge wordt momenteel niet ondersteund op Windows ARM32-apparaten.
 
    Het is belang rijk dat u het Power shell-script uit dezelfde versie gebruikt als het CAB-bestand dat u gebruikt, omdat de functionaliteit wordt gewijzigd zodat de functies in elke release worden ondersteund.
 
-3. Als het CAB-bestand dat u hebt gedownload een architectuur achtervoegsel heeft, wijzigt u de naam van het bestand in net **Microsoft-Azure-IoTEdge. cab**.
+3. Als het CAB-bestand dat u hebt gedownload een architectuur achtervoegsel heeft, wijzigt u de naam van het bestand in alleen **Microsoft-Azure-IoTEdge.cab**.
 
-4. U kunt eventueel ook een installatie programma downloaden voor het herdistribueerbare pakket van Visual C++. Het Power shell-script gebruikt bijvoorbeeld deze versie: [vc_redist. x64. exe](https://download.microsoft.com/download/0/6/4/064F84EA-D1DB-4EAA-9A5C-CC2F0FF6A638/vc_redist.x64.exe). Sla het installatie programma in dezelfde map op uw IoT-apparaat op als de IoT Edge bestanden.
+4. U kunt eventueel ook een installatie programma downloaden voor het herdistribueerbare pakket van Visual C++. Het Power shell-script maakt bijvoorbeeld gebruik van deze versie: [vc_redist.x64.exe](https://download.microsoft.com/download/0/6/4/064F84EA-D1DB-4EAA-9A5C-CC2F0FF6A638/vc_redist.x64.exe). Sla het installatie programma in dezelfde map op uw IoT-apparaat op als de IoT Edge bestanden.
 
 5. Als u wilt installeren met offline onderdelen, [punt bron](https://docs.microsoft.com/powershell/module/microsoft.powershell.core/about/about_scripts?view=powershell-7#script-scope-and-dot-sourcing) de lokale kopie van het Power shell-script. Vervolgens gebruikt u de `-OfflineInstallationPath` para meter als onderdeel van de `Deploy-IoTEdge` opdracht en geeft u het absolute pad naar de bestands directory op. Bijvoorbeeld:
 
@@ -293,7 +292,7 @@ De initialisatie-IoTEdge-opdracht configureert IoT Edge met uw apparaat connecti
 | **ContainerOs** | **Windows** of **Linux** | Als er geen container besturings systeem is opgegeven, is Windows de standaard waarde.<br><br>Voor Windows-containers maakt IoT Edge gebruik van de Moby-container engine die is opgenomen in de installatie. Voor Linux-containers moet u een container Engine installeren voordat u de installatie start. |
 | **InvokeWebRequestParameters** | Hashtabel van para meters en waarden | Tijdens de installatie worden er diverse webaanvragen gedaan. Gebruik dit veld om para meters in te stellen voor deze webaanvragen. Deze para meter is handig voor het configureren van referenties voor proxy servers. Zie [een IOT edge apparaat configureren om te communiceren via een proxy server](how-to-configure-proxy-support.md)voor meer informatie. |
 | **AgentImage** | URI-installatie kopie van IoT Edge agent | Een nieuwe IoT Edge-installatie maakt standaard gebruik van de nieuwste roulerende tag voor de installatie kopie van de IoT Edge agent. Gebruik deze para meter om een specifieke tag voor de installatie kopie versie in te stellen of om uw eigen agent installatie kopie op te geven. Zie voor meer informatie [IOT Edge Tags begrijpen](how-to-update-iot-edge.md#understand-iot-edge-tags). |
-| **Gebruikers** | Gebruikers naam container register | Gebruik deze para meter alleen als u de para meter-AgentImage instelt op een container in een persoonlijk REGI ster. Geef een gebruikers naam op die toegang heeft tot het REGI ster. |
+| **Gebruikersnaam** | Gebruikers naam container register | Gebruik deze para meter alleen als u de para meter-AgentImage instelt op een container in een persoonlijk REGI ster. Geef een gebruikers naam op die toegang heeft tot het REGI ster. |
 | **Wachtwoord** | Teken reeks met beveiligd wacht woord | Gebruik deze para meter alleen als u de para meter-AgentImage instelt op een container in een persoonlijk REGI ster. Geef het wacht woord op voor toegang tot het REGI ster. |
 
 ### <a name="update-iotedge"></a>Update-IoTEdge

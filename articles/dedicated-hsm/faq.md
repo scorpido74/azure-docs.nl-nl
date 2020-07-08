@@ -14,13 +14,12 @@ ms.topic: conceptual
 ms.date: 02/05/2020
 ms.author: mbaldwin
 ms.openlocfilehash: 16c3676a881dc5dc979891dfd870274581be255b
-ms.sourcegitcommit: 69156ae3c1e22cc570dda7f7234145c8226cc162
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/03/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84310382"
 ---
-# <a name="frequently-asked-questions-faq"></a>Veelgestelde vragen (FAQ's)
+# <a name="frequently-asked-questions-faq"></a>Veelgestelde vragen
 
 Vind antwoorden op veelgestelde vragen over Microsoft Azure specifieke HSM.
 

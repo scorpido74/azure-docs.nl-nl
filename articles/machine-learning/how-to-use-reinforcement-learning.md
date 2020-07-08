@@ -11,10 +11,9 @@ author: peterclu
 ms.date: 05/05/2020
 ms.custom: tracking-python
 ms.openlocfilehash: f8559733de9b7acfb23e2846e4d92ce6db5e2df0
-ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/09/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84556943"
 ---
 # <a name="reinforcement-learning-preview-with-azure-machine-learning"></a>Educatief leren (preview) met Azure Machine Learning
@@ -425,7 +424,7 @@ Selecteer **hier om de uitvoering in azure machine learning Studio te bekijken**
 
 Het **episode_reward_mean** plot toont het gemiddelde aantal punten per trainings-epoche. U kunt zien dat de trainings agent voor het eerst goed is uitgevoerd, omdat de bijbehorende overeenkomsten verloren gaan zonder één punt te scoren (weer gegeven met een reward_mean van-21). Binnen 100 herhalingen heeft de trainings agent geleerd dat de computer op een gemiddeld 18 punten kan worden opgedaan.
 
-Als u door de logboeken van de onderliggende uitvoering bladert, ziet u de evaluatie resultaten die zijn vastgelegd in driver_log. txt-bestand. Mogelijk moet u enkele minuten wachten voordat deze metrische gegevens beschikbaar zijn op de pagina uitvoeren.
+Als u door de logboeken van de onderliggende uitvoering bladert, ziet u de evaluatie resultaten die in driver_log.txt bestand zijn vastgelegd. Mogelijk moet u enkele minuten wachten voordat deze metrische gegevens beschikbaar zijn op de pagina uitvoeren.
 
 Kortom, u hebt geleerd hoe u meerdere reken resources kunt configureren om een versterking van een Learning-agent te trainen om Pong heel goed af te spelen.
 

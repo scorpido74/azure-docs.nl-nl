@@ -12,10 +12,9 @@ ms.author: genemi
 ms.reviewer: jrasnik
 ms.date: 06/06/2020
 ms.openlocfilehash: 7c451deb04c9fd8b394512979668ad266cadf02d
-ms.sourcegitcommit: f57fa5f3ce40647eda93f8be4b0ab0726d479bca
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/07/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84485469"
 ---
 # <a name="event-file-target-code-for-extended-events-in-azure-sql-database"></a>Doel code van gebeurtenis bestand voor uitgebreide gebeurtenissen in Azure SQL Database
@@ -46,8 +45,8 @@ In dit onderwerp vindt u een code voorbeeld van twee fasen:
   
   - U kunt desgewenst binnen enkele minuten [een **AdventureWorksLT** -demonstratie database maken](single-database-create-quickstart.md) .
 
-- SQL Server Management Studio (SSMS. exe), de meest recente maandelijkse update versie.
-  U kunt de nieuwste versie van SSMS. exe downloaden van:
+- SQL Server Management Studio (ssms.exe), de meest recente maandelijkse update versie.
+  U kunt de nieuwste ssms.exe downloaden van:
   
   - Onderwerp met de titel [down load SQL Server Management Studio](https://msdn.microsoft.com/library/mt238290.aspx).
   - [Een directe koppeling naar de down load.](https://go.microsoft.com/fwlink/?linkid=616025)
@@ -62,7 +61,7 @@ Deze Power shell is fase 1 van het code voorbeeld in twee fasen.
 
 Het script begint met opdrachten om op te schonen na een mogelijke vorige uitvoering en is rerunnable.
 
-1. Plak het Power shell-script in een eenvoudige tekst editor zoals Notepad. exe en sla het script op als een bestand met de extensie **. ps1**.
+1. Plak het Power shell-script in een eenvoudige tekst editor, zoals Notepad.exe, en sla het script op als een bestand met de extensie **. ps1**.
 2. Start Power shell ISE als beheerder.
 3. Typ bij de prompt<br/>`Set-ExecutionPolicy -ExecutionPolicy Unrestricted -Scope CurrentUser`<br/>en druk op ENTER.
 4. Open uw **PS1** -bestand in Power shell ISE. Voer het script uit.
@@ -250,7 +249,7 @@ Het script begint met opdrachten om op te schonen na een mogelijke vorige uitvoe
 
 Het Power shell-script heeft enkele benoemde waarden afgedrukt toen het werd beëindigd. U moet het Transact-SQL-script bewerken om deze waarden te gebruiken. Zoek naar de **TODO** in het Transact-SQL-script om de bewerkings punten te vinden.
 
-1. Open SQL Server Management Studio (SSMS. exe).
+1. Open SQL Server Management Studio (ssms.exe).
 2. Maak verbinding met uw data base in Azure SQL Database.
 3. Klik om een nieuw query deel venster te openen.
 4. Plak het volgende Transact-SQL-script in het query deel venster.

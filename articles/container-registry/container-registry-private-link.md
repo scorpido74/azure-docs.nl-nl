@@ -4,10 +4,9 @@ description: Stel een persoonlijk eind punt in op een container register en Scha
 ms.topic: article
 ms.date: 05/19/2020
 ms.openlocfilehash: f25f7b94a3008b829340cdaaed247d7ab1203c19
-ms.sourcegitcommit: 5504d5a88896c692303b9c676a7d2860f36394c1
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/08/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84509335"
 ---
 # <a name="configure-azure-private-link-for-an-azure-container-registry"></a>Een persoonlijke Azure-koppeling configureren voor een Azure container Registry 
@@ -214,14 +213,14 @@ Stel een persoonlijke koppeling in wanneer u een REGI ster maakt of Voeg een per
     | ------- | ----- |
     | Abonnement | Selecteer uw abonnement. |
     | Resourcegroep | Voer de naam van een bestaande groep in of maak een nieuwe.|
-    | Naam | Voer een unieke naam in. |
+    | Name | Voer een unieke naam in. |
     | Subbron |**REGI ster** selecteren|
     | **Netwerken** | |
     | Virtueel netwerk| Selecteer het virtuele netwerk waarin uw virtuele machine is geïmplementeerd, zoals *myDockerVMVNET*. |
     | Subnet | Selecteer een subnet, zoals *myDockerVMSubnet* waarop uw virtuele machine is geïmplementeerd. |
     |**Integratie van Privé-DNS**||
-    |Integreren met een privé-DNS-zone |Selecteer **Ja**. |
-    |Privé-DNS zone |Selecteer *(nieuw) privatelink.azurecr.io* |
+    |Integreren met privé-DNS-zone |Selecteer **Ja**. |
+    |Privé-DNS-zone |Selecteer *(nieuw) privatelink.azurecr.io* |
     |||
 1. Configureer de resterende register instellingen en selecteer vervolgens **controleren + maken**.
 
@@ -239,11 +238,11 @@ Stel een persoonlijke koppeling in wanneer u een REGI ster maakt of Voeg een per
     | **Projectgegevens** | |
     | Abonnement | Selecteer uw abonnement. |
     | Resourcegroep | Voer de naam van een bestaande groep in of maak een nieuwe.|
-    | **Exemplaar Details** |  |
-    | Naam | Voer een naam in. |
+    | **Exemplaardetails** |  |
+    | Name | Voer een naam in. |
     |Regio|Selecteer een regio.|
     |||
-5. Selecteer **volgende: resource**.
+5. Selecteer **Volgende: Resource**.
 6. Voer de volgende informatie in of Selecteer deze:
 
     | Instelling | Waarde |
@@ -254,7 +253,7 @@ Stel een persoonlijke koppeling in wanneer u een REGI ster maakt of Voeg een per
     | Resource |De naam van het REGI ster selecteren|
     |Doel-subresource |**REGI ster** selecteren|
     |||
-7. Selecteer **volgende: Configuratie**.
+7. Selecteer **Volgende: Configuratie**.
 8. Voer de volgende gegevens in of Selecteer deze:
 
     | Instelling | Waarde |
@@ -263,12 +262,12 @@ Stel een persoonlijke koppeling in wanneer u een REGI ster maakt of Voeg een per
     | Virtueel netwerk| Selecteer het virtuele netwerk waarin uw virtuele machine is geïmplementeerd, zoals *myDockerVMVNET*. |
     | Subnet | Selecteer een subnet, zoals *myDockerVMSubnet* waarop uw virtuele machine is geïmplementeerd. |
     |**Integratie van Privé-DNS**||
-    |Integreren met een privé-DNS-zone |Selecteer **Ja**. |
-    |Privé-DNS zone |Selecteer *(nieuw) privatelink.azurecr.io* |
+    |Integreren met privé-DNS-zone |Selecteer **Ja**. |
+    |Privé-DNS-zone |Selecteer *(nieuw) privatelink.azurecr.io* |
     |||
 
-1. Selecteer **Controleren + maken**. U gaat naar de pagina **controleren en maken** waar Azure uw configuratie valideert. 
-2. Wanneer u het bericht **door gegeven validatie** ziet, selecteert u **maken**.
+1. Selecteer **Controleren + maken**. De pagina **Beoordelen en maken** wordt weergegeven, waar uw configuratie wordt gevalideerd in Azure. 
+2. Als u het bericht **Validatie geslaagd** ziet, selecteert u **Maken**.
 
 Nadat het persoonlijke eind punt is gemaakt, worden de DNS-instellingen in de privé zone weer gegeven op de pagina **privé-eind punten** in de portal:
 

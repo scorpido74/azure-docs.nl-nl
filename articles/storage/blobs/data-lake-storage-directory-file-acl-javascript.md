@@ -9,10 +9,9 @@ ms.topic: how-to
 ms.subservice: data-lake-storage-gen2
 ms.reviewer: prishet
 ms.openlocfilehash: 9a95af730e8250539e8b33af4bd5a90dc3a604a2
-ms.sourcegitcommit: 813f7126ed140a0dff7658553a80b266249d302f
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/06/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84466065"
 ---
 # <a name="use-javascript-to-manage-directories-files-and-acls-in-azure-data-lake-storage-gen2"></a>Java script gebruiken voor het beheren van mappen, bestanden en Acl's in Azure Data Lake Storage Gen2
@@ -26,7 +25,7 @@ In dit artikel leest u hoe u Java script gebruikt voor het maken en beheren van 
 > [!div class="checklist"]
 > * Een Azure-abonnement. Zie [Gratis proefversie van Azure ophalen](https://azure.microsoft.com/pricing/free-trial/).
 > * Een opslag account met een hiërarchische naam ruimte (HNS) ingeschakeld. Volg [deze](data-lake-storage-quickstart-create-account.md) instructies om er een te maken.
-> * Als u dit pakket in een node. js-toepassing gebruikt, hebt u node. js 8.0.0 of hoger nodig.
+> * Als u dit pakket in een Node.js-toepassing gebruikt, hebt u Node.js 8.0.0 of hoger nodig.
 
 ## <a name="set-up-your-project"></a>Uw project instellen
 
@@ -67,7 +66,7 @@ function GetDataLakeServiceClient(accountName, accountKey) {
 
 ```
 > [!NOTE]
-> Deze autorisatie methode werkt alleen voor node. js-toepassingen. Als u van plan bent om uw code uit te voeren in een browser, kunt u autoriseren met behulp van Azure Active Directory (AD). 
+> Deze autorisatie methode werkt alleen voor Node.js toepassingen. Als u van plan bent om uw code uit te voeren in een browser, kunt u autoriseren met behulp van Azure Active Directory (AD). 
 
 ### <a name="connect-by-using-azure-active-directory-ad"></a>Verbinding maken met behulp van Azure Active Directory (AD)
 
@@ -221,7 +220,7 @@ async function ManageDirectoryACLs(fileSystemClient) {
 
 ## <a name="upload-a-file-to-a-directory"></a>Een bestand uploaden naar een map
 
-Lees eerst een bestand. In dit voor beeld wordt de node. js- `fs` module gebruikt. Maak vervolgens een bestands verwijzing in de doel directory door een **FileClient** -exemplaar te maken en vervolgens de methode **FileClient. Create** aan te roepen. Upload een bestand door de methode **FileClient. Append aan** te roepen. Zorg ervoor dat u de upload voltooit door de methode **FileClient. Flush** aan te roepen.
+Lees eerst een bestand. In dit voor beeld wordt de module Node.js gebruikt `fs` . Maak vervolgens een bestands verwijzing in de doel directory door een **FileClient** -exemplaar te maken en vervolgens de methode **FileClient. Create** aan te roepen. Upload een bestand door de methode **FileClient. Append aan** te roepen. Zorg ervoor dat u de upload voltooit door de methode **FileClient. Flush** aan te roepen.
 
 In dit voor beeld wordt een tekst bestand geüpload naar een map met de naam `my-directory` .
 
@@ -303,10 +302,10 @@ await fileClient.setAccessControl(acl);
 
 ## <a name="download-from-a-directory"></a>Downloaden uit een directory
 
-Maak eerst een **FileSystemClient** -exemplaar dat het bestand vertegenwoordigt dat u wilt downloaden. Gebruik de methode **FileSystemClient. Read** om het bestand te lezen. Schrijf vervolgens het bestand. In dit voor beeld wordt de node. js- `fs` module gebruikt. 
+Maak eerst een **FileSystemClient** -exemplaar dat het bestand vertegenwoordigt dat u wilt downloaden. Gebruik de methode **FileSystemClient. Read** om het bestand te lezen. Schrijf vervolgens het bestand. In dit voor beeld wordt de module Node.js gebruikt `fs` . 
 
 > [!NOTE]
-> Deze methode voor het downloaden van een bestand werkt alleen voor node. js-toepassingen. Als u van plan bent om uw code uit te voeren in een browser, raadpleegt u het bestand [Azure Storage bestand data Lake client bibliotheek voor Java script](https://www.npmjs.com/package/@azure/storage-file-datalake) voor een voor beeld van hoe u dit in een browser kunt doen. 
+> Deze methode voor het downloaden van een bestand werkt alleen voor Node.js-toepassingen. Als u van plan bent om uw code uit te voeren in een browser, raadpleegt u het bestand [Azure Storage bestand data Lake client bibliotheek voor Java script](https://www.npmjs.com/package/@azure/storage-file-datalake) voor een voor beeld van hoe u dit in een browser kunt doen. 
 
 ```javascript
 async function DownloadFile(fileSystemClient) {
@@ -358,7 +357,7 @@ async function ListFilesInDirectory(fileSystemClient) {
 }
 ```
 
-## <a name="see-also"></a>Zie ook
+## <a name="see-also"></a>Zie tevens
 
 * [Pakket (node Package Manager)](https://www.npmjs.com/package/@azure/storage-file-datalake)
 * [Voorbeelden](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/storage/storage-file-datalake/samples)

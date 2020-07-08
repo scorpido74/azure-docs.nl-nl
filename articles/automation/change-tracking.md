@@ -6,10 +6,9 @@ ms.subservice: change-inventory-management
 ms.date: 06/08/2020
 ms.topic: conceptual
 ms.openlocfilehash: 2aab90b12cd3844b94b0b7e6e94582d403db2efe
-ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/09/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84555036"
 ---
 # <a name="change-tracking-and-inventory-overview"></a>Overzicht Wijzigingen bijhouden en Inventaris
@@ -80,7 +79,7 @@ U kunt op een wijziging of gebeurtenis klikken om de details ervan weer te geven
 
 - Gebeurtenissen
 - Daemons
-- Bestanden
+- Files
 - Register
 - Software
 - Micro soft-Services
@@ -121,18 +120,18 @@ Met Wijzigingen bijhouden en inventaris kunt u wijzigingen in Windows-register s
 > |`HKEY\LOCAL\MACHINE\Software\Microsoft\Windows\CurrentVersion\Group Policy\Scripts\Shutdown` | Bewaakt de scripts die worden uitgevoerd bij het afsluiten.
 > |`HKEY\LOCAL\MACHINE\SOFTWARE\Wow6432Node\Microsoft\Windows\CurrentVersion\Run` | Bewaakt sleutels die worden geladen voordat de gebruiker zich aanmeldt bij het Windows-account. De sleutel wordt gebruikt voor 32-bits toepassingen die worden uitgevoerd op 64-bits computers.
 > |`HKEY\LOCAL\MACHINE\SOFTWARE\Microsoft\Active Setup\Installed Components` | Hiermee worden wijzigingen in toepassings instellingen gecontroleerd.
-> |`HKEY\LOCAL\MACHINE\Software\Classes\Directory\ShellEx\ContextMenuHandlers` | Bewaakt context menu-handlers die rechtstreeks in Windows Verkenner zijn aangesloten en die gewoonlijk in-process met **Explorer. exe**worden uitgevoerd.
-> |`HKEY\LOCAL\MACHINE\Software\Classes\Directory\Shellex\CopyHookHandlers` | Hiermee worden Kopieer Hook-handlers gecontroleerd die rechtstreeks in Windows Verkenner zijn aangesloten en normaal gesp roken met **Explorer. exe**worden uitgevoerd.
+> |`HKEY\LOCAL\MACHINE\Software\Classes\Directory\ShellEx\ContextMenuHandlers` | Bewaakt context menu-handlers die rechtstreeks in Windows Verkenner zijn aangesloten en die gewoonlijk in-process worden uitgevoerd met **explorer.exe**.
+> |`HKEY\LOCAL\MACHINE\Software\Classes\Directory\Shellex\CopyHookHandlers` | Hiermee worden Kopieer Hook-handlers gecontroleerd die rechtstreeks in Windows Verkenner zijn aangesloten en normaal gesp roken met **explorer.exe**worden uitgevoerd.
 > |`HKEY\LOCAL\MACHINE\Software\Microsoft\Windows\CurrentVersion\Explorer\ShellIconOverlayIdentifiers` | Monitor voor de registratie van het pictogram-overlay-handler.
 > |`HKEY\LOCAL\MACHINE\Software\Wow6432Node\Microsoft\Windows\CurrentVersion\Explorer\ShellIconOverlayIdentifiers` | Monitors voor de registratie van pictogram-overlaysoftware-handler voor 32-bits toepassingen die worden uitgevoerd op 64-bits computers.
 > |`HKEY\LOCAL\MACHINE\Software\Microsoft\Windows\CurrentVersion\Explorer\Browser Helper Objects` | Monitors voor nieuwe browserhelperobjecten voor Internet Explorer. Wordt gebruikt om toegang te krijgen tot de Document Object Model (DOM) van de huidige pagina en om de navigatie te beheren.
 > |`HKEY\LOCAL\MACHINE\Software\Wow6432Node\Microsoft\Windows\CurrentVersion\Explorer\Browser Helper Objects` | Monitors voor nieuwe browserhelperobjecten voor Internet Explorer. Wordt gebruikt voor toegang tot de Document Object Model (DOM) van de huidige pagina en voor het beheren van de navigatie voor 32-bits toepassingen die worden uitgevoerd op 64-bits computers.
 > |`HKEY\LOCAL\MACHINE\Software\Microsoft\Internet Explorer\Extensions` | Controleert op nieuwe Internet Explorer-uitbrei dingen, zoals menu's voor aangepaste gereedschappen en aangepaste werkbalk knoppen.
 > |`HKEY\LOCAL\MACHINE\Software\Wow6432Node\Microsoft\Internet Explorer\Extensions` | Controleert op nieuwe Internet Explorer-uitbrei dingen, zoals aangepaste hulpprogramma menu's en aangepaste werkbalk knoppen voor 32-bits toepassingen die worden uitgevoerd op 64-bits computers.
-> |`HKEY\LOCAL\MACHINE\Software\Microsoft\Windows NT\CurrentVersion\Drivers32` | Bewaakt 32-bits Stuur Programma's die zijn gekoppeld aan wavemapper, wave1 en wave2, Msacm. imaadpcm,. msadpcm,. msgsm610 en vidc. Vergelijkbaar met de sectie [drivers] in het **System. ini** -bestand.
-> |`HKEY\LOCAL\MACHINE\Software\Wow6432Node\Microsoft\Windows NT\CurrentVersion\Drivers32` | Bewaakt 32-bits Stuur Programma's die zijn gekoppeld aan wavemapper, wave1 en wave2, Msacm. imaadpcm,. msadpcm,. msgsm610 en vidc voor 32-bits-toepassingen die worden uitgevoerd op 64-bits computers. Vergelijkbaar met de sectie [drivers] in het **System. ini** -bestand.
+> |`HKEY\LOCAL\MACHINE\Software\Microsoft\Windows NT\CurrentVersion\Drivers32` | Bewaakt 32-bits Stuur Programma's die zijn gekoppeld aan wavemapper, wave1 en wave2, Msacm. imaadpcm,. msadpcm,. msgsm610 en vidc. Vergelijkbaar met de sectie [drivers] in het **system.ini** -bestand.
+> |`HKEY\LOCAL\MACHINE\Software\Wow6432Node\Microsoft\Windows NT\CurrentVersion\Drivers32` | Bewaakt 32-bits Stuur Programma's die zijn gekoppeld aan wavemapper, wave1 en wave2, Msacm. imaadpcm,. msadpcm,. msgsm610 en vidc voor 32-bits-toepassingen die worden uitgevoerd op 64-bits computers. Vergelijkbaar met de sectie [drivers] in het **system.ini** -bestand.
 > |`HKEY\LOCAL\MACHINE\System\CurrentControlSet\Control\Session Manager\KnownDlls` | Hiermee wordt de lijst met bekende of veelgebruikte systeem-Dll's gecontroleerd. Door te controleren wordt voor komen dat gebruikers zwakke machtigingen voor toepassings mappen kunnen exploiteren door de Trojaanse paarden-versies van systeem-Dll's te verwijderen.
-> |`HKEY\LOCAL\MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Winlogon\Notify` | Bewaakt de lijst met pakketten die gebeurtenis meldingen kunnen ontvangen van **Winlogon. exe**, het model voor ondersteuning van interactieve aanmelding voor Windows.
+> |`HKEY\LOCAL\MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Winlogon\Notify` | Bewaakt de lijst met pakketten die gebeurtenis meldingen kunnen ontvangen van **winlogon.exe**, het model voor ondersteuning van interactieve aanmelding voor Windows.
 
 ## <a name="recursion-support"></a>Ondersteuning voor recursie
 
@@ -162,7 +161,7 @@ In de volgende tabel wordt de frequentie van gegevens verzameling weer gegeven v
 
 De volgende tabel bevat de limieten voor bijgehouden items per computer voor Wijzigingen bijhouden en inventaris.
 
-| **Resource** | **Limiet** |
+| **Resource** | **Ondergrens** |
 |---|---|---|
 |Bestand|500|
 |Register|250|
@@ -188,7 +187,7 @@ Om de prestaties te optimaliseren, houdt de Log Analytics agent alleen wijziging
 
 Een belang rijke mogelijkheid van Wijzigingen bijhouden en inventarisatie wordt gewaarschuwd voor wijzigingen in de configuratie status van uw hybride omgeving. Er zijn veel nuttige acties beschikbaar om te activeren als reactie op waarschuwingen, zoals acties voor Azure functions, Automation-runbooks, webhooks en dergelijke. Een waarschuwing over wijzigingen in het **c:\Windows\System32\drivers\etc\hosts** -bestand voor een machine is een goede toepassing van waarschuwingen voor wijzigingen bijhouden-en inventaris gegevens. Er zijn veel meer scenario's voor waarschuwingen, zoals de query scenario's die in de volgende tabel zijn gedefinieerd.
 
-|Query’s uitvoeren  |Beschrijving  |
+|Query’s uitvoeren  |Description  |
 |---------|---------|
 |ConfigurationChange <br>&#124; waarbij ConfigChangeType = = "files" en FileSystemPath bevat "c: \\ Windows \\ System32 \\ drivers \\ "|Dit is handig voor het bijhouden van wijzigingen in essentiële bestanden van het systeem.|
 |ConfigurationChange <br>&#124; waarbij FieldsChanged ' FileContentChecksum ' en FileSystemPath = = "c: \\ Windows \\ System32 \\ drivers etc- \\ \\ hosts ' bevat.|Dit is handig voor het bijhouden van wijzigingen in sleutel configuratie bestanden.|

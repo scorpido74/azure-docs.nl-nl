@@ -9,10 +9,9 @@ ms.service: storage
 ms.reviewer: rukmani-msft
 ms.subservice: data-lake-storage-gen2
 ms.openlocfilehash: 6c50ceae36c784b8b869977f14351ab5858fc7c0
-ms.sourcegitcommit: 813f7126ed140a0dff7658553a80b266249d302f
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/06/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84466014"
 ---
 # <a name="migrate-azure-data-lake-storage-from-gen1-to-gen2"></a>Azure Data Lake Storage migreren van gen1 naar Gen2
@@ -93,7 +92,7 @@ Wanneer u zeker weet dat uw toepassingen en workloads stabiel zijn op Gen2, kunt
 
 Deze tabel vergelijkt de mogelijkheden van gen1 tot die van Gen2.
 
-|Gebied |Gen1   |Gen2 |
+|Onderwerp |Gen1   |Gen2 |
 |---|---|---|
 |Gegevens organisatie|[Hiërarchische naam ruimte](data-lake-storage-namespace.md)<br>Ondersteuning voor bestanden en mappen|[Hiërarchische naam ruimte](data-lake-storage-namespace.md)<br>Ondersteuning voor containers, bestanden en mappen |
 |Geo-redundantie| [LRS](../common/storage-redundancy.md#locally-redundant-storage)| [LRS](../common/storage-redundancy.md#locally-redundant-storage), [ZRS](../common/storage-redundancy.md#zone-redundant-storage), [GRS](../common/storage-redundancy.md#geo-redundant-storage), [Ra-GRS](../common/storage-redundancy.md#read-access-to-data-in-the-secondary-region) |

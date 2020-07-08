@@ -12,10 +12,9 @@ manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 5b247b64d563bc2b12c5bffff6a460d77cb96207
-ms.sourcegitcommit: f57fa5f3ce40647eda93f8be4b0ab0726d479bca
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/07/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84485600"
 ---
 # <a name="enable-and-use-azure-multi-factor-authentication-with-legacy-applications-using-app-passwords"></a>Azure Multi-Factor Authentication met verouderde toepassingen inschakelen en gebruiken met behulp van app-wacht woorden
@@ -81,7 +80,7 @@ In dit scenario gebruikt u de volgende referenties:
 
 Standaard kunnen gebruikers geen app-wacht woorden maken. De functie voor het maken van app-wacht woorden moet zijn ingeschakeld voordat gebruikers deze kunnen gebruiken. Voer de volgende stappen uit om gebruikers de mogelijkheid te geven om app-wacht woorden te maken:
 
-1. Meld u aan bij de [Azure-portal](https://portal.azure.com).
+1. Meld u aan bij [Azure Portal](https://portal.azure.com).
 2. Zoek en selecteer **Azure Active Directory**en kies vervolgens **gebruikers**.
 3. Selecteer **multi-factor Authentication** in de navigatie balk aan de bovenkant van het venster *gebruikers* .
 4. Onder Multi-Factor Authentication selecteert u **Service-instellingen**.

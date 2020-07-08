@@ -4,10 +4,9 @@ description: 'Probleemoplossings handleiding: Live java-apps bewaken met Applica
 ms.topic: conceptual
 ms.date: 03/14/2019
 ms.openlocfilehash: ecc9a298d122919138683b48527574a1ff3e5edc
-ms.sourcegitcommit: f57fa5f3ce40647eda93f8be4b0ab0726d479bca
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/07/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84484782"
 ---
 # <a name="troubleshooting-and-q-and-a-for-application-insights-for-java"></a>Probleemoplossing voor en antwoorden op vragen over Application Insights voor Java
@@ -22,13 +21,13 @@ Vragen of problemen met [Azure-toepassing inzichten in Java][java]? Hier volgen 
 **Ik heb Application Insights toegevoegd en mijn app uitgevoerd, maar ik heb nooit gegevens in de portal gezien.**
 
 * Wacht een minuut en klik op vernieuwen. De grafieken worden regel matig vernieuwd, maar u kunt ook hand matig vernieuwen. Het Vernieuwings interval is afhankelijk van het tijds bereik van de grafiek.
-* Controleer of u een instrumentatie sleutel hebt gedefinieerd in het bestand ApplicationInsights. XML (in de map resources in uw project) of is geconfigureerd als omgevings variabele.
+* Controleer of er een instrumentatie sleutel is gedefinieerd in het ApplicationInsights.xml bestand (in de map resources in uw project) of is geconfigureerd als omgevings variabele.
 * Controleer of er zich geen `<DisableTelemetry>true</DisableTelemetry>` knoop punt in het XML-bestand bevindt.
 * In uw firewall moet u mogelijk TCP-poorten 80 en 443 voor uitgaand verkeer naar dc.services.visualstudio.com openen. Bekijk de [volledige lijst met Firewall uitzonderingen](../../azure-monitor/app/ip-addresses.md)
 * Ga in het Microsoft Azure start bord naar de kaart status van de service. Als er enkele waarschuwings vermeldingen zijn, wacht u totdat ze zijn teruggekeerd naar OK. Sluit vervolgens de Blade Application Insights toepassing en open deze opnieuw.
-* [Schakel logboek registratie](#debug-data-from-the-sdk) in door een element toe te voegen `<SDKLogger />` onder het hoofd knooppunt in het bestand ApplicationInsights. XML (in de map resources in uw project) en te controleren op vermeldingen die zijn voorafgegaan door AI: info/waarschuwing/fout voor verdachte Logboeken. 
-* Controleer of het juiste ApplicationInsights. XML-bestand is geladen door de Java-SDK door te kijken naar de uitvoer berichten van de console voor een configuratie bestand is gevonden.
-* Als het configuratie bestand niet wordt gevonden, controleert u de uitvoer berichten om te zien waar het configuratie bestand wordt doorzocht en zorgt u ervoor dat de ApplicationInsights. XML zich op een van deze zoek locaties bevindt. Als vuist regel kunt u het configuratie bestand in de buurt van de Application Insights SDK-potten plaatsen. Bijvoorbeeld: in Tomcat is dit de map WEB-INF/classes. Tijdens de ontwikkeling kunt u ApplicationInsights. XML in de map resources van uw webproject plaatsen.
+* [Schakel logboek registratie](#debug-data-from-the-sdk) in door een element toe te voegen `<SDKLogger />` onder het hoofd knooppunt in het ApplicationInsights.xml-bestand (in de map resources in uw project) en te controleren op vermeldingen die zijn voorafgegaan door AI: info/waarschuwing/fout voor verdachte Logboeken. 
+* Controleer of het juiste ApplicationInsights.xml bestand door de Java-SDK is geladen door te kijken naar de uitvoer berichten van de console voor een configuratie bestand is gevonden.
+* Als het configuratie bestand niet wordt gevonden, controleert u de uitvoer berichten om te zien waar het configuratie bestand wordt doorzocht en zorgt u ervoor dat de ApplicationInsights.xml zich op een van deze zoek locaties bevindt. Als vuist regel kunt u het configuratie bestand in de buurt van de Application Insights SDK-potten plaatsen. Bijvoorbeeld: in Tomcat is dit de map WEB-INF/classes. Tijdens de ontwikkeling kunt u ApplicationInsights.xml in de map resources van uw webproject plaatsen.
 * Raadpleeg ook de [pagina met github-problemen](https://github.com/Microsoft/ApplicationInsights-Java/issues) voor bekende problemen met de SDK.
 * Zorg ervoor dat u dezelfde versie van Application Insights-kern-, Web-, agent-en logboek registratie-toevoegers gebruikt om problemen met versie conflicten te voor komen.
 
@@ -45,7 +44,7 @@ Vragen of problemen met [Azure-toepassing inzichten in Java][java]? Hier volgen 
 
 ### <a name="java-agent-cannot-capture-dependency-data"></a>De Java-Agent kan geen afhankelijkheids gegevens vastleggen
 * Hebt u Java-agent geconfigureerd door de volgende [Java-Agent te configureren](java-agent.md) ?
-* Zorg ervoor dat zowel de Java-Agent jar als het AI-Agent. XML-bestand in dezelfde map worden geplaatst.
+* Zorg ervoor dat zowel de Java-Agent jar als het AI-Agent.xml-bestand in dezelfde map worden geplaatst.
 * Zorg ervoor dat de afhankelijkheid die u probeert automatisch te verzamelen, wordt ondersteund voor automatische verzameling. Momenteel ondersteunen we alleen MySQL, MsSQL, Oracle DB en Azure cache voor redis-afhankelijkheids verzameling.
 
 ## <a name="no-usage-data"></a>Geen gebruiks gegevens
@@ -71,7 +70,7 @@ In code:
 
 **Of**
 
-Werk ApplicationInsights. XML bij (in de map resources in uw project). Voeg het volgende toe onder het hoofd knooppunt:
+ApplicationInsights.xml bijwerken (in de map resources in uw project). Voeg het volgende toe onder het hoofd knooppunt:
 
 ```XML
 
@@ -86,15 +85,15 @@ Met behulp van de XML-methode moet u de toepassing opnieuw opstarten wanneer u d
 * [Haal de instrumentatie sleutel van de nieuwe resource op.][java]
 * Als u Application Insights aan uw project hebt toegevoegd met behulp van de Azure-toolkit voor Eclipse, klikt u met de rechter muisknop op uw webproject, selecteert u **Azure**, **configureert u Application Insights**en wijzigt u de sleutel.
 * Als u de instrumentatie sleutel als omgevings variabele hebt geconfigureerd, moet u de waarde van de omgevings variabele bijwerken met de nieuwe iKey.
-* Als dat niet het geval is, werkt u de sleutel in ApplicationInsights. XML in de map resources in uw project bij.
+* Als dat niet het geval is, werkt u de sleutel in ApplicationInsights.xml in de map resources in uw project bij.
 
 ## <a name="debug-data-from-the-sdk"></a>Fout opsporingsgegevens van de SDK
 
 **Hoe kan ik zien wat de SDK doet?**
 
-Meer informatie over wat er gebeurt in de API, voegt u toe `<SDKLogger/>` onder het hoofd knooppunt van het configuratie bestand ApplicationInsights. XML.
+Voor meer informatie over wat er gebeurt in de API, voegt u `<SDKLogger/>` onder het hoofd knooppunt van het ApplicationInsights.xml configuratie bestand toe.
 
-### <a name="applicationinsightsxml"></a>ApplicationInsights. XML
+### <a name="applicationinsightsxml"></a>ApplicationInsights.xml
 
 U kunt de logboeken ook een instructie geven om uit te voeren naar een bestand:
 
@@ -125,7 +124,7 @@ azure.application-insights.logger.level=trace
 
 ### <a name="java-agent"></a>Java-agent
 
-Als u logboek registratie van de JVM-agent wilt inschakelen, moet u het [bestand AI-agent. XML](java-agent.md)bijwerken:
+Als u logboek registratie van de JVM-agent wilt inschakelen, moet u het [AI-Agent.xml bestand](java-agent.md)bijwerken:
 
 ```xml
 <AgentLogger type="FILE"><!-- or "CONSOLE" to print to stderr -->
@@ -187,7 +186,7 @@ Application Insights gebruikt `org.apache.http` . Dit wordt verplaatst binnen Ap
 * [Code schrijven om het gebruik van uw app bij te houden][track]
 * [Diagnostische logboeken vastleggen][javalogs]
 
-## <a name="get-help"></a>Help opvragen
+## <a name="get-help"></a>Hulp vragen
 * [Stack Overflow](https://stackoverflow.com/questions/tagged/ms-application-insights)
 * [Een probleem in GitHub bestand oplossen](https://github.com/Microsoft/ApplicationInsights-Java/issues)
 

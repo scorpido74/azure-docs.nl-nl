@@ -12,10 +12,9 @@ ms.reviewer: maghan
 ms.topic: conceptual
 ms.date: 10/18/2018
 ms.openlocfilehash: 10f0079f47e5d2fd99b358fcc5cfb4c80aa9bd91
-ms.sourcegitcommit: 5504d5a88896c692303b9c676a7d2860f36394c1
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/08/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84508893"
 ---
 # <a name="create-a-trigger-that-runs-a-pipeline-in-response-to-an-event"></a>Een trigger maken waarmee een pijp lijn wordt uitgevoerd als reactie op een gebeurtenis
@@ -73,7 +72,7 @@ In deze sectie wordt beschreven hoe u een gebeurtenis trigger maakt in de gebrui
 
     ![Eigenschappen toewijzen aan pijplijn parameters](media/how-to-create-event-trigger/event-based-trigger-image4.png)
 
-In het vorige voor beeld wordt de trigger zo geconfigureerd dat deze wordt geactiveerd wanneer een BLOB-pad dat eindigt op. csv wordt gemaakt in de map Event-test in de voorbeeld gegevens van de container. Met de eigenschappen **FolderPath** en **filename** wordt de locatie van de nieuwe BLOB vastgelegd. Als bijvoorbeeld MoviesDB. csv wordt toegevoegd aan het pad voor beeld/gebeurtenis testen, `@trigger().outputs.body.folderPath` heeft de waarde `sample-data/event-testing` en `@trigger().outputs.body.fileName` de waarde `moviesDB.csv` . Deze waarden worden in het voor beeld toegewezen aan de pijplijn parameters `sourceFolder` en `sourceFile` kunnen worden gebruikt in de hele pijp lijn als `@pipeline().parameters.sourceFolder` `@pipeline().parameters.sourceFile` respectievelijk.
+In het vorige voor beeld wordt de trigger zo geconfigureerd dat deze wordt geactiveerd wanneer een BLOB-pad dat eindigt op. csv wordt gemaakt in de map Event-test in de voorbeeld gegevens van de container. Met de eigenschappen **FolderPath** en **filename** wordt de locatie van de nieuwe BLOB vastgelegd. Als MoviesDB.csv bijvoorbeeld wordt toegevoegd aan het pad voor beeld/gebeurtenis-testen, `@trigger().outputs.body.folderPath` heeft de waarde `sample-data/event-testing` en `@trigger().outputs.body.fileName` een waarde van `moviesDB.csv` . Deze waarden worden in het voor beeld toegewezen aan de pijplijn parameters `sourceFolder` en `sourceFile` kunnen worden gebruikt in de hele pijp lijn als `@pipeline().parameters.sourceFolder` `@pipeline().parameters.sourceFile` respectievelijk.
 
 ## <a name="json-schema"></a>JSON-schema
 
@@ -81,11 +80,11 @@ De volgende tabel bevat een overzicht van de schema-elementen die zijn gerelatee
 
 | **JSON-element** | **Beschrijving** | **Type** | **Toegestane waarden** | **Vereist** |
 | ---------------- | --------------- | -------- | ------------------ | ------------ |
-| **ligt** | De Azure Resource Manager Resource-ID van het opslag account. | Tekenreeks | Azure Resource Manager-ID | Ja |
+| **ligt** | De Azure Resource Manager Resource-ID van het opslag account. | Tekenreeks | Azure Resource Manager-ID | Yes |
 | **evenementen** | Het type gebeurtenissen dat ervoor zorgt dat deze trigger wordt gestart. | Matrix    | Micro soft. storage. BlobCreated, micro soft. storage. BlobDeleted | Ja, een wille keurige combi natie van deze waarden. |
 | **blobPathBeginsWith** | Het BLOB-pad moet beginnen met het patroon dat is ingesteld voor de trigger om te starten. `/records/blobs/december/`De trigger wordt bijvoorbeeld alleen geactiveerd voor blobs in de `december` map onder de `records` container. | Tekenreeks   | | U moet een waarde opgeven voor ten minste een van deze eigenschappen: `blobPathBeginsWith` of `blobPathEndsWith` . |
 | **blobPathEndsWith** | Het BLOB-pad moet eindigen met het patroon dat is ingesteld voor de trigger om te starten. `december/boxes.csv`De trigger wordt bijvoorbeeld alleen geactiveerd voor blobs `boxes` met de naam in een `december` map. | Tekenreeks   | | U moet een waarde opgeven voor ten minste een van deze eigenschappen: `blobPathBeginsWith` of `blobPathEndsWith` . |
-| **ignoreEmptyBlobs** | Hiermee wordt aangegeven of nul-byte-Blobs een pijplijn uitvoering activeren. Deze instelling is standaard ingesteld op waar. | Booleaans | waar of onwaar | Nee |
+| **ignoreEmptyBlobs** | Hiermee wordt aangegeven of nul-byte-Blobs een pijplijn uitvoering activeren. Deze instelling is standaard ingesteld op waar. | Boolean-waarde | waar of onwaar | No |
 
 ## <a name="examples-of-event-based-triggers"></a>Voor beelden van triggers op basis van gebeurtenissen
 
@@ -94,7 +93,7 @@ Deze sectie bevat voor beelden van activerings instellingen op basis van gebeurt
 > [!IMPORTANT]
 > U moet het `/blobs/` segment van het pad toevoegen, zoals wordt weer gegeven in de volgende voor beelden, wanneer u container en map, container, bestand, container, map en bestand opgeeft. Voor **blobPathBeginsWith**voegt de Data Factory gebruikers interface automatisch toe `/blobs/` tussen de map en de container naam in de JSON van de trigger.
 
-| Eigenschap | Voorbeeld | Beschrijving |
+| Eigenschap | Voorbeeld | Description |
 |---|---|---|
 | **Pad van BLOB begint met** | `/containername/` | Hiermee ontvangt u gebeurtenissen voor alle blobs in de container. |
 | **Pad van BLOB begint met** | `/containername/blobs/foldername/` | Hiermee ontvangt u gebeurtenissen voor alle blobs in de `containername` container en de `foldername` map. |

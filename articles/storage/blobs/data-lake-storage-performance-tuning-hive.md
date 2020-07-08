@@ -9,10 +9,9 @@ ms.date: 11/18/2019
 ms.author: normesta
 ms.reviewer: stewu
 ms.openlocfilehash: 9a54565f320ae45a4a8297a40027c5e6b3b25202
-ms.sourcegitcommit: 813f7126ed140a0dff7658553a80b266249d302f
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/06/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84465963"
 ---
 # <a name="tune-performance-hive-hdinsight--azure-data-lake-storage-gen2"></a>Prestaties afstemmen: Hive, HDInsight & Azure Data Lake Storage Gen2
@@ -37,7 +36,7 @@ Dit zijn de belangrijkste instellingen die u kunt afstemmen voor betere Data Lak
 
 * **TEZ. grouping. max-size** : maximum grootte van elke Mapper
 
-* **Hive. exec. reminderr. bytes. per. smallere** -grootte van elke verminderr
+* **hive.exec. reducr. bytes. per. versmaller** : grootte van elke verminderr
 
 **component. TEZ. container. size** : de grootte van de container bepaalt hoeveel geheugen beschikbaar is voor elke taak.  Dit is de belangrijkste invoer voor het beheren van de gelijktijdigheid in Hive.  
 
@@ -45,11 +44,11 @@ Dit zijn de belangrijkste instellingen die u kunt afstemmen voor betere Data Lak
 
 **TEZ. grouping. max-size** – met de para meter kunt u de maximale grootte van elke Mapper instellen.  Als het aantal mappers dat TEZ kiest groter is dan de waarde van deze para meter, gebruikt TEZ de hier ingestelde waarde.
 
-**Hive. exec. resmaller. bytes. per. versmaller** : met deze para meter wordt de grootte van elke verminderr ingesteld.  Standaard is elke reducer 256 MB.  
+**hive.exec. reducr. bytes. per. versmaller** : met deze para meter wordt de grootte van elke verminderr ingesteld.  Standaard is elke reducer 256 MB.  
 
 ## <a name="guidance"></a>Hulp
 
-**Hive. exec. reminderr. bytes. per. versmaller instellen** : de standaard waarde werkt goed als de gegevens niet zijn gecomprimeerd.  Voor gegevens die zijn gecomprimeerd, moet u de grootte van de reducer verkleinen.  
+**Stel hive.exec. reducr. bytes. per. versmaller** : de standaard waarde werkt goed als de gegevens niet zijn gecomprimeerd.  Voor gegevens die zijn gecomprimeerd, moet u de grootte van de reducer verkleinen.  
 
 **Component. TEZ. container. size instellen** : in elk knoop punt wordt het geheugen opgegeven door garen. nodemanager. resource. Memory-MB en moet standaard correct worden ingesteld op het HDI-cluster.  Zie dit [bericht](https://docs.microsoft.com/azure/hdinsight/hdinsight-hadoop-hive-out-of-memory-error-oom)voor meer informatie over het instellen van het juiste geheugen in garens.
 

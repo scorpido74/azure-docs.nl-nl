@@ -1,27 +1,26 @@
 ---
-title: Naslag informatie voor ApplicationInsights. config-Azure | Microsoft Docs
+title: ApplicationInsights.config referentie-Azure | Microsoft Docs
 description: Schakel modules voor gegevens verzameling in of uit en voeg prestatie meter items en andere para meters toe.
 ms.topic: conceptual
 ms.date: 05/22/2019
 ms.reviewer: olegan
 ms.openlocfilehash: dde2cbf227f085b751f6ad22e1f2fa95f38c5915
-ms.sourcegitcommit: f57fa5f3ce40647eda93f8be4b0ab0726d479bca
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/07/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84485134"
 ---
 # <a name="configuring-the-application-insights-sdk-with-applicationinsightsconfig-or-xml"></a>De Application Insights-SDK configureren met ApplicationInsights.config of ApplicationInsights.xml
 De Application Insights .NET SDK bestaat uit een aantal NuGet-pakketten. Het [kern pakket](https://www.nuget.org/packages/Microsoft.ApplicationInsights) biedt de API voor het verzenden van telemetrie naar de Application Insights. [Aanvullende pakketten](https://www.nuget.org/packages?q=Microsoft.ApplicationInsights) bieden telemetrie- *modules* en *initialisatie functies* voor het automatisch traceren van telemetrie van uw toepassing en de bijbehorende context. Door het configuratie bestand aan te passen, kunt u telemetrie-modules en initialisatie functies in-of uitschakelen en para meters instellen voor een aantal hiervan.
 
-Het configuratie bestand heet `ApplicationInsights.config` of `ApplicationInsights.xml` , afhankelijk van het type van uw toepassing. Het wordt automatisch toegevoegd aan uw project wanneer u [de meeste versies van de SDK installeert][start]. Wanneer u de geautomatiseerde ervaring gebruikt vanuit de Visual Studio-sjabloon projecten die ondersteuning bieden voor **toevoegen > Application Insights Telemetry**, wordt het ApplicationInsights. config-bestand standaard gemaakt in de hoofdmap van het project en wordt de naleving naar de bin-map gekopieerd. Het wordt ook toegevoegd aan een web-app door [status monitor op een IIS-server][redfield]. Het configuratie bestand wordt genegeerd als de [extensie voor de Azure-website](azure-web-apps.md) of- [extensie voor de virtuele machine van Azure en](azure-vm-vmss-apps.md) de VM-schaalset wordt gebruikt.
+Het configuratie bestand heet `ApplicationInsights.config` of `ApplicationInsights.xml` , afhankelijk van het type van uw toepassing. Het wordt automatisch toegevoegd aan uw project wanneer u [de meeste versies van de SDK installeert][start]. Wanneer u de geautomatiseerde ervaring gebruikt vanuit de Visual Studio-sjabloon projecten die ondersteuning bieden voor **toevoegen > Application Insights Telemetry**, wordt het ApplicationInsights.config-bestand standaard gemaakt in de hoofdmap van het project en wordt de naleving gekopieerd naar de bin-map. Het wordt ook toegevoegd aan een web-app door [status monitor op een IIS-server][redfield]. Het configuratie bestand wordt genegeerd als de [extensie voor de Azure-website](azure-web-apps.md) of- [extensie voor de virtuele machine van Azure en](azure-vm-vmss-apps.md) de VM-schaalset wordt gebruikt.
 
 Er is geen gelijkwaardig bestand voor het beheren [van de SDK op een webpagina][client].
 
 In dit document worden de secties beschreven die u ziet in het configuratie bestand, hoe ze de onderdelen van de SDK beheren en welke NuGet-pakketten deze onderdelen laden.
 
 > [!NOTE]
-> Instructies voor ApplicationInsights. config en. XML zijn niet van toepassing op de .NET Core SDK. Volg deze hand leiding voor [het](../../azure-monitor/app/asp-net-core.md) configureren van .net core-toepassingen.
+> ApplicationInsights.config-en XML-instructies zijn niet van toepassing op de .NET Core SDK. Volg deze hand leiding voor [het](../../azure-monitor/app/asp-net-core.md) configureren van .net core-toepassingen.
 
 ## <a name="telemetry-modules-aspnet"></a>Telemetrie-modules (ASP.NET)
 Elke telemetrie-module verzamelt een specifiek type gegevens en gebruikt de core API om de gegevens te verzenden. De modules worden geïnstalleerd door verschillende NuGet-pakketten, waarmee ook de vereiste regels aan het. config-bestand worden toegevoegd.
@@ -88,7 +87,7 @@ Rapporteert de [reactie tijd en de resultaat code](../../azure-monitor/app/asp-n
 ### <a name="microsoftapplicationinsights"></a>Micro soft. ApplicationInsights
 Het pakket micro soft. ApplicationInsights biedt de [kern-API](https://msdn.microsoft.com/library/mt420197.aspx) van de SDK. De andere telemetrie-modules gebruiken deze en u kunt [deze ook gebruiken om uw eigen telemetrie te definiëren](../../azure-monitor/app/api-custom-events-metrics.md).
 
-* Geen vermelding in ApplicationInsights. config.
+* Geen vermelding in ApplicationInsights.config.
 * [Micro soft. ApplicationInsights](https://www.nuget.org/packages/Microsoft.ApplicationInsights) NuGet-pakket. Als u alleen deze NuGet installeert, wordt er geen. config-bestand gegenereerd.
 
 ## <a name="telemetry-channel"></a>Telemetrie-kanaal
@@ -231,7 +230,7 @@ Deze klasse heeft een optionele eigenschap `ProfileQueryEndpoint` .
 Deze instelling is standaard ingesteld op `https://dc.services.visualstudio.com/api/profiles/{0}/appId` .
 Als u een proxy voor deze configuratie wilt configureren, is het raadzaam om het basis adres te tele/API/Profiles/en en met inbegrip van ' {0} /AppID '. Opmerking: ' {0} ' wordt vervangen tijdens runtime per aanvraag met de instrumentatie sleutel.
 
-#### <a name="example-configuration-via-applicationinsightsconfig"></a>Voorbeeld configuratie via ApplicationInsights. config:
+#### <a name="example-configuration-via-applicationinsightsconfig"></a>Voorbeeld configuratie via ApplicationInsights.config:
 ```xml
 <ApplicationInsights>
     ...
@@ -255,7 +254,7 @@ Deze klasse heeft een eigenschap `Defined` , die een woorden lijst<teken reeks, 
 
 Deze klasse heeft een optionele eigenschap `Next` die kan worden gebruikt om een andere provider te configureren die moet worden gebruikt wanneer een instrumentatie sleutel wordt aangevraagd die niet voor komt in uw configuratie.
 
-#### <a name="example-configuration-via-applicationinsightsconfig"></a>Voorbeeld configuratie via ApplicationInsights. config:
+#### <a name="example-configuration-via-applicationinsightsconfig"></a>Voorbeeld configuratie via ApplicationInsights.config:
 ```xml
 <ApplicationInsights>
     ...

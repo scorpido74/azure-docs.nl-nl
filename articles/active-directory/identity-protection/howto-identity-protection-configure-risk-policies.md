@@ -12,10 +12,9 @@ manager: daveba
 ms.reviewer: sahandle
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: e134c2e49df5b53ed37acddd86e41af17f43a048
-ms.sourcegitcommit: 813f7126ed140a0dff7658553a80b266249d302f
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/06/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84464161"
 ---
 # <a name="how-to-configure-and-enable-risk-policies"></a>Procedure: risico beleid configureren en inschakelen
@@ -53,7 +52,7 @@ Geconfigureerde vertrouwde [netwerk locaties](../conditional-access/location-con
 
 Voer de volgende stappen uit om het risico beleid voor gebruikers Risico's en-aanmelding in te scha kelen.
 
-1. Navigeer naar het [Azure Portal](https://portal.azure.com).
+1. Navigeer naar [Azure Portal](https://portal.azure.com).
 1. Blader naar **Azure Active Directory**  >  **beveiligings**  >  **identiteits beveiliging**  >  **Overview**.
 1. Selecteer **gebruikers risico beleid configureren**.
    1. Onder **toewijzingen**

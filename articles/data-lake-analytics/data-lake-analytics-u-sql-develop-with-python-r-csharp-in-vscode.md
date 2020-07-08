@@ -10,10 +10,9 @@ ms.topic: conceptual
 ms.date: 11/22/2017
 ms.custom: tracking-python
 ms.openlocfilehash: b88ff6e1a58690d1781989a32607d490d791a690
-ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/09/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84555444"
 ---
 # <a name="develop-u-sql-with-python-r-and-c-for-azure-data-lake-analytics-in-visual-studio-code"></a>U-SQL ontwikkelen met python, R en C# voor Azure Data Lake Analytics in Visual Studio code

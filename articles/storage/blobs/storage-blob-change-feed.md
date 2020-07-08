@@ -9,10 +9,9 @@ ms.service: storage
 ms.subservice: blobs
 ms.reviewer: sadodd
 ms.openlocfilehash: 0c9ee65a50b9fff13fca7a1989e7bb8801e5f621
-ms.sourcegitcommit: 813f7126ed140a0dff7658553a80b266249d302f
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/06/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84465181"
 ---
 # <a name="change-feed-support-in-azure-blob-storage-preview"></a>Ondersteuning voor feed wijzigen in Azure Blob Storage (preview-versie)
@@ -108,7 +107,7 @@ Gebruik een Azure Resource Manager sjabloon om feed voor wijzigingen in uw besta
 
 1. Kies in het Azure Portal **een resource maken**.
 
-2. In **Marketplace doorzoeken** typt u **sjabloonimplementatie**. Druk vervolgens op **ENTER**.
+2. Typ in **de Marketplace zoeken de** **sjabloon implementatie**en druk vervolgens op **Enter**.
 
 3. Kies **[een aangepaste sjabloon implementeren](https://portal.azure.com/#create/Microsoft.Template)** en kies vervolgens **uw eigen sjabloon bouwen in de editor**.
 
@@ -323,7 +322,7 @@ In deze sectie worden bekende problemen en voor waarden in de huidige open bare 
 - Het wijzigen van gebeurtenis records voor één wijziging kan meermaals voor komen in uw wijzigings feed.
 - U kunt de levens duur van wijzigingslog bestand bestanden nog niet beheren door op tijd gebaseerd Bewaar beleid in te stellen en u kunt de blobs niet verwijderen.
 - De `url` eigenschap van het logboek bestand is momenteel altijd leeg.
-- De `LastConsumable` eigenschap van het bestand segmenten. json vermeldt niet het eerste segment dat de wijzigings feed is voltooid. Dit probleem treedt pas op nadat het eerste segment is voltooid. Alle volgende segmenten na het eerste uur worden nauw keurig vastgelegd in de `LastConsumable` eigenschap.
+- De `LastConsumable` eigenschap van de segments.jsin het bestand bevat niet het eerste segment dat de wijzigings feed is voltooid. Dit probleem treedt pas op nadat het eerste segment is voltooid. Alle volgende segmenten na het eerste uur worden nauw keurig vastgelegd in de `LastConsumable` eigenschap.
 - U kunt de **$blobchangefeed** -container momenteel niet zien wanneer u de LISTCONTAINERS-API aanroept en de container wordt niet weer gegeven op Azure Portal of Storage Explorer. U kunt de inhoud weer geven door de ListBlobs-API rechtstreeks aan te roepen op de $blobchangefeed-container.
 - Opslag accounts die eerder een account- [failover](../common/storage-disaster-recovery-guidance.md) hebben gestart, hebben mogelijk problemen met het logboek bestand dat niet wordt weer gegeven. Eventuele toekomstige account-failovers kunnen ook van invloed zijn op het logboek bestand tijdens de preview-fase.
 

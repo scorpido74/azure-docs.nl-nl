@@ -12,10 +12,9 @@ manager: daveba
 ms.reviewer: rhicock
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 608c8206227a129a320a560e752cf31a4843dca3
-ms.sourcegitcommit: 58ff2addf1ffa32d529ee9661bbef8fbae3cddec
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/03/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84321679"
 ---
 # <a name="licensing-requirements-for-azure-active-directory-self-service-password-reset"></a>Licentie vereisten voor Azure Active Directory self-service voor wachtwoord herstel
@@ -44,7 +43,7 @@ Zie de volgende pagina's voor aanvullende informatie over licenties, inclusief k
 * [Azure Active Directory prijzen](https://azure.microsoft.com/pricing/details/active-directory/)
 * [Azure Active Directory functies en mogelijkheden](https://www.microsoft.com/cloud-platform/azure-active-directory-features)
 * [Enterprise Mobility + Security](https://www.microsoft.com/cloud-platform/enterprise-mobility-security)
-* [Microsoft 365 Zakelijk](https://www.microsoft.com/microsoft-365/enterprise)
+* [Microsoft 365 Enterprise](https://www.microsoft.com/microsoft-365/enterprise)
 * [Microsoft 365 Business](https://docs.microsoft.com/office365/servicedescriptions/microsoft-365-service-descriptions/microsoft-365-business-service-description)
 
 ## <a name="enable-group-or-user-based-licensing"></a>Op groep of gebruiker gebaseerde licentie verlening inschakelen

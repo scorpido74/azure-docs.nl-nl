@@ -12,10 +12,9 @@ author: jpe316
 ms.date: 06/03/2020
 ms.custom: seodec18, contperfq4, tracking-python
 ms.openlocfilehash: fabdbfbb90a14aa0f66e3d8a4eb5f6a428c6a0a1
-ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/09/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84557368"
 ---
 # <a name="what-are-field-programmable-gate-arrays-fpga-and-how-to-deploy"></a>Wat zijn veld-Programmeer bare poort matrices (FPGA) en implementeren
@@ -65,7 +64,7 @@ In het volgende diagram en in de tabel ziet u hoe Fpga's met andere processors k
 
 ![Diagram van Azure Machine Learning FPGA-vergelijking](./media/how-to-deploy-fpga-web-service/azure-machine-learning-fpga-comparison.png)
 
-|Processor||Beschrijving|
+|Processor||Description|
 |---|:-------:|------|
 |Toepassingsspecifieke geïntegreerde circuits|ASICs|Aangepaste circuits, zoals Google tensor flow processor units (TPU), bieden de hoogste efficiëntie. Ze kunnen niet opnieuw worden geconfigureerd als uw behoeften veranderen.|
 |Veld-Programmeer bare poort matrices|FPGAs|Fpga's, zoals die beschikbaar zijn op Azure, bieden de prestaties bijna ASICs. Ze zijn ook flexibel en kunnen na verloop van tijd opnieuw worden geconfigureerd om nieuwe logica te implementeren.|

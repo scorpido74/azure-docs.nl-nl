@@ -9,10 +9,9 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 06/03/2020
 ms.openlocfilehash: 402fae5622219b14cfdab921ebe1a78ad5dd111e
-ms.sourcegitcommit: 813f7126ed140a0dff7658553a80b266249d302f
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/06/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84462835"
 ---
 # <a name="set-rbac-roles-for-administrative-access-to-azure-cognitive-search"></a>RBAC-rollen instellen voor beheerders toegang tot Azure Cognitive Search
@@ -45,12 +44,12 @@ De volgende tabel bevat een overzicht van de bewerkingen die zijn toegestaan in 
 | Een service schalen | Beheerder sleutel, RBAC-eigenaar of Inzender voor de resource  |
 | Een service verwijderen | Beheerder sleutel, RBAC-eigenaar of Inzender voor de resource |
 | Objecten op de service maken, wijzigen, verwijderen: <br>Indexen en onderdeel onderdelen (met inbegrip van analyse definities, Score profielen, CORS-opties), Indexeer functies, gegevens bronnen, synoniemen, suggesties | Beheerder sleutel, RBAC-eigenaar of Inzender voor de resource |
-| Een query uitvoeren op een index | Beheerder of query sleutel (RBAC niet van toepassing) |
+| Een query op uitvoeren op een index | Beheerder of query sleutel (RBAC niet van toepassing) |
 | Systeem gegevens opvragen, zoals het retour neren van statistieken, aantallen en lijsten met objecten | Beheerder sleutel, RBAC op de bron (eigenaar, bijdrager, lezer) |
 | Beheer sleutels beheren | Beheerder sleutel, RBAC-eigenaar of Inzender voor de resource |
 | Query sleutels beheren |  Beheerder sleutel, RBAC-eigenaar of Inzender voor de resource  |
 
-## <a name="see-also"></a>Zie ook
+## <a name="see-also"></a>Zie tevens
 
 + [Beheren met PowerShell](search-manage-powershell.md) 
 + [Prestaties en optimalisatie in azure Cognitive Search](search-performance-optimization.md)

@@ -6,10 +6,9 @@ ms.topic: conceptual
 description: Hierin worden de processen beschreven die Power Azure dev Spaces en hoe route ring werkt
 keywords: Azure dev Spaces, dev Spaces, docker, Kubernetes, azure, AKS, Azure Kubernetes service, containers
 ms.openlocfilehash: 126a534cec2ee4b07aa3a127fb3f47f9931f0031
-ms.sourcegitcommit: 69156ae3c1e22cc570dda7f7234145c8226cc162
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/03/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84307415"
 ---
 # <a name="how-routing-works-with-azure-dev-spaces"></a>Hoe route ring werkt met Azure dev Spaces

@@ -9,10 +9,9 @@ ms.topic: article
 ms.service: event-grid
 services: event-grid
 ms.openlocfilehash: d4fbc5232722bfb08bde9be51d44e8e8d7514570
-ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/09/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84554362"
 ---
 # <a name="monitor-topics-and-event-subscriptions"></a>Onderwerpen en gebeurtenis abonnementen bewaken
@@ -48,7 +47,7 @@ In zowel onderwerpen als gebeurtenis abonnementen worden metrische gegevens gege
 
 ### <a name="topic-metrics"></a>Metrische gegevens over het onderwerp
 
-| Metrisch | Beschrijving |
+| Gegevens | Beschrijving |
 | ------ | ----------- |
 | EventsReceived | Aantal gebeurtenissen dat is gepubliceerd naar het onderwerp
 | UnmatchedEvents | Het aantal gebeurtenissen dat is gepubliceerd naar het onderwerp dat niet overeenkomt met een gebeurtenis abonnement en wordt verwijderd
@@ -60,7 +59,7 @@ In zowel onderwerpen als gebeurtenis abonnementen worden metrische gegevens gege
 
 ### <a name="event-subscription-metrics"></a>Metrische gegevens van gebeurtenis abonnementen
 
-| Metrisch | Beschrijving |
+| Gegevens | Beschrijving |
 | ------ | ----------- |
 | DeliverySuccessCounts | Aantal gebeurtenissen dat is bezorgd bij het geconfigureerde eind punt
 | DeliveryFailureCounts | Aantal gebeurtenissen dat niet kan worden bezorgd bij het geconfigureerde eind punt

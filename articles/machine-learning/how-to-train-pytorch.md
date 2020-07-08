@@ -12,10 +12,9 @@ ms.reviewer: peterlu
 ms.date: 08/01/2019
 ms.custom: seodec18
 ms.openlocfilehash: df49a8e5a183f56c8584e9d85fe9cfa73bc17491
-ms.sourcegitcommit: b55d1d1e336c1bcd1c1a71695b2fd0ca62f9d625
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/04/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84433824"
 ---
 # <a name="train-pytorch-deep-learning-models-at-scale-with-azure-machine-learning"></a>Pytorch diepe Learning-modellen op schaal trainen met Azure Machine Learning
@@ -104,7 +103,7 @@ shutil.copy('pytorch_train.py', project_folder)
 
 Als u echter de mogelijkheden Azure Machine Learning bijhouden en metrische gegevens wilt gebruiken, moet u een kleine code in uw trainings script toevoegen. Voor beelden van het bijhouden van metrische gegevens vindt u in `pytorch_train.py` .
 
-## <a name="create-a-compute-target"></a>Een reken doel maken
+## <a name="create-a-compute-target"></a>Een rekendoel maken
 
 Maak een compute-doel voor uw PyTorch-taak om uit te voeren. In dit voor beeld maakt u een Azure Machine Learning Compute-cluster waarvoor GPU is ingeschakeld.
 

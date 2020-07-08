@@ -15,10 +15,9 @@ ms.topic: article
 ms.date: 04/12/2018
 ms.author: allensu
 ms.openlocfilehash: 4154c6a1e739f935022271e7a101f39d3ee5c500
-ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/03/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84343017"
 ---
 # <a name="x-ec-debug-http-headers-for-azure-cdn-rules-engine"></a>X-EC-fouten opsporen in HTTP-headers voor de engine van Azure CDN regels
@@ -33,7 +32,7 @@ Het antwoord van de POP-servers naar een gebruiker bevat `X-EC-Debug` alleen de 
 ## <a name="requesting-debug-cache-information"></a>Cache gegevens voor fout opsporing aanvragen
 Gebruik de volgende richt lijnen in de opgegeven aanvraag om de cache gegevens voor fout opsporing te definiëren die in het antwoord worden opgenomen:
 
-Aanvraagheader | Beschrijving |
+Aanvraagheader | Description |
 ---------------|-------------|
 X-EC-debug: x-EC-cache | [Cache status code](#cache-status-code-information)
 X-EC-debug: x-EC-cache-Remote | [Cache status code](#cache-status-code-information)
@@ -41,7 +40,7 @@ X-EC-debug: x-EC-check-cache | [Gecachet kan worden](#cacheable-response-header)
 X-EC-debug: x-EU-cache-sleutel | [Cache sleutel](#cache-key-response-header)
 X-EC-debug: x-EC-cache-status | [Cache status](#cache-state-response-header)
 
-### <a name="syntax"></a>Syntaxis
+### <a name="syntax"></a>Syntax
 
 Fouten in de cache reactie van debug kunnen worden aangevraagd door de volgende header en de opgegeven instructies in de aanvraag op te nemen:
 
@@ -54,7 +53,7 @@ Fouten in de cache reactie van debug kunnen worden aangevraagd door de volgende 
 ## <a name="cache-status-code-information"></a>Informatie over cache status code
 De reactie header X-EC-debug kan een server identificeren en hoe deze het antwoord verwerkt via de volgende instructies:
 
-Koptekst | Beschrijving
+Koptekst | Description
 -------|------------
 X-EC-debug: x-EC-cache | Deze header wordt gerapporteerd wanneer de inhoud via het CDN wordt doorgestuurd. Hiermee wordt de POP-server geïdentificeerd die de aanvraag heeft voltooid.
 X-EC-debug: x-EC-cache-Remote | Deze header wordt alleen gerapporteerd wanneer de aangevraagde inhoud in de cache is opgeslagen op een originele schild server of een ADN-Gateway server.

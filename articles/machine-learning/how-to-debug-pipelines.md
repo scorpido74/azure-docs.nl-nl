@@ -11,10 +11,9 @@ ms.author: keli19
 ms.date: 03/18/2020
 ms.custom: tracking-python
 ms.openlocfilehash: 3eb0cf85dce02595f3679a96b497e286682840bc
-ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/09/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84557435"
 ---
 # <a name="debug-and-troubleshoot-machine-learning-pipelines"></a>Fouten in Machine Learning-pijplijnen opsporen en oplossen
@@ -137,7 +136,7 @@ Wanneer u een pijplijn uitvoering verzendt en op de bewerkings pagina blijft, ku
 
 1. Selecteer een module die op het ontwerp canvas is uitgevoerd.
 1. Ga in het rechterdeel venster van de module naar het tabblad **uitvoer en logboeken** .
-1. Vouw het rechterdeel venster uit en selecteer de **70_driver_log. txt** om het bestand in de browser weer te geven. U kunt Logboeken ook lokaal downloaden.
+1. Vouw het rechterdeel venster uit en selecteer het **70_driver_log.txt** om het bestand in de browser weer te geven. U kunt Logboeken ook lokaal downloaden.
 
     ![Uitgevouwen uitvoer deel venster in de ontwerp functie](./media/how-to-debug-pipelines/designer-logs.png)
 
@@ -151,7 +150,7 @@ U kunt ook de logboek bestanden voor specifieke uitvoeringen vinden op de detail
 
 1. Selecteer een module in het voorbeeld venster.
 1. Ga in het rechterdeel venster van de module naar het tabblad **uitvoer en logboeken** .
-1. Vouw het rechterdeel venster uit om het **70_driver_log. txt** -bestand in de browser weer te geven of selecteer het bestand om de logboeken lokaal te downloaden.
+1. Vouw het rechterdeel venster uit om het **70_driver_log.txt** -bestand in de browser weer te geven of selecteer het bestand om de logboeken lokaal te downloaden.
 
 > [!IMPORTANT]
 > Als u een pijp lijn wilt bijwerken op de pagina Details van de pijplijn uitvoering, moet u de pijplijn uitvoering **klonen** naar een nieuwe pijp lijn concept. Een pijplijn uitvoering is een moment opname van de pijp lijn. Het is vergelijkbaar met een logboek bestand en kan niet worden gewijzigd. 
@@ -176,7 +175,7 @@ In sommige gevallen moet u mogelijk interactief fouten opsporen in de python-cod
 
 Zie voor meer informatie over het gebruik van een Azure Virtual Network met Azure Machine Learning [Secure Azure ml experimenten en de functies voor het](how-to-enable-virtual-network.md)afmaken van een azure-Virtual Network.
 
-### <a name="how-it-works"></a>Hoe werkt het?
+### <a name="how-it-works"></a>Uitleg
 
 Met uw ML pijplijn stappen voert u python-scripts uit. Deze scripts zijn gewijzigd om de volgende acties uit te voeren:
     
@@ -350,9 +349,9 @@ Sla de `ip_address` waarde op. Deze wordt gebruikt in de volgende sectie.
 
 1. Als u VS code wilt configureren om te communiceren met de Azure Machine Learning Compute waarop de fout opsporing wordt uitgevoerd, maakt u een nieuwe configuratie voor fout opsporing:
 
-    1. Selecteer in VS code het menu __fout opsporing__ en selecteer vervolgens __Open configuraties__. Er wordt een bestand met de naam __Launch. json__ geopend.
+    1. Selecteer in VS code het menu __fout opsporing__ en selecteer vervolgens __Open configuraties__. Er wordt een bestand met de naam __launch.js__ geopend.
 
-    1. Zoek in het bestand __Launch. json__ de regel die bevat `"configurations": [` en voeg de volgende tekst toe. Wijzig de `"host": "10.3.0.5"` vermelding in het IP-adres dat in uw logboeken wordt weer gegeven in de vorige sectie. Wijzig de `"localRoot": "${workspaceFolder}/code/step"` vermelding in een lokale map met een kopie van het script waarin fouten worden opgespoord:
+    1. Zoek in het bestand __launch.jsop__ de regel die bevat `"configurations": [` en voeg de volgende tekst toe. Wijzig de `"host": "10.3.0.5"` vermelding in het IP-adres dat in uw logboeken wordt weer gegeven in de vorige sectie. Wijzig de `"localRoot": "${workspaceFolder}/code/step"` vermelding in een lokale map met een kopie van het script waarin fouten worden opgespoord:
 
         ```json
         {
@@ -379,7 +378,7 @@ Sla de `ip_address` waarde op. Deze wordt gebruikt in de volgende sectie.
         >
         > Als u fouten opspoort in meerdere scripts, maakt u in verschillende directory's een afzonderlijke configuratie sectie voor elk script.
 
-    1. Sla het bestand __Launch. json__ op.
+    1. Sla de __launch.jsop in__ het bestand.
 
 ### <a name="connect-the-debugger"></a>De debugger verbinden
 

@@ -7,10 +7,9 @@ ms.date: 6/5/2020
 ms.author: dukek
 ms.subservice: alerts
 ms.openlocfilehash: dbc810ad7227d9d47099fe85e89a92c8fa750302
-ms.sourcegitcommit: 813f7126ed140a0dff7658553a80b266249d302f
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/06/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84465249"
 ---
 # <a name="create-and-manage-action-groups-in-the-azure-portal"></a>Actie groepen maken en beheren in de Azure Portal
@@ -72,7 +71,7 @@ Nadat u een actie groep hebt gemaakt, kunt u **actie groepen** weer geven door *
 > [!NOTE]
 > Zie [limieten voor abonnements Services voor controle](https://docs.microsoft.com/azure/azure-resource-manager/management/azure-subscription-service-limits#azure-monitor-limits) op numerieke limieten voor elk van de onderstaande items.  
 
-### <a name="automation-runbook"></a>Automation-Runbook
+### <a name="automation-runbook"></a>Automation-runbook
 Raadpleeg de [service limieten](../../azure-resource-manager/management/azure-subscription-service-limits.md) van het Azure-abonnement voor limieten voor nettoladingen van het Runbook.
 
 Mogelijk hebt u een beperkt aantal Runbook-acties in een actie groep. 
@@ -80,7 +79,7 @@ Mogelijk hebt u een beperkt aantal Runbook-acties in een actie groep.
 ### <a name="azure-app-push-notifications"></a>Push meldingen van Azure-app
 Mogelijk hebt u een beperkt aantal Azure-app-acties in een actie groep.
 
-### <a name="email"></a>Email
+### <a name="email"></a>E-mail
 E-mails worden verzonden vanaf de volgende e-mail adressen. Controleren of uw e-mail filtering op de juiste wijze is geconfigureerd
 - azure-noreply@microsoft.com
 - azureemail-noreply@microsoft.com

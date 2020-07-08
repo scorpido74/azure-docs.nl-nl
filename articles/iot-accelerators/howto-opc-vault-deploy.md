@@ -9,10 +9,9 @@ ms.service: industrial-iot
 services: iot-industrialiot
 manager: philmea
 ms.openlocfilehash: 3c6385ff804b047cca11587ce5da5a0a682fdce8
-ms.sourcegitcommit: 69156ae3c1e22cc570dda7f7234145c8226cc162
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/03/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84307925"
 ---
 # <a name="build-and-deploy-the-opc-vault-certificate-management-service"></a>De OPC kluis Certificate Management-service bouwen en implementeren
@@ -88,9 +87,9 @@ Nadat de implementatie is voltooid, kunt u beginnen met het gebruik van de servi
 
 ## <a name="delete-the-services-from-the-subscription"></a>De services verwijderen uit het abonnement
 
-Dit doet u al volgt:
+U doet dit als volgt:
 
-1. Meld u aan bij de [Azure-portal](https://portal.azure.com).
+1. Meld u aan bij [Azure Portal](https://portal.azure.com).
 2. Ga naar de resource groep waarin de service is geïmplementeerd.
 3. Selecteer **Resourcegroep verwijderen** en bevestig dit.
 4. Na enkele ogen blikken worden alle geïmplementeerde service onderdelen verwijderd.

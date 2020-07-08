@@ -5,10 +5,9 @@ ms.topic: conceptual
 ms.date: 06/03/2020
 ms.custom: seodec18
 ms.openlocfilehash: 4c13df8b537d701400a22cd2871e7f8362f02455
-ms.sourcegitcommit: 8e5b4e2207daee21a60e6581528401a96bfd3184
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/04/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84417273"
 ---
 # <a name="batch-service-quotas-and-limits"></a>Quota en limieten voor Batch-service
@@ -89,7 +88,7 @@ U kunt een quota verhoging aanvragen voor uw batch-account of uw abonnement met 
    
     1. **Quotum type**  >  **Batch**
       
-       Selecteer **Next**.
+       Selecteer **Volgende**.
     
 1. In **Details**:
       
@@ -109,7 +108,7 @@ U kunt een quota verhoging aanvragen voor uw batch-account of uw abonnement met 
 
     1. Selecteer een **Ernst** op basis van uw [bedrijfs impact](https://aka.ms/supportseverity).
 
-       Selecteer **Next**.
+       Selecteer **Volgende**.
 
 1. Bij **contact gegevens**:
    

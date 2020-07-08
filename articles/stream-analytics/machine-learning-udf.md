@@ -8,10 +8,9 @@ ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 03/19/2020
 ms.openlocfilehash: b138d93b400c16837c250ede1e264b54a851327c
-ms.sourcegitcommit: 20e246e86e25d63bcd521a4b4d5864fbc7bad1b0
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/08/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84488746"
 ---
 # <a name="integrate-azure-stream-analytics-with-azure-machine-learning-preview"></a>Azure Stream Analytics integreren met Azure Machine Learning (preview-versie)
@@ -46,7 +45,7 @@ De volgende tabel beschrijft elke eigenschap van Azure ML-service functies in St
 
 |Eigenschap|Beschrijving|
 |--------|-----------|
-|Functie alias|Voer een naam in om de functie in de query aan te roepen.|
+|Functiealias|Voer een naam in om de functie in uw query aan te roepen.|
 |Abonnement|Uw Azure-abonnement..|
 |Azure ML-werk ruimte|De Azure Machine Learning-werk ruimte die u hebt gebruikt voor het implementeren van uw model als een webservice.|
 |Implementaties|De webservice die als host fungeert voor uw model.|

@@ -13,10 +13,9 @@ ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
 ms.custom: contperfq4
 ms.openlocfilehash: 3c16724dc3eb99549b692df93ee6cd5f1fc0bf30
-ms.sourcegitcommit: f57fa5f3ce40647eda93f8be4b0ab0726d479bca
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/07/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84484043"
 ---
 # <a name="configure-azure-multi-factor-authentication-settings"></a>Azure Multi-Factor Authentication-instellingen configureren

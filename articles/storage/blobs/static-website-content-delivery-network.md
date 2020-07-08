@@ -8,10 +8,9 @@ ms.topic: how-to
 ms.author: normesta
 ms.date: 04/07/2020
 ms.openlocfilehash: 02b7e02c33161db33420e2efe1ef4b70a138d127
-ms.sourcegitcommit: 813f7126ed140a0dff7658553a80b266249d302f
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/06/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84465215"
 ---
 # <a name="integrate-a-static-website-with-azure-cdn"></a>Een statische website integreren met Azure CDN
@@ -53,7 +52,7 @@ U kunt Azure CDN rechtstreeks vanuit uw opslag account inschakelen voor uw stati
 
     ![Scherm afbeelding met overzicht van het CDN-eind punt](media/storage-blob-static-website-custom-domain/verify-cdn-endpoint.png)
 
-1. Zodra het CDN-eind punt is ingericht, wordt in de navigatie naar het CDN-eind punt de inhoud weer gegeven van het bestand index. html dat u eerder hebt geüpload naar uw statische website.
+1. Zodra het CDN-eind punt is ingericht, wordt in de navigatie naar het CDN-eind punt de inhoud weer gegeven van het index.html-bestand dat u eerder hebt geüpload naar uw statische website.
 
 1. Als u de oorspronkelijke instellingen voor het CDN-eind punt wilt controleren, gaat u naar **oorsprong** in het gedeelte **instellingen** van het CDN-eind punt. U ziet dat het veld van het **type oorsprong** is ingesteld op *aangepaste oorsprong* en dat het veld **hostnaam van oorsprong** het eind punt van de statische website weergeeft.
 

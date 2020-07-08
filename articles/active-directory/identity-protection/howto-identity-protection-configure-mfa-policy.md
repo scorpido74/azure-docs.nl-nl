@@ -12,10 +12,9 @@ manager: daveba
 ms.reviewer: sahandle
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: d4c6b57eaa2a68906053faade48dd0e63fbf0db7
-ms.sourcegitcommit: 813f7126ed140a0dff7658553a80b266249d302f
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/06/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84464331"
 ---
 # <a name="how-to-configure-the-azure-multi-factor-authentication-registration-policy"></a>Procedure: het Azure Multi-Factor Authentication-registratie beleid configureren
@@ -35,7 +34,7 @@ Zie [Wat is azure multi-factor Authentication?](../authentication/howto-mfa-gets
 
 ## <a name="policy-configuration"></a>Beleidsconfiguratie
 
-1. Navigeer naar het [Azure Portal](https://portal.azure.com).
+1. Navigeer naar [Azure Portal](https://portal.azure.com).
 1. Blader naar **Azure Active Directory**  >  beleid voor MFA-registratie van**beveiligings**  >  **identiteits beveiliging**  >  **MFA registration policy**.
    1. Onder **toewijzingen**
       1. **Gebruikers** : Kies **alle gebruikers** of **Selecteer individuen en groepen** als u de implementatie wilt beperken.
