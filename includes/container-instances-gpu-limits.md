@@ -5,15 +5,15 @@ ms.topic: include
 ms.date: 01/31/2020
 ms.author: danlep
 ms.openlocfilehash: e3aeababcd062e315c9d80a35f183173a6fd1273
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77117837"
 ---
 ### <a name="resource-availability"></a>Beschikbaarheid van resources
 
-| Besturingssysteem | GPU-SKU | Aantal GPU | Maximaal CPU-gebruik | Maxi maal geheugen (GB) | Opslag (GB) |
+| OS | GPU-SKU | Aantal GPU | Maximaal CPU-gebruik | Maxi maal geheugen (GB) | Opslag (GB) |
 | --- | --- | --- | --- | --- | --- |
 | Linux | K80 | 1 | 6 | 56 | 50 |
 | Linux | K80 | 2 | 12 | 112 | 50 |

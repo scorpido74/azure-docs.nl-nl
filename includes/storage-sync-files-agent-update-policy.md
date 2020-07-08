@@ -5,24 +5,24 @@ ms.topic: include
 ms.date: 12/11/2018
 ms.author: rogarana
 ms.openlocfilehash: aeb15fbb8da44a203789e06a359cb664998602ab
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77123184"
 ---
 De Azure File Sync-agent wordt regel matig bijgewerkt om nieuwe functionaliteit toe te voegen en om problemen op te lossen. We raden u aan Microsoft Update te configureren voor het ophalen van updates voor de Azure File Sync-agent wanneer deze beschikbaar zijn.
 
 #### <a name="major-vs-minor-agent-versions"></a>Belangrijkste versus secundaire agent versies
-* Belang rijke agent versies bevatten vaak nieuwe functies en hebben een verhoogd aantal als het eerste deel van het versie nummer. Bijvoorbeeld: \*2.\*.\*\*
-* Secundaire agent versies worden ook wel ' patches ' genoemd en zijn vaker vrijgegeven dan primaire versies. Ze bevatten vaak fout oplossingen en kleinere verbeteringen, maar geen nieuwe functies. Bijvoorbeeld: \* \*. 3.\*\*
+* Belang rijke agent versies bevatten vaak nieuwe functies en hebben een verhoogd aantal als het eerste deel van het versie nummer. Bijvoorbeeld: \* 2. \* .\*\*
+* Secundaire agent versies worden ook wel ' patches ' genoemd en zijn vaker vrijgegeven dan primaire versies. Ze bevatten vaak fout oplossingen en kleinere verbeteringen, maar geen nieuwe functies. Bijvoorbeeld: \* \* . 3.\*\*
 
 #### <a name="upgrade-paths"></a>Upgrade paden
 Er zijn vier goedgekeurde en geteste manieren om de Azure File Sync agent-updates te installeren. 
 1. **Eigen Configureer Microsoft Update om updates van de agent automatisch te downloaden en te installeren.**  
     We raden altijd aan om elke Azure File Sync update uit te voeren om ervoor te zorgen dat u toegang hebt tot de meest recente oplossingen voor de Server Agent. Microsoft Update maakt dit proces naadloos, door automatisch updates te downloaden en te installeren.
-2. **Gebruik AfsUpdater. exe om agent updates te downloaden en te installeren.**  
-    AfsUpdater. exe bevindt zich in de installatiemap van de agent. Dubbel klik op het uitvoer bare bestand om agent updates te downloaden en te installeren. 
+2. **Gebruik AfsUpdater.exe om agent updates te downloaden en te installeren.**  
+    Het AfsUpdater.exe bevindt zich in de installatiemap van de agent. Dubbel klik op het uitvoer bare bestand om agent updates te downloaden en te installeren. 
 3. **Een bestaande Azure File Sync agent patchen met behulp van een Microsoft Update patch-bestand of een MSP-bestand. Het meest recente Azure File Sync Update pakket kan worden gedownload uit de [Microsoft Update catalogus](https://www.catalog.update.microsoft.com/Search.aspx?q=Azure%20File%20Sync).**  
     Als u een MSP-bestand uitvoert, wordt uw Azure File Sync-installatie bijgewerkt met dezelfde methode die automatisch wordt gebruikt door Microsoft Update in het vorige upgradepad. Bij het Toep assen van een Microsoft Update patch wordt een in-place upgrade van een Azure File Sync-installatie uitgevoerd.
 4. **Down load het nieuwste installatie programma voor Azure File Sync agent van het [micro soft Download centrum](https://go.microsoft.com/fwlink/?linkid=858257).**  

@@ -10,10 +10,10 @@ ms.author: dpalled
 manager: cshankar
 ms.custom: include file
 ms.openlocfilehash: 7bc6938523a6d66a2bc20b37c659568fc5ca494d
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77123248"
 ---
 ### <a name="general-availability-and-preview-comparison"></a>Algemene Beschik baarheid en preview-vergelijking
@@ -25,11 +25,11 @@ De volgende tabel bevat een overzicht van verschillende belang rijke verschillen
 | Eersteklas burger | Gebeurtenis gerichte | Time-Series-gericht |
 | Semantische redenen | Laag-niveau (referentie gegevens) | High-Level (modellen) |
 | Gegevens contextualization | Niet-apparaatniveau | Apparaat en niet-apparaatniveau |
-| Berekenings logica opslag | Nee | Opgeslagen in type variabelen deel van model |
-| Opslag en toegangs beheer | Nee | Ingeschakeld via model |
-| Aggregaties/steek proeven | Nee | Gewogen gebeurtenis en tijd gewogen |
-| Signaal wederopbouw | Nee | Interpolatie |
-| Productie van afgeleide tijd reeks | Nee | Ja, samen voegingen en koppelingen |
+| Berekenings logica opslag | No | Opgeslagen in type variabelen deel van model |
+| Opslag en toegangs beheer | No | Ingeschakeld via model |
+| Aggregaties/steek proeven | No | Gewogen gebeurtenis en tijd gewogen |
+| Signaal wederopbouw | No | Interpolatie |
+| Productie van afgeleide tijd reeks | No | Ja, samen voegingen en koppelingen |
 | Taal flexibiliteit | Niet-samenstelbaar | Samenstel bare |
 | Expressietaal | Predicaat teken reeks | Time Series-expressies (predicaat teken reeksen, waarden, expressies en functies) |
 

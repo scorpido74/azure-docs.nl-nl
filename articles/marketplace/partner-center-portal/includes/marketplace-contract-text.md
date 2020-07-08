@@ -1,5 +1,5 @@
 ---
-title: Include-bestand
+title: bestand opnemen
 description: tekst bestand voor micro soft Commercial Marketplace Standard-contract insluiten
 documentationcenter: partner-center-commercial-marketplace
 author: dsindona
@@ -10,17 +10,17 @@ ms.date: 01/22/2020
 ms.author: dsindona
 ms.custom: include file
 ms.openlocfilehash: e7692d8c90d71e76628ecb44ade529eabedfa909
-ms.sourcegitcommit: 366e95d58d5311ca4b62e6d0b2b47549e06a0d6d
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/01/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82691522"
 ---
 Micro soft biedt een standaard contract sjabloon voor de commerciële Marketplace.
 
 - **Het standaard contract voor de micro soft Commercial Marketplace gebruiken?**
 
-Micro soft biedt een standaard contract voor de micro soft Commercial Marketplace om trans acties op Marketplace te vergemakkelijken, om het aankoop proces voor klanten te vereenvoudigen en de juridische complexiteit voor software leveranciers te reduceren. In plaats van aangepaste voor waarden te gebruiken, kunnen uitgevers van commerciële markt plaatsen hun software aanbieden onder het Standard-contract, wat klanten alleen hoeven te bevestigen en één keer te accepteren. Het standaard contract vindt u hier: https://go.microsoft.com/fwlink/?linkid=2041178.
+Micro soft biedt een standaard contract voor de micro soft Commercial Marketplace om trans acties op Marketplace te vergemakkelijken, om het aankoop proces voor klanten te vereenvoudigen en de juridische complexiteit voor software leveranciers te reduceren. In plaats van aangepaste voor waarden te gebruiken, kunnen uitgevers van commerciële markt plaatsen hun software aanbieden onder het Standard-contract, wat klanten alleen hoeven te bevestigen en één keer te accepteren. Het standaard contract vindt u hier: https://go.microsoft.com/fwlink/?linkid=2041178 .
 
 U kunt het standaard contract gebruiken in plaats van uw eigen aangepaste voor waarden op te geven door het selectie vakje het standaard contract voor commerciële Marketplace gebruiken in te scha kelen.
 

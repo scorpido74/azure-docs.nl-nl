@@ -9,10 +9,10 @@ ms.date: 01/11/2019
 ms.author: rogarana
 ms.custom: include file
 ms.openlocfilehash: e5148ff9e92a2e550a3117356a4e77cbac8fc6f4
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "67673303"
 ---
 *De cache opwarmen*  
@@ -33,7 +33,7 @@ Iometer maakt gebruik van een test bestand dat is opgeslagen op het volume waaro
 
 #### <a name="access-specifications"></a>Toegangs specificaties
 
-De specificaties, i/o-grootte van de aanvraag,% lezen/schrijven,% wille keurig/opeenvolgend worden geconfigureerd op het tabblad ' toegangs specificaties ' in Iometer. Maak een toegangs specificatie voor elk van de scenario's die hieronder worden beschreven. Maak de toegangs specificaties en ' Save ' met een geschikte naam zoals – RandomWrites\_8K, RandomReads\_8K. Selecteer de bijbehorende specificatie bij het uitvoeren van het test scenario.
+De specificaties, i/o-grootte van de aanvraag,% lezen/schrijven,% wille keurig/opeenvolgend worden geconfigureerd op het tabblad ' toegangs specificaties ' in Iometer. Maak een toegangs specificatie voor elk van de scenario's die hieronder worden beschreven. Maak de toegangs specificaties en ' Save ' met een geschikte naam zoals – RandomWrites \_ 8K, RandomReads \_ 8K. Selecteer de bijbehorende specificatie bij het uitvoeren van het test scenario.
 
 Hieronder ziet u een voor beeld van toegangs specificaties voor het maximale aantal schrijf-IOPS-scenario's.  
     ![Voor beeld van toegangs specificaties voor maximale schrijf-IOPS](../articles/virtual-machines/linux/media/premium-storage-performance/image8.png)
@@ -44,8 +44,8 @@ Gebruik kleinere aanvraag grootte om de maximale IOPs te demonstreren. Gebruik d
 
 | Toegangs specificatie | Aanvraag grootte | Wille keurige | Wie |
 | --- | --- | --- | --- |
-| RandomWrites\_8K |8 K |100 |0 |
-| RandomReads\_8K |8 K |100 |100 |
+| RandomWrites \_ 8K |8 K |100 |0 |
+| RandomReads \_ 8K |8 K |100 |100 |
 
 #### <a name="maximum-throughput-test-specifications"></a>Specificaties voor maximale doorvoer snelheid
 
@@ -53,8 +53,8 @@ Gebruik grotere aanvraag grootte om de maximale door voer te demonstreren. Gebru
 
 | Toegangs specificatie | Aanvraag grootte | Wille keurige | Wie |
 | --- | --- | --- | --- |
-| RandomWrites\_64k |64 K |100 |0 |
-| RandomReads\_64k |64 K |100 |100 |
+| RandomWrites \_ 64k |64 K |100 |0 |
+| RandomReads \_ 64k |64 K |100 |100 |
 
 #### <a name="run-the-iometer-test"></a>De Iometer-test uitvoeren
 
@@ -62,33 +62,33 @@ Voer de onderstaande stappen uit om de cache op te schonen
 
 1. Maak twee toegangs specificaties met de waarden die hieronder worden weer gegeven,
 
-   | Naam | Aanvraag grootte | Wille keurige | Wie |
+   | Name | Aanvraag grootte | Wille keurige | Wie |
    | --- | --- | --- | --- |
-   | RandomWrites\_1MB |1 MB |100 |0 |
-   | RandomReads\_1MB |1 MB |100 |100 |
+   | RandomWrites \_ 1MB |1 MB |100 |0 |
+   | RandomReads \_ 1MB |1 MB |100 |100 |
 1. Voer de Iometer-test uit voor het initialiseren van de cache schijf met de volgende para meters. Gebruik drie worker-threads voor het doel volume en een wachtrij diepte van 128. Stel de duur ' uitvoerings tijd ' van de test in op 2 uur op het tabblad ' test Setup '.
 
-   | Scenario | Doel volume | Naam | Duur |
+   | Scenario | Doel volume | Name | Duur |
    | --- | --- | --- | --- |
-   | Cache schijf initialiseren |CacheReads |RandomWrites\_1MB |2 uur |
+   | Cache schijf initialiseren |CacheReads |RandomWrites \_ 1MB |2 uur |
 1. Voer de Iometer-test uit voor het opwarmen van de cache schijf met de volgende para meters. Gebruik drie worker-threads voor het doel volume en een wachtrij diepte van 128. Stel de duur ' uitvoerings tijd ' van de test in op 2 uur op het tabblad ' test Setup '.
 
-   | Scenario | Doel volume | Naam | Duur |
+   | Scenario | Doel volume | Name | Duur |
    | --- | --- | --- | --- |
-   | Cache schijf opwarmen |CacheReads |RandomReads\_1MB |2 uur |
+   | Cache schijf opwarmen |CacheReads |RandomReads \_ 1MB |2 uur |
 
 Nadat de cache schijf is opgewarmd, gaat u verder met de test scenario's die hieronder worden weer gegeven. Als u de Iometer-test wilt uitvoeren, gebruikt u ten minste drie worker-threads voor **elk** doel volume. Voor elke worker-thread selecteert u het doel volume, stelt u de wachtrij diepte in en selecteert u een van de opgeslagen test specificaties, zoals wordt weer gegeven in de onderstaande tabel, om het bijbehorende test scenario uit te voeren. De tabel toont ook de verwachte resultaten voor IOPS en door Voer wanneer deze tests worden uitgevoerd. Voor alle scenario's wordt een kleine i/o-grootte van 8 KB en een hoge wachtrij diepte van 128 gebruikt.
 
 | Test scenario | Doel volume | Naam | Resultaat |
 | --- | --- | --- | --- |
-| Met maximaal IOPS lezen |CacheReads |RandomWrites\_8K |50.000 IOPS |
-| Met maximaal IOPS schrijven |NoCacheWrites |RandomReads\_8K |64.000 IOPS |
-| Met maximaal Gecombineerde IOPS |CacheReads |RandomWrites\_8K |100.000 IOPS |
-| NoCacheWrites |RandomReads\_8K | &nbsp; | &nbsp; |
-| Met maximaal Gelezen MB/sec. |CacheReads |RandomWrites\_64k |524 MB/sec. |
-| Met maximaal Geschreven bytes per seconde |NoCacheWrites |RandomReads\_64k |524 MB/sec. |
-| Gecombineerde MB/sec. |CacheReads |RandomWrites\_64k |1000 MB/sec. |
-| NoCacheWrites |RandomReads\_64k | &nbsp; | &nbsp; |
+| Met maximaal IOPS lezen |CacheReads |RandomWrites \_ 8K |50.000 IOPS |
+| Met maximaal IOPS schrijven |NoCacheWrites |RandomReads \_ 8K |64.000 IOPS |
+| Met maximaal Gecombineerde IOPS |CacheReads |RandomWrites \_ 8K |100.000 IOPS |
+| NoCacheWrites |RandomReads \_ 8K | &nbsp; | &nbsp; |
+| Met maximaal Gelezen MB/sec. |CacheReads |RandomWrites \_ 64k |524 MB/sec. |
+| Met maximaal Geschreven bytes per seconde |NoCacheWrites |RandomReads \_ 64k |524 MB/sec. |
+| Gecombineerde MB/sec. |CacheReads |RandomWrites \_ 64k |1000 MB/sec. |
+| NoCacheWrites |RandomReads \_ 64k | &nbsp; | &nbsp; |
 
 Hieronder vindt u scherm afbeeldingen van de resultaten van de Iometer-test voor gecombineerde IOPS-en doorvoer scenario's.
 
@@ -116,7 +116,7 @@ We gebruiken vier worker-threads voor schrijf bewerkingen en vier werkthreads om
 
 #### <a name="maximum-write-iops"></a>Maximale schrijf-IOPS
 
-Maak het taak bestand met de volgende specificaties om het maximale aantal schrijf-IOPS op te halen. Noem het ' fiowrite. ini '.
+Maak het taak bestand met de volgende specificaties om het maximale aantal schrijf-IOPS op te halen. Noem deze fiowrite.ini.
 
 ```ini
 [global]
@@ -157,7 +157,7 @@ Terwijl de test wordt uitgevoerd, kunt u het aantal schrijf-IOPS zien dat de VM 
 
 #### <a name="maximum-read-iops"></a>Maximale Lees-IOPS
 
-Maak het taak bestand met de volgende specificaties om maximale Lees-IOPS te verkrijgen. Noem het ' fioread. ini '.
+Maak het taak bestand met de volgende specificaties om maximale Lees-IOPS te verkrijgen. Noem deze fioread.ini.
 
 ```ini
 [global]
@@ -198,7 +198,7 @@ Terwijl de test wordt uitgevoerd, kunt u het aantal gelezen IOPS zien dat de VM 
 
 #### <a name="maximum-read-and-write-iops"></a>Maximale IOPS voor lezen en schrijven
 
-Maak het taak bestand met de volgende specificaties om het maximale aantal gecombineerde Lees-en schrijf bewerkingen te verkrijgen. Noem het ' fioreadwrite. ini '.
+Maak het taak bestand met de volgende specificaties om het maximale aantal gecombineerde Lees-en schrijf bewerkingen te verkrijgen. Noem deze fioreadwrite.ini.
 
 ```ini
 [global]

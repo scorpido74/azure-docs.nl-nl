@@ -9,10 +9,10 @@ ms.date: 07/01/2019
 ms.author: rogarana
 ms.custom: include file
 ms.openlocfilehash: d6f56f3500ab9c6b4482d2ade892dfdb46ccacb5
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/27/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "67503379"
 ---
 Premium-bestanden gebruiken een uniek opslag account met de naam **FileStorage**. Dit account type is ontworpen voor workloads met hoge IOPS en hoge door Voer met een consistente lage latentie. Premium-bestands opslag wordt geschaald met de ingerichte share grootte.

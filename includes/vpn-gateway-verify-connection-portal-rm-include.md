@@ -9,15 +9,15 @@ ms.date: 03/21/2018
 ms.author: cherylmc
 ms.custom: include file
 ms.openlocfilehash: c1793a22c59cda279a9d8c4522bcec2606d25582
-ms.sourcegitcommit: fad3aaac5af8c1b3f2ec26f75a8f06e8692c94ed
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/27/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "67673297"
 ---
 U kunt de verbindingsstatus voor een Resource Manager VPN Gateway weergeven door in Azure Portal naar de verbinding te navigeren. De volgende stappen tonen één manier om te navigeren naar uw verbinding en deze te controleren.
 
-1. Klik in [Azure Portal](https://portal.azure.com) op **Alle resources** en navigeer naar de virtuele netwerkgateway.
+1. Klik in de [Azure Portal](https://portal.azure.com)op **alle resources** en navigeer naar uw virtuele netwerk gateway.
 2. Klik op de blade voor uw virtuele netwerkgateway op **Verbindingen**. U ziet de status van elke verbinding.
 3. Klik op de naam van de verbinding die u wilt controleren om **Essentials** te openen. In Essentials kunt u meer informatie weergeven over de verbinding. Wanneer u verbinding hebt gemaakt, is de **status** Geslaagd en Verbonden.
 

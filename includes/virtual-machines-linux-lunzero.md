@@ -5,22 +5,22 @@ ms.topic: include
 ms.date: 10/26/2018
 ms.author: cynthn
 ms.openlocfilehash: 09fa612e7e5c681da16bf19e94c626ae14a3b8a1
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77590828"
 ---
-Wanneer u gegevens schijven toevoegt aan een virtuele Linux-machine, kunnen er fouten optreden als er geen schijf aanwezig is op LUN 0. Als u een schijf hand matig toevoegt met behulp van de `az vm disk attach -new` opdracht en u een`--lun`LUN opgeeft () in plaats van het Azure-platform te toestaan de juiste LUN te bepalen, moet u er rekening mee houden dat er al een schijf bestaat/bestaat op LUN 0. 
+Wanneer u gegevens schijven toevoegt aan een virtuele Linux-machine, kunnen er fouten optreden als er geen schijf aanwezig is op LUN 0. Als u een schijf hand matig toevoegt met behulp van de `az vm disk attach -new` opdracht en u een LUN opgeeft ( `--lun` ) in plaats van het Azure-platform te toestaan de juiste LUN te bepalen, moet u er rekening mee houden dat er al een schijf bestaat/bestaat op LUN 0. 
 
-Bekijk het volgende voor beeld met een fragment van de uitvoer `lsscsi`van:
+Bekijk het volgende voor beeld met een fragment van de uitvoer van `lsscsi` :
 
 ```bash
 [5:0:0:0]    disk    Msft     Virtual Disk     1.0   /dev/sdc 
 [5:0:0:1]    disk    Msft     Virtual Disk     1.0   /dev/sdd 
 ```
 
-De twee gegevens schijven bestaan op LUN 0 en LUN 1 (de eerste kolom in de `lsscsi` uitvoer gegevens `[host:channel:target:lun]`). Beide schijven moeten vanuit de VM toegankelijk zijn. Als u hand matig de eerste schijf hebt opgegeven die moet worden toegevoegd bij LUN 1 en de tweede schijf op LUN 2, ziet u mogelijk de schijven niet correct vanuit uw VM.
+De twee gegevens schijven bestaan op LUN 0 en LUN 1 (de eerste kolom in de `lsscsi` uitvoer gegevens `[host:channel:target:lun]` ). Beide schijven moeten vanuit de VM toegankelijk zijn. Als u hand matig de eerste schijf hebt opgegeven die moet worden toegevoegd bij LUN 1 en de tweede schijf op LUN 2, ziet u mogelijk de schijven niet correct vanuit uw VM.
 
 > [!NOTE]
 > De Azure `host` -waarde is 5 in deze voor beelden, maar dit kan variëren afhankelijk van het type opslag dat u selecteert.

@@ -5,13 +5,13 @@ ms.topic: include
 ms.date: 10/26/2018
 ms.author: alkohli
 ms.openlocfilehash: 658fd9178495f14274c85eab2129c9dcd3be7693
-ms.sourcegitcommit: fad3aaac5af8c1b3f2ec26f75a8f06e8692c94ed
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/27/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "67176066"
 ---
-| **Limiet-id** | **Limiet** | **Opmerkingen** |
+| **Limiet-id** | **Ondergrens** | **Opmerkingen** |
 | --- | --- | --- |
 | Totale capaciteit (inclusief Cloud) |Tot 64 TB per virtueel apparaat |U kunt een failover uitvoeren voor een volledige StorSimple-virtuele matrix naar een andere lege matrix. Als u probeert te herstellen op hetzelfde apparaat, moet u ervoor zorgen dat u voldoende ruimte hebt op het apparaat om deze bewerking te volt ooien. Nadat u 32 TB hebt overschreden, kunt u niet meer herstellen op hetzelfde apparaat. |
 | Maximum aantal referenties voor het opslag account per apparaat |1 | |
