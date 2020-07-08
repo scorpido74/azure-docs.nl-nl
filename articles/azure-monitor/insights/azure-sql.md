@@ -7,11 +7,12 @@ author: danimir
 ms.author: danil
 ms.date: 02/21/2020
 ms.reviewer: carlrab
-ms.openlocfilehash: d1f8a30145cc0d61f110c0f47459a4f1db03325b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: bb9bc847944a4228a7b583e21d0aa957f1910a29
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85249411"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86087177"
 ---
 # <a name="monitor-azure-sql-database-using-azure-sql-analytics-preview"></a>Azure SQL Database bewaken met behulp van Azure SQL-analyse (preview)
 
@@ -71,7 +72,7 @@ Wanneer u Azure SQL-analyse toevoegt aan uw werk ruimte, wordt de Azure SQL-anal
 
 ![Tegel Azure SQL-analyse overzicht](./media/azure-sql/azure-sql-sol-tile-01.png)
 
-Zodra de tegel is geladen, wordt het aantal data bases en elastische Pools weer gegeven in SQL Database en beheerde exemplaren en instantie databases in het SQL-beheerde exemplaar van waaruit Azure SQL-analyse diagnostische telemetrie ontvangt.
+Zodra de tegel is geladen, wordt het aantal data bases en elastische Pools weer gegeven in SQL Database en instanties en instance-data bases in het SQL-beheerde exemplaar van waaruit Azure SQL-analyse diagnostische telemetrie ontvangt.
 
 ![Azure SQL-analyse tegel](./media/azure-sql/azure-sql-sol-tile-02.png)
 
@@ -105,7 +106,7 @@ Zodra de Azure SQL-analyse tegel voor de data bases is geselecteerd, wordt het b
 
 Als u een tegel selecteert, wordt er een inzoom rapport in het specifieke perspectief geopend. Zodra het perspectief is geselecteerd, wordt het inzoom rapport geopend.
 
-Als u de weer gave SQL Managed instance selecteert, worden de details weer gegeven van het gebruik van het beheerde exemplaar, de data bases die het bevat en telemetrie voor de query's die in het exemplaar worden uitgevoerd.
+Als u de weer gave SQL Managed instance selecteert, worden de details weer gegeven van het gebruik van de instantie, de exemplaar databases en de telemetrie voor de query's die worden uitgevoerd in het beheerde exemplaar.
 
 ![Azure SQL-analyse-time-outs](./media/azure-sql/azure-sql-sol-metrics-mi.png)
 
@@ -268,7 +269,7 @@ AzureDiagnostics
 
 > [!NOTE]
 >
-> - De eerste vereiste voor het instellen van deze waarschuwing is dat de beheerde instantie het streamen van ResourceUsageStats-logboek heeft ingeschakeld voor Azure SQL-analyse.
+> - De vereisten voor het instellen van deze waarschuwing zijn dat het bewaakte beheerde exemplaar het streamen van ResourceUsageStats-logboek heeft ingeschakeld voor Azure SQL-analyse.
 > - Deze query vereist dat er een waarschuwings regel wordt ingesteld om een waarschuwing te starten wanneer er resultaten zijn (> 0 resultaten) van de query, waarbij wordt opgegeven dat de voor waarde bestaat op het beheerde exemplaar. De uitvoer is opslag percentage van het beheerde exemplaar.
 
 #### <a name="cpu-average-consumption-is-above-95-in-the-last-1-hr"></a>Het gemiddelde CPU-verbruik is hoger dan 95% in de afgelopen uur

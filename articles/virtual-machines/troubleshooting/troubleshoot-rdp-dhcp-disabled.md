@@ -12,11 +12,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 11/13/2018
 ms.author: genli
-ms.openlocfilehash: 2c5b0556554d280e57b2df51875e1b057b5fb4a8
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 278d976f044deb8a7387763306cf07f8b6b55d90
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "75749891"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86087789"
 ---
 #  <a name="cannot-rdp-to-azure-virtual-machines-because-the-dhcp-client-service-is-disabled"></a>Kan geen RDP-naar-Azure-Virtual Machines omdat de DHCP client-service is uitgeschakeld
 
@@ -39,7 +40,9 @@ U kunt geen RDP-verbinding maken met een virtuele machine in azure omdat de DHCP
 
 Voor virtuele machines van Resource Manager kunt u met behulp van de console van de seriële toegang zoeken naar de gebeurtenis logboeken 7022 met de volgende opdracht:
 
-    wevtutil qe system /c:1 /f:text /q:"Event[System[Provider[@Name='Service Control Manager'] and EventID=7022 and TimeCreated[timediff(@SystemTime) <= 86400000]]]" | more
+```console
+wevtutil qe system /c:1 /f:text /q:"Event[System[Provider[@Name='Service Control Manager'] and EventID=7022 and TimeCreated[timediff(@SystemTime) <= 86400000]]]" | more
+```
 
 Voor klassieke Vm's moet u in de OFFLINE modus werken en de logboeken hand matig verzamelen.
 
@@ -62,14 +65,21 @@ U kunt dit probleem oplossen met behulp van seriële controle om DHCP in te scha
 ). Als de seriële console niet op uw virtuele machine is ingeschakeld, raadpleegt u de [netwerk interface opnieuw instellen](reset-network-interface.md).
 2. Controleer of DHCP is uitgeschakeld op de netwerk interface:
 
-        sc query DHCP
+    ```console
+    sc query DHCP
+    ```
+
 3. Als de DHCP is gestopt, probeert u de service te starten
 
-        sc start DHCP
+    ```console
+    sc start DHCP
+    ```
 
 4. Voer de query opnieuw uit om te controleren of de service is gestart.
 
-        sc query DHCP
+    ```console
+    sc query DHCP
+    ```
 
     Probeer verbinding te maken met de virtuele machine om te zien of het probleem is opgelost.
 5. Als de service niet wordt gestart, gebruikt u de volgende geschikte oplossing op basis van het fout bericht dat u hebt ontvangen:
@@ -156,23 +166,38 @@ U kunt dit probleem oplossen met behulp van seriële controle om DHCP in te scha
 
 1. Omdat dit probleem optreedt als het opstart account van deze service is gewijzigd, herstelt u de standaard status van het account:
 
-        sc config DHCP obj= 'NT Authority\Localservice'
+    ```console
+    sc config DHCP obj= 'NT Authority\Localservice'
+    ```
+
 2. Start de service:
 
-        sc start DHCP
+    ```console
+    sc start DHCP
+    ```
+
 3. Probeer verbinding te maken met de virtuele machine met behulp van Extern bureaublad.
 
 #### <a name="dhcp-client-service-crashes-or-hangs"></a>De DHCP-client service loopt vast of loopt vast
 
 1. Als de status van de service is vastgelopen in de status **starten** of **stoppen** , probeert u de service te stoppen:
 
-        sc stop DHCP
+    ```console
+    sc stop DHCP
+    ```
+
 2. De service op een eigen ' Svchost '-container isoleren:
 
-        sc config DHCP type= own
+    ```console
+    sc config DHCP type= own
+    ```
+
 3. Start de service:
 
-        sc start DHCP
+    ```console
+    sc start DHCP
+    ```
+
 4. Als de service nog steeds niet wordt gestart, [neemt u contact op met de ondersteuning](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade).
 
 ### <a name="repair-the-vm-offline"></a>De virtuele machine offline herstellen

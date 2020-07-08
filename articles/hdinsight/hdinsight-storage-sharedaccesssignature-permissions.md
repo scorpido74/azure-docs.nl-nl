@@ -5,15 +5,15 @@ author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
-ms.topic: conceptual
+ms.topic: how-to
 ms.custom: hdinsightactive,seoapr2020
 ms.date: 04/28/2020
-ms.openlocfilehash: 77314514ca26997fecd6b5d7c6ba1fc7d14c2584
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.openlocfilehash: 3756e7d1f58c37038347888a21d98326cd4eb71f
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82209057"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86087449"
 ---
 # <a name="use-azure-storage-shared-access-signatures-to-restrict-access-to-data-in-hdinsight"></a>Azure Storage Shared Access Signatures gebruiken om de toegang tot gegevens in HDInsight te beperken
 
@@ -39,11 +39,11 @@ HDInsight heeft volledige toegang tot de gegevens in de Azure Storage accounts d
 
 * Als C# wordt gebruikt, moet Visual Studio versie 2013 of hoger zijn.
 
-* Het URI-schema voor uw opslag account. Dit schema is `wasb://` voor Azure Storage, `abfs://` voor Azure data Lake Storage Gen2 of `adl://` voor Azure data Lake Storage gen1. Als beveiligde overdracht is ingeschakeld voor Azure Storage, zou de URI zijn `wasbs://`.
+* Het URI-schema voor uw opslag account. Dit schema is `wasb://` voor Azure Storage, `abfs://` voor Azure data Lake Storage Gen2 of `adl://` voor Azure data Lake Storage gen1. Als beveiligde overdracht is ingeschakeld voor Azure Storage, zou de URI zijn `wasbs://` .
 
 * Een bestaand HDInsight-cluster waaraan een Shared Access Signature moet worden toegevoegd. Als dat niet het geval is, kunt u Azure PowerShell gebruiken om een cluster te maken en een Shared Access Signature toe te voegen tijdens het maken van het cluster.
 
-* De voorbeeld bestanden van [https://github.com/Azure-Samples/hdinsight-dotnet-python-azure-storage-shared-access-signature](https://github.com/Azure-Samples/hdinsight-dotnet-python-azure-storage-shared-access-signature). Deze opslag plaats bevat de volgende items:
+* De voorbeeld bestanden van [https://github.com/Azure-Samples/hdinsight-dotnet-python-azure-storage-shared-access-signature](https://github.com/Azure-Samples/hdinsight-dotnet-python-azure-storage-shared-access-signature) . Deze opslag plaats bevat de volgende items:
 
   * Een Visual Studio-project dat een opslag container, opgeslagen beleid en SAS kan maken voor gebruik met HDInsight
   * Een python-script dat een opslag container, opgeslagen beleid en SAS kan maken voor gebruik met HDInsight
@@ -88,7 +88,7 @@ Sla het SAS-token op dat aan het einde van elke methode is geproduceerd. Het tok
 
 ### <a name="using-powershell"></a>PowerShell gebruiken
 
-Vervang `RESOURCEGROUP`, `STORAGEACCOUNT`, en `STORAGECONTAINER` door de juiste waarden voor uw bestaande opslag container. Wijzig de map `hdinsight-dotnet-python-azure-storage-shared-access-signature-master` naar of herzie de `-File` para meter om het absolute pad voor `Set-AzStorageblobcontent`te bevatten. Voer de volgende Power shell-opdracht in:
+Vervang `RESOURCEGROUP` , `STORAGEACCOUNT` , en `STORAGECONTAINER` door de juiste waarden voor uw bestaande opslag container. Wijzig de map naar `hdinsight-dotnet-python-azure-storage-shared-access-signature-master` of herzie de `-File` para meter om het absolute pad voor te bevatten `Set-AzStorageblobcontent` . Voer de volgende Power shell-opdracht in:
 
 ```powershell
 $resourceGroupName = "RESOURCEGROUP"
@@ -154,7 +154,7 @@ Set-AzStorageblobcontent `
 
 Het gebruik van variabelen in deze sectie is gebaseerd op een Windows-omgeving. Er zijn kleine variaties nodig voor bash of andere omgevingen.
 
-1. Vervang `STORAGEACCOUNT`en `STORAGECONTAINER` door de juiste waarden voor uw bestaande opslag container.
+1. Vervang `STORAGEACCOUNT` en door `STORAGECONTAINER` de juiste waarden voor uw bestaande opslag container.
 
     ```azurecli
     # set variables
@@ -171,14 +171,14 @@ Het gebruik van variabelen in deze sectie is gebaseerd op een Windows-omgeving. 
     az storage account keys list --account-name %AZURE_STORAGE_ACCOUNT% --query "[0].{PrimaryKey:value}" --output table
     ```
 
-2. Stel de opgehaalde primaire sleutel in op een variabele voor later gebruik. Vervang `PRIMARYKEY` door de opgehaalde waarde in de vorige stap en voer de volgende opdracht in:
+2. Stel de opgehaalde primaire sleutel in op een variabele voor later gebruik. Vervang door `PRIMARYKEY` de opgehaalde waarde in de vorige stap en voer de volgende opdracht in:
 
     ```console
     #set variable for primary key
     set AZURE_STORAGE_KEY=PRIMARYKEY
     ```
 
-3. Wijzig de map `hdinsight-dotnet-python-azure-storage-shared-access-signature-master` naar of herzie de `--file` para meter om het absolute pad voor `az storage blob upload`te bevatten. Voer de overige opdrachten uit:
+3. Wijzig de map naar `hdinsight-dotnet-python-azure-storage-shared-access-signature-master` of herzie de `--file` para meter om het absolute pad voor te bevatten `az storage blob upload` . Voer de overige opdrachten uit:
 
     ```azurecli
     # Create stored access policy on the containing object
@@ -199,9 +199,9 @@ Het gebruik van variabelen in deze sectie is gebaseerd op een Windows-omgeving. 
 
 ### <a name="using-python"></a>Python gebruiken
 
-Open het `SASToken.py` bestand en vervang `storage_account_name`, `storage_account_key`, en `storage_container_name` met de juiste waarden voor uw bestaande opslag container en voer het script uit.
+Open het `SASToken.py` bestand en vervang `storage_account_name` , `storage_account_key` , en `storage_container_name` met de juiste waarden voor uw bestaande opslag container en voer het script uit.
 
-Mogelijk moet u uitvoeren `pip install --upgrade azure-storage` als het fout bericht `ImportError: No module named azure.storage`wordt weer gegeven.
+Mogelijk moet u uitvoeren `pip install --upgrade azure-storage` als het fout bericht wordt weer gegeven `ImportError: No module named azure.storage` .
 
 ### <a name="using-c"></a>Met C\#
 
@@ -211,9 +211,9 @@ Mogelijk moet u uitvoeren `pip install --upgrade azure-storage` als het fout ber
 
 3. Selecteer **instellingen** en voeg waarden toe voor de volgende vermeldingen:
 
-    |Item |Beschrijving |
+    |Item |Description |
     |---|---|
-    |StorageConnectionString|De connection string voor het opslag account waarvoor u een opgeslagen beleid en SA'S wilt maken. De notatie moet zijn `DefaultEndpointsProtocol=https;AccountName=myaccount;AccountKey=mykey` `myaccount` als de naam van uw opslag account en `mykey` de sleutel voor het opslag account is.|
+    |StorageConnectionString|De connection string voor het opslag account waarvoor u een opgeslagen beleid en SA'S wilt maken. De notatie moet zijn `DefaultEndpointsProtocol=https;AccountName=myaccount;AccountKey=mykey` als `myaccount` de naam van uw opslag account en `mykey` de sleutel voor het opslag account is.|
     |ContainerName|De container in het opslag account waartoe u de toegang wilt beperken.|
     |SASPolicyName|De naam die moet worden gebruikt om het opgeslagen beleid te maken.|
     |FileToUpload|Het pad naar een bestand dat naar de container wordt geüpload.|
@@ -228,7 +228,7 @@ Gebruik een Shared Access Signature om de toegang tot de container te beperken. 
 
 ### <a name="create-a-cluster-that-uses-the-sas"></a>Een cluster maken dat gebruikmaakt van de SAS
 
-Vervang `CLUSTERNAME`, `RESOURCEGROUP` `DEFAULTSTORAGEACCOUNT` `STORAGECONTAINER`,,, en `TOKEN` door de juiste `STORAGEACCOUNT`waarden. Voer de Power shell-opdrachten in:
+Vervang,,,, `CLUSTERNAME` `RESOURCEGROUP` `DEFAULTSTORAGEACCOUNT` `STORAGECONTAINER` `STORAGEACCOUNT` en `TOKEN` door de juiste waarden. Voer de Power shell-opdrachten in:
 
 ```powershell
 $clusterName = 'CLUSTERNAME'
@@ -351,16 +351,16 @@ Het duurt even voordat dit script is voltooid, meestal ongeveer 15 minuten. Wann
 
 Als u een bestaand cluster hebt, kunt u de SAS toevoegen aan de **kern site** configuratie met behulp van de volgende stappen:
 
-1. Open de Ambari-webgebruikersinterface voor uw cluster. Het adres voor deze pagina is `https://YOURCLUSTERNAME.azurehdinsight.net`. Wanneer u hierom wordt gevraagd, moet u zich bij het cluster aanmelden met de beheerders naam (admin) en het wacht woord dat u hebt gebruikt bij het maken van het cluster.
+1. Open de Ambari-webgebruikersinterface voor uw cluster. Het adres voor deze pagina is `https://YOURCLUSTERNAME.azurehdinsight.net` . Wanneer u hierom wordt gevraagd, moet u zich bij het cluster aanmelden met de beheerders naam (admin) en het wacht woord dat u hebt gebruikt bij het maken van het cluster.
 
-1. Navigeer naar **HDFS** > **configs** > **Geavanceerde** > **aangepaste kern-site**.
+1. Navigeer naar **HDFS**  >  **configs**  >  **Geavanceerde**  >  **aangepaste kern-site**.
 
 1. Vouw de sectie **aangepaste kern site** uit, blader naar het einde en selecteer vervolgens **eigenschap toevoegen...**. Gebruik de volgende waarden voor **sleutel** en **waarde**:
 
     * **Sleutel**:`fs.azure.sas.CONTAINERNAME.STORAGEACCOUNTNAME.blob.core.windows.net`
     * **Waarde**: de sa's die door een van de eerder uitgevoerde methoden zijn geretourneerd.
 
-    Vervang `CONTAINERNAME` door de naam van de container die u hebt gebruikt in combi natie met de C#-of SAS-toepassing. Vervang `STORAGEACCOUNTNAME` door de naam van het opslag account dat u hebt gebruikt.
+    Vervang door `CONTAINERNAME` de naam van de container die u hebt gebruikt in combi natie met de C#-of SAS-toepassing. Vervang door `STORAGEACCOUNTNAME` de naam van het opslag account dat u hebt gebruikt.
 
     Selecteer **toevoegen** om deze sleutel en waarde op te slaan
 
@@ -381,7 +381,7 @@ Als u een bestaand cluster hebt, kunt u de SAS toevoegen aan de **kern site** co
 
 Gebruik de volgende stappen om te controleren of u alleen items kunt lezen en weer geven in het SAS-opslag account.
 
-1. Maak verbinding met het cluster. Vervang `CLUSTERNAME` door de naam van uw cluster en voer de volgende opdracht in:
+1. Maak verbinding met het cluster. Vervang door `CLUSTERNAME` de naam van uw cluster en voer de volgende opdracht in:
 
     ```cmd
     ssh sshuser@CLUSTERNAME-ssh.azurehdinsight.net
@@ -393,11 +393,11 @@ Gebruik de volgende stappen om te controleren of u alleen items kunt lezen en we
     hdfs dfs -ls wasbs://SASCONTAINER@SASACCOUNTNAME.blob.core.windows.net/
     ```
 
-    Vervang `SASCONTAINER` door de naam van de container die is gemaakt voor het SAS-opslag account. Vervang `SASACCOUNTNAME` door de naam van het opslag account dat wordt gebruikt voor de SAS.
+    Vervang door `SASCONTAINER` de naam van de container die is gemaakt voor het SAS-opslag account. Vervang door `SASACCOUNTNAME` de naam van het opslag account dat wordt gebruikt voor de SAS.
 
     De lijst bevat het bestand dat is geüpload toen de container en SA'S werden gemaakt.
 
-3. Gebruik de volgende opdracht om te controleren of u de inhoud van het bestand kunt lezen. Vervang de `SASCONTAINER` en `SASACCOUNTNAME` als in de vorige stap. Vervang `sample.log` door de naam van het bestand dat wordt weer gegeven in de vorige opdracht:
+3. Gebruik de volgende opdracht om te controleren of u de inhoud van het bestand kunt lezen. Vervang de `SASCONTAINER` en `SASACCOUNTNAME` als in de vorige stap. Vervang door `sample.log` de naam van het bestand dat wordt weer gegeven in de vorige opdracht:
 
     ```bash
     hdfs dfs -text wasbs://SASCONTAINER@SASACCOUNTNAME.blob.core.windows.net/sample.log
@@ -411,9 +411,9 @@ Gebruik de volgende stappen om te controleren of u alleen items kunt lezen en we
     hdfs dfs -get wasbs://SASCONTAINER@SASACCOUNTNAME.blob.core.windows.net/sample.log testfile.txt
     ```
 
-    Met deze opdracht wordt het bestand gedownload naar een lokaal bestand met de naam **test. txt**.
+    Met deze opdracht wordt het bestand gedownload naar een lokaal bestand met de naam **testfile.txt**.
 
-5. Gebruik de volgende opdracht om het lokale bestand te uploaden naar een nieuw bestand met de naam **testupload. txt** op de SAS-opslag:
+5. Gebruik de volgende opdracht om het lokale bestand te uploaden naar een nieuw bestand met de naam **testupload.txt** op de SAS-opslag:
 
     ```bash
     hdfs dfs -put testfile.txt wasbs://SASCONTAINER@SASACCOUNTNAME.blob.core.windows.net/testupload.txt
@@ -421,7 +421,9 @@ Gebruik de volgende stappen om te controleren of u alleen items kunt lezen en we
 
     U krijgt een bericht te zien dat vergelijkbaar is met de volgende tekst:
 
-        put: java.io.IOException
+    ```output
+    put: java.io.IOException
+    ```
 
     Deze fout treedt op omdat de opslag locatie alleen-lezen is en alleen lijst. Gebruik de volgende opdracht om de gegevens op de standaard opslag voor het cluster te plaatsen, wat schrijfbaar is:
 

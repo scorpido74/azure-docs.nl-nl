@@ -3,12 +3,12 @@ title: Leerling-modus-persoonlijker
 description: ''
 ms.topic: conceptual
 ms.date: 05/01/2020
-ms.openlocfilehash: 2697ab4b32edbd4841f2b11725fda46e90e7ae7e
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.openlocfilehash: 5ee8242fbc9ab5bed4e3eed8997feb122b131062
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83599401"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86087194"
 ---
 # <a name="use-apprentice-mode-to-train-personalizer-without-affecting-your-existing-application"></a>De leerling-modus gebruiken om uw persoonlijker te trainen zonder dat dit van invloed is op uw bestaande toepassing
 
@@ -30,7 +30,7 @@ In de les-modus kunt u vertrouwen in de Personaler-service en de mogelijkheden v
 
 De twee belangrijkste redenen voor het gebruik van de modus leerlingen zijn:
 
-* Het beperken van **koude start**: de praktijk modus helpt bij het beheren en beoordelen van de kosten van een ' nieuw ' model voor de leer tijd, wanneer het niet de beste actie retourneert en geen voldoende effectiviteit van ongeveer 75-85% bereikt.
+* Het beperken van **koude start**: de praktijk modus helpt bij het beheren en beoordelen van de kosten van een ' nieuw ' model voor de leer tijd, wanneer het niet de beste actie retourneert en geen voldoende effectiviteit van ongeveer 60-80% bereikt.
 * **Actie-en context functies valideren**: functies die in acties en context worden verzonden, zijn mogelijk ontoereikend of onnauwkeurig, te weinig, te veel, onjuist of te specifiek voor het trainen van personalisatie om het ideale effectiviteits tempo te bereiken. Gebruik [functie-evaluaties](concept-feature-evaluation.md) om problemen met functies te vinden en op te lossen.
 
 ## <a name="when-should-you-use-apprentice-mode"></a>Wanneer moet u de modus leerlingen gebruiken?
@@ -57,7 +57,7 @@ De leerling-modus is handig voor ontwikkel aars, gegevens wetenschappers en besl
 
 De volgende manieren van het verschil in de modus leerlingen van de online modus is.
 
-|Gebied|Leerling-modus|Online modus|
+|Onderwerp|Leerlingmodus|Online modus|
 |--|--|--|
 |Gevolgen voor de gebruikers ervaring|U kunt het bestaande gebruikers gedrag gebruiken om uw persoonlijker te trainen door het te laten weten wat uw **standaard actie** zou hebben en wat de beslag is. Dit betekent dat de gebruikers ervaring en de bedrijfs resultaten hiervan niet worden beïnvloed.|De bovenste actie weer geven die wordt geretourneerd door de positie aanroep om het gedrag van de gebruiker te beïnvloeden.|
 |Leer snelheid|Personaler leert langzaamer in de modus van de werk wijze dan bij het leren in de online modus. De praktijk modus kan alleen leren door de door uw **standaard actie**verkregen beloningen te bestuderen, waardoor de snelheid van het leren wordt beperkt omdat er geen onderzoek kan worden uitgevoerd.|Gaat sneller, omdat deze zowel het huidige model kan exploiteren als om nieuwe trends te verkennen.|
@@ -68,7 +68,7 @@ De volgende manieren van het verschil in de modus leerlingen van de online modus
 Een opmerking over de effectiviteit van de leerlingen-modus:
 
 * De effectiviteit van personalisatie in de modus van de werk omgeving komt zelden voor in de buurt van 100% van de basis lijn van de toepassing. en deze nooit overschrijden.
-* Aanbevolen procedures zijn niet te proberen om 100% Attain te bereiken. een bereik van 75 – 85% moet afhankelijk van de use-case zijn gericht.
+* Aanbevolen procedures zijn niet te proberen om 100% Attain te bereiken. een bereik van 60% – 80% moet afhankelijk van de use-case zijn gericht.
 
 ## <a name="using-apprentice-mode-to-train-with-historical-data"></a>De leerling-modus gebruiken om te trainen met historische gegevens
 

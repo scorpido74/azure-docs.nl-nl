@@ -7,13 +7,13 @@ ms.topic: reference
 ms.workload: identity
 author: rolyon
 ms.author: rolyon
-ms.date: 06/18/2020
-ms.openlocfilehash: b645945cc082b321e63e9d02e0bb6a799e82364d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 07/06/2020
+ms.openlocfilehash: 24e964ec37184e38358b5c64eff05a8aa10a431d
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85317305"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86086807"
 ---
 # <a name="azure-built-in-roles"></a>Ingebouwde rollen van Azure
 
@@ -3575,6 +3575,7 @@ Hiermee beheert u beheerde SQL-instanties en de vereiste netwerk configuratie, m
 > | [Micro soft. Network](resource-provider-operations.md#microsoftnetwork)/networkSecurityGroups/* |  |
 > | [Micro soft. Network](resource-provider-operations.md#microsoftnetwork)/routeTables/* |  |
 > | [Micro soft. SQL](resource-provider-operations.md#microsoftsql)/locations/*/Read |  |
+> | [Micro soft. SQL](resource-provider-operations.md#microsoftsql)/locations/instanceFailoverGroups/* |  |
 > | [Micro soft. SQL](resource-provider-operations.md#microsoftsql)/managedInstances/* |  |
 > | [Micro soft. ondersteuning](resource-provider-operations.md#microsoftsupport)/* | Een ondersteunings ticket maken en bijwerken |
 > | [Micro soft. Network](resource-provider-operations.md#microsoftnetwork)/virtualNetworks/subnets/* |  |
@@ -3607,6 +3608,7 @@ Hiermee beheert u beheerde SQL-instanties en de vereiste netwerk configuratie, m
         "Microsoft.Network/networkSecurityGroups/*",
         "Microsoft.Network/routeTables/*",
         "Microsoft.Sql/locations/*/read",
+        "Microsoft.Sql/locations/instanceFailoverGroups/*",
         "Microsoft.Sql/managedInstances/*",
         "Microsoft.Support/*",
         "Microsoft.Network/virtualNetworks/subnets/*",
@@ -5196,6 +5198,7 @@ Hiermee kunt u Azure Stack registraties beheren.
 > |  |  |
 > | --- | --- |
 > | **Acties** |  |
+> | [Micro soft. AzureStack](resource-provider-operations.md#microsoftazurestack)/edgeSubscriptions/Read | De eigenschappen van een Azure Stack Edge-abonnement ophalen |
 > | [Micro soft. AzureStack](resource-provider-operations.md#microsoftazurestack)/Registrations/Products/*/Action |  |
 > | [Micro soft. AzureStack](resource-provider-operations.md#microsoftazurestack)/Registrations/Products/Read | Hiermee worden de eigenschappen van een Azure Stack Marketplace-product opgehaald |
 > | [Micro soft. AzureStack](resource-provider-operations.md#microsoftazurestack)/Registrations/Read | Hiermee worden de eigenschappen van een Azure Stack registratie opgehaald |
@@ -5217,6 +5220,7 @@ Hiermee kunt u Azure Stack registraties beheren.
   "permissions": [
     {
       "actions": [
+        "Microsoft.AzureStack/edgeSubscriptions/read",
         "Microsoft.AzureStack/registrations/products/*/action",
         "Microsoft.AzureStack/registrations/products/read",
         "Microsoft.AzureStack/registrations/read"

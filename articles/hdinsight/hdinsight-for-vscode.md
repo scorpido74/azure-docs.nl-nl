@@ -5,15 +5,15 @@ author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 04/07/2020
 ms.custom: tracking-python
-ms.openlocfilehash: a20cbf14ea2aa2475f25236615b85d6697ce252b
-ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
+ms.openlocfilehash: d00e4ad8b0a9f1f50c30144867babcd8c782734d
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/11/2020
-ms.locfileid: "84704859"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86087126"
 ---
 # <a name="use-spark--hive-tools-for-visual-studio-code"></a>Gebruik de Spark-& Hive-Hulpprogram Ma's voor Visual Studio code
 
@@ -71,7 +71,7 @@ Voor een nationale Cloud gebruiker voert u de volgende stappen uit om eerst de A
 
 ## <a name="connect-to-an-azure-account"></a>Verbinding maken met een Azure-account
 
-Voordat u scripts kunt verzenden naar uw clusters vanuit Visual Studio code, moet u verbinding maken met uw Azure-account of een cluster koppelen. Gebruik de Apache Ambari-gebruikers naam en wachtwoord referenties of een account dat lid is van het domein. Volg deze stappen om verbinding te maken met Azure:
+Voordat u scripts kunt verzenden naar uw clusters vanuit Visual Studio code, kan de gebruiker zich aanmelden bij het Azure-abonnement of [een HDInsight-cluster koppelen](#link-a-cluster). Gebruik het Ambari gebruikers naam/wacht woord of de referenties die aan het domein zijn gekoppeld voor het ESP-cluster om verbinding te maken met uw HDInsight-cluster. Volg deze stappen om verbinding te maken met Azure:
 
 1. Navigeer in de menu balk naar het **weer geven**van het  >  **opdracht palet...** en voer **Azure: aanmelden in**:
 
@@ -291,6 +291,21 @@ Het hulp programma biedt ook ondersteuning voor de **Spark SQL** -query:
    ![Python-taak resultaat uitvoer verzenden](./media/hdinsight-for-vscode/submit-pythonjob-result.png)
 
 Nadat u een python-taak hebt verzonden, worden de inzendings logboeken weer gegeven in het **uitvoer** venster van Visual Studio code. De url's van de Spark-gebruikers interface en de URL van de garen-interface worden ook weer gegeven. U kunt de URL in een webbrowser openen om de taak status bij te houden.
+
+## <a name="integrate-with-hdinsight-identity-broker-hib"></a>Integreren met HDInsight Identity Broker (HIB)
+
+### <a name="connect-to-your-hdinsight-esp-cluster-with-id-broker-hib"></a>Verbinding maken met uw HDInsight ESP-cluster met ID Broker (HIB)
+
+U kunt de gebruikelijke stappen volgen om u aan te melden bij het Azure-abonnement om verbinding te maken met uw HDInsight ESP-cluster met ID Broker (HIB). Nadat u zich hebt aangemeld, ziet u de cluster lijst in azure Verkenner. Zie [verbinding maken met uw HDInsight-cluster](#connect-to-an-azure-account)voor meer instructies.
+
+### <a name="run-a-hivepyspark-job-on-an-hdinsight-esp-cluster-with-id-broker-hib"></a>Een Hive/PySpark-taak uitvoeren op een HDInsight ESP-cluster met ID Broker (HIB)
+
+Voor het uitvoeren van een Hive-taak kunt u de normale stappen volgen voor het verzenden van een taak naar het HDInsight ESP-cluster met ID Broker (HIB). Raadpleeg [interactieve Hive-query's en Hive batch scripts indienen](#submit-interactive-hive-queries-and-hive-batch-scripts) voor meer instructies.
+
+Voor het uitvoeren van een interactieve PySpark-taak kunt u de normale stappen volgen voor het verzenden van een taak naar het HDInsight ESP-cluster met ID Broker (HIB). Raadpleeg [interactieve PySpark-Query's verzenden](#submit-interactive-pyspark-queries) voor meer instructies.
+
+Voor het uitvoeren van een PySpark batch-taak kunt u de normale stappen volgen om de taak te verzenden naar het HDInsight ESP-cluster met ID Broker (HIB). Raadpleeg de [batch verwerking PySpark verzenden](#submit-pyspark-batch-job) voor meer instructies.
+
 
 ## <a name="apache-livy-configuration"></a>Apache livy-configuratie
 

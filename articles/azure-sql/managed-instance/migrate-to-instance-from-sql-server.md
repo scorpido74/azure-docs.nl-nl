@@ -11,17 +11,17 @@ author: bonova
 ms.author: bonova
 ms.reviewer: douglas, carlrab
 ms.date: 07/11/2019
-ms.openlocfilehash: 47f766e8e5c1ea43d0c9bde8138c0ab17533f539
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 3ef109dc5fad73a19eabefb8eb872c02d62698ba
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84708652"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86087568"
 ---
 # <a name="sql-server-instance-migration-to-azure-sql-managed-instance"></a>Migratie van SQL Server-exemplaren naar Azure SQL Managed instance
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
 
-In dit artikel vindt u informatie over de methoden voor het migreren van een exemplaar van SQL Server 2005 of hoger naar [Azure SQL Managed instance](sql-managed-instance-paas-overview.md). Zie [migreren naar een enkele of gegroepeerde Data Base](../database/migrate-to-database-from-sql-server.md)voor informatie over het migreren naar een enkele data base of elastische pool. Raadpleeg de [migratie handleiding voor Azure data base](https://datamigration.microsoft.com/)voor migratie-informatie over het migreren van andere platforms.
+In dit artikel vindt u informatie over de methoden voor het migreren van een exemplaar van SQL Server 2005 of hoger naar [Azure SQL Managed instance](sql-managed-instance-paas-overview.md). Zie [migreren naar SQL database](../database/migrate-to-database-from-sql-server.md)voor meer informatie over het migreren naar een enkele data base of elastische pool. Raadpleeg de [migratie handleiding voor Azure data base](https://datamigration.microsoft.com/)voor migratie-informatie over het migreren van andere platforms.
 
 > [!NOTE]
 > Als u snel een Azure SQL Managed instance wilt starten en proberen, kunt u in plaats van deze pagina naar de [Snelstartgids-gids](quickstart-content-reference-guide.md) gaan.

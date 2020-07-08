@@ -10,12 +10,12 @@ ms.author: jordane
 author: jpe316
 ms.reviewer: larryfr
 ms.date: 06/12/2020
-ms.openlocfilehash: dc2acefd69695e34fcf60877591faf4f838ab695
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 44c197b7d9935a7b0631c6cbcd96fde783c2fffe
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84753167"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86087262"
 ---
 # <a name="deploy-a-model-to-azure-container-instances"></a>Een model implementeren naar Azure Container Instances
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -48,6 +48,10 @@ Zie [quota's en regionale Beschik baarheid voor Azure container instances](https
 ## <a name="deploy-to-aci"></a>Implementeren naar ACI
 
 Als u een model wilt implementeren in Azure Container Instances, maakt u een __implementatie configuratie__ waarin de benodigde reken resources worden beschreven. Bijvoorbeeld het aantal kernen en het geheugen. U hebt ook een Afleidings __configuratie__nodig, waarmee de omgeving wordt beschreven die nodig is voor het hosten van het model en de webservice. Zie [hoe en wanneer u modellen wilt implementeren](how-to-deploy-and-where.md)voor meer informatie over het maken van de configuratie voor demijnen.
+
+> [!NOTE]
+> * ACI is alleen geschikt voor kleine modellen <1 GB groot. 
+> * We raden u aan om één knoop punt AKS te gebruiken voor dev-test van grotere modellen.
 
 ### <a name="using-the-sdk"></a>De SDK gebruiken
 

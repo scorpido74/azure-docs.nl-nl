@@ -12,12 +12,12 @@ author: MashaMSFT
 ms.author: mathoma
 ms.reviewer: carlrab
 ms.date: 04/20/2020
-ms.openlocfilehash: 2163a6e47767f6ce990526c7ececb7b4b554bf4e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 00f456d87bd5791b7d49644cb801dca20431b0b5
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84708494"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86086395"
 ---
 # <a name="transactional-replication-with-azure-sql-managed-instance"></a>Transactionele replicatie met Azure SQL Managed instance
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -29,8 +29,8 @@ Transactionele replicatie is een functie van Azure SQL Managed instance en SQL S
 U kunt transactionele replicatie gebruiken om wijzigingen die zijn aangebracht in een Azure SQL Managed instance, te pushen naar:
 
 - Een SQL Server-Data Base, on-premises of op een Azure VM
-- Een enkele of gegroepeerde Data base in Azure SQL Database
-- Een enkele of gegroepeerde Data base in Azure SQL Managed instance
+- Een data base in Azure SQL Database
+- Een exemplaar database in Azure SQL Managed instance
 
   > [!NOTE]
   > Als u alle functies van Azure SQL Managed instance wilt gebruiken, moet u de nieuwste versies van [SQL Server Management Studio (SSMS)](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms) en [SQL Server Data tools (SSDT)](https://docs.microsoft.com/sql/ssdt/download-sql-server-data-tools-ssdt)gebruiken.

@@ -12,11 +12,12 @@ ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: abnarain
 robots: noindex
-ms.openlocfilehash: a2d4c9ad5a64fecaad023907351101942c4edac2
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: a83020af17758b570030a4c6129ffdd7dec58094
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84188309"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86087075"
 ---
 # <a name="data-management-gateway"></a>Gegevensbeheergateway
 > [!NOTE]
@@ -246,7 +247,9 @@ De toepassing voor het **instellen van referenties** gebruikt de binnenkomende p
 
 Als u een firewall van derden gebruikt, kunt u de poort 8050 hand matig openen. Als u tijdens de installatie van de gateway een firewall probleem ondervindt, kunt u proberen de volgende opdracht te gebruiken om de gateway te installeren zonder de firewall te configureren.
 
-    msiexec /q /i DataManagementGateway.msi NOFIREWALL=1
+```cmd
+msiexec /q /i DataManagementGateway.msi NOFIREWALL=1
+```
 
 Als u ervoor kiest om poort 8050 op de gateway computer niet te openen, gebruikt u andere mechanismen dan het gebruik van de **instelling Referenties instellen** om referenties voor het gegevens archief te configureren. U kunt bijvoorbeeld de Power shell [-cmdlet New-AzDataFactoryEncryptValue](https://docs.microsoft.com/powershell/module/az.datafactory/new-azdatafactoryencryptvalue) gebruiken. Zie de sectie referenties en beveiliging instellen voor informatie over hoe gegevens archiefbestanden kunnen worden ingesteld.
 

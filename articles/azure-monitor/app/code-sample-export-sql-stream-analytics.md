@@ -3,12 +3,12 @@ title: Exporteren naar SQL vanuit Azure-toepassing Insights | Microsoft Docs
 description: Application Insights gegevens doorlopend naar SQL exporteren met behulp van Stream Analytics.
 ms.topic: conceptual
 ms.date: 09/11/2017
-ms.openlocfilehash: 811d86c0a9b8e55f548046402885e2ec5967c477
-ms.sourcegitcommit: bf99428d2562a70f42b5a04021dde6ef26c3ec3a
+ms.openlocfilehash: 3c8586e8a6950e827d1078ca7d9cc3792fa58ae0
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/23/2020
-ms.locfileid: "85254681"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86087220"
 ---
 # <a name="walkthrough-export-to-sql-from-application-insights-using-stream-analytics"></a>Walkthrough: exporteren naar SQL vanuit Application Insights met behulp van Stream Analytics
 In dit artikel wordt beschreven hoe u uw telemetriegegevens van [Azure-toepassing inzichten][start] kunt verplaatsen naar Azure SQL database met behulp van [continue export][export] en [Azure stream Analytics](https://azure.microsoft.com/services/stream-analytics/). 
@@ -77,14 +77,14 @@ Nadat u het abonnement in [Azure Portal][portal]hebt gemaakt, maakt u de data ba
 
 ![Nieuwe, gegevens, SQL](./media/code-sample-export-sql-stream-analytics/090-sql.png)
 
-Zorg ervoor dat de database server toegang verleent tot Azure-Services:
+Zorg ervoor dat de server toegang verleent tot Azure-Services:
 
 ![Bladeren, servers, uw server, instellingen, firewall, toegang tot Azure toestaan](./media/code-sample-export-sql-stream-analytics/100-sqlaccess.png)
 
-## <a name="create-a-table-in-azure-sql-db"></a>Een tabel maken in Azure SQL DB
+## <a name="create-a-table-in-azure-sql-database"></a>Een tabel maken in Azure SQL Database
 Maak verbinding met de data base die in de vorige sectie is gemaakt met uw favoriete beheer programma. In deze walkthrough wordt [SQL Server Management tools](https://msdn.microsoft.com/ms174173.aspx) (SSMS) gebruikt.
 
-![](./media/code-sample-export-sql-stream-analytics/31-sql-table.png)
+![Verbinding maken met Azure SQL Database](./media/code-sample-export-sql-stream-analytics/31-sql-table.png)
 
 Maak een nieuwe query en voer de volgende T-SQL-opdracht uit:
 
@@ -126,7 +126,7 @@ CREATE CLUSTERED INDEX [pvTblIdx] ON [dbo].[PageViewsTable]
 
 ```
 
-![](./media/code-sample-export-sql-stream-analytics/34-create-table.png)
+![PageViewsTable maken](./media/code-sample-export-sql-stream-analytics/34-create-table.png)
 
 In dit voor beeld gebruiken we gegevens uit pagina weergaven. Als u de overige beschik bare gegevens wilt bekijken, inspecteert u de JSON-uitvoer en bekijkt u het [gegevens model exporteren](../../azure-monitor/app/export-data-model.md).
 
@@ -135,7 +135,7 @@ Selecteer in de [Azure Portal](https://portal.azure.com/)de Azure stream Analyti
 
 ![Instellingen voor stream Analytics](./media/code-sample-export-sql-stream-analytics/SA001.png)
 
-![](./media/code-sample-export-sql-stream-analytics/SA002.png)
+![Nieuwe stream Analytics-taak](./media/code-sample-export-sql-stream-analytics/SA002.png)
 
 Wanneer de nieuwe taak is gemaakt, selecteert **u naar resource**.
 
@@ -157,9 +157,11 @@ Nu hebt u de primaire toegangs sleutel van uw opslag account nodig die u eerder 
 
 Het voor voegsel van het pad geeft aan hoe Stream Analytics de invoer bestanden in de opslag locatie vindt. U moet deze instellen op overeenkomen met de manier waarop continue export de gegevens opslaat. Stel deze als volgt in:
 
-    webapplication27_12345678123412341234123456789abcdef0/PageViews/{date}/{time}
+```sql
+webapplication27_12345678123412341234123456789abcdef0/PageViews/{date}/{time}
+```
 
-In dit voorbeeld:
+In dit voorbeeld geldt het volgende:
 
 * `webapplication27`is de naam van de Application Insights resource, **in kleine letters**. 
 * `1234...`is de instrumentatie sleutel van de Application Insights resource **waarvoor streepjes zijn verwijderd**. 
@@ -235,9 +237,10 @@ U kunt kiezen of u wilt beginnen met het verwerken van de gegevens vanaf nu, of 
 
 Na een paar minuten gaat u terug naar SQL Server Management Tools en bekijkt u de gegevens stromen in. Gebruik bijvoorbeeld een query als volgt:
 
-    SELECT TOP 100 *
-    FROM [dbo].[PageViewsTable]
-
+```sql
+SELECT TOP 100 *
+FROM [dbo].[PageViewsTable]
+```
 
 ## <a name="related-articles"></a>Verwante artikelen:
 * [Exporteren naar Power BI met behulp van Stream Analytics](../../azure-monitor/app/export-power-bi.md )

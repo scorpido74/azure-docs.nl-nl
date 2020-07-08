@@ -5,27 +5,27 @@ author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
-ms.topic: conceptual
+ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 12/23/2019
-ms.openlocfilehash: e4e15d1c6554fc567f668b2033bff5b5664db918
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 82e3374491aa119d9985ea7ef31e180c920511d3
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75972801"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86087738"
 ---
 # <a name="create-apache-hbase-clusters-on-hdinsight-in-azure-virtual-network"></a>Apache HBase-clusters maken op HDInsight in azure Virtual Network
 
 Meer informatie over het maken van Azure HDInsight Apache HBase-clusters in een [Azure-Virtual Network](https://azure.microsoft.com/services/virtual-network/).
 
-Met de integratie van virtuele netwerken kunnen Apache HBase-clusters worden geïmplementeerd in hetzelfde virtuele netwerk als uw toepassingen, zodat toepassingen rechtstreeks kunnen communiceren met HBase. De voordelen zijn:
+Met de integratie van virtuele netwerken kunnen Apache HBase-clusters worden geïmplementeerd in hetzelfde virtuele netwerk als uw toepassingen, zodat toepassingen rechtstreeks kunnen communiceren met HBase. Enkele voordelen:
 
 * Directe connectiviteit van de webtoepassing naar de knoop punten van het HBase-cluster, waarmee communicatie via HBase Java Remote Procedure Call (RPC) Api's mogelijk wordt.
 * De prestaties zijn verbeterd doordat het verkeer niet via meerdere gateways en load balancers kan worden uitgevoerd.
 * De mogelijkheid om gevoelige informatie op een veiligere manier te verwerken zonder een openbaar eind punt zichtbaar te maken.
 
-Als u nog geen abonnement op Azure hebt, maak dan een [gratis account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) aan voordat u begint.
+Als u nog geen abonnement op Azure hebt, maakt u een [gratis account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) aan voordat u begint.
 
 ## <a name="create-apache-hbase-cluster-into-virtual-network"></a>Een Apache HBase-cluster maken in een virtueel netwerk
 
@@ -51,7 +51,7 @@ In deze sectie maakt u een op Linux gebaseerd Apache HBase-cluster met het afhan
 
 1. Selecteer in het dialoog venster **aangepaste implementatie** de optie **sjabloon bewerken**.
 
-1. Wijzig op regel 165 de waarde `Standard_A3` in `Standard_A4_V2`. Selecteer vervolgens **Opslaan**.
+1. Wijzig op regel 165 de waarde `Standard_A3` in `Standard_A4_V2` . Selecteer vervolgens **Opslaan**.
 
 1. Voltooi de resterende sjabloon met de volgende informatie:
 
@@ -82,7 +82,7 @@ Maak een virtuele IaaS-machine (Infrastructure as a Service) in hetzelfde virtue
 * **Subnet**: subnet1
 
 > [!IMPORTANT]  
-> Vervang `CLUSTERNAME` door de naam die u hebt gebruikt bij het maken van het HDInsight-cluster in de vorige stappen.
+> Vervang door `CLUSTERNAME` de naam die u hebt gebruikt bij het maken van het HDInsight-cluster in de vorige stappen.
 
 Als u deze waarden gebruikt, wordt de virtuele machine in hetzelfde virtuele netwerk en subnet geplaatst als het HDInsight-cluster. Met deze configuratie kunnen ze direct met elkaar communiceren. Er is een manier om een HDInsight-cluster te maken met een leeg Edge-knoop punt. Het Edge-knoop punt kan worden gebruikt om het cluster te beheren.  Zie [lege Edge-knoop punten in HDInsight gebruiken](../hdinsight-apps-use-edge-node.md)voor meer informatie.
 
@@ -130,14 +130,16 @@ Het deel van de domein naam die begint met de cluster naam is het DNS-achtervoeg
 
 ### <a name="verify-communication-inside-virtual-network"></a>De communicatie in het virtuele netwerk controleren
 
-Als u wilt controleren of de virtuele machine kan communiceren met het HBase-cluster, `ping headnode0.<dns suffix>` gebruikt u de opdracht van de virtuele machine. Bijvoorbeeld `ping hn0-hbaseg.hjfrnszlumfuhfk4pi1guh410c.bx.internal.cloudapp.net`.
+Als u wilt controleren of de virtuele machine kan communiceren met het HBase-cluster, gebruikt u de opdracht `ping headnode0.<dns suffix>` van de virtuele machine. Bijvoorbeeld `ping hn0-hbaseg.hjfrnszlumfuhfk4pi1guh410c.bx.internal.cloudapp.net`.
 
-Als u deze informatie wilt gebruiken in een Java-toepassing, kunt u de stappen in [Apache Maven gebruiken om Java-toepassingen te bouwen die Apache HBase gebruiken met HDInsight (Hadoop)](./apache-hbase-build-java-maven-linux.md) om een toepassing te maken. Als u wilt dat de toepassing verbinding maakt met een externe HBase-server, wijzigt u in dit voor beeld het bestand **hbase-site. XML** om de FQDN voor Zookeeper te gebruiken. Bijvoorbeeld:
+Als u deze informatie wilt gebruiken in een Java-toepassing, kunt u de stappen in [Apache Maven gebruiken om Java-toepassingen te bouwen die Apache HBase gebruiken met HDInsight (Hadoop)](./apache-hbase-build-java-maven-linux.md) om een toepassing te maken. Als u wilt dat de toepassing verbinding maakt met een externe HBase-server, wijzigt u in dit voor beeld het **hbase-site.xml** -bestand om de FQDN voor Zookeeper te gebruiken. Bijvoorbeeld:
 
-    <property>
-        <name>hbase.zookeeper.quorum</name>
-        <value>zookeeper0.<dns suffix>,zookeeper1.<dns suffix>,zookeeper2.<dns suffix></value>
-    </property>
+```xml
+<property>
+    <name>hbase.zookeeper.quorum</name>
+    <value>zookeeper0.<dns suffix>,zookeeper1.<dns suffix>,zookeeper2.<dns suffix></value>
+</property>
+```
 
 > [!NOTE]  
 > Zie [name resolution (DNS) (Engelstalig)](../../virtual-network/virtual-networks-name-resolution-for-vms-and-role-instances.md)voor meer informatie over naam omzetting in azure Virtual Networks, inclusief het gebruik van uw eigen DNS-server.

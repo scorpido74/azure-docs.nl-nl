@@ -12,11 +12,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 11/13/2018
 ms.author: genli
-ms.openlocfilehash: 7bc2c0f472a03c3f069a889c360bea9017a780f2
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: f1ffd26a243d15f7ee6e06d6c52406a16327b4a0
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77918203"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86086769"
 ---
 #  <a name="cannot-rdp-to-a-vm-because-the-vm-boots-into-safe-mode"></a>Kan geen RDP-verbinding met een virtuele machine tot stand brengen omdat de VM wordt opgestart in de veilige modus
 
@@ -46,7 +47,9 @@ U kunt dit probleem oplossen door seriële controle te gebruiken om de virtuele 
    ). Als de seriële console niet op uw virtuele machine is ingeschakeld, raadpleegt u [de virtuele machine offline herstellen](#repair-the-vm-offline).
 2. Controleer de opstart configuratie gegevens:
 
-        bcdedit /enum
+    ```console
+    bcdedit /enum
+    ```
 
     Als de virtuele machine is geconfigureerd om te worden opgestart in de veilige modus, ziet u een extra vlag onder het gedeelte **Windows boot loader** met de naam **safeboot**. Als u de vlag **safeboot** niet ziet, is de virtuele machine niet in de veilige modus. Dit artikel is niet van toepassing op uw scenario.
 
@@ -60,11 +63,15 @@ U kunt dit probleem oplossen door seriële controle te gebruiken om de virtuele 
 
 3. Verwijder de vlag **safemoade** , zodat de virtuele machine in de normale modus wordt opgestart:
 
-        bcdedit /deletevalue {current} safeboot
+    ```console
+    bcdedit /deletevalue {current} safeboot
+    ```
 
 4. Controleer de opstart configuratie gegevens om er zeker van te zijn dat de vlag **safeboot** wordt verwijderd:
 
-        bcdedit /enum
+    ```console
+    bcdedit /enum
+    ```
 
 5. Start de virtuele machine opnieuw op en controleer of het probleem is opgelost.
 
@@ -114,7 +121,10 @@ Voer het volgende script uit om dump logboek en seriële console in te scha kele
 1. Open een opdracht prompt sessie met verhoogde bevoegdheden (**als administrator uitvoeren**).
 2. Controleer de opstart configuratie gegevens. In de volgende opdrachten wordt ervan uitgegaan dat de stationsletter die is toegewezen aan de gekoppelde besturingssysteem schijf F is. Vervang deze stationsletter door de juiste waarde voor de virtuele machine.
 
-        bcdedit /store F:\boot\bcd /enum
+    ```console
+    bcdedit /store F:\boot\bcd /enum
+    ```
+
     Noteer de id-naam van de partitie die de map **\Windows** heeft. De id-naam is standaard ingesteld op standaard.
 
     Als de virtuele machine is geconfigureerd om te worden opgestart in de veilige modus, ziet u een extra vlag onder het gedeelte **Windows boot loader** met de naam **safeboot**. Als u de vlag **safeboot** niet ziet, is dit artikel niet van toepassing op uw scenario.
@@ -123,8 +133,14 @@ Voer het volgende script uit om dump logboek en seriële console in te scha kele
 
 3. Verwijder de vlag **safeboot** , zodat de virtuele machine in de normale modus wordt opgestart:
 
-        bcdedit /store F:\boot\bcd /deletevalue {Default} safeboot
+    ```console
+    bcdedit /store F:\boot\bcd /deletevalue {Default} safeboot
+    ```
+
 4. Controleer de opstart configuratie gegevens om er zeker van te zijn dat de vlag **safeboot** wordt verwijderd:
 
-        bcdedit /store F:\boot\bcd /enum
+    ```console
+    bcdedit /store F:\boot\bcd /enum
+    ```
+
 5. [Ontkoppel de besturingssysteem schijf en maak de virtuele machine opnieuw](../windows/troubleshoot-recovery-disks-portal.md). Controleer vervolgens of het probleem is opgelost.

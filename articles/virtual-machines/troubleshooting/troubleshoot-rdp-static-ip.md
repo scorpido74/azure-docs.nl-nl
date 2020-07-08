@@ -12,11 +12,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 11/08/2018
 ms.author: genli
-ms.openlocfilehash: 92ad33fbc759605ae901c3bcf09283c8e0b1c4b5
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 49f3f44c7de8c700d0093c5eb6f166a1dffb34a4
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77918186"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86087245"
 ---
 #  <a name="cannot-remote-desktop-to-azure-virtual-machines-because-of-static-ip"></a>Kan geen extern bureau blad naar Azure Virtual Machines vanwege een vast IP-adres
 
@@ -55,18 +56,27 @@ U kunt dit probleem oplossen door met behulp van seriële controle DHCP in te sc
 ). Als de seriële console niet op uw virtuele machine is ingeschakeld, raadpleegt u de [netwerk interface opnieuw instellen](reset-network-interface.md).
 2. Controleer of DHCP is uitgeschakeld op de netwerk interface:
 
-        netsh interface ip show config
+    ```console
+    netsh interface ip show config
+    ```
+
 3. Als de DHCP is uitgeschakeld, keert u de configuratie van de netwerk interface terug voor gebruik van DHCP:
 
-        netsh interface ip set address name="<NIC Name>" source=dhc
+    ```console
+    netsh interface ip set address name="<NIC Name>" source=dhc
+    ```
 
     Als de interwerk-interface bijvoorbeeld ' Ethernet 2 ' is, voert u de volgende opdracht uit:
 
-        netsh interface ip set address name="Ethernet 2" source=dhc
+    ```console
+    netsh interface ip set address name="Ethernet 2" source=dhc
+    ```
 
 4. Voer een query uit op de IP-configuratie om ervoor te zorgen dat de netwerk interface nu correct is ingesteld. Het nieuwe IP-adres moet overeenkomen met de naam die wordt opgegeven door Azure.
 
-        netsh interface ip show config
+    ```console
+    netsh interface ip show config
+    ```
 
     U hoeft de virtuele machine op dit moment niet opnieuw op te starten. De virtuele machine is terug bereikbaar.
 

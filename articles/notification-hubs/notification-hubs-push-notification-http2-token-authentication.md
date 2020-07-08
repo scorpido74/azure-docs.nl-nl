@@ -15,12 +15,12 @@ ms.date: 11/14/2019
 ms.author: sethm
 ms.reviewer: jowargo
 ms.lastreviewed: 02/13/2019
-ms.openlocfilehash: 448b5c38371024c2eae900f4f87b343ee0a3b36a
-ms.sourcegitcommit: 1692e86772217fcd36d34914e4fb4868d145687b
+ms.openlocfilehash: 0a8781a5afb8b6df0444ce177be452f84c73413e
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84172352"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86087214"
 ---
 # <a name="token-based-http2-authentication-for-apns"></a>Verificatie op basis van tokens (HTTP/2) voor APNS
 
@@ -53,15 +53,15 @@ Als u verificatie op basis van tokens wilt inschakelen, hebt u de volgende eigen
 
 U kunt de sleutel-ID verkrijgen op de pagina **sleutels** onder **certificaten, id's & profielen**in uw Apple Developer-account:
 
-![](./media/notification-hubs-push-notification-http2-token-authentification/keys.png)
+![Certificaten](./media/notification-hubs-push-notification-http2-token-authentification/keys.png)
 
-![](./media/notification-hubs-push-notification-http2-token-authentification/obtaining-auth-information-from-apple.png)
+![Id's](./media/notification-hubs-push-notification-http2-token-authentification/obtaining-auth-information-from-apple.png)
 
 ### <a name="application-identifier-and-application-name"></a>Toepassings-id en toepassings naam
 
 De toepassings naam en-id zijn ook beschikbaar op de pagina **certificaten, id's & profielen** in het ontwikkelaars account:
 
-![](./media/notification-hubs-push-notification-http2-token-authentification/app-name.png)
+![Certificaten en Id's](./media/notification-hubs-push-notification-http2-token-authentification/app-name.png)
 
 ### <a name="configure-via-the-net-sdk-or-the-azure-portal"></a>Configureren via de .NET SDK of de Azure Portal
 
@@ -77,9 +77,9 @@ Op tokens gebaseerde referenties bestaan uit de volgende velden:
 
 * **Sleutel-id**: de id van de persoonlijke sleutel die is gegenereerd in de Apple Developer-portal. bijvoorbeeld `2USFGKSKLT` .
 * **Team-ID**: ook wel het voor voegsel of het voor voegsel van de app genoemd. Dit is de id voor de organisatie in de Apple Developer-portal. bijvoorbeeld `S4V3D7CHJR` .
-* **Bundel-id**: ook wel de app-id genoemd. Dit is de bundel-id voor de toepassing. bijvoorbeeld `com.microsoft.nhubsample2019` . Houd er rekening mee dat u één sleutel voor veel apps kunt gebruiken. Deze waarde wordt toegewezen aan de `apns-topic` http-header bij het verzenden van een melding en wordt gebruikt om de specifieke toepassing te richten.
+* **Bundel-id**: ook wel de app-id genoemd. Dit is de bundel-id voor de toepassing. bijvoorbeeld `com.example.myapp` . Houd er rekening mee dat u één sleutel voor veel apps kunt gebruiken. Deze waarde wordt toegewezen aan de `apns-topic` http-header bij het verzenden van een melding en wordt gebruikt om de specifieke toepassing te richten. Houd er rekening mee dat u de waarde van expliciet niet kunt instellen `apns-topic` .
 * **Token**: ook wel de ' sleutel ' of ' persoonlijke sleutel ' genoemd. Dit wordt opgehaald uit het. P8-bestand dat is gegenereerd op de Apple Developer-portal. Voor de sleutel moet APNS zijn ingeschakeld (deze is geselecteerd in de Apple-ontwikkelaars portal bij het genereren van de sleutel). Voor de waarde moet de PEM-kop/-voet tekst worden verwijderd wanneer u deze aan de NH-Portal/API levert.
-* **Eind punt**: dit is een wissel knop in de blade notification hubs Portal en een teken reeks veld in de API. Geldige waarden zijn `https://api.push.apple.com` of `https://api.sandbox.push.apple.com` . Notification Hubs gebruikt deze waarde voor de productie-of sandbox-omgeving voor het verzenden van meldingen. Dit moet overeenkomen met het `aps-environment` recht in de app, anders worden de tokens van de APNS-apparaten gegenereerd die niet overeenkomen met de omgeving en kunnen de meldingen niet worden verzonden.
+* **Eind punt**: dit is een wissel knop in de blade notification hubs Portal en een teken reeks veld in de API. Geldige waarden zijn `https://api.development.push.apple.com:443/3/device` of `https://api.sandbox.push.apple.com:443/3/device` . Notification Hubs gebruikt deze waarde voor de productie-of sandbox-omgeving voor het verzenden van meldingen. Dit moet overeenkomen met het `aps-environment` recht in de app, anders worden de tokens van de APNS-apparaten gegenereerd die niet overeenkomen met de omgeving en kunnen de meldingen niet worden verzonden.
 
 Hier volgt een code voorbeeld dat het juiste gebruik illustreert:
 

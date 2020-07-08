@@ -11,11 +11,12 @@ ms.topic: article
 ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: a484a6c9a55eac4d166a711a9eae7990c4305cb4
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: aed35ec583af83e6ee6cb81c4e59e694cef493e1
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84194410"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86086650"
 ---
 # <a name="move-data-from-a-sql-server-database-to-sql-database-with-azure-data-factory"></a>Gegevens verplaatsen van een SQL Server Data Base naar SQL Database met Azure Data Factory
 
@@ -139,7 +140,9 @@ De kolom namen zijn hier niet opgenomen. U kunt de kolom namen subselecteren doo
 
 Kopieer de JSON-definitie van de tabel naar een bestand met de naam *onpremtabledef.jsin* het bestand en sla het op een bekende locatie op (dit wordt waarschijnlijk *C:\temp\onpremtabledef.jsop*). Maak de tabel in ADF met de volgende Azure PowerShell-cmdlet:
 
-    New-AzureDataFactoryTable -ResourceGroupName ADFdsprg -DataFactoryName ADFdsp –File C:\temp\onpremtabledef.json
+```azurepowershell
+New-AzureDataFactoryTable -ResourceGroupName ADFdsprg -DataFactoryName ADFdsp –File C:\temp\onpremtabledef.json
+```
 
 
 ### <a name="blob-table"></a><a name="adf-table-blob-store"></a>BLOB-tabel
@@ -172,7 +175,9 @@ De definitie voor de tabel voor de blob van de uitvoer is als volgt (Hiermee wor
 
 Kopieer de JSON-definitie van de tabel naar een bestand met de naam *bloboutputtabledef.jsin* het bestand en sla het op een bekende locatie op (dit wordt waarschijnlijk *C:\temp\bloboutputtabledef.jsop*). Maak de tabel in ADF met de volgende Azure PowerShell-cmdlet:
 
-    New-AzureDataFactoryTable -ResourceGroupName adfdsprg -DataFactoryName adfdsp -File C:\temp\bloboutputtabledef.json
+```azurepowershell
+New-AzureDataFactoryTable -ResourceGroupName adfdsprg -DataFactoryName adfdsp -File C:\temp\bloboutputtabledef.json
+```
 
 ### <a name="sql-azure-table"></a><a name="adf-table-azure-sql"></a>SQL Azure tabel
 De definitie voor de tabel voor de SQL Azure uitvoer bevindt zich in het volgende (dit schema wijst de gegevens uit de BLOB toe):
@@ -204,7 +209,9 @@ De definitie voor de tabel voor de SQL Azure uitvoer bevindt zich in het volgend
 
 Kopieer de JSON-definitie van de tabel naar een bestand met de naam *AzureSqlTable.jsin* het bestand en sla het op een bekende locatie op (dit wordt waarschijnlijk *C:\temp\AzureSqlTable.jsop*). Maak de tabel in ADF met de volgende Azure PowerShell-cmdlet:
 
-    New-AzureDataFactoryTable -ResourceGroupName adfdsprg -DataFactoryName adfdsp -File C:\temp\AzureSqlTable.json
+```azurepowershell
+New-AzureDataFactoryTable -ResourceGroupName adfdsprg -DataFactoryName adfdsp -File C:\temp\AzureSqlTable.json
+```
 
 
 ## <a name="define-and-create-the-pipeline"></a><a name="adf-pipeline"></a>De pijp lijn definiëren en maken
@@ -289,13 +296,17 @@ Met behulp van de tabel definities die eerder zijn opgegeven, wordt de pijplijn 
 
 Kopieer deze JSON-definitie van de pijp lijn naar een bestand met de naam *pipelinedef.jsin* het bestand en sla het op een bekende locatie op (dit wordt waarschijnlijk *C:\temp\pipelinedef.jsop*). Maak de pijp lijn in ADF met de volgende Azure PowerShell-cmdlet:
 
-    New-AzureDataFactoryPipeline  -ResourceGroupName adfdsprg -DataFactoryName adfdsp -File C:\temp\pipelinedef.json
+```azurepowershell
+New-AzureDataFactoryPipeline  -ResourceGroupName adfdsprg -DataFactoryName adfdsp -File C:\temp\pipelinedef.json
+```
 
 
 ## <a name="start-the-pipeline"></a><a name="adf-pipeline-start"></a>De pijp lijn starten
 De pijp lijn kan nu worden uitgevoerd met de volgende opdracht:
 
-    Set-AzureDataFactoryPipelineActivePeriod -ResourceGroupName ADFdsprg -DataFactoryName ADFdsp -StartDateTime startdateZ –EndDateTime enddateZ –Name AMLDSProcessPipeline
+```azurepowershell
+Set-AzureDataFactoryPipelineActivePeriod -ResourceGroupName ADFdsprg -DataFactoryName ADFdsp -StartDateTime startdateZ –EndDateTime enddateZ –Name AMLDSProcessPipeline
+```
 
 De waarden van de para meter *start date* en *EndDate* moeten worden vervangen door de werkelijke datums waartussen u de pijp lijn wilt uitvoeren.
 

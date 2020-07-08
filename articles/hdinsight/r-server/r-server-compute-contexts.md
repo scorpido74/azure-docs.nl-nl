@@ -5,15 +5,15 @@ author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
-ms.topic: conceptual
+ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 01/02/2020
-ms.openlocfilehash: b67bd5b6310e1f8ce35dc14690757209ef62c9d7
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 4df3c24c6f0853c1ae7447a8e20e8c2944319686
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75660253"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86087602"
 ---
 # <a name="compute-context-options-for-ml-services-on-hdinsight"></a>Opties voor Compute-context voor MILLILITERs Services in HDInsight
 
@@ -34,7 +34,7 @@ In het algemeen wordt een R-script dat wordt uitgevoerd in het cluster met MILLI
 - Toewijzing verminderen
 - Spark
 
-De opties *lokaal* en *localpar* zijn alleen van invloed op de manier waarop **rxExec** -aanroepen worden uitgevoerd. Ze voeren beide andere RX-functie aanroepen op parallelle wijze uit voor alle beschik bare kernen, tenzij anders is aangegeven **numCoresToUse** met behulp van de `rxOptions(numCoresToUse=6)`RevoScaleR numCoresToUse optie. Opties voor parallelle uitvoering bieden optimale prestaties.
+De opties *lokaal* en *localpar* zijn alleen van invloed op de manier waarop **rxExec** -aanroepen worden uitgevoerd. Ze voeren beide andere RX-functie aanroepen op parallelle wijze uit voor alle beschik bare kernen, tenzij anders is aangegeven met behulp van de RevoScaleR **numCoresToUse** optie `rxOptions(numCoresToUse=6)` . Opties voor parallelle uitvoering bieden optimale prestaties.
 
 De volgende tabel bevat een overzicht van de verschillende opties voor de compute-context om in te stellen hoe aanroepen worden uitgevoerd:
 
@@ -73,7 +73,9 @@ Op basis van deze principes bieden de volgende secties enkele algemene vuist reg
 ## <a name="inline-help-on-rxsetcomputecontext"></a>Inline-Help op rxSetComputeContext
 Voor meer informatie en voor beelden van RevoScaleR Compute-contexten, zie de inline-Help in R in de rxSetComputeContext-methode, bijvoorbeeld:
 
-    > ?rxSetComputeContext
+```console
+> ?rxSetComputeContext
+```
 
 U kunt ook het overzicht van [gedistribueerde computers](https://docs.microsoft.com/machine-learning-server/r/how-to-revoscaler-distributed-computing) in [machine learning Server documentatie](https://docs.microsoft.com/machine-learning-server/)raadplegen.
 

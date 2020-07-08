@@ -11,11 +11,12 @@ ms.topic: conceptual
 ms.date: 03/26/2020
 ms.author: trbye
 ms.custom: seodec18
-ms.openlocfilehash: 148b344d469c78936b56b96090c76e379bb63731
-ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
+ms.openlocfilehash: eb9e0f126a25bfb0f2db18074bd7200e1a7c2001
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86027491"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86087143"
 ---
 # <a name="language-and-voice-support-for-the-speech-service"></a>Taal-en spraak ondersteuning voor de spraak service
 
@@ -100,27 +101,42 @@ Zie [regio's](regions.md#standard-and-neural-voices)voor meer informatie over re
 
 |Landinstelling  | Taal            | Geslacht | Spraak naam | Stijl ondersteuning |
 |--|--|--|--|--|
+| `ar-EG` | Arabisch (Egypte)                  | Vrouw | `ar-EG-SalmaNeural`      | Algemeen |
+| `ar-SA` | Arabisch (Saoedi-Arabië)           | Vrouw | `ar-SA-ZariyahNeura`     | Algemeen |
+| `ca-ES` | Catalaans (Spanje)                 | Vrouw | `ca-ES-AlbaNeural`       | Algemeen |
+| `da-DK` | Deens (Denemarken)                | Vrouw | `da-DK-ChristelNeural`   | Algemeen |
 | `de-DE` | Duits (Duitsland)                | Vrouw | `de-DE-KatjaNeural`      | Algemeen |
 | `en-AU` | Engels (Australië)             | Vrouw | `en-AU-NatashaNeural`    | Algemeen |
 | `en-CA` | Engels (Canada)                | Vrouw | `en-CA-ClaraNeural`      | Algemeen |
 | `en-GB` | Engels (UK)                    | Vrouw | `en-GB-LibbyNeural`      | Algemeen |
 |         |                                 | Vrouw | `en-GB-MiaNeural`        | Algemeen |
+| `en-IN` | Engels (India)                 | Vrouw | `en-IN-NeerjaNeural`     | Algemeen |
 | `en-US` | Engels (VS)                    | Vrouw | `en-US-AriaNeural`       | Algemeen, meerdere spraak stijlen beschikbaar |
 |         |                                 | Man   | `en-US-GuyNeural`        | Algemeen |
 | `es-ES` | Spaans (Spanje)                 | Vrouw | `es-ES-ElviraNeural`     | Algemeen |
 | `es-MX` | Spaans (Mexico)                | Vrouw | `es-MX-DaliaNeural`      | Algemeen |
+| `fi-FI` | Fins (Finland)               | Vrouw | `fi-FI-NooraNeural`      | Algemeen |
 | `fr-CA` | Frans (Canada)                 | Vrouw | `fr-CA-SylvieNeural`     | Algemeen |
 | `fr-FR` | Frans (Frankrijk)                 | Vrouw | `fr-FR-DeniseNeural`     | Algemeen |
+| `hi-IN` | Hindi (India)                   | Vrouw | `hi-IN-SwaraNeural`      | Algemeen |
 | `it-IT` | Italiaans (Italië)                 | Vrouw | `it-IT-ElsaNeural`       | Algemeen |
 | `ja-JP` | Japans                        | Vrouw | `ja-JP-NanamiNeural`     | Algemeen |
 | `ko-KR` | Koreaans                          | Vrouw | `ko-KR-SunHiNeural`      | Algemeen |
 | `nb-NO` | Noors                       | Vrouw | `nb-NO-IselinNeural`     | Algemeen |
-| `pt-BR` | Portugees (Brazilië)             | Vrouw | `pt-BR-FranciscaNeural`  | Algemeen |
+| `nl-NL` | Nederlands (Netherland)              | Vrouw | `nl-NL-ColetteNeural`    | Algemeen |
+| `pl-PL` | Pools (Polen)                 | Vrouw | `pl-PL-ZofiaNeural`      | Algemeen |
+| `pt-BR` | Portugees (Brazilië)             | Vrouw | `pt-BR-FranciscaNeural`  | Algemeen, meerdere spraak stijlen beschikbaar |
 | `tr-TR` | Turks                         | Vrouw | `tr-TR-EmelNeural`       | Algemeen |
+| `pt-PT` | Portugees (Portugal)           | Vrouw | `pt-PT-FernandaNeural`   | Algemeen |
+| `ru-RU` | Russisch (Rusland)                | Vrouw | `ru-RU-DariyaNeural`     | Algemeen |
+| `sv-SE` | Zweeds (Zweden)                | Vrouw | `sv-SE-HilleviNeural`    | Algemeen |
+| `th-TH` | Thai (Thailand)                 | Vrouw | `th-TH-AcharaNeural`     | Algemeen |
 | `zh-CN` | Chinees (Mandarijn, vereenvoudigd)  | Vrouw | `zh-CN-XiaoxiaoNeural`   | Algemeen, meerdere spraak stijlen beschikbaar |
 |         |                                 | Vrouw | `zh-CN-XiaoyouNeural`    | Kid Voice, geoptimaliseerd voor het opnemen van tekst in een verhaal |
 |         |                                 | Man   | `zh-CN-YunyangNeural`    | Geoptimaliseerd voor nieuws lezen, meerdere spraak stijlen beschikbaar |
 |         |                                 | Man   | `zh-CN-YunyeNeural`      | Geoptimaliseerd voor het opnemen van tekst in een verhaal |
+| `zh-HK` | Chinees (Kantonees, tranditional)   | Vrouw | `zh-HK-HiuGaaiNeural`| Algemeen |
+| `zh-TW` | Chinees (Taiwan Mandarijn)   | Vrouw | `zh-TW-HsiaoYuNeural`    | Algemeen |
 
 > [!IMPORTANT]
 > De `en-US-JessaNeural` stem is gewijzigd in `en-US-AriaNeural` . Als u ' Jessa ' eerder gebruikt, converteer dan naar ' Aria '.

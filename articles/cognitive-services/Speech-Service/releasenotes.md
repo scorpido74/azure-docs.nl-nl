@@ -11,14 +11,82 @@ ms.topic: conceptual
 ms.date: 06/08/2020
 ms.author: oliversc
 ms.custom: seodec18
-ms.openlocfilehash: 13a7250bc89b1c9f81996dfa4e15d7d4469779ab
-ms.sourcegitcommit: 1de57529ab349341447d77a0717f6ced5335074e
+ms.openlocfilehash: c4e9668459856af52ae1a905de8ba76dc36758fd
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84607870"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86086285"
 ---
 # <a name="release-notes"></a>Releaseopmerkingen
+
+## <a name="text-to-speech-2020-july-release"></a>Tekst-naar-spraak 2020-juli release
+
+### <a name="new-features"></a>Nieuwe functies
+
+* **NEURAL TTS, 15 nieuwe Neural stemmen**: de nieuwe stemmen die zijn toegevoegd aan de Neural TTS-Port Folio zijn Salma in het Arabisch (Egypte), Zariyah in Arabisch (Saoedi-Arabië), Alba in Catalaans (Spanje), Christel in het Deens (Denemarken), Neerja in het Engels (India), Swara in Hindi (India), Colette in het Nederlands (Nederland), Zofia in Pools (Polen), Fernanda in het Portugees (Portugal), Dariya in Russisch (Rusland), Hillevi in Zweeds (Zweden), Achara in Thai (Thai land), Iselin Noors (Bokmål) in (Noor wegen), HiuGaai in Chinees (Hongkong) en HsiaoYu in het Chinees (Taiwan). Alle [ondersteunde talen](https://docs.microsoft.com/azure/cognitive-services/speech-service/language-support#neural-voices)controleren.  
+
+* **Aangepaste spraak, gestroomlijnde stem tests met de trainings stroom om de gebruikers ervaring te vereenvoudigen**: met de nieuwe test functie wordt elke stem automatisch getest met een vooraf gedefinieerde testset die is geoptimaliseerd voor elke taal om algemene en handelsassistent scenario's te kunnen behandelen. Deze test sets zijn zorgvuldig geselecteerd en getest om typische use cases en fonemen in de taal te bevatten. Daarnaast kunnen gebruikers nog steeds hun eigen test scripts uploaden bij het trainen van een model.
+
+* **Audio-inhoud maken: er wordt een aantal nieuwe functies uitgebracht om krachtige mogelijkheden voor spraak afstemming en audio beheer mogelijk te maken**
+
+    * `Pitch`, `rate` en `volume` zijn verbeterd om het afstemmen met een vooraf gedefinieerde waarde, zoals langzaam, gemiddeld en snel, te ondersteunen. Het is nu eenvoudig voor gebruikers om een constante waarde te kiezen voor hun audio bewerking.
+
+    ![Audio afstemmen](media/release-notes/audio-tuning.png)
+
+    * Gebruikers kunnen nu het `Audio history` voor hun werk bestand bekijken. Met deze functie kunnen gebruikers eenvoudig alle gegenereerde audio met betrekking tot een werk bestand bijhouden. Ze kunnen de geschiedenis versie controleren en de kwaliteit vergelijken tijdens het afstemmen. 
+
+    ![Audio geschiedenis](media/release-notes/audio-history.png)
+
+    * De `Clear` functie is nu flexibeler. Gebruikers kunnen een specifieke afstemmings parameter wissen en andere beschik bare para meters voor de geselecteerde inhoud behouden.  
+
+    * Er is een zelfstudie video toegevoegd op de [landings pagina](https://speech.microsoft.com/audiocontentcreation) waarmee gebruikers snel aan de slag kunnen met TTS Voice Tuning en Audio Management. 
+
+### <a name="general-tts-voice-quality-improvements"></a>Algemene verbeteringen voor spraak kwaliteit van TTS
+
+* Verbeterde TTS-vocoder in voor betere beeld kwaliteit en een lagere latentie.
+
+    * In het Italiaans zijn de Elsa-updates bijgewerkt naar een nieuwe Vocoder die is bereikt + 0,464 CMOS (vergelijkend gemiddelde advies score) in de geluids kwaliteit, 40% sneller in synthese en 30% op de eerste byte latentie. 
+    * Xiaoxiao in het Chinees bijgewerkt naar de nieuwe vocoder met + 0148 CMOS-winst voor het algemene domein, + 0,348 voor de newscast-stijl en + 0,195 voor de Lyrical-stijl. 
+
+* Bijgewerkte `de-DE` en `ja-JP` spraak modellen om de TTS-uitvoer natuurlijk te maken.
+    
+    * Katja in het Duits bijgewerkt met de nieuwste prosody-modelleer methode, is de MOS (gemiddelde opinie Score) + 0,13. 
+    * Nanami in het Japans bijgewerkt met een nieuw prosody model voor de MOS (de gemiddelde opinie Score) is + 0,19;  
+
+* Verbeterde nauw keurigheid van de uitspraak op woord niveau in vijf talen.
+
+    | Taal | Fout reductie van uitspraak |
+    |---|---|
+    | en-GB | 51% |
+    | ko-KR | Nr |
+    | pt-BR | 39% |
+    | pt-PT | 77% |
+    | id-ID | 46% |
+
+### <a name="bug-fixes"></a>Opgeloste fouten
+
+* Valuta lezen
+    * Het probleem opgelost met valuta-lezen voor `es-ES` en`es-MX`
+     
+    | Taal | Invoer | Na verbetering aflezing |
+    |---|---|---|
+    | es-MX | $1,58 | oncincuentae y Ocho centavos |
+    | es-ES | $1,58 | dólar cincuenta y Ocho centavos |
+
+    * Ondersteuning voor negatieve valuta (zoals "-€325") in de volgende land instellingen: `en-US` ,, `en-GB` `fr-FR` , `it-IT` ,, `en-AU` `en-CA` .
+
+* Verbeterd lezen van het adres in `pt-PT` .
+* Opgeloste problemen met Natasha ( `en-AU` ) en Libby ( `en-UK` ) in het woord "voor" en "vier".  
+* Probleem opgelost met hulp programma voor het maken van een audio-inhoud
+    * De extra en onverwachte onderbreking nadat de tweede alinea is opgelost.  
+    * De functie ' geen onderbreken ' is weer toegevoegd vanuit een regressie fout. 
+    * Het probleem met wille keurig vernieuwen van speech Studio is opgelost.  
+
+### <a name="samplessdk"></a>Voor beelden/SDK
+
+* Java script: Hiermee worden problemen met afspelen in FireFox en Safari in macOS en iOS opgelost. 
+
 ## <a name="speech-sdk-1121-2020-june-release"></a>Speech SDK 1.12.1:2020-juni release
 **Speech CLI (ook wel SPX)**
 -   Toegevoegde in-CLI Help zoek functies:
@@ -215,7 +283,7 @@ Blijf op de hoogte.
 - `Compressed`Ondersteuning voor invoer toegevoegd voor ALaw, mulaw, FLAC op Android, Ios en Linux
 - Toegevoegd `SendMessageAsync` in `Connection` klasse voor het verzenden van een bericht naar de service
 - Toegevoegd `SetMessageProperty` in `Connection` de klasse voor het instellen van de eigenschap van een bericht
-- Aan TTS toegevoegde bindingen voor Java (jre en Android), Python, SWIFT en objectief-C
+- Aan TTS toegevoegde bindingen voor Java (JRE en Android), Python, SWIFT en objectief-C
 - TTS heeft ondersteuning voor afspelen toegevoegd voor macOS, iOS en Android.
 - Informatie over woord grens toegevoegd voor TTS.
 
@@ -322,7 +390,7 @@ Dit is een alleen-Java script-versie. Er zijn geen functies toegevoegd. De volge
 - De Speech-SDK voor Java, .NET core, C++ en objectief-C hebben de macOS-ondersteuning verkregen. De doel-C-ondersteuning voor macOS bevindt zich momenteel in een bèta versie.
 - iOS: de Speech SDK voor iOS (objectief-C) wordt nu ook gepubliceerd als een CocoaPod.
 - Java script: ondersteuning voor niet-standaard microfoon als invoer apparaat.
-- Java script: proxy-ondersteuning voor node. js.
+- Java script: proxy-ondersteuning voor Node.js.
 
 **Voorbeelden**
 
@@ -412,7 +480,7 @@ Dit is een alleen-Java script-versie. Er zijn geen functies toegevoegd. De volge
   - De bèta versie van python-ondersteuning (3,5 en hoger) is beschikbaar in deze release. Zie hier] (Quick Start-python.md) voor meer informatie.
 - Javascript
   - De Speech SDK voor Java script is open source. De bron code is beschikbaar op [github](https://github.com/Microsoft/cognitive-services-speech-sdk-js).
-  - Node. js wordt nu ondersteund. meer informatie vindt u [hier](quickstart-js-node.md).
+  - We bieden nu ondersteuning voor Node.js. u kunt [hier](quickstart-js-node.md)meer informatie vinden.
   - De lengte beperking voor audio sessies is verwijderd. de verbinding wordt automatisch hersteld onder de dekking.
 - `Connection`object
   - Vanuit de `Recognizer` kunt u toegang krijgen tot een `Connection` object. Met dit object kunt u de service verbinding expliciet initiëren en zich abonneren op verbinding maken en verbreken van gebeurtenissen.
@@ -443,7 +511,7 @@ Dit is een alleen-Java script-versie. Er zijn geen functies toegevoegd. De volge
 **Voorbeelden**
 
 - Er zijn verschillende voor beelden bijgewerkt en opgelost (bijvoorbeeld uitvoer stemmen voor vertaling, enz.).
-- Er zijn voor beelden van node. js toegevoegd aan de voor [beeld-opslag plaats](https://aka.ms/csspeech/samples).
+- Er zijn Node.js-voor beelden toegevoegd aan de voor [beeld-opslag plaats](https://aka.ms/csspeech/samples).
 
 ## <a name="speech-sdk-110"></a>Speech SDK 1.1.0
 

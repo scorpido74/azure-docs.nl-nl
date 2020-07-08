@@ -6,14 +6,14 @@ ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 06/19/2019
-ms.openlocfilehash: b2c16c27c0dfc0c30a99c52544cc4d2278eadfc7
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 1e04662cb0f67863e23f1fc1ce7e1f21ca4e9197
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75647727"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86087636"
 ---
 # <a name="manage-ml-services-cluster-on-azure-hdinsight"></a>Een cluster van ML Services beheren in azure HDInsight
 
@@ -50,17 +50,19 @@ Omdat RStudio op het Edge-knoop punt van het cluster wordt uitgevoerd, zijn er v
 
 ### <a name="step-1-use-the-created-ssh-user-to-sign-in-to-the-edge-node"></a>Stap 1: gebruik de gemaakte SSH-gebruiker om u aan te melden bij het Edge-knoop punt
 
-Volg de instructies in [Connect to HDInsight (Apache Hadoop) met behulp van SSH](../hdinsight-hadoop-linux-use-ssh-unix.md) om toegang te krijgen tot het Edge-knoop punt. Het Edge-knooppunt adres voor een cluster van ML Services `CLUSTERNAME-ed-ssh.azurehdinsight.net`in HDInsight is.
+Volg de instructies in [Connect to HDInsight (Apache Hadoop) met behulp van SSH](../hdinsight-hadoop-linux-use-ssh-unix.md) om toegang te krijgen tot het Edge-knoop punt. Het Edge-knooppunt adres voor een cluster van ML Services in HDInsight is `CLUSTERNAME-ed-ssh.azurehdinsight.net` .
 
 ### <a name="step-2-add-more-linux-users-in-edge-node"></a>Stap 2: meer Linux-gebruikers toevoegen in Edge-knooppunt
 
 Om een gebruiker toe te voegen aan het Edge-knooppunt, voert u de volgende opdrachten uit:
 
-    # Add a user 
-    sudo useradd <yournewusername> -m
+```bash
+# Add a user 
+sudo useradd <yournewusername> -m
 
-    # Set password for the new user
-    sudo passwd <yournewusername>
+# Set password for the new user
+sudo passwd <yournewusername>
+```
 
 In de volgende scherm afbeelding ziet u de uitvoer.
 
@@ -70,7 +72,7 @@ Wanneer u wordt gevraagd naar ' Huidig Kerberos-wacht woord: ', drukt u op **Ent
 
 ### <a name="step-3-use-rstudio-community-version-with-the-user-created"></a>Stap 3: RStudio Community-versie gebruiken met de gemaakte gebruiker
 
-Toegang tot RStudio `https://CLUSTERNAME.azurehdinsight.net/rstudio/`vanuit. Als u zich voor het eerst aanmeldt na het maken van het cluster, voert u de referenties van de Cluster beheerder in, gevolgd door de gebruikers referenties voor SSH die u hebt gemaakt. Als dit niet uw eerste aanmelding is, voert u alleen de referenties in voor de SSH-gebruiker die u hebt gemaakt.
+Toegang tot RStudio vanuit `https://CLUSTERNAME.azurehdinsight.net/rstudio/` . Als u zich voor het eerst aanmeldt na het maken van het cluster, voert u de referenties van de Cluster beheerder in, gevolgd door de gebruikers referenties voor SSH die u hebt gemaakt. Als dit niet uw eerste aanmelding is, voert u alleen de referenties in voor de SSH-gebruiker die u hebt gemaakt.
 
 U kunt zich ook vanuit een ander browser venster Aanmelden met de oorspronkelijke referenties (standaard *sshuser*).
 
@@ -80,27 +82,29 @@ U ziet ook dat de zojuist toegevoegde gebruikers geen hoofdmapbevoegdheden in he
 
 U kunt toegang tot de HDInsight Spark-Compute-context instellen vanaf een extern exemplaar van een ML-client dat op uw bureau blad wordt uitgevoerd. Hiervoor moet u de opties (hdfsShareDir, shareDir, sshUsername, sshHostname, sshSwitches en sshProfileScript) opgeven bij het definiëren van de RxSpark-Compute-context op het bureau blad: bijvoorbeeld:
 
-    myNameNode <- "default"
-    myPort <- 0
+```r
+myNameNode <- "default"
+myPort <- 0
 
-    mySshHostname  <- '<clustername>-ed-ssh.azurehdinsight.net'  # HDI secure shell hostname
-    mySshUsername  <- '<sshuser>'# HDI SSH username
-    mySshSwitches  <- '-i /cygdrive/c/Data/R/davec'   # HDI SSH private key
+mySshHostname  <- '<clustername>-ed-ssh.azurehdinsight.net'  # HDI secure shell hostname
+mySshUsername  <- '<sshuser>'# HDI SSH username
+mySshSwitches  <- '-i /cygdrive/c/Data/R/davec'   # HDI SSH private key
 
-    myhdfsShareDir <- paste("/user/RevoShare", mySshUsername, sep="/")
-    myShareDir <- paste("/var/RevoShare" , mySshUsername, sep="/")
+myhdfsShareDir <- paste("/user/RevoShare", mySshUsername, sep="/")
+myShareDir <- paste("/var/RevoShare" , mySshUsername, sep="/")
 
-    mySparkCluster <- RxSpark(
-      hdfsShareDir = myhdfsShareDir,
-      shareDir     = myShareDir,
-      sshUsername  = mySshUsername,
-      sshHostname  = mySshHostname,
-      sshSwitches  = mySshSwitches,
-      sshProfileScript = '/etc/profile',
-      nameNode     = myNameNode,
-      port         = myPort,
-      consoleOutput= TRUE
-    )
+mySparkCluster <- RxSpark(
+    hdfsShareDir = myhdfsShareDir,
+    shareDir     = myShareDir,
+    sshUsername  = mySshUsername,
+    sshHostname  = mySshHostname,
+    sshSwitches  = mySshSwitches,
+    sshProfileScript = '/etc/profile',
+    nameNode     = myNameNode,
+    port         = myPort,
+    consoleOutput= TRUE
+)
+```
 
 Zie voor meer informatie de sectie ' using Microsoft Machine Learning Server as a Apache Hadoop client ' in [How to use RevoScaleR in een Apache Spark Compute-context](https://docs.microsoft.com/machine-learning-server/r/how-to-revoscaler-spark#more-spark-scenarios)
 
@@ -110,27 +114,31 @@ Met een compute-context kunt u bepalen of een berekening lokaal op het Edge-knoo
 
 ## <a name="distribute-r-code-to-multiple-nodes"></a>R-code distribueren naar meerdere knooppunten
 
-Met ML Services op HDInsight kunt u bestaande R-code nemen en deze uitvoeren op meerdere knoop punten in het cluster met `rxExec`behulp van. Deze functie is handig bij het uitvoeren van een parameteropschoning of van simulaties. Hier volgt een voorbeeldcode van het gebruik van `rxExec`:
+Met ML Services op HDInsight kunt u bestaande R-code nemen en deze uitvoeren op meerdere knoop punten in het cluster met behulp van `rxExec` . Deze functie is handig bij het uitvoeren van een parameteropschoning of van simulaties. Hier volgt een voorbeeldcode van het gebruik van `rxExec`:
 
-    rxExec( function() {Sys.info()["nodename"]}, timesToRun = 4 )
+```r
+rxExec( function() {Sys.info()["nodename"]}, timesToRun = 4 )
+```
 
-Als u nog steeds de Spark-context gebruikt, retourneert deze opdracht de waarde van de nodenaam voor de worker `(Sys.info()["nodename"])` -knoop punten waarop de code wordt uitgevoerd. Op een cluster met vier knoop punten verwacht u bijvoorbeeld dat er uitvoer wordt weer gegeven die vergelijkbaar is met het volgende code fragment:
+Als u nog steeds de Spark-context gebruikt, retourneert deze opdracht de waarde van de nodenaam voor de worker-knoop punten waarop de code `(Sys.info()["nodename"])` wordt uitgevoerd. Op een cluster met vier knoop punten verwacht u bijvoorbeeld dat er uitvoer wordt weer gegeven die vergelijkbaar is met het volgende code fragment:
 
-    $rxElem1
-        nodename
-    "wn3-mymlser"
+```r
+$rxElem1
+    nodename
+"wn3-mymlser"
 
-    $rxElem2
-        nodename
-    "wn0-mymlser"
+$rxElem2
+    nodename
+"wn0-mymlser"
 
-    $rxElem3
-        nodename
-    "wn3-mymlser"
+$rxElem3
+    nodename
+"wn3-mymlser"
 
-    $rxElem4
-        nodename
-    "wn3-mymlser"
+$rxElem4
+    nodename
+"wn3-mymlser"
+```
 
 ## <a name="access-data-in-apache-hive-and-parquet"></a>Toegang tot gegevens in Apache Hive en Parquet
 
@@ -138,44 +146,45 @@ Met HDInsight ML-Services kunt u rechtstreeks toegang krijgen tot gegevens in Hi
 
 Hieronder ziet u code met voorbeeldcode bij het gebruik van de nieuwe functies:
 
-    #Create a Spark compute context:
-    myHadoopCluster <- rxSparkConnect(reset = TRUE)
+```r
+#Create a Spark compute context:
+myHadoopCluster <- rxSparkConnect(reset = TRUE)
 
-    #Retrieve some sample data from Hive and run a model:
-    hiveData <- RxHiveData("select * from hivesampletable",
-                     colInfo = list(devicemake = list(type = "factor")))
-    rxGetInfo(hiveData, getVarInfo = TRUE)
+#Retrieve some sample data from Hive and run a model:
+hiveData <- RxHiveData("select * from hivesampletable",
+                       colInfo = list(devicemake = list(type = "factor")))
+rxGetInfo(hiveData, getVarInfo = TRUE)
 
-    rxLinMod(querydwelltime ~ devicemake, data=hiveData)
+rxLinMod(querydwelltime ~ devicemake, data=hiveData)
 
-    #Retrieve some sample data from Parquet and run a model:
-    rxHadoopMakeDir('/share')
-    rxHadoopCopyFromLocal(file.path(rxGetOption('sampleDataDir'), 'claimsParquet/'), '/share/')
-    pqData <- RxParquetData('/share/claimsParquet',
-                     colInfo = list(
-                age    = list(type = "factor"),
-               car.age = list(type = "factor"),
-                  type = list(type = "factor")
-             ) )
-    rxGetInfo(pqData, getVarInfo = TRUE)
+#Retrieve some sample data from Parquet and run a model:
+rxHadoopMakeDir('/share')
+rxHadoopCopyFromLocal(file.path(rxGetOption('sampleDataDir'), 'claimsParquet/'), '/share/')
+pqData <- RxParquetData('/share/claimsParquet',
+                        colInfo = list(
+                            age    = list(type = "factor"),
+                            car.age = list(type = "factor"),
+                            type = list(type = "factor")
+                        ) )
+rxGetInfo(pqData, getVarInfo = TRUE)
 
-    rxNaiveBayes(type ~ age + cost, data = pqData)
+rxNaiveBayes(type ~ age + cost, data = pqData)
 
-    #Check on Spark data objects, cleanup, and close the Spark session:
-    lsObj <- rxSparkListData() # two data objs are cached
-    lsObj
-    rxSparkRemoveData(lsObj)
-    rxSparkListData() # it should show empty list
-    rxSparkDisconnect(myHadoopCluster)
+#Check on Spark data objects, cleanup, and close the Spark session:
+lsObj <- rxSparkListData() # two data objs are cached
+lsObj
+rxSparkRemoveData(lsObj)
+rxSparkListData() # it should show empty list
+rxSparkDisconnect(myHadoopCluster)
+```
 
-
-Voor meer informatie over het gebruik van deze nieuwe functies raadpleegt u de online-Help in ML Services `?RxHivedata` via `?RxParquetData` het gebruik van de opdrachten en.  
+Voor meer informatie over het gebruik van deze nieuwe functies raadpleegt u de online-Help in ML Services via het gebruik van de `?RxHivedata` `?RxParquetData` opdrachten en.  
 
 ## <a name="install-additional-r-packages-on-the-cluster"></a>Extra R-pakketten installeren op het cluster
 
 ### <a name="to-install-r-packages-on-the-edge-node"></a>R-pakketten installeren op het Edge-knoop punt
 
-Als u extra R-pakketten wilt installeren op het Edge-knoop punt, kunt `install.packages()` u rechtstreeks vanuit de R-console gebruiken wanneer u via SSH bent verbonden met het Edge-knoop punt. 
+Als u extra R-pakketten wilt installeren op het Edge-knoop punt, kunt u `install.packages()` rechtstreeks vanuit de R-console gebruiken wanneer u via SSH bent verbonden met het Edge-knoop punt. 
 
 ### <a name="to-install-r-packages-on-the-worker-node"></a>R-pakketten installeren op het worker-knoop punt
 
@@ -192,7 +201,7 @@ Als u R-pakketten wilt installeren op de worker-knoop punten van het cluster, mo
 
    * Geef bij **naam**een naam op voor de script actie.
 
-     * Voer **Bash script URI** `https://mrsactionscripts.blob.core.windows.net/rpackages-v01/InstallRPackages.sh`voor bash-script-URI in. Dit is het script waarmee extra R-pakketten worden geïnstalleerd op het worker-knoop punt
+     * Voer voor **bash-script-URI**in `https://mrsactionscripts.blob.core.windows.net/rpackages-v01/InstallRPackages.sh` . Dit is het script waarmee extra R-pakketten worden geïnstalleerd op het worker-knoop punt
 
    * Schakel het selectie vakje voor de **werk nemer**alleen in.
 

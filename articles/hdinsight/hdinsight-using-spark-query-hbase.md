@@ -5,15 +5,15 @@ author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
-ms.topic: conceptual
+ms.topic: how-to
 ms.custom: hdinsightactive,seoapr2020
 ms.date: 04/20/2020
-ms.openlocfilehash: e5d9d4f215752d95ee1d676e8a5b126b6d0d3ab2
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 3ddb8734a3d15a6cd5f4a43ee069d6364f7523ed
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82190619"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86087483"
 ---
 # <a name="use-apache-spark-to-read-and-write-apache-hbase-data"></a>Apache Spark gebruiken om Apache HBase-gegevens te lezen en schrijven
 
@@ -23,16 +23,16 @@ Apache HBase wordt doorgaans opgevraagd met de API op laag niveau (scans, haalt 
 
 * Twee afzonderlijke HDInsight-clusters die zijn geïmplementeerd in hetzelfde [virtuele netwerk](./hdinsight-plan-virtual-network-deployment.md). Eén HBase en een Spark met ten minste Spark 2,1 (HDInsight 3,6) geïnstalleerd. Zie op [Linux gebaseerde clusters in HDInsight maken met behulp van de Azure Portal](hdinsight-hadoop-create-linux-clusters-portal.md)voor meer informatie.
 
-* Het URI-schema voor de primaire opslag van uw clusters. Dit schema is wasb://voor Azure Blob Storage, `abfs://` voor Azure Data Lake Storage Gen2 of adl://voor Azure data Lake Storage gen1. Als beveiligde overdracht is ingeschakeld voor Blob Storage, zou de URI zijn `wasbs://`.  Zie ook [beveiligde overdracht](../storage/common/storage-require-secure-transfer.md).
+* Het URI-schema voor de primaire opslag van uw clusters. Dit schema is wasb://voor Azure Blob Storage, `abfs://` voor Azure data Lake Storage Gen2 of ADL://voor Azure data Lake Storage gen1. Als beveiligde overdracht is ingeschakeld voor Blob Storage, zou de URI zijn `wasbs://` .  Zie ook [beveiligde overdracht](../storage/common/storage-require-secure-transfer.md).
 
 ## <a name="overall-process"></a>Algemeen proces
 
 Het proces op hoog niveau voor het inschakelen van uw Spark-cluster voor het uitvoeren van een query op uw HDInsight-cluster is als volgt:
 
 1. Bereid enkele voorbeeld gegevens voor in HBase.
-2. Haal het hbase-site. XML-bestand op in de map HBase cluster Configuration (/etc/hbase/conf).
-3. Plaats een kopie van hbase-site. XML in de configuratiemap van Spark 2 (/etc/spark2/conf).
-4. Voer `spark-shell` een verwijzing naar de Spark HBase-connector uit met de bijbehorende `packages` maven-coördinaten in de optie.
+2. Haal het hbase-site.xml-bestand op uit de HBase (/etc/hbase/conf).
+3. Plaats een kopie van hbase-site.xml in de configuratiemap van Spark 2 (/etc/spark2/conf).
+4. Voer `spark-shell` een verwijzing naar de Spark HBase-connector uit met de bijbehorende maven-coördinaten in de `packages` optie.
 5. Definieer een catalogus die het schema toewijst van Spark in HBase.
 6. Interactie met de HBase-gegevens met behulp van de RDD-of data frame-Api's.
 
@@ -40,7 +40,7 @@ Het proces op hoog niveau voor het inschakelen van uw Spark-cluster voor het uit
 
 In deze stap maakt en vult u een tabel in Apache HBase op die u vervolgens kunt uitvoeren met behulp van Spark.
 
-1. Gebruik de `ssh` opdracht om verbinding te maken met uw HBase-cluster. Bewerk de onderstaande opdracht door de `HBASECLUSTER` naam van uw HBase-cluster te vervangen en voer de opdracht in:
+1. Gebruik de `ssh` opdracht om verbinding te maken met uw HBase-cluster. Bewerk de onderstaande opdracht door `HBASECLUSTER` de naam van uw HBase-cluster te vervangen en voer de opdracht in:
 
     ```cmd
     ssh sshuser@HBASECLUSTER-ssh.azurehdinsight.net
@@ -77,9 +77,9 @@ In deze stap maakt en vult u een tabel in Apache HBase op die u vervolgens kunt 
     exit
     ```
 
-## <a name="copy-hbase-sitexml-to-spark-cluster"></a>Hbase-site. XML kopiëren naar Spark-cluster
+## <a name="copy-hbase-sitexml-to-spark-cluster"></a>hbase-site.xml naar Spark-cluster kopiëren
 
-Kopieer de hbase-site. XML van de lokale opslag naar de hoofdmap van de standaard opslag van uw Spark-cluster.  Bewerk de onderstaande opdracht om uw configuratie weer te geven.  Voer vervolgens vanuit uw open SSH-sessie naar het HBase-cluster de volgende opdracht in:
+Kopieer de hbase-site.xml van de lokale opslag naar de hoofdmap van de standaard opslag van uw Spark-cluster.  Bewerk de onderstaande opdracht om uw configuratie weer te geven.  Voer vervolgens vanuit uw open SSH-sessie naar het HBase-cluster de volgende opdracht in:
 
 | Syntaxis waarde | Nieuwe waarde|
 |---|---|
@@ -97,15 +97,15 @@ Sluit vervolgens uw SSH-verbinding met uw HBase-cluster af.
 exit
 ```
 
-## <a name="put-hbase-sitexml-on-your-spark-cluster"></a>Hbase-site. XML op uw Spark-cluster plaatsen
+## <a name="put-hbase-sitexml-on-your-spark-cluster"></a>hbase-site.xml op uw Spark-cluster plaatsen
 
-1. Maak met SSH verbinding met het hoofd knooppunt van uw Spark-cluster. Bewerk de onderstaande opdracht door de `SPARKCLUSTER` naam van uw Spark-cluster te vervangen en voer de volgende opdracht in:
+1. Maak met SSH verbinding met het hoofd knooppunt van uw Spark-cluster. Bewerk de onderstaande opdracht door `SPARKCLUSTER` de naam van uw Spark-cluster te vervangen en voer de volgende opdracht in:
 
     ```cmd
     ssh sshuser@SPARKCLUSTER-ssh.azurehdinsight.net
     ```
 
-2. Voer de onderstaande opdracht in om `hbase-site.xml` de standaard opslag van uw Spark-cluster te kopiëren naar de map Spark 2-configuratie op de lokale opslag van het cluster:
+2. Voer de onderstaande opdracht in om de `hbase-site.xml` standaard opslag van uw Spark-cluster te kopiëren naar de map Spark 2-configuratie op de lokale opslag van het cluster:
 
     ```bash
     sudo hdfs dfs -copyToLocal /hbase-site.xml /etc/spark2/conf
@@ -113,13 +113,49 @@ exit
 
 ## <a name="run-spark-shell-referencing-the-spark-hbase-connector"></a>Spark-shell uitvoeren die verwijst naar de Spark HBase-connector
 
-1. Voer vanuit uw open SSH-sessie naar het Spark-cluster de volgende opdracht in om een Spark-shell te starten:
+Nadat u de vorige stap hebt voltooid, moet u Spark shell kunnen uitvoeren om te verwijzen naar de juiste versie van de Spark HBase-connector. Zie [SHC core-opslag plaats](https://repo.hortonworks.com/content/groups/public/com/hortonworks/shc/shc-core/)om de meest recente geschikte versie van de HBase-connector te vinden voor uw cluster scenario.
+
+De volgende tabel bevat een voor beeld van twee versies en de bijbehorende opdrachten die het HDInsight-team momenteel gebruikt. U kunt dezelfde versies voor uw clusters gebruiken als de versies van HBase en Spark hetzelfde zijn als in de tabel. 
+
+
+1. Voer in uw open SSH-sessie naar het Spark-cluster de volgende opdracht in om een Spark-shell te starten:
+
+    |Spark-versie| HDI HBase-versie  | SHC-versie    |  Opdracht  |
+    | :-----------:| :----------: | :-----------: |:----------- |
+    |      2.1    | HDI 3,6 (HBase 1,1) | 1.1.0.3.1.2.2-1    | `spark-shell --packages com.hortonworks:shc-core:1.1.1-2.1-s_2.11 --repositories https://repo.hortonworks.com/content/groups/public/` |
+    |      2,4    | HDI 4,0 (HBase 2,0) | 1.1.1-2.1-s_2.11  | `spark-shell --packages com.hortonworks.shc:shc-core:1.1.0.3.1.2.2-1 --repositories http://repo.hortonworks.com/content/groups/public/` |
+
+2. Bewaar dit Spark shell-exemplaar open en ga door met [het definiëren van een catalogus en query](#define-a-catalog-and-query). Als u de potten die overeenkomen met uw versies in de SHC core opslag plaats niet kunt vinden, gaat u verder met lezen. 
+
+U kunt de potten rechtstreeks vanuit de GitHub-vertakking van de [Spark-hbase-connector](https://github.com/hortonworks-spark/shc) bouwen. Als u bijvoorbeeld met Spark 2,3 en HBase 1,1 werkt, voert u de volgende stappen uit:
+
+1. Kloon de opslagplaats:
 
     ```bash
-    spark-shell --packages com.hortonworks:shc-core:1.1.1-2.1-s_2.11 --repositories https://repo.hortonworks.com/content/groups/public/
-    ```  
+    git clone https://github.com/hortonworks-spark/shc
+    ```
+    
+2. Ga naar vertakking-2,3:
 
-2. Bewaar dit Spark shell-exemplaar open en ga door naar de volgende stap.
+    ```bash
+    git checkout branch-2.3
+    ```
+
+3. Bouwen vanuit de vertakking (maakt een jar-bestand):
+
+    ```bash
+    mvn clean package -DskipTests
+    ```
+    
+3. Voer de volgende opdracht uit (zorg ervoor dat u de naam van de jar wijzigt die overeenkomt met het jar-bestand dat u hebt gemaakt):
+
+    ```bash
+    spark-shell --jars <path to your jar>,/usr/hdp/current/hbase-client/lib/htrace-core-3.1.0-incubating.jar,/usr/hdp/current/hbase-client/lib/hbase-client.jar,/usr/hdp/current/hbase-client/lib/hbase-common.jar,/usr/hdp/current/hbase-client/lib/hbase-server.jar,/usr/hdp/current/hbase-client/lib/hbase-protocol.jar,/usr/hdp/current/hbase-client/lib/htrace-core-3.1.0-incubating.jar
+    ```
+    
+4. Bewaar dit Spark shell-exemplaar open en ga door naar de volgende sectie. 
+
+
 
 ## <a name="define-a-catalog-and-query"></a>Een catalogus en query definiëren
 
@@ -150,13 +186,13 @@ In deze stap definieert u een catalogus object dat het schema toewijst van Apach
     |}""".stripMargin
     ```
 
-    De code voert de volgende handelingen uit:  
+    De code:  
 
-     a. Definieer een catalogus schema voor de HBase-tabel `Contacts`met de naam.  
-     b. Identificeer de rowkey als `key`en wijs de kolom namen die worden gebruikt in Spark toe aan het kolom familie, de kolom naam en het kolom Type zoals gebruikt in HBase.  
-     c. De rowkey moet ook gedetailleerd worden gedefinieerd als een benoemde kolom (`rowkey`) met een specifieke kolom familie `cf` van. `rowkey`  
+    1. Hiermee wordt een catalogus schema gedefinieerd voor de HBase-tabel met de naam `Contacts` .  
+    1. Identificeert de rowkey als `key` en wijst de kolom namen die worden gebruikt in Spark toe aan het kolom familie, de kolom naam en het kolom Type zoals gebruikt in HBase.  
+    1. Hiermee wordt de rowkey in detail gedefinieerd als een benoemde kolom ( `rowkey` ) met een specifieke kolom familie `cf` van `rowkey` .  
 
-1. Voer de onderstaande opdracht in om een methode te definiëren die een data frame rond `Contacts` uw tabel in HBase biedt:
+1. Voer de onderstaande opdracht in om een methode te definiëren die een data frame rond uw `Contacts` tabel in HBase biedt:
 
     ```scala
     def withCatalog(cat: String): DataFrame = {
@@ -216,7 +252,7 @@ In deze stap definieert u een catalogus object dat het schema toewijst van Apach
 
 ## <a name="insert-new-data"></a>Nieuwe gegevens invoegen
 
-1. Als u een nieuwe contactpersoonrecord wilt invoegen, definieert `ContactRecord` u een klasse:
+1. Als u een nieuwe contactpersoonrecord wilt invoegen, definieert u een `ContactRecord` klasse:
 
     ```scala
     case class ContactRecord(

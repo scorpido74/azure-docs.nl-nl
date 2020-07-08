@@ -14,12 +14,12 @@ ms.topic: article
 ms.date: 03/18/2019
 ms.author: juliako
 ms.custom: has-adal-ref
-ms.openlocfilehash: 8fbe8e0cbf2768af973a0ccc9e237fb770b27a74
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 9458f6d66dbf95429172a0767b9293efdfa51113
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82612296"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86086633"
 ---
 # <a name="use-azure-ad-authentication-to-access-azure-media-services-api-with-net"></a>Azure AD-verificatie gebruiken om toegang te krijgen tot Azure Media Services-API met .NET
 
@@ -67,11 +67,15 @@ U kunt ook de standaard implementatie van de **AzureAdTokenProvider** vervangen 
 
     Voer de volgende opdracht uit in de **Package Manager-console** in Visual Studio.
 
-        Install-Package windowsazure.mediaservices -Version 4.0.0.4
+    ```console
+    Install-Package windowsazure.mediaservices -Version 4.0.0.4
+    ```
 
 3. Voeg **deze toe aan** de bron code.
 
-        using Microsoft.WindowsAzure.MediaServices.Client;
+    ```csharp
+    using Microsoft.WindowsAzure.MediaServices.Client;
+    ```
 
 ## <a name="use-user-authentication"></a>Gebruikers verificatie gebruiken
 
@@ -88,8 +92,10 @@ Het bevat vooraf gedefinieerde omgevings instellingen voor het openen van Media 
 
 In het volgende code voorbeeld wordt een token gemaakt:
 
-    var tokenCredentials = new AzureAdTokenCredentials("microsoft.onmicrosoft.com", AzureEnvironments.AzureCloudEnvironment);
-    var tokenProvider = new AzureAdTokenProvider(tokenCredentials);
+```csharp
+var tokenCredentials = new AzureAdTokenCredentials("microsoft.onmicrosoft.com", AzureEnvironments.AzureCloudEnvironment);
+var tokenProvider = new AzureAdTokenProvider(tokenCredentials);
+```
 
 Als u wilt beginnen met het Program meren op Media Services, moet u een **cloudmediacontext maakt** -exemplaar maken dat de server context vertegenwoordigt. De **cloudmediacontext maakt** bevat verwijzingen naar belang rijke verzamelingen, waaronder taken, assets, bestanden, toegangs beleid en Locators.
 
@@ -97,33 +103,36 @@ U moet ook de resource- **URI voor media rest-Services** door geven aan de **clo
 
 In het volgende code voorbeeld wordt een **cloudmediacontext maakt** -exemplaar gemaakt:
 
-    CloudMediaContext context = new CloudMediaContext(new Uri("YOUR REST API ENDPOINT HERE"), tokenProvider);
+```csharp
+CloudMediaContext context = new CloudMediaContext(new Uri("YOUR REST API ENDPOINT HERE"), tokenProvider);
+```
 
 In het volgende voor beeld ziet u hoe u het Azure AD-token en de context maakt:
 
-    namespace AzureADAuthSample
+```csharp
+namespace AzureADAuthSample
+{
+    class Program
     {
-        class Program
+        static void Main(string[] args)
         {
-            static void Main(string[] args)
+            // Specify your Azure AD tenant domain, for example "microsoft.onmicrosoft.com".
+            var tokenCredentials = new AzureAdTokenCredentials("{YOUR Azure AD TENANT DOMAIN HERE}", AzureEnvironments.AzureCloudEnvironment);
+
+            var tokenProvider = new AzureAdTokenProvider(tokenCredentials);
+
+            // Specify your REST API endpoint, for example "https://accountname.restv2.westcentralus.media.azure.net/API".
+            CloudMediaContext context = new CloudMediaContext(new Uri("YOUR REST API ENDPOINT HERE"), tokenProvider);
+
+            var assets = context.Assets;
+            foreach (var a in assets)
             {
-                // Specify your Azure AD tenant domain, for example "microsoft.onmicrosoft.com".
-                var tokenCredentials = new AzureAdTokenCredentials("{YOUR Azure AD TENANT DOMAIN HERE}", AzureEnvironments.AzureCloudEnvironment);
-
-                var tokenProvider = new AzureAdTokenProvider(tokenCredentials);
-
-                // Specify your REST API endpoint, for example "https://accountname.restv2.westcentralus.media.azure.net/API".
-                CloudMediaContext context = new CloudMediaContext(new Uri("YOUR REST API ENDPOINT HERE"), tokenProvider);
-
-                var assets = context.Assets;
-                foreach (var a in assets)
-                {
-                    Console.WriteLine(a.Name);
-                }
+                Console.WriteLine(a.Name);
             }
-
         }
     }
+}
+```
 
 >[!NOTE]
 >Als u een uitzonde ring krijgt met de tekst "de externe server heeft een fout geretourneerd: (401) niet gemachtigd," Zie de sectie [toegangs beheer](media-services-use-aad-auth-to-access-ams-api.md#access-control) van toegang tot Azure Media Services-API met Azure AD-verificatie overzicht.
@@ -140,55 +149,61 @@ De waarden voor de **client-id** en **client Secret** -para meters vindt u in de
 
 In het volgende code voorbeeld wordt een token gemaakt met behulp van de **AzureAdTokenCredentials** -constructor die **AzureAdClientSymmetricKey** als para meter neemt:
 
-    var tokenCredentials = new AzureAdTokenCredentials("{YOUR Azure AD TENANT DOMAIN HERE}",
-                                new AzureAdClientSymmetricKey("{YOUR CLIENT ID HERE}", "{YOUR CLIENT SECRET}"),
-                                AzureEnvironments.AzureCloudEnvironment);
+```csharp
+var tokenCredentials = new AzureAdTokenCredentials("{YOUR Azure AD TENANT DOMAIN HERE}",
+                            new AzureAdClientSymmetricKey("{YOUR CLIENT ID HERE}", "{YOUR CLIENT SECRET}"),
+                            AzureEnvironments.AzureCloudEnvironment);
 
-    var tokenProvider = new AzureAdTokenProvider(tokenCredentials);
+var tokenProvider = new AzureAdTokenProvider(tokenCredentials);
+```
 
 U kunt ook de **AzureAdTokenCredentials** -constructor opgeven die **AzureAdClientCertificate** als para meter gebruikt.
 
 Voor instructies over het maken en configureren van een certificaat in een formulier dat door Azure AD kan worden gebruikt, raadpleegt [u verificatie bij Azure AD in daemon-apps met certificaten-hand matige configuratie stappen](https://github.com/azure-samples/active-directory-dotnetcore-daemon-v2).
 
-    var tokenCredentials = new AzureAdTokenCredentials("{YOUR Azure AD TENANT DOMAIN HERE}",
-                                new AzureAdClientCertificate("{YOUR CLIENT ID HERE}", "{YOUR CLIENT CERTIFICATE THUMBPRINT}"),
-                                AzureEnvironments.AzureCloudEnvironment);
+```csharp
+var tokenCredentials = new AzureAdTokenCredentials("{YOUR Azure AD TENANT DOMAIN HERE}",
+                            new AzureAdClientCertificate("{YOUR CLIENT ID HERE}", "{YOUR CLIENT CERTIFICATE THUMBPRINT}"),
+                            AzureEnvironments.AzureCloudEnvironment);
+```
 
 Als u wilt beginnen met het Program meren op Media Services, moet u een **cloudmediacontext maakt** -exemplaar maken dat de server context vertegenwoordigt. U moet ook de resource- **URI voor media rest-Services** door geven aan de **cloudmediacontext maakt** -constructor. U kunt de **resource-URI voor de media rest Services** -waarde ook ophalen uit het Azure Portal.
 
 In het volgende code voorbeeld wordt een **cloudmediacontext maakt** -exemplaar gemaakt:
 
-    CloudMediaContext context = new CloudMediaContext(new Uri("YOUR REST API ENDPOINT HERE"), tokenProvider);
+```csharp
+CloudMediaContext context = new CloudMediaContext(new Uri("YOUR REST API ENDPOINT HERE"), tokenProvider);
+```
 
 In het volgende voor beeld ziet u hoe u het Azure AD-token en de context maakt:
 
-    namespace AzureADAuthSample
+```csharp
+namespace AzureADAuthSample
+{
+    class Program
     {
-
-        class Program
+        static void Main(string[] args)
         {
-            static void Main(string[] args)
+            var tokenCredentials = new AzureAdTokenCredentials("{YOUR Azure AD TENANT DOMAIN HERE}",
+                                        new AzureAdClientSymmetricKey("{YOUR CLIENT ID HERE}", "{YOUR CLIENT SECRET}"),
+                                        AzureEnvironments.AzureCloudEnvironment);
+
+            var tokenProvider = new AzureAdTokenProvider(tokenCredentials);
+
+            // Specify your REST API endpoint, for example "https://accountname.restv2.westcentralus.media.azure.net/API".
+            CloudMediaContext context = new CloudMediaContext(new Uri("YOUR REST API ENDPOINT HERE"), tokenProvider);
+
+            var assets = context.Assets;
+            foreach (var a in assets)
             {
-                var tokenCredentials = new AzureAdTokenCredentials("{YOUR Azure AD TENANT DOMAIN HERE}",
-                                            new AzureAdClientSymmetricKey("{YOUR CLIENT ID HERE}", "{YOUR CLIENT SECRET}"),
-                                            AzureEnvironments.AzureCloudEnvironment);
-
-                var tokenProvider = new AzureAdTokenProvider(tokenCredentials);
-
-                // Specify your REST API endpoint, for example "https://accountname.restv2.westcentralus.media.azure.net/API".
-                CloudMediaContext context = new CloudMediaContext(new Uri("YOUR REST API ENDPOINT HERE"), tokenProvider);
-
-                var assets = context.Assets;
-                foreach (var a in assets)
-                {
-                    Console.WriteLine(a.Name);
-                }
-
-                Console.ReadLine();
+                Console.WriteLine(a.Name);
             }
 
+            Console.ReadLine();
         }
     }
+}
+```
 
 ## <a name="next-steps"></a>Volgende stappen
 

@@ -11,11 +11,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 05/15/2020
 ms.author: jingwang
-ms.openlocfilehash: 5ec6778e3e00a85a2fa7d43383df5c2ce6c47faa
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 8041ce07c08c3b6063e2a1b3c7b55b1cec59b19a
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84629504"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86087755"
 ---
 # <a name="copy-data-from-the-hdfs-server-by-using-azure-data-factory"></a>Gegevens kopiëren van de HDFS-server met behulp van Azure Data Factory
 > [!div class="op_single_selector" title1="Selecteer de versie van de Data Factory-service die u gebruikt:"]
@@ -286,17 +287,21 @@ Er zijn twee opties voor het instellen van de on-premises omgeving voor het gebr
 
     De machine moet worden geconfigureerd als lid van een werk groep, omdat een Kerberos-realm afwijkt van een Windows-domein. U kunt deze configuratie behaalt door de Kerberos-realm in te stellen en een KDC-server toe te voegen door de volgende opdrachten uit te voeren. Vervang *realm.com* door uw eigen realm-naam.
 
-            C:> Ksetup /setdomain REALM.COM
-            C:> Ksetup /addkdc REALM.COM <your_kdc_server_address>
+    ```console
+    C:> Ksetup /setdomain REALM.COM
+    C:> Ksetup /addkdc REALM.COM <your_kdc_server_address>
+    ```
 
     Nadat u deze opdrachten hebt uitgevoerd, start u de computer opnieuw op.
 
 2.  Controleer de configuratie met de `Ksetup` opdracht. De uitvoer moet er als volgt uitzien:
 
-            C:> Ksetup
-            default realm = REALM.COM (external)
-            REALM.com:
-                kdc = <your_kdc_server_address>
+    ```output
+    C:> Ksetup
+    default realm = REALM.COM (external)
+    REALM.com:
+        kdc = <your_kdc_server_address>
+    ```
 
 **In uw data factory:**
 
@@ -318,45 +323,49 @@ Er zijn twee opties voor het instellen van de on-premises omgeving voor het gebr
 
 1. Bewerk de KDC-configuratie in het bestand *krb5. conf* om KDC het Windows-domein te laten vertrouwen door te verwijzen naar de volgende configuratie sjabloon. De configuratie bevindt zich standaard op */etc/krb5.conf*.
 
-           [logging]
-            default = FILE:/var/log/krb5libs.log
-            kdc = FILE:/var/log/krb5kdc.log
-            admin_server = FILE:/var/log/kadmind.log
+   ```config
+   [logging]
+    default = FILE:/var/log/krb5libs.log
+    kdc = FILE:/var/log/krb5kdc.log
+    admin_server = FILE:/var/log/kadmind.log
             
-           [libdefaults]
-            default_realm = REALM.COM
-            dns_lookup_realm = false
-            dns_lookup_kdc = false
-            ticket_lifetime = 24h
-            renew_lifetime = 7d
-            forwardable = true
+   [libdefaults]
+    default_realm = REALM.COM
+    dns_lookup_realm = false
+    dns_lookup_kdc = false
+    ticket_lifetime = 24h
+    renew_lifetime = 7d
+    forwardable = true
             
-           [realms]
-            REALM.COM = {
-             kdc = node.REALM.COM
-             admin_server = node.REALM.COM
-            }
-           AD.COM = {
-            kdc = windc.ad.com
-            admin_server = windc.ad.com
-           }
+   [realms]
+    REALM.COM = {
+     kdc = node.REALM.COM
+     admin_server = node.REALM.COM
+    }
+   AD.COM = {
+    kdc = windc.ad.com
+    admin_server = windc.ad.com
+   }
             
-           [domain_realm]
-            .REALM.COM = REALM.COM
-            REALM.COM = REALM.COM
-            .ad.com = AD.COM
-            ad.com = AD.COM
+   [domain_realm]
+    .REALM.COM = REALM.COM
+    REALM.COM = REALM.COM
+    .ad.com = AD.COM
+    ad.com = AD.COM
             
-           [capaths]
-            AD.COM = {
-             REALM.COM = .
-            }
+   [capaths]
+    AD.COM = {
+     REALM.COM = .
+    }
+    ```
 
    Nadat u het bestand hebt geconfigureerd, start u de KDC-service opnieuw.
 
 2. Bereid een principal met de naam *krbtgt/realm. COM \@ AD.com* op de KDC-server met de volgende opdracht:
 
-           Kadmin> addprinc krbtgt/REALM.COM@AD.COM
+    ```cmd
+    Kadmin> addprinc krbtgt/REALM.COM@AD.COM
+    ```
 
 3. Voeg in het bestand *Hadoop. Security. auth_to_local* HDFS service-configuratie toe `RULE:[1:$1@$0](.*\@AD.COM)s/\@.*//` .
 
@@ -364,12 +373,16 @@ Er zijn twee opties voor het instellen van de on-premises omgeving voor het gebr
 
 1.  Voer de volgende `Ksetup` opdrachten uit om een realm-vermelding toe te voegen:
 
-        C:> Ksetup /addkdc REALM.COM <your_kdc_server_address>
-        C:> ksetup /addhosttorealmmap HDFS-service-FQDN REALM.COM
+    ```cmd
+    C:> Ksetup /addkdc REALM.COM <your_kdc_server_address>
+    C:> ksetup /addhosttorealmmap HDFS-service-FQDN REALM.COM
+    ```
 
 2.  Stel de vertrouwens relatie van het Windows-domein in op de Kerberos-realm. [wacht woord] is het wacht woord voor de principal *krbtgt/realm. COM- \@ AD.com*.
 
-        C:> netdom trust REALM.COM /Domain: AD.COM /add /realm /password:[password]
+    ```cmd
+    C:> netdom trust REALM.COM /Domain: AD.COM /add /realm /password:[password]
+    ```
 
 3.  Selecteer de versleutelings algoritme die wordt gebruikt in Kerberos.
 
@@ -383,7 +396,9 @@ Er zijn twee opties voor het instellen van de on-premises omgeving voor het gebr
 
     d. Gebruik de `Ksetup` opdracht om de versleutelings algoritme op te geven die moet worden gebruikt voor de opgegeven realm.
 
-        C:> ksetup /SetEncTypeAttr REALM.COM DES-CBC-CRC DES-CBC-MD5 RC4-HMAC-MD5 AES128-CTS-HMAC-SHA1-96 AES256-CTS-HMAC-SHA1-96
+    ```cmd
+    C:> ksetup /SetEncTypeAttr REALM.COM DES-CBC-CRC DES-CBC-MD5 RC4-HMAC-MD5 AES128-CTS-HMAC-SHA1-96 AES256-CTS-HMAC-SHA1-96
+    ```
 
 4.  Maak de toewijzing tussen het domein account en de Kerberos-principal, zodat u de Kerberos-principal in het Windows-domein kunt gebruiken.
 
@@ -401,8 +416,10 @@ Er zijn twee opties voor het instellen van de on-premises omgeving voor het gebr
 
 * Voer de volgende `Ksetup` opdrachten uit om een realm-vermelding toe te voegen.
 
-        C:> Ksetup /addkdc REALM.COM <your_kdc_server_address>
-        C:> ksetup /addhosttorealmmap HDFS-service-FQDN REALM.COM
+   ```cmd
+   C:> Ksetup /addkdc REALM.COM <your_kdc_server_address>
+   C:> ksetup /addhosttorealmmap HDFS-service-FQDN REALM.COM
+   ```
 
 **In uw data factory:**
 

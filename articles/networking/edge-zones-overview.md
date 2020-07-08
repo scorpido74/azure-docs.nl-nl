@@ -5,14 +5,14 @@ services: vnf-manager
 author: ganesr
 ms.service: vnf-manager
 ms.topic: article
-ms.date: 04/02/2020
+ms.date: 07/07/2020
 ms.author: ganesr
-ms.openlocfilehash: 90e796c244950d6d374a02757b608099c229c1ea
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 65a5f7e261913fa38c41930cc44341ca872d1b44
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82146947"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86086888"
 ---
 # <a name="about-azure-edge-zone-preview"></a>Voor beeld van Azure Edge zone
 
@@ -74,7 +74,9 @@ Typische gebruiks voorbeelden zijn onder andere:
 
 Rand zones worden aangeboden in samen werking met de volgende Opera tors:
 
-- OP&T (Atlanta, Amsterdam en Los Angeles)
+- OP&T (Atlanta, Amsterdam en Los Angeles) 
+
+[Neem contact op met het team van de rand zone](https://aka.ms/EdgeZones) voor meer informatie.
 
 ## <a name="azure-private-edge-zones"></a><a name="private-edge-zones"></a>Azure-zones met persoonlijke randen
 

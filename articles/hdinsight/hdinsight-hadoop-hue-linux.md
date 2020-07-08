@@ -5,15 +5,15 @@ author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
-ms.topic: conceptual
+ms.topic: how-to
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.date: 03/31/2020
-ms.openlocfilehash: fabc8b7b2a97b75959eb7d82723d6af6bc55bbe5
-ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
+ms.openlocfilehash: ef30672e250e598688d1b81fd33fe0a995e78c7d
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/25/2020
-ms.locfileid: "83835475"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86087721"
 ---
 # <a name="install-and-use-hue-on-hdinsight-hadoop-clusters"></a>Tint op HDInsight Hadoop-clusters installeren en gebruiken
 
@@ -45,7 +45,7 @@ Gebruik de informatie in de onderstaande tabel voor uw script actie. Zie [HDInsi
 |Eigenschap |Waarde |
 |---|---|
 |Script type:|-Aangepast|
-|Naam|Kleur Toon installeren|
+|Name|Kleur Toon installeren|
 |Bash-script-URI|`https://hdiconfigactions.blob.core.windows.net/linuxhueconfigactionv02/install-hue-uber-v02.sh`|
 |Knooppunt type (n):|Head|
 
@@ -72,7 +72,9 @@ U kunt slechts één gebruikers account hebben met kleur Toon op gewone clusters
 
     Dit retourneert een naam die er ongeveer als volgt uitziet:
 
-        myhdi-nfebtpfdv1nubcidphpap2eq2b.ex.internal.cloudapp.net
+    ```output
+    myhdi-nfebtpfdv1nubcidphpap2eq2b.ex.internal.cloudapp.net
+    ```
 
     Dit is de hostnaam van de primaire hoofd knooppunt waar de website tint zich bevindt.
 
@@ -115,7 +117,7 @@ U kunt slechts één gebruikers account hebben met kleur Toon op gewone clusters
 
 1. Met kleur Toon kunnen Apache TEZ-taken niet worden uitgevoerd. Dit is de huidige standaard waarde voor Hive. Als u MapReduce wilt gebruiken als de engine voor het uitvoeren van de Hive, werkt u het script bij voor het gebruik van de volgende opdracht in uw script:
 
-         set hive.execution.engine=mr;
+   `set hive.execution.engine=mr;`
 
 1. Met Linux-clusters kunt u een scenario hebben waarin uw services worden uitgevoerd op de primaire hoofd knooppunt terwijl de Resource Manager kan worden uitgevoerd op de secundaire server. Dit scenario kan leiden tot fouten (zie hieronder) als u de details van actieve taken op het cluster wilt weer geven met behulp van tint. U kunt de taak Details echter bekijken wanneer de taak is voltooid.
 

@@ -10,12 +10,12 @@ ms.service: machine-learning
 ms.subservice: studio
 ms.topic: tutorial
 ms.date: 02/11/2019
-ms.openlocfilehash: 09026d7f2aeb25f9a7c4a3c31c4f8d0b4cdb223a
-ms.sourcegitcommit: 6a9f01bbef4b442d474747773b2ae6ce7c428c1f
+ms.openlocfilehash: 2e2edd7930ba4555748791210ad303c54f93c347
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84117818"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86086106"
 ---
 # <a name="tutorial-1-predict-credit-risk---azure-machine-learning-studio-classic"></a>Zelfstudie 1: Kredietrisico voorspellen – Azure Machine Learning Studio (klassiek)
 
@@ -99,11 +99,15 @@ In de oorspronkelijke gegevensset worden de gegevens gescheiden door witruimte. 
 
 Er zijn veel manieren om deze gegevens te converteren. Eén manier is de volgende Windows PowerShell-opdracht te gebruiken:   
 
-    cat german.data | %{$_ -replace " ",","} | sc german.csv  
+```powershell
+cat german.data | %{$_ -replace " ",","} | sc german.csv  
+```
 
 Een andere manier is met behulp van de sed-opdracht van Unix:  
 
-    sed 's/ /,/g' german.data > german.csv  
+```console
+sed 's/ /,/g' german.data > german.csv
+```
 
 In beide gevallen hebt u een door komma's gescheiden versie van de gegevens gemaakt in een bestand met de naam **german.csv** dat u in uw experiment kunt gebruiken.
 
@@ -256,11 +260,13 @@ U kunt deze replicatie uitvoeren met behulp van R-code:
 
 1. Verwijder in het deelvenster **Properties** (eigenschappen), de standaardtekst bij de parameter **R Script** en voer het volgende script in:
    
-       dataset1 <- maml.mapInputPort(1)
-       data.set<-dataset1[dataset1[,21]==1,]
-       pos<-dataset1[dataset1[,21]==2,]
-       for (i in 1:5) data.set<-rbind(data.set,pos)
-       maml.mapOutputPort("data.set")
+    ```r
+    dataset1 <- maml.mapInputPort(1)
+    data.set<-dataset1[dataset1[,21]==1,]
+    pos<-dataset1[dataset1[,21]==2,]
+    for (i in 1:5) data.set<-rbind(data.set,pos)
+    maml.mapOutputPort("data.set")
+    ```
 
     ![R-script in de module Execute R Script](./media/tutorial-part1-credit-risk/execute-r-script.png)
 

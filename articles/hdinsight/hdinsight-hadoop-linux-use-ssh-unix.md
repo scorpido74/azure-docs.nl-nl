@@ -5,15 +5,15 @@ author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
-ms.topic: conceptual
+ms.topic: how-to
 ms.custom: H1Hack27Feb2017,hdinsightactive,hdiseo17may2017,seoapr2020
 ms.date: 02/28/2020
-ms.openlocfilehash: 476f265d9658d08ef62647e707c0594af8cda480
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 074b1571cea6c102a00fcefe7934cad0ded8458d
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82192022"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86087653"
 ---
 # <a name="connect-to-hdinsight-apache-hadoop-using-ssh"></a>Verbinding maken met HDInsight (Apache Hadoop) via SSH
 
@@ -72,7 +72,9 @@ Als uw SSH-account wordt beveiligd met een sleutel, moet de client tijdens het v
 
 Gebruik de opdracht `ssh-keygen` om openbare- en privésleutelbestanden te maken. Met de volgende opdracht maakt u een 2048-bits RSA-sleutelpaar dat kan worden gebruikt met HDInsight:
 
-    ssh-keygen -t rsa -b 2048
+```azurepowershell-interactive
+ssh-keygen -t rsa -b 2048
+```
 
 U wordt gevraagd om informatie tijdens het proces voor het maken van een sleutel. U moet bijvoorbeeld opgeven waar de sleutels worden opgeslagen en er wordt gevraagd of u een wachtwoordzin wilt gebruiken. Wanneer het proces is voltooid, worden er twee bestanden gemaakt: een openbare sleutel en een privésleutel.
 
@@ -89,7 +91,7 @@ U wordt gevraagd om informatie tijdens het proces voor het maken van een sleutel
 | ------- | ------- |
 | Azure Portal | Schakel het selectie vakje __aanmeldings wachtwoord voor een cluster gebruiken voor SSH__uit en selecteer vervolgens __open bare sleutel__ als het type SSH-verificatie. Tot slot selecteert u het openbare-sleutelbestand of plakt u de tekstinhoud van het bestand in het veld __Openbare SSH-sleutel__.</br>![Dialoogvenster voor de openbare SSH-sleutel tijdens het maken van een HDInsight-cluster](./media/hdinsight-hadoop-linux-use-ssh-unix/create-hdinsight-ssh-public-key.png) |
 | Azure PowerShell | Gebruik de `-SshPublicKey` para meter van de cmdlet [New-AzHdinsightCluster](https://docs.microsoft.com/powershell/module/az.hdinsight/new-azhdinsightcluster) en geef de inhoud van de open bare sleutel door als een teken reeks.|
-| Azure CLI | Gebruik de `--sshPublicKey` para meter van [`az hdinsight create`](https://docs.microsoft.com/cli/azure/hdinsight?view=azure-cli-latest#az-hdinsight-create) de opdracht en geef de inhoud van de open bare sleutel door als een teken reeks. |
+| Azure CLI | Gebruik de `--sshPublicKey` para meter van de [`az hdinsight create`](https://docs.microsoft.com/cli/azure/hdinsight?view=azure-cli-latest#az-hdinsight-create) opdracht en geef de inhoud van de open bare sleutel door als een teken reeks. |
 | Resource Manager-sjabloon | Zie [HDInsight op Linux implementeren met een SSH-sleutel](https://azure.microsoft.com/resources/templates/101-hdinsight-linux-ssh-publickey/) voor een voorbeeld van het gebruik van SSH-sleutels met een sjabloon. Het `publicKeys`-element in het bestand [azuredeploy.json](https://github.com/Azure/azure-quickstart-templates/blob/master/101-hdinsight-linux-ssh-publickey/azuredeploy.json) wordt gebruikt om sleutels door te geven aan Azure bij het maken van het cluster. |
 
 ## <a name="authentication-password"></a>Verificatie: wachtwoord
@@ -107,8 +109,8 @@ SSH-accounts kunnen worden beveiligd met een wachtwoord. Wanneer u via SSH verbi
 | Methode voor het maken | Het wachtwoord specificeren |
 | --------------- | ---------------- |
 | Azure Portal | Het SSH-gebruikersaccount heeft standaard hetzelfde wachtwoord als het aanmeldingsaccount van het cluster. Als u een ander wacht woord wilt gebruiken, schakelt u het selectie vakje __cluster aanmeldings wachtwoord gebruiken voor SSH__uit en voert u het wacht woord in het veld __SSH-wacht__ woord in.</br>![Dialoogvenster voor het SSH-wachtwoord tijdens het maken van een HDInsight-cluster](./media/hdinsight-hadoop-linux-use-ssh-unix/create-hdinsight-ssh-password.png)|
-| Azure PowerShell | Gebruik de `--SshCredential` para meter van de cmdlet [New-AzHdinsightCluster](https://docs.microsoft.com/powershell/module/az.hdinsight/new-azhdinsightcluster) en geef `PSCredential` een object door dat de naam en het wacht woord van het SSH-gebruikers account bevat. |
-| Azure CLI | Gebruik de `--ssh-password` para meter van [`az hdinsight create`](https://docs.microsoft.com/cli/azure/hdinsight?view=azure-cli-latest#az-hdinsight-create) de opdracht en geef de waarde voor het wacht woord op. |
+| Azure PowerShell | Gebruik de `--SshCredential` para meter van de cmdlet [New-AzHdinsightCluster](https://docs.microsoft.com/powershell/module/az.hdinsight/new-azhdinsightcluster) en geef een `PSCredential` object door dat de naam en het wacht woord van het SSH-gebruikers account bevat. |
+| Azure CLI | Gebruik de `--ssh-password` para meter van de [`az hdinsight create`](https://docs.microsoft.com/cli/azure/hdinsight?view=azure-cli-latest#az-hdinsight-create) opdracht en geef de waarde voor het wacht woord op. |
 | Resource Manager-sjabloon | Zie [HDInsight op Linux implementeren met een SSH-wachtwoord](https://azure.microsoft.com/resources/templates/101-hdinsight-linux-ssh-password/) voor een voorbeeld van het gebruik met een wachtwoord met een sjabloon. Het `linuxOperatingSystemProfile`-element in het bestand [azuredeploy.json](https://github.com/Azure/azure-quickstart-templates/blob/master/101-hdinsight-linux-ssh-password/azuredeploy.json) wordt gebruikt om de SSH-accountnaam en het wachtwoord door te geven aan Azure bij het maken van het cluster.|
 
 ### <a name="change-the-ssh-password"></a>Het SSH-wachtwoord wijzigen
@@ -117,7 +119,7 @@ Zie het gedeelte __Wachtwoorden wijzigen__ van het document [HDInsight beheren](
 
 ## <a name="authentication-domain-joined-hdinsight"></a>HDInsight toegevoegd aan het verificatie domein
 
-Als u gebruikmaakt van een __HDInsight-cluster__dat is gekoppeld aan een domein, `kinit` moet u de opdracht gebruiken nadat u verbinding hebt gemaakt met een lokale ssh-gebruiker. Met deze opdracht wordt u om een domeingebruiker en een wachtwoord gevraagd. Uw sessie wordt geverifieerd bij het Azure Active Directory-domein dat is gekoppeld aan het cluster.
+Als u gebruikmaakt van een __HDInsight-cluster__dat is gekoppeld aan een domein, moet u de `kinit` opdracht gebruiken nadat u verbinding hebt gemaakt met een lokale ssh-gebruiker. Met deze opdracht wordt u om een domeingebruiker en een wachtwoord gevraagd. Uw sessie wordt geverifieerd bij het Azure Active Directory-domein dat is gekoppeld aan het cluster.
 
 U kunt ook Kerberos-verificatie inschakelen op elk knoop punt dat lid is van het domein (bijvoorbeeld hoofd knooppunt, Edge-knoop punt) om SSH te maken met behulp van het domein account. Hiervoor moet u het bestand sshd config bewerken:
 
@@ -217,7 +219,7 @@ Als het SSH-account is beveiligd met __SSH-sleutels__, moet SSH-forwarding zijn 
     /tmp/ssh-rfSUL1ldCldQ/agent.1792
     ```
 
-    Als er niets wordt geretourneerd, `ssh-agent` wordt niet uitgevoerd. Raadpleeg voor meer informatie de opstartscriptinformatie voor agents in [ssh-agent gebruiken met ssh (http://mah.everybody.org/docs/ssh)](http://mah.everybody.org/docs/ssh) of raadpleeg de documentatie bij de SSH-client.
+    Als er niets wordt geretourneerd, wordt `ssh-agent` niet uitgevoerd. Raadpleeg voor meer informatie de opstartscriptinformatie voor agents in [ssh-agent gebruiken met ssh (http://mah.everybody.org/docs/ssh)](http://mah.everybody.org/docs/ssh) of raadpleeg de documentatie bij de SSH-client.
 
 4. Nadat u hebt gecontroleerd of de **SSH-agent** wordt uitgevoerd, gebruikt u het volgende om uw persoonlijke SSH-sleutel toe te voegen aan de agent:
 

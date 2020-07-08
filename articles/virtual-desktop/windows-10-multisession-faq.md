@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 02/19/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: d6aa1fc1e5978f59fc01dd41a89800629fa60ded
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 218ec6a5beab32729e106a7397d58ebaa2a30123
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84735095"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86086922"
 ---
 # <a name="windows-10-enterprise-multi-session-faq"></a>Veelgestelde vragen over meervoudige Windows 10 Enterprise-sessies
 
@@ -61,7 +61,7 @@ De Azure Gallery bevat verschillende versies, waaronder Windows 10 Enter prise m
  
 ## <a name="which-windows-10-enterprise-multi-session-versions-are-supported"></a>Welke versies van Windows 10 Enter prise met meerdere sessies worden ondersteund?
 
-Windows 10 Enter prise meerdere sessies, versie 1809 en hoger worden ondersteund en zijn beschikbaar in de Azure Gallery. Deze releases volgen hetzelfde levenscyclus beleid voor de levens cyclus als Windows 10 Enter prise. Dit betekent dat de lente release gedurende 18 maanden en de herfst-release 30 maanden wordt ondersteund.
+Windows 10 Enter prise meerdere sessies, versie 1809 en hoger worden ondersteund en zijn beschikbaar in de Azure Gallery. Deze releases volgen hetzelfde ondersteunings levenscyclus beleid als Windows 10 Enter prise. Dit betekent dat de versie van maart wordt ondersteund voor 18 maanden en de release van september gedurende 30 maanden.
  
 ## <a name="which-profile-management-solution-should-i-use-for-windows-10-enterprise-multi-session"></a>Welke oplossing voor Profiel beheer moet ik gebruiken voor meerdere sessies van Windows 10 Enter prise?
 

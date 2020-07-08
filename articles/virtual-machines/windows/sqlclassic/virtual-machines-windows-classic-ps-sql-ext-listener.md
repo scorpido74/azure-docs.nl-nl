@@ -15,11 +15,12 @@ ms.workload: iaas-sql-server
 ms.date: 05/31/2017
 ms.author: mikeray
 ms.custom: seo-lt-2019
-ms.openlocfilehash: ca13d5e8369d007188a17352913519172ed8744e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 4517a600acaf581ad240d634e89bba3984f835db
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "75978181"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86087330"
 ---
 # <a name="configure-an-external-listener-for-availability-groups-on-azure-sql-server-vms"></a>Een externe listener configureren voor beschikbaarheids groepen op Azure SQL Server Vm's
 > [!div class="op_single_selector"]
@@ -61,22 +62,26 @@ U moet een eind punt met gelijke taak verdeling maken voor elke VM die als host 
 5. Start **Azure PowerShell**. Er wordt een nieuwe Power shell-sessie geopend met de Azure-beheer modules geladen.
 6. Voer **Get-AzurePublishSettingsFile**uit. Met deze cmdlet wordt u omgeleid naar een browser voor het downloaden van een bestand met publicatie-instellingen naar een lokale map. U wordt mogelijk gevraagd om uw aanmeldings referenties voor uw Azure-abonnement.
 7. Voer de opdracht **import-AzurePublishSettingsFile** uit met het pad van het publicatie-instellingen bestand dat u hebt gedownload:
-   
-        Import-AzurePublishSettingsFile -PublishSettingsFile <PublishSettingsFilePath>
-   
+
+    ```powershell
+    Import-AzurePublishSettingsFile -PublishSettingsFile <PublishSettingsFilePath>
+    ```
+
     Zodra het publicatie-instellingen bestand is geïmporteerd, kunt u uw Azure-abonnement beheren in de Power shell-sessie.
     
 1. Kopieer het onderstaande Power shell-script naar een tekst editor en stel de waarden van de variabele in op uw omgeving (de standaard waarden zijn opgegeven voor sommige para meters). Als uw beschikbaarheids groep Azure-regio's omvat, moet u het script eenmaal uitvoeren in elk Data Center voor de Cloud service en knoop punten die zich in dat Data Center bevinden.
+
+    ```powershell
+    # Define variables
+    $ServiceName = "<MyCloudService>" # the name of the cloud service that contains the availability group nodes
+    $AGNodes = "<VM1>","<VM2>","<VM3>" # all availability group nodes containing replicas in the same cloud service, separated by commas
    
-        # Define variables
-        $ServiceName = "<MyCloudService>" # the name of the cloud service that contains the availability group nodes
-        $AGNodes = "<VM1>","<VM2>","<VM3>" # all availability group nodes containing replicas in the same cloud service, separated by commas
-   
-        # Configure a load balanced endpoint for each node in $AGNodes, with direct server return enabled
-        ForEach ($node in $AGNodes)
-        {
-            Get-AzureVM -ServiceName $ServiceName -Name $node | Add-AzureEndpoint -Name "ListenerEndpoint" -Protocol "TCP" -PublicPort 1433 -LocalPort 1433 -LBSetName "ListenerEndpointLB" -ProbePort 59999 -ProbeProtocol "TCP" -DirectServerReturn $true | Update-AzureVM
-        }
+    # Configure a load balanced endpoint for each node in $AGNodes, with direct server return enabled
+    ForEach ($node in $AGNodes)
+    {
+        Get-AzureVM -ServiceName $ServiceName -Name $node | Add-AzureEndpoint -Name "ListenerEndpoint" -Protocol "TCP" -PublicPort 1433 -LocalPort 1433 -LBSetName "ListenerEndpointLB" -ProbePort 59999 -ProbeProtocol "TCP" -DirectServerReturn $true | Update-AzureVM
+    }
+    ```
 
 2. Nadat u de variabelen hebt ingesteld, kopieert u het script van de tekst editor naar uw Azure PowerShell-sessie om het uit te voeren. Als de prompt nog >> wordt weer gegeven, typt u nogmaals ENTER om te controleren of het script wordt uitgevoerd.
 
@@ -97,18 +102,21 @@ Maak de beschikbaarheids groep-listener in twee stappen. Maak eerst de cluster b
 1. Voor externe taak verdeling moet u het open bare virtuele IP-adres van de Cloud service met uw replica's ophalen. Meld u aan bij de Azure-portal. Ga naar de Cloud service die de virtuele machine met de beschikbaarheids groep bevat. Open de **Dashboard** weergave.
 2. Noteer het adres dat wordt weer gegeven onder het **open bare VIP-adres (virtuele IP)**. Als uw oplossing VNets omvat, herhaalt u deze stap voor elke Cloud service die een virtuele machine bevat die als host fungeert voor een replica.
 3. Kopieer op een van de virtuele machines het Power shell-script hieronder naar een tekst editor en stel de variabelen in op de waarden die u eerder hebt genoteerd.
+
+    ```powershell
+    # Define variables
+    $ClusterNetworkName = "<ClusterNetworkName>" # the cluster network name (Use Get-ClusterNetwork on Windows Server 2012 of higher to find the name)
+    $IPResourceName = "<IPResourceName>" # the IP Address resource name
+    $CloudServiceIP = "<X.X.X.X>" # Public Virtual IP (VIP) address of your cloud service
    
-        # Define variables
-        $ClusterNetworkName = "<ClusterNetworkName>" # the cluster network name (Use Get-ClusterNetwork on Windows Server 2012 of higher to find the name)
-        $IPResourceName = "<IPResourceName>" # the IP Address resource name
-        $CloudServiceIP = "<X.X.X.X>" # Public Virtual IP (VIP) address of your cloud service
+    Import-Module FailoverClusters
    
-        Import-Module FailoverClusters
+    # If you are using Windows Server 2012 or higher, use the Get-Cluster Resource command. If you are using Windows Server 2008 R2, use the cluster res command. Both commands are commented out. Choose the one applicable to your environment and remove the # at the beginning of the line to convert the comment to an executable line of code.
    
-        # If you are using Windows Server 2012 or higher, use the Get-Cluster Resource command. If you are using Windows Server 2008 R2, use the cluster res command. Both commands are commented out. Choose the one applicable to your environment and remove the # at the beginning of the line to convert the comment to an executable line of code.
-   
-        # Get-ClusterResource $IPResourceName | Set-ClusterParameter -Multiple @{"Address"="$CloudServiceIP";"ProbePort"="59999";"SubnetMask"="255.255.255.255";"Network"="$ClusterNetworkName";"OverrideAddressMatch"=1;"EnableDhcp"=0}
-        # cluster res $IPResourceName /priv enabledhcp=0 overrideaddressmatch=1 address=$CloudServiceIP probeport=59999  subnetmask=255.255.255.255
+    # Get-ClusterResource $IPResourceName | Set-ClusterParameter -Multiple @{"Address"="$CloudServiceIP";"ProbePort"="59999";"SubnetMask"="255.255.255.255";"Network"="$ClusterNetworkName";"OverrideAddressMatch"=1;"EnableDhcp"=0}
+    # cluster res $IPResourceName /priv enabledhcp=0 overrideaddressmatch=1 address=$CloudServiceIP probeport=59999  subnetmask=255.255.255.255
+    ```
+
 4. Nadat u de variabelen hebt ingesteld, opent u een Windows Power shell-venster met verhoogde bevoegdheden en kopieert u het script uit de tekst editor en plakt u het in uw Azure PowerShell-sessie om het uit te voeren. Als de prompt nog >> wordt weer gegeven, typt u nogmaals ENTER om te controleren of het script wordt uitgevoerd.
 5. Herhaal dit op elke virtuele machine. Met dit script wordt de IP-adres bron geconfigureerd met het IP-adres van de Cloud service en worden andere para meters ingesteld, zoals de test poort. Wanneer de IP-adres bron online wordt gebracht, kan deze reageren op de polling op de test poort van het eind punt met taak verdeling dat eerder in deze zelf studie is gemaakt.
 
@@ -124,7 +132,9 @@ Maak de beschikbaarheids groep-listener in twee stappen. Maak eerst de cluster b
 ## <a name="test-the-availability-group-listener-over-the-internet"></a>De listener voor de beschikbaarheids groep testen (via internet)
 Als u toegang wilt krijgen tot de listener van buiten het virtuele netwerk, moet u externe/open bare taak verdeling gebruiken (zoals beschreven in dit onderwerp) in plaats van ILB, die alleen toegankelijk is in hetzelfde VNet. Geef in het connection string de naam van de Cloud service op. Als u bijvoorbeeld een Cloud service met de naam *mycloudservice*had, zou de Sqlcmd-instructie er als volgt uitzien:
 
-    sqlcmd -S "mycloudservice.cloudapp.net,<EndpointPort>" -d "<DatabaseName>" -U "<LoginId>" -P "<Password>"  -Q "select @@servername, db_name()" -l 15
+```console
+sqlcmd -S "mycloudservice.cloudapp.net,<EndpointPort>" -d "<DatabaseName>" -U "<LoginId>" -P "<Password>"  -Q "select @@servername, db_name()" -l 15
+```
 
 In tegens telling tot het vorige voor beeld moet SQL-verificatie worden gebruikt, omdat de aanroeper geen Windows-verificatie via internet kan gebruiken. Zie AlwaysOn- [beschikbaarheids groep in azure VM: client connectiviteits scenario's](https://blogs.msdn.com/b/sqlcat/archive/2014/02/03/alwayson-availability-group-in-windows-azure-vm-client-connectivity-scenarios.aspx)voor meer informatie. Wanneer u SQL-verificatie gebruikt, moet u dezelfde aanmelding op beide replica's maken. Zie [aanmeldingen toewijzen of opgenomen SQL database gebruiker om verbinding te maken met andere replica's en te koppelen aan beschikbaarheids databases](https://blogs.msdn.com/b/alwaysonpro/archive/2014/02/19/how-to-map-logins-or-use-contained-sql-database-user-to-connect-to-other-replicas-and-map-to-availability-databases.aspx)voor meer informatie over het oplossen van problemen met aanmeldingen met beschikbaarheids groepen.
 

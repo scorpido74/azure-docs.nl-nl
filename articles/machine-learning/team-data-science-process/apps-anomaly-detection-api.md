@@ -11,11 +11,12 @@ ms.topic: article
 ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=alokkirpal, previous-ms.author=alok
-ms.openlocfilehash: 269cadc50d55c4b986c55f489cecd7fa17922ba8
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: f3f35bb7002ea976305b31a27fa6efebecf07710
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83656540"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86087160"
 ---
 # <a name="machine-learning-anomaly-detection-api"></a>Machine Learning anomalie detectie-API
 
@@ -62,44 +63,48 @@ Als u de API wilt aanroepen, moet u weten wat de locatie van het eind punt en de
 ### <a name="sample-request-body"></a>Voorbeeld aanvraag tekst
 De aanvraag bevat twee objecten: `Inputs` en `GlobalParameters` .  In het onderstaande voor beeld wordt een aantal para meters expliciet verzonden en andere niet (Schuif omlaag voor een volledige lijst met para meters voor elk eind punt).  In para meters die niet expliciet in de aanvraag worden verzonden, worden de volgende standaard waarden gebruikt.
 
-    {
-                "Inputs": {
-                        "input1": {
-                                "ColumnNames": ["Time", "Data"],
-                                "Values": [
-                                        ["5/30/2010 18:07:00", "1"],
-                                        ["5/30/2010 18:08:00", "1.4"],
-                                        ["5/30/2010 18:09:00", "1.1"]
-                                ]
-                        }
-                },
-        "GlobalParameters": {
-            "tspikedetector.sensitivity": "3",
-            "zspikedetector.sensitivity": "3",
-            "bileveldetector.sensitivity": "3.25",
-            "detectors.spikesdips": "Both"
-        }
+```json
+{
+            "Inputs": {
+                    "input1": {
+                            "ColumnNames": ["Time", "Data"],
+                            "Values": [
+                                    ["5/30/2010 18:07:00", "1"],
+                                    ["5/30/2010 18:08:00", "1.4"],
+                                    ["5/30/2010 18:09:00", "1.1"]
+                            ]
+                    }
+            },
+    "GlobalParameters": {
+        "tspikedetector.sensitivity": "3",
+        "zspikedetector.sensitivity": "3",
+        "bileveldetector.sensitivity": "3.25",
+        "detectors.spikesdips": "Both"
     }
+}
+```
 
 ### <a name="sample-response"></a>Voorbeeldreactie
 Als u het veld wilt zien `ColumnNames` , moet u `details=true` als een URL-para meter in uw aanvraag toevoegen.  Zie de onderstaande tabellen voor de betekenis achter elk van deze velden.
 
-    {
-        "Results": {
-            "output1": {
-                "type": "table",
-                "value": {
-                    "Values": [
-                        ["5/30/2010 6:07:00 PM", "1", "1", "0", "0", "-0.687952590518378", "0", "-0.687952590518378", "0", "-0.687952590518378", "0"],
-                        ["5/30/2010 6:08:00 PM", "1.4", "1.4", "0", "0", "-1.07030497733224", "0", "-0.884548154298423", "0", "-1.07030497733224", "0"],
-                        ["5/30/2010 6:09:00 PM", "1.1", "1.1", "0", "0", "-1.30229513613974", "0", "-1.173800281031", "0", "-1.30229513613974", "0"]
-                    ],
-                    "ColumnNames": ["Time", "OriginalData", "ProcessedData", "TSpike", "ZSpike", "BiLevelChangeScore", "BiLevelChangeAlert", "PosTrendScore", "PosTrendAlert", "NegTrendScore", "NegTrendAlert"],
-                    "ColumnTypes": ["DateTime", "Double", "Double", "Double", "Double", "Double", "Int32", "Double", "Int32", "Double", "Int32"]
-                }
+```json
+{
+    "Results": {
+        "output1": {
+            "type": "table",
+            "value": {
+                "Values": [
+                    ["5/30/2010 6:07:00 PM", "1", "1", "0", "0", "-0.687952590518378", "0", "-0.687952590518378", "0", "-0.687952590518378", "0"],
+                    ["5/30/2010 6:08:00 PM", "1.4", "1.4", "0", "0", "-1.07030497733224", "0", "-0.884548154298423", "0", "-1.07030497733224", "0"],
+                    ["5/30/2010 6:09:00 PM", "1.1", "1.1", "0", "0", "-1.30229513613974", "0", "-1.173800281031", "0", "-1.30229513613974", "0"]
+                ],
+                "ColumnNames": ["Time", "OriginalData", "ProcessedData", "TSpike", "ZSpike", "BiLevelChangeScore", "BiLevelChangeAlert", "PosTrendScore", "PosTrendAlert", "NegTrendScore", "NegTrendAlert"],
+                "ColumnTypes": ["DateTime", "Double", "Double", "Double", "Double", "Double", "Int32", "Double", "Int32", "Double", "Int32"]
             }
         }
     }
+}
+```
 
 
 ## <a name="score-api"></a>Score-API
@@ -110,7 +115,7 @@ In de afbeelding hieronder ziet u een voor beeld van afwijkingen die de Score-AP
 ### <a name="detectors"></a>Detectoren
 De anomalie detectie-API ondersteunt detectoren in drie algemene categorieën. Meer informatie over specifieke invoer parameters en uitvoer voor elke detector vindt u in de volgende tabel.
 
-| Detector categorie | Detectie | Description | Invoerparameters | Uitvoerwaarden |
+| Detector categorie | Detectie | Description | Invoerparameters | Uitvoer |
 | --- | --- | --- | --- | --- |
 | Piek detectoren |TSpike detector |Spoor pieken en spannings dips op basis van de waarden uit het eerste en derde kwartiel |*tspikedetector. sensitivity:* Hiermee wordt een geheel getal in het bereik 1-10, standaard waarde: 3, gebruikt. Bij hogere waarden worden er meer extreme waarden onderschept waardoor deze minder gevoelig zijn |TSpike: binaire waarden – ' 1 ' als een Prikker/DIP wordt gedetecteerd, ' 0 ' anders |
 | Piek detectoren | ZSpike detector |Pieken en spannings dips detecteren op basis van de betekenis van de data Points |*zspikedetector. sensitivity:* waarde voor geheel getal in het bereik 1-10 opgeven, standaard: 3; Bij hogere waarden worden er meer extreme waarden onderschept waardoor deze minder gevoelig zijn |ZSpike: binaire waarden – ' 1 ' als een Prikker/DIP wordt gedetecteerd, ' 0 ' anders |
@@ -133,7 +138,7 @@ Meer gedetailleerde informatie over deze invoer parameters vindt u in de volgend
 ### <a name="output"></a>Uitvoer
 De API voert alle detectoren uit op uw tijdreeks gegevens en retourneert afwijkende scores en binaire piek indicatoren voor elk tijdstip. De volgende tabel bevat de uitvoer van de API.
 
-| Uitvoerwaarden | Description |
+| Uitvoer | Description |
 | --- | --- |
 | Tijd |Tijds tempels van onbewerkte gegevens, of geaggregeerd (en/of) toegerekende gegevens als aggregatie (en/of) ontbrekende gegevens toerekening is toegepast |
 | Gegevens |Waarden van onbewerkte gegevens, of geaggregeerd (en/of) toegerekende gegevens als aggregatie (en/of) ontbrekende gegevens toerekening is toegepast |
@@ -176,7 +181,7 @@ Meer gedetailleerde informatie over deze invoer parameters vindt u in de volgend
 ### <a name="output"></a>Uitvoer
 De API voert alle detectoren uit op uw tijdreeks gegevens en retourneert afwijkende scores en binaire piek indicatoren voor elk tijdstip. De volgende tabel bevat de uitvoer van de API.
 
-| Uitvoerwaarden | Description |
+| Uitvoer | Description |
 | --- | --- |
 | Tijd |Tijds tempels van onbewerkte gegevens, of geaggregeerd (en/of) toegerekende gegevens als aggregatie (en/of) ontbrekende gegevens toerekening is toegepast |
 | OriginalData |Waarden van onbewerkte gegevens, of geaggregeerd (en/of) toegerekende gegevens als aggregatie (en/of) ontbrekende gegevens toerekening is toegepast |

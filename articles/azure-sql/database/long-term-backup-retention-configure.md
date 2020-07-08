@@ -1,6 +1,6 @@
 ---
 title: 'Azure SQL Database: Bewaar periode voor lange termijn back-ups beheren'
-description: Meer informatie over het opslaan en herstellen van automatische back-ups voor een Azure SQL Database enkele of gegroepeerde Data base in azure Storage (Maxi maal tien jaar) met behulp van de Azure Portal en Power shell
+description: Meer informatie over het opslaan en herstellen van automatische back-ups voor Azure SQL Database in azure Storage (Maxi maal tien jaar) met behulp van de Azure Portal en Power shell
 services: sql-database
 ms.service: sql-db-mi
 ms.subservice: backup-restore
@@ -11,11 +11,12 @@ author: anosov1960
 ms.author: sashan
 ms.reviewer: mathoma, carlrab
 ms.date: 04/14/2020
-ms.openlocfilehash: e3abe203c32994c63ddd1cecc45cbcc8b566c45a
-ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
+ms.openlocfilehash: 713ac569acb7866b4c7431b80e2afb1e7953ce08
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86027905"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86087347"
 ---
 # <a name="manage-azure-sql-database-long-term-backup-retention"></a>Azure SQL Database lange termijn retentie van back-ups beheren
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -186,7 +187,7 @@ Remove-AzSqlDatabaseLongTermRetentionBackup -ResourceId $ltrBackup.ResourceId
 
 ### <a name="restore-from-ltr-backups"></a>Herstellen vanuit LTR-back-ups
 
-In dit voor beeld ziet u hoe u een LTR-back-up herstelt. Opmerking: deze interface is niet gewijzigd, maar voor de resource-id-para meter is nu de bron-id LTR backup vereist.
+In dit voor beeld ziet u hoe u een LTR-back-up herstelt. Opmerking: deze interface is niet gewijzigd, maar voor de resource-ID-para meter is nu de bron-ID LTR backup vereist.
 
 ```powershell
 # restore a specific LTR backup as an P1 database on the server $serverName of the resource group $resourceGroup

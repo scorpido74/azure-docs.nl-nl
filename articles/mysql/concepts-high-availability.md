@@ -6,12 +6,12 @@ ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 3/18/2020
-ms.openlocfilehash: a793de35ffff84009d362f005e599b4419f0763f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 50bf1502589ea0932fd45367c039e6e37135d761
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "79532770"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86086055"
 ---
 # <a name="high-availability-concepts-in-azure-database-for-mysql"></a>Concepten met hoge Beschik baarheid in Azure Database for MySQL
 De Azure Database for MySQL-service biedt een gegarandeerd hoog niveau van Beschik baarheid. De financieel ondersteunde service level agreement (SLA) is 99,99% bij de algemene Beschik baarheid. Er is bijna geen toepassings tijd meer wanneer u deze service gebruikt.
@@ -29,7 +29,7 @@ Een gateway wordt intern in azure gebruikt om de verbindingen met het nieuwe exe
 ## <a name="scaling-up-or-down"></a>Omhoog of omlaag schalen
 Net als bij het HA-model, wanneer een Azure Database for MySQL omhoog of omlaag wordt geschaald, een nieuw Server exemplaar met de opgegeven grootte wordt gemaakt. De bestaande gegevens opslag wordt losgekoppeld van het oorspronkelijke exemplaar en gekoppeld aan het nieuwe exemplaar.
 
-Tijdens de schaal bewerking vindt een onderbreking van de database verbindingen plaats. De client toepassingen worden losgekoppeld en de open niet-doorgevoerde trans acties worden geannuleerd. Zodra de client toepassing de verbinding opnieuw probeert te maken of een nieuwe verbinding maakt, stuurt de gateway de verbinding naar het exemplaar met de nieuwe grootte. 
+Tijdens de schaal bewerking vindt een onderbreking van de database verbindingen plaats. De client toepassingen worden losgekoppeld en de open niet-doorgevoerde trans acties worden geannuleerd. Zodra de client toepassing de verbinding opnieuw probeert te maken of een nieuwe verbinding maakt, stuurt de gateway de verbinding naar het exemplaar met de nieuwe grootte.
 
 ## <a name="next-steps"></a>Volgende stappen
 - Meer informatie over het [verwerken van tijdelijke connectiviteits fouten](concepts-connectivity.md)

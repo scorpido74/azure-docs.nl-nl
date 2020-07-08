@@ -12,11 +12,12 @@ ms.workload: data-services
 ms.custom: seo-lt-2019
 ms.topic: article
 ms.date: 02/20/2020
-ms.openlocfilehash: d27905acc60e953ec5ed92e77d7a352c1c3fec8b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 13fcda03f3ccd0c28e1dce594c46b8c0d9449054
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84196567"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86086565"
 ---
 # <a name="migrate-sql-server-integration-services-packages-to-an-azure-sql-managed-instance"></a>SQL Server Integration Services-pakketten migreren naar een beheerd exemplaar van Azure SQL
 Als u SQL Server Integration Services (SSIS) gebruikt en u uw SSIS-projecten/-pakketten wilt migreren van de bron-SSISDB die wordt gehost door SQL Server naar de doel-SSISDB die wordt gehost door een door Azure SQL beheerd exemplaar, kunt u Azure Database Migration Service gebruiken.
@@ -84,7 +85,7 @@ Hoewel de evaluatie van de bron-SSISDB nog niet is geïntegreerd in de data base
 
     Zie het artikel [een virtueel netwerk maken met behulp van de Azure Portal](https://aka.ms/DMSVnet)voor meer informatie over het maken van een virtueel netwerk in azure Portal.
 
-    Zie het artikel [Netwerktopologieën voor migraties van Azure SQL Database Managed Instance met behulp van de Azure Database Migration Service](https://aka.ms/dmsnetworkformi) voor aanvullende informatie.
+    Zie het artikel [netwerk topologieën voor Azure SQL Managed instance-migraties met behulp van de Azure database Migration service](https://aka.ms/dmsnetworkformi)voor meer informatie.
 
 6. Selecteer een prijscategorie.
 

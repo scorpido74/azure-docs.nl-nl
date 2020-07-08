@@ -10,12 +10,12 @@ author: likebupt
 ms.author: keli19
 ms.custom: seodec18
 ms.date: 02/14/2019
-ms.openlocfilehash: 601717ce487f8564ed2d431db9b31a3b43fcee75
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: ee2a830d8d87ff2d82825791cb4d3554232cfa12
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84706083"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86086157"
 ---
 # <a name="retrain-and-deploy-a-machine-learning-model"></a>Een machine learning model opnieuw trainen en implementeren
 
@@ -76,7 +76,9 @@ Op de volgende scherm afbeelding ziet u de pagina **verbruik** in de Azure machi
 
 Zoek de **apikey** -declaratie:
 
-    const string apiKey = "abc123"; // Replace this with the API key for the web service
+```csharp
+const string apiKey = "abc123"; // Replace this with the API key for the web service
+```
 
 Zoek in de sectie **basis informatie** over het gebruik van de pagina **verbruik** de primaire sleutel en kopieer deze naar de **apikey** -declaratie.
 
@@ -94,9 +96,11 @@ De voorbeeld code BES uploadt een bestand van een lokaal station (bijvoorbeeld '
 
 Zoek de *StorageAccountName*-, *StorageAccountKey*-en *StorageContainerName* -declaraties en werk de waarden bij die u hebt opgeslagen in de portal.
 
-    const string StorageAccountName = "mystorageacct"; // Replace this with your Azure storage account name
-    const string StorageAccountKey = "a_storage_account_key"; // Replace this with your Azure Storage key
-    const string StorageContainerName = "mycontainer"; // Replace this with your Azure Storage container name
+```csharp
+const string StorageAccountName = "mystorageacct"; // Replace this with your Azure storage account name
+const string StorageAccountKey = "a_storage_account_key"; // Replace this with your Azure Storage key
+const string StorageContainerName = "mycontainer"; // Replace this with your Azure Storage container name
+```
 
 U moet er ook voor zorgen dat het invoer bestand beschikbaar is op de locatie die u opgeeft in de code.
 
@@ -104,15 +108,17 @@ U moet er ook voor zorgen dat het invoer bestand beschikbaar is op de locatie di
 
 Wanneer u de uitvoer locatie in de aanvraag lading opgeeft, moet de extensie van het bestand dat is opgegeven in *RelativeLocation* worden opgegeven als `ilearner` .
 
-    Outputs = new Dictionary<string, AzureBlobDataReference>() {
+```csharp
+Outputs = new Dictionary<string, AzureBlobDataReference>() {
+    {
+        "output1",
+        new AzureBlobDataReference()
         {
-            "output1",
-            new AzureBlobDataReference()
-            {
-                ConnectionString = storageConnectionString,
-                RelativeLocation = string.Format("{0}/output1results.ilearner", StorageContainerName) /*Replace this with the location you want to use for your output file and a valid file extension (usually .csv for scoring results or .ilearner for trained models)*/
-            }
-        },
+            ConnectionString = storageConnectionString,
+            RelativeLocation = string.Format("{0}/output1results.ilearner", StorageContainerName) /*Replace this with the location you want to use for your output file and a valid file extension (usually .csv for scoring results or .ilearner for trained models)*/
+        }
+    },
+```
 
 Hier volgt een voor beeld van het opnieuw trainen van uitvoer:
 
@@ -138,55 +144,67 @@ Meld u eerst aan bij uw Azure-account vanuit de Power shell-omgeving met behulp 
 
 Ga vervolgens naar het web service-definitie object door de cmdlet [Get-AzMlWebService](https://docs.microsoft.com/powershell/module/az.machinelearning/get-azmlwebservice) aan te roepen.
 
-    $wsd = Get-AzMlWebService -Name 'RetrainSamplePre.2016.8.17.0.3.51.237' -ResourceGroupName 'Default-MachineLearning-SouthCentralUS'
+```azurepowershell
+$wsd = Get-AzMlWebService -Name 'RetrainSamplePre.2016.8.17.0.3.51.237' -ResourceGroupName 'Default-MachineLearning-SouthCentralUS'
+```
 
 Als u de naam van de resource groep van een bestaande webservice wilt bepalen, voert u de cmdlet Get-AzMlWebService uit zonder para meters om de webservices in uw abonnement weer te geven. Zoek de webservice en controleer de webservice-ID. De naam van de resource groep is het vierde element in de ID, net na het *resourceGroups* -element. In het volgende voor beeld is de naam van de resource groep standaard-MachineLearning-SouthCentralUS.
 
-    Properties : Microsoft.Azure.Management.MachineLearning.WebServices.Models.WebServicePropertiesForGraph
-    Id : /subscriptions/<subscription ID>/resourceGroups/Default-MachineLearning-SouthCentralUS/providers/Microsoft.MachineLearning/webServices/RetrainSamplePre.2016.8.17.0.3.51.237
-    Name : RetrainSamplePre.2016.8.17.0.3.51.237
-    Location : South Central US
-    Type : Microsoft.MachineLearning/webServices
-    Tags : {}
+```azurepowershell
+Properties : Microsoft.Azure.Management.MachineLearning.WebServices.Models.WebServicePropertiesForGraph
+Id : /subscriptions/<subscription ID>/resourceGroups/Default-MachineLearning-SouthCentralUS/providers/Microsoft.MachineLearning/webServices/RetrainSamplePre.2016.8.17.0.3.51.237
+Name : RetrainSamplePre.2016.8.17.0.3.51.237
+Location : South Central US
+Type : Microsoft.MachineLearning/webServices
+Tags : {}
+```
 
 Als u de naam van de resource groep van een bestaande webservice wilt bepalen, meldt u zich aan bij de Azure Machine Learning Web Services-portal. Selecteer de webservice. De naam van de resource groep is het vijfde element van de URL van de webservice, net na het *resourceGroups* -element. In het volgende voor beeld is de naam van de resource groep standaard-MachineLearning-SouthCentralUS.
 
-    https://services.azureml.net/subscriptions/<subscription ID>/resourceGroups/Default-MachineLearning-SouthCentralUS/providers/Microsoft.MachineLearning/webServices/RetrainSamplePre.2016.8.17.0.3.51.237
+`https://services.azureml.net/subscriptions/<subscription ID>/resourceGroups/Default-MachineLearning-SouthCentralUS/providers/Microsoft.MachineLearning/webServices/RetrainSamplePre.2016.8.17.0.3.51.237`
 
 ### <a name="export-the-web-service-definition-object-as-json"></a>Het web service-definitie object exporteren als JSON
 
 Als u de definitie van het getrainde model voor het gebruik van het pas getrainde model wilt wijzigen, moet u eerst de cmdlet [export-AzMlWebService](https://docs.microsoft.com/powershell/module/az.machinelearning/export-azmlwebservice) gebruiken om het te exporteren naar een bestand met JSON-indeling.
 
-    Export-AzMlWebService -WebService $wsd -OutputFile "C:\temp\mlservice_export.json"
+```azurepowershell
+Export-AzMlWebService -WebService $wsd -OutputFile "C:\temp\mlservice_export.json"
+```
 
 ### <a name="update-the-reference-to-the-ilearner-blob"></a>De verwijzing naar de ilearner-BLOB bijwerken
 
 Zoek in de activa het [getrainde model], werk de *URI* -waarde in het *locationInfo* -knoop punt bij met de URI van de ilearner-blob. De URI wordt gegenereerd door het combi neren van de *BaseLocation* en de *RelativeLocation* van de uitvoer van de aanroep van de BES-training.
 
-     "asset3": {
-        "name": "Retrain Sample [trained model]",
-        "type": "Resource",
-        "locationInfo": {
-          "uri": "https://mltestaccount.blob.core.windows.net/azuremlassetscontainer/baca7bca650f46218633552c0bcbba0e.ilearner"
-        },
-        "outputPorts": {
-          "Results dataset": {
+```json
+"asset3": {
+    "name": "Retrain Sample [trained model]",
+    "type": "Resource",
+    "locationInfo": {
+        "uri": "https://mltestaccount.blob.core.windows.net/azuremlassetscontainer/baca7bca650f46218633552c0bcbba0e.ilearner"
+    },
+    "outputPorts": {
+        "Results dataset": {
             "type": "Dataset"
-          }
         }
-      },
+    }
+},
+```
 
 ### <a name="import-the-json-into-a-web-service-definition-object"></a>De JSON importeren in een web service definition-object
 
 Gebruik de cmdlet [import-AzMlWebService](https://docs.microsoft.com/powershell/module/az.machinelearning/import-azmlwebservice) om het gewijzigde JSON-bestand terug te converteren naar een web service-definitie object dat u kunt gebruiken om het predikaat bij te werken.
 
-    $wsd = Import-AzMlWebService -InputFile "C:\temp\mlservice_export.json"
+```azurepowershell
+$wsd = Import-AzMlWebService -InputFile "C:\temp\mlservice_export.json"
+```
 
 ### <a name="update-the-web-service"></a>De webservice bijwerken
 
 Gebruik ten slotte de cmdlet [Update-AzMlWebService](https://docs.microsoft.com/powershell/module/az.machinelearning/update-azmlwebservice) om het voorspellende experiment bij te werken.
 
-    Update-AzMlWebService -Name 'RetrainSamplePre.2016.8.17.0.3.51.237' -ResourceGroupName 'Default-MachineLearning-SouthCentralUS'
+```azurepowershell
+Update-AzMlWebService -Name 'RetrainSamplePre.2016.8.17.0.3.51.237' -ResourceGroupName 'Default-MachineLearning-SouthCentralUS'
+```
 
 ## <a name="next-steps"></a>Volgende stappen
 

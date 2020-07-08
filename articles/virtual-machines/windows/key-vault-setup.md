@@ -9,11 +9,12 @@ ms.workload: infrastructure-services
 ms.topic: how-to
 ms.date: 01/24/2017
 ms.author: mimckitt
-ms.openlocfilehash: e4bff4d1826d9586495207095eccf8f6c66164a0
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: d5e4bb1d3f62685c90e95eebf5f8f07720a23b82
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81870013"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86086990"
 ---
 # <a name="set-up-key-vault-for-virtual-machines-in-azure-resource-manager"></a>Key Vault instellen voor virtuele machines in Azure Resource Manager
 
@@ -32,36 +33,46 @@ Zie [een geheim instellen en ophalen van Azure Key Vault met behulp van Power sh
 
 Voor nieuwe sleutel kluizen kunt u deze Power shell-cmdlet gebruiken:
 
-    New-AzKeyVault -VaultName 'ContosoKeyVault' -ResourceGroupName 'ContosoResourceGroup' -Location 'East Asia' -EnabledForDeployment
+```azurepowershell
+New-AzKeyVault -VaultName 'ContosoKeyVault' -ResourceGroupName 'ContosoResourceGroup' -Location 'East Asia' -EnabledForDeployment
+```
 
 Voor bestaande sleutel kluizen kunt u deze Power shell-cmdlet gebruiken:
 
-    Set-AzKeyVaultAccessPolicy -VaultName 'ContosoKeyVault' -EnabledForDeployment
+```azurepowershell
+Set-AzKeyVaultAccessPolicy -VaultName 'ContosoKeyVault' -EnabledForDeployment
+```
 
 ## <a name="use-cli-to-set-up-key-vault"></a>CLI gebruiken om Key Vault in te stellen
 Zie [Key Vault beheren met CLI](../../key-vault/general/manage-with-cli2.md#create-a-key-vault)voor informatie over het maken van een sleutel kluis met behulp van de opdracht regel interface (CLI).
 
 Voor CLI moet u de sleutel kluis maken voordat u het implementatie beleid toewijst. U gebruikt hiervoor de volgende opdracht:
 
-    az keyvault create --name "ContosoKeyVault" --resource-group "ContosoResourceGroup" --location "EastAsia"
-    
+```azurecli
+az keyvault create --name "ContosoKeyVault" --resource-group "ContosoResourceGroup" --location "EastAsia"
+```
+
 Voer vervolgens de volgende opdracht uit om Key Vault in te scha kelen voor gebruik met sjabloon implementatie:
 
-    az keyvault update --name "ContosoKeyVault" --resource-group "ContosoResourceGroup" --enabled-for-deployment "true"
+```azurecli
+az keyvault update --name "ContosoKeyVault" --resource-group "ContosoResourceGroup" --enabled-for-deployment "true"
+```
 
 ## <a name="use-templates-to-set-up-key-vault"></a>Sjablonen gebruiken om Key Vault in te stellen
 Wanneer u een sjabloon gebruikt, moet u de eigenschap instellen `enabledForDeployment` op `true` voor de Key Vault resource.
 
-    {
-      "type": "Microsoft.KeyVault/vaults",
-      "name": "ContosoKeyVault",
-      "apiVersion": "2015-06-01",
-      "location": "<location-of-key-vault>",
-      "properties": {
-        "enabledForDeployment": "true",
-        ....
-        ....
-      }
-    }
+```config
+{
+  "type": "Microsoft.KeyVault/vaults",
+  "name": "ContosoKeyVault",
+  "apiVersion": "2015-06-01",
+  "location": "<location-of-key-vault>",
+  "properties": {
+    "enabledForDeployment": "true",
+    ....
+    ....
+  }
+}
+```
 
 Zie [een sleutel kluis maken](https://azure.microsoft.com/documentation/templates/101-key-vault-create/)voor andere opties die u kunt configureren wanneer u een sleutel kluis maakt met behulp van sjablonen.

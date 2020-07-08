@@ -5,15 +5,15 @@ author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
-ms.topic: conceptual
+ms.topic: how-to
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.date: 04/16/2020
-ms.openlocfilehash: 17c73866a11aae23efea90073f64b61808c13a35
-ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
+ms.openlocfilehash: b5ea227ba75a9ecf6666883603dad97d02385b5c
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/25/2020
-ms.locfileid: "83834710"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86086480"
 ---
 # <a name="use-empty-edge-nodes-on-apache-hadoop-clusters-in-hdinsight"></a>Lege Edge-knoop punten op Apache Hadoop clusters in HDInsight gebruiken
 
@@ -62,7 +62,6 @@ Nadat u een Edge-knoop punt hebt gemaakt, kunt u via SSH verbinding maken met he
 > Aangepaste onderdelen die zijn geïnstalleerd op het Edge-knoop punt ontvangen commercieel redelijke ondersteuning van micro soft. Dit kan leiden tot problemen oplossen die u tegen komt. Het is ook mogelijk dat u resources van de community voor verdere ondersteuning moet worden genoemd. Hier volgen enkele van de meest actieve sites om hulp van de community te verkrijgen:
 >
 > * [Micro soft Q&een vraag pagina voor HDInsight] (https://docs.microsoft.com/answers/topics/azure-hdinsight.html
-
 > * [https://stackoverflow.com](https://stackoverflow.com).
 >
 > Als u een Apache-technologie gebruikt, kunt u mogelijk ondersteuning vinden via de Apache-project sites op [https://apache.org](https://apache.org) , zoals de [Apache Hadoop](https://hadoop.apache.org/) -site.
@@ -143,11 +142,15 @@ Het Edge-knoop punt wordt weer gegeven als een toepassing op het Azure Portal.  
 
 2. Nadat u met SSH verbinding hebt gemaakt met het Edge-knoop punt, gebruikt u de volgende opdracht om de Hive-console te openen:
 
-        hive
+    ```console
+    hive
+    ```
 
 3. Voer de volgende opdracht uit om Hive-tabellen in het cluster weer te geven:
 
-        show tables;
+    ```hiveql
+    show tables;
+    ```
 
 ## <a name="delete-an-edge-node"></a>Een Edge-knoop punt verwijderen
 
