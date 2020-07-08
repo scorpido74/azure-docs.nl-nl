@@ -6,10 +6,10 @@ ms.author: matyrr
 ms.date: 03/05/2020
 ms.topic: how-to
 ms.openlocfilehash: 722d3e218272202074820db442ab1592042c7011
-ms.sourcegitcommit: ad66392df535c370ba22d36a71e1bbc8b0eedbe3
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/16/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84805015"
 ---
 # <a name="get-information-about-a-converted-model"></a>Informatie ophalen over een geconverteerd model
@@ -127,5 +127,5 @@ In deze sectie worden gegevens vastgelegd die zijn berekend op basis van de geco
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* [Model conversie](model-conversion.md)
+* [Modelconversie](model-conversion.md)
 * [De modelconversie configureren](configure-model-conversion.md)

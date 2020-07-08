@@ -14,10 +14,10 @@ ms.date: 01/17/2020
 ms.author: kenwith
 ms.reviewer: mimart
 ms.openlocfilehash: 0798b7674828b14a37f20921e05820d995bff6a7
-ms.sourcegitcommit: bc943dc048d9ab98caf4706b022eb5c6421ec459
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/14/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84760793"
 ---
 # <a name="integrate-with-azure-ad-application-proxy-on-a-network-device-enrollment-service-ndes-server"></a>Integreren met Azure AD-toepassingsproxy op een server met een registratie service voor netwerk apparaten (NDES)
@@ -35,14 +35,14 @@ Azure AD-toepassingsproxy is gebaseerd op Azure. Het biedt u een enorme hoeveelh
 ## <a name="install-and-register-the-connector-on-the-ndes-server"></a>De connector op de NDES-server installeren en registreren
 
 1. Meld u aan bij de [Azure-portal](https://portal.azure.com/) als een toepassingsbeheerder van de map die gebruikmaakt van Application Proxy. Als het domein van de tenant bijvoorbeeld contoso.com is, moet de beheerder admin@contoso.com of een andere beheerdersalias in dat domein zijn.
-1. Selecteer uw gebruikers naam in de rechter bovenhoek. Controleer of u bent aangemeld bij een map die gebruikmaakt van de toepassings proxy. Als u mappen wilt wijzigen, selecteert u **Directory activeren** en kiest u een map die toepassings proxy gebruikt.
-1. Selecteer in het navigatie venster aan de linkerkant **Azure Active Directory**.
-1. Selecteer **toepassings proxy**onder **beheren**.
-1. Selecteer **Connector service downloaden**.
+1. Selecteer uw gebruikersnaam in de rechterbovenhoek. Controleer of u bent aangemeld in een directory die gebruikmaakt van Application Proxy. Als u van directory moet veranderen, selecteert u **Schakelen tussen directory’s** en kiest u een directory die gebruikmaakt van Application Proxy.
+1. Selecteer **Azure Active Directory** in het navigatiepaneel aan de linkerkant.
+1. Selecteer onder **Beheren** de optie **Application Proxy**.
+1. Selecteer **Service-connector downloaden**.
 
-    ![Connector service downloaden om de service voorwaarden te bekijken](./media/active-directory-app-proxy-protect-ndes/application-proxy-download-connector-service.png)
+    ![Download de service-connector om de servicevoorwaarden te bekijken](./media/active-directory-app-proxy-protect-ndes/application-proxy-download-connector-service.png)
 
-1. Lees de servicevoorwaarden. Wanneer u klaar bent, selecteert u **voor waarden accepteren & downloaden**.
+1. Lees de servicevoorwaarden. Wanneer u klaar bent, selecteert u **Voorwaarden accepteren en downloaden**.
 1. Kopieer het installatie bestand voor de Azure AD-toepassingsproxy-connector naar de NDES-server. 
    > U kunt de connector installeren op elke server in uw bedrijfs netwerk met toegang tot NDES. U hoeft deze niet te installeren op de NDES-server zelf.
 1. Voer het installatie bestand uit, zoals *AADApplicationProxyConnectorInstaller.exe*. Ga akkoord met de licentie voorwaarden van de software.

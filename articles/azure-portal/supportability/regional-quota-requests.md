@@ -8,10 +8,10 @@ ms.topic: how-to
 ms.service: azure-supportability
 ms.assetid: ce37c848-ddd9-46ab-978e-6a1445728a3b
 ms.openlocfilehash: bd4a770aee43709c46ab4c1baf965941d8d2c3ba
-ms.sourcegitcommit: bc943dc048d9ab98caf4706b022eb5c6421ec459
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/14/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84763853"
 ---
 # <a name="standard-quota-increase-limits-by-region"></a>Standaard quotum: limieten per regio verhogen
@@ -48,7 +48,7 @@ Voor het aanvragen van een vCPU quotum toename per regio van **Help en ondersteu
 
 1. Selecteer **nieuwe ondersteunings aanvraag**in **Help en ondersteuning**.
 
-    ![Nieuw ondersteuningsverzoek](./media/resource-manager-core-quotas-request/new-support-request.png)
+    ![Nieuwe ondersteuningsaanvraag](./media/resource-manager-core-quotas-request/new-support-request.png)
 
 1. Selecteer voor **probleem type** **service-en abonnements limieten (quota's)**.
 

@@ -16,10 +16,10 @@ ms.author: kenwith
 ms.reviewer: arvinh
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 6b81e792d3b3bf491b281e09c00f48a7ad56fa47
-ms.sourcegitcommit: bc943dc048d9ab98caf4706b022eb5c6421ec459
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/14/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84763632"
 ---
 # <a name="centralize-application-management-with-azure-ad"></a>Toepassings beheer centraliseren met Azure AD
@@ -89,6 +89,6 @@ De identiteit van het besturings element kan alleen worden gekoppeld aan alle Cl
 - [Toepassingsbeheer](https://docs.microsoft.com/azure/active-directory/manage-apps/index)
 - [Toepassingsinrichting](https://docs.microsoft.com/azure/active-directory/app-provisioning/user-provisioning)
 - [Hybride beveiligde toegang](https://docs.microsoft.com/azure/active-directory/manage-apps/secure-hybrid-access)
-- [Identiteitsbeheer](https://docs.microsoft.com/azure/active-directory/governance/identity-governance-overview)
+- [Identity governance](https://docs.microsoft.com/azure/active-directory/governance/identity-governance-overview)
 - [Microsoft-identiteitsplatform](https://docs.microsoft.com/azure/active-directory/develop/v2-overview)
 - [Identiteits beveiliging](https://docs.microsoft.com/azure/active-directory/conditional-access/index)

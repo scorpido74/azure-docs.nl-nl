@@ -12,10 +12,10 @@ ms.date: 05/19/2020
 ms.author: kenwith
 ms.reviewer: arvindh, luleon, phsignor
 ms.openlocfilehash: 0c9844d5e3f65dba5e51170367cfd16715a08883
-ms.sourcegitcommit: bc943dc048d9ab98caf4706b022eb5c6421ec459
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/14/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84763462"
 ---
 # <a name="configure-how-end-users-consent-to-applications"></a>Configureren hoe eindgebruikers toestemming geven voor toepassingen
@@ -228,9 +228,9 @@ U kunt de Azure AD Power shell preview-module, [AzureADPreview](https://docs.mic
 
 1. Meer informatie over de instellings waarden. Er zijn twee instellingen waarden die bepalen welke gebruikers een app kunnen gebruiken om toegang te krijgen tot de gegevens van de groep:
 
-    | Instelling       | Type         | Beschrijving  |
+    | Instelling       | Type         | Description  |
     | ------------- | ------------ | ------------ |
-    | _EnableGroupSpecificConsent_   | Booleaans | Vlag waarmee wordt aangegeven of groeps eigenaren specifieke machtigingen mogen verlenen. |
+    | _EnableGroupSpecificConsent_   | Boolean-waarde | Vlag waarmee wordt aangegeven of groeps eigenaren specifieke machtigingen mogen verlenen. |
     | _ConstrainGroupSpecificConsentToMembersOfGroupId_ | GUID | Als _EnableGroupSpecificConsent_ is ingesteld op ' True ' en deze waarde is ingesteld op de object-id van een groep, worden leden van de geïdentificeerde groep gemachtigd om groeps-specifieke machtigingen te verlenen aan de groepen waarvan ze eigenaar zijn. |
 
 1. Update-instellingen waarden voor de gewenste configuratie:
@@ -286,9 +286,9 @@ U kunt dit doen met behulp van dezelfde stappen als hierboven voor het configure
 
 1. Meer informatie over de instellings waarden voor de stap op basis van risico gerichte toestemming:
 
-    | Instelling       | Type         | Beschrijving  |
+    | Instelling       | Type         | Description  |
     | ------------- | ------------ | ------------ |
-    | _BlockUserConsentForRiskyApps_   | Booleaans |  Markering die aangeeft of de gebruikers toestemming wordt geblokkeerd wanneer een Risk ante aanvraag wordt gedetecteerd. |
+    | _BlockUserConsentForRiskyApps_   | Boolean-waarde |  Markering die aangeeft of de gebruikers toestemming wordt geblokkeerd wanneer een Risk ante aanvraag wordt gedetecteerd. |
 
 1. Vervang de volgende waarde in stap 3:
 

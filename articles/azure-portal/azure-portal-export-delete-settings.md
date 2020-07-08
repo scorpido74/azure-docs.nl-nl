@@ -11,10 +11,10 @@ ms.custom: ''
 manager: mtillman
 ms.author: mblythe
 ms.openlocfilehash: 248c643c5f1865451abbe201e7033efedb8a7e39
-ms.sourcegitcommit: bc943dc048d9ab98caf4706b022eb5c6421ec459
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/14/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84763938"
 ---
 # <a name="export-or-delete-user-settings"></a>Gebruikersinstellingen exporteren of verwijderen
@@ -31,7 +31,7 @@ Het is een goed idee om uw instellingen te exporteren en te controleren voordat 
 
 ## <a name="export-or-delete-your-portal-settings"></a>Uw Portal instellingen exporteren of verwijderen
 
-1. Meld u aan bij de [Azure-portal](https://portal.azure.com).
+1. Meld u aan bij [Azure Portal](https://portal.azure.com).
 
 1. Selecteer in de koptekst van de portal ![ Instellingen pictogram ](media/azure-portal-export-delete-settings/settings-icon.png) **instellingen**.
 

@@ -10,10 +10,10 @@ author: likebupt
 ms.author: keli19
 ms.date: 06/05/2020
 ms.openlocfilehash: 2fa969b6dd89000b4d669bc5d42aa09b3cf3a2b2
-ms.sourcegitcommit: 4ac596f284a239a9b3d8ed42f89ed546290f4128
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/12/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84751698"
 ---
 # <a name="latent-dirichlet-allocation-module"></a>Dirichlet-toewijzings module
@@ -181,13 +181,13 @@ Nadat de termen van de term zijn berekend, vergelijkt een op afstand gebaseerde 
 
 ###  <a name="module-parameters"></a>Module parameters
 
-|Naam|Type|Bereik|Optioneel|Standaard|Beschrijving|  
+|Naam|Type|Bereik|Optioneel|Standaard|Description|  
 |----------|----------|-----------|--------------|-------------|-----------------|  
 |Doel kolom (men)|Kolom selectie||Vereist|StringFeature|De naam of index van de doel kolom.|  
 |Aantal te model lerene onderwerpen|Geheel getal|[1; 1000]|Vereist|5|Model de document distributie met N onderwerpen.|  
 |N-gram|Geheel getal|[1; 10]|Vereist|2|De volg orde van N-gram die tijdens de hash-bewerking is gegenereerd.|  
-|Normaliseren|Booleaans|Waar of onwaar|Vereist|true|Normaliseer uitvoer naar kansen.  De getransformeerde gegevensset is P (onderwerp&#124;document) en de matrix van het functie onderwerp is P (woord&#124;onderwerp).|  
-|Alle opties weer geven|Booleaans|Waar of onwaar|Vereist|False|Geeft aanvullende para meters die specifiek zijn voor scikit-Learn Online LDA.|  
+|Normaliseren|Boolean-waarde|Waar of onwaar|Vereist|true|Normaliseer uitvoer naar kansen.  De getransformeerde gegevensset is P (onderwerp&#124;document) en de matrix van het functie onderwerp is P (woord&#124;onderwerp).|  
+|Alle opties weer geven|Boolean-waarde|Waar of onwaar|Vereist|False|Geeft aanvullende para meters die specifiek zijn voor scikit-Learn Online LDA.|  
 |Rho-para meter|Float|[0.00001; 1.0]|Van toepassing wanneer het selectie vakje **alle opties weer geven** is ingeschakeld|0,01|Voorafgaande distributie van onderwerps woord.|  
 |Alpha-para meter|Float|[0.00001; 1.0]|Van toepassing wanneer het selectie vakje **alle opties weer geven** is ingeschakeld|0,01|Document onderwerp voorafgaande distributie.|  
 |Geschat aantal documenten|Geheel getal|[1; int. MaxValue|Van toepassing wanneer het selectie vakje **alle opties weer geven** is ingeschakeld|1000|Het geschatte aantal documenten. Komt overeen met de `total_samples` para meter.|  
@@ -195,10 +195,10 @@ Nadat de termen van de term zijn berekend, vergelijkt een op afstand gebaseerde 
 |Aanvankelijke waarde van herhaling die wordt gebruikt voor de update planning voor het trainings tempo|Geheel getal|[0; int. MaxValue|Van toepassing wanneer het selectie vakje **alle opties weer geven** is ingeschakeld|0|Aanvankelijke waarde voor downweights Learning rate voor vroege iteraties. Komt overeen met de `learning_offset` para meter.|  
 |Kracht toegepast op de herhaling tijdens updates|Float|[0,0; 1.0]|Van toepassing wanneer het selectie vakje **alle opties weer geven** is ingeschakeld|0,5|Kracht toegepast op het aantal iteraties om het leer tempo te beheren. Komt overeen met de `learning_decay` para meter. |  
 |Aantal opleidings herhalingen|Geheel getal|[1; 1024]|Van toepassing wanneer het selectie vakje **alle opties weer geven** is ingeschakeld|25|Aantal opleidings herhalingen.|  
-|Woorden lijst van ngrams bouwen|Booleaans|Waar of onwaar|Van toepassing wanneer het selectie vakje **alle opties weer geven** *is uitgeschakeld*|True|Bouwt een woorden lijst van ngrams vóór de Computing LDA. Nuttig voor het controleren van modellen en interpretaties.|  
+|Woorden lijst van ngrams bouwen|Boolean-waarde|Waar of onwaar|Van toepassing wanneer het selectie vakje **alle opties weer geven** *is uitgeschakeld*|True|Bouwt een woorden lijst van ngrams vóór de Computing LDA. Nuttig voor het controleren van modellen en interpretaties.|  
 |Maximale grootte van ngram-woorden lijst|Geheel getal|[1; int. MaxValue|Van toepassing wanneer de keuze **lijst Dictionary van Ngrams** **waar** is|20.000|Maximale grootte van de ngrams-woorden lijst. Als het aantal tokens in de invoer groter is dan deze grootte, kunnen er conflicten optreden.|  
 |Het aantal bits dat moet worden gebruikt voor functie-hashing.|Geheel getal|[1; 31]|Van toepassing wanneer het selectie vakje **alle opties weer geven** *niet* is ingeschakeld en het **bouwen van de woorden lijst ngrams** is ingesteld op **False**|12|Het aantal bits dat moet worden gebruikt voor functie-hashing.| 
-|Build Dictionary van ngrams vóór LDA|Booleaans|Waar of onwaar|Van toepassing wanneer het selectie vakje **alle opties weer geven** is ingeschakeld|True|Hiermee maakt u een woorden lijst met ngrams vóór LDA. Nuttig voor het controleren van modellen en interpretaties.|  
+|Build Dictionary van ngrams vóór LDA|Boolean-waarde|Waar of onwaar|Van toepassing wanneer het selectie vakje **alle opties weer geven** is ingeschakeld|True|Hiermee maakt u een woorden lijst met ngrams vóór LDA. Nuttig voor het controleren van modellen en interpretaties.|  
 |Maximum aantal ngrams in woorden lijst|Geheel getal|[1; int. MaxValue|Van toepassing wanneer het selectie vakje **alle opties weer geven** is ingeschakeld en de optie **woorden lijst van ngrams** is ingesteld op **True**|20.000|Maximum grootte van de woorden lijst. Als het aantal tokens in de invoer groter is dan deze grootte, kunnen er conflicten optreden.|  
 |Aantal hash-bits|Geheel getal|[1; 31]|Van toepassing wanneer het selectie vakje **alle opties weer geven** is ingeschakeld en de optie **woorden lijst van ngrams** is ingesteld op **False**|12|Aantal bits dat moet worden gebruikt tijdens het hashen van functies.|   
 

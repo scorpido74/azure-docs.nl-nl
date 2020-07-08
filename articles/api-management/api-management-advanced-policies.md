@@ -13,10 +13,10 @@ ms.topic: article
 ms.date: 01/10/2020
 ms.author: apimpm
 ms.openlocfilehash: 5b17b7784691cdf38c45e4f306b2ed14b981a2d7
-ms.sourcegitcommit: 4ac596f284a239a9b3d8ed42f89ed546290f4128
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/12/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84751266"
 ---
 # <a name="api-management-advanced-policies"></a>API Management advanced policies (Geavanceerde beleidsregels API Management)
@@ -126,7 +126,7 @@ In dit voor beeld ziet u hoe u het filteren van inhoud uitvoert door gegevens el
 
 ### <a name="elements"></a>Elementen
 
-| Element   | Beschrijving                                                                                                                                                                                                                                                               | Vereist |
+| Element   | Description                                                                                                                                                                                                                                                               | Vereist |
 | --------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------- |
 | desgewenst    | Hoofd element.                                                                                                                                                                                                                                                             | Yes      |
 | Als      | De voor waarde die moet worden gebruikt voor de `if` of `ifelse` delen van het `choose` beleid. Als het `choose` beleid meerdere `when` secties heeft, worden ze opeenvolgend geëvalueerd. Zodra de `condition` van een wanneer-element wordt geëvalueerd `true` , worden er geen verdere `when` voor waarden geëvalueerd. | Yes      |
@@ -244,7 +244,7 @@ Dit beleid op bewerking niveau stuurt geen aanvragen door naar de back-end-servi
 
 ### <a name="elements"></a>Elementen
 
-| Element         | Beschrijving   | Vereist |
+| Element         | Description   | Vereist |
 | --------------- | ------------- | -------- |
 | door sturen-aanvraag | Hoofd element. | Yes      |
 
@@ -296,7 +296,7 @@ In het volgende voor beeld ziet u hoe u het aantal aanvragen dat wordt doorgestu
 
 ### <a name="elements"></a>Elementen
 
-| Element           | Beschrijving   | Vereist |
+| Element           | Description   | Vereist |
 | ----------------- | ------------- | -------- |
 | limiet-gelijktijdigheid | Hoofd element. | Yes      |
 
@@ -349,7 +349,7 @@ Een wille keurige teken reeks kan worden gebruikt als de waarde die moet worden 
 
 ### <a name="elements"></a>Elementen
 
-| Element         | Beschrijving                                                                     | Vereist |
+| Element         | Description                                                                     | Vereist |
 | --------------- | ------------------------------------------------------------------------------- | -------- |
 | aanmelden bij eventhub | Hoofd element. De waarde van dit element is de teken reeks die moet worden aangemeld bij uw Event Hub. | Yes      |
 
@@ -394,7 +394,7 @@ status code and media type. If no example or schema found, the content is empty.
 
 ### <a name="elements"></a>Elementen
 
-| Element       | Beschrijving   | Vereist |
+| Element       | Description   | Vereist |
 | ------------- | ------------- | -------- |
 | model-reactie | Hoofd element. | Yes      |
 
@@ -453,7 +453,7 @@ In het volgende voor beeld wordt het door sturen van aanvragen tot tien keer opn
 
 ### <a name="elements"></a>Elementen
 
-| Element | Beschrijving                                                         | Vereist |
+| Element | Description                                                         | Vereist |
 | ------- | ------------------------------------------------------------------- | -------- |
 | retry   | Hoofd element. Kan elk ander beleid als onderliggende elementen bevatten. | Yes      |
 
@@ -510,7 +510,7 @@ Het `return-response` beleid breekt de uitvoering van de pijp lijn af en retourn
 
 ### <a name="elements"></a>Elementen
 
-| Element         | Beschrijving                                                                               | Vereist |
+| Element         | Description                                                                               | Vereist |
 | --------------- | ----------------------------------------------------------------------------------------- | -------- |
 | retour-antwoord | Hoofd element.                                                                             | Yes      |
 | set-header      | Een [ingestelde header-](api-management-transformation-policies.md#SetHTTPheader) beleids instructie. | No       |
@@ -580,10 +580,10 @@ In dit voorbeeld beleid ziet u een voor beeld van het gebruik van het `send-one-
 
 ### <a name="elements"></a>Elementen
 
-| Element                    | Beschrijving                                                                                                 | Vereist                        |
+| Element                    | Description                                                                                                 | Vereist                        |
 | -------------------------- | ----------------------------------------------------------------------------------------------------------- | ------------------------------- |
 | Send-eenrichtings aanvraag       | Hoofd element.                                                                                               | Yes                             |
-| URL                        | De URL van de aanvraag.                                                                                     | Geen if-modus = kopiëren; anders Ja. |
+| url                        | De URL van de aanvraag.                                                                                     | Geen if-modus = kopiëren; anders Ja. |
 | method                     | De HTTP-methode voor de aanvraag.                                                                            | Geen if-modus = kopiëren; anders Ja. |
 | koptekst                     | Aanvraag header. Meerdere koptekst elementen gebruiken voor meerdere aanvraag headers.                                  | No                              |
 | body                       | De aanvraag tekst.                                                                                           | No                              |
@@ -664,10 +664,10 @@ In dit voor beeld ziet u één manier om een referentie token te verifiëren met
 
 ### <a name="elements"></a>Elementen
 
-| Element                    | Beschrijving                                                                                                 | Vereist                        |
+| Element                    | Description                                                                                                 | Vereist                        |
 | -------------------------- | ----------------------------------------------------------------------------------------------------------- | ------------------------------- |
 | verzenden/aanvragen               | Hoofd element.                                                                                               | Yes                             |
-| URL                        | De URL van de aanvraag.                                                                                     | Geen if-modus = kopiëren; anders Ja. |
+| url                        | De URL van de aanvraag.                                                                                     | Geen if-modus = kopiëren; anders Ja. |
 | method                     | De HTTP-methode voor de aanvraag.                                                                            | Geen if-modus = kopiëren; anders Ja. |
 | koptekst                     | Aanvraag header. Meerdere koptekst elementen gebruiken voor meerdere aanvraag headers.                                  | No                              |
 | body                       | De aanvraag tekst.                                                                                           | No                              |
@@ -714,7 +714,7 @@ Let op het gebruik van [Eigenschappen](api-management-howto-properties.md) als w
 
 ### <a name="elements"></a>Elementen
 
-| Element | Beschrijving  | Vereist |
+| Element | Description  | Vereist |
 | ------- | ------------ | -------- |
 | proxy   | Hoofd element | Yes      |
 
@@ -777,7 +777,7 @@ In dit voorbeeld beleid dat het `set-method` beleid gebruikt, ziet u een voor be
 
 ### <a name="elements"></a>Elementen
 
-| Element    | Beschrijving                                                       | Vereist |
+| Element    | Description                                                       | Vereist |
 | ---------- | ----------------------------------------------------------------- | -------- |
 | set-methode | Hoofd element. De waarde van het element specificeert de HTTP-methode. | Yes      |
 
@@ -820,7 +820,7 @@ In dit voor beeld ziet u hoe u een respons van 401 retourneert als het autorisat
 
 ### <a name="elements"></a>Elementen
 
-| Element    | Beschrijving   | Vereist |
+| Element    | Description   | Vereist |
 | ---------- | ------------- | -------- |
 | set-status | Hoofd element. | Yes      |
 
@@ -858,7 +858,7 @@ In het volgende voor beeld ziet u een ingesteld variabelen beleid in de sectie b
 
 ### <a name="elements"></a>Elementen
 
-| Element      | Beschrijving   | Vereist |
+| Element      | Description   | Vereist |
 | ------------ | ------------- | -------- |
 | set-variabele | Hoofd element. | Yes      |
 
@@ -942,7 +942,7 @@ Het `trace` beleid voegt een aangepaste tracering toe aan de API-Inspector-uitvo
 
 ### <a name="elements"></a>Elementen
 
-| Element  | Beschrijving                                                                                                                                          | Vereist |
+| Element  | Description                                                                                                                                          | Vereist |
 | -------- | ---------------------------------------------------------------------------------------------------------------------------------------------------- | -------- |
 | tracering    | Hoofd element.                                                                                                                                        | Yes      |
 | message  | Een teken reeks of expressie die moet worden vastgelegd.                                                                                                                 | Yes      |
@@ -1017,7 +1017,7 @@ In het volgende voor beeld zijn er twee `choose` beleids regels als direct onder
 
 ### <a name="elements"></a>Elementen
 
-| Element | Beschrijving                                                                                                   | Vereist |
+| Element | Description                                                                                                   | Vereist |
 | ------- | ------------------------------------------------------------------------------------------------------------- | -------- |
 | Wacht    | Hoofd element. Mag alleen onderliggende elementen `send-request` , `cache-lookup-value` en `choose` beleid bevatten. | Yes      |
 

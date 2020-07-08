@@ -7,10 +7,10 @@ author: bwren
 ms.author: bwren
 ms.date: 03/12/2020
 ms.openlocfilehash: 771cfa11375e97f2f6a94fc65cbd72306b12cd7e
-ms.sourcegitcommit: ad66392df535c370ba22d36a71e1bbc8b0eedbe3
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/16/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84803971"
 ---
 # <a name="how-to-query-logs-from-azure-monitor-for-vms"></a>Logboeken van Azure Monitor voor VM's opvragen
@@ -112,7 +112,7 @@ Elke eigenschap RemoteIp in de tabel *VMConnection* wordt gecontroleerd op basis
 |:--|:--|
 |MaliciousIp |Het RemoteIp-adres |
 |IndicatorThreadType |Gedetecteerde bedreigings indicator is een van de volgende waarden: *botnet*, *C2*, *CryptoMining*, *Darknet*, *DDoS*, *MaliciousUrl*, *malware*, *phishing*, *proxy*, *pua's geblokkeerd*, *Watch list*.   |
-|Beschrijving |Beschrijving van de waargenomen bedreiging. |
+|Description |Beschrijving van de waargenomen bedreiging. |
 |TLPLevel |TLP-niveau (Traffic Light Protocol) is een van de gedefinieerde waarden, *wit*, *groen*, *geel*, *rood*. |
 |Betrouwbaarheid |De waarden zijn *0 – 100*. |
 |Severity |De waarden zijn *0 – 5*, waarbij *5* het ernstigste en *0* is. De standaard waarde is *3*.  |
@@ -233,7 +233,7 @@ Records met een type *VMProcess* hebben inventaris gegevens voor met TCP verbond
 |Groep | Naam van de proces groep. Processen in dezelfde groep zijn logisch gerelateerd, bijvoorbeeld een deel van hetzelfde product of systeem onderdeel. |
 |StartTime | De begin tijd van de proces groep |
 |FirstPid | De eerste pincode in de proces groep |
-|Beschrijving | De proces beschrijving |
+|Description | De proces beschrijving |
 |CompanyName | De naam van het bedrijf |
 |Internenaam | De interne naam |
 |ProductName | De naam van het product |

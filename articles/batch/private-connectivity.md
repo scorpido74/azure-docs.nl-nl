@@ -1,16 +1,16 @@
 ---
-title: Privé-eind punten gebruiken met Azure Batch accounts
+title: Privé-eindpunten gebruiken met Azure Batch-accounts
 description: Meer informatie over het verbinden van privé met een Azure Batch-account met behulp van privé-eind punten.
 ms.topic: how-to
 ms.date: 06/12/2020
 ms.openlocfilehash: 04f52c8c58668b2978b38c65a94533a38c593888
-ms.sourcegitcommit: 4ac596f284a239a9b3d8ed42f89ed546290f4128
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/12/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84754481"
 ---
-# <a name="use-private-endpoints-with-azure-batch-accounts"></a>Privé-eind punten gebruiken met Azure Batch accounts
+# <a name="use-private-endpoints-with-azure-batch-accounts"></a>Privé-eindpunten gebruiken met Azure Batch-accounts
 
 [Azure batch accounts](accounts.md) hebben standaard een openbaar eind punt en zijn toegankelijk voor iedereen. De batch-service biedt de mogelijkheid om persoonlijke batch-accounts te maken en de toegang tot het open bare netwerk uit te scha kelen.
 

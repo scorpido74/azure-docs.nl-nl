@@ -12,10 +12,10 @@ ms.date: 05/23/2019
 ms.author: kenwith
 ms.reviewer: japere
 ms.openlocfilehash: 2019802725e36c2400f57952fedf7af40877c8c9
-ms.sourcegitcommit: bc943dc048d9ab98caf4706b022eb5c6421ec459
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/14/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84759926"
 ---
 # <a name="understand-and-solve-azure-active-directory-application-proxy-cors-issues"></a>Azure Active Directory-toepassingsproxy CORS-problemen begrijpen en oplossen
@@ -114,7 +114,7 @@ U kunt de App wijzigen zodat CORS wordt ondersteund door de header Access-Contro
 
 Enkele CORS-problemen kunnen niet worden opgelost, bijvoorbeeld wanneer uw app omleidt naar *login.microsoftonline.com* om te verifiëren en het toegangs token verloopt. De CORS-aanroep wordt vervolgens mislukt. Een tijdelijke oplossing voor dit scenario is om de levens duur van het toegangs token uit te breiden, om te voor komen dat deze wordt verloopt tijdens de sessie van een gebruiker. Zie [Configureer bare token levensduur in azure AD](../develop/active-directory-configurable-token-lifetimes.md)voor meer informatie over hoe u dit doet.
 
-## <a name="see-also"></a>Zie ook
-- [Zelf studie: een on-premises toepassing toevoegen voor externe toegang via toepassings proxy in Azure Active Directory](application-proxy-add-on-premises-application.md) 
+## <a name="see-also"></a>Zie tevens
+- [Zelfstudie: Een on-premises toepassing voor externe toegang toevoegen via Application Proxy in Azure Active Directory](application-proxy-add-on-premises-application.md) 
 - [Een Azure AD-toepassingsproxy-implementatie plannen](application-proxy-deployment-plan.md) 
 - [Externe toegang tot on-premises toepassingen via Azure Active Directory-toepassingsproxy](application-proxy.md) 

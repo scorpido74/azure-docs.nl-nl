@@ -8,10 +8,10 @@ ms.topic: how-to
 ms.date: 03/19/2020
 ms.author: cherylmc
 ms.openlocfilehash: ca5880f76ffd3a85d4b3cec8e01f58ae5c024a58
-ms.sourcegitcommit: 4ac596f284a239a9b3d8ed42f89ed546290f4128
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/12/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84749699"
 ---
 # <a name="connect-a-vpn-gateway-virtual-network-gateway-to-virtual-wan"></a>Een VPN Gateway (virtuele netwerk gateway) verbinden met een virtueel WAN
@@ -31,7 +31,7 @@ Azure Virtual WAN
 
 Azure Virtual Network
 
-* Maak een virtueel netwerk zonder virtuele netwerk gateways. Controleer of geen van de subnetten van uw on-premises netwerken overlapt met de virtuele netwerken waarmee u verbinding wilt maken. Als u een virtueel netwerk in de Azure Portal wilt maken, raadpleegt u [Quick](../virtual-network/quick-create-portal.md)start.
+* Maak een virtueel netwerk zonder virtuele netwerk gateways. Controleer of geen van de subnetten van uw on-premises netwerken overlapt met de virtuele netwerken waarmee u verbinding wilt maken. Zie de [snelstart](../virtual-network/quick-create-portal.md) als u een virtueel netwerk in de Azure-portal wilt maken.
 
 ## <a name="1-create-an-azure-virtual-network-gateway"></a><a name="vnetgw"></a>1. een virtuele Azure-netwerk gateway maken
 
@@ -51,7 +51,7 @@ De BGP-ASN kan niet 65515 zijn. 66515 wordt gebruikt door virtuele WAN van Azure
 
 Wanneer de gateway is gemaakt, gaat u naar de pagina **Eigenschappen** . De eigenschappen en configuratie-instellingen zijn vergelijkbaar met het volgende voor beeld. Let op de twee open bare IP-adressen die worden gebruikt voor de gateway.
 
-![eigenschappen](./media/connect-virtual-network-gateway-vwan/publicip.png "properties")
+![properties](./media/connect-virtual-network-gateway-vwan/publicip.png "properties")
 
 ## <a name="2-create-virtual-wan-vpn-sites"></a><a name="vwansite"></a>2. virtuele WAN-sites maken
 
@@ -133,7 +133,7 @@ U kunt de connectiviteit testen door twee virtuele machines te maken, één aan 
     * **Hubs** - selecteer de hub die u wilt koppelen aan deze verbinding.
     * **Abonnement** - controleer of het abonnement klopt.
     * **Virtueel netwerk** - selecteer het virtuele netwerk dat met deze hub wilt verbinden. Het virtuele netwerk mag geen bestaande virtuele netwerkgateway hebben.
-4. Klik op **OK** om de virtuele netwerk verbinding te maken.
+4. Klik op **OK** om de virtuele netwerkverbinding te maken.
 5. Connectiviteit is nu ingesteld tussen de Vm's. U moet een virtuele machine van de andere kunnen pingen, tenzij er firewalls of andere beleids regels zijn die de communicatie blok keren.
 
 ## <a name="next-steps"></a>Volgende stappen

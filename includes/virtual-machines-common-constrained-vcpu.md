@@ -9,10 +9,10 @@ ms.date: 03/09/2018
 ms.author: mimckitt
 ms.custom: include file
 ms.openlocfilehash: 5c898721102177a0d796db3b8b0f194c4ec3efae
-ms.sourcegitcommit: 52d2f06ecec82977a1463d54a9000a68ff26b572
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/15/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84793696"
 ---
 Voor sommige data base-werk belastingen, zoals SQL Server of Oracle, is veel geheugen, opslag ruimte en I/O-band breedte vereist, maar geen hoge kern telling. Veel database werkbelastingen zijn niet CPU-intensief. Azure biedt bepaalde VM-grootten waar u het aantal virtuele machines in de VM kunt beperken om de kosten van software licenties te verlagen en tegelijkertijd hetzelfde geheugen, dezelfde opslag en I/O-band breedte te behouden.

@@ -9,10 +9,10 @@ ms.topic: how-to
 ms.date: 06/05/2020
 ms.author: cherylmc
 ms.openlocfilehash: 4ce5bc3b4e5ccd26ec3f6b35c995ebe2274042c5
-ms.sourcegitcommit: 4ac596f284a239a9b3d8ed42f89ed546290f4128
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/12/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84749728"
 ---
 # <a name="azure-virtual-wan-logs-and-metrics"></a>Virtuele WAN-logboeken en-metrische gegevens van Azure
@@ -117,7 +117,7 @@ Vervang de onderstaande waarden na de **= =**, indien nodig.
 * "TunnelDiagnosticLog"
 * "RouteDiagnosticLog"
 
-## <a name="activity-logs"></a><a name="activity-logs"></a>Activiteitenlogboeken
+## <a name="activity-logs"></a><a name="activity-logs"></a>Activiteiten logboeken
 
 Vermeldingen in het **activiteiten logboek** worden standaard verzameld en kunnen worden weer gegeven in de Azure Portal. U kunt Azure-activiteiten Logboeken (voorheen bekend als *operationele logboeken* en *audit logboeken*) gebruiken om alle bewerkingen weer te geven die zijn verzonden naar uw Azure-abonnement.
 

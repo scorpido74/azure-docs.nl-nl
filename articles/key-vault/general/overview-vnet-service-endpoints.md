@@ -10,10 +10,10 @@ ms.service: key-vault
 ms.subservice: general
 ms.topic: conceptual
 ms.openlocfilehash: eff74fca5ac21a7df431b55cd5c307d3e994010b
-ms.sourcegitcommit: 6571e34e609785e82751f0b34f6237686470c1f3
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/15/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84792129"
 ---
 # <a name="virtual-network-service-endpoints-for-azure-key-vault"></a>Virtuele netwerk service-eind punten voor Azure Key Vault
@@ -51,11 +51,11 @@ Zie [Azure Key Vault firewalls en virtuele netwerken configureren](network-secur
 
 
 > [!NOTE]
-> Houd rekening met de volgende configuratie beperkingen:
-> * Er zijn Maxi maal 127 virtuele-netwerk regels en 127 IPv4-regels toegestaan. 
-> * Kleine adresbereiken die de grootte van het voor voegsel/31 of/32 gebruiken, worden niet ondersteund. In plaats daarvan configureert u deze bereiken met behulp van afzonderlijke IP-adres regels.
-> * IP-netwerk regels zijn alleen toegestaan voor open bare IP-adressen. IP-adresbereiken die zijn gereserveerd voor particuliere netwerken (zoals gedefinieerd in RFC 1918) zijn niet toegestaan in IP-regels. Particuliere netwerken bevatten adressen die beginnen met **10.**, **172.16-31**en **192,168.**. 
-> * Er worden op dit moment alleen IPv4-adressen ondersteund.
+> Houd rekening met de volgende configuratielimieten:
+> * Er zijn maximaal 127 regels voor virtuele netwerken en 127 IPv4-regels toegestaan. 
+> * Kleine adresbereiken die de voorvoegselgrootten /31 of /32 gebruiken, worden niet ondersteund. Configureer deze bereiken in plaats hiervan door afzonderlijke IP-adresregels te gebruiken.
+> * IP-netwerkregels zijn alleen toegestaan voor openbare IP-adressen. IP-adresbereiken die zijn gereserveerd voor privénetwerken (zoals gedefinieerd in RFC 1918) zijn niet toegestaan in IP-regels. Privénetwerken omvatten adressen die beginnen met **10.** , **172.16-31**, en **192.168.** . 
+> * Momenteel worden alleen IPv4-adressen ondersteund.
 
 ## <a name="trusted-services"></a>Vertrouwde services
 

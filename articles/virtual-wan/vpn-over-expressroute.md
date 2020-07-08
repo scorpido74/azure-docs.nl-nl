@@ -8,10 +8,10 @@ ms.topic: how-to
 ms.date: 03/19/2020
 ms.author: cherylmc
 ms.openlocfilehash: d3a2c85540a4efa2f934605c4c056b458e2879ca
-ms.sourcegitcommit: 4ac596f284a239a9b3d8ed42f89ed546290f4128
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/12/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84749587"
 ---
 # <a name="expressroute-encryption-ipsec-over-expressroute-for-virtual-wan"></a>ExpressRoute-versleuteling: IPsec over ExpressRoute voor virtuele WAN
@@ -222,7 +222,7 @@ Als u instructies nodig hebt voor het configureren van uw apparaat, kunt u de in
 ## <a name="5-view-your-virtual-wan"></a><a name="viewwan"></a>5. uw virtuele WAN weer geven
 
 1. Ga naar het virtuele WAN.
-1. Op de **overzichts** pagina vertegenwoordigt elk punt op de kaart een hub.
+1. Op de pagina **Overzicht** vertegenwoordigt elk punt op de kaart een hub.
 1. In de sectie **hubs en verbindingen** kunt u de status van de hub, site, regio en VPN-verbinding weer geven. U kunt ook bytes weer geven in en uit.
 
 ## <a name="7-monitor-a-connection"></a><a name="connectmon"></a>7. een verbinding bewaken

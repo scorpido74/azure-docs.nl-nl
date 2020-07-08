@@ -8,10 +8,10 @@ ms.topic: troubleshooting
 ms.date: 01/27/2020
 ms.author: xingwan
 ms.openlocfilehash: 87533b2e0c1397d0b8b2e9a89450a80a75c5e348
-ms.sourcegitcommit: bc943dc048d9ab98caf4706b022eb5c6421ec459
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/14/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84763819"
 ---
 # <a name="region-or-sku-unavailable"></a>Regio of SKU is niet beschikbaar
@@ -82,6 +82,6 @@ Als u geen geschikte regio of SKU kunt vinden, maakt u een [ondersteunings aanvr
 
 We zijn altijd te openen voor feedback en suggesties. Stuur ons uw [suggesties](https://feedback.azure.com/forums/266794-support-feedback). Daarnaast kunt u aan de slag met ons op [Twitter](https://twitter.com/azuresupport) of op de [pagina micro soft Q&een vraag](https://docs.microsoft.com/answers/products/azure).
 
-## <a name="learn-more"></a>Meer informatie
+## <a name="learn-more"></a>Lees meer
 
 [Veelgestelde vragen over ondersteuning voor Azure](https://azure.microsoft.com/support/faq)

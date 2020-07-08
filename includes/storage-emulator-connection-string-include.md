@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 10/26/2018
 ms.author: tamram
 ms.openlocfilehash: 8c577db3e9f2bff9e86c3a7c37274630f90dd680
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/27/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "67176239"
 ---
 De opslag emulator ondersteunt één vast account en een bekende verificatie sleutel voor gedeelde sleutel verificatie. Dit account en deze sleutel zijn de enige gedeelde sleutel referenties die zijn toegestaan voor gebruik met de opslag emulator. Dit zijn:
@@ -25,7 +25,7 @@ Account key: Eby8vdM02xNOcqFlqUwJPLlmEtlCDXJ1OUzFT50uSRZ6IFsuFq2UVErCz4I6tq/K1SZ
 > 
 
 #### <a name="connect-to-the-emulator-account-using-a-shortcut"></a>Verbinding maken met het Emulator-account met behulp van een snelkoppeling
-De eenvoudigste manier om verbinding te maken met de opslag emulator vanuit uw toepassing is door een connection string te configureren in het configuratie bestand van uw toepassing `UseDevelopmentStorage=true`dat verwijst naar de snelkoppeling. Hier volgt een voor beeld van een connection string voor de opslag emulator in een *app. config* -bestand: 
+De eenvoudigste manier om verbinding te maken met de opslag emulator vanuit uw toepassing is door een connection string te configureren in het configuratie bestand van uw toepassing dat verwijst naar de snelkoppeling `UseDevelopmentStorage=true` . Hier volgt een voor beeld van een connection string naar de opslag emulator in een *app.config* -bestand: 
 
 ```xml
 <appSettings>
@@ -44,10 +44,10 @@ TableEndpoint=http://127.0.0.1:10002/devstoreaccount1;
 QueueEndpoint=http://127.0.0.1:10001/devstoreaccount1;
 ```
 
-Deze waarde is gelijk aan de hierboven weer gegeven snelkoppeling `UseDevelopmentStorage=true`,.
+Deze waarde is gelijk aan de hierboven weer gegeven snelkoppeling, `UseDevelopmentStorage=true` .
 
 #### <a name="specify-an-http-proxy"></a>Een HTTP-proxy opgeven
-U kunt ook een HTTP-proxy opgeven die moet worden gebruikt bij het testen van uw service op basis van de opslag emulator. Dit kan handig zijn voor het observeren van HTTP-aanvragen en-antwoorden terwijl u fouten opspoort voor de opslag Services. Als u een proxy wilt opgeven, `DevelopmentStorageProxyUri` voegt u de optie toe aan de Connection String en stelt u de waarde ervan in op de proxy-URI. Dit is bijvoorbeeld een connection string die naar de opslag emulator verwijst en een HTTP-proxy configureert:
+U kunt ook een HTTP-proxy opgeven die moet worden gebruikt bij het testen van uw service op basis van de opslag emulator. Dit kan handig zijn voor het observeren van HTTP-aanvragen en-antwoorden terwijl u fouten opspoort voor de opslag Services. Als u een proxy wilt opgeven, voegt `DevelopmentStorageProxyUri` u de optie toe aan de Connection String en stelt u de waarde ervan in op de proxy-URI. Dit is bijvoorbeeld een connection string die naar de opslag emulator verwijst en een HTTP-proxy configureert:
 
 ```
 UseDevelopmentStorage=true;DevelopmentStorageProxyUri=http://myProxyUri

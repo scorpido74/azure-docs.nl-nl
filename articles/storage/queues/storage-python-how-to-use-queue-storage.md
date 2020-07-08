@@ -10,10 +10,10 @@ ms.topic: how-to
 ms.reviewer: dineshm
 ms.custom: seo-javascript-october2019, tracking-python
 ms.openlocfilehash: 46d144a95708ac834478871ca27763f0ebd3b201
-ms.sourcegitcommit: ad66392df535c370ba22d36a71e1bbc8b0eedbe3
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/16/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84805246"
 ---
 # <a name="how-to-use-azure-queue-storage-v21-from-python"></a>Azure-wachtrij opslag gebruiken v 2.1 van python
@@ -100,7 +100,7 @@ for message in messages:
     print(message.content)
 ```
 
-## <a name="dequeue-messages"></a>Berichten uit de wachtrij verwijderen
+## <a name="dequeue-messages"></a>Bericht uit een wachtrij verwijderen
 
 Uw code verwijdert een bericht uit een wachtrij in twee stappen. Wanneer u [get_messages](/python/api/azure-storage-queue/azure.storage.queue.queueservice.queueservice#get-messages-queue-name--num-messages-none--visibility-timeout-none--timeout-none-)aanroept, wordt standaard het volgende bericht in een wachtrij weer gegeven. Een bericht dat wordt geretourneerd van is niet `get_messages` zichtbaar voor andere code die berichten uit deze wachtrij leest. Standaard blijft het bericht onzichtbaar gedurende 30 seconden. Als u het verwijderen van het bericht uit de wachtrij wilt volt ooien, moet u ook [delete_message](/python/api/azure-storage-queue/azure.storage.queue.queueservice.queueservice#delete-message-queue-name--message-id--pop-receipt--timeout-none-)aanroepen. Dit proces met twee stappen voor het verwijderen van een bericht zorgt ervoor dat wanneer uw code een bericht niet kan verwerken als gevolg van een hardware-of software fout, een ander exemplaar van uw code hetzelfde bericht kan ophalen en het opnieuw proberen. Uw code aanroepen `delete_message` direct nadat het bericht is verwerkt.
 
