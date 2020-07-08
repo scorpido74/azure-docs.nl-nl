@@ -5,14 +5,14 @@ author: jseb225
 ms.author: jeanb
 ms.reviewer: mamccrea
 ms.service: stream-analytics
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 03/05/2019
-ms.openlocfilehash: edc2b1d7d6a97dd7d7ec35dadf946b5b8581bd06
-ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
+ms.openlocfilehash: 1b508a6b4fa8a541381ea8b74046adb2f79034d3
+ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/25/2020
-ms.locfileid: "83833129"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86044138"
 ---
 # <a name="stream-analytics-and-power-bi-a-real-time-analytics-dashboard-for-streaming-data"></a>Stream Analytics en Power BI: een real-time analyse dashboard voor het streamen van gegevens
 
@@ -39,7 +39,7 @@ In de zelf studie voor fraude detectie wordt de uitvoer naar Azure Blob-opslag v
 
 2. Selecteer in het linkermenu **uitvoer** onder **taak topologie**. Selecteer vervolgens **+ toevoegen** en kies **Power bi** in het vervolg keuzemenu.
 
-3. Selecteer **+**  >  **Power bi**toevoegen. Vul vervolgens het formulier in met de volgende gegevens en selecteer **Autoriseren**:
+3. Selecteer **+ Toevoegen** > **Power BI**. Vul vervolgens het formulier in met de volgende gegevens en selecteer **Autoriseren**:
 
    |**Instelling**  |**Voorgestelde waarde**  |
    |---------|---------|
@@ -56,7 +56,7 @@ In de zelf studie voor fraude detectie wordt de uitvoer naar Azure Blob-opslag v
 
 4. Als u **Autoriseren** hebt geselecteerd, wordt er een pop-upvenster geopend en wordt u gevraagd referenties te verstrekken als verificatie voor uw Power BI-account. Zodra de autorisatie geslaagd is, kunt u de instellingen **Opslaan**.
 
-8. Klik op **Maken**.
+8. Klik op **Create**.
 
 De gegevensset wordt gemaakt met de volgende instellingen:
 
@@ -109,7 +109,7 @@ Deze sectie is optioneel, maar wordt aanbevolen.
 1. Als de TelcoStreaming-app momenteel niet wordt uitgevoerd, start u deze door de volgende stappen uit te voeren:
 
     * Open de opdracht prompt.
-    * Ga naar de map met telcogenerator. exe en gewijzigde telcodatagen. exe. config-bestanden.
+    * Ga naar de map met de telcogenerator.exe en gewijzigde telcodatagen.exe.config bestanden.
     * Voer de volgende opdracht uit:
 
        `telcodatagen.exe 1000 .2 2`

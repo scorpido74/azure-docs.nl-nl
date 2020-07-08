@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 06/05/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: 854d95f95d6ecf2fe35bcc93ddeaafdc9bafbf8f
-ms.sourcegitcommit: f57fa5f3ce40647eda93f8be4b0ab0726d479bca
+ms.openlocfilehash: 771f692ade9c7616eb7d217b4728a8c80d2aeac5
+ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/07/2020
-ms.locfileid: "84485635"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86044172"
 ---
 # <a name="azure-security-baseline-for-azure-data-factory"></a>Azure-beveiligings basislijn voor Azure Data Factory
 
@@ -420,7 +420,7 @@ Als u uw Integration Runtime uitvoert op een virtuele machine van Azure, kunnen 
 
 **Hulp**: gebruik Azure Active Directory beveiligings rapporten voor het genereren van Logboeken en waarschuwingen wanneer verdachte of onveilige activiteiten in de omgeving worden uitgevoerd. Gebruik Azure Security Center om identiteits-en toegangs activiteiten te bewaken.
 
-Als u uw Integration Runtime uitvoert op een virtuele machine (VM) van Azure, kunt u ook on-Board van uw VM naar Azure Sentinel. Microsoft Azure Sentinel is een schaal bare, Cloud-native, SIEM-oplossing (Security Information Event Management) en via (Security Orchestration Automated Response). Azure Sentinel levert intelligente beveiligings analyses en bedreigings informatie over de hele onderneming, waardoor er één oplossing is voor waarschuwings detectie, zicht baarheid van bedreigingen, proactieve jacht en reactie op bedreigingen.
+Als u uw Integration Runtime uitvoert op een virtuele machine (VM) van Azure, kunt u ook on-Board van uw VM naar Azure Sentinel. Microsoft Azure Sentinel is een schaalbaar, cloudoplossing voor Security Information Event Management (SIEM) en Security Orchestration Automated Response (SOAR). Azure Sentinel levert intelligente beveiligingsanalyses en bedreigingsinformatie voor de hele onderneming en is daardoor één oplossing voor waarschuwingsdetectie, zichtbaarheid van bedreigingen, proactieve opsporing en reactie op bedreigingen.
 
 * [Azure AD-gebruikers identificeren die zijn gemarkeerd voor Risk ante activiteiten](https://docs.microsoft.com/azure/active-directory/reports-monitoring/concept-user-at-risk)
 
@@ -480,7 +480,7 @@ Als u de runtime-integratie uitvoert op een virtuele machine van Azure, moet u d
 
 **Hulp**: u hebt toegang tot Azure Active Directory (AD) aanmeldings activiteiten, controle en risico logboek bronnen, waarmee u kunt integreren met elk Siem/bewakings programma. U kunt dit proces stroom lijnen door Diagnostische instellingen voor Azure AD-gebruikers accounts te maken en de audit logboeken en aanmeldings logboeken te verzenden naar een Log Analytics-werk ruimte. U kunt de gewenste logboek waarschuwingen configureren in Log Analytics.
 
-Als u uw Integration Runtime uitvoert in een virtuele Azure-machine (VM), wordt deze VM naar Azure Sentinel. Microsoft Azure Sentinel is een schaal bare, Cloud-native, SIEM-oplossing (Security Information Event Management) en via (Security Orchestration Automated Response). Azure Sentinel levert intelligente beveiligings analyses en bedreigings informatie over de hele onderneming, waardoor er één oplossing is voor waarschuwings detectie, zicht baarheid van bedreigingen, proactieve jacht en reactie op bedreigingen.
+Als u uw Integration Runtime uitvoert in een virtuele Azure-machine (VM), wordt deze VM naar Azure Sentinel. Microsoft Azure Sentinel is een schaalbaar, cloudoplossing voor Security Information Event Management (SIEM) en Security Orchestration Automated Response (SOAR). Azure Sentinel levert intelligente beveiligingsanalyses en bedreigingsinformatie voor de hele onderneming en is daardoor één oplossing voor waarschuwingsdetectie, zichtbaarheid van bedreigingen, proactieve opsporing en reactie op bedreigingen.
 
 * [Azure-activiteiten logboeken integreren in Azure Monitor](https://docs.microsoft.com/azure/active-directory/reports-monitoring/howto-integrate-activity-logs-with-log-analytics)
 
@@ -512,7 +512,7 @@ Als u uw Integration Runtime uitvoert in een virtuele Azure-machine (VM), wordt 
 
 ### <a name="313-provide-microsoft-with-access-to-relevant-customer-data-during-support-scenarios"></a>3,13: micro soft biedt toegang tot relevante klant gegevens tijdens ondersteunings scenario's
 
-**Richt lijnen**: in ondersteunings Scenario's waarin micro soft toegang heeft tot klant gegevens, biedt Azure klanten-lockbox een interface waarmee klanten aanvragen voor gegevens toegang van klanten kunnen controleren en goed keuren of afwijzen. Houd er rekening mee dat Azure lockbox niet beschikbaar is voor Azure Data Factory zelf, maar ondersteuning biedt voor Azure SQL-data bases en Azure Virtual Machines.
+**Richt lijnen**: in ondersteunings Scenario's waarin micro soft toegang heeft tot klant gegevens, biedt Azure klanten-lockbox een interface waarmee klanten aanvragen voor gegevens toegang van klanten kunnen controleren en goed keuren of afwijzen. Hoewel Azure lockbox niet beschikbaar is voor Azure Data Factory, ondersteunt Azure lockbox Azure SQL Database en Azure Virtual Machines.
 
 * [Klanten-lockbox begrijpen](https://docs.microsoft.com/azure/security/fundamentals/customer-lockbox-overview)
 
@@ -520,7 +520,7 @@ Als u uw Integration Runtime uitvoert in een virtuele Azure-machine (VM), wordt 
 
 **Verantwoordelijkheid**: klant
 
-## <a name="data-protection"></a>Gegevensbeveiliging
+## <a name="data-protection"></a>Gegevensbescherming
 
 *Zie [beveiligings beheer: gegevens beveiliging](https://docs.microsoft.com/azure/security/benchmarks/security-control-data-protection)voor meer informatie.*
 
@@ -542,7 +542,7 @@ Gebruik de functie voor gegevens detectie en-classificatie van Azure SQL Databas
 
 **Richt lijnen**: afzonderlijke abonnementen en/of beheer groepen implementeren voor ontwikkeling, testen en productie. Integration Runtimes moeten worden gescheiden door de/subnet van het virtuele netwerk (VNet) en worden gelabeld.
 
- U kunt ook privé-eind punten gebruiken om netwerk isolatie uit te voeren. Een persoonlijk Azure-eind punt is een netwerk interface waarmee u privé en veilig een service kunt verbinden met een persoonlijke Azure-koppeling. Privé-eind punt gebruikt een privé-IP-adres uit uw VNet, waardoor de service effectief in uw VNet wordt gezet.
+ U kunt ook privé-eind punten gebruiken om netwerk isolatie uit te voeren. Een privé-eindpunt in Azure is een netwerkinterface waarmee u privé en veilig verbinding maakt met een service die door Azure Private Link mogelijk wordt gemaakt. Privé-eind punt gebruikt een privé-IP-adres uit uw VNet, waardoor de service effectief in uw VNet wordt gezet.
 
 * [Aanvullende Azure-abonnementen maken](https://docs.microsoft.com/azure/billing/billing-create-subscription)
 
@@ -672,7 +672,7 @@ U kunt referenties of geheime waarden opslaan in een Azure Key Vault en deze geb
 
 Als u uw Integration Runtime uitvoert op een virtuele machine (VM) van Azure, volgt u de aanbevelingen van Azure Security Center over het uitvoeren van de beveiligings evaluaties op uw Vm's. Gebruik Azure-beveiliging aanbevolen of een oplossing van derden voor het uitvoeren van evaluatie van beveiligings problemen voor uw virtuele machines.
 
-* [Beveiligings evaluaties uitvoeren voor uw Azure SQL-data bases](https://docs.microsoft.com/azure/sql-database/sql-vulnerability-assessment)
+* [Beveiligings evaluaties uitvoeren op Azure SQL Database](https://docs.microsoft.com/azure/sql-database/sql-vulnerability-assessment)
 
 * [Geavanceerde gegevens beveiliging inschakelen](https://docs.microsoft.com/azure/sql-database/sql-database-advanced-data-security)
 
@@ -896,7 +896,7 @@ Houd er rekening mee dat dit alleen geldt als uw Integration Runtime wordt uitge
 
 * [Wat is Azure Firewall?](https://docs.microsoft.com/azure/firewall/overview)
 
-* [Wat is de firewall van Azure Web Application?](https://docs.microsoft.com/azure/web-application-firewall/overview)
+* [Wat is Azure Web Application Firewall?](https://docs.microsoft.com/azure/web-application-firewall/overview)
 
 * [Netwerkbeveiligingsgroepen](https://docs.microsoft.com/azure/virtual-network/security-overview)
 

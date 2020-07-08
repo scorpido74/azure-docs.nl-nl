@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 01/17/2020
 ms.author: tamram
 ms.subservice: common
-ms.openlocfilehash: 3694a1d04ec25f44cfcf9395bdd148e2fd3c0d9f
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 6ae5f4ba88880a53db765ab0ad9fde5bd9a4e4f9
+ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79371547"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86043632"
 ---
 # <a name="storage-account-overview"></a>Overzicht van opslagaccounts
 
@@ -32,7 +32,7 @@ V2-opslag accounts voor algemeen gebruik ondersteunen de nieuwste functies van A
 
 - Blobs (alle typen: blok keren, toevoegen, pagina)
 - Data Lake Gen2
-- Bestanden
+- Files
 - Disks
 - Wachtrijen
 - Tabellen
@@ -49,7 +49,7 @@ V2-opslag accounts voor algemeen gebruik bieden meerdere toegangs lagen voor het
 V1-opslag accounts voor algemeen gebruik bieden toegang tot alle Azure Storage-services, maar hebben mogelijk niet de nieuwste functies of de laagste prijzen per gigabyte. V1-opslag accounts voor algemeen gebruik ondersteunen deze Azure Storage services:
 
 - Blobs (alle typen)
-- Bestanden
+- Files
 - Disks
 - Wachtrijen
 - Tabellen
@@ -166,7 +166,7 @@ Wanneer u een upgrade uitvoert naar een v2-account voor algemeen gebruik van een
 
 ### <a name="azcopy"></a>AzCopy
 
-AzCopy is een Windows-opdrachtregelprogramma dat is  ontworpen voor het high-performance kopiëren van gegevens van en naar Azure Storage. U kunt AzCopy gebruiken om gegevens te kopiëren naar een Blob Storage-account vanuit een bestaand opslag account voor algemeen gebruik of om gegevens van on-premises opslag apparaten te uploaden. Zie [Gegevensoverdracht met het AzCopy-opdrachtregelprogramma](../common/storage-use-azcopy.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json) voor meer informatie.
+AzCopy is een Windows-opdrachtregelprogramma dat is  ontworpen voor het high-performance kopiëren van gegevens van en naar Azure Storage. U kunt AzCopy gebruiken om gegevens te kopiëren naar een Blob Storage-account vanuit een bestaand opslag account voor algemeen gebruik of om gegevens van on-premises opslag apparaten te uploaden. Zie [gegevens overdragen met het opdracht regel programma AzCopy](../common/storage-use-azcopy.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)voor meer informatie.
 
 ### <a name="data-movement-library"></a>Bibliotheek voor gegevensverplaatsing
 
@@ -185,7 +185,9 @@ Zie [Azure Storage Services rest API Reference](https://docs.microsoft.com/rest/
 
 [!INCLUDE [storage-account-billing-include](../../../includes/storage-account-billing-include.md)]
 
+[!INCLUDE [cost-management-horizontal](../../../includes/cost-management-horizontal.md)]
+
 ## <a name="next-steps"></a>Volgende stappen
 
-- [Create a storage account](storage-account-create.md)
+- [Een opslagaccount maken](storage-account-create.md)
 - [Een blok-blob-opslagaccount maken](../blobs/storage-blob-create-account-block-blob.md)

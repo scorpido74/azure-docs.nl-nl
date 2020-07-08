@@ -5,15 +5,15 @@ ms.service: stream-analytics
 author: mamccrea
 ms.author: mamccrea
 ms.reviewer: mamccrea
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 03/16/2020
 ms.custom: seodec18
-ms.openlocfilehash: 9d4df4efc6dbee88e80e620860487636cc9210dd
-ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
+ms.openlocfilehash: 5213a13539ac028d3e2bfec3bc7476ac645f615b
+ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/25/2020
-ms.locfileid: "83837209"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86043475"
 ---
 # <a name="azure-stream-analytics-on-iot-edge"></a>Azure Stream Analytics op IoT Edge
  
@@ -43,13 +43,12 @@ ASA maakt gebruik van IoT Hub om Edge-taken op een of meer apparaten te implemen
 
 ### <a name="installation-instructions"></a>Installatie-instructies
 De stappen op hoog niveau worden in de volgende tabel beschreven. Meer informatie vindt u in de volgende secties.
-
-|      |Stap   | Opmerkingen   |
-| ---   | ---   |  ---      |
-| 1   | **Een opslag container maken**   | Opslag containers worden gebruikt voor het opslaan van uw taak definitie, waar ze toegankelijk zijn voor uw IoT-apparaten. <br>  U kunt elke bestaande opslag container opnieuw gebruiken.     |
-| 2   | **Een ASA Edge-taak maken**   |  Maak een nieuwe taak, selecteer **Edge** als **hosting omgeving**. <br> Deze taken worden gemaakt/beheerd vanuit de Cloud en uitgevoerd op uw eigen IoT Edge apparaten.     |
-| 3   | **Uw IoT Edge omgeving instellen op uw apparaat (s)**   | Instructies voor [Windows](https://docs.microsoft.com/azure/iot-edge/quickstart) of [Linux](https://docs.microsoft.com/azure/iot-edge/quickstart-linux).          |
-| 4   | **ASA implementeren op uw IoT Edge apparaat (en)**   |  De taak definitie van ASA wordt geëxporteerd naar de opslag container die u eerder hebt gemaakt.       |
+|Stap   | Notities   |
+| ---   |  ---      |
+| **Een opslag container maken**   | Opslag containers worden gebruikt voor het opslaan van uw taak definitie, waar ze toegankelijk zijn voor uw IoT-apparaten. <br>  U kunt elke bestaande opslag container opnieuw gebruiken.     |
+| **Een ASA Edge-taak maken**   |  Maak een nieuwe taak, selecteer **Edge** als **hosting omgeving**. <br> Deze taken worden gemaakt/beheerd vanuit de Cloud en uitgevoerd op uw eigen IoT Edge apparaten.     |
+| **Uw IoT Edge omgeving instellen op uw apparaat (s)**   | Instructies voor [Windows](https://docs.microsoft.com/azure/iot-edge/quickstart) of [Linux](https://docs.microsoft.com/azure/iot-edge/quickstart-linux).          |
+| **ASA implementeren op uw IoT Edge apparaat (en)**   |  De taak definitie van ASA wordt geëxporteerd naar de opslag container die u eerder hebt gemaakt.       |
 
 U kunt [deze stapsgewijze zelf studie](https://docs.microsoft.com/azure/iot-edge/tutorial-deploy-stream-analytics) volgen om uw eerste ASA-taak op IOT Edge te implementeren. De volgende video helpt u inzicht te krijgen in het proces om een Stream Analytics-taak uit te voeren op een IoT edge-apparaat:  
 

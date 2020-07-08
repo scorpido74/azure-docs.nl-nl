@@ -5,15 +5,15 @@ author: jseb225
 ms.author: jeanb
 ms.reviewer: mamccrea
 ms.service: stream-analytics
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 12/06/2018
 ms.custom: seodec18
-ms.openlocfilehash: 52800f52e72e4aabcc8f6ebc733443615607f3a3
-ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
+ms.openlocfilehash: ae352ead9e3ba6980c82ea48dca3db872b8d1e6d
+ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/25/2020
-ms.locfileid: "83835492"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86043441"
 ---
 # <a name="management-net-sdk-set-up-and-run-analytics-jobs-using-the-azure-stream-analytics-api-for-net"></a>Management .NET SDK: analyse taken instellen en uitvoeren met behulp van de Azure Stream Analytics-API voor .NET
 Meer informatie over het instellen en uitvoeren van analyse taken met behulp van de Stream Analytics-API voor .NET met behulp van de Management .NET SDK. Stel een project in en maak invoer-en uitvoer bronnen, trans formaties en taken voor starten en stoppen. Voor uw analyse taken kunt u gegevens streamen vanuit Blob Storage of van een Event Hub.
@@ -59,7 +59,7 @@ Als u een analyse taak wilt maken, gebruikt u de Stream Analytics-API voor .NET,
    Install-Package Microsoft.Rest.ClientRuntime.Azure.Authentication -Version 2.3.1
    ```
 
-3. Voeg de sectie **appSettings** toe aan het bestand app. config:
+3. Voeg de sectie **appSettings** toe aan het App.config-bestand:
    
    ```powershell
    <appSettings>
@@ -212,7 +212,7 @@ De methode **TestConnection** test of de stream Analytics taak verbinding kan ma
 ## <a name="create-a-stream-analytics-output-target"></a>Een Stream Analytics-uitvoer doel maken
 Het maken van een uitvoer doel is vergelijkbaar met het maken van een Stream Analytics invoer bron. Uitvoer doelen zijn als invoer bronnen gekoppeld aan een specifieke taak. Als u hetzelfde uitvoer doel voor verschillende taken wilt gebruiken, moet u de methode opnieuw aanroepen en een andere taak naam opgeven.
 
-Met de volgende code wordt een uitvoer doel (Azure SQL database) gemaakt. U kunt het gegevens type van het uitvoer doel en/of het type serialisatie aanpassen.
+Met de volgende code wordt een uitvoer doel (Azure SQL Database) gemaakt. U kunt het gegevens type van het uitvoer doel en/of het type serialisatie aanpassen.
 
    ```csharp
    // Create an output

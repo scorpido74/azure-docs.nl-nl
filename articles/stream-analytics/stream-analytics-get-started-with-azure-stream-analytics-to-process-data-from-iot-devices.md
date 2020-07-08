@@ -5,14 +5,14 @@ author: mamccrea
 ms.author: mamccrea
 ms.reviewer: mamccrea
 ms.service: stream-analytics
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 11/26/2019
-ms.openlocfilehash: 0755131f7d8071e37eadc1339ebc5e122725fa71
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: a40f92e88d2d8e5ca253446b9c67ad30df538a5b
+ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75426249"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86043424"
 ---
 # <a name="process-real-time-iot-data-streams-with-azure-stream-analytics"></a>Real-time IoT-gegevens stromen verwerken met Azure Stream Analytics
 
@@ -57,7 +57,7 @@ Voor het gebruiksgemak biedt deze introductiehandleiding een bestand met voorbee
 ## <a name="create-an-azure-stream-analytics-query"></a>Een Azure Stream Analytics-query maken
 De volgende stap na het maken van de taak is het schrijven van een query. U kunt query's testen op voorbeeld gegevens zonder een invoer-of uitvoer verbinding te maken met uw taak.
 
-Down load de [hallowereldasa-InputStream. json](https://github.com/Azure/azure-stream-analytics/blob/master/Samples/GettingStarted/HelloWorldASA-InputStream.json
+Down load de [HelloWorldASA-InputStream.jsop](https://github.com/Azure/azure-stream-analytics/blob/master/Samples/GettingStarted/HelloWorldASA-InputStream.json
 ) van github. Ga vervolgens naar uw Azure Stream Analytics-taak in de Azure Portal.
 
 Selecteer **query** onder **taak topologie** in het menu links. Selecteer vervolgens **voorbeeld invoer uploaden**. Upload het `HelloWorldASA-InputStream.json` bestand en selecteer **OK**.

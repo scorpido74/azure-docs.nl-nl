@@ -1,20 +1,20 @@
 ---
-title: Een Azure Stream Analytics-taak Azure Resource Manager sjabloon exporteren
+title: Een Azure Resource Manager-sjabloon voor een Azure Stream Analytics-taak exporteren
 description: In dit artikel wordt beschreven hoe u een Azure Resource Manager sjabloon voor uw Azure Stream Analytics taak exporteert.
 services: stream-analytics
 author: mamccrea
 ms.author: mamccrea
 ms.service: stream-analytics
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 03/10/2020
-ms.openlocfilehash: 52ea7b45d0dcdb3ae16b8212557ba6ab3344ff15
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 76c2cf7164c3e2d683a9294cb500ed05381811b6
+ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "78968953"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86043526"
 ---
-# <a name="export-an-azure-stream-analytics-job-azure-resource-manager-template"></a>Een Azure Stream Analytics-taak Azure Resource Manager sjabloon exporteren
+# <a name="export-an-azure-stream-analytics-job-azure-resource-manager-template"></a>Een Azure Resource Manager-sjabloon voor een Azure Stream Analytics-taak exporteren
 
 Met [Azure Resource Manager sjablonen](../azure-resource-manager/templates/overview.md) kunt u de infra structuur als code implementeren. De sjabloon is een JavaScript Object Notation-bestand (JSON) waarmee de infra structuur en configuratie voor uw resources worden gedefinieerd. U geeft de resources op die u wilt implementeren en de eigenschappen voor deze resources.
 
@@ -42,13 +42,13 @@ De volgende stap is het compileren van het taak script naar een Azure Resource M
 
 1. U ziet dat een **Deploy** -map wordt weer gegeven in de werk ruimte stream Analytics taak.
 
-1. Verken het bestand *JobTemplate. json.* dit is de Azure resource management-sjabloon die wordt gebruikt om te implementeren.
+1. Verken de *JobTemplate.jsop* bestand, de Azure resource management-sjabloon die wordt gebruikt voor de implementatie.
 
 ## <a name="complete-the-parameters-file"></a>Het parameter bestand volt ooien
 
 Vervolgens voltooit u het Azure resource management-sjabloon parameter bestand.
 
-1. Open het bestand *JobTemplate. para meters. json* dat zich bevindt in de map **Deploy** van uw werk ruimte stream Analytics-taak in Visual Studio code.
+1. Open de *JobTemplate.parameters.jsvoor* het bestand dat zich bevindt in de map **Deploy** van uw werk ruimte stream Analytics taak in Visual Studio code.
 
 1. U ziet dat de invoer-en uitvoer sleutels null zijn. Vervang de Null-waarden door de daad werkelijke toegangs sleutels voor de invoer-en uitvoer resources.
 
@@ -58,7 +58,7 @@ Vervolgens voltooit u het Azure resource management-sjabloon parameter bestand.
 
 U bent klaar om uw Azure Stream Analytics-taak te implementeren met behulp van de Azure Resource Manager sjablonen die u hebt gegenereerd in de vorige sectie.
 
-Voer de volgende opdracht uit in een Power shell-venster. Zorg ervoor dat u de *ResourceGroupName*, *TemplateFile*en *TemplateParameterFile* met de werkelijke naam van de resource groep reaplce en de volledige bestands paden naar de bestanden *JobTemplate. json* en *JobTemplate. para meters. json* in de **map Deploy** van uw taak werkruimte.
+Voer de volgende opdracht uit in een Power shell-venster. Zorg ervoor dat u de reaplce van *ResourceGroupName*, *TemplateFile*en *TemplateParameterFile* met de werkelijke naam van de resource groep en de volledige bestands paden naar het *JobTemplate.jsop* en *JobTemplate.parameters.jsop* bestanden in de **map Deploy** van uw werk ruimte.
 
 Als Azure PowerShell niet is geconfigureerd, volgt u de stappen in de [module Azure PowerShell installeren](https://docs.microsoft.com/powershell/azure/install-Az-ps).
 

@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/28/2020
 ms.author: memildin
-ms.openlocfilehash: 673524f08ecae28fb6f2e18f3c0c7230cf102b06
-ms.sourcegitcommit: 374e47efb65f0ae510ad6c24a82e8abb5b57029e
+ms.openlocfilehash: f159d2cdc48b144d0c75c62cd8a7ba6667424243
+ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/28/2020
-ms.locfileid: "85513466"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86043866"
 ---
 # <a name="advanced-data-security-for-sql-machines-preview"></a>Geavanceerde gegevens beveiliging voor SQL-machines (preview-versie)
 
@@ -31,7 +31,7 @@ Deze preview-functie bevat functionaliteit voor het identificeren en beperken va
 * [Advanced Threat Protection](https://docs.microsoft.com/azure/sql-database/sql-database-threat-detection-overview) : de detectie service die CONTINU uw SQL-servers bewaakt voor bedreigingen, zoals SQL-injectie, brute-force aanvallen en misbruik van bevoegdheden. Deze service biedt actie gerichte beveiligings waarschuwingen in Azure Security Center met details van de verdachte activiteit, richt lijnen voor het oplossen van problemen met de bedreigingen en opties voor het voortzetten van uw onderzoeken met Azure Sentinel.
 
 >[!TIP]
-> Geavanceerde gegevens beveiliging voor SQL-machines is een uitbrei ding van het [geavanceerde gegevens beveiligings pakket](https://docs.microsoft.com/azure/sql-database/sql-database-advanced-data-security)van Azure Security Center, dat al beschikbaar is voor Azure SQL-data bases, Synapse en SQL Managed instances.
+> Geavanceerde gegevens beveiliging voor SQL-machines is een uitbrei ding van het [geavanceerde gegevens beveiligings pakket](https://docs.microsoft.com/azure/sql-database/sql-database-advanced-data-security)van Azure Security Center, dat beschikbaar is voor Azure SQL database, Azure Synapse en SQL Managed instance.
 
 
 ## <a name="set-up-advanced-data-security-for-sql-machines"></a>Geavanceerde gegevens beveiliging instellen voor SQL-machines 
@@ -91,14 +91,14 @@ Het dash board evaluatie van beveiligings problemen biedt een overzicht van de e
 
 U kunt de resultaten van de evaluatie van de beveiligings problemen rechtstreeks vanuit Security Center weer geven.
 
-1. Open de pagina **aanbevelingen** vanuit de zijbalk van Security Center en selecteer de aanbevolen **beveiligings problemen op uw SQL database servers op computers moeten worden hersteld (preview)**. Zie [Security Center-aanbevelingen](security-center-recommendations.md)voor meer informatie. 
+1. Open de pagina **aanbevelingen** vanuit de zijbalk van Security Center en selecteer de aanbevolen **beveiligings problemen op uw SQL-servers op computers moeten worden hersteld (preview)**. Zie [Security Center-aanbevelingen](security-center-recommendations.md)voor meer informatie. 
 
 
-    [![* * Beveiligings problemen voor uw SQL-data bases op computers moeten worden hersteld (preview-versie) * * aanbeveling](media/security-center-advanced-iaas-data/data-and-storage-sqldb-vulns-on-vm.png)](media/security-center-advanced-iaas-data/data-and-storage-sqldb-vulns-on-vm.png#lightbox)
+    [![* * Beveiligings problemen op uw SQL-servers op computers moeten worden hersteld (preview-versie) * * aanbeveling](media/security-center-advanced-iaas-data/data-and-storage-sqldb-vulns-on-vm.png)](media/security-center-advanced-iaas-data/data-and-storage-sqldb-vulns-on-vm.png#lightbox)
 
     De gedetailleerde weer gave voor deze aanbeveling wordt weer gegeven.
 
-    [![Gedetailleerde weer gave voor de * * beveiligings problemen voor uw SQL-data bases op computers moeten worden hersteld (preview) * * Recommendation](media/security-center-advanced-iaas-data/all-servers-view.png)](media/security-center-advanced-iaas-data/all-servers-view.png#lightbox)
+    [![Gedetailleerde weer gave voor de * * beveiligings problemen op uw SQL-servers op computers moet worden hersteld (preview) * * Recommendation](media/security-center-advanced-iaas-data/all-servers-view.png)](media/security-center-advanced-iaas-data/all-servers-view.png#lightbox)
 
 1. Voor meer informatie, inzoomen:
 

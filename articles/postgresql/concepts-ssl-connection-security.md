@@ -5,13 +5,13 @@ author: rachel-msft
 ms.author: raagyema
 ms.service: postgresql
 ms.topic: conceptual
-ms.date: 06/02/2020
-ms.openlocfilehash: 9422337d30d06f0bb333e4d25ba1e54bd789ffec
-ms.sourcegitcommit: 8e5b4e2207daee21a60e6581528401a96bfd3184
+ms.date: 06/30/2020
+ms.openlocfilehash: 6660c5d40ffb8ecb338dd9cdf53f24cfe2911713
+ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/04/2020
-ms.locfileid: "84418157"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86043832"
 ---
 # <a name="configure-tls-connectivity-in-azure-database-for-postgresql---single-server"></a>TLS-connectiviteit configureren in Azure Database for PostgreSQL-één server
 
@@ -51,7 +51,7 @@ Voor sommige toepassings raamwerken die gebruikmaken van PostgreSQL voor hun dat
 
 ## <a name="applications-that-require-certificate-verification-for-tls-connectivity"></a>Toepassingen waarvoor certificaat verificatie voor TLS-connectiviteit is vereist
 
-In sommige gevallen vereist toepassingen een lokaal certificaat bestand dat is gegenereerd op basis van een certificaat bestand van een vertrouwde certificerings instantie (. CER) om veilig verbinding te kunnen maken. Het certificaat om verbinding te maken met een Azure Database for PostgreSQL server bevindt zich op https://www.digicert.com/CACerts/BaltimoreCyberTrustRoot.crt.pem . Down load het certificaat bestand en sla het op naar uw voorkeurs locatie.
+In sommige gevallen vereist toepassingen een lokaal certificaat bestand dat is gegenereerd op basis van een certificaat bestand van een vertrouwde certificerings instantie (CA) om veilig verbinding te kunnen maken. Het certificaat om verbinding te maken met een Azure Database for PostgreSQL server bevindt zich op https://www.digicert.com/CACerts/BaltimoreCyberTrustRoot.crt.pem . Down load het certificaat bestand en sla het op naar uw voorkeurs locatie. (Zie de volgende koppelingen voor certificaten voor servers in soevereine Clouds: [Azure Government](https://dl.cacerts.digicert.com/DigiCertGlobalRootCA.crt.pem), [Azure China](https://dl.cacerts.digicert.com/DigiCertGlobalRootCA.crt.pem)en [Azure Duitsland](https://www.d-trust.net/cgi-bin/D-TRUST_Root_Class_3_CA_2_2009.crt).) 
 
 ### <a name="connect-using-psql"></a>Verbinding maken met psql
 
@@ -85,9 +85,9 @@ Azure Database for PostgreSQL één server biedt de mogelijkheid om de TLS-versi
 Als u bijvoorbeeld deze versie van een TLS-instelling instelt op TLS 1,0, betekent dit dat uw server verbindingen met clients toestaat die gebruikmaken van TLS 1,0, 1,1 en 1.2 +. U kunt dit ook instellen op 1,2 zodat u alleen verbindingen van clients met TLS 1.2 + kunt toestaan en alle verbindingen met TLS 1,0 en TLS 1,1 worden geweigerd.
 
 > [!Note] 
-> Azure Database for PostgreSQL wordt standaard ingesteld op TLS uitgeschakeld voor alle nieuwe servers.
+> Azure Database for PostgreSQL wordt standaard geen TLS-versie (de instelling) afgedwongen `TLSEnforcementDisabled` .
 >
-> Momenteel worden de TLS-versies ondersteund door Azure Database for PostgreSQL TLS 1,0, 1,1 en 1,2. Wanneer het beleid is afgedwongen voor een specifieke minimale TLS-versie, kunt u deze niet wijzigen in uitgeschakeld.
+> Wanneer u een minimum versie van TLS afdwingt, kunt u de minimale afdwinging van de versie niet later uitschakelen.
 
 Zie [TLS-instelling configureren](howto-tls-configurations.md)voor meer informatie over het instellen van de TLS-instelling voor uw Azure database for PostgreSQL één server.
 

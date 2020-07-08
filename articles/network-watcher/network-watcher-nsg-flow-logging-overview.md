@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: damendo
-ms.openlocfilehash: bedc0f6a457fe27d7358aea1219126427c924e1d
-ms.sourcegitcommit: d7fba095266e2fb5ad8776bffe97921a57832e23
+ms.openlocfilehash: e59a985f59da1b6a40a6b583d5e2a490611a702c
+ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84627920"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86043849"
 ---
 # <a name="introduction-to-flow-logging-for-network-security-groups"></a>Inleiding tot stroom logboek registratie voor netwerk beveiligings groepen
 
@@ -51,7 +51,10 @@ Stroom logboeken zijn de bron van waarheid voor alle netwerk activiteiten in uw 
 - Logboeken worden verzameld via het Azure-platform en zijn niet van invloed op de resources van klanten of netwerk prestaties.
 - Logboeken worden geschreven in de JSON-indeling en tonen uitgaand en binnenkomend verkeer per NSG regel.
 - Elke logboek record bevat de netwerk interface (NIC) de stroom is van toepassing op 5-tuple-informatie, de verkeers beslissing & (alleen versie 2) doorvoer gegevens. Zie de _logboek indeling_ hieronder voor meer informatie.
-- Stroom logboeken hebben een Bewaar functie waarmee de logboeken automatisch kunnen worden verwijderd tot een jaar nadat ze zijn gemaakt. **Opmerking**: bewaren is alleen beschikbaar als u gebruikmaakt van [v2-opslag accounts voor algemeen gebruik (GPv2)](https://docs.microsoft.com/azure/storage/common/storage-account-overview#types-of-storage-accounts). 
+- Stroom logboeken hebben een Bewaar functie waarmee de logboeken automatisch kunnen worden verwijderd tot een jaar nadat ze zijn gemaakt. 
+
+> [!NOTE]
+> Bewaren is alleen beschikbaar als u gebruikmaakt van [v2-opslag accounts (GPv2) voor algemeen](https://docs.microsoft.com/azure/storage/common/storage-account-overview#types-of-storage-accounts)gebruik. 
 
 **Basisconcepten**
 
@@ -107,7 +110,7 @@ Stroom status _B_ wordt vastgelegd wanneer een stroom wordt gestart. De stroom s
 De volgende tekst is een voor beeld van een stroom logboek. Zoals u ziet, zijn er meerdere records die voldoen aan de eigenschappen lijst die in de voor gaande sectie wordt beschreven.
 
 > [!NOTE]
-> De waarden in de eigenschap **flowTuples* zijn een door komma's gescheiden lijst.
+> De waarden in de eigenschap *flowTuples* zijn een door komma's gescheiden lijst.
  
 **Voor beeld van versie 1 NSG-stroom logboek indeling**
 ```json
@@ -354,9 +357,9 @@ https://{storageAccountName}.blob.core.windows.net/insights-logs-networksecurity
 
 **Kosten**voor het vastleggen van de stroom: de logboek registratie voor NSG wordt gefactureerd op het volume van de logboeken die zijn gegenereerd. High Traffic volume kan leiden tot een groot stroom logboek volume en de bijbehorende kosten. De prijzen voor het NSG-stroom logboek bevatten geen onderliggende kosten voor opslag. Het gebruik van de functie voor het Bewaar beleid met de logboek registratie van de NSG-stroom houdt in dat afzonderlijke opslag kosten voor langere Peri Oden worden bespaard. Als u de functie voor het Bewaar beleid niet nodig hebt, raden we u aan deze waarde in te stellen op 0. Zie voor meer informatie [Network Watcher prijzen](https://azure.microsoft.com/pricing/details/network-watcher/) en [Azure Storage prijzen](https://azure.microsoft.com/pricing/details/storage/) voor meer informatie.
 
-**Onjuist aantal bytes en pakket voor binnenkomende stromen**: [netwerk beveiligings groepen (nsg's)](https://docs.microsoft.com/azure/virtual-network/security-overview) worden geïmplementeerd als een [stateful firewall](https://en.wikipedia.org/wiki/Stateful_firewall?oldformat=true). Als gevolg van de platform beperkingen, worden regels voor het beheren van binnenkomende stromen echter op een staatloze manier geïmplementeerd. Vanwege dit aantal bytes en pakketten worden voor deze stromen niet geregistreerd. Het aantal bytes en pakketten dat in de NSG-stroom Logboeken (en Traffic Analytics) wordt gerapporteerd, kan daarom afwijken van de werkelijke getallen. Daarnaast worden de binnenkomende stromen nu niet afgesloten. Deze beperking is gepland om uiterlijk op 2020 december te worden vastgesteld.
+**Onjuist aantal bytes en pakket voor binnenkomende stromen**: [netwerk beveiligings groepen (nsg's)](https://docs.microsoft.com/azure/virtual-network/security-overview) worden geïmplementeerd als een [stateful firewall](https://en.wikipedia.org/wiki/Stateful_firewall?oldformat=true). Als gevolg van de platform beperkingen, worden regels voor het beheren van binnenkomende stromen echter op een staatloze manier geïmplementeerd. Vanwege dit aantal bytes en pakketten worden voor deze stromen niet geregistreerd. Het aantal bytes en pakketten dat in de NSG-stroom Logboeken (en Traffic Analytics) wordt gerapporteerd, kan daarom afwijken van de werkelijke getallen. Daarnaast worden de binnenkomende stromen nu niet afgesloten. Deze beperking is gepland om uiterlijk op 2020 december te worden vastgesteld. 
 
-**Binnenkomende stromen die zijn geregistreerd van Internet ip's naar vm's zonder open bare ip's**: vm's waaraan geen openbaar IP-adres is toegewezen via een openbaar IP-adres dat is gekoppeld aan de NIC als instantie niveau openbaar IP of die deel uitmaken van een basis Load Balancer back-end-groep, gebruiken [standaard SNAT](../load-balancer/load-balancer-outbound-connections.md#defaultsnat) en hebben een IP-adres dat is toegewezen door Azure om uitgaande connectiviteit te vergemakkelijken. Als gevolg hiervan ziet u mogelijk stroom logboek vermeldingen voor stromen van IP-adressen van Internet, als de stroom bestemd is voor een poort in het bereik van poorten die zijn toegewezen voor SNAT. Hoewel Azure deze stromen naar de virtuele machine niet toestaat, wordt de poging geregistreerd en wordt deze weer gegeven in het NSG-stroom logboek van Network Watcher. U wordt aangeraden ongewenste binnenkomend Internet verkeer expliciet met NSG te blok keren.
+**Binnenkomende stromen die zijn geregistreerd van Internet ip's naar vm's zonder open bare ip's**: vm's waaraan geen openbaar IP-adres is toegewezen via een openbaar IP-adres dat is gekoppeld aan de NIC als instantie niveau openbaar IP of die deel uitmaken van een basis Load Balancer back-end-groep, gebruiken [standaard SNAT](../load-balancer/load-balancer-outbound-connections.md) en hebben een IP-adres dat is toegewezen door Azure om uitgaande connectiviteit te vergemakkelijken. Als gevolg hiervan ziet u mogelijk stroom logboek vermeldingen voor stromen van IP-adressen van Internet, als de stroom bestemd is voor een poort in het bereik van poorten die zijn toegewezen voor SNAT. Hoewel Azure deze stromen naar de virtuele machine niet toestaat, wordt de poging geregistreerd en wordt deze weer gegeven in het NSG-stroom logboek van Network Watcher. U wordt aangeraden ongewenste binnenkomend Internet verkeer expliciet met NSG te blok keren.
 
 ## <a name="best-practices"></a>Aanbevolen procedures
 
