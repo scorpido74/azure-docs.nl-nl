@@ -4,10 +4,10 @@ description: Lees hoe Azure Policy Rego gebruikt en beleids agent opent voor het
 ms.date: 06/12/2020
 ms.topic: conceptual
 ms.openlocfilehash: a044ea33f1a7710c4bb97d30cf8f11d4de2838b1
-ms.sourcegitcommit: dfa5f7f7d2881a37572160a70bac8ed1e03990ad
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/25/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85373621"
 ---
 # <a name="understand-azure-policy-for-kubernetes-clusters-preview"></a>Azure Policy voor Kubernetes-clusters begrijpen (preview-versie)
@@ -399,7 +399,7 @@ Zoek de ingebouwde beleids definities voor het beheren van uw cluster met behulp
 
    - **Uitgeschakeld** : dwing het beleid niet af op het cluster. Kubernetes-toegangs aanvragen met schendingen worden niet geweigerd. De resultaten van de nalevings beoordeling zijn nog steeds beschikbaar. Bij het implementeren van nieuwe beleids definities voor het uitvoeren van clusters, is de optie _uitgeschakeld_ handig voor het testen van de beleids definitie als toegangs aanvragen met schendingen niet worden geweigerd.
 
-1. Selecteer **Next**. 
+1. Selecteer **Volgende**. 
 
 1. **Parameter waarden** instellen 
 
@@ -533,7 +533,7 @@ De gegevens die door de invoeg toepassing worden verzameld, zijn geen persoonlij
 ## <a name="next-steps"></a>Volgende stappen
 
 - Bekijk voor beelden op [Azure Policy voor beelden](../samples/index.md).
-- Bekijk de [structuur van Azure Policy-definities](definition-structure.md).
+- Controleer de [structuur van de beleids definitie](definition-structure.md).
 - Lees [Informatie over de effecten van het beleid](effects.md).
 - Meer informatie over het [programmatisch maken van beleids regels](../how-to/programmatically-create.md).
 - Meer informatie over het [ophalen van compatibiliteits gegevens](../how-to/get-compliance-data.md).

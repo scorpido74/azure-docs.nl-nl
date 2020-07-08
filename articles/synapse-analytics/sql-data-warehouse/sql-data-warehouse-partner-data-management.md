@@ -12,10 +12,10 @@ ms.author: mabasile
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
 ms.openlocfilehash: 18c72fd5f0ad4505d754efc6015ee626156beec3
-ms.sourcegitcommit: bf8c447dada2b4c8af017ba7ca8bfd80f943d508
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/25/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85368121"
 ---
 # <a name="azure-synapse-analytics-data-management-partners"></a>Azure Synapse Analytics-gegevens beheer partners
@@ -23,7 +23,7 @@ ms.locfileid: "85368121"
 Als u een Data Warehouse-oplossing wilt maken met behulp van de Synapse-functie van Azure Synapse, hebt u een groot aantal toonaangevende hulpprogram ma's waaruit u kunt kiezen. In dit artikel worden micro soft-partner bedrijven beschreven met gegevens beheer Programma's en oplossingen die Azure Synapse ondersteunen.
 
 ## <a name="data-management-partners"></a>Gegevens beheer partners
-| Partner | Beschrijving | Website/product koppeling |
+| Partner | Description | Website/product koppeling |
 | ------- | ----------- | -------------------- |
 | ![Coffing-gegevens opslag](./media/sql-data-warehouse-partner-data-management/coffing-data-warehousing-logo.png) |**Coffing-gegevens opslag**<br>Coffing data warehousing biedt Nexus Chameleon, een hulp programma met tien jaar aan ontwerp dat speciaal is gericht op het opvragen van systemen. Nexus is beschikbaar als een hulp programma voor het uitvoeren van een query voor een Azure Synapse SQL-groep. Gebruik Nexus om in-House-en Cloud computers op te vragen en gegevens op verschillende platformen te koppelen. Punt-klikken-rapport! |[Product pagina](https://www.coffingdw.com/software/nexus/)<br> |
 | ![Inbrein](./media/sql-data-warehouse-partner-data-management/inbrein-logo.png) |**Inbrein MicroERD**<br>Inbrein MicroERD biedt de hulp middelen die u nodig hebt om een nauw keurig gegevens model te maken, gegevens redundantie te verminderen, productiviteit te verbeteren en normen te observeren. Door gebruik te maken van de gebruikers interface, die is ontwikkeld op basis van uitgebreide gebruikers ervaring, kan een modelleerder gemakkelijk en handig werken aan DB-modellen. U kunt voortdurend gebruikmaken van nieuwe en verbeterde functies van MicroERD via functionele verbeteringen en updates van de functie. |[Product pagina](http://microerd.com/)<br> |

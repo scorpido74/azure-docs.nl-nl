@@ -9,17 +9,17 @@ ms.date: 05/22/2019
 ms.author: spelluru
 ms.custom: include file
 ms.openlocfilehash: 333f2317fcc834a10b7336bbda9a43ba16a7ad38
-ms.sourcegitcommit: 69156ae3c1e22cc570dda7f7234145c8226cc162
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/03/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84317798"
 ---
 De volgende tabellen bevatten quota's en limieten die specifiek zijn voor [Azure Event hubs](https://azure.microsoft.com/services/event-hubs/). Zie [Event hubs prijzen](https://azure.microsoft.com/pricing/details/event-hubs/)voor meer informatie over Event hubs prijzen.
 
 De volgende limieten zijn gebruikelijk voor de lagen basis en standaard. 
 
-| Limiet | Bereik | Opmerkingen | Waarde |
+| Limiet | Bereik | Notities | Waarde |
 | --- | --- | --- | --- |
 | Aantal Event Hubs-naam ruimten per abonnement |Abonnement |- |100 |
 | Aantal Event hubs per naam ruimte |Naamruimte |Volgende aanvragen voor het maken van een nieuwe Event Hub worden geweigerd. |10 |
@@ -33,11 +33,11 @@ De volgende limieten zijn gebruikelijk voor de lagen basis en standaard.
 | Aantal virtuele netwerken (VNet) en IP-configuratie regels | Entiteit | - | 128 | 
 
 ### <a name="event-hubs-basic-and-standard---quotas-and-limits"></a>Event Hubs Basic-en Standard-quota en-limieten
-| Limiet | Bereik | Opmerkingen | Basic | Standard |
+| Limiet | Bereik | Notities | Basic | Standard |
 | --- | --- | --- | -- | --- |
 | Maximale grootte van Event Hubs gebeurtenis|Entiteit | &nbsp; | 256 kB | 1 MB |
 | Aantal consumenten groepen per Event Hub |Entiteit | &nbsp; |1 |20 |
-| Aantal AMQP-verbindingen per naam ruimte |Naamruimte |Volgende aanvragen voor extra verbindingen worden geweigerd en er wordt een uitzonde ring ontvangen door de aanroepende code. |100 |5.000|
+| Aantal AMQP-verbindingen per naam ruimte |Naamruimte |Volgende aanvragen voor extra verbindingen worden geweigerd en er wordt een uitzonde ring ontvangen door de aanroepende code. |100 |5\.000|
 | Maximale Bewaar periode van gebeurtenis gegevens |Entiteit | &nbsp; |1 dag |1-7 dagen |
 |Naam ruimte Apache Kafka ingeschakeld|Naamruimte |Event Hubs-naam ruimte streamt toepassingen met het Kafka-Protocol |Nee | Ja |
 |Capture |Entiteit | Bij inschakeling worden micro batches op dezelfde stroom |Nee |Ja |

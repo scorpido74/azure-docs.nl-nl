@@ -7,10 +7,10 @@ ms.service: mariadb
 ms.topic: conceptual
 ms.date: 6/24/2020
 ms.openlocfilehash: f05f26c54d9f3ea62180c598aada59d405c3c805
-ms.sourcegitcommit: f98ab5af0fa17a9bba575286c588af36ff075615
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/25/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85362676"
 ---
 # <a name="configure-and-access-audit-logs-in-the-azure-portal"></a>Controle logboeken configureren en openen in de Azure Portal
@@ -30,7 +30,7 @@ Als u deze hand leiding wilt door lopen, hebt u het volgende nodig:
 
 Controle logboek registratie inschakelen en configureren.
 
-1. Meld u aan bij de [Azure-portal](https://portal.azure.com/).
+1. Meld u aan bij [Azure Portal](https://portal.azure.com/).
 
 1. Selecteer uw Azure Database for MariaDB-server.
 

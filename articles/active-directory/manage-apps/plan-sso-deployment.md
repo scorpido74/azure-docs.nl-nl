@@ -14,10 +14,10 @@ ms.reviewer: jeedes
 ms.collection: M365-identity-device-management
 ms.custom: has-adal-ref
 ms.openlocfilehash: 75e3f7fc98072957f571937a1627247cdc4a9e7e
-ms.sourcegitcommit: dfa5f7f7d2881a37572160a70bac8ed1e03990ad
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/25/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85374437"
 ---
 # <a name="plan-a-single-sign-on-deployment"></a>Een implementatie van eenmalige aanmelding plannen
@@ -271,7 +271,7 @@ We raden u aan een schaal bare benadering te kiezen bij het beheren van de toega
 
 We raden u aan een reguliere uitgebracht in te stellen waarin u de verschillende aspecten van SaaS app Security bekijkt en eventuele vereiste herstel bewerkingen uitvoert.
 
-### <a name="troubleshooting"></a>Probleemoplossing
+### <a name="troubleshooting"></a>Problemen oplossen
 
 De volgende koppelingen geven scenario's voor het oplossen van problemen. U kunt een specifieke hand leiding maken voor het ondersteunings personeel dat deze scenario's bevat en de stappen om deze te herstellen.
 

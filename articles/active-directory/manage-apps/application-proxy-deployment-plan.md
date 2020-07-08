@@ -15,10 +15,10 @@ ms.topic: conceptual
 ms.date: 04/04/2019
 ms.author: kenwith
 ms.openlocfilehash: fdcea318fcd0796a790818794f6dd7cd949c17cd
-ms.sourcegitcommit: bf8c447dada2b4c8af017ba7ca8bfd80f943d508
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/25/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85367781"
 ---
 # <a name="plan-an-azure-ad-application-proxy-deployment"></a>Een Azure AD-toepassingsproxy-implementatie plannen
@@ -61,7 +61,7 @@ U moet voldoen aan de volgende vereisten voordat u begint met de implementatie. 
 
 Als u Azure AD-toepassingsproxy wilt configureren en implementeren, moet aan de volgende kern vereisten worden voldaan.
 
-*  **Azure-onboarding**: voordat u een toepassings proxy implementeert, moeten gebruikers identiteiten worden gesynchroniseerd vanuit een on-premises Directory of rechtstreeks worden gemaakt in uw Azure AD-tenants. Met Identiteitssynchronisatie kan Azure AD vooraf gebruikers verifiëren voordat ze toegang krijgen tot toepassingen die zijn gepubliceerd met app proxy en de benodigde gebruikers-id hebben om eenmalige aanmelding (SSO) uit te voeren.
+*  **Azure-onboarding**: voordat u een toepassings proxy implementeert, moeten gebruikers identiteiten worden gesynchroniseerd vanuit een on-premises Directory of rechtstreeks worden gemaakt in uw Azure AD-tenants. Dankzij identiteitssynchronisatie kan Azure AD gebruikers vooraf verifiëren alvorens hen toegang tot gepubliceerde Application Proxy-toepassingen te verlenen, en over de benodigde gebruikers-id-gegevens beschikken om eenmalige aanmelding (SSO) uit te voeren.
 
 * **Vereisten voor voorwaardelijke toegang**: we raden u aan toepassings proxy niet te gebruiken voor toegang tot het intranet, omdat hierdoor latentie wordt toegevoegd die van invloed is op gebruikers. U kunt het beste toepassings proxy gebruiken met pre-authenticatie en beleid voor voorwaardelijke toegang voor externe toegang vanaf het internet.  Een benadering voor het bieden van voorwaardelijke toegang voor intranet gebruik is het moderniseren van toepassingen, zodat deze rechtstreeks kunnen worden geverifieerd met AAD. Raadpleeg [bronnen voor het migreren van toepassingen naar Aad](https://docs.microsoft.com/azure/active-directory/manage-apps/migration-resources) voor meer informatie.
 

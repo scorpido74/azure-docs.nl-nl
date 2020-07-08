@@ -8,10 +8,10 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 05/08/2020
 ms.openlocfilehash: b30afd4ef69b9b4ecb49b99f4455bf136a6e6eb2
-ms.sourcegitcommit: dfa5f7f7d2881a37572160a70bac8ed1e03990ad
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/25/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85374403"
 ---
 # <a name="saas-offer-creation-checklist-in-partner-center"></a>Controle lijst voor het maken van SaaS-aanbiedingen in partner centrum
@@ -23,7 +23,7 @@ De items die u moet opgeven of opgeven, worden hieronder vermeld.  Sommige gebie
 >[!Note]
 >Als u een voor transactable SaaS-aanbieding maakt, zorg er dan voor dat u integratie implementeert met [SaaS-fulfillment-api's](./pc-saas-fulfillment-apis.md).  Integratie met de Api's is de enige manier om de trans acties op Marketplace goed te laten werken.
 
-| **Item**    | **Doel**  |
+| **Item**    | **Functie**  |
 | :---------- | :-------------------|
 | [**Nieuwe aanbieding modaal**](#new-offer-modal) | Verzamelt identiteits gegevens van de aanbieding.  |
 | [Pagina aanbieding instellen](#offer-setup-page) | Met kunt u zich aanmelden voor belang rijke functies en kiezen hoe u uw aanbieding via micro soft wilt verkopen.  |
@@ -81,9 +81,9 @@ De pagina met de vermelding bevat de tekst en afbeeldingen die klanten zien wann
 
 | **Veldnaam**    | **Opmerkingen**   |
 | :---------------- | :-----------| 
-| Naam  | Vereist, Maxi maal 50 tekens. |
+| Name  | Vereist, Maxi maal 50 tekens. |
 | Samenvatting  | Vereist, Maxi maal 100 tekens. | 
-| Beschrijving  | Vereist, Maxi maal 3000 tekens. |
+| Description  | Vereist, Maxi maal 3000 tekens. |
 | Aan de slag-instructies  | Vereist, Maxi maal 3000 tekens. |
 | Aan de slag-instructies  | Vereist, Maxi maal 3000 tekens. |
 | Tref woorden zoeken  | Optioneel, aanbevolen, Maxi maal 3 tref woorden. |
@@ -153,7 +153,7 @@ Deze optie is alleen beschikbaar als u een test drive voor uw aanbieding aanbied
 
 | **Veldnaam**    | **Opmerkingen**   | 
 | :---------------- | :-----------| 
-| Beschrijving  | Vereist. |
+| Description  | Vereist. |
 | Hand matige naam en bestand van de gebruiker  | Vereist, Maxi maal 1 document. moet PDF-indeling hebben. |
 | Video naam, URL + miniatuur  | Optioneel, aanbevolen. De miniatuur moet 533 x 324 zijn in JPGP-of PNG-indeling. Video moet worden gehost in YouTube of Vimeo. |
 

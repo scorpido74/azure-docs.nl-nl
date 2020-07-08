@@ -17,10 +17,10 @@ ms.date: 06/23/2020
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: 1e64624865a314a7487a7ce474c1e5e56e3d9277
-ms.sourcegitcommit: f98ab5af0fa17a9bba575286c588af36ff075615
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/25/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85362999"
 ---
 # <a name="azure-storage-types-for-sap-workload"></a>Azure Storage-typen voor SAP-workload
@@ -138,7 +138,7 @@ De functie matrix voor SAP-werk belasting ziet er als volgt uit:
 | --- | --- | --- | 
 | VHD-basis versie van het besturings systeem | oplos | alle systemen |
 | Gegevensschijf | oplos | alle systemen- [speciaal voor SAP Hana](https://docs.microsoft.com/azure/virtual-machines/windows/how-to-enable-write-accelerator) |
-| SAP Global Trans Port-map | JA | [Geboden](https://launchpad.support.sap.com/#/notes/2015553) |
+| SAP Global Trans Port-map | JA | [Ondersteund](https://launchpad.support.sap.com/#/notes/2015553) |
 | SAP-sapmnt | oplos | alle systemen |
 | Back-upopslag | oplos | voor opslag van back-ups op korte termijn |
 | Shares/gedeelde schijf | niet beschikbaar | Azure Premium-bestanden of derden vereist |
@@ -196,7 +196,7 @@ De functie matrix voor SAP-werk belasting ziet er als volgt uit:
 | --- | --- | --- | 
 | VHD-basis versie van het besturings systeem | werkt niet | - |
 | Gegevensschijf | oplos | alle systemen  |
-| SAP Global Trans Port-map | JA | [Geboden](https://launchpad.support.sap.com/#/notes/2015553) |
+| SAP Global Trans Port-map | JA | [Ondersteund](https://launchpad.support.sap.com/#/notes/2015553) |
 | SAP-sapmnt | oplos | alle systemen |
 | Back-upopslag | oplos | voor opslag van back-ups op korte termijn |
 | Shares/gedeelde schijf | niet beschikbaar | Externe partij vereist |

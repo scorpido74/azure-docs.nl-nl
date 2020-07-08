@@ -10,10 +10,10 @@ ms.subservice: machine-learning
 ms.date: 04/15/2020
 ms.author: euang
 ms.openlocfilehash: fd3637eed35fa4b9f40623612be9fc99703051e3
-ms.sourcegitcommit: bf8c447dada2b4c8af017ba7ca8bfd80f943d508
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/25/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85368172"
 ---
 # <a name="build-a-machine-learning-app-with-apache-spark-mllib-and-azure-synapse-analytics"></a>Een machine learning-app bouwen met Apache Spark MLlib en Azure Synapse Analytics
@@ -278,7 +278,7 @@ plt.show()
 
 Wanneer u klaar bent met het uitvoeren van de toepassing, sluit u het notitie blok om de resources vrij te geven door het tabblad te sluiten of door **sessie beëindigen** te selecteren in het status paneel onder aan het notitie blok.
 
-## <a name="see-also"></a>Zie ook
+## <a name="see-also"></a>Zie tevens
 
 - [Overzicht: Apache Spark in azure Synapse Analytics](apache-spark-overview.md)
 
