@@ -10,10 +10,9 @@ ms.author: tamram
 ms.reviewer: santoshc
 ms.subservice: common
 ms.openlocfilehash: 75f2e20db6ad1155e62691b711d8084a1feb5bae
-ms.sourcegitcommit: 374e47efb65f0ae510ad6c24a82e8abb5b57029e
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85513331"
 ---
 # <a name="configure-azure-storage-firewalls-and-virtual-networks"></a>Firewalls en virtuele netwerken voor Azure Storage configureren
@@ -386,7 +385,7 @@ Wanneer u de instelling **vertrouwde micro soft-Services toestaan...** inschakel
 
 Met de instelling **vertrouwde micro soft-Services toestaan...** kan ook een bepaald exemplaar van de onderstaande services toegang krijgen tot het opslag account, als u expliciet [een RBAC-rol toewijst](storage-auth-aad.md#assign-rbac-roles-for-access-rights) aan de door het [systeem toegewezen beheerde identiteit](../../active-directory/managed-identities-azure-resources/overview.md) voor dat bron exemplaar. In dit geval komt de reik wijdte van toegang voor het exemplaar overeen met de RBAC-rol die is toegewezen aan de beheerde identiteit.
 
-| Service                        | Naam van resource provider                 | Doel            |
+| Service                        | Naam van resource provider                 | Functie            |
 | :----------------------------- | :------------------------------------- | :----------------- |
 | Azure Cognitive Search         | Micro soft. Search/searchServices        | Hiermee kunnen Cognitive Search Services toegang krijgen tot opslag accounts voor indexering, verwerking en query's. |
 | Azure Container Registry Tasks | Micro soft. ContainerRegistry/registers | ACR-taken hebben toegang tot opslag accounts tijdens het maken van container installatie kopieën. |
@@ -396,7 +395,7 @@ Met de instelling **vertrouwde micro soft-Services toestaan...** kan ook een bep
 | Azure Logic Apps               | Micro soft. Logic/werk stromen              | Hiermee kunnen logische apps toegang krijgen tot opslag accounts. [Meer informatie](/azure/logic-apps/create-managed-service-identity#authenticate-access-with-managed-identity). |
 | Azure Machine Learning-service | Microsoft.MachineLearningServices      | Geautoriseerde Azure Machine Learning-werk ruimten schrijven experiment-uitvoer, modellen en logboeken naar Blob Storage en lezen de gegevens. [Meer informatie](/azure/machine-learning/how-to-enable-virtual-network#use-a-storage-account-for-your-workspace). | 
 | Azure SQL Data Warehouse       | Microsoft.Sql                          | Staat het importeren en exporteren van gegevens uit specifieke SQL Database instanties met poly base toe. [Meer informatie](/azure/sql-database/sql-database-vnet-service-endpoint-rule-overview). |
-| Azure Stream Analytics         | Microsoft.StreamAnalytics             | Hiermee staat u toe dat gegevens van een streaming-taak naar de Blob-opslag worden geschreven. Deze functie is momenteel beschikbaar als preview-product. [Meer informatie](/azure/stream-analytics/blob-output-managed-identity). |
+| Azure Stream Analytics         | Microsoft.StreamAnalytics             | Hiermee staat u toe dat gegevens van een streaming-taak naar de Blob-opslag worden geschreven. Deze functie is momenteel in preview. [Meer informatie](/azure/stream-analytics/blob-output-managed-identity). |
 | Azure Synapse Analytics        | Micro soft. Synapse/werk ruimten          | Hiermee schakelt u toegang tot gegevens in Azure Storage van Synapse Analytics. |
 
 

@@ -6,10 +6,9 @@ author: TimothyMothra
 ms.author: tilee
 ms.date: 04/23/2019
 ms.openlocfilehash: 9bb22b12a7b3e972ff144bd121db4288801e2488
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81732938"
 ---
 # <a name="troubleshooting-application-insights-agent-formerly-named-status-monitor-v2"></a>Problemen met Application Insights agent oplossen (voorheen Status Monitor v2 genoemd)
@@ -24,9 +23,9 @@ Als u een probleem ondervindt dat hier niet wordt vermeld, kunt u contact met on
 
 Als een of meer van deze DLL-bestanden aanwezig zijn in de bin-map, kan de bewaking mislukken:
 
-- Microsoft. ApplicationInsights. dll
-- Micro soft. AspNet. TelemetryCorrelation. dll
-- System. Diagnostics. DiagnosticSource. dll
+- Microsoft.ApplicationInsights.dll
+- Microsoft.AspNet.TelemetryCorrelation.dll
+- System.Diagnostics.DiagnosticSource.dll
 
 Sommige van deze DLL-bestanden zijn opgenomen in de Visual Studio-sjablonen voor standaard-apps, zelfs als deze niet worden gebruikt door uw app.
 U kunt hulpprogram ma's voor probleem oplossing gebruiken om het gedrag van Symptomatic te bekijken:
@@ -42,7 +41,7 @@ U kunt hulpprogram ma's voor probleem oplossing gebruiken om het gedrag van Symp
     FormattedMessage="Found 'System.Diagnostics.DiagnosticSource, Version=4.0.2.1, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51' assembly, skipping attaching redfield binaries" 
     ```
 
-- IISReset-en app-belasting (zonder telemetrie). Onderzoeken met Sysinternals (handle. exe en ListDLLs. exe):
+- IISReset-en app-belasting (zonder telemetrie). Onderzoeken met Sysinternals (Handle.exe en ListDLLs.exe):
     ```
     .\handle64.exe -p w3wp | findstr /I "InstrumentationEngine AI. ApplicationInsights"
     E54: File  (R-D)   C:\Program Files\WindowsPowerShell\Modules\Az.ApplicationMonitor\content\Runtime\Microsoft.ApplicationInsights.RedfieldIISModule.dll
@@ -60,7 +59,7 @@ De HTTP module kan niet worden ingevoegd in deze gedeelde configuratie.
 Voer de opdracht inschakelen op elke webserver uit om de DLL te installeren in de GAC van elke server.
 
 Nadat u de opdracht inschakelen hebt uitgevoerd, voert u de volgende stappen uit:
-1. Ga naar de gedeelde configuratiemap en zoek het bestand applicationHost. config.
+1. Ga naar de gedeelde configuratiemap en zoek het applicationHost.config bestand.
 2. Voeg deze regel toe aan het gedeelte modules van uw configuratie:
     ```
     <modules>
@@ -89,13 +88,13 @@ Dit probleem wordt [hier](https://github.com/microsoft/ApplicationInsights-Home/
 U kunt de `Get-Module -ListAvailable` opdracht gebruiken om te bepalen welke modules zijn geïnstalleerd.
 
 #### <a name="import-a-module-into-the-current-session"></a>Een module in de huidige sessie importeren
-Als een module niet is geladen in een Power shell-sessie, kunt u deze hand matig laden `Import-Module <path to psd1>` met behulp van de opdracht.
+Als een module niet is geladen in een Power shell-sessie, kunt u deze hand matig laden met behulp van de `Import-Module <path to psd1>` opdracht.
 
 
 ### <a name="troubleshooting-the-application-insights-agent-module"></a>Problemen met de module Application Insights agent oplossen
 
 #### <a name="list-the-commands-available-in-the-application-insights-agent-module"></a>De beschik bare opdrachten in de module Application Insights agent weer geven
-Voer de opdracht `Get-Command -Module Az.ApplicationMonitor` uit om de beschik bare opdrachten op te halen:
+Voer de opdracht uit `Get-Command -Module Az.ApplicationMonitor` om de beschik bare opdrachten op te halen:
 
 ```
 CommandType     Name                                               Version    Source
@@ -133,8 +132,8 @@ Raadpleeg de [API-naslag informatie](status-monitor-v2-api-reference.md) voor ee
 
 #### <a name="setup"></a>Instellen
 
-1. Down load PerfView. exe en PerfView64. exe van [github](https://github.com/Microsoft/perfview/releases).
-2. Start PerfView64. exe.
+1. Down load PerfView.exe en PerfView64.exe van [github](https://github.com/Microsoft/perfview/releases).
+2. Start PerfView64.exe.
 3. Vouw **Geavanceerde opties**uit.
 4. Schakel deze selectie vakjes uit:
     - **Telefoon**

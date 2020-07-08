@@ -10,10 +10,9 @@ services: iot-central
 ms.custom: mvc
 manager: philmea
 ms.openlocfilehash: e04da10d71eed3706b87fc728a13927aeae82826
-ms.sourcegitcommit: 5a8c8ac84c36859611158892422fc66395f808dc
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/10/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84660127"
 ---
 # <a name="extend-azure-iot-central-with-custom-analytics-using-azure-databricks"></a>Azure IoT Central uitbreiden met aangepaste analyses met behulp van Azure Databricks
@@ -136,7 +135,7 @@ Gebruik de informatie in de volgende tabel om uw cluster te maken:
 | Cluster modus | Standard |
 | Databricks Runtime versie | 5,5 LTS (scala 2,11, Spark 2.4.3) |
 | Python-versie | 3 |
-| Automatisch schalen inschakelen | Nee |
+| Automatisch schalen inschakelen | No |
 | Beëindigen na minuten van inactiviteit | 30 |
 | Type werk nemer | Standard_DS3_v2 |
 | IT | 1 |

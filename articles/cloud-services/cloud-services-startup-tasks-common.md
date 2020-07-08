@@ -8,12 +8,11 @@ ms.service: cloud-services
 ms.topic: article
 ms.date: 07/18/2017
 ms.author: tagore
-ms.openlocfilehash: 73762c431c84de01ce3561d586c5a12bfd26ac81
-ms.sourcegitcommit: 69156ae3c1e22cc570dda7f7234145c8226cc162
-ms.translationtype: MT
+ms.openlocfilehash: beebe60d70b7e4908bd3e9348fe815036d6955c3
+ms.sourcegitcommit: dee7b84104741ddf74b660c3c0a291adf11ed349
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/03/2020
-ms.locfileid: "84310122"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85920067"
 ---
 # <a name="common-cloud-service-startup-tasks"></a>Veelvoorkomende opstart taken voor de Cloud service
 Dit artikel bevat enkele voor beelden van veelvoorkomende opstart taken die u in uw Cloud service wilt uitvoeren. U kunt opstart taken gebruiken om bewerkingen uit te voeren voordat een rol wordt gestart. Bewerkingen die u mogelijk wilt uitvoeren, zijn onder andere het installeren van een onderdeel, het registreren van COM-onderdelen, het instellen van register sleutels of het starten van een langlopend proces. 
@@ -51,23 +50,23 @@ Variabelen kunnen ook een [geldige Azure XPath-waarde](cloud-services-role-confi
 ```
 
 
-## <a name="configure-iis-startup-with-appcmdexe"></a>Opstarten met IIS configureren met AppCmd. exe
-Het opdracht regel programma [Appcmd. exe](https://technet.microsoft.com/library/jj635852.aspx) kan worden gebruikt om IIS-instellingen te beheren bij het opstarten van Azure. *Appcmd. exe* biedt handige, opdracht regel toegang tot configuratie-instellingen voor gebruik in opstart taken in Azure. Met *Appcmd. exe*kunnen website-instellingen worden toegevoegd, gewijzigd of verwijderd voor toepassingen en sites.
+## <a name="configure-iis-startup-with-appcmdexe"></a>Opstarten met IIS configureren met AppCmd.exe
+Het opdracht regel programma [AppCmd.exe](https://technet.microsoft.com/library/jj635852.aspx) kan worden gebruikt om IIS-instellingen te beheren bij het opstarten van Azure. *AppCmd.exe* biedt handige, opdracht regel toegang tot configuratie-instellingen voor gebruik in opstart taken in Azure. U kunt met behulp van *AppCmd.exe*website-instellingen toevoegen, wijzigen of verwijderen voor toepassingen en sites.
 
-Er zijn echter enkele dingen om te bekijken in het gebruik van *Appcmd. exe* als een opstart taak:
+Er zijn echter enkele zaken om te bekijken in het gebruik van *AppCmd.exe* als een opstart taak:
 
 * Opstart taken kunnen meer dan één keer worden uitgevoerd tussen het opnieuw opstarten. Bijvoorbeeld wanneer een rol wordt gerecycled.
-* Als een *Appcmd. exe* -actie meer dan één keer wordt uitgevoerd, kan er een fout optreden. Als u bijvoorbeeld een sectie probeert toe te voegen aan *Web. config* , kunt u een fout genereren.
-* Opstart taken mislukken als er een afsluit code of **Error level**wordt geretourneerd die niet gelijk is aan nul. Bijvoorbeeld wanneer *Appcmd. exe* een fout genereert.
+* Als een *AppCmd.exe* actie meer dan één keer wordt uitgevoerd, kan er een fout optreden. Als u bijvoorbeeld een sectie probeert toe te voegen aan *Web.config* twee keer een fout gegenereerd.
+* Opstart taken mislukken als er een afsluit code of **Error level**wordt geretourneerd die niet gelijk is aan nul. Als *AppCmd.exe* bijvoorbeeld een fout genereert.
 
-Het is een goed idee om **Error level** te controleren na het aanroepen van *Appcmd. exe.* dit is eenvoudig te doen als u de aanroep naar *Appcmd. exe* verpakken met een *. cmd* -bestand. Als u een bekend **Error level** -antwoord detecteert, kunt u dit negeren of door sturen.
+Het is een goed idee om **Error level** te controleren na het aanroepen van *AppCmd.exe*. Dit is heel eenvoudig als u de aanroep naar *AppCmd.exe* verpakken met een *. cmd* -bestand. Als u een bekend **Error level** -antwoord detecteert, kunt u dit negeren of door sturen.
 
-Het error level dat door *Appcmd. exe* wordt geretourneerd, wordt weer gegeven in het bestand winerror. h en kan ook worden weer gegeven op [MSDN](/windows/desktop/Debug/system-error-codes--0-499-).
+Het error level dat door *AppCmd.exe* wordt geretourneerd, wordt weer gegeven in het bestand winerror. h en kan ook worden weer gegeven op [MSDN](/windows/desktop/Debug/system-error-codes--0-499-).
 
 ### <a name="example-of-managing-the-error-level"></a>Voor beeld van het beheren van het fout niveau
-In dit voor beeld wordt een sectie compressie en een compressie vermelding voor JSON toegevoegd aan het bestand *Web. config* , met fout afhandeling en logboek registratie.
+In dit voor beeld wordt een sectie compressie en een compressie vermelding voor JSON toegevoegd aan het *Web.config* bestand, met fout afhandeling en logboek registratie.
 
-De relevante secties van het bestand [ServiceDefinition. csdef] worden hier weer gegeven, waaronder het instellen van het kenmerk [executionContext](/previous-versions/azure/reference/gg557552(v=azure.100)#task) om `elevated` *Appcmd. exe* voldoende machtigingen te geven voor het wijzigen van de instellingen in het bestand *Web. config* :
+De relevante secties van het bestand [ServiceDefinition. csdef] worden hier weer gegeven, zoals het instellen van het kenmerk [executionContext](/previous-versions/azure/reference/gg557552(v=azure.100)#task) om `elevated` *AppCmd.exe* voldoende machtigingen te geven om de instellingen in het *Web.config* bestand te wijzigen:
 
 ```xml
 <ServiceDefinition name="MyService" xmlns="http://schemas.microsoft.com/ServiceHosting/2008/10/ServiceDefinition">
@@ -80,7 +79,7 @@ De relevante secties van het bestand [ServiceDefinition. csdef] worden hier weer
 </ServiceDefinition>
 ```
 
-Het batch bestand *Startup. cmd* maakt gebruik van *Appcmd. exe* om een compressie sectie en een compressie vermelding voor json toe te voegen aan het bestand *Web. config* . Het verwachte **Error level** van 183 wordt ingesteld op nul met behulp van de controle. EXE-opdracht regel programma. Onverwachte error levels worden geregistreerd in StartupErrorLog. txt.
+Het batch bestand *Startup. cmd* maakt gebruik van *AppCmd.exe* om een compressie sectie en een compressie vermelding voor json toe te voegen aan het *Web.config* bestand. Het verwachte **Error level** van 183 wordt ingesteld op nul met behulp van het opdracht regel programma VERIFY.EXE. Onverwachte error levels worden geregistreerd in StartupErrorLog.txt.
 
 ```cmd
 REM   *** Add a compression section to the Web.config file. ***
@@ -151,9 +150,9 @@ EXIT /B %errorlevel%
 ```
 
 ## <a name="block-a-specific-ip-address"></a>Een specifiek IP-adres blok keren
-U kunt de toegang van een Azure-webrole beperken tot een set opgegeven IP-adressen door uw IIS **Web. config** -bestand te wijzigen. U moet ook een opdracht bestand gebruiken om de sectie **ipSecurity** van het bestand **ApplicationHost. config** op te heffen.
+U kunt de toegang van een Azure-webrole beperken tot een set opgegeven IP-adressen door uw IIS **web.config** -bestand te wijzigen. U moet ook een opdracht bestand gebruiken om de sectie **ipSecurity** van het **ApplicationHost.config** -bestand op te heffen.
 
-Als u de sectie **ipSecurity** van het bestand **ApplicationHost. config** wilt ontgrendelen, maakt u een opdracht bestand dat wordt uitgevoerd tijdens het starten van de rol. Maak een map op het hoofd niveau van de webfunctie met de naam **Start** en maak in deze map een batch bestand met de naam **Startup. cmd**. Voeg dit bestand toe aan uw Visual Studio-project en stel de eigenschappen in op **kopiëren altijd** om ervoor te zorgen dat deze in uw pakket zijn opgenomen.
+Als u de sectie **ipSecurity** van het **ApplicationHost.config** bestand wilt ontgrendelen, maakt u een opdracht bestand dat wordt uitgevoerd bij het starten van de rol. Maak een map op het hoofd niveau van de webfunctie met de naam **Start** en maak in deze map een batch bestand met de naam **Startup. cmd**. Voeg dit bestand toe aan uw Visual Studio-project en stel de eigenschappen in op **kopiëren altijd** om ervoor te zorgen dat deze in uw pakket zijn opgenomen.
 
 Voeg de volgende opstart taak toe aan het bestand [ServiceDefinition. csdef] .
 
@@ -180,7 +179,7 @@ powershell -ExecutionPolicy Unrestricted -command "Install-WindowsFeature Web-IP
 
 Met deze taak wordt het batch bestand **Startup. cmd** uitgevoerd telkens wanneer de webrole wordt geïnitialiseerd, zodat de vereiste sectie **ipSecurity** wordt ontgrendeld.
 
-Wijzig ten slotte de [sectie System. webserver](https://www.iis.net/configreference/system.webserver/security/ipsecurity#005) van het **Web. config** -bestand van de webfunctie om een lijst met IP-adressen toe te voegen die toegang krijgen, zoals wordt weer gegeven in het volgende voor beeld:
+Wijzig ten slotte de [sectie System. webserver](https://www.iis.net/configreference/system.webserver/security/ipsecurity#005) van het **web.config** -bestand van uw webfunctie om een lijst met IP-adressen toe te voegen die toegang krijgen, zoals wordt weer gegeven in het volgende voor beeld:
 
 Met deze voorbeeld configuratie **kunnen** alle IP-adressen toegang krijgen tot de server, met uitzonde ring van de twee gedefinieerde
 
@@ -272,7 +271,7 @@ De relevante secties van het bestand **ServiceDefinition. csdef** worden hier we
 </ServiceDefinition>
 ```
 
-Als voor beeld gebruikt dit **Startup. cmd** batch-bestand de omgevings variabele **PathToStartupStorage** om het bestand **MyTest. txt** te maken op de lokale opslag locatie.
+Als voor beeld gebruikt dit **Startup. cmd** batch-bestand de omgevings variabele **PathToStartupStorage** om het bestand te maken **MyTest.txt** op de lokale opslag locatie.
 
 ```cmd
 REM   Create a simple text file.
@@ -377,15 +376,13 @@ EXIT /B 0
 Hier volgen enkele aanbevolen procedures voor het configureren van de taak voor uw web-of worker-rol.
 
 ### <a name="always-log-startup-activities"></a>Opstart activiteiten altijd vastleggen in logboek
-Visual Studio biedt geen fout opsporing voor het uitvoeren van batch-bestanden, zodat u zoveel mogelijk gegevens kunt ophalen over de werking van batch-bestanden. Het registreren van de uitvoer van batch bestanden, **stdout** en **stderr**, kan u belang rijke informatie geven bij het opsporen van fouten en het herstellen van batch bestanden. Als u **stdout** en **stderr** wilt registreren in het StartupLog. txt-bestand in de map waarnaar wordt geverwijst door de **% temp%** -omgevings variabele, voegt u de tekst `>>  "%TEMP%\\StartupLog.txt" 2>&1` toe aan het einde van specifieke regels die u wilt registreren. Als u bijvoorbeeld Setup. exe wilt uitvoeren in de map **% PathToApp1Install%** :
-
-    "%PathToApp1Install%\setup.exe" >> "%TEMP%\StartupLog.txt" 2>&1
+Visual Studio biedt geen fout opsporing voor het uitvoeren van batch-bestanden, zodat u zoveel mogelijk gegevens kunt ophalen over de werking van batch-bestanden. Het registreren van de uitvoer van batch bestanden, **stdout** en **stderr**, kan u belang rijke informatie geven bij het opsporen van fouten en het herstellen van batch bestanden. Als u **stdout** en **stderr** wilt vastleggen in het StartupLog.txt bestand in de map waarnaar wordt geverwijst door de **% temp%** -omgevings variabele, voegt u de tekst toe `>>  "%TEMP%\\StartupLog.txt" 2>&1` aan het einde van specifieke regels die u wilt registreren. Als u bijvoorbeeld setup.exe wilt uitvoeren in de map **% PathToApp1Install%** :`"%PathToApp1Install%\setup.exe" >> "%TEMP%\StartupLog.txt" 2>&1`
 
 Als u uw XML wilt vereenvoudigen, kunt u een wrapper- *cmd* -bestand maken dat alle opstart taken samen met logboek registratie aanroept en zorgt ervoor dat alle onderliggende taken dezelfde omgevings variabelen delen.
 
-Het kan voor komen dat u aan `>> "%TEMP%\StartupLog.txt" 2>&1` het einde van elke opstart taak kunt gebruiken. U kunt de taak logboek registratie afdwingen door een wrapper te maken waarmee logboek registratie voor u wordt afgehandeld. Deze wrapper roept het daad werkelijke batch-bestand op dat u wilt uitvoeren. Alle uitvoer van het doel batch bestand wordt omgeleid naar het bestand *Startuplog. txt* .
+Het kan voor komen dat u aan `>> "%TEMP%\StartupLog.txt" 2>&1` het einde van elke opstart taak kunt gebruiken. U kunt de taak logboek registratie afdwingen door een wrapper te maken waarmee logboek registratie voor u wordt afgehandeld. Deze wrapper roept het daad werkelijke batch-bestand op dat u wilt uitvoeren. Alle uitvoer van het doel batch bestand wordt omgeleid naar het *Startuplog.txt* -bestand.
 
-In het volgende voor beeld ziet u hoe u alle uitvoer van een batch-opstart bestand omleidt. In dit voor beeld maakt het bestand ServerDefinition. csdef een opstart taak die *logwrap. cmd*aanroept. *logwrap. cmd* roept *Startup2. cmd*aan, waarbij alle uitvoer wordt omgeleid naar **% temp% \\ StartupLog. txt**.
+In het volgende voor beeld ziet u hoe u alle uitvoer van een batch-opstart bestand omleidt. In dit voor beeld maakt het bestand ServerDefinition. csdef een opstart taak die *logwrap. cmd*aanroept. *logwrap. cmd* roept *Startup2. cmd*aan, waarbij alle uitvoer wordt omgeleid naar **% temp% \\StartupLog.txt**.
 
 ServiceDefinition. cmd:
 
@@ -447,7 +444,7 @@ ECHO [%date% %time%] Some more log information about this task
 EXIT %ERRORLEVEL%
 ```
 
-Voorbeeld uitvoer in het bestand **StartupLog. txt** :
+Voorbeeld uitvoer in het **StartupLog.txt** -bestand:
 
 ```txt
 [Mon 10/17/2016 20:24:46.75] == START logwrap.cmd ============================================== 
@@ -459,7 +456,7 @@ Voorbeeld uitvoer in het bestand **StartupLog. txt** :
 ```
 
 > [!TIP]
-> Het **StartupLog. txt** -bestand bevindt zich in de map *C:\Resources\temp \\ {Role Identifier} \RoleTemp* .
+> Het **StartupLog.txt** -bestand bevindt zich in de map *C:\Resources\temp \\ {Role Identifier} \RoleTemp* .
 > 
 > 
 
@@ -468,7 +465,7 @@ Stel de machtigingen op de juiste wijze in voor de opstart taak. Soms moeten ops
 
 Met het[taak] kenmerk [executionContext]wordt het bevoegdheden niveau van de opstart taak ingesteld. Als u gebruikt `executionContext="limited"` , heeft de opstart taak hetzelfde bevoegdheids niveau als de rol. Gebruiken `executionContext="elevated"` houdt in dat de opstart taak beheerders bevoegdheden heeft, waarmee de opstart taak beheerders taken kan uitvoeren zonder beheerders bevoegdheden voor uw rol te geven.
 
-Een voor beeld van een opstart taak waarvoor verhoogde bevoegdheden zijn vereist, is een opstart taak die gebruikmaakt van **Appcmd. exe** om IIS te configureren. **Appcmd. exe** vereist `executionContext="elevated"` .
+Een voor beeld van een opstart taak waarvoor verhoogde bevoegdheden zijn vereist, is een opstart taak die gebruikmaakt van **AppCmd.exe** om IIS te configureren. **AppCmd.exe** vereist `executionContext="elevated"` .
 
 ### <a name="use-the-appropriate-tasktype"></a>De juiste taskType gebruiken
 Het [TaskType]-[taak] kenmerk bepaalt hoe de opstart taak wordt uitgevoerd. Er zijn drie waarden: **eenvoudig**, op de **achtergrond**en op de voor **grond**. De achtergrond-en voorgrond taken worden asynchroon gestart, waarna de eenvoudige taken synchroon worden uitgevoerd.
@@ -508,7 +505,7 @@ Meer informatie over hoe [taken](cloud-services-startup-tasks.md) werken.
 [Variabele]: https://msdn.microsoft.com/library/azure/gg557552.aspx#Variable
 [RoleInstanceValue]: https://msdn.microsoft.com/library/azure/gg557552.aspx#RoleInstanceValue
 [RoleEnvironment]: https://msdn.microsoft.com/library/azure/microsoft.windowsazure.serviceruntime.roleenvironment.aspx
-[Eindpunten]: https://msdn.microsoft.com/library/azure/gg557552.aspx#Endpoints
+[Eind punten]: https://msdn.microsoft.com/library/azure/gg557552.aspx#Endpoints
 [LocalStorage]: https://msdn.microsoft.com/library/azure/gg557552.aspx#LocalStorage
 [LocalResources]: https://msdn.microsoft.com/library/azure/gg557552.aspx#LocalResources
 [RoleInstanceValue]: https://msdn.microsoft.com/library/azure/gg557552.aspx#RoleInstanceValue

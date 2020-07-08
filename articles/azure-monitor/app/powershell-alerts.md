@@ -4,10 +4,9 @@ description: De configuratie van Application Insights automatiseren om e-mails o
 ms.topic: conceptual
 ms.date: 10/31/2016
 ms.openlocfilehash: f35658b08eff7574448e3c72b103178b66acbbe0
-ms.sourcegitcommit: 595cde417684e3672e36f09fd4691fb6aa739733
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/20/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "83701832"
 ---
 # <a name="use-powershell-to-set-alerts-in-application-insights"></a>PowerShell gebruiken om waarschuwingen in te stellen in Application Insights
@@ -89,7 +88,7 @@ Ik heb een toepassing waarin ik [TrackMetric ()](../../azure-monitor/app/api-cus
 Dezelfde regel kan worden gebruikt voor de metrische gegevens die worden gerapporteerd met behulp van de [para meter meet](../../azure-monitor/app/api-custom-events-metrics.md#properties) van een andere tracerings aanroep, zoals track event of trackPageView.
 
 ## <a name="metric-names"></a>Metrische namen
-| Naam van meetwaarde | Scherm naam | Beschrijving |
+| Naam van metrische gegevens | Scherm naam | Description |
 | --- | --- | --- |
 | `basicExceptionBrowser.count` |Browseruitzonderingen |Aantal niet-onderschepte uitzonde ringen dat in de browser wordt gegenereerd. |
 | `basicExceptionServer.count` |Server uitzonderingen |Aantal niet-verwerkte uitzonde ringen die door de app worden gegenereerd |
@@ -126,7 +125,7 @@ De metrische gegevens worden verzonden door verschillende telemetrie-modules:
 ## <a name="webhooks"></a>Webhooks
 U kunt [uw reactie op een waarschuwing automatiseren](../../azure-monitor/platform/alerts-webhooks.md). Azure roept een webadres van uw keuze aan wanneer een waarschuwing wordt gegenereerd.
 
-## <a name="see-also"></a>Zie ook
+## <a name="see-also"></a>Zie tevens
 * [Script voor het configureren van Application Insights](https://docs.microsoft.com/azure/azure-monitor/app/create-new-resource#creating-a-resource-automatically)
 * [Application Insights-en web-test resources maken op basis van sjablonen](powershell.md)
 * [Koppelings Microsoft Azure Diagnostics automatiseren voor Application Insights](powershell-azure-diagnostics.md)

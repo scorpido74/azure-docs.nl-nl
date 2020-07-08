@@ -4,10 +4,9 @@ description: Meer informatie over ondersteuning voor VMware VM-evaluatie met Azu
 ms.topic: conceptual
 ms.date: 06/08/2020
 ms.openlocfilehash: 00f35f6b3848dcd590a9dbcd864c0ca62c1673bc
-ms.sourcegitcommit: 99d016949595c818fdee920754618d22ffa1cd49
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/15/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84770234"
 ---
 # <a name="support-matrix-for-vmware-assessment"></a>Ondersteunings matrix voor VMware-evaluatie 
@@ -39,7 +38,7 @@ Meer [informatie](concepts-assessment-calculation.md) over evaluaties.
 ## <a name="vm-requirements"></a>VM-vereisten
 **VMware** | **Details**
 --- | ---
-**Virtuele VMware-machines** | Alle besturings systemen kunnen worden geëvalueerd voor migratie. 
+**VMware-VM's** | Alle besturings systemen kunnen worden geëvalueerd voor migratie. 
 
 
 ## <a name="azure-migrate-appliance-requirements"></a>Azure Migrate-apparaatvereisten

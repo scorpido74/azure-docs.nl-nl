@@ -13,10 +13,9 @@ ms.author: kenwith
 ms.reviewer: japere
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 656841fc8e62e81318ffd568069c0664192b1747
-ms.sourcegitcommit: bc943dc048d9ab98caf4706b022eb5c6421ec459
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/14/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84764890"
 ---
 # <a name="cookie-settings-for-accessing-on-premises-applications-in-azure-active-directory"></a>Cookie-instellingen voor toegang tot on-premises toepassingen in Azure Active Directory
@@ -27,7 +26,7 @@ Azure Active Directory (Azure AD) heeft toegang en sessie cookies voor toegang t
 
 [Toepassings proxy](application-proxy.md) gebruikt de volgende instellingen voor toegang en sessie cookies.
 
-| Cookie-instelling | Standaard | Beschrijving | Aanbevelingen |
+| Cookie-instelling | Standaard | Description | Aanbevelingen |
 | -------------- | ------- | ----------- | --------------- |
 | Alleen-HTTP-cookies gebruiken | **Nee** | Met **Ja** kan toepassings proxy de vlag HTTPOnly in http-antwoord headers bevatten. Deze vlag biedt bijvoorbeeld extra beveiligings voordelen, waardoor het voor komt dat de cookies worden gekopieerd of gewijzigd door client scripts.<br></br><br></br>Voordat we de instelling alleen HTTP-instellingen hebben ondersteund, versleutelde en verzonden toepassings proxy-cookies via een beveiligd TLS-kanaal om tegen wijzigingen te beveiligen. | Gebruik **Ja** vanwege de extra beveiligings voordelen.<br></br><br></br>Gebruik **Nee** voor clients of gebruikers agenten waarvoor toegang tot de sessie cookie is vereist. Gebruik bijvoorbeeld **Nee** voor een RDP-of MTSC-client die via toepassings proxy verbinding maakt met een extern bureaublad-gateway server.|
 | Beveiligde cookies gebruiken | **Nee** | Met **Ja** kan toepassings proxy de beveiligde vlag in http-antwoord headers bevatten. Beveiligde cookies verbeteren de beveiliging door het verzenden van cookies via een TLS-kanaal, zoals HTTPS. Zo wordt voor komen dat cookies door onbevoegden worden waargenomen als gevolg van het verzenden van de cookie als Lees bare tekst. | Gebruik **Ja** vanwege de extra beveiligings voordelen.|
@@ -48,7 +47,7 @@ Als uw back-endtoepassing cookies heeft die beschikbaar moeten zijn in een conte
 ## <a name="set-the-cookie-settings---azure-portal"></a>De cookie-instellingen instellen-Azure Portal
 De cookie-instellingen instellen met behulp van de Azure Portal:
 
-1. Meld u aan bij de [Azure-portal](https://portal.azure.com). 
+1. Meld u aan bij [Azure Portal](https://portal.azure.com). 
 2. Ga naar **Azure Active Directory**   >  **Enter prise-toepassingen**   >  **alle toepassingen**.
 3. Selecteer de toepassing waarvoor u een cookie-instelling wilt inschakelen.
 4. Klik op **toepassings proxy**.

@@ -10,10 +10,9 @@ ms.date: 08/07/2019
 ms.author: menchi
 ms.custom: amqp
 ms.openlocfilehash: 919d1e37e6066c78e83d58be4fe4667ec67e45ad
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81733381"
 ---
 # <a name="get-started-with-iot-hub-module-identity-and-module-twin-net"></a>Aan de slag met IoT Hub module-identiteit en-module twee (.NET)
@@ -54,11 +53,11 @@ Aan het eind van deze zelfstudie beschikt u over twee .NET-consoletoepassingen:
 
 In deze sectie maakt u een .NET-consoletoepassing op het gesimuleerde apparaat waarmee de gerapporteerde eigenschappen van de moduledubbel worden bijgewerkt.
 
-Voordat u begint, moet u uw module connection string ophalen. Meld u aan bij de [Azure-portal](https://portal.azure.com/). Navigeer naar uw hub en selecteer **IOT-apparaten**. **MyFirstDevice**zoeken. Selecteer **myFirstDevice** om deze te openen en selecteer vervolgens **myFirstModule** om het te openen. Kopieer in **module-identiteits Details**de **verbindings reeks (primaire sleutel)** wanneer dit nodig is in de volgende procedure.
+Voordat u begint, moet u uw module connection string ophalen. Meld u aan bij [Azure Portal](https://portal.azure.com/). Navigeer naar uw hub en selecteer **IOT-apparaten**. **MyFirstDevice**zoeken. Selecteer **myFirstDevice** om deze te openen en selecteer vervolgens **myFirstModule** om het te openen. Kopieer in **module-identiteits Details**de **verbindings reeks (primaire sleutel)** wanneer dit nodig is in de volgende procedure.
 
    ![Details van de Azure Portal-module](./media/iot-hub-csharp-csharp-module-twin-getstarted/module-identity-detail.png)
 
-1. Voeg in Visual Studio een nieuw project toe aan uw oplossing door **bestand** > **Nieuw** > **project**te selecteren. Selecteer in een nieuw project maken de optie **console-app (.NET Framework)** en selecteer **volgende**.
+1. Voeg in Visual Studio een nieuw project toe aan uw oplossing door **bestand**  >  **Nieuw**  >  **project**te selecteren. Selecteer in een nieuw project maken de optie **console-app (.NET Framework)** en selecteer **volgende**.
 
 1. Noem het project *UpdateModuleTwinReportedProperties*. Selecteer voor **oplossing**de optie **toevoegen aan oplossing**. Zorg ervoor dat de versie van .NET Framework minimaal 4.6.1 is.
 
@@ -66,7 +65,7 @@ Voordat u begint, moet u uw module connection string ophalen. Meld u aan bij de 
 
 1. Selecteer **maken** om het project te maken.
 
-1. Open in Visual Studio **tools** > **NuGet package manager** > **NuGet-pakketten beheren voor oplossing**. Selecteer het tabblad **Browse**.
+1. Open in Visual Studio **tools**  >  **NuGet package manager**  >  **NuGet-pakketten beheren voor oplossing**. Selecteer het tabblad **Browse**.
 
 1. Zoek en selecteer **micro soft. Azure. devices. client**en selecteer vervolgens **installeren**.
 

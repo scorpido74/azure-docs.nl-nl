@@ -9,17 +9,16 @@ ms.date: 05/20/2020
 ms.author: victorh
 ms.topic: conceptual
 ms.openlocfilehash: e01f9ac8966223e11ad218af7bf6fbb2462f28f6
-ms.sourcegitcommit: 958f086136f10903c44c92463845b9f3a6a5275f
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/20/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "83714896"
 ---
 # <a name="azure-web-application-firewall-on-azure-application-gateway-bot-protection-overview"></a>Overzicht van Azure Web Application firewall op Azure-toepassing gateway-bot
 
 Ongeveer 20% van het Internet verkeer is van een beschadigd bots. Dit zijn dingen zoals uitval, scannen en zoeken naar beveiligings problemen in uw webtoepassing. Wanneer deze botsingen worden gestopt bij de Web Application firewall (WAF), kunnen ze niet worden aangevallen. Ze kunnen ook geen resources en services gebruiken, zoals uw back-end en andere onderliggende infra structuur.
 
-U kunt een set beheerde bot-beveiliging inschakelen voor uw WAF om aanvragen van bekende schadelijke IP-adressen te blok keren of te registreren. De IP-adressen worden vanuit de micro soft Threat Intelligence-feed gebrond. Intelligent Security Graph voorziet in micro soft Threat Intelligence en wordt gebruikt door meerdere services, waaronder Azure Security Center.
+U kunt een set beheerde bot-beveiliging inschakelen voor uw WAF om aanvragen van bekende schadelijke IP-adressen te blok keren of te registreren. De IP-adressen zijn afkomstig uit de feed Bedreigingsinformatie van Microsoft. Intelligent Security Graph voorziet de feed van gegevens en wordt gebruikt door verschillende services, waaronder Azure Security Center.
 
 > [!IMPORTANT]
 > De set bot Protection-regelset bevindt zich momenteel in een open bare preview en wordt weer gegeven met een preview-service level agreement. De reden hiervoor is dat bepaalde functies mogelijk niet worden ondersteund of beperkte mogelijkheden hebben. Zie de [aanvullende gebruiks voorwaarden voor Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)-   voor beelden voor meer informatie.

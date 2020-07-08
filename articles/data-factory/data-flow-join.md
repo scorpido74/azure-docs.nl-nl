@@ -9,10 +9,9 @@ ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 05/15/2020
 ms.openlocfilehash: f95f35fe0d17afdeec864674d3360fc3b172cad1
-ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/20/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "83683361"
 ---
 # <a name="join-transformation-in-mapping-data-flow"></a>Trans formatie koppelen in gegevens stroom toewijzen
@@ -61,7 +60,7 @@ Als u een volledig Cartesisch product expliciet wilt maken, gebruikt u de afgele
 1. Het **jointype** selecteren
 1. Kies welke sleutel kolommen u wilt vergelijken voor de voor waarde voor samen voegen. De gegevens stroom zoekt standaard naar gelijkheid tussen één kolom in elke stroom. Als u wilt vergelijken via een berekende waarde, houdt u de muis aanwijzer boven de vervolg keuzelijst kolom en selecteert u **berekende kolom**.
 
-![Trans formatie koppelen](media/data-flow/join.png "Deelnemen")
+![Trans formatie koppelen](media/data-flow/join.png "Koppelen")
 
 ### <a name="non-equi-joins"></a>Niet-equi-samen voegingen
 
@@ -91,7 +90,7 @@ Wanneer u de trans formaties van de koppeling met de preview-versie van gegevens
 
 ## <a name="data-flow-script"></a>Script voor gegevensstroom
 
-### <a name="syntax"></a>Syntaxis
+### <a name="syntax"></a>Syntax
 
 ```
 <leftStream>, <rightStream>

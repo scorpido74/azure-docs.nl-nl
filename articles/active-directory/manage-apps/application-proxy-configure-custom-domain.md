@@ -17,10 +17,9 @@ ms.reviewer: japere
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 646a32509921709711b208c263ac6b077555eac5
-ms.sourcegitcommit: bc943dc048d9ab98caf4706b022eb5c6421ec459
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/14/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84764907"
 ---
 # <a name="configure-custom-domains-with-azure-ad-application-proxy"></a>Aangepaste domeinen configureren met Azure AD-toepassingsproxy
@@ -77,7 +76,7 @@ Zie [uw aangepaste domein naam toevoegen met behulp van de Azure Active Director
 
 Uw app publiceren via een toepassings proxy met een aangepast domein:
 
-1. Selecteer voor een nieuwe app in Azure Active Directory **Enter prise-toepassingen** in het linkernavigatievenster. Selecteer **Nieuwe toepassing**. Selecteer in de sectie **on-premises toepassingen** de optie **een on-premises toepassing toevoegen**. 
+1. Selecteer voor een nieuwe app in Azure Active Directory **Enter prise-toepassingen** in het linkernavigatievenster. Selecteer **Nieuwe toepassing**. Selecteer in de sectie **On-premises toepassingen** de optie **Een on-premises toepassing toevoegen**. 
    
    Voor een app die al in **bedrijfs toepassingen**is, selecteert u deze in de lijst en selecteert u vervolgens **toepassings proxy** in de linkernavigatiebalk. 
 

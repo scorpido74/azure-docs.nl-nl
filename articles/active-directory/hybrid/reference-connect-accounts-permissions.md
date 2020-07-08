@@ -18,10 +18,9 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 23508535c1853cd056bb162c254cda5f7f86d7fe
-ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/20/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "83681745"
 ---
 # <a name="azure-ad-connect-accounts-and-permissions"></a>Azure AD Connect: accounts en machtigingen
@@ -151,7 +150,7 @@ Welke machtigingen u nodig hebt, is afhankelijk van de optionele functies die u 
 | Apparaat terugschrijven |Machtigingen die worden verleend met een Power shell-script, zoals beschreven in [write-back van apparaat](how-to-connect-device-writeback.md). |
 | Groep terugschrijven |Hiermee kunt u **Office 365-groepen** terugschrijven naar een forest waarop Exchange is geïnstalleerd.|
 
-## <a name="upgrade"></a>Upgrade
+## <a name="upgrade"></a>Upgraden
 Wanneer u een upgrade uitvoert van de ene versie van Azure AD Connect naar een nieuwe versie, hebt u de volgende machtigingen nodig:
 
 >[!IMPORTANT]
@@ -175,7 +174,7 @@ Als u aangepaste instellingen gebruikt, bent u zelf verantwoordelijk voor het ma
 ### <a name="adsync-service-account"></a>ADSync-serviceaccount
 De synchronisatie service kan worden uitgevoerd onder verschillende accounts. Het kan worden uitgevoerd onder een **virtueel service account** (leverancierspecifieke naam), een **beheerd service account voor groepen** (gMSA/sMSA) of een gewoon gebruikers account. De ondersteunde opties zijn gewijzigd met de release van 2017 april wanneer u een nieuwe installatie maakt. Als u een upgrade uitvoert van een eerdere versie van Azure AD Connect, zijn deze extra opties niet beschikbaar.
 
-| Type account | Installatie optie | Beschrijving |
+| Type account | Installatie optie | Description |
 | --- | --- | --- |
 | [Virtueel service-account](#virtual-service-account) | Express en aangepast, 2017 april en hoger | Dit is de optie die wordt gebruikt voor alle snelle installaties, met uitzonde ring van installaties op een domein controller. Voor aangepast is dit de standaard optie, tenzij een andere optie wordt gebruikt. |
 | [Door groep beheerd serviceaccount](#group-managed-service-account) | Aangepast, 2017 april en hoger | Als u een externe SQL Server gebruikt, raden we u aan een beheerd service account voor een groep te gebruiken. |

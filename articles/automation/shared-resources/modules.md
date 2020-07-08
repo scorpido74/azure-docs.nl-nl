@@ -8,11 +8,10 @@ ms.author: magoedte
 ms.date: 01/31/2020
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 82bec23ac35f4f0e6c65720d0c3a36355fa4224d
-ms.sourcegitcommit: 958f086136f10903c44c92463845b9f3a6a5275f
-ms.translationtype: MT
+ms.openlocfilehash: 14b26c4c5a72ef2919aca1f872b198257b9f37f7
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/20/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "83713451"
 ---
 # <a name="manage-modules-in-azure-automation"></a>Modules beheren in Azure Automation
@@ -217,7 +216,7 @@ Neem een samen vatting, beschrijving en Help-URI op voor elke cmdlet in uw modul
 
   ![Scherm afbeelding van de Help voor integratie modules](../media/modules/module-activity-description.png)
 
-### <a name="connection-type"></a>Type verbinding
+### <a name="connection-type"></a>Verbindingstype
 
 Als de module verbinding maakt met een externe service, definieert u een verbindings type met behulp van een [aangepaste integratie module](#custom-modules). Elke cmdlet in de module moet een exemplaar van dat verbindings type (verbindings object) accepteren als een para meter. Gebruikers wijzen alle para meters van de verbindings Asset toe aan de bijbehorende para meters telkens wanneer ze een cmdlet aanroepen. 
 
@@ -244,7 +243,7 @@ Een eenvoudiger en betere manier om dit gedrag te benaderen, is door het verbind
 
 U kunt hetzelfde gedrag voor uw cmdlets inschakelen door ze in staat te stellen een verbindings object rechtstreeks als para meter te accepteren, in plaats van alleen verbindings velden voor para meters. Doorgaans wilt u voor elke para meter instellen, zodat een gebruiker die Automation niet gebruikt, uw cmdlets kan aanroepen zonder een hashtabel te maken die als verbindings object moet fungeren. De parameterset `UserAccount` wordt gebruikt om de eigenschappen van het verbindings veld door te geven. `ConnectionObject`Hiermee kunt u de verbinding direct door geven.
 
-### <a name="output-type"></a>Uitvoer type
+### <a name="output-type"></a>Uitvoertype
 
 Definieer het uitvoer type voor alle cmdlets in uw module. Als u een uitvoer type voor een cmdlet definieert, kunt u met de ontwerp tijd IntelliSense de uitvoer eigenschappen van de cmdlet tijdens het ontwerpen bepalen. Deze praktijk is vooral nuttig tijdens het ontwerpen van een grafisch runbook, waarvoor ontwerp tijd kennis essentieel is voor een eenvoudige gebruikers ervaring met uw module.
 
@@ -372,5 +371,5 @@ Remove-AzAutomationModule -Name <moduleName> -AutomationAccountName <automationA
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* [Aan de slag met Azure PowerShell](https://docs.microsoft.com/powershell/azure/get-started-azureps?view=azps-3.7.0)
-* [Een Windows Power shell-module schrijven](https://docs.microsoft.com/powershell/scripting/developer/module/writing-a-windows-powershell-module?view=powershell-7)
+* Zie [aan de slag met Azure PowerShell](https://docs.microsoft.com/powershell/azure/get-started-azureps?view=azps-3.7.0)voor meer informatie over het gebruik van Azure PowerShell modules.
+* Zie [een Windows Power shell-module schrijven](https://docs.microsoft.com/powershell/scripting/developer/module/writing-a-windows-powershell-module?view=powershell-7)voor meer informatie over het maken van Power shell-modules.

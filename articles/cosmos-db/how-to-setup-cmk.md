@@ -6,12 +6,11 @@ ms.service: cosmos-db
 ms.topic: how-to
 ms.date: 05/19/2020
 ms.author: thweiss
-ms.openlocfilehash: 229c1307559c0bd452e95a4f833bc68b66bc6299
-ms.sourcegitcommit: 635114a0f07a2de310b34720856dd074aaf4f9cd
-ms.translationtype: MT
+ms.openlocfilehash: 443e037f89508b0fc3b01ba90f884c139f4c64be
+ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/23/2020
-ms.locfileid: "85261304"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86027774"
 ---
 # <a name="configure-customer-managed-keys-for-your-azure-cosmos-account-with-azure-key-vault"></a>Door de klant beheerde sleutels configureren voor uw Azure Cosmos-account met Azure Key Vault
 
@@ -28,7 +27,7 @@ U moet door de klant beheerde sleutels opslaan in [Azure Key Vault](../key-vault
 
 1. Meld u aan bij de [Azure Portal](https://portal.azure.com/), ga naar uw Azure-abonnement en selecteer **resource providers** op het tabblad **instellingen** :
 
-   ![De vermelding resource providers in het menu links](./media/how-to-setup-cmk/portal-rp.png)
+   :::image type="content" source="./media/how-to-setup-cmk/portal-rp.png" alt-text="Resource providers-vermelding in het menu links":::
 
 1. Zoek naar de resource provider van de **Microsoft.DocumentDB** . Controleer of de resource provider al is gemarkeerd als geregistreerd. Als dat niet het geval is, kiest u de resource provider en selecteert u **registreren**:
 
@@ -51,7 +50,7 @@ Als u een bestaand Azure Key Vault exemplaar gebruikt, kunt u controleren of dez
 
 1. Ga vanuit het Azure Portal naar het Azure Key Vault exemplaar dat u wilt gebruiken voor het hosten van de versleutelings sleutels. Selecteer **toegangs beleid** in het menu links:
 
-   ![' Toegangs beleid ' in het menu links](./media/how-to-setup-cmk/portal-akv-ap.png)
+   :::image type="content" source="./media/how-to-setup-cmk/portal-akv-ap.png" alt-text="Beleids regels openen vanuit het menu links":::
 
 1. Selecteer **+ toegangs beleid toevoegen**.
 
@@ -69,7 +68,7 @@ Als u een bestaand Azure Key Vault exemplaar gebruikt, kunt u controleren of dez
 
 1. Ga vanuit het Azure Portal naar de Azure Key Vault instantie die u wilt gebruiken voor het hosten van uw versleutelings sleutels. Selecteer vervolgens **sleutels** in het menu links:
 
-   ![Vermelding ' Keys ' in het menu links](./media/how-to-setup-cmk/portal-akv-keys.png)
+   :::image type="content" source="./media/how-to-setup-cmk/portal-akv-keys.png" alt-text="Vermelding van sleutels in het menu links":::
 
 1. Selecteer **genereren/importeren**, geef een naam op voor de nieuwe sleutel en selecteer een RSA-sleutel grootte. Mini maal 3072 wordt aanbevolen voor de beste beveiliging. Selecteer vervolgens **maken**:
 

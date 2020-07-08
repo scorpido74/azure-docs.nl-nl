@@ -4,17 +4,16 @@ description: Meer informatie over het inschakelen van een Bewaar beleid in uw Az
 ms.topic: article
 ms.date: 10/02/2019
 ms.openlocfilehash: 5dda85934bb10cf16fd90381539b892df4f5445c
-ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/20/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "83683453"
 ---
 # <a name="set-a-retention-policy-for-untagged-manifests"></a>Een Bewaar beleid voor niet-gecodeerde manifesten instellen
 
 Azure Container Registry biedt u de mogelijkheid om een *Bewaar beleid* in te stellen voor opgeslagen afbeeldings manifesten die geen gekoppelde labels (niet-*gecodeerde manifesten*) hebben. Wanneer een Bewaar beleid is ingeschakeld, worden niet-gecodeerde manifesten in het REGI ster automatisch verwijderd na een aantal dagen dat u instelt. Deze functie voor komt dat het REGI ster wordt gevuld met artefacten die niet nodig zijn en helpt u bij het besparen van opslag kosten. Als het `delete-enabled` kenmerk van een niet-gelabeld manifest is ingesteld op `false` , kan het manifest niet worden verwijderd en is het Bewaar beleid niet van toepassing.
 
-U kunt de Azure Cloud Shell of een lokale installatie van de Azure CLI gebruiken om de opdracht voorbeelden in dit artikel uit te voeren. Als u het lokaal wilt gebruiken, is versie 2.0.74 of hoger vereist. Voer `az --version` uit om de versie te bekijken. Als u Azure CLI 2.0 wilt installeren of upgraden, raadpleegt u [Azure CLI 2.0 installeren][azure-cli].
+U kunt de Azure Cloud Shell of een lokale installatie van de Azure CLI gebruiken om de opdracht voorbeelden in dit artikel uit te voeren. Als u het lokaal wilt gebruiken, is versie 2.0.74 of hoger vereist. Voer `az --version` uit om de versie te bekijken. Zie [Azure CLI installeren][azure-cli] als u de CLI wilt installeren of een upgrade wilt uitvoeren.
 
 Een Bewaar beleid is een functie van **Premium** -container registers. Zie [Azure container Registry service lagen](container-registry-skus.md)voor meer informatie over de service lagen van het REGI ster.
 

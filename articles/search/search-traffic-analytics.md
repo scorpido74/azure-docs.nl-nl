@@ -9,10 +9,9 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 03/18/2020
 ms.openlocfilehash: 794c88556fb69aae11c582afd03f548480469e34
-ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/20/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "83684703"
 ---
 # <a name="collect-telemetry-data-for-search-traffic-analytics"></a>Telemetriegegevens verzamelen voor analyse van het zoek verkeer
@@ -52,7 +51,7 @@ Een snelkoppeling die werkt voor sommige Visual Studio-project typen wordt weer 
 
 1. Klik op **Aan de slag**.
 
-1. Registreer uw app door een Microsoft-account, een Azure-abonnement en een Application Insights bron op te geven (een nieuwe resource is de standaard instelling). Klik op **registreren**.
+1. Registreer uw app door een Microsoft-account, een Azure-abonnement en een Application Insights bron op te geven (een nieuwe resource is de standaard instelling). Klik op **Registreren**.
 
 Uw toepassing is op dit moment ingesteld voor toepassings bewaking, wat betekent dat alle pagina belasting wordt bijgehouden met standaard metrische gegevens. Zie [Application Insights telemetrie aan de server zijde inschakelen](https://docs.microsoft.com/azure/azure-monitor/app/asp-net-core#enable-application-insights-server-side-telemetry-visual-studio)voor meer informatie over de vorige stappen.
 
@@ -70,7 +69,7 @@ Op de client hebt u mogelijk extra code voor het bewerken van query-invoer, het 
 
 **C# gebruiken**
 
-Voor C# wordt de **InstrumentationKey** gevonden in uw toepassings configuratie, zoals appSettings. json als uw project ASP.net is. Ga terug naar de registratie-instructies als u niet zeker weet wat de sleutel locatie is.
+Voor C# is de **InstrumentationKey** gevonden in de configuratie van uw toepassing, zoals appsettings.jsop als uw project ASP.net is. Ga terug naar de registratie-instructies als u niet zeker weet wat de sleutel locatie is.
 
 ```csharp
 private static TelemetryClient _telemetryClient;

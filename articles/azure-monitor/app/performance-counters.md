@@ -4,10 +4,9 @@ description: Systeem-en aangepaste .NET-prestatie meter items bewaken in Applica
 ms.topic: conceptual
 ms.date: 12/13/2018
 ms.openlocfilehash: 274e02c484c091cbb13ac2cf69bf99672f579f33
-ms.sourcegitcommit: 595cde417684e3672e36f09fd4691fb6aa739733
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/20/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "83701476"
 ---
 # <a name="system-performance-counters-in-application-insights"></a>Systeem prestatie meter items in Application Insights
@@ -41,9 +40,9 @@ Als het gewenste prestatie meter item niet is opgenomen in de lijst met metrisch
     `Get-Counter -ListSet *`
 
     (Zie [`Get-Counter`](https://technet.microsoft.com/library/hh849685.aspx) .)
-2. Open ApplicationInsights. config.
+2. Open ApplicationInsights.config.
 
-   * Als u tijdens de ontwikkeling Application Insights aan uw app hebt toegevoegd, bewerkt u ApplicationInsights. config in uw project en implementeert u het vervolgens opnieuw op uw servers.
+   * Als u tijdens de ontwikkeling Application Insights aan uw app hebt toegevoegd, bewerkt u ApplicationInsights.config in uw project en implementeert u het vervolgens opnieuw op uw servers.
 3. Bewerk de instructie van de prestatie Collector:
 
     ```XML

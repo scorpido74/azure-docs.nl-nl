@@ -4,10 +4,9 @@ description: Hierin wordt beschreven hoe u het detectie bereik voor VMware VM-ev
 ms.topic: how-to
 ms.date: 06/09/2020
 ms.openlocfilehash: e53eb0d01df2152aeced2901335f75879885fd22
-ms.sourcegitcommit: 99d016949595c818fdee920754618d22ffa1cd49
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/15/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84770387"
 ---
 # <a name="set-discovery-scope-for-vmware-vms"></a>Detectie bereik instellen voor VMware-Vm's

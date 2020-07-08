@@ -12,10 +12,9 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/22/2018
 ms.openlocfilehash: c40b58dfb63ac6bf1b5532eb06bfd2ad0cdccde9
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/27/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84022024"
 ---
 # <a name="create-predictive-pipelines-using-azure-machine-learning-and-azure-data-factory"></a>Voorspellende pijplijnen maken met Azure Machine Learning en Azure Data Factory
@@ -555,7 +554,7 @@ Zie de onderwerpen over [lezer](https://msdn.microsoft.com/library/azure/dn90599
 ## <a name="frequently-asked-questions"></a>Veelgestelde vragen
 **V:** Ik heb meerdere bestanden die worden gegenereerd door mijn big data pijp lijnen. Kan ik de AzureMLBatchExecution-activiteit gebruiken om aan alle bestanden te werken?
 
-**A:** Ja. Zie de sectie **een lees module gebruiken om gegevens te lezen uit meerdere bestanden in de Azure Blob** voor meer informatie.
+**A:** Klikt. Zie de sectie **een lees module gebruiken om gegevens te lezen uit meerdere bestanden in de Azure Blob** voor meer informatie.
 
 ## <a name="azure-machine-learning-studio-batch-scoring-activity"></a>Azure Machine Learning Studio-batch Score activiteit
 Als u de **AzureMLBatchScoring** -activiteit gebruikt om te integreren met Azure machine learning, raden we u aan de nieuwste **AzureMLBatchExecution** -activiteit te gebruiken.

@@ -13,10 +13,9 @@ ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 06/10/2020
 ms.openlocfilehash: d339e68dcf49c74c508029fda3e7eb548ec92588
-ms.sourcegitcommit: 99d016949595c818fdee920754618d22ffa1cd49
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/15/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84770948"
 ---
 # <a name="troubleshoot-copy-activity-performance"></a>Prestaties van de Kopieer activiteit oplossen
@@ -53,7 +52,7 @@ Als referentie bieden de tips voor het afstemmen van prestaties momenteel sugges
 
 In de details van de uitvoering en de duur onder aan de weer gave controle activiteit kopiëren worden de belangrijkste fasen van uw Kopieer activiteit beschreven (Zie het voor beeld aan het begin van dit artikel). Dit is vooral handig bij het oplossen van problemen met de Kopieer prestaties. Het knel punt van de Kopieer uitvoering is de versie met de langste duur. Raadpleeg de volgende tabel in de definitie van elke fase en leer hoe u de [Kopieer activiteit in azure IR oplost](#troubleshoot-copy-activity-on-azure-ir) en hoe u de [Kopieer activiteit op zelf-hostende IR oplost](#troubleshoot-copy-activity-on-self-hosted-ir) met deze informatie.
 
-| Fase           | Beschrijving                                                  |
+| Fase           | Description                                                  |
 | --------------- | ------------------------------------------------------------ |
 | Wachtrij           | De verstreken tijd totdat de Kopieer activiteit daad werkelijk wordt gestart op de Integration runtime. |
 | Script vooraf kopiëren | De verstreken tijd tussen de Kopieer activiteit, te beginnen bij de IR-en kopieer activiteit, waarbij het vooraf kopiëren van het script in de Sink-gegevens opslag wordt voltooid. Toep assen wanneer u het script voor het vooraf kopiëren van de data base-sinks configureert, bijvoorbeeld wanneer u gegevens schrijft in Azure SQL Database opschonen voordat nieuwe gegevens worden gekopieerd. |

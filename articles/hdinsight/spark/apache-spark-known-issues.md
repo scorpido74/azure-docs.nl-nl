@@ -8,12 +8,11 @@ ms.custom: hdinsightactive
 ms.topic: troubleshooting
 ms.date: 08/15/2019
 ms.author: hrasheed
-ms.openlocfilehash: 2c153d818136c5d8804dae72004dfaf17fd1bf7a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
-ms.translationtype: MT
+ms.openlocfilehash: eec5de7521c98e8147a8439844fd2a2a6b1bd2bc
+ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "73494531"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86037491"
 ---
 # <a name="known-issues-for-apache-spark-cluster-on-hdinsight"></a>Bekende problemen met Apache Spark cluster op HDInsight
 
@@ -30,13 +29,17 @@ Gebruik de volgende procedure om het probleem te omzeilen:
 
 2. Voer de volgende opdracht uit om de toepassings-Id's te vinden van de interactieve taken die zijn gestart via livy.
 
-        yarn application –list
+   ```bash
+   yarn application –list
+   ```
 
     De standaard taak namen worden livy als de taken zijn gestart met een interactieve livy-sessie waarvoor geen expliciete namen zijn opgegeven. Voor de livy-sessie die is gestart door [Jupyter notebook](https://jupyter.org/), begint de taak naam met `remotesparkmagics_*` .
 
 3. Voer de volgende opdracht uit om deze taken af te breken.
 
-        yarn application –kill <Application ID>
+   ```bash
+   yarn application –kill <Application ID>
+   ```
 
 Nieuwe taken worden uitgevoerd.
 
@@ -115,7 +118,7 @@ Wanneer het Spark-cluster niet meer bronnen bevat, wordt er een time-out opgetre
 
 2. Start het notitie blok dat u probeerde op te starten. Er moeten voldoende resources beschikbaar zijn om nu een sessie te maken.
 
-## <a name="see-also"></a>Zie ook
+## <a name="see-also"></a>Zie tevens
 
 * [Overzicht: Apache Spark in Azure HDInsight](apache-spark-overview.md)
 

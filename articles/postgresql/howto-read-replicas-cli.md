@@ -7,10 +7,9 @@ ms.service: postgresql
 ms.topic: conceptual
 ms.date: 06/09/2020
 ms.openlocfilehash: e9be14548704557b4bdd39119294671852040348
-ms.sourcegitcommit: ce44069e729fce0cf67c8f3c0c932342c350d890
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/09/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84636577"
 ---
 # <a name="create-and-manage-read-replicas-from-the-azure-cli-rest-api"></a>Maak en beheer Lees replica's vanuit Azure CLI, REST API
@@ -61,7 +60,7 @@ U kunt met behulp van de Azure CLI Lees replica's maken en beheren.
 
 De opdracht [AZ post gres Server replica Create](/cli/azure/postgres/server/replica?view=azure-cli-latest#az-postgres-server-replica-create) vereist de volgende para meters:
 
-| Instelling | Voorbeeldwaarde | Beschrijving  |
+| Instelling | Voorbeeldwaarde | Description  |
 | --- | --- | --- |
 | resource-group | myResourceGroup |  De resource groep waar de replica-server wordt gemaakt.  |
 | naam | mydemoserver-replica | De naam van de nieuwe replica server die wordt gemaakt. |

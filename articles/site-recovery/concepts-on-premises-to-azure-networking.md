@@ -8,10 +8,9 @@ ms.topic: conceptual
 ms.date: 10/13/2019
 ms.author: mayg
 ms.openlocfilehash: 33dafaff396ce378dfa9eab0158e1b2fd9c10da6
-ms.sourcegitcommit: 99d016949595c818fdee920754618d22ffa1cd49
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/15/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84770489"
 ---
 # <a name="connect-to-azure-vms-after-failover-from-on-premises"></a>Verbinding maken met virtuele Azure-machines na een failover van on-premises 
@@ -37,11 +36,11 @@ Bereid uw on-premises machines voor op de failover om verbinding te kunnen maken
 
 Ga als volgt te werk op on-premises Windows-computers:
 
-1. Windows-instellingen configureren. Dit geldt ook voor het verwijderen van statische permanente routes of WinHTTP-proxy en het instellen van het SAN-beleid van de schijf in **OnlineAll**. [Volg](../virtual-machines/windows/prepare-for-upload-vhd-image.md#set-windows-configurations-for-azure) deze instructies.
+1. Configureer Windows-instellingen. Dit geldt ook voor het verwijderen van statische permanente routes of WinHTTP-proxy en het instellen van het SAN-beleid van de schijf in **OnlineAll**. [Volg](../virtual-machines/windows/prepare-for-upload-vhd-image.md#set-windows-configurations-for-azure) deze instructies.
 
 2. Zorg ervoor dat [deze services](../virtual-machines/windows/prepare-for-upload-vhd-image.md#check-the-windows-services) worden uitgevoerd.
 
-3. Schakel extern bureau blad (RDP) in om externe verbindingen naar de on-premises machine toe te staan. [Meer informatie over het](../virtual-machines/windows/prepare-for-upload-vhd-image.md#update-remote-desktop-registry-settings) inschakelen van RDP met Power shell.
+3. Schakel extern bureaublad (RDP) in om externe verbindingen met de on-premises machine mogelijk te maken. [Meer informatie over het](../virtual-machines/windows/prepare-for-upload-vhd-image.md#update-remote-desktop-registry-settings) inschakelen van RDP met Power shell.
 
 4. Als u na een failover toegang wilt krijgen tot een Azure-VM via internet, kunt u in Windows Firewall op de on-premises computer TCP en UDP toestaan in het open bare profiel en RDP als een toegestane app instellen voor alle profielen.
 
@@ -52,7 +51,7 @@ Ga als volgt te werk op on-premises Windows-computers:
 
 Ga als volgt te werk op on-premises Linux-machines:
 
-1. Controleer of de Secure shell-service is ingesteld om automatisch te starten bij het opstarten van het systeem.
+1. Controleer of de Secure Shell-service zo is ingesteld dat deze automatisch wordt gestart bij het opstarten van het systeem.
 2. Controleer of SSH-verbindingen zijn toegestaan door de firewallregels.
 
 
@@ -60,8 +59,8 @@ Ga als volgt te werk op on-premises Linux-machines:
 
 Na een failover voert u de volgende stappen uit op de virtuele Azure-machines die worden gemaakt.
 
-1. Wijs een openbaar IP-adres toe aan de virtuele machine om via Internet verbinding te maken met de virtuele machine. U kunt niet hetzelfde open bare IP-adres gebruiken voor de Azure-VM die u hebt gebruikt voor uw on-premises machine. [Meer informatie](../virtual-network/virtual-network-public-ip-address.md)
-2. Controleer of de NSG-regels (netwerk beveiligings groep) op de virtuele machine binnenkomende verbindingen met de RDP-of SSH-poort toestaan.
+1. Wijs een openbaar IP-adres toe aan de VM om verbinding te maken met de VM via internet. U kunt niet hetzelfde open bare IP-adres gebruiken voor de Azure-VM die u hebt gebruikt voor uw on-premises machine. [Meer informatie](../virtual-network/virtual-network-public-ip-address.md)
+2. Controleer of de regels van de netwerkbeveiligingsgroep (NSG) op de VM inkomende verbindingen naar de RDP- of SSH-poort toestaan.
 3. Controleer de [Diagnostische gegevens over opstarten](../virtual-machines/troubleshooting/boot-diagnostics.md#enable-boot-diagnostics-on-existing-virtual-machine) om de virtuele machine weer te geven.
 
 

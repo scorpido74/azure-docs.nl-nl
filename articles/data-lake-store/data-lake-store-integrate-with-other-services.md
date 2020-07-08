@@ -7,10 +7,9 @@ ms.topic: conceptual
 ms.date: 05/29/2018
 ms.author: twooley
 ms.openlocfilehash: f56d3a364e38d13931f8e07d749d3a5958dcee67
-ms.sourcegitcommit: 01cd19edb099d654198a6930cebd61cae9cb685b
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/24/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85322516"
 ---
 # <a name="integrating-azure-data-lake-storage-gen1-with-other-azure-services"></a>Azure Data Lake Storage Gen1 integreren met andere Azure-Services
@@ -59,7 +58,7 @@ U kunt poly Base gebruiken om gegevens van Data Lake Storage Gen1 naar SQL Data 
 ## <a name="use-data-lake-storage-gen1-with-azure-event-hubs"></a>Data Lake Storage Gen1 gebruiken met Azure Event Hubs
 U kunt Azure Data Lake Storage Gen1 gebruiken om gegevens die zijn ontvangen door Azure Event Hubs te archiveren en vast te leggen. Zie [Data Lake Storage gen1 gebruiken met Azure Event hubs](data-lake-store-archive-eventhub-capture.md)voor meer informatie.
 
-## <a name="see-also"></a>Zie ook
+## <a name="see-also"></a>Zie tevens
 * [Overzicht van Azure Data Lake Storage Gen1](data-lake-store-overview.md)
 * [Aan de slag met Data Lake Storage Gen1 met behulp van portal](data-lake-store-get-started-portal.md)
 * [Aan de slag met Data Lake Storage Gen1 met behulp van Power shell](data-lake-store-get-started-powershell.md)  

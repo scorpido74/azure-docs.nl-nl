@@ -10,10 +10,9 @@ ms.author: vijetaj
 ms.topic: conceptual
 ms.date: 04/02/2020
 ms.openlocfilehash: dec9d7d6f4676c3550bb6c0be79e25d907e5b3da
-ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/20/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "83682475"
 ---
 # <a name="data-science-with-a-linux-data-science-virtual-machine-in-azure"></a>Data Wetenschappen met een Linux-Data Science Virtual Machine in azure
@@ -313,7 +312,7 @@ predictSpam.service(1, 1, 1)
 
 ### <a name="jupyterhub"></a>JupyterHub
 
-De Anaconda-distributie in het DSVM wordt geleverd met een Jupyter Notebook, een omgeving voor meerdere platforms voor het delen van python-, R-of Julia-code en-analyse. De Jupyter Notebook wordt geopend via JupyterHub. U meldt zich aan met behulp van uw lokale Linux-gebruikers naam en-wacht woord op https:// \< DSVM DNS-naam of IP-adres \> : 8000/. Alle configuratie bestanden voor JupyterHub vindt u in/etc/jupyterhub.
+De Anaconda-distributie in het DSVM wordt geleverd met een Jupyter Notebook, een omgeving voor meerdere platforms voor het delen van python-, R-of Julia-code en-analyse. De Jupyter Notebook wordt geopend via JupyterHub. U meldt zich aan met uw lokale Linux-gebruikers naam en-wacht woord op https:// \<DSVM DNS name or IP address\> : 8000/. Alle configuratie bestanden voor JupyterHub vindt u in/etc/jupyterhub.
 
 > [!NOTE]
 > Als u het python-pakket beheer (via de `pip` opdracht) van een Jupyter notebook in de huidige kernel wilt gebruiken, gebruikt u deze opdracht in de cel code:
@@ -362,7 +361,7 @@ Laden en configureren van de gegevensset:
 
 1. Als u het bestand wilt laden, selecteert u het tabblad **gegevens** .
 1. Kies de selector naast **Bestands naam**en selecteer vervolgens **spambaseHeaders. data**.
-1. Om het bestand te laden. Selecteer **uitvoeren**. U ziet een samen vatting van elke kolom, met inbegrip van het geïdentificeerde gegevens type. of het nu gaat om een invoer, een doel of een ander type variabele. en het aantal unieke waarden.
+1. Om het bestand te laden. selecteer **Uitvoeren**. U ziet een samen vatting van elke kolom, met inbegrip van het geïdentificeerde gegevens type. of het nu gaat om een invoer, een doel of een ander type variabele. en het aantal unieke waarden.
 1. Rattle heeft de kolom met **ongewenste e-mail** op de juiste wijze geïdentificeerd als het doel. Selecteer de kolom tegen **ongewenste e-mail** en stel het **doel gegevens type** in op **Categoric**.
 
 De gegevens verkennen:
@@ -508,7 +507,7 @@ De verbinding met de lokale server instellen:
 1. Voer uw gebruikersnaam en wachtwoord in.
 1. Selecteer **OK**.
 1. Als u het venster **verbinding** wilt openen, dubbelklikt u op de alias voor de **spam-data base** .
-1. Selecteer **Verbinden**.
+1. Selecteer **Verbinding maken**.
 
 Enkele query's uitvoeren:
 

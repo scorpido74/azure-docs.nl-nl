@@ -8,14 +8,13 @@ manager: rkarlin
 ms.assetid: 33c45447-3181-4b75-aa8e-c517e76cd50d
 ms.service: security-center
 ms.topic: conceptual
-ms.date: 03/15/2020
+ms.date: 06/30/2020
 ms.author: memildin
-ms.openlocfilehash: 2e563cd0f9a8a25e57312494f1313f895c3b4628
-ms.sourcegitcommit: 309cf6876d906425a0d6f72deceb9ecd231d387c
-ms.translationtype: MT
+ms.openlocfilehash: f5218b2346b6ddebcee87a0e24f4924deafdb0f2
+ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/01/2020
-ms.locfileid: "84267151"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86037185"
 ---
 # <a name="threat-protection-in-azure-security-center"></a>Bescherming tegen bedreiging in Azure Security Center
 
@@ -106,36 +105,18 @@ Zie [app service-plannen](https://azure.microsoft.com/pricing/details/app-servic
 
 
 
-## <a name="threat-protection-for-azure-containers"></a>Bedreigings beveiliging voor Azure-containers<a name="azure-containers"></a>
+## <a name="threat-protection-for-containers"></a>Bedreigings beveiliging voor containers<a name="azure-containers"></a>
 
-> [!NOTE]
-> Deze service is momenteel niet beschikbaar in azure Government en soevereine Cloud regio's.
+### <a name="availability"></a>Beschikbaarheid
 
-Security Center biedt realtime bescherming van bedreigingen voor uw container omgevingen en genereert waarschuwingen voor verdachte activiteiten. U kunt deze informatie gebruiken om snel beveiligingsproblemen op te lossen en om de beveiliging van uw containers te verbeteren.
+- Release status: **algemene Beschik baarheid**
+- Vereiste rollen: **beveiligings beheerder** kan waarschuwingen negeren. **Beveiligings lezer** kan bevindingen weer geven.
+- Clouds<br>
+    ✔ Commerciële Clouds<br>
+    ✘ US Gov<br>
+    ✘ China gov, andere gov
 
-Security Center biedt bedreigings beveiliging op verschillende niveaus: 
-
-* **Host level** -Security Center Agent (Zie de [prijs](security-center-pricing.md) informatie voor de Standard-laag) wordt Linux gecontroleerd op verdachte activiteiten. De agent activeert waarschuwingen voor verdachte activiteiten die afkomstig zijn van het knoop punt of een container die erop wordt uitgevoerd. Voor beelden van dergelijke activiteiten zijn Webshell detectie en verbinding met bekende verdachte IP-adressen.
-
-    Voor een diep gaande inzicht in de beveiliging van uw container omgeving bewaakt de agent de container-specifieke analyses. Er worden waarschuwingen geactiveerd voor gebeurtenissen, zoals het maken van geprivilegieerde containers, verdachte toegang tot API-servers en SSH-servers (Secure Shell) die binnen een docker-container worden uitgevoerd.
-
-    >[!IMPORTANT]
-    > Als u ervoor kiest om de agents op uw hosts niet te installeren, ontvangt u alleen een subset van de voor delen van bedreigings beveiliging en beveiligings waarschuwingen. U ontvangt nog steeds waarschuwingen met betrekking tot netwerk analyse en communicatie met schadelijke servers.
-
-    Zie de [naslag tabel met waarschuwingen](alerts-reference.md#alerts-containerhost)voor een lijst met waarschuwingen op hostniveau.
-
-
-* Op het **AKS-cluster niveau**is beveiliging tegen bedreigingen gebaseerd op het analyseren van controle logboeken van Kubernetes. Als u deze bewaking zonder **agents** wilt inschakelen, voegt u de optie Kubernetes toe aan uw abonnement op de pagina met **prijs & instellingen** (Zie [prijzen](security-center-pricing.md)). Als u waarschuwingen op dit niveau wilt genereren, controleert Security Center uw door AKS beheerde services met de logboeken die zijn opgehaald door AKS. Voor beelden van gebeurtenissen op dit niveau zijn onder andere beschik bare Kubernetes-Dash boards, het maken van rollen met hoge bevoegdheden en het maken van gevoelige koppels.
-
-    >[!NOTE]
-    > Security Center genereert beveiligings waarschuwingen voor Azure Kubernetes-service acties en implementaties die worden uitgevoerd nadat de optie Kubernetes is ingeschakeld op de abonnements instellingen. 
-
-    Zie de [naslag tabel met waarschuwingen](alerts-reference.md#alerts-akscluster)voor een lijst met waarschuwingen op AKS-cluster niveau.
-
-Het wereld wijde team van beveiligings onderzoekers bewaakt ook voortdurend de bedreigings landschap. Ze voegen container-specifieke waarschuwingen en beveiligings problemen toe wanneer ze worden gedetecteerd.
-
-> [!TIP]
-> U kunt container waarschuwingen simuleren door de instructies in [dit blog bericht](https://techcommunity.microsoft.com/t5/azure-security-center/how-to-demonstrate-the-new-containers-features-in-azure-security/ba-p/1011270)te volgen.
+[!INCLUDE [AKS in ASC threat protection](../../includes/security-center-azure-kubernetes-threat-protection.md)]
 
 
 
@@ -150,7 +131,7 @@ Advanced Threat Protection voor Azure SQL Database detecteert afwijkende activit
 
 U ziet waarschuwingen wanneer er verdachte database activiteiten, potentiële kwetsbaar heden of SQL-injectie aanvallen en afwijkende database toegang en query patronen zijn.
 
-Advanced Threat Protection voor Azure SQL Database en SQL maakt deel uit van het geïntegreerde pakket voor geavanceerde [gegevens beveiliging (ADS)](https://docs.microsoft.com/azure/sql-database/sql-database-advanced-data-security) voor geavanceerde SQL-beveiligings mogelijkheden, waaronder Azure SQL-data bases, Azure SQL database beheerde instanties, Azure SQL Data Warehouse data bases en SQL-servers in azure virtual machines.
+Advanced Threat Protection voor Azure SQL Database en SQL maakt deel uit van het geïntegreerde pakket voor geavanceerde [gegevens beveiliging (ADS)](https://docs.microsoft.com/azure/sql-database/sql-database-advanced-data-security) voor geavanceerde SQL-beveiligings mogelijkheden, waaronder Azure SQL database, Azure SQL Managed instances, Azure SQL Data Warehouse data bases en SQL-servers op Azure virtual machines.
 
 Zie voor meer informatie:
 
@@ -162,15 +143,44 @@ Zie voor meer informatie:
 
 ## <a name="threat-protection-for-azure-storage"></a>Bedreigings beveiliging voor Azure Storage<a name="azure-storage"></a>
 
-Advanced Threat Protection voor Azure Storage detecteert ongebruikelijke en mogelijk schadelijke pogingen om opslag accounts te openen of misbruik te maken. Deze beveiligingslaag biedt u de mogelijkheid om bedreigingen te verhelpen zonder dat u een beveiligings expert hoeft te zijn, en helpt u bij het beheren van uw systemen voor beveiligings bewaking. 
+### <a name="availability"></a>Beschikbaarheid
 
-Beveiligings waarschuwingen worden geactiveerd wanneer er verdachte activiteiten zijn op uw opslag account of afwijkend gedrag wordt gedetecteerd. Verdachte activiteiten kunnen de upload van een BLOB bevatten die is verdacht op schadelijke software. Waarschuwingen voor afwijkend gedrag omvatten wijzigingen in het toegangs patroon op een opslag account.
+- Release status:
+    - [Blob Storage](https://azure.microsoft.com/services/storage/blobs/) (algemene Beschik baarheid)
+    - [Azure files](https://docs.microsoft.com/azure/storage/files/storage-files-introduction) (preview-versie)
+    - [Azure data Lake Storage Gen2](https://docs.microsoft.com/azure/storage/blobs/data-lake-storage-introduction) (preview-versie)
+- Clouds<br>
+    ✔ Commerciële Clouds<br>
+    ✔ US Gov<br>
+    ✘ China gov, andere gov
 
-De waarschuwingen bevatten details over het incident waarmee ze zijn geactiveerd, evenals aanbevelingen voor het onderzoeken en oplossen van bedreigingen.
+### <a name="whats-protected"></a>Wat is er beveiligd?
 
-Bedreigings beveiliging voor Azure Storage is momenteel alleen beschikbaar voor [Blob Storage](https://azure.microsoft.com/services/storage/blobs/). 
+Bedreigings beveiliging voor Azure Storage detecteert mogelijk schadelijke activiteiten op uw Azure Storage-accounts. Uw gegevens kunnen worden beveiligd, ongeacht of deze zijn opgeslagen als blob-containers, bestands shares of gegevens-meren.
 
-Deze service is beschikbaar in alle open bare Clouds en Amerikaanse overheids Clouds, maar geen andere soevereine of Azure Government Cloud regio's. 
+Deze beveiligingslaag biedt u de mogelijkheid om bedreigingen te verhelpen *zonder* dat u een beveiligings expert hoeft te zijn, en helpt u bij het beheren van uw systemen voor beveiligings bewaking.
+
+Uw opslag accounts zijn beveiligd 
+
+### <a name="what-kind-of-alerts-does-threat-protection-for-azure-storage-provide"></a>Wat voor soort waarschuwingen biedt bedreigings beveiliging voor Azure Storage?
+
+Beveiligings waarschuwingen worden geactiveerd wanneer zich:
+
+- **Verdachte activiteit** : bijvoorbeeld: het opslag account is geopend vanuit een IP-adres dat een actief eind punt van Tor wordt genoemd
+- **Afwijkend gedrag** : bijvoorbeeld wijzigingen in het toegangs patroon op een opslag account
+- **Potentiële malware geüpload** -hash-reputatie analyse geeft aan dat een geüpload bestand malware bevat
+
+Waarschuwingen bevatten details over het incident waarmee ze zijn geactiveerd, evenals aanbevelingen voor het onderzoeken en oplossen van bedreigingen.
+
+### <a name="what-is-hash-reputation-analysis-for-malware"></a>Wat is hash-reputatie analyse voor malware?
+
+Als u wilt bepalen of een geüpload bestand verdacht is, wordt de beveiliging van de hash-reputatie voor Azure Storage gebruikt door [micro soft Threat Intelligence](https://go.microsoft.com/fwlink/?linkid=2128684). Met de hulpprogram ma's voor beveiliging tegen bedreigingen worden de geüploade bestanden niet gescand, en worden de opslag logboeken onderzocht en worden de hashes van recent geüploade bestanden vergeleken met die van bekende virussen, Trojaanse paarden, spyware en Ransomware. 
+
+Wanneer een bestand wordt verdacht om malware te bevatten, wordt in Security Center een waarschuwing weer gegeven en kan de opslag eigenaar voor goed keuring e-mail verzenden om het verdachte bestand te verwijderen. Als u dit automatisch verwijderen van bestanden wilt instellen die door hash-reputatie analyses worden aangegeven, implementeert u een [automatisering op werk stromen om waarschuwingen te activeren met mogelijke malware die is geüpload naar een opslag account](https://techcommunity.microsoft.com/t5/azure-security-center/how-to-respond-to-potential-malware-uploaded-to-azure-storage/ba-p/1452005).
+
+
+
+### <a name="next-steps"></a>Volgende stappen 
 
 Voor prijs informatie, inclusief een gratis proef versie van 30 dagen, raadpleegt u de [pagina met Azure Security Center prijzen](https://azure.microsoft.com/pricing/details/security-center/).
 
@@ -178,9 +188,13 @@ Zie voor meer informatie:
 
 * [Geavanceerde beveiliging tegen bedreigingen inschakelen voor Azure Storage](https://docs.microsoft.com/azure/storage/common/storage-advanced-threat-protection)
 * [De lijst met beveiligings waarschuwingen voor bedreigingen voor Azure Storage](alerts-reference.md#alerts-azurestorage)
+* [De Threat Intelligence-mogelijkheden van micro soft](https://go.microsoft.com/fwlink/?linkid=2128684)
 
 > [!TIP]
-> U kunt Azure Storage waarschuwingen simuleren door de instructies in [dit blog bericht](https://techcommunity.microsoft.com/t5/azure-security-center/validating-atp-for-azure-storage-detections-in-azure-security/ba-p/1068131)te volgen.
+> U kunt opslag waarschuwingen simuleren door de instructies in [dit blog bericht](https://techcommunity.microsoft.com/t5/azure-security-center/validating-atp-for-azure-storage-detections-in-azure-security/ba-p/1068131)te volgen.
+
+
+
 
 
 
@@ -228,14 +242,17 @@ Zie de [naslag tabel met waarschuwingen](alerts-reference.md#alerts-azureresourc
 >[!NOTE]
 > Verschillende van de voor gaande analyses worden mogelijk gemaakt door Microsoft Cloud App Security. Als u van deze analyses wilt profiteren, moet u een Cloud App Security-licentie activeren. Als u een licentie voor Cloud App Security hebt, zijn deze waarschuwingen standaard ingeschakeld. De waarschuwingen uitschakelen:
 >
-> 1. Selecteer **beveiligings beleid**op de blade **Security Center** . Selecteer **Instellingen bewerken**voor het abonnement dat u wilt wijzigen.
-> 2. Selecteer **bedreigingen detectie**.
-> 3. Schakel onder **integraties inschakelen**het selectie vakje **Microsoft Cloud app Security toegang tot mijn gegevens toestaan**uit en selecteer **Opslaan**.
+> 1. Selecteer in het menu van Security Center **prijzen & instellingen**.
+> 1. Selecteer het abonnement dat u wilt wijzigen.
+> 1. Selecteer **bedreigingen detectie**.
+> 1. Schakel **Microsoft Cloud app Security toegang tot mijn gegevens toestaan**uit en selecteer **Opslaan**.
 
 >[!NOTE]
 >Security Center klant gegevens met betrekking tot beveiliging worden opgeslagen in dezelfde geografische regio als de resource. Als micro soft Security Center nog niet heeft geïmplementeerd in de geografische regio van de resource, worden de gegevens opgeslagen in de Verenigde Staten. Als Cloud App Security is ingeschakeld, wordt deze informatie opgeslagen in overeenstemming met de geolocatie regels van Cloud App Security. Zie [gegevens opslag voor niet-regionale Services](https://azuredatacentermap.azurewebsites.net/)voor meer informatie.
 
+1. Stel de werk ruimte in waarop u de agent wilt installeren. Zorg ervoor dat de werk ruimte zich in hetzelfde abonnement bevindt dat u in Security Center gebruikt en dat u lees-en schrijf machtigingen hebt voor de werk ruimte.
 
+1. Stel de prijs categorie Standard in en selecteer **Opslaan**.
 
 
 
@@ -265,7 +282,7 @@ Zie de [naslag tabel met waarschuwingen](alerts-reference.md#alerts-azurekv)voor
 
 Azure Application Gateway biedt de functie Web Application Firewall (WAF) voor de gecentraliseerde beveiliging van uw webtoepassingen tegen bekende aanvallen en beveiligingsproblemen.
 
-Webtoepassingen worden steeds gericht op kwaad aardige aanvallen die veelvoorkomende beveiligings problemen misbruiken. De Application Gateway WAF is gebaseerd op de core Rule set 3,0 of 2.2.9 van het open Web Application Security-project. De WAF wordt automatisch bijgewerkt om te beschermen tegen nieuwe beveiligings problemen. 
+Webtoepassingen zijn in toenemende mate het doel van aanvallen die gebruikmaken van algemeen bekende beveiligingsproblemen. De Application Gateway WAF is gebaseerd op de core Rule set 3,0 of 2.2.9 van het open Web Application Security-project. De WAF wordt automatisch bijgewerkt om te beschermen tegen nieuwe beveiligings problemen. 
 
 Als u een licentie voor Azure WAF hebt, worden uw WAF-waarschuwingen gestreamd naar Security Center zonder dat er aanvullende configuratie nodig is. Zie voor meer informatie over de waarschuwingen die door WAF worden gegenereerd, [CRS-regel groepen en-regels voor Web Application firewall](../web-application-firewall/ag/application-gateway-crs-rulegroups-rules.md?tabs=owasp31#crs911-31).
 

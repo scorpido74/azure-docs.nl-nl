@@ -11,12 +11,11 @@ ms.workload: big-data
 ms.topic: conceptual
 ms.date: 02/11/2020
 ms.custom: seodec18
-ms.openlocfilehash: c3c7f59ecb3a06d80012917e2da4425a899859d7
-ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
-ms.translationtype: MT
+ms.openlocfilehash: dd7a74ff775e6e07d1c32ed198ff028765fce45d
+ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/11/2020
-ms.locfileid: "84698832"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86037287"
 ---
 # <a name="send-events-to-a-time-series-insights-environment-by-using-an-event-hub"></a>Gebeurtenissen verzenden naar een Time Series Insights omgeving met behulp van een Event Hub
 
@@ -55,13 +54,13 @@ In dit artikel wordt uitgelegd hoe u een Event Hub in azure Event Hubs maakt en 
 
 ## <a name="add-a-time-series-insights-instance"></a>Een Time Series Insights-exemplaar toevoegen
 
-De Time Series Insights Update gebruikt exemplaren om contextuele gegevens toe te voegen aan inkomende telemetriegegevens. De gegevens worden tijdens de query tijd gekoppeld met behulp van een **tijd reeks-id**. De **Time Series-id** voor het voorbeeld project Windmills dat later in dit artikel wordt gebruikt is `id` . Lees voor meer informatie over time series Insight-instanties en **tijd reeks-ID-** [modellen](./time-series-insights-update-tsm.md).
+De Time Series Insights Update gebruikt exemplaren om contextuele gegevens toe te voegen aan inkomende telemetriegegevens. De gegevens worden tijdens de query tijd gekoppeld met behulp van een **tijd reeks-id**. De **Time Series-id** voor het voorbeeld project Windmills dat later in dit artikel wordt gebruikt is `id` . Lees voor meer informatie over time series Insight-instanties en **tijd reeks-ID-** [modellen](./concepts-model-overview.md).
 
 ### <a name="create-a-time-series-insights-event-source"></a>Een Time Series Insights gebeurtenis bron maken
 
 1. Als u nog geen gebeurtenis bron hebt gemaakt, voert u de stappen uit om [een gebeurtenis bron te maken](https://docs.microsoft.com/azure/time-series-insights/time-series-insights-how-to-add-an-event-source-eventhub).
 
-1. Stel een waarde in voor `timeSeriesId` . Lees voor meer informatie over **tijd reeks-ID-** [modellen](./time-series-insights-update-tsm.md).
+1. Stel een waarde in voor `timeSeriesId` . Lees voor meer informatie over **tijd reeks-ID-** [modellen](./concepts-model-overview.md).
 
 ### <a name="push-events-to-windmills-sample"></a>Push gebeurtenissen naar Windmills-voor beeld
 

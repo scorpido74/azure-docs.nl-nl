@@ -4,10 +4,9 @@ description: In dit artikel wordt beschreven hoe u een afhankelijkheids analyse 
 ms.topic: how-to
 ms.date: 6/09/2020
 ms.openlocfilehash: 1271a45843a3775d4e1444321faad194edad2f23
-ms.sourcegitcommit: 99d016949595c818fdee920754618d22ffa1cd49
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/15/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84770574"
 ---
 # <a name="set-up-dependency-visualization"></a>Visualisatie van afhankelijkheid instellen
@@ -17,7 +16,7 @@ In dit artikel wordt beschreven hoe u analyse van agentloze afhankelijkheden ins
 ## <a name="before-you-start"></a>Voordat u begint
 
 - Bekijk de ondersteunings-en implementatie vereisten voor analyse van afhankelijkheden op basis van een agent voor:
-    - [Virtuele VMware-machines](migrate-support-matrix-vmware.md#dependency-analysis-requirements-agent-based)
+    - [VMware-VM's](migrate-support-matrix-vmware.md#dependency-analysis-requirements-agent-based)
     - [Fysieke servers](migrate-support-matrix-physical.md#agent-based-dependency-analysis-requirements)
     - [Virtuele Hyper-V-machines](migrate-support-matrix-hyper-v.md#agent-based-dependency-analysis-requirements).
 - Zorg ervoor dat:
