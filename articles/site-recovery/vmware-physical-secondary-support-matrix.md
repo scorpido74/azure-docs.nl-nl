@@ -9,10 +9,9 @@ ms.topic: article
 ms.date: 11/14/2019
 ms.author: raynew
 ms.openlocfilehash: cabd3f7693c6b6b86bf0324bdafdfe1377d1ece8
-ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/11/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84711881"
 ---
 # <a name="support-matrix-for-disaster-recovery-of-vmware-vms-and-physical-servers-to-a-secondary-site"></a>Ondersteunings matrix voor nood herstel van virtuele VMware-machines en fysieke servers naar een secundaire site
@@ -66,7 +65,7 @@ Alleen Linux-machines met de volgende opslag kunnen worden gerepliceerd:
 
 ## <a name="network-configuration---hostguest-vm"></a>Netwerk configuratie-host/gast-VM
 
-**Configuratie** | **Geboden**  
+**Configuratie** | **Ondersteund**  
 --- | --- 
 Host-NIC-koppeling | Yes 
 Host-VLAN | Yes 
@@ -83,7 +82,7 @@ Gast-VM-multi-NIC | Ja
 
 ### <a name="host-storage"></a>Host Storage
 
-**Opslag (host)** | **Geboden** 
+**Opslag (host)** | **Ondersteund** 
 --- | --- 
 NFS | Yes 
 SMB 3.0 | N.v.t. 
@@ -92,7 +91,7 @@ Meerdere paden (MPIO) | Yes
 
 ### <a name="guest-or-physical-server-storage"></a>Opslag van gast-of fysieke servers
 
-**Configuratie** | **Geboden** 
+**Configuratie** | **Ondersteund** 
 --- | --- 
 VMDK | Yes 
 VHD/VHDX | N.v.t. 
@@ -112,7 +111,7 @@ Meerdere paden (MPIO) | N.v.t.
 
 ## <a name="vaults"></a>Kluizen
 
-**Actie** | **Geboden** 
+**Actie** | **Ondersteund** 
 --- | --- 
 Kluizen verplaatsen tussen resource groepen (binnen of tussen abonnementen) | No 
 Opslag, netwerk, Azure-Vm's verplaatsen tussen resource groepen (binnen of tussen verschillende abonnementen) | No 
@@ -121,7 +120,7 @@ Opslag, netwerk, Azure-Vm's verplaatsen tussen resource groepen (binnen of tusse
 
 De Mobility-service coördineert de replicatie tussen on-premises VMware-servers of fysieke servers en de secundaire site. Wanneer u de replicatie instelt, moet u ervoor zorgen dat u de nieuwste versie van de Mobility-service en andere onderdelen hebt.
 
-| **Bijwerk** | **Details** |
+| **Bijwerken** | **Details** |
 | --- | --- |
 |Scout-updates | Scout-updates zijn cumulatief. <br/><br/> [Meer informatie over en downloaden van](vmware-physical-secondary-disaster-recovery.md#updates) de nieuwste updates voor Scout |
 |Onderdeel updates | Scout-updates bevatten updates voor alle onderdelen, waaronder de RX-server, configuratie server, proces-en hoofddoel doel servers, vContinuum-servers en bron servers die u wilt beveiligen.<br/><br/> [Meer informatie](vmware-physical-secondary-disaster-recovery.md#download-and-install-component-updates).|

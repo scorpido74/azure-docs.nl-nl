@@ -12,10 +12,9 @@ ms.author: sstein
 ms.reviewer: genemi
 ms.date: 01/25/2019
 ms.openlocfilehash: 01e1c63a4cfea367a0f721ac33986abade8b5b35
-ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/03/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84343826"
 ---
 # <a name="how-to-use-batching-to-improve-azure-sql-database-and-azure-sql-managed-instance-application-performance"></a>Batch verwerking gebruiken om de prestaties van Azure SQL Database en Azure SQL Managed instance-toepassingen te verbeteren
@@ -212,7 +211,7 @@ Zie [para meters voor tabel waarden](/sql/relational-databases/tables/use-table-
 
 ### <a name="sql-bulk-copy"></a>Bulksgewijs kopiëren van SQL
 
-SQL bulksgewijze kopie is een andere manier om grote hoeveel heden gegevens in te voegen in een doel database. .NET-toepassingen kunnen de klasse **SqlBulkCopy** gebruiken om bulksgewijze Insert-bewerkingen uit te voeren. **SqlBulkCopy** is vergelijkbaar met de functie voor het opdracht regel programma, **BCP. exe**of de Transact-SQL-instructie **Bulk Insert**. In het volgende code voorbeeld ziet u hoe u de rijen in de bron- **DataTable**, tabel, in bulk kunt kopiëren naar de doel tabel mytable.
+SQL bulksgewijze kopie is een andere manier om grote hoeveel heden gegevens in te voegen in een doel database. .NET-toepassingen kunnen de klasse **SqlBulkCopy** gebruiken om bulksgewijze Insert-bewerkingen uit te voeren. **SqlBulkCopy** is vergelijkbaar met de functie voor het opdracht regel programma, **Bcp.exe**of de Transact-SQL-instructie **Bulk Insert**. In het volgende code voorbeeld ziet u hoe u de rijen in de bron- **DataTable**, tabel, in bulk kunt kopiëren naar de doel tabel mytable.
 
 ```csharp
 using (SqlConnection connection = new SqlConnection(CloudConfigurationManager.GetSetting("Sql.ConnectionString")))

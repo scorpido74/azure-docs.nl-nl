@@ -12,10 +12,9 @@ ms.author: ajetasi
 ms.reviewer: sstein
 ms.date: 11/04/2019
 ms.openlocfilehash: 90d3507a8867ad3556891f6001f0e15ebda8c4f4
-ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/03/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84345356"
 ---
 # <a name="stream-data-into-azure-sql-database-using-azure-stream-analytics-integration-preview"></a>Gegevens streamen naar Azure SQL Database met behulp van Azure Stream Analytics-integratie (preview)
@@ -37,8 +36,8 @@ Gebruikers kunnen nu direct vanuit een data base in Azure SQL Database gegevens 
 
 U hebt de volgende resources nodig om de stappen in dit artikel uit te voeren:
 
-- Een Azure-abonnement. Als u geen Azure-abonnement hebt, [maakt u een gratis account](https://azure.microsoft.com/free/).
-- Een data base in Azure SQL Database. Zie [een enkele data base maken in Azure SQL database](single-database-create-quickstart.md)voor meer informatie.
+- Een Azure-abonnement. Als u nog geen abonnement op Azure hebt, [maak dan een gratis account](https://azure.microsoft.com/free/).
+- Een database in Azure SQL Database. Zie [een enkele data base maken in Azure SQL database](single-database-create-quickstart.md)voor meer informatie.
 - Een firewall regel waarmee de computer verbinding kan maken met de server. Zie [een firewall regel op server niveau maken](firewall-create-server-level-portal-quickstart.md)voor meer informatie.
 
 ## <a name="configure-stream-analytics-integration"></a>Stream Analytics-integratie configureren

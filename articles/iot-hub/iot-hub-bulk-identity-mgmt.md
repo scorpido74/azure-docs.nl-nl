@@ -9,10 +9,9 @@ ms.topic: conceptual
 ms.date: 10/02/2019
 ms.author: robinsh
 ms.openlocfilehash: 46eb1fe7543cbc65545eaca46e38f09466406701
-ms.sourcegitcommit: 8e5b4e2207daee21a60e6581528401a96bfd3184
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/04/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84417936"
 ---
 # <a name="import-and-export-iot-hub-device-identities-in-bulk"></a>Id's van IoT Hub-apparaten bulksgewijs importeren en exporteren
@@ -133,7 +132,7 @@ while(true)
 }
 ```
 
-De uitvoer van de taak wordt in de gegeven BLOB-container opgeslagen als een blok-blob met de naam **devices. txt**. De uitvoer gegevens bestaan uit JSON serialized Device Data, met één apparaat per regel.
+De uitvoer van de taak wordt in de gegeven BLOB-container opgeslagen als een blok-blob met de naam **devices.txt**. De uitvoer gegevens bestaan uit JSON serialized Device Data, met één apparaat per regel.
 
 In het volgende voor beeld ziet u de uitvoer gegevens:
 
@@ -219,7 +218,7 @@ Wees voorzichtig met het gebruik van de methode **ImportDevicesAsync** omdat er 
 
 De methode **ImportDevicesAsync** heeft twee para meters:
 
-* Een *teken reeks* die een URI bevat van een [Azure Storage](../storage/index.yml) BLOB-container die moet worden gebruikt als *invoer* voor de taak. Deze URI moet een SAS-token bevatten dat lees toegang verleent aan de container. Deze container moet een BLOB bevatten met de naam **devices. txt** die de geserialiseerde apparaatgegevens bevat die moeten worden geïmporteerd in uw identiteits register. De import gegevens moeten informatie over het apparaat bevatten in dezelfde JSON-indeling als de **ExportImportDevice** -taak die wordt gebruikt bij het maken van een **apparaat. txt** -blob. Het SAS-token moet deze machtigingen bevatten:
+* Een *teken reeks* die een URI bevat van een [Azure Storage](../storage/index.yml) BLOB-container die moet worden gebruikt als *invoer* voor de taak. Deze URI moet een SAS-token bevatten dat lees toegang verleent aan de container. Deze container moet een BLOB bevatten met de naam **devices.txt** die de geserialiseerde apparaatgegevens bevat die moeten worden geïmporteerd in uw identiteits register. De import gegevens moeten informatie over het apparaat bevatten in dezelfde JSON-indeling als de **ExportImportDevice** -taak die wordt gebruikt bij het maken van een **devices.txt** blob. Het SAS-token moet deze machtigingen bevatten:
 
    ```csharp
    SharedAccessBlobPermissions.Read
@@ -261,7 +260,7 @@ Als het import bestand dubbele meta gegevens bevat, worden met deze meta gegeven
 
 Gebruik de optionele eigenschap **importMode** in de import-serialisatie-gegevens voor elk apparaat om het import proces per apparaat te beheren. De eigenschap **importMode** heeft de volgende opties:
 
-| importMode | Beschrijving |
+| importMode | Description |
 | --- | --- |
 | **createOrUpdate** |Als er geen apparaat met de opgegeven **id**bestaat, wordt het pas geregistreerd. <br/>Als het apparaat al bestaat, wordt de bestaande informatie overschreven met de opgegeven invoer gegevens zonder rekening te houden met de **ETAG** -waarde. <br> De gebruiker kan eventueel dubbele gegevens en de apparaatgegevens opgeven. De dubbele ETAG, indien opgegeven, wordt onafhankelijk van de ETAG van het apparaat verwerkt. Als er niet overeenkomt met de bestaande ' ETAG ', wordt er een fout naar het logboek bestand geschreven. |
 | **creëren** |Als er geen apparaat met de opgegeven **id**bestaat, wordt het pas geregistreerd. <br/>Als het apparaat al bestaat, wordt er een fout naar het logboek bestand geschreven. <br> De gebruiker kan eventueel dubbele gegevens en de apparaatgegevens opgeven. De dubbele ETAG, indien opgegeven, wordt onafhankelijk van de ETAG van het apparaat verwerkt. Als er niet overeenkomt met de bestaande ' ETAG ', wordt er een fout naar het logboek bestand geschreven. |

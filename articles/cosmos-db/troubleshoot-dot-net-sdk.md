@@ -8,12 +8,11 @@ ms.author: anfeldma
 ms.subservice: cosmosdb-sql
 ms.topic: troubleshooting
 ms.reviewer: sngun
-ms.openlocfilehash: b24c0b045bc7d894496a59eda00f0e8835ea6a8d
-ms.sourcegitcommit: e3c28affcee2423dc94f3f8daceb7d54f8ac36fd
-ms.translationtype: MT
+ms.openlocfilehash: 0eb5d9cd86be05e5ad69bc9543231987e3c1dd2c
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/17/2020
-ms.locfileid: "84887365"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85799262"
 ---
 # <a name="diagnose-and-troubleshoot-issues-when-using-azure-cosmos-db-net-sdk"></a>Problemen vaststellen en oplossen bij het gebruik van Azure Cosmos DB .NET SDK
 
@@ -87,7 +86,7 @@ Deze latentie kan meerdere oorzaken hebben:
 
 ### <a name="azure-snat-pat-port-exhaustion"></a><a name="snat"></a>Uitputting van de poort van Azure SNAT (PAT)
 
-Als uw app is geïmplementeerd op [Azure virtual machines zonder een openbaar IP-adres](../load-balancer/load-balancer-outbound-connections.md#defaultsnat), worden de standaard [Azure SNAT-poorten](../load-balancer/load-balancer-outbound-connections.md#preallocatedports) gebruikt om verbinding te maken met een wille keurig eind punt buiten uw VM. Het aantal verbindingen dat van de virtuele machine naar het Azure Cosmos DB-eind punt is toegestaan, wordt beperkt door de [Azure SNAT-configuratie](../load-balancer/load-balancer-outbound-connections.md#preallocatedports). Deze situatie kan leiden tot verbindings beperking, sluiting verbinding of de hierboven vermelde [time-outs van aanvragen](#request-timeouts).
+Als uw app is geïmplementeerd op [Azure virtual machines zonder een openbaar IP-adres](../load-balancer/load-balancer-outbound-connections.md), worden de standaard [Azure SNAT-poorten](../load-balancer/load-balancer-outbound-connections.md#preallocatedports) gebruikt om verbinding te maken met een wille keurig eind punt buiten uw VM. Het aantal verbindingen dat van de virtuele machine naar het Azure Cosmos DB-eind punt is toegestaan, wordt beperkt door de [Azure SNAT-configuratie](../load-balancer/load-balancer-outbound-connections.md#preallocatedports). Deze situatie kan leiden tot verbindings beperking, sluiting verbinding of de hierboven vermelde [time-outs van aanvragen](#request-timeouts).
 
  Azure SNAT-poorten worden alleen gebruikt als uw virtuele machine een privé-IP-adres heeft om verbinding te maken met een openbaar IP-adres. Er zijn twee manieren om de limiet voor Azure SNAT te voor komen (als u al een exemplaar van één client gebruikt voor de hele toepassing):
 
@@ -109,16 +108,16 @@ Met de [metrische gegevens](sql-api-query-metrics.md) van de query kunt u bepale
 * Als de back-end-query langzaam is, [optimaliseert u de query](optimize-cost-queries.md) en bekijkt u het huidige [indexerings beleid](index-overview.md) 
 
 ### <a name="http-401-the-mac-signature-found-in-the-http-request-is-not-the-same-as-the-computed-signature"></a>HTTP 401: de MAC-hand tekening die in de HTTP-aanvraag is gevonden, is niet hetzelfde als de berekende hand tekening
-Als u het volgende fout bericht van 401 hebt ontvangen: de MAC-hand tekening in de HTTP-aanvraag is niet hetzelfde als de berekende hand tekening. Dit kan worden veroorzaakt door de volgende scenario's.
+Als u het volgende 401-foutbericht hebt ontvangen: 'De MAC-handtekening die in de HTTP-aanvraag is gevonden, is niet hetzelfde als de berekende handtekening.' Dit kan worden veroorzaakt door de volgende scenario's.
 
-1. De sleutel is gedraaid en voldoet niet aan de [Aanbevolen procedures](secure-access-to-data.md#key-rotation). Dit is meestal het geval. Het kan een paar seconden duren voordat de draaiing van de account sleutel van Cosmos DB kan worden uitgevoerd, afhankelijk van de grootte van het Cosmos DB-account.
-   1. 401 MAC-hand tekening wordt kort na het draaien van een sleutel weer gegeven en stopt uiteindelijk zonder wijzigingen. 
-1. De sleutel is onjuist geconfigureerd op de toepassing, zodat de sleutel niet overeenkomt met het account.
-   1. 401 MAC-handtekening probleem is consistent en gebeurt voor alle aanroepen
+1. De sleutel is omgewisseld en voldoet niet aan de [best practices](secure-access-to-data.md#key-rotation). Dit is meestal het probleem. Het omwisselen van de sleutel voor een Cosmos DB-account kan een paar seconden tot enkele dagen duren, afhankelijk van de grootte van het Cosmos DB-account.
+   1. De 401 MAC-handtekening wordt kort na het omwisselen van een sleutel weergegeven en stopt uiteindelijk zonder wijzigingen. 
+1. De sleutel wordt onjuist geconfigureerd op de toepassing, zodat de sleutel niet overeenkomt met het account.
+   1. Het 401 MAC-handtekeningprobleem is consistent en gebeurt voor alle aanroepen
 1. De toepassing gebruikt de [alleen-lezen sleutels](secure-access-to-data.md#master-keys) voor schrijf bewerkingen.
-   1. 401 MAC-handtekening probleem treedt alleen op wanneer de toepassing schrijf aanvragen uitvoert, maar lees aanvragen worden voltooid.
-1. Er is een race voorwaarde bij het maken van een container. Een instantie van de toepassing probeert toegang te krijgen tot de container voordat het maken van de container is voltooid. Het meest voorkomende scenario als de toepassing wordt uitgevoerd, en de container wordt verwijderd en opnieuw gemaakt met dezelfde naam terwijl de toepassing wordt uitgevoerd. De SDK probeert de nieuwe container te gebruiken, maar het maken van de container wordt nog uitgevoerd, zodat deze de sleutels niet bevat.
-   1. 401 MAC-handtekening probleem wordt kort weer gegeven na het maken van een container en pas nadat het maken van de container is voltooid.
+   1. Het 401 MAC-handtekeningprobleem treedt alleen op wanneer de toepassing schrijfaanvragen uitvoert; leesaanvragen lukken wel.
+1. Er is een racevoorwaarde bij het maken van een container. Een exemplaar van de toepassing probeert toegang te krijgen tot de container voordat het maken van de container is voltooid. Het meest voorkomende scenario is dat de toepassing wordt uitgevoerd en de container wordt verwijderd en opnieuw gemaakt met dezelfde naam terwijl de toepassing wordt uitgevoerd. De SDK probeert de nieuwe container te gebruiken, maar de container wordt nog gemaakt, waardoor deze de sleutels niet bevat.
+   1. Het 401 MAC-handtekeningprobleem wordt kort weergegeven na het maken van een container en pas nadat het maken van de container is voltooid.
  
  ### <a name="http-error-400-the-size-of-the-request-headers-is-too-long"></a>HTTP-fout 400. De grootte van de aanvraag headers is te lang.
  De grootte van de koptekst is groter geworden en overschrijdt de Maxi maal toegestane grootte. Het wordt altijd aanbevolen de nieuwste SDK te gebruiken. Zorg ervoor dat u ten minste versie [3. x](https://github.com/Azure/azure-cosmos-dotnet-v3/blob/master/changelog.md) of [2. x](https://github.com/Azure/azure-cosmos-dotnet-v2/blob/master/changelog.md)gebruikt, waardoor het traceren van de header grootte wordt toegevoegd aan het uitzonderings bericht.

@@ -12,10 +12,9 @@ ms.author: jovanpop
 ms.reviewer: ''
 ms.date: 12/18/2018
 ms.openlocfilehash: aed1965b07a80efa3cd8dbc84e396b9ef4f99252
-ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/03/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84345271"
 ---
 # <a name="in-memory-sample"></a>Voor beeld in het geheugen
@@ -49,7 +48,7 @@ Voor een meer vereenvoudigde, maar visueel aantrekkelijke prestatie demo voor in
 
 1. Maak in de [Azure Portal](https://portal.azure.com/)een Premium-of bedrijfskritiek-Data Base op een server. Stel de **bron** in op de voorbeeld database AdventureWorksLT. Zie [uw eerste data base maken in Azure SQL database](database/single-database-create-quickstart.md)voor gedetailleerde instructies.
 
-2. Maak verbinding met de data base met SQL Server Management Studio [(SSMS. exe)](https://msdn.microsoft.com/library/mt238290.aspx).
+2. Verbinding maken met de data base met SQL Server Management Studio [(SSMS.exe)](https://msdn.microsoft.com/library/mt238290.aspx).
 
 3. Kopieer het [Transact-SQL-script van OLTP in het geheugen](https://raw.githubusercontent.com/microsoft/sql-server-samples/master/samples/features/in-memory-database/in-memory-oltp/t-sql-scripts/sql_in-memory_oltp_sample.sql) naar het klem bord. Het T-SQL-script maakt de benodigde in-Memory objecten in de AdventureWorksLT-voorbeeld database die u in stap 1 hebt gemaakt.
 
@@ -109,18 +108,18 @@ Het enige verschil tussen de volgende twee *opgeslagen procedures* is dat in de 
 - Tabel saleslt **.** usp_InsertSalesOrder **_inmem**
 - Tabel saleslt **.** usp_InsertSalesOrder **_ondisk**
 
-In deze sectie ziet u hoe u het handige **ostress. exe** -hulp programma gebruikt om de twee opgeslagen procedures op stress niveau uit te voeren. U kunt vergelijken hoe lang het duurt om de twee stress-uitvoeringen te volt ooien.
+In deze sectie ziet u hoe u het handige **ostress.exe** -hulp programma gebruikt om de twee opgeslagen procedures op stress niveau uit te voeren. U kunt vergelijken hoe lang het duurt om de twee stress-uitvoeringen te volt ooien.
 
-Wanneer u ostress. exe uitvoert, wordt u aangeraden parameter waarden door te geven die zijn ontworpen voor het volgende:
+Wanneer u ostress.exe uitvoert, raden we u aan parameter waarden door te geven die zijn ontworpen voor het volgende:
 
 - Voer een groot aantal gelijktijdige verbindingen uit met behulp van-N100.
 - Laat elke verbinding honderden keer worden herhaald met behulp van-R500.
 
 Het is echter verstandig om te beginnen met veel kleinere waarden, zoals-N10 en-R50, om ervoor te zorgen dat alles werkt.
 
-### <a name="script-for-ostressexe"></a>Script voor ostress. exe
+### <a name="script-for-ostressexe"></a>Script voor ostress.exe
 
-In deze sectie wordt het T-SQL-script weer gegeven dat is inge sloten in onze ostress. exe-opdracht regel. Het script maakt gebruik van items die zijn gemaakt door het T-SQL-script dat u eerder hebt geïnstalleerd.
+In deze sectie wordt het T-SQL-script weer gegeven dat is inge sloten in onze ostress.exe-opdracht regel. Het script maakt gebruik van items die zijn gemaakt door het T-SQL-script dat u eerder hebt geïnstalleerd.
 
 Met het volgende script wordt een voor beeld van een verkoop order met vijf regel items ingevoegd in de volgende *tabellen*die zijn geoptimaliseerd voor geheugen:
 
@@ -150,19 +149,19 @@ begin;
 end
 ```
 
-Als u de *_ondisk* versie van het vorige T-SQL-script voor ostress. exe wilt maken, vervangt u beide exemplaren van de *_inmem* subtekenreeks door *_ondisk*. Deze vervangingen zijn van invloed op de namen van tabellen en opgeslagen procedures.
+Als u de *_ondisk* versie van het voor gaande T-SQL-script voor ostress.exe wilt maken, vervangt u beide exemplaren van de *_inmem* subtekenreeks door *_ondisk*. Deze vervangingen zijn van invloed op de namen van tabellen en opgeslagen procedures.
 
 #### <a name="install-rml-utilities-and-ostress"></a>Installeer RML-hulpprogram ma's en`ostress`
 
-In het ideale geval wilt u ostress. exe uitvoeren op een virtuele Azure-machine (VM). U maakt een [virtuele Azure-machine](https://azure.microsoft.com/documentation/services/virtual-machines/) in dezelfde Azure-geografische regio waar uw AdventureWorksLT-data base zich bevindt. Maar u kunt in plaats daarvan ostress. exe uitvoeren op uw laptop.
+In het ideale geval is het van plan om ostress.exe uit te voeren op een virtuele Azure-machine (VM). U maakt een [virtuele Azure-machine](https://azure.microsoft.com/documentation/services/virtual-machines/) in dezelfde Azure-geografische regio waar uw AdventureWorksLT-data base zich bevindt. Maar u kunt in plaats daarvan ostress.exe uitvoeren op uw laptop.
 
-Installeer de RML-hulpprogram ma's (Replay Markup Language) op de virtuele machine, of op welke host u ook kiest. De hulpprogram ma's bevatten ostress. exe.
+Installeer de RML-hulpprogram ma's (Replay Markup Language) op de virtuele machine, of op welke host u ook kiest. De hulpprogram ma's bevatten ostress.exe.
 
 Zie voor meer informatie:
 
-- De ostress. exe-discussie in de [voorbeeld database voor in-Memory OLTP](https://msdn.microsoft.com/library/mt465764.aspx).
+- De ostress.exe discussie in de [voorbeeld database voor in-Memory OLTP](https://msdn.microsoft.com/library/mt465764.aspx).
 - [Voorbeeld database voor in-Memory OLTP](https://msdn.microsoft.com/library/mt465764.aspx).
-- De [blog voor het installeren van ostress. exe](https://techcommunity.microsoft.com/t5/sql-server-support/cumulative-update-2-to-the-rml-utilities-for-microsoft-sql/ba-p/317910).
+- De [blog voor het installeren van ostress.exe](https://techcommunity.microsoft.com/t5/sql-server-support/cumulative-update-2-to-the-rml-utilities-for-microsoft-sql/ba-p/317910).
 
 <!--
 dn511655.aspx is for SQL 2014,
@@ -176,7 +175,7 @@ whereas for SQL 2016+
 
 #### <a name="run-the-_inmem-stress-workload-first"></a>Voer eerst de *_inmem* stress-workload uit
 
-U kunt een *RML cmd prompt* -venster gebruiken om de ostress. exe-opdracht regel uit te voeren. De opdracht regel parameters direct `ostress` naar:
+U kunt een *RML cmd prompt* venster gebruiken om de ostress.exe opdracht regel uit te voeren. De opdracht regel parameters direct `ostress` naar:
 
 - 100-verbindingen gelijktijdig uitvoeren (-N100).
 - Laat elke verbinding het T-SQL-script 50 keer (-R50) uitvoeren.
@@ -185,7 +184,7 @@ U kunt een *RML cmd prompt* -venster gebruiken om de ostress. exe-opdracht regel
 ostress.exe -n100 -r50 -S<servername>.database.windows.net -U<login> -P<password> -d<database> -q -Q"DECLARE @i int = 0, @od SalesLT.SalesOrderDetailType_inmem, @SalesOrderID int, @DueDate datetime2 = sysdatetime(), @CustomerID int = rand() * 8000, @BillToAddressID int = rand() * 10000, @ShipToAddressID int = rand()* 10000; INSERT INTO @od SELECT OrderQty, ProductID FROM Demo.DemoSalesOrderDetailSeed WHERE OrderID= cast((rand()*60) as int); WHILE (@i < 20) begin; EXECUTE SalesLT.usp_InsertSalesOrder_inmem @SalesOrderID OUTPUT, @DueDate, @CustomerID, @BillToAddressID, @ShipToAddressID, @od; set @i += 1; end"
 ```
 
-De voor gaande ostress. exe-opdracht regel uitvoeren:
+De voor gaande ostress.exe opdracht regel uitvoeren:
 
 1. De inhoud van de database gegevens opnieuw instellen door de volgende opdracht uit te voeren in SSMS, om alle gegevens te verwijderen die zijn ingevoegd door eerdere uitvoeringen:
 
@@ -193,7 +192,7 @@ De voor gaande ostress. exe-opdracht regel uitvoeren:
     EXECUTE Demo.usp_DemoReset;
     ```
 
-2. Kopieer de tekst van de voor gaande ostress. exe-opdracht regel naar het klem bord.
+2. De tekst van de voor gaande ostress.exe opdracht regel kopiëren naar het klem bord.
 
 3. Vervang de `<placeholders>` para meters-S-U-P-d door de juiste werkelijke waarden.
 
@@ -215,9 +214,9 @@ Nadat u het resultaat van de *_inmem* uitvoeren hebt, voert u de volgende stappe
    EXECUTE Demo.usp_DemoReset;
    ```
 
-2. Bewerk de ostress. exe-opdracht regel om alle *_inmem* te vervangen door *_ondisk*.
+2. Bewerk de ostress.exe opdracht regel om alle *_inmem* met *_ondisk*te vervangen.
 
-3. Voer ostress. exe voor de tweede keer opnieuw uit en leg het resultaat van de duur vast.
+3. Voer ostress.exe voor de tweede keer opnieuw uit en leg het resultaat van de duur vast.
 
 4. Stel de data base opnieuw in (voor vergoedd verwijderen wat kan een grote hoeveelheid test gegevens zijn).
 

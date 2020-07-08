@@ -8,53 +8,56 @@ ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 03/30/2020
+ms.date: 07/06/2020
 ms.author: iainfou
-ms.openlocfilehash: 8a23974e55c599585fc247a97db66ff76bf93e76
-ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
-ms.translationtype: MT
+ms.openlocfilehash: a3694b08bee732e3e2d3e7c0c339e5e0d94fe418
+ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/12/2020
-ms.locfileid: "84734585"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86040024"
 ---
 # <a name="virtual-network-design-considerations-and-configuration-options-for-azure-active-directory-domain-services"></a>Ontwerp overwegingen voor het virtuele netwerk en configuratie opties voor Azure Active Directory Domain Services
 
-Als Azure Active Directory Domain Services (Azure AD DS) voorziet in verificatie-en beheer Services voor andere toepassingen en werk belastingen, is de netwerk verbinding een belang rijk onderdeel. Zonder correct geconfigureerde virtuele netwerk bronnen kunnen toepassingen en werk belastingen niet communiceren met en gebruikmaken van de functies van Azure AD DS. Plan de vereisten van uw virtuele netwerk om ervoor te zorgen dat Azure AD DS uw toepassingen en werk belastingen naar behoefte kan leveren.
+Azure Active Directory Domain Services (Azure AD DS) biedt verificatie-en beheer services aan andere toepassingen en werk belastingen. De netwerk verbinding is een belang rijk onderdeel. Zonder correct geconfigureerde virtuele netwerk bronnen kunnen toepassingen en werk belastingen niet communiceren met en gebruikmaken van de functies van Azure AD DS. Plan de vereisten van uw virtuele netwerk om ervoor te zorgen dat Azure AD DS uw toepassingen en werk belastingen naar behoefte kan leveren.
 
 In dit artikel vindt u een overzicht van overwegingen en vereisten voor het ontwerp van een virtueel Azure-netwerk ter ondersteuning van Azure AD DS.
 
 ## <a name="azure-virtual-network-design"></a>Azure Virtual Network-ontwerp
 
-Als u verbinding met het netwerk wilt maken en toepassingen en services wilt toestaan voor verificatie bij Azure AD DS, gebruikt u een virtueel netwerk en subnet van Azure. In het ideale geval moeten Azure AD DS worden geïmplementeerd in een eigen virtueel netwerk. U kunt een afzonderlijk toepassings subnet in hetzelfde virtuele netwerk toevoegen om uw beheer-VM of lichte toepassings werkbelastingen te hosten. Een apart virtueel netwerk voor grotere of complexe toepassings werkbelastingen, gekoppeld aan het virtuele netwerk van Azure AD DS, is doorgaans het meest geschikte ontwerp. Andere opties voor ontwerpen zijn geldig, op voor waarden dat u voldoet aan de vereisten die worden beschreven in de volgende secties voor het virtuele netwerk en subnet.
+Als u verbinding met het netwerk wilt maken en toepassingen en services wilt toestaan voor verificatie bij een Azure AD DS beheerd domein, gebruikt u een virtueel Azure-netwerk en-subnet. In het ideale geval moet het beheerde domein worden geïmplementeerd in een eigen virtueel netwerk.
+
+U kunt een afzonderlijk toepassings subnet in hetzelfde virtuele netwerk toevoegen om uw beheer-VM of lichte toepassings werkbelastingen te hosten. Een apart virtueel netwerk voor grotere of complexe toepassings werkbelastingen, gekoppeld aan het virtuele netwerk van Azure AD DS, is doorgaans het meest geschikte ontwerp.
+
+Andere opties voor ontwerpen zijn geldig, op voor waarden dat u voldoet aan de vereisten die worden beschreven in de volgende secties voor het virtuele netwerk en subnet.
 
 Wanneer u het virtuele netwerk voor Azure AD DS ontwerpt, zijn de volgende overwegingen van toepassing:
 
 * Azure AD DS moet in dezelfde Azure-regio worden geïmplementeerd als uw virtuele netwerk.
-    * Op dit moment kunt u slechts één door Azure AD DS beheerd domein implementeren per Azure AD-Tenant. Het beheerde domein wordt geïmplementeerd in een enkele regio. Zorg ervoor dat u een virtueel netwerk maakt of selecteert in een [regio die Azure-AD DS ondersteunt](https://azure.microsoft.com/global-infrastructure/services/?products=active-directory-ds&regions=all).
+    * Op dit moment kunt u slechts één beheerd domein implementeren per Azure AD-Tenant. Het beheerde domein wordt geïmplementeerd in een enkele regio. Zorg ervoor dat u een virtueel netwerk maakt of selecteert in een [regio die Azure-AD DS ondersteunt](https://azure.microsoft.com/global-infrastructure/services/?products=active-directory-ds&regions=all).
 * Denk na over de nabijheid van andere Azure-regio's en de virtuele netwerken die als host fungeren voor de werk belasting van uw toepassing.
     * Als u de latentie wilt minimaliseren, houdt u uw belangrijkste toepassingen dicht bij of in dezelfde regio als het subnet van het virtuele netwerk voor uw beheerde domein. U kunt peering van virtuele netwerken of VPN-verbindingen (virtueel particulier netwerk) tussen virtuele netwerken van Azure gebruiken. Deze verbindings opties worden beschreven in een van de volgende secties.
-* Het virtuele netwerk is niet afhankelijk van de DNS-services die door Azure AD DS worden verschaft.
+* Het virtuele netwerk kan niet afhankelijk zijn van andere DNS-services dan die services die door het beheerde domein worden verschaft.
     * Azure AD DS biedt een eigen DNS-service. Het virtuele netwerk moet worden geconfigureerd voor het gebruik van deze DNS-service adressen. Naam omzetting voor extra naam ruimten kan worden uitgevoerd met behulp van voorwaardelijke doorstuur servers.
-    * U kunt geen aangepaste DNS-server instellingen gebruiken om query's te sturen van andere DNS-servers, inclusief op Vm's. Resources in het virtuele netwerk moeten gebruikmaken van de DNS-service van Azure AD DS.
+    * U kunt geen aangepaste DNS-server instellingen gebruiken om query's te sturen van andere DNS-servers, inclusief op Vm's. Resources in het virtuele netwerk moeten gebruikmaken van de DNS-service van het beheerde domein.
 
 > [!IMPORTANT]
 > U kunt Azure-AD DS niet verplaatsen naar een ander virtueel netwerk nadat u de service hebt ingeschakeld.
 
 Een beheerd domein maakt verbinding met een subnet in een virtueel Azure-netwerk. Ontwerp dit subnet voor Azure AD DS met de volgende overwegingen:
 
-* Azure AD DS moet worden geïmplementeerd in een eigen subnet. Gebruik geen bestaand subnet of een gateway-subnet.
+* Een beheerd domein moet worden geïmplementeerd in een eigen subnet. Gebruik geen bestaand subnet of een gateway-subnet.
 * Er wordt een netwerk beveiligings groep gemaakt tijdens de implementatie van een beheerd domein. Deze netwerk beveiligings groep bevat de vereiste regels voor de juiste service communicatie.
     * Maak of gebruik geen bestaande netwerk beveiligings groep met uw eigen aangepaste regels.
-* Azure AD DS vereist 3-5 IP-adressen. Zorg ervoor dat het IP-adres bereik van uw subnet dit aantal adressen kan bevatten.
-    * Het beperken van de beschik bare IP-adressen kan verhinderen dat Azure AD Domain Services twee domein controllers beheert.
+* Voor een beheerd domein zijn 3-5 IP-adressen vereist. Zorg ervoor dat het IP-adres bereik van uw subnet dit aantal adressen kan bevatten.
+    * Het beperken van de beschik bare IP-adressen kan verhinderen dat het beheerde domein twee domein controllers beheert.
 
-In het volgende voorbeeld diagram wordt een geldig ontwerp beschreven waarbij Azure AD DS een eigen subnet heeft, er is een gateway-subnet voor externe verbinding en de werk belasting van toepassingen bevindt zich in een verbonden subnet in het virtuele netwerk:
+In het volgende voorbeeld diagram wordt een geldig ontwerp beschreven waarbij het beheerde domein een eigen subnet heeft, er is een gateway-subnet voor externe verbinding en de werk belasting van toepassingen bevindt zich in een verbonden subnet binnen het virtuele netwerk:
 
 ![Aanbevolen subnet ontwerpen](./media/active-directory-domain-services-design-guide/vnet-subnet-design.png)
 
 ## <a name="connections-to-the-azure-ad-ds-virtual-network"></a>Verbindingen met het virtuele netwerk van Azure AD DS
 
-Zoals u in de vorige sectie hebt genoteerd, kunt u alleen een door Azure AD Domain Services beheerd domein in één virtueel netwerk in azure maken en kan er slechts één beheerd domein worden gemaakt per Azure AD-Tenant. Op basis van deze architectuur moet u mogelijk een of meer virtuele netwerken koppelen die de werk belasting van uw toepassing hosten naar uw Azure AD DS virtuele netwerk.
+Zoals u in de vorige sectie hebt genoteerd, kunt u alleen een beheerd domein in één virtueel netwerk in azure maken. er kan slechts één beheerd domein worden gemaakt per Azure AD-Tenant. Op basis van deze architectuur moet u mogelijk een of meer virtuele netwerken koppelen die de werk belasting van uw toepassing hosten naar het virtuele netwerk van uw beheerde domein.
 
 U kunt met behulp van een van de volgende methoden toepassings werkbelastingen die worden gehost in andere virtuele netwerken van Azure verbinden:
 
@@ -71,7 +74,7 @@ Zie [overzicht van Azure Virtual Network-peering](../virtual-network/virtual-net
 
 ### <a name="virtual-private-networking-vpn"></a>Virtueel particulier netwerk (VPN)
 
-U kunt een virtueel netwerk verbinden met een ander virtueel netwerk (VNet-naar-VNet) op dezelfde manier als u een virtueel netwerk op een on-premises site locatie kunt configureren. Beide verbindingen gebruiken een VPN-gateway om een beveiligde tunnel met IPsec/IKE te maken. Met dit verbindings model kunt u Azure-AD DS implementeren in een virtueel Azure-netwerk en vervolgens on-premises locaties of andere Clouds verbinden.
+U kunt een virtueel netwerk verbinden met een ander virtueel netwerk (VNet-naar-VNet) op dezelfde manier als u een virtueel netwerk op een on-premises site locatie kunt configureren. Beide verbindingen gebruiken een VPN-gateway om een beveiligde tunnel met IPsec/IKE te maken. Met dit verbindings model kunt u het beheerde domein implementeren in een virtueel Azure-netwerk en vervolgens on-premises locaties of andere Clouds verbinden.
 
 ![Verbinding met het virtuele netwerk met behulp van een VPN Gateway](./media/active-directory-domain-services-design-guide/vnet-connection-vpn-gateway.jpg)
 
@@ -79,15 +82,15 @@ Voor meer informatie over het gebruik van virtuele particuliere netwerken, Lees 
 
 ## <a name="name-resolution-when-connecting-virtual-networks"></a>Naam omzetting bij het verbinden van virtuele netwerken
 
-Virtuele netwerken die zijn verbonden met het virtuele Azure AD Domain Services-netwerk hebben doorgaans hun eigen DNS-instellingen. Wanneer u virtuele netwerken verbindt, wordt de naam omzetting voor het verbinding maken met het virtuele netwerk niet automatisch geconfigureerd om services op te lossen die worden geboden door het beheerde domein. De naam omzetting van de virtuele netwerken die verbinding maken moet zo worden geconfigureerd dat werk belastingen van toepassingen Azure AD Domain Services kunnen vinden.
+Virtuele netwerken die zijn verbonden met het virtuele netwerk van het beheerde domein hebben doorgaans hun eigen DNS-instellingen. Wanneer u virtuele netwerken verbindt, wordt de naam omzetting voor het verbinding maken met het virtuele netwerk niet automatisch geconfigureerd om services op te lossen die worden geboden door het beheerde domein. De naam omzetting van de virtuele netwerken die verbinding maken moet zo worden geconfigureerd dat werk belastingen van toepassingen het beheerde domein kunnen vinden.
 
-U kunt naam omzetting inschakelen met behulp van voorwaardelijke DNS-doorstuur servers op de DNS-server die de verbinding met virtuele netwerken ondersteunt, of door gebruik te maken van dezelfde DNS IP-adressen van het virtuele netwerk van de Azure AD-domein service.
+U kunt naam omzetting inschakelen met behulp van voorwaardelijke DNS-doorstuur servers op de DNS-server die de verbinding met virtuele netwerken ondersteunt, of door gebruik te maken van dezelfde DNS IP-adressen van het virtuele netwerk van het beheerde domein.
 
 ## <a name="network-resources-used-by-azure-ad-ds"></a>Netwerk bronnen die worden gebruikt door Azure AD DS
 
 Een beheerd domein maakt sommige netwerk bronnen tijdens de implementatie. Deze resources zijn nodig voor een geslaagde bewerking en beheer van het beheerde domein, en mogen niet hand matig worden geconfigureerd.
 
-| Azure-resource                          | Beschrijving |
+| Azure-resource                          | Description |
 |:----------------------------------------|:---|
 | Netwerk interface kaart                  | Azure AD DS fungeert als host voor het beheerde domein op twee domein controllers (Dc's) die worden uitgevoerd op Windows Server als Azure-Vm's. Elke VM heeft een virtuele netwerk interface die verbinding maakt met het subnet van het virtuele netwerk. |
 | Dynamisch standaard openbaar IP-adres      | Azure AD DS communiceert met de synchronisatie-en beheer service met een standaard-SKU openbaar IP-adres. Zie [IP-adres typen en toewijzings methoden in azure](../virtual-network/virtual-network-ip-addresses-overview-arm.md)voor meer informatie over open bare IP-adressen. |
@@ -100,18 +103,18 @@ Een beheerd domein maakt sommige netwerk bronnen tijdens de implementatie. Deze 
 
 ## <a name="network-security-groups-and-required-ports"></a>Netwerk beveiligings groepen en de vereiste poorten
 
-Een [netwerk beveiligings groep (NSG)](../virtual-network/virtual-networks-nsg.md) bevat een lijst met regels waarmee netwerk verkeer naar verkeer in een virtueel Azure-netwerk wordt toegestaan of geweigerd. Er wordt een netwerk beveiligings groep gemaakt wanneer u Azure AD DS implementeert die een set regels bevat waarmee de service verificatie-en beheer functies kan bieden. Deze standaard netwerk beveiligings groep is gekoppeld aan het subnet van het virtuele netwerk waarop uw beheerde domein is geïmplementeerd.
+Een [netwerk beveiligings groep (NSG)](../virtual-network/virtual-networks-nsg.md) bevat een lijst met regels waarmee netwerk verkeer naar verkeer in een virtueel Azure-netwerk wordt toegestaan of geweigerd. Er wordt een netwerk beveiligings groep gemaakt wanneer u een beheerd domein implementeert dat een set regels bevat waarmee de service verificatie-en beheer functies kan bieden. Deze standaard netwerk beveiligings groep is gekoppeld aan het subnet van het virtuele netwerk waarop uw beheerde domein is geïmplementeerd.
 
-De volgende regels voor de netwerk beveiligings groep zijn vereist voor Azure AD DS om verificatie-en beheer services te bieden. Wijzig of verwijder deze regels voor netwerk beveiligings groepen niet voor het subnet van het virtuele netwerk waarop uw beheerde domein is geïmplementeerd.
+De volgende regels voor de netwerk beveiligings groep zijn vereist voor het beheerde domein voor het leveren van verificatie-en beheer Services. Wijzig of verwijder deze regels voor netwerk beveiligings groepen niet voor het subnet van het virtuele netwerk waarop uw beheerde domein is geïmplementeerd.
 
-| Poortnummer | Protocol | Bron                             | Doel | Bewerking | Vereist | Doel |
+| Poortnummer | Protocol | Bron                             | Doel | Bewerking | Vereist | Functie |
 |:-----------:|:--------:|:----------------------------------:|:-----------:|:------:|:--------:|:--------|
 | 443         | TCP      | AzureActiveDirectoryDomainServices | Alle         | Toestaan  | Yes      | Synchronisatie met uw Azure AD-Tenant. |
 | 3389        | TCP      | CorpNetSaw                         | Alle         | Toestaan  | Yes      | Beheer van uw domein. |
 | 5986        | TCP      | AzureActiveDirectoryDomainServices | Alle         | Toestaan  | Yes      | Beheer van uw domein. |
 
 > [!WARNING]
-> Bewerk deze netwerk bronnen en configuraties niet hand matig. Wanneer u een onjuist geconfigureerde netwerk beveiligings groep of een door de gebruiker gedefinieerde route tabel koppelt aan het subnet waarin Azure AD DS is geïmplementeerd, kunt u de mogelijkheid van micro soft om het domein te onderhouden en te beheren, verstoren. De synchronisatie tussen uw Azure AD-Tenant en uw beheerde domein wordt ook verstoord.
+> Bewerk deze netwerk bronnen en configuraties niet hand matig. Wanneer u een onjuist geconfigureerde netwerk beveiligings groep of een door de gebruiker gedefinieerde route tabel koppelt aan het subnet waarin het beheerde domein is geïmplementeerd, kunt u de mogelijkheid van micro soft om het domein te onderhouden en beheren te verstoren. De synchronisatie tussen uw Azure AD-Tenant en uw beheerde domein wordt ook verstoord.
 >
 > Als u beveiligde LDAP gebruikt, kunt u de vereiste regel voor de TCP-poort 636 toevoegen om extern verkeer toe te staan, indien nodig. Door deze regel toe te voegen, worden de regels voor de netwerk beveiligings groep niet in een niet-ondersteunde staat geplaatst. Zie [beveiligde LDAP-toegang via internet vergren delen](tutorial-configure-ldaps.md#lock-down-secure-ldap-access-over-the-internet) voor meer informatie.
 >
@@ -151,9 +154,9 @@ De volgende regels voor de netwerk beveiligings groep zijn vereist voor Azure AD
 
 ## <a name="user-defined-routes"></a>Door de gebruiker gedefinieerde routes
 
-Door de gebruiker gedefinieerde routes worden niet standaard gemaakt en zijn niet vereist voor een juiste werking van Azure AD DS. Als u gebruik wilt maken van route tabellen, moet u geen wijzigingen aanbrengen in de *0.0.0.0* -route. Wijzigingen in deze route zorgen voor een stor Azure AD Domain Services en plaatst het beheerde domein in een niet-ondersteunde status.
+Door de gebruiker gedefinieerde routes worden niet standaard gemaakt en zijn niet vereist voor een juiste werking van Azure AD DS. Als u gebruik wilt maken van route tabellen, moet u geen wijzigingen aanbrengen in de *0.0.0.0* -route. Wijzigingen in deze route zorgen voor een onderbreking van Azure AD DS en plaatst het beheerde domein in een niet-ondersteunde status.
 
-U moet ook binnenkomend verkeer omleiden van de IP-adressen die zijn opgenomen in de respectieve Azure-service tags naar het Azure AD Domain Services subnet. Zie voor meer informatie over service tags en het bijbehorende IP-adres [Azure IP-bereiken en service Tags-open bare Cloud](https://www.microsoft.com/en-us/download/details.aspx?id=56519).
+U moet ook binnenkomend verkeer omleiden van de IP-adressen die zijn opgenomen in de respectieve Azure-service tags naar het subnet van het beheerde domein. Zie voor meer informatie over service tags en het bijbehorende IP-adres [Azure IP-bereiken en service Tags-open bare Cloud](https://www.microsoft.com/en-us/download/details.aspx?id=56519).
 
 > [!CAUTION]
 > Deze IP-bereiken van Azure-data centers kunnen zonder kennisgeving worden gewijzigd. Zorg ervoor dat u over processen beschikt om te controleren of u de meest recente IP-adressen hebt.

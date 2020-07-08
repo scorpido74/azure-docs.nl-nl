@@ -7,17 +7,13 @@ ms.author: baanders
 ms.date: 4/24/2020
 ms.topic: how-to
 ms.service: digital-twins
-ROBOTS: NOINDEX, NOFOLLOW
-ms.openlocfilehash: 3d6fa1660f5204137dbebeae36f6d06852d88412
-ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
-ms.translationtype: MT
+ms.openlocfilehash: 261b288154dddacf91f3cb3ba6dec99e3a3534cc
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/12/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84725797"
 ---
 # <a name="create-custom-sdks-for-azure-digital-twins-with-autorest"></a>Aangepaste Sdk's voor Azure Digital Apparaatdubbels maken met auto rest
-
-[!INCLUDE [Azure Digital Twins current preview status](../../includes/digital-twins-preview-status.md)]
 
 Op dit moment is de enige gepubliceerde gegevenslaag SDK voor interactie met de Azure Digital Apparaatdubbels Api's voor .NET (C#). Meer informatie over de .NET SDK en de Api's in het algemeen kunt u vinden in [de procedures: gebruik de Azure Digital Apparaatdubbels api's en sdk's](how-to-use-apis-sdks.md). Als u in een andere taal werkt, leert u in dit artikel hoe u uw eigen SDK kunt genereren in de taal van uw keuze, met behulp van auto rest.
 

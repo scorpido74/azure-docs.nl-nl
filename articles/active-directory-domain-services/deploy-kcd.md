@@ -9,40 +9,41 @@ ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
 ms.topic: how-to
-ms.date: 03/30/2020
+ms.date: 07/06/2020
 ms.author: iainfou
-ms.openlocfilehash: 71a1a97c3cb6df4c1498940738fe070819fba1b5
-ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
-ms.translationtype: MT
+ms.openlocfilehash: 0d2d5a9a6d897e3dde039f6124a1b6c1b356a29a
+ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/12/2020
-ms.locfileid: "84734806"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86040092"
 ---
 # <a name="configure-kerberos-constrained-delegation-kcd-in-azure-active-directory-domain-services"></a>Kerberos-beperkte delegering (KCD) configureren in Azure Active Directory Domain Services
 
-Wanneer u toepassingen uitvoert, moeten deze toepassingen mogelijk toegang hebben tot bronnen in de context van een andere gebruiker. Active Directory Domain Services (AD DS) ondersteunt een mechanisme met de naam *Kerberos delegering* , waarmee dit gebruik kan worden ingeschakeld. Kerberos- *beperkte* delegering (KCD) wordt vervolgens gebaseerd op dit mechanisme om specifieke bronnen te definiëren waartoe toegang kan worden verkregen in de context van de gebruiker. Beheerde domeinen van Azure Active Directory Domain Services (Azure AD DS) zijn veiliger vergrendeld dan traditionele on-premises AD DS omgevingen. Gebruik daarom een veiligere op *bronnen gebaseerde* KCD.
+Wanneer u toepassingen uitvoert, moeten deze toepassingen mogelijk toegang hebben tot bronnen in de context van een andere gebruiker. Active Directory Domain Services (AD DS) ondersteunt een mechanisme met de naam *Kerberos delegering* , waarmee dit gebruik kan worden ingeschakeld. Kerberos- *beperkte* delegering (KCD) wordt vervolgens gebaseerd op dit mechanisme om specifieke bronnen te definiëren waartoe toegang kan worden verkregen in de context van de gebruiker.
+
+Beheerde domeinen van Azure Active Directory Domain Services (Azure AD DS) zijn veiliger vergrendeld dan traditionele on-premises AD DS omgevingen. Gebruik daarom een veiligere op *bronnen gebaseerde* KCD.
 
 In dit artikel wordt beschreven hoe u op resources gebaseerde Kerberos-beperkte overdracht configureert in een door Azure AD DS beheerd domein.
 
 ## <a name="prerequisites"></a>Vereisten
 
-U hebt de volgende resources nodig om dit artikel te volt ooien:
+U hebt de volgende resources nodig om dit artikel te voltooien:
 
 * Een actief Azure-abonnement.
-    * Als u geen Azure-abonnement hebt, [maakt u een account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
-* Een Azure Active Directory Tenant die aan uw abonnement is gekoppeld, gesynchroniseerd met een on-premises Directory of een alleen-Cloud Directory.
-    * Als dat nodig is, [maakt u een Azure Active Directory-Tenant][create-azure-ad-tenant] of [koppelt u een Azure-abonnement aan uw account][associate-azure-ad-tenant].
-* Een Azure Active Directory Domain Services beheerd domein ingeschakeld en geconfigureerd in uw Azure AD-Tenant.
-    * Als dat nodig is, kunt [u een Azure Active Directory Domain Services beheerd domein maken en configureren][create-azure-ad-ds-instance].
+    * Als u nog geen Azure-abonnement hebt, [maakt u een account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
+* Een Azure Active Directory-tenant die aan uw abonnement is gekoppeld, gesynchroniseerd met een on-premises map of een cloudmap.
+    * [Maak zo nodig een Azure Active Directory-tenant][create-azure-ad-tenant] of [koppel een Azure-abonnement aan uw account][associate-azure-ad-tenant].
+* Een door Azure Active Directory Domain Services beheerd domein dat in uw Azure AD-tenant is ingeschakeld en geconfigureerd.
+    * [Maak en configureer, indien nodig, een door Azure Active Directory Domain Services beheerd domein][create-azure-ad-ds-instance].
 * Een Windows Server Management-VM die deel uitmaakt van het door Azure AD DS beheerde domein.
     * Als dat nodig is, voltooit u de zelf studie voor het [maken van een virtuele Windows Server-machine en voegt u deze toe aan een beheerd domein en][create-join-windows-vm] installeert u vervolgens [de AD DS-beheer hulpprogramma's][tutorial-create-management-vm].
-* Een gebruikers account dat lid is van de groep *Azure AD DC-Administrators* in uw Azure AD-Tenant.
+* Een gebruikersaccount dat lid is van de *Azure AD DC-beheerdersgroep* in uw Azure AD-tenant.
 
 ## <a name="kerberos-constrained-delegation-overview"></a>Overzicht van beperkte Kerberos-overdracht
 
 Met Kerberos-overdracht kan een account een ander account imiteren voor toegang tot resources. Zo kan een webtoepassing die toegang heeft tot een webonderdeel van de back-end zichzelf imiteren als een ander gebruikers account wanneer dit de back-endverbinding maakt. Kerberos-delegering is onveilig omdat hiermee niet wordt beperkt tot welke bronnen het imitatie account toegang heeft.
 
-Kerberos-beperkte delegering (KCD) beperkt de services of bronnen waarmee een opgegeven server of toepassing verbinding kan maken wanneer er een andere identiteit wordt geïmiteerd. Traditionele KCD vereist domein beheerders rechten voor het configureren van een domein account voor een service. het account wordt beperkt om te worden uitgevoerd op één domein.
+Kerberos- *beperkte* delegering (KCD) beperkt de services of bronnen waarmee een opgegeven server of toepassing verbinding kan maken wanneer er een andere identiteit wordt geïmiteerd. Traditionele KCD vereist domein beheerders rechten voor het configureren van een domein account voor een service. het account wordt beperkt om te worden uitgevoerd op één domein.
 
 Traditionele KCD hebben ook een aantal problemen. In eerdere besturings systemen had de service beheerder bijvoorbeeld geen handige manier om te weten welke front-end-services zijn overgedragen aan de resource services waarvan ze eigenaar zijn. Een front-end-service die kan delegeren naar een resource service was een mogelijk aanvals punt. Als een server die een front-end-service heeft die is geconfigureerd voor delegeren aan resource Services, is aangetast, kan de resource Services ook worden aangetast.
 
@@ -56,7 +57,11 @@ KCD op basis van resources is geconfigureerd met behulp van Power shell. U gebru
 
 ## <a name="configure-resource-based-kcd-for-a-computer-account"></a>Op resources gebaseerde KCD configureren voor een computer account
 
-In dit scenario wordt ervan uitgegaan dat u een web-app hebt die wordt uitgevoerd op de computer met de naam *Contoso-webapp.aaddscontoso.com*. De web-app moet toegang hebben tot een web-API die wordt uitgevoerd op de computer met de naam *Contoso-API.aaddscontoso.com* in de context van domein gebruikers. Voer de volgende stappen uit om dit scenario te configureren:
+In dit scenario wordt ervan uitgegaan dat u een web-app hebt die wordt uitgevoerd op de computer met de naam *Contoso-webapp.aaddscontoso.com*.
+
+De web-app moet toegang hebben tot een web-API die wordt uitgevoerd op de computer met de naam *Contoso-API.aaddscontoso.com* in de context van domein gebruikers.
+
+Voer de volgende stappen uit om dit scenario te configureren:
 
 1. [Een aangepaste organisatie-eenheid maken](create-ou.md). U kunt machtigingen voor het beheren van deze aangepaste organisatie-eenheid overdragen aan gebruikers binnen het beheerde domein.
 1. [Domein: lid worden van de virtuele machines][create-join-windows-vm], zowel de toepassing die de web-app uitvoert als de toepassing die de Web-API uitvoert, naar het beheerde domein. Maak deze computer accounts in de aangepaste organisatie-eenheid uit de vorige stap.
@@ -64,7 +69,9 @@ In dit scenario wordt ervan uitgegaan dat u een web-app hebt die wordt uitgevoer
     > [!NOTE]
     > De computer accounts voor de web-app en de Web-API moeten zich in een aangepaste OE bevinden, waar u machtigingen hebt voor het configureren van op resources gebaseerde KCD. U kunt geen op resources gebaseerde KCD configureren voor een computer account in de container ingebouwde *Aad DC-computers* .
 
-1. Configureer ten slotte KCD op basis van een resource met behulp van de Power shell-cmdlet [set-ADComputer][Set-ADComputer] . Voer de volgende cmdlets uit vanaf de virtuele machine voor het beheer van het domein en u bent aangemeld als gebruikers account dat lid is van de groep *Azure AD DC-Administrators* . Geef uw eigen computer namen op als dat nodig is:
+1. Configureer ten slotte KCD op basis van een resource met behulp van de Power shell-cmdlet [set-ADComputer][Set-ADComputer] .
+
+    Voer de volgende cmdlets uit vanaf de virtuele machine voor het beheer van het domein en u bent aangemeld als gebruikers account dat lid is van de groep *Azure AD DC-Administrators* . Geef uw eigen computer namen op als dat nodig is:
     
     ```powershell
     $ImpersonatingAccount = Get-ADComputer -Identity contoso-webapp.aaddscontoso.com
@@ -77,12 +84,14 @@ In dit scenario wordt ervan uitgegaan dat u een web-app hebt die wordt uitgevoer
 
 1. [Een aangepaste organisatie-eenheid maken](create-ou.md). U kunt machtigingen voor het beheren van deze aangepaste organisatie-eenheid overdragen aan gebruikers binnen het beheerde domein.
 1. [Domein: Voeg de virtuele machines][create-join-windows-vm] die de back-end web-API/resource uitvoeren, toe aan het beheerde domein. Maak het computer account binnen de aangepaste organisatie-eenheid.
-1. Maak het service account (bijvoorbeeld ' appsvc ') dat wordt gebruikt om de web-app in de aangepaste organisatie-eenheid uit te voeren.
+1. Maak het service account (bijvoorbeeld *appsvc*) dat wordt gebruikt om de web-app in de aangepaste organisatie-eenheid uit te voeren.
 
     > [!NOTE]
     > Opnieuw, het computer account voor de Web-API-VM en het service account voor de web-app moeten zich in een aangepaste OE bevinden waar u machtigingen hebt voor het configureren van op resources gebaseerde KCD. U kunt geen op resources gebaseerde KCD configureren voor accounts in de containers ingebouwde *Aad DC-computers* of *Aad DC-gebruikers* . Dit betekent ook dat u geen gebruik kunt maken van gebruikers accounts die zijn gesynchroniseerd vanuit Azure AD om KCD op basis van resources in te stellen. U moet Service accounts maken en gebruiken die specifiek zijn gemaakt in azure AD DS.
 
-1. Configureer ten slotte KCD op basis van een resource met behulp van de Power shell-cmdlet [set-ADUser][Set-ADUser] . Voer de volgende cmdlets uit vanaf de virtuele machine voor het beheer van het domein en u bent aangemeld als gebruikers account dat lid is van de groep *Azure AD DC-Administrators* . Geef waar nodig uw eigen service namen op:
+1. Configureer ten slotte KCD op basis van een resource met behulp van de Power shell-cmdlet [set-ADUser][Set-ADUser] .
+
+    Voer de volgende cmdlets uit vanaf de virtuele machine voor het beheer van het domein en u bent aangemeld als gebruikers account dat lid is van de groep *Azure AD DC-Administrators* . Geef waar nodig uw eigen service namen op:
 
     ```powershell
     $ImpersonatingAccount = Get-ADUser -Identity appsvc

@@ -14,12 +14,11 @@ ms.topic: article
 ms.date: 12/21/2018
 ms.author: willzhan
 ms.custom: seodec18
-ms.openlocfilehash: fbc6d6fa8f9a3b424eaec1f04a61b5ca24fe14fc
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: 3d02c335f6e950300a7ced36643e6276c3d8d16a
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77161780"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85957372"
 ---
 # <a name="design-of-a-multi-drm-content-protection-system-with-access-control"></a>Ontwerp van een inhoudsbeveiligingssysteem van een multi-DRM met toegangsbeheer 
 
@@ -51,7 +50,7 @@ De volgende tabel bevat een overzicht van systeem eigen DRM-ondersteuning op ver
 | **Windows 10** | PlayReady | Micro soft Edge/IE11 voor PlayReady|
 | **Android-apparaten (telefoon, Tablet, TV)** |Widevine |Chrome voor Widevine |
 | **iOS** | FairPlay | Safari voor FairPlay (sinds iOS 11,2) |
-| **macOS** | FairPlay | Safari voor FairPlay (sinds Safari 9 + op Mac OS X 10.11 + El Capitan)|
+| **MacOS** | FairPlay | Safari voor FairPlay (sinds Safari 9 + op Mac OS X 10.11 + El Capitan)|
 | **tvOS** | FairPlay | |
 
 Als u de huidige status van de implementatie voor elke DRM overweegt, wil een service doorgaans twee of drie DRMs implementeren om ervoor te zorgen dat u alle typen eind punten op de beste manier adresseert.
@@ -193,7 +192,7 @@ De implementatie omvat de volgende stappen:
    * Installeer-package micro soft. Azure. ActiveDirectory. GraphClient
    * Installeer-package micro soft. Owin. Security. OpenIdConnect
    * Installeer-package micro soft. Owin. Security. cookies
-   * Installeer-package micro soft. Owin. host. SystemWeb
+   * Installeren-package Microsoft.Owin.Host.SystemWeb
    * Installeer-package micro soft. Identity model. clients. ActiveDirectory
 
 8. Een speler maken met behulp van de [Azure Media Player-API](https://amp.azure.net/libs/amp/latest/docs/). Gebruik de [Azure Media Player PROTECTIONINFO API](https://amp.azure.net/libs/amp/latest/docs/) om op te geven welke DRM-technologie op verschillende DRM-platforms moet worden gebruikt.
@@ -222,8 +221,10 @@ Gebruik de volgende informatie voor probleem oplossing voor hulp bij implementat
 
 * De URL van de uitgever moet eindigen op '/'. De doel groep moet de client-ID van de Player-toepassing zijn. Voeg ook '/' toe aan het einde van de URL van de uitgever.
 
-        <add key="ida:audience" value="[Application Client ID GUID]" />
-        <add key="ida:issuer" value="https://sts.windows.net/[AAD Tenant ID]/" />
+    ```xml
+    <add key="ida:audience" value="[Application Client ID GUID]" />
+    <add key="ida:issuer" value="https://sts.windows.net/[AAD Tenant ID]/" />
+    ```
 
     In de [JWT-decoder](http://jwt.calebb.net/)ziet u **AUD** en **ISS**, zoals wordt weer gegeven in de JWT:
 
@@ -235,11 +236,15 @@ Gebruik de volgende informatie voor probleem oplossing voor hulp bij implementat
 
 * Gebruik de juiste verlener wanneer u dynamische CENC-beveiliging instelt.
 
-        <add key="ida:issuer" value="https://sts.windows.net/[AAD Tenant ID]/"/>
+    ```xml
+    <add key="ida:issuer" value="https://sts.windows.net/[AAD Tenant ID]/"/>
+    ```
 
     Het volgende werkt niet:
 
-        <add key="ida:issuer" value="https://willzhanad.onmicrosoft.com/" />
+    ```xml
+    <add key="ida:issuer" value="https://willzhanad.onmicrosoft.com/" />
+    ```
 
     De GUID is de ID van de Azure AD-Tenant. De GUID vindt u in het pop-upmenu **endpoints** in het Azure Portal.
 
@@ -249,7 +254,7 @@ Gebruik de volgende informatie voor probleem oplossing voor hulp bij implementat
 
 * Stel het juiste token type in wanneer u beperkings vereisten maakt.
 
-        objTokenRestrictionTemplate.TokenType = TokenType.JWT;
+    `objTokenRestrictionTemplate.TokenType = TokenType.JWT;`
 
     Omdat u ondersteuning voor JWT (Azure AD) toevoegt naast SWT (ACS), is het standaard token type token. JWT. Als u SWT/ACS gebruikt, moet u het token instellen op token type. SWT.
 
@@ -276,7 +281,7 @@ Hoewel Azure oorspronkelijk alleen toegang heeft toegestaan door Microsoft-accou
 
 Omdat Azure AD het Microsoft-account domein vertrouwt, kunt u accounts uit de volgende domeinen toevoegen aan de aangepaste Azure AD-Tenant en het account gebruiken om u aan te melden:
 
-| **Domeinnaam** | **Domain** |
+| **Domeinnaam** | **Domein** |
 | --- | --- |
 | **Aangepast Azure AD-Tenant domein** |somename.onmicrosoft.com |
 | **Bedrijfs domein** |microsoft.com |

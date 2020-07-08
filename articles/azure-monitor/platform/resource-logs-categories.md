@@ -5,10 +5,9 @@ ms.subservice: logs
 ms.topic: reference
 ms.date: 06/03/2020
 ms.openlocfilehash: 6156b9d311859534160258256ff6315b037f3a14
-ms.sourcegitcommit: 8e5b4e2207daee21a60e6581528401a96bfd3184
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/04/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84418762"
 ---
 # <a name="supported-categories-for-azure-resource-logs"></a>Ondersteunde categorieën voor Azure-resource logboeken
@@ -67,14 +66,14 @@ Als er nog steeds iets ontbreekt, kunt u onder aan dit artikel een GitHub-opmerk
 |DscNodeStatus|DSC-knooppunt status|
 
 
-## <a name="microsoftbatchbatchaccounts"></a>Micro soft. batch/batchAccounts
+## <a name="microsoftbatchbatchaccounts"></a>Microsoft.Bat-CH/batchAccounts
 
 |Categorie|Weergave naam categorie|
 |---|---|
 |ServiceLog|Service logboeken|
 
 
-## <a name="microsoftbatchaiworkspaces"></a>Micro soft. BatchAI/werk ruimten
+## <a name="microsoftbatchaiworkspaces"></a>Microsoft.BatchAI/werk ruimten
 
 |Categorie|Weergave naam categorie|
 |---|---|
@@ -83,7 +82,7 @@ Als er nog steeds iets ontbreekt, kunt u onder aan dit artikel een GitHub-opmerk
 |BaiJobEvent|BaiJobEvent|
 
 
-## <a name="microsoftblockchainblockchainmembers"></a>Micro soft. Block Chain/blockchainMembers
+## <a name="microsoftblockchainblockchainmembers"></a>Microsoft.Blockchain/blockchainMembers
 
 |Categorie|Weergave naam categorie|
 |---|---|
@@ -200,7 +199,7 @@ Als er nog steeds iets ontbreekt, kunt u onder aan dit artikel een GitHub-opmerk
 |Aanvragen|Logboeken aanvragen|
 
 
-## <a name="microsoftdbformariadbservers"></a>Micro soft. DBforMariaDB/servers
+## <a name="microsoftdbformariadbservers"></a>Microsoft.DBforMariaDB/servers
 
 |Categorie|Weergave naam categorie|
 |---|---|
@@ -208,7 +207,7 @@ Als er nog steeds iets ontbreekt, kunt u onder aan dit artikel een GitHub-opmerk
 |MySqlSlowLogs|MariaDB-server logboeken|
 
 
-## <a name="microsoftdbformysqlservers"></a>Micro soft. DBforMySQL/servers
+## <a name="microsoftdbformysqlservers"></a>Microsoft.DBforMySQL/servers
 
 |Categorie|Weergave naam categorie|
 |---|---|
@@ -216,7 +215,7 @@ Als er nog steeds iets ontbreekt, kunt u onder aan dit artikel een GitHub-opmerk
 |MySqlSlowLogs|MySQL-server logboeken|
 
 
-## <a name="microsoftdbforpostgresqlservers"></a>Micro soft. DBforPostgreSQL/servers
+## <a name="microsoftdbforpostgresqlservers"></a>Microsoft.DBforPostgreSQL/servers
 
 |Categorie|Weergave naam categorie|
 |---|---|
@@ -297,7 +296,7 @@ Als er nog steeds iets ontbreekt, kunt u onder aan dit artikel een GitHub-opmerk
 |ServiceOperations|Service bewerkingen|
 
 
-## <a name="microsoftdocumentdbdatabaseaccounts"></a>Micro soft. DocumentDB/databaseAccounts
+## <a name="microsoftdocumentdbdatabaseaccounts"></a>Microsoft.DocumentDB/databaseAccounts
 
 |Categorie|Weergave naam categorie|
 |---|---|

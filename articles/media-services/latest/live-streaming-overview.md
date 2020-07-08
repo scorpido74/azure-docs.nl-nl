@@ -14,10 +14,9 @@ ms.topic: article
 ms.date: 03/18/2020
 ms.author: juliako
 ms.openlocfilehash: 23ee7ba7a5456916eb307e21aa2074924614cb4b
-ms.sourcegitcommit: 8e5b4e2207daee21a60e6581528401a96bfd3184
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/04/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84418140"
 ---
 # <a name="live-streaming-with-azure-media-services-v3"></a>Live streamen met Azure Media Services v3
@@ -43,10 +42,10 @@ Met Media Services kunt u gebruikmaken van [dynamische pakketten](dynamic-packag
 
 ## <a name="dynamic-encryption"></a>Dynamische versleuteling
 
-Dynamische versleuteling biedt u de mogelijkheid om uw Live of on-demand inhoud dynamisch te versleutelen met AES-128 of een van de drie belangrijkste Digital Rights Management (DRM)-systemen: micro soft PlayReady, Google Widevine en Apple FairPlay. Media Services biedt ook een service voor het leveren van AES-sleutels en DRM-licenties (PlayReady, Widevine en FairPlay) aan geautoriseerde clients. Zie [dynamische versleuteling](content-protection-overview.md)voor meer informatie.
+Dynamische versleuteling biedt u de mogelijkheid om uw Live of on-demand inhoud dynamisch te versleutelen met AES-128 of een van de drie belangrijkste Digital Rights Management (DRM)-systemen: micro soft PlayReady, Google Widevine en Apple FairPlay. Media Services biedt ook een service voor het leveren van AES-sleutels en DRM-licenties (PlayReady, Widevine en FairPlay) aan geautoriseerde klanten. Zie [dynamische versleuteling](content-protection-overview.md) voor meer informatie.
 
 > [!NOTE]
-> Widevine is een service van Google Inc. en is onderworpen aan de service voorwaarden en het privacybeleid van Google, Inc.
+> Widevine is een service van Google Inc. en is onderworpen aan de servicevoorwaarden en het privacybeleid van Google Inc.
 
 ## <a name="dynamic-filtering"></a>Dynamisch filteren
 
@@ -54,7 +53,7 @@ Dynamische filtering wordt gebruikt voor het beheren van het aantal sporen, inde
 
 ## <a name="live-event-types"></a>Live gebeurtenis typen
 
-[Live-gebeurtenissen](https://docs.microsoft.com/rest/api/media/liveevents) zijn verantwoordelijk voor het opnemen en verwerken van live video feeds. Een live-gebeurtenis kan worden ingesteld op een *Pass-Through* -(een on-premises Live coderings programma verzendt een multi-bitrate stroom) of *Live encoding* (een on-premises Live Encoder verzendt een stream met één bitsnelheid). Zie [Live Events en live outputs](live-events-outputs-concept.md)voor meer informatie over live streamen in Media Services v3.
+[Live-gebeurtenissen](https://docs.microsoft.com/rest/api/media/liveevents) zijn verantwoordelijk voor het opnemen en verwerken van live video feeds. Een livegebeurtenis kan worden ingesteld op een *pass-through* (een on-premises live-encoder verzendt een stroom met meerdere bitsnelheden) of *live-codering* (een on-premises live-encoder verzendt een stream met één bitsnelheid). Zie [Live Events en live outputs](live-events-outputs-concept.md)voor meer informatie over live streamen in Media Services v3.
 
 ### <a name="pass-through"></a>Pass-through
 
@@ -75,18 +74,18 @@ Live transcriptie is een functie die u kunt gebruiken met Live-gebeurtenissen di
 > [!NOTE]
 > Live transcriptie is momenteel beschikbaar als preview-functie in VS-West 2.
 
-## <a name="live-streaming-workflow"></a>Werk stroom voor live streamen
+## <a name="live-streaming-workflow"></a>Werkstroom voor live streamen
 
 Als u inzicht wilt krijgen in de werk stroom voor live streamen in Media Services v3, moet u eerst de volgende concepten bekijken en begrijpen: 
 
-- [Streaming-eind punten](streaming-endpoint-concept.md)
-- [Live-evenementen en live uitvoer](live-events-outputs-concept.md)
-- [Streaming-Locators](streaming-locators-concept.md)
+- [Streaming-eindpunten](streaming-endpoint-concept.md)
+- [Livegebeurtenissen en live-uitvoer](live-events-outputs-concept.md)
+- [Streaming-locators](streaming-locators-concept.md)
 
 ### <a name="general-steps"></a>Algemene stappen
 
 1. Controleer in uw Media Services-account of het **streaming-eind punt** (origin) wordt uitgevoerd. 
-2. Een [live gebeurtenis](live-events-outputs-concept.md)maken. <br/>Wanneer u de gebeurtenis maakt, kunt u opgeven dat deze automatisch moet worden gestart. U kunt ook de gebeurtenis starten wanneer u klaar bent om te streamen.<br/> Wanneer auto start is ingesteld op True, wordt de live-gebeurtenis direct na het maken gestart. De facturering begint zodra de live-gebeurtenis wordt gestart. U moet stoppen op de resource van de live-gebeurtenis expliciet aanroepen om verdere facturering te stoppen. Zie [Live Event States and billing](live-event-states-billing.md)(Engelstalig) voor meer informatie.
+2. Maak een [livegebeurtenis](live-events-outputs-concept.md). <br/>Wanneer u de gebeurtenis maakt, kunt u opgeven dat deze automatisch moet worden gestart. U kunt ook de gebeurtenis starten wanneer u klaar bent om te streamen.<br/> Wanneer auto start is ingesteld op True, wordt de live-gebeurtenis direct na het maken gestart. De facturering begint zodra de live-gebeurtenis wordt gestart. U moet stoppen op de resource van de live-gebeurtenis expliciet aanroepen om verdere facturering te stoppen. Zie [Live Event States and billing](live-event-states-billing.md)(Engelstalig) voor meer informatie.
 3. Haal de opname-URL ('s) op en configureer uw on-premises Encoder voor het gebruik van de URL om de contributie feed te verzenden.<br/>Bekijk [Aanbevolen Live coderings](recommended-on-premises-live-encoders.md)Programma's.
 4. Haal de Preview-URL op en gebruik deze om te controleren of de invoer van het coderings programma daad werkelijk wordt ontvangen.
 5. Maak een nieuw **Asset** -object. 

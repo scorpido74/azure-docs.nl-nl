@@ -1,5 +1,5 @@
 ---
-title: Beheer hub
+title: Beheerhub
 description: Uw verbindingen, broncode beheer configuratie en algemene ontwerp eigenschappen beheren in de Azure Data Factory Management hub
 services: data-factory
 ms.service: data-factory
@@ -10,10 +10,9 @@ ms.author: daperlov
 manager: anandsub
 ms.date: 06/02/2020
 ms.openlocfilehash: 308d19fde78edacebb168b8d4e459169338acc41
-ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/03/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84346043"
 ---
 # <a name="management-hub-in-azure-data-factory"></a>Beheer hub in Azure Data Factory
@@ -46,7 +45,7 @@ Bekijk en bewerk uw geconfigureerde Git-opslagplaats instellingen in de Manageme
 
 ### <a name="parameterization-template"></a>Parameterisering-sjabloon
 
-Als u de gegenereerde Resource Manager-sjabloon parameters wilt overschrijven wanneer u publiceert vanuit de collaboration Branch, kunt u een bestand met aangepaste para meters genereren of bewerken. Meer informatie over het [gebruik van aangepaste para meters in de Resource Manager-sjabloon](continuous-integration-deployment.md#use-custom-parameters-with-the-resource-manager-template). De parameterisering-sjabloon is alleen beschikbaar wanneer u werkt in een Git-opslag plaats. Als het *arm-sjabloon-para meters-definitie. json-* bestand niet aanwezig is in de werk vertakking, wordt het door het bewerken van de standaard sjabloon gegenereerd.
+Als u de gegenereerde Resource Manager-sjabloon parameters wilt overschrijven wanneer u publiceert vanuit de collaboration Branch, kunt u een bestand met aangepaste para meters genereren of bewerken. Meer informatie over het [gebruik van aangepaste para meters in de Resource Manager-sjabloon](continuous-integration-deployment.md#use-custom-parameters-with-the-resource-manager-template). De parameterisering-sjabloon is alleen beschikbaar wanneer u werkt in een Git-opslag plaats. Als de *arm-template-parameters-definition.jsin* het bestand niet bestaat in de werk vertakking, wordt deze door het bewerken van de standaard sjabloon gegenereerd.
 
 ![Aangepaste para meters beheren](media/author-management-hub/management-hub-custom-parameters.png)
 

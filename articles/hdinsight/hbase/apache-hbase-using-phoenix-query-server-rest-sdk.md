@@ -8,12 +8,11 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 01/01/2020
-ms.openlocfilehash: 84c2bad1004029fe61dcfc19321957a170284587
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: fa94b7461907a2337ba448a91d67fe93c5ab2f8f
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75612254"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85957559"
 ---
 # <a name="apache-phoenix-query-server-rest-sdk"></a>REST SDK van Apache Phoenix query server
 
@@ -27,11 +26,13 @@ Zie voor meer informatie [referentie voor Apache Calcite Avatica-protocol buffer
 
 Microsoft .NET stuur programma voor Apache Phoenix query server is beschikbaar als een NuGet-pakket, dat kan worden geïnstalleerd via de Visual Studio **NuGet Package Manager-console** met de volgende opdracht:
 
-    Install-Package Microsoft.Phoenix.Client
+```console
+Install-Package Microsoft.Phoenix.Client
+```
 
 ## <a name="instantiate-new-phoenixclient-object"></a>Nieuw PhoenixClient-object instantiëren
 
-Als u de bibliotheek wilt gebruiken, moet u `PhoenixClient` een nieuw object instantiëren `ClusterCredentials` met `Uri` daarin het cluster en de Apache Hadoop gebruikers naam en het wacht woord van het cluster.
+Als u de bibliotheek wilt gebruiken, moet u een nieuw object instantiëren `PhoenixClient` `ClusterCredentials` met daarin het `Uri` cluster en de Apache Hadoop gebruikers naam en het wacht woord van het cluster.
 
 ```csharp
 var credentials = new ClusterCredentials(new Uri("https://CLUSTERNAME.azurehdinsight.net/"), "USERNAME", "PASSWORD");
@@ -48,11 +49,11 @@ Als u een of meer aanvragen wilt verzenden naar PQS, moet u een unieke verbindin
 string connId = Guid.NewGuid().ToString();
 ```
 
-Elk voor beeld maakt eerst een aanroep van `OpenConnectionRequestAsync` de-methode, waarbij de unieke verbindings-id wordt door gegeven. Definieer vervolgens deze `ConnectionProperties` objecten `RequestOptions`en geef deze door en de gegenereerde verbindings-id `ConnectionSyncRequestAsync` met de methode. Het object `ConnectionSyncRequest` van PQS zorgt ervoor dat zowel de client als de server een consistente weer gave van de data base-eigenschappen hebben.
+Elk voor beeld maakt eerst een aanroep `OpenConnectionRequestAsync` van de-methode, waarbij de unieke verbindings-id wordt door gegeven. Definieer vervolgens `ConnectionProperties` `RequestOptions` deze objecten en geef deze door en de gegenereerde verbindings-id met de `ConnectionSyncRequestAsync` methode. Het object van PQS zorgt `ConnectionSyncRequest` ervoor dat zowel de client als de server een consistente weer gave van de data base-eigenschappen hebben.
 
 ## <a name="connectionsyncrequest-and-its-connectionproperties"></a>ConnectionSyncRequest en de bijbehorende ConnectionProperties
 
-Geef een `ConnectionSyncRequestAsync` `ConnectionProperties` object door om aan te roepen.
+`ConnectionSyncRequestAsync`Geef een object door om aan te roepen `ConnectionProperties` .
 
 ```csharp
 ConnectionProperties connProperties = new ConnectionProperties
@@ -73,7 +74,7 @@ Hier volgen enkele interessante eigenschappen:
 
 | Eigenschap | Beschrijving |
 | -- | -- |
-| Door voeren | Een Booleaanse waarde die aangeeft `autoCommit` of de Phoenix-trans acties zijn ingeschakeld. |
+| Door voeren | Een Booleaanse waarde die aangeeft of de `autoCommit` Phoenix-trans acties zijn ingeschakeld. |
 | ReadOnly | Een Booleaanse waarde die aangeeft of de verbinding alleen-lezen is. |
 | TransactionIsolation | Een geheel getal dat het niveau van de transactie isolatie volgens de JDBC-specificatie aangeeft: Zie de volgende tabel.|
 | Catalogus | De naam van de catalogus die moet worden gebruikt bij het ophalen van verbindings eigenschappen. |
@@ -94,7 +95,7 @@ Dit zijn de `TransactionIsolation` waarden:
 
 HBase, zoals andere RDBMS, slaat gegevens op in tabellen. Phoenix gebruikt standaard SQL-query's voor het maken van nieuwe tabellen, terwijl de primaire sleutel en kolom typen worden gedefinieerd.
 
-In dit voor beeld en alle latere voor beelden gebruikt u `PhoenixClient` het geïnstantieerd object zoals gedefinieerd in [instantiëren van een nieuw PhoenixClient-object](#instantiate-new-phoenixclient-object).
+In dit voor beeld en alle latere voor beelden gebruikt u het geïnstantieerd `PhoenixClient` object zoals gedefinieerd in [instantiëren van een nieuw PhoenixClient-object](#instantiate-new-phoenixclient-object).
 
 ```csharp
 string connId = Guid.NewGuid().ToString();
@@ -160,17 +161,17 @@ finally
 }
 ```
 
-In het voor gaande voor beeld wordt een `Customers` nieuwe tabel `IF NOT EXISTS` gemaakt met de naam met behulp van de optie. De `CreateStatementRequestAsync` aanroep maakt een nieuwe-instructie in de Avitica-server (PQS). Het `finally` blok sluit het geretourneerde `CreateStatementResponse` object `OpenConnectionResponse` en de objecten.
+In het voor gaande voor beeld wordt een nieuwe tabel gemaakt `Customers` met de naam met behulp van de `IF NOT EXISTS` optie. De `CreateStatementRequestAsync` aanroep maakt een nieuwe-instructie in de Avitica-server (PQS). Het `finally` blok sluit het geretourneerde `CreateStatementResponse` object en de `OpenConnectionResponse` objecten.
 
 ## <a name="insert-data-individually"></a>Gegevens afzonderlijk invoegen
 
-In dit voor beeld ziet u een afzonderlijke gegevens invoer, `List<string>` met een verwijzing naar een verzameling van de afkortingen van de Amerikaanse staat en het gebied:
+In dit voor beeld ziet u een afzonderlijke gegevens invoer, met een verwijzing naar een `List<string>` verzameling van de afkortingen van de Amerikaanse staat en het gebied:
 
 ```csharp
 var states = new List<string> { "AL", "AK", "AS", "AZ", "AR", "CA", "CO", "CT", "DE", "DC", "FM", "FL", "GA", "GU", "HI", "ID", "IL", "IN", "IA", "KS", "KY", "LA", "ME", "MH", "MD", "MA", "MI", "MN", "MS", "MO", "MT", "NE", "NV", "NH", "NJ", "NM", "NY", "NC", "ND", "MP", "OH", "OK", "OR", "PW", "PA", "PR", "RI", "SC", "SD", "TN", "TX", "UT", "VT", "VI", "VA", "WA", "WV", "WI", "WY" };
 ```
 
-De kolom waarde `StateProvince` van de tabel wordt gebruikt in een latere Selecteer bewerking.
+De kolom waarde van de tabel `StateProvince` wordt gebruikt in een latere Selecteer bewerking.
 
 ```csharp
 string connId = Guid.NewGuid().ToString();
@@ -281,7 +282,7 @@ De structuur voor het uitvoeren van een instructie INSERT is vergelijkbaar met h
 
 ## <a name="batch-insert-data"></a>Batch gegevens invoegen
 
-De volgende code is bijna identiek aan de code voor het afzonderlijk invoegen van gegevens. In dit voor beeld `UpdateBatch` wordt het object in een `ExecuteBatchRequestAsync`aanroep van gebruikt in plaats `ExecuteRequestAsync` van herhaaldelijk te worden aangeroepen met een voor bereide instructie.
+De volgende code is bijna identiek aan de code voor het afzonderlijk invoegen van gegevens. In dit voor beeld wordt het `UpdateBatch` object in een aanroep van gebruikt in `ExecuteBatchRequestAsync` plaats van herhaaldelijk te worden aangeroepen `ExecuteRequestAsync` met een voor bereide instructie.
 
 ```csharp
 string connId = Guid.NewGuid().ToString();
@@ -494,7 +495,7 @@ finally
 
 De uitvoer van de `select` instructies moet het volgende resultaat zijn:
 
-```
+```output
 id0 first0
 id1 first1
 id10 first10

@@ -11,10 +11,9 @@ ms.topic: conceptual
 ms.date: 05/29/2020
 ms.author: ambapat
 ms.openlocfilehash: 52214d42467dfa86b5e085a660a9416904b7de59
-ms.sourcegitcommit: 8e5b4e2207daee21a60e6581528401a96bfd3184
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/04/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84416695"
 ---
 # <a name="import-hsm-protected-keys-to-key-vault-byok"></a>Met HSM beveiligde sleutels importeren in Key Vault (BYOK)
@@ -68,7 +67,7 @@ De volgende tabel bevat de vereisten voor het gebruik van BYOK in Azure Key Vaul
 
 ## <a name="supported-key-types"></a>Ondersteunde sleutel typen
 
-|Sleutelnaam|Type sleutel|Sleutel grootte|Oorsprong|Beschrijving|
+|Sleutelnaam|Type sleutel|Sleutel grootte|Oorsprong|Description|
 |---|---|---|---|---|
 |Sleutel uitwisselings sleutel (KEK)|RSA| 2.048-bits<br />3.072-bits<br />4.096-bits|Azure Key Vault HSM|Een met HSM ondersteund RSA-sleutel paar dat is gegenereerd in Azure Key Vault|
 |Doel sleutel|RSA|2.048-bits<br />3.072-bits<br />4.096-bits|Leverancier HSM|De sleutel die moet worden overgedragen naar de Azure Key Vault HSM|

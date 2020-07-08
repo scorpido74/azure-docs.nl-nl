@@ -7,12 +7,11 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 03/30/2020
 ms.author: dsindona
-ms.openlocfilehash: c115859c24b2c26ab2c221c4fdc35cb442d652b1
-ms.sourcegitcommit: 1f25aa993c38b37472cf8a0359bc6f0bf97b6784
-ms.translationtype: MT
+ms.openlocfilehash: fb53b0fe28f48f5f240e470aa5256ac1c277686e
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/26/2020
-ms.locfileid: "83848008"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85957338"
 ---
 # <a name="use-azure-table-storage-to-manage-commercial-marketplace-leads"></a>Azure-tabel opslag gebruiken om leads voor commerciële Marketplace te beheren
 
@@ -26,11 +25,11 @@ Als uw Customer Relationship Management-systeem (CRM) niet expliciet wordt onder
 
     1. Selecteer **+ een resource maken** in de menu balk links. Het **nieuwe** deel venster wordt aan de rechter kant weer gegeven.
     1. Selecteer **opslag** in het deel venster **Nieuw** . Aan de rechter kant wordt een **Aanbevolen** lijst weer gegeven.
-    1. Selecteer **opslag account** om te beginnen met het maken van het account. Volg de instructies in [een opslag account maken](https://docs.microsoft.com/azure/storage/common/storage-quickstart-create-account?tabs=azure-portal).
+    1. Selecteer **opslag account** om te beginnen met het maken van het account. Volg de instructies in [een opslag account maken](../../storage/common/storage-quickstart-create-account.md?tabs=azure-portal).
 
         ![Stappen voor het maken van een Azure Storage-account](./media/commercial-marketplace-lead-management-instructions-azure-table/azure-storage-create.png)
 
-        Zie Quick Start- [zelf studie](https://docs.microsoft.com/azure/storage/)voor meer informatie over opslag accounts. Zie [prijzen voor opslag](https://azure.microsoft.com/pricing/details/storage/)voor meer informatie over prijzen voor opslag.
+        Zie Quick Start- [zelf studie](../../storage/index.yml)voor meer informatie over opslag accounts. Zie [prijzen voor opslag](https://azure.microsoft.com/pricing/details/storage/)voor meer informatie over prijzen voor opslag.
 
 1. Wacht tot uw opslag account is ingericht. Dit proces duurt doorgaans enkele minuten. 
 
@@ -107,7 +106,7 @@ In het voor beeld wordt een stroom gemaakt waarmee automatisch een e-mail meldin
 
    Nadat u **maken**hebt geselecteerd, wordt het venster **entiteiten ophalen** weer gegeven. Selecteer hier **Geavanceerde opties weer geven**en geef informatie op over de volgende vakken:
 
-   * **Tabel**: Selecteer de naam van de tabel (uit [een tabel maken](#create-a-table-in-your-storage-account)). In de volgende afbeelding ziet u de prompt wanneer de tabel ' marketplaceleads ' is geselecteerd voor dit voor beeld.
+   * **Tabel**: Selecteer de naam van de tabel (uit [een tabel maken](#create-a-table-in-your-storage-account)). In de volgende afbeelding ziet u de vraag wanneer `marketplaceleads` de tabel voor dit voor beeld wordt geselecteerd.
 
      ![Het venster entiteiten ophalen](./media/commercial-marketplace-lead-management-instructions-azure-table/azure-table-get-entities.png)
 

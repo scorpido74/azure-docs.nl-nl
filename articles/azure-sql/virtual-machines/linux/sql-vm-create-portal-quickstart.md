@@ -11,10 +11,9 @@ ms.workload: iaas-sql-server
 ms.author: mathoma
 ms.reviewer: jroth
 ms.openlocfilehash: 41f39c7e60e79e034d4c855a77bfee0f6fa2094d
-ms.sourcegitcommit: eeba08c8eaa1d724635dcf3a5e931993c848c633
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/10/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84669508"
 ---
 # <a name="provision-a-linux-virtual-machine-running-sql-server-in-the-azure-portal"></a>Richt een virtuele Linux-machine in met SQL Server in het Azure Portal
@@ -38,7 +37,7 @@ Als u nog geen abonnement op Azure hebt, maak dan een [gratis account](https://a
 
 ## <a name="create-a-linux-vm-with-sql-server-installed"></a><a id="create"></a> Een virtuele Linux-machine maken waarop SQL Server is geïnstalleerd
 
-1. Meld u aan bij de [Azure-portal](https://portal.azure.com/).
+1. Meld u aan bij [Azure Portal](https://portal.azure.com/).
 
 1. Selecteer **Een resource maken** in het linkerdeelvenster.
 
@@ -95,7 +94,7 @@ Als u nog geen abonnement op Azure hebt, maak dan een [gratis account](https://a
     * **Netwerken**
     * **Beheer**
     * **Gastconfiguratie**
-    * **Koptags**
+    * **Tags**
 
 1. Selecteer **Controleren + maken**.
 1. Selecteer in het deelvenster **Controleren + maken** de optie **Maken**.

@@ -11,10 +11,9 @@ ms.workload: infrastructure-services
 ms.date: 01/25/2019
 ms.author: rohink
 ms.openlocfilehash: d84c4a9af366e9032604aef5531742eb790bb571
-ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/11/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84711677"
 ---
 # <a name="enable-resource-logging-in-azure-traffic-manager"></a>Bron logboek registratie inschakelen in azure Traffic Manager
@@ -54,7 +53,7 @@ U kunt de opdrachten uitvoeren die volgen in de [Azure Cloud shell](https://shel
       Zorg ervoor dat alle logboek categorieën die zijn gekoppeld aan de bron van het Traffic Manager-profiel, worden weer gegeven als ingeschakeld. Controleer ook of het opslag account correct is ingesteld.
 
 ## <a name="access-log-files"></a>Toegang tot logboek bestanden
-1. Meld u aan bij de [Azure-portal](https://portal.azure.com). 
+1. Meld u aan bij [Azure Portal](https://portal.azure.com). 
 1. Navigeer naar uw Azure Storage-account in de portal.
 2. Klik op de pagina **overzicht** van uw Azure Storage-account onder **Services** op **blobs**.
 3. Voor **containers**selecteert u **Insights-logs-probehealthstatusevents**en navigeert u naar de PT1H.jsin het bestand en klikt u op **downloaden** om een kopie van dit logboek bestand te downloaden en op te slaan.
@@ -70,7 +69,7 @@ De volgende tabel bevat logboeken die specifiek zijn voor de Azure Traffic Manag
 
 |||||
 |----|----|---|---|
-|**Veld naam**|**Veld type**|**Beschrijving**|**Hierbij**|
+|**Veld naam**|**Veld type**|**Beschrijving**|**Voorbeeld**|
 |EndpointName|Tekenreeks|De naam van het Traffic Manager-eind punt waarvan de integriteits status wordt vastgelegd.|*myPrimaryEndpoint*|
 |Status|Tekenreeks|De integriteits status van het Traffic Manager-eind punt dat is gecontroleerd. De status **kan een of meer** zijn **.**|**Omhoog**|
 |||||

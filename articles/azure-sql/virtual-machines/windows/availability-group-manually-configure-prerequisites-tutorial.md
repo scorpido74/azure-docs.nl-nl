@@ -15,10 +15,9 @@ ms.date: 03/29/2018
 ms.author: mikeray
 ms.custom: seo-lt-2019
 ms.openlocfilehash: b72e894b7280a2d3e0fa978125e53ae79b2d20e3
-ms.sourcegitcommit: eeba08c8eaa1d724635dcf3a5e931993c848c633
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/10/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84669355"
 ---
 # <a name="prerequisites-for-creating-always-on-availability-groups-on-sql-server-on-azure-virtual-machines"></a>Vereisten voor het maken van AlwaysOn-beschikbaarheids groepen op SQL Server op Azure Virtual Machines
@@ -44,7 +43,7 @@ U hebt een Azure-account nodig. U kunt [een gratis Azure-account openen of de](h
 
 ## <a name="create-a-resource-group"></a>Een resourcegroep maken
 
-1. Meld u aan bij de [Azure-portal](https://portal.azure.com).
+1. Meld u aan bij [Azure Portal](https://portal.azure.com).
 2. Selecteer **+** deze optie om een nieuw object te maken in de portal.
 
    ![Nieuw object](./media/availability-group-manually-configure-prerequisites-tutorial-/01-portalplus.png)
@@ -137,7 +136,7 @@ De volgende tabel geeft een overzicht van de netwerk configuratie-instellingen:
 | **Subnetnaam** |**sqlsubnet** |
 | **Subnetadresbereik** |Deze waarde is afhankelijk van de beschik bare adresbereiken in uw abonnement. Een typische waarde is 10.0.1.0/24. |
 | **Abonnement** |Geef het abonnement op dat u wilt gebruiken. |
-| **Resource groep** |**SQL-HA-RG** |
+| **Resourcegroep** |**SQL-HA-RG** |
 | **Locatie** |Geef dezelfde locatie op die u hebt gekozen voor de resource groep. |
 
 ## <a name="create-availability-sets"></a>Beschikbaarheidssets maken
@@ -198,7 +197,7 @@ De volgende tabel bevat de instellingen voor deze twee computers:
 | **Openbaar IP-adres** |*Dezelfde naam als de virtuele machine* |
 | **Netwerkbeveiligingsgroep** |*Dezelfde naam als de virtuele machine* |
 | **Beschikbaarheidsset** |adavailabilityset </br>**Fout domeinen**: 2 </br>**Update domeinen**: 2|
-| **Diagnostiek** |Ingeschakeld |
+| **Diagnostics** |Ingeschakeld |
 | **Opslagaccount voor diagnose** |*Automatisch gemaakt* |
 
    >[!IMPORTANT]

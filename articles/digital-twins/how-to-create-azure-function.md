@@ -7,17 +7,13 @@ ms.author: cschorm
 ms.date: 3/17/2020
 ms.topic: how-to
 ms.service: digital-twins
-ROBOTS: NOINDEX, NOFOLLOW
-ms.openlocfilehash: 51e2560a7ad8d62965474082633d4cb66c1d6592
-ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
-ms.translationtype: MT
+ms.openlocfilehash: 3b416e6ccb035ede06a360c2697a9b20ca417d98
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/12/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84725899"
 ---
 # <a name="connect-azure-functions-apps-for-processing-data"></a>Azure Functions-apps verbinden voor het verwerken van gegevens
-
-[!INCLUDE [Azure Digital Twins current preview status](../../includes/digital-twins-preview-status.md)]
 
 Tijdens de preview-fase wordt het bijwerken van digitale apparaatdubbels op basis van gegevens verwerkt met behulp van [**gebeurtenis routes**](concepts-route-events.md) via Compute-resources, zoals [Azure functions](../azure-functions/functions-overview.md). Een Azure-functie kan worden gebruikt om een digitale dubbele taak bij te werken als reactie op:
 * telemetrie-gegevens van apparaten die afkomstig zijn van IoT Hub

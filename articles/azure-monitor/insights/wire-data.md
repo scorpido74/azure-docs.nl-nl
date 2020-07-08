@@ -7,10 +7,9 @@ author: bwren
 ms.author: bwren
 ms.date: 05/29/2020
 ms.openlocfilehash: afcad5df1072f2eb474e54aaeca866735a12c5c8
-ms.sourcegitcommit: c052c99fd0ddd1171a08077388d221482026cd58
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/04/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84424462"
 ---
 # <a name="wire-data-20-preview-solution-in-azure-monitor"></a>Wire Data 2.0 (preview)-oplossing in Azure Monitor
@@ -56,10 +55,10 @@ Wire Data haalt zijn gegevens uit de Microsoft-agent voor afhankelijkheden. De D
 
 | **Verbonden bron** | **Ondersteund** | **Beschrijving** |
 | --- | --- | --- |
-| Windows-agents | Ja | Wire Data analyseert en verzamelt gegevens van Windows-agentcomputers. <br><br> Naast de Log Analytics- [agent voor Windows](../platform/agent-windows.md)vereist Windows-agents de micro soft-afhankelijkheids agent. Zie de [ondersteunde besturingssystemen](vminsights-enable-overview.md#supported-operating-systems) voor een volledige lijst met versies van besturingssystemen. |
-| Linux-agents | Ja | Wire Data analyseert en verzamelt gegevens van Linux-agentcomputers.<br><br> Naast de Log Analytics- [agent voor Linux is voor](../learn/quick-collect-linux-computer.md)Linux-agents de micro soft-afhankelijkheids agent vereist. Zie de [ondersteunde besturingssystemen](vminsights-enable-overview.md#supported-operating-systems) voor een volledige lijst met versies van besturingssystemen. |
-| Beheergroep System Center Operations Manager | Ja | Wire Data analyseert en verzamelt gegevens van Windows- en Linux-agents in een verbonden [System Center Operations Manager-beheergroep](../platform/om-agents.md). <br><br> Er is een directe verbinding van de System Center Operations Manager agent computer naar Azure Monitor vereist. |
-| Azure Storage-account | Nee | Omdat Wire Data gegevens van agentcomputers verzamelt, zijn er geen gegevens te verzamelen van Azure Storage. |
+| Windows-agents | Yes | Wire Data analyseert en verzamelt gegevens van Windows-agentcomputers. <br><br> Naast de Log Analytics- [agent voor Windows](../platform/agent-windows.md)vereist Windows-agents de micro soft-afhankelijkheids agent. Zie de [ondersteunde besturingssystemen](vminsights-enable-overview.md#supported-operating-systems) voor een volledige lijst met versies van besturingssystemen. |
+| Linux-agents | Yes | Wire Data analyseert en verzamelt gegevens van Linux-agentcomputers.<br><br> Naast de Log Analytics- [agent voor Linux is voor](../learn/quick-collect-linux-computer.md)Linux-agents de micro soft-afhankelijkheids agent vereist. Zie de [ondersteunde besturingssystemen](vminsights-enable-overview.md#supported-operating-systems) voor een volledige lijst met versies van besturingssystemen. |
+| Beheergroep System Center Operations Manager | Yes | Wire Data analyseert en verzamelt gegevens van Windows- en Linux-agents in een verbonden [System Center Operations Manager-beheergroep](../platform/om-agents.md). <br><br> Er is een directe verbinding van de System Center Operations Manager agent computer naar Azure Monitor vereist. |
+| Azure Storage-account | No | Omdat Wire Data gegevens van agentcomputers verzamelt, zijn er geen gegevens te verzamelen van Azure Storage. |
 
 In Windows wordt micro soft Monitoring Agent (MMA) zowel door System Center Operations Manager als Azure Monitor gebruikt voor het verzamelen en verzenden van gegevens. Afhankelijk van de context heet de agent de System Center Operations Manager agent, Log Analytics agent, MMA of direct agent. System Center Operations Manager en Azure Monitor bieden enigszins verschillende versies van de MMA. Deze versies kunnen elk rapport System Center Operations Manager, Azure Monitor of aan beide.
 
@@ -156,7 +155,7 @@ De volgende secties bevatten een lijst met de ondersteunde besturings systemen v
 
 ### <a name="dependency-agent-downloads"></a>Down loads van afhankelijkheids agent
 
-| Bestand | Besturingssysteem | Versie | SHA-256 |
+| Bestand | OS | Versie | SHA-256 |
 |:--|:--|:--|:--|
 | [InstallDependencyAgent-Windows.exe](https://aka.ms/dependencyagentwindows) | Windows | 9.7.4 | A111B92AB6CF28EB68B696C60FE51F980BFDFF78C36A900575E17083972989E0 |
 | [InstallDependencyAgent-Linux64.bin](https://aka.ms/dependencyagentlinux) | Linux | 9.7.4 | AB58F3DB8B1C3DEE7512690E5A65F1DFC41B43831543B5C040FCCE8390F2282C |
@@ -178,7 +177,7 @@ Voer de volgende stappen uit om Wire Data te configureren voor uw werkruimten.
 
 Er zijn beheerdersbevoegdheden vereist om de agent te installeren of verwijderen.
 
-De afhankelijkheids agent wordt geïnstalleerd op computers met Windows via InstallDependencyAgent-Windows. exe. Als u dit uitvoerbare bestand zonder opties uitvoert, wordt er een wizard gestart die u kunt volgen om interactief te installeren.
+De afhankelijkheids agent wordt geïnstalleerd op computers met Windows via InstallDependencyAgent-Windows.exe. Als u dit uitvoerbare bestand zonder opties uitvoert, wordt er een wizard gestart die u kunt volgen om interactief te installeren.
 
 Gebruik de volgende stappen om de afhankelijkheids agent te installeren op elke computer waarop Windows wordt uitgevoerd:
 
@@ -226,7 +225,7 @@ InstallDependencyAgent-Linux64.bin -help
 
 Bestanden voor de afhankelijkheids agent worden in de volgende directory's geplaatst:
 
-| **Bestanden** | **Locatie** |
+| **Files** | **Locatie** |
 | --- | --- |
 | Kernbestanden | /opt/microsoft/dependency-agent |
 | Logboekbestanden | /var/opt/microsoft/dependency-agent/log |
@@ -395,7 +394,7 @@ Een record met het type _WireData_ is gemaakt voor elk type invoergegevens. Wire
 | IPVersion | IP-versie |
 | Richting | Binnenkomend of uitgaand |
 | MaliciousIP | IP-adres van een bekende schadelijke bron |
-| Ernst | Ernst van mogelijke malware |
+| Severity | Ernst van mogelijke malware |
 | RemoteIPCountry | Land/regio van het externe IP-adres |
 | ManagementGroupName | Naam van de Operations Manager-beheergroep |
 | SourceSystem | Bron waar gegevens zijn verzameld |

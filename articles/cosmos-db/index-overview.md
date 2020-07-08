@@ -6,12 +6,11 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 05/21/2020
 ms.author: tisande
-ms.openlocfilehash: bea6d01a8363dd68cff33435335391e0fb0f76c7
-ms.sourcegitcommit: 23604d54077318f34062099ed1128d447989eea8
-ms.translationtype: MT
+ms.openlocfilehash: 44a51972e459f64f44a791ef1cf40825dddedf91
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/20/2020
-ms.locfileid: "85118590"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85798150"
 ---
 # <a name="indexing-in-azure-cosmos-db---overview"></a>Indexeren in Azure Cosmos DB: een overzicht
 
@@ -51,14 +50,14 @@ De reden waarom Azure Cosmos DB het transformeren van items naar bomen, is omdat
 
 Dit zijn de paden voor elke eigenschap van het hierboven beschreven voor beeld-item:
 
-    /locations/0/country: "Germany"
-    /locations/0/city: "Berlin"
-    /locations/1/country: "France"
-    /locations/1/city: "Paris"
-    /headquarters/country: "Belgium"
-    /headquarters/employees: 250
-    /exports/0/city: "Moscow"
-    /exports/1/city: "Athens"
+- /locations/0/Country: "Duitsland"
+- /locations/0/City: "Berlijn"
+- /locations/1/Country: "Frank rijk"
+- /locations/1/City: "Parijs"
+- /Headquarters/Country: "België"
+- /Headquarters/Employees: 250
+- /exports/0/City: "Moskou"
+- /exports/1/City: "Athene"
 
 Wanneer een item wordt geschreven, indexeert Azure Cosmos DB in feite elke eigenschap van het pad en de bijbehorende waarde.
 

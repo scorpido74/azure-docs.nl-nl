@@ -12,10 +12,9 @@ ms.workload: infrastructure-services
 ms.date: 02/26/2019
 ms.author: rohink
 ms.openlocfilehash: 28453af7eb38f4195774d70c5960eacc8467dedd
-ms.sourcegitcommit: 8e5b4e2207daee21a60e6581528401a96bfd3184
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/04/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84417001"
 ---
 # <a name="traffic-manager-frequently-asked-questions-faq"></a>Veelgestelde vragen over Traffic Manager
@@ -382,7 +381,7 @@ Wanneer een query wordt ontvangen voor een profiel, zoekt Traffic Manager eerst 
 
 Voor profielen met een andere routerings methode dan meerdere waarden:
 
-|Binnenkomende query aanvraag|     Type eind punt|     Antwoord gegeven|
+|Binnenkomende query aanvraag|     Eindpunttype|     Antwoord gegeven|
 |--|--|--|
 |ALLE |    A/AAAA/CNAME |    Doel eindpunt| 
 |A |    A/CNAME |    Doel eindpunt|
@@ -395,7 +394,7 @@ Voor profielen met een andere routerings methode dan meerdere waarden:
 
 Voor profielen waarvoor een routerings methode is ingesteld op meerdere waarden:
 
-|Binnenkomende query aanvraag|     Type eind punt |    Antwoord gegeven|
+|Binnenkomende query aanvraag|     Eindpunttype |    Antwoord gegeven|
 |--|--|--|
 |ALLE |    Combi natie van A en AAAA |    Doel eindpunten|
 |A |    Combi natie van A en AAAA |    Alleen doel eindpunten van het type A|
@@ -497,7 +496,7 @@ Het bovenliggende profiel voert niet rechtstreeks status controles uit op het ki
 
 In de volgende tabel wordt het gedrag van Traffic Manager status controles voor een genest eind punt beschreven.
 
-| Monitor status van onderliggend profiel | Monitor status van bovenliggend eind punt | Opmerkingen |
+| Monitor status van onderliggend profiel | Monitor status van bovenliggend eind punt | Notities |
 | --- | --- | --- |
 | Uitgeschakeld. Het onderliggende profiel is uitgeschakeld. |Gestopt |De status van het bovenliggende eind punt is gestopt, niet uitgeschakeld. De uitgeschakelde status is gereserveerd om aan te geven dat u het eind punt in het bovenliggende profiel hebt uitgeschakeld. |
 | Gedegradeerd. Ten minste één onderliggend Profiel van de onderliggende profielen heeft een gedegradeerde status. |Online: het aantal online eindpunten in het onderliggende profiel is ten minste de waarde van MinChildEndpoints.<BR>CheckingEndpoint: het aantal online plus CheckingEndpoint-eind punten in het onderliggende profiel is ten minste de waarde van MinChildEndpoints.<BR>Gedegradeerd: anders. |Verkeer wordt doorgestuurd naar het eind punt van de status CheckingEndpoint. Als MinChildEndpoints te hoog is ingesteld, wordt het eind punt altijd gedegradeerd. |

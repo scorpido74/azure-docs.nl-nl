@@ -12,10 +12,9 @@ ms.author: sstein
 ms.reviewer: carlrab
 ms.date: 06/10/2020
 ms.openlocfilehash: 9dfa45e463ecd53524e7516160324a80824e4d8d
-ms.sourcegitcommit: eeba08c8eaa1d724635dcf3a5e931993c848c633
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/10/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84669525"
 ---
 # <a name="resource-limits-for-single-databases-using-the-vcore-purchasing-model"></a>Resource limieten voor afzonderlijke data bases met behulp van het vCore-aankoop model
@@ -223,7 +222,7 @@ De [Compute-laag zonder server](serverless-tier-overview.md) is momenteel alleen
 
 \*De maximum waarde voor i/o-grootten tussen 8 KB en 64 KB. Werkelijke IOPS zijn werk belasting afhankelijk. Zie [Data io governance](resource-limits-logical-server.md#resource-governance)voor meer informatie.
 
-#### <a name="notes"></a>Opmerkingen
+#### <a name="notes"></a>Notities
 
 **Opmerking 1**: grootschalige is een architectuur met meerdere lagen met afzonderlijke Compute-en opslag onderdelen: [grootschalige service tier-architectuur](service-tier-hyperscale.md#distributed-functions-architecture)
 
@@ -347,7 +346,7 @@ De [Compute-laag zonder server](serverless-tier-overview.md) is momenteel alleen
 |Compute genereren|Fsv2-serie|
 |vCores|72|
 |Geheugen (GB)|136,2|
-|Column Store-ondersteuning|Ja|
+|Column Store-ondersteuning|Yes|
 |OLTP-opslag in het geheugen (GB)|N.v.t.|
 |Maximale gegevens grootte (GB)|4096|
 |Maximale logboek grootte (GB)|1024|
@@ -486,7 +485,7 @@ De [Compute-laag zonder server](serverless-tier-overview.md) is momenteel alleen
 |Compute genereren|M-serie|
 |vCores|128|
 |Geheugen (GB)|3767,1|
-|Column Store-ondersteuning|Ja|
+|Column Store-ondersteuning|Yes|
 |OLTP-opslag in het geheugen (GB)|1768|
 |Maximale gegevens grootte (GB)|4096|
 |Maximale logboek grootte (GB)|2048|
@@ -499,8 +498,8 @@ De [Compute-laag zonder server](serverless-tier-overview.md) is momenteel alleen
 |Maximaal aantal gelijktijdige aanmeldingen|12.800|
 |Maximaal aantal gelijktijdige sessies|30.000|
 |Aantal replica's|4|
-|Meerdere AZ|Ja|
-|Uitschalen voor leesbewerking|Ja|
+|Meerdere AZ|Yes|
+|Uitschalen voor leesbewerking|Yes|
 |Opgenomen back-upopslag|1X-DB-grootte|
 
 \*De maximum waarde voor i/o-grootten tussen 8 KB en 64 KB. Werkelijke IOPS zijn werk belasting afhankelijk. Zie [Data io governance](resource-limits-logical-server.md#resource-governance)voor meer informatie.

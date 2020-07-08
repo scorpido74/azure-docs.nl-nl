@@ -14,10 +14,9 @@ ms.topic: article
 ms.date: 06/03/2020
 ms.author: juliako
 ms.openlocfilehash: 692fe12d12538bc35e3a22d4af1bd185839f69d4
-ms.sourcegitcommit: 8e5b4e2207daee21a60e6581528401a96bfd3184
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/04/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84418713"
 ---
 # <a name="output-metadata"></a>Uitvoermetagegevens
@@ -26,7 +25,7 @@ Een coderings taak is gekoppeld aan een invoer element (of activa) waarvoor u be
 
 Media Services de invoer assets niet preventief om meta gegevens te genereren. Invoer meta gegevens worden alleen gegenereerd als een artefact wanneer een invoer element in een taak wordt verwerkt. Dit artefact wordt daarom geschreven naar de uitvoer Asset. Er worden verschillende hulpprogram ma's gebruikt voor het genereren van meta gegevens voor invoer assets en uitvoer assets. Daarom heeft de invoer meta gegevens een iets ander schema dan de uitvoer meta gegevens.
 
-In dit artikel worden de elementen en typen van het JSON-schema beschreven waarop de uitvoer meta gegevens ( &lt; source_file_name &gt; _manifest. json) is gebaseerd. <!--For information about the file that contains metadata about the input asset, see [Input metadata](input-metadata-schema.md).  -->
+In dit artikel worden de elementen en typen van het JSON-schema beschreven waarop de meta gegevens van de uitvoer ( &lt; source_file_name &gt;_manifest.js) is gebaseerd. <!--For information about the file that contains metadata about the input asset, see [Input metadata](input-metadata-schema.md).  -->
 
 Aan het eind van dit artikel vindt u de volledige schema code en het JSON-voor beeld.  
 
@@ -52,7 +51,7 @@ Elk fysiek AssetFile kan in de waarde nul bevatten of meer Video's worden getrac
 | **Id**<br /> Vereist |Op nul gebaseerde index van deze video track. **Opmerking:**  Deze **id** is niet noodzakelijkerwijs de TrackID die in een MP4-bestand wordt gebruikt. <br /><br />Voorbeeld: `"Id": 1`|
 | **FourCC**<br />Vereist | Een code van de video-codec die wordt gerapporteerd door ffmpeg.  <br /><br />Voorbeeld: `"FourCC": "avc1"`|
 | **Profiel** |H264-Profiel (alleen van toepassing op H264-codec).  <br /><br />Voorbeeld: `"Profile": "High"` |
-| **Niveau** |Niveau H264 (alleen van toepassing op H264-codec).  <br /><br />Voorbeeld: `"Level": "3.2"`|
+| **Afvlakking** |Niveau H264 (alleen van toepassing op H264-codec).  <br /><br />Voorbeeld: `"Level": "3.2"`|
 | **Width**<br />Vereist |Breedte van gecodeerde video in pixels.  <br /><br />Voorbeeld: `"Width": "1280"`|
 | **Height**<br />Vereist |Versleutelde video hoogte in pixels.  <br /><br />Voorbeeld: `"Height": "720"`|
 | **DisplayAspectRatioNumerator**<br />Vereist|Teller voor hoogte-breedte verhouding video weergave.  <br /><br />Voorbeeld: `"DisplayAspectRatioNumerator": 16.0`|

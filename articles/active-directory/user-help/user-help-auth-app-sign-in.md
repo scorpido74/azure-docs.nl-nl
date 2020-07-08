@@ -12,10 +12,9 @@ ms.date: 06/03/2020
 ms.author: curtand
 ms.reviewer: olhaun
 ms.openlocfilehash: 4b2d79b24263a848d146bbbe8d42f23ec28f49b8
-ms.sourcegitcommit: 8e5b4e2207daee21a60e6581528401a96bfd3184
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/04/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84415879"
 ---
 # <a name="sign-in-to-your-accounts-using-the-microsoft-authenticator-app"></a>Meld u aan bij uw accounts met behulp van de app Microsoft Authenticator
@@ -55,7 +54,7 @@ Open de Microsoft Authenticator-app, ga naar uw werk-of school account en schake
 - **Als u de app al hebt gebruikt voor twee ledige verificatie**, kunt u op de tegel account tikken om een volledig scherm van het account weer te geven. Tik vervolgens op **Aanmelden via de telefoon** om aanmelding via de telefoon in te scha kelen.
 - **Als u uw werk-of school account niet kunt vinden** op het scherm **accounts** van de app, betekent dit dat u dit nog niet hebt toegevoegd aan de app. Voeg uw werk-of school account toe door de stappen in de [Help van uw werk-of school account toevoegen](user-help-auth-app-add-work-school-account.md)te volgen.
 
-Nadat u aanmelding via de telefoon hebt ingeschakeld, kunt u zich aanmelden met alleen de Microsoft Authenticator-app. Dit doet u al volgt:
+Nadat u aanmelding via de telefoon hebt ingeschakeld, kunt u zich aanmelden met alleen de Microsoft Authenticator-app. U doet dit als volgt:
 
 1. Meld u aan bij uw werk-of school account.
 

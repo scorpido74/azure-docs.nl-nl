@@ -12,10 +12,9 @@ ms.topic: article
 ms.date: 04/07/2020
 ms.author: juliako
 ms.openlocfilehash: e54944c0c10fb773a4a3141c0d3fb6524f288ae2
-ms.sourcegitcommit: 55b2bbbd47809b98c50709256885998af8b7d0c5
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/18/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84987240"
 ---
 # <a name="media-services-v3-frequently-asked-questions"></a>Veelgestelde vragen over Media Services v3
@@ -28,7 +27,7 @@ In dit artikel vindt u antwoorden op veelgestelde vragen over Azure Media Servic
 
 U kunt de [Azure Portal](https://portal.azure.com/) gebruiken om v3 Live-gebeurtenissen te beheren, v3-assets en-taken weer te geven, informatie over het openen van api's te verkrijgen, inhoud te versleutelen. <br/>Voor alle andere beheer taken (bijvoorbeeld het beheren van trans formaties en taken of het analyseren van v3-inhoud), gebruikt u de [rest API](https://aka.ms/ams-v3-rest-ref), [cli](https://aka.ms/ams-v3-cli-ref)of een van de ondersteunde [sdk's](media-services-apis-overview.md#sdks).
 
-Als uw video eerder is geüpload naar het Media Services-account met behulp van Media Services v3 API of als de inhoud is gegenereerd op basis van een live uitvoer, worden de knoppen **coderen**, **analyseren**en **versleutelen** niet weer geven in de Azure Portal. Gebruik de Media Services v3-Api's om deze taken uit te voeren.  
+Als uw video eerder is geüpload naar het Media Services-account met behulp van de Media Services v3-API of als de inhoud is gegenereerd op basis van live-uitvoer, zijn de knoppen **Coderen**, **Analyseren** of **Versleutelen** niet zichtbaar in Azure Portal. Gebruik de Media Services v3-API's om deze taken uit te voeren.  
 
 ### <a name="what-azure-roles-can-perform-actions-on-azure-media-services-resources"></a>Wat Azure-rollen kunnen acties uitvoeren op Azure Media Services resources? 
 

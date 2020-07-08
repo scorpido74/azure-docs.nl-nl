@@ -8,10 +8,9 @@ ms.date: 04/15/2020
 ms.author: owend
 ms.reviewer: minewiskan
 ms.openlocfilehash: 8381e391afa0f8866f511d3d85e02467c6d9ba5d
-ms.sourcegitcommit: fdaad48994bdb9e35cdd445c31b4bac0dd006294
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/26/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85413379"
 ---
 # <a name="asynchronous-refresh-with-the-rest-api"></a>Asynchroon vernieuwen met de REST API
@@ -97,7 +96,7 @@ De hoofd tekst kan er als volgt uitzien:
 
 Het opgeven van para meters is niet vereist. De standaard waarde wordt toegepast.
 
-| Naam             | Type  | Beschrijving  |Standaard  |
+| Naam             | Type  | Description  |Standaard  |
 |------------------|-------|--------------|---------|
 | `Type`           | Enum  | Het type verwerking dat moet worden uitgevoerd. De typen zijn afgestemd op de TMSL- [vernieuwings opdracht](https://docs.microsoft.com/analysis-services/tmsl/refresh-command-tmsl) typen: Full, clearValues, Calculate, dataOnly, Automatic en defragmenteren. Het type toevoegen wordt niet ondersteund.      |   automatisch      |
 | `CommitMode`     | Enum  | Bepaalt of objecten worden doorgevoerd in batches of alleen wanneer dit is voltooid. Voor beelden zijn: standaard, transactioneel, partialBatch.  |  transactionele       |
@@ -112,7 +111,7 @@ CommitMode is gelijk aan partialBatch. Dit wordt gebruikt bij het uitvoeren van 
 
 ### <a name="status-values"></a>Status waarden
 
-|Statuswaarde  |Beschrijving  |
+|Statuswaarde  |Description  |
 |---------|---------|
 |`notStarted`    |   De bewerking is nog niet gestart.      |
 |`inProgress`     |   De bewerking wordt uitgevoerd.      |
@@ -222,7 +221,7 @@ Zie [Service-Principal maken-Azure Portal](../active-directory/develop/howto-cre
 3.    Voet het voorbeeld uit.
 
 
-## <a name="see-also"></a>Zie ook
+## <a name="see-also"></a>Zie tevens
 
 [Voor beelden](analysis-services-samples.md)   
 [REST API](https://docs.microsoft.com/rest/api/analysisservices/servers)   

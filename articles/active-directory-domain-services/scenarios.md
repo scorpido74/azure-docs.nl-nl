@@ -9,14 +9,13 @@ ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 02/10/2020
+ms.date: 07/06/2020
 ms.author: iainfou
-ms.openlocfilehash: 68d41e14806a74dfc0b6e58cec9629704bad928c
-ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
-ms.translationtype: MT
+ms.openlocfilehash: ba4761a2b7893fd894f62b7e2252005d7afd1c91
+ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/12/2020
-ms.locfileid: "84734483"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86039973"
 ---
 # <a name="common-use-cases-and-scenarios-for-azure-active-directory-domain-services"></a>Veelvoorkomend gebruik: cases en scenario's voor Azure Active Directory Domain Services
 
@@ -32,16 +31,18 @@ Vm's die zijn gekoppeld aan een beheerd domein kunnen ook worden beheerd en beve
 
 ![Gestroomlijnd beheer van virtuele Azure-machines](./media/active-directory-domain-services-scenarios/streamlined-vm-administration.png)
 
-Laten we eens kijken naar een gemeen schappelijk voorbeeld scenario. Als servers en andere infra structuur het einde van de levens duur bereiken, wil Contoso toepassingen die momenteel on-premises worden gehost, verplaatsen naar de Cloud. Het huidige IT-standaard mandaat dat servers die bedrijfs toepassingen hosten, moeten lid zijn van een domein en worden beheerd met groeps beleid. De IT-beheerder van Contoso zou de voor keur geven aan Vm's die in azure zijn geïmplementeerd om het beheer eenvoudiger te maken, terwijl gebruikers zich kunnen aanmelden met hun bedrijfs referenties. Bij het lid van een domein kunnen Vm's ook worden geconfigureerd om te voldoen aan de vereiste beveiligings basislijnen met behulp van groeps beleidsobjecten (Gpo's). Contoso zou het voor keur hebben om hun eigen domein controllers in azure te implementeren, te controleren en te beheren.
+Laten we eens kijken naar een gemeen schappelijk voorbeeld scenario. Als servers en andere infra structuur het einde van de levens duur bereiken, wil Contoso toepassingen die momenteel on-premises worden gehost, verplaatsen naar de Cloud. Het huidige IT-standaard mandaat dat servers die bedrijfs toepassingen hosten, moeten lid zijn van een domein en worden beheerd met groeps beleid.
 
-Azure AD DS is in het bijzonder geschikt voor deze gebruiks case. Met een beheerd domein kunt u domein deel nemen aan Vm's, een enkele set referenties gebruiken en groeps beleid Toep assen. Als een beheerd domein hoeft u de domein controllers niet zelf te configureren en te onderhouden.
+De IT-beheerder van Contoso zou de voor keur geven aan Vm's die in azure zijn geïmplementeerd om het beheer eenvoudiger te maken, terwijl gebruikers zich kunnen aanmelden met hun bedrijfs referenties. Bij het lid van een domein kunnen Vm's ook worden geconfigureerd om te voldoen aan de vereiste beveiligings basislijnen met behulp van groeps beleidsobjecten (Gpo's). Contoso zou het voor keur hebben om hun eigen domein controllers in azure te implementeren, te controleren en te beheren.
+
+Azure AD DS is in het bijzonder geschikt voor deze gebruiks case. Met een beheerd domein kunt u domein deel nemen aan Vm's, een enkele set referenties gebruiken en groeps beleid Toep assen. En omdat het een beheerd domein is, hoeft u de domein controllers niet zelf te configureren en te onderhouden.
 
 ### <a name="deployment-notes"></a>Implementatie opmerkingen
 
 De volgende overwegingen met betrekking tot de implementatie zijn van toepassing op dit voor beeld-Case:
 
-* In beheerde domeinen wordt standaard één platte organisatie-eenheid (OE) gebruikt. Alle virtuele machines die lid zijn van een domein, bevinden zich in één organisatie-eenheid. U kunt desgewenst aangepaste organisatie-eenheden maken.
-* Azure AD DS maakt gebruik van een ingebouwde GPO voor de containers gebruikers en computers. Voor extra besturings elementen kunt u aangepaste groeps beleidsobjecten maken en deze op aangepaste organisatie-eenheden richten.
+* In beheerde domeinen wordt standaard één platte organisatie-eenheid (OE) gebruikt. Alle virtuele machines die lid zijn van een domein, bevinden zich in één organisatie-eenheid. U kunt desgewenst [aangepaste organisatie-eenheden][custom-ou]maken.
+* Azure AD DS maakt gebruik van een ingebouwde GPO voor de containers gebruikers en computers. Voor extra besturings elementen kunt u [aangepaste groeps beleidsobjecten maken][create-gpo] en deze op aangepaste organisatie-eenheden richten.
 * Azure AD DS ondersteunt het basis-schema voor AD-computer objecten. U kunt het schema van het computer object niet uitbreiden.
 
 ## <a name="lift-and-shift-on-premises-applications-that-use-ldap-bind-authentication"></a>On-premises toepassingen gebruiken die gebruikmaken van LDAP-bindings verificatie
@@ -59,7 +60,7 @@ Voor dit scenario kunnen toepassingen met Azure AD DS LDAP-bindingen uitvoeren a
 De volgende overwegingen met betrekking tot de implementatie zijn van toepassing op dit voor beeld-Case:
 
 * Zorg ervoor dat de toepassing niet aan de directory hoeft te wijzigen/schrijven. LDAP-schrijf toegang voor een beheerd domein wordt niet ondersteund.
-* U kunt wacht woorden niet rechtstreeks wijzigen voor een beheerd domein. Eind gebruikers kunnen hun wacht woord wijzigen met behulp van de self-service voor wachtwoord wijziging van Azure AD of de on-premises Directory. Deze wijzigingen worden vervolgens automatisch gesynchroniseerd en beschikbaar in het beheerde domein.
+* U kunt wacht woorden niet rechtstreeks wijzigen voor een beheerd domein. Eind gebruikers kunnen hun wacht woord wijzigen met behulp [van de self-service voor wachtwoord wijziging van Azure AD][sspr] of de on-premises Directory. Deze wijzigingen worden vervolgens automatisch gesynchroniseerd en beschikbaar in het beheerde domein.
 
 ## <a name="lift-and-shift-on-premises-applications-that-use-ldap-read-to-access-the-directory"></a>On-premises toepassingen die gebruikmaken van LDAP, gebruiken om toegang te krijgen tot de adres lijst
 
@@ -91,11 +92,13 @@ Voor dit scenario kunnen de servers die als host fungeren voor de web-front-end,
 De volgende overwegingen met betrekking tot de implementatie zijn van toepassing op dit voor beeld-Case:
 
 * Zorg ervoor dat de toepassingen een gebruikers naam en wacht woord voor verificatie gebruiken. Verificatie op basis van een certificaat of Smart Card wordt niet ondersteund door Azure AD DS.
-* U kunt wacht woorden niet rechtstreeks wijzigen voor een beheerd domein. Eind gebruikers kunnen hun wacht woord wijzigen met behulp van de self-service voor wachtwoord wijziging van Azure AD of de on-premises Directory. Deze wijzigingen worden vervolgens automatisch gesynchroniseerd en beschikbaar in het beheerde domein.
+* U kunt wacht woorden niet rechtstreeks wijzigen voor een beheerd domein. Eind gebruikers kunnen hun wacht woord wijzigen met behulp [van de self-service voor wachtwoord wijziging van Azure AD][sspr] of de on-premises Directory. Deze wijzigingen worden vervolgens automatisch gesynchroniseerd en beschikbaar in het beheerde domein.
 
 ## <a name="windows-server-remote-desktop-services-deployments-in-azure"></a>Windows Server-implementaties van extern bureau blad-Services in azure
 
-U kunt Azure AD DS gebruiken om beheerde domein services te bieden aan extern bureau blad-servers die zijn geïmplementeerd in Azure. Zie [Azure AD Domain Services integreren met uw RDS-implementatie][windows-rds]voor meer informatie over dit implementatie scenario.
+U kunt Azure AD DS gebruiken om beheerde domein services te bieden aan extern bureau blad-servers die zijn geïmplementeerd in Azure.
+
+Zie [Azure AD Domain Services integreren met uw RDS-implementatie][windows-rds]voor meer informatie over dit implementatie scenario.
 
 ## <a name="domain-joined-hdinsight-clusters"></a>HDInsight-clusters die zijn gekoppeld aan een domein
 
@@ -105,11 +108,14 @@ Zie [HDInsight-clusters die zijn gekoppeld aan een domein configureren][hdinsigh
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Om aan de slag te gaan, [een door Azure Active Directory Domain Services beheerd domein maken en configureren][tutorial-create-instance]
+[Maak en configureer een Azure Active Directory Domain Services beheerd domein][tutorial-create-instance]om aan de slag te gaan.
 
 <!-- INTERNAL LINKS -->
 [hdinsight]: ../hdinsight/domain-joined/apache-domain-joined-configure.md
 [tutorial-create-instance]: tutorial-create-instance.md
+[custom-ou]: create-ou.md
+[create-gpo]: manage-group-policy.md
+[sspr]: ../active-directory/authentication/overview-authentication.md#self-service-password-reset
 
 <!-- EXTERNAL LINKS -->
 [windows-rds]: /windows-server/remote/remote-desktop-services/rds-azure-adds

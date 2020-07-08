@@ -5,10 +5,9 @@ services: container-service
 ms.topic: article
 ms.date: 06/03/2019
 ms.openlocfilehash: d025bcddfdee25cddac311ac9a201b7f3afebd22
-ms.sourcegitcommit: 8e5b4e2207daee21a60e6581528401a96bfd3184
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/04/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84416848"
 ---
 # <a name="configure-azure-cni-networking-in-azure-kubernetes-service-aks"></a>Azure CNI-netwerken configureren in azure Kubernetes service (AKS)
@@ -63,7 +62,7 @@ Het maximum aantal peulen per knoop punt in een AKS-cluster is 250. Het *maximum
 | -- | :--: | :--: | -- |
 | Azure CLI | 110 | 30 | Ja (Maxi maal 250) |
 | Resource Manager-sjabloon | 110 | 30 | Ja (Maxi maal 250) |
-| Portal | 110 | 30 | Nee |
+| Portal | 110 | 30 | No |
 
 ### <a name="configure-maximum---new-clusters"></a>Maximum aantal nieuwe clusters configureren
 
@@ -89,7 +88,7 @@ Een minimum waarde voor het maximale aantal peulen per knoop punt wordt afgedwon
 
 De instelling maxPod per knoop punt kan worden gedefinieerd wanneer u een nieuwe knooppunt groep maakt. Als u de maxPod per knooppunt instelling wilt verhogen op een bestaand cluster, voegt u een nieuwe knooppunt groep toe met het nieuwe gewenste maxPod aantal. Nadat u uw peul hebt gemigreerd naar de nieuwe groep, verwijdert u de oudere groep. Als u een oudere groep in een cluster wilt verwijderen, moet u ervoor zorgen dat u de instellingen van de groep knoop punten instelt zoals gedefinieerd in de [groeps beleidssysteem voor het systeem knooppunt,[knoop punt-groepen].
 
-## <a name="deployment-parameters"></a>Implementatie parameters
+## <a name="deployment-parameters"></a>Implementatieparameters
 
 Wanneer u een AKS-cluster maakt, kunnen de volgende para meters worden geconfigureerd voor Azure CNI-netwerken:
 

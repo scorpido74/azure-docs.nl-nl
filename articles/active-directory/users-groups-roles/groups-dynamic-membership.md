@@ -15,10 +15,9 @@ ms.reviewer: krbain
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 3370a2631a81ce36fd994da73c871fb1e409c667
-ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/12/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84728364"
 ---
 # <a name="dynamic-membership-rules-for-groups-in-azure-active-directory"></a>Dynamische lidmaatschaps regels voor groepen in Azure Active Directory
@@ -135,7 +134,7 @@ Zie [regels voor apparaten](#rules-for-devices)voor de eigenschappen die worden 
 
 De volgende tabel geeft een lijst van alle ondersteunde Opera tors en hun syntaxis voor één expressie. Opera tors kunnen worden gebruikt met of zonder het afbreek streepje (-).
 
-| Operator | Syntaxis |
+| Operator | Syntax |
 | --- | --- |
 | Niet gelijk aan |-ne |
 | Is gelijk aan |-EQ |
