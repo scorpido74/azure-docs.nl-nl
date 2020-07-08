@@ -9,10 +9,9 @@ ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 11/21/2019
 ms.openlocfilehash: d868cdd346c79cf77d4f8c1ea6e4b20adcd99b6c
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "74327395"
 ---
 # <a name="apache-spark-streaming-dstream-example-with-apache-kafka-on-hdinsight"></a>Apache Spark streaming (DStream)-voor beeld met Apache Kafka in HDInsight
@@ -42,7 +41,7 @@ Hoewel u hand matig een Azure Virtual Network-, Kafka-en Spark-cluster kunt make
 
     <a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fhditutorialdata.blob.core.windows.net%2Farmtemplates%2Fcreate-linux-based-kafka-spark-cluster-in-vnet-v4.1.json" target="_blank"><img src="./media/hdinsight-apache-spark-with-kafka/hdi-deploy-to-azure1.png" alt="Deploy to Azure button for new cluster"></a>
 
-    De Azure Resource Manager-sjabloon bevindt zich op **https://hditutorialdata.blob.core.windows.net/armtemplates/create-linux-based-kafka-spark-cluster-in-vnet-v4.1.json**.
+    De Azure Resource Manager-sjabloon bevindt zich op **https://hditutorialdata.blob.core.windows.net/armtemplates/create-linux-based-kafka-spark-cluster-in-vnet-v4.1.json** .
 
     > [!WARNING]  
     > Om beschikbaarheid van Kafka op HDInsight te garanderen, moet uw cluster ten minste drie werkknooppunten bevatten. Met deze sjabloon maakt u een Kafka-cluster dat drie werkknooppunten bevat.
@@ -63,7 +62,7 @@ Hoewel u hand matig een Azure Virtual Network-, Kafka-en Spark-cluster kunt make
 
     ![Aangepaste implementatie parameters voor HDInsight](./media/hdinsight-apache-spark-with-kafka/hdinsight-parameters.png)
 
-1. Lees de **voorwaarden** en schakel vervolgens het selectievakje **Ik ga akkoord met de bovenstaande voorwaarden** in.
+1. Lees de voor **waarden**en selecteer **Ik ga akkoord met de bovenstaande voor waarden**.
 
 1. Selecteer ten slotte **Inkoop**. Het duurt ongeveer 20 minuten om de clusters te maken.
 
@@ -76,7 +75,7 @@ Zodra de resources zijn gemaakt, wordt een overzichts pagina weer gegeven.
 
 ## <a name="use-the-notebooks"></a>De notitie blokken gebruiken
 
-De code voor het voor beeld dat in dit document wordt beschreven [https://github.com/Azure-Samples/hdinsight-spark-scala-kafka](https://github.com/Azure-Samples/hdinsight-spark-scala-kafka), is beschikbaar op.
+De code voor het voor beeld dat in dit document wordt beschreven, is beschikbaar op [https://github.com/Azure-Samples/hdinsight-spark-scala-kafka](https://github.com/Azure-Samples/hdinsight-spark-scala-kafka) .
 
 ## <a name="delete-the-cluster"></a>Het cluster verwijderen
 

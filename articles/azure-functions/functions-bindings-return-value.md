@@ -6,10 +6,9 @@ ms.topic: reference
 ms.date: 01/14/2019
 ms.author: cshoe
 ms.openlocfilehash: 7ba104e288204dfbf3d24f5783bf69682a286553
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "74480574"
 ---
 # <a name="using-the-azure-function-return-value"></a>De functie retour waarde van Azure gebruiken
@@ -20,13 +19,13 @@ In talen die een retour waarde hebben, kunt u een functie- [uitvoer binding](./f
 
 * Pas in een C#-klassebibliotheek het kenmerk uitvoer binding toe op de retour waarde van de methode.
 * Pas in Java de annotatie van de uitvoer binding toe op de functie methode.
-* In andere talen stelt u de `name` eigenschap in *Function. json* in `$return`op.
+* In andere talen stelt u de `name` eigenschap in *function.jsin op* aan `$return` .
 
 Als er meerdere uitvoer bindingen zijn, gebruikt u de retour waarde voor slechts één van beide.
 
-In C#-en C#-script, alternatieve manieren om gegevens te verzenden naar een `out` uitvoer binding zijn para meters en [Collector-objecten](functions-reference-csharp.md#writing-multiple-output-values).
+In C#-en C#-script, alternatieve manieren om gegevens te verzenden naar een uitvoer binding zijn `out` para meters en [Collector-objecten](functions-reference-csharp.md#writing-multiple-output-values).
 
-# <a name="c"></a>[G #](#tab/csharp)
+# <a name="c"></a>[C#](#tab/csharp)
 
 Dit is de C#-code die gebruikmaakt van de retour waarde voor een uitvoer binding, gevolgd door een async-voor beeld:
 
@@ -54,7 +53,7 @@ public static Task<string> Run([QueueTrigger("inputqueue")]WorkItem input, ILogg
 
 # <a name="c-script"></a>[C#-script](#tab/csharp-script)
 
-Hier ziet u de uitvoer binding in het bestand *Function. json* :
+Dit is de uitvoer binding in de *function.jsvoor* het volgende bestand:
 
 ```json
 {
@@ -87,7 +86,7 @@ public static Task<string> Run(WorkItem input, ILogger log)
 
 # <a name="f"></a>[F#](#tab/fsharp)
 
-Hier ziet u de uitvoer binding in het bestand *Function. json* :
+Dit is de uitvoer binding in de *function.jsvoor* het volgende bestand:
 
 ```json
 {
@@ -107,9 +106,9 @@ let Run(input: WorkItem, log: ILogger) =
     json
 ```
 
-# <a name="javascript"></a>[Javascript](#tab/javascript)
+# <a name="javascript"></a>[JavaScript](#tab/javascript)
 
-Hier ziet u de uitvoer binding in het bestand *Function. json* :
+Dit is de uitvoer binding in de *function.jsvoor* het volgende bestand:
 
 ```json
 {
@@ -120,7 +119,7 @@ Hier ziet u de uitvoer binding in het bestand *Function. json* :
 }
 ```
 
-In Java script komt de geretourneerde waarde voor in de tweede `context.done`para meter voor:
+In Java script komt de geretourneerde waarde voor in de tweede para meter voor `context.done` :
 
 ```javascript
 module.exports = function (context, input) {
@@ -132,7 +131,7 @@ module.exports = function (context, input) {
 
 # <a name="python"></a>[Python](#tab/python)
 
-Hier ziet u de uitvoer binding in het bestand *Function. json* :
+Dit is de uitvoer binding in de *function.jsvoor* het volgende bestand:
 
 ```json
 {

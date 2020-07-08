@@ -7,17 +7,16 @@ ms.service: postgresql
 ms.topic: conceptual
 ms.date: 11/20/2019
 ms.openlocfilehash: bcddd64afca29ac9fdd5d284fc8f809ff9e2477d
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "74535689"
 ---
 # <a name="manage-an-azure-database-for-postgresql-server-using-the-azure-portal"></a>Een Azure Database for PostgreSQL-server beheren met behulp van de Azure Portal
 Dit artikel laat u zien hoe u uw Azure Database for PostgreSQL-servers kunt beheren. Beheer taken zijn onder andere berekening en opslag schalen, beheerders wachtwoord opnieuw instellen en server details weer geven.
 
 ## <a name="sign-in"></a>Aanmelden
-Meld u aan bij de [Azure-portal](https://portal.azure.com).
+Meld u aan bij [Azure Portal](https://portal.azure.com).
 
 ## <a name="create-a-server"></a>Een server maken
 Ga naar de [Quick](quickstart-create-server-database-portal.md) start voor informatie over het maken en aan de slag met een Azure database for postgresql-server.
@@ -99,7 +98,7 @@ U kunt uw server verwijderen als u deze niet meer nodig hebt.
     > [!NOTE]
     > Het verwijderen van een server is onomkeerbaar.
 
-3. Selecteer **verwijderen**.
+3. Selecteer **Verwijderen**.
 
 
 ## <a name="next-steps"></a>Volgende stappen

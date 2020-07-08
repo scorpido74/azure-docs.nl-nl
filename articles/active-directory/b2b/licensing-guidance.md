@@ -12,10 +12,9 @@ manager: celestedg
 ms.reviewer: mal
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 28d02160163da4081ad8adbe233b27fee970a0df
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "74868844"
 ---
 # <a name="azure-active-directory-b2b-collaboration-licensing-guidance"></a>Azure Active Directory B2B-samenwerkings licentie richtlijnen
@@ -30,7 +29,7 @@ B2B gast gebruikers licenties worden automatisch berekend en gerapporteerd op ba
 Bovendien kunnen gast gebruikers gratis Azure AD-functies gebruiken zonder aanvullende licentie vereisten. Gast gebruikers hebben toegang tot gratis Azure AD-functies, zelfs als u geen betaalde Azure AD-licenties hebt. 
 
 ## <a name="examples-calculating-guest-user-licenses"></a>Voor beelden: gebruikers licenties voor gasten berekenen
-Wanneer u hebt vastgesteld hoeveel gast gebruikers toegang nodig hebben tot uw betaalde Azure AD-Services, moet u ervoor zorgen dat u over voldoende betaalde licenties voor Azure AD beschikt om gast gebruikers te voorzien van de vereiste verhouding van 1:5. Hier volgen enkele voorbeelden:
+Wanneer u hebt vastgesteld hoeveel gast gebruikers toegang nodig hebben tot uw betaalde Azure AD-Services, moet u ervoor zorgen dat u over voldoende betaalde licenties voor Azure AD beschikt om gast gebruikers te voorzien van de vereiste verhouding van 1:5. Enkele voorbeelden:
 
 - U wilt 100 gast gebruikers uitnodigen voor uw Azure AD-apps of-services en toegangs beheer en-inrichting bieden. Voor 50 van deze gast gebruikers wilt u ook MFA en voorwaardelijke toegang vereisen, dus voor die functies hebt u 10 Azure AD Premium P1-licenties nodig. Als u van plan bent om functies voor identiteits beveiliging te gebruiken voor uw gast gebruikers, hebt u voor de gast gebruikers Azure AD Premium P2-licenties in dezelfde 1:5-verhouding nodig.
 - U wilt 60 gast gebruikers uitnodigen die alle MFA vereisen, dus u moet ten minste 12 Azure AD Premium P1-licenties hebben. U hebt 10 werk nemers met Azure AD Premium P1-licenties, waardoor Maxi maal 50 gast gebruikers de 1:5-licentie verhouding kunnen hebben. U moet twee extra Premium P1-licenties aanschaffen om 10 extra gast gebruikers te kunnen behandelen.

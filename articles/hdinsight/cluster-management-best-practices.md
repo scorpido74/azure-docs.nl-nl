@@ -9,10 +9,9 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 12/02/2019
 ms.openlocfilehash: 3010c1d597907e7d5c7f82c8b42721dc1f934f6f
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "74782019"
 ---
 # <a name="hdinsight-cluster-management-best-practices"></a>Best practices voor het beheer van HDInsight-cluster
@@ -58,7 +57,7 @@ Leer de aanbevolen procedures voor het beheren van HDInsight-clusters.
 
 | Optie | Documenten |
 |---|---|
-| Automatisch schalen | [Automatisch schalen van Azure HDInsight-clusters](./hdinsight-autoscale-clusters.md) |
+| Automatisch schalen | [Azure HDInsight-clusters automatisch schalen](./hdinsight-autoscale-clusters.md) |
 | Handmatige schaalaanpassing | [Azure HDInsight-clusters schalen](./hdinsight-scaling-best-practices.md) |
 | Bewaken met Ambari| [Cluster prestaties in azure HDInsight bewaken](./hdinsight-key-scenarios-to-monitor.md) |
 | Bewaking met Azure Monitor-logboeken | [Azure Monitor-logboeken gebruiken om HDInsight-clusters te bewaken](./hdinsight-hadoop-oms-log-analytics-tutorial.md) |

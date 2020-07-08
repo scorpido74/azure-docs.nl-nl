@@ -8,10 +8,9 @@ ms.date: 07/11/2017
 ms.author: ccompy
 ms.custom: seodec18
 ms.openlocfilehash: b37708e27887b20604a1fe921f14e51387793737
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "74687264"
 ---
 # <a name="configuring-an-app-service-environment-v1"></a>Een App Service Environment v1 configureren
@@ -125,13 +124,13 @@ In een ASE zijn alle App Service plannen toegewezen App Service plannen. Dit bet
 ### <a name="settings"></a>Instellingen
 Op de Blade ASE vindt u een sectie met **instellingen** die een aantal belang rijke mogelijkheden bevat:
 
-**Settings** > **Eigenschappen**van instellingen: de Blade **instellingen** wordt automatisch geopend wanneer u uw ASE-Blade inbrengt. Bovenaan vindt u **Eigenschappen**. Er zijn hier een aantal items die overbodig zijn voor wat u ziet in **Essentials**, maar wat nuttig is voor **virtueel IP-adres**, evenals **uitgaande IP-adressen**.
+**Instellingen**  >  **Eigenschappen**: de Blade **instellingen** wordt automatisch geopend wanneer u uw ASE-Blade samenbrengt. Bovenaan vindt u **Eigenschappen**. Er zijn hier een aantal items die overbodig zijn voor wat u ziet in **Essentials**, maar wat nuttig is voor **virtueel IP-adres**, evenals **uitgaande IP-adressen**.
 
 ![Blade instellingen en eigenschappen][4]
 
-**Settings** > **IP-adressen**van instellingen: wanneer u een IP-Secure Sockets Layer (SSL)-app in uw ASE maakt, hebt u een IP SSL-adres nodig. Uw ASE moet IP SSL adressen hebben waarvan het eigenaar is dat deze kan worden toegewezen. Wanneer een ASE wordt gemaakt, heeft deze een IP SSL adres voor dit doel, maar u kunt er meer toevoegen. Er worden kosten in rekening gebracht voor extra IP SSL adressen, zoals wordt weer gegeven in [app service prijzen][AppServicePricing] (in de sectie op SSL-verbindingen). De extra prijs is de IP SSL prijs.
+**Instellingen**  >  **IP-adressen**: wanneer u een ip-Secure Sockets Layer (SSL)-app in uw ASE maakt, hebt u een IP SSL-adres nodig. Uw ASE moet IP SSL adressen hebben waarvan het eigenaar is dat deze kan worden toegewezen. Wanneer een ASE wordt gemaakt, heeft deze een IP SSL adres voor dit doel, maar u kunt er meer toevoegen. Er worden kosten in rekening gebracht voor extra IP SSL adressen, zoals wordt weer gegeven in [app service prijzen][AppServicePricing] (in de sectie op SSL-verbindingen). De extra prijs is de IP SSL prijs.
 
-**Settings** > **Front End Pool** / **Werk groepen**voor de front-end-groep instellingen: elk van deze blades in de resource groep biedt de mogelijkheid om alleen informatie in die resource groep te bekijken, naast de besturings elementen om de resource groep volledig te schalen.  
+**Instellingen**  >  **Front-end-pool**  /  **Werk groepen**: elk van deze Blades van de resource groep biedt de mogelijkheid om alleen informatie in die resource groep te bekijken, naast de besturings elementen om de resource groep volledig te schalen.  
 
 De basis-Blade voor elke resource groep biedt een grafiek met metrische gegevens voor die resource groep. Net als bij de grafieken van de Blade ASE kunt u naar de grafiek gaan en de gewenste waarschuwingen instellen. Het instellen van een waarschuwing op de Blade ASE voor een specifieke resource groep heeft hetzelfde effect als het uitvoeren van de resource groep. Op de Blade **instellingen** voor werk groepen hebt u toegang tot alle Apps of app service plannen die worden uitgevoerd in deze werk groep.
 
@@ -154,7 +153,7 @@ Als u de schaal bewerking op de Blade ASE wilt gebruiken, sleept u de schuif reg
 
 ![Gebruikers interface schalen][6]
 
-Als u de mogelijkheden hand matig of automatisch schalen in een specifieke resource groep wilt gebruiken, gaat u naar de gewenste **instellingen** > van de**front-end groep** / **werk groepen** . Open vervolgens de groep die u wilt wijzigen. Ga naar **instellingen** > **uitschalen** of **instellingen** > **Omhoog schalen**. Met de Blade **uitschalen** kunt u de hoeveelheid van het exemplaar bepalen. U kunt de resource grootte bepalen door **omhoog te schalen** .  
+Als u de mogelijkheden hand matig of automatisch schalen in een specifieke resource groep wilt gebruiken, gaat u naar de gewenste **instellingen**van de  >  **front-end groep**  /  **werk groepen** . Open vervolgens de groep die u wilt wijzigen. Ga naar **instellingen**  >  **uitschalen** of **instellingen**  >  **Omhoog schalen**. Met de Blade **uitschalen** kunt u de hoeveelheid van het exemplaar bepalen. U kunt de resource grootte bepalen door **omhoog te schalen** .  
 
 ![Gebruikers interface voor schaal instellingen][7]
 

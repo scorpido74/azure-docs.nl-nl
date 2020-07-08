@@ -5,10 +5,9 @@ ms.date: 09/05/2019
 ms.topic: article
 ms.reviewer: brendal
 ms.openlocfilehash: 14bd0f84bc9490d95d3dbe0b9f122882f0d2059d
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "74324512"
 ---
 # <a name="azure-blockchain-workbench-messaging-integration"></a>Integratie van Azure Block Chain Workbench-berichten
@@ -470,7 +469,7 @@ Bevat informatie over een contract. Het bericht bevat een sectie met contract ei
 | Naam               | Beschrijving |
 |--------------------|-------------|
 | workflowPropertyId | Unieke id voor de werk stroom eigenschap in azure Block Chain workbench |
-| name | Naam van de werk stroom eigenschap |
+| naam | Naam van de werk stroom eigenschap |
 | waarde | Waarde van de werk stroom eigenschap |
 
 Voor beeld van een *ContractMessage* van Block Chain Workbench:
@@ -581,7 +580,7 @@ Bevat informatie over het aanroepen van een contract functie, zoals de functie n
 
 | Naam | Beschrijving |
 |------|-------------|
-| name | Parameternaam |
+| naam | Parameternaam |
 | waarde | Parameterwaarde |
 
 #### <a name="event-message-transaction-information"></a>Trans actie-informatie voor gebeurtenis bericht
@@ -663,14 +662,14 @@ Bevat informatie over het uploaden van een toepassing naar Workbench, zoals de n
 | Naam | Beschrijving |
 |------|-------------|
 | id | De unieke id voor de toepassingsrol binnen Azure Block Chain workbench |
-| name | Naam van de toepassingsrol |
+| naam | Naam van de toepassingsrol |
 
 #### <a name="application-workflow-information"></a>Informatie over de werk stroom van de toepassing
 
 | Naam | Beschrijving |
 |------|-------------|
 | id | Unieke id voor de toepassings werk stroom in azure Block Chain workbench |
-| name | Naam van toepassings werk stroom |
+| naam | Naam van toepassings werk stroom |
 | displayName | Weergave naam van de toepassings werk stroom |
 | vervullen | Verzameling [functies voor de werk stroom van de toepassing](#workflow-function-information)|
 | toestand | Verzameling van [statussen voor de werk stroom van de toepassing](#workflow-state-information) |
@@ -681,14 +680,14 @@ Bevat informatie over het uploaden van een toepassing naar Workbench, zoals de n
 | Naam | Beschrijving |
 |------|-------------|
 | id | Unieke id voor de functie van de werk stroom van de toepassing in azure Block Chain workbench |
-| name | Functienaam |
+| naam | Functienaam |
 | parameters | Para meters voor de functie |
 
 ##### <a name="workflow-state-information"></a>Status informatie werk stroom
 
 | Naam | Beschrijving |
 |------|-------------|
-| name | Status naam |
+| naam | Status naam |
 | displayName | Weergave naam status |
 | stijl | Status stijl (geslaagd of mislukt) |
 
@@ -697,7 +696,7 @@ Bevat informatie over het uploaden van een toepassing naar Workbench, zoals de n
 | Naam | Beschrijving |
 |------|-------------|
 | id | Unieke id voor de eigenschap van de toepassings werk stroom in azure Block Chain workbench |
-| name | Naam van eigenschap |
+| naam | Naam van eigenschap |
 | type | Type eigenschap |
 
 Voor beeld van een *EventMessage-ApplicationIngestion* van Block Chain Workbench:
@@ -848,7 +847,7 @@ Bevat informatie wanneer aan een gebruiker een rol is toegewezen in Workbench, z
 | Naam | Beschrijving |
 |------|-------------|
 | id | De unieke id voor de toepassingsrol binnen Azure Block Chain workbench |
-| name | Naam van de toepassingsrol |
+| naam | Naam van de toepassingsrol |
 
 #### <a name="roleassignment-assigner"></a>RoleAssignment-Toewijzer
 

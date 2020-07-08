@@ -13,10 +13,9 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/10/2018
 ms.openlocfilehash: 598a16d25ba375b984a966cba190181edbda3d15
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "74703158"
 ---
 # <a name="invoke-mapreduce-programs-from-data-factory"></a>MapReduce-Program Ma's aanroepen vanuit Data Factory
@@ -181,13 +180,13 @@ De pijp lijn in dit voor beeld heeft geen invoer. U geeft een uitvoer gegevensse
 ### <a name="pipeline"></a>Pijplijn
 De pijp lijn in dit voor beeld heeft maar één activiteit van het type: HDInsightMapReduce. Enkele van de belang rijke eigenschappen in de JSON zijn: 
 
-| Eigenschap | Opmerkingen |
+| Eigenschap | Notities |
 |:--- |:--- |
 | type |Het type moet zijn ingesteld op **HDInsightMapReduce**. |
 | className |De naam van de klasse is: **WordCount** |
 | jarFilePath |Het pad naar het jar-bestand met de klasse. Als u de volgende code kopieert/plakt, vergeet dan niet om de naam van het cluster te wijzigen. |
 | jarLinkedService |Azure Storage gekoppelde service die het jar-bestand bevat. Deze gekoppelde service verwijst naar de opslag die is gekoppeld aan het HDInsight-cluster. |
-| opmerkingen |Het WordCount-programma neemt twee argumenten, een invoer en een uitvoer. Het invoer bestand is het DaVinci. txt-bestand. |
+| opmerkingen |Het WordCount-programma neemt twee argumenten, een invoer en een uitvoer. Het invoer bestand is het davinci.txt-bestand. |
 | frequency/interval |De waarden voor deze eigenschappen komen overeen met de uitvoer gegevensset. |
 | linkedServiceName |verwijst naar de gekoppelde HDInsight-service die u eerder hebt gemaakt. |
 

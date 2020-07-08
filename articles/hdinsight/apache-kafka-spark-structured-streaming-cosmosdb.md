@@ -9,10 +9,9 @@ ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 11/18/2019
 ms.openlocfilehash: 04faafca0811e60ded47d1e91a82054a1c1cdb25
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "74406162"
 ---
 # <a name="use-apache-spark-structured-streaming-with-apache-kafka-and-azure-cosmos-db"></a>Apache Spark Structured streaming gebruiken met Apache Kafka en Azure Cosmos DB
@@ -47,7 +46,7 @@ Hoewel u hand matig een Azure Virtual Network-, Kafka-en Spark-cluster kunt make
     <img src="./media/apache-kafka-spark-structured-streaming-cosmosdb/resource-manager-deploy.png" alt="Deploy to Azure"/>
     </a>
 
-    De Azure Resource Manager sjabloon bevindt zich in de GitHub-opslag plaats[https://github.com/Azure-Samples/hdinsight-spark-scala-kafka-cosmosdb](https://github.com/Azure-Samples/hdinsight-spark-scala-kafka-cosmosdb)voor dit project ().
+    De Azure Resource Manager sjabloon bevindt zich in de GitHub-opslag plaats voor dit project ( [https://github.com/Azure-Samples/hdinsight-spark-scala-kafka-cosmosdb](https://github.com/Azure-Samples/hdinsight-spark-scala-kafka-cosmosdb) ).
 
     Met deze sjabloon maakt u de volgende bronnen:
 
@@ -68,7 +67,7 @@ Hoewel u hand matig een Azure Virtual Network-, Kafka-en Spark-cluster kunt make
     |---|---|
     |Abonnement|Selecteer uw Azure-abonnement.|
     |Resourcegroep|Een groep maken of een bestaande selecteren. Deze groep bevat het HDInsight-cluster.|
-    |Cosmos DB-account naam|Deze waarde wordt gebruikt als de naam voor het Cosmos DB-account. De naam mag alleen kleine letters, cijfers en het koppel teken (-) bevatten. De waarde moet tussen de 3-31 tekens lang zijn.|
+    |Cosmos DB-account naam|Deze waarde wordt gebruikt als de naam voor het Cosmos DB-account. De naam mag alleen kleine letters, cijfers en het koppelteken (-) bevatten. De naam moet tussen de 3 en 31 tekens lang zijn.|
     |Basis cluster naam|Deze waarde wordt gebruikt als de basis naam voor de Spark-en Kafka-clusters. Als u bijvoorbeeld **myhdi** invoert, wordt een Spark-cluster met de naam __Spark-Myhdi__ en een Kafka-cluster met de naam **Kafka-myhdi**gemaakt.|
     |Cluster versie|De versie van het HDInsight-cluster. Dit voor beeld is getest met HDInsight 3,6 en werkt mogelijk niet met andere cluster typen.|
     |Gebruikersnaam voor clusteraanmelding|De gebruikers naam van de beheerder voor de Spark-en Kafka-clusters.|
@@ -78,7 +77,7 @@ Hoewel u hand matig een Azure Virtual Network-, Kafka-en Spark-cluster kunt make
 
     ![Aangepaste waarden voor HDInsight-implementatie](./media/apache-kafka-spark-structured-streaming-cosmosdb/hdi-custom-parameters.png)
 
-1. Lees de **voorwaarden** en schakel vervolgens het selectievakje **Ik ga akkoord met de bovenstaande voorwaarden** in.
+1. Lees de voor **waarden**en selecteer **Ik ga akkoord met de bovenstaande voor waarden**.
 
 1. Selecteer ten slotte **Inkoop**. Het kan 45 minuten duren om de clusters, het virtuele netwerk en het Cosmos DB-account te maken.
 
@@ -86,7 +85,7 @@ Hoewel u hand matig een Azure Virtual Network-, Kafka-en Spark-cluster kunt make
 
 Het project dat in dit document wordt gebruikt, slaat gegevens op in Cosmos DB. Voordat u de code uitvoert, moet u eerst een _Data Base_ en _verzameling_ maken in uw Cosmos DB-exemplaar. U moet ook het document eindpunt en de _sleutel_ ophalen die wordt gebruikt voor het verifiëren van aanvragen voor Cosmos db.
 
-Een manier om dit te doen is met behulp van de [Azure cli](https://docs.microsoft.com/cli/azure/?view=azure-cli-latest). `kafkadata` Met het volgende script wordt een Data Base gemaakt met de naam `kafkacollection`en een verzameling met de naam. Vervolgens wordt de primaire sleutel geretourneerd.
+Een manier om dit te doen is met behulp van de [Azure cli](https://docs.microsoft.com/cli/azure/?view=azure-cli-latest). Met het volgende script wordt een Data Base gemaakt met de naam `kafkadata` en een verzameling met de naam `kafkacollection` . Vervolgens wordt de primaire sleutel geretourneerd.
 
 ```azurecli
 #!/bin/bash
@@ -128,7 +127,7 @@ De gegevens van het document eindpunt en de primaire sleutel zijn vergelijkbaar 
 
 ## <a name="get-the-notebooks"></a>De notitie blokken ophalen
 
-De code voor het voor beeld dat in dit document wordt beschreven [https://github.com/Azure-Samples/hdinsight-spark-scala-kafka-cosmosdb](https://github.com/Azure-Samples/hdinsight-spark-scala-kafka-cosmosdb), is beschikbaar op.
+De code voor het voor beeld dat in dit document wordt beschreven, is beschikbaar op [https://github.com/Azure-Samples/hdinsight-spark-scala-kafka-cosmosdb](https://github.com/Azure-Samples/hdinsight-spark-scala-kafka-cosmosdb) .
 
 ## <a name="upload-the-notebooks"></a>De notebooks uploaden
 

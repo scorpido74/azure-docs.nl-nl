@@ -4,10 +4,9 @@ description: Gebruik de Azure Portal om Azure Container Registry opslag plaatsen
 ms.topic: article
 ms.date: 01/05/2018
 ms.openlocfilehash: 1da72706d2554610a685f71199ab14af5e30ce1a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "74456292"
 ---
 # <a name="view-container-registry-repositories-in-the-azure-portal"></a>Container register opslagplaatsen weer geven in de Azure Portal
@@ -24,7 +23,7 @@ Met Azure Container Registry kunt u docker-container installatie kopieën opslaa
 
 U kunt een lijst weer geven met de opslag plaatsen die als host fungeren voor uw installatie kopieën, evenals de afbeeldings Tags in de Azure Portal.
 
-Als u de stappen in [push en pull a-installatie kopie](container-registry-get-started-docker-cli.md) hebt uitgevoerd (en de installatie kopie niet meer hebt verwijderd), moet u een nginx-installatie kopie hebben in het container register. De instructies in dat artikel hebben opgegeven dat u de installatie kopie labelt met een naam ruimte, de `/samples/nginx`"voor beelden" in. Als refresher is de opdracht [docker push][docker-push] opgegeven in dat artikel:
+Als u de stappen in [push en pull a-installatie kopie](container-registry-get-started-docker-cli.md) hebt uitgevoerd (en de installatie kopie niet meer hebt verwijderd), moet u een nginx-installatie kopie hebben in het container register. De instructies in dat artikel hebben opgegeven dat u de installatie kopie labelt met een naam ruimte, de "voor beelden" in `/samples/nginx` . Als refresher is de opdracht [docker push][docker-push] opgegeven in dat artikel:
 
 ```Bash
 docker push myregistry.azurecr.io/samples/nginx
@@ -34,7 +33,7 @@ docker push myregistry.azurecr.io/samples/nginx
 
 Een opslag plaats weer geven:
 
-1. Meld u aan bij de [Azure Portal][portal]
+1. Meld u aan bij [Azure Portal][portal]
 1. Selecteer de **Azure container Registry** waarnaar u de nginx-afbeelding hebt gepusht
 1. Selecteer **opslag** plaatsen om een lijst weer te geven met de opslag plaatsen die de installatie kopieën in het REGI ster bevatten
 1. Selecteer een opslag plaats om de afbeeldings codes in die opslag plaats weer te geven

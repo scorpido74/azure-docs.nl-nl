@@ -12,13 +12,12 @@ manager: daveba
 ms.reviewer: jairoc
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: e168deea1ba442d48f483264c1e97ce618040f18
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "74379108"
 ---
-# <a name="troubleshooting-hybrid-azure-active-directory-joined-down-level-devices"></a>Problemen oplossen met hybride Azure Active Directory gekoppelde apparaten op hetzelfde niveau 
+# <a name="troubleshooting-hybrid-azure-active-directory-joined-down-level-devices"></a>Problemen oplossen met hybride Azure Active Directory-gekoppelde, downlevel apparaten 
 
 Dit artikel is alleen van toepassing op de volgende apparaten: 
 
@@ -68,13 +67,13 @@ Als het apparaat niet aan hybride Azure AD is toegevoegd, kunt u proberen om hyb
 
     ![Workplace Join voor Windows](./media/troubleshoot-hybrid-join-windows-legacy/02.png)
     
-   - Autowerkplek. exe kan niet op de achtergrond worden geverifieerd met Azure AD of AD FS. Dit kan worden veroorzaakt door ontbrekende of onjuist geconfigureerde AD FS (voor federatieve domeinen) of ontbrekende of niet-geconfigureerde Azure AD-naadloze eenmalige aanmelding (voor beheerde domeinen) of netwerk problemen. 
+   - Autoworkplace.exe kan niet op de achtergrond worden geverifieerd met Azure AD of AD FS. Dit kan worden veroorzaakt door ontbrekende of onjuist geconfigureerde AD FS (voor federatieve domeinen) of ontbrekende of niet-geconfigureerde Azure AD-naadloze eenmalige aanmelding (voor beheerde domeinen) of netwerk problemen. 
    - Het kan zijn dat multi-factor Authentication (MFA) is ingeschakeld/geconfigureerd voor de gebruiker en WIAORMULTIAUTHN niet is geconfigureerd op de AD FS-server. 
-   - Een andere mogelijkheid is dat de HRD-pagina (Home realm Discovery) wacht op de interactie van de gebruiker, waardoor **autowerkplek. exe** niet op de achtergrond een token kan aanvragen.
+   - Een andere mogelijkheid is dat de HRD-pagina (Home realm Discovery) wacht op gebruikers interactie, waarmee wordt voor komen dat **autoworkplace.exe** een token op de achtergrond aanvraagt.
    - Het kan zijn dat AD FS en Azure AD-Url's ontbreken in de intranet zone van Internet op de client.
-   - Problemen met de netwerk verbinding kunnen verhinderen dat **autowerkers. exe** AD FS of de Url's van Azure AD bereikt. 
-   - Voor **autowerkplek. exe** moet de client rechtstreeks een regel van het gezichts vermogen van de client naar de on-premises AD-domein controller van de organisatie hebben. Dit betekent dat de deelname aan de hybride Azure AD alleen slaagt wanneer de client is verbonden met het intranet van de organisatie.
-   - Uw organisatie maakt gebruik van de naadloze eenmalige aanmelding van `https://autologon.microsoftazuread-sso.com` Azure `https://aadg.windows.net.nsatc.net` AD of is niet aanwezig op de intranet instellingen van het apparaat, en het is niet **mogelijk om updates van de status balk via script in te** scha kelen voor de intranet zone.
+   - Problemen met de netwerk verbinding kunnen verhinderen dat **autoworkplace.exe** AD FS of de Azure AD-url's bereikt. 
+   - **Autoworkplace.exe** vereist dat de client rechtstreeks regel niveau van de client naar de on-premises AD-domein controller van de organisatie kan worden genoteerd. Dit betekent dat de deelname van de hybride Azure AD alleen lukt wanneer de client is verbonden met het intranet van de organisatie.
+   - Uw organisatie maakt gebruik van de naadloze eenmalige aanmelding van Azure AD `https://autologon.microsoftazuread-sso.com` of is `https://aadg.windows.net.nsatc.net` niet aanwezig op de intranet instellingen van het apparaat, en het is niet **mogelijk om updates van de status balk via script in te** scha kelen voor de intranet zone.
 - U bent niet aangemeld als een domein gebruiker
 
    ![Workplace Join voor Windows](./media/troubleshoot-hybrid-join-windows-legacy/03.png)

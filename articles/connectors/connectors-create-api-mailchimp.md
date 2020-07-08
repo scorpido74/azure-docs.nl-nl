@@ -8,10 +8,9 @@ ms.topic: article
 ms.date: 08/18/2016
 tags: connectors
 ms.openlocfilehash: a440f702058abc25bb360111418c451d59c3ab1b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "74789628"
 ---
 # <a name="get-started-with-the-mailchimp-connector"></a>Aan de slag met de MailChimp-connector
@@ -26,7 +25,7 @@ Als u logische apps met MailChimp wilt maken, moet u eerst een **verbinding** ma
 
 | Eigenschap | Vereist | Beschrijving |
 | --- | --- | --- |
-| Token |Ja |MailChimp-referenties opgeven |
+| Token |Yes |MailChimp-referenties opgeven |
 
 > [!INCLUDE [Steps to create a connection to MailChimp](../../includes/connectors-create-api-mailchimp.md)]
 

@@ -9,10 +9,9 @@ ms.topic: conceptual
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.date: 11/20/2019
 ms.openlocfilehash: 73a2a612a4eeb4a59f12abf0660fffb092f0547f
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "74327199"
 ---
 # <a name="use-a-java-udf-with-apache-hive-in-hdinsight"></a>Een Java UDF gebruiken met Apache Hive in HDInsight
@@ -23,8 +22,8 @@ Meer informatie over het maken van een op Java gebaseerde, door de gebruiker ged
 
 * Een Hadoop-cluster in HDInsight. Zie aan de [slag met HDInsight op Linux](./apache-hadoop-linux-tutorial-get-started.md).
 * [JDK-versie 8 (Java Developer Kit)](https://aka.ms/azure-jdks)
-* [Apache Maven](https://maven.apache.org/download.cgi) is op de juiste wijze [geïnstalleerd](https://maven.apache.org/install.html) volgens Apache.  Maven is een project voor het maken van een systeem voor Java-projecten.
-* Het [URI-schema](../hdinsight-hadoop-linux-information.md#URI-and-scheme) voor de primaire opslag van uw clusters. Dit is wasb://voor Azure Storage, abfs://voor Azure Data Lake Storage Gen2 of adl://voor Azure Data Lake Storage Gen1. Als beveiligde overdracht is ingeschakeld voor Azure Storage, zou de URI zijn `wasbs://`.  Zie ook [beveiligde overdracht](../../storage/common/storage-require-secure-transfer.md).
+* [Apache Maven](https://maven.apache.org/download.cgi) correct [geïnstalleerd](https://maven.apache.org/install.html) volgens Apache.  Maven is een systeem voor het bouwen van Java-projecten.
+* Het [URI-schema](../hdinsight-hadoop-linux-information.md#URI-and-scheme) voor de primaire opslag van uw clusters. Dit is wasb://voor Azure Storage, abfs://voor Azure Data Lake Storage Gen2 of adl://voor Azure Data Lake Storage Gen1. Als beveiligde overdracht is ingeschakeld voor Azure Storage, zou de URI zijn `wasbs://` .  Zie ook [beveiligde overdracht](../../storage/common/storage-require-secure-transfer.md).
 
 * Een tekst editor of Java IDE
 
@@ -50,7 +49,7 @@ cd C:\HDI
     mvn archetype:generate -DgroupId=com.microsoft.examples -DartifactId=ExampleUDF -DarchetypeArtifactId=maven-archetype-quickstart -DinteractiveMode=false
     ```
 
-    Met deze opdracht maakt u een `exampleudf`map met de naam, die het Maven-project bevat.
+    Met deze opdracht maakt u een map `exampleudf` met de naam, die het Maven-project bevat.
 
 2. Zodra het project is gemaakt, verwijdert u de `exampleudf/src/test` map die is gemaakt als onderdeel van het project door de volgende opdracht in te voeren:
 
@@ -144,7 +143,7 @@ cd C:\HDI
 
     Sla het bestand op nadat de wijzigingen zijn aangebracht.
 
-4. Voer de onderstaande opdracht in om een nieuw bestand `ExampleUDF.java`te maken en te openen:
+4. Voer de onderstaande opdracht in om een nieuw bestand te maken en te openen `ExampleUDF.java` :
 
     ```cmd
     notepad src/main/java/com/microsoft/examples/ExampleUDF.java
@@ -181,7 +180,7 @@ cd C:\HDI
 
 ## <a name="build-and-install-the-udf"></a>De UDF maken en installeren
 
-Vervang `sshuser` in de onderstaande opdrachten door de daad werkelijke gebruikers naam als deze niet overeenkomt. Vervang `mycluster` door de daad werkelijke cluster naam.
+Vervang in de onderstaande opdrachten door `sshuser` de daad werkelijke gebruikers naam als deze niet overeenkomt. Vervang door `mycluster` de daad werkelijke cluster naam.
 
 1. Compileer de UDF en verpak deze door de volgende opdracht in te voeren:
 
@@ -189,7 +188,7 @@ Vervang `sshuser` in de onderstaande opdrachten door de daad werkelijke gebruike
     mvn compile package
     ```
 
-    Met deze opdracht bouwt en verpakt de UDF in `exampleudf/target/ExampleUDF-1.0-SNAPSHOT.jar` het bestand.
+    Met deze opdracht bouwt en verpakt de UDF in het `exampleudf/target/ExampleUDF-1.0-SNAPSHOT.jar` bestand.
 
 2. Gebruik de `scp` opdracht om het bestand te kopiëren naar het HDInsight-cluster door de volgende opdracht in te voeren:
 
@@ -219,7 +218,7 @@ Vervang `sshuser` in de onderstaande opdrachten door de daad werkelijke gebruike
 
     Bij deze opdracht wordt ervan uitgegaan dat u de standaard **beheerder** hebt gebruikt voor het aanmeldings account voor uw cluster.
 
-2. Zodra u de `jdbc:hive2://localhost:10001/>` prompt hebt ontvangen, voert u het volgende in om de UDF toe te voegen aan Hive en deze beschikbaar te maken als een functie.
+2. Zodra u de prompt hebt ontvangen `jdbc:hive2://localhost:10001/>` , voert u het volgende in om de UDF toe te voegen aan Hive en deze beschikbaar te maken als een functie.
 
     ```hiveql
     ADD JAR wasbs:///example/jars/ExampleUDF-1.0-SNAPSHOT.jar;

@@ -12,15 +12,14 @@ manager: celestedg
 ms.reviewer: mal
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 08dbb81b91def2fd464ecc85c2d2eaf45ed189d5
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "74271781"
 ---
 # <a name="understand-user-tokens-in-azure-ad-b2b-collaboration"></a>Informatie over gebruikers tokens in azure AD B2B-samen werking
 
-Als u wilt weten wat het token is voor een B2B-samenwerkings gebruiker, ziet u hier de details van de Bearer-token en de token inhoud voor een Azure Active Directory (Azure AD) gast en een Microsoft-account Gast in de resource Tenant (voor tenantid 04dcc6ab-388a-4559-b527-fbec656300ea). Als u de inhoud van de JSON Web Token (JWT) [https://jwt.io/](https://jwt.io/) wilt [https://jwt.ms/](https://jwt.ms/)weer geven, gebruikt u of.
+Als u wilt weten wat het token is voor een B2B-samenwerkings gebruiker, ziet u hier de details van de Bearer-token en de token inhoud voor een Azure Active Directory (Azure AD) gast en een Microsoft-account Gast in de resource Tenant (voor tenantid 04dcc6ab-388a-4559-b527-fbec656300ea). Als u de inhoud van de JSON Web Token (JWT) wilt weer geven, gebruikt u [https://jwt.io/](https://jwt.io/) of [https://jwt.ms/](https://jwt.ms/) .
 
 ## <a name="azure-ad-guest-token"></a>Azure AD-gast token
 ```

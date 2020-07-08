@@ -7,10 +7,9 @@ ms.topic: conceptual
 ms.date: 05/31/2019
 ms.author: tisande
 ms.openlocfilehash: cca62c358037dbe99fd16746ee081b1540161df2
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "74873417"
 ---
 # <a name="azure-cosmos-db-sql-query-constants"></a>Azure Cosmos DB SQL-query constanten  
@@ -23,13 +22,13 @@ ms.locfileid: "74873417"
 |-|-|  
 |**Undefined**|Enkele waarde: niet **gedefinieerd**|  
 |**Null**|Enkele waarde: **Null**|  
-|**Booleaans**|Waarden: **False**, **True**.|  
-|**Telwoord**|Een drijvende-komma getal met dubbele precisie, IEEE 754-standaard.|  
+|**Boolean-waarde**|Waarden: **False**, **True**.|  
+|**Number**|Een drijvende-komma getal met dubbele precisie, IEEE 754-standaard.|  
 |**Tekenreeks**|Een reeks van nul of meer Unicode-tekens. Teken reeksen moeten tussen enkele of dubbele aanhalings tekens worden geplaatst.|  
-|**Array**|Een reeks van nul of meer elementen. Elk element kan een waarde van elk scalair gegevens type zijn, behalve niet **gedefinieerd**.|  
+|**Matrix**|Een reeks van nul of meer elementen. Elk element kan een waarde van elk scalair gegevens type zijn, behalve niet **gedefinieerd**.|  
 |**Object**|Een niet-geordende set met nul of meer naam/waarde-paren. Naam is een Unicode-teken reeks, waarde kan van elk scalair gegevens type zijn, behalve niet **gedefinieerd**.|  
   
-## <a name="syntax"></a><a name="bk_syntax"></a>Syntaxis
+## <a name="syntax"></a><a name="bk_syntax"></a>Syntax
   
 ```sql  
 <constant> ::=  
@@ -107,7 +106,7 @@ ms.locfileid: "74873417"
 |-|-|-|  
 |\\'|apostrof (')|U + 0027|  
 |\\"|aanhalings teken (")|U + 0022|  
-|\\\ |omgekeerde schuine streep\\()|U + 005C|  
+|\\\ |omgekeerde schuine streep ( \\ )|U + 005C|  
 |\\/|schuine streep (/)|U + 002F|  
 |\b|Backspace|U + 0008|  
 |\f|formulier feed|U + 000C|  

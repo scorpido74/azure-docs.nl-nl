@@ -4,21 +4,20 @@ description: Meer informatie over het uitvoeren van een snelle diagnose opdracht
 ms.topic: article
 ms.date: 07/02/2019
 ms.openlocfilehash: ea4432c9e92c4a0380517e39678814e2d1cb3bfc
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "74456409"
 ---
 # <a name="check-the-health-of-an-azure-container-registry"></a>De status van een Azure container Registry controleren
 
 Wanneer u een Azure container Registry gebruikt, kunnen er af en toe problemen optreden. Het is bijvoorbeeld mogelijk dat u geen container installatie kopie kunt ophalen vanwege een probleem met docker in uw lokale omgeving. Het is ook mogelijk dat een netwerk probleem geen verbinding kan maken met het REGI ster. 
 
-Als eerste diagnostische stap voert u de opdracht [AZ ACR check-Health][az-acr-check-health] uit om informatie over de status van de omgeving en eventueel toegang tot een doel register te verkrijgen. Deze opdracht is beschikbaar in azure CLI-versie 2.0.67 of hoger. Als u Azure CLI 2.0 wilt installeren of upgraden, raadpleegt u [Azure CLI 2.0 installeren][azure-cli].
+Als eerste diagnostische stap voert u de opdracht [AZ ACR check-Health][az-acr-check-health] uit om informatie over de status van de omgeving en eventueel toegang tot een doel register te verkrijgen. Deze opdracht is beschikbaar in azure CLI-versie 2.0.67 of hoger. Zie [Azure CLI installeren][azure-cli] als u de CLI wilt installeren of een upgrade wilt uitvoeren.
 
 ## <a name="run-az-acr-check-health"></a>Uitvoeren AZ ACR check-Health
 
-In de volgende voor beelden ziet u verschillende manieren `az acr check-health` om de opdracht uit te voeren.
+In de volgende voor beelden ziet u verschillende manieren om de opdracht uit te voeren `az acr check-health` .
 
 > [!NOTE]
 > Als u de opdracht uitvoert in Azure Cloud Shell, wordt de lokale omgeving niet gecontroleerd. U kunt echter de toegang tot een doel register controleren.

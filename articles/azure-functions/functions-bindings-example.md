@@ -1,24 +1,23 @@
 ---
-title: Voor beeld van trigger en binding Azure Functions
+title: Voorbeeld van trigger en binding met Azure Functions
 description: Meer informatie over het configureren van Azure function-bindingen
 author: craigshoemaker
 ms.topic: reference
 ms.date: 02/18/2019
 ms.author: cshoe
 ms.openlocfilehash: 8685c0fe02ad6c68918736e857c2015e2bfb4595
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "74227246"
 ---
-# <a name="azure-functions-trigger-and-binding-example"></a>Voor beeld van trigger en binding Azure Functions
+# <a name="azure-functions-trigger-and-binding-example"></a>Voorbeeld van trigger en binding met Azure Functions
 
 In dit artikel wordt beschreven hoe u een [trigger en bindingen](./functions-triggers-bindings.md) configureert in een Azure-functie.
 
 Stel dat u een nieuwe rij wilt schrijven naar Azure-tabel opslag wanneer er een nieuw bericht wordt weer gegeven in de Azure-wachtrij opslag. Dit scenario kan worden geïmplementeerd met een Azure Queue Storage-trigger en een Azure Table Storage-uitvoerbinding. 
 
-Hier is een *Function. json* -bestand voor dit scenario. 
+Hier volgt een *function.jsin* het bestand voor dit scenario. 
 
 ```json
 {
@@ -41,18 +40,18 @@ Hier is een *Function. json* -bestand voor dit scenario.
 }
 ```
 
-Het eerste element in de `bindings` matrix is de opslag trigger voor de wachtrij. De `type` eigenschappen `direction` en identificeren de trigger. De `name` eigenschap identificeert de functie parameter die de inhoud van het wachtrij bericht ontvangt. De naam van de wachtrij die moet worden bewaakt `queueName`, en de Connection String bevindt zich in de app `connection`-instelling geïdentificeerd door.
+Het eerste element in de `bindings` matrix is de opslag trigger voor de wachtrij. De `type` `direction` Eigenschappen en identificeren de trigger. De `name` eigenschap identificeert de functie parameter die de inhoud van het wachtrij bericht ontvangt. De naam van de wachtrij die moet worden bewaakt `queueName` , en de Connection String bevindt zich in de app-instelling geïdentificeerd door `connection` .
 
-Het tweede element in de `bindings` matrix is de Azure Table Storage-uitvoer binding. De `type` eigenschappen `direction` en identificeren de binding. De `name` eigenschap geeft aan hoe de functie de nieuwe tabelrij levert, in dit geval met behulp van de functie retour waarde. De naam van de tabel is in `tableName`en de Connection String bevindt zich in de app- `connection`instelling geïdentificeerd door.
+Het tweede element in de `bindings` matrix is de Azure Table Storage-uitvoer binding. De `type` `direction` Eigenschappen en identificeren de binding. De `name` eigenschap geeft aan hoe de functie de nieuwe tabelrij levert, in dit geval met behulp van de functie retour waarde. De naam van de tabel is in `tableName` en de Connection String bevindt zich in de app-instelling geïdentificeerd door `connection` .
 
-Als u de inhoud van *Function. json* in de Azure Portal wilt bekijken en bewerken, klikt u op het tabblad **integreren** van uw functie op de optie **Geavanceerde editor** .
+Als u de inhoud van *function.js* wilt weer geven en bewerken in de Azure Portal, klikt u op de optie **Geavanceerde editor** op het tabblad **integreren** van uw functie.
 
 > [!NOTE]
-> De waarde van `connection` is de naam van een app-instelling die de Connection String bevat, niet de connection string zelf. Bindingen gebruiken verbindings reeksen die zijn opgeslagen in de app-instellingen voor het afdwingen van de best practice die *Function. json* bevat geen service geheimen.
+> De waarde van `connection` is de naam van een app-instelling die de Connection String bevat, niet de connection string zelf. Bindingen gebruiken verbindings reeksen die zijn opgeslagen in de app-instellingen om de best practice te afdwingen waarvan *function.json* geen service geheimen bevat.
 
 ## <a name="c-script-example"></a>Voor beeld van C#-script
 
-Hier volgt een C#-script code die werkt met deze trigger en binding. U ziet dat de naam van de para meter die de inhoud van het `order`wachtrij bericht levert, is; Deze naam is vereist omdat de `name` waarde van de eigenschap in *Function. json* is`order` 
+Hier volgt een C#-script code die werkt met deze trigger en binding. U ziet dat de naam van de para meter die de inhoud van het wachtrij bericht levert `order` , is. deze naam is vereist omdat de waarde van de `name` eigenschap in *function.jsop* is`order` 
 
 ```cs
 #r "Newtonsoft.Json"
@@ -82,7 +81,7 @@ public class Person
 
 ## <a name="javascript-example"></a>Java script-voor beeld
 
-Hetzelfde *Function. json* -bestand kan worden gebruikt met een Java script-functie:
+Dezelfde *function.jsvoor* het bestand kan worden gebruikt met een Java script-functie:
 
 ```javascript
 // From an incoming queue message that is a JSON object, add fields and write to Table Storage
@@ -102,7 +101,7 @@ function generateRandomId() {
 
 ## <a name="class-library-example"></a>Class Library-voor beeld
 
-In een klassen bibliotheek worden dezelfde trigger-en binding informatie &mdash; wachtrij en tabel namen, opslag accounts, functie parameters voor invoer en uitvoer &mdash; verstrekt door kenmerken in plaats van een function. JSON-bestand. Hier volgt een voorbeeld:
+In een klassen bibliotheek worden dezelfde trigger-en binding informatie &mdash; wachtrij en tabel namen, opslag accounts, functie parameters voor invoer en uitvoer &mdash; verstrekt door kenmerken in plaats van een function.jsin het bestand. Hier volgt een voorbeeld:
 
 ```csharp
 public static class QueueTriggerTableOutput

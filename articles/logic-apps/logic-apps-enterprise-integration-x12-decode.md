@@ -9,15 +9,14 @@ ms.reviewer: jonfan, estfan, logicappspm
 ms.topic: article
 ms.date: 01/27/2017
 ms.openlocfilehash: 918516a5629f8570d54c641ffc29f2367937266f
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "74792368"
 ---
 # <a name="decode-x12-messages-in-azure-logic-apps-with-enterprise-integration-pack"></a>X12-berichten in Azure Logic Apps decoderen met Enterprise Integration Pack
 
-Met de decodeer X12-berichten connector kunt u de envelop valideren op basis van een overeenkomst voor handels partners, EDI-en partner-specifieke eigenschappen valideren, interacties in trans acties opsplitsen of de hele intervallen behouden en bevestigingen voor verwerkte trans acties genereren. Als u deze connector wilt gebruiken, moet u de connector toevoegen aan een bestaande trigger in uw logische app.
+Met de connector voor het decoderen van X12-berichten kunt u de envelop valideren op basis van een overeenkomst, EDI- en partner-specifieke eigenschappen valideren, interacties in transactiesets splitsen of volledige uitwisselingen behouden en bevestigingen voor verwerkte transacties genereren. Als u deze connector wilt gebruiken, moet u de connector toevoegen aan een bestaande trigger in uw logische app.
 
 ## <a name="before-you-start"></a>Voordat u begint
 
@@ -88,13 +87,13 @@ De X12 decode connector voert de volgende taken uit:
   * Hiermee wordt het controle nummer van de transactieset gecontroleerd op andere trans actie besturings nummers instellen in die groep.
 * Splitst de uitwisseling in transactie sets of behoudt de volledige uitwisseling:
   * Gesplitste uitwisseling als transactie sets: Stel transactie sets uit bij fout: Splits de uitwisseling in transactie sets en parseert elke transactie groep. 
-  Met de dedecodeer actie X12 worden alleen de transactie sets uitgevoerd waarvoor de `badMessages`validatie is mislukt, en worden de resterende trans `goodMessages`acties ingesteld op.
+  Met de dedecodeer actie X12 worden alleen de transactie sets uitgevoerd waarvoor `badMessages` de validatie is mislukt, en worden de resterende trans acties ingesteld op `goodMessages` .
   * Gesplitste uitwisseling als transactie sets-uitwisseling onderbreken bij fout: het splitsen van uitwisseling in transactie sets en het parseren van elke transactie groep. 
-  Als een of meer transactie sets in de uitwisseling mislukt, worden met de dedecodeer actie X12 alle transactie sets in die uitwisseling uitgevoerd naar `badMessages`.
+  Als een of meer transactie sets in de uitwisseling mislukt, worden met de dedecodeer actie X12 alle transactie sets in die uitwisseling uitgevoerd naar `badMessages` .
   * Trans actie sets met uitwisselingen behouden bij fout: de uitwisseling behouden en de volledige batch uitwisseling verwerken. 
-  Met de dedecodeer actie X12 worden alleen de transactie sets uitgevoerd waarvoor de `badMessages`validatie is mislukt, en worden de resterende trans `goodMessages`acties ingesteld op.
+  Met de dedecodeer actie X12 worden alleen de transactie sets uitgevoerd waarvoor `badMessages` de validatie is mislukt, en worden de resterende trans acties ingesteld op `goodMessages` .
   * Uitwisseling van Interchange-Suspend behouden bij fout: behoud de uitwisseling en verwerk de volledige batch uitwisseling. 
-  Als een of meer transactie sets in de uitwisseling mislukt, worden met de dedecodeer actie X12 alle transactie sets in die uitwisseling uitgevoerd naar `badMessages`. 
+  Als een of meer transactie sets in de uitwisseling mislukt, worden met de dedecodeer actie X12 alle transactie sets in die uitwisseling uitgevoerd naar `badMessages` . 
 * Hiermee wordt een technische en/of functionele bevestiging gegenereerd (indien geconfigureerd).
   * Een technische bevestiging wordt gegenereerd als gevolg van de validatie van de header. De technische bevestiging rapporteert de status van de verwerking van een uitwisselings header en trailer door de ontvanger van het adres.
   * Een functie bevestiging wordt gegenereerd als gevolg van de validatie van de hoofd tekst. De functie bevestigings rapporteert elke fout die is opgetreden tijdens het verwerken van het ontvangen document

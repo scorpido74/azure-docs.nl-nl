@@ -8,17 +8,16 @@ ms.date: 12/02/2019
 ms.author: girobins
 ms.custom: query-reference
 ms.openlocfilehash: 6f41adbb726313ef095084d079dc7852736e0c06
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "74870527"
 ---
 # <a name="system-functions-azure-cosmos-db"></a>Systeem functies (Azure Cosmos DB)
 
  Cosmos DB biedt veel ingebouwde SQL-functies. De categorieën ingebouwde functies worden hieronder weer gegeven.  
   
-|Functiegroep|Beschrijving|Bewerkingen|  
+|Functiegroep|Description|Bewerkingen|  
 |--------------|-----------------|-----------------| 
 |[Matrixfuncties](sql-query-array-functions.md)|De matrix functies voeren een bewerking uit op een invoer waarde van een matrix en retour neren numerieke, Booleaanse of matrix waarde. | [ARRAY_CONCAT](sql-query-array-concat.md), [ARRAY_CONTAINS](sql-query-array-contains.md), [ARRAY_LENGTH](sql-query-array-length.md), [ARRAY_SLICE](sql-query-array-slice.md) |
 |[Datum-en tijd functies](sql-query-date-time-functions.md)|Met de functies datum en tijd kunt u de huidige UTC-datum en-tijd in twee vormen ophalen. een numerieke tijds tempel waarvan de waarde de UNIX-epoche is in milliseconden of als een teken reeks die voldoet aan de ISO 8601-indeling. | [GetCurrentDateTime](sql-query-getcurrentdatetime.md), [GetCurrentTimestamp](sql-query-getcurrenttimestamp.md) |
@@ -33,7 +32,7 @@ Als u momenteel een door de gebruiker gedefinieerde functie (UDF) gebruikt waarv
 
 ## <a name="built-in-versus-ansi-sql-functions"></a>Ingebouwde versus ANSI SQL-functies
 
-Het belangrijkste verschil tussen Cosmos DB functies en ANSI SQL-functies is dat Cosmos DB-functies zijn ontworpen om goed te werken met schemaloze en gemengde schema gegevens. Als bijvoorbeeld een eigenschap ontbreekt of een niet-numerieke waarde heeft zoals `unknown`, wordt het item overgeslagen in plaats van een fout te retour neren.
+Het belangrijkste verschil tussen Cosmos DB functies en ANSI SQL-functies is dat Cosmos DB-functies zijn ontworpen om goed te werken met schemaloze en gemengde schema gegevens. Als bijvoorbeeld een eigenschap ontbreekt of een niet-numerieke waarde heeft zoals `unknown` , wordt het item overgeslagen in plaats van een fout te retour neren.
 
 ## <a name="next-steps"></a>Volgende stappen
 

@@ -6,10 +6,9 @@ ms.topic: article
 ms.date: 10/30/2018
 ms.custom: seodec18
 ms.openlocfilehash: ed84cb2b0cb8d98b12fe787e49c400ba47e4e38a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "74671612"
 ---
 # <a name="operating-system-functionality-on-azure-app-service"></a>Functionaliteit van het besturings systeem op Azure App Service
@@ -33,7 +32,7 @@ Omdat App Service een naadloze schaal baarheid tussen verschillende lagen onders
 ## <a name="development-frameworks"></a>Ontwikkelings raamwerken
 App Service prijs categorieën bepalen de hoeveelheid reken bronnen (CPU, schijf opslag, geheugen en netwerk uitgaand verkeer) die beschikbaar zijn voor apps. De breedte van de Framework-functionaliteit die beschikbaar is voor apps, blijft echter hetzelfde, ongeacht de schaal lagen.
 
-App Service ondersteunt diverse ontwikkel frameworks, waaronder ASP.NET, klassieke ASP, node. js, PHP en Python, die allemaal worden uitgevoerd als uitbrei dingen in IIS. Om beveiligings configuratie te vereenvoudigen en te normaliseren, moeten App Service-apps doorgaans de verschillende ontwikkel Frameworks uitvoeren met de standaard instellingen. Een van de methoden voor het configureren van apps kan de API surface area en de functionaliteit voor elk afzonderlijk ontwikkelings raamwerk aanpassen. App Service in plaats daarvan heeft een meer algemene benadering door een algemene basis van de functionaliteit van het besturings systeem in te scha kelen, ongeacht het ontwikkelings raamwerk van een app.
+App Service ondersteunt diverse ontwikkel frameworks, waaronder ASP.NET, klassieke ASP, node.js, PHP en Python, die allemaal worden uitgevoerd als uitbrei dingen in IIS. Om beveiligings configuratie te vereenvoudigen en te normaliseren, moeten App Service-apps doorgaans de verschillende ontwikkel Frameworks uitvoeren met de standaard instellingen. Een van de methoden voor het configureren van apps kan de API surface area en de functionaliteit voor elk afzonderlijk ontwikkelings raamwerk aanpassen. App Service in plaats daarvan heeft een meer algemene benadering door een algemene basis van de functionaliteit van het besturings systeem in te scha kelen, ongeacht het ontwikkelings raamwerk van een app.
 
 De volgende secties bevatten een overzicht van de algemene soorten functionaliteit van het besturings systeem die beschikbaar zijn voor App Service-apps.
 
@@ -55,7 +54,7 @@ Het is belang rijk om uw schijf gebruik te bewaken naarmate uw toepassing groeit
 
 - De app genereert mogelijk een fout die aangeeft dat er onvoldoende ruimte op de schijf is.
 - Er worden mogelijk schijf fouten weer geven wanneer u naar de kudu-console bladert.
-- Implementatie vanuit Azure DevOps of Visual Studio kan mislukken met `ERROR_NOT_ENOUGH_DISK_SPACE: Web deployment task failed. (Web Deploy detected insufficient space on disk)`.
+- Implementatie vanuit Azure DevOps of Visual Studio kan mislukken met `ERROR_NOT_ENOUGH_DISK_SPACE: Web deployment task failed. (Web Deploy detected insufficient space on disk)` .
 - Uw app kan tragere prestaties verslechteren.
 
 <a id="NetworkDrives"></a>
@@ -76,7 +75,7 @@ Op de lokale stations die zijn gekoppeld aan de virtuele machine waarop een app 
 
 Twee voor beelden van hoe App Service tijdelijke lokale opslag gebruikt, zijn de map voor tijdelijke ASP.NET-bestanden en de map voor IIS-gecomprimeerde bestanden. Het ASP.NET-compilatie systeem gebruikt de map ' Temporary ASP.NET files ' als tijdelijke compilatie cache locatie. IIS maakt gebruik van de directory ' IIS Temporary Compressed Files ' voor het opslaan van de uitvoer van gecomprimeerde antwoorden. Beide typen bestands gebruik (evenals andere) worden opnieuw toegewezen in App Service aan de tijdelijke lokale opslag per app. Deze opnieuw toewijzen zorgt ervoor dat de functionaliteit wordt voortgezet zoals verwacht.
 
-Elke app in App Service wordt uitgevoerd als een wille keurige unieke id voor een werk proces met beperkte machtigingen, de ' identiteit van de [https://www.iis.net/learn/manage/configuring-security/application-pool-identities](https://www.iis.net/learn/manage/configuring-security/application-pool-identities)groep van toepassingen ', zoals hier wordt beschreven:. Toepassings code gebruikt deze identiteit voor basis alleen-lezen toegang tot het station van het besturings systeem (de D:\ station). Dit betekent dat de toepassings code algemene mapstructuren kan weer geven en algemene bestanden op het besturingssysteem station kan lezen. Hoewel dit een enigszins breed onderliggend toegangs niveau lijkt, zijn dezelfde mappen en bestanden toegankelijk wanneer u een werknemersrol inricht in een door Azure gehoste service en de inhoud van het station leest. 
+Elke app in App Service wordt uitgevoerd als een wille keurige unieke id voor een werk proces met beperkte machtigingen, de ' identiteit van de groep van toepassingen ', zoals hier wordt beschreven: [https://www.iis.net/learn/manage/configuring-security/application-pool-identities](https://www.iis.net/learn/manage/configuring-security/application-pool-identities) . Toepassings code gebruikt deze identiteit voor basis alleen-lezen toegang tot het station van het besturings systeem (de D:\ station). Dit betekent dat de toepassings code algemene mapstructuren kan weer geven en algemene bestanden op het besturingssysteem station kan lezen. Hoewel dit een enigszins breed onderliggend toegangs niveau lijkt, zijn dezelfde mappen en bestanden toegankelijk wanneer u een werknemersrol inricht in een door Azure gehoste service en de inhoud van het station leest. 
 
 <a name="multipleinstances"></a>
 
@@ -115,7 +114,7 @@ De diagnostische logboeken en tracering die niet beschikbaar zijn voor apps zijn
 <a id="RegistryAccess"></a>
 
 ## <a name="registry-access"></a>Toegang tot het REGI ster
-Apps hebben alleen-lezen toegang tot veel (maar niet alle) van het REGI ster van de virtuele machine waarop ze worden uitgevoerd. In de praktijk betekent dit dat register sleutels die alleen-lezen toegang tot de lokale gebruikers groep toestaan, toegankelijk zijn voor apps. Een gedeelte van het REGI ster dat momenteel niet wordt ondersteund voor een lees-of schrijf toegang is\_de\_HKEY huidige gebruikers component.
+Apps hebben alleen-lezen toegang tot veel (maar niet alle) van het REGI ster van de virtuele machine waarop ze worden uitgevoerd. In de praktijk betekent dit dat register sleutels die alleen-lezen toegang tot de lokale gebruikers groep toestaan, toegankelijk zijn voor apps. Een gedeelte van het REGI ster dat momenteel niet wordt ondersteund voor een lees-of schrijf toegang is de HKEY \_ huidige \_ gebruikers component.
 
 Schrijf toegang tot het REGI ster is geblokkeerd, inclusief toegang tot register sleutels per gebruiker. Vanuit het perspectief van de app mag schrijf toegang tot het REGI ster nooit worden vertrouwd in de Azure-omgeving, omdat apps kunnen (en doen) worden gemigreerd naar verschillende virtuele machines. De enige permanente schrijf bare opslag die kan worden verzorgd door een app is de inhouds mappen structuur per app die is opgeslagen op de App Service UNC-shares. 
 

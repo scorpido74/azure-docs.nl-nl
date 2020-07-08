@@ -4,15 +4,14 @@ description: Toegang bieden tot installatie kopieën in uw persoonlijke containe
 ms.topic: article
 ms.date: 10/04/2019
 ms.openlocfilehash: 37da784c8e95a5f5b924532e4a019552924a1a3f
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "74455404"
 ---
 # <a name="azure-container-registry-authentication-with-service-principals"></a>Verificatie Azure Container Registry met Service-principals
 
-U kunt een service-principal voor Azure Active Directory (Azure AD) gebruiken om een `docker push` container `pull` installatie kopie te bieden en toegang te krijgen tot uw container register. Met behulp van een Service-Principal kunt u toegang bieden tot ' headless ' Services en toepassingen.
+U kunt een service-principal voor Azure Active Directory (Azure AD) gebruiken om een container installatie kopie te bieden `docker push` en `pull` toegang te krijgen tot uw container register. Met behulp van een Service-Principal kunt u toegang bieden tot ' headless ' Services en toepassingen.
 
 ## <a name="what-is-a-service-principal"></a>Wat is een service-principal?
 
@@ -24,7 +23,7 @@ In de context van Azure Container Registry kunt u een Azure AD-service-principal
 
 Als u een service-principal voor Azure AD gebruikt, kunt u toegang tot uw persoonlijke container register verlenen. Maak verschillende service-principals voor elk van uw toepassingen of services, elk met aangepaste toegangs rechten voor uw REGI ster. En omdat u het delen van referenties tussen services en toepassingen kunt voor komen, kunt u referenties draaien of de toegang intrekken voor alleen de Service-Principal (en dus de toepassing) die u kiest.
 
-Configureer bijvoorbeeld uw webtoepassing voor het gebruik van een service-principal die hiermee alleen toegang `pull` geeft tot de installatie kopie, terwijl uw build-systeem een Service-Principal gebruikt `push` die `pull` deze zowel heeft als toegang verschaft. Als de ontwikkeling van uw toepassing wordt gewijzigd, kunt u de referenties van de Service-Principal draaien zonder dat dit van invloed is op het build-systeem.
+Configureer bijvoorbeeld uw webtoepassing voor het gebruik van een service-principal die hiermee `pull` alleen toegang geeft tot de installatie kopie, terwijl uw build-systeem een Service-Principal gebruikt die deze zowel heeft `push` als `pull` toegang verschaft. Als de ontwikkeling van uw toepassing wordt gewijzigd, kunt u de referenties van de Service-Principal draaien zonder dat dit van invloed is op het build-systeem.
 
 ## <a name="when-to-use-a-service-principal"></a>Wanneer moet u een Service-Principal gebruiken?
 
@@ -47,12 +46,12 @@ U kunt de voor gaande voorbeeld scripts voor Azure CLI vinden op GitHub, evenals
 
 ## <a name="authenticate-with-the-service-principal"></a>Verifiëren met de Service-Principal
 
-Zodra u een Service-Principal hebt die u toegang tot uw container register hebt verleend, kunt u de referenties voor toegang tot ' headless ' Services en toepassingen configureren of ze invoeren met behulp `docker login` van de opdracht. Gebruik de volgende waarden:
+Zodra u een Service-Principal hebt die u toegang tot uw container register hebt verleend, kunt u de referenties voor toegang tot ' headless ' Services en toepassingen configureren of ze invoeren met behulp van de `docker login` opdracht. Gebruik de volgende waarden:
 
 * **Gebruikers naam** -id van de Service-Principal-toepassing (ook wel *client-id*genoemd)
 * **Wacht** woord-Service-Principal-wacht woord (ook wel *client geheim*genoemd)
 
-Elke waarde is een GUID van het formulier `xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx`. 
+Elke waarde is een GUID van het formulier `xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx` . 
 
 > [!TIP]
 > U kunt het wacht woord van een Service-Principal opnieuw genereren door de opdracht [AZ AD SP reset-credentials](/cli/azure/ad/sp/credential#az-ad-sp-credential-reset) uit te voeren.
@@ -66,7 +65,7 @@ Gebruik bijvoorbeeld de referenties om een installatie kopie van een Azure conta
 
 ### <a name="use-with-docker-login"></a>Gebruiken met aanmelden bij docker
 
-U kunt uitvoeren `docker login` met behulp van een service-principal. In het volgende voor beeld wordt de toepassings-ID van de Service-Principal door `$SP_APP_ID`gegeven in de omgevings variabele en `$SP_PASSWD`het wacht woord in de variabele. Zie voor aanbevolen procedures voor het beheren van docker-referenties de koppeling naar de opdracht [docker login](https://docs.docker.com/engine/reference/commandline/login/) .
+U kunt uitvoeren `docker login` met behulp van een service-principal. In het volgende voor beeld wordt de toepassings-ID van de Service-Principal door gegeven in de omgevings variabele `$SP_APP_ID` en het wacht woord in de variabele `$SP_PASSWD` . Zie voor aanbevolen procedures voor het beheren van docker-referenties de koppeling naar de opdracht [docker login](https://docs.docker.com/engine/reference/commandline/login/) .
 
 ```bash
 # Log in to Docker with service principal credentials
@@ -81,7 +80,7 @@ Als u een certificaat aan uw Service-Principal hebt toegevoegd, kunt u zich aanm
 
 U kunt een zelfondertekend certificaat maken wanneer u [een Service-Principal maakt](/cli/azure/create-an-azure-service-principal-azure-cli). U kunt ook een of meer certificaten toevoegen aan een bestaande service-principal. Als u bijvoorbeeld een van de scripts in dit artikel gebruikt om een service-principal te maken of bij te werken met rechten om installatie kopieën uit een REGI ster te halen of te pushen, voegt u een certificaat toe met de opdracht [AZ AD SP Credential reset][az-ad-sp-credential-reset] .
 
-Als u de service-principal met het certificaat wilt gebruiken om u aan te [melden bij de Azure cli](/cli/azure/authenticate-azure-cli#sign-in-with-a-service-principal), moet het certificaat de PEM-indeling hebben en de persoonlijke sleutel bevatten. Als uw certificaat niet de vereiste indeling heeft, gebruikt u een hulp programma `openssl` zoals om het te converteren. Wanneer u [AZ login][az-login] uitvoert om zich aan te melden bij de CLI met behulp van de Service-Principal, geeft u ook de toepassings-id van de Service-Principal en de Active Directory Tenant-id op. In het volgende voor beeld worden deze waarden als omgevings variabelen weer gegeven:
+Als u de service-principal met het certificaat wilt gebruiken om u aan te [melden bij de Azure cli](/cli/azure/authenticate-azure-cli#sign-in-with-a-service-principal), moet het certificaat de PEM-indeling hebben en de persoonlijke sleutel bevatten. Als uw certificaat niet de vereiste indeling heeft, gebruikt u een hulp programma zoals `openssl` om het te converteren. Wanneer u [AZ login][az-login] uitvoert om zich aan te melden bij de CLI met behulp van de Service-Principal, geeft u ook de toepassings-id van de Service-Principal en de Active Directory Tenant-id op. In het volgende voor beeld worden deze waarden als omgevings variabelen weer gegeven:
 
 ```azurecli
 az login --service-principal --username $SP_APP_ID --tenant $SP_TENANT_ID  --password /path/to/cert/pem/file
@@ -93,7 +92,7 @@ Voer [AZ ACR login][az-acr-login] uit voor verificatie met het REGI ster:
 az acr login --name myregistry
 ```
 
-De CLI gebruikt het token `az login` dat is gemaakt toen u de sessie met het REGI ster hebt geverifieerd.
+De CLI gebruikt het token dat is gemaakt toen u de `az login` sessie met het REGI ster hebt geverifieerd.
 
 ## <a name="next-steps"></a>Volgende stappen
 

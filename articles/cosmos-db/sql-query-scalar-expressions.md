@@ -7,10 +7,9 @@ ms.topic: conceptual
 ms.date: 05/17/2019
 ms.author: mjbrown
 ms.openlocfilehash: f8c98915ad3b682af00492acc7bc51672ec874a8
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "74870731"
 ---
 # <a name="scalar-expressions-in-azure-cosmos-db-sql-queries"></a>Scalaire expressies in Azure Cosmos DB SQL-query's
@@ -54,7 +53,7 @@ De [component SELECT](sql-query-select.md) ondersteunt scalaire expressies. Een 
   
 - `input_alias`  
   
-   Vertegenwoordigt een waarde die is gedefinieerd `input_alias` door de `FROM` component die is geïntroduceerd in.  
+   Vertegenwoordigt een waarde die is gedefinieerd door de component die is `input_alias` geïntroduceerd in `FROM` .  
   Deze waarde is gegarandeerd niet- **gedefinieerd** .**ongedefinieerde** waarden in de invoer worden overgeslagen.  
   
 - `<scalar_expression>.property_name`  
@@ -63,7 +62,7 @@ De [component SELECT](sql-query-select.md) ondersteunt scalaire expressies. Een 
   
 - `<scalar_expression>'['"property_name"|array_index']'`  
   
-   Vertegenwoordigt een waarde van de eigenschap met de `property_name` naam of het matrix element `array_index` met de index van een matrix. Als de eigenschap/matrix index niet bestaat of als er wordt verwezen naar de eigenschap/matrix index op een waarde die geen object/matrix is, wordt de expressie geëvalueerd als niet-gedefinieerde waarde.  
+   Vertegenwoordigt een waarde van de eigenschap met de naam `property_name` of het matrix element met `array_index` de index van een matrix. Als de eigenschap/matrix index niet bestaat of als er wordt verwezen naar de eigenschap/matrix index op een waarde die geen object/matrix is, wordt de expressie geëvalueerd als niet-gedefinieerde waarde.  
   
 - `unary_operator <scalar_expression>`  
   

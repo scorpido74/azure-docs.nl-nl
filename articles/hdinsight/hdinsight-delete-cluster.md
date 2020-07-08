@@ -9,10 +9,9 @@ ms.topic: conceptual
 ms.custom: H1Hack27Feb2017,hdinsightactive
 ms.date: 11/29/2019
 ms.openlocfilehash: 2912777c001a36ec913e2cfd618091ada5aa107a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "74807133"
 ---
 # <a name="delete-an-hdinsight-cluster-using-your-browser-powershell-or-the-azure-cli"></a>Een HDInsight-cluster verwijderen met behulp van uw browser, Power shell of de Azure CLI
@@ -24,9 +23,9 @@ De facturering voor het gebruik van HDInsight-clusters begint zodra er een clust
 
 ## <a name="azure-portal"></a>Azure Portal
 
-1. Meld u aan bij de [Azure-portal](https://portal.azure.com).
+1. Meld u aan bij [Azure Portal](https://portal.azure.com).
 
-2. Ga in het menu links naar **alle services** > **Analytics** > **HDInsight-clusters** en selecteer uw cluster.
+2. Ga in het menu links naar **alle services**  >  **Analytics**  >  **HDInsight-clusters** en selecteer uw cluster.
 
 3. Selecteer in de standaard weergave het pictogram **verwijderen** . Volg de prompt om uw cluster te verwijderen.
 
@@ -34,7 +33,7 @@ De facturering voor het gebruik van HDInsight-clusters begint zodra er een clust
 
 ## <a name="azure-powershell"></a>Azure PowerShell
 
-Vervang `CLUSTERNAME` door de naam van uw HDInsight-cluster in de onderstaande code. Voer de volgende opdracht uit vanaf een Power shell-prompt om het cluster te verwijderen:
+Vervang door `CLUSTERNAME` de naam van uw HDInsight-cluster in de onderstaande code. Voer de volgende opdracht uit vanaf een Power shell-prompt om het cluster te verwijderen:
 
 ```powershell
 Remove-AzHDInsightCluster -ClusterName CLUSTERNAME
@@ -42,7 +41,7 @@ Remove-AzHDInsightCluster -ClusterName CLUSTERNAME
 
 ## <a name="azure-cli"></a>Azure CLI
 
-Vervang `CLUSTERNAME` door de naam van uw HDInsight-cluster en `RESOURCEGROUP` met de naam van uw resource groep in de onderstaande code.  Voer vanaf een opdracht prompt het volgende in om het cluster te verwijderen:
+Vervang door `CLUSTERNAME` de naam van uw HDInsight-cluster en `RESOURCEGROUP` met de naam van uw resource groep in de onderstaande code.  Voer vanaf een opdracht prompt het volgende in om het cluster te verwijderen:
 
 ```azurecli
 az hdinsight delete --name CLUSTERNAME --resource-group RESOURCEGROUP

@@ -9,10 +9,9 @@ ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 11/22/2019
 ms.openlocfilehash: 41112359408497d84243ed9bb06f396acf008dc5
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "74665998"
 ---
 # <a name="migrate-on-premises-apache-hadoop-clusters-to-azure-hdinsight---data-migration-best-practices"></a>On-premises Apache Hadoop clusters migreren naar de aanbevolen procedures voor het migreren van Azure HDInsight-gegevens
@@ -62,7 +61,7 @@ DistCp probeert toewijzings taken te maken zodat elk exemplaar ongeveer hetzelfd
 
 * De laagste granulatie van DistCp is één bestand. Het opgeven van een aantal mappers is groter dan het aantal bron bestanden dat niet helpt en zal de beschik bare cluster bronnen verspillen.
 
-* Houd rekening met het beschik bare garen geheugen op het cluster om het aantal Mapper te bepalen. Elke kaart taak wordt gestart als een garen-container. Ervan uitgaande dat er geen andere zware werk belastingen op het cluster worden uitgevoerd, kan het aantal mappers worden bepaald door de volgende formule: m = (aantal worker \* -knoop punten garen geheugen voor elk worker-knoop punt)/grootte van de garen-container. Als andere toepassingen echter gebruikmaken van geheugen, moet u ervoor kiezen om alleen een deel van het geheugen van de DistCp te gebruiken voor de taken van de werk ruimte.
+* Houd rekening met het beschik bare garen geheugen op het cluster om het aantal Mapper te bepalen. Elke kaart taak wordt gestart als een garen-container. Ervan uitgaande dat er geen andere zware werk belastingen op het cluster worden uitgevoerd, kan het aantal mappers worden bepaald door de volgende formule: m = (aantal worker-knoop punten \* garen geheugen voor elk worker-knoop punt)/grootte van de garen-container. Als andere toepassingen echter gebruikmaken van geheugen, moet u ervoor kiezen om alleen een deel van het geheugen van de DistCp te gebruiken voor de taken van de werk ruimte.
 
 ### <a name="use-more-than-one-distcp-job"></a>Meer dan één DistCp-taak gebruiken
 
@@ -74,15 +73,15 @@ Als er sprake is van een klein aantal grote bestanden, kunt u overwegen deze te 
 
 ### <a name="use-the-strategy-command-line-parameter"></a>Gebruik de opdracht regel parameter ' strategie '
 
-Overweeg het `strategy = dynamic` gebruik van para meters op de opdracht regel. De standaard waarde van de `strategy` para meter `uniform size`is, in welk geval elke toewijzing een kopie heeft van ongeveer hetzelfde aantal bytes. Als deze para meter wordt gewijzigd `dynamic`in, wordt het vermelding bestand gesplitst in meerdere ' chunk-files '. Het aantal chunk-bestanden is een veelvoud van het aantal toewijzingen. Aan elke toewijzings taak is een van de segment bestanden toegewezen. Nadat alle paden in een segment zijn verwerkt, wordt het huidige segment verwijderd en wordt er een nieuwe chunk verkregen. Het proces wordt voortgezet totdat er geen segmenten meer beschikbaar zijn. Met deze ' dynamische ' benadering kunt u snellere toewijzings taken gebruiken om meer paden te verbruiken dan tragere, waardoor de DistCp-taak in het algemeen sneller verloopt.
+Overweeg `strategy = dynamic` het gebruik van para meters op de opdracht regel. De standaard waarde van de `strategy` para meter is `uniform size` , in welk geval elke toewijzing een kopie heeft van ongeveer hetzelfde aantal bytes. Als deze para meter wordt gewijzigd in `dynamic` , wordt het vermelding bestand gesplitst in meerdere ' chunk-files '. Het aantal chunk-bestanden is een veelvoud van het aantal toewijzingen. Aan elke toewijzings taak is een van de segment bestanden toegewezen. Nadat alle paden in een segment zijn verwerkt, wordt het huidige segment verwijderd en wordt er een nieuwe chunk verkregen. Het proces wordt voortgezet totdat er geen segmenten meer beschikbaar zijn. Met deze ' dynamische ' benadering kunt u snellere toewijzings taken gebruiken om meer paden te verbruiken dan tragere, waardoor de DistCp-taak in het algemeen sneller verloopt.
 
 ### <a name="increase-the-number-of-threads"></a>Het aantal threads verhogen
 
-Bekijk of het verhogen `-numListstatusThreads` van de para meter de prestaties verbetert. Deze para meter bepaalt het aantal threads dat moet worden gebruikt voor het maken van bestands vermelding en 40 is de maximum waarde.
+Bekijk of het verhogen van de `-numListstatusThreads` para meter de prestaties verbetert. Deze para meter bepaalt het aantal threads dat moet worden gebruikt voor het maken van bestands vermelding en 40 is de maximum waarde.
 
 ### <a name="use-the-output-committer-algorithm"></a>Het doorvoer algoritme voor uitvoer gebruiken
 
-Bekijk of de para meter `-Dmapreduce.fileoutputcommitter.algorithm.version=2` wordt door gegeven, verbetert de prestaties van DistCp. Dit algoritme voor het door voeren van de uitvoer heeft optimalisaties rondom het schrijven van uitvoer bestanden naar het doel. De volgende opdracht is een voor beeld waarin het gebruik van verschillende para meters wordt weer gegeven:
+Bekijk of de para meter wordt door gegeven, `-Dmapreduce.fileoutputcommitter.algorithm.version=2` verbetert de prestaties van DistCp. Dit algoritme voor het door voeren van de uitvoer heeft optimalisaties rondom het schrijven van uitvoer bestanden naar het doel. De volgende opdracht is een voor beeld waarin het gebruik van verschillende para meters wordt weer gegeven:
 
 ```bash
 hadoop distcp -Dmapreduce.fileoutputcommitter.algorithm.version=2 -numListstatusThreads 30 -m 100 -strategy dynamic hdfs://nn1:8020/foo/bar wasb://<container_name>@<storage_account_name>.blob.core.windows.net/foo/

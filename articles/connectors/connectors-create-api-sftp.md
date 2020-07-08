@@ -9,10 +9,9 @@ ms.topic: article
 ms.date: 11/01/2019
 tags: connectors
 ms.openlocfilehash: d0da98070fa8da5403677e1a67bda75456c74d80
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "74789270"
 ---
 # <a name="monitor-create-and-manage-sftp-files-by-using-azure-logic-apps"></a>SFTP-bestanden bewaken, maken en beheren met behulp van Azure Logic Apps
@@ -57,8 +56,8 @@ SFTP-triggers werken door het SFTP-bestands systeem te pollen en te zoeken naar 
 
 | SFTP-client | Bewerking |
 |-------------|--------|
-| WinSCP | Ga naar **Opties** > **voor keuren** > **overdracht** > **bewerken** > **behouden tijds tempel** > **uitschakelen** |
-| FileZilla | Ga naar de **overdrachts** > **tijds tempels van overgebrachte bestanden** > **uitschakelen** |
+| WinSCP | Ga naar **Opties**  >  **voor keuren**  >  **overdracht**  >  **bewerken**  >  **behouden tijds tempel**  >  **uitschakelen** |
+| FileZilla | Ga naar de **overdrachts**  >  **tijds tempels van overgebrachte bestanden**  >  **uitschakelen** |
 |||
 
 Wanneer een trigger een nieuw bestand vindt, controleert de trigger of het nieuwe bestand is voltooid en niet gedeeltelijk is geschreven. Een bestand kan bijvoorbeeld wijzigingen in voortgang hebben wanneer de trigger de bestands server controleert. Om te voor komen dat een gedeeltelijk geschreven bestand wordt geretourneerd, wordt door de trigger de tijds tempel voor het bestand met recente wijzigingen weer gegeven, maar wordt dat bestand niet direct geretourneerd. De trigger retourneert het bestand alleen wanneer de server opnieuw wordt gecontroleerd. Dit gedrag kan soms een vertraging veroorzaken die twee maal het polling interval van de trigger is.
@@ -75,7 +74,7 @@ Wanneer een trigger een nieuw bestand vindt, controleert de trigger of het nieuw
 
    Voor bestaande Logic apps, onder de laatste stap waar u een actie wilt toevoegen, kiest u **nieuwe stap**. Voer in het zoekvak ' sftp ' in als uw filter. Selecteer in de lijst acties de gewenste actie.
 
-   Als u een actie tussen stappen wilt toevoegen, plaatst u de muis aanwijzer op de pijl tussen de stappen. Kies het plus teken (**+**) dat wordt weer gegeven en selecteer vervolgens **een actie toevoegen**.
+   Als u een actie tussen stappen wilt toevoegen, plaatst u de muis aanwijzer op de pijl tussen de stappen. Kies het plus teken ( **+** ) dat wordt weer gegeven en selecteer vervolgens **een actie toevoegen**.
 
 1. Geef de benodigde gegevens voor de verbinding op.
 
@@ -84,13 +83,13 @@ Wanneer een trigger een nieuw bestand vindt, controleert de trigger of het nieuw
    > Wanneer u uw persoonlijke SSH-sleutel in de **persoonlijke SSH-sleutel** eigenschap invoert, voert u de volgende aanvullende stappen uit om ervoor te zorgen dat u de volledige en juiste waarde voor deze eigenschap opgeeft. 
    > Een ongeldige sleutel zorgt ervoor dat de verbinding mislukt.
 
-   Hoewel u een tekst editor kunt gebruiken, zijn hier voorbeeld stappen die laten zien hoe u de sleutel correct kopieert en plakt met behulp van Notepad. exe als voor beeld.
+   Hoewel u een tekst editor kunt gebruiken, zijn hier voorbeeld stappen die laten zien hoe u uw sleutel correct kopieert en plakt met behulp van Notepad.exe als voor beeld.
 
    1. Open uw persoonlijke SSH-sleutel bestand in een tekst editor. In deze stappen wordt Klad blok als voor beeld gebruikt.
 
    1. Selecteer in het menu **bewerken** in Klad blok de optie **Alles selecteren**.
 
-   1. Selecteer **Edit** > **kopie**bewerken.
+   1. Selecteer **Edit**  >  **kopie**bewerken.
 
    1. Plak de *volledige* sleutel die u hebt gekopieerd in de eigenschap van de **persoonlijke SSH-sleutel** , die ondersteuning biedt voor meerdere regels in de SFTP-trigger of-actie die u hebt toegevoegd. ***Zorg ervoor dat u*** de sleutel plakt. ***Voer de sleutel niet hand matig in of bewerk deze***.
 

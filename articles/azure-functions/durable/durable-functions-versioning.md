@@ -6,10 +6,9 @@ ms.topic: conceptual
 ms.date: 11/03/2019
 ms.author: azfuncdf
 ms.openlocfilehash: 87cbb94dbab241630dc7585bdf4314d858d5b4da
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "74232763"
 ---
 # <a name="versioning-in-durable-functions-azure-functions"></a>Versie beheer in Durable Functions (Azure Functions)
@@ -35,7 +34,7 @@ public static Task Run([OrchestrationTrigger] IDurableOrchestrationContext conte
 }
 ```
 
-Deze vereenvoudigde-functie neemt de resultaten van **Foo** en geeft deze door aan een **balk**. We gaan ervan uit dat we de retour waarde van **Foo** moeten wijzigen `bool` van `int` in ter ondersteuning van een breder scala aan resultaat waarden. Het resultaat ziet er als volgt uit:
+Deze vereenvoudigde-functie neemt de resultaten van **Foo** en geeft deze door aan een **balk**. We gaan ervan uit dat we de retour waarde van **Foo** moeten wijzigen van in ter `bool` ondersteuning van `int` een breder scala aan resultaat waarden. Het resultaat ziet er als volgt uit:
 
 ```csharp
 [FunctionName("FooBar")]
@@ -47,9 +46,9 @@ public static Task Run([OrchestrationTrigger] IDurableOrchestrationContext conte
 ```
 
 > [!NOTE]
-> De vorige C#-voor beelden target Durable Functions 2. x. Voor Durable Functions 1. x moet u in plaats `DurableOrchestrationContext` van `IDurableOrchestrationContext`gebruiken. Zie het artikel [Durable functions versies](durable-functions-versions.md) voor meer informatie over de verschillen tussen versies.
+> De vorige C#-voor beelden target Durable Functions 2. x. Voor Durable Functions 1. x moet u `DurableOrchestrationContext` in plaats van gebruiken `IDurableOrchestrationContext` . Zie het artikel [Durable functions versies](durable-functions-versions.md) voor meer informatie over de verschillen tussen versies.
 
-Deze wijziging is van toepassing op alle nieuwe exemplaren van de Orchestrator-functie, maar breekt alle vlucht-exemplaren af. Denk bijvoorbeeld na over het geval waarin een Orchestrator-exemplaar een functie aanroept `Foo`met de naam, een Booleaanse waarde terugkrijgt en vervolgens controle punten. Als de handtekening wijziging op dit moment wordt geïmplementeerd, mislukt het exemplaar van het controle punt onmiddellijk wanneer het wordt hervat en wordt de aanroep opnieuw afgespeeld `context.CallActivityAsync<int>("Foo")`. Deze fout treedt op omdat het resultaat in de geschiedenis tabel `bool` , maar de nieuwe code probeert deze te deserialiseren `int`naar.
+Deze wijziging is van toepassing op alle nieuwe exemplaren van de Orchestrator-functie, maar breekt alle vlucht-exemplaren af. Denk bijvoorbeeld na over het geval waarin een Orchestrator-exemplaar een functie aanroept `Foo` met de naam, een Booleaanse waarde terugkrijgt en vervolgens controle punten. Als de handtekening wijziging op dit moment wordt geïmplementeerd, mislukt het exemplaar van het controle punt onmiddellijk wanneer het wordt hervat en wordt de aanroep opnieuw afgespeeld `context.CallActivityAsync<int>("Foo")` . Deze fout treedt op omdat het resultaat in de geschiedenis tabel, `bool` maar de nieuwe code probeert deze te deserialiseren naar `int` .
 
 Dit voor beeld is slechts een van de vele verschillende manieren waarop een handtekening wijziging bestaande instanties kan verstoren. Over het algemeen geldt dat als een Orchestrator het aanroepen van een functie moet wijzigen, de wijziging waarschijnlijk problematisch is.
 
@@ -85,9 +84,9 @@ public static Task Run([OrchestrationTrigger] IDurableOrchestrationContext conte
 ```
 
 > [!NOTE]
-> De vorige C#-voor beelden target Durable Functions 2. x. Voor Durable Functions 1. x moet u in plaats `DurableOrchestrationContext` van `IDurableOrchestrationContext`gebruiken. Zie het artikel [Durable functions versies](durable-functions-versions.md) voor meer informatie over de verschillen tussen versies.
+> De vorige C#-voor beelden target Durable Functions 2. x. Voor Durable Functions 1. x moet u `DurableOrchestrationContext` in plaats van gebruiken `IDurableOrchestrationContext` . Zie het artikel [Durable functions versies](durable-functions-versions.md) voor meer informatie over de verschillen tussen versies.
 
-Met deze wijziging wordt een nieuwe functie aanroepen naar **SendNotification** tussen **Foo** en **Bar**. Er zijn geen wijzigingen in de hand tekening. Het probleem doet zich voor wanneer een bestaand exemplaar wordt hervat vanaf de aanroep naar de **Bar**. Als de oorspronkelijke aanroep van **Foo** wordt geretourneerd `true`tijdens het opnieuw afspelen, wordt de Orchestrator replay aangeroepen in **SendNotification**, die zich niet in de uitvoerings geschiedenis bevindt. Als gevolg hiervan mislukt het duurzame taak raamwerk met een `NonDeterministicOrchestrationException` omdat er een aanroep van **SendNotification** is aangetroffen wanneer de aanroep naar de **balk**werd verwacht. Hetzelfde type probleem kan optreden bij het toevoegen van alle aanroepen naar ' duurzame ' api's, `CreateTimer`waaronder `WaitForExternalEvent`, enzovoort.
+Met deze wijziging wordt een nieuwe functie aanroepen naar **SendNotification** tussen **Foo** en **Bar**. Er zijn geen wijzigingen in de hand tekening. Het probleem doet zich voor wanneer een bestaand exemplaar wordt hervat vanaf de aanroep naar de **Bar**. Als de oorspronkelijke aanroep van **Foo** wordt geretourneerd tijdens het opnieuw afspelen, `true` wordt de Orchestrator replay aangeroepen in **SendNotification**, die zich niet in de uitvoerings geschiedenis bevindt. Als gevolg hiervan mislukt het duurzame taak raamwerk met een `NonDeterministicOrchestrationException` omdat er een aanroep van **SendNotification** is aangetroffen wanneer de aanroep naar de **balk**werd verwacht. Hetzelfde type probleem kan optreden bij het toevoegen van alle aanroepen naar ' duurzame ' Api's, waaronder `CreateTimer` , `WaitForExternalEvent` enzovoort.
 
 ## <a name="mitigation-strategies"></a>Strategieën voor risico beperking
 
@@ -116,11 +115,11 @@ De meest recente controle methode om ervoor te zorgen dat belang rijke wijziging
 
 * Implementeer alle updates als volledig nieuwe functies, waardoor de bestaande functies intact blijven. Dit kan lastig zijn omdat de aanroepers van de nieuwe functie versies moeten worden bijgewerkt, evenals dezelfde richt lijnen.
 * Implementeer alle updates als een nieuwe functie-app met een ander opslag account.
-* Implementeer een nieuwe kopie van de functie-app met hetzelfde opslag account, maar met een `taskHub` bijgewerkte naam. Gelijktijdige implementaties is de aanbevolen techniek.
+* Implementeer een nieuwe kopie van de functie-app met hetzelfde opslag account, maar met een bijgewerkte `taskHub` naam. Gelijktijdige implementaties is de aanbevolen techniek.
 
 ### <a name="how-to-change-task-hub-name"></a>De naam van een taak hub wijzigen
 
-De taak hub kan als volgt worden geconfigureerd in het bestand *host. json* :
+De taak hub kan als volgt worden geconfigureerd in de *host.js* in het bestand:
 
 #### <a name="functions-1x"></a>Functions 1.x
 
@@ -144,9 +143,9 @@ De taak hub kan als volgt worden geconfigureerd in het bestand *host. json* :
 }
 ```
 
-De standaard waarde voor Durable Functions v1. x is `DurableFunctionsHub`. Vanaf Durable Functions v 2.0 is de naam van de standaard taak-hub hetzelfde als de naam van de functie-app in `TestHubName` Azure, of als deze buiten Azure wordt uitgevoerd.
+De standaard waarde voor Durable Functions v1. x is `DurableFunctionsHub` . Vanaf Durable Functions v 2.0 is de naam van de standaard taak-hub hetzelfde als de naam van de functie-app in azure, of `TestHubName` als deze buiten Azure wordt uitgevoerd.
 
-Alle Azure Storage entiteiten krijgen een naam op basis `hubName` van de configuratie waarde. Door de taak hub een nieuwe naam te geven, zorgt u ervoor dat er afzonderlijke wacht rijen en geschiedenis tabellen worden gemaakt voor de nieuwe versie van uw toepassing. De functie-app stopt echter het verwerken van gebeurtenissen voor Orchestrations of entiteiten die zijn gemaakt onder de naam van de vorige taak hub.
+Alle Azure Storage entiteiten krijgen een naam op basis van de `hubName` configuratie waarde. Door de taak hub een nieuwe naam te geven, zorgt u ervoor dat er afzonderlijke wacht rijen en geschiedenis tabellen worden gemaakt voor de nieuwe versie van uw toepassing. De functie-app stopt echter het verwerken van gebeurtenissen voor Orchestrations of entiteiten die zijn gemaakt onder de naam van de vorige taak hub.
 
 We raden u aan de nieuwe versie van de functie-app te implementeren in een nieuwe [implementatie sleuf](../functions-deployment-slots.md). Met implementatie sleuven kunt u meerdere exemplaren van uw functie-app naast elkaar uitvoeren, met slechts één van de apps als de actieve *productie* site. Wanneer u klaar bent om de nieuwe indelings logica beschikbaar te maken voor uw bestaande infra structuur, kan de nieuwe versie eenvoudig worden gewisseld naar de productie site.
 

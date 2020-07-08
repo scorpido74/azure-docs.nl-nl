@@ -15,10 +15,9 @@ ms.workload: infrastructure-services
 ms.date: 11/24/2019
 ms.author: vilibert
 ms.openlocfilehash: 20d710f717a9dff26f46ac7a201a9b694f3fbe84
-ms.sourcegitcommit: 6a4fbc5ccf7cca9486fe881c069c321017628f20
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/27/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "74684136"
 ---
 # <a name="troubleshooting-a-linux-vm-when-there-is-no-access-to-the-azure-serial-console-and-the-disk-layout-is-using-lvm-logical-volume-manager"></a>Problemen met een virtuele Linux-machine oplossen wanneer er geen toegang is tot de Azure-seriële console en de schijf indeling gebruikmaakt van LVM (Logical Volume Manager)
@@ -143,7 +142,7 @@ mount  /dev/mapper/rootvg-usrlv /rescue/usr
 Opdrachten kunnen worden gebruikt om software te installeren, te verwijderen en bij te werken. Problemen met Vm's oplossen om fouten op te lossen.
 
 
-Voer de opdracht lsblk uit en de/Rescue is nu/en/Rescue/boot is ![/boot chrooted](./media/chroot-logical-volume-manager/chrooted.png)
+Voer de opdracht lsblk uit en de/Rescue is nu/en/Rescue/boot is/boot ![ chrooted](./media/chroot-logical-volume-manager/chrooted.png)
 
 ## <a name="perform-fixes"></a>Oplossingen uitvoeren
 
@@ -171,13 +170,13 @@ grub2-mkconfig -o /boot/grub2/grub.cfg
 De **grep** -opdracht geeft een lijst van de kernels waarvan **grub. cfg** op de hoogte is.
 ![Kernels](./media/chroot-logical-volume-manager/kernels.png)
 
-**grub2-editenv-lijst** geeft weer welke kernel wordt geladen bij de ![volgende standaard opstart-kernel](./media/chroot-logical-volume-manager/kernel-default.png)
+**grub2-editenv-lijst** geeft weer welke kernel wordt geladen bij de volgende standaard opstart- ![ kernel](./media/chroot-logical-volume-manager/kernel-default.png)
 
-**grub2: set-default** wordt gebruikt om te wijzigen in een ![andere kernel-grub2 die is ingesteld](./media/chroot-logical-volume-manager/grub2-set-default.png)
+**grub2: set-default** wordt gebruikt om te wijzigen in een andere kernel-grub2 die is ![ ingesteld](./media/chroot-logical-volume-manager/grub2-set-default.png)
 
-**grub2-editenv-** lijst geeft weer welke kernel wordt geladen bij de ![volgende keer dat de computer wordt opgestart](./media/chroot-logical-volume-manager/kernel-new.png)
+**grub2-editenv-** lijst geeft weer welke kernel wordt geladen bij de volgende keer dat ![ de computer wordt opgestart](./media/chroot-logical-volume-manager/kernel-new.png)
 
-**grub2-mkconfig** maakt grub. cfg opnieuw met behulp van de ![vereiste versies grub2 mkconfig](./media/chroot-logical-volume-manager/grub2-mkconfig.png)
+**grub2-mkconfig** maakt grub. cfg opnieuw met behulp van de vereiste versies ![ grub2 mkconfig](./media/chroot-logical-volume-manager/grub2-mkconfig.png)
 
 
 
@@ -204,8 +203,8 @@ De geïnstalleerde **kernel** doorzoeken
 
 ![Geavanceerd](./media/chroot-logical-volume-manager/rpm-kernel.png)
 
-Verwijder, indien nodig, de geavanceerde **kernel**
-![](./media/chroot-logical-volume-manager/rpm-remove-kernel.png)
+Verwijder, indien nodig, de **kernel** 
+ ![ geavanceerde kernel](./media/chroot-logical-volume-manager/rpm-remove-kernel.png)
 
 
 ### <a name="example-3---enable-serial-console"></a>Voor beeld 3: seriële console inschakelen
@@ -252,15 +251,15 @@ umount /rescue
 
 Ontkoppel de schijf van de virtuele machine voor herstel en voer een schijf wisseling uit.
 
-Selecteer de virtuele machine in de portal **schijven** en selecteer ontkoppelen schijf **ontkoppelen**
-![](./media/chroot-logical-volume-manager/detach-disk.png) 
+Selecteer de virtuele machine in de portal **schijven** en selecteer ontkoppelen schijf **ontkoppelen** 
+ ![](./media/chroot-logical-volume-manager/detach-disk.png) 
 
-Sla de wijzigingen ![op en sla de koppeling op](./media/chroot-logical-volume-manager/save-detach.png) 
+Sla de wijzigingen op en ![ Sla de koppeling op](./media/chroot-logical-volume-manager/save-detach.png) 
 
 De schijf wordt nu beschikbaar zodat deze kan worden omgewisseld met de oorspronkelijke besturingssysteem schijf van de betrokken VM.
 
-Navigeer in het Azure Portal naar de mislukte VM en selecteer **schijven** -> **wisselen**
-![schijf swap schijf](./media/chroot-logical-volume-manager/swap-disk.png) 
+Navigeer in het Azure Portal naar de mislukte VM en selecteer **schijven**  ->  **wisselen**schijf 
+ ![ swap schijf](./media/chroot-logical-volume-manager/swap-disk.png) 
 
 Vul de velden **op de schijf kiezen** is de momentopname schijf die u in de vorige stap hebt losgekoppeld. De VM-naam van de betrokken VM is ook vereist en vervolgens **OK** selecteren
 

@@ -14,10 +14,9 @@ ms.workload: infrastructure-services
 ms.date: 02/26/2019
 ms.author: vinigam
 ms.openlocfilehash: ccfbb92c27e4508595f19c2ea6900730cde609b9
-ms.sourcegitcommit: 6a4fbc5ccf7cca9486fe881c069c321017628f20
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/27/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "74666372"
 ---
 # <a name="schema-and-data-aggregation-in-traffic-analytics"></a>Schema's en gegevens aggregatie in Traffic Analytics
@@ -117,7 +116,7 @@ Hieronder vindt u de velden in het schema en wat ze aangeven
 | FlowDirection_s | * I = inkomend<br> * O = uitgaande | Richting van de stroom in/uit NSG met per stroom logboek |
 | FlowStatus_s  | * A = toegestaan door de regel NSG <br> * D = geweigerd door de NSG-regel  | Status van de stroom die is toegestaan/nblocked door NSG volgens het stroom logboek |
 | NSGList_s | \<SUBSCRIPTIONID>\/<RESOURCEGROUP_NAME>\/<NSG_NAME> | De netwerk beveiligings groep (NSG) die aan de stroom is gekoppeld |
-| NSGRules_s | \<Index waarde 0) >\| \<NSG_RULENAME>\| \<stroom richting>\| \<stroom status>\| \<FlowCount ProcessedByRule> |  NSG-regel die deze stroom heeft toegestaan of geweigerd |
+| NSGRules_s | \<Index value 0)>\|\<NSG_RULENAME>\|\<Flow Direction>\|\<Flow Status>\|\<FlowCount ProcessedByRule> |  NSG-regel die deze stroom heeft toegestaan of geweigerd |
 | NSGRule_s | NSG_RULENAME |  NSG-regel die deze stroom heeft toegestaan of geweigerd |
 | NSGRuleType_s | * Door de gebruiker gedefinieerd * standaard |   Het type NSG-regel dat door de stroom wordt gebruikt |
 | MACAddress_s | MAC-adres | MAC-adres van de NIC waarop de stroom is vastgelegd |
@@ -127,15 +126,15 @@ Hieronder vindt u de velden in het schema en wat ze aangeven
 | Region_s | De Azure-regio van het virtuele netwerk/de netwerk interface/virtuele machine waartoe het IP-adres in de stroom behoort | Alleen van toepassing op de stroom typen FlowType = S2S, P2S, AzurePublic, ExternalPublic, MaliciousFlow en UnknownPrivate (stroom typen waarbij slechts één zijde van Azure is) |
 | Region1_s | Azure-regio | Azure-regio van het virtuele netwerk/de netwerk interface/virtuele machine waartoe het bron-IP-adres in de stroom behoort |
 | Region2_s | Azure-regio | De Azure-regio van het virtuele netwerk waartoe het doel-IP in de stroom behoort |
-| NIC_s | \<resourcegroup_Name>\/ \<NetworkInterfaceName> |  NIC gekoppeld aan de VM die het verkeer verzendt of ontvangt |
+| NIC_s | \<resourcegroup_Name>\/\<NetworkInterfaceName> |  NIC gekoppeld aan de VM die het verkeer verzendt of ontvangt |
 | NIC1_s | <resourcegroup_Name>/\<NetworkInterfaceName> | NIC gekoppeld aan het bron-IP-adres in de stroom |
 | NIC2_s | <resourcegroup_Name>/\<NetworkInterfaceName> | NIC gekoppeld aan het doel-IP in de stroom |
-| VM_s | <resourcegroup_Name>\/ \<NetworkInterfaceName> | De virtuele machine die is gekoppeld aan de netwerk interface NIC_s |
+| VM_s | <resourcegroup_Name>\/\<NetworkInterfaceName> | De virtuele machine die is gekoppeld aan de netwerk interface NIC_s |
 | VM1_s | <resourcegroup_Name>/\<VirtualMachineName> | De virtuele machine die is gekoppeld aan het bron-IP-adres in de stroom |
 | VM2_s | <resourcegroup_Name>/\<VirtualMachineName> | De virtuele machine die is gekoppeld aan de doel-IP in de stroom |
-| Subnet_s | <ResourceGroup_Name>/<VNET_Name>/\<subnetnaam> | Het subnet dat is gekoppeld aan de NIC_s |
-| Subnet1_s | <ResourceGroup_Name>/<VNET_Name>/\<subnetnaam> | Het subnet dat is gekoppeld aan het bron-IP-adres in de stroom |
-| Subnet2_s | <ResourceGroup_Name>/<VNET_Name>/\<subnetnaam>    | Het subnet dat is gekoppeld aan het doel-IP in de stroom |
+| Subnet_s | <ResourceGroup_Name>/<VNET_Name>/\<SubnetName> | Het subnet dat is gekoppeld aan de NIC_s |
+| Subnet1_s | <ResourceGroup_Name>/<VNET_Name>/\<SubnetName> | Het subnet dat is gekoppeld aan het bron-IP-adres in de stroom |
+| Subnet2_s | <ResourceGroup_Name>/<VNET_Name>/\<SubnetName>    | Het subnet dat is gekoppeld aan het doel-IP in de stroom |
 | ApplicationGateway1_s | \<SubscriptionID>/\<ResourceGroupName>/\<ApplicationGatewayName> | De toepassings gateway die is gekoppeld aan het bron-IP-adres in de stroom |
 | ApplicationGateway2_s | \<SubscriptionID>/\<ResourceGroupName>/\<ApplicationGatewayName> | De toepassings gateway die is gekoppeld aan het doel-IP in de stroom |
 | LoadBalancer1_s | \<SubscriptionID>/\<ResourceGroupName>/\<LoadBalancerName> | De Load Balancer die is gekoppeld aan het bron-IP-adres in de stroom |
@@ -143,7 +142,7 @@ Hieronder vindt u de velden in het schema en wat ze aangeven
 | LocalNetworkGateway1_s | \<SubscriptionID>/\<ResourceGroupName>/\<LocalNetworkGatewayName> | De lokale netwerk gateway die is gekoppeld aan het bron-IP-adres in de stroom |
 | LocalNetworkGateway2_s | \<SubscriptionID>/\<ResourceGroupName>/\<LocalNetworkGatewayName> | De lokale netwerk gateway die is gekoppeld aan het doel-IP in de stroom |
 | ConnectionType_s | Mogelijke waarden zijn VNetPeering, VpnGateway en ExpressRoute |    Verbindingstype |
-| ConnectionName_s | \<SubscriptionID>/\<ResourceGroupName>/\<connectionName> | Verbindings naam. Voor flowtype P2S wordt dit opgemaakt als <gateway name>_<VPN Client IP> |
+| ConnectionName_s | \<SubscriptionID>/\<ResourceGroupName>/\<ConnectionName> | Verbindings naam. Voor flowtype P2S wordt dit opgemaakt als <gateway name> _<VPN Client IP> |
 | ConnectingVNets_s | Door spaties gescheiden lijst met namen van virtuele netwerken | In het geval van hub-en spoke-topologie worden de virtuele netwerken van de hub hier ingevuld |
 | Country_s | Land code van twee letters (ISO 3166-1 alpha-2) | Gevuld voor stroom type ExternalPublic. Alle IP-adressen in PublicIPs_s veld hebben hetzelfde land nummer |
 | AzureRegion_s | Azure-regio locaties | Gevuld voor stroom type AzurePublic. Alle IP-adressen in PublicIPs_s veld delen de Azure-regio |
@@ -157,11 +156,11 @@ Hieronder vindt u de velden in het schema en wat ze aangeven
 | InboundBytes_d |  Ontvangen bytes zoals vastgelegd op de netwerk interface waarop NSG regel is toegepast | Dit wordt alleen ingevuld voor het schema van versie 2 van het NSG-stroom logboek |
 | OutboundBytes_d | Verzonden bytes zoals vastgelegd op de netwerk interface waarop NSG regel is toegepast | Dit wordt alleen ingevuld voor het schema van versie 2 van het NSG-stroom logboek |
 | CompletedFlows_d  |  | Dit wordt alleen ingevuld met een waarde die niet gelijk is aan nul voor het schema van versie 2 van het NSG-stroom logboek |
-| PublicIPs_s | <PUBLIC_IP>\| \<FLOW_STARTED_COUNT>\| \<FLOW_ENDED_COUNT>\| \<OUTBOUND_PACKETS>\| \<INBOUND_PACKETS>\| \<OUTBOUND_BYTES>\| \<INBOUND_BYTES> | Vermeldingen gescheiden door balken |
-| SrcPublicIPs_s | <SOURCE_PUBLIC_IP>\| \<FLOW_STARTED_COUNT>\| \<FLOW_ENDED_COUNT>\| \<OUTBOUND_PACKETS>\| \<INBOUND_PACKETS>\| \<OUTBOUND_BYTES>\| \<INBOUND_BYTES> | Vermeldingen gescheiden door balken |
-| DestPublicIPs_s | <DESTINATION_PUBLIC_IP>\| \<FLOW_STARTED_COUNT>\| \<FLOW_ENDED_COUNT>\| \<OUTBOUND_PACKETS>\| \<INBOUND_PACKETS>\| \<OUTBOUND_BYTES>\| \<INBOUND_BYTES> | Vermeldingen gescheiden door balken |
+| PublicIPs_s | <PUBLIC_IP>\|\<FLOW_STARTED_COUNT>\|\<FLOW_ENDED_COUNT>\|\<OUTBOUND_PACKETS>\|\<INBOUND_PACKETS>\|\<OUTBOUND_BYTES>\|\<INBOUND_BYTES> | Vermeldingen gescheiden door balken |
+| SrcPublicIPs_s | <SOURCE_PUBLIC_IP>\|\<FLOW_STARTED_COUNT>\|\<FLOW_ENDED_COUNT>\|\<OUTBOUND_PACKETS>\|\<INBOUND_PACKETS>\|\<OUTBOUND_BYTES>\|\<INBOUND_BYTES> | Vermeldingen gescheiden door balken |
+| DestPublicIPs_s | <DESTINATION_PUBLIC_IP>\|\<FLOW_STARTED_COUNT>\|\<FLOW_ENDED_COUNT>\|\<OUTBOUND_PACKETS>\|\<INBOUND_PACKETS>\|\<OUTBOUND_BYTES>\|\<INBOUND_BYTES> | Vermeldingen gescheiden door balken |
 
-### <a name="notes"></a>Opmerkingen
+### <a name="notes"></a>Notities
 
 1. In het geval van AzurePublic-en ExternalPublic stromen wordt het Azure VM-IP-adres van de klant ingevuld in VMIP_s veld, terwijl de open bare IP-adressen worden ingevuld in het veld PublicIPs_s. Voor deze twee stroom typen moeten we VMIP_s en PublicIPs_s gebruiken in plaats van SrcIP_s en DestIP_s velden. Voor AzurePublic-en ExternalPublicIP-adressen, verzamelen we verder, zodat het aantal records dat is opgenomen in de werk ruimte van de klant log Analytics mini maal is. (Dit veld wordt binnenkort afgeschaft en er moeten SrcIP_ en DestIP_s worden gebruikt, afhankelijk van of de Azure-VM de bron of de bestemming in de stroom is)
 1. Details voor stroom typen: op basis van de IP-adressen die in de stroom zijn betrokken, categoriseren we de stromen in naar de volgende stroom typen:
@@ -174,7 +173,7 @@ Hieronder vindt u de velden in het schema en wat ze aangeven
 1. MaliciousFlow: een van de IP-adressen maakt deel uit van het virtuele Azure-netwerk, terwijl het andere IP-adres een open bare IP is die zich niet in azure bevindt en als schadelijk wordt gerapporteerd in de ASC-feeds die Traffic Analytics gebruikt voor het verwerkings interval tussen ' FlowIntervalStartTime_t ' en ' FlowIntervalEndTime_t '.
 1. UnknownPrivate: een van de IP-adressen bevindt zich in azure Virtual Network, terwijl het andere IP-adres deel uitmaakt van het privé-IP-bereik zoals gedefinieerd in RFC 1918 en kan niet worden toegewezen door Traffic Analytics aan een site die eigendom is van de klant of Azure Virtual Network.
 1. Onbekend: kan de IP-adressen in de stromen niet toewijzen met de klant topologie in Azure en on-premises (site).
-1. Sommige veld namen worden toegevoegd met \_s of \_d. Deze geven niet de bron en het doel aan, maar wijzen de teken reeks en decimaal van het gegevens type aan.
+1. Sommige veld namen worden toegevoegd met \_ s of \_ d. Deze geven niet de bron en het doel aan, maar wijzen de teken reeks en decimaal van het gegevens type aan.
 
 ### <a name="next-steps"></a>Volgende stappen
 Voor antwoorden op veelgestelde vragen raadpleegt u veelgestelde vragen over [Traffic Analytics](traffic-analytics-faq.md) voor meer informatie over functionaliteit, raadpleegt u de [documentatie van Traffic Analytics](traffic-analytics.md)

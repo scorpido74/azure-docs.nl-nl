@@ -7,13 +7,12 @@ ms.topic: conceptual
 ms.date: 06/21/2019
 ms.author: tisande
 ms.openlocfilehash: 1d24261edea843fa928ad00e3ce7babcb84acd3b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "74873332"
 ---
-# <a name="getting-started-with-sql-queries"></a>Aan de slag met SQL-query's
+# <a name="getting-started-with-sql-queries"></a>Aan de slag met SQL-query’s
 
 Azure Cosmos DB SQL-API-accounts ondersteunen het opvragen van items met behulp van Structured Query Language (SQL) als een JSON-query taal. De ontwerp doelen van de Azure Cosmos DB query taal zijn:
 
@@ -23,7 +22,7 @@ Azure Cosmos DB SQL-API-accounts ondersteunen het opvragen van items met behulp 
 
 ## <a name="upload-sample-data"></a>Voorbeeld gegevens uploaden
 
-Maak in uw SQL API-Cosmos DB account een container met `Families`de naam. Maak twee eenvoudige JSON-items in de container. U kunt de meeste voorbeeld query's uitvoeren in de Azure Cosmos DB query-documenten met behulp van deze gegevensset.
+Maak in uw SQL API-Cosmos DB account een container met de naam `Families` . Maak twee eenvoudige JSON-items in de container. U kunt de meeste voorbeeld query's uitvoeren in de Azure Cosmos DB query-documenten met behulp van deze gegevensset.
 
 ### <a name="create-json-items"></a>JSON-items maken
 
@@ -52,7 +51,7 @@ Met de volgende code worden twee eenvoudige JSON-onderdelen gemaakt over familie
 }
 ```
 
-Het tweede item maakt `givenName` gebruik `familyName` van en `firstName` in `lastName`plaats van en.
+Het tweede item maakt `givenName` Gebruik `familyName` van en in plaats van `firstName` en `lastName` .
 
 ```json
 {
@@ -88,7 +87,7 @@ Het tweede item maakt `givenName` gebruik `familyName` van en `firstName` in `la
 
 Probeer enkele query's uit op de JSON-gegevens om inzicht te krijgen in de belangrijkste aspecten van de SQL-query taal van Azure Cosmos DB.
 
-De volgende query retourneert de items waarbij het `id` veld overeenkomt `AndersenFamily`. Omdat het een `SELECT *` query is, is de uitvoer van de query het volledige JSON-item. Zie [instructie SELECT](sql-query-select.md)voor meer informatie over de syntaxis SELECT. 
+De volgende query retourneert de items waarbij het `id` veld overeenkomt `AndersenFamily` . Omdat het een `SELECT *` query is, is de uitvoer van de query het volledige JSON-item. Zie [instructie SELECT](sql-query-select.md)voor meer informatie over de syntaxis SELECT. 
 
 ```sql
     SELECT *
@@ -118,7 +117,7 @@ De query resultaten zijn:
     }]
 ```
 
-Met de volgende query wordt de JSON-uitvoer in een andere vorm opgemaakt. De query projecteert een nieuw `Family` JSON- `Name` object met twee geselecteerde velden `City`en, wanneer de adres plaats hetzelfde is als de status. "NY, NY" komt overeen met dit geval.
+Met de volgende query wordt de JSON-uitvoer in een andere vorm opgemaakt. De query projecteert een nieuw JSON `Family` -object met twee geselecteerde velden `Name` en `City` , wanneer de adres plaats hetzelfde is als de status. "NY, NY" komt overeen met dit geval.
 
 ```sql
     SELECT {"Name":f.id, "City":f.address.city} AS Family
@@ -137,7 +136,7 @@ De query resultaten zijn:
     }]
 ```
 
-Met de volgende query worden alle opgegeven namen van onderliggende items geretourneerd in de `id` familie `WakefieldFamily`waarvan de treffers zijn geordend op basis van de plaats.
+Met de volgende query worden alle opgegeven namen van onderliggende items geretourneerd in de familie waarvan de `id` treffers `WakefieldFamily` zijn geordend op basis van de plaats.
 
 ```sql
     SELECT c.givenName
@@ -160,7 +159,7 @@ U ziet deze uitvoer:
 
 In de voor gaande voor beelden worden verschillende aspecten van de Cosmos DB query taal weer gegeven:  
 
-* Aangezien de SQL-API werkt op JSON-waarden, worden er in plaats van rijen en kolommen getreede entiteiten behandeld. U kunt naar de structuur knooppunten op elke wille keurige diepte `Node1.Node2.Node3…..Nodem`verwijzen, net als bij de tweedelige `<table>.<column>` verwijzing van in ANSI SQL.
+* Aangezien de SQL-API werkt op JSON-waarden, worden er in plaats van rijen en kolommen getreede entiteiten behandeld. U kunt naar de structuur knooppunten op elke wille keurige diepte verwijzen, net als `Node1.Node2.Node3…..Nodem` bij de tweedelige verwijzing van `<table>.<column>` in ANSI SQL.
 
 * Omdat de query taal werkt met schemaloze gegevens, moet het type systeem dynamisch worden gebonden. Een expressie kan verschillende typen voor verschillende elementen opleveren. Het resultaat van een query is een geldige JSON-waarde, maar is niet gegarandeerd een vast schema.  
 

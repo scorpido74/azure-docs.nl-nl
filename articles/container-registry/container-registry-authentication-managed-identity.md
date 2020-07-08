@@ -4,10 +4,9 @@ description: Toegang bieden tot installatie kopieën in uw persoonlijke containe
 ms.topic: article
 ms.date: 01/16/2019
 ms.openlocfilehash: 9b8bed78629d3a9739ec00772ad5c8216a04c122
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "74456489"
 ---
 # <a name="use-an-azure-managed-identity-to-authenticate-to-an-azure-container-registry"></a>Een door Azure beheerde identiteit gebruiken om te verifiëren bij een Azure container Registry 
@@ -21,9 +20,9 @@ Voor dit artikel vindt u meer informatie over beheerde identiteiten en over het 
 > * De identiteit toegang verlenen tot een Azure container Registry
 > * De beheerde identiteit gebruiken om toegang te krijgen tot het REGI ster en een container installatie kopie te halen 
 
-Voor het maken van de Azure-resources moet u voor dit artikel de Azure CLI-versie 2.0.55 of hoger uitvoeren. Voer `az --version` uit om de versie te bekijken. Als u Azure CLI 2.0 wilt installeren of upgraden, raadpleegt u [Azure CLI 2.0 installeren][azure-cli].
+Voor het maken van de Azure-resources moet u voor dit artikel de Azure CLI-versie 2.0.55 of hoger uitvoeren. Voer `az --version` uit om de versie te bekijken. Zie [Azure CLI installeren][azure-cli] als u de CLI wilt installeren of een upgrade wilt uitvoeren.
 
-Als u een container register wilt instellen en een container installatie kopie ernaar wilt pushen, moet u ook docker lokaal hebben geïnstalleerd. Docker biedt pakketten die eenvoudig Docker configureren op elk [Mac][docker-mac]-, [Windows][docker-windows]- of [Linux][docker-linux]-systeem.
+Als u een container register wilt instellen en een container installatie kopie ernaar wilt pushen, moet u ook docker lokaal hebben geïnstalleerd. Docker biedt pakketten die eenvoudig Docker configureren op elk [macOS][docker-mac]-, [Windows][docker-windows]- of [Linux][docker-linux]-systeem.
 
 ## <a name="why-use-a-managed-identity"></a>Waarom een beheerde identiteit gebruiken?
 
@@ -49,7 +48,7 @@ Gebruik vervolgens de identiteit voor verificatie bij elke [service die onderste
 
 Als u nog geen Azure container Registry hebt, maakt u een REGI ster en pusht u een voor beeld van een container installatie kopie. Zie [Quick Start: een persoonlijk container register maken met behulp van de Azure cli](container-registry-get-started-azure-cli.md)voor stappen.
 
-In dit artikel wordt ervan uitgegaan `aci-helloworld:v1` dat u de container installatie kopie hebt opgeslagen in het REGI ster. In de voor beelden wordt de register naam *myContainerRegistry*gebruikt. Vervang door uw eigen register-en afbeeldings namen in latere stappen.
+In dit artikel wordt ervan uitgegaan dat u de `aci-helloworld:v1` container installatie kopie hebt opgeslagen in het REGI ster. In de voor beelden wordt de register naam *myContainerRegistry*gebruikt. Vervang door uw eigen register-en afbeeldings namen in latere stappen.
 
 ## <a name="create-a-docker-enabled-vm"></a>Een VM maken die is ingeschakeld voor docker
 
@@ -166,13 +165,13 @@ Verifieer eerst bij de Azure CLI met [AZ login][az-login], met behulp van de ide
 az login --identity --username <userID>
 ```
 
-Verifieer vervolgens bij het REGI ster met [AZ ACR login][az-acr-login]. Wanneer u deze opdracht gebruikt, gebruikt de CLI het Active Directory-token `az login` dat u hebt gemaakt om uw sessie naadloos te verifiëren met het container register. (Afhankelijk van de installatie van uw virtuele machine moet u deze opdracht en docker-opdrachten mogelijk uitvoeren met `sudo`.)
+Verifieer vervolgens bij het REGI ster met [AZ ACR login][az-acr-login]. Wanneer u deze opdracht gebruikt, gebruikt de CLI het Active Directory-token dat u hebt gemaakt `az login` om uw sessie naadloos te verifiëren met het container register. (Afhankelijk van de installatie van uw virtuele machine moet u deze opdracht en docker-opdrachten mogelijk uitvoeren met `sudo` .)
 
 ```azurecli
 az acr login --name myContainerRegistry
 ```
 
-Er wordt een `Login succeeded` bericht weer gegeven. U kunt vervolgens opdrachten `docker` uitvoeren zonder referenties op te geven. Voer bijvoorbeeld [docker pull][docker-pull] uit om de `aci-helloworld:v1` installatie kopie op te halen, waarbij u de naam van de aanmeldings server van het REGI ster opgeeft. De naam van de aanmeldings server bestaat uit de register naam van de container (alle `.azurecr.io` kleine letters), `mycontainerregistry.azurecr.io`gevolgd door, bijvoorbeeld.
+Er wordt een `Login succeeded` bericht weer gegeven. U kunt vervolgens `docker` opdrachten uitvoeren zonder referenties op te geven. Voer bijvoorbeeld [docker pull][docker-pull] uit om de installatie kopie op te halen `aci-helloworld:v1` , waarbij u de naam van de aanmeldings server van het REGI ster opgeeft. De naam van de aanmeldings server bestaat uit de register naam van de container (alle kleine letters), gevolgd door `.azurecr.io` , bijvoorbeeld `mycontainerregistry.azurecr.io` .
 
 ```
 docker pull mycontainerregistry.azurecr.io/aci-helloworld:v1
@@ -188,7 +187,7 @@ Met de volgende opdracht [AZ VM Identity Assign][az-vm-identity-assign] configur
 az vm identity assign --resource-group myResourceGroup --name myDockerVM 
 ```
 
-Gebruik de opdracht [AZ VM show][az-vm-show] om een variabele in te stellen op de `principalId` waarde van (de Service-Principal-id) van de identiteit van de virtuele machine die u in latere stappen moet gebruiken.
+Gebruik de opdracht [AZ VM show][az-vm-show] om een variabele in te stellen op de waarde van `principalId` (de Service-Principal-id) van de identiteit van de virtuele machine die u in latere stappen moet gebruiken.
 
 ```azurecli-interactive
 spID=$(az vm show --resource-group myResourceGroup --name myDockerVM --query identity.principalId --out tsv)
@@ -218,13 +217,13 @@ Verifieer eerst de Azure CLI met [AZ login][az-login], waarbij de door het syste
 az login --identity
 ```
 
-Verifieer vervolgens bij het REGI ster met [AZ ACR login][az-acr-login]. Wanneer u deze opdracht gebruikt, gebruikt de CLI het Active Directory-token `az login` dat u hebt gemaakt om uw sessie naadloos te verifiëren met het container register. (Afhankelijk van de installatie van uw virtuele machine moet u deze opdracht en docker-opdrachten mogelijk uitvoeren met `sudo`.)
+Verifieer vervolgens bij het REGI ster met [AZ ACR login][az-acr-login]. Wanneer u deze opdracht gebruikt, gebruikt de CLI het Active Directory-token dat u hebt gemaakt `az login` om uw sessie naadloos te verifiëren met het container register. (Afhankelijk van de installatie van uw virtuele machine moet u deze opdracht en docker-opdrachten mogelijk uitvoeren met `sudo` .)
 
 ```azurecli
 az acr login --name myContainerRegistry
 ```
 
-Er wordt een `Login succeeded` bericht weer gegeven. U kunt vervolgens opdrachten `docker` uitvoeren zonder referenties op te geven. Voer bijvoorbeeld [docker pull][docker-pull] uit om de `aci-helloworld:v1` installatie kopie op te halen, waarbij u de naam van de aanmeldings server van het REGI ster opgeeft. De naam van de aanmeldings server bestaat uit de register naam van de container (alle `.azurecr.io` kleine letters), `mycontainerregistry.azurecr.io`gevolgd door, bijvoorbeeld.
+Er wordt een `Login succeeded` bericht weer gegeven. U kunt vervolgens `docker` opdrachten uitvoeren zonder referenties op te geven. Voer bijvoorbeeld [docker pull][docker-pull] uit om de installatie kopie op te halen `aci-helloworld:v1` , waarbij u de naam van de aanmeldings server van het REGI ster opgeeft. De naam van de aanmeldings server bestaat uit de register naam van de container (alle kleine letters), gevolgd door `.azurecr.io` , bijvoorbeeld `mycontainerregistry.azurecr.io` .
 
 ```
 docker pull mycontainerregistry.azurecr.io/aci-helloworld:v1

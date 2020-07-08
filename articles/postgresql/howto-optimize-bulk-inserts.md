@@ -7,10 +7,9 @@ ms.service: postgresql
 ms.topic: conceptual
 ms.date: 5/6/2019
 ms.openlocfilehash: 4c4bac16917be0064ebb111328753d378d462a2a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "74770132"
 ---
 # <a name="optimize-bulk-inserts-and-use-transient-data-on-an-azure-database-for-postgresql---single-server"></a>Bulk toevoegingen optimaliseren en tijdelijke gegevens gebruiken op een Azure Database for PostgreSQL-één server 
@@ -24,10 +23,10 @@ Niet-geregistreerde tabellen is een PostgreSQL-functie die effectief kan worden 
 Als u invoegt in een niet-geregistreerde tabel, betekent dit dat PostgreSQL wordt ingevoegd zonder te worden geschreven naar het transactie logboek. Dit is een I/O-bewerking. Als gevolg hiervan zijn deze tabellen aanzienlijk sneller dan gewone tabellen.
 
 Gebruik de volgende opties om een niet-geregistreerde tabel te maken:
-- Een nieuwe, niet-geregistreerde tabel maken met behulp van de syntaxis `CREATE UNLOGGED TABLE <tableName>`.
-- Een bestaande, geregistreerde tabel naar een niet-geregistreerde tabel converteren met behulp van de syntaxis `ALTER TABLE <tableName> SET UNLOGGED`.  
+- Een nieuwe, niet-geregistreerde tabel maken met behulp van de syntaxis `CREATE UNLOGGED TABLE <tableName>` .
+- Een bestaande, geregistreerde tabel naar een niet-geregistreerde tabel converteren met behulp van de syntaxis `ALTER TABLE <tableName> SET UNLOGGED` .  
 
-Gebruik de syntaxis `ALTER TABLE <tableName> SET LOGGED`om het proces om te keren.
+Gebruik de syntaxis om het proces om te keren `ALTER TABLE <tableName> SET LOGGED` .
 
 ## <a name="unlogged-table-tradeoff"></a>Niet-geregistreerde tabel balans
 Niet-geregistreerde tabellen zijn niet crash-veilig. Een niet-geregistreerde tabel wordt automatisch afgekapt na een crash of een onvolledige afsluiting. De inhoud van een niet-geregistreerde tabel wordt ook niet gerepliceerd naar stand-by-servers. Indexen die zijn gemaakt in een niet-geregistreerde tabel, worden ook automatisch niet geregistreerd. Nadat de bewerking is voltooid, converteert u de tabel naar vastgelegd zodat de invoeging duurzaam is.

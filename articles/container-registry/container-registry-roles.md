@@ -4,10 +4,9 @@ description: Gebruik Azure op rollen gebaseerd toegangs beheer (RBAC) en identit
 ms.topic: article
 ms.date: 12/02/2019
 ms.openlocfilehash: 3fb103ac4c4dac736b3c0fc99b2cf49f01e9e005
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "74893481"
 ---
 # <a name="azure-container-registry-roles-and-permissions"></a>Rollen en machtigingen Azure Container Registry
@@ -30,7 +29,7 @@ Telkens wanneer machtigingen worden toegepast, moet een best practice de meeste 
 
 ### <a name="cicd-solutions"></a>CI/CD-oplossingen
 
-Wanneer u `docker build` opdrachten van CI/cd-oplossingen automatiseert, `docker push` hebt u mogelijkheden nodig. Voor deze headless service scenario's wordt u aangeraden de functie **AcrPush** toe te wijzen. Deze rol, in tegens telling tot de bredere rol **Inzender** , voor komt dat het account andere register bewerkingen uitvoert of Azure Resource Manager.
+Wanneer `docker build` u opdrachten van CI/cd-oplossingen automatiseert, hebt u `docker push` mogelijkheden nodig. Voor deze headless service scenario's wordt u aangeraden de functie **AcrPush** toe te wijzen. Deze rol, in tegens telling tot de bredere rol **Inzender** , voor komt dat het account andere register bewerkingen uitvoert of Azure Resource Manager.
 
 ### <a name="container-host-nodes"></a>Container knooppunten
 
@@ -38,7 +37,7 @@ Knoop punten waarop uw containers worden uitgevoerd, hebben ook de rol **AcrPull
 
 ### <a name="visual-studio-code-docker-extension"></a>Visual Studio code docker-extensie
 
-Voor hulpprogram ma's zoals de Visual Studio code [docker-extensie](https://code.visualstudio.com/docs/azure/docker)is aanvullende toegang tot de bron provider vereist om de beschik bare Azure-container registers weer te geven. Geef in dit geval uw gebruikers toegang tot de rol **lezer** of **Inzender** . Deze rollen bieden `docker pull`, `docker push`, `az acr list` `az acr build`, en andere mogelijkheden. 
+Voor hulpprogram ma's zoals de Visual Studio code [docker-extensie](https://code.visualstudio.com/docs/azure/docker)is aanvullende toegang tot de bron provider vereist om de beschik bare Azure-container registers weer te geven. Geef in dit geval uw gebruikers toegang tot de rol **lezer** of **Inzender** . Deze rollen bieden `docker pull` , `docker push` ,, en `az acr list` `az acr build` andere mogelijkheden. 
 
 ## <a name="access-resource-manager"></a>Toegang tot Resource Manager
 

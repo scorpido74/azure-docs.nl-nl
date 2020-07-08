@@ -7,10 +7,9 @@ ms.topic: conceptual
 ms.date: 12/02/2019
 ms.author: tisande
 ms.openlocfilehash: 42d9e8b190747a3ffaf0e46ea1eddda33d09bb24
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "74870561"
 ---
 # <a name="sql-subquery-examples-for-azure-cosmos-db"></a>Voor beelden van SQL-subquery voor Azure Cosmos DB
@@ -79,7 +78,7 @@ Stel dat er slechts één item in de matrix Tags overeenkomt met het filter en d
 
 Subquery's kunnen helpen bij het optimaliseren van query's met dure expressies zoals door de gebruiker gedefinieerde functies (Udf's), complexe teken reeksen of reken kundige expressies. U kunt een subquery samen met een JOINEXPRESSIE expressie gebruiken om de expressie één keer te evalueren, maar hiernaar te verwijzen.
 
-Met de volgende query wordt de `GetMaxNutritionValue` UDF twee keer uitgevoerd:
+Met de volgende query wordt de UDF `GetMaxNutritionValue` twee keer uitgevoerd:
 
 ```sql
 SELECT c.id, udf.GetMaxNutritionValue(c.nutrients) AS MaxNutritionValue
@@ -109,7 +108,7 @@ JOIN (SELECT udf.GetMaxNutritionValue(c.nutrients) AS MaxNutritionValue) m
 WHERE m.MaxNutritionValue > 100
 ```
 
-De methode is niet beperkt tot Udf's. Dit is van toepassing op een mogelijke dure expressie. U kunt bijvoorbeeld dezelfde benadering volgen met de wiskundige functie `avg`:
+De methode is niet beperkt tot Udf's. Dit is van toepassing op een mogelijke dure expressie. U kunt bijvoorbeeld dezelfde benadering volgen met de wiskundige functie `avg` :
 
 ```sql
 SELECT TOP 1000 c.id, AvgNutritionValue
@@ -191,7 +190,7 @@ Een scalaire subquery met eenvoudige expressie is een gecorreleerde subquery met
 
 Hier volgen enkele voor beelden:
 
-**Voor beeld 1**
+**Voorbeeld 1**
 
 ```sql
 SELECT 1 AS a, 2 AS b
@@ -211,7 +210,7 @@ Beide query's produceren deze uitvoer:
 ]
 ```
 
-**Voor beeld 2**
+**Voorbeeld 2**
 
 ```sql
 SELECT TOP 5 Concat('id_', f.id) AS id
@@ -237,7 +236,7 @@ Query uitvoer:
 ]
 ```
 
-**Voor beeld 3**
+**Voorbeeld 3**
 
 ```sql
 SELECT TOP 5 f.id, Contains(f.description, 'fruit') = true ? f.description : undefined
@@ -267,7 +266,7 @@ Query uitvoer:
 
 Een gecombineerde scalaire subquery is een subquery met een statistische functie in de projectie of het filter waarmee een enkele waarde wordt geëvalueerd.
 
-**Voorbeeld 1:**
+**Voor beeld 1:**
 
 Hier volgt een subquery met één statistische functie-expressie in de projectie:
 
@@ -291,7 +290,7 @@ Query uitvoer:
 ]
 ```
 
-**Voor beeld 2**
+**Voorbeeld 2**
 
 Hier volgt een subquery met meerdere statistische functie-expressies:
 
@@ -316,7 +315,7 @@ Query uitvoer:
 ]
 ```
 
-**Voor beeld 3**
+**Voorbeeld 3**
 
 Hier volgt een query met een statistische subquery in zowel de projectie als het filter:
 
@@ -366,7 +365,7 @@ Als het sleutel woord VALUE in de voor gaande subquery wordt wegge laten, wordt 
 SELECT EXISTS (SELECT undefined) 
 ```
 
-De subquery plaatst de lijst met waarden in de geselecteerde lijst in een-object. Als de geselecteerde lijst geen waarden bevat, retourneert de subquery de enkele waarde '{}'. Deze waarde is gedefinieerd, dus resulteert in waar.
+De subquery plaatst de lijst met waarden in de geselecteerde lijst in een-object. Als de geselecteerde lijst geen waarden bevat, retourneert de subquery de enkele waarde ' {} '. Deze waarde is gedefinieerd, dus resulteert in waar.
 
 ### <a name="example-rewriting-array_contains-and-join-as-exists"></a>Voor beeld: ARRAY_CONTAINS herschrijven en samen voegen als bestaan
 
@@ -388,7 +387,7 @@ WHERE EXISTS(SELECT VALUE t FROM t IN f.tags WHERE t.name = 'orange')
 
 Daarnaast kan ARRAY_CONTAINS alleen controleren of een waarde gelijk is aan een wille keurig element in een matrix. Als u complexere filters voor matrix eigenschappen nodig hebt, gebruikt u samen voegen.
 
-Bekijk de volgende query die op basis van de eenheden en `nutritionValue` eigenschappen in de matrix filtert: 
+Bekijk de volgende query die op basis van de eenheden en `nutritionValue` Eigenschappen in de matrix filtert: 
 
 ```sql
 SELECT VALUE c.description

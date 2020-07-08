@@ -7,10 +7,9 @@ ms.service: postgresql
 ms.date: 5/6/2019
 ms.topic: conceptual
 ms.openlocfilehash: 46aa411826dd3ea578a2d98b0fe631ab0a12ef4a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "74769877"
 ---
 # <a name="connecting-azure-kubernetes-service-and-azure-database-for-postgresql---single-server"></a>Verbinding maken met de Azure Kubernetes-service en Azure Database for PostgreSQL-één server
@@ -54,4 +53,4 @@ Er zijn meerdere groepsgewijze verbindingen die u kunt gebruiken met PostgreSQL.
 
 
 ## <a name="next-steps"></a>Volgende stappen
--  [Een Azure Kubernetes service-cluster maken](../aks/kubernetes-walkthrough.md)
+-  [Een upgrade maken van een Azure Kubernetes Service-cluster](../aks/kubernetes-walkthrough.md)

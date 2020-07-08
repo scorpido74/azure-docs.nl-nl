@@ -9,10 +9,9 @@ ms.reviewer: estfan, logicappspm
 ms.topic: article
 ms.date: 07/25/2016
 ms.openlocfilehash: e2f65f1c52dc7dfb2e4e4bf66f5c7e82f4b802b8
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "74792871"
 ---
 # <a name="schema-updates-for-azure-logic-apps---june-1-2016"></a>Schema-updates voor Azure Logic Apps van 1 juni 2016
@@ -21,7 +20,7 @@ De [bijgewerkte schema](https://schema.management.azure.com/schemas/2016-06-01/M
 
 * Met [bereiken](#scopes) kunt u acties groeperen of nesten als een verzameling acties.
 * [Voor waarden en lussen](#conditions-loops) zijn nu acties voor de eerste klasse.
-* Nauw keurige volg orde voor het uitvoeren `runAfter` van acties met de eigenschap, vervangen`dependsOn`
+* Nauw keurige volg orde voor het uitvoeren van acties met de `runAfter` eigenschap, vervangen`dependsOn`
 
 Als u uw Logic apps van het voorbeeld schema van 1 augustus 2015 wilt bijwerken naar het schema van 1 juni 2016, [raadpleegt u de sectie upgrades](#upgrade-your-schema).
 
@@ -85,7 +84,7 @@ In vorige schema versies waren voor waarden en lussen para meters die zijn gekop
 
 ## <a name="runafter-property"></a>eigenschap runAfter
 
-De `runAfter` eigenschap vervangt `dependsOn`meer nauw keurigheid wanneer u de uitvoerings volgorde opgeeft voor acties op basis van de status van vorige acties. De `dependsOn` eigenschap geeft aan of de actie is uitgevoerd en is geslaagd, op basis van het feit of de vorige actie is geslaagd, mislukt of is overgeslagen, niet het aantal keren dat u de actie wilt uitvoeren. De `runAfter` eigenschap biedt flexibiliteit als een object dat alle actie namen opgeeft waarna het object wordt uitgevoerd. Deze eigenschap definieert ook een matrix met statussen die acceptabel zijn als triggers. Als u bijvoorbeeld wilt dat een actie wordt uitgevoerd nadat de actie is voltooid en nadat actie B is geslaagd of mislukt, stelt u deze `runAfter` eigenschap in:
+De `runAfter` eigenschap vervangt `dependsOn` meer nauw keurigheid wanneer u de uitvoerings volgorde opgeeft voor acties op basis van de status van vorige acties. De `dependsOn` eigenschap geeft aan of de actie is uitgevoerd en is geslaagd, op basis van het feit of de vorige actie is geslaagd, mislukt of is overgeslagen, niet het aantal keren dat u de actie wilt uitvoeren. De `runAfter` eigenschap biedt flexibiliteit als een object dat alle actie namen opgeeft waarna het object wordt uitgevoerd. Deze eigenschap definieert ook een matrix met statussen die acceptabel zijn als triggers. Als u bijvoorbeeld wilt dat een actie wordt uitgevoerd nadat de actie is voltooid en nadat actie B is geslaagd of mislukt, stelt u deze eigenschap in `runAfter` :
 
 ```json
 {
@@ -127,7 +126,7 @@ Als u een upgrade wilt uitvoeren naar het [meest recente schema](https://schema.
 
 ### <a name="mapping-conditions"></a>Toewijzings voorwaarden
 
-In de definitie van de upgrade maakt het hulp programma het beste resultaat bij het groeperen van waar en ONWAAR Branch-acties samen als een bereik. Met name het ontwerp patroon van `@equals(actions('a').status, 'Skipped')` wordt weer gegeven `else` als een actie. Als het hulp programma echter niet-herken bare patronen detecteert, kan het hulp programma afzonderlijke voor waarden maken voor zowel de vertakking waar als de onwaar. U kunt, indien nodig, acties opnieuw toewijzen na de upgrade.
+In de definitie van de upgrade maakt het hulp programma het beste resultaat bij het groeperen van waar en ONWAAR Branch-acties samen als een bereik. Met name het ontwerp patroon van `@equals(actions('a').status, 'Skipped')` wordt weer gegeven als een `else` actie. Als het hulp programma echter niet-herken bare patronen detecteert, kan het hulp programma afzonderlijke voor waarden maken voor zowel de vertakking waar als de onwaar. U kunt, indien nodig, acties opnieuw toewijzen na de upgrade.
 
 #### <a name="foreach-loop-with-condition"></a>foreach-lus met voor waarde
 
@@ -141,19 +140,19 @@ Nadat u de upgrade hebt uitgevoerd, worden de resource Tags verwijderd, dus u mo
 
 ### <a name="renamed-manual-trigger-to-request-trigger"></a>De naam van de trigger Manual is gewijzigd in de trigger ' aanvraag '
 
-Het `manual` trigger type is afgeschaft en is hernoemd `request` met `http`type. Deze wijziging maakt meer consistentie voor het soort patroon dat wordt gebruikt voor het bouwen van de trigger.
+Het `manual` trigger type is afgeschaft en is hernoemd `request` met type `http` . Deze wijziging maakt meer consistentie voor het soort patroon dat wordt gebruikt voor het bouwen van de trigger.
 
 ### <a name="new-filter-action"></a>Nieuwe actie filter
 
-Als u een grote matrix omlaag wilt filteren op een kleinere set items, accepteert `filter` het nieuwe type een matrix en een voor waarde, evalueert de voor waarde voor elk item en retourneert een matrix met items die aan de voor waarde voldoen.
+Als u een grote matrix omlaag wilt filteren op een kleinere set items, accepteert het nieuwe `filter` type een matrix en een voor waarde, evalueert de voor waarde voor elk item en retourneert een matrix met items die aan de voor waarde voldoen.
 
 ### <a name="restrictions-for-foreach-and-until-actions"></a>Beperkingen voor de acties foreach en until
 
-De `foreach` and `until` -lus is beperkt tot één actie.
+De `foreach` and- `until` lus is beperkt tot één actie.
 
 ### <a name="new-trackedproperties-for-actions"></a>Nieuwe ' trackedProperties ' voor acties
 
-Acties kunnen nu een extra eigenschap hebben met `trackedProperties`de naam, die gelijk is `runAfter` aan `type` de eigenschappen en. Dit object geeft bepaalde actie-invoer of uitvoer op die u wilt opnemen in de telemetrie van Azure diagnostische gegevens die worden verzonden als onderdeel van een werk stroom. Bijvoorbeeld:
+Acties kunnen nu een extra eigenschap hebben met `trackedProperties` de naam, die gelijk is aan de `runAfter` `type` Eigenschappen en. Dit object geeft bepaalde actie-invoer of uitvoer op die u wilt opnemen in de telemetrie van Azure diagnostische gegevens die worden verzonden als onderdeel van een werk stroom. Bijvoorbeeld:
 
 ``` json
 {

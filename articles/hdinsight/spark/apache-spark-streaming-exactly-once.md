@@ -9,10 +9,9 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 11/15/2018
 ms.openlocfilehash: ee4f9b84e822cb370e5fe3d55fcceb9c8a9f2ab9
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "74228974"
 ---
 # <a name="create-apache-spark-streaming-jobs-with-exactly-once-event-processing"></a>Apache Spark streaming-taken maken met precies één keer per gebeurtenis verwerking
@@ -49,7 +48,7 @@ In Spark streaming hebben bronnen als Event Hubs en Kafka *betrouw bare ontvange
 
 ### <a name="use-the-write-ahead-log"></a>Het Write-Ahead logboek gebruiken
 
-Spark streaming ondersteunt het gebruik van een write-Ahead logboek waarbij elke ontvangen gebeurtenis eerst wordt geschreven naar de map met het controle punt van Spark in fout tolerante opslag en vervolgens wordt opgeslagen in een flexibele, gedistribueerde gegevensset (RDD). In azure wordt de fout tolerante opslag ondersteund door een Azure Storage of Azure Data Lake Storage. In uw Spark-streaming-toepassing wordt het Write-Ahead logboek ingeschakeld voor alle ontvangers door de `spark.streaming.receiver.writeAheadLog.enable` configuratie-instelling in `true`te stellen op. Het Write-Ahead logboek biedt fout tolerantie voor fouten van zowel het stuur programma als de uitvoerder.
+Spark streaming ondersteunt het gebruik van een write-Ahead logboek waarbij elke ontvangen gebeurtenis eerst wordt geschreven naar de map met het controle punt van Spark in fout tolerante opslag en vervolgens wordt opgeslagen in een flexibele, gedistribueerde gegevensset (RDD). In azure wordt de fout tolerante opslag ondersteund door een Azure Storage of Azure Data Lake Storage. In uw Spark-streaming-toepassing wordt het Write-Ahead logboek ingeschakeld voor alle ontvangers door de `spark.streaming.receiver.writeAheadLog.enable` configuratie-instelling in te stellen op `true` . Het Write-Ahead logboek biedt fout tolerantie voor fouten van zowel het stuur programma als de uitvoerder.
 
 Voor werk nemers die taken uitvoeren op basis van de gebeurtenis gegevens, wordt elke RDD per definitie gerepliceerd en gedistribueerd over meerdere werk rollen. Als een taak mislukt omdat het uitvoeren van de werk nemer is vastgelopen, wordt de taak opnieuw gestart op een andere werk nemer die een replica van de gebeurtenis gegevens heeft, zodat de gebeurtenis niet verloren gaat.
 

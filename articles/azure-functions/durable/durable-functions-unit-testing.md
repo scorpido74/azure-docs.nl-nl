@@ -4,10 +4,9 @@ description: Meer informatie over het testen van de eenheids Durable Functions.
 ms.topic: conceptual
 ms.date: 11/03/2019
 ms.openlocfilehash: 86733f8b5b80799bad3e52c643ed27465dfc7641
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "74231228"
 ---
 # <a name="durable-functions-unit-testing"></a>Testen van Durable Functions eenheid
@@ -39,7 +38,7 @@ De deprototypen wordt ondersteund via drie abstracte klassen in Durable Function
 
 * `DurableActivityContextBase`
 
-Deze klassen zijn basis klassen voor `DurableOrchestrationClient`, `DurableOrchestrationContext`en `DurableActivityContext` die de Orchestration-client, Orchestrator en activiteiten methoden definiëren. Met de-modellen wordt het verwachte gedrag voor basis klassen methoden ingesteld, zodat de eenheids test de bedrijfs logica kan controleren. Er is een werk stroom met twee stappen voor het testen van de bedrijfs logica in de Orchestration-client en Orchestrator:
+Deze klassen zijn basis klassen voor `DurableOrchestrationClient` , `DurableOrchestrationContext` en `DurableActivityContext` die de Orchestration-client, Orchestrator en activiteiten methoden definiëren. Met de-modellen wordt het verwachte gedrag voor basis klassen methoden ingesteld, zodat de eenheids test de bedrijfs logica kan controleren. Er is een werk stroom met twee stappen voor het testen van de bedrijfs logica in de Orchestration-client en Orchestrator:
 
 1. Gebruik de basis klassen in plaats van de concrete implementatie bij het definiëren van de hand tekeningen van de Orchestration-client en Orchestrator-functie.
 2. In de eenheids tests wordt het gedrag van de basis klassen gesimuleerd en wordt de bedrijfs logica gecontroleerd.
@@ -54,7 +53,7 @@ In deze sectie valideert de eenheids test de logica van de volgende HTTP-activer
 
 De eenheids test taak wordt uitgevoerd om de waarde van de `Retry-After` header te controleren die is opgenomen in de nettolading van de reactie. De eenheids test maakt dus een aantal `DurableOrchestrationClientBase` methoden voor een voorspelbaar gedrag te zien.
 
-Eerst is een model van de basis klasse vereist `DurableOrchestrationClientBase`. De Modeler kan een nieuwe klasse zijn die wordt `DurableOrchestrationClientBase`geïmplementeerd. Het gebruik van een model raamwerk zoals [MOQ](https://github.com/moq/moq4) vereenvoudigt echter het proces:
+Eerst is een model van de basis klasse vereist `DurableOrchestrationClientBase` . De Modeler kan een nieuwe klasse zijn die wordt geïmplementeerd `DurableOrchestrationClientBase` . Het gebruik van een model raamwerk zoals [MOQ](https://github.com/moq/moq4) vereenvoudigt echter het proces:
 
 ```csharp
     // Mock DurableOrchestrationClientBase
@@ -70,7 +69,7 @@ Vervolgens `StartNewAsync` wordt de methode gebruikt om een bekende exemplaar-id
         ReturnsAsync(instanceId);
 ```
 
-De `CreateCheckStatusResponse` volgende is gesimuleerd om altijd een leeg HTTP 200-antwoord te retour neren.
+De volgende is gesimuleerd `CreateCheckStatusResponse` om altijd een leeg HTTP 200-antwoord te retour neren.
 
 ```csharp
     // Mock CreateCheckStatusResponse method
@@ -127,7 +126,7 @@ Na het combi neren van alle stappen, heeft de eenheids test de volgende code:
 
 Orchestrator-functies zijn nog interessanter voor het testen van de eenheid omdat ze meestal veel meer bedrijfs logica hebben.
 
-In dit gedeelte wordt de uitvoer van de `E1_HelloSequence` Orchestrator-functie door de eenheids tests gevalideerd:
+In dit gedeelte wordt de uitvoer van de Orchestrator-functie door de eenheids tests gevalideerd `E1_HelloSequence` :
 
 [!code-csharp[Main](~/samples-durable-functions/samples/precompiled/HelloSequence.cs)]
 
@@ -145,7 +144,7 @@ Vervolgens worden de aanroepen van de activiteit methode gesimuleerd:
     durableOrchestrationContextMock.Setup(x => x.CallActivityAsync<string>("E1_SayHello", "London")).ReturnsAsync("Hello London!");
 ```
 
-De volgende methode wordt aangeroepen `HelloSequence.Run` door de eenheids test:
+De volgende methode wordt aangeroepen door de eenheids test `HelloSequence.Run` :
 
 ```csharp
     var result = await HelloSequence.Run(durableOrchestrationContextMock.Object);
@@ -168,7 +167,7 @@ Na het combi neren van alle stappen, heeft de eenheids test de volgende code:
 
 Activiteit functies kunnen als eenheid worden getest op dezelfde manier als niet-duurzame functies.
 
-In deze sectie wordt met de eenheids test het gedrag van `E1_SayHello` de activiteit functie gevalideerd:
+In deze sectie wordt met de eenheids test het gedrag van de `E1_SayHello` activiteit functie gevalideerd:
 
 [!code-csharp[Main](~/samples-durable-functions/samples/precompiled/HelloSequence.cs)]
 

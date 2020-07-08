@@ -9,10 +9,9 @@ ms.reviewer: estfan, logicappspm
 ms.topic: article
 ms.date: 05/13/2019
 ms.openlocfilehash: b71aae91f4a065b70537a300aa0bd7016edfd4b4
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "74790279"
 ---
 # <a name="test-logic-apps-with-mock-data-by-setting-up-static-results"></a>Logische Apps testen met gegevens modeleren door statische resultaten in te stellen
@@ -54,7 +53,7 @@ Als u bijvoorbeeld statische resultaten voor de e-mail actie Outlook 365-verzen 
 
       ![Selecteer ' statisch resultaat inschakelen '](./media/test-logic-apps-mock-data-static-results/enable-static-result.png)
 
-      Als u de gegevens voor de Modeling in JavaScript object Notation indeling (JSON) wilt invoeren, kiest![ **u overschakelen naar JSON-modus** (](./media/test-logic-apps-mock-data-static-results/switch-to-json-mode-button.png)Kies overschakelen naar JSON-modus).
+      Als u de gegevens voor de Modeling in JavaScript Object Notation indeling (JSON) wilt invoeren, kiest **u overschakelen naar JSON-modus** ( ![ Kies overschakelen naar JSON ](./media/test-logic-apps-mock-data-static-results/switch-to-json-mode-button.png) -modus).
 
    1. Voor optionele eigenschappen opent u de lijst **optionele velden selecteren** en selecteert u de eigenschappen die u wilt weer geven.
 
@@ -62,7 +61,7 @@ Als u bijvoorbeeld statische resultaten voor de e-mail actie Outlook 365-verzen 
 
 1. Wanneer u klaar bent om op te slaan, kiest u **gereed**.
 
-   In de rechter bovenhoek van de actie toont de titel balk nu een pictogram voor een test beker glas (![pictogram voor statische resultaten](./media/test-logic-apps-mock-data-static-results/static-results-test-beaker-icon.png)). Dit geeft aan dat u statische resultaten hebt ingeschakeld.
+   In de rechter bovenhoek van de actie toont de titel balk nu een pictogram voor een test beker glas ( ![ pictogram voor statische resultaten ](./media/test-logic-apps-mock-data-static-results/static-results-test-beaker-icon.png) ). Dit geeft aan dat u statische resultaten hebt ingeschakeld.
 
    ![Pictogram met ingeschakelde statische resultaten](./media/test-logic-apps-mock-data-static-results/static-results-enabled.png)
 
@@ -90,7 +89,7 @@ Als uw logische app een vorige uitvoering heeft met uitvoer die u kunt hergebrui
 
 1. Nadat het vak **statisch resultaat** wordt geopend, kiest u stap:
 
-   * Als u een volledig JSON-object wilt plakken, kiest **u overschakelen naar JSON-modus** (![Kies overschakelen](./media/test-logic-apps-mock-data-static-results/switch-to-json-mode-button.png)naar JSON-modus):
+   * Als u een volledig JSON-object wilt plakken, kiest **u overschakelen naar JSON-modus** ( ![ Kies overschakelen naar JSON ](./media/test-logic-apps-mock-data-static-results/switch-to-json-mode-button.png) -modus):
 
      ![Kies overschakelen naar JSON-modus voor een volledig object](./media/test-logic-apps-mock-data-static-results/switch-to-json-mode-button-complete.png)
 
@@ -102,7 +101,7 @@ Als uw logische app een vorige uitvoering heeft met uitvoer die u kunt hergebrui
 
    ![JSON-modus](./media/test-logic-apps-mock-data-static-results/json-editing-mode.png)
 
-1. Wanneer u klaar bent, kiest u **Gereed**. Als u wilt terugkeren naar de ontwerp functie, kiest u **modus switch editor** (![Kies de modus switch](./media/test-logic-apps-mock-data-static-results/switch-editor-mode-button.png)editor).
+1. Wanneer u klaar bent, kiest u **Gereed**. Als u wilt terugkeren naar de ontwerp functie, kiest u **modus switch editor** ( ![ Kies de modus switch editor ](./media/test-logic-apps-mock-data-static-results/switch-editor-mode-button.png) ).
 
 <a name="find-runs-mock-data"></a>
 
@@ -120,7 +119,7 @@ De uitvoerings geschiedenis van de logische app identificeert de uitvoeringen wa
 
 1. Als u acties wilt weer geven die statische resultaten gebruiken, selecteert u de gewenste uitvoeren waar de kolom **statische resultaten** is ingesteld op **ingeschakeld**.
 
-   Acties die statische resultaten gebruiken, tonen het pictogram test bekers (![pictogram voor](./media/test-logic-apps-mock-data-static-results/static-results-test-beaker-icon.png)statische resultaten), bijvoorbeeld:
+   Acties die statische resultaten gebruiken, tonen het pictogram test bekers ( ![ pictogram voor statische resultaten ](./media/test-logic-apps-mock-data-static-results/static-results-test-beaker-icon.png) ), bijvoorbeeld:
 
    ![Uitvoerings geschiedenis-acties die statische resultaten gebruiken](./media/test-logic-apps-mock-data-static-results/static-results-enabled-run-details.png)
 
@@ -128,15 +127,15 @@ De uitvoerings geschiedenis van de logische app identificeert de uitvoeringen wa
 
 Als u statische resultaten uitschakelt, worden de waarden niet uit de laatste installatie verwijderd. Dus wanneer u statische resultaten de volgende keer inschakelt, kunt u de vorige waarden blijven gebruiken.
 
-1. Zoek de actie waarvoor u statische uitvoer wilt uitschakelen. In de rechter bovenhoek van de actie kiest u het pictogram test beker glas (![pictogram voor statische resultaten](./media/test-logic-apps-mock-data-static-results/static-results-test-beaker-icon.png)).
+1. Zoek de actie waarvoor u statische uitvoer wilt uitschakelen. In de rechter bovenhoek van de actie kiest u het pictogram test beker glas ( ![ pictogram voor statische resultaten ](./media/test-logic-apps-mock-data-static-results/static-results-test-beaker-icon.png) ).
 
    ![Statische resultaten uitschakelen](./media/test-logic-apps-mock-data-static-results/disable-static-results.png)
 
-1. Kies **uitschakelen statisch resultaat** > **gereed**.
+1. Kies **uitschakelen statisch resultaat**  >  **gereed**.
 
    ![Statische resultaten uitschakelen](./media/test-logic-apps-mock-data-static-results/disable-static-results-button.png)
 
-## <a name="reference"></a>Naslaginformatie
+## <a name="reference"></a>Verwijzing
 
 Zie [statische resultaten-schema verwijzing voor werk stroom definitie taal](../logic-apps/logic-apps-workflow-definition-language.md#static-results) en [runtimeConfiguration. staticResult-runtime-configuratie-instellingen](../logic-apps/logic-apps-workflow-actions-triggers.md#runtime-configuration-settings) voor meer informatie over deze instelling in uw onderliggende werk stroom definities.
 

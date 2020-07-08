@@ -8,10 +8,9 @@ ms.devlang: azurecli
 ms.topic: conceptual
 ms.date: 06/19/2019
 ms.openlocfilehash: 4e029428a3709bacdbcd50a6ac3714e730377242
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "74763620"
 ---
 # <a name="customize-server-configuration-parameters-for-azure-database-for-postgresql---single-server-using-azure-cli"></a>Server configuratie parameters aanpassen voor Azure Database for PostgreSQL-één server met behulp van Azure CLI
@@ -32,14 +31,14 @@ az postgres server configuration list --resource-group myresourcegroup --server 
 ## <a name="show-server-configuration-parameter-details"></a>Details van server configuratie parameters weer geven
 Voer de opdracht [AZ post gres Server Configuration show](/cli/azure/postgres/server/configuration) uit om details over een bepaalde configuratie parameter voor een server weer te geven.
 
-In dit voor beeld worden details weer gegeven van de server configuratie parameter **\_\_min berichten logboek** voor server **mydemoserver.postgres.database.Azure.com** onder resource groep **myresourcegroup.**
+In dit voor beeld worden details weer gegeven van de server configuratie parameter ** \_ min \_ Berichten logboek** voor server **mydemoserver.postgres.database.Azure.com** onder resource groep **myresourcegroup.**
 ```azurecli-interactive
 az postgres server configuration show --name log_min_messages --resource-group myresourcegroup --server mydemoserver
 ```
 ## <a name="modify-server-configuration-parameter-value"></a>Parameter waarde voor de server configuratie wijzigen
 U kunt ook de waarde van een bepaalde server configuratie parameter wijzigen, waarmee de onderliggende configuratie waarde wordt bijgewerkt voor de PostgreSQL-server engine. Als u de configuratie wilt bijwerken, gebruikt u de opdracht [AZ post gres server configuration set](/cli/azure/postgres/server/configuration) . 
 
-De server configuratie parameter van het **\_\_logboek min-berichten** van server **mydemoserver.postgres.database.Azure.com** onder resource groep myresourcegroup bijwerken **.**
+De server configuratie parameter van het **logboek \_ min- \_ berichten** van server **mydemoserver.postgres.database.Azure.com** onder resource groep **myresourcegroup bijwerken.**
 ```azurecli-interactive
 az postgres server configuration set --name log_min_messages --resource-group myresourcegroup --server mydemoserver --value INFO
 ```
@@ -47,7 +46,7 @@ Als u de waarde van een configuratie parameter opnieuw wilt instellen, kunt u ge
 ```azurecli-interactive
 az postgres server configuration set --name log_min_messages --resource-group myresourcegroup --server mydemoserver
 ```
-Met deze opdracht wordt **de\_configuratie\_min-logboek berichten** opnieuw ingesteld op de standaard waarde **waarschuwing**. Zie PostgreSQL-documentatie over [Server configuratie](https://www.postgresql.org/docs/9.6/static/runtime-config.html)voor meer informatie over de configuratie van de server en de toegestane waarden.
+Met deze opdracht wordt de configuratie **min-logboek \_ \_ berichten** opnieuw ingesteld op de standaard waarde **waarschuwing**. Zie PostgreSQL-documentatie over [Server configuratie](https://www.postgresql.org/docs/9.6/static/runtime-config.html)voor meer informatie over de configuratie van de server en de toegestane waarden.
 
 ## <a name="next-steps"></a>Volgende stappen
 - [Meer informatie over het opnieuw opstarten van een server](howto-restart-server-cli.md)

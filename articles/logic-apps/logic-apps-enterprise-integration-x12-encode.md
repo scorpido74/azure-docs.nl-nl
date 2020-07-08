@@ -9,15 +9,14 @@ ms.reviewer: jonfan, logicappspm
 ms.topic: article
 ms.date: 01/27/2017
 ms.openlocfilehash: c87a61dc77e656a1cfe667ce87f852303a0cc486
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "74792346"
 ---
-# <a name="encode-x12-messages-in-azure-logic-apps-with-enterprise-integration-pack"></a>X12-berichten in Azure Logic Apps versleutelen met Enterprise Integration Pack
+# <a name="encode-x12-messages-in-azure-logic-apps-with-enterprise-integration-pack"></a>X12-berichten in Azure Logic Apps coderen met Enterprise Integration Pack
 
-Met de code ring X12 Message connector kunt u EDI-en partner-specifieke eigenschappen valideren, XML-gecodeerde berichten omzetten in EDI-transactie sets in de uitwisseling en een technische bevestiging, functionele bevestiging of beide aanvragen.
+Met de Encode X12-berichtenconnector kunt u EDI- en partner-specifieke eigenschappen valideren, XML-gecodeerde berichten in EDI-transactiesets converteren en technische bevestiging, functionele bevestiging of beide aanvragen.
 Als u deze connector wilt gebruiken, moet u de connector toevoegen aan een bestaande trigger in uw logische app.
 
 ## <a name="before-you-start"></a>Voordat u begint
@@ -70,7 +69,7 @@ Als u ervoor kiest om X12-berichten te coderen op identiteiten, voert u de kwali
    
 ![Identiteiten opgeven voor de afzender en ontvanger, het XML-bericht selecteren dat moet worden gecodeerd](./media/logic-apps-enterprise-integration-x12-encode/x12encodeimage5.png) 
 
-## <a name="x12-encode-details"></a>Details van X12-code ring
+## <a name="x12-encode-details"></a>Details van X12-codering
 
 De X12 encoded connector voert de volgende taken uit:
 

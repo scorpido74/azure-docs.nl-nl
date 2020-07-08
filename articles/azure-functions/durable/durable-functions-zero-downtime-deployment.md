@@ -6,10 +6,9 @@ ms.topic: conceptual
 ms.date: 10/10/2019
 ms.author: azfuncdf
 ms.openlocfilehash: 8e12d58c0077084c181d111b0b017665b74b9157
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "74231259"
 ---
 # <a name="zero-downtime-deployment-for-durable-functions"></a>Implementatie met een nul-uitval tijd voor Durable Functions
@@ -54,17 +53,17 @@ Gebruik de volgende procedure om dit scenario in te stellen.
 
 1. Stel voor elke sleuf de [toepassings instelling AzureWebJobsStorage](../functions-app-settings.md#azurewebjobsstorage) in op de Connection String van een gedeeld opslag account. Dit opslag account connection string wordt gebruikt door de Azure Functions-runtime. Dit account wordt gebruikt door de Azure Functions runtime en beheert de sleutels van de functie.
 
-1. Maak voor elke sleuf een nieuwe app-instelling, bijvoorbeeld `DurableManagementStorage`. Stel de waarde ervan in op de connection string van verschillende opslag accounts. Deze opslag accounts worden gebruikt door de extensie Durable Functions voor [betrouw bare uitvoering](durable-functions-checkpointing-and-replay.md). Gebruik een afzonderlijk opslag account voor elke sleuf. Markeer deze instelling niet als een implementatie site-instelling.
+1. Maak voor elke sleuf een nieuwe app-instelling, bijvoorbeeld `DurableManagementStorage` . Stel de waarde ervan in op de connection string van verschillende opslag accounts. Deze opslag accounts worden gebruikt door de extensie Durable Functions voor [betrouw bare uitvoering](durable-functions-checkpointing-and-replay.md). Gebruik een afzonderlijk opslag account voor elke sleuf. Markeer deze instelling niet als een implementatie site-instelling.
 
-1. Geef `azureStorageConnectionStringName` in de [sectie durableTask van de host. JSON-bestand](durable-functions-bindings.md#hostjson-settings)van de functie de naam op van de app-instelling die u in stap 3 hebt gemaakt.
+1. In dehost.jsvan de functie-app [in de sectie durableTask van het bestand](durable-functions-bindings.md#hostjson-settings), geeft `azureStorageConnectionStringName` u de naam op van de app-instelling die u in stap 3 hebt gemaakt.
 
 In het volgende diagram ziet u de beschreven configuratie van implementatie sleuven en opslag accounts. In dit mogelijke scenario voor voor implementatie wordt versie 2 van een functie-app uitgevoerd in de productie omgeving, terwijl versie 1 in de faserings sleuf blijft.
 
 ![Implementatie sleuven en opslag accounts](media/durable-functions-zero-downtime-deployment/deployment-slot.png)
 
-### <a name="hostjson-examples"></a>voor beelden van host. json
+### <a name="hostjson-examples"></a>host.jsop voor beelden
 
-De volgende JSON-fragmenten zijn voor beelden van de connection string instelling in het bestand *host. json* .
+De volgende JSON-fragmenten zijn voor beelden van de connection string-instelling in de *host.jsvoor* het bestand.
 
 #### <a name="functions-20"></a>Functies 2,0
 
@@ -164,7 +163,7 @@ De router controleert de status van de integraties op de 1.0.1-versie en verwijd
 
 ### <a name="tracking-store-settings"></a>Opslag instellingen bijhouden
 
-Elke functie-app moet afzonderlijke plannings wachtrijen gebruiken, mogelijk in afzonderlijke opslag accounts. Als u in alle versies van uw toepassing alle indelingen van exemplaren wilt opvragen, kunt u exemplaar-en geschiedenis tabellen delen in uw functie-apps. U kunt tabellen delen door de `trackingStoreConnectionStringName` en `trackingStoreNamePrefix` instellingen in het bestand [host. json-instellingen](durable-functions-bindings.md#host-json) te configureren, zodat ze allemaal dezelfde waarden gebruiken.
+Elke functie-app moet afzonderlijke plannings wachtrijen gebruiken, mogelijk in afzonderlijke opslag accounts. Als u in alle versies van uw toepassing alle indelingen van exemplaren wilt opvragen, kunt u exemplaar-en geschiedenis tabellen delen in uw functie-apps. U kunt tabellen delen door de `trackingStoreConnectionStringName` instellingen en te configureren `trackingStoreNamePrefix` in de [host.jsop instellingen](durable-functions-bindings.md#host-json) bestand, zodat ze allemaal dezelfde waarden gebruiken.
 
 Zie [instanties beheren in Durable functions in azure](durable-functions-instance-management.md)voor meer informatie.
 

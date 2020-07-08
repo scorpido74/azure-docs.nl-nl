@@ -5,10 +5,9 @@ ms.topic: article
 ms.date: 01/23/2019
 ms.custom: seodec18, H1Hack27Feb2017
 ms.openlocfilehash: 6751a04c3c1bfe826334161704c20c1ba2e5a6d2
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "74456351"
 ---
 # <a name="push-your-first-image-to-a-private-docker-container-registry-using-the-docker-cli"></a>Uw eerste installatiekopie naar een Docker-containerregister pushen met de Docker-CLI
@@ -20,7 +19,7 @@ In de volgende stappen downloadt u een officiële [nginx-installatie kopie](http
 ## <a name="prerequisites"></a>Vereisten
 
 * **Azure-containerregister**: maak een containerregister in uw Azure-abonnement. Gebruik bijvoorbeeld de [Azure Portal](container-registry-get-started-portal.md) of de [Azure cli](container-registry-get-started-azure-cli.md).
-* **Docker cli** : u moet ook docker lokaal hebben geïnstalleerd. Docker biedt pakketten die eenvoudig Docker configureren op elk [Mac][docker-mac]-, [Windows][docker-windows]- of [Linux][docker-linux]-systeem.
+* **Docker cli** : u moet ook docker lokaal hebben geïnstalleerd. Docker biedt pakketten die eenvoudig Docker configureren op elk [macOS][docker-mac]-, [Windows][docker-windows]- of [Linux][docker-linux]-systeem.
 
 ## <a name="log-in-to-a-registry"></a>Aanmelden bij een register
 
@@ -36,10 +35,10 @@ U kunt zich ook aanmelden met [docker-aanmelding](https://docs.docker.com/engine
 docker login myregistry.azurecr.io
 ```
 
-Beide opdrachten retour `Login Succeeded` neren eenmaal voltooid.
+Beide opdrachten retour neren `Login Succeeded` eenmaal voltooid.
 
 > [!TIP]
-> Geef altijd de volledig gekwalificeerde register naam op (alle kleine letters) wanneer `docker login` u gebruikt en wanneer u afbeeldingen labelt voor het naar uw REGI ster pushen. In de voor beelden in dit artikel is de volledig gekwalificeerde naam *myregistry.azurecr.io*.
+> Geef altijd de volledig gekwalificeerde register naam op (alle kleine letters) wanneer u gebruikt `docker login` en wanneer u afbeeldingen labelt voor het naar uw REGI ster pushen. In de voor beelden in dit artikel is de volledig gekwalificeerde naam *myregistry.azurecr.io*.
 
 ## <a name="pull-the-official-nginx-image"></a>De officiële nginx-installatie kopie ophalen
 
@@ -51,7 +50,7 @@ docker pull nginx
 
 ## <a name="run-the-container-locally"></a>De container lokaal uitvoeren
 
-Voer de volgende opdracht [docker run](https://docs.docker.com/engine/reference/run/) uit om een lokaal exemplaar van de nginx-container interactief te`-it`starten () op poort 8080. Het `--rm` argument geeft aan dat de container moet worden verwijderd wanneer u deze stopt.
+Voer de volgende opdracht [docker run](https://docs.docker.com/engine/reference/run/) uit om een lokaal exemplaar van de nginx-container interactief te starten ( `-it` ) op poort 8080. Het `--rm` argument geeft aan dat de container moet worden verwijderd wanneer u deze stopt.
 
 ```
 docker run -it --rm -p 8080:80 nginx
@@ -61,9 +60,9 @@ Blader naar `http://localhost:8080` om de standaard webpagina weer te geven die 
 
 ![Nginx op lokale computer](./media/container-registry-get-started-docker-cli/nginx.png)
 
-Omdat u de container interactief met `-it`hebt gestart, ziet u de uitvoer van de nginx-server op de opdracht regel nadat u deze in uw browser hebt genavigeerd.
+Omdat u de container interactief met hebt gestart `-it` , ziet u de uitvoer van de nginx-server op de opdracht regel nadat u deze in uw browser hebt genavigeerd.
 
-Als u de container wilt stoppen en verwijderen `Control` + `C`, drukt u op.
+Als u de container wilt stoppen en verwijderen, drukt u op `Control` + `C` .
 
 ## <a name="create-an-alias-of-the-image"></a>Een alias van de installatie kopie maken
 
@@ -101,7 +100,7 @@ docker run -it --rm -p 8080:80 myregistry.azurecr.io/samples/nginx
 
 Blader naar `http://localhost:8080` om de actieve container weer te geven.
 
-Als u de container wilt stoppen en verwijderen `Control` + `C`, drukt u op.
+Als u de container wilt stoppen en verwijderen, drukt u op `Control` + `C` .
 
 ## <a name="remove-the-image-optional"></a>De installatie kopie verwijderen (optioneel)
 
@@ -111,7 +110,7 @@ Als u de nginx-installatie kopie niet meer nodig hebt, kunt u deze lokaal verwij
 docker rmi myregistry.azurecr.io/samples/nginx
 ```
 
-Als u installatie kopieën uit het Azure container Registry wilt verwijderen, kunt u de Azure CLI-opdracht [AZ ACR repository delete](/cli/azure/acr/repository#az-acr-repository-delete)gebruiken. Met de volgende opdracht wordt bijvoorbeeld het manifest verwijderd waarnaar wordt verwezen door `samples/nginx:latest` de tag, alle unieke laag gegevens en alle andere tags die verwijzen naar het manifest.
+Als u installatie kopieën uit het Azure container Registry wilt verwijderen, kunt u de Azure CLI-opdracht [AZ ACR repository delete](/cli/azure/acr/repository#az-acr-repository-delete)gebruiken. Met de volgende opdracht wordt bijvoorbeeld het manifest verwijderd waarnaar wordt verwezen door de `samples/nginx:latest` tag, alle unieke laag gegevens en alle andere tags die verwijzen naar het manifest.
 
 ```azurecli
 az acr repository delete --name myregistry --image samples/nginx:latest
@@ -125,7 +124,7 @@ Nu u de basis principes kent, bent u klaar om uw REGI ster te gaan gebruiken. Im
 * [Azure Container Instances](../container-instances/container-instances-tutorial-prepare-app.md)
 * [Service Fabric](../service-fabric/service-fabric-tutorial-create-container-images.md)
 
-Installeer eventueel de [docker-extensie voor Visual Studio code](https://code.visualstudio.com/docs/azure/docker) en de [Azure-account](https://marketplace.visualstudio.com/items?itemName=ms-vscode.azure-account) extensie om met uw Azure-container registers te werken. Pull-en push-installatie kopieën naar een Azure container Registry, of voer ACR-taken uit, allemaal in Visual Studio code.
+Installeer eventueel de [Docker-extensie voor Visual Studio-code](https://code.visualstudio.com/docs/azure/docker) en de [Azure-account](https://marketplace.visualstudio.com/items?itemName=ms-vscode.azure-account)extensie om te werken met uw Azure-containerregisters. Pull en push installatiekopieën naar een Azure-containerregister of voer ACR-taken uit, allemaal in Visual Studio-code.
 
 
 <!-- LINKS - external -->

@@ -8,10 +8,9 @@ ms.devlang: azurecli
 ms.topic: conceptual
 ms.date: 5/6/2019
 ms.openlocfilehash: be679be91d49516bd2f6c672eb53640cfad2ae2a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "74763569"
 ---
 # <a name="configure-and-access-server-logs-by-using-azure-cli"></a>Server logboeken configureren en openen met behulp van Azure CLI
@@ -25,7 +24,7 @@ Als u deze hand leiding wilt door lopen, hebt u het volgende nodig:
 ## <a name="configure-logging"></a>Logboek registratie configureren
 U kunt de server configureren voor toegang tot de query logboeken en fout Logboeken. Fout logboeken kunnen automatische vacuüm-, verbindings-en controlepunt gegevens hebben.
 1. Schakel logboek registratie in.
-2. Als u query logboek registratie wilt inschakelen, geeft u de instructie update **Log\_** en **Log\_min\_duration\_** op.
+2. Als u query logboek registratie wilt inschakelen, geeft u de instructie update **Log \_ ** en **Log \_ min \_ duration \_ **op.
 3. Bewaar periode bijwerken.
 
 Zie [para meters voor Server configuratie aanpassen](howto-configure-server-parameters-using-cli.md)voor meer informatie.
@@ -33,7 +32,7 @@ Zie [para meters voor Server configuratie aanpassen](howto-configure-server-para
 ## <a name="list-logs"></a>Logboeken weer geven
 Als u de beschik bare logboek bestanden voor uw server wilt weer geven, voert u de opdracht [AZ post gres server-logs List](/cli/azure/postgres/server-logs) uit.
 
-U kunt de logboek bestanden voor server **mydemoserver.postgres.database.Azure.com** weer geven onder de resource groep **myresourcegroup**. Ga vervolgens naar de lijst met logboek bestanden naar een tekst bestand met de naam **logboek\_bestanden\_lijst. txt**.
+U kunt de logboek bestanden voor server **mydemoserver.postgres.database.Azure.com** weer geven onder de resource groep **myresourcegroup**. Ga vervolgens naar de lijst met logboek bestanden naar een tekst bestand met de naam **logboek \_ bestanden \_list.txt**.
 ```azurecli-interactive
 az postgres server-logs list --resource-group myresourcegroup --server mydemoserver > log_files_list.txt
 ```

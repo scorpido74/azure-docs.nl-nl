@@ -15,16 +15,15 @@ ms.topic: article
 ms.date: 03/18/2019
 ms.author: juliako
 ms.openlocfilehash: cec0fa3bd059cd31d9bd94773b0cce42d0f12a75
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/27/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "74887014"
 ---
 # <a name="h264-multiple-bitrate-4k"></a>H264 Multiple Bitrate 4K
-`Media Encoder Standard`Hiermee definieert u een set coderings definities die u kunt gebruiken bij het maken van coderings taken. U kunt een `preset name` gebruiken om aan te geven welke indeling uw media bestand moet coderen. U kunt ook uw eigen voor keuren voor JSON of XML maken (met UTF-8-of UTF-16-code ring. Vervolgens geeft u de aangepaste voor instelling door aan het coderings programma. Zie voor de lijst met alle vooraf gedefinieerde namen die worden `Media Encoder Standard` ondersteund door dit coderings programma, voor [instellingen voor taken voor Media Encoder Standard](media-services-mes-presets-overview.md).  
+`Media Encoder Standard`Hiermee definieert u een set coderings definities die u kunt gebruiken bij het maken van coderings taken. U kunt een gebruiken om aan te `preset name` geven welke indeling uw media bestand moet coderen. U kunt ook uw eigen voor keuren voor JSON of XML maken (met UTF-8-of UTF-16-code ring. Vervolgens geeft u de aangepaste voor instelling door aan het coderings programma. Zie voor de lijst met alle vooraf gedefinieerde namen die worden ondersteund door dit `Media Encoder Standard` coderings programma, voor [instellingen voor taken voor Media Encoder Standard](media-services-mes-presets-overview.md).  
   
- In dit onderwerp worden `H264 Multiple Bitrate 4K` de voor instellingen in de XML-en JSON-indeling weer gegeven.  
+ In dit onderwerp worden de `H264 Multiple Bitrate 4K` voor instellingen in de XML-en JSON-indeling weer gegeven.  
   
  Deze standaard instelling produceert een set van 12 GOP terug-afgevulde MP4-bestanden, variërend van 20000 kbps tot 1000 kbps en stereo AAC-audio. Voor gedetailleerde informatie over profiel, bitrate, sampling frequentie, enzovoort, bekijkt u de hieronder gedefinieerde XML of JSON. Zie het onderwerp [Media Encoder Standard schema](media-services-mes-schema.md) voor uitleg over wat elk-element in deze voor instellingen betekent en de geldige waarden voor elk element.  
   
@@ -32,7 +31,7 @@ ms.locfileid: "74887014"
 >  U moet het type Premium gereserveerde eenheid ophalen met de code van 4.000 kB. Zie [How to scale encoding](https://azure.microsoft.com/documentation/articles/media-services-portal-encoding-units)(Engelstalig) voor meer informatie.  
   
 > [!NOTE]
->  Zorg ervoor dat `Width` de `Height` hoogte-breedte verhouding consistent blijft wanneer u de-en-waarden in lagen wijzigt. Bijvoorbeeld: 1920, 1280x720, 1080x576, 640 x 360. Gebruik geen combi natie van hoogte-breedte verhoudingen, zoals: 1280x720, 720x480, 640 x 360.  
+>  `Width` `Height` Zorg ervoor dat de hoogte-breedte verhouding consistent blijft wanneer u de-en-waarden in lagen wijzigt. Bijvoorbeeld: 1920, 1280x720, 1080x576, 640 x 360. Gebruik geen combi natie van hoogte-breedte verhoudingen, zoals: 1280x720, 720x480, 640 x 360.  
   
  XML  
   

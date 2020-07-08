@@ -13,10 +13,9 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/10/2018
 ms.openlocfilehash: d153f8c316cbb76e063f07f7f823c8d9c4a21f87
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "74703358"
 ---
 # <a name="transform-data-using-hive-activity-in-azure-data-factory"></a>Gegevens transformeren met behulp van Hive-activiteit in Azure Data Factory 
@@ -40,7 +39,7 @@ De HDInsight Hive-activiteit in een Data Factory [pijp lijn](data-factory-create
 > [!NOTE] 
 > Als u geen ervaring hebt met Azure Data Factory, lees dan [Inleiding tot Azure Data Factory](data-factory-introduction.md) en voer de zelf studie uit: [bouw uw eerste gegevens pijplijn](data-factory-build-your-first-pipeline.md) voordat u dit artikel leest. 
 
-## <a name="syntax"></a>Syntaxis
+## <a name="syntax"></a>Syntax
 
 ```JSON
 {
@@ -74,20 +73,20 @@ De HDInsight Hive-activiteit in een Data Factory [pijp lijn](data-factory-create
 ## <a name="syntax-details"></a>Syntaxis Details
 | Eigenschap | Beschrijving | Vereist |
 | --- | --- | --- |
-| name |Naam van de activiteit |Ja |
-| description |Tekst waarin wordt beschreven waarvoor de activiteit wordt gebruikt |Nee |
-| type |HDinsightHive |Ja |
-| invoer |Invoer die wordt gebruikt door de Hive-activiteit |Nee |
-| uitvoer |Uitvoer geproduceerd door de Hive-activiteit |Ja |
-| linkedServiceName |Verwijzing naar het HDInsight-cluster dat is geregistreerd als een gekoppelde service in Data Factory |Ja |
-| uit |Het Hive-script inline opgeven |Nee |
-| scriptPath |Sla het Hive-script op in een Azure Blob-opslag en geef het pad naar het bestand op. Gebruik de eigenschap script of scriptPath. Beide kunnen niet tegelijk worden gebruikt. De bestands naam is hoofdletter gevoelig. |Nee |
-| compliant |Geef para meters op als sleutel/waarde-paren voor het verwijzen in het Hive-script met behulp van ' hiveconf ' |Nee |
+| naam |Naam van de activiteit |Yes |
+| description |Tekst waarin wordt beschreven waarvoor de activiteit wordt gebruikt |No |
+| type |HDinsightHive |Yes |
+| invoer |Invoer die wordt gebruikt door de Hive-activiteit |No |
+| uitvoer |Uitvoer geproduceerd door de Hive-activiteit |Yes |
+| linkedServiceName |Verwijzing naar het HDInsight-cluster dat is geregistreerd als een gekoppelde service in Data Factory |Yes |
+| script |Het Hive-script inline opgeven |No |
+| scriptPath |Sla het Hive-script op in een Azure Blob-opslag en geef het pad naar het bestand op. Gebruik de eigenschap script of scriptPath. Beide kunnen niet tegelijk worden gebruikt. De bestands naam is hoofdletter gevoelig. |No |
+| compliant |Geef para meters op als sleutel/waarde-paren voor het verwijzen in het Hive-script met behulp van ' hiveconf ' |No |
 
 ## <a name="example"></a>Voorbeeld
 Laten we eens kijken naar een voor beeld van een spel logboek analyse waarin u de tijd wilt identificeren die gebruikers spelen die door uw bedrijf worden gestart. 
 
-Het volgende logboek is een voor beeld van een spel logboek, een`,`komma () van elkaar gescheiden en bevat de volgende velden: ProfileID, SessionStart, duration, SrcIPAddress en GameType.
+Het volgende logboek is een voor beeld van een spel logboek, een komma ( `,` ) van elkaar gescheiden en bevat de volgende velden: ProfileID, SessionStart, duration, SrcIPAddress en GameType.
 
 ```
 1809,2014-05-04 12:04:25.3470000,14,221.117.223.75,CaptureFlag

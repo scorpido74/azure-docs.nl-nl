@@ -12,10 +12,9 @@ manager: daveba
 ms.reviewer: sahandle
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 9a3e2df956aaa4f9fd0af83dd2a18e04d731c714
-ms.sourcegitcommit: b1e25a8a442656e98343463aca706f4fde629867
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/27/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "74232347"
 ---
 # <a name="azure-active-directory-identity-protection-glossary"></a>Azure Active Directory Identity Protection woordenlijst
@@ -98,7 +97,7 @@ Een status van een risico detectie is hand matig ingesteld door een gebruiker vo
 ### <a name="risk-detection-status"></a>Status van de risico detectie
 Een eigenschap van een risico detectie, die aangeeft of de gebeurtenis actief is en wanneer deze is gesloten, de reden voor het sluiten ervan.
 
-### <a name="risk-detection-type"></a>Type risico detectie
+### <a name="risk-detection-type"></a>Risicodetectietype
 Een categorie voor de risico detectie, waarmee wordt aangegeven welk type afwijkingen de gebeurtenis heeft veroorzaakt als riskant beschouwd.
 
 ### <a name="risk-level-risk-detection"></a>Risico niveau (risico detectie)
@@ -149,7 +148,7 @@ Zie risico niveau (inbreuk op gebruiker)
 ### <a name="user-risk"></a>Gebruikers risico
 Zie risico niveau (inbreuk op de gebruiker).
 
-### <a name="user-risk-policy"></a>Beleid voor gebruikers Risico's
+### <a name="user-risk-policy"></a>Beleid voor gebruikersrisico's
 Een beleid voor voorwaardelijke toegang dat de aanmelding beschouwt en oplossingen op basis van vooraf gedefinieerde voor waarden en regels toepast.
 
 ### <a name="users-flagged-for-risk"></a>Gebruikers voor wie wordt aangegeven dat ze risico lopen
@@ -158,6 +157,6 @@ Gebruikers die risico detecties hebben, die actief of hersteld zijn
 ### <a name="vulnerability"></a>Beveiligingsprobleem
 Een configuratie of voor waarde in Azure Active Directory, waardoor de Directory gevoelig is voor aanvallen of bedreigingen.
 
-## <a name="see-also"></a>Zie ook
+## <a name="see-also"></a>Zie tevens
 
 - [Azure Active Directory Identity Protection](../active-directory-identityprotection.md)

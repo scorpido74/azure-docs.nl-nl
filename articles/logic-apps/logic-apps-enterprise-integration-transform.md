@@ -9,15 +9,14 @@ ms.reviewer: jonfan, estfan, logicappspm
 ms.topic: article
 ms.date: 07/08/2016
 ms.openlocfilehash: 500769a39ba7658b35c1abb80101f6234170c941
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "74792391"
 ---
-# <a name="create-maps-that-transform-xml-between-formats-in-azure-logic-apps-with-enterprise-integration-pack"></a>Maak kaarten die XML transformeren tussen indelingen in Azure Logic Apps met Enterprise Integration Pack
+# <a name="create-maps-that-transform-xml-between-formats-in-azure-logic-apps-with-enterprise-integration-pack"></a>Kaarten maken die XML transformeren tussen indelingen in Azure Logic Apps met Enterprise Integration Pack
 
-De Enter prise Integration Transform-connector converteert gegevens van de ene indeling naar een andere indeling. Mogelijk hebt u bijvoorbeeld een binnenkomend bericht met de huidige datum in de YearMonthDay-indeling. U kunt een trans formatie gebruiken om de datum opnieuw in te delen in de MonthDayYear-indeling.
+De Enterprise Integration Transform-connector converteert gegevens van de ene indeling naar een andere indeling. Mogelijk hebt u bijvoorbeeld een binnenkomend bericht met de huidige datum in de JaarMaandDag-indeling. U kunt een transformatie gebruiken om de datum opnieuw in te delen in de MaadDagJaar-indeling.
 
 ## <a name="what-does-a-transform-do"></a>Wat doet een trans formatie?
 Een trans formatie, ook wel een toewijzing genoemd, bestaat uit een XML-bron schema (de invoer) en een XML-doel schema (de uitvoer). U kunt verschillende ingebouwde functies gebruiken om de gegevens te bewerken of te beheren, met inbegrip van teken reeksen, voorwaardelijke toewijzingen, wiskundige expressies, datum notaties en zelfs herhalings constructies.
@@ -47,7 +46,7 @@ Nu u de vereiste onderdelen hebt gemaakt, is het tijd om uw logische app te make
 6. Voeg de XML- **inhoud** toe die u transformeert. U kunt alle XML-gegevens die u in de HTTP-aanvraag ontvangt als de **inhoud**gebruiken. Selecteer in dit voor beeld de hoofd tekst van de HTTP-aanvraag die de logische app heeft geactiveerd.
 
    > [!NOTE]
-   > Zorg ervoor dat de inhoud voor de **trans formatie XML** XML is. Als de inhoud zich niet in XML of Base64-gecodeerd bevindt, moet u een expressie opgeven waarmee de inhoud wordt verwerkt. U kunt bijvoorbeeld [functies](logic-apps-workflow-definition-language.md#functions)gebruiken, zoals ```@base64ToBinary``` voor het decoderen van inhoud ```@xml``` of voor het verwerken van de inhoud als XML.
+   > Zorg ervoor dat de inhoud voor de **trans formatie XML** XML is. Als de inhoud zich niet in XML of Base64-gecodeerd bevindt, moet u een expressie opgeven waarmee de inhoud wordt verwerkt. U kunt bijvoorbeeld [functies](logic-apps-workflow-definition-language.md#functions)gebruiken, zoals ```@base64ToBinary``` voor het decoderen van inhoud of ```@xml``` voor het verwerken van de inhoud als XML.
  
 
 7. Selecteer de naam van de **kaart** die u wilt gebruiken om de trans formatie uit te voeren. De kaart moet al aanwezig zijn in uw integratie account. In een eerdere stap hebt u uw logische app al toegang gegeven tot uw integratie account dat de kaart bevat.      
@@ -84,7 +83,7 @@ De trans formatie-actie ondersteunt ook kaarten of trans formaties met verwijzin
     * **name** de naam van de aangepaste assembly is.
     * **naam ruimte** is de naam ruimte in de assembly die de aangepaste code bevat.
 
-  In dit voor beeld ziet u een kaart die verwijst naar een assembly met de `circumreference` naam ' XslUtilitiesLib ' en wordt de methode aangeroepen vanuit de assembly.
+  In dit voor beeld ziet u een kaart die verwijst naar een assembly met de naam ' XslUtilitiesLib ' en wordt de `circumreference` methode aangeroepen vanuit de assembly.
 
   ```xml
   <?xml version="1.0" encoding="UTF-8"?>
@@ -111,7 +110,7 @@ De trans formatie-actie ondersteunt ook kaarten of trans formaties met verwijzin
 
 
 ### <a name="byte-order-mark"></a>Byte order markering
-Standaard begint de reactie van de trans formatie met de byte order Mark (BOM). U hebt alleen toegang tot deze functionaliteit terwijl u werkt in de code weergave-editor. Als u deze functionaliteit wilt uitschakelen `disableByteOrderMark` , geeft `transformOptions` u voor de eigenschap op:
+Standaard begint de reactie van de trans formatie met de byte order Mark (BOM). U hebt alleen toegang tot deze functionaliteit terwijl u werkt in de code weergave-editor. Als u deze functionaliteit wilt uitschakelen, geeft u `disableByteOrderMark` voor de `transformOptions` eigenschap op:
 
 ```json
 "Transform_XML": {
@@ -133,7 +132,7 @@ Standaard begint de reactie van de trans formatie met de byte order Mark (BOM). 
 
 
 
-## <a name="learn-more"></a>Meer informatie
+## <a name="learn-more"></a>Lees meer
 * [Meer informatie over de Enterprise Integration Pack](../logic-apps/logic-apps-enterprise-integration-overview.md "Meer informatie over Enterprise Integration Pack")  
 * [Meer informatie over Maps](../logic-apps/logic-apps-enterprise-integration-maps.md "Meer informatie over Enter prise Integration Maps")  
 

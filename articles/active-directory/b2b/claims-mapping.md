@@ -12,17 +12,16 @@ manager: celestedg
 ms.reviewer: elisolMS
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 3508865d9f89501cf70e09087c6a609beb6662b2
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "74273188"
 ---
 # <a name="b2b-collaboration-user-claims-mapping-in-azure-active-directory"></a>Toewijzing van gebruikers claims voor B2B-samen werking in Azure Active Directory
 
 Azure Active Directory (Azure AD) biedt ondersteuning voor het aanpassen van de claims die in het SAML-token voor B2B-samenwerkings gebruikers worden uitgegeven. Wanneer een gebruiker zich bij de toepassing bevindt, geeft Azure AD een SAML-token door aan de app die informatie (of claims) bevat over de gebruiker die deze unieke identificeert. Dit omvat standaard de gebruikers naam, het e-mail adres, de voor naam en de achternaam van de gebruiker.
 
-In de [Azure Portal](https://portal.azure.com)kunt u de claims weer geven of bewerken die in het SAML-token naar de toepassing worden verzonden. Als u toegang wilt krijgen tot de instellingen, selecteert u **Azure Active Directory** > **bedrijfs toepassingen** > de toepassing die is geconfigureerd voor eenmalige aanmelding > **eenmalige aanmelding**. Zie de SAML-token instellingen in de sectie **gebruikers kenmerken** .
+In de [Azure Portal](https://portal.azure.com)kunt u de claims weer geven of bewerken die in het SAML-token naar de toepassing worden verzonden. Als u toegang wilt krijgen tot de instellingen, selecteert u **Azure Active Directory**  >  **bedrijfs toepassingen** > de toepassing die is geconfigureerd voor eenmalige aanmelding > **eenmalige aanmelding**. Zie de SAML-token instellingen in de sectie **gebruikers kenmerken** .
 
 ![Hiermee worden de kenmerken van SAML-tokens in de gebruikers interface weer gegeven](media/claims-mapping/view-claims-in-saml-token.png)
 

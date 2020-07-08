@@ -7,10 +7,9 @@ ms.service: postgresql
 ms.topic: conceptual
 ms.date: 5/6/2019
 ms.openlocfilehash: d86170a53b4bfbe712bbca12db4d6063214aba21
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "74768160"
 ---
 # <a name="azure-database-for-postgresql---single-server"></a>Azure Database for PostgreSQL - één server
@@ -39,7 +38,7 @@ De volgende elementen zorgen voor veilige toegang tot uw Data Base:
 |||
 |:--|:--|
 | **Verificatie en autorisatie** | Azure Database for PostgreSQL-Server ondersteunt native PostgreSQL-verificatie. U kunt verbinding maken met en verifiëren met de server met de beheerders aanmelding van de server. |
-| **Protocolsubstatus** | De service ondersteunt een op berichten gebaseerd protocol dat door PostgreSQL wordt gebruikt. |
+| **Protocol** | De service ondersteunt een op berichten gebaseerd protocol dat door PostgreSQL wordt gebruikt. |
 | **TCP/IP** | Het protocol wordt ondersteund via TCP/IP en via Unix-domein sockets. |
 | **Firewall** | Ter bescherming van uw gegevens voor komt een firewall regel alle toegang tot de server en de data bases, totdat u opgeeft welke computers zijn gemachtigd. Zie [Azure database for PostgreSQL Server firewall-regels](concepts-firewall-rules.md). |
 

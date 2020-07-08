@@ -6,10 +6,9 @@ ms.topic: conceptual
 ms.date: 11/28/2017
 ms.author: anwestg
 ms.openlocfilehash: 7ad748aa9a5b45af10121648a668344548484cf7
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "74226723"
 ---
 # <a name="install-the-azure-functions-runtime-preview-2"></a>De Azure Functions-runtime Preview 2 installeren
@@ -91,7 +90,7 @@ U moet de configuratie volt ooien om de Azure Functions-runtime-installatie te v
 
     ![Azure Functions-runtime preview-configuratie voltooid][12]
 
-1. Ga naar de **Azure functions-runtime Portal** als `https://<machinename>.<domain>/`.
+1. Ga naar de **Azure functions-runtime Portal** als `https://<machinename>.<domain>/` .
 
     ![Preview-Portal Azure Functions-runtime][13]
 
@@ -99,7 +98,7 @@ U moet de configuratie volt ooien om de Azure Functions-runtime-installatie te v
 
 Uw eerste functie maken in Azure Functions-runtime preview
 
-1. Blader bijvoorbeeld `https://mycomputer.mydomain.com`naar de **Azure functions-runtime Portal** `https://<machinename>.<domain>` .
+1. Blader bijvoorbeeld naar de **Azure functions-runtime Portal** `https://<machinename>.<domain>` `https://mycomputer.mydomain.com` .
 
 1. U wordt gevraagd om u aan te **melden**als de implementatie in een domein gebruikmaakt van uw gebruikers naam en wacht woord voor het domein account. anders gebruikt u de gebruikers naam en het wacht woord van uw lokale account om u aan te melden bij de portal.
 
@@ -113,7 +112,7 @@ Uw eerste functie maken in Azure Functions-runtime preview
 
     ![Azure Functions-runtime preview-abonnement en-naam van de portal][16]
 
-1. Al uw functie-apps worden weer gegeven in het linkerdeel venster van de portal.  Als u een nieuwe functie-app wilt maken, selecteert u de **functie apps** en **+** klikt u op de optie.
+1. Al uw functie-apps worden weer gegeven in het linkerdeel venster van de portal.  Als u een nieuwe functie-app wilt maken, selecteert u de **functie apps** en klikt u op de **+** optie.
 
 1. Voer een naam in voor de functie-app, selecteer het juiste abonnement, Kies welke versie van de Azure Functions runtime u wilt Program meren en klik op **maken**
 

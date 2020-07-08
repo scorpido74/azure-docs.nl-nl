@@ -12,10 +12,9 @@ manager: daveba
 ms.reviewer: sahenry
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 5b19c80378aa40a7f791a3eb61130b013217ddee
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "74848575"
 ---
 # <a name="how-it-works-azure-ad-self-service-password-reset"></a>Hoe werkt het? self-service voor wachtwoord herstel van Azure AD
@@ -34,9 +33,9 @@ Wanneer een gebruiker naar de portal voor het opnieuw instellen van wacht woorde
 
 Lees de volgende stappen voor meer informatie over de logica achter de pagina voor het opnieuw instellen van het wacht woord:
 
-1. De gebruiker selecteert de koppeling **geen toegang tot uw account** of gaat rechtstreeks [https://aka.ms/sspr](https://passwordreset.microsoftonline.com)naar.
+1. De gebruiker selecteert de koppeling **geen toegang tot uw account** of gaat rechtstreeks naar [https://aka.ms/sspr](https://passwordreset.microsoftonline.com) .
    * Op basis van de land instelling van de browser wordt de ervaring weer gegeven in de juiste taal. De ervaring voor het opnieuw instellen van wacht woorden is gelokaliseerd in dezelfde talen die door Office 365 worden ondersteund.
-   * Als u de portal voor het opnieuw instellen van wacht woorden wilt weer geven in een andere gelokaliseerde taal, voegt u '? MKT = ' toe aan het einde van de [https://passwordreset.microsoftonline.com/?mkt=es-us](https://passwordreset.microsoftonline.com/?mkt=es-us)URL voor het opnieuw instellen van het wacht woord met het voor beeld dat volgt op Nederlands.
+   * Als u de portal voor het opnieuw instellen van wacht woorden wilt weer geven in een andere gelokaliseerde taal, voegt u '? MKT = ' toe aan het einde van de URL voor het opnieuw instellen van het wacht woord met het voor beeld dat volgt op Nederlands [https://passwordreset.microsoftonline.com/?mkt=es-us](https://passwordreset.microsoftonline.com/?mkt=es-us) .
 2. De gebruiker voert een gebruikers-ID in en geeft een CAPTCHA door.
 3. Azure AD controleert of de gebruiker deze functie kan gebruiken door de volgende controles uit te voeren:
    * Hiermee wordt gecontroleerd of de gebruiker deze functie heeft ingeschakeld en een Azure AD-licentie is toegewezen.
@@ -60,7 +59,7 @@ Als SSPR is ingeschakeld, moet u ten minste één van de volgende opties voor de
 * Code van mobiele app
 * E-mail
 * Mobiele telefoon
-* Zakelijke telefoon
+* Bureautelefoon
 * Beveiligingsvragen
 
 Gebruikers kunnen hun wacht woord alleen opnieuw instellen als ze gegevens bevatten in de verificatie methoden die de beheerder heeft ingeschakeld.
@@ -92,10 +91,10 @@ Wanneer u een mobiele app gebruikt, zoals de app Microsoft Authenticator, als me
 | :---: | :---: | :---: |
 | Functies voor mobiele apps beschikbaar | Code | Code of melding |
 
-Gebruikers hebben geen optie om hun mobiele app te registreren wanneer ze zich registreren voor selfservice voor wachtwoord herstel van [https://aka.ms/ssprsetup](https://aka.ms/ssprsetup). Gebruikers kunnen hun mobiele app registreren op [https://aka.ms/mfasetup](https://aka.ms/mfasetup)of in de nieuwe preview-versie van de registratie [https://aka.ms/setupsecurityinfo](https://aka.ms/setupsecurityinfo)van beveiligings gegevens op.
+Gebruikers hebben geen optie om hun mobiele app te registreren wanneer ze zich registreren voor selfservice voor wachtwoord herstel van [https://aka.ms/ssprsetup](https://aka.ms/ssprsetup) . Gebruikers kunnen hun mobiele app registreren op [https://aka.ms/mfasetup](https://aka.ms/mfasetup) of in de nieuwe preview-versie van de registratie van beveiligings gegevens op [https://aka.ms/setupsecurityinfo](https://aka.ms/setupsecurityinfo) .
 
 > [!WARNING]
-> U moet de [geconvergeerde registratie voor selfservice voor wachtwoord herstel en Azure multi-factor Authentication (open bare preview)](concept-registration-mfa-sspr-converged.md) inschakelen voordat gebruikers toegang kunnen krijgen tot de nieuwe ervaring op [https://aka.ms/setupsecurityinfo](https://aka.ms/setupsecurityinfo).
+> U moet de [geconvergeerde registratie voor selfservice voor wachtwoord herstel en Azure multi-factor Authentication (open bare preview)](concept-registration-mfa-sspr-converged.md) inschakelen voordat gebruikers toegang kunnen krijgen tot de nieuwe ervaring op [https://aka.ms/setupsecurityinfo](https://aka.ms/setupsecurityinfo) .
 
 > [!IMPORTANT]
 > De verificator-app kan niet worden geselecteerd als de enige verificatie methode bij het configureren van een 1-poortbeleid. Op dezelfde manier kan de verificator-app en slechts één extra methode worden geselecteerd bij het configureren van een beleid met 2 poorten.
@@ -132,7 +131,7 @@ Als u deze optie inschakelt, moet de gebruiker de registratie van het wacht woor
 * Federatieve toepassingen
 * Aangepaste toepassingen met Azure AD
 
-Wanneer registratie is uitgeschakeld, kunnen gebruikers zich hand matig registreren. Ze kunnen de koppeling [https://aka.ms/ssprsetup](https://aka.ms/ssprsetup) **registreren voor wacht woord opnieuw instellen** op het tabblad **profiel** in het toegangs venster bezoeken of selecteren.
+Wanneer registratie is uitgeschakeld, kunnen gebruikers zich hand matig registreren. Ze kunnen [https://aka.ms/ssprsetup](https://aka.ms/ssprsetup) de koppeling **registreren voor wacht woord opnieuw instellen** op het tabblad **profiel** in het toegangs venster bezoeken of selecteren.
 
 > [!NOTE]
 > Gebruikers kunnen de registratie portal voor het opnieuw instellen van het wacht woord sluiten door **Annuleren** te selecteren of door het venster te sluiten. Maar ze moeten zich registreren elke keer dat ze zich aanmelden totdat ze hun registratie hebben voltooid.
@@ -198,7 +197,7 @@ Wacht woord opnieuw instellen en wijzigen worden volledig ondersteund voor alle 
 * **Gebruikers die zich aanmelden via** Self-Service-aanmelding: als de organisatie waarmee u bent gelieerd, gebruikmaakt van de [self-service registratie](../users-groups-roles/directory-self-service-signup.md) functie om een Tenant op te halen, kunnen we het wacht woord opnieuw instellen met het e-mail bericht dat ze hebben geregistreerd.
 * **B2B-gebruikers**: alle nieuwe B2B-gebruikers die zijn gemaakt met de nieuwe [mogelijkheden van Azure AD B2B](../active-directory-b2b-what-is-azure-ad-b2b.md) , kunnen hun wacht woord ook opnieuw instellen met het e-mail adres dat is geregistreerd tijdens het INVITE-proces.
 
-Als u dit scenario wilt testen, https://passwordreset.microsoftonline.com gaat u naar met een van deze partner-gebruikers. Als er een alternatieve e-mail of verificatie-e-mail is gedefinieerd, werkt wacht woord opnieuw instellen zoals verwacht.
+Als u dit scenario wilt testen, gaat u naar https://passwordreset.microsoftonline.com met een van deze partner-gebruikers. Als er een alternatieve e-mail of verificatie-e-mail is gedefinieerd, werkt wacht woord opnieuw instellen zoals verwacht.
 
 > [!NOTE]
 > Micro soft-accounts waaraan gast toegang is verleend voor uw Azure AD-Tenant, zoals die van Hotmail.com, Outlook.com of andere persoonlijke e-mail adressen, kunnen Azure AD SSPR niet gebruiken. Ze moeten hun wacht woord opnieuw instellen met behulp van de informatie in de [Als u zich niet kunt aanmelden bij uw Microsoft-account](https://support.microsoft.com/help/12429/microsoft-account-sign-in-cant) -artikel.

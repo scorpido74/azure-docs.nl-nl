@@ -15,10 +15,9 @@ ms.topic: article
 ms.date: 03/20/2019
 ms.author: juliako
 ms.openlocfilehash: 95d8d819aa1b418b4a7ec736cef64cb989f7e37b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/27/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "74885633"
 ---
 # <a name="streaming-endpoints-overview"></a>Overzicht van streaming-eind punten  
@@ -50,9 +49,9 @@ Voor alle extra eind punten:`{EndpointName}-{AccountName}.streaming.mediaservice
 Vanaf de versie van Media Services januari 2017 hebt u twee streaming-typen: **Standard** (preview) en **Premium**. Deze typen maken deel uit van de streaming-eindpunt versie ' 2,0 '.
 
 
-|Type|Beschrijving|
+|Type|Description|
 |--------|--------|  
-|**Standaard**|Het standaard streaming-eind punt is een **standaard** type, dat kan worden gewijzigd in het Premium-type door streaming-eenheden aan te passen.|
+|**Standard**|Het standaard streaming-eind punt is een **standaard** type, dat kan worden gewijzigd in het Premium-type door streaming-eenheden aan te passen.|
 |**Premium** |Deze optie is geschikt voor professionele scenario's die een hogere schaal of beheer vereisen. U gaat naar een **Premium** -type door streaming-eenheden aan te passen.<br/>Toegewezen streaming-eind punten zijn Live in geïsoleerde omgevingen en concurreren niet voor resources.|
 
 Voor klanten die inhoud willen leveren aan grote Internet doelgroepen, raden we u aan CDN op het streaming-eind punt in te scha kelen.
@@ -77,10 +76,10 @@ Als het streaming-eind punt van uw **versie 1,0** >= 1 Premium streaming-eenhede
 
 |Type|StreamingEndpointVersion|ScaleUnits|CDN|Billing|
 |--------------|----------|-----------------|-----------------|-----------------|
-|Klassiek|1.0|0|N.v.t.|Gratis|
-|Standard streaming-eind punt (preview-versie)|2.0|0|Ja|Teken|
-|Premium-streaming-eenheden|1.0|>0|Ja|Teken|
-|Premium-streaming-eenheden|2.0|>0|Ja|Teken|
+|Klassiek|1.0|0|NA|Gratis|
+|Standard streaming-eind punt (preview-versie)|2.0|0|Yes|Teken|
+|Premium-streaming-eenheden|1.0|>0|Yes|Teken|
+|Premium-streaming-eenheden|2.0|>0|Yes|Teken|
 
 ### <a name="features"></a>Functies
 

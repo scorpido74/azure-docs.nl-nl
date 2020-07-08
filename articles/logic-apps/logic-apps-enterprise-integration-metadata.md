@@ -9,15 +9,14 @@ ms.reviewer: jonfan, estfan, logicappspm
 ms.topic: article
 ms.date: 01/17/2019
 ms.openlocfilehash: bc119f1ce8efb821781dabfb9dd259cc5c8d9c23
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "74792467"
 ---
-# <a name="manage-artifact-metadata-in-integration-accounts-with-azure-logic-apps-and-enterprise-integration-pack"></a>Meta gegevens van artefacten beheren in integratie accounts met Azure Logic Apps en Enterprise Integration Pack
+# <a name="manage-artifact-metadata-in-integration-accounts-with-azure-logic-apps-and-enterprise-integration-pack"></a>Metagegevens van artefacten in integratieaccounts beheren met Azure Logic Apps en Enterprise Integration Pack
 
-U kunt aangepaste meta gegevens voor artefacten definiëren in integratie accounts en die meta gegevens ophalen tijdens runtime voor de logische app die u wilt gebruiken. U kunt bijvoorbeeld meta gegevens opgeven voor artefacten, zoals partners, overeenkomsten, schema's en kaarten. alle meta gegevens worden opgeslagen met sleutel-waardeparen. 
+U kunt aangepaste metagegevens voor artefacten definiëren in integratieaccounts en die metagegevens ophalen tijdens runtime voor de logische app die u wilt gebruiken. U kunt bijvoorbeeld meta gegevens opgeven voor artefacten, zoals partners, overeenkomsten, schema's en kaarten. alle meta gegevens worden opgeslagen met sleutel-waardeparen. 
 
 ## <a name="prerequisites"></a>Vereisten
 
@@ -26,7 +25,7 @@ U kunt aangepaste meta gegevens voor artefacten definiëren in integratie accoun
 * Een basis [integratie account](../logic-apps/logic-apps-enterprise-integration-create-integration-account.md) met de artefacten waaraan u meta gegevens wilt toevoegen, bijvoorbeeld: 
 
   * [Partner](logic-apps-enterprise-integration-partners.md)
-  * [Licentie](logic-apps-enterprise-integration-agreements.md)
+  * [Overeenkomst](logic-apps-enterprise-integration-agreements.md)
   * [Schema](logic-apps-enterprise-integration-schemas.md)
   * [Kaart](logic-apps-enterprise-integration-maps.md)
 
@@ -53,7 +52,7 @@ U kunt aangepaste meta gegevens voor artefacten definiëren in integratie accoun
 
 1. Open in de Azure Portal de logische app die is gekoppeld aan het gewenste integratie account. 
 
-1. Als u in de ontwerp functie voor logische apps de stap voor het ophalen van meta gegevens onder de trigger of de laatste actie in de werk stroom toevoegt, kiest u **nieuwe stap** > **een actie toevoegen**. 
+1. Als u in de ontwerp functie voor logische apps de stap voor het ophalen van meta gegevens onder de trigger of de laatste actie in de werk stroom toevoegt, kiest u **nieuwe stap**  >  **een actie toevoegen**. 
 
 1. Voer in het zoekvak ' integratie account ' in. Kies **Alle** onder het zoekvak. Selecteer in de lijst acties deze actie: **integratie account artefact opzoeken-integratie account**
 
@@ -63,8 +62,8 @@ U kunt aangepaste meta gegevens voor artefacten definiëren in integratie accoun
 
    | Eigenschap | Vereist | Waarde | Beschrijving | 
    |----------|---------|-------|-------------| 
-   | **Type artefact** | Ja | **Schema**, **kaart**, **partner**, **overeenkomst**of aangepast type | Het type voor het gewenste artefact | 
-   | **Artefact naam** | Ja | <*artefact naam*> | De naam voor het gewenste artefact | 
+   | **Type artefact** | Yes | **Schema**, **kaart**, **partner**, **overeenkomst**of aangepast type | Het type voor het gewenste artefact | 
+   | **Artefact naam** | Yes | <*artefact naam*> | De naam voor het gewenste artefact | 
    ||| 
 
    Stel dat u de meta gegevens wilt ophalen voor het artefact van een handels partner:
@@ -81,14 +80,14 @@ U kunt aangepaste meta gegevens voor artefacten definiëren in integratie accoun
 
    1. Geef informatie op over de meta gegevens voor artefacten die u wilt beheren. 
 
-      Stel bijvoorbeeld dat u de `routingUrl` meta gegevens wilt ophalen die eerder in dit onderwerp worden toegevoegd. Dit zijn de waarden van de eigenschap die u kunt opgeven: 
+      Stel bijvoorbeeld dat u de meta gegevens wilt ophalen `routingUrl` die eerder in dit onderwerp worden toegevoegd. Dit zijn de waarden van de eigenschap die u kunt opgeven: 
 
       | Eigenschap | Vereist | Waarde | Beschrijving | 
       |----------|----------|-------|-------------| 
-      | **Methode** | Ja | <*bewerking-uitvoeren*> | De HTTP-bewerking die op het artefact moet worden uitgevoerd. Deze HTTP-actie maakt bijvoorbeeld gebruik van de **Get** -methode. | 
-      | **URI** | Ja | <*meta gegevens-locatie*> | Voor toegang tot `routingUrl` de meta gegevens waarde uit het artefact dat u hebt opgehaald, kunt u een expressie gebruiken, bijvoorbeeld: <p>`@{outputs('Integration_Account_Artifact_Lookup')['properties']['metadata']['routingUrl']}` | 
-      | **Headers** | Nee | <*header-waarden*> | Eventuele header-uitvoer van de trigger die u wilt door geven aan de HTTP-actie. Als u bijvoorbeeld de eigenschaps waarde van `headers` de trigger wilt door geven: u kunt een expressie gebruiken, bijvoorbeeld: <p>`@triggeroutputs()['headers']` | 
-      | **Hoofdtekst** | Nee | <*hoofd tekst: inhoud*> | Alle andere inhoud die u wilt door geven via de eigenschap van `body` de http-actie. In dit voor beeld worden de `properties` waarden van het artefact door gegeven aan de http-actie: <p>1. Klik in de eigenschap **Body** zodat de lijst met dynamische inhoud wordt weer gegeven. Als er geen eigenschappen worden weer gegeven, kiest u **meer weer geven**. <br>2. Selecteer in de lijst met dynamische inhoud onder **integratie account artefact opzoeken**de optie **Eigenschappen**. | 
+      | **Methode** | Yes | <*bewerking-uitvoeren*> | De HTTP-bewerking die op het artefact moet worden uitgevoerd. Deze HTTP-actie maakt bijvoorbeeld gebruik van de **Get** -methode. | 
+      | **URI** | Yes | <*meta gegevens-locatie*> | Voor toegang tot de `routingUrl` meta gegevens waarde uit het artefact dat u hebt opgehaald, kunt u een expressie gebruiken, bijvoorbeeld: <p>`@{outputs('Integration_Account_Artifact_Lookup')['properties']['metadata']['routingUrl']}` | 
+      | **Headers** | No | <*header-waarden*> | Eventuele header-uitvoer van de trigger die u wilt door geven aan de HTTP-actie. Als u bijvoorbeeld de eigenschaps waarde van de trigger wilt door geven `headers` : u kunt een expressie gebruiken, bijvoorbeeld: <p>`@triggeroutputs()['headers']` | 
+      | **Hoofdtekst** | No | <*hoofd tekst: inhoud*> | Alle andere inhoud die u wilt door geven via de eigenschap van de HTTP-actie `body` . In dit voor beeld worden de waarden van het artefact door gegeven `properties` aan de HTTP-actie: <p>1. Klik in de eigenschap **Body** zodat de lijst met dynamische inhoud wordt weer gegeven. Als er geen eigenschappen worden weer gegeven, kiest u **meer weer geven**. <br>2. Selecteer in de lijst met dynamische inhoud onder **integratie account artefact opzoeken**de optie **Eigenschappen**. | 
       |||| 
 
       Bijvoorbeeld:

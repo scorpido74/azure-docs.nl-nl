@@ -15,10 +15,9 @@ ms.workload: infrastructure-services
 ms.date: 03/22/2019
 ms.author: allensu
 ms.openlocfilehash: 6ea215b6aa826231e940f88c3687bb65591303f2
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "74225324"
 ---
 # <a name="configure-dhcpv6-for-linux-vms"></a>DHCPv6 configureren voor Linux-Vm's
@@ -64,7 +63,7 @@ Neem een *dhcp6: True* -instructie op voor elke Ethernet-interface in uw configu
             eno1:
               dhcp6: true
 
-Tijdens het vroegtijdig opstarten schrijft het netplan ' netwerk renderer ' de configuratie naar/run van het beheer van apparaten naar de opgegeven netwerk-daemon voor naslag informatie over netplan. https://netplan.io/referenceZie.
+Tijdens het vroegtijdig opstarten schrijft het netplan ' netwerk renderer ' de configuratie naar/run van het beheer van apparaten naar de opgegeven netwerk-daemon voor naslag informatie over netplan https://netplan.io/reference . Zie.
  
 ## <a name="debian"></a>Debian
 

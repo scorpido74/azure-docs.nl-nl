@@ -7,10 +7,9 @@ ms.service: postgresql
 ms.topic: conceptual
 ms.date: 5/6/2019
 ms.openlocfilehash: 8b7f52ea318432e97a450a54526f6481b14139c9
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "74776140"
 ---
 # <a name="advanced-threat-protection-for-azure-database-for-postgresql---single-server"></a>Advanced Threat Protection voor Azure Database for PostgreSQL-één server
@@ -27,7 +26,7 @@ Advanced Threat Protection maakt deel uit van de Advanced Data Security-aanbiedi
 > Deze functie is beschikbaar in alle regio's van Azure waar Azure Database for PostgreSQL wordt geïmplementeerd voor Algemeen en servers die zijn geoptimaliseerd voor geheugen.
 
 ## <a name="set-up-threat-detection"></a>Detectie van bedreigingen instellen
-1. Start de Azure Portal op [https://portal.azure.com](https://portal.azure.com).
+1. Start de Azure Portal op [https://portal.azure.com](https://portal.azure.com) .
 2. Ga naar de configuratie pagina van de Azure Database for PostgreSQL-server die u wilt beveiligen. Selecteer in de beveiligings instellingen **Advanced Threat Protection (preview)**.
 3. Op de configuratie pagina **Advanced Threat Protection (preview)** :
 

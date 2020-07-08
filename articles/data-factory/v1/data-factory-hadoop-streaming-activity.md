@@ -13,10 +13,9 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/10/2018
 ms.openlocfilehash: a7f07365da699a40f5b51917104a68a62affa3d9
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "74703373"
 ---
 # <a name="transform-data-using-hadoop-streaming-activity-in-azure-data-factory"></a>Gegevens transformeren met behulp van Hadoop streaming-activiteit in Azure Data Factory
@@ -44,7 +43,7 @@ Met de activiteit HDInsight streaming in een Data Factory [pijp lijn](data-facto
 > Als u geen ervaring hebt met Azure Data Factory, lees dan [Inleiding tot Azure Data Factory](data-factory-introduction.md) en voer de zelf studie uit: [bouw uw eerste gegevens pijplijn](data-factory-build-your-first-pipeline.md) voordat u dit artikel leest. 
 
 ## <a name="json-sample"></a>JSON-voor beeld
-Het HDInsight-cluster wordt automatisch gevuld met voorbeeld programma's (WC. exe en Cat. exe) en gegevens (DaVinci. txt). De naam van de container die wordt gebruikt door het HDInsight-cluster, is standaard de naam van het cluster zelf. Als uw cluster naam bijvoorbeeld myhdicluster is, zou de naam van de gekoppelde BLOB-container myhdicluster zijn. 
+Het HDInsight-cluster wordt automatisch gevuld met voorbeeld programma's (wc.exe en cat.exe) en gegevens (davinci.txt). De naam van de container die wordt gebruikt door het HDInsight-cluster, is standaard de naam van het cluster zelf. Als uw cluster naam bijvoorbeeld myhdicluster is, zou de naam van de gekoppelde BLOB-container myhdicluster zijn. 
 
 ```JSON
 {
@@ -96,11 +95,11 @@ Houd rekening met de volgende punten:
 
 1. Stel de **linkedServiceName** in op de naam van de gekoppelde service die verwijst naar uw HDInsight-cluster waarop de streaming MapReduce-taak wordt uitgevoerd.
 2. Stel het type van de activiteit in op **HDInsightStreaming**.
-3. Geef voor de **toewijzings** eigenschap de naam van het uitvoer bare toewijzings programma op. In het voor beeld is Cat. exe het uitvoer bare toewijzings programma.
-4. Voor de eigenschap **reducer** geeft u de naam van het uitvoer bare bestand voor verkleining op. In het voor beeld is wc. exe het uitvoer bare bestand van de reducer.
-5. Geef voor de eigenschap **invoer** type het invoer bestand (inclusief de locatie) voor de Mapper op. In het voor beeld `wasb://adfsample@<account name>.blob.core.windows.net/example/data/gutenberg/davinci.txt`:: adfsample is de BLOB-container, example/data/Gutenberg is de map en DaVinci. txt is de blob.
+3. Geef voor de **toewijzings** eigenschap de naam van het uitvoer bare toewijzings programma op. In het voor beeld is cat.exe het uitvoer bare toewijzings programma.
+4. Voor de eigenschap **reducer** geeft u de naam van het uitvoer bare bestand voor verkleining op. In het voor beeld is wc.exe het uitvoerbaar bestand voor de reducer.
+5. Geef voor de eigenschap **invoer** type het invoer bestand (inclusief de locatie) voor de Mapper op. In het voor beeld: `wasb://adfsample@<account name>.blob.core.windows.net/example/data/gutenberg/davinci.txt` : adfsample is de BLOB-container, voor beeld/data/Gutenberg is de map en davinci.txt is de blob.
 6. Geef voor de eigenschap **uitvoer** type het uitvoer bestand op (met inbegrip van de locatie) voor de verkorter. De uitvoer van de Hadoop streaming-taak wordt geschreven naar de locatie die is opgegeven voor deze eigenschap.
-7. Geef in de sectie **filepath** de paden op voor de uitvoer bare bestanden van de Mapper en de uitvoerder. In het voor beeld: ' adfsample/example/apps/WC. exe ', adfsample is de BLOB-container, voor beeld/apps is de map en WC. exe is het uitvoer bare bestand.
+7. Geef in de sectie **filepath** de paden op voor de uitvoer bare bestanden van de Mapper en de uitvoerder. In het voor beeld: ' adfsample/example/apps/wc.exe ', adfsample is de BLOB-container, voor beeld/apps is de map en wc.exe het uitvoer bare bestand is.
 8. Geef voor de eigenschap **fileLinkedService** de Azure Storage gekoppelde service op die staat voor de Azure-opslag met de bestanden die zijn opgegeven in de sectie filepath.
 9. Geef voor de eigenschap **Arguments** de argumenten voor de streaming-taak op.
 10. De eigenschap **getDebugInfo** is een optioneel element. Als deze is ingesteld op fout, worden de Logboeken alleen gedownload bij fout. Als deze eigenschap is ingesteld op always, worden logboeken altijd gedownload, ongeacht de uitvoerings status.
@@ -176,7 +175,7 @@ De pijp lijn in dit voor beeld heeft geen invoer. U geeft een uitvoer gegevensse
 ### <a name="pipeline"></a>Pijplijn
 De pijp lijn in dit voor beeld heeft maar één activiteit van het type: **HDInsightStreaming**. 
 
-Het HDInsight-cluster wordt automatisch gevuld met voorbeeld programma's (WC. exe en Cat. exe) en gegevens (DaVinci. txt). De naam van de container die wordt gebruikt door het HDInsight-cluster, is standaard de naam van het cluster zelf. Als uw cluster naam bijvoorbeeld myhdicluster is, zou de naam van de gekoppelde BLOB-container myhdicluster zijn.  
+Het HDInsight-cluster wordt automatisch gevuld met voorbeeld programma's (wc.exe en cat.exe) en gegevens (davinci.txt). De naam van de container die wordt gebruikt door het HDInsight-cluster, is standaard de naam van het cluster zelf. Als uw cluster naam bijvoorbeeld myhdicluster is, zou de naam van de gekoppelde BLOB-container myhdicluster zijn.  
 
 ```JSON
 {

@@ -8,10 +8,9 @@ ms.date: 05/13/2019
 ms.author: byvinyal
 ms.custom: seodec18
 ms.openlocfilehash: f1ca4958fe2608d0c040ef5b93827a7e71a4151c
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "74672355"
 ---
 # <a name="high-density-hosting-on-azure-app-service-using-per-app-scaling"></a>Hosten met hoge dichtheid op Azure App Service met schalen per app
@@ -32,7 +31,7 @@ Het platform is niet afhankelijk van metrische gegevens om te beslissen over de 
 
 ## <a name="per-app-scaling-using-powershell"></a>Schalen per app met behulp van Power shell
 
-Maak een plan met schalen per app door de ```-PerSiteScaling $true``` para meter aan de ```New-AzAppServicePlan``` cmdlet door te geven.
+Maak een plan met schalen per app door de ```-PerSiteScaling $true``` para meter aan de cmdlet door te geven ```New-AzAppServicePlan``` .
 
 ```powershell
 New-AzAppServicePlan -ResourceGroupName $ResourceGroup -Name $AppServicePlan `
@@ -65,7 +64,7 @@ Set-AzWebApp $newapp
 ```
 
 > [!IMPORTANT]
-> `$newapp.SiteConfig.NumberOfWorkers`wijkt af van `$newapp.MaxNumberOfWorkers`. Schaal baarheid per app wordt gebruikt `$newapp.SiteConfig.NumberOfWorkers` om de schaal kenmerken van de app te bepalen.
+> `$newapp.SiteConfig.NumberOfWorkers`wijkt af van `$newapp.MaxNumberOfWorkers` . Schaal baarheid per app wordt gebruikt `$newapp.SiteConfig.NumberOfWorkers` om de schaal kenmerken van de app te bepalen.
 
 ## <a name="per-app-scaling-using-azure-resource-manager"></a>Schalen per app met behulp van Azure Resource Manager
 
@@ -74,7 +73,7 @@ Met de volgende Azure Resource Manager sjabloon maakt u:
 - Een App Service plan dat is geschaald naar 10 instanties
 - een app die is geconfigureerd om te worden geschaald naar een maximum van vijf exemplaren.
 
-De eigenschap **PerSiteScaling** wordt ingesteld op True `"perSiteScaling": true`voor het app service plan. De App stelt het **aantal werk** rollen in dat moet worden gebruikt `"properties": { "numberOfWorkers": "5" }`voor 5.
+De eigenschap **PerSiteScaling** wordt ingesteld op True voor het app service plan `"perSiteScaling": true` . De App stelt het **aantal werk** rollen in dat moet worden gebruikt voor 5 `"properties": { "numberOfWorkers": "5" }` .
 
 ```json
 {

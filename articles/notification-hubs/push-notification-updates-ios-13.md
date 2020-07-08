@@ -9,10 +9,9 @@ ms.service: notification-hubs
 ms.reviewer: jowargo
 ms.lastreviewed: 10/16/2019
 ms.openlocfilehash: 697e8ba9c9f27e8d5644e3a78950ff006290efe7
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "74228147"
 ---
 # <a name="azure-notification-hubs-updates-for-ios-13"></a>Updates voor Azure Notification Hubs voor iOS 13
@@ -23,7 +22,7 @@ Er zijn onlangs enkele wijzigingen aangebracht in de open bare push service van 
 
 ### <a name="apns-push-type"></a>Type APNS-push
 
-Apple vereist nu dat ontwikkel aars meldingen identificeren als waarschuwings-of achtergrond meldingen via de `apns-push-type` nieuwe header in de APNS API. Volgens de [documentatie van Apple](https://developer.apple.com/documentation/usernotifications/setting_up_a_remote_notification_server/sending_notification_requests_to_apns): ' de waarde van deze header moet nauw keurig overeenkomen met de inhoud van de nettolading van uw melding. Als er sprake is van een niet-overeenkomend of als de header ontbreekt op de vereiste systemen, retourneert APNs mogelijk een fout, wordt de bezorging van de melding vertraagd of wordt deze helemaal verwijderd. "
+Apple vereist nu dat ontwikkel aars meldingen identificeren als waarschuwings-of achtergrond meldingen via de nieuwe `apns-push-type` header in de APNS API. Volgens de [documentatie van Apple](https://developer.apple.com/documentation/usernotifications/setting_up_a_remote_notification_server/sending_notification_requests_to_apns): ' de waarde van deze header moet nauw keurig overeenkomen met de inhoud van de nettolading van uw melding. Als er sprake is van een niet-overeenkomend of als de header ontbreekt op de vereiste systemen, retourneert APNs mogelijk een fout, wordt de bezorging van de melding vertraagd of wordt deze helemaal verwijderd. "
 
 Ontwikkel aars moeten deze header nu instellen in toepassingen die meldingen verzenden via Azure Notification Hubs. Vanwege een technische beperking moeten klanten verificatie op basis van tokens gebruiken voor APNS-referenties met aanvragen die dit kenmerk bevatten. Als u verificatie op basis van certificaten gebruikt voor uw APNS-referenties, moet u overschakelen op verificatie op basis van tokens.
 
@@ -62,7 +61,7 @@ Wanneer Azure Notification Hubs een melding detecteert die niet is `apns-push-ty
 
 ## <a name="apns-priority"></a>Prioriteit van APNS
 
-Een andere kleine wijziging, maar een wijziging in de back-end-toepassing die meldingen verzendt, is de vereiste dat voor achtergrond meldingen `apns-priority` de header nu moet worden ingesteld op 5. Veel toepassingen stellen de `apns-priority` header in op 10 (hetgeen aangeeft directe levering), of deze niet instellen en de standaard waarde ontvangen (ook 10).
+Een andere kleine wijziging, maar een wijziging in de back-end-toepassing die meldingen verzendt, is de vereiste dat voor achtergrond meldingen de `apns-priority` header nu moet worden ingesteld op 5. Veel toepassingen stellen de `apns-priority` header in op 10 (hetgeen aangeeft directe levering), of deze niet instellen en de standaard waarde ontvangen (ook 10).
 
 Het instellen van deze waarde op 10 is niet meer toegestaan voor achtergrond meldingen en u moet de waarde voor elke aanvraag instellen. Apple levert geen achtergrond meldingen als deze waarde ontbreekt. Bijvoorbeeld:
 
@@ -75,4 +74,4 @@ await hub.SendNotificationAsync(notification);
 
 ## <a name="sdk-changes"></a>SDK-wijzigingen
 
-Voor jaren gebruiken iOS-ontwikkel aars `description` het kenmerk van `deviceToken` de gegevens die worden verzonden naar de gemachtigde van het push-token om het push token op te halen dat een back-end-toepassing gebruikt om meldingen naar het apparaat te verzenden. Met Xcode 11 is dat `description` kenmerk gewijzigd in een andere indeling. Bestaande code die ontwikkel aars voor dit kenmerk gebruiken, is nu verbroken. We hebben de Azure Notification Hubs SDK bijgewerkt zodat deze wijziging kan worden doorgevoerd. werk dus de SDK bij die door uw toepassingen wordt gebruikt voor versie 2.0.4 of hoger van de [Azure notification hubs IOS SDK](https://github.com/Azure/azure-notificationhubs-ios).
+Voor jaren gebruiken iOS-ontwikkel aars het `description` kenmerk van de `deviceToken` gegevens die worden verzonden naar de gemachtigde van het push-token om het push token op te halen dat een back-end-toepassing gebruikt om meldingen naar het apparaat te verzenden. Met Xcode 11 is dat `description` kenmerk gewijzigd in een andere indeling. Bestaande code die ontwikkel aars voor dit kenmerk gebruiken, is nu verbroken. We hebben de Azure Notification Hubs SDK bijgewerkt zodat deze wijziging kan worden doorgevoerd. werk dus de SDK bij die door uw toepassingen wordt gebruikt voor versie 2.0.4 of hoger van de [Azure notification hubs IOS SDK](https://github.com/Azure/azure-notificationhubs-ios).

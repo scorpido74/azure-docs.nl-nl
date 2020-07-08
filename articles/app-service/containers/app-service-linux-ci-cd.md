@@ -9,10 +9,9 @@ ms.date: 11/08/2018
 ms.author: msangapu
 ms.custom: seodec18
 ms.openlocfilehash: d43491de7500204ed470757a1b744017a8180b57
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "74687638"
 ---
 # <a name="continuous-deployment-with-web-app-for-containers"></a>Doorlopende implementatie met Web App for Containers
@@ -23,7 +22,7 @@ In deze zelf studie configureert u continue implementatie voor een aangepaste co
 
 ![Scherm opname van ACR-webhook](./media/app-service-webapp-service-linux-ci-cd/ci-cd-acr-02.png)
 
-1. Meld u aan bij de [Azure-portal](https://portal.azure.com).
+1. Meld u aan bij [Azure Portal](https://portal.azure.com).
 2. Selecteer de optie **app service** aan de linkerkant van de pagina.
 3. Selecteer de naam van de app waarvoor u een continue implementatie wilt configureren.
 4. Selecteer op de pagina **container instellingen** de optie **Eén container**
@@ -41,7 +40,7 @@ Klik in uw Container Registry op webhooks om de huidige webhooks weer te geven.
 
 ## <a name="enable-continuous-deployment-with-docker-hub-optional"></a>Continue implementatie met docker hub inschakelen (optioneel)
 
-1. Meld u aan bij de [Azure-portal](https://portal.azure.com).
+1. Meld u aan bij [Azure Portal](https://portal.azure.com).
 2. Selecteer de optie **app service** aan de linkerkant van de pagina.
 3. Selecteer de naam van de app waarvoor u een continue implementatie wilt configureren.
 4. Selecteer op de pagina **container instellingen** de optie **Eén container**

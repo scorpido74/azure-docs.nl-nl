@@ -9,10 +9,9 @@ ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 11/29/2019
 ms.openlocfilehash: ac51b77e1ffc2b476b0a73dac9b6917552a86ce4
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "74807150"
 ---
 # <a name="create-high-availability-apache-spark-streaming-jobs-with-yarn"></a>Apache Spark streaming-taken met hoge Beschik baarheid maken met GARENs
@@ -71,8 +70,8 @@ Als een **stuur programma** echter niet kan worden uitgevoerd, mislukken alle bi
 
 Stuur Programma's herstellen met DStream controle punt:
 
-* Automatisch opnieuw opstarten van Stuur Programma's op GARENs configureren `yarn.resourcemanager.am.max-attempts`met de configuratie-instelling.
-* Een map met een controle punt instellen in een bestands systeem met `streamingContext.checkpoint(hdfsDirectory)`HDFS-compatibel met.
+* Automatisch opnieuw opstarten van Stuur Programma's op GARENs configureren met de configuratie-instelling `yarn.resourcemanager.am.max-attempts` .
+* Een map met een controle punt instellen in een bestands systeem met HDFS-compatibel met `streamingContext.checkpoint(hdfsDirectory)` .
 * Bron code herstructureren voor het gebruik van controle punten voor herstel, bijvoorbeeld:
 
     ```scala
@@ -88,7 +87,7 @@ Stuur Programma's herstellen met DStream controle punt:
         context.start()
     ```
 
-* Configureer verloren gegevens herstel door het Write-Ahead logboek (WAL) in `sparkConf.set("spark.streaming.receiver.writeAheadLog.enable","true")`te scha kelen en de replicatie in het geheugen voor invoer DStreams `StorageLevel.MEMORY_AND_DISK_SER`uit te scha kelen met.
+* Configureer verloren gegevens herstel door het Write-Ahead logboek (WAL) in te scha kelen `sparkConf.set("spark.streaming.receiver.writeAheadLog.enable","true")` en de replicatie in het geheugen voor invoer DStreams uit te scha kelen met `StorageLevel.MEMORY_AND_DISK_SER` .
 
 Als u wilt samenvatten, met behulp van controle punten + WAL + reliable receivers, kunt u ' ten minste eenmaal ' gegevens herstel leveren:
 

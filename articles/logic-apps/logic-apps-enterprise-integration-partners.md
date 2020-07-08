@@ -9,15 +9,14 @@ ms.reviewer: jonfan, estfan, logicappspm
 ms.topic: article
 ms.date: 06/22/2019
 ms.openlocfilehash: e58cbe85f30ea09adde45d55bb7b80c710c45495
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "74792436"
 ---
-# <a name="add-trading-partners-to-integration-accounts-for-azure-logic-apps"></a>Handels partners toevoegen aan integratie accounts voor Azure Logic Apps
+# <a name="add-trading-partners-to-integration-accounts-for-azure-logic-apps"></a>Handelspartners toevoegen aan integratieaccounts voor Azure Logic Apps
 
-In [Azure Logic apps](../logic-apps/logic-apps-overview.md)kunt u geautomatiseerde business-to-Business (B2B) integratie werk stromen maken met behulp van een [integratie account](../logic-apps/logic-apps-enterprise-integration-create-integration-account.md) met uw Logic apps. Om uw organisatie en anderen weer te geven, maakt en voegt u handels partners als artefacten toe aan uw integratie account. Partners zijn entiteiten die deel nemen aan B2B-trans acties en Exchange-berichten met elkaar.
+In [Azure Logic apps](../logic-apps/logic-apps-overview.md)kunt u geautomatiseerde business-to-Business (B2B) integratie werk stromen maken met behulp van een [integratie account](../logic-apps/logic-apps-enterprise-integration-create-integration-account.md) met uw Logic apps. Om uw organisatie en anderen weer te geven, maakt en voegt u handels partners als artefacten toe aan uw integratie account. Partners zijn entiteiten die deelnemen aan B2B-transacties en berichten met elkaar uitwisselen.
 
 Voordat u deze partners maakt, moet u de informatie bespreken en delen met uw partners over het identificeren en valideren van de berichten die door de andere worden verzonden. Nadat u deze gegevens hebt geaccepteerd, bent u klaar om partners te maken in uw integratie account.
 
@@ -35,7 +34,7 @@ In een overeenkomst geeft u de details op voor het verwerken van binnenkomende e
 
 ## <a name="create-partner"></a>Partner maken
 
-1. Meld u aan bij de [Azure-portal](https://portal.azure.com).
+1. Meld u aan bij [Azure Portal](https://portal.azure.com).
 
 1. Selecteer in het hoofd menu van Azure **alle services**. Voer in het zoekvak ' integratie ' in en selecteer **integratie accounts**.
 
@@ -55,9 +54,9 @@ In een overeenkomst geeft u de details op voor het verwerken van binnenkomende e
 
    | Eigenschap | Vereist | Beschrijving |
    |----------|----------|-------------|
-   | **Naam** | Ja | De naam van de partner |
-   | **Kwalificatie** | Ja | De verificatie-tekst die unieke zakelijke identiteiten biedt aan organisaties, bijvoorbeeld **D-U-N-S (Dun & Bradstreet)**. <p>Partners kunnen voor een onderling gedefinieerde zakelijke identiteit kiezen. Voor deze scenario's selecteert u **wederzijds gedefinieerd** voor Edifact of **wederzijds gedefinieerd (X12)** voor X12. <p>Selecteer voor RosettaNet alleen **Duns**. Dit is de standaard. |
-   | **Waarde** | Ja | Een waarde waarmee de documenten worden geïdentificeerd die door uw Logic apps worden ontvangen. <p>Voor RosettaNet moet deze waarde een getal van negen cijfers zijn dat overeenkomt met het DUNS-nummer. |
+   | **Naam** | Yes | De naam van de partner |
+   | **Kwalificatie** | Yes | De verificatie-tekst die unieke zakelijke identiteiten biedt aan organisaties, bijvoorbeeld **D-U-N-S (Dun & Bradstreet)**. <p>Partners kunnen voor een onderling gedefinieerde zakelijke identiteit kiezen. Voor deze scenario's selecteert u **wederzijds gedefinieerd** voor Edifact of **wederzijds gedefinieerd (X12)** voor X12. <p>Selecteer voor RosettaNet alleen **Duns**. Dit is de standaard. |
+   | **Waarde** | Yes | Een waarde waarmee de documenten worden geïdentificeerd die door uw Logic apps worden ontvangen. <p>Voor RosettaNet moet deze waarde een getal van negen cijfers zijn dat overeenkomt met het DUNS-nummer. |
    ||||
 
    > [!NOTE]
@@ -86,12 +85,12 @@ Kies de tegel **partners** .
 
    | Eigenschap | Vereist | Beschrijving |
    |----------|----------|-------------|
-   | **Partner classificatie** | Nee | Het organisatie type van de partner |
-   | **Toeleverings keten code** | Nee | De code van de toeleverings keten van de partner, bijvoorbeeld ' informatie technologie ' of ' elektronische onderdelen ' |
-   | **Naam van contactpersoon** | Nee | De naam van de contact persoon van de partner |
-   | **E-mail** | Nee | Het e-mail adres van de partner |
-   | **Fax** | Nee | Het faxnummer van de partner |
-   | **Telefoon** | Nee | Het telefoon nummer van de partner |
+   | **Partner classificatie** | No | Het organisatie type van de partner |
+   | **Toeleverings keten code** | No | De code van de toeleverings keten van de partner, bijvoorbeeld ' informatie technologie ' of ' elektronische onderdelen ' |
+   | **Naam van contact persoon** | No | De naam van de contact persoon van de partner |
+   | **E-mail** | No | Het e-mail adres van de partner |
+   | **Fax** | No | Het faxnummer van de partner |
+   | **Telefoon** | No | Het telefoon nummer van de partner |
    ||||
 
 1. Wanneer u klaar bent, kiest u **OK** om uw wijzigingen op te slaan.

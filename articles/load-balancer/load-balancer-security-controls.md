@@ -9,10 +9,9 @@ ms.topic: conceptual
 ms.date: 09/04/2019
 ms.author: allensu
 ms.openlocfilehash: 6043e574697489b6566641c352bc21a2b6d87f51
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "74214901"
 ---
 # <a name="security-controls-for-azure-load-balancer"></a>Beveiligings controles voor Azure Load Balancer
@@ -23,7 +22,7 @@ In dit artikel worden de beveiligings besturings elementen gedocumenteerd die zi
 
 ## <a name="network"></a>Netwerk
 
-| Beveiligings beheer | Ja/Nee | Opmerkingen |
+| Beveiligings beheer | Ja/Nee | Notities |
 |---|---|--|
 | Ondersteuning voor service-eind punten| N.v.t. | |
 | Ondersteuning voor VNet-injectie| N.v.t. | |
@@ -32,32 +31,32 @@ In dit artikel worden de beveiligings besturings elementen gedocumenteerd die zi
 
 ## <a name="monitoring--logging"></a>& logboek registratie controleren
 
-| Beveiligings beheer | Ja/Nee | Opmerkingen|
+| Beveiligings beheer | Ja/Nee | Notities|
 |---|---|--|
-| Ondersteuning voor Azure-bewaking (log Analytics, app Insights, enz.)| Ja | Zie [Azure monitor-logboeken voor open bare basis Load Balancer](load-balancer-monitor-log.md). |
-| Logboek registratie en controle op het vlak van controle en beheer| Ja | Zie [Azure monitor-logboeken voor open bare basis Load Balancer](load-balancer-monitor-log.md). |
+| Ondersteuning voor Azure-bewaking (log Analytics, app Insights, enz.)| Yes | Zie [Azure monitor-logboeken voor open bare basis Load Balancer](load-balancer-monitor-log.md). |
+| Logboek registratie en controle op het vlak van controle en beheer| Yes | Zie [Azure monitor-logboeken voor open bare basis Load Balancer](load-balancer-monitor-log.md). |
 | Logboek registratie en controle van het gegevens vlak | N.v.t. |  |
 
 ## <a name="identity"></a>Identiteit
 
-| Beveiligings beheer | Ja/Nee | Opmerkingen|
+| Beveiligings beheer | Ja/Nee | Notities|
 |---|---|--|
 | Verificatie| N.v.t. |  |
 | Autorisatie| N.v.t. |  |
 
-## <a name="data-protection"></a>Gegevensbeveiliging
+## <a name="data-protection"></a>Gegevensbescherming
 
-| Beveiligings beheer | Ja/Nee | Opmerkingen |
+| Beveiligings beheer | Ja/Nee | Notities |
 |---|---|--|
 | Versleuteling aan server zijde op rest: door micro soft beheerde sleutels | N.v.t. | |
 | Versleuteling in transit (zoals ExpressRoute-versleuteling, in VNet-versleuteling en VNet-VNet-versleuteling)| N.v.t. | |
 | Versleuteling aan server zijde op rest: door de klant beheerde sleutels (BYOK) | N.v.t. | |
 | Versleuteling op kolom niveau (Azure Data Services)| N.v.t. | |
-| Versleutelde API-aanroepen| Ja | Via de [Azure Resource Manager](../azure-resource-manager/index.yml). |
+| Versleutelde API-aanroepen| Yes | Via de [Azure Resource Manager](../azure-resource-manager/index.yml). |
 
 ## <a name="configuration-management"></a>Configuratiebeheer
 
-| Beveiligings beheer | Ja/Nee | Opmerkingen|
+| Beveiligings beheer | Ja/Nee | Notities|
 |---|---|--|
 | Ondersteuning voor configuratie beheer (versie van configuratie, enz.)| N.v.t. |  | 
 

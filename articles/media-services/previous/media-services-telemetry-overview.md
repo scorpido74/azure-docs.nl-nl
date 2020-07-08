@@ -15,10 +15,9 @@ ms.topic: article
 ms.date: 04/01/2019
 ms.author: juliako
 ms.openlocfilehash: e2cbb36158722a47518f575b391340b5e25bd908
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/27/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "74895780"
 ---
 # <a name="azure-media-services-telemetry"></a>Azure Media Services telemetrie  
@@ -78,9 +77,9 @@ Eigenschap|Waarde|Voor beelden/opmerkingen
 ---|---|---
 PartitionKey|{account-ID} _ {entiteit-ID}|e49bef329c29495f9b9570989682069d_64435281c50a4dd8ab7011cb0f4cdf66<br/<br/>De account-ID is opgenomen in de partitie sleutel om werk stromen te vereenvoudigen waarbij meerdere Media Services-accounts naar hetzelfde opslag account worden geschreven.
 RowKey|{seconden tot middernacht} _ {wille keurige waarde}|01688_00199<br/><br/>De rij begint met het aantal seconden tot middernacht om de bovenste n-stijl query's in een partitie toe te staan. Zie [Dit](../../cosmos-db/table-storage-design-guide.md#log-tail-pattern) artikel voor meer informatie. 
-Tijdstempel|Datum/tijd|Automatische tijds tempel van de Azure-tabel 2016-09-09T22:43:42.241 Z
+Tijdstempel|Datum en tijd|Automatische tijds tempel van de Azure-tabel 2016-09-09T22:43:42.241 Z
 Type|Het type entiteit dat telemetrie-gegevens levert|Kanaal-StreamingEndpoint/archief<br/><br/>Het gebeurtenis type is een teken reeks waarde.
-Naam|De naam van de telemetrie-gebeurtenis|ChannelHeartbeat/StreamingEndpointRequestLog
+Name|De naam van de telemetrie-gebeurtenis|ChannelHeartbeat/StreamingEndpointRequestLog
 ObservedTime|Het tijdstip waarop de telemetrie-gebeurtenis is opgetreden (UTC)|2016-09-09T22:42:36.924 Z<br/><br/>De waargenomen tijd wordt gegeven door de entiteit die de telemetrie verzendt (bijvoorbeeld een kanaal). Er kunnen tijd synchronisatie problemen zijn tussen onderdelen, dus deze waarde is ongeveer gelijk aan
 ServiceID|{Service-ID}|f70bd731-691d-41c6-8f2d-671d0bdc9c7e
 Entiteit-specifieke eigenschappen|Zoals gedefinieerd door de gebeurtenis|Streamnaam: stream1, bitrate 10123,...<br/><br/>De overige eigenschappen worden gedefinieerd voor het opgegeven gebeurtenis type. Azure-tabel inhoud is sleutel waardeparen.  (dat wil zeggen dat verschillende rijen in de tabel verschillende sets eigenschappen hebben).
@@ -101,7 +100,7 @@ PartitionKey|PartitionKey|e49bef329c29495f9b9570989682069d_64435281c50a4dd8ab701
 RowKey|RowKey|01688_00199
 Tijdstempel|Tijdstempel|Automatische tijds tempel van Azure Table 2016-09-09T22:43:42.241 Z
 Type|Type|StreamingEndpoint
-Naam|Naam|StreamingEndpointRequestLog
+Name|Name|StreamingEndpointRequestLog
 ObservedTime|ObservedTime|2016-09-09T22:42:36.924 Z
 ServiceID|Service-id|f70bd731-691d-41c6-8f2d-671d0bdc9c7e
 HostName|Hostnaam van het eind punt|builddemoserver.origin.mediaservices.windows.net
@@ -120,7 +119,7 @@ PartitionKey|PartitionKey|e49bef329c29495f9b9570989682069d_64435281c50a4dd8ab701
 RowKey|RowKey|01688_00199
 Tijdstempel|Tijdstempel|Automatische tijds tempel van de Azure-tabel 2016-09-09T22:43:42.241 Z
 Type|Type|Kanaal
-Naam|Naam|ChannelHeartbeat
+Name|Name|ChannelHeartbeat
 ObservedTime|ObservedTime|2016-09-09T22:42:36.924 Z
 ServiceID|Service-id|f70bd731-691d-41c6-8f2d-671d0bdc9c7e
 TrackType|Type track video/audio/tekst|video/audio
@@ -135,7 +134,7 @@ NonincreasingCount|Aantal verwijderde fragmenten vanwege niet-toenemende tijds t
 UnalignedKeyFrames|Of er fragment (en) (op verschillende kwaliteits niveaus) zijn ontvangen waar de keyframes niet zijn uitgelijnd |True
 UnalignedPresentationTime|Of we fragment (en) (op verschillende kwaliteits niveaus/tracks) ontvangen waarbij de presentatie tijd niet is uitgelijnd|True
 UnexpectedBitrate|Waar, als de berekende/werkelijke bitrate voor audio/video track > 40.000 bps en IncomingBitrate = = 0 of IncomingBitrate en actualBitrate verschillen per 50% |True
-Goed|Waar, als <br/>overlapCount, <br/>DiscontinuityCount, <br/>NonIncreasingCount, <br/>UnalignedKeyFrames, <br/>UnalignedPresentationTime, <br/>UnexpectedBitrate<br/> zijn allemaal 0|True<br/><br/>In orde is een samengestelde functie die onwaar retourneert wanneer een van de volgende voor waarden van toepassing is:<br/><br/>-OverlapCount > 0<br/>-DiscontinuityCount > 0<br/>-NonincreasingCount > 0<br/>-UnalignedKeyFrames = = True<br/>-UnalignedPresentationTime = = True<br/>-UnexpectedBitrate = = True
+In orde|Waar, als <br/>overlapCount, <br/>DiscontinuityCount, <br/>NonIncreasingCount, <br/>UnalignedKeyFrames, <br/>UnalignedPresentationTime, <br/>UnexpectedBitrate<br/> zijn allemaal 0|True<br/><br/>In orde is een samengestelde functie die onwaar retourneert wanneer een van de volgende voor waarden van toepassing is:<br/><br/>-OverlapCount > 0<br/>-DiscontinuityCount > 0<br/>-NonincreasingCount > 0<br/>-UnalignedKeyFrames = = True<br/>-UnalignedPresentationTime = = True<br/>-UnexpectedBitrate = = True
 
 **Live-Archief**
 
@@ -145,7 +144,7 @@ PartitionKey|PartitionKey|e49bef329c29495f9b9570989682069d_64435281c50a4dd8ab701
 RowKey|RowKey|01688_00199
 Tijdstempel|Tijdstempel|Automatische tijds tempel van de Azure-tabel 2016-09-09T22:43:42.241 Z
 Type|Type|Archiveren
-Naam|Naam|ArchiveHeartbeat
+Name|Name|ArchiveHeartbeat
 ObservedTime|ObservedTime|2016-09-09T22:42:36.924 Z
 ServiceID|Service-id|f70bd731-691d-41c6-8f2d-671d0bdc9c7e
 Manifestnaam|Programma-URL|Asset-eb149703-ed0a-483c-91c4-e4066e72cce3/a0a5cfbf-71ec-4bd2-8c01-a92a2b38c9ba. ISM
@@ -153,7 +152,7 @@ Nummer bijhouden|Naam van het spoor|audio_1
 TrackType|Type spoor|Audio/video
 CustomAttribute|Hex-teken reeks die onderscheidt tussen een ander spoor met dezelfde naam en bitsnelheid (hoek van meerdere camera's)|
 Bitsnelheid|Bitsnelheid bijhouden|785000
-Goed|Waar, als FragmentDiscardedCount = = 0 && ArchiveAcquisitionError = = False|Waar (deze twee waarden zijn niet aanwezig in de metriek, maar zijn aanwezig in de bron gebeurtenis)<br/><br/>In orde is een samengestelde functie die onwaar retourneert wanneer een van de volgende voor waarden van toepassing is:<br/><br/>-FragmentDiscardedCount > 0<br/>-ArchiveAcquisitionError = = True
+In orde|Waar, als FragmentDiscardedCount = = 0 && ArchiveAcquisitionError = = False|Waar (deze twee waarden zijn niet aanwezig in de metriek, maar zijn aanwezig in de bron gebeurtenis)<br/><br/>In orde is een samengestelde functie die onwaar retourneert wanneer een van de volgende voor waarden van toepassing is:<br/><br/>-FragmentDiscardedCount > 0<br/>-ArchiveAcquisitionError = = True
 
 ## <a name="general-qa"></a>Algemeen Q&A
 

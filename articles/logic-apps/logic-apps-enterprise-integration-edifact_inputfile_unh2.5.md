@@ -9,15 +9,14 @@ ms.reviewer: jonfan, estfan, logicappspm
 ms.topic: article
 ms.date: 04/27/2017
 ms.openlocfilehash: ad50cbb423f8c60f1caad159bc1a20cf96ed98aa
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "74792533"
 ---
 # <a name="handle-edifact-documents-with-unh25-segments-in-azure-logic-apps"></a>EDIFACT documenten met UNH 2.5-segmenten in Azure Logic Apps verwerken
 
-Als er een UNH 2.5-segment bestaat in een EDIFACT-document, wordt het segment gebruikt voor het opzoeken van het schema. In dit voor beeld van een EDIFACT-bericht is `EAN008`het veld UNH:
+Als er een UNH 2.5-segment bestaat in een EDIFACT-document, wordt het segment gebruikt voor het opzoeken van het schema. In dit voor beeld van een EDIFACT-bericht is het veld UNH `EAN008` :
 
 `UNH+SSDD1+ORDERS:D:03B:UN:EAN008`
 
@@ -29,7 +28,7 @@ Voer de volgende stappen uit om dit bericht af te handelen:
 
 ## <a name="update-the-schema"></a>Het schema bijwerken
 
-Als u het bericht wilt verwerken, moet u een schema implementeren dat de naam van het UNH 2.5-hoofd knooppunt bevat. Bijvoorbeeld, de naam van het schema root voor het veld UNH- `EFACT_D03B_ORDERS_EAN008`voor beeld is. Voor elk `D03B_ORDERS` met een ander unh 2.5-segment moet u een afzonderlijk schema implementeren.
+Als u het bericht wilt verwerken, moet u een schema implementeren dat de naam van het UNH 2.5-hoofd knooppunt bevat. Bijvoorbeeld, de naam van het schema root voor het veld UNH-voor beeld is `EFACT_D03B_ORDERS_EAN008` . Voor elk `D03B_ORDERS` met een ander unh 2.5-segment moet u een afzonderlijk schema implementeren.
 
 ## <a name="add-schema-to-edifact-agreement"></a>Schema toevoegen aan EDIFACT-overeenkomst
 
@@ -43,7 +42,7 @@ Als u het binnenkomende bericht wilt decoderen, moet u het schema instellen in d
 
 1. Configureer het schema in de receive-instellingen van de EDIFACT-overeenkomst.
 
-1. Selecteer de EDIFACT-overeenkomst en selecteer **bewerken als JSON**. Voeg de UNH 2.5-waarde toe aan de sectie `schemaReferences` van de ontvangst overeenkomst:
+1. Selecteer de EDIFACT-overeenkomst en selecteer **bewerken als JSON**. Voeg de UNH 2.5-waarde toe aan de sectie van de ontvangst overeenkomst `schemaReferences` :
 
    ![UNH 2.5 toevoegen om overeenkomst te ontvangen](./media/logic-apps-enterprise-integration-edifact_inputfile_unh2.5/image1.png)
 
@@ -59,7 +58,7 @@ Als u het binnenkomende bericht wilt coderen, configureert u het schema in de ED
 
 1. Selecteer EDIFACT Agreement en klik op **bewerken als JSON**.  UNH 2.5-waarde toevoegen in de overeenkomst **SchemaReferences** verzenden
 
-1. Selecteer de EDIFACT-overeenkomst en selecteer **bewerken als JSON**. Voeg de UNH 2.5-waarde toe aan de sectie `schemaReferences` voor het verzenden van de overeenkomst:
+1. Selecteer de EDIFACT-overeenkomst en selecteer **bewerken als JSON**. Voeg de UNH 2.5-waarde toe aan de sectie voor het verzenden van de overeenkomst `schemaReferences` :
 
    ![UNH 2.5 toevoegen aan het verzenden van een overeenkomst](./media/logic-apps-enterprise-integration-edifact_inputfile_unh2.5/image2.png)
 

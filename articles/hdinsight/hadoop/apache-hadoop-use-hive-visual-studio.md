@@ -9,10 +9,9 @@ ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 11/27/2019
 ms.openlocfilehash: 27ab13481525819eb1435f4c9ac256a21acd21fb
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "74687807"
 ---
 # <a name="run-apache-hive-queries-using-the-data-lake-tools-for-visual-studio"></a>Apache Hive-query's uitvoeren met de Data Lake-hulpprogramma's voor Visual Studio
@@ -58,7 +57,7 @@ Ad hoc-query's kunnen worden uitgevoerd in **batch** of **interactieve** modus.
 
     ![Batch Hive-query, Visual Studio verzenden](./media/apache-hadoop-use-hive-visual-studio/visual-studio-batch-query.png)
 
-    De Hive-editor ondersteunt IntelliSense. Data Lake Tools voor Visual Studio biedt ondersteuning voor het laden van externe metagegevens wanneer u het Hive-script bewerkt. Als u bijvoorbeeld typt `SELECT * FROM`, geeft IntelliSense alle voorgestelde tabel namen weer. Wanneer een tabelnaam wordt opgegeven, geeft IntelliSense de kolomnamen weer. De hulpprogramma's ondersteunen de meeste DML-instructies, subquery's en ingebouwde UDF's van Hive. IntelliSense suggereert alleen de metagegevens van het cluster dat in de HDInsight-werkbalk is geselecteerd.
+    De Hive-editor ondersteunt IntelliSense. Data Lake Tools voor Visual Studio biedt ondersteuning voor het laden van externe metagegevens wanneer u het Hive-script bewerkt. Als u bijvoorbeeld typt `SELECT * FROM` , geeft IntelliSense alle voorgestelde tabel namen weer. Wanneer een tabelnaam wordt opgegeven, geeft IntelliSense de kolomnamen weer. De hulpprogramma's ondersteunen de meeste DML-instructies, subquery's en ingebouwde UDF's van Hive. IntelliSense suggereert alleen de metagegevens van het cluster dat in de HDInsight-werkbalk is geselecteerd.
 
 7. Selecteer in de werk balk query (het gebied onder het tabblad Query en boven de query tekst) de optie **verzenden**of selecteer de vervolg keuze pijl naast **verzenden** en kies **Geavanceerd** in de keuze lijst. Als u de laatste optie selecteert,
 
@@ -72,7 +71,7 @@ Voer de volgende stappen uit om een Hive-query uit te voeren door een Hive-toepa
 
 1. Open **Visual Studio**.
 
-2. Selecteer in het **Start** venster **een nieuw project maken**.
+2. Selecteer in het **Startvenster** de optie **Een nieuw project maken**.
 
 3. In het venster **een nieuw project maken** in het vak **zoeken naar sjablonen** voert u *Hive*in. Kies vervolgens **Hive-toepassing** en selecteer **volgende**.
 
@@ -104,7 +103,7 @@ Voer de volgende stappen uit om een Hive-query uit te voeren door een Hive-toepa
 
     * `STORED AS TEXTFILE LOCATION`: Hiermee wordt aangegeven dat de gegevens worden opgeslagen in de map *voor beeld/data* , en dat deze is opgeslagen als tekst.
 
-    * `SELECT`: Selecteert een telling van alle rijen waarin de `t4` kolom de waarde `[ERROR]`bevat. Deze instructie retourneert een waarde van `3`, omdat drie rijen deze waarde bevatten.
+    * `SELECT`: Selecteert een telling van alle rijen waarin `t4` de kolom de waarde bevat `[ERROR]` . Deze instructie retourneert een waarde van `3` , omdat drie rijen deze waarde bevatten.
 
     * `INPUT__FILE__NAME LIKE '%.log'`: Hiermee wordt aangegeven dat de Hive alleen gegevens retourneert uit bestanden die eindigen op. log. Met deze component wordt de zoek opdracht beperkt tot het *voorbeeld logboek* bestand dat de gegevens bevat.
 
@@ -114,11 +113,11 @@ Voer de volgende stappen uit om een Hive-query uit te voeren door een Hive-toepa
 
    ![Samen vatting van Hive-taak, Hive-toepassing, Visual Studio](./media/apache-hadoop-use-hive-visual-studio/hdinsight-job-summary.png)
 
-7. Selecteer **taak uitvoer** om de uitvoer van deze taak weer te geven. Dit wordt `[ERROR] 3`weer gegeven. Dit is de waarde die wordt geretourneerd door deze query.
+7. Selecteer **taak uitvoer** om de uitvoer van deze taak weer te geven. Dit wordt weer gegeven `[ERROR] 3` . Dit is de waarde die wordt geretourneerd door deze query.
 
 ### <a name="additional-example"></a>Extra voor beeld
 
-In het volgende voor beeld wordt gebruikgemaakt van de `log4jLogs` tabel die u in de vorige procedure hebt gemaakt, maakt u [een Hive-toepassing](#create-a-hive-application).
+In het volgende voor beeld wordt gebruikgemaakt van de `log4jLogs` tabel die u in de vorige procedure hebt gemaakt, [maakt u een Hive-toepassing](#create-a-hive-application).
 
 1. Klik vanuit **Server Explorer**met de rechter muisknop op uw cluster en selecteer **een Hive-query schrijven**.
 
@@ -139,11 +138,11 @@ In het volgende voor beeld wordt gebruikgemaakt van de `log4jLogs` tabel die u i
 
     * `STORED AS ORC`: De gegevens worden opgeslagen in de Orc-indeling ( *Optimized Row in kolommen* ). ORC is een zeer geoptimaliseerde en efficiënte indeling voor het opslaan van Hive-gegevens.
 
-    * `INSERT OVERWRITE ... SELECT`: Selecteert rijen uit de `log4jLogs` tabel die bevat `[ERROR]`en voegt vervolgens de gegevens in de `errorLogs` tabel in.
+    * `INSERT OVERWRITE ... SELECT`: Selecteert rijen uit de `log4jLogs` tabel die bevat `[ERROR]` en voegt vervolgens de gegevens in de `errorLogs` tabel in.
 
 3. Wijzig **interactief** naar **batch** , indien nodig, en selecteer vervolgens **verzenden**.
 
-4. Als u wilt controleren of de tabel is gemaakt, gaat u naar **Server Explorer** en vouwt u **Azure** > **HDInsight**uit. Breid uw HDInsight-cluster uit en vouw vervolgens de**standaard**- **Hive-data bases** > uit. De tabel **errorLogs** en de tabel **log4jLogs** worden weer gegeven.
+4. Als u wilt controleren of de tabel is gemaakt, gaat u naar **Server Explorer** en vouwt u **Azure**  >  **HDInsight**uit. Breid uw HDInsight-cluster uit en vouw vervolgens de standaard- **Hive-data bases**uit  >  **default**. De tabel **errorLogs** en de tabel **log4jLogs** worden weer gegeven.
 
 ## <a name="next-steps"></a>Volgende stappen
 

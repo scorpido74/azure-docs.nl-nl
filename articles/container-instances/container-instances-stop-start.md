@@ -4,13 +4,12 @@ description: Meer informatie over het hand matig stoppen of starten van een cont
 ms.topic: article
 ms.date: 04/15/2019
 ms.openlocfilehash: c9f8afea33c65df940d02823ec394697d2786d6a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "74533429"
 ---
-# <a name="manually-stop-or-start-containers-in-azure-container-instances"></a>Containers in Azure Container Instances hand matig stoppen of starten
+# <a name="manually-stop-or-start-containers-in-azure-container-instances"></a>Containers in Azure Container Instances handmatig stoppen of starten
 
 De beleids instelling voor het [opnieuw opstarten](container-instances-restart-policy.md) van een container groep bepaalt hoe de container instanties standaard worden gestart of gestopt. U kunt de standaard instelling onderdrukken door een container groep hand matig te stoppen of te starten.
 

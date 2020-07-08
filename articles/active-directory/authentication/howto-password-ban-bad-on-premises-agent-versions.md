@@ -12,10 +12,9 @@ manager: daveba
 ms.reviewer: jsimmons
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 71fd33388cb1bdf7c87c44fb3273c6850122a0cc
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "74847846"
 ---
 # <a name="azure-ad-password-protection-agent-version-history"></a>Versie geschiedenis van de Azure AD-wachtwoord beveiligings agent
@@ -42,9 +41,9 @@ Release datum: 3/13/2019
   * Op Server Core-systemen kan het nodig zijn om de/q-vlag door te geven aan het .NET 4,7-installatie programma om deze te laten slagen.
 * De proxy service ondersteunt nu automatische upgrades. Automatische upgrade maakt gebruik van de Microsoft Azure AD connect agent Updater-service die naast de proxy service is geïnstalleerd. Automatische upgrade is standaard ingeschakeld.
 * Automatische upgrades kunnen worden in-of uitgeschakeld met de cmdlet Set-AzureADPasswordProtectionProxyConfiguration. De huidige instelling kan worden opgevraagd met behulp van de cmdlet Get-AzureADPasswordProtectionProxyConfiguration.
-* De naam van de service-binary voor de DC-Agent service is gewijzigd in AzureADPasswordProtectionDCAgent. exe.
-* De naam van de service-binary voor de proxy service is gewijzigd in AzureADPasswordProtectionProxy. exe. Firewall regels moeten mogelijk dienovereenkomstig worden gewijzigd als een firewall van een derde partij in gebruik is.
-  * Opmerking: als er een http-proxy configuratie bestand werd gebruikt in een eerdere proxy installatie, moet dit na deze upgrade worden gewijzigd (van *proxyservice. exe. config* in *AzureADPasswordProtectionProxy. exe. config*).
+* De naam van de service-binary voor de DC-Agent service is gewijzigd in AzureADPasswordProtectionDCAgent.exe.
+* De naam van de binaire service voor de proxy service is gewijzigd in AzureADPasswordProtectionProxy.exe. Firewall regels moeten mogelijk dienovereenkomstig worden gewijzigd als een firewall van een derde partij in gebruik is.
+  * Opmerking: als er een http-proxy configuratie bestand werd gebruikt in een eerdere proxy installatie, moet u na deze upgrade een andere naam (van *proxyservice.exe.config* tot *AzureADPasswordProtectionProxy.exe.config*) krijgen.
 * Alle tijdgebonden functionaliteits controles zijn verwijderd uit de DC-agent.
 * Kleine oplossingen voor fouten en logboek registratie van verbeteringen.
 

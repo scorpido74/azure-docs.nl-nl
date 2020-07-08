@@ -7,10 +7,9 @@ ms.topic: conceptual
 ms.date: 05/30/2019
 ms.author: tisande
 ms.openlocfilehash: e15a8236723c1efd80f27f2d253e9bbc44af4b0b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "74870816"
 ---
 # <a name="parameterized-queries-in-azure-cosmos-db"></a>Query's met para meters in Azure Cosmos DB
@@ -19,7 +18,7 @@ Cosmos DB ondersteunt query's met para meters die worden uitgedrukt in de vertro
 
 ## <a name="examples"></a>Voorbeelden
 
-U kunt bijvoorbeeld een query schrijven `lastName` die en `address.state` als para meters, en deze uitvoeren voor diverse waarden van `lastName` en `address.state` op basis van gebruikers invoer.
+U kunt bijvoorbeeld een query schrijven die `lastName` en `address.state` als para meters, en deze uitvoeren voor diverse waarden van `lastName` en op `address.state` basis van gebruikers invoer.
 
 ```sql
     SELECT *

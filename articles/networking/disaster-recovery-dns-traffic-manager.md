@@ -16,10 +16,9 @@ ms.workload: infrastructure-services
 ms.date: 06/08/2018
 ms.author: kumud
 ms.openlocfilehash: 6eab1803bf5adab42be87b5f8567682c6d75947e
-ms.sourcegitcommit: 6a4fbc5ccf7cca9486fe881c069c321017628f20
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/27/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "74483534"
 ---
 # <a name="disaster-recovery-using-azure-dns-and-traffic-manager"></a>Herstel na noodgevallen met Azure DNS en Traffic Manager
@@ -72,7 +71,7 @@ De Azure DNS hand matige failover-oplossing voor herstel na nood gevallen gebrui
 
 De veronderstellingen die zijn gemaakt voor de oplossing zijn:
 - Zowel het primaire als het secundaire eind punt hebben statische IP-adressen die niet vaak worden gewijzigd. Stel dat het IP-adres van de primaire site 100.168.124.44 is en dat het IP-adres voor de secundaire site 100.168.124.43 is.
-- Er bestaat een Azure DNS zone voor zowel de primaire als de secundaire site. Stel dat voor de primaire site het eind punt prod.contoso.com is en dat de back-upsite dr.contoso.com is. Er bestaat ook een DNS-record voor de hoofd\.toepassing die als www-contoso.com wordt genoemd.   
+- Er bestaat een Azure DNS zone voor zowel de primaire als de secundaire site. Stel dat voor de primaire site het eind punt prod.contoso.com is en dat de back-upsite dr.contoso.com is. Er bestaat ook een DNS-record voor de hoofd toepassing die als www-contoso.com wordt genoemd \. .   
 - De TTL is op of onder de SLA voor RTO in de organisatie. Als een onderneming bijvoorbeeld de RTO van de toepassing voor een nood geval instelt op 60 minuten, moet de TTL kleiner zijn dan 60 minuten, bij voor keur de lagere waarde. 
   U kunt als volgt Azure DNS instellen voor hand matige failover:
 - Een DNS-zone maken
@@ -80,7 +79,7 @@ De veronderstellingen die zijn gemaakt voor de oplossing zijn:
 - CNAME-record bijwerken
 
 ### <a name="step-1-create-a-dns"></a>Stap 1: een DNS maken
-Maak een DNS-zone (bijvoorbeeld www\.-contoso.com) zoals hieronder wordt weer gegeven:
+Maak een DNS-zone (bijvoorbeeld www \. -contoso.com) zoals hieronder wordt weer gegeven:
 
 ![Een DNS-zone maken in azure](./media/disaster-recovery-dns-traffic-manager/create-dns-zone.png)
 
@@ -88,13 +87,13 @@ Maak een DNS-zone (bijvoorbeeld www\.-contoso.com) zoals hieronder wordt weer ge
 
 ### <a name="step-2-create-dns-zone-records"></a>Stap 2: DNS-zone records maken
 
-In deze zone maakt u drie records (bijvoorbeeld-www\.contoso.com, prod.contoso.com en Dr.consoto.com), zoals hieronder weer gegeven.
+In deze zone maakt u drie records (bijvoorbeeld-www \. contoso.com, Prod.contoso.com en Dr.consoto.com), zoals hieronder weer gegeven.
 
 ![DNS-zone records maken](./media/disaster-recovery-dns-traffic-manager/create-dns-zone-records.png)
 
 *Afbeelding: DNS-zone records maken in azure*
 
-In dit scenario heeft de site www\.-CONTOSO.com een TTL van 30 minuten. Dit is onder de vermelde RTO en verwijst naar de productie site Prod.contoso.com. Deze configuratie is tijdens normale bedrijfs activiteiten. De TTL van prod.contoso.com en dr.contoso.com is ingesteld op 300 seconden of 5 minuten. U kunt een Azure-bewakings service gebruiken, zoals Azure Monitor of Azure-app inzichten, of alle oplossingen voor het controleren van de partner, zoals Dynatrace, u kunt zelfs gekweekte oplossingen gebruiken waarmee u toepassingen kunt bewaken of fouten op virtuele infra structuur kunnen controleren.
+In dit scenario heeft de site www- \. contoso.com een TTL van 30 minuten. Dit is onder de vermelde RTO en verwijst naar de productie site Prod.contoso.com. Deze configuratie is tijdens normale bedrijfs activiteiten. De TTL van prod.contoso.com en dr.contoso.com is ingesteld op 300 seconden of 5 minuten. U kunt een Azure-bewakings service gebruiken, zoals Azure Monitor of Azure-app inzichten, of alle oplossingen voor het controleren van de partner, zoals Dynatrace, u kunt zelfs gekweekte oplossingen gebruiken waarmee u toepassingen kunt bewaken of fouten op virtuele infra structuur kunnen controleren.
 
 ### <a name="step-3-update-the-cname-record"></a>Stap 3: de CNAME-record bijwerken
 
@@ -104,7 +103,7 @@ Wanneer de fout is gedetecteerd, wijzigt u de record waarde zodat deze verwijst 
 
 *Afbeelding: de CNAME-record in azure bijwerken*
 
-Binnen 30 minuten, gedurende welke de meeste resolvers het zone bestand in de cache vernieuwen, wordt een\.query naar www-contoso.com omgeleid naar Dr.contoso.com.
+Binnen 30 minuten, gedurende welke de meeste resolvers het zone bestand in de cache vernieuwen, wordt een query naar www- \. contoso.com omgeleid naar Dr.contoso.com.
 U kunt ook de volgende Azure CLI-opdracht uitvoeren om de CNAME-waarde te wijzigen:
  ```azurecli
    az network dns record-set cname set-record \

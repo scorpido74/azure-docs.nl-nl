@@ -13,10 +13,9 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/10/2018
 ms.openlocfilehash: 5b8e7201a6239ef1fe83fb89d4b361995e305bbf
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "74703197"
 ---
 # <a name="transform-data-using-pig-activity-in-azure-data-factory"></a>Gegevens transformeren met behulp van Pig-activiteit in Azure Data Factory
@@ -41,7 +40,7 @@ Met de HDInsight Pig-activiteit in een Data Factory [pijp lijn](data-factory-cre
 > [!NOTE] 
 > Als u geen ervaring hebt met Azure Data Factory, lees dan [Inleiding tot Azure Data Factory](data-factory-introduction.md) en voer de zelf studie uit: [bouw uw eerste gegevens pijplijn](data-factory-build-your-first-pipeline.md) voordat u dit artikel leest. 
 
-## <a name="syntax"></a>Syntaxis
+## <a name="syntax"></a>Syntax
 
 ```JSON
 {
@@ -84,15 +83,15 @@ Met de HDInsight Pig-activiteit in een Data Factory [pijp lijn](data-factory-cre
 
 | Eigenschap | Beschrijving | Vereist |
 | --- | --- | --- |
-| name |Naam van de activiteit |Ja |
-| description |Tekst waarin wordt beschreven waarvoor de activiteit wordt gebruikt |Nee |
-| type |HDinsightPig |Ja |
-| invoer |Een of meer invoer waarden die worden gebruikt door de Pig-activiteit |Nee |
-| uitvoer |Een of meer uitvoer die wordt geproduceerd door de Pig-activiteit |Ja |
-| linkedServiceName |Verwijzing naar het HDInsight-cluster dat is geregistreerd als een gekoppelde service in Data Factory |Ja |
-| uit |Inline van het Pig-script opgeven |Nee |
-| scriptPath |Sla het Pig-script op in een Azure Blob-opslag en geef het pad naar het bestand op. Gebruik de eigenschap script of scriptPath. Beide kunnen niet tegelijk worden gebruikt. De bestands naam is hoofdletter gevoelig. |Nee |
-| compliant |Para meters opgeven als sleutel/waarde-paren voor het verwijzen binnen het Pig-script |Nee |
+| naam |Naam van de activiteit |Yes |
+| description |Tekst waarin wordt beschreven waarvoor de activiteit wordt gebruikt |No |
+| type |HDinsightPig |Yes |
+| invoer |Een of meer invoer waarden die worden gebruikt door de Pig-activiteit |No |
+| uitvoer |Een of meer uitvoer die wordt geproduceerd door de Pig-activiteit |Yes |
+| linkedServiceName |Verwijzing naar het HDInsight-cluster dat is geregistreerd als een gekoppelde service in Data Factory |Yes |
+| script |Inline van het Pig-script opgeven |No |
+| scriptPath |Sla het Pig-script op in een Azure Blob-opslag en geef het pad naar het bestand op. Gebruik de eigenschap script of scriptPath. Beide kunnen niet tegelijk worden gebruikt. De bestands naam is hoofdletter gevoelig. |No |
+| compliant |Para meters opgeven als sleutel/waarde-paren voor het verwijzen binnen het Pig-script |No |
 
 ## <a name="example"></a>Voorbeeld
 Laten we eens kijken naar een voor beeld van een spel logboek analyse waarin u de tijd wilt identificeren die wordt besteed aan spelers die games spelen die door uw bedrijf worden gestart.

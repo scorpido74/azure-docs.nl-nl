@@ -9,10 +9,9 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 11/15/2019
 ms.openlocfilehash: 2440b93629416ea73fcf211cbe7bf5a3b72ab2e7
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "74267331"
 ---
 # <a name="migrate-on-premises-apache-hadoop-clusters-to-azure-hdinsight---motivation-and-benefits"></a>On-premises Apache Hadoop clusters migreren naar Azure HDInsight-motivatie en voor delen
@@ -21,7 +20,7 @@ Dit artikel is de eerste in een reeks over de best practices voor het migreren v
 
 ## <a name="why-to-migrate-to-azure-hdinsight"></a>Waarom migreren naar Azure HDInsight
 
-Azure HDInsight is een Cloud distributie van Hadoop-onderdelen. Azure HDInsight maakt het eenvoudig, snel en kosteneffectief om enorme hoeveelheden gegevens te verwerken. HDInsight bevat de populairste open source-frameworks, zoals:
+Azure HDInsight is een clouddistributie van Hadoop-onderdelen. Azure HDInsight maakt het eenvoudig, snel en kosteneffectief om enorme hoeveelheden gegevens te verwerken. HDInsight bevat de populairste open source-frameworks, zoals:
 
 - Apache Hadoop
 - Apache Spark
@@ -51,9 +50,9 @@ Azure HDInsight is een Cloud distributie van Hadoop-onderdelen. Azure HDInsight 
 
 - **Productiviteit** : u kunt verschillende hulpprogram Ma's voor Hadoop en Spark gebruiken in uw favoriete ontwikkel omgeving.
 
-- **Uitbreid baarheid met aangepaste hulpprogram ma's of toepassingen** van derden-HDInsight-clusters kunnen worden uitgebreid met geïnstalleerde onderdelen en kunnen ook worden geïntegreerd met de andere oplossingen van Big data met [één klik op](https://azure.microsoft.com/services/hdinsight/partner-ecosystem/) implementaties van de Azure-markt plaats.
+- **Uitbreid baarheid met aangepaste hulpprogram ma's of toepassingen** van derden-HDInsight-clusters kunnen worden uitgebreid met geïnstalleerde onderdelen en kunnen ook worden geïntegreerd met de andere oplossingen van Big data met [één klik op](https://azure.microsoft.com/services/hdinsight/partner-ecosystem/)   implementaties van de Azure-markt plaats.
 
-- **Eenvoudig beheer, beheer en controle** : Azure HDInsight kan worden geïntegreerd met [Azure monitor logboeken](../hdinsight-hadoop-oms-log-analytics-tutorial.md) om een enkele interface te bieden waarmee u al uw clusters kunt bewaken.
+- **Eenvoudig beheer, beheer en controle** : Azure HDInsight kan worden geïntegreerd met [Azure monitor logboeken](../hdinsight-hadoop-oms-log-analytics-tutorial.md)   om een enkele interface te bieden waarmee u al uw clusters kunt bewaken.
 
 - **Integratie met andere Azure-Services** -HDInsight kan eenvoudig worden geïntegreerd met andere populaire Azure-Services, zoals de volgende:
 
@@ -82,12 +81,12 @@ De volgende stappen worden aanbevolen voor het plannen van een migratie van on-p
 Deze sectie bevat sjabloon vragenlijsten waarmee u belang rijke informatie kunt verzamelen over:
 
 - De on-premises implementatie
-- Project Details
+- Projectgegevens
 - Azure-vereisten
 
 ### <a name="on-premises-deployment-questionnaire"></a>Vragen lijst on-premises implementatie
 
-| **Produkt** | **Voorbeeld** | **Antwoord** |
+| **Vraag** | **Voorbeeld** | **Antwoord** |
 |---|---|---|
 |**Onderwerp**: **omgeving**|||
 |Distributie versie van cluster|HDP 2.6.5, CDH 5,7|
@@ -101,13 +100,13 @@ Deze sectie bevat sjabloon vragenlijsten waarmee u belang rijke informatie kunt 
 |Configuratie van hoofd knooppunt|m/y, CPU, schijf, etc.|
 |Configuratie van gegevens knooppunten|m/y, CPU, schijf, etc.|
 |Configuratie van Edge-knoop punten|m/y, CPU, schijf, etc.|
-|HDFS-versleuteling?|Ja|
+|HDFS-versleuteling?|Yes|
 |Hoge beschikbaarheid|HDFS HA, meta Store HA|
 |Herstel na nood geval/back-up|Back-upcluster?|  
 |Systemen die afhankelijk zijn van het cluster|SQL Server, Teradata, Power BI, MongoDB|
 |Integraties van derden|Tableau, GridGain, Qubole, informatica, Splunk|
 |**Onderwerp**: **beveiliging**|||
-|Perimeter beveiliging|Firewalls|
+|Perimeterbeveiliging|Firewalls|
 |Autorisatie voor cluster verificatie &|Active Directory, Ambari, Cloudera Manager, geen verificatie|
 |HDFS Access Control|  Hand matig, SSH-gebruikers|
 |Autorisatie van Hive-verificatie &|Sentry, LDAP, AD met Kerberos, zwerver|
@@ -119,7 +118,7 @@ Deze sectie bevat sjabloon vragenlijsten waarmee u belang rijke informatie kunt 
 
 ### <a name="project-details-questionnaire"></a>Project details vragen lijst
 
-|**Produkt**|**Voorbeeld**|**Antwoord**|
+|**Vraag**|**Voorbeeld**|**Antwoord**|
 |---|---|---|
 |**Onderwerp**: **werk belastingen en frequentie**|||
 |MapReduce-taken|10 taken-twee keer per dag||
@@ -129,7 +128,7 @@ Deze sectie bevat sjabloon vragenlijsten waarmee u belang rijke informatie kunt 
 |Structured streaming-taken|5 taken--elke minuut||
 |Trainings taken voor ML model|2 taken: één keer per week||
 |Programmeer talen|Python, scala, java||
-|Scripts uitvoeren|Shell, python||
+|Uitvoeren van scripts|Shell, python||
 |**Onderwerp**: **gegevens**|||
 |Gegevensbronnen|Platte bestanden, JSON, Kafka, RDBMS||
 |Gegevens indeling|Oozie werk stromen, lucht stroom||
@@ -165,10 +164,10 @@ Deze sectie bevat sjabloon vragenlijsten waarmee u belang rijke informatie kunt 
 
 |**Onderwerp**: **infra structuur** |||
 |---|---|---|
-|**Produkt**|**Voorbeeld**|**Antwoord**|
+|**Vraag**|**Voorbeeld**|**Antwoord**|
 | Voorkeurs regio|US - oost||
-|Voor keur voor VNet?|Ja||
-|HA/DR nodig?|Ja||
+|Voor keur voor VNet?|Yes||
+|HA/DR nodig?|Yes||
 |Integratie met andere Cloud Services?|ADF, CosmosDB||
 |**Onderwerp**: **gegevens verplaatsing**  |||
 |Initiële laad voorkeur|DistCp, data box, ADF, WANDisco||
@@ -177,25 +176,25 @@ Deze sectie bevat sjabloon vragenlijsten waarmee u belang rijke informatie kunt 
 |**Onderwerp**: **bewaking & waarschuwingen** |||
 |Azure monitoring &-waarschuwingen gebruiken versus bewaking van derden integreren|Azure monitoring &-waarschuwingen gebruiken||
 |**Onderwerp**: **beveiligings voorkeuren** |||
-|Persoonlijke en beveiligde gegevens pijplijn?|Ja||
-|Aan het domein toegevoegd cluster (ESP)?|     Ja||
-|On-premises AD Sync naar de Cloud?|     Ja||
+|Persoonlijke en beveiligde gegevens pijplijn?|Yes||
+|Aan het domein toegevoegd cluster (ESP)?|     Yes||
+|On-premises AD Sync naar de Cloud?|     Yes||
 |Aantal AD-gebruikers dat moet worden gesynchroniseerd?|          100||
-|Wilt u wacht woorden synchroniseren met de Cloud?|    Ja||
-|Alleen gebruikers in de Cloud?|                 Ja||
-|MFA vereist?|                       Nee|| 
-|Vereisten voor gegevens autorisatie?|  Ja||
-|Access Control op basis van rollen?|        Ja||
-|Controle vereist?|                  Ja||
-|Gegevens versleuteling in rust?|          Ja||
-|Gegevens versleuteling in transit?|       Ja||
+|Wilt u wacht woorden synchroniseren met de Cloud?|    Yes||
+|Alleen gebruikers in de Cloud?|                 Yes||
+|MFA vereist?|                       No|| 
+|Vereisten voor gegevens autorisatie?|  Yes||
+|Access Control op basis van rollen?|        Yes||
+|Controle vereist?|                  Yes||
+|Gegevens versleuteling in rust?|          Yes||
+|Gegevens versleuteling in transit?|       Yes||
 |**Onderwerp**: **voor keuren voor opnieuw bearchitectuur** |||
 |Eén cluster versus specifieke cluster typen|Specifieke cluster typen||
 |Opgeslagen opslag versus externe opslag?|Externe opslag||
 |Kleinere cluster grootte naarmate gegevens extern worden opgeslagen?|Kleinere cluster grootte||
 |Gebruikt u meerdere kleinere clusters in plaats van één groot cluster?|Meerdere kleinere clusters gebruiken||
-|Een externe meta Store gebruiken?|Ja||
-|Wilt u de meta Stores delen tussen verschillende clusters?|Ja||
+|Een externe meta Store gebruiken?|Yes||
+|Wilt u de meta Stores delen tussen verschillende clusters?|Yes||
 |Werk belastingen ontconstrueren?|Hive-taken vervangen door Spark-taken||
 |ADF gebruiken voor gegevens indeling?|Nee||
 
