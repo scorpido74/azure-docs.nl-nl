@@ -8,10 +8,9 @@ ms.date: 09/09/2019
 ms.author: ancav
 ms.subservice: metrics
 ms.openlocfilehash: 9a7aa512c636f700cf9c6d990814d9367007c942
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/12/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "83125771"
 ---
 # <a name="send-guest-os-metrics-to-the-azure-monitor-metric-store-by-using-an-azure-resource-manager-template-for-a-windows-virtual-machine-scale-set"></a>De metrische gegevens van het gast besturingssysteem naar het Azure Monitor metrische archief verzenden met behulp van een Azure Resource Manager sjabloon voor een Windows-schaalset voor virtuele machines
@@ -38,14 +37,14 @@ De uitbrei ding Azure Diagnostics gebruikt een functie met de naam **Data sinks*
 ## <a name="author-a-resource-manager-template"></a>Een resource manager-sjabloon maken 
 Voor dit voor beeld kunt u een openbaar beschik bare [voorbeeld sjabloon](https://github.com/Azure/azure-quickstart-templates/tree/master/201-vmss-windows-autoscale)gebruiken:  
 
-- **Azuredeploy. json** is een vooraf geconfigureerde Resource Manager-sjabloon voor de implementatie van een schaalset voor virtuele machines.
+- **Azuredeploy.js** is een vooraf geconfigureerde Resource Manager-sjabloon voor de implementatie van een schaalset voor virtuele machines.
 
-- **Azuredeploy. para meters. json** is een bestand met para meters waarin gegevens worden opgeslagen, zoals de gebruikers naam en het wacht woord die u voor uw virtuele machine wilt instellen. Tijdens de implementatie gebruikt de Resource Manager-sjabloon de para meters die in dit bestand zijn ingesteld. 
+- **Azuredeploy.parameters.js** is een bestand met para meters waarin gegevens worden opgeslagen, zoals de gebruikers naam en het wacht woord die u voor uw virtuele machine wilt instellen. Tijdens de implementatie gebruikt de Resource Manager-sjabloon de para meters die in dit bestand zijn ingesteld. 
 
 Down load en sla beide bestanden lokaal op. 
 
-###  <a name="modify-azuredeployparametersjson"></a>Azuredeploy. para meters. json wijzigen
-Open het bestand **azuredeploy. para meters. json** :  
+###  <a name="modify-azuredeployparametersjson"></a>azuredeploy.parameters.jswijzigen op
+Open de **azuredeploy.parameters.jsin** het bestand:  
  
 - Geef een **vmSKU** op die u wilt implementeren. We raden u aan Standard_D2_v3. 
 - Geef een **windowsOSVersion** op voor de schaalset van de virtuele machine. We raden 2016-Data Center aan. 
@@ -54,8 +53,8 @@ Open het bestand **azuredeploy. para meters. json** :
 - Voer waarden in voor **adminUsername** en **adminPassword** voor de schaalset van de virtuele machine. Deze para meters worden gebruikt voor externe toegang tot de Vm's in de schaalset. Gebruik **niet** de items in deze sjabloon om te voor komen dat uw virtuele machine wordt overgenomen. Bots scan Internet voor gebruikers namen en wacht woorden in open bare GitHub-opslag plaatsen. Waarschijnlijk worden er Vm's getest met deze standaard waarden. 
 
 
-###  <a name="modify-azuredeployjson"></a>Azuredeploy. json wijzigen
-Open het bestand **azuredeploy. json** . 
+###  <a name="modify-azuredeployjson"></a>azuredeploy.jswijzigen op
+Open de **azuredeploy.jsin** het bestand. 
 
 Voeg een variabele toe om de gegevens van het opslag account in de Resource Manager-sjabloon op te slaan. Logboeken of prestatie meter items die zijn opgegeven in het configuratie bestand voor diagnostische gegevens worden geschreven naar de Azure Monitor metrische opslag en het opslag account dat u hier opgeeft: 
 
@@ -266,7 +265,7 @@ Als u de Resource Manager-sjabloon wilt implementeren, gebruikt u Azure PowerShe
 1. Nadat de implementatie is voltooid, moet u de schaalset voor virtuele machines in de Azure Portal vinden. Hiermee worden metrische gegevens naar Azure Monitor geverzendd. 
 
    > [!NOTE]  
-   > U kunt fouten rond de geselecteerde **vmSkuSize**uitvoeren. Ga in dat geval terug naar het bestand **azuredeploy. json** en werk de standaard waarde van de **vmSkuSize** -para meter bij. We raden u aan **Standard_DS1_v2**uit te voeren. 
+   > U kunt fouten rond de geselecteerde **vmSkuSize**uitvoeren. In dat geval gaat u terug naar uw **azuredeploy.jsin** het bestand en werkt u de standaard waarde van de para meter **vmSkuSize** bij. We raden u aan **Standard_DS1_v2**uit te voeren. 
 
 
 ## <a name="chart-your-metrics"></a>Grafieken van uw metrische gegevens 

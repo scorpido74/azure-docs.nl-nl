@@ -6,10 +6,9 @@ ms.author: flborn
 ms.date: 02/13/2020
 ms.topic: reference
 ms.openlocfilehash: fe684d15e2ce9b8d302db4eb6bd31dd1416abf21
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/12/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "83196535"
 ---
 # <a name="network-requirements"></a>Netwerkvereisten
@@ -51,4 +50,4 @@ Raadpleeg de [hand leiding](../resources/troubleshoot.md)voor het oplossen van p
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* [Quick Start: een model met Unit renderen](../quickstarts/render-model.md)
+* [Snelstart: Een model weergeven met Unity](../quickstarts/render-model.md)

@@ -7,13 +7,12 @@ author: bwren
 ms.author: bwren
 ms.date: 05/09/2020
 ms.openlocfilehash: 58724656dd407f09687b57d0ab034f3a1f808b76
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/12/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "83196292"
 ---
-# <a name="structure-of-azure-monitor-logs"></a>Structuur van Azure Monitor logboeken
+# <a name="structure-of-azure-monitor-logs"></a>Structuur van Azure Monitor-logboeken
 De mogelijkheid om snel inzicht te krijgen in uw gegevens met behulp van een [logboek query](log-query-overview.md) is een krachtige functie van Azure monitor. Als u efficiënte en nuttige query's wilt maken, moet u een aantal basis concepten begrijpen, zoals waar de gewenste gegevens zich bevinden en hoe deze worden gestructureerd. In dit artikel worden de basis concepten beschreven die u nodig hebt om aan de slag te gaan.
 
 ## <a name="overview"></a>Overzicht
@@ -79,7 +78,7 @@ U kunt het schema voor elke tabel weer geven op het tabblad **schema** in log An
 ## <a name="standard-properties"></a>Standaardeigenschappen
 Elke tabel in Azure Monitor logboeken heeft een eigen schema, maar er zijn standaard eigenschappen gedeeld door alle tabellen. Zie de [Standaard eigenschappen in azure monitor logboeken](../platform/log-standard-properties.md) voor meer informatie.
 
-| Log Analytics-werkruimte | Application Insights toepassing | Beschrijving |
+| Log Analytics-werkruimte | Application Insights toepassing | Description |
 |:---|:---|:---|
 | TimeGenerated | tijdstempel  | De datum en tijd waarop de record is gemaakt. |
 | Type          | Item type   | Naam van de tabel waaruit het record is opgehaald. |

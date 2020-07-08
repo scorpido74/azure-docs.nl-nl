@@ -10,10 +10,9 @@ ms.date: 05/29/2018
 ms.reviewer: avverma
 ms.custom: avverma
 ms.openlocfilehash: ea9d243e46aace9030c25222217ac3ad09a31c38
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/12/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "83124938"
 ---
 # <a name="automatically-scale-a-virtual-machine-scale-set-in-the-azure-portal"></a>Schaal sets van virtuele machines automatisch schalen in de Azure Portal
@@ -121,8 +120,8 @@ Als u wilt zien hoe uw regels voor automatisch schalen worden toegepast, selecte
 
 
 ## <a name="next-steps"></a>Volgende stappen
-In dit artikel hebt u geleerd hoe u regels voor automatisch schalen kunt gebruiken om horizon taal te schalen en het *aantal* VM-exemplaren in uw schaalset te verg Roten of verkleinen. U kunt ook verticaal schalen om de *grootte*van het VM-exemplaar te verg Roten of verkleinen. Zie [verticaal automatisch schalen met virtuele-machine schaal sets](virtual-machine-scale-sets-vertical-scale-reprovision.md)voor meer informatie.
+In dit artikel hebt u geleerd hoe u regels voor automatisch schalen kunt gebruiken om horizon taal te schalen en het *aantal* VM-exemplaren in uw schaalset te verg Roten of verkleinen. U kunt ook verticaal schalen om de *grootte* van VM-exemplaren te vergroten of verkleinen. Zie voor meer informatie [Vertical autoscale with virtual machine scale sets](virtual-machine-scale-sets-vertical-scale-reprovision.md) (Verticaal automatisch schalen met virtuele-machineschaalsets).
 
-Zie [schaal sets voor virtuele machines beheren met Azure PowerShell](virtual-machine-scale-sets-windows-manage.md)voor meer informatie over het beheren van uw VM-exemplaren.
+Zie [Manage a virtual machine scale set with Azure PowerShell](virtual-machine-scale-sets-windows-manage.md) (Virtuele-machineschaalset beheren met Azure PowerShell) voor meer informatie over het beheren van uw VM-exemplaren.
 
-Zie voor meer informatie over het genereren van waarschuwingen wanneer uw regels voor automatisch schalen de trigger [acties voor automatisch schalen gebruiken voor het verzenden van e-mail en waarschuwingen over webhooks in azure monitor](../azure-monitor/platform/autoscale-webhook-email.md). U kunt ook [controle Logboeken gebruiken voor het verzenden van e-mail en webhook-waarschuwings meldingen in azure monitor](../monitoring-and-diagnostics/insights-auditlog-to-webhook-email.md).
+Als u wilt weten hoe u waarschuwingen kunt genereren wanneer uw regels voor automatisch schalen worden geactiveerd, raadpleegt u [Use autoscale actions to send email and webhook alert notifications in Azure Monitor](../azure-monitor/platform/autoscale-webhook-email.md) (Acties voor automatisch schalen gebruiken om waarschuwingen per e-mail of webhooks te verzenden in Azure Monitor). U kunt ook [controlelogboeken gebruiken om waarschuwingen per e-mail of webhooks te verzenden in Azure Monitor](../monitoring-and-diagnostics/insights-auditlog-to-webhook-email.md).

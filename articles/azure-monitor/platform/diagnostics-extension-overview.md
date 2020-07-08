@@ -7,10 +7,9 @@ author: bwren
 ms.author: bwren
 ms.date: 02/14/2020
 ms.openlocfilehash: 5dcdfba6e8dd00c8ba09e5e98293a30d19e51c99
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/19/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "83635952"
 ---
 # <a name="azure-diagnostics-extension-overview"></a>Overzicht van Azure Diagnostics extensie
@@ -44,7 +43,7 @@ De volgende tabellen geven een lijst van de gegevens die kunnen worden verzameld
 
 ### <a name="windows-diagnostics-extension-wad"></a>Windows diagnostische gegevens extensie (WAD)
 
-| Gegevensbron | Beschrijving |
+| Gegevensbron | Description |
 | --- | --- |
 | Windows-gebeurtenis logboeken   | Gebeurtenissen van het Windows-gebeurtenis logboek. |
 | Prestatiemeteritems | Numerieke waarden meten de prestaties van verschillende aspecten van het besturings systeem en de werk belastingen. |
@@ -59,7 +58,7 @@ De volgende tabellen geven een lijst van de gegevens die kunnen worden verzameld
 
 ### <a name="linux-diagnostics-extension-lad"></a>Linux-extensie voor diagnostische gegevens (LAD)
 
-| Gegevensbron | Beschrijving |
+| Gegevensbron | Description |
 | --- | --- |
 | Syslog | Gebeurtenissen die worden verzonden naar het systeem van de Linux-gebeurtenis registratie.   |
 | Prestatiemeteritems  | Numerieke waarden meten de prestaties van verschillende aspecten van het besturings systeem en de werk belastingen. |
@@ -72,7 +71,7 @@ Configureer een of meer *gegevens-sinks* voor het verzenden van gegevens naar an
 
 ### <a name="windows-diagnostics-extension-wad"></a>Windows diagnostische gegevens extensie (WAD)
 
-| Doel | Beschrijving |
+| Doel | Description |
 |:---|:---|
 | Azure Monitor metrische gegevens | Verzamelen van prestatie gegevens naar Azure Monitor meet waarden. Zie [metrische gegevens van het gast besturingssysteem verzenden naar de data base van de Azure monitor metriek](collect-custom-metrics-guestos-resource-manager-vm.md).  |
 | Event Hubs | Azure Event Hubs gebruiken om gegevens buiten Azure te verzenden. Zie [Azure Diagnostics gegevens streamen naar Event hubs](diagnostics-extension-stream-event-hubs.md) |
@@ -85,7 +84,7 @@ U kunt ook WAD-gegevens uit opslag verzamelen in een Log Analytics-werk ruimte o
 ### <a name="linux-diagnostics-extension-lad"></a>Linux-extensie voor diagnostische gegevens (LAD)
 LAD schrijft gegevens naar tabellen in Azure Storage. Het ondersteunt de sinks in de volgende tabel.
 
-| Doel | Beschrijving |
+| Doel | Description |
 |:---|:---|
 | Event Hubs | Azure Event Hubs gebruiken om gegevens buiten Azure te verzenden. |
 | Azure Storage blobs | Schrijf naast tabellen ook gegevens naar blobs in Azure Storage. |

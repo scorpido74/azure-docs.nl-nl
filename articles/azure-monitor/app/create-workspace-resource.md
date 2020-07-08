@@ -6,10 +6,9 @@ ms.author: mbullwin
 ms.topic: conceptual
 ms.date: 05/18/2020
 ms.openlocfilehash: e66ae6aa0b9b7e309fbd6fcc3699cb873a266bbe
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/19/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "83647890"
 ---
 # <a name="workspace-based-application-insights-resources-preview"></a>Application Insights resources op basis van een werk ruimte (preview)
@@ -57,7 +56,7 @@ Raadpleeg de Language/Framework-specifieke documentatie voor gedetailleerde docu
 - [Achtergrond taken & moderne console toepassingen (.NET/.NET core)](https://docs.microsoft.com/azure/azure-monitor/app/worker-service)
 - [Klassieke console toepassingen (.NET)](https://docs.microsoft.com/azure/azure-monitor/app/console) 
 - [Diagnostisch](https://docs.microsoft.com/azure/azure-monitor/app/java-get-started?tabs=maven)
-- [Javascript](https://docs.microsoft.com/azure/azure-monitor/app/javascript)
+- [JavaScript](https://docs.microsoft.com/azure/azure-monitor/app/javascript)
 - [Node.js](https://docs.microsoft.com/azure/azure-monitor/app/nodejs)
 - [Python](https://docs.microsoft.com/azure/azure-monitor/app/opencensus-python)
 
@@ -110,7 +109,7 @@ De `New-AzApplicationInsights` Power shell-opdracht biedt momenteel geen onderst
 
 ### <a name="azure-resource-manager-templates"></a>Azure Resource Manager-sjablonen
 
-#### <a name="template-file"></a>Sjabloon bestand
+#### <a name="template-file"></a>Sjabloonbestand
 
 ```json
 {

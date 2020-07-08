@@ -10,10 +10,9 @@ ms.date: 10/15/2019
 ms.reviewer: mimckitt
 ms.custom: mimckitt
 ms.openlocfilehash: a20abec6ab9925408dd769c5238186af9b7c3d1c
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/12/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "83195889"
 ---
 # <a name="encrypt-os-and-attached-data-disks-in-a-virtual-machine-scale-set-with-azure-powershell"></a>Besturings systeem en gekoppelde gegevens schijven versleutelen in een schaalset voor virtuele machines met Azure PowerShell
@@ -24,7 +23,7 @@ De Azure PowerShell-module wordt gebruikt voor het maken en beheren van Azure-re
 
 ## <a name="create-an-azure-key-vault-enabled-for-disk-encryption"></a>Een Azure Key Vault maken die is ingeschakeld voor schijf versleuteling
 
-Azure Key Vault kunnen sleutels, geheimen of wacht woorden opslaan waarmee u deze veilig kunt implementeren in uw toepassingen en services. Cryptografische sleutels worden opgeslagen in Azure Key Vault met behulp van software beveiliging, of u kunt uw sleutels in Hardware Security modules (Hsm's) die zijn gecertificeerd voor FIPS 140-2 level 2-standaarden importeren of genereren. Deze cryptografische sleutels worden gebruikt voor het versleutelen en ontsleutelen van virtuele schijven die zijn gekoppeld aan uw VM. U behoudt de controle over deze cryptografische sleutels en kunt hun gebruik controleren.
+Azure Key Vault kan sleutels, geheimen of wachtwoorden opslaan waarmee u deze veilig kunt implementeren in uw toepassingen en services. Cryptografische sleutels worden opgeslagen in Azure Key Vault met behulp van softwarebeveiliging, of u kunt uw sleutels in Hardware Security Modules (HMS's), die zijn gecertificeerd voor FIPS 140-2 level 2-standaarden, importeren of genereren. Deze cryptografische sleutels worden gebruikt voor het versleutelen en ontsleutelen van virtuele schijven die zijn gekoppeld aan uw VM. U behoudt de controle over deze cryptografische sleutels en kunt het gebruik controleren.
 
 Maak een Key Vault met [New-AzKeyVault](/powershell/module/az.keyvault/new-azkeyvault). Stel de para meter *EnabledForDiskEncryption* in om de Key Vault te kunnen gebruiken voor schijf versleuteling. In het volgende voor beeld worden ook variabelen gedefinieerd voor de naam van de resource groep, Key Vault naam en locatie. Geef uw eigen unieke Key Vault naam op:
 
@@ -37,9 +36,9 @@ New-AzResourceGroup -Name $rgName -Location $location
 New-AzKeyVault -VaultName $vaultName -ResourceGroupName $rgName -Location $location -EnabledForDiskEncryption
 ```
 
-### <a name="use-an-existing-key-vault"></a>Een bestaande Key Vault gebruiken
+### <a name="use-an-existing-key-vault"></a>Een bestaande sleutelkluis gebruiken
 
-Deze stap is alleen vereist als u een bestaande Key Vault hebt die u wilt gebruiken met schijf versleuteling. Sla deze stap over als u in de vorige sectie een Key Vault hebt gemaakt.
+Deze stap is alleen vereist als u een bestaande sleutelkluis hebt die u wilt gebruiken met schijfversleuteling. Sla deze stap over als u in de vorige sectie een sleutelkluis hebt gemaakt.
 
 U kunt een bestaand Key Vault in hetzelfde abonnement en dezelfde regio inschakelen als de schaalset voor schijf versleuteling met [set-AzKeyVaultAccessPolicy](/powershell/module/az.keyvault/Set-AzKeyVaultAccessPolicy). Definieer de naam van uw bestaande Key Vault in de *$vaultName* variabele als volgt:
 
@@ -91,7 +90,7 @@ Wanneer u hierom wordt gevraagd, typt u *y* om door te gaan met het schijf versl
 
 ### <a name="enable-encryption-using-kek-to-wrap-the-key"></a>Versleuteling inschakelen met KEK om de sleutel in te pakken
 
-U kunt ook een sleutel versleutelings sleutel voor extra beveiliging gebruiken bij het versleutelen van de schaalset voor virtuele machines.
+U kunt ook een sleutelversleutelingssleutel voor extra beveiliging gebruiken bij het versleutelen van de schaalset voor virtuele machines.
 
 ```azurepowershell-interactive
 $diskEncryptionKeyVaultUrl=(Get-AzKeyVault -ResourceGroupName $rgName -Name $vaultName).VaultUri
@@ -104,12 +103,12 @@ Set-AzVmssDiskEncryptionExtension -ResourceGroupName $rgName -VMScaleSetName $vm
 ```
 
 > [!NOTE]
->  De syntaxis voor de waarde van de para meter voor schijf versleuteling-sleutel kluis is de volledige id-teken reeks:</br>
-/Subscriptions/[abonnement-ID-GUID]/resourceGroups/[resource-group-name]/providers/Microsoft.KeyVault/vaults/[sleutel kluis-naam]</br></br>
-> De syntaxis voor de waarde van de para meter Key-Encryption-Key is de volledige URI naar de KEK, zoals in:</br>
-https://[sleutel kluis naam]. kluis. Azure. net/sleutels/[kekname]/[Kek-unique-id]
+>  De syntaxis voor de waarde van de parameter voor disk-encryption-keyvault is de volledige id-tekenreeks:</br>
+/subscriptions/[subscription-id-guid]/resourceGroups/[resource-group-name]/providers/Microsoft.KeyVault/vaults/[keyvault-name]</br></br>
+> De syntaxis voor de waarde van de parameter sleutel-versleuteling-sleutel is de volledige URI naar de KEK, zoals in:</br>
+https://[keyvault-name].vault.azure.net/keys/[kekname]/[kek-unique-id]
 
-## <a name="check-encryption-progress"></a>De voortgang van de versleuteling controleren
+## <a name="check-encryption-progress"></a>Voortgang van de versleuteling controleren
 
 Gebruik [Get-AzVmssDiskEncryption](/powershell/module/az.compute/Get-AzVmssDiskEncryption)om de status van schijf versleuteling te controleren:
 
@@ -150,4 +149,4 @@ Disable-AzVmssDiskEncryption -ResourceGroupName $rgName -VMScaleSetName $vmssNam
 ## <a name="next-steps"></a>Volgende stappen
 
 - In dit artikel hebt u Azure PowerShell gebruikt voor het versleutelen van een schaalset met virtuele machines. U kunt ook de sjablonen van [Azure cli](disk-encryption-cli.md) of [Azure Resource Manager](disk-encryption-azure-resource-manager.md)gebruiken.
-- Als u Azure Disk Encryption wilt Toep assen nadat een andere uitbrei ding is ingericht, kunt u [extensie volgorde bepaling](virtual-machine-scale-sets-extension-sequencing.md)gebruiken.
+- Als u Azure Disk Encryption wilt toepassen nadat een andere extensie is ingericht, kunt u [extensiereeksen](virtual-machine-scale-sets-extension-sequencing.md) gebruiken.

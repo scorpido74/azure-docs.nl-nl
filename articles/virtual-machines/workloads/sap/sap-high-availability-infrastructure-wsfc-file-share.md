@@ -17,10 +17,9 @@ ms.date: 05/05/2017
 ms.author: radeltch
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: 2ccaf662488203e346065cfee082018128f37d95
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/12/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "83201673"
 ---
 # <a name="prepare-azure-infrastructure-for-sap-high-availability-by-using-a-windows-failover-cluster-and-file-share-for-sap-ascsscs-instances"></a>Azure-infra structuur voor SAP-hoge Beschik baarheid voorbereiden met behulp van een Windows-failovercluster en een bestands share voor SAP ASCS/SCS-instanties
@@ -222,13 +221,13 @@ Lees het volgende artikel voordat u de installatie start:
 | --- | --- | --- | --- |
 | Eerste cluster knooppunt ASCS/SCS-cluster | ascs-1 | 10.0.6.4 | ascs-as |
 | Tweede cluster knooppunt ASCS/SCS-cluster | ascs-2 | 10.0.6.5 | ascs-as |
-| Cluster netwerk naam |ascs-cl | 10.0.6.6 | n.v.t. |
-| Naam van SAP PR1 ASCS-cluster netwerk |PR1-ascs | 10.0.6.7 | n.v.t. |
+| Cluster netwerk naam |ascs-cl | 10.0.6.6 | N.v.t. |
+| Naam van SAP PR1 ASCS-cluster netwerk |PR1-ascs | 10.0.6.7 | N.v.t. |
 
 
 **Tabel 1**: ASCS/SCS-cluster
 
-| SAP- \< SID> | SAP-ASCS/SCS-instantie nummer |
+| SAP\<SID> | SAP-ASCS/SCS-instantie nummer |
 | --- | --- |
 | PR1 | 00 |
 
@@ -240,8 +239,8 @@ Lees het volgende artikel voordat u de installatie start:
 | Eerste cluster knooppunt | sofs-1 | 10.0.6.10 | sofs-as |
 | Tweede cluster knooppunt | sofs-2 | 10.0.6.11 | sofs-as |
 | Derde cluster knooppunt | sofs-3 | 10.0.6.12 | sofs-as |
-| Cluster netwerk naam | sofs-cl | 10.0.6.13 | n.v.t. |
-| SAP Global host name | sapglobal | IP-adressen van alle cluster knooppunten gebruiken | n.v.t. |
+| Cluster netwerk naam | sofs-cl | 10.0.6.13 | N.v.t. |
+| SAP Global host name | sapglobal | IP-adressen van alle cluster knooppunten gebruiken | N.v.t. |
 
 **Tabel 3**: cluster scale-out bestandsserver
 

@@ -8,13 +8,12 @@ ms.topic: conceptual
 ms.date: 05/08/2020
 ms.author: yolasors
 ms.openlocfilehash: 61c5917c1e4cb9dbf96e90af9a30777ea7c2e66c
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/19/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "83597028"
 ---
-# <a name="review-pull-requests-in-pre-production-environments-in-azure-static-web-apps-preview"></a>Pull-aanvragen in de pre-productie omgevingen controleren in de preview-versie van Azure static Web Apps
+# <a name="review-pull-requests-in-pre-production-environments-in-azure-static-web-apps-preview"></a>Pull-aanvragen in de pre-productieomgevingen controleren in de preview-versie van Azure Static Web Apps
 
 In dit artikel wordt beschreven hoe u pre-productie omgevingen gebruikt om wijzigingen te bekijken in toepassingen die zijn geïmplementeerd met [statische web apps van Azure](overview.md).
 

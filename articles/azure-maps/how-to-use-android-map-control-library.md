@@ -10,10 +10,9 @@ services: azure-maps
 manager: timlt
 ms.custom: mvc
 ms.openlocfilehash: accd0df2913abc4d82b6f14aaafd03f0f042ca91
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/19/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "83648218"
 ---
 # <a name="getting-started-with-azure-maps-android-sdk"></a>Aan de slag met Azure Maps Android SDK
@@ -26,7 +25,7 @@ De Azure Maps Android SDK is een vector map-Bibliotheek voor Android. In dit art
 
 Als u de procedures in dit artikel wilt uitvoeren, moet u eerst [een Azure Maps-account maken](quick-demo-map-app.md#create-an-account-with-azure-maps) in de prijs categorie S1 en de [primaire sleutel](quick-demo-map-app.md#get-the-primary-key-for-your-account) voor uw account ophalen.
 
-Zie [verificatie beheren in azure Maps](./how-to-manage-authentication.md)voor meer informatie over verificatie in azure Maps.
+Zie [Verificatie beheren in Azure Maps](./how-to-manage-authentication.md) voor meer informatie over verificatie in Azure Maps.
 
 ### <a name="download-android-studio"></a>Android Studio downloaden
 
@@ -65,11 +64,11 @@ De volgende stap bij het bouwen van uw toepassing is het installeren van de Azur
     }
     ```
 
-2. Werk uw **app/build. gradle** bij en voeg de volgende code toe:
+2. Werk uw **app/build.gradle** bij en voeg de volgende code eraan toe:
     
-    1. Zorg ervoor dat de **minSdkVersion** van uw project op API 21 of hoger is.
+    1. Zorg ervoor dat de **minSdkVersion** van uw project API 21 of hoger is.
 
-    2. Voeg de volgende code toe aan de sectie Android:
+    2. Voeg de volgende code toe aan de Android-sectie:
 
         ```
         compileOptions {
@@ -83,8 +82,8 @@ De volgende stap bij het bouwen van uw toepassing is het installeren van de Azur
         implementation "com.microsoft.azure.maps:mapcontrol:0.4"
         ```
     
-    4. Ga naar het **bestand** in de werk balk en klik vervolgens op **project synchroniseren met Gradle-bestanden**.
-3. Voeg een kaart fragment toe aan de hoofd activiteit ( \> Res \> Layout \_ -activiteit Main. XML):
+    4. Ga op de werkbalk naar **Bestand** en klik vervolgens op **Project met Gradle-bestanden synchroniseren**.
+3. Voeg een kaart fragment toe aan de hoofd activiteit ( \> Res \> Layout \_ -activiteitmain.xml):
     
     ```XML
     <?xml version="1.0" encoding="utf-8"?>
@@ -103,7 +102,7 @@ De volgende stap bij het bouwen van uw toepassing is het installeren van de Azur
     </FrameLayout>
     ```
 
-4. In het bestand **MainActivity. java** moet u het volgende doen:
+4. In het bestand **MainActivity.java** moet u het volgende doen:
     
     * import bewerkingen toevoegen voor de Azure Maps SDK
     * uw Azure Maps-verificatie-informatie instellen
@@ -111,7 +110,7 @@ De volgende stap bij het bouwen van uw toepassing is het installeren van de Azur
 
     Als u de verificatie gegevens voor de `AzureMaps` klasse globaal instelt met behulp van de- `setSubscriptionKey` of- `setAadProperties` methoden, hoeft u uw verificatie gegevens niet op elke weer gave toe te voegen. 
 
-    Het kaart besturings element bevat eigen levenscyclus methoden voor het beheren van de OpenGL-levens duur van Android. Deze levenscyclus methoden moeten rechtstreeks vanuit de insluitende activiteit worden aangeroepen. Als u wilt dat uw app de levenscyclus methoden van het kaart besturings element correct aanroept, moet u de volgende levenscyclus methoden overschrijven in de activiteit die het kaart besturings element bevat. En u moet de bijbehorende kaart beheer methode aanroepen. 
+    Het kaartbesturingselement bevat eigen levenscyclusmethoden voor het beheren van de OpenGL-levenscyclus van Android. Deze levenscyclus methoden moeten rechtstreeks vanuit de insluitende activiteit worden aangeroepen. Als u wilt dat uw app de levenscyclus methoden van het kaart besturings element correct aanroept, moet u de volgende levenscyclus methoden overschrijven in de activiteit die het kaart besturings element bevat. En u moet de bijbehorende kaart beheer methode aanroepen. 
 
     * onCreate (bundel) 
     * onstart () 
@@ -122,7 +121,7 @@ De volgende stap bij het bouwen van uw toepassing is het installeren van de Azur
     * onSaveInstanceState (bundel) 
     * onLowMemory() 
 
-    Bewerk het bestand **MainActivity. java** als volgt:
+    Bewerk het bestand **MainActivity.java** als volgt:
     
     ```java
     package com.example.myapplication;
@@ -219,7 +218,7 @@ Het duurt een paar seconden Android Studio om de toepassing te bouwen. Nadat de 
 
 ![Azure Maps in Android-toepassing](./media/how-to-use-android-map-control-library/android-map.png)</center>
 
-## <a name="localizing-the-map"></a>De kaart lokaliseren
+## <a name="localizing-the-map"></a>Lokaliseren van de kaart
 
 De Azure Maps Android SDK biedt drie verschillende manieren om de taal en de regionale weer gave van de kaart in te stellen. De volgende code laat zien hoe u de taal instelt op Frans (fr-FR) en de regionale weer gave op ' auto '. 
 

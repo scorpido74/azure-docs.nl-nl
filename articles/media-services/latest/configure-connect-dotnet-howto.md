@@ -15,10 +15,9 @@ ms.date: 09/18/2019
 ms.author: juliako
 ms.custom: has-adal-ref
 ms.openlocfilehash: 6dc05f225e3585b83bd6a57ca47bd5adf97934ea
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/12/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "83201117"
 ---
 # <a name="connect-to-media-services-v3-api---net"></a>Verbinding maken met Media Services v3 API-.NET
@@ -27,7 +26,7 @@ In dit artikel wordt beschreven hoe u verbinding maakt met de Azure Media Servic
 
 ## <a name="prerequisites"></a>Vereisten
 
-- [Een Azure Media Services-account maken](create-account-cli-how-to.md). Zorg ervoor dat u de naam van de resource groep en de naam van het Media Services account vergeet
+- [Maak een Media Services-account](create-account-cli-how-to.md). Zorg ervoor dat u de naam van de resource groep en de naam van het Media Services account vergeet
 - Installeer een hulp programma dat u wilt gebruiken voor .NET-ontwikkeling. In de stappen in dit artikel ziet u hoe u [Visual Studio 2019 Community Edition](https://www.visualstudio.com/downloads/)gebruikt. U kunt Visual Studio code gebruiken. Zie [werken met C#](https://code.visualstudio.com/docs/languages/csharp). U kunt ook een andere code-editor gebruiken.
 
 > [!IMPORTANT]
@@ -46,7 +45,7 @@ De voor beeld-app in dit onderwerp streeft naar doelen `netcoreapp2.0` . De code
 1. Selecteer in Visual Studio **extra**  >  **NuGet package manager**  >  **NuGet Manager-console**.
 2. In het venster **Package Manager-console** gebruikt u `Install-Package` de opdracht om de volgende NuGet-pakketten toe te voegen. Bijvoorbeeld `Install-Package Microsoft.Azure.Management.Media`.
 
-|Pakket|Beschrijving|
+|Pakket|Description|
 |---|---|
 |`Microsoft.Azure.Management.Media`|Azure Media Services SDK. <br/>Om ervoor te zorgen dat u het meest recente Azure Media Services-pakket gebruikt, controleert u [micro soft. Azure. Management. Media](https://www.nuget.org/packages/Microsoft.Azure.Management.Media).|
 |`Microsoft.Rest.ClientRuntime.Azure.Authentication`|ADAL-verificatie bibliotheek voor Azure SDK voor NET|
@@ -56,19 +55,19 @@ De voor beeld-app in dit onderwerp streeft naar doelen `netcoreapp2.0` . De code
 
 ## <a name="create-and-configure-the-app-settings-file"></a>Het app-instellingen bestand maken en configureren
 
-### <a name="create-appsettingsjson"></a>AppSettings. json maken
+### <a name="create-appsettingsjson"></a>appsettings.jsmaken op
 
 1. Go-bestand voor **algemene**  >  **tekst**.
-1. Noem het bestand appSettings. json.
+1. Noem deze appsettings.jsop.
 1. Stel de eigenschap kopiëren naar uitvoermap van het JSON-bestand in op ' kopiëren indien nieuwer ' (zodat de toepassing toegang kan krijgen tot de map wanneer deze wordt gepubliceerd).
 
-### <a name="set-values-in-appsettingsjson"></a>Waarden instellen in appSettings. json
+### <a name="set-values-in-appsettingsjson"></a>Waarden instellen in appsettings.jsop
 
-Voer de `az ams account sp create` opdracht uit zoals beschreven in [Access-api's](access-api-cli-how-to.md). De opdracht retourneert een JSON-bestand dat u moet kopiëren naar het bestand appSettings. json.
+Voer de `az ams account sp create` opdracht uit zoals beschreven in [Access-api's](access-api-cli-how-to.md). De opdracht retourneert een JSON-bestand dat u moet kopiëren naar de appsettings.jsop.
  
 ## <a name="add-configuration-file"></a>Een configuratiebestand toevoegen
 
-Voeg voor het gemak een configuratie bestand toe dat verantwoordelijk is voor het lezen van waarden van appSettings. json.
+Voeg voor het gemak een configuratie bestand toe dat verantwoordelijk is voor het lezen van waarden van appsettings.jsop.
 
 1. Voeg een nieuwe. cs-klasse toe aan uw project. Noem deze `ConfigWrapper`. 
 1. Plak de volgende code in dit bestand (in dit voor beeld wordt ervan uitgegaan dat u de naam ruimte hebt `ConsoleApp1` ).
@@ -241,7 +240,7 @@ namespace ConsoleApp1
 - [Filters maken met Media Services - .NET](filters-dynamic-manifest-dotnet-howto.md)
 - [Voorbeelden van geavanceerde video on demand van Azure Functions-v2 met Media Services v3](https://aka.ms/ams3functions)
 
-## <a name="see-also"></a>Zie ook
+## <a name="see-also"></a>Zie tevens
 
 * [Naslaginformatie over .NET](https://docs.microsoft.com/dotnet/api/overview/azure/mediaservices/management?view=azure-dotnet)
 * Zie de [.NET SDK](https://github.com/Azure-Samples/media-services-v3-dotnet) -voor beelden opslag plaats voor meer code voorbeelden.

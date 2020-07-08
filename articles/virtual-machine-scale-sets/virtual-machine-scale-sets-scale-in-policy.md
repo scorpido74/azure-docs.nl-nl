@@ -11,10 +11,9 @@ ms.date: 02/26/2020
 ms.reviewer: avverma
 ms.custom: avverma
 ms.openlocfilehash: 479bbfaf8468329cd515799e5822497df2bb4c1d
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/12/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "83125159"
 ---
 # <a name="use-custom-scale-in-policies-with-azure-virtual-machine-scale-sets"></a>Aangepaste beleids regels voor schalen gebruiken met virtuele-machine schaal sets van Azure
@@ -202,7 +201,7 @@ Een beveiligde virtuele machine wordt niet verwijderd door een inschaal actie, o
 
 Een beveiligde virtuele machine kan op elk gewenst moment hand matig worden verwijderd door de gebruiker, ongeacht het ingestelde beleid voor inschalen in de schaalset. 
 
-## <a name="usage-examples"></a>Gebruiks voorbeelden 
+## <a name="usage-examples"></a>Gebruiksvoorbeelden 
 
 In de onderstaande voor beelden ziet u hoe u met een schaalset voor virtuele machines Vm's selecteert die moeten worden verwijderd wanneer een ingrijpende gebeurtenis wordt geactiveerd. Voor virtuele machines met de hoogste exemplaar-Id's wordt aangenomen dat de nieuwste Vm's in de schaalset zijn en er wordt ervan uitgegaan dat de Vm's met de kleinste exemplaar-Id's de oudste Vm's in de schaalset zijn. 
 

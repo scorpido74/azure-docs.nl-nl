@@ -9,10 +9,9 @@ ms.tgt_pltfrm: arduino
 ms.date: 05/31/2019
 ms.author: robinsh
 ms.openlocfilehash: 5e27cf51d50b3094adca6ce8d3846ef358f78482
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/12/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "83201534"
 ---
 # <a name="visualize-real-time-sensor-data-from-your-azure-iot-hub-in-a-web-application"></a>Real-time sensor gegevens visualiseren vanuit uw Azure IoT hub in een webtoepassing
@@ -23,7 +22,7 @@ ms.locfileid: "83201534"
 
 ## <a name="what-you-learn"></a>Wat u leert
 
-In deze zelf studie leert u hoe u real-time sensor gegevens visualiseren die uw IoT-hub ontvangt met een node. js-web-app die wordt uitgevoerd op uw lokale computer. Nadat u de web-app lokaal hebt uitgevoerd, kunt u eventueel stappen volgen om de web-app in Azure App Service te hosten. Als u de gegevens in uw IoT-hub wilt visualiseren met behulp van Power BI, raadpleegt u [Power BI voor het visualiseren van realtime-sensor gegevens uit Azure IOT hub](iot-hub-live-data-visualization-in-power-bi.md).
+In deze zelf studie leert u hoe u real-time sensor gegevens visualiseren die uw IoT-hub ontvangt met een node.js web-app die wordt uitgevoerd op uw lokale computer. Nadat u de web-app lokaal hebt uitgevoerd, kunt u eventueel stappen volgen om de web-app in Azure App Service te hosten. Als u de gegevens in uw IoT-hub wilt visualiseren met behulp van Power BI, raadpleegt u [Power BI voor het visualiseren van realtime-sensor gegevens uit Azure IOT hub](iot-hub-live-data-visualization-in-power-bi.md).
 
 ## <a name="what-you-do"></a>Wat u doet
 
@@ -37,7 +36,7 @@ In deze zelf studie leert u hoe u real-time sensor gegevens visualiseren die uw 
 
 ## <a name="what-you-need"></a>Wat u nodig hebt
 
-* Voltooi de zelf studie [Raspberry Pi online Simulator](iot-hub-raspberry-pi-web-simulator-get-started.md) of een van de zelf studies van het apparaat. bijvoorbeeld [Raspberry Pi met node. js](iot-hub-raspberry-pi-kit-node-get-started.md). Deze voldoen aan de volgende vereisten:
+* Voltooi de zelf studie [Raspberry Pi online Simulator](iot-hub-raspberry-pi-web-simulator-get-started.md) of een van de zelf studies van het apparaat. bijvoorbeeld [Raspberry Pi met node.js](iot-hub-raspberry-pi-kit-node-get-started.md). Deze voldoen aan de volgende vereisten:
 
   * Een actief Azure-abonnement
   * Een IOT-hub onder uw abonnement
@@ -49,7 +48,7 @@ In deze zelf studie leert u hoe u real-time sensor gegevens visualiseren die uw 
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
-Voer de volgende opdracht uit om de Microsoft Azure IoT-extensie voor Azure CLI toe te voegen aan uw Cloud Shell-exemplaar. De IOT-extensie voegt IoT Hub, IoT Edge en IoT Device Provisioning Service (DPS)-specifieke opdrachten toe aan Azure CLI.
+Voer de volgende opdracht uit om de Microsoft Azure IoT-extensie voor Azure CLI toe te voegen aan uw Cloud Shell-exemplaar. Met de IoT-extensie worden IoT Hub-, IoT Edge- en IoT DPS-specifieke (Device Provisioning Service) opdrachten toegevoegd aan Azure CLI.
 
 ```azurecli-interactive
 az extension add --name azure-iot
@@ -100,17 +99,17 @@ Open in de map web-apps-node-IOT-hub-data-visualisatie de web-app in uw favoriet
 
 Neem even de tijd om de volgende bestanden te controleren:
 
-* **Server. js** is een script aan de service zijde waarmee de Web-socket en de Event hub-wrapper-klasse worden geïnitialiseerd. Het biedt een call back naar de Event hub wrapper-klasse die de klasse gebruikt om inkomende berichten te verzenden naar de Web-socket.
+* **Server.js** is een script aan de service zijde waarmee de Web-socket en de Event hub-wrapper-klasse worden geïnitialiseerd. Het biedt een call back naar de Event hub wrapper-klasse die de klasse gebruikt om inkomende berichten te verzenden naar de Web-socket.
 
-* **Event-hub-Reader. js** is een script aan de service zijde dat verbinding maakt met het ingebouwde eind punt van de IOT-hub met behulp van de opgegeven Connection String en Consumer groep. Hiermee worden de DeviceId en EnqueuedTimeUtc opgehaald uit de meta gegevens van binnenkomende berichten en wordt het bericht vervolgens doorgestuurd met de call back methode die is geregistreerd door server. js.
+* **Event-hub-reader.js** is een service script dat verbinding maakt met het ingebouwde eind punt van de IOT-hub met behulp van de opgegeven Connection String en Consumer groep. Hiermee worden de DeviceId-en EnqueuedTimeUtc opgehaald uit meta gegevens voor inkomende berichten en wordt het bericht vervolgens doorgestuurd met de call back methode die is geregistreerd door server.js.
 
-* **Chart-Device-Data. js** is een script aan de client zijde dat luistert op de Web-socket, houdt elke DeviceID bij en slaat de laatste 50 punten van de inkomende gegevens voor elk apparaat op. Vervolgens worden de geselecteerde apparaatgegevens gebonden aan het grafiek object.
+* **Chart-device-data.js** is een script aan de client zijde dat luistert op de Web-socket, houdt elke DeviceID bij en slaat de laatste 50 punten van de inkomende gegevens voor elk apparaat op. Vervolgens worden de geselecteerde apparaatgegevens gebonden aan het grafiek object.
 
-* **Index. html** verwerkt de indeling van de gebruikers interface voor de webpagina en verwijst naar de benodigde scripts voor logica aan client zijde.
+* **Index.html** verwerkt de indeling van de gebruikers interface voor de webpagina en verwijst naar de benodigde scripts voor logica aan client zijde.
 
 ## <a name="configure-environment-variables-for-the-web-app"></a>Omgevings variabelen configureren voor de web-app
 
-Als u gegevens van uw IoT-hub wilt lezen, moeten de connection string van uw IoT-hub en de naam van de Consumer-groep die door de web-app moet worden gelezen. Deze teken reeksen worden opgehaald uit de proces omgeving in de volgende regels in server. js:
+Als u gegevens van uw IoT-hub wilt lezen, moeten de connection string van uw IoT-hub en de naam van de Consumer-groep die door de web-app moet worden gelezen. Deze teken reeksen worden opgehaald uit de proces omgeving in de volgende regels in server.js:
 
 ```javascript
 const iotHubConnectionString = process.env.IotHubConnectionString;
@@ -165,7 +164,7 @@ In deze sectie maakt u een web-app in App Service en implementeert u uw code hie
    az appservice plan create --name <app service plan name> --resource-group <your resource group name> --sku FREE
    ```
 
-2. Richt nu een web-app in uw App Service-abonnement in. `--deployment-local-git`Met de para meter kan de web-app-code worden geüpload en geïmplementeerd vanuit een Git-opslag plaats op uw lokale computer. De naam van uw web-app moet globaal uniek zijn en mag alleen bestaan uit hoofd letters, cijfers en afbreek streepjes. Zorg ervoor dat u versie 10,6 of hoger van het knoop punt opgeeft voor de `--runtime` para meter, afhankelijk van de versie van de node. js-runtime die u gebruikt. U kunt de `az webapp list-runtimes` opdracht gebruiken om een lijst met ondersteunde Runtimes weer te geven.
+2. Richt nu een web-app in uw App Service-abonnement in. `--deployment-local-git`Met de para meter kan de web-app-code worden geüpload en geïmplementeerd vanuit een Git-opslag plaats op uw lokale computer. De naam van uw web-app moet globaal uniek zijn en mag alleen bestaan uit hoofd letters, cijfers en afbreek streepjes. Zorg ervoor dat u het knoop punt versie 10,6 of hoger opgeeft voor de `--runtime` para meter, afhankelijk van de versie van de Node.js runtime die u gebruikt. U kunt de `az webapp list-runtimes` opdracht gebruiken om een lijst met ondersteunde Runtimes weer te geven.
 
    ```azurecli-interactive
    az webapp create -n <your web app name> -g <your resource group name> -p <your app service plan name> --runtime "node|10.6" --deployment-local-git
@@ -186,7 +185,7 @@ In deze sectie maakt u een web-app in App Service en implementeert u uw code hie
 
 5. Als u de code wilt implementeren in App Service, gebruikt u de [referenties voor implementatie op gebruikers niveau](https://docs.microsoft.com/azure/app-service/deploy-configure-credentials). De referenties voor implementatie op gebruikers niveau verschillen van uw Azure-referenties en worden gebruikt voor git lokale en FTP-implementaties naar een web-app. Eenmaal ingesteld zijn ze geldig voor al uw App Service-apps in alle abonnementen in uw Azure-account. Als u eerder implementatie referenties op gebruikers niveau hebt ingesteld, kunt u deze gebruiken.
 
-   Als u geen implementatie referenties op gebruikers niveau hebt ingesteld of als u het wacht woord niet meer weet, voert u de volgende opdracht uit. De gebruikers naam van uw implementatie moet uniek zijn binnen Azure en mag niet het symbool @ bevatten voor lokale Git-pushes. Voer uw nieuwe wacht woord in en bevestig dit wanneer u hierom wordt gevraagd. Het wacht woord moet ten minste acht tekens lang zijn, met twee van de volgende drie elementen: letters, cijfers en symbolen.
+   Als u geen implementatie referenties op gebruikers niveau hebt ingesteld of als u het wacht woord niet meer weet, voert u de volgende opdracht uit. De gebruikers naam van uw implementatie moet uniek zijn binnen Azure en mag niet het symbool @ bevatten voor lokale Git-pushes. Voer uw nieuwe wacht woord in en bevestig dit wanneer u hierom wordt gevraagd. Het wachtwoord moet ten minste acht tekens lang zijn en minimaal twee van de volgende drie typen elementen bevatten: letters, cijfers en symbolen.
 
    ```azurecli-interactive
    az webapp deployment user set --user-name <your deployment user name>
@@ -198,7 +197,7 @@ In deze sectie maakt u een web-app in App Service en implementeert u uw code hie
    az webapp deployment source config-local-git -n <your web app name> -g <your resource group name>
    ```
 
-7. Voeg een extern aan uw kloon toe die verwijst naar de Git-opslag plaats voor de web-app in App Service. \<Gebruik voor git kloon \> -URL de URL die u in de vorige stap hebt geretourneerd. Voer de volgende opdracht uit in het opdracht venster.
+7. Voeg een extern aan uw kloon toe die verwijst naar de Git-opslag plaats voor de web-app in App Service. Voor \<Git clone URL\> gebruikt u de URL die u in de vorige stap hebt geretourneerd. Voer de volgende opdracht uit in het opdracht venster.
 
    ```cmd
    git remote add webapp <Git clone URL>
@@ -239,13 +238,13 @@ Als u problemen ondervindt met dit voor beeld, probeert u de stappen in de volge
 
 * Open in de browser de hulpprogram ma's voor ontwikkel aars (in veel browsers wordt de F12-sleutel geopend) en zoek de console. Zoek naar eventuele waarschuwingen of fouten die daar worden afgedrukt.
 
-* U kunt fouten opsporen in een script aan de client zijde in/JS/chat-Device-Data.js.
+* U kunt fouten opsporen in een script aan de client zijde in/JS/chat-device-data.js.
 
 ### <a name="local-website-issues"></a>Problemen met de lokale website
 
 * Bekijk de uitvoer in het venster waarin u het knoop punt hebt gestart voor console-uitvoer.
 
-* Fout opsporing voor de server code, met name server. js en/scripts/Event-hub-Reader.js.
+* Fout opsporing voor de server code, met name server.js en/scripts/event-hub-reader.js.
 
 ### <a name="azure-app-service-issues"></a>Azure App Service problemen
 

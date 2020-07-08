@@ -10,10 +10,9 @@ ms.date: 08/20/2019
 ms.reviewer: jushiman
 ms.custom: mimckitt
 ms.openlocfilehash: c4b0cb8204891538ef9c4eef3fa0ff5fd9686536
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/12/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "83200091"
 ---
 # <a name="planned-maintenance-notifications-for-virtual-machine-scale-sets"></a>Meldingen voor gepland onderhoud voor virtuele-machineschaalsets
@@ -72,7 +71,7 @@ Het is raadzaam selfservice onderhoud in de volgende gevallen te gebruiken:
 
 Wanneer een geplande onderhouds Golf is gepland, kunt u de lijst met virtuele-machine schaal sets weer geven die worden beïnvloed door de aanstaande onderhouds Golf door gebruik te maken van de Azure Portal. 
 
-1. Meld u aan bij de [Azure-portal](https://portal.azure.com).
+1. Meld u aan bij [Azure Portal](https://portal.azure.com).
 2. Selecteer in het menu links **alle services**en selecteer vervolgens virtuele- **machine schaal sets**.
 3. Selecteer onder **schaal sets voor virtuele machines**de optie **kolommen bewerken** om de lijst met beschik bare kolommen te openen.
 4. Selecteer in de sectie **beschik bare kolommen** de optie **self-service onderhoud**en verplaats deze naar de lijst met **geselecteerde kolommen** . Selecteer **Toepassen**.  
@@ -83,15 +82,15 @@ De kolom **self-service onderhoud** wordt nu weer gegeven in de lijst met virtue
 
 | Waarde | Beschrijving |
 |-------|-------------|
-| Ja | Ten minste één VM in de schaalset voor virtuele machines bevindt zich in een self-service venster. U kunt onderhoud starten op elk gewenst moment tijdens dit selfservice venster. | 
-| Nee | Er bevinden zich geen Vm's in een self-service venster in de desbetreffende schaalset voor virtuele machines. | 
+| Yes | Ten minste één VM in de schaalset voor virtuele machines bevindt zich in een self-service venster. U kunt onderhoud starten op elk gewenst moment tijdens dit selfservice venster. | 
+| No | Er bevinden zich geen Vm's in een self-service venster in de desbetreffende schaalset voor virtuele machines. | 
 | - | Uw schaal sets voor virtuele machines maken geen deel uit van een geplande onderhouds Golf.| 
 
 ## <a name="notification-and-alerts-in-the-portal"></a>Meldingen en waarschuwingen in de portal
 
 Azure communiceert een planning voor gepland onderhoud door een e-mail bericht te verzenden naar de eigenaar van het abonnement en de groep mede-eigen aars. U kunt ontvangers en kanalen aan deze communicatie toevoegen door waarschuwingen voor activiteiten logboeken te maken. Zie [abonnements activiteiten bewaken met het Azure-activiteiten logboek](../azure-monitor/platform/platform-logs-overview.md)voor meer informatie.
 
-1. Meld u aan bij de [Azure-portal](https://portal.azure.com).
+1. Meld u aan bij [Azure Portal](https://portal.azure.com).
 2. Selecteer in het menu links de optie **monitor**. 
 3. Selecteer in het deel venster **monitor-waarschuwingen (klassiek)** **+ waarschuwing voor activiteiten logboek toevoegen**.
 4. Selecteer op de pagina **waarschuwing voor activiteiten logboek toevoegen** de gevraagde informatie of voer deze in. Zorg er in **criteria**voor dat u de volgende waarden instelt:

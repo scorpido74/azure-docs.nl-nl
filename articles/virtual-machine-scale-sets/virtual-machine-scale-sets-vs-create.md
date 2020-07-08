@@ -10,10 +10,9 @@ ms.date: 09/09/2019
 ms.reviewer: mimckitt
 ms.custom: mimckitt
 ms.openlocfilehash: 826dc1858984508e54e160675dd10f6dfad88af8
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/12/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "83124360"
 ---
 # <a name="how-to-create-a-virtual-machine-scale-set-with-visual-studio"></a>Een Schaalset voor virtuele machines maken met Visual Studio
@@ -28,7 +27,7 @@ Implementaties van Azure-resource groepen vormen een manier om een set verwante 
 
 U hebt de volgende vereisten nodig om aan de slag te gaan met de implementatie van Virtual Machine Scale Sets in Visual Studio:
 
-* Visual Studio 2013 of hoger
+* Visual Studio 2013 of later
 * Azure SDK 2,7, 2,8 of 2,9
 
 >[!NOTE]
@@ -36,7 +35,7 @@ U hebt de volgende vereisten nodig om aan de slag te gaan met de implementatie v
 
 ## <a name="create-a-project"></a>Een project maken<a name="creating-a-project"></a> 
 
-1. Open Visual Studio en selecteer **een nieuw project maken**.
+1. Open Visual Studio en selecteer **Een nieuw project maken**.
 
 1. Kies in **een nieuw project maken de**optie **Azure-resource groep** voor C# en selecteer vervolgens **volgende**.
 
@@ -78,7 +77,7 @@ Implementeer de Azure Resource Manager sjabloon om de resource voor de Schaalset
 
     ![Implementatie parameters bewerken](media/virtual-machine-scale-sets-vs-create/edit-deployment-parameters.png)
 
-1. Selecteer **implementeren**in **resource groep implementeren**. De actie voert het script **Deploy-AzureResourceGroup. ps1** uit. In het **uitvoer** venster wordt de voortgang van de implementatie weer gegeven.
+1. Selecteer **implementeren**in **resource groep implementeren**. De actie voert het **Deploy-AzureResourceGroup.ps1** script uit. In het **uitvoer** venster wordt de voortgang van de implementatie weer gegeven.
 
    ![Uitvoer toont resultaten](media/virtual-machine-scale-sets-vs-create/deployment-output.png)
 

@@ -9,10 +9,9 @@ ms.author: magoedte
 ms.date: 05/18/2020
 ms.topic: conceptual
 ms.openlocfilehash: 965e59f9c51cc41d4e5a8e8931b5c2f62c260599
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/19/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "83648103"
 ---
 # <a name="managing-and-maintaining-the-connected-machine-agent"></a>De verbonden machine agent beheren en onderhouden
@@ -52,7 +51,7 @@ Als u niet bekend bent met de opdracht regel opties voor Windows Installer-pakke
 
 1. Meld u aan bij de computer met een account met beheerders rechten.
 
-2. Voer **AzureConnectedMachineAgent. msi** uit om de installatie wizard te starten.
+2. Voer **AzureConnectedMachineAgent.msi** uit om de installatie wizard te starten.
 
 De wizard Setup detecteert of een vorige versie bestaat en voert vervolgens automatisch een upgrade van de agent uit. Wanneer de upgrade is voltooid, wordt de wizard Setup automatisch gesloten.
 
@@ -125,7 +124,7 @@ Acties van de [Zypper](https://en.opensuse.org/Portal:Zypper) -opdracht, zoals h
 
 ## <a name="about-the-azcmagent-tool"></a>Over het hulp programma Azcmagent
 
-Het hulp programma Azcmagent (Azcmagent. exe) wordt gebruikt voor het configureren van de Azure-Arc voor servers (preview-versie) verbonden machine agent tijdens de installatie, of wijzig de eerste configuratie van de agent na de installatie. Azcmagent. exe biedt opdracht regel parameters voor het aanpassen van de agent en het weer geven van de status:
+Het hulp programma Azcmagent (Azcmagent.exe) wordt gebruikt voor het configureren van de Azure-Arc voor servers (preview) verbonden machine agent tijdens de installatie, of wijzig de eerste configuratie van de agent na de installatie. Azcmagent.exe biedt opdracht regel parameters om de agent aan te passen en de status ervan weer te geven:
 
 * **Connect** : de computer verbinden met Azure Arc
 
@@ -212,11 +211,11 @@ Met beide van de volgende methoden wordt de agent verwijderd, maar wordt de map 
     c. In **Program ma's en onderdelen**selecteert u **Azure Connected machine agent**, selecteert u **verwijderen**en selecteert u vervolgens **Ja**.  
 
     >[!NOTE]
-    > U kunt de wizard Setup van agent ook uitvoeren door te dubbel klikken op het installatie pakket **AzureConnectedMachineAgent. msi** .
+    > U kunt de wizard Setup van agent ook uitvoeren door te dubbel klikken op het **AzureConnectedMachineAgent.msi** Installer-pakket.
 
 #### <a name="uninstall-from-the-command-line"></a>Verwijderen vanaf de opdracht regel
 
-Als u de agent hand matig wilt verwijderen via de opdracht prompt of als u een automatische methode wilt gebruiken, zoals een script, kunt u het volgende voor beeld gebruiken. Eerst moet u de product code ophalen. Dit is een GUID die de principal-id van het toepassings pakket is van het besturings systeem. Het verwijderen wordt uitgevoerd met behulp van de opdracht regel Msiexec. exe `msiexec /x {Product Code}` .
+Als u de agent hand matig wilt verwijderen via de opdracht prompt of als u een automatische methode wilt gebruiken, zoals een script, kunt u het volgende voor beeld gebruiken. Eerst moet u de product code ophalen. Dit is een GUID die de principal-id van het toepassings pakket is van het besturings systeem. Het verwijderen wordt uitgevoerd met behulp van de Msiexec.exe opdracht regel `msiexec /x {Product Code}` .
 
 1. Open de REGI ster-editor.
 

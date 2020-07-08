@@ -8,10 +8,9 @@ ms.topic: conceptual
 ms.date: 01/21/2020
 ms.author: spelluru
 ms.openlocfilehash: c29526bdee5ad70b3acb23117ee003877f52a55e
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/19/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "83592454"
 ---
 # <a name="event-handlers-in-azure-event-grid"></a>Gebeurtenis-handlers in Azure Event Grid
@@ -23,9 +22,9 @@ Dit zijn de ondersteunde gebeurtenis-handlers:
 - [Webhooks](handler-webhooks.md). Azure Automation runbooks en Logic Apps worden ondersteund via webhooks. 
 - [Azure functions](handler-functions.md)
 - [Event hubs](handler-event-hubs.md)
-- [Hybride verbindingen door geven](handler-relay-hybrid-connections.md)
+- [Hybride verbindingen doorgeven](handler-relay-hybrid-connections.md)
 - [Service Bus-wacht rijen en-onderwerpen](handler-service-bus.md)
-- [Opslag wachtrijen](handler-storage-queues.md)
+- [Opslagwachtrijen](handler-storage-queues.md)
 
 ## <a name="next-steps"></a>Volgende stappen
 - Zie [Een inleiding tot Event Grid](overview.md) voor een inleiding tot Event Grid.

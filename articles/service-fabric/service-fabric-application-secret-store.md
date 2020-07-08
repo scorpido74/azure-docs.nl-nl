@@ -4,10 +4,9 @@ description: In dit artikel wordt beschreven hoe u het archief centrale geheimen
 ms.topic: conceptual
 ms.date: 07/25/2019
 ms.openlocfilehash: c48be8945326f0f11ded7c5700cd70043830e4db
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/12/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "83197768"
 ---
 # <a name="central-secrets-store-in-azure-service-fabric"></a>Archief met centrale geheimen in azure Service Fabric 
@@ -73,7 +72,7 @@ Invoke-WebRequest -CertificateThumbprint <ClusterCertThumbprint> -Method POST -U
 
 Volg deze stappen om het geheim in uw Service Fabric-toepassing te gebruiken.
 
-1. Voeg een sectie toe aan het bestand **Settings. XML** met het volgende code fragment. Hier ziet u dat de waarde de indeling { `secretname:version` } heeft.
+1. Voeg een sectie toe aan het **settings.xml** -bestand met het volgende code fragment. Hier ziet u dat de waarde de indeling { `secretname:version` } heeft.
 
    ```xml
      <Section Name="testsecrets">
@@ -81,7 +80,7 @@ Volg deze stappen om het geheim in uw Service Fabric-toepassing te gebruiken.
      </Section>
    ```
 
-1. Importeer de sectie in **ApplicationManifest. XML**.
+1. Importeer de sectie in **ApplicationManifest.xml**.
    ```xml
      <ServiceManifestImport>
        <ServiceManifestRef ServiceManifestName="testservicePkg" ServiceManifestVersion="1.0.0" />
@@ -99,7 +98,7 @@ Volg deze stappen om het geheim in uw Service Fabric-toepassing te gebruiken.
    secretValue = IO.ReadFile(Path.Join(Environment.GetEnvironmentVariable("SecretPath"),  "TopSecret"))
    ```
 1. De geheimen koppelen aan een container. De enige wijziging die is vereist om de geheimen beschikbaar te maken in de container, is op `specify` een koppel punt in `<ConfigPackage>` .
-Het volgende code fragment is de gewijzigde **ApplicationManifest. XML**.  
+Het volgende code fragment is de gewijzigde **ApplicationManifest.xml**.  
 
    ```xml
    <ServiceManifestImport>
@@ -117,7 +116,7 @@ Het volgende code fragment is de gewijzigde **ApplicationManifest. XML**.
    ```
    Geheimen zijn beschikbaar onder het koppel punt in uw container.
 
-1. U kunt een geheim binden aan een proces omgevings variabele door op te geven `Type='SecretsStoreRef` . Het volgende code fragment is een voor beeld van het koppelen van de `supersecret` versie `ver1` aan de omgevings variabele `MySuperSecret` in **ServiceManifest. XML**.
+1. U kunt een geheim binden aan een proces omgevings variabele door op te geven `Type='SecretsStoreRef` . Het volgende code fragment is een voor beeld van het koppelen van de `supersecret` versie `ver1` aan de omgevings variabele `MySuperSecret` in **ServiceManifest.xml**.
 
    ```xml
    <EnvironmentVariables>

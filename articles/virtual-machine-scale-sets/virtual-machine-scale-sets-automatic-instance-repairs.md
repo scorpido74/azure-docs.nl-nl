@@ -10,13 +10,12 @@ ms.date: 02/28/2020
 ms.reviewer: jushiman
 ms.custom: avverma
 ms.openlocfilehash: 9e2b15eceff9bca4cee960fa462eb5148e3716dd
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/12/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "83197042"
 ---
-# <a name="automatic-instance-repairs-for-azure-virtual-machine-scale-sets"></a>Automatische herstel bewerkingen voor virtuele-machine schaal sets van Azure
+# <a name="automatic-instance-repairs-for-azure-virtual-machine-scale-sets"></a>Automatische exemplaarreparaties voor virtuele-machineschaalsets van Azure
 
 Het inschakelen van automatische herstel van instanties voor virtuele-machine schaal sets van Azure zorgt voor hoge Beschik baarheid voor toepassingen door een set gezonde instanties te behouden. Als een exemplaar in de schaalset een slechte status heeft, zoals gerapporteerd door de status [uitbreiding](./virtual-machine-scale-sets-health-extension.md) van de toepassing of de Health-tests van de [Load Balancer](../load-balancer/load-balancer-custom-probe-overview.md), voert deze functie automatisch een exemplaar van het herstel uit door het beschadigde exemplaar te verwijderen en een nieuwe te maken om dit te vervangen.
 

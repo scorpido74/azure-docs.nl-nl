@@ -8,10 +8,9 @@ ms.date: 5/10/2020
 ms.author: ccompy
 ms.custom: seodec18
 ms.openlocfilehash: fd1ffc8636e11ca20bc32b4b6f600e03d923d8b5
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/12/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "83125805"
 ---
 # <a name="use-an-app-service-environment"></a>Een App Service-omgeving gebruiken
@@ -62,7 +61,7 @@ Een app maken in een ASE:
 
     f. Selecteer een runtime stack.
 
-    g. Selecteer **Linux** of **Windows**. 
+    bijvoorbeeld Selecteer **Linux** of **Windows**. 
 
     h. Selecteer uw ASE in de vervolg keuzelijst **regio** . 
 

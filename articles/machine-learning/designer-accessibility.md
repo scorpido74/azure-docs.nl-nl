@@ -11,10 +11,9 @@ author: peterclu
 ms.date: 01/09/2020
 ms.custom: designer
 ms.openlocfilehash: af676f128796c762b330d986836ea825a36cb246
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/19/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "83646303"
 ---
 # <a name="use-a-keyboard-to-use-azure-machine-learning-designer-preview"></a>Een toetsen bord gebruiken om Azure Machine Learning Designer (preview) te gebruiken
@@ -53,7 +52,7 @@ De eigenschappen van een module aanpassen:
 
 ## <a name="navigation-shortcuts"></a>Navigatie snelkoppelingen
 
-| Toetsaanslag | Beschrijving |
+| Toetsaanslag | Description |
 |-|-|
 | Ctrl + F6 | Scha kelen tussen de focus op het canvas en de module structuur |
 | CTRL + F1   | De informatie kaart openen bij het richten op een knoop punt in de module structuur |
@@ -65,7 +64,7 @@ De eigenschappen van een module aanpassen:
 
 Gebruik de volgende sneltoetsen met de toegangs sleutel. Zie voor meer informatie over toegangs sleutels https://en.wikipedia.org/wiki/Access_key .
 
-| Toetsaanslag | Actie |
+| Toetsaanslag | Bewerking |
 |-|-|
 | Toegangs toets + R | Uitvoeren |
 | Toegangs toets + P | Publiceren |

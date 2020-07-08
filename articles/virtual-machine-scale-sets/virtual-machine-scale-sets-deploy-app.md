@@ -10,10 +10,9 @@ ms.date: 05/29/2018
 ms.reviewer: avverma
 ms.custom: avverma
 ms.openlocfilehash: 7c39088890680b6cfc903083283ed09cb7618d16
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/12/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "83124921"
 ---
 # <a name="deploy-your-application-on-virtual-machine-scale-sets"></a>Deploy your application on virtual machine scale sets (Uw toepassing implementeren op virtuele-machineschaalsets)
@@ -35,7 +34,7 @@ Met de aangepaste scriptextensie kunnen scripts worden gedownload en uitgevoerd 
 
 - [Azure-CLI](tutorial-install-apps-cli.md)
 - [Azure PowerShell](tutorial-install-apps-powershell.md)
-- [Azure Resource Manager sjabloon](tutorial-install-apps-template.md)
+- [Azure Resource Manager-sjabloon](tutorial-install-apps-template.md)
 
 
 ## <a name="install-an-app-to-a-windows-vm-with-powershell-dsc"></a>Een app installeren op een Windows-VM met Power shell DSC
@@ -90,9 +89,9 @@ Als het upgrade beleid voor uw schaalset *hand matig*is, werkt u uw VM-exemplare
 
 Cloud-init werkt ook in distributies. U gebruikt bijvoorbeeld niet **apt-get install** of **yum install** om een pakket te installeren. In plaats daarvan kunt u een lijst definiëren met te installeren pakketten. Cloud-init maakt automatisch gebruik van het hulpprogramma voor systeemeigen pakketbeheer voor de distro die u selecteert.
 
-Zie [Cloud-init gebruiken voor het aanpassen van Azure-vm's](../virtual-machines/linux/using-cloud-init.md)voor meer informatie, waaronder een voor beeld van een *Cloud-init. txt* -bestand.
+Zie [Cloud-init gebruiken voor het aanpassen van Azure-vm's](../virtual-machines/linux/using-cloud-init.md)voor meer informatie, inclusief een voor beeld van een *cloud-init.txt* bestand.
 
-Als u een schaalset wilt maken en een Cloud-init-bestand wilt gebruiken, voegt `--custom-data` u de para meter toe aan de opdracht [AZ vmss Create](/cli/azure/vmss) en geeft u de naam van een Cloud-init-bestand op. In het volgende voor beeld wordt een schaalset gemaakt met de naam *myScaleSet* in *MYRESOURCEGROUP* en worden VM-exemplaren geconfigureerd met een bestand met de naam *Cloud-init. txt*. Voer uw eigen namen als volgt in:
+Als u een schaalset wilt maken en een Cloud-init-bestand wilt gebruiken, voegt `--custom-data` u de para meter toe aan de opdracht [AZ vmss Create](/cli/azure/vmss) en geeft u de naam van een Cloud-init-bestand op. In het volgende voor beeld wordt een schaalset gemaakt met de naam *myScaleSet* in *MYRESOURCEGROUP* en worden VM-exemplaren geconfigureerd met een bestand met de naam *cloud-init.txt*. Voer uw eigen namen als volgt in:
 
 ```azurecli
 az vmss create \

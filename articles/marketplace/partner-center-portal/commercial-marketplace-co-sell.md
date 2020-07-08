@@ -8,10 +8,9 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 05/12/2020
 ms.openlocfilehash: c8265f641afb4164f26b8b2663b9f904f95b2b67
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/12/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "83201455"
 ---
 # <a name="co-sell-option-in-partner-center"></a>Optie voor collectieve verkoop in Partnercentrum
@@ -34,7 +33,7 @@ De optie voor co-selling in Partner Center is momenteel beschikbaar voor sommige
 | Power BI service-app     |     Moet worden aangekondigd       |
 |  |
 
-## <a name="listing"></a>Lijsten
+## <a name="listing"></a>Vermelding
 
 Met de functie voor het samen verkopen van gegevens kunnen micro soft-verkoop teams uw oplossing in een breder publiek zetten.
 
@@ -88,7 +87,7 @@ U kunt ook uw bestaande lijst met contact personen van een aanbieding exporteren
 * *Taak titel (vereist)*: functie titel.
 * *Rol (vereist)*: gebruik een van de volgende rollen in dit veld in de sjabloon.
 
-    | **Rol**    | **Beschrijving**  |
+    | **Role**    | **Beschrijving**  |
     | :------------------- | :-------------------|
     | *:::no-loc text="Partner marketing":::* | Deze rol is gericht op het marketing van uw oplossing en het samen werken met marketing activiteiten met micro soft verkoop teams en Channel-wederverkopers. Het belangrijkste contact punt voor marketing afspraken en aanbiedings inhoud, zoals product beschrijvingen, afbeeldingen en Video's. |
     | *:::no-loc text="Partner sales":::* | Deze rol is gericht op het verkopen van uw oplossing en samen werking met verkopen met micro soft verkoop teams en Channel wederverkopers. Voor oplossingen voor co-verkoop geeft u ten minste één partner verkoop contactpersoon per regio op waarin u klaar wilt zijn voor samen verkopen. De contact persoon van dezelfde partner kan meerdere regio's omvatten. |

@@ -17,10 +17,9 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 9f834924a564f92fe7050a1236701701af7f5229
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/19/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "83647266"
 ---
 # <a name="azure-active-directory-hybrid-identity-design-considerations--next-steps"></a>Overwegingen bij het ontwerpen van Azure Active Directory hybride identiteit-volgende stappen
@@ -41,6 +40,6 @@ Het bewaken van de volgende resources biedt vaak het laatste nieuws en updates o
 * [Microsoft Intune blog](https://techcommunity.microsoft.com/t5/intune-customer-success/welcome-to-the-new-intune-customer-success-blog/ba-p/281367)
 * [Micro soft endpoint Configuration Manager-blog](https://techcommunity.microsoft.com/t5/Configuration-Manager-Blog/bg-p/ConfigurationManagerBlog)
 
-## <a name="see-also"></a>Zie ook
+## <a name="see-also"></a>Zie tevens
 [Overzicht van ontwerp overwegingen](plan-hybrid-identity-design-considerations-overview.md)
 

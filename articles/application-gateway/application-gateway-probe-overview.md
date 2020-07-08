@@ -8,10 +8,9 @@ ms.topic: article
 ms.date: 02/20/2020
 ms.author: victorh
 ms.openlocfilehash: e1afc389508eb75313d046b759bcc9c03a50daad
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/19/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "83648405"
 ---
 # <a name="application-gateway-health-monitoring-overview"></a>Overzicht van Application Gateway status controle
@@ -64,12 +63,12 @@ Zodra de match criteria zijn opgegeven, kan deze worden gekoppeld aan de test co
 | Test-URL |http://127.0.0.1:\<port\>/ |URL-pad |
 | Interval |30 |De hoeveelheid tijd in seconden die moet worden gewacht voordat de volgende status test wordt verzonden.|
 | Time-out |30 |De hoeveelheid tijd in seconden die de toepassings gateway wacht op een test reactie voordat de test wordt gemarkeerd als beschadigd. Als een test wordt geretourneerd als in orde, wordt de bijbehorende back-end direct gemarkeerd als in orde.|
-| Drempel waarde voor onjuiste status |3 |Bepaalt hoeveel tests er moeten worden verzonden als er een fout is opgetreden van de normale status test. Deze aanvullende Health-tests worden snel achter elkaar verzonden om de status van de back-end snel te bepalen en niet te wachten op het test interval. Dit gedrag is alleen v1 SKU. In het geval van v2 SKU wordt het interval gewacht op de status. De back-endserver is gemarkeerd wanneer het aantal opeenvolgende test fouten de drempel waarde voor de onjuiste status bereikt. |
+| Drempelwaarde voor beschadigde status |3 |Bepaalt hoeveel tests er moeten worden verzonden als er een fout is opgetreden van de normale status test. Deze aanvullende Health-tests worden snel achter elkaar verzonden om de status van de back-end snel te bepalen en niet te wachten op het test interval. Dit gedrag is alleen v1 SKU. In het geval van v2 SKU wordt het interval gewacht op de status. De back-endserver is gemarkeerd wanneer het aantal opeenvolgende test fouten de drempel waarde voor de onjuiste status bereikt. |
 
 > [!NOTE]
 > De poort is dezelfde poort als de back-end-HTTP-instellingen.
 
-De standaard test zoekt alleen op http: \/ /127.0.0.1: \< poort \> om de status te bepalen. Als u de status test moet configureren om naar een aangepaste URL te gaan of andere instellingen te wijzigen, moet u aangepaste tests gebruiken. Zie [overzicht van TLS-beëindiging en end-to-end-TLS met Application Gateway](ssl-overview.md#for-probe-traffic)voor meer informatie over http-tests.
+De standaard test zoekt alleen op http: \/ /127.0.0.1: \<port\> om de status te bepalen. Als u de status test moet configureren om naar een aangepaste URL te gaan of andere instellingen te wijzigen, moet u aangepaste tests gebruiken. Zie [overzicht van TLS-beëindiging en end-to-end-TLS met Application Gateway](ssl-overview.md#for-probe-traffic)voor meer informatie over http-tests.
 
 ### <a name="probe-intervals"></a>Sonde-intervallen
 
@@ -87,17 +86,17 @@ De volgende tabel bevat definities voor de eigenschappen van een aangepaste stat
 
 | Probe-eigenschap | Beschrijving |
 | --- | --- |
-| Name |De naam van de test. Deze naam wordt gebruikt om te verwijzen naar de test in back-end-HTTP-instellingen. |
+| Naam |De naam van de test. Deze naam wordt gebruikt om te verwijzen naar de test in back-end-HTTP-instellingen. |
 | Protocol |Het protocol dat wordt gebruikt om de test te verzenden. De test gebruikt het protocol dat is gedefinieerd in de back-end-HTTP-instellingen |
 | Host |De hostnaam voor het verzenden van de test. Alleen van toepassing als multi-site is geconfigureerd op Application Gateway, anders ' 127.0.0.1 ' gebruiken. Deze waarde wijkt af van de naam van de VM-host. |
 | Pad |Het relatieve pad van de test. Het geldige pad wordt gestart vanaf/. |
 | Interval |Test interval in seconden. Deze waarde is het tijds interval tussen twee opeenvolgende tests. |
 | Time-out |Time-out van de test (in seconden). Als er binnen deze time-outperiode geen geldig antwoord wordt ontvangen, wordt de test als mislukt gemarkeerd.  |
-| Drempel waarde voor onjuiste status |Aantal nieuwe pogingen testen. De back-endserver is gemarkeerd wanneer het aantal opeenvolgende test fouten de drempel waarde voor de onjuiste status bereikt. |
+| Drempelwaarde voor beschadigde status |Aantal nieuwe pogingen testen. De back-endserver is gemarkeerd wanneer het aantal opeenvolgende test fouten de drempel waarde voor de onjuiste status bereikt. |
 
 > [!IMPORTANT]
 > Als Application Gateway voor één site is geconfigureerd, moet de hostnaam standaard worden opgegeven als 127.0.0.1, tenzij anders geconfigureerd in de aangepaste test.
-> Voor een verwijzing naar een aangepaste test wordt verzonden naar \< protocol \> :// \< host \> : \< poort \> \< pad \> . De poort die wordt gebruikt, is de poort die is gedefinieerd in de back-end-HTTP-instellingen.
+> Als referentie voor een aangepaste test wordt verzonden naar \<protocol\> :// \<host\> : \<port\> \<path\> . De poort die wordt gebruikt, is de poort die is gedefinieerd in de back-end-HTTP-instellingen.
 
 ## <a name="nsg-considerations"></a>NSG overwegingen
 
@@ -105,7 +104,7 @@ U moet binnenkomend Internet verkeer toestaan op TCP-poorten 65503-65534 voor de
 
 Daarnaast kan uitgaande internet connectiviteit niet worden geblokkeerd en moet binnenkomend verkeer dat afkomstig is van het label **AzureLoadBalancer** , worden toegestaan.
 
-Zie [Application Gateway configuratie-overzicht](configuration-overview.md#network-security-groups-on-the-application-gateway-subnet)voor meer informatie.
+Zie [Overzicht van Application Gateway-configuratie](configuration-overview.md#network-security-groups-on-the-application-gateway-subnet) voor meer informatie.
 
 ## <a name="next-steps"></a>Volgende stappen
 Nadat u hebt gebruikgemaakt van Application Gateway status controle, kunt u een [aangepaste Health probe](application-gateway-create-probe-portal.md) in de Azure portal of een [aangepaste status test](application-gateway-create-probe-ps.md) configureren met behulp van power shell en het Azure Resource Manager-implementatie model.

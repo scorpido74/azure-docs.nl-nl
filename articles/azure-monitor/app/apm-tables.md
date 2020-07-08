@@ -1,15 +1,14 @@
 ---
-title: Azure Monitor Application Insights resource schema op basis van werk ruimte
+title: Op werkruimte gebaseerd resourceschema van Azure Monitor Application Insights
 description: Meer informatie over de nieuwe tabel structuur en het schema voor Azure Monitor resources op basis van Application Insights werk ruimte.
 ms.topic: conceptual
 author: mrbullwinkle
 ms.author: mbullwin
 ms.date: 05/09/2020
 ms.openlocfilehash: 21f387a87224615ea6afbdce620c56e3ad2cc6ea
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/12/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "83210539"
 ---
 # <a name="workspace-based-resource-changes-preview"></a>Resource wijzigingen op basis van werk ruimten (preview-versie)
@@ -20,7 +19,7 @@ Met Application Insights resources-gegevens op basis van een werk ruimte worden 
 
 ## <a name="table-structure"></a>Tabel structuur
 
-| Verouderde tabel naam | Nieuwe tabel naam | Beschrijving |
+| Verouderde tabel naam | Nieuwe tabel naam | Description |
 |:---|:---|:---|
 | availabilityResults | AppAvailabilityResults |  Samenvattings gegevens van beschikbaarheids testen.|
 | browserTimings | AppBrowserTimings | Gegevens over client prestaties, zoals de tijd die nodig is om de binnenkomende gegevens te verwerken.|
@@ -68,7 +67,7 @@ Verouderde tabel: Beschik baarheid
 |Item type|tekenreeks|Type|Tekenreeks|
 |location|tekenreeks|Locatie|tekenreeks|
 |message|tekenreeks|Bericht|tekenreeks|
-|name|tekenreeks|Naam|tekenreeks|
+|naam|tekenreeks|Name|tekenreeks|
 |operation_Id|tekenreeks|OperationId|tekenreeks|
 |operation_Name|tekenreeks|OperationName|tekenreeks|
 |operation_ParentId|tekenreeks|OperationParentId|tekenreeks|
@@ -108,7 +107,7 @@ Verouderde tabel: browserTimings
 |itemCount|int|ItemCount|int|
 |itemId|tekenreeks|\_ItemId|tekenreeks|
 |Item type|tekenreeks|Type|tekenreeks|
-|name|tekenreeks|Naam|datum/tijd|
+|naam|tekenreeks|Name|datum/tijd|
 |networkDuration|werkelijk|NetworkDurationMs|werkelijk|
 |operation_Id|tekenreeks|OperationId|tekenreeks|
 |operation_Name|tekenreeks|OperationName|tekenreeks|
@@ -122,7 +121,7 @@ Verouderde tabel: browserTimings
 |session_Id|tekenreeks|SessionId|tekenreeks|
 |tijdstempel|datum/tijd|TimeGenerated|datum/tijd|
 |totalDuration|werkelijk|TotalDurationMs|werkelijk|
-|URL|tekenreeks|URL|tekenreeks|
+|url|tekenreeks|URL|tekenreeks|
 |user_AccountId|tekenreeks|UserAccountId|tekenreeks|
 |user_AuthenticatedId|tekenreeks|UserAuthenticatedId|tekenreeks|
 |user_Id|tekenreeks|UserId|tekenreeks|
@@ -148,14 +147,14 @@ Verouderde tabel: afhankelijkheden
 |cloud_RoleName|tekenreeks|AppRoleName|tekenreeks|
 |customDimensions|dynamisch|Eigenschappen|Dynamisch|
 |customMeasurements|dynamisch|Metingen|Dynamisch|
-|data|tekenreeks|Gegevens|tekenreeks|
+|gegevens|tekenreeks|Gegevens|tekenreeks|
 |duur|werkelijk|DurationMs|werkelijk|
 |`id`|tekenreeks|`Id`|tekenreeks|
 |iKey|tekenreeks|IKey|tekenreeks|
 |itemCount|int|ItemCount|int|
 |itemId|tekenreeks|\_ItemId|tekenreeks|
 |Item type|tekenreeks|Type|Tekenreeks|
-|name|tekenreeks|Naam|tekenreeks|
+|naam|tekenreeks|Name|tekenreeks|
 |operation_Id|tekenreeks|OperationId|tekenreeks|
 |operation_Name|tekenreeks|OperationName|tekenreeks|
 |operation_ParentId|tekenreeks|OperationParentId|tekenreeks|
@@ -197,7 +196,7 @@ Verouderde tabel: customEvents
 |itemCount|int|ItemCount|int|
 |itemId|tekenreeks|\_ItemId|tekenreeks|
 |Item type|tekenreeks|Type|tekenreeks|
-|name|tekenreeks|Naam|tekenreeks|
+|naam|tekenreeks|Name|tekenreeks|
 |operation_Id|tekenreeks|OperationId|tekenreeks|
 |operation_Name|tekenreeks|OperationName|tekenreeks|
 |operation_ParentId|tekenreeks|OperationParentId|tekenreeks|
@@ -232,7 +231,7 @@ Verouderde tabel: customMetrics
 |iKey|tekenreeks|IKey|tekenreeks|
 |itemId|tekenreeks|\_ItemId|tekenreeks|
 |Item type|tekenreeks|Type|tekenreeks|
-|name|tekenreeks|Naam|tekenreeks|
+|naam|tekenreeks|Name|tekenreeks|
 |operation_Id|tekenreeks|OperationId|tekenreeks|
 |operation_Name|tekenreeks|OperationName|tekenreeks|
 |operation_ParentId|tekenreeks|OperationParentId|tekenreeks|
@@ -277,7 +276,7 @@ Verouderde tabel: page views
 |itemCount|int|ItemCount|int|
 |itemId|tekenreeks|\_ItemId|tekenreeks|
 |Item type|tekenreeks|Type|Tekenreeks|
-|name|tekenreeks|Naam|tekenreeks|
+|naam|tekenreeks|Name|tekenreeks|
 |operation_Id|tekenreeks|OperationId|tekenreeks|
 |operation_Name|tekenreeks|OperationName|tekenreeks|
 |operation_ParentId|tekenreeks|OperationParentId|tekenreeks|
@@ -286,7 +285,7 @@ Verouderde tabel: page views
 |sdkVersion|tekenreeks|SdkVersion|tekenreeks|
 |session_Id|tekenreeks|SessionId|tekenreeks|
 |tijdstempel|datum/tijd|TimeGenerated|datum/tijd|
-|URL|tekenreeks|URL|tekenreeks|
+|url|tekenreeks|URL|tekenreeks|
 |user_AccountId|tekenreeks|UserAccountId|tekenreeks|
 |user_AuthenticatedId|tekenreeks|UserAuthenticatedId|tekenreeks|
 |user_Id|tekenreeks|UserId|tekenreeks|
@@ -317,7 +316,7 @@ Verouderde tabel: Performance Counters
 |exemplaar|tekenreeks|Exemplaar|tekenreeks|
 |itemId|tekenreeks|\_ItemId|tekenreeks|
 |Item type|tekenreeks|Type|tekenreeks|
-|name|tekenreeks|Naam|tekenreeks|
+|naam|tekenreeks|Name|tekenreeks|
 |operation_Id|tekenreeks|OperationId|tekenreeks|
 |operation_Name|tekenreeks|OperationName|tekenreeks|
 |operation_ParentId|tekenreeks|OperationParentId|tekenreeks|
@@ -357,7 +356,7 @@ Verouderde tabel: aanvragen
 |itemCount|int|ItemCount|int|
 |itemId|tekenreeks|\_ItemId|tekenreeks|
 |Item type|tekenreeks|Type|Tekenreeks|
-|name|tekenreeks|Naam|Tekenreeks|
+|naam|tekenreeks|Name|Tekenreeks|
 |operation_Id|tekenreeks|OperationId|tekenreeks|
 |operation_Name|tekenreeks|OperationName|tekenreeks|
 |operation_ParentId|tekenreeks|OperationParentId|tekenreeks|
@@ -369,7 +368,7 @@ Verouderde tabel: aanvragen
 |source|tekenreeks|Bron|Tekenreeks|
 |voltooid|tekenreeks|Geslaagd|Booleaanse waarde|
 |tijdstempel|datum/tijd|TimeGenerated|datum/tijd|
-|URL|tekenreeks|URL|Tekenreeks|
+|url|tekenreeks|URL|Tekenreeks|
 |user_AccountId|tekenreeks|UserAccountId|tekenreeks|
 |user_AuthenticatedId|tekenreeks|UserAuthenticatedId|tekenreeks|
 |user_Id|tekenreeks|UserId|tekenreeks|

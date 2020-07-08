@@ -4,10 +4,9 @@ description: Stel Application Insights bewaking hand matig in voor een nieuwe Li
 ms.topic: conceptual
 ms.date: 12/02/2019
 ms.openlocfilehash: 4d8979469ca83dfd6b81aab10191e8fbf36104ff
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/12/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "83200666"
 ---
 # <a name="create-an-application-insights-resource"></a>Een Application Insights-resource maken
@@ -16,7 +15,7 @@ Met Azure-toepassing Insights worden gegevens over uw toepassing weer gegeven in
 
 ## <a name="sign-in-to-microsoft-azure"></a>Aanmelden bij Microsoft Azure
 
-Als u nog geen abonnement op Azure hebt, maak dan een [gratis](https://azure.microsoft.com/free/) account aan voordat u begint.
+Als u nog geen Azure-abonnement hebt, maakt u een [gratis account](https://azure.microsoft.com/free/) voordat u begint.
 
 ## <a name="create-an-application-insights-resource"></a>Een Application Insights-resource maken
 
@@ -27,7 +26,7 @@ Meld u aan bij de [Azure Portal](https://portal.azure.com)en maak een Applicatio
    | Instellingen        |  Waarde           | Beschrijving  |
    | ------------- |:-------------|:-----|
    | **Naam**      | `Unique value` | Naam waarmee de app wordt geïdentificeerd die u bewaken. |
-   | **Resource groep**     | `myResourceGroup`      | Naam voor de nieuwe of bestaande resource groep om app Insights-gegevens te hosten. |
+   | **Resourcegroep**     | `myResourceGroup`      | Naam voor de nieuwe of bestaande resource groep om app Insights-gegevens te hosten. |
    | **Regio** | `East US` | Kies een locatie bij u in de buurt of in de buurt van waar de app wordt gehost. |
    | **Resource modus** | `Classic` of `Workspace-based` | Resources op basis van een werk ruimte zijn momenteel beschikbaar als open bare preview-versie en u kunt uw Application Insights telemetrie verzenden naar een algemene Log Analytics-werk ruimte. Zie het [artikel over resources op basis van werk ruimte](create-workspace-resource.md)voor meer informatie.
 
