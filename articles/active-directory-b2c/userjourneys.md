@@ -11,10 +11,10 @@ ms.date: 02/04/2020
 ms.author: mimart
 ms.subservice: B2C
 ms.openlocfilehash: d705c7fbdb744082b402f4dd598551107563ed2e
-ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/23/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85203160"
 ---
 # <a name="userjourneys"></a>UserJourneys
@@ -29,7 +29,7 @@ Als u de door het beleid ondersteunde gebruikers trajecten wilt definiëren, wor
 
 Het element **UserJourneys** bevat het volgende element:
 
-| Element | Instanties | Beschrijving |
+| Element | Instanties | Description |
 | ------- | ----------- | ----------- |
 | UserJourney | 1: n | Een gebruikers traject waarmee alle benodigde constructies voor een volledige gebruikers stroom worden gedefinieerd. |
 
@@ -41,7 +41,7 @@ Het element **UserJourney** bevat het volgende kenmerk:
 
 Het **UserJourney** -element bevat de volgende elementen:
 
-| Element | Instanties | Beschrijving |
+| Element | Instanties | Description |
 | ------- | ----------- | ----------- |
 | OrchestrationSteps | 1: n | Een indelings reeks die moet worden gevolgd voor een geslaagde trans actie. Elke gebruikers traject bestaat uit een geordende lijst met Orchestration-stappen die in volg orde worden uitgevoerd. Als er een stap mislukt, mislukt de trans actie. |
 
@@ -55,7 +55,7 @@ Als u de geordende lijst met Orchestration-stappen wilt opgeven, wordt een **Orc
 
 Het element **OrchestrationSteps** bevat het volgende element:
 
-| Element | Instanties | Beschrijving |
+| Element | Instanties | Description |
 | ------- | ----------- | ----------- |
 | OrchestrationStep | 1: n | Een geordende Orchestration-stap. |
 
@@ -71,7 +71,7 @@ Het **OrchestrationStep** -element bevat de volgende kenmerken:
 
 Het **OrchestrationStep** -element kan de volgende elementen bevatten:
 
-| Element | Instanties | Beschrijving |
+| Element | Instanties | Description |
 | ------- | ----------- | ----------- |
 | Voor waarden | 0: n | Een lijst met voor waarden waaraan moet worden voldaan om de Orchestration-stap uit te voeren. |
 | ClaimsProviderSelections | 0: n | Een lijst van claim provider selecties voor de Orchestration-stap. |
@@ -81,7 +81,7 @@ Het **OrchestrationStep** -element kan de volgende elementen bevatten:
 
 Het element **voor waarden** bevat het volgende element:
 
-| Element | Instanties | Beschrijving |
+| Element | Instanties | Description |
 | ------- | ----------- | ----------- |
 | Precondition | 1: n | Afhankelijk van het technische profiel dat wordt gebruikt, wordt de client omgeleid volgens de selectie van de claim provider of wordt een server aanroep naar Exchange-claims. |
 
@@ -97,7 +97,7 @@ Het element **voor waarde** bevat de volgende kenmerken:
 
 De elementen in de **voor waarde** bevatten de volgende elementen:
 
-| Element | Instanties | Beschrijving |
+| Element | Instanties | Description |
 | ------- | ----------- | ----------- |
 | Waarde | 1: n | Er wordt een ClaimTypeReferenceId waarvoor een query moet worden uitgevoerd. Een ander value-element bevat de waarde die moet worden gecontroleerd.</li></ul>|
 | Bewerking | 1:1 | De actie die moet worden uitgevoerd als de voor waarde wordt gecontroleerd binnen een indelings stap waar. Als de waarde `Action` is ingesteld op `SkipThisOrchestrationStep` , moet de gekoppelde `OrchestrationStep` niet worden uitgevoerd. |
@@ -164,7 +164,7 @@ Een indelings stap van type `ClaimsProviderSelection` of `CombinedSignInAndSignU
 
 Het element **ClaimsProviderSelections** bevat het volgende element:
 
-| Element | Instanties | Beschrijving |
+| Element | Instanties | Description |
 | ------- | ----------- | ----------- |
 | ClaimsProviderSelection | 1: n | Geeft de lijst met claim providers die kunnen worden geselecteerd.|
 
@@ -222,7 +222,7 @@ In de volgende indelings stap kan de gebruiker kiezen om u aan te melden met Fac
 
 Het element **ClaimsExchanges** bevat het volgende element:
 
-| Element | Instanties | Beschrijving |
+| Element | Instanties | Description |
 | ------- | ----------- | ----------- |
 | ClaimsExchange | 1: n | Afhankelijk van het gebruikte technische profiel wordt de client omgeleid op basis van de ClaimsProviderSelection die is geselecteerd, of wordt een server aanroep naar Exchange-claims. |
 

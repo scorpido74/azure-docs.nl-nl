@@ -12,10 +12,10 @@ ms.date: 03/26/2020
 ms.author: mimart
 ms.subservice: B2C
 ms.openlocfilehash: 67acf675c6636c5d1066d4fe25310d875fa7c064
-ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/23/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85201511"
 ---
 # <a name="define-an-azure-active-directory-technical-profile-in-an-azure-active-directory-b2c-custom-policy"></a>Een Azure Active Directory technisch profiel definiëren in een Azure Active Directory B2C aangepast beleid
@@ -122,7 +122,7 @@ De naam van de claim is de naam van het kenmerk Azure AD, tenzij het kenmerk **P
 
 ## <a name="azure-ad-technical-provider-operations"></a>Bewerkingen voor de technische provider van Azure AD
 
-### <a name="read"></a>Raadplegen
+### <a name="read"></a>Lezen
 
 Met de **Lees** bewerking worden gegevens over één gebruikers account gelezen. Met het volgende technische profiel worden gegevens over een gebruikers account gelezen met de objectId van de gebruiker:
 

@@ -11,10 +11,10 @@ ms.date: 01/29/2020
 ms.author: mimart
 ms.subservice: B2C
 ms.openlocfilehash: 1d1928de8c9731b54966e566d4dddf9c01073d41
-ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/23/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85201256"
 ---
 # <a name="claimsproviders"></a>ClaimsProviders
@@ -41,7 +41,7 @@ Een claim provider bevat een set [technische profielen](technicalprofiles.md). E
 
 Het element **ClaimsProviders** bevat het volgende element:
 
-| Element | Instanties | Beschrijving |
+| Element | Instanties | Description |
 | ------- | ----------- | ----------- |
 | ClaimsProvider | 1: n | Een erkende claim provider die kan worden gebruikt in verschillende trajecten van de gebruiker. |
 
@@ -49,7 +49,7 @@ Het element **ClaimsProviders** bevat het volgende element:
 
 Het **ClaimsProvider** -element bevat de volgende onderliggende elementen:
 
-| Element | Instanties | Beschrijving |
+| Element | Instanties | Description |
 | ------- | ---------- | ----------- |
 | Domain | 0:1 | Een teken reeks die de domein naam voor de claim provider bevat. Als uw claim provider bijvoorbeeld het technische profiel voor Facebook bevat, is de domein naam Facebook.com. Deze domein naam wordt gebruikt voor alle technische profielen die zijn gedefinieerd in de claim provider, tenzij deze wordt overschreven door het technische profiel. Er kan ook worden verwezen naar de domein naam in een **domain_hint**. Zie voor meer informatie de sectie **Aanmelden omleiden naar een sociale provider** van het [rechtstreeks aanmelden instellen met behulp van Azure Active Directory B2C](direct-signin.md). |
 | DisplayName | 1:1 | Een teken reeks die de naam van de claim provider bevat. |

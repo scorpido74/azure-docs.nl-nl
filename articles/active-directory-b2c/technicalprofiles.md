@@ -12,10 +12,10 @@ ms.date: 03/05/2020
 ms.author: mimart
 ms.subservice: B2C
 ms.openlocfilehash: a788134f64066b0469d34fbfbacacd8c45438bde
-ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/23/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85203143"
 ---
 # <a name="technicalprofiles"></a>TechnicalProfiles
@@ -81,11 +81,11 @@ Het element **TechnicalProfile** bevat het volgende kenmerk:
 
 De **TechnicalProfile** bevat de volgende elementen:
 
-| Element | Instanties | Beschrijving |
+| Element | Instanties | Description |
 | ------- | ----------- | ----------- |
 | Domain | 0:1 | De domein naam voor het technische profiel. Als uw technische profiel bijvoorbeeld de Facebook-ID-provider opgeeft, is de domein naam Facebook.com. |
 | DisplayName | 1:1 | De naam van het technische profiel dat voor gebruikers kan worden weer gegeven. |
-| Beschrijving | 0:1 | De beschrijving van het technische profiel dat kan worden weer gegeven voor gebruikers. |
+| Description | 0:1 | De beschrijving van het technische profiel dat kan worden weer gegeven voor gebruikers. |
 | Protocol | 0:1 | Het protocol dat wordt gebruikt voor communicatie met de andere partij. |
 | Metagegevens | 0:1 | Een verzameling sleutel/waarde-paren die worden gebruikt door het protocol voor communicatie met het eind punt in de loop van een trans actie. |
 | InputTokenFormat | 0:1 | De indeling van het invoer token. Mogelijke waarden: `JSON` , `JWT` , `SAML11` of `SAML2` . De `JWT` waarde vertegenwoordigt een JSON Web token volgens IETF-specificatie. De `SAML11` waarde vertegenwoordigt een SAML 1,1-beveiligings token conform de Oasis-specificatie.  De `SAML2` waarde vertegenwoordigt een SAML 2,0-beveiligings token conform de Oasis-specificatie. |
@@ -118,7 +118,7 @@ Het **protocol** element bevat de volgende kenmerken:
 
 Een **META** gegevenselement bevat de volgende elementen:
 
-| Element | Instanties | Beschrijving |
+| Element | Instanties | Description |
 | ------- | ----------- | ----------- |
 | Item | 0: n | De meta gegevens die betrekking hebben op het technische profiel. Elk type technisch profiel heeft een andere set meta gegevens items. Zie de sectie met technische profiel typen voor meer informatie. |
 
@@ -134,7 +134,7 @@ Het element **item** van het **META** gegevenselement bevat de volgende kenmerke
 
 Het element **CryptographicKeys** bevat het volgende element:
 
-| Element | Instanties | Beschrijving |
+| Element | Instanties | Description |
 | ------- | ----------- | ----------- |
 | Sleutel | 1: n | Een cryptografische sleutel die wordt gebruikt in dit technische profiel. |
 
@@ -151,7 +151,7 @@ Het **sleutel** element bevat het volgende kenmerk:
 
 Het element **InputClaimsTransformations** bevat het volgende element:
 
-| Element | Instanties | Beschrijving |
+| Element | Instanties | Description |
 | ------- | ----------- | ----------- |
 | InputClaimsTransformation | 1: n | De id van een claim transformatie die moet worden uitgevoerd voordat claims naar de claim provider of de Relying Party worden verzonden. Een claim transformatie kan worden gebruikt om bestaande ClaimsSchema claims te wijzigen of nieuwe te genereren. |
 
@@ -167,7 +167,7 @@ Het element **InputClaimsTransformation** bevat het volgende kenmerk:
 
 Het element **InputClaims** bevat het volgende element:
 
-| Element | Instanties | Beschrijving |
+| Element | Instanties | Description |
 | ------- | ----------- | ----------- |
 | Input claim | 1: n | Een verwachte invoer claim type. |
 
@@ -185,7 +185,7 @@ Het **input claim** -element bevat de volgende kenmerken:
 
 Het element **DisplayClaims** bevat het volgende element:
 
-| Element | Instanties | Beschrijving |
+| Element | Instanties | Description |
 | ------- | ----------- | ----------- |
 | DisplayClaim | 1: n | Een verwachte invoer claim type. |
 
@@ -207,7 +207,7 @@ De **DisplayClaim** vereist dat u een of opgeeft `ClaimTypeReferenceId` `Display
 
 Het **PersistedClaims** -element bevat de volgende elementen:
 
-| Element | Instanties | Beschrijving |
+| Element | Instanties | Description |
 | ------- | ----------- | ----------- |
 | PersistedClaim | 1: n | Het claim type moet persistent worden gemaakt. |
 
@@ -225,7 +225,7 @@ Het **PersistedClaim** -element bevat de volgende kenmerken:
 
 Het element **OutputClaims** bevat het volgende element:
 
-| Element | Instanties | Beschrijving |
+| Element | Instanties | Description |
 | ------- | ----------- | ----------- |
 | Output claim | 1: n | Een verwacht type uitvoer claim. |
 
@@ -244,7 +244,7 @@ Het **output claim** -element bevat de volgende kenmerken:
 
 Het element **OutputClaimsTransformations** bevat het volgende element:
 
-| Element | Instanties | Beschrijving |
+| Element | Instanties | Description |
 | ------- | ----------- | ----------- |
 | OutputClaimsTransformation | 1: n | De id's van claim transformaties die moeten worden uitgevoerd voordat claims naar de claim provider of de Relying Party worden verzonden. Een claim transformatie kan worden gebruikt om bestaande ClaimsSchema claims te wijzigen of nieuwe te genereren. |
 
@@ -260,7 +260,7 @@ Het element **OutputClaimsTransformation** bevat het volgende kenmerk:
 
 Het element **ValidationTechnicalProfiles** bevat het volgende element:
 
-| Element | Instanties | Beschrijving |
+| Element | Instanties | Description |
 | ------- | ----------- | ----------- |
 | ValidationTechnicalProfile | 1: n | De id's van de technische profielen die worden gebruikt, valideren enkele of alle uitvoer claims van het technische profiel waarnaar wordt verwezen. Alle invoer claims van het technische profiel waarnaar wordt verwezen, moeten worden weer gegeven in de uitvoer claims van het referentie-technische profiel. |
 

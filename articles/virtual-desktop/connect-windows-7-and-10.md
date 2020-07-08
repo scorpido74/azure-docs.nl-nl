@@ -9,10 +9,10 @@ ms.date: 03/19/2020
 ms.author: helohr
 manager: lizross
 ms.openlocfilehash: 5d333b2f8bbb660e9fd71339159d942c0520f4f4
-ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/23/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85201545"
 ---
 # <a name="connect-with-the-windows-desktop-client"></a>Verbinding maken met de Windows Desktop-client
@@ -25,10 +25,10 @@ U hebt toegang tot de virtuele Bureau bladen van Windows op apparaten met Window
 >De Windows-client wordt automatisch standaard ingesteld op Windows Virtual Desktop 2019 release. Als de client echter detecteert dat de gebruiker ook Azure Resource Manager resources heeft, worden de resources automatisch toegevoegd of krijgt de gebruiker een melding dat ze beschikbaar zijn.
 
 > [!IMPORTANT]
-> Windows virtueel bureau blad biedt geen ondersteuning voor de client RemoteApp-en bureaublad verbindingen (RADC) of de Verbinding met extern bureaublad-client (MSTSC).
+> Windows Virtual Desktop biedt geen ondersteuning voor de client voor RemoteApp- en bureaubladverbindingen of de client voor verbinding met extern bureaublad.
 
 > [!IMPORTANT]
-> Het virtuele bureau blad van Windows biedt momenteel geen ondersteuning voor de Extern bureaublad-client vanuit de Windows Store. Ondersteuning voor deze client wordt in een toekomstige versie toegevoegd.
+> Windows Virtual Desktop biedt momenteel geen ondersteuning voor de Extern bureaublad-client uit de Windows Store. Ondersteuning voor deze client wordt in een toekomstige versie toegevoegd.
 
 ## <a name="install-the-windows-desktop-client"></a>De Windows-Desktop-Client installeren
 

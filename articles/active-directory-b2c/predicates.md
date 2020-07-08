@@ -12,10 +12,10 @@ ms.date: 03/30/2020
 ms.author: mimart
 ms.subservice: B2C
 ms.openlocfilehash: b01f1edd4305c09a874b177e4bca373991c9162e
-ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/23/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85203806"
 ---
 # <a name="predicates-and-predicatevalidations"></a>Predikaten en PredicateValidations
@@ -36,7 +36,7 @@ Het element **predikaten** moet direct na het **ClaimsSchema** -element binnen h
 
 Het element **predikaten** bevat het volgende element:
 
-| Element | Instanties | Beschrijving |
+| Element | Instanties | Description |
 | ------- | ----------- | ----------- |
 | Predicaat | 1: n | Een lijst met predikaten. |
 
@@ -50,20 +50,20 @@ Het **predicaat** -element bevat de volgende kenmerken:
 
 Het **predicaat** -element bevat de volgende elementen:
 
-| Element | Instanties | Beschrijving |
+| Element | Instanties | Description |
 | ------- | ----------- | ----------- |
 | UserHelpText | 0:1 | Keur Een fout bericht voor gebruikers als de controle mislukt. |
 | Parameters | 1:1 | De para meters voor het methode type van de teken reeks validatie. |
 
 Het element **para meters** bevat de volgende elementen:
 
-| Element | Instanties | Beschrijving |
+| Element | Instanties | Description |
 | ------- | ----------- | ----------- |
 | Parameter | 1: n | De para meters voor het methode type van de teken reeks validatie. |
 
 Het **parameter** element bevat de volgende kenmerken:
 
-| Element | Instanties | Beschrijving |
+| Element | Instanties | Description |
 | ------- | ----------- | ----------- |
 | Id | 1:1 | De id van de para meter. |
 
@@ -172,7 +172,7 @@ Het element **PredicateValidations** moet direct na het element **predikaten** w
 
 Het element **PredicateValidations** bevat het volgende element:
 
-| Element | Instanties | Beschrijving |
+| Element | Instanties | Description |
 | ------- | ----------- | ----------- |
 | PredicateValidation | 1: n | Een lijst met validatie van predikaten. |
 
@@ -184,13 +184,13 @@ Het element **PredicateValidation** bevat het volgende kenmerk:
 
 Het element **PredicateValidation** bevat het volgende element:
 
-| Element | Instanties | Beschrijving |
+| Element | Instanties | Description |
 | ------- | ----------- | ----------- |
 | PredicateGroups | 1: n | Een lijst met predicaat groepen. |
 
 Het element **PredicateGroups** bevat het volgende element:
 
-| Element | Instanties | Beschrijving |
+| Element | Instanties | Description |
 | ------- | ----------- | ----------- |
 | PredicateGroup | 1: n | Een lijst met predikaten. |
 
@@ -202,7 +202,7 @@ Het element **PredicateGroup** bevat het volgende kenmerk:
 
 Het **PredicateGroup** -element bevat de volgende elementen:
 
-| Element | Instanties | Beschrijving |
+| Element | Instanties | Description |
 | ------- | ----------- | ----------- |
 | UserHelpText | 0:1 |  Een beschrijving van het predikaat waarmee gebruikers kunnen zien welke waarde ze moeten typen. |
 | PredicateReferences | 1: n | Een lijst met predikaten-verwijzingen. |
@@ -215,7 +215,7 @@ Het **PredicateReferences** -element bevat de volgende kenmerken:
 
 Het **PredicateReferences** -element bevat de volgende elementen:
 
-| Element | Instanties | Beschrijving |
+| Element | Instanties | Description |
 | ------- | ----------- | ----------- |
 | PredicateReference | 1: n | Een verwijzing naar een predikaat. |
 

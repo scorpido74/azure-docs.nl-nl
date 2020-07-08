@@ -12,10 +12,10 @@ ms.author: mimart
 ms.subservice: B2C
 ms.custom: fasttrack-edit
 ms.openlocfilehash: a0131e461f2664fa06fc0e24237aec1579bd253c
-ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/23/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85203840"
 ---
 # <a name="web-sign-in-with-openid-connect-in-azure-active-directory-b2c"></a>Webaanmelding met OpenID Connect Connect in Azure Active Directory B2C
@@ -71,7 +71,7 @@ id_token=eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsIng1dCI6Ik5HVEZ2ZEstZnl0aEV1Q...
 &state=arbitrary_data_you_can_receive_in_the_response
 ```
 
-| Parameter | Beschrijving |
+| Parameter | Description |
 | --------- | ----------- |
 | id_token | Het ID-token dat de toepassing heeft aangevraagd. U kunt het ID-token gebruiken om de identiteit van de gebruiker te verifiëren en een sessie met de gebruiker te starten. |
 | code | De autorisatie code die de toepassing heeft aangevraagd als u deze hebt gebruikt `response_type=code+id_token` . De toepassing kan de autorisatie code gebruiken om een toegangs token voor een doel bron aan te vragen. Autorisatie codes verlopen doorgaans na ongeveer 10 minuten. |
@@ -86,7 +86,7 @@ error=access_denied
 &state=arbitrary_data_you_can_receive_in_the_response
 ```
 
-| Parameter | Beschrijving |
+| Parameter | Description |
 | --------- | ----------- |
 | fout | Een code die kan worden gebruikt voor het classificeren van de typen fouten die optreden. |
 | error_description | Een specifiek fout bericht dat kan helpen bij het identificeren van de hoofd oorzaak van een verificatie fout. |
@@ -168,7 +168,7 @@ Een geslaagd token antwoord ziet er als volgt uit:
 }
 ```
 
-| Parameter | Beschrijving |
+| Parameter | Description |
 | --------- | ----------- |
 | not_before | Het tijdstip waarop het token als geldig wordt beschouwd in de epoche-tijd. |
 | token_type | De waarde van het token type. `Bearer`is het enige type dat wordt ondersteund. |
@@ -186,7 +186,7 @@ Fout berichten zien er als volgt uit:
 }
 ```
 
-| Parameter | Beschrijving |
+| Parameter | Description |
 | --------- | ----------- |
 | fout | Een code die kan worden gebruikt voor het classificeren van typen fouten die optreden. |
 | error_description | Een bericht dat kan helpen bij het identificeren van de hoofd oorzaak van een verificatie fout. |
@@ -237,7 +237,7 @@ Een geslaagd token antwoord ziet er als volgt uit:
 }
 ```
 
-| Parameter | Beschrijving |
+| Parameter | Description |
 | --------- | ----------- |
 | not_before | Het tijdstip waarop het token als geldig wordt beschouwd in de epoche-tijd. |
 | token_type | De waarde van het token type. `Bearer`is het enige type dat wordt ondersteund. |
@@ -255,7 +255,7 @@ Fout berichten zien er als volgt uit:
 }
 ```
 
-| Parameter | Beschrijving |
+| Parameter | Description |
 | --------- | ----------- |
 | fout | Een code die kan worden gebruikt voor het classificeren van typen fouten die optreden. |
 | error_description | Een bericht dat kan helpen bij het identificeren van de hoofd oorzaak van een verificatie fout. |

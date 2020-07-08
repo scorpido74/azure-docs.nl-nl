@@ -7,10 +7,10 @@ ms.reviewer: divswa, logicappspm
 ms.topic: conceptual
 ms.date: 06/05/2020
 ms.openlocfilehash: 384335898c7cd6b379c6107152b49e9931cf513a
-ms.sourcegitcommit: 3988965cc52a30fc5fed0794a89db15212ab23d7
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/22/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85194966"
 ---
 # <a name="data-security-and-privacy-policies-for-google-connectors-in-azure-logic-apps"></a>Beleid voor gegevens beveiliging en privacy voor Google connectors in Azure Logic Apps
@@ -102,7 +102,7 @@ Voer de volgende stappen uit om de client-ID en het client geheim te gebruiken v
    |----------|-------|-------------|
    | **Verificatie type** | **Uw eigen toepassing meenemen** | Hiermee geeft u op dat u uw eigen client-app voor verificatie wilt gebruiken. |
    | **Client-id** | <*client-ID*> | De client-ID van uw Google client-app |
-   | **Client Secret** | <*client-geheim*> | Het client geheim van uw Google client-app |
+   | **Clientgeheim** | <*client-geheim*> | Het client geheim van uw Google client-app |
    ||||
 
 1. Wanneer u klaar bent, selecteert u **Aanmelden**.

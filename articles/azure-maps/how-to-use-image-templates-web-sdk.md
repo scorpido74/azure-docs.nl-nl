@@ -10,10 +10,10 @@ services: azure-maps
 manager: cpendleton
 ms.custom: codepen
 ms.openlocfilehash: 28fee67ccfc1e67d89d0151c8e14bd7c0b688749
-ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/23/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85207087"
 ---
 # <a name="how-to-use-image-templates"></a>Afbeeldingssjablonen gebruiken
@@ -119,7 +119,7 @@ Zie de <a href='https://codepen.io/azuremaps/pen/EqQvzq/'>HTML-markering van de 
 
 Als uw toepassing gebruikmaakt van hetzelfde pictogram met verschillende pictogrammen of als u een module maakt waarmee extra afbeeldings sjablonen worden toegevoegd, kunt u deze pictogrammen eenvoudig toevoegen en ophalen uit de Azure Maps Web-SDK. Gebruik de volgende statische functies in de `atlas` naam ruimte.
 
-| Name | Retour type | Beschrijving | 
+| Name | Retour type | Description | 
 |-|-|-|
 | `addImageTemplate(templateName: string, template: string, override: boolean)` | | Hiermee voegt u een aangepaste SVG-afbeeldings sjabloon toe aan de Atlas-naam ruimte. |
 |  `getImageTemplate(templateName: string, scale?: number)`| tekenreeks | Hiermee wordt een SVG-sjabloon met de naam opgehaald. |
@@ -127,7 +127,7 @@ Als uw toepassing gebruikmaakt van hetzelfde pictogram met verschillende pictogr
 
 SVG-afbeeldings sjablonen ondersteunen de volgende waarden voor de tijdelijke aanduiding:
 
-| Tijdelijke aanduiding | Beschrijving |
+| Tijdelijke aanduiding | Description |
 |-|-|
 | `{color}` | De primaire kleur. | 
 | `{secondaryColor}` | De secundaire kleur. | 

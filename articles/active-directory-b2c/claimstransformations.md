@@ -11,10 +11,10 @@ ms.date: 09/10/2018
 ms.author: mimart
 ms.subservice: B2C
 ms.openlocfilehash: 37d9bd78a80ac52d2a790537bf47e33807720349
-ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/23/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85202956"
 ---
 # <a name="claimstransformations"></a>ClaimsTransformations
@@ -59,7 +59,7 @@ Het **ClaimsTransformation** -element bevat de volgende elementen:
 ```
 
 
-| Element | Instanties | Beschrijving |
+| Element | Instanties | Description |
 | ------- | -------- | ----------- |
 | InputClaims | 0:1 | Een lijst met **input claim** -elementen waarmee claim typen worden opgegeven die worden gebruikt als invoer voor de claims-trans formatie. Elk van deze elementen bevat een verwijzing naar een claim type dat al is gedefinieerd in de sectie ClaimsSchema in het beleid. |
 | Invoer parameters | 0:1 | Een lijst met **input parameter** -elementen die als invoer voor de claim transformatie worden opgegeven.
@@ -69,7 +69,7 @@ Het **ClaimsTransformation** -element bevat de volgende elementen:
 
 Het element **InputClaims** bevat het volgende element:
 
-| Element | Instanties | Beschrijving |
+| Element | Instanties | Description |
 | ------- | ----------- | ----------- |
 | Input claim | 1: n | Een verwachte invoer claim type. |
 
@@ -86,7 +86,7 @@ Het **input claim** -element bevat de volgende kenmerken:
 
 Het element **Input parameters** bevat het volgende element:
 
-| Element | Instanties | Beschrijving |
+| Element | Instanties | Description |
 | ------- | ----------- | ----------- |
 | Parameter | 1: n | Een verwachte invoer parameter. |
 
@@ -102,7 +102,7 @@ Het element **Input parameters** bevat het volgende element:
 
 Het element **OutputClaims** bevat het volgende element:
 
-| Element | Instanties | Beschrijving |
+| Element | Instanties | Description |
 | ------- | ----------- | ----------- |
 | Output claim | 0: n | Een verwacht type uitvoer claim. |
 
@@ -159,7 +159,7 @@ U kunt bijvoorbeeld de laatste versie van uw service voorwaarden opslaan die de 
 
 Voor voor beelden van claim transformaties raadpleegt u de volgende referentie pagina's:
 
-- [Booleaans](boolean-transformations.md)
+- [Boolean-waarde](boolean-transformations.md)
 - [Date](date-transformations.md)
 - [Geheel getal](integer-transformations.md)
 - [JSON](json-transformations.md)

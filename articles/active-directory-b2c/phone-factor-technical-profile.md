@@ -12,10 +12,10 @@ ms.date: 03/31/2020
 ms.author: mimart
 ms.subservice: B2C
 ms.openlocfilehash: 10d5fda526c41704381bb544bdfd0589063c1d15
-ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/23/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85203857"
 ---
 # <a name="define-a-phone-factor-technical-profile-in-an-azure-active-directory-b2c-custom-policy"></a>Een technisch profiel voor telefoon factor definiëren in een Azure Active Directory B2C aangepast beleid
@@ -57,7 +57,7 @@ Het InputClaimsTransformations-element kan een verzameling invoer claim transfor
 
 Het element InputClaims moet de volgende claims bevatten. U kunt de naam van uw claim ook toewijzen aan de naam die is gedefinieerd in het technische profiel voor telefoon factor. 
 
-|  Gegevenstype| Vereist | Beschrijving |
+|  Gegevenstype| Vereist | Description |
 | --------- | -------- | ----------- | 
 | tekenreeks| Yes | Een unieke id voor de gebruiker. De claim naam of PartnerClaimType moet worden ingesteld op `UserId` . Deze claim mag geen persoonlijke gegevens bevatten.|
 | tekenreeks| Yes | Lijst met claim typen. Elke claim bevat één telefoon nummer. Als een van de invoer claims geen telefoon nummer bevat, wordt de gebruiker gevraagd om een nieuw telefoon nummer in te schrijven en te verifiëren. Het gevalideerde telefoon nummer wordt geretourneerd als een uitvoer claim. Als een van de invoer claims een telefoon nummer bevat, wordt de gebruiker gevraagd om dit te verifiëren. Als meerdere invoer claims een telefoon nummer bevatten, wordt de gebruiker gevraagd een van de telefoon nummers te kiezen en te controleren. |
