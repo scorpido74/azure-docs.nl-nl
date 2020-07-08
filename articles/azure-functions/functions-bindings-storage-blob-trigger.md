@@ -7,10 +7,9 @@ ms.date: 02/13/2020
 ms.author: cshoe
 ms.custom: tracking-python
 ms.openlocfilehash: c88ace8693d15a58c78c70ba46001c98e92fc0a6
-ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/09/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84559985"
 ---
 # <a name="azure-blob-storage-trigger-for-azure-functions"></a>Azure Blob-opslag trigger voor Azure Functions
@@ -59,9 +58,9 @@ Met de teken reeks `{name}` in het pad van de BLOB-trigger `samples-workitems/{n
 
 # <a name="c-script"></a>[C#-script](#tab/csharp-script)
 
-In het volgende voor beeld ziet u een binding van een BLOB-trigger in een *Function. json* -bestand en code die gebruikmaakt van de binding. De functie schrijft een logboek wanneer een BLOB wordt toegevoegd of bijgewerkt in de `samples-workitems` [container](../storage/blobs/storage-blobs-introduction.md#blob-storage-resources).
+In het volgende voor beeld ziet u een binding van een BLOB-trigger in een *function.jsvoor* een bestand en code die gebruikmaakt van de binding. De functie schrijft een logboek wanneer een BLOB wordt toegevoegd of bijgewerkt in de `samples-workitems` [container](../storage/blobs/storage-blobs-introduction.md#blob-storage-resources).
 
-Hier vindt u de bindings gegevens in het bestand *Function. json* :
+Hier vindt u de bindings gegevens in de *function.js* in het bestand:
 
 ```json
 {
@@ -80,7 +79,7 @@ Hier vindt u de bindings gegevens in het bestand *Function. json* :
 
 Met de teken reeks `{name}` in het pad van de BLOB-trigger `samples-workitems/{name}` maakt u een [bindings expressie](./functions-bindings-expressions-patterns.md) die u in functie code kunt gebruiken om toegang te krijgen tot de bestands naam van de activerings-blob. Zie voor meer informatie [BLOB name patronen](#blob-name-patterns) verderop in dit artikel.
 
-Zie de sectie [configuratie](#configuration) bevat een uitleg van deze eigenschappen voor meer informatie over de bestands eigenschappen van de *functie. json* .
+Zie de sectie [configuratie](#configuration) bevat een uitleg van deze eigenschappen voor meer informatie over *function.jsvan* bestands eigenschappen.
 
 Dit is de C#-script code die wordt gekoppeld aan een `Stream` :
 
@@ -106,9 +105,9 @@ public static void Run(CloudBlockBlob myBlob, string name, ILogger log)
 
 # <a name="javascript"></a>[JavaScript](#tab/javascript)
 
-In het volgende voor beeld ziet u een binding van een BLOB-trigger in een *Function. json* -bestand en [Java script-code](functions-reference-node.md) die gebruikmaakt van de binding. De functie schrijft een logboek wanneer een BLOB wordt toegevoegd of bijgewerkt in de `samples-workitems` container.
+In het volgende voor beeld ziet u een binding van een BLOB-trigger in een *function.jsin* bestand-en [Java script-code](functions-reference-node.md) die gebruikmaakt van de binding. De functie schrijft een logboek wanneer een BLOB wordt toegevoegd of bijgewerkt in de `samples-workitems` container.
 
-Hier is het bestand *Function. json* :
+Dit is de *function.jsvoor* het volgende bestand:
 
 ```json
 {
@@ -127,7 +126,7 @@ Hier is het bestand *Function. json* :
 
 Met de teken reeks `{name}` in het pad van de BLOB-trigger `samples-workitems/{name}` maakt u een [bindings expressie](./functions-bindings-expressions-patterns.md) die u in functie code kunt gebruiken om toegang te krijgen tot de bestands naam van de activerings-blob. Zie voor meer informatie [BLOB name patronen](#blob-name-patterns) verderop in dit artikel.
 
-Zie de sectie [configuratie](#configuration) bevat een uitleg van deze eigenschappen voor meer informatie over de bestands eigenschappen van de *functie. json* .
+Zie de sectie [configuratie](#configuration) bevat een uitleg van deze eigenschappen voor meer informatie over *function.jsvan* bestands eigenschappen.
 
 Dit is de Java script-code:
 
@@ -140,9 +139,9 @@ module.exports = function(context) {
 
 # <a name="python"></a>[Python](#tab/python)
 
-In het volgende voor beeld ziet u een binding van een BLOB-trigger in een *Function. json* -bestand en [python-code](functions-reference-python.md) die gebruikmaakt van de binding. De functie schrijft een logboek wanneer een BLOB wordt toegevoegd of bijgewerkt in de `samples-workitems` [container](../storage/blobs/storage-blobs-introduction.md#blob-storage-resources).
+In het volgende voor beeld ziet u een binding van een BLOB-trigger in een *function.jsin* het bestand en de [python-code](functions-reference-python.md) die gebruikmaakt van de binding. De functie schrijft een logboek wanneer een BLOB wordt toegevoegd of bijgewerkt in de `samples-workitems` [container](../storage/blobs/storage-blobs-introduction.md#blob-storage-resources).
 
-Hier is het bestand *Function. json* :
+Dit is de *function.jsvoor* het volgende bestand:
 
 ```json
 {
@@ -162,7 +161,7 @@ Hier is het bestand *Function. json* :
 
 Met de teken reeks `{name}` in het pad van de BLOB-trigger `samples-workitems/{name}` maakt u een [bindings expressie](./functions-bindings-expressions-patterns.md) die u in functie code kunt gebruiken om toegang te krijgen tot de bestands naam van de activerings-blob. Zie voor meer informatie [BLOB name patronen](#blob-name-patterns) verderop in dit artikel.
 
-Zie de sectie [configuratie](#configuration) bevat een uitleg van deze eigenschappen voor meer informatie over de bestands eigenschappen van de *functie. json* .
+Zie de sectie [configuratie](#configuration) bevat een uitleg van deze eigenschappen voor meer informatie over *function.jsvan* bestands eigenschappen.
 
 Dit is de python-code:
 
@@ -273,9 +272,9 @@ Het `@BlobTrigger` kenmerk wordt gebruikt om u toegang te geven tot de BLOB waar
 
 ## <a name="configuration"></a>Configuratie
 
-De volgende tabel bevat informatie over de binding configuratie-eigenschappen die u hebt ingesteld in het bestand *Function. json* en het- `BlobTrigger` kenmerk.
+De volgende tabel bevat uitleg over de binding configuratie-eigenschappen die u hebt ingesteld in de *function.jsvoor* het bestand en het `BlobTrigger` kenmerk.
 
-|function. json-eigenschap | Kenmerk eigenschap |Beschrijving|
+|function.jsbij eigenschap | Kenmerk eigenschap |Description|
 |---------|---------|----------------------|
 |**type** | N.v.t. | Moet worden ingesteld op `blobTrigger` . Deze eigenschap wordt automatisch ingesteld wanneer u de trigger maakt in de Azure Portal.|
 |**direction** | N.v.t. | Moet worden ingesteld op `in` . Deze eigenschap wordt automatisch ingesteld wanneer u de trigger maakt in de Azure Portal. Uitzonde ringen worden vermeld in de sectie [gebruik](#usage) . |
@@ -297,7 +296,7 @@ De volgende tabel bevat informatie over de binding configuratie-eigenschappen di
 
 # <a name="javascript"></a>[JavaScript](#tab/javascript)
 
-Toegang krijgen tot BLOB-gegevens die `context.bindings.<NAME>` `<NAME>` overeenkomen met de waarde die is gedefinieerd in *Function. json*.
+Toegang krijgen tot BLOB-gegevens die `context.bindings.<NAME>` `<NAME>` overeenkomen met de waarde die is gedefinieerd in *function.jsop*.
 
 # <a name="python"></a>[Python](#tab/python)
 
@@ -311,7 +310,7 @@ Het `@BlobTrigger` kenmerk wordt gebruikt om u toegang te geven tot de BLOB waar
 
 ## <a name="blob-name-patterns"></a>Patronen voor BLOB-naam
 
-U kunt een patroon van een BLOB-naam opgeven in de `path` eigenschap in *Function. json* of in de `BlobTrigger` kenmerk-constructor. Het naam patroon kan een [filter of een bindings expressie](./functions-bindings-expressions-patterns.md)zijn. De volgende secties bevatten voor beelden.
+U kunt een patroon van een BLOB-naam opgeven in de `path` eigenschap in *function.jsop* of in de `BlobTrigger` kenmerk-constructor. Het naam patroon kan een [filter of een bindings expressie](./functions-bindings-expressions-patterns.md)zijn. De volgende secties bevatten voor beelden.
 
 ### <a name="get-file-name-and-extension"></a>Bestands naam en-extensie ophalen
 
@@ -321,7 +320,7 @@ In het volgende voor beeld ziet u hoe u een afzonderlijke binding maakt met de n
 "path": "input/{blobname}.{blobextension}",
 ```
 
-Als de BLOB de naam *Original-Blob1. txt*heeft, zijn de waarden van de `blobname` `blobextension` variabelen en in functie code *oorspronkelijk-Blob1* en *txt*.
+Als de BLOB de naam *original-Blob1.txt*heeft, zijn de waarden van de `blobname` `blobextension` variabelen en in functie code *oorspronkelijk-Blob1* en *txt*.
 
 ### <a name="filter-on-blob-name"></a>Filteren op blobnaam
 
@@ -331,7 +330,7 @@ Het volgende voor beeld wordt alleen geactiveerd op blobs in de `input` containe
 "path": "input/original-{name}",
 ```
 
-Als de naam van de BLOB *Original-Blob1. txt*is, is de waarde van de `name` variabele in functie code `Blob1` .
+Als de naam van de BLOB *original-Blob1.txt*is, is de waarde van de `name` variabele in functie code `Blob1` .
 
 ### <a name="filter-on-file-type"></a>Filteren op bestands type
 
@@ -349,7 +348,7 @@ Als u wilt zoeken naar accolades in bestands namen, plaatst u de accolades met b
 "path": "images/{{20140101}}-{name}",
 ```
 
-Als de BLOB de naam * {20140101} -soundfile. mp3*heeft, `name` is de waarde van de variabele in de functie code *soundfile. mp3*.
+Als de BLOB de naam * {20140101}-soundfile.mp3*heeft, `name` wordt de waarde van de variabele in de functie code *soundfile.mp3*.
 
 ## <a name="metadata"></a>Metagegevens
 
@@ -408,7 +407,7 @@ Als alle 5 pogingen mislukken, Azure Functions een bericht aan een opslag wachtr
 
 ## <a name="concurrency-and-memory-usage"></a>Gelijktijdigheid en geheugen gebruik
 
-De BLOB-trigger maakt intern gebruik van een wachtrij, waardoor het maximum aantal gelijktijdige functie aanroepen wordt bepaald door de [wachtrij configuratie in host. json](functions-host-json.md#queues). De standaard instellingen beperken de gelijktijdigheid tot 24 aanroepen. Deze limiet geldt afzonderlijk voor elke functie die gebruikmaakt van een BLOB-trigger.
+De BLOB-trigger maakt intern gebruik van een wachtrij, waardoor het maximum aantal gelijktijdige functie aanroepen wordt bepaald door de [wachtrij configuratie in host.jsop](functions-host-json.md#queues). De standaard instellingen beperken de gelijktijdigheid tot 24 aanroepen. Deze limiet geldt afzonderlijk voor elke functie die gebruikmaakt van een BLOB-trigger.
 
 [Het verbruiks plan](functions-scale.md#how-the-consumption-and-premium-plans-work) beperkt een functie-app op één virtuele machine (VM) tot 1,5 GB aan geheugen. Het geheugen wordt gebruikt door elk gelijktijdig uitgevoerde functie-exemplaar en door de functions-runtime zelf. Als een door BLOB geactiveerde functie de volledige Blob in het geheugen laadt, is de maximale hoeveelheid geheugen die door de functie wordt gebruikt alleen voor blobs 24 * maximum grootte van BLOB. Een functie-app met drie door BLOB geactiveerde functies en de standaard instellingen hebben bijvoorbeeld een Maxi maal per VM gelijktijdigheid van 3 * 24 = 72 functie aanroepen.
 

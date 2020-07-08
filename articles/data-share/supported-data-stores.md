@@ -7,10 +7,9 @@ ms.author: joanpo
 ms.topic: conceptual
 ms.date: 10/30/2019
 ms.openlocfilehash: e0daa2b02c16d8d5a65b5e7e0f983a4f47181d40
-ms.sourcegitcommit: ce44069e729fce0cf67c8f3c0c932342c350d890
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/09/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84635965"
 ---
 # <a name="supported-data-stores-in-azure-data-share"></a>Ondersteunde gegevens archieven in azure data share
@@ -68,4 +67,4 @@ Azure Data Explorer ondersteunt twee modi voor gegevens opname: batch en streami
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Ga door naar de zelf studie [uw gegevens delen](share-your-data.md) voor meer informatie over het delen van gegevens.
+Voor meer informatie over hoe u gegevens kunt beginnen delen, gaat u verder naar de zelfstudie [uw gegevens delen](share-your-data.md).

@@ -9,10 +9,9 @@ ms.topic: reference
 ms.date: 01/21/2020
 ms.author: femila
 ms.openlocfilehash: 3104d29b84b08add89e7c19772dffaaa782755a1
-ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/09/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84559415"
 ---
 # <a name="azure-event-grid-event-schema"></a>Azure Event Grid-gebeurtenis schema
@@ -83,11 +82,11 @@ Alle gebeurtenissen hebben dezelfde gegevens op het hoogste niveau:
 | Eigenschap | Type | Vereist | Beschrijving |
 | -------- | ---- | -------- | ----------- |
 | onderwerp | tekenreeks | Nee, maar indien opgenomen, moet overeenkomen met het Event Grid onderwerp Azure Resource Manager ID precies. Als dat niet het geval is, ontvangt Event Grid een stempel op het evenement. | Volledige bronpad naar de bron van de gebeurtenis. Dit veld is niet beschrijfbaar. Event Grid biedt deze waarde. |
-| Onderwerp | tekenreeks | Ja | Het door de uitgever gedefinieerde pad naar het gebeurtenisonderwerp. |
-| eventType | tekenreeks | Ja | Een van de geregistreerde gebeurtenistypen voor deze gebeurtenisbron. |
-| eventTime | tekenreeks | Ja | Het tijdstip waarop de gebeurtenis is gegenereerd op basis van de UTC-tijd van de provider. |
-| id | tekenreeks | Ja | De unieke id voor de gebeurtenis. |
-| data | object | Nee | Gebeurtenis gegevens die specifiek zijn voor de resource provider. |
+| Onderwerp | tekenreeks | Yes | Het door de uitgever gedefinieerde pad naar het gebeurtenisonderwerp. |
+| Type | tekenreeks | Yes | Een van de geregistreerde gebeurtenistypen voor deze gebeurtenisbron. |
+| eventTime | tekenreeks | Yes | Het tijdstip waarop de gebeurtenis is gegenereerd op basis van de UTC-tijd van de provider. |
+| id | tekenreeks | Yes | De unieke id voor de gebeurtenis. |
+| gegevens | object | No | Gebeurtenis gegevens die specifiek zijn voor de resource provider. |
 | dataVersion | tekenreeks | Nee, maar wordt voorzien van een lege waarde. | De schemaversie van het gegevensobject. De uitgever definieert de schemaversie. |
 | metadataVersion | tekenreeks | Niet vereist, maar indien opgenomen, moet exact overeenkomen met het Event Grid schema, `metadataVersion` op dit moment `1` . Als dat niet het geval is, ontvangt Event Grid een stempel op het evenement. | De schemaversie van de metagegevens van de gebeurtenis. Event Grid definieert het schema voor de eigenschappen op het hoogste niveau. Event Grid biedt deze waarde. |
 

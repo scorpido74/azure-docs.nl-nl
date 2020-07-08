@@ -8,10 +8,9 @@ ms.topic: conceptual
 ms.date: 04/23/2020
 ms.author: femila
 ms.openlocfilehash: 8fbae3fad4aeb85022c804e1ac648060360c6531
-ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/09/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84560636"
 ---
 # <a name="azure-event-grid-event-schema-for-signalr-service"></a>Azure Event Grid-gebeurtenis schema voor de signaal service
@@ -24,7 +23,7 @@ Dit artikel bevat de eigenschappen en het schema voor de seingevings service-geb
 
 De seingevings service verzendt de volgende gebeurtenis typen:
 
-| Gebeurtenistype | Beschrijving |
+| Gebeurtenistype | Description |
 | ---------- | ----------- |
 | Micro soft. SignalRService. ClientConnectionConnected | Deze gebeurtenis treedt op wanneer een verbinding met een client is gemaakt. |
 | Micro soft. SignalRService. ClientConnectionDisconnected | Deze gebeurtenis treedt op wanneer de verbinding van een client verbinding is verbroken. |
@@ -80,10 +79,10 @@ Een gebeurtenis heeft de volgende gegevens op het hoogste niveau:
 | -------- | ---- | ----------- |
 | onderwerp | tekenreeks | Volledige bronpad naar de bron van de gebeurtenis. Dit veld kan niet worden geschreven. Event Grid biedt deze waarde. |
 | Onderwerp | tekenreeks | Het door de uitgever gedefinieerde pad naar het gebeurtenisonderwerp. |
-| eventType | tekenreeks | Een van de geregistreerde gebeurtenistypen voor deze gebeurtenisbron. |
+| Type | tekenreeks | Een van de geregistreerde gebeurtenistypen voor deze gebeurtenisbron. |
 | eventTime | tekenreeks | Het tijdstip waarop de gebeurtenis is gegenereerd op basis van de UTC-tijd van de provider. |
 | id | tekenreeks | De unieke id voor de gebeurtenis. |
-| data | object | Gebeurtenis gegevens van de signaal/service. |
+| gegevens | object | Gebeurtenis gegevens van de signaal/service. |
 | dataVersion | tekenreeks | De schemaversie van het gegevensobject. De uitgever definieert de schemaversie. |
 | metadataVersion | tekenreeks | De schemaversie van de metagegevens van de gebeurtenis. Event Grid definieert het schema voor de eigenschappen op het hoogste niveau. Event Grid biedt deze waarde. |
 

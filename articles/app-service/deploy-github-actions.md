@@ -8,10 +8,9 @@ ms.author: jafreebe
 ms.reviewer: ushan
 ms.custom: tracking-python
 ms.openlocfilehash: b40da0c8746bc63a99394027b61d777a611727e3
-ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/09/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84559597"
 ---
 # <a name="deploy-to-app-service-using-github-actions"></a>Implementeren naar App Service met behulp van GitHub-acties
@@ -194,7 +193,7 @@ Als u uw code wilt implementeren in een App Service-app, gebruikt u de `azure/we
 
 ### <a name="deploy-using-publish-profile"></a>Implementeren met een publicatie profiel
 
-Hieronder ziet u de voorbeeld werk stroom voor het maken en implementeren van een node. js-app in azure met behulp van een publicatie profiel.
+Hieronder ziet u de voorbeeld werk stroom voor het maken en implementeren van een Node.js-app in azure met behulp van een publicatie profiel.
 
 ```yaml
 # File: .github/workflows/workflow.yml
@@ -228,7 +227,7 @@ jobs:
 
 ### <a name="deploy-using-azure-service-principal"></a>Implementeren met behulp van de service-principal van Azure
 
-Hieronder ziet u de voorbeeld werk stroom voor het maken en implementeren van een node. js-app in azure met behulp van een Azure-Service-Principal.
+Hieronder ziet u de voorbeeld werk stroom voor het maken en implementeren van een Node.js-app in azure met behulp van een Azure-Service-Principal.
 
 ```yaml
 on: [push]

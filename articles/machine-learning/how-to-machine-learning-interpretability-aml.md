@@ -12,10 +12,9 @@ ms.reviewer: Luis.Quintanilla
 ms.date: 04/12/2020
 ms.custom: tracking-python
 ms.openlocfilehash: 32b33eed6b4dba303993f4c16fbd2ad42b3902f9
-ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/09/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84560210"
 ---
 # <a name="use-the-interpretability-package-to-explain-ml-models--predictions-in-python"></a>Gebruik het vertolkings pakket om ML-modellen & voor spellingen in python uit te leggen
@@ -304,7 +303,7 @@ Nadat u de uitleg in uw lokale Jupyter-notebook hebt gedownload, kunt u het visu
 
 De volgende grafieken bieden een algemeen overzicht van het getrainde model samen met de voor spellingen en toelichtingen.
 
-|Ontwerp|Beschrijving|
+|Ontwerp|Description|
 |----|-----------|
 |Gegevens verkennen| Geeft een overzicht van de gegevensset samen met Voorspellings waarden.|
 |Wereld wijd belang|Aggregateert de belang rijke waarden van de functie van afzonderlijke data Points om de algemene belangrijkste K (Configureer bare K) belangrijkste functies van het model weer te geven. Hiermee wordt het algemene gedrag van het onderliggende model duidelijker.|
@@ -318,7 +317,7 @@ De volgende grafieken bieden een algemeen overzicht van het getrainde model same
 
 U kunt het urgentie diagram van de afzonderlijke functie voor elk gegevens punt laden door te klikken op een van de afzonderlijke gegevens punten in een van de algemene grafieken.
 
-|Ontwerp|Beschrijving|
+|Ontwerp|Description|
 |----|-----------|
 |Lokale urgentie|Hier worden de belangrijkste K (Configureer bare K) belang rijke functies voor een afzonderlijke voor spelling weer gegeven. Helpt het lokale gedrag van het onderliggende model op een specifiek gegevens punt te illustreren.|
 |Perturbation exploratie (wat als-analyse)|Hiermee kunnen de functie waarden van het geselecteerde gegevens punt worden gewijzigd en worden de resulterende wijzigingen in de Voorspellings waarde geobserveerd.|

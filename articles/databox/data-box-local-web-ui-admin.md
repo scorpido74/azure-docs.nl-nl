@@ -9,10 +9,9 @@ ms.topic: how-to
 ms.date: 06/03/2019
 ms.author: alkohli
 ms.openlocfilehash: 4e16f57d7a8ee10ef870ac102c5458cea4946304
-ms.sourcegitcommit: 1de57529ab349341447d77a0717f6ced5335074e
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/09/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84608244"
 ---
 # <a name="use-the-local-web-ui-to-administer-your-data-box-and-data-box-heavy"></a>Gebruik de lokale web-UI voor het beheren van uw Data Box en Data Box Heavy
@@ -105,8 +104,8 @@ Voordat u begint, moet u ervoor zorgen dat uw apparaat **voorbereiding voor verz
     |databoxe2etest_AzFile-BOM.txt    |Azure Files         |SMB/NFS         |
     |databoxe2etest_PageBlock_Rest-BOM.txt     |Pagina-blobs         |REST        |
     |databoxe2etest_BlockBlock_Rest-BOM.txt    |Blok-blobs         |REST         |
-    |mydbmdrg1_MDisk-BOM. txt    |Managed Disk         |SMB/NFS         |
-    |mydbmdrg2_MDisk-BOM. txt     |Managed Disk         |SMB/NFS         |
+    |mydbmdrg1_MDisk-BOM.txt    |Managed Disk         |SMB/NFS         |
+    |mydbmdrg2_MDisk-BOM.txt     |Managed Disk         |SMB/NFS         |
 
 U kunt deze lijst gebruiken om de bestanden die zijn geüpload naar het Azure Storage-account te controleren nadat de Data Box is geretourneerd naar het Azure-datacenter. Hieronder ziet u een voorbeeld van een manifestbestand.
 

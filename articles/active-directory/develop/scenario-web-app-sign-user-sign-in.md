@@ -12,10 +12,9 @@ ms.date: 10/30/2019
 ms.author: jmprieur
 ms.custom: aaddev, tracking-python
 ms.openlocfilehash: 41124e7237c2c16034fe8cce1fa89fa0132d09b7
-ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/09/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84558923"
 ---
 # <a name="web-app-that-signs-in-users-sign-in-and-sign-out"></a>Web-app die gebruikers aanmeldt: aanmelden en afmelden
@@ -74,7 +73,7 @@ else
 
 # <a name="java"></a>[Java](#tab/java)
 
-In de Java Quick Start bevindt de aanmeldings knop zich in het [main/resources/templates/index.html](https://github.com/Azure-Samples/ms-identity-java-webapp/blob/master/msal-java-webapp-sample/src/main/resources/templates/index.html) -bestand.
+In onze Java Quick Start bevindt de aanmeldings knop zich in het bestand [main/resources/templates/index.html](https://github.com/Azure-Samples/ms-identity-java-webapp/blob/master/msal-java-webapp-sample/src/main/resources/templates/index.html) .
 
 ```html
 <!DOCTYPE html>
@@ -291,7 +290,7 @@ else
 
 # <a name="java"></a>[Java](#tab/java)
 
-In de Java-Snelstartgids bevindt de afmeldings knop zich in het main/resources/templates/auth_page.html-bestand.
+In de Java-Snelstartgids bevindt de afmeldings knop zich in het bestand main/resources/templates/auth_page.html.
 
 ```html
 <!DOCTYPE html>
@@ -306,7 +305,7 @@ In de Java-Snelstartgids bevindt de afmeldings knop zich in het main/resources/t
 
 # <a name="python"></a>[Python](#tab/python)
 
-In de Quick Start van python bevindt de afmeldings knop zich in het bestand [Templates/index. html # L10](https://github.com/Azure-Samples/ms-identity-python-webapp/blob/e03be352914bfbd58be0d4170eba1fb7a4951d84/templates/index.html#L10) .
+In de Quick Start van python bevindt de afmeldings knop zich in het bestand [Templates/index.html # L10](https://github.com/Azure-Samples/ms-identity-python-webapp/blob/e03be352914bfbd58be0d4170eba1fb7a4951d84/templates/index.html#L10) .
 
 ```html
 <!DOCTYPE html>
@@ -335,7 +334,7 @@ In eerdere versies van de ASP.NET core-sjablonen `Account` is de controller Inge
 - Aanroepen `Signout()` , waarmee de OpenID Connect Connect-verbinding kan maken met het micro soft Identity platform- `logout` eind punt. Het eind punt vervolgens:
 
   - Hiermee wordt de sessie cookie uit de browser gewist.
-  - Roept de afmeldings-URL terug. De afmeldings-URL geeft standaard de afgemelde weergave pagina [SignedOut. html](https://github.com/aspnet/AspNetCore/blob/master/src/Azure/AzureAD/Authentication.AzureAD.UI/src/Areas/AzureAD/Pages/Account/SignedOut.cshtml). Deze pagina wordt ook meegeleverd als onderdeel van micro soft. Identity. Web.
+  - Roept de afmeldings-URL terug. De afmeldings-URL geeft standaard de afgemelde pagina weer [SignedOut.html](https://github.com/aspnet/AspNetCore/blob/master/src/Azure/AzureAD/Authentication.AzureAD.UI/src/Areas/AzureAD/Pages/Account/SignedOut.cshtml). Deze pagina wordt ook meegeleverd als onderdeel van micro soft. Identity. Web.
 
 # <a name="aspnet"></a>[ASP.NET](#tab/aspnet)
 
@@ -418,11 +417,11 @@ public class AccountController : Controller
 
 # <a name="java"></a>[Java](#tab/java)
 
-De omleidings-URI van de post-afmelding wordt in de Java Quick Start alleen de pagina index. html weer gegeven.
+De omleidings-URI van de post-afmelding wordt in de Java Quick Start alleen de pagina index.html weer gegeven.
 
 # <a name="python"></a>[Python](#tab/python)
 
-In de Quick Start van python wordt met de omleidings-URI na afmelden alleen de pagina index. html weer gegeven.
+In de Quick Start van python geeft de omleidings-URI na afmelding alleen de index.html-pagina weer.
 
 ---
 
@@ -433,4 +432,4 @@ Als u meer wilt weten over afmelden, leest u de protocol documentatie die beschi
 ## <a name="next-steps"></a>Volgende stappen
 
 > [!div class="nextstepaction"]
-> [Verplaatsen naar productie](scenario-web-app-sign-user-production.md)
+> [Naar productie verplaatsen](scenario-web-app-sign-user-production.md)

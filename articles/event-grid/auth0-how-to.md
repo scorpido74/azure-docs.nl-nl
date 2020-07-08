@@ -8,10 +8,9 @@ ms.topic: conceptual
 ms.date: 05/18/2020
 ms.author: femila
 ms.openlocfilehash: bd8cebaad27857dbd2fe3c5ed61be63d3700a688
-ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/09/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84560755"
 ---
 # <a name="integrate-azure-event-grid-with-auth0"></a>Azure Event Grid integreren met Auth0
@@ -38,7 +37,7 @@ In Azure Portal:
 1. Selecteer het abonnement dat u gebruikt voor Event Grid
 1. Selecteer in het menu links onder instellingen de optie Resource providers
 1. Micro soft. EventGrid zoeken
-1. Selecteer registreren
+1. Selecteer Registreren
 1. Vernieuwen om ervoor te zorgen dat de status wordt gewijzigd in geregistreerd
 
 ### <a name="set-up-an-auth0-partner-topic"></a>Een Auth0-partner onderwerp instellen
@@ -70,7 +69,7 @@ Als u zich abonneert op het onderwerp van uw Auth0-partner, kunt u Event Grid wa
 
 1. Selecteer op de Blade partner onderwerp voor uw Auth0-integratie + gebeurtenis abonnement bovenaan.
 1. Op de pagina gebeurtenis abonnement maken:
-    1. Voer een naam in voor het gebeurtenis abonnement.
+    1. Voer een naam in voor het gebeurtenisabonnement.
     1. Selecteer de Azure-service of webhook die u hebt gemaakt voor het type eind punt.
     1. Volg de instructies voor de betreffende service.
     1. Klik op Maken.

@@ -9,10 +9,9 @@ ms.topic: conceptual
 ms.custom: hdinsightactive,hdiseo17may2017,seoapr2020, tracking-python
 ms.date: 04/27/2020
 ms.openlocfilehash: c67e8a79e2339c4a329e276c52703bd749137037
-ms.sourcegitcommit: 1de57529ab349341447d77a0717f6ced5335074e
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/09/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84608414"
 ---
 # <a name="use-apache-spark-mllib-to-build-a-machine-learning-application-and-analyze-a-dataset"></a>Apache Spark MLlib gebruiken om een machine learning-toepassing te bouwen en een gegevensset te analyseren
@@ -38,7 +37,7 @@ In samen vatting produceert het proces van logistiek regressie een *logistiek fu
 
 ## <a name="predictive-analysis-example-on-food-inspection-data"></a>Voor beeld van voorspellende analyse van gegevens over levensmiddelen inspecties
 
-In dit voor beeld gebruikt u Spark voor het uitvoeren van een bepaalde voorspellende analyse op levensmiddelen inspectie gegevens (**Food_Inspections1. CSV**). Gegevens die zijn verkregen via de [Data Portal van de stad van Chicago](https://data.cityofchicago.org/). Deze gegevensset bevat informatie over de inspecties van de levensmiddelen inrichting die in Chicago zijn uitgevoerd. Inclusief informatie over elke inrichting, de gevonden schendingen (indien van toepassing) en de resultaten van de controle. Het CSV-gegevens bestand is al beschikbaar in het opslag account dat is gekoppeld aan het cluster op **/hdisamples/hdisamples/foodinspectiondata/Food_Inspections1. CSV**.
+In dit voor beeld gebruikt u Spark voor het uitvoeren van een bepaalde voorspellende analyse op levensmiddelen inspectie gegevens (**Food_Inspections1.csv**). Gegevens die zijn verkregen via de [Data Portal van de stad van Chicago](https://data.cityofchicago.org/). Deze gegevensset bevat informatie over de inspecties van de levensmiddelen inrichting die in Chicago zijn uitgevoerd. Inclusief informatie over elke inrichting, de gevonden schendingen (indien van toepassing) en de resultaten van de controle. Het CSV-gegevens bestand is al beschikbaar in het opslag account dat is gekoppeld aan het cluster op **/HdiSamples/HdiSamples/FoodInspectionData/Food_Inspections1.csv**.
 
 In de onderstaande stappen ontwikkelt u een model om te zien wat er nodig is om een voedsel inspectie door te geven of uit te voeren.
 
@@ -252,7 +251,7 @@ model = pipeline.fit(labeledData)
 
 ## <a name="evaluate-the-model-using-another-dataset"></a>Het model evalueren met een andere gegevensset
 
-U kunt het model dat u eerder hebt gemaakt, gebruiken om te voors *pellen* wat de resultaten van nieuwe inspecties zijn. De voor spellingen zijn gebaseerd op de schendingen die zijn waargenomen. U hebt dit model getraind op de gegevensset **Food_Inspections1. CSV**. U kunt een tweede gegevensset, **Food_Inspections2. CSV**, gebruiken om de kracht van dit model op de nieuwe gegevens te *evalueren* . Deze tweede gegevensset (**Food_Inspections2. CSV**) bevindt zich in de standaard opslag container die aan het cluster is gekoppeld.
+U kunt het model dat u eerder hebt gemaakt, gebruiken om te voors *pellen* wat de resultaten van nieuwe inspecties zijn. De voor spellingen zijn gebaseerd op de schendingen die zijn waargenomen. U hebt dit model getraind op de gegevensset **Food_Inspections1.csv**. U kunt een tweede gegevensset **Food_Inspections2.csv**gebruiken om de kracht van dit model op de nieuwe gegevens te *evalueren* . Deze tweede gegevensset (**Food_Inspections2.csv**) bevindt zich in de standaard opslag container die aan het cluster is gekoppeld.
 
 1. Voer de volgende code uit om een nieuwe data frame te maken, **predictionsDf** die de voor spelling bevat die door het model is gegenereerd. Het fragment maakt ook een tijdelijke tabel met de naam voor **spellingen** op basis van de data frame.
 

@@ -4,10 +4,9 @@ description: Meer informatie over het verwijderen van de toegang tot resources d
 ms.date: 04/24/2020
 ms.topic: how-to
 ms.openlocfilehash: 2a8024a47b3f7ea461e4ea7648db7003889552cf
-ms.sourcegitcommit: ce44069e729fce0cf67c8f3c0c932342c350d890
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/09/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84636492"
 ---
 # <a name="remove-access-to-a-delegation"></a>Toegang tot een delegatie verwijderen

@@ -13,10 +13,9 @@ ms.reviewer: nibaccam
 ms.date: 01/09/2020
 ms.custom: tracking-python
 ms.openlocfilehash: c6d2e05104e2801129544b1cc91d3d7a00161f86
-ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/09/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84560156"
 ---
 # <a name="start-monitor-and-cancel-training-runs-in-python"></a>Trainings uitvoeringen in python starten, controleren en annuleren
@@ -403,7 +402,7 @@ Zie voor meer informatie over het uitvoeren van query's in azure CLI-resultaten 
 
 1. Gebruik de zoek balk om pijp lijnen te filteren met behulp van tags, beschrijvingen, namen van experimenten en naam indiener.
 
-## <a name="example-notebooks"></a>Voorbeeld notitieblokken
+## <a name="example-notebooks"></a>Voorbeeldnotebooks
 
 De volgende notitie blokken illustreren de concepten in dit artikel:
 

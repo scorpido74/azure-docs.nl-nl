@@ -11,10 +11,9 @@ author: nabhishek
 ms.author: abnarain
 manager: anandsub
 ms.openlocfilehash: c7880fd7fb687483409ce591059e0f5b2d2e2991
-ms.sourcegitcommit: 5a8c8ac84c36859611158892422fc66395f808dc
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/10/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84659708"
 ---
 # <a name="how-to-create-and-configure-azure-integration-runtime"></a>Azure Integration Runtime maken en configureren
@@ -48,11 +47,11 @@ U kunt een bestaande Azure IR configureren om de locatie ervan te wijzigen met b
 ### <a name="create-an-azure-ir-via-azure-data-factory-ui"></a>Een Azure IR maken via Azure Data Factory gebruikers interface
 Gebruik de volgende stappen om een Azure IR te maken met behulp van Azure Data Factory-gebruikers interface.
 
-1. Selecteer op de pagina **aan de slag** van Azure Data Factory gebruikers interface het [tabblad beheren](https://docs.microsoft.com/azure/data-factory/author-management-hub) in het deel venster uiterst links.
+1. Selecteer op de pagina **Aan de slag** van de gebruikersinterface van Azure Data Factory het [tabblad Beheren](https://docs.microsoft.com/azure/data-factory/author-management-hub) in het deelvenster uiterst links.
 
-   ![De knop Start pagina beheren](media/doc-common-process/get-started-page-manage-button.png)
+   ![De knop Beheren op de startpagina](media/doc-common-process/get-started-page-manage-button.png)
 
-1. Selecteer **integratie-Runtimes** in het linkerdeel venster en selecteer **+ Nieuw**.
+1. Selecteer **Integration Runtimes** in het linkerdeelvenster en selecteer vervolgens **+Nieuw**.
 
    ![Een Integration Runtime maken](media/doc-common-process/manage-new-integration-runtime.png)
 

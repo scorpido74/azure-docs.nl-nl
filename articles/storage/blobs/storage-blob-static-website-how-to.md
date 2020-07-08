@@ -8,10 +8,9 @@ ms.topic: conceptual
 ms.author: normesta
 ms.date: 03/04/2020
 ms.openlocfilehash: 1fb4e7cf589d63e9e595a35c34a2728d564b309b
-ms.sourcegitcommit: 1de57529ab349341447d77a0717f6ced5335074e
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/09/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84609927"
 ---
 # <a name="host-a-static-website-in-azure-storage"></a>Een statische website hosten in Azure Storage
@@ -34,11 +33,11 @@ Het hosten van statische websites is een functie die u moet inschakelen op het o
 
 4. Selecteer **Ingeschakeld** om het hosten van statische websites in te schakelen voor het opslagaccount.
 
-5. Geef in het veld **naam van index document** een standaard index pagina op (bijvoorbeeld: *index. html*). 
+5. Geef in het veld **naam van index document** een standaard index pagina op (bijvoorbeeld: *index.html*). 
 
    De standaardindexpagina wordt weergegeven wanneer een gebruiker naar de hoofdmap van uw statische website navigeert.  
 
-6. Geef in het veld **pad naar fout document** een standaardfouten pagina op (bijvoorbeeld: *404. html*). 
+6. Geef in het veld **pad naar fout document** een standaardfouten pagina op (bijvoorbeeld: *404.html*). 
 
    De standaardfoutpagina wordt weergegeven wanneer een gebruiker probeert te navigeren naar een pagina die niet in uw statische website bestaat.
 
@@ -72,7 +71,7 @@ U kunt statisch website hosting inschakelen met behulp van de [Azure-opdracht re
 
    * Vervang de `<error-document-name>` tijdelijke aanduiding door de naam van het fout document dat voor gebruikers wordt weer gegeven wanneer een browser een pagina op uw site aanvraagt die niet bestaat.
 
-   * Vervang de `<index-document-name>` tijdelijke aanduiding door de naam van het index document. Dit document is vaak "index. html".
+   * Vervang de `<index-document-name>` tijdelijke aanduiding door de naam van het index document. Dit document is vaak "index.html".
 
 ### <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
@@ -124,7 +123,7 @@ U kunt statisch website hosting inschakelen met behulp van de module Azure Power
 
    * Vervang de `<error-document-name>` tijdelijke aanduiding door de naam van het fout document dat voor gebruikers wordt weer gegeven wanneer een browser een pagina op uw site aanvraagt die niet bestaat.
 
-   * Vervang de `<index-document-name>` tijdelijke aanduiding door de naam van het index document. Dit document is vaak "index. html".
+   * Vervang de `<index-document-name>` tijdelijke aanduiding door de naam van het index document. Dit document is vaak "index.html".
 
 ---
 

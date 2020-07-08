@@ -12,10 +12,9 @@ ms.topic: conceptual
 ms.custom: seo-lt-2019; seo-dt-2019
 ms.date: 08/12/2019
 ms.openlocfilehash: ce1419c7dbb2cdecfd653995707fd1ece7798557
-ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/09/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84558186"
 ---
 # <a name="copy-data-from-mongodb-using-azure-data-factory-legacy"></a>Gegevens kopiëren van MongoDB met behulp van Azure Data Factory (verouderd)
@@ -57,17 +56,17 @@ De volgende eigenschappen worden ondersteund voor MongoDB gekoppelde service:
 
 | Eigenschap | Beschrijving | Vereist |
 |:--- |:--- |:--- |
-| type |De eigenschap type moet worden ingesteld op: **MongoDb** |Ja |
-| server |Het IP-adres of de hostnaam van de MongoDB-server. |Ja |
+| type |De eigenschap type moet worden ingesteld op: **MongoDb** |Yes |
+| server |Het IP-adres of de hostnaam van de MongoDB-server. |Yes |
 | poort |TCP-poort die de MongoDB-server gebruikt om te Luis teren naar client verbindingen. |Nee (de standaard waarde is 27017) |
-| databaseName |De naam van de MongoDB-data base waartoe u toegang wilt krijgen. |Ja |
-| authenticationType | Type verificatie dat wordt gebruikt om verbinding te maken met de MongoDB-data base.<br/>Toegestane waarden zijn: **Basic**en **Anonymous**. |Ja |
+| databaseName |De naam van de MongoDB-data base waartoe u toegang wilt krijgen. |Yes |
+| authenticationType | Type verificatie dat wordt gebruikt om verbinding te maken met de MongoDB-data base.<br/>Toegestane waarden zijn: **Basic**en **Anonymous**. |Yes |
 | gebruikersnaam |Gebruikers account voor toegang tot MongoDB. |Ja (als basis verificatie wordt gebruikt). |
 | wachtwoord |Het wachtwoord voor de gebruiker. Markeer dit veld als SecureString om het veilig op te slaan in Data Factory, of om te [verwijzen naar een geheim dat is opgeslagen in azure Key Vault](store-credentials-in-key-vault.md). |Ja (als basis verificatie wordt gebruikt). |
 | authSource |De naam van de MongoDB-data base die u wilt gebruiken om uw referenties voor verificatie te controleren. |Nee. Voor basis verificatie is het standaard om het beheerders account en de data base te gebruiken die is opgegeven met de eigenschap databasename. |
-| enableSsl | Hiermee geeft u op of de verbindingen met de server met behulp van TLS worden versleuteld. De standaardwaarde is false.  | Nee |
-| allowSelfSignedServerCert | Hiermee geeft u op of zelfondertekende certificaten van de server mogen worden toegestaan. De standaardwaarde is false.  | Nee |
-| connectVia | Het [Integration runtime](concepts-integration-runtime.md) dat moet worden gebruikt om verbinding te maken met het gegevens archief. Meer informatie vindt u in de sectie [vereisten](#prerequisites) . Als u niets opgeeft, wordt de standaard Azure Integration Runtime gebruikt. |Nee |
+| enableSsl | Hiermee geeft u op of de verbindingen met de server met behulp van TLS worden versleuteld. De standaardwaarde is false.  | No |
+| allowSelfSignedServerCert | Hiermee geeft u op of zelfondertekende certificaten van de server mogen worden toegestaan. De standaardwaarde is false.  | No |
+| connectVia | Het [Integration runtime](concepts-integration-runtime.md) dat moet worden gebruikt om verbinding te maken met het gegevens archief. Meer informatie vindt u in de sectie [vereisten](#prerequisites) . Als u niets opgeeft, wordt de standaard Azure Integration Runtime gebruikt. |No |
 
 **Voorbeeld:**
 
@@ -100,8 +99,8 @@ Zie [gegevens sets en gekoppelde services](concepts-datasets-linked-services.md)
 
 | Eigenschap | Beschrijving | Vereist |
 |:--- |:--- |:--- |
-| type | De eigenschap type van de gegevensset moet worden ingesteld op: **MongoDbCollection** | Ja |
-| collectionName |De naam van de verzameling in de MongoDB-data base. |Ja |
+| type | De eigenschap type van de gegevensset moet worden ingesteld op: **MongoDbCollection** | Yes |
+| collectionName |De naam van de verzameling in de MongoDB-data base. |Yes |
 
 **Voorbeeld:**
 
@@ -131,7 +130,7 @@ De volgende eigenschappen worden ondersteund in de sectie **bron** van de Kopiee
 
 | Eigenschap | Beschrijving | Vereist |
 |:--- |:--- |:--- |
-| type | De eigenschap type van de bron van de Kopieer activiteit moet zijn ingesteld op: **MongoDbSource** | Ja |
+| type | De eigenschap type van de bron van de Kopieer activiteit moet zijn ingesteld op: **MongoDbSource** | Yes |
 | query |Gebruik de aangepaste SQL-92-query om gegevens te lezen. Bijvoorbeeld: Select * from MyTable. |Nee (als ' verzamelingsset ' in gegevensset is opgegeven) |
 
 **Voorbeeld:**
@@ -182,7 +181,7 @@ Bij het kopiëren van gegevens uit MongoDB worden de volgende toewijzingen gebru
 | Binair |Byte [] |
 | Boolean |Booleaans |
 | Date |DateTime |
-| NumberDouble |Double |
+| NumberDouble |Dubbel |
 | NumberInt |Int32 |
 | NumberLong |Int64 |
 | ObjectID |Tekenreeks |

@@ -10,10 +10,9 @@ ms.date: 10/31/2018
 ms.author: genli
 ms.custom: seodec18, tracking-python
 ms.openlocfilehash: 82bdf4cd25d486d48f4f2adda222197a600434d8
-ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/09/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84559580"
 ---
 # <a name="open-source-technologies-faqs-for-web-apps-in-azure"></a>Open-source technologieën Veelgestelde vragen over Web Apps in azure
@@ -31,8 +30,8 @@ PHP-logboek registratie inschakelen:
 3. Selecteer de map van de **site** .
 4. Selecteer de map **wwwroot** .
 5. Selecteer het **+** pictogram en selecteer vervolgens **nieuw bestand**.
-6. Stel de bestands naam in op **. User. ini**.
-7. Selecteer het potlood pictogram naast **. User. ini**.
+6. Stel de bestands naam in op **.user.ini**.
+7. Selecteer het potlood pictogram naast **.user.ini**.
 8. Voeg in het bestand de volgende code toe:`log_errors=on`
 9. Selecteer **Opslaan**.
 10. Selecteer het potlood pictogram naast **wp-config. php**.
@@ -48,31 +47,31 @@ Zie voor meer informatie [WordPress-fouten logboeken inschakelen](https://blogs.
 ## <a name="how-do-i-log-python-application-errors-in-apps-that-are-hosted-in-app-service"></a>Hoe kan ik python-toepassings fouten vastleggen in apps die worden gehost in App Service?
 [!INCLUDE [web-sites-python-troubleshooting-wsgi-error-log](../../includes/web-sites-python-troubleshooting-wsgi-error-log.md)]
 
-## <a name="how-do-i-change-the-version-of-the-nodejs-application-that-is-hosted-in-app-service"></a>Hoe kan ik de versie van de node. js-toepassing die wordt gehost in App Service, wijzigen?
+## <a name="how-do-i-change-the-version-of-the-nodejs-application-that-is-hosted-in-app-service"></a>Hoe kan ik de versie wijzigen van de Node.js toepassing die wordt gehost in App Service?
 
-Als u de versie van de node. js-toepassing wilt wijzigen, kunt u een van de volgende opties gebruiken:
+Als u de versie van de Node.js toepassing wilt wijzigen, kunt u een van de volgende opties gebruiken:
 
 * Gebruik in de Azure Portal **app-instellingen**.
   1. Ga in het Azure Portal naar uw web-app.
   2. Selecteer **Toepassings instellingen**op de Blade **instellingen** .
-  3. In **app-instellingen**kunt u WEBSITE_NODE_DEFAULT_VERSION toevoegen als de sleutel en de versie van node. js die u als waarde wilt gebruiken.
+  3. In **app-instellingen**kunt u WEBSITE_NODE_DEFAULT_VERSION als de sleutel en de versie van Node.js u als de waarde wilt gebruiken.
   4. Ga naar uw **kudu-console** ( `https://*yourwebsitename*.scm.azurewebsites.net` ).
-  5. Als u de versie van node. js wilt controleren, voert u de volgende opdracht in:  
+  5. Als u de Node.js versie wilt controleren, voert u de volgende opdracht in:  
      ```
      node -v
      ```
-* Wijzig het bestand iisnode. yml. Als u de node. js-versie in het bestand iisnode. yml wijzigt, wordt alleen de runtime-omgeving ingesteld die iisnode gebruikt. Uw kudu-cmd en andere gebruiken nog steeds de node. js-versie die is ingesteld in de **app-instellingen** in de Azure Portal.
+* Wijzig het bestand iisnode. yml. Als u de Node.js versie in het bestand iisnode. yml wijzigt, wordt alleen de runtime-omgeving ingesteld die iisnode gebruikt. Uw kudu-cmd en andere gebruiken nog steeds de Node.js versie die is ingesteld in de **app-instellingen** in de Azure Portal.
 
   Als u de iisnode. yml hand matig wilt instellen, maakt u een iisnode. yml-bestand in de hoofdmap van de app. Voeg in het bestand de volgende regel toe:
   ```yml
   nodeProcessCommandLine: "D:\Program Files (x86)\nodejs\5.9.1\node.exe"
   ```
    
-* Stel het bestand iisnode. yml in met behulp van package. json tijdens de implementatie van broncode beheer.
+* Stel het bestand iisnode. yml in met behulp van package.jstijdens de implementatie van broncode beheer.
   Het implementatie proces van het Azure-bron beheer omvat de volgende stappen:
   1. Hiermee verplaatst u inhoud naar de Azure-web-app.
   2. Hiermee maakt u een standaard implementatie script als er zich geen (Deploy. cmd,. Deployment-bestanden) in de hoofdmap van de web-app bevindt.
-  3. Voert een implementatie script uit waarbij het een iisnode. yml-bestand maakt als u de node. js-versie in de package. JSON-bestand > engine vermeldt`"engines": {"node": "5.9.1","npm": "3.7.3"}`
+  3. Voert een implementatie script uit waarbij het een iisnode. yml-bestand maakt als u de Node.js versie in de package.jsin de engine van file > vermeldt`"engines": {"node": "5.9.1","npm": "3.7.3"}`
   4. Het bestand iisnode. yml heeft de volgende regel code:
       ```yml
       nodeProcessCommandLine: "D:\Program Files (x86)\nodejs\5.9.1\node.exe"
@@ -89,11 +88,11 @@ Als de logboeken zijn ingeschakeld, reproduceert u de fout en raadpleegt u de lo
 
 Als deze fout wordt weer geven in de bestanden debug. log of php_errors. log, overschrijdt uw app het aantal verbindingen. Als u host bent op ClearDB, controleert u het aantal verbindingen dat beschikbaar is in uw [service-abonnement](https://www.cleardb.com/pricing.view).
 
-## <a name="how-do-i-debug-a-nodejs-app-thats-hosted-in-app-service"></a>Hoe kan ik fouten opsporen in een node. js-app die wordt gehost in App Service?
+## <a name="how-do-i-debug-a-nodejs-app-thats-hosted-in-app-service"></a>Hoe kan ik fouten opsporen in een Node.js-app die wordt gehost in App Service?
 
 1.  Ga naar uw **kudu-console** ( `https://*yourwebsitename*.scm.azurewebsites.net/DebugConsole` ).
 2.  Ga naar de map met toepassings Logboeken (D:\home\LogFiles\Application).
-3.  Controleer in het bestand logging_errors. txt op inhoud.
+3.  Controleer in het logging_errors.txt-bestand op inhoud.
 
 ## <a name="how-do-i-install-native-python-modules-in-an-app-service-web-app-or-api-app"></a>Hoe kan ik systeem eigen python-modules installeren in een App Service web-app of API-app?
 
@@ -138,7 +137,7 @@ Om de fout op te lossen:
 
 1. Verwijder het bestand sqljdbc*. jar uit de map app/lib.
 2. Als u de aangepaste Tomcat of de Tomcat-webserver van Azure Marketplace gebruikt, kopieert u dit jar-bestand naar de map tomcat lib.
-3. Als u Java inschakelt vanuit de Azure Portal (Selecteer **Java 1,8**  >  **Tomcat-server**), kopieert u het bestand sqljdbc. * in de map die parallel is met uw app. Voeg vervolgens de volgende Classpath-instelling toe aan het bestand Web. config:
+3. Als u Java inschakelt vanuit de Azure Portal (Selecteer **Java 1,8**  >  **Tomcat-server**), kopieert u het bestand sqljdbc. * in de map die parallel is met uw app. Voeg vervolgens de volgende Classpath-instelling toe aan het web.config-bestand:
 
     ```xml
     <httpPlatform>
@@ -206,7 +205,7 @@ Zie [Aanbevolen procedures voor WordPress-beveiliging in azure](https://blogs.ms
 
 ## <a name="i-am-trying-to-use-phpmyadmin-and-i-see-the-message-access-denied-how-do-i-resolve-this"></a>Ik probeer PHPMyAdmin te gebruiken en het bericht ' toegang geweigerd ' wordt weer gegeven. Hoe los ik dit op?
 
-Dit probleem kan optreden als de functie MySQL in-app nog niet wordt uitgevoerd in dit App Service exemplaar. Probeer het probleem op te lossen door toegang te krijgen tot uw website. Hiermee worden de vereiste processen gestart, inclusief het MySQL in-app proces. Als u wilt controleren of MySQL in-app wordt uitgevoerd, controleert u in Process Explorer of mysqld. exe wordt weer gegeven in de processen.
+Dit probleem kan optreden als de functie MySQL in-app nog niet wordt uitgevoerd in dit App Service exemplaar. Probeer het probleem op te lossen door toegang te krijgen tot uw website. Hiermee worden de vereiste processen gestart, inclusief het MySQL in-app proces. Als u wilt controleren of MySQL in-app wordt uitgevoerd, controleert u in Process Explorer of mysqld.exe wordt weer gegeven in de processen.
 
 Nadat u hebt gezorgd dat MySQL in-app actief is, probeert u PHPMyAdmin te gebruiken.
 

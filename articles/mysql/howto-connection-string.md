@@ -1,6 +1,6 @@
 ---
 title: Verbindings reeksen-Azure Database for MySQL
-description: In dit document worden de momenteel ondersteunde verbindings reeksen vermeld voor toepassingen waarmee verbinding kan worden gemaakt met Azure Database for MySQL, waaronder ADO.NET (C#), JDBC, node. js, ODBC, PHP, python en Ruby.
+description: In dit document worden de momenteel ondersteunde verbindings reeksen vermeld voor toepassingen om verbinding te maken met Azure Database for MySQL, waaronder ADO.NET (C#), JDBC, Node.js, ODBC, PHP, python en Ruby.
 author: ajlam
 ms.author: andrela
 ms.service: mysql
@@ -8,10 +8,9 @@ ms.topic: conceptual
 ms.date: 3/18/2020
 ms.custom: tracking-python
 ms.openlocfilehash: 1683fba2d8f085569c7cc62a06d0fe95803d4346
-ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/09/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84559200"
 ---
 # <a name="how-to-connect-applications-to-azure-database-for-mysql"></a>Toepassingen koppelen met Azure Database voor MySQL

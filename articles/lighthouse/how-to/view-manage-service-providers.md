@@ -4,10 +4,9 @@ description: Klanten kunnen de pagina service providers in het Azure Portal gebr
 ms.date: 04/24/2020
 ms.topic: how-to
 ms.openlocfilehash: 8b48fb9c92cf6922cea62fe04943ae76d3d3b590
-ms.sourcegitcommit: ce44069e729fce0cf67c8f3c0c932342c350d890
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/09/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84636458"
 ---
 # <a name="view-and-manage-service-providers"></a>Serviceproviders weergeven en beheren

@@ -15,10 +15,9 @@ ms.date: 04/15/2019
 ms.author: juliako
 ms.custom: tracking-python
 ms.openlocfilehash: 3e6e421d346925f751595ce2fb2d0891e31dc108
-ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/09/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84559626"
 ---
 # <a name="connect-to-media-services-v3-api---python"></a>Verbinding maken met Media Services v3 API-python
@@ -29,7 +28,7 @@ In dit artikel wordt beschreven hoe u verbinding maakt met de Azure Media Servic
 
 - Python downloaden via [python.org](https://www.python.org/downloads/)
 - Zorg ervoor dat u de `PATH` omgevings variabele instelt
-- [Een Azure Media Services-account maken](create-account-cli-how-to.md). Zorg ervoor dat u de naam van de resource groep en de naam van het Media Services account vergeet.
+- [Maak een Media Services-account](create-account-cli-how-to.md). Zorg ervoor dat u de naam van de resource groep en de naam van het Media Services account vergeet.
 - Volg de stappen in het onderwerp [toegangs-api's](access-api-cli-how-to.md) . Noteer de abonnements-ID, toepassings-ID (client-ID), de verificatie sleutel (geheim) en de Tenant-ID die u in de volgende stap nodig hebt.
 
 > [!IMPORTANT]

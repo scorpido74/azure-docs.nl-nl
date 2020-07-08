@@ -7,10 +7,9 @@ author: bwren
 ms.author: bwren
 ms.date: 02/04/2020
 ms.openlocfilehash: ce7edf4dd5ae52f3ea604fe4b8d88d1a29de5a69
-ms.sourcegitcommit: 1de57529ab349341447d77a0717f6ced5335074e
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/09/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84608363"
 ---
 # <a name="log-analytics-agent-overview"></a>Overzicht van Log Analytics-agent
@@ -39,7 +38,7 @@ Er zijn geen kosten verbonden aan Log Analytics-agent, maar mogelijk worden er k
 ## <a name="data-collected"></a>Verzamelde gegevens
 De volgende tabel bevat de typen gegevens die u kunt configureren voor het verzamelen van een Log Analytics werkruimte van alle verbonden agents. Zie [wat wordt bewaakt door Azure monitor?](../monitor-reference.md) voor een lijst met inzichten, oplossingen en andere oplossingen die gebruikmaken van de log Analytics-agent voor het verzamelen van andere soorten gegevens.
 
-| Gegevensbron | Beschrijving |
+| Gegevensbron | Description |
 | --- | --- |
 | [Windows-gebeurtenis logboeken](data-sources-windows-events.md) | Gegevens die worden verzonden naar het Windows-systeem voor gebeurtenis registratie. |
 | [Syslog](data-sources-syslog.md)                     | Informatie die wordt verzonden naar het systeem voor het registreren van Linux-gebeurtenissen. |
@@ -148,7 +147,7 @@ De volgende versies van het Linux-besturings systeem worden officieel ondersteun
 
 De volgende tabel geeft een overzicht van de pakketten die vereist zijn voor de ondersteunde Linux-distributies waarop de agent wordt geïnstalleerd.
 
-|Vereist pakket |Beschrijving |Minimale versie |
+|Vereist pakket |Description |Minimale versie |
 |-----------------|------------|----------------|
 |Glibc |    GNU C-bibliotheek | 2.5-12 
 |Openssl    | OpenSSL-bibliotheken | 1.0. x of 1.1. x |
@@ -188,10 +187,10 @@ De volgende tabel bevat de proxy-en firewall configuratie-informatie die is vere
 
 |Agentresource|Poorten |Richting |HTTPS-controle overslaan|
 |------|---------|--------|--------|   
-|*.ods.opinsights.azure.com |Poort 443 |Uitgaand|Ja |  
-|*.oms.opinsights.azure.com |Poort 443 |Uitgaand|Ja |  
-|*.blob.core.windows.net |Poort 443 |Uitgaand|Ja |
-|*.azure-automation.net |Poort 443 |Uitgaand|Ja |
+|*.ods.opinsights.azure.com |Poort 443 |Uitgaand|Yes |  
+|*.oms.opinsights.azure.com |Poort 443 |Uitgaand|Yes |  
+|*.blob.core.windows.net |Poort 443 |Uitgaand|Yes |
+|*.azure-automation.net |Poort 443 |Uitgaand|Yes |
 
 Zie [Azure Government Management](../../azure-government/documentation-government-services-monitoringandmanagement.md#azure-monitor-logs)voor informatie over de firewall die vereist is voor Azure Government. 
 

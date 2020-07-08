@@ -10,10 +10,9 @@ services: azure-maps
 manager: cpendleton
 ms.custom: codepen
 ms.openlocfilehash: 79f1188665208ec95e5d1d855d2247858e98653c
-ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/09/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84561650"
 ---
 # <a name="data-driven-style-expressions-web-sdk"></a>Gegevensgestuurde stijl expressies (Web SDK)
@@ -41,7 +40,7 @@ Expressies worden weer gegeven als JSON-matrices. Het eerste element van een exp
 
 De Azure Maps Web-SDK ondersteunt veel typen expressies. Expressies kunnen worden gebruikt in hun eigen of in combi natie met andere expressies.
 
-| Type expressies | Beschrijving |
+| Type expressies | Description |
 |---------------------|-------------|
 | [Statistische expressie](#aggregate-expression) | Een expressie die een berekening definieert die wordt verwerkt via een set gegevens en kan worden gebruikt met de `clusterProperties` optie van een `DataSource` . |
 | [Booleaanse expressies](#boolean-expressions) | Boole-expressies bieden een set Booleaanse Opera tors voor het evalueren van Boole-vergelijkingen. |
@@ -81,7 +80,7 @@ Alle voor beelden in dit document gebruiken de volgende functie om verschillende
 
 Gegevens expressies bieden toegang tot de eigenschaps gegevens in een functie. 
 
-| Expressie | Retourtype | Beschrijving |
+| Expression | Retourtype | Beschrijving |
 |------------|-------------|-------------|
 | `['at', number, array]` | object | Hiermee wordt een item uit een matrix opgehaald. |
 | `['geometry-type']` | tekenreeks | Hiermee wordt het type geometrie van de functie opgehaald: Point, multi point, Lines Tring, multi line String, veelhoek, multiveelhoek. |
@@ -141,7 +140,7 @@ Op dezelfde manier wordt het overzicht van veelhoeken in lijn lagen weer gegeven
 
 Wiskundige expressies bieden wiskundige Opera tors voor het uitvoeren van gegevensgestuurde berekeningen in het Framework van de expressie.
 
-| Expressie | Retourtype | Beschrijving |
+| Expression | Retourtype | Beschrijving |
 |------------|-------------|-------------|
 | `['+', number, number, …]` | getal | Berekent de som van de opgegeven getallen. |
 | `['-', number]` | getal | Trekt 0 af op het opgegeven aantal. |
@@ -196,7 +195,7 @@ Boole-expressies bieden een set Booleaanse Opera tors voor het evalueren van Boo
 
 Bij het vergelijken van waarden is de vergelijking strikt getypt. Waarden van verschillende typen worden altijd als ongelijk beschouwd. Gevallen waarin de typen bekend zijn om te worden geparseerd, worden beschouwd als ongeldig en er wordt een parseringsfout gegenereerd. 
 
-| Expressie | Retourtype | Beschrijving |
+| Expression | Retourtype | Beschrijving |
 |------------|-------------|-------------|
 | `['! ', boolean]` | booleaans | Logische negatie. Retourneert `true` of de invoer is `false` en `false` of de invoer is `true` . |
 | `['!= ', value, value]` | booleaans | Retourneert `true` of de invoer waarden niet gelijk zijn, `false` anders. |
@@ -399,7 +398,7 @@ var layer = new atlas.layer.SymbolLayer(datasource, null, {
 
 Type-expressies bieden hulpprogram ma's voor het testen en omzetten van verschillende gegevens typen, zoals teken reeksen, getallen en Booleaanse waarden.
 
-| Expressie | Retourtype | Beschrijving |
+| Expression | Retourtype | Beschrijving |
 |------------|-------------|-------------|
 | `['literal', array]`<br/><br/>`['literal', object]` | matrix \| object | Retourneert een letterlijke matrix of object waarde. Gebruik deze expressie om te voor komen dat een matrix of object als een expressie wordt geëvalueerd. Dit is nodig wanneer een matrix of object moet worden geretourneerd door een expressie. |
 | `['image', string]` | tekenreeks | Hiermee wordt gecontroleerd of een opgegeven afbeeldings-ID is geladen in de Maps-installatie kopie sprite. Als dat het geval is, wordt de ID geretourneerd, anders wordt Null geretourneerd. |
@@ -435,7 +434,7 @@ Type-expressies bieden hulpprogram ma's voor het testen en omzetten van verschil
 
 Kleur expressies maken het gemakkelijker om kleur waarden te maken en te bewerken.
 
-| Expressie | Retourtype | Beschrijving |
+| Expression | Retourtype | Beschrijving |
 |------------|-------------|-------------|
 | `['rgb', number, number, number]` | color | Hiermee maakt u een kleur waarde van de onderdelen *rood*, *groen*en *blauw* die tussen `0` en moeten variëren `255` , en een alpha-onderdeel van `1` . Als een onderdeel zich buiten het bereik bevindt, is er een fout opgetreden in de expressie. |
 | `['rgba', number, number, number, number]` | color | Hiermee maakt u een kleur waarde van *rode*, *groene*en *blauwe* onderdelen die tussen en moeten liggen `0` `255` en een alpha-component binnen een bereik van `0` en `1` . Als een onderdeel zich buiten het bereik bevindt, is er een fout opgetreden in de expressie. |
@@ -463,7 +462,7 @@ var layer = new atlas.layer.BubbleLayer(datasource, null, {
 
 Teken reeks operator expressies voeren conversie bewerkingen uit op teken reeksen, zoals samen voegen en het converteren van de aanvraag. 
 
-| Expressie | Retourtype | Beschrijving |
+| Expression | Retourtype | Description |
 |------------|-------------|-------------|
 | `['concat', string, string, …]` | tekenreeks | Meerdere teken reeksen samen voegen. Elke waarde moet een teken reeks zijn. Gebruik de `to-string` type-expressie om andere waardetypen zo nodig te converteren naar een teken reeks. |
 | `['downcase', string]` | tekenreeks | Hiermee wordt de opgegeven teken reeks geconverteerd naar kleine letters. |
@@ -861,7 +860,7 @@ var layer = new atlas.layer.HeatMapLayer(datasource, null, {
 
 Met variabelen bindings expressies worden de resultaten van een berekening in een variabele opgeslagen. Dat wil zeggen dat er meerdere keren naar de resultaten van de berekening kan worden verwezen in een expressie. Het is een handige optimalisatie voor expressies waarbij veel berekeningen worden betrokken.
 
-| Expressie | Retourtype | Beschrijving |
+| Expression | Retourtype | Beschrijving |
 |--------------|---------------|--------------|
 | \[<br/>&nbsp;&nbsp;&nbsp;&nbsp;Let,<br/>&nbsp;&nbsp;&nbsp;&nbsp;NAME1: teken reeks,<br/>&nbsp;&nbsp;&nbsp;&nbsp;waarde1: any,<br/>&nbsp;&nbsp;&nbsp;&nbsp;naam2: teken reeks,<br/>&nbsp;&nbsp;&nbsp;&nbsp;waarde2: any,<br/>&nbsp;&nbsp;&nbsp;&nbsp;…<br/>&nbsp;&nbsp;&nbsp;&nbsp;childExpression<br/>\] | | Slaat een of meer waarden op als variabelen voor gebruik door de `var` expressie in de onderliggende expressie waarmee het resultaat wordt geretourneerd. |
 | `['var', name: string]` | alle | Verwijst naar een variabele die is gemaakt met behulp van de `let` expressie. |

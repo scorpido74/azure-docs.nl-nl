@@ -14,10 +14,9 @@ ms.workload: infrastructure-services
 ms.date: 07/20/2019
 ms.author: akjosh
 ms.openlocfilehash: a002479375d835f7fafe031517e5b2fe61b77b5b
-ms.sourcegitcommit: 1de57529ab349341447d77a0717f6ced5335074e
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/09/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84608686"
 ---
 # <a name="azure-virtual-machine-agent-overview"></a>Overzicht van de agent voor virtuele Azure-machines
@@ -107,14 +106,14 @@ foreach ($vm in $vms) {
 
 ### <a name="manual-detection"></a>Hand matige detectie
 
-Wanneer u bent aangemeld bij een Windows-VM, kan taak beheer worden gebruikt voor het onderzoeken van actieve processen. Als u wilt controleren of de Azure VM-agent is, opent u taak beheer, klikt u op het tabblad *Details* en zoekt u naar een proces naam **WindowsAzureGuestAgent. exe**. De aanwezigheid van dit proces geeft aan dat de VM-agent is geïnstalleerd.
+Wanneer u bent aangemeld bij een Windows-VM, kan taak beheer worden gebruikt voor het onderzoeken van actieve processen. Als u wilt controleren of de Azure VM-agent is, opent u taak beheer, klikt u op het tabblad *Details* en zoekt u naar een proces naam **WindowsAzureGuestAgent.exe**. De aanwezigheid van dit proces geeft aan dat de VM-agent is geïnstalleerd.
 
 
 ## <a name="upgrade-the-vm-agent"></a>De VM-agent bijwerken
 De Azure VM-agent voor Windows wordt automatisch bijgewerkt. Wanneer er nieuwe virtuele machines worden geïmplementeerd in azure, ontvangen ze de nieuwste VM-agent op de VM-inrichtings tijd. Aangepaste VM-installatie kopieën moeten hand matig worden bijgewerkt met de nieuwe VM-agent op het moment waarop de installatie kopie wordt gemaakt.
 
 ## <a name="windows-guest-agent-automatic-logs-collection"></a>Verzameling automatische logboeken voor Windows-gast agent
-Windows Guest agent heeft een functie voor het automatisch verzamelen van Logboeken. Deze functie is controller door het proces CollectGuestLogs. exe. Deze bestaat zowel voor PaaS Cloud Services als IaaS Virtual Machines en het doel is om & snel een aantal Diagnostische logboeken te verzamelen van een VM, zodat deze kunnen worden gebruikt voor offline analyse. De verzamelde logboeken zijn gebeurtenis logboeken, logboeken van het besturings systeem, Azure-logboeken en bepaalde register sleutels. Er wordt een ZIP-bestand gegenereerd dat wordt overgedragen naar de host van de virtuele machine. Dit ZIP-bestand kan vervolgens worden bekeken door technische teams en ondersteunings medewerkers om problemen te onderzoeken op verzoek van de klant die eigenaar is van de virtuele machine.
+Windows Guest agent heeft een functie voor het automatisch verzamelen van Logboeken. Deze functie is controller door het CollectGuestLogs.exe proces. Deze bestaat zowel voor PaaS Cloud Services als IaaS Virtual Machines en het doel is om & snel een aantal Diagnostische logboeken te verzamelen van een VM, zodat deze kunnen worden gebruikt voor offline analyse. De verzamelde logboeken zijn gebeurtenis logboeken, logboeken van het besturings systeem, Azure-logboeken en bepaalde register sleutels. Er wordt een ZIP-bestand gegenereerd dat wordt overgedragen naar de host van de virtuele machine. Dit ZIP-bestand kan vervolgens worden bekeken door technische teams en ondersteunings medewerkers om problemen te onderzoeken op verzoek van de klant die eigenaar is van de virtuele machine.
 
 ## <a name="next-steps"></a>Volgende stappen
 Zie [overzicht van virtuele machines en functies van Azure](overview.md)voor meer informatie over VM-uitbrei dingen.

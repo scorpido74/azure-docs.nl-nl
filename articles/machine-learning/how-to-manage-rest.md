@@ -11,10 +11,9 @@ ms.topic: how-to
 ms.date: 01/31/2020
 ms.custom: tracking-python
 ms.openlocfilehash: 6b74f9cdc5b3317edc8bf2339ba1d2c29f43e55b
-ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/09/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84560162"
 ---
 # <a name="create-run-and-delete-azure-ml-resources-using-rest"></a>Azure ML-resources maken, uitvoeren en verwijderen met REST
@@ -202,7 +201,7 @@ providers/Microsoft.MachineLearningServices/workspaces/{your-workspace-name}/mod
 
 U ziet dat bij het weer geven van experimenten het pad begint met `history/v1.0` while om modellen weer te geven, het pad begint met `modelmanagement/v1.0` . De REST API is onderverdeeld in verschillende operationele groepen, elk met een uniek pad. De API-referentie documenten op de koppelingen hieronder staan de bewerkingen, para meters en antwoord codes voor de verschillende bewerkingen.
 
-|Gebied|Pad|Naslaginformatie|
+|Onderwerp|Pad|Verwijzing|
 |-|-|-|
 |Artifacts|artefact/v 2.0/|[REST API referentie](https://docs.microsoft.com/rest/api/azureml/artifacts)|
 |Gegevensopslag|Data Store/v 1.0/|[REST API referentie](https://docs.microsoft.com/rest/api/azureml/datastores)|
@@ -271,7 +270,7 @@ Een geslaagde aanvraag ontvangt een `201 Created` reactie, maar houd er rekening
 
 ### <a name="create-an-experimental-run"></a>Een experimentele uitvoering maken
 
-Als u een run binnen een experiment wilt starten, hebt u een zip-map met uw trainings script en gerelateerde bestanden nodig en een JSON-bestand met de definitie van de run. De map zip moet het python-invoer bestand hebben in de hoofdmap. Een voor beeld: een trivial python-programma zoals het volgende in een map met de naam **Train. zip**.
+Als u een run binnen een experiment wilt starten, hebt u een zip-map met uw trainings script en gerelateerde bestanden nodig en een JSON-bestand met de definitie van de run. De map zip moet het python-invoer bestand hebben in de hoofdmap. Een voor beeld: een trivial python-programma, zoals het volgende, naar een map met de naam **train.zip**.
 
 ```python
 # hello.py
@@ -279,7 +278,7 @@ Als u een run binnen een experiment wilt starten, hebt u een zip-map met uw trai
 print("Hello, REST!")
 ```
 
-Sla dit volgende fragment op als **definitie. json**. Bevestig dat de waarde ' script ' overeenkomt met de naam van het python-bestand dat u net hebt ingepakt. Bevestig dat de doel waarde overeenkomt met de naam van een beschik bare Compute-resource. 
+Sla dit volgende fragment **op alsdefinition.jsop**. Bevestig dat de waarde ' script ' overeenkomt met de naam van het python-bestand dat u net hebt ingepakt. Bevestig dat de doel waarde overeenkomt met de naam van een beschik bare Compute-resource. 
 
 ```json
 {

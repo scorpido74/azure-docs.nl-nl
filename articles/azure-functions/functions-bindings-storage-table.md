@@ -7,10 +7,9 @@ ms.date: 09/03/2018
 ms.author: cshoe
 ms.custom: tracking-python
 ms.openlocfilehash: dd98d27f5a14d284174dd779ae20b29f534920b0
-ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/09/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84559941"
 ---
 # <a name="azure-table-storage-bindings-for-azure-functions"></a>Azure Table Storage-bindingen voor Azure Functions
@@ -148,9 +147,9 @@ Als u probeert verbinding te maken met `CloudTable` een fout bericht, moet u erv
 
 ### <a name="one-entity"></a>Eén entiteit
 
-In het volgende voor beeld wordt een tabel-invoer binding weer gegeven in een *Function. json* -bestand en [C#-script](functions-reference-csharp.md) code die gebruikmaakt van de binding. De functie maakt gebruik van een wachtrij trigger om één tabelrij te lezen. 
+In het volgende voor beeld wordt een tabel-invoer binding weer gegeven in een *function.jsvoor* de bestands-en [C#-script](functions-reference-csharp.md) code die gebruikmaakt van de binding. De functie maakt gebruik van een wachtrij trigger om één tabelrij te lezen. 
 
-Het bestand *Function. json* bevat een `partitionKey` en een `rowKey` . De `rowKey` waarde {Queue trigger} geeft aan dat de rij-sleutel afkomstig is uit de wachtrij bericht teken reeks.
+Het *function.js* bestand bevat een `partitionKey` en een `rowKey` . De `rowKey` waarde {Queue trigger} geeft aan dat de rij-sleutel afkomstig is uit de wachtrij bericht teken reeks.
 
 ```json
 {
@@ -197,9 +196,9 @@ public class Person
 
 ### <a name="iqueryable"></a>IQueryable
 
-In het volgende voor beeld wordt een tabel-invoer binding weer gegeven in een *Function. json* -bestand en [C#-script](functions-reference-csharp.md) code die gebruikmaakt van de binding. De functie leest entiteiten voor een partitie sleutel die is opgegeven in een wachtrij bericht.
+In het volgende voor beeld wordt een tabel-invoer binding weer gegeven in een *function.jsvoor* de bestands-en [C#-script](functions-reference-csharp.md) code die gebruikmaakt van de binding. De functie leest entiteiten voor een partitie sleutel die is opgegeven in een wachtrij bericht.
 
-Hier is het bestand *Function. json* :
+Dit is de *function.jsvoor* het volgende bestand:
 
 ```json
 {
@@ -313,9 +312,9 @@ Als u probeert verbinding te maken met `CloudTable` een fout bericht, moet u erv
 
 # <a name="javascript"></a>[JavaScript](#tab/javascript)
 
-In het volgende voor beeld wordt een tabel-invoer binding weer gegeven in een *Function. json* -bestand en [Java script-code](functions-reference-node.md) die gebruikmaakt van de binding. De functie maakt gebruik van een wachtrij trigger om één tabelrij te lezen. 
+In het volgende voor beeld wordt een tabel-invoer binding weer gegeven in een *function.jsvoor* de bestands-en [Java script-code](functions-reference-node.md) die gebruikmaakt van de binding. De functie maakt gebruik van een wachtrij trigger om één tabelrij te lezen. 
 
-Het bestand *Function. json* bevat een `partitionKey` en een `rowKey` . De `rowKey` waarde {Queue trigger} geeft aan dat de rij-sleutel afkomstig is uit de wachtrij bericht teken reeks.
+Het *function.js* bestand bevat een `partitionKey` en een `rowKey` . De `rowKey` waarde {Queue trigger} geeft aan dat de rij-sleutel afkomstig is uit de wachtrij bericht teken reeks.
 
 ```json
 {
@@ -553,9 +552,9 @@ Gebruik in de [runtime-bibliotheek van Java-functies](/java/api/overview/azure/f
 
 ## <a name="input---configuration"></a>Invoer-configuratie
 
-De volgende tabel bevat informatie over de binding configuratie-eigenschappen die u hebt ingesteld in het bestand *Function. json* en het- `Table` kenmerk.
+De volgende tabel bevat uitleg over de binding configuratie-eigenschappen die u hebt ingesteld in de *function.jsvoor* het bestand en het `Table` kenmerk.
 
-|function. json-eigenschap | Kenmerk eigenschap |Beschrijving|
+|function.jsbij eigenschap | Kenmerk eigenschap |Description|
 |---------|---------|----------------------|
 |**type** | N.v.t. | Moet worden ingesteld op `table` . Deze eigenschap wordt automatisch ingesteld wanneer u de binding maakt in de Azure Portal.|
 |**direction** | N.v.t. | Moet worden ingesteld op `in` . Deze eigenschap wordt automatisch ingesteld wanneer u de binding maakt in de Azure Portal. |
@@ -575,11 +574,11 @@ De volgende tabel bevat informatie over de binding configuratie-eigenschappen di
 
 * **Eén rij in**
 
-  Instellen `partitionKey` en `rowKey` . Toegang krijgen tot de tabel gegevens met behulp van een methode parameter `T <paramName>` . In C#-script `paramName` is de waarde die is opgegeven in de `name` eigenschap van *Function. json*. `T`is doorgaans een type dat van wordt geïmplementeerd `ITableEntity` of afgeleid `TableEntity` . De `filter` `take` Eigenschappen en worden niet gebruikt in dit scenario.
+  Instellen `partitionKey` en `rowKey` . Toegang krijgen tot de tabel gegevens met behulp van een methode parameter `T <paramName>` . In C#-script `paramName` is de waarde die is opgegeven in de `name` eigenschap van *function.jsop*. `T`is doorgaans een type dat van wordt geïmplementeerd `ITableEntity` of afgeleid `TableEntity` . De `filter` `take` Eigenschappen en worden niet gebruikt in dit scenario.
 
 * **Een of meer rijen lezen**
 
-  Toegang krijgen tot de tabel gegevens met behulp van een methode parameter `IQueryable<T> <paramName>` . In C#-script `paramName` is de waarde die is opgegeven in de `name` eigenschap van *Function. json*. `T`moet een type zijn dat van wordt geïmplementeerd `ITableEntity` of afgeleid `TableEntity` . U kunt `IQueryable` methoden gebruiken om alle benodigde filters uit te voeren. De `partitionKey` `rowKey` Eigenschappen,, `filter` en `take` worden niet gebruikt in dit scenario.  
+  Toegang krijgen tot de tabel gegevens met behulp van een methode parameter `IQueryable<T> <paramName>` . In C#-script `paramName` is de waarde die is opgegeven in de `name` eigenschap van *function.jsop*. `T`moet een type zijn dat van wordt geïmplementeerd `ITableEntity` of afgeleid `TableEntity` . U kunt `IQueryable` methoden gebruiken om alle benodigde filters uit te voeren. De `partitionKey` `rowKey` Eigenschappen,, `filter` en `take` worden niet gebruikt in dit scenario.  
 
   > [!NOTE]
   > `IQueryable`wordt niet ondersteund in de [runtime van functions v2](functions-versions.md). U kunt ook de [methode para meter CloudTable param gebruiken](https://stackoverflow.com/questions/48922485/binding-to-table-storage-in-v2-azure-functions-using-cloudtable) om de tabel te lezen met behulp van de SDK van Azure Storage. Als u probeert verbinding te maken met `CloudTable` een fout bericht, moet u ervoor zorgen dat u een verwijzing naar [de juiste versie van de Storage SDK](#azure-storage-sdk-version-in-functions-1x)hebt.
@@ -588,11 +587,11 @@ De volgende tabel bevat informatie over de binding configuratie-eigenschappen di
 
 * **Eén rij in**
 
-  Instellen `partitionKey` en `rowKey` . Toegang krijgen tot de tabel gegevens met behulp van een methode parameter `T <paramName>` . In C#-script `paramName` is de waarde die is opgegeven in de `name` eigenschap van *Function. json*. `T`is doorgaans een type dat van wordt geïmplementeerd `ITableEntity` of afgeleid `TableEntity` . De `filter` `take` Eigenschappen en worden niet gebruikt in dit scenario.
+  Instellen `partitionKey` en `rowKey` . Toegang krijgen tot de tabel gegevens met behulp van een methode parameter `T <paramName>` . In C#-script `paramName` is de waarde die is opgegeven in de `name` eigenschap van *function.jsop*. `T`is doorgaans een type dat van wordt geïmplementeerd `ITableEntity` of afgeleid `TableEntity` . De `filter` `take` Eigenschappen en worden niet gebruikt in dit scenario.
 
 * **Een of meer rijen lezen**
 
-  Toegang krijgen tot de tabel gegevens met behulp van een methode parameter `IQueryable<T> <paramName>` . In C#-script `paramName` is de waarde die is opgegeven in de `name` eigenschap van *Function. json*. `T`moet een type zijn dat van wordt geïmplementeerd `ITableEntity` of afgeleid `TableEntity` . U kunt `IQueryable` methoden gebruiken om alle benodigde filters uit te voeren. De `partitionKey` `rowKey` Eigenschappen,, `filter` en `take` worden niet gebruikt in dit scenario.  
+  Toegang krijgen tot de tabel gegevens met behulp van een methode parameter `IQueryable<T> <paramName>` . In C#-script `paramName` is de waarde die is opgegeven in de `name` eigenschap van *function.jsop*. `T`moet een type zijn dat van wordt geïmplementeerd `ITableEntity` of afgeleid `TableEntity` . U kunt `IQueryable` methoden gebruiken om alle benodigde filters uit te voeren. De `partitionKey` `rowKey` Eigenschappen,, `filter` en `take` worden niet gebruikt in dit scenario.  
 
   > [!NOTE]
   > `IQueryable`wordt niet ondersteund in de [runtime van functions v2](functions-versions.md). U kunt ook de [methode para meter CloudTable param gebruiken](https://stackoverflow.com/questions/48922485/binding-to-table-storage-in-v2-azure-functions-using-cloudtable) om de tabel te lezen met behulp van de SDK van Azure Storage. Als u probeert verbinding te maken met `CloudTable` een fout bericht, moet u ervoor zorgen dat u een verwijzing naar [de juiste versie van de Storage SDK](#azure-storage-sdk-version-in-functions-1x)hebt.
@@ -644,9 +643,9 @@ public class TableStorage
 
 # <a name="c-script"></a>[C#-script](#tab/csharp-script)
 
-In het volgende voor beeld ziet u een tabel-uitvoer binding in een *Function. json* -bestand en [C#-script](functions-reference-csharp.md) code die gebruikmaakt van de binding. Met de functie worden meerdere tabel entiteiten geschreven.
+In het volgende voor beeld ziet u een tabel-uitvoer binding in eenfunction.jsin bestands-en [C#-script](functions-reference-csharp.md) code die gebruikmaakt *van* de binding. Met de functie worden meerdere tabel entiteiten geschreven.
 
-Hier is het bestand *Function. json* :
+Dit is de *function.jsvoor* het volgende bestand:
 
 ```json
 {
@@ -699,9 +698,9 @@ public class Person
 
 # <a name="javascript"></a>[JavaScript](#tab/javascript)
 
-In het volgende voor beeld ziet u een tabel-uitvoer binding in een *Function. json* -bestand en een [Java script-functie](functions-reference-node.md) die gebruikmaakt van de binding. Met de functie worden meerdere tabel entiteiten geschreven.
+In het volgende voor beeld ziet u een tabel-uitvoer binding in een *function.jsin* een bestand en een [Java script-functie](functions-reference-node.md) die gebruikmaakt van de binding. Met de functie worden meerdere tabel entiteiten geschreven.
 
-Hier is het bestand *Function. json* :
+Dit is de *function.jsvoor* het volgende bestand:
 
 ```json
 {
@@ -746,7 +745,7 @@ module.exports = function (context) {
 
 # <a name="python"></a>[Python](#tab/python)
 
-In het volgende voor beeld ziet u hoe u de Table Storage-uitvoer binding kunt gebruiken. De `table` binding wordt geconfigureerd in de *Function. json* door waarden toe te wijzen aan `name` , `tableName` , `partitionKey` en `connection` :
+In het volgende voor beeld ziet u hoe u de Table Storage-uitvoer binding kunt gebruiken. De `table` binding wordt geconfigureerd in de *function.jsop* door waarden toe te wijzen aan `name` , `tableName` , en `partitionKey` `connection` :
 
 ```json
 {
@@ -940,9 +939,9 @@ Zie het voor [beeld voor meer informatie](#output).
 
 ## <a name="output---configuration"></a>Uitvoer-configuratie
 
-De volgende tabel bevat informatie over de binding configuratie-eigenschappen die u hebt ingesteld in het bestand *Function. json* en het- `Table` kenmerk.
+De volgende tabel bevat uitleg over de binding configuratie-eigenschappen die u hebt ingesteld in de *function.jsvoor* het bestand en het `Table` kenmerk.
 
-|function. json-eigenschap | Kenmerk eigenschap |Beschrijving|
+|function.jsbij eigenschap | Kenmerk eigenschap |Description|
 |---------|---------|----------------------|
 |**type** | N.v.t. | Moet worden ingesteld op `table` . Deze eigenschap wordt automatisch ingesteld wanneer u de binding maakt in de Azure Portal.|
 |**direction** | N.v.t. | Moet worden ingesteld op `out` . Deze eigenschap wordt automatisch ingesteld wanneer u de binding maakt in de Azure Portal. |
@@ -964,19 +963,19 @@ U kunt ook een `CloudTable` methode parameter gebruiken om naar de tabel te schr
 
 # <a name="c-script"></a>[C#-script](#tab/csharp-script)
 
-Toegang tot de entiteit uitvoer tabel met behulp van een methode parameter `ICollector<T> paramName` of `IAsyncCollector<T> paramName` waar `T` de en-eigenschappen zijn opgenomen `PartitionKey` `RowKey` . Deze eigenschappen gaan vaak vergezeld van implementatie `ITableEntity` of overname `TableEntity` . De `paramName` waarde wordt opgegeven in de `name` eigenschap van *Function. json*.
+Toegang tot de entiteit uitvoer tabel met behulp van een methode parameter `ICollector<T> paramName` of `IAsyncCollector<T> paramName` waar `T` de en-eigenschappen zijn opgenomen `PartitionKey` `RowKey` . Deze eigenschappen gaan vaak vergezeld van implementatie `ITableEntity` of overname `TableEntity` . De `paramName` waarde wordt opgegeven in de `name` eigenschap van *function.jsop*.
 
 U kunt ook een `CloudTable` methode parameter gebruiken om naar de tabel te schrijven met behulp van de Azure Storage SDK. Als u probeert verbinding te maken met `CloudTable` een fout bericht, moet u ervoor zorgen dat u een verwijzing naar [de juiste versie van de Storage SDK](#azure-storage-sdk-version-in-functions-1x)hebt.
 
 # <a name="javascript"></a>[JavaScript](#tab/javascript)
 
-U krijgt toegang tot de uitvoer gebeurtenis door gebruik te maken van `context.bindings.<name>` `<name>` de waarde die is opgegeven in de `name` eigenschap van *Function. json*.
+U krijgt toegang tot de uitvoer gebeurtenis door gebruik te maken `context.bindings.<name>` `<name>` van de waarde die is opgegeven in de `name` eigenschap van *function.jsop*.
 
 # <a name="python"></a>[Python](#tab/python)
 
 Er zijn twee opties voor het uitvoeren van een tabelrij bericht in tabel opslag van een functie:
 
-- **Retour waarde**: Stel de `name` eigenschap in *Function. json* in op `$return` . Met deze configuratie wordt de retour waarde van de functie persistent gemaakt als tabelrij.
+- **Retour waarde**: Stel de `name` eigenschap in *function.jsin op* aan `$return` . Met deze configuratie wordt de retour waarde van de functie persistent gemaakt als tabelrij.
 
 - Verplicht **: Geef**een waarde door aan de methode [set](https://docs.microsoft.com/python/api/azure-functions/azure.functions.out?view=azure-python#set-val--t-----none) van de para meter die is gedeclareerd als een [out](https://docs.microsoft.com/python/api/azure-functions/azure.functions.out?view=azure-python) -type. De waarde die is door gegeven aan `set` , wordt persistent gemaakt als een event hub-bericht.
 
@@ -992,7 +991,7 @@ Er zijn twee opties voor het uitvoeren van een rij in een tabel opslag van een f
 
 ## <a name="exceptions-and-return-codes"></a>Uitzonde ringen en retour codes
 
-| Binding | Naslaginformatie |
+| Binding | Verwijzing |
 |---|---|
 | Tabel | [Fout codes voor tabellen](https://docs.microsoft.com/rest/api/storageservices/fileservices/table-service-error-codes) |
 | BLOB, tabel, wachtrij | [Opslag fout codes](https://docs.microsoft.com/rest/api/storageservices/fileservices/common-rest-api-error-codes) |

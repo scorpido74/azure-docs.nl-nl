@@ -8,13 +8,12 @@ ms.topic: conceptual
 ms.date: 06/09/2020
 tags: connectors
 ms.openlocfilehash: 23c6a555909d43f640fb5089fb60da8bac065886
-ms.sourcegitcommit: 1de57529ab349341447d77a0717f6ced5335074e
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/09/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84609510"
 ---
-# <a name="call-service-endpoints-over-http-or-https-from-azure-logic-apps"></a>Service-eind punten aanroepen via HTTP of HTTPS vanaf Azure Logic Apps
+# <a name="call-service-endpoints-over-http-or-https-from-azure-logic-apps"></a>Service-eindpunten aanroepen via HTTP of HTTPS vanuit Azure Logic Apps
 
 Met [Azure Logic apps](../logic-apps/logic-apps-overview.md) en de ingebouwde http-trigger of-actie kunt u geautomatiseerde taken en werk stromen maken waarmee aanvragen worden verzonden naar service-eind punten via http of https. U kunt bijvoorbeeld het service-eind punt voor uw website bewaken door dat eind punt op een specifiek schema te controleren. Wanneer de opgegeven gebeurtenis plaatsvindt op dat eind punt, zoals uw website, activeert de gebeurtenis de werk stroom van uw logische app en worden de acties uitgevoerd in die werk stroom. Als u in plaats daarvan binnenkomende HTTPS-aanroepen wilt ontvangen en beantwoorden, gebruikt u de ingebouwde [aanvraag-of reactie actie](../connectors/connectors-native-reqres.md).
 
@@ -40,7 +39,7 @@ In dit artikel wordt beschreven hoe u een HTTP-trigger of actie kunt toevoegen a
 
 Deze ingebouwde trigger maakt een HTTP-aanroep van de opgegeven URL voor een eind punt en retourneert een antwoord.
 
-1. Meld u aan bij de [Azure-portal](https://portal.azure.com). Open uw lege logische app in de ontwerp functie voor logische apps.
+1. Meld u aan bij [Azure Portal](https://portal.azure.com). Open uw lege logische app in de ontwerp functie voor logische apps.
 
 1. Selecteer in het zoekvak van de ontwerp functie **ingebouwd**. Voer in het zoekvak in `http` als uw filter. Selecteer in de lijst **Triggers** de **http-** trigger.
 
@@ -61,7 +60,7 @@ Deze ingebouwde trigger maakt een HTTP-aanroep van de opgegeven URL voor een ein
 
 1. Ga door met het bouwen van de werk stroom van uw logische app met acties die worden uitgevoerd wanneer de trigger wordt geactiveerd.
 
-1. Als u klaar bent, kunt u uw logische app niet opslaan. Selecteer **Opslaan**op de werk balk van de ontwerp functie.
+1. Als u klaar bent, kunt u uw logische app niet opslaan. Selecteer **Opslaan** op de werkbalk van de ontwerper.
 
 <a name="http-action"></a>
 
@@ -69,7 +68,7 @@ Deze ingebouwde trigger maakt een HTTP-aanroep van de opgegeven URL voor een ein
 
 Met deze ingebouwde actie wordt een HTTP-aanroep naar de opgegeven URL voor een eind punt gemaakt en wordt een antwoord geretourneerd.
 
-1. Meld u aan bij de [Azure-portal](https://portal.azure.com). Open uw logische app in de ontwerp functie voor logische apps.
+1. Meld u aan bij [Azure Portal](https://portal.azure.com). Open uw logische app in de ontwerp functie voor logische apps.
 
    In dit voor beeld wordt de HTTP-trigger als eerste stap gebruikt.
 
@@ -94,7 +93,7 @@ Met deze ingebouwde actie wordt een HTTP-aanroep naar de opgegeven URL voor een 
 
 1. Als u andere beschik bare para meters wilt toevoegen, opent u de lijst **nieuwe para meter toevoegen** en selecteert u de gewenste para meters.
 
-1. Als u klaar bent, kunt u uw logische app niet opslaan. Selecteer **Opslaan**op de werk balk van de ontwerp functie.
+1. Als u klaar bent, kunt u uw logische app niet opslaan. Selecteer **Opslaan** op de werkbalk van de ontwerper.
 
 <a name="tls-support"></a>
 
@@ -253,14 +252,14 @@ Zie de volgende secties voor meer informatie over trigger-en actie parameters:
 
 Hier vindt u meer informatie over de uitvoer van een HTTP-trigger of actie, waarmee deze gegevens worden geretourneerd:
 
-| Eigenschap | Type | Beschrijving |
+| Eigenschap | Type | Description |
 |----------|------|-------------|
 | `headers` | JSON-object | De headers van de aanvraag |
 | `body` | JSON-object | Het object met de inhoud van de hoofd tekst van de aanvraag |
 | `status code` | Geheel getal | De status code van de aanvraag |
 |||
 
-| Statuscode | Beschrijving |
+| Statuscode | Description |
 |-------------|-------------|
 | 200 | OK |
 | 202 | Geaccepteerd |

@@ -7,10 +7,9 @@ ms.date: 02/18/2020
 ms.author: cshoe
 ms.custom: cc996988-fb4f-47, tracking-python
 ms.openlocfilehash: eb61cad5f505e6895b550adca3e9f156222d6d30
-ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/09/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84559962"
 ---
 # <a name="azure-queue-storage-output-bindings-for-azure-functions"></a>Azure Queue Storage-uitvoer bindingen voor Azure Functions
@@ -41,9 +40,9 @@ public static class QueueFunctions
 
 # <a name="c-script"></a>[C#-script](#tab/csharp-script)
 
-In het volgende voor beeld ziet u een binding van een HTTP-trigger in een *Function. json* -bestand en [C# script-code (. CSX)](functions-reference-csharp.md) die gebruikmaakt van de binding. De functie maakt een wachtrij-item met een **CustomQueueMessage** -object lading voor elke ontvangen HTTP-aanvraag.
+In het volgende voor beeld ziet u een binding van een HTTP-trigger in een *function.jsvoor* de code van het bestand en [C#-script (. CSX)](functions-reference-csharp.md) die gebruikmaakt van de binding. De functie maakt een wachtrij-item met een **CustomQueueMessage** -object lading voor elke ontvangen HTTP-aanvraag.
 
-Hier is het bestand *Function. json* :
+Dit is de *function.jsvoor* het volgende bestand:
 
 ```json
 {
@@ -102,9 +101,9 @@ public static void Run(
 
 # <a name="javascript"></a>[JavaScript](#tab/javascript)
 
-In het volgende voor beeld ziet u een binding van de HTTP-trigger in een *Function. json* -bestand en een [Java script-functie](functions-reference-node.md) die gebruikmaakt van de binding. De functie maakt een wachtrij-item voor elke ontvangen HTTP-aanvraag.
+In het volgende voor beeld ziet u een binding van een HTTP-trigger in een *function.jsin* een bestand en een [Java script-functie](functions-reference-node.md) die gebruikmaakt van de binding. De functie maakt een wachtrij-item voor elke ontvangen HTTP-aanvraag.
 
-Hier is het bestand *Function. json* :
+Dit is de *function.jsvoor* het volgende bestand:
 
 ```json
 {
@@ -153,9 +152,9 @@ module.exports = function(context) {
 
 # <a name="python"></a>[Python](#tab/python)
 
-In het volgende voor beeld ziet u hoe u één en meerdere waarden naar opslag wachtrijen kunt uitvoeren. De configuratie die nodig is voor *Function. json* is op dezelfde manier.
+In het volgende voor beeld ziet u hoe u één en meerdere waarden naar opslag wachtrijen kunt uitvoeren. De configuratie die nodig is voor *function.jsop is op* dezelfde manier.
 
-Een opslag wachtrij binding is gedefinieerd in *Function. json* waarbij *type* is ingesteld op `queue` .
+Er is een opslag wachtrij binding gedefinieerd in *function.jsop* waar *type* is ingesteld op `queue` .
 
 ```json
 {
@@ -313,9 +312,9 @@ De para meter die aan de `QueueOutput` aantekening is gekoppeld, wordt getypt al
 
 ## <a name="configuration"></a>Configuratie
 
-De volgende tabel bevat informatie over de binding configuratie-eigenschappen die u hebt ingesteld in het bestand *Function. json* en het- `Queue` kenmerk.
+De volgende tabel bevat uitleg over de binding configuratie-eigenschappen die u hebt ingesteld in de *function.jsvoor* het bestand en het `Queue` kenmerk.
 
-|function. json-eigenschap | Kenmerk eigenschap |Beschrijving|
+|function.jsbij eigenschap | Kenmerk eigenschap |Description|
 |---------|---------|----------------------|
 |**type** | N.v.t. | Moet worden ingesteld op `queue` . Deze eigenschap wordt automatisch ingesteld wanneer u de trigger maakt in de Azure Portal.|
 |**direction** | N.v.t. | Moet worden ingesteld op `out` . Deze eigenschap wordt automatisch ingesteld wanneer u de trigger maakt in de Azure Portal. |
@@ -345,7 +344,7 @@ Schrijf in C#-en C#-script meerdere wachtrij berichten met behulp van een van de
 
 # <a name="c-script"></a>[C#-script](#tab/csharp-script)
 
-Een enkel wachtrij bericht schrijven met behulp van een methode parameter, zoals `out T paramName` . De `paramName` is de waarde die is opgegeven in de `name` eigenschap van *Function. json*. U kunt het retour type van de methode gebruiken in plaats van een `out` para meter, en dit `T` kan een van de volgende typen zijn:
+Een enkel wachtrij bericht schrijven met behulp van een methode parameter, zoals `out T paramName` . De `paramName` is de waarde die is opgegeven in de `name` eigenschap van *function.jsop*. U kunt het retour type van de methode gebruiken in plaats van een `out` para meter, en dit `T` kan een van de volgende typen zijn:
 
 * Een object dat als JSON kan worden geserialiseerd
 * `string`
@@ -361,13 +360,13 @@ Schrijf in C#-en C#-script meerdere wachtrij berichten met behulp van een van de
 
 # <a name="javascript"></a>[JavaScript](#tab/javascript)
 
-Het uitvoer wachtrij-item is beschikbaar `context.bindings.<NAME>` via `<NAME>` de locatie die overeenkomt met de naam die is gedefinieerd in *Function. json*. U kunt een teken reeks of een JSON-serialiseerbaar object gebruiken voor de nettolading van het wachtrij-item.
+Het uitvoer wachtrij-item is beschikbaar via `context.bindings.<NAME>` waar `<NAME>` overeenkomt met de naam die is gedefinieerd in *function.jsop*. U kunt een teken reeks of een JSON-serialiseerbaar object gebruiken voor de nettolading van het wachtrij-item.
 
 # <a name="python"></a>[Python](#tab/python)
 
 Er zijn twee opties voor het uitvoeren van een event hub-bericht van een functie:
 
-- **Retour waarde**: Stel de `name` eigenschap in *Function. json* in op `$return` . Met deze configuratie wordt de retour waarde van de functie persistent gemaakt als een wachtrij-opslag bericht.
+- **Retour waarde**: Stel de `name` eigenschap in *function.jsin op* aan `$return` . Met deze configuratie wordt de retour waarde van de functie persistent gemaakt als een wachtrij-opslag bericht.
 
 - Verplicht **: Geef**een waarde door aan de methode [set](https://docs.microsoft.com/python/api/azure-functions/azure.functions.out?view=azure-python#set-val--t-----none) van de para meter die is gedeclareerd als een [out](https://docs.microsoft.com/python/api/azure-functions/azure.functions.out?view=azure-python) -type. De waarde die is door gegeven aan, `set` wordt persistent gemaakt als een wachtrij-opslag bericht.
 
@@ -383,7 +382,7 @@ Er zijn twee opties voor het uitvoeren van een event hub-bericht van een functie
 
 ## <a name="exceptions-and-return-codes"></a>Uitzonde ringen en retour codes
 
-| Binding |  Naslaginformatie |
+| Binding |  Verwijzing |
 |---|---|
 | Wachtrij | [Fout codes voor de wachtrij](https://docs.microsoft.com/rest/api/storageservices/queue-service-error-codes) |
 | BLOB, tabel, wachtrij | [Opslag fout codes](https://docs.microsoft.com/rest/api/storageservices/fileservices/common-rest-api-error-codes) |
@@ -391,12 +390,12 @@ Er zijn twee opties voor het uitvoeren van een event hub-bericht van een functie
 
 <a name="host-json"></a>  
 
-## <a name="hostjson-settings"></a>instellingen voor de host. json
+## <a name="hostjson-settings"></a>host.jsop instellingen
 
-In deze sectie worden de algemene configuratie-instellingen beschreven die beschikbaar zijn voor deze binding in versie 2. x en hoger. In het voor beeld van een host. JSON-bestand bevat alleen de instellingen van versie 2. x + voor deze binding. Zie voor meer informatie over globale configuratie-instellingen in versie 2. x en hoger de [verwijzing host. json voor Azure functions](functions-host-json.md).
+In deze sectie worden de algemene configuratie-instellingen beschreven die beschikbaar zijn voor deze binding in versie 2. x en hoger. In het volgende voor beeld host.jsin het onderstaande bestand bevat alleen de instellingen van versie 2. x + voor deze binding. Zie voor meer informatie over globale configuratie-instellingen in versie 2. x en verder [host.jsop referentie voor Azure functions](functions-host-json.md).
 
 > [!NOTE]
-> Zie [host. json Reference voor Azure functions 1. x](functions-host-json-v1.md)voor een verwijzing naar de host. json in functions 1. x.
+> Zie [host.jsbij verwijzing voor Azure functions 1. x](functions-host-json-v1.md)voor een referentie van host.jsin in functions 1. x.
 
 ```json
 {
@@ -413,7 +412,7 @@ In deze sectie worden de algemene configuratie-instellingen beschreven die besch
 }
 ```
 
-|Eigenschap  |Standaard | Beschrijving |
+|Eigenschap  |Standaard | Description |
 |---------|---------|---------|
 |maxPollingInterval|00:00:01|Het maximum interval tussen de polls van de wachtrij. Minimum is 00:00:00.100 (100 MS) en wordt verhoogd naar 00:01:00 (1 min.).  In 1. x is het gegevens type milliseconden en in 2. x en hoger het een time span.|
 |visibilityTimeout|00:00:00|Het tijds interval tussen nieuwe pogingen wanneer het verwerken van een bericht mislukt. |

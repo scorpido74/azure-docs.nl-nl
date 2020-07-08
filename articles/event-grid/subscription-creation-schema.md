@@ -8,10 +8,9 @@ ms.topic: reference
 ms.date: 01/23/2020
 ms.author: femila
 ms.openlocfilehash: 933987f405b306607ae36c3f7b626108d641abf9
-ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/09/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84558985"
 ---
 # <a name="event-grid-subscription-schema"></a>Schema voor Event Grid abonnement
@@ -32,21 +31,21 @@ De naam van het gebeurtenis abonnement moet 3-64 tekens lang zijn en mag alleen 
  
 ## <a name="event-subscription-properties"></a>Eigenschappen van gebeurtenis abonnement
 
-| Eigenschap | Type | Beschrijving |
+| Eigenschap | Type | Description |
 | -------- | ---- | ----------- |
 | doel | object | Het object dat het eind punt definieert. |
 | filter | object | Een optioneel veld voor het filteren van de typen gebeurtenissen. |
 
 ### <a name="destination-object"></a>doel object
 
-| Eigenschap | Type | Beschrijving |
+| Eigenschap | Type | Description |
 | -------- | ---- | ----------- |
 | endpointType | tekenreeks | Het type eind punt voor het abonnement (webhook/HTTP, Event hub of queue). | 
 | endpointUrl | tekenreeks | De doel-URL voor gebeurtenissen in dit gebeurtenis abonnement. | 
 
 ### <a name="filter-object"></a>object filteren
 
-| Eigenschap | Type | Beschrijving |
+| Eigenschap | Type | Description |
 | -------- | ---- | ----------- |
 | includedEventTypes | matrix | Overeenkomen wanneer het gebeurtenis type in het gebeurtenis bericht exact overeenkomt met een van deze gebeurtenis type namen. Retourneert een fout wanneer de gebeurtenis naam niet overeenkomt met de geregistreerde gebeurtenis type namen voor de bron van de gebeurtenis. Standaard komt alle gebeurtenis typen overeen. |
 | subjectBeginsWith | tekenreeks | Een voorvoegsel filter voor het veld onderwerp in het gebeurtenis bericht. De standaard waarde of de lege teken reeks komt overeen met alle. | 

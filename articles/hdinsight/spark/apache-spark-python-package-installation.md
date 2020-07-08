@@ -9,10 +9,9 @@ ms.topic: conceptual
 ms.custom: seoapr2020, tracking-python
 ms.date: 04/29/2020
 ms.openlocfilehash: f1ed0ae33d1f83fd77adb337aded95605c17f38b
-ms.sourcegitcommit: 1de57529ab349341447d77a0717f6ced5335074e
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/09/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84607309"
 ---
 # <a name="safely-manage-python-environment-on-azure-hdinsight-using-script-action"></a>Een Python-omgeving veilig beheren in Azure HDInsight met scriptactie
@@ -33,7 +32,7 @@ De Microsoft Azure HDInsight-service gebruikt een omgeving van open-source techn
 
 Er zijn twee soorten open source-onderdelen die beschikbaar zijn in de HDInsight-service:
 
-|Onderdeel |Beschrijving |
+|Onderdeel |Description |
 |---|---|
 |Ingebouwd|Deze onderdelen zijn vooraf geïnstalleerd op HDInsight-clusters en bieden kern functionaliteit van het cluster. Bijvoorbeeld Apache Hadoop GARENs Resource Manager, de Apache Hive query language (HiveQL) en de mahout-bibliotheek behoren tot deze categorie. Een volledige lijst met cluster onderdelen is beschikbaar in [Wat is er nieuw in de Apache Hadoop cluster versies van HDInsight](../hdinsight-component-versioning.md).|
 |Aangepast|Als gebruiker van het cluster kan in uw workload elk onderdeel dat beschikbaar is in de community, worden geïnstalleerd of gebruikt, of door u gemaakt.|

@@ -4,10 +4,9 @@ description: Meer informatie over het effectief gebruiken van Azure Monitor-logb
 ms.date: 02/03/2020
 ms.topic: how-to
 ms.openlocfilehash: bdd91cec650d6810d1d62230219f840a172141d9
-ms.sourcegitcommit: ce44069e729fce0cf67c8f3c0c932342c350d890
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/09/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84634112"
 ---
 # <a name="monitor-delegated-resources-at-scale"></a>Gedelegeerde resources op schaal controleren
@@ -40,4 +39,4 @@ Nadat u uw beleid hebt geïmplementeerd, worden de gegevens vastgelegd in de Log
 
 - Meer informatie over [Azure monitor](../../azure-monitor/index.yml).
 - Meer informatie over [Azure monitor-logboeken](../../azure-monitor/platform/data-platform-logs.md).
-- Meer informatie over de [ervaring op het beheer van cross-tenants](../concepts/cross-tenant-management-experience.md).
+- Meer informatie over [beheerervaring in meerdere tenants](../concepts/cross-tenant-management-experience.md).

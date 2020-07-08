@@ -4,10 +4,9 @@ description: Dit artikel bevat een beveiligings matrix met alle werk belastingen
 ms.date: 11/13/2018
 ms.topic: conceptual
 ms.openlocfilehash: 742b43d748fbd4c1235d0555ac3bd4419880db5c
-ms.sourcegitcommit: d7fba095266e2fb5ad8776bffe97921a57832e23
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/09/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84632085"
 ---
 # <a name="azure-backup-server-v3-rtm-protection-matrix"></a>Azure Backup Server v3 RTM-beveiligings matrix
@@ -19,7 +18,7 @@ In de volgende matrix ziet u wat kan worden beveiligd met Azure Backup Server v3
 |Workload|Versie|Azure Backup-server</br> installation|Ondersteund Azure Backup Server|Beveiliging en herstel|
 |------------|-----------|---------------|--------------|--------------|
 |Client-computers (64-bit en 32-bit)|Windows 10|Fysieke server<br /><br />Virtuele Hyper-V-machine <br /><br />Virtuele VMware-machine|V3, V2|Volume, share, map, bestanden, ontdubbelde volumes<br /><br />Beveiligde volumes moeten NTFS zijn. FAT en FAT32 worden niet ondersteund.<br /><br />Volumes moeten minimaal 1 GB zijn. Azure Backup Server gebruikt Volume Shadow Copy Service (VSS) om de moment opname van de gegevens te maken en de moment opname werkt alleen als het volume ten minste 1 GB is.|
-|Client-computers (64-bit en 32-bit)|Windows 8.1|Fysieke server<br /><br />Virtuele Hyper-V-machine |V3, V2|Bestanden<br /><br />Beveiligde volumes moeten NTFS zijn. FAT en FAT32 worden niet ondersteund.<br /><br />Volumes moeten minimaal 1 GB zijn. Azure Backup Server gebruikt Volume Shadow Copy Service (VSS) om de moment opname van de gegevens te maken en de moment opname werkt alleen als het volume ten minste 1 GB is.|
+|Client-computers (64-bit en 32-bit)|Windows 8.1|Fysieke server<br /><br />Virtuele Hyper-V-machine |V3, V2|Files<br /><br />Beveiligde volumes moeten NTFS zijn. FAT en FAT32 worden niet ondersteund.<br /><br />Volumes moeten minimaal 1 GB zijn. Azure Backup Server gebruikt Volume Shadow Copy Service (VSS) om de moment opname van de gegevens te maken en de moment opname werkt alleen als het volume ten minste 1 GB is.|
 |Client-computers (64-bit en 32-bit)|Windows 8.1|Windows virtuele machine in VMWare (beveiligt werkbelasting die wordt uitgevoerd in de Windows virtuele machine in VMWare)|V3, V2|Volume, share, map, bestanden, ontdubbelde volumes<br /><br />Beveiligde volumes moeten NTFS zijn. FAT en FAT32 worden niet ondersteund.<br /><br />Volumes moeten minimaal 1 GB zijn. Azure Backup Server gebruikt Volume Shadow Copy Service (VSS) om de moment opname van de gegevens te maken en de moment opname werkt alleen als het volume ten minste 1 GB is.|
 |Client-computers (64-bit en 32-bit)|Windows 8|Fysieke server<br /><br />Lokale Hyper-V virtuele machine|V3, V2|Volume, share, map, bestanden, ontdubbelde volumes<br /><br />Beveiligde volumes moeten NTFS zijn. FAT en FAT32 worden niet ondersteund.<br /><br />Volumes moeten minimaal 1 GB zijn. Azure Backup Server gebruikt Volume Shadow Copy Service (VSS) om de moment opname van de gegevens te maken en de moment opname werkt alleen als het volume ten minste 1 GB is.|
 |Client-computers (64-bit en 32-bit)|Windows 8|Windows virtuele machine in VMWare (beveiligt werkbelasting die wordt uitgevoerd in de Windows virtuele machine in VMWare)|V3, V2|Volume, share, map, bestanden, ontdubbelde volumes<br /><br />Beveiligde volumes moeten NTFS zijn. FAT en FAT32 worden niet ondersteund.<br /><br />Volumes moeten minimaal 1 GB zijn. Azure Backup Server gebruikt Volume Shadow Copy Service (VSS) om de moment opname van de gegevens te maken en de moment opname werkt alleen als het volume ten minste 1 GB is.|

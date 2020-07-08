@@ -10,10 +10,9 @@ ms.author: sourabha
 ms.reviewer: sstein
 ms.date: 05/19/2020
 ms.openlocfilehash: c38bb6100665cc9456b66608660bdca520b934c6
-ms.sourcegitcommit: ce44069e729fce0cf67c8f3c0c932342c350d890
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/09/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84636237"
 ---
 # <a name="configure-azure-sql-edge-preview"></a>Azure SQL Edge configureren (preview-versie)
@@ -32,7 +31,7 @@ In Azure SQL Edge worden verschillende omgevings variabelen weer gegeven die kun
 
 De volgende SQL Server on Linux omgevings variabele wordt niet ondersteund voor Azure SQL Edge. Indien gedefinieerd, wordt deze omgevings variabele genegeerd tijdens het initialiseren van de container.
 
-| Omgevingsvariabele | Beschrijving |
+| Omgevingsvariabele | Description |
 |-----|-----|
 | **MSSQL_ENABLE_HADR** | Beschikbaarheids groep inschakelen. Bijvoorbeeld: **1** is ingeschakeld en **0** is uitgeschakeld. |
 
@@ -73,7 +72,7 @@ Azure SQL Edge bevat niet het [configuratie hulpprogramma MSSQL-conf,](/sql/linu
 
 De volgende MSSQL. conf-opties zijn niet van toepassing op SQL Edge:
 
-|Optie|Beschrijving|
+|Optie|Description|
 |:---|:---|
 |**Feedback van klanten** | Kies of SQL Server feedback naar micro soft verzendt. |
 |**Data base mail-profiel** | Stel het standaard-e-mail profiel voor de data base in voor SQL Server on Linux. |

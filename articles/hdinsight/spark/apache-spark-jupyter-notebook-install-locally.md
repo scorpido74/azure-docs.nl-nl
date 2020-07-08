@@ -9,10 +9,9 @@ ms.topic: conceptual
 ms.custom: hdinsightactive,seoapr2020, tracking-python
 ms.date: 04/23/2020
 ms.openlocfilehash: 2084bf136300126e56414599caa63d24c98f4542
-ms.sourcegitcommit: 1de57529ab349341447d77a0717f6ced5335074e
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/09/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84604232"
 ---
 # <a name="install-jupyter-notebook-on-your-computer-and-connect-to-apache-spark-on-hdinsight"></a>Jupyter notebook op uw computer installeren en verbinding maken met Apache Spark op HDInsight
@@ -100,7 +99,7 @@ In deze sectie configureert u de Spark Magic die u eerder hebt geïnstalleerd om
     exit()
     ```
 
-3. Maak in de map `.sparkmagic` een bestand met de naam **config. json** en voeg het volgende JSON-fragment erin toe.  
+3. Maak in de map `.sparkmagic` een bestand met de naam **config.jsop** en voeg het volgende JSON-code fragment toe.  
 
     ```json
     {
@@ -135,7 +134,7 @@ In deze sectie configureert u de Spark Magic die u eerder hebt geïnstalleerd om
     |{BASE64ENCODEDPASSWORD}|Een base64-gecodeerd wacht woord voor uw werkelijke wacht woord.  U kunt een base64-wacht woord genereren op [https://www.url-encode-decode.com/base64-encode-decode/](https://www.url-encode-decode.com/base64-encode-decode/) .|
     |`"livy_server_heartbeat_timeout_seconds": 60`|Blijven gebruiken `sparkmagic 0.12.7` (clusters v 3.5 en v 3.6).  Als u `sparkmagic 0.2.3` (clusters v 3.4) gebruikt, vervangt u door `"should_heartbeat": true` .|
 
-    U kunt een volledig voorbeeld bestand zien bij [voorbeeld configuratie. json](https://github.com/jupyter-incubator/sparkmagic/blob/master/sparkmagic/example_config.json).
+    U kunt een volledig voorbeeld bestand zien op [voorbeeld config.jsop](https://github.com/jupyter-incubator/sparkmagic/blob/master/sparkmagic/example_config.json).
 
    > [!TIP]  
    > Er worden heartbeats verzonden om ervoor te zorgen dat sessies niet worden gelekt. Wanneer een computer naar de slaap stand gaat of wordt uitgeschakeld, wordt de heartbeat niet verzonden, waardoor de sessie wordt opgeschoond. Als u dit gedrag wilt uitschakelen, kunt u voor clusters v 3.4 de livy-configuratie instellen `livy.server.interactive.heartbeat.timeout` op `0` basis van de Ambari-gebruikers interface. Als u de 3,5-configuratie hierboven niet instelt voor clusters v 3.5, wordt de sessie niet verwijderd.
@@ -164,7 +163,7 @@ In deze sectie configureert u de Spark Magic die u eerder hebt geïnstalleerd om
 
     Als u de uitvoer kunt ophalen, wordt de verbinding met het HDInsight-cluster getest.
 
-    Als u de notitieblok configuratie wilt bijwerken om verbinding te maken met een ander cluster, werkt u het bestand config. json bij met de nieuwe set waarden, zoals wordt weer gegeven in stap 3.
+    Als u de notitieblok configuratie wilt bijwerken om verbinding te maken met een ander cluster, werkt u de config.jsbij met de nieuwe set waarden, zoals wordt weer gegeven in stap 3.
 
 ## <a name="why-should-i-install-jupyter-on-my-computer"></a>Waarom moet ik Jupyter installeren op mijn computer?
 

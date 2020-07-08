@@ -12,10 +12,9 @@ ms.date: 10/30/2019
 ms.author: jmprieur
 ms.custom: aaddev, tracking-python
 ms.openlocfilehash: 3a6f92022a4e26c84efc2d5f68c3aad8b4685d30
-ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/09/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84558791"
 ---
 # <a name="a-web-app-that-calls-web-apis-code-configuration"></a>Een web-app die web-Api's aanroept: code configuratie
@@ -31,7 +30,7 @@ De [Web-app die zich in gebruikers scenario's aanmeldt](scenario-web-app-sign-us
 
 De volgende bibliotheken in de micro soft Authentication Library (MSAL) ondersteunen de autorisatie code stroom voor web-apps:
 
-| MSAL-bibliotheek | Beschrijving |
+| MSAL-bibliotheek | Description |
 |--------------|-------------|
 | ![MSAL.NET](media/sample-v2-code/logo_NET.png) <br/> MSAL.NET  | Ondersteuning voor .NET Framework-en .NET core-platforms. Niet ondersteund zijn Universeel Windows-platform (UWP), Xamarin. iOS en Xamarin. Android, omdat deze platformen worden gebruikt voor het bouwen van open bare client toepassingen. Voor ASP.NET Core web apps en Web-Api's wordt MSAL.NET ingekapseld in een bibliotheek op een hoger niveau met de naam micro soft. Identity. Web|
 | ![MSAL Python](media/sample-v2-code/logo_python.png) <br/> MSAL voor Python | Ondersteuning voor python-webtoepassingen. |
@@ -95,7 +94,7 @@ Micro soft. Identity. Web vereenvoudigt uw code door de juiste OpenID Connect Co
 
 # <a name="aspnet"></a>[ASP.NET](#tab/aspnet)
 
-ASP.NET verwerkt dingen op soort gelijke wijze als ASP.NET Core, behalve dat de configuratie van OpenID Connect Connect en het abonnement op de `OnAuthorizationCodeReceived` gebeurtenis plaatsvindt in het bestand [App_Start \Startup.auth.cs](https://github.com/Azure-Samples/ms-identity-aspnet-webapp-openidconnect/blob/a2da310539aa613b77da1f9e1c17585311ab22b7/WebApp/App_Start/Startup.Auth.cs) . De concepten zijn ook vergelijkbaar met die in ASP.NET Core, behalve dat u in ASP.NET de `RedirectUri` in [Web. config # L15](https://github.com/Azure-Samples/ms-identity-aspnet-webapp-openidconnect/blob/master/WebApp/Web.config#L15)moet opgeven. Deze configuratie is iets minder krachtig dan het in ASP.NET Core, omdat u het moet wijzigen wanneer u de toepassing implementeert.
+ASP.NET verwerkt dingen op soort gelijke wijze als ASP.NET Core, behalve dat de configuratie van OpenID Connect Connect en het abonnement op de `OnAuthorizationCodeReceived` gebeurtenis plaatsvindt in het bestand [App_Start \Startup.auth.cs](https://github.com/Azure-Samples/ms-identity-aspnet-webapp-openidconnect/blob/a2da310539aa613b77da1f9e1c17585311ab22b7/WebApp/App_Start/Startup.Auth.cs) . De concepten zijn ook vergelijkbaar met die in ASP.NET Core, behalve dat u in ASP.NET de `RedirectUri` in [Web.config # L15](https://github.com/Azure-Samples/ms-identity-aspnet-webapp-openidconnect/blob/master/WebApp/Web.config#L15)moet opgeven. Deze configuratie is iets minder krachtig dan het in ASP.NET Core, omdat u het moet wijzigen wanneer u de toepassing implementeert.
 
 Hier volgt de code voor Startup.Auth.cs:
 

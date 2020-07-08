@@ -8,10 +8,9 @@ ms.date: 07/12/2018
 ms.author: rogarana
 ms.subservice: disks
 ms.openlocfilehash: 51ebecf784b7a3ec38f84703a74e96d277afa70c
-ms.sourcegitcommit: 5a8c8ac84c36859611158892422fc66395f808dc
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/10/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84658205"
 ---
 # <a name="convert-azure-managed-disks-storage-from-standard-to-premium-or-premium-to-standard"></a>Azure Managed disks-opslag converteren van Standard naar Premium of Premium naar Standard
@@ -131,7 +130,7 @@ az vm start --ids $vmId
 
 Volg deze stappen:
 
-1. Meld u aan bij de [Azure-portal](https://portal.azure.com).
+1. Meld u aan bij [Azure Portal](https://portal.azure.com).
 2. Selecteer de VM in de lijst met **virtuele machines**.
 3. Als de virtuele machine niet is gestopt, selecteert u **stoppen** boven in het deel venster VM- **overzicht** en wacht u totdat de virtuele machine is gestopt.
 4. Selecteer in het deel venster voor de VM de optie **schijven** in het menu.

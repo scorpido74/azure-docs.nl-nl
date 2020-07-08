@@ -10,10 +10,9 @@ ms.topic: conceptual
 ms.date: 01/15/2020
 ms.custom: tracking-python
 ms.openlocfilehash: 7945b3b0aeba7f5135665f4413d304eb225ac749
-ms.sourcegitcommit: 1de57529ab349341447d77a0717f6ced5335074e
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/09/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84604691"
 ---
 # <a name="example-create-a-custom-skill-using-python"></a>Voor beeld: een aangepaste vaardigheid maken met behulp van python
@@ -44,10 +43,10 @@ De Azure Functions-projectsjabloon in Visual Studio Code maakt een project dat k
 
 1. Druk in Visual Studio Code op F1 om het opdrachtenpalet te openen. In het opdrachtenpalet zoekt en selecteert u `Azure Functions: Create new project...`.
 
-1. Kies een maplocatie voor de Project werkruimte en kies **selecteren**.
+1. Kies een maplocatie voor de werkruimte van uw project en kies **Selecteren**.
 
     > [!NOTE]
-    > Deze stappen zijn zodanig ontworpen dat ze buiten een werk ruimte worden uitgevoerd. Daarom moet u geen projectmap selecteren die deel uitmaakt van een werk ruimte.
+    > Deze stappen waren bedoeld om buiten een werkruimte te worden voltooid. Daarom moet u geen projectmap selecteren die deel uitmaakt van een werk ruimte.
 
 1. Selecteer een taal voor uw functie-app-project. Voor deze zelf studie selecteert u **python**.
 1. Selecteer de python-versie, (versie 3.7.5 wordt ondersteund door Azure Functions)

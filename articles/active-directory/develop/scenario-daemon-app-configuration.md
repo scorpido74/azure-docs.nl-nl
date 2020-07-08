@@ -12,10 +12,9 @@ ms.date: 10/30/2019
 ms.author: jmprieur
 ms.custom: aaddev, tracking-python
 ms.openlocfilehash: 921015d6aa7acd840a4a231a899217daafe3525b
-ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/09/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84558547"
 ---
 # <a name="daemon-app-that-calls-web-apis---code-configuration"></a>Daemon-app die web-Api's aanroept-code configuratie
@@ -26,7 +25,7 @@ Meer informatie over het configureren van de code voor uw daemon-toepassing die 
 
 Deze micro soft-bibliotheken ondersteunen daemon-apps:
 
-  MSAL-bibliotheek | Beschrijving
+  MSAL-bibliotheek | Description
   ------------ | ----------
   ![MSAL.NET](media/sample-v2-code/logo_NET.png) <br/> MSAL.NET  | De .NET Framework-en .NET Core-platformen worden ondersteund voor het bouwen van daemon-toepassingen. (UWP, Xamarin. iOS en Xamarin. Android worden niet ondersteund omdat deze platformen worden gebruikt voor het bouwen van open bare client toepassingen.)
   ![Python](media/sample-v2-code/logo_python.png) <br/> MSAL Python | Ondersteuning voor daemon-toepassingen in python.
@@ -57,7 +56,7 @@ Het configuratie bestand definieert het volgende:
 
 # <a name="net"></a>[.NET](#tab/dotnet)
 
-[appSettings. json](https://github.com/Azure-Samples/active-directory-dotnetcore-daemon-v2/blob/master/1-Call-MSGraph/daemon-console/appsettings.json) van het voor beeld van de [.net Core-Console-daemon](https://github.com/Azure-Samples/active-directory-dotnetcore-daemon-v2) .
+[appsettings.jsop](https://github.com/Azure-Samples/active-directory-dotnetcore-daemon-v2/blob/master/1-Call-MSGraph/daemon-console/appsettings.json) vanuit het voor beeld van de [.net Core-Console-daemon](https://github.com/Azure-Samples/active-directory-dotnetcore-daemon-v2) .
 
 ```json
 {
@@ -73,7 +72,7 @@ U geeft een `ClientSecret` of een op `CertificateName` . Deze instellingen zijn 
 
 # <a name="python"></a>[Python](#tab/python)
 
-Wanneer u een vertrouwelijke client met client geheimen bouwt, is het configuratie bestand van de [para meters. json](https://github.com/Azure-Samples/ms-identity-python-daemon/blob/master/1-Call-MsGraph-WithSecret/parameters.json) in het voor beeld van [python-daemon](https://github.com/Azure-Samples/ms-identity-python-daemon) als volgt:
+Wanneer u een vertrouwelijke client met client geheimen bouwt, is hetparameters.jsin het configuratie bestand in het [python-daemon](https://github.com/Azure-Samples/ms-identity-python-daemon) - [voor](https://github.com/Azure-Samples/ms-identity-python-daemon/blob/master/1-Call-MsGraph-WithSecret/parameters.json) beeld als volgt:
 
 ```Json
 {
@@ -85,7 +84,7 @@ Wanneer u een vertrouwelijke client met client geheimen bouwt, is het configurat
 }
 ```
 
-Wanneer u een vertrouwelijke client met certificaten bouwt, zijn de [para meters. json](https://github.com/Azure-Samples/ms-identity-python-daemon/blob/master/2-Call-MsGraph-WithCertificate/parameters.json) -configuratie bestand in het [python-daemon](https://github.com/Azure-Samples/ms-identity-python-daemon) -voor beeld als volgt:
+Wanneer u een vertrouwelijke client met certificaten bouwt, is het [parameters.jsvan](https://github.com/Azure-Samples/ms-identity-python-daemon/blob/master/2-Call-MsGraph-WithCertificate/parameters.json) het configuratie bestand in het [python-daemon](https://github.com/Azure-Samples/ms-identity-python-daemon) -voor beeld als volgt:
 
 ```Json
 {

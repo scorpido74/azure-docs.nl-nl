@@ -9,10 +9,9 @@ ms.topic: conceptual
 ms.date: 01/01/2019
 ms.author: femila
 ms.openlocfilehash: dd7535030ea4f6d6769630e463618faab62944a0
-ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/09/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84558478"
 ---
 # <a name="receive-events-to-an-http-endpoint"></a>Gebeurtenissen op een HTTP-eindpunt ontvangen
@@ -32,7 +31,7 @@ Als u in .NET ontwikkelt, [voegt u een afhankelijkheid](../azure-functions/funct
 
 Sdk's voor andere talen zijn beschikbaar via de naslag informatie over het [publiceren van sdk's](./sdk-overview.md#data-plane-sdks) . Deze pakketten hebben de modellen voor systeem eigen gebeurtenis typen zoals `EventGridEvent` , `StorageBlobCreatedEventData` en `EventHubCaptureFileCreatedEventData` .
 
-Klik op de koppeling ' bestanden weer geven ' in uw Azure function (rechter deel venster van de portal van Azure functions) en maak een bestand met de naam project. json. Voeg de volgende inhoud toe aan het `project.json` bestand en sla het op:
+Klik op de koppeling ' bestanden weer geven ' in uw Azure function (rechter deel venster van de portal van Azure functions) en maak een bestand met de naam project.jsop. Voeg de volgende inhoud toe aan het `project.json` bestand en sla het op:
 
  ```json
 {

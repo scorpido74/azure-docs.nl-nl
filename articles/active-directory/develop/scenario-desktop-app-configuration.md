@@ -12,10 +12,9 @@ ms.date: 10/30/2019
 ms.author: jmprieur
 ms.custom: aaddev, tracking-python
 ms.openlocfilehash: f197dd5063f8584968277d8d55298c03d9d71ea6
-ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/09/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84558849"
 ---
 # <a name="desktop-app-that-calls-web-apis-code-configuration"></a>Bureau blad-app voor het aanroepen van web-Api's: code configuratie
@@ -26,14 +25,14 @@ Nu u de toepassing hebt gemaakt, leert u hoe u de code kunt configureren met de 
 
 De volgende micro soft-verificatie bibliotheken (MSALs) ondersteunen desktop toepassingen.
 
-  Microsoft Authentication Library | Beschrijving
+  Microsoft Authentication Library | Description
   ------------ | ----------
   ![MSAL.NET](media/sample-v2-code/logo_NET.png) <br/> MSAL.NET  | Biedt ondersteuning voor het bouwen van een bureaublad toepassing op meerdere platformen, zoals Linux, Windows en macOS.
   ![Python](media/sample-v2-code/logo_python.png) <br/> MSAL Python | Biedt ondersteuning voor het bouwen van een bureaublad toepassing op meerdere platforms.
   ![Java](media/sample-v2-code/logo_java.png) <br/> MSAL Java | Biedt ondersteuning voor het bouwen van een bureaublad toepassing op meerdere platforms.
   ![MSAL iOS](media/sample-v2-code/logo_iOS.png) <br/> MSAL iOS | Biedt ondersteuning voor desktop toepassingen die alleen op macOS worden uitgevoerd.
 
-## <a name="public-client-application"></a>Open bare client toepassing
+## <a name="public-client-application"></a>Openbare clienttoepassing
 
 Vanuit een code point van de weer gave zijn desktop toepassingen open bare client toepassingen. De configuratie is een andere bit, afhankelijk van of u interactieve verificatie gebruikt of niet.
 
@@ -205,7 +204,7 @@ app = msal.PublicClientApplication(
     )
 ```
 
-# <a name="macos"></a>[MacOS](#tab/macOS)
+# <a name="macos"></a>[macOS](#tab/macOS)
 
 Met de volgende code wordt een open bare client toepassing geïnstantieerd en worden Microsoft Azure de gebruikers in de open bare Cloud gemeldd met een werk-of school account of een persoonlijke Microsoft-account.
 

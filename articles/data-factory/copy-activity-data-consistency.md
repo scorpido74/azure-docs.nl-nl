@@ -12,10 +12,9 @@ ms.topic: conceptual
 ms.date: 3/27/2020
 ms.author: yexu
 ms.openlocfilehash: a45c8ce820532d11f18758924dc3399818cb9158
-ms.sourcegitcommit: 1de57529ab349341447d77a0717f6ced5335074e
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/09/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84610216"
 ---
 #  <a name="data-consistency-verification-in-copy-activity-preview"></a>Verificatie van de gegevens consistentie in de Kopieer activiteit (preview-versie)
@@ -85,11 +84,11 @@ In het volgende voor beeld wordt een JSON-definitie geboden om de verificatie va
 
 Eigenschap | Beschrijving | Toegestane waarden | Vereist
 -------- | ----------- | -------------- | -------- 
-validateDataConsistency | Als u waar voor deze eigenschap instelt, wordt door de Kopieer activiteit de bestands grootte, de lastModifiedDate en de MD5-controlesom gecontroleerd voor elk object dat is gekopieerd van bron naar doel archief om ervoor te zorgen dat de gegevens consistentie tussen het bron-en doel archief. Houd er rekening mee dat de Kopieer prestaties worden beïnvloed door deze optie in te scha kelen.  | True<br/>False (standaard) | Nee
-dataInconsistency | Een van de sleutel-waardeparen in de skipErrorFile-eigenschappen verzameling om te bepalen of u de inconsistente gegevens wilt overs Laan.<br/> -True: u wilt de rest kopiëren door inconsistente gegevens over te slaan.<br/> -False: u wilt de Kopieer activiteit afbreken zodra inconsistente gegevens zijn gevonden.<br/>Houd er rekening mee dat deze eigenschap alleen geldig is wanneer u validateDataConsistency instelt als waar.  | True<br/>False (standaard) | Nee
-logStorageSettings | Een groep eigenschappen die kan worden opgegeven om het sessie logboek in te scha kelen voor het vastleggen van overgeslagen objecten. | | Nee
-linkedServiceName | De gekoppelde service van [Azure Blob Storage](connector-azure-blob-storage.md#linked-service-properties) of [Azure data Lake Storage Gen2](connector-azure-data-lake-storage.md#linked-service-properties) voor het opslaan van de sessie logboek bestanden. | De namen van een `AzureBlobStorage` of meer `AzureBlobFS` gekoppelde service, die verwijst naar het exemplaar dat u gebruikt om de logboek bestanden op te slaan. | Nee
-path | Het pad van de logboek bestanden. | Geef het pad op waarin u de logboek bestanden wilt opslaan. Als u geen pad opgeeft, maakt de service een container voor u. | Nee
+validateDataConsistency | Als u waar voor deze eigenschap instelt, wordt door de Kopieer activiteit de bestands grootte, de lastModifiedDate en de MD5-controlesom gecontroleerd voor elk object dat is gekopieerd van bron naar doel archief om ervoor te zorgen dat de gegevens consistentie tussen het bron-en doel archief. Houd er rekening mee dat de Kopieer prestaties worden beïnvloed door deze optie in te scha kelen.  | True<br/>False (standaard) | No
+dataInconsistency | Een van de sleutel-waardeparen in de skipErrorFile-eigenschappen verzameling om te bepalen of u de inconsistente gegevens wilt overs Laan.<br/> -True: u wilt de rest kopiëren door inconsistente gegevens over te slaan.<br/> -False: u wilt de Kopieer activiteit afbreken zodra inconsistente gegevens zijn gevonden.<br/>Houd er rekening mee dat deze eigenschap alleen geldig is wanneer u validateDataConsistency instelt als waar.  | True<br/>False (standaard) | No
+logStorageSettings | Een groep eigenschappen die kan worden opgegeven om het sessie logboek in te scha kelen voor het vastleggen van overgeslagen objecten. | | No
+linkedServiceName | De gekoppelde service van [Azure Blob Storage](connector-azure-blob-storage.md#linked-service-properties) of [Azure data Lake Storage Gen2](connector-azure-data-lake-storage.md#linked-service-properties) voor het opslaan van de sessie logboek bestanden. | De namen van een `AzureBlobStorage` of meer `AzureBlobFS` gekoppelde service, die verwijst naar het exemplaar dat u gebruikt om de logboek bestanden op te slaan. | No
+path | Het pad van de logboek bestanden. | Geef het pad op waarin u de logboek bestanden wilt opslaan. Als u geen pad opgeeft, maakt de service een container voor u. | No
 
 >[!NOTE]
 >- Gegevens consistentie wordt niet ondersteund in het faserings kopie scenario. 
@@ -136,7 +135,7 @@ Als u configureert om het inconsistente bestand te registreren, kunt u het logbo
 
 Het schema van een logboek bestand is als volgt:
 
-Kolom | Beschrijving 
+Kolom | Description 
 -------- | -----------  
 Tijdstempel | De tijds tempel wanneer ADF de inconsistente bestanden overs laat.
 Niveau | Het logboek niveau van dit item. Het wordt weer gegeven in het waarschuwings niveau voor het item met het overs laan van bestanden.
@@ -149,7 +148,7 @@ Het voor beeld van een logboek bestand is als volgt:
 Timestamp, Level, OperationName, OperationItem, Message
 2020-02-26 06:22:56.3190846, Warning, FileSkip, "sample1.csv", "File is skipped after read 548000000 bytes: ErrorCode=DataConsistencySourceDataChanged,'Type=Microsoft.DataTransfer.Common.Shared.HybridDeliveryException,Message=Source file 'sample1.csv' is changed by other clients during the copy activity run.,Source=,'." 
 ```
-In het bovenstaande logboek bestand kunt u zien dat sample1. csv is overgeslagen omdat het niet is gelukt om te controleren of het bron-en doel archief consistent zijn. U kunt meer informatie krijgen over waarom sample1. CSV inconsistent wordt omdat dit door andere toepassingen werd gewijzigd terwijl de activiteit ADF copy op hetzelfde moment wordt gekopieerd. 
+In het bovenstaande logboek bestand ziet u dat sample1.csv is overgeslagen, omdat het niet is gelukt om te controleren of het bron-en doel archief consistent zijn. U kunt meer informatie krijgen over waarom sample1.csv inconsistent wordt omdat deze wordt gewijzigd door andere toepassingen wanneer de activiteit ADF kopiëren op hetzelfde moment wordt gekopieerd. 
 
 
 

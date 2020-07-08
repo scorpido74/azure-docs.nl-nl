@@ -4,10 +4,9 @@ description: Meer informatie over de mogelijkheden voor de belangrijkste opslag 
 ms.topic: conceptual
 ms.date: 05/04/2020
 ms.openlocfilehash: 7f92e8f961422f8354e55192ebdddd077d61acd1
-ms.sourcegitcommit: 1de57529ab349341447d77a0717f6ced5335074e
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/09/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84604113"
 ---
 # <a name="azure-vmware-solution-avs-preview-storage-concepts"></a>Azure VMware-oplossing (AVS) voor beeld van opslag concepten
@@ -21,7 +20,7 @@ Lokale opslag in elke clusterhost wordt gebruikt als onderdeel van een vSAN-gege
 Lokale opslag in clusterhosts wordt gebruikt in vSAN gegevens opslag voor het hele cluster. Alle gegevens opslag worden gemaakt als onderdeel van een privécloud-implementatie en zijn direct beschikbaar voor gebruik. De cloudadmin-gebruiker en alle gebruikers in de groep CloudAdmin kunnen gegevens opslag beheren met deze vSAN bevoegdheden:
 - Data Store. AllocateSpace
 - Datastore.Browse
-- Data Store. config
+- Datastore.Config
 - Data Store. Delete File
 - Data Store. File Management
 - Data Store. UpdateVirtualMachineMetadata

@@ -13,10 +13,9 @@ ms.topic: conceptual
 ms.date: 01/23/2018
 ms.custom: tracking-python
 ms.openlocfilehash: 360d01d01c163e494340c2da3182192dc15612a2
-ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/09/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84560803"
 ---
 # <a name="create-a-trigger-that-runs-a-pipeline-on-a-schedule"></a>Een trigger maken waarmee een pijp lijn volgens een planning wordt uitgevoerd
@@ -81,7 +80,7 @@ U kunt een **schema trigger** maken om een pijp lijn te plannen die regel matig 
 
 In deze sectie wordt beschreven hoe u Azure PowerShell kunt gebruiken om een plannings trigger te maken, te starten en te bewaken. Als u dit voor beeld wilt weer geven, gaat u eerst naar de [Snelstartgids: een Data Factory maken met behulp van Azure PowerShell](quickstart-create-data-factory-powershell.md). Voeg vervolgens de volgende code toe aan de methode Main, waarmee een plannings trigger wordt gemaakt en gestart die elke 15 minuten wordt uitgevoerd. De trigger is gekoppeld aan een pijp lijn met de naam **Adfv2QuickStartPipeline** die u maakt als onderdeel van de Quick Start.
 
-1. Maak een JSON-bestand met de naam **MyTrigger. json** in de map C:\ADFv2QuickStartPSH\ met de volgende inhoud:
+1. Maak een JSON-bestand met de naam **MyTrigger.js** in de map C:\ADFv2QuickStartPSH\ met de volgende inhoud:
 
     > [!IMPORTANT]
     > Voordat u het JSON-bestand opslaat, stelt u de waarde van het element **StartTime** in op de huidige UTC-tijd. Stel de waarde van het element **EndTime** in op één uur na de huidige UTC-tijd.
@@ -320,7 +319,7 @@ De volgende JSON-definitie laat zien hoe u een plannings trigger maakt met plann
 ### <a name="schema-overview"></a>Schemaoverzicht
 De volgende tabel bevat een overzicht van de belangrijkste schema-elementen die betrekking hebben op het terugkeerpatroon en het schema van een trigger:
 
-| JSON-eigenschap | Beschrijving |
+| JSON-eigenschap | Description |
 |:--- |:--- |
 | **startTime** | Een datum/tijdwaarde. Voor eenvoudige schema's is de waarde **startTime** van toepassing op de eerste gebeurtenis. In complexe schema's begint de trigger niet eerder dan de opgegeven waarde voor **startTime**. |
 | **endTime** | De einddatum en -tijd voor de trigger. De trigger wordt na de opgegeven einddatum en -tijd niet uitgevoerd. De waarde voor de eigenschap kan niet in het verleden liggen. Deze eigenschap is optioneel. |
@@ -335,11 +334,11 @@ De volgende tabel bevat een overzicht van de belangrijkste schema-elementen die 
 
 | JSON-eigenschap | Type | Vereist | Standaardwaarde | Geldige waarden | Voorbeeld |
 |:--- |:--- |:--- |:--- |:--- |:--- |
-| **startTime** | Tekenreeks | Ja | Geen | Datums en tijden volgens ISO 8601 | `"startTime" : "2013-01-09T09:30:00-08:00"` |
+| **startTime** | Tekenreeks | Yes | Geen | Datums en tijden volgens ISO 8601 | `"startTime" : "2013-01-09T09:30:00-08:00"` |
 | **optreden** | Object | Ja | Geen | Recurrence-object | `"recurrence" : { "frequency" : "monthly", "interval" : 1 }` |
-| **bereik** | Aantal | Nee | 1 | 1 tot 1000 | `"interval":10` |
-| **endTime** | Tekenreeks | Ja | Geen | Een datum/tijdwaarde die een toekomstig tijdstip voorstelt. | `"endTime" : "2013-02-09T09:30:00-08:00"` |
-| **planning** | Object | Nee | Geen | Schedule-object | `"schedule" : { "minute" : [30], "hour" : [8,17] }` |
+| **bereik** | Aantal | No | 1 | 1 tot 1000 | `"interval":10` |
+| **endTime** | Tekenreeks | Yes | Geen | Een datum/tijdwaarde die een toekomstig tijdstip voorstelt. | `"endTime" : "2013-02-09T09:30:00-08:00"` |
+| **planning** | Object | No | Geen | Schedule-object | `"schedule" : { "minute" : [30], "hour" : [8,17] }` |
 
 ### <a name="starttime-property"></a>Eigenschap startTime
 In de volgende tabel ziet u hoe de eigenschap **startTime** de uitvoering van een trigger bepaalt:
@@ -367,7 +366,7 @@ Als meerdere **schedule**-elementen worden opgegeven, is de volgorde voor de eva
 In de volgende tabel worden de **schedule**-elementen in detail beschreven:
 
 
-| JSON-element | Beschrijving | Geldige waarden |
+| JSON-element | Description | Geldige waarden |
 |:--- |:--- |:--- |
 | **wachten** | Minuten van het uur waarop de trigger wordt uitgevoerd. | <ul><li>Geheel getal</li><li>Matrix van gehele getallen</li></ul>
 | **loopt** | Uren van de dag waarop de trigger wordt uitgevoerd. | <ul><li>Geheel getal</li><li>Matrix van gehele getallen</li></ul> |
@@ -381,7 +380,7 @@ Deze sectie bevat voorbeelden van terugkeerschema's en is gericht op het object 
 
 In het voorbeeld wordt ervan uitgegaan dat de waarde **interval** 1 is en de waarde **frequency** correct is volgens de definitie van het schema. U kunt bijvoorbeeld niet **de waarde '** Day ' hebben en ook een ' monthDays-wijziging hebben in het object **Schedule** . Dergelijke beperkingen staan vermeld in de tabel in de vorige sectie.
 
-| Voorbeeld | Beschrijving |
+| Voorbeeld | Description |
 |:--- |:--- |
 | `{"hours":[5]}` | Wordt elke dag om 5:00 uur uitgevoerd. |
 | `{"minutes":[15], "hours":[5]}` | Wordt elke dag om 5:15 uur uitgevoerd. |

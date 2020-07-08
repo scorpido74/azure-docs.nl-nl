@@ -14,10 +14,9 @@ ms.author: marsma
 ms.reviewer: saeeda
 ms.custom: aaddev, tracking-python
 ms.openlocfilehash: 300b7e4fe3e3c150a78fee5b63458feab266aafe
-ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/09/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84558677"
 ---
 # <a name="logging-in-msal-applications"></a>Logboek registratie in MSAL-toepassingen
@@ -126,7 +125,7 @@ Logger.getInstance().setEnableLogcatLog(true);
 
 ## <a name="javascript"></a>[JavaScript](#tab/javascript)
 
- Schakel logboek registratie in MSAL. js (Java script) in door een traceer object door te geven tijdens de configuratie voor het maken van een `UserAgentApplication` exemplaar. Dit logger object heeft de volgende eigenschappen:
+ Schakel logboek registratie in MSAL.js (Java script) in door een traceer object door te geven tijdens de configuratie voor het maken van een `UserAgentApplication` exemplaar. Dit logger object heeft de volgende eigenschappen:
 
 - `localCallback`: een call back-instantie die kan worden geleverd door de ontwikkelaar om logboeken op een aangepaste manier te gebruiken en publiceren. Implementeer de localCallback-methode, afhankelijk van hoe u logboeken wilt omleiden.
 - `level`(optioneel): het Configureer bare logboek niveau. De ondersteunde logboek niveaus zijn: `Error` , `Warning` , en `Info` `Verbose` . De standaardwaarde is `Info`.
@@ -210,7 +209,7 @@ MSALGlobalConfig.loggerConfig.piiEnabled = NO;
 
 Gebruik een van de volgende waarden om het logboek registratie niveau in te stellen wanneer u zich aanmeldt met behulp van MSAL voor iOS en macOS:
 
-|Niveau  |Beschrijving |
+|Niveau  |Description |
 |---------|---------|
 | `MSALLogLevelNothing`| Alle logboek registratie uitschakelen |
 | `MSALLogLevelError` | Standaard niveau, alleen informatie afdrukken wanneer er fouten optreden |
@@ -287,7 +286,7 @@ MSALGlobalConfig.loggerConfig.piiEnabled = false
 
 Gebruik een van de volgende waarden om het logboek registratie niveau in te stellen wanneer u zich aanmeldt met behulp van MSAL voor iOS en macOS:
 
-|Niveau  |Beschrijving |
+|Niveau  |Description |
 |---------|---------|
 | `MSALLogLevelNothing`| Alle logboek registratie uitschakelen |
 | `MSALLogLevelError` | Standaard niveau, alleen informatie afdrukken wanneer er fouten optreden |

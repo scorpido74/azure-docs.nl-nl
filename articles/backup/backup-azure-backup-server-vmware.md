@@ -4,10 +4,9 @@ description: In dit artikel leert u hoe u Azure Backup Server kunt gebruiken om 
 ms.topic: conceptual
 ms.date: 05/24/2020
 ms.openlocfilehash: deb72ad1f2b9b18368ef5134ecc23048b483f3f8
-ms.sourcegitcommit: d7fba095266e2fb5ad8776bffe97921a57832e23
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/09/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84628448"
 ---
 # <a name="back-up-vmware-vms-with-azure-backup-server"></a>Back-ups maken van VMware-Vm's met Azure Backup Server
@@ -62,7 +61,7 @@ Stel als volgt een beveiligd kanaal in:
 
 4. Sla het bestand op de Azure Backup Server machine op met de extensie. zip.
 
-5. Klik met de rechter muisknop op **down load. zip**  >  **extract**. Het zip-bestand extraheert de inhoud naar de map **certs** , die de volgende bevat:
+5. Klik met de rechter muisknop op **download.zip**  >  **Alles uitpakken**. Het zip-bestand extraheert de inhoud naar de map **certs** , die de volgende bevat:
    - Het basis certificaat bestand met een extensie die begint met een genummerde reeks, zoals 0 en 1.
    - Het CRL-bestand heeft een extensie die begint met een Sequence zoals. R0 of. R1. Het CRL-bestand is gekoppeld aan een certificaat.
 
@@ -136,7 +135,7 @@ De Azure Backup Server moet een gebruikers account met machtigingen hebben voor 
 
 | Bevoegdheden voor het vCenter 6,7-gebruikers account                     | Bevoegdheden voor het vCenter 6,5-gebruikers account                     |
 | ------------------------------------------------------------ | ------------------------------------------------------------ |
-| Data Store-cluster. Een datatstore-cluster configureren            | Data Store-cluster. Een datatstore-cluster configureren            |
+| Data Store cluster.Configureren een datatstore-cluster            | Data Store cluster.Configureren een datatstore-cluster            |
 | Data Store. AllocateSpace                                      | Data Store. AllocateSpace                                      |
 | Data Store. bladeren in Data Store                                   | Data Store. bladeren in Data Store                                   |
 | Bestands bewerkingen op laag niveau                          | Bestands bewerkingen op laag niveau                          |
@@ -152,15 +151,15 @@ De Azure Backup Server moet een gebruikers account met machtigingen hebben voor 
 | vApp. virtuele machine toevoegen                                     | vApp. virtuele machine toevoegen                                     |
 | vApp. resource groep toewijzen                                    | vApp. resource groep toewijzen                                    |
 | vApp. registratie ongedaan maken                                              | vApp. registratie ongedaan maken                                              |
-| VirtualMachine. Configuration. Apparaat toevoegen of verwijderen          | VirtualMachine. Configuration. Apparaat toevoegen of verwijderen          |
-| Virtuele machine. Configuratie. lease van schijf verkrijgen            | Virtuele machine. Configuratie. schijf lease                     |
-| Virtuele machine. Configuratie. nieuwe schijf toevoegen                   | Virtuele machine. Configuratie. nieuwe schijf toevoegen                   |
-| Virtuele machine. Configuratie. geavanceerde configuratie        | Virtuele machine. Configuratie. Geavanceerd                       |
-| Virtuele machine. Configuratie. wisselen van schijf wijzigingen in-/uitschakelen   | Virtuele machine. Wijzigingen in de configuratie. schijf bijhouden          |
-| Virtuele machine. Configuratie. host-USB-apparaat configureren     | Virtuele machine. Configuratie. host-USB-apparaat               |
-| Virtuele machine. Configuratie. virtuele schijf uitbreiden           | Virtuele machine. Configuratie. virtuele schijf uitbreiden           |
-| Virtuele machine. Configuratie. niet-eigendoms bestanden opvragen           | Virtuele machine. Configuratie. niet-eigendoms bestanden opvragen           |
-| Virtuele machine. Configuratie. swapfile-plaatsing wijzigen     | Virtuele machine. Plaatsing van configuratie. swapfile            |
+| VirtualMachine.Configuratie. Apparaat toevoegen of verwijderen          | VirtualMachine.Configuratie. Apparaat toevoegen of verwijderen          |
+| Virtuele machine.Configuratie. Lease van schijf verkrijgen            | Virtuele machine.Configuratie. Lease van schijf                     |
+| Virtuele machine.Configuratie. Nieuwe schijf toevoegen                   | Virtuele machine.Configuratie. Nieuwe schijf toevoegen                   |
+| Virtuele machine.Configuratie. Geavanceerde configuratie        | Virtuele machine.Configuratie. Gevanceerde                       |
+| Virtuele machine.Configuratie. Bijhouden van schijf wijzigingen in-/uitschakelen   | Virtuele machine.Configuratie. Bijhouden van schijf wijzigingen          |
+| USB-apparaat virtuele machine.Configuration.Configureren host     | Virtuele machine.Configuratie. Host-USB-apparaat               |
+| Virtuele machine.Configuratie. Virtuele schijf uitbreiden           | Virtuele machine.Configuratie. Virtuele schijf uitbreiden           |
+| Virtuele machine.Configuratie. Niet-eigendoms bestanden opvragen           | Virtuele machine.Configuratie. Niet-eigendoms bestanden opvragen           |
+| Virtuele machine.Configuratie. Swapfile-plaatsing wijzigen     | Virtuele machine.Configuratie. Swapfile-plaatsing            |
 | Virtuele machine. Gast bewerkingen. uitvoering van gast bewerkings programma | Virtuele machine. Gast bewerkingen. uitvoering van gast bewerkings programma |
 | Virtuele machine. Gast bewerkingen. wijzigingen in de gast bewerking | Virtuele machine. Gast bewerkingen. wijzigingen in de gast bewerking |
 | Virtuele machine. Gast bewerkingen. Query's voor de gast bewerking    | Virtuele machine. Gast bewerkingen. Query's voor de gast bewerking    |
@@ -184,16 +183,16 @@ De Azure Backup Server moet een gebruikers account met machtigingen hebben voor 
 | ---------------------------------------------------------- | ------------------------------------------- |
 | Data Store. AllocateSpace                                    | Netwerk. assign                              |
 | Global. aangepaste kenmerken beheren                           | Data Store. AllocateSpace                     |
-| Global. Set Custom-kenmerk                               | VirtualMachine. config. change tracking        |
+| Global. Set Custom-kenmerk                               | VirtualMachine.Config. Change tracking        |
 | Host. lokale bewerkingen. Virtuele machine maken              | VirtualMachine. State. RemoveSnapshot         |
 | Netwerk.  Netwerk toewijzen                                   | VirtualMachine. State. CreateSnapshot         |
 | Resource.  Virtuele machine aan resource groep toewijzen         | VirtualMachine. provisioning. DiskRandomRead  |
-| Virtuele machine. Configuratie. nieuwe schijf toevoegen                | VirtualMachine. interactie. uitgeschakeld            |
-| Virtuele machine. Configuratie. Geavanceerd                    | VirtualMachine. Inventory. Create             |
-| Virtuele machine. Wijzigingen in de configuratie. schijf bijhouden        | VirtualMachine. config. AddNewDisk            |
-| Virtuele machine. Configuratie. host-USB-apparaat             | VirtualMachine. config. HostUSBDevice         |
-| Virtuele machine. Configuratie. niet-eigendoms bestanden opvragen         | VirtualMachine. config. AdvancedConfig        |
-| Virtuele machine. Plaatsing van configuratie. swapfile          | VirtualMachine. config. SwapPlacement         |
+| Virtuele machine.Configuratie. Nieuwe schijf toevoegen                | VirtualMachine. interactie. uitgeschakeld            |
+| Virtuele machine.Configuratie. Gevanceerde                    | VirtualMachine. Inventory. Create             |
+| Virtuele machine.Configuratie. Bijhouden van schijf wijzigingen        | VirtualMachine.Config. AddNewDisk            |
+| Virtuele machine.Configuratie. Host-USB-apparaat             | VirtualMachine.Config. HostUSBDevice         |
+| Virtuele machine.Configuratie. Niet-eigendoms bestanden opvragen         | VirtualMachine.Config. AdvancedConfig        |
+| Virtuele machine.Configuratie. Swapfile-plaatsing          | VirtualMachine.Config. SwapPlacement         |
 | Virtuele machine. Interactie. uit                     | Global. ManageCustomFields                   |
 | Virtuele machine. Tell. Nieuwe maken                     |                                             |
 | Virtuele machine. Inrichten. schijf toegang toestaan            |                                             |
@@ -422,7 +421,7 @@ Windows Registry Editor Version 5.00
 > [!NOTE]
 > Deze functie is van toepassing op MABS v3 UR1.
 
-Met MABS v3 UR1 kunt u de specifieke schijf uitsluiten van de back-up van de virtuele VMware-machine. Het configuratie script **ExcludeDisk. ps1** bevindt zich in de `C:\Program Files\Microsoft Azure Backup Server\DPM\DPM\bin folder` .
+Met MABS v3 UR1 kunt u de specifieke schijf uitsluiten van de back-up van de virtuele VMware-machine. Het configuratie script **ExcludeDisk.ps1** bevindt zich in de `C:\Program Files\Microsoft Azure Backup Server\DPM\DPM\bin folder` .
 
 Volg de onderstaande stappen om de schijf uitsluiting te configureren:
 
@@ -479,7 +478,7 @@ Ga naar de MABS-server waarop de virtuele VMware-machine is geconfigureerd voor 
         Vcentervm1   TestVM4   VMware
         ```
 
-  4. Als u de schijf wilt uitsluiten, gaat u naar de `Bin` map en voert u het script *ExcludeDisk. ps1* uit met de volgende para meters:
+  4. Als u de schijf wilt uitsluiten, gaat u naar de `Bin` map en voert u het *ExcludeDisk.ps1* script uit met de volgende para meters:
 
         > [!NOTE]
         > Voordat u deze opdracht uitvoert, stopt u de DPMRA-service op de MABS-server. Anders wordt de uitsluitings lijst niet bijgewerkt met het script. Zorg ervoor dat er geen taken worden uitgevoerd voordat u de service stopt.
@@ -511,7 +510,7 @@ Ga naar de MABS-server waarop de virtuele VMware-machine is geconfigureerd voor 
         ./ExcludeDisk.ps1 -Datasource $vmDsInfo[0] [-view]
         ```
 
-     **Hierbij**
+     **Voorbeeld**
 
         ```powershell
         C:\Program Files\Microsoft Azure Backup Server\DPM\DPM\bin> ./ExcludeDisk.ps1 -Datasource $vmDsInfo[2] -view

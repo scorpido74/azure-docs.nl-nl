@@ -12,17 +12,16 @@ ms.date: 02/11/2020
 ms.author: nacanuma
 ms.custom: aaddev
 ms.openlocfilehash: 53a84bd970d564411ec9a56b54159e5a96717a6e
-ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/09/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84558753"
 ---
 # <a name="single-page-application-sign-in-and-sign-out"></a>Toepassing met één pagina: aanmelden en afmelden
 
 Meer informatie over het toevoegen van een aanmelding aan de code voor uw toepassing met één pagina.
 
-Voordat u tokens kunt ophalen voor toegang tot Api's in uw toepassing, hebt u een geverifieerde gebruikers context nodig. U kunt op twee manieren gebruikers aan uw toepassing aanmelden in MSAL. js:
+Voordat u tokens kunt ophalen voor toegang tot Api's in uw toepassing, hebt u een geverifieerde gebruikers context nodig. U kunt gebruikers op twee manieren aanmelden bij uw toepassing in MSAL.js:
 
 * [Pop-upvenster](#sign-in-with-a-pop-up-window), met behulp van de- `loginPopup` methode
 * [Omleiden](#sign-in-with-redirect), met behulp van de- `loginRedirect` methode
@@ -30,7 +29,7 @@ Voordat u tokens kunt ophalen voor toegang tot Api's in uw toepassing, hebt u ee
 U kunt eventueel ook de scopes door geven van de Api's waarvoor u de gebruiker om toestemming moet vragen op het moment dat u zich aanmeldt.
 
 > [!NOTE]
-> Als uw toepassing al toegang heeft tot een geverifieerde gebruikers context of ID-token, kunt u de aanmeldings stap overs Laan en de tokens rechtstreeks ophalen. Zie [SSO zonder MSAL. js login](msal-js-sso.md#sso-without-msaljs-login)(Engelstalig) voor meer informatie.
+> Als uw toepassing al toegang heeft tot een geverifieerde gebruikers context of ID-token, kunt u de aanmeldings stap overs Laan en de tokens rechtstreeks ophalen. Zie [SSO zonder MSAL.js login](msal-js-sso.md#sso-without-msaljs-login)voor meer informatie.
 
 ## <a name="choosing-between-a-pop-up-or-redirect-experience"></a>Kiezen tussen een pop-up-of omleidings ervaring
 

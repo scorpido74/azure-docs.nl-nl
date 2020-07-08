@@ -9,10 +9,9 @@ ms.topic: conceptual
 ms.date: 05/22/2019
 ms.author: femila
 ms.openlocfilehash: 87d436024dae21b0122bf6b861b8a3ae4299db73
-ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/09/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84559016"
 ---
 # <a name="authorizing-access-to-event-grid-resources"></a>Toegang tot Event Grid-resources autoriseren
@@ -112,7 +111,7 @@ Als u machtigingen wilt opgeven die afwijken van de ingebouwde rollen, kunt u aa
 
 Hier volgen enkele voor beelden van Event Grid roldefinities waarmee gebruikers verschillende acties kunnen uitvoeren. Deze aangepaste rollen verschillen van de ingebouwde rollen omdat ze bredere toegang verlenen dan alleen gebeurtenis abonnementen.
 
-**EventGridReadOnlyRole. json**: alleen alleen-lezen bewerkingen toestaan.
+**EventGridReadOnlyRole.jsop**: alleen alleen-lezen bewerkingen toestaan.
 
 ```json
 {
@@ -131,7 +130,7 @@ Hier volgen enkele voor beelden van Event Grid roldefinities waarmee gebruikers 
 }
 ```
 
-**EventGridNoDeleteListKeysRole. json**: beperkte post acties toestaan, maar geen verwijderings acties toestaan.
+**EventGridNoDeleteListKeysRole.js**: beperkte post acties toestaan, maar geen verwijderings acties toestaan.
 
 ```json
 {
@@ -154,7 +153,7 @@ Hier volgen enkele voor beelden van Event Grid roldefinities waarmee gebruikers 
 }
 ```
 
-**EventGridContributorRole. json**: alle gebeurtenis raster acties toestaan.
+**EventGridContributorRole.jsop**: alle gebeurtenis raster acties toestaan.
 
 ```json
 {

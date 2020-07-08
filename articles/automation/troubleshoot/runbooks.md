@@ -10,10 +10,9 @@ ms.service: automation
 manager: carmonm
 ms.custom: has-adal-ref
 ms.openlocfilehash: 5de4b6f16f52d7cab7088ab39aa70267110eed88
-ms.sourcegitcommit: 1de57529ab349341447d77a0717f6ced5335074e
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/09/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84606884"
 ---
 # <a name="troubleshoot-runbook-issues"></a>Problemen met runbooks oplossen
@@ -625,7 +624,7 @@ Wanneer uw runbook of toepassing probeert uit te voeren in een Azure-sandbox, we
 
 ### <a name="cause"></a>Oorzaak
 
-Dit probleem kan optreden omdat Azure-sandboxes geen toegang tot alle out-of-process COM-servers. Zo kan een toepassing of runbook in de sandbox niet aanroepen naar Windows Management Instrumentation (WMI) of naar de Windows Installer-service (msiserver. exe). 
+Dit probleem kan optreden omdat Azure-sandboxes geen toegang tot alle out-of-process COM-servers. Zo kan een toepassing of runbook in de sandbox niet aanroepen naar Windows Management Instrumentation (WMI) of naar de Windows Installer-service (msiserver.exe). 
 
 ### <a name="resolution"></a>Oplossing
 
