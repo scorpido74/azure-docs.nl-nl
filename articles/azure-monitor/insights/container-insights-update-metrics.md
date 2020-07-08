@@ -4,10 +4,9 @@ description: In dit artikel wordt beschreven hoe u Azure Monitor voor containers
 ms.topic: conceptual
 ms.date: 06/01/2020
 ms.openlocfilehash: d299fc5e6b0c41188fac1fa19bb66387263c12e9
-ms.sourcegitcommit: d118ad4fb2b66c759b70d4d8a18e6368760da3ad
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/02/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84298258"
 ---
 # <a name="how-to-update-azure-monitor-for-containers-to-enable-metrics"></a>Azure Monitor voor containers bijwerken om metrische gegevens in te schakelen
@@ -20,7 +19,7 @@ Azure Monitor voor containers wordt ondersteuning geïntroduceerd voor het verza
 
 De volgende metrische gegevens zijn ingeschakeld als onderdeel van deze functie:
 
-| Metrische naam ruimte | Metrisch | Beschrijving |
+| Metrische naam ruimte | Gegevens | Beschrijving |
 |------------------|--------|-------------|
 | inzichten. container/knoop punten | cpuUsageMillicores, cpuUsagePercentage, memoryRssBytes, memoryRssPercentage, memoryWorkingSetBytes, memoryWorkingSetPercentage, nodesCount | Dit zijn metrische gegevens van *knoop punten* en *host* als een dimensie, en ze bevatten ook de<br> de naam van het knoop punt als waarde voor de *host* -dimensie. |
 | inzichten. container/peul | podCount | Dit zijn *pod* metrische gegevens en bevatten de volgende dimensies: dimensie-controller naam, naam ruimte van Kubernetes, name, Phase. |
@@ -90,7 +89,7 @@ Voer de volgende stappen uit om een specifiek cluster in uw abonnement bij te we
 
 Voer de volgende stappen uit om alle clusters in uw abonnement bij te werken met Azure PowerShell.
 
-1. [Down load](https://github.com/microsoft/OMS-docker/blob/ci_feature_prod/docs/aks/mdmonboarding/mdm_onboarding_atscale.ps1) het script **mdm_onboarding_atscale. ps1** en sla het op in een lokale map vanuit onze github opslag plaats.
+1. [Down load](https://github.com/microsoft/OMS-docker/blob/ci_feature_prod/docs/aks/mdmonboarding/mdm_onboarding_atscale.ps1) het **mdm_onboarding_atscale.ps1** script en sla het op in een lokale map vanuit onze github opslag plaats.
 2. Voer de volgende opdracht uit met behulp van de Azure PowerShell.  Bewerk de waarde voor **subscriptionId** met behulp van de waarde op de pagina **overzicht van AKS** voor het AKS-cluster.
 
     ```powershell
@@ -106,7 +105,7 @@ Voer de volgende stappen uit om alle clusters in uw abonnement bij te werken met
 
 Voer de volgende stappen uit om een specifiek cluster bij te werken met Azure PowerShell.
 
-1. [Down load](https://github.com/microsoft/OMS-docker/blob/ci_feature_prod/docs/aks/mdmonboarding/mdm_onboarding.ps1) het script **mdm_onboarding. ps1** en sla het op in een lokale map vanuit onze github opslag plaats.
+1. [Down load](https://github.com/microsoft/OMS-docker/blob/ci_feature_prod/docs/aks/mdmonboarding/mdm_onboarding.ps1) het **mdm_onboarding.ps1** script en sla het op in een lokale map vanuit onze github opslag plaats.
 
 2. Voer de volgende opdracht uit met behulp van de Azure PowerShell. Bewerk de waarden voor **subscriptionId**, **resourceGroupName**en **clustername** met de waarden op de **OVERZICHTs** pagina van AKS voor het AKS-cluster.
 

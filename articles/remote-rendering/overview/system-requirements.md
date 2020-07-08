@@ -6,16 +6,15 @@ ms.author: flborn
 ms.date: 02/03/2020
 ms.topic: article
 ms.openlocfilehash: 9754636063e29592595ee57d09164ae1134341a1
-ms.sourcegitcommit: d118ad4fb2b66c759b70d4d8a18e6368760da3ad
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/02/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84300603"
 ---
 # <a name="system-requirements"></a>Systeemvereisten
 
 > [!IMPORTANT]
-> De **externe rendering van Azure** is momenteel beschikbaar als open bare preview.
+> **Azure Remote Rendering** is momenteel beschikbaar als openbare preview-versie.
 > Deze preview-versie wordt aangeboden zonder service level agreement en wordt niet aanbevolen voor productieworkloads. Misschien worden bepaalde functies niet ondersteund of zijn de mogelijkheden ervan beperkt. Zie [Supplemental Terms of Use for Microsoft Azure Previews (Aanvullende gebruiksvoorwaarden voor Microsoft Azure-previews)](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) voor meer informatie.
 
 Dit hoofd stuk bevat de minimale systeem vereisten voor het werken met *Azure remote rendering* (arr).
@@ -69,9 +68,9 @@ Raadpleeg de [hand leiding](../resources/troubleshoot.md#unstable-holograms)voor
 De volgende software moet zijn geïnstalleerd:
 
 * De nieuwste versie van **Visual Studio 2019** [(down load)](https://visualstudio.microsoft.com/vs/older-downloads/)
-* [Visual Studio Tools voor gemengde realiteit](https://docs.microsoft.com/windows/mixed-reality/install-the-tools). Met name de volgende installatie van de *werk belasting* is verplicht:
-  * **Desktop ontwikkeling met C++**
-  * **Universeel Windows-platform-ontwikkeling (UWP)**
+* [Visual Studio Tools voor Mixed Reality](https://docs.microsoft.com/windows/mixed-reality/install-the-tools). Met name de volgende *workload*-installaties zijn verplicht:
+  * **Desktopontwikkeling met C++**
+  * **Universal Windows Platform (UWP)-ontwikkeling**
 * **Windows SDK 10.0.18362.0** [(down load)](https://developer.microsoft.com/windows/downloads/windows-10-sdk)
 * **Git** [(down load)](https://git-scm.com/downloads)
 * Optioneel: als u de video stroom van de server op een desktop computer wilt weer geven, hebt u de **HEVC-video-extensie** [(Microsoft Store link)](https://www.microsoft.com/p/hevc-video-extensions/9nmzlz57r3t7)nodig.
@@ -80,11 +79,11 @@ De volgende software moet zijn geïnstalleerd:
 
 Voor ontwikkeling met Unit, installeert u
 
-* Unity 2019.3.1 [(down load)](https://unity3d.com/get-unity/download)
-* Deze modules installeren in Unity:
-  * Ondersteuning voor **UWP** -universeel Windows-platform-build
-  * **IL2CPP** -ondersteuning voor Windows-Build (IL2CPP)
+* Unity 2019.3.1 [(download)](https://unity3d.com/get-unity/download)
+* Installeer de volgende modules in Unity:
+  * **UWP**: ondersteuning voor UWP-builds (Universeel Windows-platform)
+  * **IL2CPP**: ondersteuning voor Windows-builds (IL2CPP)
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* [Quick Start: een model met Unit renderen](../quickstarts/render-model.md)
+* [Snelstart: Een model weergeven met Unity](../quickstarts/render-model.md)

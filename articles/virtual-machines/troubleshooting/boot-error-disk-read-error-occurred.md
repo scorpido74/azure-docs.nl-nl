@@ -15,10 +15,9 @@ ms.topic: troubleshooting
 ms.date: 06/01/2020
 ms.author: v-miegge
 ms.openlocfilehash: dea09b1ac29db99e1c52a31a605007fa4129e8ea
-ms.sourcegitcommit: d118ad4fb2b66c759b70d4d8a18e6368760da3ad
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/02/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84300524"
 ---
 # <a name="troubleshoot-boot-error---disk-read-error-occurred"></a>Opstart fout oplossen-schijf lees fout opgetreden
@@ -58,7 +57,7 @@ Dit fout bericht geeft aan dat de schijf structuur beschadigd en onleesbaar is. 
 
 Virtuele machines van de eerste generatie moeten eerst controleren of de besturingssysteem partitie die de BCD-archief bevat, is gemarkeerd als **actief**. Als u een virtuele machine van de tweede generatie hebt, gaat u verder met het [herstellen van de schijf partitie](#fix-the-disk-partition), omdat de status markering is afgeschaft tijdens de volgende generatie.
 
-1. Open een opdracht prompt met verhoogde bevoegdheid (cmd. exe).
+1. Open een opdracht prompt met verhoogde bevoegdheden (cmd.exe).
 1. Voer **Disk Part** in om het hulp programma **Disk Part** te starten.
 1. Voer een **lijst schijf** in om de schijven op het systeem weer te geven en de gekoppelde virtuele harde schijf (VHD) te identificeren.
 1. Zodra de gekoppelde VHD van het besturings systeem is gevonden, voert u de **Sel-schijf #** in om de schijf te selecteren. Zie de volgende afbeelding voor een voor beeld van waar schijf 1 de gekoppelde VHD van het besturings systeem is.
@@ -86,7 +85,7 @@ Virtuele machines van de eerste generatie moeten eerst controleren of de besturi
 
 ### <a name="fix-the-disk-partition"></a>De schijf partitie herstellen
 
-1. Open een opdracht prompt met verhoogde bevoegdheid (cmd. exe).
+1. Open een opdracht prompt met verhoogde bevoegdheden (cmd.exe).
 1. Gebruik de volgende opdracht om **chkdsk** uit te voeren op de schijven en fout oplossingen uit te voeren:
 
    `chkdsk <DRIVE LETTER>: /f`

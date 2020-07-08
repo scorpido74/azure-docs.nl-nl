@@ -4,10 +4,9 @@ description: In dit onderwerp wordt het module dubbele JSON-schema van live vide
 ms.topic: conceptual
 ms.date: 04/27/2020
 ms.openlocfilehash: a342c59b35c7ebb4b6021163da76bdd3e0d449c3
-ms.sourcegitcommit: 309cf6876d906425a0d6f72deceb9ecd231d387c
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/01/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84266811"
 ---
 # <a name="module-twin-json-schema"></a>Module dubbele JSON-schema
@@ -23,7 +22,7 @@ In dit onderwerp wordt het module dubbele JSON-schema van live video Analytics o
 
 Met live video Analytics op IoT Edge worden de volgende twee eigenschappen van de module weer gegeven. 
 
-|Eigenschap |Vereist |Dynamisch |Beschrijving |
+|Eigenschap |Vereist |Dynamisch |Description |
 |---|---|---|---|
 |applicationDataDirectory |Yes |No |Pad naar een gekoppeld volume voor permanente configuratie. |
 |azureMediaServicesArmId |Yes |No |Unieke id voor het beheer van Azure-resources voor het Media Services-account.|

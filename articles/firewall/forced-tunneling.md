@@ -8,15 +8,14 @@ ms.topic: article
 ms.date: 06/01/2020
 ms.author: victorh
 ms.openlocfilehash: a467aa60b131e47e9251366369b3fae8dd95c004
-ms.sourcegitcommit: 309cf6876d906425a0d6f72deceb9ecd231d387c
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/01/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84267695"
 ---
 # <a name="azure-firewall-forced-tunneling"></a>Geforceerde tunneling Azure Firewall
 
-Wanneer u een nieuw Azure Firewall configureert, kunt u alle Internet-gebonden verkeer routeren naar een aangewezen volgende hop in plaats van rechtstreeks naar Internet te gaan. Zo hebt u mogelijk een on-premises Edge-firewall of een ander virtueel netwerk apparaat (NVA) om netwerk verkeer te verwerken voordat het wordt door gegeven aan Internet. U kunt echter geen bestaande firewall configureren voor geforceerde tunneling.
+Wanneer u een nieuw Azure Firewall configureert, kunt u alle Internet-gebonden verkeer routeren naar een aangewezen volgende hop in plaats van rechtstreeks naar Internet te gaan. U kunt bijvoorbeeld een on-premises edge-firewall of een ander virtueel netwerkapparaat (NVA) hebben om netwerkverkeer te verwerken voordat het wordt doorgegeven aan internet. U kunt echter geen bestaande firewall configureren voor geforceerde tunneling.
 
 Geforceerde tunneling is standaard niet toegestaan op Azure Firewall om ervoor te zorgen dat aan alle uitgaande Azure-afhankelijkheden wordt voldaan. UDR-configuraties (door de gebruiker gedefinieerde route) op de *AzureFirewallSubnet* die een standaard route hebben die niet rechtstreeks naar Internet gaat, worden uitgeschakeld.
 
@@ -34,10 +33,10 @@ U kunt bijvoorbeeld een standaard route maken op het *AzureFirewallSubnet* met u
 
 Als u geforceerde tunneling inschakelt, wordt het Internet-gebonden verkeer omgezet naar een van de privé-IP-adressen van de firewall in AzureFirewallSubnet, waardoor de bron wordt verborgen via uw on-premises firewall.
 
-Als uw organisatie gebruikmaakt van een openbaar IP-adres bereik voor particuliere netwerken, Azure Firewall SNATs het verkeer naar een van de privé-IP-adressen van de firewall in AzureFirewallSubnet. U kunt Azure Firewall echter zodanig configureren dat uw open bare IP-adres bereik **niet** wordt gesnat. Zie [Azure firewall SNAT-particuliere IP-adresbereiken](snat-private-range.md)voor meer informatie.
+Als uw organisatie gebruikmaakt van een openbaar IP-adres bereik voor particuliere netwerken, Azure Firewall SNATs het verkeer naar een van de privé-IP-adressen van de firewall in AzureFirewallSubnet. U kunt Azure Firewall echter zodanig configureren dat uw open bare IP-adres bereik **niet** wordt gesnat. Raadpleeg [Azure Firewall SNAT voor privé-IP-adresbereiken](snat-private-range.md) voor meer informatie.
 
 Zodra u Azure Firewall configureert om geforceerde tunneling te ondersteunen, kunt u de configuratie niet ongedaan maken. Als u alle andere IP-configuraties van uw firewall verwijdert, wordt de beheer-IP-configuratie ook verwijderd en wordt de toewijzing van de Firewall ongedaan gemaakt. Het open bare IP-adres dat is toegewezen aan de beheer-IP-configuratie kan niet worden verwijderd, maar u kunt een ander openbaar IP-adres toewijzen.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- [Zelf studie: Azure Firewall implementeren en configureren in een hybride netwerk met behulp van de Azure Portal](tutorial-hybrid-portal.md)
+- [Zelfstudie: Azure Firewall implementeren en configureren in een hybride netwerk met Azure Portal](tutorial-hybrid-portal.md)

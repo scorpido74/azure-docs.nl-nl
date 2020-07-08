@@ -13,10 +13,9 @@ ms.author: ryanwi
 ms.reviewer: hirsin
 ms.custom: aaddev
 ms.openlocfilehash: dabaecfd31ac9ec6250e7b482fde7699a13df044
-ms.sourcegitcommit: 309cf6876d906425a0d6f72deceb9ecd231d387c
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/01/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84266590"
 ---
 # <a name="azure-ad-authentication-and-authorization-error-codes"></a>Fout codes voor Azure AD-verificatie en-autorisatie
@@ -60,7 +59,7 @@ Hier volgt een voor beeld van een fout bericht:
 
 Het `error` veld heeft verschillende mogelijke waarden: Controleer de koppelingen van de protocol documentatie en de OAuth 2,0-specificaties voor meer informatie over specifieke fouten (bijvoorbeeld `authorization_pending` in de [code stroom](v2-oauth2-device-code.md)van het apparaat) en hoe u deze kunt reageren.  Hier vindt u enkele veelvoorkomende items:
 
-| Foutcode         | Beschrijving        | Client actie    |
+| Foutcode         | Description        | Client actie    |
 |--------------------|--------------------|------------------|
 | `invalid_request`  | Protocol fout, zoals een ontbrekende vereiste para meter. | Corrigeer en verzend de aanvraag opnieuw.|
 | `invalid_grant`    | Sommige van de verificatie materiaal (auth-code, vernieuwings token, toegangs token, PKCE Challenge) is ongeldig, niet-geparseerd, ontbreekt of anderszins onbruikbaar | Probeer een nieuwe aanvraag naar het `/authorize` eind punt uit om een nieuwe autorisatie code op te halen.  Overweeg het gebruik van de protocollen te controleren en te valideren. |
@@ -78,7 +77,7 @@ Zoek naar het numerieke deel van de geretourneerde fout code.  Als u bijvoorbeel
 
 ## <a name="aadsts-error-codes"></a>AADSTS-fout codes
 
-| Fout | Beschrijving |
+| Fout | Description |
 |---|---|
 | AADSTS16000 | SelectUserAccount: dit is een interrupt veroorzaakt door Azure AD, wat resulteert in de gebruikers interface, waarmee de gebruiker kan kiezen uit meerdere geldige SSO-sessies. Deze fout is tamelijk gebruikelijk en kan worden geretourneerd naar de toepassing als deze `prompt=none` is opgegeven. |
 | AADSTS16001 | UserAccountSelectionInvalid: deze fout wordt weer geven als de gebruiker op een tegel klikt die de logica voor het selecteren van de sessie heeft geweigerd. Als u deze fout hebt geactiveerd, kan de gebruiker met behulp van een bijgewerkte lijst met tegels/sessies herstellen door een ander account te kiezen. Deze fout kan optreden vanwege een code defect of een race voorwaarde. |
@@ -308,7 +307,7 @@ Zoek naar het numerieke deel van de geretourneerde fout code.  Als u bijvoorbeel
 | AADSTS221000 | DeviceOnlyTokensNotSupportedByResource-de bron is niet geconfigureerd voor het accepteren van alleen-tokens voor apparaten. |
 | AADSTS240001 | BulkAADJTokenUnauthorized: de gebruiker is niet gemachtigd om apparaten te registreren in azure AD. |
 | AADSTS240002 | RequiredClaimIsMissing: de id_token kan niet worden gebruikt als `urn:ietf:params:oauth:grant-type:jwt-bearer` toekenning.|
-| AADSTS530032 | BlockedByConditionalAccessOnSecurityPolicy-de Tenant beheerder heeft een beveiligings beleid geconfigureerd waarmee deze aanvraag wordt geblokkeerd. Controleer de beveiligings beleidsregels die zijn gedefinieerd op Tenant niveau om te bepalen of uw aanvraag voldoet aan de beleids vereisten. |
+| AADSTS530032 | BlockedByConditionalAccessOnSecurityPolicy-de Tenant beheerder heeft een beveiligings beleid geconfigureerd waarmee deze aanvraag wordt geblokkeerd. Controleer de beveiligingsbeleidsregels die zijn gedefinieerd op tenantniveau om na te gaan of uw aanvraag voldoet aan de beleidsvereisten. |
 | AADSTS700016 | UnauthorizedClient_DoesNotMatchRequest-de toepassing is niet gevonden in de map/Tenant. Dit kan gebeuren als de toepassing niet is geïnstalleerd door de beheerder van de tenant of als er geen toestemming voor is verleend door een gebruiker in de tenant. U hebt mogelijk de id-waarde voor de toepassing onjuist geconfigureerd of uw verificatieaanvraag verzonden naar de verkeerde tenant. |
 | AADSTS700020 | InteractionRequired: de toegangs toekenning vereist interactie. |
 | AADSTS700022 | InvalidMultipleResourcesScope: de opgegeven waarde voor het bereik van de invoer parameter is niet geldig omdat deze meer dan één resource bevat. |

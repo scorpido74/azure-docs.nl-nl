@@ -15,10 +15,9 @@ ms.topic: article
 ms.date: 03/20/2019
 ms.author: juliako
 ms.openlocfilehash: bec5e68b334cada7f83c5dbeb9ba50203835d770
-ms.sourcegitcommit: 309cf6876d906425a0d6f72deceb9ecd231d387c
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/01/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84265315"
 ---
 # <a name="how-to-use-the-microsoft-smooth-streaming-plugin-for-the-adobe-open-source-media-framework"></a>De micro soft Smooth Streaming-invoeg toepassing voor het Adobe Open source-media Framework gebruiken  
@@ -334,7 +333,7 @@ De Smooth Streaming voor de dynamische invoeg toepassing OSMF is compatibel met 
 2. De src instellen op een Smooth Streaming bron, (bijvoorbeeld http: \/ /devplatem.vo.msecnd.net/sintel/Sintel_H264.ISM/manifest) 
 3. Breng de gewenste wijzigingen aan in de configuratie en klik op voor beeld en bijwerken.
    
-   **Opmerking** De webserver voor inhoud moet een geldig crossdomain. XML-bestand hebben. 
+   **Opmerking** De webserver voor inhoud moet een geldig crossdomain.xml hebben. 
 4. Kopieer en plak de code naar een eenvoudige HTML-pagina met behulp van uw favoriete tekst editor, zoals in het volgende voor beeld:
 
         <html>

@@ -8,10 +8,9 @@ ms.topic: conceptual
 ms.date: 6/2/2020
 ms.subservice: alerts
 ms.openlocfilehash: e9a1980eccb42342ebc5cb739b2c1f5a539e9f18
-ms.sourcegitcommit: d118ad4fb2b66c759b70d4d8a18e6368760da3ad
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/02/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84299295"
 ---
 # <a name="create-a-metric-alert-with-a-resource-manager-template"></a>Een waarschuwing voor metrische gegevens maken met een Resource Manager-sjabloon
@@ -34,7 +33,7 @@ De basis stappen zijn als volgt:
 
 Als u een waarschuwing wilt maken met behulp van een resource manager-sjabloon, maakt u een bron van het type `Microsoft.Insights/metricAlerts` en vult u alle gerelateerde eigenschappen in. Hieronder volgt een voorbeeld sjabloon waarmee een waarschuwing regel voor metrische gegevens wordt gemaakt.
 
-Sla de JSON hieronder op als simplestaticmetricalert. json voor het doel van deze procedure.
+Sla de JSON hieronder op als simplestaticmetricalert.jsvoor het doel van deze procedure.
 
 ```json
 {
@@ -208,7 +207,7 @@ Sla de JSON hieronder op als simplestaticmetricalert. json voor het doel van dez
 
 U kunt de waarden voor de para meters instellen op de opdracht regel of via een parameter bestand. Hieronder vindt u een voor beeld van een parameter bestand.
 
-Sla de JSON hieronder op als simplestaticmetricalert. para meters. json en wijzig deze indien nodig.
+Sla de JSON hieronder op als simplestaticmetricalert.parameters.jsen wijzig deze indien nodig.
 
 ```json
 {
@@ -481,7 +480,7 @@ Sla de onderstaande json op als simpledynamicmetricalert.json voor deze stapsgew
 
 U kunt de waarden voor de para meters instellen op de opdracht regel of via een parameter bestand. Hieronder vindt u een voor beeld van een parameter bestand. 
 
-Sla de JSON hieronder op als simpledynamicmetricalert. para meters. json en wijzig deze indien nodig.
+Sla de JSON hieronder op als simpledynamicmetricalert.parameters.jsen wijzig deze indien nodig.
 
 ```json
 {
@@ -572,7 +571,7 @@ Houd rekening met de volgende beperkingen bij het gebruik van dimensies in een w
     - In het onderstaande voorbeeld hebben zowel de metrische waarden **Transactions** en **SuccessE2ELatency** een dimensie **ApiName** en geeft *criterion1* de waarde *"GetBlob"* voor de dimensie **ApiName**. Daarom moet *criterion2* ook een waarde *"GetBlob"* hebben voor de dimensie **ApiName**.
 
 
-Sla de JSON hieronder op als advancedstaticmetricalert. json voor het doel van deze procedure.
+Sla de JSON hieronder op als advancedstaticmetricalert.jsvoor het doel van deze procedure.
 
 ```json
 {
@@ -707,7 +706,7 @@ Sla de JSON hieronder op als advancedstaticmetricalert. json voor het doel van d
 
 U kunt de bovenstaande sjabloon gebruiken, samen met het parameter bestand dat hieronder wordt vermeld. 
 
-Sla de JSON hieronder op en wijzig deze als advancedstaticmetricalert. para meters. json voor het doel van deze procedure.
+Sla de JSON hieronder op en wijzig deze als advancedstaticmetricalert.parameters.jsvoor het doel van deze procedure.
 
 ```json
 {
@@ -816,7 +815,7 @@ Enkele mogelijke tijdreeksen die gecontroleerd worden door deze waarschuwingsreg
 - Metric = *Transactions*, ResponseType = *Server Timeout*, ApiName = *GetBlob*
 - Metric = *Transactions*, ResponseType = *Server Timeout*, ApiName = *PutBlob*
 
-Sla de JSON hieronder op als multidimensionalstaticmetricalert. json voor het doel van deze procedure.
+Sla de JSON hieronder op als multidimensionalstaticmetricalert.jsvoor het doel van deze procedure.
 
 ```json
 {
@@ -943,7 +942,7 @@ Sla de JSON hieronder op als multidimensionalstaticmetricalert. json voor het do
 
 U kunt de bovenstaande sjabloon gebruiken, samen met het parameter bestand dat hieronder wordt vermeld. 
 
-Sla de JSON hieronder op en wijzig deze als multidimensionalstaticmetricalert. para meters. json voor het doel van deze procedure.
+Sla de JSON hieronder op en wijzig deze als multidimensionalstaticmetricalert.parameters.jsvoor het doel van deze procedure.
 
 ```json
 {
@@ -1036,7 +1035,7 @@ Enkele mogelijke tijdreeksen die gecontroleerd worden door deze waarschuwingsreg
 - Metric = *Transactions*, ResponseType = *Server Timeout*, ApiName = *GetBlob*
 - Metric = *Transactions*, ResponseType = *Server Timeout*, ApiName = *PutBlob*
 
-Sla de JSON hieronder op als advanceddynamicmetricalert. json voor het doel van deze procedure.
+Sla de JSON hieronder op als advanceddynamicmetricalert.jsvoor het doel van deze procedure.
 
 ```json
 {
@@ -1158,7 +1157,7 @@ Sla de JSON hieronder op als advanceddynamicmetricalert. json voor het doel van 
 
 U kunt de bovenstaande sjabloon gebruiken, samen met het parameter bestand dat hieronder wordt vermeld. 
 
-Sla de JSON hieronder op en wijzig deze als advanceddynamicmetricalert. para meters. json voor het doel van deze procedure.
+Sla de JSON hieronder op en wijzig deze als advanceddynamicmetricalert.parameters.jsvoor het doel van deze procedure.
 
 ```json
 {
@@ -1432,7 +1431,7 @@ Sla de onderstaande json op als customstaticmetricalert.json voor deze stapsgewi
 
 U kunt de bovenstaande sjabloon gebruiken, samen met het parameter bestand dat hieronder wordt vermeld. 
 
-Sla de JSON hieronder op en wijzig deze als customstaticmetricalert. para meters. json voor het doel van deze procedure.
+Sla de JSON hieronder op en wijzig deze als customstaticmetricalert.parameters.jsvoor het doel van deze procedure.
 
 ```json
 {
@@ -1760,7 +1759,7 @@ Sla de onderstaande json op als all-vms-in-resource-group-static.json voor deze 
 ```
 
 U kunt de bovenstaande sjabloon gebruiken met het onderstaande parameter bestand.
-Sla de JSON hieronder op en wijzig deze als alle-vm's-in-Resource-Group-static. para meters. json voor het doel van deze procedure.
+Sla de JSON hieronder op en wijzig deze als all-vms-in-resource-group-static.parameters.jsvoor het doel van deze procedure.
 
 ```json
 {
@@ -1839,7 +1838,7 @@ az group deployment create \
 
 Met deze sjabloon wordt een regel voor metrische waarschuwingen voor dynamische drempel waarden gemaakt waarmee het percentage CPU voor alle virtuele machines (in één Azure-regio) in een of meer resource groepen wordt gecontroleerd.
 
-Sla de JSON hieronder op als alle-vm's-in-Resource-Group-Dynamic. json voor deze procedure.
+Sla de JSON hieronder op als all-vms-in-resource-group-dynamic.jsvoor het doel van deze procedure.
 
 ```json
 {
@@ -2089,7 +2088,7 @@ Sla de JSON hieronder op als alle-vm's-in-Resource-Group-Dynamic. json voor deze
 ```
 
 U kunt de bovenstaande sjabloon gebruiken met het onderstaande parameter bestand.
-Sla de JSON hieronder op en wijzig deze als alle-vm's-in-Resource-Group-Dynamic. para meters. json voor het doel van deze procedure.
+Sla de JSON hieronder op en wijzig deze als all-vms-in-resource-group-dynamic.parameters.jsvoor het doel van deze procedure.
 
 ```json
 {
@@ -2174,7 +2173,7 @@ az group deployment create \
 
 Met deze sjabloon wordt een regel voor een statische drempel waarde voor metrische gegevens gemaakt waarmee het percentage CPU voor alle virtuele machines (in één Azure-regio) in een abonnement wordt gecontroleerd.
 
-Sla de JSON hieronder op als alle vm's-in-abonnement-static. json voor het doel van deze procedure.
+Sla de JSON hieronder op als all-vms-in-subscription-static.jsvoor het doel van deze procedure.
 
 ```json
 {
@@ -2408,7 +2407,7 @@ Sla de JSON hieronder op als alle vm's-in-abonnement-static. json voor het doel 
 ```
 
 U kunt de bovenstaande sjabloon gebruiken met het onderstaande parameter bestand.
-Sla de JSON hieronder op en wijzig deze als alle vm's-in-abonnement-static. para meters. json voor het doel van deze procedure.
+Sla de JSON hieronder op en wijzig deze als all-vms-in-subscription-static.parameters.jsvoor het doel van deze procedure.
 
 ```json
 {
@@ -2484,7 +2483,7 @@ az group deployment create \
 
 Met deze sjabloon wordt een regel voor metrische waarschuwingen voor dynamische drempel waarden gemaakt waarmee het percentage CPU voor alle virtuele machines (in één Azure-regio) in een abonnement wordt gecontroleerd.
 
-Sla de JSON hieronder op als alle vm's-in-abonnement-Dynamic. json voor deze procedure.
+Sla de JSON hieronder op als all-vms-in-subscription-dynamic.jsvoor het doel van deze procedure.
 
 ```json
 {
@@ -2734,7 +2733,7 @@ Sla de JSON hieronder op als alle vm's-in-abonnement-Dynamic. json voor deze pro
 ```
 
 U kunt de bovenstaande sjabloon gebruiken met het onderstaande parameter bestand.
-Sla de JSON hieronder op en wijzig deze als alle vm's-in-abonnement-Dynamic. para meters. json voor het doel van deze procedure.
+Sla de JSON hieronder op en wijzig deze als all-vms-in-subscription-dynamic.parameters.jsvoor het doel van deze procedure.
 
 ```json
 {
@@ -2816,7 +2815,7 @@ az group deployment create \
 
 Met deze sjabloon wordt een regel voor een statische drempel waarde voor metrische gegevens gemaakt waarmee het percentage CPU voor een lijst met virtuele machines (in één Azure-regio) in een abonnement wordt gecontroleerd.
 
-Sla de onderstaande JSON op als lijst-van vm's: static. json voor het doel van deze procedure.
+Sla de JSON hieronder op als list-of-vms-static.jsvoor het doel van deze procedure.
 
 ```json
 {
@@ -3050,7 +3049,7 @@ Sla de onderstaande JSON op als lijst-van vm's: static. json voor het doel van d
 ```
 
 U kunt de bovenstaande sjabloon gebruiken met het onderstaande parameter bestand.
-Sla de JSON hieronder op en wijzig deze in de lijst met vm's: static. para meters. json voor het doel van deze walkthrough.
+Sla de JSON hieronder op en wijzig deze als list-of-vms-static.parameters.jsvoor het doel van deze procedure.
 
 ```json
 {
@@ -3129,7 +3128,7 @@ az group deployment create \
 
 Met deze sjabloon wordt een regel voor metrische waarschuwingen voor dynamische drempel waarden gemaakt waarmee het percentage CPU voor een lijst met virtuele machines (in één Azure-regio) in een abonnement wordt gecontroleerd.
 
-Sla de onderstaande JSON op als lijst-van vm's: Dynamic. json voor deze procedure.
+Sla de JSON hieronder op als list-of-vms-dynamic.jsvoor het doel van deze procedure.
 
 ```json
 {
@@ -3379,7 +3378,7 @@ Sla de onderstaande JSON op als lijst-van vm's: Dynamic. json voor deze procedur
 ```
 
 U kunt de bovenstaande sjabloon gebruiken met het onderstaande parameter bestand.
-Sla de JSON hieronder op en wijzig deze in de lijst met vm's: Dynamic. para meters. json voor het doel van deze walkthrough.
+Sla de JSON hieronder op en wijzig deze als list-of-vms-dynamic.parameters.jsvoor het doel van deze procedure.
 
 ```json
 {
@@ -3465,7 +3464,7 @@ az group deployment create \
 [Beschikbaarheidstests voor Application Insights](../../azure-monitor/app/monitor-web-app-availability.md) helpen u om de beschikbaarheid van uw website/app vanaf verschillende locaties wereldwijd te controleren. U ontvangt een waarschuwing van de beschikbaarheidstest wanneer deze mislukt vanaf een bepaald aantal locaties.
 Waarschuwingen van beschikbaarheidstests van hetzelfde resourcetype als waarschuwingen voor metrische gegevens (Microsoft.Insights/metricAlerts). De volgende voorbeeld Azure Resource Manager sjabloon kan worden gebruikt om een eenvoudige beschikbaarheids test en een bijbehorende waarschuwing in te stellen.
 
-Sla de JSON hieronder op als availabilityalert. json voor het doel van deze procedure.
+Sla de JSON hieronder op als availabilityalert.jsvoor het doel van deze procedure.
 
 ```json
 {
@@ -3573,7 +3572,7 @@ U kunt de waarden voor de para meters instellen op de opdracht regel of via een 
 >
 > `&amp`; is de HTML-entiteitsverwijzing voor &. URL-parameters worden nog steeds gescheiden door één &, maar als u de URL vermeldt in HTML moet u deze coderen. Als er dus een '&' staat in uw parameterwaarde voor pingURL dan moet u "`&amp`;" gebruiken als escapeteken.
 
-Sla de JSON hieronder op als availabilityalert. para meters. json en wijzig deze indien nodig.
+Sla de JSON hieronder op als availabilityalert.parameters.jsen wijzig deze indien nodig.
 
 ```json
 {

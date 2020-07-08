@@ -12,10 +12,9 @@ ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
 ms.openlocfilehash: 2679bc8a9ddf9f748cd0e9d51e1534d120484d0c
-ms.sourcegitcommit: 309cf6876d906425a0d6f72deceb9ecd231d387c
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/01/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84267929"
 ---
 # <a name="how-to-identify-scenarios-and-plan-for-advanced-analytics-data-processing"></a>Scenario's en plannen identificeren voor geavanceerde analytische gegevensverwerking
@@ -55,7 +54,7 @@ Bevindt uw gegevens zich lokaal of in de Cloud? Mogelijke locaties zijn:
 Waar moeten uw gegevens worden verwerkt of gemodelleerd? 
 
 * Azure Blob Storage
-* SQL Azure-data bases
+* SQL Azure-databases
 * SQL Server op virtuele Azure-machine
 * HDInsight (Hadoop op Azure) of Hive-tabellen
 * Azure Machine Learning

@@ -9,10 +9,9 @@ ms.topic: conceptual
 ms.date: 03/13/2020
 ms.author: memildin
 ms.openlocfilehash: c30fef5c82f831365a11bcb14559b0914a9eda4c
-ms.sourcegitcommit: d118ad4fb2b66c759b70d4d8a18e6368760da3ad
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/02/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84299941"
 ---
 # <a name="export-security-alerts-and-recommendations"></a>Beveiligingswaarschuwingen en aanbevelingen exporteren
@@ -142,6 +141,6 @@ In dit artikel hebt u geleerd hoe u continue export van uw aanbevelingen en waar
 Raadpleeg de volgende documentatie voor gerelateerde materialen: 
 
 - [Documentatie over Azure Event Hubs](https://docs.microsoft.com/azure/event-hubs/)
-- [Informatie over Azure-Sentinel](https://docs.microsoft.com/azure/sentinel/)
-- [Documentatie voor Azure Monitor](https://docs.microsoft.com/azure/azure-monitor/)
+- [Documentatie voor Azure Sentinel](https://docs.microsoft.com/azure/sentinel/)
+- [Documentatie over Azure Monitor](https://docs.microsoft.com/azure/azure-monitor/)
 - [Schema's voor werk stroom automatisering en doorlopend exporteren van gegevens typen](https://aka.ms/ASCAutomationSchemas)

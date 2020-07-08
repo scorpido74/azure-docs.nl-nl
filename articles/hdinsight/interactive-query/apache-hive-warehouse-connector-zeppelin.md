@@ -8,10 +8,9 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 05/28/2020
 ms.openlocfilehash: fa90c3579e241fd6b7dc53c9df7d996402fc78a5
-ms.sourcegitcommit: d118ad4fb2b66c759b70d4d8a18e6368760da3ad
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/02/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84296874"
 ---
 # <a name="integrate-apache-zeppelin-with-hive-warehouse-connector-in-azure-hdinsight"></a>Apache Zeppelin integreren met hive Warehouse connector in azure HDInsight
@@ -78,14 +77,14 @@ De volgende configuraties zijn vereist voor toegang tot Hive-tabellen van Zeppel
     | Configuratie                 | Waarde                                      |
     | ----------------------------- |:------------------------------------------:|
     | livy. Spark. Hadoop. component. llap. daemon. service. hosts | @llap0 |
-    | livy. Spark. Security. credentials. hiveserver2. enabled | waar |
-    | livy. Spark. SQL. component. llap | waar |
-    | livy. Spark. garens. Security. credentials. hiveserver2. enabled | waar |
+    | livy. Spark. Security. credentials. hiveserver2. enabled | true |
+    | livy. Spark. SQL. component. llap | true |
+    | livy. Spark. garens. Security. credentials. hiveserver2. enabled | true |
     | livy. supergebruikers | livy, Zeppelin |
     | livy. Spark. potten | `file:///usr/hdp/current/hive_warehouse_connector/hive-warehouse-connector-assembly-VERSION.jar`.<br>Vervang de versie door de waarde die u hebt verkregen om eerder [aan](#getting-started)de slag te gaan. |
     | livy. Spark. Submit. pyFiles | `file:///usr/hdp/current/hive_warehouse_connector/pyspark_hwc-VERSION.zip`.<br>Vervang de versie door de waarde die u hebt verkregen om eerder [aan](#getting-started)de slag te gaan. |
     | livy. Spark. SQL. component. hiveserver2. JDBC. URL | Stel deze in op de HiveServer2 Interactive JDBC-URL van het interactieve query cluster. |
-    | Spark. Security. credentials. hiveserver2. enabled | waar |
+    | Spark. Security. credentials. hiveserver2. enabled | true |
 
 1. Voor alleen ESP-clusters voegt u de volgende configuratie toe:
 

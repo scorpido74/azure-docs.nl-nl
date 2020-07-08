@@ -8,10 +8,9 @@ ms.date: 06/01/2020
 ms.author: rogarana
 ms.subservice: disks
 ms.openlocfilehash: ad01155259ea03806f56c6e75b315ff85b606220
-ms.sourcegitcommit: d118ad4fb2b66c759b70d4d8a18e6368760da3ad
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/02/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84300433"
 ---
 # <a name="find-and-delete-unattached-azure-managed-and-unmanaged-disks---azure-portal"></a>Niet-gekoppelde door Azure beheerde en onbeheerde schijven zoeken en verwijderen-Azure Portal
@@ -22,7 +21,7 @@ Wanneer u een virtuele machine (VM) in azure verwijdert, worden schijven die zij
 
 Als u niet-gekoppelde beheerde schijven hebt en de gegevens niet meer nodig hebt, wordt in het volgende proces uitgelegd hoe u deze kunt vinden in de Azure Portal:
 
-1. Meld u aan bij de [Azure-portal](https://portal.azure.com/).
+1. Meld u aan bij [Azure Portal](https://portal.azure.com/).
 1. Zoek en selecteer **schijven**.
 
     Op de Blade **schijven** wordt een lijst met alle schijven weer gegeven. Een schijf met ' **-** ' in de kolom **eigenaar** is een niet-gekoppelde schijf.
@@ -40,7 +39,7 @@ Onbeheerde schijven zijn VHD-bestanden die zijn opgeslagen als [pagina-blobs](/r
 
 Als u niet-beheerde schijven hebt die niet zijn gekoppeld aan een virtuele machine, de gegevens niet meer nodig hebben en u deze wilt verwijderen, wordt in het volgende proces uitgelegd hoe u dit kunt doen vanuit de Azure Portal:
 
-1. Meld u aan bij de [Azure-portal](https://portal.azure.com/).
+1. Meld u aan bij [Azure Portal](https://portal.azure.com/).
 1. Zoek en selecteer **schijven (klassiek)**.
 
     Er wordt een lijst met al uw onbeheerde schijven weer gegeven. Een schijf met **-** in de kolom **gekoppeld aan** is een niet-gekoppelde schijf.
@@ -53,7 +52,7 @@ Als u niet-beheerde schijven hebt die niet zijn gekoppeld aan een virtuele machi
 
     :::image type="content" source="media/disks-find-unattached-portal/unmanaged-disk-unattached-select-blade.png" alt-text="Scherm afbeelding van een afzonderlijke niet-beheerde schijf. De waarde wordt als gekoppeld aan toegevoegd als deze niet is gekoppeld. Als u deze schijf gegevens niet meer nodig hebt, kunt u deze verwijderen.":::
 
-1. Selecteer **verwijderen**.
+1. Selecteer **Verwijderen**.
 
     :::image type="content" source="media/disks-find-unattached-portal/delete-unmanaged-disk-unattached.png" alt-text="Scherm opname van een afzonderlijke niet-beheerde schijf als markering voor verwijderen.":::
 

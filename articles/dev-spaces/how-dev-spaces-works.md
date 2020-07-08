@@ -6,10 +6,9 @@ ms.topic: conceptual
 description: Hierin worden de processen beschreven die Power Azure dev Spaces
 keywords: Azure dev Spaces, dev Spaces, docker, Kubernetes, azure, AKS, Azure Kubernetes service, containers
 ms.openlocfilehash: dca9f1246a093471cd9538d010bf78116be1b3c7
-ms.sourcegitcommit: 69156ae3c1e22cc570dda7f7234145c8226cc162
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/03/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84307364"
 ---
 # <a name="how-azure-dev-spaces-works"></a>Hoe Azure Dev Spaces werkt
@@ -28,7 +27,7 @@ Met een lokaal proces met Kubernetes kunt u uw ontwikkel computer verbinden met 
 
 ### <a name="run-your-code-in-aks"></a>Uw code uitvoeren in AKS
 
-Naast het omleiden van verkeer tussen uw ontwikkel computer en uw AKS-cluster kunt u met Azure dev Spaces uw code rechtstreeks in AKS configureren en snel uitvoeren. Met Visual Studio, Visual Studio code of de Azure dev Spaces-CLI uploadt Azure dev Spaces uw code naar het cluster en bouwt en voert u deze uit. Met Azure dev Spaces kunt u ook code wijzigingen intelligent synchroniseren en uw service opnieuw starten om zo nodig wijzigingen weer te geven. Tijdens het uitvoeren van uw code worden build-logboeken en HTTP-traceringen weer gestreamd naar uw client, zodat u de voortgang kunt bewaken en eventuele problemen moet vaststellen. U kunt ook Azure dev Spaces gebruiken om de fout opsporing in Visual Studio en Visual Studio code te koppelen aan Java, node. js en .NET Core Services. Zie How to premate [a project for Azure dev Spaces][how-it-works-prep](Engelstalig) voor meer informatie, [hoe u uw code kunt uitvoeren met Azure dev Spaces werkt][how-it-works-up]en [hoe u uw code op afstand kunt debuggen met Azure dev Spaces][how-it-works-remote-debugging].
+Naast het omleiden van verkeer tussen uw ontwikkel computer en uw AKS-cluster kunt u met Azure dev Spaces uw code rechtstreeks in AKS configureren en snel uitvoeren. Met Visual Studio, Visual Studio code of de Azure dev Spaces-CLI uploadt Azure dev Spaces uw code naar het cluster en bouwt en voert u deze uit. Met Azure dev Spaces kunt u ook code wijzigingen intelligent synchroniseren en uw service opnieuw starten om zo nodig wijzigingen weer te geven. Tijdens het uitvoeren van uw code worden build-logboeken en HTTP-traceringen weer gestreamd naar uw client, zodat u de voortgang kunt bewaken en eventuele problemen moet vaststellen. U kunt ook Azure dev Spaces gebruiken om de fout opsporing in Visual Studio en Visual Studio code te koppelen aan Java, Node.js en .NET Core Services. Zie How to premate [a project for Azure dev Spaces][how-it-works-prep](Engelstalig) voor meer informatie, [hoe u uw code kunt uitvoeren met Azure dev Spaces werkt][how-it-works-up]en [hoe u uw code op afstand kunt debuggen met Azure dev Spaces][how-it-works-remote-debugging].
 
 ## <a name="team-development"></a>Teamontwikkeling
 

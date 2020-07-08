@@ -9,10 +9,9 @@ ms.topic: article
 ms.date: 05/06/2020
 ms.author: dayshen
 ms.openlocfilehash: 8810309fef5dbbb35465a2af15d42fa8a59d5401
-ms.sourcegitcommit: d118ad4fb2b66c759b70d4d8a18e6368760da3ad
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/02/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84300174"
 ---
 # <a name="use-service-tags-for-azure-signalr-service"></a>Service tags gebruiken voor de Azure signalerings service
@@ -41,7 +40,7 @@ U kunt uitgaand verkeer naar de Azure signalerings service toestaan door een nie
 
 1. Pas andere velden aan op basis van uw behoeften.
 
-1. Klik op **Toevoegen**.
+1. Klik op **Add**.
 
 
 ## <a name="next-steps"></a>Volgende stappen

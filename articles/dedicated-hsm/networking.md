@@ -13,10 +13,9 @@ ms.topic: conceptual
 ms.date: 12/06/2018
 ms.author: mbaldwin
 ms.openlocfilehash: 06cd02177d7d5c478f3378eb05517f1a37297e92
-ms.sourcegitcommit: d118ad4fb2b66c759b70d4d8a18e6368760da3ad
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/02/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84300729"
 ---
 # <a name="azure-dedicated-hsm-networking"></a>Speciaal voor Azure toegewezen HSM-netwerken
@@ -91,5 +90,5 @@ Voor wereld wijd gedistribueerde toepassingen of voor regionale failover-scenari
 - [Ondersteuning](supportability.md)
 - [Hoge beschikbaarheid](high-availability.md)
 - [Fysieke beveiliging](physical-security.md)
-- [Bewaking](monitoring.md)
+- [Controle](monitoring.md)
 - [Implementatie architectuur](deployment-architecture.md)

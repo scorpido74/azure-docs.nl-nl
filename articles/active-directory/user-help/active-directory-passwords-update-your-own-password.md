@@ -12,10 +12,9 @@ ms.topic: end-user-help
 ms.date: 05/28/2020
 ms.author: curtand
 ms.openlocfilehash: 58ec2c00e75b12d6010b106ca7daed0da234bf1d
-ms.sourcegitcommit: 309cf6876d906425a0d6f72deceb9ecd231d387c
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/01/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84266114"
 ---
 # <a name="reset-your-work-or-school-password-using-security-info"></a>Uw werk-of school wachtwoord opnieuw instellen met behulp van beveiligings gegevens
@@ -155,7 +154,7 @@ Als uw beheerder de functionaliteit heeft ingeschakeld, kunt u een koppeling zie
 
 Hier volgen enkele veelvoorkomende fout gevallen en hun oplossingen:
 
-|Probleem|Beschrijving|Oplossing|
+|Probleem|Description|Oplossing|
 | --- | --- | --- |
 |Wanneer ik mijn wacht woord probeer te wijzigen, krijg ik een fout melding. |Uw wacht woord heeft een woord, woord groep of patroon waarmee uw wacht woord gemakkelijk kan worden geraden.| Probeer het opnieuw met een sterker wacht woord.|
 |Nadat ik mijn gebruikers-ID heb ingevoerd, ga ik naar een pagina met de tekst ' Neem contact op met de beheerder '.|Micro soft heeft vastgesteld dat het wacht woord van uw gebruikers account wordt beheerd door uw beheerder in een on-premises omgeving. Als gevolg hiervan kunt u uw wacht woord niet opnieuw instellen via de koppeling geen toegang tot uw account. |Neem contact op met de beheerder voor meer informatie.|

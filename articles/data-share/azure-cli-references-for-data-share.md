@@ -10,10 +10,9 @@ ms.topic: reference
 ms.date: 05/27/2020
 ms.author: dbradish
 ms.openlocfilehash: 404022b13f44174e4b647f0430a58fac5eeb81df
-ms.sourcegitcommit: d118ad4fb2b66c759b70d4d8a18e6368760da3ad
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/02/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84300617"
 ---
 # <a name="azure-cli-for-azure-data-share"></a>Azure CLI voor Azure-gegevens share
@@ -24,7 +23,7 @@ De Azure-opdracht regel interface ([Azure cli](/cli/azure/what-is-azure-cli)) is
 
 Alle Azure CLI-opdrachten voor Azure data share zijn momenteel uitbrei dingen voor de Azure CLI.  Een uitbrei ding geeft u toegang tot de opdrachten voor experimentele en voorlopige versies.  Meer informatie over uitbreidings verwijzingen vindt [u in extensies gebruiken met Azure cli](/cli/azure/azure-cli-extensions-overview).
 
-|Naslag informatie voor Azure CLI |Beschrijving
+|Naslag informatie voor Azure CLI |Description
 |-|-|-|
 | [AZ DataShare](/cli/azure/ext/datashare/datashare) | Alle opdrachten voor het beheren van de Azure-gegevens share.
 | [AZ DataShare account](/cli/azure/ext/datashare/datashare/account) | Opdrachten voor het beheren van Azure-gegevens share-accounts.
@@ -58,7 +57,7 @@ Het is net zo eenvoudig om een gegevens share-account te maken.
 az datashare account create --location "West US 2" --tags tag1=Red tag2=White --name MyAccount --resource-group MyResourceGroup
 ```
 
-## <a name="see-also"></a>Zie ook
+## <a name="see-also"></a>Zie tevens
 
 * [Ga aan de slag met Azure cli](/cli/azure/get-started-with-azure-cli) voor meer informatie over de installatie en het aanmelden.
 

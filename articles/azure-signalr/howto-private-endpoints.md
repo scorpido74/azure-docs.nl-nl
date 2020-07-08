@@ -9,10 +9,9 @@ ms.topic: article
 ms.date: 05/06/2020
 ms.author: dayshen
 ms.openlocfilehash: 645b2c643c1c1d4fe82eb5998a35ccc48536603e
-ms.sourcegitcommit: d118ad4fb2b66c759b70d4d8a18e6368760da3ad
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/02/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84300202"
 ---
 # <a name="use-private-endpoints-for-azure-signalr-service"></a>Privé-eind punten gebruiken voor de Azure signalerings service
@@ -93,7 +92,7 @@ Raadpleeg de volgende artikelen voor meer informatie over het configureren van u
 
     ![Een Azure signalerings service maken-tabblad netwerken](media/howto-private-endpoints/portal-create-blade-networking-tab.png)
 
-1. Klik op **Toevoegen**. Vul het abonnement, de resource groep, de locatie en de naam voor het nieuwe persoonlijke eind punt in. Kies een virtueel netwerk en een subnet.
+1. Klik op **Add**. Vul het abonnement, de resource groep, de locatie en de naam voor het nieuwe persoonlijke eind punt in. Kies een virtueel netwerk en een subnet.
 
     ![De Azure signalerings service maken-persoonlijk eind punt toevoegen](media/howto-private-endpoints/portal-create-blade-add-private-endpoint.png)
 
@@ -129,11 +128,11 @@ Raadpleeg de volgende artikelen voor meer informatie over het configureren van u
     ```console
     az login
     ```
-1. Uw Azure-abonnement selecteren
+1. Selecteer uw Azure-abonnement
     ```console
     az account set --subscription {AZURE SUBSCRIPTION ID}
     ```
-1. Een nieuwe resourcegroep maken
+1. Een nieuwe brongroep maken
     ```console
     az group create -n {RG} -l {AZURE REGION}
     ```
@@ -145,7 +144,7 @@ Raadpleeg de volgende artikelen voor meer informatie over het configureren van u
     ```console
     az signalr create --name {NAME} --resource-group {RG} --location {AZURE REGION} --sku Standard_S1
     ```
-1. Een virtueel netwerk maken
+1. Een Virtual Network maken
     ```console
     az network vnet create --resource-group {RG} --name {vNet NAME} --location {AZURE REGION}
     ```
@@ -153,11 +152,11 @@ Raadpleeg de volgende artikelen voor meer informatie over het configureren van u
     ```console
     az network vnet subnet create --resource-group {RG} --vnet-name {vNet NAME} --name {subnet NAME} --address-prefixes {addressPrefix}
     ```
-1. Virtual Network-beleid uitschakelen
+1. Virtueel netwerk-beleid uitschakelen
     ```console
     az network vnet subnet update --name {subnet NAME} --resource-group {RG} --vnet-name {vNet NAME} --disable-private-endpoint-network-policies true
     ```
-1. Een Privé-DNS zone toevoegen
+1. Een Privé-DNS-zone
     ```console
     az network private-dns zone create --resource-group {RG} --name privatelink.service.signalr.net
     ```
@@ -165,22 +164,22 @@ Raadpleeg de volgende artikelen voor meer informatie over het configureren van u
     ```console
     az network private-dns link vnet create --resource-group {RG} --virtual-network {vNet NAME} --zone-name privatelink.service.signalr.net --name {dnsZoneLinkName} --registration-enabled true
     ```
-1. Een persoonlijk eind punt maken (automatisch goed keuren)
+1. Een privé-eindpunt maken (automatisch goedkeuren)
     ```console
     az network private-endpoint create --resource-group {RG} --vnet-name {vNet NAME} --subnet {subnet NAME} --name {Private Endpoint Name}  --private-connection-resource-id "/subscriptions/{AZURE SUBSCRIPTION ID}/resourceGroups/{RG}/providers/Microsoft.SignalRService/SignalR/{NAME}" --group-ids signalr --connection-name {Private Link Connection Name} --location {AZURE REGION}
     ```
-1. Een persoonlijk eind punt maken (hand matig goed keuring aanvragen)
+1. Een privé-eindpunt maken (handmatig goedkeuring aanvragen)
     ```console
     az network private-endpoint create --resource-group {RG} --vnet-name {vNet NAME} --subnet {subnet NAME} --name {Private Endpoint Name}  --private-connection-resource-id "/subscriptions/{AZURE SUBSCRIPTION ID}/resourceGroups/{RG}/providers/Microsoft.SignalRService/SignalR/{NAME}" --group-ids signalr --connection-name {Private Link Connection Name} --location {AZURE REGION} --manual-request
     ```
-1. Verbindings status weer geven
+1. Verbindingsstatus weergeven
     ```console
     az network private-endpoint show --resource-group {RG} --name {Private Endpoint Name}
     ```
 
 ## <a name="pricing"></a>Prijzen
 
-Zie [prijzen voor persoonlijke Azure-koppelingen](https://azure.microsoft.com/pricing/details/private-link)voor prijs informatie.
+Zie [prijzen van Azure Private Link](https://azure.microsoft.com/pricing/details/private-link) voor meer informatie over prijzen.
 
 ## <a name="known-issues"></a>Bekende problemen
 

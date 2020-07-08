@@ -4,10 +4,9 @@ description: Een container groep maken in een virtueel netwerk en een Azure Appl
 ms.topic: article
 ms.date: 03/16/2020
 ms.openlocfilehash: a27cf20b7d04fedb0b9e0ab408de24d37f2935c7
-ms.sourcegitcommit: d118ad4fb2b66c759b70d4d8a18e6368760da3ad
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/02/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84299159"
 ---
 # <a name="expose-a-static-ip-address-for-a-container-group"></a>Een statisch IP-adres voor een container groep beschikbaar maken
@@ -71,7 +70,7 @@ az network public-ip create \
 
 Voer de volgende [AZ-container Create][az-container-create] uit om een container groep te maken in het virtuele netwerk dat u in de vorige stap hebt geconfigureerd. 
 
-De groep wordt geïmplementeerd in het *myACISubnet* -subnet en bevat één exemplaar met de naam *appcontainer* die de `aci-helloworld` installatie kopie ophaalt. Zoals in andere artikelen in de documentatie wordt weer gegeven, verpakt deze afbeelding een kleine web-app die is geschreven in node. js, die een statische HTML-pagina vormt. 
+De groep wordt geïmplementeerd in het *myACISubnet* -subnet en bevat één exemplaar met de naam *appcontainer* die de `aci-helloworld` installatie kopie ophaalt. Zoals in andere artikelen in de documentatie wordt weer gegeven, verpakt deze afbeelding een kleine web-app die is geschreven in Node.js die een statische HTML-pagina vormt. 
 
 ```azurecli
 az container create \

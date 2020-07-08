@@ -11,10 +11,9 @@ ms.date: 10/14/2019
 ms.author: mimart
 ms.subservice: B2C
 ms.openlocfilehash: 08a1d655d19b5e7deb81e42ca5bebdfe4f18aeef
-ms.sourcegitcommit: d118ad4fb2b66c759b70d4d8a18e6368760da3ad
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/02/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84297901"
 ---
 # <a name="azure-ad-b2c-frequently-asked-questions-faq"></a>Azure AD B2C: veelgestelde vragen (FAQ)
@@ -77,7 +76,7 @@ U kunt de [functie voor bedrijfs huisstijl](../active-directory/fundamentals/cus
 De e-mail handtekening bevat de naam van de Azure AD B2C Tenant die u hebt ingevoerd toen u de Azure AD B2C-Tenant voor het eerst hebt gemaakt. U kunt de naam wijzigen met behulp van de volgende instructies:
 
 1. Meld u aan bij de [Azure Portal](https://portal.azure.com/) als globale beheerder.
-1. Open de blade **Azure Active Directory**.
+1. Open de Blade **Azure Active Directory** .
 1. Klik op het tabblad **Eigenschappen** .
 1. Wijzig het veld **naam** .
 1. Klik bovenaan de pagina op **Opslaan**.
@@ -145,7 +144,7 @@ U kunt onze nieuwe geïntegreerde **app-registraties** ervaring of onze oudere *
 1. Selecteer **app-registraties**en selecteer vervolgens het tabblad **alle toepassingen** .
 1. Alle toepassingen verwijderen die u hebt geregistreerd.
 1. Verwijder de **B2C-Extensions-app**.
-1. Onder **Beheren**, selecteer **Gebruikers**.
+1. Selecteer onder **Beheren** de optie **Gebruikers**.
 1. Selecteer elke gebruiker op zijn beurt (sluit de gebruikers van de *abonnements beheerder* die u momenteel bent aangemeld als). Selecteer **verwijderen** onder aan de pagina en selecteer **Ja** wanneer u hierom wordt gevraagd.
 1. Selecteer **Azure Active Directory** in het menu aan de linkerkant.
 1. Selecteer onder **beheren**de optie **gebruikers instellingen**.
@@ -164,7 +163,7 @@ U kunt onze nieuwe geïntegreerde **app-registraties** ervaring of onze oudere *
 1. Verwijder alle **gebruikers stromen (beleids regels)** in uw Azure AD B2C-Tenant.
 1. Verwijder alle **toepassingen (verouderd)** die u hebt geregistreerd in uw Azure AD B2C-Tenant.
 1. Selecteer **Azure Active Directory** in het menu aan de linkerkant.
-1. Onder **Beheren**, selecteer **Gebruikers**.
+1. Selecteer onder **Beheren** de optie **Gebruikers**.
 1. Selecteer elke gebruiker op zijn beurt (sluit de gebruikers van de *abonnements beheerder* die u momenteel bent aangemeld als). Selecteer **verwijderen** onder aan de pagina en selecteer **Ja** wanneer u hierom wordt gevraagd.
 1. Selecteer **App-registraties** onder **Beheren**.
 1. Selecteer **alle toepassingen weer geven**

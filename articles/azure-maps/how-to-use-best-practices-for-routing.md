@@ -9,10 +9,9 @@ ms.service: azure-maps
 services: azure-maps
 manager: philmea
 ms.openlocfilehash: 24fa4c48f6ca03e4049483a9acfff067d5a6a736
-ms.sourcegitcommit: 309cf6876d906425a0d6f72deceb9ecd231d387c
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/01/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84266692"
 ---
 # <a name="best-practices-for-azure-maps-route-service"></a>Aanbevolen procedures voor Azure Maps route service
@@ -58,10 +57,10 @@ Hier volgt een vergelijking om enkele mogelijkheden van de route richtingen en m
 
 | Azure Maps-API | Maximum aantal query's in de aanvraag | Gebieden voor komen | Route ring van vracht wagen en elektrisch Voer tuig | Waypoints en Traveling Salesman Optimization | Ondersteunende punten |
 | :--------------: |  :--------------: |  :--------------: | :--------------: | :--------------: | :--------------: |
-| Route beschrijving ophalen | 1 | | X | X | |
+| Routebeschrijving ophalen | 1 | | X | X | |
 | Route beschrijving plaatsen | 1 | X | X | X | X |
 | Post route beschrijving batch | 700 | | X | X | |
-| Route matrix plaatsen | 700 | | X | | |
+| Post-routematrix | 700 | | X | | |
 
 Voor meer informatie over routerings mogelijkheden voor elektrische auto's raadpleegt u onze zelf studie over het [routeren van elektrische Voer tuigen met behulp van Azure notebooks met python](tutorial-ev-routing.md).
 
@@ -73,7 +72,7 @@ De **travelTimeInSeconds** -waarde van de route berekening bevat de vertraging a
 
 Als u de para meter **computeTravelTimeFor = all** opneemt in uw aanvraag, hebben het samen vattings element in het antwoord de volgende extra velden, inclusief historische verkeers omstandigheden:
 
-| Element | Beschrijving|
+| Element | Description|
 | :--- | :--- |
 | noTrafficTravelTimeInSeconds | De geschatte reis tijd die wordt berekend alsof er geen vertragingen zijn op de route wegens verkeers omstandigheden, bijvoorbeeld vanwege congestie |
 | historicTrafficTravelTimeInSeconds | Geschatte reis tijd berekend met behulp van tijd afhankelijke historische verkeers gegevens |
@@ -323,7 +322,7 @@ De onderstaande afbeelding is een voor beeld van het weer geven van alternatieve
 
 ## <a name="use-the-routing-service-in-a-web-app"></a>De Routing-service gebruiken in een web-app
 
-De Azure Maps Web-SDK biedt een [service module](https://docs.microsoft.com/javascript/api/azure-maps-rest/?view=azure-maps-typescript-latest). Deze module is een helper-bibliotheek waarmee u gemakkelijk de Azure Maps REST-Api's in web-of node. js-toepassingen kunt gebruiken, met behulp van Java script of type script. De service module kan worden gebruikt om de geretourneerde routes op de kaart weer te geven. De module bepaalt automatisch welke API moet worden gebruikt met GET-en POST-aanvragen.
+De Azure Maps Web-SDK biedt een [service module](https://docs.microsoft.com/javascript/api/azure-maps-rest/?view=azure-maps-typescript-latest). Deze module is een helper-bibliotheek waarmee u gemakkelijk de Azure Maps REST-Api's in web-of Node.js toepassingen kunt gebruiken, met Java script of type script. De service module kan worden gebruikt om de geretourneerde routes op de kaart weer te geven. De module bepaalt automatisch welke API moet worden gebruikt met GET-en POST-aanvragen.
 
 ## <a name="next-steps"></a>Volgende stappen
 

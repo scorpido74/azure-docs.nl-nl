@@ -9,10 +9,9 @@ ms.service: iot-pnp
 services: iot-pnp
 ms.custom: mvc
 ms.openlocfilehash: 038d9ff39f388d1ef7b09b951c09dbe3420858b7
-ms.sourcegitcommit: d118ad4fb2b66c759b70d4d8a18e6368760da3ad
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/02/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84298224"
 ---
 # <a name="use-visual-studio-and-visual-studio-code-to-build-iot-plug-and-play-devices"></a>Visual Studio en Visual Studio code gebruiken om IoT Plug en Play-apparaten te bouwen
@@ -69,7 +68,7 @@ De code generator probeert DCM-en interface bestanden te gebruiken die zich in d
 
 Wanneer het genereren van code is voltooid, wordt met de uitbrei ding een nieuw versus code venster geopend met de code. Als u een gegenereerd bestand opent, zoals **Main. c**, is het mogelijk dat IntelliSense rapporteert dat de c SDK-bron bestanden niet kunnen worden geopend. Als u de juiste IntelliSense-en code navigatie wilt inschakelen, gebruikt u de volgende stappen om de C SDK-bron op te nemen:
 
-1. In VS code gebruikt u **CTRL + SHIFT + P** om het opdracht palet te openen. Typ en selecteer **C/C++: Edit configurations (JSON)** om het bestand **c_cpp_properties. json** te openen.
+1. In VS code gebruikt u **CTRL + SHIFT + P** om het opdracht palet te openen. Typ en selecteer **C/C++: Edit configurations (JSON)** om de **c_cpp_properties.jsin** het bestand te openen.
 
 1. Voeg het pad van de SDK van het apparaat toe aan de `includePath` sectie:
 
@@ -121,7 +120,7 @@ Als u de apparaatcode samen met het apparaat C SDK Vcpkg wilt maken met behulp v
     ./vcpkg integrate install
     ```
 
-1. Installeer de Azure IoT C Device SDK Vcpkg:
+1. Installeer de Azure IoT C Device SDK:
 
     ```bash
     ./vcpkg install azure-iot-sdk-c[public-preview,use_prov_client]

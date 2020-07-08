@@ -4,18 +4,17 @@ description: Met een media grafiek kunt u definiëren waar media moeten worden v
 ms.topic: conceptual
 ms.date: 05/01/2020
 ms.openlocfilehash: 02e960e917a059afdb0d688c7429d27d8e8a48eb
-ms.sourcegitcommit: d118ad4fb2b66c759b70d4d8a18e6368760da3ad
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/02/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84300804"
 ---
 # <a name="media-graph"></a>Mediagrafiek
 
-## <a name="suggested-pre-reading"></a>Aanbevolen voor lezen
+## <a name="suggested-pre-reading"></a>Aanbevolen om te lezen
 
-* [Overzicht van live video-analyses op IoT Edge](overview.md)
-* [Live video-analyses op IoT Edge terminologie](terminology.md)
+* [Overzicht van Live Video Analytics in IoT Edge](overview.md)
+* [Terminologie van Live Video Analytics in IoT Edge](terminology.md)
 
 ## <a name="overview"></a>Overzicht
 
