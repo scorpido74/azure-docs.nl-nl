@@ -10,12 +10,12 @@ ms.author: rezas
 ms.custom:
 - amqp
 - mqtt
-ms.openlocfilehash: 189ebcc74461a57a4e91bf50262c377540cf885b
-ms.sourcegitcommit: bf8c447dada2b4c8af017ba7ca8bfd80f943d508
+ms.openlocfilehash: 873f871625b812937d1e6ac360f7e0565121a4eb
+ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/25/2020
-ms.locfileid: "85367832"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86045991"
 ---
 # <a name="understand-and-invoke-direct-methods-from-iot-hub"></a>Directe methoden van IoT Hub begrijpen en aanroepen
 
@@ -113,7 +113,7 @@ Voer de gewijzigde opdracht uit om de opgegeven directe methode aan te roepen. G
 > In het bovenstaande voor beeld ziet u hoe u een directe methode aanroept op een apparaat.  Als u een directe methode in een IoT Edge module wilt aanroepen, moet u de URL-aanvraag wijzigen, zoals hieronder wordt weer gegeven:
 
 ```bash
-https://<iothubName>.azure-devices.net/twins/<deviceId>/modules/<moduleName>/methods?api-version=2018-06
+https://<iothubName>.azure-devices.net/twins/<deviceId>/modules/<moduleName>/methods?api-version=2018-06-30
 ```
 ### <a name="response"></a>Antwoord
 

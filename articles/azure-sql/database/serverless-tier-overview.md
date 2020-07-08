@@ -10,18 +10,18 @@ ms.topic: conceptual
 author: oslake
 ms.author: moslake
 ms.reviewer: sstein, carlrab
-ms.date: 6/26/2020
-ms.openlocfilehash: 2b5da354e8e8b49e40e7d960e368aad8067de659
-ms.sourcegitcommit: 374e47efb65f0ae510ad6c24a82e8abb5b57029e
+ms.date: 7/6/2020
+ms.openlocfilehash: 130b19f280c69bfbe4ca49abe1bcba5db7f23caa
+ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/28/2020
-ms.locfileid: "85506698"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86045957"
 ---
 # <a name="azure-sql-database-serverless"></a>Azure SQL Database serverloos
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
 
-Serverloos is een compute-laag voor één Azure SQL-data base waarmee de berekening automatisch wordt geschaald op basis van de vraag van de werk belasting en de facturen voor de hoeveelheid reken kracht die per seconde wordt gebruikt. De compute-laag zonder server onderbreekt ook automatisch data bases tijdens inactieve Peri Oden wanneer alleen opslag wordt gefactureerd en automatisch data bases hervat wanneer de activiteit wordt geretourneerd.
+Serverloos is een compute-laag voor afzonderlijke data bases in Azure SQL Database waarmee de berekening automatisch wordt geschaald op basis van de vraag van de werk belasting en de facturen voor de hoeveelheid reken kracht die per seconde wordt gebruikt. De compute-laag zonder server onderbreekt ook automatisch data bases tijdens inactieve Peri Oden wanneer alleen opslag wordt gefactureerd en automatisch data bases hervat wanneer de activiteit wordt geretourneerd.
 
 ## <a name="serverless-compute-tier"></a>Serverloze compute-laag
 
@@ -88,9 +88,9 @@ Geheugen voor serverloze data bases is vaker vrijgemaakt dan voor ingerichte Com
 
 #### <a name="cache-reclamation"></a>Cache terugwinning
 
-In tegens telling tot provisioned Compute-data bases, wordt het geheugen van de SQL-cache vrijgemaakt van een serverloze data base wanneer het CPU-of cache gebruik laag is.
+In tegens telling tot provisioned Compute-data bases, wordt het geheugen van de SQL-cache vrijgemaakt van een serverloze data base wanneer het CPU-of actieve cache gebruik laag is.  Houd er rekening mee dat wanneer het CPU-gebruik laag is, het actieve cache gebruik hoog kan blijven, afhankelijk van het gebruiks patroon en te voor komen dat geheugen wordt terugwinning.
 
-- Cache gebruik wordt beschouwd als laag als de totale grootte van de meest recent gebruikte cache vermeldingen voor een bepaalde tijd onder een drempel waarde valt.
+- Het actieve cache gebruik wordt als laag beschouwd als de totale grootte van de meest recent gebruikte cache vermeldingen voor een bepaalde tijd onder een drempel waarde valt.
 - Wanneer het inwinnen van de cache wordt geactiveerd, wordt de grootte van de doel cache oplopend verhoogd naar een fractie van de vorige grootte, en wordt er alleen een vrijmaken als het gebruik laag blijft.
 - Wanneer de cache wordt verwijderd, is het beleid voor het selecteren van cache vermeldingen voor het verwijderen hetzelfde selectie beleid als voor provisioned Compute data bases wanneer de geheugen belasting hoog is.
 - De cache grootte wordt nooit kleiner dan de minimale geheugen limiet, zoals gedefinieerd door de minimale vCores die kan worden geconfigureerd.
@@ -112,7 +112,7 @@ Automatische onderbreking wordt geactiveerd als aan de duur van de automatische 
 
 Er is een optie voor het uitschakelen van de functie voor het indien gewenst van AutoActiveren.
 
-De volgende functies bieden geen ondersteuning voor het autopauzeren.  Dat wil zeggen, als een van de volgende functies wordt gebruikt, de data base online blijft, ongeacht de duur van de data base-inactiviteit:
+De volgende functies bieden geen ondersteuning voor automatische onderbrekingen, maar ondersteunen automatisch schalen.  Dat wil zeggen, als een van de volgende functies wordt gebruikt, de data base online blijft, ongeacht de duur van de data base-inactiviteit:
 
 - Geo-replicatie (actieve groepen met geo-replicatie en automatische failover).
 - Lange termijn retentie van back-ups (LTR).

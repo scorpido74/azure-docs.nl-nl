@@ -4,12 +4,12 @@ description: Meer informatie over het oplossen van veelvoorkomende problemen bij
 services: container-service
 ms.topic: troubleshooting
 ms.date: 06/20/2020
-ms.openlocfilehash: 36b3f20b866e7bad1d27f9fa92c02601ec21602c
-ms.sourcegitcommit: 398fecceba133d90aa8f6f1f2af58899f613d1e3
+ms.openlocfilehash: 08668289faa2341389a80b00cba11a33021da608
+ms.sourcegitcommit: bcb962e74ee5302d0b9242b1ee006f769a94cfb8
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/21/2020
-ms.locfileid: "85125426"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86054386"
 ---
 # <a name="aks-troubleshooting"></a>AKS-problemen oplossen
 
@@ -31,11 +31,34 @@ De maximale instelling per knoop punt is standaard 110 als u een AKS-cluster imp
 
 ## <a name="im-getting-an-insufficientsubnetsize-error-while-deploying-an-aks-cluster-with-advanced-networking-what-should-i-do"></a>Er wordt een insufficientSubnetSize-fout opgetreden tijdens het implementeren van een AKS-cluster met een geavanceerd netwerk. Wat moet ik doen?
 
-Wanneer u de Azure CNI-netwerk-invoeg toepassing gebruikt, wijst AKS IP-adressen toe op basis van de para meter--Max-peulen per knoop punt. De grootte van het subnet moet groter zijn dan het aantal knoop punten, het maximum van de instelling per knoop punt. De volgende vergelijking bevat een overzicht:
+Deze fout geeft aan dat een subnet dat wordt gebruikt voor een cluster niet langer beschik bare Ip's in de CIDR heeft voor een succes volle resource toewijzing. Voor Kubenet-clusters is de vereiste voldoende IP-adres ruimte voor elk knoop punt in het cluster. Voor Azure CNI-clusters is de vereiste voldoende IP-adres ruimte voor elk knoop punt en pod in het cluster.
+Lees meer over het [ontwerp van Azure cni om ip's toe te wijzen aan een Peul](configure-azure-cni.md#plan-ip-addressing-for-your-cluster).
 
-De grootte van het subnet > aantal knoop punten in het cluster (waarbij rekening wordt gehouden met de toekomstige schaal vereisten) * Max.
+Deze fouten worden ook weer gegeven in [AKS Diagnostics](https://docs.microsoft.com/azure/aks/concepts-diagnostics) , die proactief problemen ondervinden, zoals een ontoereikende subnet-grootte.
 
-Zie [IP-adres sering voor uw cluster plannen](configure-azure-cni.md#plan-ip-addressing-for-your-cluster)voor meer informatie.
+In de volgende drie (3) gevallen treedt er een fout op onvoldoende subnet-grootte op:
+
+1. Schaal van AKS of AKS Nodepool
+   1. Als Kubenet wordt gebruikt, treedt dit op wanneer de `number of free IPs in the subnet` is **kleiner dan** de `number of new nodes requested` .
+   1. Als u Azure CNI gebruikt, treedt dit op wanneer de `number of free IPs in the subnet` is **kleiner dan** de `number of nodes requested times (*) the node pool's --max-pod value` .
+
+1. AKS-upgrade of AKS Nodepool-upgrade
+   1. Als Kubenet wordt gebruikt, treedt dit op wanneer de `number of free IPs in the subnet` is **kleiner dan** de `number of buffer nodes needed to upgrade` .
+   1. Als u Azure CNI gebruikt, treedt dit op wanneer de `number of free IPs in the subnet` is **kleiner dan** de `number of buffer nodes needed to upgrade times (*) the node pool's --max-pod value` .
+   
+   Standaard hebben AKS-clusters een maximale piek waarde (upgrade buffer) van één (1), maar dit upgrade gedrag kan worden aangepast door de [maximale piek waarde van een knooppunt groep](upgrade-cluster.md#customize-node-surge-upgrade-preview) in te stellen, waardoor het aantal beschik bare ip's dat nodig is voor het volt ooien van een upgrade, wordt verhoogd.
+
+1. AKS maken of AKS Nodepool toevoegen
+   1. Als Kubenet wordt gebruikt, treedt dit op wanneer de `number of free IPs in the subnet` is **kleiner dan** de `number of nodes requested for the node pool` .
+   1. Als u Azure CNI gebruikt, treedt dit op wanneer de `number of free IPs in the subnet` is **kleiner dan** de `number of nodes requested times (*) the node pool's --max-pod value` .
+
+De volgende beperking kan worden gemaakt door nieuwe subnetten te maken. De machtiging voor het maken van een nieuw subnet is vereist voor de oplossing omdat het CIDR-bereik van een bestaand subnet kan worden bijgewerkt.
+
+1. Bouw een nieuw subnet met een groter CIDR-bereik dat voldoende is voor de bewerkings doelen:
+   1. Maak een nieuw subnet met een nieuw, niet-overlappend bereik.
+   1. Maak een nieuwe nodepool op het nieuwe subnet.
+   1. Verwerkings alles uit de oude nodepool die zich in het oude subnet bevinden dat moet worden vervangen.
+   1. Verwijder het oude subnet en de oude nodepool.
 
 ## <a name="my-pod-is-stuck-in-crashloopbackoff-mode-what-should-i-do"></a>Mijn Pod is vastgelopen in de CrashLoopBackOff-modus. Wat moet ik doen?
 
@@ -126,6 +149,7 @@ Naam beperkingen worden geïmplementeerd door zowel het Azure-platform als de AK
 * De naam van het AKS-knoop punt/*MC_* resource groep combineert de naam van de resource groep en de resource naam. De automatisch gegenereerde syntaxis van `MC_resourceGroupName_resourceName_AzureRegion` mag niet langer zijn dan 80 tekens. Als dat nodig is, vermindert u de lengte van de naam van de resource groep of de AKS-cluster naam. U kunt ook [de naam van de resource groep voor het knoop punt aanpassen](cluster-configuration.md#custom-resource-group-name)
 * De *dnsPrefix* moet beginnen en eindigen met alfanumerieke waarden en moet tussen de 1-54 tekens lang zijn. Geldige tekens zijn alfanumerieke waarden en afbreek streepjes (-). De *dnsPrefix* mag geen speciale tekens bevatten, zoals een punt (.).
 * Namen van AKS-knooppunt groepen moeten allemaal kleine letters zijn en 1-11 tekens bevatten voor Linux-knooppunt Pools en 1-6 tekens voor Windows-knooppunt groepen. De naam moet beginnen met een letter en de enige toegestane tekens zijn letters en cijfers.
+* De *Administrator-gebruikers naam*, waarmee de gebruikers naam van de beheerder voor Linux-knoop punten wordt ingesteld, moet beginnen met een letter, mag alleen letters, cijfers, afbreek streepjes en onderstrepings tekens bevatten en een maximale lengte van 64 karakters hebben.
 
 ## <a name="im-receiving-errors-when-trying-to-create-update-scale-delete-or-upgrade-cluster-that-operation-is-not-allowed-as-another-operation-is-in-progress"></a>Ik ontvang fouten bij het maken, bijwerken, schalen, verwijderen of upgraden van een cluster. deze bewerking is niet toegestaan omdat er een andere bewerking wordt uitgevoerd.
 

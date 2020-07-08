@@ -11,6 +11,10 @@
       href: ./quickstarts/client-libraries.md
 - name: Zelfstudies
   items:
+    - name: De Insluitende lezer starten (Android)
+      href: tutorial-android.md
+    - name: De Insluitende lezer starten (iOS)
+      href: tutorial-ios.md
     - name: De Insluitende lezer starten (Python)
       href: tutorial-python.md
     - name: Meerde resources voor Insluitende lezer gebruiken

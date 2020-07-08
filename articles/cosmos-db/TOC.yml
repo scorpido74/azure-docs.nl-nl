@@ -123,7 +123,7 @@
           href: partitioning-overview.md
         - name: Partitionering en horizontaal schalen
           href: partition-data.md
-        - name: Een synthetische partitiesleutel maken
+        - name: Synthetische partitiesleutel
           href: synthetic-partition-keys.md
     - name: Ingerichte doorvoer
       items:

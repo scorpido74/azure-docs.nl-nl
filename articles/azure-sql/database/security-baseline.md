@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 04/09/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: 26456c09975fa49bae17a3cfeef8ecc1ef913815
-ms.sourcegitcommit: 01cd19edb099d654198a6930cebd61cae9cb685b
+ms.openlocfilehash: 3c890dc48c97580fd8de5c817c96b62d4eb9c009
+ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/24/2020
-ms.locfileid: "85315880"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86045940"
 ---
 # <a name="azure-security-baseline-for-azure-sql-database--sql-managed-instance"></a>Azure-beveiligings basislijn voor Azure SQL Database & SQL Managed instance
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -639,7 +639,7 @@ https://docs.microsoft.com/azure/sql-database/transparent-data-encryption-azure-
 
 ### <a name="49-log-and-alert-on-changes-to-critical-azure-resources"></a>4,9: wijzigingen in essentiële Azure-resources vastleggen en waarschuwen
 
-**Hulp**: gebruik Azure monitor met het Azure-activiteiten logboek om waarschuwingen te maken wanneer wijzigingen worden aangebracht in productie-exemplaren van Azure SQL-data bases en andere kritieke of gerelateerde resources.
+**Hulp**: gebruik Azure monitor met het Azure-activiteiten logboek om waarschuwingen te maken wanneer wijzigingen worden aangebracht in productie-exemplaren van Azure SQL database en andere essentiële of gerelateerde resources.
 
 Waarschuwingen voor Azure-activiteiten logboek gebeurtenissen maken:
 
@@ -657,7 +657,7 @@ https://docs.microsoft.com/azure/azure-monitor/platform/alerts-activity-log
 
 **Hulp**: geavanceerde gegevens beveiliging inschakelen voor Azure SQL database en aanbevelingen volgen van Azure Security Center over het uitvoeren van beveiligings evaluaties op uw servers.
 
-Beveiligings evaluaties uitvoeren voor uw Azure SQL-data bases:
+Beveiligings evaluaties uitvoeren op Azure SQL Database:
 
 https://docs.microsoft.com/azure/sql-database/sql-vulnerability-assessment
 

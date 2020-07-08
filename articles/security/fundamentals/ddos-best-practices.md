@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/18/2018
 ms.author: terrylan
-ms.openlocfilehash: 87f1fcfa08ef2b7d2e4f72588eff8576c5ace146
-ms.sourcegitcommit: bf99428d2562a70f42b5a04021dde6ef26c3ec3a
+ms.openlocfilehash: 9d44c1da27a1440e105ce76436bc284a537503c7
+ms.sourcegitcommit: bcb962e74ee5302d0b9242b1ee006f769a94cfb8
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/23/2020
-ms.locfileid: "85254290"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86054437"
 ---
 # <a name="azure-ddos-protection---designing-resilient-solutions"></a>Azure DDoS Protection-flexibele oplossingen ontwerpen
 
@@ -30,7 +30,6 @@ Naast de core DDoS-beveiliging in het platform biedt [Azure DDoS Protection Stan
 
 ![De rol van Azure DDoS Protection bij het beveiligen van klanten en een virtueel netwerk van een aanvaller](./media/ddos-best-practices/image1.png)
 
-Zie de [Azure-beveiligings basislijn voor DDoS Protection](ddos-protection-security-baseline.md)voor beveiligings aanbevelingen met betrekking tot deze technologie.
 
 ## <a name="fundamental-best-practices"></a>Best practices voor de basis
 
@@ -269,7 +268,6 @@ Meer informatie over deze referentie architectuur kunt u vinden in de documentat
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* [Azure-beveiligings basislijn voor DDoS Protection](ddos-protection-security-baseline.md)
 * [Gedeelde verantwoordelijkheid in de cloud](shared-responsibility.md)
 * [Azure DDoS Protection product pagina](https://azure.microsoft.com/services/ddos-protection/)
 * [Documentatie over Azure DDoS Protection](/azure/virtual-network/ddos-protection-overview)

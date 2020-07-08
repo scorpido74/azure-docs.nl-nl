@@ -4,25 +4,29 @@ ms.service: app-service-web
 ms.topic: include
 ms.date: 02/27/2020
 ms.author: ccompy
-ms.openlocfilehash: 652d42d6e2d9e909c3a03bd82a3a36f91bc73807
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: ff54d60573fbc7b6694b8d02d1378869674c1e81
+ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80419565"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86050255"
 ---
-De functie is eenvoudig in te stellen, maar dit betekent niet dat uw ervaring geen probleem is. Als u problemen ondervindt met het verkrijgen van toegang tot uw gewenste eind punt, kunt u een aantal hulpprogram ma's gebruiken om de connectiviteit vanuit de app-console te testen. Er zijn twee consoles die u kunt gebruiken. De ene is de kudu-console en de andere is de console in de Azure Portal. Als u de kudu-console wilt bereiken vanuit uw app, gaat u naar **hulpprogram ma's** > **kudu**. U kunt de Kudo-console ook bereiken op [site naam]. scm. azurewebsites. net. Nadat de website is geladen, gaat u naar het tabblad **debug console** . Als u vanuit uw app naar de door Azure Portal gehoste console wilt gaan, gaat u naar de**console** **hulpprogram ma's** > .
+De functie is eenvoudig in te stellen, maar dit betekent niet dat uw ervaring geen probleem is. Als u problemen ondervindt met het verkrijgen van toegang tot uw gewenste eind punt, kunt u een aantal hulpprogram ma's gebruiken om de connectiviteit vanuit de app-console te testen. Er zijn twee consoles die u kunt gebruiken. De ene is de kudu-console en de andere is de console in de Azure Portal. Als u de kudu-console wilt bereiken vanuit uw app, gaat u naar **hulpprogram ma's**  >  **kudu**. U kunt de Kudo-console ook bereiken op [site naam]. scm. azurewebsites. net. Nadat de website is geladen, gaat u naar het tabblad **debug console** . Als u vanuit uw app naar de door Azure Portal gehoste console wilt gaan, gaat u naar de console **hulpprogram ma's**  >  **Console**.
 
 #### <a name="tools"></a>Hulpprogramma's
-De hulpprogram ma's **ping**, **nslookup**en **tracert** werken vanwege beveiligings beperkingen niet via de-console. Als u de void wilt vullen, worden er twee afzonderlijke hulpprogram ma's toegevoegd. We hebben een hulp programma met de naam **nameresolver. exe**toegevoegd om de DNS-functionaliteit te testen. De syntaxis is:
+De hulpprogram ma's **ping**, **nslookup**en **tracert** werken vanwege beveiligings beperkingen niet via de-console. Als u de void wilt vullen, worden er twee afzonderlijke hulpprogram ma's toegevoegd. We hebben een hulp programma toegevoegd met de naam **nameresolver.exe**om de DNS-functionaliteit te testen. De syntaxis is:
 
-    nameresolver.exe hostname [optional: DNS Server]
+```console
+nameresolver.exe hostname [optional: DNS Server]
+```
 
 U kunt nameresolver gebruiken om de hostnamen te controleren waarvan uw app afhankelijk is. Op deze manier kunt u testen of er iets mis is met uw DNS of dat u mogelijk geen toegang hebt tot uw DNS-server. U kunt de DNS-server zien die uw app gebruikt in de-console door te kijken naar de omgevings variabelen WEBSITE_DNS_SERVER en WEBSITE_DNS_ALT_SERVER.
 
 U kunt het volgende hulp programma gebruiken om te testen op TCP-connectiviteit met een combi natie van host en poort. Dit hulp programma heet **tcpping** en de syntaxis is:
 
-    tcpping.exe hostname [optional: port]
+```console
+tcpping.exe hostname [optional: port]
+```
 
 Het **tcpping** -hulp programma vertelt u of u een specifieke host en poort kunt bereiken. Het kan alleen succes weer geven als er een toepassing luistert op de combi natie van host en poort en er is netwerk toegang vanuit uw app naar de opgegeven host en poort.
 
@@ -62,7 +66,9 @@ Aanvullende stappen voor fout opsporing zijn onder andere:
 
 * Maak verbinding met een VM in uw virtuele netwerk en probeer uw bronhost: poort te bereiken. Als u wilt testen op TCP-toegang, gebruikt u de Power shell **-opdracht test-NetConnection**. De syntaxis is:
 
-      test-netconnection hostname [optional: -Port]
+```powershell
+test-netconnection hostname [optional: -Port]
+```
 
 * Een toepassing op een virtuele machine weer geven en de toegang tot die host en poort testen vanuit de-console vanuit uw app met behulp van **tcpping**.
 

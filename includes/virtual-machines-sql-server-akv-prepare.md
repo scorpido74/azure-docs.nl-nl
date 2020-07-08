@@ -13,12 +13,12 @@ ms.workload: iaas-sql-server
 ms.date: 04/30/2018
 ms.author: jroth
 ms.custom: include file
-ms.openlocfilehash: 2c7d312910c6d38c54b291da34bfb827246c7dad
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 66a3ecd82ab61f25c99fd1268d9ce7567b057d66
+ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79504302"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86050202"
 ---
 ## <a name="prepare-for-akv-integration"></a>Voorbereiden op Azure-integratie
 Als u Azure Key Vault-integratie wilt gebruiken om uw SQL Server-VM te configureren, zijn er verschillende vereisten: 
@@ -56,9 +56,11 @@ Registreer vervolgens een toepassing met AAD. Hiermee krijgt u een Service-Princ
 ### <a name="create-a-key-vault"></a><a id="createkeyvault"></a>Een sleutel kluis maken
 Als u Azure Key Vault wilt gebruiken om de sleutels op te slaan die u wilt gebruiken voor versleuteling in uw VM, moet u toegang hebben tot een sleutel kluis. Als u uw sleutel kluis nog niet hebt ingesteld, maakt u er een door de stappen te volgen in het artikel aan de slag [met Azure Key Vault](../articles/key-vault/key-vault-overview.md) . Voordat u deze stappen uitvoert, moet u tijdens deze installatie enige informatie verzamelen die u later nodig hebt wanneer u Azure Key Vault integratie op uw virtuele machine van SQL inschakelt.
 
-    New-AzKeyVault -VaultName 'ContosoKeyVault' -ResourceGroupName 'ContosoResourceGroup' -Location 'East Asia'
+```azurepowershell
+New-AzKeyVault -VaultName 'ContosoKeyVault' -ResourceGroupName 'ContosoResourceGroup' -Location 'East Asia'
+```
 
-Wanneer u de stap een sleutel kluis maken ziet, noteert u de eigenschap geretourneerde **vaultUri** , de URL van de sleutel kluis. In het voor beeld in deze stap, zoals hieronder weer gegeven, is de naam van de sleutel kluis ContosoKeyVault. Daarom zou de https://contosokeyvault.vault.azure.net/sleutel kluis-URL zijn.
+Wanneer u de stap een sleutel kluis maken ziet, noteert u de eigenschap geretourneerde **vaultUri** , de URL van de sleutel kluis. In het voor beeld in deze stap, zoals hieronder weer gegeven, is de naam van de sleutel kluis ContosoKeyVault. Daarom zou de sleutel kluis-URL zijn https://contosokeyvault.vault.azure.net/ .
 
 De sleutel kluis-URL wordt later toegewezen aan de para meter **$akvURL** in het Power shell-script om Azure Key Vault-integratie in te scha kelen.
 

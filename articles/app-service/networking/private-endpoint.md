@@ -1,20 +1,20 @@
 ---
-title: Privé verbinden met een web-app met behulp van een persoonlijk Azure-eind punt
+title: Privé verbinding maken met een Azure-web-app met behulp van een persoonlijk eind punt
 description: Privé verbinden met een web-app met behulp van een persoonlijk Azure-eind punt
 author: ericgre
 ms.assetid: 2dceac28-1ba6-4904-a15d-9e91d5ee162c
 ms.topic: article
-ms.date: 06/26/2020
+ms.date: 07/07/2020
 ms.author: ericg
 ms.service: app-service
 ms.workload: web
 ms.custom: fasttrack-edit, references_regions
-ms.openlocfilehash: 462de426a365a2aca4572dae6bff9261e4ee37f7
-ms.sourcegitcommit: 74ba70139781ed854d3ad898a9c65ef70c0ba99b
+ms.openlocfilehash: fdad2f7c2ce4f82529866b4235ebebab8da664d3
+ms.sourcegitcommit: bcb962e74ee5302d0b9242b1ee006f769a94cfb8
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/26/2020
-ms.locfileid: "85445471"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86054573"
 ---
 # <a name="using-private-endpoints-for-azure-web-app-preview"></a>Privé-eind punten gebruiken voor Azure-web-app (preview-versie)
 
@@ -108,8 +108,6 @@ Voor de kudu-console, of kudu REST API (implementatie met Azure DevOps self-host
 | mywebapp.privatelink.azurewebsites.net | A | PrivateEndpointIP | 
 | mywebapp.scm.privatelink.azurewebsites.net | A | PrivateEndpointIP | 
 
-> [!TIP]
-> Deze twee records worden automatisch ingevuld als u een privé-DNS-zone met de naam privatelink.azurewebsites.net hebt gekoppeld aan het VNet waar u het persoonlijke eind punt maakt.
 
 
 ## <a name="pricing"></a>Prijzen
@@ -126,8 +124,9 @@ De functie voor persoonlijke koppelingen en het persoonlijke eind punt worden re
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Zie [een persoonlijke verbinding maken met een web-app om een][howtoguide] persoonlijk eind punt voor uw web-app te implementeren via de portal
-
+- Zie [een persoonlijke verbinding met een web-app maken met de portal voor meer informatie over][howtoguide1] het implementeren van een persoonlijk eind punt voor uw web-app via de portal
+- Zie [een persoonlijke verbinding met een web-app maken met Azure CLI voor meer informatie over][howtoguide2] het implementeren van een persoonlijk eind punt voor uw web-app met behulp van Azure cli
+- Zie [een persoonlijke verbinding met een web-app maken met Power shell voor meer informatie over][howtoguide3] het implementeren van een persoonlijk eind punt voor uw web-app
 
 
 
@@ -141,4 +140,6 @@ Zie [een persoonlijke verbinding maken met een web-app om een][howtoguide] perso
 [dnsvalidation]: https://docs.microsoft.com/azure/app-service/app-service-web-tutorial-custom-domain
 [pllimitations]: https://docs.microsoft.com/azure/private-link/private-endpoint-overview#limitations
 [pricing]: https://azure.microsoft.com/pricing/details/private-link/
-[howtoguide]: https://docs.microsoft.com/azure/private-link/create-private-endpoint-webapp-portal
+[howtoguide1]: https://docs.microsoft.com/azure/private-link/create-private-endpoint-webapp-portal
+[howtoguide2]: https://docs.microsoft.com/azure/app-service/scripts/cli-deploy-privateendpoint
+[howtoguide3]: https://docs.microsoft.com/azure/app-service/scripts/powershell-deploy-private-endpoint
