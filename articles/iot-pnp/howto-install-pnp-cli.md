@@ -9,10 +9,9 @@ ms.service: iot-pnp
 services: iot-pnp
 ms.custom: mvc
 ms.openlocfilehash: 1ccb32996cd8f15805a810dd5b5985aeb5f87c26
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81770445"
 ---
 # <a name="install-and-use-the-azure-iot-extension-for-the-azure-cli"></a>De Azure IoT-extensie voor de Azure CLI installeren en gebruiken
@@ -147,7 +146,7 @@ az iot dt monitor-events --hub-name {YourIoTHubName} --device-id {YourDeviceID} 
 
 ### <a name="manage-interfaces-in-a-model-repository"></a>Interfaces in een model opslagplaats beheren
 
-De volgende opdrachten gebruiken de open bare IoT Plug en Play-model opslagplaats. Als u een bedrijfs model opslagplaats wilt gebruiken, `--login` voegt u het argument toe met uw model opslagplaats Connection String.
+De volgende opdrachten gebruiken de open bare IoT Plug en Play-model opslagplaats. Als u een bedrijfs model opslagplaats wilt gebruiken, voegt u het `--login` argument toe met uw model opslagplaats Connection String.
 
 Interfaces in de open bare IoT-Plug en Play model opslagplaats weer geven:
 
@@ -187,7 +186,7 @@ Alleen micro soft-partners kunnen interfaces publiceren naar de open bare model 
 
 ### <a name="manage-device-capability-models-in-a-model-repository"></a>Hulp modellen voor apparaten beheren in een model opslagplaats
 
-De volgende opdrachten gebruiken de open bare IoT Plug en Play-model opslagplaats. Als u een bedrijfs model opslagplaats wilt gebruiken, `--login` voegt u het argument toe met uw model opslagplaats Connection String.
+De volgende opdrachten gebruiken de open bare IoT Plug en Play-model opslagplaats. Als u een bedrijfs model opslagplaats wilt gebruiken, voegt u het `--login` argument toe met uw model opslagplaats Connection String.
 
 Geef een overzicht van de mogelijkheden van apparaten in de IoT Plug en Play Public model-opslag plaats:
 

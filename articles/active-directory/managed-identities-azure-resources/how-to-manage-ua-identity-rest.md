@@ -9,18 +9,17 @@ editor: ''
 ms.service: active-directory
 ms.subservice: msi
 ms.devlang: na
-ms.topic: conceptual
+ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 06/26/2018
 ms.author: markvi
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6a2a5df011cd074bbccc0c13570b2f49d902a0c3
-ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
-ms.translationtype: MT
+ms.openlocfilehash: 2c342359b015085804b127ef8c58aca8a4b13dcf
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/11/2020
-ms.locfileid: "84694311"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85608463"
 ---
 # <a name="create-list-or-delete-a-user-assigned-managed-identity-using-rest-api-calls"></a>Een door de gebruiker toegewezen beheerde identiteit maken, weer geven of verwijderen met REST API-aanroepen
 
@@ -60,7 +59,7 @@ s/<RESOURCE GROUP>/providers/Microsoft.ManagedIdentity/userAssignedIdentities/<U
 
 **Aanvraag headers**
 
-|Aanvraagheader  |Beschrijving  |
+|Aanvraagheader  |Description  |
 |---------|---------|
 |*Inhouds type*     | Vereist. Ingesteld op `application/json`.        |
 |*Autorisatie*     | Vereist. Ingesteld op een geldig `Bearer` toegangs token.        |
@@ -83,7 +82,7 @@ curl 'https://management.azure.com/subscriptions/<SUBSCRIPTION ID>/resourceGroup
 GET https://management.azure.com/subscriptions/<SUBSCRIPTION ID>/resourceGroups/<RESOURCE GROUP>/providers/Microsoft.ManagedIdentity/userAssignedIdentities?api-version=2015-08-31-preview HTTP/1.1
 ```
 
-|Aanvraagheader  |Beschrijving  |
+|Aanvraagheader  |Description  |
 |---------|---------|
 |*Inhouds type*     | Vereist. Ingesteld op `application/json`.        |
 |*Autorisatie*     | Vereist. Ingesteld op een geldig `Bearer` toegangs token.        |
@@ -103,7 +102,7 @@ s/<RESOURCE GROUP>/providers/Microsoft.ManagedIdentity/userAssignedIdentities/<U
 ```HTTP
 DELETE https://management.azure.com/subscriptions/80c696ff-5efa-4909-a64d-f1b616f423ca/resourceGroups/TestRG/providers/Microsoft.ManagedIdentity/userAssignedIdentities/<USER ASSIGNED IDENTITY NAME>?api-version=2015-08-31-preview HTTP/1.1
 ```
-|Aanvraagheader  |Beschrijving  |
+|Aanvraagheader  |Description  |
 |---------|---------|
 |*Inhouds type*     | Vereist. Ingesteld op `application/json`.        |
 |*Autorisatie*     | Vereist. Ingesteld op een geldig `Bearer` toegangs token.        |

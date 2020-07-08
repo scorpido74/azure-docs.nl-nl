@@ -4,13 +4,12 @@ description: Maak waarschuwingen via een programma waarmee u wordt gewaarschuwd 
 ms.topic: conceptual
 ms.date: 9/4/2018
 ms.openlocfilehash: 60ff5bdf2f4f0dab94c18fd7c751869c1893ad65
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81759015"
 ---
-# <a name="configure-resource-health-alerts-using-resource-manager-templates"></a>Resource Health-waarschuwingen configureren met behulp van Resource Manager-sjablonen
+# <a name="configure-resource-health-alerts-using-resource-manager-templates"></a>Resourcestatuswaarschuwingen configureren met Resource Manager-sjablonen
 
 In dit artikel wordt uitgelegd hoe u Resource Health waarschuwingen voor activiteiten Logboeken kunt maken via Azure Resource Manager sjablonen en Azure PowerShell.
 
@@ -40,7 +39,7 @@ Als u de instructies op deze pagina wilt volgen, moet u enkele dingen vooraf ins
 
         (Get-AzActionGroup -ResourceGroupName <resourceGroup> -Name <actionGroup>).Id
 
-3. Een resource manager-sjabloon maken en opslaan voor resource Health waarschuwingen `resourcehealthalert.json` als ([Zie de details hieronder](#resource-manager-template-options-for-resource-health-alerts))
+3. Een resource manager-sjabloon maken en opslaan voor Resource Health waarschuwingen als `resourcehealthalert.json` ([Zie de details hieronder](#resource-manager-template-options-for-resource-health-alerts))
 
 4. Een nieuwe Azure Resource Manager-implementatie met behulp van deze sjabloon maken
 
@@ -144,7 +143,7 @@ Resource Health waarschuwingen kunnen worden geconfigureerd voor het bewaken van
  * Niveau van de resource groep
  * Resource niveau
 
-De waarschuwings sjabloon is geconfigureerd op het abonnements niveau, maar als u uw waarschuwing zo wilt configureren dat u alleen over bepaalde resources of resources in een bepaalde resource groep hoeft te worden gewaarschuwd, hoeft u alleen `scopes` maar de sectie in de bovenstaande sjabloon te wijzigen.
+De waarschuwings sjabloon is geconfigureerd op het abonnements niveau, maar als u uw waarschuwing zo wilt configureren dat u alleen over bepaalde resources of resources in een bepaalde resource groep hoeft te worden gewaarschuwd, hoeft u alleen maar de `scopes` sectie in de bovenstaande sjabloon te wijzigen.
 
 Voor een bereik van een resource groeps niveau moet de sectie bereiken er als volgt uitzien:
 ```json
@@ -195,9 +194,9 @@ Waarschuwingen op het niveau van het abonnement of de resource groep kunnen vers
 Hier gebruiken we de `anyOf` wrapper om de resource status waarschuwing te laten overeenkomen met een van de voor waarden die we opgeven, waardoor er waarschuwingen kunnen worden gegeven die gericht zijn op specifieke resource typen.
 
 ### <a name="adjusting-the-resource-health-events-that-alert-you"></a>De Resource Health gebeurtenissen aanpassen waarmee u wordt gewaarschuwd
-Wanneer resources een status gebeurtenis ondergaan, kunnen ze een reeks fasen door lopen die de status van de status gebeurtenis `Active`:, `In Progress`, `Updated`en. `Resolved`
+Wanneer resources een status gebeurtenis ondergaan, kunnen ze een reeks fasen door lopen die de status van de status gebeurtenis: `Active` , `In Progress` , en `Updated` `Resolved` .
 
-U wilt mogelijk alleen een melding ontvangen wanneer een resource een slechte status krijgt, in welk geval u de waarschuwing zo wilt configureren dat er alleen een melding `status` wordt `Active`weer gegeven wanneer het is. Als u echter ook wilt worden gewaarschuwd voor de andere fasen, kunt u deze gegevens als volgt toevoegen:
+U wilt mogelijk alleen een melding ontvangen wanneer een resource een slechte status krijgt, in welk geval u de waarschuwing zo wilt configureren dat er alleen een melding wordt weer gegeven wanneer het `status` is `Active` . Als u echter ook wilt worden gewaarschuwd voor de andere fasen, kunt u deze gegevens als volgt toevoegen:
 
 ```json
 "condition": {
@@ -445,4 +444,4 @@ Meer informatie over Resource Health:
 
 Service Health-waarschuwingen maken:
 -  [Waarschuwingen voor Service Health configureren](../azure-monitor/platform/alerts-activity-log-service-notifications.md) 
--  [Gebeurtenis schema voor Azure-activiteiten logboek](../azure-monitor/platform/activity-log-schema.md)
+-  [Azure-gebeurtenisschema in het activiteitenlogboek](../azure-monitor/platform/activity-log-schema.md)

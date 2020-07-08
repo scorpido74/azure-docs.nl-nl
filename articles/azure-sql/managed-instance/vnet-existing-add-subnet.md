@@ -13,13 +13,12 @@ ms.author: srbozovi
 ms.reviewer: sstein, bonova, carlrab
 ms.date: 03/17/2020
 ms.openlocfilehash: 5d91fc0d5dd51ea5ef766f23519f38202b24a337
-ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/11/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84711303"
 ---
-# <a name="configure-an-existing-virtual-network-for-azure-sql-managed-instance"></a>Een bestaand virtueel netwerk configureren voor Azure SQL Managed instance
+# <a name="configure-an-existing-virtual-network-for-azure-sql-managed-instance"></a>Een bestaand virtueel netwerk configureren voor Azure SQL Managed Instance
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
 
 Azure SQL Managed instance moet worden geïmplementeerd in een [virtueel](../../virtual-network/virtual-networks-overview.md) Azure-netwerk en het subnet dat uitsluitend voor beheerde instanties is toegewezen. U kunt het bestaande virtuele netwerk en subnet gebruiken als ze zijn geconfigureerd volgens de vereisten voor het [virtuele netwerk van SQL Managed instance](connectivity-architecture-overview.md#network-requirements).

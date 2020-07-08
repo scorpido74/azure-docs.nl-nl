@@ -7,16 +7,15 @@ ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 10/28/2019
 ms.custom: seodec18
-ms.openlocfilehash: 53ebf8adb99362b5aaf27676bbd50fb8b525f526
-ms.sourcegitcommit: 309a9d26f94ab775673fd4c9a0ffc6caa571f598
-ms.translationtype: MT
+ms.openlocfilehash: 4f9d117ccc763744411bfe24163ed955532e8e56
+ms.sourcegitcommit: dee7b84104741ddf74b660c3c0a291adf11ed349
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/09/2020
-ms.locfileid: "82994488"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85921859"
 ---
 # <a name="develop-net-standard-user-defined-functions-for-azure-stream-analytics-jobs-preview"></a>Door de gebruiker gedefinieerde .NET Standard-functies ontwikkelen voor Azure Stream Analytics-taken (preview-versie)
 
-Azure Stream Analytics biedt een SQL-achtige query taal voor het uitvoeren van trans formaties en berekeningen op basis van gegevens stromen van gebeurtenissen. Er zijn veel ingebouwde functies, maar voor sommige complexe scenario's is extra flexibiliteit vereist. Met .NET Standard door de gebruiker gedefinieerde functies (UDF) kunt u uw eigen functies aanroepen die zijn geschreven in een .NET Standard-taal (C#, F #, etc.) om de Stream Analytics query taal uit te breiden. Met UDFs kunt u complexe wiskundige berekeningen uitvoeren, aangepaste ML-modellen importeren met behulp van ML.NET en aangepaste toerekenings logica voor ontbrekende gegevens gebruiken. De UDF-functie voor Stream Analytics-taken is momenteel beschikbaar als preview-versie en mag niet worden gebruikt in werk belastingen voor de productie.
+Azure Stream Analytics biedt een SQL-achtige query taal voor het uitvoeren van trans formaties en berekeningen op basis van gegevens stromen van gebeurtenissen. Er zijn veel ingebouwde functies, maar voor sommige complexe scenario's is extra flexibiliteit vereist. Met .NET Standard door de gebruiker gedefinieerde functies (UDF) kunt u uw eigen functies aanroepen die zijn geschreven in een .NET Standard-taal (C#, F #, etc.) om de Stream Analytics query taal uit te breiden. Met UDFs kunt u complexe wiskundige berekeningen uitvoeren, aangepaste ML-modellen importeren met behulp van ML.NET en aangepaste toerekenings logica voor ontbrekende gegevens gebruiken. De UDF-functie voor Stream Analytics-taken is momenteel in de previewfase en mag niet worden gebruikt voor productieworkloads.
 
 Door de gebruiker gedefinieerde .NET-functie voor Cloud taken is beschikbaar in:
 * VS - west-centraal
@@ -39,7 +38,7 @@ Er zijn drie manieren waarop UDF's kunnen worden geïmplementeerd:
 
 ## <a name="package-path"></a>Pad naar pakket
 
-De indeling van een UDF-pakket heeft het `/UserCustomCode/CLR/*`pad. Dynamic Link Libraries (Dll's) en bronnen worden gekopieerd in de `/UserCustomCode/CLR/*` map, waarmee gebruikers-dll's van systeem-en Azure stream Analytics-dll's kunnen worden geïsoleerd. Het pad naar het pakket wordt gebruikt voor alle functies, ongeacht de methode die wordt gebruikt om deze te gebruiken.
+De indeling van een UDF-pakket heeft het pad `/UserCustomCode/CLR/*` . Dynamic Link Libraries (Dll's) en bronnen worden gekopieerd in de `/UserCustomCode/CLR/*` map, waarmee gebruikers-dll's van systeem-en Azure stream Analytics-dll's kunnen worden geïsoleerd. Het pad naar het pakket wordt gebruikt voor alle functies, ongeacht de methode die wordt gebruikt om deze te gebruiken.
 
 ## <a name="supported-types-and-mapping"></a>Ondersteunde typen en toewijzing
 Voor Azure Stream Analytics waarden die in C# moeten worden gebruikt, moeten ze worden gemarshald van de ene omgeving naar de andere. Marshaling gebeurt voor alle invoer parameters van een UDF. Elk type Azure Stream Analytics heeft een overeenkomend type in C# dat wordt weer gegeven in de onderstaande tabel:
@@ -50,7 +49,7 @@ Voor Azure Stream Analytics waarden die in C# moeten worden gebruikt, moeten ze 
 |float | double |
 |nvarchar (max) | tekenreeks |
 |datum/tijd | DateTime |
-|Record | Woordenboek\<teken reeks, object> |
+|Record | Woordenlijst\<string, object> |
 |Matrix | Object [] |
 
 Hetzelfde geldt wanneer gegevens moeten worden gemarshald van C# naar Azure Stream Analytics, wat gebeurt bij de uitvoer waarde van een UDF. In de volgende tabel ziet u welke typen worden ondersteund:
@@ -64,7 +63,7 @@ Hetzelfde geldt wanneer gegevens moeten worden gemarshald van C# naar Azure Stre
 |bouw  |  Record   |
 |object  |  Record   |
 |Object []  |  Matrix   |
-|Woordenboek\<teken reeks, object>  |  Record   |
+|Woordenlijst\<string, object>  |  Record   |
 
 ## <a name="codebehind"></a>CodeBehind
 U kunt door de gebruiker gedefinieerde functies schrijven in het **script. asql** CodeBehind. Visual Studio Tools compileert het CodeBehind-bestand automatisch in een assembly-bestand. De assembly's worden verpakt als een zip-bestand en geüpload naar uw opslag account wanneer u uw taak naar Azure verzendt. U kunt meer informatie over het schrijven van een C# UDF met behulp van CodeBehind door de zelf studie [C# UDF voor stream Analytics Edge-taken](stream-analytics-edge-csharp-udf.md) te volgen. 
@@ -79,7 +78,7 @@ Verwijzen naar een lokaal project:
 3. Compileer het nieuwe project. Met de hulpprogram ma's worden alle artefacten in de map bin verpakt naar een zip-bestand en wordt het zip-bestand geüpload naar het opslag account. Voor externe verwijzingen gebruikt u assembly-verwijzing in plaats van het NuGet-pakket.
 4. Verwijs naar de nieuwe klasse in uw Azure Stream Analytics-project.
 5. Voeg een nieuwe functie toe aan uw Azure Stream Analytics-project.
-6. Configureer het pad van de assembly in het taak `JobConfig.json`configuratie bestand,. Stel het pad van de assembly in op **lokale project verwijzing of CodeBehind**.
+6. Configureer het pad van de assembly in het taak configuratie bestand, `JobConfig.json` . Stel het pad van de assembly in op **lokale project verwijzing of CodeBehind**.
 7. Bouw zowel het functie project als het Azure Stream Analytics project opnieuw op.  
 
 ### <a name="example"></a>Voorbeeld
@@ -108,7 +107,7 @@ In dit voor beeld is **UDFTest** een C#-klassen bibliotheek project en **ASAUDFD
 
    ![Nieuw item toevoegen aan functies in Azure Stream Analytics EDGE-oplossing](./media/stream-analytics-edge-csharp-udf-methods/stream-analytics-edge-udf-add-csharp-function.png)
 
-6. Voeg een C#-functie **SquareFunction. json** toe aan uw Azure stream Analytics-project.
+6. Voeg een C#-functie toe **SquareFunction.js** aan uw Azure stream Analytics-project.
 
    ![Selecteer de functie CSharp van Stream Analytics Edge-items in Visual Studio](./media/stream-analytics-edge-csharp-udf-methods/stream-analytics-edge-udf-add-csharp-function-2.png)
 
@@ -122,29 +121,29 @@ In dit voor beeld is **UDFTest** een C#-klassen bibliotheek project en **ASAUDFD
 
 ## <a name="existing-packages"></a>Bestaande pakketten
 
-U kunt in elke wille keurige IDE uw keuze maken over .NET-standaard-UDFs en deze oproepen vanuit uw Azure Stream Analytics-query. Compileer eerst uw code en verpak alle Dll's. De indeling van het pakket heeft het pad `/UserCustomCode/CLR/*`. Upload `UserCustomCode.zip` vervolgens naar de hoofdmap van de container in uw Azure Storage-account.
+U kunt in elke wille keurige IDE uw keuze maken over .NET-standaard-UDFs en deze oproepen vanuit uw Azure Stream Analytics-query. Compileer eerst uw code en verpak alle Dll's. De indeling van het pakket heeft het pad `/UserCustomCode/CLR/*` . Upload vervolgens `UserCustomCode.zip` naar de hoofdmap van de container in uw Azure Storage-account.
 
 Zodra de ZIP-pakketten van de assembly naar uw Azure Storage-account zijn geüpload, kunt u de functies in Azure Stream Analytics query's gebruiken. U hoeft alleen de opslag gegevens in de configuratie van de Stream Analytics-taak op te slaan. U kunt de functie niet lokaal met deze optie testen omdat Visual Studio Tools uw pakket niet kan downloaden. Het pad naar het pakket wordt rechtstreeks naar de service geparseerd. 
 
-Het pad van de assembly configureren in het taak configuratie `JobConfig.json`bestand:
+Het pad van de assembly configureren in het taak configuratie bestand `JobConfig.json` :
 
 Vouw de sectie **Configuratie van de door de gebruiker gedefinieerde code** uit en vul de configuratie in met de volgende voorgestelde waarden:
 
    |**Instelling**|**Voorgestelde waarde**|
    |-------|---------------|
-   |Resource voor algemene opslag instellingen|Kies gegevensbron van het huidige account|
-   |Abonnement voor globale opslag instellingen| < uw abonnement >|
-   |Opslag account voor algemene opslag instellingen| < uw opslag account >|
-   |Resource voor aangepaste code opslag instellingen|Kies gegevensbron van het huidige account|
-   |Opslag account voor aangepaste code opslag|< uw opslag account >|
-   |Container voor aangepaste code opslag|< uw opslag container >|
+   |Resource globale opslaginstellingen|Kies gegevensbron van het huidige account|
+   |Abonnement voor globale opslaginstellingen| < uw abonnement >|
+   |Globale opslaginstellingen opslagaccount| < uw opslagaccount >|
+   |Resource aangepaste code opslaginstellingen|Kies gegevensbron van het huidige account|
+   |Aangepaste code opslaginstellingen opslagaccount|< uw opslagaccount >|
+   |Container aangepaste code opslaginstellingen|< uw opslagcontainer >|
    |Assembly bron aangepaste code|Bestaande assembly pakketten uit de Cloud|
-   |Assembly bron aangepaste code|UserCustomCode. zip|
+   |Assembly bron aangepaste code|UserCustomCode.zip|
 
 ## <a name="user-logging"></a>Gebruikers logboek registratie
 Met het mechanisme voor logboek registratie kunt u aangepaste gegevens vastleggen terwijl een taak wordt uitgevoerd. U kunt logboek gegevens gebruiken om fouten op te sporen of de juistheid van de aangepaste code in realtime te evalueren.
 
-Met `StreamingContext` de-klasse kunt u Diagnostische gegevens `StreamingDiagnostics.WriteError` publiceren met behulp van de functie. De volgende code toont de interface die wordt weer gegeven door Azure Stream Analytics.
+Met de- `StreamingContext` klasse kunt u Diagnostische gegevens publiceren met behulp van de `StreamingDiagnostics.WriteError` functie. De volgende code toont de interface die wordt weer gegeven door Azure Stream Analytics.
 
 ```csharp
 public abstract class StreamingContext
@@ -158,7 +157,7 @@ public abstract class StreamingDiagnostics
 }
 ```
 
-`StreamingContext`wordt door gegeven als invoer parameter voor de UDF-methode en kan worden gebruikt in de UDF voor het publiceren van aangepaste logboek gegevens. In het onderstaande voor beeld `MyUdfMethod` definieert u een **gegevens** invoer, die wordt opgegeven door de query en een **context** invoer als de `StreamingContext`, die wordt opgegeven door de runtime-engine. 
+`StreamingContext`wordt door gegeven als invoer parameter voor de UDF-methode en kan worden gebruikt in de UDF voor het publiceren van aangepaste logboek gegevens. In het onderstaande voor beeld `MyUdfMethod` definieert u een **gegevens** invoer, die wordt opgegeven door de query en een **context** invoer als de `StreamingContext` , die wordt opgegeven door de runtime-engine. 
 
 ```csharp
 public static long MyUdfMethod(long data, StreamingContext context)
@@ -186,6 +185,10 @@ De UDF-preview heeft momenteel de volgende beperkingen:
 * De Azure Portal query-editor toont een fout bij het gebruik van .NET Standard UDF in de portal. 
 
 * Omdat de aangepaste code aandelen context met Azure Stream Analytics-engine, kan aangepaste code niet verwijzen naar iets met een conflicterende naam ruimte/dll_name met Azure Stream Analytics code. U kunt bijvoorbeeld niet verwijzen naar *Newton Soft JSON*.
+
+* Ondersteunende bestanden die in het project zijn opgenomen, worden gekopieerd naar het door de gebruiker aangepaste code zip-bestand dat wordt gebruikt wanneer u de taak naar de Cloud publiceert. Alle bestanden in submappen worden rechtstreeks gekopieerd naar de hoofdmap van de map met aangepaste gebruikers code in de Cloud wanneer deze is uitgepakt. De zip wordt ' afgevlakt ' bij het decomprimeren.
+
+* Aangepaste code van gebruiker biedt geen ondersteuning voor lege mappen. Voeg geen lege mappen toe aan de ondersteunende bestanden in het project.
 
 ## <a name="next-steps"></a>Volgende stappen
 

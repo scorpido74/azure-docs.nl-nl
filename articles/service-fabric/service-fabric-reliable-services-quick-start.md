@@ -4,12 +4,11 @@ description: Inleiding tot het maken van een Microsoft Azure Service Fabric-toep
 ms.topic: conceptual
 ms.date: 07/10/2019
 ms.custom: sfrev
-ms.openlocfilehash: 15dd9bf6ac19bdac7bc8b50fc70e0b3b0a4e9a83
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: 0a8d5a05f922cd01067abbc3e98320a32cd9d256
+ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77083753"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86038018"
 ---
 # <a name="get-started-with-reliable-services"></a>Aan de slag met Reliable Services
 
@@ -23,14 +22,14 @@ Een Azure Service Fabric-toepassing bevat een of meer services waarop de code wo
 
 Om aan de slag te gaan met Reliable Services hoeft u slechts enkele basis concepten te begrijpen:
 
-* **Service type**: dit is de service-implementatie. Het wordt gedefinieerd door de klasse die u schrijft, `StatelessService` en alle andere code of afhankelijkheden die erin worden gebruikt, samen met een naam en versie nummer.
+* **Service type**: dit is de service-implementatie. Het wordt gedefinieerd door de klasse die u schrijft `StatelessService` , en alle andere code of afhankelijkheden die erin worden gebruikt, samen met een naam en versie nummer.
 * **Benoemd service-exemplaar**: als u uw service wilt uitvoeren, maakt u benoemde instanties van uw service type, net zoals u object instanties van een klassetype maakt. Een service-exemplaar heeft een naam in de vorm van een URI met behulp van de ' Fabric:/' schema, zoals ' Fabric:/Mijntoep/MyService '.
 * **Servicehost: de**benoemde service-exemplaren die u maakt, moeten binnen een hostproces worden uitgevoerd. De servicehost is slechts een proces waarbij exemplaren van uw service kunnen worden uitgevoerd.
 * **Service registratie**: registratie brengt alles samen. Het Service type moet worden geregistreerd bij de Service Fabric runtime in een servicehost om Service Fabric toe te staan dat er exemplaren van worden gemaakt om te worden uitgevoerd.  
 
 ## <a name="create-a-stateless-service"></a>Een stateless service maken
 
-Een stateless service is een type service dat momenteel de norm is in Cloud toepassingen. Het wordt beschouwd als stateless omdat de service zelf geen gegevens bevat die op betrouw bare wijze moeten worden opgeslagen of Maxi maal beschikbaar moeten worden gemaakt. Als een exemplaar van een stateless service afgesloten, gaat de interne status verloren. In dit type service moet de status worden opgeslagen in een externe opslag, zoals Azure-tabellen of een SQL database, zodat deze Maxi maal beschikbaar en betrouwbaar kan worden gemaakt.
+Een stateless service is een type service dat momenteel de norm is in Cloud toepassingen. Het wordt beschouwd als stateless omdat de service zelf geen gegevens bevat die op betrouw bare wijze moeten worden opgeslagen of Maxi maal beschikbaar moeten worden gemaakt. Als een exemplaar van een stateless service afgesloten, gaat de interne status verloren. In dit type service moet de status persistent worden gemaakt voor een externe opslag, zoals Azure Tables of SQL Database, om deze Maxi maal beschikbaar en betrouwbaar te maken.
 
 Start Visual Studio 2017 of Visual Studio 2019 als beheerder en maak een nieuw Service Fabric toepassings project met de naam *HelloWorld*:
 
@@ -67,7 +66,7 @@ protected override IEnumerable<ServiceInstanceListener> CreateServiceInstanceLis
 }
 ```
 
-In deze zelf studie gaat u de focus op `RunAsync()` de methode van het toegangs punt. Hier kunt u direct beginnen met het uitvoeren van uw code.
+In deze zelf studie gaat u de focus op de methode van het `RunAsync()` toegangs punt. Hier kunt u direct beginnen met het uitvoeren van uw code.
 De project sjabloon bevat een voorbeeld implementatie van `RunAsync()` waarmee een aantal rollen wordt verhoogd.
 
 > [!NOTE]
@@ -105,7 +104,7 @@ Deze indeling wordt beheerd door het systeem om ervoor te zorgen dat uw service 
 
 `RunAsync()`moet synchroon niet worden geblokkeerd. Uw implementatie van RunAsync moet een taak retour neren of wachten op een langlopende of blokkerende bewerking zodat de runtime kan door gaan. In de `while(true)` lus in het vorige voor beeld wordt een taak geretourneerd `await Task.Delay()` gebruikt. Als uw werk belasting synchroon moet worden geblokkeerd, moet u een nieuwe taak plannen `Task.Run()` in uw `RunAsync` implementatie.
 
-Het annuleren van uw werk belasting is een gezamenlijke inspanning die wordt georganiseerd door het door gegeven annulerings token. Het systeem wacht totdat de taak is voltooid (door voltooiing, annulering of fout) voordat deze wordt verplaatst. Het is belang rijk om het annulerings token te voldoen, werk te volt `RunAsync()` ooien en zo snel mogelijk af te sluiten wanneer de systeem aanvragen worden geannuleerd.
+Het annuleren van uw werk belasting is een gezamenlijke inspanning die wordt georganiseerd door het door gegeven annulerings token. Het systeem wacht totdat de taak is voltooid (door voltooiing, annulering of fout) voordat deze wordt verplaatst. Het is belang rijk om het annulerings token te voldoen, werk te volt ooien en `RunAsync()` zo snel mogelijk af te sluiten wanneer de systeem aanvragen worden geannuleerd.
 
 In dit stateless service voor beeld wordt het aantal opgeslagen in een lokale variabele. Maar omdat dit een stateless service is, bestaat de opgeslagen waarde alleen voor de huidige levens duur van het service-exemplaar. Wanneer de service wordt verplaatst of opnieuw wordt gestart, gaat de waarde verloren.
 
@@ -161,7 +160,7 @@ protected override async Task RunAsync(CancellationToken cancellationToken)
 
 ### <a name="runasync"></a>RunAsync
 
-`RunAsync()`werkt op dezelfde manier als stateful en stateless Services. In een stateful service voert het platform echter namens u extra werkzaamheden uit voordat het wordt uitgevoerd `RunAsync()`. Dit werk kan erop kunnen toezien dat de betrouw bare status Manager en de betrouw bare verzamelingen klaar zijn voor gebruik.
+`RunAsync()`werkt op dezelfde manier als stateful en stateless Services. In een stateful service voert het platform echter namens u extra werkzaamheden uit voordat het wordt uitgevoerd `RunAsync()` . Dit werk kan erop kunnen toezien dat de betrouw bare status Manager en de betrouw bare verzamelingen klaar zijn voor gebruik.
 
 ### <a name="reliable-collections-and-the-reliable-state-manager"></a>Betrouw bare verzamelingen en de betrouw bare status Manager
 
@@ -193,7 +192,7 @@ using (ITransaction tx = this.StateManager.CreateTransaction())
 }
 ```
 
-Voor betrouw bare verzamelingen gelden veel dezelfde bewerkingen als `System.Collections.Generic` voor `System.Collections.Concurrent` hun en tegen Hangers, met uitzonde ring van language integrated query (LINQ). Bewerkingen voor betrouw bare verzamelingen zijn asynchroon. Dit is omdat schrijf bewerkingen met betrouw bare verzamelingen I/O-bewerkingen uitvoeren om gegevens te repliceren en te persistent maken op schijf.
+Voor betrouw bare verzamelingen gelden veel dezelfde bewerkingen `System.Collections.Generic` als voor hun en `System.Collections.Concurrent` tegen Hangers, met uitzonde ring van language integrated query (LINQ). Bewerkingen voor betrouw bare verzamelingen zijn asynchroon. Dit is omdat schrijf bewerkingen met betrouw bare verzamelingen I/O-bewerkingen uitvoeren om gegevens te repliceren en te persistent maken op schijf.
 
 Betrouw bare verzamelings bewerkingen zijn *Transactioneel*, zodat u de status consistent kunt blijven tussen meerdere betrouw bare verzamelingen en bewerkingen. U kunt bijvoorbeeld een werk item uit een betrouw bare wachtrij verwijderen, een bewerking hierop uitvoeren en het resultaat opslaan in een betrouw bare woorden lijst, allemaal binnen één trans actie. Dit wordt behandeld als een Atomic-bewerking en garandeert dat de gehele bewerking slaagt of dat de hele bewerking wordt teruggedraaid. Als er een fout optreedt nadat u het item in de wachtrij hebt geplaatst, maar voordat u het resultaat opslaat, wordt de hele trans actie teruggedraaid en blijft het item in de wachtrij voor verwerking.
 

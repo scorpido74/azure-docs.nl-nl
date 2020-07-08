@@ -9,7 +9,7 @@ editor: ''
 ms.assetid: 2c3db9a8-50fa-475a-97d8-f31082af6593
 ms.service: active-directory
 ms.devlang: na
-ms.topic: conceptual
+ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.subservice: report-monitor
@@ -17,12 +17,11 @@ ms.date: 04/18/2019
 ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7d0ef55f6f5117ffa77052118155afea716125a4
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: 6a0c68bf11d81925c1b9c3e408434a6f7b1b2694
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81639729"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85608990"
 ---
 # <a name="integrate-azure-ad-logs-with-azure-monitor-logs"></a>Azure AD-logboeken integreren met Azure Monitor-logboeken
 
@@ -58,7 +57,7 @@ U hebt het volgende nodig om deze functie te gebruiken:
 * Een Azure-abonnement. Als u nog geen Azure-abonnement hebt, kunt u zich registreren voor een [gratis proefversie](https://azure.microsoft.com/free/).
 * Een Azure AD-tenant.
 * Een gebruiker die een *globale beheerder* of *beveiligingsbeheerder* voor de Azure-tenant is.
-* Een Log Analytics-werk ruimte in uw Azure-abonnement. Meer informatie over het [maken van een log Analytics-werk ruimte](https://docs.microsoft.com/azure/log-analytics/log-analytics-quick-create-workspace).
+* Een Log Analytics-werk ruimte in uw Azure-abonnement. Leer [een Log Analytics-werkruimte maken](https://docs.microsoft.com/azure/log-analytics/log-analytics-quick-create-workspace).
 
 ## <a name="licensing-requirements"></a>Licentievereisten
 
@@ -66,9 +65,9 @@ Voor het gebruik van deze functie is een Azure AD Premium P1-of P2-licentie vere
 
 ## <a name="send-logs-to-azure-monitor"></a>Logboeken naar Azure Monitor verzenden
 
-1. Meld u aan bij de [Azure-portal](https://portal.azure.com). 
+1. Meld u aan bij [Azure Portal](https://portal.azure.com). 
 
-2. Selecteer **Azure Active Directory** > diagnostische**instellingen** -> Azure Active Directory diagnostische**instelling toevoegen**. U kunt ook **export instellingen** selecteren op de pagina **controle logboeken** of **aanmeldingen** om naar de configuratie pagina Diagnostische instellingen te gaan.  
+2. Selecteer **Azure Active Directory**  >  Diagnostische**instellingen Azure Active Directory diagnostische**  ->  **instelling toevoegen**. U kunt ook **export instellingen** selecteren op de pagina **controle logboeken** of **aanmeldingen** om naar de configuratie pagina Diagnostische instellingen te gaan.  
     
 3. Schakel in het menu **Diagnostische instellingen** het selectie vakje **verzenden naar log Analytics werk ruimte** in en selecteer vervolgens **configureren**.
 

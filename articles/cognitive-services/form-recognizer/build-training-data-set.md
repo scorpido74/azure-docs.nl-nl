@@ -9,12 +9,11 @@ ms.subservice: forms-recognizer
 ms.topic: conceptual
 ms.date: 06/19/2019
 ms.author: pafarley
-ms.openlocfilehash: ffa09293ad2ff02e104ce285b6b0aaca7d4744a2
-ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
-ms.translationtype: MT
+ms.openlocfilehash: c6780d952b9ce6ea58fc6c8a2509a4526add7149
+ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/23/2020
-ms.locfileid: "85212663"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86028257"
 ---
 # <a name="build-a-training-data-set-for-a-custom-model"></a>Een trainings gegevensverzameling voor een aangepast model bouwen
 
@@ -26,7 +25,7 @@ Als u hand matig gelabelde trainings gegevens wilt gebruiken, moet u beginnen me
 
 ## <a name="training-data-tips"></a>Tips voor trainings gegevens
 
-Het is belang rijk dat u een gegevens verzameling gebruikt die is geoptimaliseerd voor training. Gebruik de volgende tips om ervoor te zorgen dat u de beste resultaten krijgt van de bewerking [aangepast model van Train](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-previewoperations/TrainCustomModelAsync) :
+Het is belang rijk dat u een gegevens verzameling gebruikt die is geoptimaliseerd voor training. Gebruik de volgende tips om ervoor te zorgen dat u de beste resultaten krijgt van de bewerking [aangepast model van Train](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2/operations/TrainCustomModelAsync) :
 
 * Gebruik zo mogelijk PDF-documenten op basis van tekst in plaats van op afbeeldingen gebaseerde documenten. Gescande Pdf's worden behandeld als installatie kopieën.
 * Voor ingevulde formulieren gebruikt u voor beelden waarvoor alle velden zijn ingevuld.
@@ -48,7 +47,7 @@ Als u hand matig gelabelde gegevens wilt gebruiken, moet u ook de *.labels.js* u
 
 ### <a name="organize-your-data-in-subfolders-optional"></a>Organiseer uw gegevens in submappen (optioneel)
 
-Standaard worden alleen formulier documenten gebruikt die zich [in de hoofdmap](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-previewoperations/TrainCustomModelAsync) van uw opslag container bevinden. U kunt echter met gegevens in submappen trainen als u deze in de API-aanroep opgeeft. Normaal gesp roken heeft de hoofd tekst van de [trein aangepaste model](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-previewoperations/TrainCustomModelAsync) aanroep de volgende indeling, waarbij `<SAS URL>` de URL van de gedeelde Access-hand tekening van de container is:
+Standaard worden alleen formulier documenten gebruikt die zich [in de hoofdmap](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2/operations/TrainCustomModelAsync) van uw opslag container bevinden. U kunt echter met gegevens in submappen trainen als u deze in de API-aanroep opgeeft. Normaal gesp roken heeft de hoofd tekst van de [trein aangepaste model](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2/operations/TrainCustomModelAsync) aanroep de volgende indeling, waarbij `<SAS URL>` de URL van de gedeelde Access-hand tekening van de container is:
 
 ```json
 {

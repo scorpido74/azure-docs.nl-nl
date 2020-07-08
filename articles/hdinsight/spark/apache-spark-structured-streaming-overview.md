@@ -8,12 +8,11 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 12/24/2019
-ms.openlocfilehash: 19cfd5d8ed4100048c270fb41e5e54a920c61516
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: 9e29d91aa3b146a8aacdccec01b67506d5e45bb3
+ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75548833"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86037916"
 ---
 # <a name="overview-of-apache-spark-structured-streaming"></a>Overzicht van Apache Spark Structured streaming
 
@@ -62,53 +61,65 @@ Niet alle query's die gebruikmaken van de volledige modus, zorgen ervoor dat de 
 
 Met een eenvoudige voorbeeld query kunt u de Tempe ratuur-aflezingen per uur-lang Windows samenvatten. In dit geval worden de gegevens opgeslagen in JSON-bestanden in Azure Storage (gekoppeld als de standaard opslag voor het HDInsight-cluster):
 
-    {"time":1469501107,"temp":"95"}
-    {"time":1469501147,"temp":"95"}
-    {"time":1469501202,"temp":"95"}
-    {"time":1469501219,"temp":"95"}
-    {"time":1469501225,"temp":"95"}
+```json
+{"time":1469501107,"temp":"95"}
+{"time":1469501147,"temp":"95"}
+{"time":1469501202,"temp":"95"}
+{"time":1469501219,"temp":"95"}
+{"time":1469501225,"temp":"95"}
+```
 
-Deze JSON-bestanden worden opgeslagen in `temps` de submap onder de container van het HDInsight-cluster.
+Deze JSON-bestanden worden opgeslagen in de `temps` submap onder de container van het HDInsight-cluster.
 
 ### <a name="define-the-input-source"></a>De invoer bron definiëren
 
 Configureer eerst een data frame die de bron van de gegevens beschrijft en alle instellingen die nodig zijn voor die bron. In dit voor beeld wordt van de JSON-bestanden in Azure Storage getekend en wordt er op Lees tijden een schema toegepast op het bestand.
 
-    import org.apache.spark.sql.types._
-    import org.apache.spark.sql.functions._
+```sql
+import org.apache.spark.sql.types._
+import org.apache.spark.sql.functions._
 
-    //Cluster-local path to the folder containing the JSON files
-    val inputPath = "/temps/" 
+//Cluster-local path to the folder containing the JSON files
+val inputPath = "/temps/" 
 
-    //Define the schema of the JSON files as having the "time" of type TimeStamp and the "temp" field of type String
-    val jsonSchema = new StructType().add("time", TimestampType).add("temp", StringType)
+//Define the schema of the JSON files as having the "time" of type TimeStamp and the "temp" field of type String
+val jsonSchema = new StructType().add("time", TimestampType).add("temp", StringType)
 
-    //Create a Streaming DataFrame by calling readStream and configuring it with the schema and path
-    val streamingInputDF = spark.readStream.schema(jsonSchema).json(inputPath) 
+//Create a Streaming DataFrame by calling readStream and configuring it with the schema and path
+val streamingInputDF = spark.readStream.schema(jsonSchema).json(inputPath)
+``` 
 
 #### <a name="apply-the-query"></a>De query Toep assen
 
 Pas vervolgens een query toe die de gewenste bewerkingen voor de streaming data frame bevat. In dit geval worden alle rijen in één uur in Windows gegroepeerd en worden de minimale, gemiddelde en maximum temperaturen in het venster van 1 uur berekend.
 
-    val streamingAggDF = streamingInputDF.groupBy(window($"time", "1 hour")).agg(min($"temp"), avg($"temp"), max($"temp"))
+```sql
+val streamingAggDF = streamingInputDF.groupBy(window($"time", "1 hour")).agg(min($"temp"), avg($"temp"), max($"temp"))
+```
 
 ### <a name="define-the-output-sink"></a>De uitvoer-Sink definiëren
 
-Definieer vervolgens de bestemming voor de rijen die worden toegevoegd aan de resultaten tabel binnen elk trigger interval. In dit voor beeld worden alleen alle rijen uitgevoerd naar een in- `temps` Memory tabel die u later kunt opvragen met SparkSQL. Volledige uitvoer modus zorgt ervoor dat alle rijen voor alle vensters elke keer worden uitgevoerd.
+Definieer vervolgens de bestemming voor de rijen die worden toegevoegd aan de resultaten tabel binnen elk trigger interval. In dit voor beeld worden alleen alle rijen uitgevoerd naar een in-Memory tabel `temps` die u later kunt opvragen met SparkSQL. Volledige uitvoer modus zorgt ervoor dat alle rijen voor alle vensters elke keer worden uitgevoerd.
 
-    val streamingOutDF = streamingAggDF.writeStream.format("memory").queryName("temps").outputMode("complete") 
+```sql
+val streamingOutDF = streamingAggDF.writeStream.format("memory").queryName("temps").outputMode("complete")
+``` 
 
 ### <a name="start-the-query"></a>De query starten
 
 Start de streaming-query en voer uit totdat een beëindigings signaal wordt ontvangen.
 
-    val query = streamingOutDF.start()  
+```sql
+val query = streamingOutDF.start() 
+``` 
 
 ### <a name="view-the-results"></a>De resultaten bekijken
 
 Terwijl de query wordt uitgevoerd, kunt u in dezelfde SparkSession een SparkSQL-query uitvoeren op de `temps` tabel waarin de query resultaten worden opgeslagen.
 
-    select * from temps
+```sql
+select * from temps
+```
 
 Deze query levert resultaten op die vergelijkbaar zijn met de volgende:
 

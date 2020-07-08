@@ -4,10 +4,9 @@ description: In dit artikel vindt u informatie over het maken van een back-up va
 ms.topic: conceptual
 ms.date: 11/12/2019
 ms.openlocfilehash: c9f9841ac40a39fc51c0e722415c871650bec86d
-ms.sourcegitcommit: eeba08c8eaa1d724635dcf3a5e931993c848c633
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/10/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84667315"
 ---
 # <a name="back-up-sap-hana-databases-in-azure-vms"></a>Back-ups maken van SAP HANA-databases in virtuele Azure-machines
@@ -25,7 +24,7 @@ In dit artikel leert u het volgende:
 > * Een back-uptaak op aanvraag uitvoeren
 
 >[!NOTE]
->[Ga](https://docs.microsoft.com/azure/backup/tutorial-backup-sap-hana-db) aan de slag met SAP Hana Backup Preview voor RHEL (7,4, 7,6, 7,7 of 8,1). Voor verdere query's schrijft u naar ons [AskAzureBackupTeam@microsoft.com](mailto:AskAzureBackupTeam@microsoft.com) .
+>[Aan de slag](https://docs.microsoft.com/azure/backup/tutorial-backup-sap-hana-db) met de preview voor back-ups van SAP HANA voor RHEL (7.4, 7.6, 7.7 or 8.1). Neem voor verdere vragen contact met ons op via [AskAzureBackupTeam@microsoft.com](mailto:AskAzureBackupTeam@microsoft.com).
 
 >[!NOTE]
 >**Voorlopig verwijderen voor SQL Server in azure VM en voorlopig verwijderen voor SAP Hana in azure VM-workloads** is nu beschikbaar als preview-versie.<br>

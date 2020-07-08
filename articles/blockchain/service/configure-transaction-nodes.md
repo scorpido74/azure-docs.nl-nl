@@ -5,10 +5,9 @@ ms.date: 11/20/2019
 ms.topic: how-to
 ms.reviewer: janders
 ms.openlocfilehash: 90836ad94410dfec5caa32275362f1407c9f5b1a
-ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/23/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85212561"
 ---
 # <a name="configure-azure-blockchain-service-transaction-nodes"></a>Azure Block Chain Service-transactie knooppunten configureren
@@ -17,7 +16,7 @@ Trans actie knooppunten worden gebruikt voor het verzenden van Block Chain-trans
 
 Details van het standaard transactie knooppunt weer geven:
 
-1. Meld u aan bij de [Azure-portal](https://portal.azure.com).
+1. Meld u aan bij [Azure Portal](https://portal.azure.com).
 1. Navigeer naar uw Azure Block Chain service-lid. Selecteer **transactie knooppunten**.
 
     ![Standaardtransactieknooppunt selecteren](./media/configure-transaction-nodes/nodes.png)

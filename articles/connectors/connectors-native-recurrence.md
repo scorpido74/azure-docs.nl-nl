@@ -7,10 +7,9 @@ ms.reviewer: deli, logicappspm
 ms.topic: conceptual
 ms.date: 03/25/2020
 ms.openlocfilehash: 18a58815ccd7bd229b6c1a27c92e903f22c8fd55
-ms.sourcegitcommit: 01cd19edb099d654198a6930cebd61cae9cb685b
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/24/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85322579"
 ---
 # <a name="create-schedule-and-run-recurring-tasks-and-workflows-with-the-recurrence-trigger-in-azure-logic-apps"></a>Terugkerende taken en werk stromen maken, plannen en uitvoeren met de trigger voor terugkeer patroon in Azure Logic Apps
@@ -42,7 +41,7 @@ Zie [terugkerende geautomatiseerde taken, processen en werk stromen plannen en u
 
 ## <a name="add-recurrence-trigger"></a>Trigger voor terugkeer patroon toevoegen
 
-1. Meld u aan bij de [Azure-portal](https://portal.azure.com). Een lege, logische app maken.
+1. Meld u aan bij [Azure Portal](https://portal.azure.com). Een lege, logische app maken.
 
 1. Wanneer Logic app Designer wordt weer gegeven, voert u in het zoekvak in `recurrence` als uw filter. Selecteer in de lijst triggers deze trigger als de eerste stap in de werk stroom van de logische app: **terugkeer patroon**
 

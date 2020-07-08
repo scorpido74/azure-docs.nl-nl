@@ -4,10 +4,9 @@ description: Veelgestelde vragen in Application Insights.
 ms.topic: conceptual
 ms.date: 04/04/2017
 ms.openlocfilehash: 9ca5900bc9172b1f4ef9b1a7a660c6936ac38095
-ms.sourcegitcommit: 595cde417684e3672e36f09fd4691fb6aa739733
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/20/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "83701955"
 ---
 # <a name="how-do-i--in-application-insights"></a>Hoe kan ik ... in Application Insights?
@@ -74,7 +73,7 @@ Enkele punten om in overweging te nemen:
 ## <a name="separate-telemetry-from-different-versions"></a>Telemetrie scheiden van verschillende versies
 
 * Meerdere rollen in een app: gebruik één Application Insights resource en filter op [cloud_Rolename](../../azure-monitor/app/app-map.md).
-* Ontwikkelings-, test-en release versies scheiden: verschillende Application Insights bronnen gebruiken. Haal de instrumentatie sleutels op uit web. config. [Meer informatie](../../azure-monitor/app/separate-resources.md)
+* Ontwikkelings-, test-en release versies scheiden: verschillende Application Insights bronnen gebruiken. Haal de instrumentatie sleutels op uit web.config. [Meer informatie](../../azure-monitor/app/separate-resources.md)
 * Versie rapportage-builds: Voeg een eigenschap toe met behulp van een telemetrie-initialisatie functie. [Meer informatie](../../azure-monitor/app/separate-resources.md)
 
 ## <a name="monitor-backend-servers-and-desktop-apps"></a>Back-endservers en desktop-apps bewaken
@@ -118,7 +117,7 @@ Als u een lijst met gebruikers wilt met gegevens, zoals op welke pagina's ze wor
 * Als u slechts een klein aantal gebruikers hebt, kunt u aangepaste gebeurtenissen of metrische gegevens verzenden met behulp van de informatie die van belang is als metrische waarde of gebeurtenis naam en de gebruikers-ID instellen als een eigenschap. Als u pagina weergaven wilt analyseren, vervangt u de standaard Java script trackPageView-aanroep. Als u telemetrie aan de server zijde wilt analyseren, gebruikt u de initialisatie functie voor telemetrie om de gebruikers-ID toe te voegen aan alle server-telemetrie. Vervolgens kunt u metrische gegevens filteren en segmenteren en zoeken op de gebruikers-ID.
 
 ## <a name="reduce-traffic-from-my-app-to-application-insights"></a>Het verkeer van mijn app naar Application Insights verminderen
-* Schakel in [ApplicationInsights. config](../../azure-monitor/app/configuration-with-applicationinsights-config.md)alle modules uit die u niet nodig hebt, zoals de prestatie meter item verzamelaar.
+* Schakel in [ApplicationInsights.config](../../azure-monitor/app/configuration-with-applicationinsights-config.md)alle modules uit die u niet nodig hebt, zoals de prestatie meter items verzamelaar.
 * Gebruik [steek proeven en filters](../../azure-monitor/app/api-filtering-sampling.md) bij de SDK.
 * In uw webpagina's kunt u het aantal Ajax-aanroepen dat voor elke pagina weergave wordt gerapporteerd, beperken. In het script fragment erna `instrumentationKey:...` invoegen: `,maxAjaxCallsPerView:3` (of een geschikt getal).
 * Als u [TrackMetric](../../azure-monitor/app/api-custom-events-metrics.md#trackmetric)gebruikt, moet u de aggregatie van batches met metrische waarden berekenen voordat u het resultaat verzendt. Er is een overbelasting van TrackMetric () waarmee dit wordt geboden.
@@ -145,7 +144,7 @@ Voor ASP.NET Core-toepassingen kunt u een `TelemetryConfiguration` instantie ope
 ## <a name="disable-selected-standard-collectors"></a>Geselecteerde standaard verzamelaars uitschakelen
 U kunt standaard verzamelaars uitschakelen (bijvoorbeeld prestatie meter items, HTTP-aanvragen of afhankelijkheden)
 
-* **ASP.NET-toepassingen** : de relevante regels in [ApplicationInsights. config](../../azure-monitor/app/configuration-with-applicationinsights-config.md) verwijderen of er opmerkingen van maken
+* **ASP.NET-toepassingen** : de relevante regels in [ApplicationInsights.config](../../azure-monitor/app/configuration-with-applicationinsights-config.md) verwijderen of opmerkingen toevoegen
 * **ASP.net core toepassingen** : configuratie opties voor telemetrie-modules volgen in [ApplicationInsights ASP.net core](../../azure-monitor/app/asp-net-core.md#configuring-or-removing-default-telemetrymodules)
 
 ## <a name="view-system-performance-counters"></a>Systeem prestatie meter items weer geven

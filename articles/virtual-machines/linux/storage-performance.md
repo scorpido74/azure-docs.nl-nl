@@ -11,10 +11,9 @@ ms.workload: infrastructure-services
 ms.date: 08/05/2019
 ms.author: joelpell
 ms.openlocfilehash: 7a0d5e29097bc9a672e142fcffb0ebe879fe2475
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81757683"
 ---
 # <a name="optimize-performance-on-the-lsv2-series-virtual-machines"></a>Optimaliseer de prestaties van de virtuele machines uit de Lsv2-serie
@@ -106,7 +105,7 @@ Zie [back-up en herstel na nood gevallen voor Azure IaaS-schijven](backup-and-di
    for i in `seq 0 9`; do echo 0 >/sys/block/nvme${i}n1/queue/rq_affinity; done
    ```
 
-   Houd er ook rekening mee dat de beste prestaties worden verkregen wanneer I/O rechtstreeks wordt uitgevoerd op alle onbewerkte NVMe-apparaten zonder partitioneren, geen bestands systemen, geen RAID 0-configuratie, enzovoort. Voordat u een test sessie start, moet u ervoor zorgen dat de configuratie de status bekend/schoon `blkdiscard` maakt door op elk NVMe-apparaat uit te voeren.
+   Houd er ook rekening mee dat de beste prestaties worden verkregen wanneer I/O rechtstreeks wordt uitgevoerd op alle onbewerkte NVMe-apparaten zonder partitioneren, geen bestands systemen, geen RAID 0-configuratie, enzovoort. Voordat u een test sessie start, moet u ervoor zorgen dat de configuratie de status bekend/schoon maakt door `blkdiscard` op elk NVMe-apparaat uit te voeren.
    
 ## <a name="next-steps"></a>Volgende stappen
 

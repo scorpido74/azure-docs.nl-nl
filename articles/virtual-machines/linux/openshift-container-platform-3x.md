@@ -10,10 +10,9 @@ ms.workload: infrastructure
 ms.date: 04/05/2020
 ms.author: haroldw
 ms.openlocfilehash: 7d6cd4c6ce7991ae83f6f4a1dd6d8b86fe7eedbc
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81757900"
 ---
 # <a name="deploy-openshift-container-platform-311-in-azure"></a>Open Shift container platform 3,11 implementeren in azure
@@ -25,7 +24,7 @@ U kunt een van de volgende methoden gebruiken om open Shift container platform 3
 - Een andere mogelijkheid is om de [Azure Marketplace-aanbieding](https://azuremarketplace.microsoft.com/marketplace/apps/osatesting.open-shift-azure-proxy)te gebruiken.
 
 Voor alle opties is een Red Hat-abonnement vereist. Tijdens de implementatie wordt het Red Hat Enterprise Linux-exemplaar geregistreerd bij het Red Hat-abonnement en gekoppeld aan de groeps-ID die de rechten voor open Shift container platform bevat.
-Zorg ervoor dat u een geldige gebruikers naam, wacht woord en groeps-ID voor Red Hat Subscription Manager (RHSM) hebt. U kunt een activerings sleutel, organisatie-ID en groeps-ID gebruiken. U kunt deze informatie controleren door u aan te https://access.redhat.commelden bij.
+Zorg ervoor dat u een geldige gebruikers naam, wacht woord en groeps-ID voor Red Hat Subscription Manager (RHSM) hebt. U kunt een activerings sleutel, organisatie-ID en groeps-ID gebruiken. U kunt deze informatie controleren door u aan te melden bij https://access.redhat.com .
 
 
 ## <a name="deploy-using-the-openshift-container-platform-resource-manager-311-template"></a>Implementeren met behulp van de sjabloon open Shift container platform Resource Manager 3,11
@@ -46,17 +45,17 @@ Als u wilt implementeren met behulp van de Resource Manager-sjabloon, gebruikt u
 
 Enkele algemene aanpassings opties zijn, maar zijn niet beperkt tot:
 
-- Bastion VM-grootte (variabele in azuredeploy. json)
-- Naamgevings regels (variabelen in azuredeploy. json)
+- Bastion VM-grootte (variabele in azuredeploy.jsop)
+- Naam conventies (variabelen in azuredeploy.jsop)
 - Details van open Shift-cluster, gewijzigd via een hosts-bestand (deployOpenShift.sh)
 
 ### <a name="configure-the-parameters-file"></a>Het parameter bestand configureren
 
 In de open [SHIFT container platform-sjabloon](https://github.com/Microsoft/openshift-container-platform) zijn meerdere vertakkingen beschikbaar voor verschillende versies van open Shift container platform.  Op basis van uw behoeften kunt u rechtstreeks vanuit de opslag plaats implementeren, of u kunt de opslag plaats splitsen en aangepaste wijzigingen aanbrengen in de sjablonen of scripts voordat u implementeert.
 
-Gebruik de `appId` waarde van de service-principal die u eerder hebt `aadClientId` gemaakt voor de para meter.
+Gebruik de `appId` waarde van de service-principal die u eerder hebt gemaakt voor de `aadClientId` para meter.
 
-In het volgende voor beeld ziet u een bestand met para meters met de naam azuredeploy. para meters. json met alle vereiste invoer.
+In het volgende voor beeld ziet u een bestand met para meters met de naam azuredeploy.parameters.jsop met alle vereiste invoer.
 
 ```json
 {
@@ -241,16 +240,16 @@ Vervang de para meters door uw specifieke informatie.
 
 Verschillende releases kunnen verschillende para meters hebben, dus controleer de benodigde para meters voor de vertakking die u gebruikt.
 
-### <a name="azuredeployparametersjson-file-explained"></a>azuredeploy. Uitleg over para meters. JSON-bestand
+### <a name="azuredeployparametersjson-file-explained"></a>azuredeploy.Parameters.jsin het bestand wordt uitgelegd
 
 | Eigenschap | Beschrijving | Geldige opties | Standaardwaarde |
 |----------|-------------|---------------|---------------|
-| `_artifactsLocation`  | URL voor artefacten (JSON, scripts, enzovoort) |  |  https:\//RAW.githubusercontent.com/Microsoft/openshift-container-platform/Master  |
+| `_artifactsLocation`  | URL voor artefacten (JSON, scripts, enzovoort) |  |  https: \/ /RAW.githubusercontent.com/Microsoft/openshift-container-platform/Master  |
 | `location` | Azure-regio voor het implementeren van resources voor |  |  |
-| `masterVmSize` | Grootte van de hoofd-VM. Selecteer een van de toegestane VM-grootten die worden vermeld in het bestand azuredeploy. json |  | Standard_E2s_v3 |
-| `infraVmSize` | Grootte van de infra structuur-VM. Selecteer een van de toegestane VM-grootten die worden vermeld in het bestand azuredeploy. json |  | Standard_D4s_v3 |
-| `nodeVmSize` | Grootte van de virtuele machine van het app-knoop punt. Selecteer een van de toegestane VM-grootten die worden vermeld in het bestand azuredeploy. json |  | Standard_D4s_v3 |
-| `cnsVmSize` | Grootte van de VM-knoop punt (native Storage) van de container. Selecteer een van de toegestane VM-grootten die worden vermeld in het bestand azuredeploy. json |  | Standard_E4s_v3 |
+| `masterVmSize` | Grootte van de hoofd-VM. Selecteer een van de toegestane VM-grootten in de azuredeploy.jsvoor het bestand |  | Standard_E2s_v3 |
+| `infraVmSize` | Grootte van de infra structuur-VM. Selecteer een van de toegestane VM-grootten in de azuredeploy.jsvoor het bestand |  | Standard_D4s_v3 |
+| `nodeVmSize` | Grootte van de virtuele machine van het app-knoop punt. Selecteer een van de toegestane VM-grootten in de azuredeploy.jsvoor het bestand |  | Standard_D4s_v3 |
+| `cnsVmSize` | Grootte van de VM-knoop punt (native Storage) van de container. Selecteer een van de toegestane VM-grootten in de azuredeploy.jsvoor het bestand |  | Standard_E4s_v3 |
 | `osImageType` | De RHEL-installatie kopie die moet worden gebruikt. defaultgallery: op aanvraag; Marketplace: afbeelding van derden | defaultgallery <br> marketplace | defaultgallery |
 | `marketplaceOsImage` | Als `osImageType` is Marketplace, voert u de juiste waarden in voor ' Publisher ', ' offer ', ' SKU ', ' versie ' van de Marketplace-aanbieding. Deze para meter is een object type |  |  |
 | `storageKind` | Het type opslag dat moet worden gebruikt  | bijgehouden<br> beheerde | bijgehouden |
@@ -264,9 +263,9 @@ Verschillende releases kunnen verschillende para meters hebben, dus controleer d
 | `dataDiskSize` | Grootte van de gegevens schijf die moet worden gekoppeld aan knoop punten voor docker-volume (in GB) | 32, 64, 128, 256, 512, 1024, 2048 | 64 |
 | `cnsGlusterDiskSize` | Grootte van de gegevens schijf die moet worden gekoppeld aan CNS-knoop punten voor gebruik door glusterfs (in GB | 32, 64, 128, 256, 512, 1024, 2048 | 128 |
 | `adminUsername` | Gebruikers naam van de beheerder voor de aanmelding van zowel het besturings systeem (VM) als de eerste openshift-gebruiker |  | ocpadmin |
-| `enableMetrics` | Metrieken inschakelen. Voor metrische gegevens zijn meer resources nodig, dus Selecteer de juiste grootte voor infra structuur-VM | waar <br> false | false |
-| `enableLogging` | Schakel logboek registratie in. voor elasticsearch Pod is 8 GB RAM vereist. Selecteer de juiste grootte voor infra structuur-VM | waar <br> false | false |
-| `enableCNS` | Native opslag in container inschakelen | waar <br> false | false |
+| `enableMetrics` | Metrieken inschakelen. Voor metrische gegevens zijn meer resources nodig, dus Selecteer de juiste grootte voor infra structuur-VM | true <br> false | false |
+| `enableLogging` | Schakel logboek registratie in. voor elasticsearch Pod is 8 GB RAM vereist. Selecteer de juiste grootte voor infra structuur-VM | true <br> false | false |
+| `enableCNS` | Native opslag in container inschakelen | true <br> false | false |
 | `rhsmUsernameOrOrgId` | Gebruikers naam of organisatie-ID van Red Hat Subscription Manager |  |  |
 | `rhsmPoolId` | De groeps-ID van Red Hat Subscription Manager met de rechten van open Shift voor reken knooppunten |  |  |
 | `rhsmBrokerPoolId` | De groeps-ID van Red Hat Subscription Manager met de rechten van open Shift voor modellen en infra structuur knooppunten. Als u geen andere groeps-Id's hebt, voert u dezelfde groeps-ID in als ' rhsmPoolId ' |  |
@@ -274,12 +273,12 @@ Verschillende releases kunnen verschillende para meters hebben, dus controleer d
 | `keyVaultSubscriptionId` | De abonnements-ID van het abonnement dat de Key Vault bevat |  |  |
 | `keyVaultResourceGroup` | De naam van de resource groep die de Key Vault bevat |  |  |
 | `keyVaultName` | De naam van de Key Vault die u hebt gemaakt |  |  |
-| `enableAzure` | Azure Cloud provider inschakelen | waar <br> false | waar |
+| `enableAzure` | Azure Cloud provider inschakelen | true <br> false | true |
 | `aadClientId` | Azure Active Directory client-ID ook bekend als toepassings-ID voor Service-Principal |  |  |
 | `domainName` | De naam van de aangepaste domein naam die moet worden gebruikt (indien van toepassing). Ingesteld op ' geen ' als er geen volledig particulier cluster wordt geïmplementeerd |  | geen |
-| `masterClusterDnsType` | Domein type voor open Shift-webconsole. ' default ' maakt gebruik van het DNS-label van het Master-infra structuur openbaar IP-adres. met aangepast kunt u uw eigen naam definiëren | standaardinstelling <br> instel | standaardinstelling |
+| `masterClusterDnsType` | Domein type voor open Shift-webconsole. ' default ' maakt gebruik van het DNS-label van het Master-infra structuur openbaar IP-adres. met aangepast kunt u uw eigen naam definiëren | standaardinstelling <br> aangepast | standaardinstelling |
 | `masterClusterDns` | De aangepaste DNS-naam die moet worden gebruikt voor toegang tot de open Shift-webconsole als u aangepast hebt geselecteerd voor`masterClusterDnsType` |  | console.contoso.com |
-| `routingSubDomainType` | Als deze is ingesteld op ' nipio `routingSubDomain` ', gebruikt NIP.io.  Gebruik aangepast als u uw eigen domein hebt dat u wilt gebruiken voor route ring | nipio <br> instel | nipio |
+| `routingSubDomainType` | Als deze is ingesteld op ' nipio ', `routingSubDomain` gebruikt NIP.io.  Gebruik aangepast als u uw eigen domein hebt dat u wilt gebruiken voor route ring | nipio <br> aangepast | nipio |
 | `routingSubDomain` | De DNS-naam voor joker tekens die u wilt gebruiken voor route ring als u aangepast hebt geselecteerd voor`routingSubDomainType` |  | apps.contoso.com |
 | `virtualNetworkNewOrExisting` | Selecteer of u een bestaande Virtual Network wilt gebruiken of een nieuwe Virtual Network wilt maken | bestaand <br> nieuw | nieuw |
 | `virtualNetworkResourceGroupName` | De naam van de resource groep voor het nieuwe Virtual Network als u ' nieuw ' hebt geselecteerd voor`virtualNetworkNewOrExisting` |  | resourceGroup (). naam |
@@ -299,17 +298,17 @@ Verschillende releases kunnen verschillende para meters hebben, dus controleer d
 | `masterPrivateClusterIp` | Als er knoop punten van een persoonlijke Master zijn geselecteerd, moet u een privé-IP-adres opgeven voor gebruik door de interne load balancer voor hoofd knooppunten. Dit statische IP-adres moet zich in het CIDR-blok bevinden voor het hoofd-subnet en wordt niet al gebruikt. Als er open bare hoofd knooppunten zijn geselecteerd, wordt deze waarde niet gebruikt, maar moet deze wel worden opgegeven |  | 10.1.0.200 |
 | `routerClusterType` | Geef op of het cluster particuliere of open bare infra structuur knooppunten gebruikt. Als privé is gekozen, worden de infra structuur niet via een openbaar IP-adres blootgesteld aan Internet. In plaats daarvan wordt het privé-IP-adres gebruikt dat is opgegeven in de`routerPrivateClusterIp` | Open <br> eigen | Open |
 | `routerPrivateClusterIp` | Als er particuliere infra structuur knooppunten zijn geselecteerd, moet er een privé-IP-adres worden opgegeven voor gebruik door de interne load balancer voor infra structuur knooppunten. Dit statische IP-adres moet zich in het CIDR-blok bevinden voor het infra structuur-subnet en niet al in gebruik. Als open bare-infra structuur knooppunten zijn geselecteerd, wordt deze waarde niet gebruikt, maar moet deze wel worden opgegeven |  | 10.2.0.200 |
-| `routingCertType` | Aangepast certificaat voor routerings domein of het standaard zelfondertekende certificaat gebruiken-volg de instructies in de sectie **aangepaste certificaten** | selfsigned <br> instel | selfsigned |
-| `masterCertType` | Aangepast certificaat voor hoofd domein of het standaard zelfondertekende certificaat gebruiken-volg de instructies in de sectie **aangepaste certificaten** | selfsigned <br> instel | selfsigned |
+| `routingCertType` | Aangepast certificaat voor routerings domein of het standaard zelfondertekende certificaat gebruiken-volg de instructies in de sectie **aangepaste certificaten** | selfsigned <br> aangepast | selfsigned |
+| `masterCertType` | Aangepast certificaat voor hoofd domein of het standaard zelfondertekende certificaat gebruiken-volg de instructies in de sectie **aangepaste certificaten** | selfsigned <br> aangepast | selfsigned |
 
 <br>
 
 ### <a name="deploy-using-azure-cli"></a>Implementeren met behulp van Azure CLI
 
 > [!NOTE] 
-> Voor de volgende opdracht is Azure CLI 2.0.8 of hoger vereist. U kunt de CLI-versie controleren met `az --version` de opdracht. Zie [Azure cli installeren](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latesti)voor informatie over het bijwerken van de CLI-versie.
+> Voor de volgende opdracht is Azure CLI 2.0.8 of hoger vereist. U kunt de CLI-versie controleren met de `az --version` opdracht. Zie [Azure cli installeren](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latesti)voor informatie over het bijwerken van de CLI-versie.
 
-In het volgende voor beeld worden het openshift-cluster en alle gerelateerde resources geïmplementeerd in een resource groep met de naam openshiftrg, met een implementatie naam van myOpenShiftCluster. Er wordt rechtstreeks naar de sjabloon verwezen vanuit de GitHub opslag plaats en er wordt een lokaal bestand met para meters met de naam azuredeploy. para meters. JSON-bestand gebruikt.
+In het volgende voor beeld worden het openshift-cluster en alle gerelateerde resources geïmplementeerd in een resource groep met de naam openshiftrg, met een implementatie naam van myOpenShiftCluster. Er wordt rechtstreeks naar de sjabloon verwezen vanuit de GitHub opslag plaats en er wordt een lokaal bestand met para meters met de naam azuredeploy.parameters.jsin het bestand gebruikt.
 
 ```azurecli 
 az group deployment create -g openshiftrg --name myOpenShiftCluster \
@@ -326,7 +325,7 @@ Het volt ooien van de implementatie duurt ten minste 60 minuten, op basis van he
 }
 ```
 
-Als u niet wilt dat de opdracht regel wordt ingewisseld om de implementatie te volt ooien `--no-wait` , voegt u als een van de opties voor de groeps implementatie toe. De uitvoer van de implementatie kan worden opgehaald uit de Azure Portal in de implementatie sectie voor de resource groep.
+Als u niet wilt dat de opdracht regel wordt ingewisseld om de implementatie te volt ooien, voegt u `--no-wait` als een van de opties voor de groeps implementatie toe. De uitvoer van de implementatie kan worden opgehaald uit de Azure Portal in de implementatie sectie voor de resource groep.
 
 ## <a name="connect-to-the-openshift-cluster"></a>Verbinding maken met het open Shift-cluster
 

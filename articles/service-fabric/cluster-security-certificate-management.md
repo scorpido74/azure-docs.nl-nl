@@ -5,10 +5,9 @@ ms.topic: conceptual
 ms.date: 04/10/2020
 ms.custom: sfrev
 ms.openlocfilehash: 6be9cbe77ef5e64659e56447d0a5b6be30b05272
-ms.sourcegitcommit: 58ff2addf1ffa32d529ee9661bbef8fbae3cddec
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/03/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84324739"
 ---
 # <a name="certificate-management-in-service-fabric-clusters"></a>Certificaat beheer in Service Fabric clusters
@@ -69,7 +68,7 @@ Voor onze doel einden zijn de eerste twee stappen in de bovenstaande volg orde g
 
 Deze stappen worden hieronder beschreven. Let op de verschillen in de inrichting van de certificaten die respectievelijk worden aangegeven door de vinger afdruk en de algemene naam.
 
-*Figuur 1.* Uitgifte-en inrichtings stroom voor certificaten die zijn gedeclareerd door de vinger afdruk.
+*Fig. 1.* Uitgifte-en inrichtings stroom voor certificaten die zijn gedeclareerd door de vinger afdruk.
 ![Inrichtings certificaten die zijn gedeclareerd door de vinger afdruk][Image1]
 
 *Figuur 2.* Uitgifte-en inrichtings stroom voor certificaten die zijn gedeclareerd door de algemene onderwerpnaam.

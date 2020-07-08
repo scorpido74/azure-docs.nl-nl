@@ -9,12 +9,11 @@ ms.reviewer: valthom, estfan, logicappspm
 ms.topic: article
 ms.date: 05/14/2020
 tags: connectors
-ms.openlocfilehash: 17143257fcb6b9c71bb56e1f4c4958dce503c234
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
-ms.translationtype: MT
+ms.openlocfilehash: e9e554fdc092e49f5a87049de0e3dc3163105f58
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83652461"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85609500"
 ---
 # <a name="connect-to-an-ibm-mq-server-from-azure-logic-apps"></a>Verbinding maken met een IBM MQ-server vanaf Azure Logic Apps
 
@@ -71,7 +70,7 @@ Als u nog geen MQ-verbinding hebt wanneer u een MQ-actie toevoegt, wordt u gevra
 
    1. Selecteer de Azure-gateway resource die u wilt gebruiken in de lijst met **gateways voor verbindingen** .
 
-1. Als u gereed bent, selecteert u **Maken**.
+1. Selecteer **Maken** als u klaar bent.
 
 <a name="connection-problems"></a>
 
@@ -94,7 +93,7 @@ Wanneer uw logische app verbinding probeert te maken met uw on-premises MQ-serve
      > [!IMPORTANT]
      > Zorg ervoor dat u het certificaat installeert in het archief **certificaten-lokale computer**  >  **vertrouwde basis certificerings instanties** .
 
-* De MQ-server vereist dat u de coderings specificatie definieert die u wilt gebruiken voor SSL-verbindingen. SsLStream in .NET biedt echter geen toestemming om de volg orde voor coderings specificaties op te geven. Als u deze beperking wilt omzeilen, kunt u uw MQ-server configuratie wijzigen zodat deze overeenkomt met de eerste coderings specificatie in de suite die de connector in de SSL-onderhandeling verzendt.
+* De MQ-server vereist dat u de coderings specificatie definieert die u wilt gebruiken voor TLS/SSL-verbindingen. SslStream in .NET biedt echter geen toestemming om de volg orde voor coderings specificaties op te geven. Als u deze beperking wilt omzeilen, kunt u de MQ-server configuratie wijzigen zodat deze overeenkomt met de eerste coderings specificatie in de suite die de connector verzendt in de TLS/SSL-onderhandeling.
 
   Wanneer u de verbinding probeert te gebruiken, registreert de MQ-server een gebeurtenis bericht dat aangeeft dat de verbinding is mislukt, omdat het andere end de onjuiste coderings specificatie heeft gebruikt. Het gebeurtenis bericht bevat de coderings specificatie die als eerste wordt weer gegeven in de lijst. Werk de cipher-specificatie in de kanaal configuratie bij zodat deze overeenkomt met de coderings specificatie in het gebeurtenis bericht.
 
@@ -115,7 +114,7 @@ Wanneer uw logische app verbinding probeert te maken met uw on-premises MQ-serve
    | **Wachtrij** | Als dit afwijkt van de wachtrij die in de verbinding is opgegeven, geeft u die wachtrij op. |
    | **MessageId**, **CorrelationId**, **GroupId**en andere eigenschappen | Bladeren naar een bericht dat is gebaseerd op de verschillende MQ-bericht eigenschappen |
    | **IncludeInfo** | Als u aanvullende bericht informatie in de uitvoer wilt toevoegen, selecteert u **waar**. Als u aanvullende bericht informatie in de uitvoer wilt weglaten, selecteert u **Onwaar**. |
-   | **Out** | Voer een waarde in om te bepalen hoe lang moet worden gewacht tot een bericht in een lege wachtrij arriveert. Als niets wordt ingevoerd, wordt het eerste bericht in de wachtrij opgehaald en wordt er geen tijd besteed aan het wachten op het verschijnen van een bericht. |
+   | **Time-out** | Voer een waarde in om te bepalen hoe lang moet worden gewacht tot een bericht in een lege wachtrij arriveert. Als niets wordt ingevoerd, wordt het eerste bericht in de wachtrij opgehaald en wordt er geen tijd besteed aan het wachten op het verschijnen van een bericht. |
    |||
 
    Bijvoorbeeld:

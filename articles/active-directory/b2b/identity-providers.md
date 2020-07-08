@@ -12,10 +12,9 @@ manager: celestedg
 ms.reviewer: elisolMS
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 2284d015b451872753dd0855cac42e6f1926545c
-ms.sourcegitcommit: 958f086136f10903c44c92463845b9f3a6a5275f
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/20/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "83712159"
 ---
 # <a name="identity-providers-for-external-identities"></a>Id-providers voor externe identiteiten
@@ -35,7 +34,7 @@ U kunt gebruikers echter in staat stellen zich aan te melden met verschillende i
    > Directe Federatie-id-providers kunnen niet worden gebruikt in uw Self-service registratie gebruikers stromen.
 
 
-## <a name="how-it-works"></a>Hoe het werkt
+## <a name="how-it-works"></a>Uitleg
 
 Met de functie voor zelf registratie van Azure AD externe identiteiten kunnen gebruikers zich aanmelden met hun Azure AD-, Google-of Facebook-account. Als u sociale id-providers wilt instellen in uw Azure AD-Tenant, maakt u een toepassing bij elke id-provider en configureert u de referenties. U ontvangt een client-of App-ID en een client-of app-geheim, dat u vervolgens kunt toevoegen aan uw Azure AD-Tenant.
 

@@ -17,10 +17,9 @@ ms.workload: infrastructure-services
 ms.date: 05/17/2019
 ms.author: kumud
 ms.openlocfilehash: ed311e9c8031f8586762d2adc4c104545e323bc0
-ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/11/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84711507"
 ---
 # <a name="manage-azure-ddos-protection-standard-using-the-azure-portal"></a>Azure DDoS Protection Standard beheren met de Azure Portal
@@ -59,7 +58,7 @@ Het is niet nodig om meer dan één abonnement te maken voor de meeste organisat
     | ---------       | ---------                                                    |
     | Naam            | myVirtualNetwork                                             |
     | Abonnement    | Selecteer uw abonnement.                                    |
-    | Resourcegroep  | Selecteer **bestaande gebruiken**en selecteer vervolgens **myResourceGroup** |
+    | Resourcegroep  | Selecteer **Bestaande gebruiken** en vervolgens **myResourceGroup** |
     | Locatie        | VS - oost                                                      |
     | DDos-beveiliging | Selecteer **standaard** en selecteer onder **DDoS-beveiliging**de optie **myDdosProtectionPlan**. Het plan dat u selecteert, kan zich in hetzelfde of een ander abonnement bevindt dan het virtuele netwerk, maar beide abonnementen moeten aan dezelfde Azure Active Directory-Tenant zijn gekoppeld.|
 
@@ -73,7 +72,7 @@ U kunt een virtueel netwerk niet verplaatsen naar een andere resource groep of e
 4. Selecteer **DDoS Protection**onder **instellingen**.
 5. selecteer **Standaard**. Selecteer onder **DDoS-beschermings plan**een bestaand DDoS-beveiligings plan of het plan dat u hebt gemaakt in stap 1 en selecteer vervolgens **Opslaan**. Het plan dat u selecteert, kan zich in hetzelfde of een ander abonnement bevindt dan het virtuele netwerk, maar beide abonnementen moeten aan dezelfde Azure Active Directory-Tenant zijn gekoppeld.
 
-**Opdracht** 
+**Opdrachten** 
 - Azure CLI: [AZ Network DDoS-Protection Create](https://docs.microsoft.com/cli/azure/network/ddos-protection?view=azure-cli-latest#az-network-ddos-protection-create)
 - Power shell: [New-AzDdosProtectionPlan](https://docs.microsoft.com/powershell/module/Az.Network/New-AzDdosProtectionPlan?view=azps-2.8.0)
  
@@ -84,7 +83,7 @@ U kunt een virtueel netwerk niet verplaatsen naar een andere resource groep of e
 2. Selecteer **DDoS Protection**onder **instellingen**.
 3. Selecteer **basis** onder **DDoS-beschermings plan** en selecteer vervolgens **Opslaan**.
 
-**Opdracht** 
+**Opdrachten** 
 - Azure CLI: [AZ Network DDoS-Protection delete](https://docs.microsoft.com/cli/azure/network/ddos-protection?view=azure-cli-latest#az-network-ddos-protection-delete)
 - Power shell: [Remove-AzDdosProtectionPlan](https://docs.microsoft.com/powershell/module/az.network/remove-azddosprotectionplan?view=azps-3.2.0)
 

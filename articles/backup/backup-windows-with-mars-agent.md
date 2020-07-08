@@ -3,14 +3,13 @@ title: Back-ups maken van Windows-machines met behulp van de MARS-agent
 description: Gebruik de Microsoft Azure Recovery Services (MARS)-agent om een back-up te maken van Windows-machines.
 ms.topic: conceptual
 ms.date: 03/03/2020
-ms.openlocfilehash: 002f4cd2e0582fb87af622f721f286bd78920350
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: 4f0e605185be6db8629144e05f5f39309a3831ec
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82193289"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85604842"
 ---
-# <a name="back-up-windows-machines-by-using-the-azure-backup-mars-agent"></a>Back-ups maken van Windows-machines met behulp van de Azure Backup MARS-agent
+# <a name="back-up-windows-server-files-and-folders-to-azure"></a>Back-ups maken van Windows Server-bestanden en-mappen naar Azure
 
 In dit artikel wordt uitgelegd hoe u een back-up maakt van Windows-computers met behulp van de [Azure backup](backup-overview.md) -service en de Microsoft Azure Recovery Services-agent (Mars). MARS wordt ook wel de Azure Backup-Agent genoemd.
 
@@ -43,7 +42,7 @@ Ga als volgt te werk om een back-upbeleid te maken:
 1. Onder **acties**, selecteert u **back-up plannen**.
 
     ![Een back-up van de Windows Server plannen](./media/backup-configure-vault/schedule-first-backup.png)
-1. Selecteer **aan** > de slag**volgende**in de wizard Back-up plannen.
+1. Selecteer **aan**de slag volgende in de wizard Back-up plannen  >  **Next**.
 1. Selecteer **items toevoegen**onder **items selecteren waarvan u een back-up wilt maken**.
 
     ![Items toevoegen voor back-up](./media/backup-azure-manage-mars/select-item-to-backup.png)
@@ -53,7 +52,7 @@ Ga als volgt te werk om een back-upbeleid te maken:
     ![Items selecteren waarvan u een back-up wilt maken](./media/backup-azure-manage-mars/selected-items-to-backup.png)
 
 1. Selecteer **volgende**op de pagina **items selecteren voor back-up** .
-1. Geef op de pagina **back-upschema opgeven** op wanneer u dagelijks of wekelijks back-ups wilt maken. Selecteer **volgende**.
+1. Geef op de pagina **back-upschema opgeven** op wanneer u dagelijks of wekelijks back-ups wilt maken. Selecteer vervolgens **Volgende**.
 
     * Wanneer er een back-up wordt gemaakt, wordt er een herstel punt aangemaakt.
     * Het aantal herstel punten dat in uw omgeving wordt gemaakt, is afhankelijk van het back-upschema.
@@ -65,7 +64,7 @@ Ga als volgt te werk om een back-upbeleid te maken:
 
         ![Een wekelijks back-upschema instellen](./media/backup-configure-vault/week-schedule.png)
 
-1. Geef op de pagina **retentie beleid selecteren** op hoe historische kopieën van uw gegevens moeten worden opgeslagen. Selecteer **volgende**.
+1. Geef op de pagina **retentie beleid selecteren** op hoe historische kopieën van uw gegevens moeten worden opgeslagen. Selecteer vervolgens **Volgende**.
 
     * Met de Bewaar instellingen geeft u op welke herstel punten moeten worden opgeslagen en hoe lang ze moeten worden opgeslagen.
     * Voor een dagelijkse Bewaar instelling geeft u aan dat op het tijdstip dat is opgegeven voor de dagelijkse retentie, het laatste herstel punt wordt bewaard gedurende het opgegeven aantal dagen. Of u kunt een maandelijks Bewaar beleid opgeven om aan te geven dat het herstel punt dat op de 30e van elke maand is gemaakt, 12 maanden moet worden bewaard.
@@ -79,7 +78,7 @@ Ga als volgt te werk om een back-upbeleid te maken:
 
         ![Voor beeld van een Bewaar beleid](./media/backup-configure-vault/retention-example.png)
 
-1. Bepaal op de pagina **eerste back-uptype kiezen** of u de eerste back-up wilt maken via het netwerk of offline back-up wilt gebruiken. Als u de eerste back-up via het netwerk wilt maken, selecteert u **automatisch via het netwerk** > **volgende**.
+1. Bepaal op de pagina **eerste back-uptype kiezen** of u de eerste back-up wilt maken via het netwerk of offline back-up wilt gebruiken. Als u de eerste back-up via het netwerk wilt maken, selecteert u **automatisch via het netwerk**  >  **volgende**.
 
     Zie [Azure data box gebruiken voor offline back-ups](offline-backup-azure-data-box.md)voor meer informatie over offline back-ups.
 
@@ -151,7 +150,7 @@ Nadat de eerste back-up is voltooid, wordt de status **taak voltooid** weer gege
 | Back-upschema optie | Duur van bewaren van gegevens
 | -- | --
 | Dag | **Standaard retentie**: gelijk aan de Bewaar periode in dagen voor dagelijkse back-ups. <br/><br/> **Uitzonde ring**: als een dagelijkse geplande back-up die is ingesteld voor lange termijn retentie (weken, maanden of jaren) mislukt, wordt een back-up op aanvraag die direct na de storing is geactiveerd, gezien als lange termijn retentie. Anders wordt de volgende geplande back-up overwogen voor lange termijn retentie.<br/><br/> **Voorbeeld scenario**: de geplande back-up op donderdag om 8:00 uur is mislukt. Deze back-up moet worden overwogen voor wekelijkse, maandelijkse of jaarlijkse retentie. De eerste back-up op aanvraag die wordt geactiveerd vóór de volgende geplande back-up op vrijdag om 8:00 uur wordt automatisch gelabeld voor wekelijkse, maandelijkse of jaarlijkse retentie. Deze back-up vervangt de donderdag 8:00 uur.
-| Wekelijks | **Standaard retentie**: één dag. Back-ups op aanvraag die worden uitgevoerd voor een gegevens bron met een wekelijks back-upbeleid, worden de volgende dag verwijderd. Ze worden verwijderd, zelfs als ze de meest recente back-ups voor de gegevens bron zijn. <br/><br/> **Uitzonde ring**: als een wekelijkse geplande back-up die is ingesteld voor lange termijn retentie (weken, maanden of jaren) mislukt, wordt een back-up op aanvraag die direct na de storing is geactiveerd, gezien als lange termijn retentie. Anders wordt de volgende geplande back-up overwogen voor lange termijn retentie. <br/><br/> **Voorbeeld scenario**: de geplande back-up op donderdag om 8:00 uur is mislukt. Voor deze back-up moet maandelijks of jaarlijks retentie worden overwogen. De eerste back-up op aanvraag die wordt geactiveerd vóór de volgende geplande back-up op donderdag om 8:00 uur wordt automatisch gelabeld voor maandelijks of jaarlijks bewaren. Deze back-up vervangt de donderdag 8:00 uur.
+| Week | **Standaard retentie**: één dag. Back-ups op aanvraag die worden uitgevoerd voor een gegevens bron met een wekelijks back-upbeleid, worden de volgende dag verwijderd. Ze worden verwijderd, zelfs als ze de meest recente back-ups voor de gegevens bron zijn. <br/><br/> **Uitzonde ring**: als een wekelijkse geplande back-up die is ingesteld voor lange termijn retentie (weken, maanden of jaren) mislukt, wordt een back-up op aanvraag die direct na de storing is geactiveerd, gezien als lange termijn retentie. Anders wordt de volgende geplande back-up overwogen voor lange termijn retentie. <br/><br/> **Voorbeeld scenario**: de geplande back-up op donderdag om 8:00 uur is mislukt. Voor deze back-up moet maandelijks of jaarlijks retentie worden overwogen. De eerste back-up op aanvraag die wordt geactiveerd vóór de volgende geplande back-up op donderdag om 8:00 uur wordt automatisch gelabeld voor maandelijks of jaarlijks bewaren. Deze back-up vervangt de donderdag 8:00 uur.
 
 Zie [een back-upbeleid maken](#create-a-backup-policy)voor meer informatie.
 

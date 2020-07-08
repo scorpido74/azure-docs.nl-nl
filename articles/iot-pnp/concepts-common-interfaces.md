@@ -8,10 +8,9 @@ ms.topic: conceptual
 ms.service: iot-pnp
 services: iot-pnp
 ms.openlocfilehash: 5773ec2b3ea88fa9a507b7c1b0b84bb7ea305a94
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81770494"
 ---
 # <a name="iot-plug-and-play-preview-common-interfaces"></a>Algemene interfaces Plug en Play de preview-versie van IoT
@@ -20,16 +19,16 @@ Alle IoT Plug en Play-apparaten worden verwacht een aantal algemene interfaces t
 
 ## <a name="summary-of-common-interfaces"></a>Samen vatting van algemene interfaces
 
-| Naam | Id | Beschrijving | Geïmplementeerd door de Azure IoT SDK | Moet worden gedeclareerd in het mogelijkheidsprofiel |
+| Name | Id | Description | Geïmplementeerd door de Azure IoT SDK | Moet worden gedeclareerd in het mogelijkheidsprofiel |
 | -------- | -------- | -------- | -------- | -------- | -------- |
-| Model gegevens | urn: azureiot: ModelDiscovery: ModelInformation: 1 | Voor apparaten om de ID en interfaces van het mogelijkheidsprofiel te declareren. Vereist voor alle IoT Plug en Play-apparaten. | Ja | Nee |
-| Digital-client-SDK-informatie | urn: azureiot: client: SDKInformation: 1 | Client-SDK voor het verbinden van het apparaat met Azure. Vereist voor [certificering](tutorial-build-device-certification.md) | Ja | Nee |
-| Apparaatgegevens | urn: azureiot: DeviceManagement: DeviceInformation: 1 | Informatie over de hardware en het besturings systeem van het apparaat. Vereist voor [certificering](tutorial-build-device-certification.md) | Nee | Ja |
-| Model definitie | urn: azureiot: ModelDiscovery: ModelDefinition: 1 | Voor apparaten voor het declareren van de volledige definitie voor het mogelijkheidsprofiel en de interfaces van het model. Moet worden geïmplementeerd wanneer model definities niet worden gehost in een model opslagplaats. | Nee | Ja |
+| Model gegevens | urn: azureiot: ModelDiscovery: ModelInformation: 1 | Voor apparaten om de ID en interfaces van het mogelijkheidsprofiel te declareren. Vereist voor alle IoT Plug en Play-apparaten. | Ja | No |
+| Digital-client-SDK-informatie | urn: azureiot: client: SDKInformation: 1 | Client-SDK voor het verbinden van het apparaat met Azure. Vereist voor [certificering](tutorial-build-device-certification.md) | Ja | No |
+| Apparaatgegevens | urn: azureiot: DeviceManagement: DeviceInformation: 1 | Informatie over de hardware en het besturings systeem van het apparaat. Vereist voor [certificering](tutorial-build-device-certification.md) | No | Ja |
+| Model definitie | urn: azureiot: ModelDiscovery: ModelDefinition: 1 | Voor apparaten voor het declareren van de volledige definitie voor het mogelijkheidsprofiel en de interfaces van het model. Moet worden geïmplementeerd wanneer model definities niet worden gehost in een model opslagplaats. | No | Ja |
 | Digital Twin | urn: azureiot: ModelDiscovery: DigitalTwin: 1 | Ontwikkel aars van oplossingen moeten de ID en interface-Id's van het mogelijkheidsprofiel ophalen voor een digitale dubbele. Deze interface is niet gedeclareerd of geïmplementeerd door een IoT Plug en Play-apparaat. | Nee | Nee |
 
 - Geïmplementeerd door de Azure IoT SDK: of de Azure IoT SDK de mogelijkheden implementeert die in de interfaces zijn gedeclareerd. IoT Plug en Play-apparaten die gebruikmaken van de Azure IoT SDK, hoeven deze interface niet te implementeren.
-- Moet worden gedeclareerd in het mogelijkheidsprofiel: als Ja is opgegeven, moet deze interface worden gedeclareerd binnen de `"implements":` sectie van het mogelijkheidsprofiel voor deze IoT-Plug en Play apparaat.
+- Moet worden gedeclareerd in het mogelijkheidsprofiel: als Ja is opgegeven, moet deze interface worden gedeclareerd binnen de `"implements":` sectie van het mogelijkheidsprofiel voor deze IOT-Plug en Play apparaat.
 
 ## <a name="retrieve-interface-definitions-from-the-public-repository"></a>Interface definities ophalen uit de open bare opslag plaats
 

@@ -7,7 +7,7 @@ manager: daveba
 ms.assetid: addd60fe-d5ac-4b8b-983c-0736c80ace02
 ms.service: active-directory
 ms.devlang: na
-ms.topic: conceptual
+ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.subservice: report-monitor
@@ -15,12 +15,11 @@ ms.date: 11/13/2018
 ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ea1360499c4f4f9b2f6cfa07e81d8f692d0353d3
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: 3037dd2e03062ebab0c48438aa4345a766a22fc8
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82100784"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85608922"
 ---
 # <a name="remediate-users-flagged-for-risk-in-the-azure-active-directory-portal"></a>Gebruikers herstellen voor wie wordt aangegeven dat ze risico lopen in de Azure Active Directory-portal
 
@@ -32,7 +31,7 @@ Als ongebruikelijke activiteiten die kunnen wijzen op ongeoorloofde toegang tot 
 
 ## <a name="access-the-users-flagged-for-risk-report"></a>Gebruikers bekijken voor wie wordt aangegeven dat ze risico lopen
 
-U kunt gebruikers voor wie wordt aangegeven dat ze risico lopen, bekijken via het [rapport gebruikers die risico](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/RiskyUsers) lopen in de Azure Portal. Als u geen Azure AD hebt, kunt u zich gratis aanmelden op [https://aka.ms/AccessAAD](https://aka.ms/AccessAAD). 
+U kunt gebruikers voor wie wordt aangegeven dat ze risico lopen, bekijken via het [rapport gebruikers die risico](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/RiskyUsers) lopen in de Azure Portal. Als u geen Azure AD hebt, kunt u zich gratis aanmelden op [https://aka.ms/AccessAAD](https://aka.ms/AccessAAD) . 
 
 Vanuit de gebruikers die zijn gemarkeerd voor risico rapport, kunt u de volgende acties uitvoeren voor elke gebruiker:
 
@@ -75,7 +74,7 @@ Onderneem de volgende acties om de betreffende accounts te herstellen en uw omge
 
     f. Stel de wachtwoordcomplexiteit voor het account in op Hoog.
 
-    g. Schakel postvakcontrole in.
+    bijvoorbeeld Schakel postvakcontrole in.
 
     h. Maak een audit logboek voor de beheerder om dit te controleren.
 

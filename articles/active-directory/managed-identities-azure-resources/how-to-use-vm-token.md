@@ -9,24 +9,23 @@ editor: ''
 ms.service: active-directory
 ms.subservice: msi
 ms.devlang: na
-ms.topic: conceptual
+ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 12/01/2017
 ms.author: markvi
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 48f5688a42a240fa2690eed48ab32d483f96a5b7
-ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
-ms.translationtype: MT
+ms.openlocfilehash: 51f254bef223294661180f21019ae8c5a842015c
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/11/2020
-ms.locfileid: "84694124"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85608378"
 ---
 # <a name="how-to-use-managed-identities-for-azure-resources-on-an-azure-vm-to-acquire-an-access-token"></a>Beheerde identiteiten voor Azure-resources gebruiken op een Azure VM om een toegangs token te verkrijgen 
 
 [!INCLUDE [preview-notice](../../../includes/active-directory-msi-preview-notice.md)]  
 
-Beheerde identiteiten voor Azure-resources bieden Azure-Services met een automatisch beheerde identiteit in Azure Active Directory. U kunt deze identiteit gebruiken voor verificatie bij elke service die ondersteuning biedt voor Azure AD-verificatie, zonder dat u referenties hebt in uw code. 
+Beheerde identiteiten voor Azure-resources bieden Azure-Services met een automatisch beheerde identiteit in Azure Active Directory. U kunt deze identiteit gebruiken voor verificatie bij alle services die Microsoft Azure AD-verificatie ondersteunen, zonder dat u aanmeldingsgegevens in uw code hoeft te hebben. 
 
 In dit artikel vindt u verschillende code-en script voorbeelden voor het verkrijgen van tokens, evenals richt lijnen voor belang rijke onderwerpen, zoals het verwerken van token verloopt en HTTP-fouten. 
 
@@ -47,7 +46,7 @@ Als u van plan bent de Azure PowerShell-voor beelden in dit artikel te gebruiken
 
 Een client toepassing kan beheerde identiteiten aanvragen voor de Azure [-resources app-only-toegangs token](../develop/developer-glossary.md#access-token) voor toegang tot een bepaalde resource. Het token is [gebaseerd op de Service-Principal beheerde identiteiten voor Azure-resources](overview.md#managed-identity-types). Het is dus niet nodig dat de client zichzelf registreert om een toegangs token te verkrijgen onder een eigen service-principal. Het token is geschikt voor gebruik als een Bearer-token in [service-naar-service-aanroepen die client referenties vereisen](../develop/v2-oauth2-client-creds-grant-flow.md).
 
-|  |  |
+| Koppeling | Beschrijving |
 | -------------- | -------------------- |
 | [Een Token ophalen met HTTP](#get-a-token-using-http) | Protocol gegevens voor beheerde identiteiten voor het token eindpunt van Azure-resources |
 | [Een Token ophalen met behulp van de micro soft. Azure. Services. AppAuthentication-bibliotheek voor .NET](#get-a-token-using-the-microsoftazureservicesappauthentication-library-for-net) | Voor beeld van het gebruik van de bibliotheek micro soft. Azure. Services. AppAuthentication van een .NET-client
@@ -70,7 +69,7 @@ Voorbeeld aanvraag met behulp van het Azure Instance Metadata Service (IMDS)-ein
 GET 'http://169.254.169.254/metadata/identity/oauth2/token?api-version=2018-02-01&resource=https://management.azure.com/' HTTP/1.1 Metadata: true
 ```
 
-| Element | Beschrijving |
+| Element | Description |
 | ------- | ----------- |
 | `GET` | De HTTP-term waarmee wordt aangegeven dat u gegevens wilt ophalen uit het eind punt. In dit geval een OAuth-toegangs token. | 
 | `http://169.254.169.254/metadata/identity/oauth2/token` | De beheerde identiteiten voor het Azure-bronnen eindpunt voor de Instance Metadata Service. |
@@ -88,7 +87,7 @@ GET http://localhost:50342/oauth2/token?resource=https%3A%2F%2Fmanagement.azure.
 Metadata: true
 ```
 
-| Element | Beschrijving |
+| Element | Description |
 | ------- | ----------- |
 | `GET` | De HTTP-term waarmee wordt aangegeven dat u gegevens wilt ophalen uit het eind punt. In dit geval een OAuth-toegangs token. | 
 | `http://localhost:50342/oauth2/token` | Het eind punt Managed Identities voor Azure resources, waarbij 50342 de standaard poort is en kan worden geconfigureerd. |
@@ -113,7 +112,7 @@ Content-Type: application/json
 }
 ```
 
-| Element | Beschrijving |
+| Element | Description |
 | ------- | ----------- |
 | `access_token` | Het aangevraagde toegangs token. Wanneer u een beveiligd REST API aanroept, wordt het token in het `Authorization` veld aanvraag header Inge sloten als een Bearer-token, waardoor de API de aanroeper kan verifiëren. | 
 | `refresh_token` | Wordt niet gebruikt door beheerde identiteiten voor Azure-resources. |
@@ -362,7 +361,7 @@ De beheerde identiteiten voor Azure resources-eind punt signaleert fouten via he
 
 Als er een fout optreedt, bevat de bijbehorende HTTP-antwoord tekst JSON met de fout Details:
 
-| Element | Beschrijving |
+| Element | Description |
 | ------- | ----------- |
 | fout   | Fout-id. |
 | error_description | Uitgebreide beschrijving van de fout. **Fout beschrijvingen kunnen op elk gewenst moment worden gewijzigd. Code die vertakkingen niet schrijven op basis van waarden in de fout beschrijving.**|
@@ -391,7 +390,7 @@ Beperkings limieten zijn van toepassing op het aantal aanroepen naar het IMDS-ei
 
 Voor opnieuw proberen wordt de volgende strategie aanbevolen: 
 
-| **Strategie voor opnieuw proberen** | **Instellingen** | **Waarden** | **Hoe werkt het?** |
+| **Strategie voor opnieuw proberen** | **Instellingen** | **Waarden** | **Uitleg** |
 | --- | --- | --- | --- |
 |ExponentialBackoff |Aantal pogingen<br />Min. uitstel<br />Max. uitstel<br />Delta-uitstel<br />Eerste snelle poging |5<br />0 sec.<br />60 sec.<br />2 sec.<br />false |Poging 1, vertraging 0 sec.<br />Poging 2, vertraging ~2 sec.<br />Poging 3, vertraging ~6 sec.<br />Poging 4, vertraging ~14 sec.<br />Poging 5, vertraging ~30 sec. |
 

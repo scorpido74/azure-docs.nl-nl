@@ -9,18 +9,17 @@ editor: ''
 ms.service: active-directory
 ms.subservice: msi
 ms.devlang: na
-ms.topic: conceptual
+ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 11/29/2018
 ms.author: markvi
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6fedef003c6d4143d3ad1814081d55b61d5ee020
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: 767a0189ad9f55c615dc4bbd30ddfd90522f5761
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79298696"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85608395"
 ---
 # <a name="view-the-service-principal-of-a-managed-identity-using-azure-cli"></a>De service-principal van een beheerde identiteit weer geven met behulp van Azure CLI
 
@@ -42,7 +41,7 @@ In dit artikel leert u hoe u de service-principal van een beheerde identiteit ku
 
 ## <a name="view-the-service-principal"></a>De Service-Principal weer geven
 
-De volgende opdracht laat zien hoe u de service-principal van een virtuele machine of toepassing kunt weer geven waarvoor beheerde identiteit is ingeschakeld. Vervang `<VM or application name>` door uw eigen waarden. 
+De volgende opdracht laat zien hoe u de service-principal van een virtuele machine of toepassing kunt weer geven waarvoor beheerde identiteit is ingeschakeld. Vervang door `<VM or application name>` uw eigen waarden. 
 
 ```azurecli-interactive
 az ad sp list --display-name <VM or application name>

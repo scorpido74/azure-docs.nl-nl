@@ -8,12 +8,11 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive,hdiseo17may2017,seoapr2020
 ms.date: 04/24/2020
-ms.openlocfilehash: f7f460b01674359847427296e4526fc5771658f0
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: 6c222ab15ba2ad2d06667b8549f4fb3e7cc8d216
+ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82191954"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86037933"
 ---
 # <a name="kernels-for-jupyter-notebook-on-apache-spark-clusters-in-azure-hdinsight"></a>Kernels voor Jupyter notebook in Apache Spark-clusters in azure HDInsight
 
@@ -59,20 +58,22 @@ Hier volgen enkele voor delen van het gebruik van de nieuwe kernels met Jupyter 
 
     U hoeft dus **geen** instructies uit te voeren zoals de volgende om de contexten in te stellen:
 
-         sc = SparkContext('yarn-client')
-         sqlContext = HiveContext(sc)
+    ```sql
+    sc = SparkContext('yarn-client')
+    sqlContext = HiveContext(sc)
+    ```
 
     In plaats daarvan kunt u rechtstreeks de vooraf ingestelde contexten in uw toepassing gebruiken.
 
-- **Cel magics**. De PySpark-kernel biedt enkele vooraf gedefinieerde ' magics '. Dit zijn speciale opdrachten waarmee u kunt `%%` aanroepen (bijvoorbeeld `%%MAGIC` `<args>`). De Magic-opdracht moet het eerste woord in een code-cel zijn en meerdere regels inhoud toestaan. Het Magic-woord moet het eerste woord in de cel zijn. Het toevoegen van iets vóór het magische, zelfs opmerkingen, veroorzaakt een fout.     Zie [hier](https://ipython.readthedocs.org/en/stable/interactive/magics.html)voor meer informatie over magics.
+- **Cel magics**. De PySpark-kernel biedt enkele vooraf gedefinieerde ' magics '. Dit zijn speciale opdrachten waarmee u kunt aanroepen `%%` (bijvoorbeeld `%%MAGIC` `<args>` ). De Magic-opdracht moet het eerste woord in een code-cel zijn en meerdere regels inhoud toestaan. Het Magic-woord moet het eerste woord in de cel zijn. Het toevoegen van iets vóór het magische, zelfs opmerkingen, veroorzaakt een fout.     Zie [hier](https://ipython.readthedocs.org/en/stable/interactive/magics.html)voor meer informatie over magics.
 
     De volgende tabel geeft een lijst van de verschillende magics die beschikbaar zijn via de kernels.
 
-   | Magische | Voorbeeld | Beschrijving |
+   | Magische | Voorbeeld | Description |
    | --- | --- | --- |
    | Help |`%%help` |Hiermee wordt een tabel met alle beschik bare magics gegenereerd met voor beeld en beschrijving |
    | Info |`%%info` |Hiermee worden sessie gegevens voor het huidige livy-eind punt uitgevoerd |
-   | configureren |`%%configure -f`<br>`{"executorMemory": "1000M"`,<br>`"executorCores": 4`} |Hiermee configureert u de para meters voor het maken van een sessie. De Force Flag (`-f`) is verplicht als er al een sessie is gemaakt. deze zorgt ervoor dat de sessie wordt verwijderd en opnieuw wordt gemaakt. Bekijk [de hoofd tekst van de LIVY post/Sessions](https://github.com/cloudera/livy#request-body) voor een lijst met geldige para meters. Para meters moeten worden door gegeven als een JSON-teken reeks en moeten zich op de volgende regel na de Magic bevallen, zoals wordt weer gegeven in de kolom voor beeld. |
+   | configureren |`%%configure -f`<br>`{"executorMemory": "1000M"`,<br>`"executorCores": 4`} |Hiermee configureert u de para meters voor het maken van een sessie. De Force Flag ( `-f` ) is verplicht als er al een sessie is gemaakt. deze zorgt ervoor dat de sessie wordt verwijderd en opnieuw wordt gemaakt. Bekijk [de hoofd tekst van de LIVY post/Sessions](https://github.com/cloudera/livy#request-body) voor een lijst met geldige para meters. Para meters moeten worden door gegeven als een JSON-teken reeks en moeten zich op de volgende regel na de Magic bevallen, zoals wordt weer gegeven in de kolom voor beeld. |
    | sql |`%%sql -o <variable name>`<br> `SHOW TABLES` |Voert een Hive-query uit op basis van de sqlContext. Als de `-o` para meter wordt door gegeven, wordt het resultaat van de query persistent gemaakt in de lokale python-context%% als een [Panda](https://pandas.pydata.org/) data frame. |
    | lokaal |`%%local`<br>`a=1` |Alle code in latere regels wordt lokaal uitgevoerd. De code moet geldige Python2-code zijn, ongeacht de kernel die u gebruikt. , Zelfs als u **PySpark3** of **Spark** -kernels hebt geselecteerd tijdens het maken van het notitie blok, `%%local` moet die cel alleen geldige Python2-code hebben als u het Magic in een cel gebruikt. |
    | logboeken |`%%logs` |Hiermee worden de logboeken voor de huidige livy-sessie uitgevoerd. |
@@ -80,7 +81,7 @@ Hier volgen enkele voor delen van het gebruik van de nieuwe kernels met Jupyter 
    | opruimen |`%%cleanup -f` |Hiermee verwijdert u alle sessies voor het huidige livy-eind punt, inclusief de sessie van dit notitie blok. De Force Flag-f is verplicht. |
 
    > [!NOTE]  
-   > Naast de magics die door de PySpark-kernel worden toegevoegd, kunt u ook gebruikmaken [van de ingebouwde IPython magics](https://ipython.org/ipython-doc/3/interactive/magics.html#cell-magics), waaronder `%%sh`. U kunt het `%%sh` Magic gebruiken om scripts uit te voeren en code blok keren op het cluster hoofd knooppunt.
+   > Naast de magics die door de PySpark-kernel worden toegevoegd, kunt u ook gebruikmaken [van de ingebouwde IPython magics](https://ipython.org/ipython-doc/3/interactive/magics.html#cell-magics), waaronder `%%sh` . U kunt het `%%sh` Magic gebruiken om scripts uit te voeren en code blok keren op het cluster hoofd knooppunt.
 
 - **Automatische visualisatie**. De Pyspark-kernel visualiseert automatisch de uitvoer van Hive-en SQL-query's. U kunt kiezen uit verschillende soorten visualisaties, waaronder tabel, cirkel, lijn, vlak, staaf.
 
@@ -88,25 +89,27 @@ Hier volgen enkele voor delen van het gebruik van de nieuwe kernels met Jupyter 
 
 Het `%%sql` Magic ondersteunt verschillende para meters die u kunt gebruiken om het soort uitvoer te bepalen dat u ontvangt wanneer u query's uitvoert. De volgende tabel bevat de uitvoer.
 
-| Parameter | Voorbeeld | Beschrijving |
+| Parameter | Voorbeeld | Description |
 | --- | --- | --- |
 | -o |`-o <VARIABLE NAME>` |Gebruik deze para meter om het resultaat van de query op te slaan in de context%% Local python als een [Panda](https://pandas.pydata.org/) data frame. De naam van de variabele data frame is de naam van de variabele die u opgeeft. |
-| -q |`-q` |Gebruik deze para meter om visualisaties voor de cel uit te scha kelen. Als u de inhoud van een cel niet wilt visualiseren en u deze gewoon wilt vastleggen als een data frame, gebruikt `-q -o <VARIABLE>`u. Als u visualisaties wilt uitschakelen zonder de resultaten vast te leggen (bijvoorbeeld voor het uitvoeren van een SQL-query, zoals een `CREATE TABLE` instructie), gebruikt `-q` u zonder een `-o` argument op te geven. |
-| -m |`-m <METHOD>` |Waarbij de **methode** ofwel **nemen** of voor **beeld** is (de standaard instelling **is).** Als de methode is **`take`** ingesteld, worden de elementen van de kernel verzameld van de resultaat gegevensset die is opgegeven door MaxRows (verderop in deze tabel beschreven). Als de methode voor **beeld**is, wordt de kernel wille keurig voor beelden van elementen van `-r` de gegevensset op basis van de para meter in de volgende tabel beschreven. |
-| -r |`-r <FRACTION>` |Hier is een **fractie** een getal met drijvende komma tussen 0,0 en 1,0. Als de voorbeeld methode voor de SQL-query `sample`is, wordt in de kernel wille keurig de opgegeven Fractie van de onderdelen van de resultatenset voor u weer gegeven. Als u bijvoorbeeld een SQL-query met de argumenten `-m sample -r 0.01`uitvoert, worden 1% van de resultaat rijen wille keurig voor beeld. |
+| -q |`-q` |Gebruik deze para meter om visualisaties voor de cel uit te scha kelen. Als u de inhoud van een cel niet wilt visualiseren en u deze gewoon wilt vastleggen als een data frame, gebruikt u `-q -o <VARIABLE>` . Als u visualisaties wilt uitschakelen zonder de resultaten vast te leggen (bijvoorbeeld voor het uitvoeren van een SQL-query, zoals een `CREATE TABLE` instructie), gebruikt u `-q` zonder een argument op te geven `-o` . |
+| -m |`-m <METHOD>` |Waarbij de **methode** ofwel **nemen** of voor **beeld** is (de standaard instelling **is).** Als de methode is **`take`** ingesteld, worden de elementen van de kernel verzameld van de resultaat gegevensset die is opgegeven door MaxRows (verderop in deze tabel beschreven). Als de methode voor **beeld**is, wordt de kernel wille keurig voor beelden van elementen van de gegevensset op basis van de `-r` para meter in de volgende tabel beschreven. |
+| -r |`-r <FRACTION>` |Hier is een **fractie** een getal met drijvende komma tussen 0,0 en 1,0. Als de voorbeeld methode voor de SQL-query is, wordt in `sample` de kernel wille keurig de opgegeven Fractie van de onderdelen van de resultatenset voor u weer gegeven. Als u bijvoorbeeld een SQL-query met de argumenten uitvoert `-m sample -r 0.01` , worden 1% van de resultaat rijen wille keurig voor beeld. |
 | -n |`-n <MAXROWS>` |**MaxRows** is een geheel getal. De kernel beperkt het aantal uitvoer rijen tot **MaxRows**. Als **MaxRows** een negatief getal is, zoals **-1**, is het aantal rijen in de resultatenset niet beperkt. |
 
-**Hierbij**
+**Voorbeeld:**
 
-    %%sql -q -m sample -r 0.1 -n 500 -o query2
-    SELECT * FROM hivesampletable
+```sql
+%%sql -q -m sample -r 0.1 -n 500 -o query2
+SELECT * FROM hivesampletable
+```
 
 De bovenstaande instructie voert de volgende acties uit:
 
 - Hiermee worden alle records uit **hivesampletable**geselecteerd.
 - Omdat we-q gebruiken, wordt de functie voor autovisualisatie uitgeschakeld.
-- Omdat we een `-m sample -r 0.1 -n 500`wille keurig 10% van de rijen in de hivesampletable gebruiken, wordt de grootte van het resultaat ingesteld op 500 rijen.
-- `-o query2` Ten slotte wordt de uitvoer ook opgeslagen in een data frame met de naam **query2**.
+- Omdat we een `-m sample -r 0.1 -n 500` wille keurig 10% van de rijen in de hivesampletable gebruiken, wordt de grootte van het resultaat ingesteld op 500 rijen.
+- Ten slotte wordt `-o query2` de uitvoer ook opgeslagen in een data frame met de naam **query2**.
 
 ## <a name="considerations-while-using-the-new-kernels"></a>Overwegingen bij het gebruik van de nieuwe kernels
 
@@ -114,24 +117,26 @@ Welke kernel u gebruikt, waardoor de notitie blokken die worden uitgevoerd, verb
 
 ## <a name="where-are-the-notebooks-stored"></a>Waar worden de notitie blokken opgeslagen?
 
-Als uw cluster Azure Storage als standaard-opslag account gebruikt, worden Jupyter-notebooks opgeslagen in het opslag account in de map **/HdiNotebooks** .  Notebooks, tekst bestanden en mappen die u maakt vanuit Jupyter zijn toegankelijk vanuit het opslag account.  Als u bijvoorbeeld Jupyter gebruikt voor het maken van een map **`myfolder`** en een notebook **MyFolder/mynotebook. ipynb**, hebt u toegang tot die notebook `/HdiNotebooks/myfolder/mynotebook.ipynb` op het opslag account.  Het omgekeerde is ook waar, dat wil zeggen, als u een notitie blok rechtstreeks naar uw opslag account `/HdiNotebooks/mynotebook1.ipynb`uploadt op, de laptop ook zichtbaar is vanuit Jupyter.  Notebooks blijven aanwezig in het opslag account, zelfs nadat het cluster is verwijderd.
+Als uw cluster Azure Storage als standaard-opslag account gebruikt, worden Jupyter-notebooks opgeslagen in het opslag account in de map **/HdiNotebooks** .  Notebooks, tekst bestanden en mappen die u maakt vanuit Jupyter zijn toegankelijk vanuit het opslag account.  Als u bijvoorbeeld Jupyter gebruikt voor het maken van een map **`myfolder`** en een notebook **MyFolder/mynotebook. ipynb**, hebt u toegang tot die notebook op `/HdiNotebooks/myfolder/mynotebook.ipynb` het opslag account.  Het omgekeerde is ook waar, dat wil zeggen, als u een notitie blok rechtstreeks naar uw opslag account uploadt op `/HdiNotebooks/mynotebook1.ipynb` , de laptop ook zichtbaar is vanuit Jupyter.  Notebooks blijven aanwezig in het opslag account, zelfs nadat het cluster is verwijderd.
 
 > [!NOTE]  
 > HDInsight-clusters met Azure Data Lake Storage als standaard opslag slaan geen notitie blokken op in gekoppelde opslag.
 
 De manier waarop notitie blokken worden opgeslagen in het opslag account, is compatibel met [Apache HADOOP HDFS](https://hadoop.apache.org/docs/r1.2.1/hdfs_design.html). Als u een SSH-verbinding met het cluster hebt, kunt u de opdrachten voor bestands beheer gebruiken:
 
-    hdfs dfs -ls /HdiNotebooks                            # List everything at the root directory – everything in this directory is visible to Jupyter from the home page
-    hdfs dfs –copyToLocal /HdiNotebooks                   # Download the contents of the HdiNotebooks folder
-    hdfs dfs –copyFromLocal example.ipynb /HdiNotebooks   # Upload a notebook example.ipynb to the root folder so it's visible from Jupyter
+| Opdracht | Beschrijving |
+|---------|-------------|
+| `hdfs dfs -ls /HdiNotebooks` | # Lijst alles in de hoofdmap: alles in deze map is zichtbaar voor Jupyter vanaf de start pagina |
+| `hdfs dfs –copyToLocal /HdiNotebooks` | # De inhoud van de map HdiNotebooks downloaden|
+| `hdfs dfs –copyFromLocal example.ipynb /HdiNotebooks` | # Upload een notebook-voor beeld. ipynb naar de hoofdmap zodat deze zichtbaar is vanuit Jupyter |
 
-Of het cluster Azure Storage of Azure Data Lake Storage als het standaard opslag account gebruikt, de notitie blokken worden ook opgeslagen op het cluster hoofd knooppunt `/var/lib/jupyter`op.
+Of het cluster Azure Storage of Azure Data Lake Storage als het standaard opslag account gebruikt, de notitie blokken worden ook opgeslagen op het cluster hoofd knooppunt op `/var/lib/jupyter` .
 
 ## <a name="supported-browser"></a>Ondersteunde browser
 
 Jupyter-notebooks op Spark HDInsight-clusters worden alleen ondersteund op Google Chrome.
 
-## <a name="feedback"></a>Feedback
+## <a name="suggestions"></a>Suggesties
 
 De nieuwe kernels bevinden zich in de ontwikkelings fase en zullen gedurende een periode vervallen. De Api's kunnen dus worden gewijzigd als deze kernels rijp zijn. We waarderen de feedback die u hebt bij het gebruik van deze nieuwe kernels. De feedback is handig bij het vorm geven van de definitieve versie van deze kernels. U kunt uw opmerkingen/feedback in het gedeelte **feedback** onder aan dit artikel laten staan.
 

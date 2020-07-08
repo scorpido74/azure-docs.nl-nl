@@ -1,16 +1,15 @@
 ---
 title: Vm's uit Azure Automation Updatebeheer verwijderen
-description: In dit artikel leest u hoe u Vm's verwijdert uit Updatebeheer.
+description: In dit artikel leest u hoe u machines kunt verwijderen die met Updatebeheer worden beheerd.
 services: automation
 ms.topic: conceptual
-ms.date: 05/10/2018
+ms.date: 06/30/2020
 ms.custom: mvc
-ms.openlocfilehash: 796cf18ae4dbab50eb7f968bda065ae0351f2ae8
-ms.sourcegitcommit: 1692e86772217fcd36d34914e4fb4868d145687b
-ms.translationtype: MT
+ms.openlocfilehash: 9745ddea1035f239a9ca65a073fb698a8f42c01f
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84169403"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85610044"
 ---
 # <a name="remove-vms-from-update-management"></a>VM's verwijderen uit Updatebeheer
 
@@ -20,7 +19,7 @@ Wanneer u klaar bent met het implementeren van updates voor Vm's in uw omgeving,
 
 1. Selecteer **Updatebeheer** onder **Updatebeheer** in uw Automation-account.
 
-2. Gebruik de volgende opdracht om de UUID te identificeren van een virtuele machine die u wilt verwijderen uit het beheer.
+2. Gebruik de volgende opdracht om de UUID te identificeren van een computer die u wilt verwijderen uit het beheer.
 
     ```azurecli
     az vm show -g MyResourceGroup -n MyVm -d
@@ -28,13 +27,16 @@ Wanneer u klaar bent met het implementeren van updates voor Vm's in uw omgeving,
 
 3. Open in uw Log Analytics-werk ruimte onder **Algemeen**de opgeslagen Zoek opdrachten voor de scope configuratie `MicrosoftDefaultScopeConfig-Updates` .
 
-4. Klik voor de opgeslagen zoek opdracht `MicrosoftDefaultComputerGroup` op het weglatings teken aan de rechter kant en selecteer **bewerken**. 
+4. Klik voor de opgeslagen zoek opdracht `MicrosoftDefaultComputerGroup` op het weglatings teken aan de rechter kant en selecteer **bewerken**.
 
 5. Verwijder de UUID voor de virtuele machine.
 
 6. Herhaal de stappen voor alle andere Vm's die u wilt verwijderen.
 
-7. Sla de opgeslagen zoek opdracht op wanneer u klaar bent met het bewerken ervan. 
+7. Sla de opgeslagen zoek opdracht op wanneer u klaar bent met het bewerken ervan.
+
+>[!NOTE]
+>Machines worden nog steeds weer gegeven nadat u de registratie ervan ongedaan hebt gemaakt, omdat er een rapport wordt gemaakt over alle computers die in de afgelopen 24 uur zijn beoordeeld. Na het verbreken van de verbinding met de computer, moet u 24 uur wachten voordat deze niet meer worden weer gegeven.
 
 ## <a name="next-steps"></a>Volgende stappen
 

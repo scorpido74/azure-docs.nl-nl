@@ -13,10 +13,9 @@ ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 06/08/2020
 ms.openlocfilehash: 8f8cfef5ed98682a1d03f7d36caa2008f4ff03b6
-ms.sourcegitcommit: 5a8c8ac84c36859611158892422fc66395f808dc
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/10/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84660444"
 ---
 # <a name="load-data-into-azure-data-lake-storage-gen2-with-azure-data-factory"></a>Gegevens laden in Azure Data Lake Storage Gen2 met Azure Data Factory
@@ -80,13 +79,13 @@ Dit artikel laat u zien hoe u met het hulp programma Data Factory Gegevens kopiÃ
    3. Klik op **verbinding testen** om de instellingen te valideren en selecteer vervolgens **maken**.
 
       ![Amazon S3-account opgeven](./media/load-azure-data-lake-storage-gen2/specify-amazon-s3-account.png)
-   4. U ziet dat er een nieuwe AmazonS3-verbinding wordt gemaakt. Selecteer **Next**. 
+   4. U ziet dat er een nieuwe AmazonS3-verbinding wordt gemaakt. Selecteer **Volgende**. 
 
 5. Blader op de pagina **Het invoerbestand of de invoermap kiezen** naar de map en het bestand dat u wilt kopiÃ«ren. Selecteer de map/het bestand en selecteer vervolgens **kiezen**.
 
     ![Het invoerbestand of de invoermap kiezen](./media/load-azure-data-lake-storage-gen2/choose-input-folder.png)
 
-6. Geef het Kopieer gedrag op door de **recursief** en **binaire Kopieer** opties te controleren. Selecteer **Next**.
+6. Geef het Kopieer gedrag op door de **recursief** en **binaire Kopieer** opties te controleren. Selecteer **Volgende**.
 
     ![Uitvoermap opgeven](./media/load-azure-data-lake-storage-gen2/specify-binary-copy.png)
     

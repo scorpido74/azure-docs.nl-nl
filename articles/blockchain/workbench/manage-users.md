@@ -5,10 +5,9 @@ ms.date: 05/09/2019
 ms.topic: how-to
 ms.reviewer: brendal
 ms.openlocfilehash: 78841ca830ae56f6c07f796bdde85f6a6ba9c921
-ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/23/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85212731"
 ---
 # <a name="manage-users-in-azure-blockchain-workbench"></a>Gebruikers beheren in azure Block Chain workbench
@@ -25,7 +24,7 @@ Azure Block Chain Workbench maakt gebruik van Azure Active Directory (Azure AD) 
 
 Block Chain Workbench-gebruikers moeten zich in de Azure AD-Tenant bevinden voordat u ze aan toepassingen en rollen kunt toewijzen. Gebruik de volgende stappen om gebruikers toe te voegen aan Azure AD:
 
-1.  Meld u aan bij de [Azure-portal](https://portal.azure.com).
+1.  Meld u aan bij [Azure Portal](https://portal.azure.com).
 2.  Selecteer uw account in de rechter bovenhoek en schakel over naar de Azure AD-Tenant die is gekoppeld aan block Chain Workbench.
 3.  Selecteer **Azure Active Directory > gebruikers**. U ziet een lijst met gebruikers in uw Directory.
 4.  Selecteer **nieuwe gebruiker**om gebruikers toe te voegen aan de Directory. Voor externe gebruikers selecteert u **nieuwe gast gebruiker**.
@@ -42,7 +41,7 @@ Wanneer gebruikers zijn toegevoegd aan de Directory, is de volgende stap het kie
 
 Gebruikers toevoegen aan de groep **Administrators** in de Azure AD-adres lijst:
 
-1.  Meld u aan bij de [Azure-portal](https://portal.azure.com).
+1.  Meld u aan bij [Azure Portal](https://portal.azure.com).
 2.  Controleer of u zich in de Azure AD-Tenant bevindt die is gekoppeld aan block Chain Workbench door uw account in de rechter bovenhoek te selecteren.
 3.  Selecteer **Azure Active Directory > bedrijfs toepassingen**.
 4.  Selecteer de Azure AD-client toepassing voor Block Chain workbench

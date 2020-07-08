@@ -7,17 +7,16 @@ ms.reviewer: klam, logicappspm
 ms.topic: article
 ms.date: 10/01/2019
 ms.openlocfilehash: 6240b0813132f4a14dbe94b870774ebe7a0663aa
-ms.sourcegitcommit: 958f086136f10903c44c92463845b9f3a6a5275f
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/20/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "83714573"
 ---
-# <a name="call-azure-functions-from-azure-logic-apps"></a>Azure functions aanroepen vanuit Azure Logic Apps
+# <a name="call-azure-functions-from-azure-logic-apps"></a>Azure-functies aanroepen vanuit Azure Logic Apps
 
-Als u code wilt uitvoeren waarmee een specifieke taak wordt uitgevoerd in uw Logic apps, kunt u uw eigen functie maken met behulp van [Azure functions](../azure-functions/functions-overview.md). Met deze service kunt u node. js-, C#-en F #-functies maken, zodat u geen volledige app of infra structuur hoeft te bouwen om code uit te voeren. U kunt ook [Logic apps aanroepen vanuit Azure functions](#call-logic-app). Azure Functions biedt serverloze computers in de Cloud en is handig voor het uitvoeren van taken zoals deze voor beelden:
+Als u code wilt uitvoeren waarmee een specifieke taak wordt uitgevoerd in uw Logic apps, kunt u uw eigen functie maken met behulp van [Azure functions](../azure-functions/functions-overview.md). Met deze service kunt u node.js-, C#- en F#-functies maken, zodat u geen volledige app of infrastructuur hoeft te bouwen om code uit te voeren. U kunt ook [Logic apps aanroepen vanuit Azure functions](#call-logic-app). Azure Functions biedt serverloze computers in de Cloud en is handig voor het uitvoeren van taken zoals deze voor beelden:
 
-* Breid het gedrag van uw logische app uit met functies in node. js of C#.
+* Breid het gedrag van uw logische app uit met functies in Node.js of C#.
 * Voer berekeningen uit in de werk stroom van uw logische app.
 * Geavanceerde opmaak of reken velden Toep assen in uw Logic apps.
 
@@ -119,13 +118,13 @@ Voordat u een Azure-functie kunt maken, moet u echter al een Azure function-app 
 
 1. Selecteer de functie-app in de lijst functie-apps. Nadat de lijst met acties wordt geopend, selecteert u deze actie: **nieuwe functie maken**
 
-   ![De functie-app selecteren](./media/logic-apps-azure-functions/select-function-app-create-function.png)
+   ![Uw functie-app selecteren](./media/logic-apps-azure-functions/select-function-app-create-function.png)
 
 1. Definieer uw functie in de editor van de functie definitie:
 
    1. Geef in het vak **functie naam** een naam op voor de functie.
 
-   1. Voeg in het vak **code** de code toe aan de functie sjabloon, met inbegrip van de reactie en de nettolading die u wilt retour neren naar uw logische app nadat de functie is voltooid. Als u gereed bent, selecteert u **Maken**.
+   1. Voeg in het vak **code** de code toe aan de functie sjabloon, met inbegrip van de reactie en de nettolading die u wilt retour neren naar uw logische app nadat de functie is voltooid. Selecteer **Maken** als u klaar bent.
 
    Bijvoorbeeld:
 
@@ -200,7 +199,7 @@ Wanneer u een logische app vanuit een Azure-functie wilt activeren, moet de logi
 
 ## <a name="enable-authentication-for-azure-functions"></a>Verificatie inschakelen voor Azure functions
 
-Voor het eenvoudig verifiëren van toegang tot andere bronnen die worden beveiligd door Azure Active Directory (Azure AD) zonder dat u zich hoeft aan te melden en referenties of geheimen te verstrekken, kan uw logische app gebruikmaken van een [beheerde identiteit](../active-directory/managed-identities-azure-resources/overview.md) (voorheen bekend als managed service Identity of MSI). Azure beheert deze identiteit voor u en helpt u bij het beveiligen van uw referenties omdat u geen geheimen hoeft op te geven of te draaien. Meer informatie over [Azure-Services die ondersteuning bieden voor beheerde identiteiten voor Azure AD-verificatie](../active-directory/managed-identities-azure-resources/services-support-managed-identities.md#azure-services-that-support-azure-ad-authentication).
+Voor het eenvoudig verifiëren van toegang tot andere bronnen die worden beveiligd door Azure Active Directory (Azure AD) zonder dat u zich hoeft aan te melden en referenties of geheimen te verstrekken, kan uw logische app gebruikmaken van een [beheerde identiteit](../active-directory/managed-identities-azure-resources/overview.md) (voorheen bekend als managed service Identity of MSI). Azure beheert deze identiteit voor u en helpt u bij het beveiligen van uw referenties omdat u geen geheimen hoeft op te geven of te wisselen. Meer informatie over [Azure-Services die ondersteuning bieden voor beheerde identiteiten voor Azure AD-verificatie](../active-directory/managed-identities-azure-resources/services-support-managed-identities.md#azure-services-that-support-azure-ad-authentication).
 
 Als u uw logische app instelt voor het gebruik van de door het systeem toegewezen identiteit of een hand matig gemaakte door de gebruiker toegewezen identiteit, kunnen de Azure functions in uw logische app ook dezelfde identiteit voor verificatie gebruiken. Zie [verificatie toevoegen aan uitgaande oproepen](../logic-apps/logic-apps-securing-a-logic-app.md#add-authentication-outbound)voor meer informatie over verificatie ondersteuning voor Azure functions in Logic apps.
 
@@ -235,7 +234,7 @@ Als u de beheerde identiteit van uw logische app in uw Azure-functie wilt gebrui
 
 1. Open het `function.json` bestand om het te bewerken.
 
-   ![Klik op bewerken voor het bestand function. json](./media/logic-apps-azure-functions/edit-function-json-file.png)
+   ![Klik op bewerken voor ' function.jsop ' bestand](./media/logic-apps-azure-functions/edit-function-json-file.png)
 
 1. Controleer in het `bindings` object of de `authLevel` eigenschap bestaat. Als de eigenschap bestaat, stelt u de waarde van de eigenschap in op `anonymous` . Als dat niet het geval is, voegt u die eigenschap toe en stelt u de waarde in.
 
@@ -286,7 +285,7 @@ U bent nu klaar om Azure AD-verificatie in te stellen voor uw functie-app.
 
    ![Instellingen voor verificatie en autorisatie weer geven](./media/logic-apps-azure-functions/view-authentication-authorization-settings.png)
 
-1. Wijzig de **app service verificatie** -instelling in **op aan**. Selecteer in de lijst **actie die moet worden uitgevoerd wanneer de aanvraag niet is geverifieerd** de optie **Aanmelden met Azure Active Directory**. Selecteer **Azure Active Directory**onder **verificatie providers**.
+1. Wijzig de **app service verificatie** -instelling in **op aan**. Selecteer in de lijst **actie die moet worden uitgevoerd wanneer de aanvraag niet is geverifieerd** de optie **Aanmelden met Azure Active Directory**. Selecteer onder **Azure Active Directory** de optie **Verificatieproviders**.
 
    ![Verificatie met Azure AD inschakelen](./media/logic-apps-azure-functions/turn-on-authentication-azure-active-directory.png)
 
