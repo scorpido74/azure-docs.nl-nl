@@ -6,12 +6,12 @@ ms.topic: conceptual
 ms.date: 09/17/2018
 ms.author: masnider
 ms.custom: sfrev
-ms.openlocfilehash: a9266c2a8d2ad179cfdb12e367a14f37d1abc9b3
-ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
+ms.openlocfilehash: dc429500081e65bf3fdf4d7f7557d2423f56ee23
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/11/2020
-ms.locfileid: "84710283"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85611727"
 ---
 # <a name="service-fabric-terminology-overview"></a>Overzicht van Service Fabric terminologie
 
@@ -116,7 +116,7 @@ Lees het artikel [een toepassing implementeren](service-fabric-deploy-remove-app
 
 **Repair Manager-service**: dit is een optionele systeem service waarmee herstel acties op een cluster op een veilige, geautomatiseerde en transparante manier kunnen worden uitgevoerd. Repair Manager wordt gebruikt in:
 
-   - Onderhoud van Azure wordt uitgevoerd op [Silver en Gold duurzaamheid](service-fabric-cluster-capacity.md#the-durability-characteristics-of-the-cluster) Azure service Fabric-clusters.
+   - Onderhoud van Azure wordt uitgevoerd op [Silver en Gold duurzaamheid](service-fabric-cluster-capacity.md#durability-characteristics-of-the-cluster) Azure service Fabric-clusters.
    - Herstel acties uitvoeren voor [patch Orchestration-toepassing](service-fabric-patch-orchestration-application.md)
 
 ## <a name="deployment-and-application-models"></a>Implementatie-en toepassings modellen

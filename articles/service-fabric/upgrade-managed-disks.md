@@ -3,12 +3,12 @@ title: Cluster knooppunten upgraden om Azure Managed disks te gebruiken
 description: U kunt als volgt een upgrade uitvoeren van een bestaand Service Fabric cluster om Azure Managed disks te gebruiken met weinig of geen uitval tijd van uw cluster.
 ms.topic: how-to
 ms.date: 4/07/2020
-ms.openlocfilehash: 5f4698718a35970e47de2a0ee6d053802c8ef919
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 46dec6ae29fdd8f2a418f695c31900e6df4483e1
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80991208"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85611625"
 ---
 # <a name="upgrade-cluster-nodes-to-use-azure-managed-disks"></a>Cluster knooppunten upgraden om Azure Managed disks te gebruiken
 
@@ -16,13 +16,13 @@ ms.locfileid: "80991208"
 
 De algemene strategie voor het upgraden van een Service Fabric cluster knooppunt voor het gebruik van beheerde schijven is:
 
-1. Implementeer een andere dubbele schaalset voor virtuele machines van dat knooppunt type, maar met het object [managedDisk](https://docs.microsoft.com/azure/templates/microsoft.compute/2019-07-01/virtualmachinescalesets/virtualmachines#ManagedDiskParameters) toegevoegd aan `osDisk` de sectie van de implementatie sjabloon voor virtuele-machine schaal sets. De nieuwe schaalset moet worden gebonden aan hetzelfde load balancer/IP-adres als het origineel, zodat uw klanten geen service-onderbrekingen ondervinden tijdens de migratie.
+1. Implementeer een andere dubbele schaalset voor virtuele machines van dat knooppunt type, maar met het object [managedDisk](https://docs.microsoft.com/azure/templates/microsoft.compute/2019-07-01/virtualmachinescalesets/virtualmachines#ManagedDiskParameters) toegevoegd aan de `osDisk` sectie van de implementatie sjabloon voor virtuele-machine schaal sets. De nieuwe schaalset moet worden gebonden aan hetzelfde load balancer/IP-adres als het origineel, zodat uw klanten geen service-onderbrekingen ondervinden tijdens de migratie.
 
 2. Als zowel de oorspronkelijke als de bijgewerkte schaal sets gelijktijdig worden uitgevoerd, schakelt u de oorspronkelijke knooppunt exemplaren één keer uit zodat de systeem services (of replica's van stateful Services) worden gemigreerd naar de nieuwe schaalset.
 
 3. Controleer of het cluster en de nieuwe knoop punten in orde zijn en verwijder vervolgens de oorspronkelijke schaalset en de status van het knoop punt voor de verwijderde knoop punten.
 
-Dit artikel begeleidt u stapsgewijs door de stappen voor het upgraden van het primaire knooppunt type van een voorbeeld cluster om beheerde schijven te gebruiken, terwijl u geen uitval tijd van het cluster kunt vermijden (zie opmerking hieronder). De aanvankelijke status van het test cluster bestaat uit één knooppunt type van [Silver duurzaamheid](service-fabric-cluster-capacity.md#the-durability-characteristics-of-the-cluster), dat wordt ondersteund door een enkele schaalset met vijf knoop punten.
+Dit artikel begeleidt u stapsgewijs door de stappen voor het upgraden van het primaire knooppunt type van een voorbeeld cluster om beheerde schijven te gebruiken, terwijl u geen uitval tijd van het cluster kunt vermijden (zie opmerking hieronder). De aanvankelijke status van het test cluster bestaat uit één knooppunt type van [Silver duurzaamheid](service-fabric-cluster-capacity.md#durability-characteristics-of-the-cluster), dat wordt ondersteund door een enkele schaalset met vijf knoop punten.
 
 > [!CAUTION]
 > U ondervindt alleen een onderbreking met deze procedure als u afhankelijkheden hebt op de cluster-DNS (bijvoorbeeld wanneer u [service Fabric Explorer](service-fabric-visualizing-your-cluster.md)opent). [Best Practice van de front-end-services](https://docs.microsoft.com/azure/architecture/microservices/design/gateway) van de architectuur heeft een soort [Load Balancer](https://docs.microsoft.com/azure/architecture/guide/technology-choices/load-balancing-overview) voor de knooppunt typen om het wisselen van knoop punten mogelijk te maken zonder storingen.
@@ -31,7 +31,7 @@ Hier vindt u de [sjablonen en cmdlets](https://github.com/microsoft/service-fabr
 
 ## <a name="set-up-the-test-cluster"></a>Het test cluster instellen
 
-Laten we de eerste Service Fabric test cluster instellen. [Down load](https://github.com/microsoft/service-fabric-scripts-and-templates/tree/master/templates/nodetype-upgrade-no-outage) eerst de voorbeeld sjablonen van Azure Resource Manager die we gaan gebruiken om dit scenario te volt ooien.
+Laten we de eerste Service Fabric test cluster instellen. [Down load](https://github.com/microsoft/service-fabric-scripts-and-templates/tree/master/templates/nodetype-upgrade-no-outage) eerst de Azure Resource Manager-voorbeeld sjablonen die we gaan gebruiken om dit scenario te volt ooien.
 
 Meld u vervolgens aan bij uw Azure-account.
 
@@ -44,7 +44,7 @@ De volgende opdrachten begeleiden u bij het genereren van een nieuw zelfondertek
 
 ### <a name="generate-a-self-signed-certificate-and-deploy-the-cluster"></a>Een zelfondertekend certificaat genereren en het cluster implementeren
 
-Wijs eerst de variabelen toe die u nodig hebt voor Service Fabric cluster implementatie. Pas de waarden voor `resourceGroupName`, `certSubjectName`, `parameterFilePath`, en `templateFilePath` voor uw specifieke account en omgeving aan:
+Wijs eerst de variabelen toe die u nodig hebt voor Service Fabric cluster implementatie. Pas de waarden voor `resourceGroupName` , `certSubjectName` ,, `parameterFilePath` en `templateFilePath` voor uw specifieke account en omgeving aan:
 
 ```powershell
 # Assign deployment variables
@@ -57,9 +57,9 @@ $parameterFilePath = "C:\Initial-1NodeType-UnmanagedDisks.parameters.json"
 ```
 
 > [!NOTE]
-> Zorg ervoor dat `certOutputFolder` de locatie aanwezig is op de lokale computer voordat u de opdracht uitvoert om een nieuw service Fabric-cluster te implementeren.
+> Zorg ervoor dat de `certOutputFolder` locatie aanwezig is op de lokale computer voordat u de opdracht uitvoert om een nieuw service Fabric-cluster te implementeren.
 
-Open vervolgens het bestand [*Initial-1NodeType-UnmanagedDisks. para meters. json*](https://github.com/erikadoyle/service-fabric-scripts-and-templates/blob/managed-disks/templates/nodetype-upgrade-no-outage/Initial-1NodeType-UnmanagedDisks.parameters.json) en pas de `clusterName` waarden `dnsName` voor en aan met de dynamische waarden die u hebt ingesteld in Power shell en sla uw wijzigingen op.
+Open vervolgens de [*Initial-1NodeType-UnmanagedDisks.parameters.jsin*](https://github.com/erikadoyle/service-fabric-scripts-and-templates/blob/managed-disks/templates/nodetype-upgrade-no-outage/Initial-1NodeType-UnmanagedDisks.parameters.json) het bestand en wijzig de waarden voor `clusterName` en, `dnsName` zodat deze overeenkomen met de dynamische waarden die u hebt ingesteld in Power shell en sla uw wijzigingen op.
 
 Implementeer vervolgens het Service Fabric test cluster:
 
@@ -74,7 +74,7 @@ New-AzServiceFabricCluster `
     -ParameterFile $parameterFilePath
 ```
 
-Zodra de implementatie is voltooid, gaat u naar het *PFX* -`$certPfx`bestand () op de lokale computer en importeert u het in uw certificaat archief:
+Zodra de implementatie is voltooid, gaat u naar het *PFX* -bestand ( `$certPfx` ) op de lokale computer en importeert u het in uw certificaat archief:
 
 ```powershell
 cd c:\certificates
@@ -99,9 +99,9 @@ $sourceVaultValue = "/subscriptions/########-####-####-####-############/resourc
 $thumb = "BB796AA33BD9767E7DA27FE5182CF8FDEE714A70"
 ```
 
-Open het bestand [*Initial-1NodeType-UnmanagedDisks. para meters. json*](https://github.com/erikadoyle/service-fabric-scripts-and-templates/blob/managed-disks/templates/nodetype-upgrade-no-outage/Initial-1NodeType-UnmanagedDisks.parameters.json) en wijzig de `clusterName` waarden `dnsName` voor en in iets uniek.
+Open de [*Initial-1NodeType-UnmanagedDisks.parameters.jsin*](https://github.com/erikadoyle/service-fabric-scripts-and-templates/blob/managed-disks/templates/nodetype-upgrade-no-outage/Initial-1NodeType-UnmanagedDisks.parameters.json) het bestand en wijzig de waarden voor `clusterName` en `dnsName` in iets uniek.
 
-Wijs tot slot de naam van een resource groep voor het cluster aan `templateFilePath` en `parameterFilePath` Stel de en de locaties van de *eerste 1NodeType-UnmanagedDisks-* bestanden in:
+Wijs tot slot de naam van een resource groep voor het cluster aan en stel de `templateFilePath` en de `parameterFilePath` locaties van de *eerste 1NodeType-UnmanagedDisks-* bestanden in:
 
 > [!NOTE]
 > De aangewezen resource groep moet al bestaan en zich in dezelfde regio bevinden als uw Key Vault.
@@ -128,7 +128,7 @@ New-AzResourceGroupDeployment `
 
 ### <a name="connect-to-the-new-cluster-and-check-health-status"></a>Verbinding maken met het nieuwe cluster en de status controleren
 
-Maak verbinding met het cluster en zorg ervoor dat alle vijf knoop punten in orde zijn ( `clusterName` Vervang `thumb` de variabelen en voor uw cluster):
+Maak verbinding met het cluster en zorg ervoor dat alle vijf knoop punten in orde zijn (Vervang de `clusterName` `thumb` variabelen en voor uw cluster):
 
 ```powershell
 # Connect to the cluster
@@ -153,7 +153,7 @@ Met deze procedure kunt u nu beginnen met de upgrade.
 
 ## <a name="deploy-an-upgraded-scale-set-for-the-primary-node-type"></a>Een bijgewerkte schaalset implementeren voor het primaire knooppunt type
 
-Als u een upgrade, of *verticaal schalen*, een knooppunt type wilt uitvoeren, moet u een kopie van de virtuele-machine schaalset van dat knooppunt type implementeren, die anders identiek is aan de oorspronkelijke schaalset (inclusief verwijzing naar `nodeTypeRef`dezelfde `subnet`, en `loadBalancerBackendAddressPools`), behalve dat deze de gewenste upgrade/wijzigingen en een eigen afzonderlijke subnet en de binnenkomende NAT-adres groep bevat. Omdat er een upgrade wordt uitgevoerd voor een primair knooppunt type, wordt de nieuwe schaalset gemarkeerd als`isPrimary: true`primair (), net als bij de oorspronkelijke schaalset. (Als u een upgrade wilt uitvoeren voor niet-primaire knooppunt typen, laat u dit gewoon weg.)
+Als u een upgrade, of *verticaal schalen*, een knooppunt type wilt uitvoeren, moet u een kopie van de virtuele-machine schaalset van dat knooppunt type implementeren, die anders identiek is aan de oorspronkelijke schaalset (inclusief verwijzing naar dezelfde `nodeTypeRef` , `subnet` en `loadBalancerBackendAddressPools` ), behalve dat deze de gewenste upgrade/wijzigingen en een eigen afzonderlijke subnet en de binnenkomende NAT-adres groep bevat. Omdat er een upgrade wordt uitgevoerd voor een primair knooppunt type, wordt de nieuwe schaalset gemarkeerd als primair ( `isPrimary: true` ), net als bij de oorspronkelijke schaalset. (Als u een upgrade wilt uitvoeren voor niet-primaire knooppunt typen, laat u dit gewoon weg.)
 
 Voor het gemak zijn de vereiste wijzigingen al voor u gemaakt in de sjabloon *upgrade-1NodeType-2ScaleSets-ManagedDisks* [template](https://github.com/erikadoyle/service-fabric-scripts-and-templates/blob/managed-disks/templates/nodetype-upgrade-no-outage/Upgrade-1NodeType-2ScaleSets-ManagedDisks.json) en de [parameter](https://github.com/erikadoyle/service-fabric-scripts-and-templates/blob/managed-disks/templates/nodetype-upgrade-no-outage/Upgrade-1NodeType-2ScaleSets-ManagedDisks.parameters.json) bestanden.
 
@@ -165,9 +165,9 @@ Hier vindt u de sectie-voor-sectie wijzigingen van de originele cluster implemen
 
 #### <a name="parameters"></a>Parameters
 
-Voeg para meters toe voor de exemplaar naam, het aantal en de grootte van de nieuwe schaalset. Merk op `vmNodeType1Name` dat uniek is voor de nieuwe schaalset, terwijl de waarden voor aantal en grootte identiek zijn aan de oorspronkelijke schaalset.
+Voeg para meters toe voor de exemplaar naam, het aantal en de grootte van de nieuwe schaalset. Merk `vmNodeType1Name` op dat uniek is voor de nieuwe schaalset, terwijl de waarden voor aantal en grootte identiek zijn aan de oorspronkelijke schaalset.
 
-**Sjabloon bestand**
+**Sjabloonbestand**
 
 ```json
 "vmNodeType1Name": {
@@ -204,9 +204,9 @@ Voeg para meters toe voor de exemplaar naam, het aantal en de grootte van de nie
 
 ### <a name="variables"></a>Variabelen
 
-Voeg in de sectie `variables` implementatie sjabloon een vermelding toe voor de binnenkomende NAT-adres groep van de nieuwe schaalset.
+Voeg in de sectie implementatie sjabloon `variables` een vermelding toe voor de binnenkomende NAT-adres groep van de nieuwe schaalset.
 
-**Sjabloon bestand**
+**Sjabloonbestand**
 
 ```json
 "lbNatPoolID1": "[concat(variables('lbID0'),'/inboundNatPools/LoadBalancerBEAddressNatPool1')]", 
@@ -260,19 +260,19 @@ Zodra u alle wijzigingen in de sjabloon en de parameter bestanden hebt geïmplem
 
 Als u de bijgewerkte configuratie wilt implementeren, moet u eerst verschillende verwijzingen naar uw cluster certificaat ophalen die zijn opgeslagen in uw Key Vault. De eenvoudigste manier om deze waarden te vinden, is via Azure Portal. U hebt het volgende nodig:
 
-* **De Key Vault URL van uw cluster certificaat.** Selecteer vanuit uw Key Vault in azure Portal **certificaten** > *uw gewenste* > **geheime**certificaat-id:
+* **De Key Vault URL van uw cluster certificaat.** Selecteer vanuit uw Key Vault in azure Portal **certificaten**  >  *uw gewenste geheime certificaat*-  >  **id**:
 
     ```powershell
     $certUrlValue="https://sftestupgradegroup.vault.azure.net/secrets/sftestupgradegroup20200309235308/dac0e7b7f9d4414984ccaa72bfb2ea39"
     ```
 
-* **De vinger afdruk van het cluster certificaat.** (Waarschijnlijk hebt u dit al als u [verbinding hebt gemaakt met het eerste cluster](#connect-to-the-new-cluster-and-check-health-status) om de status te controleren.) Kopieer de **X. 509 SHA-1-vinger afdruk (in hex)** op dezelfde Blade voor certificaten (**certificaten** > *uw gewenste certificaat*) in azure portal:
+* **De vinger afdruk van het cluster certificaat.** (Waarschijnlijk hebt u dit al als u [verbinding hebt gemaakt met het eerste cluster](#connect-to-the-new-cluster-and-check-health-status) om de status te controleren.) **Certificates**  >  Kopieer de **X. 509 SHA-1-vinger afdruk (in hex)** op dezelfde Blade voor certificaten (certificaten*uw gewenste certificaat*) in azure portal:
 
     ```powershell
     $thumb = "BB796AA33BD9767E7DA27FE5182CF8FDEE714A70"
     ```
 
-* **De resource-ID van uw Key Vault.** Selecteer vanuit uw Key Vault in azure Portal **Eigenschappen** > **resource-id**:
+* **De resource-ID van uw Key Vault.** Selecteer vanuit uw Key Vault in azure Portal **Eigenschappen**  >  **resource-id**:
 
     ```powershell
     $sourceVaultValue = "/subscriptions/########-####-####-####-############/resourceGroups/sftestupgradegroup/providers/Microsoft.KeyVault/vaults/sftestupgradegroup"

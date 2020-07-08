@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 03/12/2019
-ms.openlocfilehash: cd0116a417d2710d330c4be406a5d9d770f76461
-ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
+ms.openlocfilehash: 5c94234644fcefb70a40ba0b2c21e6e205be0e65
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/03/2020
-ms.locfileid: "84344540"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85829411"
 ---
 # <a name="distributed-transactions-across-cloud-databases"></a>Over clouddatabases gedistribueerde transacties
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -38,7 +38,7 @@ Elastische-database transacties richten zich op de volgende scenario's:
 
 ## <a name="installation-and-migration"></a>Installatie en migratie
 
-De mogelijkheden voor Elastic data base-trans acties in SQL Database worden geboden via updates voor de .NET-bibliotheken System. data. dll en System. Trans actions. dll. De Dll's zorgen ervoor dat door voeren in twee fasen wordt gebruikt wanneer dit nodig is om atomisch te garanderen. Als u toepassingen wilt ontwikkelen met Elastic data base trans acties, installeert u [.NET Framework 4.6.1](https://www.microsoft.com/download/details.aspx?id=49981) of een latere versie. Bij het uitvoeren van een eerdere versie van .NET Framework kunnen trans acties niet worden gepromoveerd naar een gedistribueerde trans actie. er wordt een uitzonde ring gegenereerd.
+De mogelijkheden voor Elastic data base-trans acties in SQL Database worden geboden via updates voor de .NET-bibliotheken System.Data.dll en System.Transactions.dll. De Dll's zorgen ervoor dat door voeren in twee fasen wordt gebruikt wanneer dit nodig is om atomisch te garanderen. Als u toepassingen wilt ontwikkelen met Elastic data base trans acties, installeert u [.NET Framework 4.6.1](https://www.microsoft.com/download/details.aspx?id=49981) of een latere versie. Bij het uitvoeren van een eerdere versie van .NET Framework kunnen trans acties niet worden gepromoveerd naar een gedistribueerde trans actie. er wordt een uitzonde ring gegenereerd.
 
 Na de installatie kunt u gebruikmaken van de Distributed Trans Action-Api's in System. Trans actions met verbindingen met SQL Database. Als u beschikt over bestaande MSDTC-toepassingen die gebruikmaken van deze Api's, bouwt u uw bestaande toepassingen voor .NET 4,6 opnieuw op nadat u het 4.6.1-Framework hebt geïnstalleerd. Als uw projecten .NET 4,6 doel hebben, gebruiken ze automatisch de bijgewerkte dll-bestanden van de nieuwe Framework-versie en gedistribueerde trans actie API-aanroepen in combi natie met verbindingen met SQL Database worden nu voltooid.
 
@@ -50,6 +50,7 @@ Houd er rekening mee dat voor Elastic data base-trans acties geen MSDTC moet wor
 
 De volgende voorbeeld code maakt gebruik van de bekende programmeer ervaring met .NET System. Trans actions. De TransactionScope-klasse brengt een ambient trans actie in .NET tot stand. (Een ' Ambient trans actie ' is een ' in de huidige thread '.) Alle verbindingen die in de TransactionScope zijn geopend, nemen deel aan de trans actie. Als verschillende data bases deel nemen, wordt de trans actie automatisch verhoogd naar een gedistribueerde trans actie. De uitkomst van de trans actie wordt bepaald door het bereik in te stellen op voltooid om aan te geven dat er een doorvoer bewerking is.
 
+```csharp
     using (var scope = new TransactionScope())
     {
         using (var conn1 = new SqlConnection(connStrDb1))
@@ -70,12 +71,14 @@ De volgende voorbeeld code maakt gebruik van de bekende programmeer ervaring met
 
         scope.Complete();
     }
+```
 
 ### <a name="sharded-database-applications"></a>Shard-database toepassingen
 
 Elastische-database transacties voor SQL Database bieden ook ondersteuning voor het coördineren van gedistribueerde trans acties waarbij u de methode OpenConnectionForKey van de client bibliotheek voor Elastic data base gebruikt om verbindingen te openen voor een uitgeschaalde gegevenslaag. Houd rekening met gevallen waarin u transactionele consistentie moet garanderen voor wijzigingen in verschillende sharding-sleutel waarden. Verbindingen met de Shards die de verschillende sharding-sleutel waarden hosten, zijn met behulp van OpenConnectionForKey Broker. In het algemeen is het mogelijk om verbinding te maken met verschillende Shards die ervoor zorgen dat voor transactionele garanties een gedistribueerde trans actie is vereist.
 In het volgende code voorbeeld ziet u deze aanpak. Hierbij wordt ervan uitgegaan dat een variabele met de naam shardmap wordt gebruikt om een Shard-toewijzing te vertegenwoordigen uit de client bibliotheek voor Elastic Data Base:
 
+```csharp
     using (var scope = new TransactionScope())
     {
         using (var conn1 = shardmap.OpenConnectionForKey(tenantId1, credentialsStr))
@@ -96,6 +99,7 @@ In het volgende code voorbeeld ziet u deze aanpak. Hierbij wordt ervan uitgegaan
 
         scope.Complete();
     }
+```
 
 ## <a name="net-installation-for-azure-cloud-services"></a>.NET-installatie voor Azure Cloud Services
 
@@ -105,6 +109,7 @@ Voor Azure App Service worden upgrades naar het gast besturingssysteem momenteel
 
 Houd er rekening mee dat het installatie programma voor .NET 4.6.1 mogelijk meer tijdelijke opslag vereist tijdens het Boots trap proces van Azure Cloud Services dan het installatie programma voor .NET 4,6. Om ervoor te zorgen dat de installatie is voltooid, moet u de tijdelijke opslag voor uw Azure-Cloud service verhogen in het bestand ServiceDefinition. csdef in het gedeelte LocalResources en de omgevings instellingen van de opstart taak, zoals wordt weer gegeven in het volgende voor beeld:
 
+```xml
     <LocalResources>
     ...
         <LocalStorage name="TEMP" sizeInMB="5000" cleanOnRoleRecycle="false" />
@@ -123,6 +128,7 @@ Houd er rekening mee dat het installatie programma voor .NET 4.6.1 mogelijk meer
             </Environment>
         </Task>
     </Startup>
+```
 
 ## <a name="transactions-across-multiple-servers"></a>Trans acties op meerdere servers
 

@@ -11,12 +11,12 @@ author: VanMSFT
 ms.author: vanto
 ms.reviewer: sstein
 ms.date: 12/18/2018
-ms.openlocfilehash: e1fdf219d09148d47759652e97797b569e265fa4
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: b90f86576928e44e00c548f4f3ad3c22c27b8bb3
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84041908"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85829430"
 ---
 # <a name="split-merge-security-configuration"></a>Beveiligings configuratie splitsen en samen voegen
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -38,8 +38,8 @@ Als deze opties niet beschikbaar zijn, kunt u **zelfondertekende certificaten**g
 
 ## <a name="tools-to-generate-certificates"></a>Hulpprogram ma's voor het genereren van certificaten
 
-* [Makecert. exe](https://msdn.microsoft.com/library/bfsktky3.aspx)
-* [Pvk2pfx. exe](https://msdn.microsoft.com/library/windows/hardware/ff550672.aspx)
+* [makecert.exe](https://msdn.microsoft.com/library/bfsktky3.aspx)
+* [pvk2pfx.exe](https://msdn.microsoft.com/library/windows/hardware/ff550672.aspx)
 
 ### <a name="to-run-the-tools"></a>De hulpprogram ma's uitvoeren
 
@@ -47,7 +47,10 @@ Als deze opties niet beschikbaar zijn, kunt u **zelfondertekende certificaten**g
   
     Als deze is geïnstalleerd, gaat u naar:
   
-        %ProgramFiles(x86)%\Windows Kits\x.y\bin\x86 
+    ```console
+    %ProgramFiles(x86)%\Windows Kits\x.y\bin\x86 
+    ```
+
 * Ontvang de WDK van [Windows 8,1: down load kits en hulpprogram ma's](https://msdn.microsoft.com/windows/hardware/gg454513#drivers)
 
 ## <a name="to-configure-the-tlsssl-certificate"></a>Het TLS/SSL-certificaat configureren
@@ -193,12 +196,14 @@ Dit onderwerp is alleen ter informatie. Volg de configuratie stappen die worden 
 ## <a name="create-a-self-signed-certificate"></a>Een zelfondertekend certificaat maken
 Aanvaller
 
-    makecert ^
-      -n "CN=myservice.cloudapp.net" ^
-      -e MM/DD/YYYY ^
-      -r -cy end -sky exchange -eku "1.3.6.1.5.5.7.3.1" ^
-      -a sha256 -len 2048 ^
-      -sv MySSL.pvk MySSL.cer
+```console
+makecert ^
+  -n "CN=myservice.cloudapp.net" ^
+  -e MM/DD/YYYY ^
+  -r -cy end -sky exchange -eku "1.3.6.1.5.5.7.3.1" ^
+  -a sha256 -len 2048 ^
+  -sv MySSL.pvk MySSL.cer
+```
 
 Aanpassen:
 
@@ -208,7 +213,9 @@ Aanpassen:
 ## <a name="create-pfx-file-for-self-signed-tlsssl-certificate"></a>PFX-bestand maken voor zelfondertekend TLS/SSL-certificaat
 Aanvaller
 
-        pvk2pfx -pvk MySSL.pvk -spc MySSL.cer
+```console
+pvk2pfx -pvk MySSL.pvk -spc MySSL.cer
+```
 
 Voer het wacht woord in en exporteer het certificaat met de volgende opties:
 
@@ -230,7 +237,9 @@ Upload het certificaat met de bestaande of gegenereerde. PFX-bestand met het sle
 ## <a name="update-tlsssl-certificate-in-service-configuration-file"></a>TLS/SSL-certificaat in service configuratie bestand bijwerken
 Werk de vingerafdruk waarde van de volgende instelling in het service configuratie bestand bij met de vinger afdruk van het certificaat dat is geüpload naar de Cloud service:
 
-    <Certificate name="SSL" thumbprint="" thumbprintAlgorithm="sha1" />
+```console
+<Certificate name="SSL" thumbprint="" thumbprintAlgorithm="sha1" />
+```
 
 ## <a name="import-tlsssl-certification-authority"></a>TLS/SSL-certificerings instantie importeren
 Voer de volgende stappen uit op alle accounts/computers die met de service zullen communiceren:
@@ -258,13 +267,15 @@ Kopieer vervolgens dezelfde vinger afdruk als het TLS/SSL-certificaat in de inst
 ## <a name="create-a-self-signed-certification-authority"></a>Een zelf-ondertekende certificerings instantie maken
 Voer de volgende stappen uit om een zelfondertekend certificaat te maken om te fungeren als een certificerings instantie:
 
-    makecert ^
-    -n "CN=MyCA" ^
-    -e MM/DD/YYYY ^
-     -r -cy authority -h 1 ^
-     -a sha256 -len 2048 ^
-      -sr localmachine -ss my ^
-      MyCA.cer
+```console
+makecert ^
+-n "CN=MyCA" ^
+-e MM/DD/YYYY ^
+ -r -cy authority -h 1 ^
+ -a sha256 -len 2048 ^
+  -sr localmachine -ss my ^
+  MyCA.cer
+```
 
 Om het aan te passen
 
@@ -311,13 +322,15 @@ Elke persoon die gemachtigd is voor toegang tot de service, moet een client cert
 
 De volgende stappen moeten worden uitgevoerd op dezelfde computer waarop het zelfondertekende CA-certificaat is gegenereerd en opgeslagen:
 
-    makecert ^
-      -n "CN=My ID" ^
-      -e MM/DD/YYYY ^
-      -cy end -sky exchange -eku "1.3.6.1.5.5.7.3.2" ^
-      -a sha256 -len 2048 ^
-      -in "MyCA" -ir localmachine -is my ^
-      -sv MyID.pvk MyID.cer
+```console
+makecert ^
+  -n "CN=My ID" ^
+  -e MM/DD/YYYY ^
+  -cy end -sky exchange -eku "1.3.6.1.5.5.7.3.2" ^
+  -a sha256 -len 2048 ^
+  -in "MyCA" -ir localmachine -is my ^
+  -sv MyID.pvk MyID.cer
+```
 
 Aanpassen
 
@@ -330,11 +343,15 @@ Met deze opdracht wordt gevraagd om een wacht woord dat moet worden gemaakt en v
 ## <a name="create-pfx-files-for-client-certificates"></a>PFX-bestanden maken voor client certificaten
 Voer voor elk gegenereerd client certificaat het volgende uit:
 
-    pvk2pfx -pvk MyID.pvk -spc MyID.cer
+```console
+pvk2pfx -pvk MyID.pvk -spc MyID.cer
+```
 
 Aanpassen
 
-    MyID.pvk and MyID.cer with the filename for the client certificate
+```console
+MyID.pvk and MyID.cer with the filename for the client certificate
+```
 
 Voer het wacht woord in en exporteer het certificaat met de volgende opties:
 
@@ -352,7 +369,7 @@ Elke persoon voor wie een client certificaat is uitgegeven, moet het sleutel paa
 ## <a name="copy-client-certificate-thumbprints"></a>Vinger afdrukken van client certificaten kopiëren
 Elke persoon voor wie een client certificaat is uitgegeven, moet deze stappen volgen om de vinger afdruk van het certificaat te verkrijgen, dat wordt toegevoegd aan het service configuratie bestand:
 
-* Voer certmgr. exe uit
+* certmgr.exe uitvoeren
 * Selecteer het tabblad persoonlijk
 * Dubbel klik op het client certificaat dat moet worden gebruikt voor verificatie
 * In het dialoog venster certificaat dat wordt geopend, selecteert u het tabblad Details
@@ -379,11 +396,15 @@ De standaard instelling controleert niet bij de certificerings instantie voor de
 ## <a name="create-pfx-file-for-self-signed-encryption-certificates"></a>PFX-bestand maken voor zelfondertekende versleutelings certificaten
 Voer voor een versleutelings certificaat het volgende uit:
 
-    pvk2pfx -pvk MyID.pvk -spc MyID.cer
+```console
+pvk2pfx -pvk MyID.pvk -spc MyID.cer
+```
 
 Aanpassen
 
-    MyID.pvk and MyID.cer with the filename for the encryption certificate
+```console
+MyID.pvk and MyID.cer with the filename for the encryption certificate
+```
 
 Voer het wacht woord in en exporteer het certificaat met de volgende opties:
 
@@ -418,10 +439,10 @@ Werk de vingerafdruk waarde van de volgende instellingen in het service configur
 ## <a name="find-certificate"></a>Certificaat zoeken
 Volg deze stappen:
 
-1. Voer MMC. exe uit.
+1. Voer mmc.exe uit.
 2. Bestand-> module toevoegen/verwijderen...
 3. Selecteer **Certificaten**.
-4. Klik op **Toevoegen**.
+4. Klik op **Add**.
 5. Kies de locatie van het certificaat archief.
 6. Klik op **Voltooien**.
 7. Klik op **OK**.
@@ -467,7 +488,7 @@ In de wizard Certificaat importeren:
 9. Klik op **OK** in alle dialoog vensters.
 
 ## <a name="upload-certificate"></a>Certificaat uploaden
-In [Azure Portal](https://portal.azure.com/)
+In de [Azure Portal](https://portal.azure.com/)
 
 1. Selecteer **Cloud Services**.
 2. Selecteer de Cloud service.

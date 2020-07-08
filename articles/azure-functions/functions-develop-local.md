@@ -3,12 +3,12 @@ title: Azure functions lokaal ontwikkelen en uitvoeren
 description: Meer informatie over het coderen en testen van Azure functions op uw lokale computer voordat u deze uitvoert op Azure Functions.
 ms.topic: conceptual
 ms.date: 09/04/2018
-ms.openlocfilehash: 835edcb94b294d93cab41ea51b88ac38db71d95e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: ef59c57bf4e2ba1684c3e3b43357efad0da9806f
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "74230636"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85829377"
 ---
 # <a name="code-and-test-azure-functions-locally"></a>Azure-functies lokaal programmeren en testen
 
@@ -18,7 +18,7 @@ U kunt Azure Functions in het [Azure Portal]ontwikkelen en testen, maar veel ont
 
 De manier waarop u functies op uw lokale computer ontwikkelt, is afhankelijk van uw [taal](supported-languages.md) en programma voorkeuren. De omgevingen in de volgende tabel ondersteunen lokale ontwikkeling:
 
-|Omgeving                              |Talen         |Beschrijving|
+|Omgeving                              |Talen         |Description|
 |-----------------------------------------|------------|---|
 |[Visual Studio Code](functions-develop-vs-code.md)| [C# (Class-bibliotheek)](functions-dotnet-class-library.md), [C#-script (. CSX)](functions-reference-csharp.md), [Java script](functions-reference-node.md), [Power shell](functions-create-first-function-powershell.md), [python](functions-reference-python.md) | De [uitbrei ding van de Azure functions voor VS code](https://marketplace.visualstudio.com/items?itemName=ms-azuretools.vscode-azurefunctions) voegt functies ondersteuning toe aan VS code. Vereist de kern Hulpprogramma's. Ondersteunt de ontwikkeling van Linux, MacOS en Windows bij gebruik van versie 2. x van de kern Hulpprogramma's. Zie [uw eerste functie maken met Visual Studio code](functions-create-first-function-vs-code.md)voor meer informatie. |
 | [Opdracht prompt of Terminal](functions-run-local.md) | [C# (Class-bibliotheek)](functions-dotnet-class-library.md), [C#-script (. CSX)](functions-reference-csharp.md), [Java script](functions-reference-node.md), [Power shell](functions-reference-powershell.md), [python](functions-reference-python.md) | [Azure functions core tools] biedt de kern runtime en sjablonen voor het maken van functies, waarmee lokale ontwikkeling mogelijk wordt. Versie 2. x ondersteunt de ontwikkeling van Linux, MacOS en Windows. Alle omgevingen zijn afhankelijk van de belangrijkste Hulpprogram Ma's voor de runtime van lokale functies. |
@@ -27,16 +27,16 @@ De manier waarop u functies op uw lokale computer ontwikkelt, is afhankelijk van
 
 [!INCLUDE [Don't mix development environments](../../includes/functions-mixed-dev-environments.md)]
 
-Met elk van deze lokale ontwikkel omgevingen kunt u functie-app-projecten maken en vooraf gedefinieerde functie sjablonen gebruiken om nieuwe functies te maken. Elk maakt gebruik van de kern Hulpprogramma's zodat u uw functies kunt testen en fout opsporing uitvoert op de echte functions-runtime op uw eigen computer, net zoals elke andere app. U kunt uw functie-app-project ook publiceren vanuit een van deze omgevingen naar Azure.  
+Met elk van deze lokale ontwikkel omgevingen kunt u functie-app-projecten maken en vooraf gedefinieerde functie sjablonen gebruiken om nieuwe functies te maken. Elk maakt gebruik van de kern Hulpprogramma's zodat u uw functies kunt testen en fout opsporing uitvoert op de echte functions-runtime op uw eigen computer, net zoals elke andere app. U kunt uw functie-app-project ook publiceren vanuit een van deze omgevingen naar Azure.
 
 ## <a name="next-steps"></a>Volgende stappen
 
 + Zie [Azure functions ontwikkelen met Visual Studio](functions-develop-vs.md)voor meer informatie over de lokale ontwikkeling van gecompileerde C#-functies met behulp van visual studio 2019.
-+ Zie [Azure functions van VS code implementeren](/azure/javascript/tutorial-vscode-serverless-node-01)voor meer informatie over de lokale ontwikkeling van functies met behulp van VS code op een Mac-, Linux-of Windows-computer.
++ Zie [Azure functions van VS code implementeren](/azure/developer/javascript/tutorial-vscode-serverless-node-01)voor meer informatie over de lokale ontwikkeling van functies met behulp van VS code op een Mac-, Linux-of Windows-computer.
 + Zie [werken met Azure functions core tools](functions-run-local.md)voor meer informatie over het ontwikkelen van functies vanaf de opdracht prompt of Terminal.
 
 <!-- LINKS -->
 
 [Azure Functions Core Tools]: https://www.npmjs.com/package/azure-functions-core-tools
-[Azure Portal]: https://portal.azure.com 
+[Azure-portal]: https://portal.azure.com
 [Node.js]: https://docs.npmjs.com/getting-started/installing-node#osx-or-windows

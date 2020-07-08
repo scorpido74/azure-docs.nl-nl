@@ -11,12 +11,12 @@ ms.date: 05/19/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e6f06e9ad03face5082950ecedd3f73b97dc6ae4
-ms.sourcegitcommit: f98ab5af0fa17a9bba575286c588af36ff075615
+ms.openlocfilehash: a5b59942731c8ca7b29de30e160d8370c9cf76ef
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/25/2020
-ms.locfileid: "85360925"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85807635"
 ---
 # <a name="install-the-azure-ad-connect-cloud-provisioning-agent"></a>De agent voor Azure AD Connect-cloudinrichting installeren
 Dit document helpt u bij het installatie proces voor de Azure Active Directory (Azure AD) Connect inrichtings agent en hoe u deze in eerste instantie kunt configureren in de Azure Portal.
@@ -34,7 +34,8 @@ Het installeren en configureren van Azure AD Connect inrichting wordt uitgevoerd
 Voer de volgende stappen uit om de agent te installeren.
 
 1. Meld u aan bij de server die u wilt gebruiken met beheerders machtigingen voor de onderneming.
-1. Ga naar Azure Portal. Selecteer aan de linkerkant **Azure Active Directory**.
+1. Meld u aan bij de Azure Portal en ga vervolgens naar **Azure Active Directory**.
+1. Selecteer in het linkermenu **Azure AD Connect**.
 1. Selecteer **inrichting beheren (preview)**  >  **Alle agents controleren**.
 1. Down load de Azure AD Connect-inrichtings agent vanuit de Azure Portal.
 
@@ -45,7 +46,7 @@ Voer de volgende stappen uit om de agent te installeren.
    ![Microsoft Azure AD scherm voor het inrichtings agent-pakket koppelen](media/how-to-install/install1.png)</br>
 
 1. Nadat deze bewerking is voltooid, wordt de configuratie wizard gestart. Meld u aan met uw globale beheerdersreferenties voor Azure AD.
-1. Selecteer in het scherm **verbinding maken Active Directory** de optie **map toevoegen**. Meld u vervolgens aan met uw Active Directory-beheerders account. Met deze bewerking wordt uw on-premises Directory toegevoegd. Selecteer **Next**.
+1. Selecteer in het scherm **verbinding maken Active Directory** de optie **map toevoegen**. Meld u vervolgens aan met uw Active Directory-beheerders account. Met deze bewerking wordt uw on-premises Directory toegevoegd. Selecteer **Volgende**.
 
    ![Active Directory scherm verbinden](media/how-to-install/install3.png)</br>
 

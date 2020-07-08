@@ -6,12 +6,12 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 02/18/2019
 ms.author: glenga
-ms.openlocfilehash: 28d3aae402a7d091fdcbe07dd4699a6fd44b5b25
-ms.sourcegitcommit: ba8df8424d73c8c4ac43602678dae4273af8b336
+ms.openlocfilehash: 97b17f7e80590b9b907b8dc25253e6d706117357
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/05/2020
-ms.locfileid: "84456892"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85807975"
 ---
 # <a name="how-to-use-the-azure-webjobs-sdk-for-event-driven-background-processing"></a>De Azure WebJobs SDK gebruiken voor gebeurtenisgestuurde verwerking op de achtergrond
 
@@ -39,11 +39,11 @@ Indien mogelijk zijn er voor beelden beschikbaar voor versie 3. *x* en versie 2.
 
 De host is een runtime container voor functions.  Het luistert naar triggers en aanroepen-functies. In versie 3. *x*, de host is een implementatie van `IHost` . In versie 2. *x*gebruikt u het- `JobHost` object. U maakt een exemplaar van een host in uw code en schrijft code om het gedrag aan te passen.
 
-Dit is een belang rijk verschil tussen het rechtstreeks gebruiken van de webjobs SDK en het indirect via Azure Functions. In Azure Functions beheert de service de host en u kunt de host niet aanpassen door code te schrijven. Met Azure Functions kunt u het gedrag van de host aanpassen via instellingen in het bestand host. json. Deze instellingen zijn teken reeksen, geen code en Hiermee worden de soorten aanpassingen beperkt die u kunt uitvoeren.
+Dit is een belang rijk verschil tussen het rechtstreeks gebruiken van de webjobs SDK en het indirect via Azure Functions. In Azure Functions beheert de service de host en u kunt de host niet aanpassen door code te schrijven. Met Azure Functions kunt u het gedrag van de host aanpassen via instellingen in de host.jsvoor het bestand. Deze instellingen zijn teken reeksen, geen code en Hiermee worden de soorten aanpassingen beperkt die u kunt uitvoeren.
 
 ### <a name="host-connection-strings"></a>Verbindingsteken reeksen voor de host
 
-De webjobs SDK zoekt naar Azure Storage en Azure Service Bus verbindings reeksen in het bestand local. settings. json wanneer u lokaal uitvoert, of in de omgeving van de Webtaak wanneer u uitvoert in Azure. Een opslag connection string instelling met de naam `AzureWebJobsStorage` is standaard vereist.  
+De webjobs SDK zoekt Azure Storage en Azure Service Bus verbindings reeksen in de local.settings.jsin het bestand wanneer u lokaal uitvoert, of in de omgeving van de Webtaak wanneer u in azure uitvoert. Een opslag connection string instelling met de naam `AzureWebJobsStorage` is standaard vereist.  
 
 Versie 2. met *x* van de SDK kunt u uw eigen namen voor deze verbindings reeksen gebruiken of elders opslaan. U kunt namen in code instellen met behulp van de [`JobHostConfiguration`] , zoals hier wordt weer gegeven:
 
@@ -358,7 +358,7 @@ U kunt het gedrag van sommige triggers en bindingen configureren. Het proces voo
 * **Versie 3. *x*:** Stel de configuratie in wanneer de `Add<Binding>` methode wordt aangeroepen in `ConfigureWebJobs` .
 * **Versie 2. *x*:** Stel de configuratie in door eigenschappen in te stellen in een configuratie object dat u doorgeeft aan `JobHost` .
 
-Deze binding-specifieke instellingen zijn gelijk aan instellingen in het [bestand host. json-project](../azure-functions/functions-host-json.md) in azure functions.
+Deze binding-specifieke instellingen zijn gelijk aan instellingen in het [host.jsvan het project bestand](../azure-functions/functions-host-json.md) in azure functions.
 
 U kunt de volgende bindingen configureren:
 
@@ -470,7 +470,7 @@ static void Main(string[] args)
 }
 ```
 
-Zie de [referentie host. json v1. x](../azure-functions/functions-host-json-v1.md#queues)voor meer informatie.
+Zie de [Naslag informatie overhost.jsvan v1. x](../azure-functions/functions-host-json-v1.md#queues)voor meer informatie.
 
 ### <a name="sendgrid-binding-configuration-version-3x"></a>Configuratie van SendGrid-binding (versie 3.* x*)
 
@@ -959,7 +959,7 @@ In versie 3. *x*, hoeft u niet meer te wissen [`TelemetryClient`] wanneer de hos
 
 #### <a name="version-2x"></a>Versie 2. *x*
 
-In versie 2. *x*, de [`TelemetryClient`] interne door de Application Insights provider voor de webjobs SDK gebruikte [`ServerTelemetryChannel`](https://github.com/microsoft/ApplicationInsights-dotnet/tree/develop/.publicApi/Microsoft.AI.ServerTelemetryChannel.dll) . Wanneer het Application Insights-eind punt niet beschikbaar is of het beperken van binnenkomende aanvragen, slaat dit kanaal [aanvragen op in het bestands systeem van de web-app en verzendt deze later opnieuw](https://apmtips.com/blog/2015/09/03/more-telemetry-channels).
+In versie 2. *x*, de [`TelemetryClient`] interne door de Application Insights provider voor de webjobs SDK gebruikte [`ServerTelemetryChannel`](https://github.com/microsoft/ApplicationInsights-dotnet/tree/develop/.publicApi/Microsoft.AI.ServerTelemetryChannel.dll) . Wanneer het Application Insights-eind punt niet beschikbaar is of het beperken van binnenkomende aanvragen, slaat dit kanaal [aanvragen op in het bestands systeem van de web-app en verzendt deze later opnieuw](https://apmtips.com/posts/2015-09-03-more-telemetry-channels/).
 
 De [`TelemetryClient`] wordt gemaakt door een klasse die wordt geïmplementeerd `ITelemetryClientFactory` . Standaard is dit de [`DefaultTelemetryClientFactory`](https://github.com/Azure/azure-webjobs-sdk/blob/dev/src/Microsoft.Azure.WebJobs.Logging.ApplicationInsights/) .
 

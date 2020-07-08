@@ -2,14 +2,14 @@
 title: Algemene problemen
 description: Meer informatie over het oplossen van veelvoorkomende problemen wanneer u Azure Container Instances implementeert, uitvoert of beheert
 ms.topic: article
-ms.date: 09/25/2019
+ms.date: 06/25/2020
 ms.custom: mvc
-ms.openlocfilehash: 07cdbfb27aaf9076e726ebda861ed24996e10135
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: aeb4517f5be7fff9c29487d6521f80ee697c0e96
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "74533382"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85807839"
 ---
 # <a name="troubleshoot-common-issues-in-azure-container-instances"></a>Veelvoorkomende problemen in Azure Container Instances oplossen
 
@@ -20,20 +20,21 @@ Als u aanvullende ondersteuning nodig hebt, raadpleegt u de beschik bare **Help 
 ## <a name="issues-during-container-group-deployment"></a>Problemen tijdens de implementatie van de container groep
 ### <a name="naming-conventions"></a>Naamconventies
 
-Bij het definiëren van de container specificatie, moeten bepaalde para meters worden uitgebreid tot naamgevings beperkingen. Hieronder ziet u een tabel met specifieke vereisten voor container groep eigenschappen. Zie [naamgevings conventies][azure-name-restrictions] in de Azure Architecture Center voor meer informatie over Azure-naamgevings conventies.
+Bij het definiëren van de container specificatie, moeten bepaalde para meters worden uitgebreid tot naamgevings beperkingen. Hieronder ziet u een tabel met specifieke vereisten voor container groep eigenschappen. Zie [naamgevings conventies][azure-name-restrictions] in de Azure Architecture Center en [naamgevings regels en beperkingen voor Azure-resources][naming-rules]voor meer informatie.
 
 | Bereik | Lengte | Hoofdlettergebruik | Geldige tekens | Voorgesteld patroon | Voorbeeld |
 | --- | --- | --- | --- | --- | --- |
-| Naam van container groep | 1-64 |Niet hoofdlettergevoelig |Alfanumerieke tekens en afbreek streepjes, behalve het eerste of laatste teken |`<name>-<role>-CG<number>` |`web-batch-CG1` |
-| Containernaam | 1-64 |Niet hoofdlettergevoelig |Alfanumerieke tekens en afbreek streepjes, behalve het eerste of laatste teken |`<name>-<role>-CG<number>` |`web-batch-CG1` |
+| Container naam<sup>1</sup> | 1-63 |Kleine letters | Alfanumerieke tekens en afbreek streepjes, behalve het eerste of laatste teken |`<name>-<role>-container<number>` |`web-batch-container1` |
 | Container poorten | Tussen 1 en 65535 |Geheel getal |Geheel getal tussen 1 en 65535 |`<port-number>` |`443` |
 | DNS-naamlabel | 5-63 |Niet hoofdlettergevoelig |Alfanumerieke tekens en afbreek streepjes, behalve het eerste of laatste teken |`<name>` |`frontend-site1` |
 | Omgevingsvariabele | 1-63 |Niet hoofdlettergevoelig |Alfanumerieke tekens en onderstrepings tekens (_) overal behalve het eerste of laatste teken |`<name>` |`MY_VARIABLE` |
-| Volume naam | 5-63 |Niet hoofdlettergevoelig |Kleine letters en cijfers en wille keurige streepjes, behalve het eerste of laatste teken. Kan niet twee opeenvolgende afbreek streepjes bevatten. |`<name>` |`batch-output-volume` |
+| Volume naam | 5-63 |Kleine letters |Alfanumerieke tekens en afbreek streepjes, behalve het eerste of laatste teken. Kan niet twee opeenvolgende afbreek streepjes bevatten. |`<name>` |`batch-output-volume` |
+
+<sup>1</sup> Beperking ook voor container groeps namen wanneer deze niet onafhankelijk van container instanties worden opgegeven, bijvoorbeeld met `az container create` opdracht implementaties.
 
 ### <a name="os-version-of-image-not-supported"></a>De versie van het besturings systeem van de installatie kopie wordt niet ondersteund
 
-Als u een installatie kopie opgeeft die Azure Container Instances niet wordt ondersteund `OsVersionNotSupported` , wordt een fout geretourneerd. De fout is vergelijkbaar met de volgende, `{0}` waarbij de naam is van de installatie kopie die u probeert te implementeren:
+Als u een installatie kopie opgeeft die Azure Container Instances niet wordt ondersteund, `OsVersionNotSupported` wordt een fout geretourneerd. De fout is vergelijkbaar met de volgende, waarbij `{0}` de naam is van de installatie kopie die u probeert te implementeren:
 
 ```json
 {
@@ -48,7 +49,7 @@ Deze fout treedt meestal op bij het implementeren van Windows-installatie kopie�
 
 ### <a name="unable-to-pull-image"></a>Kan de installatie kopie niet ophalen
 
-Als Azure Container Instances in eerste instantie de afbeelding niet kan ophalen, wordt er gedurende een periode een nieuwe poging gedaan. Als de pull-bewerking van de installatie kopie blijft mislukken, mislukt het uitvoeren van de implementatie en ziet `Failed to pull image` u mogelijk een fout melding.
+Als Azure Container Instances in eerste instantie de afbeelding niet kan ophalen, wordt er gedurende een periode een nieuwe poging gedaan. Als de pull-bewerking van de installatie kopie blijft mislukken, mislukt het uitvoeren van de implementatie en ziet u mogelijk een `Failed to pull image` fout melding.
 
 U kunt dit probleem oplossen door het container exemplaar te verwijderen en de implementatie opnieuw uit te voeren. Zorg ervoor dat de installatie kopie in het REGI ster bestaat en dat u de naam van de installatie kopie correct hebt getypt.
 
@@ -113,7 +114,7 @@ az container create -g myResourceGroup --name mywindowsapp --os-type Windows --i
  --command-line "ping -t localhost"
 ```
 
-De Container Instances-API en Azure Portal bevatten `restartCount` een eigenschap. Als u het aantal herstartingen voor een container wilt controleren, kunt u de opdracht [AZ container show][az-container-show] gebruiken in de Azure cli. In de volgende voorbeeld uitvoer (die is afgekapt voor de boog), ziet u de `restartCount` eigenschap aan het einde van de uitvoer.
+De Container Instances-API en Azure Portal bevatten een `restartCount` eigenschap. Als u het aantal herstartingen voor een container wilt controleren, kunt u de opdracht [AZ container show][az-container-show] gebruiken in de Azure cli. In de volgende voorbeeld uitvoer (die is afgekapt voor de boog), ziet u de `restartCount` eigenschap aan het einde van de uitvoer.
 
 ```json
 ...
@@ -170,7 +171,7 @@ Windows-installatie kopieën hebben [extra overwegingen](#cached-images).
 
 Als uw container veel tijd in beslag neemt, maar uiteindelijk is geslaagd, gaat u eerst naar de grootte van uw container installatie kopie. Omdat Azure Container Instances uw container installatie kopie op aanvraag ophaalt, is de opstart tijd die u ziet direct gerelateerd aan de grootte.
 
-U kunt de grootte van uw container installatie kopie weer geven met `docker images` behulp van de opdracht in de docker-cli:
+U kunt de grootte van uw container installatie kopie weer geven met behulp van de `docker images` opdracht in de docker-cli:
 
 ```console
 $ docker images
@@ -186,10 +187,10 @@ Een andere manier om de impact van de installatie kopie op de opstart tijd van d
 
 #### <a name="cached-images"></a>Afbeeldingen in cache
 
-Azure container instances gebruikt een cache mechanisme om de opstart tijd van de container te versnellen voor installatie kopieën die zijn gebaseerd op `nanoserver:1809`algemene `servercore:ltsc2019`Windows- `servercore:1809` [basis installatie kopieën](container-instances-faq.md#what-windows-base-os-images-are-supported), waaronder, en. Veelgebruikte Linux-installatie kopieën `ubuntu:1604` , `alpine:3.6` zoals en, worden ook in de cache opgeslagen. Voor een bijgewerkte lijst met afbeeldingen en tags in de cache gebruikt u de API-afbeelding van de [lijst in cache][list-cached-images] .
+Azure Container Instances gebruikt een cache mechanisme om de opstart tijd van de container te versnellen voor installatie kopieën die zijn gebaseerd op algemene [Windows-basis installatie kopieën](container-instances-faq.md#what-windows-base-os-images-are-supported), waaronder `nanoserver:1809` , `servercore:ltsc2019` en `servercore:1809` . Veelgebruikte Linux-installatie kopieën, zoals `ubuntu:1604` en `alpine:3.6` , worden ook in de cache opgeslagen. Voor een bijgewerkte lijst met afbeeldingen en tags in de cache gebruikt u de API-afbeelding van de [lijst in cache][list-cached-images] .
 
 > [!NOTE]
-> Het gebruik van installatie kopieën op basis van Windows Server 2019 in Azure Container Instances is in de preview-versie.
+> Het gebruik van installatiekopieën op basis van Windows Server 2019 in Azure Container Instances bevindt zich nog in de preview-fase.
 
 #### <a name="windows-containers-slow-network-readiness"></a>Windows-containers langzaam netwerk gereedheid
 
@@ -199,11 +200,11 @@ Na het maken van de eerste keer is het mogelijk dat Windows-containers tot 30 se
 
 Azure Container Instances biedt geen rechtstreekse toegang tot de onderliggende infra structuur die als host fungeert voor container groepen. Dit geldt ook voor toegang tot de docker-API die wordt uitgevoerd op de host van de container en het uitvoeren van geprivilegieerde containers. Als u docker-interactie nodig hebt, raadpleegt u de [rest-referentie documentatie](https://aka.ms/aci/rest) om te zien wat de ACI API ondersteunt. Als er iets ontbreekt, dient u een aanvraag in te dienen bij de forums over de [ACI-feedback](https://aka.ms/aci/feedback).
 
-### <a name="container-group-ip-address-may-not-be-accessible-due-to-mismatched-ports"></a>Het IP-adres van de container groep is mogelijk niet toegankelijk vanwege niet-overeenkomende poorten
+### <a name="container-group-ip-address-may-not-be-accessible-due-to-mismatched-ports"></a>Het IP-adres van de containergroep is mogelijk niet toegankelijk vanwege niet-overeenkomende poorten
 
-Azure Container Instances biedt nog geen ondersteuning voor poort toewijzing, zoals bij normale docker-configuratie. Als u het IP-adres van een container groep niet toegankelijk hebt wanneer u denkt dat dit het geval is, moet u ervoor zorgen dat u de container installatie kopie hebt geconfigureerd om te Luis teren naar dezelfde `ports` poorten die u in uw container groep beschikbaar maakt met de eigenschap.
+Azure Container Instances biedt nog geen ondersteuning voor poort toewijzing, zoals bij normale docker-configuratie. Als u het IP-adres van een container groep niet toegankelijk hebt wanneer u denkt dat dit het geval is, moet u ervoor zorgen dat u de container installatie kopie hebt geconfigureerd om te Luis teren naar dezelfde poorten die u in uw container groep beschikbaar maakt met de `ports` eigenschap.
 
-Als u wilt bevestigen dat Azure Container Instances kan Luis teren op de poort die u in de container installatie kopie hebt geconfigureerd, test `aci-helloworld` u een implementatie van de installatie kopie die de poort beschikbaar maakt. Voer de `aci-helloworld` app ook uit zodat deze op de poort luistert. `aci-helloworld`Hiermee wordt een optionele omgevings variabele `PORT` geaccepteerd voor het overschrijven van de standaard poort 80 die wordt geluisterd. Als u bijvoorbeeld poort 9000 wilt testen, stelt u de [omgevings variabele](container-instances-environment-variables.md) in wanneer u de container groep maakt:
+Als u wilt bevestigen dat Azure Container Instances kan Luis teren op de poort die u in de container installatie kopie hebt geconfigureerd, test u een implementatie van de `aci-helloworld` installatie kopie die de poort beschikbaar maakt. Voer de app ook uit `aci-helloworld` zodat deze op de poort luistert. `aci-helloworld`Hiermee wordt een optionele omgevings variabele geaccepteerd `PORT` voor het overschrijven van de standaard poort 80 die wordt geluisterd. Als u bijvoorbeeld poort 9000 wilt testen, stelt u de [omgevings variabele](container-instances-environment-variables.md) in wanneer u de container groep maakt:
 
 1. Stel de container groep in om poort 9000 beschikbaar te maken en geef het poort nummer door als de waarde van de omgevings variabele. Het voor beeld is opgemaakt voor de bash-shell. Als u de voor keur geeft aan een andere shell, zoals Power shell of opdracht prompt, moet u de toewijzing van de variabele dienovereenkomstig aanpassen.
     ```azurecli
@@ -212,11 +213,11 @@ Als u wilt bevestigen dat Azure Container Instances kan Luis teren op de poort d
     --ip-address Public --ports 9000 \
     --environment-variables 'PORT'='9000'
     ```
-1. Zoek het IP-adres van de container groep in de uitvoer van `az container create`de opdracht van. Zoek de waarde van **IP**. 
-1. Nadat de container is ingericht, bladert u naar het IP-adres en de poort van de container-app in uw browser, `192.0.2.0:9000`bijvoorbeeld:. 
+1. Zoek het IP-adres van de container groep in de uitvoer van de opdracht van `az container create` . Zoek de waarde van **IP**. 
+1. Nadat de container is ingericht, bladert u naar het IP-adres en de poort van de container-app in uw browser, bijvoorbeeld: `192.0.2.0:9000` . 
 
     U ziet de ' Welkom bij Azure Container Instances! ' het bericht dat wordt weer gegeven door de web-app.
-1. Wanneer u klaar bent met de container, verwijdert u deze met `az container delete` behulp van de opdracht:
+1. Wanneer u klaar bent met de container, verwijdert u deze met behulp van de `az container delete` opdracht:
 
     ```azurecli
     az container delete --resource-group myResourceGroup --name mycontainer
@@ -228,6 +229,7 @@ Meer informatie over het [ophalen van container logboeken en-gebeurtenissen](con
 
 <!-- LINKS - External -->
 [azure-name-restrictions]: https://docs.microsoft.com/azure/cloud-adoption-framework/ready/azure-best-practices/naming-and-tagging#naming-and-tagging-resources
+[naming-rules]: ../azure-resource-manager/management/resource-name-rules.md
 [windows-sac-overview]: https://docs.microsoft.com/windows-server/get-started/semi-annual-channel-overview
 [docker-multi-stage-builds]: https://docs.docker.com/engine/userguide/eng-image/multistage-build/
 [docker-hub-windows-core]: https://hub.docker.com/_/microsoft-windows-servercore
@@ -235,4 +237,4 @@ Meer informatie over het [ophalen van container logboeken en-gebeurtenissen](con
 
 <!-- LINKS - Internal -->
 [az-container-show]: /cli/azure/container#az-container-show
-[list-cached-images]: /rest/api/container-instances/listcachedimages
+[list-cached-images]: /rest/api/container-instances/location/listcachedimages

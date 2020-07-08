@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 12/04/2018
-ms.openlocfilehash: 95723bbcfc5573567bee4a433b9d33908b91f5f0
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: b1bba5c4ff71806ac054b4d16585881570cf589a
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84045247"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85829360"
 ---
 # <a name="using-the-elastic-database-client-library-with-dapper"></a>De client bibliotheek voor Elastic Data Base gebruiken met dapper
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -64,6 +64,7 @@ Deze opmerkingen maken het eenvoudig om verbindingen te gebruiken die worden bro
 
 Dit code voorbeeld (uit het begeleide voor beeld) illustreert de aanpak waarbij de sharding-sleutel door de toepassing wordt geleverd aan de bibliotheek om de verbinding met de juiste Shard te Broker.   
 
+```csharp
     using (SqlConnection sqlconn = shardingLayer.ShardMap.OpenConnectionForKey(
                      key: tenantId1,
                      connectionString: connStrBldr.ConnectionString,
@@ -76,6 +77,7 @@ Dit code voorbeeld (uit het begeleide voor beeld) illustreert de aanpak waarbij 
                             VALUES (@name)", new { name = blog.Name }
                         );
     }
+```
 
 De aanroep van de [OpenConnectionForKey](https://msdn.microsoft.com/library/azure/dn807226.aspx) -API vervangt het standaard maken en openen van een SQL-client verbinding. De [OpenConnectionForKey](https://msdn.microsoft.com/library/azure/dn807226.aspx) -aanroep heeft de argumenten die vereist zijn voor gegevens afhankelijke route ring: 
 
@@ -87,6 +89,7 @@ Het Shard map-object maakt een verbinding met de Shard die de shardlet voor de o
 
 Query's werken op dezelfde manier als u de verbinding voor het eerst opent met [OpenConnectionForKey](https://msdn.microsoft.com/library/azure/dn807226.aspx) van de client-API. Vervolgens gebruikt u de reguliere dapper-extensie methoden om de resultaten van uw SQL-query toe te wijzen aan .NET-objecten:
 
+```csharp
     using (SqlConnection sqlconn = shardingLayer.ShardMap.OpenConnectionForKey(
                     key: tenantId1,
                     connectionString: connStrBldr.ConnectionString,
@@ -104,6 +107,7 @@ Query's werken op dezelfde manier als u de verbinding voor het eerst opent met [
                 Console.WriteLine(item.Name);
             }
     }
+```
 
 Houd er rekening mee dat met **behulp** van blok keren met het DDR-verbindings bereik alle database bewerkingen binnen het blok worden uitgevoerd op het ene Shard waar tenantId1 wordt bewaard. De query retourneert alleen blogs die zijn opgeslagen op de huidige Shard, maar niet voor de query's die zijn opgeslagen op een andere Shards. 
 
@@ -112,6 +116,7 @@ Dapper wordt geleverd met een ecosysteem van extra uitbrei dingen, waardoor de d
 
 Het gebruik van DapperExtensions in uw toepassing heeft geen invloed op hoe database verbindingen worden gemaakt en beheerd. Het is nog steeds de verantwoordelijkheid van de toepassing om verbindingen te openen, en regel matige SQL-Client verbindings objecten worden verwacht door de extensie methoden. We kunnen afhankelijk zijn van de [OpenConnectionForKey](https://msdn.microsoft.com/library/azure/dn807226.aspx) zoals hierboven wordt beschreven. Zoals in de volgende voorbeeld code wordt weer gegeven, is de enige wijziging die u niet meer hoeft te schrijven voor de T-SQL-instructies:
 
+```csharp
     using (SqlConnection sqlconn = shardingLayer.ShardMap.OpenConnectionForKey(
                     key: tenantId2,
                     connectionString: connStrBldr.ConnectionString,
@@ -120,9 +125,11 @@ Het gebruik van DapperExtensions in uw toepassing heeft geen invloed op hoe data
            var blog = new Blog { Name = name2 };
            sqlconn.Insert(blog);
     }
+```
 
 En dit is het code voorbeeld voor de query: 
 
+```csharp
     using (SqlConnection sqlconn = shardingLayer.ShardMap.OpenConnectionForKey(
                     key: tenantId2,
                     connectionString: connStrBldr.ConnectionString,
@@ -136,12 +143,14 @@ En dit is het code voorbeeld voor de query:
                Console.WriteLine(item.Name);
            }
     }
+```
 
 ### <a name="handling-transient-faults"></a>Tijdelijke fouten verwerken
 Het micro soft-programma voor patronen & practices heeft het [toepassings blok voor de tijdelijke fout afhandeling](https://msdn.microsoft.com/library/hh680934.aspx) gepubliceerd om toepassings ontwikkelaars te helpen bij het afhandelen van veelvoorkomende problemen met de tijdelijke situatie tijdens het uitvoeren in de Cloud. Zie [Perseverance, geheim van alle Triumphs: het toepassings blok voor de tijdelijke fout afhandeling gebruiken](https://msdn.microsoft.com/library/dn440719.aspx)voor meer informatie.
 
 Het code voorbeeld is afhankelijk van de tijdelijke fout bibliotheek om te beveiligen tegen tijdelijke fouten. 
 
+```csharp
     SqlDatabaseUtils.SqlRetryPolicy.ExecuteAction(() =>
     {
        using (SqlConnection sqlconn =
@@ -151,6 +160,7 @@ Het code voorbeeld is afhankelijk van de tijdelijke fout bibliotheek om te bevei
               sqlconn.Insert(blog);
           }
     });
+```
 
 **SqlDatabaseUtils. SqlRetryPolicy** in de bovenstaande code wordt gedefinieerd als een **SqlDatabaseTransientErrorDetectionStrategy** met een aantal nieuwe pogingen van 10 en een wacht tijd van vijf seconden tussen nieuwe pogingen. Als u trans acties gebruikt, moet u ervoor zorgen dat uw bereik voor opnieuw proberen teruggaat naar het begin van de trans actie in het geval van een tijdelijke fout.
 

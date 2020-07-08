@@ -8,22 +8,23 @@ ms.topic: include
 ms.date: 10/09/2019
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: 5d8a10f81cd9a73b9b77e68f15f7bc7c98d60ac0
-ms.sourcegitcommit: b396c674aa8f66597fa2dd6d6ed200dd7f409915
+ms.openlocfilehash: 8039191814243370fec417a3e22fc85f87264790
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/07/2020
-ms.locfileid: "82891042"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85805736"
 ---
-U kunt de koppelingen in deze sectie raadplegen voor meer informatie over services die worden aangeboden door partners. Als uw vertakkings partner niet wordt vermeld in de onderstaande sectie, laat u de provider van uw vertakkings apparaat contact met ons opnemen. Ze kunnen contact met ons opnemen door een e-mail azurevirtualwan@microsoft.comte verzenden naar.
+U kunt de koppelingen in deze sectie raadplegen voor meer informatie over services die worden aangeboden door partners. Als uw vertakkings partner niet wordt vermeld in de onderstaande sectie, laat u de provider van uw vertakkings apparaat contact met ons opnemen. Ze kunnen contact met ons opnemen door een e-mail te verzenden naar azurevirtualwan@microsoft.com .
 
 |Partners|Hand leiding voor configuratie/instructies/implementatie|
 |---|---|
 |[Barracuda Networks](https://www.barracuda.com/AzurevWAN)| [Barracuda CloudGen firewall: Azure Virtual WAN](https://campus.barracuda.com/doc/79463435/)|
 | [Check Point](https://www.checkpoint.com/solutions/microsoft-azure-virtual-wan/) |[Het controle punt voor de Microsoft Azure virtuele WAN Quick Start-hand leiding](https://sc1.checkpoint.com/documents/IaaS/WebAdminGuides/EN/CP_for_Microsoft_Azure_vWAN/Content/Topics/Introduction.htm?tocpath=Introduction%7C_____0)|
+|[Cisco Meraki]( https://documentation.meraki.com/MX/Deployment_Guides/Cisco_Meraki_MX_Branch_to_Azure_Virtual_WAN_Deployment_Guide)|[Implementatie handleiding voor Azure Virtual WAN Cisco Meraki](https://documentation.meraki.com/MX/Deployment_Guides/Cisco_Meraki_MX_Branch_to_Azure_Virtual_WAN_Deployment_Guide)|
 | [Citrix](https://www.citrix.com/global-partners/microsoft/sd-wan-for-azure-virtual-wan.html)| [Citrix SD-WAN gebruiken om verbinding te maken met Microsoft Azure virtuele WAN](https://docs.citrix.com/en-us/citrix-sd-wan-center/11/azure-virtual-wan/configure-azure-virtual-wan.html#how-does-microsoft-azure-virtual-wan-work)|
 | [Cloudgenix](https://www.cloudgenix.com/microsoft-azure/) |[Implementatie handleiding voor CloudGenix Azure Virtual WAN CloudBlade](https://sd-wan.cloudgenix.com/Q319ConfigurationGuide_Registration.html)|
-| [Fortinet](https://www.fortinet.com/azure-vwan) |[Implementatie handleiding voor Forti Gate en Microsoft Azure voor virtuele WAN-integratie](https://www.fortinet.com/content/dam/fortinet/assets/deployment-guides/dg-fortigate-azure-wan-integration.pdf)|
+| [Fortinet](https://www.fortinet.com/azure-vwan) |[Forti Gate en Microsoft Azure implementatie handleiding voor virtuele WAN-integratie](https://www.fortinet.com/content/dam/fortinet/assets/deployment-guides/dg-fortigate-azure-wan-integration.pdf),[routerings scenario blog](https://www.fortinet.com/blog/business-and-technology/fortinet-secure-sd-wan-enhances-azure-virtual-wan-integrations)|
 | [Netgevonden](https://netfoundry.io/solutions/netfoundry-for-microsoft-azure-virtual-wan/)|[Netfounds-ondersteunings hub: Azure Virtual WAN](https://support.netfoundry.io/hc/en-us/articles/360018137891-Introduction-to-Azure-Virtual-WAN-sites)|
 |[Nuage/Nokia (alleen ondersteund door Britse Telecom)](https://www.nuagenetworks.net/our-partners/nuage-networks-virtualized-cloud-interconnect-for-azure/)|* |
 |[Palo Alto Networks](https://researchcenter.paloaltonetworks.com/2018/09/azure-vwan-integration/) |* |

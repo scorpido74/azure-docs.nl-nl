@@ -16,12 +16,12 @@ ms.date: 08/10/2018
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 491a8f00de2fcd4c977a1856005b4358a4b62bd6
-ms.sourcegitcommit: f98ab5af0fa17a9bba575286c588af36ff075615
+ms.openlocfilehash: b0a0ee226fcddb3bfc216e1e160b5571fde59a41
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/25/2020
-ms.locfileid: "85359786"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85807584"
 ---
 # <a name="post-configuration-tasks-for-hybrid-azure-ad-join"></a>Taken na configuratie voor hybride Azure AD-koppeling
 
@@ -86,15 +86,10 @@ Dit installatie programma maakt een geplande taak op het apparaatsysteem dat wor
 
 ## <a name="10-configure-group-policy-to-allow-device-registration"></a>10. groeps beleid zo configureren dat apparaatregistratie is toegestaan
 
-* Maak een groeps beleidsobject in uw Active Directory--als dit nog niet is gemaakt.
-* Noem het (ex-Hybrid Azure AD-deelname).
-* Bewerken & gaat u naar: computer configuratie > beleid > Beheersjablonen > Windows-onderdelen > apparaatregistratie
-* Inschakelen: computers die lid zijn van een domein registreren als apparaten
-* Toep assen en klik op OK.
-* Koppel het groeps beleidsobject aan de gewenste locatie (organisatie-eenheid, beveiligings groep of het domein voor alle apparaten).
+Zie [gecontroleerde validatie van hybride Azure AD-deelname](../devices/hybrid-azuread-join-control.md)voor meer informatie over het toestaan van hybride Azure AD-deelname voor afzonderlijke apparaten.
 
->[!NOTE]
->Voor 2012R2 zijn de beleids instellingen ingesteld op **computer configuratie > beleid > Beheersjablonen > Windows-onderdelen > Workplace join > automatisch werk plek toevoegen aan client computers**
+> [!NOTE]
+> Beleids instellingen voor 2012 R2 bevinden zich in **computer configuratie > beleid > Beheersjablonen > Windows-onderdelen > Workplace join de client computers automatisch kunnen worden toegevoegd aan de werk plek**.
 
 ## <a name="next-steps"></a>Volgende stappen
 [Write-back van apparaat configureren](how-to-connect-device-writeback.md)

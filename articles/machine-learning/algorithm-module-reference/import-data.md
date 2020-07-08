@@ -9,12 +9,12 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 10/22/2019
-ms.openlocfilehash: d124fdc15bd34743b237985a66cc35625f5d9a4b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: e47cb1180bbc6eaaaffd79b78563ab1b1d5e016a
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79456196"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85611812"
 ---
 # <a name="import-data-module"></a>Gegevens module importeren
 
@@ -24,7 +24,7 @@ Gebruik deze module om gegevens te laden in een machine learning pijp lijn vanui
 
 > [!Note]
 > Alle functionaliteit van deze module kan worden uitgevoerd door **gegevens opslag** en **gegevens sets** op de werk ruimte-landings pagina. U wordt aangeraden om data **Store** en **DataSet** te gebruiken. Dit omvat aanvullende functies zoals gegevens bewaking. Zie voor meer informatie [hoe u toegang krijgt tot gegevens](../how-to-access-data.md) en het artikel gegevens [sets registreren](../how-to-create-register-datasets.md) .
-> Nadat u een gegevensset hebt geregistreerd, kunt u deze vinden in de categorie **gegevens** -> sets**mijn gegevens sets** in de ontwerp interface. Deze module is gereserveerd voor Studio-gebruikers (klassiek) voor een vertrouwde ervaring. 
+> Nadat u een gegevensset hebt geregistreerd, kunt u deze vinden in de categorie **gegevens**sets  ->  **mijn gegevens sets** in de ontwerp interface. Deze module is gereserveerd voor Studio-gebruikers (klassiek) voor een vertrouwde ervaring. 
 >
 
 De module **gegevens importeren** ondersteunt het lezen van gegevens uit de volgende bronnen:
@@ -44,6 +44,10 @@ Nadat u de gewenste gegevens hebt gedefinieerd en verbinding wilt maken met de b
 
 Als de bron gegevens worden gewijzigd, kunt u de gegevensset vernieuwen en nieuwe gegevens toevoegen door [import gegevens](./import-data.md)opnieuw uit te voeren.
 
+> [!WARNING]
+> Als uw werk ruimte zich in een virtueel netwerk bevindt, moet u uw gegevens opslag configureren voor het gebruik van de functies van de visualisatie van de ontwerp functie. Voor meer informatie over het gebruik van data stores en gegevens sets in een virtueel netwerk, raadpleegt u [netwerk isolatie tijdens de training & afwijzen met persoonlijke virtuele netwerken](../how-to-enable-virtual-network.md#machine-learning-studio).
+
+
 ## <a name="how-to-configure-import-data"></a>Import gegevens configureren
 
 1. Voeg de module **gegevens importeren** toe aan de pijp lijn. U kunt deze module vinden in de categorie **gegevens invoer en uitvoer** in de ontwerp functie.
@@ -52,7 +56,7 @@ Als de bron gegevens worden gewijzigd, kunt u de gegevensset vernieuwen en nieuw
 
 1. Selecteer **gegevens bron**en kies het type gegevens bron. Dit kan HTTP of gegevens opslag zijn.
 
-    Als u gegevens opslag kiest, kunt u bestaande gegevens opslag selecteren die al in uw Azure Machine Learning-werk ruimte is geregistreerd of een nieuw gegevens archief maken. Definieer vervolgens het pad van de gegevens die moeten worden geïmporteerd in het gegevens archief. U kunt eenvoudig door het pad bladeren door te klikken op **Bladeren pad** ![importeren-gegevenspad](media/module/import-data-path.png)
+    Als u gegevens opslag kiest, kunt u bestaande gegevens opslag selecteren die al in uw Azure Machine Learning-werk ruimte is geregistreerd of een nieuw gegevens archief maken. Definieer vervolgens het pad van de gegevens die moeten worden geïmporteerd in het gegevens archief. U kunt eenvoudig door het pad bladeren door te klikken op **Bladeren pad** ![ importeren-gegevenspad](media/module/import-data-path.png)
 
 1. Selecteer het voorbeeld schema voor het filteren van de kolommen die u wilt toevoegen. U kunt ook geavanceerde instellingen definiëren als scheidings teken bij het parseren van opties.
 

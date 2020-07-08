@@ -8,12 +8,12 @@ ms.subservice: fhir
 ms.topic: reference
 ms.date: 02/07/2019
 ms.author: mihansen
-ms.openlocfilehash: 034fbf93c4a73b5ee733c72ab6d1f458c3ae003b
-ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
+ms.openlocfilehash: 7f92395f19d84f904493af458d1334f8013fd263
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/03/2020
-ms.locfileid: "84872116"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85808026"
 ---
 # <a name="features"></a>Functies
 
@@ -42,7 +42,7 @@ Eerdere versies die momenteel worden ondersteund, zijn onder andere:`3.0.2`
 | zoeken                         | Gedeeltelijk   | Gedeeltelijk   | Gedeeltelijk   | Zie hieronder                                           |
 | geketende zoek opdracht                 | No        | Yes       | No        |                                           |
 | geketende zoek opdracht omkeren         | No        | Nee        | Nee        |                                            |
-| bieden                   | Ja       | Ja       | Yes       |                                                     |
+| mogelijkheden                   | Ja       | Ja       | Yes       |                                                     |
 | batch                          | Ja       | Ja       | Yes       |                                                     |
 | trans actie                    | No        | Yes       | No        |                                                     |
 | geschiedenis                        | Ja       | Ja       | Yes       |                                                     |
@@ -55,11 +55,11 @@ Alle typen zoek parameters worden ondersteund.
 
 | Type zoek parameter | Ondersteund-PaaS | Ondersteund-OSS (SQL) | Ondersteund-OSS (Cosmos DB) | Opmerking |
 |-----------------------|-----------|-----------|-----------|---------|
-| Getal                | Yes       | Yes       | Yes       |         |
+| Aantal                | Yes       | Yes       | Yes       |         |
 | Datum/datum/tijd         | Yes       | Yes       | Ja       |         |
 | Tekenreeks                | Ja       | Yes       | Yes       |         |
 | Token                 | Yes       | Yes       | Yes       |         |
-| Naslaginformatie             | Yes       | Yes       | Yes       |         |
+| Verwijzing             | Yes       | Yes       | Yes       |         |
 | Composite             | Yes       | Yes       | Yes       |         |
 | Aantal              | Yes       | Yes       | Yes       |         |
 | URI                   | Yes       | Yes       | Yes       |         |
@@ -90,7 +90,7 @@ Alle typen zoek parameters worden ondersteund.
 | `_security`             | Ja       | Ja       | Ja       |         |
 | `_text`                 | Nee        | Nee        | Nee        |         |
 | `_content`              | Nee        | Nee        | Nee        |         |
-| `_list`                 | Nee        | Nee        | Nee        |         |
+| `_list`                 | Nee        | Yes       | Ja       |         |
 | `_has`                  | Nee        | Nee        | Nee        |         |
 | `_type`                 | Yes       | Ja       | Ja       |         |
 | `_query`                | Nee        | Nee        | Nee        |         |
@@ -126,4 +126,4 @@ Op dit moment worden de toegestane acties voor een bepaalde rol *globaal* toegep
 In dit artikel hebt u meer informatie over de ondersteunde FHIR-functies in azure API voor FHIR. Implementeer vervolgens de Azure-API voor FHIR.
  
 >[!div class="nextstepaction"]
->[Azure API for FHIR implementeren](fhir-paas-portal-quickstart.md)
+>[De Azure-API voor FHIR implementeren](fhir-paas-portal-quickstart.md)

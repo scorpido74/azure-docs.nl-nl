@@ -3,25 +3,26 @@ title: Problemen met Azure Monitor voor containers oplossen | Microsoft Docs
 description: In dit artikel wordt beschreven hoe u problemen met Azure Monitor voor containers kunt oplossen en oplossen.
 ms.topic: conceptual
 ms.date: 10/15/2019
-ms.openlocfilehash: 736a7d271fc330d775d4d6cc271083e36d750ede
-ms.sourcegitcommit: 61d92af1d24510c0cc80afb1aebdc46180997c69
+ms.openlocfilehash: bc4105dc23445c29364961501f93e42f8c3b683d
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/24/2020
-ms.locfileid: "85337851"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85800440"
 ---
 # <a name="troubleshooting-azure-monitor-for-containers"></a>Problemen met Azure Monitor voor containers oplossen
 
 Wanneer u de bewaking van uw Azure Kubernetes service-cluster (AKS) met Azure Monitor voor containers configureert, kunt u een probleem tegen komen bij het verzamelen of rapporteren van gegevens. In dit artikel vindt u informatie over enkele veelvoorkomende problemen en stappen voor probleem oplossing.
 
 ## <a name="authorization-error-during-onboarding-or-update-operation"></a>Autorisatie fout tijdens onboarding of update bewerking
+
 Wanneer u Azure Monitor voor containers inschakelt of een cluster bijwerkt ter ondersteuning van het verzamelen van metrische gegevens, wordt mogelijk een fout bericht weer gegeven met de volgende strekking: *de client <identiteit van de gebruiker> ' with object id ' <de objectId> van de gebruiker heeft geen machtiging om de actie ' micro soft. Authorization/roleAssignments/write ' over te voeren*
 
 Tijdens het voorbereidings-of bijwerk proces wordt het verlenen van de roltoewijzing voor **bewakings gegevens** voor de cluster bron geprobeerd. De gebruiker die het proces initieert om Azure Monitor voor containers in te scha kelen of de update om het verzamelen van gegevens te ondersteunen, moet toegang hebben tot de machtiging **micro soft. Authorization/roleAssignments/write** voor het bron bereik van het AKS-cluster. Alleen leden van de ingebouwde rollen van de **eigenaar** en de beheerder van de **gebruikers toegang** krijgen toegang tot deze machtiging. Als voor uw beveiligings beleid gedetailleerde machtigingen voor niveau zijn vereist, raden we u aan om [aangepaste rollen](../../role-based-access-control/custom-roles.md) weer te geven en toe te wijzen aan de gebruikers die deze nodig hebben.
 
 U kunt deze rol ook hand matig verlenen via de Azure Portal door de volgende stappen uit te voeren:
 
-1. Meld u aan bij de [Azure-portal](https://portal.azure.com).
+1. Meld u aan bij [Azure Portal](https://portal.azure.com).
 2. Klik in Azure Portal in de linkerbovenhoek op **Alle services**. Typ **Kubernetes**in de lijst met resources. Als u begint te typen, wordt de lijst gefilterd op basis van uw invoer. Selecteer **Azure Kubernetes**.
 3. Selecteer in de lijst met Kubernetes-clusters een in de lijst.
 2. Klik in het linkermenu op **toegangs beheer (IAM)**.
@@ -29,6 +30,7 @@ U kunt deze rol ook hand matig verlenen via de Azure Portal door de volgende sta
 4. Selecteer **Opslaan** om de rol toe te wijzen.
 
 ## <a name="azure-monitor-for-containers-is-enabled-but-not-reporting-any-information"></a>Azure Monitor voor containers is ingeschakeld, maar er wordt geen informatie gerapporteerd
+
 Als Azure Monitor voor containers is ingeschakeld en geconfigureerd, maar u geen status informatie kunt weer geven of als er geen resultaten worden geretourneerd uit een logboek query, kunt u het probleem vaststellen door de volgende stappen uit te voeren:
 
 1. Controleer de status van de agent door de opdracht uit te voeren:
@@ -117,7 +119,7 @@ De volgende tabel bevat een overzicht van bekende fouten die kunnen optreden bij
 | Fout bericht`Error retrieving data` | Terwijl Azure Kubernetes service-cluster wordt ingesteld voor de status-en prestatie bewaking, wordt er een verbinding tot stand gebracht tussen het cluster en de Azure Log Analytics-werk ruimte. Een Log Analytics-werk ruimte wordt gebruikt om alle bewakings gegevens voor uw cluster op te slaan. Deze fout kan optreden als uw Log Analytics-werk ruimte is verwijderd. Controleer of de werk ruimte is verwijderd. als dat het geval is, moet u de bewaking van het cluster opnieuw inschakelen met Azure Monitor voor containers en een bestaande of een nieuwe werk ruimte maken. Als u het opnieuw wilt inschakelen, moet u de bewaking voor het cluster [uitschakelen](container-insights-optout.md) en de Azure monitor voor containers weer [inschakelen](container-insights-enable-new-cluster.md) . |
 | `Error retrieving data`na het toevoegen van Azure Monitor voor containers via AZ AKS cli | Als u controle inschakelt met `az aks cli` , worden Azure monitor voor containers mogelijk niet op de juiste wijze geïmplementeerd. Controleer of de oplossing is geïmplementeerd. Als u dit wilt doen, gaat u naar uw Log Analytics-werk ruimte en bekijkt u of de oplossing beschikbaar is door **oplossingen** te selecteren in het deel venster aan de linkerkant. Als u dit probleem wilt oplossen, moet u de oplossing opnieuw implementeren door de instructies te volgen voor [het implementeren van Azure monitor voor containers](container-insights-onboard.md) |
 
-Om het probleem op te lossen, is er [hier](https://github.com/Microsoft/OMS-docker/tree/ci_feature_prod/Troubleshoot#troubleshooting-script)een script voor het oplossen van problemen beschikbaar.
+Om het probleem op te lossen, is er [hier](https://raw.githubusercontent.com/microsoft/Docker-Provider/ci_dev/scripts/troubleshoot/TroubleshootError_nonAzureK8s.ps1)een script voor het oplossen van problemen beschikbaar.
 
 ## <a name="azure-monitor-for-containers-agent-replicaset-pods-are-not-scheduled-on-non-azure-kubernetes-cluster"></a>Azure Monitor voor containers van de container-agent in een cluster zijn niet gepland voor niet-Azure Kubernetes-clusters
 

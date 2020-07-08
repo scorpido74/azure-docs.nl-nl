@@ -14,12 +14,12 @@ ms.subservice: users-groups-roles
 ms.custom: it-pro
 ms.reviewer: martincoetzer; MarkMorow
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8b448ef83752c3ffd7be992bc5fc3c376a641101
-ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
+ms.openlocfilehash: 51b18b05dc9fee06b0a9866f59b4bf52ad54e0ea
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/12/2020
-ms.locfileid: "84729214"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85807856"
 ---
 # <a name="securing-privileged-access-for-hybrid-and-cloud-deployments-in-azure-ad"></a>Bevoegde toegang beveiligen voor hybride implementaties en cloudimplementaties in Azure AD
 
@@ -90,8 +90,8 @@ Nadat u Azure AD Privileged Identity Management hebt ingeschakeld, bekijkt u de 
 
 * Globale beheerder
 * Beheerder van geprivilegieerde rol
-* Exchange Online-beheerder
-* Share point online-beheerder
+* Exchange-beheerder
+* SharePoint-beheerder
 
 Als u geen Azure AD Privileged Identity Management hebt in uw organisatie, kunt u de [Power shell-API](https://docs.microsoft.com/powershell/module/azuread/get-azureaddirectoryrolemember?view=azureadps-2.0)gebruiken. Begin met de rol van globale beheerder omdat een globale beheerder dezelfde machtigingen heeft voor alle Cloud Services waarvoor uw organisatie een abonnement heeft. Deze machtigingen worden verleend, ongeacht waar ze zijn toegewezen: in het Microsoft 365-beheer centrum, de Azure Portal of de Azure AD-module voor micro soft power shell.
 
@@ -114,7 +114,7 @@ Evalueer de accounts die zijn toegewezen of die in aanmerking komen voor de rol 
 
 #### <a name="turn-on-multi-factor-authentication-and-register-all-other-highly-privileged-single-user-non-federated-admin-accounts"></a>Multi-factor Authentication inschakelen en alle andere niet-gefedereerde niet-federatieve beheerders accounts van één gebruiker registreren
 
-Azure Multi-Factor Authentication (MFA) vereisen bij het aanmelden voor alle afzonderlijke gebruikers die permanent zijn toegewezen aan een of meer van de Azure AD-beheerders rollen: globale beheerder, bevoegde rol beheerder, Exchange Online beheerder en share point online-beheerder. Gebruik de hand leiding om [multi-factor Authentication (MFA) in te scha kelen voor uw beheerders accounts](../authentication/howto-mfa-userstates.md) en ervoor te zorgen dat alle gebruikers zijn geregistreerd op [https://aka.ms/mfasetup](https://aka.ms/mfasetup) . Meer informatie vindt u in stap 2 en stap 3 van de hand leiding [beveiliging beveiligen tot gegevens en services in Office 365](https://support.office.com/article/Protect-access-to-data-and-services-in-Office-365-a6ef28a4-2447-4b43-aae2-f5af6d53c68e). 
+Azure Multi-Factor Authentication (MFA) vereisen bij het aanmelden voor alle afzonderlijke gebruikers die permanent zijn toegewezen aan een of meer van de Azure AD-beheerders rollen: globale beheerder, bevoegde rol beheerder, Exchange-beheerder en share point-beheerder. Gebruik de hand leiding om [multi-factor Authentication (MFA) in te scha kelen voor uw beheerders accounts](../authentication/howto-mfa-userstates.md) en ervoor te zorgen dat alle gebruikers zijn geregistreerd op [https://aka.ms/mfasetup](https://aka.ms/mfasetup) . Meer informatie vindt u in stap 2 en stap 3 van de hand leiding [beveiliging beveiligen tot gegevens en services in Office 365](https://support.office.com/article/Protect-access-to-data-and-services-in-Office-365-a6ef28a4-2447-4b43-aae2-f5af6d53c68e). 
 
 ## <a name="stage-2-mitigate-frequently-used-attacks"></a>Fase 2: veelgebruikte aanvallen beperken
 
@@ -359,7 +359,7 @@ Fase 4 van het schema moet worden geïmplementeerd op zes maanden en verder. Vol
 Het beveiligen van bevoegde toegang is belang rijk voor het instellen van beveiligings garanties voor uw bedrijfs middelen. Het moet echter deel uitmaken van een volledig beveiligings programma dat permanente beveiligings garanties biedt. Dit programma moet elementen bevatten zoals:
 
 * Beleid
-* Operations
+* Bewerkingen
 * Gegevens beveiliging
 * Servers
 * Toepassingen

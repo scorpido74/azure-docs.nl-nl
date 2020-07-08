@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 01/03/2019
-ms.openlocfilehash: 8610342c1d01deceebaf1f4998dd04181e5ddc21
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: 3bc575dfd815ce4d967fb4328a0a412fce1e8d81
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84050826"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85829496"
 ---
 # <a name="upgrade-an-app-to-use-the-latest-elastic-database-client-library"></a>Een app bijwerken voor het gebruik van de meest recente Elastic data base-client bibliotheek
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -51,12 +51,13 @@ Door deze stappen uit te voeren, zorgt u ervoor dat oude versies van de client b
 2. Open een opdracht prompt, navigeer naar dezelfde map en geef de volgende opdracht:`nuget install Microsoft.Azure.SqlDatabase.ElasticScale.Client`
 3. Ga naar de submap met de nieuwe client-DLL-versie die u zojuist hebt gedownload, bijvoorbeeld:`cd .\Microsoft.Azure.SqlDatabase.ElasticScale.Client.1.0.0\lib\net45`
 4. Down load het client upgrade script voor Elastic data base uit het [script centrum](https://gallery.technet.microsoft.com/scriptcenter/Azure-SQL-Database-Elastic-6442e6a9)en sla het op in dezelfde map die de dll bevat.
-5. Vanuit die map voert u Power shell .\upgrade.ps1 uit vanaf de opdracht prompt en volgt u de aanwijzingen.
+5. Voer vanuit die map Power shell .\upgrade.ps1 uit vanaf de opdracht prompt en volg de aanwijzingen.
 
 ***Optie 2: meta gegevens bijwerken met C #***
 
 U kunt ook een Visual Studio-toepassing maken waarmee uw ShardMapManager wordt geopend, alle Shards worden herhaald en de upgrade van de meta gegevens wordt uitgevoerd door de methoden [UpgradeLocalStore](https://docs.microsoft.com/dotnet/api/microsoft.azure.sqldatabase.elasticscale.shardmanagement.shardmapmanager.upgradelocalstore) en [UpgradeGlobalStore](https://docs.microsoft.com/dotnet/api/microsoft.azure.sqldatabase.elasticscale.shardmanagement.shardmapmanager.upgradeglobalstore) aan te roepen, zoals in dit voor beeld:
 
+```csharp
     ShardMapManager smm =
        ShardMapManagerFactory.GetSqlShardMapManager
        (connStr, ShardMapManagerLoadPolicy.Lazy);
@@ -67,6 +68,7 @@ U kunt ook een Visual Studio-toepassing maken waarmee uw ShardMapManager wordt g
     {
        smm.UpgradeLocalStore(loc);
     }
+```
 
 Deze technieken voor het bijwerken van meta gegevens kunnen meerdere keren worden toegepast zonder beschadiging. Als bijvoorbeeld een oudere client versie per ongeluk een Shard maakt nadat u al een update hebt uitgevoerd, kunt u de upgrade opnieuw uitvoeren over alle Shards om ervoor te zorgen dat de meest recente versie van de meta gegevens aanwezig is in uw infra structuur.
 

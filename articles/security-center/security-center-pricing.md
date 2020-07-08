@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 04/28/2020
 ms.author: memildin
-ms.openlocfilehash: 2eb302462e402e701cc5ae664239c457c90ab1b9
-ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
+ms.openlocfilehash: 4487d1452611b269eec756cdbc76e8e55c466cd2
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82612789"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85801135"
 ---
 # <a name="upgrade-to-standard-tier-for-enhanced-security"></a>Upgrade naar Standard-laag voor verbeterde beveiliging
 
@@ -63,7 +63,9 @@ Security Center biedt verbeterde beveiliging en bedreigings beveiliging voor uw 
 - **Beveiligings waarschuwingen** : Gebruik geavanceerde analyses en de Microsoft intelligent Security Graph om een rand te krijgen over het ontwikkelen van Cyber aanvallen. Maak gebruik van ingebouwde gedrags analyses en machine learning om aanvallen te identificeren en gebruik te maken van een Zero-Day-aanval. Bewaak netwerken, machines en Cloud Services voor inkomende aanvallen en activiteit na inbreuk. Stroom lijn onderzoek met interactieve hulpprogram ma's en contextuele bedreigings informatie.
 - **Beveiligings problemen voor virtuele machines scannen** : implementeer eenvoudig een scanner op al uw virtuele machines met de meest geavanceerde oplossing voor het beheer van beveiligings problemen. De bevindingen direct binnen Security Center weer geven, onderzoeken en herstellen. 
 - **Toegangs-en toepassings besturings elementen** : blok keer malware en andere ongewenste toepassingen door machine learning aanbevolen white list-aanbevelingen toe te passen die zijn afgestemd op uw specifieke workloads. Verminder de kwets baarheid van het netwerk met Just-in-time, gecontroleerde toegang tot beheer poorten op Azure-Vm's. Dit vermindert de bloot stelling aan brute kracht en andere netwerk aanvallen aanzienlijk.
-- **Beveiligings functies voor containers** : Profiteer van beveiligings beheer en real-time beveiliging tegen bedreigingen in uw container omgevingen. Wanneer u de bron van de container registers inschakelt, kan het tot 12hrs duren totdat alle functies zijn ingeschakeld.
+- **Beveiligings functies voor containers** : Profiteer van beveiligings beheer en real-time beveiliging tegen bedreigingen in uw container omgevingen. Wanneer u de bron van de container registers inschakelt, kan het tot 12hrs duren totdat alle functies zijn ingeschakeld. Kosten zijn gebaseerd op het aantal unieke container installatie kopieën dat is gepusht naar het verbonden REGI ster. Nadat een installatie kopie eenmaal is gescand, worden er geen kosten meer in rekening gebracht, tenzij deze weer wordt gewijzigd en gepusht. 
+
+
 
 
 ## <a name="next-steps"></a>Volgende stappen
