@@ -14,10 +14,9 @@ ms.workload: infrastructure-services
 ms.date: 08/08/2018
 ms.author: allensu
 ms.openlocfilehash: 745b12e2278c487ed49a9d2d726a760a7df8f276
-ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/11/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84703164"
 ---
 # <a name="create-a-virtual-machine-with-a-static-public-ip-address-using-the-azure-portal"></a>Maak een virtuele machine met een statisch openbaar IP-adres met behulp van de Azure Portal
@@ -32,7 +31,7 @@ Meld u aan bij Azure Portal op https://portal.azure.com.
 
 1. Selecteer **+ Een resource maken** in de linkerbovenhoek van Azure Portal.
 2. Selecteer **Compute**en selecteer vervolgens **Windows Server 2016 VM**of een ander besturings systeem van uw keuze.
-3. Voer de volgende informatie in of Selecteer deze, accepteer de standaard waarden voor de overige instellingen en selecteer **OK**:
+3. Voer de volgende informatie in of selecteer deze, accepteer de standaardwaarden voor de overige instellingen en selecteer **OK**:
 
     |Instelling|Waarde|
     |---|---|
@@ -41,7 +40,7 @@ Meld u aan bij Azure Portal op https://portal.azure.com.
     |Wachtwoord| Voer een wachtwoord naar keuze in. Het wachtwoord moet minstens 12 tekens lang zijn en moet voldoen aan de [gedefinieerde complexiteitsvereisten](../virtual-machines/windows/faq.md?toc=%2fazure%2fvirtual-network%2ftoc.json#what-are-the-password-requirements-when-creating-a-vm).|
     |Abonnement| Selecteer uw abonnement.|
     |Resourcegroep| Selecteer **Bestaande gebruiken** en selecteer **myResourceGroup**.|
-    |Locatie| Selecteer **VS Oost**|
+    |Locatie| Selecteer **VS - oost**|
 
 4. Selecteer een grootte voor de virtuele machine en selecteer **Selecteren**.
 5. Selecteer onder **instellingen**het **open bare IP-adres**.
@@ -77,7 +76,7 @@ U kunt de resourcegroep en alle gerelateerde resources die deze bevat verwijdere
 
 1. Voer *myResourceGroup* in het vak **Zoeken** bovenaan de portal in. Wanneer u **myResourceGroup** ziet in de zoekresultaten, selecteert u deze.
 2. Selecteer **Resourcegroep verwijderen**.
-3. Voer *myResourceGroup* in bij **Typ de naam van de resource groep:** en selecteer **verwijderen**.
+3. Voer *myResourceGroup* in voor **TYP DE RESOURCEGROEPNAAM:** en selecteer **Verwijderen**.
 
 ## <a name="next-steps"></a>Volgende stappen
 

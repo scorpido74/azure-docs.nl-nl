@@ -14,10 +14,9 @@ ms.workload: infrastructure-services
 ms.date: 05/13/2019
 ms.author: allensu
 ms.openlocfilehash: 4eac4a7ecc6febedd205fcde45ea550dd15a6b93
-ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/11/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84703839"
 ---
 # <a name="create-change-or-delete-a-public-ip-address-prefix"></a>Een voorvoegsel van een openbaar IP-adres maken, wijzigen of verwijderen
@@ -54,7 +53,7 @@ Voor voegsels voor open bare IP-adressen gelden kosten. Zie [prijzen](https://az
    |Regio|Yes|Moet zich in dezelfde [regio](https://azure.microsoft.com/regions)bevinden als de open bare IP-adressen waaraan u adressen uit het bereik toewijst.|
    |Voorvoegsel grootte|Yes| De grootte van het voor voegsel dat u nodig hebt. A/28 of 16 IP-adressen is de standaard waarde.
 
-**Opdracht**
+**Opdrachten**
 
 |Hulpprogramma|Opdracht|
 |---|---|
@@ -90,7 +89,7 @@ U kunt ook de CLI-en PS-opdrachten hieronder met de para meters---Public-IP-pref
    - **Weer gave**: in de sectie **overzicht** ziet u de belangrijkste instellingen voor het voor voegsel van het open bare IP-adres, zoals voor voegsel.
    - **Verwijderen**: als u het voor voegsel van het open bare IP-adres wilt verwijderen, selecteert u **verwijderen** in het gedeelte **overzicht** . Als adressen binnen het voor voegsel zijn gekoppeld aan resources met een openbaar IP-adres, moet u eerst de open bare IP-adres bronnen verwijderen. Zie [een openbaar IP-adres verwijderen](virtual-network-public-ip-address.md#view-change-settings-for-or-delete-a-public-ip-address).
 
-**Opdracht**
+**Opdrachten**
 
 |Hulpprogramma|Opdracht|
 |---|---|

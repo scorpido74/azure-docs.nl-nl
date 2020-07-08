@@ -4,10 +4,9 @@ description: Hierin worden de resource providers beschreven die ondersteuning bi
 ms.topic: conceptual
 ms.date: 08/29/2019
 ms.openlocfilehash: 82b8251006a1a2d4edd198eca843489d3720f8d6
-ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/11/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84702768"
 ---
 # <a name="azure-resource-providers-and-types"></a>Azure-resourceproviders en -typen
@@ -33,7 +32,7 @@ Zie [resource providers voor Azure-Services](azure-services-resource-providers.m
 
 Als u alle resource providers en de registratie status voor uw abonnement wilt weer geven:
 
-1. Meld u aan bij de [Azure-portal](https://portal.azure.com).
+1. Meld u aan bij [Azure Portal](https://portal.azure.com).
 2. Selecteer **Alle services** in het menu van Azure Portal.
 
     ![abonnementen selecteren](./media/resource-providers-and-types/select-all-services.png)
@@ -50,7 +49,7 @@ Als u alle resource providers en de registratie status voor uw abonnement wilt w
 
 Informatie weer geven voor een bepaalde resource provider:
 
-1. Meld u aan bij de [Azure-portal](https://portal.azure.com).
+1. Meld u aan bij [Azure Portal](https://portal.azure.com).
 2. Selecteer **Alle services** in het menu van Azure Portal.
 3. In het vak **alle services** voert u **resource Explorer**in en selecteert u vervolgens **resource Explorer**.
 

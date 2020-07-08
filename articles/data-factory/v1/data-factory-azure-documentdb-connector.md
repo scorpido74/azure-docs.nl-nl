@@ -13,10 +13,9 @@ ms.date: 01/22/2018
 ms.author: jingwang
 robots: noindex
 ms.openlocfilehash: a638184d5232de916ebd25360147301a93309dd9
-ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/11/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84702291"
 ---
 # <a name="move-data-to-and-from-azure-cosmos-db-using-azure-data-factory"></a>Gegevens verplaatsen van en naar Azure Cosmos DB met behulp van Azure Data Factory
@@ -483,16 +482,16 @@ Azure Cosmos DB is een NoSQL-Archief voor JSON-documenten, waarbij geneste struc
 ## <a name="appendix"></a>Bijlage
 1. **Vraag:** Ondersteunt de Kopieer activiteit een update van bestaande records?
 
-    **Antwoord:** nee.
+    **Antwoord**: Nee.
 2. **Vraag:** Hoe probeert een kopie opnieuw te Azure Cosmos DB worden verwerkt met al gekopieerde records?
 
     **Antwoord:** Als records een ID-veld hebben en er wordt geprobeerd een record met dezelfde ID in te voegen, wordt er een fout gegenereerd door de Kopieer bewerking.
 3. **Vraag:** Ondersteunt Data Factory [bereik of gegevens partities op basis van hashes](../../cosmos-db/sql-api-partition-data.md)?
 
-    **Antwoord:** nee.
+    **Antwoord**: Nee.
 4. **Vraag:** Kan ik meer dan één Azure Cosmos DB verzameling opgeven voor een tabel?
 
-    **Antwoord:** nee. Op dit moment kan slechts één verzameling worden opgegeven.
+    **Antwoord**: Nee. Op dit moment kan slechts één verzameling worden opgegeven.
 
 ## <a name="performance-and-tuning"></a>Prestaties en afstemming
 Zie [Kopieer activiteit prestaties & afstemmings handleiding](data-factory-copy-activity-performance.md) voor meer informatie over de belangrijkste factoren die invloed hebben op de prestaties van het verplaatsen van gegevens (Kopieer activiteit) in azure Data Factory en verschillende manieren om deze te optimaliseren.

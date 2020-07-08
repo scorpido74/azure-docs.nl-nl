@@ -11,10 +11,9 @@ ms.workload: infrastructure-services
 ms.date: 05/15/2018
 ms.author: rohink
 ms.openlocfilehash: 4bf3ee75c9445856fb8a2ce789a3f2f345e720fe
-ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/11/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84701661"
 ---
 # <a name="manage-dns-records-and-recordsets-in-azure-dns-using-the-azure-cli"></a>DNS-records en-record sets beheren in Azure DNS met behulp van de Azure CLI
@@ -28,7 +27,7 @@ In dit artikel wordt beschreven hoe u DNS-records voor uw DNS-zone beheert met b
 
 In de voor beelden in dit artikel wordt ervan uitgegaan dat u [de Azure cli al hebt geïnstalleerd en dat u bent aangemeld, en een DNS-zone hebt gemaakt](dns-operations-dnszones-cli.md).
 
-## <a name="introduction"></a>Introductie
+## <a name="introduction"></a>Inleiding
 
 Voordat u DNS-records in DNS Azure maakt, leest u eerst hoe Azure DNS DNS-records organiseert in DNS-recordsets.
 

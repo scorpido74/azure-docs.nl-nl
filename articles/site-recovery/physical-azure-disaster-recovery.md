@@ -8,10 +8,9 @@ ms.topic: article
 ms.date: 11/12/2019
 ms.author: raynew
 ms.openlocfilehash: 2f92c2b800c6d30cc5f365e6d24925a70d3db55a
-ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/11/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84699903"
 ---
 # <a name="set-up-disaster-recovery-to-azure-for-on-premises-physical-servers"></a>Herstel na nood gevallen naar Azure instellen voor on-premises fysieke servers
@@ -54,7 +53,7 @@ Een micro soft [Azure-account](https://azure.microsoft.com/)ophalen.
 - Meer informatie over de [prijzen van site Recovery](site-recovery-faq.md#pricing)en ontvang [prijs informatie](https://azure.microsoft.com/pricing/details/site-recovery/).
 - Ontdek welke [regio's worden ondersteund](https://azure.microsoft.com/pricing/details/site-recovery/) voor site Recovery.
 
-### <a name="verify-azure-account-permissions"></a>Azure-account machtigingen verifiëren
+### <a name="verify-azure-account-permissions"></a>Controleer de machtigingen voor het Azure-account
 
 Zorg ervoor dat uw Azure-account machtigingen heeft voor de replicatie van virtuele machines naar Azure.
 
