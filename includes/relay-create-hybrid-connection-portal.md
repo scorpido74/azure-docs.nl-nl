@@ -5,15 +5,15 @@ ms.topic: include
 ms.date: 11/09/2018
 ms.author: clemensv
 ms.openlocfilehash: ceb2626a43ed44338bb0faad475ae2333af2de9e
-ms.sourcegitcommit: be32c9a3f6ff48d909aabdae9a53bd8e0582f955
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/26/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "67176267"
 ---
 Controleer of u al [een Relay-naamruimte hebt gemaakt][namespace-how-to].
 
-1. Meld u aan bij de [Azure-portal](https://portal.azure.com).
+1. Meld u aan bij [Azure Portal](https://portal.azure.com).
 2. Selecteer **Alle resources** in het menu aan de linkerkant.
 3. Selecteer de naamruimte waarin u de hybride verbinding wilt maken. In dit geval is dit **mynewns**.  
 4. Selecteer onder **Relay-naamruimte** de optie **Hybride verbindingen**.

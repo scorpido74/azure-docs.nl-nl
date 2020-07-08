@@ -8,10 +8,10 @@ ms.topic: how-to
 ms.date: 11/4/2019
 ms.author: caya
 ms.openlocfilehash: df8722e8160538daa1535711092790dbb2405097
-ms.sourcegitcommit: ad66392df535c370ba22d36a71e1bbc8b0eedbe3
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/16/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84807034"
 ---
 # <a name="use-certificates-with-letsencryptorg-on-application-gateway-for-aks-clusters"></a>Certificaten gebruiken met LetsEncrypt.org in Application Gateway voor AKS-clusters
@@ -22,7 +22,7 @@ Volg de onderstaande stappen om [CERT-Manager](https://docs.cert-manager.io) op 
 
 1. Helm grafiek
 
-    Voer het volgende script uit om het `cert-manager` helm-diagram te installeren. Dit is:
+    Voer het volgende script uit om het `cert-manager` helm-diagram te installeren. Hiermee wordt:
 
     - een nieuwe `cert-manager` naam ruimte maken op uw AKS
     - Maak de volgende CRDs: Certificate, Challenge, ClusterIssuer, Issuer, order

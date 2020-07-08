@@ -8,10 +8,10 @@ ms.topic: how-to
 ms.date: 11/4/2019
 ms.author: caya
 ms.openlocfilehash: f20302a4993da1754255254ce6d69c000750d4ab
-ms.sourcegitcommit: ad66392df535c370ba22d36a71e1bbc8b0eedbe3
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/16/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84806779"
 ---
 # <a name="how-to-upgrade-application-gateway-ingress-controller-using-helm"></a>Een upgraden uitvoeren van de controller voor inkomend verkeer van Application Gateway met behulp van Helm 
@@ -34,7 +34,7 @@ Voordat u met de upgrade procedure begint, moet u ervoor zorgen dat u de vereist
         https://appgwingress.blob.core.windows.net/ingress-azure-helm-package/
     ```
 
-## <a name="upgrade"></a>Upgrade uitvoeren
+## <a name="upgrade"></a>Upgraden
 
 1. Vernieuw de AGIC helm-opslag plaats om de nieuwste versie te verkrijgen:
 

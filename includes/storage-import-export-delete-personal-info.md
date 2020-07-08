@@ -9,10 +9,10 @@ ms.date: 05/18/2018
 ms.author: cshoe
 ms.custom: include file
 ms.openlocfilehash: e6a0ded137162328fd446b65ddb4a15fa6f1db88
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/27/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "67176248"
 ---
 ## <a name="deleting-personal-information"></a>Persoonlijke gegevens verwijderen
@@ -40,9 +40,9 @@ Persoonlijke contact gegevens kunnen op de volgende manieren worden verwijderd:
 - Gegevens die met de taak zijn opgeslagen, worden met de taak verwijderd. Gebruikers kunnen taken hand matig verwijderen en voltooide taken worden na 90 dagen automatisch verwijderd. U kunt de taken hand matig verwijderen via de REST API of de Azure Portal. Als u de taak in de Azure Portal wilt verwijderen, gaat u naar uw import/export-taak en klikt u op *verwijderen* in de opdracht balk. Zie [een import/export-taak verwijderen](../articles/storage/common/storage-import-export-cancelling-and-deleting-jobs.md)voor meer informatie over het verwijderen van een import/export-taak via rest API.
 
 - De contact gegevens die in de Portal instellingen zijn opgeslagen, kunnen worden verwijderd door de Portal instellingen te verwijderen. U kunt de Portal-instellingen verwijderen door de volgende stappen uit te voeren:
-  - Meld u aan bij de [Azure-portal](https://portal.azure.com).
-  - Klik op het *Settings* pictogram instellingen ![het pictogram Azure-instellingen](media/storage-import-export-delete-personal-info/azure-settings-icon.png)
-  - Klik op *alle instellingen exporteren* (om uw huidige instellingen op te `.json` slaan in een bestand).
+  - Meld u aan bij [Azure Portal](https://portal.azure.com).
+  - Klik op het pictogram *instellingen* het ![ pictogram Azure-instellingen](media/storage-import-export-delete-personal-info/azure-settings-icon.png)
+  - Klik op *alle instellingen exporteren* (om uw huidige instellingen op te slaan in een `.json` bestand).
   - Klik op *alle instellingen en persoonlijke Dash boards verwijderen* om alle instellingen te verwijderen, inclusief opgeslagen contact gegevens.
 
 Raadpleeg het privacybeleid van micro soft in het [vertrouwens centrum](https://www.microsoft.com/trustcenter) voor meer informatie
