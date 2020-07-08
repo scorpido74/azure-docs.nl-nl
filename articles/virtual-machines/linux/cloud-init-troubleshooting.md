@@ -5,15 +5,15 @@ author: danielsollondon
 ms.service: virtual-machines-linux
 ms.subservice: imaging
 ms.topic: troubleshooting
-ms.date: 06/22/2020
+ms.date: 07/06/2020
 ms.author: danis
 ms.reviewer: cynthn
-ms.openlocfilehash: 92c878497f16162f46f4da34501885b73ff85dfc
-ms.sourcegitcommit: 4042aa8c67afd72823fc412f19c356f2ba0ab554
+ms.openlocfilehash: 2bf0443465f0cfd98f8bce93e60f9007ac7503be
+ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/24/2020
-ms.locfileid: "85306887"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86042068"
 ---
 # <a name="troubleshooting-vm-provisioning-with-cloud-init"></a>Problemen met VM-inrichting oplossen met Cloud-init
 
@@ -27,13 +27,13 @@ Enkele voor beelden van problemen met het inrichten:
 - Het netwerk is niet juist ingesteld
 - Bestands-of partitie fouten wisselen
 
-In dit artikel wordt stapsgewijs beschreven hoe u problemen met Cloud-init kunt oplossen. Zie [Hoe Cloud-init werkt](https://msazure.visualstudio.com/AzureWiki/_wiki/wikis/AzureWiki.wiki/53162/cloud-init-deep-dive)voor meer gedetailleerde informatie.
+In dit artikel wordt stapsgewijs beschreven hoe u problemen met Cloud-init kunt oplossen. Zie [Cloud-init dieper](https://docs.microsoft.com/azure/virtual-machines/linux/cloud-init-deep-dive)voor meer gedetailleerde informatie.
 
 ## <a name="step-1-test-the-deployment-without-customdata"></a>Stap 1: de implementatie testen zonder customData
 
 Cloud-init kan customData accepteren, die wordt door gegeven wanneer de virtuele machine wordt gemaakt. U moet er eerst voor zorgen dat dit geen problemen met implementaties veroorzaakt. Probeer de virtuele machine in te richten zonder een configuratie door te geven. Als u vindt dat de virtuele machine niet kan worden ingericht, gaat u door met de onderstaande stappen, als u de configuratie die u doorgeeft vindt, gaat u verder met [stap 4](). 
 
-## <a name="step-2-review-image-requirements-are-satisfied"></a>Stap 2: Controleer of aan de vereisten voor de installatie kopie is voldaan
+## <a name="step-2-review-image-requirements"></a>Stap 2: de vereisten voor de installatie kopie controleren
 De belangrijkste oorzaak van het inrichtings probleem van de VM is dat de installatie kopie van het besturings systeem niet voldoet aan de vereisten voor het uitvoeren op Azure. Zorg ervoor dat uw installatie kopieën correct zijn voor bereid voordat u ze in azure inricht. 
 
 
@@ -59,22 +59,16 @@ Terwijl de virtuele machine actief is, hebt u de logboeken van de virtuele machi
 
 - [Schakel diagnostische gegevens over opstarten in](https://docs.microsoft.com/azure/virtual-machines/linux/tutorial-monitor#enable-boot-diagnostics) voordat u de virtuele machine maakt en [weer geven](https://docs.microsoft.com/azure/virtual-machines/linux/tutorial-monitor#view-boot-diagnostics) tijdens het opstarten.
 
-- [De besturingssysteem schijf hand matig koppelen en koppelen](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/troubleshoot-recovery-disks-portal-linux) aan een actieve VM om logboeken te extra heren-Azure VM herstellen
-
-Deze logboeken verzamelen:
+- [Voer AZ VM Repair uit](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/repair-linux-vm-using-azure-virtual-machine-repair-commands) om de besturingssysteem schijf te koppelen en koppelen, zodat u deze logboeken kunt verzamelen:
 ```bash
+/var/log/cloud-init*
 /var/log/waagent*
 /var/log/syslog*
 /var/log/rsyslog*
 /var/log/messages*
 /var/log/kern*
 /var/log/dmesg*
-/var/log/dpkg*
-/var/log/yum*
-/var/log/cloud-init*
 /var/log/boot*
-/var/log/auth*
-/var/log/secure*
 ```
 Begin met de Cloud-init-Logboeken om te beginnen met de eerste probleemoplossings procedure, en ontdek waar de fout is opgetreden, en gebruik vervolgens de andere logboeken om meer inzicht te krijgen. 
 * /var/log/cloud-init.log
@@ -138,4 +132,4 @@ Niet elke fout in de Cloud-init resulteert in een fatale inrichtings fout. Als u
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Als u nog steeds niet kunt isoleren waarom de configuratie van de Cloud-init niet is uitgevoerd, moet u beter kijken wat er gebeurt in elke Cloud-init-fase en wanneer de modules worden uitgevoerd. Zie meer informatie over de [configuratie van Cloud-init](https://msazure.visualstudio.com/AzureWiki/_wiki/wikis/AzureWiki.wiki/53162/cloud-init-deep-dive) . 
+Als u nog steeds niet kunt isoleren waarom de configuratie van de Cloud-init niet is uitgevoerd, moet u beter kijken wat er gebeurt in elke Cloud-init-fase en wanneer de modules worden uitgevoerd. Zie meer informatie over de [configuratie van Cloud-init](https://docs.microsoft.com/azure/virtual-machines/linux/cloud-init-deep-dive) . 

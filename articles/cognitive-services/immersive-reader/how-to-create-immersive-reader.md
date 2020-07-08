@@ -10,12 +10,12 @@ ms.subservice: immersive-reader
 ms.topic: conceptual
 ms.date: 07/22/2019
 ms.author: rwaller
-ms.openlocfilehash: 79014d318da1732d48eeb893aa383e948e1036cd
-ms.sourcegitcommit: 309cf6876d906425a0d6f72deceb9ecd231d387c
+ms.openlocfilehash: 972eb3f9983004ec7dbb3cb0df7bb3c59bdc9122
+ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/01/2020
-ms.locfileid: "84267100"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86042011"
 ---
 # <a name="create-an-immersive-reader-resource-and-configure-azure-active-directory-authentication"></a>Een resource voor insluitende lezer maken en Azure Active Directory authenticatie configureren
 
@@ -183,9 +183,10 @@ Het script is zo ontworpen dat het flexibel is. Er wordt eerst gezocht naar best
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* Bekijk de [Snelstartgids voor node. js](./quickstarts/client-libraries.md?pivots=programming-language-nodejs) om te zien wat u nog meer kunt doen met de insluitende lezer-SDK met behulp van node. js
+* Bekijk de [Node.js Snelstartgids](./quickstarts/client-libraries.md?pivots=programming-language-nodejs) om te zien wat u nog meer kunt doen met de insluitende lezer-SDK met behulp van Node.js
+* Bekijk de [Android-zelf studie](./tutorial-android.md) om te zien wat u nog meer kunt doen met de insluitende lezer-SDK met Java of Kotlin voor Android
+* Bekijk de [IOS-zelf studie](./tutorial-ios.md) om te zien wat u nog meer kunt doen met de insluitende lezer-SDK met behulp van SWIFT voor IOS
 * Bekijk de [python-zelf studie](./tutorial-python.md) om te zien wat u nog meer kunt doen met de insluitende Reader SDK met behulp van python
-* Bekijk de [SWIFT-zelf studie](./tutorial-ios-picture-immersive-reader.md) om te zien wat u nog meer met de insluitende lezer-SDK kunt doen met behulp van SWIFT
 * Verken de [insluitende lezer SDK](https://github.com/microsoft/immersive-reader-sdk) en de referentie voor de [insluitende lezer SDK](./reference.md)
 
 

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 03/30/2018
 ms.author: akjosh
-ms.openlocfilehash: 67df46742be52b03bd91af19654fbfac5df29646
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 5d0eee6b89ec3e0be944f17c361aafa598724069
+ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79250515"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86042115"
 ---
 # <a name="virtual-machine-extensions-and-features-for-linux"></a>Extensies en functies van virtuele machines voor Linux
 
@@ -49,12 +49,12 @@ Zie [Azure virtual machine agent](agent-linux.md)voor meer informatie over onder
 
 #### <a name="supported-agent-versions"></a>Ondersteunde agent versies
 
-Er zijn minimale versies van de agent om de best mogelijke ervaring te bieden. Raadpleeg [dit artikel](https://support.microsoft.com/en-us/help/4049215/extensions-and-virtual-machine-agent-minimum-version-support) voor meer informatie.
+Er zijn minimale versies van de agent om de best mogelijke ervaring te bieden. Zie [dit artikel](https://support.microsoft.com/en-us/help/4049215/extensions-and-virtual-machine-agent-minimum-version-support)voor meer informatie.
 
 #### <a name="supported-oses"></a>Ondersteunde besturings systemen
 
-De Linux-agent wordt uitgevoerd op meerdere besturings systemen, maar het Framework Extensions heeft een limiet voor de besturings systemen die uitbrei dingen. Raadpleeg [dit artikel](https://support.microsoft.com/en-us/help/4078134/azure-extension-supported-operating-systems
-) voor meer informatie.
+De Linux-agent wordt uitgevoerd op meerdere besturings systemen, maar het Framework Extensions heeft een limiet voor de besturings systemen die uitbrei dingen. Zie [dit artikel](https://support.microsoft.com/en-us/help/4078134/azure-extension-supported-operating-systems
+)voor meer informatie.
 
 Sommige extensies worden niet ondersteund in alle besturings systemen en kunnen *Fout Code 51, ' niet-ondersteund besturings systeem ',* verzenden. Raadpleeg de documentatie van de afzonderlijke extensie voor ondersteuning.
 
@@ -85,7 +85,7 @@ U kunt de volgende methoden gebruiken om een uitbrei ding uit te voeren op basis
 
 ### <a name="azure-cli"></a>Azure CLI
 
-Azure VM-extensies kunnen worden uitgevoerd op basis van een bestaande virtuele machine met de opdracht [AZ VM extension set](/cli/azure/vm/extension#az-vm-extension-set) . In het volgende voor beeld wordt de aangepaste script extensie uitgevoerd op een virtuele machine met de naam *myVM* in een resource groep met de naam *myResourceGroup*. Vervang de naam van de resource groep, de VM-naam en het script dat\/wordt uitgevoerd (https:/RAW.githubusercontent.com/me/project/Hello.sh) door uw eigen gegevens. 
+Azure VM-extensies kunnen worden uitgevoerd op basis van een bestaande virtuele machine met de opdracht [AZ VM extension set](/cli/azure/vm/extension#az-vm-extension-set) . In het volgende voor beeld wordt de aangepaste script extensie uitgevoerd op een virtuele machine met de naam *myVM* in een resource groep met de naam *myResourceGroup*. Vervang de naam van de resource groep, de VM-naam en het script dat wordt uitgevoerd (https: \/ /RAW.githubusercontent.com/me/project/Hello.sh) door uw eigen gegevens. 
 
 ```azurecli
 az vm extension set `
@@ -115,7 +115,7 @@ In de volgende afbeelding ziet u de installatie van de aangepaste script extensi
 
 ### <a name="azure-resource-manager-templates"></a>Azure Resource Manager-sjablonen
 
-VM-extensies kunnen worden toegevoegd aan een Azure Resource Manager sjabloon en worden uitgevoerd met de implementatie van de sjabloon. Wanneer u een uitbrei ding met een sjabloon implementeert, kunt u volledig geconfigureerde Azure-implementaties maken. De volgende JSON wordt bijvoorbeeld overgenomen van een resource manager-sjabloon die een set taak verdeling Vm's en een Azure-SQL database implementeert, en vervolgens een .NET core-toepassing installeert op elke virtuele machine. De VM-extensie zorgt voor de software-installatie.
+VM-extensies kunnen worden toegevoegd aan een Azure Resource Manager sjabloon en worden uitgevoerd met de implementatie van de sjabloon. Wanneer u een uitbrei ding met een sjabloon implementeert, kunt u volledig geconfigureerde Azure-implementaties maken. De volgende JSON wordt bijvoorbeeld overgenomen van een resource manager-sjabloon die een set taak verdeling Vm's en Azure SQL Database implementeert, en vervolgens een .NET core-toepassing installeert op elke virtuele machine. De VM-extensie zorgt voor de software-installatie.
 
 Zie de volledige [Resource Manager-sjabloon](https://github.com/Microsoft/dotnet-core-sample-templates/tree/master/dotnet-core-music-linux)voor meer informatie.
 
@@ -221,7 +221,7 @@ De agents en uitbrei dingen delen hetzelfde update mechanisme. Voor sommige upda
 Wanneer er een update beschikbaar is, wordt deze alleen geïnstalleerd op de virtuele machine wanneer er een wijziging is aangebracht in extensies en andere VM-modellen, zoals:
 
 - Gegevensschijven
-- Uitbreidingen
+- Extensies
 - Container voor diagnostische gegevens over opstarten
 - Geheimen voor gast besturingssystemen
 - VM-grootte
@@ -241,7 +241,7 @@ Wanneer de agent is geïnstalleerd, wordt er een bovenliggende daemon gemaakt. D
 
 Het bovenliggende proces kan niet automatisch worden bijgewerkt. Het bovenliggende item kan alleen worden bijgewerkt door een update van een distributie-pakket.
 
-Als u wilt controleren welke versie u gebruikt, controleert `waagent` u het volgende:
+Als u wilt controleren welke versie u gebruikt, controleert u het `waagent` volgende:
 
 ```bash
 waagent --version
@@ -336,7 +336,7 @@ De volgende stappen voor probleem oplossing zijn van toepassing op alle VM-exten
 
 1. Als u het logboek van de Linux-agent wilt controleren, bekijkt u de activiteit wanneer uw extensie is ingericht in */var/log/waagent.log*
 
-2. Raadpleeg de logboeken van de daad werkelijke extensie voor meer informatie over *\</var/log/azure/-extensie>*
+2. Raadpleeg de logboeken van de daad werkelijke extensie voor meer informatie over */var/log/Azure/ \<extensionName> *
 
 3. Raadpleeg de sectie extensie-specifieke documentatie voor het oplossen van problemen met fout codes, bekende problemen etc.
 
@@ -403,7 +403,7 @@ U kunt een uitbrei ding ook als volgt verwijderen in de Azure Portal:
 
 ## <a name="common-vm-extension-reference"></a>Naslag informatie over algemene VM-extensies
 
-| Extensie naam | Beschrijving | Meer informatie |
+| Extensie naam | Description | Meer informatie |
 | --- | --- | --- |
 | Aangepaste script extensie voor Linux |Scripts uitvoeren op een virtuele Azure-machine |[Aangepaste script extensie voor Linux](custom-script-linux.md) |
 | VM-extensie voor toegang |Toegang tot een virtuele Azure-machine herstellen |[VM-extensie voor toegang](https://github.com/Azure/azure-linux-extensions/tree/master/VMAccess) |

@@ -5,15 +5,15 @@ author: danielsollondon
 ms.service: virtual-machines-linux
 ms.subservice: imaging
 ms.topic: conceptual
-ms.date: 06/22/2020
+ms.date: 07/06/2020
 ms.author: danis
 ms.reviewer: cynthn
-ms.openlocfilehash: 731cb79096de4af2864060e7a665ac54b6581418
-ms.sourcegitcommit: 4042aa8c67afd72823fc412f19c356f2ba0ab554
+ms.openlocfilehash: f5028abadbe5600058c83a144d0095aee1278fe6
+ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/24/2020
-ms.locfileid: "85306931"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86042069"
 ---
 # <a name="diving-deeper-into-cloud-init"></a>Meer diep in de Cloud-init
 Voor meer informatie over [Cloud-init](https://cloudinit.readthedocs.io/en/latest/index.html) of het oplossen van problemen met een lager niveau, moet u weten hoe het werkt. Dit document markeert de belang rijke onderdelen en legt de details van Azure uit.
@@ -26,9 +26,9 @@ Een virtuele machine configureren om te worden uitgevoerd op een platform, betek
 
 Sommige configuraties zijn al geïntegreerde in azure Marketplace-installatie kopieën die worden geleverd met Cloud-init, zoals:
 
-* Cloud gegevens bron-Cloud-init bevat code die kan communiceren met Cloud platforms. deze worden ' gegevens bronnen ' genoemd. Wanneer een virtuele machine wordt gemaakt op basis van een Cloud-init-installatie kopie in [Azure](https://cloudinit.readthedocs.io/en/latest/topics/datasources/azure.html#azure), laadt Cloud-init de Azure-gegevens bron, die communiceert met de Azure-eind punten van de virtuele machine om de specifieke VM-configuratie op te halen.
-* Image config (/etc/Cloud)
-* Runtime config (/run/Cloud-init), zoals `/etc/cloud/cloud.cfg` , `/etc/cloud/cloud.cfg.d/*.cfg` . Een voor beeld van waar dit wordt gebruikt in azure, is het gebruikelijk voor de installatie kopieën van Linux-besturings systemen met Cloud-init om een Azure data source-instructie te hebben die Cloud-init vertelt welke data source-service moet worden gebruikt. Hiermee wordt de tijd voor de Cloud-init opgeslagen:
+1. **Cloud-gegevens bron** -Cloud-init bevat code die kan communiceren met Cloud platforms. deze worden data sources genoemd. Wanneer een virtuele machine wordt gemaakt op basis van een Cloud-init-installatie kopie in [Azure](https://cloudinit.readthedocs.io/en/latest/topics/datasources/azure.html#azure), laadt Cloud-init de Azure-gegevens bron, die communiceert met de Azure-eind punten van de virtuele machine om de specifieke VM-configuratie op te halen.
+2. **Runtime configuratie** (/run/Cloud-init)
+3. **Image config** (/etc/Cloud), zoals `/etc/cloud/cloud.cfg` , `/etc/cloud/cloud.cfg.d/*.cfg` . Een voor beeld van waar dit wordt gebruikt in azure, is het gebruikelijk voor de installatie kopieën van Linux-besturings systemen met Cloud-init om een Azure data source-instructie te hebben die Cloud-init vertelt welke data source-service moet worden gebruikt. Hiermee wordt de tijd voor de Cloud-init opgeslagen:
 
    ```bash
    /etc/cloud/cloud.cfg.d# cat 90_dpkg.cfg
@@ -41,26 +41,28 @@ Sommige configuraties zijn al geïntegreerde in azure Marketplace-installatie ko
 
 Bij het inrichten met Cloud-init zijn er vijf fasen van opstarten, die de configuratie van het proces en de weer gegeven in de logboeken.
 
-1. [Generator fase](https://cloudinit.readthedocs.io/en/latest/topics/boot.html#generator): de in de Cloud init geplaatste generator wordt gestart en er wordt vastgesteld dat de Cloud-init moet worden opgenomen in de opstart doelen. als dit het geval is, wordt Cloud-init ingeschakeld. Als u Cloud-init bijvoorbeeld wilt uitschakelen, kunt u dit bestand maken `/etc/cloud/cloud-init.disabled` .
+1. [Generator fase](https://cloudinit.readthedocs.io/en/latest/topics/boot.html#generator): de in de Cloud init geplaatste generator wordt gestart en er wordt vastgesteld dat de Cloud-init moet worden opgenomen in de opstart doelen. als dit het geval is, wordt Cloud-init ingeschakeld. 
 
 2. [Cloud-init Local fase](https://cloudinit.readthedocs.io/en/latest/topics/boot.html#local): hier ziet u de lokale Azure-gegevens bron, waarmee Cloud-init kan worden ingeschakeld voor de interface met Azure en een netwerk configuratie, inclusief terugval, kan worden toegepast.
 
 3. [Cloud-init init-fase (netwerk)](https://cloudinit.readthedocs.io/en/latest/topics/boot.html#network): het netwerk moet online zijn en de gegevens van de NIC en route tabel moeten worden gegenereerd. In deze fase worden de modules die in/etc/Cloud/Cloud.cfg worden vermeld, `cloud_init_modules` uitgevoerd. De virtuele machine in azure wordt gekoppeld, de tijdelijke schijf wordt geformatteerd, de hostnaam is ingesteld, samen met andere taken.
 
-   Dit zijn enkele van de cloud_init_modules:
-   - `migrator`
-   - `seed_random`
-   - `bootcmd`
-   - `write-files`
-   - `growpart`
-   - `resizefs`
-   - `disk_setup`
-   - `mounts`
-   - `set_hostname`
-   - `update_hostname`
-   - `ssh`
-
-
+   Dit zijn enkele van de `cloud_init_modules` volgende:
+   
+   ```bash
+   - migrator
+   - seed_random
+   - bootcmd
+   - write-files
+   - growpart
+   - resizefs
+   - disk_setup
+   - mounts
+   - set_hostname
+   - update_hostname
+   - ssh
+   ```
+   
    Na deze fase wordt door Cloud-init gesignaleerd naar het Azure-platform waarop de virtuele machine is ingericht. Sommige modules zijn mogelijk mislukt. niet alle module fouten zullen leiden tot een inrichtings fout.
 
 4. [Cloud-init-configuratie fase](https://cloudinit.readthedocs.io/en/latest/topics/boot.html#config): in deze fase worden de modules in `cloud_config_modules` gedefinieerd en weer gegeven in/etc/Cloud/Cloud.cfg uitgevoerd.
