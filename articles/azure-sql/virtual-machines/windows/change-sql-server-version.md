@@ -14,14 +14,14 @@ ms.date: 06/08/2020
 ms.author: RamaKoni
 ms.reviewer: sqlblt, daleche
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 70085cda4252e5435c450ae80dae2e49829b1474
-ms.sourcegitcommit: 51718f41d36192b9722e278237617f01da1b9b4e
+ms.openlocfilehash: 63c4c7b596a32901d127642118d224c2b318510f
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/19/2020
-ms.locfileid: "85101802"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85963016"
 ---
-# <a name="in-place-change-of-sql-server-version-on-azure-vm"></a>In-place wijziging van de SQL Server-versie op de Azure-VM
+# <a name="in-place-change-of-sql-server-version-on-azure-vm"></a>In-place wijziging van SQL Server-versie op Azure VM
 
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
 
@@ -107,7 +107,7 @@ Nadat u de versie van SQL Server hebt gewijzigd, registreert u uw SQL Server VM 
 :::image type="content" source="./media/change-sql-server-version/verify-portal.png" alt-text="Versie controleren":::
 
 > [!NOTE]
-> Als u de resource provider al hebt geïnstalleerd, maakt u [de registratie van de SQL-VM-resource ongedaan](sql-vm-resource-provider-register.md#unregister-from-the-resource-provider) en [registreert u de SQL VM-resource](sql-vm-resource-provider-register.md#register-a-subscription-with-the-resource-provider) opnieuw zodat de juiste versie en editie van SQL Server worden gedetecteerd die op de virtuele machine is geïnstalleerd. Hiermee worden de meta gegevens en facturerings gegevens bijgewerkt die aan deze virtuele machine zijn gekoppeld.
+> Als u zich al hebt geregistreerd bij de resource provider van de SQL-VM, maakt u de [registratie van de RP ongedaan](sql-vm-resource-provider-register.md#unregister-from-rp) en [registreert u de SQL VM-resource](sql-vm-resource-provider-register.md#register-with-rp) opnieuw zodat de juiste versie en editie van SQL Server worden gedetecteerd die is geïnstalleerd op de VM. Hiermee worden de meta gegevens en facturerings gegevens bijgewerkt die aan deze virtuele machine zijn gekoppeld.
 
 ## <a name="remarks"></a>Opmerkingen
 

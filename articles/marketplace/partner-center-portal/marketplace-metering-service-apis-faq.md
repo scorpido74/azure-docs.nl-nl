@@ -7,12 +7,12 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 06/01/2020
-ms.openlocfilehash: 6c1cc8c08fa4dc09d033cf4752a81f01419e8f2c
-ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
+ms.openlocfilehash: 361e35aea90a9817e365d66014faf5f23433c1dc
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/11/2020
-ms.locfileid: "84694923"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85964784"
 ---
 # <a name="marketplace-metered-billing-apis---faq"></a>Geplaatste facturerings-Api's met Marketplace-Veelgestelde vragen
 
@@ -76,7 +76,7 @@ De klant heeft bijvoorbeeld het SaaS-abonnement vandaag om 3 uur geannuleerd. De
 
 ### <a name="can-you-get-a-list-of-all-saas-subscriptions-including-active-and-unsubscribed-subscriptions"></a>Kunt u een lijst met alle SaaS-abonnementen, waaronder actieve en niet-geabonneerde abonnementen, ophalen?
 
-Ja, wanneer u de List van de [lijst abonnementen ophalen](https://docs.microsoft.com/azure/marketplace/partner-center-portal/pc-saas-fulfillment-api-v2#subscription-api) aanroept, omdat het een lijst bevat met alle SaaS-abonnementen. In het veld Status in het antwoord voor elk SaaS-abonnement wordt vastgelegd of het abonnement actief of afgemeld is.
+Ja, wanneer u de List van de [lijst abonnementen ophalen](pc-saas-fulfillment-api-v2.md#subscription-apis) aanroept, omdat het een lijst bevat met alle SaaS-abonnementen. In het veld Status in het antwoord voor elk SaaS-abonnement wordt vastgelegd of het abonnement actief of afgemeld is.
 
 ### <a name="are-the-start-and-end-dates-of-saas-subscription-term-and-overage-usage-emission-connected"></a>Zijn de begin-en eind datums van de SaaS-abonnements periode en de overschrijding gebruikt?
 

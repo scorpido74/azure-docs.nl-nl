@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 05/04/2017
-ms.openlocfilehash: 2fd148dbb85a4fd60fe63d4fb73128bf92dea1d8
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 10851754bda73fc769e613153582e491265ebb71
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77670556"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85963237"
 ---
 # <a name="collect-performance-counters-for-linux-applications-in-azure-monitor"></a>Verzamelen van prestatie meter items voor Linux-toepassingen in Azure Monitor 
 [!INCLUDE [log-analytics-agent-note](../../../includes/log-analytics-agent-note.md)]
@@ -28,16 +28,16 @@ De MySQL OMI-provider vereist een vooraf geconfigureerde MySQL-gebruiker en geï
 
 Tijdens de installatie van de Log Analytics-agent voor Linux scant de MySQL OMI-provider MySQL mijn. cnf-configuratie bestanden (standaard locaties) voor een bind adres en poort, en het MySQL OMI-verificatie bestand gedeeltelijk instellen.
 
-Het MySQL-verificatie bestand wordt opgeslagen `/var/opt/microsoft/mysql-cimprov/auth/omsagent/mysql-auth`op.
+Het MySQL-verificatie bestand wordt opgeslagen op `/var/opt/microsoft/mysql-cimprov/auth/omsagent/mysql-auth` .
 
 
 ### <a name="authentication-file-format"></a>Bestands indeling voor verificatie
 Dit is de indeling voor het MySQL OMI-verificatie bestand
 
-    [Port]=[Bind-Address], [username], [Base64 encoded Password]
-    (Port)=(Bind-Address), (username), (Base64 encoded Password)
-    (Port)=(Bind-Address), (username), (Base64 encoded Password)
-    AutoUpdate=[true|false]
+> [Poort] = [binding-adres], [gebruikers naam], [base64-gecodeerd wacht woord]  
+> (Poort) = (binding-adres), (gebruikers naam), (base64-gecodeerd wacht woord)  
+> (Poort) = (binding-adres), (gebruikers naam), (base64-gecodeerd wacht woord)  
+> Auto update = [True | False]  
 
 De vermeldingen in het verificatie bestand worden beschreven in de volgende tabel.
 
@@ -63,14 +63,14 @@ De volgende tabel bevat voor beelden van exemplaar-instellingen
 ### <a name="mysql-omi-authentication-file-program"></a>Programma voor MySQL OMI-verificatie bestand
 Inbegrepen bij de installatie van de MySQL OMI-provider is een MySQL OMI-verificatie bestand dat kan worden gebruikt voor het bewerken van het MySQL OMI-verificatie bestand. Het verificatie bestand programma bevindt zich op de volgende locatie.
 
-    /opt/microsoft/mysql-cimprov/bin/mycimprovauth
+`/opt/microsoft/mysql-cimprov/bin/mycimprovauth`
 
 > [!NOTE]
 > Het referentie bestand moet leesbaar zijn voor het omsagent-account. U wordt aangeraden de opdracht mycimprovauth uit te voeren als omsgent.
 
 De volgende tabel bevat informatie over de syntaxis voor het gebruik van mycimprovauth.
 
-| Bewerking | Voorbeeld | Beschrijving
+| Bewerking | Voorbeeld | Description
 |:--|:--|:--|
 | Auto update *False of True* | mycimprovauth auto update False | Hiermee stelt u in of het verificatie bestand automatisch wordt bijgewerkt bij opnieuw opstarten of bijwerken. |
 | standaard *wachtwoord voor bind adres gebruikers naam* | mycimprovauth standaard 127.0.0.1 hoofd-pwd | Hiermee stelt u het standaard exemplaar in het MySQL OMI-verificatie bestand.<br>Het veld wacht woord moet worden ingevoerd in tekst zonder opmaak: het wacht woord in het MySQL OMI-verificatie bestand is base 64 gecodeerd. |
@@ -81,15 +81,18 @@ De volgende tabel bevat informatie over de syntaxis voor het gebruik van mycimpr
 
 Met de volgende voorbeeld opdrachten wordt een standaard gebruikers account gedefinieerd voor de MySQL-server op localhost.  Het veld wacht woord moet worden ingevoerd in tekst zonder opmaak: het wacht woord in het MySQL OMI-verificatie bestand is base 64 gecodeerd
 
-    sudo su omsagent -c '/opt/microsoft/mysql-cimprov/bin/mycimprovauth default 127.0.0.1 <username> <password>'
-    sudo /opt/omi/bin/service_control restart
+```console
+sudo su omsagent -c '/opt/microsoft/mysql-cimprov/bin/mycimprovauth default 127.0.0.1 <username> <password>'
+sudo /opt/omi/bin/service_control restart
+```
 
 ### <a name="database-permissions-required-for-mysql-performance-counters"></a>Database machtigingen die zijn vereist voor MySQL-prestatie meter items
 De MySQL-gebruiker heeft toegang nodig tot de volgende query's voor het verzamelen van prestatie gegevens van de MySQL-server. 
 
-    SHOW GLOBAL STATUS;
-    SHOW GLOBAL VARIABLES:
-
+```sql
+SHOW GLOBAL STATUS;
+SHOW GLOBAL VARIABLES:
+```
 
 De MySQL-gebruiker moet ook toegang tot de volgende standaard tabellen selecteren.
 
@@ -98,9 +101,10 @@ De MySQL-gebruiker moet ook toegang tot de volgende standaard tabellen selectere
 
 Deze bevoegdheden kunnen worden verleend door de volgende Grant-opdrachten uit te voeren.
 
-    GRANT SELECT ON information_schema.* TO ‘monuser’@’localhost’;
-    GRANT SELECT ON mysql.* TO ‘monuser’@’localhost’;
-
+```sql
+GRANT SELECT ON information_schema.* TO ‘monuser’@’localhost’;
+GRANT SELECT ON mysql.* TO ‘monuser’@’localhost’;
+```
 
 > [!NOTE]
 > Voor het verlenen van machtigingen aan een MySQL-bewakings gebruiker moet de gebruiker die de Grant heeft verleend de bevoegdheid ' optie verlenen ' hebben, evenals de bevoegdheid die wordt toegekend.
@@ -132,12 +136,14 @@ Zodra u de Log Analytics-agent voor Linux hebt geconfigureerd om gegevens te ver
 
 ## <a name="apache-http-server"></a>Apache HTTP-server 
 Als de Apache HTTP-server op de computer wordt gedetecteerd wanneer de omsagent-bundel is geïnstalleerd, wordt automatisch een provider voor prestatie bewaking voor de Apache HTTP-server geïnstalleerd. Deze provider is afhankelijk van een Apache-module die moet worden geladen in de Apache HTTP-server om toegang te krijgen tot prestatie gegevens. De module kan worden geladen met de volgende opdracht:
-```
+
+```console
 sudo /opt/microsoft/apache-cimprov/bin/apache_config.sh -c
 ```
 
 Als u de Apache-bewakings module wilt verwijderen, voert u de volgende opdracht uit:
-```
+
+```console
 sudo /opt/microsoft/apache-cimprov/bin/apache_config.sh -u
 ```
 

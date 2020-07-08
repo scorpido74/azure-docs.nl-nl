@@ -3,12 +3,12 @@ title: Azure Service Fabric-toepassings model
 description: Toepassingen en services in azure Service Fabric model leren en beschrijven met toepassings-en service manifest bestanden.
 ms.topic: conceptual
 ms.date: 2/23/2018
-ms.openlocfilehash: 7179686b7d4ef2df267cb95ece8f83d5fb7682b8
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 84e6b2309fdb206771d4ea01aa03c7f355d6ff19
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75551876"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85963730"
 ---
 # <a name="model-an-application-in-service-fabric"></a>Een toepassing model leren in Service Fabric
 Dit artikel bevat een overzicht van het Azure Service Fabric-toepassings model en hoe u een toepassing en service kunt definiëren via manifest bestanden.
@@ -20,9 +20,9 @@ Een toepassing is een verzameling van onderdeel Services die een bepaalde functi
 
 Een toepassings type is een categorisatie van een toepassing en bestaat uit een bundel van service typen. Een service type is een categorisatie van een service. De categorisatie kan verschillende instellingen en configuraties hebben, maar de kern functionaliteit blijft hetzelfde. De exemplaren van een service zijn de verschillende service configuratie variaties van hetzelfde service type.  
 
-Klassen (of "typen") van toepassingen en services worden beschreven met XML-bestanden (toepassings manifesten en service manifesten).  In de manifesten worden toepassingen en services beschreven en zijn de sjablonen waarmee toepassingen kunnen worden geïnstantieerd uit de installatie kopie opslag van het cluster.  Manifesten worden gedetailleerd besproken in [toepassings-en service manifesten](service-fabric-application-and-service-manifests.md). De schema definitie voor het bestand ServiceManifest. XML en ApplicationManifest. XML wordt geïnstalleerd met de Service Fabric SDK en hulpprogram ma's in *C:\Program Files\Microsoft SDKs\Service Fabric\schemas\ServiceFabricServiceModel.XSD*. Het XML-schema wordt beschreven in de [documentatie bij ServiceFabricServiceModel. XSD-schema](service-fabric-service-model-schema.md).
+Klassen (of "typen") van toepassingen en services worden beschreven met XML-bestanden (toepassings manifesten en service manifesten).  In de manifesten worden toepassingen en services beschreven en zijn de sjablonen waarmee toepassingen kunnen worden geïnstantieerd uit de installatie kopie opslag van het cluster.  Manifesten worden gedetailleerd besproken in [toepassings-en service manifesten](service-fabric-application-and-service-manifests.md). De schema definitie voor de ServiceManifest.xml en het ApplicationManifest.xml-bestand wordt geïnstalleerd met de SDK en hulpprogram ma's van Service Fabric naar *C:\Program Files\Microsoft SDKs\Service Fabric\schemas\ServiceFabricServiceModel.XSD*. Het XML-schema wordt beschreven in de [documentatie bij ServiceFabricServiceModel. XSD-schema](service-fabric-service-model-schema.md).
 
-De code voor verschillende toepassings exemplaren wordt uitgevoerd als afzonderlijke processen, zelfs als deze worden gehost door hetzelfde Service Fabric knoop punt. Bovendien kan de levens cyclus van elke toepassings instantie afzonderlijk worden beheerd (bijvoorbeeld geüpgraded). In het volgende diagram ziet u hoe toepassings typen bestaan uit service typen, die op zijn beurt bestaan uit code, configuratie en gegevens pakketten. Om het diagram te vereenvoudigen, worden alleen de code/config/gegevens `ServiceType4` pakketten voor weer gegeven, hoewel elk Service type een of meer van de pakket typen zou bevatten.
+De code voor verschillende toepassings exemplaren wordt uitgevoerd als afzonderlijke processen, zelfs als deze worden gehost door hetzelfde Service Fabric knoop punt. Bovendien kan de levens cyclus van elke toepassings instantie afzonderlijk worden beheerd (bijvoorbeeld geüpgraded). In het volgende diagram ziet u hoe toepassings typen bestaan uit service typen, die op zijn beurt bestaan uit code, configuratie en gegevens pakketten. Om het diagram te vereenvoudigen, worden alleen de code/config/gegevens pakketten voor `ServiceType4` weer gegeven, hoewel elk Service type een of meer van de pakket typen zou bevatten.
 
 ![Service Fabric toepassings typen en-service typen][cluster-imagestore-apptypes]
 
@@ -33,7 +33,7 @@ In het volgende diagram ziet u de relatie tussen toepassingen en service-exempla
 ![Partities en replica's in een service][cluster-application-instances]
 
 > [!TIP]
-> U kunt de indeling van toepassingen in een cluster weer geven met behulp van het hulp&lt;programma&gt;service Fabric Explorer beschikbaar op http://Yourclusteraddress: 19080/Explorer. Zie [uw cluster visualiseren met Service Fabric Explorer](service-fabric-visualizing-your-cluster.md)voor meer informatie.
+> U kunt de indeling van toepassingen in een cluster weer geven met behulp van het hulp programma Service Fabric Explorer beschikbaar op http:// &lt; yourclusteraddress &gt; : 19080/Explorer. Zie [uw cluster visualiseren met Service Fabric Explorer](service-fabric-visualizing-your-cluster.md)voor meer informatie.
 > 
 > 
 

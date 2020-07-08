@@ -4,12 +4,12 @@ description: Meer informatie over de verschillende opties voor het persistent ma
 ms.topic: how-to
 ms.date: 11/14/2018
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 492de237acdf2d6d42f27638bac3adc0f6549828
-ms.sourcegitcommit: 6fd8dbeee587fd7633571dfea46424f3c7e65169
+ms.openlocfilehash: 4ebe0b6d57225eff9f3f1251d5e491c95e9b7ffc
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83726295"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85965107"
 ---
 # <a name="persist-job-and-task-output"></a>Taken persistent maken
 
@@ -35,7 +35,7 @@ De volgende secties geven een korte beschrijving van elke benadering en algemene
 
 ### <a name="use-the-batch-service-api"></a>De API voor de batch-service gebruiken
 
-De batch-service ondersteunt het opgeven van uitvoer bestanden in Azure Storage voor taak gegevens wanneer u [een taak aan een taak toevoegt](https://docs.microsoft.com/rest/api/batchservice/add-a-task-to-a-job) of [een verzameling taken toevoegt aan een taak](https://docs.microsoft.com/rest/api/batchservice/add-a-collection-of-tasks-to-a-job).
+De batch-service ondersteunt het opgeven van uitvoer bestanden in Azure Storage voor taak gegevens wanneer u [een taak aan een taak toevoegt](/rest/api/batchservice/add-a-task-to-a-job) of [een verzameling taken toevoegt aan een taak](/rest/api/batchservice/add-a-collection-of-tasks-to-a-job).
 
 Zie voor meer informatie over het persistent maken van taak uitvoer met de batch-Service-API [permanente taak gegevens om te Azure Storage met de API van de batch-service](batch-task-output-files.md).
 

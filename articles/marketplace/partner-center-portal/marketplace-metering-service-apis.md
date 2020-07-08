@@ -7,20 +7,20 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 05/26/2020
-ms.openlocfilehash: 6a5335a1048adaa50344e75662b4ad593955f34d
-ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
+ms.openlocfilehash: 7bc5dc0e21bc9218c0e67b4e8e96299d73628e97
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/11/2020
-ms.locfileid: "84694940"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85963169"
 ---
 # <a name="marketplace-metered-billing-apis"></a>Facturerings-Api's met geplaatste Marketplace
 
 De gefactureerde facturerings-Api's moeten worden gebruikt wanneer de uitgever aangepaste meting dimensies maakt voor een aanbieding die in het partner centrum moet worden gepubliceerd. Integratie met de gefactureerde facturerings-Api's is vereist voor een gekochte aanbieding met een of meer plannen met aangepaste dimensies voor het verzenden van gebruiks gebeurtenissen.
 
-Zie voor meer informatie over het maken van aangepaste meet dimensies voor SaaS, [SaaS-data limiet voor gefactureerd](https://docs.microsoft.com/azure/marketplace/partner-center-portal/saas-metered-billing).
+Zie voor meer informatie over het maken van aangepaste meet dimensies voor SaaS, [SaaS-data limiet voor gefactureerd](saas-metered-billing.md).
 
-Zie de [sectie technische configuratie van een nieuwe Azure-apps-aanbieding maken](https://docs.microsoft.com/azure/marketplace/partner-center-portal/create-new-azure-apps-offer#technical-configuration-managed-application-plans-only)voor meer informatie over het maken van aangepaste meet dimensies voor een Azure-toepassing aanbieding met een beheerd app-abonnement.
+Zie de [sectie technische configuratie van een nieuwe Azure-apps-aanbieding maken](create-new-azure-apps-offer.md#technical-configuration)voor meer informatie over het maken van aangepaste meet dimensies voor een Azure-toepassing aanbieding met een beheerd app-abonnement.
 
 ## <a name="enforcing-tls-12-note"></a>Opmerking over het afdwingen van TLS 1,2
 
@@ -38,14 +38,14 @@ Er kan slechts één gebruiks gebeurtenis worden verzonden voor elk uur van een 
 
 *Query parameters:*
 
-|            |          |
+| Parameter | Aanbeveling          |
 | ---------- | ---------------------- |
 | `ApiVersion` | Gebruik 2018-08-31. |
 | | |
 
 *Aanvraag headers:*
 
-| Inhouds type       | `application/json`    |
+| Inhouds type       | `application/json` gebruiken  |
 | ------------------ | ---------------------------- |
 | `x-ms-requestid`     | Een unieke teken reeks waarde voor het bijhouden van de aanvraag van de client, bij voor keur een GUID. Als deze waarde niet wordt gegeven, wordt er een gegenereerd en weer gegeven in de antwoord headers. |
 | `x-ms-correlationid` | Unieke teken reeks waarde voor de bewerking op de client. Deze para meter verbindt alle gebeurtenissen van de client bewerking met gebeurtenissen aan de server zijde. Als deze waarde niet is opgenomen, wordt er een gegenereerd en geleverd in de antwoord headers. |
@@ -151,13 +151,13 @@ Met de gebeurtenis-API voor batch gebruik kunt u gebruiks gebeurtenissen voor me
 
 *Query parameters:*
 
-|            |     |
+| Parameter  | Aanbeveling     |
 | ---------- | -------------------- |
 | `ApiVersion` | Gebruik 2018-08-31. |
 
 *Aanvraag headers:*
 
-| Inhouds type       | `application/json`       |
+| Inhouds type       | `application/json` gebruiken       |
 | ------------------ | ------ |
 | `x-ms-requestid`     | Een unieke teken reeks waarde voor het bijhouden van de aanvraag van de client, bij voor keur een GUID. Als deze waarde niet wordt gegeven, wordt er een gegenereerd en gegeven in de antwoord headers. |
 | `x-ms-correlationid` | Unieke teken reeks waarde voor de bewerking op de client. Deze para meter verbindt alle gebeurtenissen van de client bewerking met gebeurtenissen aan de server zijde. Als deze waarde niet is opgenomen, wordt er een gegenereerd en gegeven in de antwoord headers. |

@@ -7,12 +7,12 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: reference
 ms.date: 06/10/2020
 ms.author: dsindona
-ms.openlocfilehash: 7224badd5668ca37ca062867109ca25710eac8e7
-ms.sourcegitcommit: 398fecceba133d90aa8f6f1f2af58899f613d1e3
+ms.openlocfilehash: 1a833f86a0d8de3f5b8c83e899a58fa83f3153c4
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/21/2020
-ms.locfileid: "85125155"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85963764"
 ---
 # <a name="saas-fulfillment-apis-version-2-in-microsoft-commercial-marketplace"></a>SaaS-fulfillment-Api's versie 2 in micro soft Commercial Marketplace
 
@@ -39,18 +39,18 @@ Voor het maken van accounts gebeurt het volgende:
 
 Een voor beeld van een dergelijke aanroep is `https://contoso.com/signup?token=<blob>` , terwijl de URL van de landings pagina voor deze SaaS-aanbieding in het partner centrum is geconfigureerd als `https://contoso.com/signup` . Dit token biedt de uitgever een ID die de SaaS-aankoop en de klant op unieke wijze identificeert.
 
->[!Note]
+>[!NOTE]
 >De uitgever krijgt geen melding van de SaaS-aankoop totdat de klant het configuratie proces van micro soft initieert.
 
 De URL van de landings pagina moet 24 uur duren en u kunt op elk moment nieuwe oproepen van micro soft ontvangen. Als de landings pagina niet beschikbaar is, kunnen klanten zich niet aanmelden voor de SaaS-service en deze gebruiken.
 
-Vervolgens moet het *token* worden teruggestuurd naar micro soft via de uitgever door de [API voor SaaS-conflicten](https://docs.microsoft.com/azure/marketplace/partner-center-portal/pc-saas-fulfillment-api-v2#resolve-a-subscription)aan te roepen als de waarde van de `x-ms-marketplace-token header` para meter header.  Als gevolg van de API-aanroep omzetten, wordt het token uitgewisseld voor de details van de SaaS-aankoop, zoals de unieke ID van de aankoop, de gekochte aanbiedings-ID, het gekochte abonnement-id, enzovoort.
+Vervolgens moet het *token* worden teruggestuurd naar micro soft via de uitgever door de [API voor SaaS-conflicten](#resolve-a-purchased-subscription)aan te roepen als de waarde van de `x-ms-marketplace-token header` para meter header.  Als gevolg van de API-aanroep omzetten, wordt het token uitgewisseld voor de details van de SaaS-aankoop, zoals de unieke ID van de aankoop, de gekochte aanbiedings-ID, het gekochte abonnement-id, enzovoort.
 
-Op de landings pagina moet de klant zijn aangemeld bij het nieuwe of bestaande SaaS-account via Azure Active Directory (AAD) eenmalige aanmelding (SSO). 
+Op de landings pagina moet de klant zijn aangemeld bij het nieuwe of bestaande SaaS-account via Azure Active Directory (AAD) eenmalige aanmelding (SSO).
 
 De uitgever moet SSO-aanmelding implementeren om de gebruikers ervaring te bieden die micro soft voor deze stroom vereist.  Zorg ervoor dat u de Azure AD-toepassing met meerdere tenants gebruikt, zowel werk-als school accounts of persoonlijke micro soft-accounts wilt toestaan bij het configureren van de SSO.  Deze vereiste is alleen van toepassing op de landings pagina en voor gebruikers die worden omgeleid naar de SaaS-service wanneer ze al zijn aangemeld met micro soft-referenties. Het is niet van toepassing op alle aanmeldingen bij de SaaS-service.
 
->[!Note]
+> [!NOTE]
 >Als een SSO-aanmelding vereist dat een beheerder machtigingen voor een app toewijst, moet de beschrijving van de aanbieding in het partner centrum vermelden dat toegang op beheerders niveau is vereist. Dit is om te voldoen aan het [certificerings beleid voor Marketplace](https://docs.microsoft.com/legal/marketplace/certification-policies#10003-authentication-options).
 
 Zodra u bent aangemeld, moet de klant de SaaS-configuratie aan de kant van de uitgever volt ooien. De uitgever moet vervolgens de [API Activate](#activate-a-subscription) van het abonnement aanroepen om een signaal naar Marketplace te verzenden dat het inrichten van het SaaS-account is voltooid.
@@ -61,7 +61,7 @@ Hiermee wordt de facturerings cyclus van de klant gestart. Als het activeren van
 
 #### <a name="active-subscribed"></a>Actief (geabonneerd)
 
-Deze status is de stabiele status van een ingerichte SaaS-abonnement. Zodra de [API](https://docs.microsoft.com/azure/marketplace/partner-center-portal/pc-saas-fulfillment-api-v2#activate-a-subscription) -aanroep voor het activeren van een abonnement op micro soft wordt verwerkt, wordt het SaaS-abonnement gemarkeerd als geabonneerd. De SaaS-service is nu klaar om te worden gebruikt door de klant op de kant van de uitgever en de klant wordt gefactureerd.
+Deze status is de stabiele status van een ingerichte SaaS-abonnement. Zodra de [API](#activate-a-subscription) -aanroep voor het activeren van een abonnement op micro soft wordt verwerkt, wordt het SaaS-abonnement gemarkeerd als geabonneerd. De SaaS-service is nu klaar om te worden gebruikt door de klant op de kant van de uitgever en de klant wordt gefactureerd.
 
 Wanneer het SaaS-abonnement al actief is en de klant kiest voor het starten van SaaS-ervaring vanuit het Azure Portal-of M365 **-beheer centrum** , wordt de URL van de **landings pagina** opnieuw aangeroepen door micro soft met de *token* parameter, net als in de stroom activeren.  De uitgever moet onderscheid maken tussen nieuwe aankopen en het beheer van bestaande SaaS-accounts en de URL-aanroep van deze landings pagina afhandelen dienovereenkomstig.
 
@@ -85,7 +85,7 @@ Alleen een actief abonnement kan worden bijgewerkt. Terwijl het abonnement wordt
 In deze stroom wijzigt de klant het abonnement of de hoeveelheid stoelen van het M365-beheer centrum.  
 
 1. Zodra een update is ingevoerd, roept micro soft de webhook-URL van de uitgever aan, die is geconfigureerd in het veld voor de **verbindings webhook** in het partner centrum, met een geschikte waarde voor *actie* en andere relevante para meters.  
-1. De uitgever moet de vereiste wijzigingen aanbrengen in de SaaS-service en micro soft waarschuwen wanneer de wijziging is voltooid door de [update status van de bewerkings-API aan](https://docs.microsoft.com/azure/marketplace/partner-center-portal/pc-saas-fulfillment-api-v2#update-the-status-of-an-operation)te roepen.
+1. De uitgever moet de vereiste wijzigingen aanbrengen in de SaaS-service en micro soft waarschuwen wanneer de wijziging is voltooid door de [update status van de bewerkings-API aan](#update-the-status-of-an-operation)te roepen.
 1. Als de patch wordt verzonden met de status mislukt, wordt het update proces niet voltooid aan de kant van micro soft.  Het SaaS-abonnement blijft bestaan met het bestaande abonnement en de hoeveelheid stoelen.
 
 De volg orde van de API-aanroepen voor een door Marketplace geïnitieerd update scenario wordt hieronder weer gegeven.
@@ -96,11 +96,11 @@ De volg orde van de API-aanroepen voor een door Marketplace geïnitieerd update 
 
 In deze stroom wijzigt de klant het abonnement of het aantal stoelen dat is gekocht van de SaaS-service zelf. 
 
-1. De uitgevers code moet de [API change plan](https://docs.microsoft.com/azure/marketplace/partner-center-portal/pc-saas-fulfillment-api-v2#change-the-plan-on-the-subscription) aanroepen en/of de API van de [hoeveelheid wijzigen](https://docs.microsoft.com/azure/marketplace/partner-center-portal/pc-saas-fulfillment-api-v2#change-the-quantity-on-the-subscription) voordat de aangevraagde wijziging aan de kant van de uitgever wordt aangebracht. 
+1. De uitgevers code moet de [API change plan](#change-the-plan-on-the-subscription) aanroepen en/of de API van de [hoeveelheid wijzigen](#change-the-quantity-of-seats-on-the-saas-subscription) voordat de aangevraagde wijziging aan de kant van de uitgever wordt aangebracht. 
 
 1. Micro soft past de wijziging toe op het abonnement en waarschuwt de uitgever via de **verbindings-webhook** om dezelfde wijziging toe te passen.  
 
-1. Alleen dan moet de uitgever de vereiste wijziging aanbrengen in het SaaS-abonnement en micro soft op de hoogte stellen wanneer de wijziging plaatsvindt door de [update status van de bewerkings-API aan](https://docs.microsoft.com/azure/marketplace/partner-center-portal/pc-saas-fulfillment-api-v2#update-the-status-of-an-operation)te roepen.
+1. Alleen dan moet de uitgever de vereiste wijziging aanbrengen in het SaaS-abonnement en micro soft op de hoogte stellen wanneer de wijziging plaatsvindt door de [update status van de bewerkings-API aan](#update-the-status-of-an-operation)te roepen.
 
 De volg orde van de API-aanroepen voor het door de uitgever geïnitieerde update scenario.
 
@@ -127,7 +127,7 @@ Deze actie geeft aan dat het betalings instrument van de klant opnieuw geldig is
 
 1. Micro soft roept webhook aan met een *actie* parameter ingesteld op de waarde voor het opnieuw *invoeren* .  
 1. De uitgever zorgt ervoor dat dit abonnement weer volledig operationeel is aan de kant van de uitgever.
-1. De uitgever roept de [API-bewerkings-api's](https://docs.microsoft.com/azure/marketplace/partner-center-portal/pc-saas-fulfillment-api-v2#update-the-status-of-an-operation) met de status geslaagd aan.  
+1. De uitgever roept de [API-bewerkings-api's](#update-the-status-of-an-operation) met de status geslaagd aan.  
 1. Vervolgens is het opnieuw invoeren geslaagd en wordt de klant opnieuw gefactureerd voor het SaaS-abonnement. 
 1. Als de patch wordt verzonden met de status mislukt, wordt het herstel proces niet voltooid aan de kant van micro soft. Het abonnement blijft opgeschort.
 
@@ -170,7 +170,7 @@ De versie van de TLS-versie 1,2 wordt binnenkort afgedwongen als de minimale ver
 
 #### <a name="resolve-a-purchased-subscription"></a>Een gekocht abonnement oplossen
 
-Met het eind punt voor omzetten kan de uitgever het aankoop identificatie token van Marketplace ( [hier](https://review.docs.microsoft.com/azure/marketplace/partner-center-portal/pc-saas-fulfillment-api-v2?branch=pr-en-us-107193#purchased-but-not-yet-activated-pendingfulfillmentstart) aangeduid als *token*) uitwisselen met een permanente aangeschafte SaaS-abonnements-id en de bijbehorende details.
+Met het eind punt voor omzetten kan de uitgever het aankoop identificatie token van de Marketplace uitwisselen (aangeduid als *token* in [ingekocht maar nog niet geactiveerd](#purchased-but-not-yet-activated-pendingfulfillmentstart)) naar een permanent aangeschafte SaaS-abonnement-id en de bijbehorende gegevens.
 
 Wanneer een klant wordt omgeleid naar de URL van de landings pagina van de partner, wordt het identificatie token van de klant door gegeven als *token* parameter in deze URL-aanroep. De partner wordt verwacht dit token te gebruiken en een aanvraag te doen om het te verhelpen. Het antwoord op de API oplossen bevat de SaaS-abonnements-ID en andere gegevens om de aankoop uniek te identificeren. Het *token* dat is opgenomen in de URL-oproep van de landings pagina is doorgaans 24 uur geldig. Als het *token* dat u ontvangt al is verlopen, raden we u aan de volgende richt lijnen aan te bieden aan de eind klant:
 
@@ -178,29 +178,28 @@ Wanneer een klant wordt omgeleid naar de URL van de landings pagina van de partn
 
 Bij het aanroepen van Resolve API worden de abonnements gegevens en de status van SaaS-abonnementen in alle ondersteunde statussen geretourneerd.
 
-##### <a name="postbrhttpsmarketplaceapimicrosoftcomapisaassubscriptionsresolveapi-versionapiversion"></a>Plaatsen<br>`https://marketplaceapi.microsoft.com/api/saas/subscriptions/resolve?api-version=<ApiVersion>`
+##### <a name="posthttpsmarketplaceapimicrosoftcomapisaassubscriptionsresolveapi-versionapiversion"></a>Plaatsen`https://marketplaceapi.microsoft.com/api/saas/subscriptions/resolve?api-version=<ApiVersion>`
 
 *Query parameters:*
 
-|                    |                   |
+|  Parameter         | Waarde            |
 |  ---------------   |  ---------------  |
 |  `ApiVersion`        |  Gebruik 2018-08-31.   |
 
 *Aanvraag headers:*
- 
-|                    |                   |
+
+|  Parameter         | Waarde             |
 |  ---------------   |  ---------------  |
 |  `content-type`      | `application/json` |
 |  `x-ms-requestid`    |  Een unieke teken reeks waarde voor het bijhouden van de aanvraag van de client, bij voor keur een GUID. Als deze waarde niet is opgenomen, wordt er een gegenereerd en geleverd in de antwoord headers. |
 |  `x-ms-correlationid` |  Een unieke teken reeks waarde voor de bewerking op de client. Deze para meter verbindt alle gebeurtenissen van de client bewerking met gebeurtenissen aan de server zijde. Als deze waarde niet is opgenomen, wordt er een gegenereerd en geleverd in de antwoord headers.  |
 |  `authorization`     |  Een uniek toegangs token dat de uitgever identificeert die deze API aanroept. De indeling is `"Bearer <accessaccess_token>"` wanneer de token waarde wordt opgehaald door de uitgever, zoals wordt uitgelegd in [een Token ophalen op basis van de Azure AD-App](./pc-saas-registration.md#get-the-token-with-an-http-post). |
-|  `x-ms-marketplace-token`  | De para meter voor het kopen van id- *tokens* voor Marketplace voor het oplossen.  Het token wordt door gegeven in de URL-oproep van de landings pagina wanneer de klant wordt omgeleid naar de website van de SaaS-partner (bijvoorbeeld: https://contoso.com/signup?token= <token><authorization_token>). <br> <br>  *Opmerking:* De *token* waarde die wordt gecodeerd, maakt deel uit van de URL van de landings pagina en moet dus worden gedecodeerd voordat deze als para meter wordt gebruikt in deze API-aanroep.  <br> <br> Voor beeld van een gecodeerde teken reeks in de URL ziet er als volgt uit: `contoso.com/signup?token=ab%2Bcd%2Fef` , waarbij token is `ab%2Bcd%2Fef` .  Hetzelfde token is gedecodeerd:`Ab+cd/ef` |
+|  `x-ms-marketplace-token`  | De para meter voor het kopen van id- *tokens* voor Marketplace voor het oplossen.  Het token wordt door gegeven in de URL-oproep van de landings pagina wanneer de klant wordt omgeleid naar de website van de SaaS-partner (bijvoorbeeld: `https://contoso.com/signup?token=<token><authorization_token>` ). <br> <br>  *Opmerking:* De *token* waarde die wordt gecodeerd, maakt deel uit van de URL van de landings pagina en moet dus worden gedecodeerd voordat deze als para meter wordt gebruikt in deze API-aanroep.  <br> <br> Voor beeld van een gecodeerde teken reeks in de URL ziet er als volgt uit: `contoso.com/signup?token=ab%2Bcd%2Fef` , waarbij token is `ab%2Bcd%2Fef` .  Hetzelfde token is gedecodeerd:`Ab+cd/ef` |
 | | |
 
 *Antwoord codes:*
 
-Code: 200<br>
-Retourneert unieke SaaS-abonnements-id's op basis van de voor `x-ms-marketplace-token` waarde.
+Code: 200 retourneert unieke SaaS-abonnements-id's op basis van de voor `x-ms-marketplace-token` waarde.
 
 Voor beeld van antwoord tekst:
 
@@ -249,34 +248,31 @@ Voor beeld van antwoord tekst:
 
 ```
 
-Code: 400<br>
-Ongeldige aanvraag. `x-ms-marketplace-token`ontbreekt, is onjuist of ongeldig of verlopen.
+Code: 400 ongeldige aanvraag. `x-ms-marketplace-token`ontbreekt, is onjuist of ongeldig of verlopen.
 
-Code: 403<br>
-Slag. Het autorisatie token is ongeldig, verlopen of niet meegeleverd.  De aanvraag probeert toegang te krijgen tot een SaaS-abonnement voor een aanbieding die is gepubliceerd met een andere Azure AD-app-ID dan de versie die is gebruikt om het autorisatie token te maken.
+Code: 403 verboden. Het autorisatie token is ongeldig, verlopen of niet meegeleverd.  De aanvraag probeert toegang te krijgen tot een SaaS-abonnement voor een aanbieding die is gepubliceerd met een andere Azure AD-app-ID dan de versie die is gebruikt om het autorisatie token te maken.
 
-Deze fout is vaak een symptoom van het niet juist uitvoeren van de [SaaS-registratie](https://docs.microsoft.com/azure/marketplace/partner-center-portal/pc-saas-registration) .
+Deze fout is vaak een symptoom van het niet juist uitvoeren van de [SaaS-registratie](pc-saas-registration.md) .
 
-Code: 500<br>
-Interne serverfout.  Voer de API-aanroep opnieuw uit.  Neem contact op met [micro soft ondersteuning](https://partner.microsoft.com/support/v2/?stage=1)als de fout zich blijft voordoen.
+Code: 500 interne server fout.  Voer de API-aanroep opnieuw uit.  Neem contact op met [micro soft ondersteuning](https://partner.microsoft.com/support/v2/?stage=1)als de fout zich blijft voordoen.
 
 #### <a name="activate-a-subscription"></a>Een abonnement activeren
 
 Zodra het SaaS-account is geconfigureerd voor een eind klant, moet de uitgever de API voor het activeren van abonnementen aan micro soft zijde aanroepen.  De klant wordt niet gefactureerd tenzij deze API-aanroep is geslaagd.
 
-##### <a name="postbrhttpsmarketplaceapimicrosoftcomapisaassubscriptionssubscriptionidactivateapi-versionapiversion"></a>Plaatsen<br>`https://marketplaceapi.microsoft.com/api/saas/subscriptions/<subscriptionId>/activate?api-version=<ApiVersion>`
+##### <a name="posthttpsmarketplaceapimicrosoftcomapisaassubscriptionssubscriptionidactivateapi-versionapiversion"></a>Plaatsen`https://marketplaceapi.microsoft.com/api/saas/subscriptions/<subscriptionId>/activate?api-version=<ApiVersion>`
 
 *Query parameters:*
 
-|             |                   |
+|  Parameter         | Waarde             |
 |  --------   |  ---------------  |
 | `ApiVersion`  |  Gebruik 2018-08-31.   |
-| `subscriptionId` | Een unieke id van het aangeschafte SaaS-abonnement.  Deze ID wordt verkregen na het oplossen van het autorisatie token van de Marketplace met behulp van de [API voor omzetten](https://docs.microsoft.com/azure/marketplace/partner-center-portal/pc-saas-fulfillment-api-v2#resolve-a-subscription).
+| `subscriptionId` | Een unieke id van het aangeschafte SaaS-abonnement.  Deze ID wordt verkregen na het oplossen van het autorisatie token van de Marketplace met behulp van de [API voor omzetten](#resolve-a-purchased-subscription).
  |
 
 *Aanvraag headers:*
 
-|                    |                   |
+|  Parameter         | Waarde             |
 |  ---------------   |  ---------------  |
 | `content-type`       |  `application/json`  |
 | `x-ms-requestid`     |  Een unieke teken reeks waarde voor het bijhouden van de aanvraag van de client, bij voor keur een GUID.  Als deze waarde niet is opgenomen, wordt er een gegenereerd en geleverd in de antwoord headers. |
@@ -294,29 +290,24 @@ Zodra het SaaS-account is geconfigureerd voor een eind klant, moet de uitgever d
 
 *Antwoord codes:*
 
-Code: 200 <br/>
-Het abonnement is gemarkeerd als geabonneerd op micro soft.
+Code: 200 het abonnement is gemarkeerd als geabonneerd op micro soft-kant.
 
 Er is geen antwoord tekst voor deze aanroep.
 
-Code: 400 <br>
-Ongeldige aanvraag: de validatie is mislukt.
+Code: 400 ongeldige aanvraag: de validatie is mislukt.
 
 * `planId`bestaat niet in de aanvraag lading.
 * `planId`in de aanvraag lading komt niet overeen met de waarde die is gekocht.
 * `quantity`in de aanvraag lading komt niet overeen met het aangeschafte item
 * Het SaaS-abonnement is geabonneerd of onderbroken.
 
-Code: 403 <br>
-Slag. Het verificatie token is ongeldig, verlopen of niet meegeleverd. De aanvraag probeert toegang te krijgen tot een SaaS-abonnement voor een aanbieding die is gepubliceerd met een andere Azure AD-app-ID dan de versie die is gebruikt om het autorisatie token te maken.
+Code: 403 verboden. Het verificatie token is ongeldig, verlopen of niet meegeleverd. De aanvraag probeert toegang te krijgen tot een SaaS-abonnement voor een aanbieding die is gepubliceerd met een andere Azure AD-app-ID dan de versie die is gebruikt om het autorisatie token te maken.
 
-Deze fout is vaak een symptoom van het niet juist uitvoeren van de [SaaS-registratie](https://docs.microsoft.com/azure/marketplace/partner-center-portal/pc-saas-registration) .
+Deze fout is vaak een symptoom van het niet juist uitvoeren van de [SaaS-registratie](pc-saas-registration.md) .
 
-Code: 404 <br>
-Niet gevonden. Het SaaS-abonnement is afgemeld.
+Code: 404 niet gevonden. Het SaaS-abonnement is afgemeld.
 
-Code: 500 <br>
-Interne serverfout.  Voer de API-aanroep opnieuw uit.  Neem contact op met [micro soft ondersteuning](https://partner.microsoft.com/support/v2/?stage=1)als de fout zich blijft voordoen.
+Code: 500 interne server fout.  Voer de API-aanroep opnieuw uit.  Neem contact op met [micro soft ondersteuning](https://partner.microsoft.com/support/v2/?stage=1)als de fout zich blijft voordoen.
 
 #### <a name="get-list-of-all-subscriptions"></a>Lijst met alle abonnementen ophalen
 
@@ -324,18 +315,18 @@ Hiermee haalt u een lijst met alle aangeschafte SaaS-abonnementen op voor alle a
 
 Deze API retourneert gepagineerde resultaten. Pagina grootte is 100.
 
-##### <a name="getbrhttpsmarketplaceapimicrosoftcomapisaassubscriptionsapi-versionapiversion"></a>Ophalen<br>`https://marketplaceapi.microsoft.com/api/saas/subscriptions?api-version=<ApiVersion>`
+##### <a name="gethttpsmarketplaceapimicrosoftcomapisaassubscriptionsapi-versionapiversion"></a>Toevoegen`https://marketplaceapi.microsoft.com/api/saas/subscriptions?api-version=<ApiVersion>`
 
 *Query parameters:*
 
-|             |                   |
+|  Parameter         | Waarde             |
 |  --------   |  ---------------  |
 | `ApiVersion`  |  Gebruik 2018-08-31.  |
 | `continuationToken`  | Optionele parameter. Als u de eerste pagina met resultaten wilt ophalen, laat u leeg.  Gebruik de waarde die is geretourneerd in `@nextLink` de para meter om de volgende pagina op te halen. |
 
 *Aanvraag headers:*
 
-|                    |                   |
+|  Parameter         | Waarde             |
 |  ---------------   |  ---------------  |
 | `content-type`       |  `application/json`  |
 | `x-ms-requestid`     |  Een unieke teken reeks waarde voor het bijhouden van de aanvraag van de client, bij voor keur een GUID. Als deze waarde niet is opgenomen, wordt er een gegenereerd en geleverd in de antwoord headers. |
@@ -344,8 +335,7 @@ Deze API retourneert gepagineerde resultaten. Pagina grootte is 100.
 
 *Antwoord codes:*
 
-Code: 200 <br/>
-Retourneert de lijst met alle bestaande abonnementen voor alle aanbiedingen van deze uitgever, op basis van het autorisatie token van de uitgever.
+Code: 200 retourneert de lijst met alle bestaande abonnementen voor alle aanbiedingen van deze uitgever, op basis van het autorisatie token van de uitgever.
 
 *Voor beeld van antwoord tekst:*
 
@@ -426,30 +416,28 @@ Retourneert de lijst met alle bestaande abonnementen voor alle aanbiedingen van 
 
 Als er geen aangeschafte SaaS-abonnementen voor deze uitgever worden gevonden, wordt er een lege antwoord tekst geretourneerd.
 
-Code: 403 <br>
-Slag. Het autorisatie token is niet beschikbaar, ongeldig of verlopen.
+Code: 403 verboden. Het autorisatie token is niet beschikbaar, ongeldig of verlopen.
 
-Deze fout is vaak een symptoom van het niet juist uitvoeren van de [SaaS-registratie](https://docs.microsoft.com/azure/marketplace/partner-center-portal/pc-saas-registration) . 
+Deze fout is vaak een symptoom van het niet juist uitvoeren van de [SaaS-registratie](pc-saas-registration.md) . 
 
-Code: 500<br>
-Interne serverfout. Voer de API-aanroep opnieuw uit.  Neem contact op met [micro soft ondersteuning](https://partner.microsoft.com/support/v2/?stage=1)als de fout zich blijft voordoen.
+Code: 500 interne server fout. Voer de API-aanroep opnieuw uit.  Neem contact op met [micro soft ondersteuning](https://partner.microsoft.com/support/v2/?stage=1)als de fout zich blijft voordoen.
 
 #### <a name="get-subscription"></a>Abonnement ophalen
 
 Haalt een opgegeven ingekochte SaaS-abonnement op voor een SaaS-aanbieding die is gepubliceerd op Marketplace door de uitgever. Gebruik deze aanroep om alle beschik bare informatie voor een specifiek SaaS-abonnement op te halen in plaats van de API aan te roepen voor het ophalen van een lijst met alle abonnementen.
 
-##### <a name="getbr-httpsmarketplaceapimicrosoftcomapisaassubscriptionssubscriptionidapi-versionapiversion"></a>Ophalen<br> `https://marketplaceapi.microsoft.com/api/saas/subscriptions/<subscriptionId>?api-version=<ApiVersion>`
+##### <a name="get-httpsmarketplaceapimicrosoftcomapisaassubscriptionssubscriptionidapi-versionapiversion"></a>Toevoegen`https://marketplaceapi.microsoft.com/api/saas/subscriptions/<subscriptionId>?api-version=<ApiVersion>`
 
 *Query parameters:*
 
-|                    |                   |
+|  Parameter         | Waarde             |
 |  ---------------   |  ---------------  |
 | `ApiVersion`        |   Gebruik 2018-08-31. |
 | `subscriptionId`     |  Een unieke id van het aangeschafte SaaS-abonnement.  Deze ID wordt verkregen na het oplossen van het autorisatie token van de Marketplace met behulp van de API voor omzetten. |
 
 *Aanvraag headers:*
 
-|                    |                   |
+|  Parameter         | Waarde             |
 |  ---------------   |  ---------------  |
 |  `content-type`      |  `application/json`  |
 |  `x-ms-requestid`    |  Een unieke teken reeks waarde voor het bijhouden van de aanvraag van de client, bij voor keur een GUID. Als deze waarde niet is opgenomen, wordt er een gegenereerd en geleverd in de antwoord headers. |
@@ -458,8 +446,7 @@ Haalt een opgegeven ingekochte SaaS-abonnement op voor een SaaS-aanbieding die i
 
 *Antwoord codes:*
 
-Code: 200<br>
-Retourneert Details voor een SaaS-abonnement op basis van de voor `subscriptionId` waarde.
+Code: 200 retourneert Details voor een SaaS-abonnement op basis van de voor `subscriptionId` waarde.
 
 *Voor beeld van antwoord tekst:*
 
@@ -497,16 +484,13 @@ Retourneert Details voor een SaaS-abonnement op basis van de voor `subscriptionI
 }
 ```
 
-Code: 403<br>
-Slag. Het verificatie token is ongeldig, verlopen en niet gegeven. De aanvraag probeert toegang te krijgen tot een SaaS-abonnement voor een aanbieding die is gepubliceerd met een andere Azure AD-app-ID dan de versie die is gebruikt om het autorisatie token te maken.
+Code: 403 verboden. Het verificatie token is ongeldig, verlopen en niet gegeven. De aanvraag probeert toegang te krijgen tot een SaaS-abonnement voor een aanbieding die is gepubliceerd met een andere Azure AD-app-ID dan de versie die is gebruikt om het autorisatie token te maken.
 
-Deze fout is vaak een symptoom van het niet juist uitvoeren van de [SaaS-registratie](https://docs.microsoft.com/azure/marketplace/partner-center-portal/pc-saas-registration) . 
+Deze fout is vaak een symptoom van het niet juist uitvoeren van de [SaaS-registratie](pc-saas-registration.md) . 
 
-Code: 404<br>
-Niet gevonden.  SaaS-abonnement met de opgegeven `subscriptionId` kan niet worden gevonden.
+Code: 404 niet gevonden.  SaaS-abonnement met de opgegeven `subscriptionId` kan niet worden gevonden.
 
-Code: 500<br>
-Interne serverfout.  Voer de API-aanroep opnieuw uit.  Neem contact op met [micro soft ondersteuning](https://partner.microsoft.com/support/v2/?stage=1)als de fout zich blijft voordoen.
+Code: 500 interne server fout.  Voer de API-aanroep opnieuw uit.  Neem contact op met [micro soft ondersteuning](https://partner.microsoft.com/support/v2/?stage=1)als de fout zich blijft voordoen.
 
 #### <a name="list-available-plans"></a>Beschik bare abonnementen weer geven
 
@@ -514,18 +498,18 @@ Haalt alle abonnementen op voor een SaaS-aanbieding die wordt geïdentificeerd d
 
 Deze aanroep retourneert een lijst met abonnementen die beschikbaar zijn voor die klant, naast het abonnement dat al is gekocht.  De lijst kan worden weer gegeven aan een eind klant op de Publisher-site.  Een eind klant kan het abonnement wijzigen in een van de plannen in de geretourneerde lijst.  Het is niet mogelijk om het plan te wijzigen in een item dat niet wordt weer gegeven in de lijst.
 
-##### <a name="getbr-httpsmarketplaceapimicrosoftcomapisaassubscriptionssubscriptionidlistavailableplansapi-versionapiversion"></a>Ophalen<br> `https://marketplaceapi.microsoft.com/api/saas/subscriptions/<subscriptionId>/listAvailablePlans?api-version=<ApiVersion>`
+##### <a name="get-httpsmarketplaceapimicrosoftcomapisaassubscriptionssubscriptionidlistavailableplansapi-versionapiversion"></a>Toevoegen`https://marketplaceapi.microsoft.com/api/saas/subscriptions/<subscriptionId>/listAvailablePlans?api-version=<ApiVersion>`
 
 *Query parameters:*
 
-|                    |                   |
+|  Parameter         | Waarde             |
 |  ---------------   |  ---------------  |
 |  `ApiVersion`        |  Gebruik 2018-08-31.  |
 |  `subscriptionId`    |  Een unieke id van het aangeschafte SaaS-abonnement.  Deze ID wordt verkregen na het oplossen van het autorisatie token van de Marketplace met behulp van de API voor omzetten. |
 
 *Aanvraag headers:*
 
-|                    |                   |
+|  Parameter         | Waarde             |
 |  ---------------   |  ---------------  |
 |   `content-type`     |  `application/json` |
 |   `x-ms-requestid`   |  Een unieke teken reeks waarde voor het bijhouden van de aanvraag van de client, bij voor keur een GUID.  Als deze waarde niet is opgenomen, wordt er een gegenereerd en geleverd in de antwoord headers. |
@@ -534,8 +518,7 @@ Deze aanroep retourneert een lijst met abonnementen die beschikbaar zijn voor di
 
 *Antwoord codes:*
 
-Code: 200<br>
-Retourneert een lijst met alle beschik bare abonnementen voor een bestaand SaaS-abonnement, met inbegrip van de versie die al is gekocht.
+Code: 200 retourneert een lijst van alle beschik bare abonnementen voor een bestaand SaaS-abonnement, met inbegrip van de versie die al is gekocht.
 
 Voor beeld van antwoord tekst:
 
@@ -557,13 +540,11 @@ Voor beeld van antwoord tekst:
 
 Als `subscriptionId` niet wordt gevonden, wordt de tekst van een leeg antwoord geretourneerd.
 
-Code: 403<br>
-Slag. Het autorisatie token is ongeldig, verlopen of niet meegeleverd.  De aanvraag probeert mogelijk toegang te krijgen tot een SaaS-abonnement voor een aanbieding die is gepubliceerd met een andere Azure AD-app-ID dan die waarmee het autorisatie token is gemaakt.
+Code: 403 verboden. Het autorisatie token is ongeldig, verlopen of niet meegeleverd.  De aanvraag probeert mogelijk toegang te krijgen tot een SaaS-abonnement voor een aanbieding die is gepubliceerd met een andere Azure AD-app-ID dan die waarmee het autorisatie token is gemaakt.
 
-Deze fout is vaak een symptoom van het niet juist uitvoeren van de [SaaS-registratie](https://docs.microsoft.com/azure/marketplace/partner-center-portal/pc-saas-registration) . 
+Deze fout is vaak een symptoom van het niet juist uitvoeren van de [SaaS-registratie](pc-saas-registration.md) . 
 
-Code: 500<br>
-Interne serverfout.  Voer de API-aanroep opnieuw uit.  Neem contact op met [micro soft ondersteuning](https://partner.microsoft.com/support/v2/?stage=1)als de fout zich blijft voordoen.
+Code: 500 interne server fout.  Voer de API-aanroep opnieuw uit.  Neem contact op met [micro soft ondersteuning](https://partner.microsoft.com/support/v2/?stage=1)als de fout zich blijft voordoen.
 
 #### <a name="change-the-plan-on-the-subscription"></a>Wijzig het abonnement
 
@@ -571,18 +552,18 @@ Het bestaande abonnement dat is gekocht voor een SaaS-abonnement bijwerken naar 
 
 Deze API kan alleen worden aangeroepen voor actieve abonnementen.  Elk plan kan worden gewijzigd in elk ander bestaand plan (openbaar of privé), maar niet op zichzelf.  Voor privé abonnementen moet de Tenant van de klant worden gedefinieerd als onderdeel van de doel groep van het plan in het partner centrum.
 
-##### <a name="patchbr-httpsmarketplaceapimicrosoftcomapisaassubscriptionssubscriptionidapi-versionapiversion"></a>Patch<br> `https://marketplaceapi.microsoft.com/api/saas/subscriptions/<subscriptionId>?api-version=<ApiVersion>`
+##### <a name="patch-httpsmarketplaceapimicrosoftcomapisaassubscriptionssubscriptionidapi-versionapiversion"></a>Verzenden`https://marketplaceapi.microsoft.com/api/saas/subscriptions/<subscriptionId>?api-version=<ApiVersion>`
 
 *Query parameters:*
 
-|                    |                   |
+|  Parameter         | Waarde             |
 |  ---------------   |  ---------------  |
 |  `ApiVersion`        |  Gebruik 2018-08-31.  |
 | `subscriptionId`     | Een unieke id van het aangeschafte SaaS-abonnement.  Deze ID wordt verkregen na het oplossen van het autorisatie token van de Marketplace met behulp van de API voor omzetten. |
 
 *Aanvraag headers:*
  
-|                    |                   |
+|  Parameter         | Waarde             |
 |  ---------------   |  ---------------  |
 |  `content-type`      | `application/json`  |
 |  `x-ms-requestid`    | Een unieke teken reeks waarde voor het bijhouden van de aanvraag van de client, bij voor keur een GUID. Als deze waarde niet is opgenomen, wordt er een gegenereerd en geleverd in de antwoord headers.  |
@@ -599,35 +580,30 @@ Deze API kan alleen worden aangeroepen voor actieve abonnementen.  Elk plan kan 
 
 *Antwoord codes:*
 
-Code: 202<br>
-De aanvraag voor het wijzigings plan is asynchroon geaccepteerd en afgehandeld.  De partner moet de URL van de **bewerkings locatie** naar verwachting controleren om te bepalen of de aanvraag voor het wijzigings plan is geslaagd of mislukt.  Polling moet elke seconde worden uitgevoerd tot de uiteindelijke status mislukt, geslaagd of conflict is ontvangen voor de bewerking.  De uiteindelijke bewerkings status moet snel worden geretourneerd, maar kan in sommige gevallen enkele minuten duren.
+Code: 202 de aanvraag voor het wijzigings plan is asynchroon geaccepteerd en afgehandeld.  De partner moet de URL van de **bewerkings locatie** naar verwachting controleren om te bepalen of de aanvraag voor het wijzigings plan is geslaagd of mislukt.  Polling moet elke seconde worden uitgevoerd tot de uiteindelijke status mislukt, geslaagd of conflict is ontvangen voor de bewerking.  De uiteindelijke bewerkings status moet snel worden geretourneerd, maar kan in sommige gevallen enkele minuten duren.
 
 De partner krijgt ook webhook-melding wanneer de actie gereed is om te worden voltooid op de Marketplace-zijde.  En alleen dan moet de uitgever het plan wijzigen aan de kant van de uitgever.
 
 *Antwoord headers:*
 
-|                    |                   |
+|  Parameter         | Waarde             |
 |  ---------------   |  ---------------  |
 |  `Operation-Location`        |  URL voor het ophalen van de status van de bewerking.  Bijvoorbeeld `https://marketplaceapi.microsoft.com/api/saas/subscriptions/<subscriptionId>/operations/<operationId>?api-version=2018-08-31`. |
 
-Code: 400<br>
-Ongeldige aanvraag: validatie mislukt.
+Code: 400 ongeldige aanvraag: validatie mislukt.
 
 * Het nieuwe abonnement bestaat niet of is niet beschikbaar voor dit specifieke SaaS-abonnement.
 * Er wordt geprobeerd om te wijzigen in hetzelfde abonnement.
 * De status van het SaaS-abonnement is niet geabonneerd.
 * De update bewerking voor een SaaS-abonnement is niet opgenomen in `allowedCustomerOperations` .
 
-Code: 403<br>
-Slag. Het autorisatie token is ongeldig, verlopen of niet meegeleverd.  De aanvraag probeert toegang te krijgen tot een SaaS-abonnement voor een aanbieding die is gepubliceerd met een andere Azure AD-app-ID dan de versie die is gebruikt om het autorisatie token te maken.
+Code: 403 verboden. Het autorisatie token is ongeldig, verlopen of niet meegeleverd.  De aanvraag probeert toegang te krijgen tot een SaaS-abonnement voor een aanbieding die is gepubliceerd met een andere Azure AD-app-ID dan de versie die is gebruikt om het autorisatie token te maken.
 
-Deze fout is vaak een symptoom van het niet juist uitvoeren van de [SaaS-registratie](https://docs.microsoft.com/azure/marketplace/partner-center-portal/pc-saas-registration) .
+Deze fout is vaak een symptoom van het niet juist uitvoeren van de [SaaS-registratie](pc-saas-registration.md) .
 
-Code: 404<br>
-Niet gevonden.  Het SaaS-abonnement met `subscriptionId` kan niet worden gevonden.
+Code: 404 niet gevonden.  Het SaaS-abonnement met `subscriptionId` kan niet worden gevonden.
 
-Code: 500<br>
-Interne serverfout.  Voer de API-aanroep opnieuw uit.  Neem contact op met [micro soft ondersteuning](https://partner.microsoft.com/support/v2/?stage=1)als de fout zich blijft voordoen.
+Code: 500 interne server fout.  Voer de API-aanroep opnieuw uit.  Neem contact op met [micro soft ondersteuning](https://partner.microsoft.com/support/v2/?stage=1)als de fout zich blijft voordoen.
 
 >[!NOTE]
 >Het plan of aantal stoelen kan tegelijk worden gewijzigd, niet beide.
@@ -641,18 +617,18 @@ Update (verg Roten of verkleinen) van het aantal seats dat is gekocht voor een S
 
 Aantal seats mag niet meer zijn dan is toegestaan in het huidige plan.  In dit geval moet het plan worden gewijzigd voordat een hoeveelheid wordt gewijzigd.
 
-##### <a name="patchbrhttpsmarketplaceapimicrosoftcomapisaassubscriptionssubscriptionidapi-versionapiversion"></a>Patch<br>`https://marketplaceapi.microsoft.com/api/saas/subscriptions/<subscriptionId>?api-version=<ApiVersion>`
+##### <a name="patchhttpsmarketplaceapimicrosoftcomapisaassubscriptionssubscriptionidapi-versionapiversion"></a>Patch`https://marketplaceapi.microsoft.com/api/saas/subscriptions/<subscriptionId>?api-version=<ApiVersion>`
 
 *Query parameters:*
 
-|                    |                   |
+|  Parameter         | Waarde             |
 |  ---------------   |  ---------------  |
 |  `ApiVersion`        |  Gebruik 2018-08-31.  |
 |  `subscriptionId`     | Een unieke id van het aangeschafte SaaS-abonnement.  Deze ID wordt verkregen na het oplossen van het autorisatie token van de Marketplace met behulp van de API voor omzetten.  |
 
 *Aanvraag headers:*
  
-|                    |                   |
+|  Parameter         | Waarde             |
 |  ---------------   |  ---------------  |
 |  `content-type`      | `application/json`  |
 |  `x-ms-requestid`    | Een unieke teken reeks waarde voor het bijhouden van de aanvraag van de client, bij voor keur een GUID.  Als deze waarde niet is opgenomen, wordt er een gegenereerd en geleverd in de antwoord headers.  |
@@ -669,19 +645,17 @@ Aantal seats mag niet meer zijn dan is toegestaan in het huidige plan.  In dit g
 
 *Antwoord codes:*
 
-Code: 202<br>
-De aanvraag voor het wijzigen van de hoeveelheid is asynchroon geaccepteerd en afgehandeld. De partner moet de URL van de **bewerkings locatie** naar verwachting controleren om te bepalen of de aanvraag voor wijzigings hoeveelheid is geslaagd of mislukt.  Polling moet elke seconde worden uitgevoerd tot de uiteindelijke status mislukt, geslaagd of conflict is ontvangen voor de bewerking.  De uiteindelijke bewerkings status moet snel worden geretourneerd, maar kan in sommige gevallen enkele minuten in beslag nemen.
+Code: 202 de aanvraag voor het wijzigen van de hoeveelheid is asynchroon geaccepteerd en afgehandeld. De partner moet de URL van de **bewerkings locatie** naar verwachting controleren om te bepalen of de aanvraag voor wijzigings hoeveelheid is geslaagd of mislukt.  Polling moet elke seconde worden uitgevoerd tot de uiteindelijke status mislukt, geslaagd of conflict is ontvangen voor de bewerking.  De uiteindelijke bewerkings status moet snel worden geretourneerd, maar kan in sommige gevallen enkele minuten in beslag nemen.
 
 De partner krijgt ook webhook-melding wanneer de actie gereed is om te worden voltooid op de Marketplace-zijde.  En alleen dan moet de uitgever de hoeveelheid wijzigen aan de kant van de uitgever.
 
 *Antwoord headers:*
 
-|                    |                   |
+|  Parameter         | Waarde             |
 |  ---------------   |  ---------------  |
 |  `Operation-Location`        |  Koppeling naar een resource om de status van de bewerking op te halen.  Bijvoorbeeld `https://marketplaceapi.microsoft.com/api/saas/subscriptions/<subscriptionId>/operations/<operationId>?api-version=2018-08-31`.  |
 
-Code: 400<br>
-Ongeldige aanvraag: validatie mislukt.
+Code: 400 ongeldige aanvraag: validatie mislukt.
 
 * De nieuwe hoeveelheid is groter of lager dan de limiet van het huidige abonnement.
 * De nieuwe hoeveelheid ontbreekt.
@@ -689,16 +663,13 @@ Ongeldige aanvraag: validatie mislukt.
 * De status van het SaaS-abonnement is niet geabonneerd.
 * De update bewerking voor een SaaS-abonnement is niet opgenomen in `allowedCustomerOperations` .
 
-Code: 403<br>
-Slag.  Het autorisatie token is ongeldig, verlopen of niet meegeleverd.  De aanvraag probeert toegang te krijgen tot een abonnement dat geen deel uitmaakt van de huidige uitgever.
+Code: 403 verboden.  Het autorisatie token is ongeldig, verlopen of niet meegeleverd.  De aanvraag probeert toegang te krijgen tot een abonnement dat geen deel uitmaakt van de huidige uitgever.
 
-Deze fout is vaak een symptoom van het niet juist uitvoeren van de [SaaS-registratie](https://docs.microsoft.com/azure/marketplace/partner-center-portal/pc-saas-registration) . 
+Deze fout is vaak een symptoom van het niet juist uitvoeren van de [SaaS-registratie](pc-saas-registration.md) . 
 
-Code: 404<br>
-Niet gevonden.  Het SaaS-abonnement met `subscriptionId` kan niet worden gevonden.
+Code: 404 niet gevonden.  Het SaaS-abonnement met `subscriptionId` kan niet worden gevonden.
 
-Code: 500<br>
-Interne serverfout.  Voer de API-aanroep opnieuw uit.  Neem contact op met [micro soft ondersteuning](https://partner.microsoft.com/support/v2/?stage=1)als de fout zich blijft voordoen.
+Code: 500 interne server fout.  Voer de API-aanroep opnieuw uit.  Neem contact op met [micro soft ondersteuning](https://partner.microsoft.com/support/v2/?stage=1)als de fout zich blijft voordoen.
 
 >[!Note]
 >Alleen een plan of hoeveelheid kan in één keer worden gewijzigd, niet beide.
@@ -719,18 +690,18 @@ Als een abonnement wordt geannuleerd binnen de volgende respijt perioden, wordt 
 
 De klant wordt gefactureerd als een abonnement wordt geannuleerd na de bovenstaande respijt periode.  Zodra de annulering is geslaagd, verliest de klant onmiddellijk de toegang tot het SaaS-abonnement aan micro soft.
 
-##### <a name="deletebrhttpsmarketplaceapimicrosoftcomapisaassubscriptionssubscriptionidapi-versionapiversion"></a>Verwijderen<br>`https://marketplaceapi.microsoft.com/api/saas/subscriptions/<subscriptionId>?api-version=<ApiVersion>`
+##### <a name="deletehttpsmarketplaceapimicrosoftcomapisaassubscriptionssubscriptionidapi-versionapiversion"></a>Verwijderen`https://marketplaceapi.microsoft.com/api/saas/subscriptions/<subscriptionId>?api-version=<ApiVersion>`
 
 *Query parameters:*
 
-|                    |                   |
+|  Parameter         | Waarde             |
 |  ---------------   |  ---------------  |
 |  `ApiVersion`        |  Gebruik 2018-08-31.  |
 |  `subscriptionId`     | Een unieke id van het aangeschafte SaaS-abonnement.  Deze ID wordt verkregen na het oplossen van het autorisatie token van de Marketplace met behulp van de API voor omzetten.  |
 
 *Aanvraag headers:*
  
-|                    |                   |
+|  Parameter         | Waarde             |
 |  ---------------   |  ---------------  |
 |  `content-type`      | `application/json`  |
 |  `x-ms-requestid`    | Een unieke teken reeks waarde voor het bijhouden van de aanvraag van de client, bij voor keur een GUID.  Als deze waarde niet is opgenomen, wordt er een gegenereerd en geleverd in de antwoord headers.  |
@@ -739,51 +710,46 @@ De klant wordt gefactureerd als een abonnement wordt geannuleerd na de bovenstaa
 
 *Antwoord codes:*
 
-Code: 202<br>
-De aanvraag voor het afmelden is asynchroon geaccepteerd en afgehandeld.  De partner moet de URL van de **bewerkings locatie** naar verwachting controleren om te bepalen of deze aanvraag is geslaagd of mislukt.  Polling moet elke seconde worden uitgevoerd tot de uiteindelijke status mislukt, geslaagd of conflict is ontvangen voor de bewerking.  De uiteindelijke bewerkings status moet snel worden geretourneerd, maar kan in sommige gevallen enkele minuten in beslag nemen.
+Code: 202 de aanvraag voor het afmelden is asynchroon geaccepteerd en afgehandeld.  De partner moet de URL van de **bewerkings locatie** naar verwachting controleren om te bepalen of deze aanvraag is geslaagd of mislukt.  Polling moet elke seconde worden uitgevoerd tot de uiteindelijke status mislukt, geslaagd of conflict is ontvangen voor de bewerking.  De uiteindelijke bewerkings status moet snel worden geretourneerd, maar kan in sommige gevallen enkele minuten in beslag nemen.
 
 De partner haalt ook webhook-melding op wanneer de actie is voltooid aan de kant van de Marketplace.  En alleen dan moet de uitgever het abonnement op de uitgever annuleren.
 
 *Antwoord headers:*
 
-|                    |                   |
+|  Parameter         | Waarde             |
 |  ---------------   |  ---------------  |
 |  `Operation-Location`        |  Koppeling naar een resource om de status van de bewerking op te halen.  Bijvoorbeeld `https://marketplaceapi.microsoft.com/api/saas/subscriptions/<subscriptionId>/operations/<operationId>?api-version=2018-08-31`. |
 
-Code: 400<br>
-Ongeldige aanvraag.  Verwijderen is niet in `allowedCustomerOperations` lijst voor dit SaaS-abonnement.
+Code: 400 ongeldige aanvraag.  Verwijderen is niet in `allowedCustomerOperations` lijst voor dit SaaS-abonnement.
 
-Code: 403<br>
-Slag.  Het verificatie token is ongeldig, verlopen of niet beschikbaar. De aanvraag probeert toegang te krijgen tot een SaaS-abonnement voor een aanbieding die is gepubliceerd met een andere Azure AD-app-ID dan de versie die is gebruikt om het autorisatie token te maken.
+Code: 403 verboden.  Het verificatie token is ongeldig, verlopen of niet beschikbaar. De aanvraag probeert toegang te krijgen tot een SaaS-abonnement voor een aanbieding die is gepubliceerd met een andere Azure AD-app-ID dan de versie die is gebruikt om het autorisatie token te maken.
 
-Deze fout is vaak een symptoom van het niet juist uitvoeren van de [SaaS-registratie](https://docs.microsoft.com/azure/marketplace/partner-center-portal/pc-saas-registration) .
+Deze fout is vaak een symptoom van het niet juist uitvoeren van de [SaaS-registratie](pc-saas-registration.md) .
 
-Code: 404<br>
-Niet gevonden.  Het SaaS-abonnement met `subscriptionId` kan niet worden gevonden.
+Code: 404 niet gevonden.  Het SaaS-abonnement met `subscriptionId` kan niet worden gevonden.
 
-Code: 500<br>
-Interne serverfout. Voer de API-aanroep opnieuw uit.  Neem contact op met [micro soft ondersteuning](https://partner.microsoft.com/support/v2/?stage=1)als de fout zich blijft voordoen.
+Code: 500 interne server fout. Voer de API-aanroep opnieuw uit.  Neem contact op met [micro soft ondersteuning](https://partner.microsoft.com/support/v2/?stage=1)als de fout zich blijft voordoen.
 
 ### <a name="operations-apis"></a>Operations-Api's
 
 #### <a name="list-outstanding-operations"></a>Openstaande bewerkingen weer geven 
 
-Haal een lijst op met de bewerkingen die in behandeling zijn voor het opgegeven SaaS-abonnement.  Geretourneerde bewerkingen moeten worden bevestigd door de uitgever door de [API voor de bewerkings patch](https://docs.microsoft.com/azure/marketplace/partner-center-portal/pc-saas-fulfillment-api-v2#update-the-status-of-an-operation)aan te roepen.
+Haal een lijst op met de bewerkingen die in behandeling zijn voor het opgegeven SaaS-abonnement.  Geretourneerde bewerkingen moeten worden bevestigd door de uitgever door de [API voor de bewerkings patch](#update-the-status-of-an-operation)aan te roepen.
 
 Op dit moment worden alleen de **bewerkingen** voor deze API-aanroep geretourneerd als reactie.
 
-##### <a name="getbr-httpsmarketplaceapimicrosoftcomapisaassubscriptionssubscriptionidoperationsapi-versionapiversion"></a>Ophalen<br> `https://marketplaceapi.microsoft.com/api/saas/subscriptions/<subscriptionId>/operations?api-version=<ApiVersion>`
+##### <a name="get-httpsmarketplaceapimicrosoftcomapisaassubscriptionssubscriptionidoperationsapi-versionapiversion"></a>Toevoegen`https://marketplaceapi.microsoft.com/api/saas/subscriptions/<subscriptionId>/operations?api-version=<ApiVersion>`
 
 *Query parameters:*
 
-|             |        |
+|  Parameter         | Waarde             |
 |  ---------------   |  ---------------  |
 |    `ApiVersion`    |  Gebruik 2018-08-31.         |
 |    `subscriptionId` | Een unieke id van het aangeschafte SaaS-abonnement.  Deze ID wordt verkregen na het oplossen van het autorisatie token van de Marketplace met behulp van de API voor omzetten.  |
 
 *Aanvraag headers:*
  
-|                    |                   |
+|  Parameter         | Waarde             |
 |  ---------------   |  ---------------  |
 |  `content-type`     |  `application/json` |
 |  `x-ms-requestid`    |  Een unieke teken reeks waarde voor het bijhouden van de aanvraag van de client, bij voor keur een GUID.  Als deze waarde niet is opgenomen, wordt er een gegenereerd en geleverd in de antwoord headers.  |
@@ -792,7 +758,7 @@ Op dit moment worden alleen de **bewerkingen** voor deze API-aanroep geretournee
 
 *Antwoord codes:*
 
-Code: 200<br> Er wordt een bewerking voor het opnieuw invoeren in behandeling uitgevoerd voor het opgegeven SaaS-abonnement.
+Code: 200 retourneert wachtend op opnieuw invoeren voor het opgegeven SaaS-abonnement.
 
 *Voor beeld van een nettolading van antwoorden:*
 
@@ -814,19 +780,15 @@ Code: 200<br> Er wordt een bewerking voor het opnieuw invoeren in behandeling ui
 
 Retourneert een lege JSON als er geen bewerkingen voor opnieuw invoeren in behandeling zijn.
 
-Code: 400<br>
-Ongeldige aanvraag: validatie mislukt.
+Code: 400 ongeldige aanvraag: validatie mislukt.
 
-Code: 403<br>
-Slag. Het autorisatie token is ongeldig, verlopen of niet meegeleverd.  De aanvraag probeert toegang te krijgen tot een SaaS-abonnement voor een aanbieding die is gepubliceerd met een andere Azure AD-app-ID dan de versie die is gebruikt om het autorisatie token te maken.
+Code: 403 verboden. Het autorisatie token is ongeldig, verlopen of niet meegeleverd.  De aanvraag probeert toegang te krijgen tot een SaaS-abonnement voor een aanbieding die is gepubliceerd met een andere Azure AD-app-ID dan de versie die is gebruikt om het autorisatie token te maken.
 
-Deze fout is vaak een symptoom van het niet juist uitvoeren van de [SaaS-registratie](https://docs.microsoft.com/azure/marketplace/partner-center-portal/pc-saas-registration) . 
+Deze fout is vaak een symptoom van het niet juist uitvoeren van de [SaaS-registratie](pc-saas-registration.md) . 
 
-Code: 404<br>
-Niet gevonden.  Het SaaS-abonnement met `subscriptionId` kan niet worden gevonden.
+Code: 404 niet gevonden.  Het SaaS-abonnement met `subscriptionId` kan niet worden gevonden.
 
-Code: 500<br>
-Interne serverfout. Voer de API-aanroep opnieuw uit.  Neem contact op met [micro soft ondersteuning](https://partner.microsoft.com/support/v2/?stage=1)als de fout zich blijft voordoen.
+Code: 500 interne server fout. Voer de API-aanroep opnieuw uit.  Neem contact op met [micro soft ondersteuning](https://partner.microsoft.com/support/v2/?stage=1)als de fout zich blijft voordoen.
 
 #### <a name="get-operation-status"></a>Bewerkings status ophalen
 
@@ -834,11 +796,11 @@ Hiermee kan de uitgever de status van de opgegeven async-bewerking bijhouden: **
 
 De `operationId` voor deze API-aanroep kan worden opgehaald uit de waarde die wordt geretourneerd door de **bewerking-locatie**, in afwachting van de API-aanroep in behandeling of de `<id>` parameter waarde ontvangen in een webhook-aanroep.
 
-##### <a name="getbr-httpsmarketplaceapimicrosoftcomapisaassubscriptionssubscriptionidoperationsoperationidapi-versionapiversion"></a>Ophalen<br> `https://marketplaceapi.microsoft.com/api/saas/subscriptions/<subscriptionId>/operations/<operationId>?api-version=<ApiVersion>`
+##### <a name="get-httpsmarketplaceapimicrosoftcomapisaassubscriptionssubscriptionidoperationsoperationidapi-versionapiversion"></a>Toevoegen`https://marketplaceapi.microsoft.com/api/saas/subscriptions/<subscriptionId>/operations/<operationId>?api-version=<ApiVersion>`
 
 *Query parameters:*
 
-|                    |                   |
+|  Parameter         | Waarde             |
 |  ---------------   |  ---------------  |
 |  `ApiVersion`        |  Gebruik 2018-08-31.  |
 |  `subscriptionId`    |  Een unieke id van het aangeschafte SaaS-abonnement.  Deze ID wordt verkregen na het oplossen van het autorisatie token van de Marketplace met behulp van de API voor omzetten. |
@@ -846,16 +808,16 @@ De `operationId` voor deze API-aanroep kan worden opgehaald uit de waarde die wo
 
 *Aanvraag headers:*
 
-|                    |                   |
+|  Parameter         | Waarde             |
 |  ---------------   |  ---------------  |
 |  `content-type`      |  `application/json`   |
 |  `x-ms-requestid`    |  Een unieke teken reeks waarde voor het bijhouden van de aanvraag van de client, bij voor keur een GUID.  Als deze waarde niet is opgenomen, wordt er een gegenereerd en geleverd in de antwoord headers. |
 |  `x-ms-correlationid` |  Een unieke teken reeks waarde voor de bewerking op de client.  Deze para meter verbindt alle gebeurtenissen van de client bewerking met gebeurtenissen aan de server zijde.  Als deze waarde niet is opgenomen, wordt er een gegenereerd en geleverd in de antwoord headers.  |
 |  `authorization`     |  Een uniek toegangs token dat de uitgever identificeert die deze API aanroept.  De indeling is `"Bearer <access_token>"` wanneer de token waarde wordt opgehaald door de uitgever, zoals wordt uitgelegd in [een Token ophalen op basis van de Azure AD-App](./pc-saas-registration.md#get-the-token-with-an-http-post).  |
 
-*Antwoord codes:*<br>
+*Antwoord codes:*
 
-Code: 200<br> Hiermee worden details opgehaald voor de opgegeven SaaS-bewerking. 
+Code: 200 Hiermee worden details opgehaald voor de opgegeven SaaS-bewerking. 
 
 *Voor beeld van een nettolading van antwoorden:*
 
@@ -878,19 +840,16 @@ Response body:
 }
 ```
 
-Code: 403<br>
-Slag. Het autorisatie token is ongeldig, verlopen of niet meegeleverd.  De aanvraag probeert toegang te krijgen tot een SaaS-abonnement voor een aanbieding die is gepubliceerd met een andere Azure AD-app-ID dan de versie die is gebruikt om het autorisatie token te maken.
+Code: 403 verboden. Het autorisatie token is ongeldig, verlopen of niet meegeleverd.  De aanvraag probeert toegang te krijgen tot een SaaS-abonnement voor een aanbieding die is gepubliceerd met een andere Azure AD-app-ID dan de versie die is gebruikt om het autorisatie token te maken.
 
-Deze fout is vaak een symptoom van het niet juist uitvoeren van de [SaaS-registratie](https://docs.microsoft.com/azure/marketplace/partner-center-portal/pc-saas-registration) . 
+Deze fout is vaak een symptoom van het niet juist uitvoeren van de [SaaS-registratie](pc-saas-registration.md) . 
 
-Code: 404<br>
-Niet gevonden.  
+Code: 404 niet gevonden.  
 
 * Kan het abonnement `subscriptionId` niet vinden.
 * De bewerking `operationId` kan niet worden gevonden.
 
-Code: 500<br>
-Interne serverfout.  Voer de API-aanroep opnieuw uit.  Neem contact op met [micro soft ondersteuning](https://partner.microsoft.com/support/v2/?stage=1)als de fout zich blijft voordoen.
+Code: 500 interne server fout.  Voer de API-aanroep opnieuw uit.  Neem contact op met [micro soft ondersteuning](https://partner.microsoft.com/support/v2/?stage=1)als de fout zich blijft voordoen.
 
 #### <a name="update-the-status-of-an-operation"></a>De status van een bewerking bijwerken
 
@@ -898,11 +857,11 @@ Werk de status van een bewerking in behandeling bij om aan te geven dat het slag
 
 De `operationId` voor deze API-aanroep kan worden opgehaald uit de waarde die wordt geretourneerd door de **bewerkings locatie**, in behandeling zijnde Operations API-aanroep of de `<id>` parameter waarde ontvangen in een webhook-aanroep.
 
-##### <a name="patchbr-httpsmarketplaceapimicrosoftcomapisaassubscriptionssubscriptionidoperationsoperationidapi-versionapiversion"></a>Patch<br> `https://marketplaceapi.microsoft.com/api/saas/subscriptions/<subscriptionId>/operations/<operationId>?api-version=<ApiVersion>`
+##### <a name="patch-httpsmarketplaceapimicrosoftcomapisaassubscriptionssubscriptionidoperationsoperationidapi-versionapiversion"></a>Verzenden`https://marketplaceapi.microsoft.com/api/saas/subscriptions/<subscriptionId>/operations/<operationId>?api-version=<ApiVersion>`
 
 *Query parameters:*
 
-|                    |                   |
+|  Parameter         | Waarde             |
 |  ---------------   |  ---------------  |
 |   `ApiVersion`       |  Gebruik 2018-08-31.  |
 |   `subscriptionId`   |  Een unieke id van het aangeschafte SaaS-abonnement.  Deze ID wordt verkregen na het oplossen van het autorisatie token van de Marketplace met behulp van de API voor omzetten.  |
@@ -910,7 +869,7 @@ De `operationId` voor deze API-aanroep kan worden opgehaald uit de waarde die wo
 
 *Aanvraag headers:*
 
-|                    |                   |
+|  Parameter         | Waarde             |
 |  ---------------   |  ---------------  |
 |   `content-type`   | `application/json`   |
 |   `x-ms-requestid`   |  Een unieke teken reeks waarde voor het bijhouden van de aanvraag van de client, bij voor keur een GUID.  Als deze waarde niet is opgenomen, wordt er een gegenereerd en geleverd in de antwoord headers. |
@@ -927,25 +886,21 @@ De `operationId` voor deze API-aanroep kan worden opgehaald uit de waarde die wo
 
 *Antwoord codes:*
 
-Code: 200<br> Een aanroep om te informeren of een bewerking aan de partner zijde is voltooid.  Deze reactie kan bijvoorbeeld geven aan de voltooiing van de wijziging van de stoelen of abonnementen aan de kant van de uitgever.
+Code: 200 een aanroep naar het melden van de voltooiing van een bewerking aan de partner zijde.  Deze reactie kan bijvoorbeeld geven aan de voltooiing van de wijziging van de stoelen of abonnementen aan de kant van de uitgever.
 
-Code: 403<br>
-Slag.  Het autorisatie token is niet beschikbaar, ongeldig of verlopen. De aanvraag probeert mogelijk toegang te krijgen tot een abonnement dat geen deel uitmaakt van de huidige uitgever.
+Code: 403 verboden.  Het autorisatie token is niet beschikbaar, ongeldig of verlopen. De aanvraag probeert mogelijk toegang te krijgen tot een abonnement dat geen deel uitmaakt van de huidige uitgever.
 Slag.  Het autorisatie token is ongeldig, verlopen of niet meegeleverd.  De aanvraag probeert toegang te krijgen tot een SaaS-abonnement voor een aanbieding die is gepubliceerd met een andere Azure AD-app-ID dan de versie die is gebruikt om het autorisatie token te maken.
 
-Deze fout is vaak een symptoom van het niet juist uitvoeren van de [SaaS-registratie](https://docs.microsoft.com/azure/marketplace/partner-center-portal/pc-saas-registration) .
+Deze fout is vaak een symptoom van het niet juist uitvoeren van de [SaaS-registratie](pc-saas-registration.md) .
 
-Code: 404<br>
-Niet gevonden.
+Code: 404 niet gevonden.
 
 * Kan het abonnement `subscriptionId` niet vinden.
 * De bewerking `operationId` kan niet worden gevonden.
 
-Code: 409<br>
-Conflicteren.  Er is bijvoorbeeld al aan een nieuwere update voldaan.
+Code: 409 conflict.  Er is bijvoorbeeld al aan een nieuwere update voldaan.
 
-Code: 500<br>
-Interne serverfout.  Voer de API-aanroep opnieuw uit.  Neem contact op met [micro soft ondersteuning](https://partner.microsoft.com/support/v2/?stage=1)als de fout zich blijft voordoen.
+Code: 500 interne server fout.  Voer de API-aanroep opnieuw uit.  Neem contact op met [micro soft ondersteuning](https://partner.microsoft.com/support/v2/?stage=1)als de fout zich blijft voordoen.
 
 ## <a name="implementing-a-webhook-on-the-saas-service"></a>Een webhook implementeren op de SaaS-service
 
@@ -1016,11 +971,11 @@ Acties voor het wijzigen van de *planning*, het wijzigen van de *hoeveelheid*en 
 
 ## <a name="get-support"></a>Ondersteuning krijgen
 
-Zie [ondersteuning voor het programma voor commerciële Marketplace in het partner centrum](https://docs.microsoft.com/azure/marketplace/partner-center-portal/support) voor ondersteunings opties voor Publisher.
+Zie [ondersteuning voor het programma voor commerciële Marketplace in het partner centrum](support.md) voor ondersteunings opties voor Publisher.
 
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Zie Api's voor Marketplace [meter service](https://docs.microsoft.com/azure/marketplace/partner-center-portal/marketplace-metering-service-apis) voor meer opties voor SaaS-aanbiedingen in Marketplace.
+Zie Api's voor Marketplace [meter service](marketplace-metering-service-apis.md) voor meer opties voor SaaS-aanbiedingen in Marketplace.
 
 Bekijk en gebruik [SaaS SDK](https://github.com/Azure/Microsoft-commercial-marketplace-transactable-SaaS-offer-SDK) die zijn gebouwd boven op de api's die in dit document worden beschreven.

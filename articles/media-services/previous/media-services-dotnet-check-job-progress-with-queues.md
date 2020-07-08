@@ -14,12 +14,12 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 03/18/2019
 ms.author: juliako
-ms.openlocfilehash: 2a7f15eb7e90ba4dec9bc614a45d2de46c07bdfd
-ms.sourcegitcommit: be32c9a3f6ff48d909aabdae9a53bd8e0582f955
+ms.openlocfilehash: d75ba63955deb3fb6ef4a1207754097b0b3be532
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/26/2020
-ms.locfileid: "64868106"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85962676"
 ---
 # <a name="use-azure-queue-storage-to-monitor-media-services-job-notifications-with-net"></a>Gebruik Azure Queue Storage om Media Services taak meldingen te bewaken met .NET 
 
@@ -47,13 +47,16 @@ Houd rekening met het volgende bij het ontwikkelen van Media Services toepassing
 Het code voorbeeld in deze sectie doet het volgende:
 
 1. Hiermee wordt de klasse **EncodingJobMessage** gedefinieerd die wordt toegewezen aan de indeling van het meldings bericht. De code deserialeert berichten die zijn ontvangen van de wachtrij in objecten van het type **EncodingJobMessage** .
-2. Hiermee worden de Media Services-en de gegevens van het opslag account uit het bestand app. config geladen. In het code voorbeeld wordt deze informatie gebruikt voor het maken van de **cloudmediacontext maakt** -en **CloudQueue** -objecten.
+2. Laadt de Media Services-en gegevens van het opslag account uit het app.config bestand. In het code voorbeeld wordt deze informatie gebruikt voor het maken van de **cloudmediacontext maakt** -en **CloudQueue** -objecten.
 3. Hiermee maakt u de wachtrij die meldings berichten over de coderings taak ontvangt.
 4. Hiermee maakt u het meldings eindpunt dat is toegewezen aan de wachtrij.
 5. Het eind punt van de melding wordt gekoppeld aan de taak en de coderings taak wordt verzonden. Er kunnen meerdere eind punten aan een melding aan een taak zijn gekoppeld.
 6. Hiermee wordt **NotificationJobState. FinalStatesOnly** door gegeven aan de methode **AddNew** . (In dit voor beeld zijn we alleen geïnteresseerd in de definitieve statussen van de taak verwerking.)
 
-        job.JobNotificationSubscriptions.AddNew(NotificationJobState.FinalStatesOnly, _notificationEndPoint);
+    ```csharp
+    job.JobNotificationSubscriptions.AddNew(NotificationJobState.FinalStatesOnly, _notificationEndPoint);
+    ```
+
 7. Als u **NotificationJobState. alle**hebt, worden alle volgende status wijzigings meldingen weer gegeven: in de wachtrij geplaatst, gepland, verwerkt en voltooid. Zoals eerder vermeld, garandeert de wachtrij opslag echter geen bestelde levering. Voor het best Ellen van berichten gebruikt u de eigenschap **Time Stamp** (gedefinieerd in het type **EncodingJobMessage** in het onderstaande voor beeld). Dubbele berichten zijn mogelijk. Als u wilt controleren op dubbele waarden, gebruikt u de **ETAG-eigenschap** (gedefinieerd in het type **EncodingJobMessage** ). Het is ook mogelijk dat sommige meldingen over status wijziging worden overgeslagen.
 8. Wacht tot de taak is voltooid, door de wachtrij elke 10 seconden te controleren. Verwijdert berichten nadat ze zijn verwerkt.
 9. De wachtrij en het eind punt van de melding worden verwijderd.
@@ -67,7 +70,7 @@ Het code voorbeeld in deze sectie doet het volgende:
 
 ### <a name="create-and-configure-a-visual-studio-project"></a>Maak en configureer een Visual Studio-project.
 
-1. Stel uw ontwikkel omgeving in en vul in het bestand app. config de verbindings informatie in, zoals beschreven in [Media Services ontwikkeling met .net](media-services-dotnet-how-to-use.md). 
+1. Stel uw ontwikkel omgeving in en vul het app.config bestand in met verbindings informatie, zoals beschreven in [Media Services ontwikkeling met .net](media-services-dotnet-how-to-use.md). 
 2. Maak een nieuwe map (de map kan zich overal op uw lokale station bevinden) en kopieer een MP4-bestand dat u wilt coderen en streamen of progressief wilt downloaden. In dit voor beeld wordt het pad ' C:\Media ' gebruikt.
 3. Voeg een verwijzing naar de bibliotheek **System. runtime. serialization** toe.
 
@@ -344,31 +347,32 @@ namespace JobNotification
 
 In het voor gaande voor beeld is de volgende uitvoer gegenereerd: de waarden variëren.
 
-    Created assetFile BigBuckBunny.mp4
-    Upload BigBuckBunny.mp4
-    Done uploading of BigBuckBunny.mp4
+```output
+Created assetFile BigBuckBunny.mp4
+Upload BigBuckBunny.mp4
+Done uploading of BigBuckBunny.mp4
 
-    EventType: NotificationEndPointRegistration
-    MessageVersion: 1.0
-    ETag: e0238957a9b25bdf3351a88e57978d6a81a84527fad03bc23861dbe28ab293f6
-    TimeStamp: 2013-05-14T20:22:37
-        NotificationEndPointId: nb:nepid:UUID:d6af9412-2488-45b2-ba1f-6e0ade6dbc27
-        State: Registered
-        Name: dde957b2-006e-41f2-9869-a978870ac620
-        Created: 2013-05-14T20:22:35
+EventType: NotificationEndPointRegistration
+MessageVersion: 1.0
+ETag: e0238957a9b25bdf3351a88e57978d6a81a84527fad03bc23861dbe28ab293f6
+TimeStamp: 2013-05-14T20:22:37
+    NotificationEndPointId: nb:nepid:UUID:d6af9412-2488-45b2-ba1f-6e0ade6dbc27
+    State: Registered
+    Name: dde957b2-006e-41f2-9869-a978870ac620
+    Created: 2013-05-14T20:22:35
 
-    EventType: JobStateChange
-    MessageVersion: 1.0
-    ETag: 4e381f37c2d844bde06ace650310284d6928b1e50101d82d1b56220cfcb6076c
-    TimeStamp: 2013-05-14T20:24:40
-        JobId: nb:jid:UUID:526291de-f166-be47-b62a-11ffe6d4be54
-        JobName: My MP4 to Smooth Streaming encoding job
-        NewState: Finished
-        OldState: Processing
-        AccountName: westeuropewamsaccount
-    job with Id: nb:jid:UUID:526291de-f166-be47-b62a-11ffe6d4be54 reached expected
-    State: Finished
-
+EventType: JobStateChange
+MessageVersion: 1.0
+ETag: 4e381f37c2d844bde06ace650310284d6928b1e50101d82d1b56220cfcb6076c
+TimeStamp: 2013-05-14T20:24:40
+    JobId: nb:jid:UUID:526291de-f166-be47-b62a-11ffe6d4be54
+    JobName: My MP4 to Smooth Streaming encoding job
+    NewState: Finished
+    OldState: Processing
+    AccountName: westeuropewamsaccount
+job with Id: nb:jid:UUID:526291de-f166-be47-b62a-11ffe6d4be54 reached expected
+State: Finished
+```
 
 ## <a name="next-step"></a>Volgende stap
 Media Services-leertrajecten bekijken.

@@ -7,16 +7,16 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 04/16/2020
 ms.author: dsindona
-ms.openlocfilehash: 58bfe5cdc58c41c2ead82ac2d280629e4fec9bcd
-ms.sourcegitcommit: cf7caaf1e42f1420e1491e3616cc989d504f0902
+ms.openlocfilehash: 633656af72790c7dfebeee567713875ce0d609b4
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/22/2020
-ms.locfileid: "83798136"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85964206"
 ---
 # <a name="cloud-solution-provider-program"></a>Programma Cloud Solution Provider
 
-In dit artikel wordt uitgelegd hoe u uw aanbieding zo configureert dat deze beschikbaar is voor het programma Cloud Solution Provider (CSP). Naast het publiceren van uw aanbiedingen via de [webwinkels voor commerciële Marketplace](https://docs.microsoft.com/azure/marketplace/comparing-appsource-azure-marketplace), kunt u ook via het CSP-programma verkopen om miljoenen micro soft-klanten te bereiken die het programma gebruikt.
+In dit artikel wordt uitgelegd hoe u uw aanbieding zo configureert dat deze beschikbaar is voor het programma Cloud Solution Provider (CSP). Naast het publiceren van uw aanbiedingen via de [webwinkels voor commerciële Marketplace](comparing-appsource-azure-marketplace.md), kunt u ook via het CSP-programma verkopen om miljoenen micro soft-klanten te bereiken die het programma gebruikt.
 
 U kunt nieuwe of bestaande aanbiedingen voor Beschik baarheid configureren in het CSP-programma, zodat CSP-partners uw producten kunnen verkopen en gebundelde oplossingen voor klanten kunnen maken.
 
@@ -191,7 +191,7 @@ Als u hebt gekozen voor het CSP-kanaal in Cloud Partner-portal, moeten uitgevers
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Ga naar de [Publisher-hand leiding voor Azure Marketplace en AppSource](https://docs.microsoft.com/azure/marketplace/marketplace-publishers-guide).
+Ga naar de [Publisher-hand leiding voor Azure Marketplace en AppSource](marketplace-publishers-guide.md).
 
 Zie [Go-to-Market Services](https://partner.microsoft.com/reach-customers/gtm)(Engelstalig) voor meer informatie over Marketplace gtm Services.
 

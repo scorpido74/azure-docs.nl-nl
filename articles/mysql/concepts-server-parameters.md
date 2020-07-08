@@ -6,12 +6,12 @@ ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 6/25/2020
-ms.openlocfilehash: e147e896966f88f05f60732da9d85308b8e4bd0f
-ms.sourcegitcommit: b56226271541e1393a4b85d23c07fd495a4f644d
+ms.openlocfilehash: ce8e8b083b108d24c11d828ae1cbd4e47e090fc0
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/26/2020
-ms.locfileid: "85389629"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85963203"
 ---
 # <a name="server-parameters-in-azure-database-for-mysql"></a>Server parameters in Azure Database for MySQL
 
@@ -28,6 +28,32 @@ Azure Database for MySQL beschrijft de mogelijkheid om de waarde van verschillen
 De lijst met ondersteunde server parameters groeit voortdurend. Gebruik het tabblad Server parameters in het Azure Portal om de volledige lijst weer te geven en de waarden voor de server parameters te configureren.
 
 Raadpleeg de volgende secties voor meer informatie over de limieten van de verschillende vaak bijgewerkte server parameters. De limieten worden bepaald door de prijs categorie en vCores van de-server.
+
+### <a name="thread-pools"></a>Thread groepen
+
+MySQL wijst traditioneel een thread toe voor elke client verbinding. Naarmate het aantal gelijktijdige gebruikers toeneemt, is er een overeenkomende daling van de prestaties. Veel actieve threads kunnen van invloed zijn op de prestaties aanzienlijk als gevolg van een grotere context omschakeling, thread-conflicten en een onjuiste plaats voor CPU-caches.
+
+Thread groepen die zich op de server functie bevindt en die verschillend zijn van groepsgewijze verbindingen, maximaliseren de prestaties door een dynamische groep werk thread te introduceren die kan worden gebruikt om het aantal actieve threads dat op de server wordt uitgevoerd, te beperken en de thread verloop tot een minimum te beperken. Dit zorgt ervoor dat de server niet meer bronnen heeft of niet meer wordt gecrasht vanwege onvoldoende geheugen. Thread groepen zijn het meest efficiënt voor korte query's en CPU-intensieve workloads, bijvoorbeeld OLTP-workloads.
+
+Raadpleeg voor meer informatie over thread groepen de inleiding tot [thread groepen in azure database for MySQL](https://techcommunity.microsoft.com/t5/azure-database-for-mysql/introducing-thread-pools-in-azure-database-for-mysql-service/ba-p/1504173)
+
+> [!NOTE]
+> De functie thread pool wordt niet ondersteund voor MySQL 5,6-versie. 
+
+### <a name="configuring-the-thread-pool"></a>De thread pool configureren
+Als u thread pool wilt inschakelen, werkt `thread_handling` u de server parameter bij naar "pool-of-threads". Deze para meter is standaard ingesteld op `one-thread-per-connection` , wat betekent dat MySQL een nieuwe thread maakt voor elke nieuwe verbinding. Houd er rekening mee dat dit een statische para meter is en dat het opnieuw opstarten van de server moet worden toegepast.
+
+U kunt ook het maximum-en minimum aantal threads in de groep configureren door de volgende server parameters in te stellen: 
+- `thread_pool_max_threads`: Deze waarde zorgt ervoor dat er niet meer dan het aantal threads in de pool is.
+- `thread_pool_min_threads`: Met deze waarde wordt het aantal threads ingesteld dat moet worden gereserveerd, zelfs nadat de verbindingen zijn gesloten.
+
+Als u de prestatie problemen met korte query's in de thread groep wilt verbeteren, kunt u met Azure Database for MySQL de batch uitvoering inschakelen, waarbij de threads direct na het uitvoeren van een query terug naar de thread groep moeten worden teruggestuurd. de thread blijft actief gedurende korte tijd om te wachten op de volgende query via deze verbinding. De thread voert de query vervolgens snel en eenmaal uit, wacht op het volgende, totdat het totale tijd verbruik van dit proces een drempel waarde overschrijdt. Het batch-uitvoerings gedrag wordt bepaald aan de hand van de volgende server parameters:  
+
+-  `thread_pool_batch_wait_timeout`: Met deze waarde wordt aangegeven hoe lang een thread wacht voordat een andere query kan worden verwerkt.
+- `thread_pool_batch_max_time`: Deze waarde bepaalt de maximale duur van een thread die de uitvoering van de query wordt herhaald en er wordt gewacht op de volgende query.
+
+> [!IMPORTANT]
+> Test de thread groep voordat u deze inschakelt in de productie omgeving. 
 
 ### <a name="innodb_buffer_pool_size"></a>innodb_buffer_pool_size
 

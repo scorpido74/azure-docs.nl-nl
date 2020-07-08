@@ -7,12 +7,12 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 07/11/2019
-ms.openlocfilehash: 1a1ba6f393eba257fcbe2757b8b4bced00bef8fe
-ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
+ms.openlocfilehash: ba746710227cba95dc4c73a910c22bb6cdaae0ed
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/05/2020
-ms.locfileid: "82792901"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85963747"
 ---
 # <a name="common-questions-about-saas-fulfillment-apis"></a>Veelgestelde vragen over Api's voor SaaS-uitvoering
 
@@ -46,7 +46,7 @@ Wanneer de Azure-gebruiker wordt omgeleid naar de landings pagina, wordt een tok
 
 ![Abonnements stroom van de klant](media/saas-metering-service-integration-flow-a.png)
 
-Zie [SaaS fulfillment API](https://docs.microsoft.com/azure/marketplace/partner-center-portal/pc-saas-fulfillment-api-v2)voor meer informatie over het API-contract voor het verwerken van Transact-scenario's in de levens cyclus van een SaaS-aanbieding.
+Zie [SaaS fulfillment API](pc-saas-fulfillment-api-v2.md)voor meer informatie over het API-contract voor het verwerken van Transact-scenario's in de levens cyclus van een SaaS-aanbieding.
 
 ### <a name="how-do-you-know-the-saas-offer-to-which-the-user-subscribes-in-azure"></a>Hoe weet u wat de SaaS-aanbieding is waarmee de gebruiker zich abonneert in azure?
 

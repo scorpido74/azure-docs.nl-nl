@@ -7,23 +7,23 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 08/01/2019
 ms.reviewer: sngun
-ms.openlocfilehash: 34f55d628b4e334df4b3e74edfd3c0defbdeaa93
-ms.sourcegitcommit: 23604d54077318f34062099ed1128d447989eea8
+ms.openlocfilehash: 596296069686e843d0be1899cce8929417b70bcc
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/20/2020
-ms.locfileid: "85114238"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85964580"
 ---
 # <a name="understand-your-azure-cosmos-db-bill"></a>Meer informatie over uw Azure Cosmos DB-factuur
 
 Als volledig beheerde Cloud-systeem eigen database service, Azure Cosmos DB vereenvoudigt de facturering door alleen voor ingerichte door Voer en verbruikte opslag. Er zijn geen aanvullende licentie kosten, hardware, kosten voor hulp programma of faciliteiten in vergelijking met on-premises of door IaaS gehoste alternatieven. Wanneer u rekening houdt met de mogelijkheden van meerdere regio's van Azure Cosmos DB, biedt de database service een aanzienlijke verlaging van de kosten in vergelijking met bestaande on-premises of IaaSe oplossingen.
 
-Met Azure Cosmos DB wordt per uur gefactureerd op basis van de ingerichte door Voer en de verbruikte opslag. Voor de ingerichte door Voer is de facturerings eenheid 100 RU/sec per uur, in rekening gebracht tegen $0,008 per uur, uitgaande van de standaard open bare prijzen, zie de [pagina met prijzen](https://azure.microsoft.com/pricing/details/cosmos-db/). Voor de verbruikte opslag wordt gefactureerd van $0,25 per 1 GB opslag per maand. Zie de [pagina met prijzen](https://azure.microsoft.com/pricing/details/cosmos-db/)voor meer informatie. 
+Met Azure Cosmos DB wordt per uur gefactureerd op basis van de ingerichte door Voer en de verbruikte opslag. Voor de ingerichte door Voer is de facturerings eenheid 100 RU/sec per uur. Zie de [pagina met prijzen](https://azure.microsoft.com/pricing/details/cosmos-db/) voor de meest recente prijs informatie. Voor de verbruikte opslag wordt per maand per 1 GB aan opslag gefactureerd. Zie de [pagina met prijzen](https://azure.microsoft.com/pricing/details/cosmos-db/) voor de meest recente prijs informatie.
 
-In dit artikel worden enkele voorbeelden gebruikt om inzicht te krijgen in de details van de maandelijkse factuur. De getallen in de voorbeelden kunnen afwijken wanneer voor uw Azure Cosmos-containers een andere hoeveelheid doorvoer is ingericht, wanneer ze meerdere regio’s bestrijken, of als ze worden uitgevoerd voor een andere periode dan een maand.
+In dit artikel worden enkele voorbeelden gebruikt om inzicht te krijgen in de details van de maandelijkse factuur. De getallen in de voorbeelden kunnen afwijken wanneer voor uw Azure Cosmos-containers een andere hoeveelheid doorvoer is ingericht, wanneer ze meerdere regio’s bestrijken, of als ze worden uitgevoerd voor een andere periode dan een maand. In alle voor beelden in dit artikel wordt de factuur berekend op basis van de prijs informatie die wordt weer gegeven op de [pagina met prijzen.](https://azure.microsoft.com/pricing/details/cosmos-db/)
 
 > [!NOTE]
-> Facturering is voor elk deel van een uur in de periode, geen 60 minuut.
+> Facturering is voor elk deel van een uur in de periode, geen 60 minuut. Alle voor beelden in dit document zijn gebaseerd op de prijs van een Azure Cosmos-account dat is geïmplementeerd in een niet-overheids regio in de Verenigde Staten. De prijzen en berekening variëren afhankelijk van de regio die u gebruikt. Zie de [pagina met prijzen voor Azure Cosmos DB](https://azure.microsoft.com/pricing/details/cosmos-db/) voor de meest recente prijs informatie.
 
 ## <a name="billing-examples"></a>Facturerings voorbeelden
 
@@ -234,21 +234,20 @@ Dit voor beeld weerspiegelt de [prijzen voor meerdere masters](https://azure.mic
 
 Laten we eens kijken naar een ander voor beeld, waar u proactief uw factuur kunt inschatten vóór het einde van de maand. U kunt uw factuur als volgt schatten:
 
-|**Opslag kosten** | |
-|----|----|
-|Gem. record grootte (KB) |1 |
-|Aantal records  |100.000.000  |
-|Totale opslag (GB)  |100 |
-|Maandelijkse kosten per GB  |$0,25  |
-|Verwachte maandelijkse kosten voor opslag   |$25,00  |
+**Opslagkosten**
 
-<br>
+* Gem. grootte record (KB) = 1 
+* Aantal records = 100.000.000 
+* Totale opslag (GB) = 100 
+* Maandelijkse kosten per GB = $0,25 
+* Verwachte maandelijkse kosten voor opslag = $25,00 
 
-|**Doorvoer kosten** | | | |
+**Doorvoer kosten**
+
+|Het type bewerking| Aanvragen per seconde| Gem. RU/aanvraag| RUs vereist|
 |----|----|----|----|
-|Bewerkings type| Aanvragen per seconde| Gem. RU/aanvraag| RUs vereist|
 |Schrijven| 100 | 5 | 500|
-|Raadplegen| 400| 1| 400|
+|Lezen| 400| 1| 400|
 
 Totaal aantal RU/SEC: 500 + 400 = 900 uur kosten: 900/100 * $0,008 = $0,072 verwachte maandelijkse kosten voor door Voer (aangenomen 31 dagen): $0,072 * 24 * 31 = $53,57
 

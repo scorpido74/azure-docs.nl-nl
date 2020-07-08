@@ -4,12 +4,12 @@ description: Meer informatie over het gebruik van de batch-Service-API voor het 
 ms.topic: how-to
 ms.date: 03/05/2019
 ms.custom: seodec18
-ms.openlocfilehash: 8020fbd184e200504d0fb0a9ab7ef5de64bd76c9
-ms.sourcegitcommit: 6fd8dbeee587fd7633571dfea46424f3c7e65169
+ms.openlocfilehash: c9d8eab5b4f4b89a613f5ffc3a7f9c9d9d53dcfc
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83726312"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85965124"
 ---
 # <a name="persist-task-data-to-azure-storage-with-the-batch-service-api"></a>Taak gegevens persistent maken voor Azure Storage met de API voor de batch-service
 
@@ -32,7 +32,7 @@ Als uw scenario verschilt van wat hierboven wordt vermeld, moet u mogelijk een a
 
 ## <a name="create-a-container-in-azure-storage"></a>Een container maken in Azure Storage
 
-Als u de taak uitvoer naar Azure Storage wilt behouden, moet u een container maken die fungeert als bestemming voor uw uitvoer bestanden. Maak de container voordat u de taak uitvoert, bij voor keur voordat u uw taak verzendt. Als u de container wilt maken, gebruikt u de juiste Azure Storage-client bibliotheek of-SDK. Zie de [Azure Storage-documentatie](https://docs.microsoft.com/azure/storage/)voor meer informatie over Azure Storage-api's.
+Als u de taak uitvoer naar Azure Storage wilt behouden, moet u een container maken die fungeert als bestemming voor uw uitvoer bestanden. Maak de container voordat u de taak uitvoert, bij voor keur voordat u uw taak verzendt. Als u de container wilt maken, gebruikt u de juiste Azure Storage-client bibliotheek of-SDK. Zie de [Azure Storage-documentatie](../storage/index.yml)voor meer informatie over Azure Storage-api's.
 
 Als u bijvoorbeeld uw toepassing in C# schrijft, gebruikt u de Azure Storage- [client bibliotheek voor .net](https://www.nuget.org/packages/WindowsAzure.Storage/). In het volgende voor beeld ziet u hoe u een container maakt:
 
@@ -61,7 +61,7 @@ string containerSasUrl = container.Uri.AbsoluteUri + containerSasToken;
 
 ## <a name="specify-output-files-for-task-output"></a>Uitvoer bestanden opgeven voor taak uitvoer
 
-Als u uitvoer bestanden voor een taak wilt opgeven, maakt u een verzameling [uitvoer](https://docs.microsoft.com/dotnet/api/microsoft.azure.batch.outputfile) bare objecten en wijst u deze toe aan de eigenschap [CloudTask. OutputFiles](https://docs.microsoft.com/dotnet/api/microsoft.azure.batch.cloudtask.outputfiles#Microsoft_Azure_Batch_CloudTask_OutputFiles) wanneer u de taak maakt.
+Als u uitvoer bestanden voor een taak wilt opgeven, maakt u een verzameling [uitvoer](/dotnet/api/microsoft.azure.batch.outputfile) bare objecten en wijst u deze toe aan de eigenschap [CloudTask. OutputFiles](/dotnet/api/microsoft.azure.batch.cloudtask.outputfiles#Microsoft_Azure_Batch_CloudTask_OutputFiles) wanneer u de taak maakt.
 
 In het volgende voor beeld van C#-code wordt een taak gemaakt die wille keurige getallen schrijft naar een bestand met de naam `output.txt` . In het voor beeld wordt een uitvoer bestand gemaakt `output.txt` dat naar de container wordt geschreven. In het voor beeld worden ook uitvoer bestanden gemaakt voor alle logboek bestanden die overeenkomen met het bestands patroon `std*.txt` (_bijvoorbeeld_, `stdout.txt` en `stderr.txt` ). De container-URL vereist de SA'S die eerder voor de container zijn gemaakt. De batch-service gebruikt de SAS om toegang tot de container te verifiëren:
 
@@ -91,7 +91,7 @@ new CloudTask(taskId, "cmd /v:ON /c \"echo off && set && (FOR /L %i IN (1,1,1000
 
 ### <a name="specify-a-file-pattern-for-matching"></a>Een bestands patroon opgeven voor het zoeken
 
-Wanneer u een uitvoer bestand opgeeft, kunt u de eigenschap [output file. FilePattern](https://docs.microsoft.com/dotnet/api/microsoft.azure.batch.outputfile.filepattern#Microsoft_Azure_Batch_OutputFile_FilePattern) gebruiken om een bestands patroon op te geven voor de overeenkomst. Het bestands patroon kan overeenkomen met nul bestanden, één bestand of een set bestanden die door de taak worden gemaakt.
+Wanneer u een uitvoer bestand opgeeft, kunt u de eigenschap [output file. FilePattern](/dotnet/api/microsoft.azure.batch.outputfile.filepattern#Microsoft_Azure_Batch_OutputFile_FilePattern) gebruiken om een bestands patroon op te geven voor de overeenkomst. Het bestands patroon kan overeenkomen met nul bestanden, één bestand of een set bestanden die door de taak worden gemaakt.
 
 De eigenschap **FilePattern** ondersteunt standaard bestandssysteem joker tekens, zoals `*` (voor niet-recursieve overeenkomsten) en `**` (voor recursieve overeenkomsten). Het bovenstaande code voorbeeld geeft bijvoorbeeld aan dat het bestand patroon `std*.txt` niet-recursief moet overeenkomen:
 
@@ -103,19 +103,19 @@ Als u één bestand wilt uploaden, geeft u een bestands patroon zonder joker tek
 
 ### <a name="specify-an-upload-condition"></a>Een upload voorwaarde opgeven
 
-De eigenschap [OutputFileUploadOptions. UploadCondition](https://docs.microsoft.com/dotnet/api/microsoft.azure.batch.outputfileuploadoptions.uploadcondition#Microsoft_Azure_Batch_OutputFileUploadOptions_UploadCondition) staat het voorwaardelijk uploaden van uitvoer bestanden toe. Een veelvoorkomend scenario is het uploaden van één set bestanden als de taak slaagt en een andere set bestanden als deze mislukt. Het is bijvoorbeeld mogelijk dat u alleen uitgebreide logboek bestanden wilt uploaden wanneer de taak mislukt en wordt afgesloten met een afsluit code die niet gelijk is aan nul. Het is ook mogelijk dat u alleen resultaat bestanden wilt uploaden als de taak is voltooid, omdat deze bestanden ontbreken of onvolledig zijn als de taak mislukt.
+De eigenschap [OutputFileUploadOptions. UploadCondition](/dotnet/api/microsoft.azure.batch.outputfileuploadoptions.uploadcondition#Microsoft_Azure_Batch_OutputFileUploadOptions_UploadCondition) staat het voorwaardelijk uploaden van uitvoer bestanden toe. Een veelvoorkomend scenario is het uploaden van één set bestanden als de taak slaagt en een andere set bestanden als deze mislukt. Het is bijvoorbeeld mogelijk dat u alleen uitgebreide logboek bestanden wilt uploaden wanneer de taak mislukt en wordt afgesloten met een afsluit code die niet gelijk is aan nul. Het is ook mogelijk dat u alleen resultaat bestanden wilt uploaden als de taak is voltooid, omdat deze bestanden ontbreken of onvolledig zijn als de taak mislukt.
 
 In het bovenstaande code voorbeeld wordt de eigenschap **UploadCondition** ingesteld op **TaskCompletion**. Met deze instelling geeft u op dat het bestand moet worden geüpload nadat de taken zijn voltooid, ongeacht de waarde van de afsluit code.
 
 `uploadCondition: OutputFileUploadCondition.TaskCompletion`
 
-Zie [OutputFileUploadCondition](https://docs.microsoft.com/dotnet/api/microsoft.azure.batch.common.outputfileuploadcondition) Enum voor andere instellingen.
+Zie [OutputFileUploadCondition](/dotnet/api/microsoft.azure.batch.common.outputfileuploadcondition) Enum voor andere instellingen.
 
 ### <a name="disambiguate-files-with-the-same-name"></a>Dubbel zinnigheid-bestanden met dezelfde naam
 
 De taken in een taak kunnen bestanden met dezelfde naam opleveren. `stdout.txt`En `stderr.txt` worden bijvoorbeeld gemaakt voor elke taak die in een taak wordt uitgevoerd. Omdat elke taak in een eigen context wordt uitgevoerd, conflicteren deze bestanden niet met het bestands systeem van het knoop punt. Wanneer u echter bestanden van meerdere taken naar een gedeelde container uploadt, moet u bestanden met dezelfde naam dubbel zinnigheid.
 
-De eigenschap [OutputFileBlobContainerDestination. Path](https://docs.microsoft.com/dotnet/api/microsoft.azure.batch.outputfileblobcontainerdestination.path#Microsoft_Azure_Batch_OutputFileBlobContainerDestination_Path) specificeert de doel-BLOB of de virtuele map voor uitvoer bestanden. U kunt de eigenschap **Path** gebruiken om de BLOB of virtuele map zo een naam te bieden dat uitvoer bestanden met dezelfde naam uniek zijn genoemd in azure Storage. Het gebruik van de taak-ID in het pad is een goede manier om unieke namen te garanderen en bestanden eenvoudig te identificeren.
+De eigenschap [OutputFileBlobContainerDestination. Path](/dotnet/api/microsoft.azure.batch.outputfileblobcontainerdestination.path#Microsoft_Azure_Batch_OutputFileBlobContainerDestination_Path) specificeert de doel-BLOB of de virtuele map voor uitvoer bestanden. U kunt de eigenschap **Path** gebruiken om de BLOB of virtuele map zo een naam te bieden dat uitvoer bestanden met dezelfde naam uniek zijn genoemd in azure Storage. Het gebruik van de taak-ID in het pad is een goede manier om unieke namen te garanderen en bestanden eenvoudig te identificeren.
 
 Als de eigenschap **FilePattern** is ingesteld op een Joker teken expressie, worden alle bestanden die overeenkomen met het patroon geüpload naar de virtuele map die is opgegeven door de eigenschap **Path** . Als de container bijvoorbeeld de `mycontainer` taak-id is, `mytask` en het bestands patroon is `..\std*.txt` , zijn de absolute uri's van de uitvoer bestanden in azure Storage vergelijkbaar met:
 
@@ -139,7 +139,7 @@ Zie [de blobs in een container](../storage/blobs/storage-quickstart-blobs-dotnet
 
 ## <a name="diagnose-file-upload-errors"></a>Fouten bij het uploaden van bestanden vaststellen
 
-Als het uploaden van uitvoer bestanden naar Azure Storage mislukt, wordt de taak verplaatst naar de status **voltooid** en wordt de eigenschap [TaskExecutionInformation. FailureInformation](https://docs.microsoft.com/dotnet/api/microsoft.azure.batch.taskexecutioninformation.failureinformation#Microsoft_Azure_Batch_TaskExecutionInformation_FailureInformation) ingesteld. Controleer de eigenschap **FailureInformation** om te bepalen welke fout is opgetreden. Dit is bijvoorbeeld een fout die optreedt bij het uploaden van bestanden als de container niet kan worden gevonden:
+Als het uploaden van uitvoer bestanden naar Azure Storage mislukt, wordt de taak verplaatst naar de status **voltooid** en wordt de eigenschap [TaskExecutionInformation. FailureInformation](/dotnet/api/microsoft.azure.batch.taskexecutioninformation.failureinformation#Microsoft_Azure_Batch_TaskExecutionInformation_FailureInformation) ingesteld. Controleer de eigenschap **FailureInformation** om te bepalen welke fout is opgetreden. Dit is bijvoorbeeld een fout die optreedt bij het uploaden van bestanden als de container niet kan worden gevonden:
 
 ```
 Category: UserError
@@ -163,7 +163,7 @@ Als u in C# ontwikkelt, kunt u de methoden gebruiken die zijn ingebouwd in de [C
 string containerName = job.OutputStorageContainerName();
 ```
 
-U kunt de methode [CloudJobExtensions. GetOutputStorageContainerUrl](https://docs.microsoft.com/dotnet/api/microsoft.azure.batch.conventions.files.cloudjobextensions.getoutputstoragecontainerurl) gebruiken om een SAS-URL (Shared Access Signature) te retour neren die wordt gebruikt om naar de container te schrijven. U kunt deze SAS vervolgens door geven aan de [OutputFileBlobContainerDestination](https://docs.microsoft.com/dotnet/api/microsoft.azure.batch.outputfileblobcontainerdestination) -constructor.
+U kunt de methode [CloudJobExtensions. GetOutputStorageContainerUrl](/dotnet/api/microsoft.azure.batch.conventions.files.cloudjobextensions.getoutputstoragecontainerurl) gebruiken om een SAS-URL (Shared Access Signature) te retour neren die wordt gebruikt om naar de container te schrijven. U kunt deze SAS vervolgens door geven aan de [OutputFileBlobContainerDestination](/dotnet/api/microsoft.azure.batch.outputfileblobcontainerdestination) -constructor.
 
 Als u in een andere taal dan C# ontwikkelt, moet u de bestands conventies standaard zelf implementeren.
 
@@ -172,7 +172,7 @@ Als u in een andere taal dan C# ontwikkelt, moet u de bestands conventies standa
 Het [PersistOutputs][github_persistoutputs] -voorbeeld project is een van de [Azure batch code voorbeelden][github_samples] op github. In deze Visual Studio-oplossing ziet u hoe u de batch-client bibliotheek voor .NET gebruikt om de uitvoer van taken naar duurzame opslag te behouden. Voer de volgende stappen uit om het voor beeld uit te voeren:
 
 1. Open het project in **Visual Studio 2019**.
-2. Voeg uw batch-en opslag **account referenties** toe aan **AccountSettings. settings** in het project micro soft. Azure. batch. samples. common.
+2. Voeg uw batch-en opslag **account referenties** toe aan **AccountSettings. settings** in het Microsoft.Azure.Batch. samples. common project.
 3. **Maak** de oplossing (maar voer deze niet uit). Herstel eventuele NuGet-pakketten als u hierom wordt gevraagd.
 4. Gebruik de Azure Portal om een [toepassings pakket](batch-application-packages.md) te uploaden voor **PersistOutputsTask**. Neem de `PersistOutputsTask.exe` en de afhankelijke assembly's op in het zip-pakket, stel de toepassings-id in op ' PersistOutputsTask ' en de versie van het toepassings pakket op ' 1,0 '.
 5. Het **PersistOutputs** -project **starten** (uitvoeren).

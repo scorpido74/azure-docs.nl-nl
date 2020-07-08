@@ -7,12 +7,12 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 05/30/2019
-ms.openlocfilehash: 3c0ee2f8d5291f7904435dea32d913adeaaf25c5
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 27a51a1203b0c25474bdb292c467a40b67309757
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81262363"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85964427"
 ---
 # <a name="company-work-accounts-and-partner-center"></a>Werk accounts van het bedrijf en het partner centrum
 
@@ -23,7 +23,7 @@ Het partner centrum gebruikt bedrijfs accounts, ook wel bekend als Azure Active 
 Als uw bedrijf zich heeft geabonneerd op een micro soft-Cloud service, zoals Azure, Microsoft Intune of Office 365, hebt u al een account domein van het werk (ook wel een Azure Active Directory-Tenant genoemd) die kan worden gebruikt met partner centrum.
 
 Voer de volgende stappen uit om te controleren:
-1. Meld u aan bij de Azure-beheer https://portal.azure.comPortal op.
+1. Meld u aan bij de Azure-beheer Portal op https://portal.azure.com .
 2. Selecteer **Azure Active Directory** in het navigatie menu aan de linkerkant en selecteer vervolgens **aangepaste domein namen**.
 3. Als u al een werk account hebt, wordt uw domein naam weer gegeven.
 
@@ -38,13 +38,13 @@ Voordat u besluit om een bestaand werk account te gebruiken, moet u rekening hou
 Volg de onderstaande stappen om een nieuw werk account voor uw bedrijf te maken. Mogelijk moet u hulp vragen aan iemand die beheerders rechten heeft voor het Microsoft Azure account van uw bedrijf.
 
 1. Meld u aan bij de [Microsoft Azure-Portal](https://portal.azure.com).
-2. Selecteer de **Azure Active Directory** -> **gebruikers**in het navigatie menu aan de linkerkant.
+2. Selecteer de **Azure Active Directory**gebruikers in het navigatie menu aan de linkerkant  ->  **Users**.
 3. Selecteer **nieuwe gebruiker** en maak een nieuw Azure-werk account door een naam en e-mail adres op te geven. Zorg ervoor dat de **Directory-rol** is ingesteld op **gebruiker** en schakel het selectie vakje **wacht woord weer geven** onderaan in om het automatisch gegenereerde wacht woord te bekijken en te noteren.
 4. Selecteer **maken** om de nieuwe gebruiker op te slaan.
 
-Het e-mail adres voor het gebruikers account moet een geverifieerde domein naam in uw Directory zijn. U kunt alle geverifieerde domeinen in uw directory weer geven door **Azure Active Directory** -> **aangepaste domein namen** te selecteren in het navigatie menu aan de linkerkant.
+Het e-mail adres voor het gebruikers account moet een geverifieerde domein naam in uw Directory zijn. U kunt alle geverifieerde domeinen in uw directory weer geven door **Azure Active Directory**  ->  **aangepaste domein namen** te selecteren in het navigatie menu aan de linkerkant.
 
-Zie [een domein toevoegen of koppelen in azure AD](https://docs.microsoft.com/azure/active-directory/active-directory-add-domain)voor meer informatie over het toevoegen van aangepaste domeinen in azure Active Directory.
+Zie [een domein toevoegen of koppelen in azure AD](../../active-directory/active-directory-add-domain.md)voor meer informatie over het toevoegen van aangepaste domeinen in azure Active Directory.
 
 ## <a name="troubleshoot-work-email-sign-in"></a>Problemen met aanmelding bij werk-e-mail oplossen
 

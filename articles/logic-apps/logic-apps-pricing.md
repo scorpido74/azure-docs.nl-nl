@@ -8,12 +8,12 @@ ms.author: jonfan
 ms.reviewer: estfan, logicappspm
 ms.topic: conceptual
 ms.date: 06/25/2020
-ms.openlocfilehash: df9d1989253bd1e6b168aa00dad941917ca2dfd3
-ms.sourcegitcommit: fdaad48994bdb9e35cdd445c31b4bac0dd006294
+ms.openlocfilehash: 9ce807238e1e373701305f8b6bb03451e0202633
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/26/2020
-ms.locfileid: "85412478"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85964631"
 ---
 # <a name="pricing-model-for-azure-logic-apps"></a>Prijs model voor Azure Logic Apps
 
@@ -49,7 +49,7 @@ Een [ *Integration service Environment* (ISE)](../logic-apps/connect-virtual-net
 
 * **Ontwikkelaar** ISE: deze SKU heeft geen mogelijkheid om omhoog te schalen, geen Service Level Agreement (SLA) en geen gepubliceerde limieten. Gebruik deze SKU alleen voor experimenteren, ontwikkelen en testen, niet voor productie-of prestatie testen.
 
-Voor Logic apps die u in een ISE maakt en uitvoert, betaalt u een [vaste maandelijkse prijs](https://azure.microsoft.com/pricing/details/logic-apps) voor deze mogelijkheden:
+Voor Logic apps die u in een ISE maakt en uitvoert, betaalt u voor deze mogelijkheden een [vaste prijs](https://azure.microsoft.com/pricing/details/logic-apps) (versus betalen per gebruik):
 
 * [Ingebouwde](../connectors/apis-list.md#built-in) triggers en acties
 
@@ -57,7 +57,7 @@ Voor Logic apps die u in een ISE maakt en uitvoert, betaalt u een [vaste maandel
 
 * [Standard](../connectors/apis-list.md#managed-connectors) -connectors en [Enter prise](../connectors/apis-list.md#enterprise-connectors) -connectors, waarmee u zoveel zakelijke verbindingen kunt maken als u wilt
 
-   Standard-en Enter prise-connectors die het label **ISE** weer geven, worden uitgevoerd in dezelfde ISE als uw logische apps. Connectors die het label ISE niet weer geven, worden uitgevoerd in de open bare, ' wereld wijde ' multi tenant-Logic Apps service. Vaste maandelijkse prijzen gelden ook voor connectors die worden uitgevoerd in de multi tenant-service wanneer u deze gebruikt met Logic apps die worden uitgevoerd in een ISE.
+   Standard-en Enter prise-connectors die het label **ISE** weer geven, worden uitgevoerd in dezelfde ISE als uw logische apps. Connectors die het label ISE niet weer geven, worden uitgevoerd in de open bare, ' wereld wijde ' multi tenant-Logic Apps service. Vaste prijzen gelden ook voor connectors die worden uitgevoerd in de multi tenant-service wanneer u deze gebruikt met Logic apps die worden uitgevoerd in een ISE.
 
 * Gebruik van het [integratie account](../logic-apps/logic-apps-enterprise-integration-create-integration-account.md) zonder extra kosten, op basis van uw [ISE-SKU](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md#ise-level):
 

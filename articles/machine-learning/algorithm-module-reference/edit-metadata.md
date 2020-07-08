@@ -9,12 +9,12 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 06/10/2020
-ms.openlocfilehash: 6683dd445b4d209a6420c7490216b8e325b34c91
-ms.sourcegitcommit: eeba08c8eaa1d724635dcf3a5e931993c848c633
+ms.openlocfilehash: 5078e625f86affb8d16ffab538d11b839d2d7bda
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/10/2020
-ms.locfileid: "84669967"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85965005"
 ---
 # <a name="edit-metadata-module"></a>Meta gegevens module bewerken
 
@@ -55,8 +55,8 @@ Veelvoorkomende meta gegevens wijzigingen kunnen het volgende omvatten:
     + Het kolom Type en de waarden worden gewijzigd nadat u de bewerking meta gegevens bewerken hebt uitgevoerd. U kunt het oorspronkelijke gegevens type op elk gewenst moment herstellen met behulp van meta gegevens bewerken om het kolom gegevens type opnieuw in te stellen.  
 
     > [!NOTE]
-        > De **datum notatie** is [gebaseerd op python ingebouwde datum/tijd-indeling](https://docs.python.org/3/library/datetime.html#strftime-and-strptime-behavior).  
-        > Als u een wille keurig type getal wijzigt in het type **datum/tijd** , laat u het veld **datum in notatie** leeg. Het is momenteel niet mogelijk om de indeling van de doel gegevens op te geven.
+    > De **datum notatie** is [gebaseerd op python ingebouwde datum/tijd-indeling](https://docs.python.org/3/library/datetime.html#strftime-and-strptime-behavior).  
+    > Als u een wille keurig type getal wijzigt in het type **datum/tijd** , laat u het veld **datum in notatie** leeg. Het is momenteel niet mogelijk om de indeling van de doel gegevens op te geven.
 
 1. Selecteer de optie **categorische** om op te geven dat de waarden in de geselecteerde kolommen als categorieën moeten worden behandeld.
 

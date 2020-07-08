@@ -7,19 +7,19 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 05/21/2020
-ms.openlocfilehash: dd1c4e724e70507816aa4b6ba652adfb998a8cc0
-ms.sourcegitcommit: 52d2f06ecec82977a1463d54a9000a68ff26b572
+ms.openlocfilehash: 0f8078c52945b52a27144c1f73ea4a136bf536d8
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/15/2020
-ms.locfileid: "84783398"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85963152"
 ---
 # <a name="marketplace-metering-service-authentication-strategies"></a>Verificatie strategieën voor Marketplace-meet service
 
 Marketplace meter service ondersteunt twee verificatie strategieën:
 
-* [Beveiligings token van Azure AD](https://docs.microsoft.com/azure/active-directory/develop/access-tokens)
-* [Beheerde identiteiten](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview) 
+* [Beveiligings token van Azure AD](../../active-directory/develop/access-tokens.md)
+* [Beheerde identiteiten](../../active-directory/managed-identities-azure-resources/overview.md) 
 
 Er wordt uitgelegd wanneer en hoe u de verschillende verificatie strategieën gebruikt voor het veilig verzenden van aangepaste meters met behulp van Marketplace-meet service.
 
@@ -38,7 +38,7 @@ Voor Azure-toepassingen met een beheerd toepassings abonnement kunt u overwegen 
 
 Zodra u uw toepassing hebt geregistreerd, kunt u via een programma een Azure AD-beveiligings token aanvragen. De uitgever wordt verwacht dit token te gebruiken en een aanvraag te doen om deze op te lossen.
 
-Zie [Azure Active Directory toegangs tokens](https://docs.microsoft.com/azure/active-directory/develop/access-tokens)voor meer informatie over deze tokens.
+Zie [Azure Active Directory toegangs tokens](../../active-directory/develop/access-tokens.md)voor meer informatie over deze tokens.
 
 ### <a name="get-a-token-based-on-the-azure-ad-app"></a>Een Token ophalen op basis van de Azure AD-app
 
@@ -106,17 +106,17 @@ Met deze methode kan de geïmplementeerde bronnen identiteit worden geverifieerd
 >[!Note]
 >Publisher moet ervoor zorgen dat de resources die gebruik maken, zijn vergrendeld, waardoor niet wordt geknoeid.
 
-Uw beheerde toepassing kan een ander type resources bevatten, van Virtual Machines tot Azure Functions.  Zie [Managed Identities voor Azure resources](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview#how-can-i-use-managed-identities-for-azure-resources)voor meer informatie over het verifiëren met behulp van beheerde identiteiten voor verschillende services.
+Uw beheerde toepassing kan een ander type resources bevatten, van Virtual Machines tot Azure Functions.  Zie [Managed Identities voor Azure resources](../../active-directory/managed-identities-azure-resources/overview.md#how-can-i-use-managed-identities-for-azure-resources)voor meer informatie over het verifiëren met behulp van beheerde identiteiten voor verschillende services.
 
 Volg de onderstaande stappen om te verifiëren met behulp van een Windows-VM,
 
 1. Zorg ervoor dat beheerde identiteit is geconfigureerd met een van de volgende methoden:
-    * [Azure Portal gebruikers interface](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/qs-configure-portal-windows-vm)
-    * [CLI](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/qs-configure-cli-windows-vm)
-    * [PowerShell](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/qs-configure-powershell-windows-vm)
-    * [Azure Resource Manager sjabloon](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/qs-configure-template-windows-vm)
-    * [REST](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/qs-configure-rest-vm#system-assigned-managed-identity)
-    * [Azure-SDK's](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/qs-configure-sdk-windows-vm)
+    * [Azure Portal gebruikers interface](../../active-directory/managed-identities-azure-resources/qs-configure-portal-windows-vm.md)
+    * [CLI](../../active-directory/managed-identities-azure-resources/qs-configure-cli-windows-vm.md)
+    * [PowerShell](../../active-directory/managed-identities-azure-resources/qs-configure-powershell-windows-vm.md)
+    * [Azure Resource Manager sjabloon](../../active-directory/managed-identities-azure-resources/qs-configure-template-windows-vm.md)
+    * [Rest](../../active-directory/managed-identities-azure-resources/qs-configure-rest-vm.md#system-assigned-managed-identity))
+    * [Azure-SDK's](../../active-directory/managed-identities-azure-resources/qs-configure-sdk-windows-vm.md)
 
 1. Een toegangs token voor de service toepassings-ID () voor Marketplace-licentie controle `20e940b3-4c77-4b0b-9a53-9e16a1b010a7` gebruiken met behulp van de systeem identiteit RDP van de VM, open de Power shell-console en voer de onderstaande opdracht uit
 

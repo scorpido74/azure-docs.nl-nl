@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 12/12/2018
-ms.openlocfilehash: 62e3eb73b165a190e9234470471bd699141e8a5f
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: 610e21064c26734461ba8fd6639868dc930f926c
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84050490"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85963934"
 ---
 # <a name="connect-to-sql-database-using-c-and-c"></a>Verbinding maken met SQL Database met behulp van C en C++
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -55,7 +55,7 @@ Ga in [Azure Portal](https://portal.azure.com/)naar uw Azure SQL database ODBC-C
 
 ![ODBCConnectionStringProps](./media/develop-cplusplus-simple/dbconnection.png)
 
-Kopieer de inhoud van de **ODBC (inclusief node. js) [SQL-verificatie]** teken reeks. We gebruiken deze teken reeks later om verbinding te maken via de opdracht regel-interpreter van de C++ ODBC. Deze teken reeks bevat details zoals het stuur programma, de server en andere database verbindings parameters.
+Kopieer de inhoud van de **ODBC (inclusief Node.js) [SQL-verificatie]** teken reeks. We gebruiken deze teken reeks later om verbinding te maken via de opdracht regel-interpreter van de C++ ODBC. Deze teken reeks bevat details zoals het stuur programma, de server en andere database verbindings parameters.
 
 ## <a name="step-3--add-your-ip-to-the-firewall"></a><a id="Firewall"></a>Stap 3: uw IP toevoegen aan de firewall
 
@@ -91,12 +91,14 @@ Voor deze zelf studie gaan we ervan uit dat u een Ubuntu 16,04 Linux-distributie
 
 In de volgende stappen worden de bibliotheken geïnstalleerd die nodig zijn voor SQL en ODBC voor uw distributie:
 
+```console
     sudo su
     sh -c 'echo "deb [arch=amd64] https://apt-mo.trafficmanager.net/repos/mssql-ubuntu-test/ xenial main" > /etc/apt/sources.list.d/mssqlpreview.list'
     sudo apt-key adv --keyserver apt-mo.trafficmanager.net --recv-keys 417A0893
     apt-get update
     apt-get install msodbcsql
     apt-get install unixodbc-dev-utf16 #this step is optional but recommended*
+```
 
 Start Visual Studio. Voeg onder extra-> opties-> Kruis platform-> verbindings beheer een verbinding toe aan uw Linux-vak:
 
@@ -109,11 +111,13 @@ Nadat de verbinding via SSH tot stand is gebracht, maakt u een sjabloon voor een
 Vervolgens kunt u een [Nieuw C-bron bestand toevoegen en dit vervangen door deze inhoud](https://github.com/Microsoft/VCSamples/blob/master/VC2015Samples/ODBC%20database%20sample%20%28linux%29/odbcconnector/odbcconnector.c). Met behulp van de ODBC Api's SQLAllocHandle, SQLSetConnectAttr en SQLDriverConnect moet u een verbinding met uw data base kunnen initialiseren en tot stand brengen.
 Net als bij het voor beeld van Windows ODBC moet u de SQLDriverConnect-aanroep vervangen door de gegevens uit de data base connection string para meters die u eerder van de Azure Portal hebt gekopieerd.
 
+```c
      retcode = SQLDriverConnect(
         hdbc, NULL, "Driver=ODBC Driver 13 for SQL"
                     "Server;Server=<yourserver>;Uid=<yourusername>;Pwd=<"
                     "yourpassword>;database=<yourdatabase>",
         SQL_NTS, outstr, sizeof(outstr), &outstrlen, SQL_DRIVER_NOPROMPT);
+```
 
 Het laatste wat u moet doen vóór het compileren is om **ODBC** toe te voegen als een bibliotheek afhankelijkheid:
 

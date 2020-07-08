@@ -7,12 +7,12 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 06/15/2020
 ms.author: dsindona
-ms.openlocfilehash: b190f2392fae11b074b2ee90a1c89f272b88818d
-ms.sourcegitcommit: 6571e34e609785e82751f0b34f6237686470c1f3
+ms.openlocfilehash: c7b13f74e63b9e74924efb70e7c9a70f6fda2d3c
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/15/2020
-ms.locfileid: "84790294"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85964461"
 ---
 # <a name="commercial-marketplace-transact-capabilities"></a>De Transact-mogelijkheden voor commerciële Marketplace
 
@@ -78,7 +78,7 @@ Met deze optie kunnen hogere of lagere prijzen worden gemaakt dan voor de openba
 
 ### <a name="examples"></a>Voorbeelden
 
-**Betalen per gebruik** 
+**Pay-As-You-Go** 
 
 Betalen per gebruik heeft de volgende kosten structuur:
 
@@ -176,7 +176,7 @@ In deze sectie worden de vereisten voor trans acties voor verschillende typen aa
 - Er zijn een Microsoft-account en financiële informatie vereist voor de optie voor het publiceren van de Transact, ongeacht het prijs model van de aanbieding.
 - Verplichte financiële informatie omvat het uitbetalings account en het BTW-profiel.
 
-Zie [uw commerciële Marketplace-account beheren in Partner Center](https://docs.microsoft.com/azure/marketplace/partner-center-portal/manage-account)voor meer informatie over het instellen van deze accounts.
+Zie [uw commerciële Marketplace-account beheren in partner centrum](partner-center-portal/manage-account.md)voor meer informatie over het instellen van deze accounts.
 
 ### <a name="requirements-for-specific-offer-types"></a>Vereisten voor specifieke aanbiedings typen
 

@@ -8,12 +8,12 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 04/23/2020
 ms.author: dsindona
-ms.openlocfilehash: 4d1ee4fc0760e76af7475dd3b2dc83f306e7a7bd
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: 46f8da8b2b688900e50548bbece01117a7a47e24
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83657822"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85963832"
 ---
 # <a name="saas-applications-offer-publishing-guide"></a>Publicatiehandleiding voor SaaS-toepassingen
 
@@ -29,8 +29,8 @@ SaaS-toepassingen zijn beschikbaar in Microsoft AppSource en Azure Marketplace. 
 | SaaS-apps bieden | Zakelijke vereisten | Technische vereisten |  
 | --- | --- | --- |  
 | **Contact opnemen** | Ja | Nee |  
-| **Power BI/Dynamics** | Ja | Ja (Azure AD-integratie) |  
-| **SaaS-apps**| Ja | Ja (Azure AD-integratie) |     
+| **Power BI/Dynamics** | Yes | Ja (Azure AD-integratie) |  
+| **SaaS-apps**| Yes | Ja (Azure AD-integratie) |     
 
 ## <a name="saas-list"></a>SaaS-lijst
 
@@ -62,11 +62,9 @@ We raden u aan om te beginnen een abonnement dat speciaal is afgestemd op uw Azu
 
 De beste Azure Active Directory documentatie, voor beelden en richt lijnen bevinden zich op de volgende sites: 
 
-* [Ontwikkelaars handleiding Azure Active Directory](https://docs.microsoft.com/azure/active-directory/develop/active-directory-developers-guide)
+* [Ontwikkelaars handleiding Azure Active Directory](../active-directory/develop/index.yml)
 
-* [Integreren met Azure Active Directory](https://docs.microsoft.com/azure/active-directory/develop/active-directory-how-to-integrate)
-
-* [Toepassingen integreren met Azure Active Directory](https://docs.microsoft.com/azure/active-directory/develop/active-directory-integrating-applications)
+* [Integreren met Azure Active Directory](../active-directory/develop/active-directory-how-to-integrate.md)
 
 * [Azure-route kaart: beveiliging en identiteit](https://azure.microsoft.com/roadmap/?category=security-identity)
 
@@ -90,7 +88,7 @@ Daarnaast biedt Azure Active Directory een site om te controleren op service-upd
 
 ## <a name="using-azure-active-directory-to-enable-trials"></a>Azure Active Directory gebruiken om experimenten in te scha kelen  
 
-Micro soft verifieert alle Marketplace-gebruikers met Azure AD, dus wanneer een geverifieerde gebruiker door de proef versie in Marketplace klikt en wordt omgeleid naar uw proef omgeving, kunt u de gebruiker rechtstreeks in een proef versie inrichten zonder dat hiervoor een extra aanmeldings stap nodig is. Het token dat uw app ontvangt van Azure AD tijdens de verificatie, bevat waardevolle gebruikers gegevens die u kunt gebruiken om een gebruikers account in uw app te maken, waardoor u de inrichtings ervaring automatiseert en de kans op conversie verhoogt. Zie [voorbeeld tokens](https://docs.microsoft.com/azure/active-directory/develop/active-directory-token-and-claims) voor meer informatie over het token.
+Micro soft verifieert alle Marketplace-gebruikers met Azure AD, dus wanneer een geverifieerde gebruiker door de proef versie in Marketplace klikt en wordt omgeleid naar uw proef omgeving, kunt u de gebruiker rechtstreeks in een proef versie inrichten zonder dat hiervoor een extra aanmeldings stap nodig is. Het token dat uw app ontvangt van Azure AD tijdens de verificatie, bevat waardevolle gebruikers gegevens die u kunt gebruiken om een gebruikers account in uw app te maken, waardoor u de inrichtings ervaring automatiseert en de kans op conversie verhoogt. Zie [voorbeeld tokens](../active-directory/develop/active-directory-token-and-claims.md) voor meer informatie over het token.
 
 Als u Azure AD gebruikt voor het inschakelen van 1-klikken verificatie voor uw app of proef versie, doet u het volgende:  
 * Stroomlijnt de klant ervaring van Marketplace tot proef versie.  
@@ -106,15 +104,15 @@ U kunt uw Azure AD-integratie op verschillende manieren certificeren, afhankelij
 
 Als u al Azure AD ondersteunt, doet u het volgende:
 1.    Registreer uw toepassing in de Azure Portal
-2.    Schakel de ondersteunings functie voor multitenancy in azure AD in om een proef ervaring met één klik te krijgen. Meer informatie vindt u [hier](https://docs.microsoft.com/azure/active-directory/develop/active-directory-integrating-applications).  
+2.    Schakel de ondersteunings functie voor multitenancy in azure AD in om een proef ervaring met één klik te krijgen. Meer informatie vindt u [hier](../active-directory/develop/active-directory-integrating-applications.md).  
 
 Als u geen ervaring hebt met Azure AD Federated SSO, doet u het volgende: 
 1.  Registreer uw toepassing in de Azure Portal
-2.  Ontwikkel SSO met Azure AD met behulp van [OpenID Connect Connect](https://docs.microsoft.com/azure/active-directory/develop/active-directory-protocols-openid-connect-code) of [OAuth 2,0](https://docs.microsoft.com/azure/active-directory/develop/active-directory-protocols-oauth-code).
-3.  Schakel de ondersteunings functie voor meerdere multitenancy in AAD in om meer specifieke informatie te verkrijgen met een proef versie met één [klik.](https://docs.microsoft.com/azure/active-directory/develop/active-directory-devhowto-appsource-certified)  
+2.  Ontwikkel SSO met Azure AD met behulp van [OpenID Connect Connect](../active-directory/develop/active-directory-protocols-openid-connect-code.md) of [OAuth 2,0](../active-directory/develop/active-directory-protocols-oauth-code.md).
+3.  Schakel de ondersteunings functie voor meerdere multitenancy in AAD in om meer specifieke informatie te verkrijgen met een proef versie met één [klik.](../active-directory/develop/active-directory-devhowto-appsource-certified.md)  
 
 **Gebruik voor toepassing met één Tenant een van de volgende opties:**  
-* Gebruikers toevoegen aan uw directory als gast gebruikers met behulp van [Azure B2B](https://docs.microsoft.com/azure/active-directory/active-directory-b2b-what-is-azure-ad-b2b)
+* Gebruikers toevoegen aan uw directory als gast gebruikers met behulp van [Azure B2B](../active-directory/active-directory-b2b-what-is-azure-ad-b2b.md)
 * Hand matig proef versies inrichten voor klanten met behulp van de contact persoon
 * Een test station per klant ontwikkelen
 * Een voor beeld-demo-app met meerdere tenants bouwen met SSO

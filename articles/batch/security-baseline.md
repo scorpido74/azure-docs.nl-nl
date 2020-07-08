@@ -7,24 +7,24 @@ ms.topic: conceptual
 ms.date: 04/09/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: e850f719f64d1d845ca11ccefeefea2c8dc7fa26
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 76312a55262d316c679bde2a69e8b98844addcb0
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82195652"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85963866"
 ---
 # <a name="azure-security-baseline-for-batch"></a>Azure-beveiligings basislijn voor batch
 
 De Azure Security Baseline voor batch bevat aanbevelingen waarmee u de beveiligings postuur van uw implementatie kunt verbeteren.
 
-De basis lijn voor deze service wordt opgehaald uit de [Azure Security Bench Mark-versie 1,0](https://docs.microsoft.com/azure/security/benchmarks/overview), die aanbevelingen biedt over hoe u uw cloud oplossingen kunt beveiligen in azure met onze richt lijnen voor best practices.
+De basis lijn voor deze service wordt opgehaald uit de [Azure Security Bench Mark-versie 1,0](../security/benchmarks/overview.md), die aanbevelingen biedt over hoe u uw cloud oplossingen kunt beveiligen in azure met onze richt lijnen voor best practices.
 
-Zie [overzicht van Azure Security-basis lijnen](https://docs.microsoft.com/azure/security/benchmarks/security-baselines-overview)voor meer informatie.
+Zie [overzicht van Azure Security-basis lijnen](../security/benchmarks/security-baselines-overview.md)voor meer informatie.
 
 ## <a name="network-security"></a>Netwerkbeveiliging
 
-*Zie [beveiligings beheer: netwerk beveiliging](https://docs.microsoft.com/azure/security/benchmarks/security-control-network-security)voor meer informatie.*
+*Zie [beveiligings beheer: netwerk beveiliging](../security/benchmarks/security-control-network-security.md)voor meer informatie.*
 
 ### <a name="11-protect-resources-using-network-security-groups-or-azure-firewall-on-your-virtual-network"></a>1,1: Beveilig bronnen met behulp van netwerk beveiligings groepen of Azure Firewall op de Virtual Network
 
@@ -98,7 +98,7 @@ https://docs.microsoft.com/azure/network-watcher/network-watcher-nsg-flow-loggin
 
 **Richt lijnen**: als dat nodig is voor nalevings doeleinden, selecteert u een virtueel netwerk apparaat in de Azure Marketplace dat ondersteuning biedt voor indringings detectie systemen (id's) en functionaliteit voor het indringing van systemen (IPS) met Payload-inspectie mogelijkheden.
 
-Als inbraak detectie en/of preventie op basis van Payload-inspectie geen vereiste is, kan Azure Firewall met bedreigings informatie worden gebruikt. Azure Firewall op bedreigingen gebaseerd filteren kan verkeer van en naar bekende schadelijke IP-adressen en domeinen Signa lering en weigeren. De IP-adressen en domeinen zijn afkomstig van de micro soft Threat Intelligence-feed.
+Als inbraak detectie en/of preventie op basis van Payload-inspectie geen vereiste is, kan Azure Firewall met bedreigings informatie worden gebruikt. Azure Firewall op bedreigingen gebaseerd filteren kan verkeer van en naar bekende schadelijke IP-adressen en domeinen Signa lering en weigeren. De IP-adressen en domeinen zijn afkomstig van de Microsoft Bedreigingsinformatie-feed.
 
 Implementeer Azure Firewall met een openbaar IP-adres in hetzelfde virtuele netwerk als uw Azure Batch pool-knoop punten. Configureer Network Address Translation (NAT) regels tussen vertrouwde locaties op internet en de privé-IP-adressen van uw afzonderlijke groeps knooppunten. Configureer op het Azure Firewall onder Threat Intelligence de waarschuwing en weigeren om te blok keren dat verkeer naar/van bekende schadelijke IP-adressen en domeinen moet worden gewaarschuwd en geblokkeerd. De IP-adressen en domeinen zijn afkomstig uit de micro soft Threat Intelligence-feed en alleen de hoogste betrouwbaarheids records worden opgenomen. 
 
@@ -140,7 +140,7 @@ https://docs.microsoft.com/azure/virtual-network/service-tags-overview
 
 ### <a name="19-maintain-standard-security-configurations-for-network-devices"></a>1,9: standaard beveiligings configuraties voor netwerk apparaten onderhouden
 
-**Hulp**: Definieer en implementeer standaard beveiligings configuraties voor netwerk bronnen die zijn gekoppeld aan uw Azure batch groep (en) met Azure Policy. Gebruik Azure Policy aliassen in de naam ruimten ' micro soft. batch ' en ' micro soft. Network ' om aangepaste beleids regels te maken om de netwerk configuratie van uw Azure Batch groepen te controleren of af te dwingen.
+**Hulp**: Definieer en implementeer standaard beveiligings configuraties voor netwerk bronnen die zijn gekoppeld aan uw Azure batch groep (en) met Azure Policy. Gebruik Azure Policy aliassen in de naam ruimten ' Microsoft.Batch ' en ' micro soft. Network ' om aangepaste beleids regels te maken om de netwerk configuratie van uw Azure Batch groepen te controleren of af te dwingen.
 
 Azure Policy configureren en beheren:
 
@@ -188,7 +188,7 @@ Waarschuwingen maken in Azure Monitor:https://docs.microsoft.com/azure/azure-mon
 
 ## <a name="logging-and-monitoring"></a>Logboekregistratie en bewaking
 
-*Zie voor meer informatie [beveiligings beheer: logboek registratie en controle](https://docs.microsoft.com/azure/security/benchmarks/security-control-logging-monitoring).*
+*Zie voor meer informatie [beveiligings beheer: logboek registratie en controle](../security/benchmarks/security-control-logging-monitoring.md).*
 
 ### <a name="21-use-approved-time-synchronization-sources"></a>2,1: goedgekeurde tijd synchronisatie bronnen gebruiken
 
@@ -312,7 +312,7 @@ https://docs.microsoft.com/azure/batch/batch-diagnostics
 
 ## <a name="identity-and-access-control"></a>Identiteits- en toegangsbeheer
 
-*Zie [beveiligings beheer: identiteit en Access Control](https://docs.microsoft.com/azure/security/benchmarks/security-control-identity-access-control)voor meer informatie.*
+*Zie [beveiligings beheer: identiteit en Access Control](../security/benchmarks/security-control-identity-access-control.md)voor meer informatie.*
 
 ### <a name="31-maintain-inventory-of-administrative-accounts"></a>3,1: inventaris van beheerders accounts onderhouden
 
@@ -510,7 +510,7 @@ Lijst met door Klanten-lockbox ondersteunde services:https://docs.microsoft.com/
 
 ## <a name="data-protection"></a>Gegevensbeveiliging
 
-*Zie [beveiligings beheer: gegevens beveiliging](https://docs.microsoft.com/azure/security/benchmarks/security-control-data-protection)voor meer informatie.*
+*Zie [beveiligings beheer: gegevens beveiliging](../security/benchmarks/security-control-data-protection.md)voor meer informatie.*
 
 ### <a name="41-maintain-an-inventory-of-sensitive-information"></a>4,1: een inventaris van gevoelige informatie onderhouden
 
@@ -656,7 +656,7 @@ https://docs.microsoft.com/azure/storage/common/storage-monitor-storage-account
 
 ## <a name="vulnerability-management"></a>Beheer van beveiligingsproblemen
 
-*Zie [beveiligings beheer: beveiligingslek beheer](https://docs.microsoft.com/azure/security/benchmarks/security-control-vulnerability-management)voor meer informatie.*
+*Zie [beveiligings beheer: beveiligingslek beheer](../security/benchmarks/security-control-vulnerability-management.md)voor meer informatie.*
 
 ### <a name="51-run-automated-vulnerability-scanning-tools"></a>5,1: automatische Hulpprogram Ma's voor het scannen van beveiligings problemen uitvoeren
 
@@ -704,7 +704,7 @@ Als u een abonnement op Rapid7, Qualys of een ander platform voor beveiligings p
 
 ## <a name="inventory-and-asset-management"></a>Inventarisatie en Asset Management
 
-*Zie voor meer informatie [beveiligings beheer: inventarisatie en activa beheer](https://docs.microsoft.com/azure/security/benchmarks/security-control-inventory-asset-management).*
+*Zie voor meer informatie [beveiligings beheer: inventarisatie en activa beheer](../security/benchmarks/security-control-inventory-asset-management.md).*
 
 ### <a name="61-use-azure-asset-discovery"></a>6,1: Azure Asset Discovery gebruiken
 
@@ -871,11 +871,11 @@ Dit is niet van toepassing op Azure Batch, omdat gebruikers (niet-beheerders) va
 
 ## <a name="secure-configuration"></a>Veilige configuratie
 
-*Zie [beveiligings beheer: beveiligde configuratie](https://docs.microsoft.com/azure/security/benchmarks/security-control-secure-configuration)voor meer informatie.*
+*Zie [beveiligings beheer: beveiligde configuratie](../security/benchmarks/security-control-secure-configuration.md)voor meer informatie.*
 
 ### <a name="71-establish-secure-configurations-for-all-azure-resources"></a>7,1: veilige configuraties instellen voor alle Azure-resources
 
-**Richt lijnen**: gebruik Azure Policy aliassen in de naam ruimte ' micro soft. batch ' om aangepaste beleids regels te maken om de configuratie van uw Azure batch-accounts en-groepen te controleren of af te dwingen.
+**Hulp**: gebruik Azure Policy aliassen in de naam ruimte ' Microsoft.Bat' om aangepaste beleids regels te maken om de configuratie van uw Azure batch-accounts en-groepen te controleren of af te dwingen.
 
 Beschik bare Azure Policy aliassen weer geven:
 
@@ -958,7 +958,7 @@ https://docs.microsoft.com/azure/role-based-access-control/quickstart-assign-rol
 
 ### <a name="77-deploy-system-configuration-management-tools"></a>7,7: Hulpprogram Ma's voor het beheer van systeem configuratie implementeren
 
-**Hulp**: gebruik ingebouwde Azure Policy definities om Azure batch-gerelateerde resource configuraties te Signa lering, te controleren en af te dwingen.  Gebruik Azure Policy aliassen in de naam ruimte ' micro soft. batch ' om aangepaste beleids regels te maken voor uw Azure Batch-accounts en-groepen. Ontwikkel bovendien een proces en pijp lijn voor het beheren van beleids uitzonderingen.
+**Hulp**: gebruik ingebouwde Azure Policy definities om Azure batch-gerelateerde resource configuraties te Signa lering, te controleren en af te dwingen.  Gebruik Azure Policy aliassen in de naam ruimte ' Microsoft.Bat' om aangepaste beleids regels te maken voor uw Azure Batch-accounts en-groepen. Ontwikkel bovendien een proces en pijp lijn voor het beheren van beleids uitzonderingen.
 
 Azure Policy configureren en beheren:
 
@@ -979,13 +979,13 @@ https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage
 
 ### <a name="79-implement-automated-configuration-monitoring-for-azure-services"></a>7,9: geautomatiseerde configuratie bewaking voor Azure-Services implementeren
 
-**Hulp**: gebruik Azure Policy aliassen in de naam ruimte ' micro soft. batch ' om aangepaste beleids regels te maken om de configuratie van uw Azure batch exemplaar te controleren of af te dwingen. U kunt ook ingebouwde beleids regels gebruiken die specifiek zijn gemaakt voor Azure Batch of de resources die door Azure Batch worden gebruikt, zoals:
+**Hulp**: gebruik Azure Policy aliassen in de naam ruimte ' Microsoft.Bat' om aangepaste beleids regels te maken om de configuratie van uw Azure batch exemplaar te controleren of af te dwingen. U kunt ook ingebouwde beleids regels gebruiken die specifiek zijn gemaakt voor Azure Batch of de resources die door Azure Batch worden gebruikt, zoals:
 
-- Subnetten moeten worden gekoppeld aan een netwerk beveiligings groep
+- Subnetten moeten worden gekoppeld aan een netwerkbeveiligingsgroep
 
 -Opslag accounts moeten een service-eind punt van een virtueel netwerk gebruiken
 
-- Diagnostische logboeken in batch-accounts moeten worden ingeschakeld
+- Diagnostische logboeken in Batch-accounts moeten worden ingeschakeld
 
 Beschik bare Azure Policy aliassen weer geven:https://docs.microsoft.com/powershell/module/az.resources/get-azpolicyalias?view=azps-3.3.0
 
@@ -1047,7 +1047,7 @@ Referentie scanner instellen:https://secdevtools.azurewebsites.net/helpcredscan.
 
 ## <a name="malware-defense"></a>Beveiliging tegen malware
 
-*Zie [beveiligings beheer: verdediging tegen malware](https://docs.microsoft.com/azure/security/benchmarks/security-control-malware-defense)voor meer informatie.*
+*Zie [beveiligings beheer: verdediging tegen malware](../security/benchmarks/security-control-malware-defense.md)voor meer informatie.*
 
 ### <a name="81-use-centrally-managed-anti-malware-software"></a>8,1: centraal beheerde anti-malware-software gebruiken
 
@@ -1083,7 +1083,7 @@ https://docs.microsoft.com/azure/security/fundamentals/antimalware
 
 ## <a name="data-recovery"></a>Gegevensherstel
 
-*Zie [beveiligings beheer: gegevens herstel](https://docs.microsoft.com/azure/security/benchmarks/security-control-data-recovery)voor meer informatie.*
+*Zie [beveiligings beheer: gegevens herstel](../security/benchmarks/security-control-data-recovery.md)voor meer informatie.*
 
 ### <a name="91-ensure-regular-automated-back-ups"></a>9,1: controleren op regel matige automatische back-ups
 
@@ -1143,7 +1143,7 @@ https://docs.microsoft.com/azure/key-vault/key-vault-soft-delete-powershell
 
 ## <a name="incident-response"></a>Reageren op incidenten
 
-*Zie voor meer informatie [beveiligings beheer: reactie op incidenten](https://docs.microsoft.com/azure/security/benchmarks/security-control-incident-response).*
+*Zie voor meer informatie [beveiligings beheer: reactie op incidenten](../security/benchmarks/security-control-incident-response.md).*
 
 ### <a name="101-create-incident-response-guide"></a>10,1: respons gids voor incidenten maken
 
@@ -1175,7 +1175,7 @@ Raadpleeg de publicatie van het NIST: hand leiding voor het testen, trainen en u
 
 **Verantwoordelijkheid**: klant
 
-### <a name="104-provide-security-incident-contact-details-and-configure-alert-notifications-nbspfor-security-incidents"></a>10,4: contact gegevens van het beveiligings incident opgeven en waarschuwings &nbsp;meldingen configureren voor beveiligings incidenten
+### <a name="104-provide-security-incident-contact-details-and-configure-alert-notifications-nbspfor-security-incidents"></a>10,4: contact gegevens van het beveiligings incident opgeven en waarschuwings meldingen configureren &nbsp; voor beveiligings incidenten
 
 **Hulp**: contact gegevens van beveiligings incidenten worden door micro soft gebruikt om contact met u op te nemen als het micro soft Security Response Center (MSRC) detecteert dat de gegevens zijn geopend door een onrecht matige of niet-gemachtigde partij.
 
@@ -1217,7 +1217,7 @@ https://docs.microsoft.com/azure/security-center/workflow-automation
 
 ## <a name="penetration-tests-and-red-team-exercises"></a>Penetratietests en Red Team-oefeningen
 
-*Zie voor meer informatie [Security Control: Indringings tests en Red team-oefeningen](https://docs.microsoft.com/azure/security/benchmarks/security-control-penetration-tests-red-team-exercises).*
+*Zie voor meer informatie [Security Control: Indringings tests en Red team-oefeningen](../security/benchmarks/security-control-penetration-tests-red-team-exercises.md).*
 
 ### <a name="111-conduct-regular-penetration-testing-of-your-azure-resources-and-ensure-to-remediate-all-critical-security-findings-within-60-days"></a>11,1: voert regel matig indringings tests van uw Azure-resources uit en zorgen ervoor dat alle essentiële beveiligings resultaten binnen 60 dagen worden hersteld.
 
@@ -1235,5 +1235,5 @@ https://gallery.technet.microsoft.com/Cloud-Red-Teaming-b837392e
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- Zie de [Azure Security-Bench Mark](https://docs.microsoft.com/azure/security/benchmarks/overview)
-- Meer informatie over [Azure-beveiligings basislijnen](https://docs.microsoft.com/azure/security/benchmarks/security-baselines-overview)
+- Zie de [Azure Security-Bench Mark](../security/benchmarks/overview.md)
+- Meer informatie over [Azure-beveiligings basislijnen](../security/benchmarks/security-baselines-overview.md)

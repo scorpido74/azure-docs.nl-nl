@@ -9,12 +9,12 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 10/23/2019
 ms.author: mbullwin
-ms.openlocfilehash: f3220a363025d80fd7636dbfc3af3d2d9d7bc040
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 73b6029dfe52a4b32c9a8ce092fcd284ac1ec0e7
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77658279"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85965032"
 ---
 # <a name="workbook-drop-down-parameters"></a>Para meters voor werkmap vervolg keuzelijst
 
@@ -31,7 +31,7 @@ De eenvoudigste manier om een vervolg keuzelijst op te geven, is door een statis
     1. Parameter naam:`Environment`
     2. Parameter type:`Drop down`
     3. Vereist:`checked`
-    4. Toestaan `multiple selection`:`unchecked`
+    4. Toestaan `multiple selection` :`unchecked`
     5. Gegevens ophalen uit:`JSON`
 5. Plaats in het JSON-invoer tekst blok dit JSON-fragment:
     ```json
@@ -41,14 +41,16 @@ De eenvoudigste manier om een vervolg keuzelijst op te geven, is door een statis
         { "value":"prod", "label":"Production", "selected":true }
     ]
     ```
-6. Druk op de `Update` knop met het blauwetje.
+6. Druk op de knop met het blauwetje `Update` .
 7. Kies opslaan op de werk balk om de para meter te maken.
 8. De omgevings parameter is een vervolg keuzelijst met de drie waarden.
 
     ![Afbeelding van het maken van een statische intervallen omlaag](./media/workbook-dropdowns/dropdown-create.png)
 
 ## <a name="creating-a-static-dropdown-with-groups-of-items"></a>Een statische vervolg keuzelijst maken met groepen items
+
 Als uw query resultaat/JSON een groeps veld bevat, worden in de vervolg keuzelijst groepen waarden weer gegeven. Volg het bovenstaande voor beeld, maar gebruik in plaats daarvan de volgende JSON:
+
 ```json
 [
     { "value":"dev", "label":"Development", "group":"Development" },
@@ -59,7 +61,8 @@ Als uw query resultaat/JSON een groeps veld bevat, worden in de vervolg keuzelij
     { "value":"prod2", "label":"Prod 2", "group":"Production" }
 ]
 ```
-    ![Image showing an example of a grouped dropdown](./media/workbook-dropdowns/grouped-dropDown.png)
+
+![Afbeelding van een voor beeld van een gegroepeerde vervolg keuzelijst](./media/workbook-dropdowns/grouped-dropDown.png)
 
 
 ## <a name="creating-a-dynamic-drop-down-parameter"></a>Een dynamische vervolg keuzelijst maken
@@ -70,7 +73,7 @@ Als uw query resultaat/JSON een groeps veld bevat, worden in de vervolg keuzelij
     1. Parameter naam:`RequestName`
     2. Parameter type:`Drop down`
     3. Vereist:`checked`
-    4. Toestaan `multiple selection`:`unchecked`
+    4. Toestaan `multiple selection` :`unchecked`
     5. Gegevens ophalen uit:`Query`
 5. Plaats in het JSON-invoer tekst blok dit JSON-fragment:
 
@@ -79,13 +82,14 @@ Als uw query resultaat/JSON een groeps veld bevat, worden in de vervolg keuzelij
         | summarize by name
         | order by name asc
     ```
-1. Druk op de `Run Query` knop met het blauwetje.
+1. Druk op de knop met het blauwetje `Run Query` .
 2. Kies opslaan op de werk balk om de para meter te maken.
 3. De para meter van de aanvrager is een vervolg keuzelijst van de namen van alle aanvragen in de app.
 
     ![Afbeelding van het maken van een dynamische vervolg keuzelijst](./media/workbook-dropdowns/dropdown-dynamic.png)
 
 ## <a name="referencing-drop-down-parameter"></a>Verwijzing naar vervolg keuzelijst
+
 ### <a name="in-kql"></a>In KQL
 1. Voeg een besturings element query toe aan de werkmap en selecteer een Application Insights resource.
 2. Voer in de KQL-editor dit fragment in
@@ -122,7 +126,8 @@ dependencies
 | serialize Rank = row_number()
 | project value = name, label = strcat('🌐 ', name), selected = iff(Rank == 1, true, false), group = operation_Name
 ```
-    ![Image showing a drop-down parameter using value, label, selection and group options](./media/workbook-dropdowns/dropdown-more-options.png)
+
+![Afbeelding van een vervolg keuzelijst met waarden, labels, selectie en groeps opties](./media/workbook-dropdowns/dropdown-more-options.png)
 
 
 ## <a name="drop-down-parameter-options"></a>Opties voor vervolg keuzelijst
@@ -133,11 +138,11 @@ dependencies
 | `{DependencyName:value}` | De geselecteerde waarde | Fabrikamaccount ophalen |
 
 ## <a name="multiple-selection"></a>Meerdere selecties
-In de voor beelden is de para meter zo ver ingesteld dat er slechts één waarde in de vervolg keuzelijst wordt geselecteerd. Para meters voor vervolg `multiple selection` keuzelijst ondersteunen ook het inschakelen van dit is net `Allow multiple selection` zo eenvoudig als het controleren van de optie. 
+In de voor beelden is de para meter zo ver ingesteld dat er slechts één waarde in de vervolg keuzelijst wordt geselecteerd. Para meters voor vervolg keuzelijst ondersteunen ook `multiple selection` het inschakelen van dit is net zo eenvoudig als het controleren van de `Allow multiple selection` optie. 
 
-De gebruiker heeft ook de optie om de indeling van de resultatenset op te geven `delimiter` via `quote with` de instellingen en. De standaard waarde retourneert alleen de waarden als een verzameling in dit formulier: ' a ', ' b ', ' c '. Ze hebben ook de mogelijkheid om het aantal selecties te beperken.
+De gebruiker heeft ook de optie om de indeling van de resultatenset op te geven via de `delimiter` `quote with` instellingen en. De standaard waarde retourneert alleen de waarden als een verzameling in dit formulier: ' a ', ' b ', ' c '. Ze hebben ook de mogelijkheid om het aantal selecties te beperken.
 
-De KQL die verwijst naar de para meter moet worden gewijzigd om te kunnen werken met de indeling van het resultaat. De meest voorkomende manier om deze in te scha kelen `in` , is via de operator.
+De KQL die verwijst naar de para meter moet worden gewijzigd om te kunnen werken met de indeling van het resultaat. De meest voorkomende manier om deze in te scha kelen, is via de `in` operator.
 
 ```kusto
 dependencies

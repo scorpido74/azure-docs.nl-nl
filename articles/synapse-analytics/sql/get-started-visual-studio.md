@@ -5,16 +5,16 @@ services: synapse analytics
 author: azaricstefan
 ms.service: synapse-analytics
 ms.topic: conceptual
-ms.subservice: ''
+ms.subservice: sql
 ms.date: 04/15/2020
 ms.author: v-stazar
 ms.reviewer: jrasnick
-ms.openlocfilehash: c8b66e42c5719203eb0f195a5b61e81da8b187e7
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: 3f98a9d6dd79ba1da1a3be1e9e187ed4e8eca8ee
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83658159"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85962983"
 ---
 # <a name="connect-to-synapse-sql-with-visual-studio-and-ssdt"></a>Verbinding maken met Synapse SQL met Visual Studio en SSDT
 > [!div class="op_single_selector"]
@@ -50,9 +50,9 @@ Als u deze zelf studie wilt gebruiken, moet u beschikken over de volgende onderd
    
     ![Verbinding maken met server](./media/get-started-visual-studio/connection-dialog.png)
    
-   * **Server naam**: Voer de eerder geïdentificeerde **Server naam** in.
+   * **Servernaam**: Voer de eerder vastgestelde **servernaam** in.
    * **Verificatie**: Selecteer **SQL Server verificatie** of **Active Directory geïntegreerde verificatie**:
-   * **Gebruikers naam** en **wacht woord**: Voer uw gebruikers naam en wacht woord in als SQL Server verificatie hierboven is geselecteerd.
+   * **Gebruikersnaam** en **Wachtwoord**: Voer uw gebruikersnaam en wachtwoord in als u hierboven SQL Server-verificatie hebt geselecteerd.
    * Klik op **Verbinden**.
 5. U kunt de Azure SQL-server uitvouwen als u deze wilt verkennen. U kunt de databases weergeven die aan de server zijn gekoppeld. Vouw AdventureWorksDW uit als u de tabellen in de voorbeelddatabase wilt zien.
    
@@ -65,7 +65,7 @@ Nu er een verbinding tot stand is gebracht met uw data base, schrijft u een quer
 2. Selecteer **New Query** (Nieuwe query). Een nieuwe queryvenster wordt geopend.
    
     ![Nieuwe query](./media/get-started-visual-studio/new-query2.png)
-3. Kopieer de volgende T-SQL-query naar het query venster:
+3. Kopieer de volgende T-SQL-query in het queryvenster:
    
     ```sql
     SELECT COUNT(*) FROM dbo.FactInternetSales;
@@ -78,6 +78,6 @@ Nu er een verbinding tot stand is gebracht met uw data base, schrijft u een quer
     ![Queryresultaten](./media/get-started-visual-studio/query-results.png)
 
 ## <a name="next-steps"></a>Volgende stappen
-Nu u verbinding maakt en query's uitvoert, kunt u proberen [de gegevens te visualiseren met Power bi](get-started-power-bi-professional.md).
+Nu u weet hoe u verbinding maakt en een query uitvoert, kunt u proberen [de gegevens te visualiseren met Power BI](get-started-power-bi-professional.md).
 Zie [verifiëren bij SQL-groep](../sql-data-warehouse/sql-data-warehouse-authentication.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)om uw omgeving te configureren voor Azure Active Directory-verificatie.
  

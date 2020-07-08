@@ -1,5 +1,5 @@
 ---
-title: Gids voor onboarding van micro soft Business Applications Independent Software Vendor (ISV) Connect-programma
+title: Gids voor onboarding bij Microsoft Business Applications ISV Connect-programma
 description: U kunt als volgt onboarding uitvoeren op het Business Applications ISV Connect-programma.
 author: qianw211
 ms.service: marketplace
@@ -7,14 +7,14 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 7/12/2019
 ms.author: dsindona
-ms.openlocfilehash: f7fd3f43c7faddb5481411dc9c4c94864b6dc0b1
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 1f312fad8e4cbdbfae6bd17f293f65fc3bb637a3
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80288968"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85964886"
 ---
-# <a name="microsoft-business-applications-independent-software-vendor-isv-connect-program-onboarding-guide"></a>Gids voor onboarding van micro soft Business Applications Independent Software Vendor (ISV) Connect-programma
+# <a name="microsoft-business-applications-independent-software-vendor-isv-connect-program-onboarding-guide"></a>Gids voor onboarding bij Microsoft Business Applications ISV Connect-programma
 
 Het [Business Applications ISV Connect-programma](https://partner.microsoft.com/solutions/business-applications/isv-overview) is van toepassing op het versnellen van de groei en het algehele succes van Independent Software Vendors (isv's) die moderne, op de cloud gebaseerde LOB-oplossingen (line-of-Business) bouwen met *Dynamics 365 Customer engagement en PowerApps* ("Dynamics CE-aanbiedingen") of *Dynamics 365 Finance and Operations* ("Dynamics OPS-aanbiedingen"). Hier ziet u hoe u er een kunt maken.
 
@@ -43,7 +43,7 @@ Als u al Dynamics CE-of Dynamics OPS-aanbiedingen hebt gepubliceerd, is hoogstwa
 1. Meld u aan bij de profiel pagina van uw **Publisher** in [Cloud Partner-Portal](https://cloudpartner.azure.com/).
 2. Als er een banner wordt weer gegeven dat aangeeft dat uw account instellingen naar partner Center zijn gemigreerd, gaat u verder met de volgende sectie. Als dat niet het geval is, selecteert u het banner waarin u wordt gevraagd uw partner centrum-account te activeren.
 
-Zie [account migratie van Cloud Partner-Portal naar partner Center](https://docs.microsoft.com/azure/marketplace/partner-center-portal/account-migration-from-cpp-to-pc)voor meer informatie.
+Zie [account migratie van Cloud Partner-Portal naar partner Center](../partner-center-portal/account-migration-from-cpp-to-pc.md)voor meer informatie.
 
 ## <a name="accept-the-business-applications-isv-program-addendum"></a>Ga akkoord met de Business Applications ISV-programma addendum
 
@@ -88,7 +88,7 @@ Nadat u de bovenstaande stappen hebt uitgevoerd, zijn uw bestaande Dynamics CE-e
 De laatste stap voor inschrijving in het Business Applications ISV Connect-programma wordt uw bestaande toepassingen opnieuw certificeren.
 
 1. [Volg deze stappen](https://partner.microsoft.com/solutions/business-applications/isv-publish) om uw toepassing opnieuw te certificeren op AppSource.
-2. [Een nieuwe aanbieding maken en publiceren](https://docs.microsoft.com/azure/marketplace/partner-center-portal/create-new-customer-engagement-offer). Deze aanbieding is een geheel nieuwe aanbieding en vervangt geen bestaande.
+2. [Een nieuwe aanbieding maken en publiceren](../partner-center-portal/create-new-customer-engagement-offer.md). Deze aanbieding is een geheel nieuwe aanbieding en vervangt geen bestaande.
 
 ## <a name="further-info"></a>Meer informatie
 

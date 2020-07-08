@@ -10,12 +10,12 @@ ms.subservice: translator-text
 ms.topic: reference
 ms.date: 05/26/2020
 ms.author: swmachan
-ms.openlocfilehash: ea2761712e4bbb7a3abd1483766f4eae47b7c350
-ms.sourcegitcommit: fc718cc1078594819e8ed640b6ee4bef39e91f7f
+ms.openlocfilehash: 4b6214ebfaf4b9ed6dd97f6a6ac2f5c4ae164a59
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "83996360"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85964682"
 ---
 # <a name="unsupported-language-deployments"></a>Implementaties in niet-ondersteunde talen
 
@@ -47,7 +47,7 @@ Na verzen ding is het model niet meer beschikbaar op het tabblad niet- **aangevr
 
 ## <a name="whats-next"></a>Volgende stappen
 
-De modellen die u hebt geselecteerd voor implementatie, worden opgeslagen nadat de hub uit bedrijf is genomen en alle modellen niet meer zijn geïmplementeerd.  U hebt tot 24 mei aanvragen voor de implementatie van niet-ondersteunde modellen te verzenden.  Deze modellen worden op 15 juni geïmplementeerd, op het moment dat ze toegankelijk zijn via de Translator v3 API.  Bovendien zullen ze tot 1 juli via de v2 API beschikbaar zijn.  
+De modellen die u hebt geselecteerd voor implementatie, worden opgeslagen nadat de hub uit bedrijf is genomen en alle modellen niet meer zijn geïmplementeerd.  U hebt tot 24 mei aanvragen voor de implementatie van niet-ondersteunde modellen te verzenden.  Deze modellen worden op 15 juni geïmplementeerd, op het moment dat ze toegankelijk zijn via Translator v3.  Bovendien zullen ze tot 1 juli beschikbaar zijn via Translator v2.  
 
 Zie [hier](https://www.microsoft.com/translator/business/hub/)voor meer informatie over belang rijke datums in de afschaffing van de hub.
 Zodra de implementatie is geïmplementeerd, worden de normale hosting kosten toegepast.  Zie de [prijzen](https://azure.microsoft.com/pricing/details/cognitive-services/translator-text-api/) voor meer informatie.  

@@ -7,12 +7,12 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 05/19/2020
-ms.openlocfilehash: ae482a4c7b656a4bc84895501c49bf0a98517acc
-ms.sourcegitcommit: cf7caaf1e42f1420e1491e3616cc989d504f0902
+ms.openlocfilehash: 89a60016f8f4496e44c138a79a3864782791d1db
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/22/2020
-ms.locfileid: "83800646"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85963288"
 ---
 # <a name="microsoft-commercial-marketplace-resources"></a>Micro soft-resources voor commerciële Marketplace
 
@@ -28,9 +28,8 @@ Raadpleeg de volgende bronnen voor informatie over recente releases en andere up
 * [Analytics voor de commerciële Marketplace in het partner centrum](./partner-center-portal/analytics.md)
 * [Micro soft build Marketplace-Blog](https://aka.ms/marketplacebuildblog)
 * [Marketplace kan de blog bijwerken](https://azure.microsoft.com/blog/microsoft-commercial-marketplace-updates-may-2019/)
-* Partner centrum: [account maken](https://docs.microsoft.com/azure/marketplace/partner-center-portal/create-account)  /  [accounts](https://docs.microsoft.com/azure/marketplace/partner-center-portal/manage-account)  /  [migreren van cpp](https://docs.microsoft.com/azure/marketplace/partner-center-portal/account-migration-from-cpp-to-pc)
-* Partner centrum: [maken van SaaS-aanbod](https://docs.microsoft.com/azure/marketplace/partner-center-portal/create-new-saas-offer)  /  [publicatie status](https://docs.microsoft.com/azure/marketplace/partner-center-portal/publishing-status
-)  /  [Update bestaande aanbieding](https://docs.microsoft.com/azure/marketplace/partner-center-portal/update-existing-offer)-aanbod  /  [analyse](https://docs.microsoft.com/azure/marketplace/partner-center-portal/analytics)
-* [Ontvang ondersteuning voor Marketplace in het partner centrum](https://docs.microsoft.com/azure/marketplace/partner-center-portal/support)
+* Partner centrum: [account maken](partner-center-portal/create-account.md)  /  [accounts](partner-center-portal/manage-account.md)  /  [migreren van cpp](partner-center-portal/account-migration-from-cpp-to-pc.md)
+* Partner centrum: de publicatie status van [SaaS-aanbiedingen maken](partner-center-portal/create-new-saas-offer.md)  /  [Publishing Status](partner-center-portal/publishing-status.md) )/ [bestaande aanbiedings](partner-center-portal/update-existing-offer.md)  /  [analyse](partner-center-portal/analytics.md) bijwerken
+* [Ontvang ondersteuning voor Marketplace in het partner centrum](partner-center-portal/support.md)
 
 We stellen uw suggesties voor. Meld u aan bij de [micro soft partner-community](https://www.microsoftpartnercommunity.com/) om de nieuwste updates te verkrijgen over nieuwe mogelijkheden, Program ma's en gebeurtenissen.

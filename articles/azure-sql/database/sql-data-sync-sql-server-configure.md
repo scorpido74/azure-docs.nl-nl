@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: carlrab
 ms.date: 01/14/2019
-ms.openlocfilehash: 609b5903d02e9265e211cf25606ae3852e03e913
-ms.sourcegitcommit: bf99428d2562a70f42b5a04021dde6ef26c3ec3a
+ms.openlocfilehash: 6138dc06e8ed70ba85f4ccfc3370c044f34bd1f1
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/23/2020
-ms.locfileid: "85254018"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85963951"
 ---
 # <a name="tutorial-set-up-sql-data-sync-between-databases-in-azure-sql-database-and-sql-server"></a>Zelf studie: SQL Data Sync instellen tussen data bases in Azure SQL Database en SQL Server
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -63,7 +63,7 @@ Zie voor voor beelden van Power shell voor informatie over het configureren van 
    | **Conflict oplossing** | Selecteer **hub winnen** of **lid worden gewonnen**.<br/><br/>**Hub wint** houdt in dat er conflicten optreden, maar gegevens in de hub-data base overschrijft de conflicterende gegevens in de leden database.<br/><br/>**Lid Win** : als er conflicten optreden, worden de gegevens in de data base van het lid overschreven met conflicterende gegevens in de hub-data base. |
 
    > [!NOTE]
-   > Micro soft raadt aan om een nieuwe, lege data base te maken voor gebruik als de **meta gegevens database voor synchronisatie**. Gegevens synchronisatie maakt tabellen in deze data base en voert een frequente werk belasting uit. Deze data base wordt gedeeld als de **meta gegevens database** voor synchronisatie groepen in een geselecteerde regio en u kunt de data base of de naam niet wijzigen zonder alle synchronisatie groepen en synchronisatie agenten in de regio te verwijderen.
+   > Micro soft raadt aan om een nieuwe, lege data base te maken voor gebruik als de **meta gegevens database voor synchronisatie**. Gegevens synchronisatie maakt tabellen in deze data base en voert een frequente werk belasting uit. Deze data base wordt gedeeld als de **meta gegevens database** voor synchronisatie groepen in een geselecteerde regio en een abonnement. U kunt de data base of de naam niet wijzigen zonder alle synchronisatie groepen en synchronisatie agenten in de regio te verwijderen.
 
    Selecteer **OK** en wacht totdat de synchronisatie groep is gemaakt en geïmplementeerd.
 

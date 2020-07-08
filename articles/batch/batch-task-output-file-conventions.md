@@ -4,12 +4,12 @@ description: Meer informatie over het gebruik van Azure Batch bestands conventie
 ms.topic: how-to
 ms.date: 11/14/2018
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: d8dea7f503536a4eb2b0c36db7b3d35b70eb8a67
-ms.sourcegitcommit: 6fd8dbeee587fd7633571dfea46424f3c7e65169
+ms.openlocfilehash: ba1b35bd8f2a4cc58558607581d10b598d23058c
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83726329"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85965192"
 ---
 # <a name="persist-job-and-task-data-to-azure-storage-with-the-batch-file-conventions-library-for-net"></a>Taak-en taak gegevens persistent maken om te Azure Storage met de conventies bibliotheek voor batch bestanden voor .NET
 
@@ -153,7 +153,7 @@ using (ITrackedSaveOperation stdout =
 
 De sectie `Code to process data and produce output file(s)` met opmerkingen is een tijdelijke aanduiding voor de code die door de taak normaal zou worden uitgevoerd. U kunt bijvoorbeeld code hebben waarmee gegevens worden gedownload van Azure Storage en er trans formatie of berekening op wordt uitgevoerd. Het belang rijk onderdeel van dit fragment laat zien hoe u deze code in een blok kunt verpakken `using` om periodiek een bestand bij te werken met [SaveTrackedAsync][net_savetrackedasync].
 
-De knooppunt agent is een programma dat wordt uitgevoerd op elk knoop punt in de pool en biedt de opdracht-en besturings interface tussen het knoop punt en de batch-service. De `Task.Delay` aanroep is aan het einde van dit `using` blok vereist om ervoor te zorgen dat de knooppunt agent tijd heeft om de inhoud van standaard uit te legen naar het bestand stdout. txt op het knoop punt. Zonder deze vertraging is het mogelijk de laatste paar seconden van uitvoer te missen. Deze vertraging is mogelijk niet vereist voor alle bestanden.
+De knooppunt agent is een programma dat wordt uitgevoerd op elk knoop punt in de pool en biedt de opdracht-en besturings interface tussen het knoop punt en de batch-service. De `Task.Delay` aanroep is aan het einde van dit `using` blok vereist om ervoor te zorgen dat de knooppunt agent tijd heeft om de inhoud van standaard uit te legen naar het stdout.txt-bestand op het knoop punt. Zonder deze vertraging is het mogelijk de laatste paar seconden van uitvoer te missen. Deze vertraging is mogelijk niet vereist voor alle bestanden.
 
 > [!NOTE]
 > Wanneer u bestands tracering inschakelt met **SaveTrackedAsync**, worden alleen *toegevoegde items toegevoegd* aan het bijgehouden bestand Azure Storage. Gebruik deze methode alleen voor het volgen van niet-roterende logboek bestanden of andere bestanden die zijn geschreven naar met toevoeg bewerkingen naar het einde van het bestand.
@@ -198,7 +198,7 @@ Als u de taak uitvoer bestanden en logboeken wilt weer geven in de Azure Portal,
 Het [PersistOutputs][github_persistoutputs] -voorbeeld project is een van de [Azure batch code voorbeelden][github_samples] op github. Deze Visual Studio-oplossing laat zien hoe u de Azure Batch bestands conventies bibliotheek kunt gebruiken om de uitvoer van een taak naar duurzame opslag te behouden. Voer de volgende stappen uit om het voor beeld uit te voeren:
 
 1. Open het project in **Visual Studio 2019**.
-2. Voeg uw batch-en opslag **account referenties** toe aan **AccountSettings. settings** in het project micro soft. Azure. batch. samples. common.
+2. Voeg uw batch-en opslag **account referenties** toe aan **AccountSettings. settings** in het Microsoft.Azure.Batch. samples. common project.
 3. **Maak** de oplossing (maar voer deze niet uit). Herstel eventuele NuGet-pakketten als u hierom wordt gevraagd.
 4. Gebruik de Azure Portal om een [toepassings pakket](batch-application-packages.md) te uploaden voor **PersistOutputsTask**. Neem de `PersistOutputsTask.exe` en de afhankelijke assembly's op in het zip-pakket, stel de toepassings-id in op ' PersistOutputsTask ' en de versie van het toepassings pakket op ' 1,0 '.
 5. Het **PersistOutputs** -project **starten** (uitvoeren).
@@ -208,7 +208,7 @@ Het [PersistOutputs][github_persistoutputs] -voorbeeld project is een van de [Az
 
 ### <a name="get-the-batch-file-conventions-library-for-net"></a>De conventies bibliotheek voor batch bestanden voor .NET ophalen
 
-De conventies bibliotheek voor het batch-bestand voor .NET is beschikbaar op [NuGet][nuget_package]. De tape wisselaar breidt de klassen [eigenschap cloudjob][net_cloudjob] en [CloudTask][net_cloudtask] uit met nieuwe methoden. Zie ook de [referentie documentatie](https://docs.microsoft.com/dotnet/api/microsoft.azure.batch.conventions.files) voor de bestands conventies bibliotheek.
+De conventies bibliotheek voor het batch-bestand voor .NET is beschikbaar op [NuGet][nuget_package]. De tape wisselaar breidt de klassen [eigenschap cloudjob][net_cloudjob] en [CloudTask][net_cloudtask] uit met nieuwe methoden. Zie ook de [referentie documentatie](/dotnet/api/microsoft.azure.batch.conventions.files) voor de bestands conventies bibliotheek.
 
 De [bron code][github_file_conventions] voor de bestands conventies bibliotheek is beschikbaar op github in de Microsoft Azure SDK voor .net-opslag plaats. 
 
@@ -222,20 +222,20 @@ De [bron code][github_file_conventions] voor de bestands conventies bibliotheek 
 [github_file_conventions_readme]: https://github.com/Azure/azure-sdk-for-net/blob/master/sdk/batch/Microsoft.Azure.Batch.Conventions.Files/README.md
 [github_persistoutputs]: https://github.com/Azure/azure-batch-samples/tree/master/CSharp/ArticleProjects/PersistOutputs
 [github_samples]: https://github.com/Azure/azure-batch-samples
-[net_batchclient]: https://msdn.microsoft.com/library/azure/microsoft.azure.batch.batchclient.aspx
-[net_cloudjob]: https://msdn.microsoft.com/library/azure/microsoft.azure.batch.cloudjob.aspx
-[net_cloudstorageaccount]: https://docs.microsoft.com/java/api/com.microsoft.azure.storage.cloudstorageaccount
-[net_cloudtask]: https://msdn.microsoft.com/library/azure/microsoft.azure.batch.cloudtask.aspx
+[net_batchclient]: /dotnet/api/microsoft.azure.batch.batchclient
+[net_cloudjob]: /dotnet/api/microsoft.azure.batch.cloudjob
+[net_cloudstorageaccount]: /java/api/com.microsoft.azure.storage.cloudstorageaccount
+[net_cloudtask]: /dotnet/api/microsoft.azure.batch.cloudtask
 [net_fileconventions_readme]: https://github.com/Azure/azure-sdk-for-net/blob/master/sdk/batch/Microsoft.Azure.Batch.Conventions.Files/README.md
-[net_joboutputkind]: https://msdn.microsoft.com/library/azure/microsoft.azure.batch.conventions.files.joboutputkind.aspx
-[net_joboutputstorage]: https://msdn.microsoft.com/library/azure/microsoft.azure.batch.conventions.files.joboutputstorage.aspx
-[net_joboutputstorage_saveasync]: https://msdn.microsoft.com/library/azure/microsoft.azure.batch.conventions.files.joboutputstorage.saveasync.aspx
-[net_msdn]: https://msdn.microsoft.com/library/azure/mt348682.aspx
-[net_prepareoutputasync]: https://msdn.microsoft.com/library/azure/microsoft.azure.batch.conventions.files.cloudjobextensions.prepareoutputstorageasync.aspx
-[net_saveasync]: https://msdn.microsoft.com/library/azure/microsoft.azure.batch.conventions.files.taskoutputstorage.saveasync.aspx
-[net_savetrackedasync]: https://msdn.microsoft.com/library/azure/microsoft.azure.batch.conventions.files.taskoutputstorage.savetrackedasync.aspx
-[net_taskoutputkind]: https://msdn.microsoft.com/library/azure/microsoft.azure.batch.conventions.files.taskoutputkind.aspx
-[net_taskoutputstorage]: https://msdn.microsoft.com/library/azure/microsoft.azure.batch.conventions.files.taskoutputstorage.aspx
+[net_joboutputkind]: /dotnet/api/microsoft.azure.batch.conventions.files.joboutputkind
+[net_joboutputstorage]: /dotnet/api/microsoft.azure.batch.conventions.files.joboutputstorage
+[net_joboutputstorage_saveasync]: /dotnet/api/microsoft.azure.batch.conventions.files.joboutputstorage.saveasync
+[net_msdn]: /dotnet/api/microsoft.azure.batch
+[net_prepareoutputasync]: /dotnet/api/microsoft.azure.batch.conventions.files.cloudjobextensions.prepareoutputstorageasync
+[net_saveasync]: /dotnet/api/microsoft.azure.batch.conventions.files.taskoutputstorage.saveasync
+[net_savetrackedasync]: /dotnet/api/microsoft.azure.batch.conventions.files.taskoutputstorage.savetrackedasync
+[net_taskoutputkind]: /dotnet/api/microsoft.azure.batch.conventions.files.taskoutputkind
+[net_taskoutputstorage]: /dotnet/api/microsoft.azure.batch.conventions.files.taskoutputstorage
 [nuget_manager]: https://docs.nuget.org/consume/installing-nuget
 [nuget_package]: https://www.nuget.org/packages/Microsoft.Azure.Batch.Conventions.Files
 [portal]: https://portal.azure.com

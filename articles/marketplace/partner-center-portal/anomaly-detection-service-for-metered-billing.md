@@ -7,16 +7,16 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 06/10/2020
-ms.openlocfilehash: 856555008f5edb04c167e00f3db49abc9e5e6402
-ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
+ms.openlocfilehash: b83b6fc0da6a8b2016676d7fb748fc87880868f3
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/12/2020
-ms.locfileid: "84740006"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85964563"
 ---
 # <a name="anomaly-detection-service-for-metered-billing"></a>Afwijkings detectie service voor facturering met data limiet
 
-Met de [Marketplace-meet service](https://docs.microsoft.com/azure/marketplace/partner-center-portal/marketplace-metering-service-apis-faq) kunt u aanbiedingen maken in het commerciële Marketplace-programma dat wordt gefactureerd op basis van niet-standaard eenheden. Met facturering met data limieten verzendt u gebruiks gebeurtenissen voor het gebruik van uw klant naar micro soft en wordt de facturering voor bereid op basis van het gebruik.
+Met de [Marketplace-meet service](marketplace-metering-service-apis-faq.md) kunt u aanbiedingen maken in het commerciële Marketplace-programma dat wordt gefactureerd op basis van niet-standaard eenheden. Met facturering met data limieten verzendt u gebruiks gebeurtenissen voor het gebruik van uw klant naar micro soft en wordt de facturering voor bereid op basis van het gebruik.
 
 Onjuiste gebruiks gegevens kunnen afkomstig zijn uit verschillende oorzaken, zoals bugs, verkeerde configuratie in uw verbruiks tracking of fraude. Onjuiste gebruiks gegevens leiden tot onjuiste kosten voor klanten en facturerings geschillen.
 
@@ -74,8 +74,8 @@ Een ticket verzenden:
     - **Commerciële Marketplace**  >  Factuur met data **limiet**  >  **Onjuist gebruik verzonden voor SaaS-aanbieding**
 3. Onder **volgende stap**selecteert u de knop **oplossingen controleren** om u aan te melden bij het partner centrum om een ondersteunings ticket in te dienen.
 
-Voor meer ondersteunings opties voor Publisher raadpleegt u [ondersteuning voor het programma voor commerciële Marketplace in Partner Center](https://docs.microsoft.com/azure/marketplace/partner-center-portal/support).
+Voor meer ondersteunings opties voor Publisher raadpleegt u [ondersteuning voor het programma voor commerciële Marketplace in Partner Center](support.md).
 
 ## <a name="next-step"></a>Volgende stap
 
-- Meer informatie over de [Marketplace meter Service-API](https://docs.microsoft.com/azure/marketplace/partner-center-portal/marketplace-metering-service-apis).
+- Meer informatie over de [Marketplace meter Service-API](marketplace-metering-service-apis.md).

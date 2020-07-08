@@ -7,12 +7,12 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 04/27/2020
-ms.openlocfilehash: 76eb0638d2b67e7859b25cdda8a6f4cbda285920
-ms.sourcegitcommit: cf7caaf1e42f1420e1491e3616cc989d504f0902
+ms.openlocfilehash: 6dbadee427abfa82fb32ebb7db85adf627dd5e0a
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/22/2020
-ms.locfileid: "83800223"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85964835"
 ---
 # <a name="manage-your-commercial-marketplace-account-in-partner-center"></a>Uw commerciële Marketplace-account beheren in het partner centrum
 
@@ -128,7 +128,7 @@ Als u een product implementeert met behulp van een sjabloon en deze beschikbaar 
 
 Rapportage wordt uitgevoerd door de partner waarde (micro soft-partner-ID) en de GUID'S. U kunt ook GUID'S op een meer gedetailleerd niveau bijhouden voor elk abonnement binnen uw aanbieding.
 
-Zie [Veelgestelde vragen over het bijhouden van Azure-klanten met guid's](https://docs.microsoft.com/azure/marketplace/azure-partner-customer-usage-attribution#faq)voor meer informatie.
+Zie de [Veelgestelde vragen over het bijhouden van Azure-klanten met guid's](../azure-partner-customer-usage-attribution.md#faq)voor meer informatie.
 
 ## <a name="create-a-billing-profile"></a>Een facturerings profiel maken
 
@@ -138,7 +138,7 @@ Het factuur adres is vooraf ingevuld op basis van uw rechts persoon en u kunt di
 
 ## <a name="multi-user-account-management"></a>Beheer van meerdere gebruikers accounts
 
-Het partner centrum maakt gebruik van [Azure Active Directory](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-whatis) (Azure AD) voor toegang tot en beheer van meerdere gebruikers accounts. De Azure AD van uw organisatie wordt automatisch gekoppeld aan uw partner centrum-account als onderdeel van het inschrijvings proces.
+Het partner centrum maakt gebruik van [Azure Active Directory](../../active-directory/fundamentals/active-directory-whatis.md) (Azure AD) voor toegang tot en beheer van meerdere gebruikers accounts. De Azure AD van uw organisatie wordt automatisch gekoppeld aan uw partner centrum-account als onderdeel van het inschrijvings proces.
 
 ## <a name="manage-users"></a>Gebruikers beheren
 
@@ -168,7 +168,7 @@ Gebruikers toevoegen aan uw partner centrum-account dat al aanwezig is in het we
 
 ### <a name="create-new-users"></a>Nieuwe gebruikers maken
 
-Als u gloed nieuwe gebruikers accounts wilt maken, moet u een account hebben met [**globale beheerders**](https://docs.microsoft.com/azure/active-directory/users-groups-roles/directory-assign-admin-roles) machtigingen. 
+Als u gloed nieuwe gebruikers accounts wilt maken, moet u een account hebben met [**globale beheerders**](../../active-directory/users-groups-roles/directory-assign-admin-roles.md) machtigingen. 
 
 1. Ga naar **gebruikers** (onder **account instellingen**), selecteer **gebruikers toevoegen**en kies vervolgens **nieuwe gebruikers maken**.
 1. Voer voor elke nieuwe gebruiker een voor naam, achternaam en gebruikers naam in. 
@@ -182,7 +182,7 @@ Als u een nieuwe gebruiker in partner centrum maakt, wordt er ook een account vo
 
 ### <a name="invite-new-users-by-email"></a>Nieuwe gebruikers uitnodigen via e-mail
 
-Als u gebruikers wilt uitnodigen die momenteel geen deel uitmaken van uw werk account (Azure AD-Tenant) via e-mail, moet u een account hebben met [**globale beheerders**](https://docs.microsoft.com/azure/active-directory/users-groups-roles/directory-assign-admin-roles) machtigingen.
+Als u gebruikers wilt uitnodigen die momenteel geen deel uitmaken van uw werk account (Azure AD-Tenant) via e-mail, moet u een account hebben met [**globale beheerders**](../../active-directory/users-groups-roles/directory-assign-admin-roles.md) machtigingen.
 
 1. Ga naar **gebruikers** (onder **account instellingen**), selecteer **gebruikers toevoegen**en kies **gebruikers uitnodigen per e-mail**.
 2. Voer een of meer e-mail adressen (Maxi maal tien) in, gescheiden door komma's of punt komma's.
@@ -202,7 +202,7 @@ Als u een gebruiker uit uw werk account (Azure AD-Tenant) wilt verwijderen, gaat
 
 ### <a name="change-a-user-password"></a>Een gebruikers wachtwoord wijzigen
 
-Als een van uw gebruikers hun wacht woord moet wijzigen, kunnen ze dat zelf doen als u een **e-mail voor wachtwoord herstel** hebt opgegeven tijdens het maken van het gebruikers account. U kunt ook de volgende stappen uitvoeren om het wacht woord van een gebruiker bij te werken. Als u het wacht woord van een gebruiker in uw bedrijfs account (Azure AD-Tenant) wilt wijzigen, moet u zijn aangemeld bij een account met [**globale beheerders**](https://docs.microsoft.com/azure/active-directory/users-groups-roles/directory-assign-admin-roles) machtigingen. Hiermee wordt het wacht woord van de gebruiker in uw Azure AD-Tenant gewijzigd, samen met het wacht woord dat wordt gebruikt voor toegang tot het partner centrum.
+Als een van uw gebruikers hun wacht woord moet wijzigen, kunnen ze dat zelf doen als u een **e-mail voor wachtwoord herstel** hebt opgegeven tijdens het maken van het gebruikers account. U kunt ook de volgende stappen uitvoeren om het wacht woord van een gebruiker bij te werken. Als u het wacht woord van een gebruiker in uw bedrijfs account (Azure AD-Tenant) wilt wijzigen, moet u zijn aangemeld bij een account met [**globale beheerders**](../../active-directory/users-groups-roles/directory-assign-admin-roles.md) machtigingen. Hiermee wordt het wacht woord van de gebruiker in uw Azure AD-Tenant gewijzigd, samen met het wacht woord dat wordt gebruikt voor toegang tot het partner centrum.
 
 1. Selecteer op de pagina **gebruikers** (onder **account instellingen**) de naam van het gebruikers account dat u wilt bewerken.
 2. Selecteer de knop **wacht woord opnieuw instellen** onder aan de pagina.
@@ -264,7 +264,7 @@ Als u partner Center toegang wilt verlenen tot een gloed nieuwe Azure AD-toepass
 1. Selecteer op de pagina **gebruikers** (onder **account instellingen**) de optie **Azure AD-toepassingen toevoegen**.
 2. Selecteer op de volgende pagina de optie **nieuwe Azure AD-toepassing**.
 3. Voer de **antwoord-URL** in voor de nieuwe Azure AD-toepassing. Dit is de URL waar gebruikers zich kunnen aanmelden en uw Azure AD-toepassing gebruiken (ook wel bekend als de URL van de app of de aanmeldings-URL'S). De **antwoord-URL** mag niet langer zijn dan 256 tekens en moet uniek zijn binnen uw Directory.
-4. Voer de **App-ID-URI** in voor de nieuwe Azure AD-toepassing. Dit is een logische id voor de Azure AD-toepassing die wordt weer gegeven wanneer een eenmalige aanmelding wordt verzonden naar Azure AD. Houd er rekening mee dat de URI van de **App-ID** uniek moet zijn voor elke Azure AD-toepassing in uw Directory. Deze ID mag niet langer zijn dan 256 tekens. Zie [toepassingen integreren met Azure Active Directory](https://docs.microsoft.com/azure/active-directory/develop/quickstart-modify-supported-accounts#change-the-application-registration-to-support-different-accounts)voor meer informatie over de App-ID-URI.
+4. Voer de **App-ID-URI** in voor de nieuwe Azure AD-toepassing. Dit is een logische id voor de Azure AD-toepassing die wordt weer gegeven wanneer een eenmalige aanmelding wordt verzonden naar Azure AD. Houd er rekening mee dat de URI van de **App-ID** uniek moet zijn voor elke Azure AD-toepassing in uw Directory. Deze ID mag niet langer zijn dan 256 tekens. Zie [toepassingen integreren met Azure Active Directory](../../active-directory/develop/quickstart-modify-supported-accounts.md#change-the-application-registration-to-support-different-accounts)) voor meer informatie over de id-URI van de app.
 5. Geef in de sectie **rollen** de rol (len) of aangepaste machtigingen voor de Azure AD-toepassing op.
 6. Selecteer **Opslaan**.
 
@@ -328,7 +328,7 @@ Een gloed nieuwe Azure AD-Tenant maken met uw partner centrum-account:
 3. Selecteer **maken** om de nieuwe domein-en account gegevens te bevestigen.
 4. Meld u aan met uw nieuwe gebruikers naam en wacht woord voor de globale beheerder van Azure AD om [gebruikers toe te voegen en te beheren](#manage-users).
 
-Zie het artikel [een nieuwe Tenant maken in azure Active Directory](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-access-create-new-tenant)voor meer informatie over het maken van nieuwe tenants in uw Azure Portal, in plaats van via de Partner Center-Portal.
+Zie het artikel [een nieuwe Tenant maken in azure Active Directory](../../active-directory/fundamentals/active-directory-access-create-new-tenant.md)voor meer informatie over het maken van nieuwe tenants in uw Azure Portal, in plaats van via de Partner Center-Portal.
 
 ### <a name="remove-a-tenant"></a>Een Tenant verwijderen
 

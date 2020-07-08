@@ -6,13 +6,13 @@ ms.author: jonels
 ms.service: postgresql
 ms.subservice: hyperscale-citus
 ms.topic: conceptual
-ms.date: 4/6/2020
-ms.openlocfilehash: a2c376ec2bd1f03b626c11b0d6a6c3850c9ef8c4
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 7/1/2020
+ms.openlocfilehash: 8dc70eaeb9e2c2f5d4cdfef37619e4b04217782e
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80804585"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85964512"
 ---
 # <a name="azure-database-for-postgresql--hyperscale-citus-configuration-options"></a>Configuratie opties Azure Database for PostgreSQL – grootschalige (Citus)
 
@@ -20,7 +20,7 @@ ms.locfileid: "80804585"
  
 U kunt de berekenings-en opslag instellingen onafhankelijk selecteren voor worker-knoop punten en het coördinator knooppunt in een grootschalige (Citus)-Server groep.  Reken bronnen worden weer gegeven als vCores, die de logische CPU van de onderliggende hardware vertegenwoordigen. De opslag grootte voor inrichting heeft betrekking op de capaciteit die beschikbaar is voor de coördinator en worker-knoop punten in uw grootschalige (Citus)-Server groep. De opslag omvat database bestanden, tijdelijke bestanden, transactie logboeken en de post gres-server Logboeken.
  
-|                       | Worker-knoop punt           | Coördinator knooppunt      |
+| Resource              | Worker-knoop punt           | Coördinator knooppunt      |
 |-----------------------|-----------------------|-----------------------|
 | Compute, vCores       | 4, 8, 16, 32, 64      | 4, 8, 16, 32, 64      |
 | Geheugen per vCore, GiB | 8                     | 4                     |
@@ -42,7 +42,7 @@ De totale hoeveelheid opslag ruimte die u hebt ingericht, definieert ook de I/O-
 
 | Opslag grootte, TiB | Maximum aantal IOPS |
 |-------------------|--------------|
-| 0.5               | 1536        |
+| 0,5               | 1536        |
 | 1                 | 3072        |
 | 2                 | 6.148        |
 
@@ -73,7 +73,7 @@ Voor het hele grootschalige-cluster (Citus) worden de geaggregeerde IOPS uit de 
 ## <a name="regions"></a>Regio's
 Grootschalige (Citus)-Server groepen zijn beschikbaar in de volgende Azure-regio's:
 
-* Noord- en Zuid-Amerika: 
+* Amerikaanse
     * Canada - midden
     * VS - centraal
     * VS - oost
@@ -91,6 +91,33 @@ Grootschalige (Citus)-Server groepen zijn beschikbaar in de volgende Azure-regio
     * Europa -west
 
 Sommige van deze regio's kunnen niet eerst worden geactiveerd op alle Azure-abonnementen. Als u een regio uit de bovenstaande lijst wilt gebruiken en deze niet in uw abonnement wilt zien, of als u een regio wilt gebruiken die niet in deze lijst voor komt, opent u een [ondersteunings aanvraag](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest).
+
+## <a name="limits-and-limitations"></a>Limieten en beperkingen
+
+In de volgende sectie worden de capaciteits-en functionele limieten in de grootschalige-service (Citus) beschreven.
+
+### <a name="maximum-connections"></a>Maximum aantal verbindingen
+
+Elke PostgreSQL-verbinding (zelfs niet-inactief) gebruikt ten minste 10 MB aan geheugen. Daarom is het belang rijk om gelijktijdige verbindingen te beperken. Dit zijn de limieten die we hebben gekozen om knoop punten in orde te blijven:
+
+* Coördinator knooppunt
+   * Maximum aantal verbindingen: 300
+   * Maximum aantal gebruikers verbindingen: 297
+* Worker-knoop punt
+   * Maximum aantal verbindingen: 600
+   * Maximum aantal gebruikers verbindingen: 597
+
+Pogingen om verbinding te maken buiten deze limieten, mislukken met een fout. Het systeem reserveert drie verbindingen voor bewakings knooppunten. Daarom zijn er drie minder verbindingen beschikbaar voor gebruikers query's dan het totale aantal verbindingen.
+
+Het tot stand brengen van nieuwe verbindingen kost tijd. Dat werkt op de meeste toepassingen, waardoor veel korte verbindingen worden aangevraagd. U kunt het beste een verbindings groep gebruiken, zowel om niet-actieve trans acties te verminderen als bestaande verbindingen opnieuw te gebruiken. Ga voor meer informatie naar onze [blog post](https://techcommunity.microsoft.com/t5/azure-database-for-postgresql/not-all-postgres-connection-pooling-is-equal/ba-p/825717).
+
+### <a name="storage-scaling"></a>Opslag schalen
+
+Opslag op coördinator-en worker-knoop punten kan worden geschaald (verhoogd), maar kan niet omlaag worden geschaald.
+
+### <a name="storage-size"></a>Opslag grootte
+
+Er worden Maxi maal 2 TiB opslag ruimte ondersteund op coördinator-en worker-knoop punten. Zie de beschik bare opslag opties en de berekening van IOPS [hierboven](#compute-and-storage) voor de grootte van knoop punten en clusters.
 
 ## <a name="pricing"></a>Prijzen
 Zie de [pagina met prijzen](https://azure.microsoft.com/pricing/details/postgresql/)voor services voor de meest actuele prijs informatie.

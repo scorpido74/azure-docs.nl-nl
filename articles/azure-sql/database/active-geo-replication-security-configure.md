@@ -11,12 +11,12 @@ author: anosov1960
 ms.author: sashan
 ms.reviewer: mathoma, carlrab
 ms.date: 12/18/2018
-ms.openlocfilehash: 7db83535b7e6257159e0a0eb363e6d05c5e916b9
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: 3699191229a53735a62235cf8688cdfab9335339
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84047907"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85963645"
 ---
 # <a name="configure-and-manage-azure-sql-database-security-for-geo-restore-or-failover"></a>Azure SQL Database beveiliging configureren en beheren voor geo-herstel of failover
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -55,15 +55,19 @@ De eerste stap van het proces is om te bepalen welke aanmeldingen moeten worden 
 
 Alleen de server beheerder of een lid van de **rol Login Manager** -serverrol kan de aanmeldingen op de bron server bepalen met de volgende SELECT-instructie.
 
-    SELECT [name], [sid]
-    FROM [sys].[sql_logins]
-    WHERE [type_desc] = 'SQL_Login'
+```sql
+SELECT [name], [sid]
+FROM [sys].[sql_logins]
+WHERE [type_desc] = 'SQL_Login'
+```
 
 Alleen een lid van de db_owner databaserol, de dbo-gebruiker of de server beheerder kan alle data base-gebruikers principals in de primaire data base bepalen.
 
-    SELECT [name], [sid]
-    FROM [sys].[database_principals]
-    WHERE [type_desc] = 'SQL_USER'
+```sql
+SELECT [name], [sid]
+FROM [sys].[database_principals]
+WHERE [type_desc] = 'SQL_USER'
+```
 
 #### <a name="2-find-the-sid-for-the-logins-identified-in-step-1"></a>2. Zoek de SID voor de aanmeldingen die in stap 1 zijn geïdentificeerd
 
@@ -71,9 +75,11 @@ Door de uitvoer van de query's uit de vorige sectie te vergelijken en te voldoen
 
 De volgende query kan worden gebruikt om alle gebruikers-principals en hun Sid's in een-Data Base weer te geven. Deze query kan alleen worden uitgevoerd door een lid van de db_owner databaserol of de server beheerder.
 
-    SELECT [name], [sid]
-    FROM [sys].[database_principals]
-    WHERE [type_desc] = 'SQL_USER'
+```sql
+SELECT [name], [sid]
+FROM [sys].[database_principals]
+WHERE [type_desc] = 'SQL_USER'
+```
 
 > [!NOTE]
 > De **INFORMATION_SCHEMA** -en **sys** -gebruikers hebben *Null* -sid's en de **gast** -sid is **0x00**. De **dbo** -sid kan beginnen met *0x01060000000001648000000000048454*, als de maker van de data base de server beheerder is in plaats van een lid van **DbManager**.
@@ -82,9 +88,11 @@ De volgende query kan worden gebruikt om alle gebruikers-principals en hun Sid's
 
 De laatste stap is om naar de doel server of servers te gaan en de aanmeldingen te genereren met de juiste Sid's. De basis syntaxis is als volgt.
 
-    CREATE LOGIN [<login name>]
-    WITH PASSWORD = <login password>,
-    SID = <desired login SID>
+```sql
+CREATE LOGIN [<login name>]
+WITH PASSWORD = <login password>,
+SID = <desired login SID>
+```
 
 > [!NOTE]
 > Als u gebruikers toegang wilt verlenen tot de secundaire, maar niet tot de primaire, kunt u dit doen door de gebruikers aanmelding op de primaire server te wijzigen met de volgende syntaxis.

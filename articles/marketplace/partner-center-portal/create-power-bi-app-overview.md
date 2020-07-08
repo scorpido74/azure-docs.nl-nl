@@ -7,12 +7,12 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 04/02/2020
-ms.openlocfilehash: c40ea07fc4224052aa2474ebd61ef7838ba2cedf
-ms.sourcegitcommit: 11572a869ef8dbec8e7c721bc7744e2859b79962
+ms.openlocfilehash: 82e131b0e6209089b658c622b415e997b40e9e4b
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/05/2020
-ms.locfileid: "82837835"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85964648"
 ---
 # <a name="power-bi-app-creation-overview"></a>Overzicht van het maken van Power BI-apps
 
@@ -66,16 +66,16 @@ U kunt alleen een Power BI-app bouwen binnen de [Power bi](https://powerbi.micro
 2. Uw app maken en testen in Power BI.
 3. Wanneer u het webadres voor de installatie van de app ontvangt, voegt u dit toe aan de pagina **technische configuratie** in partner centrum.
 
-Nadat de app is gemaakt en getest in Power BI, slaat u het webadres voor de installatie van de toepassing op, zoals u dat nodig hebt om [een Power bi app-aanbieding te maken](https://docs.microsoft.com/azure/marketplace/partner-center-portal/create-power-bi-app-offer).
+Nadat de app is gemaakt en getest in Power BI, slaat u het webadres voor de installatie van de toepassing op, zoals u dat nodig hebt om [een Power bi app-aanbieding te maken](create-power-bi-app-offer.md).
 
 ### <a name="business-requirements"></a>Zakelijke vereisten
 
 De zakelijke vereisten zijn onder andere procedurele, contractuele en juridische verplichtingen. U moet het volgende doen:
 
-- U bent een geregistreerde commerciële Marketplace-Uitgever. Als u niet bent geregistreerd, volgt u de stappen in [een commerciële Marketplace-uitgever worden](https://docs.microsoft.com/azure/marketplace/become-publisher).
+- U bent een geregistreerde commerciële Marketplace-Uitgever. Als u niet bent geregistreerd, volgt u de stappen in [een commercieel Marketplace-account maken in Partner Center](create-account.md).
 - Geef inhoud op die voldoet aan de criteria voor uw aanbieding die worden vermeld op AppSource. Zie [een app om weer te geven op AppSource voor meer informatie. Hier volgt een beschrijving van](https://appsource.microsoft.com/blogs/have-an-app-to-list-on-appsource-here-s-how).
 - Ga akkoord met en volg de [privacyverklaring van micro soft](https://privacy.microsoft.com/privacystatement).
 
 ## <a name="next-step"></a>Volgende stap
 
-- [Een Power BI-app-aanbieding maken in het partner centrum](https://docs.microsoft.com/azure/marketplace/partner-center-portal/create-power-bi-app-offer)
+- [Een Power BI-app-aanbieding maken in het partner centrum](create-power-bi-app-offer.md)

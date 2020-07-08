@@ -3,12 +3,12 @@ title: Reken intensief Azure-Vm's gebruiken met batch
 description: Profiteren van de grootte van HPC en GPU-virtuele machines in Azure Batch groepen. Meer informatie over afhankelijkheden van besturings systemen en een aantal voor beelden van scenario's weer geven.
 ms.topic: how-to
 ms.date: 12/17/2018
-ms.openlocfilehash: 7abe3c9bd689b20f608ad40105c1bb4d7108dbc6
-ms.sourcegitcommit: a9784a3fd208f19c8814fe22da9e70fcf1da9c93
+ms.openlocfilehash: acc56679d8be157541b0d7c056e57659584645be
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/22/2020
-ms.locfileid: "83779749"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85962506"
 ---
 # <a name="use-rdma-or-gpu-instances-in-batch-pools"></a>RDMA-of GPU-instanties gebruiken in batch-Pools
 
@@ -92,18 +92,18 @@ Als u een speciale VM-grootte voor de batch-pool wilt configureren, hebt u versc
 
 Als u CUDA-toepassingen wilt uitvoeren op een groep Windows NC-knoop punten, moet u NVDIA GPU-Stuur Programma's installeren. In de volgende voorbeeld stappen wordt een toepassings pakket gebruikt om de NVIDIA GPU-Stuur Programma's te installeren. U kunt deze optie kiezen als uw werk belasting afhankelijk is van een specifieke versie van het GPU-stuur programma.
 
-1. Down load een installatie pakket voor de GPU-Stuur Programma's op Windows Server 2016 van de [NVIDIA-website](https://www.nvidia.com/Download/index.aspx) , bijvoorbeeld [versie 411,82](https://us.download.nvidia.com/Windows/Quadro_Certified/411.82/411.82-tesla-desktop-winserver2016-international.exe). Sla het bestand lokaal op met een korte naam zoals *GPUDriverSetup. exe*.
+1. Down load een installatie pakket voor de GPU-Stuur Programma's op Windows Server 2016 van de [NVIDIA-website](https://www.nvidia.com/Download/index.aspx) , bijvoorbeeld [versie 411,82](https://us.download.nvidia.com/Windows/Quadro_Certified/411.82/411.82-tesla-desktop-winserver2016-international.exe). Sla het bestand lokaal op met behulp van een korte naam, zoals *GPUDriverSetup.exe*.
 2. Maak een zip-bestand van het pakket.
 3. Upload het pakket naar uw batch-account. Zie de richt lijnen voor [toepassings pakketten](batch-application-packages.md) voor instructies. Geef een toepassings-ID, zoals *GPUDriver*, en een versie, zoals *411,82*, op.
 1. Maak met behulp van de batch-Api's of de Azure Portal een pool in de virtuele-machine configuratie met het gewenste aantal knoop punten en schaal. De volgende tabel bevat voor beelden van instellingen voor het op de achtergrond installeren van de NVIDIA GPU-Stuur Programma's met behulp van een begin taak:
 
 | Instelling | Waarde |
 | ---- | ----- | 
-| **Type installatiekopie** | Marketplace (Linux/Windows) |
+| **Type installatie kopie** | Marketplace (Linux/Windows) |
 | **Publisher** | MicrosoftWindowsServer |
 | **Aanbieding** | WindowsServer |
 | **SKU** | 2016-Data Center |
-| **Knooppunt grootte** | NC6-standaard |
+| **Knooppuntgrootte** | NC6-standaard |
 | **Toepassings pakket verwijzingen** | GPUDriver, versie 411,82 |
 | **Taak starten is ingeschakeld** | True<br>**Opdracht regel** - `cmd /c "%AZ_BATCH_APP_PACKAGE_GPUDriver#411.82%\\GPUDriverSetup.exe /s"`<br/>**Gebruikers identiteit** : groeps beleidsgebruiker, beheerder<br/>**Wachten op geslaagd** -True
 
@@ -120,28 +120,28 @@ Als u CUDA-toepassingen wilt uitvoeren op een groep Linux NC-knoop punten, moet 
 
 | Instelling | Waarde |
 | ---- | ---- |
-| **Type installatiekopie** | Aangepaste installatiekopie |
+| **Type installatie kopie** | Aangepaste installatiekopie |
 | **Aangepaste installatie kopie** | *Naam van de afbeelding* |
 | **SKU van knoop punt agent** | batch. node. Ubuntu 16,04 |
-| **Knooppunt grootte** | NC6-standaard |
+| **Knooppuntgrootte** | NC6-standaard |
 
 ## <a name="example-microsoft-mpi-on-a-windows-h16r-vm-pool"></a>Voor beeld: micro soft MPI in een VM-groep van Windows H16r
 
-Als u Windows MPI-toepassingen wilt uitvoeren op een groep Azure H16r VM-knoop punten, moet u de HpcVmDrivers-extensie configureren en [micro soft mpi](https://docs.microsoft.com/message-passing-interface/microsoft-mpi)installeren. Hier volgen enkele voor beelden van stappen voor het implementeren van een aangepaste installatie kopie van Windows Server 2016 met de benodigde Stuur Programma's en software:
+Als u Windows MPI-toepassingen wilt uitvoeren op een groep Azure H16r VM-knoop punten, moet u de HpcVmDrivers-extensie configureren en [micro soft mpi](/message-passing-interface/microsoft-mpi)installeren. Hier volgen enkele voor beelden van stappen voor het implementeren van een aangepaste installatie kopie van Windows Server 2016 met de benodigde Stuur Programma's en software:
 
 1. Implementeer een Azure H16r-VM met Windows Server 2016. Maak bijvoorbeeld de virtuele machine in de regio vs West. 
 2. Voeg de uitbrei ding HpcVmDrivers toe aan de virtuele machine door [een Azure PowerShell opdracht](../virtual-machines/sizes-hpc.md) uit te voeren vanaf een client computer die verbinding maakt met uw Azure-abonnement of Azure Cloud shell gebruikt. 
 1. Een Extern bureaublad verbinding maken met de virtuele machine.
-1. Down load het [installatie pakket](https://www.microsoft.com/download/details.aspx?id=57467) (MSMpiSetup. exe) voor de nieuwste versie van micro soft MPI en installeer micro soft MPI.
+1. Down load het [installatie pakket](https://www.microsoft.com/download/details.aspx?id=57467) (MSMpiSetup.exe) voor de nieuwste versie van micro soft MPI en installeer micro soft MPI.
 1. Volg de stappen voor het maken van een afbeelding voor de [Galerie met gedeelde afbeeldingen](batch-sig-images.md) voor batch.
 1. Maak met behulp van de batch-Api's of de Azure Portal een pool [met behulp van de galerie met gedeelde afbeeldingen](batch-sig-images.md) en met het gewenste aantal knoop punten en schaal. De volgende tabel bevat voor beelden van groeps instellingen voor de installatie kopie:
 
 | Instelling | Waarde |
 | ---- | ---- |
-| **Type installatiekopie** | Aangepaste installatiekopie |
+| **Type installatie kopie** | Aangepaste installatiekopie |
 | **Aangepaste installatie kopie** | *Naam van de afbeelding* |
 | **SKU van knoop punt agent** | batch. node. Windows amd64 |
-| **Knooppunt grootte** | H16r-standaard |
+| **Knooppuntgrootte** | H16r-standaard |
 | **Communicatie tussen knoop punten is ingeschakeld** | True |
 | **Maximum aantal taken per knoop punt** | 1 |
 
@@ -153,16 +153,16 @@ Maak met behulp van de batch-Api's of de Azure Portal een pool met behulp van de
 
 | Instelling | Waarde |
 | ---- | ---- |
-| **Type installatiekopie** | Marketplace (Linux/Windows) |
+| **Type installatie kopie** | Marketplace (Linux/Windows) |
 | **Publisher** | OpenLogic |
 | **Aanbieding** | CentOS-HPC |
 | **SKU** | 7.4 |
-| **Knooppunt grootte** | H16r-standaard |
+| **Knooppuntgrootte** | H16r-standaard |
 | **Communicatie tussen knoop punten is ingeschakeld** | True |
 | **Maximum aantal taken per knoop punt** | 1 |
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* Zie de [Windows](batch-mpi.md) -of [Linux](https://blogs.technet.microsoft.com/windowshpc/2016/07/20/introducing-mpi-support-for-linux-on-azure-batch/) -voor beelden om mpi-taken uit te voeren in een Azure batch groep.
+* Zie de [Windows](batch-mpi.md) -of [Linux](/archive/blogs/windowshpc/introducing-mpi-support-for-linux-on-azure-batch) -voor beelden om mpi-taken uit te voeren in een Azure batch groep.
 
 * Zie de [batch Shipyard](https://github.com/Azure/batch-shipyard/) recepten voor voor beelden van GPU-workloads op batch.

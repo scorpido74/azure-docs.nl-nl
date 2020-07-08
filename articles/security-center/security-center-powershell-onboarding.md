@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/02/2018
 ms.author: memildin
-ms.openlocfilehash: b471fbb62862cd48ebbb239d65b563aa109ef629
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 0ca5cdcb0410d52f40e28c66a839bddcb34cc8a8
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80435484"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85963356"
 ---
 # <a name="automate-onboarding-of-azure-security-center-using-powershell"></a>Het onboarden van Azure Security Center automatiseren met Power shell
 
@@ -45,62 +45,63 @@ In dit voor beeld wordt Security Center ingeschakeld voor een abonnement met ID:
 
 Deze stappen moeten worden uitgevoerd voordat u de Security Center-cmdlets uitvoert:
 
-1.  Voer Power shell uit als beheerder.
-2.  Voer de volgende opdrachten uit in Power shell:
+1. Voer Power shell uit als beheerder.
+
+1. Voer de volgende opdrachten uit in Power shell:
       
-        Set-ExecutionPolicy -ExecutionPolicy AllSigned
-        Install-Module -Name Az.Security -Force
+    ```Set-ExecutionPolicy -ExecutionPolicy AllSigned```
+
+    ```Install-Module -Name Az.Security -Force```
 
 ## <a name="onboard-security-center-using-powershell"></a>Onboard Security Center met Power shell
 
-1.  Uw abonnementen registreren bij de provider van de Security Center-resource:
+1. Uw abonnementen registreren bij de provider van de Security Center-resource:
 
-        Set-AzContext -Subscription "d07c0080-170c-4c24-861d-9c817742786c"
-        Register-AzResourceProvider -ProviderNamespace 'Microsoft.Security' 
+    ```Set-AzContext -Subscription "d07c0080-170c-4c24-861d-9c817742786c"```
 
-2.  Optioneel: het dekkings niveau (prijs categorie) van de abonnementen instellen (indien niet gedefinieerd, wordt de prijs categorie ingesteld op gratis):
+    ```Register-AzResourceProvider -ProviderNamespace 'Microsoft.Security'```
 
-        Set-AzContext -Subscription "d07c0080-170c-4c24-861d-9c817742786c"
-        Set-AzSecurityPricing -Name "default" -PricingTier "Standard"
+1. Optioneel: het dekkings niveau (prijs categorie) van de abonnementen instellen (indien niet gedefinieerd, wordt de prijs categorie ingesteld op gratis):
 
-3.  Een Log Analytics-werk ruimte configureren waarin de agents worden gerapporteerd. U moet een Log Analytics-werk ruimte hebben die u al hebt gemaakt, waarbij de Vm's van het abonnement worden gerapporteerd aan. U kunt meerdere abonnementen definiëren om aan dezelfde werk ruimte te rapporteren. Als deze niet is gedefinieerd, wordt de standaardwerk ruimte gebruikt.
+    ```Set-AzContext -Subscription "d07c0080-170c-4c24-861d-9c817742786c"```
 
-        Set-AzSecurityWorkspaceSetting -Name "default" -Scope
-        "/subscriptions/d07c0080-170c-4c24-861d-9c817742786c" -WorkspaceId"/subscriptions/d07c0080-170c-4c24-861d-9c817742786c/resourceGroups/myRg/providers/Microsoft.OperationalInsights/workspaces/myWorkspace"
+    ```Set-AzSecurityPricing -Name "default" -PricingTier "Standard"```
 
-4.  De installatie van de Log Analytics-agent op uw Azure-Vm's automatisch inrichten:
+1. Een Log Analytics-werk ruimte configureren waarin de agents worden gerapporteerd. U moet een Log Analytics-werk ruimte hebben die u al hebt gemaakt, waarbij de Vm's van het abonnement worden gerapporteerd aan. U kunt meerdere abonnementen definiëren om aan dezelfde werk ruimte te rapporteren. Als deze niet is gedefinieerd, wordt de standaardwerk ruimte gebruikt.
+
+    ```Set-AzSecurityWorkspaceSetting -Name "default" -Scope "/subscriptions/d07c0080-170c-4c24-861d-9c817742786c" -WorkspaceId"/subscriptions/d07c0080-170c-4c24-861d-9c817742786c/resourceGroups/myRg/providers/Microsoft.OperationalInsights/workspaces/myWorkspace"```
+
+1. De installatie van de Log Analytics-agent op uw Azure-Vm's automatisch inrichten:
     
-        Set-AzContext -Subscription "d07c0080-170c-4c24-861d-9c817742786c"
+    ```Set-AzContext -Subscription "d07c0080-170c-4c24-861d-9c817742786c"```
     
-        Set-AzSecurityAutoProvisioningSetting -Name "default" -EnableAutoProvision
+    ```Set-AzSecurityAutoProvisioningSetting -Name "default" -EnableAutoProvision```
 
     > [!NOTE]
     > Het wordt aanbevolen automatische inrichting in te scha kelen om ervoor te zorgen dat uw virtuele Azure-machines automatisch worden beveiligd door Azure Security Center.
     >
 
-5.  Optioneel: u kunt het beste de contact gegevens van de beveiliging definiëren voor de abonnementen die u wilt voorbereiden. deze worden gebruikt als ontvangers van waarschuwingen en meldingen die worden gegenereerd door Security Center:
+1. Optioneel: u kunt het beste de contact gegevens van de beveiliging definiëren voor de abonnementen die u wilt voorbereiden. deze worden gebruikt als ontvangers van waarschuwingen en meldingen die worden gegenereerd door Security Center:
 
-        Set-AzSecurityContact -Name "default1" -Email "CISO@my-org.com" -Phone "2142754038" -AlertAdmin -NotifyOnAlert 
+    ```Set-AzSecurityContact -Name "default1" -Email "CISO@my-org.com" -Phone "2142754038" -AlertAdmin -NotifyOnAlert```
 
-6.  Wijs het standaard Security Center Policy Initiative toe:
+1. Wijs het standaard Security Center Policy Initiative toe:
 
-        Register-AzResourceProvider -ProviderNamespace 'Microsoft.PolicyInsights'
-        $Policy = Get-AzPolicySetDefinition | where {$_.Properties.displayName -EQ '[Preview]: Enable Monitoring in Azure Security Center'}
-        New-AzPolicyAssignment -Name 'ASC Default <d07c0080-170c-4c24-861d-9c817742786c>' -DisplayName 'Security Center Default <subscription ID>' -PolicySetDefinition $Policy -Scope '/subscriptions/d07c0080-170c-4c24-861d-9c817742786c'
+    ```Register-AzResourceProvider -ProviderNamespace 'Microsoft.PolicyInsights'```
 
-U hebt nu onboarded Azure Security Center met Power shell.
+    ```$Policy = Get-AzPolicySetDefinition | where {$_.Properties.displayName -EQ 'Enable Monitoring in Azure Security Center'} New-AzPolicyAssignment -Name 'ASC Default <d07c0080-170c-4c24-861d-9c817742786c>' -DisplayName 'Security Center Default <subscription ID>' -PolicySetDefinition $Policy -Scope '/subscriptions/d07c0080-170c-4c24-861d-9c817742786c'```
+
+U hebt Azure Security Center met Power shell geslaagd.
 
 U kunt deze Power shell-cmdlets nu met automatiserings scripts gebruiken om op een programmatische manier te herhalen voor abonnementen en bronnen. Dit bespaart tijd en vermindert de kans op menselijke fouten. U kunt dit [voorbeeld script](https://github.com/Microsoft/Azure-Security-Center/blob/master/quickstarts/ASC-Samples.ps1) gebruiken als verwijzing.
 
 
 
 
-
-
-## <a name="see-also"></a>Zie ook
+## <a name="see-also"></a>Zie tevens
 Zie het volgende artikel voor meer informatie over hoe u Power shell kunt gebruiken om onboarding naar Security Center te automatiseren:
 
-* [AZ. Security](https://docs.microsoft.com/powershell/module/az.security).
+* [AZ. Security](https://docs.microsoft.com/powershell/module/az.security)
 
 Zie het volgende artikel voor meer informatie over Security Center:
 

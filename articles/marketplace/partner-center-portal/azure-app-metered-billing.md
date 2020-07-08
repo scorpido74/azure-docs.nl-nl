@@ -7,12 +7,12 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 04/22/2020
-ms.openlocfilehash: 180015a6bab576c02dcfaaea589628e40c6adde4
-ms.sourcegitcommit: 4499035f03e7a8fb40f5cff616eb01753b986278
+ms.openlocfilehash: 5a867243e57790bf72cef6991d6d8ac06639be49
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/03/2020
-ms.locfileid: "82736173"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85963917"
 ---
 # <a name="managed-application-metered-billing"></a>Factuur voor beheerde toepassing met data limiet 
 
@@ -67,7 +67,7 @@ Facturerings dimensies worden gedeeld in alle abonnementen voor een aanbieding. 
 De kenmerken die de dimensie zelf definiëren, worden gedeeld met alle plannen voor een aanbieding. Voordat u de aanbieding publiceert, is een wijziging in deze kenmerken van de context van een plan van invloed op de dimensie definitie voor alle plannen. Zodra u de aanbieding hebt gepubliceerd, kunnen deze kenmerken niet meer worden bewerkt. De kenmerken zijn:
 
 * Id
-* Naam
+* Name
 * Meeteenheid
 
 De andere kenmerken van een dimensie zijn specifiek voor elk plan en kunnen verschillende waarden hebben van plan tot plan.  Voordat u het plan publiceert, kunt u deze waarden bewerken en wordt alleen dit abonnement beïnvloed. Zodra u het abonnement hebt gepubliceerd, kunnen deze kenmerken niet meer worden bewerkt. De kenmerken zijn:
@@ -93,7 +93,7 @@ Een dimensie die wordt gebruikt met de Marketplace-meet service vertegenwoordigt
 Zodra een aanbieding is gepubliceerd met een dimensie, kunnen de details van het aanbod niveau voor die dimensie niet meer worden gewijzigd:
 
 * Id
-* Naam
+* Name
 * Meeteenheid
 
 Zodra een plan is gepubliceerd, kunnen de details op plan niveau niet meer worden gewijzigd:
@@ -125,7 +125,7 @@ Volg de onderstaande stappen om uw ondersteunings ticket in te dienen:
 4. Selecteer in het gedeelte Selecteer een probleem dat het beste het probleem beschrijft de optie **gefactureerd factureren**.
 5. Als u de knop **volgende** selecteert, wordt u omgeleid naar de pagina met details van het **probleem** , waar u meer informatie kunt invoeren over uw probleem.
 
-Voor meer ondersteunings opties voor Publisher raadpleegt u [ondersteuning voor het programma voor commerciële Marketplace in Partner Center](https://docs.microsoft.com/azure/marketplace/partner-center-portal/support).
+Voor meer ondersteunings opties voor Publisher raadpleegt u [ondersteuning voor het programma voor commerciële Marketplace in Partner Center](support.md).
 
 ## <a name="next-steps"></a>Volgende stappen
 

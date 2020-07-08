@@ -7,12 +7,12 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 04/09/2020
-ms.openlocfilehash: fe04cb12dc1afea78b023eab623927a07224888c
-ms.sourcegitcommit: 6fd8dbeee587fd7633571dfea46424f3c7e65169
+ms.openlocfilehash: 63f18556847a717322b00092b973f59877102a1d
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83726142"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85963900"
 ---
 # <a name="azure-virtual-machine-vm-image-certification"></a>Certificering van installatie kopie van virtuele Azure-machine (VM)
 
@@ -188,7 +188,7 @@ Bewerk en voer het volgende Azure PowerShell script uit om een Azure Key Vault e
 | $postfix | Wille keurige numerieke teken reeks gekoppeld aan implementatie-id's. |
 | $rgName | De naam van de Azure-resource groep (RG) die u wilt maken. |
 | $location | Een van de standaard geografische locaties van Azure. |
-| $kvTemplateJson | Het pad van het bestand (de code van de sleutel kluis. json) dat een resource manager-sjabloon bevat voor Key kluis. |
+| $kvTemplateJson | Het pad van het bestand (keyvault.jsop) met de Resource Manager-sjabloon voor de sleutel kluis. |
 | $kvname | De naam van de nieuwe sleutel kluis.|
 |   |   |
 
@@ -320,7 +320,7 @@ In deze sectie wordt beschreven hoe u een gegeneraliseerde VHD-installatie kopie
 
 ### <a name="prepare-an-azure-resource-manager-template"></a>Een Azure Resource Manager sjabloon voorbereiden
 
-Kopieer de volgende Azure Resource Manager sjabloon voor VHD-implementatie naar een lokaal bestand met de naam VHDtoImage. json. Het volgende script vraagt de locatie op de lokale computer aan om deze JSON te gebruiken.
+Kopieer de volgende Azure Resource Manager sjabloon voor VHD-implementatie naar een lokaal bestand met de naam VHDtoImage.jsop. Het volgende script vraagt de locatie op de lokale computer aan om deze JSON te gebruiken.
 
 ```JSON
 {
@@ -560,7 +560,7 @@ Bewerk dit bestand om waarden op te geven voor deze para meters:
 | **Parameter** | **Beschrijving** |
 | --- | --- |
 | ResourceGroupName | De naam van de bestaande Azure-resource groep. Gebruik normaal gesp roken dezelfde RG als uw sleutel kluis. |
-| TemplateFile | Volledig pad naar het bestand VHDtoImage. json. |
+| TemplateFile | Volledige padnaam naar het bestand VHDtoImage.jsop. |
 | userStorageAccountName | Naam van het opslagaccount. |
 | sNameForPublicIP | DNS-naam voor het open bare IP-adres. moet een kleine letter zijn. |
 | subscriptionId | Azure-abonnements-id. |
@@ -649,4 +649,4 @@ Selecteer ten slotte **rapport genereren** om de test resultaten en logboek best
 
 ## <a name="next-step"></a>Volgende stap
 
-- [Een Uniform Resource Identifier (URI) voor elke VHD genereren](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/virtual-machine/cpp-get-sas-uri)
+- [Veelvoorkomende problemen met SAS-URI'S en oplossingen](common-sas-uri-issues.md)

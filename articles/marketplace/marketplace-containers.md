@@ -8,12 +8,12 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 04/15/2020
 ms.author: dsindona
-ms.openlocfilehash: 99aecee930e5d77302ad54babd927588519e33fd
-ms.sourcegitcommit: be32c9a3f6ff48d909aabdae9a53bd8e0582f955
+ms.openlocfilehash: fae11343332fe741301016d4871d098b0214c7f5
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/26/2020
-ms.locfileid: "82160457"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85964444"
 ---
 # <a name="publishing-guide-for-container-offers"></a>Publicatie handleiding voor container aanbiedingen
 
@@ -34,8 +34,8 @@ Micro soft biedt momenteel ondersteuning voor de BYOL-licentie modellen (gratis 
 |:--- |:--- |  
 | Facturering en meting | Ondersteuning voor het gratis of BYOL facturerings model.<br><br> |  
 | Installatie kopie die is gebouwd op basis van een Dockerfile | Container installatie kopieën moeten zijn gebaseerd op de specificatie van de docker-installatie kopie en zijn gebouwd op basis van een Dockerfile.<br> <br>Voor meer informatie over het bouwen van docker-installatie kopieën raadpleegt u de sectie ' gebruik ' van [Dockerfile Reference](https://docs.docker.com/engine/reference/builder/#usage).<br><br> |  
-| Hosting in een Azure Container Registry opslagplaats | Container installatie kopieën moeten worden gehost in een Azure Container Registry opslag plaats.<br> <br>Voor meer informatie over het werken met Azure Container Registry raadpleegt [u Quick Start: een persoonlijk container register maken met behulp van de Azure Portal](https://docs.microsoft.com/azure/container-registry/container-registry-get-started-portal).<br><br> |  
-| Afbeeldingen taggen | Container installatie kopieën moeten ten minste één tag bevatten (maximum aantal Tags: 16).<br><br>Zie de pagina op de documentatie site van `docker tag` [docker](https://docs.docker.com/engine/reference/commandline/tag) voor meer informatie over het coderen van een afbeelding.<br><br> |  
+| Hosting in een Azure Container Registry opslagplaats | Container installatie kopieën moeten worden gehost in een Azure Container Registry opslag plaats.<br> <br>Voor meer informatie over het werken met Azure Container Registry raadpleegt [u Quick Start: een persoonlijk container register maken met behulp van de Azure Portal](../container-registry/container-registry-get-started-portal.md).<br><br> |  
+| Afbeeldingen taggen | Container installatie kopieën moeten ten minste één tag bevatten (maximum aantal Tags: 16).<br><br>Zie de `docker tag` pagina op de documentatie site van [docker](https://docs.docker.com/engine/reference/commandline/tag) voor meer informatie over het coderen van een afbeelding.<br><br> |  
 
 ## <a name="next-steps"></a>Volgende stappen
 

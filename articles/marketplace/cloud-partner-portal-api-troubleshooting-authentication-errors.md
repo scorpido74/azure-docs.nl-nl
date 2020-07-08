@@ -7,12 +7,12 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 04/08/2020
 ms.author: dsindona
-ms.openlocfilehash: ffabfe55ee01adc08414d04f8c82a1daca4d9f95
-ms.sourcegitcommit: 374e47efb65f0ae510ad6c24a82e8abb5b57029e
+ms.openlocfilehash: 7684e097118fce4dcd471257ec0d9d476ce342be
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/28/2020
-ms.locfileid: "85516228"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85964920"
 ---
 # <a name="troubleshooting-common-authentication-errors"></a>Veelvoorkomende verificatie fouten oplossen
 
@@ -23,7 +23,7 @@ Dit artikel biedt hulp bij veelvoorkomende verificatie fouten bij het gebruik va
 
 ## <a name="unauthorized-error"></a>Niet-geautoriseerde fout
 
-Als u consequent `401 unauthorized` fouten krijgt, controleert u of u een geldig toegangs token hebt.  Als u dit nog niet hebt gedaan, maakt u een Basic Azure Active Directory-toepassing (Azure AD) en een Service-Principal zoals beschreven in [Portal gebruiken om een Azure Active Directory toepassing en Service-Principal te maken die toegang hebben tot resources](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-create-service-principal-portal). Gebruik vervolgens de toepassing of een eenvoudige HTTP POST-aanvraag om uw toegang te controleren.  U neemt de Tenant-ID, toepassings-ID, object-ID en de geheime sleutel op om het toegangs token op te halen, zoals wordt weer gegeven in de volgende afbeelding:
+Als u consequent `401 unauthorized` fouten krijgt, controleert u of u een geldig toegangs token hebt.  Als u dit nog niet hebt gedaan, maakt u een Basic Azure Active Directory-toepassing (Azure AD) en een Service-Principal zoals beschreven in [Portal gebruiken om een Azure Active Directory toepassing en Service-Principal te maken die toegang hebben tot resources](../active-directory/develop/howto-create-service-principal-portal.md). Gebruik vervolgens de toepassing of een eenvoudige HTTP POST-aanvraag om uw toegang te controleren.  U neemt de Tenant-ID, toepassings-ID, object-ID en de geheime sleutel op om het toegangs token op te halen, zoals wordt weer gegeven in de volgende afbeelding:
 
 ![Problemen met de 401-fout oplossen](./media/cloud-partner-portal-api-troubleshooting-authentication-errors/troubleshooting-401-error.jpg)
 

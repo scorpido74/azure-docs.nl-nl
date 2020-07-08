@@ -7,20 +7,20 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 05/08/2020
 ms.author: mingshen
-ms.openlocfilehash: 81d047424144b4ad6191bcfb005a422a9ab2fd03
-ms.sourcegitcommit: 309a9d26f94ab775673fd4c9a0ffc6caa571f598
+ms.openlocfilehash: 42bf538ebb78b6b0786a985ed6a32a312db44992
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/09/2020
-ms.locfileid: "82996376"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85964393"
 ---
 # <a name="consulting-service-prerequisites"></a>Vereisten voor advies service
 
-Zie [Consulting Services voor Microsoft AppSource en Azure Marketplace](https://docs.microsoft.com/azure/marketplace/consulting-services)voor meer informatie over de aanbieding voor advies Services, inclusief de vereisten voor dit aanbiedings type. De volgende tabel bevat de aanvullende vereisten voor specifieke consulting service typen.
+Zie [Consulting Services voor Microsoft AppSource en Azure Marketplace](../consulting-services.md)voor meer informatie over de aanbieding voor advies Services, inclusief de vereisten voor dit aanbiedings type. De volgende tabel bevat de aanvullende vereisten voor specifieke consulting service typen.
 
 | Onderwerp Consulting Service | Primair product om te selecteren in partner centrum | Vereiste |
 |---------|---------|---------|
-| Azure-producten&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;| Azure | De aanbieding moet ten minste één van de volgende volledig verdiende competenties vermelden: <ul><li>Ontwikkeling van toepassingen</li><li>Integratie van toepassingen</li><li>Beheer van toepassings levenscyclus</li><li>Cloud platform</li><li>Data Analytics</li><li>Datacentrum</li><li>Gegevens platform</li><li>DevOps|
+| Azure-producten&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;| Azure | De aanbieding moet ten minste één van de volgende volledig verdiende competenties vermelden: <ul><li>Ontwikkeling van toepassingen</li><li>Integratie van toepassingen</li><li>Beheer van toepassings levenscyclus</li><li>Cloud platform</li><li>Gegevensanalyse</li><li>Datacentrum</li><li>Gegevens platform</li><li>DevOps|
 | Dynamics 365 Sales<br>Dynamics 365-marketing<br>Dynamics 365-klanten service<br>Dynamics 365-veld Service<br>Dynamics 365 human resources | Toepassingen voor klant betrokkenheid | Moet goud of zilver gecertificeerd zijn in de [Cloud Business Applications competentie](https://partner.microsoft.com/membership/cloud-business-applications-competency) voor de optie voor klant betrokkenheid, of een mede-verkoop aanbieding hebben voor het primaire product waaraan de service is gekoppeld. |
 | Dynamics 365-Financiën<br>Dynamics 365 Supply Chain Management<br>Dynamics 365 commerce<br>Dynamics 365 human resources<br>Dynamics 365 project Service Automation | Financiën en operationele toepassingen | Moet goud of zilver gecertificeerd zijn in de [Cloud Business Applications competentie](https://partner.microsoft.com/membership/cloud-business-applications-competency) voor Unified Operations Option, of een mede-verkoop aanbieding hebben voor het primaire product waaraan de service is gekoppeld. |
 | Dynamics 365 Customer Insights | Dynamics 365 Customer Insights | Er moet ten minste één geslaagde productie-implementatie van [Dynamics 365 Customer Insights](https://dynamics.microsoft.com/ai/customer-insights/) met ten minste vijf metingen en vijf segmenten, of een mede-verkoop aanbieding hebben voor het primaire product waaraan de service is gerelateerd. |

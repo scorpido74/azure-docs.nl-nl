@@ -5,12 +5,12 @@ author: mscurrell
 ms.author: markscu
 ms.date: 03/05/2020
 ms.topic: how-to
-ms.openlocfilehash: f5a37ebba7dd0622db7e76ecef1c3eda24d72b27
-ms.sourcegitcommit: 6fd8dbeee587fd7633571dfea46424f3c7e65169
+ms.openlocfilehash: 262431cfcc906b6df1054aaa7dc2b9573c3b8833
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83726397"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85965243"
 ---
 # <a name="using-azure-batch-rendering"></a>Azure Batch Rendering gebruiken
 
@@ -19,8 +19,8 @@ Er zijn verschillende manieren om Azure Batch rendering te gebruiken:
 * API's:
   * Code schrijven met behulp van een van de batch-Api's.  Ontwikkel aars kunnen Azure Batch-mogelijkheden integreren in hun bestaande toepassingen of werk stroom, of deze in de Cloud of op basis van on-premises.
 * Opdracht regel Programma's:
-  * De [Azure-opdracht regel](https://docs.microsoft.com/cli/azure/) of [Power shell](https://docs.microsoft.com/powershell/azure/overview) kan worden gebruikt om batch gebruik te maken van scripts.
-  * Met name de [batch-cli-sjabloon ondersteuning](https://docs.microsoft.com/azure/batch/batch-cli-templates) maakt het veel eenvoudiger om Pools te maken en taken te verzenden.
+  * De [Azure-opdracht regel](/cli/azure/) of [Power shell](/powershell/azure/overview) kan worden gebruikt om batch gebruik te maken van scripts.
+  * Met name de [batch-cli-sjabloon ondersteuning](./batch-cli-templates.md) maakt het veel eenvoudiger om Pools te maken en taken te verzenden.
 * Batch Explorer-gebruikers interface:
   * [Batch Explorer](https://github.com/Azure/BatchLabs) is een platformoverschrijdende client hulpprogramma waarmee batch-accounts ook kunnen worden beheerd en bewaakt.
   * Voor elk van de rendering-toepassingen worden een aantal groeps-en taak sjablonen gegeven die kunnen worden gebruikt om eenvoudig Pools te maken en taken te verzenden.  Een set sjablonen wordt weer gegeven in de gebruikers interface van de toepassing, waarbij de sjabloon bestanden worden geopend vanuit GitHub.
@@ -32,7 +32,7 @@ De beste manier om Azure Batch rendering en de eenvoudigste manier te proberen v
 
 ## <a name="using-batch-explorer"></a>Batch Explorer gebruiken
 
-Zie voor een stapsgewijze zelf studie voor het gebruik van Batch Explorer om weer gave uit te voeren de [zelf studie over mengsels](https://docs.microsoft.com/azure/batch/tutorial-rendering-batchexplorer-blender).
+Zie voor een stapsgewijze zelf studie voor het gebruik van Batch Explorer om weer gave uit te voeren de [zelf studie over mengsels](./tutorial-rendering-batchexplorer-blender.md).
 
 ### <a name="download-and-install"></a>Downloaden en installeren
 
@@ -65,5 +65,5 @@ Invoeg toepassingen zijn beschikbaar voor sommige client toepassingen.  Met de i
 
 Voor voor beelden van batch rendering kunt u de twee zelf studies uitproberen:
 
-* [Rendering met behulp van Azure CLI](https://docs.microsoft.com/azure/batch/tutorial-rendering-cli)
-* [Weergeven met Batch Explorer](https://docs.microsoft.com/azure/batch/tutorial-rendering-batchexplorer-blender)
+* [Rendering met behulp van Azure CLI](./tutorial-rendering-cli.md)
+* [Weergeven met Batch Explorer](./tutorial-rendering-batchexplorer-blender.md)

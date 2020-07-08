@@ -3,18 +3,18 @@ title: Workflow en resources van batchservice
 description: Meer informatie over de functies van de batch-service en de werk stroom op hoog niveau van een ontwikkelings standpunt.
 ms.topic: conceptual
 ms.date: 05/12/2020
-ms.openlocfilehash: 5084ae222d0a9da0d8aa171bc89dba48377a9dd4
-ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
+ms.openlocfilehash: 76a0b140f3bea4b07a6de632abbcbc3fd26e582d
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/25/2020
-ms.locfileid: "83835917"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85965209"
 ---
 # <a name="batch-service-workflow-and-resources"></a>Workflow en resources van batchservice
 
 In dit overzicht van de kern onderdelen van de Azure Batch-service bespreken we de werk stroom op hoog niveau die door batch ontwikkelaars kan worden gebruikt om grootschalige parallelle reken oplossingen te bouwen, samen met de primaire service resources die worden gebruikt.
 
-Of u nu een gedistribueerde reken kundige toepassing of service ontwikkelt die directe [rest API](https://docs.microsoft.com/rest/api/batchservice/) -aanroepen uitgeeft of u een andere van de [batch-sdk's](batch-apis-tools.md#batch-service-apis)gebruikt, u maakt gebruik van veel van de resources en functies die hier worden besproken.
+Of u nu een gedistribueerde reken kundige toepassing of service ontwikkelt die directe [rest API](/rest/api/batchservice/) -aanroepen uitgeeft of u een andere van de [batch-sdk's](batch-apis-tools.md#batch-service-apis)gebruikt, u maakt gebruik van veel van de resources en functies die hier worden besproken.
 
 > [!TIP]
 > Zie [Basisbeginselen van Azure Batch](batch-technical-overview.md) voor een introductie op hoger niveau van de Batch-service. Zie ook de meest recente [Batch-service-updates](https://azure.microsoft.com/updates/?product=batch).
@@ -47,4 +47,4 @@ In de volgende onderwerpen worden de bronnen van de batch besproken die uw gedis
 - Meer informatie over de [Batch-API's en -hulpprogramma's](batch-apis-tools.md) die beschikbaar zijn voor het bouwen van Batch-oplossingen.
 - Lees de basisbeginselen van het ontwikkelen van een voor Batch geschikte toepassing met behulp van de [clientbibliotheek Batch .NET](quick-run-dotnet.md) of [Python](quick-run-python.md). Deze snelstarts leiden u stapsgewijs door een voorbeeldtoepassing die gebruikmaakt van de Batch-service voor het uitvoeren van een workload op meerdere rekenknooppunten. U vindt er ook informatie over het gebruik van Azure Storage voor het faseren en ophalen van een workloadbestand.
 - Download en installeer [Batch Explorer](https://azure.github.io/BatchExplorer/) voor gebruik bij het ontwikkelen van uw Batch-oplossingen. Gebruik Batch Explorer bij het maken en bewaken van en opsporen van fouten in Azure Batch-toepassingen.
-- Zie community-bronnen, waaronder [stack overflow](https://stackoverflow.com/questions/tagged/azure-batch), de [batch-Community opslag plaats](https://github.com/Azure/Batch)en het [Azure batch-forum](https://docs.microsoft.com/answers/topics/azure-batch.html).
+- Zie community-bronnen, waaronder [stack overflow](https://stackoverflow.com/questions/tagged/azure-batch), de [batch-Community opslag plaats](https://github.com/Azure/Batch)en het [Azure batch-forum](/answers/topics/azure-batch.html).

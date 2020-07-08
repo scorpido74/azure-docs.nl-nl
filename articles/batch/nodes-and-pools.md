@@ -3,12 +3,12 @@ title: Knoop punten en Pools in Azure Batch
 description: Meer informatie over reken knooppunten en Pools en hoe deze worden gebruikt in een Azure Batch werk stroom vanuit een ontwikkelings oogpunt.
 ms.topic: conceptual
 ms.date: 06/16/2020
-ms.openlocfilehash: 46c78fe1c45d2effe03008667dd424d943d75ec4
-ms.sourcegitcommit: e3c28affcee2423dc94f3f8daceb7d54f8ac36fd
+ms.openlocfilehash: f71be75c0358dbc7f76a61680df2c54f44bc4173
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/17/2020
-ms.locfileid: "84888373"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85964039"
 ---
 # <a name="nodes-and-pools-in-azure-batch"></a>Knoop punten en Pools in Azure Batch
 
@@ -80,7 +80,7 @@ Net als bij werkrollen in Cloud Services kan het *type besturingssysteem* worden
 
 ### <a name="node-agent-skus"></a>Node agent-Sku's
 
-Wanneer u een pool maakt, moet u afhankelijk van het besturingssysteem van de basisinstallatiekopie van uw VHD de juiste **nodeAgentSkuId** selecteren. U kunt een toewijzing van beschik bare SKU-Id's van de knoop punt agent ophalen voor de bijbehorende verwijzingen naar de installatie kopie van het besturings systeem door de [lijst ondersteunde sku's-bewerking van knoop punt agent](https://docs.microsoft.com/rest/api/batchservice/list-supported-node-agent-skus)
+Wanneer u een pool maakt, moet u afhankelijk van het besturingssysteem van de basisinstallatiekopie van uw VHD de juiste **nodeAgentSkuId** selecteren. U kunt een toewijzing van beschik bare SKU-Id's van de knoop punt agent ophalen voor de bijbehorende verwijzingen naar de installatie kopie van het besturings systeem door de [lijst ondersteunde sku's-bewerking van knoop punt agent](/rest/api/batchservice/list-supported-node-agent-skus)
 
 ### <a name="custom-images-for-virtual-machine-pools"></a>Aangepaste installatiekopieën voor VM-pools
 
@@ -129,7 +129,7 @@ Een formule voor vergroten/verkleinen kan op de volgende metrische gegevens word
 - **Metrische gegevens voor resources** zijn gebaseerd op CPU-gebruik, bandbreedtegebruik, geheugengebruik en het aantal knooppunten.
 - **Metrische gegevens voor taken** zijn gebaseerd op de taakstatus, zoals *Actief* (in de wachtrij) *Wordt uitgevoerd* of *Voltooid*.
 
-Wanneer met automatisch vergroten/verkleinen het aantal rekenknooppunten in een groep vermindert, moet u bedenken hoe taken moeten worden afgehandeld die worden uitgevoerd op het moment van de verkleining. Om dit te kunnen doen, biedt batch een optie voor het [*detoewijzen van knoop punten*](https://docs.microsoft.com/rest/api/batchservice/pool/removenodes#computenodedeallocationoption) die u in uw formules kunt gebruiken. U kunt bijvoorbeeld opgeven dat actieve taken worden gestopt en vervolgens opnieuw in de wachtrij worden geplaatst om te worden uitgevoerd op een ander knooppunt, of moeten worden voltooid voordat het knooppunt uit de pool wordt verwijderd. Houd er rekening mee dat bij het instellen van de toewijzing van het knoop punt de optie voor het ongedaan maken `taskcompletion` `retaineddata` van de grootte van de groep wordt ingesteld, totdat alle taken zijn voltooid of alle Bewaar perioden van de taak zijn verlopen.
+Wanneer met automatisch vergroten/verkleinen het aantal rekenknooppunten in een groep vermindert, moet u bedenken hoe taken moeten worden afgehandeld die worden uitgevoerd op het moment van de verkleining. Om dit te kunnen doen, biedt batch een optie voor het [*detoewijzen van knoop punten*](/rest/api/batchservice/pool/removenodes#computenodedeallocationoption) die u in uw formules kunt gebruiken. U kunt bijvoorbeeld opgeven dat actieve taken worden gestopt en vervolgens opnieuw in de wachtrij worden geplaatst om te worden uitgevoerd op een ander knooppunt, of moeten worden voltooid voordat het knooppunt uit de pool wordt verwijderd. Houd er rekening mee dat bij het instellen van de toewijzing van het knoop punt de optie voor het ongedaan maken `taskcompletion` `retaineddata` van de grootte van de groep wordt ingesteld, totdat alle taken zijn voltooid of alle Bewaar perioden van de taak zijn verlopen.
 
 Zie [Automatically scale compute nodes in an Azure Batch pool](batch-automatic-scaling.md) (Rekenknooppunten in een Azure Batch-pool automatisch vergroten/verkleinen) voor meer informatie over het automatisch vergroten/verkleinen van een toepassing.
 
@@ -189,7 +189,7 @@ Een gecombineerde benadering wordt meestal gebruikt voor het verwerken van een v
 
 Certificaten gebruikt u doorgaans bij het versleutelen of ontsleutelen van gevoelige gegevens voor taken, zoals de sleutel voor een [Azure Storage-account](accounts.md#azure-storage-accounts). Ter ondersteuning hiervan installeert u certificaten op knooppunten. Versleutelde geheimen worden via opdrachtregelparameters doorgegeven aan taken of worden ingesloten in een van de taakresources. De geïnstalleerde certificaten kunnen dan worden gebruikt om ze te ontsleutelen.
 
-U gebruikt de bewerking [Certificaat toevoegen](https://docs.microsoft.com/rest/api/batchservice/certificate/add) (Batch REST) of de methode [CertificateOperations.CreateCertificate](https://docs.microsoft.com/dotnet/api/microsoft.azure.batch.certificateoperations) (Batch .NET) om een certificaat aan een Batch-account toe te voegen. Daarna kunt u het certificaat aan een nieuwe of bestaande pool koppelen.
+U gebruikt de bewerking [Certificaat toevoegen](/rest/api/batchservice/certificate/add) (Batch REST) of de methode [CertificateOperations.CreateCertificate](/dotnet/api/microsoft.azure.batch.certificateoperations) (Batch .NET) om een certificaat aan een Batch-account toe te voegen. Daarna kunt u het certificaat aan een nieuwe of bestaande pool koppelen.
 
 Wanneer een certificaat aan een pool is gekoppeld, wordt het door de Batch-service in elk knooppunt in de pool geïnstalleerd. De batch-service installeert de juiste certificaten wanneer het knoop punt wordt gestart, vóór het starten van taken (inclusief de [taak taak en taak beheer](jobs-and-tasks.md#job-manager-task) [starten](jobs-and-tasks.md#start-task) ).
 

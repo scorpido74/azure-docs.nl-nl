@@ -5,17 +5,19 @@ services: logic-apps
 ms.suite: integration
 ms.reviewer: rarayudu, logicappspm
 ms.topic: conceptual
-ms.date: 05/28/2020
-ms.openlocfilehash: dec14f54c0c0994594e86793c998d02ca6781801
-ms.sourcegitcommit: 4042aa8c67afd72823fc412f19c356f2ba0ab554
+ms.date: 07/03/2020
+ms.openlocfilehash: 769d82cae6b5f9039587018ba5a7cde407f74e4c
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/24/2020
-ms.locfileid: "85296896"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85964240"
 ---
 # <a name="secure-access-and-data-in-azure-logic-apps"></a>Beveiligde toegang en gegevens in Azure Logic Apps
 
-Voor het beheren van de toegang tot en het beveiligen van gevoelige gegevens in Azure Logic Apps, kunt u de beveiliging instellen voor de volgende gebieden:
+Azure Logic Apps is afhankelijk van [Azure Storage](https://docs.microsoft.com/azure/storage/) om gegevens in rust op te slaan en automatisch te [versleutelen](../security/fundamentals/encryption-atrest.md). Deze versleuteling beveiligt uw gegevens en helpt u te voldoen aan de verplichtingen voor beveiliging en naleving van uw organisatie. Azure Storage maakt standaard gebruik van door micro soft beheerde sleutels om uw gegevens te versleutelen. Zie [Azure Storage versleuteling voor Data-at-rest](../storage/common/storage-service-encryption.md)voor meer informatie.
+
+Als u de toegang wilt controleren en gevoelige gegevens in Azure Logic Apps wilt beveiligen, kunt u op de volgende gebieden extra beveiliging instellen:
 
 * [Toegang tot activeringen op basis van een aanvraag](#secure-triggers)
 * [Toegang tot logische app-bewerkingen](#secure-operations)
@@ -23,6 +25,14 @@ Voor het beheren van de toegang tot en het beveiligen van gevoelige gegevens in 
 * [Toegang tot parameter invoer](#secure-action-parameters)
 * [Toegang tot services en systemen die worden aangeroepen vanuit Logic apps](#secure-outbound-requests)
 * [Maken van verbindingen voor specifieke connectors blok keren](#block-connections)
+* [Isolatie richtlijnen voor Logic apps](#isolation-logic-apps)
+* [Azure-beveiligings basislijn voor Azure Logic Apps](../logic-apps/security-baseline.md)
+
+Zie de volgende onderwerpen voor meer informatie over beveiliging in Azure:
+
+* [Overzicht van Azure-versleuteling](../security/fundamentals/encryption-overview.md)
+* [Azure-gegevens versleuteling-at-rest](../security/fundamentals/encryption-atrest.md)
+* [Azure Security-benchmark](../security/benchmarks/overview.md)
 
 <a name="secure-triggers"></a>
 
@@ -47,7 +57,7 @@ Elk aanvraag eindpunt op een logische app heeft een [Shared Access Signature (SA
 
 Elke URL bevat de `sp` `sv` para meter,, en `sig` query zoals beschreven in deze tabel:
 
-| Query parameter | Beschrijving |
+| Query parameter | Description |
 |-----------------|-------------|
 | `sp` | Hiermee geeft u de machtigingen op voor het gebruik van de toegestane HTTP-methoden. |
 | `sv` | Hiermee geeft u de SAS-versie op die moet worden gebruikt voor het genereren van de hand tekening. |
@@ -104,7 +114,7 @@ Als uw logische app begint met een [trigger voor aanvragen](../connectors/connec
 
 * Een inkomende oproep naar uw logische app kan slechts één autorisatie schema, ofwel Azure AD OAuth of [Shared Access signatures (SAS)](#sas), gebruiken. Alleen autorisatie schema's van [Bearer-type](../active-directory/develop/active-directory-v2-protocols.md#tokens) worden ondersteund voor OAuth-tokens, die alleen voor de aanvraag trigger worden ondersteund.
 
-* Uw logische app is beperkt tot een maximum aantal autorisatie beleidsregels. Elk autorisatie beleid heeft ook een maximum aantal [claims](../active-directory/develop/developer-glossary.md#claim). Zie [limieten en configuratie voor Azure Logic apps](../logic-apps/logic-apps-limits-and-config.md#authentication-limits)voor meer informatie.
+* Uw logische app is beperkt tot een maximum aantal autorisatie beleidsregels. Elk autorisatie beleid heeft ook een maximum aantal [claims](../active-directory/develop/developer-glossary.md#claim). Zie [Informatie over limieten en configuratie voor Azure Logic Apps](../logic-apps/logic-apps-limits-and-config.md#authentication-limits) voor meer informatie.
 
 * Een autorisatie beleid moet ten minste de **Issuer** claim bevatten, die een waarde heeft die begint met `https://sts.windows.net/` of `https://login.microsoftonline.com/` (OAuth v2) als de id van de uitgever van Azure AD. Zie [toegangs tokens voor micro soft Identity platform](../active-directory/develop/access-tokens.md)voor meer informatie over toegangs tokens.
 
@@ -185,7 +195,7 @@ Stel bijvoorbeeld dat uw logische app een autorisatie beleid heeft dat twee clai
 
 ### <a name="restrict-inbound-ip-addresses"></a>Inkomende IP-adressen beperken
 
-Samen met Shared Access Signature (SAS) kunt u de clients die uw logische app kunnen aanroepen, het beste beperken. Als u bijvoorbeeld het eind punt van de aanvraag beheert met behulp van Azure API Management, kunt u de logische app beperken tot het accepteren van aanvragen van het IP-adres voor het API Management exemplaar.
+Samen met Shared Access Signature (SAS) kunt u de clients die uw logische app kunnen aanroepen, het beste beperken. Als u bijvoorbeeld het eind punt van de aanvraag beheert met behulp van [Azure API Management](../api-management/api-management-key-concepts.md), kunt u de logische app beperken tot het accepteren van aanvragen van het IP-adres voor het [API Management service-exemplaar dat u hebt gemaakt](../api-management/get-started-create-service-instance.md).
 
 #### <a name="restrict-inbound-ip-ranges-in-azure-portal"></a>Binnenkomende IP-bereiken in Azure Portal beperken
 
@@ -202,7 +212,7 @@ Samen met Shared Access Signature (SAS) kunt u de clients die uw logische app ku
 Als u wilt dat uw logische app alleen als een geneste logische app wordt geactiveerd, selecteert u **alleen andere Logic apps**in de lijst **toegestane binnenkomende IP-adressen** . Met deze optie wordt een lege matrix naar de logische app-resource geschreven. Op die manier kunnen alleen aanroepen van de Logic Apps-service (bovenliggende Logic apps) de geneste logische app activeren.
 
 > [!NOTE]
-> Ongeacht het IP-adres kunt u nog steeds een logische app met een op aanvragen gebaseerde trigger uitvoeren met behulp van `/triggers/<trigger-name>/run` de Azure-rest API of via API management. Voor dit scenario is echter nog steeds [verificatie](../active-directory/develop/authentication-scenarios.md) vereist voor de Azure-rest API. Alle gebeurtenissen worden weer gegeven in het controle logboek van Azure. Zorg ervoor dat u de beleids regels voor toegangs beheer dienovereenkomstig instelt.
+> Ongeacht het IP-adres kunt u nog steeds een logische app met een op aanvragen gebaseerde trigger uitvoeren met behulp van de [Logic Apps rest API: werk stroom triggers-aanvraag uitvoeren](https://docs.microsoft.com/rest/api/logic/workflowtriggers/run) of door middel van API management. Voor dit scenario is echter nog steeds [verificatie](../active-directory/develop/authentication-scenarios.md) vereist voor de Azure-rest API. Alle gebeurtenissen worden weer gegeven in het controle logboek van Azure. Zorg ervoor dat u de beleids regels voor toegangs beheer dienovereenkomstig instelt.
 
 #### <a name="restrict-inbound-ip-ranges-in-azure-resource-manager-template"></a>Binnenkomende IP-bereiken in Azure Resource Manager sjabloon beperken
 
@@ -461,7 +471,7 @@ Zie voor meer informatie deze secties in dit onderwerp:
 
 Als u de [implementatie van Logic apps automatiseert met behulp van Resource Manager-sjablonen](../logic-apps/logic-apps-azure-resource-manager-templates-overview.md), kunt u de [para meters](../azure-resource-manager/templates/template-parameters.md)voor beveiligde sjablonen definiëren die tijdens de implementatie worden geëvalueerd met behulp van de-en- `securestring` `secureobject` typen. Voor het definiëren van sjabloon parameters gebruikt u de sectie van het hoogste niveau van uw sjabloon `parameters` . deze is gescheiden en verschilt van de sectie van de werk stroom definitie `parameters` . Als u de waarden voor sjabloon parameters wilt opgeven, gebruikt u een afzonderlijk [parameter bestand](../azure-resource-manager/templates/parameter-files.md).
 
-Als u bijvoorbeeld geheimen gebruikt, kunt u de para meters voor beveiligde sjablonen definiëren en gebruiken om deze geheimen op te halen uit [Azure Key Vault](../key-vault/general/overview.md) tijdens de implementatie. U kunt vervolgens naar de sleutel kluis en het geheim in het parameter bestand verwijzen. Zie deze onderwerpen voor meer informatie:
+Als u bijvoorbeeld geheimen gebruikt, kunt u de para meters voor beveiligde sjablonen definiëren en gebruiken om deze geheimen op te halen uit [Azure Key Vault](../key-vault/general/overview.md) tijdens de implementatie. U kunt vervolgens naar de sleutel kluis en het geheim in het parameter bestand verwijzen. Raadpleeg de volgende onderwerpen voor meer informatie:
 
 * [Gevoelige waarden door geven tijdens de implementatie met behulp van Azure Key Vault](../azure-resource-manager/templates/key-vault-parameter.md)
 * [Veilige para meters in azure Resource Manager sjablonen](#secure-parameters-deployment-template) verderop in dit onderwerp
@@ -687,7 +697,28 @@ Hier volgen enkele manieren waarop u eind punten kunt beveiligen die oproepen of
 
   * Verbinding maken via Azure API Management
 
-    [Azure API Management](../api-management/api-management-key-concepts.md) biedt opties voor on-premises verbindingen, zoals site-naar-site virtueel particulier netwerk en ExpressRoute-integratie voor beveiligde proxy en communicatie met on-premises systemen. Vanuit de werk stroom van uw logische app in de ontwerp functie voor logische apps kunt u een API selecteren die wordt weer gegeven door API Management, die snelle toegang biedt tot on-premises systemen.
+    [Azure API Management](../api-management/api-management-key-concepts.md) biedt opties voor on-premises verbindingen, zoals site-naar-site virtueel particulier netwerk en [ExpressRoute](../expressroute/expressroute-introduction.md) -integratie voor beveiligde proxy en communicatie met on-premises systemen. Als u een API hebt die toegang biedt tot uw on-premises systeem en u deze API beschikbaar maakt door een [API Management service-exemplaar](../api-management/get-started-create-service-instance.md)te maken, kunt u die API aanroepen in de werk stroom van de logische app door de ingebouwde API Management trigger of actie te selecteren in de ontwerp functie voor logische apps.
+
+    > [!NOTE]
+    > De connector toont alleen de API Management Services waarvoor u machtigingen hebt om te bekijken en er verbinding mee te maken, maar geen API Management Services op basis van verbruik worden weer gegeven.
+
+    1. Typ in het vak Zoeken in de ontwerp functie voor logische apps `api management` . Kies de stap op basis van het feit of u een trigger of een actie wilt toevoegen:<p>
+
+       * Als u een trigger wilt toevoegen, die altijd de eerste stap in de werk stroom is, selecteert u **een Azure API Management trigger kiezen**.
+
+       * Als u een actie wilt toevoegen, selecteert u **een Azure-API management actie kiezen**.
+
+       In dit voor beeld wordt een trigger toegevoegd:
+
+       ![Azure API Management-trigger toevoegen](./media/logic-apps-securing-a-logic-app/select-api-management.png)
+
+    1. Selecteer uw eerder gemaakte API Management service-exemplaar.
+
+       ![API Management service-exemplaar selecteren](./media/logic-apps-securing-a-logic-app/select-api-management-service-instance.png)
+
+    1. Selecteer de API-aanroep die u wilt gebruiken.
+
+       ![Bestaande API selecteren](./media/logic-apps-securing-a-logic-app/select-api.png)
 
 <a name="add-authentication-outbound"></a>
 
@@ -905,9 +936,37 @@ Als de optie [beheerde identiteit](../active-directory/managed-identities-azure-
 
 Als uw organisatie geen verbinding met specifieke bronnen kan maken met behulp van hun connectors in Azure Logic Apps, kunt u [de mogelijkheid blok keren om deze verbindingen](../logic-apps/block-connections-connectors.md) voor specifieke connectors in de werk stromen van logische apps te gebruiken met behulp van [Azure Policy](../governance/policy/overview.md). Zie voor meer informatie [blok keren verbindingen die zijn gemaakt door specifieke connectors in azure Logic apps](../logic-apps/block-connections-connectors.md).
 
+<a name="isolation-logic-apps"></a>
+
+## <a name="isolation-guidance-for-logic-apps"></a>Isolatie richtlijnen voor Logic apps
+
+U kunt Azure Logic Apps gebruiken in [Azure Government](../azure-government/documentation-government-welcome.md) alle impact niveaus in de regio's die worden beschreven door de [Azure Government impact niveau 5 isolatie richtlijnen](../azure-government/documentation-government-impact-level-5.md#azure-logic-apps) en het [Amerikaanse ministerie van defensie srg (Security Requirements Guide) voor Cloud Computing](https://dl.dod.cyber.mil/wp-content/uploads/cloud/SRG/index.html). Om aan deze vereisten te voldoen, ondersteunt Logic Apps de mogelijkheid om werk stromen te maken en uit te voeren in een omgeving met speciale resources, zodat u de prestaties van andere Azure-tenants in uw Logic apps kunt verminderen en het delen van computer bronnen met andere tenants vermijdt.
+
+* Als u uw eigen code wilt uitvoeren of XML-trans formatie wilt uitvoeren, [maakt u een Azure-functie en roept](../logic-apps/logic-apps-azure-functions.md)u deze aan in plaats van de functie voor [inline code](../logic-apps/logic-apps-add-run-inline-code.md) te gebruiken of [om assembly's respectievelijk te gebruiken als kaarten](../logic-apps/logic-apps-enterprise-integration-maps.md). Stel ook de hostomgeving in voor uw functie-app om te voldoen aan uw isolatie vereisten.
+
+  Om bijvoorbeeld te voldoen aan de vereisten van impact niveau 5, maakt u uw functie-app met het [app service plan](../azure-functions/functions-scale.md#app-service-plan) met behulp van de [ **geïsoleerde** prijs categorie](../app-service/overview-hosting-plans.md) samen met een [app service Environment (ASE)](../app-service/environment/intro.md) die ook gebruikmaakt van de **geïsoleerde** prijs categorie. In deze omgeving werken apps op specifieke virtuele Azure-machines en speciale virtuele Azure-netwerken, waarmee u de computer isolatie kunt isoleren voor uw apps en Maxi maal uitbreid bare mogelijkheden. Zie [Azure Government impact niveau 5-Azure functions](../azure-government/documentation-government-impact-level-5.md#azure-functions)voor meer informatie.
+
+  Raadpleeg de volgende onderwerpen voor meer informatie:<p>
+
+  * [Azure App Service plannen](../app-service/overview-hosting-plans.md)
+  * [Netwerkopties van Azure Functions](../azure-functions/functions-networking-options.md)
+  * [Voor Azure toegewezen hosts voor virtuele machines](../virtual-machines/windows/dedicated-hosts.md)
+  * [Isolatie van virtuele machines in azure](../virtual-machines/windows/isolation.md)
+  * [Speciale Azure-Services implementeren in virtuele netwerken](../virtual-network/virtual-network-for-azure-services.md)
+
+* Als u logische Apps wilt maken die worden uitgevoerd op toegewezen resources en toegang hebben tot bronnen die worden beveiligd met een virtueel Azure-netwerk, kunt u een [ISE (Integration service Environment)](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md)maken.
+
+  * Sommige virtuele netwerken van Azure gebruiken privé-eind punten ([persoonlijke Azure-koppeling](../private-link/private-link-overview.md)) om toegang te bieden tot Azure PaaS-Services, zoals Azure Storage, Azure Cosmos DB of Azure SQL database, partner services of klanten services die worden gehost op Azure. Als uw Logic apps toegang nodig hebben tot virtuele netwerken die gebruikmaken van privé-eind punten, moet u deze Logic apps maken, implementeren en uitvoeren in een ISE.
+
+  * Als u meer controle wilt over de versleutelings sleutels die worden gebruikt door Azure Storage, kunt u uw eigen sleutel instellen, gebruiken en beheren met behulp van [Azure Key Vault](../key-vault/general/overview.md). Deze mogelijkheid is ook bekend als ' Bring Your Own Key ' (BYOK) en uw sleutel wordt een ' door de klant beheerde sleutel ' genoemd. Zie voor meer informatie door de [klant beheerde sleutels instellen voor het versleutelen van gegevens in rust voor integratie service omgevingen (ISEs) in azure Logic apps](../logic-apps/customer-managed-keys-integration-service-environment.md).
+
+Raadpleeg de volgende onderwerpen voor meer informatie:
+
+* [Isolatie in de open bare Azure-Cloud](../security/fundamentals/isolation-choices.md)
+* [Beveiliging voor uiterst gevoelige IaaS-apps in azure](https://docs.microsoft.com/azure/architecture/reference-architectures/n-tier/high-security-iaas)
+
 ## <a name="next-steps"></a>Volgende stappen
 
-* [Implementatie voor Azure Logic Apps automatiseren](../logic-apps/logic-apps-azure-resource-manager-templates-overview.md)  
-* [Logische apps bewaken](../logic-apps/monitor-logic-apps-log-analytics.md)  
-* [Fouten en problemen van logische apps diagnosticeren](../logic-apps/logic-apps-diagnosing-failures.md)  
-* [Implementatie van logische apps automatiseren](../logic-apps/logic-apps-azure-resource-manager-templates-overview.md)
+* [Azure-beveiligings basislijn voor Azure Logic Apps](../logic-apps/security-baseline.md)
+* [Implementatie voor Azure Logic Apps automatiseren](../logic-apps/logic-apps-azure-resource-manager-templates-overview.md)
+* [Logische apps bewaken](../logic-apps/monitor-logic-apps-log-analytics.md)

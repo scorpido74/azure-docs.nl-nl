@@ -7,12 +7,12 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 04/14/2020
 ms.author: dsindona
-ms.openlocfilehash: 9c70f8d728786e8aff8da33f9a39b8c2cfaafdc4
-ms.sourcegitcommit: d118ad4fb2b66c759b70d4d8a18e6368760da3ad
+ms.openlocfilehash: 7a48da25c60eb2db3b918ebe9523440c49ed9693
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/02/2020
-ms.locfileid: "84295572"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85963798"
 ---
 # <a name="commercial-marketplace-partner-and-customer-usage-attribution"></a>Commerciële Marketplace-partner en toewijzing van klant gebruik
 
@@ -66,7 +66,7 @@ Nadat u een GUID hebt toegevoegd aan de sjabloon of in de gebruikers agent en de
 
 1. Meld u aan als een [commerciële Marketplace-Uitgever](https://aka.ms/JoinMarketplace).
 
-   * Partners moeten [beschikken over een profiel in Partner Center](https://docs.microsoft.com/azure/marketplace/become-publisher). We raden u aan de aanbieding in azure Marketplace of AppSource te vermelden.
+   * Partners moeten [beschikken over een profiel in Partner Center](become-publisher.md). We raden u aan de aanbieding in azure Marketplace of AppSource te vermelden.
    * Partners kunnen meerdere GUID'S registreren.
    * Partners kunnen GUID'S registreren voor niet-Marketplace-oplossings sjablonen en aanbiedingen.
 
@@ -74,7 +74,7 @@ Nadat u een GUID hebt toegevoegd aan de sjabloon of in de gebruikers agent en de
 
 1. Selecteer op de **pagina account instellingen**de optie **Tracking GUID toevoegen.**
 
-1. Voer in het vak **GUID** uw tracking-GUID in. Voer alleen de GUID in zonder het **PID-** voor voegsel. Typ in het vak **Beschrijving** de naam of beschrijving van uw aanbieding.
+1. Voer in het vak **GUID** uw tracking-GUID in. Voer alleen de GUID in zonder het `pid-` voor voegsel. Typ in het vak **Beschrijving** de naam of beschrijving van uw aanbieding.
 
 1. Als u meer dan één GUID wilt registreren, selecteert u opnieuw **Tracking GUID toevoegen** . Er worden aanvullende vakken op de pagina weer gegeven.
 
@@ -85,7 +85,7 @@ Veel partner oplossingen worden geïmplementeerd met Azure Resource Manager sjab
 
 > [!NOTE]
 > Zie voor meer informatie over het maken en publiceren van oplossings sjablonen.
-> * [Maak en implementeer uw eerste Resource Manager-sjabloon](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-quickstart-create-templates-use-the-portal).
+> * [Maak en implementeer uw eerste Resource Manager-sjabloon](../azure-resource-manager/templates/quickstart-create-templates-use-the-portal.md).
 >* [Azure-toepassing aanbieding](./partner-center-portal/create-new-azure-apps-offer.md).
 >* Video: [oplossings sjablonen en beheerde toepassingen voor Azure Marketplace bouwen](https://channel9.msdn.com/Events/Build/2018/BRK3603).
 
@@ -96,9 +96,9 @@ Als u een Globally Unique Identifier (GUID) wilt toevoegen, brengt u één wijzi
 
 1. Open de Resource Manager-sjabloon.
 
-1. Voeg een nieuwe resource toe aan het hoofd sjabloon bestand. De resource moet zich alleen in het bestand **mainTemplate. json** of **azuredeploy. json** bevindt, en niet in geneste of gekoppelde sjablonen.
+1. Voeg een nieuwe resource toe aan het hoofd sjabloon bestand. De resource moet zich in het **mainTemplate.jsop** of **azuredeploy.js** alleen in het bestand en niet in geneste of gekoppelde sjablonen.
 
-1. Voer de GUID-waarde na het **PID-** voor voegsel (bijvoorbeeld PID-eb7927c8-dd66-43e1-b0cf-c346a422063) in.
+1. Voer de GUID-waarde na het `pid-` voor voegsel in (bijvoorbeeld: PID-eb7927c8-dd66-43e1-b0cf-c346a422063).
 
 1. Controleer de sjabloon op eventuele fouten.
 
@@ -109,7 +109,7 @@ Als u een Globally Unique Identifier (GUID) wilt toevoegen, brengt u één wijzi
 ### <a name="sample-resource-manager-template-code"></a>Voorbeeld sjabloon code van Resource Manager
 
 Als u het bijhouden van resources voor uw sjabloon wilt inschakelen, moet u de volgende extra resource toevoegen onder de sectie resources. Zorg ervoor dat u de onderstaande voorbeeld code met uw eigen invoer waarden wijzigt wanneer u deze toevoegt aan het hoofd sjabloon bestand.
-De resource moet alleen worden toegevoegd aan het bestand **mainTemplate. json** of **azuredeploy. json** , en niet in geneste of gekoppelde sjablonen.
+De resource moet worden toegevoegd aan de **mainTemplate.jsop** of **azuredeploy.js** alleen in het bestand en niet in geneste of gekoppelde sjablonen.
 
 ```
 // Make sure to modify this sample code with your own inputs where applicable
@@ -137,12 +137,12 @@ Als u een resource manager-sjabloon gebruikt, moet u uw oplossing labelen door d
 
 ### <a name="tag-a-deployment-with-the-resource-manager-apis"></a>Een implementatie labelen met de Resource Manager-Api's
 
-Als u de toewijzing van klant gebruik wilt inschakelen, neemt u bij het ontwerpen van de API-aanroepen een GUID op in de header van de gebruikers agent in de aanvraag. Voeg de GUID voor elke aanbieding of SKU toe. Format teer de teken reeks met het **PID-** voor voegsel en voeg de door de partner gegenereerde GUID toe. Hier volgt een voor beeld van de GUID-indeling voor het invoegen van de gebruikers agent:
+Als u de toewijzing van klant gebruik wilt inschakelen, neemt u bij het ontwerpen van de API-aanroepen een GUID op in de header van de gebruikers agent in de aanvraag. Voeg de GUID voor elke aanbieding of SKU toe. Format teer de teken reeks met het `pid-` voor voegsel en voeg de door de partner gegenereerde GUID toe. Hier volgt een voor beeld van de GUID-indeling voor het invoegen van de gebruikers agent:
 
 ![Voor beeld van GUID-indeling](media/marketplace-publishers-guide/tracking-sample-guid-for-lu-2.PNG)
 
 > [!NOTE]
-> De indeling van de teken reeks is belang rijk. Als het **PID-** voor voegsel niet is opgenomen, is het niet mogelijk om de gegevens op te vragen. Andere Sdk's volgen verschillend. Voor het implementeren van deze methode raadpleegt u de ondersteuning en traceer benadering voor uw voor Keurs-Azure-SDK.
+> De indeling van de teken reeks is belang rijk. Als het `pid-` voor voegsel niet is opgenomen, is het niet mogelijk om de gegevens op te vragen. Andere Sdk's volgen verschillend. Voor het implementeren van deze methode raadpleegt u de ondersteuning en traceer benadering voor uw voor Keurs-Azure-SDK.
 
 #### <a name="example-the-python-sdk"></a>Voor beeld: de python-SDK
 
@@ -168,7 +168,7 @@ Wanneer u de Azure CLI gebruikt om uw GUID toe te voegen, stelt u de omgevings v
 ```
 export AZURE_HTTP_USER_AGENT='pid-eb7927c8-dd66-43e1-b0cf-c346a422063'
 ```
-Zie [Azure SDK voor Go](https://docs.microsoft.com/azure/go/)voor meer informatie.
+Zie [Azure SDK voor Go](https://docs.microsoft.com/azure/developer/go/)voor meer informatie.
 
 ## <a name="use-terraform"></a>Terraform gebruiken
 
@@ -257,7 +257,7 @@ Er zijn twee ondersteunings kanalen, afhankelijk van de problemen die u ondervin
 
 Als u problemen ondervindt in het partner centrum, zoals het weer geven van het rapport voor het gebruik van de klant en u zich hebt aangemeld, maakt u hier een ondersteunings aanvraag met het ondersteunings team van partner Center:[https://partner.microsoft.com/support](https://partner.microsoft.com/support)
 
-![](./media/marketplace-publishers-guide/partner-center-log-in-support.png)
+![Scherm afbeelding van de ondersteunings pagina ophalen](./media/marketplace-publishers-guide/partner-center-log-in-support.png)
 
 Als u hulp nodig hebt bij het voorbereiden van de Marketplace en/of de toewijzing van klant gebruik in het algemeen, zoals het instellen van de toewijzing van klant gebruik, volgt u de onderstaande stappen:
 
@@ -332,7 +332,7 @@ Het formulier GUID-Generator van Azure Storage is gegarandeerd een GUID van de v
 
 **Kan ik een persoonlijke, aangepaste VHD voor een oplossings sjabloon aanbieding in azure Marketplace gebruiken?**
 
-Nee, dat kan niet. De installatie kopie van de virtuele machine moet afkomstig zijn van de Azure Marketplace, zie: [https://docs.microsoft.com/azure/marketplace/marketplace-virtual-machines](https://docs.microsoft.com/azure/marketplace/marketplace-virtual-machines) .
+Nee, dat kan niet. De installatie kopie van de virtuele machine moet afkomstig zijn van de Azure Marketplace. Zie de [publicatie handleiding voor aanbiedingen van virtuele machines op Azure Marketplace](marketplace-virtual-machines.md).
 
 U kunt een VM-aanbieding in Marketplace maken met behulp van uw aangepaste VHD en markeren als privé, zodat niemand deze kan zien. Ga vervolgens naar deze virtuele machine in uw oplossings sjabloon.
 

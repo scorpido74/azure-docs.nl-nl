@@ -8,12 +8,12 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: article
 ms.date: 01/18/2019
 ms.author: evansma
-ms.openlocfilehash: 3d250ce3960bdc7687babb08ee6a6c52bb2cd15d
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 2cbd1cc5e9eb85cb9814eb135234315ec29ea668
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82196346"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85963050"
 ---
 # <a name="marketplace-rewards"></a>Marketplace-beloningen
 
@@ -21,7 +21,7 @@ Marketplace-beloningen zijn ontworpen ter ondersteuning van uw specifieke groei 
 
 Er wordt een positieve feedback lus gemaakt: de voor delen van elke groei fase zijn ontworpen om u te laten profiteren van de volgende fase, zodat u uw bedrijf kunt uitbreiden naar klanten van micro soft, met het veld van micro soft en via het kanaal van micro soft door gebruik te maken van de commerciële Marketplace als uw platform. 
 
-Uw voor delen worden gedifferentieerd op basis van het feit of uw aanbieding een [lijst, proef versie of trans acties](https://docs.microsoft.com/azure/marketplace/determine-your-listing-type#choose-a-publishing-option)is.
+Uw voor delen worden gedifferentieerd op basis van het feit of uw aanbieding een [lijst, proef versie of trans acties](../determine-your-listing-type.md#choose-a-publishing-option)is.
 
 U wordt contact opgenomen met een lid van het team voor beloningen wanneer uw aanbieding live gaat, op basis van uw geschiktheid. 
 
@@ -37,13 +37,13 @@ De stappen om aan de slag te gaan zijn eenvoudig:
 
 1. Publiceer een aanbieding in Microsoft AppSource of op Azure Marketplace.
 2. Ga naar het [dash board](https://partner.microsoft.com/dashboard/directory)van de partner centrum en selecteer op de pagina Marketplace-beloningen het tabblad **verkoop en marketing voor delen** om uw lijst met voor delen te bekijken.
-3. Als u het voor deel van verkoop en marketing wilt activeren, moet u eerst een bedrijfs marketing contact toewijzen. Deze contact persoon ontvangt opvolgings communicatie over uw Marketplace-beloningen.
+3. Als u het voor deel van verkoop en marketing wilt activeren, moet u eerst een bedrijfs marketing contact toewijzen. Deze contactpersoon ontvangt opvolgingscommunicatie over uw Marketplace-beloningen.
 4. Als u uw marketing contactpersoongegevens wilt toevoegen of bijwerken, gaat u naar het tabblad voor delen van verkoop en marketing op de pagina Marketplace-beloningen en selecteert u vervolgens **toevoegen, bijwerken of wijzigen**.  Ga daarna als volgt te werk:
 
     1. Selecteer een gebruiker uit de lijst. Als de gebruiker die u wilt toewijzen, zich niet in de lijst bevindt, kunt u nieuwe gebruikers toevoegen in **account instellingen**.
-    1. Geef een e-mail adres op voor de gebruiker die afwijkt van het e-mail adres dat is gekoppeld aan het partner centrum-account van uw bedrijf. We sturen instructies voor het gebruik van uw Marketplace-voor delen voor het e-mail adres van uw aangewezen marketing contact persoon.
-    1. Geef de telefoon en de voorkeurs taal van de contact persoon voor deze marketing contact persoon op. Wanneer u klaar bent met het invoeren van deze gegevens, selecteert u **gebruiker toewijzen**.
-    1. Nadat u de marketing contactpersoon hebt bijgewerkt, selecteert u **activeren** voor het voor deel dat u wilt gaan gebruiken. Zodra u een voor deel hebt geactiveerd, neemt de contact persoon van uw marketing binnen een week contact met u op met het team van de lonen.
+    1. Geef een e-mail adres op voor de gebruiker die afwijkt van het e-mail adres dat is gekoppeld aan het partner centrum-account van uw bedrijf. We sturen instructies voor het gebruik van uw Marketplace-voordelen naar het e-mailadres van uw aangewezen marketing-contactpersoon.
+    1. Geef het telefoonnummer en de voorkeurstaal van de contactpersoon voor deze marketing-contactpersoon op. Wanneer u klaar bent met het invoeren van deze gegevens, selecteert u **Gebruiker toewijzen**.
+    1. Nadat u de marketing contactpersoon hebt bijgewerkt, selecteert u **activeren** voor het voor deel dat u wilt gaan gebruiken. Zodra u een voordeel hebt geactiveerd, neemt een lid van het team Beloningen binnen een week contact op met uw marketing-contactpersoon.
 
 **Technische voordelen**
 
@@ -54,6 +54,6 @@ De stappen om aan de slag te gaan zijn eenvoudig:
 >Als uw aanbieding al meer dan vier weken Live is en u geen bericht hebt ontvangen, controleert u of u de eigenaar bent van de betreffende aanbieding in Cloud Partner-portal of in het partner centrum. De communicatie en de volgende stappen moeten worden uitgevoerd.
 
 >[!Note] 
->Als u de eigenaar niet kunt bepalen of als de eigenaar uw bedrijf heeft verlaten, kan u een ondersteunings ticket https://aka.ms/marketplacepublishersupportgenereren op.
+>Als u de eigenaar niet kunt bepalen of als de eigenaar uw bedrijf heeft verlaten, kan u een ondersteunings ticket genereren op https://aka.ms/marketplacepublishersupport .
 
 Het bereik van de activiteiten die voor u beschikbaar zijn, wordt uitgebreid naarmate u uw aanbiedingen in de Marketplace verg root. Alle vermeldingen ontvangen een basis niveau van optimalisatie aanbevelingen en promotie als onderdeel van een eigen e-mail van resources en aanbevolen procedures.

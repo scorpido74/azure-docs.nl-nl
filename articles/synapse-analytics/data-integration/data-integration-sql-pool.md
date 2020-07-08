@@ -5,16 +5,16 @@ services: synapse-analytics
 author: djpmsft
 ms.service: synapse-analytics
 ms.topic: conceptual
-ms.subservice: ''
+ms.subservice: sql
 ms.date: 04/15/2020
 ms.author: daperlov
 ms.reviewer: jrasnick
-ms.openlocfilehash: acfe367033d1553f5ee408ad0f4170e5d981377e
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: c093a424ecf085c59501ee3d480838cc30c2ebf4
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84021820"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85963033"
 ---
 # <a name="ingesting-data-into-a-sql-pool"></a>Gegevens opnemen in een SQL-groep
 
@@ -34,7 +34,7 @@ In azure Synapse Analytics is een gekoppelde service waar u de verbindings gegev
 1. Onder **externe verbindingen**selecteert u **gekoppelde services**.
 1. Klik op **Nieuw**om een gekoppelde service toe te voegen.
 1. Selecteer de tegel Azure Data Lake Storage Gen2 in de lijst en klik op **door gaan**.
-1. Voer uw verificatie referenties in. Account sleutel, Service-Principal en beheerde identiteit worden momenteel ondersteunde verificatie typen. Klik op verbinding testen om te controleren of uw referenties correct zijn. Klik op **maken** wanneer u klaar bent.
+1. Voer uw verificatie referenties in. Account sleutel, Service-Principal en beheerde identiteit worden momenteel ondersteunde verificatie typen. Klik op verbinding testen om te controleren of uw referenties correct zijn. Klik op **Maken** als u klaar bent.
 1. Herhaal stap 3-5, maar in plaats van Azure Data Lake Storage Gen2, selecteert u de tegel Azure Synapse Analytics en voert u de bijbehorende verbindings referenties in. Voor Azure Synapse Analytics worden de SQL-verificatie, de beheerde identiteit en de Service-Principal momenteel ondersteund.
 
 ## <a name="create-pipeline"></a>Pijplijn maken
@@ -46,10 +46,10 @@ Een pijp lijn bevat de logische stroom voor het uitvoeren van een reeks activite
 1. Klik op de Kopieer activiteit en ga naar het tabblad **bron** . Klik op **Nieuw** om een nieuwe bron gegevensset te maken.
 1. Selecteer Azure Data Lake Storage Gen2 als uw gegevens archief en klik op door gaan.
 1. Selecteer DelimitedText als uw indeling en klik op door gaan.
-1. Selecteer in het deel venster set Properties de ADLS-gekoppelde service die u hebt gemaakt. Geef het bestandspad van de bron gegevens op en geef op of de eerste rij een koptekst heeft. U kunt het schema importeren uit het bestands archief of een voorbeeld bestand. Klik op OK wanneer u klaar bent.
+1. Selecteer in het deel venster set Properties de ADLS-gekoppelde service die u hebt gemaakt. Geef het bestandspad van de bron gegevens op en geef op of de eerste rij een koptekst heeft. U kunt het schema importeren uit het bestands archief of een voorbeeld bestand. Als u klaar bent, klikt u op OK.
 1. Ga naar het tabblad **sink** . Klik op **Nieuw** om een nieuwe Sink-gegevensset te maken.
 1. Selecteer Azure Synapse Analytics als uw gegevens archief en klik op door gaan.
-1. Selecteer in het deel venster Eigenschappen instellen de gekoppelde Azure Synapse Analytics-service die u hebt gemaakt. Als u naar een bestaande tabel schrijft, selecteert u deze in de vervolg keuzelijst. Controleer anders **bewerken** en voer in de nieuwe tabel naam in. Klik op OK wanneer u klaar bent
+1. Selecteer in het deel venster Eigenschappen instellen de gekoppelde Azure Synapse Analytics-service die u hebt gemaakt. Als u naar een bestaande tabel schrijft, selecteert u deze in de vervolg keuzelijst. Controleer anders **bewerken** en voer in de nieuwe tabel naam in. Als u klaar bent, klikt u op OK
 1. Als u een tabel wilt maken, schakelt u **automatisch maken tabel** in het veld tabel in.
 
 ## <a name="debug-and-publish-pipeline"></a>Fouten opsporen en pijp lijn publiceren
@@ -58,16 +58,16 @@ Zodra u klaar bent met het configureren van de pijp lijn, kunt u een debug-uitvo
 
 1. Selecteer **Fouten opsporen** om fouten op te sporen in de pijplijn. De status van de pijplijnuitvoering wordt weergegeven op het tabblad **Uitvoer** onder in het venster. 
 1. Zodra de pijp lijn kan worden uitgevoerd, selecteert u in de bovenste werk balk **Alles publiceren**. Deze actie publiceert entiteiten (gegevens sets en pijp lijnen) die u hebt gemaakt voor de Synapse Analytics-service.
-1. Wacht tot u het bericht **Publiceren gelukt** ziet. Klik in de rechter bovenhoek op de knop Bell om meldings berichten weer te geven. 
+1. Wacht tot u het bericht **Gepubliceerd** ziet. Klik in de rechter bovenhoek op de knop Bell om meldings berichten weer te geven. 
 
 
 ## <a name="trigger-and-monitor-the-pipeline"></a>De pijp lijn activeren en bewaken
 
 In deze stap moet u de pijp lijn die u in de vorige stap hebt gepubliceerd hand matig activeren. 
 
-1. Selecteer **trigger toevoegen** op de werk balk en selecteer **nu activeren**. Klik op de pagina **Pijplijnuitvoering** op **Voltooien**.  
+1. Selecteer **trigger toevoegen** op de werk balk en selecteer **nu activeren**. Selecteer op de pagina **pijplijn uitvoering** de optie **volt ooien**.  
 1. Ga naar het tabblad **monitor** in de zijbalk links. U ziet een pijplijn die wordt geactiveerd door een handmatige trigger. U kunt via de links in de kolom **Acties** details van de activiteiten bekijken en de pijplijn opnieuw uitvoeren.
-1. Selecteer de link **Uitvoeringen van activiteit weergeven** in de kolom **Acties** om de activiteituitvoeringen te zien die zijn gekoppeld aan de pijplijnuitvoering. In dit voor beeld is er slechts één activiteit, zodat er slechts één vermelding in de lijst wordt weer gegeven. Selecteer de link **Details** (pictogram van een bril) in de kolom **Acties** om details over de kopieerbewerking te zien. Selecteer de **pijp lijn wordt** aan de bovenkant uitgevoerd om terug te gaan naar de weer gave pijplijn uitvoeringen. Selecteer **Vernieuwen** om de weergave te vernieuwen.
+1. Selecteer de link **Uitvoeringen van activiteit weergeven** in de kolom **Acties** om de activiteituitvoeringen te zien die zijn gekoppeld aan de pijplijnuitvoering. Omdat er in dit voorbeeld slechts één activiteit is, ziet u slechts één vermelding in de lijst. Selecteer de link **Details** (pictogram van een bril) in de kolom **Acties** om details over de kopieerbewerking te zien. Selecteer de **pijp lijn wordt** aan de bovenkant uitgevoerd om terug te gaan naar de weer gave pijplijn uitvoeringen. Selecteer **Vernieuwen** om de weergave te vernieuwen.
 1. Controleer of uw gegevens correct zijn geschreven in de SQL-groep.
 
 

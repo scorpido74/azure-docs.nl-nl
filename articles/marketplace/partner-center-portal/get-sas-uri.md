@@ -7,12 +7,12 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 04/09/2020
 ms.author: mingshen
-ms.openlocfilehash: 42e2419301b282685b2afe13782c2deb4f52823c
-ms.sourcegitcommit: 6fd8dbeee587fd7633571dfea46424f3c7e65169
+ms.openlocfilehash: 24ba593a56d4d12211d10f143261caaf6d901bfc
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83725870"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85964665"
 ---
 # <a name="get-shared-access-signature-uri-for-your-vm-image"></a>URI voor Shared Access-hand tekening ophalen voor uw VM-installatie kopie
 
@@ -124,6 +124,6 @@ Controleer elke gegenereerde SAS-URI door de volgende controle lijst te gebruike
 
 ## <a name="next-step"></a>Volgende stap
 
-Zie [veelvoorkomende SAS-URL-problemen](https://docs.microsoft.com/azure/marketplace/partner-center-portal/common-sas-uri-issues)als u problemen hebt met het maken van een SAS-URI. Sla anders de SAS-URI (s) op een veilige locatie op voor later gebruik. U hebt deze nodig voor het publiceren van uw VM-aanbieding in het partner centrum.
+Zie [veelvoorkomende SAS-URL-problemen](common-sas-uri-issues.md)als u problemen hebt met het maken van een SAS-URI. Sla anders de SAS-URI (s) op een veilige locatie op voor later gebruik. U hebt deze nodig voor het publiceren van uw VM-aanbieding in het partner centrum.
 
-* [Een Azure virtual machine-aanbieding maken](https://docs.microsoft.com/azure/marketplace/partner-center-portal/azure-vm-create-offer)
+* [Een Azure virtual machine-aanbieding maken](azure-vm-create-offer.md)

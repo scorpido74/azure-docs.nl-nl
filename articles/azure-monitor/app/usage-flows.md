@@ -6,16 +6,16 @@ author: NumberByColors
 ms.author: daviste
 ms.date: 01/24/2018
 ms.reviewer: mbullwin
-ms.openlocfilehash: 8622ede9e6f7fba2fde2e0b2e90eb31520a23d04
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 6583a2fe5abd0193f37502e07c7b3fa0ee58ba9d
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80892441"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85963419"
 ---
 # <a name="analyze-user-navigation-patterns-with-user-flows-in-application-insights"></a>Analyseer gebruikers navigatie patronen met Gebruikersstromen in Application Insights
 
-![Application Insights Gebruikersstromen-hulp programma](./media/usage-flows/00001-flows.png)
+![Application Insights Gebruikersstromen-hulp programma](./media/usage-flows/flows.png)
 
 Het hulp programma Gebruikersstromen visualiseert hoe gebruikers navigeren tussen de pagina's en functies van uw site. Het is handig voor het beantwoorden van vragen als:
 
@@ -33,7 +33,7 @@ Het hulp programma Gebruikersstromen wordt gestart vanuit een initiële pagina w
 
 ## <a name="start-by-choosing-an-initial-event"></a>Begin met het kiezen van een eerste gebeurtenis
 
-![Kies een eerste gebeurtenis voor Gebruikersstromen](./media/usage-flows/00002-flows-initial-event.png)
+![Kies een eerste gebeurtenis voor Gebruikersstromen](./media/usage-flows/initial-event.png)
 
 Als u wilt beginnen met het beantwoorden van vragen met het Gebruikersstromen-hulp programma, kiest u een eerste pagina weergave, aangepaste gebeurtenis of uitzonde ring die als uitgangs punt voor de visualisatie fungeert:
 
@@ -58,7 +58,7 @@ Als u meer stappen in de visualisatie wilt zien, gebruikt u de vervolg keuzelijs
 
 ## <a name="after-visiting-a-page-or-feature-where-do-users-go-and-what-do-they-click"></a>Wanneer worden er een pagina of functie bezocht, waar worden gebruikers naartoe?
 
-![Gebruik Gebruikersstromen om inzicht te krijgen in waar gebruikers klikken](./media/usage-flows/00003-flows-one-step.png)
+![Gebruik Gebruikersstromen om inzicht te krijgen in waar gebruikers klikken](./media/usage-flows/one-step.png)
 
 Als uw eerste gebeurtenis een pagina weergave is, is de eerste kolom (' stap 1 ') van de visualisatie een snelle manier om te begrijpen wat gebruikers direct na de pagina hebben bezocht. Probeer uw site te openen in een venster naast de visualisatie Gebruikersstromen. Vergelijk uw verwachtingen over hoe gebruikers met de pagina communiceren met de lijst met gebeurtenissen in de kolom ' stap 1 '. Vaak kan een UI-element op de pagina die niet van belang is voor uw team, zich op de meest gebruikte pagina bevindt. Het kan een geweldig uitgangs punt zijn voor ontwerp verbeteringen voor uw site.
 

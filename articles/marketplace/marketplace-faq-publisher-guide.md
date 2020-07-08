@@ -7,12 +7,12 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 05/08/2020
 ms.author: dsindona
-ms.openlocfilehash: 79ca7381c1d06d897202320632b55f91e4a50d91
-ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
+ms.openlocfilehash: 985a8ac83d48de11ac134bc9a942c766e4ff5d32
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/03/2020
-ms.locfileid: "84340467"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85963594"
 ---
 # <a name="common-questions-about-microsoft-commercial-marketplace"></a>Veelgestelde vragen over micro soft Commercial Marketplace
 
@@ -67,7 +67,7 @@ De manieren waarop klanten uw commerciële Marketplace-aanbieding kunnen gebruik
 
 Nadat u zich hebt aangemeld en de uitgever overeenkomst hebt geaccepteerd, hebt u toegang tot de pagina commerciële Marketplace in het partner centrum. Hier maakt en beheert u Voorst Ellen en waar u analyse rapporten bekijkt. Voor Microsoft 365-apps moet u ook het Office Store-programma activeren binnen het partner centrum.
 
-Zie voor meer informatie [Welkom bij de commerciële Marketplace](https://docs.microsoft.com/azure/marketplace/) en [geld verdienen Your Office 365-invoeg toepassing via micro soft Commercial Marketplace](https://docs.microsoft.com/office/dev/store/monetize-addins-through-microsoft-commercial-marketplace).
+Zie voor meer informatie [Welkom bij de commerciële Marketplace](index.yml) en [geld verdienen Your Office 365-invoeg toepassing via micro soft Commercial Marketplace](https://docs.microsoft.com/office/dev/store/monetize-addins-through-microsoft-commercial-marketplace).
 
 ### <a name="how-do-i-get-support-assistance-for-the-commercial-marketplace"></a>Hoe kan ik ondersteuning voor de commerciële Marketplace?
 
@@ -77,7 +77,7 @@ U kunt ook [deel nemen aan ons Active Community-Forum](https://www.microsoftpart
 
 ### <a name="what-analytics-are-available-to-my-organization-from-the-commercial-marketplace"></a>Welke analyses zijn beschikbaar voor mijn organisatie vanuit de commerciële Marketplace?
 
-We bieden rapportage over uw aanbiedingen binnen onze commerciële Marketplace. Als u toegang wilt krijgen tot gegevens over klanten, bestellingen, Store engagement en meer, gaat u naar [Analytics voor de commerciële Marketplace in het partner centrum](https://docs.microsoft.com/azure/marketplace/partner-center-portal/analytics).
+We bieden rapportage over uw aanbiedingen binnen onze commerciële Marketplace. Als u toegang wilt krijgen tot gegevens over klanten, bestellingen, Store engagement en meer, gaat u naar [Analytics voor de commerciële Marketplace in het partner centrum](partner-center-portal/analytics.md).
 
 ### <a name="what-is-microsofts-relationship-with-my-customers"></a>Wat is de relatie van micro soft met mijn klanten?
 
@@ -89,7 +89,7 @@ Als uitgever kunt u de gebruiks voorwaarden voor uw software oplossing instellen
 
 U kunt wijzigingen aanbrengen die van toepassing zijn op alle klanten, of u kunt de wijzigingen specifiek door voeren voor bepaalde klanten. U kunt uw voor waarden ook volledig aanpassen, die kunnen worden ingevoerd in een tekstvak of worden gehost op een website die wordt weer gegeven als een webadres.
 
-Zie voor meer informatie [het standaard contract voor de micro soft Commercial Marketplace](https://docs.microsoft.com/azure/marketplace/standard-contract).
+Zie voor meer informatie [het standaard contract voor de micro soft Commercial Marketplace](standard-contract.md).
 
 ### <a name="is-azure-marketplace-available-in-azure-government"></a>Is Azure Marketplace beschikbaar in Azure Government?
 
@@ -126,7 +126,7 @@ Als u een aankoop tegen een zeer lage prijs wilt volt ooien, kunt u het beste ee
 
 Als klanten uw aanbiedingen gebruiken op de Microsoft AppSource-en Azure Marketplace-winkel, worden er gegevens vastgelegd. Nadat klanten voldoende interesse hebben bewezen, wordt een lead gemaakt en wordt er een verkoop kans naar het systeem van uw keuze verzonden. Uitgevers die succes hebben met onze commerciële Marketplace, kunnen vaak leads maken, relaties ontwikkelen en interesses in deals inzetten.
 
-Zie [leads van klanten in uw Marketplace-aanbieding](https://docs.microsoft.com/azure/marketplace/partner-center-portal/commercial-marketplace-get-customer-leads)voor meer informatie.
+Zie [leads van klanten in uw Marketplace-aanbieding](partner-center-portal/commercial-marketplace-get-customer-leads.md)voor meer informatie.
 
 ### <a name="why-arent-my-changes-reflected-in-the-offer-on-microsoft-appsource-or-azure-marketplace"></a>Waarom worden mijn wijzigingen niet doorgevoerd in de aanbieding op Microsoft AppSource of Azure Marketplace?
 
@@ -146,7 +146,7 @@ Microsoft AppSource is het doel voor zakelijke en industriële oplossingen en Az
 
 Ons wereld wijde netwerk van wederverkopers omvat tien duizenden organisaties die deel nemen aan het Cloud Solution Provider-programma. Het CSP-programma stelt organisaties in staat om onze producten en aanbiedingen van de commerciële Marketplace te verkopen en biedt ze de hulp middelen om dit probleemloos uit te voeren.
 
-Zie [Cloud Solution Providers](https://docs.microsoft.com/azure/marketplace/cloud-solution-providers)(Engelstalig) voor meer informatie.
+Zie [Cloud Solution Providers](cloud-solution-providers.md)(Engelstalig) voor meer informatie.
 
 ### <a name="how-can-i-find-resellers-to-establish-partnerships"></a>Hoe kan ik leveranciers vinden om partnerschappen te maken?
 
@@ -156,7 +156,7 @@ Met behulp van de map van de [oplossings provider](https://www.microsoft.com/sol
 
 Ja, u kunt aanbiedingen beschikbaar stellen voor alle wederverkopers in het Cloud Solution Provider-programma of alleen voor degenen die u opgeeft.
 
-Zie [Cloud Solution Providers](https://docs.microsoft.com/azure/marketplace/cloud-solution-providers)(Engelstalig) voor meer informatie.
+Zie [Cloud Solution Providers](cloud-solution-providers.md)(Engelstalig) voor meer informatie.
 
 ### <a name="how-can-i-pay-margin-to-resellers"></a>Hoe kan ik een marge betalen aan wederverkopers?
 
@@ -229,7 +229,7 @@ Het gebruikers account moet de machtigingen *eigenaar* of *Inzender* hebben voor
 
 Klanten kunnen oplossingen van de commerciële Marketplace vinden op 141 locaties over de hele wereld.
 
-Als u de lijst met locaties wilt bekijken, gaat u naar [belasting gegevens voor uitgevers van commerciële markt plaatsen](https://docs.microsoft.com/azure/marketplace/partner-center-portal/tax-details-paid-transactions).
+Als u de lijst met locaties wilt bekijken, gaat u naar [belasting gegevens voor uitgevers van commerciële markt plaatsen](partner-center-portal/tax-details-paid-transactions.md).
 
 ### <a name="what-currencies-are-supported-with-the-commercial-marketplace"></a>Welke valuta's worden ondersteund met de commerciële Marketplace?
 
@@ -252,7 +252,7 @@ Trans acties kunnen worden verwerkt in de volgende 17 valuta's:
 - TWD
 - USD
 
-Als u de lijst met valuta's wilt bekijken, gaat u naar [geografische Beschik baarheid en valuta ondersteuning voor commerciële Marketplace](https://docs.microsoft.com/azure/marketplace/marketplace-geo-availability-currencies).
+Als u de lijst met valuta's wilt bekijken, gaat u naar [geografische Beschik baarheid en valuta ondersteuning voor commerciële Marketplace](marketplace-geo-availability-currencies.md).
 
 ### <a name="can-customers-change-subscriptions-or-license-volumes-mid-term"></a>Kunnen klanten abonnementen of licentie volumes op een middel lange termijn wijzigen?
 
@@ -274,32 +274,32 @@ Klanten worden meestal maandelijks gefactureerd voor aankopen in de vorige factu
 
 ### <a name="how-often-will-i-receive-payouts-for-sales-through-the-commercial-marketplace"></a>Hoe vaak ontvang ik uitbetalingen voor verkoop via de commerciële Marketplace?
 
-Uitbetalingen gebeuren maandelijks. Zie voor meer informatie over betalings schema's uw aanstaande uitbetalingen in partner centrum en de manier waarop de klant niet-betalingen doen, de [Details van het uitbetalings beleid](https://docs.microsoft.com/azure/marketplace/partner-center-portal/payout-policy-details).
+Uitbetalingen gebeuren maandelijks. Zie voor meer informatie over betalings schema's uw aanstaande uitbetalingen in partner centrum en de manier waarop de klant niet-betalingen doen, de [Details van het uitbetalings beleid](partner-center-portal/payout-policy-details.md).
 
 - Voor trans acties waarbij de klant een Enterprise Agreement heeft gebruikt, worden uitbetalingen in de volgende uitbetalings cyclus in 30 dagen na de klant factuur uitgegeven. 
 - Voor trans acties waarbij de klant een credit card heeft gebruikt, is er een extra periode van 30 dagen nadat we een betaling hebben ontvangen om de middelen duidelijk te maken en zijn er geen terugstortingen of verdachte fraude.
 
 Uitbetalingen worden alleen verleend wanneer de verkoop een minimale gecombineerde waarde van $50,00 heeft bereikt.
 
-Zie [betalings drempels, methoden en tijd frames](https://docs.microsoft.com/azure/marketplace/partner-center-portal/payment-thresholds-methods-timeframes)voor meer informatie.
+Zie [betalings drempels, methoden en tijd frames](partner-center-portal/payment-thresholds-methods-timeframes.md)voor meer informatie.
 
 ### <a name="in-what-countriesregions-are-taxes-managed-on-my-behalf"></a>In welke landen/regio's worden belasting namens mij beheerd?
 
 Klanten kunnen oplossingen vinden op basis van onze commerciële Marketplace over de hele wereld, en we beheren de belasting op verschillende locaties. 
 
-Als u de volledige lijst met locaties wilt bekijken, gaat u naar [belasting gegevens voor uitgevers van commerciële markt plaatsen](https://docs.microsoft.com/azure/marketplace/partner-center-portal/tax-details-paid-transactions).
+Als u de volledige lijst met locaties wilt bekijken, gaat u naar [belasting gegevens voor uitgevers van commerciële markt plaatsen](partner-center-portal/tax-details-paid-transactions.md).
 
 ### <a name="where-can-i-find-payout-reporting-for-the-commercial-marketplace"></a>Waar vind ik uitbetalings rapportage voor de commerciële Marketplace?
 
 Binnen het partner centrum kan een gebruiker met machtigingen voor *eigenaar* of *financiële bijdrage* betaling rapporteren. Deze gebruikers hebben toegang tot rapporten in de rechter bovenhoek door het pictogram te selecteren met een hand die een factuur houdt.
 
-Zie voor meer informatie [uitbetalings rapportage](https://docs.microsoft.com/azure/marketplace/partner-center-portal/payout-summary).
+Zie voor meer informatie [uitbetalings rapportage](partner-center-portal/payout-summary.md).
 
 ### <a name="how-do-i-configure-my-payout-method-and-destination"></a>Hoe kan ik mijn uitbetalings methode en bestemming configureren?
 
 Met partner Center kunnen gebruikers met *eigenaars* machtigingen het uitbetalings account en de BTW-formulieren instellen. Gebruikers kunnen dit doen door de knop **instellingen** (tandwiel pictogram) in de rechter bovenhoek te selecteren.
 
-Ga voor meer informatie naar het [uitbetalings account en de BTW-formulieren](https://docs.microsoft.com/azure/marketplace/partner-center-portal/set-up-your-payout-account-tax-forms).
+Ga voor meer informatie naar het [uitbetalings account en de BTW-formulieren](partner-center-portal/set-up-your-payout-account-tax-forms.md).
 
 ### <a name="are-returns-and-refunds-supported-with-the-commercial-marketplace"></a>Worden er retour-en restituties ondersteund voor de commerciële Marketplace?
 
@@ -313,7 +313,7 @@ Hier volgen enkele bronnen om aan de slag te gaan:
 
 - [Inleiding tot de micro soft Commercial Marketplace](/azure/marketplace/marketplace-publishers-guide)
 - [Micro soft Commercial Marketplace-partner-hub](https://partner.microsoft.com/asset/collection/commercial-marketplace#/)
-- [Welkom bij de commerciële marketplace](https://docs.microsoft.com/azure/marketplace/)
+- [Welkom bij de commerciële marketplace](index.yml)
 
 ### <a name="how-can-i-engage-with-microsoft-and-other-partners"></a>Hoe kan ik contact opnemen met micro soft en andere partners?
 
@@ -325,7 +325,7 @@ Deze resources worden aangeraden:
 ### <a name="where-can-i-learn-more-about-partner-center"></a>Waar kan ik meer informatie vinden over Partner Center?
 
 - [Documentatie voor Partner Center](https://docs.microsoft.com/partner-center/)
-- [Welkom bij de commerciële marketplace](https://docs.microsoft.com/azure/marketplace/)
+- [Welkom bij de commerciële marketplace](index.yml)
 
 ### <a name="where-can-i-learn-more-about-the-microsoft-admin-center"></a>Waar kan ik meer informatie vinden over het micro soft-beheer centrum?
 
@@ -333,14 +333,14 @@ Zie [app-abonnementen van derden beheren voor uw organisatie](https://docs.micro
 
 ### <a name="where-can-i-learn-more-about-azure-billing"></a>Waar vind ik meer informatie over de facturering van Azure?
 
-- [Documentatie voor Azure Kostenbeheer en facturering](https://docs.microsoft.com/azure/cost-management-billing/)
-- [Meer informatie over Azure Marketplace-kosten op uw Azure-factuur](https://docs.microsoft.com/azure/cost-management-billing/understand/understand-azure-marketplace-charges)
-- [Azure-abonnement converteren naar factuur betaling](https://docs.microsoft.com/azure/cost-management-billing/manage/pay-by-invoice)
+- [Documentatie voor Azure Kostenbeheer en facturering](../cost-management-billing/index.yml)
+- [Meer informatie over Azure Marketplace-kosten op uw Azure-factuur](../cost-management-billing/understand/understand-azure-marketplace-charges.md)
+- [Azure-abonnement converteren naar factuur betaling](../cost-management-billing/manage/pay-by-invoice.md)
 
 ### <a name="where-can-i-learn-about-azure-government-and-the-azure-government-marketplace"></a>Waar kan ik meer informatie vinden over Azure Government en de Azure Government Marketplace?
 
 - [Azure Government](https://azure.microsoft.com/global-infrastructure/government)
 - [Vertrouwenscentrum van Microsoft](https://www.microsoft.com/trust-center)
-- [Documentatie over Azure Government](https://docs.microsoft.com/azure/azure-government/)
-- [Azure Government Marketplace](https://docs.microsoft.com/azure/azure-government/documentation-government-manage-marketplace)
-- [Naleving van Azure Government](https://docs.microsoft.com/azure/azure-government/documentation-government-plan-compliance)
+- [Documentatie over Azure Government](../azure-government/index.yml)
+- [Azure Government Marketplace](../azure-government/documentation-government-manage-marketplace.md)
+- [Naleving van Azure Government](../azure-government/documentation-government-plan-compliance.md)
