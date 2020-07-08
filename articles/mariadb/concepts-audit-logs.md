@@ -7,10 +7,10 @@ ms.service: mariadb
 ms.topic: conceptual
 ms.date: 6/24/2020
 ms.openlocfilehash: 7c9d59eee1e1ce69394301023b108952eaf46790
-ms.sourcegitcommit: f98ab5af0fa17a9bba575286c588af36ff075615
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/25/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85362421"
 ---
 # <a name="audit-logs-in-azure-database-for-mariadb"></a>Audit Logboeken in Azure Database for MariaDB
@@ -46,7 +46,7 @@ Andere para meters die u kunt aanpassen zijn onder andere:
 
 ## <a name="access-audit-logs"></a>Auditlogboeken inzien
 
-Audit logboeken zijn geïntegreerd met Azure Monitor Diagnostische logboeken. Zodra u audit logboeken op uw MariaDB-server hebt ingeschakeld, kunt u ze naar Azure Monitor-logboeken, Event Hubs of Azure Storage verzenden. Zie het artikel over het [controle logboek](howto-configure-audit-logs-portal.md#set-up-diagnostic-logs)van de portal voor meer informatie over het inschakelen van Diagnostische logboeken in de Azure Portal.
+Auditlogboeken zijn geïntegreerd in Diagnostische logboeken van Azure Monitor. Zodra u auditlogboeken op uw MariaDB-server hebt ingeschakeld, kunt u ze naar Azure Monitor-logboeken, Event Hubs of Azure Storage verzenden. Zie het artikel over het [controle logboek](howto-configure-audit-logs-portal.md#set-up-diagnostic-logs)van de portal voor meer informatie over het inschakelen van Diagnostische logboeken in de Azure Portal.
 
 ## <a name="diagnostic-logs-schemas"></a>Schema's voor Diagnostische logboeken
 

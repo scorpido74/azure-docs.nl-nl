@@ -17,10 +17,10 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: a859a10e02a5738ee023db5d653ea14403b9bcad
-ms.sourcegitcommit: f98ab5af0fa17a9bba575286c588af36ff075615
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/25/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85358443"
 ---
 # <a name="next-steps-and-how-to-manage-azure-ad-connect"></a>Volgende stappen en het beheren van Azure AD Connect
@@ -72,7 +72,7 @@ De volgende tabel bevat een samen vatting van deze taken en een korte beschrijvi
 
 ![Lijst met aanvullende taken](./media/how-to-connect-post-installation/addtasks2.png)
 
-| Aanvullende taak | Beschrijving |
+| Aanvullende taak | Description |
 | --- | --- |
 |**Privacyinstellingen**|Weer geven welke telemetriegegevens worden gedeeld met micro soft.|
 |**Huidige configuratie weer geven**|Bekijk uw huidige Azure AD Connect-oplossing.  Dit omvat algemene instellingen, gesynchroniseerde directory's en synchronisatie-instellingen. |

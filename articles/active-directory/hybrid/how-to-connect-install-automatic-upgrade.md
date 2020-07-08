@@ -17,10 +17,10 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 749c97549661f2b2d647f8f7ba718d7696ef8355
-ms.sourcegitcommit: f98ab5af0fa17a9bba575286c588af36ff075615
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/25/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85359004"
 ---
 # <a name="azure-ad-connect-automatic-upgrade"></a>Azure AD Connect: automatische upgrade
@@ -50,7 +50,7 @@ Automatische upgrade maakt gebruik van Azure AD Connect Health voor de upgrade-i
 
 Als de **Synchronization Service Manager** gebruikers interface op de server wordt uitgevoerd, wordt de upgrade onderbroken totdat de gebruikers interface is gesloten.
 
-## <a name="troubleshooting"></a>Probleemoplossing
+## <a name="troubleshooting"></a>Problemen oplossen
 Als de installatie van uw verbinding niet werkt zoals verwacht, voert u de volgende stappen uit om erachter te komen wat er mis kan zijn.
 
 Eerst moet u niet verwachten dat er wordt geprobeerd de automatische upgrade uit te voeren op de eerste dag dat een nieuwe versie wordt uitgebracht. Er is opzettelijk een wille keurige aselecte manier voordat een upgrade wordt uitgevoerd en er wordt geen waarschuwing verzonden als uw installatie niet onmiddellijk wordt bijgewerkt.
@@ -79,7 +79,7 @@ De resultaat code bevat een voor voegsel met een overzicht van de status.
 
 Hier volgt een lijst met de meest voorkomende berichten die u vindt. Er worden niet alle weer gegeven, maar het resultaat moet duidelijk zijn bij wat het probleem is.
 
-| Resultaat bericht | Beschrijving |
+| Resultaat bericht | Description |
 | --- | --- |
 | **UpgradeAborted** | |
 | UpgradeAbortedCouldNotSetUpgradeMarker |Kan niet schrijven naar het REGI ster. |

@@ -17,10 +17,10 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 4f082ec896bf0542b63c8c1d0257679681334050
-ms.sourcegitcommit: f98ab5af0fa17a9bba575286c588af36ff075615
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/25/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85358664"
 ---
 # <a name="install-azure-ad-connect-using-sql-delegated-administrator-permissions"></a>Azure AD Connect installeren met SQL-gedelegeerde beheerdersmachtigingen
@@ -31,7 +31,7 @@ Met de meest recente versie van Azure AD Connect kan de inrichting van de data b
 ## <a name="before-you-begin"></a>Voordat u begint
 Als u deze functie wilt gebruiken, moet u er rekening mee houden dat er verschillende bewegende onderdelen zijn en dat er voor elk item een andere beheerder in uw organisatie kan worden betrokken.  De volgende tabel bevat een overzicht van de afzonderlijke rollen en hun respectieve taken bij het implementeren van Azure AD Connect met deze functie.
 
-|Rol|Beschrijving|
+|Rol|Description|
 |-----|-----|
 |Domein-of forest AD-beheerder|Hiermee maakt u het domein niveau service account dat wordt gebruikt door Azure AD Connect om de synchronisatie service uit te voeren.  Zie [accounts and permissions](reference-connect-accounts-permissions.md)voor meer informatie over service accounts.
 |SQL-beheerder|Hiermee maakt u de ADSync-data base en verleent u aanmelding en toegang tot de Azure AD Connect beheerder en het service account dat is gemaakt door de domein-of forest-beheerder.|

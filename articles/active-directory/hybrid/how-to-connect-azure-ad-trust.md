@@ -19,10 +19,10 @@ author: billmath
 ms.custom: ''
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 13d56ec321cd257412c2b0abbe0be655c6cb4dbf
-ms.sourcegitcommit: f98ab5af0fa17a9bba575286c588af36ff075615
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/25/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85360092"
 ---
 # <a name="manage-ad-fs-trust-with-azure-ad-using-azure-ad-connect"></a>AD FS-vertrouwensrelatie met Azure AD beheren met behulp van Azure AD Connect
@@ -77,7 +77,7 @@ Bij alle bewerkingen, waarbij elke instelling wordt gewijzigd, maakt Azure AD Co
 
 Azure AD Connect zorgt ervoor dat de vertrouwens relatie van Azure AD altijd is geconfigureerd met de juiste set aanbevolen claim regels. Micro soft raadt u aan Azure AD Connect te gebruiken voor het beheren van uw Azure AD-vertrouwens relatie. In deze sectie vindt u de set met regels voor uitgifte transformatie en de bijbehorende beschrijvingen.
 
-| Regelnaam | Beschrijving |
+| Regelnaam | Description |
 | --- | --- |
 | UPN uitgeven | Deze regel voert een query uit op de waarde van userPrincipalName vanaf het kenmerk dat is geconfigureerd in synchronisatie-instellingen voor userPrincipalName.|
 | Query ObjectGUID en msdsconsistencyguid voor aangepaste ImmutableId-claim | Deze regel voegt een tijdelijke waarde toe aan de pijp lijn voor de waarde ObjectGUID en msdsconsistencyguid als deze bestaat. |

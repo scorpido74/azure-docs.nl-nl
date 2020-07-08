@@ -16,10 +16,10 @@ ms.date: 02/26/2018
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 63d1d87d9b576a8e181b5b339052a6b6512f18a9
-ms.sourcegitcommit: f98ab5af0fa17a9bba575286c588af36ff075615
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/25/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85359225"
 ---
 # <a name="health-service-data-is-not-up-to-date-alert"></a>De Health Service-gegevens zijn niet up-to-date-waarschuwing
@@ -41,7 +41,7 @@ In de Blade **waarschuwings Details** wordt weer gegeven wanneer de waarschuwing
  
 De volgende tabel wijst service types toe aan de bijbehorende vereiste gegevens typen:
 
-| Servicetype | Agent (Windows-service naam) | Doel | Gegenereerd gegevens type  |
+| Servicetype | Agent (Windows-service naam) | Functie | Gegenereerd gegevens type  |
 | --- | --- | --- | --- |  
 | Azure AD Connect (synchronisatie) | Azure AD Connect Health Sync Insights-service | AAD Connect-specifieke informatie verzamelen (connectors, synchronisatie regels, enz.) | - AadSyncService-SynchronizationRules <br />  -AadSyncService-connectors <br /> - AadSyncService-GlobalConfigurations  <br />  - AadSyncService-RunProfileResults <br /> - AadSyncService-ServiceConfigurations <br /> - AadSyncService-ServiceStatus   |
 |  | Azure AD Connect Health Sync Monitoring-service | AAD Connect-specifieke prestatie meter items, ETW-traceringen, bestanden verzamelen | Prestatie meter item |

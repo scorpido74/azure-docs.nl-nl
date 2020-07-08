@@ -16,10 +16,10 @@ ms.workload: infrastructure-services
 ms.date: 06/22/2020
 ms.author: sedusch
 ms.openlocfilehash: 758e79109d6cf0d41e5e5981168b0eed9f9928d6
-ms.sourcegitcommit: f98ab5af0fa17a9bba575286c588af36ff075615
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/25/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85361384"
 ---
 # <a name="azure-virtual-machines-deployment-for-sap-netweaver"></a>Azure Virtual Machines-implementatie voor SAP NetWeaver
@@ -450,7 +450,7 @@ De wizard begeleidt u bij het instellen van de vereiste para meters voor het mak
      * **Netwerk beveiligings groep**: Zie [netwerk verkeer beheren met netwerk beveiligings groepen][virtual-networks-nsg]voor meer informatie.
    * **Extensies**: u kunt virtuele-machine uitbreidingen installeren door ze toe te voegen aan de implementatie. U hoeft geen uitbrei dingen toe te voegen in deze stap. De uitbrei dingen die zijn vereist voor SAP-ondersteuning, worden later geïnstalleerd. Zie hoofd stuk [de Azure-extensie voor SAP configureren][deployment-guide-4.5] in deze hand leiding.
    * **Hoge Beschik baarheid**: Selecteer een beschikbaarheidsset of voer de para meters in om een nieuwe beschikbaarheidsset te maken. Zie [Azure-beschikbaarheids sets][planning-guide-3.2.3]voor meer informatie.
-   * **Bewaking**
+   * **Controle**
      * **Diagnostische gegevens over opstarten**: u kunt **uitschakelen** selecteren voor diagnostische gegevens over opstarten.
      * **Diagnostische gegevens van het gast besturingssysteem**: u kunt **uitschakelen** selecteren voor diagnostische gegevens over bewaking.
 
@@ -589,7 +589,7 @@ De wizard begeleidt u bij het instellen van de vereiste para meters voor het mak
      * **Netwerk beveiligings groep**: Zie [netwerk verkeer beheren met netwerk beveiligings groepen][virtual-networks-nsg]voor meer informatie.
    * **Extensies**: u kunt virtuele-machine uitbreidingen installeren door ze toe te voegen aan de implementatie. U hoeft in deze stap geen extensie toe te voegen. De uitbrei dingen die zijn vereist voor SAP-ondersteuning, worden later geïnstalleerd. Zie hoofd stuk [de Azure-extensie voor SAP configureren][deployment-guide-4.5] in deze hand leiding.
    * **Hoge Beschik baarheid**: Selecteer een beschikbaarheidsset of voer de para meters in om een nieuwe beschikbaarheidsset te maken. Zie [Azure-beschikbaarheids sets][planning-guide-3.2.3]voor meer informatie.
-   * **Bewaking**
+   * **Controle**
      * **Diagnostische gegevens over opstarten**: u kunt **uitschakelen** selecteren voor diagnostische gegevens over opstarten.
      * **Diagnostische gegevens van het gast besturingssysteem**: u kunt **uitschakelen** selecteren voor diagnostische gegevens over bewaking.
 
@@ -1156,7 +1156,7 @@ Interpreteer de resulterende waarden als volgt:
 | **API-aanroepen-niet beschikbaar** | Tellers die niet beschikbaar zijn, zijn mogelijk niet van toepassing op de configuratie van de virtuele machine of fouten. Zie de **integriteits status**. |
 | **Totaal aantal tellers-leeg** |De volgende twee Azure-opslag-items kunnen leeg zijn: <ul><li>Lezen van de opslag op latentie server msec</li><li>Opslag gelezen op latentie E2E msec</li></ul>Alle andere tellers moeten waarden bevatten. |
 | **Integriteits status** |Alleen OK als de retour status **OK**is. |
-| **Diagnostiek** |Gedetailleerde informatie over de status. |
+| **Diagnostics** |Gedetailleerde informatie over de status. |
 
 Als de **status** waarde niet **OK**is, volgt u de instructies in [status controleren voor Azure extension for SAP-configuratie][deployment-guide-5.2].
 
@@ -1499,7 +1499,7 @@ Volg de stappen in hoofd stuk [de Azure-extensie voor SAP configureren][deployme
 
 Als de fouten niet verdwijnen, [neemt u contact op met de ondersteuning][deployment-guide-contact-support].
 
-#### <a name="contact-support"></a><a name="3ba34cfc-c9bb-4648-9c3c-88e8b9130ca2"></a>Contact met ondersteuning
+#### <a name="contact-support"></a><a name="3ba34cfc-c9bb-4648-9c3c-88e8b9130ca2"></a>Contact opnemen met ondersteuning
 
 Er is een onverwachte fout opgetreden of er is geen bekende oplossing. Verzamel het bestand AzureEnhancedMonitoring_service. log dat zich in de map C:\Packages\Plugins\Microsoft.AzureCAT.AzureEnhancedMonitoring.AzureCATExtensionHandler \\ \<version\> \Drop (Windows) of/var/log/Azure/Microsoft.OSTCExtensions.AzureEnhancedMonitorForLinux (Linux) bevindt en neem contact op met SAP-ondersteuning voor verdere ondersteuning.
 

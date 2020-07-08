@@ -8,10 +8,10 @@ ms.date: 03/30/2020
 ms.author: owend
 ms.reviewer: minewiskan
 ms.openlocfilehash: 4e75329444c2ddb9401f32bccea400d90b633294
-ms.sourcegitcommit: f98ab5af0fa17a9bba575286c588af36ff075615
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/25/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85361520"
 ---
 # <a name="connect-with-power-bi"></a>Verbinden met Power BI
@@ -46,7 +46,7 @@ Zodra u een server in azure hebt gemaakt en een tabellair model hebt geïmplemen
 1. Maak een Power BI Desktop-bestand dat een live verbinding heeft met uw model op uw server.
 2. Klik in [Power bi](https://powerbi.microsoft.com)op **gegevens**  >  **bestanden**ophalen, zoek en selecteer uw pbix-bestand.
 
-## <a name="see-also"></a>Zie ook
+## <a name="see-also"></a>Zie tevens
 [Verbinding maken met Azure Analysis Services](analysis-services-connect.md)   
 [Clientbibliotheken](https://docs.microsoft.com/analysis-services/client-libraries?view=azure-analysis-services-current)
 

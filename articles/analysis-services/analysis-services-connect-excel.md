@@ -8,10 +8,10 @@ ms.date: 03/30/2020
 ms.author: owend
 ms.reviewer: minewiskan
 ms.openlocfilehash: 123e271ae1b83603d599b9ef0381e25b3c963def
-ms.sourcegitcommit: f98ab5af0fa17a9bba575286c588af36ff075615
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/25/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85361554"
 ---
 # <a name="connect-with-excel"></a>Verbinden met Excel
@@ -40,7 +40,7 @@ Het maken van verbinding met een server in Excel wordt ondersteund met behulp va
     ![Verbinding maken vanuit Excel model selecteren](./media/analysis-services-connect-excel/aas-connect-excel-select.png)
 
 
-## <a name="see-also"></a>Zie ook
+## <a name="see-also"></a>Zie tevens
 
 [Client bibliotheken](https://docs.microsoft.com/analysis-services/client-libraries?view=azure-analysis-services-current)   
 [Uw server beheren](analysis-services-manage.md)     
