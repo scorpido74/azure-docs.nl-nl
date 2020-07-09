@@ -1,17 +1,18 @@
 ---
 title: Meer informatie over gedelegeerd resourcebeheer
-description: Met beheerde services kunnen service providers resource beheer aanbiedingen verkopen aan klanten in azure Marketplace.
+description: Azure delegated resource management is een belang rijk onderdeel van Azure Lighthouse, zodat service providers gedelegeerde resources op schaal kunnen beheren met flexibiliteit en precisie.
 ms.date: 05/28/2020
 ms.topic: conceptual
-ms.openlocfilehash: e6f741ccbf0d52e0859722aa304aa6c273fb5acf
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: bbe3c28cdcd252755b8350eaa5d2e72044981174
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84219078"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86120888"
 ---
 # <a name="azure-delegated-resource-management"></a>Meer informatie over gedelegeerd resourcebeheer
 
-Azure delegated resource management is een van de belangrijkste onderdelen van Azure Lighthouse. Met Azure delegated resource management kunnen service providers de klant betrokkenheid en de onboarding-ervaring vereenvoudigen, terwijl gedelegeerde resources op schaal worden beheerd met flexibiliteit en precisie.
+Azure delegated resource management is een van de belangrijkste onderdelen van [Azure Lighthouse](../overview.md). Met Azure delegated resource management kunnen service providers de klant betrokkenheid en de onboarding-ervaring vereenvoudigen, terwijl gedelegeerde resources op schaal worden beheerd met flexibiliteit en precisie.
 
 ## <a name="what-is-azure-delegated-resource-management"></a>Wat is Azure delegated resource management?
 
@@ -24,7 +25,7 @@ Met Azure delegated resource management kunnen geautoriseerde gebruikers rechtst
 
 Met de [beheer ervaring voor cross-tenants](cross-tenant-management-experience.md) kunt u efficiënter werken met Azure-beheer Services, zoals Azure Policy, Azure Security Center en meer. Alle activiteiten van de service provider worden bijgehouden in het activiteiten logboek, dat is opgeslagen in de Tenant van de klant (en kan worden weer gegeven door gebruikers in de Tenant beheren). Dit betekent dat zowel de klant als de service provider gemakkelijk de gebruiker kan identificeren die is gekoppeld aan wijzigingen.
 
-Wanneer u een klant voor het beheer van Azure-gedelegeerde resources ongedaan maakt, hebben ze toegang tot de pagina nieuwe **service providers** in het Azure Portal, waar ze [hun aanbiedingen, service providers en gedelegeerde resources kunnen bevestigen en beheren](../how-to/view-manage-service-providers.md). Als de klant ooit toegang wil intrekken voor een service provider, kan dit hier op elk gewenst moment worden gedaan.
+Wanneer u een klant voor het beheer van Azure-gedelegeerde resources ongedaan maakt, hebben ze toegang tot de pagina **service providers** in het Azure Portal, waar ze [hun aanbiedingen, service providers en gedelegeerde resources kunnen bevestigen en beheren](../how-to/view-manage-service-providers.md). Als de klant ooit toegang wil intrekken voor een service provider, kan dit hier op elk gewenst moment worden gedaan.
 
 U kunt [het nieuwe type managed service-aanbieding publiceren naar Azure Marketplace](../how-to/publish-managed-services-offers.md) , zodat klanten eenvoudig kunnen worden gemigreerd naar Azure gedelegeerde resource beheer. U kunt ook [het voorbereidings proces volt ooien door Azure Resource Manager sjablonen te implementeren](../how-to/onboard-customer.md).
 

@@ -1,18 +1,18 @@
 ---
 title: Beleid voor commerciële Marketplace en voor waarden | Azure
 description: Het beleid en de voor waarden van micro soft Commercial Marketplace zijn van toepassing op alle uitgevers en aanbiedingen in de Microsoft Azure Marketplace.
-author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
+author: vikrambmsft
+ms.author: vikramb
 ms.date: 06/26/2020
-ms.author: dsindona
-ms.openlocfilehash: 093348d8eeb5d83831ec0bedd8c542f1a2d5a064
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: ffa6762d03b0ef189edf9887cfdf0fdd8788ef2d
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85482595"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86121041"
 ---
 # <a name="commercial-marketplace-policies-and-terms"></a>Beleidsregels en voorwaarden voor de commerciële marketplace
 

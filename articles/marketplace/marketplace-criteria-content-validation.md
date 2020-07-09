@@ -1,18 +1,18 @@
 ---
 title: Vereisten voor Azure Marketplace-aanbieding en-service
 description: In dit artikel worden de vereisten en richt lijnen uitgelegd voor het weer geven van nieuwe aanbiedingen en services op Azure Marketplace.
-author: anbene
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
+author: keferna
+ms.author: keferna
 ms.date: 06/22/2020
-ms.author: dsindona
-ms.openlocfilehash: 6c95f510ce83f924a58b0844285f4142131db3eb
-ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
+ms.openlocfilehash: 2b0954941ba6b6b7ce3697889305dc5bbd299590
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86027134"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86119375"
 ---
 # <a name="azure-marketplace-listing-guidelines"></a>Verkoop richtlijnen voor Azure Marketplace
 
@@ -28,7 +28,7 @@ Aanvullende vereisten en controle lijsten worden opgegeven voor specifieke verme
 
 ## <a name="listing-requirements-for-all-offers"></a>Aanbiedings vereisten voor alle aanbiedingen
 
-|  | Element van vermelding | Basis vereiste | Optimale vereisten |
+| Aantal | Element van vermelding | Basis vereiste | Optimale vereisten |
 |:--- |:--- |:--- |:--- |
 | 1 | Doel van de lead | Er is een doel voor de lead geconfigureerd.| De ene commerciële partner (OCP)-catalogus heeft de doel-CRM-gegevens van de lead die ook worden vermeld op het tabblad partner oplossing. | 
 | 2 | Titel van aanbieding | Een korte beschrijving van de oplossings aanbieding. Komt overeen met de online promotie van de oplossing op de website van de partner. | Bevat tref woorden voor de sleutel. |
@@ -47,15 +47,15 @@ Aanvullende vereisten en controle lijsten worden opgegeven voor specifieke verme
 
 ## <a name="trial-offer-requirements"></a>Vereisten voor de proef versie
 
-|  | Element van vermelding | Basis vereiste | Optimale vereisten | 
+| Aantal | Element van vermelding | Basis vereiste | Optimale vereisten | 
 |:--- |:--- |:--- |:--- |
-|  | Status weer geven (aanroepen naar actie) | De koppeling moet leiden naar een *proef* ervaring met de klant. | Andere aanroepen naar actie (bijvoorbeeld *Nu kopen*) zijn ook beschikbaar. | 
+| 1 | Status weer geven (aanroepen naar actie) | De koppeling moet leiden naar een *proef* ervaring met de klant. | Andere aanroepen naar actie (bijvoorbeeld *Nu kopen*) zijn ook beschikbaar. | 
 
 ---
 
 ## <a name="saas-application-requirements"></a>SaaS-toepassings vereisten
 
-|  | Element van vermelding | Basis vereiste | Optimale vereisten | 
+| Aantal | Element van vermelding | Basis vereiste | Optimale vereisten | 
 |:--- |:--- |:--- |:--- |
 | 1 | Titel van aanbieding |<ul><li>Mag alleen bestaan uit kleine letters, alfanumerieke tekens, streepjes of onderstrepingen. De titel kan niet worden gewijzigd nadat deze is gepubliceerd.</li><li>Hierin wordt een beschrijving van de oplossing beschreven.</li><li>Komt overeen met de online promotie van de oplossing op de website van de partner. | Bevat tref woorden voor de sleutel. |
 | 2 | Technische informatie: Configuratie |<ul><li>Voor software as a Service (SaaS)-apps kiest u of u alleen uw app wilt vermelden of dat klanten uw app kunnen kopen via Azure.</li><li>Selecteer de gewenste tekst op de knop aanschaf van uw aanbieding: *gratis*, *gratis proef versie*of *Neem contact met mij*op.</li><li>Selecteer in het pop-upvenster slechts één toepasselijk product als uw app gebruikmaakt van de technologie: Cortana Intelligence, Power BI oplossings sjablonen of Power apps. |  |
@@ -73,7 +73,7 @@ Aanvullende vereisten en controle lijsten worden opgegeven voor specifieke verme
 
 ## <a name="container-offer-requirements"></a>Vereisten voor container aanbod
 
-|  | Element van vermelding | Basis vereiste | Optimale vereisten | 
+| Aantal | Element van vermelding | Basis vereiste | Optimale vereisten | 
 |:--- |:--- |:--- |:--- |
 |1 |Aanbiedingsinstellingen | <ul><li>Aanbiedings-ID: max. 50 tekens.</li><li>Uitgevers-ID: Selecteer deze in de vervolg keuzelijst.</li><li>Naam: max. 50 tekens. | Komt overeen met de titel stijl die al beschikbaar is in de beschrijving. Vermijd het gebruik van lange titels. | 
 | 2 | SKU's | De partner selecteert nieuwe Sku's.| De titel komt overeen met de titel stijl die al beschikbaar is in de beschrijving. Vermijd het gebruik van lange titels.  |
@@ -84,7 +84,7 @@ Aanvullende vereisten en controle lijsten worden opgegeven voor specifieke verme
 
 ## <a name="consulting-offer-requirements"></a>Vereisten voor advies aanbod
 
-|  | Element van vermelding | Basis vereiste | Optimale vereisten |
+| Aantal | Element van vermelding | Basis vereiste | Optimale vereisten |
 |:--- |:--- |:--- |:--- |
 | 1 | Titel van aanbieding  |  Moet het Service type en de duur duidelijk vermelden in de indelings *naam: duur type* (bijvoorbeeld ' aanbiedings afspraak: 1 week proef van concept ').  | <ul><li>De naam van de uitgever wordt niet herhaald.</li><li>De titel komt overeen met de titel stijl die al beschikbaar is in de beschrijving. Vermijd het gebruik van lange titels. | 
 | 2 | Beschrijving van aanbieding  |<ul><li>Zorg voor een correct gebruik van [product namen van micro soft](https://www.microsoft.com/en-us/legal/intellectualproperty/trademarks/en-us.aspx).</li><li>Aanbiedingen die zijn gemarkeerd als *prijs: schatting* moeten een opmerking aan de bovenkant of de onderkant hebben om de variabiliteit te verklaren (reis naar client, aantal servers die worden gemigreerd, enzovoort).</li><li>Elk aanbiedings type heeft de volgende beschrijvings vereisten: <ul><li>Er zijn ten minste vier of vijf opsommings tekens nodig, met informatie over de onderwerpen die moeten worden behandeld.</li><li>Alle workshops hebben een agenda nodig.</li><li>Alle agenda's moeten per dag of per week worden opgesplitst, afhankelijk van de duur van de workshop.</li><li>Voor evaluatie, haalbaarheids test, niet-trainings workshops en implementatie aanbiedingen is een product vereist.</li><li>Trainings workshops hebben geen producten nodig, maar ze hebben een gedetailleerdere agenda nodig met onderwerpen die worden behandeld.</li></ul></ul> | <ul><li>Elk aanbod heeft een agenda en een klant.</li><li>De aanbieding bevat een alinea met context over het bedrijf dat de service in de bovenste sectie levert.</li><li>De aanbieding bevat een alinea over de waarde van de service zelf als een bovenste sectie. |

@@ -3,12 +3,12 @@ title: Vragen over detectie, evaluatie en afhankelijkheids analyse in Azure Migr
 description: Krijg antwoorden op veelgestelde vragen over detectie, evaluatie en afhankelijkheids analyse in Azure Migrate.
 ms.topic: conceptual
 ms.date: 06/09/2020
-ms.openlocfilehash: 7d42de52d35d5a3c5e9a54673d8cd933fbee04aa
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 7b26d4442f9a84375205e7778ae037b565f53438
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85610299"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86118831"
 ---
 # <a name="discovery-assessment-and-dependency-analysis---common-questions"></a>Detectie, beoordeling en afhankelijkheids analyse-Veelgestelde vragen
 
@@ -33,7 +33,7 @@ U kunt Maxi maal 10.000 VMware-Vm's, Maxi maal 5.000 virtuele Hyper-V-machines e
 
 - Gebruik **Azure VM-evaluaties** als u uw on-premises virtuele [VMware-machines](how-to-set-up-appliance-vmware.md), [virtuele Hyper-V-](how-to-set-up-appliance-hyper-v.md)machines en [fysieke servers](how-to-set-up-appliance-physical.md) wilt controleren op migratie naar Azure-vm's. [Meer informatie](concepts-assessment-calculation.md)
 
-- Gebruik de evaluaties van de **Azure VMware-oplossing (AVS)** als u uw on-premises [virtuele VMware-machines](how-to-set-up-appliance-vmware.md) wilt controleren op migratie naar [Azure VMware-oplossing (AVS)](https://docs.microsoft.com/azure/azure-vmware/introduction) met dit beoordelings type. [Meer informatie](concepts-azure-vmware-solution-assessment-calculation.md)
+- Gebruik de evaluaties van de **Azure VMware-oplossing (AVS)** als u uw on-premises [virtuele VMware-machines](how-to-set-up-appliance-vmware.md) wilt controleren op migratie naar [Azure VMware-oplossing (AVS)](../azure-vmware/introduction.md) met dit beoordelings type. [Meer informatie](concepts-azure-vmware-solution-assessment-calculation.md)
 
 - U kunt een algemene groep alleen met VMware-machines gebruiken om beide typen evaluaties uit te voeren. Als u AVS-evaluaties in Azure Migrate voor het eerst uitvoert, is het raadzaam om een nieuwe groep VMware-machines te maken.
 
@@ -113,7 +113,7 @@ Azure VM-evaluaties op basis van import zijn evaluaties die zijn gemaakt met mac
 
 ## <a name="why-is-the-suggested-migration-tool-in-import-based-avs-assessment-marked-as-unknown"></a>Waarom is het voorgestelde migratie hulpprogramma in op import gebaseerde AVS-evaluatie gemarkeerd als onbekend?
 
-Voor machines die worden geïmporteerd via een CSV-bestand, is het standaard hulp programma voor migratie in een AVS-evaluatie onbekend. Voor VMware-machines is het echter raadzaam de VMWare Hybrid Cloud extension (HCX)-oplossing te gebruiken. [Meer informatie](https://docs.microsoft.com/azure/azure-vmware/hybrid-cloud-extension-installation).
+Voor machines die worden geïmporteerd via een CSV-bestand, is het standaard hulp programma voor migratie in een AVS-evaluatie onbekend. Voor VMware-machines is het echter raadzaam de VMWare Hybrid Cloud extension (HCX)-oplossing te gebruiken. [Meer informatie](../azure-vmware/hybrid-cloud-extension-installation.md).
 
 
 ## <a name="what-is-dependency-visualization"></a>Wat is de visualisatie van afhankelijkheden?
@@ -130,9 +130,9 @@ De verschillen tussen visualisatie zonder agents en visualisaties op basis van a
 **Vereiste** | **Zonder agent** | **Op basis van een agent**
 --- | --- | ---
 Ondersteuning | Deze optie is momenteel in Preview en is alleen beschikbaar voor virtuele VMware-machines. [Bekijk](migrate-support-matrix-vmware.md#dependency-analysis-requirements-agentless) ondersteunde besturings systemen. | In algemene Beschik baarheid (GA).
-Agent | U hoeft geen agents te installeren op computers die u wilt cross-checken. | Agents die moeten worden geïnstalleerd op elke on-premises computer die u wilt analyseren: [micro soft Monitoring Agent (MMA)](https://docs.microsoft.com/azure/log-analytics/log-analytics-agent-windows)en de [dependency agent](https://docs.microsoft.com/azure/azure-monitor/platform/agents-overview#dependency-agent). 
+Agent | U hoeft geen agents te installeren op computers die u wilt cross-checken. | Agents die moeten worden geïnstalleerd op elke on-premises computer die u wilt analyseren: [micro soft Monitoring Agent (MMA)](../azure-monitor/platform/agent-windows.md)en de [dependency agent](../azure-monitor/platform/agents-overview.md#dependency-agent). 
 Vereisten | [Bekijk](concepts-dependency-visualization.md#agentless-analysis) de vereisten en implementatie behoeften. | [Bekijk](concepts-dependency-visualization.md#agent-based-analysis) de vereisten en implementatie behoeften.
-Log Analytics | Niet vereist. | Azure Migrate gebruikt de [servicetoewijzing](https://docs.microsoft.com/azure/operations-management-suite/operations-management-suite-service-map) oplossing in [Azure monitor logboeken](https://docs.microsoft.com/azure/log-analytics/log-analytics-overview) voor de visualisatie van afhankelijkheden. [Meer informatie](concepts-dependency-visualization.md#agent-based-analysis).
+Log Analytics | Niet vereist. | Azure Migrate gebruikt de [servicetoewijzing](../azure-monitor/insights/service-map.md) oplossing in [Azure monitor logboeken](../azure-monitor/log-query/log-query-overview.md) voor de visualisatie van afhankelijkheden. [Meer informatie](concepts-dependency-visualization.md#agent-based-analysis).
 Uitleg | Hiermee worden TCP-verbindings gegevens vastgelegd op computers die zijn ingeschakeld voor de visualisatie van afhankelijkheden. Na detectie verzamelt het gegevens met intervallen van vijf minuten. | Servicetoewijzing agents die op een computer zijn geïnstalleerd, verzamelen gegevens over TCP-processen en inkomende/uitgaande verbindingen voor elk proces.
 Gegevens | Naam van de bron computer server, proces, toepassings naam.<br/><br/> Naam van de doel computer server, proces, toepassings naam en poort. | Naam van de bron computer server, proces, toepassings naam.<br/><br/> Naam van de doel computer server, proces, toepassings naam en poort.<br/><br/> Het aantal gegevens over verbindingen, latentie en gegevens overdracht wordt verzameld en beschikbaar gesteld voor Log Analytics query's. 
 Visualisatie | Afhankelijkheids toewijzing van één server kan worden weer gegeven gedurende een periode van één uur tot 30 dagen. | Afhankelijkheids toewijzing van één server.<br/><br/> De kaart kan alleen over een uur worden weer gegeven.<br/><br/> Afhankelijkheids toewijzing van een groep servers.<br/><br/> Servers in een groep toevoegen aan en verwijderen uit de kaart weergave.
@@ -151,7 +151,7 @@ Nee. Meer informatie over [Azure migrate prijzen](https://azure.microsoft.com/pr
 
 Als u visualisatie op basis van een op agents gebaseerde afhankelijkheid wilt gebruiken, downloadt en installeert u agents op elke on-premises computer die u wilt evalueren:
 
-- [Micro soft Monitoring Agent (MMA)](https://docs.microsoft.com/azure/log-analytics/log-analytics-agent-windows)
+- [Micro soft Monitoring Agent (MMA)](../azure-monitor/platform/agent-windows.md)
 - [Agent voor afhankelijkheden](../azure-monitor/platform/agents-overview.md#dependency-agent)
 - Als u machines hebt die geen verbinding met internet hebben, kunt u de Log Analytics-gateway op de computers downloaden en installeren.
 
@@ -163,7 +163,7 @@ Ja, voor visualisatie op basis van een agent kunt u een bestaande werk ruimte ko
 
 ## <a name="can-i-export-the-dependency-visualization-report"></a>Kan ik het rapport over de visualisatie van afhankelijkheden exporteren?
 
-Nee, het visualisatie rapport van de afhankelijkheid in de op een agent gebaseerde visualisatie kan niet worden geëxporteerd. Azure Migrate maakt echter gebruik van Servicetoewijzing, en u kunt de [Servicetoewijzing rest API](https://docs.microsoft.com/rest/api/servicemap/machines/listconnections) gebruiken om de afhankelijkheden in JSON-indeling op te halen.
+Nee, het visualisatie rapport van de afhankelijkheid in de op een agent gebaseerde visualisatie kan niet worden geëxporteerd. Azure Migrate maakt echter gebruik van Servicetoewijzing, en u kunt de [Servicetoewijzing rest API](/rest/api/servicemap/machines/listconnections) gebruiken om de afhankelijkheden in JSON-indeling op te halen.
 
 ## <a name="can-i-automate-agent-installation"></a>Kan ik de agent installatie automatiseren?
 
@@ -175,18 +175,18 @@ Voor visualisatie op basis van een agent:
 
 ## <a name="what-operating-systems-does-mma-support"></a>Welke besturings systemen ondersteunt MMA?
 
-- Bekijk de lijst met [Windows-besturings systemen die MMA ondersteunt](https://docs.microsoft.com/azure/log-analytics/log-analytics-concept-hybrid#supported-windows-operating-systems).
-- Bekijk de lijst met [Linux-besturings systemen die MMA ondersteunt](https://docs.microsoft.com/azure/log-analytics/log-analytics-concept-hybrid#supported-linux-operating-systems).
+- Bekijk de lijst met [Windows-besturings systemen die MMA ondersteunt](../azure-monitor/platform/log-analytics-agent.md#supported-windows-operating-systems).
+- Bekijk de lijst met [Linux-besturings systemen die MMA ondersteunt](../azure-monitor/platform/log-analytics-agent.md#supported-linux-operating-systems).
 
 ## <a name="can-i-visualize-dependencies-for-more-than-one-hour"></a>Kan ik afhankelijkheden langer dan een uur visualiseren?
 
-Voor visualisaties op basis van een agent kunt u afhankelijkheden tot een uur visualiseren. U kunt één maand teruggaan naar een specifieke datum in de geschiedenis, maar de maximale duur voor de visualisatie is één uur. U kunt bijvoorbeeld de tijds duur in de afhankelijkheids toewijzing gebruiken om afhankelijkheden voor gisteren weer te geven, maar u kunt alleen afhankelijkheden weer geven voor een venster van één uur. U kunt echter Azure Monitor-Logboeken gebruiken om een langere duur van [afhankelijkheids gegevens](https://docs.microsoft.com/azure/migrate/how-to-create-group-machine-dependencies) op te vragen.
+Voor visualisaties op basis van een agent kunt u afhankelijkheden tot een uur visualiseren. U kunt één maand teruggaan naar een specifieke datum in de geschiedenis, maar de maximale duur voor de visualisatie is één uur. U kunt bijvoorbeeld de tijds duur in de afhankelijkheids toewijzing gebruiken om afhankelijkheden voor gisteren weer te geven, maar u kunt alleen afhankelijkheden weer geven voor een venster van één uur. U kunt echter Azure Monitor-Logboeken gebruiken om een langere duur van [afhankelijkheids gegevens](./how-to-create-group-machine-dependencies.md) op te vragen.
 
 Voor visualisatie zonder agent kunt u de afhankelijkheids toewijzing van één server weer geven vanaf een duur van slechts één uur tot 30 dagen.
 
 ## <a name="can-i-visualize-dependencies-for-groups-of-more-than-10-vms"></a>Kan ik afhankelijkheden voor groepen van meer dan tien Vm's visualiseren?
 
-U kunt [afhankelijkheden](https://docs.microsoft.com/azure/migrate/how-to-create-group-dependencies) voor groepen met Maxi maal tien vm's visualiseren. Als u een groep hebt met meer dan tien Vm's, raden we u aan de groep te splitsen in kleinere groepen en vervolgens de afhankelijkheden te visualiseren.
+U kunt [afhankelijkheden](./how-to-create-a-group.md#refine-a-group-with-dependency-mapping) voor groepen met Maxi maal tien vm's visualiseren. Als u een groep hebt met meer dan tien Vm's, raden we u aan de groep te splitsen in kleinere groepen en vervolgens de afhankelijkheden te visualiseren.
 
 ## <a name="next-steps"></a>Volgende stappen
 

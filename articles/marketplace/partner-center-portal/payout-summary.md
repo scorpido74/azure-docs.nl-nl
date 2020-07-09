@@ -1,17 +1,18 @@
 ---
 title: Uitbetalings rapporten-micro soft Commercial Marketplace
 description: De rapporten voor betaling geven informatie weer over het geld dat u bij uw aanbieding hebt behaald, inclusief de hoeveelheid betaling en wanneer u wordt betaald.
-author: mingshen
-ms.author: mingshen
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
+author: mingshen
+ms.author: mingshen
 ms.date: 04/24/2020
-ms.openlocfilehash: 6639026d071b496027996036a81f6bc66e0185e3
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: f524ef13af17054e52a94ac043546431b656203c
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83744816"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86120718"
 ---
 # <a name="payout-summaries"></a>Betalingsoverzichten
 

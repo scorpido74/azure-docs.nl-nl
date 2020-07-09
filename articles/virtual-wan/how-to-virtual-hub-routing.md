@@ -6,14 +6,14 @@ services: virtual-wan
 author: cherylmc
 ms.service: virtual-wan
 ms.topic: how-to
-ms.date: 06/29/2020
+ms.date: 07/07/2020
 ms.author: cherylmc
-ms.openlocfilehash: f9f05eb73c2fa12c9625c8e26d1c86431bcb8f6a
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.openlocfilehash: e9891e3ac12de3f8735407c603ff59b61f4eb05d
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
 ms.lasthandoff: 07/08/2020
-ms.locfileid: "86087058"
+ms.locfileid: "86118967"
 ---
 # <a name="how-to-configure-virtual-hub-routing"></a>Virtuele hubroutering configureren
 
@@ -22,7 +22,9 @@ Een virtuele hub kan meerdere gateways bevatten, zoals een site-naar-site-VPN-ga
 Zie [about Virtual hub Routing](about-virtual-hub-routing.md)(Engelstalig) voor meer informatie.
 
 > [!NOTE]
-> Sommige van deze mogelijkheden kunnen nog steeds worden geïmplementeerd en worden verwacht in de week van aug 3de.
+> Sommige van deze mogelijkheden kunnen nog steeds worden geïmplementeerd. Als de implementatie nog niet in uw regio is gebeurd, moet u de stappen in deze versies van de artikelen in de tussen tijd gebruiken:
+>* [Azure Portal artikel](virtual-wan-route-table-nva-portal.md)
+>* [Power shell-artikel](virtual-wan-route-table-nva.md)
 >
 
 ## <a name="create-a-route-table"></a><a name="create-table"></a>Een routetabel maken

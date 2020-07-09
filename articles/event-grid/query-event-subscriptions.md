@@ -1,17 +1,14 @@
 ---
 title: Query's uitvoeren op Azure Event Grid abonnementen
 description: In dit artikel wordt beschreven hoe u Event Grid abonnementen in uw Azure-abonnement kunt weer geven. U kunt verschillende para meters opgeven op basis van het type abonnement.
-services: event-grid
-author: spelluru
-ms.service: event-grid
 ms.topic: conceptual
-ms.date: 01/23/2020
-ms.author: spelluru
-ms.openlocfilehash: 2da4ba5946f16092c1d0918aec8dc3109b5fd4a8
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 07/07/2020
+ms.openlocfilehash: 3d700f543bc5e3c7add2a346c10acf975e1c2462
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "76721537"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86120446"
 ---
 # <a name="query-event-grid-subscriptions"></a>Query's uitvoeren op Event Grid abonnementen 
 

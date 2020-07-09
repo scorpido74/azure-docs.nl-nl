@@ -4,13 +4,14 @@ description: Meer informatie over het maken van verbinding en verificatie met be
 author: lfittl-msft
 ms.author: lufittl
 ms.service: mysql
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 05/19/2020
-ms.openlocfilehash: 156d960571f4d5f28f64823ecbe8f0465739bb23
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: af63ef6f33cc0e3dfe7f186ad2e36b854a728c6b
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84141718"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86120573"
 ---
 # <a name="connect-with-managed-identity-to-azure-database-for-mysql"></a>Verbinding maken met beheerde identiteit voor Azure Database for MySQL
 

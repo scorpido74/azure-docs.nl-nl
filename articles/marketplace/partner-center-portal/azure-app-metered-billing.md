@@ -1,18 +1,16 @@
 ---
 title: Factuur met data limiet voor beheerde toepassingen met Marketplace-meet service | Azure Marketplace
 description: Deze documentatie is een hand leiding voor Isv's die Azure-toepassingen publiceren met flexibele facturerings modellen.
-author: qianw211
-ms.author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 04/22/2020
-ms.openlocfilehash: 5a867243e57790bf72cef6991d6d8ac06639be49
-ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.openlocfilehash: d1ed294412e44c79fc1eb8cbc01bf134f08a953f
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/05/2020
-ms.locfileid: "85963917"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86118933"
 ---
 # <a name="managed-application-metered-billing"></a>Factuur voor beheerde toepassing met data limiet 
 

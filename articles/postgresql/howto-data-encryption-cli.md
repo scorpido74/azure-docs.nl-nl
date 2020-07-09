@@ -4,13 +4,14 @@ description: Meer informatie over het instellen en beheren van gegevens versleut
 author: kummanish
 ms.author: manishku
 ms.service: postgresql
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 03/30/2020
-ms.openlocfilehash: f7621867aad6baf517462983e35afb0b28223756
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 731827fb63f8b23d21ea2eddaef3fa9b796d14bc
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85341309"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86119579"
 ---
 # <a name="data-encryption-for-azure-database-for-postgresql-single-server-by-using-the-azure-cli"></a>Gegevens versleuteling voor Azure Database for PostgreSQL Eén server met behulp van de Azure CLI
 
@@ -21,28 +22,28 @@ Meer informatie over het gebruik van de Azure CLI voor het instellen en beheren 
 * U moet een Azure-abonnement hebben en een beheerder van dat abonnement zijn.
 * Maak een sleutel kluis en een sleutel die moet worden gebruikt voor een door de klant beheerde sleutel. Schakel ook leegmaken van beveiliging en zacht verwijderen in op de sleutel kluis.
 
-    ```azurecli-interactive
-    az keyvault create -g <resource_group> -n <vault_name> --enable-soft-delete true --enable-purge-protection true
-    ```
+   ```azurecli-interactive
+   az keyvault create -g <resource_group> -n <vault_name> --enable-soft-delete true --enable-purge-protection true
+   ```
 
 * In de gemaakte Azure Key Vault maakt u de sleutel die wordt gebruikt voor het versleutelen van gegevens van de Azure Database for PostgreSQL enkele server.
 
-    ```azurecli-interactive
-    az keyvault key create --name <key_name> -p software --vault-name <vault_name>
-    ```
+   ```azurecli-interactive
+   az keyvault key create --name <key_name> -p software --vault-name <vault_name>
+   ```
 
 * Als u een bestaande sleutel kluis wilt gebruiken, moet deze beschikken over de volgende eigenschappen die moeten worden gebruikt als een door de klant beheerde sleutel:
   * [Voorlopig verwijderen](../key-vault/general/overview-soft-delete.md)
 
-    ```azurecli-interactive
-    az resource update --id $(az keyvault show --name \ <key_vault_name> -o tsv | awk '{print $1}') --set \ properties.enableSoftDelete=true
-    ```
+      ```azurecli-interactive
+      az resource update --id $(az keyvault show --name \ <key_vault_name> -o tsv | awk '{print $1}') --set \ properties.enableSoftDelete=true
+      ```
 
   * [Beveiligd leegmaken](../key-vault/general/overview-soft-delete.md#purge-protection)
 
-    ```azurecli-interactive
-    az keyvault update --name <key_vault_name> --resource-group <resource_group_name>  --enable-purge-protection true
-    ```
+      ```azurecli-interactive
+      az keyvault update --name <key_vault_name> --resource-group <resource_group_name>  --enable-purge-protection true
+      ```
 
 * De sleutel moet de volgende kenmerken hebben om te kunnen worden gebruikt als een door de klant beheerde sleutel:
   * Geen verval datum
@@ -87,36 +88,37 @@ Nadat Azure Database for PostgreSQL één server is versleuteld met een door de 
 
 ### <a name="creating-a-restoredreplica-server"></a>Een herstelde/replica-server maken
 
-  *  [Een herstel server maken](howto-restore-server-cli.md) 
-  *  [Een replica-server voor lezen maken](howto-read-replicas-cli.md) 
+* [Een herstel server maken](howto-restore-server-cli.md)
+* [Een replica-server voor lezen maken](howto-read-replicas-cli.md)
 
 ### <a name="once-the-server-is-restored-revalidate-data-encryption-the-restored-server"></a>Nadat de server is hersteld, moet u de gegevens versleuteling van de herstelde server opnieuw valideren
 
-    ```azurecli-interactive
-    az postgres server key create –name  <server name> -g <resource_group> --kid <key url>
-    ```
+```azurecli-interactive
+az postgres server key create –name  <server name> -g <resource_group> --kid <key url>
+```
 
 ## <a name="additional-capability-for-the-key-being-used-for-the-azure-database-for-postgresql-single-server"></a>Extra mogelijkheid voor de sleutel die wordt gebruikt voor de Azure Database for PostgreSQL één server
 
 ### <a name="get-the-key-used"></a>De gebruikte sleutel ophalen
 
-    ```azurecli-interactive
-    az postgres server key show --name <server name>  -g <resource_group> --kid <key url>
-    ```
+```azurecli-interactive
+az postgres server key show --name <server name>  -g <resource_group> --kid <key url>
+```
 
-    Key url:  `https://YourVaultName.vault.azure.net/keys/YourKeyName/01234567890123456789012345678901>`
+Sleutel-URL:`https://YourVaultName.vault.azure.net/keys/YourKeyName/01234567890123456789012345678901>`
 
 ### <a name="list-the-key-used"></a>De sleutel weer geven die wordt gebruikt
 
-    ```azurecli-interactive
-    az postgres server key list --name  <server name>  -g <resource_group>
-    ```
+```azurecli-interactive
+az postgres server key list --name  <server name>  -g <resource_group>
+```
 
 ### <a name="drop-the-key-being-used"></a>De sleutel die wordt gebruikt, verwijderen
 
-    ```azurecli-interactive
-    az postgres server key delete -g <resource_group> --kid <key url> 
-    ```
+```azurecli-interactive
+az postgres server key delete -g <resource_group> --kid <key url> 
+```
+
 ## <a name="using-an-azure-resource-manager-template-to-enable-data-encryption"></a>Een Azure Resource Manager sjabloon gebruiken om gegevens versleuteling in te scha kelen
 
 Naast Azure Portal, kunt u ook gegevens versleuteling inschakelen op uw Azure Database for PostgreSQL enkele server met behulp van Azure Resource Manager-sjablonen voor nieuwe en bestaande server.

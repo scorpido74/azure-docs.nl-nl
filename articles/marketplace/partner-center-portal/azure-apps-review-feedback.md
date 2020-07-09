@@ -1,17 +1,16 @@
 ---
 title: Feedback geven voor Azure apps-aanbiedingen-micro soft Commercial Marketplace
 description: Feedback voor uw Azure-toepassings aanbieding afhandelen vanuit het Microsoft Azure Marketplace beoordelings team. U krijgt toegang tot feedback in azure DevOps met de referenties van uw partner centrum.
-author: dsindona
-ms.author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 11/11/2019
-ms.openlocfilehash: c9e441512177d731c5ad47b66b454e5722483507
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: e8d90f5238ea312602d2142d25b9ae226aa34c84
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83659851"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86119018"
 ---
 # <a name="handling-review-feedback-for-azure-application-offers"></a>Feedback over het verwerken van beoordeling voor Azure-toepassings aanbiedingen
 

@@ -1,18 +1,14 @@
 ---
 title: Systeem onderwerpen in Azure Event Grid
 description: Hierin worden systeem onderwerpen beschreven in Azure Event Grid.
-services: event-grid
-author: spelluru
-ms.service: event-grid
 ms.topic: conceptual
-ms.date: 06/15/2020
-ms.author: spelluru
-ms.openlocfilehash: 190c6ccb13a0853913c96ac5d2d3f5faf4594433
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 07/07/2020
+ms.openlocfilehash: 655ec5f0ad23b3902c1c99ba75eef2ef428911eb
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84887917"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86119919"
 ---
 # <a name="system-topics-in-azure-event-grid"></a>Systeem onderwerpen in Azure Event Grid
 Een systeem onderwerp in Event Grid vertegenwoordigt een of meer gebeurtenissen die zijn gepubliceerd door Azure-Services, zoals Azure Storage en Azure Event Hubs. Een systeem onderwerp kan bijvoorbeeld **alle BLOB-gebeurtenissen** vertegenwoordigen of alleen **blobs die zijn gemaakt** en **Verwijderde BLOB** -gebeurtenissen die zijn gepubliceerd voor een **specifiek opslag account**. Wanneer een BLOB in dit voor beeld wordt geüpload naar het opslag account, publiceert de Azure Storage-service een gebeurtenis die door een **blob is gemaakt** naar het onderwerp system in Event grid, waarna de gebeurtenis wordt doorgestuurd naar de [abonnees](event-handlers.md) van het onderwerp die de gebeurtenis ontvangen en verwerken. 

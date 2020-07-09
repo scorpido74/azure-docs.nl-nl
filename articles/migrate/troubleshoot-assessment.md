@@ -7,12 +7,12 @@ author: musa-57
 ms.manager: abhemraj
 ms.author: hamusa
 ms.date: 01/02/2020
-ms.openlocfilehash: e5e55e3bfa5d30c74041b834483bc78875e7ce05
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 61afc3ec0f37f5d8b1030818d21b7daabb7fce40
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85611370"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86121670"
 ---
 # <a name="troubleshoot-assessmentdependency-visualization"></a>Problemen met de evaluatie/afhankelijkheid oplossen
 
@@ -36,10 +36,10 @@ Vereist een micro soft Visual Studio-abonnement | Op de computer wordt een Windo
 Er is geen VM gevonden voor de vereiste opslag prestaties | De opslag prestaties (invoer/uitvoer-bewerkingen per seconde [IOPS] en door Voer) die vereist zijn voor de computer, overschrijden de ondersteuning voor Azure-VM'S. Verminder de opslag vereisten voor de machine vóór de migratie.
 Er is geen VM gevonden voor de vereiste netwerk prestaties | De netwerk prestaties (in/uit) die vereist zijn voor de computer, overschrijden de ondersteuning voor Azure-VM'S. Verminder de netwerk vereisten voor de computer.
 De virtuele machine is niet gevonden op de opgegeven locatie | Gebruik een andere doel locatie vóór de migratie.
-Een of meer niet-geschikte schijven | Een of meer schijven die zijn gekoppeld aan de virtuele machine voldoen niet aan de vereisten van Azure. Één<br/><br/> Azure Migrate: Server analyse biedt momenteel geen ondersteuning voor Ultra-SSD schijven en evalueert de schijven op basis van de schijf limieten voor Premium Managed disks (32 TB).<br/><br/> Zorg ervoor dat de grootte van de schijf < 64 TB (ondersteund door Ultra-SSD schijven) voor elke schijf die aan de VM is gekoppeld.<br/><br/> Als dat niet het geval is, vermindert u de schijf grootte voordat u naar Azure migreert, of gebruikt u meerdere schijven in Azure en [stript u deze samen](https://docs.microsoft.com/azure/virtual-machines/windows/premium-storage-performance#disk-striping) om hogere opslag limieten te krijgen. Zorg ervoor dat de prestaties (IOPS en door Voer) die nodig zijn voor elke schijf worden ondersteund door door Azure [beheerde virtuele-machine schijven](https://docs.microsoft.com/azure/azure-resource-manager/management/azure-subscription-service-limits#storage-limits).
+Een of meer niet-geschikte schijven | Een of meer schijven die zijn gekoppeld aan de virtuele machine voldoen niet aan de vereisten van Azure. Één<br/><br/> Azure Migrate: Server analyse biedt momenteel geen ondersteuning voor Ultra-SSD schijven en evalueert de schijven op basis van de schijf limieten voor Premium Managed disks (32 TB).<br/><br/> Zorg ervoor dat de grootte van de schijf < 64 TB (ondersteund door Ultra-SSD schijven) voor elke schijf die aan de VM is gekoppeld.<br/><br/> Als dat niet het geval is, vermindert u de schijf grootte voordat u naar Azure migreert, of gebruikt u meerdere schijven in Azure en [stript u deze samen](../virtual-machines/windows/premium-storage-performance.md#disk-striping) om hogere opslag limieten te krijgen. Zorg ervoor dat de prestaties (IOPS en door Voer) die nodig zijn voor elke schijf worden ondersteund door door Azure [beheerde virtuele-machine schijven](../azure-resource-manager/management/azure-subscription-service-limits.md#storage-limits).
 Een of meer niet-geschikte netwerk adapters. | Verwijder ongebruikte netwerk adapters van de machine voordat de migratie wordt gebruikt.
 Aantal schijven overschrijdt de limiet | Verwijder ongebruikte schijven van de machine vóór de migratie.
-De schijf grootte overschrijdt de limiet | Azure Migrate: Server analyse biedt momenteel geen ondersteuning voor Ultra-SSD schijven en controleert de schijven op basis van Premium-schijf limieten (32 TB).<br/><br/> Azure ondersteunt echter schijven met een grootte van Maxi maal 64 TB (ondersteund door Ultra-SSD schijven). Verklein schijven tot minder dan 64 TB vóór de migratie of gebruik meerdere schijven in Azure en [strip deze samen](https://docs.microsoft.com/azure/virtual-machines/windows/premium-storage-performance#disk-striping) om hogere opslag limieten te krijgen.
+De schijf grootte overschrijdt de limiet | Azure Migrate: Server analyse biedt momenteel geen ondersteuning voor Ultra-SSD schijven en controleert de schijven op basis van Premium-schijf limieten (32 TB).<br/><br/> Azure ondersteunt echter schijven met een grootte van Maxi maal 64 TB (ondersteund door Ultra-SSD schijven). Verklein schijven tot minder dan 64 TB vóór de migratie of gebruik meerdere schijven in Azure en [strip deze samen](../virtual-machines/windows/premium-storage-performance.md#disk-striping) om hogere opslag limieten te krijgen.
 De schijf is niet beschikbaar op de opgegeven locatie | Zorg ervoor dat de schijf zich op de doel locatie bevindt voordat u migreert.
 De schijf is niet beschikbaar voor de opgegeven redundantie | De schijf moet het opslag type redundantie gebruiken dat is gedefinieerd in de instellingen voor evaluatie (standaard LRS).
 Kan de schijf geschiktheid niet bepalen vanwege een interne fout | Probeer een nieuwe evaluatie voor de groep te maken.
@@ -52,7 +52,7 @@ Voorwaardelijk gereed Internet Protocol | Alleen van toepassing op AVS-evaluatie
 
 ## <a name="suggested-migration-tool-in-import-based-avs-assessment-marked-as-unknown"></a>Aanbevolen migratie hulpmiddel in op import gebaseerde AVS-evaluatie is gemarkeerd als onbekend
 
-Voor machines die worden geïmporteerd via een CSV-bestand, is het standaard hulp programma voor migratie in en AVS-evaluatie onbekend. Voor VMware-machines is het echter raadzaam de VMWare Hybrid Cloud extension (HCX)-oplossing te gebruiken. [Meer informatie](https://docs.microsoft.com/azure/azure-vmware/hybrid-cloud-extension-installation).
+Voor machines die worden geïmporteerd via een CSV-bestand, is het standaard hulp programma voor migratie in en AVS-evaluatie onbekend. Voor VMware-machines is het echter raadzaam de VMWare Hybrid Cloud extension (HCX)-oplossing te gebruiken. [Meer informatie](../azure-vmware/hybrid-cloud-extension-installation.md).
 
 ## <a name="linux-vms-are-conditionally-ready-in-an-azure-vm-assessment"></a>Linux-Vm's zijn ' conditioneel Ready ' in een Azure VM-evaluatie
 
@@ -64,7 +64,7 @@ In het geval van VMware-en Hyper-V-Vm's, markeert server Assessment Linux-Vm's a
 - U kunt bepalen of het Linux-besturings systeem dat wordt uitgevoerd op de on-premises VM, wordt goedgekeurd in azure door [Azure Linux-ondersteuning](https://aka.ms/migrate/selfhost/azureendorseddistros)te controleren.
 -  Nadat u de geviseerde distributie hebt gecontroleerd, kunt u deze waarschuwing negeren.
 
-Dit gat kan worden opgelost door [toepassings detectie](https://docs.microsoft.com/azure/migrate/how-to-discover-applications) in te scha kelen op de virtuele VMware-machines. Server assessment maakt gebruik van het besturings systeem dat is gedetecteerd van de virtuele machine met behulp van de gast referenties. Deze besturingssysteem gegevens identificeren de juiste besturingssysteem gegevens in het geval van zowel Windows-als Linux-Vm's.
+Dit gat kan worden opgelost door [toepassings detectie](./how-to-discover-applications.md) in te scha kelen op de virtuele VMware-machines. Server assessment maakt gebruik van het besturings systeem dat is gedetecteerd van de virtuele machine met behulp van de gast referenties. Deze besturingssysteem gegevens identificeren de juiste besturingssysteem gegevens in het geval van zowel Windows-als Linux-Vm's.
 
 
 ## <a name="azure-skus-bigger-than-on-premises-in-an-azure-vm-assessment"></a>Azure-Sku's die groter zijn dan on-premises in een Azure VM-evaluatie
@@ -101,7 +101,7 @@ Server Assessment rapporteert "PercentageOfCoresUtilizedMissing" of "PercentageO
 - Dit kan gebeuren als de virtuele machines tijdens de evaluatie duur zijn uitgeschakeld. Het apparaat kan geen prestatie gegevens voor een virtuele machine verzamelen wanneer deze is uitgeschakeld.
 - Als alleen de geheugen items ontbreken en u probeert virtuele Hyper-V-machines te evalueren, controleert u of u dynamisch geheugen hebt ingeschakeld op deze virtuele machines. Er is alleen een bekend probleem voor virtuele Hyper-V-machines, waarin een Azure Migrate apparaat geen geheugen gebruiks gegevens kan verzamelen voor Vm's waarvoor geen dynamisch geheugen is ingeschakeld.
 - Als een van de prestatie meter items ontbreekt, wordt de analyse van Azure Migrate server terugvallen op de toegewezen kernen en het geheugen en wordt een bijbehorende VM-grootte aanbevolen.
-- Als alle prestatie meter items ontbreken, controleert u of aan de toegangs vereisten voor de poort voor evaluatie is voldaan. Meer informatie over de toegangs vereisten voor de poort voor [VMware](https://docs.microsoft.com/azure/migrate/migrate-support-matrix-vmware#port-access), [Hyper-V](https://docs.microsoft.com/azure/migrate/migrate-support-matrix-hyper-v#port-access) en [fysieke](https://docs.microsoft.com/azure/migrate/migrate-support-matrix-physical#port-access) server beoordeling.
+- Als alle prestatie meter items ontbreken, controleert u of aan de toegangs vereisten voor de poort voor evaluatie is voldaan. Meer informatie over de toegangs vereisten voor de poort voor [VMware](./migrate-support-matrix-vmware.md#port-access-requirements), [Hyper-V](./migrate-support-matrix-hyper-v.md#port-access) en [fysieke](./migrate-support-matrix-physical.md#port-access) server beoordeling.
 
 ## <a name="is-the-operating-system-license-included-in-an-azure-vm-assessment"></a>Is de licentie voor het besturings systeem opgenomen in een Azure VM-evaluatie?
 
@@ -120,11 +120,11 @@ Dit kan gebeuren als Hyper-V-virtualisatie is ingeschakeld op de fysieke server.
 
 ## <a name="recommended-azure-vm-sku-for-my-physical-server-is-oversized"></a>De aanbevolen SKU van Azure VM voor mijn fysieke server is te klein
 
-Dit kan gebeuren als Hyper-V-virtualisatie is ingeschakeld op de fysieke server. Op deze servers detecteert Azure Migrate momenteel de fysieke en virtuele netwerk adapters. Daarom is het nr. van gedetecteerde netwerk adapters is hoger dan werkelijk. Als de server bepaling een Azure-VM pickt die het vereiste aantal netwerk adapters ondersteunt, kan dit leiden tot een grote VM. Meer [informatie](https://docs.microsoft.com/azure/migrate/concepts-assessment-calculation#calculating-sizing) over de impact van Nee. van netwerk adapters bij grootte. Dit is een product hiaat dat vooruit gaat.
+Dit kan gebeuren als Hyper-V-virtualisatie is ingeschakeld op de fysieke server. Op deze servers detecteert Azure Migrate momenteel de fysieke en virtuele netwerk adapters. Daarom is het nr. van gedetecteerde netwerk adapters is hoger dan werkelijk. Als de server bepaling een Azure-VM pickt die het vereiste aantal netwerk adapters ondersteunt, kan dit leiden tot een grote VM. Meer [informatie](./concepts-assessment-calculation.md#calculating-sizing) over de impact van Nee. van netwerk adapters bij grootte. Dit is een product hiaat dat vooruit gaat.
 
 ## <a name="readiness-category-not-ready-for-my-physical-server"></a>De gereedheids categorie is niet gereed voor mijn fysieke server
 
-De gereedheids categorie kan onjuist zijn gemarkeerd als ' niet gereed ' in het geval van een fysieke server waarop Hyper-V-virtualisatie is ingeschakeld. Op deze servers, vanwege een product hiaat, detecteert Azure Migrate momenteel zowel de fysieke als de virtuele adapters. Daarom is het nr. van gedetecteerde netwerk adapters is hoger dan werkelijk. In zowel on-premises als op prestaties gebaseerde beoordelingen pickt server Assessment een Azure-VM die het vereiste aantal netwerk adapters ondersteunt. Als het aantal netwerk adapters wordt gedetecteerd dat deze hoger is dan 32, wordt de maximum waarde Nee. van Nic's die worden ondersteund op virtuele machines van Azure, wordt de computer gemarkeerd als ' niet gereed '.  Meer [informatie](https://docs.microsoft.com/azure/migrate/concepts-assessment-calculation#calculating-sizing) over de impact van Nee. van Nic's in grootte.
+De gereedheids categorie kan onjuist zijn gemarkeerd als ' niet gereed ' in het geval van een fysieke server waarop Hyper-V-virtualisatie is ingeschakeld. Op deze servers, vanwege een product hiaat, detecteert Azure Migrate momenteel zowel de fysieke als de virtuele adapters. Daarom is het nr. van gedetecteerde netwerk adapters is hoger dan werkelijk. In zowel on-premises als op prestaties gebaseerde beoordelingen pickt server Assessment een Azure-VM die het vereiste aantal netwerk adapters ondersteunt. Als het aantal netwerk adapters wordt gedetecteerd dat deze hoger is dan 32, wordt de maximum waarde Nee. van Nic's die worden ondersteund op virtuele machines van Azure, wordt de computer gemarkeerd als ' niet gereed '.  Meer [informatie](./concepts-assessment-calculation.md#calculating-sizing) over de impact van Nee. van Nic's in grootte.
 
 
 ## <a name="number-of-discovered-nics-higher-than-actual-for-physical-servers"></a>Aantal gedetecteerde Nic's hoger dan werkelijk voor fysieke servers
@@ -154,18 +154,18 @@ Voor virtuele Linux-machines moet u ervoor zorgen dat de installatie opdrachten 
 
 ## <a name="supported-operating-systems"></a>Ondersteunde besturingssystemen
 
-- **MMS-agent**: Bekijk de ondersteunde [Windows](https://docs.microsoft.com/azure/log-analytics/log-analytics-concept-hybrid#supported-windows-operating-systems)-en [Linux](https://docs.microsoft.com/azure/log-analytics/log-analytics-concept-hybrid#supported-linux-operating-systems) -besturings systemen.
+- **MMS-agent**: Bekijk de ondersteunde [Windows](../azure-monitor/platform/log-analytics-agent.md#supported-windows-operating-systems)-en [Linux](../azure-monitor/platform/log-analytics-agent.md#supported-linux-operating-systems) -besturings systemen.
 - **Afhankelijkheids agent**: de ondersteunde [Windows-en Linux](../azure-monitor/insights/vminsights-enable-overview.md#supported-operating-systems) -besturings systemen.
 
 ## <a name="visualize-dependencies-for--hour"></a>Afhankelijkheden voor > uur visualiseren
 
 Met een afhankelijkheids analyse zonder agent kunt u afhankelijkheden visualiseren of ze exporteren in een kaart voor een duur van Maxi maal 30 dagen.
 
-Met afhankelijkheids analyse op basis van een agent, hoewel Azure Migrate u in staat stelt om terug te gaan naar een bepaalde datum in de afgelopen maand, is de maximale duur waarvoor u de afhankelijkheden kunt visualiseren één uur. U kunt bijvoorbeeld de functie tijd duur in de afhankelijkheids toewijzing gebruiken om afhankelijkheden voor gisteren weer te geven, maar u kunt ze alleen bekijken voor een periode van één uur. U kunt echter Azure Monitor-Logboeken gebruiken om een langere duur van [de afhankelijkheids gegevens](https://docs.microsoft.com/azure/migrate/how-to-create-group-machine-dependencies) op te vragen.
+Met afhankelijkheids analyse op basis van een agent, hoewel Azure Migrate u in staat stelt om terug te gaan naar een bepaalde datum in de afgelopen maand, is de maximale duur waarvoor u de afhankelijkheden kunt visualiseren één uur. U kunt bijvoorbeeld de functie tijd duur in de afhankelijkheids toewijzing gebruiken om afhankelijkheden voor gisteren weer te geven, maar u kunt ze alleen bekijken voor een periode van één uur. U kunt echter Azure Monitor-Logboeken gebruiken om een langere duur van [de afhankelijkheids gegevens](./how-to-create-group-machine-dependencies.md) op te vragen.
 
 ## <a name="visualized-dependencies-for--10-machines"></a>Gevisualiseerde afhankelijkheden voor > 10-computers
 
-In Azure Migrate server-evaluatie, met afhankelijkheids analyse op basis van een agent, kunt u [afhankelijkheden voor groepen](https://docs.microsoft.com/azure/migrate/how-to-create-group-dependencies) met Maxi maal tien vm's visualiseren. Voor grotere groepen wordt u aangeraden de Vm's te splitsen in kleinere groepen om afhankelijkheden te visualiseren.
+In Azure Migrate server-evaluatie, met afhankelijkheids analyse op basis van een agent, kunt u [afhankelijkheden voor groepen](./how-to-create-a-group.md#refine-a-group-with-dependency-mapping) met Maxi maal tien vm's visualiseren. Voor grotere groepen wordt u aangeraden de Vm's te splitsen in kleinere groepen om afhankelijkheden te visualiseren.
 
 
 ## <a name="machines-show-install-agent"></a>Computers ' agent installeren ' weer geven

@@ -1,18 +1,14 @@
 ---
 title: Azure Event Grid-probleemoplossings gids
 description: Dit artikel bevat een lijst met fout codes, fout berichten, beschrijvingen en aanbevolen acties.
-services: event-grid
-author: spelluru
-ms.service: event-grid
 ms.topic: conceptual
-ms.date: 08/22/2019
-ms.author: spelluru
-ms.openlocfilehash: 2358cf57348b82975250d489ac95d6e0b35eed0e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 07/07/2020
+ms.openlocfilehash: ab52cea6ab43763cf2d9dc2b57b7f369072a399e
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85254817"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86119035"
 ---
 # <a name="troubleshoot-azure-event-grid-errors"></a>Problemen met Azure Event Grid oplossen
 Deze hand leiding bevat een lijst met Azure Event Grid fout codes, fout berichten, beschrijvingen en aanbevolen acties die u moet uitvoeren wanneer u deze fouten ontvangt. 
@@ -36,7 +32,7 @@ Deze hand leiding bevat een lijst met Azure Event Grid fout codes, fout berichte
 | Foutcode | Foutbericht | Description | Aanbevolen actie |
 | ---------- | ------------- | ----------- | ------------------ |
 | Http status code. verboden <br/>403 | Publiceren naar {topic/Domain} door de client {IpAddress} is geweigerd vanwege IP-filter regels. | Voor het onderwerp of het domein zijn IP-firewall regels geconfigureerd en de toegang is beperkt tot geconfigureerde IP-adressen. | Voeg het IP-adres toe aan de IP-firewall regels, Zie [IP-Firewall configureren](configure-firewall.md) |
-| Http status code. verboden <br/> 403 | Publiceren naar {topic/Domain} door de client is geweigerd omdat de aanvraag afkomstig is van een persoonlijk eind punt en er geen overeenkomende persoonlijke eindpunt verbinding is gevonden voor de resource. | Het onderwerp of het domein heeft het geconfigureerde persoonlijke eind punt en de publicatie aanvraag is afkomstig van een persoonlijk eind punt dat niet is geconfigureerd/goedgekeurd. | Een persoonlijk eind punt configureren voor het onderwerp/domein. [Privé-eind punten configureren](configure-private-endpoints.md) |
+| Http status code. verboden <br/> 403 | Publiceren naar {topic/Domain} door de client is geweigerd omdat de aanvraag afkomstig is van een persoonlijk eind punt en er geen overeenkomende persoonlijke eindpunt verbinding is gevonden voor de resource. | Het onderwerp of het domein heeft het geconfigureerde persoonlijke eind punt en de publicatie aanvraag is afkomstig van een persoonlijk eind punt dat niet is geconfigureerd/goedgekeurd. | Een persoonlijk eind punt configureren voor het onderwerp/domein. [Privé-eindpunten configureren](configure-private-endpoints.md) |
 
 ## <a name="troubleshoot-event-subscription-validation"></a>Problemen met validatie van gebeurtenis abonnementen oplossen
 

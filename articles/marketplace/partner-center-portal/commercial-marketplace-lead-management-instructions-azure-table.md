@@ -1,17 +1,18 @@
 ---
 title: Lead beheer met Azure-tabel opslag-micro soft Commercial Marketplace
 description: Meer informatie over het gebruik van Azure-tabel opslag voor het configureren van leads voor Microsoft AppSource en Azure Marketplace
-author: qianw211
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
+author: keferna
+ms.author: keferna
 ms.date: 03/30/2020
-ms.author: dsindona
-ms.openlocfilehash: fb53b0fe28f48f5f240e470aa5256ac1c277686e
-ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.openlocfilehash: 485da8549175af8813a9d0c3052d1e77f336e619
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/05/2020
-ms.locfileid: "85957338"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86120837"
 ---
 # <a name="use-azure-table-storage-to-manage-commercial-marketplace-leads"></a>Azure-tabel opslag gebruiken om leads voor commerciële Marketplace te beheren
 

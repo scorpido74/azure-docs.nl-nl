@@ -1,18 +1,18 @@
 ---
 title: Micro soft-release bronnen voor commerciële Marketplace
 description: Meer informatie over nieuwe en aanstaande functies, releases en andere updates voor de commerciële Marketplace
-author: qianw211
-ms.author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
+author: vikrambmsft
+ms.author: vikramb
 ms.date: 05/19/2020
-ms.openlocfilehash: 89a60016f8f4496e44c138a79a3864782791d1db
-ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.openlocfilehash: 880b9027a3708dc283e43b813d3dabf2c9ffd401
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/05/2020
-ms.locfileid: "85963288"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86120803"
 ---
 # <a name="microsoft-commercial-marketplace-resources"></a>Micro soft-resources voor commerciële Marketplace
 

@@ -1,17 +1,18 @@
 ---
 title: Een bestaande commerciële Marketplace-aanbieding bijwerken
 description: Updates voor een bestaande commerciële Marketplace-aanbieding maken, waaronder bewerkingen, het verwijderen van een concept, het annuleren van een publicatie aanvraag, het verkopen van een aanbieding of het plannen stoppen en het synchroniseren van persoonlijke doel groepen.
-author: dsindona
-ms.author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
+author: keferna
+ms.author: keferna
 ms.date: 01/16/2020
-ms.openlocfilehash: eca054d2db5eca1948d1085e105e91af19fc132e
-ms.sourcegitcommit: bcb962e74ee5302d0b9242b1ee006f769a94cfb8
+ms.openlocfilehash: 62170df567f552699304710902a1f83b84728af2
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86057956"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86120701"
 ---
 # <a name="update-an-existing-offer-in-the-commercial-marketplace"></a>Een bestaande aanbieding bijwerken in Commerciële Marketplace
 

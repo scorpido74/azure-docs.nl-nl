@@ -1,17 +1,18 @@
 ---
 title: Geïntegreerde oplossingen-micro soft Commercial Marketplace
 description: Meer informatie over de voor delen, bronnen en volgende stappen voor het aanbieden van geïntegreerde oplossingen in de commerciële Marketplace.
-author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
+author: vikrambmsft
+ms.author: vikramb
 ms.date: 04/15/2020
-ms.author: dsindona
-ms.openlocfilehash: bf20473b407db1804a4275fdc6dd3d528de1f189
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 8e029d888b963fd10e7198486a973766755c9812
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83657988"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86119511"
 ---
 # <a name="integrated-solutions-in-the-commercial-marketplace"></a>Geïntegreerde oplossingen in de commerciële Marketplace
 Met een geïntegreerde oplossing worden de beste technologieën van micro soft-partners gecombineerd, samen met raadpleging, implementatie en ondersteuning die wordt geboden door partners van de deskundige Services.

@@ -2,18 +2,18 @@
 title: Publicatie handleiding voor container aanbiedingen in azure Marketplace
 description: In dit artikel worden de vereisten beschreven voor het publiceren van container aanbiedingen in azure Marketplace.
 services: Azure, Marketplace, Compute, Storage, Networking, Blockchain, Security
-author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
+author: keferna
+ms.author: keferna
 ms.date: 04/15/2020
-ms.author: dsindona
-ms.openlocfilehash: fae11343332fe741301016d4871d098b0214c7f5
-ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.openlocfilehash: 81069b0340202a0a481522ef1920806026ebcbe1
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/05/2020
-ms.locfileid: "85964444"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86119392"
 ---
 # <a name="publishing-guide-for-container-offers"></a>Publicatie handleiding voor container aanbiedingen
 

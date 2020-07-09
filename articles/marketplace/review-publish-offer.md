@@ -1,19 +1,19 @@
 ---
 title: Een aanbieding bekijken en publiceren naar micro soft Commercial Marketplace
 description: Gebruik het partner centrum om uw aanbieding te verzenden naar een preview-versie, een voor beeld van uw aanbieding te bekijken en deze vervolgens te publiceren naar micro soft Commercial Marketplace.
-author: mingshen-ms
-ms.author: mingshen
 ms.reviewer: dannyevers
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: how-to
+author: mingshen-ms
+ms.author: mingshen
 ms.date: 07/05/2020
-ms.openlocfilehash: 910a886f02b386d7242bdd5e85f0710baa25408e
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.openlocfilehash: 34e56e5d92526cbf46408c670127e87781e342cd
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
 ms.lasthandoff: 07/08/2020
-ms.locfileid: "86090978"
+ms.locfileid: "86119732"
 ---
 # <a name="review-and-publish-an-offer-to-commercial-marketplace"></a>Een aanbieding voor een commerciële Marketplace controleren en publiceren
 

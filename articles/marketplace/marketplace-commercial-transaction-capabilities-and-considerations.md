@@ -1,18 +1,16 @@
 ---
 title: Micro soft Commercial Marketplace Transact-mogelijkheden
 description: In dit artikel worden de prijs-, facturerings-, facturerings-en uitbetalings overwegingen voor de optie commerciële Marketplace Transact beschreven.
-author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 06/15/2020
-ms.author: dsindona
-ms.openlocfilehash: c7b13f74e63b9e74924efb70e7c9a70f6fda2d3c
-ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.openlocfilehash: 653c55fa7476fa5fed077002db226297a33dfef6
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/05/2020
-ms.locfileid: "85964461"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86119426"
 ---
 # <a name="commercial-marketplace-transact-capabilities"></a>De Transact-mogelijkheden voor commerciële Marketplace
 

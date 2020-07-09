@@ -6,11 +6,12 @@ ms.service: virtual-machines-linux
 ms.topic: article
 ms.date: 12/06/2019
 ms.author: cynthn
-ms.openlocfilehash: 44923a124b864083b1badfc617ce0303be66a10e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 8c826f5e0e36d693dd3ba98640bceae228ba34e8
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84985345"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86119205"
 ---
 # <a name="detailed-steps-create-and-manage-ssh-keys-for-authentication-to-a-linux-vm-in-azure"></a>Gedetailleerde stappen: SSH-sleutels voor verificatie voor een virtuele Linux-machine maken en beheren in azure 
 Met een SSH-sleutel paar (Secure Shell) kunt u een virtuele Linux-machine in azure maken die standaard gebruikmaakt van SSH-sleutels voor verificatie, waardoor het niet nodig is om zich aan te melden. Vm's die zijn gemaakt met de Azure Portal, Azure CLI, Resource Manager-sjablonen of andere hulpprogram ma's, kunnen uw open bare SSH-sleutel opnemen als onderdeel van de implementatie, waarmee SSH-sleutel verificatie wordt ingesteld voor SSH-verbindingen. 
@@ -40,7 +41,7 @@ SSH-sleutels worden standaard opgeslagen in de `~/.ssh`-directory.  Als u niet b
 
 ### <a name="basic-example"></a>Basis voorbeeld
 
-Met de volgende opdracht worden de `ssh-keygen` open bare en persoonlijke sleutel bestanden van de SSH RSA standaard 2048 gegenereerd in de `~/.ssh` Directory. Als er een SSH-sleutel paar op de huidige locatie bestaat, worden deze bestanden overschreven.
+Met de volgende opdracht worden de `ssh-keygen` open bare en persoonlijke sleutel bestanden van de SSH RSA standaard 4096 gegenereerd in de `~/.ssh` Directory. Als er een SSH-sleutel paar op de huidige locatie bestaat, worden deze bestanden overschreven.
 
 ```bash
 ssh-keygen -m PEM -t rsa -b 4096

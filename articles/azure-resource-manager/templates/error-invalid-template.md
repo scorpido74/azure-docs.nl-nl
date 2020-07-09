@@ -3,11 +3,12 @@ title: Ongeldige sjabloon fouten
 description: Hierin wordt beschreven hoe u fouten met ongeldige sjablonen oplost tijdens het implementeren van Azure Resource Manager sjablonen.
 ms.topic: troubleshooting
 ms.date: 05/22/2020
-ms.openlocfilehash: 2902a6d82c32192bb241697825a31d759d5c7b75
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: a3589f42f707240272a411a985adefd5e6c5539c
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84324059"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86118882"
 ---
 # <a name="resolve-errors-for-invalid-template"></a>Fouten met een ongeldige sjabloon oplossen
 
@@ -47,7 +48,7 @@ Deze fout kan eenvoudig worden gemaakt omdat sjabloon expressies complex kunnen 
 
 Als u de overeenkomende syntaxis niet opgeeft, produceert de sjabloon een waarde die afwijkt van uw voor nemen.
 
-Wanneer u dit type fout ontvangt, controleert u de syntaxis van de expressie zorgvuldig. U kunt een JSON-editor gebruiken, zoals [Visual Studio](create-visual-studio-deployment-project.md) of [Visual Studio code](use-vs-code-to-create-template.md), die u kan waarschuwen over syntaxis fouten.
+Wanneer u dit type fout ontvangt, controleert u de syntaxis van de expressie zorgvuldig. U kunt een JSON-editor gebruiken, zoals [Visual Studio](create-visual-studio-deployment-project.md) of [Visual Studio code](quickstart-create-templates-use-visual-studio-code.md), die u kan waarschuwen over syntaxis fouten.
 
 <a id="incorrect-segment-lengths"></a>
 

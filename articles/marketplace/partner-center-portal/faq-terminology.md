@@ -1,17 +1,16 @@
 ---
 title: Veelgestelde vragen over commerciële Marketplace Analytics & terminologie-partner centrum
 description: Krijg antwoorden op veelgestelde vragen over de analyse van commerciële Marketplace in Partner Center. Dit artikel bevat een data dictionary voor analyse terminologie.
-author: dsindona
-ms.author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 02/17/2020
-ms.openlocfilehash: eb91e498fa757c5cec7bd466c60aaf7e8758304c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: ece7fa64c64d4c2f771be61984485cf9b1c4abaf
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83744564"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86121738"
 ---
 # <a name="commercial-marketplace-analytics-terminology-and-common-questions"></a>Commercial Marketplace Analytics terminologie en veelgestelde vragen
 

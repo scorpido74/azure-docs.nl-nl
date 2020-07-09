@@ -6,12 +6,12 @@ ms.service: azure-migrate
 ms.topic: conceptual
 ms.date: 06/25/2020
 ms.author: mahain
-ms.openlocfilehash: 200a6ba333d283b6a82f1eb228a0fc586b5b1fab
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: a4d2e810144e7c3d36545cb1e965aec40980c1d2
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85568477"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86118814"
 ---
 # <a name="avs-assessments-in-azure-migrate-server-assessment"></a>AVS-evaluaties in Azure Migrate: Server evaluatie
 
@@ -29,7 +29,7 @@ Beoordelingen die u maakt met server evaluatie zijn een tijdgebonden moment opna
 **Beoordelings type** | **Details**
 --- | --- 
 **Azure VM** | Beoordelingen voor het migreren van uw on-premises servers naar Azure virtual machines. <br/><br/> U kunt uw on-premises [virtuele VMware-machines](how-to-set-up-appliance-vmware.md), [virtuele Hyper-V-machines](how-to-set-up-appliance-hyper-v.md)en [fysieke servers](how-to-set-up-appliance-physical.md) voor migratie naar Azure evalueren met dit beoordelings type. [Meer informatie](concepts-assessment-calculation.md)
-**Azure VMware Solution (AVS)** | Beoordelingen voor het migreren van uw on-premises servers naar de [Azure VMware-oplossing (AVS)](https://docs.microsoft.com/azure/azure-vmware/introduction). <br/><br/> U kunt uw on-premises [virtuele VMware-machines](how-to-set-up-appliance-vmware.md) evalueren voor migratie naar Azure VMware-oplossing (AVS) met dit beoordelings type. [Meer informatie](concepts-azure-vmware-solution-assessment-calculation.md)
+**Azure VMware Solution (AVS)** | Beoordelingen voor het migreren van uw on-premises servers naar de [Azure VMware-oplossing (AVS)](../azure-vmware/introduction.md). <br/><br/> U kunt uw on-premises [virtuele VMware-machines](how-to-set-up-appliance-vmware.md) evalueren voor migratie naar Azure VMware-oplossing (AVS) met dit beoordelings type. [Meer informatie](concepts-azure-vmware-solution-assessment-calculation.md)
 
 De evaluatie van de Azure VMware-oplossing (AVS) in Server beoordeling biedt twee opties voor het aanpassen van de grootte:
 
@@ -121,7 +121,7 @@ Dit is what's opgenomen in een AVS-evaluatie in Server evaluatie:
 | **Doel locatie** | Hiermee geeft u de automatische AVS-Cloud locatie op waarnaar u wilt migreren.<br/><br/> AVS-evaluatie in Server evaluatie ondersteunt momenteel deze doel regio's: VS-Oost, Europa-west, VS-West. 
 | **Opslag type** | Hiermee geeft u de opslag engine moet worden gebruikt in AVS.<br/><br/> AVS-evaluaties ondersteunen alleen vSAN als een standaard type opslag. 
 **Gereserveerde instanties (RIs)** | Met deze eigenschap kunt u gereserveerde instanties in AVS opgeven. RIs wordt momenteel niet ondersteund voor AVS-knoop punten. 
-**Knooppunt type** | Hiermee geeft u het [AVS-knooppunt type](https://docs.microsoft.com/azure/azure-vmware/concepts-private-clouds-clusters) op dat wordt gebruikt om de on-premises vm's toe te wijzen. Het standaard knooppunt type is AV36. <br/><br/> Azure Migrate wordt een vereist aantal knoop punten aanbevolen voor de virtuele machines die moeten worden gemigreerd naar AVS. 
+**Knooppunt type** | Hiermee geeft u het [AVS-knooppunt type](../azure-vmware/concepts-private-clouds-clusters.md) op dat wordt gebruikt om de on-premises vm's toe te wijzen. Het standaard knooppunt type is AV36. <br/><br/> Azure Migrate wordt een vereist aantal knoop punten aanbevolen voor de virtuele machines die moeten worden gemigreerd naar AVS. 
 **FTT-instelling, RAID-niveau** | Hiermee geeft u de toepasselijke fout op voor verdragen en RAID-combi Naties. De geselecteerde FTT-optie in combi natie met de on-premises VM-schijf vereiste bepaalt de totale vSAN-opslag die is vereist in AVS. 
 **Criterium voor het aanpassen van de grootte** | Hiermee stelt u de criteria in die moeten worden gebruikt voor de *juiste grootte* van VM'S voor AVS. U kunt kiezen voor een hoge grootte op *basis van prestaties* of *als on-premises,* zonder rekening te houden met de prestatie geschiedenis. 
 **Prestatiegeschiedenis** | Hiermee stelt u de duur in waarmee rekening moet worden gehouden bij het evalueren van de prestatie gegevens van machines. Deze eigenschap is alleen van toepassing wanneer de grootte criteria *op basis van prestaties*zijn. 
@@ -249,14 +249,14 @@ Nadat de aanbevelingen voor de grootte zijn voltooid, berekent Azure Migrate de 
 - Hiermee worden de kosten op alle knoop punten geaggregeerd om de totale maandelijkse kosten te berekenen.
 - De kosten worden weer gegeven in de valuta die is opgegeven in de instellingen voor evaluatie.
 
-Naarmate de prijzen voor de Azure VMware-oplossing (AVS) per knoop punt zijn, heeft de totale kosten geen reken kosten en de distributie van de opslag kosten. [Meer informatie](https://docs.microsoft.com/azure/azure-vmware/introduction)
+Naarmate de prijzen voor de Azure VMware-oplossing (AVS) per knoop punt zijn, heeft de totale kosten geen reken kosten en de distributie van de opslag kosten. [Meer informatie](../azure-vmware/introduction.md)
 
 Houd er rekening mee dat als de preview-versie van Azure VMware wordt weer gegeven, de prijzen van het knoop punt in de evaluatie preview-prijzen zijn. Neem contact op met uw lokale GBB-team van MSFT AVS voor hulp.
 
 ## <a name="migration-tool-guidance"></a>Richt lijnen voor hulp programma voor migratie
 
 In het Azure Readiness-rapport voor de evaluatie van Azure VMware-oplossingen (AVS) kunt u de volgende aanbevolen hulpprogram ma's zien: 
-- **VMware HCX of ENTER prise**: voor VMware-machines is de VMware Hybrid Cloud extension (HCX)-oplossing het aanbevolen migratie programma voor het migreren van uw on-premises werk belasting naar uw Azure VMware-oplossing (AVS) Private Cloud. [Meer informatie](https://docs.microsoft.com/azure/azure-vmware/hybrid-cloud-extension-installation).
+- **VMware HCX of ENTER prise**: voor VMware-machines is de VMware Hybrid Cloud extension (HCX)-oplossing het aanbevolen migratie programma voor het migreren van uw on-premises werk belasting naar uw Azure VMware-oplossing (AVS) Private Cloud. [Meer informatie](../azure-vmware/hybrid-cloud-extension-installation.md).
 - **Onbekend**: voor machines die worden geïmporteerd via een CSV-bestand, is het standaard hulp programma voor migratie onbekend. Hoewel voor VMware-machines, wordt aanbevolen de VMWare Hybrid Cloud extension (HCX)-oplossing te gebruiken.
 
 ## <a name="next-steps"></a>Volgende stappen

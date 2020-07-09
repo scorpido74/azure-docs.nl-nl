@@ -3,12 +3,12 @@ title: Azure Lighthouse en door Azure beheerde toepassingen
 description: Azure Lighthouse-en Azure-toepassingen die worden beheerd...
 ms.date: 05/01/2020
 ms.topic: conceptual
-ms.openlocfilehash: d9923d31e78675927b4ca235607b2a61b24ccc41
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 3e1477de18b24cf5099cd4479a82169e3ecada26
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82783628"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86121602"
 ---
 # <a name="azure-lighthouse-and-azure-managed-applications"></a>Azure Lighthouse en door Azure beheerde toepassingen
 
@@ -47,4 +47,4 @@ Klanten kunnen ook geïnteresseerd zijn in beheerde toepassingen van meerdere se
 ## <a name="next-steps"></a>Volgende stappen
 
 - Meer informatie over door [Azure beheerde toepassingen](../../azure-resource-manager/managed-applications/overview.md).
-- Meer informatie over het [voorbereiden van een abonnement op Azure delegated resource management](../how-to/onboard-customer.md).
+- Meer informatie over het [voorbereiden van een abonnement op Azure Lighthouse](../how-to/onboard-customer.md).

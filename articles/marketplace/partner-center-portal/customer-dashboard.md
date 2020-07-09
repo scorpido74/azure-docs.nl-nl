@@ -1,18 +1,16 @@
 ---
 title: Klanten dashboard in micro soft Commercial Marketplace Analytics op partner centrum
 description: Informatie over toegang tot informatie over uw klanten, met inbegrip van groei trends, met behulp van het dash board van de klant in de analyse van commerciële Marketplace.
-author: dsindona
-ms.author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 06/15/2020
-ms.openlocfilehash: 77541cc9f8a90335aedae0806981cbd8cca1f84d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 9f71a668b3473521e9d8d7c9318ab2e557380845
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84807786"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86121755"
 ---
 # <a name="customer-dashboard-in-commercial-marketplace-analytics"></a>Dashboard Klant in Commerciële marketplace-analyses
 

@@ -15,12 +15,12 @@ ms.workload: infrastructure-services
 ms.date: 04/02/2019
 ms.author: rimayber
 ms.reviewer: dgoddard, stegag, steveesp, minale, btalb, prachank
-ms.openlocfilehash: bb23484903ac3ce129c6e7a7a27e0765c227fb1d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: dc77f3267813bd049274f44e43c4d64b0eb3801e
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "68297772"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86120276"
 ---
 # <a name="tcpip-performance-tuning-for-azure-vms"></a>TCP/IP-prestaties afstemmen voor Azure-Vm's
 
@@ -136,7 +136,7 @@ In deze tabel wordt de lineaire afstand tussen twee locaties weer gegeven. In ne
 
 `minimum RTT = 2 * (Distance in kilometers / Speed of propagation)`
 
-U kunt 200 gebruiken voor de snelheid van door geven. Dit is de afstand, in meters, die licht over 1 milliseconde wordt verplaatst.
+U kunt 200 gebruiken voor de snelheid van door geven. Dit is de afstand, in kilo meters, die door het licht in één milliseconde wordt verplaatst.
 
 Laten we een voor beeld doen van New York naar San Francisco. De lineaire afstand is 4.148 km. Als u die waarde aan de vergelijking koppelt, krijgen we het volgende:
 

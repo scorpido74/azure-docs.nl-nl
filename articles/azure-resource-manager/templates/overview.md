@@ -3,12 +3,12 @@ title: Overzicht van sjablonen
 description: Beschrijft de voor delen van het gebruik van Azure Resource Manager sjablonen voor het implementeren van resources.
 ms.topic: conceptual
 ms.date: 06/22/2020
-ms.openlocfilehash: 4cdd0751feea6a3ade7183311831c7ed2b0f1b70
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: b1c61d5eac012f2b807c0121460804c46b12c8d0
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85210215"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86119358"
 ---
 # <a name="what-are-arm-templates"></a>Wat zijn ARM-sjablonen?
 
@@ -54,7 +54,7 @@ Als u probeert te kiezen tussen het gebruik van ARM-sjablonen en een van de ande
 
 * **Exporteer bare code**: u kunt een sjabloon voor een bestaande resource groep ophalen door de huidige status van de resource groep te exporteren of door de sjabloon die wordt gebruikt voor een bepaalde implementatie weer te geven. Raadplegen van de [geëxporteerde sjabloon](export-template-portal.md) is een handige manier om de syntaxis van de sjabloon te leren kennen.
 
-* **Hulp middelen voor ontwerpen**: u kunt sjablonen ontwerpen met [Visual Studio code](use-vs-code-to-create-template.md) en de extensie van het sjabloon programma. U krijgt IntelliSense, syntaxis markering, in line Help en veel andere taal functies. Naast Visual Studio code kunt u ook [Visual Studio](create-visual-studio-deployment-project.md)gebruiken.
+* **Hulp middelen voor ontwerpen**: u kunt sjablonen ontwerpen met [Visual Studio code](quickstart-create-templates-use-visual-studio-code.md) en de extensie van het sjabloon programma. U krijgt IntelliSense, syntaxis markering, in line Help en veel andere taal functies. Naast Visual Studio code kunt u ook [Visual Studio](create-visual-studio-deployment-project.md)gebruiken.
 
 ## <a name="template-file"></a>Sjabloonbestand
 

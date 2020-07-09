@@ -4,16 +4,16 @@ description: In dit artikel wordt beschreven hoe u de audit Logboeken in Azure D
 author: ajlam
 ms.author: andrela
 ms.service: mariadb
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 6/24/2020
-ms.openlocfilehash: 1dcad61ed94926aa2aa2237ea735287cd9c9f137
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: d0f5f71ed636cc67e742198436b48a09d291e798
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85362693"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86120055"
 ---
-# <a name="configure-and-access-audit-logs-in-the-azure-cli"></a>Controle logboeken configureren en openen in de Azure CLI
+# <a name="configure-and-access-azure-database-for-maria-db-audit-logs-in-the-azure-cli"></a>Azure data base for Maria DB-audit logboeken configureren en openen in de Azure CLI
 
 U kunt de [Azure database for MariaDB audit logboeken](concepts-audit-logs.md) configureren vanuit de Azure cli.
 
