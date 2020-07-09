@@ -8,16 +8,16 @@ ms.service: hdinsight
 ms.topic: tutorial
 ms.custom: hdinsightactive,mvc
 ms.date: 07/02/2019
-ms.openlocfilehash: 431cd5efbb1087d99fc8521cec7a5c604856dac5
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: 5c5a3c9e66a4d25a84d7940f49ec332d57f4c818
+ms.sourcegitcommit: 01cd19edb099d654198a6930cebd61cae9cb685b
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84021735"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85319188"
 ---
 # <a name="tutorial-extract-transform-and-load-data-using-interactive-query-in-azure-hdinsight"></a>Zelfstudie: Gegevens extraheren, transformeren en laden met Interactive Query in Azure HDInsight
 
-In deze zelfstudie downloadt u een onbewerkt CSV-gegevensbestand met openbaar beschikbare vluchtgegevens. Importeer dit bestand in een HDInsight-clusteropslag en transformeer de gegevens vervolgens met behulp van Interactive Query in Azure HDInsight. Als de gegevens zijn getransformeerd, laadt u die gegevens met behulp van [Apache Sqoop](https://sqoop.apache.org/) in een Azure SQL-database.
+In deze zelfstudie downloadt u een onbewerkt CSV-gegevensbestand met openbaar beschikbare vluchtgegevens. Importeer dit bestand in een HDInsight-clusteropslag en transformeer de gegevens vervolgens met behulp van Interactive Query in Azure HDInsight. Als de gegevens zijn getransformeerd, laadt u die gegevens in een database in Azure SQL Database met behulp van [Apache Sqoop](https://sqoop.apache.org/).
 
 Deze zelfstudie bestaat uit de volgende taken:
 
@@ -25,14 +25,14 @@ Deze zelfstudie bestaat uit de volgende taken:
 > * De voorbeeldbestanden met vluchtgegevens downloaden
 > * Gegevens uploaden naar een HDInsight-cluster
 > * De gegevens transformeren met behulp van Interactive Query
-> * Een tabel maken in een Azure SQL-database
-> * Sqoop gebruiken om gegevens te exporteren naar een Azure SQL-database
+> * Een tabel in een database maken in Azure SQL Database
+> * Sqoop gebruiken om gegevens te exporteren naar een database in Azure SQL Database
 
 ## <a name="prerequisites"></a>Vereisten
 
 * Een Interactive Query-cluster in HDInsight. Zie [Apache Hadoop-clusters maken met behulp van de Azure-portal](../hdinsight-hadoop-create-linux-clusters-portal.md) en **Interactive Query** selecteren voor **Cluster-type**.
 
-* Een Azure SQL Database. U gebruikt een Azure SQL-database als doelgegevensopslag. Als u geen SQL-database hebt, raadpleegt u [Een Azure SQL-database maken in Azure Portal](/azure/sql-database/sql-database-single-database-get-started).
+* Een database in Azure SQL Database. U gebruikt de database als doelgegevensopslag. Als u geen database in Azure SQL Database hebt, raadpleegt u het artikel [Een database in Azure SQL Database maken in de Azure Portal](/azure/sql-database/sql-database-single-database-get-started).
 
 * Een SSH-client. Zie voor meer informatie [Verbinding maken met HDInsight (Apache Hadoop) via SSH](../hdinsight-hadoop-linux-use-ssh-unix.md).
 
@@ -250,9 +250,9 @@ Er zijn veel manieren om verbinding te maken met SQL Database en een tabel te ma
 
 4. Voer `exit` als reactie op de prompt `1>` om het hulpprogramma tsql af te sluiten.
 
-## <a name="export-data-to-sql-database-using-apache-sqoop"></a>Gegevens met Apache Sqoop exporteren naar een SQL-database
+## <a name="export-data-to-sql-database-using-apache-sqoop"></a>Gegevens met Apache Sqoop exporteren naar SQL Database
 
-In de vorige gedeelten hebt u de getransformeerde gegevens op `/tutorials/flightdelays/output` gekopieerd. In deze sectie gebruikt u Sqoop om de gegevens in `/tutorials/flightdelays/output` te exporteren naar de tabel die u hebt gemaakt in Azure SQL-database.
+In de vorige gedeelten hebt u de getransformeerde gegevens op `/tutorials/flightdelays/output` gekopieerd. In deze sectie gebruikt u Sqoop om de gegevens in `/tutorials/flightdelays/output` te exporteren naar de tabel die u hebt gemaakt in Azure SQL Database.
 
 1. Controleer of Sqoop uw SQL-database kan zien door de volgende opdracht in te voeren:
 
