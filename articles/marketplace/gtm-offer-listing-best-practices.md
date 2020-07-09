@@ -1,18 +1,18 @@
 ---
 title: Aanbevolen procedures voor aanbiedingen-micro soft Commercial Marketplace
 description: Meer informatie over de beste prak tijken van Go-to-Market voor uw Microsoft AppSource en Azure Marketplace-aanbiedingen.
-author: anbene
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
+author: keferna
+ms.author: keferna
 ms.date: 07/06/2020
-ms.author: dsindona
-ms.openlocfilehash: 60f9630b58250bdae4c382e61697f7abd53e036d
-ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
+ms.openlocfilehash: 8adffcc6c7ae4af2e33587f75c83430473180203
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86027066"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86118389"
 ---
 # <a name="offer-listing-best-practices"></a>Best practices voor aanbiedingsvermeldingen
 
@@ -31,7 +31,7 @@ De tabellen in deze sectie bieden suggesties voor het maken en aanbieden van Mar
 
 Categorieën en branches voor een andere winkel zijn van toepassing op verschillende typen aanbiedingen.
 
-|  | **Categorieën <br> per winkel** |  | **Branches <br> voor AppSource** |
+| Webwinkel | Categorieën <br>per winkel | Categorieën <br>per winkel | Bedrijfstakken <br> voor AppSource |
 | :------------------- |:----------------:|:------:|:-------------:|
 | **Aanbiedings type**   |  **Azure Marketplace**  | **AppSource**  |
 | Azure-app | X | |
@@ -144,7 +144,7 @@ Selecteer categorieën en subcategorieën die het beste aansluiten bij uw aanbie
 
 Raadpleeg de [hand leiding van het aanbiedings type](https://docs.microsoft.com/azure/marketplace/partner-center-portal/commercial-marketplace-overview) voor specifieke informatie over hoe de Transact-mogelijkheden kunnen beïnvloeden hoe uw aanbieding kan worden weer gegeven en gekocht door klanten van Marketplace. Voor SaaS-aanbiedingen is de transactie capaciteit van de aanbieding en de categorie selectie bepaalt de winkel waar uw aanbieding wordt gepubliceerd:
 
-| SaaS-aanbieding    |     |          |           |    |    |     | Toepasselijke winkel |              |
+| SaaS-aanbieding    | SaaS-aanbieding   | SaaS-aanbieding  | SaaS-aanbieding   | SaaS-aanbieding   | SaaS-aanbieding   | SaaS-aanbieding    | Toepasselijke winkel | Toepasselijke winkel |
 |:-------------:|:---:|:--------:|:---------:|:--:|:--:|:---:|:---------------------:|:-------------:|
 | Factuur met data limiet | Microsoft 365-invoeg toepassingen | Contact opnemen | Transact (ten minste 1 abonnement) | Persoonlijk abonnement | Alleen openbaar abonnement | Privé-abonnementen openbaar & | AppSource | Azure Marketplace |
 |  | X |  |  |  |  |  | X |  |

@@ -1,18 +1,18 @@
 ---
 title: Overzicht van overzicht van uitbetalingen-Azure Marketplace
 description: In de samen vatting van de betaling ziet u details over het geld dat u hebt behaald met uw aanbieding. U kunt ook zien wanneer u betalingen ontvangt en hoeveel u wordt betaald.
-author: mingshen
-ms.author: mingshen
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
+author: mingshen
+ms.author: mingshen
 ms.date: 04/24/2020
-ms.openlocfilehash: a872331238946de0d57e6d42164f1ce7fb1c7357
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
+ms.openlocfilehash: 29a8eb72814d865cb02bd632e084cec0cc06a1ff
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83746209"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86118474"
 ---
 # <a name="payout-summary-overview"></a>Betalingsoverzicht
 
@@ -64,7 +64,7 @@ Raadpleeg de sectie [betalings schema's](./payout-policy-details.md#payment-sche
 
 Deze optie biedt een down load van elk verdienen regel item dat u op de pagina transactie geschiedenis ziet. Dit omvat het type, de datum, de bijbehorende transactie hoeveelheid, de klant, het product en andere transactionele gegevens met betrekking tot het prikkel programma.
 
-| Kolomnaam | Beschrijving |
+| Kolomnaam | Description |
 | --- | --- |
 | earningId | Unieke id voor elk verdienen |
 | participantId | De primaire identiteit van de partner die onder het programma is aangegaan |

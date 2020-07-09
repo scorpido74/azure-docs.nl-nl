@@ -4,14 +4,14 @@ description: In dit artikel wordt beschreven hoe u autovacuüm kunt optimalisere
 author: dianaputnam
 ms.author: dianas
 ms.service: postgresql
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 5/6/2019
-ms.openlocfilehash: 7dcc6f9ece407bee20ed344d91ee95e34f8f4c0a
-ms.sourcegitcommit: cec9676ec235ff798d2a5cad6ee45f98a421837b
+ms.openlocfilehash: 9b0e263d3b8bce9e04548f5e8433ff90d2bda274
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85848195"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86116349"
 ---
 # <a name="optimize-autovacuum-on-an-azure-database-for-postgresql---single-server"></a>Autoonderdruk op een Azure Database for PostgreSQL-één server optimaliseren
 In dit artikel wordt beschreven hoe u autovacuüm op een Azure Database for PostgreSQL Server effectief optimaliseert.
@@ -22,20 +22,25 @@ PostgreSQL maakt gebruik van gelijktijdigheids beheer met meerdere versies (MVCC
 Een vacuüm taak kan hand matig of automatisch worden geactiveerd. Er zijn meer dode Tuples wanneer de data base zware werk-of verwijderings bewerkingen ondervindt. Er zijn minder Dead-Tuples wanneer de data base niet actief is. U moet regel matig een vacuüm van de belasting van de data base maken, waardoor vacuüm taken *hand matig* onhandig worden uitgevoerd.
 
 Autovacuüm kan worden geconfigureerd en voor delen van het afstemmen. De standaard waarden die PostgreSQL worden geleverd, proberen te controleren of het product op allerlei apparaten werkt. Deze apparaten zijn Raspberry Pis. De ideale configuratie waarden zijn afhankelijk van het volgende:
+
 - Totaal aantal beschik bare resources, zoals SKU en opslag grootte.
 - Resource gebruik.
 - Afzonderlijke object kenmerken.
 
 ## <a name="autovacuum-benefits"></a>Voor delen van autovacuüm
+
 Als u niet van tijd tot tijd vacuüm, kunnen de niet-actieve Tuples die worden samengevoegd resulteren in:
+
 - Gegevens grootten, zoals grotere data bases en tabellen.
 - Grotere suboptimale indexen.
 - Meer I/O-bewerkingen.
 
 ## <a name="monitor-bloat-with-autovacuum-queries"></a>Meer bewaken met autovacuüm query's
 De volgende voorbeeld query is ontworpen om het aantal dode en actieve Tuples in een tabel met de naam XYZ te identificeren:
- 
-    'SELECT relname, n_dead_tup, n_live_tup, (n_dead_tup/ n_live_tup) AS DeadTuplesRatio, last_vacuum, last_autovacuum FROM pg_catalog.pg_stat_all_tables WHERE relname = 'XYZ' order by n_dead_tup DESC;'
+
+```sql
+SELECT relname, n_dead_tup, n_live_tup, (n_dead_tup/ n_live_tup) AS DeadTuplesRatio, last_vacuum, last_autovacuum FROM pg_catalog.pg_stat_all_tables WHERE relname = 'XYZ' order by n_dead_tup DESC;
+```
 
 ## <a name="autovacuum-configurations"></a>Autovacuüm-configuraties
 De configuratie parameters die de autoonderdruk bepalen, zijn gebaseerd op de antwoorden op twee belang rijke vragen:
@@ -56,6 +61,7 @@ autovacuum_max_workers|Hiermee geeft u het maximum aantal autovacuüm-processen 
 Als u de instellingen voor afzonderlijke tabellen wilt overschrijven, wijzigt u de para meters voor de tabel opslag. 
 
 ## <a name="autovacuum-cost"></a>Autovacuüm kosten
+
 Dit zijn de kosten van het uitvoeren van een vacuüm bewerking:
 
 - De gegevens pagina's waarop de vacuüm wordt uitgevoerd, worden vergrendeld.
@@ -64,6 +70,7 @@ Dit zijn de kosten van het uitvoeren van een vacuüm bewerking:
 Als gevolg hiervan moet u geen vacuüm taken te vaak of te vaak uitvoeren. Een vacuüm taak moet worden aangepast aan de workload. Test alle wijzigingen in de autovacuüm-para meter door de verschillende afwegingen.
 
 ## <a name="autovacuum-start-trigger"></a>Trigger voor automatische vacuüm starten
+
 Autoonderdruk wordt geactiveerd wanneer het aantal dode Tuples groter is dan autovacuum_vacuum_threshold + autovacuum_vacuum_scale_factor * reltuples. Hier is reltuples een constante.
 
 Opschonen van de autoonderdruk moet de data base laden. Anders is het mogelijk dat u geen opslag ruimte meer hebt en een grote vertraging in query's ondervindt. De snelheid waarmee een vacuüm bewerking opschoont, moet gelijk zijn aan de snelheid waarmee Dead-Tuples worden gemaakt.
@@ -91,7 +98,9 @@ De para meter autovacuum_max_workers bepaalt het maximum aantal autovacuüm-proc
 Met PostgreSQL kunt u deze para meters instellen op tabel niveau of op instantie niveau. U kunt deze para meters nu alleen op tabel niveau instellen in Azure Database for PostgreSQL.
 
 ## <a name="optimize-autovacuum-per-table"></a>Autoonderdruk per tabel optimaliseren
+
 U kunt alle voor gaande configuratie parameters per tabel configureren. Hier volgt een voorbeeld:
+
 ```sql
 ALTER TABLE t SET (autovacuum_vacuum_threshold = 1000);
 ALTER TABLE t SET (autovacuum_vacuum_scale_factor = 0.1);
@@ -102,7 +111,8 @@ ALTER TABLE t SET (autovacuum_vacuum_cost_delay = 10);
 Autovacuüm is een synchroon proces per tabel. Het grotere percentage dode Tuples dat een tabel heeft, des te hoger de "kosten" voor autovacuüm. U kunt tabellen splitsen met een hoog aantal updates en verwijderen in meerdere tabellen. Het splitsen van tabellen helpt bij het parallelliserenen van autovacuüm en het verminderen van de ' kosten ' voor het volt ooien van autoonderdruk in één tabel. U kunt ook het aantal parallelle autovacuüm werkers verhogen om ervoor te zorgen dat werk nemers op vrije tijd worden gepland.
 
 ## <a name="next-steps"></a>Volgende stappen
+
 Raadpleeg de volgende PostgreSQL-documentatie voor meer informatie over het gebruik van en het afstemmen van de autoonderdruk:
 
- - [Hoofd stuk 18, Server configuratie](https://www.postgresql.org/docs/9.5/static/runtime-config-autovacuum.html)
- - [Hoofd stuk 24, onderhouds taken voor routine-data bases](https://www.postgresql.org/docs/9.6/static/routine-vacuuming.html)
+- [Hoofd stuk 18, Server configuratie](https://www.postgresql.org/docs/9.5/static/runtime-config-autovacuum.html)
+- [Hoofd stuk 24, onderhouds taken voor routine-data bases](https://www.postgresql.org/docs/9.6/static/routine-vacuuming.html)

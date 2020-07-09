@@ -4,12 +4,12 @@ description: Het maken van een batch-pool in een virtueel Azure-netwerk, zodat r
 ms.topic: how-to
 ms.date: 06/26/2020
 ms.custom: seodec18
-ms.openlocfilehash: 3ff8995217521199436e0924acc691dab7c4baef
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 22344b5466b0388921a481b1adf41495d66dbfe0
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85506589"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86115408"
 ---
 # <a name="create-an-azure-batch-pool-in-a-virtual-network"></a>Een Azure Batch groep maken in een virtueel netwerk
 
@@ -62,7 +62,7 @@ Wanneer u een UDR toevoegt, definieert u de route voor elk gerelateerde IP-adres
 ![Door de gebruiker gedefinieerde route](./media/batch-virtual-network/user-defined-route.png)
 
 > [!WARNING]
-> De IP-adressen van de batch-service kunnen na verloop van tijd worden gewijzigd. Als u storingen wilt voor komen door een wijziging in het IP-adres, maakt u een proces voor het automatisch vernieuwen van de IP-adressen van de batch-service en blijft u deze actueel in uw route tabel. U kunt ook [een pool maken met opgegeven IP-adressen die u beheert](create-pool-public-ip.md).
+> De IP-adressen van de batch-service kunnen na verloop van tijd worden gewijzigd. Als u storingen wilt voor komen door een wijziging in het IP-adres, maakt u een proces voor het automatisch vernieuwen van de IP-adressen van de batch-service en blijft u deze actueel in uw route tabel.
 
 ## <a name="next-steps"></a>Volgende stappen
 

@@ -222,12 +222,6 @@
         - name: Statuscontrole gebruiken in Configuratiebeheer
           displayName: adm
           href: deployment-manager-tutorial-health-check.md
-- name: Voorbeelden
-  items:
-    - name: Azure-quickstartsjablonen
-      href: 'https://azure.microsoft.com/resources/templates/'
-    - name: Voorbeelden van sjablonen
-      href: template-samples.md
 - name: Concepten
   items:
     - name: Best practices voor sjablonen
@@ -299,16 +293,6 @@
             - name: Uitvoer
               displayName: 'iteration,copy'
               href: copy-outputs.md
-    - name: Creatiehulpprogramma's gebruiken
-      items:
-        - name: VS-code
-          href: use-vs-code-to-create-template.md
-        - name: Visual Studio
-          href: create-visual-studio-deployment-project.md
-        - name: VS-implementatiescript bijwerken naar Az-module
-          href: update-visual-studio-deployment-script.md
-        - name: IntelliJ IDEA
-          href: create-templates-use-intellij.md
     - name: Sjablooneigenschappen ontdekken
       items:
         - name: Sjabloon exporteren
@@ -344,6 +328,8 @@
           href: rollback-on-error.md
         - name: Sjabloon beveiligen met een SAS-token
           href: secure-template-with-sas-token.md
+        - name: Implementatiegeschiedenis weergeven
+          href: deployment-history.md
     - name: Bereikimplementaties
       items:
         - name: Abonnement
@@ -367,8 +353,14 @@
           href: add-template-to-azure-pipelines.md
         - name: Implementeren - GitHub Actions
           href: deploy-github-actions.md
-    - name: Implementatiegeschiedenis weergeven
-      href: deployment-history.md
+    - name: Creatiehulpprogramma's gebruiken
+      items:
+        - name: Visual Studio
+          href: create-visual-studio-deployment-project.md
+        - name: VS-implementatiescript bijwerken naar Az-module
+          href: update-visual-studio-deployment-script.md
+        - name: IntelliJ IDEA
+          href: create-templates-use-intellij.md
     - name: Problemen met implementaties oplossen
       items:
         - name: Implementatiefouten oplossen
@@ -441,6 +433,8 @@
       href: /python/api/overview/azure/resources?view=azure-python
 - name: Resources
   items:
+    - name: Azure-quickstartsjablonen
+      href: 'https://azure.microsoft.com/resources/templates/'
     - name: Azure-roadmap
       href: 'https://azure.microsoft.com/roadmap/?category=monitoring-management'
     - name: Prijscalculator

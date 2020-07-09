@@ -5,13 +5,14 @@ author: rachel-msft
 ms.author: raagyema
 ms.service: postgresql
 ms.devlang: azurecli
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 5/6/2019
-ms.openlocfilehash: 4af0fb288961689fb051bab8091c838f793cfcc3
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 9b2c1021f88eab15a1f8803a4439dc0cb9b6ed97
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "74765644"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86117641"
 ---
 # <a name="create-and-manage-firewall-rules-in-azure-database-for-postgresql---single-server-using-azure-cli"></a>Firewall regels maken en beheren in Azure Database for PostgreSQL-één server met behulp van Azure CLI
 Firewall regels op server niveau kunnen worden gebruikt voor het beheren van de toegang tot een Azure Database for PostgreSQL-server vanuit een specifiek IP-adres of IP-bereik. Met behulp van handige Azure CLI-opdrachten kunt u firewall regels maken, bijwerken, verwijderen en weer geven om uw server te beheren. Zie [Azure database for PostgreSQL Server firewall rules](concepts-firewall-rules.md)(Engelstalig) voor een overzicht van Azure database for PostgreSQL firewall regels.

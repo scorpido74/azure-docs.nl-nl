@@ -1,18 +1,14 @@
 ---
 title: Azure Event Grid-Diagnostische logboeken voor onderwerpen of domeinen
 description: Dit artikel bevat conceptuele informatie over Diagnostische logboeken voor een Azure Event grid-onderwerp of een domein.
-services: event-grid
-author: spelluru
-ms.service: event-grid
 ms.topic: conceptual
-ms.date: 04/29/2020
-ms.author: spelluru
-ms.openlocfilehash: 93e7e47cbcc1ab9542ba333b89f7dd655a412489
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 07/07/2020
+ms.openlocfilehash: c8f6734d9d43887d0eb0bb90bb08f727732feac3
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82630250"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86116740"
 ---
 #  <a name="diagnostic-logs-for-azure-event-grid-topicsdomains"></a>Diagnostische logboeken voor Azure Event Grid onderwerpen/domeinen
 Met Diagnostische instellingen kunnen Event Grid gebruikers publicatie- **en bezorg fouten** logboeken vastleggen en weer geven in een opslag account, een event hub of een log Analytics-werk ruimte. Dit artikel bevat een schema voor de logboeken en een voor beeld van een logboek vermelding.
@@ -20,7 +16,7 @@ Met Diagnostische instellingen kunnen Event Grid gebruikers publicatie- **en bez
 
 ## <a name="schema-for-publishdelivery-failure-logs"></a>Schema voor fouten logboeken voor publiceren/afleveren
 
-| Naam van eigenschap | Gegevenstype | Beschrijving |
+| Naam van eigenschap | Gegevenstype | Description |
 | ------------- | --------- | ----------- | 
 | Tijd | DateTime | Het tijdstip waarop de logboek vermelding is gegenereerd <p>**Voorbeeld waarde:** 01-29-2020 09:52:02.700</p> |
 | EventSubscriptionName | Tekenreeks | De naam van het gebeurtenis abonnement <p>**Voorbeeld waarde:** "EVENTSUB1"</p> <p>Deze eigenschap bestaat alleen voor het afleveren van fouten Logboeken.</p>  |

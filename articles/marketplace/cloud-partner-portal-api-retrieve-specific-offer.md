@@ -1,18 +1,16 @@
 ---
 title: Een specifieke aanbiedings-API ophalen-Azure Marketplace
 description: API om de opgegeven aanbieding binnen de naam ruimte van de uitgever op te halen.
-author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: reference
 ms.date: 06/19/2020
-ms.author: dsindona
-ms.openlocfilehash: 771c103b535c09f8481c2b01328078504b8633aa
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: a4bbe133d8b223bf717597467336eb486f432380
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85516203"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86115533"
 ---
 <a name="retrieve-a-specific-offer"></a>Een specifieke aanbieding ophalen
 =========================

@@ -3,11 +3,12 @@ title: Ontdek apps, functies en onderdelen op on-premises servers met Azure Migr
 description: Meer informatie over het detecteren van apps, functies en onderdelen op on-premises servers met Azure Migrate server-evaluatie.
 ms.topic: article
 ms.date: 06/10/2020
-ms.openlocfilehash: ae00e390bb49f3a54f7f7ce7d6491cf7ee882491
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 535c8ae8c2d6e5d9d175e663a58d47dc76aa0529
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84770506"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86118644"
 ---
 # <a name="discover-machine-apps-roles-and-features"></a>Machine-apps,-functies en-functies detecteren
 
@@ -79,4 +80,4 @@ De app-inventarisatie wordt geëxporteerd en gedownload in Excel-indeling. Op de
 ## <a name="next-steps"></a>Volgende stappen
 
 - [Een evaluatie maken](how-to-create-assessment.md) voor gedetecteerde servers.
-- Evalueer SQL Server data bases met behulp van [Azure migrate: data base-evaluatie](https://docs.microsoft.com/sql/dma/dma-assess-sql-data-estate-to-sqldb?view=sql-server-2017).
+- Evalueer SQL Server data bases met behulp van [Azure migrate: data base-evaluatie](/sql/dma/dma-assess-sql-data-estate-to-sqldb?view=sql-server-2017).

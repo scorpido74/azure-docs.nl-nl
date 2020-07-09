@@ -3,12 +3,12 @@ title: Sjabloon structuur en syntaxis
 description: Hierin worden de structuur en eigenschappen van Azure Resource Manager sjablonen beschreven met declaratieve JSON-syntaxis.
 ms.topic: conceptual
 ms.date: 06/22/2020
-ms.openlocfilehash: 4fdf386aa3b17f46589183706b2a91637acacdb7
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: ae2c5a5fe1440c3adbae475cd4c7652a3b01c285
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85208821"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86116536"
 ---
 # <a name="understand-the-structure-and-syntax-of-arm-templates"></a>Inzicht in de structuur en syntaxis van ARM-sjablonen
 
@@ -35,7 +35,7 @@ In de eenvoudigste structuur heeft een sjabloon de volgende elementen:
 
 | Elementnaam | Vereist | Beschrijving |
 |:--- |:--- |:--- |
-| $schema |Yes |Locatie van het JSON-schema bestand waarin de versie van de sjabloon taal wordt beschreven. Het versie nummer dat u gebruikt, is afhankelijk van het bereik van de implementatie en uw JSON-editor.<br><br>Als u [VS code gebruikt met de uitbrei ding Azure Resource Manager tools](use-vs-code-to-create-template.md), gebruikt u de meest recente versie voor implementaties van resource groepen:<br>`https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#`<br><br>Andere editors (waaronder Visual Studio) kunnen dit schema mogelijk niet verwerken. Voor die editors gebruikt u:<br>`https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#`<br><br>Gebruik voor implementaties van abonnementen:<br>`https://schema.management.azure.com/schemas/2018-05-01/subscriptionDeploymentTemplate.json#`<br><br>Voor implementaties van beheer groepen gebruikt u:<br>`https://schema.management.azure.com/schemas/2019-08-01/managementGroupDeploymentTemplate.json#`<br><br>Gebruik voor Tenant implementaties:<br>`https://schema.management.azure.com/schemas/2019-08-01/tenantDeploymentTemplate.json#` |
+| $schema |Yes |Locatie van het JSON-schema bestand waarin de versie van de sjabloon taal wordt beschreven. Het versie nummer dat u gebruikt, is afhankelijk van het bereik van de implementatie en uw JSON-editor.<br><br>Als u [VS code gebruikt met de uitbrei ding Azure Resource Manager tools](quickstart-create-templates-use-visual-studio-code.md), gebruikt u de meest recente versie voor implementaties van resource groepen:<br>`https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#`<br><br>Andere editors (waaronder Visual Studio) kunnen dit schema mogelijk niet verwerken. Voor die editors gebruikt u:<br>`https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#`<br><br>Gebruik voor implementaties van abonnementen:<br>`https://schema.management.azure.com/schemas/2018-05-01/subscriptionDeploymentTemplate.json#`<br><br>Voor implementaties van beheer groepen gebruikt u:<br>`https://schema.management.azure.com/schemas/2019-08-01/managementGroupDeploymentTemplate.json#`<br><br>Gebruik voor Tenant implementaties:<br>`https://schema.management.azure.com/schemas/2019-08-01/tenantDeploymentTemplate.json#` |
 | contentVersion |Yes |De versie van de sjabloon (bijvoorbeeld 1.0.0.0). U kunt een willekeurige waarde voor dit element opgeven. Gebruik deze waarde als u belangrijke wijzigingen in uw sjabloon wilt documenteren. Wanneer u resources implementeert met de sjabloon, kan deze waarde worden gebruikt om ervoor te zorgen dat de juiste sjabloon wordt gebruikt. |
 | apiProfile |No | Een API-versie die fungeert als een verzameling van API-versies voor resource typen. Gebruik deze waarde om te voor komen dat u API-versies opgeeft voor elke resource in de sjabloon. Wanneer u een API-profiel versie opgeeft en geen API-versie voor het resource type opgeeft, gebruikt Resource Manager de API-versie voor het bron type dat in het profiel is gedefinieerd.<br><br>De API-profiel eigenschap is vooral handig bij het implementeren van een sjabloon in verschillende omgevingen, zoals Azure Stack en wereld wijd Azure. Gebruik de versie van het API-profiel om ervoor te zorgen dat uw sjabloon automatisch versies gebruikt die in beide omgevingen worden ondersteund. Zie [API-profiel](https://github.com/Azure/azure-rest-api-specs/tree/master/profile)voor een lijst met de huidige API-profiel versies en de bronnen-API-versies die in het profiel zijn gedefinieerd.<br><br>Zie [versies bijhouden met API-profielen](templates-cloud-consistency.md#track-versions-using-api-profiles)voor meer informatie. |
 | [instellen](#parameters) |No |Waarden die worden gegeven bij het uitvoeren van de implementatie om de resource-implementatie aan te passen. |
@@ -130,7 +130,7 @@ Zie voor meer informatie over het gebruik `copy` van om verschillende waarden vo
 
 Zie [variabelen in azure Resource Manager sjabloon](template-variables.md)voor voor beelden van het gebruik van variabelen.
 
-## <a name="functions"></a>Functions
+## <a name="functions"></a>Functies
 
 U kunt binnen uw sjabloon uw eigen functies maken. Deze functies zijn beschikbaar voor gebruik in uw sjabloon. Normaal gesp roken definieert u gecompliceerde expressies die u niet wilt herhalen in uw sjabloon. U maakt de door de gebruiker gedefinieerde functies op basis van expressies en [functies](template-functions.md) die in sjablonen worden ondersteund.
 
@@ -307,7 +307,7 @@ Voor inline opmerkingen kunt u of gebruiken, `//` `/* ... */` maar deze syntaxis
   ],
 ```
 
-In Visual Studio code kan de [uitbrei ding van de Azure Resource Manager-Hulpprogram ma's](use-vs-code-to-create-template.md#install-resource-manager-tools-extension) automatisch een resource manager-sjabloon detecteren en de taal modus dienovereenkomstig wijzigen. Als u in de rechter benedenhoek van VS code **Azure Resource Manager-sjabloon** ziet, kunt u de inline opmerkingen gebruiken. De inline opmerkingen worden niet meer als ongeldig gemarkeerd.
+In Visual Studio code kan de [uitbrei ding van de Azure Resource Manager-Hulpprogram ma's](quickstart-create-templates-use-visual-studio-code.md) automatisch een resource manager-sjabloon detecteren en de taal modus dienovereenkomstig wijzigen. Als u in de rechter benedenhoek van VS code **Azure Resource Manager-sjabloon** ziet, kunt u de inline opmerkingen gebruiken. De inline opmerkingen worden niet meer als ongeldig gemarkeerd.
 
 ![Visual Studio code Azure Resource Manager-sjabloon modus](./media/template-syntax/resource-manager-template-editor-mode.png)
 

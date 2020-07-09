@@ -3,11 +3,12 @@ title: Afhankelijkheids analyse in Azure Migrate server-evaluatie
 description: Hierin wordt beschreven hoe u afhankelijkheids analyse gebruikt voor evaluatie met behulp van Azure Migrate server-evaluatie.
 ms.topic: conceptual
 ms.date: 06/14/2020
-ms.openlocfilehash: ff563668666207f35fa2ea796d6c909a59df245f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 386a8cefce722c4bff09e2a7fe6d25957630ff61
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84771339"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86118797"
 ---
 # <a name="dependency-analysis"></a>Afhankelijkheids analyse
 
@@ -74,7 +75,7 @@ De verschillen tussen visualisatie zonder agents en visualisaties op basis van a
 --- | --- | ---
 **Ondersteuning** | Alleen in Preview voor virtuele VMware-machines. [Bekijk](migrate-support-matrix-vmware.md#dependency-analysis-requirements-agentless) ondersteunde besturings systemen. | In algemene Beschik baarheid (GA).
 **Tussen** | Er zijn geen agents nodig op computers die u wilt analyseren. | De agents die zijn vereist op elke on-premises computer die u wilt analyseren.
-**Log Analytics** | Niet vereist. | Azure Migrate gebruikt de [servicetoewijzing](https://docs.microsoft.com/azure/operations-management-suite/operations-management-suite-service-map) oplossing in [Azure monitor logboeken](https://docs.microsoft.com/azure/log-analytics/log-analytics-overview) voor afhankelijkheids analyse. 
+**Log Analytics** | Niet vereist. | Azure Migrate gebruikt de [servicetoewijzing](../azure-monitor/insights/service-map.md) oplossing in [Azure monitor logboeken](../azure-monitor/log-query/log-query-overview.md) voor afhankelijkheids analyse. 
 **Proces** | Hiermee worden de TCP-verbindings gegevens vastgelegd. Na detectie verzamelt het gegevens met intervallen van vijf minuten. | Servicetoewijzing agents die op een computer zijn geïnstalleerd, verzamelen gegevens over TCP-processen en inkomende/uitgaande verbindingen voor elk proces.
 **Gegevens** | Naam van de bron computer server, proces, toepassings naam.<br/><br/> Naam van de doel computer server, proces, toepassings naam en poort. | Naam van de bron computer server, proces, toepassings naam.<br/><br/> Naam van de doel computer server, proces, toepassings naam en poort.<br/><br/> Het aantal gegevens over verbindingen, latentie en gegevens overdracht wordt verzameld en beschikbaar gesteld voor Log Analytics query's. 
 **Visualisatie** | Afhankelijkheids toewijzing van één server kan worden weer gegeven gedurende een periode van één uur tot 30 dagen. | Afhankelijkheids toewijzing van één server.<br/><br/> Afhankelijkheids toewijzing van een groep servers.<br/><br/>  De kaart kan alleen over een uur worden weer gegeven.<br/><br/> Servers in een groep toevoegen aan en verwijderen uit de kaart weergave.
@@ -87,5 +88,3 @@ Gegevensexport | Gegevens van de afgelopen 30 dagen kunnen worden gedownload in 
 - Visualisatie van afhankelijkheid op basis van [een agent instellen](how-to-create-group-machine-dependencies.md) .
 - [Probeer](how-to-create-group-machine-dependencies-agentless.md) visualisatie van de afhankelijkheid van agents uit voor VMware-vm's.
 - Bekijk [Veelgestelde vragen](common-questions-discovery-assessment.md#what-is-dependency-visualization) over de visualisatie van afhankelijkheden.
-
-

@@ -7,15 +7,15 @@ author: tamram
 ms.service: storage
 ms.subservice: common
 ms.topic: conceptual
-ms.date: 04/16/2020
+ms.date: 07/07/2020
 ms.author: tamram
 ms.reviewer: ozgun
-ms.openlocfilehash: f69301bdbc0af9334858940fbfd3d7d0a0a63153
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 3069ee020d5f127eb0bdb8cbaf251cd3f3cef8d9
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84807650"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86118410"
 ---
 # <a name="configure-advanced-threat-protection-for-azure-storage"></a>Geavanceerde bedreigings beveiliging voor Azure Storage configureren
 
@@ -23,28 +23,19 @@ Advanced Threat Protection voor Azure Storage biedt een extra beveiligingslaag w
 
 Beveiligings waarschuwingen worden geactiveerd wanneer afwijkingen in de activiteit optreden. Deze beveiligings waarschuwingen zijn geïntegreerd met [Azure Security Center](https://azure.microsoft.com/services/security-center/)en worden ook via e-mail verzonden naar abonnements beheerders, met details over verdachte activiteiten en aanbevelingen voor het onderzoeken en oplossen van bedreigingen.
 
-De service neemt bron logboeken van lees-, schrijf-en verwijderings aanvragen op Blob Storage voor detectie van bedreigingen. Als u de waarschuwingen van Advanced Threat Protection wilt onderzoeken, kunt u gerelateerde opslag activiteiten bekijken met Opslaganalyse logboek registratie. Zie **logboek registratie configureren** in [een opslag account in het Azure Portal bewaken](storage-monitor-storage-account.md#configure-logging)voor meer informatie.
+De service neemt bron logboeken op met lees-, schrijf-en verwijder aanvragen naar Blob Storage en naar Azure Files (preview) voor detectie van bedreigingen. Als u de waarschuwingen van Advanced Threat Protection wilt onderzoeken, kunt u gerelateerde opslag activiteiten bekijken met Opslaganalyse logboek registratie. Zie **logboek registratie configureren** in [een opslag account in het Azure Portal bewaken](storage-monitor-storage-account.md#configure-logging)voor meer informatie.
 
 ## <a name="availability"></a>Beschikbaarheid
 
-Advanced Threat Protection voor Azure Storage is momenteel alleen beschikbaar voor [Blob Storage](https://azure.microsoft.com/services/storage/blobs/). Account typen die ondersteuning bieden voor geavanceerde beveiliging tegen bedreigingen zijn: v2-, blok-Blob-en Blob Storage-accounts voor algemeen gebruik. Advanced Threat Protection is beschikbaar in alle open bare Clouds en Amerikaanse overheids Clouds, maar niet in andere soevereine of Azure Government-Cloud regio's.
+Advanced Threat Protection voor Azure Storage is momenteel beschikbaar voor Blobopslag, Azure Files (preview) en Azure Data Lake Storage Gen2 (preview). Account typen die ondersteuning bieden voor geavanceerde beveiliging tegen bedreigingen zijn: v2-, blok-Blob-en Blob Storage-accounts voor algemeen gebruik. Advanced Threat Protection is beschikbaar in alle open bare Clouds en Amerikaanse overheids Clouds, maar niet in andere soevereine of Azure Government Cloud regio's.
+
+Accounts met hiërarchische naam ruimten die zijn ingeschakeld voor Data Lake Storage ondersteunings transacties met behulp van de Azure Blob Storage-Api's en de Data Lake Storage-Api's. Azure-bestands shares ondersteunen trans acties via SMB.
 
 Voor prijs informatie, inclusief een gratis proef versie van 30 dagen, raadpleegt u de [pagina met Azure Security Center prijzen](https://azure.microsoft.com/pricing/details/security-center/).
-
 
 ## <a name="set-up-advanced-threat-protection"></a>Geavanceerde bedreigings beveiliging instellen
 
 U kunt geavanceerde beveiliging tegen bedreigingen op verschillende manieren configureren, zoals beschreven in de volgende secties.
-
-### <a name="portal"></a>[Portal](#tab/azure-portal)
-
-1. Start de [Azure Portal](https://portal.azure.com/).
-1. Navigeer naar uw Azure Storage-account. Selecteer onder **instellingen**de optie **geavanceerde beveiliging**.
-1. Selecteer de koppeling **instellingen** op de pagina Geavanceerde beveiligings configuratie.
-1. Stel **geavanceerde beveiliging** in **op on**.
-1. Klik op **Opslaan** om het nieuwe of bijgewerkte beleid op te slaan.
-
-    ![Azure Storage Advanced Threat Protection inschakelen](./media/storage-advanced-threat-protection/storage-advanced-threat-protection-turn-on.png)
 
 ### <a name="azure-security-center"></a>[Azure Security Center](#tab/azure-security-center)
 
@@ -61,6 +52,16 @@ Wanneer u zich abonneert op de Standard-laag in Azure Security Center, wordt gea
 
     ![ATP in Security Center inschakelen](./media/storage-advanced-threat-protection/storage-advanced-threat-protection-pricing2.png)
 1. Klik op **Opslaan**.
+
+### <a name="portal"></a>[Portal](#tab/azure-portal)
+
+1. Start de [Azure Portal](https://portal.azure.com/).
+1. Navigeer naar uw Azure Storage-account. Selecteer onder **instellingen**de optie **geavanceerde beveiliging**.
+1. Selecteer de koppeling **instellingen** op de pagina Geavanceerde beveiligings configuratie.
+1. Stel **geavanceerde beveiliging** in **op on**.
+1. Klik op **Opslaan** om het nieuwe of bijgewerkte beleid op te slaan.
+
+    ![Azure Storage Advanced Threat Protection inschakelen](./media/storage-advanced-threat-protection/storage-advanced-threat-protection-turn-on.png)
 
 ### <a name="template"></a>[Sjabloon](#tab/template)
 
