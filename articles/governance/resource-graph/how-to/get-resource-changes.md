@@ -3,12 +3,12 @@ title: Resourcewijzigingen ophalen
 description: Meer informatie over hoe u kunt zoeken wanneer een resource is gewijzigd, een lijst met de gewijzigde eigenschappen ophalen en de verschillen evalueren.
 ms.date: 05/20/2020
 ms.topic: how-to
-ms.openlocfilehash: ace911361ccb96cab3d5c7557ba0e524dbf801d2
-ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
+ms.openlocfilehash: 3d65b5d7e968fda17f80d790ae3171398e2cb73b
+ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86044988"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86135530"
 ---
 # <a name="get-resource-changes"></a>Resourcewijzigingen ophalen
 
@@ -25,7 +25,7 @@ Wijzigings detectie en Details zijn waardevol voor de volgende voorbeeld scenari
 - Een configuratie beheer database, ook wel een CMDB, up-to-date houden. In plaats van alle resources en de volledige eigenschappen sets op een geplande frequentie te vernieuwen, krijgt u alleen de gewijzigde gegevens te zien.
 - Meer informatie over welke andere eigenschappen mogelijk zijn gewijzigd wanneer de nalevings status van een resource is gewijzigd. Evaluatie van deze aanvullende eigenschappen kan inzicht bieden in andere eigenschappen die mogelijk moeten worden beheerd via een Azure Policy definitie.
 
-In dit artikel wordt uitgelegd hoe u deze informatie kunt verzamelen via de SDK van resource Graph. Zie de wijzigings [geschiedenis](../../policy/how-to/determine-non-compliance.md#change-history) van Azure Policy of de [wijzigings geschiedenis](../../../azure-monitor/platform/activity-log-view.md#azure-portal)van het Azure-activiteiten logboek om deze informatie te bekijken in de Azure Portal. Zie voor meer informatie over wijzigingen in uw toepassingen van de laag van de infra structuur de implementatie van toepassingen [(preview-versie) gebruiken](../../../azure-monitor/app/change-analysis.md) in azure monitor.
+In dit artikel wordt uitgelegd hoe u deze informatie kunt verzamelen via de SDK van resource Graph. Zie de wijzigings [geschiedenis](../../policy/how-to/determine-non-compliance.md#change-history) van Azure Policy of de [wijzigings geschiedenis](../../../azure-monitor/platform/activity-log.md#view-the-activity-log)van het Azure-activiteiten logboek om deze informatie te bekijken in de Azure Portal. Zie voor meer informatie over wijzigingen in uw toepassingen van de laag van de infra structuur de implementatie van toepassingen [(preview-versie) gebruiken](../../../azure-monitor/app/change-analysis.md) in azure monitor.
 
 > [!NOTE]
 > Details wijzigen in resource grafiek zijn voor eigenschappen van Resource Manager. Zie voor het bijhouden van wijzigingen in een virtuele machine de Azure Automation [Wijzigingen bijhouden](../../../automation/change-tracking.md) of de [gast configuratie](../../policy/concepts/guest-configuration.md)van de Azure Policy voor vm's.

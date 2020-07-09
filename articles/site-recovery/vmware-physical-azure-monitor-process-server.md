@@ -7,11 +7,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 11/14/2019
 ms.author: raynew
-ms.openlocfilehash: 296254db83a065623b692d7947c130dfd71cd413
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: eebaa70cee99380ac67b8f6516a5b08ff2832c86
+ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83835050"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86134740"
 ---
 # <a name="monitor-the-process-server"></a>De proces server bewaken
 
@@ -95,7 +96,7 @@ U kunt ook proces servers in de kluis bewaken onder **site Recovery-infra struct
 ## <a name="next-steps"></a>Volgende stappen
 
 - Als u problemen ondervindt met de proces servers, volgt u de [richt lijnen voor probleem oplossing](vmware-physical-azure-troubleshoot-process-server.md)
-- Als u meer hulp nodig hebt, kunt u uw vraag plaatsen op de [pagina micro soft Q&een vraag voor Azure site Recovery](https://docs.microsoft.com/answers/topics/azure-site-recovery.html). 
+- Als u meer hulp nodig hebt, kunt u uw vraag plaatsen op de [pagina micro soft Q&een vraag voor Azure site Recovery](/answers/topics/azure-site-recovery.html). 
 
 [green]: ./media/vmware-physical-azure-monitor-process-server/green.png
 [yellow]: ./media/vmware-physical-azure-monitor-process-server/yellow.png

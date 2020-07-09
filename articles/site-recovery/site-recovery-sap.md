@@ -5,11 +5,12 @@ author: sideeksh
 manager: rochakm
 ms.topic: how-to
 ms.date: 11/27/2018
-ms.openlocfilehash: 29acd1b00d23e4f1c2f241027dadbbb406e5e049
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 7b4a622de142fd44b64015c8238f44dafc34ce72
+ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77190799"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86133693"
 ---
 # <a name="set-up-disaster-recovery-for-a-multi-tier-sap-netweaver-app-deployment"></a>Herstel na nood geval instellen voor een implementatie van SAP NetWeaver met meerdere lagen
 
@@ -27,9 +28,9 @@ U kunt de implementaties van SAP NetWeaver beveiligen met behulp van [Azure site
 
 Voordat u begint, moet u ervoor zorgen dat u weet hoe u de volgende taken moet uitvoeren:
 
-* [Een virtuele machine repliceren naar Azure](azure-to-azure-walkthrough-enable-replication.md)
-* [Een herstel netwerk ontwerpen](site-recovery-azure-to-azure-networking-guidance.md)
-* [Een testfailover naar Azure uitvoeren](azure-to-azure-walkthrough-test-failover.md)
+* [Een virtuele machine repliceren naar Azure](./azure-to-azure-tutorial-enable-replication.md)
+* [Een herstel netwerk ontwerpen](./azure-to-azure-about-networking.md)
+* [Een testfailover naar Azure uitvoeren](./azure-to-azure-tutorial-dr-drill.md)
 * [Een failover naar Azure uitvoeren](site-recovery-failover.md)
 * [Een domein controller repliceren](site-recovery-active-directory.md)
 * [Een SQL Server-exemplaar repliceren](site-recovery-sql.md)
@@ -110,7 +111,7 @@ Hier volgt een aanbeveling voor herstel na nood gevallen van elke laag die in di
 
 ## <a name="replicate-virtual-machines"></a>Virtuele machines repliceren
 
-Als u de virtuele machines van de SAP-toepassing wilt repliceren naar het Azure nood herstel Data Center, volgt u de richt lijnen in [repliceren van een virtuele machine naar Azure](azure-to-azure-walkthrough-enable-replication.md).
+Als u de virtuele machines van de SAP-toepassing wilt repliceren naar het Azure nood herstel Data Center, volgt u de richt lijnen in [repliceren van een virtuele machine naar Azure](./azure-to-azure-tutorial-enable-replication.md).
 
 * Meer informatie over het beschermen van Active Directory en DNS vindt [u in het beveiligen van Active Directory en DNS](site-recovery-active-directory.md).
 

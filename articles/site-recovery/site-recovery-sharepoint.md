@@ -7,11 +7,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 6/27/2019
 ms.author: sutalasi
-ms.openlocfilehash: d74e28ce470c23bbc8ee2081532a198c260ccea5
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 08e971e52f994ec5fa5663708fa9f173daf33d80
+ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "74706365"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86135392"
 ---
 # <a name="set-up-disaster-recovery-for-a-multi-tier-sharepoint-application-for-disaster-recovery-using-azure-site-recovery"></a>Herstel na nood geval instellen voor een share point-toepassing met meerdere lagen voor herstel na nood geval met behulp van Azure Site Recovery
 
@@ -37,8 +38,8 @@ U kunt de onderstaande video bekijken over het herstellen van een toepassing met
 
 Voordat u begint, moet u het volgende weten:
 
-1. [Een virtuele machine repliceren naar Azure](site-recovery-vmware-to-azure.md)
-2. [Een herstel netwerk ontwerpen](site-recovery-network-design.md)
+1. [Een virtuele machine repliceren naar Azure](./vmware-azure-tutorial.md)
+2. [Een herstel netwerk ontwerpen](./concepts-on-premises-to-azure-networking.md)
 3. [Een testfailover naar Azure uitvoeren](site-recovery-test-failover-to-azure.md)
 4. [Een failover naar Azure uitvoeren](site-recovery-failover.md)
 5. [Een domein controller repliceren](site-recovery-active-directory.md)
@@ -46,7 +47,7 @@ Voordat u begint, moet u het volgende weten:
 
 ## <a name="sharepoint-architecture"></a>Share point-architectuur
 
-Share point kan worden geïmplementeerd op een of meer servers met behulp van gelaagde topologieën en Server functies voor het implementeren van een farm ontwerp dat voldoet aan specifieke doel stellingen en doel stellingen. Een typische share Point-server farm met hoge vraag die ondersteuning biedt voor een groot aantal gelijktijdige gebruikers en een groot aantal inhouds items service groeperingen gebruiken als onderdeel van hun schaalbaarheids strategie. Deze benadering omvat het uitvoeren van services op speciale servers, het groeperen van deze services en het schalen van de servers als groep. De volgende topologie illustreert de groepering van services en servers voor een share Point-server farm met drie lagen. Raadpleeg de documentatie van share point en product lijn architecturen voor gedetailleerde richt lijnen voor verschillende share point-topologieën. In [dit document](https://technet.microsoft.com/library/cc303422.aspx)vindt u meer informatie over de implementatie van share point 2013.
+Share point kan worden geïmplementeerd op een of meer servers met behulp van gelaagde topologieën en Server functies voor het implementeren van een farm ontwerp dat voldoet aan specifieke doel stellingen en doel stellingen. Een typische share Point-server farm met hoge vraag die ondersteuning biedt voor een groot aantal gelijktijdige gebruikers en een groot aantal inhouds items service groeperingen gebruiken als onderdeel van hun schaalbaarheids strategie. Deze benadering omvat het uitvoeren van services op speciale servers, het groeperen van deze services en het schalen van de servers als groep. De volgende topologie illustreert de groepering van services en servers voor een share Point-server farm met drie lagen. Raadpleeg de documentatie van share point en product lijn architecturen voor gedetailleerde richt lijnen voor verschillende share point-topologieën. In [dit document](/SharePoint/sharepoint-server)vindt u meer informatie over de implementatie van share point 2013.
 
 
 
@@ -73,7 +74,7 @@ Als u een cluster op basis van schijven gebruikt als een wille keurige laag in u
 
 ## <a name="replicating-virtual-machines"></a>Virtuele machines repliceren
 
-Volg [deze richt lijnen](site-recovery-vmware-to-azure.md) om te beginnen met het repliceren van de virtuele machine naar Azure.
+Volg [deze richt lijnen](./vmware-azure-tutorial.md) om te beginnen met het repliceren van de virtuele machine naar Azure.
 
 * Nadat de replicatie is voltooid, controleert u of u naar elke virtuele machine van elke laag gaat en selecteert u dezelfde beschikbaarheidsset in het gerepliceerde item > instellingen > eigenschappen > Compute en netwerk. Als uw weblaag bijvoorbeeld drie Vm's heeft, zorgt u ervoor dat alle drie de virtuele machines zijn geconfigureerd om deel te uitmaken van dezelfde beschikbaarheidsset in Azure.
 
@@ -98,10 +99,10 @@ Volg [deze richt lijnen](site-recovery-vmware-to-azure.md) om te beginnen met he
 
 ### <a name="dns-and-traffic-routing"></a>DNS en verkeers routering
 
-Voor Internet gerichte sites [maakt u een Traffic Manager profiel van het type Priority](../traffic-manager/traffic-manager-create-profile.md) in het Azure-abonnement. En configureer uw DNS-en Traffic Manager profiel op de volgende manier.
+Voor Internet gerichte sites [maakt u een Traffic Manager profiel van het type Priority](../traffic-manager/quickstart-create-traffic-manager-profile.md) in het Azure-abonnement. En configureer uw DNS-en Traffic Manager profiel op de volgende manier.
 
 
-| **Positie** | **Bron** | **Doel**|
+| **Waar** | **Bron** | **Doel**|
 | --- | --- | --- |
 | Openbare DNS | Open bare DNS voor share point-sites <br/><br/> Bijvoorbeeld: sharepoint.contoso.com | Traffic Manager <br/><br/> contososharepoint.trafficmanager.net |
 | On-premises DNS | sharepointonprem.contoso.com | Openbaar IP-adres op de on-premises Farm |
@@ -162,7 +163,7 @@ U kunt de meest gebruikte Azure Site Recovery scripts implementeren in uw Automa
     * Bij deze methode wordt ervan uitgegaan dat er een back-up van de Search Service toepassing is uitgevoerd vóór het onherstelbare gebeurtenis en dat de back-up beschikbaar is op de DR-site.
     * Dit kan eenvoudig worden bereikt door de back-up te plannen (bijvoorbeeld eenmaal per dag) en een Kopieer procedure te gebruiken om de back-up te plaatsen op de DR-site. Kopieer procedures kunnen scripts bevatten zoals AzCopy (Azure Copy) of DFSR instellen (Distributed File Services-replicatie).
     * Nu de share point-farm wordt uitgevoerd, navigeert u naar Centraal beheer, back-up en terugzetten en selecteert u herstellen. De Restore heeft de opgegeven back-uplocatie (mogelijk moet u de waarde bijwerken). Selecteer de Search Service back-up van de toepassing die u wilt herstellen.
-    * De zoek opdracht wordt hersteld. Houd er rekening mee dat de Restore verwacht dezelfde topologie te vinden (hetzelfde aantal servers) en dat er dezelfde vaste stationsletters zijn toegewezen aan deze servers. Zie [' Search service-toepassing herstellen in share point 2013 '](https://technet.microsoft.com/library/ee748654.aspx) document voor meer informatie.
+    * De zoek opdracht wordt hersteld. Houd er rekening mee dat de Restore verwacht dezelfde topologie te vinden (hetzelfde aantal servers) en dat er dezelfde vaste stationsletters zijn toegewezen aan deze servers. Zie [' Search service-toepassing herstellen in share point 2013 '](/SharePoint/administration/restore-a-search-service-application) document voor meer informatie.
 
 
 6. Volg de onderstaande stappen om te beginnen met een nieuwe zoek service toepassing.

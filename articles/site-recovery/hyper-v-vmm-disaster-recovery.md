@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: how-to
 ms.date: 11/14/2019
 ms.author: raynew
-ms.openlocfilehash: f7de3c28463a86852cba03713ca4c500e7ca0339
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 482a3808065bb2ec565bad7e760b9337b3db7007
+ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80437511"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86134011"
 ---
 # <a name="set-up-disaster-recovery-for-hyper-v-vms-to-a-secondary-on-premises-site"></a>Herstel na noodgevallen instellen voor Hyper-V-VM's naar een secundaire on-premises site
 
@@ -48,10 +48,10 @@ Bij [netwerktoewijzing](hyper-v-vmm-network-mapping.md) worden on-premises VMM-n
 
 Bereid VMM als volgt voor:
 
-1. Zorg ervoor dat u [logische VMM-netwerken](https://docs.microsoft.com/system-center/vmm/network-logical) op de VMM-bron- en doelserver hebt.
+1. Zorg ervoor dat u [logische VMM-netwerken](/system-center/vmm/network-logical) op de VMM-bron- en doelserver hebt.
     - Het logische netwerk op de bronserver moet worden gekoppeld aan de broncloud waarin de Hyper-V-hosts zich bevinden.
     - Het logische netwerk op de doelserver moet worden gekoppeld aan de doelcloud.
-1. Zorg ervoor dat u [VMM-netwerken](https://docs.microsoft.com/system-center/vmm/network-virtual) op de VMM-bron- en doelserver hebt. VM-netwerken moeten zijn gekoppeld aan het logische netwerk op elke locatie.
+1. Zorg ervoor dat u [VMM-netwerken](/system-center/vmm/network-virtual) op de VMM-bron- en doelserver hebt. VM-netwerken moeten zijn gekoppeld aan het logische netwerk op elke locatie.
 2. Verbind VM's op de Hyper-V-bronhosts met het VM-bronnetwerk. 
 
 

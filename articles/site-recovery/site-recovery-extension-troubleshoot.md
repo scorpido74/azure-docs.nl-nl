@@ -5,11 +5,12 @@ author: sideeksh
 manager: rochakm
 ms.topic: troubleshooting
 ms.date: 11/27/2018
-ms.openlocfilehash: a780a42179a0bacf0e4a12ba1e75ae84943539b4
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 913f1f2a7a03c1abb83d8daa6d4b0c3f6e77e309
+ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77190727"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86133755"
 ---
 # <a name="troubleshoot-azure-vm-extension-issues"></a>Problemen met Azure VM-extensies oplossen
 
@@ -68,14 +69,14 @@ De VM-agent is mogelijk beschadigd of de service is gestopt. Het opnieuw install
 1. Controleer of de Windows Azure Guest Agent-service wordt weer gegeven in Services.
 1. Start de beveiligings taak opnieuw.
 
-Controleer ook of [Microsoft .NET 4,5 is geïnstalleerd](https://docs.microsoft.com/dotnet/framework/migration-guide/how-to-determine-which-versions-are-installed) in de VM. U hebt .NET 4,5 nodig voor de VM-agent om te communiceren met de service.
+Controleer ook of [Microsoft .NET 4,5 is geïnstalleerd](/dotnet/framework/migration-guide/how-to-determine-which-versions-are-installed) in de VM. U hebt .NET 4,5 nodig voor de VM-agent om te communiceren met de service.
 
 ### <a name="the-agent-installed-in-the-vm-is-out-of-date-for-linux-vms"></a>De agent die is geïnstalleerd in de virtuele machine is verouderd (voor Linux-Vm's)
 
 #### <a name="solution"></a>Oplossing
 De meeste fout-en extensie-gerelateerde storingen voor Linux-Vm's worden veroorzaakt door problemen die van invloed zijn op een verouderde VM-agent. Volg deze algemene richt lijnen om dit probleem op te lossen:
 
-1. Volg de instructies voor [het bijwerken van de Linux VM-agent](../virtual-machines/linux/update-agent.md).
+1. Volg de instructies voor [het bijwerken van de Linux VM-agent](../virtual-machines/extensions/update-linux-agent.md).
 
    > [!NOTE]
    > We *raden u ten zeerste* aan de agent alleen bij te werken via een distributie opslagplaats. Het is niet raadzaam de agent code rechtstreeks vanuit GitHub te downloaden en bij te werken. Als de meest recente agent voor uw distributie niet beschikbaar is, neemt u contact op met de distributie ondersteuning voor instructies over het installeren ervan. Als u de meest recente agent wilt controleren, gaat u naar de pagina van de [Windows Azure Linux-agent](https://github.com/Azure/WALinuxAgent/releases) in de GitHub-opslag plaats.
@@ -106,6 +107,6 @@ De uitbrei ding verwijderen:
 1. Selecteer **site Recovery extensie**.
 1. Selecteer **Verwijderen**.
 
-Als de VMSnapshot-extensie niet wordt weer gegeven in de Azure Portal, moet u voor de virtuele Linux-machine [de Azure Linux-agent bijwerken](../virtual-machines/linux/update-agent.md). Voer vervolgens de beveiliging uit.
+Als de VMSnapshot-extensie niet wordt weer gegeven in de Azure Portal, moet u voor de virtuele Linux-machine [de Azure Linux-agent bijwerken](../virtual-machines/extensions/update-linux-agent.md). Voer vervolgens de beveiliging uit.
 
 Wanneer u deze stappen hebt voltooid, wordt de extensie tijdens de beveiliging opnieuw geïnstalleerd.

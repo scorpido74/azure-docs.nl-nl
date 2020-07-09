@@ -9,12 +9,12 @@ ms.topic: article
 ms.workload: storage-backup-recovery
 ms.date: 01/08/2020
 ms.author: mayg
-ms.openlocfilehash: 7b43105d23de516b994521ad46bb45737798717c
-ms.sourcegitcommit: f684589322633f1a0fafb627a03498b148b0d521
+ms.openlocfilehash: 09a4700ce794458ee4dcad2291a93e0b13ca5feb
+ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/06/2020
-ms.locfileid: "85971076"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86133775"
 ---
 # <a name="troubleshoot-errors-when-failing-over-vmware-vm-or-physical-machine-to-azure"></a>Problemen oplossen bij het mislukken van een virtuele VMware-machine of fysieke machine naar Azure
 
@@ -90,7 +90,7 @@ Als de knop **verbinden** op de virtuele machine waarvoor een failover is uitgev
 
 ## <a name="unable-to-connectrdpssh---vm-connect-button-available"></a>Kan geen verbinding maken/RDP/SSH: er is een VM-verbinding beschikbaar
 
-Als de knop **verbinden** op de virtuele machine waarvoor een failover is uitgevoerd in azure beschikbaar is (niet grijs), controleert u de **Diagnostische gegevens over opstarten** op de VM en controleert u op fouten zoals vermeld in [dit artikel](../virtual-machines/windows/boot-diagnostics.md).
+Als de knop **verbinden** op de virtuele machine waarvoor een failover is uitgevoerd in azure beschikbaar is (niet grijs), controleert u de **Diagnostische gegevens over opstarten** op de VM en controleert u op fouten zoals vermeld in [dit artikel](../virtual-machines/troubleshooting/boot-diagnostics.md).
 
 1. Als de virtuele machine niet is gestart, kunt u een failover uitvoeren naar een ouder herstel punt.
 2. Als de toepassing in de virtuele machine niet actief is, kunt u een failover uitvoeren naar een toepassings consistent herstel punt.
@@ -174,7 +174,7 @@ Het probleem oplossen:
 
 
 ## <a name="next-steps"></a>Volgende stappen
-- Problemen met de [RDP-verbinding met de Windows VM](../virtual-machines/windows/troubleshoot-rdp-connection.md) oplossen
-- Problemen met [SSH-verbinding met Linux VM](../virtual-machines/linux/detailed-troubleshoot-ssh-connection.md) oplossen
+- Problemen met de [RDP-verbinding met de Windows VM](../virtual-machines/troubleshooting/troubleshoot-rdp-connection.md) oplossen
+- Problemen met [SSH-verbinding met Linux VM](../virtual-machines/troubleshooting/detailed-troubleshoot-ssh-connection.md) oplossen
 
-Als u meer hulp nodig hebt, plaatst u uw query op [micro soft Q&een vraag pagina voor site Recovery](https://docs.microsoft.com/answers/topics/azure-site-recovery.html) of verlaat u een opmerking aan het einde van dit document. We hebben een actieve community die u kan helpen.
+Als u meer hulp nodig hebt, plaatst u uw query op [micro soft Q&een vraag pagina voor site Recovery](/answers/topics/azure-site-recovery.html) of verlaat u een opmerking aan het einde van dit document. We hebben een actieve community die u kan helpen.

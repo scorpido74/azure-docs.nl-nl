@@ -8,16 +8,17 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 11/14/2019
 ms.author: raynew
-ms.openlocfilehash: 874c282ff878126297dc46ca0e7a4c19910e40a1
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: a71e476a214c44514c7d57c54a09a38218ad6d2a
+ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "74159110"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86135676"
 ---
 # <a name="set-up-disaster-recovery-for-azure-vms-after-migration-to-azure"></a>Herstel na noodgevallen instellen voor virtuele Azure-machines na migratie naar Azure 
 
 
-Volg dit artikel als u [on-premises machines naar Azure-vm's hebt gemigreerd](tutorial-migrate-on-premises-to-azure.md) met behulp van de [site Recovery](site-recovery-overview.md) -service. u wilt nu de vm's ophalen die zijn ingesteld voor herstel na nood geval naar een secundaire Azure-regio. In het artikel wordt beschreven hoe u ervoor zorgt dat de Azure VM-agent is geïnstalleerd op gemigreerde Vm's en hoe u de Site Recovery Mobility-service verwijdert die niet meer nodig is na de migratie.
+Volg dit artikel als u [on-premises machines naar Azure-vm's hebt gemigreerd](./migrate-tutorial-on-premises-azure.md) met behulp van de [site Recovery](site-recovery-overview.md) -service. u wilt nu de vm's ophalen die zijn ingesteld voor herstel na nood geval naar een secundaire Azure-regio. In het artikel wordt beschreven hoe u ervoor zorgt dat de Azure VM-agent is geïnstalleerd op gemigreerde Vm's en hoe u de Site Recovery Mobility-service verwijdert die niet meer nodig is na de migratie.
 
 
 
@@ -48,14 +49,14 @@ Controleren of de agent is geïnstalleerd:
 2. Klik met de rechter muisknop op het bestand en selecteer in **Eigenschappen**het tabblad **Details** .
 3. Controleer of in het veld **product versie** 2.6.1198.718 of hoger wordt weer gegeven.
 
-Meer [informatie](https://docs.microsoft.com/azure/virtual-machines/extensions/agent-windows) over de installatie van de agent voor Windows.
+Meer [informatie](../virtual-machines/extensions/agent-windows.md) over de installatie van de agent voor Windows.
 
 ### <a name="install-the-agent-on-linux-vms"></a>De agent installeren op virtuele Linux-machines
 
 Installeer de [Azure Linux VM](../virtual-machines/extensions/agent-linux.md) -agent als volgt hand matig:
 
 1. Zorg ervoor dat u beschikt over beheerders machtigingen op de computer.
-2. We raden u ten zeerste aan de Linux VM-agent te installeren met behulp van een RPM-of een DEB-pakket vanuit de pakket opslagplaats van uw distributie. Alle [gewaarmerkte distributie providers](https://docs.microsoft.com/azure/virtual-machines/linux/endorsed-distros) integreren het Azure Linux-agent pakket in hun installatie kopieën en opslag plaatsen.
+2. We raden u ten zeerste aan de Linux VM-agent te installeren met behulp van een RPM-of een DEB-pakket vanuit de pakket opslagplaats van uw distributie. Alle [gewaarmerkte distributie providers](../virtual-machines/linux/endorsed-distros.md) integreren het Azure Linux-agent pakket in hun installatie kopieën en opslag plaatsen.
     - We raden u ten zeerste aan de agent alleen bij te werken via een distributie opslagplaats.
     - Het wordt niet aanbevolen om de Linux-VM-agent rechtstreeks vanuit GitHub te installeren en bij te werken.
     -  Als de meest recente agent voor uw distributie niet beschikbaar is, neemt u contact op met de distributie ondersteuning voor instructies over het installeren ervan. 

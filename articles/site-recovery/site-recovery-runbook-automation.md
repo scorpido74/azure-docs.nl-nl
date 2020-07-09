@@ -7,11 +7,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 09/18/2019
 ms.author: rajanaki
-ms.openlocfilehash: 123ef7de338bfe872948db60c68c0c5743f5cda1
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 25290a66da3d5c8325513b2bea6d27d12ca7da70
+ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84345135"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86134799"
 ---
 # <a name="add-azure-automation-runbooks-to-recovery-plans"></a>Azure Automation-runbooks aan herstelplannen toevoegen
 
@@ -128,7 +129,7 @@ De Aman-blog van Sharma in de [oogst van Clouds](http://harvestingclouds.com) is
 
 U kunt één runbook-script in meerdere herstel plannen gebruiken met behulp van externe variabelen. 
 
-- U gebruikt [Azure Automation variabelen](../automation/automation-variables.md) om para meters op te slaan voor het uitvoeren van een herstel plan.
+- U gebruikt [Azure Automation variabelen](../automation/shared-resources/variables.md) om para meters op te slaan voor het uitvoeren van een herstel plan.
 - Door de naam van het herstel plan als een voor voegsel aan de variabele toe te voegen, kunt u afzonderlijke variabelen voor elk herstel plan maken. Gebruik vervolgens de variabelen als para meters.
 - U kunt een para meter wijzigen zonder het script te wijzigen, maar toch de manier wijzigen waarop het script werkt.
 
@@ -198,7 +199,7 @@ In sommige scenario's kunt u mogelijk geen afzonderlijke variabelen maken voor e
 - Een share point-herstel heeft bijvoorbeeld twee front-ends. Een Basic Line-of-Business-toepassing (LOB) heeft slechts één front-end.
 - In dit scenario kunt u geen afzonderlijke variabelen maken voor elk herstel plan.
 
-In het volgende voor beeld maken we een [complexe variabele](https://docs.microsoft.com/powershell/module/servicemanagement/azure/set-azureautomationvariable) in het Azure Automation-account.
+In het volgende voor beeld maken we een [complexe variabele](/powershell/module/servicemanagement/azure/set-azureautomationvariable) in het Azure Automation-account.
 
 We doen dit door meerdere waarden op te geven met behulp van Azure PowerShell.
 
@@ -263,9 +264,6 @@ Deze video bevat een ander voor beeld. In dit voor beeld ziet u hoe u een WordPr
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- Meer informatie over een [Azure Automation uitvoeren als-account](../automation/automation-create-runas-account.md)
+- Meer informatie over een [Azure Automation uitvoeren als-account](../automation/manage-runas-account.md)
 - Bekijk [Azure Automation voorbeeld scripts](https://gallery.technet.microsoft.com/scriptcenter/site/search?f%5B0%5D.Type=User&f%5B0%5D.Value=SC%20Automation%20Product%20Team&f%5B0%5D.Text=SC%20Automation%20Product%20Team).
 - [Meer informatie](site-recovery-failover.md) over het uitvoeren van failovers.
-
-
-

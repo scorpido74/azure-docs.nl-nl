@@ -7,11 +7,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 04/28/2020
 ms.author: sideeksh
-ms.openlocfilehash: 543be2b408d9442c61ae2c052776e63c33206188
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 1a522193e9e704dce967daeeef70f82a6c0b1378
+ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84488933"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86135730"
 ---
 # <a name="enable-zone-to-zone-disaster-recovery-for-azure-virtual-machines"></a>Zone inschakelen voor herstel na nood geval voor Azure virtual machines
 
@@ -97,7 +98,7 @@ Meld u aan bij de Azure Portal.
 
 5. Als u wijzigingen in de replicatie-instellingen wilt aanbrengen, klikt u op volgende: geavanceerde instellingen.
 
-6. Wijzig de instellingen van de standaard instelling, indien van toepassing. Voor gebruikers van Azure tot Azure-herstel na nood gevallen lijkt deze pagina mogelijk bekend te zijn. Meer informatie over de opties die op deze Blade worden weer gegeven, vindt u [hier](https://docs.microsoft.com/azure/site-recovery/azure-to-azure-tutorial-enable-replication)
+6. Wijzig de instellingen van de standaard instelling, indien van toepassing. Voor gebruikers van Azure tot Azure-herstel na nood gevallen lijkt deze pagina mogelijk bekend te zijn. Meer informatie over de opties die op deze Blade worden weer gegeven, vindt u [hier](./azure-to-azure-tutorial-enable-replication.md)
 
     ![Pagina Geavanceerde instellingen](./media/azure-to-azure-how-to-enable-zone-to-zone-disaster-recovery/zonal-disaster-recovery-advanced-settings-blade.png)
 
@@ -115,7 +116,7 @@ De SLA voor RTO is hetzelfde als die voor Site Recovery totaal. We beloofen RTO 
 Het team van de Site Recovery-team en het Azure Capacity Management-abonnement voor voldoende infrastructuur capaciteit. Wanneer u een failover start, kunnen de teams er ook voor zorgen dat VM-exemplaren die worden beveiligd door Site Recovery worden geïmplementeerd in de doel zone.
 
 **4. welke besturings systemen worden ondersteund?**
-Zone-naar-zone herstel na nood gevallen ondersteunt dezelfde besturings systemen als Azure voor herstel na nood gevallen. Raadpleeg [hier](https://docs.microsoft.com/azure/site-recovery/azure-to-azure-support-matrix)de ondersteunings matrix.
+Zone-naar-zone herstel na nood gevallen ondersteunt dezelfde besturings systemen als Azure voor herstel na nood gevallen. Raadpleeg [hier](./azure-to-azure-support-matrix.md)de ondersteunings matrix.
 
 **5. zijn de bron-en doel resource groepen hetzelfde?**
 Nee, u moet een failover naar een andere resource groep.
@@ -124,8 +125,8 @@ Nee, u moet een failover naar een andere resource groep.
 
 De stappen die moeten worden gevolgd om een nood herstel analyse uit te voeren, een failover, opnieuw beveiligen en failback zijn hetzelfde als de stappen in azure naar Azure nood herstel scenario.
 
-Volg de stappen die [hier](https://docs.microsoft.com/azure/site-recovery/azure-to-azure-tutorial-dr-drill)worden beschreven om een analyse van nood herstel uit te voeren.
+Volg de stappen die [hier](./azure-to-azure-tutorial-dr-drill.md)worden beschreven om een analyse van nood herstel uit te voeren.
 
-Volg de stappen die [hier](https://docs.microsoft.com/azure/site-recovery/azure-to-azure-tutorial-failover-failback)worden beschreven voor het uitvoeren van een failover en het opnieuw beveiligen van vm's in de secundaire zone.
+Volg de stappen die [hier](./azure-to-azure-tutorial-failover-failback.md)worden beschreven voor het uitvoeren van een failover en het opnieuw beveiligen van vm's in de secundaire zone.
 
-Volg de stappen die [hier](https://docs.microsoft.com/azure/site-recovery/azure-to-azure-tutorial-failback)worden beschreven om de primaire zone te failback.
+Volg de stappen die [hier](./azure-to-azure-tutorial-failback.md)worden beschreven om de primaire zone te failback.

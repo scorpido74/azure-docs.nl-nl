@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 08/02/2019
 ms.author: sutalasi
-ms.openlocfilehash: 4bdca30c82b31bda2e843b3712cfbe772952f3e8
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.openlocfilehash: 34cfafadabd9a6328cbe85a5444211828df9db6d
+ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
 ms.translationtype: MT
 ms.contentlocale: nl-NL
 ms.lasthandoff: 07/08/2020
-ms.locfileid: "86077300"
+ms.locfileid: "86133720"
 ---
 # <a name="set-up-disaster-recovery-for-sql-server"></a>Herstel na nood geval instellen voor SQL Server
 
@@ -34,9 +34,9 @@ Uw keuze van een BCDR-technologie om SQL Server-exemplaren te herstellen, moet z
 
 Implementatie type | BCDR-technologie | Verwacht RTO voor SQL Server | Verwachte RPO voor SQL Server |
 --- | --- | --- | ---
-SQL Server op een Azure-infra structuur als een service (IaaS) virtuele machine (VM) of on-premises.| [AlwaysOn-beschikbaarheidsgroep](https://docs.microsoft.com/sql/database-engine/availability-groups/windows/overview-of-always-on-availability-groups-sql-server?view=sql-server-2017) | De tijd die nodig is om de secundaire replica als primair te maken. | Omdat replicatie naar de secundaire replica asynchroon is, zijn er gegevens verloren gegaan.
-SQL Server op een Azure IaaS-VM of on-premises.| [Failover Clustering (altijd op FCI)](https://docs.microsoft.com/sql/sql-server/failover-clusters/windows/windows-server-failover-clustering-wsfc-with-sql-server?view=sql-server-2017) | De tijd die nodig is voor failover tussen de knoop punten. | Omdat FCI altijd gebruikmaakt van gedeelde opslag, is dezelfde weer gave van het opslag exemplaar beschikbaar voor failover.
-SQL Server op een Azure IaaS-VM of on-premises.| [Database spiegeling (modus met hoge prestaties)](https://docs.microsoft.com/sql/database-engine/database-mirroring/database-mirroring-sql-server?view=sql-server-2017) | De tijd die nodig is om de service af te dwingen, waarbij gebruik wordt gemaakt van de spiegel server als een warme server voor stand-by. | Replicatie is asynchroon. De spiegel database kan enigszins vertraging oplopen achter de hoofd database. De vertraging is doorgaans klein. Maar het kan groot worden als het systeem van de hoofd-of spiegel server zwaar belast is.<br/><br/>De back-upfunctie voor logboeken kan een aanvulling zijn op database spiegeling. Het is een gunstig alternatief voor het asynchroon spie gelen van data bases.
+SQL Server op een Azure-infra structuur als een service (IaaS) virtuele machine (VM) of on-premises.| [AlwaysOn-beschikbaarheidsgroep](/sql/database-engine/availability-groups/windows/overview-of-always-on-availability-groups-sql-server?view=sql-server-2017) | De tijd die nodig is om de secundaire replica als primair te maken. | Omdat replicatie naar de secundaire replica asynchroon is, zijn er gegevens verloren gegaan.
+SQL Server op een Azure IaaS-VM of on-premises.| [Failover Clustering (altijd op FCI)](/sql/sql-server/failover-clusters/windows/windows-server-failover-clustering-wsfc-with-sql-server?view=sql-server-2017) | De tijd die nodig is voor failover tussen de knoop punten. | Omdat FCI altijd gebruikmaakt van gedeelde opslag, is dezelfde weer gave van het opslag exemplaar beschikbaar voor failover.
+SQL Server op een Azure IaaS-VM of on-premises.| [Database spiegeling (modus met hoge prestaties)](/sql/database-engine/database-mirroring/database-mirroring-sql-server?view=sql-server-2017) | De tijd die nodig is om de service af te dwingen, waarbij gebruik wordt gemaakt van de spiegel server als een warme server voor stand-by. | Replicatie is asynchroon. De spiegel database kan enigszins vertraging oplopen achter de hoofd database. De vertraging is doorgaans klein. Maar het kan groot worden als het systeem van de hoofd-of spiegel server zwaar belast is.<br/><br/>De back-upfunctie voor logboeken kan een aanvulling zijn op database spiegeling. Het is een gunstig alternatief voor het asynchroon spie gelen van data bases.
 SQL as a Service (PaaS) in Azure.<br/><br/>Dit implementatie type omvat afzonderlijke data bases en elastische Pools. | Actieve geo-replicatie | 30 seconden nadat de failover is geactiveerd.<br/><br/>Wanneer failover wordt geactiveerd voor een van de secundaire data bases, worden alle andere secundairen automatisch gekoppeld aan de nieuwe primaire. | RPO van vijf seconden.<br/><br/>Actieve geo-replicatie maakt gebruik van de always on-technologie van SQL Server. Hiermee worden doorgevoerde trans acties op de primaire data base asynchroon gerepliceerd naar een secundaire data base met behulp van snap shot-isolatie.<br/><br/>De secundaire gegevens worden gegarandeerd nooit gedeeltelijk trans acties.
 SQL als PaaS geconfigureerd met actieve geo-replicatie in Azure.<br/><br/>Dit implementatie type bevat beheerde instanties, elastische Pools en afzonderlijke data bases. | Automatische failover-groepen | RTO van één uur. | RPO van vijf seconden.<br/><br/>Groepen voor automatische failover bieden de groeps semantiek boven op actieve geo-replicatie. Maar hetzelfde mechanisme voor asynchrone replicatie wordt gebruikt.
 SQL Server op een Azure IaaS-VM of on-premises.| Replicatie met Azure Site Recovery | RTO is doorgaans minder dan 15 minuten. Lees voor meer informatie de [RTO-sla van site Recovery](https://azure.microsoft.com/support/legal/sla/site-recovery/v1_2/). | Een uur voor toepassings consistentie en vijf minuten voor crash consistentie. Als u op zoek bent naar een lagere RPO, moet u andere BCDR-technologieën gebruiken.
@@ -95,13 +95,13 @@ BCDR Technologies always on, actieve groepen met geo-replicatie en automatische 
 
 Sommige BCDR-technologieën zoals SQL always on bieden geen systeem eigen ondersteuning voor de testfailover. We raden u aan de volgende aanpak *alleen te gebruiken bij het gebruik van dergelijke technologieën*.
 
-1. Stel [Azure backup](../backup/backup-azure-arm-vms.md) in op de virtuele machine die als host fungeert voor de replica van de beschikbaarheids groep in Azure.
+1. Stel [Azure backup](../backup/backup-azure-vms-first-look-arm.md) in op de virtuele machine die als host fungeert voor de replica van de beschikbaarheids groep in Azure.
 
 1. Voordat de testfailover van het herstel plan wordt geactiveerd, herstelt u de virtuele machine op basis van de back-up die in de vorige stap is gemaakt.
 
     ![Scherm opname van een venster voor het herstellen van een configuratie uit Azure Backup](./media/site-recovery-sql/restore-from-backup.png)
 
-1. [Dwing een quorum](https://docs.microsoft.com/sql/sql-server/failover-clusters/windows/force-a-wsfc-cluster-to-start-without-a-quorum#PowerShellProcedure) af in de VM die is teruggezet vanuit een back-up.
+1. [Dwing een quorum](/sql/sql-server/failover-clusters/windows/force-a-wsfc-cluster-to-start-without-a-quorum#PowerShellProcedure) af in de VM die is teruggezet vanuit een back-up.
 
 1. Werk het IP-adres van de listener bij als een adres dat beschikbaar is in het netwerk van de testfailover.
 
@@ -139,7 +139,7 @@ Site Recovery biedt geen ondersteuning voor gast clusters bij het repliceren naa
 
 1. Configureer het exemplaar om als een mirror te fungeren voor de data bases die u wilt beveiligen. Configureer mirroring in de modus voor hoge beveiliging.
 
-1. Configureer Site Recovery op de primaire site voor [Azure](azure-to-azure-tutorial-enable-replication.md)-, [Hyper-V](site-recovery-hyper-v-site-to-azure.md)-of [VMware-vm's en fysieke servers](site-recovery-vmware-to-azure-classic.md).
+1. Configureer Site Recovery op de primaire site voor [Azure](azure-to-azure-tutorial-enable-replication.md)-, [Hyper-V](./hyper-v-azure-tutorial.md)-of [VMware-vm's en fysieke servers](./vmware-azure-tutorial.md).
 
 1. Gebruik Site Recovery replicatie om het nieuwe SQL Server exemplaar te repliceren naar de secundaire site. Omdat het een mirror-kopie met hoge beveiliging is, wordt deze gesynchroniseerd met het primaire cluster, maar gerepliceerd met Site Recovery replicatie.
 
@@ -161,7 +161,7 @@ Site Recovery is neutraal van toepassing. Site Recovery kunt elke versie van SQL
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* Meer informatie over [site Recovery architectuur](site-recovery-components.md).
+* Meer informatie over [site Recovery architectuur](./azure-to-azure-architecture.md).
 * Meer informatie over [oplossingen met hoge Beschik baarheid](../azure-sql/virtual-machines/windows/business-continuity-high-availability-disaster-recovery-hadr-overview.md#azure-only-high-availability-solutions) voor herstel in een secundaire Azure-regio vindt u in azure. SQL Server
 * Voor SQL Database leert u meer over de opties voor [bedrijfs continuïteit](../azure-sql/database/business-continuity-high-availability-disaster-recover-hadr-overview.md) en [hoge Beschik baarheid](../azure-sql/database/high-availability-sla.md) voor herstel in een secundaire Azure-regio.
 * Meer informatie over de [Opties voor hoge Beschik baarheid](../azure-sql/virtual-machines/windows/business-continuity-high-availability-disaster-recovery-hadr-overview.md#hybrid-it-disaster-recovery-solutions) voor herstel in azure virtual machines vindt u in het on-premises SQL Server.

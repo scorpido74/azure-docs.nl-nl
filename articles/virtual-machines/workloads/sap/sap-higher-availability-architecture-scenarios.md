@@ -16,11 +16,12 @@ ms.workload: infrastructure-services
 ms.date: 05/05/2017
 ms.author: radeltch
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 86094fd7ff9550946e1b1c13e0773f025a0e977c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: f43ba78bc9c48b003d4718945dc47b0a076a048f
+ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77623805"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86134536"
 ---
 # <a name="utilize-azure-infrastructure-vm-restart-to-achieve-higher-availability-of-an-sap-system"></a>VM van Azure-infra structuur opnieuw opstarten gebruiken om een hogere Beschik baarheid van een SAP-systeem te krijgen
 
@@ -266,7 +267,7 @@ SAP biedt een instelling waarmee u direct na het starten van het besturings syst
 
 Als een typisch Azure-scenario van één SAP-toepassings Server exemplaar in een VM en één VM uiteindelijk opnieuw wordt gestart, is automatisch starten niet essentieel. Maar u kunt dit inschakelen door de volgende para meter toe te voegen aan het begin Profiel van de SAP Advanced Business Application Programming (ABAP) of Java-instantie:
 
-      Autostart = 1
+`Autostart = 1`
 
 
   > [!NOTE]

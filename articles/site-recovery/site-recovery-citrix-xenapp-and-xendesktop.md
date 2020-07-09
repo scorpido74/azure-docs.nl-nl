@@ -7,11 +7,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 11/27/2018
 ms.author: ponatara
-ms.openlocfilehash: 29fbe5389da924a2ecc660aa5ce5c4bb0a0902b6
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 90d54a8ded99dd8ab43aed688036add6aede20ab
+ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "74084543"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86134839"
 ---
 # <a name="set-up-disaster-recovery-for-a-multi-tier-citrix-xenapp-and-xendesktop-deployment"></a>herstel na nood geval instellen voor een Citrix XenApp-en XenDesktop-implementatie met meerdere lagen
 
@@ -29,8 +30,8 @@ Dit document bevat stapsgewijze richt lijnen voor het bouwen van een oplossing v
 
 Voordat u begint, moet u het volgende weten:
 
-1. [Een virtuele machine repliceren naar Azure](site-recovery-vmware-to-azure.md)
-1. [Een herstel netwerk ontwerpen](site-recovery-network-design.md)
+1. [Een virtuele machine repliceren naar Azure](./vmware-azure-tutorial.md)
+1. [Een herstel netwerk ontwerpen](./concepts-on-premises-to-azure-networking.md)
 1. [Een testfailover naar Azure uitvoeren](site-recovery-test-failover-to-azure.md)
 1. [Een failover naar Azure uitvoeren](site-recovery-failover.md)
 1. [Een domein controller repliceren](site-recovery-active-directory.md)
@@ -95,7 +96,7 @@ Raadpleeg [Active Directory en DNS beveiligen met Azure site Recovery](site-reco
 
 Raadpleeg [SQL Server met SQL Server herstel na nood gevallen en Azure site Recovery](site-recovery-sql.md) voor gedetailleerde technische richt lijnen voor de aanbevolen opties voor het beveiligen van SQL-servers.
 
-Volg [deze richt lijnen](site-recovery-vmware-to-azure.md) om te beginnen met het repliceren van de andere virtuele machines van het onderdeel naar Azure.
+Volg [deze richt lijnen](./vmware-azure-tutorial.md) om te beginnen met het repliceren van de andere virtuele machines van het onderdeel naar Azure.
 
 ![Beveiliging van XenApp-onderdelen](./media/site-recovery-citrix-xenapp-and-xendesktop/citrix-enablereplication.png)
 

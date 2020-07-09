@@ -8,11 +8,12 @@ ms.workload: infrastructure-services
 ms.topic: article
 ms.date: 02/06/2020
 ms.author: tagore
-ms.openlocfilehash: c41292a05e5c857cd0b1c120784a400f2f5410ab
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: a5a9ace105e56d9db61470c35f665954812c3825
+ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "78945360"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86134260"
 ---
 # <a name="migrate-iaas-resources-from-classic-to-azure-resource-manager-by-using-azure-cli"></a>IaaS-resources migreren van klassiek naar Azure Resource Manager met behulp van Azure CLI
 
@@ -49,11 +50,15 @@ Voor migratie scenario's moet u uw omgeving instellen voor klassieke en Resource
 
 Meld u aan bij uw account.
 
-    azure login
+```azurecli
+azure login
+```
 
 Selecteer het Azure-abonnement met behulp van de volgende opdracht.
 
-    azure account set "<azure-subscription-name>"
+```azurecli
+azure account set "<azure-subscription-name>"
+```
 
 > [!NOTE]
 > Registratie is een eenmalige stap, maar deze moet eenmaal worden uitgevoerd voordat u de migratie uitvoert. Zonder registratie wordt het volgende fout bericht weer gegeven 
@@ -64,42 +69,53 @@ Selecteer het Azure-abonnement met behulp van de volgende opdracht.
 
 Meld u bij de resource provider voor migratie aan met de volgende opdracht. Houd er rekening mee dat in sommige gevallen een time-out optreedt voor deze opdracht. De registratie slaagt echter wel.
 
-    azure provider register Microsoft.ClassicInfrastructureMigrate
+```azurecli
+azure provider register Microsoft.ClassicInfrastructureMigrate
+```
 
 Wacht vijf minuten totdat de registratie is voltooid. U kunt de status van de goed keuring controleren met behulp van de volgende opdracht. Zorg ervoor dat RegistrationState is `Registered` voordat u doorgaat.
 
-    azure provider show Microsoft.ClassicInfrastructureMigrate
+```azurecli
+azure provider show Microsoft.ClassicInfrastructureMigrate
+```
 
 Schakel de CLI nu over naar de `asm` modus.
 
-    azure config mode asm
+```azurecli
+azure config mode asm
+```
 
 ## <a name="step-3-make-sure-you-have-enough-azure-resource-manager-virtual-machine-vcpus-in-the-azure-region-of-your-current-deployment-or-vnet"></a>Stap 3: Zorg ervoor dat u voldoende Azure Resource Manager virtuele-Vcpu's in de Azure-regio van uw huidige implementatie of VNET hebt
 Voor deze stap moet u overschakelen naar de `arm` modus. Doe dit met de volgende opdracht.
 
-```
+```azurecli
 azure config mode arm
 ```
 
 U kunt de volgende CLI-opdracht gebruiken om het huidige aantal Vcpu's te controleren dat zich in Azure Resource Manager bevindt. Zie [limieten en de Azure Resource Manager](../../azure-resource-manager/management/azure-subscription-service-limits.md#managing-limits)voor meer informatie over vCPU-quota's.
 
-```
+```azurecli
 azure vm list-usage -l "<Your VNET or Deployment's Azure region"
 ```
 
 Zodra u klaar bent met het controleren van deze stap, kunt u terugschakelen naar de `asm` modus.
 
-    azure config mode asm
-
+```azurecli
+azure config mode asm
+```
 
 ## <a name="step-4-option-1---migrate-virtual-machines-in-a-cloud-service"></a>Stap 4: optie 1-virtuele machines in een Cloud service migreren
 Bekijk de lijst met Cloud Services met behulp van de volgende opdracht en kies vervolgens de Cloud service die u wilt migreren. Als de virtuele machines in de Cloud service zich in een virtueel netwerk bevinden of als ze beschikken over web-en werk rollen, wordt er een fout bericht weer gegeven.
 
-    azure service list
+```azurecli
+azure service list
+```
 
 Voer de volgende opdracht uit om de implementatie naam voor de Cloud service op te halen uit de uitgebreide uitvoer. In de meeste gevallen is de naam van de implementatie hetzelfde als de naam van de Cloud service.
 
-    azure service show <serviceName> -vv
+```azurecli
+azure service show <serviceName> -vv
+```
 
 Controleer eerst of u de Cloud service kunt migreren met behulp van de volgende opdrachten:
 
@@ -111,32 +127,42 @@ Bereid de virtuele machines in de Cloud service voor op migratie. U kunt kiezen 
 
 Als u de Vm's wilt migreren naar een virtueel netwerk dat door een platform is gemaakt, gebruikt u de volgende opdracht.
 
-    azure service deployment prepare-migration <serviceName> <deploymentName> new "" "" ""
+```azurecli
+azure service deployment prepare-migration <serviceName> <deploymentName> new "" "" ""
+```
 
 Als u wilt migreren naar een bestaand virtueel netwerk in het Resource Manager-implementatie model, gebruikt u de volgende opdracht.
 
-    azure service deployment prepare-migration <serviceName> <deploymentName> existing <destinationVNETResourceGroupName> <subnetName> <vnetName>
+```azurecli
+azure service deployment prepare-migration <serviceName> <deploymentName> existing <destinationVNETResourceGroupName> <subnetName> <vnetName>
+```
 
 Nadat de voor bereiding is voltooid, kunt u de uitgebreide uitvoer bekijken om de migratie status van de Vm's op te halen en ervoor te zorgen dat deze zich in de staat bevinden `Prepared` .
 
-    azure vm show <vmName> -vv
+```azurecli
+azure vm show <vmName> -vv
+```
 
 Controleer de configuratie voor de voor bereide bronnen met behulp van CLI of de Azure Portal. Als u niet gereed bent voor migratie en u wilt terugkeren naar de oude status, gebruikt u de volgende opdracht.
 
-    azure service deployment abort-migration <serviceName> <deploymentName>
+```azurecli
+azure service deployment abort-migration <serviceName> <deploymentName>
+```
 
 Als de voor bereide configuratie goed lijkt, kunt u de resources door lopen en door voeren met de volgende opdracht.
 
-    azure service deployment commit-migration <serviceName> <deploymentName>
-
-
+```azurecli
+azure service deployment commit-migration <serviceName> <deploymentName>
+```
 
 ## <a name="step-4-option-2----migrate-virtual-machines-in-a-virtual-network"></a>Stap 4: optie 2-virtuele machines in een virtueel netwerk migreren
 Kies het virtuele netwerk dat u wilt migreren. Houd er rekening mee dat als het virtuele netwerk web-of werk rollen of Vm's met niet-ondersteunde configuraties bevat, een validatie fout bericht wordt weer gegeven.
 
 Gebruik de volgende opdracht om alle virtuele netwerken in het abonnement op te halen.
 
-    azure network vnet list
+```azurecli
+azure network vnet list
+```
 
 De uitvoer ziet er ongeveer als volgt uit:
 
@@ -152,30 +178,42 @@ azure network vnet validate-migration <virtualNetworkName>
 
 Bereid het virtuele netwerk van uw keuze voor op de migratie met behulp van de volgende opdracht.
 
-    azure network vnet prepare-migration <virtualNetworkName>
+```azurecli
+azure network vnet prepare-migration <virtualNetworkName>
+```
 
 Controleer de configuratie voor de voor bereide virtuele machines met behulp van CLI of de Azure Portal. Als u niet gereed bent voor migratie en u wilt terugkeren naar de oude status, gebruikt u de volgende opdracht.
 
-    azure network vnet abort-migration <virtualNetworkName>
+```azurecli
+azure network vnet abort-migration <virtualNetworkName>
+```
 
 Als de voor bereide configuratie goed lijkt, kunt u de resources door lopen en door voeren met de volgende opdracht.
 
-    azure network vnet commit-migration <virtualNetworkName>
+```azurecli
+azure network vnet commit-migration <virtualNetworkName>
+```
 
 ## <a name="step-5-migrate-a-storage-account"></a>Stap 5: een opslag account migreren
 Wanneer u klaar bent met het migreren van de virtuele machines, raden we u aan om het opslag account te migreren.
 
 Bereid het opslag account voor op de migratie met behulp van de volgende opdracht
 
-    azure storage account prepare-migration <storageAccountName>
+```azurecli
+azure storage account prepare-migration <storageAccountName>
+```
 
 Controleer de configuratie voor het voor bereide opslag account met behulp van CLI of de Azure Portal. Als u niet gereed bent voor migratie en u wilt terugkeren naar de oude status, gebruikt u de volgende opdracht.
 
-    azure storage account abort-migration <storageAccountName>
+```azurecli
+azure storage account abort-migration <storageAccountName>
+```
 
 Als de voor bereide configuratie goed lijkt, kunt u de resources door lopen en door voeren met de volgende opdracht.
 
-    azure storage account commit-migration <storageAccountName>
+```azurecli
+azure storage account commit-migration <storageAccountName>
+```
 
 ## <a name="next-steps"></a>Volgende stappen
 

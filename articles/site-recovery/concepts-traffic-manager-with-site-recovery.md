@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 04/08/2019
 ms.author: mayg
-ms.openlocfilehash: 6c77cd43231d4596535c11564313a0fe90633cdb
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: bb112e0b2d1c64e65ecaf6749a25707d8632c0cb
+ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "60947745"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86134962"
 ---
 # <a name="azure-traffic-manager-with-azure-site-recovery"></a>Azure Traffic Manager met Azure Site Recovery
 
@@ -30,7 +30,7 @@ Voor het eerste scenario kunt u **bedrijf A** overwegen met alle toepassings inf
 **Bedrijf A** voert toepassingen uit met open bare eind punten en wil de mogelijkheid om verkeer naadloos om te leiden naar Azure in een nood geval. Met de methode voor het routeren van [prioriteits](../traffic-manager/traffic-manager-configure-priority-routing-method.md) verkeer in azure Traffic Manager kan bedrijf A het failovercluster eenvoudig implementeren.
 
 De installatie is als volgt:
-- **Bedrijf a** maakt een [Traffic Manager profiel](../traffic-manager/traffic-manager-create-profile.md).
+- **Bedrijf a** maakt een [Traffic Manager profiel](../traffic-manager/quickstart-create-traffic-manager-profile.md).
 - Als u de methode voor de **prioriteits** routering gebruikt, maakt **bedrijf A** twee eind punten – **primair** voor on-premises en **failover** voor Azure. **Primaire** is toegewezen aan prioriteit 1 en **failover** krijgt prioriteit 2.
 - Omdat het **primaire** eind punt wordt gehost buiten Azure, wordt het eind punt gemaakt als een [extern](../traffic-manager/traffic-manager-endpoint-types.md#external-endpoints) eind punt.
 - Met Azure Site Recovery heeft de Azure-site geen virtuele machines of toepassingen die vóór de failover worden uitgevoerd. Daarom wordt het **failover** -eind punt ook gemaakt als een **extern** eind punt.
@@ -65,7 +65,7 @@ Voor dit voor beeld moet u **bedrijf C** hebben met alle toepassings infrastruct
 **Bedrijf C** voert toepassingen uit met open bare eind punten en wil de mogelijkheid om verkeer naadloos om te leiden naar een andere Azure-regio in een nood geval. Met de methode voor de route ring met [prioriteit](../traffic-manager/traffic-manager-configure-priority-routing-method.md) kan **bedrijf C** dit failover-patroon eenvoudig implementeren.
 
 De installatie is als volgt:
-- **Bedrijf C** maakt een [Traffic Manager profiel](../traffic-manager/traffic-manager-create-profile.md).
+- **Bedrijf C** maakt een [Traffic Manager profiel](../traffic-manager/quickstart-create-traffic-manager-profile.md).
 - Als u de methode voor de **prioriteits** routering gebruikt, maakt **bedrijf C** twee eind punten – **primair** voor de bron regio (Azure Azië-Oost) en de **failover** voor de herstel regio (Azure Zuidoost-Azië). **Primaire** is toegewezen aan prioriteit 1 en **failover** krijgt prioriteit 2.
 - Omdat het **primaire** eind punt wordt gehost in azure, kan het eind punt een [Azure](../traffic-manager/traffic-manager-endpoint-types.md#azure-endpoints) -eind punt zijn.
 - Met Azure Site Recovery heeft de Recovery Azure-site geen virtuele machines of toepassingen die worden uitgevoerd voorafgaand aan de failover. Het **failover** -eind punt kan dus worden gemaakt als een [extern](../traffic-manager/traffic-manager-endpoint-types.md#external-endpoints) eind punt.

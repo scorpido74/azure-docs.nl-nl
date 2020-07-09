@@ -3,11 +3,12 @@ title: Schijven uitsluiten van replicatie met Azure Site Recovery
 description: Schijven uitsluiten van replicatie naar Azure met Azure Site Recovery.
 ms.topic: conceptual
 ms.date: 12/17/2019
-ms.openlocfilehash: aa2e3ef3906a03be649a1978c1d662056c4d0f25
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 5a8d52bd0cc40b45f92039c537a1b3b63f0bec61
+ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83740515"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86135688"
 ---
 # <a name="exclude-disks-from-disaster-recovery"></a>Schijven uitsluiten van herstel na nood gevallen
 
@@ -259,7 +260,6 @@ Onze instellingen voor het wissel bestand op de virtuele Azure-machine zijn als 
 ## <a name="next-steps"></a>Volgende stappen
 
 - Meer informatie over richt lijnen voor de tijdelijke opslag schijf:
-    - [Meer informatie over](https://blogs.technet.microsoft.com/dataplatforminsider/2014/09/25/using-ssds-in-azure-vms-to-store-sql-server-tempdb-and-buffer-pool-extensions/) het gebruik van Ssd's in azure vm's om SQL Server tempdb-en Buffergroepuitbreiding-extensies op te slaan
-    - [Bekijk](https://docs.microsoft.com/azure/virtual-machines/windows/sql/virtual-machines-windows-sql-performance) de aanbevolen procedures voor de prestaties van SQL Server in azure vm's.
+    - [Meer informatie over](https://cloudblogs.microsoft.com/sqlserver/2014/09/25/using-ssds-in-azure-vms-to-store-sql-server-tempdb-and-buffer-pool-extensions/) het gebruik van Ssd's in azure vm's om SQL Server tempdb-en Buffergroepuitbreiding-extensies op te slaan
+    - [Bekijk](../azure-sql/virtual-machines/windows/performance-guidelines-best-practices.md) de aanbevolen procedures voor de prestaties van SQL Server in azure vm's.
 - Wanneer uw implementatie actief is, kunt u [hier](failover-failback-overview.md) meer lezen over de verschillende soorten failovers.
-

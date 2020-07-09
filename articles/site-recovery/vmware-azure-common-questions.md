@@ -3,11 +3,12 @@ title: Veelgestelde vragen over VMware-nood herstel met Azure Site Recovery
 description: Krijg antwoorden op veelgestelde vragen over herstel na nood gevallen van on-premises virtuele VMware-machines naar Azure met behulp van Azure Site Recovery.
 ms.date: 11/14/2019
 ms.topic: conceptual
-ms.openlocfilehash: d551cef7037c0b6d7286cbb4b70d8f7a8f7f5cae
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: a523df21caca2a6def4274542979e9963345384b
+ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81259507"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86135161"
 ---
 # <a name="common-questions-about-vmware-to-azure-replication"></a>Algemene vragen over replicatie van VMware naar Azure
 
@@ -121,7 +122,7 @@ De replicatie van nieuwe Vm's naar een opslag account is alleen beschikbaar via 
 
 ### <a name="can-i-change-the-managed-disk-type-after-a-machine-is-protected"></a>Kan ik het type van de beheerde schijf wijzigen nadat een machine is beveiligd?
 
-Ja, u kunt eenvoudig [het type beheerde schijf wijzigen](https://docs.microsoft.com/azure/virtual-machines/windows/convert-disk-storage) voor doorlopende replicaties. Voordat u het type wijzigt, moet u ervoor zorgen dat er geen URL voor gedeelde toegangs handtekening wordt gegenereerd op de beheerde schijf:
+Ja, u kunt eenvoudig [het type beheerde schijf wijzigen](../virtual-machines/windows/convert-disk-storage.md) voor doorlopende replicaties. Voordat u het type wijzigt, moet u ervoor zorgen dat er geen URL voor gedeelde toegangs handtekening wordt gegenereerd op de beheerde schijf:
 
 1. Ga naar de resource voor **beheerde schijven** op de Azure Portal en controleer of u een URL-banner voor gedeelde toegang hebt op de Blade **overzicht** .
 1. Als de banner aanwezig is, selecteert u deze om de lopende export te annuleren.

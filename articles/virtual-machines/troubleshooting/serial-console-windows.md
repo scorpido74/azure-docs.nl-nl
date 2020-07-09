@@ -13,11 +13,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 5/1/2019
 ms.author: alsin
-ms.openlocfilehash: c555b058e6d0b8c110a3273525b5a8c58baaff61
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 0fd2bcfb32524c6911a70157f58cea1e48b7bea9
+ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84309778"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86135246"
 ---
 # <a name="azure-serial-console-for-windows"></a>Azure Serial console voor Windows
 
@@ -101,15 +102,15 @@ Als u het Windows-opstart laad programma moet inschakelen om weer te geven in de
 
     ![Verbinding maken met SAC](./media/virtual-machines-serial-console/virtual-machine-windows-serial-console-connect-sac.png)
 
-1.    Voer `cmd` in om een kanaal te maken dat een cmd-exemplaar heeft.
+1. Voer `cmd` in om een kanaal te maken dat een cmd-exemplaar heeft.
 
-1.    Voer `ch -si 1` sneltoetsen in of druk op ENTER `<esc>+<tab>` om over te scha kelen naar het kanaal waarop het cmd-exemplaar wordt uitgevoerd.
+1. Voer `ch -si 1` sneltoetsen in of druk op ENTER `<esc>+<tab>` om over te scha kelen naar het kanaal waarop het cmd-exemplaar wordt uitgevoerd.
 
-1.    Druk op **Enter**en voer aanmeldings referenties in met beheerders machtigingen.
+1. Druk op **Enter**en voer aanmeldings referenties in met beheerders machtigingen.
 
-1.    Nadat u geldige referenties hebt ingevoerd, wordt het CMD-exemplaar geopend.
+1. Nadat u geldige referenties hebt ingevoerd, wordt het CMD-exemplaar geopend.
 
-1.    Als u een Power shell-exemplaar wilt starten, voert u `PowerShell` in het cmd-exemplaar in en drukt u vervolgens op **Enter**.
+1. Als u een Power shell-exemplaar wilt starten, voert u `PowerShell` in het cmd-exemplaar in en drukt u vervolgens op **Enter**.
 
     ![Power shell-exemplaar openen](./media/virtual-machines-serial-console/virtual-machine-windows-serial-console-powershell.png)
 

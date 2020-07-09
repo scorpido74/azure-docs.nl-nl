@@ -1,18 +1,18 @@
 ---
 title: Lead beheer van micro soft Commercial Marketplace
 description: Meer informatie over het genereren en ontvangen van leads van klanten van uw Microsoft AppSource en Azure Marketplace-aanbiedingen
-author: qianw211
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: article
+author: keferna
+ms.author: keferna
 ms.date: 03/30/2020
-ms.author: dsindona
-ms.openlocfilehash: 89b73fd98ca773668d2eb53892d0c21397e9abf3
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: ca6e9a66d6c4daa4706813f945850b51505adeca
+ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85559587"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86133441"
 ---
 # <a name="customer-leads-from-your-commercial-marketplace-offer"></a>Leads van klanten van uw aanbieding voor commerciële Marketplace
 
@@ -109,18 +109,21 @@ Het antwoord is afhankelijk van het type aanbieding dat u publiceert. Software a
 Zoek naar `"MSFT_TEST"` de doel locatie van de lead. Hier volgt een voor beeld van een test lead van micro soft:
 
 ```
-company = MSFT_TEST_636573304831318844
-country = US
-description = MSFT_TEST_636573304831318844
-email = MSFT_TEST_636573304831318844@test.com
-encoding = UTF-8
-encoding = UTF-8
-first_name = MSFT_TEST_636573304831318844
-last_name = MSFT_TEST_636573304831318844
-lead_source = MSFT_TEST_636573304831318844-MSFT_TEST_636573304831318844|<Offer Name>
-oid = 00Do0000000ZHog
-phone = 1234567890
-title = MSFT_TEST_636573304831318844
+{
+    "UserDetails": {
+      "FirstName": "MSFT_TEST_636573304831318844",
+      "LastName": "MSFT_TEST_636573304831318844",
+      "Email": "MSFT_TEST_636573304831318844@test.com",
+      "Phone": "1234567890",
+      "Country": "US",
+      "Company": "MSFT_TEST_636573304831318844",
+      "Title": "MSFT_TEST_636573304831318844"
+    },
+    "LeadSource": "AzureMarketplace",
+    "ActionCode": "INS",
+    "OfferTitle": "Contoso Test"
+    "Description": "MSFT_TEST_636573304831318844"
+}
 ```
 
 ### <a name="i-have-a-live-offer-but-why-am-i-not-seeing-any-leads"></a>Ik heb een live aanbieding, maar waarom krijg ik geen leads te zien?

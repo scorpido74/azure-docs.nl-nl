@@ -8,11 +8,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 10/21/2019
 ms.author: rajanaki
-ms.openlocfilehash: ce3bfd85656972cb93b74a85a1bd6d469837ce22
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 848234417099c0a31bd0c9e84722b6221aec3aa9
+ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84236304"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86135819"
 ---
 # <a name="customize-networking-configurations-of-the-target-azure-vm"></a>Netwerkconfiguraties van de beoogde Azure-VM aanpassen
 
@@ -26,9 +27,9 @@ Meer informatie over hoe Site Recovery herstel na nood gevallen biedt voor [dit 
 
 U kunt de volgende belang rijke bron configuraties voor de failover-VM opgeven tijdens het repliceren van virtuele Azure-machines:
 
-- [Interne load balancer](https://docs.microsoft.com/azure/load-balancer/load-balancer-overview)
+- [Interne load balancer](../load-balancer/load-balancer-overview.md)
 - [Openbare IP](../virtual-network/public-ip-addresses.md)
-- [Netwerk beveiligings groep](https://docs.microsoft.com/azure/virtual-network/manage-network-security-group) zowel voor het subnet als voor de NIC
+- [Netwerk beveiligings groep](../virtual-network/manage-network-security-group.md) zowel voor het subnet als voor de NIC
 
 ## <a name="prerequisites"></a>Vereisten
 
@@ -54,7 +55,7 @@ Site Recovery gaat nu door met deze instellingen en zorg ervoor dat de virtuele 
 
 Wanneer u de testfailover via het herstel plan triggert, wordt het virtuele Azure-netwerk altijd gevraagd. Dit virtuele netwerk wordt gebruikt voor een testfailover voor de computers waarvoor de instellingen voor de testfailover niet vooraf zijn geconfigureerd.
 
-## <a name="troubleshooting"></a>Problemen oplossen
+## <a name="troubleshooting"></a>Probleemoplossing
 
 ### <a name="unable-to-view-or-select-a-resource"></a>Een resource kan niet worden weer gegeven of geselecteerd
 

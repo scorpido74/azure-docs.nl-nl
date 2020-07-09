@@ -5,12 +5,12 @@ author: sideeksh
 manager: rochakm
 ms.topic: how-to
 ms.date: 04/29/2018
-ms.openlocfilehash: 58ddb7363ece5ebdb06df29c27ff76b27da627a4
-ms.sourcegitcommit: cec9676ec235ff798d2a5cad6ee45f98a421837b
+ms.openlocfilehash: 3a1ac6dd940ea5d31adae45a435c5425497362b1
+ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85851168"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86135777"
 ---
 # <a name="replicate-azure-vms-to-another-azure-region"></a>Virtuele Azure-machines repliceren naar een andere Azure-regio
 
@@ -50,7 +50,7 @@ Schakel replicatie in. Bij deze procedure wordt ervan uitgegaan dat de primaire 
        - Als de resource groep die is gemaakt door Site Recovery al bestaat, wordt deze opnieuw gebruikt.
        - U kunt de instellingen voor de resource groep aanpassen.
        - De locatie van de doel resource groep kan een wille keurige Azure-regio zijn, met uitzonde ring van de regio waarin de bron-Vm's worden gehost.
-   - **Virtueel netwerk van doel**: standaard maakt site Recovery een nieuw virtueel netwerk in de doel regio met het achtervoegsel ' ASR ' in de naam. Deze is toegewezen aan uw bron netwerk en wordt gebruikt voor toekomstige beveiliging. [Meer informatie](site-recovery-network-mapping-azure-to-azure.md) over netwerk toewijzing.
+   - **Virtueel netwerk van doel**: standaard maakt site Recovery een nieuw virtueel netwerk in de doel regio met het achtervoegsel ' ASR ' in de naam. Deze is toegewezen aan uw bron netwerk en wordt gebruikt voor toekomstige beveiliging. [Meer informatie](./azure-to-azure-network-mapping.md) over netwerk toewijzing.
    - **Doel opslag accounts (bron-VM gebruikt geen beheerde schijven)**: standaard maakt site Recovery een nieuw doel-opslag account mimicking de opslag configuratie van de bron-VM. Als het opslag account al bestaat, wordt dit opnieuw gebruikt.
    - **Replica-Managed disks (bron-VM maakt gebruik van beheerde schijven)**: site Recovery maakt nieuwe replica-beheerde schijven in de doel regio om de beheerde schijven van de bron-VM te spie gelen met hetzelfde opslag type (Standard of Premium) als de beheerde schijf van de bron-VM.
    - **Cache opslag accounts**: site Recovery hebt extra opslag account met de naam cache opslag in de bron regio nodig. Alle wijzigingen die zich voordoen op de bron-Vm's, worden bijgehouden en verzonden naar het cache-opslag account voordat deze naar de doel locatie worden gerepliceerd. Dit opslag account moet standaard zijn.

@@ -9,11 +9,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 02/01/2016
 ms.author: cynthn
-ms.openlocfilehash: d86e42dcc16d108cc82c9d245c7919145cef365f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 6efc8a7e6478ed874caf925e10ef43c04343d254
+ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81759344"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86133248"
 ---
 # <a name="install-and-configure-postgresql-on-azure"></a>PostgreSQL op Azure installeren en configureren
 PostgreSQL is een geavanceerde open source-data base, vergelijkbaar met Oracle en DB2. Het bevat bedrijfs klare functies, zoals volwaardige naleving, betrouw bare transactionele verwerking en gelijktijdigheids beheer met meerdere versies. Het biedt ook ondersteuning voor standaarden zoals ANSI SQL en SQL/MED (waaronder Foreign data-wrappers voor Oracle, MySQL, MongoDB en vele andere). Het is zeer uitbreidbaar met ondersteuning voor meer dan 12 procedurele talen, EGINNEN-en concept indexen, ondersteuning voor ruimtelijke gegevens en meerdere NoSQL functies voor JSON of op sleutel waarde gebaseerde toepassingen.
@@ -32,90 +33,135 @@ Gebruik in dit geval poort 1999 als de PostgreSQL-poort.
 Maak verbinding met de virtuele Linux-machine die u hebt gemaakt via PuTTy. Als dit de eerste keer is dat u een virtuele machine van Azure Linux gebruikt, raadpleegt u [SSH gebruiken met Linux op Azure](mac-create-ssh-keys.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) voor meer informatie over het gebruik van putty om verbinding te maken met een virtuele Linux-machine.
 
 1. Voer de volgende opdracht uit om over te scha kelen naar het hoofd niveau (beheerder):
-   
-        # sudo su -
+
+    ```console
+    # sudo su -
+    ```
+
 2. Voor sommige distributies gelden afhankelijkheden die u moet installeren voordat u PostgreSQL installeert. Controleer of uw distributie in deze lijst voor komen en voer de volgende opdracht uit:
    
    * Red Hat base Linux:
-     
-           # yum install readline-devel gcc make zlib-devel openssl openssl-devel libxml2-devel pam-devel pam  libxslt-devel tcl-devel python-devel -y  
+
+        ```console
+        # yum install readline-devel gcc make zlib-devel openssl openssl-devel libxml2-devel pam-devel pam  libxslt-devel tcl-devel python-devel -y
+        ```
+
    * Debian base Linux:
-     
-            # apt-get install readline-devel gcc make zlib-devel openssl openssl-devel libxml2-devel pam-devel pam libxslt-devel tcl-devel python-devel -y  
+
+        ```console
+        # apt-get install readline-devel gcc make zlib-devel openssl openssl-devel libxml2-devel pam-devel pam libxslt-devel tcl-devel python-devel -y
+        ```
+
    * SUSE Linux:
-     
-           # zypper install readline-devel gcc make zlib-devel openssl openssl-devel libxml2-devel pam-devel pam  libxslt-devel tcl-devel python-devel -y  
+
+        ```console
+        # zypper install readline-devel gcc make zlib-devel openssl openssl-devel libxml2-devel pam-devel pam  libxslt-devel tcl-devel python-devel -y
+        ```
+
 3. Down load PostgreSQL naar de hoofdmap en pak het pakket uit:
-   
-        # wget https://ftp.postgresql.org/pub/source/v9.3.5/postgresql-9.3.5.tar.bz2 -P /root/
-   
-        # tar jxvf  postgresql-9.3.5.tar.bz2
-   
+
+    ```console
+    # wget https://ftp.postgresql.org/pub/source/v9.3.5/postgresql-9.3.5.tar.bz2 -P /root/
+
+    # tar jxvf  postgresql-9.3.5.tar.bz2
+    ```
+
     Hierboven vindt u een voor beeld. U kunt het gedetailleerde Download adres vinden in de [index van/pub/source/](https://ftp.postgresql.org/pub/source/).
+
 4. Voer de volgende opdrachten uit om de build te starten:
-   
-        # cd postgresql-9.3.5
-   
-        # ./configure --prefix=/opt/postgresql-9.3.5
+
+    ```console
+    # cd postgresql-9.3.5
+
+    # ./configure --prefix=/opt/postgresql-9.3.5
+    ```
+
 5. Als u alles wilt bouwen dat kan worden gemaakt, met inbegrip van de documentatie (HTML-en man-pagina's) en aanvullende modules ( `contrib` ), voert u de volgende opdracht uit:
-   
-        # gmake install-world
-   
+
+    ```console
+    # gmake install-world
+    ```
+
     Het volgende bevestigings bericht wordt weer gegeven:
-   
-        PostgreSQL, contrib, and documentation successfully made. Ready to install.
+
+    ```output
+    PostgreSQL, contrib, and documentation successfully made. Ready to install.
+    ```
 
 ## <a name="configure-postgresql"></a>PostgreSQL configureren
 1. Beschrijving Maak een symbolische koppeling om de PostgreSQL-verwijzing zo kort te maken dat het versie nummer niet wordt vermeld:
-   
-        # ln -s /opt/postgresql-9.3.5 /opt/pgsql
+
+    ```console
+    # ln -s /opt/postgresql-9.3.5 /opt/pgsql
+    ```
+
 2. Maak een map voor de Data Base:
-   
-        # mkdir -p /opt/pgsql_data
+
+    ```console
+    # mkdir -p /opt/pgsql_data
+    ```
+
 3. Maak een niet-hoofd gebruiker en wijzig het profiel van de gebruiker. Schakel vervolgens over naar deze nieuwe gebruiker (met de naam *post gres* in ons voor beeld):
+
+    ```console
+    # useradd postgres
    
-        # useradd postgres
+    # chown -R postgres.postgres /opt/pgsql_data
    
-        # chown -R postgres.postgres /opt/pgsql_data
-   
-        # su - postgres
+    # su - postgres
+    ```
    
    > [!NOTE]
    > Uit veiligheids overwegingen gebruikt PostgreSQL een niet-hoofd gebruiker om de data base te initialiseren, te starten of af te sluiten.
    > 
    > 
 4. Bewerk het *bash_profile* bestand door de onderstaande opdrachten in te voeren. Deze regels worden toegevoegd aan het einde van het *bash_profile* -bestand:
-   
-        cat >> ~/.bash_profile <<EOF
-        export PGPORT=1999
-        export PGDATA=/opt/pgsql_data
-        export LANG=en_US.utf8
-        export PGHOME=/opt/pgsql
-        export PATH=\$PATH:\$PGHOME/bin
-        export MANPATH=\$MANPATH:\$PGHOME/share/man
-        export DATA=`date +"%Y%m%d%H%M"`
-        export PGUSER=postgres
-        alias rm='rm -i'
-        alias ll='ls -lh'
-        EOF
+
+    ```config
+    cat >> ~/.bash_profile <<EOF
+    export PGPORT=1999
+    export PGDATA=/opt/pgsql_data
+    export LANG=en_US.utf8
+    export PGHOME=/opt/pgsql
+    export PATH=\$PATH:\$PGHOME/bin
+    export MANPATH=\$MANPATH:\$PGHOME/share/man
+    export DATA=`date +"%Y%m%d%H%M"`
+    export PGUSER=postgres
+    alias rm='rm -i'
+    alias ll='ls -lh'
+    EOF
+    ```
+
 5. Voer het *bash_profile* bestand uit:
-   
-        $ source .bash_profile
+
+    ```console
+    $ source .bash_profile
+    ```
+
 6. Valideer uw installatie met behulp van de volgende opdracht:
-   
-        $ which psql
-   
+
+    ```console
+    $ which psql
+    ```
+
     Als uw installatie is voltooid, ziet u het volgende antwoord:
-   
-        /opt/pgsql/bin/psql
+
+    ```output
+    /opt/pgsql/bin/psql
+    ```
+
 7. U kunt ook de PostgreSQL-versie controleren:
-   
-        $ psql -V
+
+    ```sql
+    $ psql -V
+    ```
 
 8. Initialiseer de Data Base:
-   
-        $ initdb -D $PGDATA -E UTF8 --locale=C -U postgres -W
-   
+
+    ```console
+    $ initdb -D $PGDATA -E UTF8 --locale=C -U postgres -W
+    ```
+
     De volgende uitvoer wordt weer gegeven:
 
 ![image](./media/postgresql-install/no1.png)
@@ -125,29 +171,39 @@ Maak verbinding met de virtuele Linux-machine die u hebt gemaakt via PuTTy. Als 
 
 Voer de volgende opdrachten uit:
 
-    # cd /root/postgresql-9.3.5/contrib/start-scripts
+```console
+# cd /root/postgresql-9.3.5/contrib/start-scripts
 
-    # cp linux /etc/init.d/postgresql
+# cp linux /etc/init.d/postgresql
+```
 
 Wijzig twee variabelen in het/etc/init.d/postgresql-bestand. Het voor voegsel wordt ingesteld op het installatiepad van PostgreSQL: **/opt/pgsql**. PGDATA wordt ingesteld op het gegevenspad van PostgreSQL: **/opt/pgsql_data**.
 
-    # sed -i '32s#usr/local#opt#' /etc/init.d/postgresql
+```config
+# sed -i '32s#usr/local#opt#' /etc/init.d/postgresql
 
-    # sed -i '35s#usr/local/pgsql/data#opt/pgsql_data#' /etc/init.d/postgresql
+# sed -i '35s#usr/local/pgsql/data#opt/pgsql_data#' /etc/init.d/postgresql
+```
 
 ![image](./media/postgresql-install/no2.png)
 
 Wijzig het bestand om het uit te voeren:
 
-    # chmod +x /etc/init.d/postgresql
+```console
+# chmod +x /etc/init.d/postgresql
+```
 
 PostgreSQL starten:
 
-    # /etc/init.d/postgresql start
+```console
+# /etc/init.d/postgresql start
+```
 
 Controleer of het eind punt van PostgreSQL zich op:
 
-    # netstat -tunlp|grep 1999
+```console
+# netstat -tunlp|grep 1999
+```
 
 In dat geval moet de volgende uitvoer worden weergegeven:
 
@@ -156,22 +212,30 @@ In dat geval moet de volgende uitvoer worden weergegeven:
 ## <a name="connect-to-the-postgres-database"></a>Verbinding maken met de post gres-data base
 Opnieuw overschakelen naar de post gres-gebruiker:
 
-    # su - postgres
+```console
+# su - postgres
+```
 
 Een post gres-data base maken:
 
-    $ createdb events
+```console
+$ createdb events
+```
 
 Verbinding maken met de data base met gebeurtenissen die u zojuist hebt gemaakt:
 
-    $ psql -d events
+```console
+$ psql -d events
+```
 
 ## <a name="create-and-delete-a-postgres-table"></a>Een post gres-tabel maken en verwijderen
 Nu u verbinding hebt gemaakt met de data base, kunt u er tabellen in maken.
 
 Maak bijvoorbeeld een nieuwe voorbeeld tabel met post gres met behulp van de volgende opdracht:
 
-    CREATE TABLE potluck (name VARCHAR(20),    food VARCHAR(30),    confirmed CHAR(1), signup_date DATE);
+```sql
+CREATE TABLE potluck (name VARCHAR(20),    food VARCHAR(30),    confirmed CHAR(1), signup_date DATE);
+```
 
 U hebt nu een tabel met vier kolommen met de volgende kolom namen en beperkingen ingesteld:
 
@@ -191,7 +255,9 @@ U kunt ook de tabel structuur controleren met behulp van de volgende opdracht:
 ### <a name="add-data-to-a-table"></a>Gegevens toevoegen aan een tabel
 Voeg eerst gegevens in een rij in:
 
-    INSERT INTO potluck (name, food, confirmed, signup_date) VALUES('John', 'Casserole', 'Y', '2012-04-11');
+```sql
+INSERT INTO potluck (name, food, confirmed, signup_date) VALUES('John', 'Casserole', 'Y', '2012-04-11');
+```
 
 U hoort deze uitvoer te zien:
 
@@ -199,16 +265,20 @@ U hoort deze uitvoer te zien:
 
 U kunt ook een paar personen toevoegen aan de tabel. Hier volgen enkele opties, of u kunt uw eigen instellingen maken:
 
-    INSERT INTO potluck (name, food, confirmed, signup_date) VALUES('Sandy', 'Key Lime Tarts', 'N', '2012-04-14');
+```sql
+INSERT INTO potluck (name, food, confirmed, signup_date) VALUES('Sandy', 'Key Lime Tarts', 'N', '2012-04-14');
 
-    INSERT INTO potluck (name, food, confirmed, signup_date) VALUES ('Tom', 'BBQ','Y', '2012-04-18');
+INSERT INTO potluck (name, food, confirmed, signup_date) VALUES ('Tom', 'BBQ','Y', '2012-04-18');
 
-    INSERT INTO potluck (name, food, confirmed, signup_date) VALUES('Tina', 'Salad', 'Y', '2012-04-18');
+INSERT INTO potluck (name, food, confirmed, signup_date) VALUES('Tina', 'Salad', 'Y', '2012-04-18');
+```
 
 ### <a name="show-tables"></a>Tabellen weer geven
 Gebruik de volgende opdracht om een tabel weer te geven:
 
-    select * from potluck;
+```sql
+select * from potluck;
+```
 
 Dit is de uitvoer:
 
@@ -217,7 +287,9 @@ Dit is de uitvoer:
 ### <a name="delete-data-in-a-table"></a>Gegevens in een tabel verwijderen
 Gebruik de volgende opdracht om gegevens in een tabel te verwijderen:
 
-    delete from potluck where name=’John’;
+```sql
+delete from potluck where name=’John’;
+```
 
 Hiermee verwijdert u alle gegevens in de rij ' Johan '. Dit is de uitvoer:
 
@@ -226,9 +298,9 @@ Hiermee verwijdert u alle gegevens in de rij ' Johan '. Dit is de uitvoer:
 ### <a name="update-data-in-a-table"></a>Gegevens in een tabel bijwerken
 Gebruik de volgende opdracht om gegevens in een tabel bij te werken. Voor deze versie heeft zand bevestigd dat ze deel nemen, dus zullen we de RSVP wijzigen van ' N ' in ' Y ':
 
-     UPDATE potluck set confirmed = 'Y' WHERE name = 'Sandy';
-
+```sql
+UPDATE potluck set confirmed = 'Y' WHERE name = 'Sandy';
+```
 
 ## <a name="get-more-information-about-postgresql"></a>Meer informatie over PostgreSQL
 Nu u de installatie van PostgreSQL in een Azure Linux-VM hebt voltooid, kunt u deze gebruiken in Azure. Ga naar de [postgresql-website](https://www.postgresql.org/)voor meer informatie over postgresql.
-

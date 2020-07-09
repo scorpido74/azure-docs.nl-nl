@@ -1,18 +1,18 @@
 ---
 title: Go-to-Market-Services-uw commerciële Marketplace-voor delen, Azure Marketplace
 description: 'Go-to-Market-Services: micro soft-bronnen die uitgevers kunnen gebruiken, worden beschreven in deze sectie.'
-author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: article
 ms.date: 07/06/2020
-ms.author: dsindona
-ms.openlocfilehash: 7de2e36edbcd0b55facae89be477ac0d334dae49
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+author: keferna
+ms.author: keferna
+ms.openlocfilehash: c954e3c685a795942f78bdb19b59ca817252d26b
+ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
 ms.translationtype: MT
 ms.contentlocale: nl-NL
 ms.lasthandoff: 07/08/2020
-ms.locfileid: "86085681"
+ms.locfileid: "86135519"
 ---
 # <a name="your-commercial-marketplace-benefits"></a>Uw voor delen voor commerciële Marketplace
 
@@ -34,15 +34,15 @@ Voor Transact-partners, wanneer u uw gefactureerde verkoop via het Marketplace-p
 
 De minimale vereiste voor het publiceren op de winkel is een MPNID. deze voor delen zijn daarom beschikbaar voor alle partners, ongeacht de MPN-competentie status of het partner type. Elke partner is gemachtigd om hun bedrijf te laten groeien als een platform.
 
-U krijgt ondersteuning bij het goed keuren van de beschik bare bronnen en in de implementatie van de best practices, die u ook [op uw eigen](https://partner.microsoft.com/asset/collection/azure-marketplace-and-appsource-publisher-toolkit#/)manier kunt controleren.
+U krijgt ondersteuning bij het goed keuren van de beschik bare bronnen en in de implementatie van de best practices, die u ook zelf kunt [controleren](https://partner.microsoft.com/asset/collection/azure-marketplace-and-appsource-publisher-toolkit#/).
 
-Gedetailleerde beschrijvingen van alle programma voordelen vindt u in het [Marketplace-programma voor markt beloningen](https://aka.ms/marketplacerewards).
+Gedetailleerde beschrijvingen van alle programma voordelen vindt u in deze [Marketplace-programma presentatie](https://aka.ms/marketplacerewards).
 
-De stappen om aan de slag te gaan zijn eenvoudig:
+Het is eenvoudig om aan de slag te gaan:
 
 1. Publiceer een aanbieding in Microsoft AppSource of op Azure Marketplace.
-2. Ga naar het [dash board](https://partner.microsoft.com/dashboard/mpn/program/commercialmarketplace)van de partner centrum, open **commerciële Marketplace** in het menu links Navigator, selecteer **Marketplace-beloningen**en selecteer vervolgens het tabblad **voor delen van verkoop en marketing** om uw lijst met voor delen te bekijken.
-3. Als u het voor deel van verkoop en marketing wilt activeren, moet u eerst een bedrijfs marketing contact toewijzen. Deze contactpersoon ontvangt opvolgingscommunicatie over uw Marketplace-beloningen.
+2. Ga naar [Marketplace-beloningen](https://partner.microsoft.com/en-us/dashboard/mpn/program/commercialmarketplace) in partner centrum en selecteer **inschrijven in Marketplace-belonings programma**.
+3. Als u de voor delen van verkoop en marketing wilt activeren, moet u een contact persoon voor het bedrijf marketing toewijzen. Deze contactpersoon ontvangt opvolgingscommunicatie over uw Marketplace-beloningen.
 4. Als u uw marketing contactpersoongegevens wilt toevoegen of bijwerken, gaat u naar het tabblad voor delen van verkoop en marketing op de pagina Marketplace-beloningen en selecteert u vervolgens **toevoegen, bijwerken of wijzigen**.  Ga daarna als volgt te werk:
 
     1. Selecteer een gebruiker uit de lijst. Als de gebruiker die u wilt toewijzen, zich niet in de lijst bevindt, kunt u nieuwe gebruikers toevoegen in **account instellingen**.
@@ -56,7 +56,7 @@ De stappen om aan de slag te gaan zijn eenvoudig:
 2. Het gebruik van de voor delen van Azure sponsor wordt gedeeld via een e-mail wanneer u deze voor delen ontgrendelt.
 
 >[!NOTE]
->Als uw aanbieding al meer dan vier weken Live is en u geen bericht hebt ontvangen, controleert u of u de eigenaar bent van de betreffende aanbieding in het partner centrum. De communicatie en de volgende stappen moeten worden uitgevoerd. <br> <br> Als u de eigenaar niet kunt bepalen, of als de eigenaar uw bedrijf heeft verlaten, kan u een ondersteunings ticket genereren bij [Help en ondersteuning](https://aka.ms/marketplacepublishersupport).
+>Als uw aanbieding al meer dan vier weken Live is en u geen bericht hebt ontvangen, controleert u of u de eigenaar bent van de betreffende aanbieding in het partner centrum. De communicatie en de volgende stappen moeten worden uitgevoerd.<br><br>Als u de eigenaar niet kunt bepalen, of als de eigenaar uw bedrijf heeft verlaten, kan u een ondersteunings ticket genereren bij [Help en ondersteuning](https://aka.ms/marketplacepublishersupport).
 
 Het bereik van de activiteiten die voor u beschikbaar zijn, wordt uitgebreid naarmate u uw aanbiedingen in de Marketplace verg root. Alle vermeldingen ontvangen een basis niveau van optimalisatie aanbevelingen en promotie als onderdeel van een eigen e-mail van resources en aanbevolen procedures.
 
@@ -75,7 +75,7 @@ Gedetailleerde beschrijvingen voor al deze voor delen vindt u in het [Marketplac
 Wanneer u met uw transactable-aanbieding in azure Marketplace of Microsoft AppSource, kunt u toegang krijgen tot extra voor delen wanneer u uw gefactureerde verkoop transacties of stoelen die via de commerciële Marketplace worden verkocht, hebt uitgebreid. 
 
 >[!NOTE]
->De drempel voor de verkochte seat is alleen van toepassing op Microsoft 365-apps (SaaS-toepassingen met integraties met micro soft teams, Office, Outlook of share point) en de voor delen moeten worden voltooid op 30 juni 2020.
+>De drempel waarde voor verkochte seats is alleen van toepassing op Microsoft 365-apps (SaaS-toepassingen met integraties met micro soft teams, Office, Outlook of share point) en de voor delen moeten zijn voltooid op 30 juni 2020.
 
 Deze voor delen zijn ontworpen om u te ondersteunen in marketing-, verkoop-en technische activiteiten en helpt u bij het verkrijgen van meer bezoekers, het ontvangen van meer leads en het converteren van meer bedrijven.
 

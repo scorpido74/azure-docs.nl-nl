@@ -7,22 +7,27 @@ ms.author: baanders
 ms.date: 4/24/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 261b288154dddacf91f3cb3ba6dec99e3a3534cc
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 895e33a111fe5bb881d198ee4995b9534ca3d528
+ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84725797"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86135883"
 ---
-# <a name="create-custom-sdks-for-azure-digital-twins-with-autorest"></a>Aangepaste Sdk's voor Azure Digital Apparaatdubbels maken met auto rest
+# <a name="create-custom-sdks-for-azure-digital-twins-using-autorest"></a>Aangepaste Sdk's voor Azure Digital Apparaatdubbels maken met auto rest
 
 Op dit moment is de enige gepubliceerde gegevenslaag SDK voor interactie met de Azure Digital Apparaatdubbels Api's voor .NET (C#). Meer informatie over de .NET SDK en de Api's in het algemeen kunt u vinden in [de procedures: gebruik de Azure Digital Apparaatdubbels api's en sdk's](how-to-use-apis-sdks.md). Als u in een andere taal werkt, leert u in dit artikel hoe u uw eigen SDK kunt genereren in de taal van uw keuze, met behulp van auto rest.
 
-## <a name="set-up-the-sdk"></a>De SDK instellen
+## <a name="set-up-your-machine"></a>Uw machine instellen
 
 Als u een SDK wilt genereren, hebt u het volgende nodig:
 * Auto [rest](https://github.com/Azure/autorest), version 2.0.4413 (versie 3 wordt momenteel niet ondersteund)
 * [Node.js](https://nodejs.org) als een vereiste voor auto rest
-* Het [bestand met de Azure Digital Apparaatdubbels OpenAPI (Swagger)](https://github.com/Azure/azure-rest-api-specs/blob/master/specification/digitaltwins/resource-manager/Microsoft.DigitalTwins/preview/2020-03-01-preview/digitaltwins.json)
+* Het [Azure Digital Apparaatdubbels Swagger-bestand (OpenAPI)](https://github.com/Azure/azure-rest-api-specs/tree/master/specification/digitaltwins/resource-manager/Microsoft.DigitalTwins/preview/2020-03-01-preview) met de recht *digitaltwins.jsop*, en de bijbehorende map met voor beelden. Down load het Swagger-bestand en de bijbehorende map met voor beelden naar uw lokale computer.
+
+Zodra de computer is uitgerust met alles uit de bovenstaande lijst, kunt u auto rest gebruiken om de SDK te maken.
+
+## <a name="create-the-sdk-with-autorest"></a>De SDK maken met auto rest 
 
 Als Node.js is geïnstalleerd, kunt u deze opdracht uitvoeren om te controleren of u de juiste versie van auto rest hebt geïnstalleerd:
 ```cmd/sh
@@ -30,31 +35,33 @@ npm install -g autorest@2.0.4413
 ```
 
 Voer de volgende stappen uit om auto rest te gebruiken voor het Swagger-bestand van de Azure Digital Apparaatdubbels:
-1. Kopieer het Azure Digital Apparaatdubbels Swagger-bestand in een werkmap.
-2. Ga op een opdracht prompt naar de werkmap.
-3. Voer auto rest uit met de volgende opdracht.
+1. Kopieer het Azure Digital Apparaatdubbels Swagger-bestand en de bijbehorende map met voor beelden naar een werkmap.
+2. Gebruik een opdracht prompt venster om over te scha kelen naar die werkmap.
+3. Voer auto rest uit met de volgende opdracht. Vervang de `<language>` tijdelijke aanduiding door de taal van uw keuze: `--python` , `--java` , `--go` , enzovoort (u vindt de volledige lijst met opties in het [Leesmij-bestand](https://github.com/Azure/autorest)voor auto rest.)
 
 ```cmd/sh
-autorest --input-file=adtApiSwagger.json --csharp --output-folder=ADTApi --add-credentials --azure-arm --namespace=ADTApi
+autorest --input-file=adtApiSwagger.json --<language> --output-folder=ADTApi --add-credentials --azure-arm --namespace=ADTApi
 ```
 
-Als gevolg hiervan ziet u een nieuwe map met de naam *ADTApi* in uw werkmap. De gegenereerde SDK-bestanden hebben de naam ruimte *ADTApi*, die u kunt blijven gebruiken via de rest van de voor beelden.
+Als gevolg hiervan ziet u een nieuwe map met de naam *ADTApi* in uw werkmap. De gegenereerde SDK-bestanden hebben de naam ruimte *ADTApi*, die u kunt blijven gebruiken via de rest van de gebruiks voorbeelden in dit artikel.
 
 Auto rest ondersteunt een breed scala aan taal code generators.
 
 ## <a name="add-the-sdk-to-a-visual-studio-project"></a>De SDK toevoegen aan een Visual Studio-project
 
-U kunt de bestanden die worden gegenereerd door autorest rechtstreeks toevoegen aan een .NET-oplossing. Omdat u waarschijnlijk de Azure Digital Apparaatdubbels SDK in verschillende afzonderlijke projecten (uw client-apps, Azure Functions-apps enzovoort) nodig hebt, wordt u aangeraden een afzonderlijk project (een .NET-klassebibliotheek) te bouwen op basis van de gegenereerde bestanden. U kunt dit klassen bibliotheek project vervolgens toevoegen aan uw andere oplossingen als een project verwijzing.
+U kunt de bestanden die worden gegenereerd door autorest rechtstreeks toevoegen aan een .NET-oplossing. Omdat u waarschijnlijk de Azure Digital Apparaatdubbels SDK in verschillende afzonderlijke projecten (uw client-apps, Azure Functions-apps, enzovoort) nodig hebt, kan het handig zijn om een afzonderlijk project (een .NET-klassebibliotheek) te bouwen op basis van de gegenereerde bestanden. U kunt dit klassen bibliotheek project vervolgens in verschillende oplossingen insluiten als een project verwijzing.
 
-In deze sectie vindt u instructies voor het bouwen van de SDK als een klassen bibliotheek. Dit is een eigen project en kan in andere projecten worden opgenomen. Dit zijn de stappen:
+In deze sectie vindt u instructies voor het bouwen van de SDK als een klassen bibliotheek. Dit is een eigen project en kan in andere projecten worden opgenomen. Deze stappen zijn afhankelijk van **Visual Studio** (u kunt de nieuwste versie [hier](https://visualstudio.microsoft.com/downloads/)installeren).
+
+Dit zijn de stappen:
 
 1. Een nieuwe Visual Studio-oplossing maken voor een klassen bibliotheek
-2. De naam "ADTApi" gebruiken als de project naam
+2. *ADTApi* gebruiken als de project naam
 3. Klik in Solution Explorer met de rechter muisknop op het *ADTApi* -project van de gegenereerde oplossing en kies *> bestaand item toevoegen...*
 4. Zoek de map waar u de SDK hebt gegenereerd en selecteer de bestanden op het hoofd niveau
 5. Klik op OK
 6. Voeg een map toe aan het project (Klik met de rechter muisknop op het project in Solution Explorer en kies *> nieuwe map toevoegen*)
-7. De map ' modellen ' een naam
+7. De mappen *modellen* een naam
 8. Klik met de rechter muisknop op de map *modellen* in Solutions Explorer en selecteer *> bestaand item toevoegen...*
 9. Selecteer de bestanden in de map *modellen* van de gegenereerde SDK en druk op OK
 

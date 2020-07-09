@@ -8,11 +8,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 04/14/2019
 ms.author: ramamill
-ms.openlocfilehash: ff01aed92669acb193ff149ea9298550134f42a3
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 095e837043e6322cf85aeaa732f5bcbf7c0fa098
+ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84699546"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86135379"
 ---
 # <a name="set-up-the-source-environment-for-vmware-to-azure-replication"></a>De bron omgeving instellen voor de replicatie van VMware naar Azure
 
@@ -36,7 +37,7 @@ In het artikel wordt ervan uitgegaan dat u al hebt:
 
 ## <a name="set-up-the-configuration-server"></a>De configuratie server instellen
 
-U kunt de configuratie server instellen als een on-premises virtuele VMware-machine via een eicellen-sjabloon (open Virtualization Application). Meer [informatie](concepts-vmware-to-azure-architecture.md) over de onderdelen die worden geïnstalleerd op de virtuele VMWare-machine.
+U kunt de configuratie server instellen als een on-premises virtuele VMware-machine via een eicellen-sjabloon (open Virtualization Application). Meer [informatie](./vmware-azure-architecture.md) over de onderdelen die worden geïnstalleerd op de virtuele VMWare-machine.
 
 1. Meer informatie over de [vereisten](vmware-azure-deploy-configuration-server.md#prerequisites) voor de implementatie van de configuratie server.
 2. [Controleer de capaciteits nummers](vmware-azure-deploy-configuration-server.md#sizing-and-capacity-requirements) voor de implementatie.

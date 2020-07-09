@@ -5,11 +5,12 @@ author: sideeksh
 manager: rochakm
 ms.topic: how-to
 ms.date: 11/27/2018
-ms.openlocfilehash: 0b32f00374aa8ce6c41415e28f319e3e7d5abddb
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: dfa3c108d00aeba9c7d42e96e7a40736a087a508
+ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "75941593"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86133811"
 ---
 # <a name="set-up-disaster-recovery-for-a-multitier-dynamics-ax-application"></a>Herstel na nood geval instellen voor een Dynamics AX-toepassing met meerdere lagen   
 
@@ -68,7 +69,7 @@ De klant beschikt over een groot aantal toepassingen en voert een Active Directo
 Zie [toepassingen repliceren met SQL Server en Azure site Recovery](site-recovery-sql.md)voor technische richt lijnen over de aanbevolen optie voor het beveiligen van de SQL-laag.
 
 ### <a name="3-enable-protection-for-the-dynamics-ax-client-and-application-object-server-vms"></a>3. Schakel de beveiliging voor de virtuele machines van de Dynamics AX-client en de Application object server in
-Voer relevante Site Recovery configuratie uit op basis van of de Vm's op [Hyper-V](site-recovery-hyper-v-site-to-azure.md) of [VMware](site-recovery-vmware-to-azure.md)zijn geïmplementeerd.
+Voer relevante Site Recovery configuratie uit op basis van of de Vm's op [Hyper-V](./hyper-v-azure-tutorial.md) of [VMware](./vmware-azure-tutorial.md)zijn geïmplementeerd.
 
 > [!TIP]
 > We raden u aan de crash-consistente frequentie in te stellen op 15 minuten.
@@ -175,7 +176,7 @@ Zie [toepassingen repliceren met SQL Server en Azure site Recovery](site-recover
 6. Selecteer **✓** om het failbackproces te starten.
 
 
-Zie voor meer informatie over het uitvoeren van een failback [failback VMware-vm's van Azure naar on-premises](site-recovery-failback-azure-to-vmware.md).
+Zie voor meer informatie over het uitvoeren van een failback [failback VMware-vm's van Azure naar on-premises](./vmware-azure-failback.md).
 
 ## <a name="summary"></a>Samenvatting
 U kunt met behulp van Site Recovery een volledig geautomatiseerd plan voor herstel na nood gevallen maken voor uw Dynamics AX-toepassing. In het geval van een onderbreking kunt u de failover binnen enkele seconden initiëren en de toepassing in een paar minuten actief maken en uitvoeren.

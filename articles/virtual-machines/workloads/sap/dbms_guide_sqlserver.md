@@ -15,12 +15,12 @@ ms.workload: infrastructure
 ms.date: 09/26/2018
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 011904d7ce14f346b678c753c10a8f3258730ee1
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: 9f41e1d8843783addf601becfda87607253e0a18
+ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84014516"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86135906"
 ---
 # <a name="sql-server-azure-virtual-machines-dbms-deployment-for-sap-netweaver"></a>SQL Server Azure Virtual Machines DBMS-implementatie voor SAP net-Weaver
 
@@ -448,7 +448,7 @@ Omdat de SQL Server-installatie kopieën in azure Marketplace niet zijn ingestel
 
 * Open een Windows-opdracht venster als Administrator.
 * Wijzig de Directory in C:\Program Files\Microsoft SQL Server\110\Setup Bootstrap\SQLServer2012.
-* Voer de volgende opdracht uit: Setup. exe/QUIET/ACTION = REBUILDDATABASE/INSTANCENAME = MSSQLserver/SQLSYSADMINACCOUNTS = `<local_admin_account_name` >/SQLCOLLATION = SQL_Latin1_General_Cp850_BIN2   
+* Voer de opdracht uit: Setup.exe/QUIET/ACTION = REBUILDDATABASE/INSTANCENAME = MSSQLserver/SQLSYSADMINACCOUNTS = `<local_admin_account_name`>/SQLCOLLATION = SQL_Latin1_General_Cp850_BIN2   
   * `<local_admin_account_name`> is het account dat is gedefinieerd als het beheerders account wanneer de virtuele machine voor het eerst via de galerie wordt geïmplementeerd.
 
 Het proces kan slechts enkele minuten duren. Voer de volgende stappen uit om te controleren of de stap met het juiste resultaat is beëindigd:
@@ -459,7 +459,9 @@ Het proces kan slechts enkele minuten duren. Voer de volgende stappen uit om te 
 
 Het gewenste resultaat moet er als volgt uitzien:
 
-    Latin1-General, binary code point comparison sort for Unicode Data, SQL Server Sort Order 40 on Code Page 850 for non-Unicode Data
+```output
+Latin1-General, binary code point comparison sort for Unicode Data, SQL Server Sort Order 40 on Code Page 850 for non-Unicode Data
+```
 
 Als het resultaat afwijkt, stopt u het implementeren van SAP en onderzoekt u waarom de installatie opdracht niet werkt zoals verwacht. De implementatie van SAP NetWeaver-toepassingen op SQL Server-exemplaar met verschillende SQL Server code tabellen die hierboven worden vermeld, wordt **niet** ondersteund.
 

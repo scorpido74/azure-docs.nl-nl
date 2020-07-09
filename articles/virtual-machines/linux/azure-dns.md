@@ -6,11 +6,12 @@ ms.service: virtual-machines-linux
 ms.topic: article
 ms.date: 10/19/2016
 ms.author: rclaus
-ms.openlocfilehash: 0910b31685aa408c319b40ea23782b11724b6237
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 1e53a6a5c024fe58eae00dcda785ff9622061654
+ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81641715"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86135322"
 ---
 # <a name="dns-name-resolution-options-for-linux-virtual-machines-in-azure"></a>Opties voor DNS-naam omzetting voor virtuele Linux-machines in azure
 Azure biedt standaard DNS-naam omzetting voor alle virtuele machines die zich in één virtueel netwerk bevinden. U kunt uw eigen DNS-oplossing voor naam omzetting implementeren door uw eigen DNS-services te configureren op de virtuele machines die door Azure worden gehost. De volgende scenario's kunnen u helpen bij het kiezen van het abonnement dat geschikt is voor uw situatie.
@@ -91,7 +92,9 @@ DNS is voornamelijk een UDP-protocol. Omdat het UDP-protocol geen aflevering van
 
 Als u de huidige instellingen op een virtuele Linux-machine wilt controleren, ' kat/etc/resolv.conf ', en Bekijk de regel ' opties ', bijvoorbeeld:
 
-    options timeout:1 attempts:5
+```config-conf
+options timeout:1 attempts:5
+```
 
 Het bestand ungenerate. conf wordt automatisch gegenereerd en mag niet worden bewerkt. De specifieke stappen voor het toevoegen van de regel ' opties ' variëren per distributie:
 

@@ -65,6 +65,10 @@
     - name: Richtlijnen voor vertraagde aanvragen
       displayName: 'pagination, batching, throttling, parallel'
       href: ./concepts/guidance-for-throttled-requests.md
+    - name: Beveiliging
+      items:
+        - name: Beveiligingsbasislijn voor Azure Security Benchmark
+          href: ./concepts/azure-security-benchmark-baseline.md
 - name: Instructiegidsen
   items:
     - name: Resourcewijzigingen ophalen

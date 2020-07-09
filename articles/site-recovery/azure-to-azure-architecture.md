@@ -8,11 +8,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 3/13/2020
 ms.author: raynew
-ms.openlocfilehash: d941f3e13e99accadc59c5836d88a824182329b9
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 5d0808b93d0c9c7b49d1fd394d2b776c008bc594
+ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84629697"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86135858"
 ---
 # <a name="azure-to-azure-disaster-recovery-architecture"></a>Architectuur voor herstel na noodgevallen van Azure naar Azure
 
@@ -166,11 +167,11 @@ HTTPS-uitgaand toestaan: poort 443 | Bereiken toestaan die overeenkomen met Azur
 
 #### <a name="control-access-with-nsg-rules"></a>Toegang beheren met NSG-regels
 
-Als u de connectiviteit van de virtuele machine beheert door netwerk verkeer van en naar Azure-netwerken/-subnetten te filteren met [NSG-regels](https://docs.microsoft.com/azure/virtual-network/security-overview), moet u rekening houden met de volgende vereisten:
+Als u de connectiviteit van de virtuele machine beheert door netwerk verkeer van en naar Azure-netwerken/-subnetten te filteren met [NSG-regels](../virtual-network/security-overview.md), moet u rekening houden met de volgende vereisten:
 
 - NSG-regels voor de Azure-bron regio moeten uitgaande toegang toestaan voor replicatie verkeer.
 - We raden u aan regels te maken in een test omgeving voordat u ze in productie neemt.
-- Gebruik [service Tags](https://docs.microsoft.com/azure/virtual-network/security-overview#service-tags) in plaats van afzonderlijke IP-adressen toe te staan.
+- Gebruik [service Tags](../virtual-network/security-overview.md#service-tags) in plaats van afzonderlijke IP-adressen toe te staan.
     - Service Tags vertegenwoordigen een groep IP-adres voorvoegsels die samen worden verzameld om de complexiteit bij het maken van beveiligings regels te minimaliseren.
     - Micro soft werkt automatisch service tags na verloop van tijd bij. 
  

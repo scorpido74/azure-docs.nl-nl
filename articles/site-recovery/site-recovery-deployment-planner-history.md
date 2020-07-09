@@ -8,11 +8,12 @@ ms.topic: article
 ms.service: site-recovery
 ms.date: 6/4/2020
 ms.author: dapatil
-ms.openlocfilehash: 74b02da51603366f5ec18aa4733117bc2c59faf7
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: feb4f6a24653aca8da825af90341c8016255e8b6
+ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84417851"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86133797"
 ---
 # <a name="azure-site-recovery-deployment-planner-version-history"></a>Geschiedenis van Azure Site Recovery Deployment Planner-versie
 
@@ -168,7 +169,7 @@ Meer informatie over [ondersteuning voor grote schijven in Azure Site Recovery](
 
 **Bekende beperkingen:**
 
-- Ondersteunt alleen scenario's voor VMware naar Azure voor herstel na nood gevallen. Gebruik het [hulp programma hyper-v capacity planner](./site-recovery-capacity-planning-for-hyper-v-replication.md)voor hyper-v naar Azure-scenario's voor herstel na nood gevallen.
+- Ondersteunt alleen scenario's voor VMware naar Azure voor herstel na nood gevallen. Gebruik het [hulp programma hyper-v capacity planner](./hyper-v-deployment-planner-overview.md)voor hyper-v naar Azure-scenario's voor herstel na nood gevallen.
 - Biedt geen ondersteuning voor de GetThroughput-bewerking voor de regio's Amerikaanse overheid en China Microsoft Azure.
 - Het hulp programma cann't het profiel Vm's als de vCenter-Server twee of meer virtuele machines met dezelfde naam of hetzelfde IP-adres op verschillende ESXi-hosts heeft.
 In deze versie slaat het hulpprogramma profilering over bij namen of IP-adressen van virtuele machines die dubbel voorkomen in het bestand dat is opgegeven voor VMListFile. Een tijdelijke oplossing is de virtuele machines te profileren met behulp van een ESXi-host in plaats van de vCenter-server. Zorg ervoor dat u één exemplaar voor elke ESXi-host uitvoert.

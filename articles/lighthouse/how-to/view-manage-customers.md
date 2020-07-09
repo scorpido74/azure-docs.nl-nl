@@ -3,22 +3,22 @@ title: Klanten en gedelegeerde resources weergeven en beheren
 description: Als service provider die gebruikmaakt van Azure Lighthouse, kunt u al uw gedelegeerte klant bronnen en abonnementen weer geven door naar mijn klanten te gaan in de Azure Portal.
 ms.date: 07/06/2020
 ms.topic: how-to
-ms.openlocfilehash: a850dc8cfe7667a75ced64ef0bd0afc352b20daa
-ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
+ms.openlocfilehash: f509a91d71caa3ab1ec8282f4151556f7c10d52c
+ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86026267"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86133275"
 ---
 # <a name="view-and-manage-customers-and-delegated-resources"></a>Klanten en gedelegeerde resources weergeven en beheren
 
-Service providers die Azure Lighthouse gebruiken, kunnen de pagina **mijn klanten** in het [Azure Portal](https://portal.azure.com) gebruiken om gedelegeerde klant resources en abonnementen weer te geven. Hoewel we hier naar service providers en klanten verwijzen, kunnen bedrijven die meerdere tenants beheren, hetzelfde proces gebruiken om hun beheer ervaring te consolideren.
+Service providers die [Azure Lighthouse](../overview.md) gebruiken, kunnen de pagina **mijn klanten** in het [Azure Portal](https://portal.azure.com) gebruiken om gedelegeerde klant resources en abonnementen weer te geven. Hoewel we hier naar service providers en klanten verwijzen, kunnen bedrijven die meerdere tenants beheren, hetzelfde proces gebruiken om hun beheer ervaring te consolideren.
 
 Als u toegang wilt krijgen tot de pagina **mijn klanten** in de Azure Portal, selecteert u **alle services**, zoekt u naar **mijn klanten** en selecteert u deze. U kunt deze ook vinden door ' mijn klanten ' in te voeren in het zoekvak boven aan de Azure Portal.
 
-Houd er rekening mee dat de meeste **klanten** sectie van de pagina **mijn klanten** alleen informatie weer geven over klanten die gedelegeerde abonnementen of resource groepen hebben. Als u met andere klanten werkt (zoals via het [Cloud Solution Provider-programma](/partner-center/csp-overview)), ziet u geen informatie over deze klanten in het gedeelte **klanten** , tenzij u de resources voor [Azure delegated resource management](../concepts/azure-delegated-resource-management.md)hebt voor bereid.
+Houd er rekening mee dat de meeste **klanten** sectie van de pagina **mijn klanten** alleen informatie weer geven over klanten die gedelegeerde abonnementen of resource groepen hebben. Als u met andere klanten werkt (zoals via het [Cloud Solution Provider-programma](/partner-center/csp-overview)), ziet u geen informatie over die klanten in het gedeelte **klanten** , tenzij u [de resources voor Azure Lighthouse hebt voor](onboard-customer.md)bereid.
 
-Lager op de pagina, een afzonderlijke sectie met de naam **Cloud Solution Provider (preview)** toont facturerings gegevens en resources voor uw CSP [-klanten die de micro soft-klant overeenkomst (MCA) hebben ondertekend](/partner-center/confirm-customer-agreement) en [onder het Azure-abonnement](/partner-center/azure-plan-get-started)vallen. Zie [aan de slag met uw micro soft-partner overeenkomst](../../billing/mpa-overview.md)voor meer informatie. Dergelijke CSP-klanten worden in deze sectie weer gegeven, ongeacht of u deze ook hebt opvolgd voor Azure delegated resource management. Op dezelfde manier hoeft een CSP-klant niet te worden weer gegeven in de sectie **Cloud Solution Provider (preview)** van **mijn klanten** , zodat u deze kunt uitbrengen voor het beheer van de gedelegeerde resources van Azure.
+Lager op de pagina, een afzonderlijke sectie met de naam **Cloud Solution Provider (preview)** toont facturerings gegevens en resources voor uw CSP [-klanten die de micro soft-klant overeenkomst (MCA) hebben ondertekend](/partner-center/confirm-customer-agreement) en [onder het Azure-abonnement](/partner-center/azure-plan-get-started)vallen. Zie [aan de slag met uw micro soft-partner overeenkomst](../../cost-management-billing/understand/mpa-overview.md)voor meer informatie. Dergelijke CSP-klanten worden in deze sectie weer gegeven, ongeacht of u deze ook hebt opvolgd voor Azure Lighthouse. Op dezelfde manier hoeft een CSP-klant niet te worden weer gegeven in de sectie **Cloud Solution Provider (preview)** van **mijn klanten** , zodat u deze kunt opheffen in azure Lighthouse.
 
 > [!NOTE]
 > Uw klanten kunnen informatie over service providers weer geven door te navigeren naar **service providers** in de Azure Portal. Zie [service providers weer geven en beheren](view-manage-service-providers.md)voor meer informatie.
@@ -52,7 +52,7 @@ De gebruikers en machtigingen die aan elke delegatie zijn gekoppeld, worden weer
 
 ### <a name="remove-delegations"></a>Delegaties verwijderen
 
-Als u gebruikers met de functie voor het verwijderen van de [registratie toewijzing van beheerde services](../../role-based-access-control/built-in-roles.md#managed-services-registration-assignment-delete-role) hebt toegevoegd tijdens het voorbereiden van een klant voor Azure delegated resource management, kunnen die gebruikers een overdracht verwijderen door het pictogram Prullenbak te selecteren dat in de rij voor die delegatie wordt weer gegeven. Als dit het geval is, kunnen gebruikers in de Tenant van de service provider geen toegang krijgen tot de resources die eerder zijn gedelegeerd.
+Als u gebruikers met de functie voor het verwijderen van de [registratie toewijzing van beheerde services](../../role-based-access-control/built-in-roles.md#managed-services-registration-assignment-delete-role) bij het onboarden van een klant hebt opgenomen in azure Lighthouse, kunnen deze gebruikers een overdracht verwijderen door het pictogram Prullenbak te selecteren dat wordt weer gegeven in de rij voor die delegering. Als dit het geval is, kunnen gebruikers in de Tenant van de service provider geen toegang krijgen tot de resources die eerder zijn gedelegeerd.
 
 ## <a name="work-in-the-context-of-a-delegated-subscription"></a>Werken in de context van een gedelegeerd abonnement
 

@@ -8,11 +8,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 02/25/2020
 ms.author: rajanaki
-ms.openlocfilehash: 208177d10e9002fafe2495710da229541a11a43e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 501cf161a22aaa1ec37abda2b750106b6eaf3dc4
+ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77661667"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86135212"
 ---
 # <a name="deprecation-of-disaster-recovery-between-customer-managed-sites-with-vmm-using-azure-site-recovery"></a>Afschaffing van herstel na nood gevallen tussen door de klant beheerde sites (met VMM) met behulp van Azure Site Recovery
 
@@ -38,7 +39,7 @@ Hieronder vindt u de alternatieven die de klant kan kiezen om ervoor te zorgen d
 - Optie 1 (aanbevolen): Kies ervoor om [Azure te gaan gebruiken als het Dr-doel](hyper-v-vmm-azure-tutorial.md).
 
 
-- Optie 2: u kunt door gaan met site-naar-site-replicatie met behulp van de onderliggende [Hyper-V-replica oplossing](https://docs.microsoft.com/windows-server/virtualization/hyper-v/manage/set-up-hyper-v-replica), maar u kunt geen Dr-configuraties beheren met Azure site Recovery in de Azure Portal. 
+- Optie 2: u kunt door gaan met site-naar-site-replicatie met behulp van de onderliggende [Hyper-V-replica oplossing](/windows-server/virtualization/hyper-v/manage/set-up-hyper-v-replica), maar u kunt geen Dr-configuraties beheren met Azure site Recovery in de Azure Portal. 
 
 
 ## <a name="remediation-steps"></a>Herstelstappen

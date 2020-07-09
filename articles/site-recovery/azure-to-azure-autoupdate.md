@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 04/02/2020
 ms.author: rajanaki
-ms.openlocfilehash: b2f5faea3df695500ea245d1dc71cb96a84c3643
-ms.sourcegitcommit: 93462ccb4dd178ec81115f50455fbad2fa1d79ce
+ms.openlocfilehash: b57ce89979225015dc87bbfb17f9603897ef6d6b
+ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/06/2020
-ms.locfileid: "85985598"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86135845"
 ---
 # <a name="automatic-update-of-the-mobility-service-in-azure-to-azure-replication"></a>Automatische update van de Mobility-service in azure-naar-Azure-replicatie
 
@@ -90,7 +90,7 @@ Als u automatische updates niet kunt inschakelen, raadpleegt u de volgende veelv
 
 - **Fout**: u hebt geen machtigingen om een uitvoeren als-account voor Azure (Service-Principal) te maken en de rol Inzender toe te kennen aan de Service-Principal.
 
-  **Aanbevolen actie**: Zorg ervoor dat het aangemelde account is toegewezen als Inzender en probeer het opnieuw. Voor meer informatie over het toewijzen van machtigingen raadpleegt u de sectie vereiste machtigingen [: gebruik de portal om een Azure AD-toepassing en Service-Principal te maken die toegang hebben tot resources](/azure/azure-resource-manager/resource-group-create-service-principal-portal#required-permissions).
+  **Aanbevolen actie**: Zorg ervoor dat het aangemelde account is toegewezen als Inzender en probeer het opnieuw. Voor meer informatie over het toewijzen van machtigingen raadpleegt u de sectie vereiste machtigingen [: gebruik de portal om een Azure AD-toepassing en Service-Principal te maken die toegang hebben tot resources](../active-directory/develop/howto-create-service-principal-portal.md#permissions-required-for-registering-an-app).
 
   Als u de meeste problemen wilt verhelpen nadat u automatische updates hebt ingeschakeld, selecteert u **herstellen**. Als de knop herstellen niet beschikbaar is, raadpleegt u het fout bericht dat wordt weer gegeven in het deel venster instellingen voor het bijwerken van de extensie.
 
@@ -98,11 +98,11 @@ Als u automatische updates niet kunt inschakelen, raadpleegt u de volgende veelv
 
 - **Fout**: het run as-account heeft geen machtiging voor toegang tot de Recovery Services-resource.
 
-  **Aanbevolen actie**: Verwijder [het uitvoeren als-account en maak het vervolgens opnieuw](/azure/automation/automation-create-runas-account). Of zorg ervoor dat de Azure Active Directory toepassing van het Automation uitvoeren als-account toegang heeft tot de Recovery Services-resource.
+  **Aanbevolen actie**: Verwijder [het uitvoeren als-account en maak het vervolgens opnieuw](../automation/manage-runas-account.md). Of zorg ervoor dat de Azure Active Directory toepassing van het Automation uitvoeren als-account toegang heeft tot de Recovery Services-resource.
 
 - **Fout**: het run as-account is niet gevonden. Een van deze is verwijderd of niet gemaakt: Azure Active Directory toepassing, Service-Principal, rol, Automation-certificaat Asset, Automation-verbindings element, of de vinger afdruk is niet identiek aan het certificaat en de verbinding.
 
-  **Aanbevolen actie**: Verwijder [het uitvoeren als-account en maak het vervolgens opnieuw](/azure/automation/automation-create-runas-account).
+  **Aanbevolen actie**: Verwijder [het uitvoeren als-account en maak het vervolgens opnieuw](../automation/manage-runas-account.md).
 
 - **Fout**: het uitvoeren als-certificaat van Azure dat wordt gebruikt door het Automation-account is bijna verlopen.
 

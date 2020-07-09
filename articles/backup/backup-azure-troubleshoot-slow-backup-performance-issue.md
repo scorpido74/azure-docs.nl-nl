@@ -1,15 +1,14 @@
 ---
 title: Problemen met langzame back-ups van bestanden en mappen oplossen
 description: Biedt richt lijnen voor probleem oplossing waarmee u de oorzaak van Azure Backup prestatie problemen kunt vaststellen
-ms.reviewer: saurse
 ms.topic: troubleshooting
 ms.date: 07/05/2019
-ms.openlocfilehash: d65eca685748499f52a990c7ac588bf44cbbba31
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 07f596f0900fbd92391a383678ade99df30592f1
+ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85194022"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86135044"
 ---
 # <a name="troubleshoot-slow-backup-of-files-and-folders-in-azure-backup"></a>Problemen met langzame back-ups van bestanden en mappen in Azure Backup
 
@@ -50,13 +49,13 @@ Hier volgen enkele prestatie meter items en bereiken die nuttig kunnen zijn bij 
 
 | Prestatiemeteritem | Status |
 | --- | --- |
-| Logische schijf (fysieke schijf)--% inactief |* 100% niet-actief tot 50% inactief = in orde</br>* 49% niet actief tot 20% inactief = waarschuwing of monitor</br>* 19% niet-actief tot 0% inactief = kritiek of van specificatie |
-| Logische schijf (fysieke schijf)--% gem. Lees-of schrijf tijd schijf |* 0,001 MS tot 0,015 MS = in orde</br>* 0,015 MS tot 0,025 MS = waarschuwing of monitor</br>* 0,026 MS of meer = kritiek of van specificatie |
+| Logische schijf (fysieke schijf)--% inactief |<li> 100% niet-actief tot 50% inactief = in orde</br><li> 49% niet actief tot 20% inactief = waarschuwing of monitor</br><li> 19% niet-actief tot 0% actief = kritiek of van specificatie |
+| Logische schijf (fysieke schijf)--% gem. Lees-of schrijf tijd schijf |<li> 0,001 MS tot 0,015 MS = in orde</br><li> 0,015 MS tot 0,025 MS = waarschuwing of monitor</br><li> 0,026 MS of langer = kritiek of van specificatie |
 | Logische schijf (fysieke schijf)--huidige wachtrij lengte voor de schijf (voor alle exemplaren) |80 aanvragen langer dan 6 minuten |
-| Geheugen--groep niet-wisselbaar bytes |* Minder dan 60% van verbruikte groep = in orde<br>* 61% tot 80% van verbruikte pool = waarschuwing of monitor</br>* Groter dan 80% groep verbruikt = kritiek of van specificatie |
-| Geheugen--groeps wisselbaar bytes |* Minder dan 60% van verbruikte groep = in orde</br>* 61% tot 80% van verbruikte pool = waarschuwing of monitor</br>* Groter dan 80% groep verbruikt = kritiek of van specificatie |
-| Geheugen-beschik bare mega bytes |* 50% vrije geheugen beschikbaar of meer = in orde</br>* 25% vrije beschik bare geheugen = monitor</br>* 10% vrije beschik bare geheugen = waarschuwing</br>* Minder dan 100 MB of 5% van het beschik bare geheugen = kritiek of van specificatie |
-| Processor-- \% processor tijd (alle exemplaren) |* Minder dan 60% verbruikt = in orde</br>* 61% tot 90% verbruikt = monitor of waarschuwing</br>* 91% tot 100% verbruikt = kritiek |
+| Geheugen--groep niet-wisselbaar bytes |<li> Minder dan 60% van verbruikte groep = in orde<br><li> 61% tot 80% van verbruikte pool = waarschuwing of monitor</br><li> Groter dan 80% groep verbruikt = kritiek of van specificatie |
+| Geheugen--groeps wisselbaar bytes |<li> Minder dan 60% van verbruikte groep = in orde</br><li> 61% tot 80% van verbruikte pool = waarschuwing of monitor</br><li> Groter dan 80% groep verbruikt = kritiek of van specificatie |
+| Geheugen-beschik bare mega bytes |<li> 50% vrije geheugen beschikbaar of meer = in orde</br><li> 25% vrije beschik bare geheugen = monitor</br><li>10% vrije beschik bare geheugen = waarschuwing</br><li> Minder dan 100 MB of 5% vrije geheugen beschikbaar = kritiek of van specificatie |
+| Processor-- \% processor tijd (alle exemplaren) |<li> Minder dan 60% verbruikt = in orde</br><li> 61% tot 90% verbruikt = monitor of waarschuwing</br><li> 91% tot 100% verbruikt = kritiek |
 
 > [!NOTE]
 > Als u vaststelt dat de infra structuur de culprit is, raden wij u aan de schijven regel matig te defragmenteren voor betere prestaties.

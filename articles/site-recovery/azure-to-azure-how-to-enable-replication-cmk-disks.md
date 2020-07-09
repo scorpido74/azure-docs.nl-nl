@@ -7,11 +7,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 01/10/2020
 ms.author: mayg
-ms.openlocfilehash: 367f29237a3f2a634f209026df47b0cbd6ffc97c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 1e4dcd8847d7d79d816d80b453a37f58c45417fd
+ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "75897960"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86135744"
 ---
 # <a name="replicate-machines-with-customer-managed-keys-cmk-enabled-disks"></a>Computers repliceren met door de klant beheerde sleutels (CMK) ingeschakelde schijven
 
@@ -39,7 +40,7 @@ Voor dit voor beeld is de primaire Azure-regio Azië-oost en is de secundaire re
     - **Doel locatie**: de locatie waar de gegevens van de virtuele bron machine worden gerepliceerd. Site Recovery biedt een lijst met geschikte doel regio's op basis van de locatie van de geselecteerde machine. U wordt aangeraden dezelfde locatie te gebruiken als de locatie van de Recovery Services kluis.
     - **Doel abonnement**: het doel abonnement dat wordt gebruikt voor herstel na nood gevallen. Het doel abonnement is standaard hetzelfde als het bron abonnement.
     - **Doel resource groep**: de resource groep waarvan al uw gerepliceerde virtuele machines deel uitmaken. Site Recovery maakt standaard een nieuwe resource groep in de doel regio. De naam haalt het `asr` achtervoegsel op. Als er al een resource groep bestaat die is gemaakt door Azure Site Recovery, wordt deze opnieuw gebruikt. U kunt er ook voor kiezen om deze aan te passen, zoals wordt weer gegeven in de volgende sectie. De locatie van de doel resource groep kan een wille keurige Azure-regio zijn, behalve de regio waarin de virtuele bron machines worden gehost.
-    - **Virtueel netwerk van doel**: standaard maakt site Recovery een nieuw virtueel netwerk in de doel regio. De naam haalt het `asr` achtervoegsel op. Het wordt toegewezen aan uw bron netwerk en wordt gebruikt voor toekomstige beveiliging. [Meer informatie](site-recovery-network-mapping-azure-to-azure.md) over netwerk toewijzing.
+    - **Virtueel netwerk van doel**: standaard maakt site Recovery een nieuw virtueel netwerk in de doel regio. De naam haalt het `asr` achtervoegsel op. Het wordt toegewezen aan uw bron netwerk en wordt gebruikt voor toekomstige beveiliging. [Meer informatie](./azure-to-azure-network-mapping.md) over netwerk toewijzing.
     - **Doel opslag accounts (als uw bron-VM geen Managed disks gebruikt)**: standaard maakt site Recovery een nieuw doel opslag account door de mimicking van de bron-VM te configureren. Als er al een opslag account bestaat, wordt dit opnieuw gebruikt.
     - **Beheerde replica schijven (als uw bron-VM gebruikmaakt van beheerde schijven)**: site Recovery maakt nieuwe replica beheerde schijven in de doel regio om de beheerde schijven van de bron-VM van hetzelfde opslag type (Standard of Premium) te spie gelen als de beheerde schijven van de bron-VM.
     - **Cache opslag accounts**: voor site Recovery is een extra opslag account met de naam *cache opslag* in de bron regio vereist. Alle wijzigingen op de bron-Vm's worden bijgehouden en verzonden naar het cache-opslag account. Ze worden vervolgens gerepliceerd naar de doel locatie.
@@ -80,4 +81,3 @@ Volg deze stappen om de Site Recovery standaard doel instellingen te wijzigen.
 * Ik heb een nieuwe CMK-ingeschakelde schijf toegevoegd aan het gerepliceerde item. Hoe kan ik deze schijf repliceren met Azure Site Recovery?
 
     Het is niet mogelijk een nieuwe CMK-ingeschakelde schijf toe te voegen aan een bestaand gerepliceerd item. Schakel de replicatie uit en schakel de replicatie voor de virtuele machine opnieuw in.
-

@@ -13,11 +13,12 @@ ms.tgt_pltfrm: virtual-network
 ms.workload: infrastructure
 ms.date: 10/31/2018
 ms.author: genli
-ms.openlocfilehash: 0264ad93eb53e27d1dc76f2b20ad175a6ee2f8de
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: c8ffadb8d54db0c2a99dc12e45b5990155a0505e
+ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84688684"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86135058"
 ---
 # <a name="configure-reverse-lookup-zones-for-an-smtp-banner-check"></a>Zones voor reverse lookup configureren voor een SMTP-banner controle
 
@@ -37,10 +38,12 @@ Als u PTR-records in micro soft-zones in eigendom wilt configureren, gebruikt u 
 
 Wanneer u de PTR-records configureert, moet u ervoor zorgen dat het IP-adres en de omgekeerde FQDN eigendom zijn van het abonnement. Als u probeert een omgekeerde FQDN in te stellen die niet bij het abonnement hoort, wordt het volgende fout bericht weer gegeven:
 
-    Set-AzPublicIpAddress : ReverseFqdn mail.contoso.com that PublicIPAddress ip01 is trying to use does not belong to subscription <Subscription ID>. One of the following conditions need to be met to establish ownership:
-                        
-    1) ReverseFqdn komt overeen met de FQDN van een open bare IP-resource onder het abonnement;
-    2) ReverseFqdn wordt omgezet naar de FQDN (via de CName-record keten) van een open bare IP-resource onder het abonnement.
-    3) Het wordt omgezet in het IP-adres (via CName en een record keten) van een statische open bare IP-resource onder het abonnement.
+```output
+Set-AzPublicIpAddress : ReverseFqdn mail.contoso.com that PublicIPAddress ip01 is trying to use does not belong to subscription <Subscription ID>. One of the following conditions need to be met to establish ownership:
+                    
+1) ReverseFqdn matches fqdn of any public ip resource under the subscription;
+2) ReverseFqdn resolves to the fqdn (through CName records chain) of any public ip resource under the subscription;
+3) It resolves to the ip address (through CName and A records chain) of a static public ip resource under the subscription.
+```
 
 Als u uw SMTP-banner hand matig wijzigt zodat deze overeenkomt met onze standaard omgekeerde FQDN, kan de externe e-mail server nog steeds mislukken omdat de host van de SMTP-banner mogelijk overeenkomt met de MX-record voor het domein.

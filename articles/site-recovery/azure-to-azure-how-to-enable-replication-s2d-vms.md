@@ -5,11 +5,12 @@ author: sideeksh
 manager: rochakm
 ms.topic: how-to
 ms.date: 01/29/2019
-ms.openlocfilehash: 9f394fa8d618c97d74a47ff6e42a002f177cf7d9
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 0b4f18c32639ceb2084febe210a8cfd4c423a0cf
+ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "75973654"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86135750"
 ---
 # <a name="replicate-azure-vms-running-storage-spaces-direct-to-another-region"></a>Virtuele Azure-machines met Opslagruimten Direct repliceren naar een andere regio
 
@@ -19,7 +20,7 @@ In dit artikel wordt beschreven hoe u herstel na nood gevallen van Azure-Vm's me
 >Alleen crash-consistente herstel punten worden ondersteund voor opslag ruimten direct-clusters.
 >
 
-[Opslag ruimten direct (S2D)](https://docs.microsoft.com/windows-server/storage/storage-spaces/deploy-storage-spaces-direct) is software-gedefinieerde opslag, waarmee u [gast clusters](https://blogs.msdn.microsoft.com/clustering/2017/02/14/deploying-an-iaas-vm-guest-clusters-in-microsoft-azure) kunt maken in Azure.  Een gast cluster in Microsoft Azure is een failovercluster dat bestaat uit IaaS Vm's. Op die manier kunnen gehoste VM-workloads worden overgenomen door gast clusters, waardoor er een hogere Beschik baarheid van de beschikbaarheids voor toepassingen kan worden geboden dan met één virtuele machine in Azure. Het is handig in scenario's waarin een virtuele machine als host fungeert voor een essentiële toepassing, zoals SQL of scale-out Bestands server.
+[Opslag ruimten direct (S2D)](/windows-server/storage/storage-spaces/deploy-storage-spaces-direct) is software-gedefinieerde opslag, waarmee u [gast clusters](https://techcommunity.microsoft.com/t5/failover-clustering/bg-p/FailoverClustering) kunt maken in Azure.  Een gast cluster in Microsoft Azure is een failovercluster dat bestaat uit IaaS Vm's. Op die manier kunnen gehoste VM-workloads worden overgenomen door gast clusters, waardoor er een hogere Beschik baarheid van de beschikbaarheids voor toepassingen kan worden geboden dan met één virtuele machine in Azure. Het is handig in scenario's waarin een virtuele machine als host fungeert voor een essentiële toepassing, zoals SQL of scale-out Bestands server.
 
 ## <a name="disaster-recovery-with-storage-spaces-direct"></a>Herstel na nood geval met Storage Spaces direct
 
@@ -37,14 +38,14 @@ Onder diagram ziet u een Azure VM-failovercluster met twee knoop punten die gebr
 
 **Aandachtspunten voor herstel na nood gevallen**
 
-1. Wanneer u een Cloud- [Witness](https://docs.microsoft.com/windows-server/failover-clustering/deploy-cloud-witness#CloudWitnessSetUp) voor het cluster instelt, moet u de witness in het gebied voor herstel na nood gevallen blijven gebruiken.
-2. Als u een failover wilt uitvoeren voor de virtuele machines naar het subnet in de DR-regio die afwijkt van de bron regio, moet het cluster-IP-adres worden gewijzigd na de failover.  Als u het IP-adres van het cluster wilt wijzigen, moet u het script voor de Site Recovery [herstel plan gebruiken.](https://docs.microsoft.com/azure/site-recovery/site-recovery-runbook-automation)</br>
+1. Wanneer u een Cloud- [Witness](/windows-server/failover-clustering/deploy-cloud-witness#CloudWitnessSetUp) voor het cluster instelt, moet u de witness in het gebied voor herstel na nood gevallen blijven gebruiken.
+2. Als u een failover wilt uitvoeren voor de virtuele machines naar het subnet in de DR-regio die afwijkt van de bron regio, moet het cluster-IP-adres worden gewijzigd na de failover.  Als u het IP-adres van het cluster wilt wijzigen, moet u het script voor de Site Recovery [herstel plan gebruiken.](./site-recovery-runbook-automation.md)</br>
 [Voorbeeld script](https://github.com/krnese/azure-quickstart-templates/blob/master/asr-automation-recovery/scripts/ASR-Wordpress-ChangeMysqlConfig.ps1) voor het uitvoeren van de opdracht in de virtuele machine met behulp van aangepaste script extensie 
 
 ### <a name="enabling-site-recovery-for-s2d-cluster"></a>Site Recovery inschakelen voor S2D-cluster:
 
 1. Klik in de Recovery Services-kluis op "+ repliceren"
-1. Alle knoop punten in het cluster selecteren en deze deel uitmaken van een [consistentie groep met meerdere vm's](https://docs.microsoft.com/azure/site-recovery/azure-to-azure-common-questions#multi-vm-consistency)
+1. Alle knoop punten in het cluster selecteren en deze deel uitmaken van een [consistentie groep met meerdere vm's](./azure-to-azure-common-questions.md#multi-vm-consistency)
 1. Replicatie beleid met toepassings consistentie selecteren * (alleen ondersteuning voor crash consistentie is beschikbaar)
 1. De replicatie inschakelen
 
@@ -69,7 +70,7 @@ Voor een goede werking van uw toepassingen moet u mogelijk bepaalde bewerkingen 
 
 
 ### <a name="failover-of-the-virtual-machines"></a>Failover van de virtuele machines 
-De knoop punten van de virtuele machines moeten een failover uitvoeren met het Site Recovery [herstel plan](https://docs.microsoft.com/azure/site-recovery/site-recovery-create-recovery-plans) 
+De knoop punten van de virtuele machines moeten een failover uitvoeren met het Site Recovery [herstel plan](./site-recovery-create-recovery-plans.md) 
 
 ![storagespacesdirect-beveiliging](./media/azure-to-azure-how-to-enable-replication-s2d-vms/recoveryplan.PNG)
 
@@ -93,4 +94,4 @@ Zie [failover testen naar Azure in site Recovery](site-recovery-test-failover-to
 Zie [failover in site Recovery](site-recovery-failover.md)voor meer informatie.
 ## <a name="next-steps"></a>Volgende stappen
 
-Meer [informatie](https://docs.microsoft.com/azure/site-recovery/azure-to-azure-tutorial-failover-failback) over het uitvoeren van failback.
+Meer [informatie](./azure-to-azure-tutorial-failover-failback.md) over het uitvoeren van failback.

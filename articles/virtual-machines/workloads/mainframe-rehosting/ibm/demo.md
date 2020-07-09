@@ -12,11 +12,12 @@ ms.topic: conceptual
 ms.date: 02/22/2019
 tags: ''
 keywords: ''
-ms.openlocfilehash: 66f80c79219090c27da37dfc1d9149df5604961f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 83f7f16d8406744a10451e8d488b7719845c525d
+ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "68841386"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86135947"
 ---
 # <a name="set-up-an-application-developers-controlled-distribution-adcd-in-ibm-zdt-v1"></a>Een toepassings ontwikkelaars ADCD (Controlled Distribution) instellen in IBM zD&T v1
 
@@ -75,7 +76,7 @@ Nu u de pakket (en) hebt, moet u deze uploaden naar uw VM in Azure.
 
 4. Wanneer u bent aangemeld, maakt u een map voor het uploaden van de IBM-pakketten. Houd er rekening mee dat Linux hoofdletter gevoelig is. Deze demo gaat er bijvoorbeeld van uit dat de pakketten worden geüpload naar:
 
-        /home/MyUserID/ZDT/adcd/nov2017/volumes
+    `/home/MyUserID/ZDT/adcd/nov2017/volumes`
 
 5. Upload de bestanden met behulp van een SSH-client, zoals[WinSCP](https://winscp.net/eng/index.php). Aangezien SCP deel uitmaakt van SSH, wordt poort 22 gebruikt. Dit is wat SSH gebruikt. Als uw lokale computer niet Windows is, typt u de [SCP-opdracht](http://man7.org/linux/man-pages/man1/scp.1.html) in uw SSH-sessie.
 
@@ -88,8 +89,8 @@ Nu u de pakket (en) hebt, moet u deze uploaden naar uw VM in Azure.
 
 8. Wanneer de uploads zijn voltooid, gaat u naar de map volumes en decomprimeert u alle **gz** -volumes:
 
-    ```
-        gunzip \*.gz
+    ```console
+    gunzip \*.gz
     ```
     
 ![Bestanden Verkenner met gedecomprimeerde gz-volumes](media/01-gunzip.png)
@@ -99,9 +100,9 @@ Nu u de pakket (en) hebt, moet u deze uploaden naar uw VM in Azure.
 De volgende stap is het configureren van zD&T voor het gebruik van de geüploade pakket (en). Met het proces voor het opslaan van installatie kopieën in zD&T kunt u de installatie kopieën koppelen en gebruiken. U kunt SSH of FTP gebruiken.
 
 1. Start de **zDTServer**. Hiervoor moet u zich op het hoofd niveau bevindt. Voer de volgende twee opdrachten in de aangegeven volg orde in:
-    ```
-        sudo su -
-        /opt/ibm/zDT/bin/startServer
+    ```console
+    sudo su -
+    /opt/ibm/zDT/bin/startServer
     ```
 2. Noteer de URL-uitvoer van de opdracht en gebruik deze URL voor toegang tot de webserver. Dit ziet er ongeveer als volgt uit:
      > https://(uw VM-naam of IP-adres): 9443/ZDTMC/index.html

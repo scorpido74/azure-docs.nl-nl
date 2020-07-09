@@ -7,11 +7,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 03/13/2020
 ms.author: mayg
-ms.openlocfilehash: 70d84516e2d7a42b1c6a3714d9060bedf6535f58
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 71f4209b4af9c5bb5f171cf3c8e35b0fbc05fac9
+ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "79366293"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86134787"
 ---
 # <a name="about-the-azure-site-recovery-deployment-planner-for-vmware-to-azure"></a>Over de Azure Site Recovery Deployment Planner voor VMware naar Azure
 Dit artikel is de gebruikershandleiding voor de Azure Site Recovery Deployment Planner voor productie-installaties van het type VMware-naar-Azure.
@@ -119,7 +120,7 @@ Als u een eerdere versie van de Deployment Planner hebt, doe dan het volgende:
 
 ## <a name="version-history"></a>Versiegeschiedenis
 De meest recente versie van het hulp programma Site Recovery Deployment Planner is 2,5.
-Raadpleeg de pagina [Site Recovery Deployment Planner version history](https://docs.microsoft.com/azure/site-recovery/site-recovery-deployment-planner-history) (Versiegeschiedenis van de Site Recovery Deployment Planner) voor de oplossingen die zijn toegevoegd in elke update.
+Raadpleeg de pagina [Site Recovery Deployment Planner version history](./site-recovery-deployment-planner-history.md) (Versiegeschiedenis van de Site Recovery Deployment Planner) voor de oplossingen die zijn toegevoegd in elke update.
 
 ## <a name="next-steps"></a>Volgende stappen
 [Site Recovery Deployment Planner uitvoeren](site-recovery-vmware-deployment-planner-run.md)

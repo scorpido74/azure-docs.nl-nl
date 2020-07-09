@@ -7,11 +7,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 11/12/2019
 ms.author: raynew
-ms.openlocfilehash: 3e81e353d2912f56a932ce118a0424e45e758df7
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: fbd11c279708cd828693baab3f9f6df91515bc48
+ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "74133014"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86133897"
 ---
 # <a name="architecture---hyper-v-replication-to-a-secondary-site"></a>Architectuur-Hyper-V-replicatie naar een secundaire site
 
@@ -35,7 +36,7 @@ De volgende tabel en afbeelding bieden een weer gave op hoog niveau van de onder
 
 ## <a name="replication-process"></a>Replicatieproces
 
-1. Wanneer de initiële replicatie wordt geactiveerd, wordt een [Hyper-V VM](https://technet.microsoft.com/library/dd560637.aspx) -moment opname gemaakt.
+1. Wanneer de initiële replicatie wordt geactiveerd, wordt een [Hyper-V VM](/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/dd560637(v=ws.10)) -moment opname gemaakt.
 2. Virtuele harde schijven op de virtuele machine worden een voor een gerepliceerd naar de secundaire locatie.
 3. Als er wijzigingen in de schijf optreden terwijl de eerste replicatie wordt uitgevoerd, worden de wijzigingen door de Hyper-V replica Replication tracker bijgehouden als Hyper-V-replicatie Logboeken (. HRL). Deze logboek bestanden bevinden zich in dezelfde map als de schijven. Elke schijf heeft een bijbehorend. HRL-bestand dat wordt verzonden naar de secundaire locatie. De momentopname- en logboekbestanden nemen schijfbronnen in beslag terwijl de eerste replicatie wordt uitgevoerd.
 4. Wanneer de initiële replicatie is voltooid, wordt de moment opname van de virtuele machine verwijderd en begint de replicatie van verschillen.

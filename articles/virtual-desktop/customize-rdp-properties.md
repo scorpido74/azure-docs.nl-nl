@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 06/19/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 9bc2116120f05db9cad63cc945df0ea4367fc3a4
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 4cbfe03c48c6d971c140dc332c38a47bc9234173
+ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85207206"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86135109"
 ---
 # <a name="customize-remote-desktop-protocol-properties-for-a-host-pool"></a>Remote Desktop Protocol eigenschappen voor een hostgroep aanpassen
 
@@ -53,7 +53,7 @@ RDP-eigenschappen configureren in de Azure Portal:
 4. Selecteer op de pagina virtueel bureau blad van Windows de optie **hostgroepen** in het menu aan de linkerkant van het scherm.
 5. Selecteer **de naam van de hostgroep** die u wilt bijwerken.
 6. Selecteer **Eigenschappen** in het menu aan de linkerkant van het scherm.
-7. Ga op het tabblad **Eigenschappen** naar **RDP-instellingen** om het bewerken van de RDP-eigenschappen te starten. Eigenschappen moeten zich in een door komma's gescheiden indeling bevinden, zoals de Power shell-voor beelden.
+7. Ga op het tabblad **Eigenschappen** naar **RDP-instellingen** om het bewerken van de RDP-eigenschappen te starten. Eigenschappen moeten zich in een door punt komma's gescheiden indeling bevinden, zoals de Power shell-voor beelden.
 8. Wanneer u klaar bent, selecteert u **Opslaan** om uw wijzigingen op te slaan.
 
 In de volgende secties wordt uitgelegd hoe u aangepaste RDP-eigenschappen hand matig kunt bewerken in Power shell.

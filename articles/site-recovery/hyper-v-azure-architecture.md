@@ -7,11 +7,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 11/14/2019
 ms.author: raynew
-ms.openlocfilehash: 022d6edad1e907173dfde3481e60d2523be087a1
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: e0fd3a6bc62feeb3728fa88b4aad56c8713bce11
+ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "74082672"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86134932"
 ---
 # <a name="hyper-v-to-azure-disaster-recovery-architecture"></a>Architectuur van herstel na noodgevallen van Hyper-V naar Azure
 
@@ -66,14 +67,14 @@ De volgende tabel en afbeelding bieden een weer gave op hoog niveau van de onder
 ### <a name="enable-protection"></a>Beveiliging inschakelen
 
 1. Nadat u de beveiliging voor een Hyper-V-VM in Azure Portal of on-premises hebt ingeschakeld, start **Beveiliging inschakelen**.
-2. Met deze taak wordt gecontroleerd of de machine voldoet aan de vereisten. Hierna wordt [CreateReplicationRelationship](https://msdn.microsoft.com/library/hh850036.aspx) aangeroepen om replicatie in te stellen op basis van de instellingen die u hebt geconfigureerd.
-3. De taak start initiële replicatie door de methode [StartReplication](https://msdn.microsoft.com/library/hh850303.aspx) aan te roepen om een volledige VM-replicatie te initialiseren en de virtuele schijven van de virtuele machine naar Azure te versturen.
+2. Met deze taak wordt gecontroleerd of de machine voldoet aan de vereisten. Hierna wordt [CreateReplicationRelationship](/windows/win32/hyperv_v2/createreplicationrelationship-msvm-replicationservice) aangeroepen om replicatie in te stellen op basis van de instellingen die u hebt geconfigureerd.
+3. De taak start initiële replicatie door de methode [StartReplication](/windows/win32/hyperv_v2/startreplication-msvm-replicationservice) aan te roepen om een volledige VM-replicatie te initialiseren en de virtuele schijven van de virtuele machine naar Azure te versturen.
 4. U kunt de taak controleren op het tabblad **taken** .      ![Taken lijst ](media/hyper-v-azure-architecture/image1.png) ![ Inzoomen op beveiliging inschakelen](media/hyper-v-azure-architecture/image2.png)
 
 
 ### <a name="initial-data-replication"></a>Initiële gegevens replicatie
 
-1. Wanneer de initiële replicatie wordt geactiveerd, wordt een [Hyper-V VM](https://technet.microsoft.com/library/dd560637.aspx) -moment opname gemaakt.
+1. Wanneer de initiële replicatie wordt geactiveerd, wordt een [Hyper-V VM](/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/dd560637(v=ws.10)) -moment opname gemaakt.
 2. Virtuele harde schijven op de virtuele machine worden een voor een gerepliceerd tot ze allemaal zijn gekopieerd naar Azure. Dit kan enige tijd duren, afhankelijk van de grootte van de virtuele machine en de netwerk bandbreedte. [Meer informatie over het](https://support.microsoft.com/kb/3056159) verg Roten van de netwerk bandbreedte.
 3. Als er wijzigingen in de schijf optreden terwijl de eerste replicatie wordt uitgevoerd, worden de wijzigingen door de Hyper-V replica Replication tracker bijgehouden als Hyper-V-replicatie Logboeken (. HRL). Deze logboek bestanden bevinden zich in dezelfde map als de schijven. Elke schijf heeft een bijbehorend. HRL-bestand dat wordt verzonden naar de secundaire opslag. De momentopname- en logboekbestanden nemen schijfbronnen in beslag terwijl de eerste replicatie wordt uitgevoerd.
 4. Als de initiële replicatie is voltooid, wordt de VM-momentopname verwijderd.

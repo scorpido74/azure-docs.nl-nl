@@ -10,19 +10,19 @@ services: time-series-insights
 ms.topic: conceptual
 ms.date: 06/03/2020
 ms.custom: seodec18
-ms.openlocfilehash: d5a82aa3aca55622308cae5816c95df9766048da
-ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
+ms.openlocfilehash: baa132589f5242ab480c9caa55ca793e0652ad6e
+ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86049927"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86135014"
 ---
 # <a name="streaming-ingestion-throughput-limits"></a>Doorvoer limieten voor stroom inslikken
 
 Azure Time Series Insights beperkingen voor het volgen van gegevens stromen worden hieronder beschreven.
 
 > [!TIP]
-> [Plan uw voorbeeld omgeving](https://docs.microsoft.com/azure/time-series-insights/time-series-insights-update-plan#review-preview-limits) voor een uitgebreide lijst met alle preview-limieten. **TODO** Verwijder het woord ' preview ' zodra de artikel titel is bijgewerkt.
+> [Plan uw voorbeeld omgeving](https://docs.microsoft.com/azure/time-series-insights/time-series-insights-update-plan#review-preview-limits) voor een uitgebreide lijst met alle preview-limieten.
 
 ## <a name="per-environment-limitations"></a>Beperkingen per omgeving
 

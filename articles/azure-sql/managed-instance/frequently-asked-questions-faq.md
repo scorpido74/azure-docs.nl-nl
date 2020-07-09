@@ -12,12 +12,12 @@ author: jovanpop-msft
 ms.author: jovanpop
 ms.reviewer: sstein, carlrab
 ms.date: 03/17/2020
-ms.openlocfilehash: 9295c6e1daaad6346581b959a9b94a7ab74da44c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 88f92117dc07fc241ca714851956e386cd10d617
+ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84708855"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86135034"
 ---
 # <a name="azure-sql-managed-instance-frequently-asked-questions-faq"></a>Veelgestelde vragen over Azure SQL Managed instance (FAQ)
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -119,35 +119,104 @@ Als uw werk belasting uit veel kleine trans acties bestaat, kunt u overwegen om 
 
 De opslag grootte voor het SQL Managed instance is afhankelijk van de geselecteerde servicelaag (Algemeen of Bedrijfskritiek). Zie [kenmerken](../database/service-tiers-general-purpose-business-critical.md)van de servicelaag voor opslag beperkingen van deze service lagen.
 
-## <a name="backup-storage-cost"></a>Kosten voor back-upopslag 
-
-**Wordt de back-upopslag afgetrokken van mijn SQL Managed Instance Storage?**
-
-Nee, back-upopslag wordt niet afgetrokken van uw door SQL beheerde exemplaar opslag ruimte. De back-upopslag is onafhankelijk van de opslag ruimte van het exemplaar en is niet beperkt. Back-upopslag wordt beperkt door de tijds periode voor het bewaren van de back-up van uw exemplaar databases, te configureren van 7 tot 35 dagen. Zie [automatische back-ups](../database/automated-backups-overview.md)voor meer informatie.
-
-## <a name="track-billing"></a>Facturering bijhouden
-
-**Is er een manier om mijn facturerings kosten voor een SQL Managed instance bij te houden?**
-
-U kunt dit doen met behulp van de [Azure Cost Management-oplossing](/azure/cost-management/). Navigeer naar **abonnementen** in het [Azure Portal](https://portal.azure.com) en selecteer **kosten analyse**. 
-
-Gebruik de optie **geaccumuleerde kosten** en filter vervolgens op het **resource type** als `microsoft.sql/managedinstances` . 
   
-## <a name="inbound-nsg-rules"></a>Inkomende NSG-regels
+## <a name="networking-requirements"></a>Netwerk vereisten 
+
+**Wat zijn de huidige binnenkomende/uitgaande NSG-beperkingen op het subnet van het beheerde exemplaar?**
+
+De vereiste NSG-en UDR-regels worden [hier](connectivity-architecture-overview.md#mandatory-inbound-security-rules-with-service-aided-subnet-configuration)gedocumenteerd en automatisch ingesteld door de service.
+Houd er rekening mee dat deze regels alleen de voor waarden hebben die we nodig hebben om de service te onderhouden. Als u verbinding wilt maken met een beheerd exemplaar en andere functies wilt gebruiken, moet u aanvullende, specifieke regels voor de functie opgeven die u wilt behouden.
 
 **Hoe kan ik binnenkomende NSG-regels instellen voor beheer poorten?**
 
-Het besturings vlak SQL Managed instance beheert onderhoudt NSG regels voor het beveiligen van beheer poorten.
+SQL Managed instance is verantwoordelijk voor het instellen van regels voor beheer poorten. Dit wordt bereikt via de functionaliteit met de naam [service-aided subnet-configuratie](connectivity-architecture-overview.md#service-aided-subnet-configuration).
+Dit is om te zorgen voor een ononderbroken stroom van beheer verkeer om te voldoen aan een SLA.
 
-Hier ziet u welke beheer poorten worden gebruikt voor:
+**Kan ik de bron-IP-adresbereiken ophalen die worden gebruikt voor het inkomende beheer verkeer?**
 
-De poorten 9000 en 9003 worden gebruikt door de Azure Service Fabric-infra structuur. De Service Fabric primaire rol is om het virtuele cluster in orde te stellen en de doel status in termen van het aantal onderdeel replica's te blijven gebruiken.
+Ja. U kunt het verkeer dat afkomstig is van uw netwerk beveiligings groep analyseren door [Network Watcher flow logboeken te configureren](https://docs.microsoft.com/azure/network-watcher/network-watcher-monitoring-overview#analyze-traffic-to-or-from-a-network-security-group).
 
-Poorten 1438, 1440 en 1452 worden gebruikt door de knooppunt agent. De knooppunt agent is een toepassing die in het cluster wordt uitgevoerd en die wordt gebruikt door het besturings vlak om beheer opdrachten uit te voeren.
+**Kan ik NSG instellen om de toegang tot het gegevens eindpunt te beheren (poort 1433)?**
 
-Naast NSG-regels beschermt de ingebouwde firewall het exemplaar in de netwerklaag. Op de toepassingslaag wordt de communicatie beveiligd met de certificaten.
+Ja. Nadat een beheerd exemplaar is ingericht, kunt u NSG instellen die de toegang tot de poort 1433 beheren. Het is raadzaam het IP-bereik zo veel mogelijk te beperken.
 
-Zie de [ingebouwde firewall van Azure SQL Managed instance](management-endpoint-verify-built-in-firewall.md)voor meer informatie en voor informatie over het controleren van de ingebouwde firewall.
+**Kan ik de NVA of on-premises firewall zo instellen dat het uitgaande beheer verkeer wordt gefilterd op basis van FQDN-namen?**
+
+Nee. Dit kan om verschillende redenen niet worden ondersteund:
+-   Routerings verkeer dat antwoord geeft op inkomende beheer aanvragen, is asymmetrisch en kan niet worden gebruikt.
+-   Route ring van verkeer dat naar de opslag gaat, wordt beïnvloed door doorvoer beperkingen en latentie, zodat we de verwachte kwaliteit en beschik baarheid van de service niet kunnen leveren.
+-   Op basis van de ervaring zijn deze configuraties gevoelig en niet-ondersteund.
+
+**Kan ik de NVA of firewall instellen voor het uitgaande niet-beheer verkeer?**
+
+Ja. De eenvoudigste manier om dit te doen is door 0/0-regel toe te voegen aan een UDR die is gekoppeld aan het subnet van het beheerde exemplaar om verkeer door te sturen via NVA.
+ 
+**Hoeveel IP-adressen heb ik nodig voor een beheerd exemplaar?**
+
+Het subnet moet voldoende beschik bare [IP-adressen](connectivity-architecture-overview.md#network-requirements)hebben. Zie de [vereiste subnet grootte en het bereik voor een beheerd exemplaar bepalen](https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance-determine-size-vnet-subnet)om de VNet-subnet grootte voor het beheerde exemplaar van SQL te bepalen. 
+
+**Wat gebeurt er als er onvoldoende IP-adressen zijn voor het uitvoeren van een update bewerking voor een instantie?**
+
+Als er onvoldoende [IP-adressen](connectivity-architecture-overview.md#network-requirements) zijn in het subnet waar uw beheerde exemplaar is ingericht, moet u een nieuw subnet en een nieuw beheerd exemplaar maken. We raden ook aan dat het nieuwe subnet wordt gemaakt met meer IP-adressen die zijn toegewezen zodat toekomstige update bewerkingen voor komen dat er soort gelijke situaties zijn. Nadat het nieuwe exemplaar is ingericht, kunt u hand matig een back-up maken van gegevens en deze herstellen tussen de oude en nieuwe instanties of het [herstel punt in de tijd](point-in-time-restore.md?tabs=azure-powershell)van meerdere exemplaren uitvoeren.
+
+**Heb ik een leeg subnet nodig om een beheerd exemplaar te maken?**
+
+Nee. U kunt een leeg subnet of een subnet gebruiken dat al een beheerd exemplaar (en) bevat. 
+
+**Kan ik het adres bereik van het subnet wijzigen?**
+
+Niet als er beheerde exemplaren in zijn. Dit is een beperking van de Azure-netwerk infrastructuur. U mag alleen [extra adres ruimte toevoegen aan een leeg subnet](https://docs.microsoft.com/azure/virtual-network/virtual-network-manage-subnet#change-subnet-settings). 
+
+**Kan ik mijn beheerde exemplaar verplaatsen naar een ander subnet?**
+
+Nee. Dit is een huidig ontwerp beperking voor het beheerde exemplaar. U kunt echter een nieuw exemplaar in een ander subnet inrichten en hand matig back-ups maken en gegevens herstellen tussen het oude en het nieuwe exemplaar, of een [herstel punt voor meerdere tijdstippen](point-in-time-restore.md?tabs=azure-powershell)uitvoeren.
+
+**Heb ik een leeg virtueel netwerk nodig om een beheerd exemplaar te maken?**
+
+Dit is niet vereist. U kunt ofwel [een virtueel netwerk maken voor Azure SQL Managed instance](https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance-create-vnet-subnet) of [een bestaand virtueel netwerk configureren voor Azure SQL Managed instance](https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance-configure-vnet-subnet).
+
+**Kan ik een beheerd exemplaar met andere services in een subnet plaatsen?**
+
+Nee. Momenteel wordt het plaatsen van beheerde exemplaren in een subnet dat al andere bron typen bevat, niet ondersteund.
+
+## <a name="connectivity"></a>Connectiviteit 
+
+**Kan ik verbinding maken met mijn beheerde exemplaar met behulp van een IP-adres?**
+
+Nee, dit wordt niet ondersteund. De hostnaam van een beheerd exemplaar wordt toegewezen aan de load balancer vóór het virtuele cluster van het beheerde exemplaar. Als één virtueel cluster meerdere beheerde exemplaren kan hosten, kan er geen verbinding worden doorgestuurd naar het juiste beheerde exemplaar zonder de naam op te geven.
+Zie [connectiviteits architectuur voor virtuele clusters](connectivity-architecture-overview.md#virtual-cluster-connectivity-architecture)voor meer informatie over de architectuur van een virtueel cluster voor SQL-beheerde exemplaren.
+
+**Kan een beheerd exemplaar een statisch IP-adres hebben?**
+
+Dit wordt momenteel niet ondersteund.
+
+In zeldzame maar nood zakelijke situaties moet u mogelijk een online migratie van een beheerd exemplaar uitvoeren naar een nieuw virtueel cluster. Als dat nodig is, wordt deze migratie veroorzaakt door wijzigingen in onze technologie stack, die gericht is op het verbeteren van de beveiliging en betrouw baarheid van de service. Migreren naar een nieuw virtueel cluster resulteert in het wijzigen van het IP-adres dat is toegewezen aan de hostnaam van het beheerde exemplaar. De service Managed instance claimt geen ondersteuning voor statische IP-adressen en behoudt zich het recht voor om deze te wijzigen zonder kennisgeving als onderdeel van normale onderhouds cycli.
+
+Daarom raden wij u ten zeerste aan om te vertrouwen op Onveranderbaarheid van het IP-adres, omdat dit onnodig downtime kan veroorzaken.
+
+**Heeft een beheerd exemplaar een openbaar eind punt?**
+
+Ja. Het beheerde exemplaar heeft een openbaar eind punt dat standaard alleen wordt gebruikt voor Service beheer, maar een klant kan dit ook inschakelen voor toegang tot gegevens. Zie [SQL Managed instance gebruiken met open bare eind punten](https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance-public-endpoint-securely)voor meer informatie. Als u een openbaar eind punt wilt configureren, gaat u naar het [configureren van het open bare eind punt in SQL Managed instance](public-endpoint-configure.md)
+
+**Hoe beheert Managed instance de toegang tot het open bare eind punt?**
+
+Beheerd exemplaar beheert de toegang tot het open bare eind punt op het niveau van het netwerk en de toepassing.
+
+Beheer-en implementatie services maken verbinding met een beheerd exemplaar met behulp van een [beheer eindpunt](https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance-connectivity-architecture#management-endpoint) dat is toegewezen aan een externe Load Balancer. Verkeer wordt alleen gerouteerd naar de knoop punten als het wordt ontvangen op een vooraf gedefinieerde set poorten die alleen worden gebruikt door de beheer onderdelen van het beheerde exemplaar. Een ingebouwde firewall op de knoop punten is ingesteld om alleen verkeer vanaf micro soft IP-bereiken toe te staan. Certificaten verifiëren wederzijds alle communicatie tussen beheer onderdelen en het beheer vlak. Zie [connectiviteits architectuur voor SQL Managed instance](https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance-connectivity-architecture#virtual-cluster-connectivity-architecture)voor meer informatie.
+
+**Kan ik het open bare eind punt gebruiken om toegang te krijgen tot de gegevens in de data bases van het beheerde exemplaar?**
+
+Ja. De klant moet toegang tot open bare eindpunt gegevens inschakelen vanuit de [Azure Portal](public-endpoint-configure.md#enabling-public-endpoint-for-a-managed-instance-in-the-azure-portal)  /  [Power shell](public-endpoint-configure.md#enabling-public-endpoint-for-a-managed-instance-using-powershell) /arm en NSG configureren om de toegang tot de gegevens poort (poort nummer 3342) te vergren delen. Zie voor meer informatie het [configureren van een openbaar eind punt in Azure SQL Managed instance](public-endpoint-configure.md) en het [gebruik van Azure SQL Managed instance veilig met een openbaar eind punt](public-endpoint-overview.md). 
+
+**Kan ik een aangepaste poort opgeven voor SQL data endpoint (s)?**
+
+Nee, deze optie is niet beschikbaar.  Voor het eind punt van een persoonlijke gegevens gebruikt het beheerde exemplaar het standaard poort nummer 1433 en voor het open bare gegevens eindpunt. het beheerde exemplaar gebruikt standaard poort nummer 3342.
+
+**Wat is de aanbevolen manier om een verbinding te maken tussen beheerde instanties die in verschillende regio's zijn geplaatst?**
+
+De peering voor Express route-circuits is de beste manier om dat te doen. Dit kan niet worden gemengd met de cross-regio peering van het virtuele netwerk die niet wordt ondersteund vanwege een interne load balancer gerelateerde [beperking](https://docs.microsoft.com/azure/virtual-network/virtual-network-peering-overview).
+
+Als de peering voor Express route-Circuit niet mogelijk is, is de enige andere optie het maken van een site-naar-site-VPN-verbinding ([Azure Portal](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-howto-site-to-site-resource-manager-portal), [Power shell](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-create-site-to-site-rm-powershell), [Azure cli](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-howto-site-to-site-resource-manager-cli)).
 
 
 ## <a name="mitigate-data-exfiltration-risks"></a>Gegevens exfiltration Risico's beperken  
@@ -179,7 +248,11 @@ Case-study's voor SQL Managed instance:
 Als u een beter inzicht wilt krijgen in de voor delen, kosten en risico's die zijn gekoppeld aan het implementeren van Azure SQL Managed instance, is er ook een Forrester-studie: [de totale economische impact van Microsoft Azure SQL database Managed instance](https://azure.microsoft.com/resources/forrester-tei-sql-database-managed-instance).
 
 
-## <a name="dns-refresh"></a>DNS vernieuwen 
+## <a name="dns"></a>DNS
+
+**Kan ik een aangepaste DNS voor een SQL-beheerd exemplaar configureren?**
+
+Ja. Zie [How to configure a Custom DNS for Azure SQL Managed instance](https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance-custom-dns)(Engelstalig).
 
 **Kan ik DNS vernieuwen?**
 
@@ -192,20 +265,6 @@ De DNS-configuratie wordt uiteindelijk vernieuwd:
 
 U kunt dit probleem omzeilen door SQL Managed instance te downgradeen naar 4 vCores en deze later opnieuw bij te werken. Dit heeft een neven effect van het vernieuwen van de DNS-configuratie.
 
-
-## <a name="ip-address"></a>IP-adres
-
-**Kan ik verbinding maken met een SQL-beheerd exemplaar met behulp van een IP-adres?**
-
-Het is niet mogelijk om verbinding te maken met een SQL-beheerd exemplaar met behulp van een IP-adres. De hostnaam van het SQL Managed instance-exemplaar wordt toegewezen aan een load balancer vóór het virtuele cluster van het SQL-beheerde exemplaar. Als één virtueel cluster meerdere beheerde exemplaren kan hosten, kunnen er geen verbindingen worden doorgestuurd naar het juiste beheerde exemplaar zonder de naam expliciet op te geven.
-
-Zie [connectiviteits architectuur voor virtuele clusters](connectivity-architecture-overview.md#virtual-cluster-connectivity-architecture)voor meer informatie over de architectuur van een virtueel cluster voor SQL-beheerde exemplaren.
-
-**Kan SQL Managed instance een statisch IP-adres hebben?**
-
-In zeldzame maar nood zakelijke situaties moet u mogelijk een online migratie uitvoeren van een SQL-beheerd exemplaar naar een nieuw virtueel cluster. Als dat nodig is, wordt deze migratie veroorzaakt door wijzigingen in onze technologie stack, die gericht is op het verbeteren van de beveiliging en betrouw baarheid van de service. Migreren naar een nieuw virtueel cluster resulteert in het wijzigen van het IP-adres dat is toegewezen aan de hostnaam van het SQL Managed instance-exemplaar. De service SQL Managed instance claimt geen ondersteuning voor statische IP-adressen en behoudt zich het recht voor om deze te wijzigen zonder kennisgeving als onderdeel van normale onderhouds cycli.
-
-Daarom raden wij u ten zeerste aan om te vertrouwen op Onveranderbaarheid van het IP-adres, omdat dit onnodig downtime kan veroorzaken.
 
 ## <a name="change-time-zone"></a>Tijd zone wijzigen
 
@@ -236,11 +295,50 @@ Ja, u hoeft uw data base niet te ontsleutelen om deze te herstellen naar een SQL
 
 Zodra u de versleutelings beveiliging beschikbaar maakt voor een SQL-beheerd exemplaar, kunt u door gaan met de standaard procedure voor het herstellen van data bases.
 
-## <a name="migrate-from-sql-database"></a>Migreren vanaf SQL Database 
+## <a name="purchasing-models-and-benefits"></a>Modellen en voor delen kopen
 
-**Hoe kan ik migreren van Azure SQL Database naar een beheerd exemplaar van SQL?**
+**Welke inkoop modellen zijn er beschikbaar voor SQL Managed instance?**
 
-SQL Managed instance biedt dezelfde prestatie niveaus per reken-en opslag grootte als Azure SQL Database. Als u gegevens wilt consolideren voor één exemplaar of als u alleen een functie nodig hebt die uitsluitend wordt ondersteund in een SQL Managed instance, kunt u uw gegevens migreren met behulp van de functionaliteit voor exporteren/importeren (BACPAC).
+SQL Managed instance biedt [vCore-gebaseerd aankoop model](sql-managed-instance-paas-overview.md#vcore-based-purchasing-model).
+
+**Welke kosten voordelen zijn beschikbaar voor SQL Managed instance?**
+
+U kunt kosten besparen met de voor delen van Azure SQL op de volgende manieren:
+-   Maximaliseer bestaande investeringen in on-premises licenties en Bespaar tot 55 procent met [Azure Hybrid Benefit](https://docs.microsoft.com/azure/azure-sql/azure-hybrid-benefit?tabs=azure-powershell). 
+-   Leg een reserve ring toe voor reken resources en Bespaar tot 33 procent met een [gereserveerde instantie voordelen](https://docs.microsoft.com/azure/sql-database/sql-database-reserved-capacity). Combi neer dit met Azure Hybrid voordelen voor een besparing van Maxi maal 82 procent. 
+-   Bespaar tot 55 procent tegenover lijst prijzen met de [prijs voordelen van Azure dev/test](https://azure.microsoft.com/pricing/dev-test/) , die kortings tarieven bieden voor uw lopende ontwikkelings-en test werkbelastingen.
+
+**Wie komt in aanmerking voor het voor deel van een gereserveerde instantie?**
+
+Als u in aanmerking wilt komen voor een gereserveerde instantie, moet uw abonnements type een Enter prise Agreement zijn (nummer van de aanbieding: MS-AZR-0017P of MS-AZR-0148P) of een afzonderlijke overeenkomst met betalen per gebruik-prijs (aanbiedings nummers: MS-AZR-0003P of MS-AZR-0023P). Zie voor [delen van gereserveerde instanties](https://docs.microsoft.com/azure/sql-database/sql-database-reserved-capacity)voor meer informatie over reserve ringen. 
+
+**Is het mogelijk om reserve ringen te annuleren, te ruilen of terug te betalen?**
+
+U kunt reserve ringen annuleren, uitwisselen of terugbetalen met bepaalde beperkingen. Zie [Selfserviceopties voor inwisselen en retourneren van Azure-reserveringen](https://docs.microsoft.com/azure/cost-management-billing/reservations/exchange-and-refund-azure-reservations) voor meer informatie.
+
+## <a name="billing-for-managed-instance-and-backup-storage"></a>Facturering voor beheerd exemplaar en back-upopslag
+
+**Wat zijn de prijs opties voor SQL Managed instance?**
+
+Zie de [pagina met prijzen](https://azure.microsoft.com/pricing/details/azure-sql/sql-managed-instance/single/)als u de opties voor het Managed instance-exemplaar wilt verkennen.
+
+**Hoe kan ik de facturerings kosten voor mijn beheerde exemplaar volgen?**
+
+U kunt dit doen met behulp van de [Azure Cost Management-oplossing](https://docs.microsoft.com/azure/cost-management-billing/). Navigeer naar **abonnementen** in het [Azure Portal](https://portal.azure.com) en selecteer **kosten analyse**. 
+
+Gebruik de optie **geaccumuleerde kosten** en filter vervolgens op het **resource type** als `microsoft.sql/managedinstances` .
+
+**Hoeveel automatische back-ups worden kosten?**
+
+U krijgt de gelijke hoeveelheid beschik bare opslag ruimte voor back-ups als de gereserveerde opslag ruimte die is aangeschaft, ongeacht de Bewaar periode van de back-up. Als het verbruik van de back-upopslag binnen de toegewezen vrije back-upopslag ruimte ligt, zullen automatische back-ups op het beheerde exemplaar geen extra kosten voor u hebben, dus gratis zijn. Als u het gebruik van back-upopslag boven de beschik bare ruimte overschrijdt, worden de kosten van $0,20 tot $0,24 per GB/maand in Amerikaanse regio's, of raadpleegt u de pagina met prijzen voor meer informatie over uw regio. Zie [back-upopslag verbruik wordt uitgelegd](https://techcommunity.microsoft.com/t5/azure-sql-database/backup-storage-consumption-on-managed-instance-explained/ba-p/1390923)voor meer informatie.
+
+**Hoe kan ik de facturerings kosten voor mijn back-upopslags volgen?**
+
+U kunt de kosten voor back-upopslag bewaken via Azure Portal. Zie [kosten bewaken voor automatische back-ups](https://docs.microsoft.com/azure/azure-sql/database/automated-backups-overview?tabs=managed-instance#monitor-costs)voor instructies. 
+
+**Hoe kan ik mijn back-upopslagkosten op het beheerde exemplaar optimaliseren?**
+
+Zie [fijnafstelling van nauw keurigheid van SQL Managed instance](https://techcommunity.microsoft.com/t5/azure-sql-database/fine-tuning-backup-storage-costs-on-managed-instance/ba-p/1390935)voor meer informatie over het optimaliseren van de opslag kosten voor back-ups.
 
 ## <a name="password-policy"></a>Wachtwoord beleid 
 
@@ -279,3 +377,14 @@ ALTER LOGIN <login_name> WITH CHECK_EXPIRATION = OFF;
 ```
 
 (Vervang ' test ' door de gewenste aanmeldings naam en pas het beleid en de verval waarden aan)
+
+## <a name="azure-feedback-and-support"></a>Feedback en ondersteuning van Azure
+
+**Waar kan ik mijn ideeën voor verbeteringen van SQL Managed instance verlaten?**
+
+U kunt stemmen voor een nieuwe functie van een beheerd exemplaar of een nieuw idee voor verbetering nemen over stemmen op het [Feedback forum van SQL Managed instance](https://feedback.azure.com/forums/915676-sql-managed-instance). Op deze manier kunt u bijdragen aan de ontwikkeling van het product en ons helpen om onze mogelijke verbeteringen te bepalen.
+
+**Hoe kan ik een ondersteunings aanvraag voor Azure maken?**
+
+Zie [Azure-ondersteunings aanvraag maken](https://docs.microsoft.com/azure/azure-supportability/how-to-create-azure-support-request)voor meer informatie over het maken van een ondersteunings aanvraag voor Azure.
+

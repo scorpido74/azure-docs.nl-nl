@@ -8,11 +8,12 @@ services: site-recovery
 ms.topic: article
 ms.date: 11/14/2019
 ms.author: raynew
-ms.openlocfilehash: cabd3f7693c6b6b86bf0324bdafdfe1377d1ece8
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: c6f0f48df32db0beb9c0a57982d9bc87b26538d8
+ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84711881"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86135142"
 ---
 # <a name="support-matrix-for-disaster-recovery-of-vmware-vms-and-physical-servers-to-a-secondary-site"></a>Ondersteunings matrix voor nood herstel van virtuele VMware-machines en fysieke servers naar een secundaire site
 
@@ -130,5 +131,5 @@ De Mobility-service coördineert de replicatie tussen on-premises VMware-servers
 
 De [Gebruikers handleiding voor Inmage Scout](https://aka.ms/asr-scout-user-guide) downloaden
 
-- [Virtuele Hyper-V-machines in VMM-Clouds repliceren naar een secundaire site](tutorial-vmm-to-vmm.md)
-- [Virtuele VMware-machines en fysieke servers repliceren naar een secundaire site](tutorial-vmware-to-vmware.md)
+- [Virtuele Hyper-V-machines in VMM-Clouds repliceren naar een secundaire site](./hyper-v-vmm-disaster-recovery.md)
+- [Virtuele VMware-machines en fysieke servers repliceren naar een secundaire site](./vmware-physical-secondary-disaster-recovery.md)

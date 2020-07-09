@@ -5,11 +5,12 @@ author: sideeksh
 manager: rochakm
 ms.date: 04/29/2019
 ms.topic: conceptual
-ms.openlocfilehash: b4b92b907d9cd6d469163bc7bf457da42e9b673c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 22848d84896989b1872c55e687c4a5e73da31de8
+ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84299779"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86134044"
 ---
 # <a name="common-questions-azure-to-azure-disaster-recovery"></a>Veelgestelde vragen: nood herstel voor Azure naar Azure
 
@@ -88,7 +89,7 @@ Site Recovery biedt geen ondersteuning voor ' hot remove ' van een schijf van ee
 
 ### <a name="how-often-can-i-replicate-to-azure"></a>Hoe vaak kan ik repliceren naar Azure?
 
-Replicatie is doorlopend wanneer u virtuele Azure-machines naar een andere Azure-regio repliceert. Zie de [Azure-to-Azure-replicatie architectuur](https://docs.microsoft.com/azure/site-recovery/azure-to-azure-architecture#replication-process)voor meer informatie.
+Replicatie is doorlopend wanneer u virtuele Azure-machines naar een andere Azure-regio repliceert. Zie de [Azure-to-Azure-replicatie architectuur](./azure-to-azure-architecture.md#replication-process)voor meer informatie.
 
 ### <a name="can-i-replicate-virtual-machines-within-a-region-i-need-this-functionality-to-migrate-vms"></a>Kan ik virtuele machines binnen een regio repliceren? Ik heb deze functionaliteit nodig om Vm's te migreren.
 
@@ -96,17 +97,17 @@ U kunt geen Azure-naar-Azure-oplossing voor schijf herstel gebruiken om Vm's bin
 
 ### <a name="can-i-replicate-vm-instances-to-any-azure-region"></a>Kan ik VM-exemplaren repliceren naar een Azure-regio?
 
-Met Site Recovery kunt u virtuele machines repliceren en herstellen tussen twee regio's binnen hetzelfde geografische cluster. Geografische clusters worden gedefinieerd met gegevens latentie en soevereiniteit. Zie de [ondersteunings matrix](https://docs.microsoft.com/azure/site-recovery/azure-to-azure-support-matrix#region-support)voor de site Recovery regio voor meer informatie.
+Met Site Recovery kunt u virtuele machines repliceren en herstellen tussen twee regio's binnen hetzelfde geografische cluster. Geografische clusters worden gedefinieerd met gegevens latentie en soevereiniteit. Zie de [ondersteunings matrix](./azure-to-azure-support-matrix.md#region-support)voor de site Recovery regio voor meer informatie.
 
 ### <a name="does-site-recovery-require-internet-connectivity"></a>Is Site Recovery Internet verbinding vereist?
 
-Nee, Site Recovery vereist geen Internet verbinding. Maar hiervoor is toegang tot Site Recovery-Url's en IP-adresbereiken vereist, zoals vermeld in [netwerken in azure VM nood herstel](https://docs.microsoft.com/azure/site-recovery/azure-to-azure-about-networking#outbound-connectivity-for-urls).
+Nee, Site Recovery vereist geen Internet verbinding. Maar hiervoor is toegang tot Site Recovery-Url's en IP-adresbereiken vereist, zoals vermeld in [netwerken in azure VM nood herstel](./azure-to-azure-about-networking.md#outbound-connectivity-for-urls).
 
 ### <a name="can-i-replicate-an-application-that-has-a-separate-resource-group-for-separate-tiers"></a>Kan ik een toepassing repliceren die een afzonderlijke resource groep voor afzonderlijke lagen heeft?
 
 Ja, u kunt de toepassing repliceren en de configuratie voor herstel na nood gevallen ook in een afzonderlijke resource groep laten staan.
 
-Als uw toepassing bijvoorbeeld de toepassing, de data base en het web van elke laag in een afzonderlijke resource groep bevat, moet u de [wizard replicatie](https://docs.microsoft.com/azure/site-recovery/azure-to-azure-how-to-enable-replication#enable-replication) drie keer selecteren om alle lagen te beveiligen. Site Recovery worden deze drie lagen gerepliceerd naar drie verschillende resource groepen.
+Als uw toepassing bijvoorbeeld de toepassing, de data base en het web van elke laag in een afzonderlijke resource groep bevat, moet u de [wizard replicatie](./azure-to-azure-how-to-enable-replication.md#enable-replication) drie keer selecteren om alle lagen te beveiligen. Site Recovery worden deze drie lagen gerepliceerd naar drie verschillende resource groepen.
 
 ### <a name="can-i-move-storage-accounts-across-resource-groups"></a>Kan ik opslag accounts verplaatsen over resource groepen?
 
@@ -121,7 +122,7 @@ Een replicatie beleid definieert de instellingen voor de Bewaar geschiedenis van
 - 24 uur voor de Bewaar geschiedenis van herstel punten.
 - 60 minuten voor de frequentie van app-consistente moment opnamen.
 
-Meer [informatie over replicatie-instellingen](https://docs.microsoft.com/azure/site-recovery/azure-to-azure-tutorial-enable-replication#configure-replication-settings).
+Meer [informatie over replicatie-instellingen](./azure-to-azure-tutorial-enable-replication.md#configure-replication-settings).
 
 ### <a name="what-is-a-crash-consistent-recovery-point"></a>Wat is een crash-consistent herstel punt?
 
@@ -182,7 +183,7 @@ Ja, als u de retentie periode van 24 uur tot 72 uur verhoogt, worden de herstel 
 
 ### <a name="can-i-enable-replication-with-app-consistency-in-linux-servers"></a>Kan ik replicatie inschakelen met app-consistentie in Linux-servers?
 
-Ja. Azure Site Recovery voor Linux-besturings systeem ondersteunt aangepaste scripts voor toepassingen voor app-consistentie. Het aangepaste script met de voor-en post opties wordt door de Azure Site Recovery Mobility agent gebruikt tijdens de app-consistentie. [Meer informatie](https://docs.microsoft.com/azure/site-recovery/site-recovery-faq#can-i-enable-replication-with-app-consistency-in-linux-servers)
+Ja. Azure Site Recovery voor Linux-besturings systeem ondersteunt aangepaste scripts voor toepassingen voor app-consistentie. Het aangepaste script met de voor-en post opties wordt door de Azure Site Recovery Mobility agent gebruikt tijdens de app-consistentie. [Meer informatie](./site-recovery-faq.md#can-i-enable-replication-with-app-consistency-in-linux-servers)
 
 ## <a name="multi-vm-consistency"></a>Multi-VM-consistentie
 
@@ -194,7 +195,7 @@ Site Recovery biedt een optie voor de **consistentie van meerdere vm's** , waarm
 
 Wanneer u een failover voor de virtuele machines maakt, hebben ze gedeelde crash-consistente en toepassings consistente herstel punten.
 
-Door loop de zelf studie om [multi-VM-consistentie in te scha kelen](https://docs.microsoft.com/azure/site-recovery/azure-to-azure-tutorial-enable-replication#enable-replication-for-a-vm).
+Door loop de zelf studie om [multi-VM-consistentie in te scha kelen](./azure-to-azure-tutorial-enable-replication.md#enable-replication-for-a-vm).
 
 ### <a name="can-i-fail-over-a-single-virtual-machine-within-a-multi-vm-consistency-replication-group"></a>Kan ik een failover uitvoeren voor één virtuele machine in een multi-VM-consistentie replicatie groep?
 
@@ -290,11 +291,11 @@ Ja, u kunt Azure Automation runbooks integreren in uw herstel plan. Meer informa
 
 ### <a name="i-failed-over-from-the-primary-region-to-a-disaster-recovery-region-are-vms-in-a-dr-region-protected-automatically"></a>Ik heb een failover van de primaire regio naar een nood herstel regio uitgevoerd. Worden Vm's in een DR-regio automatisch beveiligd?
 
-Nee. Wanneer u virtuele Azure-machines van de ene regio naar de andere doorwerkt, worden de Vm's in de DR-regio in een [niet](https://docs.microsoft.com/azure/site-recovery/azure-to-azure-tutorial-failover-failback) -beveiligde status opgestart. Als u een failback wilt uitvoeren voor de virtuele machines naar de primaire regio, moet u de virtuele machines in de secundaire regio opnieuw [beveiligen](https://docs.microsoft.com/azure/site-recovery/azure-to-azure-how-to-reprotect) .
+Nee. Wanneer u virtuele Azure-machines van de ene regio naar de andere doorwerkt, worden de Vm's in de DR-regio in een [niet](./azure-to-azure-tutorial-failover-failback.md) -beveiligde status opgestart. Als u een failback wilt uitvoeren voor de virtuele machines naar de primaire regio, moet u de virtuele machines in de secundaire regio opnieuw [beveiligen](./azure-to-azure-how-to-reprotect.md) .
 
 ### <a name="at-the-time-of-reprotection-does-site-recovery-replicate-complete-data-from-the-secondary-region-to-the-primary-region"></a>Wordt op het moment van de herbeveiliging de volledige gegevens van de secundaire regio naar de primaire regio Site Recovery gerepliceerd?
 
-Dit is afhankelijk van de situatie. Als er een VM van de bron regio bestaat, worden alleen de wijzigingen tussen de bron schijf en de doel schijf gesynchroniseerd. Site Recovery de verschillen berekent door de schijven te vergelijken en vervolgens de gegevens over te zetten. Dit proces duurt meestal enkele uren. Zie voor meer informatie over wat er gebeurt tijdens de herbeveiliging, voor [het opnieuw beveiligen van mislukte Azure VM-instanties naar de primaire regio](https://docs.microsoft.com/azure/site-recovery/azure-to-azure-how-to-reprotect#what-happens-during-reprotection).
+Dit is afhankelijk van de situatie. Als er een VM van de bron regio bestaat, worden alleen de wijzigingen tussen de bron schijf en de doel schijf gesynchroniseerd. Site Recovery de verschillen berekent door de schijven te vergelijken en vervolgens de gegevens over te zetten. Dit proces duurt meestal enkele uren. Zie voor meer informatie over wat er gebeurt tijdens de herbeveiliging, voor [het opnieuw beveiligen van mislukte Azure VM-instanties naar de primaire regio](./azure-to-azure-how-to-reprotect.md#what-happens-during-reprotection).
 
 ### <a name="how-much-time-does-it-take-to-fail-back"></a>Hoelang duurt het uitvoeren van een failback?
 
@@ -320,10 +321,10 @@ Site Recovery is ISO 27001:2013, 27018, HIPAA en DPA Certified. De service onder
 
 ### <a name="does-site-recovery-encrypt-replication"></a>Wordt replicatie met Site Recovery versleuteld?
 
-Ja, de versleuteling van door Voer en [versleuteling op rest in azure](https://docs.microsoft.com/azure/storage/storage-service-encryption) wordt ondersteund.
+Ja, de versleuteling van door Voer en [versleuteling op rest in azure](../storage/common/storage-service-encryption.md) wordt ondersteund.
 
 ## <a name="next-steps"></a>Volgende stappen
 
 - [Bekijk de vereisten voor Azure-naar-Azure-ondersteuning](azure-to-azure-support-matrix.md).
 - [Azure-naar-Azure-replicatie instellen](azure-to-azure-tutorial-enable-replication.md).
-- Als u vragen hebt na het lezen van dit artikel, plaatst u deze op de [pagina micro soft Q&een vraag voor Azure Recovery Services](https://docs.microsoft.com/answers/topics/azure-site-recovery.html).
+- Als u vragen hebt na het lezen van dit artikel, plaatst u deze op de [pagina micro soft Q&een vraag voor Azure Recovery Services](/answers/topics/azure-site-recovery.html).

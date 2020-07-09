@@ -8,11 +8,12 @@ ms.topic: article
 ms.author: mbaldwin
 ms.date: 03/15/2019
 ms.custom: seodec18
-ms.openlocfilehash: fe3040bee56507fe40ce748d3e9e51b06eaa0213
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 5afbeba4344073698e21675c3eca7e284841e99f
+ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85512897"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86135333"
 ---
 # <a name="creating-and-configuring-a-key-vault-for-azure-disk-encryption-with-azure-ad-previous-release"></a>Een sleutel kluis maken en configureren voor Azure Disk Encryption met Azure AD (vorige versie)
 
@@ -152,10 +153,10 @@ Uw Azure AD-toepassing heeft rechten nodig om toegang te krijgen tot de sleutels
 Gebruik [AZ sleutel kluis set-Policy](/cli/azure/keyvault#az-keyvault-set-policy) om het toegangs beleid in te stellen. Zie [Key Vault beheren met CLI 2,0](../../key-vault/general/manage-with-cli2.md#authorizing-an-application-to-use-a-key-or-secret)voor meer informatie.
 
 Geef de service-principal die u hebt gemaakt via de Azure CLI-toegang om geheimen en terugloop sleutels op te halen met de volgende opdracht:
- 
-     ```azurecli-interactive
-     az keyvault set-policy --name "MySecureVault" --spn "<spn created with CLI/the Azure AD ClientID>" --key-permissions wrapKey --secret-permissions set
-     ```
+
+```azurecli-interactive
+az keyvault set-policy --name "MySecureVault" --spn "<spn created with CLI/the Azure AD ClientID>" --key-permissions wrapKey --secret-permissions set
+```
 
 ### <a name="set-the-key-vault-access-policy-for-the-azure-ad-app-with-the-portal"></a><a name="bkmk_KVAPRM"></a>Het toegangs beleid voor de sleutel kluis instellen voor de Azure AD-app met de portal
 

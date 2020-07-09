@@ -10,16 +10,16 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 11/04/2019
 ms.author: weixu
-ms.openlocfilehash: b8b874888d3a46a855c3d76d520d390725c40898
-ms.sourcegitcommit: 4499035f03e7a8fb40f5cff616eb01753b986278
+ms.openlocfilehash: fc22dea201ccd19c4e7bee92a1092b4ff50117db
+ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/03/2020
-ms.locfileid: "82735399"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86134933"
 ---
 # <a name="real-time-conversation-transcription-preview"></a>Real-time conversatie transcriptie (preview-versie)
 
-Met de **ConversationTranscriber** -API van de Speech SDK kunt u vergaderingen en andere gesp rekken transcriberen met de mogelijkheid om meerdere deel nemers toe te voegen, te verwijderen en te `PullStream` identificeren `PushStream`door audio te streamen naar de spraak service met of. In dit onderwerp moet u weten hoe u spraak-naar-tekst kunt gebruiken met de Speech SDK (versie 1.8.0 of hoger). Zie [Wat zijn spraak Services](overview.md)? voor meer informatie.
+Met de **ConversationTranscriber** -API van de Speech SDK kunt u vergaderingen en andere gesp rekken transcriberen met de mogelijkheid om meerdere deel nemers toe te voegen, te verwijderen en te identificeren door audio te streamen naar de spraak service met `PullStream` of `PushStream` . In dit onderwerp moet u weten hoe u spraak-naar-tekst kunt gebruiken met de Speech SDK (versie 1.8.0 of hoger). Zie [Wat zijn spraak Services](overview.md)? voor meer informatie.
 
 ## <a name="limitations"></a>Beperkingen
 
@@ -108,12 +108,12 @@ De volgende voorbeeld code laat zien hoe u gesp rekken in realtime kunt vertrans
 
 Voor beelden van code-hooglichten zijn:
 
-- Een `Conversation` object maken op basis `SpeechConfig` van het object met behulp van een vergaderings-id die is gegenereerd met`Guid.NewGuid()`
-- Een `ConversationTranscriber` object maken en lid worden van het `JoinConversationAsync()` gesprek met om transcriptie te starten
+- Een `Conversation` object maken op basis van het `SpeechConfig` object met behulp van een vergaderings-id die is gegenereerd met`Guid.NewGuid()`
+- Een `ConversationTranscriber` object maken en lid worden van het gesprek met `JoinConversationAsync()` om transcriptie te starten
 - De gebeurtenissen van belang registreren
 - Deel nemers aan de conversatie toevoegen of verwijderen met behulp van het gespreks object
 - Audio streamen
-- In spraak-SDK-versie 1.9.0 en hoger `int` worden `string` zowel-als-waardetypen ondersteund in het veld versie van spraak handtekening.
+- In spraak-SDK-versie 1.9.0 en hoger `int` worden zowel-als- `string` waardetypen ondersteund in het veld versie van spraak handtekening.
 
 De transcriptie en de spreker-id worden weer gegeven in de geregistreerde gebeurtenissen.
 
@@ -140,7 +140,7 @@ public class MyConversationTranscriber
             using (var conversation = await Conversation.CreateConversationAsync(config, meetingId).ConfigureAwait(false))
             {
                 // Create a conversation transcriber using audio stream input
-                using (var conversationTranscriber = new ConversationTranscriber    (audioInput))
+                using (var conversationTranscriber = new ConversationTranscriber(audioInput))
                 {
                     await conversationTranscriber.JoinConversationAsync(conversation);
 

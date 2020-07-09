@@ -16,11 +16,12 @@ ms.workload: infrastructure-services
 ms.date: 02/04/2016
 ms.author: genli
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 22b60fc900886e76d66f66776adeed96334cdd3d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: c5ae587438e2cc3c583307c3d6b41ec986193216
+ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84696043"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86134751"
 ---
 # <a name="configure-private-ip-addresses-for-a-virtual-machine-classic-using-the-azure-portal"></a>Privé IP-adressen configureren voor een virtuele machine (klassiek) met behulp van de Azure Portal
 
@@ -68,7 +69,7 @@ Voer de volgende stappen uit om de gegevens van het statische privé-IP-adres te
 
 Onder **IP-adressen**selecteert u **dynamische** , rechts van de **toewijzing van IP-** adressen, selecteert u **Opslaan**en selecteert u vervolgens **Ja**, zoals wordt weer gegeven in de volgende afbeelding:
    
-    ![Create VM in Azure portal](./media/virtual-networks-static-ip-classic-pportal/figure07.png)
+![Een VM maken in Azure Portal](./media/virtual-networks-static-ip-classic-pportal/figure07.png)
 
 ## <a name="how-to-add-a-static-private-ip-address-to-an-existing-vm"></a>Een statisch privé-IP-adres toevoegen aan een bestaande virtuele machine
 

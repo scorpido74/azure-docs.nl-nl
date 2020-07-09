@@ -5,11 +5,12 @@ author: sideeksh
 manager: rochakm
 ms.topic: how-to
 ms.date: 02/18/2019
-ms.openlocfilehash: 7355233bb7241571e3f3820aafac6952af245654
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: a21460279420c46b11c43615ae5ecc7bfa81de4d
+ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "75973677"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86135800"
 ---
 # <a name="exclude-disks-from-powershell-replication-of-azure-vms"></a>Schijven uitsluiten van de Power shell-replicatie van virtuele Azure-machines
 
@@ -24,14 +25,14 @@ Voordat u begint:
 
 - Zorg ervoor dat u bekend bent met de [nood herstel architectuur en-onderdelen](azure-to-azure-architecture.md).
 - Raadpleeg de [ondersteuningsvereisten](azure-to-azure-support-matrix.md) voor alle onderdelen.
-- Zorg ervoor dat u de AzureRm-module AZ van Power shell hebt. Zie [de module Azure PowerShell installeren](https://docs.microsoft.com/powershell/azure/install-az-ps)om Power shell te installeren of bij te werken.
+- Zorg ervoor dat u de AzureRm-module AZ van Power shell hebt. Zie [de module Azure PowerShell installeren](/powershell/azure/install-az-ps)om Power shell te installeren of bij te werken.
 - Zorg ervoor dat u ten minste één keer een Recovery Services-kluis en beveiligde virtuele machines hebt gemaakt. Als u deze dingen nog niet hebt gedaan, volgt u het proces [voor het instellen van herstel na nood geval voor virtuele Azure-machines met behulp van Azure PowerShell](azure-to-azure-powershell.md).
 - [Lees dit artikel](azure-to-azure-enable-replication-added-disk.md)als u informatie zoekt over het toevoegen van schijven aan een Azure VM die is ingeschakeld voor replicatie.
 
 ## <a name="why-exclude-disks-from-replication"></a>Waarom schijven uitsluiten van replicatie
 Mogelijk moet u schijven uitsluiten van replicatie omdat:
 
-- De virtuele machine heeft [Azure site Recovery limieten bereikt voor het repliceren van gegevens wijzigings tarieven](https://docs.microsoft.com/azure/site-recovery/azure-to-azure-support-matrix).
+- De virtuele machine heeft [Azure site Recovery limieten bereikt voor het repliceren van gegevens wijzigings tarieven](./azure-to-azure-support-matrix.md).
 
 - De gegevens die op de uitgesloten schijf zijn achtergelaten, zijn niet belang rijk of hoeven niet te worden gerepliceerd.
 

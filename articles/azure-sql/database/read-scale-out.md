@@ -1,54 +1,58 @@
 ---
 title: Query's voor replica's lezen
-description: Azure SQL Database biedt de mogelijkheid om alleen-lezen-workloads te verdelen met behulp van de capaciteit van alleen-lezen replica's, die read scale-out wordt genoemd.
+description: Azure SQL biedt de mogelijkheid om de capaciteit van alleen-lezen replica's te gebruiken voor lees werkbelastingen, die read scale-out wordt genoemd.
 services: sql-database
-ms.service: sql-db-mi
-ms.subservice: high-availability
-titleSuffix: Azure SQL Database & SQL Managed Instance
+ms.service: sql-database
+ms.subservice: scale-out
 ms.custom: sqldbrb=1
 ms.devlang: ''
 ms.topic: conceptual
 author: anosov1960
 ms.author: sashan
 ms.reviewer: sstein, carlrab
-ms.date: 06/03/2019
-ms.openlocfilehash: a043eb5eed8f5554e42a113a3d7963be94da8a49
-ms.sourcegitcommit: 93462ccb4dd178ec81115f50455fbad2fa1d79ce
+ms.date: 06/26/2020
+ms.openlocfilehash: cf9f48b0907d3bfe1d07dcffcc0d0b9534f74c83
+ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/06/2020
-ms.locfileid: "85985564"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86135892"
 ---
-# <a name="use-read-only-replicas-to-load-balance-read-only-query-workloads"></a>Use read-only replicas to load-balance read-only query workloads (Alleen-lezen replica's gebruiken om de workloads van alleen-lezen query's te verdelen)
+# <a name="use-read-only-replicas-to-offload-read-only-query-workloads"></a>Alleen-lezen replica's gebruiken om werk belastingen met alleen-lezen query's te offloaden
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
 
-[!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
+Als onderdeel van een [architectuur met hoge Beschik baarheid](high-availability-sla.md#premium-and-business-critical-service-tier-availability)wordt elke Data Base en elk beheerd exemplaar in de service tier Premium en bedrijfskritiek automatisch ingericht met een primaire replica met het kenmerk alleen-lezen en alleen secundaire alleen-lezen replica's. De secundaire replica's worden ingericht met dezelfde reken grootte als de primaire replica. Met de functie voor het *lezen van scale-out* kunt u alleen-lezen workloads offloaden met behulp van de reken capaciteit van een van de alleen-lezen replica's, in plaats van deze op te starten in de replica lezen-schrijven. Op deze manier kunnen bepaalde alleen-lezen workloads worden geïsoleerd van de werk belastingen voor lezen en schrijven. Dit heeft geen invloed op de prestaties. De functie is bedoeld voor de toepassingen die logisch gescheiden alleen-lezen werk belastingen bevatten, zoals analyses. In de service lagen Premium en Bedrijfskritiek kunnen toepassingen prestatie voordelen krijgen met behulp van deze extra capaciteit zonder extra kosten.
 
-Als onderdeel van de [architectuur met hoge Beschik baarheid](high-availability-sla.md#premium-and-business-critical-service-tier-availability)wordt elke data base in de service lagen Premium en bedrijfskritiek automatisch ingericht met een primaire replica en verschillende secundaire replica's. De secundaire replica's worden ingericht met dezelfde reken grootte als de primaire replica. Met de functie *scale-out lezen* kunt u taken verdelen SQL database alleen-lezen workloads met de capaciteit van een van de alleen-lezen replica's in plaats van de replica lezen-schrijven te delen. Op deze manier wordt de alleen-lezen workload geïsoleerd van de belangrijkste workload voor lezen en schrijven. Dit heeft geen invloed op de prestaties. De functie is bedoeld voor de toepassingen die logisch gescheiden alleen-lezen werk belastingen bevatten, zoals analyses. In de service lagen Premium en Bedrijfskritiek kunnen toepassingen prestatie voordelen krijgen met behulp van deze extra capaciteit zonder extra kosten.
+De functie *scale-out lezen* is ook beschikbaar in de grootschalige, wanneer ten minste één secundaire replica is gemaakt. Meerdere secundaire replica's kunnen worden gebruikt voor werk belastingen met alleen-lezen taak verdeling waarvoor meer resources nodig zijn dan beschikbaar zijn op één secundaire replica.
 
-De functie scale-out lezen is ook beschikbaar in de grootschalige, wanneer ten minste één secundaire replica is gemaakt. Meerdere secundaire replica's kunnen worden gebruikt als alleen-lezen workloads meer bronnen nodig hebben dan beschikbaar zijn op één secundaire replica. De architectuur met hoge Beschik baarheid van de service lagen Basic, Standard en Algemeen bevat geen replica's. De functie scale-out lezen is niet beschikbaar in deze service lagen.
+De architectuur met hoge Beschik baarheid van de service lagen Basic, Standard en Algemeen bevat geen replica's. De functie *scale-out lezen* is niet beschikbaar in deze service lagen.
 
-Het volgende diagram illustreert het met behulp van een Bedrijfskritiek-data base.
+In het volgende diagram ziet u de functie.
 
 ![Alleen-lezen replica's](./media/read-scale-out/business-critical-service-tier-read-scale-out.png)
 
-De functie voor het lezen van scale-out is standaard ingeschakeld voor nieuwe Premium-, Bedrijfskritiek-en grootschalige-data bases. Voor grootschalige wordt standaard één secundaire replica gemaakt voor nieuwe data bases. Als uw SQL-connection string is geconfigureerd met `ApplicationIntent=ReadOnly` , wordt de toepassing omgeleid door de gateway naar een alleen-lezen replica van die data base. Zie voor meer informatie over het gebruik van de `ApplicationIntent` eigenschap [toepassings intentie opgeven](https://docs.microsoft.com/sql/relational-databases/native-client/features/sql-server-native-client-support-for-high-availability-disaster-recovery#specifying-application-intent).
-
-Als u er zeker van wilt zijn dat de toepassing verbinding maakt met de primaire replica, ongeacht de `ApplicationIntent` instelling in de SQL-Connection String, moet u het lezen van uitschalen expliciet uitschakelen bij het maken van de data base of bij het wijzigen van de configuratie. Als u bijvoorbeeld uw data base bijwerkt van de standaard-of Algemeen laag naar de Premium-, Bedrijfskritiek-of grootschalige-laag en u ervoor wilt zorgen dat alle verbindingen naar de primaire replica blijven, schakelt u lezen uitschalen uit. Zie voor meer informatie over het uitschakelen van de functie [uitschalen voor lezen in-en uitschakelen](#enable-and-disable-read-scale-out).
+De functie voor het *lezen van scale-out* is standaard ingeschakeld voor nieuwe Premium-, bedrijfskritiek-en grootschalige-data bases. Voor grootschalige wordt standaard één secundaire replica gemaakt voor nieuwe data bases. 
 
 > [!NOTE]
-> De functies query gegevens opslag, uitgebreide gebeurtenissen en SQL Profiler worden niet ondersteund voor de alleen-lezen replica's.
+> Uitschalen voor lezen is altijd ingeschakeld in de service tier Bedrijfskritiek van het beheerde exemplaar.
+
+Als uw SQL connection string is geconfigureerd met `ApplicationIntent=ReadOnly` , wordt de toepassing omgeleid naar een alleen-lezen replica van die data base of een beheerd exemplaar. Zie voor meer informatie over het gebruik van de `ApplicationIntent` eigenschap [toepassings intentie opgeven](https://docs.microsoft.com/sql/relational-databases/native-client/features/sql-server-native-client-support-for-high-availability-disaster-recovery#specifying-application-intent).
+
+Als u er zeker van wilt zijn dat de toepassing verbinding maakt met de primaire replica, ongeacht de `ApplicationIntent` instelling in de SQL-Connection String, moet u het lezen van uitschalen expliciet uitschakelen bij het maken van de data base of bij het wijzigen van de configuratie. Als u bijvoorbeeld een upgrade uitvoert van uw data base van Standard of Algemeen laag naar Premium, Bedrijfskritiek of grootschalige en wilt ervoor zorgen dat al uw verbindingen naar de primaire replica gaan, schakelt u lezen uitschalen uit. Zie voor meer informatie over het uitschakelen van de functie [uitschalen voor lezen in-en uitschakelen](#enable-and-disable-read-scale-out).
+
+> [!NOTE]
+> De functies query Store en SQL Profiler worden niet ondersteund voor alleen-lezen replica's. 
 
 ## <a name="data-consistency"></a>Gegevensconsistentie
 
-Een van de voor delen van replica's is dat de replica's altijd in de transactionele consistente status zijn, maar op verschillende tijdstippen kan er sprake zijn van een kleine latentie tussen verschillende replica's. Uitschaal baarheid lezen ondersteunt consistentie op sessie niveau. Als de alleen-lezen sessie opnieuw verbinding maakt nadat een verbindings fout is veroorzaakt doordat de replica niet beschikbaar is, kan deze worden omgeleid naar een replica die niet 100% up-to-date is met de replica lezen-schrijven. Als een toepassing gegevens schrijft met behulp van een lees-en schrijf sessie en deze onmiddellijk leest met behulp van een alleen-lezen sessie, is het mogelijk dat de meest recente updates niet direct zichtbaar zijn op de replica. De latentie wordt veroorzaakt door een bewerking voor opnieuw uitvoeren van een asynchroon transactie logboek.
+Een van de voor delen van replica's is dat de replica's altijd in de transactionele consistente status zijn, maar op verschillende tijdstippen kan er sprake zijn van een kleine latentie tussen verschillende replica's. Uitschaal baarheid lezen ondersteunt consistentie op sessie niveau. Als de alleen-lezen sessie opnieuw verbinding maakt nadat een verbindings fout is veroorzaakt doordat de replica niet beschikbaar is, kan deze worden omgeleid naar een replica die niet 100% up-to-date is met de replica met het kenmerk lezen-schrijven. Als een toepassing gegevens schrijft met behulp van een lees-en schrijf sessie en deze onmiddellijk leest met behulp van een alleen-lezen sessie, is het mogelijk dat de meest recente updates niet direct zichtbaar zijn op de replica. De latentie wordt veroorzaakt door een bewerking voor opnieuw uitvoeren van een asynchroon transactie logboek.
 
 > [!NOTE]
-> Replicatie latenties in de regio zijn laag en deze situatie is zeldzaam.
+> Replicatie latenties in de regio zijn laag en deze situatie is zeldzaam. Zie [controle en probleem oplossing alleen-lezen replica](#monitoring-and-troubleshooting-read-only-replicas)om replicatie latentie te controleren.
 
 ## <a name="connect-to-a-read-only-replica"></a>Verbinding maken met een alleen-lezen replica
 
-Wanneer u uitschalen voor een Data Base inschakelt, `ApplicationIntent` bepaalt de optie in de Connection String van de client of de verbinding wordt doorgestuurd naar de schrijf replica of naar een alleen-lezen replica. Met name als de `ApplicationIntent` waarde is `ReadWrite` (de standaard waarde), wordt de verbinding omgeleid naar de replica voor lezen/schrijven van de data base. Dit is identiek aan het bestaande gedrag. Als de `ApplicationIntent` waarde is `ReadOnly` , wordt de verbinding doorgestuurd naar een alleen-lezen replica.
+Wanneer u uitschalen voor een Data Base inschakelt, `ApplicationIntent` bepaalt de optie in de Connection String van de client of de verbinding wordt doorgestuurd naar de schrijf replica of naar een alleen-lezen replica. Met name als de `ApplicationIntent` waarde is `ReadWrite` (de standaard waarde), wordt de verbinding omgeleid naar de replica lezen-schrijven. Dit is identiek aan het gedrag wanneer `ApplicationIntent` niet is opgenomen in de Connection String. Als de `ApplicationIntent` waarde is `ReadOnly` , wordt de verbinding doorgestuurd naar een alleen-lezen replica.
 
 De volgende connection string de client bijvoorbeeld verbindt met een alleen-lezen replica (waarbij de items in de punt haken worden vervangen door de juiste waarden voor uw omgeving en de punt haken worden neergezet):
 
@@ -66,30 +70,70 @@ Server=tcp:<server>.database.windows.net;Database=<mydatabase>;User ID=<myLogin>
 
 ## <a name="verify-that-a-connection-is-to-a-read-only-replica"></a>Controleren of een verbinding een alleen-lezen replica is
 
-U kunt controleren of u verbonden bent met een alleen-lezen replica door de volgende query uit te voeren. Er wordt READ_ONLY geretourneerd wanneer u bent verbonden met een alleen-lezen replica.
+U kunt controleren of u verbonden bent met een alleen-lezen replica door de volgende query uit te voeren in de context van uw data base. Er wordt READ_ONLY geretourneerd wanneer u bent verbonden met een alleen-lezen replica.
 
 ```sql
-SELECT DATABASEPROPERTYEX(DB_NAME(), 'Updateability')
+SELECT DATABASEPROPERTYEX(DB_NAME(), 'Updateability');
 ```
 
 > [!NOTE]
-> Op elk gewenst moment is slechts één van de AlwaysOn-replica's toegankelijk via de alleen-lezen sessies.
+> In Premium-en Bedrijfskritiek-service lagen is slechts één van de alleen-lezen replica's toegankelijk op een bepaald moment. Grootschalige ondersteunt meerdere alleen-lezen replica's.
 
-## <a name="monitor-and-troubleshoot-a-read-only-replica"></a>Een alleen-lezen replica controleren en problemen oplossen
+## <a name="monitoring-and-troubleshooting-read-only-replicas"></a>Bewaken en problemen met alleen-lezen replica's oplossen
 
-Wanneer u bent verbonden met een alleen-lezen replica, hebt u toegang tot de prestatie gegevens met behulp van de `sys.dm_db_resource_stats` dmv. Gebruik de en dmv's om de statistieken van het query plan te openen `sys.dm_exec_query_stats` `sys.dm_exec_query_plan` `sys.dm_exec_sql_text` .
+Wanneer er verbinding wordt gemaakt met een alleen-lezen replica, zien dynamische beheer weergaven (Dmv's) de status van de replica en kunnen er query's worden uitgevoerd voor bewakings-en probleemoplossings doeleinden. De data base-engine biedt meerdere weer gaven om een groot aantal bewakings gegevens beschikbaar te maken. 
+
+Veelgebruikte weer gaven zijn:
+
+| Name | Functie |
+|:---|:---|
+|[sys. dm_db_resource_stats](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-db-resource-stats-azure-sql-database)| Voorziet in de metrische gegevens van het resource gebruik voor het afgelopen uur, inclusief CPU, data IO en logboek schrijf gebruik in verhouding tot service doelstelling limieten.|
+|[sys. dm_os_wait_stats](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-os-wait-stats-transact-sql)| Biedt geaggregeerde wacht statistieken voor het exemplaar van de data base-engine. |
+|[sys. dm_database_replica_states](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-database-replica-states-azure-sql-database)| Biedt status-en synchronisatie statistieken voor de replica. De grootte van de wachtrij opnieuw uitvoeren en het aantal opnieuw uitvoeren fungeert als indicator van de gegevens latentie op de alleen-lezen replica. |
+|[sys. dm_os_performance_counters](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-os-performance-counters-transact-sql)| Biedt prestatie meter items voor de data base-engine.|
+|[sys. dm_exec_query_stats](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-exec-query-stats-transact-sql)| Biedt uitvoerings statistieken per query, zoals het aantal uitvoeringen, de gebruikte CPU-tijd, enzovoort.|
+|[sys. dm_exec_query_plan ()](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-exec-query-plan-transact-sql)| Biedt query abonnementen in de cache. |
+|[sys. dm_exec_sql_text ()](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-exec-sql-text-transact-sql)| Geeft query tekst voor een query plan in de cache.|
+|[sys. dm_exec_query_profiles](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-exec-query-plan-stats-transact-sql)| Biedt real-time query voortgang terwijl query's worden uitgevoerd.|
+|[sys. dm_exec_query_plan_stats ()](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-exec-query-plan-stats-transact-sql)| Voorziet in het laatste bekende werkelijke uitvoerings plan, inclusief runtime statistieken voor een query.|
+|[sys. dm_io_virtual_file_stats ()](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-io-virtual-file-stats-transact-sql)| Biedt gegevens over de opslag-IOPS, door Voer en latentie voor alle database bestanden. |
 
 > [!NOTE]
-> De DMV `sys.resource_stats` in de logische hoofd database retourneert het CPU-gebruik en de opslag gegevens van de primaire replica.
+> De `sys.resource_stats` en `sys.elastic_pool_resource_stats` dmv's in de logische hoofd database retour neren gegevens over het resource gebruik van de primaire replica.
+
+### <a name="monitoring-read-only-replicas-with-extended-events"></a>Alleen-lezen replica's met uitgebreide gebeurtenissen bewaken
+
+Een Extended Event-sessie kan niet worden gemaakt wanneer deze is verbonden met een alleen-lezen replica. In Azure SQL Database worden echter de definities van [uitgebreide gebeurtenis](xevent-db-diff-from-svr.md) sessies met database bereik die op de primaire replica zijn gemaakt en gewijzigd, gerepliceerd naar alleen-lezen replica's, met inbegrip van geo-replica's, en gebeurtenissen vastleggen op alleen-lezen replica's.
+
+Een Extended Event-sessie op een alleen-lezen replica die is gebaseerd op een sessie definitie van de primaire replica kan worden gestart en onafhankelijk van de primaire replica worden gestopt. Wanneer een Extended Event-sessie wordt verwijderd voor de primaire replica, wordt deze ook verwijderd voor alle alleen-lezen replica's.
+
+### <a name="transaction-isolation-level-on-read-only-replicas"></a>Transactie isolatie niveau voor alleen-lezen replica's
+
+Query's die worden uitgevoerd op alleen-lezen replica's, worden altijd toegewezen aan het isolatie niveau van [snap shot](https://docs.microsoft.com/dotnet/framework/data/adonet/sql/snapshot-isolation-in-sql-server) -trans acties. Snap shot-isolatie maakt gebruik van rij-versie beheer om te voor komen dat de blok keringen van lezers worden geblokkeerd.
+
+In zeldzame gevallen kan het gebeuren dat als een snap shot-isolatie transactie object meta gegevens opent die in een andere gelijktijdige trans actie zijn gewijzigd, fout [3961](https://docs.microsoft.com/sql/relational-databases/errors-events/mssqlserver-3961-database-engine-error)wordt weer gegeven, de snap shot-isolatie transactie is mislukt in Data Base %1! omdat het object dat door de instructie wordt gebruikt, is gewijzigd door een DDL-instructie in een andere gelijktijdige trans actie sinds het begin van deze trans actie. Dit is niet toegestaan omdat versiebeheer niet is ingeschakeld voor de metagegevens. Een gelijktijdige update van meta gegevens kan leiden tot inconsistenties bij het combi natie met snap shot-isolatie.
+
+### <a name="long-running-queries-on-read-only-replicas"></a>Langlopende query's voor alleen-lezen replica's
+
+Query's die worden uitgevoerd op alleen-lezen replica's, moeten toegang hebben tot meta gegevens voor de objecten waarnaar wordt verwezen in de query (tabellen, indexen, statistieken, enzovoort). In zeldzame gevallen, als een meta gegevens object op de primaire replica is gewijzigd terwijl een query een vergren deling op hetzelfde object op de alleen-lezen replica bevat, kan de query het proces dat wijzigingen van de primaire replica op de alleen-lezen replica toepast, [blok keren](https://docs.microsoft.com/sql/database-engine/availability-groups/windows/troubleshoot-primary-changes-not-reflected-on-secondary#BKMK_REDOBLOCK) . Als een dergelijke query al lange tijd zou worden uitgevoerd, zou de alleen-lezen replica aanzienlijk niet synchroon zijn met de primaire replica. 
+
+Als een langlopende query op een alleen-lezen replica dit soort blok kering veroorzaakt, wordt deze automatisch beëindigd en ontvangt de sessie fout 1219, ' uw sessie is beëindigd vanwege een DDL-bewerking met hoge prioriteit '.
+
+> [!NOTE]
+> Als fout 3961 of fout 1219 wordt weer gegeven bij het uitvoeren van query's op een alleen-lezen replica, voert u de query opnieuw uit.
+
+> [!TIP]
+> In Premium-en Bedrijfskritiek-service lagen, wanneer deze zijn verbonden met een alleen-lezen replica, `redo_queue_size` `redo_rate` kunnen de kolommen en in het bestand [sys. dm_database_replica_states](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-database-replica-states-azure-sql-database) dmv worden gebruikt voor het bewaken van het gegevens synchronisatie proces, zodat deze fungeert als Indica tors van gegevens latentie op de alleen-lezen replica.
+> 
 
 ## <a name="enable-and-disable-read-scale-out"></a>Uitschalen voor lezen in-en uitschakelen
 
 Uitschalen voor lezen is standaard ingeschakeld voor Premium-, Bedrijfskritiek-en grootschalige-service lagen. Uitschalen van Lees bewerkingen kan niet worden ingeschakeld in service lagen Basic, Standard of Algemeen. Uitschalen voor lezen wordt automatisch uitgeschakeld voor grootschalige-data bases die zijn geconfigureerd met nul replica's.
 
-Met de volgende methoden kunt u het lezen van scale-out uitschakelen voor afzonderlijke data bases en elastische pool databases in de service tier Premium of Bedrijfskritiek.
+Met de volgende methoden kunt u het lezen van uitschalen uitschakelen voor afzonderlijke data bases en elastische pool databases in de service lagen Premium of Bedrijfskritiek.
 
 > [!NOTE]
-> De mogelijkheid om Lees scale-out uit te scha kelen, wordt geboden voor achterwaartse compatibiliteit.
+> Voor afzonderlijke data bases en elastische pool databases is het mogelijk om Lees scale-out uit te scha kelen voor achterwaartse compatibiliteit. Uitschalen voor lezen kan niet worden uitgeschakeld voor Bedrijfskritiek beheerde exemplaren.
 
 ### <a name="azure-portal"></a>Azure Portal
 
@@ -122,7 +166,7 @@ Als u het lezen van uitschalen voor een bestaande data base opnieuw wilt inschak
 Set-AzSqlDatabase -ResourceGroupName <resourceGroupName> -ServerName <serverName> -DatabaseName <databaseName> -ReadScale Enabled
 ```
 
-### <a name="rest-api"></a>REST-API
+### <a name="rest-api"></a>REST API
 
 Als u een Data Base met lees uitschalen wilt maken of de instelling voor een bestaande Data Base wilt wijzigen, gebruikt u de volgende methode waarbij de `readScale` eigenschap is ingesteld op `Enabled` of `Disabled` , zoals in de volgende voorbeeld aanvraag.
 
@@ -138,19 +182,19 @@ Body: {
 
 Zie [data bases-maken of bijwerken](https://docs.microsoft.com/rest/api/sql/databases/createorupdate)voor meer informatie.
 
-## <a name="using-tempdb-on-a-read-only-replica"></a>TempDB gebruiken op een alleen-lezen replica
+## <a name="using-the-tempdb-database-on-a-read-only-replica"></a>De `tempdb` Data Base op een alleen-lezen replica gebruiken
 
-De TempDB-data base wordt niet gerepliceerd naar de alleen-lezen replica's. Elke replica heeft een eigen versie van de TempDB-data base die wordt gemaakt wanneer de replica wordt gemaakt. Het zorgt ervoor dat TempDB kan worden bijgewerkt en gewijzigd tijdens het uitvoeren van de query. Als uw alleen-lezen werk belasting afhankelijk is van het gebruik van TempDB-objecten, moet u deze objecten maken als onderdeel van uw query script.
+De `tempdb` Data Base op de primaire replica wordt niet gerepliceerd naar de alleen-lezen replica's. Elke replica heeft een eigen `tempdb` Data Base die wordt gemaakt wanneer de replica wordt gemaakt. Dit zorgt ervoor dat `tempdb` kan worden bijgewerkt en kan worden gewijzigd tijdens het uitvoeren van de query. Als uw alleen-lezen werk belasting afhankelijk is van het gebruik van `tempdb` objecten, moet u deze objecten maken als onderdeel van uw query script.
 
 ## <a name="using-read-scale-out-with-geo-replicated-databases"></a>Lezen van scale-out gebruiken met geo-gerepliceerde data bases
 
-Als u lezen scale-out gebruikt voor het verdelen van alleen-lezen werk belastingen op een Data Base die geografisch wordt gerepliceerd (bijvoorbeeld als lid van een failovergroep), moet u ervoor zorgen dat uitschalen voor lezen is ingeschakeld op zowel de primaire als de geo-gerepliceerde secundaire data base. Deze configuratie zorgt ervoor dat dezelfde taak verdeling blijft werken wanneer uw toepassing verbinding maakt met de nieuwe primaire na een failover. 
+Geo-gerepliceerde secundaire data bases hebben dezelfde architectuur voor hoge Beschik baarheid als de primaire data bases. Als u verbinding maakt met de secundaire data base met geo-replicatie met lees scale-out ingeschakeld, worden uw sessies met `ApplicationIntent=ReadOnly` naar een van de Maxi maal beschik bare replica's gerouteerd op dezelfde manier als de gegevens die worden gerouteerd op de primaire beschrijvende data base. De sessies zonder `ApplicationIntent=ReadOnly` worden doorgestuurd naar de primaire replica van het secundaire geo-gerepliceerde secundair, wat ook alleen-lezen is. 
 
-Als u verbinding maakt met de secundaire data base met geo-replicatie en alleen-schalen is ingeschakeld, worden uw sessies met `ApplicationIntent=ReadOnly` een van de replica's op dezelfde manier doorgestuurd als de verbindingen op de primaire data base.  De sessies zonder `ApplicationIntent=ReadOnly` worden doorgestuurd naar de primaire replica van het secundaire geo-gerepliceerde secundair, wat ook alleen-lezen is. Omdat de secundaire data base met geo-replicatie een ander eind punt heeft dan de primaire Data Base `ApplicationIntent=ReadOnly` . `sys.geo_replication_links`Dmv laat zien of `secondary_allow_connections=2` een client verbinding is toegestaan om achterwaartse compatibiliteit te garanderen.
+Op deze manier biedt het maken van een geo-replica twee meer alleen-lezen replica's voor een primaire Data Base voor lezen/schrijven, voor een totaal van drie alleen-lezen replica's. Elke extra geo-replica biedt een andere set met alleen-lezen replica's. Geo-replica's kunnen worden gemaakt in elke Azure-regio, inclusief de regio van de primaire data base.
 
 > [!NOTE]
-> Round Robin of andere route ring met gelijke taak verdeling tussen de lokale replica's van de secundaire data base wordt niet ondersteund.
+> Er is geen automatische Round-Robin of andere route ring met gelijke taak verdeling tussen de replica's van een secundaire data base met geo-replicatie.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Zie [grootschalige service tier](service-tier-hyperscale.md)(Engelstalig) voor meer informatie over de SQL database grootschalige-aanbieding.
+- Zie [grootschalige service tier](service-tier-hyperscale.md)(Engelstalig) voor meer informatie over SQL database grootschalige-aanbieding.

@@ -16,11 +16,12 @@ ms.author: mathoma
 ms.reviewer: jroth
 experimental: true
 experimental_id: d51f3cc6-753b-4e
-ms.openlocfilehash: 0717f6f75b6bd8bb7ba4d53f8240414b5169540d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 52f25d89691a2a721025848e28d119a0fbe5e322
+ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84014759"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86135976"
 ---
 # <a name="connect-to-a-sql-server-virtual-machine-on-azure-classic-deployment"></a>Verbinding maken met een virtuele SQL Server-machine op Azure (klassieke implementatie)
 > [!div class="op_single_selector"]
@@ -52,7 +53,7 @@ Er kunnen meerdere virtuele machines worden gemaakt in dezelfde Cloud service. Z
 
 In dit scenario kunt u verbinding maken met behulp van de VM- **naam** (ook weer gegeven als **computer naam** of **hostnaam** in de portal). Dit is de naam die u voor de virtuele machine hebt ingesteld tijdens het maken. Als u bijvoorbeeld de SQL-VM **mysqlvm**heet, kan een client-vm in dezelfde Cloud service de volgende Connection String gebruiken om verbinding te maken:
 
-    "Server=mysqlvm;Integrated Security=false;User ID=<login_name>;Password=<your_password>"
+`Server=mysqlvm;Integrated Security=false;User ID=<login_name>;Password=<your_password>`
 
 ### <a name="connect-to-sql-server-over-the-internet"></a>Via Internet verbinding maken met SQL Server
 Als u via Internet verbinding wilt maken met uw SQL Server data base-engine, moet u een eind punt voor de virtuele machine maken voor binnenkomende TCP-communicatie. Deze configuratiestap van Azure zorgt ervoor dat binnenkomend TCP-poortverkeer naar een TCP-poort wordt geleid die toegankelijk is voor de virtuele machine.
@@ -61,7 +62,7 @@ Als u verbinding wilt maken via internet, moet u de DNS-naam van de virtuele mac
 
 Denk bijvoorbeeld aan een klassieke virtuele machine met de naam **mysqlvm** met een DNS-naam van **MYSQLVM7777.CLOUDAPP.net** en een VM-eind punt van **57500**. Ervan uitgaande dat de connectiviteit correct is geconfigureerd, kan de volgende connection string worden gebruikt voor toegang tot de virtuele machine vanaf elke locatie op Internet:
 
-    "Server=mycloudservice.cloudapp.net,57500;Integrated Security=false;User ID=<login_name>;Password=<your_password>"
+`Server=mycloudservice.cloudapp.net,57500;Integrated Security=false;User ID=<login_name>;Password=<your_password>`
 
 Hoewel Hiermee connectiviteit voor clients via internet is ingeschakeld, betekent dit niet dat iedereen verbinding kan maken met uw SQL Server. Externe clients hebben de juiste gebruikers naam en wacht woord. Gebruik voor extra beveiliging niet de bekende poort 1433 voor het eind punt van de open bare virtuele machine. En als dat mogelijk is, kunt u een ACL op uw eind punt toevoegen om alleen verkeer te beperken voor de clients die u toestaat. Zie [de ACL voor een eind punt beheren](/previous-versions/azure/virtual-machines/windows/classic/setup-endpoints#manage-the-acl-on-an-endpoint)voor instructies over het gebruik van acl's met eind punten.
 
@@ -77,7 +78,7 @@ Met virtuele netwerken kunt u ook uw Azure-Vm's toevoegen aan een domein. Dit is
 
 Als u een domein omgeving en Windows-verificatie wilt configureren, hoeft u de stappen in dit artikel niet te gebruiken om het open bare eind punt of de SQL-verificatie en-aanmeldingen te configureren. In dit scenario kunt u verbinding maken met uw SQL Server-exemplaar door de SQL Server VM-naam op te geven in de connection string. In het volgende voor beeld wordt ervan uitgegaan dat Windows-verificatie ook is geconfigureerd en dat de gebruiker toegang heeft gekregen tot het SQL Server exemplaar.
 
-    "Server=mysqlvm;Integrated Security=true"
+`Server=mysqlvm;Integrated Security=true`
 
 ## <a name="steps-for-configuring-sql-server-connectivity-in-an-azure-vm"></a>Stappen voor het configureren van SQL Server connectiviteit in een Azure VM
 De volgende stappen laten zien hoe u via Internet verbinding maakt met het SQL Server-exemplaar met behulp van SQL Server Management Studio (SSMS). Dezelfde stappen zijn echter van toepassing om uw SQL Server virtuele machine toegankelijk te maken voor uw toepassingen, zowel on-premises als in Azure.

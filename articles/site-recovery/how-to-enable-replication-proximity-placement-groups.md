@@ -5,17 +5,18 @@ author: Sharmistha-Rai
 manager: gaggupta
 ms.topic: how-to
 ms.date: 05/25/2020
-ms.openlocfilehash: 9fabf6cf4c8a3afc2d119fca2c8cdc2526ddbebb
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: c125f11400a75d221a62aa62020001104e05d167
+ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84415862"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86134897"
 ---
 # <a name="replicate-azure-virtual-machines-running-in-proximity-placement-groups-to-another-region"></a>Virtuele Azure-machines repliceren die worden uitgevoerd in proximity-plaatsings groepen naar een andere regio
 
 In dit artikel wordt beschreven hoe u virtuele machines die worden uitgevoerd in een proximity-plaatsings groep, repliceert naar een secundaire regio.
 
-[Proximity placement groups](https://docs.microsoft.com/azure/virtual-machines/windows/proximity-placement-groups-portal) is een logische groepering van virtuele machines van Azure, die u kunt gebruiken om de netwerk LATENTIE tussen vm's die aan uw toepassingen is gekoppeld, te verlagen. Wanneer de Vm's binnen dezelfde plaatsings groep worden geïmplementeerd, bevinden ze zich fysiek zo dicht mogelijk bij elkaar. Proximity-plaatsings groepen zijn bijzonder nuttig voor het oplossen van de vereisten van latentie gevoelige werk belastingen.
+[Proximity placement groups](../virtual-machines/windows/proximity-placement-groups-portal.md) is een logische groepering van virtuele machines van Azure, die u kunt gebruiken om de netwerk LATENTIE tussen vm's die aan uw toepassingen is gekoppeld, te verlagen. Wanneer de Vm's binnen dezelfde plaatsings groep worden geïmplementeerd, bevinden ze zich fysiek zo dicht mogelijk bij elkaar. Proximity-plaatsings groepen zijn bijzonder nuttig voor het oplossen van de vereisten van latentie gevoelige werk belastingen.
 
 ## <a name="disaster-recovery-with-proximity-placement-groups"></a>Herstel na nood geval met proximity-plaatsings groepen
 
@@ -32,21 +33,21 @@ In een typisch scenario is het mogelijk dat uw virtuele machines worden uitgevoe
 
 ## <a name="prerequisites"></a>Vereisten
 
-1. Zorg ervoor dat u beschikt over de Azure PowerShell AZ-module. Als u Azure PowerShell moet installeren of upgraden, volgt u deze [hand leiding voor het installeren en configureren van Azure PowerShell](https://docs.microsoft.com/powershell/azure/install-az-ps).
+1. Zorg ervoor dat u beschikt over de Azure PowerShell AZ-module. Als u Azure PowerShell moet installeren of upgraden, volgt u deze [hand leiding voor het installeren en configureren van Azure PowerShell](/powershell/azure/install-az-ps).
 
 ## <a name="set-up-site-recovery-for-virtual-machines-in-proximity-placement-group"></a>Site Recovery instellen voor Virtual Machines in proximity-plaatsings groep
 
 ### <a name="azure-to-azure"></a>Azure naar Azure
 
-1. [Meld](https://docs.microsoft.com/azure/site-recovery/azure-to-azure-powershell#sign-in-to-your-microsoft-azure-subscription) u aan bij uw account en stel uw abonnement in.
-2. Bekijk de details van de virtuele machine die u van plan bent te repliceren, zoals [hier](https://docs.microsoft.com/azure/site-recovery/azure-to-azure-powershell#get-details-of-the-virtual-machine-to-be-replicated)wordt beschreven.
-3. [Maak](https://docs.microsoft.com/azure/site-recovery/azure-to-azure-powershell#create-a-recovery-services-vault) de Recovery Services-kluis en [Stel](https://docs.microsoft.com/azure/site-recovery/azure-to-azure-powershell#set-the-vault-context) de kluis context in.
-4. Bereid de kluis voor op het starten van de virtuele replicatie machine. Hiervoor moet u een [service Fabric-object](https://docs.microsoft.com/azure/site-recovery/azure-to-azure-powershell#create-a-site-recovery-fabric-object-to-represent-the-primary-source-region) maken voor zowel primaire als herstel regio's.
-5. [Maak](https://docs.microsoft.com/azure/site-recovery/azure-to-azure-powershell#create-a-site-recovery-protection-container-in-the-primary-fabric) een site Recovery-beveiligings container voor zowel de primaire als de herstel infrastructuur.
-6. Een replicatie beleid [maken](https://docs.microsoft.com/azure/site-recovery/azure-to-azure-powershell#create-a-replication-policy) .
-7. Maak een beveiligings container toewijzing tussen de primaire en herstel beveiligings container met behulp van [deze](https://docs.microsoft.com/azure/site-recovery/azure-to-azure-powershell#create-a-protection-container-mapping-between-the-primary-and-recovery-protection-container) stappen en een beveiligings container toewijzing voor failback, zoals [hier](https://docs.microsoft.com/azure/site-recovery/azure-to-azure-powershell#create-a-protection-container-mapping-for-failback-reverse-replication-after-a-failover)wordt beschreven.
-8. Maak een cache-opslag account door [de](https://docs.microsoft.com/azure/site-recovery/azure-to-azure-powershell#create-cache-storage-account-and-target-storage-account) volgende stappen uit te voeren.
-9. Maak de vereiste netwerk toewijzingen zoals [hier](https://docs.microsoft.com/azure/site-recovery/azure-to-azure-powershell#create-network-mappings)wordt vermeld.
+1. [Meld](./azure-to-azure-powershell.md#sign-in-to-your-microsoft-azure-subscription) u aan bij uw account en stel uw abonnement in.
+2. Bekijk de details van de virtuele machine die u van plan bent te repliceren, zoals [hier](./azure-to-azure-powershell.md#get-details-of-the-virtual-machine-to-be-replicated)wordt beschreven.
+3. [Maak](./azure-to-azure-powershell.md#create-a-recovery-services-vault) de Recovery Services-kluis en [Stel](./azure-to-azure-powershell.md#set-the-vault-context) de kluis context in.
+4. Bereid de kluis voor op het starten van de virtuele replicatie machine. Hiervoor moet u een [service Fabric-object](./azure-to-azure-powershell.md#create-a-site-recovery-fabric-object-to-represent-the-primary-source-region) maken voor zowel primaire als herstel regio's.
+5. [Maak](./azure-to-azure-powershell.md#create-a-site-recovery-protection-container-in-the-primary-fabric) een site Recovery-beveiligings container voor zowel de primaire als de herstel infrastructuur.
+6. Een replicatie beleid [maken](./azure-to-azure-powershell.md#create-a-replication-policy) .
+7. Maak een beveiligings container toewijzing tussen de primaire en herstel beveiligings container met behulp van [deze](./azure-to-azure-powershell.md#create-a-protection-container-mapping-between-the-primary-and-recovery-protection-container) stappen en een beveiligings container toewijzing voor failback, zoals [hier](./azure-to-azure-powershell.md#create-a-protection-container-mapping-for-failback-reverse-replication-after-a-failover)wordt beschreven.
+8. Maak een cache-opslag account door [de](./azure-to-azure-powershell.md#create-cache-storage-account-and-target-storage-account) volgende stappen uit te voeren.
+9. Maak de vereiste netwerk toewijzingen zoals [hier](./azure-to-azure-powershell.md#create-network-mappings)wordt vermeld.
 10. Als u de virtuele machine van Azure wilt repliceren met Managed disks, gebruikt u de onderstaande Power shell-cmdlet: 
 
 ```azurepowershell
@@ -90,8 +91,8 @@ Controleer de replicatie status en de replicatie status voor de virtuele machine
 Get-AzRecoveryServicesAsrReplicationProtectedItem -ProtectionContainer $PrimaryProtContainer | Select FriendlyName, ProtectionState, ReplicationHealth
 ```
 
-11. Als u een testfailover wilt uitvoeren, voert u [de volgende](https://docs.microsoft.com/azure/site-recovery/azure-to-azure-powershell#do-a-test-failover-validate-and-cleanup-test-failover) stappen uit om de testfailover te valideren en op te schonen.
-12. Volg de stappen die [hier](https://docs.microsoft.com/azure/site-recovery/azure-to-azure-powershell#fail-over-to-azure)worden beschreven om failover uit te voeren.
+11. Als u een testfailover wilt uitvoeren, voert u [de volgende](./azure-to-azure-powershell.md#do-a-test-failover-validate-and-cleanup-test-failover) stappen uit om de testfailover te valideren en op te schonen.
+12. Volg de stappen die [hier](./azure-to-azure-powershell.md#fail-over-to-azure)worden beschreven om failover uit te voeren.
 13. Als u de bron regio opnieuw wilt beveiligen en failback, gebruikt u de onderstaande Power shell-cmdlet:
 
 ```azurepowershell
@@ -102,16 +103,16 @@ $WestUSCacheStorageAccount = New-AzStorageAccount -Name "a2acachestoragewestus" 
 #Use the recovery protection container, new cache storage account in West US and the source region VM resource group 
 Update-AzRecoveryServicesAsrProtectionDirection -ReplicationProtectedItem $ReplicationProtectedItem -AzureToAzure -ProtectionContainerMapping $WusToEusPCMapping -LogStorageAccountId $WestUSCacheStorageAccount.Id -RecoveryResourceGroupID $sourceVMResourcegroup.ResourceId -RecoveryProximityPlacementGroupId $vm.ProximityPlacementGroup.Id
 ```
-14. Volg [de stappen om](https://docs.microsoft.com/azure/site-recovery/azure-to-azure-powershell#disable-replication)replicatie uit te scha kelen.
+14. Volg [de stappen om](./azure-to-azure-powershell.md#disable-replication)replicatie uit te scha kelen.
 
 ### <a name="vmware-to-azure"></a>VMware naar Azure
 
-1. Zorg ervoor dat u [de on-premises VMware-servers voorbereidt](https://docs.microsoft.com/azure/site-recovery/vmware-azure-tutorial-prepare-on-premises) op herstel na nood geval naar Azure.
-2. Meld u aan bij uw account en stel uw abonnement in zoals [hier](https://docs.microsoft.com/azure/site-recovery/vmware-azure-disaster-recovery-powershell#log-into-azure)is opgegeven.
-3. [Stel](https://docs.microsoft.com/azure/site-recovery/vmware-azure-disaster-recovery-powershell#set-up-a-recovery-services-vault) een Recovery Services kluis in en [Stel de kluis context](https://docs.microsoft.com/azure/site-recovery/vmware-azure-disaster-recovery-powershell#set-the-vault-context)in.
-4. [Valideer](https://docs.microsoft.com/azure/site-recovery/vmware-azure-disaster-recovery-powershell#validate-vault-registration) uw kluis registratie.
-5. Een replicatie beleid [maken](https://docs.microsoft.com/azure/site-recovery/vmware-azure-disaster-recovery-powershell#create-a-replication-policy) .
-6. [Voeg](https://docs.microsoft.com/azure/site-recovery/vmware-azure-disaster-recovery-powershell#add-a-vcenter-server-and-discover-vms) een vCenter-Server toe en Detecteer virtuele machines en [Maak](https://docs.microsoft.com/azure/site-recovery/vmware-azure-disaster-recovery-powershell#create-storage-accounts-for-replication) opslag accounts voor replicatie.
+1. Zorg ervoor dat u [de on-premises VMware-servers voorbereidt](./vmware-azure-tutorial-prepare-on-premises.md) op herstel na nood geval naar Azure.
+2. Meld u aan bij uw account en stel uw abonnement in zoals [hier](./vmware-azure-disaster-recovery-powershell.md#log-into-azure)is opgegeven.
+3. [Stel](./vmware-azure-disaster-recovery-powershell.md#set-up-a-recovery-services-vault) een Recovery Services kluis in en [Stel de kluis context](./vmware-azure-disaster-recovery-powershell.md#set-the-vault-context)in.
+4. [Valideer](./vmware-azure-disaster-recovery-powershell.md#validate-vault-registration) uw kluis registratie.
+5. Een replicatie beleid [maken](./vmware-azure-disaster-recovery-powershell.md#create-a-replication-policy) .
+6. [Voeg](./vmware-azure-disaster-recovery-powershell.md#add-a-vcenter-server-and-discover-vms) een vCenter-Server toe en Detecteer virtuele machines en [Maak](./vmware-azure-disaster-recovery-powershell.md#create-storage-accounts-for-replication) opslag accounts voor replicatie.
 7. Als u VMware Virtual Machines wilt repliceren, controleert u de details hier en volgt u de onderstaande Power shell-cmdlet:
 
 ```azurepowershell
@@ -136,18 +137,18 @@ $Job_EnableReplication1 = New-AzRecoveryServicesAsrReplicationProtectedItem -VMw
 ```azurepowershell
 Get-AzRecoveryServicesAsrReplicationProtectedItem -ProtectionContainer $ProtectionContainer | Select FriendlyName, ProtectionState, ReplicationHealth
 ```
-9. Configureer de failover-instellingen door de stappen [hier](https://docs.microsoft.com/azure/site-recovery/vmware-azure-disaster-recovery-powershell#configure-failover-settings)te volgen.
-10. [Voer](https://docs.microsoft.com/azure/site-recovery/vmware-azure-disaster-recovery-powershell#run-a-test-failover) een testfailover uit. 
-11. Failover naar Azure met behulp van [deze](https://docs.microsoft.com/azure/site-recovery/vmware-azure-disaster-recovery-powershell#fail-over-to-azure) stappen.
+9. Configureer de failover-instellingen door de stappen [hier](./vmware-azure-disaster-recovery-powershell.md#configure-failover-settings)te volgen.
+10. [Voer](./vmware-azure-disaster-recovery-powershell.md#run-a-test-failover) een testfailover uit. 
+11. Failover naar Azure met behulp van [deze](./vmware-azure-disaster-recovery-powershell.md#fail-over-to-azure) stappen.
 
 ### <a name="hyper-v-to-azure"></a>Hyper-V naar Azure
 
-1. Zorg ervoor dat u [de on-premises Hyper-V-servers voorbereidt](https://docs.microsoft.com/azure/site-recovery/hyper-v-prepare-on-premises-tutorial) op herstel na nood geval naar Azure.
-2. [Meld](https://docs.microsoft.com/azure/site-recovery/hyper-v-azure-powershell-resource-manager#step-1-sign-in-to-your-azure-account) u aan bij Azure.
-3. [Stel](https://docs.microsoft.com/azure/site-recovery/hyper-v-azure-powershell-resource-manager#step-2-set-up-the-vault) uw kluis in en [Stel](https://docs.microsoft.com/azure/site-recovery/hyper-v-azure-powershell-resource-manager#step-3-set-the-recovery-services-vault-context) de Recovery Services kluis context in.
-4. [Maak](https://docs.microsoft.com/azure/site-recovery/hyper-v-azure-powershell-resource-manager#step-4-create-a-hyper-v-site) een Hyper-V-site.
-5. [Installeer](https://docs.microsoft.com/azure/site-recovery/hyper-v-azure-powershell-resource-manager#step-5-install-the-provider-and-agent) de provider en de agent.
-6. Een replicatie beleid [maken](https://docs.microsoft.com/azure/site-recovery/hyper-v-azure-powershell-resource-manager#step-6-create-a-replication-policy) .
+1. Zorg ervoor dat u [de on-premises Hyper-V-servers voorbereidt](./hyper-v-prepare-on-premises-tutorial.md) op herstel na nood geval naar Azure.
+2. [Meld](./hyper-v-azure-powershell-resource-manager.md#step-1-sign-in-to-your-azure-account) u aan bij Azure.
+3. [Stel](./hyper-v-azure-powershell-resource-manager.md#step-2-set-up-the-vault) uw kluis in en [Stel](./hyper-v-azure-powershell-resource-manager.md#step-3-set-the-recovery-services-vault-context) de Recovery Services kluis context in.
+4. [Maak](./hyper-v-azure-powershell-resource-manager.md#step-4-create-a-hyper-v-site) een Hyper-V-site.
+5. [Installeer](./hyper-v-azure-powershell-resource-manager.md#step-5-install-the-provider-and-agent) de provider en de agent.
+6. Een replicatie beleid [maken](./hyper-v-azure-powershell-resource-manager.md#step-6-create-a-replication-policy) .
 7. Schakel replicatie in met behulp van de onderstaande stappen: 
     
     a. Haal als volgt het Beveilig bare item op dat overeenkomt met de virtuele machine die u wilt beveiligen:
@@ -187,13 +188,13 @@ Get-AzRecoveryServicesAsrReplicationProtectedItem -ProtectionContainer $Protecti
 
     Get-AzRecoveryServicesAsrJob -Job $job | Select-Object -ExpandProperty state
     ```
-8. Voer [een testfailover uit.](https://docs.microsoft.com/azure/site-recovery/hyper-v-azure-powershell-resource-manager#step-8-run-a-test-failover)
+8. Voer [een testfailover uit.](./hyper-v-azure-powershell-resource-manager.md#step-8-run-a-test-failover)
 
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Als u het opnieuw beveiligen en failback voor VMware naar Azure wilt uitvoeren, volgt u de stappen die [hier](https://docs.microsoft.com/azure/site-recovery/vmware-azure-prepare-failback)worden beschreven.
+Als u het opnieuw beveiligen en failback voor VMware naar Azure wilt uitvoeren, volgt u de stappen die [hier](./vmware-azure-prepare-failback.md)worden beschreven.
 
-Als u een failover wilt uitvoeren voor Hyper-V naar Azure, volgt u de stappen die [hier](https://docs.microsoft.com/azure/site-recovery/site-recovery-failover) worden beschreven en voert u de volgende stappen uit om een failback uit te [voeren.](https://docs.microsoft.com/azure/site-recovery/hyper-v-azure-failback)
+Als u een failover wilt uitvoeren voor Hyper-V naar Azure, volgt u de stappen die [hier](./site-recovery-failover.md) worden beschreven en voert u de volgende stappen uit om een failback uit te [voeren.](./hyper-v-azure-failback.md)
 
 Zie [failover in site Recovery](site-recovery-failover.md)voor meer informatie.

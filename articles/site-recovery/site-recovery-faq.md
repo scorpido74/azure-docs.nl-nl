@@ -4,12 +4,12 @@ description: In dit artikel worden populaire algemene vragen over Azure Site Rec
 ms.topic: conceptual
 ms.date: 1/24/2020
 ms.author: raynew
-ms.openlocfilehash: 9eceb9643a5e8f8eab6b68bb04b322a099b715f3
-ms.sourcegitcommit: bcb962e74ee5302d0b9242b1ee006f769a94cfb8
+ms.openlocfilehash: b02d001d6fad905badaf17422bdd0554e3fc8493
+ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86057429"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86133668"
 ---
 # <a name="general-questions-about-azure-site-recovery"></a>Algemene vragen over Azure Site Recovery
 
@@ -56,7 +56,7 @@ Nee, gegevens worden gerepliceerd naar Azure Storage in uw abonnement. Wanneer u
 Ja.
 
 ### <a name="what-platforms-do-you-currently-support"></a>Welke platforms worden er momenteel ondersteund?
-We ondersteunen implementaties van Azure Pack, Cloud platform System en System Center op basis van (2012 en hoger). Meer [informatie](https://technet.microsoft.com/library/dn850370.aspx) over Azure Pack en integratie van site Recovery.
+We ondersteunen implementaties van Azure Pack, Cloud platform System en System Center op basis van (2012 en hoger). Meer [informatie](/previous-versions/azure/windows-server-azure-pack/dn850370(v=technet.10)) over Azure Pack en integratie van site Recovery.
 
 ### <a name="do-you-support-single-azure-pack-and-single-vmm-server-deployments"></a>Worden implementaties van één Azure Pack en één VMM-server ondersteund?
 Ja, u kunt virtuele Hyper-V-machines repliceren naar Azure of tussen sites van service providers.  Houd er rekening mee dat als u tussen sites van service providers repliceert Azure runbook-integratie niet beschikbaar is.
@@ -105,7 +105,7 @@ Site Recovery is ISO 27001:2013, 27018, HIPAA, DPA gecertificeerd en is het proc
 Ja. Wanneer u een Site Recovery kluis maakt in een regio, zorgen we ervoor dat alle meta gegevens die we nodig hebben om de replicatie en failover in te scha kelen en te organiseren, binnen de geografische grens van die regio blijven.
 
 ### <a name="does-site-recovery-encrypt-replication"></a>Wordt replicatie met Site Recovery versleuteld?
-Voor virtuele machines en fysieke servers moet replicatie tussen on-premises sites worden gerepliceerd-in-transit wordt ondersteund. Voor virtuele machines en fysieke servers die worden gerepliceerd naar Azure, wordt zowel versleuteling als door Voer [(in Azure)](https://docs.microsoft.com/azure/storage/storage-service-encryption) ondersteund.
+Voor virtuele machines en fysieke servers moet replicatie tussen on-premises sites worden gerepliceerd-in-transit wordt ondersteund. Voor virtuele machines en fysieke servers die worden gerepliceerd naar Azure, wordt zowel versleuteling als door Voer [(in Azure)](../storage/common/storage-service-encryption.md) ondersteund.
 
 ### <a name="does-azure-to-azure-site-recovery-use-tls-12-for-all-communications-across-microservices-of-azure"></a>Gebruikt Azure-to-Azure Site Recovery TLS 1,2 voor alle communicatie tussen micro services van Azure?
 Ja, het TLS 1,2-protocol wordt standaard afgedwongen voor Azure-to-Azure Site Recovery scenario. 
@@ -198,7 +198,7 @@ Dynamische schijven worden ondersteund bij het repliceren van virtuele Hyper-V-m
 Ja. Meer informatie over het beperken van de band breedte vindt u in deze artikelen:
 
 * [Capaciteits planning voor het repliceren van virtuele VMware-machines en fysieke servers](site-recovery-plan-capacity-vmware.md)
-* [Capaciteits planning voor het repliceren van virtuele Hyper-V-machines naar Azure](site-recovery-capacity-planning-for-hyper-v-replication.md)
+* [Capaciteits planning voor het repliceren van virtuele Hyper-V-machines naar Azure](./hyper-v-deployment-planner-overview.md)
 
 ### <a name="can-i-enable-replication-with-app-consistency-in-linux-servers"></a>Kan ik replicatie inschakelen met app-consistentie in Linux-servers? 
 Ja. Azure Site Recovery voor Linux-besturings systeem ondersteunt aangepaste scripts voor toepassingen voor app-consistentie. Het aangepaste script met de voor-en post opties wordt door de Azure Site Recovery Mobility agent gebruikt tijdens de app-consistentie. Hieronder vindt u de stappen om deze functie in te scha kelen.
@@ -254,7 +254,7 @@ Als u wilt automatiseren, kunt u de on-premises Orchestrator of Operations Manag
 
 * [Meer](site-recovery-create-recovery-plans.md) informatie over herstel plannen.
 * [Lees meer](site-recovery-failover.md) over failover.
-* [Meer](site-recovery-failback-azure-to-vmware.md) informatie over het mislukken van back-ups van virtuele VMware-machines en fysieke servers
+* [Meer](./vmware-azure-failback.md) informatie over het mislukken van back-ups van virtuele VMware-machines en fysieke servers
 
 ### <a name="if-my-on-premises-host-is-not-responding-or-crashed-can-i-fail-back-to-a-different-host"></a>Als mijn on-premises host niet reageert of vastloopt, kan ik dan een failback uitvoeren naar een andere host?
 Ja, u kunt het herstel van de alternatieve locatie gebruiken om naar een andere host van Azure te failback.
@@ -279,4 +279,3 @@ Ja. U kunt Site Recovery-werkstromen automatiseren met de Rest API-, PowerShell-
 
 ## <a name="next-steps"></a>Volgende stappen
 * Lees het [Site Recovery-overzicht](site-recovery-overview.md)
-

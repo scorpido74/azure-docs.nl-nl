@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: virtual-machines-linux
 ms.subservice: imaging
 ms.reviewer: cynthn
-ms.openlocfilehash: 44cafd4ce7e36c34082ff3c5498c5bbc35282221
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 975d6842110ffa864a534e09cf35d0d33612d7d5
+ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85263310"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86135072"
 ---
 # <a name="preview-create-an-azure-image-builder-template"></a>Voor beeld: een Azure Image Builder-sjabloon maken 
 
@@ -391,7 +391,8 @@ Bestanden in file Customize kunnen worden gedownload van Azure Storage met [MSI]
 
 ### <a name="windows-update-customizer"></a>Windows Update aanpassing
 Deze aanpassings is gebaseerd op de [community Windows Update inrichting](https://packer.io/docs/provisioners/community-supported.html) voor de verpakker, een open-source project dat wordt beheerd door de Packer-community. Micro soft test en valideert de inrichtings functie met de service voor installatie kopie maken, en ondersteunt problemen met onderzoeken, en werkt om problemen op te lossen, maar het open-source project wordt niet officieel ondersteund door micro soft. Raadpleeg de project opslagplaats voor gedetailleerde documentatie over en hulp bij de Windows Update-inrichting.
- 
+
+```json
      "customize": [
             {
                 "type": "WindowsUpdate",
@@ -403,7 +404,8 @@ Deze aanpassings is gebaseerd op de [community Windows Update inrichting](https:
                 "updateLimit": 20
             }
                ], 
-BESTURINGSSYSTEEM ondersteuning: Windows
+OS support: Windows
+```
 
 Eigenschappen aanpassen:
 - **type** – windowsupdate.

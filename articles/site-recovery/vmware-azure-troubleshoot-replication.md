@@ -7,11 +7,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 08/2/2019
 ms.author: mayg
-ms.openlocfilehash: 1db32d506cc455b020fc6c0f2bba10361e961324
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: e9e66cbb024aa64e8c4cb5db9fc1c172fdc573fc
+ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84197045"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86135367"
 ---
 # <a name="troubleshoot-replication-issues-for-vmware-vms-and-physical-servers"></a>Replicatie problemen voor virtuele VMware-machines en fysieke servers oplossen
 
@@ -94,16 +95,16 @@ Om het probleem op te lossen, voert u de volgende stappen uit om de netwerk verb
    - InMage Scout-toepassingsservice
 4. Controleer op de bron computer de logboeken op de locatie voor fout Details:
 
-       C:\Program Files (X86)\Microsoft Azure Site Recovery\agent\svagents*log
+    *C:\Program Files (x86) \Microsoft Azure site Recovery\agent\svagents \* . log*
 
 ### <a name="process-server-with-no-heartbeat-error-806"></a>Proces server zonder heartbeat [fout 806]
 Als er geen heartbeat van de proces server (PS) is, controleert u het volgende:
 1. PS-VM is actief
 2. Raadpleeg de volgende logboeken op de PS voor fout Details:
 
-       C:\ProgramData\ASR\home\svsystems\eventmanager*.log
-       and
-       C:\ProgramData\ASR\home\svsystems\monitor_protection*.log
+    *C:\ProgramData\ASR\home\svsystems\eventmanager \* . log*\
+    maar
+    *C:\ProgramData\ASR\home\svsystems\ monitor_protection \* . log*
 
 ### <a name="master-target-server-with-no-heartbeat-error-78022"></a>Master doel server zonder heartbeat [fout 78022]
 
@@ -116,7 +117,7 @@ U kunt het probleem oplossen door de volgende stappen uit te voeren om de status
     - Controleer of de svagents-service wordt uitgevoerd. Als deze wordt uitgevoerd, start u de service opnieuw
     - Raadpleeg de logboeken op de locatie voor de fout Details:
 
-          C:\Program Files (X86)\Microsoft Azure Site Recovery\agent\svagents*log
+        *C:\Program Files (x86) \Microsoft Azure site Recovery\agent\svagents \* . log*
 3. Als u het hoofd doel met de configuratie server wilt registreren, gaat u naar map **%PROGRAMDATA%\ASR\Agent**en voert u het volgende uit op de opdracht prompt:
    ```
    cmd
@@ -146,25 +147,25 @@ Hieronder vindt u enkele van de meest voorkomende problemen
 **Oplossen** : verwijzen naar KB- [artikel](https://support.microsoft.com/help/4493364/fix-error-occurs-when-you-back-up-a-virtual-machine-with-non-component)
 
 #### <a name="cause-4-app-consistency-not-enabled-on-linux-servers"></a>Oorzaak 4: app-consistentie niet ingeschakeld op Linux-servers
-**Oplossen** : Azure site Recovery voor Linux-besturings systeem ondersteunt aangepaste scripts voor toepassingen voor app-consistentie. Het aangepaste script met de voor-en post opties wordt gebruikt door de Azure Site Recovery Mobility-agent voor app-consistentie. [Hier](https://docs.microsoft.com/azure/site-recovery/site-recovery-faq#replication) volgen de stappen om deze functie in te scha kelen.
+**Oplossen** : Azure site Recovery voor Linux-besturings systeem ondersteunt aangepaste scripts voor toepassingen voor app-consistentie. Het aangepaste script met de voor-en post opties wordt gebruikt door de Azure Site Recovery Mobility-agent voor app-consistentie. [Hier](./site-recovery-faq.md#replication) volgen de stappen om deze functie in te scha kelen.
 
 ### <a name="more-causes-due-to-vss-related-issues"></a>Meer oorzaken vanwege VSS-problemen:
 
 Als u verder wilt oplossen, controleert u de bestanden op de bron computer om de exacte fout code op te halen voor de fout:
 
-    C:\Program Files (x86)\Microsoft Azure Site Recovery\agent\Application Data\ApplicationPolicyLogs\vacp.log
+*C:\Program Files (x86) \Microsoft Azure site Recovery\agent\Application Data\ApplicationPolicyLogs\vacp.log*
 
 Hoe kunt u de fouten in het bestand vinden?
 Zoek naar de teken reeks ' vacpError ' door het bestand vacp. log te openen in een editor
 
-    Ex: vacpError:220#Following disks are in FilteringStopped state [\\.\PHYSICALDRIVE1=5, ]#220|^|224#FAILED: CheckWriterStatus().#2147754994|^|226#FAILED to revoke tags.FAILED: CheckWriterStatus().#2147754994|^|
+`Ex: `**`vacpError`**`:220#Following disks are in FilteringStopped state [\\.\PHYSICALDRIVE1=5, ]#220|^|224#FAILED: CheckWriterStatus().#2147754994|^|226#FAILED to revoke tags.FAILED: CheckWriterStatus().#2147754994|^|`
 
 In bovenstaand voor beeld **2147754994** is de fout code die u vertelt over de fout, zoals hieronder wordt weer gegeven
 
 #### <a name="vss-writer-is-not-installed---error-2147221164"></a>VSS Writer is niet geïnstalleerd-fout 2147221164
 
 *Oplossen*: voor het genereren van een toepassings consistentie code Azure site Recovery maakt gebruik van micro soft Volume Shadow Copy service (VSS). Er wordt een VSS-provider geïnstalleerd voor de werking ervan om app-consistentie momentopnamen te maken. Deze VSS-provider is geïnstalleerd als een service. Als de VSS-Provider service niet is geïnstalleerd, mislukt het maken van de toepassings consistentie van de moment opname met de fout-ID 0x80040154 ' klasse is niet geregistreerd '. </br>
-Raadpleeg het [artikel over het oplossen van problemen met de VSS Writer-installatie](https://docs.microsoft.com/azure/site-recovery/vmware-azure-troubleshoot-push-install#vss-installation-failures)
+Raadpleeg het [artikel over het oplossen van problemen met de VSS Writer-installatie](./vmware-azure-troubleshoot-push-install.md#vss-installation-failures)
 
 #### <a name="vss-writer-is-disabled---error-2147943458"></a>VSS Writer is uitgeschakeld-fout 2147943458
 
@@ -194,4 +195,4 @@ Controleer of het opstart type van de VSS-Provider service is ingesteld op **aut
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Als u meer hulp nodig hebt, kunt u uw vraag plaatsen op de [pagina micro soft Q&een vraag voor Azure site Recovery](https://docs.microsoft.com/answers/topics/azure-site-recovery.html). We hebben een actieve community en een van onze technici kan u helpen.
+Als u meer hulp nodig hebt, kunt u uw vraag plaatsen op de [pagina micro soft Q&een vraag voor Azure site Recovery](/answers/topics/azure-site-recovery.html). We hebben een actieve community en een van onze technici kan u helpen.

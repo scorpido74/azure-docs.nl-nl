@@ -3,15 +3,16 @@ title: Beheerervaring in meerdere tenants
 description: Azure delegated Resource Management maakt een cross-Tenant beheer mogelijk.
 ms.date: 05/12/2020
 ms.topic: conceptual
-ms.openlocfilehash: ef2fe2ecd72234312a750e206b8920f4ea7eaa02
-ms.sourcegitcommit: dee7b84104741ddf74b660c3c0a291adf11ed349
+ms.openlocfilehash: 5e8a678530d9cf334d89091e7f23191ae8613737
+ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85920592"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86135481"
 ---
 # <a name="cross-tenant-management-experiences"></a>Beheerervaring in meerdere tenants
 
-Als service provider kunt u [Azure delegated resource management](../concepts/azure-delegated-resource-management.md) gebruiken voor het beheren van Azure-resources voor meerdere klanten vanuit uw eigen Tenant in de [Azure Portal](https://portal.azure.com). De meeste taken en services kunnen worden uitgevoerd op gedelegeerde Azure-resources in beheerde tenants. In dit artikel worden enkele van de verbeterde scenario's beschreven waarbij Azure delegated resource management kan worden effectief.
+Als service provider kunt u [Azure Lighthouse](../overview.md) gebruiken voor het beheren van resources voor meerdere klanten vanuit uw eigen Tenant in de [Azure Portal](https://portal.azure.com). Er kunnen veel taken en services worden uitgevoerd op gedelegeerde Azure-resources in beheerde tenants met behulp van [Azure delegated resource management](../concepts/azure-delegated-resource-management.md).
 
 > [!NOTE]
 > Azure delegated resource management kan ook worden gebruikt [binnen een onderneming met meerdere Azure AD-tenants](enterprise.md) , om cross-Tenant beheer te vereenvoudigen.
@@ -22,9 +23,9 @@ Een Azure Active Directory-Tenant (Azure AD) is een representatie van een organi
 
 Om Azure-resources voor een klant te kunnen beheren, moeten service providers zich dus aanmelden bij de Azure Portal met behulp van een account dat is gekoppeld aan de Tenant van die klant, waarbij een beheerder in de Tenant van de klant gebruikers accounts voor de service provider kan maken en beheren.
 
-Met Azure delegated resource management geeft het voorbereidings proces gebruikers in de Tenant van de service provider op die abonnementen, resource groepen en resources in de Tenant van de klant kunnen openen en beheren. Deze gebruikers kunnen zich vervolgens aanmelden bij de Azure Portal met hun eigen referenties. Binnen het Azure Portal kunnen ze resources beheren die horen bij alle klanten waartoe ze toegang hebben. U kunt dit doen door de pagina [mijn klanten](../how-to/view-manage-customers.md) te bezoeken in het Azure portal of door rechtstreeks te werken in de context van het abonnement van de klant, hetzij in de Azure portal-of via-api's.
+Met Azure Lighthouse geeft het voorbereidings proces gebruikers in de Tenant van de service provider op die abonnementen, resource groepen en resources in de Tenant van de klant kunnen openen en beheren. Deze gebruikers kunnen zich vervolgens aanmelden bij de Azure Portal met hun eigen referenties. Binnen het Azure Portal kunnen ze resources beheren die horen bij alle klanten waartoe ze toegang hebben. U kunt dit doen door de pagina [mijn klanten](../how-to/view-manage-customers.md) te bezoeken in het Azure portal of door rechtstreeks te werken in de context van het abonnement van de klant, hetzij in de Azure portal-of via-api's.
 
-Azure delegated Resource Management biedt meer flexibiliteit voor het beheren van resources voor meerdere klanten, zonder dat u zich hoeft aan te melden bij verschillende accounts in verschillende tenants. Een service provider kan bijvoorbeeld twee klanten hebben met verschillende verantwoordelijkheden en toegangs niveaus. Met behulp van Azure delegated resource management kunnen geautoriseerde gebruikers zich aanmelden bij de Tenant van de service provider om toegang te krijgen tot deze bronnen.
+Azure Lighthouse biedt meer flexibiliteit voor het beheren van resources voor meerdere klanten, zonder dat u zich hoeft aan te melden bij verschillende accounts in verschillende tenants. Een service provider kan bijvoorbeeld twee klanten hebben met verschillende verantwoordelijkheden en toegangs niveaus. Met Azure Lighthouse kunnen geautoriseerde gebruikers zich aanmelden bij de Tenant van de service provider om toegang te krijgen tot deze bronnen.
 
 ![Klant bronnen die worden beheerd via een Tenant van een service provider](../media/azure-delegated-resource-management-service-provider-tenant.jpg)
 
@@ -39,15 +40,15 @@ Net als bij Azure CLI-opdrachten, zoals [AZ account list](/cli/azure/account?vie
 > [!TIP]
 > Als u deze waarden niet ziet wanneer u Azure CLI gebruikt, probeert u de cache te wissen door uit te voeren, `az account clear` gevolgd door `az login --identity` .
 
-We bieden ook Api's die specifiek zijn voor het uitvoeren van Azure gedelegeerde resource beheer taken. Zie de sectie **Naslag informatie** voor meer informatie.
+We bieden ook Api's die specifiek zijn voor het uitvoeren van Azure Lighthouse-taken. Zie de sectie **Naslag informatie** voor meer informatie.
 
 ## <a name="enhanced-services-and-scenarios"></a>Verbeterde services en scenario's
 
-De meeste taken en services kunnen worden uitgevoerd op gedelegeerde resources in beheerde tenants. Hieronder vindt u enkele van de belangrijkste scenario's waarbij beheer van meerdere tenants effectief kan zijn.
+De meeste taken en services kunnen worden uitgevoerd op gedelegeerde resources in beheerde tenants. Hieronder vindt u enkele van de belangrijkste scenario's waarbij beheer van meerdere tenants met name effectief kan zijn.
 
 [Azure-Arc voor servers (preview-versie)](../../azure-arc/servers/overview.md):
 
-- [Windows Server-of Linux-computers buiten Azure verbinden](../../azure-arc/servers/quickstart-onboard-portal.md) met gedelegeerde abonnementen en/of resource groepen in azure
+- [Windows Server-of Linux-computers buiten Azure verbinden](../../azure-arc/servers/onboard-portal.md) met gedelegeerde abonnementen en/of resource groepen in azure
 - Verbonden computers beheren met Azure-constructs, zoals Azure Policy en tagging
 
 [Azure Automation](../../automation/index.yml):

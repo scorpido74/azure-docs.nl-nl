@@ -9,12 +9,12 @@ ms.service: virtual-machines
 ms.subservice: sizes
 ms.topic: conceptual
 ms.date: 6/8/2020
-ms.openlocfilehash: 967df2022166936df71b30fbe9d49798663ce962
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: ccb6bbcddaa5ce76e9dbb04d737830fbaf5c2d9f
+ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84783601"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86134332"
 ---
 # <a name="ev4-and-esv4-series"></a>Ev4- en Esv4-serie
 
@@ -30,7 +30,7 @@ Ev4-serie-grootten worden uitgevoerd op Intel Xeon &reg; Platinum 8272CL (Cascad
 Opslag van externe gegevens schijven wordt afzonderlijk van virtuele machines gefactureerd. Als u Premium Storage-schijven wilt gebruiken, gebruikt u de Esv4-grootten. De prijs-en facturerings meters voor Esv4-grootten zijn gelijk aan die van de Ev4-serie.
 
 > [!IMPORTANT]
-> Deze nieuwe grootten zijn momenteel alleen beschikbaar als open bare preview. U kunt zich [hier](https://forms.office.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbR_Y3toRKxchLjARedqtguBRURE1ZSkdDUzg1VzJDN0cwWUlKTkcyUlo5Mi4u)aanmelden voor deze Dv4-en Dsv4-serie. 
+> Deze nieuwe grootten zijn momenteel alleen beschikbaar als open bare preview. U kunt zich [hier](https://forms.office.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbR_Y3toRKxchLjARedqtguBRURE1ZSkdDUzg1VzJDN0cwWUlKTkcyUlo5Mi4u)aanmelden voor deze Ev4-en Esv4-serie. 
 
 ACU: 195-210
 
@@ -59,7 +59,7 @@ Updates voor geheugen behoud: ondersteund
 Esv4-serie-grootten worden uitgevoerd op Intel &reg; Xeon &reg; Platinum 8272CL (Cascade Lake). De instanties van de Esv4-serie zijn ideaal voor geheugenintensieve bedrijfs toepassingen. Virtuele machines uit de Evs4-serie beschikken over de Intel &reg; Hyper-Threading-technologie. Opslag van externe gegevens schijven wordt afzonderlijk van virtuele machines gefactureerd.
 
 > [!IMPORTANT]
-> Deze nieuwe grootten zijn momenteel alleen beschikbaar als open bare preview. U kunt zich [hier](https://forms.office.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbR_Y3toRKxchLjARedqtguBRURE1ZSkdDUzg1VzJDN0cwWUlKTkcyUlo5Mi4u)aanmelden voor deze Dv4-en Dsv4-serie. 
+> Deze nieuwe grootten zijn momenteel alleen beschikbaar als open bare preview. U kunt zich [hier](https://forms.office.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbR_Y3toRKxchLjARedqtguBRURE1ZSkdDUzg1VzJDN0cwWUlKTkcyUlo5Mi4u)aanmelden voor deze Ev4-en Esv4-serie. 
 
 ACU: 195-210
 

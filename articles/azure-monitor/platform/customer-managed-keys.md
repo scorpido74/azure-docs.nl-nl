@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: yossi-y
 ms.author: yossiy
 ms.date: 07/05/2020
-ms.openlocfilehash: 607f622bc484883ecbeae0552eecc9561cf4c3ef
-ms.sourcegitcommit: f684589322633f1a0fafb627a03498b148b0d521
+ms.openlocfilehash: aab0de11972f7d1abaaa0140da002f838e319fdf
+ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/06/2020
-ms.locfileid: "85969599"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86134611"
 ---
 # <a name="azure-monitor-customer-managed-key"></a>Azure Monitor door de klant beheerde sleutel 
 
@@ -461,26 +461,27 @@ Voor de draaiing van CMK is een expliciete update van de *cluster* bron vereist 
 
 Al uw gegevens blijven toegankelijk na de bewerking voor het wijzigen van de sleutel, omdat gegevens altijd worden versleuteld met de account versleutelings sleutel (AEK) terwijl AEK nu wordt versleuteld met uw nieuwe Key Encryption Key (KEK)-versie in Key Vault.
 
-## <a name="saving-queries-protected-with-cmk"></a>Query's opslaan die zijn beveiligd met CMK
+## <a name="cmk-for-queries"></a>CMK voor query's
 
-De query taal die in Log Analytics wordt gebruikt, is een exprestje en kan gevoelige informatie bevatten in opmerkingen die u toevoegt aan query's of in de query syntaxis. Sommige organisaties vereisen dat dergelijke informatie wordt beveiligd als onderdeel van het CMK-beleid en u uw query's die zijn versleuteld met uw sleutel, moet opslaan. Met Azure Monitor kunt u *opgeslagen Zoek opdrachten* opslaan *log-alerts* in uw eigen opslag account waarmee u verbinding maakt met uw werk ruimte. 
+De query taal die in Log Analytics wordt gebruikt, is een exprestje en kan gevoelige informatie bevatten in opmerkingen die u toevoegt aan query's of in de query syntaxis. Sommige organisaties vereisen dat dergelijke informatie wordt beveiligd als onderdeel van het CMK-beleid en u uw query's die zijn versleuteld met uw sleutel, moet opslaan. Met Azure Monitor kunt u *opgeslagen Zoek opdrachten* en *waarschuwingen voor logboek registraties* die zijn versleuteld met uw sleutel in uw eigen opslag account opslaan wanneer u verbinding hebt met uw werk ruimte. 
 
-> Opmerking CMK voor query's die worden gebruikt in werkmappen en Azure-Dash boards, worden nog niet ondersteund. Deze query's blijven versleuteld met de micro soft-sleutel.  
+> [!NOTE]
+> CMK voor query's die worden gebruikt in werkmappen en Azure-Dash boards, worden nog niet ondersteund. Deze query's blijven versleuteld met de micro soft-sleutel.  
 
-Met uw eigen opslag (BYOS), uploadt de service query's naar het opslag account dat u beheert. Dit betekent dat u het [beleid voor versleuteling op rest](https://docs.microsoft.com/azure/storage/common/encryption-customer-managed-keys) beheert met behulp van dezelfde sleutel die u gebruikt voor het versleutelen van gegevens in log Analytics cluster of een andere sleutel. U bent echter verantwoordelijk voor de kosten van het opslag account. 
+Wanneer u [uw eigen opslag](https://docs.microsoft.com/azure/azure-monitor/platform/private-storage) (BYOS) meebrengt en deze aan uw werk ruimte koppelt, worden de door de service *opgeslagen Zoek opdrachten* en *waarschuwingen voor logboek meldingen* naar uw opslag account geüpload. Dit betekent dat u het opslag account en het [beleid voor versleuteling op rest](https://docs.microsoft.com/azure/storage/common/encryption-customer-managed-keys) beheert met behulp van dezelfde sleutel die u gebruikt voor het versleutelen van gegevens in log Analytics cluster of een andere sleutel. U bent echter verantwoordelijk voor de kosten van het opslag account. 
 
 **Overwegingen voor het instellen van CMK voor query's**
 * U moet schrijf machtigingen hebben voor de werk ruimte en het opslag account
 * Zorg ervoor dat u uw opslag account in dezelfde regio maakt als uw Log Analytics werk ruimte zich bevindt
 * De *opgeslagen Zoek opdrachten* in opslag worden beschouwd als service artefacten en de indeling ervan kan veranderen
-* Bestaande *Zoek opdrachten voor opslaan* worden verwijderd uit uw werk ruimte. Kopieer en *Sla de Zoek opdrachten* die u nodig hebt vóór de configuratie. U kunt uw *opgeslagen Zoek opdrachten* weer geven met behulp van deze [Power shell](https://docs.microsoft.com/powershell/module/az.operationalinsights/Get-AzOperationalInsightsSavedSearch?view=azps-4.2.0)
+* Bestaande *Zoek opdrachten voor opslaan* worden verwijderd uit uw werk ruimte. Kopieer en *Sla de Zoek opdrachten* die u nodig hebt vóór de configuratie. U kunt uw *opgeslagen Zoek opdrachten* weer geven met [Power shell](https://docs.microsoft.com/powershell/module/az.operationalinsights/Get-AzOperationalInsightsSavedSearch)
 * De query geschiedenis wordt niet ondersteund en u kunt geen query's zien die u hebt uitgevoerd
-* U kunt één opslag account aan de werk ruimte koppelen voor het opslaan van query's, maar dit kan worden gebruikt in zowel *opgeslagen Zoek opdrachten* als *logboek-waarschuwings* query's
+* U kunt één opslag account aan de werk ruimte koppelen voor het opslaan van query's, maar kan worden gebruikt in combi natie van query's met de functie voor *opgeslagen Zoek opdrachten* en *logboek waarschuwingen*
 * Vastmaken aan dash board wordt niet ondersteund
 
-**Configuratie van BYOS voor query's**
+**BYOS configureren voor opgeslagen Zoek opdrachten**
 
-Een opslag account koppelen aan de data source type van de *query* aan uw werk ruimte. 
+Het opslag account voor de *query* aan uw werk ruimte koppelen: *opgeslagen Zoek opdrachten* query's worden opgeslagen in uw opslag account. 
 
 ```powershell
 $storageAccount.Id = Get-AzStorageAccount -ResourceGroupName "resource-group-name" -Name "resource-group-name"storage-account-name"resource-group-name"
@@ -505,9 +506,9 @@ Content-type: application/json
 
 Na de configuratie wordt een nieuwe *opgeslagen zoek opdracht* opgeslagen in uw opslag.
 
-**Configuratie van BYOS voor logboek waarschuwingen**
+**BYOS configureren voor query's met betrekking tot logboek waarschuwingen**
 
-Een opslag account met *waarschuwingen* data source type koppelen aan uw werk ruimte. 
+Opslag account voor *waarschuwingen* aan uw werk ruimte koppelen: query's voor *logboek waarschuwingen* worden opgeslagen in uw opslag account. 
 
 ```powershell
 $storageAccount.Id = Get-AzStorageAccount -ResourceGroupName "resource-group-name" -Name "resource-group-name"storage-account-name"resource-group-name"
@@ -714,7 +715,7 @@ Na de configuratie wordt een nieuwe waarschuwings query opgeslagen in uw opslag.
 
 -De koppeling van de werk ruimte met de *cluster*   bron mislukt als deze is      gekoppeld aan een andere *cluster*   bron
 
-## <a name="troubleshooting"></a>Problemen oplossen
+## <a name="troubleshooting"></a>Probleemoplossing
 
 - Gedrag met Key Vault Beschik baarheid
   - In normale werking: opslag caches AEK gedurende korte tijd en terugvallen op Key Vault om regel matig de vertraging op te lossen.

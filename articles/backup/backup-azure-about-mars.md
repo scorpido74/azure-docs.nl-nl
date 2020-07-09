@@ -4,12 +4,12 @@ description: Meer informatie over hoe de MARS-agent de back-upscenario's onderst
 ms.reviewer: srinathv
 ms.topic: conceptual
 ms.date: 12/02/2019
-ms.openlocfilehash: 5656c113a6823a1708854a547b199bd16c521b04
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 64f43f42fc23b1ca9591b6a49c3acce6c52c09d6
+ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82611480"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86134982"
 ---
 # <a name="about-the-microsoft-azure-recovery-services-mars-agent"></a>Informatie over de Microsoft Azure Recovery Services-agent (MARS)
 
@@ -53,7 +53,7 @@ De MARS-agent ondersteunt de volgende herstel scenario's:
 
 - **Incrementele back-ups** (volgende back-ups) worden uitgevoerd volgens het schema dat u opgeeft. Tijdens incrementele back-ups worden gewijzigde bestanden geïdentificeerd en wordt een nieuwe VHD gemaakt. De VHD wordt gecomprimeerd en versleuteld en vervolgens naar de kluis verzonden. Nadat de incrementele back-up is voltooid, wordt de nieuwe VHD samengevoegd met de VHD die is gemaakt na de initiële replicatie. Deze samengevoegde VHD bevat de meest recente status om te vergelijken voor continue back-ups.
 
-- De MARS-agent kan de back-uptaak uitvoeren in de **geoptimaliseerde modus** met het USN (Update Sequence Number)-wijzigings logboek of in niet- **geoptimaliseerde modus** door te controleren op wijzigingen in mappen of bestanden via het scannen van het hele volume. De niet-geoptimaliseerde modus is langzamer omdat de agent elk bestand op het volume moet scannen en vergelijken met de meta gegevens om de gewijzigde bestanden te bepalen.  De **eerste back-up** wordt altijd uitgevoerd in niet-geoptimaliseerde modus. Als de vorige back-up is mislukt, wordt de volgende geplande back-uptaak uitgevoerd in niet-geoptimaliseerde modus.
+- De MARS-agent kan de back-uptaak uitvoeren in de **geoptimaliseerde modus** met het USN (Update Sequence Number)-wijzigings logboek of in niet- **geoptimaliseerde modus** door te controleren op wijzigingen in mappen of bestanden via het scannen van het hele volume. De niet-geoptimaliseerde modus is langzamer omdat de agent elk bestand op het volume moet scannen en vergelijken met de meta gegevens om de gewijzigde bestanden te bepalen.  De **eerste back-up** wordt altijd uitgevoerd in niet-geoptimaliseerde modus. Als de vorige back-up is mislukt, wordt de volgende geplande back-uptaak uitgevoerd in niet-geoptimaliseerde modus. Raadpleeg [dit artikel](backup-azure-troubleshoot-slow-backup-performance-issue.md#cause-backup-job-running-in-unoptimized-mode)voor meer informatie over deze modi en hoe u deze kunt controleren.
 
 ### <a name="additional-scenarios"></a>Overige scenario's
 
