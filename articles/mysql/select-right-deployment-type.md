@@ -6,11 +6,12 @@ ms.author: manishku
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 12/02/2019
-ms.openlocfilehash: 50bcd42189b1bcc945d726277975892f07f1baa1
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 827c1954456ee7943c48525919ed411836f610aa
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "78255538"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86114020"
 ---
 # <a name="choose-the-right-mysql-server-option-in-azure"></a>Kies de optie juiste MySQL-server in azure
 
@@ -30,7 +31,7 @@ Houd rekening met de volgende twee opties bij het nemen van uw beslissing:
 
 De belangrijkste verschillen tussen deze opties worden weer gegeven in de volgende tabel:
 
-|            | Azure Database for MySQL | MySQL op virtuele Azure-machines    |
+| Kenmerk          | Azure Database for MySQL | MySQL op virtuele Azure-machines    |
 |:-------------------|:-----------------------------|:--------------------|
 | Service Level Agreement (SLA)                | Biedt een SLA van 99,99% Beschik baarheid| Maxi maal 99,95% Beschik baarheid met twee of meer exemplaren in dezelfde beschikbaarheidsset.<br/><br/>99,9% Beschik baarheid met een virtuele machine met één exemplaar met Premium Storage.<br/><br/>99,99% met Beschikbaarheidszones met meerdere exemplaren in meerdere beschikbaarheids sets.<br/><br/>Zie de [virtual machines Sla](https://azure.microsoft.com/support/legal/sla/virtual-machines/v1_8/). |
 | Patches besturings systeem        | Automatisch  | Beheerd door klanten |

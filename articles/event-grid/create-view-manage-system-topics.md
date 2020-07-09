@@ -1,17 +1,14 @@
 ---
 title: Systeem onderwerpen maken, weer geven en beheren in Azure Event Grid (Portal)
 description: In dit artikel wordt beschreven hoe u een bestaand systeem onderwerp weergeeft, Azure Event Grid systeem onderwerpen maakt met behulp van de Azure Portal.
-services: event-grid
-author: spelluru
-ms.service: event-grid
 ms.topic: conceptual
-ms.date: 06/02/2020
-ms.author: spelluru
-ms.openlocfilehash: 23b87812492485fc2336b8d2d35bf0426ede4772
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 07/07/2020
+ms.openlocfilehash: 2dbb0893668d72cfebf2d64e6515ff6ab6fed9bc
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84457232"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86115108"
 ---
 # <a name="create-view-and-manage-event-grid-system-topics-in-the-azure-portal"></a>Event Grid systeem onderwerpen maken, weer geven en beheren in de Azure Portal
 In dit artikel leest u hoe u systeem onderwerpen maakt en beheert met behulp van de Azure Portal. Zie [systeem onderwerpen](system-topics.md)voor een overzicht van systeem onderwerpen.

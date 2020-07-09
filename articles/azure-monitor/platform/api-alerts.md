@@ -4,11 +4,12 @@ description: Met de Log Analytics waarschuwing REST API kunt u waarschuwingen ma
 ms.subservice: logs
 ms.topic: conceptual
 ms.date: 07/29/2018
-ms.openlocfilehash: a85dad2ba638505233e5df769e55fa5bd7b8dafd
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 4ab2a1369fc4902afec7d62e44ef8e947864167f
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77664997"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86112048"
 ---
 # <a name="create-and-manage-alert-rules-in-log-analytics-with-rest-api"></a>Waarschuwings regels in Log Analytics maken en beheren met REST API 
 
@@ -37,25 +38,29 @@ Denk bijvoorbeeld aan een gebeurtenis query met een interval van 15 minuten en e
 ### <a name="retrieving-schedules"></a>Planningen ophalen
 Gebruik de Get-methode om alle schema's voor een opgeslagen zoek opdracht op te halen.
 
-    armclient get /subscriptions/{Subscription ID}/resourceGroups/{ResourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{Workspace Name}/savedSearches/{Search  ID}/schedules?api-version=2015-03-20
+```powershell
+armclient get /subscriptions/{Subscription ID}/resourceGroups/{ResourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{Workspace Name}/savedSearches/{Search  ID}/schedules?api-version=2015-03-20
+```
 
 Gebruik de Get-methode met een schema-ID om een bepaald schema op te halen voor een opgeslagen zoek opdracht.
 
-    armclient get /subscriptions/{Subscription ID}/resourceGroups/{ResourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{Workspace Name}/savedSearches/{Subscription ID}/schedules/{Schedule ID}?api-version=2015-03-20
+```powershell
+armclient get /subscriptions/{Subscription ID}/resourceGroups/{ResourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{Workspace Name}/savedSearches/{Subscription ID}/schedules/{Schedule ID}?api-version=2015-03-20
+```
 
 Hier volgt een voor beeld van een antwoord op een schema.
 
 ```json
 {
-    "value": [{
-        "id": "subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/sampleRG/providers/Microsoft.OperationalInsights/workspaces/MyWorkspace/savedSearches/0f0f4853-17f8-4ed1-9a03-8e888b0d16ec/schedules/a17b53ef-bd70-4ca4-9ead-83b00f2024a8",
-        "etag": "W/\"datetime'2016-02-25T20%3A54%3A49.8074679Z'\"",
-        "properties": {
-            "Interval": 15,
-            "QueryTimeSpan": 15,
-            "Enabled": true,
-        }
-    }]
+   "value": [{
+      "id": "subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/sampleRG/providers/Microsoft.OperationalInsights/workspaces/MyWorkspace/savedSearches/0f0f4853-17f8-4ed1-9a03-8e888b0d16ec/schedules/a17b53ef-bd70-4ca4-9ead-83b00f2024a8",
+      "etag": "W/\"datetime'2016-02-25T20%3A54%3A49.8074679Z'\"",
+      "properties": {
+         "Interval": 15,
+         "QueryTimeSpan": 15,
+         "Enabled": true,
+      }
+   }]
 }
 ```
 
@@ -65,21 +70,25 @@ Gebruik de put-methode met een unieke schema-ID om een nieuw schema te maken.  T
 > [!NOTE]
 > De naam voor alle opgeslagen Zoek opdrachten, planningen en acties die zijn gemaakt met de Log Analytics-API, moet een kleine letter zijn.
 
-    $scheduleJson = "{'properties': { 'Interval': 15, 'QueryTimeSpan':15, 'Enabled':'true' } }"
-    armclient put /subscriptions/{Subscription ID}/resourceGroups/{ResourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{Workspace Name}/savedSearches/{Search ID}/schedules/mynewschedule?api-version=2015-03-20 $scheduleJson
+```powershell
+$scheduleJson = "{'properties': { 'Interval': 15, 'QueryTimeSpan':15, 'Enabled':'true' } }"
+armclient put /subscriptions/{Subscription ID}/resourceGroups/{ResourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{Workspace Name}/savedSearches/{Search ID}/schedules/mynewschedule?api-version=2015-03-20 $scheduleJson
+```
 
 ### <a name="editing-a-schedule"></a>Een planning bewerken
 Gebruik de put-methode met een bestaande schema-ID voor dezelfde opgeslagen zoek opdracht om dat schema te wijzigen. in het onderstaande voor beeld is het schema uitgeschakeld. De hoofd tekst van de aanvraag moet de *ETAG* van het schema bevatten.
 
-      $scheduleJson = "{'etag': 'W/\"datetime'2016-02-25T20%3A54%3A49.8074679Z'\""','properties': { 'Interval': 15, 'QueryTimeSpan':15, 'Enabled':'false' } }"
-      armclient put /subscriptions/{Subscription ID}/resourceGroups/{ResourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{Workspace Name}/savedSearches/{Search ID}/schedules/mynewschedule?api-version=2015-03-20 $scheduleJson
-
+```powershell
+$scheduleJson = "{'etag': 'W/\"datetime'2016-02-25T20%3A54%3A49.8074679Z'\""','properties': { 'Interval': 15, 'QueryTimeSpan':15, 'Enabled':'false' } }"
+armclient put /subscriptions/{Subscription ID}/resourceGroups/{ResourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{Workspace Name}/savedSearches/{Search ID}/schedules/mynewschedule?api-version=2015-03-20 $scheduleJson
+```
 
 ### <a name="deleting-schedules"></a>Schema's verwijderen
 Gebruik de methode Delete met een schema-ID om een schema te verwijderen.
 
-    armclient delete /subscriptions/{Subscription ID}/resourceGroups/{ResourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{Workspace Name}/savedSearches/{Subscription ID}/schedules/{Schedule ID}?api-version=2015-03-20
-
+```powershell
+armclient delete /subscriptions/{Subscription ID}/resourceGroups/{ResourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{Workspace Name}/savedSearches/{Subscription ID}/schedules/{Schedule ID}?api-version=2015-03-20
+```
 
 ## <a name="actions"></a>Acties
 Een planning kan meerdere acties hebben. Een actie kan een of meer processen definiëren die moeten worden uitgevoerd, zoals het verzenden van een e-mail of het starten van een runbook, of het definiëren van een drempel waarde die bepaalt wanneer de resultaten van een zoek opdracht voldoen aan bepaalde criteria.  Bij sommige acties worden beide gedefinieerd, zodat de processen worden uitgevoerd wanneer aan de drempel wordt voldaan.
@@ -96,11 +105,15 @@ Alle acties hebben de eigenschappen in de volgende tabel.  Verschillende soorten
 
 Gebruik de Get-methode om alle acties voor een schema op te halen.
 
-    armclient get /subscriptions/{Subscription ID}/resourceGroups/{ResourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{Workspace Name}/savedSearches/{Search  ID}/schedules/{Schedule ID}/actions?api-version=2015-03-20
+```powershell
+armclient get /subscriptions/{Subscription ID}/resourceGroups/{ResourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{Workspace Name}/savedSearches/{Search  ID}/schedules/{Schedule ID}/actions?api-version=2015-03-20
+```
 
 Gebruik de Get-methode met de actie-ID om een bepaalde actie voor een schema op te halen.
 
-    armclient get /subscriptions/{Subscription ID}/resourceGroups/{ResourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{Workspace Name}/savedSearches/{Subscription ID}/schedules/{Schedule ID}/actions/{Action ID}?api-version=2015-03-20
+```powershell
+armclient get /subscriptions/{Subscription ID}/resourceGroups/{ResourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{Workspace Name}/savedSearches/{Subscription ID}/schedules/{Schedule ID}/actions/{Action ID}?api-version=2015-03-20
+```
 
 ### <a name="creating-or-editing-actions"></a>Acties maken of bewerken
 Gebruik de put-methode met een actie-ID die uniek is voor het schema om een nieuwe actie te maken.  Wanneer u een actie in de Log Analytics-console maakt, is een GUID voor de actie-ID.
@@ -116,7 +129,9 @@ De aanvraag indeling voor het maken van een nieuwe actie is afhankelijk van het 
 
 Gebruik de methode Delete met de actie-ID om een actie te verwijderen.
 
-    armclient delete /subscriptions/{Subscription ID}/resourceGroups/{ResourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{Workspace Name}/savedSearches/{Subscription ID}/schedules/{Schedule ID}/Actions/{Action ID}?api-version=2015-03-20
+```powershell
+armclient delete /subscriptions/{Subscription ID}/resourceGroups/{ResourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{Workspace Name}/savedSearches/{Subscription ID}/schedules/{Schedule ID}/Actions/{Action ID}?api-version=2015-03-20
+```
 
 ### <a name="alert-actions"></a>Waarschuwings acties
 Een planning moet één en slechts één waarschuwings actie hebben.  Waarschuwings acties hebben een of meer van de secties in de volgende tabel.  Deze worden hieronder beschreven.
@@ -143,26 +158,32 @@ Denk bijvoorbeeld aan een gebeurtenis query met een interval van 15 minuten, een
 
 Hier volgt een voor beeld van een antwoord voor een actie met alleen een drempel waarde.  
 
-    "etag": "W/\"datetime'2016-02-25T20%3A54%3A20.1302566Z'\"",
-    "properties": {
-        "Type": "Alert",
-        "Name": "My threshold action",
-        "Threshold": {
-            "Operator": "gt",
-            "Value": 10
-        },
-        "Version": 1
-    }
+```json
+"etag": "W/\"datetime'2016-02-25T20%3A54%3A20.1302566Z'\"",
+"properties": {
+   "Type": "Alert",
+   "Name": "My threshold action",
+   "Threshold": {
+      "Operator": "gt",
+      "Value": 10
+   },
+   "Version": 1
+}
+```
 
 Gebruik de put-methode met een unieke actie-ID om een nieuwe drempel actie voor een planning te maken.  
 
-    $thresholdJson = "{'properties': { 'Name': 'My Threshold', 'Version':'1', 'Type':'Alert', 'Threshold': { 'Operator': 'gt', 'Value': 10 } } }"
-    armclient put /subscriptions/{Subscription ID}/resourceGroups/{ResourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{Workspace Name}/savedSearches/{Search ID}/schedules/{Schedule ID}/actions/mythreshold?api-version=2015-03-20 $thresholdJson
+```powershell
+$thresholdJson = "{'properties': { 'Name': 'My Threshold', 'Version':'1', 'Type':'Alert', 'Threshold': { 'Operator': 'gt', 'Value': 10 } } }"
+armclient put /subscriptions/{Subscription ID}/resourceGroups/{ResourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{Workspace Name}/savedSearches/{Search ID}/schedules/{Schedule ID}/actions/mythreshold?api-version=2015-03-20 $thresholdJson
+```
 
 Gebruik de put-methode met een bestaande actie-ID om een drempel actie voor een planning te wijzigen.  De hoofd tekst van de aanvraag moet de ETAG van de actie bevatten.
 
-    $thresholdJson = "{'etag': 'W/\"datetime'2016-02-25T20%3A54%3A20.1302566Z'\"','properties': { 'Name': 'My Threshold', 'Version':'1', 'Type':'Alert', 'Threshold': { 'Operator': 'gt', 'Value': 10 } } }"
-    armclient put /subscriptions/{Subscription ID}/resourceGroups/{ResourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{Workspace Name}/savedSearches/{Search ID}/schedules/{Schedule ID}/actions/mythreshold?api-version=2015-03-20 $thresholdJson
+```powershell
+$thresholdJson = "{'etag': 'W/\"datetime'2016-02-25T20%3A54%3A20.1302566Z'\"','properties': { 'Name': 'My Threshold', 'Version':'1', 'Type':'Alert', 'Threshold': { 'Operator': 'gt', 'Value': 10 } } }"
+armclient put /subscriptions/{Subscription ID}/resourceGroups/{ResourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{Workspace Name}/savedSearches/{Search ID}/schedules/{Schedule ID}/actions/mythreshold?api-version=2015-03-20 $thresholdJson
+```
 
 #### <a name="severity"></a>Severity
 Met Log Analytics kunt u uw waarschuwingen in categorieën indelen, zodat u gemakkelijker beheer en sorteren kunt maken. De gedefinieerde ernst van de waarschuwing is: informatief, waarschuwing en kritiek. Deze worden toegewezen aan de genormaliseerde Ernst schaal van Azure-waarschuwingen als:
@@ -175,26 +196,33 @@ Met Log Analytics kunt u uw waarschuwingen in categorieën indelen, zodat u gema
 
 Hieronder volgt een voor beeld van een reactie op een actie met alleen een drempel waarde en ernst. 
 
-    "etag": "W/\"datetime'2016-02-25T20%3A54%3A20.1302566Z'\"",
-    "properties": {
-        "Type": "Alert",
-        "Name": "My threshold action",
-        "Threshold": {
-            "Operator": "gt",
-            "Value": 10
-        },
-        "Severity": "critical",
-        "Version": 1    }
+```json
+"etag": "W/\"datetime'2016-02-25T20%3A54%3A20.1302566Z'\"",
+"properties": {
+   "Type": "Alert",
+   "Name": "My threshold action",
+   "Threshold": {
+      "Operator": "gt",
+      "Value": 10
+   },
+   "Severity": "critical",
+   "Version": 1
+}
+```
 
 Gebruik de put-methode met een unieke actie-ID om een nieuwe actie te maken voor een planning met de ernst.  
 
-    $thresholdWithSevJson = "{'properties': { 'Name': 'My Threshold', 'Version':'1','Severity': 'critical', 'Type':'Alert', 'Threshold': { 'Operator': 'gt', 'Value': 10 } } }"
-    armclient put /subscriptions/{Subscription ID}/resourceGroups/{ResourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{Workspace Name}/savedSearches/{Search ID}/schedules/{Schedule ID}/actions/mythreshold?api-version=2015-03-20 $thresholdWithSevJson
+```powershell
+$thresholdWithSevJson = "{'properties': { 'Name': 'My Threshold', 'Version':'1','Severity': 'critical', 'Type':'Alert', 'Threshold': { 'Operator': 'gt', 'Value': 10 } } }"
+armclient put /subscriptions/{Subscription ID}/resourceGroups/{ResourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{Workspace Name}/savedSearches/{Search ID}/schedules/{Schedule ID}/actions/mythreshold?api-version=2015-03-20 $thresholdWithSevJson
+```
 
 Gebruik de put-methode met een bestaande actie-ID om de ernst actie voor een schema te wijzigen.  De hoofd tekst van de aanvraag moet de ETAG van de actie bevatten.
 
-    $thresholdWithSevJson = "{'etag': 'W/\"datetime'2016-02-25T20%3A54%3A20.1302566Z'\"','properties': { 'Name': 'My Threshold', 'Version':'1','Severity': 'critical', 'Type':'Alert', 'Threshold': { 'Operator': 'gt', 'Value': 10 } } }"
-    armclient put /subscriptions/{Subscription ID}/resourceGroups/{ResourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{Workspace Name}/savedSearches/{Search ID}/schedules/{Schedule ID}/actions/mythreshold?api-version=2015-03-20 $thresholdWithSevJson
+```powershell
+$thresholdWithSevJson = "{'etag': 'W/\"datetime'2016-02-25T20%3A54%3A20.1302566Z'\"','properties': { 'Name': 'My Threshold', 'Version':'1','Severity': 'critical', 'Type':'Alert', 'Threshold': { 'Operator': 'gt', 'Value': 10 } } }"
+armclient put /subscriptions/{Subscription ID}/resourceGroups/{ResourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{Workspace Name}/savedSearches/{Search ID}/schedules/{Schedule ID}/actions/mythreshold?api-version=2015-03-20 $thresholdWithSevJson
+```
 
 #### <a name="suppress"></a>Spanning
 Op Log Analytics gebaseerde query waarschuwingen worden geactiveerd elke keer dat er een drempel waarde wordt bereikt of wordt overschreden. Op basis van de logica die in de query is geïmpliceerd, kan dit ertoe leiden dat een waarschuwing wordt geactiveerd voor een reeks van intervallen en daarom worden meldingen ook voortdurend verzonden. Om dit scenario te voor komen, kan een gebruiker de optie onderdrukken instellen Log Analytics om te wachten op een vastgestelde hoeveelheid tijd voordat de melding de tweede keer voor de waarschuwings regel wordt geactiveerd. Als onderdrukken is ingesteld op 30 minuten; vervolgens wordt de waarschuwing de eerste keer geactiveerd en worden er meldingen verzonden die zijn geconfigureerd. Daarna moet u 30 minuten wachten voordat de melding voor de waarschuwings regel opnieuw wordt gebruikt. In de tussentijdse periode wordt de waarschuwings regel alleen uitgevoerd voor uitvoering-alleen-melding wordt onderdrukt door Log Analytics voor opgegeven tijd, ongeacht het aantal keren dat de waarschuwings regel in deze periode is geactiveerd.
@@ -203,29 +231,36 @@ De eigenschap onderdrukking van Log Analytics waarschuwings regel is opgegeven m
 
 Hier volgt een voor beeld van een antwoord voor een actie met alleen een drempel waarde, ernst en onderdrukking-eigenschap
 
-    "etag": "W/\"datetime'2016-02-25T20%3A54%3A20.1302566Z'\"",
-    "properties": {
-        "Type": "Alert",
-        "Name": "My threshold action",
-        "Threshold": {
-            "Operator": "gt",
-            "Value": 10
-        },
-        "Throttling": {
-          "DurationInMinutes": 30
-        },
-        "Severity": "critical",
-        "Version": 1    }
+```json
+"etag": "W/\"datetime'2016-02-25T20%3A54%3A20.1302566Z'\"",
+"properties": {
+   "Type": "Alert",
+   "Name": "My threshold action",
+   "Threshold": {
+      "Operator": "gt",
+      "Value": 10
+   },
+   "Throttling": {
+   "DurationInMinutes": 30
+   },
+   "Severity": "critical",
+   "Version": 1
+}
+```
 
 Gebruik de put-methode met een unieke actie-ID om een nieuwe actie te maken voor een planning met de ernst.  
 
-    $AlertSuppressJson = "{'properties': { 'Name': 'My Threshold', 'Version':'1','Severity': 'critical', 'Type':'Alert', 'Throttling': { 'DurationInMinutes': 30 },'Threshold': { 'Operator': 'gt', 'Value': 10 } } }"
-    armclient put /subscriptions/{Subscription ID}/resourceGroups/{ResourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{Workspace Name}/savedSearches/{Search ID}/schedules/{Schedule ID}/actions/myalert?api-version=2015-03-20 $AlertSuppressJson
+```powershell
+$AlertSuppressJson = "{'properties': { 'Name': 'My Threshold', 'Version':'1','Severity': 'critical', 'Type':'Alert', 'Throttling': { 'DurationInMinutes': 30 },'Threshold': { 'Operator': 'gt', 'Value': 10 } } }"
+armclient put /subscriptions/{Subscription ID}/resourceGroups/{ResourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{Workspace Name}/savedSearches/{Search ID}/schedules/{Schedule ID}/actions/myalert?api-version=2015-03-20 $AlertSuppressJson
+```
 
 Gebruik de put-methode met een bestaande actie-ID om de ernst actie voor een schema te wijzigen.  De hoofd tekst van de aanvraag moet de ETAG van de actie bevatten.
 
-    $AlertSuppressJson = "{'etag': 'W/\"datetime'2016-02-25T20%3A54%3A20.1302566Z'\"','properties': { 'Name': 'My Threshold', 'Version':'1','Severity': 'critical', 'Type':'Alert', 'Throttling': { 'DurationInMinutes': 30 },'Threshold': { 'Operator': 'gt', 'Value': 10 } } }"
-    armclient put /subscriptions/{Subscription ID}/resourceGroups/{ResourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{Workspace Name}/savedSearches/{Search ID}/schedules/{Schedule ID}/actions/myalert?api-version=2015-03-20 $AlertSuppressJson
+```powershell
+$AlertSuppressJson = "{'etag': 'W/\"datetime'2016-02-25T20%3A54%3A20.1302566Z'\"','properties': { 'Name': 'My Threshold', 'Version':'1','Severity': 'critical', 'Type':'Alert', 'Throttling': { 'DurationInMinutes': 30 },'Threshold': { 'Operator': 'gt', 'Value': 10 } } }"
+armclient put /subscriptions/{Subscription ID}/resourceGroups/{ResourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{Workspace Name}/savedSearches/{Search ID}/schedules/{Schedule ID}/actions/myalert?api-version=2015-03-20 $AlertSuppressJson
+```
 
 #### <a name="action-groups"></a>Actiegroepen
 Alle waarschuwingen in azure, gebruiken actie groep als het standaard mechanisme voor het afhandelen van acties. Met actie groep kunt u uw acties één keer opgeven en vervolgens de actie groep koppelen aan meerdere waarschuwingen-in Azure. Zonder dat dit nodig is om herhaaldelijk dezelfde acties opnieuw te declareren. Actie groepen ondersteunen meerdere acties, zoals e-mail, SMS, spraak oproep, ITSM-verbinding, Automation-Runbook, webhook-URI en meer. 
@@ -234,33 +269,39 @@ Voor gebruikers die hun waarschuwingen hebben uitgebreid naar Azure, moeten er n
 
 Als u de koppeling van een actie groep wilt toevoegen aan een waarschuwing, geeft u de unieke Azure Resource Manager-ID van de actie groep op in de definitie van de waarschuwing. Hieronder vindt u een voor beeld van een afbeelding:
 
-     "etag": "W/\"datetime'2017-12-13T10%3A52%3A21.1697364Z'\"",
-      "properties": {
-        "Type": "Alert",
-        "Name": "test-alert",
-        "Description": "I need to put a description here",
-        "Threshold": {
-          "Operator": "gt",
-          "Value": 12
-        },
-        "AzNsNotification": {
-          "GroupIds": [
-            "/subscriptions/1234a45-123d-4321-12aa-123b12a5678/resourcegroups/my-resource-group/providers/microsoft.insights/actiongroups/test-actiongroup"
-          ]
-        },
-        "Severity": "critical",
-        "Version": 1
-      },
+```json
+"etag": "W/\"datetime'2017-12-13T10%3A52%3A21.1697364Z'\"",
+"properties": {
+   "Type": "Alert",
+   "Name": "test-alert",
+   "Description": "I need to put a description here",
+   "Threshold": {
+      "Operator": "gt",
+      "Value": 12
+   },
+   "AzNsNotification": {
+      "GroupIds": [
+         "/subscriptions/1234a45-123d-4321-12aa-123b12a5678/resourcegroups/my-resource-group/providers/microsoft.insights/actiongroups/test-actiongroup"
+      ]
+   },
+   "Severity": "critical",
+   "Version": 1
+}
+```
 
 Gebruik de put-methode met een unieke actie-ID om al een bestaande actie groep aan een planning te koppelen.  Hier volgt een voor beeld van het gebruik van de afbeelding.
 
-    $AzNsJson = "{'properties': { 'Name': 'test-alert', 'Version':'1', 'Type':'Alert', 'Threshold': { 'Operator': 'gt', 'Value': 12 },'Severity': 'critical', 'AzNsNotification': {'GroupIds': ['subscriptions/1234a45-123d-4321-12aa-123b12a5678/resourcegroups/my-resource-group/providers/microsoft.insights/actiongroups/test-actiongroup']} } }"
-    armclient put /subscriptions/{Subscription ID}/resourceGroups/{Resource Group Name}/Microsoft.OperationalInsights/workspaces/{Workspace Name}/savedSearches/{Search ID}/schedules/{Schedule ID}/actions/myAzNsaction?api-version=2015-03-20 $AzNsJson
+```powershell
+$AzNsJson = "{'properties': { 'Name': 'test-alert', 'Version':'1', 'Type':'Alert', 'Threshold': { 'Operator': 'gt', 'Value': 12 },'Severity': 'critical', 'AzNsNotification': {'GroupIds': ['subscriptions/1234a45-123d-4321-12aa-123b12a5678/resourcegroups/my-resource-group/providers/microsoft.insights/actiongroups/test-actiongroup']} } }"
+armclient put /subscriptions/{Subscription ID}/resourceGroups/{Resource Group Name}/Microsoft.OperationalInsights/workspaces/{Workspace Name}/savedSearches/{Search ID}/schedules/{Schedule ID}/actions/myAzNsaction?api-version=2015-03-20 $AzNsJson
+```
 
 Gebruik de put-methode met een bestaande actie-ID voor het wijzigen van een actie groep die is gekoppeld aan een schema.  De hoofd tekst van de aanvraag moet de ETAG van de actie bevatten.
 
-    $AzNsJson = "{'etag': 'datetime'2017-12-13T10%3A52%3A21.1697364Z'\"', 'properties': { 'Name': 'test-alert', 'Version':'1', 'Type':'Alert', 'Threshold': { 'Operator': 'gt', 'Value': 12 },'Severity': 'critical', 'AzNsNotification': { 'GroupIds': ['subscriptions/1234a45-123d-4321-12aa-123b12a5678/resourcegroups/my-resource-group/providers/microsoft.insights/actiongroups/test-actiongroup'] } } }"
-    armclient put /subscriptions/{Subscription ID}/resourceGroups/{Resource Group Name}/Microsoft.OperationalInsights/workspaces/{Workspace Name}/savedSearches/{Search ID}/schedules/{Schedule ID}/actions/myAzNsaction?api-version=2015-03-20 $AzNsJson
+```powershell
+$AzNsJson = "{'etag': 'datetime'2017-12-13T10%3A52%3A21.1697364Z'\"', 'properties': { 'Name': 'test-alert', 'Version':'1', 'Type':'Alert', 'Threshold': { 'Operator': 'gt', 'Value': 12 },'Severity': 'critical', 'AzNsNotification': { 'GroupIds': ['subscriptions/1234a45-123d-4321-12aa-123b12a5678/resourcegroups/my-resource-group/providers/microsoft.insights/actiongroups/test-actiongroup'] } } }"
+armclient put /subscriptions/{Subscription ID}/resourceGroups/{Resource Group Name}/Microsoft.OperationalInsights/workspaces/{Workspace Name}/savedSearches/{Search ID}/schedules/{Schedule ID}/actions/myAzNsaction?api-version=2015-03-20 $AzNsJson
+```
 
 #### <a name="customize-actions"></a>Acties aanpassen
 Standaard worden acties gevolgd door de standaard sjabloon en-indeling voor meldingen. Maar de gebruiker kan sommige acties aanpassen, zelfs als deze worden beheerd door actie groepen. Op dit moment kunnen aanpassingen voor e-mail onderwerp en webhook Payload worden uitgevoerd.
@@ -268,70 +309,81 @@ Standaard worden acties gevolgd door de standaard sjabloon en-indeling voor meld
 ##### <a name="customize-e-mail-subject-for-action-group"></a>E-mail onderwerp aanpassen voor actie groep
 Standaard is het e-mail onderwerp voor waarschuwingen: waarschuwings melding `<AlertName>` voor `<WorkspaceName>` . Maar dit kan worden aangepast, zodat u specifieke woorden of labels kunt gebruiken om eenvoudig filter regels in uw postvak in te maken. De details van de e-mailkop tekst moeten worden verzonden, samen met ActionGroup-Details, zoals hieronder wordt beschreven.
 
-     "etag": "W/\"datetime'2017-12-13T10%3A52%3A21.1697364Z'\"",
-      "properties": {
-        "Type": "Alert",
-        "Name": "test-alert",
-        "Description": "I need to put a description here",
-        "Threshold": {
-          "Operator": "gt",
-          "Value": 12
-        },
-        "AzNsNotification": {
-          "GroupIds": [
-            "/subscriptions/1234a45-123d-4321-12aa-123b12a5678/resourcegroups/my-resource-group/providers/microsoft.insights/actiongroups/test-actiongroup"
-          ],
-          "CustomEmailSubject": "Azure Alert fired"
-        },
-        "Severity": "critical",
-        "Version": 1
-      },
+```json
+"etag": "W/\"datetime'2017-12-13T10%3A52%3A21.1697364Z'\"",
+"properties": {
+   "Type": "Alert",
+   "Name": "test-alert",
+   "Description": "I need to put a description here",
+   "Threshold": {
+      "Operator": "gt",
+      "Value": 12
+   },
+   "AzNsNotification": {
+      "GroupIds": [
+         "/subscriptions/1234a45-123d-4321-12aa-123b12a5678/resourcegroups/my-resource-group/providers/microsoft.insights/actiongroups/test-actiongroup"
+      ],
+      "CustomEmailSubject": "Azure Alert fired"
+   },
+   "Severity": "critical",
+   "Version": 1
+}
+```
 
 Gebruik de put-methode met een unieke actie-ID om al een bestaande actie groep te koppelen aan een planning.  Hier volgt een voor beeld van het gebruik van de afbeelding.
 
-    $AzNsJson = "{'properties': { 'Name': 'test-alert', 'Version':'1', 'Type':'Alert', 'Threshold': { 'Operator': 'gt', 'Value': 12 },'Severity': 'critical', 'AzNsNotification': {'GroupIds': ['subscriptions/1234a45-123d-4321-12aa-123b12a5678/resourcegroups/my-resource-group/providers/microsoft.insights/actiongroups/test-actiongroup'], 'CustomEmailSubject': 'Azure Alert fired'} } }"
-    armclient put /subscriptions/{Subscription ID}/resourceGroups/{Resource Group Name}/Microsoft.OperationalInsights/workspaces/{Workspace Name}/savedSearches/{Search ID}/schedules/{Schedule ID}/actions/myAzNsaction?api-version=2015-03-20 $AzNsJson
+```powershell
+$AzNsJson = "{'properties': { 'Name': 'test-alert', 'Version':'1', 'Type':'Alert', 'Threshold': { 'Operator': 'gt', 'Value': 12 },'Severity': 'critical', 'AzNsNotification': {'GroupIds': ['subscriptions/1234a45-123d-4321-12aa-123b12a5678/resourcegroups/my-resource-group/providers/microsoft.insights/actiongroups/test-actiongroup'], 'CustomEmailSubject': 'Azure Alert fired'} } }"
+armclient put /subscriptions/{Subscription ID}/resourceGroups/{Resource Group Name}/Microsoft.OperationalInsights/workspaces/{Workspace Name}/savedSearches/{Search ID}/schedules/{Schedule ID}/actions/myAzNsaction?api-version=2015-03-20 $AzNsJson
+```
 
 Gebruik de put-methode met een bestaande actie-ID voor het wijzigen van een actie groep die is gekoppeld aan een schema.  De hoofd tekst van de aanvraag moet de ETAG van de actie bevatten.
 
-    $AzNsJson = "{'etag': 'datetime'2017-12-13T10%3A52%3A21.1697364Z'\"', 'properties': { 'Name': 'test-alert', 'Version':'1', 'Type':'Alert', 'Threshold': { 'Operator': 'gt', 'Value': 12 },'Severity': 'critical', 'AzNsNotification': {'GroupIds': ['subscriptions/1234a45-123d-4321-12aa-123b12a5678/resourcegroups/my-resource-group/providers/microsoft.insights/actiongroups/test-actiongroup']}, 'CustomEmailSubject': 'Azure Alert fired' } }"
-    armclient put /subscriptions/{Subscription ID}/resourceGroups/{Resource Group Name}/Microsoft.OperationalInsights/workspaces/{Workspace Name}/savedSearches/{Search ID}/schedules/{Schedule ID}/actions/myAzNsaction?api-version=2015-03-20 $AzNsJson
+```powershell
+$AzNsJson = "{'etag': 'datetime'2017-12-13T10%3A52%3A21.1697364Z'\"', 'properties': { 'Name': 'test-alert', 'Version':'1', 'Type':'Alert', 'Threshold': { 'Operator': 'gt', 'Value': 12 },'Severity': 'critical', 'AzNsNotification': {'GroupIds': ['subscriptions/1234a45-123d-4321-12aa-123b12a5678/resourcegroups/my-resource-group/providers/microsoft.insights/actiongroups/test-actiongroup']}, 'CustomEmailSubject': 'Azure Alert fired' } }"
+armclient put /subscriptions/{Subscription ID}/resourceGroups/{Resource Group Name}/Microsoft.OperationalInsights/workspaces/{Workspace Name}/savedSearches/{Search ID}/schedules/{Schedule ID}/actions/myAzNsaction?api-version=2015-03-20 $AzNsJson
+```
 
 ##### <a name="customize-webhook-payload-for-action-group"></a>De nettolading van de webhook voor de actie groep aanpassen
 De webhook die wordt verzonden via de actie groep voor log Analytics, heeft standaard een vaste structuur. U kunt de JSON-nettolading echter aanpassen met behulp van specifieke variabelen die worden ondersteund om te voldoen aan de vereisten van het webhook-eind punt. Zie [webhook-actie voor waarschuwings regels voor logboeken](../../azure-monitor/platform/alerts-log-webhook.md)voor meer informatie. 
 
 De gegevens voor het aanpassen van de webhook moeten samen met ActionGroup-Details worden verzonden en worden toegepast op alle webhook-URI'S die zijn opgegeven in de actie groep. zoals in het voor beeld hieronder.
 
-     "etag": "W/\"datetime'2017-12-13T10%3A52%3A21.1697364Z'\"",
-      "properties": {
-        "Type": "Alert",
-        "Name": "test-alert",
-        "Description": "I need to put a description here",
-        "Threshold": {
-          "Operator": "gt",
-          "Value": 12
-        },
-        "AzNsNotification": {
-          "GroupIds": [
-            "/subscriptions/1234a45-123d-4321-12aa-123b12a5678/resourcegroups/my-resource-group/providers/microsoft.insights/actiongroups/test-actiongroup"
-          ],
-          "CustomWebhookPayload": "{\"field1\":\"value1\",\"field2\":\"value2\"}",
-          "CustomEmailSubject": "Azure Alert fired"
-        },
-        "Severity": "critical",
-        "Version": 1
-      },
+```json
+"etag": "W/\"datetime'2017-12-13T10%3A52%3A21.1697364Z'\"",
+"properties": {
+   "Type": "Alert",
+   "Name": "test-alert",
+   "Description": "I need to put a description here",
+   "Threshold": {
+      "Operator": "gt",
+      "Value": 12
+   },
+   "AzNsNotification": {
+      "GroupIds": [
+         "/subscriptions/1234a45-123d-4321-12aa-123b12a5678/resourcegroups/my-resource-group/providers/microsoft.insights/actiongroups/test-actiongroup"
+      ],
+   "CustomWebhookPayload": "{\"field1\":\"value1\",\"field2\":\"value2\"}",
+   "CustomEmailSubject": "Azure Alert fired"
+   },
+   "Severity": "critical",
+   "Version": 1
+},
+```
 
 Gebruik de put-methode met een unieke actie-ID om al een bestaande actie groep te koppelen aan een planning.  Hier volgt een voor beeld van het gebruik van de afbeelding.
 
-    $AzNsJson = "{'properties': { 'Name': 'test-alert', 'Version':'1', 'Type':'Alert', 'Threshold': { 'Operator': 'gt', 'Value': 12 },'Severity': 'critical', 'AzNsNotification': {'GroupIds': ['subscriptions/1234a45-123d-4321-12aa-123b12a5678/resourcegroups/my-resource-group/providers/microsoft.insights/actiongroups/test-actiongroup'], 'CustomEmailSubject': 'Azure Alert fired','CustomWebhookPayload': '{\"field1\":\"value1\",\"field2\":\"value2\"}'} } }"
-    armclient put /subscriptions/{Subscription ID}/resourceGroups/{Resource Group Name}/Microsoft.OperationalInsights/workspaces/{Workspace Name}/savedSearches/{Search ID}/schedules/{Schedule ID}/actions/myAzNsaction?api-version=2015-03-20 $AzNsJson
+```powershell
+$AzNsJson = "{'properties': { 'Name': 'test-alert', 'Version':'1', 'Type':'Alert', 'Threshold': { 'Operator': 'gt', 'Value': 12 },'Severity': 'critical', 'AzNsNotification': {'GroupIds': ['subscriptions/1234a45-123d-4321-12aa-123b12a5678/resourcegroups/my-resource-group/providers/microsoft.insights/actiongroups/test-actiongroup'], 'CustomEmailSubject': 'Azure Alert fired','CustomWebhookPayload': '{\"field1\":\"value1\",\"field2\":\"value2\"}'} } }"
+armclient put /subscriptions/{Subscription ID}/resourceGroups/{Resource Group Name}/Microsoft.OperationalInsights/workspaces/{Workspace Name}/savedSearches/{Search ID}/schedules/{Schedule ID}/actions/myAzNsaction?api-version=2015-03-20 $AzNsJson
+```
 
 Gebruik de put-methode met een bestaande actie-ID voor het wijzigen van een actie groep die is gekoppeld aan een schema.  De hoofd tekst van de aanvraag moet de ETAG van de actie bevatten.
 
-    $AzNsJson = "{'etag': 'datetime'2017-12-13T10%3A52%3A21.1697364Z'\"', 'properties': { 'Name': 'test-alert', 'Version':'1', 'Type':'Alert', 'Threshold': { 'Operator': 'gt', 'Value': 12 },'Severity': 'critical', 'AzNsNotification': {'GroupIds': ['subscriptions/1234a45-123d-4321-12aa-123b12a5678/resourcegroups/my-resource-group/providers/microsoft.insights/actiongroups/test-actiongroup']}, 'CustomEmailSubject': 'Azure Alert fired','CustomWebhookPayload': '{\"field1\":\"value1\",\"field2\":\"value2\"}' } }"
-    armclient put /subscriptions/{Subscription ID}/resourceGroups/{Resource Group Name}/Microsoft.OperationalInsights/workspaces/{Workspace Name}/savedSearches/{Search ID}/schedules/{Schedule ID}/actions/myAzNsaction?api-version=2015-03-20 $AzNsJson
-
+```powershell
+$AzNsJson = "{'etag': 'datetime'2017-12-13T10%3A52%3A21.1697364Z'\"', 'properties': { 'Name': 'test-alert', 'Version':'1', 'Type':'Alert', 'Threshold': { 'Operator': 'gt', 'Value': 12 },'Severity': 'critical', 'AzNsNotification': {'GroupIds': ['subscriptions/1234a45-123d-4321-12aa-123b12a5678/resourcegroups/my-resource-group/providers/microsoft.insights/actiongroups/test-actiongroup']}, 'CustomEmailSubject': 'Azure Alert fired','CustomWebhookPayload': '{\"field1\":\"value1\",\"field2\":\"value2\"}' } }"
+armclient put /subscriptions/{Subscription ID}/resourceGroups/{Resource Group Name}/Microsoft.OperationalInsights/workspaces/{Workspace Name}/savedSearches/{Search ID}/schedules/{Schedule ID}/actions/myAzNsaction?api-version=2015-03-20 $AzNsJson
+```
 
 ## <a name="next-steps"></a>Volgende stappen
 

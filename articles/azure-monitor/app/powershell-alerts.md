@@ -3,11 +3,12 @@ title: Power shell gebruiken om waarschuwingen in te stellen in Application Insi
 description: De configuratie van Application Insights automatiseren om e-mails over metrische wijzigingen te ontvangen.
 ms.topic: conceptual
 ms.date: 10/31/2016
-ms.openlocfilehash: f35658b08eff7574448e3c72b103178b66acbbe0
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: ea33ecfbc02bfed75a66e751ce1788474a6d0e8f
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83701832"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86111300"
 ---
 # <a name="use-powershell-to-set-alerts-in-application-insights"></a>PowerShell gebruiken om waarschuwingen in te stellen in Application Insights
 
@@ -31,28 +32,35 @@ Installeer de Azure Power shell-module op de computer waarop u de scripts wilt u
 ## <a name="connect-to-azure"></a>Verbinding maken met Azure
 Start Azure PowerShell en [Maak verbinding met uw abonnement](/powershell/azure/overview):
 
-```powershell
-
-    Add-AzAccount
+```azurepowershell
+Add-AzAccount
 ```
 
 
 ## <a name="get-alerts"></a>Waarschuwingen ophalen
-    Get-AzAlertRule -ResourceGroup "Fabrikam" [-Name "My rule"] [-DetailedOutput]
+
+```azurepowershell
+Get-AzAlertRule -ResourceGroup "Fabrikam" `
+  [-Name "My rule"] `
+  [-DetailedOutput]
+```
 
 ## <a name="add-alert"></a>Waarschuwing toevoegen
-    Add-AzMetricAlertRule  -Name "{ALERT NAME}" -Description "{TEXT}" `
-     -ResourceGroup "{GROUP NAME}" `
-     -ResourceId "/subscriptions/{SUBSCRIPTION ID}/resourcegroups/{GROUP NAME}/providers/microsoft.insights/components/{APP RESOURCE NAME}" `
-     -MetricName "{METRIC NAME}" `
-     -Operator GreaterThan  `
-     -Threshold {NUMBER}   `
-     -WindowSize {HH:MM:SS}  `
-     [-SendEmailToServiceOwners] `
-     [-CustomEmails "EMAIL1@X.COM","EMAIL2@Y.COM" ] `
-     -Location "East US" // must be East US at present
-     -RuleType Metric
 
+```azurepowershell
+Add-AzMetricAlertRule -Name "{ALERT NAME}" `
+  -Description "{TEXT}" `
+  -ResourceGroup "{GROUP NAME}" `
+  -ResourceId "/subscriptions/{SUBSCRIPTION ID}/resourcegroups/{GROUP NAME}/providers/microsoft.insights/components/{APP RESOURCE NAME}" `
+  -MetricName "{METRIC NAME}" `
+  -Operator GreaterThan `
+  -Threshold {NUMBER}  `
+  -WindowSize {HH:MM:SS} `
+  [-SendEmailToServiceOwners] `
+  [-CustomEmails "EMAIL1@X.COM","EMAIL2@Y.COM"] `
+  -Location "East US" // must be East US at present `
+  -RuleType Metric
+```
 
 
 ## <a name="example-1"></a>Voorbeeld 1
@@ -60,30 +68,35 @@ Stuur mij een e-mail als het antwoord van de server op HTTP-aanvragen, gemiddeld
 
 De GUID is de abonnements-ID (niet de instrumentatie sleutel van de toepassing).
 
-    Add-AzMetricAlertRule -Name "slow responses" `
-     -Description "email me if the server responds slowly" `
-     -ResourceGroup "Fabrikam" `
-     -ResourceId "/subscriptions/00000000-0000-0000-0000-000000000000/resourcegroups/Fabrikam/providers/microsoft.insights/components/IceCreamWebApp" `
-     -MetricName "request.duration" `
-     -Operator GreaterThan `
-     -Threshold 1 `
-     -WindowSize 00:05:00 `
-     -SendEmailToServiceOwners `
-     -Location "East US" -RuleType Metric
+```azurepowershell
+Add-AzMetricAlertRule -Name "slow responses" `
+  -ResourceGroup "Fabrikam" `
+  -ResourceId "/subscriptions/00000000-0000-0000-0000-000000000000/resourcegroups/Fabrikam/providers/microsoft.insights/components/IceCreamWebApp" `
+  -MetricName "request.duration" `
+  -Operator GreaterThan `
+  -Threshold 1 `
+  -WindowSize 00:05:00 `
+  -SendEmailToServiceOwners `
+  -Location "East US" `
+  -RuleType Metric
+```
 
 ## <a name="example-2"></a>Voorbeeld 2
 Ik heb een toepassing waarin ik [TrackMetric ()](../../azure-monitor/app/api-custom-events-metrics.md#trackmetric) gebruik om een metrische waarde met de naam ' salesPerHour ' te rapporteren. Een e-mail verzenden naar mijn collega's als "salesPerHour" onder 100 daalt, gemiddeld meer dan 24 uur.
 
-    Add-AzMetricAlertRule -Name "poor sales" `
-     -Description "slow sales alert" `
-     -ResourceGroup "Fabrikam" `
-     -ResourceId "/subscriptions/00000000-0000-0000-0000-000000000000/resourcegroups/Fabrikam/providers/microsoft.insights/components/IceCreamWebApp" `
-     -MetricName "salesPerHour" `
-     -Operator LessThan `
-     -Threshold 100 `
-     -WindowSize 24:00:00 `
-     -CustomEmails "satish@fabrikam.com","lei@fabrikam.com" `
-     -Location "East US" -RuleType Metric
+```azurepowershell
+Add-AzMetricAlertRule -Name "poor sales" `
+  -Description "slow sales alert" `
+  -ResourceGroup "Fabrikam" `
+  -ResourceId "/subscriptions/00000000-0000-0000-0000-000000000000/resourcegroups/Fabrikam/providers/microsoft.insights/components/IceCreamWebApp" `
+  -MetricName "salesPerHour" `
+  -Operator LessThan `
+  -Threshold 100 `
+  -WindowSize 24:00:00 `
+  -CustomEmails "satish@fabrikam.com","lei@fabrikam.com" `
+  -Location "East US" `
+  -RuleType Metric
+```
 
 Dezelfde regel kan worden gebruikt voor de metrische gegevens die worden gerapporteerd met behulp van de [para meter meet](../../azure-monitor/app/api-custom-events-metrics.md#properties) van een andere tracerings aanroep, zoals track event of trackPageView.
 
@@ -125,7 +138,7 @@ De metrische gegevens worden verzonden door verschillende telemetrie-modules:
 ## <a name="webhooks"></a>Webhooks
 U kunt [uw reactie op een waarschuwing automatiseren](../../azure-monitor/platform/alerts-webhooks.md). Azure roept een webadres van uw keuze aan wanneer een waarschuwing wordt gegenereerd.
 
-## <a name="see-also"></a>Zie tevens
+## <a name="see-also"></a>Zie ook
 * [Script voor het configureren van Application Insights](https://docs.microsoft.com/azure/azure-monitor/app/create-new-resource#creating-a-resource-automatically)
 * [Application Insights-en web-test resources maken op basis van sjablonen](powershell.md)
 * [Koppelings Microsoft Azure Diagnostics automatiseren voor Application Insights](powershell-azure-diagnostics.md)

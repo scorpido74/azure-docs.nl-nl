@@ -1,18 +1,16 @@
 ---
 title: Bewerkings-API ophalen-Azure Marketplace
 description: API voor het ophalen van alle bewerkingen op de aanbieding of voor het ophalen van een bepaalde bewerking voor de opgegeven operationId.
-author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: reference
 ms.date: 04/08/2020
-ms.author: dsindona
-ms.openlocfilehash: bf980f7c60cd43a4a37a481b96dce737a91d03aa
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: c0611cb3cbc24e2b105cdef134e30a7c2fbdd445
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85516204"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86113459"
 ---
 # <a name="retrieve-operations"></a>Bewerkingen ophalen
 

@@ -10,11 +10,12 @@ ms.service: storage
 ms.subservice: common
 services: storage
 tags: ''
-ms.openlocfilehash: 2197a149235c0dca98a24a57549538b2a4cbb1c8
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 28d7f6a9fa5d128783f2eb1dfcbcb75775cc499e
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "74196510"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86113102"
 ---
 # <a name="troubleshoot-latency-using-storage-analytics-logs"></a>Problemen met latentie oplossen met behulp van logboeken voor Opslaganalyse
 
@@ -92,7 +93,7 @@ De volgende stappen laten zien hoe u latentie problemen kunt identificeren en op
 
    * Client latentie = end-to-end latentie – server latentie
 
-          * Example: 8453 – 391 = 8062ms
+        Voor beeld: 8453 – 391 = 8062ms
 
    De volgende tabel bevat informatie over de OperationType-en RequestStatus-resultaten met een hoge latentie:
 

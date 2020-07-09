@@ -4,14 +4,14 @@ description: Meer informatie over het instellen en beheren van gegevens versleut
 author: kummanish
 ms.author: manishku
 ms.service: mysql
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 03/30/2020
-ms.openlocfilehash: 3c33fdb114356af7707c1aae2eddefd81bf10b9f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: e6cb3e5db1c7fae3b0542557d2dae8239e0624f5
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82185826"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86114615"
 ---
 # <a name="data-encryption-for-azure-database-for-mysql-by-using-the-azure-cli"></a>Gegevens versleuteling voor Azure Database for MySQL met behulp van de Azure CLI
 
@@ -22,17 +22,18 @@ Meer informatie over het gebruik van de Azure CLI voor het instellen en beheren 
 * U moet een Azure-abonnement hebben en een beheerder van dat abonnement zijn.
 * Maak een sleutel kluis en een sleutel die moet worden gebruikt voor een door de klant beheerde sleutel. Schakel ook leegmaken van beveiliging en zacht verwijderen in op de sleutel kluis.
 
-    ```azurecli-interactive
-    az keyvault create -g <resource_group> -n <vault_name> --enable-soft-delete true --enable-purge-protection true
-    ```
+  ```azurecli-interactive
+  az keyvault create -g <resource_group> -n <vault_name> --enable-soft-delete true -enable-purge-protection true
+  ```
 
 * In de gemaakte Azure Key Vault maakt u de sleutel die wordt gebruikt voor de gegevens versleuteling van de Azure Database for MySQL.
 
-    ```azurecli-interactive
-    az keyvault key create --name <key_name> -p software --vault-name <vault_name>
-    ```
+  ```azurecli-interactive
+  az keyvault key create --name <key_name> -p software --vault-name <vault_name>
+  ```
 
 * Als u een bestaande sleutel kluis wilt gebruiken, moet deze beschikken over de volgende eigenschappen die moeten worden gebruikt als een door de klant beheerde sleutel:
+
   * [Voorlopig verwijderen](../key-vault/general/overview-soft-delete.md)
 
     ```azurecli-interactive
@@ -54,17 +55,17 @@ Meer informatie over het gebruik van de Azure CLI voor het instellen en beheren 
 
 1. Er zijn twee manieren om de beheerde identiteit voor uw Azure Database for MySQL te verkrijgen.
 
-    ### <a name="create-an-new-azure-database-for-mysql-server-with-a-managed-identity"></a>Maak een nieuwe Azure Database for MySQL-server met een beheerde identiteit.
+   ### <a name="create-an-new-azure-database-for-mysql-server-with-a-managed-identity"></a>Maak een nieuwe Azure Database for MySQL-server met een beheerde identiteit.
 
-    ```azurecli-interactive
-    az mysql server create --name -g <resource_group> --location <locations> --storage-size <size>  -u <user>-p <pwd> --backup-retention <7> --sku-name <sku name> --geo-redundant-backup <Enabled/Disabled>  --assign-identity
-    ```
+   ```azurecli-interactive
+   az mysql server create --name -g <resource_group> --location <locations> --storage-size size>  -u <user>-p <pwd> --backup-retention <7> --sku-name <sku name> -geo-redundant-backup <Enabled/Disabled>  --assign-identity
+   ```
 
-    ### <a name="update-an-existing-the-azure-database-for-mysql-server-to-get-a-managed-identity"></a>Een bestaande Azure Database for MySQL-server bijwerken om een beheerde identiteit op te halen.
+   ### <a name="update-an-existing-the-azure-database-for-mysql-server-to-get-a-managed-identity"></a>Een bestaande Azure Database for MySQL-server bijwerken om een beheerde identiteit op te halen.
 
-    ```azurecli-interactive
-    az mysql server update --name  <server name>  -g <resource_group> --assign-identity
-    ```
+   ```azurecli-interactive
+   az mysql server update --name  <server name>  -g <resource_group> --assign-identity
+   ```
 
 2. Stel de **sleutel machtigingen** (**Get**, **wrap**, **dewrap**) in voor de **Principal**. Dit is de naam van de mysql-server.
 
@@ -88,36 +89,36 @@ Nadat Azure Database for MySQL is versleuteld met een door de klant beheerde sle
 
 ### <a name="creating-a-restoredreplica-server"></a>Een herstelde/replica-server maken
 
-  *  [Een herstel server maken](howto-restore-server-cli.md) 
-  *  [Een replica-server voor lezen maken](howto-read-replicas-cli.md) 
+* [Een herstel server maken](howto-restore-server-cli.md) 
+* [Een replica-server voor lezen maken](howto-read-replicas-cli.md) 
 
 ### <a name="once-the-server-is-restored-revalidate-data-encryption-the-restored-server"></a>Nadat de server is hersteld, moet u de gegevens versleuteling van de herstelde server opnieuw valideren
 
-    ```azurecli-interactive
-    az mysql server key create –name  <server name> -g <resource_group> --kid <key url>
-    ```
+```azurecli-interactive
+az mysql server key create –name  <server name> -g <resource_group> --kid <key url>
+```
 
 ## <a name="additional-capability-for-the-key-being-used-for-the-azure-database-for-mysql"></a>Aanvullende functionaliteit voor de sleutel die wordt gebruikt voor de Azure Database for MySQL
 
 ### <a name="get-the-key-used"></a>De gebruikte sleutel ophalen
 
-    ```azurecli-interactive
-    az mysql server key show --name  <server name>  -g <resource_group> --kid <key url>
-    ```
+```azurecli-interactive
+az mysql server key show --name  <server name>  -g <resource_group> --kid <key url>
+```
 
-    Key url:  `https://YourVaultName.vault.azure.net/keys/YourKeyName/01234567890123456789012345678901>`
+Sleutel-URL:`https://YourVaultName.vault.azure.net/keys/YourKeyName/01234567890123456789012345678901>`
 
 ### <a name="list-the-key-used"></a>De sleutel weer geven die wordt gebruikt
 
-    ```azurecli-interactive
-    az mysql server key list --name  <server name>  -g <resource_group>
-    ```
+```azurecli-interactive
+az mysql server key list --name  <server name>  -g <resource_group>
+```
 
 ### <a name="drop-the-key-being-used"></a>De sleutel die wordt gebruikt, verwijderen
 
-    ```azurecli-interactive
-    az mysql server key delete -g <resource_group> --kid <key url> 
-    ```
+```azurecli-interactive
+az mysql server key delete -g <resource_group> --kid <key url>
+```
 
 ## <a name="using-an-azure-resource-manager-template-to-enable-data-encryption"></a>Een Azure Resource Manager sjabloon gebruiken om gegevens versleuteling in te scha kelen
 
@@ -130,6 +131,7 @@ Gebruik een van de vooraf gemaakte Azure Resource Manager sjablonen om de server
 Met deze Azure Resource Manager sjabloon maakt u een Azure Database for MySQL-server en gebruikt u de sleutel **kluis** en **code** die zijn door gegeven als para meters om gegevens versleuteling op de server in te scha kelen.
 
 ### <a name="for-an-existing-server"></a>Voor een bestaande server
+
 Daarnaast kunt u Azure Resource Manager sjablonen gebruiken om gegevens versleuteling in te scha kelen op uw bestaande Azure Database for MySQL-servers.
 
 * Geef de resource-ID van de Azure Key Vault sleutel die u eerder hebt gekopieerd `Uri` , onder de eigenschap in het object Properties door.

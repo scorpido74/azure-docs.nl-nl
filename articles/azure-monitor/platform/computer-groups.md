@@ -6,11 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 02/05/2019
-ms.openlocfilehash: a005b6cec811b8a584123dc4c8abab77766961e0
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 217be627f81406f671118d5290cd5f67f52c01d2
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84689007"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86112109"
 ---
 # <a name="computer-groups-in-azure-monitor-log-queries"></a>Computer groepen in Azure Monitor-logboek query's
 Met computer groepen in Azure Monitor kunt u [logboek query's](../log-query/log-query-overview.md) op een bepaalde set computers bereiken.  Elke groep wordt gevuld met computers met behulp van een query die u definieert of door groepen te importeren uit verschillende bronnen.  Wanneer de groep is opgenomen in een logboek query, zijn de resultaten beperkt tot records die overeenkomen met de computers in de groep.
@@ -33,7 +34,9 @@ Computer groepen die zijn gemaakt op basis van een logboek query bevatten alle c
 
 U kunt elke query voor een computer groep gebruiken, maar deze moet een afzonderlijke set computers retour neren met behulp van `distinct Computer` .  Hier volgt een typisch voor beeld van een query die u als computer groep zou kunnen gebruiken.
 
-    Heartbeat | where Computer contains "srv" | distinct Computer
+```kusto
+Heartbeat | where Computer contains "srv" | distinct Computer
+```
 
 Gebruik de volgende procedure om een computer groep te maken op basis van een zoek opdracht in Logboeken in de Azure Portal.
 
@@ -93,26 +96,28 @@ Klik op de **x** in de kolom **verwijderen** om de computer groep te verwijderen
 ## <a name="using-a-computer-group-in-a-log-query"></a>Een computer groep gebruiken in een logboek query
 U gebruikt een computer groep die is gemaakt op basis van een logboek query in een query door de alias te behandelen als een functie, meestal met de volgende syntaxis:
 
-  `Table | where Computer in (ComputerGroup)`
+```kusto
+Table | where Computer in (ComputerGroup)`
+```
 
 U kunt bijvoorbeeld het volgende gebruiken om update Summary-records te retour neren voor alleen computers in een computer groep met de naam mycomputergroup.
- 
-  `UpdateSummary | where Computer in (mycomputergroup)`
 
+```kusto
+UpdateSummary | where Computer in (mycomputergroup)`
+```
 
 Geïmporteerde computer groepen en de bijbehorende computers worden opgeslagen in de tabel **ComputerGroup** .  Met de volgende query wordt bijvoorbeeld een lijst met computers in de groep domein computers uit Active Directory geretourneerd. 
 
-  `ComputerGroup | where GroupSource == "ActiveDirectory" and Group == "Domain Computers" | distinct Computer`
+```kusto
+ComputerGroup | where GroupSource == "ActiveDirectory" and Group == "Domain Computers" | distinct Computer
+```
 
 De volgende query retourneert update Summary-records voor alleen computers in domein computers.
 
-  ```
-  let ADComputers = ComputerGroup | where GroupSource == "ActiveDirectory" and Group == "Domain Computers" | distinct Computer;
+```kusto
+let ADComputers = ComputerGroup | where GroupSource == "ActiveDirectory" and Group == "Domain Computers" | distinct Computer;
   UpdateSummary | where Computer in (ADComputers)
-  ```
-
-
-
+```
 
 ## <a name="computer-group-records"></a>Records computer groep
 Er wordt een record gemaakt in de werk ruimte Log Analytics voor elk lidmaatschap van de computer groep dat is gemaakt op basis van Active Directory of WSUS.  Deze records hebben het type **ComputerGroup** en hebben de eigenschappen in de volgende tabel.  Er worden geen records gemaakt voor computer groepen op basis van logboek query's.

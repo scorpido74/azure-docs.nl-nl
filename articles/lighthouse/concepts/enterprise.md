@@ -1,13 +1,14 @@
 ---
 title: Azure Lighthouse in zakelijke scenario's
 description: De mogelijkheden van Azure Lighthouse kunnen worden gebruikt voor het vereenvoudigen van cross-Tenant beheer binnen een onderneming die gebruikmaakt van meerdere Azure AD-tenants.
-ms.date: 09/25/2019
+ms.date: 07/06/2020
 ms.topic: conceptual
-ms.openlocfilehash: 91089a6fb1a965191489e87027ef508c7ebe2aa2
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 9f9a7aa81772a1edda5fd1915918b547a3066455
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "75749204"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86114139"
 ---
 # <a name="azure-lighthouse-in-enterprise-scenarios"></a>Azure Lighthouse in zakelijke scenario's
 
@@ -17,7 +18,7 @@ Het meest voorkomende scenario voor [Azure Lighthouse](../overview.md) is een se
 
 Voor de meeste organisaties is het beheer eenvoudiger met één Azure AD-Tenant. Met alle resources binnen één Tenant kunnen beheer taken worden gecentraliseerd door bepaalde gebruikers, gebruikers groepen of service-principals binnen die Tenant. We raden u aan om waar mogelijk één Tenant voor uw organisatie te gebruiken.
 
-Op hetzelfde moment zijn er situaties waarin een organisatie mogelijk meerdere Azure AD-tenants moet onderhouden. In sommige gevallen kan dit een tijdelijke situatie zijn, alsof er verwervingen hebben plaatsgevonden en een strategie voor een langdurige Tenant consolidatie enige tijd in beslag neemt. Een organisatie moet mogelijk ook op doorlopende wijze meerdere tenants onderhouden (als gevolg van de volledige onafhankelijke dochter ondernemingen, geografische of juridische vereisten, enzovoort). In gevallen waarin een architectuur met meerdere tenants is vereist, kan Azure delegated resource management worden gebruikt om beheer bewerkingen te centraliseren en te stroom lijnen. Abonnementen van meerdere tenants kunnen worden voor bereid op het beheer van de [gedelegeerde resources van Azure](azure-delegated-resource-management.md), waardoor aangewezen gebruikers in een Tenant beheren voor het uitvoeren van [Cross-Tenant beheer functies](cross-tenant-management-experience.md) in een gecentraliseerde en schaal bare manier.
+Op hetzelfde moment zijn er situaties waarin een organisatie mogelijk meerdere Azure AD-tenants moet onderhouden. In sommige gevallen kan dit een tijdelijke situatie zijn, alsof er verwervingen hebben plaatsgevonden en een strategie voor een langdurige Tenant consolidatie enige tijd in beslag neemt. Een organisatie moet mogelijk ook op doorlopende wijze meerdere tenants onderhouden (als gevolg van de volledige onafhankelijke dochter ondernemingen, geografische of juridische vereisten, enzovoort). In gevallen waarin een architectuur met meerdere tenants is vereist, kan Azure Lighthouse worden gebruikt om beheer bewerkingen te centraliseren en te stroom lijnen. Abonnementen van meerdere tenants kunnen worden voor bereid op het beheer van de [gedelegeerde resources van Azure](azure-delegated-resource-management.md), waardoor aangewezen gebruikers in een Tenant beheren voor het uitvoeren van [Cross-Tenant beheer functies](cross-tenant-management-experience.md) in een gecentraliseerde en schaal bare manier.
 
 ## <a name="tenant-management-architecture"></a>Architectuur van Tenant beheer
 
@@ -31,17 +32,17 @@ Uw organisatie wil dezelfde beleids definities, back-upprocedures en beveiliging
 
 ## <a name="security-and-access-considerations"></a>Aandachtspunten voor beveiliging en toegang
 
-In de meeste bedrijfs scenario's wilt u een volledig abonnement voor Azure delegated resource management delegeren, maar u kunt ook alleen specifieke resource groepen binnen een abonnement delegeren.
+In de meeste bedrijfs scenario's wilt u een volledig abonnement delegeren naar Azure Lighthouse, maar u kunt ook alleen specifieke resource groepen binnen een abonnement delegeren.
 
 In beide gevallen moet u [het principe van minimale bevoegdheid volgen om te definiëren welke gebruikers toegang hebben tot resources](recommended-security-practices.md#assign-permissions-to-groups-using-the-principle-of-least-privilege). Dit zorgt ervoor dat gebruikers alleen over de benodigde machtigingen beschikken om de vereiste taken uit te voeren en de kans op onbedoelde fouten te verminderen.
 
-Azure Lighthouse en Azure delegated resource management bieden alleen logische koppelingen tussen een beheer Tenant en beheerde tenants, in plaats van fysiek gegevens of bronnen te verplaatsen. Bovendien gaat de Access altijd in slechts één richting, van de Tenant beheren naar de beheerde tenants.  Gebruikers en groepen in de Tenant beheren moeten multi-factor Authentication blijven gebruiken bij het uitvoeren van beheer bewerkingen op beheerde Tenant bronnen.
+Azure Lighthouse biedt alleen logische koppelingen tussen een beheer Tenant en beheerde tenants, in plaats van het fysiek verplaatsen van gegevens of resources. Bovendien gaat de Access altijd in slechts één richting, van de Tenant beheren naar de beheerde tenants.  Gebruikers en groepen in de Tenant beheren moeten multi-factor Authentication blijven gebruiken bij het uitvoeren van beheer bewerkingen op beheerde Tenant bronnen.
 
 Ondernemingen met interne of externe governance-en nalevings Guardrails kunnen [Azure-activiteiten logboeken](../../azure-monitor/platform/platform-logs-overview.md) gebruiken om te voldoen aan hun transparantie vereisten. Wanneer ondernemings tenants beheer-en beheerde Tenant relaties hebben ingesteld, kunnen gebruikers in elke Tenant de acties die door de gebruikers in de andere Tenant worden uitgevoerd, bewaken en inzicht krijgen door de geregistreerde activiteit te bekijken.
 
 ## <a name="onboarding-process-considerations"></a>Overwegingen voor het onboarding-proces
 
-Abonnementen (of resource groepen binnen een abonnement) kunnen worden gedistribueerd naar Azure delegated resource management door Azure Resource Manager sjablonen of via beheerde services aanbiedingen te implementeren die zijn gepubliceerd naar Azure Marketplace, hetzij privé of openbaar.
+Abonnementen (of resource groepen binnen een abonnement) kunnen worden gedistribueerd naar Azure Lighthouse door Azure Resource Manager sjablonen of via beheerde services aanbiedingen te implementeren die zijn gepubliceerd naar Azure Marketplace, hetzij persoonlijk of openbaar.
 
 Omdat zakelijke gebruikers normaal gesp roken direct toegang kunnen krijgen tot de tenants van de onderneming en er geen beheer aanbod hoeft te worden gemarket of bevorderd, is het over het algemeen sneller en eenvoudiger om rechtstreeks met Azure Resource Manager-sjablonen te implementeren. Hoewel we naar service providers en klanten verwijzen in de voorbereidings [richtlijnen](../how-to/onboard-customer.md), kunnen ondernemingen dezelfde processen gebruiken.
 

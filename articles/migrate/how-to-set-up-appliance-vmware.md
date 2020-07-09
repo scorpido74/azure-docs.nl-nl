@@ -3,11 +3,12 @@ title: Een Azure Migrate apparaat instellen voor VMware
 description: Meer informatie over het instellen van een Azure Migrate apparaat om VMware-Vm's te beoordelen en te migreren.
 ms.topic: article
 ms.date: 04/16/2020
-ms.openlocfilehash: b32c6a9b703e4d341fe353d6b472ea7a18adadf3
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 272481640db739a458a19a2c9383ff45b54974b5
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81538253"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86112813"
 ---
 # <a name="set-up-an-appliance-for-vmware-vms"></a>Een apparaat instellen voor VMware-Vm's
 
@@ -46,7 +47,7 @@ Controleer of het bestand van de eicellen veilig is voordat u het implementeert.
 2. Voer de volgende opdracht uit om de hash voor de eicellen te genereren:
     - ```C:\>CertUtil -HashFile <file_location> [Hashing Algorithm]```
     - Gebruiksvoorbeeld: ```C:\>CertUtil -HashFile C:\AzureMigrate\AzureMigrate.ova SHA256```
-3. De gegenereerde hash moet overeenkomen met deze [instellingen](https://docs.microsoft.com/azure/migrate/tutorial-assess-vmware#verify-security)voor de meest recente versie van het apparaat.
+3. De gegenereerde hash moet overeenkomen met deze [instellingen](./tutorial-assess-vmware.md#verify-security)voor de meest recente versie van het apparaat.
 
 
 
@@ -114,7 +115,7 @@ Het apparaat moet verbinding maken met vCenter Server om de configuratie- en pre
 3. Klik op **verbinding valideren** om te controleren of het apparaat verbinding kan maken met vCenter Server.
 
 ### <a name="specify-vm-credentials"></a>VM-referenties opgeven
-Voor de detectie van toepassingen, functies en onderdelen en het visualiseren van afhankelijkheden van de virtuele machines, kunt u een VM-referentie opgeven die toegang heeft tot de virtuele VMware-machines. U kunt één referentie toevoegen voor Windows-Vm's en één referentie voor Linux-Vm's. Meer [informatie](https://docs.microsoft.com/azure/migrate/migrate-support-matrix-vmware) over de benodigde toegangs rechten.
+Voor de detectie van toepassingen, functies en onderdelen en het visualiseren van afhankelijkheden van de virtuele machines, kunt u een VM-referentie opgeven die toegang heeft tot de virtuele VMware-machines. U kunt één referentie toevoegen voor Windows-Vm's en één referentie voor Linux-Vm's. Meer [informatie](./migrate-support-matrix-vmware.md) over de benodigde toegangs rechten.
 
 > [!NOTE]
 > Deze invoer is optioneel en is nodig voor het inschakelen van toepassings detectie en visualisatie van de afhankelijkheid van agents.

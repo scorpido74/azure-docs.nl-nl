@@ -8,11 +8,12 @@ author: mlearned
 ms.author: mlearned
 description: Azure Policy gebruiken om cluster configuraties op schaal toe te passen
 keywords: Kubernetes, Arc, azure, K8s, containers
-ms.openlocfilehash: 4c013fe562d89bff4d1ce9c9f3e832e1b51c70f1
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 26b291e2a957047361d4f52eeff58cbe8aa8c633
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85341382"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86111266"
 ---
 # <a name="use-azure-policy-to-apply-cluster-configurations-at-scale-preview"></a>Gebruik Azure Policy om cluster configuraties op schaal toe te passen (preview-versie)
 
@@ -34,7 +35,7 @@ Als u meerdere Git-opslag plaatsen gebruikt als de bronnen van de waarheid voor 
 8. Stel parameter waarden in die worden gebruikt tijdens het maken van de `sourceControlConfiguration` .
 9. Selecteer **Volgende**.
 10. Schakel **een herstel taak maken**in.
-11. Verzeker u ervan dat het **maken van een beheerde identiteit** is ingeschakeld en dat de identiteit **Inzender** machtigingen heeft. Zie [dit document](https://docs.microsoft.com/azure/governance/policy/assign-policy-portal) en [de opmerking in dit document](https://docs.microsoft.com/azure/governance/policy/how-to/remediate-resources) voor meer informatie over de machtigingen die u nodig hebt.
+11. Verzeker u ervan dat het **maken van een beheerde identiteit** is ingeschakeld en dat de identiteit **Inzender** machtigingen heeft. Zie [dit document](../../governance/policy/assign-policy-portal.md) en [de opmerking in dit document](../../governance/policy/how-to/remediate-resources.md) voor meer informatie over de machtigingen die u nodig hebt.
 12. Selecteer **Controleren + maken**.
 
 Nadat de beleids toewijzing is gemaakt, wordt voor elke nieuwe `connectedCluster` resource (of `managedCluster` resource waarbij de GitOps-agents zijn geïnstalleerd) die zich binnen het bereik van de toewijzing bevindt, de `sourceControlConfiguration` toegepast. Voor bestaande clusters moet u een herstel taak hand matig uitvoeren. Het duurt doorgaans van 10-20 minuten voordat de beleids toewijzing van kracht wordt.
@@ -50,4 +51,4 @@ Nadat de beleids toewijzing is gemaakt, wordt voor elke nieuwe `connectedCluster
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* [Azure Monitor instellen voor containers met Kubernetes-clusters die zijn ingeschakeld voor Arc](./deploy-azure-monitor-for-containers.md)
+* [Azure Monitor instellen voor containers met Kubernetes-clusters die zijn ingeschakeld voor Arc](../../azure-monitor/insights/container-insights-enable-arc-enabled-clusters.md)

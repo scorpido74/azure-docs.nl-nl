@@ -1,18 +1,18 @@
 ---
 title: Een Azure virtual machine-aanbieding maken op Azure Marketplace
 description: Meer informatie over het maken van een aanbieding voor een virtuele machine op Azure Marketplace met de vereiste SKU.
-author: emuench
-ms.author: mingshen
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
+author: emuench
+ms.author: mingshen
 ms.date: 06/17/2020
-ms.openlocfilehash: 499c7e9e4ca4ab5db02c566830738f0ceb07e40d
-ms.sourcegitcommit: 93462ccb4dd178ec81115f50455fbad2fa1d79ce
+ms.openlocfilehash: fe53de2c81f9e9df5fd9270951f943b0b3505f1e
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/06/2020
-ms.locfileid: "85984646"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86110977"
 ---
 # <a name="create-an-azure-virtual-machine-offer-on-azure-marketplace"></a>Een Azure virtual machine-aanbieding maken op Azure Marketplace
 
@@ -20,7 +20,7 @@ In dit artikel wordt beschreven hoe u een Azure virtual machine-aanbieding maakt
 
 Voordat u begint, moet u [een commercieel Marketplace-account maken in het partner centrum](create-account.md). Zorg ervoor dat uw account is inge schreven in het Commercial Marketplace-programma.
 
-## <a name="introduction"></a>Inleiding
+## <a name="introduction"></a>Introductie
 
 ### <a name="the-benefits-of-publishing-to-azure-marketplace"></a>De voor delen van publiceren naar Azure Marketplace
 

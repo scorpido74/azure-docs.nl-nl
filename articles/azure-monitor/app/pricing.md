@@ -6,11 +6,12 @@ author: DaleKoetke
 ms.author: dalek
 ms.date: 5/7/2020
 ms.reviewer: mbullwin
-ms.openlocfilehash: 82ea6a27d5bd75c180928f6a8b5c9742c54ea5a1
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: ac1129db05c7b492e209478446f69fe48ea9fffd
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83834421"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86111113"
 ---
 # <a name="manage-usage-and-costs-for-application-insights"></a>Gebruik en kosten van Application Insights beheren
 
@@ -248,9 +249,11 @@ Ga naar het **prijs** venster om opname sampling in te stellen:
 
 Gebruik een [Analytics-query](analytics.md)om de werkelijke sampling frequentie te ontdekken, ongeacht waar deze is toegepast. De query ziet er als volgt uit:
 
-    requests | where timestamp > ago(1d)
-    | summarize 100/avg(itemCount) by bin(timestamp, 1h)
-    | render areachart
+```kusto
+requests | where timestamp > ago(1d)
+| summarize 100/avg(itemCount) by bin(timestamp, 1h)
+| render areachart
+```
 
 In elk bewaard record `itemCount` geeft het aantal oorspronkelijke records aan dat het vertegenwoordigt. De waarde is gelijk aan 1 + het aantal eerder verwijderde records.
 

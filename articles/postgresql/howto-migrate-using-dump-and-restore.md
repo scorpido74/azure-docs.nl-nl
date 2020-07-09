@@ -4,14 +4,14 @@ description: Hierin wordt beschreven hoe u een PostgreSQL-data base ophaalt in e
 author: rachel-msft
 ms.author: raagyema
 ms.service: postgresql
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 09/24/2019
-ms.openlocfilehash: 90a014e44c728c1881c1fd3d9e189554ed8f44da
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: b7ecdd110458c64be9890762d515ecebe3d67acd
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82146334"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86112354"
 ---
 # <a name="migrate-your-postgresql-database-using-dump-and-restore"></a>Uw PostgreSQL-database migreren met dumpen en herstel
 U kunt [pg_dump](https://www.postgresql.org/docs/current/static/app-pgdump.html) gebruiken om een postgresql-data base te extra heren naar een dump bestand en [Pg_restore](https://www.postgresql.org/docs/current/static/app-pgrestore.html) om de postgresql-data base te herstellen vanuit een archief bestand dat door pg_dump is gemaakt.

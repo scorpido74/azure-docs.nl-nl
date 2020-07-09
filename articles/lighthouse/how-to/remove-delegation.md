@@ -1,17 +1,18 @@
 ---
 title: Toegang tot een delegatie verwijderen
-description: Meer informatie over het verwijderen van de toegang tot resources die zijn overgedragen aan een service provider voor het beheer van gedelegeerde resources van Azure.
-ms.date: 04/24/2020
+description: Meer informatie over het verwijderen van de toegang tot resources die aan een service provider voor Azure Lighthouse zijn overgedragen.
+ms.date: 07/07/2020
 ms.topic: how-to
-ms.openlocfilehash: 2a8024a47b3f7ea461e4ea7648db7003889552cf
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: be1547056bc3ec387ba4cba52f6b6d6fbcaad23c
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84636492"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86111725"
 ---
 # <a name="remove-access-to-a-delegation"></a>Toegang tot een delegatie verwijderen
 
-Nadat het abonnement of de resource groep van een klant is overgedragen aan een service provider voor [Azure delegated resource management](../concepts/azure-delegated-resource-management.md), kan de delegatie zo nodig worden verwijderd. Zodra een delegering is verwijderd, is de toegang die eerder is verleend aan gebruikers in de service provider Tenant niet langer van toepassing.
+Nadat het abonnement of de resource groep van een klant is gedelegeerd aan een service provider voor [Azure Lighthouse](../overview.md), kan de delegatie zo nodig worden verwijderd. Zodra een overdracht is verwijderd, is de [Azure gedelegeerde resource beheer](../concepts/azure-delegated-resource-management.md) -toegang die eerder is verleend aan gebruikers in de service provider Tenant, niet meer van toepassing.
 
 Het verwijderen van een overdracht kan worden uitgevoerd door een gebruiker in de Tenant van de klant of de Tenant van de service provider, zolang de gebruiker de juiste machtigingen heeft.
 

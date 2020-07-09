@@ -1,17 +1,18 @@
 ---
 title: Azure Policy implementeren voor gedelegeerde abonnementen op de juiste schaal
-description: Meer informatie over hoe u met Azure delegated resource management een beleids definitie en beleids toewijzing kunt implementeren voor meerdere tenants.
-ms.date: 11/8/2019
+description: Meer informatie over hoe u met Azure Lighthouse een beleids definitie en beleids toewijzing in meerdere tenants kunt implementeren.
+ms.date: 07/07/2020
 ms.topic: how-to
-ms.openlocfilehash: 0e3af1728b4927874fa599bad256798f39721e22
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 6d7c6206916f87072f68cc0fe953c8049896cd0b
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84636526"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86111793"
 ---
 # <a name="deploy-azure-policy-to-delegated-subscriptions-at-scale"></a>Azure Policy implementeren voor gedelegeerde abonnementen op de juiste schaal
 
-Als service provider hebt u mogelijk meerdere tenants voor klanten voor het beheer van gedelegeerde resources voor Azure voor bereid. Met [Azure Lighthouse](../overview.md) kunnen service providers bewerkingen op verschillende tijdstippen in meerdere tenants tegelijk uitvoeren, waardoor beheer taken efficiënter zijn.
+Als service provider hebt u mogelijk meerdere tenants voor klanten in [Azure Lighthouse](../overview.md). Met Azure Lighthouse kunnen service providers bewerkingen op verschillende tijdstippen in meerdere tenants tegelijk uitvoeren, waardoor beheer taken efficiënter zijn.
 
 In dit onderwerp wordt beschreven hoe u [Azure Policy](../../governance/policy/index.yml) kunt gebruiken om een beleids definitie en beleids toewijzing te implementeren voor meerdere tenants met behulp van Power shell-opdrachten. In dit voor beeld zorgt de beleids definitie ervoor dat opslag accounts worden beveiligd door alleen HTTPS-verkeer toe te staan.
 

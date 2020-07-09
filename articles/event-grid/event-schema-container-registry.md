@@ -1,19 +1,14 @@
 ---
 title: Azure Container Registry als Event Grid bron
 description: Hierin worden de eigenschappen beschreven die worden gegeven voor Container Registry gebeurtenissen met Azure Event Grid
-services: event-grid
-author: spelluru
-manager: timlt
-ms.service: event-grid
 ms.topic: conceptual
-ms.date: 04/09/2020
-ms.author: spelluru
-ms.openlocfilehash: 7e33feb04edf42f1e2a32b9b8c8e2fd214692f31
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 07/07/2020
+ms.openlocfilehash: d216fe88ee6aaad33fbbe3b93b8c4f8a6e952a71
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81393363"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86113714"
 ---
 # <a name="azure-container-registry-as-an-event-grid-source"></a>Azure Container Registry als Event Grid bron
 
@@ -25,7 +20,7 @@ In dit artikel vindt u de eigenschappen en het schema voor Container Registry ge
 
 Azure Container Registry worden de volgende gebeurtenis typen meeverzonden:
 
-| Gebeurtenistype | Beschrijving |
+| Gebeurtenistype | Description |
 | ---------- | ----------- |
 | Micro soft. ContainerRegistry. ImagePushed | Deze gebeurtenis treedt op wanneer een afbeelding wordt gepusht. |
 | Micro soft. ContainerRegistry. ImageDeleted | Deze gebeurtenis treedt op wanneer een afbeelding wordt verwijderd. |
@@ -157,7 +152,7 @@ Het schema voor een verwijderde grafiek gebeurtenis is vergelijkbaar met het sch
 
 Een gebeurtenis heeft de volgende gegevens op het hoogste niveau:
 
-| Eigenschap | Type | Beschrijving |
+| Eigenschap | Type | Description |
 | -------- | ---- | ----------- |
 | onderwerp | tekenreeks | Volledige bronpad naar de bron van de gebeurtenis. Dit veld kan niet worden geschreven. Event Grid biedt deze waarde. |
 | Onderwerp | tekenreeks | Het door de uitgever gedefinieerde pad naar het gebeurtenisonderwerp. |
@@ -170,7 +165,7 @@ Een gebeurtenis heeft de volgende gegevens op het hoogste niveau:
 
 Het gegevens object heeft de volgende eigenschappen:
 
-| Eigenschap | Type | Beschrijving |
+| Eigenschap | Type | Description |
 | -------- | ---- | ----------- |
 | id | tekenreeks | De gebeurtenis-ID. |
 | tijdstempel | tekenreeks | Het tijdstip waarop de gebeurtenis heeft plaatsgevonden. |
@@ -180,7 +175,7 @@ Het gegevens object heeft de volgende eigenschappen:
 
 Het doel object heeft de volgende eigenschappen:
 
-| Eigenschap | Type | Beschrijving |
+| Eigenschap | Type | Description |
 | -------- | ---- | ----------- |
 | Type | tekenreeks | Het MIME-type van het object waarnaar wordt verwezen. |
 | grootte | geheel getal | Het aantal bytes van de inhoud. Gelijk aan het veld lengte. |

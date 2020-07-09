@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: vinynigam
 ms.author: vinigam
 ms.date: 10/12/2018
-ms.openlocfilehash: 4c672caaedd3e5cc591659f24c73f54f399c73de
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 191c6d411418229d40b10704ea14d5a536c0d5f7
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85194000"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86110620"
 ---
 # <a name="network-performance-monitor-solution-faq"></a>Veelgestelde vragen over Netwerkprestatiemeter oplossingen
 
@@ -100,38 +100,50 @@ Raadpleeg [de sectie waarschuwingen in de documentatie](https://docs.microsoft.c
 ### <a name="what-are-the-default-log-analytics-queries-for-alerts"></a>Wat zijn de standaard Log Analytics query's voor waarschuwingen
 Query prestatie meter
 
-    NetworkMonitoring 
-     | where (SubType == "SubNetwork" or SubType == "NetworkPath") 
-     | where (LossHealthState == "Unhealthy" or LatencyHealthState == "Unhealthy") and RuleName == "<<your rule name>>"
-    
+```kusto
+NetworkMonitoring
+ | where (SubType == "SubNetwork" or SubType == "NetworkPath") 
+ | where (LossHealthState == "Unhealthy" or LatencyHealthState == "Unhealthy") and RuleName == "<<your rule name>>"
+```
+
 Query voor service connectiviteits controle
 
-    NetworkMonitoring                 
-     | where (SubType == "EndpointHealth" or SubType == "EndpointPath")
-     | where (LossHealthState == "Unhealthy" or LatencyHealthState == "Unhealthy" or ServiceResponseHealthState == "Unhealthy" or LatencyHealthState == "Unhealthy") and TestName == "<<your test name>>"
-    
+```kusto
+NetworkMonitoring
+ | where (SubType == "EndpointHealth" or SubType == "EndpointPath")
+ | where (LossHealthState == "Unhealthy" or LatencyHealthState == "Unhealthy" or ServiceResponseHealthState == "Unhealthy" or LatencyHealthState == "Unhealthy") and TestName == "<<your test name>>"
+```
+
 ExpressRoute-controle query's: circuits query
 
-    NetworkMonitoring
-    | where (SubType == "ERCircuitTotalUtilization") and (UtilizationHealthState == "Unhealthy") and CircuitResourceId == "<<your circuit resource ID>>"
+```kusto
+NetworkMonitoring
+ | where (SubType == "ERCircuitTotalUtilization") and (UtilizationHealthState == "Unhealthy") and CircuitResourceId == "<<your circuit resource ID>>"
+```
 
 Persoonlijke peering
 
-    NetworkMonitoring 
-     | where (SubType == "ExpressRoutePeering" or SubType == "ERVNetConnectionUtilization" or SubType == "ExpressRoutePath")   
-    | where (LossHealthState == "Unhealthy" or LatencyHealthState == "Unhealthy" or UtilizationHealthState == "Unhealthy") and CircuitName == "<<your circuit name>>" and VirtualNetwork == "<<vnet name>>"
+```kusto
+NetworkMonitoring
+ | where (SubType == "ExpressRoutePeering" or SubType == "ERVNetConnectionUtilization" or SubType == "ExpressRoutePath")   
+ | where (LossHealthState == "Unhealthy" or LatencyHealthState == "Unhealthy" or UtilizationHealthState == "Unhealthy") and CircuitName == "<<your circuit name>>" and VirtualNetwork == "<<vnet name>>"
+```
 
 Microsoft-peering
 
-    NetworkMonitoring 
-     | where (SubType == "ExpressRoutePeering" or SubType == "ERMSPeeringUtilization" or SubType == "ExpressRoutePath")
-    | where (LossHealthState == "Unhealthy" or LatencyHealthState == "Unhealthy" or UtilizationHealthState == "Unhealthy") and CircuitName == ""<<your circuit name>>" and PeeringType == "MicrosoftPeering"
+```kusto
+NetworkMonitoring
+ | where (SubType == "ExpressRoutePeering" or SubType == "ERMSPeeringUtilization" or SubType == "ExpressRoutePath")
+ | where (LossHealthState == "Unhealthy" or LatencyHealthState == "Unhealthy" or UtilizationHealthState == "Unhealthy") and CircuitName == ""<<your circuit name>>" and PeeringType == "MicrosoftPeering"
+```
 
-Algemene query   
+Algemene query
 
-    NetworkMonitoring
-    | where (SubType == "ExpressRoutePeering" or SubType == "ERVNetConnectionUtilization" or SubType == "ERMSPeeringUtilization" or SubType == "ExpressRoutePath")
-    | where (LossHealthState == "Unhealthy" or LatencyHealthState == "Unhealthy" or UtilizationHealthState == "Unhealthy") 
+```kusto
+NetworkMonitoring
+ | where (SubType == "ExpressRoutePeering" or SubType == "ERVNetConnectionUtilization" or SubType == "ERMSPeeringUtilization" or SubType == "ExpressRoutePath")
+ | where (LossHealthState == "Unhealthy" or LatencyHealthState == "Unhealthy" or UtilizationHealthState == "Unhealthy")
+```
 
 ### <a name="can-npm-monitor-routers-and-servers-as-individual-devices"></a>Kunnen NPM-routers en-servers als afzonderlijke apparaten worden bewaakt?
 NPM identificeert alleen de IP-en hostnaam van de onderliggende netwerk-hops (switches, routers, servers, enzovoort) tussen de bron-en doel-IP-adressen. Ook wordt de latentie tussen deze geïdentificeerde hops geïdentificeerd. Deze onderliggende hops worden niet afzonderlijk bewaakt.
@@ -147,21 +159,27 @@ Binnenkomende en uitgaande waarden voor zowel de primaire als de secundaire band
 
 Voor informatie over het niveau van MS-peering gebruikt u de onderstaande query in zoeken in Logboeken
 
-    NetworkMonitoring 
-     | where SubType == "ERMSPeeringUtilization"
-     | project  CircuitName,PeeringName,BitsInPerSecond,BitsOutPerSecond 
-    
+```kusto
+NetworkMonitoring
+ | where SubType == "ERMSPeeringUtilization"
+ | project CircuitName,PeeringName,BitsInPerSecond,BitsOutPerSecond 
+```
+
 Voor informatie over privé-peering kunt u de onderstaande query gebruiken in zoeken in Logboeken
 
-    NetworkMonitoring 
-     | where SubType == "ERVNetConnectionUtilization"
-     | project  CircuitName,PeeringName,BitsInPerSecond,BitsOutPerSecond
-  
+```kusto
+NetworkMonitoring
+ | where SubType == "ERVNetConnectionUtilization"
+ | project CircuitName,PeeringName,BitsInPerSecond,BitsOutPerSecond
+```
+
 Voor informatie over het circuit niveau gebruikt u de onderstaande query in zoeken in Logboeken
 
-    NetworkMonitoring 
-        | where SubType == "ERCircuitTotalUtilization"
-        | project CircuitName, BitsInPerSecond, BitsOutPerSecond
+```kusto
+NetworkMonitoring
+ | where SubType == "ERCircuitTotalUtilization"
+ | project CircuitName, BitsInPerSecond, BitsOutPerSecond
+```
 
 ### <a name="which-regions-are-supported-for-npms-performance-monitor"></a>Welke regio's worden ondersteund voor de prestatie meter van de NPM?
 NPM kan de connectiviteit van netwerken in een deel van de wereld bewaken, van een werk ruimte die wordt gehost in een van de [ondersteunde regio's](../../azure-monitor/insights/network-performance-monitor.md#supported-regions)
@@ -190,10 +208,12 @@ NPM treedt een waarschuwing als de eind-en eind latentie tussen de bron en het d
 
 De voorbeeld query die u wilt zoeken, is beschadigd:
 
-    NetworkMonitoring 
-    | where ( SubType == "ExpressRoutePath")
-    | where (LossHealthState == "Unhealthy" or LatencyHealthState == "Unhealthy" or UtilizationHealthState == "Unhealthy") and          CircuitResourceID =="<your ER circuit ID>" and ConnectionResourceId == "<your ER connection resource id>"
-    | project SubType, LossHealthState, LatencyHealthState, MedianLatency 
+```kusto
+NetworkMonitoring
+ | where ( SubType == "ExpressRoutePath")
+ | where (LossHealthState == "Unhealthy" or LatencyHealthState == "Unhealthy" or UtilizationHealthState == "Unhealthy") and CircuitResourceID =="<your ER circuit ID>" and ConnectionResourceId == "<your ER connection resource id>"
+ | project SubType, LossHealthState, LatencyHealthState, MedianLatency
+```
 
 ### <a name="why-does-my-test-show-unhealthy-but-the-topology-does-not"></a>Waarom laat mijn test beschadigd, maar de topologie niet 
 NPM bewaakt end-to-end-verlies, latentie en topologie met verschillende intervallen. Verlies en latentie worden elke vijf seconden gemeten en om de drie minuten geaggregeerd (voor prestatie meter en Express route monitor) terwijl de topologie elke 10 minuten wordt berekend met traceroute. Bijvoorbeeld tussen 3:44 en 4:04 kan de topologie drie keer worden bijgewerkt (3:44, 3:54, 4:04), maar verlies en latentie worden bijgewerkt ongeveer zeven keer (3:44, 3:47, 3:50, 3:53, 3:56, 3:59, 4:02). De topologie die wordt gegenereerd bij 3:54 wordt weer gegeven voor het verlies en de latentie die worden berekend op 3:56, 3:59 en 4:02. Stel dat u een waarschuwing krijgt dat het circuit van de nood herstel is beschadigd op 3:59. U meldt zich aan bij NPM en probeert de topologie tijd in te stellen op 3:59. NPM geeft de topologie weer die is gegenereerd op 3:54. Als u inzicht wilt krijgen in de laatste bekende topologie van uw netwerk, vergelijkt u de velden TimeProcessed (tijd waarop verlies en latentie is berekend) en TracerouteCompletedTime (tijd waarop de topologie is berekend). 

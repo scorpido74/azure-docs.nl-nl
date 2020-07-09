@@ -4,12 +4,12 @@ description: Meer informatie over actie regels in Azure Monitor zijn en hoe u de
 ms.topic: conceptual
 ms.date: 04/25/2019
 ms.subservice: alerts
-ms.openlocfilehash: 6585890395d7656f239ac3098cd374ecd4757842
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 573567386ba9cbaf8b36440fda5073f899fcdfc7
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80618978"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86112337"
 ---
 # <a name="action-rules-preview"></a>Actie regels (preview-versie)
 
@@ -102,9 +102,9 @@ Als u in de wissel knop **actie groep** selecteert, moet u een bestaande actie g
 ### <a name="action-rule-details"></a>Details van de actie regel
 
 Configureer als laatste de volgende Details voor de actie regel:
-* Naam
+* Name
 * De resource groep waarin deze is opgeslagen
-* Beschrijving 
+* Description 
 
 ## <a name="example-scenarios"></a>Voorbeeldscenario 's
 
@@ -196,23 +196,26 @@ Onderdrukking heeft altijd voor rang op hetzelfde bereik.
 
 ### <a name="what-happens-if-i-have-a-resource-thats-monitored-in-two-separate-action-rules-do-i-get-one-or-two-notifications-for-example-vm2-in-the-following-scenario"></a>Wat gebeurt er als er een resource is die in twee afzonderlijke actie regels wordt bewaakt? Ontvang ik een of twee meldingen? Bijvoorbeeld, **VM2** in het volgende scenario:
 
-      action rule AR1 defined for VM1 and VM2 with action group AG1
-      action rule AR2 defined for VM2 and VM3 with action group AG1
+   `action rule AR1 defined for VM1 and VM2 with action group AG1`
+
+   `action rule AR2 defined for VM2 and VM3 with action group AG1`
 
 Voor elke waarschuwing voor VM1 en VM3 wordt de actie groeps AG1 één keer geactiveerd. Voor elke waarschuwing op **VM2**wordt de AG1 van de actie groep twee keer geactiveerd, omdat actie regels geen acties ontdubbelen. 
 
 ### <a name="what-happens-if-i-have-a-resource-monitored-in-two-separate-action-rules-and-one-calls-for-action-while-another-for-suppression-for-example-vm2-in-the-following-scenario"></a>Wat gebeurt er als er een resource wordt gevolgd in twee afzonderlijke actie regels en één aanroepen voor actie terwijl een andere wordt onderdrukt? Bijvoorbeeld, **VM2** in het volgende scenario:
 
-      action rule AR1 defined for VM1 and VM2 with action group AG1 
-      action rule AR2 defined for VM2 and VM3 with suppression
+   `action rule AR1 defined for VM1 and VM2 with action group AG1`
+
+   `action rule AR2 defined for VM2 and VM3 with suppression`
 
 Voor elke waarschuwing op VM1 wordt de AG1 van de actie groep eenmaal geactiveerd. Acties en meldingen voor elke waarschuwing in VM2 en VM3 worden onderdrukt. 
 
 ### <a name="what-happens-if-i-have-an-alert-rule-and-an-action-rule-defined-for-the-same-resource-calling-different-action-groups-for-example-vm1-in-the-following-scenario"></a>Wat gebeurt er als er een waarschuwings regel en een actie regel zijn gedefinieerd voor dezelfde resource die verschillende actie groepen aanroept? Bijvoorbeeld, **VM1** in het volgende scenario:
 
-      alert rule rule1 on VM1 with action group AG2
-      action rule AR1 defined for VM1 with action group AG1 
- 
+   `alert rule rule1 on VM1 with action group AG2`
+
+   `action rule AR1 defined for VM1 with action group AG1`
+
 Voor elke waarschuwing op VM1 wordt de AG1 van de actie groep eenmaal geactiveerd. Wanneer waarschuwings regel "firewallregel1" wordt geactiveerd, wordt ook AG2 geactiveerd. Actie groepen die zijn gedefinieerd in actie regels en waarschuwings regels, worden onafhankelijk van elkaar uitgevoerd, zonder ontdubbeling. 
 
 ## <a name="next-steps"></a>Volgende stappen

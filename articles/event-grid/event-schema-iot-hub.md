@@ -1,20 +1,14 @@
 ---
 title: Azure IoT Hub als Event Grid bron
 description: In dit artikel vindt u de eigenschappen en het schema voor Azure IoT Hub-gebeurtenissen. Hiermee worden de beschik bare gebeurtenis typen, een voorbeeld gebeurtenis en gebeurtenis eigenschappen weer gegeven.
-services: iot-hub
-documentationcenter: ''
-author: spelluru
-editor: ''
-ms.service: event-grid
 ms.topic: conceptual
-ms.date: 04/09/2020
-ms.author: spelluru
-ms.openlocfilehash: f9bf807884ab5592fa320532f3ca10a223081263
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 07/07/2020
+ms.openlocfilehash: 02ecf8d4df55aa6b4319e40892778f85f94e29a7
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81393328"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86113646"
 ---
 # <a name="azure-iot-hub-as-an-event-grid-source"></a>Azure IoT Hub als Event Grid bron
 In dit artikel vindt u de eigenschappen en het schema voor Azure IoT Hub-gebeurtenissen. Zie [Azure Event grid-gebeurtenis schema](event-schema.md)voor een inleiding tot gebeurtenis schema's. 
@@ -25,7 +19,7 @@ In dit artikel vindt u de eigenschappen en het schema voor Azure IoT Hub-gebeurt
 
 Azure IoT Hub verzendt de volgende gebeurtenis typen:
 
-| Gebeurtenistype | Beschrijving |
+| Gebeurtenistype | Description |
 | ---------- | ----------- |
 | Micro soft. devices. DeviceCreated | Gepubliceerd wanneer een apparaat wordt geregistreerd bij een IoT-hub. |
 | Micro soft. devices. DeviceDeleted | Gepubliceerd wanneer een apparaat wordt verwijderd uit een IoT-hub. | 
@@ -146,7 +140,7 @@ Het schema voor DeviceCreated-en DeviceDeleted-gebeurtenissen heeft dezelfde str
 
 Alle gebeurtenissen bevatten dezelfde gegevens op het hoogste niveau: 
 
-| Eigenschap | Type | Beschrijving |
+| Eigenschap | Type | Description |
 | -------- | ---- | ----------- |
 | id | tekenreeks | De unieke id voor de gebeurtenis. |
 | onderwerp | tekenreeks | Volledige bronpad naar de bron van de gebeurtenis. Dit veld kan niet worden geschreven. Event Grid biedt deze waarde. |
@@ -159,7 +153,7 @@ Alle gebeurtenissen bevatten dezelfde gegevens op het hoogste niveau:
 
 Voor alle IoT Hub gebeurtenissen bevat het gegevens object de volgende eigenschappen:
 
-| Eigenschap | Type | Beschrijving |
+| Eigenschap | Type | Description |
 | -------- | ---- | ----------- |
 | hubName | tekenreeks | De naam van de IoT Hub waarop het apparaat is gemaakt of verwijderd. |
 | deviceId | tekenreeks | De unieke id van het apparaat. Deze hoofdletter gevoelige teken reeks kan Maxi maal 128 tekens lang zijn, en ondersteunt ASCII 7-bits alfanumerieke tekens plus de volgende speciale tekens: `- : . + % _ # * ? ! ( ) , = @ ; $ '` . |
@@ -168,7 +162,7 @@ De inhoud van het gegevens object verschilt voor elke uitgever van de gebeurteni
 
 Het gegevens object bevat de volgende eigenschappen voor **apparaten die zijn verbonden met** het apparaat en de verbinding met het **apparaat** IOT hub gebeurtenissen:
 
-| Eigenschap | Type | Beschrijving |
+| Eigenschap | Type | Description |
 | -------- | ---- | ----------- |
 | moduleId | tekenreeks | De unieke id van de module. Dit veld wordt alleen uitgevoerd voor module apparaten. Deze hoofdletter gevoelige teken reeks kan Maxi maal 128 tekens lang zijn, en ondersteunt ASCII 7-bits alfanumerieke tekens plus de volgende speciale tekens: `- : . + % _ # * ? ! ( ) , = @ ; $ '` . |
 | deviceConnectionStateEventInfo | object | Informatie over de gebeurtenis van de verbindings status van het apparaat
@@ -176,7 +170,7 @@ Het gegevens object bevat de volgende eigenschappen voor **apparaten die zijn ve
 
 Voor de **telemetrie** van het apparaat IOT hub gebeurtenis bevat het gegevens object het apparaat-naar-Cloud bericht in de [IOT hub-bericht indeling](../iot-hub/iot-hub-devguide-messages-construct.md) en heeft de volgende eigenschappen:
 
-| Eigenschap | Type | Beschrijving |
+| Eigenschap | Type | Description |
 | -------- | ---- | ----------- |
 | body | tekenreeks | De inhoud van het bericht van het apparaat. |
 | properties | tekenreeks | Toepassings eigenschappen zijn door de gebruiker gedefinieerde teken reeksen die aan het bericht kunnen worden toegevoegd. Deze velden zijn optioneel. |

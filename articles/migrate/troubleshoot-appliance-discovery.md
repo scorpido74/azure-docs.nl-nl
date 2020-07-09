@@ -6,12 +6,12 @@ ms.manager: abhemraj
 ms.author: hamusa
 ms.topic: troubleshooting
 ms.date: 01/02/2020
-ms.openlocfilehash: 92a8e129188f2790a3e46162b207373b5d6e6ce4
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 40bd39299380c400f945585651a7ad99e3eb3fa7
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85611353"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86114054"
 ---
 # <a name="troubleshoot-the-azure-migrate-appliance-and-discovery"></a>Problemen met het Azure Migrate apparaat en de detectie oplossen
 
@@ -27,7 +27,7 @@ Dit artikel helpt u bij het oplossen van problemen bij het implementeren van het
 
 Ga als volgt te werk als u de fout melding ' het opgegeven manifest bestand is ongeldig: ongeldige OVF-manifest vermelding ' wordt weer gegeven:
 
-1. Controleer of het bestand van de Azure Migrate apparaat voor apparaten correct is gedownload door de hash-waarde te controleren. [Meer informatie](https://docs.microsoft.com/azure/migrate/tutorial-assessment-vmware). Als de hash-waarde niet overeenkomt, downloadt u het bestand van de eicellen opnieuw en voert u de implementatie opnieuw uit.
+1. Controleer of het bestand van de Azure Migrate apparaat voor apparaten correct is gedownload door de hash-waarde te controleren. [Meer informatie](./tutorial-prepare-vmware.md). Als de hash-waarde niet overeenkomt, downloadt u het bestand van de eicellen opnieuw en voert u de implementatie opnieuw uit.
 2. Als de implementatie nog steeds mislukt, en u de VMware vSphere-client gebruikt om het OVF-bestand te implementeren, probeert u het te implementeren via de vSphere-webclient. Als de implementatie nog steeds mislukt, kunt u proberen een andere webbrowser te gebruiken.
 3. Als u de vSphere-webclient gebruikt en deze probeert te implementeren op vCenter Server 6,5 of 6,7, probeert u de eicellen rechtstreeks op de ESXi-host te implementeren:
    - Maak rechtstreeks verbinding met de ESXi-host (in plaats van vCenter Server) met de webclient (https://<*host IP-adres*>/UI).
@@ -40,7 +40,7 @@ Dit kan gebeuren als de apparaatapparaat zich achter een proxy bevindt.
 
 - Zorg ervoor dat u de autorisatie referenties opgeeft als de proxy deze nodig heeft.
 - Als u een firewall proxy op basis van een URL gebruikt om de uitgaande connectiviteit te beheren, voegt u [deze url's](migrate-appliance.md#url-access) toe aan een acceptatie lijst.
-- Als u een interceptie proxy gebruikt om verbinding te maken met internet, importeert u het proxy certificaat op de apparaat-VM met behulp van de [volgende stappen](https://docs.microsoft.com/azure/migrate/concepts-collector).
+- Als u een interceptie proxy gebruikt om verbinding te maken met internet, importeert u het proxy certificaat op de apparaat-VM met behulp van de [volgende stappen](./migrate-appliance.md).
 
 ## <a name="cant-sign-into-azure-from-the-appliance-web-app"></a>Kan niet aanmelden bij Azure vanuit de Web-App van het apparaat
 
@@ -64,7 +64,7 @@ Er is een fout opgetreden bij de synchronisatie van datum en tijd (802) geeft aa
 
 Als deze verbindings fout optreedt, kunt u mogelijk geen verbinding maken met vCenter Server *servername*. com: 9443. De fout gegevens geven aan dat er geen eind punt luistert `https://\*servername*.com:9443/sdk` waarmee het bericht kan worden geaccepteerd.
 
-- Controleer of u de nieuwste versie van het apparaat uitvoert. Als dat niet het geval is, moet u het apparaat bijwerken naar de [nieuwste versie](https://docs.microsoft.com/azure/migrate/concepts-collector).
+- Controleer of u de nieuwste versie van het apparaat uitvoert. Als dat niet het geval is, moet u het apparaat bijwerken naar de [nieuwste versie](./migrate-appliance.md).
 - Als het probleem zich nog steeds voordoet in de meest recente versie, is het mogelijk dat het apparaat de opgegeven vCenter Server naam niet kan omzetten of dat de opgegeven poort onjuist is. Als de poort niet is opgegeven, probeert de Collector standaard verbinding te maken met poort nummer 443.
 
     1. Ping *Server naam*. com van het apparaat.
@@ -77,10 +77,10 @@ Als deze verbindings fout optreedt, kunt u mogelijk geen verbinding maken met vC
 
 - Fout 60052 ' het apparaat is mogelijk niet geregistreerd voor het Azure Migrate-project ' treedt op als het Azure-account dat wordt gebruikt om het apparaat te registreren, onvoldoende machtigingen heeft.
     - Zorg ervoor dat het Azure-gebruikers account dat wordt gebruikt om het apparaat te registreren, ten minste Inzender machtigingen heeft voor het abonnement.
-    - Meer [informatie](https://docs.microsoft.com/azure/migrate/migrate-appliance#appliance---vmware) over vereiste Azure-rollen en-machtigingen.
+    - Meer [informatie](./migrate-appliance.md#appliance---vmware) over vereiste Azure-rollen en-machtigingen.
 - Fout 60039 ' het apparaat is mogelijk niet geregistreerd voor het Azure Migrate-project ' kan zich voordoen als de registratie mislukt, omdat het Azure Migrate project dat is gebruikt voor de registratie van het apparaat, niet kan worden gevonden.
     - In de Azure Portal en controleer of het project bestaat in de resource groep.
-    - Als het project niet bestaat, maakt u een nieuw Azure Migrate project in de resource groep en registreert u het apparaat opnieuw. [Meer informatie over het](https://docs.microsoft.com/azure/migrate/how-to-add-tool-first-time#create-a-project-and-add-a-tool) maken van een nieuw project.
+    - Als het project niet bestaat, maakt u een nieuw Azure Migrate project in de resource groep en registreert u het apparaat opnieuw. [Meer informatie over het](./how-to-add-tool-first-time.md#create-a-project-and-add-a-tool) maken van een nieuw project.
 
 ## <a name="error-6003060031-key-vault-management-operation-failed"></a>Fout 60030/60031: Key Vault beheer bewerking is mislukt
 
@@ -88,7 +88,7 @@ Ga als volgt te werk als de fout 60030 of 60031 wordt weer gegeven: ' een Azure 
 - Zorg ervoor dat het Azure-gebruikers account dat wordt gebruikt om het apparaat te registreren, ten minste Inzender machtigingen heeft voor het abonnement.
 - Zorg ervoor dat het account toegang heeft tot de sleutel kluis die is opgegeven in het fout bericht en voer de bewerking opnieuw uit.
 - Als het probleem zich blijft voordoen, neemt u contact op met Microsoft-ondersteuning.
-- Meer [informatie](https://docs.microsoft.com/azure/migrate/migrate-appliance#appliance---vmware) over de vereiste Azure-rollen en-machtigingen.
+- Meer [informatie](./migrate-appliance.md#appliance---vmware) over de vereiste Azure-rollen en-machtigingen.
 
 ## <a name="error-60028-discovery-couldnt-be-initiated"></a>Fout 60028: detectie kan niet worden gestart
 
@@ -103,7 +103,7 @@ Fout 60025: er is een Azure AD-bewerking mislukt. De fout is opgetreden tijdens 
 - Zorg ervoor dat het gebruikers account dat de detectie initieert, hetzelfde is als dat waarmee het apparaat wordt geregistreerd.
 - Geef Azure Active Directory machtigingen voor toegang tot de toepassing op voor het gebruikers account waarvoor de detectie bewerking is mislukt.
 - Verwijder de resource groep die u eerder hebt gemaakt voor het Azure Migrate project. Maak een andere resource groep om opnieuw te starten.
-- Meer [informatie](https://docs.microsoft.com/azure/migrate/migrate-appliance#appliance---vmware) over Azure Active Directory toepassings machtigingen.
+- Meer [informatie](./migrate-appliance.md#appliance---vmware) over Azure Active Directory toepassings machtigingen.
 
 
 ## <a name="error-50004-cant-connect-to-host-or-cluster"></a>Fout 50004: kan geen verbinding maken met de host of het cluster

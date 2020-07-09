@@ -7,12 +7,12 @@ ms.author: makromer
 ms.service: data-factory
 ms.custom: seo-lt-2019
 ms.date: 07/06/2020
-ms.openlocfilehash: 1c63568418f21da0556ced0d004e04e7909118fb
-ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
+ms.openlocfilehash: 9f420b37bd44a46d4149e89cf5876d8e8b712581
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86042625"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86114377"
 ---
 # <a name="mapping-data-flows-performance-and-tuning-guide"></a>Gegevens stromen toewijzen prestaties en afstemmings handleiding
 
@@ -35,7 +35,7 @@ Bij het ontwerpen van gegevens stromen kunt u elke trans formatie per eenheid te
 
 ![Bewaking van gegevens stromen](media/data-flow/mon003.png "Monitor voor gegevens stroom 3")
 
- Voor het uitvoeren van de fout opsporing voor de pijp lijn is ongeveer één minuut van het instellen van de cluster tijd in uw algemene prestatie berekeningen vereist voor een warm cluster. Als u de standaard Azure Integration Runtime initialiseert, kan het aantal tijd van het draaien ongeveer 5 minuten duren.
+ Voor het uitvoeren van de fout opsporing voor de pijp lijn is ongeveer één minuut van het instellen van de cluster tijd in uw algemene prestatie berekeningen vereist voor een warm cluster. Als u de standaard Azure Integration Runtime initialiseert, kan de draaiings tijd ongeveer 4 minuten duren.
 
 ## <a name="increasing-compute-size-in-azure-integration-runtime"></a>De reken grootte verg Roten in Azure Integration Runtime
 
@@ -55,7 +55,7 @@ Het inschakelen van debug maakt standaard gebruik van de standaard Azure Integra
 
 ### <a name="decrease-cluster-compute-start-up-time-with-ttl"></a>De start tijd voor het berekenen van het cluster met TTL verlagen
 
-Er bevindt zich een eigenschap in de Azure IR onder eigenschappen van de gegevens stroom waarmee u een pool van cluster Compute-resources voor uw fabriek kunt samen stellen. Met deze pool kunt u gegevens stroom activiteiten sequentieel indienen voor uitvoering. Zodra de groep tot stand is gebracht, zal elke volgende taak 1-2 minuten duren voor het Spark-cluster op aanvraag om uw taak uit te voeren. De eerste configuratie van de resource groep duurt circa 6 minuten. Geef de hoeveelheid tijd op waarvoor u de resource groep wilt onderhouden in de TTL-instelling (time-to-Live).
+Er bevindt zich een eigenschap in de Azure IR onder eigenschappen van de gegevens stroom waarmee u een pool van cluster Compute-resources voor uw fabriek kunt samen stellen. Met deze pool kunt u gegevens stroom activiteiten sequentieel indienen voor uitvoering. Zodra de groep tot stand is gebracht, zal elke volgende taak 1-2 minuten duren voor het Spark-cluster op aanvraag om uw taak uit te voeren. De initiële configuratie van de resource groep duurt ongeveer 4 minuten. Geef de hoeveelheid tijd op waarvoor u de resource groep wilt onderhouden in de TTL-instelling (time-to-Live).
 
 ## <a name="optimizing-for-azure-sql-database-and-azure-sql-data-warehouse-synapse"></a>Optimaliseren voor Azure SQL Database en Azure SQL Data Warehouse Synapse
 
@@ -145,7 +145,7 @@ Als u Joker tekens gebruikt, bevat uw pijp lijn slechts één gegevens stroom ac
 
 Met de pijp lijn voor elk in parallelle modus worden meerdere clusters gemaakt door taak clusters in te stellen voor elke uitgevoerde activiteit van de gegevens stroom. Dit kan leiden tot een beperkt aantal gelijktijdige uitvoeringen van Azure-service. Het gebruik van de stroom voor het uitvoeren van gegevens binnen een voor elk met een sequentiële set in de pijp lijn zorgt er echter voor dat beperking en bron uitputting wordt voor komen. Dit zorgt ervoor dat Data Factory elke bestanden op volg orde van een gegevens stroom worden uitgevoerd.
 
-U kunt het beste de TTL-instelling gebruiken in de Azure Integration Runtime als u voor elk gebruikt met een gegevens stroom. Dit komt doordat elk bestand een volledige periode van vijf minuten voor het opstarten van het cluster in de iterator zal oplopen.
+U kunt het beste de TTL-instelling gebruiken in de Azure Integration Runtime als u voor elk gebruikt met een gegevens stroom. Dit komt doordat elk bestand een volledige periode van 4 minuten voor het opstarten van het cluster in de iterator zal oplopen.
 
 ### <a name="optimizing-for-cosmosdb"></a>Optimaliseren voor CosmosDB
 

@@ -8,15 +8,15 @@ manager: jhakulin
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 06/08/2020
+ms.date: 07/07/2020
 ms.author: oliversc
 ms.custom: seodec18
-ms.openlocfilehash: c4e9668459856af52ae1a905de8ba76dc36758fd
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.openlocfilehash: 2dd2d3b8564535a64ff961479ed94fc92fb210f5
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
 ms.lasthandoff: 07/08/2020
-ms.locfileid: "86086285"
+ms.locfileid: "86112983"
 ---
 # <a name="release-notes"></a>Releaseopmerkingen
 
@@ -24,7 +24,7 @@ ms.locfileid: "86086285"
 
 ### <a name="new-features"></a>Nieuwe functies
 
-* **NEURAL TTS, 15 nieuwe Neural stemmen**: de nieuwe stemmen die zijn toegevoegd aan de Neural TTS-Port Folio zijn Salma in het Arabisch (Egypte), Zariyah in Arabisch (Saoedi-Arabië), Alba in Catalaans (Spanje), Christel in het Deens (Denemarken), Neerja in het Engels (India), Swara in Hindi (India), Colette in het Nederlands (Nederland), Zofia in Pools (Polen), Fernanda in het Portugees (Portugal), Dariya in Russisch (Rusland), Hillevi in Zweeds (Zweden), Achara in Thai (Thai land), Iselin Noors (Bokmål) in (Noor wegen), HiuGaai in Chinees (Hongkong) en HsiaoYu in het Chinees (Taiwan). Alle [ondersteunde talen](https://docs.microsoft.com/azure/cognitive-services/speech-service/language-support#neural-voices)controleren.  
+* **NEURAL TTS, 15 nieuwe Neural stemmen**: de nieuwe stemmen die zijn toegevoegd aan de Neural TTS-Port Folio zijn Salma in het `ar-EG` Arabisch (Egypte), Zariyah in `ar-SA` Arabisch (Saoedi-Arabië), Alba in `ca-ES` Catalaans (Spanje), Christel in het `da-DK` Deens (Denemarken), Neerja in het `es-IN` Engels (India), Noora in `fi-FI` Fins (Finland), Swara in `hi-IN` Hindi (India), Colette in het `nl-NL` Nederlands (Netherland), Zofia in `pl-PL` Pools (Polen), Fernanda in het `pt-PT` Portugees (Portugal), Dariya in `ru-RU` Russisch (Rusland), Hillevi in `sv-SE` Zweeds (Zweden), Achara in `th-TH` Thai (Thai land), HiuGaai in `zh-HK` Chinees (Kantonees, traditioneel) en HsiaoYu in het `zh-TW` Chinees (Taiwan Mandarijn). Alle [ondersteunde talen](https://docs.microsoft.com/azure/cognitive-services/speech-service/language-support#neural-voices)controleren.  
 
 * **Aangepaste spraak, gestroomlijnde stem tests met de trainings stroom om de gebruikers ervaring te vereenvoudigen**: met de nieuwe test functie wordt elke stem automatisch getest met een vooraf gedefinieerde testset die is geoptimaliseerd voor elke taal om algemene en handelsassistent scenario's te kunnen behandelen. Deze test sets zijn zorgvuldig geselecteerd en getest om typische use cases en fonemen in de taal te bevatten. Daarnaast kunnen gebruikers nog steeds hun eigen test scripts uploaden bij het trainen van een model.
 
@@ -46,23 +46,23 @@ ms.locfileid: "86086285"
 
 * Verbeterde TTS-vocoder in voor betere beeld kwaliteit en een lagere latentie.
 
-    * In het Italiaans zijn de Elsa-updates bijgewerkt naar een nieuwe Vocoder die is bereikt + 0,464 CMOS (vergelijkend gemiddelde advies score) in de geluids kwaliteit, 40% sneller in synthese en 30% op de eerste byte latentie. 
-    * Xiaoxiao in het Chinees bijgewerkt naar de nieuwe vocoder met + 0148 CMOS-winst voor het algemene domein, + 0,348 voor de newscast-stijl en + 0,195 voor de Lyrical-stijl. 
+    * De versie van Elsa `it-IT` is bijgewerkt naar een nieuwe Vocoder die is bereikt + 0,464 CMOS (vergelijkend gemiddelde advies score) in de geluids kwaliteit, 40% sneller in synthese en 30% voor de eerste byte latentie. 
+    * Xiaoxiao bijgewerkt `zh-CN` naar de nieuwe vocoder met + 0148 CMOS-toename voor het algemene domein, + 0,348 voor de newscast-stijl en + 0,195 voor de Lyrical-stijl. 
 
 * Bijgewerkte `de-DE` en `ja-JP` spraak modellen om de TTS-uitvoer natuurlijk te maken.
     
-    * Katja in het Duits bijgewerkt met de nieuwste prosody-modelleer methode, is de MOS (gemiddelde opinie Score) + 0,13. 
-    * Nanami in het Japans bijgewerkt met een nieuw prosody model voor de MOS (de gemiddelde opinie Score) is + 0,19;  
+    * Katja is bijgewerkt `de-DE` met de meest recente prosody-model methode, de Mos (gemiddelde opinie Score) is + 0,13. 
+    * Nanami is bijgewerkt in `ja-JP` met een nieuw prosody-model voor de Mos (de gemiddelde opinie Score) is + 0,19;  
 
 * Verbeterde nauw keurigheid van de uitspraak op woord niveau in vijf talen.
 
     | Taal | Fout reductie van uitspraak |
     |---|---|
-    | en-GB | 51% |
-    | ko-KR | Nr |
-    | pt-BR | 39% |
-    | pt-PT | 77% |
-    | id-ID | 46% |
+    | `en-GB` | 51% |
+    | `ko-KR` | Nr |
+    | `pt-BR` | 39% |
+    | `pt-PT` | 77% |
+    | `id-ID` | 46% |
 
 ### <a name="bug-fixes"></a>Opgeloste fouten
 
@@ -71,8 +71,8 @@ ms.locfileid: "86086285"
      
     | Taal | Invoer | Na verbetering aflezing |
     |---|---|---|
-    | es-MX | $1,58 | oncincuentae y Ocho centavos |
-    | es-ES | $1,58 | dólar cincuenta y Ocho centavos |
+    | `es-MX` | $1,58 | oncincuentae y Ocho centavos |
+    | `es-ES` | $1,58 | dólar cincuenta y Ocho centavos |
 
     * Ondersteuning voor negatieve valuta (zoals "-€325") in de volgende land instellingen: `en-US` ,, `en-GB` `fr-FR` , `it-IT` ,, `en-AU` `en-CA` .
 
@@ -217,7 +217,7 @@ Blijf op de hoogte.
 - Java script: er is ondersteuning toegevoegd voor `FromHost API` om gebruik te vereenvoudigen met on-premises containers en soevereine Clouds. Raadpleeg [hier](speech-container-howto.md)de documentatie.
 - Java script: we gaan nu `NODE_TLS_REJECT_UNAUTHORIZED` door met een bijdrage van [orgads](https://github.com/orgads). Bekijk [hier](https://github.com/microsoft/cognitive-services-speech-sdk-js/pull/75)meer informatie.
 
-**Wijzigingen die fouten veroorzaken**
+**Wijzigingen afbreken**
 
 - `OpenSSL`is bijgewerkt naar versie 1.1.1 b en is statisch gekoppeld aan de Speech SDK core-bibliotheek voor Linux. Dit kan een storing veroorzaken als uw postvak in `OpenSSL` niet is geïnstalleerd in de `/usr/lib/ssl` map in het systeem. Raadpleeg [onze documentatie](how-to-configure-openssl-linux.md) onder documenten voor spraak-SDK om het probleem te omzeilen.
 - Het geretourneerde gegevens type voor C# is gewijzigd in om `WordLevelTimingResult.Offset` `int` `long` toegang te krijgen tot `WordLevelTimingResults` wanneer spraak gegevens langer dan twee minuten zijn.
@@ -258,7 +258,7 @@ Blijf op de hoogte.
 - `KeywordRecognizer`Er is ondersteuning toegevoegd voor Windows (UWP), Android en IOS via de NuGet-en Unity-pakketten
 - De Java-API voor externe conversaties is toegevoegd aan de conversatie transcriptie in asynchrone batches.
 
-**Wijzigingen die fouten veroorzaken**
+**Wijzigingen afbreken**
 
 - De functie voor het verzetten van conversaties in gesprek onder naam ruimte is verplaatst `Microsoft.CognitiveServices.Speech.Transcription` .
 - Een deel van de audio transcriber-methoden worden verplaatst naar een nieuwe `Conversation` klasse.
@@ -446,7 +446,7 @@ De volgende nieuwe inhoud is beschikbaar in onze [voorbeeld opslagplaats](https:
   - De SDK is nu gebouwd op basis van de iOS SDK-versie 12,1.
   - De SDK ondersteunt nu iOS-versies 9,2 en hoger.
   - Verbeter de referentie documentatie en los diverse eigenschapnamen op.
-- Javascript
+- JavaScript
   - Voeg ondersteuning toe voor het `Connection` object.
   - Type definitie bestanden voor gebundelde java script toevoegen
   - Eerste ondersteuning en implementatie voor woordgroepen hints.
@@ -478,7 +478,7 @@ Dit is een alleen-Java script-versie. Er zijn geen functies toegevoegd. De volge
 
 - Python
   - De bèta versie van python-ondersteuning (3,5 en hoger) is beschikbaar in deze release. Zie hier] (Quick Start-python.md) voor meer informatie.
-- Javascript
+- JavaScript
   - De Speech SDK voor Java script is open source. De bron code is beschikbaar op [github](https://github.com/Microsoft/cognitive-services-speech-sdk-js).
   - We bieden nu ondersteuning voor Node.js. u kunt [hier](quickstart-js-node.md)meer informatie vinden.
   - De lengte beperking voor audio sessies is verwijderd. de verbinding wordt automatisch hersteld onder de dekking.
@@ -565,7 +565,7 @@ In onze [voorbeeld opslagplaats](https://aka.ms/csspeech/samples)is een nieuw vo
 - Ondersteuning voor objectief-C op iOS. Bekijk onze [doel stelling-C Quick start voor IOS](~/articles/cognitive-services/Speech-Service/quickstarts/speech-to-text-from-microphone-langs/objectivec-ios.md).
 - Ondersteuning voor Java script in browser. Bekijk onze [Snelstartgids voor Java script](quickstart-js-browser.md).
 
-**Wijzigingen die fouten veroorzaken**
+**Wijzigingen afbreken**
 
 - In deze versie wordt een aantal belang rijke wijzigingen geïntroduceerd.
   Raadpleeg [Deze pagina](https://aka.ms/csspeech/breakingchanges_1_0_0) voor meer informatie.
@@ -584,7 +584,7 @@ In onze [voorbeeld opslagplaats](https://aka.ms/csspeech/samples)is een nieuw vo
 
 - Meer informatie over fout details beschikbaar maken voor verbindings fouten.
 
-**Wijzigingen die fouten veroorzaken**
+**Wijzigingen afbreken**
 
 - Op Java (Android) heeft de `SpeechFactory.configureNativePlatformBindingWithDefaultCertificate` functie geen para meter Path meer nodig. Nu wordt het pad automatisch gedetecteerd op alle ondersteunde platforms.
 - De Get-accessor van de eigenschap `EndpointUrl` in Java en C# is verwijderd.
@@ -613,7 +613,7 @@ In onze [voorbeeld opslagplaats](https://aka.ms/csspeech/samples)is een nieuw vo
 - Het herkennings resultaat bevat meer velden. Ze worden gecompenseerd vanaf het begin en de duur van de audio (zowel in Ticks) van de herkende tekst als aanvullende waarden die de herkennings status vertegenwoordigen, bijvoorbeeld `InitialSilenceTimeout` en `InitialBabbleTimeout` .
 - AuthorizationToken ondersteunen voor het maken van fabrieks instanties.
 
-**Wijzigingen die fouten veroorzaken**
+**Wijzigingen afbreken**
 
 - Herkennings gebeurtenissen: `NoMatch` gebeurtenis type is samengevoegd in de `Error` gebeurtenis.
 - De naam van SpeechOutputFormat in C# is gewijzigd in `OutputFormat` om te blijven uitgelijnd met C++.

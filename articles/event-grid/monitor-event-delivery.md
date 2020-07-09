@@ -1,19 +1,14 @@
 ---
 title: Azure Event Grid metrische gegevens weer geven en waarschuwingen instellen
 description: In dit artikel wordt beschreven hoe u de Azure Portal gebruikt om metrische gegevens weer te geven voor Azure Event Grid onderwerpen en abonnementen, en hierop waarschuwingen te maken.
-services: event-grid
-author: spelluru
-manager: timlt
-ms.service: event-grid
 ms.topic: conceptual
-ms.date: 06/16/2020
-ms.author: spelluru
-ms.openlocfilehash: 75311675ae24f4836ed8f1adb8a7d9802b4d7f0d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 07/07/2020
+ms.openlocfilehash: 518d34d39e6fbecc408fe9a44d899fe4745d60d0
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85390598"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86114880"
 ---
 # <a name="monitor-event-grid-message-delivery"></a>Bezorging van Event Grid bericht bewaken 
 In dit artikel wordt beschreven hoe u de portal kunt gebruiken om de metrische gegevens voor Event Grid-onderwerpen en-abonnementen te bekijken en om waarschuwingen te maken. 

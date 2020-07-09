@@ -6,12 +6,12 @@ ms.author: joanpo
 ms.service: data-share
 ms.topic: conceptual
 ms.date: 07/10/2019
-ms.openlocfilehash: 85b680aafd822b80edf543ca39787848129f1930
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 229d4fd6647a8a1b756fedee2a864d00b9c7de62
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85322055"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86110994"
 ---
 # <a name="roles-and-requirements-for-azure-data-share"></a>Rollen en vereisten voor Azure Data Share 
 
@@ -30,9 +30,8 @@ Om gegevens te delen of te ontvangen van een Azure-gegevens archief, moet de geb
 
 Hieronder volgt een samen vatting van de rollen die zijn toegewezen aan de beheerde identiteit van de gegevens share Bron:
 
-| |  |  |
-|---|---|---|
 |**Type gegevens archief**|**Bron gegevensopslag van gegevens provider**|**Gegevens opslag van het doel van de gegevens verbruiker**|
+|---|---|---|
 |Azure Blob Storage| Gegevens lezer van BLOB voor opslag | Inzender voor Storage BLOB-gegevens
 |Azure Data Lake gen1 | Eigenaar | Niet ondersteund
 |Azure Data Lake Gen2 | Gegevens lezer van BLOB voor opslag | Inzender voor Storage BLOB-gegevens
@@ -42,9 +41,8 @@ Hieronder volgt een samen vatting van de rollen die zijn toegewezen aan de behee
 
 Voor delen op basis van SQL moet een SQL-gebruiker worden gemaakt van een externe provider in Azure SQL Database met dezelfde naam als de Azure-gegevens share bron. Hieronder volgt een samen vatting van de machtiging die is vereist voor de SQL-gebruiker.
 
-| |  |  |
-|---|---|---|
 |**SQL Database type**|**SQL-gebruikers machtiging voor de gegevens provider**|**SQL-gebruikers machtiging voor gegevens verbruiker**|
+|---|---|---|
 |Azure SQL Database | db_datareader | db_datareader, db_datawriter db_ddladmin
 |Azure Synapse Analytics (voorheen SQL DW) | db_datareader | db_datareader, db_datawriter db_ddladmin
 |
@@ -103,4 +101,3 @@ Als u de uitnodiging voor Azure data share voor het eerst wilt weer geven in uw 
 ## <a name="next-steps"></a>Volgende stappen
 
 - Meer informatie over rollen in azure- [definities van functie-begrippen](../role-based-access-control/role-definitions.md)
-

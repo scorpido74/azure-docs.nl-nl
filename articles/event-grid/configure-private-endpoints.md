@@ -1,18 +1,14 @@
 ---
 title: Privé-eind punten voor Azure Event Grid onderwerpen of domeinen configureren
 description: In dit artikel wordt beschreven hoe u privé-eind punten voor Azure Event Grid-onderwerpen of-domein kunt configureren.
-services: event-grid
-author: spelluru
-ms.service: event-grid
 ms.topic: how-to
-ms.date: 04/22/2020
-ms.author: spelluru
-ms.openlocfilehash: 816d1f762698deeed38afe01899916b491809db2
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 07/07/2020
+ms.openlocfilehash: ace3f7f59e4f26388652d7bda1a5ee28800a414b
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85390462"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86115332"
 ---
 # <a name="configure-private-endpoints-for-azure-event-grid-topics-or-domains"></a>Privé-eind punten voor Azure Event Grid onderwerpen of domeinen configureren
 U kunt [privé-eind punten](../private-link/private-endpoint-overview.md) gebruiken om direct vanuit uw virtuele netwerk toegang te geven tot uw onderwerpen en domeinen, zonder dat u het open bare Internet [hoeft te passeren](../private-link/private-link-overview.md) . Het persoonlijke eind punt gebruikt een IP-adres uit de VNet-adres ruimte voor uw onderwerp of domein. Zie [netwerk beveiliging](network-security.md)voor meer conceptuele informatie.

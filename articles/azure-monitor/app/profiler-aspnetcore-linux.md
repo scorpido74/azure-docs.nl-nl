@@ -6,11 +6,12 @@ author: cweining
 ms.author: cweining
 ms.date: 02/23/2018
 ms.reviewer: mbullwin
-ms.openlocfilehash: d845e245a242a88d16a2597f0144a0ae4a727cb0
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: b91abe282c25b161db72616d7123d7a2bf5dbc9f
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81640979"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86111062"
 ---
 # <a name="profile-aspnet-core-azure-linux-web-apps-with-application-insights-profiler"></a>Profiel ASP.NET Core Azure Linux-web-apps met Application Insights Profiler
 
@@ -34,17 +35,17 @@ De volgende instructies zijn van toepassing op alle ontwikkel omgevingen van Win
 
 1. Maak een ASP.NET Core MVC-webtoepassing:
 
-    ```
-    dotnet new mvc -n LinuxProfilerTest
-    ```
+   ```console
+   dotnet new mvc -n LinuxProfilerTest
+   ```
 
 1. Wijzig de werkmap in de hoofdmap voor het project.
 
 1. Voeg het NuGet-pakket toe voor het verzamelen van de profilerings traceringen:
 
-    ```shell
-    dotnet add package Microsoft.ApplicationInsights.Profiler.AspNetCore
-    ```
+   ```console
+   dotnet add package Microsoft.ApplicationInsights.Profiler.AspNetCore
+   ```
 
 1. Application Insights in Program.cs inschakelen:
 
@@ -54,7 +55,7 @@ De volgende instructies zijn van toepassing op alle ontwikkel omgevingen van Win
             .UseApplicationInsights() // Add this line of code to Enable Application Insights
             .UseStartup<Startup>();
     ```
-    
+
 1. Profiler inschakelen in Startup.cs:
 
     ```csharp
@@ -68,24 +69,24 @@ De volgende instructies zijn van toepassing op alle ontwikkel omgevingen van Win
 1. Voeg in de sectie **HomeController.cs** een regel code toe om enkele seconden een wille keurige vertraging uit te stellen:
 
     ```csharp
-        using System.Threading;
-        ...
+    using System.Threading;
+    ...
 
-        public IActionResult About()
-            {
-                Random r = new Random();
-                int delay = r.Next(5000, 10000);
-                Thread.Sleep(delay);
-                return View();
-            }
+    public IActionResult About()
+        {
+            Random r = new Random();
+            int delay = r.Next(5000, 10000);
+            Thread.Sleep(delay);
+            return View();
+        }
     ```
 
 1. Sla uw wijzigingen op in de lokale opslag plaats en voer deze in:
 
-    ```
-        git init
-        git add .
-        git commit -m "first commit"
+    ```console
+    git init
+    git add .
+    git commit -m "first commit"
     ```
 
 ## <a name="create-the-linux-web-app-to-host-your-project"></a>De Linux-web-app maken om uw project te hosten
@@ -111,7 +112,7 @@ Raadpleeg [dit artikel](https://docs.microsoft.com/azure/app-service/containers/
 
 1. Blader in het opdracht prompt venster naar de hoofdmap van uw project. Voeg een Git externe opslag plaats toe om te verwijzen naar de opslag plaats op App Service:
 
-    ```
+    ```console
     git remote add azure https://<username>@<app_name>.scm.azurewebsites.net:443/<app_name>.git
     ```
 
@@ -120,13 +121,13 @@ Raadpleeg [dit artikel](https://docs.microsoft.com/azure/app-service/containers/
 
 2. Implementeer het project door de wijzigingen naar Azure te pushen:
 
-    ```
+    ```console
     git push azure master
     ```
 
-De uitvoer ziet er ongeveer als volgt uit:
+    De uitvoer ziet er ongeveer als volgt uit:
 
-    ```
+    ```output
     Counting objects: 9, done.
     Delta compression using up to 8 threads.
     Compressing objects: 100% (8/8), done.
@@ -143,8 +144,7 @@ De uitvoer ziet er ongeveer als volgt uit:
     remote: .
     remote:   Installing Newtonsoft.Json 10.0.3.
     remote:   Installing Microsoft.ApplicationInsights.Profiler.Core 1.1.0-LKG
-    …
-
+    ...
     ```
 
 ## <a name="add-application-insights-to-monitor-your-web-apps"></a>Application Insights toevoegen om uw web-apps te bewaken
@@ -153,9 +153,7 @@ De uitvoer ziet er ongeveer als volgt uit:
 
 2. Kopieer de waarde **iKey** van de resource Application Insights en stel de volgende instellingen in uw web-apps in:
 
-    ```
-    APPINSIGHTS_INSTRUMENTATIONKEY: [YOUR_APPINSIGHTS_KEY]
-    ```
+    `APPINSIGHTS_INSTRUMENTATIONKEY: [YOUR_APPINSIGHTS_KEY]`
 
     Wanneer de app-instellingen worden gewijzigd, wordt de site automatisch opnieuw opgestart. Nadat de nieuwe instellingen zijn toegepast, wordt de Profiler onmiddellijk twee minuten uitgevoerd. De Profiler wordt vervolgens elk uur twee minuten uitgevoerd.
 

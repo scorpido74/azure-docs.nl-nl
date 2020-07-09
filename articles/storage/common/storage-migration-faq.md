@@ -9,12 +9,12 @@ ms.topic: article
 ms.date: 10/31/2018
 ms.author: genli
 ms.subservice: common
-ms.openlocfilehash: 1d8275d11b845df43238dce82beabe89d6464799
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: f0272d53c5fc4c565baf5d7105bd6e1b4a0ef535
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84944692"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86114598"
 ---
 # <a name="frequently-asked-questions-about-azure-storage-migration"></a>Veelgestelde vragen over de Azure Storage-migratie
 
@@ -26,9 +26,11 @@ In dit artikel vindt u antwoorden op veelgestelde vragen over Azure Storage migr
 
 U kunt AzCopy gebruiken om bestanden tussen containers te kopiëren. Zie het volgende voorbeeld:
 
-    AzCopy /Source:https://xxx.blob.core.windows.net/xxx
-    /Dest:https://xxx.blob.core.windows.net/xxx /SourceKey:xxx /DestKey:xxx
-    /S
+```azurepowershell-interactive
+AzCopy /Source:https://xxx.blob.core.windows.net/xxx
+/Dest:https://xxx.blob.core.windows.net/xxx /SourceKey:xxx /DestKey:xxx
+/S
+```
 
 AzCopy maakt gebruik van de [copy BLOB API](https://docs.microsoft.com/rest/api/storageservices/copy-blob) om elk bestand in de container te kopiëren.  
 
@@ -54,11 +56,15 @@ U kunt de Azure CLI gebruiken.
 
 - Een enkele BLOB downloaden:
 
-      azure storage blob download -k "<Account Key>" -a "<Storage Account Name>" --container "<Blob Container Name>" -b "<Remote File Name>" -d "<Local path where the file will be downloaded to>"
+    ```azurecli-interactive
+    azure storage blob download -k "<Account Key>" -a "<Storage Account Name>" --container "<Blob Container Name>" -b "<Remote File Name>" -d "<Local path where the file will be downloaded to>"
+    ```
 
 - Eén BLOB uploaden:
 
-      azure storage blob upload -k "<Account Key>" -a "<Storage Account Name>" --container "<Blob Container Name>" -f "<Local File Name>"
+    ```azurecli-interactive
+    azure storage blob upload -k "<Account Key>" -a "<Storage Account Name>" --container "<Blob Container Name>" -f "<Local File Name>"
+    ```
 
 **Hoe kan ik migreert u blobs van het ene opslag account naar het andere?**
 
@@ -160,15 +166,19 @@ Volg deze stappen:
 
     De hele schijven in het opslag account kopiëren:
 
-        AzCopy /Source:https://sourceaccount.blob.core.windows.net/mycontainer1
-        /Dest:https://destaccount.blob.core.windows.net/mycontainer2
-        /SourceKey:key1 /DestKey:key2 /S
+    ```azurepowershell-interactive
+    AzCopy /Source:https://sourceaccount.blob.core.windows.net/mycontainer1
+    /Dest:https://destaccount.blob.core.windows.net/mycontainer2
+    /SourceKey:key1 /DestKey:key2 /S
+    ```
 
     Als u slechts één schijf wilt kopiëren, geeft u de naam van de schijf op in **patroon**:
 
-        AzCopy /Source:https://sourceaccount.blob.core.windows.net/mycontainer1
-        /Dest:https://destaccount.blob.core.windows.net/mycontainer2
-        /SourceKey:key1 /DestKey:key2 /Pattern:abc.vhd
+    ```azurepowershell-interactive
+    AzCopy /Source:https://sourceaccount.blob.core.windows.net/mycontainer1
+    /Dest:https://destaccount.blob.core.windows.net/mycontainer2
+    /SourceKey:key1 /DestKey:key2 /Pattern:abc.vhd
+    ```
 
 Het kan enkele uren duren voordat de bewerking is voltooid.
 
@@ -190,9 +200,11 @@ Er is geen optie om rechtstreeks een back-up te maken van een volledig opslag ac
 
 3.  Voer de volgende opdracht uit om de container te verplaatsen. U moet de tekst vervangen door de werkelijke waarden.   
 
-            AzCopy /Source:https://sourceaccount.blob.core.windows.net/mycontainer1
-            /Dest:https://destaccount.blob.core.windows.net/mycontainer2
-            /SourceKey:key1 /DestKey:key2 /S
+    ```azurepowershell-interactive
+    AzCopy /Source:https://sourceaccount.blob.core.windows.net/mycontainer1
+    /Dest:https://destaccount.blob.core.windows.net/mycontainer2
+    /SourceKey:key1 /DestKey:key2 /S
+    ```
 
     - `/Source`: Geef de URI op voor het bron-of-opslag account (tot aan de container).  
     - `/Dest`: Geef de URI voor het doel-opslag account op (Maxi maal de container).  

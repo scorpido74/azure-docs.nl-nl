@@ -5,14 +5,14 @@ services: bastion
 author: charwen
 ms.service: bastion
 ms.topic: conceptual
-ms.date: 04/20/2020
+ms.date: 07/07/2020
 ms.author: charwen
-ms.openlocfilehash: e4782213b38ad9e265cc66c3073dc5f357c50561
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 1fc261c31a1190536f3128ed6472d9ca76dfce7e
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85321662"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86112192"
 ---
 # <a name="working-with-nsg-access-and-azure-bastion"></a>Werken met NSG-toegang en Azure Bastion
 
@@ -41,10 +41,16 @@ Azure Bastion wordt specifiek geïmplementeerd voor ***AzureBastionSubnet***.
    * **Binnenkomend verkeer via het open bare Internet:** De Azure-Bastion maakt een openbaar IP-adres waarvoor poort 443 is ingeschakeld op het open bare IP-adres voor binnenkomend verkeer. Poort 3389/22 hoeft niet te worden geopend op de AzureBastionSubnet.
    * **Binnenkomend verkeer vanuit het Azure Bastion-besturings vlak:** Schakel voor de connectiviteit van het besturings element het argument poort 443 binnenkomend van de **GatewayManager** -service in. Hiermee wordt het besturings vlak ingeschakeld, dat wil zeggen dat gateway beheer met Azure Bastion kan communiceren.
 
+
+   :::image type="content" source="./media/bastion-nsg/inbound.png" alt-text="Inkomend":::
+
 * **Uitgaand verkeer:**
 
    * Uitgaand **verkeer naar doel-vm's:** Azure Bastion bereikt de doel-Vm's via privé-IP. De Nsg's moet uitgaand verkeer naar andere doel-VM-subnetten toestaan voor poort 3389 en 22.
    * Uitgaand **verkeer naar andere open bare eind punten in Azure:** Azure Bastion moet verbinding kunnen maken met verschillende open bare eind punten in azure (bijvoorbeeld voor het opslaan van Diagnostische logboeken en logboeken voor meters). Daarom heeft Azure Bastion een uitgaand verkeer naar 443 naar **Cloud** service-tag nodig.
+
+
+   :::image type="content" source="./media/bastion-nsg/outbound.png" alt-text="Uitgaand":::
 
 ### <a name="target-vm-subnet"></a>Doel-VM-subnet
 Dit is het subnet dat de virtuele doel machine bevat waarnaar u RDP/SSH wilt.

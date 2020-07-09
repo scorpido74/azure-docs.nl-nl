@@ -8,11 +8,12 @@ author: mgoedtel
 ms.author: magoedte
 ms.date: 07/01/2020
 ms.topic: conceptual
-ms.openlocfilehash: 74ac991eb40864aeb4ac42d4774d9ab61fb14c36
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: e3d3521cfb3d3b0c6659013922ab11fe765af882
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85807669"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86111249"
 ---
 # <a name="overview-of-azure-arc-for-servers-agent"></a>Overzicht van Azure Arc voor servers agent
 
@@ -184,7 +185,7 @@ Om te zorgen voor de beveiliging van gegevens die onderweg zijn naar Azure, rade
 |Platform/taal | Ondersteuning | Meer informatie |
 | --- | --- | --- |
 |Linux | Linux-distributies zijn vaak afhankelijk van [openssl](https://www.openssl.org) voor TLS 1,2-ondersteuning. | Controleer de [openssl wijzigingen logboek](https://www.openssl.org/news/changelog.html) om te bevestigen dat uw versie van openssl wordt ondersteund.|
-| Windows Server 2012 R2 en hoger | Wordt ondersteund en is standaard ingeschakeld. | Om te bevestigen dat u nog steeds de [standaard instellingen](https://docs.microsoft.com/windows-server/security/tls/tls-registry-settings)gebruikt.|
+| Windows Server 2012 R2 en hoger | Wordt ondersteund en is standaard ingeschakeld. | Om te bevestigen dat u nog steeds de [standaard instellingen](/windows-server/security/tls/tls-registry-settings)gebruikt.|
 
 ### <a name="networking-configuration"></a>Netwerk configuratie
 
@@ -208,7 +209,7 @@ Adres
 |*-agentservice-prod-1.azure-automation.net|Gastconfiguratie|
 |*. his.arc.azure.com|Hybride identiteits service|
 
-Zie voor een lijst met IP-adressen voor elke servicetag/regio het JSON-bestand- [Azure IP-bereiken en de service Tags – open bare Cloud](https://www.microsoft.com/download/details.aspx?id=56519). Micro soft publiceert wekelijkse updates met elke Azure-service en de IP-bereiken die worden gebruikt. Bekijk [service Tags](https://docs.microsoft.com/azure/virtual-network/security-overview#service-tags)voor meer informatie.
+Zie voor een lijst met IP-adressen voor elke servicetag/regio het JSON-bestand- [Azure IP-bereiken en de service Tags – open bare Cloud](https://www.microsoft.com/download/details.aspx?id=56519). Micro soft publiceert wekelijkse updates met elke Azure-service en de IP-bereiken die worden gebruikt. Bekijk [service Tags](../../virtual-network/security-overview.md#service-tags)voor meer informatie.
 
 De Url's in de vorige tabel zijn vereist naast de IP-adres bereik gegevens van de service label, omdat de meeste services momenteel geen servicetag registratie hebben. Zo kunnen de IP-adressen worden gewijzigd. Als IP-adresbereiken vereist zijn voor de configuratie van de firewall, moet de **Cloud** -servicetag worden gebruikt om toegang tot alle Azure-Services toe te staan. Schakel de beveiligings controle of inspectie van deze Url's niet uit, en sta ze toe als andere Internet verkeer.
 

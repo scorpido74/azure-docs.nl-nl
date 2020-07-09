@@ -1,17 +1,14 @@
 ---
 title: Gebruik Azure Resource Manager sjablonen om systeem onderwerpen te maken in Azure Event Grid
 description: In dit artikel wordt beschreven hoe u Azure Resource Manager sjablonen gebruikt om systeem onderwerpen te maken in Azure Event Grid.
-services: event-grid
-author: spelluru
-ms.service: event-grid
 ms.topic: conceptual
-ms.date: 06/02/2020
-ms.author: spelluru
-ms.openlocfilehash: a2fe0ffd5f8ac801d15dc08d027c9442c57ef2b9
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 07/07/2020
+ms.openlocfilehash: 1c8881a2d9dfca43084cc537b106e84b050a18d5
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84457468"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86115159"
 ---
 # <a name="create-system-topics-in-azure-event-grid-using-resource-manager-templates"></a>Systeem onderwerpen maken in Azure Event Grid met behulp van Resource Manager-sjablonen
 In dit artikel wordt beschreven hoe u systeem onderwerpen maakt en beheert met behulp van Resource Manager-sjablonen. Zie [systeem onderwerpen](system-topics.md)voor een overzicht van systeem onderwerpen.
