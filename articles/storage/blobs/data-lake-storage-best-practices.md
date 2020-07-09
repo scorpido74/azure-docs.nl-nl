@@ -8,11 +8,12 @@ ms.topic: conceptual
 ms.date: 12/06/2018
 ms.author: normesta
 ms.reviewer: sachins
-ms.openlocfilehash: 79c4f051318113ebe0c7e0085539d2f24405b4f9
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: e008bad2043d8cd633f0849aefc62c4ed7a7e89d
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82857878"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86104874"
 ---
 # <a name="best-practices-for-using-azure-data-lake-storage-gen2"></a>Aanbevolen procedures voor het gebruik van Azure Data Lake Storage Gen2
 
@@ -76,11 +77,11 @@ Wanneer gegevens naar een Data Lake worden gelandd, is het belang rijk om de str
 
 In IoT-workloads kunnen er grote hoeveel heden gegevens in het gegevens archief worden gelandd dat over talloze producten, apparaten, organisaties en klanten kan worden verspreid. Het is belang rijk om vooraf de Directory-indeling te plannen voor de organisatie, beveiliging en efficiënte verwerking van de gegevens voor gebruikers van de andere stroom. Een algemene sjabloon waarmee u rekening moet houden, kan de volgende indeling hebben:
 
-    {Region}/{SubjectMatter(s)}/{yyyy}/{mm}/{dd}/{hh}/
+*{Region}/{SubjectMatter (s)}/{yyyy}/{mm}/{dd}/{hh}/*
 
 Bijvoorbeeld, telemetrie voor een vliegtuig motor binnen het Verenigd Konink rijk kan er als volgt uitzien:
 
-    UK/Planes/BA1293/Engine1/2017/08/11/12/
+*GB/abonnementen/BA1293/Engine1/2017/08/11/12/*
 
 Er is een belang rijke reden om de datum toe te voegen aan het einde van de mapstructuur. Als u bepaalde regio's of onderwerpen wilt vergren delen voor gebruikers/groepen, kunt u dit eenvoudig doen met de POSIX-machtigingen. Als er anders een bepaalde beveiligings groep moet worden beperkt om alleen de UK-gegevens of bepaalde abonnementen weer te geven, is de datum structuur voor een afzonderlijke machtiging vereist voor talloze mappen onder elke map uur. Als de datum structuur op de voor grond ligt, zou het aantal directory's tijdens het tijdstip exponentieel worden verhoogd.
 
@@ -90,13 +91,13 @@ Vanuit een hoog niveau is een veelgebruikte aanpak in batch verwerking het gebru
 
 Soms wordt bestands verwerking niet geslaagd als gevolg van gegevens beschadiging of onverwachte notaties. In dergelijke gevallen kan de mapstructuur van een **/Bad** -map de bestanden naar aanleiding van de nieuwe inspectie verplaatsen. De batch-taak kan ook de rapportage of melding van deze *beschadigde* bestanden verwerken voor hand matige tussen komst. Houd rekening met de volgende sjabloon structuur:
 
-    {Region}/{SubjectMatter(s)}/In/{yyyy}/{mm}/{dd}/{hh}/
-    {Region}/{SubjectMatter(s)}/Out/{yyyy}/{mm}/{dd}/{hh}/
-    {Region}/{SubjectMatter(s)}/Bad/{yyyy}/{mm}/{dd}/{hh}/
+*{Region}/{SubjectMatter (s)}/in/{yyyy}/{mm}/{dd}/{hh}/*\
+*{Region}/{SubjectMatter (s)}/out/{yyyy}/{mm}/{dd}/{hh}/*\
+*{Region}/{SubjectMatter (s)}/bad/{yyyy}/{mm}/{dd}/{hh}/*
 
 Zo ontvangt een marketing bedrijf dagelijks gegevens uittreksels van klant updates van hun clients in Noord-Amerika. Het kan er voor en na het verwerken van het volgende fragment uitzien:
 
-    NA/Extracts/ACMEPaperCo/In/2017/08/14/updates_08142017.csv
-    NA/Extracts/ACMEPaperCo/Out/2017/08/14/processed_updates_08142017.csv
+*N.V.T./extracten/ACMEPaperCo/in/2017/08/14/updates_08142017.csv*\
+*N.V.T./extracten/ACMEPaperCo/uit/2017/08/14/processed_updates_08142017.csv*
 
 In het gemeen schappelijke geval van batch gegevens die rechtstreeks in data bases worden verwerkt, zoals Hive of traditionele SQL-data bases, is er geen behoefte aan een **/in** -of **/out** -map omdat de uitvoer al naar een afzonderlijke map voor de Hive-tabel of externe data base gaat. Dagelijkse uittreksels van klanten zijn bijvoorbeeld in hun respectieve mappen gelandd, en met de indeling van een probleem zoals Azure Data Factory, Apache Oozie of Apache-lucht flow wordt een dagelijkse Hive-of Spark-taak geactiveerd om de gegevens in een Hive-tabel te verwerken en te schrijven.

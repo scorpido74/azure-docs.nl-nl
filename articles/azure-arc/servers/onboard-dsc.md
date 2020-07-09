@@ -8,15 +8,16 @@ author: mgoedtel
 ms.author: magoedte
 ms.date: 03/12/2020
 ms.topic: conceptual
-ms.openlocfilehash: 1fb64463b0372202adb04c2deb304c389c7773b8
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: f3dee468764f27d930081b5a3cd415c48bb79c0d
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "79164681"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86104007"
 ---
 # <a name="how-to-install-the-connected-machine-agent-using-windows-powershell-dsc"></a>De verbonden machine agent installeren met behulp van Windows Power shell DSC
 
-Met [Windows Power shell desired state Configuration](https://docs.microsoft.com/powershell/scripting/dsc/getting-started/winGettingStarted?view=powershell-7) (DSC) kunt u software-installatie en-configuratie voor een Windows-computer automatiseren. In dit artikel wordt beschreven hoe u DSC kunt gebruiken om de Azure-Arc te installeren voor servers aangesloten machine agent op hybride Windows-computers.
+Met [Windows Power shell desired state Configuration](/powershell/scripting/dsc/getting-started/winGettingStarted?view=powershell-7) (DSC) kunt u software-installatie en-configuratie voor een Windows-computer automatiseren. In dit artikel wordt beschreven hoe u DSC kunt gebruiken om de Azure-Arc te installeren voor servers aangesloten machine agent op hybride Windows-computers.
 
 ## <a name="requirements"></a>Vereisten
 
@@ -72,7 +73,7 @@ Hieronder vindt u de para meters die u aan het Power shell-script geeft.
 
 1. Navigeer in een Power shell-console naar de map waarin u het `.ps1` bestand hebt opgeslagen.
 
-2. Voer de volgende Power shell-opdrachten uit om het MOF-document te compileren (Zie DSC- [configuraties](https://docs.microsoft.com/powershell/scripting/dsc/configurations/configurations?view=powershell-7)voor informatie over het compileren van DSC-configuraties:
+2. Voer de volgende Power shell-opdrachten uit om het MOF-document te compileren (Zie DSC- [configuraties](/powershell/scripting/dsc/configurations/configurations?view=powershell-7)voor informatie over het compileren van DSC-configuraties:
 
     ```powershell
     .\`AzureConnectedMachineAgent.ps1 -TenantId <TenantId GUID> -SubscriptionId <SubscriptionId GUID> -ResourceGroup '<ResourceGroupName>' -Location '<LocationName>' -Tags '<Tag>' -Credential <psCredential>
@@ -86,7 +87,7 @@ Nadat u de agent hebt geïnstalleerd en geconfigureerd om verbinding te maken me
 
 Deze resource kan worden toegevoegd aan bestaande DSC-configuraties om een end-to-end-configuratie voor een machine aan te duiden. U kunt deze resource bijvoorbeeld toevoegen aan een configuratie waarin de instellingen voor beveiligde besturings systemen worden ingesteld.
 
-De [CompsiteResource](https://www.powershellgallery.com/packages/compositeresource/0.4.0) -module van de PowerShell Gallery kan worden gebruikt om een [samengestelde resource](https://docs.microsoft.com/powershell/scripting/dsc/resources/authoringResourceComposite?view=powershell-7) van de voorbeeld configuratie te maken, om het combi neren van configuraties verder te vereenvoudigen.
+De [CompsiteResource](https://www.powershellgallery.com/packages/compositeresource/0.4.0) -module van de PowerShell Gallery kan worden gebruikt om een [samengestelde resource](/powershell/scripting/dsc/resources/authoringResourceComposite?view=powershell-7) van de voorbeeld configuratie te maken, om het combi neren van configuraties verder te vereenvoudigen.
 
 ## <a name="next-steps"></a>Volgende stappen
 

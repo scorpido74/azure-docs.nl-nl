@@ -8,12 +8,12 @@ author: mlearned
 ms.author: mlearned
 description: Azure IoT Edge workloads implementeren
 keywords: Kubernetes, Arc, azure, K8s, containers
-ms.openlocfilehash: 2a688a221b2f4865d51bca2ebf4aaa0b1f714290
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: bfaa43a03ddd98616b22fc3fc7b4dccb4c38f44c
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85193784"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86103973"
 ---
 # <a name="deploy-azure-iot-edge-workloads-preview"></a>Azure IoT Edge workloads implementeren (preview-versie)
 
@@ -25,7 +25,7 @@ Azure-Arc en Azure IoT Edge zijn de mogelijkheden van elkaar heel goed. Azure Ar
 
 ## <a name="pre-requisites"></a>Vereisten
 
-* [Registreer een IOT edge apparaat](https://docs.microsoft.com/azure/iot-edge/quickstart-linux#register-an-iot-edge-device) en [Implementeer de module gesimuleerde temperatuur sensor](https://docs.microsoft.com/azure/iot-edge/quickstart-linux#deploy-a-module). Noteer de connection string van het apparaat.
+* [Registreer een IOT edge apparaat](../../iot-edge/quickstart-linux.md#register-an-iot-edge-device) en [Implementeer de module gesimuleerde temperatuur sensor](../../iot-edge/quickstart-linux.md#deploy-a-module). Noteer de connection string van het apparaat.
 
 * Gebruik [de ondersteuning van IOT Edge voor Kubernetes](https://aka.ms/edgek8sdoc) om deze te implementeren via de stroom operator van Azure Arc.
 

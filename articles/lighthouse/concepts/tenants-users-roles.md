@@ -1,37 +1,37 @@
 ---
 title: Tenants, rollen en gebruikers in azure Lighthouse-scenario's
 description: Inzicht in de concepten van Azure Active Directory-tenants, gebruikers en rollen, en hoe ze kunnen worden gebruikt in azure Lighthouse-scenario's.
-ms.date: 04/03/2020
+ms.date: 07/03/2020
 ms.topic: conceptual
-ms.openlocfilehash: 7ed5af18efbb0f5b97dcab20093cc45e8bed1d03
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 6bcfd1603469ba27971fffa8e7c46f0f696bb6a2
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82144918"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86105384"
 ---
 # <a name="tenants-roles-and-users-in-azure-lighthouse-scenarios"></a>Tenants, rollen en gebruikers in azure Lighthouse-scenario's
 
-Het is belang rijk om te begrijpen hoe Azure Active Directory (Azure AD)-tenants, gebruikers en rollen werken, en hoe ze kunnen worden gebruikt in azure [Lighthouse-scenario's](azure-delegated-resource-management.md).
+Voordat u klanten voor [Azure Lighthouse](../overview.md)kunt voorbereiden, is het belang rijk om te begrijpen hoe Azure Active Directory (Azure AD)-tenants, gebruikers en rollen werken, en hoe ze kunnen worden gebruikt in azure Lighthouse-scenario's.
 
-Een *Tenant* is een speciaal en vertrouwd exemplaar van Azure AD. Normaal gesp roken vertegenwoordigt elke Tenant één organisatie. Met het gedelegeerde resource beheer van Azure kunt u resources van de ene Tenant naar een andere Tenant maken. Hierdoor kunnen gebruikers in de Tenant beheren (zoals één van een service provider) toegang krijgen tot gedelegeerde resources in de Tenant van een klant, of kunnen [ondernemingen met meerdere tenants hun beheer bewerkingen centraliseren](enterprise.md).
+Een *Tenant* is een speciaal en vertrouwd exemplaar van Azure AD. Normaal gesp roken vertegenwoordigt elke Tenant één organisatie. Met het [gedelegeerde resource beheer van Azure](azure-delegated-resource-management.md) kunt u resources van de ene Tenant naar een andere Tenant maken. Hierdoor kunnen gebruikers in de Tenant beheren (zoals één van een service provider) toegang krijgen tot gedelegeerde resources in de Tenant van een klant, of kunnen [ondernemingen met meerdere tenants hun beheer bewerkingen centraliseren](enterprise.md).
 
 Als u deze logische projectie wilt uitvoeren, moet een abonnement (of een of meer resource groepen binnen een abonnement) in de *Tenant van de klant worden* opvolgd voor het beheer van de gedelegeerde resources van Azure. Dit voorbereidings proces kan worden uitgevoerd [via Azure Resource Manager sjablonen](../how-to/onboard-customer.md) of door [een open bare of persoonlijke aanbieding naar Azure Marketplace te publiceren](../how-to/publish-managed-services-offers.md).
 
 Welke methode u ook kiest, u moet *autorisaties*definiëren. Elke autorisatie geeft een gebruikers account op in de beheer-Tenant die toegang heeft tot de gedelegeerde resources en een ingebouwde rol die de machtigingen instelt die elk van deze gebruikers voor deze resources heeft.
 
-## <a name="role-support-for-azure-delegated-resource-management"></a>Functie ondersteuning voor Azure delegated resource management
+## <a name="role-support-for-azure-lighthouse"></a>Functie ondersteuning voor Azure Lighthouse
 
 Bij het definiëren van een autorisatie moet aan elk gebruikers account een van de [ingebouwde rollen op basis van op rollen gebaseerd toegangs beheer (RBAC)](../../role-based-access-control/built-in-roles.md)worden toegewezen. Aangepaste rollen en [beheerders rollen voor klassieke abonnementen](../../role-based-access-control/classic-administrators.md) worden niet ondersteund.
 
-Alle [ingebouwde rollen](../../role-based-access-control/built-in-roles.md) worden momenteel ondersteund met Azure delegated resource management, met de volgende uitzonde ringen:
+Alle [ingebouwde rollen](../../role-based-access-control/built-in-roles.md) worden momenteel ondersteund met Azure Lighthouse, met de volgende uitzonde ringen:
 
 - De rol van [eigenaar](../../role-based-access-control/built-in-roles.md#owner) wordt niet ondersteund.
 - Ingebouwde rollen met de machtiging [DataActions](../../role-based-access-control/role-definitions.md#dataactions) worden niet ondersteund.
 - De ingebouwde rol [gebruikers toegangs beheerder](../../role-based-access-control/built-in-roles.md#user-access-administrator) wordt ondersteund, maar alleen voor het beperkte doel van het [toewijzen van rollen aan een beheerde identiteit in de Tenant van de klant](../how-to/deploy-policy-remediation.md#create-a-user-who-can-assign-roles-to-a-managed-identity-in-the-customer-tenant). Er worden gewoonlijk geen andere machtigingen verleend door deze rol. Als u een gebruiker met deze rol definieert, moet u ook de ingebouwde rol (len) opgeven die deze gebruiker aan beheerde identiteiten kan toewijzen.
 
 > [!NOTE]
-> Zodra een van de toepasselijke nieuwe ingebouwde rollen aan Azure wordt toegevoegd, kan deze worden toegewezen wanneer [een klant met Azure Resource Manager sjablonen onboarding](../how-to/onboard-customer.md)kan worden uitgevoerd. Er kan een vertraging optreden voordat de toegevoegde rol beschikbaar wordt in Cloud Partner-portal wanneer u [een beheerde service aanbieding publiceert](../how-to/publish-managed-services-offers.md).
+> Zodra een nieuwe toepasselijke ingebouwde rol aan Azure wordt toegevoegd, kan deze worden toegewezen wanneer een klant wordt ingecheckt [met Azure Resource Manager sjablonen](../how-to/onboard-customer.md). Er kan een vertraging optreden voordat de toegevoegde rol beschikbaar wordt in Cloud Partner-portal wanneer u [een beheerde service aanbieding publiceert](../how-to/publish-managed-services-offers.md).
 
 ## <a name="best-practices-for-defining-users-and-roles"></a>Aanbevolen procedures voor het definiëren van gebruikers en rollen
 
@@ -47,5 +47,5 @@ Wanneer u een autorisatie maakt, raden we u aan de volgende aanbevolen procedure
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- Meer informatie over [aanbevolen beveiligings procedures voor het beheer van gedelegeerde resources van Azure](recommended-security-practices.md).
-- Laat uw klanten onboarded resource management ongedaan maken, hetzij met [behulp van Azure Resource Manager sjablonen](../how-to/onboard-customer.md) of door [een aanbieding voor privé-of openbaar beheerde services naar Azure Marketplace te publiceren](../how-to/publish-managed-services-offers.md).
+- Meer informatie over [aanbevolen beveiligings procedures voor Azure Lighthouse](recommended-security-practices.md).
+- Laat uw klanten onboarden naar Azure Lighthouse, door [gebruik te maken van Azure Resource Manager sjablonen](../how-to/onboard-customer.md) of door [een aanbieding met persoonlijke of open bare services te publiceren op Azure Marketplace](../how-to/publish-managed-services-offers.md).

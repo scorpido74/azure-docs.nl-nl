@@ -3,15 +3,16 @@ title: Een Azure Migrate apparaat instellen met een script
 description: Meer informatie over het instellen van een Azure Migrate apparaat met een script
 ms.topic: article
 ms.date: 04/16/2020
-ms.openlocfilehash: d5603aaef0a1c3e784f455777302c23e6724fbe7
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 47b6b35e62d484b4d7a33f6a53796c59e01817fe
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85052468"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86102443"
 ---
 # <a name="set-up-an-appliance-with-a-script"></a>Een apparaat met een script instellen
 
-Volg dit artikel om een [Azure migrate apparaat](deploy-appliance.md) te maken voor de evaluatie/migratie van virtuele VMware-machines en virtuele Hyper-V-machines. U voert een script uit om een apparaat te maken en controleert of het verbinding kan maken met Azure. 
+Volg dit artikel om een [Azure migrate apparaat](./migrate-appliance-architecture.md) te maken voor de evaluatie/migratie van virtuele VMware-machines en virtuele Hyper-V-machines. U voert een script uit om een apparaat te maken en controleert of het verbinding kan maken met Azure. 
 
 U kunt het apparaat voor VMware-en Hyper-V-machines implementeren met behulp van een script of een sjabloon gebruiken die u van de Azure Portal downloadt. Het gebruik van een script is handig als u geen virtuele machine kunt maken met behulp van de gedownloade sjabloon.
 

@@ -1,18 +1,14 @@
 ---
 title: Azure-resource groep als een Event Grid bron
 description: Beschrijft de eigenschappen die worden gegeven voor de gebeurtenissen van de resource groep met Azure Event Grid
-services: event-grid
-author: spelluru
-ms.service: event-grid
 ms.topic: conceptual
-ms.date: 04/09/2020
-ms.author: spelluru
-ms.openlocfilehash: fb52b54eb32a119a463b59e4d4f2ab30096886fa
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 07/07/2020
+ms.openlocfilehash: ed01bfdb67d9b8a3dd5875ec3fd8c6edf8922520
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81393253"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86105911"
 ---
 # <a name="azure-resource-group-as-an-event-grid-source"></a>Azure-resource groep als een Event Grid bron
 
@@ -35,7 +31,7 @@ Het gebeurtenis onderwerp is de resource-ID van de resource die het doel van de 
 
 Resource groepen verzenden beheer gebeurtenissen van Azure Resource Manager, zoals wanneer een virtuele machine wordt gemaakt of een opslag account wordt verwijderd.
 
-| Gebeurtenistype | Beschrijving |
+| Gebeurtenistype | Description |
 | ---------- | ----------- |
 | Micro soft. resources. ResourceActionCancel | Deze gebeurtenis treedt op wanneer de actie voor de resource wordt geannuleerd. |
 | Micro soft. resources. ResourceActionFailure | Deze gebeurtenis treedt op wanneer de actie voor de resource mislukt. |
@@ -235,7 +231,7 @@ In het volgende voor beeld ziet u het schema voor een **ResourceActionSuccess** 
 
 Een gebeurtenis heeft de volgende gegevens op het hoogste niveau:
 
-| Eigenschap | Type | Beschrijving |
+| Eigenschap | Type | Description |
 | -------- | ---- | ----------- |
 | onderwerp | tekenreeks | Volledige bronpad naar de bron van de gebeurtenis. Dit veld is niet beschrijfbaar. Event Grid biedt deze waarde. |
 | Onderwerp | tekenreeks | Het door de uitgever gedefinieerde pad naar het gebeurtenisonderwerp. |
@@ -248,7 +244,7 @@ Een gebeurtenis heeft de volgende gegevens op het hoogste niveau:
 
 Het gegevens object heeft de volgende eigenschappen:
 
-| Eigenschap | Type | Beschrijving |
+| Eigenschap | Type | Description |
 | -------- | ---- | ----------- |
 | autorisatie | object | De aangevraagde autorisatie voor de bewerking. |
 | claims | object | De eigenschappen van de claims. Zie [JWT-specificatie](https://self-issued.info/docs/draft-ietf-oauth-json-web-token.html)voor meer informatie. |

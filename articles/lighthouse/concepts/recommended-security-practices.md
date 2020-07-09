@@ -1,18 +1,18 @@
 ---
 title: Aanbevolen beveiligingsprocedures
-description: Wanneer u Azure delegated resource management gebruikt, is het belang rijk dat u rekening houdt met beveiliging en toegangs beheer.
-ms.date: 03/24/2020
+description: Wanneer u Azure Lighthouse gebruikt, is het belang rijk om te overwegen voor beveiliging en toegangs beheer.
+ms.date: 07/06/2020
 ms.topic: conceptual
-ms.openlocfilehash: d9b806aaf988fedfde6ce468f3eff948aa8ce344
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 2c620feabf5bcedc35a36104c3ba305ac9337ff0
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80246905"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86105418"
 ---
 # <a name="recommended-security-practices"></a>Aanbevolen beveiligingsprocedures
 
-Wanneer u [Azure delegated resource management](azure-delegated-resource-management.md)gebruikt, is het belang rijk dat u rekening houdt met beveiliging en toegangs beheer. Gebruikers in uw Tenant hebben direct toegang tot klant abonnementen en resource groepen, dus u wilt stappen ondernemen om de beveiliging van uw Tenant te behouden. U wilt er ook voor zorgen dat u alleen de toegang toestaat die nodig is om de resources van uw klanten effectief te beheren. In dit onderwerp vindt u aanbevelingen waarmee u dit kunt doen.
+Wanneer u [Azure Lighthouse](../overview.md)gebruikt, is het belang rijk om te overwegen voor beveiliging en toegangs beheer. Gebruikers in uw Tenant hebben direct toegang tot klant abonnementen en resource groepen, dus u wilt stappen ondernemen om de beveiliging van uw Tenant te behouden. U wilt er ook voor zorgen dat u alleen de toegang toestaat die nodig is om de resources van uw klanten effectief te beheren. In dit onderwerp vindt u aanbevelingen waarmee u dit kunt doen.
 
 ## <a name="require-azure-multi-factor-authentication"></a>Azure Multi-Factor Authentication vereisen
 

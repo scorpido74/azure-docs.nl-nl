@@ -105,12 +105,8 @@
       items:
         - name: Een cloud-app toevoegen
           items:
-            - name: Een galerie-app toevoegen
-              href: add-gallery-app.md
             - name: Een app toevoegen die niet in de galerie voorkomt
               href: add-non-gallery-app.md
-            - name: De naam of het logo van de app wijzigen
-              href: change-name-or-logo-portal.md
         - name: Eenmalige aanmelding configureren
           items:
             - name: Eenmalige aanmelding op basis van SAML configureren

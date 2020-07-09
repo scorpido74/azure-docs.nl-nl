@@ -1,13 +1,14 @@
 ---
 title: Beleid implementeren dat kan worden hersteld
-description: Meer informatie over hoe u een klant kunt vrijmaken voor het beheer van Azure-resources, zodat deze toegankelijk is en kan worden beheerd via uw eigen Tenant.
-ms.date: 10/11/2019
+description: Als u beleid wilt implementeren dat gebruikmaakt van een herstel taak via Azure Lighthouse, moet u een beheerde identiteit maken in de Tenant van de klant.
+ms.date: 07/07/2020
 ms.topic: how-to
-ms.openlocfilehash: a953db44d8b4fc035d947d3534185062d0ec884b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: fc13b6209826d4a59d82bca5db63d4ca5c39f9fb
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84634129"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86105333"
 ---
 # <a name="deploy-a-policy-that-can-be-remediated-within-a-delegated-subscription"></a>Een beleid implementeren dat kan worden hersteld binnen een gedelegeerd abonnement
 
@@ -15,7 +16,7 @@ Met [Azure Lighthouse](../overview.md) kunnen service providers beleids definiti
 
 ## <a name="create-a-user-who-can-assign-roles-to-a-managed-identity-in-the-customer-tenant"></a>Een gebruiker maken die rollen kan toewijzen aan een beheerde identiteit in de Tenant van de klant
 
-Wanneer u een klant voor het beheer van de gedelegeerde resources van Azure uitschakelt, gebruikt u een [Azure Resource Manager sjabloon](onboard-customer.md#create-an-azure-resource-manager-template) samen met een parameter bestand dat de gebruikers, gebruikers groepen en service-principals in de beheer-Tenant definieert die toegang hebben tot de gedelegeerde resources in de Tenant van de klant. Aan elk van deze gebruikers (**principalId**) in het parameter bestand is een [ingebouwde rol](../../role-based-access-control/built-in-roles.md) (**roledefinitionid hebben**) toegewezen waarmee het toegangs niveau wordt gedefinieerd.
+Wanneer u een klant onboardt naar Azure Lighthouse, gebruikt u een [Azure Resource Manager-sjabloon](onboard-customer.md#create-an-azure-resource-manager-template) samen met een parameter bestand dat de gebruikers, gebruikers groepen en service-principals in de beheer-Tenant definieert die toegang hebben tot de gedelegeerde resources in de Tenant van de klant. Aan elk van deze gebruikers (**principalId**) in het parameter bestand is een [ingebouwde rol](../../role-based-access-control/built-in-roles.md) (**roledefinitionid hebben**) toegewezen waarmee het toegangs niveau wordt gedefinieerd.
 
 Als u een **principalId** wilt toestaan een beheerde identiteit in de Tenant van de klant te maken, moet u de **roledefinitionid hebben** ervan instellen op de beheerder van de **gebruikers toegang**. Hoewel deze rol niet algemeen wordt ondersteund, kan deze worden gebruikt in dit specifieke scenario, waardoor de gebruikers met deze machtiging een of meer specifieke ingebouwde rollen aan beheerde identiteiten kunnen toewijzen. Deze rollen worden gedefinieerd in de eigenschap **delegatedRoleDefinitionIds** . U kunt hier elke ingebouwde rol toevoegen, behalve voor gebruikers toegang beheerder of eigenaar.
 
@@ -37,11 +38,11 @@ In het onderstaande voor beeld ziet u een **principalId** die de rol beheerder v
 
 ## <a name="deploy-policies-that-can-be-remediated"></a>Beleid implementeren dat kan worden hersteld
 
-Zodra u de gebruiker met de vereiste machtigingen hebt gemaakt, zoals hierboven is beschreven, kan die gebruiker beleids regels in de Tenant van de klant implementeren die herstel taken gebruiken.
+Nadat u de gebruiker met de vereiste machtigingen hebt gemaakt, zoals hierboven is beschreven, kan de gebruiker beleids regels implementeren die herstel taken gebruiken binnen de Tenant van de klant.
 
 Stel bijvoorbeeld dat u Diagnostische gegevens wilt inschakelen op Azure Key Vault resources in de Tenant van de klant, zoals wordt geïllustreerd in dit voor [beeld](https://github.com/Azure/Azure-Lighthouse-samples/tree/master/templates/policy-enforce-keyvault-monitoring). Een gebruiker in de Tenant beheren met de juiste machtigingen (zoals hierboven beschreven) implementeert een [Azure Resource Manager sjabloon](https://github.com/Azure/Azure-Lighthouse-samples/blob/master/templates/policy-enforce-keyvault-monitoring/enforceAzureMonitoredKeyVault.json) om dit scenario in te scha kelen.
 
-Houd er rekening mee dat het maken van de beleids toewijzing voor gebruik met een gedelegeerd abonnement op dit moment moet worden uitgevoerd via Api's, niet in de Azure Portal. Wanneer u dit doet, moet de **apiVersion** worden ingesteld op **2019-04-01-preview**, inclusief de nieuwe eigenschap **delegatedManagedIdentityResourceId** . Met deze eigenschap kunt u een beheerde identiteit toevoegen die zich bevindt in de Tenant van de klant (in een abonnement of resource groep waarvoor een onboarding is uitgevoerd voor het Azure delegated Resource Management).
+Houd er rekening mee dat het maken van de beleids toewijzing voor gebruik met een gedelegeerd abonnement op dit moment moet worden uitgevoerd via Api's, niet in de Azure Portal. Wanneer u dit doet, moet de **apiVersion** worden ingesteld op **2019-04-01-preview**, inclusief de nieuwe eigenschap **delegatedManagedIdentityResourceId** . Met deze eigenschap kunt u een beheerde identiteit toevoegen die zich bevindt in de Tenant van de klant (in een abonnement of resource groep die is geboardd naar Azure Lighthouse).
 
 In het volgende voor beeld ziet u een roltoewijzing met een **delegatedManagedIdentityResourceId**.
 

@@ -2,19 +2,17 @@
 title: bestand opnemen
 description: bestand opnemen
 documentationcenter: partner-center-commercial-marketplace
-author: qianw211
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: include
 ms.date: 08/16/2019
-ms.author: dsindona
 ms.custom: include file
-ms.openlocfilehash: cf6a5730f92eba8f0a4e63bf40a4d2b50f76eb3a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 86b16c92f7a9bd3f594b01820db6cbf7ef5ecb6b
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82131105"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86104352"
 ---
 Wanneer u uw aanbieding naar Marketplace publiceert via partner centrum, moet u uw aanbieding koppelen aan uw CRM-systeem. Op deze manier kunt u contact gegevens van klanten direct ontvangen nadat een klant rente heeft ingedrukt of uw product implementeert.
 

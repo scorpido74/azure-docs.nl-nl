@@ -1,17 +1,14 @@
 ---
 title: Toegangs sleutel voor een Event Grid bron ophalen
 description: In dit artikel wordt beschreven hoe u toegang krijgt tot een sleutel voor een Event Grid onderwerp of domein
-services: event-grid
-author: spelluru
-ms.service: event-grid
 ms.topic: how-to
-ms.date: 06/25/2020
-ms.author: spelluru
-ms.openlocfilehash: 75ab09de40a4305ebd215985f2f9f181bfd69a24
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 07/07/2020
+ms.openlocfilehash: e5694fe0b5f22f7f76285c344627005ea727ae3c
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85414881"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86105860"
 ---
 # <a name="get-access-keys-for-event-grid-resources-topics-or-domains"></a>Toegangs sleutels voor Event Grid resources (onderwerpen of domeinen) ophalen
 Toegangs sleutels worden gebruikt voor het verifiëren van het publiceren van een toepassing op Azure Event Grid resources (onderwerpen en domeinen). Het is raadzaam om uw sleutels regel matig opnieuw te genereren en ze veilig op te slaan. U krijgt twee toegangs sleutels zodat u verbindingen met één sleutel kunt onderhouden tijdens het opnieuw genereren van de andere.

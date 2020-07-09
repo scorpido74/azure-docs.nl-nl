@@ -8,11 +8,12 @@ ms.topic: how-to
 ms.date: 11/18/2019
 ms.author: normesta
 ms.reviewer: stewu
-ms.openlocfilehash: 9a54565f320ae45a4a8297a40027c5e6b3b25202
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 522f9215a0b66c5e6bec5abf41e45489efec19ac
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84465963"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86106308"
 ---
 # <a name="tune-performance-hive-hdinsight--azure-data-lake-storage-gen2"></a>Prestaties afstemmen: Hive, HDInsight & Azure Data Lake Storage Gen2
 
@@ -56,17 +57,18 @@ I/O-intensieve workloads kunnen profiteren van meer parallellisatie door de TEZ-
 
 Het aantal gelijktijdige taken of parallelle uitvoeringen wordt begrensd door het totale garen geheugen.  Het aantal garen-containers bepaalt hoeveel gelijktijdige taken kunnen worden uitgevoerd.  Als u het garen geheugen per knoop punt wilt vinden, gaat u naar Ambari.  Navigeer naar GARENs en Bekijk het tabblad Configuratie.  Het garen geheugen wordt in dit venster weer gegeven.  
 
-        Total YARN memory = nodes * YARN memory per node
-        # of YARN containers = Total YARN memory / Tez container size
+- Totaal aantal GARENs = knoop punten * garen geheugen per knoop punt
+- \#van garen-containers = totale garen geheugen/TEZ container grootte
+
 De sleutel voor het verbeteren van de prestaties met behulp van Data Lake Storage Gen2 is om de gelijktijdigheid zo veel mogelijk te verhogen.  TEZ berekent automatisch het aantal taken dat moet worden gemaakt, zodat u dit niet hoeft in te stellen.   
 
 ## <a name="example-calculation"></a>Voorbeeld berekening
 
 Stel dat u een D14-cluster van 8 knoop punten hebt.  
 
-    Total YARN memory = nodes * YARN memory per node
-    Total YARN memory = 8 nodes * 96GB = 768GB
-    # of YARN containers = 768GB / 3072MB = 256
+- Totaal aantal GARENs = knoop punten * garen geheugen per knoop punt
+- Totaal aantal GARENs = 8 knoop punten * 96GB = 768GB
+- \#van garen-containers = 768GB/3072MB = 256
 
 ## <a name="further-information-on-hive-tuning"></a>Meer informatie over Hive-afstemming
 

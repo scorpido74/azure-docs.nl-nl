@@ -16,12 +16,12 @@ ms.date: 05/01/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4f5cf9487f6f10ce661009e5e504be51a098b7e6
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: b1aca245592bef98bc5d0cff3268d5b6496d2220
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85357389"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86103548"
 ---
 # <a name="azure-ad-connect-sync-scheduler"></a>Azure AD Connect sync: Scheduler (Azure AD Connect-synchronisatie: planning)
 In dit onderwerp wordt de ingebouwde scheduler in Azure AD Connect Sync (synchronisatie-engine) beschreven.
@@ -39,6 +39,10 @@ De scheduler is verantwoordelijk voor twee taken:
 * **Onderhouds taken**. Sleutels en certificaten vernieuwen voor het opnieuw instellen van wacht woorden en Device Registration service (DRS). Oude vermeldingen in het operations-logboek opschonen.
 
 De scheduler zelf is altijd actief, maar kan worden geconfigureerd om alleen een of geen van deze taken uit te voeren. Als u bijvoorbeeld uw eigen synchronisatie cyclus proces nodig hebt, kunt u deze taak in de scheduler uitschakelen, maar nog steeds de onderhouds taak uitvoeren.
+
+>[!IMPORTANT]
+>U moet ervoor zorgen dat een synchronisatie cyclus ten minste één keer per 7 dagen wordt uitgevoerd. Als u dit niet doet, kan dit leiden tot synchronisatie problemen. hiervoor moet u een volledige synchronisatie uitvoeren om het probleem op te lossen.
+
 
 ## <a name="scheduler-configuration"></a>Scheduler-configuratie
 Als u de huidige configuratie-instellingen wilt weer geven, gaat u naar Power shell en voert u uit `Get-ADSyncScheduler` . U ziet iets als deze afbeelding:

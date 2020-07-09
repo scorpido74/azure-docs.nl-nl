@@ -3,11 +3,12 @@ title: Windows Server 2003-servers voorbereiden voor migratie met Azure Migrate
 description: Meer informatie over het voorbereiden van Windows Server 2003-servers voor migratie met Azure Migrate.
 ms.topic: how-to
 ms.date: 05/27/2020
-ms.openlocfilehash: 33519764b138c7711e6c03a85aa33ec6f936a748
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 5e33742d59972d491c1efb8d0f1453c1226d4625
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84172282"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86103939"
 ---
 # <a name="prepare-windows-server-2003-machines-for-migration"></a>Windows Server 2003-machines voorbereiden voor migratie
 
@@ -24,7 +25,7 @@ In dit artikel wordt beschreven hoe u computers met Windows Server 2003 voorbere
 
 Controleer vóór de migratie of Hyper-V-integratie Services zijn geïnstalleerd en Installeer indien nodig de installatie.
 
-1. Volg [deze instructies](https://docs.microsoft.com/windows-server/virtualization/hyper-v/manage/manage-hyper-v-integration-services#turn-an-integration-service-on-or-off-using-hyper-v-manager) om te controleren of de app is geïnstalleerd.
+1. Volg [deze instructies](/windows-server/virtualization/hyper-v/manage/manage-hyper-v-integration-services#turn-an-integration-service-on-or-off-using-hyper-v-manager) om te controleren of de app is geïnstalleerd.
 2. Als dit niet is geïnstalleerd, meldt u zich aan bij een computer met Windows Server 2012 R2/Windows Server 2012 met de Hyper-V-functie.
 3. Ga naar het installatie bestand op **C:\Windows\System32\vmguest.ISO**en koppel het bestand.
 2. Kopieer de installatiemap naar de Windows Server 2003-computer en installeer de integratie Services.

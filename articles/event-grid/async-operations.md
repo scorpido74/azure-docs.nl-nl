@@ -1,19 +1,16 @@
 ---
-title: Status van asynchrone bewerkingen
-description: Hierin wordt beschreven hoe u asynchrone bewerkingen in azure kunt volgen. Hierin worden de waarden weer gegeven die u gebruikt om de status van een langlopende bewerking op te halen.
-services: event-grid
-author: spelluru
-ms.service: event-grid
+title: Status van Event Grid asynchrone bewerkingen
+description: Hierin wordt beschreven hoe u Event Grid asynchrone bewerkingen in azure bijhoudt. Hierin worden de waarden weer gegeven die u gebruikt om de status van een langlopende bewerking op te halen.
 ms.topic: conceptual
-ms.date: 04/30/2020
-ms.author: spelluru
-ms.openlocfilehash: fb3479271733ee218da8a842956f3a8996e07f61
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 07/07/2020
+ms.openlocfilehash: 621490a9f56e88baaf343c1c2a072ab84aa7d3ef
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82892015"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86103327"
 ---
-# <a name="track-asynchronous-azure-operations"></a>Asynchrone Azure-bewerkingen bijhouden
+# <a name="track-event-grid-asynchronous-azure-operations"></a>Event Grid asynchrone bewerkingen van Azure bijhouden
 Sommige Azure REST-bewerkingen worden asynchroon uitgevoerd, omdat de bewerking niet snel kan worden voltooid. In dit artikel wordt beschreven hoe u de status van asynchrone bewerkingen kunt volgen via waarden die in het antwoord worden geretourneerd.  
 
 ## <a name="status-codes-for-asynchronous-operations"></a>Status codes voor asynchrone bewerkingen

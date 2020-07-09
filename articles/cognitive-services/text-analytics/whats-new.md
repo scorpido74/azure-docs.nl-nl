@@ -8,18 +8,35 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: conceptual
-ms.date: 06/03/2020
+ms.date: 07/07/2020
 ms.author: aahi
-ms.openlocfilehash: 7ab886b65e665bdd38e2461e49fa051213602f0e
-ms.sourcegitcommit: 813f7126ed140a0dff7658553a80b266249d302f
+ms.openlocfilehash: 3d9fb7f3fa01c06cc778e4062dd1d136e9c6e342
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/06/2020
-ms.locfileid: "84462788"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86103395"
 ---
 # <a name="whats-new-in-the-text-analytics-api"></a>Wat is er nieuw in de Text Analytics-API?
 
 De Text Analytics-API wordt doorlopend bijgewerkt. In dit artikel vindt u informatie over nieuwe releases en functies, zodat u op de hoogte blijft van recente ontwikkelingen.
+
+## <a name="july-2020"></a>Juli 2020
+
+### <a name="text-analytics-for-health-container-public-gated-preview"></a>Text Analytics voor open bare gated preview van status container
+
+De Text Analytics voor de status container bevindt zich nu in Public gated preview, waarmee u informatie kunt ophalen uit ongestructureerde tekst in het Engels in klinische documenten, zoals: patiënten-formulieren, notities van dokters, onderzoek documenten en kwijtings overzichten. Er wordt momenteel geen kosten in rekening gebracht voor Text Analytics voor het gebruik van de status container. 
+
+De container biedt de volgende functies:
+
+* Herkenning van benoemde entiteiten
+* Relatie-extractie
+* Entiteit koppelen
+* Negatie
+
+
+> [!div class="nextstepaction"]
+> [Meer informatie over Text Analytics voor de status container](how-tos/text-analytics-for-health.md)
 
 ## <a name="may-2020"></a>Mei 2020
 
@@ -61,9 +78,6 @@ De namen van de volgende eigenschappen in het JSON-antwoord zijn gewijzigd, indi
 ### <a name="text-analytics-api-v31-public-preview"></a>Text Analytics-API v 3.1 open bare preview
    * Nieuwe Sentimentanalyse functie: [opinie analyse](how-tos/text-analytics-how-to-sentiment-analysis.md#opinion-mining)
    * Nieuw [persoonlijk ( `PII` ) domein filter](how-tos/text-analytics-how-to-entity-linking.md#named-entity-recognition-versions-and-features) voor beveiligde status informatie ( `PHI` ).
-   * Nieuwe persoonlijke ( `PII` ) Categorieën:
-      * Internationale classificatie van ziekten (ICD-9-CM)
-      * Internationale classificatie van ziekten (ICD-10-CM)
 
 > [!div class="nextstepaction"]
 > [Meer informatie over Text Analytics-API v 3.1 Preview](https://westcentralus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v3-1-preview-1/operations/Languages)
@@ -75,7 +89,7 @@ De namen van de volgende eigenschappen in het JSON-antwoord zijn gewijzigd, indi
 Als onderdeel van de [Unified Azure SDK-versie](https://techcommunity.microsoft.com/t5/azure-sdk/january-2020-unified-azure-sdk-release/ba-p/1097290)is de Text Analytics-API v3 SDK nu beschikbaar als open bare Preview voor de volgende programmeer talen:
    * [C#](https://docs.microsoft.com/azure/cognitive-services/text-analytics/quickstarts/text-analytics-sdk?tabs=version-3&pivots=programming-language-csharp)
    * [Python](https://docs.microsoft.com/azure/cognitive-services/text-analytics/quickstarts/text-analytics-sdk?tabs=version-3&pivots=programming-language-python)
-   * [Java script (node. js)](https://docs.microsoft.com/azure/cognitive-services/text-analytics/quickstarts/text-analytics-sdk?tabs=version-3&pivots=programming-language-javascript)
+   * [Java script (Node.js)](https://docs.microsoft.com/azure/cognitive-services/text-analytics/quickstarts/text-analytics-sdk?tabs=version-3&pivots=programming-language-javascript)
    * [Java](https://docs.microsoft.com/azure/cognitive-services/text-analytics/quickstarts/text-analytics-sdk?tabs=version-3&pivots=programming-language-java)
    
    > [!div class="nextstepaction"]
@@ -97,7 +111,7 @@ Er zijn nu extra entiteits typen beschikbaar in de open bare preview-service van
     * Organisatie
     * Leeftijd als subtype onder hoeveelheid
     * Datum als een subtype onder DateTime
-    * Email 
+    * E-mail 
     * Telefoon nummer (alleen VS)
     * URL
     * IP-adres

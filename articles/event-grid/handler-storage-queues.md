@@ -1,17 +1,14 @@
 ---
 title: Opslag wachtrij als gebeurtenis-handler voor Azure Event Grid gebeurtenissen
 description: Hierin wordt beschreven hoe u Azure Storage-wacht rijen kunt gebruiken als gebeurtenis-handlers voor Azure Event Grid-gebeurtenissen.
-services: event-grid
-author: spelluru
-ms.service: event-grid
 ms.topic: conceptual
-ms.date: 05/11/2020
-ms.author: spelluru
-ms.openlocfilehash: f62f2b5bc01518af29bd1deb17a38e9fe105a4ed
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 07/07/2020
+ms.openlocfilehash: 502b44f276253be69362424c9de0fd516d20ad9a
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83800556"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86105639"
 ---
 # <a name="storage-queue-as-an-event-handler-for-azure-event-grid-events"></a>Opslag wachtrij als gebeurtenis-handler voor Azure Event Grid gebeurtenissen
 Een gebeurtenis-handler is de plaats waar de gebeurtenis wordt verzonden. De handler heeft een aantal verdere acties nodig om de gebeurtenis te verwerken. Verschillende Azure-Services worden automatisch geconfigureerd voor het afhandelen van gebeurtenissen en **Azure Queue Storage** is een hiervan. 

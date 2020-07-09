@@ -3,16 +3,16 @@ title: Azure Sentinel-werk ruimten op schaal beheren
 description: Meer informatie over het effectief beheren van Azure Sentinel op gedelegeerde klant resources.
 ms.date: 06/17/2020
 ms.topic: how-to
-ms.openlocfilehash: bca5b6fdc84fa5a7a5553fe64c0218c5f0b44aa6
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 70810ca54c62e73d5dec76495eb5179b84db60fe
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85269017"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86105265"
 ---
 # <a name="manage-azure-sentinel-workspaces-at-scale"></a>Azure Sentinel-werk ruimten op schaal beheren
 
-Als service provider hebt u mogelijk meerdere tenants voor klanten voor het beheer van gedelegeerde resources voor Azure voor bereid. Met Azure Lighthouse kunnen service providers bewerkingen tegelijk uitvoeren in meerdere Azure Active Directory (Azure AD)-tenants, waardoor beheer taken efficiënter worden.
+Als service provider hebt u mogelijk meerdere tenants voor klanten in [Azure Lighthouse](../overview.md). Met Azure Lighthouse kunnen service providers bewerkingen tegelijk uitvoeren in meerdere Azure Active Directory (Azure AD)-tenants, waardoor beheer taken efficiënter worden.
 
 Azure Sentinel levert beveiligings analyses en bedreigings informatie, waardoor er één oplossing is voor waarschuwings detectie, zicht baarheid van bedreigingen, proactieve jacht en reactie op bedreigingen. Met Azure Lighthouse kunt u meerdere Azure-Sentinel-werk ruimten beheren op verschillende tenants op schaal. Dit maakt scenario's mogelijk, zoals het uitvoeren van query's op meerdere werk ruimten of het maken van werkmappen voor het visualiseren en bewaken van gegevens van uw verbonden gegevens bronnen om inzicht te krijgen. IP, zoals query's en playbooks blijven aanwezig in uw beheer Tenant, maar kunnen worden gebruikt voor het uitvoeren van beveiligings beheer in de tenants van de klant.
 
@@ -35,7 +35,7 @@ Dit gecentraliseerde implementatie model biedt de volgende voor delen:
 
 ## <a name="granular-role-based-access-control-rbac"></a>Gedetailleerd toegangs beheer op basis van rollen (RBAC)
 
-Elk klant abonnement dat door een MSSP wordt beheerd, moet [onboardd zijn voor Azure delegated resource management](onboard-customer.md). Hierdoor kunnen toegewezen gebruikers in de Tenant beheren toegang hebben tot en beheer bewerkingen uitvoeren op Azure Sentinel-werk ruimten die zijn geïmplementeerd in de tenants van de klant.
+Elk klant abonnement dat door een MSSP wordt beheerd, moet [onboardd worden naar Azure Lighthouse](onboard-customer.md). Hierdoor kunnen toegewezen gebruikers in de Tenant beheren toegang hebben tot en beheer bewerkingen uitvoeren op Azure Sentinel-werk ruimten die zijn geïmplementeerd in de tenants van de klant.
 
 Wanneer u een autorisatie maakt, kunt u de ingebouwde Azure Sentinel-rollen toewijzen aan gebruikers, groepen of service-principals in uw beheer Tenant:
 

@@ -8,11 +8,12 @@ ms.topic: how-to
 ms.date: 11/18/2019
 ms.author: normesta
 ms.reviewer: stewu
-ms.openlocfilehash: f5de8da90ac3356480fd809af68ab2c8b30540aa
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 7e4030583ac902093c30374c24b877e3f089eb02
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84465946"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86106217"
 ---
 # <a name="tune-performance-mapreduce-hdinsight--azure-data-lake-storage-gen2"></a>Prestaties afstemmen: MapReduce, HDInsight & Azure Data Lake Storage Gen2
 
@@ -56,7 +57,7 @@ De grootte van het geheugen voor het toewijzen en verminderen van taken is afhan
 
 Als u MapReduce. job. Mapss/MapReduce. job. Reducing wilt afstemmen, moet u rekening houden met de totale hoeveelheid garen geheugen die beschikbaar is voor gebruik.  Deze informatie is beschikbaar in Ambari.  Navigeer naar GARENs en Bekijk het tabblad Configuratie.  Het garen geheugen wordt in dit venster weer gegeven.  U moet het garen geheugen vermenigvuldigen met het aantal knoop punten in het cluster om het totale garen geheugen te verkrijgen.
 
-    Total YARN memory = nodes * YARN memory per node
+Totaal aantal GARENs = knoop punten * garen geheugen per knoop punt
 
 Als u een leeg cluster gebruikt, kan het geheugen de totale hoeveelheid garen van het cluster zijn.  Als andere toepassingen geheugen gebruiken, kunt u ervoor kiezen om alleen een gedeelte van het geheugen van uw cluster te gebruiken door het aantal mappers of verminderers te verminderen tot het aantal containers dat u wilt gebruiken.  
 
@@ -64,7 +65,7 @@ Als u een leeg cluster gebruikt, kan het geheugen de totale hoeveelheid garen va
 
 GAREN-containers bepalen de hoeveelheid gelijktijdige Beschik baarheid voor de taak.  Profiteer van het totale aantal garen geheugen en splits dit door MapReduce. map. Memory.  
 
-    # of YARN containers = total YARN memory / mapreduce.map.memory
+\#van GARENs = totaal aantal GARENs Memory/MapReduce. kaart. Memory
 
 **Stap 5: Stel MapReduce. job. Mapss/MapReduce. job. reduceert**
 
@@ -84,18 +85,19 @@ In dit voor beeld gaan we ervan uit dat onze taak de enige taak is die wordt uit
 
 In dit voor beeld voert u een I/O-intensieve taak uit en beslist u dat 3 GB geheugen voor het toewijzen van taken voldoende is.
 
-    mapreduce.map.memory = 3GB
+MapReduce. map. Memory = 3 GB
 
 **Stap 3: de totale hoeveelheid garen bepalen**
 
-    Total memory from the cluster is 8 nodes * 96GB of YARN memory for a D14 = 768GB
+Het totale geheugen van het cluster is 8 knoop punten * 96GB van garen geheugen voor een D14 = 768GB
+
 **Stap 4: aantal GARENs**
 
-    # of YARN containers = 768GB of available memory / 3 GB of memory =   256
+\#van garen-containers = 768GB beschik bare geheugen/3 GB geheugen = 256
 
 **Stap 5: Stel MapReduce. job. Mapss/MapReduce. job. reduceert**
 
-    mapreduce.map.jobs = 256
+mapreduce.map.jobs = 256
 
 ## <a name="examples-to-run"></a>Voor beelden om uit te voeren
 
@@ -108,12 +110,18 @@ Hier volgen enkele voorbeeld opdrachten voor het uitvoeren van MapReduce Teragen
 
 **Teragen**
 
-    yarn jar /usr/hdp/current/hadoop-mapreduce-client/hadoop-mapreduce-examples.jar teragen -Dmapreduce.job.maps=2048 -Dmapreduce.map.memory.mb=3072 10000000000 abfs://example/data/1TB-sort-input
+```cmd
+yarn jar /usr/hdp/current/hadoop-mapreduce-client/hadoop-mapreduce-examples.jar teragen -Dmapreduce.job.maps=2048 -Dmapreduce.map.memory.mb=3072 10000000000 abfs://example/data/1TB-sort-input
+```
 
 **Terasort**
 
-    yarn jar /usr/hdp/current/hadoop-mapreduce-client/hadoop-mapreduce-examples.jar terasort -Dmapreduce.job.maps=2048 -Dmapreduce.map.memory.mb=3072 -Dmapreduce.job.reduces=512 -Dmapreduce.reduce.memory.mb=3072 abfs://example/data/1TB-sort-input abfs://example/data/1TB-sort-output
+```cmd
+yarn jar /usr/hdp/current/hadoop-mapreduce-client/hadoop-mapreduce-examples.jar terasort -Dmapreduce.job.maps=2048 -Dmapreduce.map.memory.mb=3072 -Dmapreduce.job.reduces=512 -Dmapreduce.reduce.memory.mb=3072 abfs://example/data/1TB-sort-input abfs://example/data/1TB-sort-output
+```
 
 **Teravalidate**
 
-    yarn jar /usr/hdp/current/hadoop-mapreduce-client/hadoop-mapreduce-examples.jar teravalidate -Dmapreduce.job.maps=512 -Dmapreduce.map.memory.mb=3072 abfs://example/data/1TB-sort-output abfs://example/data/1TB-sort-validate
+```cmd
+yarn jar /usr/hdp/current/hadoop-mapreduce-client/hadoop-mapreduce-examples.jar teravalidate -Dmapreduce.job.maps=512 -Dmapreduce.map.memory.mb=3072 abfs://example/data/1TB-sort-output abfs://example/data/1TB-sort-validate
+```

@@ -1,18 +1,18 @@
 ---
 title: Overdrachts wijzigingen in uw beheer Tenant bewaken
 description: Meer informatie over het bewaken van overdrachts activiteiten van klant tenants naar uw beheer Tenant.
-ms.date: 03/30/2020
+ms.date: 07/07/2020
 ms.topic: how-to
-ms.openlocfilehash: 9a772cc577392558f050211b7f767928ecbb707b
-ms.sourcegitcommit: dee7b84104741ddf74b660c3c0a291adf11ed349
+ms.openlocfilehash: b30cbc025f97ab76be55f0f83e15603b40092ce3
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85919130"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86105163"
 ---
 # <a name="monitor-delegation-changes-in-your-managing-tenant"></a>Overdrachts wijzigingen in uw beheer Tenant bewaken
 
-Als service provider wilt u mogelijk weten wanneer klanten abonnementen of resource groepen worden gedelegeerd aan uw Tenant via [Azure delegated resource management](../concepts/azure-delegated-resource-management.md), of wanneer eerder gedelegeerde resources worden verwijderd.
+Als service provider wilt u mogelijk weten wanneer klanten abonnementen of resource groepen worden gedelegeerd aan uw Tenant via [Azure Lighthouse](../overview.md)of wanneer eerder gedelegeerde resources worden verwijderd.
 
 In het [Azure-activiteiten logboek](../../azure-monitor/platform/platform-logs-overview.md) wordt in de Tenant beheren de activiteit overdracht op Tenant niveau bijgehouden. Deze geregistreerde activiteit bevat eventuele toegevoegde of verwijderde delegaties van alle tenants van klanten.
 
@@ -158,5 +158,5 @@ else
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- Meer informatie over het vrijgeven van klanten aan [Azure gedelegeerd resource beheer](../concepts/azure-delegated-resource-management.md).
+- Meer informatie over het voorbereiden van klanten op [Azure Lighthouse](../concepts/azure-delegated-resource-management.md).
 - Meer informatie over [Azure monitor](../../azure-monitor/index.yml) en het [Azure-activiteiten logboek](../../azure-monitor/platform/platform-logs-overview.md).

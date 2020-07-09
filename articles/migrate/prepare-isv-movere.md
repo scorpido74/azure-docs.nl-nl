@@ -3,11 +3,12 @@ title: Azure Migrate voorbereiden om met een ISV-hulp programma te werken/overze
 description: In dit artikel wordt beschreven hoe u Azure Migrate voorbereidt op samen werking met een ISV-hulp programma of door te verplaatsen, en hoe u het hulp programma kunt gebruiken.
 ms.topic: how-to
 ms.date: 06/10/2020
-ms.openlocfilehash: d414c3db92315f7ca1b60bf43fa35b7880c34ccf
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: ed7652cb34705bac56a79b5c30e6bda3dac69af0
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84770370"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86103922"
 ---
 # <a name="prepare-to-work-with-an-isv-tool-or-movere"></a>Bereid u voor op het werken met een ISV-hulp programma of-overwerker
 
@@ -35,7 +36,7 @@ Uw account heeft in uw Azure-abonnement **micro soft. Authorization/*/write** Ac
 1. Open in Azure Portal **Abonnementen**.
 2. Selecteer het betreffende abonnement. Als u deze niet ziet, selecteert u het **Filter globale abonnementen**. 
 3. Selecteer **Mijn machtigingen**. Selecteer vervolgens **Klik hier om de volledige toegangs gegevens voor dit abonnement weer te geven**.
-4. **Role assignments**  >  Controleer in de**weer gave**roltoewijzingen de machtigingen. Als uw account geen machtigingen heeft, vraagt u de abonnements beheerder om u toe te voegen aan de rol van [beheerder voor gebruikers toegang](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#user-access-administrator) of de rol [eigenaar](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#owner) .
+4. **Role assignments**  >  Controleer in de**weer gave**roltoewijzingen de machtigingen. Als uw account geen machtigingen heeft, vraagt u de abonnements beheerder om u toe te voegen aan de rol van [beheerder voor gebruikers toegang](../role-based-access-control/built-in-roles.md#user-access-administrator) of de rol [eigenaar](../role-based-access-control/built-in-roles.md#owner) .
 
 ## <a name="allow-access-to-urls"></a>Toegang tot URL's toestaan
 
