@@ -7,11 +7,12 @@ manager: rochakm
 ms.topic: article
 ms.date: 1/10/2020
 ms.author: sutalasi
-ms.openlocfilehash: deef7bfdbc28d744cb81da59d3ffc13a1abee54d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: d7a2d21dcd8c9474bdf068d7940e497333f35115
+ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77048606"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86130208"
 ---
 # <a name="set-up-disaster-recovery-of-hyper-v-vms-to-a-secondary-site-by-using-powershell-resource-manager"></a>Herstel na nood geval instellen voor virtuele Hyper-V-machines naar een secundaire site met behulp van Power shell (Resource Manager)
 
@@ -22,9 +23,9 @@ In dit artikel wordt beschreven hoe u de stappen voor replicatie van virtuele Hy
 ## <a name="prerequisites"></a>Vereisten
 
 - De [architectuur en onderdelen voor dit scenario](hyper-v-vmm-architecture.md) doornemen.
-- Raadpleeg de [ondersteuningsvereisten](site-recovery-support-matrix-to-sec-site.md) voor alle onderdelen.
-- Zorg ervoor dat Virtual Machine Manager-servers en Hyper-V-hosts voldoen aan de [ondersteunings vereisten](site-recovery-support-matrix-to-sec-site.md).
-- Controleer of de virtuele machines die u wilt repliceren, voldoen aan de ondersteuning van de [gerepliceerde machine](site-recovery-support-matrix-to-sec-site.md).
+- Raadpleeg de [ondersteuningsvereisten](./vmware-physical-secondary-support-matrix.md) voor alle onderdelen.
+- Zorg ervoor dat Virtual Machine Manager-servers en Hyper-V-hosts voldoen aan de [ondersteunings vereisten](./vmware-physical-secondary-support-matrix.md).
+- Controleer of de virtuele machines die u wilt repliceren, voldoen aan de ondersteuning van de [gerepliceerde machine](./vmware-physical-secondary-support-matrix.md).
 
 ## <a name="prepare-for-network-mapping"></a>Voorbereiden op netwerktoewijzing
 
@@ -36,10 +37,10 @@ In dit artikel wordt beschreven hoe u de stappen voor replicatie van virtuele Hy
 
 Bereid Virtual Machine Manager als volgt voor:
 
-- Zorg ervoor dat u [Virtual Machine Manager logische netwerken](https://docs.microsoft.com/system-center/vmm/network-logical) op de bron-en doel-Virtual Machine Manager-servers hebt:
+- Zorg ervoor dat u [Virtual Machine Manager logische netwerken](/system-center/vmm/network-logical) op de bron-en doel-Virtual Machine Manager-servers hebt:
   - Het logische netwerk op de bronserver moet worden gekoppeld aan de broncloud waarin de Hyper-V-hosts zich bevinden.
   - Het logische netwerk op de doelserver moet worden gekoppeld aan de doelcloud.
-- Zorg ervoor dat u [VM-netwerken](https://docs.microsoft.com/system-center/vmm/network-virtual) hebt op de bron-en doel-Virtual Machine Manager-servers. VM-netwerken moeten zijn gekoppeld aan het logische netwerk op elke locatie.
+- Zorg ervoor dat u [VM-netwerken](/system-center/vmm/network-virtual) hebt op de bron-en doel-Virtual Machine Manager-servers. VM-netwerken moeten zijn gekoppeld aan het logische netwerk op elke locatie.
 - Verbind VM's op de Hyper-V-bronhosts met het VM-bronnetwerk.
 
 ## <a name="prepare-for-powershell"></a>Voorbereiden voor Power shell

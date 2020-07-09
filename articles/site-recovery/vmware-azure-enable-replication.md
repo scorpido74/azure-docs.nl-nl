@@ -6,12 +6,12 @@ ms.service: site-recovery
 ms.date: 04/01/2020
 ms.topic: conceptual
 ms.author: ramamill
-ms.openlocfilehash: 6547bcf2061213cd01550367171d432900693ea5
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 74870d10348421bf726b9bdc58504a74cf4105a9
+ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80584135"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86129919"
 ---
 # <a name="enable-replication-to-azure-for-vmware-vms"></a>Replicatie naar Azure inschakelen voor virtuele VMware-machines
 
@@ -106,9 +106,9 @@ Controleer vervolgens de eigenschappen van de virtuele bron machine. Houd er rek
    :::image type="content" source="./media/vmware-azure-enable-replication/vmproperties.png" alt-text="Venster Eigenschappen van Compute en netwerk":::
 
    - **Azure VM-naam**: Wijzig de naam zo nodig om aan de vereisten van Azure te voldoen.
-   - **Grootte van de doel-VM of het VM-type**: de standaard grootte voor de virtuele machine wordt gekozen op basis van para meters die het aantal schijven, het aantal nic's, het CPU-aantal, het geheugen en de beschik bare VM-rollen in de Azure-doel regio bevatten. Azure Site Recovery kiest de eerste beschik bare VM-grootte die voldoet aan alle criteria. U kunt op elk gewenst moment een andere VM-grootte selecteren op basis van uw behoeften voordat de failover wordt uitgevoerd. De grootte van de VM-schijf is ook gebaseerd op de grootte van de bron schijf en kan alleen worden gewijzigd na een failover. Meer informatie over schijf grootten en IOPS-tarieven bij [schaal baarheid en prestatie doelen voor VM-schijven in Windows](/azure/virtual-machines/windows/disk-scalability-targets).
-   - **Resource groep**: u kunt een [resource groep](/azure/azure-resource-manager/management/overview#resource-groups)selecteren, van waaruit een virtuele machine deel wordt van een post-failover. U kunt deze instelling op elk gewenst moment wijzigen vóór de failover. Als u na de failover een migratie van de virtuele machine naar een andere resource groep hebt, worden de beveiligings instellingen voor die virtuele machine verbroken.
-   - **Beschikbaarheidsset**: u kunt een [beschikbaarheidsset](/azure/virtual-machines/windows/tutorial-availability-sets) selecteren als de virtuele machine deel moet uitmaken van een post-failover. Wanneer u een beschikbaarheidsset selecteert, houdt u de volgende informatie in acht:
+   - **Grootte van de doel-VM of het VM-type**: de standaard grootte voor de virtuele machine wordt gekozen op basis van para meters die het aantal schijven, het aantal nic's, het CPU-aantal, het geheugen en de beschik bare VM-rollen in de Azure-doel regio bevatten. Azure Site Recovery kiest de eerste beschik bare VM-grootte die voldoet aan alle criteria. U kunt op elk gewenst moment een andere VM-grootte selecteren op basis van uw behoeften voordat de failover wordt uitgevoerd. De grootte van de VM-schijf is ook gebaseerd op de grootte van de bron schijf en kan alleen worden gewijzigd na een failover. Meer informatie over schijf grootten en IOPS-tarieven bij [schaal baarheid en prestatie doelen voor VM-schijven in Windows](../virtual-machines/windows/disk-scalability-targets.md).
+   - **Resource groep**: u kunt een [resource groep](../azure-resource-manager/management/overview.md#resource-groups)selecteren, van waaruit een virtuele machine deel wordt van een post-failover. U kunt deze instelling op elk gewenst moment wijzigen vóór de failover. Als u na de failover een migratie van de virtuele machine naar een andere resource groep hebt, worden de beveiligings instellingen voor die virtuele machine verbroken.
+   - **Beschikbaarheidsset**: u kunt een [beschikbaarheidsset](../virtual-machines/windows/tutorial-availability-sets.md) selecteren als de virtuele machine deel moet uitmaken van een post-failover. Wanneer u een beschikbaarheidsset selecteert, houdt u de volgende informatie in acht:
      - Alleen beschikbaarheids sets die bij de opgegeven resource groep horen, worden weer gegeven.
      - Vm's die zich op verschillende virtuele netwerken bevinden, kunnen geen deel uitmaken van dezelfde beschikbaarheidsset.
      - Alleen virtuele machines met dezelfde grootte kunnen deel uitmaken van een beschikbaarheidsset.

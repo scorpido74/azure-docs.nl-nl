@@ -324,7 +324,7 @@
           href: how-to-use-secrets-in-runs.md
         - name: Bekrachtigend leren
           href: how-to-use-reinforcement-learning.md
-    - name: Machine learning automatiseren
+    - name: Geautomatiseerde Machine Learning
       displayName: 'automl, auto ml'
       items:
         - name: Automatische ML gebruiken (Python)

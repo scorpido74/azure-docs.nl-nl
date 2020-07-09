@@ -12,11 +12,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 10/08/2018
 ms.author: genli
-ms.openlocfilehash: 54ba87b681a055bb46b81ca81d2bcdd103491f27
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 8c3e76f1a7edffefc8773dfa548773ec0932fae6
+ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77921450"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86129859"
 ---
 # <a name="windows-shows-critical-service-failed-on-blue-screen-when-booting-an-azure-vm"></a>Windows geeft een ' kritieke SERVICE is mislukt ' weer op het blauwe scherm bij het opstarten van een Azure VM
 In dit artikel wordt de fout ' essentiële SERVICE is mislukt ' beschreven die u kunt tegen komen wanneer u een virtuele Windows-machine (VM) opstart in Microsoft Azure. Het bevat probleemoplossings stappen om de problemen op te lossen. 
@@ -83,11 +84,15 @@ Voer het volgende script uit om dump logboeken en seriële console in te scha ke
 
 1. Voer op de virtuele machine voor herstel de volgende opdracht uit vanaf een opdracht prompt met verhoogde bevoegdheden. Met deze opdracht wordt de betrokken besturingssysteem schijf ingesteld om te starten in de veilige modus bij de volgende keer opstarten:
 
-        bcdedit /store <OS DISK you attached>:\boot\bcd /set {default} safeboot minimal
+    ```console
+    bcdedit /store <OS DISK you attached>:\boot\bcd /set {default} safeboot minimal
+    ```
 
     Als de besturingssysteem schijf die u hebt gekoppeld bijvoorbeeld station F is, voert u de volgende opdracht uit:
 
-        bcdedit /store F: boot\bcd /set {default} safeboot minimal
+    ```console
+    bcdedit /store F: boot\bcd /set {default} safeboot minimal
+    ```
 
 2. [Ontkoppel de besturingssysteem schijf en koppel de besturingssysteem schijf opnieuw aan de betreffende VM](troubleshoot-recovery-disks-portal-windows.md). De virtuele machine wordt opgestart in de veilige modus. Als de fout zich blijft voordoen, gaat u naar de optionele stap.
 3. Open het vak **uitvoeren** en voer **Verifier** uit om het hulp programma Driver Verifier Manager te starten.
@@ -97,7 +102,10 @@ Voer het volgende script uit om dump logboeken en seriële console in te scha ke
 
 7. De instellingen voor veilig opstarten verwijderen:
 
-        bcdedit /store <OS DISK LETTER>:\boot\bcd /deletevalue {default} safeboot
+    ```console
+    bcdedit /store <OS DISK LETTER>:\boot\bcd /deletevalue {default} safeboot
+    ```
+
 8.  Start de VM opnieuw. 
 
 ### <a name="optional-analyze-the-dump-logs-in-dump-crash-mode"></a>Optioneel: de dump Logboeken in de dump crash modus analyseren

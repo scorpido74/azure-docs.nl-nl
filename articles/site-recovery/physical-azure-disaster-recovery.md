@@ -7,11 +7,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 11/12/2019
 ms.author: raynew
-ms.openlocfilehash: 2f92c2b800c6d30cc5f365e6d24925a70d3db55a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: c3d4a2120f86a03508b91d4b2dea52e629dc0f79
+ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84699903"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86130174"
 ---
 # <a name="set-up-disaster-recovery-to-azure-for-on-premises-physical-servers"></a>Herstel na nood gevallen naar Azure instellen voor on-premises fysieke servers
 
@@ -118,7 +119,7 @@ Stel de configuratie server in, Registreer deze in de kluis en ontdek Vm's.
 Doe het volgende voordat u begint: 
 
 #### <a name="verify-time-accuracy"></a>Nauw keurigheid van tijd controleren
-Zorg ervoor dat op de computer met de configuratie server de systeem klok is gesynchroniseerd met een [tijd server](https://technet.microsoft.com/windows-server-docs/identity/ad-ds/get-started/windows-time-service/windows-time-service). Dit moet overeenkomen. Als dat niet het geval is, kan de installatie mislukken.
+Zorg ervoor dat op de computer met de configuratie server de systeem klok is gesynchroniseerd met een [tijd server](/windows-server/networking/windows-time-service/windows-time-service-top). Dit moet overeenkomen. Als dat niet het geval is, kan de installatie mislukken.
 
 #### <a name="verify-connectivity"></a>Connectiviteit controleren
 Zorg ervoor dat de computer toegang kan krijgen tot deze Url's op basis van uw omgeving: 

@@ -3,11 +3,12 @@ title: Veelgestelde vragen over herstel na nood gevallen voor Hyper-V met Azure 
 description: In dit artikel vindt u een overzicht van algemene vragen over het instellen van herstel na nood gevallen voor on-premises virtuele Hyper-V-machines naar Azure met behulp van de Azure Site Recovery-site.
 ms.date: 11/12/2019
 ms.topic: conceptual
-ms.openlocfilehash: b175e7157364f0471192dd713db8767e074dd483
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: b3d806908ce2274d07e6b508c8cc269b553e684f
+ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84195264"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86132655"
 ---
 # <a name="common-questions---hyper-v-to-azure-disaster-recovery"></a>Algemene vragen - Herstel na noodgevallen van Hyper-V naar Azure
 
@@ -31,17 +32,17 @@ Normaal gesp roken ziet u een toename van de kosten voor trans acties die zijn g
 
 Wat u voor de Hyper-V-hostserver nodig hebt, is afhankelijk van het implementatiescenario. Controleer de lijst met vereisten voor Hyper-V in:
 
-* [Replicating Hyper-V VMs (without VMM) to Azure (Virtuele Hyper-V-machines (zonder VMM) repliceren naar Azure)](site-recovery-hyper-v-site-to-azure.md)
-* [Replicating Hyper-V VMs (with VMM) to Azure (Virtuele Hyper-V-machines (met VMM) repliceren naar Azure)](site-recovery-vmm-to-azure.md)
-* [Replicating Hyper-V VMs to a secondary datacenter (Virtuele Hyper-V-machines repliceren naar een secundair datacenter)](site-recovery-vmm-to-vmm.md)
-* Als u repliceert naar een secundair Data Center, leest u over [Ondersteunde gast besturingssystemen voor virtuele Hyper-V-machines](https://technet.microsoft.com/library/mt126277.aspx).
-* Als u repliceert naar Azure, ondersteunt Site Recovery alle gast besturingssystemen die worden [ondersteund door Azure](https://technet.microsoft.com/library/cc794868%28v=ws.10%29.aspx).
+* [Replicating Hyper-V VMs (without VMM) to Azure (Virtuele Hyper-V-machines (zonder VMM) repliceren naar Azure)](./hyper-v-azure-tutorial.md)
+* [Replicating Hyper-V VMs (with VMM) to Azure (Virtuele Hyper-V-machines (met VMM) repliceren naar Azure)](./hyper-v-vmm-disaster-recovery.md)
+* [Replicating Hyper-V VMs to a secondary datacenter (Virtuele Hyper-V-machines repliceren naar een secundair datacenter)](./hyper-v-vmm-disaster-recovery.md)
+* Als u repliceert naar een secundair Data Center, leest u over [Ondersteunde gast besturingssystemen voor virtuele Hyper-V-machines](/previous-versions/windows/it-pro/windows-server-2012-R2-and-2012/mt126277(v=ws.11)).
+* Als u repliceert naar Azure, ondersteunt Site Recovery alle gast besturingssystemen die worden [ondersteund door Azure](/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/cc794868(v=ws.10)).
 
 ### <a name="can-i-protect-vms-when-hyper-v-is-running-on-a-client-operating-system"></a>Kan ik Vm's beveiligen wanneer Hyper-V wordt uitgevoerd op een besturings systeem van de client?
-Nee, virtuele machines moeten zich bevinden op een Hyper-V-hostserver die wordt uitgevoerd op een ondersteunde Windows-servercomputer. Als u een client computer moet beveiligen, kunt u deze als fysieke machine repliceren naar [Azure](site-recovery-vmware-to-azure.md) of een [secundair Data Center](site-recovery-vmware-to-vmware.md).
+Nee, virtuele machines moeten zich bevinden op een Hyper-V-hostserver die wordt uitgevoerd op een ondersteunde Windows-servercomputer. Als u een client computer moet beveiligen, kunt u deze als fysieke machine repliceren naar [Azure](./vmware-azure-tutorial.md) of een [secundair Data Center](./vmware-physical-secondary-disaster-recovery.md).
 
 ### <a name="do-hyper-v-hosts-need-to-be-in-vmm-clouds"></a>Moeten Hyper-V-hosts zich in VMM-Clouds bevindt?
-Als u naar een secundair Data Center wilt repliceren, moeten virtuele Hyper-V-machines zich op Hyper-V-hosts in een VMM-cloud bevinden. Als u naar Azure wilt repliceren, kunt u Vm's repliceren met of zonder VMM-Clouds. [Meer](tutorial-hyper-v-to-azure.md) informatie over Hyper-V-replicatie naar Azure.
+Als u naar een secundair Data Center wilt repliceren, moeten virtuele Hyper-V-machines zich op Hyper-V-hosts in een VMM-cloud bevinden. Als u naar Azure wilt repliceren, kunt u Vm's repliceren met of zonder VMM-Clouds. [Meer](./hyper-v-azure-tutorial.md) informatie over Hyper-V-replicatie naar Azure.
 
 
 ### <a name="can-i-replicate-hyper-v-generation-2-virtual-machines-to-azure"></a>Kan ik virtuele machines van de tweede generatie Hyper-V repliceren naar Azure?
@@ -70,7 +71,7 @@ Site Recovery is ISO 27001:2013, 27018, HIPAA, DPA gecertificeerd en is het proc
 Ja. Wanneer u een kluis in een regio maakt, zorgen we ervoor dat alle meta gegevens die door Site Recovery worden gebruikt binnen de geografische grens van die regio blijven.
 
 ### <a name="does-site-recovery-encrypt-replication"></a>Wordt replicatie met Site Recovery versleuteld?
-Ja, zowel versleuteling als transit en [versleuteling in azure](https://docs.microsoft.com/azure/storage/storage-service-encryption) worden ondersteund.
+Ja, zowel versleuteling als transit en [versleuteling in azure](../storage/common/storage-service-encryption.md) worden ondersteund.
 
 
 ## <a name="deployment"></a>Implementatie

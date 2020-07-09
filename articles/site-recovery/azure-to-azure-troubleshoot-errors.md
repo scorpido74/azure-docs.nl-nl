@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 04/07/2020
 ms.author: rochakm
-ms.openlocfilehash: bbb2ddaa1fb84590f9dec1c84ac4bc87a8e03022
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 91aaedba13dfd9c0a3ea06b3460beaa8ead20233
+ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82738113"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86130448"
 ---
 # <a name="troubleshoot-azure-to-azure-vm-replication-errors"></a>Replicatie fouten van Azure naar Azure-VM oplossen
 
@@ -36,7 +36,7 @@ Replication couldn't be enabled for the virtual machine <VmName>.
 
 ### <a name="fix-the-problem"></a>Het probleem oplossen
 
-Neem contact op met de [ondersteuning voor Azure-facturering](/azure/azure-portal/supportability/resource-manager-core-quotas-request) om uw abonnement in te scha kelen voor het maken van vm's van de vereiste grootten op de doel locatie. Voer de mislukte bewerking opnieuw uit.
+Neem contact op met de [ondersteuning voor Azure-facturering](../azure-portal/supportability/resource-manager-core-quotas-request.md) om uw abonnement in te scha kelen voor het maken van vm's van de vereiste grootten op de doel locatie. Voer de mislukte bewerking opnieuw uit.
 
 Als de doel locatie een capaciteits beperking heeft, schakelt u de replicatie naar die locatie uit. Schakel vervolgens replicatie naar een andere locatie in waar uw abonnement voldoende quota heeft om Vm's van de vereiste grootten te maken.
 
@@ -202,7 +202,7 @@ Er kan geen verbinding tot stand worden gebracht met Office 365-verificatie en i
 #### <a name="fix-the-problem"></a>Het probleem oplossen
 
 Azure Site Recovery vereiste toegang tot Office 365 IP-adresbereiken voor verificatie.
-Als u Azure Network Security Group (NSG) regels/firewall proxy gebruikt voor het beheren van uitgaande netwerk connectiviteit op de virtuele machine, moet u de NSG-regel op basis van [Azure Active Directory (Aad)](/azure/virtual-network/security-overview#service-tags) gebruiken om toegang tot Aad toe te staan. Op IP-adres gebaseerde NSG-regels worden niet meer ondersteund.
+Als u Azure Network Security Group (NSG) regels/firewall proxy gebruikt voor het beheren van uitgaande netwerk connectiviteit op de virtuele machine, moet u de NSG-regel op basis van [Azure Active Directory (Aad)](../virtual-network/security-overview.md#service-tags) gebruiken om toegang tot Aad toe te staan. Op IP-adres gebaseerde NSG-regels worden niet meer ondersteund.
 
 ### <a name="issue-3-site-recovery-configuration-failed-151197"></a>Probleem 3: configuratie van Site Recovery is mislukt (151197)
 
@@ -260,8 +260,8 @@ Azure data disk <DiskName> <DiskURI> with logical unit number <LUN> <LUNValue> w
 
 Zorg ervoor dat de gegevens schijven zijn geïnitialiseerd en voer de bewerking vervolgens opnieuw uit.
 
-- **Windows**: [een nieuwe schijf koppelen en initialiseren](/azure/virtual-machines/windows/attach-managed-disk-portal).
-- **Linux**: [Initialiseer een nieuwe gegevens schijf in Linux](/azure/virtual-machines/linux/add-disk).
+- **Windows**: [een nieuwe schijf koppelen en initialiseren](../virtual-machines/windows/attach-managed-disk-portal.md).
+- **Linux**: [Initialiseer een nieuwe gegevens schijf in Linux](../virtual-machines/linux/add-disk.md).
 
 Neem contact op met de ondersteuning als het probleem zich blijft voordoen.
 

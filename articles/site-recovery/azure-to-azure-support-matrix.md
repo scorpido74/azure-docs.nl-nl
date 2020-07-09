@@ -4,12 +4,12 @@ description: Hiermee wordt een overzicht gegeven van de ondersteuning voor herst
 ms.topic: article
 ms.date: 06/03/2020
 ms.author: raynew
-ms.openlocfilehash: 5f9774dd65587c364c90d346f17ed508a263c954
-ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.openlocfilehash: c729645eadc192dba4d7bb4f2c346d7b9d36434a
+ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/05/2020
-ms.locfileid: "85961268"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86132685"
 ---
 # <a name="support-matrix-for-azure-vm-disaster-recovery-between-azure-regions"></a>Ondersteunings matrix voor herstel na nood geval voor Azure-VM'S tussen Azure-regio's
 
@@ -70,7 +70,7 @@ Deze tabel geeft een overzicht van de ondersteuning van het cache-opslag account
 --- | --- | ---
 V2-opslag accounts voor algemeen gebruik (warme en koele laag) | Ondersteund | Het gebruik van GPv2 wordt niet aanbevolen omdat de transactie kosten voor v2 beduidend hoger zijn dan v1 opslag accounts.
 Premium Storage | Niet ondersteund | Standaard opslag accounts worden gebruikt voor cache opslag, om de kosten te optimaliseren.
-Firewalls voor virtuele netwerken Azure Storage  | Ondersteund | Als u gebruikmaakt van het cache-opslag account of het doel opslag account van de firewall, moet u [vertrouwde micro soft-Services toestaan](https://docs.microsoft.com/azure/storage/common/storage-network-security#exceptions).<br></br>Zorg er ook voor dat u toegang tot ten minste één subnet van het bron-Vnet toestaat.
+Firewalls voor virtuele netwerken Azure Storage  | Ondersteund | Als u gebruikmaakt van het cache-opslag account of het doel opslag account van de firewall, moet u [vertrouwde micro soft-Services toestaan](../storage/common/storage-network-security.md#exceptions).<br></br>Zorg er ook voor dat u toegang tot ten minste één subnet van het bron-Vnet toestaat.
 
 
 ## <a name="replicated-machine-operating-systems"></a>Besturings systemen van de gerepliceerde machine
@@ -229,7 +229,7 @@ GRS | Ondersteund |
 RA-GRS | Ondersteund |
 ZRS | Niet ondersteund |
 Coole en warme opslag | Niet ondersteund | Schijven van virtuele machines worden niet ondersteund in coole en warme opslag
-Firewalls voor virtuele netwerken Azure Storage  | Ondersteund | Schakel [vertrouwde micro soft-Services toestaan](https://docs.microsoft.com/azure/storage/common/storage-network-security#exceptions)in als u de toegang tot het virtuele netwerk beperken tot opslag accounts.
+Firewalls voor virtuele netwerken Azure Storage  | Ondersteund | Schakel [vertrouwde micro soft-Services toestaan](../storage/common/storage-network-security.md#exceptions)in als u de toegang tot het virtuele netwerk beperken tot opslag accounts.
 V2-opslag accounts voor algemeen gebruik (zowel warme als koud-tier) | Ondersteund | De transactie kosten stijgen aanzienlijk vergeleken met de V1-opslag accounts voor algemeen gebruik
 Generatie 2 (UEFI-opstart) | Ondersteund
 NVMe-schijven | Niet ondersteund
@@ -270,10 +270,10 @@ Meerdere IP-adressen | Niet ondersteund | Wanneer u een failover van een virtuel
 Traffic Manager     | Ondersteund | U kunt Traffic Manager vooraf configureren zodat verkeer regel matig wordt gerouteerd naar het eind punt in de bron regio, en naar het eind punt in de doel regio in het geval van een failover.
 Azure DNS | Ondersteund |
 Aangepaste DNS    | Ondersteund |
-Niet-geverifieerde proxy | Ondersteund | [Meer informatie](site-recovery-azure-to-azure-networking-guidance.md)
+Niet-geverifieerde proxy | Ondersteund | [Meer informatie](./azure-to-azure-about-networking.md)
 Geverifieerde proxy | Niet ondersteund | Als de virtuele machine gebruikmaakt van een geverifieerde proxy voor uitgaande verbindingen, kan deze niet worden gerepliceerd met behulp van Azure Site Recovery.
-VPN site-naar-site-verbinding met on-premises<br/><br/>(met of zonder ExpressRoute)| Ondersteund | Zorg ervoor dat de Udr's en Nsg's zodanig zijn geconfigureerd dat de Site Recovery verkeer niet naar on-premises wordt gerouteerd. [Meer informatie](site-recovery-azure-to-azure-networking-guidance.md)
-VNET-naar-VNET-verbinding    | Ondersteund | [Meer informatie](site-recovery-azure-to-azure-networking-guidance.md)
+VPN site-naar-site-verbinding met on-premises<br/><br/>(met of zonder ExpressRoute)| Ondersteund | Zorg ervoor dat de Udr's en Nsg's zodanig zijn geconfigureerd dat de Site Recovery verkeer niet naar on-premises wordt gerouteerd. [Meer informatie](./azure-to-azure-about-networking.md)
+VNET-naar-VNET-verbinding    | Ondersteund | [Meer informatie](./azure-to-azure-about-networking.md)
 Service-eindpunten voor virtueel netwerk | Ondersteund | Als u de toegang tot het virtuele netwerk beperkt tot opslag accounts, moet u ervoor zorgen dat de vertrouwde micro soft-Services toegang krijgen tot het opslag account.
 Versneld netwerken | Ondersteund | Versnelde netwerken moeten zijn ingeschakeld op de bron-VM. [Meer informatie](azure-vm-disaster-recovery-with-accelerated-networking.md).
 Palo Alto-netwerk apparaat | Niet ondersteund | Bij apparaten van derden worden er vaak beperkingen opgelegd door de provider in de virtuele machine. Azure Site Recovery behoefte aan agents, uitbrei dingen en uitgaande connectiviteit beschikbaar. Het apparaat staat echter niet toe dat er uitgaande activiteiten worden geconfigureerd in de virtuele machine.
@@ -282,5 +282,5 @@ IPv6  | Niet ondersteund | Gemengde configuraties met zowel IPv4 als IPv6 worden
 
 
 ## <a name="next-steps"></a>Volgende stappen
-- Lees de [netwerk richtlijnen](site-recovery-azure-to-azure-networking-guidance.md) voor het repliceren van virtuele Azure-machines.
-- Implementeer herstel na nood gevallen door [Azure vm's te repliceren](site-recovery-azure-to-azure.md).
+- Lees de [netwerk richtlijnen](./azure-to-azure-about-networking.md) voor het repliceren van virtuele Azure-machines.
+- Implementeer herstel na nood gevallen door [Azure vm's te repliceren](./azure-to-azure-quickstart.md).

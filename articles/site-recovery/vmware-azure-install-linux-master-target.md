@@ -8,11 +8,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 03/06/2019
 ms.author: mayg
-ms.openlocfilehash: 9ab4db53086046ff831fe91d003599841aa8148c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 281743268364b0e9d39c7bea28afc17d753db2f6
+ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83829780"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86130145"
 ---
 # <a name="install-a-linux-master-target-server-for-failback"></a>Een Linux-hoofddoelserver voor failback installeren
 Nadat u uw virtuele machines naar Azure hebt gefailovert, kunt u een failback uitvoeren voor de virtuele machines naar de on-premises site. Als u een failback wilt uitvoeren, moet u de virtuele machine opnieuw beveiligen van Azure naar de on-premises site. Voor dit proces hebt u een on-premises Master doel server nodig om het verkeer te ontvangen. 
@@ -26,7 +27,7 @@ Als uw beveiligde virtuele machine een virtuele Windows-machine is, hebt u een W
 ## <a name="overview"></a>Overzicht
 Dit artikel bevat instructies voor het installeren van een Linux-hoofd doel.
 
-Post opmerkingen of vragen aan het einde van dit artikel of op de [pagina micro soft Q&een vraag voor Azure Recovery Services](https://docs.microsoft.com/answers/topics/azure-site-recovery.html).
+Post opmerkingen of vragen aan het einde van dit artikel of op de [pagina micro soft Q&een vraag voor Azure Recovery Services](/answers/topics/azure-site-recovery.html).
 
 ## <a name="prerequisites"></a>Vereisten
 
@@ -36,6 +37,9 @@ Post opmerkingen of vragen aan het einde van dit artikel of op de [pagina micro 
 * Het hoofd doel moet zich in een netwerk bevindt dat kan communiceren met de proces server en de configuratie server.
 * De versie van het hoofd doel moet gelijk zijn aan of lager zijn dan de versies van de proces server en de configuratie server. Als de versie van de configuratie server bijvoorbeeld 9,4 is, kan de versie van het hoofd doel 9,4 of 9,3 zijn, maar niet 9,5.
 * Het hoofd doel kan alleen een virtuele VMware-machine zijn en niet een fysieke server.
+
+> [!NOTE]
+> Zorg ervoor dat u Storage vMotion niet inschakelt voor beheer onderdelen zoals een hoofd doel. Als het hoofd doel wordt verplaatst nadat de beveiliging is geslaagd, kunnen de schijven van de virtuele machine (Vmdk's) niet worden losgekoppeld. In dit geval mislukt de failback.
 
 ## <a name="sizing-guidelines-for-creating-master-target-server"></a>Richt lijnen voor het maken van de hoofddoel server aanpassen
 
@@ -273,16 +277,22 @@ Gebruik de volgende stappen om een Bewaar schijf te maken:
 > [!NOTE]
 > Controleer voordat u de hoofddoel server installeert of het **bestand/etc/hosts** -bestand op de virtuele machine vermeldingen bevat waarmee de lokale hostnaam wordt toegewezen aan de IP-adressen die zijn gekoppeld aan alle netwerk adapters.
 
-1. Kopieer de wachtwoordzin van **C:\ProgramData\Microsoft Azure site Recovery\private\connection.passphrase** op de configuratie server. Sla het vervolgens op als **passphrase.txt** in dezelfde lokale map door de volgende opdracht uit te voeren:
+1. Voer de volgende opdracht uit om het hoofd doel te installeren.
+
+    ```
+    ./install -q -d /usr/local/ASR -r MT -v VmWare
+    ```
+
+2. Kopieer de wachtwoordzin van **C:\ProgramData\Microsoft Azure site Recovery\private\connection.passphrase** op de configuratie server. Sla het vervolgens op als **passphrase.txt** in dezelfde lokale map door de volgende opdracht uit te voeren:
 
     `echo <passphrase> >passphrase.txt`
 
     Voorbeeld: 
 
-       `echo itUx70I47uxDuUVY >passphrase.txt`
+    `echo itUx70I47uxDuUVY >passphrase.txt`
     
 
-2. Noteer het IP-adres van de configuratie server. Voer de volgende opdracht uit om de hoofddoel server te installeren en de server te registreren bij de configuratie server.
+3. Noteer het IP-adres van de configuratie server. Voer de volgende opdracht uit om de server te registreren bij de configuratie server.
 
     ```
     /usr/local/ASR/Vx/bin/UnifiedAgentConfigurator.sh -i <ConfigurationServer IP Address> -P passphrase.txt
@@ -313,16 +323,10 @@ Nadat de installatie is voltooid, registreert u de configuratie server via de op
 
 1. Noteer het IP-adres van de configuratie server. U hebt deze nodig in de volgende stap.
 
-2. Voer de volgende opdracht uit om de hoofddoel server te installeren en de server te registreren bij de configuratie server.
+2. Voer de volgende opdracht uit om de server te registreren bij de configuratie server.
 
     ```
-    ./install -q -d /usr/local/ASR -r MT -v VmWare
-    /usr/local/ASR/Vx/bin/UnifiedAgentConfigurator.sh -i <ConfigurationServer IP Address> -P passphrase.txt
-    ```
-    Voorbeeld: 
-
-    ```
-    /usr/local/ASR/Vx/bin/UnifiedAgentConfigurator.sh -i 104.40.75.37 -P passphrase.txt
+    /usr/local/ASR/Vx/bin/UnifiedAgentConfigurator.sh
     ```
 
      Wacht totdat het script is voltooid. Als het hoofd doel is geregistreerd, wordt het hoofd doel weer gegeven op de pagina **site Recovery-infra structuur** van de portal.
@@ -347,9 +351,13 @@ U ziet dat het versie **veld het versie nummer** van het hoofd doel bevat.
 
 * Het hoofd doel mag geen moment opnamen hebben op de virtuele machine. Als er moment opnamen zijn, mislukt de failback.
 
-* Als gevolg van sommige aangepaste NIC-configuraties, wordt de netwerk interface tijdens het opstarten uitgeschakeld en kan de hoofddoel agent niet worden geïnitialiseerd. Zorg ervoor dat de volgende eigenschappen juist zijn ingesteld. Controleer deze eigenschappen in de/etc/sysconfig/network-scripts/ifcfg-ETH * van het Ethernet-kaart bestand.
-    * BOOTPROTO = DHCP
-    * ONBOOT = Ja
+* Als gevolg van sommige aangepaste NIC-configuraties, wordt de netwerk interface tijdens het opstarten uitgeschakeld en kan de hoofddoel agent niet worden geïnitialiseerd. Zorg ervoor dat de volgende eigenschappen juist zijn ingesteld. Controleer deze eigenschappen in de/etc/network/interfaces. van het Ethernet-kaart bestand
+    * automatische ETH0
+    * iface eth0 inet dhcp <br>
+
+    Start de netwerk service opnieuw met de volgende opdracht: <br>
+
+`sudo systemctl restart networking`
 
 
 ## <a name="next-steps"></a>Volgende stappen

@@ -5,15 +5,16 @@ author: sideeksh
 manager: rochakm
 ms.topic: troubleshooting
 ms.date: 04/03/2020
-ms.openlocfilehash: c27bf9a29bdb6e75e10fcafc597f40a88f995461
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: dc14334668b76ee8cbb81e48abfe1eecf17fa138
+ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84196092"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86130405"
 ---
 # <a name="troubleshoot-replication-in-azure-vm-disaster-recovery"></a>Problemen met replicatie in nood herstel voor Azure VM oplossen
 
-In dit artikel worden veelvoorkomende problemen in Azure Site Recovery beschreven wanneer u Azure virtual machines (VM) repliceert en herstelt van de ene regio naar een andere regio. Ook wordt uitgelegd hoe u veelvoorkomende problemen oplost. Zie de [ondersteunings matrix voor het repliceren van virtuele Azure-machines](site-recovery-support-matrix-azure-to-azure.md)voor meer informatie over ondersteunde configuraties.
+In dit artikel worden veelvoorkomende problemen in Azure Site Recovery beschreven wanneer u Azure virtual machines (VM) repliceert en herstelt van de ene regio naar een andere regio. Ook wordt uitgelegd hoe u veelvoorkomende problemen oplost. Zie de [ondersteunings matrix voor het repliceren van virtuele Azure-machines](./azure-to-azure-support-matrix.md)voor meer informatie over ondersteunde configuraties.
 
 Azure Site Recovery gegevens van de bron regio consistent repliceren naar de herstel regio voor nood gevallen. Er wordt elke vijf minuten een crash-consistent herstel punt gemaakt. Als Site Recovery geen herstel punten voor 60 minuten kunt maken, wordt u hiervan op de hoogte door deze informatie:
 
@@ -77,7 +78,7 @@ Een piek in de gegevens wijzigings verhouding kan afkomstig zijn van een inciden
 
 Site Recovery worden gerepliceerde gegevens naar het cache-opslag account verzonden. U kunt de netwerk latentie ondervinden als het uploaden van de gegevens van een virtuele machine naar het cache-opslag account langzamer is dan 4 MB in drie seconden.
 
-Gebruik [AzCopy](/azure/storage/common/storage-use-azcopy)om te controleren of er een probleem is met de latentie. U kunt dit opdracht regel hulpprogramma gebruiken voor het uploaden van gegevens van de virtuele machine naar het cache-opslag account. Als de latentie hoog is, controleert u of u een virtueel netwerk apparaat (NVA) gebruikt om het uitgaande netwerk verkeer van Vm's te beheren. Het apparaat kan worden beperkt als alle replicatie verkeer via de NVA wordt door gegeven.
+Gebruik [AzCopy](../storage/common/storage-use-azcopy-v10.md)om te controleren of er een probleem is met de latentie. U kunt dit opdracht regel hulpprogramma gebruiken voor het uploaden van gegevens van de virtuele machine naar het cache-opslag account. Als de latentie hoog is, controleert u of u een virtueel netwerk apparaat (NVA) gebruikt om het uitgaande netwerk verkeer van Vm's te beheren. Het apparaat kan worden beperkt als alle replicatie verkeer via de NVA wordt door gegeven.
 
 U kunt het beste een netwerk service-eind punt in uw virtuele netwerk maken voor ' opslag ', zodat het replicatie verkeer niet naar de NVA gaat. Zie [configuratie van virtueel netwerk apparaat](azure-to-azure-about-networking.md#network-virtual-appliance-configuration)voor meer informatie.
 
@@ -107,7 +108,7 @@ Hier volgen enkele van de meest voorkomende problemen.
 
 ### <a name="app-consistency-not-enabled-on-linux-servers"></a>App-consistentie niet ingeschakeld op Linux-servers
 
-**Oplossen** : Azure site Recovery voor Linux-besturings systeem ondersteunt aangepaste scripts voor toepassingen voor app-consistentie. Het aangepaste script met de voor-en post opties wordt gebruikt door de Azure Site Recovery Mobility-agent voor app-consistentie. [Hier](https://docs.microsoft.com/azure/site-recovery/site-recovery-faq#replication) volgen de stappen om deze functie in te scha kelen.
+**Oplossen** : Azure site Recovery voor Linux-besturings systeem ondersteunt aangepaste scripts voor toepassingen voor app-consistentie. Het aangepaste script met de voor-en post opties wordt gebruikt door de Azure Site Recovery Mobility-agent voor app-consistentie. [Hier](./site-recovery-faq.md#replication) volgen de stappen om deze functie in te scha kelen.
 
 ### <a name="more-causes-because-of-vss-related-issues"></a>Meer oorzaken vanwege VSS-gerelateerde problemen:
 

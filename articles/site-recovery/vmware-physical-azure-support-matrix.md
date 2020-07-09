@@ -3,12 +3,12 @@ title: Ondersteunings matrix voor nood herstel voor VMware/fysiek in Azure Site 
 description: Hierin wordt een overzicht gegeven van de ondersteuning voor nood herstel van virtuele VMware-machines en fysieke servers naar Azure met behulp van Azure Site Recovery.
 ms.topic: conceptual
 ms.date: 06/10/2020
-ms.openlocfilehash: 8e1fd7e839c50458ddcfc9f83d152d7b45cd6672
-ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.openlocfilehash: ff99fd1dd1710cd96f6257096b97ae1912a61dc6
+ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/05/2020
-ms.locfileid: "85956250"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86131881"
 ---
 # <a name="support-matrix-for-disaster-recovery--of-vmware-vms-and-physical-servers-to-azure"></a>Ondersteunings matrix voor nood herstel van virtuele VMware-machines en fysieke servers naar Azure
 
@@ -50,8 +50,8 @@ Besturingssysteem  | Windows Server 2012 R2 of Windows Server 2016 met bureaubla
 Landinstelling van het besturingssysteem | Engels (en-us)
 [PowerCLI](https://my.vmware.com/web/vmware/details?productId=491&downloadGroup=PCLI600R1) | Niet nodig voor de configuratie Server versie [9,14](https://support.microsoft.com/help/4091311/update-rollup-23-for-azure-site-recovery) of hoger.
 Windows Server-functies | Schakel Active Directory Domain Services niet in. Internet Information Services (IIS) of Hyper-V.
-Groeps beleid| -Toegang tot de opdracht prompt voor komen. <br/> -Toegang tot register bewerkings Programma's verhinderen. <br/> -Logica vertrouwen voor bestands bijlagen. <br/> -Schakel uitvoering van script in. <br/> - [Meer informatie](https://technet.microsoft.com/library/gg176671(v=ws.10).aspx)|
-IIS | Zorg ervoor dat:<br/><br/> -Geen vooraf bestaande standaard website hebben <br/> - [Anonieme verificatie](https://technet.microsoft.com/library/cc731244(v=ws.10).aspx) inschakelen <br/> - [Fastcgi](https://technet.microsoft.com/library/cc753077(v=ws.10).aspx) -instelling inschakelen  <br/> -Geen vooraf bestaande website/app Luis teren op poort 443<br/>
+Groeps beleid| -Toegang tot de opdracht prompt voor komen. <br/> -Toegang tot register bewerkings Programma's verhinderen. <br/> -Logica vertrouwen voor bestands bijlagen. <br/> -Schakel uitvoering van script in. <br/> - [Meer informatie](/previous-versions/windows/it-pro/windows-7/gg176671(v=ws.10))|
+IIS | Zorg ervoor dat:<br/><br/> -Geen vooraf bestaande standaard website hebben <br/> - [Anonieme verificatie](/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/cc731244(v=ws.10)) inschakelen <br/> - [Fastcgi](/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/cc753077(v=ws.10)) -instelling inschakelen  <br/> -Geen vooraf bestaande website/app Luis teren op poort 443<br/>
 NIC-type | VMXNET3 (wanneer geïmplementeerd als een VMware-VM)
 Type IP-adres | Statisch
 Poorten | 443 gebruikt voor het beheren van de kanaal indeling<br/>9443 voor gegevens transport
@@ -67,7 +67,7 @@ Site Recovery ondersteunt replicatie van elke werk belasting die wordt uitgevoer
 --- | ---
 Computer instellingen | Machines die naar Azure repliceren, moeten voldoen aan de [vereisten van Azure](#azure-vm-requirements).
 Machine workload | Site Recovery ondersteunt replicatie van elke werk belasting die wordt uitgevoerd op een ondersteunde computer. [Meer informatie](https://aka.ms/asr_workload).
-Computer naam | Zorg ervoor dat de weergave naam van de computer niet in door [Azure gereserveerde resource namen](https://docs.microsoft.com/azure/azure-resource-manager/templates/error-reserved-resource-name) valt<br/><br/> Namen van logische volumes zijn niet hoofdletter gevoelig. Zorg ervoor dat er geen twee volumes op een apparaat dezelfde naam hebben. Bijvoorbeeld: volumes met de naam ' voLUME1 ', ' voLUME1 ' kunnen niet worden beveiligd via Azure Site Recovery.
+Computer naam | Zorg ervoor dat de weergave naam van de computer niet in door [Azure gereserveerde resource namen](../azure-resource-manager/templates/error-reserved-resource-name.md) valt<br/><br/> Namen van logische volumes zijn niet hoofdletter gevoelig. Zorg ervoor dat er geen twee volumes op een apparaat dezelfde naam hebben. Bijvoorbeeld: volumes met de naam ' voLUME1 ', ' voLUME1 ' kunnen niet worden beveiligd via Azure Site Recovery.
 
 ### <a name="for-windows"></a>Voor Windows
 
@@ -224,7 +224,7 @@ Gast/server-schijf uitsluiten | Yes
 Meerdere paden gast/server (MPIO) | No
 GPT/server-GUID-partities | Er worden vijf partities ondersteund van [Update pakket 37](https://support.microsoft.com/help/4508614/) (versie 9,25 van de Mobility-service). Eerder vier werden ondersteund.
 ReFS | Flexibel bestands systeem wordt ondersteund met Mobility Service versie 9,23 of hoger
-EFI/UEFI-opstart procedure voor gast/server | -Ondersteund voor Windows Server 2012 of hoger, SLES 12 SP4 en RHEL 8,0 met mobiliteits agent versie 9,30<br/> -Secure UEFI-opstart type wordt niet ondersteund. [Meer informatie.](https://docs.microsoft.com/azure/virtual-machines/windows/generation-2#on-premises-vs-azure-generation-2-vms)
+EFI/UEFI-opstart procedure voor gast/server | -Ondersteund voor Windows Server 2012 of hoger, SLES 12 SP4 en RHEL 8,0 met mobiliteits agent versie 9,30<br/> -Secure UEFI-opstart type wordt niet ondersteund. [Meer informatie.](../virtual-machines/windows/generation-2.md#on-premises-vs-azure-generation-2-vms)
 
 ## <a name="replication-channels"></a>Replicatie kanalen
 
@@ -280,7 +280,7 @@ VM-naam | Van 1 tot 63 tekens.<br/><br/> Alleen letters, cijfers en afbreekstree
 
 ## <a name="resource-group-limits"></a>Limieten voor resource groep
 
-Raadpleeg het artikel over de [limieten en quota voor abonnementen](/azure/azure-resource-manager/management/azure-subscription-service-limits#resource-group-limits)voor meer informatie over het aantal virtuele machines dat kan worden beveiligd onder één resource groep.
+Raadpleeg het artikel over de [limieten en quota voor abonnementen](../azure-resource-manager/management/azure-subscription-service-limits.md#resource-group-limits)voor meer informatie over het aantal virtuele machines dat kan worden beveiligd onder één resource groep.
 
 ## <a name="churn-limits"></a>Verloop limieten
 

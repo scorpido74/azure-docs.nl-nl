@@ -6,11 +6,12 @@ manager: rochakm
 ms.topic: conceptual
 ms.author: mayg
 ms.date: 11/12/2019
-ms.openlocfilehash: 50fb6da2905b2ae27547f25cce3d7a76ca7976b7
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 373cffe96119af4a2fc0d74e2090e6cc24dcaf8f
+ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "75498131"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86131251"
 ---
 # <a name="exclude-disks-from-replication"></a>Schijven uitsluiten van replicatie
 
@@ -40,7 +41,7 @@ Let op het volgende voordat u begint:
 
 ## <a name="exclude-disks"></a>Schijven uitsluiten
 
-1. Als u schijven wilt uitsluiten wanneer u [replicatie inschakelt](site-recovery-hyper-v-site-to-azure.md) voor een Hyper-V-VM, moet u na het selecteren van de virtuele machines die u wilt repliceren op de pagina eigenschappen van **replicatie inschakelen**  >  **Properties**  >  **configureren** de kolom **te repliceren schijven** controleren. Standaard zijn alle schijven geselecteerd voor replicatie.
+1. Als u schijven wilt uitsluiten wanneer u [replicatie inschakelt](./hyper-v-azure-tutorial.md) voor een Hyper-V-VM, moet u na het selecteren van de virtuele machines die u wilt repliceren op de pagina eigenschappen van **replicatie inschakelen**  >  **Properties**  >  **configureren** de kolom **te repliceren schijven** controleren. Standaard zijn alle schijven geselecteerd voor replicatie.
 2. Als u een specifieke schijf niet wilt repliceren, wist u de selectie van de schijven die u wilt uitsluiten als u de schijven wilt **repliceren** . 
 
     ![Schijven uitsluiten van replicatie](./media/hyper-v-exclude-disk/enable-replication6-with-exclude-disk.png)

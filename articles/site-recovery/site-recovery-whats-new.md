@@ -3,11 +3,12 @@ title: Wat is er nieuw in Azure Site Recovery
 description: Biedt een samen vatting van nieuwe functies en de meest recente updates in de Azure Site Recovery-service.
 ms.topic: conceptual
 ms.date: 06/01/2020
-ms.openlocfilehash: e0015aa9de51e3cb43473a079d09698fcbeef9a0
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: f774dbd3172199e82509301f520eac4e25deb15b
+ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84259215"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86131077"
 ---
 # <a name="whats-new-in-site-recovery"></a>Nieuw in Site Recovery
 
@@ -21,6 +22,7 @@ Voor Site Recovery-onderdelen ondersteunen we N-4 versies, waarbij N de meest re
 
 **Bijwerken** |  **Unified Setup** | **Eicellen van de configuratie server** | **Mobility Service-agent** | **Site Recovery provider** | **Recovery Services-agent**
 --- | --- | --- | --- | --- | ---
+[Pakket 47](https://support.microsoft.com/help/4570609/) | 9.34.5634.1 | 5.1.6100.0 | 9.34.5634.1 | 5.1.6100.0 | 2.0.9183.0
 [Pakket 46](https://support.microsoft.com/help/4564347/) | 9.33.5598.1 | 5.1.5900.0 | 9.33.5598.1 | 5.1.5900.0 | 2.0.9175.0
 [Pakket 45](https://support.microsoft.com/help/4550047/) | 9.32.5487.1 | 5.1.5400.0 | 9.32.5487.1 | 5.1.5400.0 | 2.0.9165.0
 [Pakket 43](https://support.microsoft.com/help/4537047/) | 9.31.5449.1 | 5.1.5300.0 | 9.31.5449.1 | 5.1.5300.0 | 2.0.9165.0
@@ -31,6 +33,17 @@ Meer [informatie](service-updates-how-to.md) over installatie en ondersteuning v
 
 > [!NOTE]
 > Update pakket 44 wordt niet weer gegeven in de tabel omdat het geen updates bevat voor de Site Recovery providers en agents.
+
+## <a name="updates-june-2020"></a>Updates (juni 2020)
+
+### <a name="update-rollup-47"></a>Update pakket 47
+
+[Update pakket 47](https://support.microsoft.com/help/4570609/update-rollup-47-for-azure-site-recovery) bevat de volgende updates:
+
+**Bijwerken** | **Details**
+--- | ---
+**Providers en agents** | Updates van Site Recovery agents en providers zoals beschreven in het pakket.
+**Problemen/verbeteringen van het probleem** | Een aantal oplossingen en verbeteringen zoals beschreven in de samen telling.
 
 ## <a name="updates-june-2020"></a>Updates (juni 2020)
 
@@ -345,8 +358,8 @@ De functies die deze maand zijn toegevoegd, worden in de tabel samenvatten.
 **Functie** | **Details**
 --- | ---
 **Netwerktoewijzing** | Voor herstel na nood gevallen van Azure VM kunt u nu elk beschik bare doelnet werken gebruiken wanneer u replicatie inschakelt.
-**Standard - SSD** | U kunt nu herstel na nood gevallen instellen voor Azure-Vm's met behulp van [Standard-SSD-schijven](https://docs.microsoft.com/azure/virtual-machines/windows/disks-standard-ssd).
-**Opslagruimten direct** | U kunt herstel na nood gevallen instellen voor apps die worden uitgevoerd op Azure VM-apps met behulp van [opslagruimten direct](https://docs.microsoft.com/windows-server/storage/storage-spaces/storage-spaces-direct-overview) voor hoge Beschik baarheid.  Het gebruik van Opslagruimten Direct (S2D) in combi natie met Site Recovery biedt uitgebreide beveiliging van Azure VM-workloads. Met S2D kunt u een gast cluster hosten in Azure. Dit is vooral handig wanneer een virtuele machine als host fungeert voor een kritieke toepassing, zoals SAP ASCS Layer, SQL Server of scale-out Bestands server.
+**Standard - SSD** | U kunt nu herstel na nood gevallen instellen voor Azure-Vm's met behulp van [Standard-SSD-schijven](../virtual-machines/windows/disks-types.md#standard-ssd).
+**Opslagruimten direct** | U kunt herstel na nood gevallen instellen voor apps die worden uitgevoerd op Azure VM-apps met behulp van [opslagruimten direct](/windows-server/storage/storage-spaces/storage-spaces-direct-overview) voor hoge Beschik baarheid.  Het gebruik van Opslagruimten Direct (S2D) in combi natie met Site Recovery biedt uitgebreide beveiliging van Azure VM-workloads. Met S2D kunt u een gast cluster hosten in Azure. Dit is vooral handig wanneer een virtuele machine als host fungeert voor een kritieke toepassing, zoals SAP ASCS Layer, SQL Server of scale-out Bestands server.
 
 
 ### <a name="vmwarephysical-server-disaster-recovery"></a>Herstel na nood geval voor VMware/fysieke server
@@ -364,7 +377,7 @@ De functies die deze maand zijn toegevoegd, worden in de tabel samenvatten.
 
 ### <a name="accelerated-networking-azure-vms"></a>Versneld netwerken (Azure Vm's)
 
-Versneld netwerken maken gebruik van I/O-virtualisatie met één hoofdmap (SR-IOV) naar een VM, waardoor de netwerk prestaties worden verbeterd. Wanneer u replicatie inschakelt voor een virtuele machine van Azure, Site Recovery detecteert of versneld netwerken zijn ingeschakeld. Als dit het geval is, wordt na een failover-Site Recovery automatisch een versneld netwerk geconfigureerd op de doel replica van Azure VM, voor zowel [Windows](https://docs.microsoft.com/azure/virtual-network/create-vm-accelerated-networking-powershell#enable-accelerated-networking-on-existing-vms) als [Linux](https://docs.microsoft.com/azure/virtual-network/create-vm-accelerated-networking-cli#enable-accelerated-networking-on-existing-vms).
+Versneld netwerken maken gebruik van I/O-virtualisatie met één hoofdmap (SR-IOV) naar een VM, waardoor de netwerk prestaties worden verbeterd. Wanneer u replicatie inschakelt voor een virtuele machine van Azure, Site Recovery detecteert of versneld netwerken zijn ingeschakeld. Als dit het geval is, wordt na een failover-Site Recovery automatisch een versneld netwerk geconfigureerd op de doel replica van Azure VM, voor zowel [Windows](../virtual-network/create-vm-accelerated-networking-powershell.md#enable-accelerated-networking-on-existing-vms) als [Linux](../virtual-network/create-vm-accelerated-networking-cli.md#enable-accelerated-networking-on-existing-vms).
 
 [Meer informatie](azure-vm-disaster-recovery-with-accelerated-networking.md).
 
@@ -426,7 +439,7 @@ De functies die deze maand zijn toegevoegd, worden in de tabel samenvatten.
 **Linux Support** | Er is ondersteuning toegevoegd voor Oracle Linux 6,8, Oracle Linux 6,9 en Oracle Linux 7,0 met de Red Hat compatible kernel en voor de onbreekbare UEK-versie (Enter prise kernel) 5.
 **Linux BRTFS-bestands systeem** | Ondersteund voor virtuele Azure-machines.
 **Azure-Vm's in beschikbaarheids zones** | U kunt replicatie naar een andere regio inschakelen voor virtuele Azure-machines die zijn geïmplementeerd in beschikbaarheids zones. U kunt nu replicatie inschakelen voor een virtuele Azure-machine en het doel voor failover instellen op een enkele VM-instantie, een virtuele machine in een beschikbaarheidsset of een virtuele machine in een beschikbaarheids zone. De instelling heeft geen invloed op de replicatie. [Lees](https://azure.microsoft.com/blog/disaster-recovery-of-zone-pinned-azure-virtual-machines-to-another-region/) de aankondiging.
-**Firewall-ingeschakelde opslag (Portal/Power shell)** | Ondersteuning voor [opslag accounts met ingeschakelde firewall](https://docs.microsoft.com/azure/storage/common/storage-network-security).<br/><br/> U kunt Azure-Vm's met niet-beheerde schijven op opslag accounts met ingeschakelde firewalls repliceren naar een andere Azure-regio voor herstel na nood gevallen.<br/><br/> U kunt opslag accounts met ingeschakelde firewall gebruiken als doel opslag accounts voor niet-beheerde schijven.<br/><br/> Ondersteund in de portal en met behulp van Power shell.
+**Firewall-ingeschakelde opslag (Portal/Power shell)** | Ondersteuning voor [opslag accounts met ingeschakelde firewall](../storage/common/storage-network-security.md).<br/><br/> U kunt Azure-Vm's met niet-beheerde schijven op opslag accounts met ingeschakelde firewalls repliceren naar een andere Azure-regio voor herstel na nood gevallen.<br/><br/> U kunt opslag accounts met ingeschakelde firewall gebruiken als doel opslag accounts voor niet-beheerde schijven.<br/><br/> Ondersteund in de portal en met behulp van Power shell.
 
 ## <a name="updates-december-2018"></a>Updates (december 2018)
 
@@ -467,7 +480,7 @@ De functies die deze maand zijn toegevoegd, worden in de tabel samenvatten.
 **Ondersteuning voor regio** | Site Recovery ondersteuning toegevoegd voor Australië-centraal 1 en Australië-centraal 2.
 **Ondersteuning voor schijf versleuteling** | Ondersteuning toegevoegd voor herstel na nood gevallen van Azure-Vm's die zijn versleuteld met Azure Disk Encryption (ADE) met de Azure AD-app. [Meer informatie](azure-to-azure-how-to-enable-replication-ade-vms.md).
 **Schijf uitsluiting** | Niet-geïnitialiseerde schijven worden nu automatisch uitgesloten tijdens de replicatie van virtuele Azure-machines.
-**Firewall-ingeschakelde opslag (Power shell)** | Ondersteuning voor [opslag accounts met ingeschakelde firewall](https://docs.microsoft.com/azure/storage/common/storage-network-security).<br/><br/> U kunt Azure-Vm's met niet-beheerde schijven op opslag accounts met ingeschakelde firewalls repliceren naar een andere Azure-regio voor herstel na nood gevallen.<br/><br/> U kunt opslag accounts met ingeschakelde firewall gebruiken als doel opslag accounts voor niet-beheerde schijven.<br/><br/> Alleen ondersteund met Power shell.
+**Firewall-ingeschakelde opslag (Power shell)** | Ondersteuning voor [opslag accounts met ingeschakelde firewall](../storage/common/storage-network-security.md).<br/><br/> U kunt Azure-Vm's met niet-beheerde schijven op opslag accounts met ingeschakelde firewalls repliceren naar een andere Azure-regio voor herstel na nood gevallen.<br/><br/> U kunt opslag accounts met ingeschakelde firewall gebruiken als doel opslag accounts voor niet-beheerde schijven.<br/><br/> Alleen ondersteund met Power shell.
 
 
 ### <a name="update-rollup-29"></a>Update pakket 29
@@ -505,7 +518,7 @@ De functies die deze maand zijn toegevoegd, worden in de tabel samenvatten.
 
 **Functie** | **Details**
 --- | ---
-**Linux Support** | Ondersteuning toegevoegd voor RedHat Enter prise Linux 6,10, CentOS 6,10.<br/><br/> Op Linux gebaseerde virtuele machines die gebruikmaken van de partitie stijl GPT (GUID-partitie tabel) in verouderde BIOS-compatibiliteits modus, worden nu ondersteund. Raadpleeg de [Veelgestelde vragen over Azure VM](https://docs.microsoft.com/azure/virtual-machines/linux/faq-for-disks) voor meer informatie.
+**Linux Support** | Ondersteuning toegevoegd voor RedHat Enter prise Linux 6,10, CentOS 6,10.<br/><br/> Op Linux gebaseerde virtuele machines die gebruikmaken van de partitie stijl GPT (GUID-partitie tabel) in verouderde BIOS-compatibiliteits modus, worden nu ondersteund. Raadpleeg de [Veelgestelde vragen over Azure VM](../virtual-machines/linux/faq-for-disks.md) voor meer informatie.
 **Herstel na nood geval voor Vm's na migratie** | Ondersteuning voor het inschakelen van herstel na nood gevallen naar een secundaire regio voor een on-premises virtuele VMware-machine die is gemigreerd naar Azure, zonder dat u de Mobility-service op de virtuele machine hoeft te verwijderen voordat u replicatie inschakelt.
 **Windows Server 2008** | Ondersteuning voor de migratie van computers met Windows Server 2008 R2/2008 64-bits en 32-bits.<br/><br/> Alleen migratie (replicatie en failover). Failback wordt niet ondersteund.
 

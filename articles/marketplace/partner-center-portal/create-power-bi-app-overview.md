@@ -1,18 +1,18 @@
 ---
 title: Overzicht van het maken van Power BI-apps-Microsoft AppSource
 description: In dit artikel worden de stappen op hoog niveau beschreven voor het publiceren van een Power BI-app naar Microsoft AppSource. De technische en zakelijke vereisten waaraan uw Power BI-app moet voldoen om te worden gepubliceerd op de commerciële Marketplace, worden ook verschaft.
-author: anbene
-ms.author: mingshen
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
+author: anbene
+ms.author: mingshen
 ms.date: 04/02/2020
-ms.openlocfilehash: 82e131b0e6209089b658c622b415e997b40e9e4b
-ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.openlocfilehash: 9bf02fe6552b47070d4f79c4c497830ac2bfad84
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/05/2020
-ms.locfileid: "85964648"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86121772"
 ---
 # <a name="power-bi-app-creation-overview"></a>Overzicht van het maken van Power BI-apps
 

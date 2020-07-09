@@ -7,11 +7,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 4/9/2019
 ms.author: mayg
-ms.openlocfilehash: 2a4752b501e40f9e8a4f3bc82cb2533c11f9e526
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: de55e2d316b6ed7ee51460ce96896ed2ccfe0992
+ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "73954592"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86129884"
 ---
 # <a name="manage-vm-network-interfaces-for-on-premises-disaster-recovery-to-azure"></a>VM-netwerk interfaces beheren voor on-premises herstel na nood gevallen naar Azure
 
@@ -25,7 +26,7 @@ Azure Site Recovery maakt standaard net zoveel netwerk interfaces op een virtuel
 
 ## <a name="select-the-target-network"></a>Het doelnet netwerk selecteren
 
-Voor VMware en fysieke machines en voor Hyper-V (zonder System Center Virtual Machine Manager) virtuele machines kunt u het virtuele doelnet werk voor afzonderlijke virtuele machines opgeven. Voor virtuele Hyper-V-machines die worden beheerd met Virtual Machine Manager, gebruikt u [netwerk toewijzing](site-recovery-network-mapping.md) om VM-netwerken te koppelen aan een virtuele bron machine Manager-server en doel-Azure-netwerken.
+Voor VMware en fysieke machines en voor Hyper-V (zonder System Center Virtual Machine Manager) virtuele machines kunt u het virtuele doelnet werk voor afzonderlijke virtuele machines opgeven. Voor virtuele Hyper-V-machines die worden beheerd met Virtual Machine Manager, gebruikt u [netwerk toewijzing](./hyper-v-vmm-network-mapping.md) om VM-netwerken te koppelen aan een virtuele bron machine Manager-server en doel-Azure-netwerken.
 
 1. Selecteer bij **gerepliceerde items** in een Recovery Services kluis een gerepliceerd item voor toegang tot de instellingen voor het gerepliceerde item.
 

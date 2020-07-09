@@ -5,11 +5,12 @@ author: sideeksh
 manager: rochakm
 ms.topic: how-to
 ms.date: 04/06/2020
-ms.openlocfilehash: d2cc4133e52e7cab812413d23948da6ac2660e77
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 71176c87ee805eb4a634dd6c2f344922fc13c4f3
+ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80884865"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86132719"
 ---
 # <a name="troubleshoot-azure-to-azure-vm-network-connectivity-issues"></a>Problemen met Azure-naar-Azure-VM-netwerk connectiviteit oplossen
 
@@ -50,7 +51,7 @@ Probeer toegang te krijgen tot de DNS-server vanaf de virtuele machine. Als de D
 ### <a name="issue-2-site-recovery-configuration-failed-151196"></a>Probleem 2: configuratie van Site Recovery is mislukt (151196)
 
 > [!NOTE]
-> Als de virtuele machines zich achter een **standaard** interne Load Balancer, heeft deze standaard geen toegang tot de Office 365-IP-adressen zoals `login.microsoftonline.com` . Wijzig deze in een **Basic** interne Load Balancer type of maak uitgaande toegang zoals vermeld in het artikel [Configureer taak verdeling en uitgaande regels in Standard Load Balancer met behulp van Azure cli](/azure/load-balancer/configure-load-balancer-outbound-cli).
+> Als de virtuele machines zich achter een **standaard** interne Load Balancer, heeft deze standaard geen toegang tot de Office 365-IP-adressen zoals `login.microsoftonline.com` . Wijzig deze in een **Basic** interne Load Balancer type of maak uitgaande toegang zoals vermeld in het artikel [Configureer taak verdeling en uitgaande regels in Standard Load Balancer met behulp van Azure cli](../load-balancer/configure-load-balancer-outbound-cli.md).
 
 #### <a name="possible-cause"></a>Mogelijke oorzaak
 
@@ -59,7 +60,7 @@ Er kan geen verbinding tot stand worden gebracht met Office 365-verificatie en i
 #### <a name="resolution"></a>Oplossing
 
 - Voor de verificatie is Azure Site Recovery toegang tot de Office 365-IP-adresbereiken vereist.
-- Als u Azure Network Security Group (NSG) regels/firewall proxy gebruikt voor het beheren van uitgaande netwerk connectiviteit op de virtuele machine, moet u ervoor zorgen dat u communicatie met de Office 365 IP-bereiken toestaat. Maak een NSG-regel op basis van een [Azure Active Directory-service (Azure AD)](/azure/virtual-network/security-overview#service-tags) die toegang biedt tot alle IP-adressen die overeenkomen met Azure AD.
+- Als u Azure Network Security Group (NSG) regels/firewall proxy gebruikt voor het beheren van uitgaande netwerk connectiviteit op de virtuele machine, moet u ervoor zorgen dat u communicatie met de Office 365 IP-bereiken toestaat. Maak een NSG-regel op basis van een [Azure Active Directory-service (Azure AD)](../virtual-network/security-overview.md#service-tags) die toegang biedt tot alle IP-adressen die overeenkomen met Azure AD.
 - Als nieuwe adressen in de toekomst worden toegevoegd aan Azure AD, moet u nieuwe NSG-regels maken.
 
 ### <a name="example-nsg-configuration"></a>Voor beeld van NSG-configuratie
@@ -142,7 +143,7 @@ De aangepaste proxy instellingen zijn ongeldig en de Azure Site Recovery Mobilit
 
 ### <a name="fix-the-problem"></a>Het probleem oplossen
 
-Volg de stappen in het [document voor netwerk](site-recovery-azure-to-azure-networking-guidance.md)ondersteuning om [de vereiste url's](azure-to-azure-about-networking.md#outbound-connectivity-for-urls) of de [vereiste IP-bereiken](azure-to-azure-about-networking.md#outbound-connectivity-using-service-tags)toe te staan.
+Volg de stappen in het [document voor netwerk](./azure-to-azure-about-networking.md)ondersteuning om [de vereiste url's](azure-to-azure-about-networking.md#outbound-connectivity-for-urls) of de [vereiste IP-bereiken](azure-to-azure-about-networking.md#outbound-connectivity-using-service-tags)toe te staan.
 
 ## <a name="next-steps"></a>Volgende stappen
 

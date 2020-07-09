@@ -1,31 +1,32 @@
 ---
 title: Activiteit van serviceprovider bekijken
 description: Klanten kunnen vastgelegde activiteiten weer geven om acties te bekijken die door service providers worden uitgevoerd via het beheer van gedelegeerde resources van Azure.
-ms.date: 01/15/2020
+ms.date: 07/07/2020
 ms.topic: how-to
-ms.openlocfilehash: 42af2aa7fca5031eb50bd421a5207320858b70cf
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 0c92fc9b45d17e37fb3721d9cf087c5e7a62f6d7
+ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84636441"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86131452"
 ---
 # <a name="view-service-provider-activity"></a>Activiteit van serviceprovider bekijken
 
-Klanten met gedelegeerde abonnementen voor Azure delegated resource management kunnen [Azure activiteiten logboek gegevens weer geven](../../azure-monitor/platform/platform-logs-overview.md) om alle acties te zien die worden uitgevoerd. Dit biedt klanten volledige zicht baarheid van de activiteiten die service providers uitvoeren via Azure delegated resource management, samen met bewerkingen die worden uitgevoerd door gebruikers binnen de eigen Azure Active Directory (Azure AD)-Tenant van de klant.
+Klanten met gedelegeerde abonnementen voor [Azure Lighthouse](../overview.md) kunnen [Azure-activiteiten logboek gegevens weer geven](../../azure-monitor/platform/platform-logs-overview.md) om alle uitgevoerde acties weer te geven. Dit biedt klanten volledige zicht baarheid van de activiteiten die service providers uitvoeren via [Azure delegated resource management](../concepts/azure-delegated-resource-management.md), samen met bewerkingen die worden uitgevoerd door gebruikers binnen de eigen Azure Active Directory (Azure AD)-Tenant van de klant.
 
 > [!TIP]
 > We bieden ook een Azure Policy ingebouwde beleids definitie voor het controleren van de overdracht van scopes naar een beheer Tenant. Zie [audit delegaties in uw omgeving](view-manage-service-providers.md#audit-delegations-in-your-environment)voor meer informatie.
 
 ## <a name="view-activity-log-data"></a>Gegevens van activiteiten logboek weer geven
 
-U kunt [het activiteiten logboek bekijken](../../azure-monitor/platform/activity-log-view.md) via het menu **Monitor** in de Azure Portal. Als u de resultaten wilt beperken tot een specifiek abonnement, gebruikt u de filters om een specifiek abonnement te selecteren. U kunt [activiteiten logboek gebeurtenissen ook programmatisch weer geven en ophalen](../../azure-monitor/platform/activity-log-view.md) .
+U kunt [het activiteiten logboek bekijken](../../azure-monitor/platform/activity-log.md#view-the-activity-log) via het menu **Monitor** in de Azure Portal. Als u de resultaten wilt beperken tot een specifiek abonnement, gebruikt u de filters om een specifiek abonnement te selecteren. U kunt [activiteiten logboek gebeurtenissen ook programmatisch weer geven en ophalen](../../azure-monitor/platform/activity-log.md#view-the-activity-log) .
 
 > [!NOTE]
-> Gebruikers in de Tenant van een service provider kunnen de resultaten van het activiteiten logboek weer geven voor een gedelegeerd abonnement in een Tenant van de klant als ze de rol van [lezer](../../role-based-access-control/built-in-roles.md#reader) hebben gekregen (of een andere ingebouwde rol die lezers toegang bevat) wanneer dat abonnement is voor bereid voor Azure delegated resource management.
+> Gebruikers in de Tenant van een service provider kunnen de resultaten van het activiteiten logboek weer geven voor een gedelegeerd abonnement in een Tenant van de klant als ze de rol van [lezer](../../role-based-access-control/built-in-roles.md#reader) hebben gekregen (of een andere ingebouwde rol die lezers toegang bevat) wanneer dat abonnement is onboardd naar Azure Lighthouse.
 
-In het activiteiten logboek ziet u de naam van de bewerking en de bijbehorende status, samen met de datum en tijd waarop het is uitgevoerd. In de **gebeurtenis gestart door** de kolom ziet u welke gebruiker de bewerking heeft uitgevoerd, of het een gebruiker in de Tenant van een service provider was die optreedt door middel van het beheer van gedelegeerde resources van Azure of een gebruiker in de eigen Tenant van de klant. Houd er rekening mee dat de naam van de gebruiker wordt weer gegeven in plaats van de Tenant of de rol die aan de gebruiker is toegewezen voor dat abonnement.
+In het activiteiten logboek ziet u de naam van de bewerking en de bijbehorende status, samen met de datum en tijd waarop het is uitgevoerd. In de **gebeurtenis gestart door** kolom ziet u welke gebruiker de bewerking heeft uitgevoerd, of het een gebruiker in de Tenant van een service provider is die zich bevindt via Azure Lighthouse of een gebruiker in de eigen Tenant van de klant. Houd er rekening mee dat de naam van de gebruiker wordt weer gegeven in plaats van de Tenant of de rol die aan de gebruiker is toegewezen voor dat abonnement.
 
-Geregistreerde activiteiten is in de afgelopen 90 dagen beschikbaar in de Azure Portal. Zie [Azure-activiteiten Logboeken in log Analytics werk ruimte verzamelen en analyseren](../../azure-monitor/platform/activity-log-collect.md)voor meer informatie over hoe u deze gegevens langer dan 90 dagen opslaat.
+Geregistreerde activiteiten is in de afgelopen 90 dagen beschikbaar in de Azure Portal. Zie [Azure-activiteiten Logboeken in log Analytics werk ruimte verzamelen en analyseren](../../azure-monitor/platform/activity-log.md)voor meer informatie over hoe u deze gegevens langer dan 90 dagen opslaat.
 
 > [!NOTE]
 > Gebruikers van de service provider worden weer gegeven in het activiteiten logboek, maar deze gebruikers en hun roltoewijzingen worden niet weer gegeven in **Access Control (IAM)** of bij het ophalen van roltoewijzings gegevens via api's.

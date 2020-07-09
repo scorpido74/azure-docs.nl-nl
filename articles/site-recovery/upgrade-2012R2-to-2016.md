@@ -8,11 +8,12 @@ ms.topic: conceptual
 ms.service: site-recovery
 ms.date: 12/03/2018
 ms.author: rajanaki
-ms.openlocfilehash: 1d94935db542a0e64754ab8769996fe906f88b46
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: eb08ea2e13c4879941b9651cac056ff41ae13052
+ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "73954409"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86130823"
 ---
 # <a name="upgrade-windows-server-serversystem-center-2012-r2-vmm-to-windows-servervmm-2016"></a>Upgrade uitvoeren van Windows Server Server/System Center 2012 R2 VMM naar Windows Server/VMM 2016 
 
@@ -53,18 +54,18 @@ Let op het volgende voordat u een upgrade uitvoert:-
   > Selecteer tijdens het bijwerken van de SCVMM 2012 R2 onder gedistribueerd sleutel beheer om **versleutelings sleutels op te slaan in Active Directory**. Kies de instellingen voor het service account en gedistribueerd sleutel beheer zorgvuldig. Op basis van uw selectie zijn versleutelde gegevens, zoals wacht woorden in sjablonen, mogelijk niet beschikbaar na de upgrade en kunnen de replicatie met Azure Site Recovery mogelijk beïnvloeden.
 
 > [!IMPORTANT]
-> Raadpleeg de gedetailleerde documentatie over de SCVMM van [vereisten](https://docs.microsoft.com/system-center/vmm/upgrade-vmm?view=sc-vmm-2016#requirements-and-limitations)
+> Raadpleeg de gedetailleerde documentatie over de SCVMM van [vereisten](/system-center/vmm/upgrade-vmm?view=sc-vmm-2016#requirements-and-limitations)
 
 ## <a name="windows-server-2012-r2-hosts-which-arent-managed-by-scvmm"></a>Windows Server 2012 R2-hosts die niet worden beheerd door SCVMM 
-De lijst met stappen die hieronder worden beschreven, is van toepassing op de gebruikers configuratie van [Hyper-V-hosts naar Azure](https://docs.microsoft.com/azure/site-recovery/hyper-v-azure-architecture) die wordt uitgevoerd door deze [zelf studie](https://docs.microsoft.com/azure/site-recovery/hyper-v-prepare-on-premises-tutorial) te volgen
+De lijst met stappen die hieronder worden beschreven, is van toepassing op de gebruikers configuratie van [Hyper-V-hosts naar Azure](./hyper-v-azure-architecture.md) die wordt uitgevoerd door deze [zelf studie](./hyper-v-prepare-on-premises-tutorial.md) te volgen
 
 > [!WARNING]
 > Zoals vermeld in de vereisten, zijn deze stappen alleen van toepassing op een scenario met een geclusterde omgeving en niet in een zelfstandige Hyper-V-host-configuratie.
 
-1. Volg de stappen om de [Rolling cluster upgrade](https://docs.microsoft.com/windows-server/failover-clustering/cluster-operating-system-rolling-upgrade#cluster-os-rolling-upgrade-process) uit te voeren. om het upgrade proces voor Rolling clusters uit te voeren.
+1. Volg de stappen om de [Rolling cluster upgrade](/windows-server/failover-clustering/cluster-operating-system-rolling-upgrade#cluster-os-rolling-upgrade-process) uit te voeren. om het upgrade proces voor Rolling clusters uit te voeren.
 2. Voor elke nieuwe Windows Server 2016-host die in het cluster is geïntroduceerd, verwijdert u de verwijzing van een Windows Server 2012 R2-host uit Azure Site Recovery door de volgende stappen te volgen: [hier]. Dit moet de host zijn die u hebt gekozen om & weghalen uit het cluster te verwijderen.
 3. Zodra de opdracht *Update-VMVersion* is uitgevoerd voor alle virtuele machines, zijn de upgrades voltooid. 
-4. Volg de stappen die [hier](https://docs.microsoft.com/azure/site-recovery/hyper-v-azure-tutorial#set-up-the-source-environment) worden beschreven om de nieuwe Windows Server 2016-host te registreren bij Azure site Recovery. De Hyper-V-site is al actief en u hoeft alleen de nieuwe host in het cluster te registreren. 
+4. Volg de stappen die [hier](./hyper-v-azure-tutorial.md#set-up-the-source-environment) worden beschreven om de nieuwe Windows Server 2016-host te registreren bij Azure site Recovery. De Hyper-V-site is al actief en u hoeft alleen de nieuwe host in het cluster te registreren. 
 5.  Ga naar Azure Portal en controleer de gerepliceerde status in de Recovery Services
 
 ## <a name="upgrade-windows-server-2012-r2-hosts-managed-by-stand-alone-scvmm-2012-r2-server"></a>Een upgrade uitvoeren van Windows Server 2012 R2-hosts die worden beheerd door zelfstandige SCVMM 2012 R2-server
@@ -73,17 +74,17 @@ Voordat u uw Windows Server 2012 R2-hosts bijwerkt, moet u de SCVMM 2012 R2 upgr
 **Zelfstandige versie van SCVMM 2012 R2 upgraden naar SCVMM 2016**
 
 1.  Verwijder de ASR-provider door te navigeren naar configuratie scherm-> Program Ma's-> Program Ma's en onderdelen->Microsoft Azure Site Recovery en klik op verwijderen
-2. [De SCVMM-data base behouden en het besturings systeem upgraden](https://docs.microsoft.com/system-center/vmm/upgrade-vmm?view=sc-vmm-2016#back-up-and-upgrade-the-operating-system)
+2. [De SCVMM-data base behouden en het besturings systeem upgraden](/system-center/vmm/upgrade-vmm?view=sc-vmm-2016#back-up-and-upgrade-the-operating-system)
 3. Selecteer in **Program ma's toevoegen**de optie **VMM**  >  **verwijderen**. b. Selecteer **onderdelen verwijderen**en selecteer vervolgens V**mm-beheer server en VMM-console**. c. Selecteer in **database opties**de optie **Data Base behouden**. d. Controleer de samen vatting en klik op **verwijderen**.
 
-4. [VMM 2016 installeren](https://docs.microsoft.com/system-center/vmm/upgrade-vmm?view=sc-vmm-2016#install-vmm-2016)
+4. [VMM 2016 installeren](/system-center/vmm/upgrade-vmm?view=sc-vmm-2016#install-vmm-2016)
 5. Start SCVMM en controleer de status van elke host onder het tabblad **fabrics** . Klik op **vernieuwen** om de meest recente status te krijgen. U ziet de status ' attentie vereist '. 
 17. Installeer de nieuwste [Microsoft Azure site Recovery provider](https://aka.ms/downloaddra) op de SCVMM.
 16. Installeer de meest recente [Mars-agent (Microsoft Azure Recovery Service)](https://aka.ms/latestmarsagent) op elke host van het cluster. Vernieuwen om ervoor te zorgen dat SCVMM kan zoeken naar de hosts.
 
 **Windows Server 2012 R2-hosts upgraden naar Windows Server 2016**
 
-1. Volg de stappen die [hier](https://docs.microsoft.com/windows-server/failover-clustering/cluster-operating-system-rolling-upgrade#cluster-os-rolling-upgrade-process) worden beschreven om het upgrade proces voor Rolling clusters uit te voeren. 
+1. Volg de stappen die [hier](/windows-server/failover-clustering/cluster-operating-system-rolling-upgrade#cluster-os-rolling-upgrade-process) worden beschreven om het upgrade proces voor Rolling clusters uit te voeren. 
 2. Nadat u de nieuwe host aan het cluster hebt toegevoegd, moet u de host vernieuwen vanuit de SCVMM-console om de VMM-agent op deze bijgewerkte host te installeren.
 3. Voer *Update-VMVersion* uit om de VM-versies van de virtuele machines bij te werken. 
 4.  Ga naar Azure Portal en controleer de gerepliceerde status van de virtuele machines in de Recovery Services kluis. 
@@ -94,7 +95,7 @@ Voordat u uw Windows Server 2012 R2-hosts bijwerkt, moet u de SCVMM 2012 R2 upgr
 **Upgrade SCVMM 2012 R2 naar SCVMM 2016**
 
 1.  Verwijder de ASR-provider door te navigeren naar configuratie scherm-> Program Ma's-> Program Ma's en onderdelen->Microsoft Azure Site Recovery en klik op verwijderen
-2. Volg de stappen die [hier](https://docs.microsoft.com/system-center/vmm/upgrade-vmm?view=sc-vmm-2016#upgrade-a-standalone-vmm-server) worden beschreven op basis van de modus van de upgrade die u wilt uitvoeren.
+2. Volg de stappen die [hier](/system-center/vmm/upgrade-vmm?view=sc-vmm-2016#upgrade-a-standalone-vmm-server) worden beschreven op basis van de modus van de upgrade die u wilt uitvoeren.
 3. Start de SCVMM-console en controleer de status van elke host onder het tabblad **fabrics** . Klik op **vernieuwen** om de meest recente status te krijgen. U ziet de status ' attentie vereist '.
 4. Installeer de nieuwste [Microsoft Azure site Recovery provider](https://aka.ms/downloaddra) op de SCVMM.
 5. Werk de meest recente [Mars-agent (Microsoft Azure Recovery Service)](https://aka.ms/latestmarsagent) bij op elke host van het cluster. Vernieuwen om ervoor te zorgen dat SC VMM de hosts kan doorzoeken.
@@ -102,7 +103,7 @@ Voordat u uw Windows Server 2012 R2-hosts bijwerkt, moet u de SCVMM 2012 R2 upgr
 
 **Windows Server 2012 R2-hosts upgraden naar Windows Server 2016**
 
-1. Volg de stappen die [hier](https://docs.microsoft.com/windows-server/failover-clustering/cluster-operating-system-rolling-upgrade#cluster-os-rolling-upgrade-process) worden beschreven om het upgrade proces voor Rolling clusters uit te voeren.
+1. Volg de stappen die [hier](/windows-server/failover-clustering/cluster-operating-system-rolling-upgrade#cluster-os-rolling-upgrade-process) worden beschreven om het upgrade proces voor Rolling clusters uit te voeren.
 2. Nadat u de nieuwe host aan het cluster hebt toegevoegd, moet u de host vernieuwen vanuit de SCVMM-console om de VMM-agent op deze bijgewerkte host te installeren.
 3. Voer *Update-VMVersion* uit om de VM-versies van de virtuele machines bij te werken. 
 4.  Ga naar Azure Portal en controleer de gerepliceerde status van de virtuele machines in de Recovery Services kluis. 

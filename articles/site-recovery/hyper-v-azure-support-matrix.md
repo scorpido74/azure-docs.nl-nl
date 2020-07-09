@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 1/27/2020
 ms.author: raynew
-ms.openlocfilehash: da2cc3dade843b1ea207eb4ec5bf33a41a289d7e
-ms.sourcegitcommit: cec9676ec235ff798d2a5cad6ee45f98a421837b
+ms.openlocfilehash: b48dfba6fa5dc270a4d711864d15e9128f4beb98
+ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85851475"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86132413"
 ---
 # <a name="support-matrix-for-disaster-recovery-of-on-premises-hyper-v-vms-to-azure"></a>Ondersteunings matrix voor herstel na nood gevallen van on-premises virtuele Hyper-V-machines naar Azure
 
@@ -48,7 +48,7 @@ De volgende tabel bevat een overzicht van de VM-ondersteuning. Site Recovery ond
  **Onderdeel** | **Details**
 --- | ---
 VM-configuratie | Vm's die naar Azure repliceren, moeten voldoen aan de [vereisten van Azure](#azure-vm-requirements).
-Gastbesturingssysteem | Elk gast besturingssysteem dat wordt [ondersteund voor Azure](https://docs.microsoft.com/azure/cloud-services/cloud-services-guestos-update-matrix#family-5-releases)..<br/><br/> Windows Server 2016 nano server wordt niet ondersteund.
+Gastbesturingssysteem | Elk gast besturingssysteem dat wordt [ondersteund voor Azure](../cloud-services/cloud-services-guestos-update-matrix.md#family-5-releases)..<br/><br/> Windows Server 2016 nano server wordt niet ondersteund.
 
 
 ## <a name="vmdisk-management"></a>VM/schijf beheer
@@ -157,7 +157,7 @@ On-premises Vm's die u naar Azure repliceert, moeten voldoen aan de vereisten va
 
 **Onderdeel** | **Vereisten** | **Details**
 --- | --- | ---
-Gastbesturingssysteem | Site Recovery ondersteunt alle besturings systemen die worden [ondersteund door Azure](https://technet.microsoft.com/library/cc794868%28v=ws.10%29.aspx).  | De controle van vereisten mislukt als dit niet wordt ondersteund.
+Gastbesturingssysteem | Site Recovery ondersteunt alle besturings systemen die worden [ondersteund door Azure](/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/cc794868(v=ws.10)).  | De controle van vereisten mislukt als dit niet wordt ondersteund.
 Architectuur van gast besturingssysteem | 32-bits (Windows Server 2008)/64-bit | De controle van vereisten mislukt als dit niet wordt ondersteund.
 Grootte van de besturingssysteemschijf | Maxi maal 2.048 GB voor virtuele machines van de eerste generatie.<br/><br/> Maxi maal 300 GB voor virtuele machines van de tweede generatie.  | De controle van vereisten mislukt als dit niet wordt ondersteund.
 Aantal besturingssysteemschijven | 1 | De controle van vereisten mislukt als dit niet wordt ondersteund.

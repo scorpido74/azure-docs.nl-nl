@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 06/22/2020
 ms.author: sedusch
-ms.openlocfilehash: 758e79109d6cf0d41e5e5981168b0eed9f9928d6
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: b6a284d13d0d737eca65b2593813b3d1b999cfdf
+ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85361384"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86133154"
 ---
 # <a name="azure-virtual-machines-deployment-for-sap-netweaver"></a>Azure Virtual Machines-implementatie voor SAP NetWeaver
 
@@ -211,6 +211,7 @@ ms.locfileid: "85361384"
 [planning-guide-5.4.2]:planning-guide.md#9789b076-2011-4afa-b2fe-b07a8aba58a1 (Schijven kopiëren tussen Azure Storage accounts)
 [planning-guide-5.5.1]:planning-guide.md#4efec401-91e0-40c0-8e64-f2dceadff646 (VM-en VHD-structuur voor SAP-implementaties)
 [planning-guide-5.5.3]:planning-guide.md#17e0d543-7e8c-4160-a7da-dd7117a1ad9d (Automatisch koppelen voor gekoppelde schijven instellen)
+[planning-guide-9.1]:planning-guide.md#6f0a47f3-a289-4090-a053-2521618a28c3 (Azure-bewakings oplossing voor SAP)
 [planning-guide-figure-100]:media/virtual-machines-shared-sap-planning-guide/100-single-vm-in-azure.png
 [planning-guide-figure-1300]:media/virtual-machines-shared-sap-planning-guide/1300-ref-config-iaas-for-sap.png
 [planning-guide-figure-1400]:media/virtual-machines-shared-sap-planning-guide/1400-attach-detach-disks.png
@@ -913,7 +914,7 @@ Zie door de gebruiker [gedefinieerde routes en door sturen via IP][virtual-netwo
 > Algemene ondersteunings verklaring: open altijd een incident met SAP op onderdeel BC-op-NT-AZR voor Windows of BC-LNX-AZR als u ondersteuning nodig hebt voor de Azure-extensie voor SAP.
 > Er zijn specifieke micro soft-ondersteunings technici actief in het SAP-ondersteunings systeem om onze gezamenlijke klanten te helpen.
 
-Wanneer u de virtuele machine hebt voor bereid zoals beschreven in [implementatie scenario's van vm's voor SAP on Azure][deployment-guide-3], wordt de Azure VM-agent geïnstalleerd op de virtuele machine. De volgende stap is het implementeren van de Azure-extensie voor SAP, die beschikbaar is in de Azure extension-opslag plaats in de wereld wijde Azure-data centers. Zie [planning en implementatie van Azure Virtual Machines voor SAP NetWeaver] [planning-gids-9,1] voor meer informatie.
+Wanneer u de virtuele machine hebt voor bereid zoals beschreven in [implementatie scenario's van vm's voor SAP on Azure][deployment-guide-3], wordt de Azure VM-agent geïnstalleerd op de virtuele machine. De volgende stap is het implementeren van de Azure-extensie voor SAP, die beschikbaar is in de Azure extension-opslag plaats in de wereld wijde Azure-data centers. Zie [Azure virtual machines planning en implementatie voor SAP net-Weaver][planning-guide-9.1]voor meer informatie.
 
 We zijn bezig met het vrijgeven van een nieuwe versie van de Azure-extensie voor SAP. De nieuwe extensie maakt gebruik van de door het systeem toegewezen identiteit van de virtuele machine om informatie over de gekoppelde schijven, netwerk interfaces en de virtuele machine zelf op te halen. Om toegang te kunnen krijgen tot deze bronnen, heeft de systeem identiteit van de virtuele machine lezers machtigingen nodig voor de virtuele machine, de besturingssysteem schijf, gegevens schijven en netwerk interfaces. U wordt momenteel aangeraden de nieuwe extensie alleen in de volgende scenario's te installeren:
 

@@ -8,11 +8,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 04/08/2019
 ms.author: mayg
-ms.openlocfilehash: b1f3ffa6fc90fc0cab0217d1b71907342f2dbd0d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 01c2f61dcf024e8c9dbbd5b2ee11a479b3c16305
+ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84712170"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86130276"
 ---
 # <a name="set-up-public-ip-addresses-after-failover"></a>Open bare IP-adressen instellen na failover
 
@@ -47,7 +48,7 @@ Meer informatie over failover-scenario's met Traffic Manager:
 2. [Failover van Azure naar Azure](../site-recovery/concepts-traffic-manager-with-site-recovery.md#azure-to-azure-failover) met Traffic Manager 
 
 De installatie is als volgt:
-- Maak een [Traffic Manager profiel](../traffic-manager/traffic-manager-create-profile.md).
+- Maak een [Traffic Manager profiel](../traffic-manager/quickstart-create-traffic-manager-profile.md).
 - Met de routerings methode **prioriteit** maakt u twee eind punten – **primair** voor de bron en **failover** voor Azure. **Primaire** is toegewezen aan prioriteit 1 en **failover** krijgt prioriteit 2.
 - Het **primaire** eind punt kan [Azure](../traffic-manager/traffic-manager-endpoint-types.md#azure-endpoints) of [extern](../traffic-manager/traffic-manager-endpoint-types.md#external-endpoints) zijn, afhankelijk van het feit of uw bron omgeving zich binnen of buiten Azure bevindt.
 - Het **failover** -eind punt wordt gemaakt als een **Azure** -eind punt. Gebruik een **statisch openbaar IP-adres** omdat dit een extern Facing-eind punt is voor Traffic manager in de nood geval.

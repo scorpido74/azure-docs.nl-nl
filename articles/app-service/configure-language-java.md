@@ -9,11 +9,12 @@ ms.date: 04/12/2019
 ms.author: jafreebe
 ms.reviewer: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: 1e42096e7ab950e5d8046ec6140c01b24643cb87
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: aa6e3edf2c02cad34cbe9b1f9ac82517823caa8e
+ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82891472"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86130559"
 ---
 # <a name="configure-a-windows-java-app-for-azure-app-service"></a>Een Windows java-app configureren voor Azure App Service
 
@@ -321,7 +322,7 @@ Ondersteunde JDKs worden automatisch op een driemaandelijkse patch uitgevoerd in
 
 ### <a name="security-updates"></a>Beveiligingsupdates
 
-Patches en oplossingen voor belang rijke beveiligings problemen worden vrijgegeven zodra deze beschikbaar worden gesteld via Azul-systemen. Een ' belang rijk ' beveiligingslek is gedefinieerd met een basis Score van 9,0 of hoger in het [gemeen schappelijke beveiligings risico van het NIST-systeem versie 2](https://nvd.nist.gov/cvss.cfm).
+Patches en oplossingen voor belang rijke beveiligings problemen worden vrijgegeven zodra deze beschikbaar worden gesteld via Azul-systemen. Een ' belang rijk ' beveiligingslek is gedefinieerd met een basis Score van 9,0 of hoger in het [gemeen schappelijke beveiligings risico van het NIST-systeem versie 2](https://nvd.nist.gov/vuln-metrics/cvss).
 
 Tomcat 8,0 is [sinds 30 September 2018 geëindigd (EOL)](https://tomcat.apache.org/tomcat-80-eol.html). Terwijl de runtime nog steeds avialable op Azure App Service, zullen Azure geen beveiligings updates Toep assen op Tomcat 8,0. Migreer, indien mogelijk, uw toepassingen naar Tomcat 8,5 of 9,0. Zowel Tomcat 8,5 als 9,0 zijn beschikbaar op Azure App Service. Raadpleeg de [officiële Tomcat-site](https://tomcat.apache.org/whichversion.html) voor meer informatie. 
 

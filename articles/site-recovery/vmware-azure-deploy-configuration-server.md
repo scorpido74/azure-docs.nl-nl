@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 10/15/2019
 ms.author: ramamill
-ms.openlocfilehash: 5209dab5e0934cc98bb1334a1565cc13998a7d2e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 9d6b912229b1365dd7bd8d466af18d1e81b5aa8e
+ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84704434"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86132152"
 ---
 # <a name="deploy-a-configuration-server"></a>Een configuratieserver implementeren
 
@@ -39,7 +39,7 @@ U moet een gebruiker hebben met een van de volgende machtigingen die zijn ingest
 1. De gebruiker moet beschikken over een ontwikkelaar van de toepassing om een toepassing te kunnen maken.
     - Meld u aan bij de Azure Portal om te verifiëren.</br>
     - Ga naar **Azure Active Directory**-  >  **rollen en-beheerders**.</br>
-    - Controleer of de Application Developer-rol is toegewezen aan de gebruiker. Als dat niet het geval is, gebruik dan een gebruiker met deze machtiging of neem contact op met een [beheerder om de machtiging in te scha kelen](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-users-assign-role-azure-portal#assign-roles).
+    - Controleer of de Application Developer-rol is toegewezen aan de gebruiker. Als dat niet het geval is, gebruik dan een gebruiker met deze machtiging of neem contact op met een [beheerder om de machtiging in te scha kelen](../active-directory/fundamentals/active-directory-users-assign-role-azure-portal.md#assign-roles).
     
 2. Als de ontwikkelaar van de toepassing niet kan worden toegewezen, moet u ervoor zorgen dat de gebruikers de vlag **toepassingen kunnen registreren** zijn ingesteld op **True** als de gebruiker een identiteit wil maken. Deze machtigingen inschakelen:
     - Meld u aan bij Azure Portal.
@@ -49,7 +49,7 @@ U moet een gebruiker hebben met een van de volgende machtigingen die zijn ingest
       ![Azure AD_application_permission](media/vmware-azure-deploy-configuration-server/AAD_application_permission.png)
 
 > [!NOTE]
-> Active Directory Federation Services *wordt niet ondersteund*. Gebruik een account dat wordt beheerd via [Azure Active Directory](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-whatis).
+> Active Directory Federation Services *wordt niet ondersteund*. Gebruik een account dat wordt beheerd via [Azure Active Directory](../active-directory/fundamentals/active-directory-whatis.md).
 
 ## <a name="download-the-template"></a>De sjabloon downloaden
 

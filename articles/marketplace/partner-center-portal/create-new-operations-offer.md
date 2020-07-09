@@ -1,18 +1,18 @@
 ---
 title: Een Dynamics 365-aanbod voor bewerkingen maken in de commerciële Marketplace
 description: Het maken van een nieuwe Dynamics 365 voor de bewerkings aanbieding in azure Marketplace, AppSource of het programma Cloud Solution Provider (CSP) met behulp van de commerciële Marketplace-Portal in micro soft Partner Center.
-author: dsindona
-ms.author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
+author: navits09
+ms.author: navits
 ms.date: 06/17/2020
-ms.openlocfilehash: 0a2696da70a785fc1da6bfd2c7b0cabae1a89197
-ms.sourcegitcommit: 93462ccb4dd178ec81115f50455fbad2fa1d79ce
+ms.openlocfilehash: 621d657f527e5307ed3a0b583e4c9171005d4f8c
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/06/2020
-ms.locfileid: "85980689"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86121833"
 ---
 # <a name="create-a-dynamics-365-for-operations-offer"></a>Een Dynamics 365 for Operations-aanbieding maken
 

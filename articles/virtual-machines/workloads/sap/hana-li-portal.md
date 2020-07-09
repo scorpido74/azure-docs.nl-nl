@@ -15,12 +15,12 @@ ms.workload: infrastructure
 ms.date: 07/15/2019
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 3c14ff9c4f6d2bc2b1a62d1874d01950d09491c0
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 8512675381f6163e66b6b838e8262dd7d2b12374
+ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "70099818"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86130872"
 ---
 # <a name="azure-hana-large-instances-control-through-azure-portal"></a>Beheer van grote Azure HANA-exemplaren via de Azure-portal
 In dit document wordt beschreven hoe [Hana grote instanties](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-overview-architecture) worden weer gegeven in [Azure Portal](https://portal.azure.com) en welke activiteiten kunnen worden uitgevoerd via Azure Portal met Hana grote instantie-eenheden die voor u zijn geïmplementeerd. Zicht baarheid van HANA grote instanties in Azure Portal wordt gegeven via een Azure-resource provider voor HANA grote instanties, die momenteel beschikbaar zijn in de open bare preview
@@ -31,7 +31,9 @@ Normaal gesp roken is uw Azure-abonnement dat u gebruikt voor HANA-implementatie
 ### <a name="register-through-cli-interface"></a>Registreren via CLI-interface
 U moet zijn aangemeld bij uw Azure-abonnement, dat wordt gebruikt voor de implementatie van HANA grote instanties via de Azure CLI-interface. U kunt (opnieuw) de HANA-provider voor grote instanties registreren met deze opdracht:
     
-    az provider register --namespace Microsoft.HanaOnAzure
+```azurecli
+az provider register --namespace Microsoft.HanaOnAzure
+```
 
 Zie het artikel [Azure-resource providers en-typen](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-supported-services#azure-cli) voor meer informatie.
 

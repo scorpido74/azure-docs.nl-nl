@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 3/13/2020
 ms.author: sutalasi
-ms.openlocfilehash: 58348c9aed14a5cc9126be780fe01817274a0b47
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: f9e2d82130ae188d269847d0e0236ea0e33d00dc
+ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80283256"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86131395"
 ---
 # <a name="about-networking-in-azure-vm-disaster-recovery"></a>Over netwerken in nood herstel voor Azure VM
 
@@ -124,6 +124,6 @@ U kunt een netwerk service-eind punt in uw virtuele netwerk maken voor ' opslag 
 U kunt de standaard systeem route van Azure voor het adres voorvoegsel 0.0.0.0/0 vervangen door een aangepaste route en VM-verkeer [omleiden](../virtual-network/virtual-networks-udr-overview.md#custom-routes) naar een on-premises netwerk virtueel apparaat (NVA), maar deze configuratie wordt niet aanbevolen voor replicatie van site Recovery. Als u aangepaste routes gebruikt, moet u [een service-eind punt voor een virtueel netwerk maken](azure-to-azure-about-networking.md#create-network-service-endpoint-for-storage) in het virtuele netwerk voor "opslag" zodat het replicatie verkeer de Azure-grens niet verlaat.
 
 ## <a name="next-steps"></a>Volgende stappen
-- Begin met het beveiligen van uw workloads door [Azure virtual machines te repliceren](site-recovery-azure-to-azure.md).
+- Begin met het beveiligen van uw workloads door [Azure virtual machines te repliceren](./azure-to-azure-quickstart.md).
 - Meer informatie over het [bewaren van IP-adressen](site-recovery-retain-ip-azure-vm-failover.md) voor failover van de virtuele machine van Azure.
 - Meer informatie over herstel na nood gevallen van [virtuele Azure-machines met ExpressRoute](azure-vm-disaster-recovery-with-expressroute.md).

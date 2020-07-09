@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 11/27/2018
 ms.author: mayg
-ms.openlocfilehash: dfed398124ca20771e169f6f9e7d08d4d799ee1e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: aece41329d6481b8ad15090a834c8758f86abdc2
+ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80478285"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86131335"
 ---
 # <a name="set-up-disaster-recovery-for-a-multi-tier-iis-based-web-application"></a>Herstel na nood geval instellen voor een IIS-webtoepassing met meerdere lagen
 
@@ -31,7 +31,7 @@ In dit artikel wordt beschreven hoe u een webtoepassing op basis van Internet In
 Voordat u begint, moet u ervoor zorgen dat u weet hoe u de volgende taken moet uitvoeren:
 
 * [Een virtuele machine repliceren naar Azure](vmware-azure-tutorial.md)
-* [Een herstel netwerk ontwerpen](site-recovery-network-design.md)
+* [Een herstel netwerk ontwerpen](./concepts-on-premises-to-azure-networking.md)
 * [Een testfailover naar Azure uitvoeren](site-recovery-test-failover-to-azure.md)
 * [Een failover naar Azure uitvoeren](site-recovery-failover.md)
 * [Een domein controller repliceren](site-recovery-active-directory.md)
@@ -62,8 +62,8 @@ Scenario | Op een secundaire site | In Azure
 --- | --- | ---
 Hyper-V | Ja | Ja
 VMware | Ja | Ja
-Fysieke server | Nee | Ja
-Azure|NA|Ja
+Fysieke server | Nee | Yes
+Azure|NA|Yes
 
 ## <a name="replicate-virtual-machines"></a>Virtuele machines repliceren
 
@@ -92,7 +92,7 @@ Zie [het herstel plan aanpassen](site-recovery-runbook-automation.md#customize-t
 
 
 ### <a name="add-a-script-to-the-recovery-plan"></a>Een script toevoegen aan het herstel plan
-Voor een juiste werking van de IIS-webfarm moet u mogelijk bepaalde bewerkingen uitvoeren op de virtuele machines van Azure na failover of tijdens een testfailover. U kunt bewerkingen na de failover automatiseren. U kunt de DNS-vermelding bijvoorbeeld bijwerken, een site binding wijzigen of een connection string wijzigen door de bijbehorende scripts toe te voegen aan het herstel plan. [Een VMM-script toevoegen aan een herstel plan](site-recovery-how-to-add-vmmscript.md) wordt beschreven hoe u geautomatiseerde taken instelt met behulp van een script.
+Voor een juiste werking van de IIS-webfarm moet u mogelijk bepaalde bewerkingen uitvoeren op de virtuele machines van Azure na failover of tijdens een testfailover. U kunt bewerkingen na de failover automatiseren. U kunt de DNS-vermelding bijvoorbeeld bijwerken, een site binding wijzigen of een connection string wijzigen door de bijbehorende scripts toe te voegen aan het herstel plan. [Een VMM-script toevoegen aan een herstel plan](./hyper-v-vmm-recovery-script.md) wordt beschreven hoe u geautomatiseerde taken instelt met behulp van een script.
 
 #### <a name="dns-update"></a>DNS-update
 Als DNS is geconfigureerd voor dynamische DNS-updates, werkt virtuele machines de DNS doorgaans bij met het nieuwe IP-adres wanneer ze worden gestart. Als u een expliciete stap wilt toevoegen om DNS bij te werken met de nieuwe IP-adressen van de virtuele machines, voegt u een [script toe om IP in DNS bij te werken](https://aka.ms/asr-dns-update) als een actie na een failover voor herstel plan groepen.  

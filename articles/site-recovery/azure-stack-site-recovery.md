@@ -3,12 +3,12 @@ title: Azure Stack Vm's repliceren naar Azure met behulp van Azure Site Recovery
 description: Meer informatie over het instellen van herstel na nood gevallen voor Azure voor Azure Stack Vm's met de Azure Site Recovery-service.
 ms.topic: conceptual
 ms.date: 08/05/2019
-ms.openlocfilehash: ab35463ca8c3b29e6b4ae8abc781a7081091b214
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 873b9c5efc2a89d3cda1bfe14a7518e6786a6870
+ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80478510"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86131616"
 ---
 # <a name="replicate-azure-stack-vms-to-azure"></a>Virtuele Azure-machines repliceren naar Azure
 
@@ -262,7 +262,7 @@ Controleer voordat u een testfailover uitvoert de computer eigenschappen en zorg
 2. In het deelvenster **Gerepliceerd item** bevindt zich een overzicht van VM-informatie, status, en de laatste beschikbare herstelpunten. Klik op **Eigenschappen** om meer details te bekijken.
 3. Wijzig in **Compute en netwerk**de instellingen naar wens.
 
-    - U kunt de naam van de Azure-VM, de resource groep, de doel grootte, [beschikbaarheidsset](/azure/virtual-machines/windows/tutorial-availability-sets)en de instellingen voor beheerde schijven wijzigen.
+    - U kunt de naam van de Azure-VM, de resource groep, de doel grootte, [beschikbaarheidsset](../virtual-machines/windows/tutorial-availability-sets.md)en de instellingen voor beheerde schijven wijzigen.
     - U kunt ook netwerk instellingen weer geven en wijzigen. Hieronder vallen het netwerk/subnet waaraan de Azure-VM is gekoppeld na een failover, en het IP-adres dat aan de virtuele machine wordt toegewezen.
 1. Bekijk op **schijven**informatie over het besturings systeem en de gegevens schijven op de virtuele machine.
 

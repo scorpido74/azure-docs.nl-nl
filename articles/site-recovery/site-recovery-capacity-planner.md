@@ -8,11 +8,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 11/12/2019
 ms.author: raynew
-ms.openlocfilehash: 843d5da26d6791cea880e5dfb654fe27b74f5d9f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: a622179d1e83b41e906a9d276377f5c9474264b9
+ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "73936048"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86129963"
 ---
 # <a name="plan-capacity-for-hyper-v-vm-disaster-recovery"></a>Capaciteit plannen voor herstel na nood gevallen voor Hyper-V-VM'S 
 
@@ -38,7 +39,7 @@ U kunt het hulp programma uitvoeren in twee modi:
 ## <a name="before-you-start"></a>Voordat u begint
 
 * Verzamel informatie over uw omgeving, met inbegrip van Vm's, schijven per VM, opslag per schijf.
-* Bepaal uw dagelijkse wijzigings frequentie (verloop) voor gerepliceerde gegevens. Down load het [hulp programma voor capaciteits planning voor Hyper-V](https://www.microsoft.com/download/details.aspx?id=39057) om de wijzigings frequentie te verkrijgen. [Meer informatie](site-recovery-capacity-planning-for-hyper-v-replication.md) over dit hulpprogramma. U wordt aangeraden dit hulp programma over een week uit te voeren om de gemiddelden vast te leggen.
+* Bepaal uw dagelijkse wijzigings frequentie (verloop) voor gerepliceerde gegevens. Down load het [hulp programma voor capaciteits planning voor Hyper-V](https://www.microsoft.com/download/details.aspx?id=39057) om de wijzigings frequentie te verkrijgen. [Meer informatie](./hyper-v-deployment-planner-overview.md) over dit hulpprogramma. U wordt aangeraden dit hulp programma over een week uit te voeren om de gemiddelden vast te leggen.
 
 
 ## <a name="run-the-quick-planner"></a>De snelle planner uitvoeren
@@ -52,7 +53,7 @@ U kunt het hulp programma uitvoeren in twee modi:
 
    a. In **Selecteer uw scenario**kiest u **Hyper-V naar Azure** of **VMware/fysiek naar Azure**.
 
-   b. Geef de **gemiddelde dagelijkse gegevens wijzigings frequentie (%)** op door de gegevens die u verzamelt met het [hulp programma voor capaciteits planning voor Hyper-V](site-recovery-capacity-planning-for-hyper-v-replication.md) of [site Recovery Deployment planner](./site-recovery-deployment-planner.md).
+   b. Geef de **gemiddelde dagelijkse gegevens wijzigings frequentie (%)** op door de gegevens die u verzamelt met het [hulp programma voor capaciteits planning voor Hyper-V](./hyper-v-deployment-planner-overview.md) of [site Recovery Deployment planner](./site-recovery-deployment-planner.md).
 
    c. De **compressie** -instelling wordt niet gebruikt wanneer u virtuele Hyper-V-machines naar Azure repliceert. Gebruik voor compressie een apparaat van derden, zoals Riverbed.
 
@@ -146,4 +147,4 @@ Nadat alle gegevens zijn ingevoerd, selecteert **u gegevens verzenden naar het h
    ![Capacity Planner](./media/site-recovery-capacity-planner/capacity-planner.png)
 
 ## <a name="next-steps"></a>Volgende stappen
-[Meer informatie over het uitvoeren](site-recovery-capacity-planning-for-hyper-v-replication.md) van het hulp programma capaciteits planning.
+[Meer informatie over het uitvoeren](./hyper-v-deployment-planner-overview.md) van het hulp programma capaciteits planning.

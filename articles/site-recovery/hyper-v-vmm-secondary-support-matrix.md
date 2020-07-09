@@ -7,11 +7,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 11/06/2019
 ms.author: raynew
-ms.openlocfilehash: 1126a85ed22ee17879767a93ca75dc76dd04b747
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: af7baf413c9054ef3e5bf527851ac06c113cdce7
+ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "74132960"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86131172"
 ---
 # <a name="support-matrix-for-disaster-recovery-of-hyper-v-vms-to-a-secondary-site"></a>Ondersteuningsmatrix voor herstel na noodgeval van virtuele Hyper-V-machines naar een secundaire site
 
@@ -35,8 +36,8 @@ De volgende tabel bevat een overzicht van de ondersteuning van besturings system
 
 **Windows-versie** | **Hyper-V (met VMM)**
 --- | ---
-Windows Server 2016 | Elk gast besturingssysteem dat wordt [ondersteund door Hyper-V](https://docs.microsoft.com/windows-server/virtualization/hyper-v/Supported-Windows-guest-operating-systems-for-Hyper-V-on-Windows) op Windows Server 2016 
-Windows Server 2012 R2 | Elk gast besturingssysteem dat wordt [ondersteund door Hyper-V](https://docs.microsoft.com/previous-versions/windows/it-pro/windows-server-2012-R2-and-2012/dn792027%28v%3dws.11%29) in Windows Server 2012 R2
+Windows Server 2016 | Elk gast besturingssysteem dat wordt [ondersteund door Hyper-V](/windows-server/virtualization/hyper-v/Supported-Windows-guest-operating-systems-for-Hyper-V-on-Windows) op Windows Server 2016 
+Windows Server 2012 R2 | Elk gast besturingssysteem dat wordt [ondersteund door Hyper-V](/previous-versions/windows/it-pro/windows-server-2012-R2-and-2012/dn792027%28v%3dws.11%29) in Windows Server 2012 R2
 
 ## <a name="linux-machine-storage"></a>Linux-machine opslag
 
@@ -113,5 +114,4 @@ De provider coördineert de communicatie tussen VMM-servers.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-[Virtuele Hyper-V-machines in VMM-Clouds repliceren naar een secundaire site](tutorial-vmm-to-vmm.md)
-
+[Virtuele Hyper-V-machines in VMM-Clouds repliceren naar een secundaire site](./hyper-v-vmm-disaster-recovery.md)

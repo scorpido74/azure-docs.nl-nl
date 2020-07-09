@@ -7,11 +7,12 @@ ms.service: site-recovery
 ms.topic: troubleshooting
 ms.date: 09/09/2019
 ms.author: raynew
-ms.openlocfilehash: 7657d614645bb00235db2701773bc15fa260b70d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 7679148e195bd67ab5da58636552a684c25c31b0
+ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83835798"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86131979"
 ---
 # <a name="troubleshoot-the-process-server"></a>Problemen met de proces server oplossen
 
@@ -95,7 +96,7 @@ Als er geen heartbeat van de proces server is (fout code 806), doet u het volgen
 
 ## <a name="step-4-verify-time-sync-on-source-machine"></a>Stap 4: de tijd synchronisatie op de bron computer controleren
 
-Zorg ervoor dat de systeem datum en-tijd voor de gerepliceerde machine synchroon zijn. [Meer informatie](https://docs.microsoft.com/windows-server/networking/windows-time-service/accurate-time)
+Zorg ervoor dat de systeem datum en-tijd voor de gerepliceerde machine synchroon zijn. [Meer informatie](/windows-server/networking/windows-time-service/accurate-time)
 
 ## <a name="step-5-check-anti-virus-software-on-source-machine"></a>Stap 5: controleren op antivirus software op de bron machine
 
@@ -104,7 +105,7 @@ Controleer of het Site Recovery niet wordt geblokkeerd door antivirus software o
 ## <a name="step-6-check-connectivity-from-source-machine"></a>Stap 6: de connectiviteit van de bron computer controleren
 
 
-1. Installeer de [Telnet-client](https://technet.microsoft.com/library/cc771275(v=WS.10).aspx) op de bron computer als dat nodig is. Gebruik Ping niet.
+1. Installeer de [Telnet-client](/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/cc771275(v=ws.10)) op de bron computer als dat nodig is. Gebruik Ping niet.
 2. Ping vanaf de bron machine de proces server op de HTTPS-poort met Telnet. Standaard is 9443 de HTTPS-poort voor replicatie verkeer.
 
     `telnet <process server IP address> <port>`
@@ -245,7 +246,7 @@ Verg root de band breedte tussen de proces server en Azure en controleer of het 
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Als u meer hulp nodig hebt, kunt u uw vraag plaatsen op de [pagina micro soft Q&een vraag voor Azure site Recovery](https://docs.microsoft.com/answers/topics/azure-site-recovery.html). 
+Als u meer hulp nodig hebt, kunt u uw vraag plaatsen op de [pagina micro soft Q&een vraag voor Azure site Recovery](/answers/topics/azure-site-recovery.html). 
 
 [green]: ./media/vmware-physical-azure-troubleshoot-process-server/green.png
 [yellow]: ./media/vmware-physical-azure-troubleshoot-process-server/yellow.png

@@ -7,17 +7,18 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 11/27/2018
 ms.author: rajanaki
-ms.openlocfilehash: 14c2a9a2ad818cc358535a91f9a6813ec7b91a6f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: fb690dfb90c0f7b8216368cb6b26a9af7d895d18
+ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83826278"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86130134"
 ---
 # <a name="add-a-vmm-script-to-a-recovery-plan"></a>Een VMM-script toevoegen aan een herstel plan
 
 In dit artikel wordt beschreven hoe u een System Center Virtual Machine Manager (VMM)-script maakt en dit toevoegt aan een herstel plan in [Azure site Recovery](site-recovery-overview.md).
 
-Post opmerkingen of vragen onderaan dit artikel of op de [pagina micro soft Q&een vraag voor Azure Recovery Services](https://docs.microsoft.com/answers/topics/azure-site-recovery.html).
+Post opmerkingen of vragen onderaan dit artikel of op de [pagina micro soft Q&een vraag voor Azure Recovery Services](/answers/topics/azure-site-recovery.html).
 
 ## <a name="prerequisites"></a>Vereisten
 
@@ -37,7 +38,7 @@ U kunt Power shell-scripts gebruiken in uw herstel plannen. Als u vanuit het her
 
     `Import-Module -Name virtualmachinemanager`
 
-    Zie [aan de slag met Windows Power shell en VMM](https://technet.microsoft.com/library/hh875013.aspx)voor meer informatie.
+    Zie [aan de slag met Windows Power shell en VMM](/previous-versions/system-center/system-center-2012-R2/hh875013(v=sc.12))voor meer informatie.
 * Zorg ervoor dat uw VMM-implementatie ten minste één bibliotheek server bevat. Het pad naar de bibliotheek share voor een VMM-server bevindt zich standaard lokaal op de VMM-server. De mapnaam is MSCVMMLibrary.
 
   Als het pad naar de bibliotheek share extern is (of als het lokaal is, maar niet is gedeeld met MSCVMMLibrary), configureert u de share als volgt met behulp van \\ libserver2. contoso. com\share\ als voor beeld:
@@ -50,7 +51,7 @@ U kunt Power shell-scripts gebruiken in uw herstel plannen. Als u vanuit het her
 
      a. Open de **64-bits Windows Power shell-** console als beheerder.
      
-     b. Geef **Set-ExecutionPolicy bypass**op. Zie [using the Set-ExecutionPolicy cmdlet](https://technet.microsoft.com/library/ee176961.aspx)voor meer informatie.
+     b. Geef **Set-ExecutionPolicy bypass**op. Zie [using the Set-ExecutionPolicy cmdlet](/previous-versions/windows/it-pro/windows-powershell-1.0/ee176961(v=technet.10))voor meer informatie.
 
      > [!IMPORTANT]
      > Stel **Set-ExecutionPolicy bypass** alleen in de 64-bits Power shell-console in. Als u deze instelt voor de 32-bits Power shell-console, worden de scripts niet uitgevoerd.

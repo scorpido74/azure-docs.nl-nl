@@ -1,18 +1,18 @@
 ---
 title: Microsoft AppSource en Azure Marketplace vergelijken
 description: In dit artikel worden de verschillen beschreven tussen de micro soft Commercial Marketplace-winkels-Microsoft AppSource en Azure Marketplace.
-author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
+author: keferna
+ms.author: keferna
 ms.date: 04/14/2020
-ms.author: dsindona
-ms.openlocfilehash: 78d77ce176c07aed22433f29365b2d338ea32c03
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: fc0a03871ee3191f24a886cc1b9d7f90e8d54b62
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81414557"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86121806"
 ---
 # <a name="comparing-microsoft-appsource-and-azure-marketplace"></a>Microsoft AppSource en Azure Marketplace vergelijken
 

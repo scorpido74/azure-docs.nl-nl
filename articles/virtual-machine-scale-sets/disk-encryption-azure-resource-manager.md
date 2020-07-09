@@ -9,11 +9,12 @@ ms.subservice: disks
 ms.date: 10/10/2019
 ms.reviewer: mimckitt
 ms.custom: mimckitt
-ms.openlocfilehash: c2b49a7e7e14bfbefcca64133ff23fdfabe53e7b
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.openlocfilehash: 4284e94f8d8d0effd160c5048f54fcbede417e38
+ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83198431"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86129752"
 ---
 # <a name="encrypt-virtual-machine-scale-sets-with-azure-resource-manager"></a>Schaalsets voor virtuele machines versleutelen met Azure Resource Manager
 
@@ -37,9 +38,9 @@ Selecteer eerst de sjabloon die past bij uw scenario.
 
 Volg dan deze stappen:
 
-     1. Click **Deploy to Azure**.
-     2. Fill in the required fields then agree to the terms and conditions.
-     3. Click **Purchase** to deploy the template.
+1. Klik op **Implementeren in Azure**.
+2. Vul de vereiste velden in en ga akkoord met de voor waarden.
+3. Klik op **kopen** om de sjabloon te implementeren.
 
 ## <a name="next-steps"></a>Volgende stappen
 

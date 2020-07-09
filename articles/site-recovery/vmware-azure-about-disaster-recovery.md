@@ -6,11 +6,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 11/12/2019
 ms.author: raynew
-ms.openlocfilehash: 589dda80d68fba73a729da4b6e59270cc09c18cb
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 6759b2c0f679a865d0bdcf8ea8cd39f258a9cf25
+ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "73954395"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86132118"
 ---
 # <a name="about-disaster-recovery-of-vmware-vms-to-azure"></a>Over nood herstel van virtuele VMware-machines naar Azure
 
@@ -20,7 +21,7 @@ Dit artikel bevat een overzicht van herstel na nood gevallen voor on-premises vi
 
 Een strategie voor bedrijfs continuïteit en herstel na nood gevallen (BCDR) zorgt ervoor dat uw bedrijf actief blijft. Tijdens geplande uitval tijd en onverwachte storingen houdt BCDR gegevens veilig en beschikbaar en zorgt u ervoor dat apps blijven werken. Naast platform BCDR-functies, zoals regionale koppeling en opslag met hoge Beschik baarheid, biedt Azure Recovery Services als een integraal onderdeel van uw BCDR-oplossing. Recovery Services omvatten: 
 
-- [Azure backup](https://docs.microsoft.com/azure/backup/backup-introduction-to-azure-backup) maakt back-ups van uw on-premises en Azure VM-gegevens. U kunt een back-up maken van een bestand en mappen, specifieke workloads of een volledige VM. 
+- [Azure backup](../backup/backup-overview.md) maakt back-ups van uw on-premises en Azure VM-gegevens. U kunt een back-up maken van een bestand en mappen, specifieke workloads of een volledige VM. 
 - [Azure site Recovery](site-recovery-overview.md) biedt flexibiliteit en herstel na een nood geval voor apps en workloads die worden uitgevoerd op on-premises machines of Azure IaaS-vm's. Site Recovery organiseert de replicatie en verwerkt de failover naar Azure wanneer er storingen optreden. Ook wordt het herstel van Azure naar uw primaire site verwerkt. 
 
 ## <a name="how-does-site-recovery-do-disaster-recovery"></a>Hoe werkt Site Recovery herstel na nood gevallen?

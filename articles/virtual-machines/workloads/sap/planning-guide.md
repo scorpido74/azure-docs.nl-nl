@@ -16,12 +16,12 @@ ms.workload: infrastructure-services
 ms.date: 06/23/2020
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 1a3b07dadba17f72f6f4c5765787c7122eebaa89
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: f7947b6c04ade1fd6a5d9032f05cb6ec56e7a1f5
+ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85361401"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86132089"
 ---
 # <a name="azure-virtual-machines-planning-and-implementation-for-sap-netweaver"></a>Azure Virtual Machines planning en implementatie voor SAP net-Weaver
 
@@ -544,7 +544,7 @@ Binnen een opslag account hebt u een type map met de naam containers die kan wor
 
 In azure volgt een schijf/VHD-naam de volgende naam verbinding die een unieke naam moet opgeven voor de VHD in Azure:
 
-    http(s)://<storage account name>.blob.core.windows.net/<container name>/<vhd name>
+`http(s)://<storage account name>.blob.core.windows.net/<container name>/<vhd name>`
 
 De bovenstaande teken reeks moet een unieke identificatie hebben van de schijf/VHD die is opgeslagen op Azure Storage.
 
@@ -999,7 +999,7 @@ Een SAP-systeem of zelfs een toegewezen DBMS-server die een SAP-toepassingslaag 
 
 Gegevens schijven kunnen worden opgeslagen als VHD-bestanden in een Azure Storage-account en kunnen rechtstreeks worden gekoppeld aan een virtuele machine of als een installatie kopie worden gebruikt. In dit geval wordt de VHD gekopieerd naar een andere locatie voordat deze wordt gekoppeld aan de virtuele machine. De volledige naam van het VHD-bestand in azure moet uniek zijn binnen Azure. Zoals eerder vermeld, is de naam een soort naam die uit drie delen bestaat, zoals:
 
-    http(s)://<storage account name>.blob.core.windows.net/<container name>/<vhd name>
+`http(s)://<storage account name>.blob.core.windows.net/<container name>/<vhd name>`
 
 Gegevens schijven kunnen ook worden Managed Disks. In dit geval wordt de beheerde schijf gebruikt om een nieuwe beheerde schijf te maken voordat deze wordt gekoppeld aan de virtuele machine. De naam van de beheerde schijf moet uniek zijn binnen een resource groep.
 
@@ -1926,7 +1926,7 @@ De architectuur voor SAP HA onder Linux op Azure is in principe hetzelfde als vo
 
 SAP heeft de functionaliteit aangeboden om SAP-instanties direct na het starten van het besturings systeem in de virtuele machine te starten. De exacte stappen zijn beschreven in het SAP Knowledge Base-artikel [1909114]. SAP wordt echter niet aanbevolen om de instelling meer te gebruiken omdat er geen besturings element in de volg orde van het opnieuw opstarten van het exemplaar is, ervan uitgaande dat er meer dan één virtuele machine is betrokken of meerdere exemplaren per VM zijn uitgevoerd. Uitgaande van een typische Azure-scenario van één SAP Application Server-exemplaar in een VM en het geval van één VM uiteindelijk opnieuw wordt gestart, is automatisch starten niet kritiek en kan worden ingeschakeld door het toevoegen van deze para meter:
 
-    Autostart = 1
+`Autostart = 1`
 
 In het begin Profiel van het SAP-ABAP en/of Java-exemplaar.
 

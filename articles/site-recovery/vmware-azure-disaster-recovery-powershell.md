@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.date: 01/10/2020
 ms.topic: conceptual
 ms.author: sutalasi
-ms.openlocfilehash: d2dfaab3d01ea29b0f9ecba1e9d748415bed2edc
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: de25a3f9df04b09a7337dc889a688a171d98db28
+ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84704383"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86129907"
 ---
 # <a name="set-up-disaster-recovery-of-vmware-vms-to-azure-with-powershell"></a>Herstel na nood geval instellen voor virtuele VMware-machines in azure met Power shell
 
@@ -36,7 +36,7 @@ In deze zelfstudie leert u procedures om het volgende te doen:
 Voordat u begint:
 
 - Zorg ervoor dat u inzicht hebt in de [architectuur en onderdelen voor dit scenario](vmware-azure-architecture.md).
-- Raadpleeg de [ondersteuningsvereisten](site-recovery-support-matrix-to-azure.md) voor alle onderdelen.
+- Raadpleeg de [ondersteuningsvereisten](./vmware-physical-azure-support-matrix.md) voor alle onderdelen.
 - U hebt de `Az` module Azure PowerShell. Als u Azure PowerShell moet installeren of upgraden, volgt u deze [hand leiding voor het installeren en configureren van Azure PowerShell](/powershell/azure/install-az-ps).
 
 ## <a name="log-into-azure"></a>Aanmelden bij Azure
@@ -497,4 +497,4 @@ In deze stap hebben we failover van de virtuele machine Win2K12VM1 naar een spec
 2. Als failover is uitgevoerd, kunt u de failoverbewerking door voeren en omgekeerde replicatie van Azure naar de on-premises VMware-site instellen.
 
 ## <a name="next-steps"></a>Volgende stappen
-Meer informatie over het automatiseren van meer taken met behulp van de [Azure site Recovery Power shell-referentie](https://docs.microsoft.com/powershell/module/Az.RecoveryServices).
+Meer informatie over het automatiseren van meer taken met behulp van de [Azure site Recovery Power shell-referentie](/powershell/module/Az.RecoveryServices).

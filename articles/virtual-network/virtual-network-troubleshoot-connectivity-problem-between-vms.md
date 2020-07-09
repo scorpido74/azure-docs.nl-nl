@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/30/2018
 ms.author: genli
-ms.openlocfilehash: ab3ae45081ecc481cb90af8961174e23c86e84b5
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 83841349ec7563231653cd063791e19ae2af4857
+ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "71056807"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86130673"
 ---
 # <a name="troubleshooting-connectivity-problems-between-azure-vms"></a>Problemen met de connectiviteit tussen virtuele Azure-machines oplossen
 
@@ -81,11 +81,15 @@ U kunt een van de volgende methoden gebruiken om te controleren of de VM-app of 
 
 **Windows-VM**
 
-    netstat –ano
+```console
+netstat –ano
+```
 
 **Linux-VM**
 
-    netstat -l
+```console
+netstat -l
+```
 
 - Voer de **Telnet** -opdracht op de virtuele machine zelf uit om de poort te testen. Als de test mislukt, is de toepassing of service niet geconfigureerd om op die poort te Luis teren.
 

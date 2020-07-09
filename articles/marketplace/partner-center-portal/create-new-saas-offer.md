@@ -1,18 +1,16 @@
 ---
 title: Een nieuwe SaaS-aanbieding maken voor de micro soft Commercial Marketplace
 description: Het maken van een nieuwe SaaS-aanbieding (Software as a Service) voor het aanbieden of verkopen van Microsoft AppSource, Azure Marketplace of via het programma Cloud Solution Provider (CSP) met behulp van het micro soft-programma voor commerciële Marketplace in micro soft partner centrum.
-author: dsindona
-ms.author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 06/17/2020
-ms.openlocfilehash: 3393fb6e33cbf80db68c49ac31edb54de35bae64
-ms.sourcegitcommit: 93462ccb4dd178ec81115f50455fbad2fa1d79ce
+ms.openlocfilehash: a233f3594ace74a6bfeca90ffccfbcb233e5d890
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/06/2020
-ms.locfileid: "85980593"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86121879"
 ---
 # <a name="create-a-new-saas-offer-in-the-commercial-marketplace"></a>Een nieuwe SaaS-aanbieding maken in de commerciële Marketplace
 

@@ -3,15 +3,16 @@ title: Beoordelings hulpprogramma's toevoegen in Azure Migrate
 description: Meer informatie over het toevoegen van beoordelings hulpprogramma's in Azure Migrate.
 ms.topic: how-to
 ms.date: 04/26/2020
-ms.openlocfilehash: 10e8b66575893bc8e63aa94392c872acc04407c4
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 5151135a57b7c2780485d85299ead5df83ea851e
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84195634"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86122112"
 ---
 # <a name="add-assessment-tools"></a>Evaluatiehulpprogramma's toevoegen
 
-In dit artikel wordt beschreven hoe u beoordelings hulpprogramma's toevoegt in [Azure migrate](migrate-overview.md). 
+In dit artikel wordt beschreven hoe u beoordelings hulpprogramma's toevoegt in [Azure migrate](./migrate-services-overview.md). 
 
 - Als u een evaluatie programma wilt toevoegen en u nog geen Azure Migrate project hebt, volgt u dit [artikel](how-to-add-tool-first-time.md).
 - Als u een ISV-hulp programma hebt toegevoegd, of als u het wilt inpakken, [voert u de stappen uit](prepare-isv-movere.md)om het voor te bereiden op het werken met het hulp programma.

@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 02/28/2019
 ms.author: mayg
-ms.openlocfilehash: eb7e891c031be5ac01295905d5c3304dc6818737
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: ff612b7c052ead5658ea4bbfafd7aace51ba3c02
+ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80478965"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86132486"
 ---
 # <a name="manage-the-configuration-server-for-physical-server-disaster-recovery"></a>De configuratie server voor herstel na nood gevallen voor fysieke servers beheren
 
@@ -35,8 +35,8 @@ De tabel bevat een overzicht van de vereisten voor het implementeren van de on-p
 | Landinstelling van het besturingssysteem | Engels (VS)|
 | VMware vSphere PowerCLI-versie | Niet vereist|
 | Windows Server-functies | Deze rollen niet inschakelen: <br> - Active Directory Domain Services <br>- Internet Information Services <br> - Hyper-V |
-| Groeps beleid| Dit groeps beleid niet inschakelen: <br> -Toegang tot de opdracht prompt voor komen <br> -Toegang tot register bewerkings Programma's voor komen <br> -Logica vertrouwen voor bestands bijlagen <br> -Uitvoering van script inschakelen <br> [Meer informatie](https://technet.microsoft.com/library/gg176671(v=ws.10).aspx)|
-| IIS | -Geen vooraf bestaande standaard website <br> - [Anonieme verificatie](https://technet.microsoft.com/library/cc731244(v=ws.10).aspx) inschakelen <br> - [Fastcgi](https://technet.microsoft.com/library/cc753077(v=ws.10).aspx) -instelling inschakelen  <br> -Geen vooraf bestaande website/toepassing die luistert op poort 443<br>|
+| Groeps beleid| Dit groeps beleid niet inschakelen: <br> -Toegang tot de opdracht prompt voor komen <br> -Toegang tot register bewerkings Programma's voor komen <br> -Logica vertrouwen voor bestands bijlagen <br> -Uitvoering van script inschakelen <br> [Meer informatie](/previous-versions/windows/it-pro/windows-7/gg176671(v=ws.10))|
+| IIS | -Geen vooraf bestaande standaard website <br> - [Anonieme verificatie](/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/cc731244(v=ws.10)) inschakelen <br> - [Fastcgi](/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/cc753077(v=ws.10)) -instelling inschakelen  <br> -Geen vooraf bestaande website/toepassing die luistert op poort 443<br>|
 | NIC-type | VMXNET3 (wanneer geïmplementeerd als een VMware-VM) |
 | Type IP-adres | Statisch |
 | Internettoegang | De server moet toegang hebben tot deze Url's: <br> - \*.accesscontrol.windows.net<br> - \*.backup.windowsazure.com <br>- \*.store.core.windows.net<br> - \*.blob.core.windows.net<br> - \*.hypervrecoverymanager.windowsazure.com <br> - `https://management.azure.com` <br> -*. services.visualstudio.com <br> - https://dev.mysql.com/get/Downloads/MySQLInstaller/mysql-installer-community-5.7.20.0.msi(niet vereist voor scale-out proces servers) <br> - time.nist.gov <br> - time.windows.com |
@@ -108,7 +108,7 @@ Voer het installatie bestand als volgt uit:
 
 ### <a name="parameters"></a>Parameters
 
-|Parameternaam| Type | Beschrijving| Waarden|
+|Parameternaam| Type | Description| Waarden|
 |-|-|-|-|
 | /ServerMode|Vereist|Hiermee wordt aangegeven of zowel de configuratieserver als de processerver moet worden geïnstalleerd, of alleen de processerver|CS<br>PS|
 |/InstallLocation|Vereist|De map waarin de onderdelen worden geïnstalleerd| Een map op de computer|
@@ -267,7 +267,7 @@ Voer als volgt een upgrade uit voor de server:
 
 ## <a name="delete-or-unregister-a-configuration-server-powershell"></a>Een configuratie server verwijderen of de registratie ervan opheffen (Power shell)
 
-1. [Installeren](https://docs.microsoft.com/powershell/azure/install-Az-ps) Module Azure PowerShell
+1. [Installeren](/powershell/azure/install-Az-ps) Module Azure PowerShell
 2. Meld u aan bij uw Azure-account met behulp van de opdracht
     
     `Connect-AzAccount`
@@ -315,5 +315,4 @@ Voor implementaties van de configuratie server vóór 2016 mei is certificaat ve
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Bekijk de zelf studies voor het instellen van herstel na nood gevallen van [fysieke servers](tutorial-physical-to-azure.md) naar Azure.
-
+Bekijk de zelf studies voor het instellen van herstel na nood gevallen van [fysieke servers](./physical-azure-disaster-recovery.md) naar Azure.
