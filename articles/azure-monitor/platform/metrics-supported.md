@@ -8,10 +8,10 @@ ms.date: 06/16/2020
 ms.author: robb
 ms.subservice: metrics
 ms.openlocfilehash: 7ed55200db72879f7ec7323b5c165998944688a5
-ms.sourcegitcommit: 34eb5e4d303800d3b31b00b361523ccd9eeff0ab
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/17/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84906782"
 ---
 # <a name="supported-metrics-with-azure-monitor"></a>Ondersteunde metrische gegevens met Azure Monitor
@@ -43,7 +43,7 @@ Er zijn enkele beperkingen in wat kan worden gerouteerd en het formulier waarin 
 
 ## <a name="microsoftanalysisservicesservers"></a>Micro soft. AnalysisServices/servers
 
-|Gegevens|Weergave naam voor metrische gegevens|Eenheid|Aggregatietype|Beschrijving|Dimensies|
+|Gegevens|Weergave naam voor metrische gegevens|Eenheid|Aggregatietype|Description|Dimensies|
 |---|---|---|---|---|---|
 |qpu_metric|QPU|Count|Average|QPU. Bereik 0-100 voor S1, 0-200 voor S2 en 0-400 voor S4|ServerResourceType|
 |memory_metric|Geheugen|Bytes|Average|Geheugen. Bereik 0-25 GB voor S1, 0-50 GB voor S2 en 0-100 GB voor S4|ServerResourceType|
@@ -96,7 +96,7 @@ Er zijn enkele beperkingen in wat kan worden gerouteerd en het formulier waarin 
 
 ## <a name="microsoftapimanagementservice"></a>Microsoft.ApiManagement/service
 
-|Gegevens|Weergave naam voor metrische gegevens|Eenheid|Aggregatietype|Beschrijving|Dimensies|
+|Gegevens|Weergave naam voor metrische gegevens|Eenheid|Aggregatietype|Description|Dimensies|
 |---|---|---|---|---|---|
 |TotalRequests|Totaal aantal gateway aanvragen (afgeschaft)|Count|Totaal|Aantal gateway aanvragen-metrische aanvraag voor meerdere dimensies met GatewayResponseCodeCategory dimensie gebruiken|Locatie, hostnaam|
 |SuccessfulRequests|Geslaagde gateway aanvragen (afgeschaft)|Count|Totaal|Aantal geslaagde gateway aanvragen-metrische aanvraag voor meerdere dimensies met GatewayResponseCodeCategory dimensie gebruiken|Locatie, hostnaam|
@@ -120,7 +120,7 @@ Er zijn enkele beperkingen in wat kan worden gerouteerd en het formulier waarin 
 
 ## <a name="microsoftappconfigurationconfigurationstores"></a>Micro soft. AppConfiguration/configurationStores
 
-|Gegevens|Weergave naam voor metrische gegevens|Eenheid|Aggregatietype|Beschrijving|Dimensies|
+|Gegevens|Weergave naam voor metrische gegevens|Eenheid|Aggregatietype|Description|Dimensies|
 |---|---|---|---|---|---|
 |HttpIncomingRequestCount|HttpIncomingRequestCount|Count|Count|Totaal aantal binnenkomende HTTP-aanvragen.|Status code|
 |HttpIncomingRequestDuration|HttpIncomingRequestDuration|Count|Average|Latentie voor een HTTP-aanvraag.|Status code|
@@ -128,7 +128,7 @@ Er zijn enkele beperkingen in wat kan worden gerouteerd en het formulier waarin 
 
 ## <a name="microsoftappplatformspring"></a>Micro soft. AppPlatform/lente
 
-|Gegevens|Weergave naam voor metrische gegevens|Eenheid|Aggregatietype|Beschrijving|Dimensies|
+|Gegevens|Weergave naam voor metrische gegevens|Eenheid|Aggregatietype|Description|Dimensies|
 |---|---|---|---|---|---|
 |SystemCpuUsagePercentage|Percentage van het CPU-gebruik van het systeem|Percentage|Average|Het recente CPU-gebruik voor het hele systeem|AppName, pod|
 |AppCpuUsagePercentage|CPU-gebruiks percentage van app|Percentage|Average|JVM CPU-gebruiks percentage van app|AppName, pod|
@@ -158,7 +158,7 @@ Er zijn enkele beperkingen in wat kan worden gerouteerd en het formulier waarin 
 
 ## <a name="microsoftautomationautomationaccounts"></a>Micro soft. Automation/automationAccounts
 
-|Gegevens|Weergave naam voor metrische gegevens|Eenheid|Aggregatietype|Beschrijving|Dimensies|
+|Gegevens|Weergave naam voor metrische gegevens|Eenheid|Aggregatietype|Description|Dimensies|
 |---|---|---|---|---|---|
 |TotalJob|Totaal aantal taken|Count|Totaal|Het totale aantal taken|Runbook, status|
 |TotalUpdateDeploymentRuns|Totaal aantal uitvoeringen van update-implementaties|Count|Totaal|Totale aantal uitgevoerde software-update-implementaties|SoftwareUpdateConfigurationName, status|
@@ -167,7 +167,7 @@ Er zijn enkele beperkingen in wat kan worden gerouteerd en het formulier waarin 
 
 ## <a name="microsoftbatchbatchaccounts"></a>Microsoft.Bat-CH/batchAccounts
 
-|Gegevens|Weergave naam voor metrische gegevens|Eenheid|Aggregatietype|Beschrijving|Dimensies|
+|Gegevens|Weergave naam voor metrische gegevens|Eenheid|Aggregatietype|Description|Dimensies|
 |---|---|---|---|---|---|
 |CoreCount|Aantal toegewezen kernen|Count|Totaal|Totaal aantal toegewezen kernen in het batch-account|Geen|
 |TotalNodeCount|Aantal toegewezen knoop punten|Count|Totaal|Totaal aantal toegewezen knoop punten in het batch-account|Geen|
@@ -204,7 +204,7 @@ Er zijn enkele beperkingen in wat kan worden gerouteerd en het formulier waarin 
 
 ## <a name="microsoftbatchaiworkspaces"></a>Microsoft.BatchAI/werk ruimten
 
-|Gegevens|Weergave naam voor metrische gegevens|Eenheid|Aggregatietype|Beschrijving|Dimensies|
+|Gegevens|Weergave naam voor metrische gegevens|Eenheid|Aggregatietype|Description|Dimensies|
 |---|---|---|---|---|---|
 |Taak verzonden|Taak verzonden|Count|Totaal|Aantal verzonden taken|Scenario, clustername|
 |Taak is voltooid|Taak is voltooid|Count|Totaal|Aantal voltooide taken|Scenario, clustername, ResultType|
@@ -224,7 +224,7 @@ Er zijn enkele beperkingen in wat kan worden gerouteerd en het formulier waarin 
 
 ## <a name="microsoftblockchainblockchainmembers"></a>Microsoft.Blockchain/blockchainMembers
 
-|Gegevens|Weergave naam voor metrische gegevens|Eenheid|Aggregatietype|Beschrijving|Dimensies|
+|Gegevens|Weergave naam voor metrische gegevens|Eenheid|Aggregatietype|Description|Dimensies|
 |---|---|---|---|---|---|
 |CpuUsagePercentageInDouble|Percentage CPU-gebruik|Percentage|Maximum|Percentage CPU-gebruik|Knooppunt|
 |MemoryUsage|Geheugengebruik|Bytes|Average|Geheugengebruik|Knooppunt|
@@ -246,7 +246,7 @@ Er zijn enkele beperkingen in wat kan worden gerouteerd en het formulier waarin 
 
 ## <a name="microsoftcacheredis"></a>Micro soft. cache/redis
 
-|Gegevens|Weergave naam voor metrische gegevens|Eenheid|Aggregatietype|Beschrijving|Dimensies|
+|Gegevens|Weergave naam voor metrische gegevens|Eenheid|Aggregatietype|Description|Dimensies|
 |---|---|---|---|---|---|
 |connectedclients|Verbonden clients|Count|Maximum||ShardId|
 |totalcommandsprocessed|Totaalaantal bewerkingen|Count|Totaal||ShardId|
@@ -434,14 +434,14 @@ Er zijn enkele beperkingen in wat kan worden gerouteerd en het formulier waarin 
 
 ## <a name="microsoftcdncdnwebapplicationfirewallpolicies"></a>Micro soft. CDN/cdnwebapplicationfirewallpolicies
 
-|Gegevens|Weergave naam voor metrische gegevens|Eenheid|Aggregatietype|Beschrijving|Dimensies|
+|Gegevens|Weergave naam voor metrische gegevens|Eenheid|Aggregatietype|Description|Dimensies|
 |---|---|---|---|---|---|
 |WebApplicationFirewallRequestCount|Aantal aanvragen voor Web Application firewall|Count|Totaal|Het aantal client aanvragen dat is verwerkt door de Web Application firewall|Beleidsnaam, regelnaam, actie|
 
 
 ## <a name="microsoftclassiccomputevirtualmachines"></a>Micro soft. ClassicCompute/informatie
 
-|Gegevens|Weergave naam voor metrische gegevens|Eenheid|Aggregatietype|Beschrijving|Dimensies|
+|Gegevens|Weergave naam voor metrische gegevens|Eenheid|Aggregatietype|Description|Dimensies|
 |---|---|---|---|---|---|
 |Percentage CPU|Percentage CPU|Percentage|Average|Het percentage toegewezen reken eenheden dat momenteel wordt gebruikt door de virtuele machine (s).|Geen|
 |Netwerk in|Netwerk in|Bytes|Totaal|Het aantal bytes dat is ontvangen op alle netwerk interfaces door de virtuele machine (s) (binnenkomend verkeer).|Geen|
@@ -454,7 +454,7 @@ Er zijn enkele beperkingen in wat kan worden gerouteerd en het formulier waarin 
 
 ## <a name="microsoftclassiccomputedomainnamesslotsroles"></a>Micro soft. ClassicCompute/domein naam/sleuven/rollen
 
-|Gegevens|Weergave naam voor metrische gegevens|Eenheid|Aggregatietype|Beschrijving|Dimensies|
+|Gegevens|Weergave naam voor metrische gegevens|Eenheid|Aggregatietype|Description|Dimensies|
 |---|---|---|---|---|---|
 |Percentage CPU|Percentage CPU|Percentage|Average|Het percentage toegewezen reken eenheden dat momenteel wordt gebruikt door de virtuele machine (s).|RoleInstanceId|
 |Netwerk in|Netwerk in|Bytes|Totaal|Het aantal bytes dat is ontvangen op alle netwerk interfaces door de virtuele machine (s) (binnenkomend verkeer).|RoleInstanceId|
@@ -468,7 +468,7 @@ Er zijn enkele beperkingen in wat kan worden gerouteerd en het formulier waarin 
 
 ## <a name="microsoftclassicstoragestorageaccounts"></a>Micro soft. ClassicStorage/Storage accounts
 
-|Gegevens|Weergave naam voor metrische gegevens|Eenheid|Aggregatietype|Beschrijving|Dimensies|
+|Gegevens|Weergave naam voor metrische gegevens|Eenheid|Aggregatietype|Description|Dimensies|
 |---|---|---|---|---|---|
 |UsedCapacity|Gebruikte capaciteit|Bytes|Average|Gebruikte capaciteit van account|Geen|
 |Transacties|Transacties|Count|Totaal|Het aantal aanvragen voor een opslagservice of de opgegeven API-bewerking. Dit is inclusief geslaagde en mislukte aanvragen, evenals aanvragen waarbij fouten zijn opgetreden. Gebruik de dimensie ResponseType voor het aantal verschillende typen reacties.|ResponseType, geotype, ApiName, authenticatie|
@@ -480,7 +480,7 @@ Er zijn enkele beperkingen in wat kan worden gerouteerd en het formulier waarin 
 
 ## <a name="microsoftclassicstoragestorageaccountsblobservices"></a>Micro soft. ClassicStorage/Storage accounts/blobServices
 
-|Gegevens|Weergave naam voor metrische gegevens|Eenheid|Aggregatietype|Beschrijving|Dimensies|
+|Gegevens|Weergave naam voor metrische gegevens|Eenheid|Aggregatietype|Description|Dimensies|
 |---|---|---|---|---|---|
 |BlobCapacity|BLOB-capaciteit|Bytes|Average|De hoeveelheid opslag die wordt gebruikt door de Blob service van het opslag account in bytes.|BlobType, Tier|
 |BlobCount|Aantal blobs|Count|Average|Het aantal blobs in de Blob service van het opslag account.|BlobType, Tier|
@@ -495,7 +495,7 @@ Er zijn enkele beperkingen in wat kan worden gerouteerd en het formulier waarin 
 
 ## <a name="microsoftclassicstoragestorageaccountstableservices"></a>Micro soft. ClassicStorage/Storage accounts/tableServices
 
-|Gegevens|Weergave naam voor metrische gegevens|Eenheid|Aggregatietype|Beschrijving|Dimensies|
+|Gegevens|Weergave naam voor metrische gegevens|Eenheid|Aggregatietype|Description|Dimensies|
 |---|---|---|---|---|---|
 |TableCapacity|Tabel capaciteit|Bytes|Average|De hoeveelheid opslag die wordt gebruikt door de Table service van het opslag account in bytes.|Geen|
 |TableCount|Aantal tabellen|Count|Average|Het aantal tabellen in de Table service van het opslag account.|Geen|
@@ -509,14 +509,14 @@ Er zijn enkele beperkingen in wat kan worden gerouteerd en het formulier waarin 
 
 ## <a name="microsoftclassicstoragestorageaccountsfileservices"></a>Micro soft. ClassicStorage/Storage accounts/fileServices
 
-|Gegevens|Weergave naam voor metrische gegevens|Eenheid|Aggregatietype|Beschrijving|Dimensies|
+|Gegevens|Weergave naam voor metrische gegevens|Eenheid|Aggregatietype|Description|Dimensies|
 |---|---|---|---|---|---|
-|FileCapacity|Bestands capaciteit|Bytes|Average|De hoeveelheid opslag die wordt gebruikt door de bestands service van het opslag account in bytes.|Bestands share|
-|FileCount|Aantal bestanden|Count|Average|Het aantal bestanden in de file-service van het opslag account.|Bestands share|
+|FileCapacity|Bestands capaciteit|Bytes|Average|De hoeveelheid opslag die wordt gebruikt door de bestands service van het opslag account in bytes.|Bestandsshare|
+|FileCount|Aantal bestanden|Count|Average|Het aantal bestanden in de file-service van het opslag account.|Bestandsshare|
 |FileShareCount|Aantal bestands shares|Count|Average|Het aantal bestands shares in de file-service van het opslag account.|Geen|
-|FileShareSnapshotCount|Aantal moment opnamen van bestands shares|Count|Average|Het aantal moment opnamen dat aanwezig is op de share in de bestanden service van het opslag account.|Bestands share|
-|FileShareSnapshotSize|Grootte van moment opname van bestands share|Bytes|Average|De hoeveelheid opslag die wordt gebruikt door de moment opnamen in de bestands service van het opslag account in bytes.|Bestands share|
-|FileShareQuota|Quota grootte van bestands share|Bytes|Average|De bovengrens voor de hoeveelheid opslag die kan worden gebruikt door Azure Files service in bytes.|Bestands share|
+|FileShareSnapshotCount|Aantal moment opnamen van bestands shares|Count|Average|Het aantal moment opnamen dat aanwezig is op de share in de bestanden service van het opslag account.|Bestandsshare|
+|FileShareSnapshotSize|Grootte van moment opname van bestands share|Bytes|Average|De hoeveelheid opslag die wordt gebruikt door de moment opnamen in de bestands service van het opslag account in bytes.|Bestandsshare|
+|FileShareQuota|Quota grootte van bestands share|Bytes|Average|De bovengrens voor de hoeveelheid opslag die kan worden gebruikt door Azure Files service in bytes.|Bestandsshare|
 |Transacties|Transacties|Count|Totaal|Het aantal aanvragen voor een opslagservice of de opgegeven API-bewerking. Dit is inclusief geslaagde en mislukte aanvragen, evenals aanvragen waarbij fouten zijn opgetreden. Gebruik de dimensie ResponseType voor het aantal verschillende typen reacties.|ResponseType, geotype, ApiName, Authentication, file share|
 |Inkomend verkeer|Inkomend verkeer|Bytes|Totaal|De hoeveelheid ingangs gegevens, in bytes. Hieronder vallen de inkomende gegevens van een externe client in Azure Storage evenals de inkomende gegevens binnen Azure.|Geotype, ApiName, authenticatie, bestands share|
 |Uitgaand verkeer|Uitgaand verkeer|Bytes|Totaal|De hoeveelheid uitgangs gegevens, in bytes. Hieronder vallen de uitgaande gegevens van een externe client in Azure Storage evenals de uitgaande gegevens binnen Azure. Daarom geeft deze hoeveelheid niet de factureerbare uitgaande gegevens weer.|Geotype, ApiName, authenticatie, bestands share|
@@ -526,7 +526,7 @@ Er zijn enkele beperkingen in wat kan worden gerouteerd en het formulier waarin 
 
 ## <a name="microsoftclassicstoragestorageaccountsqueueservices"></a>Micro soft. ClassicStorage/Storage accounts/queueServices
 
-|Gegevens|Weergave naam voor metrische gegevens|Eenheid|Aggregatietype|Beschrijving|Dimensies|
+|Gegevens|Weergave naam voor metrische gegevens|Eenheid|Aggregatietype|Description|Dimensies|
 |---|---|---|---|---|---|
 |QueueCapacity|Wachtrij capaciteit|Bytes|Average|De hoeveelheid opslag die wordt gebruikt door de Queue-service van het opslag account in bytes.|Geen|
 |QueueCount|Aantal wachtrijen|Count|Average|Het aantal wacht rijen in de Queue-service van het opslag account.|Geen|
@@ -541,7 +541,7 @@ Er zijn enkele beperkingen in wat kan worden gerouteerd en het formulier waarin 
 
 ## <a name="microsoftcognitiveservicesaccounts"></a>Micro soft. CognitiveServices/accounts
 
-|Gegevens|Weergave naam voor metrische gegevens|Eenheid|Aggregatietype|Beschrijving|Dimensies|
+|Gegevens|Weergave naam voor metrische gegevens|Eenheid|Aggregatietype|Description|Dimensies|
 |---|---|---|---|---|---|
 |TotalCalls|Totaal aantal aanroepen|Count|Totaal|Totaal aantal aanroepen.|ApiName, Operationname, regio|
 |SuccessfulCalls|Geslaagde aanroepen|Count|Totaal|Aantal geslaagde aanroepen.|ApiName, Operationname, regio|
@@ -561,7 +561,7 @@ Er zijn enkele beperkingen in wat kan worden gerouteerd en het formulier waarin 
 
 ## <a name="microsoftcomputevirtualmachines"></a>Microsoft.Compute/virtualMachines
 
-|Gegevens|Weergave naam voor metrische gegevens|Eenheid|Aggregatietype|Beschrijving|Dimensies|
+|Gegevens|Weergave naam voor metrische gegevens|Eenheid|Aggregatietype|Description|Dimensies|
 |---|---|---|---|---|---|
 |Percentage CPU|Percentage CPU|Percentage|Average|Het percentage toegewezen reken eenheden dat momenteel wordt gebruikt door de virtuele machine (s)|Geen|
 |Netwerk in|Netwerk in Factureerbaar (afgeschaft)|Bytes|Totaal|Het aantal factureer bare bytes dat is ontvangen op alle netwerk interfaces door de virtuele machine (s) (binnenkomend verkeer) (afgeschaft)|Geen|
@@ -606,7 +606,7 @@ Er zijn enkele beperkingen in wat kan worden gerouteerd en het formulier waarin 
 
 ## <a name="microsoftcomputevirtualmachinescalesets"></a>Microsoft.Compute/virtualMachineScaleSets
 
-|Gegevens|Weergave naam voor metrische gegevens|Eenheid|Aggregatietype|Beschrijving|Dimensies|
+|Gegevens|Weergave naam voor metrische gegevens|Eenheid|Aggregatietype|Description|Dimensies|
 |---|---|---|---|---|---|
 |Percentage CPU|Percentage CPU|Percentage|Average|Het percentage toegewezen reken eenheden dat momenteel wordt gebruikt door de virtuele machine (s)|VMName|
 |Netwerk in|Netwerk in Factureerbaar (afgeschaft)|Bytes|Totaal|Het aantal factureer bare bytes dat is ontvangen op alle netwerk interfaces door de virtuele machine (s) (binnenkomend verkeer) (afgeschaft)|VMName|
@@ -651,7 +651,7 @@ Er zijn enkele beperkingen in wat kan worden gerouteerd en het formulier waarin 
 
 ## <a name="microsoftcomputevirtualmachinescalesetsvirtualmachines"></a>Micro soft. Compute/virtualMachineScaleSets/informatie
 
-|Gegevens|Weergave naam voor metrische gegevens|Eenheid|Aggregatietype|Beschrijving|Dimensies|
+|Gegevens|Weergave naam voor metrische gegevens|Eenheid|Aggregatietype|Description|Dimensies|
 |---|---|---|---|---|---|
 |Percentage CPU|Percentage CPU|Percentage|Average|Het percentage toegewezen reken eenheden dat momenteel wordt gebruikt door de virtuele machine (s)|Geen|
 |Netwerk in|Netwerk in Factureerbaar (afgeschaft)|Bytes|Totaal|Het aantal factureer bare bytes dat is ontvangen op alle netwerk interfaces door de virtuele machine (s) (binnenkomend verkeer) (afgeschaft)|Geen|
@@ -695,7 +695,7 @@ Er zijn enkele beperkingen in wat kan worden gerouteerd en het formulier waarin 
 
 ## <a name="microsoftcontainerinstancecontainergroups"></a>Micro soft. ContainerInstance/containerGroups
 
-|Gegevens|Weergave naam voor metrische gegevens|Eenheid|Aggregatietype|Beschrijving|Dimensies|
+|Gegevens|Weergave naam voor metrische gegevens|Eenheid|Aggregatietype|Description|Dimensies|
 |---|---|---|---|---|---|
 |CpuUsage|CPU-gebruik|Count|Average|CPU-gebruik op alle kernen in millicores.|containerName|
 |MemoryUsage|Geheugengebruik|Bytes|Average|Totaal geheugen gebruik in bytes.|containerName|
@@ -704,7 +704,7 @@ Er zijn enkele beperkingen in wat kan worden gerouteerd en het formulier waarin 
 
 ## <a name="microsoftcontainerregistryregistries"></a>Micro soft. ContainerRegistry/registers
 
-|Gegevens|Weergave naam voor metrische gegevens|Eenheid|Aggregatietype|Beschrijving|Dimensies|
+|Gegevens|Weergave naam voor metrische gegevens|Eenheid|Aggregatietype|Description|Dimensies|
 |---|---|---|---|---|---|
 |TotalPullCount|Totaal aantal pull-bewerkingen|Count|Average|Aantal opgehaalde afbeeldingen in totaal|Geen|
 |SuccessfulPullCount|Aantal geslaagde pull-bewerkingen|Count|Average|Aantal geslaagde installatie kopieën|Geen|
@@ -715,7 +715,7 @@ Er zijn enkele beperkingen in wat kan worden gerouteerd en het formulier waarin 
 
 ## <a name="microsoftcontainerservicemanagedclusters"></a>Micro soft. container service/managedClusters
 
-|Gegevens|Weergave naam voor metrische gegevens|Eenheid|Aggregatietype|Beschrijving|Dimensies|
+|Gegevens|Weergave naam voor metrische gegevens|Eenheid|Aggregatietype|Description|Dimensies|
 |---|---|---|---|---|---|
 |kube_node_status_allocatable_cpu_cores|Totaal aantal beschik bare CPU-kernen in een beheerd cluster|Count|Average|Totaal aantal beschik bare CPU-kernen in een beheerd cluster|Geen|
 |kube_node_status_allocatable_memory_bytes|Totale hoeveelheid beschikbaar geheugen in een beheerd cluster|Bytes|Average|Totale hoeveelheid beschikbaar geheugen in een beheerd cluster|Geen|
@@ -727,14 +727,14 @@ Er zijn enkele beperkingen in wat kan worden gerouteerd en het formulier waarin 
 
 ## <a name="microsoftcustomprovidersresourceproviders"></a>Micro soft. CustomProviders/resourceproviders
 
-|Gegevens|Weergave naam voor metrische gegevens|Eenheid|Aggregatietype|Beschrijving|Dimensies|
+|Gegevens|Weergave naam voor metrische gegevens|Eenheid|Aggregatietype|Description|Dimensies|
 |---|---|---|---|---|---|
 |SuccessfullRequests|Geslaagde aanvragen|Count|Totaal|Geslaagde aanvragen van de aangepaste provider|HttpMethod, CallPath, status code|
 |FailedRequests|Mislukte aanvragen|Count|Totaal|Hiermee worden de beschik bare logboeken voor aangepaste resource providers opgehaald|HttpMethod, CallPath, status code|
 
 ## <a name="microsoftdataboxedgedataboxedgedevices"></a>Micro soft. DataBoxEdge/dataBoxEdgeDevices
 
-|Gegevens|Weergave naam voor metrische gegevens|Eenheid|Aggregatietype|Beschrijving|Dimensies|
+|Gegevens|Weergave naam voor metrische gegevens|Eenheid|Aggregatietype|Description|Dimensies|
 |---|---|---|---|---|---|
 |NICReadThroughput|Lees doorvoer (netwerk)|BytesPerSecond|Average|De Lees doorvoer van de netwerk interface op het apparaat in de rapportage periode voor alle volumes in de gateway.|InstanceName|
 |NICWriteThroughput|Schrijf doorvoer (netwerk)|BytesPerSecond|Average|De schrijf doorvoer van de netwerk interface op het apparaat in de rapportage periode voor alle volumes in de gateway.|InstanceName|
@@ -752,7 +752,7 @@ Er zijn enkele beperkingen in wat kan worden gerouteerd en het formulier waarin 
 
 ## <a name="microsoftdatacatalogdatacatalogs"></a>Micro soft. DataCatalog/datacatalogs
 
-|Gegevens|Weergave naam voor metrische gegevens|Eenheid|Aggregatietype|Beschrijving|Dimensies|
+|Gegevens|Weergave naam voor metrische gegevens|Eenheid|Aggregatietype|Description|Dimensies|
 |---|---|---|---|---|---|
 |AssetDistributionByClassification|Activa distributie per classificatie|Count|Totaal|Geeft aan hoeveel activa met een bepaalde classificatie zijn toegewezen, dat wil zeggen dat ze zijn geclassificeerd met dat label.|Classificatie, bron|
 |AssetDistributionByStorageType|Activa distributie per opslag type|Count|Totaal|Hiermee wordt het aantal assets van een bepaald opslag type aangegeven.|Para|
@@ -767,7 +767,7 @@ Er zijn enkele beperkingen in wat kan worden gerouteerd en het formulier waarin 
 
 ## <a name="microsoftdatafactorydatafactories"></a>Micro soft. DataFactory/datafactories
 
-|Gegevens|Weergave naam voor metrische gegevens|Eenheid|Aggregatietype|Beschrijving|Dimensies|
+|Gegevens|Weergave naam voor metrische gegevens|Eenheid|Aggregatietype|Description|Dimensies|
 |---|---|---|---|---|---|
 |FailedRuns|Mislukte uitvoeringen|Count|Totaal||pipelineName, activiteitsnummer|
 |SuccessfulRuns|Geslaagde uitvoeringen|Count|Totaal||pipelineName, activiteitsnummer|
@@ -775,7 +775,7 @@ Er zijn enkele beperkingen in wat kan worden gerouteerd en het formulier waarin 
 
 ## <a name="microsoftdatafactoryfactories"></a>Micro soft. DataFactory/fabrieken
 
-|Gegevens|Weergave naam voor metrische gegevens|Eenheid|Aggregatietype|Beschrijving|Dimensies|
+|Gegevens|Weergave naam voor metrische gegevens|Eenheid|Aggregatietype|Description|Dimensies|
 |---|---|---|---|---|---|
 |PipelineFailedRuns|Metrische gegevens van mislukte pijplijn uitvoeringen|Count|Totaal||FailureType, naam|
 |PipelineSucceededRuns|Metrische uitvoerings metingen geslaagde pijp lijnen|Count|Totaal||FailureType, naam|
@@ -798,7 +798,7 @@ Er zijn enkele beperkingen in wat kan worden gerouteerd en het formulier waarin 
 
 ## <a name="microsoftdatalakeanalyticsaccounts"></a>Micro soft. DataLakeAnalytics/accounts
 
-|Gegevens|Weergave naam voor metrische gegevens|Eenheid|Aggregatietype|Beschrijving|Dimensies|
+|Gegevens|Weergave naam voor metrische gegevens|Eenheid|Aggregatietype|Description|Dimensies|
 |---|---|---|---|---|---|
 |JobEndedSuccess|Geslaagde taken|Count|Totaal|Aantal geslaagde taken.|Geen|
 |JobEndedFailure|Mislukte taken|Count|Totaal|Aantal mislukte taken.|Geen|
@@ -811,7 +811,7 @@ Er zijn enkele beperkingen in wat kan worden gerouteerd en het formulier waarin 
 
 ## <a name="microsoftdatalakestoreaccounts"></a>Micro soft. data Lake Store/accounts
 
-|Gegevens|Weergave naam voor metrische gegevens|Eenheid|Aggregatietype|Beschrijving|Dimensies|
+|Gegevens|Weergave naam voor metrische gegevens|Eenheid|Aggregatietype|Description|Dimensies|
 |---|---|---|---|---|---|
 |TotalStorage|Totale opslagruimte|Bytes|Maximum|De totale hoeveelheid gegevens die in het account is opgeslagen.|Geen|
 |DataWritten|Gegevens geschreven|Bytes|Totaal|De totale hoeveelheid gegevens die naar het account wordt geschreven.|Geen|
@@ -822,7 +822,7 @@ Er zijn enkele beperkingen in wat kan worden gerouteerd en het formulier waarin 
 
 ## <a name="microsoftdatashareaccounts"></a>Micro soft. DataShare/accounts
 
-|Gegevens|Weergave naam voor metrische gegevens|Eenheid|Aggregatietype|Beschrijving|Dimensies|
+|Gegevens|Weergave naam voor metrische gegevens|Eenheid|Aggregatietype|Description|Dimensies|
 |---|---|---|---|---|---|
 |ShareCount|Verzonden shares|Count|Maximum|Aantal verzonden shares in het account|ShareName|
 |ShareSubscriptionCount|Ontvangen shares|Count|Maximum|Aantal ontvangen shares in het account|ShareSubscriptionName|
@@ -834,7 +834,7 @@ Er zijn enkele beperkingen in wat kan worden gerouteerd en het formulier waarin 
 
 ## <a name="microsoftdbformariadbservers"></a>Microsoft.DBforMariaDB/servers
 
-|Gegevens|Weergave naam voor metrische gegevens|Eenheid|Aggregatietype|Beschrijving|Dimensies|
+|Gegevens|Weergave naam voor metrische gegevens|Eenheid|Aggregatietype|Description|Dimensies|
 |---|---|---|---|---|---|
 |cpu_percent|CPU-percentage|Percentage|Average|CPU-percentage|Geen|
 |memory_percent|Geheugen percentage|Percentage|Average|Geheugen percentage|Geen|
@@ -855,7 +855,7 @@ Er zijn enkele beperkingen in wat kan worden gerouteerd en het formulier waarin 
 
 ## <a name="microsoftdbformysqlservers"></a>Microsoft.DBforMySQL/servers
 
-|Gegevens|Weergave naam voor metrische gegevens|Eenheid|Aggregatietype|Beschrijving|Dimensies|
+|Gegevens|Weergave naam voor metrische gegevens|Eenheid|Aggregatietype|Description|Dimensies|
 |---|---|---|---|---|---|
 |cpu_percent|CPU-percentage|Percentage|Average|CPU-percentage|Geen|
 |memory_percent|Geheugen percentage|Percentage|Average|Geheugen percentage|Geen|
@@ -876,7 +876,7 @@ Er zijn enkele beperkingen in wat kan worden gerouteerd en het formulier waarin 
 
 ## <a name="microsoftdbforpostgresqlservers"></a>Microsoft.DBforPostgreSQL/servers
 
-|Gegevens|Weergave naam voor metrische gegevens|Eenheid|Aggregatietype|Beschrijving|Dimensies|
+|Gegevens|Weergave naam voor metrische gegevens|Eenheid|Aggregatietype|Description|Dimensies|
 |---|---|---|---|---|---|
 |cpu_percent|CPU-percentage|Percentage|Average|CPU-percentage|Geen|
 |memory_percent|Geheugen percentage|Percentage|Average|Geheugen percentage|Geen|
@@ -898,7 +898,7 @@ Er zijn enkele beperkingen in wat kan worden gerouteerd en het formulier waarin 
 
 ## <a name="microsoftdbforpostgresqlserversv2"></a>Micro soft. DBforPostgreSQL/serversv2
 
-|Gegevens|Weergave naam voor metrische gegevens|Eenheid|Aggregatietype|Beschrijving|Dimensies|
+|Gegevens|Weergave naam voor metrische gegevens|Eenheid|Aggregatietype|Description|Dimensies|
 |---|---|---|---|---|---|
 |cpu_percent|CPU-percentage|Percentage|Average|CPU-percentage|Geen|
 |memory_percent|Geheugen percentage|Percentage|Average|Geheugen percentage|Geen|
@@ -912,7 +912,7 @@ Er zijn enkele beperkingen in wat kan worden gerouteerd en het formulier waarin 
 
 ## <a name="microsoftdbforpostgresqlsingleservers"></a>Micro soft. DBforPostgreSQL/singleservers
 
-|Gegevens|Weergave naam voor metrische gegevens|Eenheid|Aggregatietype|Beschrijving|Dimensies|
+|Gegevens|Weergave naam voor metrische gegevens|Eenheid|Aggregatietype|Description|Dimensies|
 |---|---|---|---|---|---|
 |cpu_percent|CPU-percentage|Percentage|Average|CPU-percentage|Geen|
 |memory_percent|Geheugen percentage|Percentage|Average|Geheugen percentage|Geen|
@@ -932,7 +932,7 @@ Er zijn enkele beperkingen in wat kan worden gerouteerd en het formulier waarin 
 
 ## <a name="microsoftdevicesiothubs"></a>Micro soft. devices/IotHubs
 
-|Gegevens|Weergave naam voor metrische gegevens|Eenheid|Aggregatietype|Beschrijving|Dimensies|
+|Gegevens|Weergave naam voor metrische gegevens|Eenheid|Aggregatietype|Description|Dimensies|
 |---|---|---|---|---|---|
 |D2C. telemetrie. ingress. allProtocol|Verzend pogingen voor telemetrie-berichten|Count|Totaal|Aantal pogingen voor het verzenden van apparaat-naar-Cloud-telemetrie naar uw IoT hub|Geen|
 |D2C. telemetrie. ingress. geslaagd|Verzonden telemetriegegevens|Count|Totaal|Aantal te verzenden apparaat-naar-Cloud-telemetrie-berichten naar uw IoT-hub|Geen|
@@ -1005,7 +1005,7 @@ Er zijn enkele beperkingen in wat kan worden gerouteerd en het formulier waarin 
 
 ## <a name="microsoftdevicesprovisioningservices"></a>Micro soft. devices/provisioningServices
 
-|Gegevens|Weergave naam voor metrische gegevens|Eenheid|Aggregatietype|Beschrijving|Dimensies|
+|Gegevens|Weergave naam voor metrische gegevens|Eenheid|Aggregatietype|Description|Dimensies|
 |---|---|---|---|---|---|
 |RegistrationAttempts|Registratie pogingen|Count|Totaal|Aantal pogingen voor apparaatregistratie|ProvisioningServiceName, IotHubName, status|
 |DeviceAssignments|Apparaten toegewezen|Count|Totaal|Aantal apparaten dat is toegewezen aan een IoT-hub|ProvisioningServiceName,IotHubName|
@@ -1016,7 +1016,7 @@ Er zijn enkele beperkingen in wat kan worden gerouteerd en het formulier waarin 
 
 ## <a name="microsoftdocumentdbdatabaseaccounts"></a>Microsoft.DocumentDB/databaseAccounts
 
-|Gegevens|Weergave naam voor metrische gegevens|Eenheid|Aggregatietype|Beschrijving|Dimensies|
+|Gegevens|Weergave naam voor metrische gegevens|Eenheid|Aggregatietype|Description|Dimensies|
 |---|---|---|---|---|---|
 |AddRegion|Regio toegevoegd|Count|Count|Regio toegevoegd|Regio|
 |AvailableStorage|Beschikbare opslag|Bytes|Totaal|Totale beschik bare opslag gerapporteerd bij een granulatie van 5 minuten|Verzamelingnaam, databasenaam, regio|
@@ -1082,7 +1082,7 @@ Er zijn enkele beperkingen in wat kan worden gerouteerd en het formulier waarin 
 
 ## <a name="microsoftenterpriseknowledgegraphservices"></a>Micro soft. EnterpriseKnowledgeGraph/Services
 
-|Gegevens|Weergave naam voor metrische gegevens|Eenheid|Aggregatietype|Beschrijving|Dimensies|
+|Gegevens|Weergave naam voor metrische gegevens|Eenheid|Aggregatietype|Description|Dimensies|
 |---|---|---|---|---|---|
 |TransactionCount|Aantal trans acties|Count|Count|Totaal aantal trans acties|TransactionCount|
 |SuccessCount|Aantal geslaagde pogingen|Count|Count|Aantal geslaagde trans acties|SuccessCount|
@@ -1091,7 +1091,7 @@ Er zijn enkele beperkingen in wat kan worden gerouteerd en het formulier waarin 
 
 ## <a name="microsofteventgriddomains"></a>Micro soft. EventGrid/domeinen
 
-|Gegevens|Weergave naam voor metrische gegevens|Eenheid|Aggregatietype|Beschrijving|Dimensies|
+|Gegevens|Weergave naam voor metrische gegevens|Eenheid|Aggregatietype|Description|Dimensies|
 |---|---|---|---|---|---|
 |PublishSuccessCount|Gepubliceerde gebeurtenissen|Count|Totaal|Totaal aantal gebeurtenissen dat naar dit onderwerp is gepubliceerd|Onderwerp|
 |PublishFailCount|Mislukte gebeurtenissen publiceren|Count|Totaal|Totaal aantal gebeurtenissen dat niet naar dit onderwerp kan worden gepubliceerd|Onderwerp, error type, fout|
@@ -1105,7 +1105,7 @@ Er zijn enkele beperkingen in wat kan worden gerouteerd en het formulier waarin 
 
 ## <a name="microsofteventgridtopics"></a>Micro soft. EventGrid/topics
 
-|Gegevens|Weergave naam voor metrische gegevens|Eenheid|Aggregatietype|Beschrijving|Dimensies|
+|Gegevens|Weergave naam voor metrische gegevens|Eenheid|Aggregatietype|Description|Dimensies|
 |---|---|---|---|---|---|
 |PublishSuccessCount|Gepubliceerde gebeurtenissen|Count|Totaal|Totaal aantal gebeurtenissen dat naar dit onderwerp is gepubliceerd|Geen|
 |PublishFailCount|Mislukte gebeurtenissen publiceren|Count|Totaal|Totaal aantal gebeurtenissen dat niet naar dit onderwerp kan worden gepubliceerd|Error type, fout|
@@ -1120,7 +1120,7 @@ Er zijn enkele beperkingen in wat kan worden gerouteerd en het formulier waarin 
 
 ## <a name="microsofteventgridsystemtopics"></a>Micro soft. EventGrid/systemTopics
 
-|Gegevens|Weergave naam voor metrische gegevens|Eenheid|Aggregatietype|Beschrijving|Dimensies|
+|Gegevens|Weergave naam voor metrische gegevens|Eenheid|Aggregatietype|Description|Dimensies|
 |---|---|---|---|---|---|
 |PublishSuccessCount|Gepubliceerde gebeurtenissen|Count|Totaal|Totaal aantal gebeurtenissen dat naar dit onderwerp is gepubliceerd|Geen|
 |PublishFailCount|Mislukte gebeurtenissen publiceren|Count|Totaal|Totaal aantal gebeurtenissen dat niet naar dit onderwerp kan worden gepubliceerd|Error type, fout|
@@ -1135,7 +1135,7 @@ Er zijn enkele beperkingen in wat kan worden gerouteerd en het formulier waarin 
 
 ## <a name="microsofteventgrideventsubscriptions"></a>Micro soft. EventGrid/eventSubscriptions
 
-|Gegevens|Weergave naam voor metrische gegevens|Eenheid|Aggregatietype|Beschrijving|Dimensies|
+|Gegevens|Weergave naam voor metrische gegevens|Eenheid|Aggregatietype|Description|Dimensies|
 |---|---|---|---|---|---|
 |MatchedEventCount|Overeenkomende gebeurtenissen|Count|Totaal|Totaal aantal gebeurtenissen dat overeenkomt met dit gebeurtenis abonnement|Geen|
 |DeliveryAttemptFailCount|Mislukte leverings gebeurtenissen|Count|Totaal|Totaal aantal gebeurtenissen dat niet aan dit gebeurtenis abonnement kan worden geleverd|Fout, error type|
@@ -1146,7 +1146,7 @@ Er zijn enkele beperkingen in wat kan worden gerouteerd en het formulier waarin 
 
 ## <a name="microsofteventgridextensiontopics"></a>Micro soft. EventGrid/extensionTopics
 
-|Gegevens|Weergave naam voor metrische gegevens|Eenheid|Aggregatietype|Beschrijving|Dimensies|
+|Gegevens|Weergave naam voor metrische gegevens|Eenheid|Aggregatietype|Description|Dimensies|
 |---|---|---|---|---|---|
 |PublishSuccessCount|Gepubliceerde gebeurtenissen|Count|Totaal|Totaal aantal gebeurtenissen dat naar dit onderwerp is gepubliceerd|Geen|
 |PublishFailCount|Mislukte gebeurtenissen publiceren|Count|Totaal|Totaal aantal gebeurtenissen dat niet naar dit onderwerp kan worden gepubliceerd|Error type, fout|
@@ -1158,21 +1158,21 @@ Er zijn enkele beperkingen in wat kan worden gerouteerd en het formulier waarin 
 
 ## <a name="microsofteventhubnamespaces"></a>Micro soft. EventHub/naam ruimten
 
-|Gegevens|Weergave naam voor metrische gegevens|Eenheid|Aggregatietype|Beschrijving|Dimensies|
+|Gegevens|Weergave naam voor metrische gegevens|Eenheid|Aggregatietype|Description|Dimensies|
 |---|---|---|---|---|---|
 |SuccessfulRequests|Geslaagde aanvragen|Count|Totaal|Geslaagde aanvragen voor micro soft. EventHub.|EntityName, kan operationresult niet|
-|ServerErrors|Server fouten.|Count|Totaal|Server fouten voor micro soft. EventHub.|EntityName, kan operationresult niet|
-|UserErrors|Gebruikers fouten.|Count|Totaal|Gebruikers fouten voor micro soft. EventHub.|EntityName, kan operationresult niet|
-|QuotaExceededErrors|Quota overschreden fouten.|Count|Totaal|Quotum overschrijdt fouten voor micro soft. EventHub.|EntityName, kan operationresult niet|
-|ThrottledRequests|Vertraagde aanvragen.|Count|Totaal|Beperkte aanvragen voor micro soft. EventHub.|EntityName, kan operationresult niet|
+|ServerErrors|Serverfouten.|Count|Totaal|Server fouten voor micro soft. EventHub.|EntityName, kan operationresult niet|
+|UserErrors|Gebruikersfouten.|Count|Totaal|Gebruikers fouten voor micro soft. EventHub.|EntityName, kan operationresult niet|
+|QuotaExceededErrors|Fouten met overschreden quota.|Count|Totaal|Quotum overschrijdt fouten voor micro soft. EventHub.|EntityName, kan operationresult niet|
+|ThrottledRequests|Beperkte aanvragen.|Count|Totaal|Beperkte aanvragen voor micro soft. EventHub.|EntityName, kan operationresult niet|
 |IncomingRequests|Binnenkomende aanvragen|Count|Totaal|Binnenkomende aanvragen voor micro soft. EventHub.|EntityName|
-|IncomingMessages|Inkomende berichten|Count|Totaal|Binnenkomende berichten voor micro soft. EventHub.|EntityName|
+|IncomingMessages|Binnenkomende berichten|Count|Totaal|Binnenkomende berichten voor micro soft. EventHub.|EntityName|
 |OutgoingMessages|Uitgaande berichten|Count|Totaal|Uitgaande berichten voor micro soft. EventHub.|EntityName|
 |IncomingBytes|Binnenkomende bytes.|Bytes|Totaal|Binnenkomende bytes voor micro soft. EventHub.|EntityName|
 |OutgoingBytes|Uitgaande bytes.|Bytes|Totaal|Uitgaande bytes voor micro soft. EventHub.|EntityName|
 |ActiveConnections|ActiveConnections|Count|Average|Totaal aantal actieve verbindingen voor micro soft. EventHub.|Geen|
 |ConnectionsOpened|Geopende verbindingen.|Count|Average|Geopende verbindingen voor micro soft. EventHub.|EntityName|
-|ConnectionsClosed|Verbindingen gesloten.|Count|Average|Gesloten verbindingen voor micro soft. EventHub.|EntityName|
+|ConnectionsClosed|Gesloten verbindingen.|Count|Average|Gesloten verbindingen voor micro soft. EventHub.|EntityName|
 |CaptureBacklog|Achterstand vastleggen.|Count|Totaal|Achterstand vastleggen voor micro soft. EventHub.|EntityName|
 |CapturedMessages|Vastgelegde berichten.|Count|Totaal|Vastgelegde berichten voor micro soft. EventHub.|EntityName|
 |CapturedBytes|Vastgelegde bytes.|Bytes|Totaal|Vastgelegde bytes voor micro soft. EventHub.|EntityName|
@@ -1197,21 +1197,21 @@ Er zijn enkele beperkingen in wat kan worden gerouteerd en het formulier waarin 
 
 ## <a name="microsofteventhubclusters"></a>Micro soft. EventHub/clusters
 
-|Gegevens|Weergave naam voor metrische gegevens|Eenheid|Aggregatietype|Beschrijving|Dimensies|
+|Gegevens|Weergave naam voor metrische gegevens|Eenheid|Aggregatietype|Description|Dimensies|
 |---|---|---|---|---|---|
 |SuccessfulRequests|Geslaagde aanvragen|Count|Totaal|Geslaagde aanvragen voor micro soft. EventHub.|Kan operationresult niet|
-|ServerErrors|Server fouten.|Count|Totaal|Server fouten voor micro soft. EventHub.|Kan operationresult niet|
-|UserErrors|Gebruikers fouten.|Count|Totaal|Gebruikers fouten voor micro soft. EventHub.|Kan operationresult niet|
-|QuotaExceededErrors|Quota overschreden fouten.|Count|Totaal|Quotum overschrijdt fouten voor micro soft. EventHub.|Kan operationresult niet|
-|ThrottledRequests|Vertraagde aanvragen.|Count|Totaal|Beperkte aanvragen voor micro soft. EventHub.|Kan operationresult niet|
+|ServerErrors|Serverfouten.|Count|Totaal|Server fouten voor micro soft. EventHub.|Kan operationresult niet|
+|UserErrors|Gebruikersfouten.|Count|Totaal|Gebruikers fouten voor micro soft. EventHub.|Kan operationresult niet|
+|QuotaExceededErrors|Fouten met overschreden quota.|Count|Totaal|Quotum overschrijdt fouten voor micro soft. EventHub.|Kan operationresult niet|
+|ThrottledRequests|Beperkte aanvragen.|Count|Totaal|Beperkte aanvragen voor micro soft. EventHub.|Kan operationresult niet|
 |IncomingRequests|Binnenkomende aanvragen|Count|Totaal|Binnenkomende aanvragen voor micro soft. EventHub.|Geen|
-|IncomingMessages|Inkomende berichten|Count|Totaal|Binnenkomende berichten voor micro soft. EventHub.|Geen|
+|IncomingMessages|Binnenkomende berichten|Count|Totaal|Binnenkomende berichten voor micro soft. EventHub.|Geen|
 |OutgoingMessages|Uitgaande berichten|Count|Totaal|Uitgaande berichten voor micro soft. EventHub.|Geen|
 |IncomingBytes|Binnenkomende bytes.|Bytes|Totaal|Binnenkomende bytes voor micro soft. EventHub.|Geen|
 |OutgoingBytes|Uitgaande bytes.|Bytes|Totaal|Uitgaande bytes voor micro soft. EventHub.|Geen|
 |ActiveConnections|ActiveConnections|Count|Average|Totaal aantal actieve verbindingen voor micro soft. EventHub.|Geen|
 |ConnectionsOpened|Geopende verbindingen.|Count|Average|Geopende verbindingen voor micro soft. EventHub.|Geen|
-|ConnectionsClosed|Verbindingen gesloten.|Count|Average|Gesloten verbindingen voor micro soft. EventHub.|Geen|
+|ConnectionsClosed|Gesloten verbindingen.|Count|Average|Gesloten verbindingen voor micro soft. EventHub.|Geen|
 |CaptureBacklog|Achterstand vastleggen.|Count|Totaal|Achterstand vastleggen voor micro soft. EventHub.|Geen|
 |CapturedMessages|Vastgelegde berichten.|Count|Totaal|Vastgelegde berichten voor micro soft. EventHub.|Geen|
 |CapturedBytes|Vastgelegde bytes.|Bytes|Totaal|Vastgelegde bytes voor micro soft. EventHub.|Geen|
@@ -1222,7 +1222,7 @@ Er zijn enkele beperkingen in wat kan worden gerouteerd en het formulier waarin 
 
 ## <a name="microsofthdinsightclusters"></a>Micro soft. HDInsight/clusters
 
-|Gegevens|Weergave naam voor metrische gegevens|Eenheid|Aggregatietype|Beschrijving|Dimensies|
+|Gegevens|Weergave naam voor metrische gegevens|Eenheid|Aggregatietype|Description|Dimensies|
 |---|---|---|---|---|---|
 |GatewayRequests|Gateway aanvragen|Count|Totaal|Aantal gateway-aanvragen|Http status|
 |CategorizedGatewayRequests|Gecategoriseerde gateway aanvragen|Count|Totaal|Aantal gateway aanvragen per categorie (1xx/2xx/3xx/4xx/5xx)|Http status|
@@ -1231,7 +1231,7 @@ Er zijn enkele beperkingen in wat kan worden gerouteerd en het formulier waarin 
 
 ## <a name="microsoftinsightsautoscalesettings"></a>Micro soft. Insights/AutoscaleSettings
 
-|Gegevens|Weergave naam voor metrische gegevens|Eenheid|Aggregatietype|Beschrijving|Dimensies|
+|Gegevens|Weergave naam voor metrische gegevens|Eenheid|Aggregatietype|Description|Dimensies|
 |---|---|---|---|---|---|
 |ObservedMetricValue|Waargenomen metrische waarde|Count|Average|De waarde die wordt berekend door automatisch schalen wanneer deze wordt uitgevoerd|MetricTriggerSource|
 |MetricThreshold|Drempel waarde voor metrische gegevens|Count|Average|De geconfigureerde drempel waarde voor automatisch schalen wanneer automatisch schalen is uitgevoerd.|MetricTriggerRule|
@@ -1240,7 +1240,7 @@ Er zijn enkele beperkingen in wat kan worden gerouteerd en het formulier waarin 
 
 ## <a name="microsoftinsightscomponents"></a>Micro soft. Insights/onderdelen
 
-|Gegevens|Weergave naam voor metrische gegevens|Eenheid|Aggregatietype|Beschrijving|Dimensies|
+|Gegevens|Weergave naam voor metrische gegevens|Eenheid|Aggregatietype|Description|Dimensies|
 |---|---|---|---|---|---|
 |availabilityResults/availabilityPercentage|Beschikbaarheid|Percentage|Average|Percentage voltooide beschikbaarheids tests|availabilityResult/naam, availabilityResult/locatie|
 |availabilityResults/aantal|Beschikbaarheidstests|Count|Count|Aantal beschikbaarheids tests|availabilityResult/naam, availabilityResult/locatie, availabilityResult/geslaagd|
@@ -1276,7 +1276,7 @@ Er zijn enkele beperkingen in wat kan worden gerouteerd en het formulier waarin 
 
 ## <a name="microsoftiotcentraliotapps"></a>Micro soft. IoTCentral/IoTApps
 
-|Gegevens|Weergave naam voor metrische gegevens|Eenheid|Aggregatietype|Beschrijving|Dimensies|
+|Gegevens|Weergave naam voor metrische gegevens|Eenheid|Aggregatietype|Description|Dimensies|
 |---|---|---|---|---|---|
 |connectedDeviceCount|Totaal aantal verbonden apparaten|Count|Average|Aantal apparaten dat is verbonden met IoT Central|Geen|
 |C2D. Property. Read. geslaagd|Geslaagde apparaat-eigenschap leest van IoT Central|Count|Totaal|Het aantal geslaagde Lees bewerkingen van eigenschappen dat is gestart vanuit IoT Central|Geen|
@@ -1291,7 +1291,7 @@ Er zijn enkele beperkingen in wat kan worden gerouteerd en het formulier waarin 
 
 ## <a name="microsoftkeyvaultvaults"></a>Micro soft.-sleutel kluis/-kluizen
 
-|Gegevens|Weergave naam voor metrische gegevens|Eenheid|Aggregatietype|Beschrijving|Dimensies|
+|Gegevens|Weergave naam voor metrische gegevens|Eenheid|Aggregatietype|Description|Dimensies|
 |---|---|---|---|---|---|
 |ServiceApiHit|Totaal aantal treffers in de service-API|Count|Count|Totaal aantal treffers in de service-API|Activity type, Activiteitsnummer|
 |ServiceApiLatency|Algehele latentie van Service-API|Milliseconden|Average|Algemene latentie van Service-API-aanvragen|Activity type, Activiteitsnummer, status code, StatusCodeClass|
@@ -1301,7 +1301,7 @@ Er zijn enkele beperkingen in wat kan worden gerouteerd en het formulier waarin 
 
 ## <a name="microsoftkustoclusters"></a>Micro soft. Kusto/clusters
 
-|Gegevens|Weergave naam voor metrische gegevens|Eenheid|Aggregatietype|Beschrijving|Dimensies|
+|Gegevens|Weergave naam voor metrische gegevens|Eenheid|Aggregatietype|Description|Dimensies|
 |---|---|---|---|---|---|
 |CacheUtilization|Cache gebruik|Percentage|Average|Gebruiks niveau in het cluster bereik|Geen|
 |QueryDuration|Query duur|Milliseconden|Average|De duur van query's in seconden|QueryStatus|
@@ -1330,7 +1330,7 @@ Er zijn enkele beperkingen in wat kan worden gerouteerd en het formulier waarin 
 
 ## <a name="microsoftlogicworkflows"></a>Micro soft. Logic/werk stromen
 
-|Gegevens|Weergave naam voor metrische gegevens|Eenheid|Aggregatietype|Beschrijving|Dimensies|
+|Gegevens|Weergave naam voor metrische gegevens|Eenheid|Aggregatietype|Description|Dimensies|
 |---|---|---|---|---|---|
 |RunsStarted|Uitvoeringen gestart|Count|Totaal|Aantal uitvoeringen van werk stroom gestart.|Geen|
 |RunsCompleted|Uitvoeringen voltooid|Count|Totaal|Aantal voltooide werk stroom uitvoeringen.|Geen|
@@ -1369,7 +1369,7 @@ Er zijn enkele beperkingen in wat kan worden gerouteerd en het formulier waarin 
 
 ## <a name="microsoftlogicintegrationserviceenvironments"></a>Micro soft. Logic/integrationServiceEnvironments
 
-|Gegevens|Weergave naam voor metrische gegevens|Eenheid|Aggregatietype|Beschrijving|Dimensies|
+|Gegevens|Weergave naam voor metrische gegevens|Eenheid|Aggregatietype|Description|Dimensies|
 |---|---|---|---|---|---|
 |RunsStarted|Uitvoeringen gestart|Count|Totaal|Aantal uitvoeringen van werk stroom gestart.|Geen|
 |RunsCompleted|Uitvoeringen voltooid|Count|Totaal|Aantal voltooide werk stroom uitvoeringen.|Geen|
@@ -1406,7 +1406,7 @@ Er zijn enkele beperkingen in wat kan worden gerouteerd en het formulier waarin 
 
 ## <a name="microsoftmachinelearningservicesworkspaces"></a>Micro soft. MachineLearningServices/werk ruimten
 
-|Gegevens|Weergave naam voor metrische gegevens|Eenheid|Aggregatietype|Beschrijving|Dimensies|
+|Gegevens|Weergave naam voor metrische gegevens|Eenheid|Aggregatietype|Description|Dimensies|
 |---|---|---|---|---|---|
 |Geannuleerde uitvoeringen|Geannuleerde uitvoeringen|Count|Totaal|Aantal uitvoeringen geannuleerd voor deze werk ruimte|Scenario, RunType, PublishedPipelineId, ComputeType, PipelineStepType|
 |Geannuleerde uitvoeringen annuleren|Geannuleerde uitvoeringen annuleren|Count|Totaal|Aantal uitvoeringen waarvoor annuleren is aangevraagd voor deze werk ruimte|Scenario, RunType, PublishedPipelineId, ComputeType, PipelineStepType|
@@ -1446,14 +1446,14 @@ Er zijn enkele beperkingen in wat kan worden gerouteerd en het formulier waarin 
 
 ## <a name="microsoftmapsaccounts"></a>Micro soft. Maps/accounts
 
-|Gegevens|Weergave naam voor metrische gegevens|Eenheid|Aggregatietype|Beschrijving|Dimensies|
+|Gegevens|Weergave naam voor metrische gegevens|Eenheid|Aggregatietype|Description|Dimensies|
 |---|---|---|---|---|---|
 |Gebruik|Gebruik|Count|Count|Aantal API-aanroepen|ApiCategory, ApiName, ResultType, ResponseCode|
 |Beschikbaarheid|Beschikbaarheid|Percentage|Average|Beschik baarheid van de Api's|ApiCategory, ApiName|
 
 ## <a name="microsoftmediamediaservicesstreamingendpoints"></a>Micro soft. Media/Media Services/streamingEndpoints
 
-|Gegevens|Weergave naam voor metrische gegevens|Eenheid|Aggregatietype|Beschrijving|Dimensies|
+|Gegevens|Weergave naam voor metrische gegevens|Eenheid|Aggregatietype|Description|Dimensies|
 |---|---|---|---|---|---|
 |Uitgaand verkeer|Uitgaand verkeer|Bytes|Totaal|De hoeveelheid uitgangs gegevens, in bytes.|Output|
 |SuccessE2ELatency|Geslaagde end-to-end-latentie|Milliseconden|Average|De gemiddelde latentie voor voltooide aanvragen in milliseconden.|Output|
@@ -1462,7 +1462,7 @@ Er zijn enkele beperkingen in wat kan worden gerouteerd en het formulier waarin 
 
 ## <a name="microsoftmediamediaservices"></a>Micro soft. Media/Media Services
 
-|Gegevens|Weergave naam voor metrische gegevens|Eenheid|Aggregatietype|Beschrijving|Dimensies|
+|Gegevens|Weergave naam voor metrische gegevens|Eenheid|Aggregatietype|Description|Dimensies|
 |---|---|---|---|---|---|
 |AssetQuota|Activa quotum|Count|Average|Hoeveel assets zijn toegestaan voor het huidige media service-account|Geen|
 |AssetCount|Aantal assets|Count|Average|Hoeveel activa er al zijn gemaakt in het huidige media service-account|Geen|
@@ -1477,14 +1477,14 @@ Er zijn enkele beperkingen in wat kan worden gerouteerd en het formulier waarin 
 
 ## <a name="microsoftmixedrealityremoterenderingaccounts"></a>Micro soft. MixedReality/remoteRenderingAccounts
 
-|Gegevens|Weergave naam voor metrische gegevens|Eenheid|Aggregatietype|Beschrijving|Dimensies|
+|Gegevens|Weergave naam voor metrische gegevens|Eenheid|Aggregatietype|Description|Dimensies|
 |---|---|---|---|---|---|
 |AssetsConverted|Activa geconverteerd|Count|Totaal|Totaal aantal activa dat is geconverteerd|AppId, ResourceId, SDKVersion|
 |ActiveRenderingSessions|Actieve rendering-sessies|Count|Totaal|Totaal aantal actieve rendering-sessies|AppId, ResourceId, SessionType, SDKVersion|
 
 ## <a name="microsoftnetappnetappaccountscapacitypoolsvolumes"></a>Micro soft. NetApp/netAppAccounts/capacityPools/volumes
 
-|Gegevens|Weergave naam voor metrische gegevens|Eenheid|Aggregatietype|Beschrijving|Dimensies|
+|Gegevens|Weergave naam voor metrische gegevens|Eenheid|Aggregatietype|Description|Dimensies|
 |---|---|---|---|---|---|
 |AverageReadLatency|Gemiddelde lees latentie|Milliseconden|Average|Gemiddelde lees latentie in milliseconden per bewerking|Geen|
 |AverageWriteLatency|Gemiddelde schrijf latentie|Milliseconden|Average|Gemiddelde schrijf latentie in milliseconden per bewerking|Geen|
@@ -1495,14 +1495,14 @@ Er zijn enkele beperkingen in wat kan worden gerouteerd en het formulier waarin 
 
 ## <a name="microsoftnetappnetappaccountscapacitypools"></a>Micro soft. NetApp/netAppAccounts/capacityPools
 
-|Gegevens|Weergave naam voor metrische gegevens|Eenheid|Aggregatietype|Beschrijving|Dimensies|
+|Gegevens|Weergave naam voor metrische gegevens|Eenheid|Aggregatietype|Description|Dimensies|
 |---|---|---|---|---|---|
 |VolumePoolAllocatedUsed|Groep toegewezen aan volume grootte|Bytes|Average|Gebruikte grootte van de pool is toegewezen|Geen|
 |VolumePoolTotalLogicalSize|Verbruikte grootte van pool|Bytes|Average|Som van de logische grootte van alle volumes die deel uitmaken van de groep|Geen|
 
 ## <a name="microsoftnetworknetworkinterfaces"></a>Microsoft.Network/networkInterfaces
 
-|Gegevens|Weergave naam voor metrische gegevens|Eenheid|Aggregatietype|Beschrijving|Dimensies|
+|Gegevens|Weergave naam voor metrische gegevens|Eenheid|Aggregatietype|Description|Dimensies|
 |---|---|---|---|---|---|
 |BytesSentRate|Verzonden bytes|Bytes|Totaal|Het aantal bytes dat de netwerk interface heeft verzonden|Geen|
 |BytesReceivedRate|Ontvangen bytes|Bytes|Totaal|Het aantal bytes dat de netwerk interface heeft ontvangen|Geen|
@@ -1511,7 +1511,7 @@ Er zijn enkele beperkingen in wat kan worden gerouteerd en het formulier waarin 
 
 ## <a name="microsoftnetworkloadbalancers"></a>Microsoft.Network/loadBalancers
 
-|Gegevens|Weergave naam voor metrische gegevens|Eenheid|Aggregatietype|Beschrijving|Dimensies|
+|Gegevens|Weergave naam voor metrische gegevens|Eenheid|Aggregatietype|Description|Dimensies|
 |---|---|---|---|---|---|
 |VipAvailability|Beschik baarheid gegevenspad|Count|Average|Gemiddelde Beschik baarheid van gegevens paden per tijds duur van Load Balancer|FrontendIPAddress,FrontendPort|
 |DipAvailability|Status van Health probe|Count|Average|Gemiddelde status van Load Balancer Health probe per tijds duur|Protocol type, BackendPort, FrontendIPAddress, FrontendPort, BackendIPAddress|
@@ -1524,7 +1524,7 @@ Er zijn enkele beperkingen in wat kan worden gerouteerd en het formulier waarin 
 
 ## <a name="microsoftnetworkdnszones"></a>Micro soft. Network/dnszones
 
-|Gegevens|Weergave naam voor metrische gegevens|Eenheid|Aggregatietype|Beschrijving|Dimensies|
+|Gegevens|Weergave naam voor metrische gegevens|Eenheid|Aggregatietype|Description|Dimensies|
 |---|---|---|---|---|---|
 |QueryVolume|Query volume|Count|Totaal|Aantal verzonden query's voor een DNS-zone|Geen|
 |RecordSetCount|Aantal record sets|Count|Maximum|Aantal record sets in een DNS-zone|Geen|
@@ -1533,7 +1533,7 @@ Er zijn enkele beperkingen in wat kan worden gerouteerd en het formulier waarin 
 
 ## <a name="microsoftnetworkpublicipaddresses"></a>Microsoft.Network/publicIPAddresses
 
-|Gegevens|Weergave naam voor metrische gegevens|Eenheid|Aggregatietype|Beschrijving|Dimensies|
+|Gegevens|Weergave naam voor metrische gegevens|Eenheid|Aggregatietype|Description|Dimensies|
 |---|---|---|---|---|---|
 |PacketsInDDoS|DDoS inkomende pakketten|CountPerSecond|Maximum|DDoS inkomende pakketten|Geen|
 |PacketsDroppedDDoS|DDoS inkomende pakketten verwijderd|CountPerSecond|Maximum|DDoS inkomende pakketten verwijderd|Geen|
@@ -1566,7 +1566,7 @@ Er zijn enkele beperkingen in wat kan worden gerouteerd en het formulier waarin 
 
 ## <a name="microsoftnetworkvirtualnetworks"></a>Microsoft.Network/virtualNetworks
 
-|Gegevens|Weergave naam voor metrische gegevens|Eenheid|Aggregatietype|Beschrijving|Dimensies|
+|Gegevens|Weergave naam voor metrische gegevens|Eenheid|Aggregatietype|Description|Dimensies|
 |---|---|---|---|---|---|
 |PingMeshAverageRoundtripMs|Retour tijd voor pings naar een virtuele machine|Milliseconden|Average|Retour tijd voor pings die naar een bestemmings-VM worden verzonden|SourceCustomerAddress,DestinationCustomerAddress|
 |PingMeshProbesFailedPercent|Pingen naar een virtuele machine is mislukt|Percentage|Average|Percentage van het aantal mislukte pings naar totale aantal verzonden Pings van een doel-VM|SourceCustomerAddress,DestinationCustomerAddress|
@@ -1574,7 +1574,7 @@ Er zijn enkele beperkingen in wat kan worden gerouteerd en het formulier waarin 
 
 ## <a name="microsoftnetworkazurefirewalls"></a>Micro soft. Network/azurefirewalls
 
-|Gegevens|Weergave naam voor metrische gegevens|Eenheid|Aggregatietype|Beschrijving|Dimensies|
+|Gegevens|Weergave naam voor metrische gegevens|Eenheid|Aggregatietype|Description|Dimensies|
 |---|---|---|---|---|---|
 |ApplicationRuleHit|Aantal treffers toepassings regels|Count|Totaal|Aantal keer dat toepassings regels zijn geraakt|Status, reden, protocol|
 |NetworkRuleHit|Aantal treffers in netwerk regels|Count|Totaal|Aantal keren dat netwerk regels zijn geraakt|Status, reden, protocol|
@@ -1585,7 +1585,7 @@ Er zijn enkele beperkingen in wat kan worden gerouteerd en het formulier waarin 
 
 ## <a name="microsoftnetworkapplicationgateways"></a>Micro soft. Network/applicationGateways
 
-|Gegevens|Weergave naam voor metrische gegevens|Eenheid|Aggregatietype|Beschrijving|Dimensies|
+|Gegevens|Weergave naam voor metrische gegevens|Eenheid|Aggregatietype|Description|Dimensies|
 |---|---|---|---|---|---|
 |Doorvoer|Doorvoer|BytesPerSecond|Average|Aantal bytes per seconde dat de Application Gateway heeft bediend|Geen|
 |UnhealthyHostCount|Aantal hosts met slechte status|Count|Average|Aantal beschadigde backend-hosts|BackendSettingsPool|
@@ -1617,41 +1617,41 @@ Er zijn enkele beperkingen in wat kan worden gerouteerd en het formulier waarin 
 
 ## <a name="microsoftnetworkvirtualnetworkgateways"></a>Microsoft.Network/virtualNetworkGateways
 
-|Gegevens|Weergave naam voor metrische gegevens|Eenheid|Aggregatietype|Beschrijving|Dimensies|
+|Gegevens|Weergave naam voor metrische gegevens|Eenheid|Aggregatietype|Description|Dimensies|
 |---|---|---|---|---|---|
 |AverageBandwidth|Gateway-S2S-band breedte|BytesPerSecond|Average|Gemiddeld aantal site-naar-site-band breedte van een gateway in bytes per seconde|Geen|
 |P2SBandwidth|Gateway P2S-band breedte|BytesPerSecond|Average|Gemiddelde Point-to-site band breedte van een gateway in bytes per seconde|Geen|
-|P2SConnectionCount|Aantal P2S-verbindingen|Count|Maximum|Aantal Point-to-site-verbindingen van een gateway|Protocol|
-|TunnelAverageBandwidth|Tunnel bandbreedte|BytesPerSecond|Average|Gemiddelde band breedte van een tunnel in bytes per seconde|ConnectionName, RemoteIP|
-|TunnelEgressBytes|Bytes voor uitgaand tunnels|Bytes|Totaal|Uitgaande bytes van een tunnel|ConnectionName, RemoteIP|
-|TunnelIngressBytes|Bytes van de tunnel ingang|Bytes|Totaal|Binnenkomende bytes van een tunnel|ConnectionName, RemoteIP|
-|TunnelEgressPackets|Tunnel-uituitgangs pakketten|Count|Totaal|Aantal uitgaande pakketten van een tunnel|ConnectionName, RemoteIP|
-|TunnelIngressPackets|Tunnel ingangs pakketten|Count|Totaal|Binnenkomend pakket aantal van een tunnel|ConnectionName, RemoteIP|
-|TunnelEgressPacketDropTSMismatch|Uitschakeling van niet-overeenkomende TS-pakketten door tunnel|Count|Totaal|Aantal uitgevallen uitgaande pakketten van de selectie van de verkeers kiezer komen niet overeen met een tunnel|ConnectionName, RemoteIP|
-|TunnelIngressPacketDropTSMismatch|Verloren gegane pakketten door de tunnel ingang TS komen niet overeen|Count|Totaal|Aantal inkomende pakketten in de verkeers selectie niet overeenkomen met een tunnel|ConnectionName, RemoteIP|
+|P2SConnectionCount|Aantal P2S-verbindingen|Count|Maximum|Aantal point-to-site-verbindingen van een gateway|Protocol|
+|TunnelAverageBandwidth|Tunnelbandbreedte|BytesPerSecond|Average|Gemiddelde bandbreedte van een tunnel in bytes per seconde|ConnectionName, RemoteIP|
+|TunnelEgressBytes|Uitgaande bytes in tunnel|Bytes|Totaal|Uitgaande bytes van een tunnel|ConnectionName, RemoteIP|
+|TunnelIngressBytes|Totaal aantal inkomende bytes|Bytes|Totaal|Inkomende bytes in een tunnel|ConnectionName, RemoteIP|
+|TunnelEgressPackets|Uitgaande pakketten in tunnel|Count|Totaal|Aantal uitgaande pakketten van een tunnel|ConnectionName, RemoteIP|
+|TunnelIngressPackets|Tunnel ingangs pakketten|Count|Totaal|Aantal inkomende pakketten van een tunnel|ConnectionName, RemoteIP|
+|TunnelEgressPacketDropTSMismatch|Uitgaande niet-overeenkomende TS-pakketten door tunnel|Count|Totaal|Aantal uitgaande niet-overeenkomende pakketten uit traffic selector in tunnel|ConnectionName, RemoteIP|
+|TunnelIngressPacketDropTSMismatch|Inkomende niet-overeenkomende TS-pakketten door tunnel|Count|Totaal|Aantal inkomende niet-overeenkomende pakketten uit traffic selector in tunnel|ConnectionName, RemoteIP|
 
 
 ## <a name="microsoftnetworkexpressrouteports"></a>Micro soft. Network/expressRoutePorts
 
-|Gegevens|Weergave naam voor metrische gegevens|Eenheid|Aggregatietype|Beschrijving|Dimensies|
+|Gegevens|Weergave naam voor metrische gegevens|Eenheid|Aggregatietype|Description|Dimensies|
 |---|---|---|---|---|---|
 |RxLightLevel|RxLightLevel|Count|Average|RX licht niveau in dBm|Koppeling, Lane|
 |TxLightLevel|TxLightLevel|Count|Average|TX licht niveau in dBm|Koppeling, Lane|
 |AdminState|AdminState|Count|Average|Beheer status van de poort|Koppeling|
 |LineProtocol|LineProtocol|Count|Average|Status van het regel Protocol van de poort|Koppeling|
-|PortBitsInPerSecond|BitsInPerSecond|CountPerSecond|Average|Bits die Azure per seconde binnenkomen|Koppeling|
-|PortBitsOutPerSecond|BitsOutPerSecond|CountPerSecond|Average|Bits egressing Azure per seconde|Koppeling|
+|PortBitsInPerSecond|BitsInPerSecond|CountPerSecond|Average|Bits die per seconde in Azure binnenkomen|Koppeling|
+|PortBitsOutPerSecond|BitsOutPerSecond|CountPerSecond|Average|Bits die per seconde in Azure verlaten|Koppeling|
 
 
 
 ## <a name="microsoftnetworkexpressroutecircuits"></a>Micro soft. Network/expressRouteCircuits
 
-|Gegevens|Weergave naam voor metrische gegevens|Eenheid|Aggregatietype|Beschrijving|Dimensies|
+|Gegevens|Weergave naam voor metrische gegevens|Eenheid|Aggregatietype|Description|Dimensies|
 |---|---|---|---|---|---|
-|BitsInPerSecond|BitsInPerSecond|CountPerSecond|Average|Bits die Azure per seconde binnenkomen|PeeringType|
-|BitsOutPerSecond|BitsOutPerSecond|CountPerSecond|Average|Bits egressing Azure per seconde|PeeringType|
-|GlobalReachBitsInPerSecond|GlobalReachBitsInPerSecond|CountPerSecond|Average|Bits die Azure per seconde binnenkomen|PeeredCircuitSKey|
-|GlobalReachBitsOutPerSecond|GlobalReachBitsOutPerSecond|CountPerSecond|Average|Bits egressing Azure per seconde|PeeredCircuitSKey|
+|BitsInPerSecond|BitsInPerSecond|CountPerSecond|Average|Bits die per seconde in Azure binnenkomen|PeeringType|
+|BitsOutPerSecond|BitsOutPerSecond|CountPerSecond|Average|Bits die per seconde in Azure verlaten|PeeringType|
+|GlobalReachBitsInPerSecond|GlobalReachBitsInPerSecond|CountPerSecond|Average|Bits die per seconde in Azure binnenkomen|PeeredCircuitSKey|
+|GlobalReachBitsOutPerSecond|GlobalReachBitsOutPerSecond|CountPerSecond|Average|Bits die per seconde in Azure verlaten|PeeredCircuitSKey|
 |BgpAvailability|BGP-Beschik baarheid|Percentage|Average|BGP-Beschik baarheid van MSEE naar alle peers.|PeeringType, peer|
 |ArpAvailability|ARP-Beschik baarheid|Percentage|Average|ARP-Beschik baarheid van MSEE naar alle peers.|PeeringType, peer|
 |QosDropBitsInPerSecond|DroppedInBitsPerSecond|CountPerSecond|Average|Ingangs gegevens die per seconde worden verwijderd|Geen|
@@ -1659,28 +1659,28 @@ Er zijn enkele beperkingen in wat kan worden gerouteerd en het formulier waarin 
 
 ## <a name="microsoftnetworkexpressroutecircuitspeerings"></a>Micro soft. Network/expressRouteCircuits/peerings
 
-|Gegevens|Weergave naam voor metrische gegevens|Eenheid|Aggregatietype|Beschrijving|Dimensies|
+|Gegevens|Weergave naam voor metrische gegevens|Eenheid|Aggregatietype|Description|Dimensies|
 |---|---|---|---|---|---|
-|BitsInPerSecond|BitsInPerSecond|CountPerSecond|Average|Bits die Azure per seconde binnenkomen|Geen|
-|BitsOutPerSecond|BitsOutPerSecond|CountPerSecond|Average|Bits egressing Azure per seconde|Geen|
+|BitsInPerSecond|BitsInPerSecond|CountPerSecond|Average|Bits die per seconde in Azure binnenkomen|Geen|
+|BitsOutPerSecond|BitsOutPerSecond|CountPerSecond|Average|Bits die per seconde in Azure verlaten|Geen|
 
 ## <a name="microsoftnetworkconnections"></a>Micro soft. Network/Connections
 
-|Gegevens|Weergave naam voor metrische gegevens|Eenheid|Aggregatietype|Beschrijving|Dimensies|
+|Gegevens|Weergave naam voor metrische gegevens|Eenheid|Aggregatietype|Description|Dimensies|
 |---|---|---|---|---|---|
-|BitsInPerSecond|BitsInPerSecond|CountPerSecond|Average|Bits die Azure per seconde binnenkomen|Geen|
-|BitsOutPerSecond|BitsOutPerSecond|CountPerSecond|Average|Bits egressing Azure per seconde|Geen|
+|BitsInPerSecond|BitsInPerSecond|CountPerSecond|Average|Bits die per seconde in Azure binnenkomen|Geen|
+|BitsOutPerSecond|BitsOutPerSecond|CountPerSecond|Average|Bits die per seconde in Azure verlaten|Geen|
 
 ## <a name="microsoftnetworkexpressroutegateways"></a>Micro soft. Network/expressRouteGateways
 
-|Gegevens|Weergave naam voor metrische gegevens|Eenheid|Aggregatietype|Beschrijving|Dimensies|
+|Gegevens|Weergave naam voor metrische gegevens|Eenheid|Aggregatietype|Description|Dimensies|
 |---|---|---|---|---|---|
-|ErGatewayConnectionBitsInPerSecond|BitsInPerSecond|CountPerSecond|Average|Bits die Azure per seconde binnenkomen|ConnectionName|
-|ErGatewayConnectionBitsOutPerSecond|BitsOutPerSecond|CountPerSecond|Average|Bits egressing Azure per seconde|ConnectionName|
+|ErGatewayConnectionBitsInPerSecond|BitsInPerSecond|CountPerSecond|Average|Bits die per seconde in Azure binnenkomen|ConnectionName|
+|ErGatewayConnectionBitsOutPerSecond|BitsOutPerSecond|CountPerSecond|Average|Bits die per seconde in Azure verlaten|ConnectionName|
 
 ## <a name="microsoftnetworktrafficmanagerprofiles"></a>Micro soft. Network/trafficManagerProfiles
 
-|Gegevens|Weergave naam voor metrische gegevens|Eenheid|Aggregatietype|Beschrijving|Dimensies|
+|Gegevens|Weergave naam voor metrische gegevens|Eenheid|Aggregatietype|Description|Dimensies|
 |---|---|---|---|---|---|
 |QpsByEndpoint|Query's op eind punt geretourneerd|Count|Totaal|Aantal keren dat een Traffic Manager eind punt is geretourneerd in het opgegeven tijds bestek|EndpointName|
 |ProbeAgentCurrentEndpointStateByProfileResourceId|Eindpunt status op eind punt|Count|Maximum|1 als de test status van een eind punt is ingeschakeld, 0 anders.|EndpointName|
@@ -1689,7 +1689,7 @@ Er zijn enkele beperkingen in wat kan worden gerouteerd en het formulier waarin 
 
 ## <a name="microsoftnetworknetworkwatchersconnectionmonitors"></a>Micro soft. Network/networkWatchers/connectionMonitors
 
-|Gegevens|Weergave naam voor metrische gegevens|Eenheid|Aggregatietype|Beschrijving|Dimensies|
+|Gegevens|Weergave naam voor metrische gegevens|Eenheid|Aggregatietype|Description|Dimensies|
 |---|---|---|---|---|---|
 |ProbesFailedPercent|% Tests mislukt|Percentage|Average|% van de controles van connectiviteits controle is mislukt|Geen|
 |AverageRoundtripMs|Gem. retour tijd (MS)|Milliseconden|Average|Gemiddelde Round-retour tijd van het netwerk (MS) voor connectiviteits controle tests die zijn verzonden tussen de bron en het doel|Geen|
@@ -1699,7 +1699,7 @@ Er zijn enkele beperkingen in wat kan worden gerouteerd en het formulier waarin 
 
 ## <a name="microsoftnetworkfrontdoors"></a>Micro soft. Network/frontdoors
 
-|Gegevens|Weergave naam voor metrische gegevens|Eenheid|Aggregatietype|Beschrijving|Dimensies|
+|Gegevens|Weergave naam voor metrische gegevens|Eenheid|Aggregatietype|Description|Dimensies|
 |---|---|---|---|---|---|
 |RequestCount|Aantal aanvragen|Count|Totaal|Het aantal client aanvragen dat wordt geleverd door de HTTP/S-proxy|Http status, HttpStatusGroup, ClientRegion, ClientCountry|
 |RequestSize|Aanvraag grootte|Bytes|Totaal|Het aantal bytes dat is verzonden als aanvragen van clients naar de HTTP/S-proxy|Http status, HttpStatusGroup, ClientRegion, ClientCountry|
@@ -1714,7 +1714,7 @@ Er zijn enkele beperkingen in wat kan worden gerouteerd en het formulier waarin 
 
 ## <a name="microsoftnetworkprivatednszones"></a>Micro soft. Network/privateDnsZones
 
-|Gegevens|Weergave naam voor metrische gegevens|Eenheid|Aggregatietype|Beschrijving|Dimensies|
+|Gegevens|Weergave naam voor metrische gegevens|Eenheid|Aggregatietype|Description|Dimensies|
 |---|---|---|---|---|---|
 |QueryVolume|Query volume|Count|Totaal|Aantal verzonden query's voor een Privé-DNS zone|Geen|
 |RecordSetCount|Aantal record sets|Count|Maximum|Aantal record sets in een Privé-DNS zone|Geen|
@@ -1726,14 +1726,14 @@ Er zijn enkele beperkingen in wat kan worden gerouteerd en het formulier waarin 
 
 ## <a name="microsoftnotificationhubsnamespacesnotificationhubs"></a>Micro soft. notification hubs/naam ruimten/notification hubs
 
-|Gegevens|Weergave naam voor metrische gegevens|Eenheid|Aggregatietype|Beschrijving|Dimensies|
+|Gegevens|Weergave naam voor metrische gegevens|Eenheid|Aggregatietype|Description|Dimensies|
 |---|---|---|---|---|---|
 |registratie. alle|Registratie bewerkingen|Count|Totaal|Het aantal voltooide registratie bewerkingen (gemaakte bijwerk query's en verwijderingen). |Geen|
 |registratie. Create|Bewerkingen voor het maken van registratie|Count|Totaal|Het aantal gemaakte registraties.|Geen|
 |registratie. update|Registratie-update bewerkingen|Count|Totaal|Het aantal voltooide registratie-updates.|Geen|
 |registratie. ophalen|Lees bewerkingen voor registratie|Count|Totaal|Het aantal geslaagde registratie query's.|Geen|
 |registratie. Delete|Verwijderings bewerkingen voor registratie|Count|Totaal|Het aantal voltooide registraties dat is verwijderd.|Geen|
-|e-mail|Inkomende berichten|Count|Totaal|Het aantal geslaagde verzend-API-aanroepen. |Geen|
+|e-mail|Binnenkomende berichten|Count|Totaal|Het aantal geslaagde verzend-API-aanroepen. |Geen|
 |inkomend. gepland|Geplande push meldingen verzonden|Count|Totaal|Geplande push meldingen geannuleerd|Geen|
 |Binnenkomend. gepland. annuleren|Geplande push meldingen geannuleerd|Count|Totaal|Geplande push meldingen geannuleerd|Geen|
 |gepland. in behandeling|Geplande meldingen in behandeling|Count|Totaal|Geplande meldingen in behandeling|Geen|
@@ -1793,7 +1793,7 @@ Er zijn enkele beperkingen in wat kan worden gerouteerd en het formulier waarin 
 
 ## <a name="microsoftoperationalinsightsworkspaces"></a>Micro soft. OperationalInsights/werk ruimten
 
-|Gegevens|Weergave naam voor metrische gegevens|Eenheid|Aggregatietype|Beschrijving|Dimensies|
+|Gegevens|Weergave naam voor metrische gegevens|Eenheid|Aggregatietype|Description|Dimensies|
 |---|---|---|---|---|---|
 |Percentage vrije inodes Average_|% Vrije inodes|Count|Average|Percentage vrije inodes Average_|Computer, ObjectName, INSTANCENAME, CounterPath, hebben|
 |% Beschik bare ruimte Average_|Percentage beschik bare ruimte|Count|Average|% Beschik bare ruimte Average_|Computer, ObjectName, INSTANCENAME, CounterPath, hebben|
@@ -1861,13 +1861,13 @@ Er zijn enkele beperkingen in wat kan worden gerouteerd en het formulier waarin 
 
 ## <a name="microsoftpeeringpeeringservices"></a>Micro soft. peering/peeringServices
 
-|Gegevens|Weergave naam voor metrische gegevens|Eenheid|Aggregatietype|Beschrijving|Dimensies|
+|Gegevens|Weergave naam voor metrische gegevens|Eenheid|Aggregatietype|Description|Dimensies|
 |---|---|---|---|---|---|
 |PrefixLatency|Voorvoegsel latentie|Milliseconden|Average|Latentie van mediaan voorvoegsel|Voorvoegselnaam|
 
 ## <a name="microsoftpeeringpeerings"></a>Micro soft. peering/peering
 
-|Gegevens|Weergave naam voor metrische gegevens|Eenheid|Aggregatietype|Beschrijving|Dimensies|
+|Gegevens|Weergave naam voor metrische gegevens|Eenheid|Aggregatietype|Description|Dimensies|
 |---|---|---|---|---|---|
 |SessionAvailabilityV4|Sessie beschikbaarheid v4|Percentage|Average|Beschik baarheid van de v4-sessie|ConnectionId|
 |SessionAvailabilityV6|Sessie beschikbaarheid V6|Percentage|Average|Beschik baarheid van de V6-sessie|ConnectionId|
@@ -1877,7 +1877,7 @@ Er zijn enkele beperkingen in wat kan worden gerouteerd en het formulier waarin 
 
 ## <a name="microsoftpowerbidedicatedcapacities"></a>Micro soft. PowerBIDedicated/capaciteiten
 
-|Gegevens|Weergave naam voor metrische gegevens|Eenheid|Aggregatietype|Beschrijving|Dimensies|
+|Gegevens|Weergave naam voor metrische gegevens|Eenheid|Aggregatietype|Description|Dimensies|
 |---|---|---|---|---|---|
 |QueryDuration|Queryduur|Milliseconden|Average|DAX-query duur in laatste interval|Geen dimensies|
 |QueryPoolJobQueueLength|Threads: lengte van taak wachtrij voor query pool|Count|Average|Aantal taken in de wachtrij van de query thread pool.|Geen dimensies|
@@ -1888,7 +1888,7 @@ Er zijn enkele beperkingen in wat kan worden gerouteerd en het formulier waarin 
 
 ## <a name="microsoftprojectbabylonaccounts"></a>Micro soft. ProjectBabylon/accounts
 
-|Gegevens|Weergave naam voor metrische gegevens|Eenheid|Aggregatietype|Beschrijving|Dimensies|
+|Gegevens|Weergave naam voor metrische gegevens|Eenheid|Aggregatietype|Description|Dimensies|
 |---|---|---|---|---|---|
 |AssetDistributionByClassification|Activa distributie per classificatie|Count|Totaal|Geeft aan hoeveel activa met een bepaalde classificatie zijn toegewezen, dat wil zeggen dat ze zijn geclassificeerd met dat label.|Classificatie, bron, ResourceId|
 |AssetDistributionByStorageType|Activa distributie per opslag type|Count|Totaal|Hiermee wordt het aantal assets van een bepaald opslag type aangegeven.|Para, ResourceId|
@@ -1905,7 +1905,7 @@ Er zijn enkele beperkingen in wat kan worden gerouteerd en het formulier waarin 
 
 ## <a name="microsoftrelaynamespaces"></a>Micro soft. relay/naam ruimten
 
-|Gegevens|Weergave naam voor metrische gegevens|Eenheid|Aggregatietype|Beschrijving|Dimensies|
+|Gegevens|Weergave naam voor metrische gegevens|Eenheid|Aggregatietype|Description|Dimensies|
 |---|---|---|---|---|---|
 |ListenerConnections-geslaagd|ListenerConnections-geslaagd|Count|Totaal|Geslaagde ListenerConnections voor micro soft. relay.|EntityName, kan operationresult niet|
 |ListenerConnections-client error|ListenerConnections-client error|Count|Totaal|Client error op ListenerConnections voor micro soft. relay.|EntityName, kan operationresult niet|
@@ -1924,7 +1924,7 @@ Er zijn enkele beperkingen in wat kan worden gerouteerd en het formulier waarin 
 
 ## <a name="microsoftsearchsearchservices"></a>Micro soft. Search/searchServices
 
-|Gegevens|Weergave naam voor metrische gegevens|Eenheid|Aggregatietype|Beschrijving|Dimensies|
+|Gegevens|Weergave naam voor metrische gegevens|Eenheid|Aggregatietype|Description|Dimensies|
 |---|---|---|---|---|---|
 |SearchLatency|Zoek latentie|Seconden|Average|Gemiddelde Zoek latentie voor de zoek service|Geen|
 |SearchQueriesPerSecond|Zoek query's per seconde|CountPerSecond|Average|Zoek query's per seconde voor de zoek service|Geen|
@@ -1933,18 +1933,18 @@ Er zijn enkele beperkingen in wat kan worden gerouteerd en het formulier waarin 
 
 ## <a name="microsoftservicebusnamespaces"></a>Micro soft. ServiceBus/naam ruimten
 
-|Gegevens|Weergave naam voor metrische gegevens|Eenheid|Aggregatietype|Beschrijving|Dimensies|
+|Gegevens|Weergave naam voor metrische gegevens|Eenheid|Aggregatietype|Description|Dimensies|
 |---|---|---|---|---|---|
 |SuccessfulRequests|Geslaagde aanvragen|Count|Totaal|Totaal aantal geslaagde aanvragen voor een naam ruimte|EntityName, kan operationresult niet|
-|ServerErrors|Server fouten.|Count|Totaal|Server fouten voor micro soft. ServiceBus.|EntityName, kan operationresult niet|
-|UserErrors|Gebruikers fouten.|Count|Totaal|Gebruikers fouten voor micro soft. ServiceBus.|EntityName, kan operationresult niet|
-|ThrottledRequests|Vertraagde aanvragen.|Count|Totaal|Beperkte aanvragen voor micro soft. ServiceBus.|EntityName, kan operationresult niet|
+|ServerErrors|Serverfouten.|Count|Totaal|Server fouten voor micro soft. ServiceBus.|EntityName, kan operationresult niet|
+|UserErrors|Gebruikersfouten.|Count|Totaal|Gebruikers fouten voor micro soft. ServiceBus.|EntityName, kan operationresult niet|
+|ThrottledRequests|Beperkte aanvragen.|Count|Totaal|Beperkte aanvragen voor micro soft. ServiceBus.|EntityName, kan operationresult niet|
 |IncomingRequests|Binnenkomende aanvragen|Count|Totaal|Binnenkomende aanvragen voor micro soft. ServiceBus.|EntityName|
-|IncomingMessages|Inkomende berichten|Count|Totaal|Binnenkomende berichten voor micro soft. ServiceBus.|EntityName|
+|IncomingMessages|Binnenkomende berichten|Count|Totaal|Binnenkomende berichten voor micro soft. ServiceBus.|EntityName|
 |OutgoingMessages|Uitgaande berichten|Count|Totaal|Uitgaande berichten voor micro soft. ServiceBus.|EntityName|
 |ActiveConnections|ActiveConnections|Count|Totaal|Totaal aantal actieve verbindingen voor micro soft. ServiceBus.|Geen|
 |ConnectionsOpened|Geopende verbindingen.|Count|Average|Geopende verbindingen voor micro soft. ServiceBus.|EntityName|
-|ConnectionsClosed|Verbindingen gesloten.|Count|Average|Gesloten verbindingen voor micro soft. ServiceBus.|EntityName|
+|ConnectionsClosed|Gesloten verbindingen.|Count|Average|Gesloten verbindingen voor micro soft. ServiceBus.|EntityName|
 |Grootte|Grootte|Bytes|Average|Grootte van een wachtrij/onderwerp in bytes.|EntityName|
 |Berichten|Aantal berichten in een wachtrij/onderwerp.|Count|Average|Aantal berichten in een wachtrij/onderwerp.|EntityName|
 |ActiveMessages|Aantal actieve berichten in een wachtrij/onderwerp.|Count|Average|Aantal actieve berichten in een wachtrij/onderwerp.|EntityName|
@@ -1958,7 +1958,7 @@ Er zijn enkele beperkingen in wat kan worden gerouteerd en het formulier waarin 
 
 ## <a name="microsoftservicefabricmeshapplications"></a>Micro soft. ServiceFabricMesh/toepassingen
 
-|Gegevens|Weergave naam voor metrische gegevens|Eenheid|Aggregatietype|Beschrijving|Dimensies|
+|Gegevens|Weergave naam voor metrische gegevens|Eenheid|Aggregatietype|Description|Dimensies|
 |---|---|---|---|---|---|
 |AllocatedCpu|AllocatedCpu|Count|Average|CPU toegewezen aan deze container in milli-kernen|ApplicationName, ServiceName, CodePackageName, ServiceReplicaName|
 |AllocatedMemory|AllocatedMemory|Bytes|Average|Geheugen toegewezen aan deze container in MB|ApplicationName, ServiceName, CodePackageName, ServiceReplicaName|
@@ -1974,7 +1974,7 @@ Er zijn enkele beperkingen in wat kan worden gerouteerd en het formulier waarin 
 
 ## <a name="microsoftsignalrservicesignalr"></a>Micro soft. SignalRService/Signa lering
 
-|Gegevens|Weergave naam voor metrische gegevens|Eenheid|Aggregatietype|Beschrijving|Dimensies|
+|Gegevens|Weergave naam voor metrische gegevens|Eenheid|Aggregatietype|Description|Dimensies|
 |---|---|---|---|---|---|
 |ConnectionCount|Aantal verbindingen|Count|Maximum|De hoeveelheid gebruikers verbinding.|Eindpunt|
 |MessageCount|Aantal berichten|Count|Totaal|De totale hoeveelheid berichten.|Geen|
@@ -1987,13 +1987,13 @@ Er zijn enkele beperkingen in wat kan worden gerouteerd en het formulier waarin 
 
 ## <a name="microsoftsqlserversdatabases"></a>Micro soft. SQL/servers/data bases
 
-|Gegevens|Weergave naam voor metrische gegevens|Eenheid|Aggregatietype|Beschrijving|Dimensies|
+|Gegevens|Weergave naam voor metrische gegevens|Eenheid|Aggregatietype|Description|Dimensies|
 |---|---|---|---|---|---|
 |cpu_percent|CPU-percentage|Percentage|Average|CPU-percentage|Geen|
 |physical_data_read_percent|Gegevens-I/O-percentage|Percentage|Average|Gegevens-I/O-percentage|Geen|
 |log_write_percent|Logboek-IO-percentage|Percentage|Average|Logboek-IO-percentage. Niet van toepassing op data warehouses.|Geen|
 |dtu_consumption_percent|DTU-percentage|Percentage|Average|DTU-percentage. Is van toepassing op DTU-gebaseerde data bases.|Geen|
-|storage|Gebruikte gegevens ruimte|Bytes|Maximum|Gebruikte gegevens ruimte. Niet van toepassing op data warehouses.|Geen|
+|opslag|Gebruikte gegevens ruimte|Bytes|Maximum|Gebruikte gegevens ruimte. Niet van toepassing op data warehouses.|Geen|
 |connection_successful|Geslaagde verbindingen|Count|Totaal|Geslaagde verbindingen|Geen|
 |connection_failed|Mislukte verbindingen|Count|Totaal|Mislukte verbindingen|Geen|
 |blocked_by_firewall|Geblokkeerd door de firewall|Count|Totaal|Geblokkeerd door de firewall|Geen|
@@ -2046,7 +2046,7 @@ Er zijn enkele beperkingen in wat kan worden gerouteerd en het formulier waarin 
 
 ## <a name="microsoftsqlserverselasticpools"></a>Micro soft. SQL/servers/elasticPools
 
-|Gegevens|Weergave naam voor metrische gegevens|Eenheid|Aggregatietype|Beschrijving|Dimensies|
+|Gegevens|Weergave naam voor metrische gegevens|Eenheid|Aggregatietype|Description|Dimensies|
 |---|---|---|---|---|---|
 |cpu_percent|CPU-percentage|Percentage|Average|CPU-percentage|Geen|
 |database_cpu_percent|CPU-percentage|Percentage|Average|CPU-percentage|DatabaseResourceId|
@@ -2087,7 +2087,7 @@ Er zijn enkele beperkingen in wat kan worden gerouteerd en het formulier waarin 
 
 ## <a name="microsoftsqlmanagedinstances"></a>Micro soft. SQL/managedInstances
 
-|Gegevens|Weergave naam voor metrische gegevens|Eenheid|Aggregatietype|Beschrijving|Dimensies|
+|Gegevens|Weergave naam voor metrische gegevens|Eenheid|Aggregatietype|Description|Dimensies|
 |---|---|---|---|---|---|
 |virtual_core_count|Aantal virtuele kernen|Count|Average|Aantal virtuele kernen|Geen|
 |avg_cpu_percent|Gemiddeld CPU-percentage|Percentage|Average|Gemiddeld CPU-percentage|Geen|
@@ -2101,7 +2101,7 @@ Er zijn enkele beperkingen in wat kan worden gerouteerd en het formulier waarin 
 
 ## <a name="microsoftstoragestorageaccounts"></a>Microsoft.Storage/storageAccounts
 
-|Gegevens|Weergave naam voor metrische gegevens|Eenheid|Aggregatietype|Beschrijving|Dimensies|
+|Gegevens|Weergave naam voor metrische gegevens|Eenheid|Aggregatietype|Description|Dimensies|
 |---|---|---|---|---|---|
 |UsedCapacity|Gebruikte capaciteit|Bytes|Average|Gebruikte capaciteit van account|Geen|
 |Transacties|Transacties|Count|Totaal|Het aantal aanvragen voor een opslagservice of de opgegeven API-bewerking. Dit is inclusief geslaagde en mislukte aanvragen, evenals aanvragen waarbij fouten zijn opgetreden. Gebruik de dimensie ResponseType voor het aantal verschillende typen reacties.|ResponseType, geotype, ApiName, authenticatie|
@@ -2113,7 +2113,7 @@ Er zijn enkele beperkingen in wat kan worden gerouteerd en het formulier waarin 
 
 ## <a name="microsoftstoragestorageaccountsblobservices"></a>Micro soft. Storage/Storage accounts/blobServices
 
-|Gegevens|Weergave naam voor metrische gegevens|Eenheid|Aggregatietype|Beschrijving|Dimensies|
+|Gegevens|Weergave naam voor metrische gegevens|Eenheid|Aggregatietype|Description|Dimensies|
 |---|---|---|---|---|---|
 |BlobCapacity|BLOB-capaciteit|Bytes|Average|De hoeveelheid opslag die wordt gebruikt door de Blob service van het opslag account in bytes.|BlobType, Tier|
 |BlobCount|Aantal blobs|Count|Average|Het aantal blobs in de Blob service van het opslag account.|BlobType, Tier|
@@ -2128,7 +2128,7 @@ Er zijn enkele beperkingen in wat kan worden gerouteerd en het formulier waarin 
 
 ## <a name="microsoftstoragestorageaccountstableservices"></a>Micro soft. Storage/Storage accounts/tableServices
 
-|Gegevens|Weergave naam voor metrische gegevens|Eenheid|Aggregatietype|Beschrijving|Dimensies|
+|Gegevens|Weergave naam voor metrische gegevens|Eenheid|Aggregatietype|Description|Dimensies|
 |---|---|---|---|---|---|
 |TableCapacity|Tabel capaciteit|Bytes|Average|De hoeveelheid opslag die wordt gebruikt door de Table service van het opslag account in bytes.|Geen|
 |TableCount|Aantal tabellen|Count|Average|Het aantal tabellen in de Table service van het opslag account.|Geen|
@@ -2142,14 +2142,14 @@ Er zijn enkele beperkingen in wat kan worden gerouteerd en het formulier waarin 
 
 ## <a name="microsoftstoragestorageaccountsfileservices"></a>Micro soft. Storage/Storage accounts/fileServices
 
-|Gegevens|Weergave naam voor metrische gegevens|Eenheid|Aggregatietype|Beschrijving|Dimensies|
+|Gegevens|Weergave naam voor metrische gegevens|Eenheid|Aggregatietype|Description|Dimensies|
 |---|---|---|---|---|---|
-|FileCapacity|Bestands capaciteit|Bytes|Average|De hoeveelheid opslag die wordt gebruikt door de bestands service van het opslag account in bytes.|Bestands share|
-|FileCount|Aantal bestanden|Count|Average|Het aantal bestanden in de file-service van het opslag account.|Bestands share|
+|FileCapacity|Bestands capaciteit|Bytes|Average|De hoeveelheid opslag die wordt gebruikt door de bestands service van het opslag account in bytes.|Bestandsshare|
+|FileCount|Aantal bestanden|Count|Average|Het aantal bestanden in de file-service van het opslag account.|Bestandsshare|
 |FileShareCount|Aantal bestands shares|Count|Average|Het aantal bestands shares in de file-service van het opslag account.|Geen|
-|FileShareSnapshotCount|Aantal moment opnamen van bestands shares|Count|Average|Het aantal moment opnamen dat aanwezig is op de share in de bestanden service van het opslag account.|Bestands share|
-|FileShareSnapshotSize|Grootte van moment opname van bestands share|Bytes|Average|De hoeveelheid opslag die wordt gebruikt door de moment opnamen in de bestands service van het opslag account in bytes.|Bestands share|
-|FileShareQuota|Quota grootte van bestands share|Bytes|Average|De bovengrens voor de hoeveelheid opslag die kan worden gebruikt door Azure Files service in bytes.|Bestands share|
+|FileShareSnapshotCount|Aantal moment opnamen van bestands shares|Count|Average|Het aantal moment opnamen dat aanwezig is op de share in de bestanden service van het opslag account.|Bestandsshare|
+|FileShareSnapshotSize|Grootte van moment opname van bestands share|Bytes|Average|De hoeveelheid opslag die wordt gebruikt door de moment opnamen in de bestands service van het opslag account in bytes.|Bestandsshare|
+|FileShareQuota|Quota grootte van bestands share|Bytes|Average|De bovengrens voor de hoeveelheid opslag die kan worden gebruikt door Azure Files service in bytes.|Bestandsshare|
 |Transacties|Transacties|Count|Totaal|Het aantal aanvragen voor een opslagservice of de opgegeven API-bewerking. Dit is inclusief geslaagde en mislukte aanvragen, evenals aanvragen waarbij fouten zijn opgetreden. Gebruik de dimensie ResponseType voor het aantal verschillende typen reacties.|ResponseType, geotype, ApiName, Authentication, file share|
 |Inkomend verkeer|Inkomend verkeer|Bytes|Totaal|De hoeveelheid ingangs gegevens, in bytes. Hieronder vallen de inkomende gegevens van een externe client in Azure Storage evenals de inkomende gegevens binnen Azure.|Geotype, ApiName, authenticatie, bestands share|
 |Uitgaand verkeer|Uitgaand verkeer|Bytes|Totaal|De hoeveelheid uitgangs gegevens, in bytes. Hieronder vallen de uitgaande gegevens van een externe client in Azure Storage evenals de uitgaande gegevens binnen Azure. Daarom geeft deze hoeveelheid niet de factureerbare uitgaande gegevens weer.|Geotype, ApiName, authenticatie, bestands share|
@@ -2159,7 +2159,7 @@ Er zijn enkele beperkingen in wat kan worden gerouteerd en het formulier waarin 
 
 ## <a name="microsoftstoragestorageaccountsqueueservices"></a>Micro soft. Storage/Storage accounts/queueServices
 
-|Gegevens|Weergave naam voor metrische gegevens|Eenheid|Aggregatietype|Beschrijving|Dimensies|
+|Gegevens|Weergave naam voor metrische gegevens|Eenheid|Aggregatietype|Description|Dimensies|
 |---|---|---|---|---|---|
 |QueueCapacity|Wachtrij capaciteit|Bytes|Average|De hoeveelheid opslag die wordt gebruikt door de Queue-service van het opslag account in bytes.|Geen|
 |QueueCount|Aantal wachtrijen|Count|Average|Het aantal wacht rijen in de Queue-service van het opslag account.|Geen|
@@ -2177,7 +2177,7 @@ Er zijn enkele beperkingen in wat kan worden gerouteerd en het formulier waarin 
 
 ## <a name="microsoftstoragecachecaches"></a>Micro soft. StorageCache/caches
 
-|Gegevens|Weergave naam voor metrische gegevens|Eenheid|Aggregatietype|Beschrijving|Dimensies|
+|Gegevens|Weergave naam voor metrische gegevens|Eenheid|Aggregatietype|Description|Dimensies|
 |---|---|---|---|---|---|
 |ClientIOPS|Totaal aantal IOPS client|Count|Average|Het aantal client bestands bewerkingen dat is verwerkt door de cache.|Geen|
 |ClientLatency|Gemiddelde client latentie|Milliseconden|Average|Gemiddelde latentie van client bestands bewerkingen naar de opslag cache.|Geen|
@@ -2205,7 +2205,7 @@ Er zijn enkele beperkingen in wat kan worden gerouteerd en het formulier waarin 
 
 ## <a name="microsoftstoragesyncstoragesyncservices"></a>micro soft. storagesync/storageSyncServices
 
-|Gegevens|Weergave naam voor metrische gegevens|Eenheid|Aggregatietype|Beschrijving|Dimensies|
+|Gegevens|Weergave naam voor metrische gegevens|Eenheid|Aggregatietype|Description|Dimensies|
 |---|---|---|---|---|---|
 |ServerSyncSessionResult|Resultaat van synchronisatie sessie|Count|Average|Metriek die een waarde van 1 registreert telkens wanneer het server eindpunt een synchronisatie sessie met het Cloud eindpunt heeft voltooid|SyncGroupName,ServerEndpointName,SyncDirection|
 |StorageSyncSyncSessionAppliedFilesCount|Gesynchroniseerde bestanden|Count|Totaal|Aantal gesynchroniseerde bestanden|SyncGroupName,ServerEndpointName,SyncDirection|
@@ -2219,7 +2219,7 @@ Er zijn enkele beperkingen in wat kan worden gerouteerd en het formulier waarin 
 
 ## <a name="microsoftstoragesyncstoragesyncservicessyncgroups"></a>micro soft. storagesync/storageSyncServices/syncGroups
 
-|Gegevens|Weergave naam voor metrische gegevens|Eenheid|Aggregatietype|Beschrijving|Dimensies|
+|Gegevens|Weergave naam voor metrische gegevens|Eenheid|Aggregatietype|Description|Dimensies|
 |---|---|---|---|---|---|
 |SyncGroupSyncSessionAppliedFilesCount|Gesynchroniseerde bestanden|Count|Totaal|Aantal gesynchroniseerde bestanden|SyncGroupName,ServerEndpointName,SyncDirection|
 |SyncGroupSyncSessionPerItemErrorsCount|Bestanden die niet worden gesynchroniseerd|Count|Totaal|Aantal bestanden dat niet kan worden gesynchroniseerd|SyncGroupName,ServerEndpointName,SyncDirection|
@@ -2227,7 +2227,7 @@ Er zijn enkele beperkingen in wat kan worden gerouteerd en het formulier waarin 
 
 ## <a name="microsoftstoragesyncstoragesyncservicessyncgroupsserverendpoints"></a>micro soft. storagesync/storageSyncServices/syncGroups/serverEndpoints
 
-|Gegevens|Weergave naam voor metrische gegevens|Eenheid|Aggregatietype|Beschrijving|Dimensies|
+|Gegevens|Weergave naam voor metrische gegevens|Eenheid|Aggregatietype|Description|Dimensies|
 |---|---|---|---|---|---|
 |ServerEndpointSyncSessionAppliedFilesCount|Gesynchroniseerde bestanden|Count|Totaal|Aantal gesynchroniseerde bestanden|ServerEndpointName,SyncDirection|
 |ServerEndpointSyncSessionPerItemErrorsCount|Bestanden die niet worden gesynchroniseerd|Count|Totaal|Aantal bestanden dat niet kan worden gesynchroniseerd|ServerEndpointName,SyncDirection|
@@ -2235,7 +2235,7 @@ Er zijn enkele beperkingen in wat kan worden gerouteerd en het formulier waarin 
 
 ## <a name="microsoftstoragesyncstoragesyncservicesregisteredservers"></a>micro soft. storagesync/storageSyncServices/registeredServer
 
-|Gegevens|Weergave naam voor metrische gegevens|Eenheid|Aggregatietype|Beschrijving|Dimensies|
+|Gegevens|Weergave naam voor metrische gegevens|Eenheid|Aggregatietype|Description|Dimensies|
 |---|---|---|---|---|---|
 |ServerHeartbeat|Online status van de server|Count|Maximum|Metriek die een waarde van 1 registreert telkens wanneer de resigtered-server een heartbeat met het Cloud eindpunt heeft geregistreerd|ServerResourceId, servername|
 |ServerRecallIOTotalSizeBytes|Cloud lagen intrekken|Bytes|Totaal|De totale grootte van de gegevens die door de server zijn ingetrokken|ServerResourceId, servername|
@@ -2244,7 +2244,7 @@ Er zijn enkele beperkingen in wat kan worden gerouteerd en het formulier waarin 
 
 ## <a name="microsoftstreamanalyticsstreamingjobs"></a>Micro soft. StreamAnalytics/streamingjobs
 
-|Gegevens|Weergave naam voor metrische gegevens|Eenheid|Aggregatietype|Beschrijving|Dimensies|
+|Gegevens|Weergave naam voor metrische gegevens|Eenheid|Aggregatietype|Description|Dimensies|
 |---|---|---|---|---|---|
 |ResourceUtilization|% Gebruik|Percentage|Maximum|% Gebruik|Logischenaam, PartitionId|
 |InputEvents|Invoer gebeurtenissen|Count|Totaal|Invoer gebeurtenissen|Logischenaam, PartitionId|
@@ -2265,7 +2265,7 @@ Er zijn enkele beperkingen in wat kan worden gerouteerd en het formulier waarin 
 
 ## <a name="microsoftsynapseworkspaces"></a>Micro soft. Synapse/werk ruimten
 
-|Gegevens|Weergave naam voor metrische gegevens|Eenheid|Aggregatietype|Beschrijving|Dimensies|
+|Gegevens|Weergave naam voor metrische gegevens|Eenheid|Aggregatietype|Description|Dimensies|
 |---|---|---|---|---|---|
 |OrchestrationPipelineRunsEnded|Beëindigde pijplijn uitvoeringen|Count|Totaal|Aantal uitvoeringen van de Orchestrator-pipeline die geslaagd, mislukt of geannuleerd zijn|Resultaat, FailureType, pijp lijn|
 |OrchestrationActivityRunsEnded|Uitvoering van activiteit beëindigd|Count|Totaal|Aantal Orchestration-activiteiten dat is geslaagd, mislukt of geannuleerd|Resultaat, FailureType, activiteit, activity type, pijp lijn|
@@ -2276,7 +2276,7 @@ Er zijn enkele beperkingen in wat kan worden gerouteerd en het formulier waarin 
 
 ## <a name="microsoftsynapseworkspacesbigdatapools"></a>Micro soft. Synapse/werk ruimten/bigDataPools
 
-|Gegevens|Weergave naam voor metrische gegevens|Eenheid|Aggregatietype|Beschrijving|Dimensies|
+|Gegevens|Weergave naam voor metrische gegevens|Eenheid|Aggregatietype|Description|Dimensies|
 |---|---|---|---|---|---|
 |SparkJobsEnded|Beëindigde toepassingen|Count|Totaal|Aantal beëindigde toepassingen|Taak type, JobResult|
 |CoresCapacity|Capaciteit van kern geheugens|Count|Maximum|Capaciteit van kern geheugens|Geen|
@@ -2284,7 +2284,7 @@ Er zijn enkele beperkingen in wat kan worden gerouteerd en het formulier waarin 
 
 ## <a name="microsoftsynapseworkspacessqlpools"></a>Micro soft. Synapse/werk ruimten/sqlPools
 
-|Gegevens|Weergave naam voor metrische gegevens|Eenheid|Aggregatietype|Beschrijving|Dimensies|
+|Gegevens|Weergave naam voor metrische gegevens|Eenheid|Aggregatietype|Description|Dimensies|
 |---|---|---|---|---|---|
 |DWULimit|Limiet voor DWU|Count|Maximum|Serviceniveau doelstelling van de SQL-groep|Geen|
 |DWUUsed|DWU gebruikt|Count|Maximum|Vertegenwoordigt een weer gave op hoog niveau van het gebruik in de SQL-groep. Gemeten met DWU-limiet * DWU percentage|Geen|
@@ -2305,7 +2305,7 @@ Er zijn enkele beperkingen in wat kan worden gerouteerd en het formulier waarin 
 
 ## <a name="microsofttimeseriesinsightsenvironments"></a>Micro soft. TimeSeriesInsights/omgevingen
 
-|Gegevens|Weergave naam voor metrische gegevens|Eenheid|Aggregatietype|Beschrijving|Dimensies|
+|Gegevens|Weergave naam voor metrische gegevens|Eenheid|Aggregatietype|Description|Dimensies|
 |---|---|---|---|---|---|
 |IngressReceivedMessages|Ontvangen berichten met ingang|Count|Totaal|Telling van berichten die zijn gelezen uit alle gebeurtenis bronnen van Event hub of IoT hub|Geen|
 |IngressReceivedInvalidMessages|Ongeldige berichten ontvangen|Count|Totaal|Aantal ongeldige berichten gelezen uit alle gebeurtenis bronnen van Event hub of IoT hub|Geen|
@@ -2321,7 +2321,7 @@ Er zijn enkele beperkingen in wat kan worden gerouteerd en het formulier waarin 
 
 ## <a name="microsofttimeseriesinsightsenvironmentseventsources"></a>Micro soft. TimeSeriesInsights/omgevingen/eventsources
 
-|Gegevens|Weergave naam voor metrische gegevens|Eenheid|Aggregatietype|Beschrijving|Dimensies|
+|Gegevens|Weergave naam voor metrische gegevens|Eenheid|Aggregatietype|Description|Dimensies|
 |---|---|---|---|---|---|
 |IngressReceivedMessages|Ontvangen berichten met ingang|Count|Totaal|Aantal berichten dat uit de gebeurtenis bron is gelezen|Geen|
 |IngressReceivedInvalidMessages|Ongeldige berichten ontvangen|Count|Totaal|Aantal ongeldige berichten gelezen uit de gebeurtenis bron|Geen|
@@ -2335,7 +2335,7 @@ Er zijn enkele beperkingen in wat kan worden gerouteerd en het formulier waarin 
 
 ## <a name="microsoftvmwarecloudsimplevirtualmachines"></a>Micro soft. VMwareCloudSimple/informatie
 
-|Gegevens|Weergave naam voor metrische gegevens|Eenheid|Aggregatietype|Beschrijving|Dimensies|
+|Gegevens|Weergave naam voor metrische gegevens|Eenheid|Aggregatietype|Description|Dimensies|
 |---|---|---|---|---|---|
 |DiskReadBytesPerSecond|Gelezen bytes per seconde|BytesPerSecond|Average|Gemiddelde door Voer van schijf vanwege Lees bewerkingen gedurende de voorbeeld periode.|Geen|
 |DiskWriteBytesPerSecond|Geschreven bytes per seconde|BytesPerSecond|Average|Gemiddelde doorvoer snelheid van schijven vanwege schrijf bewerkingen gedurende de voorbeeld periode.|Geen|
@@ -2359,7 +2359,7 @@ Er zijn enkele beperkingen in wat kan worden gerouteerd en het formulier waarin 
 
 ## <a name="microsoftwebserverfarms"></a>Micro soft. web/server farms
 
-|Gegevens|Weergave naam voor metrische gegevens|Eenheid|Aggregatietype|Beschrijving|Dimensies|
+|Gegevens|Weergave naam voor metrische gegevens|Eenheid|Aggregatietype|Description|Dimensies|
 |---|---|---|---|---|---|
 |CpuPercentage|CPU-percentage|Percentage|Average|CPU-percentage|Exemplaar|
 |MemoryPercentage|Geheugen percentage|Percentage|Average|Geheugen percentage|Exemplaar|
@@ -2385,7 +2385,7 @@ Er zijn enkele beperkingen in wat kan worden gerouteerd en het formulier waarin 
 > [!IMPORTANT]
 > De **gemiddelde reactie tijd** wordt afgeschaft om Verwar ring met metrische aggregaties te voor komen. Gebruik de **reactie tijd** als vervanging.
 
-|Gegevens|Weergave naam voor metrische gegevens|Eenheid|Aggregatietype|Beschrijving|Dimensies|
+|Gegevens|Weergave naam voor metrische gegevens|Eenheid|Aggregatietype|Description|Dimensies|
 |---|---|---|---|---|---|
 |CpuTime|CPU-tijd|Seconden|Totaal|CPU-tijd|Exemplaar|
 |Aanvragen|Aanvragen|Count|Totaal|Aanvragen|Exemplaar|
@@ -2429,7 +2429,7 @@ Er zijn enkele beperkingen in wat kan worden gerouteerd en het formulier waarin 
 > [!NOTE]
 > Het gebruik van het **Bestands systeem** is een nieuwe waarde die wereld wijd wordt getotaliseerd, er worden geen gegevens verwacht, tenzij u White List hebt voor een persoonlijke preview.
 
-|Gegevens|Weergave naam voor metrische gegevens|Eenheid|Aggregatietype|Beschrijving|Dimensies|
+|Gegevens|Weergave naam voor metrische gegevens|Eenheid|Aggregatietype|Description|Dimensies|
 |---|---|---|---|---|---|
 |BytesReceived|Gegevens in|Bytes|Totaal|Gegevens in|Exemplaar|
 |Bytes sent|Gegevens uit|Bytes|Totaal|Gegevens uit|Exemplaar|
@@ -2457,7 +2457,7 @@ Er zijn enkele beperkingen in wat kan worden gerouteerd en het formulier waarin 
 
 ## <a name="microsoftwebsitesslots"></a>Micro soft. web/sites/sleuven
 
-|Gegevens|Weergave naam voor metrische gegevens|Eenheid|Aggregatietype|Beschrijving|Dimensies|
+|Gegevens|Weergave naam voor metrische gegevens|Eenheid|Aggregatietype|Description|Dimensies|
 |---|---|---|---|---|---|
 |CpuTime|CPU-tijd|Seconden|Totaal|CPU-tijd|Exemplaar|
 |Aanvragen|Aanvragen|Count|Totaal|Aanvragen|Exemplaar|
@@ -2500,7 +2500,7 @@ Er zijn enkele beperkingen in wat kan worden gerouteerd en het formulier waarin 
 
 ## <a name="microsoftwebhostingenvironmentsmultirolepools"></a>Micro soft. Web/hostingEnvironments/multiRolePools
 
-|Gegevens|Weergave naam voor metrische gegevens|Eenheid|Aggregatietype|Beschrijving|Dimensies|
+|Gegevens|Weergave naam voor metrische gegevens|Eenheid|Aggregatietype|Description|Dimensies|
 |---|---|---|---|---|---|
 |Aanvragen|Aanvragen|Count|Totaal|Aanvragen|Exemplaar|
 |BytesReceived|Gegevens in|Bytes|Totaal|Gegevens in|Exemplaar|
@@ -2527,7 +2527,7 @@ Er zijn enkele beperkingen in wat kan worden gerouteerd en het formulier waarin 
 
 ## <a name="microsoftwebhostingenvironmentsworkerpools"></a>Micro soft. Web/hostingEnvironments/workerPools
 
-|Gegevens|Weergave naam voor metrische gegevens|Eenheid|Aggregatietype|Beschrijving|Dimensies|
+|Gegevens|Weergave naam voor metrische gegevens|Eenheid|Aggregatietype|Description|Dimensies|
 |---|---|---|---|---|---|
 |WorkersTotal|Totaal aantal werk rollen|Count|Average|Totaal aantal werk rollen|Geen|
 |WorkersAvailable|Beschik bare werk nemers|Count|Average|Beschik bare werk nemers|Geen|
