@@ -4,15 +4,16 @@ description: Meer informatie over het instellen van Azure Active Directory (Azur
 author: lfittl-msft
 ms.author: lufittl
 ms.service: mysql
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 01/22/2019
-ms.openlocfilehash: db7bfbef7435c47aa011c5f19e8c52d013c88dc3
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: ff5d2e5546c8b29ed486c587a555f47fa2c7e31b
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84636679"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86101423"
 ---
-# <a name="use-azure-active-directory-for-authenticating-with-mysql"></a>Azure Active Directory gebruiken voor verificatie met MySQL
+# <a name="use-azure-active-directory-for-authentication-with-mysql"></a>Azure Active Directory gebruiken voor verificatie met MySQL
 
 Dit artikel begeleidt u stapsgewijs door de stappen voor het configureren van Azure Active Directory toegang met Azure Database for MySQL en hoe u verbinding maakt met behulp van een Azure AD-token.
 
@@ -204,7 +205,7 @@ De meeste Stuur Programma's worden ondersteund, maar u moet de instellingen voor
 * Perl
   * DBD:: mysql: ondersteund
   * Net:: MySQL: niet ondersteund
-* Aan de slag
+* Go
   * Go-SQL-stuur programma: ondersteund, toevoegen `?tls=true&allowCleartextPasswords=true` aan Connection String
 
 ## <a name="next-steps"></a>Volgende stappen
