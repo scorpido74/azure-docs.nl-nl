@@ -6,12 +6,12 @@ ms.service: azure-migrate
 ms.topic: conceptual
 ms.date: 06/21/2020
 ms.author: rajosh
-ms.openlocfilehash: a7d22a6a2f7100826c865beec0d1cff09fc39660
-ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
+ms.openlocfilehash: e80ec71bef8c34331fac076b7b08be48a9571c2e
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86043237"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86107696"
 ---
 # <a name="build-migration-plan-with-azure-migrate"></a>Migratieplan bouwen met Azure Migrate
 
@@ -24,7 +24,7 @@ In dit artikel vindt u een korte hand leiding voor het bouwen van uw migratie pl
 
 ## <a name="define-the-goals-of-cloud-migration"></a>De doelen van Cloud migratie definiëren
 
-Voordat u een migratie plan bouwt, is het belang rijk om de [motivatie](https://docs.microsoft.com/azure/cloud-adoption-framework/strategy/motivations) te begrijpen en te evalueren om over te stappen op de Cloud, waardoor u meer succes volle bedrijfs resultaten kunt produceren. Naarmate het [Cloud-acceptatie raamwerk voor Azure](https://docs.microsoft.com/azure/cloud-adoption-framework) wordt uitgelegd, kunnen er verschillende triggers en migratie methoden zijn die geschikt zijn voor uw bedrijf:  
+Voordat u een migratie plan bouwt, is het belang rijk om de [motivatie](/azure/cloud-adoption-framework/strategy/motivations) te begrijpen en te evalueren om over te stappen op de Cloud, waardoor u meer succes volle bedrijfs resultaten kunt produceren. Naarmate het [Cloud-acceptatie raamwerk voor Azure](/azure/cloud-adoption-framework) wordt uitgelegd, kunnen er verschillende triggers en migratie methoden zijn die geschikt zijn voor uw bedrijf:  
 
 **Kritieke zakelijke gebeurtenissen** | **Resultaat van de migratie**
 --- | ---
@@ -147,7 +147,7 @@ Voordat u uw migratie plan voltooit, moet u ervoor zorgen dat de volgende belang
 
 - Controleer de aanbevolen Azure-machtigingen en uw server/database toegangs rollen en het machtigings model dat nodig is voor de migratie.
 
-- Bereid uw organisatie voor en zorg ervoor dat personeel de digitale trans formatie kan uitlijnen. Een solide trainings basis is belang rijk voor een succes volle wijziging van de organisatie. Bekijk de gratis training die beschikbaar is op [Microsoft Learn](https://docs.microsoft.com/learn/azure/?ocid=CM_Discovery_Checklist_PDF), met inbegrip van cursussen over de basis principes van Azure, de architectuur van de oplossing en de beveiliging. Moedig uw team aan om ook [Azure-certificering](https://www.microsoft.com/learning/certification-overview.aspx?ocid=CM_Discovery_Checklist_PDF)te verkennen   .  
+- Bereid uw organisatie voor en zorg ervoor dat personeel de digitale trans formatie kan uitlijnen. Een solide trainings basis is belang rijk voor een succes volle wijziging van de organisatie. Bekijk de gratis training die beschikbaar is op [Microsoft Learn](/learn/azure/?ocid=CM_Discovery_Checklist_PDF), met inbegrip van cursussen over de basis principes van Azure, de architectuur van de oplossing en de beveiliging. Moedig uw team aan om ook [Azure-certificering](https://www.microsoft.com/learning/certification-overview.aspx?ocid=CM_Discovery_Checklist_PDF)te verkennen   .  
 
 - Ontvang zo nodig ondersteuning voor uw implementatie. Veel organisaties kiezen buiten de hulp om hun Cloud migratie te ondersteunen. Als u snel wilt overschakelen naar Azure en wilt vertrouwen met persoonlijke hulp, overweeg dan een [Azure expert managed service provider](https://www.microsoft.com/solution-providers/search?cacheId=9c2fed4f-f9e2-42fb-8966-4c565f08f11e&ocid=CM_Discovery_Checklist_PDF)   of [FastTrack for Azure](https://azure.microsoft.com/programs/azure-fasttrack/?ocid=CM_Discovery_Checklist_PDF).  
 
@@ -164,6 +164,6 @@ Wanneer u klaar bent om te migreren, gebruikt u het *hulp programma voor server 
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- Onderzoek de [reis voor Cloud migratie](https://docs.microsoft.com/azure/architecture/cloud-adoption/getting-started/migrate)   in het Azure Cloud-acceptatie Framework.
+- Onderzoek de [reis voor Cloud migratie](/azure/architecture/cloud-adoption/getting-started/migrate)   in het Azure Cloud-acceptatie Framework.
 - [Aan de slag](https://youtu.be/wFfq3YPxYHE) met Azure Migrate.
 - Een evaluatie maken voor virtuele [VMware-machines](tutorial-assess-vmware.md) of [virtuele Hyper-V-machines](tutorial-assess-hyper-v.md).

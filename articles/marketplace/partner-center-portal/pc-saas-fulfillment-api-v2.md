@@ -1,18 +1,16 @@
 ---
 title: SaaS-fulfillment-Api's v2 in micro soft Commercial Marketplace
 description: Meer informatie over het maken en beheren van een SaaS-aanbieding op Microsoft AppSource en Azure Marketplace met behulp van de fulfillment Api's versie 2.
-author: qianw211
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: reference
 ms.date: 06/10/2020
-ms.author: dsindona
-ms.openlocfilehash: 1a833f86a0d8de3f5b8c83e899a58fa83f3153c4
-ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.openlocfilehash: f501e84e988d340ba710e49d30caddbe56006c8a
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/05/2020
-ms.locfileid: "85963764"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86109413"
 ---
 # <a name="saas-fulfillment-apis-version-2-in-microsoft-commercial-marketplace"></a>SaaS-fulfillment-Api's versie 2 in micro soft Commercial Marketplace
 

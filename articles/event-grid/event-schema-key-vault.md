@@ -1,18 +1,14 @@
 ---
 title: Azure Key Vault als Event Grid bron
 description: Hierin worden de eigenschappen en schema's beschreven die voor Azure Key Vault gebeurtenissen worden gegeven met Azure Event Grid
-services: event-grid
-author: spelluru
-ms.service: event-grid
 ms.topic: conceptual
-ms.date: 04/09/2020
-ms.author: spelluru
-ms.openlocfilehash: 40bff9585e64163039a8847ff868c982ffb20414
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 07/07/2020
+ms.openlocfilehash: 1f9cbe85de9423484343e4054be8d2d58c6c5e7e
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81458246"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86109430"
 ---
 # <a name="azure-key-vault-as-event-grid-source"></a>Azure Key Vault als Event Grid bron
 
@@ -24,7 +20,7 @@ In dit artikel vindt u de eigenschappen en het schema voor gebeurtenissen in [Az
 
 Een Azure Key Vault-account genereert de volgende gebeurtenis typen:
 
-| Volledige naam van de gebeurtenis | Weergave naam van gebeurtenis | Beschrijving |
+| Volledige naam van de gebeurtenis | Weergave naam van gebeurtenis | Description |
 | ---------- | ----------- |---|
 | Micro soft. CertificateNewVersionCreated | De nieuwe versie van het certificaat is gemaakt | Wordt geactiveerd wanneer een nieuw certificaat of nieuwe certificaat versie wordt gemaakt. |
 | Micro soft. CertificateNearExpiry | Certificaat bijna verlopen | Wordt geactiveerd wanneer de huidige versie van het certificaat bijna verloopt. (De gebeurtenis wordt geactiveerd 30 dagen voor de verval datum.) |

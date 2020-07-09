@@ -3,15 +3,16 @@ title: Migratie hulpprogramma's toevoegen in Azure Migrate
 description: Meer informatie over het toevoegen van hulpprogram ma's voor migratie in Azure Migrate.
 ms.topic: article
 ms.date: 04/26/2020
-ms.openlocfilehash: 670341adca7ab2958d43132aab164d7bba0f87d0
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: b6ac8ed64d3f12783cc16f0428874a19d027adf9
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84195810"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86109804"
 ---
 # <a name="add-migration-tools"></a>Migratiehulpprogramma's toevoegen
 
-In dit artikel wordt beschreven hoe u migratie hulpprogramma's toevoegt in [Azure migrate](migrate-overview.md).
+In dit artikel wordt beschreven hoe u migratie hulpprogramma's toevoegt in [Azure migrate](./migrate-services-overview.md).
 
 - Als u een hulp programma voor migratie wilt toevoegen en nog geen Azure Migrate project hebt ingesteld, volgt u dit [artikel](how-to-add-tool-first-time.md).
 - Als u een ISV-hulp programma voor migratie hebt toegevoegd, [volgt u de stappen](prepare-isv-movere.md)om te voor bereiding op het werken met het hulp programma.

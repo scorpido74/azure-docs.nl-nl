@@ -7,15 +7,15 @@ ms.author: yanacai
 ms.reviewer: jasonwhowell
 ms.assetid: 66dd58b1-0b28-46d1-aaae-43ee2739ae0a
 ms.service: data-lake-analytics
-ms.topic: conceptual
+ms.topic: how-to
 ms.workload: big-data
 ms.date: 07/03/2018
-ms.openlocfilehash: 4e4115518c71c3695797ac051910890d24723bae
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.openlocfilehash: 580f23fa2b4fc9c5afee4eb8435e74a8bfa1fbe9
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
 ms.lasthandoff: 07/08/2020
-ms.locfileid: "86085392"
+ms.locfileid: "86106948"
 ---
 # <a name="debug-azure-data-lake-analytics-code-locally"></a>Fout opsporing Azure Data Lake Analytics code lokaal
 
@@ -45,7 +45,7 @@ U kunt fouten opsporen in C#-assembly's zonder ze te verzenden en te registreren
    ```sql
    CREATE ASSEMBLY assemblyname FROM @"..\..\path\to\output\.dll";
    ```
-        
+   
 3. Stel onderbrekingspunten in in de C#-code.
 4. Selecteer **F5** om fouten op te sporen in het script door lokaal naar het **DLL** -bestand van C# te verwijzen.
 

@@ -8,21 +8,21 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 04/30/2020
 ms.author: aahi
-ms.openlocfilehash: cd17bf6c97cb89984bf407552330fbe9bec36e3f
-ms.sourcegitcommit: bf99428d2562a70f42b5a04021dde6ef26c3ec3a
+ms.openlocfilehash: dd7a8b94aefbf389afef30b327ffaa367a30dd51
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/23/2020
-ms.locfileid: "85292168"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86108487"
 ---
 > [!NOTE]
-> Als u wilt detecteren `PHI` , gebruikt u de `domain=phi` para meter en de model versie `2020-04-01` of hoger.
+> `PHI`Gebruik de `domain=phi` para meter en model versie of later om te detecteren (beveiligde status informatie) `2020-04-01` .
 >
 > Bijvoorbeeld: `https://<your-custom-subdomain>.cognitiveservices.azure.com/text/analytics/v3.1-preview.1/entities/recognition/pii?domain=phi&model-version=2020-04-01`
  
 De volgende entiteits categorieën worden geretourneerd bij het verzenden van aanvragen naar het `/v3.1-preview.1/entities/recognition/pii` eind punt.
 
-| Categorie   | Subcategory | Beschrijving                          | Model versie starten | Notities |
+| Categorie   | Subcategory | Description                          | Model versie starten | Notities |
 |------------|-------------|--------------------------------------|------------------------|---|
 | Person     | N.v.t.         | Namen van personen.  | `2019-10-01`  | Ook geretourneerd met `domain=phi` . |
 | PersonType | N.v.t.         | Taak typen of-rollen die door een persoon worden beheerd. | `2020-02-01` | |
@@ -37,7 +37,7 @@ De volgende entiteits categorieën worden geretourneerd bij het verzenden van aa
 | URL | N.v.t. | Url's naar websites. | `2019-10-01` | Ook geretourneerd met `domain=phi` . |
 | IP | N.v.t. | IP-adressen van het netwerk. | `2019-10-01` | |
 | DateTime | N.v.t. | Datums en tijden van de dag. | `2019-10-01` |  | 
-| DateTime | Date | Kalender datums. | `2019-10-01` | Ook geretourneerd met `domain=phi` . |
+| DateTime | Datum | Kalender datums. | `2019-10-01` | Ook geretourneerd met `domain=phi` . |
 | Aantal | N.v.t. | Cijfers en numerieke aantallen. | `2019-10-01` |  |
 | Aantal | Leeftijd | Leeftijd. | `2019-10-01` | | |
 | Internationale classificatie van ziekten (ICD-9-CM) | N.v.t. | Entiteiten met betrekking tot de internationale classificatie van ziekten, negende revisie.   | `2020-04-01` | |
@@ -47,7 +47,7 @@ De volgende entiteits categorieën worden geretourneerd bij het verzenden van aa
 
 Deze entiteits categorie bevat Identificeer bare Azure-informatie, inclusief verificatie gegevens en verbindings reeksen. Beschikbaar vanaf model versie `2019-10-01` . Niet geretourneerd met de `domain=phi` para meter.
 
-| Subcategory                           | Beschrijving                                                                 |
+| Subcategory                           | Description                                                                 |
 |---------------------------------------|-----------------------------------------------------------------------------|
 | Verificatie sleutel voor Azure DocumentDB             | Autorisatie sleutel voor een Azure DocumentDB-server.                           |
 | Verbindings reeks voor de Azure IAAS-data base en de Azure SQL-verbindings reeks | Verbindings reeks voor een Azure Infrastructure as a service-data base (IaaS) en SQL connection string. |

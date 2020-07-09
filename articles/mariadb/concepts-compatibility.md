@@ -6,12 +6,12 @@ ms.author: andrela
 ms.service: mariadb
 ms.topic: conceptual
 ms.date: 3/18/2020
-ms.openlocfilehash: a0cee198f028fd90e04dac15e98d7cd33aee9201
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 79c91fff837e3869eda0f45ce892e63b6611a1d0
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "79532345"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86107203"
 ---
 # <a name="mariadb-drivers-and-management-tools-compatible-with-azure-database-for-mariadb"></a>MariaDB-Stuur Programma's en-beheer hulpprogramma's die compatibel zijn met Azure Database for MariaDB
 
@@ -37,7 +37,7 @@ Java | https://downloads.mariadb.org/connector-java/ | 2,1, 2,0, 1,6 | 1.5.5 en 
 
 Het compatibiliteits voordeel kan ook worden uitgebreid naar beheer hulpprogramma's voor data bases. De bestaande hulpprogram ma's moeten blijven werken met Azure Database for MariaDB, zolang de data base is gemanipuleerd binnen de gebruikers machtigingen. De volgende tabel bevat drie algemene hulpprogram ma's voor database beheer die zijn getest en compatibel zijn met Azure Database for MariaDB 10,2:
 
-| | **MySQL Workbench 6. x en Maxi maal** | **Navicat 12** | **PHPMyAdmin 4. x en Maxi maal**
+| Bewerking | **MySQL Workbench 6. x en Maxi maal** | **Navicat 12** | **PHPMyAdmin 4. x en Maxi maal**
 ---|---|---|---
 Maken, bijwerken, lezen, schrijven, verwijderen | X | X | X
 SSL-verbinding | X | X | X

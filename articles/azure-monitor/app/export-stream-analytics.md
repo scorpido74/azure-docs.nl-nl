@@ -3,11 +3,12 @@ title: Exporteren met behulp van Stream Analytics vanuit Azure-toepassing inzich
 description: Stream Analytics kunt de gegevens die u exporteert, continu transformeren, filteren en routeren vanuit Application Insights.
 ms.topic: conceptual
 ms.date: 01/08/2019
-ms.openlocfilehash: 15d1efa3a632024429d41f27fc23c569cd85bec2
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 400c727b44d3794dc9a17c59959dc5c75cea71fe
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81536876"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86110484"
 ---
 # <a name="use-stream-analytics-to-process-exported-data-from-application-insights"></a>Gebruik Stream Analytics voor het verwerken van geëxporteerde gegevens van Application Insights
 [Azure stream Analytics](https://azure.microsoft.com/services/stream-analytics/) is het ideale hulp programma voor het verwerken van gegevens die zijn [geëxporteerd vanuit Application Insights](export-telemetry.md). Stream Analytics kunnen gegevens uit verschillende bronnen ophalen. De gegevens kunnen worden getransformeerd en gefilterd en vervolgens worden doorgestuurd naar verschillende Sinks.
@@ -92,7 +93,7 @@ Nu hebt u de primaire toegangs sleutel van uw opslag account nodig die u eerder 
 
 Het voorvoegsel patroon van het pad geeft aan waar Stream Analytics de invoer bestanden in de opslag locatie vindt. U moet deze instellen op overeenkomen met de manier waarop continue export de gegevens opslaat. Stel deze als volgt in:
 
-    webapplication27_12345678123412341234123456789abcdef0/PageViews/{date}/{time}
+`webapplication27_12345678123412341234123456789abcdef0/PageViews/{date}/{time}`
 
 In dit voorbeeld geldt het volgende:
 
@@ -124,16 +125,15 @@ Gebruik de functie test om te controleren of u de juiste uitvoer krijgt. Geef de
 Deze query plakken:
 
 ```SQL
-
-    SELECT
-      flat.ArrayValue.name,
-      count(*)
-    INTO
-      [pbi-output]
-    FROM
-      [export-input] A
-    OUTER APPLY GetElements(A.[event]) as flat
-    GROUP BY TumblingWindow(minute, 1), flat.ArrayValue.name
+SELECT
+  flat.ArrayValue.name,
+  count(*)
+INTO
+  [pbi-output]
+FROM
+  [export-input] A
+OUTER APPLY GetElements(A.[event]) as flat
+GROUP BY TumblingWindow(minute, 1), flat.ArrayValue.name
 ```
 
 * export-invoer is de alias die we hebben opgegeven voor de stroom invoer
@@ -141,40 +141,38 @@ Deze query plakken:
 * We gebruiken [outer apply GetElements](https://docs.microsoft.com/stream-analytics-query/apply-azure-stream-analytics) omdat de naam van de gebeurtenis zich in een geneste JSON-matrix bevindt. Vervolgens selecteert de Select de naam van de gebeurtenis, samen met een telling van het aantal exemplaren met die naam in de tijds periode. De [Group By-Component groepeert](https://docs.microsoft.com/stream-analytics-query/group-by-azure-stream-analytics) de elementen in peri Oden van één minuut.
 
 ### <a name="query-to-display-metric-values"></a>Query om meet waarden weer te geven
+
 ```SQL
-
-    SELECT
-      A.context.data.eventtime,
-      avg(CASE WHEN flat.arrayvalue.myMetric.value IS NULL THEN 0 ELSE  flat.arrayvalue.myMetric.value END) as myValue
-    INTO
-      [pbi-output]
-    FROM
-      [export-input] A
-    OUTER APPLY GetElements(A.context.custom.metrics) as flat
-    GROUP BY TumblingWindow(minute, 1), A.context.data.eventtime
-
-``` 
+SELECT
+  A.context.data.eventtime,
+  avg(CASE WHEN flat.arrayvalue.myMetric.value IS NULL THEN 0 ELSE  flat.arrayvalue.myMetric.value END) as myValue
+INTO
+  [pbi-output]
+FROM
+  [export-input] A
+OUTER APPLY GetElements(A.context.custom.metrics) as flat
+GROUP BY TumblingWindow(minute, 1), A.context.data.eventtime
+```
 
 * Met deze query wordt ingezoomd op de telemetriegegevens voor de gebeurtenis tijd en de waarde van de metrische gegevens. De metrische waarden bevinden zich in een matrix. Daarom gebruiken we het GetElements-patroon van de BUITENste toepassing om de rijen uit te pakken. ' myMetric ' is de naam van de metrische waarde in dit geval. 
 
 ### <a name="query-to-include-values-of-dimension-properties"></a>Query voor het toevoegen van waarden van dimensie-eigenschappen
+
 ```SQL
-
-    WITH flat AS (
-    SELECT
-      MySource.context.data.eventTime as eventTime,
-      InstanceId = MyDimension.ArrayValue.InstanceId.value,
-      BusinessUnitId = MyDimension.ArrayValue.BusinessUnitId.value
-    FROM MySource
-    OUTER APPLY GetArrayElements(MySource.context.custom.dimensions) MyDimension
-    )
-    SELECT
-     eventTime,
-     InstanceId,
-     BusinessUnitId
-    INTO AIOutput
-    FROM flat
-
+WITH flat AS (
+SELECT
+  MySource.context.data.eventTime as eventTime,
+  InstanceId = MyDimension.ArrayValue.InstanceId.value,
+  BusinessUnitId = MyDimension.ArrayValue.BusinessUnitId.value
+FROM MySource
+OUTER APPLY GetArrayElements(MySource.context.custom.dimensions) MyDimension
+)
+SELECT
+  eventTime,
+  InstanceId,
+  BusinessUnitId
+INTO AIOutput
+FROM flat
 ```
 
 * Deze query bevat waarden van de dimensie-eigenschappen, zonder dat dit afhankelijk is van een bepaalde dimensie op een vaste index in de dimensie matrix.

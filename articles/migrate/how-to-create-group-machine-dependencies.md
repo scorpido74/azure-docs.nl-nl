@@ -3,11 +3,12 @@ title: Afhankelijkheids analyse op basis van een agent instellen in de evaluatie
 description: In dit artikel wordt beschreven hoe u een afhankelijkheids analyse op basis van een agent instelt in Azure Migrate server-evaluatie.
 ms.topic: how-to
 ms.date: 6/09/2020
-ms.openlocfilehash: 1271a45843a3775d4e1444321faad194edad2f23
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 1a656ec734ff098dd5835f653010c7f298c13b38
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84770574"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86109991"
 ---
 # <a name="set-up-dependency-visualization"></a>Visualisatie van afhankelijkheid instellen
 
@@ -56,7 +57,7 @@ In dit artikel wordt beschreven hoe u analyse van agentloze afhankelijkheden ins
 Installeer de agents op elke computer die u wilt analyseren.
 
 > [!NOTE]
-> Voor computers die worden bewaakt door System Center Operations Manager 2012 R2 of hoger, hoeft u de MMA-agent niet te installeren. Servicetoewijzing integreert met Operations Manager. [Volg](https://docs.microsoft.com/azure/azure-monitor/insights/service-map-scom#prerequisites) de richt lijnen voor integratie.
+> Voor computers die worden bewaakt door System Center Operations Manager 2012 R2 of hoger, hoeft u de MMA-agent niet te installeren. Servicetoewijzing integreert met Operations Manager. [Volg](../azure-monitor/insights/service-map-scom.md#prerequisites) de richt lijnen voor integratie.
 
 1. Klik in **Azure migrate: Server evaluatie**op **gedetecteerde servers**.
 2. Voor elke computer die u wilt analyseren met afhankelijkheids visualisatie, klikt u in de kolom **afhankelijkheden** op **Agent installatie vereist**.
@@ -83,7 +84,7 @@ De agent installeren op een Windows-computer:
 U kunt de agent installeren vanaf de opdracht regel of met behulp van een geautomatiseerde methode als Configuration Manager of [Intigua](https://www.intigua.com/intigua-for-azure-migration).
 - Meer [informatie](../azure-monitor/platform/log-analytics-agent.md#installation-and-configuration) over het gebruik van deze methoden om de MMA-agent te installeren.
 - De MMA-agent kan ook worden geïnstalleerd met behulp van dit [script](https://go.microsoft.com/fwlink/?linkid=2104394).
-- Meer [informatie](https://docs.microsoft.com/azure/azure-monitor/platform/log-analytics-agent#supported-windows-operating-systems) over de Windows-besturings systemen die worden ondersteund door MMA.
+- Meer [informatie](../azure-monitor/platform/log-analytics-agent.md#supported-windows-operating-systems) over de Windows-besturings systemen die worden ondersteund door MMA.
 
 ### <a name="install-mma-on-a-linux-machine"></a>MMA installeren op een Linux-computer
 
@@ -94,7 +95,7 @@ De MMA op een Linux-computer installeren:
 
     ```sudo sh ./omsagent-<version>.universal.x64.sh --install -w <workspace id> -s <workspace key>```
 
-Meer [informatie](https://docs.microsoft.com/azure/azure-monitor/platform/log-analytics-agent#supported-linux-operating-systems) over de lijst met ondersteunde Linux-besturings systemen door MMA. 
+Meer [informatie](../azure-monitor/platform/log-analytics-agent.md#supported-linux-operating-systems) over de lijst met ondersteunde Linux-besturings systemen door MMA. 
 
 ## <a name="install-the-dependency-agent"></a>De afhankelijkheidsagent installeren
 
@@ -103,8 +104,8 @@ Meer [informatie](https://docs.microsoft.com/azure/azure-monitor/platform/log-an
 
     ```sh InstallDependencyAgent-Linux64.bin```
 
-- Meer [informatie](https://docs.microsoft.com/azure/azure-monitor/insights/vminsights-enable-hybrid-cloud#installation-script-examples) over hoe u scripts kunt gebruiken om de afhankelijkheids agent te installeren.
-- Meer [informatie](https://docs.microsoft.com/azure/azure-monitor/insights/vminsights-enable-overview#supported-operating-systems) over de besturings systemen die worden ondersteund door de afhankelijkheids agent.
+- Meer [informatie](../azure-monitor/insights/vminsights-enable-hybrid-cloud.md#installation-script-examples) over hoe u scripts kunt gebruiken om de afhankelijkheids agent te installeren.
+- Meer [informatie](../azure-monitor/insights/vminsights-enable-overview.md#supported-operating-systems) over de besturings systemen die worden ondersteund door de afhankelijkheids agent.
 
 
 ## <a name="create-a-group-using-dependency-visualization"></a>Een groep maken met behulp van afhankelijkheids visualisatie
@@ -161,8 +162,8 @@ Voer een query uit voor afhankelijkheids gegevens als volgt:
 Hier volgen enkele voor beelden van query's die u kunt gebruiken om afhankelijkheids gegevens te extra heren.
 
 - U kunt de query's aanpassen om uw voorkeurs gegevens punten uit te pakken.
-- [Bekijk](https://docs.microsoft.com/azure/azure-monitor/insights/service-map#log-analytics-records) een volledige lijst met afhankelijkheids gegevens records.
-- [Bekijk](https://docs.microsoft.com/azure/azure-monitor/insights/service-map#sample-log-searches) aanvullende voorbeeld query's.
+- [Bekijk](../azure-monitor/insights/service-map.md#log-analytics-records) een volledige lijst met afhankelijkheids gegevens records.
+- [Bekijk](../azure-monitor/insights/service-map.md#sample-log-searches) aanvullende voorbeeld query's.
 
 #### <a name="sample-review-inbound-connections"></a>Voor beeld: binnenkomende verbindingen controleren
 
@@ -170,7 +171,7 @@ Controleer binnenkomende verbindingen voor een set Vm's.
 
 - De records in de tabel voor de metrische gegevens van de verbinding (VMConnection) vertegenwoordigen geen afzonderlijke fysieke netwerk verbindingen.
 - Meerdere fysieke netwerk verbindingen worden gegroepeerd in een logische verbinding.
-- Meer [informatie](https://docs.microsoft.com/azure/azure-monitor/insights/service-map#connections) over hoe fysieke netwerk verbindings gegevens worden geaggregeerd in VMConnection.
+- Meer [informatie](../azure-monitor/insights/service-map.md#connections) over hoe fysieke netwerk verbindings gegevens worden geaggregeerd in VMConnection.
 
 ```
 // the machines of interest

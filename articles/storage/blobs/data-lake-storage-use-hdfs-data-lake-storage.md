@@ -9,11 +9,12 @@ ms.date: 12/06/2018
 ms.author: normesta
 ms.subservice: data-lake-storage-gen2
 ms.reviewer: artek
-ms.openlocfilehash: 9c5b1d38e32ff0a0d0954064c8a2511d898d16e2
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 36e6b39aaf481abaabe4fb5a4a71a527d1e74749
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84462920"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86109447"
 ---
 # <a name="using-the-hdfs-cli-with-data-lake-storage-gen2"></a>De HDFS CLI gebruiken met Data Lake Storage Gen2
 
@@ -45,7 +46,7 @@ U kunt de connection string vinden in het gedeelte SSH-cluster aanmelden van de 
 
 ## <a name="create-a-container"></a>Een container maken
 
-    hdfs dfs -D "fs.azure.createRemoteFileSystemDuringInitialization=true" -ls abfs://<container-name>@<storage-account-name>.dfs.core.windows.net/
+`hdfs dfs -D "fs.azure.createRemoteFileSystemDuringInitialization=true" -ls abfs://<container-name>@<storage-account-name>.dfs.core.windows.net/`
 
 * Vervang de tijdelijke aanduiding `<container-name>` door de naam die u aan uw container wilt geven.
 
@@ -53,7 +54,7 @@ U kunt de connection string vinden in het gedeelte SSH-cluster aanmelden van de 
 
 ## <a name="get-a-list-of-files-or-directories"></a>Een lijst met bestanden of mappen ophalen
 
-    hdfs dfs -ls <path>
+`hdfs dfs -ls <path>`
 
 Vervang de `<path>` tijdelijke aanduiding door de URI van de container of container.
 
@@ -61,7 +62,7 @@ Bijvoorbeeld: `hdfs dfs -ls abfs://my-file-system@mystorageaccount.dfs.core.wind
 
 ## <a name="create-a-directory"></a>Een map maken
 
-    hdfs dfs -mkdir [-p] <path>
+`hdfs dfs -mkdir [-p] <path>`
 
 Vervang de `<path>` tijdelijke aanduiding door de naam van de hoofd container of een map in de container.
 
@@ -69,7 +70,7 @@ Bijvoorbeeld: `hdfs dfs -mkdir abfs://my-file-system@mystorageaccount.dfs.core.w
 
 ## <a name="delete-a-file-or-directory"></a>Een bestand of map verwijderen
 
-    hdfs dfs -rm <path>
+`hdfs dfs -rm <path>`
 
 Vervang de `<path>` tijdelijke aanduiding door de URI van het bestand of de map die u wilt verwijderen.
 
@@ -77,7 +78,7 @@ Bijvoorbeeld: `hdfs dfs -rmdir abfs://my-file-system@mystorageaccount.dfs.core.w
 
 ## <a name="display-the-access-control-lists-acls-of-files-and-directories"></a>De Access Control lijsten (Acl's) van bestanden en mappen weer geven
 
-    hdfs dfs -getfacl [-R] <path>
+`hdfs dfs -getfacl [-R] <path>`
 
 Voorbeeld:
 
@@ -87,7 +88,7 @@ Zie [getfacl](https://hadoop.apache.org/docs/r2.4.1/hadoop-project-dist/hadoop-c
 
 ## <a name="set-acls-of-files-and-directories"></a>Acl's van bestanden en mappen instellen
 
-    hdfs dfs -setfacl [-R] [-b|-k -m|-x <acl_spec> <path>]|[--set <acl_spec> <path>]
+`hdfs dfs -setfacl [-R] [-b|-k -m|-x <acl_spec> <path>]|[--set <acl_spec> <path>]`
 
 Voorbeeld:
 
@@ -97,19 +98,19 @@ Zie [setfacl](https://hadoop.apache.org/docs/r2.4.1/hadoop-project-dist/hadoop-c
 
 ## <a name="change-the-owner-of-files"></a>De eigenaar van bestanden wijzigen
 
-    hdfs dfs -chown [-R] <new_owner>:<users_group> <URI>
+`hdfs dfs -chown [-R] <new_owner>:<users_group> <URI>`
 
 Zie [eigendom](https://hadoop.apache.org/docs/r2.4.1/hadoop-project-dist/hadoop-common/FileSystemShell.html#chown)
 
 ## <a name="change-group-association-of-files"></a>Groeps koppeling van bestanden wijzigen
 
-    hdfs dfs -chgrp [-R] <group> <URI>
+`hdfs dfs -chgrp [-R] <group> <URI>`
 
 Zie [chgrp](https://hadoop.apache.org/docs/r2.4.1/hadoop-project-dist/hadoop-common/FileSystemShell.html#chgrp)
 
 ## <a name="change-the-permissions-of-files"></a>De machtigingen van bestanden wijzigen
 
-    hdfs dfs -chmod [-R] <mode> <URI>
+`hdfs dfs -chmod [-R] <mode> <URI>`
 
 Zie [chmod](https://hadoop.apache.org/docs/r2.4.1/hadoop-project-dist/hadoop-common/FileSystemShell.html#chmod)
 

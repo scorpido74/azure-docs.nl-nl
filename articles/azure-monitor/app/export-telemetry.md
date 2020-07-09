@@ -3,11 +3,12 @@ title: Doorlopend exporteren van telemetrie uit Application Insights | Microsoft
 description: Exporteer diagnostische en gebruiks gegevens naar opslag in Microsoft Azure en down load deze vanaf daar.
 ms.topic: conceptual
 ms.date: 05/26/2020
-ms.openlocfilehash: 91bce217b1b8d7c86c7d75ecd4ce6b698019e169
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 8ca2dc30b6e0681b5ee10fa3c77fab15ffb18b1d
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84147967"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86110212"
 ---
 # <a name="export-telemetry-from-application-insights"></a>Telemetrie exporteren vanuit Application Insights
 Wilt u de telemetrie langer houden dan de standaard retentie periode? Of verwerk het op een specifieke manier? Continue export is ideaal voor dit. De gebeurtenissen die u in de Application Insights Portal ziet, kunnen worden geëxporteerd naar de opslag in Microsoft Azure in JSON-indeling. Van daaruit kunt u uw gegevens downloaden en de code schrijven die u nodig hebt om deze te verwerken.  
@@ -107,7 +108,9 @@ De datum en tijd zijn UTC en wanneer de telemetrie in de Store is gestort, niet 
 
 Dit is de vorm van het pad:
 
-    $"{applicationName}_{instrumentationKey}/{type}/{blobDeliveryTimeUtc:yyyy-MM-dd}/{ blobDeliveryTimeUtc:HH}/{blobId}_{blobCreationTimeUtc:yyyyMMdd_HHmmss}.blob"
+```console
+$"{applicationName}_{instrumentationKey}/{type}/{blobDeliveryTimeUtc:yyyy-MM-dd}/{ blobDeliveryTimeUtc:HH}/{blobId}_{blobCreationTimeUtc:yyyyMMdd_HHmmss}.blob"
+```
 
 Waar
 
@@ -117,37 +120,41 @@ Waar
 ## <a name="data-format"></a><a name="format"></a>Gegevens indeling
 * Elke blob is een tekst bestand dat meerdere \n-gescheiden rijen bevat. Het bevat de telemetrie die gedurende een periode van ongeveer een halve minuut is verwerkt.
 * Elke rij vertegenwoordigt een telemetrie-gegevens punt, zoals een aanvraag of pagina weergave.
-* Elke rij is een niet-opgemaakt JSON-document. Als u een ster wilt maken, opent u het in Visual Studio en kiest u bewerken, Geavanceerd, indelings bestand:
+* Elke rij is een niet-opgemaakt JSON-document. Als u de rijen wilt weer geven, opent u de BLOB in Visual Studio en **Edit**kiest u  >  **Geavanceerde**  >  **indelings bestand**bewerken:
 
-![De telemetrie weer geven met een geschikt hulp programma](./media/export-telemetry/06-json.png)
+   ![De telemetrie weer geven met een geschikt hulp programma](./media/export-telemetry/06-json.png)
 
 Tijds duursen zijn in tikken, waarbij 10 000 Ticks = 1 MS. Deze waarden tonen bijvoorbeeld een tijd van 1 MS om een aanvraag te verzenden vanuit de browser, 3 MS om deze te ontvangen en 1,8 s om de pagina in de browser te verwerken:
 
-    "sendRequest": {"value": 10000.0},
-    "receiveRequest": {"value": 30000.0},
-    "clientProcess": {"value": 17970000.0}
+```json
+"sendRequest": {"value": 10000.0},
+"receiveRequest": {"value": 30000.0},
+"clientProcess": {"value": 17970000.0}
+```
 
 [Gedetailleerde gegevens model verwijzing voor de eigenschaps typen en-waarden.](export-data-model.md)
 
 ## <a name="processing-the-data"></a>De gegevens verwerken
 Op een kleine schaal kunt u code schrijven om uw gegevens uit elkaar te halen, deze in een werk blad te lezen, enzovoort. Bijvoorbeeld:
 
-    private IEnumerable<T> DeserializeMany<T>(string folderName)
-    {
-      var files = Directory.EnumerateFiles(folderName, "*.blob", SearchOption.AllDirectories);
-      foreach (var file in files)
+```csharp
+private IEnumerable<T> DeserializeMany<T>(string folderName)
+{
+   var files = Directory.EnumerateFiles(folderName, "*.blob", SearchOption.AllDirectories);
+   foreach (var file in files)
+   {
+      using (var fileReader = File.OpenText(file))
       {
-         using (var fileReader = File.OpenText(file))
+         string fileContent = fileReader.ReadToEnd();
+         IEnumerable<string> entities = fileContent.Split('\n').Where(s => !string.IsNullOrWhiteSpace(s));
+         foreach (var entity in entities)
          {
-            string fileContent = fileReader.ReadToEnd();
-            IEnumerable<string> entities = fileContent.Split('\n').Where(s => !string.IsNullOrWhiteSpace(s));
-            foreach (var entity in entities)
-            {
-                yield return JsonConvert.DeserializeObject<T>(entity);
-            }
+            yield return JsonConvert.DeserializeObject<T>(entity);
          }
       }
-    }
+   }
+}
+```
 
 Zie [een werk rollen gebruiken][exportasa]voor een groter code voorbeeld.
 

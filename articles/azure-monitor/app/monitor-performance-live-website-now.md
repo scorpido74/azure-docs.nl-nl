@@ -3,12 +3,12 @@ title: Een live ASP.NET-web-app bewaken met Azure Application Insights | Microso
 description: Bewaak de prestaties van een website zonder de website opnieuw te implementeren. Werkt met ASP.NET-Web-apps die on-premises of in Vm's worden gehost.
 ms.topic: conceptual
 ms.date: 08/26/2019
-ms.openlocfilehash: 2892cb40f0b00b468ef0b8a4ffe60c1158ad068a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: e30700deaa0121fbe473580d868a79d75a899a1d
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85807261"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86107475"
 ---
 # <a name="instrument-web-apps-at-runtime-with-application-insights-codeless-attach"></a>Web-apps tijdens runtime instrumenteren met Application Insights zonder code koppelen
 
@@ -84,7 +84,7 @@ Als u opnieuw wilt publiceren zonder Application Insights toe te voegen aan de c
 4. Voer alle wijzigingen die u hebt doorgevoerd in het .config-bestand opnieuw door.
 
 
-## <a name="troubleshooting"></a><a name="troubleshoot"></a>Problemen oplossen
+## <a name="troubleshooting"></a><a name="troubleshoot"></a>Probleemoplossing
 
 ### <a name="confirm-a-valid-installation"></a>Een geldige installatie bevestigen 
 
@@ -98,7 +98,8 @@ Dit zijn enkele stappen die u kunt uitvoeren om te controleren of de installatie
   ```
 
 - Als u wilt bevestigen dat Application Insights is gekoppeld, kunt u de Sysinternals- [ingang](https://docs.microsoft.com/sysinternals/downloads/handle) uitvoeren in een opdracht venster om te bevestigen dat applicationinsights.dll is geladen door IIS.
-  ```cmd
+
+  ```console
   handle.exe /p w3wp.exe
   ```
 
@@ -109,7 +110,7 @@ Dit zijn enkele stappen die u kunt uitvoeren om te controleren of de installatie
 
 ### <a name="unable-to-login"></a>Kan niet aanmelden
 
-* Als Status Monitor niet kunt aanmelden, voert u in plaats daarvan een opdracht regel installatie uit. Status Monitor probeert zich aan te melden om uw iKey te verzamelen, maar u kunt deze hand matig opgeven met behulp van de opdracht:
+Als Status Monitor niet kunt aanmelden, voert u in plaats daarvan een opdracht regel installatie uit. Status Monitor probeert zich aan te melden om uw iKey te verzamelen, maar u kunt deze hand matig opgeven met behulp van de opdracht:
 
 ```powershell
 Import-Module 'C:\Program Files\Microsoft Application Insights\Status Monitor\PowerShell\Microsoft.Diagnostics.Agent.StatusMonitor.PowerShell.dll'
@@ -192,7 +193,9 @@ Met PowerShell kunt u de bewaking op de IIS-server starten en stoppen.
 
 Importeer eerst de module Application Insights:
 
-`Import-Module 'C:\Program Files\Microsoft Application Insights\Status Monitor\PowerShell\Microsoft.Diagnostics.Agent.StatusMonitor.PowerShell.dll'`
+```powershell
+Import-Module 'C:\Program Files\Microsoft Application Insights\Status Monitor\PowerShell\Microsoft.Diagnostics.Agent.StatusMonitor.PowerShell.dll'
+```
 
 Controleer welke apps worden bewaakt:
 
@@ -221,12 +224,14 @@ Controleer welke apps worden bewaakt:
     Voor het downloaden van de meest recente versie gebruikt u Update-ApplicationInsightsVersion.
 * Retourneert `ApplicationInsightsApplication` wanneer het is gelukt. Als het mislukt, wordt er een tracering geregistreerd in stderr.
 
-          Name                      : Default Web Site/WebApp1
-          InstrumentationKey        : 00000000-0000-0000-0000-000000000000
-          ProfilerState             : ApplicationInsights
-          SdkState                  : EnabledAfterDeployment
-          SdkVersion                : 1.2.1
-          LatestAvailableSdkVersion : 1.2.3
+   ```output
+   Name                      : Default Web Site/WebApp1
+   InstrumentationKey        : 00000000-0000-0000-0000-000000000000
+   ProfilerState             : ApplicationInsights
+   SdkState                  : EnabledAfterDeployment
+   SdkVersion                : 1.2.1
+   LatestAvailableSdkVersion : 1.2.3
+   ```
 
 `Stop-ApplicationInsightsMonitoring [-Name appName | -All]`
 

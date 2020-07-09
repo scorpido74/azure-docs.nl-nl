@@ -3,12 +3,12 @@ title: Evaluaties van Azure VM in Azure Migrate server-evaluatie
 description: Meer informatie over evaluaties in Azure Migrate server-evaluatie
 ms.topic: conceptual
 ms.date: 05/27/2020
-ms.openlocfilehash: 33051fbcfb792d3fa9734a818d293775486de647
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 52cdd6bb9cb062b5c36e10c67524fa4d266ca6e0
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85549961"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86107998"
 ---
 # <a name="azure-vm-assessments-in-azure-migrate-server-assessment"></a>Azure VM-evaluaties in Azure Migrate: Server evaluatie
 
@@ -28,7 +28,7 @@ Er zijn twee soorten evaluaties die u kunt maken met behulp van Azure Migrate: S
 **Beoordelings type** | **Details**
 --- | --- 
 **Azure VM** | Beoordelingen voor het migreren van uw on-premises servers naar Azure virtual machines. <br/><br/> U kunt uw on-premises [virtuele VMware-machines](how-to-set-up-appliance-vmware.md), [virtuele Hyper-V-machines](how-to-set-up-appliance-hyper-v.md)en [fysieke servers](how-to-set-up-appliance-physical.md) voor migratie naar Azure evalueren met dit beoordelings type.
-**Azure VMware Solution (AVS)** | Beoordelingen voor het migreren van uw on-premises servers naar de [Azure VMware-oplossing (AVS)](https://docs.microsoft.com/azure/azure-vmware/introduction). <br/><br/> U kunt uw on-premises [virtuele VMware-machines](how-to-set-up-appliance-vmware.md) evalueren voor migratie naar Azure VMware-oplossing (AVS) met dit beoordelings type. [Meer informatie](concepts-azure-vmware-solution-assessment-calculation.md)
+**Azure VMware Solution (AVS)** | Beoordelingen voor het migreren van uw on-premises servers naar de [Azure VMware-oplossing (AVS)](../azure-vmware/introduction.md). <br/><br/> U kunt uw on-premises [virtuele VMware-machines](how-to-set-up-appliance-vmware.md) evalueren voor migratie naar Azure VMware-oplossing (AVS) met dit beoordelings type. [Meer informatie](concepts-azure-vmware-solution-assessment-calculation.md)
 
 Beoordelingen die u maakt met server evaluatie zijn een tijdgebonden moment opname van gegevens. Een evaluatie van de Azure-VM in Server beoordeling biedt twee opties voor het instellen van de grootte:
 
@@ -152,7 +152,7 @@ Eigenschap | Details | Status van Azure-gereedheid
 --- | --- | ---
 **Opstart type** | Azure ondersteunt Vm's met een opstart type BIOS, niet voor UEFI. | Voorwaardelijk gereed als het opstart type UEFI is
 **Kernen** | Elke computer mag niet meer dan 128 kernen hebben. Dit is het maximum aantal dat door een Azure-VM wordt ondersteund.<br/><br/> Als er een prestatie geschiedenis beschikbaar is, worden de gebruikte kernen Azure Migrate beschouwd als vergelijking. Als de evaluatie-instellingen een comfort factor opgeven, wordt het aantal gebruikte kernen vermenigvuldigd met de comfort factor.<br/><br/> Als er geen prestatie geschiedenis is, gebruikt Azure Migrate de toegewezen kernen zonder de comfort factor toe te passen. | Gereed als het aantal kern geheugens binnen de limiet ligt
-**NODIG** | Elke machine mag Maxi maal 3.892 GB RAM-geheugen hebben. Dit is de maximale grootte van een Azure M-serie Standard_M128m &nbsp; <sup>2</sup> VM ondersteunt. [Meer informatie](https://docs.microsoft.com/azure/virtual-machines/windows/sizes).<br/><br/> Als de prestatie geschiedenis beschikbaar is, Azure Migrate beschouwt het gebruikte RAM-geheugen voor vergelijking. Als er een comfort factor is opgegeven, wordt het gebruikte RAM vermenigvuldigd met de comfort factor.<br/><br/> Als er geen geschiedenis is, wordt het toegewezen RAM-geheugen gebruikt zonder toepassing van een comfort factor.<br/><br/> | Gereed als de hoeveelheid RAM-geheugen binnen de limiet ligt
+**NODIG** | Elke machine mag Maxi maal 3.892 GB RAM-geheugen hebben. Dit is de maximale grootte van een Azure M-serie Standard_M128m &nbsp; <sup>2</sup> VM ondersteunt. [Meer informatie](../virtual-machines/windows/sizes.md).<br/><br/> Als de prestatie geschiedenis beschikbaar is, Azure Migrate beschouwt het gebruikte RAM-geheugen voor vergelijking. Als er een comfort factor is opgegeven, wordt het gebruikte RAM vermenigvuldigd met de comfort factor.<br/><br/> Als er geen geschiedenis is, wordt het toegewezen RAM-geheugen gebruikt zonder toepassing van een comfort factor.<br/><br/> | Gereed als de hoeveelheid RAM-geheugen binnen de limiet ligt
 **Opslag schijf** | De toegewezen grootte van een schijf mag niet groter zijn dan 32 TB. Azure biedt ondersteuning voor 64-TB schijven met Azure Ultra-SSD-schijven, Azure Migrate: door server evaluatie wordt momenteel gecontroleerd op 32 TB als de grootte van de schijf omvang, omdat deze nog geen Ultra-SSD ondersteunt. <br/><br/> Het aantal schijven dat is gekoppeld aan de computer, met inbegrip van de besturingssysteem schijf, moet 65 of minder zijn. | Gereed als de schijf grootte en het-nummer binnen de limieten vallen
 **Netwerken** | Aan een machine mogen niet meer dan 32 netwerk interfaces (Nic's) zijn gekoppeld. | Gereed als het aantal Nic's binnen de limiet ligt
 
@@ -161,7 +161,7 @@ Eigenschap | Details | Status van Azure-gereedheid
 Voor een evaluatie van de Azure-VM, samen met het controleren van de VM-eigenschappen, wordt door server evaluatie gecontroleerd op het gast besturingssysteem van een machine om te bepalen of het op Azure kan worden uitgevoerd.
 
 > [!NOTE]
-> Voor het afhandelen van de gast analyse voor VMware-Vm's gebruikt server assessment het besturings systeem dat is opgegeven voor de virtuele machine in vCenter Server. VCenter Server biedt echter niet de kernel-versie voor Linux VM-besturings systemen. Als u de versie wilt detecteren, moet u [toepassings detectie](https://docs.microsoft.com/azure/migrate/how-to-discover-applications)instellen. Het apparaat detecteert vervolgens versie-informatie met behulp van de gast referenties die u opgeeft bij het instellen van app-detectie.
+> Voor het afhandelen van de gast analyse voor VMware-Vm's gebruikt server assessment het besturings systeem dat is opgegeven voor de virtuele machine in vCenter Server. VCenter Server biedt echter niet de kernel-versie voor Linux VM-besturings systemen. Als u de versie wilt detecteren, moet u [toepassings detectie](./how-to-discover-applications.md)instellen. Het apparaat detecteert vervolgens versie-informatie met behulp van de gast referenties die u opgeeft bij het instellen van app-detectie.
 
 
 Server assessment maakt gebruik van de volgende logica om de Azure-gereedheid op basis van het besturings systeem te identificeren:
@@ -175,8 +175,8 @@ Windows Server 2008 R2 met alle SPs | Azure biedt volledige ondersteuning.| Gere
 Windows Server 2008 (32-bits en 64 bits) | Azure biedt volledige ondersteuning. | Gereed voor Azure.
 Windows Server 2003 en Windows Server 2003 R2 | Deze besturings systemen hebben hun end-of-support-datums door lopen en hebben een [aangepaste ondersteunings overeenkomst (CSA)](https://aka.ms/WSosstatement) nodig voor ondersteuning in Azure. | Voorwaardelijk gereed voor Azure. Overweeg het besturings systeem te upgraden voordat u naar Azure migreert.
 Windows 2000, Windows 98, Windows 95, Windows NT, Windows 3,1 en MS-DOS | Deze besturings systemen hebben hun end-of-support-datums door gegeven. De machine kan worden gestart in azure, maar Azure biedt geen ondersteuning voor het besturings systeem. | Voorwaardelijk gereed voor Azure. Het is raadzaam om het besturings systeem bij te werken voordat u naar Azure migreert.
-Windows 7, Windows 8 en Windows 10 | Azure biedt alleen ondersteuning voor een [Visual Studio-abonnement.](https://docs.microsoft.com/azure/virtual-machines/windows/client-images) | Voorwaardelijk gereed voor Azure.
-Windows 10 Pro | Azure biedt ondersteuning voor [multi tenant-hosting rechten.](https://docs.microsoft.com/azure/virtual-machines/windows/windows-desktop-multitenant-hosting-deployment) | Voorwaardelijk gereed voor Azure.
+Windows 7, Windows 8 en Windows 10 | Azure biedt alleen ondersteuning voor een [Visual Studio-abonnement.](../virtual-machines/windows/client-images.md) | Voorwaardelijk gereed voor Azure.
+Windows 10 Pro | Azure biedt ondersteuning voor [multi tenant-hosting rechten.](../virtual-machines/windows/windows-desktop-multitenant-hosting-deployment.md) | Voorwaardelijk gereed voor Azure.
 Windows Vista en Windows XP Professional | Deze besturings systemen hebben hun end-of-support-datums door gegeven. De machine kan worden gestart in azure, maar Azure biedt geen ondersteuning voor het besturings systeem. | Voorwaardelijk gereed voor Azure. Het is raadzaam om het besturings systeem bij te werken voordat u naar Azure migreert.
 Linux | Zie de [Linux-besturings systemen](../virtual-machines/linux/endorsed-distros.md) die door Azure worden goedgekeurd. Andere Linux-besturings systemen kunnen worden gestart in Azure. Het is echter raadzaam dat u het besturings systeem bijwerkt naar een officiële versie voordat u naar Azure migreert. | Gereed voor Azure als de versie wordt goedgekeurd.<br/><br/>Voorwaardelijk gereed als de versie niet wordt goedgekeurd.
 Andere besturings systemen, zoals Oracle Solaris, Apple macOS en FreeBSD | Deze besturings systemen worden niet door Azure goedgekeurd. De machine kan worden gestart in azure, maar Azure biedt geen ondersteuning voor het besturings systeem. | Voorwaardelijk gereed voor Azure. U wordt aangeraden een ondersteund besturings systeem te installeren voordat u naar Azure migreert.  

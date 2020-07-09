@@ -8,11 +8,12 @@ ms.topic: how-to
 ms.date: 12/06/2018
 ms.author: normesta
 ms.reviewer: stewu
-ms.openlocfilehash: 602053f7a52b9a46fa797bd1146cf63c02bb60d2
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 4930d99c4175126ffba65598bd6b33e973ba1c44
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84465351"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86109498"
 ---
 # <a name="use-distcp-to-copy-data-between-azure-storage-blobs-and-azure-data-lake-storage-gen2"></a>Gebruik DistCp om gegevens te kopiëren tussen Azure Storage blobs en Azure Data Lake Storage Gen2
 
@@ -36,25 +37,33 @@ An HDInsight cluster wordt geleverd met het hulp programma DistCp, dat kan worde
 
 2. Controleer of u toegang hebt tot uw bestaande algemeen gebruik v2-account (zonder hiërarchische naam ruimte ingeschakeld).
 
-        hdfs dfs –ls wasbs://<container-name>@<storage-account-name>.blob.core.windows.net/
+    ```bash
+    hdfs dfs –ls wasbs://<container-name>@<storage-account-name>.blob.core.windows.net/
+    ```
 
    De uitvoer moet een lijst met inhoud in de container bevatten.
 
 3. U kunt ook controleren of u toegang hebt tot het opslag account met een hiërarchische naam ruimte die is ingeschakeld in het cluster. Voer de volgende opdracht uit:
 
-        hdfs dfs -ls abfss://<container-name>@<storage-account-name>.dfs.core.windows.net/
+    ```bash
+    hdfs dfs -ls abfss://<container-name>@<storage-account-name>.dfs.core.windows.net/
+    ```
 
     De uitvoer moet een lijst met bestanden/mappen in het opslag account van Data Lake bevatten.
 
 4. Gebruik DistCp om gegevens van WASB te kopiëren naar een Data Lake Storage-account.
 
-        hadoop distcp wasbs://<container-name>@<storage-account-name>.blob.core.windows.net/example/data/gutenberg abfss://<container-name>@<storage-account-name>.dfs.core.windows.net/myfolder
+    ```bash
+    hadoop distcp wasbs://<container-name>@<storage-account-name>.blob.core.windows.net/example/data/gutenberg abfss://<container-name>@<storage-account-name>.dfs.core.windows.net/myfolder
+    ```
 
     Met de opdracht wordt de inhoud van de map **/example/data/Gutenberg/** in Blob Storage gekopieerd naar **/myfolder** in het data Lake Storage-account.
 
 5. Gebruik DistCp om gegevens te kopiëren van Data Lake Storage account naar Blob Storage (WASB).
 
-        hadoop distcp abfss://<container-name>@<storage-account-name>.dfs.core.windows.net/myfolder wasbs://<container-name>@<storage-account-name>.blob.core.windows.net/example/data/gutenberg
+    ```bash
+    hadoop distcp abfss://<container-name>@<storage-account-name>.dfs.core.windows.net/myfolder wasbs://<container-name>@<storage-account-name>.blob.core.windows.net/example/data/gutenberg
+    ```
 
     De opdracht kopieert de inhoud van **/MyFolder** in de map Data Lake Store account naar **/example/data/Gutenberg/** in WASB.
 
@@ -64,7 +73,9 @@ Omdat de laagste granulatie van DistCp één bestand is, is het instellen van he
 
 **Voorbeeld**
 
-    hadoop distcp -m 100 wasbs://<container-name>@<storage-account-name>.blob.core.windows.net/example/data/gutenberg abfss://<container-name>@<storage-account-name>.dfs.core.windows.net/myfolder
+```bash
+hadoop distcp -m 100 wasbs://<container-name>@<storage-account-name>.blob.core.windows.net/example/data/gutenberg abfss://<container-name>@<storage-account-name>.dfs.core.windows.net/myfolder
+```
 
 ### <a name="how-do-i-determine-the-number-of-mappers-to-use"></a>Hoe kan ik het aantal mappers bepalen dat moet worden gebruikt?
 
@@ -74,7 +85,7 @@ Hier volgen een aantal richtlijnen.
 
 * **Stap 2: het aantal mappers berekenen** . de waarde van **m** is gelijk aan het QUOTIËNT van het totale garen geheugen gedeeld door de grootte van de garen container. De informatie over de grootte van de garen container is ook beschikbaar in de Ambari-Portal. Navigeer naar GARENs en Bekijk het tabblad Configuratie. De grootte van de garen container wordt in dit venster weer gegeven. De vergelijking voor het aantal mappers (**m**) is
 
-        m = (number of nodes * YARN memory for each node) / YARN container size
+    m = (aantal knoop punten * garen geheugen voor elk knoop punt)/garen container grootte
 
 **Voorbeeld**
 
@@ -82,11 +93,11 @@ We gaan ervan uit dat u een 4x D14v2s-cluster hebt en u probeert 10 TB aan gegev
 
 * **Totaal aantal garens**: vanuit de Ambari-Portal hebt u vastgesteld dat het garen geheugen 96 GB is voor een D14-knoop punt. Dit betekent dat het totale garen geheugen voor het cluster van vier knoop punten: 
 
-        YARN memory = 4 * 96GB = 384GB
+    GAREN geheugen = 4 * 96GB = 384GB
 
 * **Aantal mappers**: vanuit de Ambari-Portal hebt u vastgesteld dat de grootte van de garen container 3.072 MB is voor een D14-cluster knooppunt. Het aantal mappers is dus:
 
-        m = (4 nodes * 96GB) / 3072MB = 128 mappers
+    m = (4 knoop punten * 96GB)/3072MB = 128 mappers
 
 Als andere toepassingen geheugen gebruiken, kunt u ervoor kiezen om alleen een deel van het garen geheugen van uw cluster te gebruiken voor DistCp.
 

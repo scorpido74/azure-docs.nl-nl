@@ -1,17 +1,16 @@
 ---
 title: Beoordelings & beoordelingen analyse dashboard in partner centrum
 description: Meer informatie over het openen van een geconsolideerde weer gave van feedback van klanten voor uw aanbiedingen op Microsoft AppSource en Azure Marketplace.
-author: dsindona
-ms.author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 12/11/2019
-ms.openlocfilehash: a7ed477ea095defa27878e8f4a84162043829273
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 142e03ab8ae66e210bf572a7c640e19d17c38901
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82792918"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86109226"
 ---
 # <a name="ratings--reviews-analytics-dashboard-in-partner-center"></a>Beoordelings & beoordelingen analyse dashboard in partner centrum
 

@@ -57,7 +57,11 @@
             - name: Dynamische gegevensmaskering
               href: database/dynamic-data-masking-overview.md
             - name: Evaluatie van SQL-beveiligingsproblemen
-              href: database/sql-vulnerability-assessment.md
+              items:
+                - name: Evaluatie van SQL-beveiligingsproblemen
+                  href: database/sql-vulnerability-assessment.md
+                - name: Evaluatieregels van beveiligingsproblemen
+                  href: database/sql-database-vulnerability-assessment-rules.md
             - name: 'Aanmeldingen, gebruikersaccounts, rollen en machtigingen'
               href: database/logins-create-manage.md
             - name: Azure Active Directory-verificatie
@@ -606,6 +610,9 @@
           href: database/powershell-script-content-guide.md?tabs=single-database
         - name: Azure Resource Manager
           href: database/arm-templates-content-guide.md?tabs=single-database
+        - name: Ingebouwde modules voor Azure Policy
+          displayName: 'samples, policies, definitions'
+          href: ./database/policy-samples.md
         - name: Codevoorbeelden
           href: 'https://azure.microsoft.com/resources/samples/?service=sql-database'
 - name: SQL Managed Instance (SQL MI)
@@ -833,6 +840,9 @@
           href: database/powershell-script-content-guide.md?tabs=managed-instance
         - name: Azure Resource Manager
           href: database/arm-templates-content-guide.md?tabs=managed-instance
+        - name: Ingebouwde modules voor Azure Policy
+          displayName: 'samples, policies, definitions'
+          href: ./database/policy-samples.md
         - name: Codevoorbeelden
           href: 'https://azure.microsoft.com/resources/samples/?service=sql-database'
 - name: SQL Server op virtuele Azure-machine
@@ -974,8 +984,6 @@
                       items:
                         - name: DNN maken voor FCI
                           href: virtual-machines/windows/hadr-distributed-network-name-dnn-configure.md
-                        - name: Functie-interoperabiliteit met DNN
-                          href: virtual-machines/windows/failover-cluster-instance-dnn-interoperability.md
                         - name: FCI DNN en SQL Server-functies
                           href: virtual-machines/windows/failover-cluster-instance-dnn-interoperability.md
                 - name: Connectiviteit configureren

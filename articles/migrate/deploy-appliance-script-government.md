@@ -3,15 +3,16 @@ title: Een Azure Migrate apparaat instellen in Azure Government
 description: Meer informatie over het instellen van een Azure Migrate apparaat in Azure Government
 ms.topic: article
 ms.date: 04/16/2020
-ms.openlocfilehash: c8bcecd7cca78a24d9dbf18e185c9362ed712b43
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: f0ebc882646b5ff3f62ddddf91cffc85cb5e0da6
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85052478"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86109974"
 ---
 # <a name="set-up-an-appliance-in-azure-government"></a>Een apparaat instellen in Azure Government 
 
-Volg dit artikel om een [Azure migrate apparaat](deploy-appliance.md) te implementeren voor VMware-Vm's, virtuele Hyper-V-machines en fysieke servers in een Azure Government Cloud. U voert een script uit om het apparaat te maken en controleert of het verbinding kan maken met Azure. Als u een apparaat in de open bare Cloud wilt instellen, volgt u [dit artikel](deploy-appliance-script.md).
+Volg dit artikel om een [Azure migrate apparaat](./migrate-appliance-architecture.md) te implementeren voor VMware-Vm's, virtuele Hyper-V-machines en fysieke servers in een Azure Government Cloud. U voert een script uit om het apparaat te maken en controleert of het verbinding kan maken met Azure. Als u een apparaat in de open bare Cloud wilt instellen, volgt u [dit artikel](deploy-appliance-script.md).
 
 
 > [!NOTE]

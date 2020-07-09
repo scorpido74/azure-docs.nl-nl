@@ -3,11 +3,12 @@ title: Hoe kan ik... in Azure-toepassing inzichten | Microsoft Docs
 description: Veelgestelde vragen in Application Insights.
 ms.topic: conceptual
 ms.date: 04/04/2017
-ms.openlocfilehash: 9ca5900bc9172b1f4ef9b1a7a660c6936ac38095
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 665d98378fc52e972986111847872ae30701f631
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83701955"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86110229"
 ---
 # <a name="how-do-i--in-application-insights"></a>Hoe kan ik ... in Application Insights?
 ## <a name="get-an-email-when-"></a>Een e-mail ontvangen wanneer...
@@ -32,17 +33,23 @@ Stel dat u een e-mail bericht wilt ontvangen wanneer er een specifieke gebeurten
 
 Waarschuwingen kunnen worden ingesteld op [aangepaste metrische gegevens](../../azure-monitor/app/api-custom-events-metrics.md#trackmetric), maar geen aangepaste gebeurtenissen. Schrijf wat code om een metrische waarde te verg Roten wanneer de gebeurtenis zich voordoet:
 
-    telemetry.TrackMetric("Alarm", 10);
+```csharp
+telemetry.TrackMetric("Alarm", 10);
+```
 
 of:
 
-    var measurements = new Dictionary<string,double>();
-    measurements ["Alarm"] = 10;
-    telemetry.TrackEvent("status", null, measurements);
+```csharp
+var measurements = new Dictionary<string,double>();
+measurements ["Alarm"] = 10;
+telemetry.TrackEvent("status", null, measurements);
+```
 
 Omdat waarschuwingen twee statussen hebben, moet u een lage waarde verzenden wanneer u de waarschuwing moet hebben beëindigd:
 
-    telemetry.TrackMetric("Alarm", 0.5);
+```csharp
+telemetry.TrackMetric("Alarm", 0.5);
+```
 
 Maak een grafiek in [metrische Explorer](../../azure-monitor/platform/metrics-charts.md) om uw wekker te bekijken:
 
@@ -130,9 +137,9 @@ Om het verzamelen en verzenden van telemetrie van de server **dynamisch te stopp
 ### <a name="aspnet-classic-applications"></a>Klassieke ASP.NET-toepassingen
 
 ```csharp
-    using  Microsoft.ApplicationInsights.Extensibility;
+using  Microsoft.ApplicationInsights.Extensibility;
 
-    TelemetryConfiguration.Active.DisableTelemetry = true;
+TelemetryConfiguration.Active.DisableTelemetry = true;
 ```
 
 ### <a name="other-applications"></a>Andere toepassingen

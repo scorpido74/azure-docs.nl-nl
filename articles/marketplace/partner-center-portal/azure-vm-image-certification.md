@@ -1,18 +1,18 @@
 ---
 title: Certificering van Azure virtual machine-Azure Marketplace
 description: Meer informatie over het testen en verzenden van een aanbieding voor de virtuele machine in de commerciële Marketplace.
-author: emuench
-ms.author: mingshen
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
+author: emuench
+ms.author: mingshen
 ms.date: 04/09/2020
-ms.openlocfilehash: 63f18556847a717322b00092b973f59877102a1d
-ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.openlocfilehash: d3b89945c077b9c26bab1709bd6d1def20959e33
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/05/2020
-ms.locfileid: "85963900"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86110042"
 ---
 # <a name="azure-virtual-machine-vm-image-certification"></a>Certificering van installatie kopie van virtuele Azure-machine (VM)
 
