@@ -68,6 +68,8 @@
       href: How-tos/text-analytics-how-to-keyword-extraction.md
     - name: Herkenning van tekeneenheden
       href: How-tos/text-analytics-how-to-entity-linking.md
+    - name: Text Analytics voor de status
+      href: How-tos/text-analytics-for-health.md
     - name: Containers gebruiken
       items:
         - name: Containers installeren en uitvoeren

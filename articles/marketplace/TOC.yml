@@ -216,8 +216,8 @@
               href: ./partner-center-portal/commercial-marketplace-co-sell-countries.md
             - name: Provinciecodes
               href: ./partner-center-portal/commercial-marketplace-co-sell-states.md
-    - name: Publicatiestatus
-      href: ./partner-center-portal/publishing-status.md
+    - name: Beoordelen en publiceren
+      href: review-publish-offer.md
     - name: Bestaande aanbiedingen bijwerken
       href: ./partner-center-portal/update-existing-offer.md
     - name: Voordelen activeren

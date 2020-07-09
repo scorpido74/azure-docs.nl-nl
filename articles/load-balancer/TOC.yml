@@ -12,18 +12,21 @@
       href: quickstart-load-balancer-standard-public-portal.md
     - name: Load balancer maken - Azure CLI
       href: quickstart-load-balancer-standard-public-cli.md
-    - name: Load balancer maken - PowerShell
+    - name: Load balancer maken - Azure PowerShell
       href: quickstart-create-standard-load-balancer-powershell.md
     - name: Load balancer maken - ARM-sjabloon
-      displayName: Resource Manager
       href: quickstart-load-balancer-standard-public-template.md
+    - name: Een interne load balancer maken - Portal
+      href: tutorial-load-balancer-standard-internal-portal.md
+    - name: Een interne load balancer maken - Azure CLI
+      href: load-balancer-get-started-ilb-arm-cli.md
+    - name: Een interne load balancer maken - Azure PowerShell
+      href: load-balancer-get-started-ilb-arm-ps.md
+    - name: Een interne load balancer maken - ARM-sjabloon
+      href: load-balancer-get-started-ilb-arm-template.md
   expanded: true
 - name: Zelfstudies
   items:
-    - name: Internetverkeer gelijkmatig verdelen over VM's
-      href: tutorial-load-balancer-standard-manage-portal.md
-    - name: Intern verkeer gelijkmatig verdelen over VM's
-      href: tutorial-load-balancer-standard-internal-portal.md
     - name: Taken over VM's in meerdere beschikbaarheidszones verdelen
       href: tutorial-load-balancer-standard-public-zone-redundant-portal.md
     - name: Taken over VM's binnen een specifieke beschikbaarheidszone verdelen
@@ -78,17 +81,17 @@
           href: configure-vm-scale-set-powershell.md
         - name: Gebruiken met een bestaande Azure Load Balancer - CLI
           href: configure-vm-scale-set-cli.md
-    - name: Een load balancer upgraden van het type Basic naar het type Standard
+    - name: Upgraden van Basic naar Standard Load Balancer
       items:
         - name: Een openbare load balancer van het type Basic upgraden
           href: upgrade-basic-standard.md
-        - name: 'Een Basis load balancer upgraden: geen uitgaande verbinding vereist'
+        - name: Een interne load balancer upgraden - geen uitgaande verbinding vereist
           href: upgrade-basicInternal-standard.md
-        - name: 'Een Basic load balancer upgraden: uitgaande verbinding vereist'
+        - name: Een interne load balancer upgraden - uitgaande verbinding vereist
           href: upgrade-InternalBasic-To-PublicStandard.md
     - name: Regels voor uitgaand verkeer configureren
       items:
-        - name: Azure Portal
+        - name: Portal
           href: configure-load-balancer-outbound-portal.md
         - name: Azure CLI
           href: configure-load-balancer-outbound-cli.md
@@ -103,35 +106,25 @@
         - name: Azure Resource Manager-sjabloon
           href: 'https://docs.microsoft.com/azure/virtual-network/ipv6-configure-standard-load-balancer-template-json'
           displayName: ARM
-    - name: Een interne load balancer configureren
-      items:
-        - name: Azure Portal
-          href: tutorial-load-balancer-standard-internal-portal.md
-        - name: Azure CLI
-          href: load-balancer-get-started-ilb-arm-cli.md
-        - name: Azure PowerShell
-          href: load-balancer-get-started-ilb-arm-ps.md
-        - name: Azure Resource Manager-sjabloon
-          href: load-balancer-get-started-ilb-arm-template.md
-          displayName: ARM
     - name: Time-out voor TCP-inactiviteit configureren voor load balancer
       href: load-balancer-tcp-idle-timeout.md
     - name: Distributiemodus configureren voor load balancer
       href: load-balancer-distribution-mode.md
     - name: Meerdere IP-configuraties gebruiken
-      href: load-balancer-multiple-ip.md
       items:
+        - name: Portal
+          href: load-balancer-multiple-ip.md
         - name: Azure CLI
           href: load-balancer-multiple-ip-cli.md
         - name: Azure PowerShell
           href: load-balancer-multiple-ip-powershell.md
     - name: Verplaatsen tussen regio's
       items:
-        - name: Externe load balancer - Portal
+        - name: Load balancer publiceren - Portal
           href: move-across-regions-external-load-balancer-portal.md
-        - name: Externe load balancer - PowerShell
+        - name: Load balancer publiceren - PowerShell
           href: move-across-regions-external-load-balancer-powershell.md
-        - name: Interne load balancer - Portal
+        - name: Load balancer publiceren - Portal
           href: move-across-regions-internal-load-balancer-portal.md
         - name: Interne load balancer - PowerShell
           href: move-across-regions-internal-load-balancer-powershell.md

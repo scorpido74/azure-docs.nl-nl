@@ -41,7 +41,7 @@
       href: ./concepts/managed-applications.md
 - name: Instructiegidsen
   items:
-    - name: Een klant in gedelegeerd Azure-resourcebeheer plaatsen
+    - name: Een klant onboarden in Azure Lighthouse
       displayName: resource management
       href: ./how-to/onboard-customer.md
     - name: Een aanbieding voor beheerde service publiceren in Azure Marketplace

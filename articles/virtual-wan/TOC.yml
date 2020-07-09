@@ -116,6 +116,12 @@
           href: how-to-virtual-hub-routing.md
         - name: Effectieve routes voor virtuele hubs weergeven
           href: effective-routes-virtual-hub.md
+        - name: Verkeer routeren van een virtuele hub naar een NVA (verouderd)
+          items:
+            - name: Azure Portal
+              href: virtual-wan-route-table-nva-portal.md
+            - name: Azure PowerShell
+              href: virtual-wan-route-table-nva.md
     - name: Beveiliging
       items:
         - name: Azure Firewall installeren in een hub

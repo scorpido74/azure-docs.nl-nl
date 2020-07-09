@@ -1,21 +1,21 @@
 ### YamlMime:Landing
 title: Documentatie voor Azure Stream Analytics
-summary: Azure Stream Analytics is een volledig beheerde, realtime analyseservice die is ontworpen om u te helpen snelle gegevensstromen te analyseren en te verwerken die kunnen worden gebruikt om waarschuwingen en acties te activeren. Ontdek met onze snelstartgidsen, zelfstudies en voorbeelden hoe u Azure Stream Analytics gebruikt.
+summary: Azure Stream Analytics is een volledig beheerde, realtime analyseservice die is ontworpen om u te helpen snelle gegevensstromen te analyseren en te verwerken die kunnen worden gebruikt om inzichten op te doen, rapporten te maken en waarschuwingen en acties te activeren. Ontdek met onze snelstartgidsen, zelfstudies en voorbeelden hoe u Azure Stream Analytics gebruikt.
 metadata:
   title: Documentatie voor Azure Stream Analytics
-  description: Azure Stream Analytics is een volledig beheerde, realtime analyseservice die is ontworpen om u te helpen snelle gegevensstromen te analyseren en te verwerken die kunnen worden gebruikt om waarschuwingen en acties te activeren. Ontdek met onze snelstartgidsen, zelfstudies en voorbeelden hoe u Azure Stream Analytics gebruikt.
+  description: Azure Stream Analytics is een volledig beheerde, realtime analyseservice die is ontworpen om u te helpen snelle gegevensstromen te analyseren en te verwerken die kunnen worden gebruikt om inzichten op te doen, rapporten te maken en waarschuwingen en acties te activeren. Ontdek met onze snelstartgidsen, zelfstudies en voorbeelden hoe u Azure Stream Analytics gebruikt.
   services: service
   ms.service: stream-analytics
   ms.topic: landing-page
   author: mamccrea
   ms.author: mamccrea
   ms.date: 09/16/2019
-  ms.openlocfilehash: 757c60487e4c4c7fedca4824cd40e86cbd9ca465
-  ms.sourcegitcommit: edccc241bc40b8b08f009baf29a5580bf53e220c
+  ms.openlocfilehash: 2ef6663ce3ebf21227635fff763d45391281c955
+  ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
   ms.translationtype: HT
   ms.contentlocale: nl-NL
-  ms.lasthandoff: 04/24/2020
-  ms.locfileid: "82130955"
+  ms.lasthandoff: 07/08/2020
+  ms.locfileid: "86119647"
 landingContent:
 - title: Over Azure Stream Analytics
   linkLists:

@@ -520,6 +520,8 @@
         - name: Spraakcontainers configureren
           displayName: 'containers,configure containers,container config,configuration'
           href: speech-container-configuration.md
+        - name: Batchverwerking met spraakcontianers
+          href: speech-container-batch-processing.md
         - name: Spraakcontainers met Kubernetes en Helm
           displayName: 'containers,kubernetes,k8s,helm,orchestration,on-prem,on-premises'
           href: speech-container-howto-on-premises.md
