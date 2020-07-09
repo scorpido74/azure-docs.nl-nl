@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 04/24/2018
 ms.author: robinsh
 ms.custom: include file
-ms.openlocfilehash: 128a2e8b200f1323b88aad635f27c1b686ecbed2
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 4f7ec9bbf7877d8067b3d8b1566a5cd2c2075281
+ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "72789727"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86050295"
 ---
 De Internet of Things (IoT) vormt unieke beveiligings-, privacy-en nalevings uitdagingen voor bedrijven wereld wijd. In tegens telling tot traditionele Cyber technologie waarbij deze problemen rond software en hoe deze worden geïmplementeerd, is IoT wat er gebeurt wanneer de Cyber en de fysieke werelden convergeren. Het beveiligen van IoT-oplossingen vereist dat beveiligde inrichting van apparaten, beveiligde connectiviteit tussen deze apparaten en de Cloud, en de beveiliging van gegevens in de Cloud wordt gewaarborgd tijdens de verwerking en opslag. Voor het werken met deze functionaliteit zijn echter apparaten die zijn beperkt tot resources, geografische distributie van implementaties en een groot aantal apparaten binnen een oplossing.
 
@@ -21,7 +21,7 @@ In dit artikel wordt uitgelegd hoe de accelerators van de IoT-oplossing een veil
 
 De oplossings versnellers bieden unieke functies die het inrichten, verbinding maken met en opslaan van gegevens van IoT-apparaten eenvoudig en transparant maken en, vooral veilig. In dit artikel worden de beveiligings functies van de Azure IoT-oplossing en implementatie strategieën onderzocht om te zorgen voor beveiligings-, privacy-en nalevings problemen.
 
-## <a name="introduction"></a>Inleiding
+## <a name="introduction"></a>Introductie
 
 De Internet of Things (IoT) is de Golf van de toekomst en biedt bedrijven onmiddellijke en praktijk mogelijkheden om de kosten te verlagen, de omzet te verhogen en hun bedrijf te transformeren. Veel bedrijven zijn echter cloudhoster om IoT in hun organisaties te implementeren, omdat er problemen zijn met de veiligheid, privacy en naleving. Een belang rijk punt van bezorgdheid is gebaseerd op de uniekheid van de IoT-infra structuur, die de Cyber-en fysieke werelden samen voegt, waarbij de afzonderlijke Risico's die inherent zijn aan deze twee werelden, worden samengevoegd. De beveiliging van IoT is van toepassing op het garanderen van de integriteit van code die wordt uitgevoerd op apparaten, het verlenen van verificatie van apparaten en gebruikers, het definiëren van duidelijke eigendom van apparaten (evenals de gegevens die door deze apparaten worden gegenereerd), en het is flexibel voor Cyber-en fysieke aanvallen.
 
@@ -89,7 +89,7 @@ Met behulp van Azure Active Directory (AAD) voor gebruikers verificatie en-autor
 
 Zodra de gegevens zich in de cloud bevinden, kunnen ze worden verwerkt en opgeslagen in een door de gebruiker gedefinieerde werk stroom. De toegang tot elk deel van de gegevens wordt bepaald door Azure Active Directory, afhankelijk van de gebruikte opslag service.
 
-Alle sleutels die worden gebruikt door de IoT-infra structuur, worden opgeslagen in de cloud in beveiligde opslag, met de mogelijkheid om in te richten op de sleutel sleutels moet opnieuw worden ingericht. Gegevens kunnen worden opgeslagen in [Azure Cosmos DB](../articles/cosmos-db/introduction.md) of in [SQL-data bases](../articles/sql-database/sql-database-faq.md), waardoor het gewenste beveiligings niveau kan worden gedefinieerd. Daarnaast biedt Azure een manier om alle toegang tot uw gegevens te bewaken en te controleren om u te waarschuwen over inbreuken of onbevoegde toegang.
+Alle sleutels die worden gebruikt door de IoT-infra structuur, worden opgeslagen in de cloud in beveiligde opslag, met de mogelijkheid om in te richten op de sleutel sleutels moet opnieuw worden ingericht. Gegevens kunnen worden opgeslagen in [Azure Cosmos DB](../articles/cosmos-db/introduction.md) of in [SQL database](../articles/sql-database/sql-database-faq.md), waardoor de definitie van het gewenste beveiligings niveau kan worden bepaald. Daarnaast biedt Azure een manier om alle toegang tot uw gegevens te bewaken en te controleren om u te waarschuwen over inbreuken of onbevoegde toegang.
 
 ## <a name="conclusion"></a>Conclusie
 
@@ -107,7 +107,7 @@ Elke oplossings versneller maakt exemplaren van Azure-Services, zoals:
 
 * [**Azure stream Analytics**](https://azure.microsoft.com/services/stream-analytics/): realtime stroom verwerking in de Cloud waarmee u snel een goedkope analyse oplossing kunt ontwikkelen en implementeren om realtime inzichten te verkrijgen op basis van apparaten, Sens oren, infra structuur en toepassingen. De gegevens van deze volledig beheerde service kunnen naar elk volume worden geschaald, terwijl toch hoge door Voer, lage latentie en tolerantie wordt bereikt.
 
-* [**Azure-app Services**](https://azure.microsoft.com/services/app-service/): een Cloud platform voor het bouwen van krachtige web-en mobiele apps die overal verbinding maken met gegevens. in de Cloud of on-premises. Bouw aantrekkelijke mobiele apps voor iOS, Android en Windows. Integreer met uw software als een service (SaaS) en zakelijke toepassingen met out-of-the-box-connectiviteit tot tien tallen Cloud Services en zakelijke toepassingen. Code in uw favoriete taal en IDE, .NET, node. js, PHP, python of Java, om sneller dan ooit web-apps en Api's te bouwen.
+* [**Azure-app Services**](https://azure.microsoft.com/services/app-service/): een Cloud platform voor het bouwen van krachtige web-en mobiele apps die overal verbinding maken met gegevens. in de Cloud of on-premises. Bouw aantrekkelijke mobiele apps voor iOS, Android en Windows. Integreer met uw software als een service (SaaS) en zakelijke toepassingen met out-of-the-box-connectiviteit tot tien tallen Cloud Services en zakelijke toepassingen. Code in uw favoriete taal en IDE, .NET, Node.js, PHP, python of Java, om sneller dan ooit web-apps en Api's te bouwen.
 
 * [**Logic apps**](https://azure.microsoft.com/services/app-service/logic/): de Logic apps functie van Azure app service helpt uw IOT-oplossing te integreren met uw bestaande line-of-Business-systemen en om werk stroom processen te automatiseren. Met Logic Apps kunnen ontwikkel aars werk stromen ontwerpen die beginnen met een trigger en vervolgens een reeks stappen uitvoeren: regels en acties die gebruikmaken van krachtige connectors om te integreren met uw bedrijfs processen. Logic Apps biedt kant-en-klare connectiviteit met een aanzienlijk ecosysteem van SaaS-, Cloud-en on-premises toepassingen.
 

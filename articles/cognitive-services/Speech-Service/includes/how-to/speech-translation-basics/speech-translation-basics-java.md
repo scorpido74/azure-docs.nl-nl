@@ -4,12 +4,12 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 04/13/2020
 ms.author: trbye
-ms.openlocfilehash: 73e6e117428808aae39e361a3b119e9b2af1ac27
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 60d5fb524d07590ed28641a6c91b87dbeb7dfc9f
+ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81399591"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86035474"
 ---
 ## <a name="prerequisites"></a>Vereisten
 
@@ -17,11 +17,11 @@ In dit artikel wordt ervan uitgegaan dat u een Azure-account en een spraak servi
 
 ## <a name="install-the-speech-sdk"></a>De Speech-SDK installeren
 
-Voordat u iets kunt doen, moet u de Speech SDK installeren. Volg afhankelijk van uw platform de instructies in de sectie <a href="https://docs.microsoft.com/en-us/azure/cognitive-services/speech-service/speech-sdk#get-the-speech-sdk" target="_blank">de <span class="docon docon-navigate-external x-hidden-focus"></span> SDK voor spraak ophalen</a> van het artikel Speech SDK.
+Voordat u iets kunt doen, moet u de Speech SDK installeren. Volg afhankelijk van uw platform de instructies in de sectie <a href="https://docs.microsoft.com/en-us/azure/cognitive-services/speech-service/speech-sdk#get-the-speech-sdk" target="_blank">de <span class="docon docon-navigate-external x-hidden-focus"></span> SDK voor spraak ophalen</a> van het artikel _over Speech SDK_ .
 
 ## <a name="import-dependencies"></a>Afhankelijkheden importeren
 
-Als u de voor beelden in dit artikel wilt uitvoeren, `import` moet u de volgende instructies toevoegen boven aan het **. Java* -code bestand.
+Als u de voor beelden in dit artikel wilt uitvoeren, moet u de volgende `import` instructies toevoegen boven aan het **. Java* -code bestand.
 
 ```java
 package speech;
@@ -36,7 +36,7 @@ import com.microsoft.cognitiveservices.speech.translation.*;
 
 ## <a name="sensitive-data-and-environment-variables"></a>Gevoelige gegevens en omgevings variabelen
 
-De voorbeeld bron code in dit artikel is afhankelijk van omgevings variabelen voor het opslaan van gevoelige gegevens, zoals de sleutel van het abonnement voor spraak bronnen en de regio. Het Java-code bestand bevat `static final String` twee waarden die zijn toegewezen uit de omgevings variabelen van de `SPEECH__SUBSCRIPTION__KEY` hostcomputer `SPEECH__SERVICE__REGION`, te weten en. Beide velden bevinden zich in het bereik klasse, waardoor ze toegankelijk zijn in methode-instanties van de-klasse. Zie [omgevings variabelen en toepassings configuratie](../../../../cognitive-services-security.md#environment-variables-and-application-configuration)voor meer informatie over omgevings variabelen.
+De voorbeeld bron code in dit artikel is afhankelijk van omgevings variabelen voor het opslaan van gevoelige gegevens, zoals de sleutel van het abonnement voor spraak bronnen en de regio. Het Java-code bestand bevat twee `static final String` waarden die zijn toegewezen uit de omgevings variabelen van de hostcomputer, te weten `SPEECH__SUBSCRIPTION__KEY` en `SPEECH__SERVICE__REGION` . Beide velden bevinden zich in het bereik klasse, waardoor ze toegankelijk zijn in methode-instanties van de-klasse. Zie [omgevings variabelen en toepassings configuratie](../../../../cognitive-services-security.md#environment-variables-and-application-configuration)voor meer informatie over omgevings variabelen.
 
 ```java
 public class App {
@@ -50,12 +50,12 @@ public class App {
 
 ## <a name="create-a-speech-translation-configuration"></a>Een configuratie voor spraak omzetting maken
 
-Als u de spraak service wilt aanroepen met behulp van de Speech SDK [`SpeechTranslationConfig`][config], moet u een maken. Deze klasse bevat informatie over uw abonnement, zoals uw sleutel en de bijbehorende regio, het eind punt, de host of het autorisatie token.
+Als u de spraak service wilt aanroepen met behulp van de Speech SDK, moet u een maken [`SpeechTranslationConfig`][config] . Deze klasse bevat informatie over uw abonnement, zoals uw sleutel en de bijbehorende regio, het eind punt, de host of het autorisatie token.
 
 > [!TIP]
 > Ongeacht of u spraak herkenning, spraak synthese, vertaling of intentie herkenning uitvoert, maakt u altijd een configuratie.
 
-Er zijn een paar manieren waarop u een [`SpeechTranslationConfig`][config]kunt initialiseren:
+Er zijn een paar manieren waarop u een kunt initialiseren [`SpeechTranslationConfig`][config] :
 
 * Met een abonnement: Geef een sleutel en de bijbehorende regio door.
 * Met een eind punt: Pass in een speech service-eind punt. Een sleutel-of autorisatie token is optioneel.
@@ -89,7 +89,7 @@ public class App {
 
 ## <a name="change-source-language"></a>Bron taal wijzigen
 
-Een veelvoorkomende taak van spraak omzetting is het opgeven van de invoer-(of bron-) taal. Laten we eens kijken hoe u de invoer taal wijzigt in Italiaans. In uw code communiceert u met [`SpeechTranslationConfig`][config] het exemplaar en roept `setSpeechRecognitionLanguage` u de-methode aan.
+Een veelvoorkomende taak van spraak omzetting is het opgeven van de invoer-(of bron-) taal. Laten we eens kijken hoe u de invoer taal wijzigt in Italiaans. In uw code communiceert u met het [`SpeechTranslationConfig`][config] exemplaar en roept u de- `setSpeechRecognitionLanguage` methode aan.
 
 ```java
 static void translateSpeech() {
@@ -105,7 +105,7 @@ De [`setSpeechRecognitionLanguage`][recognitionlang] functie verwacht een indeli
 
 ## <a name="add-translation-language"></a>Vertaal taal toevoegen
 
-Een andere veelvoorkomende taak van spraak omzetting is het opgeven van talen voor doel omzetting, ten minste één is vereist, maar meerdere worden ondersteund. In het volgende code fragment, zowel Frans als Duits als Vertaal taal doelen.
+Een andere veelvoorkomende taak van spraak omzetting is het opgeven van talen voor doel omzetting, ten minste één is vereist, maar meerdere worden ondersteund. In het volgende code fragment worden zowel Frans als Duits ingesteld als Vertaal taal doelen.
 
 ```java
 static void translateSpeech() {
@@ -120,11 +120,11 @@ static void translateSpeech() {
 }
 ```
 
-Bij elke aanroep van [`addTargetLanguage`][addlang]wordt een nieuwe doel taal voor vertalen opgegeven. Met andere woorden, wanneer spraak wordt herkend vanuit de bron taal, is elke doel omzetting beschikbaar als onderdeel van de resulterende Vertaal bewerking.
+Bij elke aanroep van [`addTargetLanguage`][addlang] wordt een nieuwe doel taal voor vertalen opgegeven. Met andere woorden, wanneer spraak wordt herkend vanuit de bron taal, is elke doel omzetting beschikbaar als onderdeel van de resulterende Vertaal bewerking.
 
 ## <a name="initialize-a-translation-recognizer"></a>Een omzettings herkenning initialiseren
 
-Nadat u een [`SpeechTranslationConfig`][config]hebt gemaakt, is de volgende stap het initialiseren van [`TranslationRecognizer`][recognizer]een. Wanneer u een [`TranslationRecognizer`][recognizer]initialiseert, moet u het door geven aan uw `translationConfig`. Het configuratie object bevat de referenties die de speech-service nodig heeft om uw aanvraag te valideren.
+Nadat u een hebt gemaakt [`SpeechTranslationConfig`][config] , is de volgende stap het initialiseren van een [`TranslationRecognizer`][recognizer] . Wanneer u een initialiseert [`TranslationRecognizer`][recognizer] , moet u het door geven aan uw `translationConfig` . Het configuratie object bevat de referenties die de speech-service nodig heeft om uw aanvraag te valideren.
 
 Als u spraak wilt herkennen met de standaard microfoon van uw apparaat, ziet u het [`TranslationRecognizer`][recognizer] volgende:
 
@@ -145,12 +145,12 @@ static void translateSpeech() {
 }
 ```
 
-Als u het audio-invoer apparaat wilt opgeven, moet u een [`AudioConfig`][audioconfig] maken en de `audioConfig` para meter opgeven bij het initialiseren van uw [`TranslationRecognizer`][recognizer].
+Als u het audio-invoer apparaat wilt opgeven, moet u een maken [`AudioConfig`][audioconfig] en de `audioConfig` para meter opgeven bij het initialiseren van uw [`TranslationRecognizer`][recognizer] .
 
 > [!TIP]
 > [Meer informatie over het ophalen van de apparaat-id voor het apparaat voor audio-invoer](../../../how-to-select-audio-input-devices.md).
 
-Eerst verwijst u als volgt naar `AudioConfig` het object:
+Eerst verwijst u `AudioConfig` als volgt naar het object:
 
 ```java
 static void translateSpeech() {
@@ -171,7 +171,7 @@ static void translateSpeech() {
 }
 ```
 
-Als u een audio bestand wilt opgeven in plaats van een microfoon te gebruiken, moet u nog steeds een `audioConfig`opgeven. Wanneer [`AudioConfig`][audioconfig]u echter een maakt in plaats van het aanroepen `fromDefaultMicrophoneInput`van, roept `fromWavFileInput` u de para `filename` meter op en geeft u deze door.
+Als u een audio bestand wilt opgeven in plaats van een microfoon te gebruiken, moet u nog steeds een opgeven `audioConfig` . Wanneer u echter een maakt [`AudioConfig`][audioconfig] in plaats van het aanroepen van `fromDefaultMicrophoneInput` , roept u `fromWavFileInput` de para meter op en geeft u deze door `filename` .
 
 ```java
 static void translateSpeech() {
@@ -230,10 +230,10 @@ Na een geslaagde spraak herkenning en-omzetting bevat het resultaat alle vertali
 
 ### <a name="event-based-synthesis"></a>Op gebeurtenissen gebaseerde synthese
 
-Het `TranslationRecognizer` object toont een `synthesizing` gebeurtenis. De gebeurtenis wordt meerdere keren geactiveerd en biedt een mechanisme voor het ophalen van de gesynthesizerde audio uit het resultaat van de vertalings herkenning. Zie [hand matige synthese](#manual-synthesis)als u naar meerdere talen wilt vertalen. Geef de synthese stem op door een [`setVoiceName`][voicename] gebeurtenis-handler `synthesizing` toe te wijzen en de audio op te halen. In het volgende voor beeld wordt de vertaalde audio opgeslagen als *WAV* -bestand.
+Het `TranslationRecognizer` object toont een `synthesizing` gebeurtenis. De gebeurtenis wordt meerdere keren geactiveerd en biedt een mechanisme voor het ophalen van de gesynthesizerde audio uit het resultaat van de vertalings herkenning. Zie [hand matige synthese](#manual-synthesis)als u naar meerdere talen wilt vertalen. Geef de synthese stem op door een [`setVoiceName`][voicename] gebeurtenis-handler toe te wijzen en de `synthesizing` audio op te halen. In het volgende voor beeld wordt de vertaalde audio opgeslagen als *WAV* -bestand.
 
 > [!IMPORTANT]
-> De op gebeurtenissen gebaseerde synthese werkt alleen met één vertaling, Voeg **geen** meerdere talen voor doel omzetting toe. Daarnaast moet het [`setVoiceName`][voicename] dezelfde taal zijn als de taal van de doel omzetting, bijvoorbeeld; `"de"` kan worden toegewezen `"de-DE-Hedda"`aan.
+> De op gebeurtenissen gebaseerde synthese werkt alleen met één vertaling, Voeg **geen** meerdere talen voor doel omzetting toe. Daarnaast moet het [`setVoiceName`][voicename] dezelfde taal zijn als die van de doel taal van de vertaling, bijvoorbeeld; `"de"` kan worden toegewezen aan `"de-DE-Hedda"` .
 
 ```java
 static void translateSpeech() throws ExecutionException, FileNotFoundException, InterruptedException, IOException {
@@ -280,7 +280,7 @@ static void translateSpeech() throws ExecutionException, FileNotFoundException, 
 
 ### <a name="manual-synthesis"></a>Hand matige synthese
 
-De [`getTranslations`][translations] functie retourneert een woorden lijst die kan worden gebruikt voor het bekunsten van audio uit de tekst van de vertaling. Herhaal elke vertaling en synthesizer de vertaling. Bij het maken `SpeechSynthesizer` van een exemplaar `SpeechConfig` moet de [`setSpeechSynthesisVoiceName`][speechsynthesisvoicename] eigenschap van het object op de gewenste stem zijn ingesteld. In het volgende voor beeld worden de vijf talen omgezet en elke vertaling wordt vervolgens op een audio bestand in de bijbehorende Neural-taal gesynthesizerd.
+De [`getTranslations`][translations] functie retourneert een woorden lijst die kan worden gebruikt voor het bekunsten van audio uit de tekst van de vertaling. Herhaal elke vertaling en synthesizer de vertaling. Bij het maken van een `SpeechSynthesizer` exemplaar `SpeechConfig` moet de eigenschap van het object [`setSpeechSynthesisVoiceName`][speechsynthesisvoicename] op de gewenste stem zijn ingesteld. In het volgende voor beeld worden de vijf talen omgezet en elke vertaling wordt vervolgens op een audio bestand in de bijbehorende Neural-taal gesynthesizerd.
 
 ```java
 static void translateSpeech() throws ExecutionException, InterruptedException {
