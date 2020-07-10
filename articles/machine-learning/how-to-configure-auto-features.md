@@ -11,12 +11,12 @@ ms.subservice: core
 ms.topic: how-to
 ms.date: 05/28/2020
 ms.custom: seodec18
-ms.openlocfilehash: aa348728cd4e9ac0ce5d70cb293ac850cc549666
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 11bb692027d8a2e5033c7bdaf8eb2c565d1562b0
+ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84817134"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86205704"
 ---
 # <a name="featurization-in-automated-machine-learning"></a>Parametrisatie in automatische machine learning
 
@@ -45,7 +45,7 @@ Voor experimenten die u configureert met de python-SDK, kunt u de instelling par
 
 De volgende tabel bevat de geaccepteerde instellingen voor `featurization` in de [AutoMLConfig-klasse](/python/api/azureml-train-automl-client/azureml.train.automl.automlconfig.automlconfig):
 
-|Parametrisatie-configuratie | Description|
+|Parametrisatie-configuratie | Beschrijving|
 ------------- | ------------- |
 |`"featurization": 'auto'`| Hiermee geeft u op dat, als onderdeel van preverwerking, de [stappen voor gegevens Guardrails en parametrisatie](#featurization) automatisch moeten worden uitgevoerd. Dit is de standaardinstelling.|
 |`"featurization": 'off'`| Hiermee geeft u op dat parametrisatie stappen niet automatisch moeten worden uitgevoerd.|
@@ -60,7 +60,7 @@ De volgende tabel bevat een overzicht van de technieken die automatisch worden t
 > [!NOTE]
 > Als u van plan bent om uw door AutoML gemaakte modellen te exporteren naar een [ONNX-model](concept-onnx.md), worden alleen de parametrisatie-opties aangegeven met een asterisk (*) ondersteund in de ONNX-indeling. Meer informatie over [het converteren van modellen naar ONNX](concept-automated-ml.md#use-with-onnx).
 
-|Parametrisatie- &nbsp; stappen| Description |
+|Parametrisatie- &nbsp; stappen| Beschrijving |
 | ------------- | ------------- |
 |**Hoge kardinaliteit of geen variantie-functies verwijderen*** |Verwijder deze functies uit de trainings-en validatie sets. Is van toepassing op functies waarbij alle waarden ontbreken, met dezelfde waarde in alle rijen of met een hoge kardinaliteit (bijvoorbeeld hashes, Id's of GUID'S).|
 |**Ontbrekende waarden toegerekend*** |Voor numerieke functies toegerekend met het gemiddelde van de waarden in de kolom.<br/><br/>Voor categorische-functies toegerekend met de meest frequente waarde.|
@@ -91,7 +91,7 @@ U kunt de gegevens Guardrails voor uw experiment bekijken:
 
 Gegevens Guardrails worden weer gegeven in een van de volgende drie statussen:
 
-|Status| Beschrijving |
+|Staat| Beschrijving |
 |----|---- |
 |**Buffer**| Er zijn geen gegevens problemen gedetecteerd en er is geen actie vereist voor u. |
 |**Gereed**| Er zijn wijzigingen toegepast op uw gegevens. We raden u aan de corrigerende maat regelen te controleren die AutoML hebben genomen, om ervoor te zorgen dat de wijzigingen worden uitgelijnd met de verwachte resultaten. |
@@ -104,7 +104,7 @@ In de volgende tabel worden de gegevens Guardrails beschreven die momenteel word
 Guardrail|Status|Voor waarde &nbsp; voor &nbsp; trigger
 ---|---|---
 **Ontbrekende functie waarden toerekening** |Buffer <br><br><br> Gereed| Er zijn geen ontbrekende onderdeel waarden gedetecteerd in uw trainings gegevens. Meer informatie over de toerekening van [ontbrekende waarden.](https://docs.microsoft.com/azure/machine-learning/how-to-use-automated-ml-for-ml-models#advanced-featurization-options) <br><br> Er zijn ontbrekende functie waarden gedetecteerd in uw trainings gegevens en deze zijn toegerekend.
-**Functie verwerking met hoge kardinaliteit** |Buffer <br><br><br> Gereed| Uw invoer is geanalyseerd en er zijn geen functies met een hoge kardinaliteit gedetecteerd. Meer informatie over [het detecteren van functies met een hoge kardinaliteit](#automatic-featurization). <br><br> Er zijn functies met een hoge kardinaliteit gedetecteerd in uw invoer en zijn afgehandeld.
+**Functie verwerking met hoge kardinaliteit** |Buffer <br><br><br> Gereed| Uw invoer is geanalyseerd en er zijn geen functies met een hoge kardinaliteit gedetecteerd. <br><br> Er zijn functies met een hoge kardinaliteit gedetecteerd in uw invoer en zijn afgehandeld.
 **Verwerking van splitsing van validatie** |Gereed| De validatie configuratie is ingesteld op `'auto'` en de trainings gegevens bevatten *minder dan 20.000 rijen*. <br> Elke iteratie van het getrainde model is gevalideerd door Kruis validatie te gebruiken. Meer informatie over [validatie gegevens](https://docs.microsoft.com/azure/machine-learning/how-to-configure-auto-train#train-and-validation-data). <br><br> De validatie configuratie is ingesteld op `'auto'` en de trainings gegevens bevatten *meer dan 20.000 rijen*. <br> De invoer gegevens zijn gesplitst in een trainings gegevensset en een validatie gegevensset voor validatie van het model.
 **Detectie van klasse-verdeling** |Buffer <br><br><br><br><br> Gewaarschuwd | Uw invoer is geanalyseerd en alle klassen zijn evenwichtig in uw trainings gegevens. Een gegevensset wordt beschouwd als evenwichtig als elke klasse een goede representatie heeft in de gegevensset, gemeten op basis van het aantal en de verhouding van steek proeven. <br><br><br> Er zijn niet-sluitende klassen gedetecteerd in uw invoer. Los het probleem met de oplossing op om model afwijking te herstellen. Meer informatie over [gegevens](https://docs.microsoft.com/azure/machine-learning/concept-manage-ml-pitfalls#identify-models-with-imbalanced-data)die niet in balans zijn.
 **Detectie van geheugen problemen** |Buffer <br><br><br><br> Gereed |<br> De geselecteerde waarden (horizon, vertraging, doorlopend venster) zijn geanalyseerd en er zijn geen mogelijke problemen met de geheugen detectie gedetecteerd. Meer informatie over [prognose configuraties](https://docs.microsoft.com/azure/machine-learning/how-to-auto-train-forecast#configure-and-run-experiment)voor time series. <br><br><br>De geselecteerde waarden (horizon, vertraging, doorlopend venster) zijn geanalyseerd en kunnen ervoor zorgen dat het experiment te weinig geheugen heeft. De vertragings-of venster configuraties zijn uitgeschakeld.

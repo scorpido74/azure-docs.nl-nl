@@ -1,17 +1,17 @@
 ---
 title: Web-app-persoonlijker gebruiken
 description: Een C# .NET-Web-App aanpassen met een Personaler-lus om de juiste inhoud te bieden aan een gebruiker op basis van acties (met functies) en context functies.
-ms.topic: troubleshooting
+ms.topic: tutorial
 ms.date: 06/10/2020
 ms.author: diberry
-ms.openlocfilehash: 9def69a1540e81b99723c16ad34ba522d1737c7f
-ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
+ms.openlocfilehash: 9514e92432c2be5441dec5ff998a9deede35d7f4
+ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/11/2020
-ms.locfileid: "84713915"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86207608"
 ---
-# <a name="add-personalizer-to-a-net-web-app"></a>Persoonlijker toevoegen aan een .NET-Web-app
+# <a name="tutorial-add-personalizer-to-a-net-web-app"></a>Zelf studie: een persoonlijker toevoegen aan een .NET-Web-app
 
 Een C# .NET-Web-App aanpassen met een Personaler-lus om de juiste inhoud te bieden aan een gebruiker op basis van acties (met functies) en context functies.
 
@@ -156,7 +156,7 @@ De web-app gebruikt persoonlijke instellingen om de beste actie te selecteren in
 * **acties** met hun functies, zoals `taste` en`spiceLevel`
 * **context** functies, zoals `time` de dag, de `taste` voor keur van de gebruiker en de gegevens van de gebruikers agent van de browser en de context functies
 * **acties die moeten worden uitgesloten** , zoals SAP
-* **eventid**voor elke aanroep naar Rank API.
+* **eventId**voor elke aanroep naar Rank API.
 
 ## <a name="personalizer-model-features-in-a-web-app"></a>Model functies personaliseren in een web-app
 
@@ -212,7 +212,7 @@ De voor beeld-web-app op basis van een browser (alle code wordt meegeleverd) ver
 
 Installeer de volgende software:
 
-* [.Net core 2,1](https://dotnet.microsoft.com/download/dotnet-core/2.1) -de back-end-voorbeeld server maakt gebruik van .net core
+* [.Net core 2,1](https://dotnet.microsoft.com/download/dotnet-core/2.1) -de voor beeld-back-end-server maakt gebruik van .net core
 * [Node.js](https://nodejs.org/) -de client-front-end is afhankelijk van deze toepassing
 * [Visual studio 2019](https://visualstudio.microsoft.com/vs/)of [.net core SLI](https://docs.microsoft.com/dotnet/core/tools/) : gebruik de ontwikkel omgeving van Visual studio 2019 of de .net core SLI om de app te bouwen en uit te voeren
 

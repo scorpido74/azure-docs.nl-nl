@@ -7,12 +7,12 @@ ms.service: load-balancer
 ms.topic: article
 ms.date: 04/22/2020
 ms.author: errobin
-ms.openlocfilehash: 205a4bd119a7324c4e6524a0e29d432aa57bf315
-ms.sourcegitcommit: cec9676ec235ff798d2a5cad6ee45f98a421837b
+ms.openlocfilehash: 2b547dbc8671481275952f4c3eae5683e9e3a06c
+ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85848215"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86207531"
 ---
 # <a name="load-balancer-frequently-asked-questions"></a>Veelgestelde vragen over Load Balancer
 
@@ -49,5 +49,9 @@ Met de opdracht nslookup kunt u een DNS-query voor de naam myip.opendns.com verz
 ## <a name="how-do-connections-to-azure-storage-in-the-same-region-work"></a>Hoe werken de verbindingen met Azure Storage in dezelfde regio?
 Het is niet nodig om verbinding te maken met opslag in dezelfde regio als de virtuele machine als u uitgaande verbindingen hebt via de bovenstaande scenario's. Als u dit niet wilt, gebruikt u netwerk beveiligings groepen (Nsg's) zoals hierboven is uitgelegd. Voor connectiviteit met opslag in andere regio's is uitgaande connectiviteit vereist. Houd er rekening mee dat wanneer u verbinding maakt met de opslag van een virtuele machine in dezelfde regio, het bron-IP-adres in de logboeken voor diagnostische gegevens van de opslag locatie van de interne provider is en niet het open bare IP-adres van uw virtuele machine. Als u de toegang tot uw opslag account wilt beperken tot Vm's in een of meer Virtual Network subnetten in dezelfde regio, gebruikt u [Virtual Network Service-eind punten](../virtual-network/virtual-network-service-endpoints-overview.md) en niet uw open bare IP-adres bij het configureren van de firewall van uw opslag account. Zodra service-eind punten zijn geconfigureerd, ziet u uw Virtual Network privé-IP-adres in uw logboeken voor opslag diagnose en niet het adres van de interne provider.
 
+## <a name="what-are-best-practises-with-respect-to-outbound-connectivity"></a>Wat zijn de aanbevolen procedures voor uitgaande verbindingen?
+Standard Load Balancer en standaard open bare IP introduceert mogelijkheden en verschillende gedragingen voor uitgaande connectiviteit. Ze zijn niet hetzelfde als de basis-Sku's. Als u een uitgaande verbinding wilt gebruiken bij het werken met standaard-Sku's, moet u deze expliciet definiëren met een openbaar IP-adres of standaard open bare Load Balancer. Dit omvat het maken van uitgaande connectiviteit bij het gebruik van een interne Standard Load Balancer. U wordt aangeraden om altijd uitgaande regels te gebruiken op een standaard open bare Load Balancer. Dit betekent dat als er een interne Standard Load Balancer wordt gebruikt, u stappen moet nemen om uitgaande connectiviteit te maken voor de virtuele machines in de back-endadresgroep als uitgaande connectiviteit gewenst is. In de context van uitgaande connectiviteit, één zelfstandige virtuele machine, alle virtuele machines in een Beschikbaarheidsset, werken alle exemplaren in een VMSS als groep. Dit betekent dat als er één virtuele machine in een Beschikbaarheidsset is gekoppeld aan een standaard-SKU, alle VM-exemplaren binnen deze Beschikbaarheidsset nu dezelfde regels gedragen als voor de standaard-SKU, zelfs als een afzonderlijke instantie niet rechtstreeks is gekoppeld. Dit gedrag wordt ook waargenomen in het geval van een zelfstandige virtuele machine met meerdere netwerk interface kaarten die aan een load balancer zijn gekoppeld. Als één NIC als zelfstandige wordt toegevoegd, heeft deze hetzelfde gedrag. Lees dit volledige document aandachtig door om inzicht te krijgen in de algemene concepten, Lees [Standard Load Balancer](load-balancer-standard-overview.md) voor verschillen tussen sku's en controleer de [regels voor uitgaande verbindingen](load-balancer-outbound-connections.md#outboundrules).
+Met uitgaande regels kunt u de controle over alle aspecten van de uitgaande connectiviteit nauw keuriger maken.
+ 
 ## <a name="next-steps"></a>Volgende stappen
 Als uw vraag hier niet wordt vermeld, kunt u met uw vraag feedback over deze pagina sturen. Hiermee maakt u een GitHub-probleem voor het product team om ervoor te zorgen dat al onze vragen van de gewaardeerde klant worden beantwoord.

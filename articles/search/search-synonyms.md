@@ -8,12 +8,12 @@ ms.author: brjohnst
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 02/28/2020
-ms.openlocfilehash: 23c7913fbe9b3943559d36f5cbf2a21d7ed63dbe
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 0a53122b324c0a6dc43619eb2e9c704873f87b69
+ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85563454"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86207311"
 ---
 # <a name="synonyms-in-azure-cognitive-search"></a>Synoniemen in azure Cognitive Search
 
@@ -51,6 +51,7 @@ Synoniemen moeten de Apache solr-indeling hebben die hieronder wordt uitgelegd. 
 
 U kunt met behulp van HTTP POST een nieuwe synoniemen toewijzing maken, zoals in het volgende voor beeld:
 
+```synonym-map
     POST https://[servicename].search.windows.net/synonymmaps?api-version=2020-06-30
     api-key: [admin key]
 
@@ -61,9 +62,11 @@ U kunt met behulp van HTTP POST een nieuwe synoniemen toewijzing maken, zoals in
           USA, United States, United States of America\n
           Washington, Wash., WA => WA\n"
     }
+```
 
 U kunt ook PUT gebruiken en de naam van de toewijzing van het synoniem opgeven op de URI. Als de synoniemen toewijzing niet bestaat, wordt deze gemaakt.
 
+```synonym-map
     PUT https://[servicename].search.windows.net/synonymmaps/mysynonymmap?api-version=2020-06-30
     api-key: [admin key]
 
@@ -73,10 +76,12 @@ U kunt ook PUT gebruiken en de naam van de toewijzing van het synoniem opgeven o
           USA, United States, United States of America\n
           Washington, Wash., WA => WA\n"
     }
+```
 
 ##### <a name="apache-solr-synonym-format"></a>Indeling van Apache solr-synoniem
 
 De solr-indeling ondersteunt gelijkwaardige en expliciete synoniemen toewijzingen. Toewijzings regels voldoen aan de open-source synoniem filter specificatie van Apache solr, zoals beschreven in dit document: [SynonymFilter](https://cwiki.apache.org/confluence/display/solr/Filter+Descriptions#FilterDescriptions-SynonymFilter). Hieronder volgt een voorbeeld regel voor equivalente synoniemen.
+
 ```
 USA, United States, United States of America
 ```
@@ -84,29 +89,37 @@ USA, United States, United States of America
 Met de bovenstaande regel wordt een zoek opdracht "USA" uitgebreid naar "USA" of "Verenigde Staten" of "Verenigde Staten van Amerika".
 
 Expliciete toewijzing wordt aangeduid met een pijl "=>". Als deze is opgegeven, wordt een term volgorde van een zoek query die overeenkomt met de linkerkant van "=>" vervangen door de alternatieven aan de rechter kant. Op basis van de onderstaande regel, zoek query's "Washington", "wassen" of "WA" wordt allemaal herschreven naar "WA". Expliciete toewijzing is alleen van toepassing in de opgegeven richting en schrijft in dit geval de query "WA" niet opnieuw naar "Washington".
+
 ```
 Washington, Wash., WA => WA
 ```
 
 #### <a name="list-synonym-maps-under-your-service"></a>Lijst met synoniemen in uw service.
 
+```synonym-map
     GET https://[servicename].search.windows.net/synonymmaps?api-version=2020-06-30
     api-key: [admin key]
+```
 
 #### <a name="get-a-synonym-map-under-your-service"></a>Maak een synoniemen toewijzing onder uw service.
 
+```synonym-map
     GET https://[servicename].search.windows.net/synonymmaps/mysynonymmap?api-version=2020-06-30
     api-key: [admin key]
+```
 
 #### <a name="delete-a-synonyms-map-under-your-service"></a>Verwijder een synoniemen toewijzing onder uw service.
 
+```synonym-map
     DELETE https://[servicename].search.windows.net/synonymmaps/mysynonymmap?api-version=2020-06-30
     api-key: [admin key]
+```
 
 ### <a name="configure-a-searchable-field-to-use-the-synonym-map-in-the-index-definition"></a>Configureer een Doorzoek bare veld om de synoniemen toewijzing in de index definitie te gebruiken.
 
 Een nieuwe veld eigenschap **synonymMaps** kan worden gebruikt om een synoniemen toewijzing op te geven die moet worden gebruikt voor een Doorzoek bare veld. Synoniemen zijn service niveau resources en kunnen worden verwezen door elk veld van een index onder de service.
 
+```synonym-map
     POST https://[servicename].search.windows.net/indexes?api-version=2020-06-30
     api-key: [admin key]
 
@@ -138,6 +151,7 @@ Een nieuwe veld eigenschap **synonymMaps** kan worden gebruikt om een synoniemen
           }
        ]
     }
+```
 
 **synonymMaps** kan worden opgegeven voor Doorzoek bare velden van het type EDM. String of Collection (EDM. String).
 

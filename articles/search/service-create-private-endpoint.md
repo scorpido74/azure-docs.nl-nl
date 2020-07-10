@@ -8,11 +8,12 @@ ms.author: mcarter
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 05/11/2020
-ms.openlocfilehash: e55dfc692bdd625de8873f6e61c9969ed7fbf2df
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 27fb165c36c17cee83cd9f90eba3bdcb9e32d517
+ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84466167"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86206907"
 ---
 # <a name="create-a-private-endpoint-for-a-secure-connection-to-azure-cognitive-search"></a>Een persoonlijk eind punt maken voor een beveiligde verbinding met Azure Cognitive Search
 
@@ -43,9 +44,9 @@ In deze sectie maakt u een virtueel netwerk en een subnet voor het hosten van de
 
     | Instelling | Waarde |
     | ------- | ----- |
-    | Abonnement | Uw abonnement selecteren|
+    | Abonnement | Selecteer uw abonnement|
     | Resourcegroep | Selecteer **nieuwe maken**, Voer *myResourceGroup*in en selecteer **OK** . |
-    | Name | *MyVirtualNetwork* invoeren |
+    | Naam | *MyVirtualNetwork* invoeren |
     | Regio | Selecteer de gewenste regio |
     |||
 
@@ -85,11 +86,11 @@ In deze sectie maakt u een nieuwe Azure Cognitive Search-service met een persoon
     | Abonnement | Selecteer uw abonnement. |
     | Resourcegroep | Selecteer **myResourceGroup**. U hebt deze in de vorige sectie gemaakt.|
     | Locatie | Selecteer **VS - west**.|
-    | Name | Voer *myPrivateEndpoint*in.  |
+    | Naam | Voer *myPrivateEndpoint* in.  |
     | Stel subresource in | De standaard **searchService**behouden. |
     | **NETWERKEN** |  |
-    | Virtueel netwerk  | Selecteer *MyVirtualNetwork* in de resource groep *myResourceGroup*. |
-    | Subnet | Selecteer *mySubnet*. |
+    | Virtueel netwerk  | Selecteer *MyVirtualNetwork* in de resource groep *myResourceGroup*. |
+    | Subnet | Selecteer *mySubnet*. |
     | **INTEGRATIE VAN PRIVÉ-DNS** |  |
     | Integreren met privé-DNS-zone  | Accepteer de standaard waarde **Ja**. |
     | Privé-DNS-zone  | Wijzig de standaard waarde * * (nieuw) privatelink.search.windows.net * *. |
@@ -188,7 +189,7 @@ In deze sectie gaat u de persoonlijke netwerk toegang tot de zoek service contro
 
 Wanneer het eind punt van de zoek service privé is, zijn sommige Portal functies uitgeschakeld. U kunt instellingen voor het service niveau weer geven en beheren, maar de toegang tot de portal voor het indexeren van gegevens en verschillende andere onderdelen in de service, zoals de definities index, Indexer en vaardig heden, is beperkt om veiligheids redenen.
 
-1. Open Power shell in de Extern bureaublad van *myVM*.
+1. Open PowerShell in het extern bureaublad van *myVM*.
 
 1. Voer ' nslookup [naam zoek service ']. Search. Windows. net ' in
 
@@ -206,7 +207,7 @@ Wanneer het eind punt van de zoek service privé is, zijn sommige Portal functie
 
 1. Het volt ooien van de Quick Start van de VM is uw bevestiging dat de service volledig operationeel is.
 
-1. Sluit de verbinding met extern bureau blad met *myVM*. 
+1. Sluit de verbinding met extern bureau blad met *myVM*. 
 
 1. Als u wilt controleren of uw service niet toegankelijk is op een openbaar eind punt, opent u postman op uw lokale werk station en voert u de eerste verschillende taken in de Quick Start uit. Als er een fout bericht wordt weer gegeven dat de externe server niet bestaat, hebt u een persoonlijk eind punt geconfigureerd voor uw zoek service.
 

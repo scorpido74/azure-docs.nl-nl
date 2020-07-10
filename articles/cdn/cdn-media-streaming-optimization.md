@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: how-to
 ms.date: 05/01/2018
 ms.author: allensu
-ms.openlocfilehash: 1f8dc5ef89c70cebce1d59fc389300b30dc828f6
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: edc2198cff360b6f0d2f6ace3b76d35bf77fab97
+ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84887611"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86206720"
 ---
 # <a name="media-streaming-optimization-with-azure-cdn"></a>Optimalisatie van mediastreaming met Azure CDN 
  
@@ -82,12 +82,11 @@ Nadat u het eind punt hebt gemaakt, wordt de optimalisatie toegepast voor alle b
 Als **Azure CDN standaard van Akamai** detecteert dat het activum een streaming-manifest of-fragment is, gebruikt het een andere verloop tijd voor caching vanaf de algemene Internet levering. (Zie de volledige lijst in de volgende tabel.) Zoals altijd, worden de headers van het cache-control-of expires-bericht van de oorsprong gehonoreerd. Als de Asset geen Media-Asset is, wordt deze in de cache opgeslagen met de verloop tijden voor de algemene Internet levering.
 
 De korte, negatieve cache tijd is handig voor offload van de oorsprong wanneer veel gebruikers een fragment aanvragen dat nog niet bestaat. Een voor beeld is een live stream waarbij de pakketten niet beschikbaar zijn vanaf de oorspronkelijke oorsprong. Met het interval voor langere caching kunt u ook aanvragen van de oorsprong offloaden, omdat de inhoud van de video doorgaans niet wordt gewijzigd.
- 
 
-|   | Algemene Internet levering | Algemene mediastreaming | Video-on-demand mediastreaming  
---- | --- | --- | ---
-Caching: positief <br> HTTP 200, 203, 300, <br> 301, 302 en 410 | 7 dagen |365 dagen | 365 dagen   
-Caching: negatief <br> HTTP 204, 305, 404, <br> en 405 | Geen | 1 seconde | 1 seconde
+| Caching  | Algemene Internet levering | Algemene mediastreaming | Video-on-demand mediastreaming  
+|--- | --- | --- | ---
+| Caching: positief <br> HTTP 200, 203, 300, <br> 301, 302 en 410 | 7 dagen |365 dagen | 365 dagen   
+| Caching: negatief <br> HTTP 204, 305, 404, <br> en 405 | Geen | 1 seconde | 1 seconde
  
 ### <a name="deal-with-origin-failure"></a>Omgaan met fout van oorsprong  
 

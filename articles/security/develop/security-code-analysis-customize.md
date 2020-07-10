@@ -13,12 +13,12 @@ ms.assetid: 521180dc-2cc9-43f1-ae87-2701de7ca6b8
 ms.devlang: na
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.openlocfilehash: 744b186b32927f81be21ff067c9195bddb33c416
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: c4c7f82b729355e59ff05d5513e22fa143d53a5e
+ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85362088"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86206854"
 ---
 # <a name="configure-and-customize-the-build-tasks"></a>De build-taken configureren en aanpassen
 
@@ -64,9 +64,11 @@ Details van taak configuratie worden weer gegeven in de volgende scherm afbeeldi
     - De directory specificaties moeten altijd eindigen op \\ *.
     - Voorbeelden:
 
+```binskim-targets
            *.dll;*.exe
            $(BUILD_STAGINGDIRECTORY)\*
            $(BUILD_STAGINGDIRECTORY)\*.dll;$(BUILD_STAGINGDIRECTORY)\*.exe;
+```
 
 - Als u de **opdracht regel** in de lijst **type** selecteert, moet u binskim.exe uitvoeren:
      - Zorg ervoor dat de eerste argumenten die moeten binskim.exe, de woorden **analyse** zijn, gevolgd door een of meer padspecificatie. Elk pad kan een volledig pad zijn of een pad dat relatief is ten opzichte van de bronmap.
@@ -74,11 +76,13 @@ Details van taak configuratie worden weer gegeven in de volgende scherm afbeeldi
      - U kunt de optie **/o** of **/output** weglaten. De uitvoer waarde wordt toegevoegd of vervangen.
      - De standaard-opdracht regel configuraties worden als volgt weer gegeven.
 
+```binskim-line-args
            analyze $(Build.StagingDirectory)\* --recurse --verbose
            analyze *.dll *.exe --recurse --verbose
+```
 
-          > [!NOTE]
-          > Het afsluitende \\ sterretje is belang rijk als u directory's voor het doel opgeeft.
+> [!NOTE]
+> Het afsluitende \\ sterretje is belang rijk als u directory's voor het doel opgeeft.
 
 Zie de [Gebruikers handleiding voor BinSkim](https://github.com/Microsoft/binskim/blob/master/docs/UserGuide.md)voor meer informatie over BinSkim-opdracht regel argumenten, regels op id of afsluit codes.
 

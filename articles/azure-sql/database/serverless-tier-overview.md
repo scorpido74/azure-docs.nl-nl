@@ -10,13 +10,13 @@ ms.topic: conceptual
 author: oslake
 ms.author: moslake
 ms.reviewer: sstein, carlrab
-ms.date: 7/6/2020
-ms.openlocfilehash: 130b19f280c69bfbe4ca49abe1bcba5db7f23caa
-ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
+ms.date: 7/9/2020
+ms.openlocfilehash: 38ca6528b77d9f36c84f5aacaa34a64d113b5978
+ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86045957"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86206942"
 ---
 # <a name="azure-sql-database-serverless"></a>Azure SQL Database serverloos
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -76,7 +76,7 @@ De volgende tabel bevat een overzicht van de verschillen tussen de serverloze Co
 
 SQL Database serverloze wordt momenteel alleen ondersteund in de laag Algemeen op generatie 5 in het vCore-aankoop model.
 
-## <a name="autoscaling"></a>Automatisch schalen
+## <a name="autoscaling"></a>Automatische schaalaanpassing
 
 ### <a name="scaling-responsiveness"></a>Reactie tijd van schalen
 
@@ -129,7 +129,7 @@ Autohervatten wordt geactiveerd als een van de volgende voor waarden op elk mome
 |---|---|
 |Verificatie en autorisatie|Aanmelden|
 |Detectie van bedreigingen|Instellingen voor detectie van bedreigingen in-of uitschakelen op Data Base-of server niveau.<br>Instellingen voor detectie van bedreigingen wijzigen op Data Base-of server niveau.|
-|Gegevensdetectie en -classificatie|Toevoegen, wijzigen, verwijderen of weer geven van gevoeligheids labels|
+|Detectie en classificatie van gegevens|Toevoegen, wijzigen, verwijderen of weer geven van gevoeligheids labels|
 |Controleren|Controle records weer geven.<br>Controle beleid bijwerken of weer geven.|
 |Gegevensmaskering|Regels voor gegevens maskering toevoegen, wijzigen, verwijderen of weer geven|
 |Transparent Data Encryption|Status of status van transparante gegevens versleuteling weer geven|
@@ -176,7 +176,7 @@ Het maken van een nieuwe data base of het verplaatsen van een bestaande Data Bas
 
 In de volgende voor beelden wordt een nieuwe data base gemaakt in de serverloze Compute-laag.
 
-#### <a name="use-the-azure-portal"></a>Azure Portal gebruiken
+#### <a name="use-the-azure-portal"></a>De Azure-portal gebruiken
 
 Zie [Quick Start: een enkele data base maken in Azure SQL database met behulp van de Azure Portal](single-database-create-quickstart.md).
 
@@ -254,7 +254,7 @@ Het wijzigen van de maximale of minimale vCores en de vertraging voor autopause 
 Het wijzigen van de maximale of minimale vCores en de vertraging voor autopause wordt uitgevoerd met behulp van de opdracht [AZ SQL DB Update](/cli/azure/sql/db#az-sql-db-update) in azure CLI met behulp van de `capacity` `min-capacity` argumenten, en `auto-pause-delay` .
 
 
-## <a name="monitoring"></a>Bewaking
+## <a name="monitoring"></a>Controle
 
 ### <a name="resources-used-and-billed"></a>Gebruikte resources en gefactureerd
 
@@ -272,7 +272,7 @@ De resource groep van de gebruiker is de binnenste grenzen voor bron beheer voor
 
 De metrische gegevens voor het bewaken van het resource gebruik van het app-pakket en de gebruikers groep van een serverloze Data Base worden weer gegeven in de volgende tabel:
 
-|Entiteit|Gegevens|Beschrijving|Eenheden|
+|Entiteit|Metrische waarde|Beschrijving|Eenheden|
 |---|---|---|---|
 |App-pakket|app_cpu_percent|Het percentage vCores dat door de app wordt gebruikt ten opzichte van het maximale aantal vCores dat voor de app is toegestaan.|Percentage|
 |App-pakket|app_cpu_billed|De hoeveelheid reken kracht die tijdens de rapportage periode in rekening wordt gebracht voor de app. Het betaalde bedrag tijdens deze periode is het product van deze metrische waarde en de vCore eenheids prijs. <br><br>Waarden van deze metrische gegevens worden bepaald door het samen voegen van het maximum van CPU-gebruik en het geheugen dat elke seconde wordt gebruikt. Als de gebruikte hoeveelheid kleiner is dan de minimum hoeveelheid die is ingericht zoals ingesteld door de min-vCores en het minimale geheugen, wordt de ingerichte minimum hoeveelheid gefactureerd.Als u de CPU wilt vergelijken met geheugen voor facturerings doeleinden, wordt geheugen genormaliseerd in eenheden van vCores door de hoeveelheid geheugen in GB met 3 GB per vCore opnieuw te schalen.|vCore seconden|
@@ -324,6 +324,19 @@ De gefactureerde hoeveelheid berekenings kosten wordt weer gegeven met de volgen
 - **Rapportage frequentie**: per minuut
 
 Deze hoeveelheid wordt per seconde berekend en op 1 minuut geaggregeerd.
+
+### <a name="minimum-compute-bill"></a>Minimale Compute-factuur
+
+Als een serverloze data base wordt onderbroken, is de reken factuur nul.  Als een serverloze data base niet wordt onderbroken, is de minimale Compute-factuur niet kleiner dan de hoeveelheid vCores op basis van Max (min vCores, min. geheugen GB * 1/3).
+
+Voorbeelden:
+
+- Stel dat een serverloze data base niet is gepauzeerd en geconfigureerd met 8 Maxi maal vCores en 1 minuut vCore die overeenkomt met 3,0 GB min geheugen.  De minimale Compute-factuur is gebaseerd op Max (1 vCore, 3,0 GB * 1 vCore/3 GB) = 1 vCore.
+- Stel dat een serverloze data base niet wordt onderbroken en is geconfigureerd met 4 Maxi maal vCores en 0,5 minuten vCores die overeenkomt met 2,1 GB min geheugen.  De minimale reken factuur is gebaseerd op Max (0,5 vCores, 2,1 GB * 1 vCore/3 GB) = 0,7 vCores.
+
+De [Azure SQL database prijs calculator](https://azure.microsoft.com/pricing/calculator/?service=sql-database) voor serverloze kan worden gebruikt om te bepalen hoeveel geheugen kan worden geconfigureerd op basis van het aantal maximale en minimale vCores dat is geconfigureerd.  Als een regel, als de mini maal geconfigureerde vCores groter is dan 0,5 vCores, is de minimale Compute-factuur onafhankelijk van het minimale geheugen dat is geconfigureerd en gebaseerd op het aantal minuten dat vCores is geconfigureerd.
+
+### <a name="example-scenario"></a>Voorbeeldscenario
 
 Overweeg een serverloze data base die is geconfigureerd met 1 min vCore en Maxi maal 4 vCores.  Dit komt overeen met ongeveer 3 GB min geheugen en een maximum van 12 GB geheugen.  Stel dat de vertraging voor automatisch onderbreken is ingesteld op 6 uur en dat de werk belasting van de data base actief is gedurende de eerste twee uur van een periode van 24 uur en anders niet actief is.    
 

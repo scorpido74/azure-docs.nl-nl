@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 08/26/2019
 ms.author: apimpm
-ms.openlocfilehash: 3294a7b2112e9527041ef343f4452aedb7a2a272
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 39803ab88e5b252ef119d22a697e135c83f87780
+ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "70073466"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86205642"
 ---
 # <a name="how-to-migrate-azure-api-management-across-regions"></a>Azure API Management migreren over regio's
 Als u API Management exemplaren van de ene Azure-regio naar de andere wilt migreren, kunt u de functie [back-up en herstellen](api-management-howto-disaster-recovery-backup-restore.md) gebruiken. U moet dezelfde API Management Prijs categorie in de bron-en doel regio's kiezen. 
@@ -47,3 +47,4 @@ Als u API Management exemplaren van de ene Azure-regio naar de andere wilt migre
 ## <a name="next-steps"></a><a name="next-steps"> </a>Volgende stappen
 * Zie [herstel na nood gevallen](api-management-howto-disaster-recovery-backup-restore.md)voor meer informatie over de functie voor het maken en terugzetten van back-ups.
 * Zie voor meer informatie over het migreren van Azure [-resources Azure-ondersteuning voor migratie tussen regio's](https://github.com/Azure/Azure-Migration-Guidance).
+* [Optimaliseer en bespaar in uw Cloud uitgaven](https://docs.microsoft.com/azure/cost-management-billing/costs/quick-acm-cost-analysis?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn).

@@ -6,18 +6,18 @@ ms.author: manishku
 ms.service: mariadb
 ms.topic: how-to
 ms.date: 01/09/2020
-ms.openlocfilehash: db2fa377cc10759fc57c3e4a27bd7815a5724bd7
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: 08e146ebde34c6d85e258c93a1ed1780bb97727b
+ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86114734"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86206453"
 ---
 # <a name="create-and-manage-private-link-for-azure-database-for-mariadb-using-portal"></a>Een persoonlijke koppeling voor Azure Database for MariaDB maken en beheren met behulp van portal
 
 Een privé-eindpunt is de fundamentele bouwsteen voor een Private Link in Azure. Het biedt Azure-resources, zoals virtuele machines, de mogelijkheid om Private Link-resources te gebruiken om privé met elkaar communiceren.  In dit artikel leert u hoe u de Azure Portal kunt gebruiken om een virtuele machine te maken in een Azure-Virtual Network en een Azure Database for MariaDB-server met een persoonlijk Azure-eind punt.
 
-Als u nog geen abonnement op Azure hebt, maak dan een [gratis account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) aan voordat u begint.
+Als u nog geen Azure-abonnement hebt, maakt u een [gratis account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) voordat u begint.
 
 > [!NOTE]
 > Deze functie is beschikbaar in alle Azure-regio's waar Azure Database for MariaDB de prijs categorieën voor Algemeen en geoptimaliseerd voor geheugen ondersteunt.
@@ -209,7 +209,7 @@ Nadat u **myVm** hebt gemaakt, maakt u hiermee als volgt verbinding via internet
 
 ## <a name="access-the-mariadb-server-privately-from-the-vm"></a>De MariaDB-server privé openen vanuit de VM
 
-1. Open Power shell in de Extern bureaublad van *myVM*.
+1. Open PowerShell in het extern bureaublad van *myVM*.
 
 2. Voer in  `nslookup mydemomserver.privatelink.mariadb.database.azure.com` . 
 

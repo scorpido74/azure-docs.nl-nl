@@ -3,14 +3,15 @@ title: Verificatie en autorisatie
 description: Meer informatie over de ingebouwde ondersteuning voor verificatie en autorisatie in Azure App Service en Azure Functions en hoe deze uw app kan beveiligen tegen onbevoegde toegang.
 ms.assetid: b7151b57-09e5-4c77-a10c-375a262f17e5
 ms.topic: article
-ms.date: 04/15/2020
+ms.date: 07/08/2020
 ms.reviewer: mahender
 ms.custom: seodec18, fasttrack-edit, has-adal-ref
-ms.openlocfilehash: f51a396e997a9e6392f3e86a6f77e581753d6ada
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 9588777305ca42603623075b908eee5d76164c84
+ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83196438"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86206751"
 ---
 # <a name="authentication-and-authorization-in-azure-app-service-and-azure-functions"></a>Verificatie en autorisatie in Azure App Service en Azure Functions
 
@@ -30,11 +31,11 @@ Voor beveiligde verificatie en autorisatie is grondige inzichten van beveiliging
 
 Zie [gebruikers verificatie en autorisatie voor mobiele apps met Azure app service](../app-service-mobile/app-service-mobile-auth.md)voor meer informatie over systeem eigen mobiele apps.
 
-## <a name="how-it-works"></a>Uitleg
+## <a name="how-it-works"></a>Hoe werkt het?
 
 De module authenticatie en autorisatie wordt uitgevoerd in dezelfde sandbox als de code van uw toepassing. Wanneer deze is ingeschakeld, stuurt elke binnenkomende HTTP-aanvraag deze door voordat deze wordt verwerkt door de code van uw toepassing.
 
-![](media/app-service-authentication-overview/architecture.png)
+![Een architectuur diagram met de aanvragen die worden onderschept door een proces in de sandbox van de site die communiceert met id-providers voordat verkeer naar de geïmplementeerde site wordt toegestaan](media/app-service-authentication-overview/architecture.png)
 
 Deze module verwerkt diverse dingen voor uw app:
 
@@ -62,7 +63,7 @@ App Service biedt een ingebouwde token opslag. Dit is een opslag plaats van toke
 
 Normaal gesp roken moet u code schrijven om deze tokens in uw toepassing te verzamelen, op te slaan en te vernieuwen. Met de token opslag haalt u alleen [de tokens](app-service-authentication-how-to.md#retrieve-tokens-in-app-code) op wanneer u deze nodig hebt en [weet u app service deze te vernieuwen](app-service-authentication-how-to.md#refresh-identity-provider-tokens) wanneer ze ongeldig worden. 
 
-De id-tokens, toegangs tokens en vernieuwings tokens worden in de cache opgeslagen voor de geauthenticeerde sessie en ze zijn alleen toegankelijk voor de bijbehorende gebruiker.  
+De ID-tokens, toegangs tokens en vernieuwings tokens worden in de cache opgeslagen voor de geauthenticeerde sessie en ze zijn alleen toegankelijk voor de bijbehorende gebruiker.  
 
 Als u niet met tokens in uw app hoeft te werken, kunt u de token opslag uitschakelen.
 
@@ -81,8 +82,11 @@ App Service maakt gebruik van [federatieve identiteiten](https://en.wikipedia.or
 | [Facebook](https://developers.facebook.com/docs/facebook-login) | `/.auth/login/facebook` |
 | [Google](https://developers.google.com/identity/choose-auth) | `/.auth/login/google` |
 | [Twitter](https://developer.twitter.com/en/docs/basics/authentication) | `/.auth/login/twitter` |
+| Elke [OpenID Connect Connect](https://openid.net/connect/) provider (preview-versie) | `/.auth/login/<providerName>` |
 
-Wanneer u verificatie en autorisatie met een van deze providers inschakelt, is het aanmeldings eindpunt beschikbaar voor gebruikers verificatie en voor validatie van verificatie tokens van de provider. U kunt uw gebruikers een onbeperkt aantal van deze aanmeldings opties voorzien. U kunt ook een andere ID-provider of [uw eigen aangepaste identiteits oplossing][custom-auth]integreren.
+Wanneer u verificatie en autorisatie met een van deze providers inschakelt, is het aanmeldings eindpunt beschikbaar voor gebruikers verificatie en voor validatie van verificatie tokens van de provider. U kunt uw gebruikers een onbeperkt aantal van deze aanmeldings opties voorzien.
+
+Er bestaat een [verouderd uitbreidings traject][custom-auth] voor de integratie met andere id-providers of een aangepaste verificatie oplossing, maar dit wordt niet aanbevolen. Overweeg in plaats daarvan de OpenID Connect Connect-ondersteuning te gebruiken.
 
 ## <a name="authentication-flow"></a>Verificatiestroom
 
@@ -112,7 +116,7 @@ App Service kunt voor client browsers automatisch alle niet-geverifieerde gebrui
 
 In de [Azure Portal](https://portal.azure.com)kunt u app service-autorisatie configureren met een aantal gedragingen wanneer een binnenkomende aanvraag niet is geverifieerd.
 
-![](media/app-service-authentication-overview/authorization-flow.png)
+![Een scherm opname met de vervolg keuzelijst ' te ondernemen actie wanneer de aanvraag is niet geverifieerd '](media/app-service-authentication-overview/authorization-flow.png)
 
 In de volgende koppen worden de opties beschreven.
 
@@ -150,13 +154,14 @@ Hand leidingen voor een specifieke provider:
 * [Uw app configureren voor aanmelding met Google][Google]
 * [Uw app configureren voor aanmelding met een Microsoft Account][MSA]
 * [Uw app configureren voor aanmelding met Twitter][Twitter]
-* [Procedure: aangepaste verificatie gebruiken voor uw toepassing][custom-auth]
+* [Uw app configureren voor het gebruik van een OpenID Connect Connect provider voor aanmelding (preview-versie)][OIDC]
 
 [AAD]: configure-authentication-provider-aad.md
 [Facebook]: configure-authentication-provider-facebook.md
 [Google]: configure-authentication-provider-google.md
 [MSA]: configure-authentication-provider-microsoft.md
 [Twitter]: configure-authentication-provider-twitter.md
+[OIDC]: configure-authentication-provider-openid-connect.md
 
 [custom-auth]: ../app-service-mobile/app-service-mobile-dotnet-backend-how-to-use-server-sdk.md#custom-auth
 

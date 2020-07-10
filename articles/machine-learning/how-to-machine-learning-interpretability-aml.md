@@ -1,5 +1,5 @@
 ---
-title: Interpreteren & uitleg van ML-modellen in python
+title: Interpreteren & uitleg van ML-modellen in python (preview-versie)
 titleSuffix: Azure Machine Learning
 description: Meer informatie over het verkrijgen van uitleg over hoe het machine learning-model bepaalt het belang van de functie en voor spellingen wanneer u de Azure Machine Learning SDK gebruikt.
 services: machine-learning
@@ -9,15 +9,16 @@ ms.topic: how-to
 ms.author: mesameki
 author: mesameki
 ms.reviewer: Luis.Quintanilla
-ms.date: 04/12/2020
+ms.date: 07/09/2020
 ms.custom: tracking-python
-ms.openlocfilehash: 32b33eed6b4dba303993f4c16fbd2ad42b3902f9
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 3830f65a3435c1db0291811c6306ea579bf1d896
+ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84560210"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86207138"
 ---
-# <a name="use-the-interpretability-package-to-explain-ml-models--predictions-in-python"></a>Gebruik het vertolkings pakket om ML-modellen & voor spellingen in python uit te leggen
+# <a name="use-the-interpretability-package-to-explain-ml-models--predictions-in-python-preview"></a>Gebruik het vertolkings pakket om ML-modellen & voor spellingen in python uit te leggen (preview)
 
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
 
@@ -303,7 +304,7 @@ Nadat u de uitleg in uw lokale Jupyter-notebook hebt gedownload, kunt u het visu
 
 De volgende grafieken bieden een algemeen overzicht van het getrainde model samen met de voor spellingen en toelichtingen.
 
-|Ontwerp|Description|
+|Ontwerp|Beschrijving|
 |----|-----------|
 |Gegevens verkennen| Geeft een overzicht van de gegevensset samen met Voorspellings waarden.|
 |Wereld wijd belang|Aggregateert de belang rijke waarden van de functie van afzonderlijke data Points om de algemene belangrijkste K (Configureer bare K) belangrijkste functies van het model weer te geven. Hiermee wordt het algemene gedrag van het onderliggende model duidelijker.|
@@ -317,7 +318,7 @@ De volgende grafieken bieden een algemeen overzicht van het getrainde model same
 
 U kunt het urgentie diagram van de afzonderlijke functie voor elk gegevens punt laden door te klikken op een van de afzonderlijke gegevens punten in een van de algemene grafieken.
 
-|Ontwerp|Description|
+|Ontwerp|Beschrijving|
 |----|-----------|
 |Lokale urgentie|Hier worden de belangrijkste K (Configureer bare K) belang rijke functies voor een afzonderlijke voor spelling weer gegeven. Helpt het lokale gedrag van het onderliggende model op een specifiek gegevens punt te illustreren.|
 |Perturbation exploratie (wat als-analyse)|Hiermee kunnen de functie waarden van het geselecteerde gegevens punt worden gewijzigd en worden de resulterende wijzigingen in de Voorspellings waarde geobserveerd.|
@@ -334,7 +335,7 @@ U kunt het urgentie diagram van de afzonderlijke functie voor elk gegevens punt 
 > [!NOTE]
 > Voordat de Jupyter-kernel wordt gestart, zorg ervoor dat u widget uitbreidingen voor het visualisatie dashboard inschakelt.
 
-* Jupyter-notebooks
+* Jupyter Notebooks
 
     ```shell
     jupyter nbextension install --py --sys-prefix azureml.contrib.interpret.visualize

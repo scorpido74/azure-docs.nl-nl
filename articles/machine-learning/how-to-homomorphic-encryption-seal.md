@@ -1,22 +1,23 @@
 ---
-title: Een versleutelde service voor het afnemen van interferentie implementeren
+title: Een versleutelde service voor het afnemen van interferentie implementeren (preview)
 titleSuffix: Azure Machine Learning
 description: Meer informatie over het gebruik van micro soft afdichting voor het implementeren van een versleutelde Voorspellings service voor de classificatie van afbeeldingen
 author: luisquintanilla
 ms.author: luquinta
-ms.date: 05/18/2020
+ms.date: 07/09/2020
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: how-to
 ms.custom: tracking-python
-ms.openlocfilehash: b92293973ac9b5027a9f1a10c2d19fd164c41e3f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: c67ddf2d82a1cebaaa43a90111f4a42edb20058e
+ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84560180"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86206783"
 ---
-# <a name="how-to-deploy-an-encrypted-inferencing-web-service"></a>Een versleutelde webservice implementeren
+# <a name="how-to-deploy-an-encrypted-inferencing-web-service-preview"></a>Een gecodeerde webservice voor het afwijzen van een versleutelings service implementeren (preview)
 
 Meer informatie over het implementeren van een installatie kopie-classificatie model als een versleutelde webservice voor het afwijzen van een provider in [Azure container instances](https://docs.microsoft.com/azure/container-instances/) (ACI). De webservice is een docker-container installatie kopie die het model en de Score logica bevat.
 

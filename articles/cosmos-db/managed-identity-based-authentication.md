@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.date: 03/20/2020
 ms.author: justipat
 ms.reviewer: sngun
-ms.openlocfilehash: 2555719e13b0cba38150d3bce7a18f043158d5b5
-ms.sourcegitcommit: f684589322633f1a0fafb627a03498b148b0d521
+ms.openlocfilehash: dfce18674f382cb683fa74a1bed964e9f86d72c2
+ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/06/2020
-ms.locfileid: "85970957"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86206101"
 ---
 # <a name="use-system-assigned-managed-identities-to-access-azure-cosmos-db-data"></a>Door het systeem toegewezen beheerde identiteiten gebruiken om toegang te krijgen tot Azure Cosmos DB gegevens
 
@@ -40,7 +40,7 @@ In deze stap wijst u een door het systeem toegewezen beheerde identiteit toe aan
 
 In deze stap wijst u een rol toe aan de door het systeem toegewezen beheerde identiteit van de functie-app. Azure Cosmos DB heeft meerdere ingebouwde rollen die u aan de beheerde identiteit kunt toewijzen. Voor deze oplossing gebruikt u de volgende twee rollen:
 
-|Ingebouwde rol  |Description  |
+|Ingebouwde rol  |Beschrijving  |
 |---------|---------|
 |[Inzender voor DocumentDB-accounts](../role-based-access-control/built-in-roles.md#documentdb-account-contributor)|Kan Azure Cosmos DB accounts beheren. Het ophalen van sleutels voor lezen/schrijven is toegestaan. |
 |[Rol van Cosmos DB-account lezer](../role-based-access-control/built-in-roles.md#cosmos-db-account-reader-role)|Kan gegevens van Azure Cosmos DB-account lezen. Kan Lees sleutels ophalen. |
@@ -52,6 +52,8 @@ In deze stap wijst u een rol toe aan de door het systeem toegewezen beheerde ide
 > Wijs, wanneer u rollen toewijst, alleen de benodigde toegang toe. Als uw service alleen gegevens heeft gelezen, wijst u de rol van **Cosmos DB-account lezer** toe aan de beheerde identiteit. Zie het artikel [onderbelichting van geprivilegieerde accounts](../security/fundamentals/identity-management-best-practices.md#lower-exposure-of-privileged-accounts) voor meer informatie over het belang van de minimale toegang tot bevoegdheden.
 
 In dit scenario leest de functie-app de Tempe ratuur van het aquarium en schrijft vervolgens de gegevens terug naar een container in Azure Cosmos DB. Omdat de functie-app de gegevens moet schrijven, moet u de rol Inzender voor het **DocumentDB-account** toewijzen. 
+
+### <a name="assign-the-role-using-azure-portal"></a>De rol toewijzen met behulp van Azure Portal
 
 1. Meld u aan bij de Azure Portal en ga naar uw Azure Cosmos DB-account. Open het deel venster **toegangs beheer (IAM)** en vervolgens het tabblad **roltoewijzingen** :
 
@@ -70,6 +72,18 @@ In dit scenario leest de functie-app de Tempe ratuur van het aquarium en schrijf
       :::image type="content" source="./media/managed-identity-based-authentication/cosmos-db-iam-tab-add-role-pane-filled.png" alt-text="Scherm opname waarin het deel venster roltoewijzing toevoegen is ingevuld met voor beelden.":::
 
 1. Nadat u de functie-app hebt geselecteerd, selecteert u **Opslaan**.
+
+### <a name="assign-the-role-using-azure-cli"></a>De rol toewijzen met behulp van Azure CLI
+
+Als u de functie wilt toewijzen met behulp van Azure CLI, gebruikt u de volgende opdrachten:
+
+```azurecli-interactive
+$scope = az cosmosdb show --name '<Your_Azure_Cosmos_account_name>' --resource-group '<CosmosDB_Resource_Group>' --query id
+
+$principalId = az webapp identity show -n '<Your_Azure_Function_name>' -g '<Azure_Function_Resource_Group>' --query principalId
+
+az role assignment create --assignee $principalId --role "DocumentDB Account Contributor" --scope $scope
+```
 
 ## <a name="programmatically-access-the-azure-cosmos-db-keys"></a>Programmatisch toegang tot de Azure Cosmos DB sleutels
 

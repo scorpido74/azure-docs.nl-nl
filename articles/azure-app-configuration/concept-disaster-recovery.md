@@ -6,11 +6,12 @@ ms.author: lcozzens
 ms.service: azure-app-configuration
 ms.topic: conceptual
 ms.date: 02/20/2020
-ms.openlocfilehash: 96ef09ac081aa328014217592a7fcd3ed6314c0e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 5c62f10d67345d68cde27af7d0a7663b22d978a0
+ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77523761"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86207197"
 ---
 # <a name="resiliency-and-disaster-recovery"></a>Tolerantie en herstel na noodgevallen
 
@@ -63,7 +64,11 @@ U ziet dat de `optional` para meter wordt door gegeven aan de `AddAzureAppConfig
 
 ## <a name="synchronization-between-configuration-stores"></a>Synchronisatie tussen configuratie archieven
 
-Het is belang rijk dat uw Geo-redundante configuratie alle dezelfde set gegevens bevat. U kunt de functie **exporteren** in app-configuratie gebruiken om gegevens van het primaire archief te kopiëren naar de secundaire opslag op aanvraag. Deze functie is beschikbaar via zowel de Azure Portal als de CLI.
+Het is belang rijk dat uw Geo-redundante configuratie alle dezelfde set gegevens bevat. Er zijn twee manieren om dit te doen:
+
+### <a name="backup-manually-using-the-export-function"></a>Hand matig een back-up maken met de functie exporteren
+
+U kunt de functie **exporteren** in app-configuratie gebruiken om gegevens van het primaire archief te kopiëren naar de secundaire opslag op aanvraag. Deze functie is beschikbaar via zowel de Azure Portal als de CLI.
 
 Vanuit het Azure Portal kunt u een wijziging naar een andere configuratie Store pushen door de volgende stappen uit te voeren.
 
@@ -71,15 +76,19 @@ Vanuit het Azure Portal kunt u een wijziging naar een andere configuratie Store 
 
 1. Op de nieuwe blade die wordt geopend, geeft u het abonnement, de resource groep en de resource naam van uw secundaire archief op. Selecteer vervolgens **Toep assen**.
 
-1. De gebruikers interface wordt bijgewerkt, zodat u kunt kiezen welke configuratie gegevens u wilt exporteren naar uw secundaire archief. U kunt de standaard waarde tijd laten staan en beide **van label** en **naar label** op dezelfde waarde instellen. Selecteer **Toepassen**.
+1. De gebruikers interface wordt bijgewerkt, zodat u kunt kiezen welke configuratie gegevens u wilt exporteren naar uw secundaire archief. U kunt de standaard waarde tijd laten staan en beide **van label** en **Label** op dezelfde waarde instellen. Selecteer **Toepassen**. Herhaal dit voor alle labels in uw primaire archief.
 
-1. Herhaal de vorige stappen voor alle configuratie wijzigingen.
+1. Herhaal de vorige stappen wanneer de configuratie wordt gewijzigd.
 
-Gebruik de Azure CLI om dit export proces te automatiseren. De volgende opdracht laat zien hoe u één configuratie wijziging van de primaire opslag naar de secundaire exporteert:
+Het export proces kan ook worden gerealiseerd met behulp van de Azure CLI. De volgende opdracht laat zien hoe u alle configuraties vanuit het primaire archief naar de secundaire exporteert:
 
 ```azurecli
-    az appconfig kv export --destination appconfig --name {PrimaryStore} --label {Label} --dest-name {SecondaryStore} --dest-label {Label}
+    az appconfig kv export --destination appconfig --name {PrimaryStore} --dest-name {SecondaryStore} --label * --preserve-labels -y
 ```
+
+### <a name="backup-automatically-using-azure-functions"></a>Automatisch een back-up maken met Azure Functions
+
+Het back-upproces kan worden geautomatiseerd met behulp van Azure Functions. De oplossing maakt gebruik van de integratie met Azure Event Grid in app-configuratie. Wanneer de app-configuratie eenmaal is ingesteld, worden gebeurtenissen naar Event Grid gepubliceerd voor wijzigingen die zijn aangebracht in sleutel waarden in een configuratie opslag. Zo kan een Azure Functions-app naar deze gebeurtenissen en back-upgegevens op de juiste wijze Luis teren. Zie voor meer informatie de zelf studie over het [automatisch maken van back-ups van app-configuratie archieven](./howto-backup-config-store.md).
 
 ## <a name="next-steps"></a>Volgende stappen
 

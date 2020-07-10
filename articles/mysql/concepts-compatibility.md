@@ -6,12 +6,12 @@ ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 3/18/2020
-ms.openlocfilehash: e8917a0a5678c4c6b72352a0d4c1523bfea3c96d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: b3cf2603dec7e921159824f565336cd91a575731
+ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "79537207"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86205658"
 ---
 # <a name="mysql-drivers-and-management-tools-compatible-with-azure-database-for-mysql"></a>MySQL-Stuur Programma's en-beheer hulpprogramma's die compatibel zijn met Azure Database for MySQL
 In dit artikel worden de Stuur Programma's en beheer Programma's beschreven die compatibel zijn met Azure Database for MySQL.
@@ -45,14 +45,14 @@ Het compatibiliteits voordeel kan ook worden uitgebreid naar beheer hulpprogramm
 
 |                                     | **MySQL Workbench 6. x en Maxi maal** | **Navicat 12** | **PHPMyAdmin 4. x en Maxi maal** |
 | :---------------------------------- | :----------------------------- | :------------- | :-------------------------|
-| Maken, bijwerken, lezen, schrijven, verwijderen | X | X | X |
-| SSL-verbinding | X | X | X |
-| SQL-query automatisch aanvullen | X | X |  |
-| Gegevens importeren en exporteren | X | X | X | 
-| Exporteren naar meerdere indelingen | X | X | X |
-| Back-up en herstel |  | X |  |
-| Server parameters weer geven | X | X | X |
-| Client verbindingen weer geven | X | X | X |
+| **Maken, bijwerken, lezen, schrijven, verwijderen** | X | X | X |
+| **SSL-verbinding** | X | X | X |
+| **SQL-query automatisch aanvullen** | X | X |  |
+| **Gegevens importeren en exporteren** | X | X | X |
+| **Exporteren naar meerdere indelingen** | X | X | X |
+| **Back-ups maken en herstellen** |  | X |  |
+| **Server parameters weer geven** | X | X | X |
+| **Client verbindingen weer geven** | X | X | X |
 
 ## <a name="next-steps"></a>Volgende stappen
 

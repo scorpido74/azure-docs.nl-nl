@@ -1,5 +1,5 @@
 ---
-title: Azure Disk Encryption-scenario's voor Linux-VM's
+title: Azure Disk Encryption-scenario's voor virtuele Linux-machines
 description: In dit artikel vindt u instructies voor het inschakelen van Microsoft Azure schijf versleuteling voor Linux-Vm's voor verschillende scenario's
 author: msmbaldwin
 ms.service: virtual-machines-linux
@@ -8,14 +8,14 @@ ms.topic: article
 ms.author: mbaldwin
 ms.date: 08/06/2019
 ms.custom: seodec18
-ms.openlocfilehash: 3fbbeaeafd8de5a38489034a13738ca3a9b934d5
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: b55707612c34cb3c95eafd95780955bf991c409c
+ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85601379"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86206160"
 ---
-# <a name="azure-disk-encryption-scenarios-on-linux-vms"></a>Azure Disk Encryption-scenario's voor Linux-VM's
+# <a name="azure-disk-encryption-scenarios-on-linux-vms"></a>Azure Disk Encryption-scenario's voor virtuele Linux-machines
 
 
 Azure Disk Encryption voor virtuele Linux-machines (Vm's) maakt gebruik van de DM-cryptografie functie van Linux om een volledige schijf versleuteling te bieden van de besturingssysteem schijf en gegevens schijven. Daarnaast biedt het een versleuteling van de tijdelijke schijf wanneer de functie EncryptFormatAll wordt gebruikt.
@@ -413,6 +413,8 @@ Azure Disk Encryption werkt niet voor de volgende Linux-scenario's,-functies en-
 - Een virtuele machine met ' geneste koppel punten '; dat wil zeggen, meerdere koppel punten in één pad (zoals "/1stmountpoint/data/2stmountpoint").
 - Een virtuele machine met een gegevens station die boven op een map van het besturings systeem is geplaatst.
 - Vm's uit de M-serie met Write Accelerator-schijven.
+- Versleuteling aan de [server zijde Toep assen met door de klant beheerde sleutels](disk-encryption.md) naar een virtuele machine die is versleuteld met ade en omgekeerd.
+- Een virtuele machine die is versleuteld met ADE migreren naar versleuteling aan de [server zijde met door de klant beheerde sleutels](disk-encryption.md).
 
 ## <a name="next-steps"></a>Volgende stappen
 

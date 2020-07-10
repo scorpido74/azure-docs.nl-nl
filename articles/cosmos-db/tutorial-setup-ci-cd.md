@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.date: 01/28/2020
 ms.author: dech
 ms.reviewer: sngun
-ms.openlocfilehash: ba90bb89d731c343dfcb3778433d444f2d9a617a
-ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
+ms.openlocfilehash: 447f999f48edb9696c74ec5decb1109eefb964d7
+ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86025859"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86206972"
 ---
 # <a name="set-up-a-cicd-pipeline-with-the-azure-cosmos-db-emulator-build-task-in-azure-devops"></a>Een CI/CD-pijplijn instellen met de build-taak van Azure Cosmos DB Emulator in Azure DevOps
 
@@ -37,7 +37,7 @@ Kies vervolgens de organisatie waarin u de extensie installeren.
 
 ## <a name="create-a-build-definition"></a>Een build-definitie maken
 
-Nu de extensie is geïnstalleerd, meldt u zich aan bij uw Azure DevOps-account en vindt u uw project vanuit het projectendashboard. U kunt een [build-pipeline](https://docs.microsoft.com/azure/devops/pipelines/get-started-designer?view=vsts&tabs=new-nav) aan uw project toevoegen of een bestaande build-pipeline wijzigen. Als u al een build-pipeline hebt, kunt u verdergaan met[Build-taak van de emulator toevoegen aan een build-definitie](#addEmulatorBuildTaskToBuildDefinition).
+Nu de uitbrei ding is geïnstalleerd, meldt u zich aan bij uw Azure DevOps-organisatie en gaat u naar het project in het dash board projecten. U kunt een [build-pipeline](https://docs.microsoft.com/azure/devops/pipelines/get-started-designer?view=vsts&tabs=new-nav) aan uw project toevoegen of een bestaande build-pipeline wijzigen. Als u al een build-pipeline hebt, kunt u verdergaan met[Build-taak van de emulator toevoegen aan een build-definitie](#addEmulatorBuildTaskToBuildDefinition).
 
 1. Om een nieuwe build-definitie te maken, gaat u naar het tabblad **Builds** in Azure DevOps. Selecteer **+ Nieuw.** \> **Nieuwe build-pipeline**
 
@@ -68,6 +68,24 @@ Start-CosmosDbEmulator
    :::image type="content" source="./media/tutorial-setup-ci-cd/addExtension_3.png" alt-text="De Emulator-build-taak toevoegen aan de build-definitie":::
 
 In deze zelfstudie voegt u de taak toe aan het begin om ervoor te zorgen dat de emulator beschikbaar is voordat onze tests worden uitgevoerd.
+
+### <a name="add-the-task-using-yaml"></a>De taak toevoegen met behulp van YAML
+
+Deze stap is optioneel en is alleen vereist als u de CI/CD-pijp lijn instelt met behulp van een YAML-taak. In dergelijke gevallen kunt u de YAML-taak definiëren, zoals wordt weer gegeven in de volgende code:
+
+```yml
+- task: azure-cosmosdb.emulator-public-preview.run-cosmosdbemulatorcontainer.CosmosDbEmulator@2
+  displayName: 'Run Azure Cosmos DB Emulator'
+
+- script: yarn test
+  displayName: 'Run API tests (Cosmos DB)'
+  env:
+    HOST: $(CosmosDbEmulator.Endpoint)
+    # Hardcoded key for emulator, not a secret
+    AUTH_KEY: C2y6yDjf5/R+ob0N8A7Cgv30VRDJIWEHLM+4QDU5DE2nQ9nDuVTqobD4b8mGGyPMbIZnqyMsEcaGQy67XIw/Jw==
+    # The emulator uses a self-signed cert, disable TLS auth errors
+    NODE_TLS_REJECT_UNAUTHORIZED: '0'
+```
 
 ## <a name="configure-tests-to-use-the-emulator"></a>Tests configureren voor gebruik van de emulator
 
@@ -155,24 +173,6 @@ Als de build is gestart, ziet u dat de taak van Cosmos DB Emulator de Docker-ins
 Als de build is voltooid, kijkt u of de tests zijn gelukt, en of ze allemaal vanuit de build-taak zijn uitgevoerd met de Cosmos DB Emulator.
 
 :::image type="content" source="./media/tutorial-setup-ci-cd/buildComplete_1.png" alt-text="De build opslaan en uitvoeren":::
-
-## <a name="set-up-using-yaml"></a>Instellen met behulp van YAML
-
-Als u de CI/CD-pijp lijn instelt met behulp van een YAML-taak, kunt u de YAML-taak definiëren, zoals wordt weer gegeven in de volgende code:
-
-```yml
-- task: azure-cosmosdb.emulator-public-preview.run-cosmosdbemulatorcontainer.CosmosDbEmulator@2
-  displayName: 'Run Azure Cosmos DB Emulator'
-
-- script: yarn test
-  displayName: 'Run API tests (Cosmos DB)'
-  env:
-    HOST: $(CosmosDbEmulator.Endpoint)
-    # Hardcoded key for emulator, not a secret
-    AUTH_KEY: C2y6yDjf5/R+ob0N8A7Cgv30VRDJIWEHLM+4QDU5DE2nQ9nDuVTqobD4b8mGGyPMbIZnqyMsEcaGQy67XIw/Jw==
-    # The emulator uses a self-signed cert, disable TLS auth errors
-    NODE_TLS_REJECT_UNAUTHORIZED: '0'
-```
 
 ## <a name="next-steps"></a>Volgende stappen
 

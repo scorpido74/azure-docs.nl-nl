@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/17/2019
 ms.author: allensu
-ms.openlocfilehash: a96e22ee8d2f9565ae676574e263beae96b5c1f2
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: e00d6b674453f12f94a2859f9b0533aea0e7332c
+ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84809409"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86207545"
 ---
 # <a name="load-balancer-health-probes"></a>Status van Load Balancer testen
 
@@ -29,8 +29,8 @@ Status controles bieden ondersteuning voor meerdere protocollen. De beschik baar
 
 | | Standaard SKU | Basis-SKU |
 | --- | --- | --- |
-| [Test typen](#types) | TCP, HTTP, HTTPS | TCP, HTTP |
-| [Gedrag van omlaag testen](#probedown) | Alle tests worden uitgevoerd, alle TCP-stromen worden voortgezet. | Alle tests worden uitgeschakeld, alle TCP-stromen verlopen. | 
+| **[Test typen](#types)** | TCP, HTTP, HTTPS | TCP, HTTP |
+| **[Gedrag van omlaag testen](#probedown)** | Alle tests worden uitgevoerd, alle TCP-stromen worden voortgezet. | Alle tests worden uitgeschakeld, alle TCP-stromen verlopen. | 
 
 
 >[!IMPORTANT]
@@ -92,8 +92,8 @@ De beschik bare protocollen zijn afhankelijk van de gebruikte Load Balancer SKU:
 
 || TCP | HTTP | HTTPS |
 | --- | --- | --- | --- |
-| Standaard SKU |    &#9989; |   &#9989; |   &#9989; |
-| Basis-SKU |   &#9989; |   &#9989; | &#10060; |
+| **Standaard-SKU** |    &#9989; |   &#9989; |   &#9989; |
+| **Basis-SKU** |   &#9989; |   &#9989; | &#10060; |
 
 ### <a name="tcp-probe"></a><a name="tcpprobe"></a>TCP-test
 
@@ -249,7 +249,7 @@ Als u meerdere interfaces op uw VM hebt, moet u ervoor zorgen dat u reageert op 
 
 Schakel TCP- [tijds tempels](https://tools.ietf.org/html/rfc1323)niet in.  Het inschakelen van TCP-tijds tempels kan ertoe leiden dat status controles mislukken omdat TCP-pakketten worden verwijderd door de TCP-stack van het gast besturingssysteem van de virtuele machine, wat leidt tot Load Balancer het respectievelijke eind punt wordt gemarkeerd.  TCP-tijds tempels worden standaard ingeschakeld voor beveiligde VM-installatie kopieën en moeten worden uitgeschakeld.
 
-## <a name="monitoring"></a>Bewaking
+## <a name="monitoring"></a>Controle
 
 Zowel open bare als interne [Standard Load Balancer](load-balancer-standard-overview.md) geven per eind punt en back-end-eindpunt status de waarde met meerdere dimensies via Azure monitor. Deze metrische gegevens kunnen worden gebruikt door andere Azure-Services of partner toepassingen. 
 

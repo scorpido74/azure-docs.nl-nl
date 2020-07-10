@@ -9,12 +9,12 @@ ms.service: cognitive-services
 ms.topic: conceptual
 ms.date: 10/23/2019
 ms.author: aahi
-ms.openlocfilehash: 4a73ff517347baa2cf589432be025bd922597ed3
-ms.sourcegitcommit: 32592ba24c93aa9249f9bd1193ff157235f66d7e
+ms.openlocfilehash: f76b444f737c4deb0fc61953c839c8826f379d5e
+ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/01/2020
-ms.locfileid: "85611387"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86207267"
 ---
 # <a name="create-a-cognitive-services-resource-using-the-azure-portal"></a>Een Cognitive Services resource maken met behulp van de Azure Portal
 
@@ -37,11 +37,17 @@ Gebruik deze Quick Start om Azure Cognitive Services te gebruiken. Nadat u een c
 
     Op dit moment biedt de resource met meerdere services toegang tot de volgende Cognitive Services:
 
-    |                  |                                                      |                    |                               |                  |
-    |------------------|------------------------------------------------------|--------------------|-------------------------------|------------------|
-    | Computer Vision  | Content Moderator                                    | Face               | Language Understanding (LUIS) | Tekstanalyse   |
-    | Vertaler  | Bing Search V7 <br>(Web, afbeelding, nieuws, video, visueel element) | Bing Aangepaste zoekopdrachten | Bing Entiteiten zoeken            | Bing Automatische suggesties |
-    | Bing Spellingcontrole |                                                      |                    |                               |                  |
+    - Computer Vision
+    - Content Moderator
+    - Face
+    - Language Understanding (LUIS)
+    - Tekstanalyse
+    - Vertaler
+    - Bing Search V7 <br>(Web, afbeelding, nieuws, video, visueel element)
+    - Bing Aangepaste zoekopdrachten
+    - Bing Entiteiten zoeken
+    - Bing Automatische suggesties
+    - Bing Spellingcontrole
 
     #### <a name="single-service-resource"></a>[Resource met één service](#tab/singleservice)
 
@@ -70,7 +76,7 @@ Gebruik deze Quick Start om Azure Cognitive Services te gebruiken. Nadat u een c
 
     ![Scherm voor het maken van resources](media/cognitive-services-apis-create-account/resource_create_screen-multi.png)
 
-    Klik op **Create**.
+    Klik op **Maken**.
 
     #### <a name="single-service-resource"></a>[Resource met één service](#tab/singleservice)
 
@@ -84,7 +90,7 @@ Gebruik deze Quick Start om Azure Cognitive Services te gebruiken. Nadat u een c
 
     ![Scherm voor het maken van resources](media/cognitive-services-apis-create-account/resource_create_screen.png)
 
-    Klik op **Create**.
+    Klik op **Maken**.
 
     ***
 

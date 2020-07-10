@@ -6,13 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: pod
 ms.topic: article
-ms.date: 09/03/2019
+ms.date: 07/10/2020
 ms.author: alkohli
-ms.openlocfilehash: d1455bc65f175970bb741dab4a56aa0aac58fc59
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 9e54b9add52e484a95cf5a8291dec90a6bb258b8
+ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83743000"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86207015"
 ---
 # <a name="azure-data-box-frequently-asked-questions"></a>Azure Data Box: veelgestelde vragen
 
@@ -37,10 +38,10 @@ A.  De service Azure Data Box is bedoeld voor offlinegegevensopname. Deze servic
 ### <a name="q-what-is-azure-data-box"></a>V. Wat is Azure Data Box?
 A. De Azure Data Box biedt een snelle, goedkope en veilige overdracht van terabytes aan gegevens in Azure. U kunt het Data Box-apparaat bestellen via de Azure-portal. Microsoft verzendt een opslagapparaat met een bruikbare capaciteit van 80 TB via een regionale koerier. 
 
-Nadat u het apparaat hebt ontvangen, kunt u het snel instellen via de lokale webinterface. Kopieer de gegevens van uw servers naar het apparaat en stuur het terug naar Azure. In het Azure-datacenter worden uw gegevens automatisch geüpload van de schijven naar Azure. Het volledige proces wordt gevolgd door de Data Box-service in de Azure-portal.
+Nadat u het apparaat hebt ontvangen, kunt u het snel instellen via de lokale webinterface. Kopieer de gegevens van uw servers naar het apparaat of van het apparaat naar de servers en verzend het apparaat terug naar Azure. Voor een import volgorde, in het Azure-Data Center, worden uw gegevens automatisch van het apparaat naar Azure verzonden. Het volledige proces wordt gevolgd door de Data Box-service in de Azure-portal.
 
 ### <a name="q-when-should-i-use-data-box"></a>V. Wanneer moet ik Data Box gebruiken?
-A. Als u 40-500 TB aan gegevens naar Azure wilt overdragen, hebt u baat bij het gebruik van Data Box. Voor gegevens grootte < 40 TB gebruikt u Data Box Disk en voor de grootte van gegevens > 500 TB, meldt u zich aan voor [Data Box Heavy](data-box-heavy-overview.md).
+A. Als u 40-500 TB aan gegevens hebt die u wilt overdragen naar of van Azure, kunt u profiteren van Data Box. Voor gegevens grootte < 40 TB gebruikt u Data Box Disk en voor de grootte van gegevens > 500 TB, meldt u zich aan voor [Data Box Heavy](data-box-heavy-overview.md).
 
 ### <a name="q-what-is-the-price-of-data-box"></a>V. Wat kost Data Box?
 A. Data Box is verkrijgbaar tegen een nominaal bedrag voor 10 dagen. Als u het productmodel selecteert terwijl u een bestelling in de Azure-portal maakt, zullen de kosten voor het apparaat worden weergegeven. De verzending is ook gratis, maar er zijn wel kosten verbonden aan de Azure-opslag. Ga voor meer informatie naar [Prijzen van Azure Data Box](https://azure.microsoft.com/pricing/details/storage/databox/). 
@@ -83,7 +84,7 @@ A. Dit betekent dat de Data Box-service niet beschikbaar is voor de combinatie v
 A. Als u een bestelling plaatst, controleren we of er een apparaat beschikbaar is voor uw bestelling. Als het apparaat beschikbaar is, verzenden we het binnen 10 dagen. Mogelijk is er in bepaalde perioden een hogere vraag. Als dat het geval is, wordt uw bestelling in de wachtrij geplaatst en kunt u de statuswijziging volgen in de Azure-portal. De bestelling wordt automatisch geannuleerd als uw bestelling niet binnen 90 dagen wordt geleverd.
 
 ### <a name="q-i-have-filled-up-my-data-box-with-data-and-need-to-order-another-one-is-there-a-way-to-quickly-place-the-order"></a>V. Ik heb mijn Data Box gevuld met gegevens en moet er nog een bestellen. Kan ik dat op een snelle manier doen?
-A. U kunt een kloon maken van uw vorige bestelling. Hierdoor maakt u dezelfde bestelling als eerst en kunt u de details van de bestelling bewerken zonder dat u opnieuw uw adres, contactgegevens en meldingsinformatie hoeft te typen.
+A. U kunt een kloon maken van uw vorige bestelling. Hierdoor maakt u dezelfde bestelling als eerst en kunt u de details van de bestelling bewerken zonder dat u opnieuw uw adres, contactgegevens en meldingsinformatie hoeft te typen. Klonen is alleen toegestaan voor import orders.
 
 ## <a name="configure-and-connect"></a>Configureren en verbinding maken
 
@@ -180,18 +181,7 @@ A.  Ja. Data Box ondersteunt maximaal 10 opslagaccounts, algemene opslag, klassi
 A. Gebruik het apparaat niet als het beschadigd is gearriveerd of als er bewijs van sabotage is. [Neem contact op met Microsoft Ondersteuning](data-box-disk-contact-microsoft-support.md) en stuur het apparaat zo snel mogelijk terug. U kunt ook een nieuwe Data Box-bestelling maken voor een vervangend apparaat. In dit geval worden er geen kosten voor het vervangende apparaat in rekening gebracht.
 
 ### <a name="q-can-i-pick-up-my-data-box-order-myself-can-i-return-the-data-box-via-a-carrier-that-i-choose"></a>V. Kan ik mijn Data Box bestelling zelf ophalen? Kan ik de Data Box retour neren via een door mij gekozen provider?
-A. Ja. Micro soft biedt ook zelf-beheerde verzen ding in US Gov regio. Wanneer u de Data Box order plaatst, kunt u de optie voor zelf-beheerde verzen ding kiezen. Voer de volgende stappen uit om uw Data Box-apparaat op te halen:
-    
-1. Nadat u de order hebt geplaatst, wordt de order verwerkt en wordt de Data Box voor bereid. U wordt gewaarschuwd via een e-mail bericht dat uw bestelling gereed is voor ophalen. 
-2. Zodra de bestelling gereed is voor ophalen, gaat u naar uw bestelling in het Azure Portal en gaat u naar de Blade **overzicht** . 
-3. Er wordt een melding met een code in de Azure Portal weer geven. E-mail het [Azure data Box Operations-team](mailto:adbops@microsoft.com) en geef de code op. Het team geeft de locatie op en plant een datum en tijd voor het ophalen. U moet het team aanroepen binnen 5 werk dagen nadat u het e-mail bericht hebt ontvangen.
-
-Wanneer het kopiëren van de gegevens is voltooid, voert u de volgende stappen uit om uw apparaat te retour neren:
-
-1. Als het kopiëren van de gegevens is voltooid zonder fouten, voert u **voorbereiding voor verzending**uit. Nadat de voor bereiding is voltooid, ontvangt u een code in de lokale web-UI van het apparaat. Kopieer de code en sla deze op.
-2. Schakel het apparaat uit en verwijder de verbindings kabels.
-3. Rol het netsnoer op en plaats het veilig aan de achterzijde van het apparaat.
-4. E-mail het [Azure data Box Operations-team](mailto:adbops@microsoft.com) en geef de code op die u eerder hebt opgeslagen. Ze geven u informatie over waar en wanneer u het apparaat moet neerzetten.
+A. Ja. Micro soft biedt ook zelf-beheerde verzen ding. Wanneer u de Data Box order plaatst, kunt u de optie voor zelf-beheerde verzen ding kiezen. Zie [self managed Shipping for data Box](data-box-portal-customer-managed-shipping.md)voor meer informatie.
 
 ### <a name="q-will-my-data-box-devices-cross-countryregion-borders-during-shipping"></a>V. Worden er tijdens de verzen ding meerdere land-en regio grenzen door mijn Data Box apparaten?
 A. Alle Data Box apparaten worden vanuit hetzelfde land/dezelfde regio als de bestemming verzonden en passeren geen internationale grenzen. De enige uitzonde ring hierop is voor orders in de Europese Unie (EU), waar apparaten kunnen worden verzonden naar en naar elk land/regio in de EU. Dit geldt voor zowel de Data Box als de Data Box Heavy-apparaten.
@@ -212,7 +202,7 @@ A.  Tijdens het transport helpen de volgende functies van de Data Box de gegeven
  - Het apparaat is vergrendeld en er is een ontgrendelingswachtwoord nodig om toegang te krijgen tot gegevens.
 Ga voor meer informatie naar [Data Box-beveiligingsfuncties](data-box-security.md).  
 
-### <a name="q-i-have-finished-prepare-to-ship-and-shut-down-the-device-can-i-still-add-more-data-to-data-box"></a>V. Ik heb Voorbereiding voor verzending afgerond en het apparaat uitgeschakeld. Kan ik nog steeds meer gegevens aan Data Box toevoegen?
+### <a name="q-i-have-finished-prepare-to-ship-for-my-import-order-and-shut-down-the-device-can-i-still-add-more-data-to-data-box"></a>V. Ik ben klaar met het voorbereiden op verzen ding voor mijn import order en het apparaat af te sluiten. Kan ik nog steeds meer gegevens aan Data Box toevoegen?
 A. Ja. U kunt het apparaat inschakelen en meer gegevens toevoegen. Als u het kopiëren van gegevens hebt voltooid, moet u **Voorbereiding voor verzending** opnieuw uitvoeren.
 
 ### <a name="q-i-received-my-device-and-it-is-not-booting-up-how-do-i-ship-the-device-back"></a>V. Ik heb mijn apparaat ontvangen en ik kan het niet opstarten. Hoe stuur ik het apparaat terug?
@@ -252,7 +242,7 @@ A.  De volgende soorten rapporten zijn beschikbaar ter ondersteuning van de bewa
 
 - Transport door UPS.
 - Registratie van inschakeling en toegang tot de share van gebruikers.
-- Manifestbestand met een cyclische redundantiecontrole van 64-bits (CRC-64) of controlesom voor elk bestand dat met succes in Data Box is opgenomen.
+- Stuk lijst of manifest bestand met een 64-bits cyclische redundantie controle (CRC-64) of controlesom voor elk bestand dat is opgenomen in de Data Box.
 - Rapportage van bestanden die niet naar het Azure-opslagaccount konden worden geüpload.
 - Opschoning van het Data Box-apparaat (volgens de norm NIST 800 88R1) nadat gegevens naar uw Azure-opslagaccount zijn gekopieerd.
 
@@ -260,7 +250,9 @@ A.  De volgende soorten rapporten zijn beschikbaar ter ondersteuning van de bewa
 A.  De logboeken voor tracering van de koerier worden vastgelegd in de bestelgeschiedenis van Data Box. Dit rapport is beschikbaar nadat het apparaat naar het Azure-datacenter is geretourneerd en de gegevens op de schijven van het apparaat zijn opgeschoond. Voor onmiddellijke behoefte kunt u ook rechtstreeks naar de website van de vervoerder gaan met het order tracking nummer en de tracerings gegevens ophalen.
 
 ### <a name="can-i-transport-the-data-box-to-azure-datacenter"></a>Kan ik de Data Box naar het Azure-datacenter vervoeren? 
-A.  Nee. Het Azure-datacenter accepteert momenteel geen levering van de Data Box door klanten of andere koeriers dan UPS.
+A.  Nee. Als u micro soft Managed Shipping hebt gekozen, kunt u de datum niet transporteren. Het Azure-datacenter accepteert momenteel geen levering van de Data Box door klanten of andere koeriers dan UPS.
+
+Als u zelf beheerde verzen ding hebt gekozen, kunt u uw Data Box uit het Azure-Data Center ophalen of verwijderen.
 
 
 ## <a name="next-steps"></a>Volgende stappen

@@ -12,12 +12,12 @@ author: bonova
 ms.author: bonova
 ms.reviewer: carlrab, jovanpop, sachinp, sstein
 ms.date: 02/25/2020
-ms.openlocfilehash: 85d347c45e1ca2cd39c7504e44bd3ea063f788d6
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 013433d60b9f3e7f251f8d80d7b9b8f24b2395b3
+ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84708414"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86206185"
 ---
 # <a name="overview-of-azure-sql-managed-instance-resource-limits"></a>Overzicht van resource limieten voor Azure SQL Managed instance
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -33,11 +33,11 @@ SQL Managed instance heeft kenmerken en resource limieten die afhankelijk zijn v
 
 |   | **Gen4** | **GEN5** |
 | --- | --- | --- |
-| Hardware | Intel E5-2673 v3 (Haswell) 2,4-GHz-processors, Attached SSD vCore = 1 PP (fysieke kern) | Intel E5-2673 v4 (Broadwell) 2,3-GHz en Intel SP-8160 (Skylake)-processors, Fast NVMe SSD, vCore = 1 LP (Hyper-Thread) |
-| Aantal vCores | 8, 16, 24 vCores | 4, 8, 16, 24, 32, 40, 64, 80 vCores |
-| Maxi maal geheugen (geheugen/kern percentage) | 7 GB per vCore<br/>Voeg meer vCores toe om meer geheugen te verkrijgen. | 5,1 GB per vCore<br/>Voeg meer vCores toe om meer geheugen te verkrijgen. |
-| Maxi maal in-Memory OLTP-geheugen | Limiet voor instanties: 1-1,5 GB per vCore| Limiet voor instanties: 0,8-1,65 GB per vCore |
-| Maximum aantal gereserveerde exemplaren |  Algemeen: 8 TB<br/>Bedrijfskritiek: 1 TB | Algemeen: 8 TB<br/> Bedrijfskritiek 1 TB, 2 TB of 4 TB afhankelijk van het aantal kernen |
+| **Hardware** | Intel E5-2673 v3 (Haswell) 2,4-GHz-processors, Attached SSD vCore = 1 PP (fysieke kern) | Intel E5-2673 v4 (Broadwell) 2,3-GHz en Intel SP-8160 (Skylake)-processors, Fast NVMe SSD, vCore = 1 LP (Hyper-Thread) |
+| **Aantal vCores** | 8, 16, 24 vCores | 4, 8, 16, 24, 32, 40, 64, 80 vCores |
+| **Maxi maal geheugen (geheugen/kern percentage)** | 7 GB per vCore<br/>Voeg meer vCores toe om meer geheugen te verkrijgen. | 5,1 GB per vCore<br/>Voeg meer vCores toe om meer geheugen te verkrijgen. |
+| **Maxi maal in-Memory OLTP-geheugen** | Limiet voor instanties: 1-1,5 GB per vCore| Limiet voor instanties: 0,8-1,65 GB per vCore |
+| **Maximum aantal gereserveerde exemplaren** |  Algemeen: 8 TB<br/>Bedrijfskritiek: 1 TB | Algemeen: 8 TB<br/> Bedrijfskritiek 1 TB, 2 TB of 4 TB afhankelijk van het aantal kernen |
 
 > [!IMPORTANT]
 > - Gen4-hardware wordt gefaseerd uitgevoerd en is niet meer beschikbaar voor nieuwe implementaties. Alle nieuwe exemplaren van SQL Managed instance moeten worden geïmplementeerd op GEN5-hardware.
@@ -110,7 +110,7 @@ Als u een hoge IO-latentie krijgt bij een bepaald database bestand of als u ziet
 
 Er is ook een limiet op exemplaar niveau voor de maximale schrijf doorvoer in het logboek (22 MB/s), zodat u het Maxi maal toegestane bestand niet in het logboek bestand kunt bereiken omdat u de limiet voor de door Voer van het exemplaar bereikt.
 
-## <a name="supported-regions"></a>Ondersteunde regio’s
+## <a name="supported-regions"></a>Ondersteunde regio's
 
 Een SQL Managed instance kan alleen worden gemaakt in [ondersteunde regio's](https://azure.microsoft.com/global-infrastructure/services/?products=sql-database&regions=all). Als u een SQL Managed instance wilt maken in een regio die momenteel niet wordt ondersteund, kunt u [via de Azure Portal een ondersteunings aanvraag verzenden](../database/quota-increase-request.md).
 

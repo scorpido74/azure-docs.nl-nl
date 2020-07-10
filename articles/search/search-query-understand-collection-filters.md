@@ -19,11 +19,12 @@ translation.priority.mt:
 - ru-ru
 - zh-cn
 - zh-tw
-ms.openlocfilehash: f6e8ed5baef9b8594bb1fe03942e831fd8264a56
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 861e011c4bd368a274998859170e78cf444400a8
+ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "74113065"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86206165"
 ---
 # <a name="understanding-odata-collection-filters-in-azure-cognitive-search"></a>Meer informatie over OData-verzamelings filters in azure Cognitive Search
 
@@ -49,13 +50,17 @@ De eerste reden is slechts een gevolg van de manier waarop de OData-taal en het 
 
 Wanneer u meerdere filter criteria toepast op een verzameling complexe objecten, worden de criteria **gecorreleerd** , omdat ze van toepassing zijn op *elk object in de verzameling*. Het volgende filter retourneert bijvoorbeeld Hotels met ten minste één Deluxe-kamer met een snelheid van minder dan 100:
 
+```odata-filter-expr
     Rooms/any(room: room/Type eq 'Deluxe Room' and room/BaseRate lt 100)
+```
 
 Als filteren niet is *gecorreleerd*, kan het bovenstaande filter bijvoorbeeld Hotels retour neren waarbij één kamer de waarde Deluxe heeft en een andere kamer een basis frequentie heeft van minder dan 100. Dat zou niet zinvol zijn, omdat beide componenten van de lambda-expressie van toepassing zijn op dezelfde bereik variabele, namelijk `room` . Daarom worden deze filters gecorreleerd.
 
 Voor zoeken in volledige tekst is er echter geen manier om naar een specifieke bereik variabele te verwijzen. Als u zoeken met een zoek opdracht gebruikt om een [volledige lucene-query](query-lucene-syntax.md) uit te geven, zoals deze:
 
+```odata-filter-expr
     Rooms/Type:deluxe AND Rooms/Description:"city view"
+```
 
 u kunt Hotels weer geven als er één kamer is en een andere kamer vermeldt "stads weergave" in de beschrijving. Het onderstaande document `Id` `1` kan bijvoorbeeld overeenkomen met de query:
 
@@ -137,7 +142,7 @@ Denk bijvoorbeeld aan een veld voor een filter bare teken reeks verzameling, zoa
 
 De waarden van het `seasons` veld worden opgeslagen in een structuur, een **omgekeerde index**, die er ongeveer als volgt uitziet:
 
-| Termijn | Document-Id's |
+| Term | Document-Id's |
 | --- | --- |
 | lente | 1, 2 |
 | zomer | 1 |
@@ -148,19 +153,27 @@ Deze gegevens structuur is ontworpen om één vraag te beantwoorden met een fant
 
 Op basis van gelijkheid kunt u vervolgens kijken hoe u meerdere gelijkheids controles kunt combi neren voor dezelfde bereik variabele met `or` . Het werkt met algebra en [de distributieve eigenschap van Kwant oren](https://en.wikipedia.org/wiki/Existential_quantification#Negation). Deze expressie:
 
+```odata-filter-expr
     seasons/any(s: s eq 'winter' or s eq 'fall')
+```
 
 is gelijk aan:
 
+```odata-filter-expr
     seasons/any(s: s eq 'winter') or seasons/any(s: s eq 'fall')
+```
 
 en elk van de twee `any` Subexpressies kunnen efficiënt worden uitgevoerd met behulp van de omgekeerde index. En dankzij [het negatie recht van Kwant](https://en.wikipedia.org/wiki/Existential_quantification#Negation), deze expressie:
 
+```odata-filter-expr
     seasons/all(s: s ne 'winter' and s ne 'fall')
+```
 
 is gelijk aan:
 
+```odata-filter-expr
     not seasons/any(s: s eq 'winter' or s eq 'fall')
+```
 
 Daarom is het mogelijk om `all` met en te gebruiken `ne` `and` .
 

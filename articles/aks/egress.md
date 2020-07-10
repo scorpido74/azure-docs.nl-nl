@@ -5,11 +5,12 @@ description: Meer informatie over het maken en gebruiken van een statisch openba
 services: container-service
 ms.topic: article
 ms.date: 03/04/2019
-ms.openlocfilehash: 08a9682434605fffde73c835e7a9e9d6971d7ff0
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: f66a33f49d856abde97756a2b4b483cfa6050d0a
+ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80803379"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86205781"
 ---
 # <a name="use-a-static-public-ip-address-for-egress-traffic-in-azure-kubernetes-service-aks"></a>Een statisch openbaar IP-adres gebruiken voor uitgaand verkeer in azure Kubernetes service (AKS)
 
@@ -22,6 +23,9 @@ In dit artikel wordt beschreven hoe u een statisch openbaar IP-adres maakt en ge
 In dit artikel wordt ervan uitgegaan dat u beschikt over een bestaand AKS-cluster. Als u een AKS-cluster nodig hebt, raadpleegt u de AKS Quick Start [met behulp van de Azure cli][aks-quickstart-cli] of [met behulp van de Azure Portal][aks-quickstart-portal].
 
 Ook moet de Azure CLI-versie 2.0.59 of hoger zijn geïnstalleerd en geconfigureerd. Voer  `az --version` uit om de versie te bekijken. Als u de Azure CLI wilt installeren of upgraden, raadpleegt u  [Azure CLI installeren][install-azure-cli].
+
+> [!IMPORTANT]
+> In dit artikel wordt gebruikgemaakt van de *basis* -SKU Load Balancer met één knooppunt groep. Deze configuratie is niet beschikbaar voor meerdere knooppunt groepen, aangezien de *basis* -SKU Load Balancer niet wordt ondersteund met meerdere knooppunt groepen. Zie [een open bare Standard Load Balancer gebruiken in azure Kubernetes service (AKS)][slb] voor meer informatie over het gebruik van de *standaard* -SKU Load Balancer.
 
 ## <a name="egress-traffic-overview"></a>Overzicht van uitgaand verkeer
 
@@ -92,7 +96,7 @@ Maak de service en de implementatie met behulp van de `kubectl apply` opdracht.
 kubectl apply -f egress-service.yaml
 ```
 
-Met deze service wordt een nieuw frontend-IP-adres geconfigureerd op de Azure Load Balancer. Als er geen andere IP-adressen zijn geconfigureerd, moet dit adres nu worden gebruikt voor **alle** uitgangs verkeer. Wanneer er meerdere adressen zijn geconfigureerd op de Azure Load Balancer, wordt het eerste IP-adres gebruikt op die load balancer.
+Met deze service wordt een nieuw frontend-IP-adres geconfigureerd op de Azure Load Balancer. Als er geen andere IP-adressen zijn geconfigureerd, moet dit adres nu worden gebruikt voor **alle** uitgangs verkeer. Wanneer er meerdere adressen zijn geconfigureerd op de Azure Load Balancer, zijn een van deze open bare IP-adressen een kandidaat voor uitgaande stromen en wordt er een wille keurige selectie geselecteerd.
 
 ## <a name="verify-egress-address"></a>Uitgangs adres controleren
 
@@ -133,3 +137,4 @@ U kunt in plaats daarvan een ingangs controller gebruiken om te voor komen dat m
 [aks-quickstart-cli]: kubernetes-walkthrough.md
 [aks-quickstart-portal]: kubernetes-walkthrough-portal.md
 [install-azure-cli]: /cli/azure/install-azure-cli
+[slb]: load-balancer-standard.md

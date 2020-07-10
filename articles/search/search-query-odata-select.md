@@ -19,11 +19,12 @@ translation.priority.mt:
 - ru-ru
 - zh-cn
 - zh-tw
-ms.openlocfilehash: 64f15bf3d262249cdda2760c7ddf768be2590419
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: dfe438f6940d3ccd5632a47be1389a30748716b0
+ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "74113097"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86206892"
 ---
 # <a name="odata-select-syntax-in-azure-cognitive-search"></a>OData-$select syntaxis in azure Cognitive Search
 
@@ -62,7 +63,9 @@ Als u een complex veld vermeldt zonder de subvelden expliciet op te geven, worde
 
 Neem de `HotelId` `HotelName` velden, en `Rating` op het hoogste niveau in de resultaten op, evenals het `City` subveld van `Address` :
 
+```odata-filter-expr
     $select=HotelId, HotelName, Rating, Address/City
+```
 
 Een voor beeld van een resultaat kan er als volgt uitzien:
 
@@ -79,7 +82,9 @@ Een voor beeld van een resultaat kan er als volgt uitzien:
 
 Neem het `HotelName` veld op het hoogste niveau in de resultaten op, evenals alle subvelden van `Address` , en de `Type` `BaseRate` Subvelden van elk object in de `Rooms` verzameling:
 
+```odata-filter-expr
     $select=HotelName, Address, Rooms/Type, Rooms/BaseRate
+```
 
 Een voor beeld van een resultaat kan er als volgt uitzien:
 

@@ -7,11 +7,12 @@ ms.subservice: sizes
 ms.topic: article
 ms.date: 02/20/2020
 ms.author: jushiman
-ms.openlocfilehash: e5a4c9d1afcc4caa0f9ac0db8b59274006ab3097
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 88aaa10bf84d0195cc22d11d7fa1cfdcd639d475
+ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84676553"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86207438"
 ---
 # <a name="dcsv2-series"></a>DCsv2-serie
 
@@ -40,7 +41,7 @@ Updates voor het behouden van geheugen: niet ondersteund
 | Standard_DC8_v2  | 8   | 32          | 400                    | 8              | 16000/128                                                                                         | 2   | 168                                         |
 
 - Vm's uit de DCsv2-serie zijn [twee vm's van de tweede generatie](./linux/generation-2.md#creating-a-generation-2-vm) en ondersteunen alleen `Gen2` installatie kopieën.
-- Momenteel alleen beschikbaar in UK-zuid, Canada-centraal en VS Oost.
+- Momenteel beschikbaar in de regio's die [hier](https://azure.microsoft.com/global-infrastructure/services/?products=virtual-machines&regions=all)worden weer gegeven.
 - Vorige generatie van vertrouwelijk Compute-Vm's: [gelijkstroom reeks](sizes-previous-gen.md#preview-dc-series)
 - DCsv2 Vm's maken met behulp van de [Azure Portal](./linux/quick-create-portal.md) of [Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/microsoft-azure-compute.acc-virtual-machine-v2?tab=overview)
 
@@ -48,9 +49,9 @@ Updates voor het behouden van geheugen: niet ondersteund
 
 ## <a name="other-sizes"></a>Andere grootten
 
-- [Algemeen doel](sizes-general.md)
-- [Geoptimaliseerd geheugen](sizes-memory.md)
-- [Geoptimaliseerde opslag](sizes-storage.md)
+- [Algemeen gebruik](sizes-general.md)
+- [Geoptimaliseerd voor geheugen](sizes-memory.md)
+- [Geoptimaliseerd voor opslag](sizes-storage.md)
 - [Geoptimaliseerde GPU](sizes-gpu.md)
 - [Krachtig rekenvermogen](sizes-hpc.md)
 - [Vorige generaties](sizes-previous-gen.md)

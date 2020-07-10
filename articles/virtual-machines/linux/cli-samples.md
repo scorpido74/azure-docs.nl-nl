@@ -6,17 +6,18 @@ ms.service: virtual-machines-linux
 ms.topic: article
 ms.date: 03/01/2019
 ms.author: cynthn
-ms.openlocfilehash: 76803f8c3a703071eb733c5cfde65482ffd07f40
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 2d855a524129bb56248e270d43b300e5dfe97e27
+ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "78970081"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86207455"
 ---
 # <a name="azure-cli-samples-for-linux-virtual-machines"></a>Azure CLI-voorbeelden voor virtuele Linux-machines
 
 De volgende tabel bevat koppelingen naar bash-scripts die zijn gebouwd met behulp van de Azure CLI.
 
-| | |
+| Script | Beschrijving |
 |---|---|
 |**Virtuele machines maken**||
 | [Een virtuele machine maken](./../scripts/virtual-machines-linux-cli-sample-create-vm-quick-create.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) | Hiermee maakt u een virtuele Linux-machine met een minimale configuratie. |

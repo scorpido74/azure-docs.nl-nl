@@ -7,18 +7,18 @@ ms.author: baanders
 ms.date: 4/22/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 4cac7a3f663d9ede966b8d6e5753c48629049dcd
-ms.sourcegitcommit: bcb962e74ee5302d0b9242b1ee006f769a94cfb8
+ms.openlocfilehash: fecacbd2c7c6549a1321367157bb179321779ca9
+ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86057480"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86206513"
 ---
 # <a name="set-up-an-azure-digital-twins-instance"></a>Een Azure Digital Twins-instantie instellen
 
 Dit artikel begeleidt u stapsgewijs door de basis stappen voor het instellen van een nieuw Azure Digital Apparaatdubbels-exemplaar. Dit omvat het maken van het exemplaar en het toewijzen van [Azure Active Directory (Aad)-](../active-directory/fundamentals/active-directory-whatis.md) machtigingen aan het exemplaar voor uzelf.
 
-Als u nog geen abonnement op Azure hebt, maak dan een [gratis account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) aan voordat u begint.
+Als u nog geen Azure-abonnement hebt, maakt u een [gratis account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) voordat u begint.
 
 [!INCLUDE [Cloud Shell for Azure Digital Twins](../../includes/digital-twins-cloud-shell.md)]
 
@@ -57,15 +57,15 @@ Als u Azure Digital Apparaatdubbels wilt gebruiken met een client toepassing, mo
 
 Maak een roltoewijzing voor uzelf in het Azure Digital Apparaatdubbels-exemplaar met behulp van uw e-mail adres dat is gekoppeld aan de AAD-Tenant op uw Azure-abonnement. 
 
-Om dit te kunnen doen, moet u worden geclassificeerd als een eigenaar van uw Azure-abonnement. U kunt dit controleren door de opdracht uit te voeren `az role assignment list --assignee <your-Azure-email>` en te controleren in de uitvoer waarvan de *roleDefinitionName* -waarde *eigenaar*is. Als u merkt dat de waarde *Inzender* is of iets anders is dan de *eigenaar*, neemt u contact op met uw abonnements beheerder met de bevoegdheid om machtigingen te verlenen in uw abonnement om uw rol uit te breiden.
+Om dit te kunnen doen, moet u worden geclassificeerd als een eigenaar van uw Azure-abonnement. U kunt dit controleren door de opdracht uit te voeren `az role assignment list --assignee <your-Azure-email>` en te controleren in de uitvoer waarvan de *roleDefinitionName* -waarde *eigenaar*is. Als u merkt dat de waarde *Inzender* is of iets anders is dan de *eigenaar*, neemt u contact op met uw abonnements beheerder met de bevoegdheid om machtigingen te verlenen in uw abonnement. Ze kunnen uw rol op het hele abonnement verhogen zodat u de volgende opdracht kunt uitvoeren, of een eigenaar kan namens u de volgende opdracht uitvoeren om uw Azure Digital Apparaatdubbels-machtigingen voor u in te stellen.
 
-Als eigenaar van het abonnement kunt u de volgende opdracht gebruiken om uw gebruiker toe te wijzen aan een rol van eigenaar voor uw Azure Digital Apparaatdubbels-exemplaar:
+Als u de machtigingen van uw gebruiker "eigenaar" wilt toewijzen in uw Azure Digital Apparaatdubbels-exemplaar, gebruikt u de volgende opdracht (moet worden uitgevoerd door een eigenaar van het Azure-abonnement):
 
 ```azurecli
 az dt role-assignment create --dt-name <your-Azure-Digital-Twins-instance> --assignee "<your-AAD-email>" --role "Azure Digital Twins Owner (Preview)"
 ```
 
-Het resultaat van deze opdracht is uitgevoerde informatie over de roltoewijzing die u hebt gemaakt.
+Het resultaat van deze opdracht is een gegenereerde informatie over de roltoewijzing die is gemaakt.
 
 > [!TIP]
 > Als u in plaats daarvan een *400: onjuiste aanvraag* -fout krijgt, voert u de volgende opdracht uit om de *ObjectID* voor uw gebruiker op te halen:
@@ -74,7 +74,7 @@ Het resultaat van deze opdracht is uitgevoerde informatie over de roltoewijzing 
 > ```
 > Herhaal vervolgens de opdracht roltoewijzing met de *object-id* van uw gebruiker in plaats van uw e-mail adres.
 
-U hebt nu een Azure Digital Apparaatdubbels-exemplaar klaar om te gaan.
+U hebt nu een Azure Digital Apparaatdubbels-exemplaar klaar om te gaan en machtigingen te beheren.
 
 ## <a name="next-steps"></a>Volgende stappen
 

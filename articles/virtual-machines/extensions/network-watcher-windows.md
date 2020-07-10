@@ -14,11 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 02/14/2017
 ms.author: mimckitt
-ms.openlocfilehash: f226e240a59b33c2913919495410b1a4923b4902
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: e78a18055d85e2105ea604d568c154c889ab0655
+ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81261666"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86206012"
 ---
 # <a name="network-watcher-agent-virtual-machine-extension-for-windows"></a>Extensie van de virtuele machine van Network Watcher agent voor Windows
 
@@ -33,7 +34,7 @@ In dit document vindt u informatie over de ondersteunde platforms en implementat
 
 ### <a name="operating-system"></a>Besturingssysteem
 
-De Network Watcher agent-extensie voor Windows kan worden uitgevoerd op Windows Server 2008 R2, 2012, 2012 R2 en 2016 releases. Nano server wordt op dit moment niet ondersteund.
+De Network Watcher agent-extensie voor Windows kan worden uitgevoerd op versies van Windows Server 2008 R2, 2012, 2012 R2, 2016 en 2019. Nano server wordt op dit moment niet ondersteund.
 
 ### <a name="internet-connectivity"></a>Internetconnectiviteit
 
@@ -63,7 +64,7 @@ De volgende JSON toont het schema voor de uitbrei ding van de Network Watcher ag
 
 ### <a name="property-values"></a>Eigenschaps waarden
 
-| Name | Waarde/voor beeld |
+| Naam | Waarde/voor beeld |
 | ---- | ---- |
 | apiVersion | 2015-06-15 |
 | publisher | Micro soft. Azure. NetworkWatcher |

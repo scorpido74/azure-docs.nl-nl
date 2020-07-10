@@ -6,12 +6,12 @@ author: cweining
 ms.author: cweining
 ms.date: 08/06/2018
 ms.reviewer: mbullwin
-ms.openlocfilehash: 52391ffc8eb6b6879e5fd90df26d9ccacbfacebb
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 6b6f98f3c7f540e00743ae27b532b24d2310453e
+ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82188923"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86205712"
 ---
 # <a name="configure-application-insights-profiler"></a>Application Insights Profiler configureren
 
@@ -32,7 +32,7 @@ Hiermee opent u een pagina die er als volgt uitziet:
 
 De pagina **configure Application Insights Profiler** heeft de volgende functies:
 
-| | |
+| Functie | Beschrijving |
 |-|-|
 Profiel nu | Hiermee start u de profilerings sessies voor alle apps die zijn gekoppeld aan dit exemplaar van Application Insights.
 Triggers | Hiermee kunt u triggers configureren die ervoor zorgen dat de Profiler wordt uitgevoerd. 
@@ -48,7 +48,7 @@ Een gebruiker kan een Profiler-sessie alleen hand matig activeren als deze ten m
 
 Als u op de knop triggers op de menu balk klikt, wordt het dialoog venster trigger instellingen geopend. U kunt trigger instellen om te beginnen met profile ring wanneer het percentage CPU-of geheugen gebruik het niveau bereikt dat u instelt.
 
-| | |
+| Instelling | Beschrijving |
 |-|-|
 Aan/uit-knop | Op: Profiler kan worden gestart door deze trigger. Uit: Profiler wordt niet gestart door deze trigger.
 Drempel waarde voor geheugen | Als dit percentage geheugen wordt gebruikt, wordt de Profiler gestart.
@@ -58,7 +58,7 @@ Cooldown | Hiermee stelt u de tijds duur in die de Profiler moet wachten voordat
 ## <a name="recent-profiling-sessions"></a>Recente profilerings sessies
 Deze sectie van de pagina bevat informatie over recente profilerings sessies. Een profilerings sessie vertegenwoordigt de periode waarin de Profiler-agent een profiel heeft genomen op een van de computers die als host fungeren voor uw toepassing. U kunt de profielen openen vanuit een sessie door te klikken op een van de rijen. Voor elke sessie worden het volgende weer gegeven:
 
-| | |
+| Instelling | Beschrijving |
 |-|-|
 Geactiveerd door | Hoe de sessie is gestart, hetzij door een trigger, profiel nu of standaard steekproef. 
 App-naam | De naam van de toepassing die is profileeerd.

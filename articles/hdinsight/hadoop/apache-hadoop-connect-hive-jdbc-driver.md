@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive,hdiseo17may2017,seoapr2020
 ms.date: 04/20/2020
-ms.openlocfilehash: 258dfec20644ee29368de075673dfc7798bee28a
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.openlocfilehash: 183bc416dde941f11bd94cfcff3bf738b35f876f
+ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86083539"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86207385"
 ---
 # <a name="query-apache-hive-through-the-jdbc-driver-in-hdinsight"></a>Query uitvoeren op Apache Hive via het JDBC-stuurprogramma in HDInsight
 
@@ -33,7 +33,9 @@ Zie [HiveJDBCInterface](https://cwiki.apache.org/confluence/display/Hive/HiveJDB
 
 JDBC-verbindingen met een HDInsight-cluster op Azure worden gemaakt via poort 443. Het verkeer wordt beveiligd met behulp van TLS/SSL. De open bare gateway die de clusters achter bevindt, stuurt het verkeer naar de poort waarop HiveServer2 wordt geluisterd. In het volgende connection string ziet u de indeling die moet worden gebruikt voor HDInsight:
 
+```http
     jdbc:hive2://CLUSTERNAME.azurehdinsight.net:443/default;transportMode=http;ssl=true;httpPath=/hive2
+```
 
 Vervang `CLUSTERNAME` door de naam van uw HDInsight-cluster.
 
@@ -121,7 +123,7 @@ SQuirreL SQL is een JDBC-client die kan worden gebruikt om Hive-query's op afsta
 
 9. Als de verbinding tot stand is gebracht, voert u de volgende query in het dialoog venster SQL-query in en selecteert u vervolgens het pictogram **uitvoeren** (een actieve persoon). In het resultaten gebied moeten de resultaten van de query worden weer gegeven.
 
-    ```hql
+    ```hiveql
     select * from hivesampletable limit 10;
     ```
 
@@ -131,7 +133,7 @@ SQuirreL SQL is een JDBC-client die kan worden gebruikt om Hive-query's op afsta
 
 Een voor beeld van het gebruik van een Java-client naar een query op HDInsight is beschikbaar op [https://github.com/Azure-Samples/hdinsight-java-hive-jdbc](https://github.com/Azure-Samples/hdinsight-java-hive-jdbc) . Volg de instructies in de opslag plaats om het voor beeld te bouwen en uit te voeren.
 
-## <a name="troubleshooting"></a>Probleemoplossing
+## <a name="troubleshooting"></a>Problemen oplossen
 
 ### <a name="unexpected-error-occurred-attempting-to-open-an-sql-connection"></a>Er is een onverwachte fout opgetreden bij het openen van een SQL-verbinding
 

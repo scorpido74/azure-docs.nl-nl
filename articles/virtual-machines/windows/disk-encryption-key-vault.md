@@ -8,11 +8,12 @@ author: msmbaldwin
 ms.author: mbaldwin
 ms.date: 08/06/2019
 ms.custom: seodec18
-ms.openlocfilehash: 0348461e2a58bd8e71b8dff10667c512125d7b03
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 9160ab530037da1f24a2f07903b949b42ecbb34b
+ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83656700"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86207074"
 ---
 # <a name="creating-and-configuring-a-key-vault-for-azure-disk-encryption"></a>Een sleutelkluis voor Azure Disk Encryption maken en configureren
 
@@ -22,6 +23,9 @@ Azure Disk Encryption gebruikt Azure Key Vault om sleutels en geheimen voor schi
 > - Als u eerder Azure Disk Encryption met Azure AD hebt gebruikt om een virtuele machine te versleutelen, moet u deze optie blijven gebruiken om uw virtuele machine te versleutelen. Zie [een sleutel kluis maken en configureren voor Azure Disk Encryption met Azure AD (vorige versie)](disk-encryption-key-vault-aad.md) voor meer informatie.
 
 Een sleutelkluis maken en configureren voor gebruik met Azure Disk Encryption bestaat uit drie stappen:
+
+> [!Note]
+> U moet de optie selecteren in de beleids instellingen voor Azure Key Vault toegang om toegang tot Azure Disk Encryption voor volume versleuteling in te scha kelen.
 
 1. Een resourcegroep maken, indien nodig.
 2. Een sleutelkluis maken. 

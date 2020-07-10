@@ -19,21 +19,26 @@ translation.priority.mt:
 - ru-ru
 - zh-cn
 - zh-tw
-ms.openlocfilehash: b43c46599cbacaf40bc9583e364d088fa27a3ac9
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 1748a334c024401d845145947ecd55519f61e5e3
+ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "74113119"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86206915"
 ---
 # <a name="odata-searchin-function-in-azure-cognitive-search"></a>OData- `search.in` functie in Azure Cognitive Search
 
 Een veelvoorkomend scenario in [OData-filter expressies](query-odata-filter-orderby-syntax.md) is om te controleren of één veld in elk document gelijk is aan een van de vele mogelijke waarden. Dit is bijvoorbeeld hoe sommige toepassingen [beveiliging](search-security-trimming-for-azure-search.md) kunnen beperken, door een veld met een of meer Principal-id's te controleren op basis van een lijst met Principal-id's die de gebruiker die de query heeft uitgegeven. Een manier om een query als volgt te schrijven, is door [`eq`](search-query-odata-comparison-operators.md) de [`or`](search-query-odata-logical-operators.md) Opera tors en te gebruiken:
 
+```odata-filter-expr
     group_ids/any(g: g eq '123' or g eq '456' or g eq '789')
+```
 
 Er is echter een kortere manier om dit te schrijven, met behulp van de `search.in` functie:
 
+```odata-filter-expr
     group_ids/any(g: search.in(g, '123, 456, 789'))
+```
 
 > [!IMPORTANT]
 > U kunt niet alleen korter en eenvoudiger te lezen, `search.in` maar ook [prestatie voordelen](#bkmk_performance) en voor komen dat bepaalde [beperkingen van filters worden beperkt](search-query-odata-filter.md#bkmk_limits) wanneer er honderden of zelfs duizenden waarden zijn die in het filter moeten worden meegenomen. Daarom raden we u ten zeerste aan om te gebruiken `search.in` in plaats van een complexere schei ding van gelijkheids expressies.
@@ -69,7 +74,7 @@ Er zijn twee Overloads van de `search.in` functie:
 
 De para meters worden gedefinieerd in de volgende tabel:
 
-| Parameternaam | Type | Description |
+| Parameternaam | Type | Beschrijving |
 | --- | --- | --- |
 | `variable` | `Edm.String` | Een verwijzing naar een teken reeks veld (of een bereik variabele over een teken reeks verzamelings veld in het geval waarin `search.in` binnen een `any` or `all` -expressie wordt gebruikt). |
 | `valueList` | `Edm.String` | Een teken reeks met een gescheiden lijst met waarden die moet overeenkomen met de `variable` para meter. Als de `delimiters` para meter niet is opgegeven, zijn de standaard scheidings tekens spatie en komma. |
@@ -85,23 +90,33 @@ Als u gebruikt `search.in` , kunt u een sub-Second-reactie tijd verwachten wanne
 
 Zoek alle hotels met een naam die gelijk is aan ' Sea View Motel ' of ' budget hotel '. Zinsdelen bevatten spaties. Dit is een standaard scheidings teken. U kunt een alternatief scheidings teken opgeven tussen enkele aanhalings tekens als de derde teken reeks parameter:  
 
+```odata-filter-expr
     search.in(HotelName, 'Sea View motel,Budget hotel', ',')
+```
 
 Alle hotels zoeken waarvan de naam gelijk is aan ' Sea View Motel ' of ' budget hotel ', gescheiden door ' | '):
 
+```odata-filter-expr
     search.in(HotelName, 'Sea View motel|Budget hotel', '|')
+```
 
 Alle hotels zoeken met kamers met het label ' WiFi ' of ' tub ':
 
+```odata-filter-expr
     Rooms/any(room: room/Tags/any(tag: search.in(tag, 'wifi, tub')))
+```
 
 Zoek een overeenkomst op zinsdelen in een verzameling, zoals ' verwarmd handdoekontwerptoepassingen-racks ' of ' hairdryer inbegrepen ' in Tags.
 
+```odata-filter-expr
     Rooms/any(room: room/Tags/any(tag: search.in(tag, 'heated towel racks,hairdryer included', ','))
+```
 
 Alle hotels zoeken zonder tag ' Motel ' of ' cabin':
 
+```odata-filter-expr
     Tags/all(tag: not search.in(tag, 'motel, cabin'))
+```
 
 ## <a name="next-steps"></a>Volgende stappen  
 

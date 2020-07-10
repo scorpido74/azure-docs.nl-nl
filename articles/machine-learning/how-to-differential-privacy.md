@@ -1,5 +1,5 @@
 ---
-title: De privacy van gegevens behouden met behulp van de WhiteNoise-pakketten
+title: De privacy van gegevens behouden met behulp van de WhiteNoise-pakketten (preview)
 titleSuffix: Azure Machine Learning
 description: Meer informatie over het Toep assen van aanbevolen procedures voor privacybeleid om modellen te Azure Machine Learning met behulp van de WhiteNoise-pakketten.
 services: machine-learning
@@ -9,15 +9,15 @@ ms.topic: how-to
 ms.author: slbird
 author: slbird
 ms.reviewer: luquinta
-ms.date: 05/17/2020
-ms.openlocfilehash: b43fd25e77e07b7b64416d8784d47c14fed48ea7
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 07/09/2020
+ms.openlocfilehash: 0ef20eee7e73c3a73a2f2e895242d7c1fce307c9
+ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84981843"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86206338"
 ---
-# <a name="use-differential-privacy-in-azure-machine-learning"></a>Differentiële privacy gebruiken in Azure Machine Learning
+# <a name="use-differential-privacy-in-azure-machine-learning-preview"></a>Differentiële privacy in Azure Machine Learning gebruiken (preview-versie)
 
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
 
@@ -152,8 +152,8 @@ U kunt de bibliotheek gebruiken voor het opstellen van complexere analyse grafie
 | Histogram     | Geometrisch  | MSS   |
 | Gemiddelde          | Laplace    | Digitaliseren   |
 | Quantiles     |            | Filteren     |
-| Sum           |            | Toerekening |
-| Variantie/covariantie |      | Transformeren  |
+| Som           |            | Toerekening |
+| Variantie/covariantie |      | Transformatie  |
 
 Raadpleeg de [Basic-notebook voor gegevens analyse](https://github.com/opendifferentialprivacy/whitenoise-samples/blob/master/analysis/basic_data_analysis.ipynb) voor meer informatie.
 

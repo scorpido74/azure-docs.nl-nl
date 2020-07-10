@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 06/19/2017
 ms.author: damendo
-ms.openlocfilehash: acb7ff5c0862ceff8c73eaca92cc7000220eca41
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 675038189fdc9c9626fee409a90e17341cf9b6cd
+ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84738648"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86207368"
 ---
 # <a name="introduction-to-resource-troubleshooting-in-azure-network-watcher"></a>Inleiding tot het oplossen van resources in azure Network Watcher
 
@@ -49,40 +49,40 @@ In de volgende tabellen ziet u de verschillende fout typen (id onder resultaten 
 
 | Fouttype | Reden | Logboek|
 |---|---|---|
-| NoFault | Als er geen fout wordt gedetecteerd |Yes|
-| GatewayNotFound | Kan geen gateway of gateway vinden |No|
-| PlannedMaintenance |  Het gateway-exemplaar is onderhouds werkzaamheden  |No|
-| UserDrivenUpdate | Deze fout treedt op wanneer een gebruikersupdate wordt uitgevoerd. De update kan een wijziging van het formaat zijn. | No |
-| VipUnResponsive | Deze fout treedt op wanneer het primaire exemplaar van de gateway niet kan worden bereikt als gevolg van een fout in de statustest. | No |
-| PlatformInActive | Er is een probleem met het platform. | No|
-| ServiceNotRunning | De onderliggende service is niet actief. | No|
-| NoConnectionsFoundForGateway | Er zijn geen verbindingen op de gateway. Deze fout is slechts een waarschuwing.| No|
-| ConnectionsNotConnected | Er zijn geen verbindingen met de verbinding. Deze fout is slechts een waarschuwing.| Yes|
-| GatewayCPUUsageExceeded | Het CPU-gebruik van de huidige gateway is > 95%. | Yes |
+| NoFault | Als er geen fout wordt gedetecteerd |Ja|
+| GatewayNotFound | Kan geen gateway of gateway vinden |Nee|
+| PlannedMaintenance |  Het gateway-exemplaar is onderhouds werkzaamheden  |Nee|
+| UserDrivenUpdate | Deze fout treedt op wanneer een gebruikersupdate wordt uitgevoerd. De update kan een wijziging van het formaat zijn. | Nee |
+| VipUnResponsive | Deze fout treedt op wanneer het primaire exemplaar van de gateway niet kan worden bereikt als gevolg van een fout in de statustest. | Nee |
+| PlatformInActive | Er is een probleem met het platform. | Nee|
+| ServiceNotRunning | De onderliggende service is niet actief. | Nee|
+| NoConnectionsFoundForGateway | Er zijn geen verbindingen op de gateway. Deze fout is slechts een waarschuwing.| Nee|
+| ConnectionsNotConnected | Er zijn geen verbindingen met de verbinding. Deze fout is slechts een waarschuwing.| Ja|
+| GatewayCPUUsageExceeded | Het CPU-gebruik van de huidige gateway is > 95%. | Ja |
 
 ### <a name="connection"></a>Verbinding
 
 | Fouttype | Reden | Logboek|
 |---|---|---|
-| NoFault | Als er geen fout wordt gedetecteerd |Yes|
-| GatewayNotFound | Kan geen gateway of gateway vinden |No|
-| PlannedMaintenance | Het gateway-exemplaar is onderhouds werkzaamheden  |No|
-| UserDrivenUpdate | Deze fout treedt op wanneer een gebruikersupdate wordt uitgevoerd. De update kan een wijziging van het formaat zijn.  | No |
-| VipUnResponsive | Deze fout treedt op wanneer het primaire exemplaar van de gateway niet kan worden bereikt als gevolg van een fout in de statustest. | No |
-| ConnectionEntityNotFound | De configuratie van de verbinding ontbreekt | No |
-| ConnectionIsMarkedDisconnected | De verbinding is gemarkeerd als ' verbinding verbroken ' |No|
-| ConnectionNotConfiguredOnGateway | De onderliggende service is niet geconfigureerd voor de verbinding. | Yes |
-| ConnectionMarkedStandby | De onderliggende service is gemarkeerd als stand-by.| Yes|
-| Verificatie | Vooraf gedeelde sleutel komt niet overeen | Yes|
-| PeerReachability | De peer gateway is niet bereikbaar. | Yes|
-| IkePolicyMismatch | De peer gateway heeft een IKE-beleid dat niet wordt ondersteund door Azure. | Yes|
-| WfpParse-fout | Er is een fout opgetreden bij het parseren van het WFP-logboek. |Yes|
+| NoFault | Als er geen fout wordt gedetecteerd |Ja|
+| GatewayNotFound | Kan geen gateway of gateway vinden |Nee|
+| PlannedMaintenance | Het gateway-exemplaar is onderhouds werkzaamheden  |Nee|
+| UserDrivenUpdate | Deze fout treedt op wanneer een gebruikersupdate wordt uitgevoerd. De update kan een wijziging van het formaat zijn.  | Nee |
+| VipUnResponsive | Deze fout treedt op wanneer het primaire exemplaar van de gateway niet kan worden bereikt als gevolg van een fout in de statustest. | Nee |
+| ConnectionEntityNotFound | De configuratie van de verbinding ontbreekt | Nee |
+| ConnectionIsMarkedDisconnected | De verbinding is gemarkeerd als ' verbinding verbroken ' |Nee|
+| ConnectionNotConfiguredOnGateway | De onderliggende service is niet geconfigureerd voor de verbinding. | Ja |
+| ConnectionMarkedStandby | De onderliggende service is gemarkeerd als stand-by.| Ja|
+| Verificatie | Vooraf gedeelde sleutel komt niet overeen | Ja|
+| PeerReachability | De peer gateway is niet bereikbaar. | Ja|
+| IkePolicyMismatch | De peer gateway heeft een IKE-beleid dat niet wordt ondersteund door Azure. | Ja|
+| WfpParse-fout | Er is een fout opgetreden bij het parseren van het WFP-logboek. |Ja|
 
 ## <a name="supported-gateway-types"></a>Ondersteunde gateway typen
 
 De volgende tabel geeft een lijst van de gateways en verbindingen die worden ondersteund met Network Watcher probleem oplossing:
 
-|  |  |
+| Gateway of verbinding | Ondersteund  |
 |---------|---------|
 |**Gatewaytypen**   |         |
 |VPN      | Ondersteund        |

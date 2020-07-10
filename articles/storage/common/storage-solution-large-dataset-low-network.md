@@ -8,12 +8,12 @@ ms.subservice: blobs
 ms.topic: conceptual
 ms.date: 04/01/2019
 ms.author: alkohli
-ms.openlocfilehash: cad76677464ba4895141e53ea45b98f55cc2f655
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 6514b149b057d690d37551bd0489c63852addb1e
+ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85515749"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86207504"
 ---
 # <a name="data-transfer-for-large-datasets-with-low-or-no-network-bandwidth"></a>Gegevensoverdracht voor grote gegevenssets met weinig of geen netwerkbandbreedte
  
@@ -47,19 +47,19 @@ De volgende tabel bevat een overzicht van de verschillen in de belangrijkste mog
 
 |                                     |    Data Box Disk      |    Data Box                                      |    Data Box Heavy              |    Import/Export                       |
 |-------------------------------------|---------------------------------|--------------------------------------------------|------------------------------------------|----------------------------------------|
-|    Gegevens grootte                        |    Maxi maal 35 TBs                 |    Maxi maal 80 TBs per apparaat                       |    Tot 800 TB per apparaat               |    Variabele                            |
-|    Gegevenstype                        |    Azure-blobs                  |    Azure-blobs<br>Azure Files                    |    Azure-blobs<br>Azure Files            |    Azure-blobs<br>Azure Files          |
-|    Vorm factor                      |    5 Ssd's per bestelling             |    1 X 50 kg. apparaat op computer formaat per bestelling    |    1 X ~ 500 kg. groot apparaat per order    |    Maxi maal 10 Hdd's/Ssd's per bestelling        |
-|    Eerste instel tijd               |    Laag <br>(15 minuten)            |    Laag tot gemiddeld <br> (<30 minuten)               |    Matig<br>(1-2 uur)               |    Gemiddeld tot moeilijk<br>variabeletype |
-|    Gegevens verzenden naar Azure               |    Ja                          |    Ja                                           |    Ja                                   |    Ja                                 |
-|    Gegevens vanuit Azure exporteren           |    Nee                           |    Nee                                            |    Nee                                    |    Yes                                 |
-|    Versleuteling                       |    AES 128-bits                  |    AES 256-bits                                   |    AES 256-bits                           |    AES 128-bits                         |
-|    Hardware                         |     Geleverd door micro soft          |    Geleverd door micro soft                            |    Geleverd door micro soft                    |    Klant verstrekt                   |
-|    Netwerkinterface                |    USB 3.1/SATA                 |    RJ 45, SFP +                                   |    RJ45, QSFP +                           |    SATA II/SATA III                    |
-|    Partnerintegratie              |    Sommige                         |    [Hoog](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/Microsoft.AzureExpressPod)                                          |    [Hoog](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/Microsoft.AzureExpressPod)                                  |    Sommige                                |
-|    Verzenden                         |    Door micro soft beheerd            |    Door micro soft beheerd                             |    Door micro soft beheerd                     |    Door de klant beheerd                    |
-| Gebruiken wanneer gegevens worden verplaatst         |Binnen een Commerce grens|Binnen een Commerce grens|Binnen een Commerce grens|Over geografische grenzen, bijvoorbeeld VS naar EU|
-|    Prijzen                          |    [Prijzen](https://azure.microsoft.com/pricing/details/databox/disk/)                    |   [Prijzen](https://azure.microsoft.com/pricing/details/storage/databox/)                                      |  [Prijzen](https://azure.microsoft.com/pricing/details/storage/databox/heavy/)                               |   [Prijzen](https://azure.microsoft.com/pricing/details/storage-import-export/)                            |
+|    **Gegevens grootte**                    |    Maxi maal 35 TBs                 |    Maxi maal 80 TBs per apparaat                       |    Tot 800 TB per apparaat               |    Variabele                            |
+|    **Gegevens type**                    |    Azure Blobs                  |    Azure Blobs<br>Azure Files                    |    Azure Blobs<br>Azure Files            |    Azure Blobs<br>Azure Files          |
+|    **Vorm factor**                  |    5 Ssd's per bestelling             |    1 X 50 kg. apparaat op computer formaat per bestelling    |    1 X ~ 500 kg. groot apparaat per order    |    Maxi maal 10 Hdd's/Ssd's per bestelling        |
+|    **Eerste instel tijd**           |    Laag <br>(15 minuten)            |    Laag tot gemiddeld <br> (<30 minuten)               |    Matig<br>(1-2 uur)               |    Gemiddeld tot moeilijk<br>variabeletype |
+|    **Gegevens verzenden naar Azure**           |    Ja                          |    Ja                                           |    Ja                                   |    Ja                                 |
+|    **Gegevens vanuit Azure exporteren**       |    Nee                           |    Nee                                            |    Nee                                    |    Ja                                 |
+|    **Versleuteling**                   |    AES 128-bits                  |    AES 256-bits                                   |    AES 256-bits                           |    AES 128-bits                         |
+|    **Hardware**                     |     Geleverd door micro soft          |    Geleverd door micro soft                            |    Geleverd door micro soft                    |    Klant verstrekt                   |
+|    **Netwerkinterface**            |    USB 3.1/SATA                 |    RJ 45, SFP +                                   |    RJ45, QSFP +                           |    SATA II/SATA III                    |
+|    **Partnerintegratie**          |    Enkele                         |    [Hoog](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/Microsoft.AzureExpressPod)                                          |    [Hoog](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/Microsoft.AzureExpressPod)                                  |    Enkele                                |
+|    **Verzenden**                     |    Door micro soft beheerd            |    Door micro soft beheerd                             |    Door micro soft beheerd                     |    Door de klant beheerd                    |
+| **Gebruiken wanneer gegevens worden verplaatst**     |Binnen een Commerce grens|Binnen een Commerce grens|Binnen een Commerce grens|Over geografische grenzen, bijvoorbeeld VS naar EU|
+|    **Prijzen**                      |    [Prijzen](https://azure.microsoft.com/pricing/details/databox/disk/)                    |   [Prijzen](https://azure.microsoft.com/pricing/details/storage/databox/)                                      |  [Prijzen](https://azure.microsoft.com/pricing/details/storage/databox/heavy/)                               |   [Prijzen](https://azure.microsoft.com/pricing/details/storage-import-export/)                            |
 
 
 ## <a name="next-steps"></a>Volgende stappen

@@ -6,24 +6,29 @@ author: mlearned
 ms.topic: conceptual
 ms.date: 07/01/2020
 ms.author: mlearned
-ms.openlocfilehash: 15bd0791917ca95e61a441b71947b70c81c0598e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: a0fe0803b0961b3aaa89627823b4867fac0d5d61
+ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85831536"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86206313"
 ---
-# <a name="security-concepts-for-applications-and-clusters-in-azure-kubernetes-service-aks"></a>Beveiligings concepten voor toepassingen en clusters in azure Kubernetes service (AKS)
+# <a name="security-concepts-for-applications-and-clusters-in-azure-kubernetes-service-aks"></a>Beveiligingsconcepten voor toepassingen en clusters in Azure Kubernetes Service (AKS)
 
 Ter bescherming van uw klant gegevens bij het uitvoeren van werk belastingen van toepassingen in azure Kubernetes service (AKS), is de beveiliging van uw cluster een belang rijke overweging. Kubernetes bevat beveiligings onderdelen, zoals *netwerk beleid* en *geheimen*. Azure wordt vervolgens toegevoegd aan onderdelen, zoals netwerk beveiligings groepen en gegroepeerde cluster upgrades. Deze beveiligings onderdelen worden gecombineerd om uw AKS-cluster uit te voeren met de meest recente beveiligings updates van het besturings systeem en Kubernetes-releases, en met beveiligd pod-verkeer en toegang tot gevoelige referenties.
 
 In dit artikel worden de belangrijkste concepten geïntroduceerd voor het beveiligen van uw toepassingen in AKS:
 
-- [Beveiliging van hoofd onderdelen](#master-security)
-- [Knooppunt beveiliging](#node-security)
-- [Cluster upgrades](#cluster-upgrades)
-- [Netwerk beveiliging](#network-security)
-- [Kubernetes Secrets](#kubernetes-secrets)
+- [Beveiligingsconcepten voor toepassingen en clusters in Azure Kubernetes Service (AKS)](#security-concepts-for-applications-and-clusters-in-azure-kubernetes-service-aks)
+  - [Master beveiliging](#master-security)
+  - [Knooppunt beveiliging](#node-security)
+    - [Reken isolatie](#compute-isolation)
+  - [Cluster upgrades](#cluster-upgrades)
+    - [Cordon en afvoer](#cordon-and-drain)
+  - [Netwerk beveiliging](#network-security)
+    - [Netwerkbeveiligingsgroepen in Azure](#azure-network-security-groups)
+  - [Kubernetes geheimen](#kubernetes-secrets)
+  - [Volgende stappen](#next-steps)
 
 ## <a name="master-security"></a>Master beveiliging
 
@@ -46,6 +51,13 @@ Knoop punten worden geïmplementeerd in een particulier subnet van een virtueel 
 Om opslag te bieden, gebruiken de knoop punten Azure Managed Disks. Voor de meeste VM-knooppunt grootten zijn dit Premium-schijven die worden ondersteund door Ssd's met hoge prestaties. De gegevens die op Managed disks zijn opgeslagen, worden automatisch versleuteld in het Azure-platform. Om redundantie te verbeteren, worden deze schijven ook veilig gerepliceerd in het Azure-Data Center.
 
 Kubernetes-omgevingen, in AKS of elders, zijn momenteel niet volledig veilig voor het gebruik van meerdere tenants. Aanvullende beveiligings functies, zoals *pod-beveiligings beleid* of meer verfijnde, op rollen gebaseerde toegangs beheer (RBAC) voor knoop punten maken aanvallen moeilijker. Voor echte beveiliging bij het uitvoeren van vijandelijke multi tenant-workloads is een Hyper Visor echter het enige beveiligings niveau dat u moet vertrouwen. Het beveiligings domein voor Kubernetes wordt het hele cluster, niet een afzonderlijk knoop punt. Voor dit soort vijandelijke multi tenant-workloads moet u fysiek geïsoleerde clusters gebruiken. Zie [Aanbevolen procedures voor cluster isolatie in AKS][cluster-isolation]voor meer informatie over manieren om workloads te isoleren.
+
+### <a name="compute-isolation"></a>Reken isolatie
+
+ Bepaalde werk belastingen kunnen een hoge mate van isolatie van andere werk belastingen van de klant vereisen vanwege nalevings-of regelgevings vereisten. Voor deze werk belastingen biedt Azure [geïsoleerde virtuele machines](../virtual-machines/linux/isolation.md), die kunnen worden gebruikt als agent knooppunten in een AKS-cluster. Deze geïsoleerde virtuele machines zijn geïsoleerd voor een specifiek hardwaretype en zijn specifiek voor één klant. 
+
+ Als u deze geïsoleerde virtuele machines wilt gebruiken met een AKS-cluster, selecteert u een van de geïsoleerde virtuele machines die [hier](../virtual-machines/linux/isolation.md) worden weer gegeven als de **knooppunt grootte** bij het maken van een AKS-cluster of het toevoegen van een knooppunt groep.
+
 
 ## <a name="cluster-upgrades"></a>Cluster upgrades
 

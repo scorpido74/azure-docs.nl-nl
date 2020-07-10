@@ -6,18 +6,18 @@ ms.author: manishku
 ms.service: mysql
 ms.topic: how-to
 ms.date: 01/09/2020
-ms.openlocfilehash: 5547c78007d38788d71e84f8fbf3ca8b60dc1576
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: cdefca11131a16630e600385bf350465fccc228f
+ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86101746"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86206667"
 ---
 # <a name="create-and-manage-private-link-for-azure-database-for-mysql-using-portal"></a>Een persoonlijke koppeling voor Azure Database for MySQL maken en beheren met behulp van portal
 
 Een privé-eindpunt is de fundamentele bouwsteen voor een Private Link in Azure. Het biedt Azure-resources, zoals virtuele machines, de mogelijkheid om Private Link-resources te gebruiken om privé met elkaar communiceren. In dit artikel leert u hoe u de Azure Portal kunt gebruiken om een virtuele machine te maken in een Azure-Virtual Network en een Azure Database for MySQL-server met een persoonlijk Azure-eind punt.
 
-Als u nog geen abonnement op Azure hebt, maak dan een [gratis account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) aan voordat u begint.
+Als u nog geen Azure-abonnement hebt, maakt u een [gratis account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) voordat u begint.
 
 > [!NOTE]
 > Deze functie is beschikbaar in alle Azure-regio's waar Azure Database for MySQL de prijs categorieën voor Algemeen en geoptimaliseerd voor geheugen ondersteunt.
@@ -166,7 +166,7 @@ In deze sectie maakt u een MySQL-server en voegt u hieraan een persoonlijk eind 
     | ------- | ----- |
     |**NETWERKEN**| |
     | Virtueel netwerk| Selecteer *MyVirtualNetwork*. |
-    | Subnet | Selecteer *mySubnet*. |
+    | Subnet | Selecteer *mySubnet*. |
     |**INTEGRATIE VAN PRIVÉ-DNS**||
     |Integreren met privé-DNS-zone |Selecteer **Ja**. |
     |Privé-DNS-zone |Selecteer *(nieuw) privatelink. mysql. data base. Azure. com* |
@@ -211,7 +211,7 @@ Nadat u **myVm** hebt gemaakt, maakt u hiermee als volgt verbinding via internet
 
 ## <a name="access-the-mysql-server-privately-from-the-vm"></a>De MySQL-server privé openen vanuit de VM
 
-1. Open Power shell in de Extern bureaublad van *myVM*.
+1. Open PowerShell in het extern bureaublad van *myVM*.
 
 2. Voer in  `nslookup  myServer.privatelink.mysql.database.azure.com` . 
 
@@ -248,7 +248,7 @@ Nadat u **myVm** hebt gemaakt, maakt u hiermee als volgt verbinding via internet
 ## <a name="clean-up-resources"></a>Resources opschonen
 Wanneer u klaar bent met het persoonlijke eind punt, MySQL-server en de virtuele machine, verwijdert u de resource groep en alle resources die deze bevat:
 
-1. Voer *myResourceGroup*   in het **zoekvak** boven aan de portal in en selecteer *myResourceGroup*   in de zoek resultaten.
+1. Typ *myResourceGroup* in het vak **Zoeken** bovenaan de portal en selecteer *myResourceGroup* in de zoekresultaten.
 2. Selecteer **Resourcegroep verwijderen**.
 3. Voer myResourceGroup in bij **Typ de naam van de resource groep** en selecteer **verwijderen**.
 

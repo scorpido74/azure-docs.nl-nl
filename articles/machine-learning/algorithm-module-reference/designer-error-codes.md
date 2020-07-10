@@ -1,7 +1,7 @@
 ---
-title: Problemen met module fouten oplossen
+title: Fout bij het oplossen van problemen met de module Designer (preview)
 titleSuffix: Azure Machine Learning
-description: Problemen met module-uitzonde ringen in Azure Machine Learning Designer oplossen met fout codes
+description: Problemen met module fout codes in Azure Machine Learning Designer oplossen (preview-versie)
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -9,11 +9,12 @@ ms.topic: troubleshooting
 author: likebupt
 ms.author: keli19
 ms.date: 04/16/2020
-ms.openlocfilehash: 2e84d2f7c1a45f1ef18e5dc32b58d75bb17e2516
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 9b477fbf0744304b28b3f4ef06271ce7728800bf
+ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85213751"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86206988"
 ---
 # <a name="exceptions-and-error-codes-for-the-designer-preview"></a>Uitzonde ringen en fout codes voor de ontwerp functie (preview-versie)
 

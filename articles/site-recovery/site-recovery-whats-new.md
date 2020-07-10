@@ -3,12 +3,12 @@ title: Wat is er nieuw in Azure Site Recovery
 description: Biedt een samen vatting van nieuwe functies en de meest recente updates in de Azure Site Recovery-service.
 ms.topic: conceptual
 ms.date: 06/01/2020
-ms.openlocfilehash: f774dbd3172199e82509301f520eac4e25deb15b
-ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.openlocfilehash: 3017be90e84441ad84c6a5a9d54498028388dffe
+ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86131077"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86206402"
 ---
 # <a name="whats-new-in-site-recovery"></a>Nieuw in Site Recovery
 
@@ -27,14 +27,13 @@ Voor Site Recovery-onderdelen ondersteunen we N-4 versies, waarbij N de meest re
 [Pakket 45](https://support.microsoft.com/help/4550047/) | 9.32.5487.1 | 5.1.5400.0 | 9.32.5487.1 | 5.1.5400.0 | 2.0.9165.0
 [Pakket 43](https://support.microsoft.com/help/4537047/) | 9.31.5449.1 | 5.1.5300.0 | 9.31.5449.1 | 5.1.5300.0 | 2.0.9165.0
 [Pakket 42](https://support.microsoft.com/help/4531426/) | 9.30.5407.1 | 5.1.5200.0 | 9.30.5407.1 | 5.1.5200.0 | 2.0.9165.0
-[Pakket 41](https://support.microsoft.com/help/4528026/) | 9.29.5367.1 | 5.1.5000.0 | 9.29.5367.1 | 5.1.5000.0 | 2.0.9165.0
 
 Meer [informatie](service-updates-how-to.md) over installatie en ondersteuning van de update.
 
 > [!NOTE]
 > Update pakket 44 wordt niet weer gegeven in de tabel omdat het geen updates bevat voor de Site Recovery providers en agents.
 
-## <a name="updates-june-2020"></a>Updates (juni 2020)
+## <a name="updates-july-2020"></a>Updates (juli 2020)
 
 ### <a name="update-rollup-47"></a>Update pakket 47
 
@@ -160,7 +159,7 @@ Nieuwe functies voor herstel na nood gevallen voor Azure VM worden in de tabel s
 **Functie** | **Details**
 --- | ---
 **Failover-instellingen testen** | Bij het instellen van een testfailover kunt u nu instellingen configureren voor de VM van de testfailover en het netwerk, met inbegrip van IP-adres, NSG, intern taak verdeling en het open bare IP-adres voor elke machine-NIC. Deze instellingen zijn optioneel en zijn niet van invloed op het huidige gedrag. Als u deze instellingen niet configureert, kunt u een Azure-VNet kiezen op het moment van de testfailover. [Meer informatie](https://azure.microsoft.com/blog/customize-networking-for-dr-drills-azure-site-recovery/).
-**Herstelplannen** | Herstel plannen zijn nu beperkt tot 100 Vm's, om de betrouw baarheid van failover te garanderen.
+**Herstel plannen** | Herstel plannen zijn nu beperkt tot 100 Vm's, om de betrouw baarheid van failover te garanderen.
 
 ### <a name="vmware-to-azure-disaster-recovery"></a>Herstel na noodgevallen van VMware naar Azure
 
@@ -168,7 +167,7 @@ De tabel bevat een overzicht van de nieuwe functies voor VMware naar Azure voor 
 
 **Functie** | **Details**
 --- | ---
-**Herstelplannen** | Herstel plannen zijn nu beperkt tot 100 Vm's, om de betrouw baarheid van failover te garanderen.
+**Herstel plannen** | Herstel plannen zijn nu beperkt tot 100 Vm's, om de betrouw baarheid van failover te garanderen.
 
 
 ## <a name="updates-september-2019"></a>Updates (september 2019)
@@ -208,7 +207,7 @@ De functies die deze maand zijn toegevoegd, worden in de tabel samenvatten.
 
 **Functie** | **Details**
 --- | ---
-Storage-account | Site Recovery ondersteunt nu het gebruik van opslag accounts waarvoor Firewall is ingeschakeld voor Hyper-V naar Azure-herstel na nood gevallen.  U kunt opslag accounts met firewall mogelijkheden selecteren als doel account of voor cache opslag. Als u gebruikmaakt van Firewall-account, moet u ervoor zorgen dat u de optie voor het toestaan van vertrouwde micro soft-Services hebt ingeschakeld.<br/><br/> Dit wordt ondersteund voor virtuele Hyper-V-machines met of zonder System Center VMM.
+Opslagaccount | Site Recovery ondersteunt nu het gebruik van opslag accounts waarvoor Firewall is ingeschakeld voor Hyper-V naar Azure-herstel na nood gevallen.  U kunt opslag accounts met firewall mogelijkheden selecteren als doel account of voor cache opslag. Als u gebruikmaakt van Firewall-account, moet u ervoor zorgen dat u de optie voor het toestaan van vertrouwde micro soft-Services hebt ingeschakeld.<br/><br/> Dit wordt ondersteund voor virtuele Hyper-V-machines met of zonder System Center VMM.
 
 
 ## <a name="updates-august-2019"></a>Updates (augustus 2019)

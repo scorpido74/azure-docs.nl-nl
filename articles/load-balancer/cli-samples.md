@@ -13,21 +13,29 @@ ms.tgt_pltfrm: ''
 ms.workload: infrastructure
 ms.date: 06/14/2018
 ms.author: allensu
-ms.openlocfilehash: f35007bc3c47aeec9bcdd8a418983b95f6f20ad6
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 3198160fe443f4650d8c5a880c3538efeb9346a1
+ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "74225423"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86205254"
 ---
 # <a name="azure-cli-samples-for-load-balancer"></a>Voor beelden van Azure CLI voor Load Balancer
 
 De volgende tabel bevat koppelingen naar bash-scripts die zijn gebouwd met behulp van de Azure CLI.
 
-| | |
-|-|-|
-| [Verkeer verdelen naar virtuele machines voor hoge beschikbaarheid](./scripts/load-balancer-linux-cli-sample-nlb.md) | Maakt verschillende virtuele machines in een configuratie met hoge Beschik baarheid en taak verdeling. |
-| [Taken over VM's in meerdere beschikbaarheidszones verdelen](./scripts/load-balancer-linux-cli-sample-zone-redundant-frontend.md) | Maakt drie Vm's in verschillende beschikbaarheids zones binnen een regio en Standard Load Balancer met een zone-redundant frontend-IP-adres. Deze load balancer configuratie helpt uw apps en gegevens te beschermen tegen onwaarschijnlijke storingen of verlies van een volledig Data Center. |
-|[Taken over VM's binnen een specifieke beschikbaarheidszone verdelen](./scripts/load-balancer-linux-cli-sample-zonal-frontend.md)|Maakt drie Vm's, een Standard Load Balancer met zonegebonden front-IP-adres dat gegevens paden en bronnen in één zone voor een bepaalde regio kunt uitlijnen.|
-| [Taak verdeling meerdere websites op Vm's](./scripts/load-balancer-linux-cli-load-balance-multiple-websites-vm.md) | Maakt twee Vm's met meerdere IP-configuraties die zijn gekoppeld aan een Beschikbaarheidsset van Azure, die toegankelijk is via een Azure Load Balancer. |
-| | |
+* [Verkeer verdelen naar virtuele machines voor hoge beschikbaarheid](./scripts/load-balancer-linux-cli-sample-nlb.md)
 
+  Maakt verschillende virtuele machines in een configuratie met hoge Beschik baarheid en taak verdeling.
+
+* [Taken over VM's in meerdere beschikbaarheidszones verdelen](./scripts/load-balancer-linux-cli-sample-zone-redundant-frontend.md)
+
+  Maakt drie Vm's in verschillende beschikbaarheids zones binnen een regio en Standard Load Balancer met een zone-redundant frontend-IP-adres. Deze load balancer configuratie helpt uw apps en gegevens te beschermen tegen onwaarschijnlijke storingen of verlies van een volledig Data Center.
+
+* [Taken over VM's binnen een specifieke beschikbaarheidszone verdelen](./scripts/load-balancer-linux-cli-sample-zonal-frontend.md)
+
+  Maakt drie Vm's, een Standard Load Balancer met zonegebonden front-IP-adres dat gegevens paden en bronnen in één zone voor een bepaalde regio kunt uitlijnen.
+
+* [Taak verdeling meerdere websites op Vm's](./scripts/load-balancer-linux-cli-load-balance-multiple-websites-vm.md)
+
+  Maakt twee Vm's met meerdere IP-configuraties die zijn gekoppeld aan een Beschikbaarheidsset van Azure, die toegankelijk is via een Azure Load Balancer.

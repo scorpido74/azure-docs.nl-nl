@@ -1,5 +1,5 @@
 ---
-title: Verdeling-problemen in machine learning modellen beoordelen en beperken
+title: Verdeling-problemen in machine learning modellen beoordelen en verhelpen (preview)
 titleSuffix: Azure Machine Learning
 description: Meer informatie over verdeling in machine learning-modellen en hoe het python-pakket van Fairlearn u kan helpen om eerlijke modellen te bouwen.
 services: machine-learning
@@ -8,15 +8,15 @@ ms.subservice: core
 ms.topic: conceptual
 ms.author: luquinta
 author: luisquintanilla
-ms.date: 06/30/2020
-ms.openlocfilehash: c4e9b8386c8341d076a69e2e81b5e92f296153ac
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 07/09/2020
+ms.openlocfilehash: 2cc3228c20fba322ec804a3bcc9ee322c7d37907
+ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85611778"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86207292"
 ---
-# <a name="build-fairer-machine-learning-models"></a>Eerlijke machine learning modellen bouwen
+# <a name="build-fairer-machine-learning-models-preview"></a>Machine learning modellen van billijker bouwen (preview-versie)
 
 Meer informatie over verdeling in machine learning en hoe het open-source python-pakket van [Fairlearn](https://fairlearn.github.io/) u kan helpen bij het bouwen van modellen die billijker zijn. Als u geen moeite hebt om verdeling problemen te begrijpen en verdeling te beoordelen bij het bouwen van machine learning modellen, kunt u modellen bouwen die oneerlijke resultaten opleveren. 
 
@@ -83,7 +83,7 @@ Het open-source pakket Fairlearn bevat een groot aantal oneerlijke beperkende al
 
 Het open-source pakket Fairlearn ondersteunt de volgende typen pariteits beperkingen: 
 
-|Pariteits beperking  | Functie  |Machine learning-taak  |
+|Pariteits beperking  | Doel  |Machine learning-taak  |
 |---------|---------|---------|
 |Demografische pariteit     |  Beperking van de toewijzing is ongedaan | Binaire classificatie, regressie |
 |Gelijke conflicteert  | Vaststellen van de toewijzing en de kwaliteit van de service | Binaire classificatie        |
@@ -99,7 +99,7 @@ Het open-source pakket Fairlearn biedt postprocessing en reductie algoritmen voo
 - Reductie: deze algoritmen hebben een standaard Black-Box machine learning Estimator (bijvoorbeeld een LightGBM-model) en genereren een set met retrainde modellen met behulp van een reeks hergewogen trainings gegevens sets. Aanvragers van een bepaald geslacht kunnen bijvoorbeeld worden verkleind of omlaag worden gereduceerd om modellen opnieuw te trainen en de verschillen in verschillende groepen geslacht te verminderen. Gebruikers kunnen vervolgens een model kiezen dat de beste verhouding biedt tussen nauw keurigheid (of andere prestatie gegevens) en de verschillen, wat doorgaans moet worden gebaseerd op bedrijfs regels en kosten berekeningen.  
 - Na het verwerken: deze algoritmen hebben een bestaande classificatie en de gevoelige functie als invoer. Vervolgens wordt een trans formatie van de voor spelling van de classificatie afgeleid om de opgegeven verdeling-beperkingen af te dwingen. Het grootste voor deel van de drempel optimalisatie is de eenvoud en flexibiliteit, omdat het model niet hoeft te worden getraind. 
 
-| Algoritme | Description | Machine learning-taak | Gevoelige functies | Ondersteunde pariteits beperkingen | Algoritme type |
+| Algoritme | Beschrijving | Machine learning-taak | Gevoelige functies | Ondersteunde pariteits beperkingen | Algoritme type |
 | --- | --- | --- | --- | --- | --- |
 | `ExponentiatedGradient` | Black-Box-benadering voor een billijke classificatie die wordt beschreven in [een verlagings benadering van een billijke classificatie](https://arxiv.org/abs/1803.02453) | Binaire classificatie | Categorische gegevens | [Demografische pariteit](#parity-constraints), [equaled conflicteert](#parity-constraints) | Passen |
 | `GridSearch` | Black-Box-benadering beschreven in [een verlagings benadering van een billijke classificatie](https://arxiv.org/abs/1803.02453)| Binaire classificatie | Binair | [Demografische pariteit](#parity-constraints), [equaled conflicteert](#parity-constraints) | Passen |

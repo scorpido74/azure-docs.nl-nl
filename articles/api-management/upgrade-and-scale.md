@@ -11,12 +11,12 @@ ms.workload: integration
 ms.topic: article
 ms.date: 04/20/2020
 ms.author: apimpm
-ms.openlocfilehash: 6edb639cacc48e8b59c458bcf0ac9c9c5e07b030
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 93c686fb2688a7a8ae71d8156e6e5c7915d6c604
+ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82203558"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86205761"
 ---
 # <a name="upgrade-and-scale-an-azure-api-management-instance"></a>Een Azure API Management-exemplaar bijwerken en schalen  
 
@@ -84,3 +84,4 @@ Als u schaalt van of naar de Developer-laag, zal er downtime zijn. Anders is er 
 
 - [Exemplaar van Azure API Management-service implementeren in meerdere Azure-regio's](api-management-howto-deploy-multi-region.md)
 - [Een Azure API Management service-exemplaar automatisch schalen](api-management-howto-autoscale.md)
+- [Optimaliseer en sla uw Cloud uitgaven op](https://docs.microsoft.com/azure/cost-management-billing/costs/quick-acm-cost-analysis?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn)

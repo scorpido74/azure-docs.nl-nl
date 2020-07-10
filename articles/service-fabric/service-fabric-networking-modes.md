@@ -5,11 +5,12 @@ author: athinanthny
 ms.topic: conceptual
 ms.date: 2/23/2018
 ms.author: atsenthi
-ms.openlocfilehash: ba1fa92559d39a481008d1dd18036e4232be1bfa
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: feeef1773ffe68f3ff88175b413cd40ba618b8d9
+ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "75639799"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86207233"
 ---
 # <a name="service-fabric-container-networking-modes"></a>Service Fabric container netwerk modi
 
@@ -190,15 +191,14 @@ Wanneer een container service opnieuw wordt gestart of naar een ander knoop punt
  
 3. Voor Windows-clusters moet u een Azure Network Security Group (NSG)-regel instellen waarmee poort-UDP/53 voor het virtuele netwerk wordt geopend met de volgende waarden:
 
-   |Instelling |Waarde | |
-   | --- | --- | --- |
-   |Prioriteit |2000 | |
-   |Name |Custom_Dns  | |
-   |Bron |VirtualNetwork | |
-   |Doel | VirtualNetwork | |
-   |Service | DNS (UDP/53) | |
-   |Bewerking | Toestaan  | |
-   | | |
+   |Instelling |Waarde |
+   | --- | --- |
+   |Prioriteit |2000 |
+   |Naam |Custom_Dns  |
+   |Bron |VirtualNetwork |
+   |Doel | VirtualNetwork |
+   |Service | DNS (UDP/53) |
+   |Bewerking | Toestaan  |
 
 4. Geef de netwerk modus op in het manifest van de toepassing voor elke service: `<NetworkConfig NetworkType="Open">` . De **Open** -netwerk modus resulteert in de service die een toegewezen IP-adres krijgt. Als er geen modus is opgegeven, wordt de standaard waarde **NAT** modus voor de service gebruikt. In het volgende voor beeld van een manifest kunnen de- `NodeContainerServicePackage1` en- `NodeContainerServicePackage2` Services elk Luis teren op dezelfde poort (beide services Luis teren `Endpoint1` ). Wanneer de open-netwerk modus is opgegeven, `PortBinding` kunnen er geen configuraties worden opgegeven.
 

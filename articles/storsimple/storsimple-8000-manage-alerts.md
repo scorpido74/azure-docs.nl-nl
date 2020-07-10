@@ -6,12 +6,12 @@ ms.service: storsimple
 ms.topic: how-to
 ms.date: 03/14/2019
 ms.author: alkohli
-ms.openlocfilehash: 36f416183bd44180bee59142714e924e0ac8fefe
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: bf41232026fcb51e63cb68d6f42b7b66d14022e1
+ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85830040"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86207786"
 ---
 # <a name="use-the-storsimple-device-manager-service-to-view-and-manage-storsimple-alerts"></a>De StorSimple Apparaatbeheer-service gebruiken voor het weer geven en beheren van StorSimple-waarschuwingen
 
@@ -118,7 +118,7 @@ De volgende tabellen geven een lijst van enkele van de Microsoft Azure StorSimpl
 * [Waarschuwingen lokaal vastgemaakt volume](#locally-pinned-volume-alerts)
 * [Netwerk waarschuwingen](#networking-alerts)
 * [Prestatie waarschuwingen](#performance-alerts)
-* [Beveiligingswaarschuwingen](#security-alerts)
+* [Beveiligings waarschuwingen](#security-alerts)
 * [Ondersteunings pakket waarschuwingen](#support-package-alerts)
 * [Meldingen van behuizing-omgeving](#enclosure-environment-alerts)
 
@@ -199,8 +199,8 @@ Als de verbinding met de Cloud op uw StorSimple-productie apparaat mislukt, kunn
 
 ### <a name="performance-alerts"></a>Prestatie waarschuwingen
 
-| Waarschuwings tekst | Gebeurtenis | Meer informatie/aanbevolen acties | |
-|:--- |:--- |:--- | --- |
+| Waarschuwings tekst | Gebeurtenis | Meer informatie/aanbevolen acties |
+|:--- |:--- |:--- |
 | De belasting van het apparaat heeft <*drempel waarde*> overschreden. |Trager dan de verwachte reactie tijden. |Uw apparaat rapporteert gebruik onder een zware invoer/uitvoer belasting. Dit kan ervoor zorgen dat uw apparaat niet werkt en het zou moeten doen. Bekijk de werk belastingen die u hebt gekoppeld aan het apparaat en bepaal of er een van de workloads kan worden verplaatst naar een ander apparaat of dat ze niet meer nodig zijn.|
 | Kan de StorSimple-service (s) niet starten. |DataPath-fout |Als het probleem zich blijft voordoen, neemt u contact op met Microsoft Ondersteuning. |
 
