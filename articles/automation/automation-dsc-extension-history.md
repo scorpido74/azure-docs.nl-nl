@@ -9,11 +9,12 @@ services: automation
 ms.service: automation
 ms.subservice: dsc
 ms.topic: conceptual
-ms.openlocfilehash: b55280dd8ed5ea82cf861e300306db5a787c31e8
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 0bb82ce92a151bd8e955c136751d8e7f307bbf1b
+ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83836920"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86186415"
 ---
 # <a name="work-with-azure-desired-state-configuration-extension-version-history"></a>Versie geschiedenis van de desired state Configuration-extensie voor Azure gebruiken
 
@@ -98,7 +99,7 @@ Dit artikel bevat informatie over elke versie van de Azure DSC VM-extensie, de o
 - **Omgeving:** Azure
 - **Opmerkingen:** Deze versie maakt gebruik van DSC zoals opgenomen in Windows Server 2016. voor andere Windows-besturings systemen wordt het [Windows Management Framework 5,1](https://devblogs.microsoft.com/powershell/wmf-5-1-releasing-january-2017/) (voor de installatie van WMF moet opnieuw worden opgestart) geïnstalleerd. Voor nano server is de DSC-rol geïnstalleerd op de virtuele machine.
 - **Nieuwe functies:**
-  - Met bug worden & verbeteringen opgelost waarmee het gebruik van DSC Azure Automation via de portal-gebruikers interface en de Resource Manager-sjabloon wordt vereenvoudigd. Zie het [standaard configuratie script](/azure/virtual-machines/extensions/dsc-overview) in de DSC-extensie documentatie voor meer informatie.
+  - Met bug worden & verbeteringen opgelost waarmee het gebruik van DSC Azure Automation via de portal-gebruikers interface en de Resource Manager-sjabloon wordt vereenvoudigd. Zie het [standaard configuratie script](../virtual-machines/extensions/dsc-overview.md) in de DSC-extensie documentatie voor meer informatie.
 
 ### <a name="version-226"></a>Versie 2,26
 
@@ -249,6 +250,6 @@ Dit artikel bevat informatie over elke versie van de Azure DSC VM-extensie, de o
 ## <a name="next-steps"></a>Volgende stappen
 
 - Voor meer informatie over Power shell DSC raadpleegt u het [Power shell-documentatie centrum](/powershell/scripting/dsc/overview/overview).
-- Bekijk de [Resource Manager-sjabloon voor de DSC-extensie](/azure/virtual-machines/extensions/dsc-template).
+- Bekijk de [Resource Manager-sjabloon voor de DSC-extensie](../virtual-machines/extensions/dsc-template.md).
 - Voor meer functionaliteit en bronnen die u kunt beheren met Power shell DSC, gaat u naar de [Power shell-galerie](https://www.powershellgallery.com/packages?q=DscResource&x=0&y=0).
-- Zie voor meer informatie over het door geven van gevoelige para meters in configuraties [veilig beheer referenties met de DSC-extensie-handler](/azure/virtual-machines/extensions/dsc-credentials).
+- Zie voor meer informatie over het door geven van gevoelige para meters in configuraties [veilig beheer referenties met de DSC-extensie-handler](../virtual-machines/extensions/dsc-credentials.md).

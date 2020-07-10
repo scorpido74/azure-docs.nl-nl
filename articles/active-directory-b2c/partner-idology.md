@@ -11,12 +11,12 @@ ms.topic: how-to
 ms.date: 06/08/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: d34bb14dd0f474ff9350fec513c02fbb470d6738
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 7567302be8d717cda3627af303128bfb704bd014
+ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85385651"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86170136"
 ---
 # <a name="tutorial-for-configuring-idology-with-azure-active-directory-b2c"></a>Zelf studie voor het configureren van IDology met Azure Active Directory B2C 
 
@@ -41,7 +41,7 @@ In het volgende architectuur diagram wordt de implementatie weer gegeven.
 
 ![Diagram van IDology-architectuur](media/partner-idology/idology-architecture-diagram.png)
 
-|      |      |
+| Stap | Beschrijving |
 |------|------|
 |1     | Een gebruiker ontvangt een melding op de aanmeldings pagina. |
 |2     | De gebruiker selecteert de registratie optie om een nieuw account te maken en gegevens in te voeren op de pagina. Azure AD B2C worden de gebruikers kenmerken verzameld. |
@@ -75,7 +75,7 @@ U hebt de URL van de geïmplementeerde service nodig om Azure AD te configureren
 
 Toepassings instellingen kunnen worden [geconfigureerd in app service in azure](https://docs.microsoft.com/azure/app-service/configure-common#configure-app-settings). Met deze methode kunnen instellingen veilig worden geconfigureerd zonder deze in een opslag plaats te controleren. U moet de volgende instellingen opgeven voor de rest-API:
 
-| Toepassingsinstellingen | Bron | Notities |
+| Toepassingsinstellingen | Bron | Opmerkingen |
 | :-------- | :------------| :-----------|
 |IdologySettings:ApiUsername | IDology-account configuratie |     |
 |IdologySettings:ApiPassword | IDology-account configuratie |     |

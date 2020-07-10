@@ -6,11 +6,12 @@ ms.topic: article
 ms.date: 04/04/2018
 ms.reviewer: nicking
 ms.custom: seodec18
-ms.openlocfilehash: b17a49535541c8f75f65cdbe9986a895427f3877
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: f7edb632559dc8da2de32c58d994a7c51b1b09e8
+ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "78255138"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86169967"
 ---
 # <a name="restore-an-app-in-azure-from-a-snapshot"></a>Een app in azure herstellen vanuit een moment opname
 In dit artikel wordt beschreven hoe u een app in [Azure app service](../app-service/overview.md) kunt herstellen vanuit een moment opname. U kunt uw app herstellen naar een eerdere status op basis van een van de moment opnamen van uw app. U hoeft geen back-up van moment opnamen in te scha kelen. het platform slaat automatisch een moment opname van alle apps op voor gegevens herstel doeleinden.
@@ -36,15 +37,15 @@ Herstellen vanaf moment opnamen is beschikbaar voor apps die worden uitgevoerd i
 
 1. Klik op de pagina **instellingen** van uw app in de [Azure Portal](https://portal.azure.com)op **back-ups** om de pagina **back-ups** weer te geven. Klik vervolgens op **herstellen** onder het gedeelte **snap shot (preview)** .
    
-    ![](./media/app-service-web-restore-snapshots/1.png)
+    ![Scherm afbeelding die laat zien hoe u een app herstelt vanuit een back-up van een moment opname.](./media/app-service-web-restore-snapshots/1.png)
 
 2. Selecteer op de pagina **herstellen** de moment opname die u wilt herstellen.
    
-    ![](./media/app-service-web-restore-snapshots/2.png)
+    ![Scherm afbeelding die laat zien hoe u de moment opname selecteert die u wilt herstellen. ](./media/app-service-web-restore-snapshots/2.png)
    
 3. Geef het doel op voor het herstellen van de app in de **terugzet bestemming**.
    
-    ![](./media/app-service-web-restore-snapshots/3.png)
+    ![Scherm afbeelding die laat zien hoe het herstel doel moet worden opgegeven.](./media/app-service-web-restore-snapshots/3.png)
    
    > [!WARNING]
    > Als u **overschrijven**kiest, worden alle bestaande gegevens in het huidige bestands systeem van uw app gewist en overschreven. Voordat u op **OK**klikt, moet u ervoor zorgen dat het wat u wilt doen.
@@ -60,6 +61,6 @@ Herstellen vanaf moment opnamen is beschikbaar voor apps die worden uitgevoerd i
 
 4. U kunt ervoor kiezen om uw site configuratie te herstellen.
    
-    ![](./media/app-service-web-restore-snapshots/4.png)
+    ![Scherm afbeelding die laat zien hoe u de site configuratie kunt herstellen.](./media/app-service-web-restore-snapshots/4.png)
 
 5. Klik op **OK**.

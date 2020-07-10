@@ -6,11 +6,12 @@ ms.assetid: ff00902b-9858-4bee-ab95-d3406018c688
 ms.topic: article
 ms.date: 07/25/2018
 ms.custom: seodec18
-ms.openlocfilehash: f7f9f6d5617ad0f9be69c47ce514d395534fd892
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 4fa64562f8d26297d2b2c8a13cd8b6a513c2c630
+ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "74672214"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86170017"
 ---
 # <a name="configure-premiumv2-tier-for-azure-app-service"></a>PremiumV2-laag configureren voor Azure App Service
 
@@ -42,7 +43,7 @@ Selecteer bij het configureren van het App Service-abonnement in de <a href="htt
 
 Selecteer **productie**, selecteer **P1V2**, **P2V2**of **P3V2**en klik vervolgens op **Toep assen**.
 
-![](media/app-service-configure-premium-tier/scale-up-tier-select.png)
+![Scherm afbeelding met de aanbevolen prijs categorieën voor uw app.](media/app-service-configure-premium-tier/scale-up-tier-select.png)
 
 > [!IMPORTANT] 
 > Als u **P1V2**, **P2V2**en **P3V2** niet als opties ziet, of als de opties grijs worden weer gegeven, is **PremiumV2** waarschijnlijk niet beschikbaar in de onderliggende app service implementatie die het app service plan bevat. Zie [Omhoog schalen vanuit een niet-ondersteunde resource groep en regio combinatie](#unsupported) voor meer informatie.
@@ -57,15 +58,15 @@ Open uw App Service app-pagina in de <a href="https://portal.azure.com" target="
 
 Selecteer in de linkernavigatiebalk van uw App Service-app-pagina **Omhoog schalen (app service plan)**.
 
-![](media/app-service-configure-premium-tier/scale-up-tier-portal.png)
+![Scherm afbeelding die laat zien hoe u uw app service-plan kunt schalen.](media/app-service-configure-premium-tier/scale-up-tier-portal.png)
 
 Selecteer **productie**, selecteer **P1V2**, **P2V2**of **P3V2**en klik vervolgens op **Toep assen**.
 
-![](media/app-service-configure-premium-tier/scale-up-tier-select.png)
+![Scherm afbeelding met de aanbevolen prijs categorieën voor uw app.](media/app-service-configure-premium-tier/scale-up-tier-select.png)
 
 Als uw bewerking is voltooid, ziet u in de overzichts pagina van uw app dat deze nu in een **PremiumV2** -laag is.
 
-![](media/app-service-configure-premium-tier/finished.png)
+![Scherm opname van de PremiumV2 prijs categorie op de overzichts pagina van uw app.](media/app-service-configure-premium-tier/finished.png)
 
 ### <a name="if-you-get-an-error"></a>Als er een fout optreedt
 
@@ -80,7 +81,7 @@ Als uw app wordt uitgevoerd in een App Service implementatie waarbij **PremiumV2
 - Maak een **nieuwe** resource groep en maak een **nieuwe** app en app service plan in de **nieuwe** resource groep. Kies de gewenste Azure-regio tijdens het maken van het proces.  U **moet** het **PremiumV2** -abonnement selecteren op het moment dat het nieuwe app service-plan wordt gemaakt.  Dit zorgt ervoor dat de combi natie van resource groep, het App Service plan en de Azure-regio het App Service plan wordt gemaakt in een App Service-implementatie die **PremiumV2**ondersteunt.  Implementeer uw toepassings code vervolgens in het zojuist gemaakte app-en app service-plan. Indien gewenst kunt u het App Service plan vervolgens van **PremiumV2** omlaag schalen om de kosten te besparen en kunt u in de toekomst nog steeds een back-up maken met behulp van **PremiumV2**.
 - Als uw app al in een bestaande **Premium** -laag wordt uitgevoerd, kunt u uw app klonen met alle app-instellingen, verbindings reeksen en implementatie configuratie in een nieuw app service-plan dat gebruikmaakt van **PremiumV2**.
 
-    ![](media/app-service-configure-premium-tier/clone-app.png)
+    ![Scherm afbeelding die laat zien hoe u uw app kunt klonen.](media/app-service-configure-premium-tier/clone-app.png)
 
     U kunt op de pagina **app klonen** een app service plan maken met behulp van **PremiumV2** in de gewenste regio en de app-instellingen en configuratie opgeven die u wilt klonen.
 

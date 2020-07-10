@@ -6,19 +6,19 @@ services: application-gateway
 author: vhorne
 ms.service: application-gateway
 ms.topic: how-to
-ms.date: 11/14/2019
+ms.date: 07/09/2020
 ms.author: victorh
-ms.openlocfilehash: bc599eef349c2d65483de18b0cc8c04c5c2e53ad
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 5dc8bf670e14d8a44b10b8093d786091791ae793
+ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84808221"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86186780"
 ---
 # <a name="create-a-custom-probe-for-application-gateway-by-using-the-portal"></a>Een aangepaste test maken voor Application Gateway met behulp van de portal
 
 > [!div class="op_single_selector"]
-> * [Azure-portal](application-gateway-create-probe-portal.md)
+> * [Azure Portal](application-gateway-create-probe-portal.md)
 > * [Azure Resource Manager PowerShell](application-gateway-create-probe-ps.md)
 > * [Azure Classic PowerShell](application-gateway-create-probe-classic-ps.md)
 
@@ -48,17 +48,19 @@ Tests worden in een proces in twee stappen geconfigureerd via de portal. De eers
    |---|---|---|
    |**Naam**|customProbe|Deze waarde is een beschrijvende naam die wordt gegeven aan de test die toegankelijk is in de portal.|
    |**Protocol**|HTTP of HTTPS | Het protocol dat wordt gebruikt door de status test. |
-   |**Host**|dat wil zeggen contoso.com|Deze waarde is de naam van de virtuele host (die afwijkt van de naam van de VM-host) die op de toepassings server wordt uitgevoerd. De test wordt verzonden naar (Protocol)://(hostnaam):(poort van httpsetting)/urlPath.  Dit is van toepassing wanneer meerdere locaties op Application Gateway zijn geconfigureerd. Als de Application Gateway is geconfigureerd voor één site, voert u 127.0.0.1 in.|
-   |**Kies een hostnaam uit de back-end-HTTP-instellingen**|Ja of nee|Hiermee stelt u de *host* -header in de test in op de hostnaam van de back-end-bron in de back-end-groep die is gekoppeld aan de http-instelling waaraan deze test is gekoppeld. Speciaal vereist in het geval van back-endservers met meerdere tenants, zoals Azure app service. [Meer informatie](https://docs.microsoft.com/azure/application-gateway/configuration-overview#pick-host-name-from-back-end-address)|
-   |**Pad**|/of een ander pad|De rest van de volledige URL voor de aangepaste test. Er begint een geldig pad met '/'. Gebruik voor het standaardpad van http: \/ /contoso.com alleen '/' |
+   |**Host**|dat wil zeggen contoso.com|Deze waarde is de naam van de virtuele host (die afwijkt van de naam van de VM-host) die op de toepassings server wordt uitgevoerd. De test wordt verzonden naar \<protocol\> :// \<host name\> :\<port\>/\<urlPath\>|
+   |**Kies een hostnaam uit de back-end-HTTP-instellingen**|Ja of nee|Hiermee stelt u de *host* -header in de test in op de hostnaam van de HTTP-instellingen waaraan deze test is gekoppeld. Speciaal vereist in het geval van back-endservers met meerdere tenants, zoals Azure app service. [Meer informatie](https://docs.microsoft.com/azure/application-gateway/configuration-overview#pick-host-name-from-back-end-address)|
+   |**Poort kiezen uit back-end-HTTP-instellingen**| Ja of nee|Hiermee stelt u de *poort* van de status test in op de poort van de HTTP-instellingen waaraan deze test is gekoppeld. Als u Nee kiest, kunt u een aangepaste doel poort opgeven die u wilt gebruiken |
+   |**Poort**| 1-65535 | Aangepaste poort die moet worden gebruikt voor de status controles | 
+   |**Pad**|/of een geldig pad|De rest van de volledige URL voor de aangepaste test. Er begint een geldig pad met '/'. Gebruik voor het standaardpad van http: \/ /contoso.com alleen '/' |
    |**Interval (sec.)**|30|Hoe vaak de test wordt uitgevoerd om de status te controleren. Het wordt afgeraden om de lagere dan 30 seconden in te stellen.|
    |**Time-out (SEC)**|30|De hoeveelheid tijd die de test wacht voordat een time-out optreedt. Als er binnen deze time-outperiode geen geldig antwoord wordt ontvangen, wordt de test als mislukt gemarkeerd. Het time-outinterval moet hoog genoeg zijn dat er een http-aanroep kan worden uitgevoerd om ervoor te zorgen dat de status van de back-end beschikbaar is. Houd er rekening mee dat de time-outwaarde niet groter mag zijn dan de interval waarde die is gebruikt in deze test instelling of de waarde van de time-out van de aanvraag in de HTTP-instelling die wordt gekoppeld aan deze test.|
-|**Drempelwaarde voor onjuiste status**|3|Aantal opeenvolgende mislukte pogingen om te worden beschouwd als een slechte status. De drempel waarde kan worden ingesteld op 1 of meer.|
+   |**Drempelwaarde voor beschadigd**|3|Aantal opeenvolgende mislukte pogingen om te worden beschouwd als een slechte status. De drempel waarde kan worden ingesteld op 1 of meer.|
    |**Vergelijkings voorwaarden voor testen gebruiken**|Ja of nee|Standaard wordt een HTTP (S)-antwoord met de status code tussen 200 en 399 als gezond beschouwd. U kunt het acceptabele bereik van back-end-respons code of back-end-antwoord tekst wijzigen. [Meer informatie](https://docs.microsoft.com/azure/application-gateway/application-gateway-probe-overview#probe-matching)|
    |**HTTP-instellingen**|selectie uit vervolg keuzelijst|De test wordt gekoppeld aan de HTTP-instelling (en) die u hier selecteert, waardoor de status van de back-end-groep die is gekoppeld aan de geselecteerde HTTP-instelling wordt gecontroleerd. Het gebruikt de poort voor de test aanvraag, zoals die wordt gebruikt in de geselecteerde HTTP-instelling. U kunt alleen die HTTP-instellingen kiezen die niet zijn gekoppeld aan een andere aangepaste test. <br>Houd er rekening mee dat alleen deze HTTP-instellingen beschikbaar zijn voor koppelingen die hetzelfde protocol hebben als het protocol dat is gekozen in deze test configuratie en dezelfde status hebben als de *naam van de gekozen host van de back-end-HTTP-instelling* .|
    
    > [!IMPORTANT]
-   > Met de test wordt de status van de back-end alleen gecontroleerd wanneer deze is gekoppeld aan een of meer HTTP-instellingen. Hiermee worden de back-endservers gecontroleerd van de back-endservers die zijn gekoppeld aan de HTTP-instelling (en) waaraan deze test is gekoppeld. De test aanvraag wordt verzonden naar http://(hostnaam):(poort van httpsetting)/urlPath.
+   > Met de test wordt de status van de back-end alleen gecontroleerd wanneer deze is gekoppeld aan een of meer HTTP-instellingen. Hiermee worden de back-endservers gecontroleerd van de back-endservers die zijn gekoppeld aan de HTTP-instelling (en) waaraan deze test is gekoppeld. De test aanvraag wordt verzonden als \<protocol\> :// \<hostName\> : \<port\> / \<urlPath\> .
 
 ### <a name="test-backend-health-with-the-probe"></a>De status van de back-end testen met de test
 
@@ -71,7 +73,7 @@ Nadat u de eigenschappen van de test hebt ingevoerd, kunt u de status van de bac
 2. Als er niet-stateful back-endservers zijn, controleert u de kolom **Details** om de reden voor de slechte status van de resource te begrijpen. Als de bron slecht is gemarkeerd als gevolg van een onjuiste test configuratie, selecteert u de koppeling **Ga terug naar probe** en bewerkt u de test configuratie. Als de bron niet is gemarkeerd vanwege een probleem met de back-end, lost u de problemen met de back-end-bron op en test u vervolgens de back-end opnieuw door de koppeling **Ga terug naar test te** selecteren en **test**te selecteren.
 
    > [!NOTE]
-   > U kunt ervoor kiezen om de test op te slaan, zelfs met een beschadigde back-end-bron, maar dit wordt niet aanbevolen. Dit komt doordat de Application Gateway deze backend-bronnen verwijdert uit de back-end-groep, waarvan wordt vastgesteld dat de test niet in orde is. Als er geen in orde zijnde resources in een back-end-groep zijn, hebt u geen toegang tot uw toepassing en krijgt u een 502-fout.
+   > U kunt ervoor kiezen om de test op te slaan, zelfs met een beschadigde back-end-bron, maar dit wordt niet aanbevolen. Dit komt doordat de Application Gateway geen aanvragen doorstuurt naar de back-end-servers uit de back-end-groep, waarvan wordt vastgesteld dat de test de status niet in orde heeft. Als er geen in orde zijnde resources in een back-end-groep zijn, hebt u geen toegang tot uw toepassing en ontvangt u een HTTP 502-fout.
 
    ![Test resultaat weer geven][6]
 
@@ -99,14 +101,14 @@ Tests worden in een proces in twee stappen geconfigureerd via de portal. De eers
    |**Protocol**|HTTP of HTTPS | Het protocol dat wordt gebruikt door de status test. |
    |**Host**|dat wil zeggen contoso.com|Deze waarde is de naam van de virtuele host (die afwijkt van de naam van de VM-host) die op de toepassings server wordt uitgevoerd. De test wordt verzonden naar (Protocol)://(hostnaam):(poort van httpsetting)/urlPath.  Dit is van toepassing wanneer meerdere locaties op Application Gateway zijn geconfigureerd. Als de Application Gateway is geconfigureerd voor één site, voert u 127.0.0.1 in.|
    |**Kies een hostnaam uit de back-end-HTTP-instellingen**|Ja of nee|Hiermee stelt u de *host* -header in de test in op de hostnaam van de back-end-bron in de back-end-groep die is gekoppeld aan de http-instelling waaraan deze test is gekoppeld. Speciaal vereist in het geval van back-endservers met meerdere tenants, zoals Azure app service. [Meer informatie](https://docs.microsoft.com/azure/application-gateway/configuration-overview#pick-host-name-from-back-end-address)|
-   |**Pad**|/of een ander pad|De rest van de volledige URL voor de aangepaste test. Er begint een geldig pad met '/'. Gebruik voor het standaardpad van http: \/ /contoso.com alleen '/' |
+   |**Pad**|/of een geldig pad|De rest van de volledige URL voor de aangepaste test. Er begint een geldig pad met '/'. Gebruik voor het standaardpad van http: \/ /contoso.com alleen '/' |
    |**Interval (sec.)**|30|Hoe vaak de test wordt uitgevoerd om de status te controleren. Het wordt afgeraden om de lagere dan 30 seconden in te stellen.|
    |**Time-out (SEC)**|30|De hoeveelheid tijd die de test wacht voordat een time-out optreedt. Als er binnen deze time-outperiode geen geldig antwoord wordt ontvangen, wordt de test als mislukt gemarkeerd. Het time-outinterval moet hoog genoeg zijn dat er een http-aanroep kan worden uitgevoerd om ervoor te zorgen dat de status van de back-end beschikbaar is. Houd er rekening mee dat de time-outwaarde niet groter mag zijn dan de interval waarde die is gebruikt in deze test instelling of de waarde van de time-out van de aanvraag in de HTTP-instelling die wordt gekoppeld aan deze test.|
-|**Drempelwaarde voor onjuiste status**|3|Aantal opeenvolgende mislukte pogingen om te worden beschouwd als een slechte status. De drempel waarde kan worden ingesteld op 1 of meer.|
+   |**Drempelwaarde voor beschadigd**|3|Aantal opeenvolgende mislukte pogingen om te worden beschouwd als een slechte status. De drempel waarde kan worden ingesteld op 1 of meer.|
    |**Vergelijkings voorwaarden voor testen gebruiken**|Ja of nee|Standaard wordt een HTTP (S)-antwoord met de status code tussen 200 en 399 als gezond beschouwd. U kunt het acceptabele bereik van back-end-respons code of back-end-antwoord tekst wijzigen. [Meer informatie](https://docs.microsoft.com/azure/application-gateway/application-gateway-probe-overview#probe-matching)|
 
    > [!IMPORTANT]
-   > De hostnaam is niet hetzelfde als de naam van de server. Deze waarde is de naam van de virtuele host die wordt uitgevoerd op de toepassings server. De test wordt verzonden naar http://(hostnaam):(poort van httpsetting)/urlPath
+   > De hostnaam is niet hetzelfde als de naam van de server. Deze waarde is de naam van de virtuele host die wordt uitgevoerd op de toepassings server. De test wordt verzonden naar \<protocol\> :// \<hostName\> :\<port from http settings\>/\<urlPath\>
 
 ### <a name="add-probe-to-the-gateway"></a>Test toevoegen aan de gateway
 

@@ -8,11 +8,12 @@ ms.topic: article
 ms.date: 11/09/2017
 ms.author: msangapu
 ms.custom: seodec18
-ms.openlocfilehash: 682884d11b298a97e27056af3c10802dfd410e4c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: e2c60e851d61a5f33e1b050412b0e91b81e20a16
+ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "75430567"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86169977"
 ---
 # <a name="best-practices-and-troubleshooting-guide-for-node-applications-on-azure-app-service-windows"></a>Aanbevolen procedures en richt lijnen voor probleem oplossing voor knooppunt toepassingen op Azure App Service Windows
 
@@ -169,7 +170,7 @@ Ga naar de console voor fout opsporing`https://yoursite.scm.azurewebsites.net/De
 
 Ga naar de map van uw site/wwwroot. U ziet een opdracht prompt zoals in het volgende voor beeld wordt weer gegeven:
 
-![](./media/app-service-web-nodejs-best-practices-and-troubleshoot-guide/scm_install_v8.png)
+![Scherm opname van uw site/wwwroot-map en opdracht prompt.](./media/app-service-web-nodejs-best-practices-and-troubleshoot-guide/scm_install_v8.png)
 
 Voer de opdracht `npm install v8-profiler` uit.
 
@@ -202,11 +203,11 @@ http.createServer(function (req, res) {
 
 Met de voor gaande code worden de WriteConsoleLog-functie en vervolgens de profiel uitvoer naar het bestand profile. cpuprofile onder uw site wwwroot geschreven. Een aanvraag verzenden naar uw toepassing. U ziet een ' profile. cpuprofile-bestand dat is gemaakt onder uw site wwwroot.
 
-![](./media/app-service-web-nodejs-best-practices-and-troubleshoot-guide/scm_profile.cpuprofile.png)
+![Scherm opname van het bestand profile. cpuprofile.](./media/app-service-web-nodejs-best-practices-and-troubleshoot-guide/scm_profile.cpuprofile.png)
 
 Down load dit bestand en open het met Chrome F12-Hulpprogram Ma's. Druk op F12 op Chrome en kies vervolgens het tabblad **profielen** . Klik op de knop **laden** . Selecteer uw profiel. cpuprofile-bestand dat u hebt gedownload. Klik op het profiel dat u zojuist hebt geladen.
 
-![](./media/app-service-web-nodejs-best-practices-and-troubleshoot-guide/chrome_tools_view.png)
+![Scherm opname van het cpuprofile-bestand van het profiel dat u hebt geladen.](./media/app-service-web-nodejs-best-practices-and-troubleshoot-guide/chrome_tools_view.png)
 
 U kunt zien dat 95% van de tijd is verbruikt door de functie WriteConsoleLog. In de uitvoer ziet u ook de exacte regel nummers en bron bestanden die het probleem hebben veroorzaakt.
 

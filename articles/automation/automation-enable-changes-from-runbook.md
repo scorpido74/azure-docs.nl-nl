@@ -5,11 +5,12 @@ services: automation
 ms.topic: conceptual
 ms.date: 05/10/2018
 ms.custom: mvc
-ms.openlocfilehash: 2728964d5bbf83b42251068ffbdea223ff6bd85e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 92149289c6c422179ddb3562274020acf779f10b
+ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84171086"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86186279"
 ---
 # <a name="enable-change-tracking-and-inventory-from-a-runbook"></a>Wijzigingen bijhouden en inventaris inschakelen vanuit een runbook
 
@@ -21,7 +22,7 @@ In dit artikel wordt beschreven hoe u een runbook kunt gebruiken om de functie v
 ## <a name="prerequisites"></a>Vereisten
 
 * Azure-abonnement. Als u nog geen abonnement hebt, kunt u [uw voordelen als MSDN-abonnee activeren](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/) of u aanmelden voor een [gratis account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
-* [Automation-account](automation-offering-get-started.md) voor het beheren van computers.
+* [Automation-account](./index.yml) voor het beheren van computers.
 * Een [virtuele machine](../virtual-machines/windows/quick-create-portal.md).
 
 ## <a name="enable-change-tracking-and-inventory"></a>Wijzigingen bijhouden en Inventaris inschakelen 
@@ -50,7 +51,7 @@ Als Wijzigingen bijhouden en inventarisatie is ingeschakeld, kunt u een Azure VM
 
 ## <a name="install-and-update-modules"></a>Modules installeren en bijwerken
 
-Het is vereist om bij te werken naar de meest recente Azure-modules en de module [AZ. OperationalInsights](https://docs.microsoft.com/powershell/module/az.operationalinsights/?view=azps-3.7.0) te importeren om wijzigingen bijhouden en inventaris voor uw virtuele machine correct in te scha kelen.
+Het is vereist om bij te werken naar de meest recente Azure-modules en de module [AZ. OperationalInsights](/powershell/module/az.operationalinsights/?view=azps-3.7.0) te importeren om wijzigingen bijhouden en inventaris voor uw virtuele machine correct in te scha kelen.
 
 1. Selecteer **Modules** onder **Gedeelde resources** in uw Automation-account. 
 2. Selecteer **Azure-modules bijwerken** om de Azure-modules bij te werken naar de nieuwste versie. 

@@ -5,11 +5,12 @@ services: automation
 ms.subservice: process-automation
 ms.date: 03/16/2018
 ms.topic: conceptual
-ms.openlocfilehash: fa1be31f90bd14c1f22d9e389132487094ecb4ff
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: c5d611ddffedc2f69cfc4f2b5600a158b0be9680
+ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83849753"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86186330"
 ---
 # <a name="author-graphical-runbooks-in-azure-automation"></a>Grafische runbooks ontwerpen in Azure Automation
 
@@ -33,7 +34,7 @@ Met het besturings element canvas kunt u uw runbook ontwerpen. U kunt activiteit
 
 Met het besturings element bibliotheek kunt u [activiteiten](#use-activities) selecteren om aan uw runbook toe te voegen. U voegt deze toe aan het canvas, waar u ze kunt verbinden met andere activiteiten. Het besturings element bibliotheek bevat de secties die in de volgende tabel zijn gedefinieerd.
 
-| Sectie | Description |
+| Sectie | Beschrijving |
 |:--- |:--- |
 | Cmdlets |Alle cmdlets die kunnen worden gebruikt in uw runbook. Cmdlets zijn ingedeeld op module. Alle modules die u hebt geïnstalleerd in uw Automation-account zijn beschikbaar. |
 | Runbooks |De runbooks in uw Automation-account. U kunt deze runbooks toevoegen aan het canvas dat moet worden gebruikt als onderliggende runbooks. Alleen runbooks van hetzelfde kern type worden weer gegeven als het runbook dat wordt bewerkt. Voor grafische runbooks worden alleen op Power shell gebaseerde runbooks weer gegeven. Voor grafische runbooks in Power shell-werk stromen worden alleen runbooks op basis van Power shell-werk stromen weer gegeven. |
@@ -60,7 +61,7 @@ Selecteer een activiteit op het canvas om de eigenschappen en para meters te con
 
 Een parameterset definieert de verplichte en optionele para meters waarmee waarden voor een bepaalde cmdlet worden geaccepteerd. Alle cmdlets hebben ten minste één parameterset en sommige hebben verschillende sets. Als een cmdlet meerdere parameter sets heeft, moet u het abonnement selecteren dat u wilt gebruiken voordat u para meters kunt configureren. U kunt de parameterset die door een activiteit wordt gebruikt, wijzigen door **para meters** in te stellen en een andere set te kiezen. In dit geval gaan alle parameter waarden die u al hebt geconfigureerd verloren.
 
-In het volgende voor beeld heeft de cmdlet [Get-AzVM](https://docs.microsoft.com/powershell/module/az.compute/get-azvm?view=azps-3.5.0) drie parameter sets. In het voor beeld wordt één set met de naam **ListVirtualMachineInResourceGroupParamSet**, met één optionele para meter, gebruikt voor het retour neren van alle virtuele machines in een resource groep. In het voor beeld wordt ook de para meter **GetVirtualMachineInResourceGroupParamSet** gebruikt voor het opgeven van de virtuele machine die moet worden geretourneerd. Deze set heeft twee verplichte para meters en een optionele para meter.
+In het volgende voor beeld heeft de cmdlet [Get-AzVM](/powershell/module/az.compute/get-azvm?view=azps-3.5.0) drie parameter sets. In het voor beeld wordt één set met de naam **ListVirtualMachineInResourceGroupParamSet**, met één optionele para meter, gebruikt voor het retour neren van alle virtuele machines in een resource groep. In het voor beeld wordt ook de para meter **GetVirtualMachineInResourceGroupParamSet** gebruikt voor het opgeven van de virtuele machine die moet worden geretourneerd. Deze set heeft twee verplichte para meters en een optionele para meter.
 
 ![Parameterset](media/automation-graphical-authoring-intro/get-azvm-parameter-sets.png)
 
@@ -68,7 +69,7 @@ In het volgende voor beeld heeft de cmdlet [Get-AzVM](https://docs.microsoft.com
 
 Wanneer u een waarde voor een para meter opgeeft, selecteert u een gegevens bron om te bepalen hoe de waarde is opgegeven. De gegevens bronnen die beschikbaar zijn voor een bepaalde para meter, zijn afhankelijk van de geldige waarden voor die para meter. Zo is null bijvoorbeeld geen beschik bare optie voor een para meter die geen Null-waarden toestaat.
 
-| Gegevensbron | Description |
+| Gegevensbron | Beschrijving |
 |:--- |:--- |
 | Constante waarde |Typ een waarde voor de para meter. Deze gegevens bron is alleen beschikbaar voor de volgende gegevens typen: Int32, Int64, String, Boolean, DateTime, Switch. |
 | Uitvoer van activiteit |Gebruik uitvoer van een activiteit die voorafgaat aan de huidige activiteit in de werk stroom. Alle geldige activiteiten worden weer gegeven. Gebruik voor de parameter waarde alleen de activiteit die de uitvoer produceert. Als met de activiteit een object met meerdere eigenschappen wordt uitgevoerd, kunt u de naam van een specifieke eigenschap typen nadat u de activiteit hebt geselecteerd. |
@@ -150,7 +151,7 @@ U kunt een koppeling tussen twee activiteiten maken door de bron activiteit te s
 
 Selecteer de koppeling om de eigenschappen ervan te configureren in de Blade configuratie. Eigenschappen bevatten het koppelings type, dat wordt beschreven in de volgende tabel.
 
-| Koppelings type | Description |
+| Koppelings type | Beschrijving |
 |:--- |:--- |
 | Pijplijn |De doel activiteit wordt één keer uitgevoerd voor elke object uitvoer van de bron activiteit. De doel activiteit wordt niet uitgevoerd als de bron activiteit resulteert in geen uitvoer. Uitvoer van de bron activiteit is beschikbaar als een object. |
 | Reeks |De doel activiteit wordt slechts eenmaal uitgevoerd wanneer de uitvoer van de bron activiteit wordt ontvangen. Uitvoer van de bron activiteit is beschikbaar als een matrix met objecten. |
@@ -256,18 +257,18 @@ Elke invoer parameter wordt gedefinieerd door de eigenschappen in de volgende ta
 | Eigenschap | Beschrijving |
 |:--- |:--- |
 | Naam | Vereist. De naam van de para meter. De naam moet uniek zijn binnen het runbook. De naam moet beginnen met een letter en mag alleen letters, cijfers en onderstrepings tekens bevatten. De naam mag geen spatie bevatten. |
-| Description |Optioneel. Beschrijving van het doel van de invoer parameter. |
+| Beschrijving |Optioneel. Beschrijving van het doel van de invoer parameter. |
 | Type | Optioneel. Er wordt een gegevens type verwacht voor de parameter waarde. De Azure Portal biedt een geschikt besturings element voor het gegevens type voor elke para meter bij het vragen om invoer. Ondersteunde parameter typen zijn String, Int32, Int64, Decimal, Boolean, DateTime en object. Als er geen gegevens type is geselecteerd, wordt standaard de teken reeks gebruikt.|
 | Verplicht | Optioneel. Instelling die aangeeft of er een waarde moet worden opgegeven voor de para meter. Als u kiest `yes` , moet u een waarde opgeven wanneer het runbook wordt gestart. Als u kiest `no` , is een waarde niet vereist wanneer het runbook wordt gestart en kan een standaard waarde worden gebruikt. Het runbook kan niet worden gestart als u geen waarde opgeeft voor elke verplichte para meter waarvoor geen standaard waarde is gedefinieerd. |
 | Standaardwaarde | Optioneel. De waarde die wordt gebruikt voor een para meter als deze niet wordt door gegeven wanneer het runbook wordt gestart. Kies om een standaard waarde in te stellen `Custom` . Selecteer deze optie `None` Als u geen standaard waarde wilt opgeven. |
 
 ## <a name="handle-runbook-output"></a>Runbook-uitvoer verwerken
 
-Met grafische ontwerpen worden gegevens opgeslagen die zijn gemaakt door een activiteit die geen uitgaande koppeling heeft naar de [uitvoer van het runbook](https://docs.microsoft.com/azure/automation/automation-runbook-output-and-messages). De uitvoer wordt opgeslagen met de runbook-taak en is beschikbaar voor een bovenliggend runbook wanneer het runbook als onderliggend wordt gebruikt.
+Met grafische ontwerpen worden gegevens opgeslagen die zijn gemaakt door een activiteit die geen uitgaande koppeling heeft naar de [uitvoer van het runbook](./automation-runbook-output-and-messages.md). De uitvoer wordt opgeslagen met de runbook-taak en is beschikbaar voor een bovenliggend runbook wanneer het runbook als onderliggend wordt gebruikt.
 
 ## <a name="work-with-powershell-expressions"></a>Werken met Power shell-expressies
 
-Een van de voor delen van het ontwerpen van afbeeldingen is dat u een runbook met minimale kennis van Power shell kunt bouwen. Op dit moment moet u echter wel een bit van Power shell kennen voor het invullen van bepaalde [parameter waarden](#use-activities) en voor het instellen van [koppelings voorwaarden](#use-links-for-workflow). In deze sectie vindt u een korte inleiding tot Power shell-expressies. Volledige informatie over Power shell is beschikbaar op [Scripting met Windows Power shell](https://docs.microsoft.com/powershell/scripting/overview).
+Een van de voor delen van het ontwerpen van afbeeldingen is dat u een runbook met minimale kennis van Power shell kunt bouwen. Op dit moment moet u echter wel een bit van Power shell kennen voor het invullen van bepaalde [parameter waarden](#use-activities) en voor het instellen van [koppelings voorwaarden](#use-links-for-workflow). In deze sectie vindt u een korte inleiding tot Power shell-expressies. Volledige informatie over Power shell is beschikbaar op [Scripting met Windows Power shell](/powershell/scripting/overview).
 
 ### <a name="use-a-powershell-expression-as-a-data-source"></a>Een Power shell-expressie gebruiken als gegevens bron
 
@@ -322,7 +323,7 @@ Het runbook kan de uitvoer van een activiteit in een complexere expressie gebrui
 
 ### <a name="compare-values"></a>Waarden vergelijken
 
-Gebruik [vergelijkings operatoren](https://technet.microsoft.com/library/hh847759.aspx) om waarden te vergelijken of te bepalen of een waarde overeenkomt met een opgegeven patroon. Een vergelijking retourneert een waarde van waar of onwaar.
+Gebruik [vergelijkings operatoren](/powershell/module/microsoft.powershell.core/about/about_comparison_operators) om waarden te vergelijken of te bepalen of een waarde overeenkomt met een opgegeven patroon. Een vergelijking retourneert een waarde van waar of onwaar.
 
 De volgende voor waarde bepaalt bijvoorbeeld of de virtuele machine van een activiteit met de naam `Get-AzureVM` momenteel is gestopt.
 
@@ -336,7 +337,7 @@ De volgende voor waarde bepaalt of dezelfde virtuele machine zich in een andere 
 $ActivityOutput["Get-AzureVM"].PowerState –ne "Stopped"
 ```
 
-U kunt meerdere voor waarden in uw runbook samen voegen met behulp van een [logische operator](https://technet.microsoft.com/library/hh847789.aspx), zoals `-and` of `-or` . Met de volgende voor waarde wordt bijvoorbeeld gecontroleerd of de virtuele machine in het vorige voor beeld de status beëindigd of gestopt heeft.
+U kunt meerdere voor waarden in uw runbook samen voegen met behulp van een [logische operator](/powershell/module/microsoft.powershell.core/about/about_logical_operators), zoals `-and` of `-or` . Met de volgende voor waarde wordt bijvoorbeeld gecontroleerd of de virtuele machine in het vorige voor beeld de status beëindigd of gestopt heeft.
 
 ```powershell-interactive
 ($ActivityOutput["Get-AzureVM"].PowerState –eq "Stopped") -or ($ActivityOutput["Get-AzureVM"].PowerState –eq "Stopping")
@@ -344,7 +345,7 @@ U kunt meerdere voor waarden in uw runbook samen voegen met behulp van een [logi
 
 ### <a name="use-hashtables"></a>Hashtabellen gebruiken
 
-[Hashtabellen](https://technet.microsoft.com/library/hh847780.aspx) zijn naam/waarde-paren die nuttig zijn voor het retour neren van een set waarden. U kunt ook een hashtabel als een woorden lijst weer geven. Eigenschappen voor bepaalde activiteiten verwachten een hashtabel in plaats van een eenvoudige waarde.
+[Hashtabellen](/powershell/module/microsoft.powershell.core/about/about_hash_tables) zijn naam/waarde-paren die nuttig zijn voor het retour neren van een set waarden. U kunt ook een hashtabel als een woorden lijst weer geven. Eigenschappen voor bepaalde activiteiten verwachten een hashtabel in plaats van een eenvoudige waarde.
 
 Maak een hashtabel met de volgende syntaxis. Het kan een wille keurig aantal vermeldingen bevatten, maar deze worden gedefinieerd door een naam en een waarde.
 
@@ -372,7 +373,7 @@ In het volgende voor beeld wordt de uitvoer van een activiteit aangeroepen `Get 
 
 ## <a name="authenticate-to-azure-resources"></a>Verifiëren bij Azure-resources
 
-Runbooks in Azure Automation die Azure-resources beheren, moeten worden geverifieerd voor Azure. Het [uitvoeren als-account](automation-create-runas-account.md), ook wel een Service-Principal genoemd, is het standaard mechanisme dat een Automation-runbook gebruikt om toegang te krijgen tot Azure Resource Manager resources in uw abonnement. U kunt deze functionaliteit toevoegen aan een grafisch runbook door het verbindings element toe te voegen `AzureRunAsConnection` , dat gebruikmaakt van de cmdlet [Get-AutomationConnection](https://technet.microsoft.com/library/dn919922%28v=sc.16%29.aspx) van Power shell, op het canvas. U kunt ook de cmdlet [Connect-AzAccount](/powershell/module/az.accounts/connect-azaccount) toevoegen. Dit scenario wordt geïllustreerd in het volgende voor beeld.
+Runbooks in Azure Automation die Azure-resources beheren, moeten worden geverifieerd voor Azure. Het [uitvoeren als-account](./manage-runas-account.md), ook wel een Service-Principal genoemd, is het standaard mechanisme dat een Automation-runbook gebruikt om toegang te krijgen tot Azure Resource Manager resources in uw abonnement. U kunt deze functionaliteit toevoegen aan een grafisch runbook door het verbindings element toe te voegen `AzureRunAsConnection` , dat gebruikmaakt van de cmdlet [Get-AutomationConnection](/system-center/sma/manage-global-assets) van Power shell, op het canvas. U kunt ook de cmdlet [Connect-AzAccount](/powershell/module/az.accounts/connect-azaccount) toevoegen. Dit scenario wordt geïllustreerd in het volgende voor beeld.
 
 ![Run as-verificatie activiteiten](media/automation-graphical-authoring-intro/authenticate-run-as-account.png)
 
@@ -389,7 +390,7 @@ De volgende activiteit, `Connect-AzAccount` , voegt het geverifieerde run as-acc
 
 Voor de parameter velden **APPLICATIONID**, **CERTIFICATETHUMBPRINT**en **TENANTID**geeft u de naam van de eigenschap voor het pad naar het veld op, omdat de activiteit een object met meerdere eigenschappen uitvoert. Anders mislukt de verificatie wanneer het runbook wordt uitgevoerd. Dit is wat u Mini maal nodig hebt om uw runbook te verifiëren met het run as-account.
 
-Sommige abonnees maken een Automation-account met behulp van een [Azure AD-gebruikers account](automation-create-aduser-account.md) voor het beheren van klassieke Azure-implementatie of voor Azure Resource Manager resources. Als u achterwaartse compatibiliteit voor deze abonnees wilt behouden, is het verificatie mechanisme dat in uw runbook moet worden gebruikt de `Add-AzureAccount` cmdlet met een [referentie-element](automation-credentials.md). De Asset vertegenwoordigt een Active Directory gebruiker met toegang tot het Azure-account.
+Sommige abonnees maken een Automation-account met behulp van een [Azure AD-gebruikers account](./shared-resources/credentials.md) voor het beheren van klassieke Azure-implementatie of voor Azure Resource Manager resources. Als u achterwaartse compatibiliteit voor deze abonnees wilt behouden, is het verificatie mechanisme dat in uw runbook moet worden gebruikt de `Add-AzureAccount` cmdlet met een [referentie-element](./shared-resources/credentials.md). De Asset vertegenwoordigt een Active Directory gebruiker met toegang tot het Azure-account.
 
 U kunt deze functionaliteit voor uw grafische runbook inschakelen door een referentie-element toe te voegen aan het canvas, gevolgd door een `Add-AzureAccount` activiteit die gebruikmaakt van het referentie-element voor de invoer. Zie het volgende voorbeeld
 
@@ -434,4 +435,4 @@ U hebt de mogelijkheid om terug te keren naar de gepubliceerde versie van een ru
 * Zie [zelf studie: een grafisch Runbook maken](learn/automation-tutorial-runbook-graphical.md)om aan de slag te gaan met grafische runbooks.
 * Zie [Azure Automation runbook-typen](automation-runbook-types.md)voor meer informatie over de typen runbook en hun voor delen en beperkingen.
 * Zie [uitvoeren als-account](automation-security-overview.md#run-as-account)voor informatie over het verifiëren met behulp van het uitvoeren als-account voor Automation.
-* Zie [Az.Automation](https://docs.microsoft.com/powershell/module/az.automation/?view=azps-3.7.0#automation) voor een naslagdocumentatie voor een PowerShell-cmdlet.
+* Zie [Az.Automation](/powershell/module/az.automation/?view=azps-3.7.0#automation) voor een naslagdocumentatie voor een PowerShell-cmdlet.

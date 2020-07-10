@@ -595,7 +595,7 @@ Met functies v2 worden automatisch afhankelijkheden verzameld voor HTTP-aanvrage
 
 U kunt aangepaste code schrijven om de afhankelijkheden weer te geven. Zie de voorbeeld code in het [gedeelte aangepaste telemetrie van C#](#log-custom-telemetry-in-c-functions)voor voor beelden. De voorbeeld code resulteert in een *toepassings toewijzing* in Application Insights die eruitziet als de volgende afbeelding:
 
-![Overzicht van de toepassing](./media/functions-monitoring/app-map.png)
+![Toepassingsoverzicht](./media/functions-monitoring/app-map.png)
 
 ## <a name="enable-application-insights-integration"></a>Application Insights-integratie inschakelen
 

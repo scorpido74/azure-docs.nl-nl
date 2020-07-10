@@ -15,11 +15,12 @@ ms.topic: article
 ms.date: 10/17/2016
 ms.author: akjosh
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 5f22fbd77069488e7aaf490f93f42cde747444a8
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 4143e049f0a89d1218d9442eaebc1c5ebaf4cc77
+ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "74073858"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86186823"
 ---
 # <a name="understanding-and-using-the-azure-linux-agent"></a>Meer informatie over het gebruik van de Azure Linux-agent
 
@@ -133,36 +134,36 @@ Raadpleeg de documentatie in de [Azure Linux-agent opslag plaats op github](http
 ## <a name="configuration"></a>Configuratie
 Een configuratie bestand (/etc/waagent.conf) regelt de acties van waagent. Hieronder ziet u een voor beeld van een configuratie bestand:
 
-    ```
-    Provisioning.Enabled=y
-    Provisioning.DeleteRootPassword=n
-    Provisioning.RegenerateSshHostKeyPair=y
-    Provisioning.SshHostKeyPairType=rsa
-    Provisioning.MonitorHostName=y
-    Provisioning.DecodeCustomData=n
-    Provisioning.ExecuteCustomData=n
-    Provisioning.AllowResetSysUser=n
-    Provisioning.PasswordCryptId=6
-    Provisioning.PasswordCryptSaltLength=10
-    ResourceDisk.Format=y
-    ResourceDisk.Filesystem=ext4
-    ResourceDisk.MountPoint=/mnt/resource
-    ResourceDisk.MountOptions=None
-    ResourceDisk.EnableSwap=n
-    ResourceDisk.SwapSizeMB=0
-    LBProbeResponder=y
-    Logs.Verbose=n
-    OS.RootDeviceScsiTimeout=300
-    OS.OpensslPath=None
-    HttpProxy.Host=None
-    HttpProxy.Port=None
-    AutoUpdate.Enabled=y
-    ```
+```config
+Provisioning.Enabled=y
+Provisioning.DeleteRootPassword=n
+Provisioning.RegenerateSshHostKeyPair=y
+Provisioning.SshHostKeyPairType=rsa
+Provisioning.MonitorHostName=y
+Provisioning.DecodeCustomData=n
+Provisioning.ExecuteCustomData=n
+Provisioning.AllowResetSysUser=n
+Provisioning.PasswordCryptId=6
+Provisioning.PasswordCryptSaltLength=10
+ResourceDisk.Format=y
+ResourceDisk.Filesystem=ext4
+ResourceDisk.MountPoint=/mnt/resource
+ResourceDisk.MountOptions=None
+ResourceDisk.EnableSwap=n
+ResourceDisk.SwapSizeMB=0
+LBProbeResponder=y
+Logs.Verbose=n
+OS.RootDeviceScsiTimeout=300
+OS.OpensslPath=None
+HttpProxy.Host=None
+HttpProxy.Port=None
+AutoUpdate.Enabled=y
+```
 
 De volgende verschillende configuratie opties worden beschreven. Configuratie opties zijn van drie typen. Booleaans, teken reeks of geheel getal. De opties voor de Booleaanse configuratie kunnen worden opgegeven als "y" of "n". Het speciale sleutel woord ' geen ' kan worden gebruikt voor bepaalde configuratie vermeldingen voor teken reeksen als de volgende details:
 
 **Inrichting. ingeschakeld:**  
-```
+```txt
 Type: Boolean  
 Default: y
 ```
@@ -174,14 +175,14 @@ Hiermee kan de gebruiker de inrichtings functionaliteit in de agent in-of uitsch
 > 
 
 **Provisioning. DeleteRootPassword:**  
-```
+```txt
 Type: Boolean  
 Default: n
 ```
 Als deze instelling is ingesteld, wordt het hoofd wachtwoord in het/etc/shadow-bestand gewist tijdens het inrichtings proces.
 
 **Provisioning. RegenerateSshHostKeyPair:**  
-```
+```txt
 Type: Boolean  
 Default: y
 ```
@@ -190,42 +191,42 @@ Als deze instelling is ingesteld, worden alle sleutel paren van SSH-hosts (ECDSA
 Het versleutelings type voor het nieuwe sleutel paar kan worden geconfigureerd door de inrichtings SshHostKeyPairType-vermelding. Bij sommige distributies worden SSH-sleutel paren opnieuw gemaakt voor ontbrekende versleutelings typen wanneer de SSH-daemon opnieuw wordt gestart (bijvoorbeeld bij het opnieuw opstarten).
 
 **Provisioning. SshHostKeyPairType:**  
-```
+```txt
 Type: String  
 Default: rsa
 ```
 Dit kan worden ingesteld op een type versleutelings algoritme dat wordt ondersteund door de SSH-daemon op de virtuele machine. De doorgaans ondersteunde waarden zijn ' RSA ', ' DSA ' en ' ECDSA '. ' putty.exe ' op Windows biedt geen ondersteuning voor ' ECDSA '. Als u van plan bent om putty.exe in Windows te gebruiken om verbinding te maken met een Linux-implementatie, gebruikt u ' RSA ' of ' DSA '.
 
 **Provisioning. MonitorHostName:**  
-```
+```txt
 Type: Boolean  
 Default: y
 ```
 Als deze optie is ingesteld, controleert waagent de virtuele Linux-machine op hostnamen (zoals geretourneerd door de opdracht ' hostname ') en werkt de netwerk configuratie in de installatie kopie automatisch bij om de wijziging door te voeren. Als u de naam wijziging naar de DNS-servers wilt pushen, wordt het netwerk opnieuw gestart in de virtuele machine. Dit resulteert in een kort verlies van Internet verbinding.
 
 **Provisioning. DecodeCustomData**  
-```
+```txt
 Type: Boolean  
 Default: n
 ```
 Indien ingesteld, waagent decodeert CustomData uit base64.
 
 **Provisioning.ExecuteCustomData**  
-```
+```txt
 Type: Boolean  
 Default: n
 ```
 Als deze instelling is ingesteld, wordt CustomData na het inrichten door waagent uitgevoerd.
 
 **Provisioning. AllowResetSysUser**
-```
+```txt
 Type: Boolean
 Default: n
 ```
 Met deze optie kan het wacht woord voor de sys-gebruiker opnieuw worden ingesteld. de standaard waarde is uitgeschakeld.
 
 **Provisioning. PasswordCryptId**  
-```
+```txt
 Type: String  
 Default: 6
 ```
@@ -236,91 +237,91 @@ Algoritme dat door crypt wordt gebruikt bij het genereren van de wachtwoord-hash
  6-SHA-512  
 
 **Provisioning. PasswordCryptSaltLength**  
-```
+```txt
 Type: String  
 Default: 10
 ```
 Lengte van wille keurig zout dat wordt gebruikt bij het genereren van een wacht woord-hash.
 
 **ResourceDisk. Format:**  
-```
+```txt
 Type: Boolean  
 Default: y
 ```
 Als deze is ingesteld, wordt de bron schijf die door het platform wordt opgegeven, geformatteerd en gekoppeld door waagent als het bestandssysteem type dat door de gebruiker in ResourceDisk. File System is aangevraagd, een andere is dan NTFS. Er wordt één partitie van het type Linux (83) beschikbaar gemaakt op de schijf. Deze partitie is niet geformatteerd als deze kan worden gekoppeld.
 
 **ResourceDisk. bestands systeem:**  
-```
+```txt
 Type: String  
 Default: ext4
 ```
 Hiermee geeft u het bestandssysteem type voor de bron schijf op. Ondersteunde waarden variëren per Linux-distributie. Als de teken reeks X is, wordt mkfs. X moet aanwezig zijn op de Linux-installatie kopie. SLES 11-afbeeldingen moeten normaal gesp roken gebruikmaken van ' ext3 '. FreeBSD-installatie kopieën moeten hier ' UFS2 ' gebruiken.
 
 **ResourceDisk. Koppel punt:**  
-```
+```txt
 Type: String  
 Default: /mnt/resource 
 ```
 Hiermee geeft u het pad op waar de bron schijf is gekoppeld. De bron schijf is een *tijdelijke* schijf en kan worden leeg gemaakt wanneer de inrichting van de virtuele machine ongedaan is.
 
 **ResourceDisk.MountOptions**  
-```
+```txt
 Type: String  
 Default: None
 ```
 Hiermee geeft u de opties voor schijf koppeling op die moeten worden door gegeven aan de opdracht mount-o. Dit is een door komma's gescheiden lijst met waarden, bijvoorbeeld 'nodev,nosuid'. Zie mount (8) voor meer informatie.
 
 **ResourceDisk.EnableSwap:**  
-```
+```txt
 Type: Boolean  
 Default: n
 ```
 Als deze instelling is ingesteld, wordt er een wissel bestand (/swapfile) gemaakt op de bron schijf en toegevoegd aan de wissel ruimte van het systeem.
 
 **ResourceDisk.SwapSizeMB:**  
-```
+```txt
 Type: Integer  
 Default: 0
 ```
 De grootte van het wissel bestand in mega bytes.
 
 **Logboeken. uitgebreid:**  
-```
+```txt
 Type: Boolean  
 Default: n
 ```
 Als deze instelling is ingesteld, wordt de uitgebreidheid van het logboek verbeterd. Waagent meldt zich aan bij/var/log/waagent.log en maakt gebruik van de systeem logrotate-functionaliteit om logboeken te draaien.
 
 **Vermelding. EnableRDMA**  
-```
+```txt
 Type: Boolean  
 Default: n
 ```
 Als deze instelling is ingesteld, probeert de agent een RDMA-kernelstuurprogramma te installeren en vervolgens te laden dat overeenkomt met de versie van de firmware op de onderliggende hardware.
 
 **Vermelding. RootDeviceScsiTimeout:**  
-```
+```txt
 Type: Integer  
 Default: 300
 ```
 Met deze instelling configureert u de SCSI-time-out in seconden op de besturingssysteem schijf en de gegevens stations. Als deze niet is ingesteld, worden de standaard waarden van het systeem gebruikt.
 
 **Vermelding. OpensslPath:**  
-```
+```txt
 Type: String  
 Default: None
 ```
 Deze instelling kan worden gebruikt om een alternatief pad op te geven voor de binaire openssl die moet worden gebruikt voor cryptografische bewerkingen.
 
 **Http proxy. host, http proxy. Port**  
-```
+```txt
 Type: String  
 Default: None
 ```
 Als deze instelling is ingesteld, gebruikt de agent deze proxy server voor toegang tot internet. 
 
 **Auto update. ingeschakeld**
-```
+```txt
 Type: Boolean
 Default: y
 ```

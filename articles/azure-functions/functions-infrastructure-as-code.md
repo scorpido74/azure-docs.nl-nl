@@ -5,12 +5,12 @@ ms.assetid: d20743e3-aab6-442c-a836-9bcea09bfd32
 ms.topic: conceptual
 ms.date: 04/03/2019
 ms.custom: fasttrack-edit
-ms.openlocfilehash: 7155a3fa9481ef5f2da62d85d4a932ad5e8e8ab1
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: b73b8418b202563ca7c4a73181b1b1b404db6ee2
+ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81382529"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86170391"
 ---
 # <a name="automate-resource-deployment-for-your-function-app-in-azure-functions"></a>De implementatie van resources voor uw functie-app in Azure Functions automatiseren
 
@@ -26,12 +26,12 @@ Zie voor voorbeeld sjablonen:
 
 Een Azure Functions-implementatie bestaat meestal uit de volgende bronnen:
 
-| Resource                                                                           | Vereiste | Naslag informatie en eigenschappen                                                         |   |
-|------------------------------------------------------------------------------------|-------------|-----------------------------------------------------------------------------------------|---|
-| Een functie-app                                                                     | Vereist    | [Micro soft. web/sites](/azure/templates/microsoft.web/sites)                             |   |
-| Een [Azure Storage](../storage/index.yml) -account                                   | Vereist    | [Microsoft.Storage/storageAccounts](/azure/templates/microsoft.storage/storageaccounts) |   |
-| Een [Application Insights](../azure-monitor/app/app-insights-overview.md) onderdeel | Optioneel    | [Micro soft. Insights/onderdelen](/azure/templates/microsoft.insights/components)         |   |
-| Een [hosting abonnement](./functions-scale.md)                                             | Optioneel<sup>1</sup>    | [Micro soft. web/server farms](/azure/templates/microsoft.web/serverfarms)                 |   |
+| Resource                                                                           | Vereiste | Naslag informatie en eigenschappen                                                         |
+|------------------------------------------------------------------------------------|-------------|-----------------------------------------------------------------------------------------|
+| Een functie-app                                                                     | Vereist    | [Micro soft. web/sites](/azure/templates/microsoft.web/sites)                             |
+| Een [Azure Storage](../storage/index.yml) -account                                   | Vereist    | [Microsoft.Storage/storageAccounts](/azure/templates/microsoft.storage/storageaccounts) |
+| Een [Application Insights](../azure-monitor/app/app-insights-overview.md) onderdeel | Optioneel    | [Micro soft. Insights/onderdelen](/azure/templates/microsoft.insights/components)         |
+| Een [hosting abonnement](./functions-scale.md)                                             | Optioneel<sup>1</sup>    | [Micro soft. web/server farms](/azure/templates/microsoft.web/serverfarms)                 |
 
 <sup>1</sup> Een hosting plan is alleen vereist wanneer u uw functie-app wilt uitvoeren in een [Premium-abonnement](./functions-premium-plan.md) of op een [app service plan](../app-service/overview-hosting-plans.md).
 
@@ -39,7 +39,7 @@ Een Azure Functions-implementatie bestaat meestal uit de volgende bronnen:
 > Hoewel dit niet vereist is, wordt het ten zeerste aanbevolen om Application Insights voor uw app te configureren.
 
 <a name="storage"></a>
-### <a name="storage-account"></a>Storage-account
+### <a name="storage-account"></a>Opslagaccount
 
 Een Azure-opslag account is vereist voor een functie-app. U hebt een algemeen doel account nodig dat blobs, tabellen, wacht rijen en bestanden ondersteunt. Zie [Azure functions vereisten voor opslag accounts](storage-considerations.md#storage-account-requirements)voor meer informatie.
 
@@ -114,7 +114,7 @@ De definitie van het hosting plan varieert, en kan een van de volgende zijn:
 * [Premium-abonnement](#premium)
 * [App Service-plan](#app-service-plan)
 
-### <a name="function-app"></a>Function App
+### <a name="function-app"></a>Functie-app
 
 De functie-app resource wordt gedefinieerd met behulp van een resource van het type **micro soft. web/sites** en de soort **functionapp**:
 
@@ -649,7 +649,7 @@ U kunt een van de volgende manieren gebruiken om uw sjabloon te implementeren:
 
 * [PowerShell](../azure-resource-manager/templates/deploy-powershell.md)
 * [Azure-CLI](../azure-resource-manager/templates/deploy-cli.md)
-* [Azure-portal](../azure-resource-manager/templates/deploy-portal.md)
+* [Azure Portal](../azure-resource-manager/templates/deploy-portal.md)
 * [REST API](../azure-resource-manager/templates/deploy-rest.md)
 
 ### <a name="deploy-to-azure-button"></a>De knop Implementeren in Azure

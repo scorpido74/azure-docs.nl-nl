@@ -13,11 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/20/2019
 ms.author: juliako
-ms.openlocfilehash: d5b84a9d216457720e9bd4e17b002d6ab9490f9d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: fa7dca62ed51c52b704c199ca04eadb6306be4df
+ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "73888603"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86170782"
 ---
 # <a name="upload-files-into-a-media-services-account-using-rest"></a>Bestanden uploaden naar een Media Services-account met REST  
 > [!div class="op_single_selector"]
@@ -47,7 +48,7 @@ In deze zelf studie leert u hoe u een bestand en een andere bewerking die eraan 
 - Zie ook voor meer informatie de [Azure AD-verificatie gebruiken om toegang te krijgen tot de Media Services-API met het rest](https://docs.microsoft.com/azure/media-services/previous/media-services-rest-connect-with-aad) -artikel.
 - Een **postman** configureren zoals beschreven in [postman configureren voor Media Services rest API-aanroepen](media-rest-apis-with-postman.md).
 
-## <a name="considerations"></a>Overwegingen
+## <a name="considerations"></a>Aandachtspunten
 
 De volgende overwegingen zijn van toepassing wanneer u Media Services REST API gebruikt:
  
@@ -68,7 +69,7 @@ Zie voor meer informatie over het instellen van Postman voor deze zelf studie [p
 
     Als u waarden voor de eerste vijf variabelen wilt ophalen, raadpleegt u [de Azure Media Services-API openen met Azure AD-verificatie](media-services-use-aad-auth-to-access-ams-api.md). 
 
-    ![Bestand uploaden](./media/media-services-rest-upload-files/postman-import-env.png)
+    ![Een bestand uploaden](./media/media-services-rest-upload-files/postman-import-env.png)
 2. Geef de waarde op voor de omgevings variabele **MediaFileName** .
 
     Geef de bestands naam op van de media die u wilt uploaden. In dit voor beeld gaan we de BigBuckBunny.mp4 uploaden. 
@@ -90,7 +91,7 @@ Zie voor meer informatie over het instellen van Postman voor deze zelf studie [p
 
     Het URL-gedeelte wordt gevuld met de omgevings variabele **AzureADSTSEndpoint** (eerder in de zelf studie stelt u de waarden van omgevings variabelen in die ondersteuning bieden voor de verzameling).
 
-    ![Bestand uploaden](./media/media-services-rest-upload-files/postment-get-token.png)
+    ![Een bestand uploaden](./media/media-services-rest-upload-files/postment-get-token.png)
 
 5. Druk op **Verzenden**.
 
@@ -112,7 +113,7 @@ Voordat u bestanden naar Blob Storage uploadt, stelt u de rechten voor het toega
 1. Selecteer **AccessPolicy**  ->  **maken om AccessPolicy te uploaden**.
 2. Druk op **Verzenden**.
 
-    ![Bestand uploaden](./media/media-services-rest-upload-files/postman-access-policy.png)
+    ![Een bestand uploaden](./media/media-services-rest-upload-files/postman-access-policy.png)
 
     Het script ' test ' haalt de AccessPolicy-id op en stelt de juiste omgevings variabele in.
 
@@ -133,7 +134,7 @@ In dit voor beeld maken we een niet-versleutelde Asset.
 1. Selecteer **activa**  ->  **maken activa**.
 2. Druk op **Verzenden**.
 
-    ![Bestand uploaden](./media/media-services-rest-upload-files/postman-create-asset.png)
+    ![Een bestand uploaden](./media/media-services-rest-upload-files/postman-create-asset.png)
 
     Het script test haalt de Asset-id op en stelt de juiste omgevings variabele in.
 
@@ -149,9 +150,9 @@ Als u de daad werkelijke upload-URL wilt ontvangen, moet u een SAS-Locator maken
 
 Een SAS-URL heeft de volgende indeling:
 
-    {https://myaccount.blob.core.windows.net}/{asset name}/{video file name}?{SAS signature}
+`{https://myaccount.blob.core.windows.net}/{asset name}/{video file name}?{SAS signature}`
 
-### <a name="considerations"></a>Overwegingen
+### <a name="considerations"></a>Aandachtspunten
 
 Hierbij geldt het volgende:
 
@@ -166,13 +167,13 @@ Hierbij geldt het volgende:
 
     Met het script ' test ' wordt de ' upload-URL ' gemaakt op basis van de media bestands naam die u hebt opgegeven en de SAS-locatorgegevens en wordt de juiste omgevings variabele ingesteld.
 
-    ![Bestand uploaden](./media/media-services-rest-upload-files/postman-create-sas-locator.png)
+    ![Een bestand uploaden](./media/media-services-rest-upload-files/postman-create-sas-locator.png)
 
 ## <a name="upload-a-file-to-blob-storage-using-the-upload-url"></a>Een bestand uploaden naar Blob Storage met behulp van de upload-URL
 
 ### <a name="overview"></a>Overzicht
 
-Nu u de upload-URL hebt, moet u code schrijven met behulp van de Azure Blob Api's om uw bestand te uploaden naar de SAS-container. Raadpleeg voor meer informatie de volgende artikelen:
+Nu u de upload-URL hebt, moet u code schrijven met behulp van de Azure Blob Api's om uw bestand te uploaden naar de SAS-container. Raadpleeg de volgende artikelen voor meer informatie:
 
 - [De Azure Storage REST API gebruiken](https://docs.microsoft.com/azure/storage/common/storage-rest-api-auth?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)
 - [BLOB plaatsen](https://docs.microsoft.com/rest/api/storageservices/put-blob)
@@ -193,7 +194,7 @@ Een nieuwe aanvraag maken en instellen:
 4. Kies het bestand met de naam die u hebt opgegeven in de omgevings variabele **MediaFileName** .
 5. Druk op **Verzenden**.
 
-    ![Bestand uploaden](./media/media-services-rest-upload-files/postman-upload-file.png)
+    ![Een bestand uploaden](./media/media-services-rest-upload-files/postman-upload-file.png)
 
 ##  <a name="create-a-metadata-in-the-asset"></a>Een meta gegevens in de Asset maken
 
@@ -202,7 +203,7 @@ Zodra het bestand is geüpload, moet u een meta gegevens maken in de Asset voor 
 1. Selecteer **AssetFiles**  ->  **CreateFileInfos**.
 2. Druk op **Verzenden**.
 
-    ![Bestand uploaden](./media/media-services-rest-upload-files/postman-create-file-info.png)
+    ![Een bestand uploaden](./media/media-services-rest-upload-files/postman-create-file-info.png)
 
 Het bestand moet worden geüpload en de meta gegevens zijn ingesteld.
 
@@ -212,15 +213,17 @@ Als u wilt controleren of het bestand is geüpload, wilt u mogelijk een query ui
 
 Met de volgende **Get** -bewerking worden bijvoorbeeld bestands gegevens voor uw asset-bestand (in of geval het BigBuckBunny.mp4-bestand) geplaatst. De query gebruikt de [omgevings variabelen](postman-environment.md) die u eerder hebt ingesteld.
 
-    {{RESTAPIEndpoint}}/Assets('{{LastAssetId}}')/Files
+`{{RESTAPIEndpoint}}/Assets('{{LastAssetId}}')/Files`
 
 Het antwoord bevat een grootte, naam en andere informatie.
 
-    "Id": "nb:cid:UUID:69e72ede-2886-4f2a-8d36-80a59da09913",
-    "Name": "BigBuckBunny.mp4",
-    "ContentFileSize": "3186542",
-    "ParentAssetId": "nb:cid:UUID:0b8f3b04-72fb-4f38-8e7b-d7dd78888938",
-            
+```console
+"Id": "nb:cid:UUID:69e72ede-2886-4f2a-8d36-80a59da09913",
+"Name": "BigBuckBunny.mp4",
+"ContentFileSize": "3186542",
+"ParentAssetId": "nb:cid:UUID:0b8f3b04-72fb-4f38-8e7b-d7dd78888938",
+```
+  
 ## <a name="next-steps"></a>Volgende stappen
 
 U kunt nu de geüploade assets coderen. Zie [Assets coderen](media-services-portal-encode.md) voor meer informatie.

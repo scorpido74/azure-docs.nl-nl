@@ -5,11 +5,12 @@ services: automation
 ms.subservice: change-inventory-management
 ms.date: 06/15/2020
 ms.topic: conceptual
-ms.openlocfilehash: 0eebd626013614bb6240fc0e6530a358a2b86d1c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: eab509e389c074232526aa93fcebb72f3bc986c0
+ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84781188"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86185599"
 ---
 # <a name="manage-change-tracking-and-inventory"></a>Wijzigingen bijhouden en inventaris beheren
 
@@ -78,10 +79,10 @@ Gebruik de volgende stappen om bestands tracering op Linux-computers te configur
 
 ## <a name="track-file-contents"></a>Bestands inhoud bijhouden
 
-Met het bijhouden van bestands inhoud kunt u de inhoud van een bestand voor en na een bijgehouden wijziging bekijken. De functie slaat de inhoud van het bestand op in een [opslag account](https://docs.microsoft.com/azure/storage/common/storage-account-overview) nadat elke wijziging is doorgevoerd. Hier volgen enkele regels om de inhoud van het bestand bij te houden:
+Met het bijhouden van bestands inhoud kunt u de inhoud van een bestand voor en na een bijgehouden wijziging bekijken. De functie slaat de inhoud van het bestand op in een [opslag account](../storage/common/storage-account-overview.md) nadat elke wijziging is doorgevoerd. Hier volgen enkele regels om de inhoud van het bestand bij te houden:
 
 * Een standaard opslag account met het Resource Manager-implementatie model is vereist voor het opslaan van bestands inhoud. 
-* Gebruik geen Premium-en klassieke implementatie model opslag accounts. Zie [over Azure Storage-accounts](../storage/common/storage-create-storage-account.md).
+* Gebruik geen Premium-en klassieke implementatie model opslag accounts. Zie [over Azure Storage-accounts](../storage/common/storage-account-create.md).
 * U kunt het opslag account koppelen aan slechts één Automation-account.
 * [Wijzigingen bijhouden en inventaris](change-tracking.md) moeten zijn ingeschakeld in uw Automation-account.
 
@@ -140,7 +141,7 @@ Gebruik de volgende stappen om het bijhouden van register sleutels op Windows-co
 
 U kunt verschillende zoek acties uitvoeren op de Azure Monitor logboeken voor wijzigings records. Open de pagina wijzigingen bijhouden en klik op **log Analytics** om de pagina logboeken te openen. De volgende tabel bevat voor beelden van zoek opdrachten in Logboeken voor wijzigings records.
 
-|Query’s uitvoeren  |Description  |
+|Query  |Beschrijving  |
 |---------|---------|
 |`ConfigurationData`<br>&#124;`where ConfigDataType == "WindowsServices" and SvcStartupType == "Auto"`<br>&#124;`where SvcState == "Stopped"`<br>&#124;`summarize arg_max(TimeGenerated, *) by SoftwareName, Computer`         | Toont de meest recente inventaris records voor micro soft-services die zijn ingesteld op auto, maar die zijn gerapporteerd als gestopt. De resultaten zijn beperkt tot de meest recente record voor de opgegeven software naam en computer.    |
 |`ConfigurationChange`<br>&#124;`where ConfigChangeType == "Software" and ChangeCategory == "Removed"`<br>&#124;`order by TimeGenerated desc`|Geeft wijzigings records weer voor verwijderde software.|
@@ -169,7 +170,7 @@ We gebruiken dit voor beeld om de stappen voor het maken van waarschuwingen voor
 ## <a name="next-steps"></a>Volgende stappen
 
 * Zie [limiet voor wijzigingen bijhouden en inventarisatie bereik](automation-scope-configurations-change-tracking.md)voor meer informatie over Scope configuraties.
-* Als u wilt zoeken naar logboeken die zijn opgeslagen in uw Log Analytics-werk ruimte, raadpleegt u [Zoek opdrachten in Logboeken in azure monitor logboeken](../log-analytics/log-analytics-log-searches.md).
+* Als u wilt zoeken naar logboeken die zijn opgeslagen in uw Log Analytics-werk ruimte, raadpleegt u [Zoek opdrachten in Logboeken in azure monitor logboeken](../azure-monitor/log-query/log-query-overview.md).
 * Als u klaar bent met implementaties, raadpleegt u de [werk ruimte ontkoppelen van het Automation-account voor wijzigingen bijhouden en inventarisatie](automation-unlink-workspace-change-tracking.md).
 * Zie [Vm's verwijderen uit wijzigingen bijhouden en inventaris](automation-remove-vms-from-change-tracking.md)om uw vm's uit wijzigingen bijhouden en inventaris te verwijderen.
 * Zie [problemen met wijzigingen bijhouden-en inventaris problemen oplossen](troubleshoot/change-tracking.md)voor informatie over het oplossen van functie fouten.

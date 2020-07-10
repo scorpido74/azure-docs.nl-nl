@@ -3,12 +3,12 @@ title: AMQP 1,0 in Azure Service Bus en Event Hubs protocol handleiding | Micros
 description: Protocol gids voor expressies en beschrijving van AMQP 1,0 in Azure Service Bus en Event Hubs
 ms.topic: article
 ms.date: 06/23/2020
-ms.openlocfilehash: 17f2f6da88e585d770a0a04825dc817f870089f1
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 79132ef7105de8de2261c35258006af3f0a665a5
+ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85337897"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86186908"
 ---
 # <a name="amqp-10-in-azure-service-bus-and-event-hubs-protocol-guide"></a>AMQP 1,0 in Azure Service Bus en Event Hubs protocol gids
 
@@ -223,9 +223,9 @@ Alle eigenschappen die door de toepassing moeten worden gedefinieerd, moeten wor
 | bericht-id |Een door de toepassing gedefinieerde, vrije-vorm-id voor dit bericht. Wordt gebruikt voor duplicaten detectie. |[MessageId](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage) |
 | user-id |Door de toepassing gedefinieerde gebruikers-id die niet wordt geïnterpreteerd door Service Bus. |Niet toegankelijk via de Service Bus-API. |
 | tot |De door de toepassing gedefinieerde doel-id, die niet wordt geïnterpreteerd door Service Bus. |[Aan](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage) |
-| Onderwerp |Door de toepassing gedefinieerde doel-id voor bericht, niet geïnterpreteerd door Service Bus. |[Label](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage) |
+| Onderwerp |Door de toepassing gedefinieerde doel-id voor bericht, niet geïnterpreteerd door Service Bus. |[Adres](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage) |
 | beantwoorden |Een door de toepassing gedefinieerde antwoord-Path-Indicator die niet wordt geïnterpreteerd door Service Bus. |[ReplyTo](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage) |
-| correlation-id |Door de toepassing gedefinieerde correlatie-id, die niet wordt geïnterpreteerd door Service Bus. |[Correlatie](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage) |
+| correlation-id |Door de toepassing gedefinieerde correlatie-id, die niet wordt geïnterpreteerd door Service Bus. |[CorrelationId](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage) |
 | inhouds type |Door de toepassing gedefinieerde inhouds type-indicator voor de hoofd tekst, niet geïnterpreteerd door Service Bus. |[Invoer](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage) |
 | content-encoding |De door de toepassing gedefinieerde coderings indicator voor de hoofd tekst, die niet wordt geïnterpreteerd door Service Bus. |Niet toegankelijk via de Service Bus-API. |
 | absoluut-verloop tijd |Declareert op welke absolute direct het bericht verloopt. Genegeerd bij invoer (TTL van header wordt waargenomen), gezaghebbend op uitvoer. |[ExpiresAtUtc](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage) |
@@ -264,8 +264,8 @@ Elke verbinding moet een eigen beheer koppeling initiëren om trans acties te ku
 
 Om te beginnen met transactioneel werk. de controller moet een `txn-id` van de coördinator verkrijgen. Dit doet u door een `declare` type bericht te verzenden. Als de declaratie is geslaagd, reageert de coördinator met een positie resultaat, waarmee de toewijzing wordt uitgevoerd `txn-id` .
 
-| Client (controller) | | Service Bus (coördinator) |
-| --- | --- | --- |
+| Client (controller) | Richting | Service Bus (coördinator) |
+| :--- | :---: | :--- |
 | Koppel<br/>name = {naam koppeling},<br/>... ,<br/>Role =**Sender**,<br/>target =**coördinator**<br/>) | ------> |  |
 |  | <------ | Koppel<br/>name = {naam koppeling},<br/>... ,<br/>doel = coördinator ()<br/>) |
 | overbrengen<br/>delivery-id = 0,...)<br/>{AmqpValue (**Declare ()**)}| ------> |  |
@@ -277,8 +277,8 @@ De controller sluit de transactionele werkzaamheden door een `discharge` bericht
 
 > Opmerking: Fail = True verwijst naar terugdraaien van een trans actie, en fout = False verwijst naar door voeren.
 
-| Client (controller) | | Service Bus (coördinator) |
-| --- | --- | --- |
+| Client (controller) | Richting | Service Bus (coördinator) |
+| :--- | :---: | :--- |
 | overbrengen<br/>delivery-id = 0,...)<br/>{AmqpValue (declare ())}| ------> |  |
 |  | <------ | toestand <br/> First = 0, last = 0, <br/>status = gedeclareerd (<br/>trans actie-id = {trans actie-ID}<br/>))|
 | | . . . <br/>Transactioneel werk<br/>op andere koppelingen<br/> . . . |
@@ -289,8 +289,8 @@ De controller sluit de transactionele werkzaamheden door een `discharge` bericht
 
 Alle transactionele werkzaamheden worden uitgevoerd met de transactionele leverings status `transactional-state` die de trans actie-id uitvoert. In het geval van het verzenden van berichten wordt de transactionele status uitgevoerd door het overdrachts frame van het bericht. 
 
-| Client (controller) | | Service Bus (coördinator) |
-| --- | --- | --- |
+| Client (controller) | Richting | Service Bus (coördinator) |
+| :--- | :---: | :--- |
 | overbrengen<br/>delivery-id = 0,...)<br/>{AmqpValue (declare ())}| ------> |  |
 |  | <------ | toestand <br/> First = 0, last = 0, <br/>status = gedeclareerd (<br/>trans actie-id = {trans actie-ID}<br/>))|
 | overbrengen<br/>ingang = 1,<br/>delivery-id = 1, <br/>**status = <br/> TransactionalState ( <br/> trans actie-id = 0)**)<br/>nettolading| ------> |  |
@@ -300,8 +300,8 @@ Alle transactionele werkzaamheden worden uitgevoerd met de transactionele leveri
 
 Bericht toestand bevat bewerkingen zoals `Complete`  /  `Abandon`  /  `DeadLetter`  /  `Defer` . Als u deze bewerkingen binnen een trans actie wilt uitvoeren, geeft u het door `transactional-state` met de toestand.
 
-| Client (controller) | | Service Bus (coördinator) |
-| --- | --- | --- |
+| Client (controller) | Richting | Service Bus (coördinator) |
+| :--- | :---: | :--- |
 | overbrengen<br/>delivery-id = 0,...)<br/>{AmqpValue (declare ())}| ------> |  |
 |  | <------ | toestand <br/> First = 0, last = 0, <br/>status = gedeclareerd (<br/>trans actie-id = {trans actie-ID}<br/>))|
 | | <------ |overbrengen<br/>ingang = 2,<br/>delivery-id = 11, <br/>status = Null)<br/>nettolading|  
@@ -359,14 +359,14 @@ Het aanvraag bericht heeft de volgende toepassings eigenschappen:
 
 | Sleutel | Optioneel | Waardetype | Inhoud van waarde |
 | --- | --- | --- | --- |
-| schijf |No |tekenreeks |**put-token** |
-| type |No |tekenreeks |Het type van het token dat wordt geplaatst. |
-| naam |No |tekenreeks |De "doel groep" waarop het token van toepassing is. |
-| verval |Yes |tijdstempel |De verloop tijd van het token. |
+| schijf |Nee |tekenreeks |**put-token** |
+| type |Nee |tekenreeks |Het type van het token dat wordt geplaatst. |
+| naam |Nee |tekenreeks |De "doel groep" waarop het token van toepassing is. |
+| verval |Ja |tijdstempel |De verloop tijd van het token. |
 
 De eigenschap *name* identificeert de entiteit waaraan het token moet worden gekoppeld. In Service Bus is het het pad naar de wachtrij, of onderwerp/abonnement. De eigenschap *type* geeft het token type aan:
 
-| Token type | Beschrijving van het token | Type hoofd tekst | Notities |
+| Token type | Beschrijving van het token | Type hoofd tekst | Opmerkingen |
 | --- | --- | --- | --- |
 | AMQP: JWT |JSON Web Token (JWT) |AMQP-waarde (teken reeks) |Nog niet beschikbaar. |
 | AMQP: swt |Eenvoudig webtoken (SWT) |AMQP-waarde (teken reeks) |Alleen ondersteund voor SWT-tokens die zijn uitgegeven door AAD/ACS |
@@ -378,8 +378,8 @@ Het antwoord bericht heeft de volgende *eigenschaps* waarden van de toepassing:
 
 | Sleutel | Optioneel | Waardetype | Inhoud van waarde |
 | --- | --- | --- | --- |
-| status-code |No |int |HTTP-antwoord code **[RFC2616]**. |
-| status-beschrijving |Yes |tekenreeks |De beschrijving van de status. |
+| status-code |Nee |int |HTTP-antwoord code **[RFC2616]**. |
+| status-beschrijving |Ja |tekenreeks |De beschrijving van de status. |
 
 De client kan *put-token* herhaaldelijk aanroepen en voor elke entiteit in de infra structuur voor berichten. De tokens zijn toegewezen aan de huidige client en verankerd op de huidige verbinding, wat betekent dat de server behouden tokens verwijdert wanneer de verbinding wordt verbroken.
 
@@ -399,8 +399,8 @@ Met deze functionaliteit maakt u een afzender en brengt u de koppeling tot stand
 
 > Opmerking: verificatie moet worden uitgevoerd voor zowel *via-entity* als *doel-entiteit* voordat deze koppeling tot stand wordt gebracht.
 
-| Client | | Service Bus |
-| --- | --- | --- |
+| Client | Richting | Service Bus |
+| :--- | :---: | :--- |
 | Koppel<br/>name = {naam koppeling},<br/>Role = Sender,<br/>Bron = {client koppelings-ID},<br/>doel =**{via-entity}**,<br/>**Eigenschappen = map [( <br/> com. micro soft: overdracht-doel-adres = <br/> {doel-entiteit})]** ) | ------> | |
 | | <------ | Koppel<br/>name = {naam koppeling},<br/>Role = ontvanger,<br/>Bron = {client koppelings-ID},<br/>doel = {via-entity},<br/>eigenschappen = map [(<br/>com. micro soft: overdracht-bestemming-adres =<br/>{Destination-entity})] ) |
 

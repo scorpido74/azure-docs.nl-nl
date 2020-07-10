@@ -5,12 +5,12 @@ services: automation
 ms.topic: conceptual
 ms.date: 05/10/2018
 ms.custom: mvc
-ms.openlocfilehash: 95370a45b9fce69e5c1d06ac9bb987e1bfcfba4f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: d55a47e4eb921c71ff3539d34b6db514684da073
+ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84204069"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86186126"
 ---
 # <a name="enable-update-management-from-a-runbook"></a>Updatebeheer inschakelen vanuit een runbook
 
@@ -22,7 +22,7 @@ Dit artikel beschrijft hoe u een runbook kunt gebruiken om de [Updatebeheer](aut
 ## <a name="prerequisites"></a>Vereisten
 
 * Azure-abonnement. Als u nog geen abonnement hebt, kunt u [uw voordelen als MSDN-abonnee activeren](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/) of u aanmelden voor een [gratis account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
-* [Automation-account](automation-offering-get-started.md) voor het beheren van computers.
+* [Automation-account](./index.yml) voor het beheren van computers.
 * Een [virtuele machine](../virtual-machines/windows/quick-create-portal.md).
 
 ## <a name="enable-update-management"></a>Updatebeheer inschakelen
@@ -50,7 +50,7 @@ Als Updatebeheer is ingeschakeld, kunt u een Azure-VM toevoegen om updates te on
 
 ## <a name="install-and-update-modules"></a>Modules installeren en bijwerken
 
-U moet een update uitvoeren naar de nieuwste Azure-modules en de module [Az.OperationalInsights](https://docs.microsoft.com/powershell/module/az.operationalinsights/?view=azps-3.7.0) importeren om Updatebeheer te kunnen inschakelen voor uw VM's.
+U moet een update uitvoeren naar de nieuwste Azure-modules en de module [Az.OperationalInsights](/powershell/module/az.operationalinsights/?view=azps-3.7.0) importeren om Updatebeheer te kunnen inschakelen voor uw VM's.
 
 1. Selecteer **Modules** onder **Gedeelde resources** in uw Automation-account. 
 2. Selecteer **Azure-modules bijwerken** om de Azure-modules bij te werken naar de nieuwste versie. 

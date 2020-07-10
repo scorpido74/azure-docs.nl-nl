@@ -4,11 +4,12 @@ description: Verzamelingen van installatie kopieën of andere artefacten overdra
 ms.topic: article
 ms.date: 05/08/2020
 ms.custom: ''
-ms.openlocfilehash: fd551671422931a51f5aa6468de87e28e3a81b5b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: c80f10e8795c63b84bb46fc21fd3406a195b772e
+ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83006324"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86186925"
 ---
 # <a name="transfer-artifacts-to-another-registry"></a>Artefacten overdragen naar een ander REGI ster
 
@@ -57,7 +58,7 @@ Opslag verificatie maakt gebruik van SAS-tokens die worden beheerd als geheimen 
 * **[PipelineRun](#create-pipelinerun-for-export-with-resource-manager)** : de resource die wordt gebruikt om een ExportPipeline-of ImportPipeline-resource aan te roepen.  
   * U voert de ExportPipeline hand matig uit door een PipelineRun-resource te maken en de artefacten op te geven die moeten worden geëxporteerd.  
   * Als een import trigger is ingeschakeld, wordt de ImportPipeline automatisch uitgevoerd. Het kan ook hand matig worden uitgevoerd met een PipelineRun. 
-  * Momenteel kunnen Maxi maal **10 artefacten** worden overgedragen met elke PipelineRun.
+  * Er kunnen momenteel Maxi maal **50 artefacten** worden overgedragen met elke PipelineRun.
 
 ### <a name="things-to-know"></a>Dingen die u moet weten
 * De ExportPipeline en ImportPipeline bevinden zich doorgaans in verschillende Active Directory tenants die zijn gekoppeld aan de bron-en doel-Clouds. Voor dit scenario zijn afzonderlijke beheerde identiteiten en sleutel kluizen vereist voor de export-en import resources. Voor test doeleinden kunnen deze resources in dezelfde Cloud worden geplaatst, waarbij identiteiten worden gedeeld.
@@ -336,7 +337,7 @@ az deployment group delete \
 * **Problemen met AzCopy**
   * Zie [problemen met AzCopy oplossen](../storage/common/storage-use-azcopy-configure.md#troubleshoot-issues).  
 * **Problemen bij het overdragen van artefacten**
-  * Niet alle artefacten, of geen, worden overgebracht. Controleer de spelling van artefacten in de export uitvoering en de naam van de BLOB in export-en import uitvoeringen. Bevestig dat u een maximum van 10 artefacten wilt overdragen.
+  * Niet alle artefacten, of geen, worden overgebracht. Controleer de spelling van artefacten in de export uitvoering en de naam van de BLOB in export-en import uitvoeringen. Bevestig dat u een maximum van 50 artefacten wilt overdragen.
   * De pijplijn uitvoering is mogelijk niet voltooid. Het uitvoeren van een export-of import bewerking kan enige tijd duren. 
   * Voor andere pijplijn problemen geeft u de [correlatie-id](../azure-resource-manager/templates/deployment-history.md) van de implementatie van de export-of import uitvoering op in het Azure container Registry-team.
 

@@ -11,12 +11,12 @@ ms.topic: how-to
 ms.date: 06/08/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 57dbec2b91d313c9c93c141c9f3ec839a299d47d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 840d2afa72de290d5534adc766f8634efa6926e8
+ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85385481"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86170051"
 ---
 # <a name="integrating-twilio-verify-app-with-azure-active-directory-b2c"></a>De Twilio-verificatie-app integreren met Azure Active Directory B2C
 
@@ -42,7 +42,7 @@ De volgende onderdelen vormen een Twilio-oplossing:
 
     ![twilio-stroom](media/partner-twilio/twilio-flow.png)
 
-|      |      |
+| Stap | Beschrijving |
 |------|------|
 | 1     | De gebruiker start het aanmelden of meldt zich aan bij de PSD2-demo-app. De gebruiker wordt geverifieerd via het Azure AD B2C gecombineerde aanmeldings-en registratie beleid. Er wordt een token geretourneerd naar de toepassing. Bij het aanmelden wordt het telefoon nummer van de gebruiker geverifieerd met behulp van SMS/Phone en geregistreerd op hun Azure AD B2C-account.     |
 | 2     | De gebruiker initieert een trans actie met een hoog risico, zoals een overdracht van $50,00. Het huidige toegangs token van de gebruiker wordt geëvalueerd voor de PolicyId om te bepalen of de gebruiker al is geverifieerd met behulp van een op stappen aangepast beleid.     |

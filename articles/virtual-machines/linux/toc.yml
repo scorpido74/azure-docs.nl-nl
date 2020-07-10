@@ -511,6 +511,8 @@
                       href: ../vm-specialized-image-version-powershell.md
                 - name: Afbeeldingsresources bijwerken
                   href: ../update-image-resources-powershell.md
+                - name: App-registratie voor delen
+                  href: ../windows/share-images-across-tenants.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
             - name: Portal
               items:
                 - name: 'Een galerie, afbeelding en virtuele machine maken'
@@ -947,8 +949,6 @@
           items:
             - name: Migreren naar Premium Storage met Azure Site Recovery
               href: migrate-to-premium-storage-using-azure-site-recovery.md
-            - name: Converteren naar versleuteling aan serverzijde
-              href: disks-ade-sse-conversion-cli.md
             - name: Converteren naar Managed Disks
               href: convert-unmanaged-to-managed-disks.md
             - name: Een schijf converteren van Standard naar Premium

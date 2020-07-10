@@ -9,11 +9,12 @@ ms.author: migreene
 ms.topic: conceptual
 ms.date: 07/17/2019
 manager: nirb
-ms.openlocfilehash: ff785bf3ace7c65f83fe8e505f0544edd24776d8
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 4430b8cdfe9414ddbfd7aad3c3fe7827adbc8705
+ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83836852"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86186364"
 ---
 # <a name="remediate-noncompliant-azure-automation-state-configuration-servers"></a>Niet-compatibele Azure Automation status configuratie servers herstellen
 
@@ -24,7 +25,7 @@ Dit document bevat voorbeeld scripts voor deze functie wanneer de configuratie-d
 
 ## <a name="correct-drift-of-windows-virtual-machines-using-powershell"></a>Juiste drift van virtuele Windows-machines met behulp van Power shell
 
-U kunt het aantal virtuele machines van Windows corrigeren met de `Run` opdracht functie. Zie [Power shell-scripts uitvoeren in uw Windows-VM met de opdracht uitvoeren](/azure/virtual-machines/windows/run-command).
+U kunt het aantal virtuele machines van Windows corrigeren met de `Run` opdracht functie. Zie [Power shell-scripts uitvoeren in uw Windows-VM met de opdracht uitvoeren](../virtual-machines/windows/run-command.md).
 
 Gebruik de cmdlet [Update-DscConfiguration](/powershell/module/psdesiredstateconfiguration/update-dscconfiguration) om een configuratie knooppunt van Azure Automation status af te dwingen om de nieuwste configuratie te downloaden en toe te passen.
 
@@ -42,5 +43,5 @@ Voor hybride knoop punten kunt u met behulp van de python-scripts de drift corri
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- Zie [Az.Automation](https://docs.microsoft.com/powershell/module/az.automation/?view=azps-3.7.0#automation) voor een naslagdocumentatie voor een PowerShell-cmdlet.
+- Zie [Az.Automation](/powershell/module/az.automation/?view=azps-3.7.0#automation) voor een naslagdocumentatie voor een PowerShell-cmdlet.
 - Zie [continue implementatie instellen met chocolade](automation-dsc-cd-chocolatey.md)voor een voor beeld van het gebruik van Azure Automation status configuratie in een pijp lijn voor continue implementatie.

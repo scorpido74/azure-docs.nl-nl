@@ -2,12 +2,13 @@
 title: De gereedheids test voor het container exemplaar instellen
 description: Meer informatie over het configureren van een test om ervoor te zorgen dat containers in Azure Container Instances alleen aanvragen ontvangen wanneer ze klaar zijn
 ms.topic: article
-ms.date: 01/30/2020
-ms.openlocfilehash: 64bb4a3e429ce820835abbf8e235600e592f7868
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 07/02/2020
+ms.openlocfilehash: 3e89086d66f284df35e36dc8f1d68bb09264843f
+ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "76935685"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86169660"
 ---
 # <a name="configure-readiness-probes"></a>Gereedheidstests configureren
 
@@ -25,7 +26,7 @@ Azure Container Instances biedt ook ondersteuning voor [beproefde tests](contain
 Maak een voor beeld van een `readiness-probe.yaml` bestand met het volgende code fragment dat een gereedheids test bevat. Dit bestand definieert een container groep die bestaat uit een container met een kleine web-app. De app wordt geïmplementeerd vanuit de open bare `mcr.microsoft.com/azuredocs/aci-helloworld` installatie kopie. Deze container-app wordt ook gedemonstreerd in [een container exemplaar implementeren in azure met behulp van de Azure cli](container-instances-quickstart.md) en andere Quick starts.
 
 ```yaml
-apiVersion: 2018-10-01
+apiVersion: 2019-12-01
 location: eastus
 name: readinesstest
 properties:

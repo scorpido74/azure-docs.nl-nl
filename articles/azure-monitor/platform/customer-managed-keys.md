@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: yossi-y
 ms.author: yossiy
 ms.date: 07/05/2020
-ms.openlocfilehash: aab0de11972f7d1abaaa0140da002f838e319fdf
-ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.openlocfilehash: 4fb593f303eea0f4866dc248412af2f261993e92
+ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86134611"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86170340"
 ---
 # <a name="azure-monitor-customer-managed-key"></a>Azure Monitor door de klant beheerde sleutel 
 
@@ -23,7 +23,7 @@ U wordt aangeraden [beperkingen en beperkingen](#limitationsandconstraints) hier
 
 [Versleuteling bij rest](https://docs.microsoft.com/azure/security/fundamentals/encryption-atrest)   is een veelvoorkomende privacy-en beveiligings vereiste in organisaties.U kunt de versleuteling op de rest van Azure volledig beheren, terwijl u verschillende opties hebt om versleutelings-of versleutelings sleutels nauw keurig te beheren.
 
-Azure Monitor zorgt ervoor dat alle gegevens in rust worden versleuteld met door Azure beheerde sleutels.Azure Monitor biedt ook een optie voor gegevens versleuteling met behulp van uw eigen sleutel die is opgeslagen in uw [Azure Key Vault](https://docs.microsoft.com/azure/key-vault/key-vault-overview)   en toegankelijk is via opslag met door het systeem toegewezen [beheerde identiteits](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview)   verificatie.Deze sleutel kan [software of hardware-HSM](https://docs.microsoft.com/azure/key-vault/key-vault-overview)zijn die is beveiligd.
+Azure Monitor zorgt ervoor dat alle gegevens en opgeslagen query's op rest worden versleuteld met behulp van door micro soft beheerde sleutels (MMK). Azure Monitor biedt ook een optie voor versleuteling met behulp van uw eigen sleutel die is opgeslagen in uw [Azure Key Vault](https://docs.microsoft.com/azure/key-vault/key-vault-overview) en die toegankelijk is voor opslag met door het systeem toegewezen [beheerde identiteits](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview) verificatie. Deze sleutel (CMK) kan [software of hardware-HSM zijn beveiligd](https://docs.microsoft.com/azure/key-vault/key-vault-overview).
 
 Azure Monitor versleuteling is hetzelfde als de manier waarop [Azure Storage versleuteling](https://docs.microsoft.com/azure/storage/common/storage-service-encryption#about-azure-storage-encryption)   werkt.
 
@@ -92,7 +92,7 @@ Waarbij *eyJ0eXAiO....* het volledige verificatie token vertegenwoordigt.
 U kunt het token verkrijgen met een van de volgende methoden:
 
 1. Gebruik [app-registraties](https://docs.microsoft.com/graph/auth/auth-concepts#access-tokens) methode.
-2. In de Azure Portal
+2. In Azure Portal
     1. Navigeer naar Azure Portal in het hulp programma voor ontwikkel aars (F12)
     1. Zoek naar een autorisatie reeks onder ' aanvraag headers ' in een van de exemplaren van ' batch? API-Version '. Het ziet er als volgt uit: ' autorisatie: Bearer eyJ0eXAiO.... '. 
     1. Kopieer en voeg deze toe aan uw API-oproep volgens de onderstaande voor beelden.
@@ -235,7 +235,7 @@ Content-type: application/json
 
 De identiteit wordt toegewezen aan de *cluster* bron op het moment van aanmaak.
 
-**Beantwoord**
+**Response**
 
 200 OK en koptekst.
 
@@ -249,7 +249,7 @@ GET https://management.azure.com/subscriptions/<subscription-id>/resourceGroups/
 Authorization: Bearer <token>
 ```
 
-**Beantwoord**
+**Response**
 
 ```json
 {
@@ -334,7 +334,7 @@ Content-type: application/json
 
 ' KeyVaultProperties ' bevat de details van de Key Vault sleutel-id.
 
-**Beantwoord**
+**Response**
 
 200 OK en koptekst.
 Het duurt de doorgifte van de sleutel-id enkele minuten om te volt ooien. U kunt de status van de update op twee manieren controleren:
@@ -401,7 +401,7 @@ Content-type: application/json
 }
 ```
 
-**Beantwoord**
+**Response**
 
 200 OK en koptekst.
 
@@ -415,7 +415,7 @@ GET https://management.azure.com/subscriptions/<subscription-id>/resourcegroups/
 Authorization: Bearer <token>
 ```
 
-**Beantwoord**
+**Response**
 
 ```json
 {
@@ -546,7 +546,7 @@ Na de configuratie wordt een nieuwe waarschuwings query opgeslagen in uw opslag.
   Authorization: Bearer <token>
   ```
 
-  **Beantwoord**
+  **Response**
   
   ```json
   {
@@ -592,7 +592,7 @@ Na de configuratie wordt een nieuwe waarschuwings query opgeslagen in uw opslag.
   Authorization: Bearer <token>
   ```
     
-  **Beantwoord**
+  **Response**
     
   Hetzelfde antwoord als voor*cluster* resources voor een resource groep, maar in het abonnements bereik.
 
@@ -652,7 +652,7 @@ Na de configuratie wordt een nieuwe waarschuwings query opgeslagen in uw opslag.
   Authorization: Bearer <token>
   ```
 
-  **Beantwoord**
+  **Response**
 
   200 OK en koptekst.
 
@@ -684,7 +684,7 @@ Na de configuratie wordt een nieuwe waarschuwings query opgeslagen in uw opslag.
   Authorization: Bearer <token>
   ```
 
-  **Beantwoord**
+  **Response**
 
   200 OK
 
@@ -715,7 +715,7 @@ Na de configuratie wordt een nieuwe waarschuwings query opgeslagen in uw opslag.
 
 -De koppeling van de werk ruimte met de *cluster*   bron mislukt als deze is      gekoppeld aan een andere *cluster*   bron
 
-## <a name="troubleshooting"></a>Probleemoplossing
+## <a name="troubleshooting"></a>Problemen oplossen
 
 - Gedrag met Key Vault Beschik baarheid
   - In normale werking: opslag caches AEK gedurende korte tijd en terugvallen op Key Vault om regel matig de vertraging op te lossen.

@@ -10,12 +10,12 @@ ms.author: magoedte
 ms.date: 06/22/2020
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: bdb387739be65b761c773ca13b7a407d7aebf738
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 6a1c6bb39e743a96ad110a60e41cc59306e7a2ae
+ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85206883"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86186381"
 ---
 # <a name="azure-automation-state-configuration-overview"></a>Overzicht van Azure Automation status configuratie
 
@@ -23,7 +23,7 @@ Azure Automation status configuratie is een Azure Configuration Management-servi
 
 U kunt Azure Automation status configuratie gebruiken voor het beheren van verschillende computers:
 
-- Virtuele machines van Azure
+- Azure-VM's
 - Azure virtual machines (klassiek)
 - Fysieke/virtuele Windows-machines on-premises of in een andere Cloud dan Azure (met inbegrip van AWS EC2-instanties)
 - Fysieke/virtuele Linux-machines on-premises, in azure of in een andere Cloud dan Azure
@@ -77,7 +77,7 @@ Voor knoop punten waarop Linux wordt uitgevoerd, ondersteunt de DSC Linux-extens
 
 ### <a name="dsc-requirements"></a>DSC-vereisten
 
-Voor alle Windows-knoop punten die worden uitgevoerd in azure, wordt [WMF 5,1](https://docs.microsoft.com/powershell/scripting/wmf/setup/install-configure) geïnstalleerd wanneer machines zijn ingeschakeld. Voor knoop punten met Windows Server 2012 en Windows 7 is [WinRM](https://docs.microsoft.com/powershell/scripting/dsc/troubleshooting/troubleshooting#winrm-dependency) ingeschakeld.
+Voor alle Windows-knoop punten die worden uitgevoerd in azure, wordt [WMF 5,1](/powershell/scripting/wmf/setup/install-configure) geïnstalleerd wanneer machines zijn ingeschakeld. Voor knoop punten met Windows Server 2012 en Windows 7 is [WinRM](/powershell/scripting/dsc/troubleshooting/troubleshooting#winrm-dependency) ingeschakeld.
 
 Voor alle Linux-knoop punten die worden uitgevoerd in azure, wordt [Power shell DSC voor Linux](https://github.com/Microsoft/PowerShell-DSC-for-Linux) geïnstalleerd wanneer machines zijn ingeschakeld.
 
@@ -90,7 +90,7 @@ Als uw knoop punten zich in een particulier netwerk bevinden, zijn de volgende p
 * Globale URL van US Gov-Virginia: ***. Azure-Automation.us**
 * Agent service: **https:// \<workspaceId\> . agentsvc.Azure-Automation.net**
 
-Als u gebruikmaakt van DSC-resources die communiceren tussen knoop punten, zoals de [WaitFor *-resources](https://docs.microsoft.com/powershell/scripting/dsc/reference/resources/windows/waitForAllResource), moet u ook verkeer tussen knoop punten toestaan. Raadpleeg de documentatie voor elke DSC-resource voor meer informatie over deze netwerk vereisten.
+Als u gebruikmaakt van DSC-resources die communiceren tussen knoop punten, zoals de [WaitFor *-resources](/powershell/scripting/dsc/reference/resources/windows/waitForAllResource), moet u ook verkeer tussen knoop punten toestaan. Raadpleeg de documentatie voor elke DSC-resource voor meer informatie over deze netwerk vereisten.
 
 Zie [TLS 1,2 Enforcement voor Azure Automation](automation-managing-data.md#tls-12-enforcement-for-azure-automation)voor meer informatie over de client vereisten voor TLS 1,2.
 
@@ -114,5 +114,4 @@ Het is raadzaam om de adressen te gebruiken die worden vermeld in de tabel [DNS-
 - Zie [DSC-configuraties compileren in azure Automation status configuratie](automation-dsc-compile.md)voor meer informatie over het compileren van DSC-configuraties zodat u ze aan doel knooppunten kunt toewijzen.
 - Zie [continue implementatie instellen met chocolade](automation-dsc-cd-chocolatey.md)voor een voor beeld van het gebruik van Azure Automation status configuratie in een pijp lijn voor continue implementatie.
 - Zie [prijzen voor Azure Automation status configuratie](https://azure.microsoft.com/pricing/details/automation/)voor prijs informatie.
-- Zie [Az.Automation](https://docs.microsoft.com/powershell/module/az.automation/?view=azps-3.7.0#automation
-) voor een naslagdocumentatie voor een PowerShell-cmdlet.
+- Zie [Az.Automation](/powershell/module/az.automation/?view=azps-3.7.0#automation) voor een naslagdocumentatie voor een PowerShell-cmdlet.

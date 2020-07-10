@@ -14,11 +14,12 @@ ms.tgt_pltfrm: vm-multiple
 ms.topic: article
 ms.date: 04/20/2018
 ms.author: akjosh
-ms.openlocfilehash: cffd2eab3a616b4d16d847d0f2e1a26655f40459
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 874e6f9b1c0bebedb5f50ca38d0703420be69de5
+ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77919920"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86186959"
 ---
 # <a name="how-to-install-and-configure-trend-micro-deep-security-as-a-service-on-a-windows-vm"></a>Trend Micro diepe Security als een service op een Windows-VM installeren en configureren
 
@@ -61,10 +62,12 @@ Als u de agent wilt installeren op een bestaande virtuele machine, hebt u de vol
 
 Controleer eerst of de VM-agent al is geïnstalleerd. Vul de naam van de Cloud service en de virtuele machine in en voer de volgende opdrachten uit op de opdracht prompt op beheerders niveau Azure PowerShell. Vervang alles binnen de aanhalings tekens, met inbegrip van de <-en > teken.
 
-    $CSName = "<cloud service name>"
-    $VMName = "<virtual machine name>"
-    $vm = Get-AzureVM -ServiceName $CSName -Name $VMName
-    write-host $vm.VM.ProvisionGuestAgent
+```azurepowershell
+$CSName = "<cloud service name>"
+$VMName = "<virtual machine name>"
+$vm = Get-AzureVM -ServiceName $CSName -Name $VMName
+write-host $vm.VM.ProvisionGuestAgent
+```
 
 Als u de naam van de Cloud service en de virtuele machine niet weet, voert u **Get-AzureVM** uit om die informatie weer te geven voor alle virtuele machines in uw huidige abonnement.
 
@@ -72,9 +75,11 @@ Als de **Write-host-** opdracht **True**retourneert, wordt de VM-agent geïnstal
 
 Als de VM-agent is geïnstalleerd, voert u deze opdrachten uit.
 
-    $Agent = Get-AzureVMAvailableExtension TrendMicro.DeepSecurity -ExtensionName TrendMicroDSA
+```azurepowershell
+$Agent = Get-AzureVMAvailableExtension TrendMicro.DeepSecurity -ExtensionName TrendMicroDSA
 
-    Set-AzureVMExtension -Publisher TrendMicro.DeepSecurity –Version $Agent.Version -ExtensionName TrendMicroDSA -VM $vm | Update-AzureVM
+Set-AzureVMExtension -Publisher TrendMicro.DeepSecurity –Version $Agent.Version -ExtensionName TrendMicroDSA -VM $vm | Update-AzureVM
+```
 
 ## <a name="next-steps"></a>Volgende stappen
 Het duurt enkele minuten voordat de agent wordt gestart wanneer deze is geïnstalleerd. Daarna moet u de grondige beveiliging op de virtuele machine activeren zodat deze kan worden beheerd door een grondige beveiligings beheerder. Raadpleeg de volgende artikelen voor aanvullende instructies:
@@ -83,7 +88,7 @@ Het duurt enkele minuten voordat de agent wordt gestart wanneer deze is geïnsta
 * Een voor beeld van een [Windows Power shell-script](https://go.microsoft.com/fwlink/?LinkId=404100) voor het configureren van de virtuele machine
 * [Instructies](https://go.microsoft.com/fwlink/?LinkId=404099) voor het voor beeld
 
-## <a name="additional-resources"></a>Aanvullende bronnen
+## <a name="additional-resources"></a>Aanvullende resources
 [Aanmelden bij een virtuele machine met Windows Server]
 
 [Azure VM-extensies en-functies]

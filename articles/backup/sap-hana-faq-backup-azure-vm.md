@@ -3,12 +3,12 @@ title: Veelgestelde vragen over back-ups maken van SAP HANA-databases in virtuel
 description: In dit artikel vindt u antwoorden op veelgestelde vragen over het maken van back-ups van SAP HANA-data bases met behulp van de Azure Backup-service.
 ms.topic: conceptual
 ms.date: 11/7/2019
-ms.openlocfilehash: ddc4af9a164de3a822e8aebd6c0a4db769ec62a0
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 512075a24cf9400415f2367ead16b57f8b31c038
+ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85262579"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86170323"
 ---
 # <a name="frequently-asked-questions--back-up-sap-hana-databases-on-azure-vms"></a>Veelgestelde vragen: back-ups maken van SAP HANA-data bases op virtuele Azure-machines
 
@@ -59,15 +59,19 @@ Momenteel beschikken we niet over de mogelijkheid om de oplossing alleen voor ee
 
 ### <a name="how-can-i-move-an-on-demand-backup-to-the-local-file-system-instead-of-the-azure-vault"></a>Hoe kan ik een back-up op aanvraag verplaatsen naar het lokale bestands systeem in plaats van naar de Azure-kluis?
 
-1. Wacht totdat de back-up op dat moment wordt uitgevoerd op de gewenste data base (Controleer vanaf Studio voor voltooiing)
+1. Wacht totdat de back-up op dat moment wordt uitgevoerd, om de gewenste data base te volt ooien (Controleer vanaf Studio voor voltooiing).
 1. Schakel logboek back-ups uit en stel de catalogus back-up in op het **Bestands systeem** voor de gewenste data base met behulp van de volgende stappen:
 1. Dubbel klik op **SYSTEMDB**  ->  -**configuratie**  ->  **database**  ->  **filter selecteren (logboek)**
     1. Enable_auto_log_backup instellen op **Nee**
-    1. Log_backup_using_backint instellen op **Onwaar**
-1. Maak een back-up op aanvraag in de gewenste data base en wacht totdat de back-up en catalogus back-up zijn voltooid.
+    1. Catalog_backup_using_backint instellen op **Onwaar**
+1. Maak een back-up op aanvraag (volledig/differentieel/incrementeel) op de gewenste data base en wacht totdat de back-up en catalogus back-up zijn voltooid.
+1. Als u de logboek back-ups ook wilt verplaatsen naar het bestands systeem, stelt u enable_auto_log_backup in op **Ja**
 1. Terugkeren naar de vorige instellingen zodat back-ups naar de Azure-kluis kunnen stromen:
     1. Enable_auto_log_backup instellen op **Ja**
-    1. Log_backup_using_backint instellen op **waar**
+    1. Catalog_backup_using_backint instellen op **waar**
+
+>[!NOTE]
+>Door back-ups naar het lokale bestands systeem te verplaatsen en terug te scha kelen naar de Azure-kluis, kan dit leiden tot een logboek keten van de logboek back-ups in de kluis. Hiermee wordt een volledige back-up geactiveerd, die na voltooiing een back-up van de logboeken start.
 
 ### <a name="how-can-i-use-sap-hana-backup-with-my-hana-replication-set-up"></a>Hoe kan ik SAP HANA back-up gebruiken met mijn HANA-replicatie-instellingen?
 

@@ -9,75 +9,57 @@ ms.service: active-directory
 ms.subservice: develop
 ms.topic: conceptual
 ms.workload: identity
-ms.date: 06/20/2020
+ms.date: 07/08/2020
 ms.author: marsma
 ms.reviewer: saeeda
-ms.custom: aaddev
-ms.openlocfilehash: 9a0315fadefac0269a6d9670844ef8c3886eef12
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 0dbd7eb9203f31b580f586a8a7d1fa216533628c
+ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84975619"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86170510"
 ---
 # <a name="authentication-flows"></a>Verificatie stromen
 
 De micro soft Authentication Library (MSAL) ondersteunt verschillende verificatie stromen voor gebruik in verschillende toepassings scenario's.
 
-| Stroom | Description | Gebruikt in|
-| ---- | ----------- | ------- |
-| [SBSI](#interactive) | Hiermee wordt het token opgehaald via een interactief proces waarbij de gebruiker wordt gevraagd om referenties via een browser of pop-upvenster. | [Bureau blad-apps](scenario-desktop-overview.md), [mobiele apps](scenario-mobile-overview.md) |
-| [Impliciete toekenning](#implicit-grant) | Hiermee kan de app tokens ophalen zonder dat er een back-end-server referentie-uitwisseling wordt uitgevoerd. Hiermee kunt u de app in staat stelt om zich aan te melden bij de gebruiker, de sessie te onderhouden en tokens te verkrijgen voor andere web-Api's, allemaal in de Java script-code van de client| [Toepassingen met één pagina (SPA)](scenario-spa-overview.md) |
+| Stroom | Beschrijving | Gebruikt in |
+|--|--|--|
 | [Autorisatie code](#authorization-code) | Wordt gebruikt in apps die op een apparaat zijn geïnstalleerd om toegang te krijgen tot beveiligde bronnen, zoals web-Api's. Hiermee kunt u aanmelding en API-toegang toevoegen aan uw mobiele en desktop-apps. | [Bureau blad-apps](scenario-desktop-overview.md), [mobiele apps](scenario-mobile-overview.md), [Web-apps](scenario-web-app-call-api-overview.md) |
-| [Namens-van](#on-behalf-of) | Een toepassing roept een service of Web-API aan, die op zijn beurt een andere service of Web-API moet aanroepen. Het is verstandig om de gedelegeerde gebruikers identiteit en de machtigingen via de aanvraag keten door te geven. | [Web-API's](scenario-web-api-call-api-overview.md) |
 | [Clientreferenties](#client-credentials) | Hiermee krijgt u toegang tot webhoste bronnen met behulp van de identiteit van een toepassing. Wordt meestal gebruikt voor server-naar-server-interacties die op de achtergrond moeten worden uitgevoerd, zonder directe interactie met een gebruiker. | [Daemon-apps](scenario-daemon-overview.md) |
 | [Apparaatcode](#device-code) | Hiermee kunnen gebruikers zich aanmelden op apparaten met invoer beperkingen, zoals een Smart TV, IoT-apparaat of printer. | [Desktop/mobiele apps](scenario-desktop-acquire-token.md#command-line-tool-without-a-web-browser) |
-| [Geïntegreerde Windows-verificatie](#integrated-windows-authentication) | Hiermee kunnen toepassingen die lid zijn van een domein of Azure Active Directory (Azure AD), een token op de achtergrond verkrijgen (zonder interactie van de gebruikers interface van de gebruiker).| [Desktop/mobiele apps](scenario-desktop-acquire-token.md#integrated-windows-authentication) |
+| [Impliciete toekenning](#implicit-grant) | Hiermee kan de app tokens ophalen zonder dat er een back-end-server referentie-uitwisseling wordt uitgevoerd. Hiermee kunt u de app in staat stelt om zich aan te melden bij de gebruiker, de sessie te onderhouden en tokens te verkrijgen voor andere web-Api's, allemaal in de Java script-code van de client | [Toepassingen met één pagina (SPA)](scenario-spa-overview.md) |
+| [Namens-van](#on-behalf-of) | Een toepassing roept een service of Web-API aan, die op zijn beurt een andere service of Web-API moet aanroepen. Het is verstandig om de gedelegeerde gebruikers identiteit en de machtigingen via de aanvraag keten door te geven. | [Web-API's](scenario-web-api-call-api-overview.md) |
 | [Gebruikersnaam en wachtwoord](#usernamepassword) | Hiermee kan een toepassing zich aanmelden bij de gebruiker door rechtstreeks hun wacht woord af te handelen. Deze stroom wordt niet aanbevolen. | [Desktop/mobiele apps](scenario-desktop-acquire-token.md#username-and-password) |
+| [Geïntegreerde Windows-verificatie](#integrated-windows-authentication) | Hiermee kunnen toepassingen die lid zijn van een domein of Azure Active Directory (Azure AD), een token op de achtergrond verkrijgen (zonder interactie van de gebruikers interface van de gebruiker). | [Desktop/mobiele apps](scenario-desktop-acquire-token.md#integrated-windows-authentication) |
 
 ## <a name="how-each-flow-emits-tokens-and-codes"></a>Hoe elke stroom tokens en codes uitstraalt
 
-Afhankelijk van hoe uw client is gebouwd, kunnen ze een of meer van de verificatie stromen gebruiken die worden ondersteund door het micro soft Identity-platform. Deze stromen kunnen verschillende typen tokens en autorisatie codes produceren, en vereisen verschillende tokens om ze te laten werken.
+Afhankelijk van hoe uw client toepassing is gebouwd, kunnen ze een of meer van de verificatie stromen gebruiken die worden ondersteund door het micro soft Identity-platform. Deze stromen kunnen verschillende typen tokens en autorisatie codes produceren, en vereisen verschillende tokens om ze te laten werken.
 
 | Stroom                                                                               | Nodig            | id_token | toegangs token | token vernieuwen | autorisatie code |
 |------------------------------------------------------------------------------------|:-------------------:|:--------:|:------------:|:-------------:|:------------------:|
 | [Autorisatie code stroom](v2-oauth2-auth-code-flow.md)                             |                     | x        | x            | x             | x                  |
+| [Clientreferenties](v2-oauth2-client-creds-grant-flow.md)                         |                     |          | x (alleen app) |               |                    |
+| [Toestel code stroom](v2-oauth2-device-code.md)                                       |                     | x        | x            | x             |                    |
 | [Impliciete stroom](v2-oauth2-implicit-grant-flow.md)                                  |                     | x        | x            |               |                    |
+| [Namens-stroom](v2-oauth2-on-behalf-of-flow.md)                                | toegangs token        | x        | x            | x             |                    |
+| [Gebruikers naam/wacht woord](v2-oauth-ropc.md) (ROPC)                                       | gebruikers naam & wacht woord | x        | x            | x             |                    |
 | [Hybride OIDC-stroom](v2-protocols-oidc.md#protocol-diagram-access-token-acquisition) |                     | x        |              |               | x                  |
 | [Aflossingen van token vernieuwen](v2-oauth2-auth-code-flow.md#refresh-the-access-token)   | token vernieuwen       | x        | x            | x             |                    |
-| [Namens-stroom](v2-oauth2-on-behalf-of-flow.md)                                | toegangs token        | x        | x            | x             |                    |
-| [Toestel code stroom](v2-oauth2-device-code.md)                                       |                     | x        | x            | x             |                    |
-| [Clientreferenties](v2-oauth2-client-creds-grant-flow.md)                         |                     |          | x (alleen app) |               |                    |
-| [Gebruikers naam/wacht woord](v2-oauth-ropc.md) (ROPC)                                       | gebruikers naam & wacht woord | x        | x            | x             |                    |
 
-## <a name="interactive"></a>Interactief
+### <a name="interactive-and-non-interactive-authentication"></a>Interactieve en niet-interactieve verificatie
 
-Met MSAL kan de gebruiker interactief worden gevraagd om hun referenties om zich aan te melden en een token op te halen met behulp van deze referenties.
+Verschillende van deze stromen bieden ondersteuning voor zowel interactieve als niet-interactieve token overname.
 
-![Diagram van interactieve stroom](media/msal-authentication-flows/interactive.png)
+  - **Interactief** betekent dat de gebruiker wordt gevraagd om in te voeren. Bijvoorbeeld: de gebruiker wordt gevraagd om zich aan te melden, multi-factor Authentication (MFA) uit te voeren of extra toestemming te verlenen voor resources.
+  - **Niet-interactieve**of *stille*verificatie pogingen om een token op een manier te verkrijgen waarop de aanmeldings server de gebruiker *niet kan* vragen om aanvullende informatie.
 
-Zie voor meer informatie over het interactief verkrijgen van tokens op specifieke platforms:
-
-- [Interactieve aanvragenMSAL.js](msal-js-prompt-behavior.md)
-- [Universeel Windows-platform](msal-net-uwp-considerations.md)
-- [Xamarin Android](msal-net-xamarin-android-considerations.md)
-- [Xamarin iOS](msal-net-xamarin-ios-considerations.md)
-
-## <a name="implicit-grant"></a>Impliciete toekenning
-
-MSAL biedt ondersteuning voor de [impliciete toekennings stroom van OAuth 2](v2-oauth2-implicit-grant-flow.md) . Met deze stroom kan de app tokens ophalen van het micro soft Identity-platform zonder dat hiervoor een back-end-server referentie-uitwisseling wordt uitgevoerd. Met deze stroom kan de app zich aanmelden bij de gebruiker, een sessie onderhouden en tokens ophalen voor andere web-Api's, allemaal in de Java script-code van de client.
-
-![Diagram van impliciete toekennings stroom](media/msal-authentication-flows/implicit-grant.svg)
-
-Veel moderne webtoepassingen zijn gebouwd als client-side, single page-Applications (SPA) die zijn geschreven in Java script of een beveiligd-wachtwoord verificatie-Framework zoals hoek, Vue.js en React.js. Deze toepassingen worden uitgevoerd in een webbrowser en hebben verschillende verificatie kenmerken dan traditionele webtoepassingen aan de server zijde. Met het micro soft Identity-platform kunnen toepassingen met één pagina worden aangemeld en tokens worden verkregen voor toegang tot back-end-services of Web-Api's met behulp van de impliciete toekennings stroom. Met de impliciete stroom kan de toepassing ID-tokens ophalen om de geverifieerde gebruiker te vertegenwoordigen, en kunnen ook toegangs tokens worden verkregen die nodig zijn om beveiligde Api's aan te roepen.
-
-Deze verificatie stroom bevat geen toepassings scenario's die gebruikmaken van platformoverschrijdende java script frameworks zoals elektro assen of reageren op systeem eigen omdat ze verdere mogelijkheden nodig hebben voor interactie met de systeem eigen platformen.
-
-Tokens die via de modus impliciete stroom zijn uitgegeven, hebben een **beperkte lengte** , omdat ze worden geretourneerd naar de browser met behulp van een URL (waarbij `response_mode` `query` of `fragment` ). Sommige browsers beperken de lengte van de URL in de browser balk en mislukken wanneer deze te lang is. Deze impliciete stroom tokens bevatten daarom geen `groups` of `wids` claims.
+Uw MSAL-toepassing moet eerst proberen om een token op de *achtergrond*te verkrijgen en alleen interactief als de niet-interactieve methode mislukt. Zie voor meer informatie over dit patroon [tokens verkrijgen en cache gebruiken met behulp van de micro soft Authentication Library (MSAL)](msal-acquire-cache-tokens.md).
 
 ## <a name="authorization-code"></a>Autorisatiecode
 
-MSAL biedt ondersteuning voor de overdrachts stroom van de [OAuth 2-autorisatie code](v2-oauth2-auth-code-flow.md) . Deze stroom kan worden gebruikt in apps die op een apparaat zijn geïnstalleerd om toegang te krijgen tot beveiligde bronnen, zoals web-Api's. Zo kunt u aanmelden en API-toegang toevoegen aan uw mobiele en desktop-apps.
+De [OAuth 2 autorisatie code Grant](v2-oauth2-auth-code-flow.md) kan worden gebruikt in apps die op een apparaat zijn geïnstalleerd om toegang te krijgen tot beveiligde bronnen, zoals web-api's. Zo kunt u aanmelden en API-toegang toevoegen aan uw mobiele en desktop-apps.
 
 Wanneer gebruikers zich aanmelden bij webtoepassingen (websites), ontvangt de webtoepassing een autorisatie code. De autorisatie code wordt ingewisseld om een token te verkrijgen voor het aanroepen van web-Api's.
 
@@ -88,28 +70,15 @@ In het voor gaande diagram wordt de toepassing:
 1. Vraagt een autorisatie code op die wordt ingewisseld voor een toegangs token.
 2. Maakt gebruik van het toegangs token om een web-API aan te roepen.
 
-### <a name="considerations"></a>Overwegingen
+### <a name="considerations"></a>Aandachtspunten
 
 - U kunt de autorisatie code slechts eenmaal gebruiken voor het inwisselen van een token. Probeer niet meerdere keren een token te verkrijgen met dezelfde autorisatie code omdat het expliciet is verboden door de specificatie van het Protocol standaard. Als u de code verschillende keren verwisselt, hetzij opzettelijk, hetzij omdat u niet weet dat een framework dit ook voor u doet, krijgt u de volgende fout:
 
     `AADSTS70002: Error validating credentials. AADSTS54005: OAuth2 Authorization code was already redeemed, please retry with a new valid code or use an existing refresh token.`
 
-## <a name="on-behalf-of"></a>Namens-van
-
-MSAL ondersteunt de [OAuth 2-verificatie stroom op naam](v2-oauth2-on-behalf-of-flow.md). Deze stroom wordt gebruikt wanneer een toepassing een service of Web-API aanroept die op zijn beurt een andere service of Web-API moet aanroepen. Het is verstandig om de gedelegeerde gebruikers identiteit en de machtigingen via de aanvraag keten door te geven. Voor de middelste service om geverifieerde aanvragen voor de downstream-service te maken, moet een toegangs token worden beveiligd vanuit het micro soft Identity *-platform* namens de gebruiker.
-
-![Diagram van namens-stroom](media/msal-authentication-flows/on-behalf-of.png)
-
-In het bovenstaande diagram:
-
-1. De toepassing verkrijgt een toegangs token voor de Web-API.
-2. Een client (Web-, Desktop-, mobiele of toepassing met één pagina) roept een beveiligde web-API aan en voegt het toegangs token toe als Bearer-token in de verificatie header van de HTTP-aanvraag. De Web-API verifieert de gebruiker.
-3. Wanneer de-client de Web-API aanroept, vraagt de Web-API een andere token namens de gebruiker aan.
-4. De beveiligde web-API gebruikt dit token voor het aanroepen van een downstream Web-API namens de gebruiker. De Web-API kan ook later tokens aanvragen voor andere downstream-Api's (maar nog steeds namens dezelfde gebruiker).
-
 ## <a name="client-credentials"></a>Clientreferenties
 
-MSAL biedt ondersteuning voor de [gegevens stroom van de OAuth 2-client](v2-oauth2-client-creds-grant-flow.md). Met deze stroom kunt u toegang krijgen tot webtoepassingen met behulp van de identiteit van een toepassing. Dit type toekenning wordt meestal gebruikt voor server-naar-server-interacties die op de achtergrond moeten worden uitgevoerd, zonder directe interactie met een gebruiker. Deze typen toepassingen worden vaak daemons of service accounts genoemd.
+Met de [OAuth 2 client-gegevens stroom](v2-oauth2-client-creds-grant-flow.md) kunt u toegang krijgen tot webbronnen met behulp van de identiteit van een toepassing. Dit type toekenning wordt meestal gebruikt voor server-naar-server-interacties die op de achtergrond moeten worden uitgevoerd, zonder directe interactie met een gebruiker. Deze typen toepassingen worden vaak daemons of service accounts genoemd.
 
 De overdrachts stroom van client referenties staat een webservice (een vertrouwelijke client) toe om eigen referenties te gebruiken, in plaats van een gebruiker te imiteren, om te verifiëren bij het aanroepen van een andere webservice. In dit scenario is de client doorgaans een middelste laag, een daemon-service of een website. Voor een hoger garantie niveau kan het micro soft Identity-platform ook een certificaat (in plaats van een gedeeld geheim) als referentie gebruiken.
 
@@ -141,7 +110,7 @@ Deze client referenties moeten:
 
 ## <a name="device-code"></a>Apparaatcode
 
-MSAL ondersteunt de [code stroom van het OAuth 2-apparaat](v2-oauth2-device-code.md) , waarmee gebruikers zich kunnen aanmelden bij apparaten met invoer beperkingen zoals Smart Tv's, IOT-apparaten en printers. Interactieve verificatie met Azure AD vereist een webbrowser. Als het apparaat of besturings systeem geen webbrowser heeft, kan de gebruiker met de code stroom van het apparaat een ander apparaat gebruiken, zoals een computer of mobiele telefoon om zich interactief aan te melden.
+Met de [code ring van het OAuth 2-apparaat](v2-oauth2-device-code.md) kunnen gebruikers zich aanmelden op apparaten met invoer beperkingen zoals Smart Tv's, IOT-apparaten en printers. Interactieve verificatie met Azure AD vereist een webbrowser. Als het apparaat of besturings systeem geen webbrowser heeft, kan de gebruiker met de code stroom van het apparaat een ander apparaat gebruiken, zoals een computer of mobiele telefoon om zich interactief aan te melden.
 
 Door de apparaatcode stroom te gebruiken, haalt de toepassing tokens op via een proces met twee stappen dat is ontworpen voor deze apparaten en besturings systemen. Voor beelden van dergelijke toepassingen zijn de Program ma's die worden uitgevoerd op IoT-apparaten en de opdracht regel interface (CLI).
 
@@ -159,51 +128,34 @@ In het bovenstaande diagram:
   - Tenanted, in de vorm `https://login.microsoftonline.com/{tenant}/,` waar `{tenant}` is de GUID voor de Tenant-id of een domein naam die aan de Tenant is gekoppeld.
   - Voor werk-en school accounts in het formulier `https://login.microsoftonline.com/organizations/` .
 
-## <a name="integrated-windows-authentication"></a>Geïntegreerde Windows-authenticatie
+## <a name="implicit-grant"></a>Impliciete toekenning
 
-MSAL biedt ondersteuning voor geïntegreerde Windows-verificatie (IWA) voor desktop-en Mobile-toepassingen die worden uitgevoerd op een Windows-computer die lid is van een domein of die is toegevoegd aan Azure AD. Met behulp van IWA kunnen deze toepassingen een token op de achtergrond verkrijgen zonder gebruikers interface-interactie door de gebruiker te vereisen.
+Met de impliciete toewijzings stroom [OAuth 2](v2-oauth2-implicit-grant-flow.md) kan de app tokens ophalen van het micro soft-identiteits platform zonder dat hiervoor een back-end-server referentie-uitwisseling wordt uitgevoerd. Met deze stroom kan de app zich aanmelden bij de gebruiker, een sessie onderhouden en tokens ophalen voor andere web-Api's, allemaal in de Java script-code van de client.
 
-![Diagram van geïntegreerde Windows-verificatie](media/msal-authentication-flows/integrated-windows-authentication.png)
+![Diagram van impliciete toekennings stroom](media/msal-authentication-flows/implicit-grant.svg)
 
-In het voor gaande diagram wordt de toepassing:
+Veel moderne webtoepassingen zijn gebouwd als client-side, single page-Applications (SPA) die zijn geschreven in Java script of een beveiligd-wachtwoord verificatie-Framework zoals hoek, Vue.js en React.js. Deze toepassingen worden uitgevoerd in een webbrowser en hebben verschillende verificatie kenmerken dan traditionele webtoepassingen aan de server zijde. Met het micro soft Identity-platform kunnen toepassingen met één pagina worden aangemeld en tokens worden verkregen voor toegang tot back-end-services of Web-Api's met behulp van de impliciete toekennings stroom. Met de impliciete stroom kan de toepassing ID-tokens ophalen om de geverifieerde gebruiker te vertegenwoordigen, en kunnen ook toegangs tokens worden verkregen die nodig zijn om beveiligde Api's aan te roepen.
 
-1. Verkrijgt een token met behulp van geïntegreerde Windows-verificatie.
-2. Gebruikt het token om aanvragen van de resource te maken.
+Deze verificatie stroom bevat geen toepassings scenario's die gebruikmaken van platformoverschrijdende java script frameworks zoals elektro assen of reageren op systeem eigen omdat ze verdere mogelijkheden nodig hebben voor interactie met de systeem eigen platformen.
 
-### <a name="constraints"></a>Beperkingen
+Tokens die via de modus impliciete stroom zijn uitgegeven, hebben een **beperkte lengte** , omdat ze worden geretourneerd naar de browser met behulp van een URL (waarbij `response_mode` `query` of `fragment` ). Sommige browsers beperken de lengte van de URL in de browser balk en mislukken wanneer deze te lang is. Deze impliciete stroom tokens bevatten daarom geen `groups` of `wids` claims.
 
-Geïntegreerde Windows-verificatie (IWA) ondersteunt *alleen* federatieve gebruikers: gebruikers die zijn gemaakt in Active Directory en worden ondersteund door Azure AD. Gebruikers die rechtstreeks in azure AD zijn gemaakt zonder Active Directory-back-ups (beheerde gebruikers), kunnen deze verificatie stroom niet gebruiken. Deze beperking heeft geen invloed op de [gebruikers naam en het wacht woord](#usernamepassword).
+## <a name="on-behalf-of"></a>Namens-van
 
-IWA is voor .NET Framework-, .NET core-en Universeel Windows-platform-toepassingen.
+De time-outstroom [OAuth 2-verificatie](v2-oauth2-on-behalf-of-flow.md) wordt gebruikt wanneer een toepassing een service of Web-API aanroept die op zijn beurt een andere service of Web-API moet aanroepen. Het is verstandig om de gedelegeerde gebruikers identiteit en de machtigingen via de aanvraag keten door te geven. Voor de middelste service om geverifieerde aanvragen voor de downstream-service te maken, moet een toegangs token worden beveiligd vanuit het micro soft Identity *-platform* namens de gebruiker.
 
-IWA niet overs Laan multi-factor Authentication. Als multi-factor Authentication is geconfigureerd, kan IWA mislukken als een multi-factor Authentication-Challenge vereist is. Multi-factor Authentication vereist gebruikers interactie.
+![Diagram van namens-stroom](media/msal-authentication-flows/on-behalf-of.png)
 
-U kunt niet bepalen wanneer de identiteits provider twee ledige verificatie aanvragen moet uitvoeren. De Tenant beheerder doet dat. Normaal gesp roken is twee ledige verificatie vereist wanneer u zich aanmeldt vanuit een ander land of een andere regio, wanneer u niet verbonden bent via VPN met een bedrijfs netwerk, en soms zelfs wanneer u verbinding hebt via VPN. Azure AD maakt gebruik van AI om voortdurend te leren wanneer twee ledige verificatie is vereist. Als IWA mislukt, moet u terugvallen op een [interactieve prompt](#interactive)van de gebruiker.
+In het bovenstaande diagram:
 
-De door gegeven instantie bij het maken van de open bare client toepassing moet een van de volgende zijn:
-
-- Tenanted, in de vorm `https://login.microsoftonline.com/{tenant}/,` waar `{tenant}` is de GUID voor de Tenant-id of een domein naam die aan de Tenant is gekoppeld.
-- Voor elke werk-en school account ( `https://login.microsoftonline.com/organizations/` ). Micro soft Personal accounts (MSA) worden niet ondersteund. u kunt geen `/common` `/consumers` tenants gebruiken.
-
-Omdat IWA een stille stroom is, moet een van de volgende voor waarden worden voldaan:
-
-- De gebruiker van uw toepassing moet eerder hebben ingestemd om de toepassing te gebruiken.
-- De Tenant beheerder moet eerder toestemming hebben gegeven voor alle gebruikers in de Tenant om de toepassing te gebruiken.
-
-Dit betekent dat een van de volgende voor waarden waar is:
-
-- Als ontwikkelaar hebt u de mogelijkheid **verleend** in de Azure portal voor uzelf te selecteren.
-- Een Tenant beheerder heeft de **toestemming beheerder verlenen/intrekken voor {Tenant domein}** geselecteerd op het tabblad **API-machtigingen** van de app-registratie in de Azure Portal (Zie [machtigingen toevoegen voor toegang tot Web-api's](quickstart-configure-app-access-web-apis.md#add-permissions-to-access-web-apis)).
-- U hebt de mogelijkheid gegeven om gebruikers toestemming te geven voor de toepassing; Zie [toestemming van individuele gebruiker aanvragen](v2-permissions-and-consent.md#requesting-individual-user-consent).
-- U hebt de mogelijkheid van de Tenant beheerder om toestemming te geven voor de toepassing. Zie [toestemming](v2-permissions-and-consent.md#requesting-consent-for-an-entire-tenant)van de beheerder.
-
-De IWA-stroom is ingeschakeld voor .NET Desktop-, .NET core-en Windows Universal platform-apps. In .NET Core moet u de gebruikers naam opgeven voor IWA, omdat .NET core geen gebruikers namen kan ophalen uit het besturings systeem.
-
-Zie [v 2.0-machtigingen en-toestemming](v2-permissions-and-consent.md)voor meer informatie over toestemming.
+1. De toepassing verkrijgt een toegangs token voor de Web-API.
+2. Een client (Web-, Desktop-, mobiele of toepassing met één pagina) roept een beveiligde web-API aan en voegt het toegangs token toe als Bearer-token in de verificatie header van de HTTP-aanvraag. De Web-API verifieert de gebruiker.
+3. Wanneer de-client de Web-API aanroept, vraagt de Web-API een andere token namens de gebruiker aan.
+4. De beveiligde web-API gebruikt dit token voor het aanroepen van een downstream Web-API namens de gebruiker. De Web-API kan ook later tokens aanvragen voor andere downstream-Api's (maar nog steeds namens dezelfde gebruiker).
 
 ## <a name="usernamepassword"></a>Gebruikersnaam en wachtwoord
 
-MSAL ondersteunt de [OAuth 2 resource owner Grant](v2-oauth-ropc.md) (ROPC), waarmee een toepassing zich kan aanmelden bij de gebruiker door rechtstreeks hun wacht woord af te handelen. In uw bureaublad toepassing kunt u de stroom gebruikers naam/wacht woord gebruiken om een token op de achtergrond te verkrijgen. Er is geen gebruikers interface vereist bij het gebruik van de toepassing.
+Met de machtiging wacht woord voor [OAuth 2 resource owner](v2-oauth-ropc.md) (ROPC) kan een toepassing zich aanmelden bij de gebruiker door rechtstreeks hun wacht woord af te handelen. In uw bureaublad toepassing kunt u de stroom gebruikers naam/wacht woord gebruiken om een token op de achtergrond te verkrijgen. Er is geen gebruikers interface vereist bij het gebruik van de toepassing.
 
 ![Diagram van de gebruikers naam/wacht woord stroom](media/msal-authentication-flows/username-password.png)
 
@@ -229,12 +181,51 @@ Met gebruikers naam/wacht woord:
 Naast de [beperkingen voor geïntegreerde Windows-verificatie](#integrated-windows-authentication)gelden de volgende beperkingen ook:
 
 - De gebruikers naam/wacht woord stroom is niet compatibel met voorwaardelijke toegang en multi-factor Authentication. Als uw app wordt uitgevoerd in een Azure AD-Tenant waarvoor de Tenant beheerder multi-factor Authentication vereist, kunt u deze stroom niet gebruiken. Veel organisaties doen dat.
-- Het werkt alleen voor werk-en school accounts (geen micro soft-accounts).
+- ROPC werkt alleen voor werk-en school accounts. U kunt ROPC voor micro soft-accounts (MSA) niet gebruiken.
 - De stroom is beschikbaar op .NET Desktop en .NET core, maar niet op Universeel Windows-platform.
+- In Azure AD B2C werkt de ROPC-stroom alleen voor lokale accounts. Zie [using ROPC with Azure AD B2C](msal-net-aad-b2c-considerations.md#resource-owner-password-credentials-ropc)voor meer informatie over ROPC in MSAL.NET en Azure AD B2C.
 
-### <a name="azure-ad-b2c-and-ropc"></a>Azure AD B2C en ROPC
+## <a name="integrated-windows-authentication"></a>Geïntegreerde Windows-authenticatie
 
-Zie [using ROPC with Azure AD B2C](msal-net-aad-b2c-considerations.md#resource-owner-password-credentials-ropc)(Engelstalig) voor meer informatie over het gebruik van ROPC in MSAL.NET en Azure AD B2C.
+MSAL biedt ondersteuning voor geïntegreerde Windows-verificatie (IWA) voor desktop-en Mobile-toepassingen die worden uitgevoerd op een Windows-computer die lid is van een domein of die is toegevoegd aan Azure AD. Met behulp van IWA kunnen deze toepassingen een token op de achtergrond verkrijgen zonder gebruikers interface-interactie door de gebruiker te vereisen.
+
+![Diagram van geïntegreerde Windows-verificatie](media/msal-authentication-flows/integrated-windows-authentication.png)
+
+In het voor gaande diagram wordt de toepassing:
+
+1. Verkrijgt een token met behulp van geïntegreerde Windows-verificatie.
+2. Gebruikt het token om aanvragen van de resource te maken.
+
+### <a name="constraints"></a>Beperkingen
+
+Geïntegreerde Windows-verificatie (IWA) ondersteunt *alleen* federatieve gebruikers: gebruikers die zijn gemaakt in Active Directory en worden ondersteund door Azure AD. Gebruikers die rechtstreeks in azure AD zijn gemaakt zonder Active Directory-back-ups (beheerde gebruikers), kunnen deze verificatie stroom niet gebruiken. Deze beperking heeft geen invloed op de [gebruikers naam en het wacht woord](#usernamepassword).
+
+IWA is voor .NET Framework-, .NET core-en Universeel Windows-platform-toepassingen.
+
+IWA niet overs Laan multi-factor Authentication. Als multi-factor Authentication is geconfigureerd, kan IWA mislukken als een multi-factor Authentication-Challenge vereist is. Multi-factor Authentication vereist gebruikers interactie.
+
+U kunt niet bepalen wanneer de identiteits provider twee ledige verificatie aanvragen moet uitvoeren. De Tenant beheerder doet dat. Normaal gesp roken is twee ledige verificatie vereist wanneer u zich aanmeldt vanuit een ander land of een andere regio, wanneer u niet verbonden bent via VPN met een bedrijfs netwerk, en soms zelfs wanneer u verbinding hebt via VPN. Azure AD maakt gebruik van AI om voortdurend te leren wanneer twee ledige verificatie is vereist. Als IWA mislukt, moet u terugvallen op een [interactieve prompt](#interactive-and-non-interactive-authentication)van de gebruiker.
+
+De door gegeven instantie bij het maken van de open bare client toepassing moet een van de volgende zijn:
+
+- Tenanted, in de vorm `https://login.microsoftonline.com/{tenant}/,` waar `{tenant}` is de GUID voor de Tenant-id of een domein naam die aan de Tenant is gekoppeld.
+- Voor elke werk-en school account ( `https://login.microsoftonline.com/organizations/` ). Micro soft Personal accounts (MSA) worden niet ondersteund. u kunt geen `/common` `/consumers` tenants gebruiken.
+
+Omdat IWA een stille stroom is, moet een van de volgende voor waarden worden voldaan:
+
+- De gebruiker van uw toepassing moet eerder hebben ingestemd om de toepassing te gebruiken.
+- De Tenant beheerder moet eerder toestemming hebben gegeven voor alle gebruikers in de Tenant om de toepassing te gebruiken.
+
+Dit betekent dat een van de volgende voor waarden waar is:
+
+- Als ontwikkelaar hebt u de mogelijkheid **verleend** in de Azure portal voor uzelf te selecteren.
+- Een Tenant beheerder heeft de **toestemming beheerder verlenen/intrekken voor {Tenant domein}** geselecteerd op het tabblad **API-machtigingen** van de app-registratie in de Azure Portal (Zie [machtigingen toevoegen voor toegang tot Web-api's](quickstart-configure-app-access-web-apis.md#add-permissions-to-access-web-apis)).
+- U hebt de mogelijkheid gegeven om gebruikers toestemming te geven voor de toepassing; Zie [toestemming van individuele gebruiker aanvragen](v2-permissions-and-consent.md#requesting-individual-user-consent).
+- U hebt de mogelijkheid van de Tenant beheerder om toestemming te geven voor de toepassing. Zie [toestemming](v2-permissions-and-consent.md#requesting-consent-for-an-entire-tenant)van de beheerder.
+
+De IWA-stroom is ingeschakeld voor .NET Desktop-, .NET core-en Windows Universal platform-apps. In .NET Core moet u de gebruikers naam opgeven voor IWA, omdat .NET core geen gebruikers namen kan ophalen uit het besturings systeem.
+
+Zie [v 2.0-machtigingen en-toestemming](v2-permissions-and-consent.md)voor meer informatie over toestemming.
 
 ## <a name="next-steps"></a>Volgende stappen
 

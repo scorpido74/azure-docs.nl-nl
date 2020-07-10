@@ -1,5 +1,5 @@
 ---
-title: Application Gateway-onderdelen
+title: Onderdelen van Application Gateway
 description: Dit artikel bevat informatie over de verschillende onderdelen in een toepassings gateway
 services: application-gateway
 author: abshamsft
@@ -7,14 +7,14 @@ ms.service: application-gateway
 ms.topic: conceptual
 ms.date: 02/20/2019
 ms.author: absha
-ms.openlocfilehash: 46ef67e5ede1ea41469a8dcc78244e74c0bffc45
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 798137a74f22824dbfec9653bff327d3a0a1f3b4
+ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85254324"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86186755"
 ---
-# <a name="application-gateway-components"></a>Application Gateway-onderdelen
+# <a name="application-gateway-components"></a>Onderdelen van Application Gateway
 
  Een toepassings gateway fungeert als één aanspreek punt voor clients. Het distribueert het binnenkomende toepassings verkeer over meerdere back-end-Pools, waaronder Azure-Vm's, schaal sets voor virtuele machines, Azure App Service en on-premises/externe servers. Voor het distribueren van verkeer gebruikt een toepassings gateway verschillende onderdelen die in dit artikel worden beschreven.
 
@@ -144,7 +144,7 @@ U kunt verschillende back-endservers maken voor verschillende typen aanvragen. M
 
 Standaard controleert een toepassings gateway de status van alle resources in de back-end-pool en worden de beschadigde items automatisch verwijderd. Vervolgens worden de beschadigde instanties bewaakt en worden ze weer toegevoegd aan de juiste back-end-groep wanneer deze beschikbaar komen en reageren op status controles.
 
-Naast het gebruik van de standaard controle van de status test, kunt u ook de status test aanpassen aan de vereisten van uw toepassing. Met aangepaste tests kunt u de controle over de status controle nauw keuriger maken. Bij het gebruik van aangepaste tests kunt u het test interval, de URL en het pad voor testen en het aantal mislukte antwoorden accepteren voordat het exemplaar van de back-endadresgroep is gemarkeerd als beschadigd. U wordt aangeraden aangepaste tests te configureren om de status van elke back-end-groep te controleren.
+Naast het gebruik van de standaard controle van de status test, kunt u ook de status test aanpassen aan de vereisten van uw toepassing. Met aangepaste tests kunt u de controle over de status controle nauw keuriger maken. Wanneer u aangepaste tests gebruikt, kunt u een aangepaste hostnaam, een URL-pad, een test interval, en het aantal mislukte antwoorden dat moet worden geaccepteerd voordat u het exemplaar van de back-end-groep markeert als beschadigd, aangepaste status codes en overeenkomen met de antwoord tekst, enzovoort configureren. U wordt aangeraden aangepaste tests te configureren om de status van elke back-end-groep te controleren.
 
 Zie [de status van uw toepassings gateway bewaken](../application-gateway/application-gateway-probe-overview.md)voor meer informatie.
 

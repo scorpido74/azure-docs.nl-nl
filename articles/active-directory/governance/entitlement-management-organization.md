@@ -16,11 +16,12 @@ ms.date: 06/18/2020
 ms.author: barclayn
 ms.reviewer: mwahl
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d8928e7293f184e8eb366df6a29e50cbea6a7c93
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 272dd95b97c65ecc52dd73909f1ed87d5e5ae3ca
+ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85078195"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86170493"
 ---
 # <a name="add-a-connected-organization-in-azure-ad-entitlement-management"></a>Een verbonden organisatie toevoegen in het beheer van rechten van Azure AD
 
@@ -53,7 +54,7 @@ Bekijk de volgende video voor een demonstratie van het toevoegen van een verbond
 
 Volg de instructies in deze sectie om een extern Azure AD-Directory of-domein toe te voegen als verbonden organisatie.
 
-**Vereiste rol**: *globale beheerder*, *gebruikers beheerder*of *gast uitnodiging*
+**Vereiste rol**: *globale beheerder* of *gebruikers beheerder*
 
 1. Selecteer **Azure Active Directory**In het Azure Portal en selecteer vervolgens **Identity governance**.
 

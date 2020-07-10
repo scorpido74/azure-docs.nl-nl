@@ -4,11 +4,12 @@ description: Meer informatie over het ontwikkelen van functies met python
 ms.topic: article
 ms.date: 12/13/2019
 ms.custom: tracking-python
-ms.openlocfilehash: 26da89628360783e4507c83c3aeaddfc2b0510b7
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 3d3e313d464a8da8b62d5c22b5983c6458f42b5d
+ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84730744"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86170374"
 ---
 # <a name="azure-functions-python-developer-guide"></a>Ontwikkelaarshandleiding voor Azure Functions Python
 
@@ -188,7 +189,7 @@ def main(req: func.HttpRequest,
 Wanneer de functie wordt aangeroepen, wordt de HTTP-aanvraag door gegeven aan de functie als `req` . Er wordt een item opgehaald uit de Azure-Blob Storage op basis van de id in de route _-_ URL en beschikbaar gemaakt als `obj` in de hoofd tekst van de functie.  Hier is het opgegeven opslag account het connection string gevonden in de app-instelling AzureWebJobsStorage. Dit is hetzelfde opslag account dat wordt gebruikt door de functie-app.
 
 
-## <a name="outputs"></a>Uitvoerwaarden
+## <a name="outputs"></a>Uitvoer
 
 Output kan worden uitgedrukt in retour waarde en uitvoer parameters. Als er slechts één uitvoer is, raden we u aan de retour waarde te gebruiken. Voor meerdere uitvoer moet u uitvoer parameters gebruiken.
 
@@ -427,17 +428,15 @@ Wanneer u klaar bent om te publiceren, moet u ervoor zorgen dat alle openbaar be
 
 Project bestanden en-mappen die zijn uitgesloten van publiceren, met inbegrip van de map virtuele omgeving, worden weer gegeven in het funcignore-bestand.
 
-Er zijn drie build-acties die worden ondersteund voor het publiceren van uw python-project naar Azure:
+Er zijn drie build-acties die worden ondersteund voor het publiceren van uw python-project naar Azure: externe build, local build en builds met aangepaste afhankelijkheden.
 
-+ Externe build: afhankelijkheden worden op afstand opgehaald op basis van de inhoud van het requirements.txt-bestand. [Externe build](functions-deployment-technologies.md#remote-build) is de aanbevolen methode build. Extern is ook de standaard optie voor het bouwen van Azure-hulpprogram ma's.
-+ Lokale build: afhankelijkheden worden lokaal opgehaald op basis van de inhoud van het requirements.txt-bestand.
-+ Aangepaste afhankelijkheden: in uw project worden pakketten gebruikt die niet openbaar beschikbaar zijn voor onze tools. (Hiervoor is docker vereist.)
-
-Als u uw afhankelijkheden wilt maken en publiceren met behulp van een systeem voor continue levering (CD), [gebruikt u Azure-pijp lijnen](functions-how-to-azure-devops.md).
+U kunt ook Azure-pijp lijnen gebruiken om uw afhankelijkheden te maken en te publiceren met behulp van doorlopende levering (CD). Zie [continue levering met behulp van Azure DevOps](functions-how-to-azure-devops.md)voor meer informatie.
 
 ### <a name="remote-build"></a>Externe build
 
-Standaard vraagt de Azure Functions Core Tools een externe build aan wanneer u de volgende [func Azure functionapp Publish](functions-run-local.md#publish) -opdracht gebruikt om uw python-project naar Azure te publiceren.
+Bij het gebruik van externe builden worden afhankelijkheden die zijn hersteld op de server en native afhankelijkheden overeenkomen met de productie omgeving. Dit resulteert in een kleiner implementatie pakket dat moet worden geüpload. Gebruik externe build bij het ontwikkelen van python-apps in Windows. Als uw project aangepaste afhankelijkheden heeft, kunt u [externe build gebruiken met extra index-URL](#remote-build-with-extra-index-url). 
+ 
+Afhankelijkheden worden op afstand opgehaald op basis van de inhoud van het requirements.txt-bestand. [Externe build](functions-deployment-technologies.md#remote-build) is de aanbevolen methode build. Standaard vraagt de Azure Functions Core Tools een externe build aan wanneer u de volgende [func Azure functionapp Publish](functions-run-local.md#publish) -opdracht gebruikt om uw python-project naar Azure te publiceren.
 
 ```bash
 func azure functionapp publish <APP_NAME>
@@ -449,7 +448,7 @@ Met de [extensie Azure functions voor Visual Studio code](functions-create-first
 
 ### <a name="local-build"></a>Lokale build
 
-U kunt voor komen dat een externe build wordt gemaakt met behulp van de volgende [func Azure functionapp Publish](functions-run-local.md#publish) -opdracht om te publiceren met een lokale build.
+Afhankelijkheden worden lokaal opgehaald op basis van de inhoud van het requirements.txt-bestand. U kunt voor komen dat een externe build wordt gemaakt met behulp van de volgende [func Azure functionapp Publish](functions-run-local.md#publish) -opdracht om te publiceren met een lokale build.
 
 ```command
 func azure functionapp publish <APP_NAME> --build local
@@ -457,9 +456,21 @@ func azure functionapp publish <APP_NAME> --build local
 
 Vervang door `<APP_NAME>` de naam van uw functie-app in Azure.
 
-Met behulp `--build local` van de optie worden Project afhankelijkheden uit het requirements.txt-bestand gelezen en worden deze afhankelijke pakketten lokaal gedownload en geïnstalleerd. Project bestanden en afhankelijkheden worden geïmplementeerd vanaf uw lokale computer naar Azure. Dit leidt ertoe dat een groter implementatie pakket wordt geüpload naar Azure. Als u om de een of andere reden geen afhankelijkheden in uw requirements.txt bestand kunt verkrijgen, moet u de optie aangepaste afhankelijkheden gebruiken voor het publiceren.
+Met behulp `--build local` van de optie worden Project afhankelijkheden uit het requirements.txt-bestand gelezen en worden deze afhankelijke pakketten lokaal gedownload en geïnstalleerd. Project bestanden en afhankelijkheden worden geïmplementeerd vanaf uw lokale computer naar Azure. Dit leidt ertoe dat een groter implementatie pakket wordt geüpload naar Azure. Als u om de een of andere reden geen afhankelijkheden in uw requirements.txt bestand kunt verkrijgen, moet u de optie aangepaste afhankelijkheden gebruiken voor het publiceren. 
+
+Het is niet raadzaam om lokale builds te gebruiken bij het ontwikkelen van lokaal op Windows.
 
 ### <a name="custom-dependencies"></a>Aangepaste afhankelijkheden
+
+Wanneer het project geen afhankelijkheden heeft gevonden in de [python-pakket index](https://pypi.org/), zijn er twee manieren om het project te bouwen. De methode build is afhankelijk van hoe u het project bouwt.
+
+#### <a name="remote-build-with-extra-index-url"></a>Externe build met extra index-URL
+
+Gebruik een externe build als uw pakketten beschikbaar zijn vanuit een toegankelijke aangepaste pakket index. Zorg ervoor dat u [een app-instelling met de naam maakt](functions-how-to-use-azure-function-app-settings.md#settings) voordat u publiceert `PIP_EXTRA_INDEX_URL` . De waarde voor deze instelling is de URL van de aangepaste pakket index. Met deze instelling geeft u aan dat de externe build moet worden uitgevoerd `pip install` met behulp van de `--extra-index-url` optie. Zie de [installatie documentatie voor python pip](https://pip.pypa.io/en/stable/reference/pip_install/#requirements-file-format)voor meer informatie. 
+
+U kunt ook basis verificatie referenties gebruiken met de extra pakket index-Url's. Zie voor meer informatie [basis verificatie referenties](https://pip.pypa.io/en/stable/user_guide/#basic-authentication-credentials) in python-documentatie.
+
+#### <a name="install-local-packages"></a>Lokale pakketten installeren
 
 Als uw project pakketten gebruikt die niet openbaar beschikbaar zijn voor onze tools, kunt u ze beschikbaar maken voor uw app door ze te plaatsen in de \_ \_ \_ \_ map app/. python_packages. Voordat u publiceert, voert u de volgende opdracht uit om de afhankelijkheden lokaal te installeren:
 
@@ -467,7 +478,7 @@ Als uw project pakketten gebruikt die niet openbaar beschikbaar zijn voor onze t
 pip install  --target="<PROJECT_DIR>/.python_packages/lib/site-packages"  -r requirements.txt
 ```
 
-Wanneer u aangepaste afhankelijkheden gebruikt, moet u de `--no-build` optie voor publiceren gebruiken omdat u de afhankelijkheden al hebt geïnstalleerd.
+Wanneer u aangepaste afhankelijkheden gebruikt, moet u de `--no-build` optie voor publiceren gebruiken omdat u de afhankelijkheden al hebt geïnstalleerd in de projectmap.
 
 ```command
 func azure functionapp publish <APP_NAME> --no-build
@@ -665,8 +676,8 @@ Volg de onderstaande koppelingen voor een lijst met vooraf geïnstalleerde syste
 
 |  Functions runtime  | Debian-versie | Python-versies |
 |------------|------------|------------|
-| Versie 2. x | Stretch  | [Python 3.6](https://github.com/Azure/azure-functions-docker/blob/master/host/2.0/stretch/amd64/python/python36/python36.Dockerfile)<br/>[Python 3,7](https://github.com/Azure/azure-functions-docker/blob/master/host/2.0/stretch/amd64/python/python37/python37.Dockerfile) |
-| Versie 3. x | Buster | [Python 3.6](https://github.com/Azure/azure-functions-docker/blob/master/host/3.0/buster/amd64/python/python36/python36.Dockerfile)<br/>[Python 3,7](https://github.com/Azure/azure-functions-docker/blob/master/host/3.0/buster/amd64/python/python37/python37.Dockerfile)<br />[Python 3.8](https://github.com/Azure/azure-functions-docker/blob/master/host/3.0/buster/amd64/python/python38/python38.Dockerfile) |
+| Versie 2. x | Stretch  | [Python 3.6](https://github.com/Azure/azure-functions-docker/blob/master/host/2.0/stretch/amd64/python/python36/python36.Dockerfile)<br/>[Python 3.7](https://github.com/Azure/azure-functions-docker/blob/master/host/2.0/stretch/amd64/python/python37/python37.Dockerfile) |
+| Versie 3. x | Buster | [Python 3.6](https://github.com/Azure/azure-functions-docker/blob/master/host/3.0/buster/amd64/python/python36/python36.Dockerfile)<br/>[Python 3.7](https://github.com/Azure/azure-functions-docker/blob/master/host/3.0/buster/amd64/python/python37/python37.Dockerfile)<br />[Python 3.8](https://github.com/Azure/azure-functions-docker/blob/master/host/3.0/buster/amd64/python/python38/python38.Dockerfile) |
 
 ## <a name="cross-origin-resource-sharing"></a>Cross-origin-resources delen
 

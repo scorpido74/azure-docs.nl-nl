@@ -5,16 +5,16 @@ ms.assetid: 242736be-ec66-4114-924b-31795fd18884
 ms.topic: conceptual
 ms.date: 03/13/2019
 ms.custom: 80e4ff38-5174-43
-ms.openlocfilehash: 35d408c636e20aef9495e72bc8535e0d7a99431e
-ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.openlocfilehash: 8a68c793d9aaf94ad28f2e478254e42ede4800de
+ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/05/2020
-ms.locfileid: "85955265"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86170357"
 ---
 # <a name="work-with-azure-functions-core-tools"></a>Werken met Azure Functions Core Tools
 
-Met Azure Functions Core Tools kunt u uw functies op de lokale computer ontwikkelen en testen vanaf de opdracht prompt of Terminal. Uw lokale functies kunnen verbinding maken met Live Azure-Services, en u kunt fouten opsporen in uw functies op uw lokale computer met behulp van de volledige functions-runtime. U kunt zelfs een functie-app implementeren in uw Azure-abonnement.
+Met Azure Functions Core Tools kunt u uw functies op uw lokale computer ontwikkelen en testen vanaf de opdrachtprompt of terminal. Uw lokale functies kunnen verbinding maken met Live Azure-Services, en u kunt fouten opsporen in uw functies op uw lokale computer met behulp van de volledige functions-runtime. U kunt zelfs een functie-app implementeren in uw Azure-abonnement.
 
 [!INCLUDE [Don't mix development environments](../../includes/functions-mixed-dev-environments.md)]
 
@@ -116,15 +116,15 @@ De volgende stappen gebruiken [apt](https://wiki.debian.org/Apt) om kern hulppro
     sudo mv microsoft.gpg /etc/apt/trusted.gpg.d/microsoft.gpg
     ```
 
-1. Stel de .NET-ontwikkel bron lijst in voordat u een APT-update uitvoert.
+1. Stel de bron lijst APT in voordat u een APT-update uitvoert.
 
-   Voer de volgende opdracht uit om de APT-bron lijst voor Ubuntu in te stellen:
+    ##### <a name="ubuntu"></a>Ubuntu
 
     ```bash
     sudo sh -c 'echo "deb [arch=amd64] https://packages.microsoft.com/repos/microsoft-ubuntu-$(lsb_release -cs)-prod $(lsb_release -cs) main" > /etc/apt/sources.list.d/dotnetdev.list'
     ```
 
-   Voer de volgende opdracht uit om de APT-bron lijst voor Debian in te stellen:
+    ##### <a name="debian"></a>Debian
 
     ```bash
     sudo sh -c 'echo "deb [arch=amd64] https://packages.microsoft.com/debian/$(lsb_release -rs | cut -d'.' -f 1)/prod $(lsb_release -cs) main" > /etc/apt/sources.list.d/dotnetdev.list'
@@ -136,6 +136,7 @@ De volgende stappen gebruiken [apt](https://wiki.debian.org/Apt) om kern hulppro
     | --------------- | ----------- |
     | Debian 10 | `buster`  |
     | Debian 9  | `stretch` |
+    | Ubuntu 20,04    | `focal`     |
     | Ubuntu 19,04    | `disco`     |
     | Ubuntu 18,10    | `cosmic`    |
     | Ubuntu 18.04    | `bionic`    |
@@ -204,24 +205,19 @@ Initialized empty Git repository in C:/myfunctions/myMyFunctionProj/.git/
 
 `func init`ondersteunt de volgende opties, versie 3. x/2. x-only, tenzij anders vermeld:
 
-| Optie     | Description                            |
+| Optie     | Beschrijving                            |
 | ------------ | -------------------------------------- |
-| **`--csharp`**<br/> **`--dotnet`** | Initialiseert een [C#-Class Library-project (. cs)](functions-dotnet-class-library.md). |
-| **`--csx`** | Initialiseert een [C# script-project (. CSX)](functions-reference-csharp.md). U moet `--csx` in volgende opdrachten opgeven. |
-| **`--docker`** | Maak een Dockerfile voor een container met behulp van een basis installatie kopie op basis van de gekozen `--worker-runtime` . Gebruik deze optie wanneer u van plan bent om te publiceren naar een aangepaste Linux-container. |
+| **`--csx`** | Maakt .NET-functies als C#-script. Dit is het gedrag van versie 1. x. Alleen geldig met `--worker-runtime dotnet` . |
+| **`--docker`** | Hiermee maakt u een Dockerfile voor een container met behulp van een basis installatie kopie op basis van de gekozen `--worker-runtime` . Gebruik deze optie wanneer u van plan bent om te publiceren naar een aangepaste Linux-container. |
 | **`--docker-only`** |  Hiermee wordt een Dockerfile toegevoegd aan een bestaand project. Hiermee wordt u gevraagd om de werk nemer-runtime als deze niet is opgegeven of ingesteld in local.settings.jsop. Gebruik deze optie wanneer u van plan bent een bestaand project te publiceren naar een aangepaste Linux-container. |
 | **`--force`** | Initialiseer het project zelfs wanneer er bestaande bestanden in het project aanwezig zijn. Deze instelling overschrijft bestaande bestanden met dezelfde naam. Andere bestanden in de projectmap worden niet beïnvloed. |
-| **`--java`**  | Initialiseert een [Java-project](functions-reference-java.md). |
-| **`--javascript`**<br/>**`--node`**  | Initialiseert een [Java script-project](functions-reference-node.md). |
-| **`--no-source-control`**<br/>**`-n`** | Hiermee wordt voor komen dat een Git-opslag plaats standaard wordt gemaakt in versie 1. x. In versie 3. x/2. x is de Git-opslag plaats standaard niet gemaakt. |
-| **`--powershell`**  | Initialiseert een [Power Shell-project](functions-reference-powershell.md). |
-| **`--python`**  | Initialiseert een [python-project](functions-reference-python.md). |
+| **`--language`** | Initialiseert een taalspecifiek project. Momenteel ondersteund als deze is `--worker-runtime` ingesteld op `node` . Opties zijn `typescript` en `javascript` . U kunt ook `--worker-runtime javascript` of gebruiken `--worker-runtime typescript` .  |
+| **`--managed-dependencies`**  | Hiermee worden beheerde afhankelijkheden geïnstalleerd. Op dit moment ondersteunt alleen de Power shell worker-runtime deze functionaliteit. |
 | **`--source-control`** | Hiermee wordt bepaald of een Git-opslag plaats wordt gemaakt. Een opslag plaats wordt standaard niet gemaakt. Wanneer `true` wordt een opslag plaats gemaakt. |
-| **`--typescript`**  | Initialiseert een [type script-project](functions-reference-node.md#typescript). |
-| **`--worker-runtime`** | Hiermee stelt u de taal runtime voor het project in. Ondersteunde waarden zijn: `csharp` , `dotnet` , `java` , `javascript` , `node` (Java script), `powershell` , en `python` `typescript` . Wanneer deze niet is ingesteld, wordt u gevraagd uw runtime te kiezen tijdens de initialisatie. |
-
+| **`--worker-runtime`** | Hiermee stelt u de taal runtime voor het project in. Ondersteunde waarden zijn: `csharp` , `dotnet` , `javascript` , `node` (Java script), `powershell` , `python` en `typescript` . Gebruik [maven](functions-reference-java.md#create-java-functions)voor Java. Wanneer deze niet is ingesteld, wordt u gevraagd uw runtime te kiezen tijdens de initialisatie. |
+|
 > [!IMPORTANT]
-> Standaard worden in versie 3. x/2. x van de kern Hulpprogramma's functie-app-projecten voor de .NET-runtime gemaakt als [C#-klassen projecten](functions-dotnet-class-library.md) (. csproj). Deze C#-projecten, die kunnen worden gebruikt met Visual Studio of Visual Studio code, worden gecompileerd tijdens het testen en bij het publiceren naar Azure. Als u in plaats daarvan dezelfde C# script bestanden (. CSX) wilt maken en gebruiken die zijn gemaakt in versie 1. x en in de portal, moet u de `--csx` para meter toevoegen wanneer u functies maakt en implementeert.
+> Standaard maken versie 2. x en latere versies van de kern Hulpprogramma's functie-app-projecten voor de .NET-runtime als [C#-klassen projecten](functions-dotnet-class-library.md) (. csproj). Deze C#-projecten, die kunnen worden gebruikt met Visual Studio of Visual Studio code, worden gecompileerd tijdens het testen en bij het publiceren naar Azure. Als u in plaats daarvan dezelfde C# script bestanden (. CSX) wilt maken en gebruiken die zijn gemaakt in versie 1. x en in de portal, moet u de `--csx` para meter toevoegen wanneer u functies maakt en implementeert.
 
 [!INCLUDE [functions-core-tools-install-extension](../../includes/functions-core-tools-install-extension.md)]
 
@@ -235,6 +231,8 @@ De waarden van de functie-app-instellingen kunnen ook in uw code worden gelezen 
 * [C#-script (.csx)](functions-reference-csharp.md#environment-variables)
 * [Java](functions-reference-java.md#environment-variables)
 * [JavaScript](functions-reference-node.md#environment-variables)
+* [PowerShell](functions-reference-powershell.md#environment-variables)
+* [Python](functions-reference-python.md#environment-variables)
 
 Als er geen geldige opslag connection string is ingesteld voor [`AzureWebJobsStorage`] en de emulator niet wordt gebruikt, wordt het volgende fout bericht weer gegeven:
 
@@ -305,12 +303,13 @@ Writing C:\myfunctions\myMyFunctionProj\MyQueueTrigger\function.json
 
 U kunt deze opties ook opgeven in de opdracht met behulp van de volgende argumenten:
 
-| Argument     | Description                            |
+| Argument     | Beschrijving                            |
 | ------------------------------------------ | -------------------------------------- |
-| **`--csx`** | (Versie 3. x/2. x) Genereert dezelfde C# script-sjablonen (. CSX) die worden gebruikt in versie 1. x en in de portal. |
-| **`--language`**, **`-l`**| De programmeer taal van de sjabloon, zoals C#, F # of Java script. Deze optie is vereist in versie 1. x. In versie 3. x/2. x gebruikt u deze optie niet of kiest u een taal die overeenkomt met de runtime van de werk nemer. |
+| **`--csx`** | (Versie 2. x en hoger.) Genereert dezelfde C# script-sjablonen (. CSX) die worden gebruikt in versie 1. x en in de portal. |
+| **`--language`**, **`-l`**| De programmeer taal van de sjabloon, zoals C#, F # of Java script. Deze optie is vereist in versie 1. x. In versie 2. x en hoger gebruikt u deze optie niet of kiest u een taal die overeenkomt met de runtime van de werk nemer. |
 | **`--name`**, **`-n`** | De functie naam. |
 | **`--template`**, **`-t`** | Gebruik de `func templates list` opdracht om de volledige lijst met beschik bare sjablonen voor elke ondersteunde taal weer te geven.   |
+
 
 Als u bijvoorbeeld een Java script-trigger in één opdracht wilt maken, voert u het volgende uit:
 
@@ -364,14 +363,13 @@ npm start
 
 `func start`biedt ondersteuning voor de volgende opties:
 
-| Optie     | Description                            |
+| Optie     | Beschrijving                            |
 | ------------ | -------------------------------------- |
 | **`--no-build`** | Pas het huidige project niet samen om uit te voeren. Alleen voor dotnet-projecten. De standaard waarde is ingesteld op ONWAAR. Niet ondersteund voor versie 1. x. |
-| **`--cert`** | Het pad naar een pfx-bestand dat een persoonlijke sleutel bevat. Alleen gebruikt met `--useHttps` . Niet ondersteund voor versie 1. x. |
 | **`--cors-credentials`** | Toestaan dat geauthenticeerde cross-Origin-aanvragen (cookies en de header Authentication) worden niet ondersteund voor versie 1. x. |
 | **`--cors`** | Een door komma's gescheiden lijst met CORS-oorsprong, zonder spaties. |
 | **`--language-worker`** | Argumenten voor het configureren van de taal medewerker. U kunt bijvoorbeeld fout opsporing voor taal werk nemer inschakelen door [poort voor fout opsporing en andere vereiste argumenten](https://github.com/Azure/azure-functions-core-tools/wiki/Enable-Debugging-for-language-workers)op te geven. Niet ondersteund voor versie 1. x. |
-| **`--nodeDebugPort`**, **`-n`** | De poort voor het Node.js-fout opsporingsprogramma dat moet worden gebruikt. Standaard: een waarde van launch.jsop of 5858. Alleen versie 1. x. |
+| **`--cert`** | Het pad naar een pfx-bestand dat een persoonlijke sleutel bevat. Alleen gebruikt met `--useHttps` . Niet ondersteund voor versie 1. x. |
 | **`--password`** | Ofwel het wacht woord of een bestand dat het wacht woord voor een pfx-bestand bevat. Alleen gebruikt met `--cert` . Niet ondersteund voor versie 1. x. |
 | **`--port`**, **`-p`** | De lokale poort waarop moet worden geluisterd. Standaard waarde: 7071. |
 | **`--pause-on-error`** | Wacht op extra invoer voordat het proces wordt afgesloten. Wordt alleen gebruikt bij het starten van kern Hulpprogramma's van een Integrated Development Environment (IDE).|
@@ -405,7 +403,7 @@ Zie [strategieën voor het testen van uw code in azure functions](functions-test
 
 U roept het volgende eind punt aan om HTTP en door de webhook geactiveerde functies lokaal uit te voeren:
 
-```http
+```
 http://localhost:{port}/api/{function_name}
 ```
 
@@ -441,7 +439,7 @@ U kunt eventueel test gegevens door geven aan de uitvoering in de hoofd tekst va
 
 U roept het volgende Administrator-eind punt aan om niet-HTTP-functies te activeren:
 
-```http
+```
 http://localhost:{port}/admin/functions/{function_name}
 ```
 
@@ -474,7 +472,7 @@ In versie 1. x kunt u ook rechtstreeks een functie aanroepen met behulp `func ru
 
 `func run`biedt ondersteuning voor de volgende opties:
 
-| Optie     | Description                            |
+| Optie     | Beschrijving                            |
 | ------------ | -------------------------------------- |
 | **`--content`**, **`-c`** | Inline-inhoud. |
 | **`--debug`**, **`-d`** | Koppel een fout opsporingsprogramma aan het hostproces voordat u de functie uitvoert.|
@@ -511,16 +509,16 @@ Met deze opdracht wordt gepubliceerd naar een bestaande functie-app in Azure. U 
 > Wanneer u een functie-app maakt in de Azure Portal, gebruikt deze standaard versie 3. x van de functie-runtime. Volg de instructies in [uitvoeren op versie 1. x](functions-versions.md#creating-1x-apps)om de functie-app versie 1. x van de runtime te laten gebruiken.
 > U kunt de runtime versie niet wijzigen voor een functie-app met bestaande functies.
 
-De volgende publicatie opties zijn van toepassing op versies 3. x, 2. x en 1. x:
+De volgende publicatie opties zijn van toepassing op alle versies:
 
-| Optie     | Description                            |
+| Optie     | Beschrijving                            |
 | ------------ | -------------------------------------- |
 | **`--publish-local-settings -i`** |  Publiceer instellingen in local.settings.jsnaar Azure en vraag om te worden overschreven als de instelling al bestaat. Als u de Microsoft Azure-opslagemulator gebruikt, wijzigt u eerst de app-instelling in een [echte opslag verbinding](#get-your-storage-connection-strings). |
 | **`--overwrite-settings -y`** | De prompt voor het overschrijven van app-instellingen onderdrukken wanneer deze wordt `--publish-local-settings -i` gebruikt.|
 
-De volgende publicatie opties worden alleen ondersteund in versie 3. x en 2. x:
+De volgende publicatie opties worden alleen ondersteund voor versie 2. x en latere versies:
 
-| Optie     | Description                            |
+| Optie     | Beschrijving                            |
 | ------------ | -------------------------------------- |
 | **`--publish-settings-only`**, **`-o`** |  Publiceer instellingen alleen en sla de inhoud over. De standaard instelling is prompt. |
 |**`--list-ignored-files`** | Geeft een lijst weer van bestanden die worden genegeerd tijdens het publiceren, dat is gebaseerd op het. funcignore-bestand. |
@@ -531,7 +529,7 @@ De volgende publicatie opties worden alleen ondersteund in versie 3. x en 2. x:
 | **`--additional-packages`** | Lijst met pakketten die moeten worden geïnstalleerd bij het bouwen van systeem eigen afhankelijkheden. Bijvoorbeeld: `python3-dev libevent-dev`. |
 | **`--force`** | Verificatie vooraf publiceren in bepaalde scenario's negeren. |
 | **`--csx`** | Publiceer een C# script-project (. CSX). |
-| **`--no-build`** | Maak geen .NET Class Library-functies. |
+| **`--no-build`** | Het project is niet gebouwd tijdens het publiceren. Voor python wordt `pip install` niet uitgevoerd. |
 | **`--dotnet-cli-params`** | Bij het publiceren van gecompileerde C#-functies (. csproj) roept de kern hulpprogramma's ' DotNet build--output bin/Publish ' aan. Alle para meters die aan dit worden door gegeven, worden toegevoegd aan de opdracht regel. |
 
 ### <a name="deploy-custom-container"></a>Aangepaste container implementeren
@@ -544,7 +542,7 @@ func deploy
 
 De volgende opties voor de implementatie van de aangepaste container zijn beschikbaar:
 
-| Optie     | Description                            |
+| Optie     | Beschrijving                            |
 | ------------ | -------------------------------------- |
 | **`--registry`** | De naam van een docker-REGI ster waarmee de huidige gebruiker zich heeft aangemeld. |
 | **`--platform`** | Hosting platform voor de functie-app. Geldige opties zijn`kubernetes` |
@@ -582,7 +580,7 @@ Meer informatie over het ontwikkelen, testen en publiceren van Azure Functions m
 <!-- LINKS -->
 
 [Azure Functions Core Tools]: https://www.npmjs.com/package/azure-functions-core-tools
-[Azure-portal]: https://portal.azure.com 
+[Azure Portal]: https://portal.azure.com 
 [Node.js]: https://docs.npmjs.com/getting-started/installing-node#osx-or-windows
 [`FUNCTIONS_WORKER_RUNTIME`]: functions-app-settings.md#functions_worker_runtime
 ['AzureWebJobsStorage']: functions-app-settings.md#azurewebjobsstorage

@@ -9,11 +9,12 @@ ms.author: magoedte
 ms.date: 08/01/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: d388162738930030ba311a04a0dce1db15590c79
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: c51ef23e27cd63d3706c104d1e39a14bf61c258e
+ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83836835"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86186347"
 ---
 # <a name="edit-textual-runbooks-in-azure-automation"></a>De tekst runbooks in Azure Automation bewerken
 
@@ -56,7 +57,7 @@ In dit artikel vindt u gedetailleerde stappen voor het uitvoeren van verschillen
 1. In het besturings element canvas van de tekst editor plaatst u de cursor waar u de code voor het onderliggende runbook wilt plaatsen.
 2. Vouw het knoop punt **assets** uit in het besturings element bibliotheek.
 3. Vouw het knoop punt uit voor het gewenste type activa.
-4. Klik met de rechter muisknop op de naam van de Asset die u wilt invoegen en selecteer **toevoegen aan canvas**. Voor [variabele assets](automation-variables.md)selecteert u **' variabele ophalen ' toevoegen aan canvas** of **' variabele instellen ' toevoegen aan canvas**, afhankelijk van of u de variabele wilt ophalen of instellen.
+4. Klik met de rechter muisknop op de naam van de Asset die u wilt invoegen en selecteer **toevoegen aan canvas**. Voor [variabele assets](./shared-resources/variables.md)selecteert u **' variabele ophalen ' toevoegen aan canvas** of **' variabele instellen ' toevoegen aan canvas**, afhankelijk van of u de variabele wilt ophalen of instellen.
 5. Houd er rekening mee dat de code voor de Asset wordt ingevoegd in het runbook.
 
 ## <a name="edit-an-azure-automation-runbook-using-windows-powershell"></a>Een Azure Automation runbook bewerken met behulp van Windows Power shell
@@ -95,9 +96,9 @@ Publish-AzAutomationRunbook -Name $runbookName -AutomationAccountName $automatio
 * [Runbooks in azure Automation beheren](manage-runbooks.md).
 * [Power shell-werk stroom leren](automation-powershell-workflow.md).
 * [Grafisch ontwerpen in azure Automation](automation-graphical-authoring-intro.md).
-* [Certificaten](automation-certificates.md).
+* [Certificaten](./shared-resources/certificates.md).
 * [Verbindingen](automation-connections.md).
-* [Referenties](automation-credentials.md).
-* [Schema's](automation-schedules.md).
-* [Variabelen](automation-variables.md).
-* [Naslag informatie over Power shell-cmdlets](https://docs.microsoft.com/powershell/module/az.automation/?view=azps-3.7.0#automation).
+* [Referenties](./shared-resources/credentials.md).
+* [Schema's](./shared-resources/schedules.md).
+* [Variabelen](./shared-resources/variables.md).
+* [Naslag informatie over Power shell-cmdlets](/powershell/module/az.automation/?view=azps-3.7.0#automation).

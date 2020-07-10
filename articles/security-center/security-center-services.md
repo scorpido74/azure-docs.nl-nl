@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/27/2020
 ms.author: memildin
-ms.openlocfilehash: 4d048bb348b8093db7d3bf92ef0fc93aead35055
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 060db99cf0163876b68eeee2cff8ef2d03e2b5b9
+ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84762289"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86187010"
 ---
 # <a name="feature-coverage-for-machines"></a>Functie dekking voor machines
 
@@ -38,10 +38,9 @@ De onderstaande tabellen bevatten Azure Security Center functies die beschikbaar
 |[Just-in-time-VM-toegang](security-center-just-in-time.md)|✔|-|-|Standard|
 |[Beoordeling van systeem eigen beveiligings problemen](built-in-vulnerability-assessment.md)|✔|-|-|Standard|
 |[Bestands integriteit controleren](security-center-file-integrity-monitoring.md)|✔|✔|✔|Standard|
-|[Adaptieve toepassingsbesturingselementen](security-center-adaptive-application.md)|✔|-|✔|Standard|
+|[Adaptieve toepassingsregelaars](security-center-adaptive-application.md)|✔|-|✔|Standard|
 |[Netwerk toewijzing](security-center-network-recommendations.md#network-map)|✔|✔|-|Standard|
-|[Adaptieve netwerkbeveiliging](security-center-adaptive-network-hardening.md)|✔|-|-|Standard|
-|Adaptieve netwerk besturings elementen|✔|✔|-|Standard|
+|[Adaptieve netwerk beveiliging](security-center-adaptive-network-hardening.md)|✔|-|-|Standard|
 |[Dash board naleving van regelgeving & rapporten](security-center-compliance-dashboard.md)|✔|✔|✔|Standard|
 |Aanbevelingen en beveiliging tegen bedreigingen op docker-gehoste IaaS-containers|-|-|-|Standard|
 |Evaluatie van besturingssysteem patches ontbreekt|✔|✔|✔|Gratis|
@@ -64,9 +63,9 @@ De onderstaande tabellen bevatten Azure Security Center functies die beschikbaar
 |[Just-in-time-VM-toegang](security-center-just-in-time.md)|✔|-|-|Standard|
 |[Beoordeling van systeem eigen beveiligings problemen](built-in-vulnerability-assessment.md)|✔|-|-|Standard|
 |[Bestands integriteit controleren](security-center-file-integrity-monitoring.md)|✔|✔|✔|Standard|
-|[Adaptieve toepassingsbesturingselementen](security-center-adaptive-application.md)|✔|-|✔|Standard|
+|[Adaptieve toepassingsregelaars](security-center-adaptive-application.md)|✔|-|✔|Standard|
 |[Netwerk toewijzing](security-center-network-recommendations.md#network-map)|✔|✔|-|Standard|
-|[Adaptieve netwerkbeveiliging](security-center-adaptive-network-hardening.md)|✔|-|-|Standard|
+|[Adaptieve netwerk beveiliging](security-center-adaptive-network-hardening.md)|✔|-|-|Standard|
 |Adaptieve netwerk besturings elementen|✔|✔|-|Standard|
 |[Dash board naleving van regelgeving & rapporten](security-center-compliance-dashboard.md)|✔|✔|✔|Standard|
 |Aanbevelingen en beveiliging tegen bedreigingen op docker-gehoste IaaS-containers|✔|✔|✔|Standard|
@@ -95,13 +94,13 @@ Zie [Endpoint Protection-evaluatie en aanbevelingen](security-center-endpoint-pr
 
 | Endpoint Protection| Platformen | Security Center-installatie | Security Center Discovery |
 |------|------|-----|-----|
-| Windows Defender (Microsoft Antimalware)| Windows Server 2016| Nee, ingebouwd in besturingssysteem| Yes |
-| System Center Endpoint Protection (Microsoft Antimalware) | Windows Server 2012 R2, 2012, 2008 R2 (zie opmerking hieronder) | Via extensie | Yes |
+| Windows Defender (Microsoft Antimalware)| Windows Server 2016| Nee, ingebouwd in besturingssysteem| Ja |
+| System Center Endpoint Protection (Microsoft Antimalware) | Windows Server 2012 R2, 2012, 2008 R2 (zie opmerking hieronder) | Via extensie | Ja |
 | Trend Micro – diepe beveiliging | Windows Server-familie  | Nee | Ja |
 | Symantec v12.1.1100+| Windows Server-familie  | Nee | Ja |
 | McAfee v10+ | Windows Server-familie  | Nee | Ja |
-| McAfee v10+ | Linux-Server familie  | No | Klikt**\*** |
-| Sophos v9 +| Linux-Server familie  | No | Klikt**\***  |
+| McAfee v10+ | Linux-Server familie  | Nee | Klikt**\*** |
+| Sophos v9 +| Linux-Server familie  | Nee | Klikt**\***  |
 
  **\*** De status van de dekking en de ondersteunende gegevens zijn momenteel alleen beschikbaar in de werk ruimte Log Analytics die aan uw beveiligde abonnementen is gekoppeld. Het wordt niet weer gegeven in de Azure Security Center Portal.
 

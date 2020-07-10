@@ -11,12 +11,12 @@ ms.topic: how-to
 ms.date: 06/08/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 78de242cb6fd1d670dc9564a2725070b7424b5b5
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: bc0bcd4a978912dccc9f08802acbf2ec1151b3a1
+ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85385549"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86170102"
 ---
 # <a name="integrating-trusona-with-azure-active-directory-b2c"></a>Trusona integreren met Azure Active Directory B2C
 
@@ -40,8 +40,7 @@ In dit scenario fungeert Trusona als een id-provider voor Azure AD B2C voor het 
 
 ![Diagram van Trusona-architectuur](media/partner-trusona/trusona-architecture-diagram.png)
 
-
-|  |  |
+| Stap | Beschrijving |
 |------|------|
 |1     | Een gebruiker probeert zich aan te melden bij of zich aan te melden bij de toepassing. De gebruiker wordt geverifieerd via het Azure AD B2C registratie-en aanmeldings beleid. Tijdens het aanmelden wordt het eerder geverifieerde e-mail adres van de gebruiker uit de Trusona-app gebruikt.     |
 |2     | De gebruiker wordt door Azure B2C omgeleid naar de Trusona OpenID Connect Connect (OIDC)-ID-provider met behulp van de impliciete stroom.     |
