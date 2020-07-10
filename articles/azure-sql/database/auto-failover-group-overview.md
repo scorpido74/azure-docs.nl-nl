@@ -11,13 +11,13 @@ ms.topic: conceptual
 author: anosov1960
 ms.author: sashan
 ms.reviewer: mathoma, carlrab
-ms.date: 2/10/2020
-ms.openlocfilehash: 39329eb9ea2c396f8b5f04287f3e933bb6242f85
-ms.sourcegitcommit: 93462ccb4dd178ec81115f50455fbad2fa1d79ce
+ms.date: 07/09/2020
+ms.openlocfilehash: a4624d16f29834e8948a7bbc7ef882041727a823
+ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/06/2020
-ms.locfileid: "85982976"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86171870"
 ---
 # <a name="use-auto-failover-groups-to-enable-transparent-and-coordinated-failover-of-multiple-databases"></a>Gebruik groepen voor automatische failover om transparante en gecoördineerde failover van meerdere data bases mogelijk te maken
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -33,7 +33,7 @@ Daarnaast bieden automatische-failover-groepen alleen-lezen-en alleen-lezen list
 
 Wanneer u groepen voor automatische failover gebruikt met automatische failoverbeleid, wordt elke storing die invloed heeft op data bases op een server of een beheerd exemplaar, automatisch failover. U kunt de groep voor automatische failover beheren met:
 
-- [Azure-portal](geo-distributed-application-configure-tutorial.md)
+- [Azure Portal](geo-distributed-application-configure-tutorial.md)
 - [Azure CLI: failover-groep](scripts/add-database-to-failover-group-cli.md)
 - [Power shell: failover-groep](scripts/add-database-to-failover-group-powershell.md)
 - [Rest API: failovergroep](/rest/api/sql/failovergroups).
@@ -239,7 +239,7 @@ Omdat elk exemplaar is geïsoleerd in een eigen VNet, moet twee richtings verkee
 
 ### <a name="creating-a-failover-group-between-managed-instances-in-different-subscriptions"></a>Een failovergroep maken tussen beheerde instanties in verschillende abonnementen
 
-U kunt in twee verschillende abonnementen een failovergroep maken tussen SQL Managed instances. Wanneer u Power shell API gebruikt, kunt u dit doen door de `PartnerSubscriptionId` para meter op te geven voor het secundaire SQL-beheerde exemplaar. Wanneer u REST API gebruikt, kan elke exemplaar-ID die is opgenomen in de `properties.managedInstancePairs` para meter een eigen subscriptionID hebben.
+U kunt een failovergroep tussen SQL Managed instances maken in twee verschillende abonnementen, zolang abonnementen zijn gekoppeld aan dezelfde [Azure Active Directory Tenant](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-whatis#terminology). Wanneer u Power shell API gebruikt, kunt u dit doen door de `PartnerSubscriptionId` para meter op te geven voor het secundaire SQL-beheerde exemplaar. Wanneer u REST API gebruikt, kan elke exemplaar-ID die is opgenomen in de `properties.managedInstancePairs` para meter een eigen subscriptionID hebben.
   
 > [!IMPORTANT]
 > Azure Portal biedt geen ondersteuning voor het maken van failover-groepen voor verschillende abonnementen. Voor de bestaande failover-groepen voor verschillende abonnementen en/of resource groepen kan failover ook niet hand matig worden gestart via de portal van het primaire SQL-beheerde exemplaar. Start de service vanuit het geo-secundaire exemplaar.
@@ -404,7 +404,7 @@ Zoals eerder besproken, kunnen automatische failover-groepen en actieve geo-repl
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
-| Cmdlet | Description |
+| Cmdlet | Beschrijving |
 | --- | --- |
 | [New-AzSqlDatabaseFailoverGroup](/powershell/module/az.sql/new-azsqldatabasefailovergroup) |Met deze opdracht maakt u een failovergroep en registreert u deze op de primaire en secundaire servers|
 | [Remove-AzSqlDatabaseFailoverGroup](/powershell/module/az.sql/remove-azsqldatabasefailovergroup) | Hiermee wordt een failovergroep van de server verwijderd |
@@ -413,7 +413,7 @@ Zoals eerder besproken, kunnen automatische failover-groepen en actieve geo-repl
 | [Switch-AzSqlDatabaseFailoverGroup](/powershell/module/az.sql/switch-azsqldatabasefailovergroup) | Hiermee wordt een failover van een failovergroep naar de secundaire server geactiveerd |
 | [Add-AzSqlDatabaseToFailoverGroup](/powershell/module/az.sql/add-azsqldatabasetofailovergroup)|Voegt een of meer data bases toe aan een failovergroep|
 
-# <a name="azure-cli"></a>[Azure-CLI](#tab/azure-cli)
+# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
 | Opdracht | Beschrijving |
 | --- | --- |
@@ -425,7 +425,7 @@ Zoals eerder besproken, kunnen automatische failover-groepen en actieve geo-repl
 
 # <a name="rest-api"></a>[Rest API](#tab/rest-api)
 
-| API | Description |
+| API | Beschrijving |
 | --- | --- |
 | [Failovergroep maken of bijwerken](https://docs.microsoft.com/rest/api/sql/failovergroups/createorupdate) | Hiermee wordt een failovergroep gemaakt of bijgewerkt |
 | [Failovergroep verwijderen](https://docs.microsoft.com/rest/api/sql/failovergroups/delete) | Hiermee wordt een failovergroep van de server verwijderd |
@@ -442,7 +442,7 @@ Zoals eerder besproken, kunnen automatische failover-groepen en actieve geo-repl
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
-| Cmdlet | Description |
+| Cmdlet | Beschrijving |
 | --- | --- |
 | [New-AzSqlDatabaseInstanceFailoverGroup](/powershell/module/az.sql/new-azsqldatabaseinstancefailovergroup) |Met deze opdracht maakt u een failovergroep en registreert u deze op zowel primaire als secundaire exemplaren|
 | [Set-AzSqlDatabaseInstanceFailoverGroup](/powershell/module/az.sql/set-azsqldatabaseinstancefailovergroup) |Hiermee wijzigt u de configuratie van een failovergroep|
@@ -451,7 +451,7 @@ Zoals eerder besproken, kunnen automatische failover-groepen en actieve geo-repl
 | [Remove-AzSqlDatabaseInstanceFailoverGroup](/powershell/module/az.sql/remove-azsqldatabaseinstancefailovergroup) | Hiermee verwijdert u een failovergroep|
 
 
-# <a name="azure-cli"></a>[Azure-CLI](#tab/azure-cli)
+# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
 | Opdracht | Beschrijving |
 | --- | --- |
@@ -463,7 +463,7 @@ Zoals eerder besproken, kunnen automatische failover-groepen en actieve geo-repl
 
 # <a name="rest-api"></a>[Rest API](#tab/rest-api)
 
-| API | Description |
+| API | Beschrijving |
 | --- | --- |
 | [Failovergroep maken of bijwerken](https://docs.microsoft.com/rest/api/sql/instancefailovergroups/createorupdate) | Hiermee wordt de configuratie van een failovergroep gemaakt of bijgewerkt |
 | [Failovergroep verwijderen](https://docs.microsoft.com/rest/api/sql/instancefailovergroups/delete) | Hiermee verwijdert u een failover-groep uit het exemplaar |

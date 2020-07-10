@@ -5,11 +5,12 @@ services: automation
 ms.date: 06/30/2020
 ms.topic: conceptual
 ms.service: automation
-ms.openlocfilehash: 95e3fc12a77124c32e220d700a112f52cbad08fb
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 74250a54d7b835ceb37614450de07e9e3baefd83
+ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85801883"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86183151"
 ---
 # <a name="troubleshoot-update-management-issues"></a>Problemen met Updatebeheer oplossen
 
@@ -52,7 +53,7 @@ Deze fout kan de volgende oorzaken hebben:
 
 ### <a name="issue"></a>Probleem
 
-Oude updates worden voor een Automation-account weer gegeven, zelfs als ze zijn vervangen. Een vervangen update is één die u niet hoeft te installeren, omdat een latere update die hetzelfde beveiligings probleem verhelpt, beschikbaar is. Updatebeheer negeert de vervangen update en maakt deze niet van toepassing in de vervangende update. Zie [update is vervangen](https://docs.microsoft.com/windows/deployment/update/windows-update-troubleshooting#the-update-is-not-applicable-to-your-computer)voor informatie over een verwant probleem.
+Oude updates worden voor een Automation-account weer gegeven, zelfs als ze zijn vervangen. Een vervangen update is één die u niet hoeft te installeren, omdat een latere update die hetzelfde beveiligings probleem verhelpt, beschikbaar is. Updatebeheer negeert de vervangen update en maakt deze niet van toepassing in de vervangende update. Zie [update is vervangen](/windows/deployment/update/windows-update-troubleshooting#the-update-is-not-applicable-to-your-computer)voor informatie over een verwant probleem.
 
 ### <a name="cause"></a>Oorzaak
 
@@ -155,7 +156,7 @@ Voer de volgende stappen uit in de Azure Portal om de resource provider Automati
 
 4. Controleer in de lijst met resource providers of de resource provider micro soft. Automation is geregistreerd.
 
-5. Als dit niet het geval is, registreert u de provider van micro soft. Automation door de stappen te volgen om [fouten bij de registratie van de resource provider op te lossen](/azure/azure-resource-manager/resource-manager-register-provider-errors).
+5. Als dit niet het geval is, registreert u de provider van micro soft. Automation door de stappen te volgen om [fouten bij de registratie van de resource provider op te lossen](../../azure-resource-manager/templates/error-register-resource-provider.md).
 
 ## <a name="scenario-scheduled-update-with-a-dynamic-schedule-missed-some-machines"></a><a name="scheduled-update-missed-machines"></a>Scenario: geplande update met een dynamisch schema heeft sommige computers niet gemist
 
@@ -177,7 +178,7 @@ Dit probleem kan een van de volgende oorzaken hebben:
 
 Als uw abonnement niet is geconfigureerd voor de Automation-resource provider, kunt u geen gegevens opvragen of ophalen op computers in dat abonnement. Gebruik de volgende stappen om de registratie voor het abonnement te controleren.
 
-1. Open de lijst met Azure-Services in het [Azure Portal](https://docs.microsoft.com/azure/azure-resource-manager/management/resource-providers-and-types#azure-portal).
+1. Open de lijst met Azure-Services in het [Azure Portal](../../azure-resource-manager/management/resource-providers-and-types.md#azure-portal).
 
 2. Selecteer **alle services**en selecteer vervolgens **abonnementen** in de algemene service groep. 
 
@@ -187,7 +188,7 @@ Als uw abonnement niet is geconfigureerd voor de Automation-resource provider, k
 
 5. Controleer of de resource provider micro soft. Automation is geregistreerd.
 
-6. Als dit niet het geval is, registreert u de provider van micro soft. Automation door de stappen te volgen om [fouten bij de registratie van de resource provider op te lossen](/azure/azure-resource-manager/resource-manager-register-provider-errors).
+6. Als dit niet het geval is, registreert u de provider van micro soft. Automation door de stappen te volgen om [fouten bij de registratie van de resource provider op te lossen](../../azure-resource-manager/templates/error-register-resource-provider.md).
 
 #### <a name="machines-not-available-or-not-tagged-correctly-when-schedule-executed"></a>Machines zijn niet op de juiste wijze of zijn niet juist gelabeld wanneer het schema wordt uitgevoerd
 
@@ -195,9 +196,9 @@ Gebruik de volgende procedure als uw abonnement is geconfigureerd voor de resour
 
 1. Open in het Azure Portal het Automation-account en selecteer **updatebeheer**.
 
-2. Controleer [updatebeheer geschiedenis](https://docs.microsoft.com/azure/automation/manage-update-multi#view-results-of-an-update-deployment) om te bepalen op welke tijdstippen de update-implementatie is uitgevoerd. 
+2. Controleer [updatebeheer geschiedenis](../manage-update-multi.md#view-results-of-an-update-deployment) om te bepalen op welke tijdstippen de update-implementatie is uitgevoerd. 
 
-3. Voor computers waarvan u vermoedt dat deze niet zijn Updatebeheer, gebruikt u Azure resource Graph (ARG) om [computer wijzigingen te vinden](https://docs.microsoft.com/azure/governance/resource-graph/how-to/get-resource-changes#find-detected-change-events-and-view-change-details). 
+3. Voor computers waarvan u vermoedt dat deze niet zijn Updatebeheer, gebruikt u Azure resource Graph (ARG) om [computer wijzigingen te vinden](../../governance/resource-graph/how-to/get-resource-changes.md#find-detected-change-events-and-view-change-details). 
 
 4. Zoek naar wijzigingen in een belang rijke periode, zoals een dag, voordat de update-implementatie werd uitgevoerd.
 
@@ -225,13 +226,13 @@ Dit zijn mogelijke oorzaken voor dit probleem:
 
 #### <a name="incorrect-access-on-selected-scopes"></a>Onjuiste toegang voor geselecteerde bereiken
 
-De Azure Portal alleen computers weer geven waarvoor u schrijf toegang hebt binnen een bepaald bereik. Zie [zelf studie: een gebruiker toegang verlenen tot Azure-resources met RBAC en de Azure Portal](https://docs.microsoft.com/azure/role-based-access-control/quickstart-assign-role-user-portal)als u niet over de juiste toegang voor een bereik beschikt.
+De Azure Portal alleen computers weer geven waarvoor u schrijf toegang hebt binnen een bepaald bereik. Zie [zelf studie: een gebruiker toegang verlenen tot Azure-resources met RBAC en de Azure Portal](../../role-based-access-control/quickstart-assign-role-user-portal.md)als u niet over de juiste toegang voor een bereik beschikt.
 
 #### <a name="arg-query-doesnt-return-expected-machines"></a>De query ARG retourneert geen verwachte machines
 
 Volg de onderstaande stappen om erachter te komen of uw query's goed werken.
 
-1. Voer een ARG-query uit zoals hieronder wordt weer gegeven op de Blade resource Graph Explorer in Azure Portal. Deze query imiteert de filters die u hebt geselecteerd tijdens het maken van de dynamische groep in Updatebeheer. Zie [dynamische groepen gebruiken met updatebeheer](https://docs.microsoft.com/azure/automation/automation-update-management-groups). 
+1. Voer een ARG-query uit zoals hieronder wordt weer gegeven op de Blade resource Graph Explorer in Azure Portal. Deze query imiteert de filters die u hebt geselecteerd tijdens het maken van de dynamische groep in Updatebeheer. Zie [dynamische groepen gebruiken met updatebeheer](../automation-update-management-groups.md). 
 
     ```kusto
     where (subscriptionId in~ ("<subscriptionId1>", "<subscriptionId2>") and type =~ "microsoft.compute/virtualmachines" and properties.storageProfile.osDisk.osType == "<Windows/Linux>" and resourceGroup in~ ("<resourceGroupName1>","<resourceGroupName2>") and location in~ ("<location1>","<location2>") )
@@ -266,7 +267,7 @@ Computers worden weer gegeven in de query resultaten van ARG, maar worden nog st
 
 4. Controleer of de Hybrid worker aanwezig is voor die machine.
 
-5. Als de computer niet is ingesteld als een Hybrid worker, neemt u aanpassingen op met behulp van instructies [in uw Data Center of in de Cloud met behulp van Hybrid Runbook worker](https://docs.microsoft.com/azure/automation/automation-hybrid-runbook-worker).
+5. Als de computer niet is ingesteld als een Hybrid worker, neemt u aanpassingen op met behulp van instructies [in uw Data Center of in de Cloud met behulp van Hybrid Runbook worker](../automation-hybrid-runbook-worker.md).
 
 6. Voeg de computer toe aan de Hybrid Runbook Worker groep.
 
@@ -342,7 +343,7 @@ Deze fout treedt op wanneer u een update-implementatie maakt met Azure-Vm's in e
 
 ### <a name="resolution"></a>Oplossing
 
-Gebruik de volgende tijdelijke oplossing om deze items te laten plannen. U kunt de cmdlet [New-AzAutomationSchedule](https://docs.microsoft.com/powershell/module/az.automation/new-azautomationschedule?view=azps-3.7.0) met de `ForUpdateConfiguration` para meter gebruiken om een schema te maken. Vervolgens gebruikt u de cmdlet [New-AzAutomationSoftwareUpdateConfiguration](https://docs.microsoft.com/powershell/module/Az.Automation/New-AzAutomationSoftwareUpdateConfiguration?view=azps-3.7.0) en geeft u de computers in de andere Tenant door aan de `NonAzureComputer` para meter. In het volgende voor beeld ziet u hoe u dit doet:
+Gebruik de volgende tijdelijke oplossing om deze items te laten plannen. U kunt de cmdlet [New-AzAutomationSchedule](/powershell/module/az.automation/new-azautomationschedule?view=azps-3.7.0) met de `ForUpdateConfiguration` para meter gebruiken om een schema te maken. Vervolgens gebruikt u de cmdlet [New-AzAutomationSoftwareUpdateConfiguration](/powershell/module/Az.Automation/New-AzAutomationSoftwareUpdateConfiguration?view=azps-3.7.0) en geeft u de computers in de andere Tenant door aan de `NonAzureComputer` para meter. In het volgende voor beeld ziet u hoe u dit doet:
 
 ```azurepowershell-interactive
 $nonAzurecomputers = @("server-01", "server-02")
@@ -420,7 +421,7 @@ De `HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\WindowsUpdate\AU` reg
 
 Voor Updatebeheer-clients wordt aangeraden om deze sleutel in te stellen op 3: `auto download but do not auto install` .
 
-Zie [Automatische updates configureren](https://docs.microsoft.com/windows/deployment/update/waas-wu-settings#configure-automatic-updates)voor meer informatie.
+Zie [Automatische updates configureren](/windows/deployment/update/waas-wu-settings#configure-automatic-updates)voor meer informatie.
 
 ## <a name="scenario-machine-is-already-registered-to-a-different-account"></a><a name="machine-already-registered"></a>Scenario: de computer is al geregistreerd voor een ander account
 
@@ -574,9 +575,9 @@ Als u een probleem met een patches niet kunt oplossen, maakt u een kopie van het
 
 ### <a name="machines-dont-install-updates"></a>Updates worden niet geïnstalleerd op machines
 
-Voer de updates rechtstreeks op de machine uit. Als de computer de updates niet kan Toep assen, raadpleegt u de [lijst met mogelijke fouten in de hand leiding voor het oplossen van problemen](https://docs.microsoft.com/azure/automation/troubleshoot/update-management#hresult).
+Voer de updates rechtstreeks op de machine uit. Als de computer de updates niet kan Toep assen, raadpleegt u de [lijst met mogelijke fouten in de hand leiding voor het oplossen van problemen](#hresult).
 
-Als updates lokaal worden uitgevoerd, kunt u de agent op de machine verwijderen en opnieuw installeren door de richt lijnen te volgen in [een VM verwijderen uit updatebeheer](https://docs.microsoft.com/azure/automation/automation-onboard-solutions-from-browse#clean-up-resources).
+Als updates lokaal worden uitgevoerd, kunt u de agent op de machine verwijderen en opnieuw installeren door de richt lijnen te volgen in [een VM verwijderen uit updatebeheer](../automation-remove-vms-from-update-management.md).
 
 ### <a name="i-know-updates-are-available-but-they-dont-show-as-available-on-my-machines"></a>Ik weet dat er updates beschikbaar zijn, maar ze worden niet weer gegeven als beschikbaar op mijn computers
 
@@ -592,11 +593,11 @@ Als updates niet zijn goedgekeurd in WSUS, zijn ze niet geïnstalleerd. U kunt c
 
 ### <a name="updates-show-as-installed-but-i-cant-find-them-on-my-machine"></a>Updates verschijnen na installatie maar ik kan ze niet vinden op mijn machine
 
-Updates worden vaak verdrongen door andere updates. Zie voor meer informatie [update is vervangen](https://docs.microsoft.com/windows/deployment/update/windows-update-troubleshooting#the-update-is-not-applicable-to-your-computer) in de Windows Update probleemoplossings handleiding.
+Updates worden vaak verdrongen door andere updates. Zie voor meer informatie [update is vervangen](/windows/deployment/update/windows-update-troubleshooting#the-update-is-not-applicable-to-your-computer) in de Windows Update probleemoplossings handleiding.
 
 ### <a name="installing-updates-by-classification-on-linux"></a>Updates per classificatie installeren op Linux
 
-Het per classificatie implementeren van updates naar Linux ('Essentiële en beveiligingsupdates'), heeft belangrijke beperkingen, met name voor CentOS. Deze beperkingen worden beschreven op de [pagina overzicht van updatebeheer](https://docs.microsoft.com/azure/automation/automation-update-management#linux-2).
+Het per classificatie implementeren van updates naar Linux ('Essentiële en beveiligingsupdates'), heeft belangrijke beperkingen, met name voor CentOS. Deze beperkingen worden beschreven op de [pagina overzicht van updatebeheer](../automation-update-management.md#linux).
 
 ### <a name="kb2267602-is-consistently-missing"></a>KB2267602 ontbreekt consistent
 

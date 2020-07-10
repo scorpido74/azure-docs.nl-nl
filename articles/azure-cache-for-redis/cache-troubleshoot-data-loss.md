@@ -6,11 +6,12 @@ ms.author: yegu
 ms.service: cache
 ms.topic: conceptual
 ms.date: 10/17/2019
-ms.openlocfilehash: ef7824640dcd2b9dbae1d27f385e5334ba9875ff
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: ba0430461df5ce1a2d615b819dbe5e8a36ae52b7
+ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83699235"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86184528"
 ---
 # <a name="troubleshoot-data-loss-in-azure-cache-for-redis"></a>Problemen met gegevensverlies in Azure Cache voor Redis oplossen
 
@@ -22,11 +23,11 @@ In dit artikel wordt beschreven hoe u de werkelijke of waargenomen gegevens verl
 
 ## <a name="partial-loss-of-keys"></a>Gedeeltelijk verlies van sleutels
 
-Azure cache voor redis verwijdert geen wille keurige sleutels nadat ze zijn opgeslagen in het geheugen. Er worden echter wel sleutels verwijderd als reactie op verloop-of verwijderings beleid en op expliciete opdrachten voor het verwijderen van sleutels. Sleutels die zijn geschreven naar het hoofd knooppunt in een Premium-of Standard Azure-cache voor redis-exemplaar zijn ook mogelijk niet direct beschikbaar voor een replica. Gegevens worden op asynchrone en niet-blokkerende wijze gerepliceerd van de Master naar de replica.
+Azure cache voor redis verwijdert geen wille keurige sleutels nadat ze zijn opgeslagen in het geheugen. Er worden echter wel sleutels verwijderd als reactie op verloop-of verwijderings beleid en op expliciete opdrachten voor het verwijderen van sleutels. Sleutels die zijn geschreven naar het primaire knoop punt in een Premium-of Standard Azure-cache voor redis-exemplaar, zijn ook mogelijk niet direct beschikbaar voor een replica. Gegevens worden op asynchrone en niet-blokkerende wijze gerepliceerd van de primaire naar de replica.
 
 Als u ontdekt dat sleutels zijn verdwenen uit uw cache, controleert u de volgende mogelijke oorzaken:
 
-| Oorzaak | Description |
+| Oorzaak | Beschrijving |
 |---|---|
 | [Verval datum van de sleutel](#key-expiration) | Sleutels worden verwijderd omdat er time-outs zijn ingesteld. |
 | [Sleutel verwijdering](#key-eviction) | Sleutels worden verwijderd onder geheugen belasting. |
@@ -79,13 +80,13 @@ cmdstat_hdel:calls=1,usec=47,usec_per_call=47.00
 
 ### <a name="async-replication"></a>Asynchrone replicatie
 
-Alle Azure-caches voor redis-instanties in de laag Standard of Premium worden geconfigureerd met een hoofd knooppunt en ten minste één replica. Gegevens worden asynchroon van het model naar een replica gekopieerd met behulp van een achtergrond proces. De [redis.io](https://redis.io/topics/replication) -website beschrijft hoe redis-gegevens replicatie in het algemeen werkt. Voor scenario's waarin clients regel matig schrijven naar redis, kan gedeeltelijk gegevens verlies optreden omdat deze replicatie niet gegarandeerd onmiddellijk is. Als de hoofd server bijvoorbeeld wordt uitgeschakeld *nadat* een client een sleutel naar de replica schrijft, maar *voordat* het achtergrond proces die sleutel naar de replica's kan verzenden, gaat de sleutel verloren wanneer de replica de nieuwe hoofd server overneemt.
+Elk Azure-cache-exemplaar voor redis in de laag Standard of Premium is geconfigureerd met een primair knoop punt en ten minste één replica. Gegevens worden asynchroon van de primaire naar een replica gekopieerd met behulp van een achtergrond proces. De [redis.io](https://redis.io/topics/replication) -website beschrijft hoe redis-gegevens replicatie in het algemeen werkt. Voor scenario's waarin clients regel matig schrijven naar redis, kan gedeeltelijk gegevens verlies optreden omdat deze replicatie niet gegarandeerd onmiddellijk is. Bijvoorbeeld, als de primaire gaat omlaag *nadat* een client een sleutel naar de replica schrijft, maar *voordat* het achtergrond proces die sleutel kan verzenden naar de replica's, wordt de sleutel verwijderd wanneer de replica de nieuwe primaire gaat.
 
 ## <a name="major-or-complete-loss-of-keys"></a>Groot of volledig verlies van sleutels
 
 Als de meeste of alle sleutels uit uw cache zijn verdwenen, controleert u de volgende mogelijke oorzaken:
 
-| Oorzaak | Description |
+| Oorzaak | Beschrijving |
 |---|---|
 | [Leegmaken van sleutel](#key-flushing) | Sleutels zijn hand matig verwijderd. |
 | [Onjuiste database selectie](#incorrect-database-selection) | Azure cache voor redis is ingesteld op het gebruik van een niet-standaard database. |
@@ -111,7 +112,7 @@ Azure cache voor redis maakt standaard gebruik van de **db0** -data base. Als u 
 
 Redis is een gegevens archief in het geheugen. Gegevens worden bewaard op de fysieke of virtuele machines die de redis-cache hosten. Een Azure-cache voor het redis-exemplaar in de laag Basic kan slechts op één virtuele machine (VM) worden uitgevoerd. Als deze virtuele machine niet beschikbaar is, gaan alle gegevens die u in de cache hebt opgeslagen verloren. 
 
-Caches in de Standard-en Premium-lagen bieden veel meer tolerantie tegen gegevens verlies met behulp van twee virtuele machines in een gerepliceerde configuratie. Wanneer het hoofd knooppunt in een dergelijke cache mislukt, neemt het replica knooppunt de gegevens automatisch over. Deze Vm's bevinden zich in verschillende domeinen voor fouten en updates, om de kans te verkleinen dat ze niet tegelijkertijd niet meer beschikbaar zijn. Als er sprake is van een ernstige storing in het Data Center, kunnen de Vm's echter nog steeds samen gaan. De gegevens gaan in deze zeldzame gevallen verloren.
+Caches in de Standard-en Premium-lagen bieden veel meer tolerantie tegen gegevens verlies met behulp van twee virtuele machines in een gerepliceerde configuratie. Wanneer het primaire knoop punt in een dergelijke cache mislukt, neemt het replica knooppunt de gegevens automatisch door. Deze Vm's bevinden zich in verschillende domeinen voor fouten en updates, om de kans te verkleinen dat ze niet tegelijkertijd niet meer beschikbaar zijn. Als er sprake is van een ernstige storing in het Data Center, kunnen de Vm's echter nog steeds samen gaan. De gegevens gaan in deze zeldzame gevallen verloren.
 
 Overweeg het gebruik van [redis-gegevens persistentie](https://redis.io/topics/persistence) en [geo-replicatie](https://docs.microsoft.com/azure/azure-cache-for-redis/cache-how-to-geo-replication) om de beveiliging van uw gegevens tegen deze infrastructuur fouten te verbeteren.
 

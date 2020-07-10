@@ -6,15 +6,19 @@ ms.service: cache
 ms.topic: conceptual
 ms.date: 03/06/2019
 ms.author: yegu
-ms.openlocfilehash: ce50c665fa79c361f638fda4ec373d5215c407f8
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 9a2ec2e60ae38506d716a244872baddbbdf570e7
+ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "74129428"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86184970"
 ---
 # <a name="how-to-set-up-geo-replication-for-azure-cache-for-redis"></a>Geo-replicatie voor Azure cache instellen voor redis
 
-Geo-replicatie biedt een mechanisme voor het koppelen van twee Premium-laag Azure-cache voor redis-exemplaren. Eén cache is geselecteerd als de primaire gekoppelde cache en de andere als de secundaire gekoppelde cache. De secundaire gekoppelde cache wordt alleen-lezen en de gegevens die naar de primaire cache worden geschreven, worden gerepliceerd naar de secundaire gekoppelde cache. Deze functionaliteit kan worden gebruikt om een cache te repliceren tussen Azure-regio's. Dit artikel bevat een hand leiding voor het configureren van geo-replicatie voor uw Azure-cache voor de Premium-laag voor redis-exemplaren.
+Geo-replicatie biedt een mechanisme voor het koppelen van twee Premium-laag Azure-cache voor redis-exemplaren. Eén cache is geselecteerd als de primaire gekoppelde cache en de andere als de secundaire gekoppelde cache. De secundaire gekoppelde cache wordt alleen-lezen en de gegevens die naar de primaire cache worden geschreven, worden gerepliceerd naar de secundaire gekoppelde cache. Gegevens overdracht tussen de primaire en secundaire cache-instanties wordt beveiligd door TLS. Geo-replicatie kan worden gebruikt om een cache in te stellen die twee Azure-regio's omvat. Dit artikel bevat een hand leiding voor het configureren van geo-replicatie voor uw Azure-cache voor de Premium-laag voor redis-exemplaren.
+
+> [!NOTE]
+> Geo-replicatie is ontworpen als oplossing voor herstel na nood gevallen. Standaard schrijft uw toepassing naar en wordt de primaire regio gelezen. Het kan eventueel worden geconfigureerd om te lezen uit de secundaire regio. Geo-replicatie biedt geen automatische failover vanwege problemen met de toegevoegde netwerk latentie tussen regio's als de rest van uw toepassing in de primaire regio blijft. U moet de failover beheren en initiëren door de secundaire cache te ontkoppelen. Hiermee wordt het niveau verhoogd als het nieuwe primaire exemplaar.
 
 ## <a name="geo-replication-prerequisites"></a>Vereisten voor geo-replicatie
 

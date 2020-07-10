@@ -12,12 +12,12 @@ ms.workload: big-data
 ms.topic: conceptual
 ms.date: 06/18/2020
 ms.custom: seodec18, has-adal-ref
-ms.openlocfilehash: 94fef951bf1c5c9d69a9b49cd9465d7d248c74a7
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 9668307047771304c2d3785dc7ff3f760171a43f
+ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85099227"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86181995"
 ---
 # <a name="authentication-and-authorization-for-azure-time-series-insights-api"></a>Verificatie en autorisatie voor Azure Time Series Insights-API
 
@@ -91,7 +91,7 @@ In het volgende voor **stap 3**kunt u met behulp van de referenties van uw toepa
 > [!IMPORTANT]
 > Als u [Azure Active Directory Authentication Library (ADAL) gebruikt,](https://docs.microsoft.com/azure/active-directory/azuread-dev/active-directory-authentication-libraries) lees dan over [het migreren naar MSAL](https://docs.microsoft.com/azure/active-directory/develop/msal-net-migration).
 
-    See our [Manage GA reference data for an Azure Time Series Insights environment using C#](time-series-insights-manage-reference-data-csharp.md) article to learn more.
+   Raadpleeg onze [referentie gegevens voor beheer voor een Azure time series Insights omgeving met behulp](time-series-insights-manage-reference-data-csharp.md) van het C#-artikel voor meer informatie.
 
 ## <a name="common-headers-and-parameters"></a>Algemene kopteksten en para meters
 
@@ -111,7 +111,7 @@ Als u geverifieerde query's wilt uitvoeren op de [Time Series INSIGHTS rest api'
 
 De vereiste aanvraag headers worden hieronder beschreven.
 
-| Header vereiste aanvraag | Description |
+| Header vereiste aanvraag | Beschrijving |
 | --- | --- |
 | Autorisatie | Als u wilt verifiëren met Time Series Insights, moet een geldig OAuth 2,0 Bearer-token worden door gegeven in de **autorisatie** -header. |
 
@@ -122,7 +122,7 @@ De vereiste aanvraag headers worden hieronder beschreven.
 
 De optionele aanvraag headers worden hieronder beschreven.
 
-| Optionele aanvraagheader | Description |
+| Optionele aanvraagheader | Beschrijving |
 | --- | --- |
 | Inhouds type | alleen `application/json` wordt ondersteund. |
 | x-MS-Client-Request-id | Een client aanvraag-ID. Deze waarde wordt vastgelegd door de service. Hiermee kan de service bewerkingen volgen tussen services. |
@@ -131,7 +131,7 @@ De optionele aanvraag headers worden hieronder beschreven.
 
 Optioneel, maar aanbevolen antwoord headers worden hieronder beschreven.
 
-| Reactie header | Description |
+| Reactie header | Beschrijving |
 | --- | --- |
 | Inhouds type | Alleen `application/json` wordt ondersteund. |
 | x-MS-Request-id | Door de server gegenereerde aanvraag-ID. Kan worden gebruikt om contact op te nemen met micro soft om een aanvraag te onderzoeken. |

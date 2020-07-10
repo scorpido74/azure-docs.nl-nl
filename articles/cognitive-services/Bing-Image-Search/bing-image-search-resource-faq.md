@@ -10,12 +10,12 @@ ms.subservice: bing-image-search
 ms.topic: conceptual
 ms.date: 03/04/2019
 ms.author: aahi
-ms.openlocfilehash: 3114c19ecff1a8ae70012592592078302d4a6222
-ms.sourcegitcommit: a989fb89cc5172ddd825556e45359bac15893ab7
+ms.openlocfilehash: 2d919640431ce014d34372812d9c07bb84d750b2
+ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/01/2020
-ms.locfileid: "85800020"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86184052"
 ---
 # <a name="frequently-asked-questions-faq-about-the-bing-image-search-api"></a>Veelgestelde vragen over de Bing Afbeeldingen zoeken-API
 
@@ -25,7 +25,7 @@ Hier vindt u antwoorden op veelgestelde vragen over concepten, code en scenario'
 
 De volgende headers kunnen optreden in reacties van de Bing Afbeeldingen zoeken-API.
 
-| `Attribute`         | `Description` |
+| Kenmerk           | Beschrijving   |
 | ------------------- | ------------- |
 | `X-MSEdge-ClientID` |De unieke ID die Bing aan de gebruiker heeft toegewezen |
 | `BingAPIs-Market`   |De markt die is gebruikt om aan de aanvraag te voldoen |

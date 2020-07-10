@@ -9,12 +9,12 @@ tags: complex data types; compound data types; aggregate data types
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 9fe61cf2a53b8e128a6cb58465cbb4785faa89d2
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: e6e66dc05ac2b6e54a1be94576b8686390949145
+ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85562047"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86171836"
 ---
 # <a name="how-to-model-complex-data-types-in-azure-cognitive-search"></a>Complexe gegevens typen model leren in azure Cognitive Search
 
@@ -111,7 +111,7 @@ Zoek expressies met een vrije vorm werken zoals verwacht met complexe typen. Als
 
 Query's krijgen meer nuances wanneer u meerdere voor waarden en Opera tors hebt, en voor sommige termen zijn veld namen opgegeven, evenals de [syntaxis](query-lucene-syntax.md)van de lucene. Met deze query wordt bijvoorbeeld geprobeerd twee voor waarden, "Port land" en "of" te vergelijken met twee subvelden van het veld adres:
 
-    search=Address/City:Portland AND Address/State:OR
+> `search=Address/City:Portland AND Address/State:OR`
 
 Query's zoals dit zijn niet- *gecorreleerd* voor Zoek opdrachten in volledige tekst, in tegens telling tot filters. In filters worden query's via subvelden van een complexe verzameling gecorreleerd met behulp van bereik variabelen in [ `any` of `all` ](search-query-odata-collection-operators.md). De Maine-query hierboven retourneert documenten die zowel "Port land," als "Port land, Oregon" bevatten, samen met andere steden in Oregon. Dit gebeurt omdat elke component van toepassing is op alle waarden van het veld in het hele document, waardoor er geen ' Huidig subdocument ' is. Zie [informatie over OData-verzamelings filters in Azure Cognitive Search](search-query-understand-collection-filters.md)voor meer informatie.
 
@@ -119,7 +119,7 @@ Query's zoals dit zijn niet- *gecorreleerd* voor Zoek opdrachten in volledige te
 
 De `$select` para meter wordt gebruikt om te kiezen welke velden worden geretourneerd in de zoek resultaten. Als u deze para meter wilt gebruiken om specifieke subvelden van een complex veld te selecteren, neemt u het bovenliggende veld en subveld op, gescheiden door een schuine streep ( `/` ).
 
-    $select=HotelName, Address/City, Rooms/BaseRate
+> `$select=HotelName, Address/City, Rooms/BaseRate`
 
 Velden moeten worden gemarkeerd als ophalen in de index als u deze wilt in de zoek resultaten. Alleen velden die als ophalen zijn gemarkeerd, kunnen worden gebruikt in een- `$select` instructie.
 
@@ -143,11 +143,11 @@ Sorteer bewerkingen werken als velden één waarde per document hebben, ongeacht
 
 U kunt verwijzen naar subvelden van een complex veld in een filter expressie. Gebruik alleen de syntaxis van het [OData-pad](query-odata-filter-orderby-syntax.md) dat wordt gebruikt voor facetten, sorteren en selecteren van velden. Met het volgende filter worden bijvoorbeeld alle hotels in Canada geretourneerd:
 
-    $filter=Address/Country eq 'Canada'
+> `$filter=Address/Country eq 'Canada'`
 
 Als u wilt filteren op een complex verzamelings veld, kunt u een **lambda-expressie** gebruiken met de [ `any` `all` Opera tors en](search-query-odata-collection-operators.md). In dat geval is de **variabele Range** van de lambda-expressie een object met subvelden. U kunt naar deze subvelden verwijzen met de standaard syntaxis van het OData-pad. Het volgende filter retourneert bijvoorbeeld alle hotels met ten minste één luxe kamer en alle niet-roken ruimten:
 
-    $filter=Rooms/any(room: room/Type eq 'Deluxe Room') and Rooms/all(room: not room/SmokingAllowed)
+> `$filter=Rooms/any(room: room/Type eq 'Deluxe Room') and Rooms/all(room: not room/SmokingAllowed)`
 
 Net als bij eenvoudige velden van het hoogste niveau kunnen eenvoudige subvelden van complexe velden alleen in filters worden opgenomen als het kenmerk **filterbaar** `true` in de index definitie is ingesteld. Zie [Create Index-API Reference](/rest/api/searchservice/create-index)(Engelstalig) voor meer informatie.
 

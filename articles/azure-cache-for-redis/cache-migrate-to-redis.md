@@ -6,11 +6,12 @@ ms.service: cache
 ms.topic: conceptual
 ms.date: 05/30/2017
 ms.author: yegu
-ms.openlocfilehash: 9596b8cb771f114cb09c5d6c6ae33b4fc4a8cada
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 909329a4326354a890c3c4645002f7248f30e8fa
+ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "74122682"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86184783"
 ---
 # <a name="migrate-from-managed-cache-service-to-azure-cache-for-redis"></a>Migreren van Managed Cache Service naar Azure Cache voor Redis
 Het migreren van uw toepassingen die gebruikmaken van Azure Managed Cache Service naar Azure cache voor redis, kan worden uitgevoerd met minimale wijzigingen in uw toepassing, afhankelijk van de Managed Cache Service functies die worden gebruikt door uw cache toepassing. Hoewel de Api's niet precies hetzelfde zijn, zijn ze vergelijkbaar en zijn veel van de bestaande code die Managed Cache Service gebruikt voor toegang tot een cache, opnieuw met minimale wijzigingen. In dit artikel wordt uitgelegd hoe u de benodigde configuratie-en toepassings wijzigingen kunt aanbrengen om uw Managed Cache Service-toepassingen te migreren voor het gebruik van Azure cache voor redis, en wordt getoond hoe sommige functies van Azure cache voor redis kunnen worden gebruikt voor het implementeren van de functionaliteit van een Managed Cache Service cache.
@@ -39,7 +40,7 @@ Azure Managed Cache Service en Azure cache voor redis zijn vergelijkbaar, maar i
 | Managed Cache Service functie | Ondersteuning voor Managed Cache Service | Azure-cache voor redis-ondersteuning |
 | --- | --- | --- |
 | Benoemde caches |Er is een standaard cache geconfigureerd, en in de standaard-en Premium-cache aanbiedingen kunnen Maxi maal negen extra benoemde caches worden geconfigureerd, indien gewenst. |Azure cache voor redis heeft een configureerbaar aantal data bases (standaard van 16) dat kan worden gebruikt voor het implementeren van een vergelijk bare functionaliteit op benoemde caches. Zie [Wat zijn Redis-databases?](cache-faq.md#what-are-redis-databases) en [Standaardconfiguratie voor Redis-server](cache-configure.md#default-redis-server-configuration) voor meer informatie. |
-| Hoge beschikbaarheid |Voorziet in hoge Beschik baarheid voor items in de cache in de standaard-en Premium-cache-aanbiedingen. Als items verloren zijn gegaan vanwege een fout, zijn back-upkopieën van de items in de cache nog steeds beschikbaar. Schrijf bewerkingen naar de secundaire cache worden synchroon gemaakt. |Hoge Beschik baarheid is beschikbaar in de Standard-en Premium-cache-aanbiedingen, die een primaire/replica-configuratie van twee knoop punten hebben (elke Shard in een Premium-cache heeft een primair/replica-paar). Schrijf bewerkingen naar de replica worden asynchroon uitgevoerd. Zie voor meer informatie [Azure cache for redis prijzen](https://azure.microsoft.com/pricing/details/cache/). |
+| Hoge beschikbaarheid |Voorziet in hoge Beschik baarheid voor items in de cache in de standaard-en Premium-cache-aanbiedingen. Als items verloren zijn gegaan vanwege een fout, zijn back-upkopieën van de items in de cache nog steeds beschikbaar. Schrijf bewerkingen naar de replica cache worden synchroon gemaakt. |Hoge Beschik baarheid is beschikbaar in de Standard-en Premium-cache-aanbiedingen, die een primaire/replica-configuratie van twee knoop punten hebben (elke Shard in een Premium-cache heeft een primair/replica-paar). Schrijf bewerkingen naar de replica worden asynchroon uitgevoerd. Zie voor meer informatie [Azure cache for redis prijzen](https://azure.microsoft.com/pricing/details/cache/). |
 | Meldingen |Hiermee kunnen clients asynchrone meldingen ontvangen wanneer er diverse cache bewerkingen worden uitgevoerd op een benoemde cache. |Client toepassingen kunnen redis pub/sub-of keys [Space-meldingen](cache-configure.md#keyspace-notifications-advanced-settings) gebruiken om een vergelijk bare functionaliteit te krijgen voor meldingen. |
 | Lokale cache |Slaat een kopie van objecten in de cache lokaal op de client op voor extra snelle toegang. |Client toepassingen moeten deze functionaliteit implementeren met een woorden lijst of een vergelijk bare gegevens structuur. |
 | Verwijderings beleid |Geen of LRU. Het standaard beleid is LRU. |Azure cache voor redis ondersteunt het volgende verwijderings beleid: vluchtig-LRU, AllKeys-LRU, vluchtig-wille keurig, AllKeys-wille keurig, vluchtig-TTL, verwijderen. Het standaard beleid is vluchtig-LRU. Zie [default redis server Configuration](cache-configure.md#default-redis-server-configuration)(Engelstalig) voor meer informatie. |

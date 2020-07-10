@@ -5,15 +5,16 @@ services: automation
 ms.subservice: update-management
 ms.date: 03/26/2020
 ms.topic: conceptual
-ms.openlocfilehash: d08afc6e501fd76167e0939633442213958f0d49
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: a2d16bdca18b7fc0afab2a3deb325d1a75be3bb8
+ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83834625"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86185157"
 ---
 # <a name="manage-updates-for-multiple-vms"></a>Updates voor meerdere virtuele machines beheren
 
-U kunt Azure Automation Updatebeheer gebruiken om updates en patches voor uw Windows-en Linux-Vm's te beheren. Vanuit uw [Azure Automation](automation-offering-get-started.md)-account, kunt u het volgende doen:
+U kunt Azure Automation Updatebeheer gebruiken om updates en patches voor uw Windows-en Linux-Vm's te beheren. Vanuit uw [Azure Automation](./index.yml)-account, kunt u het volgende doen:
 
 - Schakel Vm's voor update beheer in.
 - De status van beschikbare updates evalueren.
@@ -73,12 +74,12 @@ Agents die zijn geïnstalleerd op Vm's en computers, verzamelen gegevens over up
 
 De volgende tabel beschrijft de verbonden bronnen die Updatebeheer ondersteunt:
 
-| Verbonden bron | Ondersteund | Description |
+| Verbonden bron | Ondersteund | Beschrijving |
 | --- | --- | --- |
-| Windows-agents |Yes |Updatebeheer verzamelt informatie over systeem updates van Windows-agents en start vervolgens de installatie van de vereiste updates. |
-| Linux-agents |Yes |Updatebeheer verzamelt informatie over systeem updates van Linux-agents en start vervolgens de installatie van de vereiste updates op ondersteunde distributies. |
-| Beheergroep Operations Manager |Yes |Updatebeheer verzamelt informatie over systeem updates van agents in een verbonden beheer groep. |
-| Azure Storage-account |No |Azure Storage bevat geen informatie over systeem updates. |
+| Windows-agents |Ja |Updatebeheer verzamelt informatie over systeem updates van Windows-agents en start vervolgens de installatie van de vereiste updates. |
+| Linux-agents |Ja |Updatebeheer verzamelt informatie over systeem updates van Linux-agents en start vervolgens de installatie van de vereiste updates op ondersteunde distributies. |
+| Beheergroep Operations Manager |Ja |Updatebeheer verzamelt informatie over systeem updates van agents in een verbonden beheer groep. |
+| Azure Storage-account |Nee |Azure Storage bevat geen informatie over systeem updates. |
 
 ### <a name="collection-frequency"></a>Verzamelingsfrequentie
 
@@ -143,7 +144,7 @@ Geef in het deel venster **nieuwe update-implementatie** de volgende informatie 
 
 - **Besturings element voor opnieuw opstarten** : deze instelling bepaalt hoe opnieuw opstarten voor de update-implementatie wordt afgehandeld.
 
-   |Optie|Description|
+   |Optie|Beschrijving|
    |---|---|
    |Opnieuw opstarten indien nodig| **(Standaard)** Als dat het geval is, wordt opnieuw opstarten gestart als het onderhouds venster toestaat.|
    |Altijd opnieuw opstarten|Opnieuw opstarten wordt gestart, ongeacht of er een is vereist. |

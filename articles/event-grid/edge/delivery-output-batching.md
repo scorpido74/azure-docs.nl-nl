@@ -5,15 +5,14 @@ author: HiteshMadan
 manager: rajarv
 ms.author: himad
 ms.reviewer: spelluru
-ms.date: 10/06/2019
+ms.date: 07/08/2020
 ms.topic: article
-ms.service: event-grid
-services: event-grid
-ms.openlocfilehash: a6f033af34088081090251f2e5e7cd4a07ce43cc
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 0ae2261f8278c4d5e1944b01a9731afd293df20b
+ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "76841744"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86171632"
 ---
 # <a name="output-batching"></a>Batchverwerking van uitvoer
 
@@ -76,7 +75,7 @@ U kunt het batch gedrag van Event Grid per abonnee aanpassen door de volgende tw
 
 De volgende implementatie tijd instellingen bepalen de toegestane maximum waarde bij het maken van een gebeurtenis abonnement.
 
-| Naam van eigenschap | Description |
+| Naam van eigenschap | Beschrijving |
 | ------------- | ----------- | 
 | `api__deliveryPolicyLimits__maxpreferredBatchSizeInKilobytes` | De toegestane maximum waarde voor de `PreferredBatchSizeInKilobytes` knop. Standaard instelling `1033` .
 | `api__deliveryPolicyLimits__maxEventsPerBatch` | De toegestane maximum waarde voor de `MaxEventsPerBatch` knop. Standaard instelling `50` .
@@ -85,7 +84,7 @@ De volgende implementatie tijd instellingen bepalen de toegestane maximum waarde
 
 De volgende implementatie tijd instellingen bepalen de runtime standaard waarde van elke knop wanneer deze niet is opgegeven in het gebeurtenis abonnement. Als u wilt herhalen, moet er ten minste één knop worden ingesteld op het gebeurtenis abonnement om batch-gedrag in te scha kelen.
 
-| Naam van eigenschap | Description |
+| Naam van eigenschap | Beschrijving |
 | ------------- | ----------- |
 | `broker__defaultMaxBatchSizeInBytes` | Maximale grootte van leverings aanvraag wanneer alleen `MaxEventsPerBatch` is opgegeven. Standaard instelling `1_058_576` .
 | `broker__defaultMaxEventsPerBatch` | Het maximum aantal gebeurtenissen dat aan een batch moet worden toegevoegd als alleen `MaxBatchSizeInBytes` wordt opgegeven. Standaard instelling `10` .

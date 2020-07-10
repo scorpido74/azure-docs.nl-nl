@@ -1,15 +1,14 @@
 ---
 title: Systeem status herstellen naar een Windows-Server
-description: Stapsgewijze uitleg over het herstellen van de systeem status van Windows Server vanuit een back-up in Azure.
-ms.reviewer: saurse
+description: Stapsgewijze uitleg voor het herstellen van de Windows Server-systeem status vanuit een back-up in Azure.
 ms.topic: conceptual
-ms.date: 08/18/2017
-ms.openlocfilehash: 39cac84c4a33c1da209d0a0cc7b0f8ac8ee390a0
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 06/30/2020
+ms.openlocfilehash: 5212e5ea0ed3a8c0e0a8e9d4fa45f1eb6c901bf5
+ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82610782"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86184453"
 ---
 # <a name="restore-system-state-to-windows-server"></a>Systeem status herstellen naar Windows Server
 
@@ -19,7 +18,7 @@ In dit artikel wordt uitgelegd hoe u back-ups van Windows Server-systeem status 
    * Herstel de systeem status op dezelfde server als de back-ups zijn gemaakt of
    * Herstel het systeem status bestand naar een andere server.
 
-2. Pas de herstelde systeem status bestanden toe op een Windows-Server.
+2. Pas de herstelde systeem status bestanden toe op een Windows-Server met behulp van het hulp programma Windows Server Back-up.
 
 ## <a name="recover-system-state-files-to-the-same-server"></a>Systeemstatusbestanden herstellen op dezelfde server
 
@@ -51,7 +50,7 @@ In de volgende stappen wordt uitgelegd hoe u de configuratie van uw Windows-Serv
 
     Azure Backup koppelt het lokale herstel punt en gebruikt dit als een herstel volume.
 
-7. Geef in het volgende deel venster de bestemming op voor de herstelde systeem status bestanden en klik op **Bladeren** om Windows Verkenner te openen en de gewenste bestanden en mappen te vinden. Met deze optie kunt **u kopieën maken, zodat u met beide versies**kopieën van afzonderlijke bestanden in een bestaand systeem status bestands archief maakt, in plaats van de kopie van het hele archief van de systeem status te maken.
+7. Geef in het volgende deel venster de bestemming op voor de herstelde systeem status bestanden. Klik vervolgens op **Bladeren** om Windows Verkenner te openen en de gewenste bestanden en mappen te vinden. Met deze optie kunt **u kopieën maken, zodat u met beide versies**kopieën van afzonderlijke bestanden in een bestaand systeem status bestands archief maakt, in plaats van de kopie van het hele archief van de systeem status te maken.
 
     ![Herstel opties](./media/backup-azure-restore-system-state/recover-as-files.png)
 
@@ -61,7 +60,7 @@ In de volgende stappen wordt uitgelegd hoe u de configuratie van uw Windows-Serv
 
 9. Kopieer de *WindowsImageBackup* -map in de herstel bestemming naar een niet-kritiek volume van de-server. Normaal gesp roken is het volume van het Windows-besturings systeem het essentiële volume.
 
-10. Nadat het herstel is voltooid, volgt u de stappen in de sectie, de [herstelde systeem status bestanden Toep assen op de Windows-Server](backup-azure-restore-system-state.md)om het systeem status herstel proces te volt ooien.
+10. Nadat het herstel is voltooid, volgt u de stappen in de sectie, [herstelde systeem status Toep assen op een Windows-Server](#apply-restored-system-state-on-a-windows-server)om het systeem status herstel proces te volt ooien.
 
 ## <a name="recover-system-state-files-to-an-alternate-server"></a>Systeem status bestanden herstellen naar een alternatieve server
 
@@ -71,7 +70,7 @@ De terminologie die in deze stappen wordt gebruikt, omvat:
 
 * *Bron machine* : de oorspronkelijke machine waarvan de back-up is gemaakt en die momenteel niet beschikbaar is.
 * *Doel computer* : de computer waarop de gegevens worden hersteld.
-* Voor beeld van de *kluis* : de Recovery Services kluis waarmee de *bron computer* en de *doel computer* zijn geregistreerd. <br/>
+* Voor beeld van de *kluis* : de Recovery Services kluis waarmee de *bron computer* en de *doel computer* zijn geregistreerd.
 
 > [!NOTE]
 > Back-ups die zijn gemaakt van de ene machine kunnen niet worden hersteld naar een computer waarop een eerdere versie van het besturings systeem wordt uitgevoerd. Back-ups die zijn gemaakt van een Windows Server 2016-computer, kunnen bijvoorbeeld niet worden hersteld naar Windows Server 2012 R2. De inverse is echter mogelijk. U kunt back-ups van Windows Server 2012 R2 gebruiken om Windows Server 2016 te herstellen.
@@ -115,6 +114,61 @@ De terminologie die in deze stappen wordt gebruikt, omvat:
 
 Nadat u de systeem status hebt hersteld als bestanden met behulp van Azure Recovery Services agent, gebruikt u het hulp programma Windows Server Back-up om de herstelde systeem status toe te passen op Windows Server. Het hulp programma Windows Server Back-up is al beschikbaar op de server. In de volgende stappen wordt uitgelegd hoe de herstelde systeem status moet worden toegepast.
 
+1. Open de module Windows Server Back-up. Als u niet weet waar de module is geïnstalleerd, zoekt u op de computer of server naar **Windows Server back-up**.
+
+    De bureau blad-app wordt weer gegeven in de zoek resultaten. Als het niet wordt weer gegeven, of als u fouten tegen komt wanneer u de toepassing opent, moet u de **Windows Server back-up-functies**en afhankelijke onderdelen daaronder installeren die beschikbaar zijn in de **wizard functies toevoegen** in **Serverbeheer**.
+
+1. Selecteer in de module de optie **lokale back-up**.
+
+    ![Lokale back-up selecteren om van daaruit te herstellen](./media/backup-azure-restore-system-state/win-server-backup-local-backup.png)
+
+1. Klik op de lokale back-upconsole in het **deel venster acties**op **herstellen** om de wizard herstellen te openen.
+
+1. Selecteer de optie, **een back-up die is opgeslagen op een andere locatie**en klik op **volgende**.
+
+   ![kiezen om naar een andere server te herstellen](./media/backup-azure-restore-system-state/backup-stored-in-diff-location.png)
+
+1. Wanneer u het locatie type opgeeft, selecteert u **externe gedeelde map** als uw systeem status back-up is hersteld naar een andere server. Als uw systeem status lokaal is hersteld, selecteert u **lokale stations**.
+
+    ![selecteren of u wilt herstellen van de lokale server of een andere](./media/backup-azure-restore-system-state/ss-recovery-remote-shared-folder.png)
+
+1. Voer het pad naar de *WindowsImageBackup* -map in of kies het lokale station dat deze map bevat (bijvoorbeeld D:\WindowsImageBackup), hersteld als onderdeel van het herstel van de systeem status bestanden met behulp van Azure Recovery Services agent en klik op **volgende**.
+
+    ![pad naar het gedeelde bestand](./media/backup-azure-restore-system-state/ss-recovery-remote-folder.png)
+
+1. Selecteer de systeem status versie die u wilt herstellen en klik op **volgende**.
+
+1. Selecteer in het deel venster herstel type selecteren de optie **systeem status** en klik op **volgende**.
+
+1. Voor de locatie van de systeem status herstel selecteert u **oorspronkelijke locatie**en klikt u op **volgende**.
+
+    Als u een domein controller herstelt, ziet u de volgende extra optie:
+
+    ![Locatie voor herstel van de systeem status](./media/backup-azure-restore-system-state/location-for-system-state-recovery.png)
+
+    >[!NOTE]
+    >Selecteer alleen ' bindend terugzetten van Active Directory bestanden ' als u een bindende terugzet bewerking van alle Active Directory gegevens wilt uitvoeren.
+
+1. Controleer de details van de bevestiging, Controleer de instellingen voor opnieuw opstarten en klik op **herstellen** om de herstelde systeem status bestanden toe te passen.
+
+    ![Start de herstel systeem status bestanden](./media/backup-azure-restore-system-state/launch-ss-recovery.png)
+
+    >[!NOTE]
+    >Selecteer de optie de **server automatisch opnieuw opstarten** als u de herstel bewerking in de modus Active Directory terugzetten uitvoert.
+
+1. Nadat u een herstel bewerking hebt voltooid, moet u de server opnieuw opstarten in de normale modus. Open een opdracht prompt en typ het volgende:`bcdedit /deletevalue safeboot`
+1. Start de server opnieuw op.
+
+## <a name="special-considerations-for-system-state-recovery-on-a-domain-controller"></a>Speciale overwegingen voor herstel van de systeem status op een domein controller
+
+Back-up van de systeem status bevat Active Directory gegevens. Gebruik de volgende stappen om Active Directory-domein-service (AD DS) te herstellen van de huidige status naar een eerdere status. Dit type herstel bewerking kan in twee scenario's worden uitgevoerd:
+
+* Alle Active Directory gegevens worden teruggezet wanneer er zich geen werkende domein controllers in het forest bevinden
+* Een deel van de Active Directory gegevens herstellen wanneer deze objecten zijn verwijderd of beschadigd
+
+Dit artikel heeft alleen betrekking op het eerste scenario, waarmee u een nonauthorative terugzet van AD DS en een bindende terugzet bewerking van de map SYSVOL.  Als u het tweede scenario wilt uitvoeren (waarbij de domein controllers nog steeds functioneel zijn, maar u bepaalde AD-objecten moet herstellen), raadpleegt u [deze instructies](https://support.microsoft.com/help/840001/how-to-restore-deleted-user-accounts-and-their-group-memberships-in-ac).
+
+1. Volg de onderstaande stappen om de [systeem status bestanden te herstellen op een andere server](#recover-system-state-files-to-an-alternate-server).
 1. Gebruik de volgende opdrachten om de server opnieuw op te starten in de *modus Active Directory-Services herstellen*. In een opdracht prompt met verhoogde bevoegdheid:
 
     ```cmd
@@ -122,44 +176,31 @@ Nadat u de systeem status hebt hersteld als bestanden met behulp van Azure Recov
     Shutdown /r /t 0
     ```
 
-2. Nadat het systeem opnieuw is opgestart, opent u de module Windows Server Back-up. Als u niet weet waar de module is geïnstalleerd, zoekt u op de computer of server naar **Windows Server back-up**.
+1. Als u Active Directory wilt herstellen als onderdeel van een systeem status herstel, kunt u een van de twee volgende methoden kiezen:
 
-    De bureau blad-app wordt weer gegeven in de zoek resultaten. Als het niet wordt weer gegeven, of als er fouten optreden bij het openen van de toepassing, moet u de **Windows Server back-up-functies**en afhankelijke onderdelen ervan installeren die beschikbaar zijn in de **wizard functies toevoegen** in **Serverbeheer**.
+    * Volg de bovenstaande instructies om de [herstelde systeem status op een Windows-Server](#apply-restored-system-state-on-a-windows-server) met het hulp programma Windows Server back-up toe te passen.
 
-3. Selecteer in de module de optie **lokale back-up**.
+        >[!NOTE]
+        >Als u alle Active Directory gegevens herstelt (en er zich geen werkende domein controllers in het forest bevinden), selecteert u in stap 9 hierboven **een bindende terugzet bewerking van Active Directory-bestanden uitvoeren**.
 
-    ![Lokale back-up selecteren om van daaruit te herstellen](./media/backup-azure-restore-system-state/win-server-backup-local-backup.png)
+    * Gebruik het hulp programma [Wbadmin](https://docs.microsoft.com/windows-server/administration/windows-commands/wbadmin-start-systemstaterecovery) om de herstel bewerking uit te voeren vanaf de opdracht regel.
 
-4. Klik op de lokale back-upconsole in het **deel venster acties**op **herstellen** om de wizard herstellen te openen.
+        U hebt de versie-id nodig van de back-up die u wilt gebruiken. U kunt een lijst met versie-id's ophalen door de volgende opdracht uit te voeren:
 
-5. Selecteer de optie, **een back-up die is opgeslagen op een andere locatie**en klik op **volgende**.
+        ```cmd
+        wbadmin get versions -backuptarget <servername\sharename>
+        ```
 
-   ![kiezen om naar een andere server te herstellen](./media/backup-azure-restore-system-state/backup-stored-in-diff-location.png)
+        Vervolgens gebruikt u die versie-id om het herstel uit te voeren.
 
-6. Wanneer u het locatie type opgeeft, selecteert u **externe gedeelde map** als uw systeem status back-up is hersteld naar een andere server. Als uw systeem status lokaal is hersteld, selecteert u **lokale stations**.
+        Als u bijvoorbeeld een nonauthorative- [herstel van AD DS en een bindende terugzet bewerking van de map SYSVOL](https://docs.microsoft.com/windows-server/identity/ad-ds/manage/ad-forest-recovery-nonauthoritative-restore) wilt uitvoeren met behulp van de back-up van 04/30/2020 om 9:00 uur, die is opgeslagen op de gedeelde bron `\\servername\share` voor `server01` , typt u:
 
-    ![selecteren of u wilt herstellen van de lokale server of een andere](./media/backup-azure-restore-system-state/ss-recovery-remote-shared-folder.png)
+        ```cmd
+        wbadmin start systemstaterecovery -version:04/30/2020-09:00 -backupTarget:\\servername\share -machine:server01 -authsysvol
+        ```
 
-7. Voer het pad naar de *WindowsImageBackup* -map in of kies het lokale station dat deze map bevat (bijvoorbeeld D:\WindowsImageBackup), hersteld als onderdeel van het herstel van de systeem status bestanden met behulp van Azure Recovery Services agent en klik op **volgende**.
-
-    ![pad naar het gedeelde bestand](./media/backup-azure-restore-system-state/ss-recovery-remote-folder.png)
-
-8. Selecteer de systeem status versie die u wilt herstellen en klik op **volgende**.
-
-9. Selecteer in het deel venster herstel type selecteren de optie **systeem status** en klik op **volgende**.
-
-10. Voor de locatie van de systeem status herstel selecteert u **oorspronkelijke locatie**en klikt u op **volgende**.
-
-11. Controleer de details van de bevestiging, Controleer de instellingen voor opnieuw opstarten en klik op **herstellen** om de herstelde systeem status bestanden toe te passen.
-
-    ![Start de herstel systeem status bestanden](./media/backup-azure-restore-system-state/launch-ss-recovery.png)
-
-## <a name="special-considerations-for-system-state-recovery-on-active-directory-server"></a>Speciale overwegingen voor herstel van de systeem status op Active Directory server
-
-Back-up van de systeem status bevat Active Directory gegevens. Gebruik de volgende stappen om Active Directory-domein-service (AD DS) te herstellen van de huidige status naar een eerdere status.
-
-1. Start de domein controller opnieuw op in de modus Active Directory terugzetten (DSRM).
-2. Volg de onderstaande [stappen om](https://docs.microsoft.com/windows-server/identity/ad-ds/manage/ad-forest-recovery-nonauthoritative-restore) Windows Server back-up-cmdlets te gebruiken om AD DS te herstellen.
+1. Wanneer u de herstel bewerking hebt voltooid, moet u de server opnieuw opstarten in de normale modus. Open een opdracht prompt en typ het volgende:`bcdedit /deletevalue safeboot`
+1. Start de server opnieuw op.
 
 ## <a name="troubleshoot-failed-system-state-restore"></a>Mislukt herstel van systeemstatus oplossen
 

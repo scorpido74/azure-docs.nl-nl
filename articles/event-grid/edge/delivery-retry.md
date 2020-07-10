@@ -5,15 +5,14 @@ author: VidyaKukke
 manager: rajarv
 ms.author: vkukke
 ms.reviewer: spelluru
-ms.date: 10/29/2019
+ms.date: 07/08/2020
 ms.topic: article
-ms.service: event-grid
-services: event-grid
-ms.openlocfilehash: 7df283b12a0d04d2b785c13a2f12b03115581e79
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: aa0b3a05fb26f6be951b697145d7b22e03b7792d
+ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "76841709"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86171615"
 ---
 # <a name="delivery-and-retry"></a>Leveren en opnieuw proberen
 
@@ -26,14 +25,14 @@ Event Grid biedt een duurzame levering. Er wordt een poging gedaan om elk berich
 
 Event Grid wacht een reactie van 60 seconden nadat een bericht is afgeleverd. Als het eind punt van de abonnee niet het antwoord stuurt, wordt het bericht in een van onze back-upwachtrijen voor volgende pogingen in de wachtrij geplaatst.
 
-Er zijn twee vooraf geconfigureerde back-ups van wacht rijen die bepalen op welk schema een nieuwe poging wordt gedaan. Dit zijn:
+Er zijn twee vooraf geconfigureerde back-ups van wacht rijen die bepalen op welk schema een nieuwe poging wordt gedaan. Dat zijn:
 
-| Schema | Description |
+| Schema | Beschrijving |
 | ---------| ------------ |
 | 1 minuut | Berichten die hier worden beëindigd, worden elke minuut geprobeerd.
 | 10 minuten | Berichten die hier worden beëindigd, worden elke tien minuten geprobeerd.
 
-### <a name="how-it-works"></a>Uitleg
+### <a name="how-it-works"></a>Hoe werkt het?
 
 1. Bericht binnenkomt in de Event Grid-module. Er wordt geprobeerd deze direct te leveren.
 1. Als er een fout optreedt, wordt het bericht in de wachtrij van 1 minuut in de wacht gezet en na een minuut opnieuw geprobeerd.
@@ -42,7 +41,7 @@ Er zijn twee vooraf geconfigureerde back-ups van wacht rijen die bepalen op welk
 
 ## <a name="retry-policy-limits"></a>Limieten voor beleid opnieuw proberen
 
-Er zijn twee configuraties die het beleid voor opnieuw proberen bepalen. Dit zijn:
+Er zijn twee configuraties die het beleid voor opnieuw proberen bepalen. Dat zijn:
 
 * Maximum aantal pogingen
 * Time-to-Live (TTL) van gebeurtenis
@@ -53,7 +52,7 @@ Er wordt een gebeurtenis verwijderd als een van de limieten van het beleid voor 
 
 Er zijn twee eigenschappen: `brokers__defaultMaxDeliveryAttempts` en `broker__defaultEventTimeToLiveInSeconds` die kunnen worden geconfigureerd als onderdeel van de Event grid-implementatie, waarmee de standaard instellingen voor het beleid voor opnieuw proberen voor alle abonnees worden beheerd.
 
-| Naam van eigenschap | Description |
+| Naam van eigenschap | Beschrijving |
 | ---------------- | ------------ |
 | `broker__defaultMaxDeliveryAttempts` | Het maximum aantal pogingen om een gebeurtenis te leveren. Standaard waarde: 30.
 | `broker__defaultEventTimeToLiveInSeconds` | Gebeurtenis-TTL in seconden waarna een gebeurtenis wordt verwijderd als deze niet wordt bezorgd. Standaard waarde: **7200** seconden

@@ -5,15 +5,14 @@ author: VidyaKukke
 manager: rajarv
 ms.author: vkukke
 ms.reviewer: spelluru
-ms.date: 10/03/2019
+ms.date: 07/08/2020
 ms.topic: article
-ms.service: event-grid
-services: event-grid
-ms.openlocfilehash: 841b5092775353bbe3340dbbd55610026f998a15
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 632227579fd021a0d2ce1d0b1bb0b8a8288c5f47
+ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "76846466"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86171666"
 ---
 # <a name="event-grid-configuration"></a>Event Grid configuratie
 
@@ -23,7 +22,7 @@ Event Grid biedt veel configuraties die per omgeving kunnen worden gewijzigd. De
 
 Zie [beveiliging en verificatie](security-authentication.md)voor meer informatie over client verificatie in het algemeen. Voor beelden van het gebruik vindt u in [dit artikel](configure-api-protocol.md).
 
-| Naam van eigenschap | Description |
+| Naam van eigenschap | Beschrijving |
 | ---------------- | ------------ |
 |`inbound__serverAuth__tlsPolicy`| TLS-beleid van de module Event Grid. De standaard waarde is alleen HTTPS.
 |`inbound__serverAuth__serverCert__source`| Bron van server certificaat dat wordt gebruikt door de module Event Grid voor de TLS-configuratie. De standaard waarde is IoT Edge.
@@ -32,7 +31,7 @@ Zie [beveiliging en verificatie](security-authentication.md)voor meer informatie
 
 Zie [beveiliging en verificatie](security-authentication.md)voor meer informatie over client verificatie in het algemeen. Voor beelden vindt u in [dit artikel](configure-client-auth.md).
 
-| Naam van eigenschap | Description |
+| Naam van eigenschap | Beschrijving |
 | ---------------- | ------------ |
 |`inbound__clientAuth__clientCert__enabled`| Client authenticatie op basis van certificaten in-of uitschakelen. De standaardwaarde is Waar.
 |`inbound__clientAuth__clientCert__source`| Bron voor het valideren van client certificaten. De standaard waarde is IoT Edge.
@@ -44,7 +43,7 @@ Zie [beveiliging en verificatie](security-authentication.md)voor meer informatie
 ## <a name="outgoing-client-authentication"></a>Verificatie van uitgaande clients
 Zie [beveiliging en verificatie](security-authentication.md)voor meer informatie over client verificatie in het algemeen. Voor beelden vindt u in [dit artikel](configure-identity-auth.md).
 
-| Naam van eigenschap | Description |
+| Naam van eigenschap | Beschrijving |
 | ---------------- | ------------ |
 |`outbound__clientAuth__clientCert__enabled`| Het koppelen van een identiteits certificaat voor uitgaande aanvragen in-of uitschakelen. De standaardwaarde is Waar.
 |`outbound__clientAuth__clientCert__source`| Bron voor het ophalen van het uitgaande certificaat van de Event Grid module. De standaard waarde is IoT Edge.
@@ -53,7 +52,7 @@ Zie [beveiliging en verificatie](security-authentication.md)voor meer informatie
 
 Zie [beveiliging en verificatie](security-authentication.md)voor meer informatie over client verificatie in het algemeen. Voor beelden vindt u in [dit artikel](configure-webhook-subscriber-auth.md).
 
-| Naam van eigenschap | Description |
+| Naam van eigenschap | Beschrijving |
 | ---------------- | ------------ |
 |`outbound__webhook__httpsOnly`| Beleid om te bepalen of alleen HTTPS-abonnees worden toegestaan. De standaard waarde is True (alleen HTTPS).
 |`outbound__webhook__skipServerCertValidation`| Vlag waarmee wordt bepaald of het abonnee certificaat moet worden gevalideerd. De standaardwaarde is Waar.
@@ -63,7 +62,7 @@ Zie [beveiliging en verificatie](security-authentication.md)voor meer informatie
 
 Zie voor meer informatie over deze functie in het algemeen [levering en opnieuw proberen](delivery-retry.md).
 
-| Naam van eigenschap | Description |
+| Naam van eigenschap | Beschrijving |
 | ---------------- | ------------ |
 | `broker__defaultMaxDeliveryAttempts` | Het maximum aantal pogingen om een gebeurtenis te leveren. De standaardwaarde is 30.
 | `broker__defaultEventTimeToLiveInSeconds` | Time-to-Live (TTL) in seconden waarna een gebeurtenis wordt verwijderd als deze niet wordt bezorgd. De standaard waarde is **7200** seconden
@@ -72,7 +71,7 @@ Zie voor meer informatie over deze functie in het algemeen [levering en opnieuw 
 
 Zie [levering en uitvoer batch verwerking](delivery-output-batching.md)voor meer informatie over deze functie in het algemeen.
 
-| Naam van eigenschap | Description |
+| Naam van eigenschap | Beschrijving |
 | ---------------- | ------------ |
 | `api__deliveryPolicyLimits__maxBatchSizeInBytes` | De toegestane maximum waarde voor de `ApproxBatchSizeInBytes` knop. De standaard waarde is `1_058_576` .
 | `api__deliveryPolicyLimits__maxEventsPerBatch` | De toegestane maximum waarde voor de `MaxEventsPerBatch` knop. De standaard waarde is `50` .
@@ -83,6 +82,6 @@ Zie [levering en uitvoer batch verwerking](delivery-output-batching.md)voor meer
 
 Zie [onderwerpen en abonnementen bewaken](monitor-topics-subscriptions.md) voor meer informatie over het gebruik van metrische gegevens met Event Grid op IOT Edge.
 
-| Naam van eigenschap | Description |
+| Naam van eigenschap | Beschrijving |
 | ---------------- | ------------ |
-| `metrics__reporterType` | Type rapporter voor metrische gegevens enpoint. De standaard instelling is `none` en Hiermee worden metrische gegevens uitgeschakeld. Instelling voor `prometheus` het inschakelen van metrische gegevens in de Prometheus Exposition-indeling.
+| `metrics__reporterType` | Type rapporter voor het metrieke eind punt. De standaard instelling is `none` en Hiermee worden metrische gegevens uitgeschakeld. Instelling voor `prometheus` het inschakelen van metrische gegevens in de Prometheus Exposition-indeling.
