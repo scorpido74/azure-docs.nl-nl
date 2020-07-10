@@ -3,12 +3,12 @@ title: Met Azure Batch worden grootschalige parallelle jobs uitgevoerd in de clo
 description: Meer informatie over het gebruik van de Azure Batch-service voor grootschalige parallelle en HPC-workloads
 ms.topic: conceptual
 ms.date: 01/19/2018
-ms.openlocfilehash: 134706622655029c6673aea5dd04a9284155be6f
-ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.openlocfilehash: 03c958f44f707e7c5b6ac5c4414bdb5fd4963635
+ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/05/2020
-ms.locfileid: "85965073"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86142806"
 ---
 # <a name="what-is-azure-batch"></a>Wat is Azure Batch?
 
@@ -34,7 +34,7 @@ Enkele voorbeelden van intrinsiek parallelle workloads die u kunt overbrengen na
 * Gegevensopname, -verwerking en ETL-bewerkingen
 * Software-testuitvoering
 
-U kunt met Batch ook [nauw gekoppelde workloads uitvoeren](batch-mpi.md); dit zijn wo waar de toepassingen die u uitvoert met elkaar moeten communiceren, in tegenstelling tot wanneer ze onafhankelijk van elkaar worden uitgevoerd. Nauw gekoppelde toepassingen gebruiken normaal gesproken de Message Passing Interface (MPI) API. U kunt uw nauw gekoppelde workloads met Batch uitvoeren met behulp van [Microsoft MPI](/message-passing-interface/microsoft-mpi) of Intel MPI. Toepassingsprestaties verbeteren met gespecialiseerde [HPC](../virtual-machines/linux/sizes-hpc.md) en [GPU-geoptimaliseerde](../virtual-machines/linux/sizes-gpu.md) VM-grootten.
+U kunt met Batch ook [nauw gekoppelde workloads uitvoeren](batch-mpi.md); dit zijn wo waar de toepassingen die u uitvoert met elkaar moeten communiceren, in tegenstelling tot wanneer ze onafhankelijk van elkaar worden uitgevoerd. Nauw gekoppelde toepassingen gebruiken normaal gesproken de Message Passing Interface (MPI) API. U kunt uw nauw gekoppelde workloads met Batch uitvoeren met behulp van [Microsoft MPI](/message-passing-interface/microsoft-mpi) of Intel MPI. Toepassingsprestaties verbeteren met gespecialiseerde [HPC](../virtual-machines/sizes-hpc.md) en [GPU-geoptimaliseerde](../virtual-machines/sizes-gpu.md) VM-grootten.
 
 Enkele voorbeelden van nauw gekoppelde workloads:
 * Beperkte elementanalyse
@@ -83,4 +83,3 @@ Lees een van deze snelstartgidsen om snel aan de slag te gaan met Azure Batch:
 * [Uw eerste Batch-taak uitvoeren met de Azure-portal](quick-create-portal.md)
 * [Uw eerste Batch-taak uitvoeren met de .NET-API](quick-run-dotnet.md)
 * [Uw eerste Batch-taak uitvoeren met de Python-API](quick-run-python.md)
-

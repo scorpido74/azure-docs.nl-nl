@@ -16,12 +16,12 @@ ms.author: ajburnle
 ms.reviewer: dhanyahk
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f196c21869f4a2f12e28bc4d6c42b8c945ddde71
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 30c6be98eeca4433798ad8ed2bacb9338331b112
+ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85603669"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86170442"
 ---
 # <a name="whats-new-in-azure-active-directory"></a>Wat is er nieuw in Azure Active Directory?
 
@@ -259,10 +259,9 @@ We hebben een nieuwe riskEventsTypes_v2-eigenschap (teken reeks) geïntroduceerd
 **Product mogelijkheden:** Beveiliging van identiteits beveiliging &
  
 
-De volgende wijzigingen worden aangebracht in de e-mail meldingen voor MFA voor zowel de Cloud-MFA als de MFA-server:
+De volgende wijzigingen worden aangebracht in de e-mail meldingen voor MFA voor MFA:
 
-E-mail meldingen worden verzonden vanaf het volgende adres: azure-noreply@microsoft.com .
-De inhoud van e-mail berichten voor fraude bestrijding worden bijgewerkt om de vereiste stappen voor het deblokkeren van de blok kering beter aan te geven.
+E-mail meldingen worden verzonden vanaf het volgende adres: azure-noreply@microsoft.com en msonlineservicesteam@microsoftonline.com . De inhoud van e-mail berichten voor fraude bestrijding worden bijgewerkt om beter te kunnen aangeven wat de vereiste stappen zijn voor het deblokkeren van het gebruik.
 
 ---
 

@@ -9,12 +9,12 @@ ms.service: cognitive-services
 ms.topic: conceptual
 ms.date: 11/22/2019
 ms.author: erhopf
-ms.openlocfilehash: 7c2484892f3de3c8eca3f766793be83bc7a29dc8
-ms.sourcegitcommit: 74ba70139781ed854d3ad898a9c65ef70c0ba99b
+ms.openlocfilehash: a56e815e3a4ac04d20b29163139ab40332c4bec4
+ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/26/2020
-ms.locfileid: "85445539"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86146960"
 ---
 # <a name="authenticate-requests-to-azure-cognitive-services"></a>Aanvragen verifiëren voor Azure Cognitive Services
 
@@ -28,13 +28,13 @@ Elke aanvraag voor een Azure cognitieve service moet een verificatie header beva
 
 Voordat u een aanvraag doet, hebt u een Azure-account en een Azure Cognitive Services-abonnement nodig. Als u al een account hebt, gaat u verder met de volgende sectie. Als u geen account hebt, kunt u in een paar minuten aan de slag met de volgende opties: [een Cognitive Services-account maken voor Azure](cognitive-services-apis-create-account.md).
 
-U kunt uw abonnements sleutel ophalen uit de [Azure Portal](cognitive-services-apis-create-account.md#get-the-keys-for-your-resource) nadat u uw account hebt gemaakt of een [gratis proef versie](https://azure.microsoft.com/try/cognitive-services/my-apis)hebt geactiveerd.
+U kunt uw abonnements sleutel ophalen uit de [Azure Portal](cognitive-services-apis-create-account.md#get-the-keys-for-your-resource) nadat u [uw account hebt gemaakt](https://azure.microsoft.com/free/cognitive-services/).
 
 ## <a name="authentication-headers"></a>Verificatie headers
 
 U kunt snel de verificatie headers bekijken die beschikbaar zijn voor gebruik met Azure Cognitive Services.
 
-| Koptekst | Beschrijving |
+| Header | Beschrijving |
 |--------|-------------|
 | Ocp-Apim-Subscription-Key | Gebruik deze header om te verifiëren met een abonnements sleutel voor een specifieke service of een sleutel van een abonnement op meerdere services. |
 | OCP-APIM-abonnement-regio | Deze header is alleen vereist bij het gebruik van een sleutel voor meerdere services met de [Translator-service](./Translator/reference/v3-0-reference.md). Gebruik deze header om de regio van het abonnement op te geven. |

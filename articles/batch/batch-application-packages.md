@@ -4,12 +4,12 @@ description: Gebruik de functie toepassings pakketten van Azure Batch om eenvoud
 ms.topic: how-to
 ms.date: 04/26/2019
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: cebb7bf001d16e1024ed466268758f0b1bc92c6c
-ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.openlocfilehash: 328b08acbc6d13dd03956bb501b4d4a51310c9c0
+ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/05/2020
-ms.locfileid: "85955027"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86147212"
 ---
 # <a name="deploy-applications-to-compute-nodes-with-batch-application-packages"></a>Toepassingen implementeren op reken knooppunten met batch-toepassings pakketten
 
@@ -57,7 +57,7 @@ U kunt toepassings pakketten opgeven in het groeps-en taak niveau. U kunt een of
 ### <a name="benefits-of-application-packages"></a>Voor delen van toepassings pakketten
 Toepassings pakketten kunnen de code in uw batch-oplossing vereenvoudigen en de overhead verminderen die nodig is voor het beheren van de toepassingen die door uw taken worden uitgevoerd.
 
-Met toepassings pakketten hoeft de begin taak van de pool geen lange lijst op te geven met afzonderlijke bron bestanden die op de knoop punten moeten worden geïnstalleerd. U hoeft niet hand matig meerdere versies van uw toepassings bestanden in Azure Storage of op uw knoop punten te beheren. En u hoeft zich geen zorgen te maken over het genereren van [SAS-url's](../storage/common/storage-dotnet-shared-access-signature-part-1.md) voor toegang tot de bestanden in uw opslag account. Batch werkt op de achtergrond met Azure Storage om toepassings pakketten op te slaan en te implementeren op reken knooppunten.
+Met toepassings pakketten hoeft de begin taak van de pool geen lange lijst op te geven met afzonderlijke bron bestanden die op de knoop punten moeten worden geïnstalleerd. U hoeft niet hand matig meerdere versies van uw toepassings bestanden in Azure Storage of op uw knoop punten te beheren. En u hoeft zich geen zorgen te maken over het genereren van [SAS-url's](../storage/common/storage-sas-overview.md) voor toegang tot de bestanden in uw opslag account. Batch werkt op de achtergrond met Azure Storage om toepassings pakketten op te slaan en te implementeren op reken knooppunten.
 
 > [!NOTE] 
 > De totale grootte van een begintaak moet kleiner zijn dan of gelijk zijn aan 32.768 tekens, inclusief bronbestanden en omgevingsvariabelen. Als uw begin taak deze limiet overschrijdt, is het gebruik van toepassings pakketten een andere optie. U kunt ook een zip-archief met uw bron bestanden maken, dit uploaden als een BLOB naar Azure Storage en vervolgens uitpakken van de opdracht regel van de begin taak. 
