@@ -7,11 +7,12 @@ ms.service: expressroute
 ms.topic: conceptual
 ms.date: 09/18/2018
 ms.author: cherylmc
-ms.openlocfilehash: e833e20085d7cfd8f727acb394851e96e7e19368
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 58914709838c72246678ce92005de5ac18695a1f
+ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "75864363"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86204166"
 ---
 # <a name="expressroute-workflows-for-circuit-provisioning-and-circuit-states"></a>ExpressRoute-werkstromen voor circuitinrichting en -statussen
 Op deze pagina wordt u begeleid bij het inrichten en routeren van configuratie werk stromen op hoog niveau.
@@ -54,33 +55,37 @@ In deze sectie wordt een overzicht gegeven van de mogelijke statussen van een Ex
 
 Het ExpressRoute-circuit rapporteert de volgende statussen bij het maken van resources.
 
-    ServiceProviderProvisioningState : NotProvisioned
-    Status                           : Enabled
-
+```output
+ServiceProviderProvisioningState : NotProvisioned
+Status                           : Enabled
+```
 
 **Wanneer de connectiviteits provider bezig is met het inrichten van het circuit**
 
 Het ExpressRoute-circuit rapporteert de volgende statussen wanneer de connectiviteits provider bezig is met het inrichten van het circuit.
 
-    ServiceProviderProvisioningState : Provisioning
-    Status                           : Enabled
-
+```output
+ServiceProviderProvisioningState : Provisioning
+Status                           : Enabled
+```
 
 **Wanneer de connectiviteits provider het inrichtings proces heeft voltooid**
 
 Het ExpressRoute-circuit rapporteert de volgende statussen zodra de connectiviteits provider het circuit heeft ingericht.
 
-    ServiceProviderProvisioningState : Provisioned
-    Status                           : Enabled
-
+```output
+ServiceProviderProvisioningState : Provisioned
+Status                           : Enabled
+```
 
 **Wanneer de inrichting van de connectiviteits provider het circuit ongedaan maakt**
 
 Als het ExpressRoute-circuit moet worden verwijderd, zal het circuit de volgende statussen rapporteren zodra de service provider het ongedaan maken van de inrichting heeft voltooid.
 
-    ServiceProviderProvisioningState : NotProvisioned
-    Status                           : Enabled
-
+```output
+ServiceProviderProvisioningState : NotProvisioned
+Status                           : Enabled
+```
 
 U kunt ervoor kiezen om deze indien nodig opnieuw in te scha kelen of Power shell-cmdlets uit te voeren om het circuit te verwijderen.  
 

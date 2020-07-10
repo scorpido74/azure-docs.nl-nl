@@ -11,15 +11,16 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: how-to
 ms.subservice: compliance
-ms.date: 06/17/2020
+ms.date: 06/29/2020
 ms.author: barclayn
 ms.reviewer: mwahl
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 661339545f2c3f01ffd2e07b0fad08de8ac90278
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 4cf82080a54075353d2ff1d98a2ea19fc6a96dc7
+ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85078880"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86204040"
 ---
 # <a name="create-an-access-review-of-groups-and-applications-in-azure-ad-access-reviews"></a>Een toegangs beoordeling maken voor groepen en toepassingen in azure AD-toegangs beoordelingen
 
@@ -105,7 +106,7 @@ Zie [licentie vereisten](access-reviews-overview.md#license-requirements)voor me
 
 1. Als u aanvullende instellingen wilt opgeven, vouwt u de sectie **Geavanceerde instellingen** uit.
 
-    ![Een toegangs beoordeling maken-geavanceerde instellingen](./media/create-access-review/advanced-settings.png)
+    ![Een toegangs beoordeling maken-geavanceerde instellingen](./media/create-access-review/advanced-settings-preview.png)
 
 1. Stel **aanbevelingen weer geven** in om de controleurs **weer te geven** op basis van de toegangs gegevens van de gebruiker.
 
@@ -113,9 +114,14 @@ Zie [licentie vereisten](access-reviews-overview.md#license-requirements)voor me
 
 1. Stel **e-mail meldingen** in om ervoor te **zorgen** dat Azure AD e-mail meldingen naar revisoren verzendt wanneer een toegangs beoordeling wordt gestart en aan beheerders wanneer een controle is voltooid.
 
-1. Stel **herinneringen** in om ervoor te **zorgen** dat Azure AD herinneringen voor toegangs beoordelingen verzendt naar revisoren die hun beoordeling nog niet hebben voltooid.
+1. Stel **herinneringen** in om ervoor te **zorgen** dat Azure AD herinneringen voor toegangs beoordelingen verzendt naar revisoren die hun beoordeling nog niet hebben voltooid. 
 
-    Standaard ontvangen de beoordelaars die nog niet hebben gereageerd halverwege de einddatum automatisch een herinnering van Azure AD.
+    >[!NOTE]
+    > Standaard verzendt Azure AD automatisch een herinnering halverwege de eind datum naar revisors die nog niet hebben gereageerd
+
+1. Evaluatie De inhoud van het e-mail bericht dat naar revisoren wordt verzonden, wordt automatisch gegenereerd op basis van de details van de beoordeling, zoals de naam van de beoordeling, de resource naam, de verval datum, enzovoort. Als u aanvullende informatie wilt communiceren, zoals aanvullende instructies of contact gegevens, kunt u deze gegevens opgeven in de aanvullende inhoud voor de e-mail van de revisor, die wordt opgenomen in de uitnodiging en herinneringen die zijn verzonden aan toegewezen revisoren. Deze informatie wordt weer gegeven in de gemarkeerde sectie hieronder.
+
+    ![Gebruikers toegang tot een groep controleren](./media/create-access-review/review-users-access-group.png)
 
 ## <a name="start-the-access-review"></a>De toegangs beoordeling starten
 

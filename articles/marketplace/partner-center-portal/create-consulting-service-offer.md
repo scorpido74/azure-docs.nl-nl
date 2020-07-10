@@ -7,12 +7,12 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 06/17/2020
-ms.openlocfilehash: b9bac7b5b23c4e7d4042b53b93347628488be953
-ms.sourcegitcommit: 93462ccb4dd178ec81115f50455fbad2fa1d79ce
+ms.openlocfilehash: a06f0838f25e771a90fb6dc6f4fcd3bd9bdeda87
+ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/06/2020
-ms.locfileid: "85984267"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86203812"
 ---
 # <a name="create-a-consulting-service-offer"></a>Een adviesservice-aanbieding maken
 
@@ -98,12 +98,22 @@ Op deze pagina kunt u het primaire product instellen dat door uw consulting serv
 
 3. Als u **Azure** als primair product hebt geselecteerd, selecteert u Maxi maal drie **oplossings gebieden**. Dit maakt het gemakkelijker voor klanten in azure Marketplace om uw aanbieding te vinden. Als u Azure niet hebt gekozen, slaat u deze stap over.
 
-    | Oplossings gebied | | | |
-    | --- | --- | --- | --- |
-    | Analyse | Backup | DevOps | Migratie |
-    | App-modernisatie | Big data | Herstel na noodgevallen | Netwerken |
-    | Archiveren | Gegevens platform | Identiteit | Beveiliging |
-    | AI + Machine Learning | Data Center-beheer | Internet of Things | Storage |
+    - Analyse
+    - App-modernisatie
+    - Archief
+    - AI + Machine Learning
+    - Backup
+    - Big Data
+    - Gegevens platform
+    - Data Center-beheer
+    - DevOps
+    - Herstel na noodgevallen
+    - Identiteit
+    - Internet of Things
+    - Migratie
+    - Netwerken
+    - Beveiliging
+    - Storage
 
 1. Als u **Azure** als primair product hebt geselecteerd, hebt u de mogelijkheid om Maxi maal zes **branches**te selecteren. Dit maakt het gemakkelijker voor klanten in azure Marketplace om uw aanbieding te vinden. Bekijk de volledige lijst met branches in [Best practices voor aanbiedingen](../gtm-offer-listing-best-practices.md). Als u Azure niet hebt gekozen, slaat u deze stap over.
 1. Als u een *ander* primair product dan Azure hebt geselecteerd, selecteert u Maxi maal drie **toepasselijke producten**. Zo kunnen klanten in AppSource gemakkelijker uw aanbieding vinden. Zie [Microsoft AppSourceing Consulting Service List guideline](https://go.microsoft.com/fwlink/?LinkId=828734&amp;clcid=0x409) (PDF) (Engelstalig) voor meer informatie.
@@ -131,7 +141,7 @@ Hier volgt een voor beeld van hoe de aanbiedings gegevens worden weer gegeven in
 4. Bedrijfstakken
 5. Naam van aanbieding
 6. Samenvatting
-7. Description
+7. Beschrijving
 8. Scherm afbeeldingen/Video's
 
 <br>Hier volgt een voor beeld van hoe de aanbiedings gegevens worden weer gegeven in Microsoft AppSource (alle prijzen zijn bijvoorbeeld alleen bedoeld als voor beeld van de werkelijke kosten):
@@ -146,11 +156,11 @@ Hier volgt een voor beeld van hoe de aanbiedings gegevens worden weer gegeven in
 4. Bedrijfstakken
 5. Naam van aanbieding
 6. Samenvatting
-7. Description
+7. Beschrijving
 8. Scherm afbeeldingen/Video's
 9. Documenten
 
-### <a name="name"></a>Name
+### <a name="name"></a>Naam
 
 De naam die u hier opgeeft, wordt weer gegeven als de titel van uw aanbieding. Dit veld is vooraf ingevuld met de tekst die u hebt ingevoerd in het vak **aanbiedings alias** wanneer u de aanbieding hebt gemaakt. U kunt deze naam later wijzigen.
 
@@ -164,7 +174,7 @@ De naam:
 
 Geef een korte beschrijving van uw aanbieding. Dit kan Maxi maal 100 tekens lang zijn en wordt gebruikt in Zoek resultaten voor Marketplace.
 
-### <a name="description"></a>Description
+### <a name="description"></a>Beschrijving
 
 [!INCLUDE [Long description-1](./includes/long-description-1.md)]
 
@@ -229,7 +239,7 @@ Hier definieert u elementen zoals prijzen, de markt en een persoonlijke sleutel.
 4. Voor een betaalde aanbieding geeft u de **prijs en valuta** op en bepaalt u of de prijs **vast** of **geraamd**is. Als u een schatting maakt, moet u in de beschrijving opgeven welke factoren van invloed zijn op de prijs.
 5. Selecteer **concept opslaan** voordat u doorgaat.
 
-## <a name="review-and-publish"></a>Controleren en publiceren
+## <a name="review-and-publish"></a>Beoordelen en publiceren
 
 Nadat u alle vereiste gedeelten van de aanbieding hebt voltooid, kunt u uw aanbieding verzenden om deze te controleren en te publiceren.
 

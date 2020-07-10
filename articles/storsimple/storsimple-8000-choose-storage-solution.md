@@ -7,11 +7,12 @@ ms.service: storsimple
 ms.topic: article
 ms.date: 04/01/2019
 ms.author: alkohli
-ms.openlocfilehash: 9456d975ffb6d7726166f9badbcb8fe0ccbe5256
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: dc7de4e69d42a2165f5845f3d8214975d67cdc3c
+ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "68965347"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86203973"
 ---
 # <a name="compare-storsimple-with-azure-file-sync-and-data-box-edge-data-transfer-options"></a>StorSimple vergelijken met overdrachtsopties van Azure File Sync en Data Box Edge 
 
@@ -27,14 +28,14 @@ In dit document vindt u een overzicht van de opties voor on-premises gegevens ov
 
 |                           |StorSimple 8000   |Azure File Sync   |Data Box Edge           |
 |---------------------------|----------------------------------------|-------------------------------|-----------------------------------------|
-|Overzicht         |Gelaagde hybride opslag en archivering|Algemene bestands Server opslag met Cloud lagen en multi-site synchronisatie.  |Opslag oplossing om gegevens vooraf te verwerken en deze via netwerk naar Azure te verzenden.        |
-|Scenario's        |Bestands server, archivering, back-updoel |Bestands server, archivering (meerdere locaties)   |Gegevens overdracht, vooraf verwerkingen van gegevens, inclusief ML, IoT, archivering    |
-|Edge-rekenproces     |Niet beschikbaar |Niet beschikbaar |Ondersteunt het uitvoeren van containers met behulp van Azure IoT Edge    |
-|Vorm factor      |Fysiek apparaat   |Agent geïnstalleerd op Windows Server |Fysiek apparaat   |
-|Hardware         |Fysiek apparaat dat door micro soft is meegeleverd als onderdeel van de service | Klant |Fysiek apparaat dat door micro soft is meegeleverd als onderdeel van de service  |
-|Gegevensindeling      |Aangepaste notatie   |Files         |Blobs of bestanden    |
-|Protocolondersteuning |iSCSI          |SMB, NFS    | SMB of NFS      |
-|Prijzen          |[StorSimple](https://azure.microsoft.com/pricing/details/storsimple/) |[Azure File Sync](https://azure.microsoft.com/pricing/details/storage/files/)  |[Data Box Edge](https://azure.microsoft.com/pricing/details/storage/databox/edge/)  |
+|**Overzicht**     |Gelaagde hybride opslag en archivering|Algemene bestands Server opslag met Cloud lagen en multi-site synchronisatie.  |Opslag oplossing om gegevens vooraf te verwerken en deze via netwerk naar Azure te verzenden.        |
+|**Scenario's**    |Bestands server, archivering, back-updoel |Bestands server, archivering (meerdere locaties)   |Gegevens overdracht, vooraf verwerkingen van gegevens, inclusief ML, IoT, archivering    |
+|**Edge-rekenproces** |Niet beschikbaar |Niet beschikbaar |Ondersteunt het uitvoeren van containers met behulp van Azure IoT Edge    |
+|**Vorm factor**  |Fysiek apparaat   |Agent geïnstalleerd op Windows Server |Fysiek apparaat   |
+|**Hardware**     |Fysiek apparaat dat door micro soft is meegeleverd als onderdeel van de service | Klant |Fysiek apparaat dat door micro soft is meegeleverd als onderdeel van de service  |
+|**Gegevens indeling**  |Aangepaste notatie   |Bestanden         |Blobs of bestanden    |
+|**Protocol ondersteuning** |iSCSI          |SMB, NFS    | SMB of NFS      |
+|**Prijzen**      |[StorSimple](https://azure.microsoft.com/pricing/details/storsimple/) |[Azure File Sync](https://azure.microsoft.com/pricing/details/storage/files/)  |[Data Box Edge](https://azure.microsoft.com/pricing/details/storage/databox/edge/)  |
 
 ## <a name="next-steps"></a>Volgende stappen
 

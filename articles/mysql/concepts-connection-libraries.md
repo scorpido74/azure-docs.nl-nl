@@ -6,12 +6,12 @@ ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 3/18/2020
-ms.openlocfilehash: 5f83f937b8d9ec50ec7dc6ec781bff1f435eb45a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 5520072ba16b117c33c2ad172030807e51c7cf7a
+ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "79537190"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86203886"
 ---
 # <a name="connection-libraries-for-azure-database-for-mysql"></a>Verbindings bibliotheken voor Azure Database for MySQL
 In dit artikel vindt u een lijst met alle bibliotheken of stuur Programma's die door client Programma's kunnen worden gebruikt wanneer verbinding wordt gemaakt met Azure Database for MySQL.
@@ -35,5 +35,11 @@ MySQL biedt standaard database stuur programma connectiviteit voor het gebruik v
 ## <a name="next-steps"></a>Volgende stappen
 Lees deze Snelstartgids voor het maken van verbinding met en het opvragen van Azure Database for MySQL met behulp van de taal van uw keuze:
 
-[Php](./connect-php.md)  |  [Java](./connect-java.md)  |   [.net (C#)](./connect-csharp.md)  |  [Python](./connect-python.md)  |  [Node.JS](./connect-nodejs.md)  |  [Ruby](./connect-ruby.md)  |  [C++](connect-cpp.md)  |  [Ga](./connect-go.md)
-
+- [PHP](./connect-php.md)
+- [Java](./connect-java.md)
+- [.NET (C#)](./connect-csharp.md)
+- [Python](./connect-python.md)
+- [Node.JS](./connect-nodejs.md)
+- [Ruby](./connect-ruby.md)
+- [C++](connect-cpp.md)
+- [Go](./connect-go.md)

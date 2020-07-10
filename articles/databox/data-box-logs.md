@@ -1,26 +1,27 @@
 ---
-title: Azure Data Box bijhouden en registreren Azure Data Box Heavy gebeurtenissen | Microsoft Docs
-description: Hierin wordt beschreven hoe u gebeurtenissen in de verschillende fasen van uw Azure Data Box en Azure Data Box Heavy order kunt bijhouden en registreren.
+title: Azure Data Box bijhouden en registreren Azure Data Box Heavy gebeurtenissen voor import volgorde | Microsoft Docs
+description: Hierin wordt beschreven hoe u gebeurtenissen in de verschillende fasen van uw Azure Data Box kunt bijhouden en registreren Azure Data Box Heavy kunt importeren.
 services: databox
 author: alkohli
 ms.service: databox
 ms.subservice: pod
 ms.topic: article
-ms.date: 08/08/2019
+ms.date: 07/10/2020
 ms.author: alkohli
-ms.openlocfilehash: 74d38af4a64a184b26bd6ba1105db0d2530d8ba6
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: b65d9579686cdf53f1cac35ba47bc5850b45c8e2
+ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81676414"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86204306"
 ---
-# <a name="tracking-and-event-logging-for-your-azure-data-box-and-azure-data-box-heavy"></a>Tracering en logboek registratie voor uw Azure Data Box en Azure Data Box Heavy
+# <a name="tracking-and-event-logging-for-your-azure-data-box-and-azure-data-box-heavy-import-order"></a>Tracering en logboek registratie voor uw Azure Data Box en Azure Data Box Heavy import volgorde
 
-Met een Data Box-of Data Box Heavy bestelling worden de volgende stappen door lopen: order, instellen, gegevens kopiëren, retour neren, uploaden naar Azure en gegevens verwijdering. Die overeenkomt met elke stap in de order, kunt u meerdere acties ondernemen om de toegang tot de order te beheren, de gebeurtenissen te controleren, de volg orde bij te houden en de verschillende logboeken te interpreteren die worden gegenereerd.
+Een Data Box-of Data Box Heavy import volgorde gaat door de volgende stappen: order, instellen, gegevens kopiëren, retour neren, uploaden naar Azure en gegevens verwijdering. Die overeenkomt met elke stap in de order, kunt u meerdere acties ondernemen om de toegang tot de order te beheren, de gebeurtenissen te controleren, de volg orde bij te houden en de verschillende logboeken te interpreteren die worden gegenereerd.
 
-De volgende tabel bevat een samen vatting van de Data Box-of Data Box Heavy volgorde stappen en de hulpprogram ma's die beschikbaar zijn om de volg orde tijdens elke stap bij te houden en te controleren.
+De volgende tabel bevat een samen vatting van de Data Box-of Data Box Heavy stappen voor het importeren van orders en de hulpprogram ma's die beschikbaar zijn om de volg orde tijdens elke stap bij te houden en te controleren.
 
-| Fase van Data Box order       | Hulp programma voor het volgen en controleren                                                                        |
+| Fase van Data Box import volgorde       | Hulp programma voor het volgen en controleren                                                                        |
 |----------------------------|------------------------------------------------------------------------------------------------|
 | Order maken               | [Toegangs beheer voor de order instellen via RBAC](#set-up-access-control-on-the-order)                                                    |
 | Order verwerkt            | [De volg orde volgen](#track-the-order) <ul><li> Azure Portal </li><li> Vervoerders website </li><li>E-mailmeldingen</ul> |
@@ -30,7 +31,7 @@ De volgende tabel bevat een samen vatting van de Data Box-of Data Box Heavy volg
 | Gegevens uploaden naar Azure       | [Kopieer logboeken](#review-copy-log-during-upload-to-azure) voor fouten tijdens het uploaden van gegevens in azure Data Center                         |
 | Gegevens verwijdering van apparaat   | [Keten van Bewaar logboeken weer geven](#get-chain-of-custody-logs-after-data-erasure) , inclusief audit logboeken en order geschiedenis                |
 
-In dit artikel worden de verschillende mechanismen of hulpprogram ma's beschreven die beschikbaar zijn om Data Box of Data Box Heavy bestelling bij te houden en te controleren. De informatie in dit artikel is van toepassing op zowel Data Box als Data Box Heavy. In de volgende secties zijn verwijzingen naar Data Box ook van toepassing op Data Box Heavy.
+In dit artikel worden de verschillende mechanismen of hulpprogram ma's beschreven die beschikbaar zijn voor het bijhouden en controleren van Data Box of het importeren van Data Box Heavy orders. De informatie in dit artikel is van toepassing op zowel Data Box als Data Box Heavy import orders. In de volgende secties zijn verwijzingen naar Data Box ook van toepassing op Data Box Heavy.
 
 ## <a name="set-up-access-control-on-the-order"></a>Toegangs beheer voor de order instellen
 
