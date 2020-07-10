@@ -8,12 +8,12 @@ ms.author: normesta
 ms.topic: how-to
 ms.subservice: data-lake-storage-gen2
 ms.reviewer: prishet
-ms.openlocfilehash: 1bf21b8714554dcdc52ab6e34041c738ec2653f6
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: 1836be2a5feb6dad747d0da9b42cbd31ddc28a63
+ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
 ms.translationtype: MT
 ms.contentlocale: nl-NL
 ms.lasthandoff: 07/08/2020
-ms.locfileid: "86105061"
+ms.locfileid: "86142598"
 ---
 # <a name="use-net-to-manage-directories-files-and-acls-in-azure-data-lake-storage-gen2"></a>.NET gebruiken voor het beheren van mappen, bestanden en Acl's in Azure Data Lake Storage Gen2
 
@@ -91,11 +91,11 @@ public void GetDataLakeServiceClient(ref DataLakeServiceClient dataLakeServiceCl
 > [!NOTE]
 > Zie de [Azure Identity client-bibliotheek voor .net](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/identity/Azure.Identity) -documentatie voor meer voor beelden.
 
-## <a name="create-a-file-system"></a>Een bestandssysteem maken
+## <a name="create-a-container"></a>Een container maken
 
-Een bestands systeem fungeert als een container voor uw bestanden. U kunt er een maken door de methode [DataLakeServiceClient. CreateFileSystem](https://docs.microsoft.com/dotnet/api/azure.storage.files.datalake.datalakeserviceclient.createfilesystemasync) aan te roepen.
+Een container fungeert als bestands systeem voor uw bestanden. U kunt er een maken door de methode [DataLakeServiceClient. CreateFileSystem](https://docs.microsoft.com/dotnet/api/azure.storage.files.datalake.datalakeserviceclient.createfilesystemasync) aan te roepen.
 
-In dit voor beeld wordt een bestands systeem gemaakt met de naam `my-file-system` . 
+In dit voor beeld wordt een container gemaakt met de naam `my-file-system` . 
 
 ```cs
 public async Task<DataLakeFileSystemClient> CreateFileSystem
@@ -109,7 +109,7 @@ public async Task<DataLakeFileSystemClient> CreateFileSystem
 
 Maak een verwijzing naar een directory door de methode [DataLakeFileSystemClient. CreateDirectoryAsync](https://docs.microsoft.com/dotnet/api/azure.storage.files.datalake.datalakefilesystemclient.createdirectoryasync) aan te roepen.
 
-In dit voor beeld wordt een map met de naam van `my-directory` een bestands systeem toegevoegd en wordt vervolgens een submap met de naam toegevoegd `my-subdirectory` . 
+In dit voor beeld wordt een map met de naam van een `my-directory` container toegevoegd en wordt vervolgens een submap met de naam toegevoegd `my-subdirectory` . 
 
 ```cs
 public async Task<DataLakeDirectoryClient> CreateDirectory
@@ -201,7 +201,7 @@ public async Task ManageDirectoryACLs(DataLakeFileSystemClient fileSystemClient)
 
 ```
 
-U kunt ook de ACL ophalen en instellen van de hoofdmap van een bestands systeem. Als u de hoofdmap wilt ophalen, geeft u een lege teken reeks () door aan `""` de methode [DataLakeFileSystemClient. GetDirectoryClient](/dotnet/api/azure.storage.files.datalake.datalakefilesystemclient.getdirectoryclient) .
+U kunt ook de toegangs beheer lijst van de hoofdmap van een container ophalen en instellen. Als u de hoofdmap wilt ophalen, geeft u een lege teken reeks () door aan `""` de methode [DataLakeFileSystemClient. GetDirectoryClient](/dotnet/api/azure.storage.files.datalake.datalakefilesystemclient.getdirectoryclient) .
 
 ## <a name="upload-a-file-to-a-directory"></a>Een bestand uploaden naar een map
 

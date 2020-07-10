@@ -7,12 +7,13 @@ manager: anandsub
 ms.service: data-factory
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-ms.date: 06/05/2020
-ms.openlocfilehash: e106f5b615cd667551ef3d597a45b522320eed6e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 07/08/2020
+ms.openlocfilehash: 5fc8352caa05a59508df7ada95518a5efb58e7df
+ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84610176"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86147460"
 ---
 # <a name="source-transformation-in-mapping-data-flow"></a>Bron transformatie in gegevens stroom toewijzen 
 
@@ -42,9 +43,9 @@ Toewijzing van gegevens stroom volgt een extractie benadering, Load, Transform (
 
 | Connector | Indeling | Gegevensset/inline |
 | --------- | ------ | -------------- |
-| [Azure Blob Storage](connector-azure-blob-storage.md#mapping-data-flow-properties) | [JSON](format-json.md#mapping-data-flow-properties) <br> [Avro](format-avro.md#mapping-data-flow-properties) <br> [Tekst met scheidings tekens](format-delimited-text.md#mapping-data-flow-properties) <br> [Parquet](format-parquet.md#mapping-data-flow-properties) | ✓/- <br> ✓/- <br> ✓/- <br> ✓/- |
-| [Azure Data Lake Storage Gen1](connector-azure-data-lake-store.md#mapping-data-flow-properties) | [JSON](format-json.md#mapping-data-flow-properties) <br> [Avro](format-avro.md#mapping-data-flow-properties) <br> [Tekst met scheidings tekens](format-delimited-text.md#mapping-data-flow-properties) <br> [Parquet](format-parquet.md#mapping-data-flow-properties)  | ✓/- <br> ✓/- <br> ✓/- <br> ✓/- |
-| [Azure Data Lake Storage Gen2](connector-azure-data-lake-storage.md#mapping-data-flow-properties) | [JSON](format-json.md#mapping-data-flow-properties) <br> [Avro](format-avro.md#mapping-data-flow-properties) <br> [Tekst met scheidings tekens](format-delimited-text.md#mapping-data-flow-properties) <br> [Parquet](format-parquet.md#mapping-data-flow-properties)  <br> [Common data model (preview-versie)](format-common-data-model.md#source-properties) | ✓/- <br> ✓/- <br> ✓/- <br> ✓/- <br> -/✓ |
+| [Azure Blob Storage](connector-azure-blob-storage.md#mapping-data-flow-properties) | [Avro](format-avro.md#mapping-data-flow-properties) <br> [Tekst met scheidings tekens](format-delimited-text.md#mapping-data-flow-properties) <br> [Excel](format-excel.md#mapping-data-flow-properties) <br> [JSON](format-json.md#mapping-data-flow-properties) <br> [Parquet](format-parquet.md#mapping-data-flow-properties) | ✓/- <br> ✓/- <br>✓/✓ <br/> ✓/- <br> ✓/- |
+| [Azure Data Lake Storage Gen1](connector-azure-data-lake-store.md#mapping-data-flow-properties) | [Avro](format-avro.md#mapping-data-flow-properties) <br> [Tekst met scheidings tekens](format-delimited-text.md#mapping-data-flow-properties) <br> [Excel](format-excel.md#mapping-data-flow-properties) <br> [JSON](format-json.md#mapping-data-flow-properties) <br> [Parquet](format-parquet.md#mapping-data-flow-properties)  | ✓/- <br> ✓/- <br>✓/✓ <br/> ✓/- <br> ✓/- |
+| [Azure Data Lake Storage Gen2](connector-azure-data-lake-storage.md#mapping-data-flow-properties) | [Avro](format-avro.md#mapping-data-flow-properties)  <br> [Common data model (preview-versie)](format-common-data-model.md#source-properties) <br> [Tekst met scheidings tekens](format-delimited-text.md#mapping-data-flow-properties) <br> [Excel](format-excel.md#mapping-data-flow-properties) <br> [JSON](format-json.md#mapping-data-flow-properties) <br> [Parquet](format-parquet.md#mapping-data-flow-properties) | ✓/-<br/> -/✓ <br> ✓/- <br> ✓/✓ <br>✓/- <br/> ✓/- |
 | [Azure Synapse Analytics](connector-azure-sql-data-warehouse.md#mapping-data-flow-properties) | | ✓/- |
 | [Azure SQL Database](connector-azure-sql-database.md#mapping-data-flow-properties) | | ✓/- |
 | [Azure-CosmosDB (SQL-API)](connector-azure-cosmos-db.md#mapping-data-flow-properties) | | ✓/- |
@@ -62,7 +63,7 @@ Nadat u een bron hebt toegevoegd, configureert u via het tabblad **bron instelli
 **Naam van de uitvoer stroom:** De naam van de bron transformatie.
 
 **Bron type:** Kies of u een inline-gegevensset of een bestaand DataSet-object wilt gebruiken.
- 
+
 **Verbinding testen:** Testen of de Spark-service van de gegevens stroom verbinding kan maken met de gekoppelde service die in de bron-gegevensset wordt gebruikt. De foutopsporingsmodus moet zijn ingeschakeld om deze functie in te scha kelen.
 
 **Schema-drift:** [schema-drift](concepts-data-flow-schema-drift.md) Data Factory is de mogelijkheid van een systeem eigen flexibele schema's in uw gegevens stromen zonder dat er expliciet kolom wijzigingen hoeven te worden gedefinieerd.

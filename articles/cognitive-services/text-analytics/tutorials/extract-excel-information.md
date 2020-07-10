@@ -10,12 +10,12 @@ ms.subservice: text-analytics
 ms.topic: article
 ms.date: 02/27/2019
 ms.author: aahi
-ms.openlocfilehash: fd70fe14d3765fb7c21b92f62b4d73564176baa2
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: b9e6561c1ed9870b669ec5e9825a376f8bd03c4d
+ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "78201186"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86145699"
 ---
 # <a name="extract-information-in-excel-using-text-analytics-and-power-automate"></a>Informatie in Excel extra heren met behulp van Text Analytics en energie automatisering 
 
@@ -33,7 +33,7 @@ In deze zelfstudie leert u het volgende:
 
 ## <a name="prerequisites"></a>Vereisten
 
-- Een Microsoft Azure-account. [Start een gratis proefversie](https://azure.microsoft.com/free/) of [meld u aan](https://portal.azure.com/).
+- Een Microsoft Azure-account. [Maak een gratis account](https://azure.microsoft.com/free/cognitive-services/) of [Meld u aan](https://portal.azure.com/).
 - Een Text Analytics resource. Als u er geen hebt, kunt u [er een maken in de Azure Portal](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesTextAnalytics) en de gratis laag gebruiken om deze zelf studie te volt ooien.
 - De [sleutel en het eind punt](../../cognitive-services-apis-create-account.md#get-the-keys-for-your-resource) die voor u zijn gegenereerd tijdens het aanmelden.
 - Een werk blad met Tenant problemen. Voor beelden van gegevens vindt u op GitHub
@@ -61,7 +61,7 @@ Initialiseer uw stroom op de pagina **een geplande stroom maken** met de volgend
 |Veld |Waarde  |
 |---------|---------|
 |**Stroomnaam**     | **Geplande beoordeling** of een andere naam.         |
-|**Ingang**     |  Voer de huidige datum en tijd in.       |
+|**Starten**     |  Voer de huidige datum en tijd in.       |
 |**Herhalen elke**     | **1 uur**        |
 
 ## <a name="add-variables-to-the-flow"></a>Variabelen toevoegen aan de stroom
@@ -76,7 +76,7 @@ Maak variabelen die de informatie vertegenwoordigen die wordt toegevoegd aan het
 
 Voeg de volgende informatie toe aan de variabelen die u hebt gemaakt. Ze vertegenwoordigen de kolommen van het Excel-bestand. Als er variabelen zijn samengevouwen, kunt u erop klikken om deze uit te vouwen.
 
-| Bewerking |Naam   | Type | Waarde |
+| Actie |Naam   | Type | Waarde |
 |---------|---------|---|---|
 | Variabele initialiseren | var_person | Tekenreeks | Person |
 | Variabele 2 initialiseren | var_phone | Tekenreeks | Phone_Number |
@@ -182,7 +182,7 @@ Minimaliseer de actie **Toep assen op elke 2** door op de naam te klikken. Voeg 
 > [!div class="mx-imgBorder"] 
 > :::image type="content" source="../media/tutorials/excel/add-apply-action-3.png" alt-text="Voeg Text Analytics referenties toe aan uw stroom.":::
 
-Voeg binnen **Toep assen op elke 3**een besturings element **voor waarde** toe. Deze krijgt de naam **voorwaarde 2**. Zoek in het eerste tekstvak het **type entiteiten** in het venster dynamische inhoud en voeg deze toe. Zorg ervoor dat het middelste vak is ingesteld op **is gelijk aan**. Voer `var_phone`vervolgens in het vak rechts de tekst in. 
+Voeg binnen **Toep assen op elke 3**een besturings element **voor waarde** toe. Deze krijgt de naam **voorwaarde 2**. Zoek in het eerste tekstvak het **type entiteiten** in het venster dynamische inhoud en voeg deze toe. Zorg ervoor dat het middelste vak is ingesteld op **is gelijk aan**. Voer vervolgens in het vak rechts de tekst in `var_phone` . 
 
 > [!div class="mx-imgBorder"] 
 > :::image type="content" source="../media/tutorials/excel/condition-2-options.png" alt-text="Voeg Text Analytics referenties toe aan uw stroom.":::
@@ -203,15 +203,15 @@ Minimaliseer **Toep assen op elke 3** door op de naam te klikken. Maak vervolgen
 
 Vervolgens wordt met de stroom gecontroleerd of de beschrijving van het probleem uit de Excel-tabelrij het woord ' sanitair ' bevat. Zo ja, dan wordt ' sanitaire ' toegevoegd in de kolom IssueType. Als dat niet het geval is, voert u ' Overig ' in.
 
-In de actie **Toep assen op elke 4 voegt u** een besturings element **voor waarde** toe. Deze krijgt de naam **voor waarde 3**. In het eerste tekstvak zoekt en voegt u een **Beschrijving** van het Excel-bestand toe met behulp van het venster dynamische inhoud. Zorg ervoor dat het middelste vak de tekst **bevat**. Zoek en selecteer `var_plumbing`vervolgens in het juiste tekstvak. 
+In de actie **Toep assen op elke 4 voegt u** een besturings element **voor waarde** toe. Deze krijgt de naam **voor waarde 3**. In het eerste tekstvak zoekt en voegt u een **Beschrijving** van het Excel-bestand toe met behulp van het venster dynamische inhoud. Zorg ervoor dat het middelste vak de tekst **bevat**. Zoek en selecteer vervolgens in het juiste tekstvak `var_plumbing` . 
 
 > [!div class="mx-imgBorder"] 
 > :::image type="content" source="../media/tutorials/excel/condition-3-options.png" alt-text="Voeg Text Analytics referenties toe aan uw stroom.":::
 
 
-In de voor waarde **Ja** , klikt u op **een actie toevoegen**en selecteert u **een rij bijwerken**. Voer vervolgens de gegevens in zoals voorheen. Selecteer `var_plumbing`in de kolom IssueType. Hiermee wordt het label ' sanitair ' toegepast op de rij.
+In de voor waarde **Ja** , klikt u op **een actie toevoegen**en selecteert u **een rij bijwerken**. Voer vervolgens de gegevens in zoals voorheen. Selecteer in de kolom IssueType `var_plumbing` . Hiermee wordt het label ' sanitair ' toegepast op de rij.
 
-In de voor waarde **als Nee** klikt u op **een actie toevoegen**en selecteert u **een rij bijwerken**. Voer vervolgens de gegevens in zoals voorheen. Selecteer `var_other`in de kolom IssueType. Hiermee wordt het label ' Overig ' toegepast op de rij.
+In de voor waarde **als Nee** klikt u op **een actie toevoegen**en selecteert u **een rij bijwerken**. Voer vervolgens de gegevens in zoals voorheen. Selecteer in de kolom IssueType `var_other` . Hiermee wordt het label ' Overig ' toegepast op de rij.
 
 > [!div class="mx-imgBorder"] 
 > :::image type="content" source="../media/tutorials/excel/plumbing-issue-condition.png" alt-text="Voeg Text Analytics referenties toe aan uw stroom.":::

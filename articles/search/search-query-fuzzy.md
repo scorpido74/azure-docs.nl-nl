@@ -8,11 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 04/08/2020
-ms.openlocfilehash: 32ad34bcfb42bf8fc45ba7fdb7fba5e797ee6106
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 03d4c2e0685ea165cbad524360a3db6e6c809733
+ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81262431"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86146129"
 ---
 # <a name="fuzzy-search-to-correct-misspellings-and-typos"></a>Fuzzy zoeken om spel fouten en typfouten te corrigeren
 
@@ -85,41 +86,53 @@ Stel dat de volgende teken reeks bestaat in een `"Description"` veld in een zoek
 
 Begin met een zoek actie op ' Special ' en voeg treffers markeren toe aan het veld Beschrijving:
 
-    search=special~&highlight=Description
+```console
+search=special~&highlight=Description
+```
 
 In het antwoord, omdat u treffer markeringen hebt toegevoegd, wordt de opmaak toegepast op ' Special ' als overeenkomende term.
 
-    "@search.highlights": {
-        "Description": [
-            "Test queries with <em>special</em> characters, plus strings for MSFT, SQL and Java."
-        ]
+```output
+"@search.highlights": {
+    "Description": [
+        "Test queries with <em>special</em> characters, plus strings for MSFT, SQL and Java."
+    ]
+```
 
 Probeer de aanvraag opnieuw uit te voeren. u kunt het probleem ' Special ' door meerdere letters te maken (' PE '):
 
-    search=scial~&highlight=Description
+```console
+search=scial~&highlight=Description
+```
 
 Tot nu toe is geen wijziging in de reactie. Als u de standaard waarde van 2 graden gebruikt, wordt bij het verwijderen van twee tekens ' PE ' van ' Special ' nog steeds een succes volle overeenkomst voor die periode gemaakt.
 
-    "@search.highlights": {
-        "Description": [
-            "Test queries with <em>special</em> characters, plus strings for MSFT, SQL and Java."
-        ]
+```output
+"@search.highlights": {
+    "Description": [
+        "Test queries with <em>special</em> characters, plus strings for MSFT, SQL and Java."
+    ]
+```
 
 Probeer een extra aanvraag, wijzig de zoek term verder door een laatste teken te nemen voor een totaal van drie verwijderingen (van ' Special ' tot ' schaal '):
 
-    search=scal~&highlight=Description
+```console
+search=scal~&highlight=Description
+```
 
 U ziet dat hetzelfde antwoord wordt geretourneerd, maar nu in plaats van te voldoen aan ' speciaal ', is de benadering gelijk aan ' SQL '.
 
-            "@search.score": 0.4232868,
-            "@search.highlights": {
-                "Description": [
-                    "Mix of special characters, plus strings for MSFT, <em>SQL</em>, 2019, Linux, Java."
-                ]
+```output
+        "@search.score": 0.4232868,
+        "@search.highlights": {
+            "Description": [
+                "Mix of special characters, plus strings for MSFT, <em>SQL</em>, 2019, Linux, Java."
+            ]
+```
 
 Het punt van dit uitgevouwen voor beeld is om de duidelijkheid te illustreren dat treffers markeren tot onduidelijke resultaten kan leiden. In alle gevallen wordt hetzelfde document geretourneerd. U hebt zich op document-Id's bevonden om een overeenkomst te controleren. u hebt de Shift-toets mogelijk niet van ' speciaal ' naar ' SQL ' gemist.
 
-## <a name="see-also"></a>Zie tevens
+## <a name="see-also"></a>Zie ook
 
 + [De manier waarop zoeken in volledige tekst werkt in azure Cognitive Search (architectuur voor het parseren van query's)](search-lucene-query-architecture.md)
 + [Zoek Verkenner](search-explorer.md)

@@ -8,16 +8,22 @@ ms.service: virtual-wan
 ms.topic: conceptual
 ms.date: 06/29/2020
 ms.author: cherylmc
-ms.openlocfilehash: 0716ca8f0457ca801098c97dd7a5e68751822d4d
-ms.sourcegitcommit: cec9676ec235ff798d2a5cad6ee45f98a421837b
+ms.openlocfilehash: ed64b9d281cfbbf8202a99335ea2759b27a6fc42
+ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85848097"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86142961"
 ---
 # <a name="scenario-route-traffic-through-an-nva"></a>Scenario: verkeer routeren via een NVA
 
 Wanneer u werkt met virtuele WAN-hub routering, zijn er heel veel beschik bare scenario's. In dit NVA-scenario is het doel om verkeer te routeren via een NVA (virtueel netwerk apparaat) voor vertakking naar VNet en VNet naar vertakking. Zie [about Virtual hub Routing](about-virtual-hub-routing.md)(Engelstalig) voor meer informatie over route ring van virtuele hub.
+
+> [!NOTE]
+> Sommige van de routerings mogelijkheden kunnen nog steeds worden geïmplementeerd. Als de implementatie nog niet in uw regio is gebeurd, moet u de stappen in deze versies van de artikelen in de tussen tijd gebruiken:
+>* [Azure Portal artikel](virtual-wan-route-table-nva-portal.md)
+>* [Power shell-artikel](virtual-wan-route-table-nva.md)
+>
 
 ## <a name="scenario-architecture"></a><a name="architecture"></a>Scenario-architectuur
 

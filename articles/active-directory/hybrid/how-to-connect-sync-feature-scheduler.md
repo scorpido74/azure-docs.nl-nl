@@ -16,12 +16,12 @@ ms.date: 05/01/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b1aca245592bef98bc5d0cff3268d5b6496d2220
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: eaeaa8625a5bdb5bbf8ce76a68e616a913da5655
+ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
 ms.translationtype: MT
 ms.contentlocale: nl-NL
 ms.lasthandoff: 07/08/2020
-ms.locfileid: "86103548"
+ms.locfileid: "86147002"
 ---
 # <a name="azure-ad-connect-sync-scheduler"></a>Azure AD Connect sync: Scheduler (Azure AD Connect-synchronisatie: planning)
 In dit onderwerp wordt de ingebouwde scheduler in Azure AD Connect Sync (synchronisatie-engine) beschreven.
@@ -41,8 +41,12 @@ De scheduler is verantwoordelijk voor twee taken:
 De scheduler zelf is altijd actief, maar kan worden geconfigureerd om alleen een of geen van deze taken uit te voeren. Als u bijvoorbeeld uw eigen synchronisatie cyclus proces nodig hebt, kunt u deze taak in de scheduler uitschakelen, maar nog steeds de onderhouds taak uitvoeren.
 
 >[!IMPORTANT]
->U moet ervoor zorgen dat een synchronisatie cyclus ten minste één keer per 7 dagen wordt uitgevoerd. Als u dit niet doet, kan dit leiden tot synchronisatie problemen. hiervoor moet u een volledige synchronisatie uitvoeren om het probleem op te lossen.
-
+>Standaard elke 30 minuten dat een synchronisatie cyclus wordt uitgevoerd. Als u de synchronisatie cyclus hebt gewijzigd, moet u ervoor zorgen dat een synchronisatie cyclus ten minste één keer per 7 dagen wordt uitgevoerd. 
+>
+>* Een Delta synchronisatie moet binnen 7 dagen na de laatste Delta synchronisatie plaatsvinden.
+>* Een Delta synchronisatie (na een volledige synchronisatie) moet binnen 7 dagen na het tijdstip waarop de laatste volledige synchronisatie is voltooid, plaatsvinden.
+>
+>Als u dit niet doet, kan dit leiden tot synchronisatie problemen. hiervoor moet u een volledige synchronisatie uitvoeren om het probleem op te lossen. Dit geldt ook voor servers in de Faserings modus.
 
 ## <a name="scheduler-configuration"></a>Scheduler-configuratie
 Als u de huidige configuratie-instellingen wilt weer geven, gaat u naar Power shell en voert u uit `Get-ADSyncScheduler` . U ziet iets als deze afbeelding:

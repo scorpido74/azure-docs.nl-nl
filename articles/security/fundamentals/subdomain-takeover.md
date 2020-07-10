@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/23/2020
 ms.author: memildin
-ms.openlocfilehash: 2baf2b209cae11f734494c377aebd731f69f514d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: b395931d11c7bc7119be0122531908ed680fc3b9
+ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85610860"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86145983"
 ---
 # <a name="prevent-dangling-dns-entries-and-avoid-subdomain-takeover"></a>Dangling DNS-vermeldingen voor komen en de overname van subdomeinen voor komen
 
@@ -45,7 +45,7 @@ Een veelvoorkomend scenario voor een overname van subdomeinen:
 
 1. Bijna onmiddellijk nadat de site is verwijderd, detecteert een bedreigings actor de ontbrekende site en maakt hij of zij een eigen website op `app-contogreat-dev-001.azurewebsites.net` .
 
-    Het verkeer dat bestemd is voor `greatapp.contoso.com` gaat naar de Azure-site van de Threat actor en de bedreigings actor heeft nu de controle over de inhoud die wordt weer gegeven. 
+    Het verkeer dat bestemd is voor `greatapp.contoso.com` gaat naar de Azure-site van de Threat actor en de bedreigings actor in het beheer van de inhoud die wordt weer gegeven. 
 
     De Dangling DNS is misbruikt en het subdomein ' GreatApp ' van Contoso is het slacht offer van de overname van het subdomein. 
 
@@ -61,7 +61,7 @@ Dangling DNS-vermeldingen maken het mogelijk om de bijbehorende DNS-naam in te s
 
 - **Verlies van de controle over de inhoud van het subdomein** -negatief druk over het onvermogen van uw organisatie om de inhoud ervan te beveiligen, evenals het merk beschadiging en het verlies van vertrouwen.
 
-- Het **verzamelen van cookies van onvermoede bezoekers** : het is gebruikelijk voor web apps om sessie cookies beschikbaar te maken voor subdomeinen (*. contoso.com), waardoor elk subdomein er toegang toe heeft. Threat actors kunnen subdomein overname gebruiken om een authentiek ogende pagina samen te stellen, het niet vermoeden van gebruikers om deze te bezoeken en hun cookies te verzamelen (zelfs beveiligde cookies). Een veelvoorkomende, niet-algemene manier is dat met behulp van SSL-certificaten uw site en de cookies van uw gebruikers worden beschermd vanuit een overname. Een bedreigings actor kan echter gebruikmaken van het gehackte subdomein om toe te passen en een geldig SSL-certificaat te ontvangen. Vervolgens kunnen ze toegang krijgen tot beveiligde cookies en de waargenomen rechtmatigheid van de schadelijke site verder verg Roten.
+- Het **verzamelen van cookies van onvermoede bezoekers** : het is gebruikelijk voor web apps om sessie cookies beschikbaar te maken voor subdomeinen (*. contoso.com), waardoor elk subdomein er toegang toe heeft. Threat actors kunnen subdomein overname gebruiken om een authentiek ogende pagina samen te stellen, het niet vermoeden van gebruikers om deze te bezoeken en hun cookies te verzamelen (zelfs beveiligde cookies). Een veelvoorkomende, niet-algemene manier is dat met behulp van SSL-certificaten uw site en de cookies van uw gebruikers worden beschermd vanuit een overname. Een bedreigings actor kan echter gebruikmaken van het gehackte subdomein om toe te passen en een geldig SSL-certificaat te ontvangen. Geldige SSL-certificaten geven hen toegang tot beveiligde cookies en kunnen de waargenomen rechtmatigheid van de schadelijke site verder verg Roten.
 
 - **Phishing campagnes** : authentiek-Zoek subdomeinen kunnen worden gebruikt in phishing-campagnes. Dit geldt voor schadelijke sites en ook voor MX-records waarmee de Threat actor e-mails kan ontvangen die zijn geadresseerd aan een legitiem subdomein van een bekend veilig merk.
 
@@ -78,14 +78,14 @@ De preventieve maat regelen die voor u beschikbaar zijn, worden hieronder weer g
 
 ### <a name="use-azure-dns-alias-records"></a>Azure DNS alias records gebruiken
 
-Door de levens cyclus van een DNS-record met een Azure-resource nauw keurig te koppelen, kunnen de [alias records](https://docs.microsoft.com/azure/dns/dns-alias#scenarios) van Azure DNS de Dangling-verwijzingen verhinderen. Denk bijvoorbeeld aan een DNS-record die is gekwalificeerd als alias record om te verwijzen naar een openbaar IP-adres of een Traffic Manager profiel. Als u deze onderliggende bronnen verwijdert, wordt de DNS-alias record een lege recordset. Er wordt niet langer verwezen naar de verwijderde resource. Het is belang rijk te weten dat er beperkingen zijn voor wat u met alias records kunt beveiligen. De lijst is nu beperkt tot:
+De [alias records](https://docs.microsoft.com/azure/dns/dns-alias#scenarios) van Azure DNS kunnen Dangling-verwijzingen verhinderen door de levens cyclus van een DNS-record te koppelen aan een Azure-resource. Denk bijvoorbeeld aan een DNS-record die is gekwalificeerd als alias record om te verwijzen naar een openbaar IP-adres of een Traffic Manager profiel. Als u deze onderliggende bronnen verwijdert, wordt de DNS-alias record een lege recordset. Er wordt niet langer verwezen naar de verwijderde resource. Het is belang rijk te weten dat er beperkingen zijn voor wat u met alias records kunt beveiligen. De lijst is nu beperkt tot:
 
 - Azure Front Door
 - Traffic Manager-profielen
 - Azure Content Delivery Network (CDN)-eind punten
 - Openbare IP-adressen
 
-Als u resources hebt die kunnen worden beveiligd tegen de overname van subdomeinen met alias records, kunt u dit het beste doen ondanks de beperkte service aanbiedingen vandaag.
+Ondanks de beperkte service aanbiedingen van vandaag, raden we u aan om, indien mogelijk, alias records te gebruiken om te beschermen tegen de overname van subdomeinen.
 
 Meer [informatie](https://docs.microsoft.com/azure/dns/dns-alias#capabilities) over de mogelijkheden van de alias records van Azure DNS.
 
@@ -120,7 +120,7 @@ Het is vaak tot ontwikkel aars en operationele teams om opschoon processen uit t
         - **Existing** : query's uitvoeren op uw DNS-zones voor resources die verwijzen naar Azure-subdomeinen, zoals *. azurewebsites.net of *. cloudapp.Azure.com (Zie [deze lijst met verwijzingen](azure-domains.md)).
         - **U bent eigenaar** van de resources die zijn gericht op uw DNS-subdomeinen.
 
-    - Onderhoud van een service catalogus van uw Azure Fully Qualified Domain Name (FQDN)-eind punten en de eigen aren van de toepassing. Als u uw service catalogus wilt maken, voert u de volgende Azure resource Graph-query uit met de para meters uit de onderstaande tabel:
+    - Onderhoud van een service catalogus van uw Azure Fully Qualified Domain Name (FQDN)-eind punten en de eigen aren van de toepassing. Als u uw service catalogus wilt maken, voert u de volgende Azure resource Graph-query (ARG) uit met de para meters uit de onderstaande tabel:
     
         >[!IMPORTANT]
         > **Machtigingen** : Voer de query uit als een gebruiker met toegang tot al uw Azure-abonnementen. 
@@ -139,9 +139,12 @@ Het is vaak tot ontwikkel aars en operationele teams om opschoon processen uit t
         
         U kunt ook meerdere resource typen combi neren. Met dit voorbeeld query worden de resources van Azure App Service **en** Azure app service-sleuven geretourneerd:
 
-        ```
+        ```azurepowershell
         Search-AzGraph -Query "resources | where type in ('microsoft.web/sites', 'microsoft.web/sites/slots') | project tenantId, subscriptionId, type, resourceGroup, name, endpoint = properties.defaultHostName"
         ```
+
+
+        Para meters per service voor de query ARG:
 
         |Resourcenaam  |[ResourceType]  | [FQDNproperty]  |
         |---------|---------|---------|

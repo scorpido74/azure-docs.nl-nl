@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 07/17/2019
 ms.author: scottwhi
 ms.custom: seodec2018
-ms.openlocfilehash: d459222327ef3535202e82f640f5b513f0426d54
-ms.sourcegitcommit: 32592ba24c93aa9249f9bd1193ff157235f66d7e
+ms.openlocfilehash: ad2ac118908f1c1f77ea204ae2400913ac0807cb
+ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/01/2020
-ms.locfileid: "85609466"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86147410"
 ---
 # <a name="add-analytics-to-the-bing-search-apis"></a>Analyses toevoegen aan de Bing Zoeken-API's
 
@@ -50,10 +50,10 @@ Standaard worden in de grafieken en grafieken alle metrische gegevens weer gegev
   
 - **Eind punten**: de Bing Search API-eind punten. De lijst bevat alle eind punten waarvoor u een betaald abonnement hebt. Standaard zijn alle eind punten geselecteerd.  
 
-- **Tijds bestek**: de rapportage periode. U kunt de volgende instellingen opgeven:
+- **Tijds bestek**: de rapportage periode. U kunt het volgende opgeven:
   - **Alle**: inclusief Maxi maal 13 maanden aan gegevens  
   - **Afgelopen 24 uur**: bevat analyses van de afgelopen 24 uur  
-  - **Afgelopen week**: bevat analyses van de afgelopen zeven dagen  
+  - **Afgelopen week**: bevat analyses van de afgelopen 7 dagen  
   - **Afgelopen maand**: bevat analyses van de afgelopen 30 dagen  
   - **Een aangepast datum bereik**: bevat analyses uit het opgegeven datum bereik, indien beschikbaar  
 

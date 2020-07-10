@@ -3,12 +3,12 @@ title: Een live ASP.NET-web-app bewaken met Azure Application Insights | Microso
 description: Bewaak de prestaties van een website zonder de website opnieuw te implementeren. Werkt met ASP.NET-Web-apps die on-premises of in Vm's worden gehost.
 ms.topic: conceptual
 ms.date: 08/26/2019
-ms.openlocfilehash: e30700deaa0121fbe473580d868a79d75a899a1d
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: f4ce01ea8fc7b6bf1f294071f04e2bebce3e1d27
+ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86107475"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86166379"
 ---
 # <a name="instrument-web-apps-at-runtime-with-application-insights-codeless-attach"></a>Web-apps tijdens runtime instrumenteren met Application Insights zonder code koppelen
 
@@ -39,14 +39,14 @@ Hier volgt een samenvatting van wat elke route u biedt:
 
 |  | Tijdens het bouwen | Tijdens het gebruik |
 | --- | --- | --- |
-| Aanvragen en uitzonderingen |Ja |Ja |
-| [Meer gedetailleerde uitzonderingen](../../azure-monitor/app/asp-net-exceptions.md) | |Yes |
-| [Diagnostische gegevens over afhankelijkheid](../../azure-monitor/app/asp-net-dependencies.md) |Op .NET 4.6+, maar minder details |Ja, volledige details: resultaatcodes, SQL-opdrachttekst, HTTP-woord|
-| [Systeemprestatiemeteritems](../../azure-monitor/app/performance-counters.md) |Ja |Ja |
-| [API voor aangepaste telemetrie][api] |Yes |Nee |
-| [Integratie traceerlogboeken](../../azure-monitor/app/asp-net-trace-logs.md) |Yes |Nee |
-| [Paginaweergave en gebruikersgegevens](../../azure-monitor/app/javascript.md) |Yes |Nee |
-| Code moet worden herbouwd |Yes | Nee |
+| **& uitzonde ringen aanvragen** |Ja |Ja |
+| **[Meer gedetailleerde uitzonde ringen](../../azure-monitor/app/asp-net-exceptions.md)** | |Ja |
+| **[Afhankelijkheids diagnostiek](../../azure-monitor/app/asp-net-dependencies.md)** |Op .NET 4.6+, maar minder details |Ja, volledige details: resultaatcodes, SQL-opdrachttekst, HTTP-woord|
+| **[Systeemprestatiemeteritems](../../azure-monitor/app/performance-counters.md)** |Ja |Ja |
+| **[API voor aangepaste telemetrie][api]** |Ja |Nee |
+| **[Integratie traceer logboek](../../azure-monitor/app/asp-net-trace-logs.md)** |Ja |Nee |
+| **[Pagina weergave & gebruikers gegevens](../../azure-monitor/app/javascript.md)** |Ja |Nee |
+| **Code moet worden herbouwd** |Ja | Nee |
 
 
 
@@ -84,7 +84,7 @@ Als u opnieuw wilt publiceren zonder Application Insights toe te voegen aan de c
 4. Voer alle wijzigingen die u hebt doorgevoerd in het .config-bestand opnieuw door.
 
 
-## <a name="troubleshooting"></a><a name="troubleshoot"></a>Probleemoplossing
+## <a name="troubleshooting"></a><a name="troubleshoot"></a>Problemen oplossen
 
 ### <a name="confirm-a-valid-installation"></a>Een geldige installatie bevestigen 
 

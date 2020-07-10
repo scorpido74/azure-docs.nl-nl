@@ -13,15 +13,16 @@ ms.topic: reference
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.subservice: report-monitor
-ms.date: 07/12/2019
+ms.date: 08/07/2020
 ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2192c472e00d123780ec6bc5574e7b9fe326258b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 0510184e2471d61c8911b5fcd484fd5dec0bce28
+ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "75495305"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86144487"
 ---
 # <a name="azure-ad-powershell-cmdlets-for-reporting"></a>Azure AD PowerShell-cmdlets voor rapportage
 
@@ -49,9 +50,9 @@ U krijgt toegang tot de audit logboeken met behulp van de cmdlet Get-AzureADAudi
 | Scenario                      | PowerShell-opdracht |
 | :--                           | :--                |
 | Weergave naam van toepassing      | Get-AzureADAuditDirectoryLogs: filter "initiatedBy/app/displayName EQ" Azure AD Cloud Sync "" |
-| Categorie                      | Get-AzureADAuditDirectoryLogs-filter "categorie EQ" toepassings beheer "" |
+| Categorie                      | Get-AzureADAuditDirectoryLogs-filter "Category EQ" ApplicationManagement "" |
 | Datum en tijd van activiteit            | Get-AzureADAuditDirectoryLogs-filter "activityDateTime gt 2019-04-18" |
-| Alle bovenstaande              | Get-AzureADAuditDirectoryLogs: filter "initiatedBy/app/displayName EQ" Azure AD Cloud Sync "en categorie EQ" toepassings beheer "en activityDateTime gt 2019-04-18"|
+| Alle hierboven genoemde antwoorden              | Get-AzureADAuditDirectoryLogs: filter "initiatedBy/app/displayName EQ" Azure AD Cloud Sync "en Category EQ" ApplicationManagement "en activityDateTime gt 2019-04-18"|
 
 
 In de volgende afbeelding ziet u een voor beeld van deze opdracht. 
@@ -73,7 +74,7 @@ U krijgt toegang tot de aanmeld logboeken met behulp van de cmdlet Get-AzureADAu
 | Datum en tijd maken              | Get-AzureADAuditSignInLogs-filter "createdDateTime gt 2019-04-18T17:30:00.0 Z" (alles sinds 5:30 uur op 4/18) |
 | Status                        | Get-AzureADAuditSignInLogs-filter "status/error code EQ 50105" |
 | Weergave naam van toepassing      | Get-AzureADAuditSignInLogs-filter "appDisplayName EQ" StoreFrontStudio [wsfed ingeschakeld] "" |
-| Alle bovenstaande              | Get-AzureADAuditSignInLogs-filter "userDisplayName EQ ' Timothy Perkins ' en status/error code ne 0 en appDisplayName EQ ' StoreFrontStudio [wsfed enabled] '" |
+| Alle hierboven genoemde antwoorden              | Get-AzureADAuditSignInLogs-filter "userDisplayName EQ ' Timothy Perkins ' en status/error code ne 0 en appDisplayName EQ ' StoreFrontStudio [wsfed enabled] '" |
 
 
 In de volgende afbeelding ziet u een voor beeld van deze opdracht. 

@@ -1,17 +1,17 @@
 ---
-title: 'Instructies: een Java-lente toepassing voorbereiden voor implementatie in azure lente Cloud'
-description: In dit onderwerp maakt u een Java-lente toepassing voor implementatie in azure lente-Cloud.
+title: Een Java-lente toepassing voorbereiden voor implementatie in azure lente Cloud
+description: Meer informatie over het voorbereiden van een Java-lente toepassing voor implementatie in azure lente-Cloud.
 author: bmitchell287
 ms.service: spring-cloud
 ms.topic: how-to
 ms.date: 02/03/2020
 ms.author: brendm
-ms.openlocfilehash: 0cbe91de889b787d6f417afbe74720b40c3026e3
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 1840979fc1380f1e0d14f3a0a74eef5fa6df6538
+ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85833380"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86141864"
 ---
 # <a name="prepare-a-java-spring-application-for-deployment-in-azure-spring-cloud"></a>Een Java Spring-toepassing voorbereiden voor implementatie in Azure Spring Cloud
 
@@ -253,9 +253,9 @@ Neem de volgende `spring-cloud-starter-sleuth` en `spring-cloud-starter-zipkin` 
 </dependency>
 ```
 
- U moet ook een Azure-toepassing Insights-exemplaar inschakelen om te werken met uw Azure lente-Cloud service-exemplaar. Lees de [zelf studie over gedistribueerde tracering](spring-cloud-tutorial-distributed-tracing.md) voor meer informatie over het gebruik van Application Insights met Azure lente Cloud.
+ U moet ook een Azure-toepassing Insights-exemplaar inschakelen om te werken met uw Azure lente-Cloud service-exemplaar. Zie de [documentatie over gedistribueerde tracering](spring-cloud-tutorial-distributed-tracing.md)voor meer informatie over het gebruik van Application Insights met Azure lente Cloud.
 
-## <a name="see-also"></a>Zie tevens
+## <a name="see-also"></a>Zie ook
 * [Toepassings logboeken en metrische gegevens analyseren](https://docs.microsoft.com/azure/spring-cloud/diagnostic-services)
 * [Uw configuratieserver instellen](https://docs.microsoft.com/azure/spring-cloud/spring-cloud-tutorial-config-server)
 * [Gedistribueerde tracering gebruiken met Azure veer Cloud](https://docs.microsoft.com/azure/spring-cloud/spring-cloud-tutorial-distributed-tracing)
@@ -264,9 +264,6 @@ Neem de volgende `spring-cloud-starter-sleuth` en `spring-cloud-starter-zipkin` 
 
 ## <a name="next-steps"></a>Volgende stappen
 
-In dit onderwerp hebt u geleerd hoe u uw Java lente-toepassing kunt configureren voor implementatie in azure lente-Cloud. Zie het volgende artikel voor meer informatie over het instellen van een configuratie Server-exemplaar.
-
-> [!div class="nextstepaction"]
-> [Meer informatie over het instellen van een configuratie Server-exemplaar](spring-cloud-tutorial-config-server.md)
+In dit onderwerp hebt u geleerd hoe u uw Java lente-toepassing kunt configureren voor implementatie in azure lente-Cloud. Zie [een configuratie Server-exemplaar instellen](spring-cloud-tutorial-config-server.md)voor meer informatie over het instellen van een configuratie Server-exemplaar.
 
 Meer voorbeelden zijn beschikbaar in GitHub: [Azure Spring Cloud-voorbeelden](https://github.com/Azure-Samples/Azure-Spring-Cloud-Samples).

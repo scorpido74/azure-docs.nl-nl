@@ -11,12 +11,12 @@ ms.subservice: language-understanding
 ms.topic: how-to
 ms.date: 11/19/2019
 ms.author: diberry
-ms.openlocfilehash: 98f35d0b3f37a7bb181f83b83a48ef113e02f1e2
-ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
+ms.openlocfilehash: ee0c659cf510eb0a438ae0c78a554c98dccffa89
+ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/03/2020
-ms.locfileid: "84344132"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86144274"
 ---
 # <a name="correct-misspelled-words-with-bing-spell-check"></a>Verkeerd gespelde woorden corrigeren met Bing Spellingcontrole
 
@@ -24,17 +24,9 @@ U kunt uw LUIS-app integreren met [Bing spellingcontrole-API V7](https://azure.m
 
 [!INCLUDE [Not supported in V3 API prediction endpoint](./includes/v2-support-only.md)]
 
-
-## <a name="create-first-key-for-bing-spell-check-v7"></a>Eerste sleutel voor Bing Spellingcontrole V7 maken
-
-Uw [eerste Bing spellingcontrole-API V7-sleutel](https://azure.microsoft.com/try/cognitive-services/?api=spellcheck-api) is gratis.
-
-![Gratis sleutel maken](./media/luis-tutorial-bing-spellcheck/free-key.png)
-
-<a name="create-subscription-key"></a>
-
 ## <a name="create-endpoint-key"></a>Eindpunt sleutel maken
-Als uw gratis sleutel is verlopen, maakt u een eindpunt sleutel.
+
+Volg de volgende instructies om een Bing Spellingcontrole resource in de Azure Portal te maken:
 
 1. Meld u aan bij [Azure Portal](https://portal.azure.com).
 

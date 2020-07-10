@@ -4,12 +4,12 @@ description: Meer informatie over het gebruik van de batch-Service-API voor het 
 ms.topic: how-to
 ms.date: 03/05/2019
 ms.custom: seodec18
-ms.openlocfilehash: c9d8eab5b4f4b89a613f5ffc3a7f9c9d9d53dcfc
-ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.openlocfilehash: 24e9f242b3c71965984534ac986031757bbc8420
+ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/05/2020
-ms.locfileid: "85965124"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86143509"
 ---
 # <a name="persist-task-data-to-azure-storage-with-the-batch-service-api"></a>Taak gegevens persistent maken voor Azure Storage met de API voor de batch-service
 
@@ -43,7 +43,7 @@ await container.CreateIfNotExists();
 
 ## <a name="get-a-shared-access-signature-for-the-container"></a>Een Shared Access Signature voor de container ophalen
 
-Nadat u de container hebt gemaakt, kunt u een Shared Access Signature (SAS) met schrijf toegang tot de container ophalen. Een SAS biedt gedelegeerde toegang tot de container. De SAS verleent toegang met een opgegeven set machtigingen en over een opgegeven tijds interval. De batch-service heeft een SAS met schrijf machtigingen nodig om de taak uitvoer naar de container te schrijven. Zie [Shared Access signatures \( sa's gebruiken \) in azure Storage](../storage/common/storage-dotnet-shared-access-signature-part-1.md)voor meer informatie over SAS.
+Nadat u de container hebt gemaakt, kunt u een Shared Access Signature (SAS) met schrijf toegang tot de container ophalen. Een SAS biedt gedelegeerde toegang tot de container. De SAS verleent toegang met een opgegeven set machtigingen en over een opgegeven tijds interval. De batch-service heeft een SAS met schrijf machtigingen nodig om de taak uitvoer naar de container te schrijven. Zie [Shared Access signatures \( sa's gebruiken \) in azure Storage](../storage/common/storage-sas-overview.md)voor meer informatie over SAS.
 
 Wanneer u een SAS krijgt met behulp van de Azure Storage Api's, retourneert de API een SAS-token teken reeks. Deze token teken reeks bevat alle para meters van de SA'S, met inbegrip van de machtigingen en het interval waarmee de SA'S geldig zijn. Als u de SAS wilt gebruiken om toegang te krijgen tot een container in Azure Storage, moet u de SAS-token teken reeks toevoegen aan de resource-URI. De bron-URI, samen met het toegevoegde SAS-token, biedt geverifieerde toegang tot Azure Storage.
 

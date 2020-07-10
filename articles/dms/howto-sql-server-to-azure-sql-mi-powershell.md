@@ -12,12 +12,12 @@ ms.workload: data-services
 ms.custom: seo-lt-2019,fasttrack-edit
 ms.topic: article
 ms.date: 02/20/2020
-ms.openlocfilehash: 35e6690726750e6c9e6dfb0cb62a6732603c3610
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.openlocfilehash: eb8ec09646fa3f3c226edbe957e19d079fd2607c
+ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
 ms.translationtype: MT
 ms.contentlocale: nl-NL
 ms.lasthandoff: 07/08/2020
-ms.locfileid: "86083658"
+ms.locfileid: "86147423"
 ---
 # <a name="migrate-sql-server-to-sql-managed-instance-with-powershell--azure-database-migration-service"></a>SQL Server migreren naar een beheerd exemplaar van SQL met Power shell-& Azure Database Migration Service
 
@@ -99,7 +99,7 @@ $service = New-AzDms -ResourceGroupName myResourceGroup `
   -VirtualSubnetId $vSubNet.Id`
 ```
 
-## <a name="create-a-migration-project"></a>Maak een migratieproject
+## <a name="create-a-migration-project"></a>Een migratieproject maken
 
 Nadat u een Azure Database Migration Service-exemplaar hebt gemaakt, moet u een migratie project maken. Een Azure Database Migration Service project vereist verbindings gegevens voor zowel de bron-als doel instantie, evenals een lijst met data bases die u wilt migreren als onderdeel van het project.
 
@@ -121,13 +121,11 @@ $sourceConnInfo = New-AzDmsConnInfo -ServerType SQL `
   -TrustServerCertificate:$true
 ```
 
-In het volgende voor beeld ziet u het maken van verbindings gegevens voor een Azure SQL Managed instance met de naam ' targetmanagedinstance.database.windows.net ' met behulp van SQL-verificatie:
+In het volgende voor beeld ziet u het maken van verbindings gegevens voor een Azure SQL Managed instance met de naam ' targetmanagedinstance ':
 
 ```powershell
-$targetConnInfo = New-AzDmsConnInfo -ServerType SQL `
-  -DataSource "targetmanagedinstance.database.windows.net" `
-  -AuthType SqlAuthentication `
-  -TrustServerCertificate:$false
+$targetResourceId = (Get-AzSqlInstance -Name "targetmanagedinstance").Id
+$targetConnInfo = New-AzDmsConnInfo -ServerType SQLMI -MiResourceId $targetResourceId
 ```
 
 ### <a name="provide-databases-for-the-migration-project"></a>Data bases voor het migratie project opgeven
@@ -418,7 +416,7 @@ Nadat de migratie is voltooid, kunt u de Azure Database Migration Service-instan
 Remove-AzDms -ResourceGroupName myResourceGroup -ServiceName MyDMS
 ```
 
-## <a name="additional-resources"></a>Aanvullende bronnen
+## <a name="additional-resources"></a>Aanvullende resources
 
 Zie de micro soft [Data Base Migration Guide (Engelstalig](https://datamigration.microsoft.com/)) voor meer informatie over aanvullende migratie scenario's (bron/doel paren).
 

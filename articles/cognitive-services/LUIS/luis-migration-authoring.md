@@ -11,12 +11,12 @@ ms.subservice: language-understanding
 ms.topic: how-to
 ms.date: 06/17/2020
 ms.author: diberry
-ms.openlocfilehash: 338868c954df68fbf43bee9581a6afada58f7e97
-ms.sourcegitcommit: bcb962e74ee5302d0b9242b1ee006f769a94cfb8
+ms.openlocfilehash: cc14f1cd60f048ba01060b9ebdbca434af6b9751
+ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86055457"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86145623"
 ---
 # <a name="migrate-to-an-azure-resource-authoring-key"></a>Migreren naar een Azure-resource bewerkings sleutel
 
@@ -57,7 +57,7 @@ Migratie moet worden uitgevoerd vanuit de LUIS-Portal. Als u de ontwerp sleutels
 * Als u de eigenaar van de toepassing bent, hoeft u uw apps niet te exporteren omdat deze automatisch worden gemigreerd. We raden u aan elke lijst van de samen werker van de app op te slaan. Een e-mail sjabloon met deze lijst wordt optioneel als onderdeel van het migratie proces aangeboden.
 
 
-|Portal|Functie|
+|Portal|Doel|
 |--|--|
 |[Azure](https://azure.microsoft.com/free/)| Voorspellings-en ontwerp resources maken.<br> Mede werkers aan resources toewijzen.|
 |[LUIS](https://www.luis.ai)| Migreren naar nieuwe ontwerp resources.<br> Nieuwe ontwerp resources maken in de migratie stroom.<br> U kunt voor spellingen en het ontwerpen van resources voor apps toewijzen of verwijderen **Manage**via de  >  pagina**Azure-resources** beheren. <br> Verplaats toepassingen van de ene ontwerp bron naar een andere.  |
@@ -226,7 +226,7 @@ U wordt aangeraden dat u:
 ## <a name="troubleshooting-the-migration-process"></a>Problemen met het migratie proces oplossen
 
 Wanneer u uw Azure-abonnement in de vervolg keuzelijst wilt migreren, maar niet kunt vinden:
-* Zorg ervoor dat u een geldig Azure-abonnement hebt dat is gemachtigd om Cognitive Services-resources te maken. Ga naar de [Azure Portal](https://ms.portal.azure.com) en controleer de status van het abonnement. Als u er nog geen hebt, [maakt u een gratis proef versie](https://azure.microsoft.com/free/).
+* Zorg ervoor dat u een geldig Azure-abonnement hebt dat is gemachtigd om Cognitive Services-resources te maken. Ga naar de [Azure Portal](https://ms.portal.azure.com) en controleer de status van het abonnement. Als u er nog geen hebt, [maakt u een gratis Azure-account](https://azure.microsoft.com/free/cognitive-services/).
 * Zorg ervoor dat u zich in de juiste Tenant bevindt die is gekoppeld aan uw geldige abonnement. U kunt tenants van de avatar naar links van uw initialen op deze werk balk overschakelen: ![ werk balk waar u tenants kunt overschakelen](./media/migrate-authoring-key/switch-user-tenant-2.png)
 
 Als u een bestaande ontwerp bron hebt, maar deze niet kunt vinden wanneer u de optie **bestaande ontwerp bron gebruiken** selecteert:

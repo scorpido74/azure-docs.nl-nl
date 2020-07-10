@@ -3,12 +3,12 @@ title: Reken intensief Azure-Vm's gebruiken met batch
 description: Profiteren van de grootte van HPC en GPU-virtuele machines in Azure Batch groepen. Meer informatie over afhankelijkheden van besturings systemen en een aantal voor beelden van scenario's weer geven.
 ms.topic: how-to
 ms.date: 12/17/2018
-ms.openlocfilehash: acc56679d8be157541b0d7c056e57659584645be
-ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.openlocfilehash: 016da7669c9e6a6586a53d379f9665c9ea048b64
+ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/05/2020
-ms.locfileid: "85962506"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86147333"
 ---
 # <a name="use-rdma-or-gpu-instances-in-batch-pools"></a>RDMA-of GPU-instanties gebruiken in batch-Pools
 
@@ -20,9 +20,9 @@ Als u bepaalde batch taken wilt uitvoeren, kunt u profiteren van de Azure VM-gro
 
 Dit artikel bevat richt lijnen en voor beelden voor het gebruik van enkele gespecialiseerde grootten van Azure in batch-Pools. Zie voor specificaties en achtergrond:
 
-* High Performance Compute VM-grootten ([Linux](../virtual-machines/linux/sizes-hpc.md), [Windows](../virtual-machines/windows/sizes-hpc.md)) 
+* High Performance Compute VM-grootten ([Linux](../virtual-machines/sizes-hpc.md), [Windows](../virtual-machines/sizes-hpc.md)) 
 
-* VM-grootten met GPU ([Linux](../virtual-machines/linux/sizes-gpu.md), [Windows](../virtual-machines/windows/sizes-gpu.md)) 
+* VM-grootten met GPU ([Linux](../virtual-machines/sizes-gpu.md), [Windows](../virtual-machines/sizes-gpu.md)) 
 
 > [!NOTE]
 > Bepaalde VM-grootten zijn mogelijk niet beschikbaar in de regio's waar u uw batch-accounts maakt. Als u wilt controleren of er een grootte beschikbaar is, raadpleegt u [beschik bare producten per regio](https://azure.microsoft.com/regions/services/) en [kiest u een VM-grootte voor een batch-pool](batch-pool-vm-sizes.md).
@@ -35,7 +35,7 @@ De RDMA-of GPU-mogelijkheden van Compute-grootten in batch worden alleen onderst
 
 | Grootte | Mogelijkheid | Besturingssystemen | Vereiste software | Groeps instellingen |
 | -------- | -------- | ----- |  -------- | ----- |
-| [H16r, H16mr, A8, A9](../virtual-machines/linux/sizes-hpc.md)<br/>[NC24r, NC24rs_v2, NC24rs_v3, ND24rs<sup>*</sup>](../virtual-machines/linux/n-series-driver-setup.md#rdma-network-connectivity) | RDMA | Ubuntu 16,04 LTS, of<br/>HPC op basis van CentOS<br/>(Azure Marketplace) | Intel MPI 5<br/><br/>Linux RDMA-Stuur Programma's | Communicatie tussen knoop punten inschakelen, gelijktijdige taak uitvoering uitschakelen |
+| [H16r, H16mr, A8, A9](../virtual-machines/sizes-hpc.md)<br/>[NC24r, NC24rs_v2, NC24rs_v3, ND24rs<sup>*</sup>](../virtual-machines/linux/n-series-driver-setup.md#rdma-network-connectivity) | RDMA | Ubuntu 16,04 LTS, of<br/>HPC op basis van CentOS<br/>(Azure Marketplace) | Intel MPI 5<br/><br/>Linux RDMA-Stuur Programma's | Communicatie tussen knoop punten inschakelen, gelijktijdige taak uitvoering uitschakelen |
 | [NC, NCv2, NCv3, NDv2-serie](../virtual-machines/linux/n-series-driver-setup.md) | NVIDIA Tesla GPU (per serie) | Ubuntu 16,04 LTS, of<br/>CentOS 7,3 of 7,4<br/>(Azure Marketplace) | NVIDIA CUDA-of CUDA Toolkit-Stuur Programma's | N.v.t. | 
 | [NV, NVv2-serie](../virtual-machines/linux/n-series-driver-setup.md) | NVIDIA Tesla M60 GPU | Ubuntu 16,04 LTS, of<br/>CentOS 7,3<br/>(Azure Marketplace) | NVIDIA-raster Stuur Programma's | N.v.t. |
 
@@ -105,7 +105,7 @@ Als u CUDA-toepassingen wilt uitvoeren op een groep Windows NC-knoop punten, moe
 | **SKU** | 2016-Data Center |
 | **Knooppuntgrootte** | NC6-standaard |
 | **Toepassings pakket verwijzingen** | GPUDriver, versie 411,82 |
-| **Taak starten is ingeschakeld** | True<br>**Opdracht regel** - `cmd /c "%AZ_BATCH_APP_PACKAGE_GPUDriver#411.82%\\GPUDriverSetup.exe /s"`<br/>**Gebruikers identiteit** : groeps beleidsgebruiker, beheerder<br/>**Wachten op geslaagd** -True
+| **Taak starten is ingeschakeld** | Waar<br>**Opdracht regel** - `cmd /c "%AZ_BATCH_APP_PACKAGE_GPUDriver#411.82%\\GPUDriverSetup.exe /s"`<br/>**Gebruikers identiteit** : groeps beleidsgebruiker, beheerder<br/>**Wachten op geslaagd** -True
 
 ## <a name="example-nvidia-gpu-drivers-on-a-linux-nc-vm-pool"></a>Voor beeld: NVIDIA GPU-Stuur Programma's in een Linux NC-VM-groep
 
@@ -142,7 +142,7 @@ Als u Windows MPI-toepassingen wilt uitvoeren op een groep Azure H16r VM-knoop p
 | **Aangepaste installatie kopie** | *Naam van de afbeelding* |
 | **SKU van knoop punt agent** | batch. node. Windows amd64 |
 | **Knooppuntgrootte** | H16r-standaard |
-| **Communicatie tussen knoop punten is ingeschakeld** | True |
+| **Communicatie tussen knoop punten is ingeschakeld** | Waar |
 | **Maximum aantal taken per knoop punt** | 1 |
 
 ## <a name="example-intel-mpi-on-a-linux-h16r-vm-pool"></a>Voor beeld: Intel MPI op een Linux H16r VM-groep
@@ -158,7 +158,7 @@ Maak met behulp van de batch-Api's of de Azure Portal een pool met behulp van de
 | **Aanbieding** | CentOS-HPC |
 | **SKU** | 7.4 |
 | **Knooppuntgrootte** | H16r-standaard |
-| **Communicatie tussen knoop punten is ingeschakeld** | True |
+| **Communicatie tussen knoop punten is ingeschakeld** | Waar |
 | **Maximum aantal taken per knoop punt** | 1 |
 
 ## <a name="next-steps"></a>Volgende stappen

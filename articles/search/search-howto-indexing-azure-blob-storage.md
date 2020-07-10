@@ -10,12 +10,12 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
 ms.custom: fasttrack-edit
-ms.openlocfilehash: 6c7e1fcaebd415fcacfffcef62ca25cccde3e476
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 7e3a35d95e7d2a339bf33620c9d1a140fb6a0a1d
+ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85563160"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86143748"
 ---
 # <a name="how-to-index-documents-in-azure-blob-storage-with-azure-cognitive-search"></a>Documenten in Azure Blob Storage indexeren met Azure Cognitive Search
 
@@ -31,7 +31,7 @@ De BLOB-indexer kan tekst uit de volgende document indelingen ophalen:
 ## <a name="setting-up-blob-indexing"></a>BLOB-indexering instellen
 U kunt een Azure Blob Storage Indexeer functie instellen met behulp van:
 
-* [Azure-portal](https://ms.portal.azure.com)
+* [Azure Portal](https://ms.portal.azure.com)
 * Azure Cognitive Search [rest API](https://docs.microsoft.com/rest/api/searchservice/Indexer-operations)
 * Azure Cognitive Search [.NET SDK](https://docs.microsoft.com/dotnet/api/overview/azure/search)
 
@@ -53,6 +53,7 @@ Voor BLOB-indexering moet de gegevens bron de volgende vereiste eigenschappen he
 
 Een gegevens bron maken:
 
+```http
     POST https://[service name].search.windows.net/datasources?api-version=2020-06-30
     Content-Type: application/json
     api-key: [admin key]
@@ -63,6 +64,7 @@ Een gegevens bron maken:
         "credentials" : { "connectionString" : "DefaultEndpointsProtocol=https;AccountName=<account name>;AccountKey=<account key>;" },
         "container" : { "name" : "my-container", "query" : "<optional-virtual-directory-name>" }
     }   
+```
 
 Zie [Data Source maken](https://docs.microsoft.com/rest/api/searchservice/create-data-source)voor meer informatie over het maken van data source-API.
 
@@ -85,6 +87,7 @@ De index specificeert de velden in een document, kenmerken en andere constructie
 
 Ga als volgt te werk om een index met een doorzoekbaar `content` veld te maken voor het opslaan van de tekst die uit blobs is geëxtraheerd:   
 
+```http
     POST https://[service name].search.windows.net/indexes?api-version=2020-06-30
     Content-Type: application/json
     api-key: [admin key]
@@ -96,6 +99,7 @@ Ga als volgt te werk om een index met een doorzoekbaar `content` veld te maken v
             { "name": "content", "type": "Edm.String", "searchable": true, "filterable": false, "sortable": false, "facetable": false }
           ]
     }
+```
 
 Zie [index maken](https://docs.microsoft.com/rest/api/searchservice/create-index) voor meer informatie over het maken van indexen
 
@@ -104,6 +108,7 @@ Een Indexeer functie verbindt een gegevens bron met een doel zoek index en biedt
 
 Zodra de index en gegevens bron zijn gemaakt, kunt u de Indexeer functie nu maken:
 
+```http
     POST https://[service name].search.windows.net/indexers?api-version=2020-06-30
     Content-Type: application/json
     api-key: [admin key]
@@ -114,6 +119,7 @@ Zodra de index en gegevens bron zijn gemaakt, kunt u de Indexeer functie nu make
       "targetIndexName" : "my-target-index",
       "schedule" : { "interval" : "PT2H" }
     }
+```
 
 Deze Indexeer functie wordt elke twee uur uitgevoerd (schema-interval is ingesteld op "PT2H"). Als u een Indexeer functie elke 30 minuten wilt uitvoeren, stelt u het interval in op ' PT30M '. Het kortste ondersteunde interval is 5 minuten. Het schema is optioneel: als u dit weglaat, wordt een Indexeer functie slechts eenmaal uitgevoerd wanneer deze wordt gemaakt. U kunt echter op elk gewenst moment een Indexeer functie op aanvraag uitvoeren.   
 
@@ -174,13 +180,16 @@ U moet zorgvuldig overwegen welk geëxtraheerde veld moet worden toegewezen aan 
 
 Voor dit voor beeld kiezen we het `metadata_storage_name` veld als de document sleutel. Ook wordt ervan uitgegaan dat uw index een sleutel veld bevat met de naam `key` en een veld `fileSize` om de document grootte op te slaan. Geef de volgende veld toewijzingen op wanneer u een Indexeer functie maakt of bijwerkt om de gewenste items te maken of bij te werken:
 
+```http
     "fieldMappings" : [
       { "sourceFieldName" : "metadata_storage_name", "targetFieldName" : "key", "mappingFunction" : { "name" : "base64Encode" } },
       { "sourceFieldName" : "metadata_storage_size", "targetFieldName" : "fileSize" }
     ]
+```
 
 Als u dit alles wilt doen, kunt u veld toewijzingen toevoegen en de base-64-code ring van sleutels voor een bestaande Indexeer functie inschakelen:
 
+```http
     PUT https://[service name].search.windows.net/indexers/blob-indexer?api-version=2020-06-30
     Content-Type: application/json
     api-key: [admin key]
@@ -194,6 +203,7 @@ Als u dit alles wilt doen, kunt u veld toewijzingen toevoegen en de base-64-code
         { "sourceFieldName" : "metadata_storage_size", "targetFieldName" : "fileSize" }
       ]
     }
+```
 
 > [!NOTE]
 > Zie [dit artikel](search-indexer-field-mappings.md)voor meer informatie over veld toewijzingen.
@@ -207,6 +217,7 @@ U kunt bepalen welke blobs worden geïndexeerd en welke worden overgeslagen.
 ### <a name="index-only-the-blobs-with-specific-file-extensions"></a>Alleen de blobs met specifieke bestands extensies indexeren
 U kunt alleen de blobs indexeren met de bestandsnaam extensies die u opgeeft met behulp van de para meter voor de configuratie van de `indexedFileNameExtensions` Indexeer functie. De waarde is een teken reeks met een door komma's gescheiden lijst met bestands extensies (met een voorloop punt). Als u bijvoorbeeld alleen de wilt indexeren. PDF en. DOCX-blobs, Ga als volgt te werk:
 
+```http
     PUT https://[service name].search.windows.net/indexers/[indexer name]?api-version=2020-06-30
     Content-Type: application/json
     api-key: [admin key]
@@ -215,10 +226,12 @@ U kunt alleen de blobs indexeren met de bestandsnaam extensies die u opgeeft met
       ... other parts of indexer definition
       "parameters" : { "configuration" : { "indexedFileNameExtensions" : ".pdf,.docx" } }
     }
+```
 
 ### <a name="exclude-blobs-with-specific-file-extensions"></a>Blobs met specifieke bestands extensies uitsluiten
 U kunt blobs met specifieke bestandsnaam extensies uitsluiten van indexering met behulp van de `excludedFileNameExtensions` configuratie parameter. De waarde is een teken reeks met een door komma's gescheiden lijst met bestands extensies (met een voorloop punt). Als u bijvoorbeeld alle blobs wilt indexeren, behalve die in de. PNG en. JPEG-extensies:
 
+```http
     PUT https://[service name].search.windows.net/indexers/[indexer name]?api-version=2020-06-30
     Content-Type: application/json
     api-key: [admin key]
@@ -227,6 +240,7 @@ U kunt blobs met specifieke bestandsnaam extensies uitsluiten van indexering met
       ... other parts of indexer definition
       "parameters" : { "configuration" : { "excludedFileNameExtensions" : ".png,.jpeg" } }
     }
+```
 
 Als beide `indexedFileNameExtensions` en `excludedFileNameExtensions` -para meters aanwezig zijn, controleert Azure Cognitive Search eerst op `indexedFileNameExtensions` , vervolgens op `excludedFileNameExtensions` . Dit betekent dat als dezelfde bestands extensie aanwezig is in beide lijsten, het indexeren wordt uitgesloten van indexering.
 
@@ -241,6 +255,7 @@ U kunt bepalen welke delen van de blobs worden geïndexeerd met behulp van de `d
 
 Als u bijvoorbeeld alleen de meta gegevens van de opslag wilt indexeren, gebruikt u:
 
+```http
     PUT https://[service name].search.windows.net/indexers/[indexer name]?api-version=2020-06-30
     Content-Type: application/json
     api-key: [admin key]
@@ -249,6 +264,7 @@ Als u bijvoorbeeld alleen de meta gegevens van de opslag wilt indexeren, gebruik
       ... other parts of indexer definition
       "parameters" : { "configuration" : { "dataToExtract" : "storageMetadata" } }
     }
+```
 
 ### <a name="using-blob-metadata-to-control-how-blobs-are-indexed"></a>BLOB-meta gegevens gebruiken om te bepalen hoe blobs worden geïndexeerd
 
@@ -264,6 +280,7 @@ De configuratie parameters die hierboven worden beschreven, zijn van toepassing 
 
 De BLOB-indexer stopt standaard zodra er een BLOB wordt aangetroffen met een niet-ondersteund inhouds type (bijvoorbeeld een afbeelding). U kunt natuurlijk gebruikmaken van de `excludedFileNameExtensions` para meter om bepaalde inhouds typen over te slaan. Het is echter mogelijk dat u blobs moet indexeren zonder alle mogelijke inhouds typen vooraf te weten. Als u wilt door gaan met indexeren wanneer er een niet-ondersteund inhouds type wordt aangetroffen, stelt `failOnUnsupportedContentType` u de configuratie parameter in op `false` :
 
+```http
     PUT https://[service name].search.windows.net/indexers/[indexer name]?api-version=2020-06-30
     Content-Type: application/json
     api-key: [admin key]
@@ -272,21 +289,28 @@ De BLOB-indexer stopt standaard zodra er een BLOB wordt aangetroffen met een nie
       ... other parts of indexer definition
       "parameters" : { "configuration" : { "failOnUnsupportedContentType" : false } }
     }
+```
 
 Voor sommige blobs kan Azure Cognitive Search het inhouds type niet bepalen of kan een document van een andere ondersteund inhouds type niet verwerken. Als u deze fout modus wilt negeren, stelt `failOnUnprocessableDocument` u de configuratie parameter in op ONWAAR:
 
+```http
       "parameters" : { "configuration" : { "failOnUnprocessableDocument" : false } }
+```
 
 Azure Cognitive Search beperkt de grootte van blobs die worden geïndexeerd. Deze limieten worden beschreven in de [service limieten in Azure Cognitive Search](https://docs.microsoft.com/azure/search/search-limits-quotas-capacity). De grootte van blobs wordt standaard als fouten beschouwd. U kunt echter nog steeds opslag meta gegevens indexeren van overgrote blobs als u `indexStorageMetadataOnlyForOversizedDocuments` configuratie parameters instelt op True: 
 
+```http
     "parameters" : { "configuration" : { "indexStorageMetadataOnlyForOversizedDocuments" : true } }
+```
 
 U kunt ook door gaan met indexeren als er fouten optreden tijdens de verwerking, hetzij tijdens het parseren van blobs of tijdens het toevoegen van documenten aan een index. Als u een bepaald aantal fouten wilt negeren, stelt `maxFailedItems` `maxFailedItemsPerBatch` u de para meters en in op de gewenste waarden. Bijvoorbeeld:
 
+```http
     {
       ... other parts of indexer definition
       "parameters" : { "maxFailedItems" : 10, "maxFailedItemsPerBatch" : 10 }
     }
+```
 
 ## <a name="incremental-indexing-and-deletion-detection"></a>Incrementele indexering en detectie van verwijderingen
 
@@ -345,6 +369,7 @@ Voer de volgende stappen uit:
 
 Het volgende beleid beschouwt bijvoorbeeld een blob die moet worden verwijderd als deze een meta gegevens eigenschap `IsDeleted` met de waarde heeft `true` :
 
+```http
     PUT https://[service name].search.windows.net/datasources/blob-datasource?api-version=2020-06-30
     Content-Type: application/json
     api-key: [admin key]
@@ -360,6 +385,7 @@ Het volgende beleid beschouwt bijvoorbeeld een blob die moet worden verwijderd a
             "softDeleteMarkerValue" : "true"
         }
     }
+```
 
 #### <a name="reindexing-undeleted-blobs"></a>Niet-verouderde blobs opnieuw indexeren
 
@@ -396,6 +422,7 @@ Om dit te laten werken, moeten alle Indexeer functies en andere onderdelen overe
 
 Als alle blobs onbewerkte tekst in dezelfde code ring bevatten, kunt u de index prestaties aanzienlijk verbeteren met behulp van de modus voor het **parseren van tekst**. Als u de modus voor het parseren van tekst wilt gebruiken, stelt `parsingMode` u de eigenschap Configuration in op `text` :
 
+```http
     PUT https://[service name].search.windows.net/indexers/[indexer name]?api-version=2020-06-30
     Content-Type: application/json
     api-key: [admin key]
@@ -404,14 +431,16 @@ Als alle blobs onbewerkte tekst in dezelfde code ring bevatten, kunt u de index 
       ... other parts of indexer definition
       "parameters" : { "configuration" : { "parsingMode" : "text" } }
     }
+```
 
 De `UTF-8` code ring wordt standaard gebruikt. Als u een andere code ring wilt opgeven, gebruikt u de `encoding` configuratie-eigenschap: 
 
+```http
     {
       ... other parts of indexer definition
       "parameters" : { "configuration" : { "parsingMode" : "text", "encoding" : "windows-1252" } }
     }
-
+```
 
 <a name="ContentSpecificMetadata"></a>
 ## <a name="content-type-specific-metadata-properties"></a>Inhouds type-specifieke meta gegevens eigenschappen

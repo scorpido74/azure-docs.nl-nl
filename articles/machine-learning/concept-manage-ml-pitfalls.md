@@ -10,12 +10,12 @@ ms.reviewer: nibaccam
 author: nibaccam
 ms.author: nibaccam
 ms.date: 04/09/2020
-ms.openlocfilehash: e9e809eb805e891fdf70a85d42eebc3e17da8902
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 171b355f40939efb31e96a4bf8b2d77e97d19f25
+ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85210181"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86147106"
 ---
 # <a name="prevent-overfitting-and-imbalanced-data-with-automated-machine-learning"></a>Voor komen dat gegevens met automatische machine learning worden verdeeld en gebalanceerd.
 
@@ -71,7 +71,7 @@ Automatische ML implementeert ook de **complexiteits beperkingen** van expliciet
 **Kruis validatie (AVK)** is het proces van het nemen van veel subsets van uw volledige trainings gegevens en het trainen van een model op elke subset. Het is een goed idee dat een model ' blij ' kan krijgen en een uitstekende nauw keurigheid heeft met één subset, maar door veel subsets te gebruiken, wordt deze hoge nauw keurigheid niet elke keer door het model gerealiseerd. Bij het uitvoeren van AVK geeft u een evaluatie-gegevensset voor validatie op, geeft u uw CV-vouwen (aantal subsets) op en geautomatiseerd ML traint uw model en verlaagt u Hyper parameters om de fout in uw valideringsset te minimaliseren. Een CV-vouw is mogelijk te groot, maar door veel ervan te gebruiken, wordt de kans kleiner dat uw uiteindelijke model over de juiste plaats komt. De balans is dat de AVK een langere opleidings tijd en dus meer kosten in beslag neemt, omdat u deze voor elke *n* -CV-subsets eenmaal hoeft te trainen. 
 
 > [!NOTE]
-> Kruis validatie is standaard niet ingeschakeld. Deze moet worden geconfigureerd in de instellingen voor automatische ML. Nadat Kruis validatie is geconfigureerd en er een validatie gegevensset is opgegeven, wordt het proces voor u geautomatiseerd. Raadpleeg 
+> Kruis validatie is standaard niet ingeschakeld. Deze moet worden geconfigureerd in de instellingen voor automatische ML. Nadat Kruis validatie is geconfigureerd en er een validatie gegevensset is opgegeven, wordt het proces voor u geautomatiseerd. Meer informatie over de [configuratie voor meerdere validaties in automatische ml](how-to-configure-cross-validation-data-splits.md)
 
 <a name="imbalance"></a>
 
@@ -81,7 +81,7 @@ Gegevens die in het algemeen worden gebalanceerd, worden doorgaans gevonden in g
 
 Daarnaast worden automatisch de volgende grafieken gegenereerd, die u kunnen helpen inzicht te krijgen in de juistheid van de classificaties van uw model en modellen te identificeren die mogelijk van invloed zijn op gegevens die niet in evenwicht zijn.
 
-Grafiek| Description
+Grafiek| Beschrijving
 ---|---
 [Verwar ring matrix](how-to-understand-automated-ml.md#confusion-matrix)| Hiermee worden de juist geclassificeerde labels geëvalueerd op basis van de daad werkelijke labels van de gegevens. 
 [Precisie-intrekken](how-to-understand-automated-ml.md#precision-recall-chart)| Evalueert de verhouding van de juiste labels op basis van de verhouding van gevonden label exemplaren van de gegevens 
@@ -93,7 +93,7 @@ Als onderdeel van het vereenvoudigen van de machine learning-werk stroom, **heef
 
 - Een **kolom**met het gewicht: automatische ml biedt ondersteuning voor een kolom met gewichten als invoer, waardoor rijen in de gegevens kunnen worden gewogen of waarmee een klasse meer of minder ' belang rijk ' kan worden gemaakt.
 
-- De algoritmen die door automatische ML worden gebruikt, kunnen de onevenwichtigheid van Maxi maal 20:1 afhandelen, wat betekent dat de meest voorkomende klasse 20 keer meer rijen in de gegevens kan hebben dan de kleinste gemeen schappelijke klasse.
+- De algoritmen die door automatische MILLILITERs worden gebruikt, kunnen niet worden geevenwichtd wanneer het aantal steek proeven in de klasse minderheid gelijk is aan of minder is dan 20% van het aantal steek proeven in de meerderheids klasse, waarbij de minderheids klasse naar de enige steek proef verwijst. Vervolgens voert AutoML een experiment uit met subvoorbeeld gegevens om te controleren of het gebruik van klasse-gewichten dit probleem verhelpt en de prestaties te verbeteren. Als er tijdens dit experiment een betere prestaties worden vastgesteld, wordt deze oplossing toegepast.
 
 - Gebruik prestatie metrieken die beter werken met gegevens die niet in balans zijn. De AUC_weighted is bijvoorbeeld een primaire metriek waarmee de bijdrage van elke klasse wordt berekend op basis van het relatieve aantal steek proeven dat deze klasse vertegenwoordigt, en daarom robuuster is tegen onevenwichtigheid.
 

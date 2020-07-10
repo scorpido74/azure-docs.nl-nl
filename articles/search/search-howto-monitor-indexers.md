@@ -9,12 +9,12 @@ ms.devlang: rest-api
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 02a0de7760c660a7cce1bbd9cd36d4bb2a1180e0
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: b91c799972a21d9205577f0a5672e1182831416b
+ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85565776"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86145395"
 ---
 # <a name="how-to-monitor-azure-cognitive-search-indexer-status-and-results"></a>Azure Cognitive Search Indexeer functie-status en-resultaten controleren
 
@@ -82,36 +82,40 @@ Zie problemen [met algemene Indexeer functies in Azure Cognitive Search oplossen
 
 U kunt de status en de uitvoerings geschiedenis van een Indexeer functie ophalen met behulp van de [opdracht Get Indexing-status](https://docs.microsoft.com/rest/api/searchservice/get-indexer-status):
 
-    GET https://[service name].search.windows.net/indexers/[indexer name]/status?api-version=2020-06-30
-    api-key: [Search service admin key]
+```http
+GET https://[service name].search.windows.net/indexers/[indexer name]/status?api-version=2020-06-30
+api-key: [Search service admin key]
+```
 
 Het antwoord bevat de algemene status van de Indexeer functie, de laatste (of in uitvoering zijnde) indexerings aanroep en de geschiedenis van recente Indexeer functie-aanroepen.
 
-    {
-        "status":"running",
-        "lastResult": {
-            "status":"success",
-            "errorMessage":null,
-            "startTime":"2018-11-26T03:37:18.853Z",
-            "endTime":"2018-11-26T03:37:19.012Z",
-            "errors":[],
-            "itemsProcessed":11,
-            "itemsFailed":0,
-            "initialTrackingState":null,
-            "finalTrackingState":null
-         },
-        "executionHistory":[ {
-            "status":"success",
-             "errorMessage":null,
-            "startTime":"2018-11-26T03:37:18.853Z",
-            "endTime":"2018-11-26T03:37:19.012Z",
-            "errors":[],
-            "itemsProcessed":11,
-            "itemsFailed":0,
-            "initialTrackingState":null,
-            "finalTrackingState":null
-        }]
-    }
+```output
+{
+    "status":"running",
+    "lastResult": {
+        "status":"success",
+        "errorMessage":null,
+        "startTime":"2018-11-26T03:37:18.853Z",
+        "endTime":"2018-11-26T03:37:19.012Z",
+        "errors":[],
+        "itemsProcessed":11,
+        "itemsFailed":0,
+        "initialTrackingState":null,
+        "finalTrackingState":null
+     },
+    "executionHistory":[ {
+        "status":"success",
+         "errorMessage":null,
+        "startTime":"2018-11-26T03:37:18.853Z",
+        "endTime":"2018-11-26T03:37:19.012Z",
+        "errors":[],
+        "itemsProcessed":11,
+        "itemsFailed":0,
+        "initialTrackingState":null,
+        "finalTrackingState":null
+    }]
+}
+```
 
 De uitvoerings geschiedenis bevat tot de 50 meest recente uitvoeringen, die in omgekeerde chronologische volg orde (meest recent eerst) worden gesorteerd.
 
@@ -163,14 +167,16 @@ static void CheckIndexerStatus(Indexer indexer, SearchServiceClient searchServic
 
 De uitvoer in de-console ziet er ongeveer als volgt uit:
 
-    Indexer has run 18 times.
-    Indexer Status: Running
-    Latest run
-      Run Status: Success
-      Total Documents: 7, Failed: 0
-      StartTime: 10:02:46 PM, EndTime: 10:02:47 PM, Elapsed: 00:00:01.0990000
-      ErrorMessage: none
-      Document Errors: 0, Warnings: 0
+```output
+Indexer has run 18 times.
+Indexer Status: Running
+Latest run
+  Run Status: Success
+  Total Documents: 7, Failed: 0
+  StartTime: 10:02:46 PM, EndTime: 10:02:47 PM, Elapsed: 00:00:01.0990000
+  ErrorMessage: none
+  Document Errors: 0, Warnings: 0
+```
 
 Houd er rekening mee dat er twee verschillende status waarden zijn. De status op het hoogste niveau is de status van de Indexeer functie zelf. Een Indexeer functie-status van **actief** betekent dat de Indexeer functie juist is ingesteld en beschikbaar is voor uitvoering, maar niet dat deze momenteel wordt uitgevoerd.
 

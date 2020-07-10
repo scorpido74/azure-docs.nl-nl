@@ -4,11 +4,12 @@ description: Kiezen uit de beschik bare VM-grootten voor reken knooppunten in Az
 ms.topic: conceptual
 ms.date: 06/10/2020
 ms.custom: seodec18
-ms.openlocfilehash: c1621bbbe6676144176636346f3f5c34db169b7a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: e56632ce66cb25bf023813f2b98be6141f651465
+ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84693155"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86143534"
 ---
 # <a name="choose-a-vm-size-for-compute-nodes-in-an-azure-batch-pool"></a>Een VM-grootte voor reken knooppunten in een Azure Batch groep kiezen
 
@@ -75,7 +76,7 @@ Batch-Pools in de Cloud service configuratie ondersteunen alle [VM-grootten voor
 
 ## <a name="size-considerations"></a>Overwegingen over grootte
 
-* **Toepassings vereisten** : Houd rekening met de kenmerken en vereisten van de toepassing die u op de knoop punten uitvoert. Houd ook rekening met het feit of bijvoorbeeld de toepassing meerdere threads heeft en hoeveel geheugen deze gebruikt. Zo kunt u gemakkelijker de meest geschikte en voordeligste knooppuntgrootte bepalen. Voor [mpi-werk belastingen](batch-mpi.md) of CUDA-toepassingen met meerdere instanties kunt u respectievelijk gespecialiseerde VM-grootten met [HPC](../virtual-machines/linux/sizes-hpc.md) of [GPU-](../virtual-machines/linux/sizes-gpu.md) capaciteit overwegen. (Zie [met RDMA compatibele of GPU-compatibele instanties in batch-Pools gebruiken](batch-pool-compute-intensive-sizes.md).)
+* **Toepassings vereisten** : Houd rekening met de kenmerken en vereisten van de toepassing die u op de knoop punten uitvoert. Houd ook rekening met het feit of bijvoorbeeld de toepassing meerdere threads heeft en hoeveel geheugen deze gebruikt. Zo kunt u gemakkelijker de meest geschikte en voordeligste knooppuntgrootte bepalen. Voor [mpi-werk belastingen](batch-mpi.md) of CUDA-toepassingen met meerdere instanties kunt u respectievelijk gespecialiseerde VM-grootten met [HPC](../virtual-machines/sizes-hpc.md) of [GPU-](../virtual-machines/sizes-gpu.md) capaciteit overwegen. (Zie [met RDMA compatibele of GPU-compatibele instanties in batch-Pools gebruiken](batch-pool-compute-intensive-sizes.md).)
 
 * **Taken per knoop punt** : het is gebruikelijk om een knooppunt grootte te selecteren, ervan uitgaande dat er één taak tegelijk op een knoop punt wordt uitgevoerd. Het kan echter handig zijn om meerdere taken (en dus meerdere toepassings exemplaren) parallel op reken knooppunten [uit te voeren](batch-parallel-node-tasks.md) tijdens de taak uitvoering. In dit geval is het gebruikelijk om een multicore-knooppunt grootte te kiezen die geschikt is voor de verhoogde vraag van parallelle taak uitvoering.
 

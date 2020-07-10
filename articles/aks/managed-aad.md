@@ -3,16 +3,16 @@ title: Azure AD gebruiken in azure Kubernetes service
 description: Meer informatie over het gebruik van Azure AD in azure Kubernetes service (AKS)
 services: container-service
 manager: gwallace
-author: mlearned
+author: TomGeske
 ms.topic: article
-ms.date: 06/25/2020
-ms.author: mlearned
-ms.openlocfilehash: f22b79cb8a730fb9c28dd1a208ab672473218b79
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.date: 07/08/2020
+ms.author: thomasge
+ms.openlocfilehash: 9cacd2454dc987f7d507bb4b677e742f0be0d391
+ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86105945"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86166498"
 ---
 # <a name="aks-managed-azure-active-directory-integration-preview"></a>AKS-beheerde Azure Active Directory-integratie (preview-versie)
 
@@ -26,10 +26,6 @@ Azure AD-integratie met AKS is ontworpen om de Azure AD-integratie ervaring te v
 Cluster beheerders kunnen op rollen gebaseerd toegangs beheer (RBAC) Kubernetes configureren op basis van de identiteit van een gebruiker of het lidmaatschap van de Directory groep. Azure AD-verificatie wordt geleverd voor AKS-clusters met OpenID Connect Connect. OpenID Connect Connect is een id-laag die boven op het OAuth 2,0-protocol is gebouwd. Voor meer informatie over OpenID Connect Connect raadpleegt u de [Open-ID Connect-documentatie][open-id-connect].
 
 Meer informatie over de AAD-integratie stroom vindt u in de [documentatie over integratie concepten van Azure Active Directory](concepts-identity.md#azure-active-directory-integration).
-
-## <a name="limitations"></a>Beperkingen
-
-* U kunt momenteel geen upgrade uitvoeren van een bestaand AKS Azure AD-geïntegreerd cluster naar de nieuwe door AKS beheerde Azure AD-ervaring.
 
 > [!IMPORTANT]
 > AKS preview-functies zijn beschikbaar op self-service. Previews worden ' as-is ' en ' as available ' gegeven en zijn uitgesloten van de service level agreements en beperkte garantie. AKS-previews worden gedeeltelijk gedekt door de klant ondersteuning. Daarom zijn deze functies niet bedoeld voor productie gebruik. Zie de volgende ondersteunings artikelen voor meer informatie:

@@ -3,25 +3,26 @@ title: Azure Batch bewaken
 description: Meer informatie over Azure monitoring services, metrische gegevens, Diagnostische logboeken en andere bewakings functies voor Azure Batch.
 ms.topic: how-to
 ms.date: 04/05/2018
-ms.openlocfilehash: 09ac9c676dc1e95cbece6fa500b4f2cf554f8526
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 9387d4894dbf06445fd43722353ca7ae98607359
+ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83723524"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86144942"
 ---
 # <a name="monitor-batch-solutions"></a>Batch-oplossingen controleren
 
 Azure en de batch-service bieden een scala aan services, hulpprogram ma's en Api's voor het bewaken van uw batch-oplossingen. Dit overzichts artikel helpt u bij het kiezen van een bewakings benadering die aan uw behoeften voldoet.
 
-Zie [Azure-toepassingen en-resources](../monitoring-and-diagnostics/monitoring-overview.md)bewaken voor een overzicht van de Azure-onderdelen en-services die beschikbaar zijn voor het bewaken van Azure-resources.
+Zie [Azure-toepassingen en-resources](../azure-monitor/overview.md)bewaken voor een overzicht van de Azure-onderdelen en-services die beschikbaar zijn voor het bewaken van Azure-resources.
 
 ## <a name="subscription-level-monitoring"></a>Bewaking op abonnements niveau
 
-Op abonnements niveau, dat batch-accounts bevat, verzamelt het [Azure-activiteiten logboek](../azure-monitor/platform/platform-logs-overview.md) operationele gebeurtenis gegevens in [verschillende categorieën](../azure-monitor/platform/activity-log-view.md#categories-in-the-activity-log).
+Op abonnements niveau, dat batch-accounts bevat, verzamelt het [Azure-activiteiten logboek](../azure-monitor/platform/platform-logs-overview.md) operationele gebeurtenis gegevens in [verschillende categorieën](../azure-monitor/platform/activity-log.md#view-the-activity-log).
 
 Voor batch-accounts verzamelt het activiteiten logboek gebeurtenissen met betrekking tot het maken en verwijderen van accounts en sleutel beheer.
 
-Een manier om gebeurtenissen uit uw activiteiten logboek op te halen, is met behulp van de Azure Portal. Klik op **alle services**  >  **activiteiten logboek**. U kunt ook een query uitvoeren op gebeurtenissen met behulp van de Azure CLI, Power shell-cmdlets of de Azure Monitor REST API. U kunt ook het activiteiten logboek exporteren of waarschuwingen voor het [activiteiten logboek](../monitoring-and-diagnostics/monitoring-activity-log-alerts-new-experience.md)configureren.
+Een manier om gebeurtenissen uit uw activiteiten logboek op te halen, is met behulp van de Azure Portal. Klik op **alle services**  >  **activiteiten logboek**. U kunt ook een query uitvoeren op gebeurtenissen met behulp van de Azure CLI, Power shell-cmdlets of de Azure Monitor REST API. U kunt ook het activiteiten logboek exporteren of waarschuwingen voor het [activiteiten logboek](../azure-monitor/platform/alerts-activity-log.md)configureren.
 
 ## <a name="batch-account-level-monitoring"></a>Bewaking op batch-account niveau
 

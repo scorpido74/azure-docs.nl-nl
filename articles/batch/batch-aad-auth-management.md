@@ -4,12 +4,12 @@ description: Verken het gebruik van Azure Active Directory om te verifiëren van
 ms.topic: how-to
 ms.date: 04/27/2017
 ms.custom: has-adal-ref
-ms.openlocfilehash: b82d6b5f166f67752ea809353e074c01ac953a48
-ms.sourcegitcommit: cec9676ec235ff798d2a5cad6ee45f98a421837b
+ms.openlocfilehash: 829a742c144f2bba39f1ca392e80db25640d4dee
+ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85848975"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86141959"
 ---
 # <a name="authenticate-batch-management-solutions-with-active-directory"></a>Oplossingen voor Batch Management verifiëren met Active Directory
 
@@ -23,9 +23,9 @@ Zie voor meer informatie over het gebruik van de Batch Management .NET-bibliothe
 
 ## <a name="register-your-application-with-azure-ad"></a>Uw toepassing registreren bij Azure AD
 
-De [Azure Active Directory Authentication Library](../active-directory/active-directory-authentication-libraries.md) (ADAL) biedt een programmatische interface voor Azure AD voor gebruik in uw toepassingen. Als u ADAL vanuit uw toepassing wilt aanroepen, moet u uw toepassing registreren in een Azure AD-Tenant. Wanneer u uw toepassing registreert, geeft u Azure AD op met informatie over uw toepassing, met inbegrip van een naam voor de app in de Azure AD-Tenant. Azure AD biedt vervolgens een toepassings-ID die u gebruikt om uw toepassing te koppelen aan Azure AD tijdens runtime. Zie voor meer informatie over de toepassings-ID [toepassings-en Service-Principal-objecten in azure Active Directory](../active-directory/develop/app-objects-and-service-principals.md).
+De [Azure Active Directory Authentication Library](../active-directory/azuread-dev/active-directory-authentication-libraries.md) (ADAL) biedt een programmatische interface voor Azure AD voor gebruik in uw toepassingen. Als u ADAL vanuit uw toepassing wilt aanroepen, moet u uw toepassing registreren in een Azure AD-Tenant. Wanneer u uw toepassing registreert, geeft u Azure AD op met informatie over uw toepassing, met inbegrip van een naam voor de app in de Azure AD-Tenant. Azure AD biedt vervolgens een toepassings-ID die u gebruikt om uw toepassing te koppelen aan Azure AD tijdens runtime. Zie voor meer informatie over de toepassings-ID [toepassings-en Service-Principal-objecten in azure Active Directory](../active-directory/develop/app-objects-and-service-principals.md).
 
-Als u de voorbeeld toepassing AccountManagement wilt registreren, volgt u de stappen in de sectie [een toepassing toevoegen](../active-directory/develop/quickstart-register-app.md) in [toepassingen integreren met Azure Active Directory](../active-directory/active-directory-integrating-applications.md). Geef een **systeem eigen client toepassing** op voor het type toepassing. De standaard OAuth 2,0 URI voor de **omleidings-URI** is `urn:ietf:wg:oauth:2.0:oob` . U kunt echter een wille keurige geldige URI opgeven `http://myaccountmanagementsample` voor de **omleidings-URI**, omdat deze geen echt eind punt hoeft te zijn.
+Als u de voorbeeld toepassing AccountManagement wilt registreren, volgt u de stappen in de sectie [een toepassing toevoegen](../active-directory/develop/quickstart-register-app.md) in [toepassingen integreren met Azure Active Directory](../active-directory/develop/quickstart-register-app.md). Geef een **systeem eigen client toepassing** op voor het type toepassing. De standaard OAuth 2,0 URI voor de **omleidings-URI** is `urn:ietf:wg:oauth:2.0:oob` . U kunt echter een wille keurige geldige URI opgeven `http://myaccountmanagementsample` voor de **omleidings-URI**, omdat deze geen echt eind punt hoeft te zijn.
 
 ![Een toepassing toevoegen](./media/batch-aad-auth-management/app-registration-management-plane.png)
 

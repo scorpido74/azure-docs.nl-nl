@@ -9,17 +9,18 @@ ms.topic: how-to
 ms.date: 05/18/2020
 ms.author: normesta
 ms.reviewer: prishet
-ms.openlocfilehash: 8fdcad18ccec2748761cf35f2cd0b8efe9749958
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 159f3c63a647ff565e838b01dbaaadf947fb8ada
+ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84466133"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86142611"
 ---
 # <a name="use-azure-cli-to-manage-directories-files-and-acls-in-azure-data-lake-storage-gen2"></a>Azure CLI gebruiken voor het beheren van mappen, bestanden en Acl's in Azure Data Lake Storage Gen2
 
 In dit artikel wordt beschreven hoe u de [Azure-opdracht regel interface (CLI)](https://docs.microsoft.com/cli/azure/?view=azure-cli-latest) gebruikt voor het maken en beheren van mappen, bestanden en machtigingen in opslag accounts met een hiërarchische naam ruimte. 
 
-Toewijzing van gen1 [naar Gen2](https://github.com/Azure/azure-cli-extensions/tree/master/src/storage-preview#mapping-from-adls-gen1-to-adls-gen2)  |  [Feedback geven](https://github.com/Azure/azure-cli-extensions/issues)
+Voor [beelden](https://github.com/Azure/azure-cli/blob/dev/src/azure-cli/azure/cli/command_modules/storage/docs/ADLS%20Gen2.md)  |  [Feedback geven](https://github.com/Azure/azure-cli-extensions/issues)
 
 ## <a name="prerequisites"></a>Vereisten
 
@@ -64,39 +65,39 @@ Toewijzing van gen1 [naar Gen2](https://github.com/Azure/azure-cli-extensions/tr
 > [!NOTE]
 > In het voor beeld in dit artikel wordt de autorisatie Azure Active Directory (AD) weer gegeven. Zie [toegang verlenen aan BLOB-of wachtrij gegevens met Azure cli](../common/authorize-data-operations-cli.md)voor meer informatie over verificatie methoden.
 
-## <a name="create-a-file-system"></a>Een bestandssysteem maken
+## <a name="create-a-container"></a>Een container maken
 
-Een bestands systeem fungeert als een container voor uw bestanden. U kunt er een maken met behulp van de `az storage fs create` opdracht. 
+Een container fungeert als bestands systeem voor uw bestanden. U kunt er een maken met behulp van de `az storage fs create` opdracht. 
 
-In dit voor beeld wordt een bestands systeem gemaakt met de naam `my-file-system` .
+In dit voor beeld wordt een container gemaakt met de naam `my-file-system` .
 
 ```azurecli
 az storage fs create -n my-file-system --account-name mystorageaccount --auth-mode login
 ```
 
-## <a name="show-file-system-properties"></a>Eigenschappen van bestands systeem weer geven
+## <a name="show-container-properties"></a>Container eigenschappen weer geven
 
-U kunt de eigenschappen van een bestands systeem naar de-console afdrukken met behulp van de `az storage fs show` opdracht.
+U kunt de eigenschappen van een container afdrukken naar de-console met behulp van de `az storage fs show` opdracht.
 
 ```azurecli
 az storage fs show -n my-file-system --account-name mystorageaccount --auth-mode login
 ```
 
-## <a name="list-file-system-contents"></a>Inhoud van het bestands systeem weer geven
+## <a name="list-container-contents"></a>Container inhoud weer geven
 
 De inhoud van een directory weer geven met behulp van de `az storage fs file list` opdracht.
 
-In dit voor beeld wordt de inhoud van een bestands systeem met de naam weer gegeven `my-file-system` .
+In dit voor beeld wordt de inhoud van een container met de naam weer gegeven `my-file-system` .
 
 ```azurecli
 az storage fs file list -f my-file-system --account-name mystorageaccount --auth-mode login
 ```
 
-## <a name="delete-a-file-system"></a>Een bestands systeem verwijderen
+## <a name="delete-a-container"></a>Een container verwijderen
 
-Verwijder een bestands systeem met behulp van de `az storage fs delete` opdracht.
+Verwijder een container met behulp van de `az storage fs delete` opdracht.
 
-In dit voor beeld wordt een bestands systeem met de naam verwijderd `my-file-system` . 
+In dit voor beeld wordt een container met de naam verwijderd `my-file-system` . 
 
 ```azurecli
 az storage fs delete -n my-file-system --account-name mystorageaccount --auth-mode login
@@ -106,7 +107,7 @@ az storage fs delete -n my-file-system --account-name mystorageaccount --auth-mo
 
 Maak een directory verwijzing met behulp van de `az storage fs directory create` opdracht. 
 
-In dit voor beeld wordt een map toegevoegd `my-directory` met de naam van een bestands systeem `my-file-system` dat zich in een account bevindt met de naam `mystorageaccount` .
+In dit voor beeld wordt een map toegevoegd met de naam `my-directory` van een container `my-file-system` die zich in een account met de naam bevindt `mystorageaccount` .
 
 ```azurecli
 az storage fs directory create -n my-directory -f my-file-system --account-name mystorageaccount --auth-mode login
@@ -124,13 +125,13 @@ az storage fs directory show -n my-directory -f my-file-system --account-name my
 
 Wijzig de naam van een map of verplaats deze met behulp van de `az storage fs directory move` opdracht.
 
-In het volgende voor beeld wordt de naam van een map gewijzigd van de naam `my-directory` `my-new-directory` in hetzelfde bestands systeem.
+In dit voor beeld wordt de naam van een map gewijzigd van de naam `my-directory` in de naam `my-new-directory` van de container.
 
 ```azurecli
 az storage fs directory move -n my-directory -f my-file-system --new-directory "my-file-system/my-new-directory" --account-name mystorageaccount --auth-mode login
 ```
 
-In dit voor beeld wordt een map verplaatst naar een bestands systeem met de naam `my-second-file-system` .
+In dit voor beeld wordt een map verplaatst naar een container met de naam `my-second-file-system` .
 
 ```azurecli
 az storage fs directory move -n my-directory -f my-file-system --new-directory "my-second-file-system/my-new-directory" --account-name mystorageaccount --auth-mode login
@@ -148,9 +149,9 @@ az storage fs directory delete -n my-directory -f my-file-system  --account-name
 
 ## <a name="check-if-a-directory-exists"></a>Controleren of er een map bestaat
 
-Bepaal of een specifieke map bestaat in het bestands systeem met behulp van de `az storage fs directory exists` opdracht.
+Bepaal of een specifieke map bestaat in de container met behulp van de `az storage fs directory exists` opdracht.
 
-In dit voor beeld wordt onthuld of een map `my-directory` met de naam in het `my-file-system` Bestands systeem bestaat. 
+In dit voor beeld wordt onthuld of een map `my-directory` met de naam bestaat in de `my-file-system` container. 
 
 ```azurecli
 az storage fs directory exists -n my-directory -f my-file-system --account-name mystorageaccount --auth-mode login 
@@ -170,7 +171,7 @@ az storage fs file download -p my-directory/upload.txt -f my-file-system -d "C:\
 
 De inhoud van een directory weer geven met behulp van de `az storage fs file list` opdracht.
 
-In dit voor beeld wordt de inhoud weer gegeven van een map met `my-directory` de naam die zich bevindt in het `my-file-system` Bestands systeem van een opslag account met de naam `mystorageaccount` . 
+In dit voor beeld wordt de inhoud weer gegeven van een map met `my-directory` de naam die zich bevindt in de `my-file-system` container van een opslag account met de naam `mystorageaccount` . 
 
 ```azurecli
 az storage fs file list -f my-file-system --path my-directory --account-name mystorageaccount --auth-mode login
@@ -307,9 +308,9 @@ In dit voor beeld wordt de eigenaar van een bestand gewijzigd.
 az storage fs access set --owner xxxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx -p my-directory/upload.txt -f my-file-system --account-name mystorageaccount --auth-mode login
 ```
 
-## <a name="see-also"></a>Zie tevens
+## <a name="see-also"></a>Zie ook
 
-* [Toewijzing van gen1 naar Gen2](https://github.com/Azure/azure-cli-extensions/tree/master/src/storage-preview#mapping-from-adls-gen1-to-adls-gen2)
+* [Voorbeelden](https://github.com/Azure/azure-cli/blob/dev/src/azure-cli/azure/cli/command_modules/storage/docs/ADLS%20Gen2.md)
 * [Feedback geven](https://github.com/Azure/azure-cli-extensions/issues)
 * [Bekende problemen](data-lake-storage-known-issues.md#api-scope-data-lake-client-library)
 

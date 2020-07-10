@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 04/01/2020
-ms.openlocfilehash: 15d2a7a2ad00f7f9b5db59d3d4803f60508b7b2c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: fd102706d1fa6c33d8962a5d1caf5aa3e41b231d
+ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85561581"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86146179"
 ---
 # <a name="how-to-work-with-search-results-in-azure-cognitive-search"></a>Werken met zoek resultaten in azure Cognitive Search
 
@@ -55,20 +55,26 @@ De resultaten van gepagineerde query's zijn niet gegarandeerd stabiel als de ond
  
 Hieronder ziet u een voor beeld van hoe u dubbele waarden kunt krijgen. Aannemen een index met vier documenten:
 
-    { "id": "1", "rating": 5 }
-    { "id": "2", "rating": 3 }
-    { "id": "3", "rating": 2 }
-    { "id": "4", "rating": 1 }
+```text
+{ "id": "1", "rating": 5 }
+{ "id": "2", "rating": 3 }
+{ "id": "3", "rating": 2 }
+{ "id": "4", "rating": 1 }
+```
  
 Stel nu dat er resultaten twee per keer worden geretourneerd, gesorteerd op waardering. U voert deze query uit om de eerste pagina met resultaten op te halen: `$top=2&$skip=0&$orderby=rating desc` de volgende resultaten worden geproduceerd:
 
-    { "id": "1", "rating": 5 }
-    { "id": "2", "rating": 3 }
+```text
+{ "id": "1", "rating": 5 }
+{ "id": "2", "rating": 3 }
+```
  
 In de service wordt ervan uitgegaan dat er een vijfde document wordt toegevoegd aan de index in tussen query-aanroepen: `{ "id": "5", "rating": 4 }` .  Vervolgens voert u een query uit om de tweede pagina op te halen: `$top=2&$skip=2&$orderby=rating desc` en haalt u de volgende resultaten op:
 
-    { "id": "2", "rating": 3 }
-    { "id": "3", "rating": 2 }
+```text
+{ "id": "2", "rating": 3 }
+{ "id": "3", "rating": 2 }
+```
  
 U ziet dat document 2 twee keer wordt opgehaald. De reden hiervoor is dat het nieuwe document 5 een hogere waarde voor classificatie heeft, zodat het wordt gesorteerd vóór document 2 en-land op de eerste pagina. Hoewel dit gedrag mogelijk onverwacht is, is het gebruikelijk dat een zoek machine zich gedraagt.
 
@@ -78,7 +84,7 @@ Voor Zoek opdrachten in volledige tekst worden de resultaten automatisch gerangs
 
 Zoek scores geven algemeen inzicht in de relevantie, waarbij de sterkte van de overeenkomst wordt weer gegeven in vergelijking met andere documenten in dezelfde resultatenset. Scores zijn niet altijd consistent met de ene query naar de volgende, dus wanneer u met query's werkt, kunnen er kleine verschillen optreden in de manier waarop Zoek documenten worden besteld. Er zijn verschillende uitleg waarom dit kan gebeuren.
 
-| Oorzaak | Description |
+| Oorzaak | Beschrijving |
 |-----------|-------------|
 | Gegevens volatiliteit | De inhoud van de index is afhankelijk van het toevoegen, wijzigen of verwijderen van documenten. De term frequenties worden gewijzigd wanneer index updates na verloop van tijd worden verwerkt, waardoor de zoek scores van overeenkomende documenten worden beïnvloed. |
 | Meerdere replica's | Voor services die gebruikmaken van meerdere replica's, worden query's op elke replica parallel verleend. De index statistieken die worden gebruikt voor het berekenen van een zoek Score worden berekend per replica, met de resultaten samengevoegd en geordend in het query-antwoord. Replica's zijn voornamelijk Spie gels van elkaar, maar statistieken kunnen verschillen als gevolg van kleine verschillen in de status. Eén replica kan bijvoorbeeld verwijderde documenten hebben die bijdragen aan hun statistieken, die uit andere replica's zijn samengevoegd. Normaal gesp roken zijn verschillen in statistieken per replica duidelijker in kleinere indexen. |

@@ -11,12 +11,12 @@ ms.subservice: language-understanding
 ms.topic: how-to
 ms.date: 05/18/2020
 ms.author: diberry
-ms.openlocfilehash: 3d6b2b5896242ff85c6fb96071b747083893b03a
-ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
+ms.openlocfilehash: 304e76a2bf8bae3e6ee2120b892ef97d89c3decc
+ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/03/2020
-ms.locfileid: "84343163"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86144393"
 ---
 # <a name="create-a-new-luis-app-in-the-luis-portal"></a>Een nieuwe LUIS-app maken in de LUIS-Portal
 Er zijn een aantal manieren om een LUIS-app te maken. U kunt een LUIS-app maken in de LUIS-portal of via de LUIS-ontwerp- [api's](developer-reference-resource.md).
@@ -45,7 +45,7 @@ U kunt op een aantal manieren een nieuwe app maken met behulp van de ontwerp-Api
 
 ## <a name="create-new-app-in-luis"></a>Nieuwe app maken in LUIS
 
-1. Selecteer uw **abonnement**op **mijn apps** pagina en ontwerp de **resource** en vervolgens **+ maken**. Als u een gratis proef versie gebruikt, leert u hoe u [een ontwerp bron maakt](luis-how-to-azure-subscription.md#create-resources-in-the-azure-portal).
+1. Selecteer uw **abonnement**op **mijn apps** pagina en ontwerp de **resource** en vervolgens **+ maken**. 
 
 > [!div class="mx-imgBorder"]
 > ![Lijst met apps van LUIS](./media/create-app-in-portal.png)

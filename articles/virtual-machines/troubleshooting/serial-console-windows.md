@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 5/1/2019
 ms.author: alsin
-ms.openlocfilehash: 0fd2bcfb32524c6911a70157f58cea1e48b7bea9
-ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.openlocfilehash: 4f02d92e6264a05ed2cb4021adb5ae6312f58a85
+ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
 ms.translationtype: MT
 ms.contentlocale: nl-NL
 ms.lasthandoff: 07/08/2020
-ms.locfileid: "86135246"
+ms.locfileid: "86146635"
 ---
 # <a name="azure-serial-console-for-windows"></a>Azure Serial console voor Windows
 
@@ -100,11 +100,10 @@ Als u het Windows-opstart laad programma moet inschakelen om weer te geven in de
 
 1. Maak verbinding met de seriële console. Als u verbinding hebt gemaakt, is de prompt **SAC>**:
 
-    ![Verbinding maken met SAC](./media/virtual-machines-serial-console/virtual-machine-windows-serial-console-connect-sac.png)
-
+   ![Verbinding maken met SAC](./media/virtual-machines-serial-console/virtual-machine-windows-serial-console-connect-sac.png)
 1. Voer `cmd` in om een kanaal te maken dat een cmd-exemplaar heeft.
 
-1. Voer `ch -si 1` sneltoetsen in of druk op ENTER `<esc>+<tab>` om over te scha kelen naar het kanaal waarop het cmd-exemplaar wordt uitgevoerd.
+1. Typ `ch -si 1` of druk op de sneltoetsen `<esc>+<tab>` om over te scha kelen naar het kanaal waarop het cmd-exemplaar wordt uitgevoerd.
 
 1. Druk op **Enter**en voer aanmeldings referenties in met beheerders machtigingen.
 
@@ -112,7 +111,7 @@ Als u het Windows-opstart laad programma moet inschakelen om weer te geven in de
 
 1. Als u een Power shell-exemplaar wilt starten, voert u `PowerShell` in het cmd-exemplaar in en drukt u vervolgens op **Enter**.
 
-    ![Power shell-exemplaar openen](./media/virtual-machines-serial-console/virtual-machine-windows-serial-console-powershell.png)
+   ![Power shell-exemplaar openen](./media/virtual-machines-serial-console/virtual-machine-windows-serial-console-powershell.png)
 
 ### <a name="use-the-serial-console-for-nmi-calls"></a>De seriële console gebruiken voor NMI-aanroepen
 Een niet-maskeer bare interrupt (NMI) is ontworpen om een signaal te maken dat software op een virtuele machine niet wordt genegeerd. In het verleden werden NMIs gebruikt voor het bewaken van hardwareproblemen op systemen waarop specifieke reactie tijden vereist zijn. Tegenwoordig gebruiken programmeurs en systeem beheerders NMI vaak als een mechanisme voor het opsporen van problemen met systemen die niet reageren.

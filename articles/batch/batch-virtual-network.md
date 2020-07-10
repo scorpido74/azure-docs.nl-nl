@@ -4,12 +4,12 @@ description: Het maken van een batch-pool in een virtueel Azure-netwerk, zodat r
 ms.topic: how-to
 ms.date: 06/26/2020
 ms.custom: seodec18
-ms.openlocfilehash: 22344b5466b0388921a481b1adf41495d66dbfe0
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: cb5cda16cd9405f0cbe91a3f88be7dc3f582d21b
+ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
 ms.translationtype: MT
 ms.contentlocale: nl-NL
 ms.lasthandoff: 07/08/2020
-ms.locfileid: "86115408"
+ms.locfileid: "86142766"
 ---
 # <a name="create-an-azure-batch-pool-in-a-virtual-network"></a>Een Azure Batch groep maken in een virtueel netwerk
 
@@ -27,7 +27,7 @@ Als u wilt toestaan dat reken knooppunten veilig communiceren met andere virtuel
 
 - **Een Azure-VNet**. Raadpleeg de volgende sectie voor VNet-vereisten en-configuratie. Als u een VNet met een of meer subnetten vooraf wilt voorbereiden, kunt u de Azure Portal, Azure PowerShell, de Azure-opdracht regel interface (CLI) of een andere methode gebruiken.
   - Zie [een virtueel netwerk maken](../virtual-network/manage-virtual-network.md#create-a-virtual-network)voor het maken van een op Azure Resource Manager gebaseerde VNet. Een VNet op basis van Resource Manager wordt aanbevolen voor nieuwe implementaties en wordt alleen ondersteund op Pools die gebruikmaken van de configuratie van virtuele machines.
-  - Zie [een virtueel netwerk (klassiek) met meerdere subnetten maken](../virtual-network/create-virtual-network-classic.md)om een klassiek VNet te maken. Een klassiek VNet wordt alleen ondersteund voor Pools die gebruikmaken van Cloud Services configuratie.
+  - Zie [een virtueel netwerk (klassiek) met meerdere subnetten maken](/previous-versions/azure/virtual-network/create-virtual-network-classic)om een klassiek VNet te maken. Een klassiek VNet wordt alleen ondersteund voor Pools die gebruikmaken van Cloud Services configuratie.
 
 ## <a name="vnet-requirements"></a>Vereisten voor VNet
 

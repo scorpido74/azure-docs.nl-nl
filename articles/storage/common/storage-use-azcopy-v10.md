@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.date: 10/23/2019
 ms.author: normesta
 ms.subservice: common
-ms.openlocfilehash: f0d957c05aded6641377b47c3fe383c141480b30
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: bb18e2b0af6f04cee5b6be11afbb2d2aabdadb4b
+ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85504471"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86143008"
 ---
 # <a name="get-started-with-azcopy"></a>Aan de slag met AzCopy
 
@@ -31,7 +31,7 @@ Down load eerst het uitvoer bare bestand van AzCopy V10 toevoegen naar een map o
 
 - [Windows 64-bits](https://aka.ms/downloadazcopy-v10-windows) (zip)
 - [Windows 32-bits](https://aka.ms/downloadazcopy-v10-windows-32bit) (zip)
-- [Linux](https://aka.ms/downloadazcopy-v10-linux) (tar)
+- [Linux x86-64](https://aka.ms/downloadazcopy-v10-linux) (tar)
 - [MacOS](https://aka.ms/downloadazcopy-v10-mac) (zip)
 
 Deze bestanden worden gecomprimeerd als een zip-bestand (Windows en Mac) of een tar-bestand (Linux). Raadpleeg de documentatie voor uw Linux-distributie om het tar-bestand in Linux te downloaden en te decomprimeren.
@@ -65,9 +65,9 @@ Gebruik deze tabel als richt lijn:
 
 | Opslagtype | Momenteel ondersteunde autorisatie methode |
 |--|--|
-|**Blob-opslag** | Azure AD & SAS |
+|**Blob Storage** | Azure AD & SAS |
 |**Blob-opslag (hiërarchische naam ruimte)** | Azure AD & SAS |
-|**Bestands opslag** | Alleen SAS |
+|**File Storage** | Alleen SAS |
 
 ### <a name="option-1-use-azure-active-directory"></a>Optie 1: Azure Active Directory gebruiken
 
@@ -90,7 +90,7 @@ Als u bestanden wilt uploaden, controleert u of een van deze rollen is toegeweze
 Deze rollen kunnen worden toegewezen aan uw beveiligingsprincipal in een van deze bereiken:
 
 - Container (bestands systeem)
-- Storage-account
+- Opslagaccount
 - Resourcegroep
 - Abonnement
 
@@ -255,7 +255,7 @@ Zie een van deze artikelen om voorbeeld opdrachten te vinden.
 
 - [Gegevens overdragen met AzCopy en Blob Storage](storage-use-azcopy-blobs.md)
 
-- [Gegevens overdragen met AzCopy en File Storage](storage-use-azcopy-files.md)
+- [Gegevens overdragen met AzCopy en bestandsopslag](storage-use-azcopy-files.md)
 
 - [Gegevens overdragen met AzCopy en Amazon S3-buckets](storage-use-azcopy-s3.md)
 

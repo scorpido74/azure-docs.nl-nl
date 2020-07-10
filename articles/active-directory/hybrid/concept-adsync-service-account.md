@@ -15,12 +15,12 @@ ms.date: 06/27/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a9614def5310bdc6fa8c6f37d7cdcc0a5f081a96
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 875c503a9959565d76d46902b5ecb386995ef1e5
+ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85360296"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86144724"
 ---
 # <a name="adsync-service-account"></a>ADSync-serviceaccount
 Azure AD Connect een on-premises service installeert waarmee de synchronisatie tussen Active Directory en Azure Active Directory wordt georchestrator.  De Microsoft Azure AD Sync Synchronization-Service (ADSync) wordt uitgevoerd op een server in uw on-premises omgeving.  De referenties voor de service worden standaard ingesteld in de snelle installaties, maar kunnen worden aangepast om te voldoen aan de beveiligings vereisten van uw organisatie.  Deze referenties worden niet gebruikt om verbinding te maken met uw on-premises forests of Azure Active Directory.
@@ -46,9 +46,9 @@ Micro soft raadt aan om de ADSync-service uit te voeren in de context van een vi
 - beheerd service account: een zelfstandige of groep-MSA gebruiken die door uw beheerder is ingericht
 - domein account: gebruik een domein service account dat is ingericht door uw beheerder
 
-![](media/concept-adsync-service-account/adsync1.png)
+![Scherm afbeelding van de pagina Azure AD Connect Express-instellingen met de optie knoppen aanpassen of snelle instellingen gebruiken.](media/concept-adsync-service-account/adsync1.png)
 
-![](media/concept-adsync-service-account/adsync2.png)
+![Scherm afbeelding van Azure AD Connect pagina vereiste onderdelen installeren met de optie voor het gebruik van een bestaand beheerd service account geselecteerd.](media/concept-adsync-service-account/adsync2.png)
 
 ## <a name="diagnosing-adsync-service-account-changes"></a>Wijzigingen in het ADSync-service account vaststellen
 Als u de referenties voor de ADSync-service na de installatie wijzigt, wordt de service niet gestart, wordt de toegang tot de synchronisatie database verbroken en kan niet worden geverifieerd met uw verbonden directory's (Azure en AD DS).  Het verlenen van toegang tot de data base aan het nieuwe ADSync-service account is ontoereikend om dit probleem te verhelpen. Er vindt geen synchronisatie plaats totdat de oorspronkelijke referenties zijn hersteld.

@@ -8,11 +8,12 @@ ms.service: web-application-firewall
 ms.date: 01/24/2020
 ms.author: victorh
 ms.topic: conceptual
-ms.openlocfilehash: 1301db56cab36ae623bb94cfac97b8e4bdb934e5
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 7e40370421214ebe026090007122a641a216c256
+ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81682485"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86143945"
 ---
 # <a name="configure-per-site-waf-policies-using-azure-powershell"></a>WAF-beleid per site configureren met behulp van Azure PowerShell
 
@@ -28,14 +29,14 @@ In dit artikel leert u het volgende:
 > * Het netwerk instellen
 > * Een WAF-beleid maken
 > * Een toepassingsgateway maken met WAF ingeschakeld
-> * Het WAF-beleid globaal, per site en per URI Toep assen
+> * Het WAF-beleid wereld wijd, per site en per URI (preview-versie) Toep assen
 > * Een virtuele-machineschaalset maken
 > * Een opslagaccount maken en diagnostische gegevens configureren
 > * De toepassingsgateway testen
 
 ![Voorbeeld van een WAF (Web Application Firewall)](../media/tutorial-restrict-web-traffic-powershell/scenario-waf.png)
 
-Als u nog geen abonnement op Azure hebt, maak dan een [gratis account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) aan voordat u begint.
+Als u nog geen Azure-abonnement hebt, maakt u een [gratis account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) voordat u begint.
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
@@ -249,7 +250,7 @@ $appgw = New-AzApplicationGateway `
   -FirewallPolicy $wafPolicyGlobal
 ```
 
-### <a name="apply-a-per-uri-policy"></a>Beleid per URI Toep assen
+### <a name="apply-a-per-uri-policy-preview"></a>Een beleid per URI Toep assen (preview-versie)
 
 Als u een per-URI-beleid wilt Toep assen, maakt u gewoon een nieuw beleid en past u het toe op de regel configuratie van het pad. 
 

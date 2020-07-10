@@ -7,11 +7,12 @@ ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 03/19/2020
-ms.openlocfilehash: b138d93b400c16837c250ede1e264b54a851327c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 50d6bebd1e38149096b865ad3654a9604d685f5d
+ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84488746"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86141946"
 ---
 # <a name="integrate-azure-stream-analytics-with-azure-machine-learning-preview"></a>Azure Stream Analytics integreren met Azure Machine Learning (preview-versie)
 
@@ -27,7 +28,7 @@ Voer de volgende stappen uit voordat u een machine learning model toevoegt als e
 
 3. Zorg ervoor dat uw webservice een JSON-geserialiseerde gegevens accepteert en retourneert.
 
-4. Implementeer uw model op de [Azure Kubernetes-service](../machine-learning/how-to-deploy-and-where.md#choose-a-compute-target) voor grootschalige productie-implementaties. Als de webservice niet in staat is om het aantal aanvragen af te handelen van uw taak, wordt de prestaties van uw Stream Analytics-taak verslechterd. Dit heeft gevolgen voor de latentie. Modellen die worden geïmplementeerd op Azure Container Instances worden alleen ondersteund wanneer u de Azure Portal gebruikt.
+4. Implementeer uw model op de [Azure Kubernetes-service](../machine-learning/how-to-deploy-and-where.md#choose-a-compute-target) voor grootschalige productie-implementaties. Als de webservice niet in staat is om het aantal aanvragen af te handelen van uw taak, wordt de prestaties van uw Stream Analytics-taak verslechterd. Dit heeft gevolgen voor de latentie. Modellen die worden geïmplementeerd op Azure Container Instances worden alleen ondersteund wanneer u de Azure Portal gebruikt. Modellen die zijn gebouwd met behulp van [Azure machine learning Designer](https://docs.microsoft.com/azure/machine-learning/concept-designer) , worden nog niet ondersteund in stream Analytics.
 
 ## <a name="add-a-machine-learning-model-to-your-job"></a>Een machine learning model toevoegen aan uw taak
 

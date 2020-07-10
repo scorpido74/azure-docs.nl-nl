@@ -13,7 +13,7 @@ ms.locfileid: "80159405"
 ---
 De vermeldingen in de `inferenceconfig.json` document structuur met de para meters voor de [InferenceConfig](https://docs.microsoft.com/python/api/azureml-core/azureml.core.model.inferenceconfig?view=azure-ml-py) -klasse. De volgende tabel beschrijft de toewijzing tussen entiteiten in het JSON-document en de para meters voor de-methode:
 
-| JSON-entiteit | Methode parameter | Description |
+| JSON-entiteit | Methode parameter | Beschrijving |
 | ----- | ----- | ----- |
 | `entryScript` | `entry_script` | Pad naar een lokaal bestand dat de code bevat die moet worden uitgevoerd voor de installatie kopie. |
 | `sourceDirectory` | `source_directory` | Optioneel. Het pad naar mappen die alle bestanden bevatten voor het maken van de installatie kopie, waarmee u eenvoudig toegang hebt tot bestanden in deze map of submap. U kunt een volledige map uploaden van uw lokale computer als afhankelijkheden voor de webservice. Opmerking: de paden entry_script, conda_file en extra_docker_file_steps zijn relatieve paden naar het source_directory pad. |

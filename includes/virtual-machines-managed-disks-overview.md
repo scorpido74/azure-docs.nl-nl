@@ -10,7 +10,7 @@ ms.author: rogarana
 ms.custom: include file
 ms.openlocfilehash: c37c5a125bce23f8f2a813b5df4516323c2a2c12
 ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
-ms.translationtype: HT
+ms.translationtype: MT
 ms.contentlocale: nl-NL
 ms.lasthandoff: 05/12/2020
 ms.locfileid: "83343443"

@@ -15,11 +15,12 @@ ms.topic: article
 ms.date: 03/20/2019
 ms.author: juliako
 ms.reviewer: milanga;cenkdin
-ms.openlocfilehash: 2a0d1c5af572c88dc11bed950b46706f0a2f081f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 0ddf15ffad086bab5ed6c4e2508cd0874f6ee567
+ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "75981963"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86166175"
 ---
 # <a name="update-media-services-after-rolling-storage-access-keys"></a>Media Services bijwerken na gebruik toegangssleutels voor opslag 
 
@@ -48,7 +49,7 @@ Media Services is afhankelijk van een opslag sleutel die hieraan is gegeven. Met
  
     In het volgende voor beeld ziet u hoe u sleutels synchroniseert met opslag accounts.
   
-         Sync-AzMediaServiceStorageKeys -ResourceGroupName $resourceGroupName -AccountName $mediaAccountName -StorageAccountId $storageAccountId
+    `Sync-AzMediaServiceStorageKeys -ResourceGroupName $resourceGroupName -AccountName $mediaAccountName -StorageAccountId $storageAccountId`
   
  3. Wacht een uur. Controleer of de streaming-scenario's werken.
  4. Wijzig de secundaire sleutel voor het opslag account via de Power shell-cmdlet of de Azure Portal.
@@ -59,14 +60,15 @@ Media Services is afhankelijk van een opslag sleutel die hieraan is gegeven. Met
 
 In het volgende voor beeld ziet u hoe u het opslag account kunt ophalen en synchroniseren met het AMS-account.
 
-    $regionName = "West US"
-    $resourceGroupName = "SkyMedia-USWest-App"
-    $mediaAccountName = "sky"
-    $storageAccountName = "skystorage"
-    $storageAccountId = "/subscriptions/$subscriptionId/resourceGroups/$resourceGroupName/providers/Microsoft.Storage/storageAccounts/$storageAccountName"
+```console
+$regionName = "West US"
+$resourceGroupName = "SkyMedia-USWest-App"
+$mediaAccountName = "sky"
+$storageAccountName = "skystorage"
+$storageAccountId = "/subscriptions/$subscriptionId/resourceGroups/$resourceGroupName/providers/Microsoft.Storage/storageAccounts/$storageAccountName"
 
-    Sync-AzMediaServiceStorageKeys -ResourceGroupName $resourceGroupName -AccountName $mediaAccountName -StorageAccountId $storageAccountId
-
+Sync-AzMediaServiceStorageKeys -ResourceGroupName $resourceGroupName -AccountName $mediaAccountName -StorageAccountId $storageAccountId
+```
  
 ## <a name="steps-to-add-storage-accounts-to-your-ams-account"></a>Stappen voor het toevoegen van opslag accounts aan uw AMS-account
 

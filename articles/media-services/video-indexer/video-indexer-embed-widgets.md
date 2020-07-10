@@ -10,12 +10,12 @@ ms.subservice: video-indexer
 ms.topic: article
 ms.date: 03/26/2020
 ms.author: juliako
-ms.openlocfilehash: 545dbcfb1db5595ff5b2047ec44afa8a065d816d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: d76f3afa3a831f402f93322ecec350bfdb0c788d
+ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82594845"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86166022"
 ---
 # <a name="embed-video-indexer-widgets-in-your-apps"></a>Video Indexer widgets insluiten in uw apps
 
@@ -33,7 +33,7 @@ De widget Inzichten bevat alle visuele inzichten die tijdens het indexeringsproc
 |---|---|---|
 |`widgets` | Tekenreeksen gescheiden door komma's | Hiermee kunt u de inzichten bepalen die u wilt weer geven.<br/>Voor beeld: `https://www.videoindexer.ai/embed/insights/<accountId>/<videoId>/?widgets=people,keywords` alleen personen en tref woorden weer geven UI Insights.<br/>Beschik bare opties: personen, animatedCharacters, tref woorden, labels, gevoel, emoties, onderwerpen, keyframes, transcripten, OCR, sprekers, scènes en namedEntities.|
 |`controls`|Tekenreeksen gescheiden door komma's|Hiermee kunt u de besturings elementen beheren die u wilt weer geven.<br/>Voor beeld: Hiermee wordt `https://www.videoindexer.ai/embed/insights/<accountId>/<videoId>/?controls=search,download` alleen de zoek optie en de download knop weer gegeven.<br/>Beschik bare opties: zoeken, downloaden, voor instellingen en taal.|
-|`language`|Een korte taal code (taal naam)|Programmeer taal voor besturings elementen.<br/>Voorbeeld: `https://www.videoindexer.ai/embed/insights/<accountId>/<videoId>/?language=es-es` <br/>of`https://www.videoindexer.ai/embed/insights/<accountId>/<videoId>/?language=spanish`|
+|`language`|Een korte taal code (taal naam)|Programmeer taal voor besturings elementen.<br/>Voorbeeld: `https://www.videoindexer.ai/embed/insights/<accountId>/<videoId>/?language=es-es` <br/> of `https://www.videoindexer.ai/embed/insights/<accountId>/<videoId>/?language=spanish`|
 |`locale` | Een korte taal code | Hiermee bepaalt u de taal van de gebruikers interface. De standaardwaarde is `en`. <br/>Bijvoorbeeld: `locale=de`.|
 |`tab` | Het standaard geselecteerde tabblad | Hiermee bepaalt u het tabblad **inzichten** dat standaard wordt weer gegeven. <br/>Voor beeld: Hiermee wordt `tab=timeline` de inzichten weer gegeven op het tabblad **tijd lijn** geselecteerd.|
 |`location` ||De `location` para meter moet worden opgenomen in de Inge sloten koppelingen. Zie [hoe u de naam van uw regio ophaalt](regions.md). Als uw account in preview is, `trial` moet het worden gebruikt voor de locatie waarde. `trial`is de standaard waarde voor de `location` para meter.| 
@@ -61,7 +61,7 @@ U kunt de editor-widget gebruiken om nieuwe projecten te maken en de inzichten v
 |`accessToken`<sup>*</sup> | Tekenreeks | Biedt toegang tot Video's die alleen voor komen in het account dat wordt gebruikt om de widget in te sluiten.<br> De editor-widget vereist de `accessToken` para meter. |
 |`language` | Een taal code | Hiermee bepaalt u de taal van de speler. De standaardwaarde is `en-US`.<br/>Bijvoorbeeld: `language=de-DE`. |
 |`locale` | Een korte taal code | Hiermee bepaalt u de inzichten taal. De standaardwaarde is `en`.<br/>Bijvoorbeeld: `language=de`. |
-|`location` ||De `location` para meter moet worden opgenomen in de Inge sloten koppelingen. Zie [hoe u de naam van uw regio ophaalt](regions.md). Als uw account in preview is, `trial` moet het worden gebruikt voor de locatie waarde. `trial`is de standaard waarde voor de `location` paramete.| 
+|`location` ||De `location` para meter moet worden opgenomen in de Inge sloten koppelingen. Zie [hoe u de naam van uw regio ophaalt](regions.md). Als uw account in preview is, `trial` moet het worden gebruikt voor de locatie waarde. `trial`is de standaard waarde voor de `location` para meter.| 
 
 <sup>*</sup>De eigenaar moet `accessToken` voorzichtig zijn.
 
@@ -69,7 +69,7 @@ U kunt de editor-widget gebruiken om nieuwe projecten te maken en de inzichten v
 
 In deze sectie wordt beschreven hoe u de open bare en persoonlijke inhoud insluit in apps.
 
-De `location` para meter moet worden opgenomen in de Inge sloten koppelingen. Zie [hoe u de naam van uw regio ophaalt](regions.md). Als uw account in preview is, `trial` moet het worden gebruikt voor de locatie waarde. `trial`is de standaard waarde voor de `location` paramete. Bijvoorbeeld: `https://www.videoindexer.ai/accounts/00000000-0000-0000-0000-000000000000/videos/b2b2c74b8e/?location=trial`.
+De `location` para meter moet worden opgenomen in de Inge sloten koppelingen. Zie [hoe u de naam van uw regio ophaalt](regions.md). Als uw account in preview is, `trial` moet het worden gebruikt voor de locatie waarde. `trial`is de standaard waarde voor de `location` para meter. Bijvoorbeeld: `https://www.videoindexer.ai/accounts/00000000-0000-0000-0000-000000000000/videos/b2b2c74b8e/?location=trial`.
 
 > [!IMPORTANT]
 > Het delen van een koppeling voor de **Media Player** of **Insights** -widget bevat het toegangs token en verleen de alleen-lezen machtigingen voor uw account.
@@ -131,47 +131,48 @@ In deze sectie wordt uitgelegd hoe u de interactie tussen een cognitieve Insight
 1. Voeg een Video Indexer-invoeg toepassing toe voor de AMP-speler:<br/> `<script src="https://breakdown.blob.core.windows.net/public/amp-vb.plugin.js"></script>`
 2. Exemplaar Azure Media Player met de Video Indexer-invoeg toepassing.
 
-        // Init the source.
-        function initSource() {
-            var tracks = [{
-            kind: 'captions',
-            // To load vtt from VI, replace it with your vtt URL.
-            src: this.getSubtitlesUrl("c4c1ad4c9a", "English"),
-            srclang: 'en',
-            label: 'English'
-            }];
-
-            myPlayer.src([
-            {
-                "src": "//amssamples.streaming.mediaservices.windows.net/91492735-c523-432b-ba01-faba6c2206a2/AzureMediaServicesPromo.ism/manifest",
-                "type": "application/vnd.ms-sstr+xml"
-            }
-            ], tracks);
+    ```javascript
+    // Init the source.
+    function initSource() {
+        var tracks = [{
+        kind: 'captions',
+        // To load vtt from VI, replace it with your vtt URL.
+        src: this.getSubtitlesUrl("c4c1ad4c9a", "English"),
+        srclang: 'en',
+        label: 'English'
+        }];
+        myPlayer.src([
+        {
+            "src": "//amssamples.streaming.mediaservices.windows.net/91492735-c523-432b-ba01-faba6c2206a2/AzureMediaServicesPromo.ism/manifest",
+            "type": "application/vnd.ms-sstr+xml"
         }
+        ], tracks);
+    }
 
-        // Init your AMP instance.
-        var myPlayer = amp('vid1', { /* Options */
-            "nativeControlsForTouch": false,
-            autoplay: true,
-            controls: true,
-            width: "640",
-            height: "400",
-            poster: "",
-            plugins: {
-            videobreakedown: {}
-            }
-        }, function () {
-            // Activate the plug-in.
-            this.videobreakdown({
-            videoId: "c4c1ad4c9a",
-            syncTranscript: true,
-            syncLanguage: true,
-            location: "trial" /* location option for paid accounts (default is trial) */
-            });
-
-            // Set the source dynamically.
-            initSource.call(this);
+    // Init your AMP instance.
+    var myPlayer = amp('vid1', { /* Options */
+        "nativeControlsForTouch": false,
+        autoplay: true,
+        controls: true,
+        width: "640",
+        height: "400",
+        poster: "",
+        plugins: {
+        videobreakedown: {}
+        }
+    }, function () {
+        // Activate the plug-in.
+        this.videobreakdown({
+        videoId: "c4c1ad4c9a",
+        syncTranscript: true,
+        syncLanguage: true,
+        location: "trial" /* location option for paid accounts (default is trial) */
         });
+
+        // Set the source dynamically.
+        initSource.call(this);
+    });
+    ```
 
 3. Kopieer de invoegcode van de widget Inzichten.
 
@@ -187,42 +188,46 @@ Als u een andere video speler gebruikt dan Azure Media Player, moet u de video s
 
     Bijvoorbeeld een standaard HTML5-speler:
 
-        <video id="vid1" width="640" height="360" controls autoplay preload>
-           <source src="//breakdown.blob.core.windows.net/public/Microsoft%20HoloLens-%20RoboRaid.mp4" type="video/mp4" /> 
-           Your browser does not support the video tag.
-        </video>    
+    ```html
+    <video id="vid1" width="640" height="360" controls autoplay preload>
+       <source src="//breakdown.blob.core.windows.net/public/Microsoft%20HoloLens-%20RoboRaid.mp4" type="video/mp4" /> 
+       Your browser does not support the video tag.
+    </video>
+    ```
 
 2. Sluit de widget Inzichten in.
 3. Implementeer communicatie voor de speler door te luisteren naar de gebeurtenis 'message'. Bijvoorbeeld:
 
-        <script>
+    ```javascript
+    <script>
     
-            (function(){
-            // Reference your player instance.
-            var playerInstance = document.getElementById('vid1');
+        (function(){
+        // Reference your player instance.
+        var playerInstance = document.getElementById('vid1');
         
-            function jumpTo(evt) {
-              var origin = evt.origin || evt.originalEvent.origin;
+        function jumpTo(evt) {
+          var origin = evt.origin || evt.originalEvent.origin;
         
-              // Validate that the event comes from the videobreakdown domain.
-              if ((origin === "https://www.videobreakdown.com") && evt.data.time !== undefined){
+          // Validate that the event comes from the videobreakdown domain.
+          if ((origin === "https://www.videobreakdown.com") && evt.data.time !== undefined){
                 
-                // Call your player's "jumpTo" implementation.
-                playerInstance.currentTime = evt.data.time;
+            // Call your player's "jumpTo" implementation.
+            playerInstance.currentTime = evt.data.time;
                
-                // Confirm the arrival to us.
-                if ('postMessage' in window) {
-                  evt.source.postMessage({confirm: true, time: evt.data.time}, origin);
-                }
-              }
+            // Confirm the arrival to us.
+            if ('postMessage' in window) {
+              evt.source.postMessage({confirm: true, time: evt.data.time}, origin);
             }
+          }
+        }
         
-            // Listen to the message event.
-            window.addEventListener("message", jumpTo, false);
+        // Listen to the message event.
+        window.addEventListener("message", jumpTo, false);
           
-            }())    
+        }())    
         
-        </script>
+    </script>
+    ```
 
 Zie de [demo over Azure Media Player en VI](https://codepen.io/videoindexer/pen/YEyPLd)voor meer informatie.
 

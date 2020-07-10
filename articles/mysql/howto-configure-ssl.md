@@ -5,14 +5,14 @@ author: ajlam
 ms.author: andrela
 ms.service: mysql
 ms.topic: how-to
-ms.date: 5/7/2020
+ms.date: 07/08/2020
 ms.custom: tracking-python
-ms.openlocfilehash: 3f2cb5cbc447dd0483517bef96dbcc7c58cf1af7
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: 953cdff1f3c067c2d5b9ebd284afe68083d43e66
+ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
 ms.translationtype: MT
 ms.contentlocale: nl-NL
 ms.lasthandoff: 07/08/2020
-ms.locfileid: "86101389"
+ms.locfileid: "86141779"
 ---
 # <a name="configure-ssl-connectivity-in-your-application-to-securely-connect-to-azure-database-for-mysql"></a>SSL-connectiviteit in uw toepassing configureren om veilig verbinding te maken met Azure Database for MySQL
 Azure Database for MySQL biedt ondersteuning voor het gebruik van Secure Sockets Layer (SSL) om uw Azure Database for MySQL-server te verbinden met clienttoepassingen. Het afdwingen van SSL-verbindingen tussen uw databaseserver en clienttoepassingen zorgt dat u bent beschermt tegen 'man in the middle'-aanvallen omdat de gegevensstroom tussen de server en uw toepassing wordt versleuteld.
@@ -20,6 +20,8 @@ Azure Database for MySQL biedt ondersteuning voor het gebruik van Secure Sockets
 ## <a name="step-1-obtain-ssl-certificate"></a>Stap 1: een SSL-certificaat verkrijgen
 Down load het certificaat dat nodig is om via SSL met uw Azure Database for MySQL-server te communiceren [https://www.digicert.com/CACerts/BaltimoreCyberTrustRoot.crt.pem](https://www.digicert.com/CACerts/BaltimoreCyberTrustRoot.crt.pem) en sla het certificaat bestand op uw lokale station op (in deze zelf studie wordt c:\ssl bijvoorbeeld gebruikt).
 **Voor micro soft Internet Explorer en micro soft Edge:** Wanneer het downloaden is voltooid, wijzigt u de naam van het certificaat in BaltimoreCyberTrustRoot. CRT. pem.
+
+Raadpleeg de volgende koppelingen voor certificaten voor servers in soevereine Clouds: [Azure Government](https://www.digicert.com/CACerts/BaltimoreCyberTrustRoot.crt.pem), [Azure China](https://dl.cacerts.digicert.com/DigiCertGlobalRootCA.crt.pem)en [Azure Duitsland](https://www.d-trust.net/cgi-bin/D-TRUST_Root_Class_3_CA_2_2009.crt).
 
 ## <a name="step-2-bind-ssl"></a>Stap 2: SSL binden
 

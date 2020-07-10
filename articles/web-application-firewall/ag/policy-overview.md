@@ -7,19 +7,19 @@ author: winthrop28
 ms.service: web-application-firewall
 ms.date: 02/01/2020
 ms.author: victorh
-ms.openlocfilehash: fff4fb5707c07098fd7fac261a36909224365cdf
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 10a90a7f94633fac52086953697eb90a98d9509d
+ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80060275"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86143840"
 ---
 # <a name="azure-web-application-firewall-waf-policy-overview"></a>Overzicht van het beleid voor Azure Web Application firewall (WAF)
 
 Web Application firewall-beleid bevat alle WAF-instellingen en-configuraties. Dit omvat uitsluitingen, aangepaste regels, beheerde regels, enzovoort. Deze beleids regels worden vervolgens gekoppeld aan een toepassings gateway (globaal), een listener (per site) of een op een pad gebaseerde regel (per URI) die ze van kracht kunnen laten worden.
 
 > [!NOTE]
-> De open bare preview van Azure Web Application firewall (WAF) per site en per URI-beleid.
+> Azure Web Application firewall (WAF) per URI-beleid bevindt zich in de open bare preview.
 > 
 > Deze openbare preview-versie wordt aangeboden zonder serviceovereenkomst en moet niet worden gebruikt voor productieworkloads. Bepaalde functies worden mogelijk niet ondersteund, zijn mogelijk beperkt of zijn mogelijk niet beschikbaar op alle Azure-locaties. Zie [Supplemental Terms of Use for Microsoft Azure Previews (Aanvullende gebruiksvoorwaarden voor Microsoft Azure-previews)](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) voor meer informatie.
 

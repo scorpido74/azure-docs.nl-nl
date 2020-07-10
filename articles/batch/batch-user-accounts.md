@@ -4,19 +4,19 @@ description: Meer informatie over de typen gebruikers accounts en hoe u deze kun
 ms.topic: how-to
 ms.date: 11/18/2019
 ms.custom: seodec18
-ms.openlocfilehash: 514a104c879a8d601bb03e2ed1c59b69516bc621
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 412947b939d95be29dde374b311776829fa12582
+ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85209722"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86142673"
 ---
 # <a name="run-tasks-under-user-accounts-in-batch"></a>Taken uitvoeren onder gebruikers accounts in batch
 
 > [!NOTE]
 > De gebruikers accounts die in dit artikel worden besproken, verschillen van gebruikers accounts die worden gebruikt voor Remote Desktop Protocol (RDP) of Secure Shell (SSH) om veiligheids redenen.
 >
-> Zie [extern bureaublad gebruiken voor een Linux-vm in azure](../virtual-machines/virtual-machines-linux-use-remote-desktop.md)om verbinding te maken met een knoop punt met de configuratie van de virtuele Linux-machine via SSH. Zie [verbinding maken met een virtuele machine van Windows Server](../virtual-machines/windows/connect-logon.md)om verbinding te maken met knoop punten met Windows via RDP.<br /><br />
+> Zie [extern bureaublad gebruiken voor een Linux-vm in azure](../virtual-machines/linux/use-remote-desktop.md)om verbinding te maken met een knoop punt met de configuratie van de virtuele Linux-machine via SSH. Zie [verbinding maken met een virtuele machine van Windows Server](../virtual-machines/windows/connect-logon.md)om verbinding te maken met knoop punten met Windows via RDP.<br /><br />
 > Zie [verbinding met extern bureaublad inschakelen voor een rol in Azure Cloud Services](../cloud-services/cloud-services-role-enable-remote-desktop-new-portal.md)om verbinding te maken met een knoop punt met de Cloud service configuratie via RDP.
 
 Een taak in Azure Batch altijd onder een gebruikers account wordt uitgevoerd. Taken worden standaard uitgevoerd onder standaard gebruikers accounts, zonder beheerders machtigingen. Voor bepaalde scenario's kunt u het gebruikers account waaronder u een taak wilt uitvoeren, configureren. In dit artikel worden de typen gebruikers accounts beschreven en wordt uitgelegd hoe u deze kunt configureren voor uw scenario.

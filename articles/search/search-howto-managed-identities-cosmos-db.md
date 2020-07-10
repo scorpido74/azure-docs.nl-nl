@@ -9,12 +9,12 @@ ms.devlang: rest-api
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 05/18/2020
-ms.openlocfilehash: c67a5537a74e37473280fbd44fa47c65f2a37806
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 107cd113645a2cbd4b452f9350fa67d734ee6df8
+ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85563153"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86143656"
 ---
 # <a name="set-up-an-indexer-connection-to-a-cosmos-db-database-using-a-managed-identity-preview"></a>Een Indexeer functie verbinding met een Cosmos DB-Data Base instellen met behulp van een beheerde identiteit (preview)
 
@@ -126,6 +126,7 @@ Zodra de index en gegevens bron zijn gemaakt, kunt u de Indexeer functie maken.
 
 Voor beeld van de definitie van de Indexeer functie:
 
+```http
     POST https://[service name].search.windows.net/indexers?api-version=2020-06-30
     Content-Type: application/json
     api-key: [admin key]
@@ -136,6 +137,7 @@ Voor beeld van de definitie van de Indexeer functie:
       "targetIndexName" : "my-target-index",
       "schedule" : { "interval" : "PT2H" }
     }
+```
 
 Deze Indexeer functie wordt elke twee uur uitgevoerd (schema-interval is ingesteld op "PT2H"). Als u een Indexeer functie elke 30 minuten wilt uitvoeren, stelt u het interval in op ' PT30M '. Het kortste ondersteunde interval is 5 minuten. Het schema is optioneel: als u dit weglaat, wordt een Indexeer functie slechts eenmaal uitgevoerd wanneer deze wordt gemaakt. U kunt echter op elk gewenst moment een Indexeer functie op aanvraag uitvoeren.   
 
@@ -143,7 +145,7 @@ Bekijk [Indexeer functie maken](https://docs.microsoft.com/rest/api/searchservic
 
 Zie [Indexeer functies plannen voor Azure Cognitive Search](search-howto-schedule-indexers.md)voor meer informatie over het definiëren van de planningen voor de Indexeer functie.
 
-## <a name="see-also"></a>Zie tevens
+## <a name="see-also"></a>Zie ook
 
 Meer informatie over Cosmos DB Indexeer functies:
 * [Indexeerfunctie voor Azure Cosmos DB](search-howto-index-cosmosdb.md)

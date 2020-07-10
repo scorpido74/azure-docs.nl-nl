@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.service: iot-central
 services: iot-central
 manager: abjork
-ms.openlocfilehash: 40460b58ede0ca0da8fe25475906bdbe41bfffe0
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 29605fc2a9094f70c26487691e74a4dd72a85813
+ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80158279"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86147262"
 ---
 # <a name="how-to-use-analytics-to-analyze-device-data"></a>Informatie over het gebruik van Analytics voor het analyseren van apparaatgegevens
 
@@ -86,9 +86,11 @@ Zodra u een query op uw gegevens hebt uitgevoerd, kunt u beginnen met visualiser
 
   ![Inzoomen op de gegevens](media/howto-create-analytics/zoom.png)
 
-Onder het beletsel teken staan er meer grafiek besturings elementen om te communiceren met de gegevens.
+Onder het beletsel teken staan er meer grafiek besturings elementen om te communiceren met de gegevens:
 
 - **Raster weer geven:** De resultaten zijn beschikbaar in een tabel indeling, zodat u de specifieke waarde voor elk gegevens punt kunt weer geven.
+
+- **Downloaden als CSV:** De resultaten zijn beschikbaar om te worden geëxporteerd als een bestand met door komma's gescheiden waarden (CSV). Het CSV-bestand bevat gegevens voor elk apparaat. De resultaten worden geëxporteerd met behulp van het opgegeven interval en tijds bestek. 
 
 - **Een markering verwijderen:** Het besturings element drop markering biedt een manier om bepaalde gegevens punten in de grafiek te verankeren. Het is handig wanneer u gegevens wilt vergelijken voor meerdere regels in verschillende Peri Oden.
 

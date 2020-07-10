@@ -1,5 +1,5 @@
 ---
-title: Eenmalige aanmelding bij toepassingen-Azure Active Directory | Microsoft Docs
+title: Wat is Azure single sign-on (SSO)?
 description: Meer informatie over het kiezen van een eenmalige aanmeldings methode bij het configureren van toepassingen in Azure Active Directory (Azure AD). Gebruik eenmalige aanmelding zodat gebruikers geen wacht woorden hoeven te onthouden voor elke toepassing en om het beheer van account beheer te vereenvoudigen.
 services: active-directory
 author: kenwith
@@ -12,14 +12,14 @@ ms.date: 12/03/2019
 ms.author: kenwith
 ms.reviewer: arvindh, japere
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: fd8b20d7d285f30eb0aa9ba5ac22739b57856d6c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: a50f2cf6fc00189c8cc764a132b550153b80b52e
+ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85479705"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86144599"
 ---
-# <a name="single-sign-on-to-applications-in-azure-active-directory"></a>Eenmalige aanmelding bij toepassingen in Azure Active Directory
+# <a name="what-is-single-sign-on-sso"></a>Wat is eenmalige aanmelding?
 
 Eenmalige aanmelding (SSO) voegt beveiligings-en gebruiks gemak toe wanneer gebruikers zich aanmelden bij toepassingen in Azure Active Directory (Azure AD). In dit artikel worden de methoden voor eenmalige aanmelding beschreven, en kunt u de meest geschikte SSO-methode kiezen voor het configureren van uw toepassingen.
 
@@ -56,7 +56,7 @@ Bij het ontwikkelen van nieuwe toepassingen gebruikt u moderne protocollen zoals
 
 Zie voor meer informatie:
 
-- [OAuth 2,0](../develop/v2-oauth2-auth-code-flow.md)
+- [OAuth 2.0](../develop/v2-oauth2-auth-code-flow.md)
 - [OpenID Connect 1.0](../develop/v2-protocols-oidc.md)
 - [Ontwikkelaars handleiding voor micro soft Identity platform](https://docs.microsoft.com/azure/active-directory/develop/active-directory-developers-guide).
 
@@ -99,8 +99,8 @@ Eenmalige aanmelding op basis van wacht woorden wordt ondersteund voor elke Clou
 - Micro soft Edge in Windows 10 jubileum Edition of hoger
 - Micro soft Edge voor iOS en Android
 - Intune Managed Browser
-- Chrome op Windows 7 of hoger en op MacOS X of hoger
-- Firefox 26,0 of hoger op Windows XP SP2 of hoger, en op Mac OS X 10,6 of hoger
+- Chrome op Windows 7 of hoger en op macOS X of hoger
+- Firefox 26,0 of hoger op Windows XP SP2 of hoger en op macOS X 10,6 of hoger
 
 Als u een Cloud toepassing wilt configureren voor eenmalige aanmelding op basis van wacht woord, raadpleegt u [eenmalige aanmelding voor wacht woord configureren](configure-password-single-sign-on-non-gallery-applications.md).
 

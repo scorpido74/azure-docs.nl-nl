@@ -10,18 +10,18 @@ ms.custom: tracking-python
 author: likebupt
 ms.author: keli19
 ms.date: 06/16/2020
-ms.openlocfilehash: f64c79a970ec54c07c2934a92a9ca349ea56ca40
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 2115a0bae8b26113fc10648db2584210809441de
+ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84907547"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86147250"
 ---
 # <a name="execute-python-script-module"></a>Python-script module uitvoeren
 
 In dit artikel wordt de script module voor het uitvoeren van python in Azure Machine Learning Designer (preview-versie) beschreven.
 
-Gebruik deze module om python-code uit te voeren. Zie [dit artikel](https://docs.microsoft.com/azure/machine-learning/machine-learning-execute-python-scripts)voor meer informatie over de architectuur en ontwerp principes van python.
+Gebruik deze module om python-code uit te voeren. Zie voor meer informatie over de architectuur en ontwerp principes van python de [procedures voor het uitvoeren van python-code in azure machine learning Designer](../how-to-designer-python.md).
 
 Met python kunt u taken uitvoeren die niet worden ondersteund door bestaande modules, zoals:
 

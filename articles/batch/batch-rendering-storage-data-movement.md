@@ -7,12 +7,12 @@ author: mscurrell
 ms.author: markscu
 ms.date: 08/02/2018
 ms.topic: how-to
-ms.openlocfilehash: 6fff0e224aaa6bb247543282ac16fbb33fe7e904
-ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.openlocfilehash: 55ec04df2a107dabfc72298bc8849c13f3a926e0
+ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/05/2020
-ms.locfileid: "85965260"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86147308"
 ---
 # <a name="storage-and-data-movement-options-for-rendering-asset-and-output-files"></a>Opties voor opslag en gegevens verplaatsing voor het weer geven van Asset-en uitvoer bestanden
 
@@ -87,7 +87,7 @@ Als bestanden zijn eenvoudigweg blobs in Azure Storage, kunnen standaard-BLOB-Ap
 
 [Azure files](../storage/files/storage-files-introduction.md) biedt volledig beheerde bestands shares in de cloud die toegankelijk zijn via het SMB-protocol.  Azure Files is gebaseerd op Azure Blob-opslag. het is [rendabel](https://azure.microsoft.com/pricing/details/storage/files/) en kan worden geconfigureerd met gegevens replicatie naar een andere regio, zodat deze wereld wijd redundant is.  [Schaal doelen](../storage/files/storage-files-scale-targets.md#azure-files-scale-targets) moeten worden gecontroleerd om te bepalen of Azure files moet worden gebruikt op basis van de grootte van de prognose groep en het aantal Asset-bestanden.
 
-Er is een [blog bericht](https://blogs.msdn.microsoft.com/windowsazurestorage/2014/05/26/persisting-connections-to-microsoft-azure-files/) en [documentatie](../storage/files/storage-how-to-use-files-windows.md) over het koppelen van een Azure-bestands share.
+Er is [documentatie](../storage/files/storage-how-to-use-files-windows.md) over het koppelen van een Azure-bestands share.
 
 ### <a name="mounting-an-azure-files-share"></a>Een Azure Files share koppelen
 

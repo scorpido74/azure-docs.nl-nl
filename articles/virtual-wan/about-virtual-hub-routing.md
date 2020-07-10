@@ -8,12 +8,12 @@ ms.service: virtual-wan
 ms.topic: conceptual
 ms.date: 06/29/2020
 ms.author: cherylmc
-ms.openlocfilehash: 6809429b26eea30ca0569044634308d2e4dff9f7
-ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
+ms.openlocfilehash: 368440976558730bd7bb9600a0bf45c56d1ee300
+ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86025978"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86147388"
 ---
 # <a name="about-virtual-hub-routing"></a>Over virtuele hub-routering
 
@@ -25,11 +25,15 @@ Zie [route ring van virtuele hub configureren voor meer informatie over het](how
 
 In de volgende secties worden de belangrijkste concepten in virtuele hub-route ring beschreven.
 
+> [!NOTE]
+> Sommige van deze nieuwe concepten voor de route tabel van de hub, de koppeling, het door sturen en statische routes in een virtuele netwerk verbinding kunnen nog steeds worden geïmplementeerd en worden verwacht in de week van aug 3de.
+>
+
 ### <a name="hub-route-table"></a><a name="hub-route"></a>Route tabel van de hub
 
 Een route tabel van de virtuele hub kan een of meer routes bevatten. Een route bevat de naam, een label, een doel type, een lijst met doel voorvoegsels en de volgende hop-informatie voor een pakket dat moet worden doorgestuurd. Een **verbinding** heeft meestal een routerings configuratie die aan een route tabel is gekoppeld of door gegeven
 
-### <a name="connection"></a><a name="connection"></a>Verbinding
+### <a name="connection"></a><a name="connection"></a>Combi
 
 Verbindingen zijn Resource Manager-resources die een routerings configuratie hebben. De vier typen verbindingen zijn:
 
@@ -59,10 +63,6 @@ Er is ook een **route tabel geen** beschikbaar voor elke virtuele hub. Door door
 ### <a name="configuring-static-routes-in-a-virtual-network-connection"></a><a name="static"></a>Statische routes configureren in een virtuele netwerk verbinding
 
 Het configureren van statische routes biedt een mechanisme voor het stuur verkeer via een volgende hop-IP. Dit kan een virtueel netwerk apparaat (NVA) zijn dat is ingericht in een spoke-VNet dat is gekoppeld aan een virtuele hub. De statische route bestaat uit een route naam, een lijst met doel voorvoegsels en het volgende hop-IP-adres.
-
-> [!NOTE]
-> Sommige van deze nieuwe concepten voor Association, doorgifte en statische routes in een virtuele netwerk verbinding kunnen nog steeds worden geïmplementeerd en worden verwacht in de week van aug 3de.
->
 
 ## <a name="route-tables-in-basic-and-standard-virtual-wans-prior-to-the-feature-set-of-association-and-propagation"></a><a name="route"></a>Route tabellen in de Basic-en Standard-standaard-virtuele Wan's vóór de functieset van koppeling en doorgifte
 

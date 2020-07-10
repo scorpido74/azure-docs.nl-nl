@@ -4,11 +4,12 @@ description: Registreer en analyseer logboek gebeurtenissen van het diagnostisch
 ms.topic: how-to
 ms.date: 05/29/2020
 ms.custom: seodec18
-ms.openlocfilehash: 6e10a4fc6cd13854682f094274c975931b056365
-ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.openlocfilehash: abf9ef53d3f2e3ffeffabfe9b7c77dc5c5debec3
+ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/05/2020
-ms.locfileid: "85960721"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86145094"
 ---
 # <a name="batch-metrics-alerts-and-logs-for-diagnostic-evaluation-and-monitoring"></a>Metrische batches, waarschuwingen en logboeken voor diagnostische evaluatie en bewaking
  
@@ -86,8 +87,8 @@ Een veelvoorkomend scenario is het selecteren van een Azure Storage-account als 
 
 U kunt ook het volgende doen:
 
-- Batch diagnostische logboek gebeurtenissen streamen naar een [Azure Event hub](../event-hubs/event-hubs-what-is-event-hubs.md). Event Hubs kan miljoenen gebeurtenissen per seconde opnemen, die u vervolgens kunt transformeren en opslaan met behulp van een real-time analyse provider. 
-- Diagnostische logboeken verzenden naar [Azure monitor-logboeken](../log-analytics/log-analytics-overview.md), waar u ze kunt analyseren of exporteren voor analyse in Power bi of Excel.
+- Batch diagnostische logboek gebeurtenissen streamen naar een [Azure Event hub](../event-hubs/event-hubs-about.md). Event Hubs kan miljoenen gebeurtenissen per seconde opnemen, die u vervolgens kunt transformeren en opslaan met behulp van een real-time analyse provider. 
+- Diagnostische logboeken verzenden naar [Azure monitor-logboeken](../azure-monitor/log-query/log-query-overview.md), waar u ze kunt analyseren of exporteren voor analyse in Power bi of Excel.
 
 > [!NOTE]
 > Mogelijk worden er extra kosten in rekening gebracht om diagnostische logboek gegevens met Azure-Services op te slaan of te verwerken. 
@@ -134,7 +135,7 @@ Hieronder ziet u een voor beeld van een `PoolResizeCompleteEvent` vermelding in 
 { "Tenant": "65298bc2729a4c93b11c00ad7e660501", "time": "2019-08-22T20:59:13.5698778Z", "resourceId": "/SUBSCRIPTIONS/XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX/RESOURCEGROUPS/MYRESOURCEGROUP/PROVIDERS/MICROSOFT.BATCH/BATCHACCOUNTS/MYBATCHACCOUNT/", "category": "ServiceLog", "operationName": "PoolResizeCompleteEvent", "operationVersion": "2017-06-01", "properties": {"id":"MYPOOLID","nodeDeallocationOption":"Requeue","currentDedicatedNodes":10,"targetDedicatedNodes":100,"currentLowPriorityNodes":0,"targetLowPriorityNodes":0,"enableAutoScale":false,"isAutoPool":false,"startTime":"2019-08-22 20:50:59.522","endTime":"2019-08-22 20:59:12.489","resultCode":"Success","resultMessage":"The operation succeeded"}}
 ```
 
-Zie voor meer informatie over het schema van Diagnostische logboeken in het opslag account [Azure-resource logboeken archiveren in het opslag account](../azure-monitor/platform/resource-logs-collect-storage.md#schema-of-platform-logs-in-storage-account). Als u via een programma toegang wilt krijgen tot de logboeken in uw opslag account, gebruikt u de opslag-Api's.
+Zie voor meer informatie over het schema van Diagnostische logboeken in het opslag account [Azure-resource logboeken archiveren in het opslag account](../azure-monitor/platform/resource-logs.md#send-to-azure-storage). Als u via een programma toegang wilt krijgen tot de logboeken in uw opslag account, gebruikt u de opslag-Api's.
 
 ### <a name="service-log-events"></a>Service logboek gebeurtenissen
 
@@ -177,4 +178,3 @@ De volgende gebeurtenissen van het service logboek worden verzonden door de batc
 
 - Meer informatie over de [Batch-API's en -hulpprogramma's](batch-apis-tools.md) die beschikbaar zijn voor het bouwen van Batch-oplossingen.
 - Meer informatie over het [bewaken van batch-oplossingen](monitoring-overview.md).
-

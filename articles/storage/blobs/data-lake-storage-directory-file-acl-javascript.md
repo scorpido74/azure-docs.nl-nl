@@ -8,11 +8,12 @@ ms.author: normesta
 ms.topic: how-to
 ms.subservice: data-lake-storage-gen2
 ms.reviewer: prishet
-ms.openlocfilehash: 9a95af730e8250539e8b33af4bd5a90dc3a604a2
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: c774d3f56eaf666a31ff73f433a3b4a5a363ce2f
+ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84466065"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86142497"
 ---
 # <a name="use-javascript-to-manage-directories-files-and-acls-in-azure-data-lake-storage-gen2"></a>Java script gebruiken voor het beheren van mappen, bestanden en Acl's in Azure Data Lake Storage Gen2
 
@@ -89,11 +90,11 @@ function GetDataLakeServiceClientAD(accountName, clientID, clientSecret, tenantI
 > [!NOTE]
 > Zie de documentatie [van de Azure Identity client-bibliotheek voor JS](https://www.npmjs.com/package/@azure/identity) voor meer voor beelden.
 
-## <a name="create-a-file-system"></a>Een bestandssysteem maken
+## <a name="create-a-container"></a>Een container maken
 
-Een bestands systeem fungeert als een container voor uw bestanden. U kunt er een maken door een **FileSystemClient** -exemplaar op te halen en vervolgens de methode **FileSystemClient. Create** aan te roepen.
+Een container fungeert als bestands systeem voor uw bestanden. U kunt er een maken door een **FileSystemClient** -exemplaar op te halen en vervolgens de methode **FileSystemClient. Create** aan te roepen.
 
-In dit voor beeld wordt een bestands systeem gemaakt met de naam `my-file-system` . 
+In dit voor beeld wordt een container gemaakt met de naam `my-file-system` . 
 
 ```javascript
 async function CreateFileSystem(datalakeServiceClient) {
@@ -111,7 +112,7 @@ async function CreateFileSystem(datalakeServiceClient) {
 
 Maak een directory verwijzing door een **DirectoryClient** -exemplaar op te halen en vervolgens de methode **DirectoryClient. Create** aan te roepen.
 
-In dit voor beeld wordt een map toegevoegd met de naam van `my-directory` een bestands systeem. 
+In dit voor beeld wordt een map met de naam toegevoegd `my-directory` aan een container. 
 
 ```javascript
 async function CreateDirectory(fileSystemClient) {
@@ -357,7 +358,7 @@ async function ListFilesInDirectory(fileSystemClient) {
 }
 ```
 
-## <a name="see-also"></a>Zie tevens
+## <a name="see-also"></a>Zie ook
 
 * [Pakket (node Package Manager)](https://www.npmjs.com/package/@azure/storage-file-datalake)
 * [Voorbeelden](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/storage/storage-file-datalake/samples)

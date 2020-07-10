@@ -9,11 +9,12 @@ ms.topic: how-to
 ms.subservice: data-lake-storage-gen2
 ms.reviewer: prishet
 ms.custom: tracking-python
-ms.openlocfilehash: f5ff33d021f27f2c5dfb86ca87f2579602f0d1cc
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 07708de1326e0aba6485b2cf1fb0610d9710cdf7
+ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84559157"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86142480"
 ---
 # <a name="use-python-to-manage-directories-files-and-acls-in-azure-data-lake-storage-gen2"></a>Python gebruiken voor het beheren van mappen, bestanden en Acl's in Azure Data Lake Storage Gen2
 
@@ -93,11 +94,11 @@ def initialize_storage_account_ad(storage_account_name, client_id, client_secret
 > [!NOTE]
 > Zie de documentatie [van de Azure Identity client-bibliotheek voor python](https://pypi.org/project/azure-identity/) voor meer voor beelden.
 
-## <a name="create-a-file-system"></a>Een bestandssysteem maken
+## <a name="create-a-container"></a>Een container maken
 
-Een bestands systeem fungeert als een container voor uw bestanden. U kunt er een maken door de methode **FileSystemDataLakeServiceClient. create_file_system** aan te roepen.
+Een container fungeert als bestands systeem voor uw bestanden. U kunt er een maken door de methode **FileSystemDataLakeServiceClient. create_file_system** aan te roepen.
 
-In dit voor beeld wordt een bestands systeem gemaakt met de naam `my-file-system` .
+In dit voor beeld wordt een container gemaakt met de naam `my-file-system` .
 
 ```python
 def create_file_system():
@@ -115,7 +116,7 @@ def create_file_system():
 
 Maak een verwijzing naar een directory door de methode **FileSystemClient. create_directory** aan te roepen.
 
-In dit voor beeld wordt een map toegevoegd met de naam van `my-directory` een bestands systeem. 
+In dit voor beeld wordt een map met de naam toegevoegd `my-directory` aan een container. 
 
 ```python
 def create_directory():
@@ -330,7 +331,7 @@ def list_directory_contents():
      print(e) 
 ```
 
-## <a name="see-also"></a>Zie tevens
+## <a name="see-also"></a>Zie ook
 
 * [API-referentiedocumentatie](https://azuresdkdocs.blob.core.windows.net/$web/python/azure-storage-file-datalake/12.0.0b5/index.html)
 * [Pakket (python-pakket index)](https://pypi.org/project/azure-storage-file-datalake/)

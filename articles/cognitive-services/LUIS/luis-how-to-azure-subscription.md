@@ -4,12 +4,12 @@ description: Wanneer u Language Understanding (LUIS) voor het eerst gebruikt, ho
 services: cognitive-services
 ms.topic: how-to
 ms.date: 07/07/2020
-ms.openlocfilehash: 7cc53e7105ba08ad33e02775fcfb0791c6cf1310
-ms.sourcegitcommit: bcb962e74ee5302d0b9242b1ee006f769a94cfb8
+ms.openlocfilehash: dfe5c416adeb4ff850dfe8f28ae4c61c8bb0844f
+ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86055763"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86144631"
 ---
 # <a name="create-luis-resources"></a>LUIS-resources maken
 
@@ -24,7 +24,7 @@ De runtime bronnen voor het ontwerpen en opvragen van query's bieden authenticat
 
 Met LUIS kunt u drie typen Azure-resources en één niet-Azure-resource maken:
 
-|Sleutel|Functie|Cognitieve service`kind`|Cognitieve service`type`|
+|Sleutel|Doel|Cognitieve service`kind`|Cognitieve service`type`|
 |--|--|--|--|
 |Sleutel ontwerpen|Toegang tot en het beheren van gegevens van toepassingen met ontwerpen, training, publicatie en testen. Maak een LUIS-ontwerp sleutel als u van plan bent om LUIS-apps programmatisch te ontwerpen.<br><br>Het doel van de `LUIS.Authoring` sleutel is om het volgende toe te staan:<br>* Language Understanding-apps en-modellen, inclusief training en publicatie, programmatisch beheren<br> * beheer machtigingen voor de ontwerp bron door personen toe te wijzen aan [de rol Inzender](#contributions-from-other-authors).|`LUIS.Authoring`|`Cognitive Services`|
 |Query Voorspellings sleutel| Query's voor Voorspellings eindpunt aanvragen. Maak een LUIS-Voorspellings sleutel voordat u de voor spellingen van de client-app voorspelde aanvragen overschrijdt met de 1.000-aanvragen van de eerste resource. |`LUIS`|`Cognitive Services`|
@@ -102,7 +102,7 @@ Toegang tot de app vanuit de [Luis](luis-reference-regions.md#luis-website) -por
 
 De eigenaar en alle mede werkers hebben toegang tot het schrijven van de app.
 
-|Ontwerp toegang bevat|Notities|
+|Ontwerp toegang bevat|Opmerkingen|
 |--|--|
 |Eindpunt sleutels toevoegen of verwijderen||
 |Versie exporteren||
@@ -154,9 +154,9 @@ U kunt bepalen wie uw LUIS prediction runtime-eindpunt sleutel kan zien door dez
 ## <a name="sign-in-to-luis-portal-and-begin-authoring"></a>Meld u aan bij de LUIS-Portal en begin met ontwerpen
 
 1. Meld u aan bij de [Luis-Portal](https://www.luis.ai) en ga akkoord met de gebruiks voorwaarden.
-1. Start uw LUIS-app door het type van de LUIS-ontwerp sleutel te kiezen die u wilt gebruiken: gratis proef versie of nieuwe Azure LUIS-ontwerp sleutel.
+1. Start uw LUIS-app door uw Azure LUIS-ontwerp sleutel te kiezen.
 
-    ![Een type Language Understanding-ontwerp bron kiezen](./media/luis-how-to-azure-subscription/sign-in-create-resource.png)
+   ![Een type Language Understanding-ontwerp bron kiezen](./media/luis-how-to-azure-subscription/sign-in-create-resource.png)
 
 1. Wanneer u klaar bent met het resource selectie proces, [maakt u een nieuwe app](luis-how-to-start-new-app.md#create-new-app-in-luis).
 
@@ -232,7 +232,7 @@ Voor Automation-doel einden, zoals een CI/CD-pijp lijn, wilt u mogelijk de toewi
 
     Deze bericht-API vereist de volgende instellingen:
 
-    |Koptekst|Waarde|
+    |Header|Waarde|
     |--|--|
     |`Authorization`|De waarde van `Authorization` is `Bearer {token}` . U ziet dat de token waarde moet worden voorafgegaan door het woord `Bearer` en een spatie.|
     |`Ocp-Apim-Subscription-Key`|Uw ontwerp sleutel.|
@@ -245,9 +245,9 @@ Voor Automation-doel einden, zoals een CI/CD-pijp lijn, wilt u mogelijk de toewi
 
     |Type|Instelling|Waarde|
     |--|--|--|
-    |Koptekst|`Authorization`|De waarde van `Authorization` is `Bearer {token}` . U ziet dat de token waarde moet worden voorafgegaan door het woord `Bearer` en een spatie.|
-    |Koptekst|`Ocp-Apim-Subscription-Key`|Uw ontwerp sleutel.|
-    |Koptekst|`Content-type`|`application/json`|
+    |Header|`Authorization`|De waarde van `Authorization` is `Bearer {token}` . U ziet dat de token waarde moet worden voorafgegaan door het woord `Bearer` en een spatie.|
+    |Header|`Ocp-Apim-Subscription-Key`|Uw ontwerp sleutel.|
+    |Header|`Content-type`|`application/json`|
     |String|`appid`|De id van de LUIS-app.
     |Hoofdtekst||{"AzureSubscriptionId": "ddda2925-af7f-4b05-9ba1-2155c5fe8a8e",<br>"ResourceGroup": "ResourceGroup-2",<br>"AccountName": "Luis-uswest-S0-2"}|
 

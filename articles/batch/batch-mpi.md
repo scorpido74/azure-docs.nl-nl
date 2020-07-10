@@ -4,12 +4,12 @@ description: Meer informatie over het uitvoeren van MPI-toepassingen (Message Pa
 ms.topic: how-to
 ms.date: 03/13/2019
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 1bdfdb4ef0dbf7e80d264c8059ae0a86bd29ad87
-ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.openlocfilehash: 66cedc4cdb7c55401b7dbbc892687d08f56eb875
+ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/05/2020
-ms.locfileid: "85961690"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86147379"
 ---
 # <a name="use-multi-instance-tasks-to-run-message-passing-interface-mpi-applications-in-batch"></a>Taken met meerdere instanties gebruiken voor het uitvoeren van MPI-toepassingen (Message Passing Interface) in batch
 
@@ -86,7 +86,7 @@ await myCloudPool.CommitAsync();
 ```
 
 ### <a name="remote-direct-memory-access-rdma"></a>Remote Direct Memory Access (RDMA)
-Wanneer u kiest voor een [grootte van RDMA-functionaliteit](../virtual-machines/windows/sizes-hpc.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) , zoals A9 voor de reken knooppunten in uw batch-pool, kan uw mpi-toepassing profiteren van het snelle RDMA-netwerk met hoge prestaties van Azure met lage latentie.
+Wanneer u kiest voor een [grootte van RDMA-functionaliteit](../virtual-machines/sizes-hpc.md?toc=/azure/virtual-machines/windows/toc.json) , zoals A9 voor de reken knooppunten in uw batch-pool, kan uw mpi-toepassing profiteren van het snelle RDMA-netwerk met hoge prestaties van Azure met lage latentie.
 
 Zoek naar de grootten die zijn opgegeven als ' RDMA capable ' in de volgende artikelen:
 
@@ -334,7 +334,7 @@ Sample complete, hit ENTER to exit...
 [msdn_env_var]: ./batch-compute-node-environment-variables.md
 [msmpi_msdn]: /message-passing-interface/microsoft-mpi
 [msmpi_sdk]: https://go.microsoft.com/FWLink/p/?LinkID=389556
-[msmpi_howto]: https://blogs.technet.com/b/windowshpc/archive/2015/02/02/how-to-compile-and-run-a-simple-ms-mpi-program.aspx
+[msmpi_howto]: /archive/blogs/windowshpc/how-to-compile-and-run-a-simple-ms-mpi-program
 [openfoam]: http://www.openfoam.com/
 [visual_studio]: https://www.visualstudio.com/vs/community/
 

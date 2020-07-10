@@ -67,19 +67,19 @@ Configureer inkomend verkeer op poort 3389 (Windows) of 22 (Linux) alleen als u 
 
 **Inkomende beveiligingsregels**
 
-| IP-adressen van bron | Bron servicetag | Bronpoorten | Doel | Doelpoorten | Protocol | Bewerking |
+| IP-adressen van bron | Bron servicetag | Bronpoorten | Doel | Doelpoorten | Protocol | Actie |
 | --- | --- | --- | --- | --- | --- | --- |
-| N.v.t. | `BatchNodeManagement`[Servicetag (als](../articles/virtual-network/security-overview.md#service-tags) u een regionale variant gebruikt, in dezelfde regio als uw batch-account) | * | Alle | 29876-29877 | TCP | Toestaan |
-| IP-adressen van gebruikers bronnen voor het op afstand verkrijgen van toegang tot de reken knooppunten en/of het subnet van het reken knooppunt voor Linux-taken voor meerdere exemplaren, indien nodig. | N.v.t. | * | Alle | 3389 (Windows), 22 (Linux) | TCP | Toestaan |
+| N.v.t. | `BatchNodeManagement`[Servicetag (als](../articles/virtual-network/security-overview.md#service-tags) u een regionale variant gebruikt, in dezelfde regio als uw batch-account) | * | Elk | 29876-29877 | TCP | Toestaan |
+| IP-adressen van gebruikers bronnen voor het op afstand verkrijgen van toegang tot de reken knooppunten en/of het subnet van het reken knooppunt voor Linux-taken voor meerdere exemplaren, indien nodig. | N.v.t. | * | Elk | 3389 (Windows), 22 (Linux) | TCP | Toestaan |
 
 > [!WARNING]
 > De IP-adressen van de batch-service kunnen na verloop van tijd worden gewijzigd. Daarom is het raadzaam om de servicetag `BatchNodeManagement` (of Regional variant) te gebruiken voor NSG-regels. Vermijd het vullen van NSG-regels met specifieke batch service-IP-adressen.
 
 **Uitgaande beveiligingsregels**
 
-| Bron | Bronpoorten | Doel | Doelservicetag | Doelpoorten | Protocol | Bewerking |
+| Bron | Bronpoorten | Doel | Doelservicetag | Doelpoorten | Protocol | Actie |
 | --- | --- | --- | --- | --- | --- | --- |
-| Alle | * | [Servicetag](../articles/virtual-network/security-overview.md#service-tags) | `Storage`(als u een regionale variant gebruikt, in dezelfde regio als uw batch-account) | 443 | TCP | Toestaan |
+| Elk | * | [Servicetag](../articles/virtual-network/security-overview.md#service-tags) | `Storage`(als u een regionale variant gebruikt, in dezelfde regio als uw batch-account) | 443 | TCP | Toestaan |
 
 ### <a name="pools-in-the-cloud-services-configuration"></a>Pools die zijn gemaakt in de Cloud Services-configuratie
 
@@ -101,13 +101,13 @@ Configureer inkomend verkeer op poort 3389 voor Windows als u RDP-toegang tot de
 
 **Inkomende beveiligingsregels**
 
-| IP-adressen van bron | Bronpoorten | Doel | Doelpoorten | Protocol | Bewerking |
+| IP-adressen van bron | Bronpoorten | Doel | Doelpoorten | Protocol | Actie |
 | --- | --- | --- | --- | --- | --- |
-Alle <br /><br />Hoewel dit in feite 'alles toestaan' vereist, past de Batch-service een regel voor toegangsbeheerlijsten toe op het niveau van elk knooppunt, die ervoor zorgt dat alle IP-adressen van niet-Batch-services worden uitgefilterd. | * | Alle | 10100, 20100, 30100 | TCP | Toestaan |
-| Optioneel, voor het toestaan van RDP-toegang tot reken knooppunten. | * | Alle | 3389 | TCP | Toestaan |
+Elk <br /><br />Hoewel dit in feite 'alles toestaan' vereist, past de Batch-service een regel voor toegangsbeheerlijsten toe op het niveau van elk knooppunt, die ervoor zorgt dat alle IP-adressen van niet-Batch-services worden uitgefilterd. | * | Elk | 10100, 20100, 30100 | TCP | Toestaan |
+| Optioneel, voor het toestaan van RDP-toegang tot reken knooppunten. | * | Elk | 3389 | TCP | Toestaan |
 
 **Uitgaande beveiligingsregels**
 
-| Bron | Bronpoorten | Doel | Doelpoorten | Protocol | Bewerking |
+| Bron | Bronpoorten | Doel | Doelpoorten | Protocol | Actie |
 | --- | --- | --- | --- | --- | --- |
-| Alle | * | Alle | 443  | Alle | Toestaan |
+| Elk | * | Elk | 443  | Elk | Toestaan |

@@ -4,12 +4,12 @@ description: Aangepaste installatie kopie groepen zijn een efficiënte manier om
 ms.topic: conceptual
 ms.date: 07/01/2020
 ms.custom: tracking-python
-ms.openlocfilehash: 962b3c84e7f3cecc5f4d64febbfca635733a0bae
-ms.sourcegitcommit: cec9676ec235ff798d2a5cad6ee45f98a421837b
+ms.openlocfilehash: 38233bc5d279c1c0ae7789dd06acff78ea26fb89
+ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85851711"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86147283"
 ---
 # <a name="use-the-shared-image-gallery-to-create-a-custom-image-pool"></a>De galerie met gedeelde afbeeldingen gebruiken om een aangepaste installatie kopie groep te maken
 
@@ -30,7 +30,7 @@ Het gebruik van een gedeelde installatie kopie die voor uw scenario is geconfigu
 - **Installeer toepassingen vooraf.** Het vooraf installeren van toepassingen op de besturingssysteem schijf is efficiënter en minder fout gevoelig dan het installeren van toepassingen na het inrichten van de reken knooppunten met een begin taak.
 - **Kopieer een grote hoeveelheid gegevens eenmaal.** Statische gegevens delen van de beheerde gedeelde installatie kopie maken door deze te kopiëren naar de gegevens schijven van een beheerde installatie kopie. Dit hoeft slechts één keer te worden gedaan en er worden gegevens beschikbaar gemaakt voor elk knoop punt van de groep.
 - **Verg root Pools tot grotere grootten.** Met de galerie gedeelde afbeeldingen kunt u met uw aangepaste installatie kopieën grote groepen maken, samen met meer gedeelde afbeeldings replica's.
-- **Betere prestaties dan het gebruik van alleen een beheerde installatie kopie als een aangepaste installatie kopie.** Voor een aangepaste installatie kopie groep moet de tijd voor het bereiken van de stationaire status tot 25% fasterm en de latentie van de VM-inactiviteit Maxi maal 30% korter zijn.
+- **Betere prestaties dan het gebruik van alleen een beheerde installatie kopie als een aangepaste installatie kopie.** Voor een aangepaste afbeeldings groep voor een gedeelde installatie kopie is de tijd voor het bereiken van de constante status tot 25% sneller en is de latentie van de VM-inactiviteit tot wel 30% korter.
 - **Installatie kopie versie en groepering voor eenvoudiger beheer.** De definitie van de groepering van installatie kopieën bevat informatie over waarom de installatie kopie is gemaakt, waarvoor het besturings systeem is en informatie over het gebruik van de installatie kopie. Door installatie kopieën te groeperen kunt u het beheer van afbeeldingen vereenvoudigen. Zie [afbeeldings definities](../virtual-machines/windows/shared-image-galleries.md#image-definitions)voor meer informatie.
 
 ## <a name="prerequisites"></a>Vereisten
@@ -83,7 +83,7 @@ Als u een beheerde installatie kopie wilt maken op basis van een moment opname, 
 
 ### <a name="create-a-shared-image-gallery"></a>Een gedeelde installatiekopiegalerie maken
 
-Wanneer u de beheerde installatie kopie hebt gemaakt, moet u een galerie met gedeelde afbeeldingen maken om uw aangepaste installatie kopie beschikbaar te maken. Zie [een galerie met gedeelde afbeeldingen maken met Azure cli](../virtual-machines/linux/shared-images.md) of [een galerie met gedeelde afbeeldingen maken met behulp van de Azure Portal](../virtual-machines/linux/shared-images-portal.md)voor meer informatie over het maken van een galerie met gedeelde installatie kopieën voor uw installatie kopieën.
+Wanneer u de beheerde installatie kopie hebt gemaakt, moet u een galerie met gedeelde afbeeldingen maken om uw aangepaste installatie kopie beschikbaar te maken. Zie [een galerie met gedeelde afbeeldingen maken met Azure cli](../virtual-machines/shared-images-cli.md) of [een galerie met gedeelde afbeeldingen maken met behulp van de Azure Portal](../virtual-machines/linux/shared-images-portal.md)voor meer informatie over het maken van een galerie met gedeelde installatie kopieën voor uw installatie kopieën.
 
 ## <a name="create-a-pool-from-a-shared-image-using-the-azure-cli"></a>Een groep maken op basis van een gedeelde installatie kopie met behulp van de Azure CLI
 
@@ -203,7 +203,7 @@ client.pool.add(new_pool)
 
 Gebruik de volgende stappen om een groep te maken op basis van een gedeelde installatie kopie in de Azure Portal.
 
-1. Open de [Azure Portal](https://portal.azure.com).
+1. Open [Azure Portal](https://portal.azure.com).
 1. Ga naar **batch-accounts** en selecteer uw account.
 1. Selecteer **Pools** en voeg vervolgens **toe** om een nieuwe groep te maken.
 1. Selecteer in de sectie **type installatie** kopie de **Galerie gedeelde installatie kopieën**.

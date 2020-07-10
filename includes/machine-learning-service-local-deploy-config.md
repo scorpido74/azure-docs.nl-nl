@@ -13,7 +13,7 @@ ms.locfileid: "79477269"
 ---
 De vermeldingen in de `deploymentconfig.json` document structuur met de para meters voor [LocalWebservice. deploy_configuration](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice.local.localwebservicedeploymentconfiguration?view=azure-ml-py). De volgende tabel beschrijft de toewijzing tussen de entiteiten in het JSON-document en de para meters voor de-methode:
 
-| JSON-entiteit | Methode parameter | Description |
+| JSON-entiteit | Methode parameter | Beschrijving |
 | ----- | ----- | ----- |
 | `computeType` | NA | Het rekendoel. Voor lokale doelen moet de waarde zijn `local` . |
 | `port` | `port` | De lokale poort waarop het HTTP-eind punt van de service wordt weer gegeven. |

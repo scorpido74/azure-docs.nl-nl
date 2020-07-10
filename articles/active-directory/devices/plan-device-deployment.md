@@ -11,11 +11,12 @@ author: BarbaraSelden
 manager: daveba
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: aab57d48e8bd95f1ce2aec2dde42303d5d991a58
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: aa83e295460cc847647e83c7e4e8a9d7ee91f6f4
+ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85444247"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86165767"
 ---
 # <a name="plan-your-azure-active-directory-device-deployment"></a>De implementatie van uw Azure Active Directory-apparaat plannen
 
@@ -65,7 +66,7 @@ Wanneer technologie projecten mislukken, worden ze doorgaans als gevolg van niet
 
 Voor dit abonnement voegt u de volgende belanghebbenden toe aan uw lijst:
 
-| Rol| Description |
+| Rol| Beschrijving |
 | - | - |
 | Apparaat-beheerder| Een vertegenwoordiger van het team dat kan controleren of het plan voldoet aan de apparaat vereisten van uw organisatie. |
 | Netwerk beheerder| Een vertegenwoordiger van het netwerk team die ervoor kan zorgen dat aan de netwerk vereisten wordt voldaan. |
@@ -101,7 +102,7 @@ Gebruik deze structuur om opties te bepalen voor apparaten die eigendom zijn van
 
 iOS-en Android-apparaten kunnen alleen worden geregistreerd bij Azure AD. De volgende tabel geeft een hoog niveau van overwegingen voor Windows-client apparaten. Gebruik dit als een overzicht en verken de verschillende integratie methoden uitvoerig.
 
-| | Azure AD-geregistreerd| Azure AD-koppeling| Hybride Azure AD-koppeling |
+| Overweging | Azure AD-geregistreerd| Azure AD-koppeling| Hybride Azure AD-koppeling |
 | - | - | - | - |
 | **Client besturingssystemen**| | |  |
 | Windows 10-apparaten| ![Kijk](./media/plan-device-deployment/check.png)| ![Kijk](./media/plan-device-deployment/check.png)| ![Kijk](./media/plan-device-deployment/check.png) |

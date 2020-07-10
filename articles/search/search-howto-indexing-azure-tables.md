@@ -9,12 +9,12 @@ ms.devlang: rest-api
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: e0a711b9239e1a76774d8e75f035e6c862218c82
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: d6670966b4cf74510df5dd26c994e0c53b219ba9
+ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85563126"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86145248"
 ---
 # <a name="how-to-index-tables-from-azure-table-storage-with-azure-cognitive-search"></a>Tabellen indexeren vanuit Azure-tabel opslag met Azure Cognitive Search
 
@@ -24,7 +24,7 @@ In dit artikel wordt beschreven hoe u Azure Cognitive Search gebruikt voor het i
 
 U kunt een Azure Table Storage-indexer instellen met behulp van de volgende resources:
 
-* [Azure-portal](https://ms.portal.azure.com)
+* [Azure Portal](https://ms.portal.azure.com)
 * Azure Cognitive Search [rest API](https://docs.microsoft.com/rest/api/searchservice/Indexer-operations)
 * Azure Cognitive Search [.NET SDK](https://docs.microsoft.com/dotnet/api/overview/azure/search)
 
@@ -49,6 +49,7 @@ Voor het indexeren van tabellen moet de gegevens bron de volgende eigenschappen 
 
 Een gegevens bron maken:
 
+```http
     POST https://[service name].search.windows.net/datasources?api-version=2020-06-30
     Content-Type: application/json
     api-key: [admin key]
@@ -59,6 +60,7 @@ Een gegevens bron maken:
         "credentials" : { "connectionString" : "DefaultEndpointsProtocol=https;AccountName=<account name>;AccountKey=<account key>;" },
         "container" : { "name" : "my-table", "query" : "PartitionKey eq '123'" }
     }   
+```
 
 Zie [Create Data Source](https://docs.microsoft.com/rest/api/searchservice/create-data-source)voor meer informatie over de Create Data Source-API.
 
@@ -81,6 +83,7 @@ De index specificeert de velden in een document, de kenmerken en andere construc
 
 Een index maken:
 
+```http
     POST https://[service name].search.windows.net/indexes?api-version=2020-06-30
     Content-Type: application/json
     api-key: [admin key]
@@ -92,6 +95,7 @@ Een index maken:
             { "name": "SomeColumnInMyTable", "type": "Edm.String", "searchable": true }
           ]
     }
+```
 
 Zie [Create Index](https://docs.microsoft.com/rest/api/searchservice/create-index)voor meer informatie over het maken van indexen.
 
@@ -100,6 +104,7 @@ Een Indexeer functie verbindt een gegevens bron met een doel zoek index en biedt
 
 Nadat de index en gegevens bron zijn gemaakt, bent u klaar om de Indexeer functie te maken:
 
+```http
     POST https://[service name].search.windows.net/indexers?api-version=2020-06-30
     Content-Type: application/json
     api-key: [admin key]
@@ -110,6 +115,7 @@ Nadat de index en gegevens bron zijn gemaakt, bent u klaar om de Indexeer functi
       "targetIndexName" : "my-target-index",
       "schedule" : { "interval" : "PT2H" }
     }
+```
 
 Deze Indexeer functie wordt elke twee uur uitgevoerd. (Het interval van de planning is ingesteld op ' PT2H '.) Als u een Indexeer functie elke 30 minuten wilt uitvoeren, stelt u het interval in op ' PT30M '. Het kortste ondersteunde interval is vijf minuten. De planning is optioneel; Als u dit weglaat, wordt een Indexeer functie slechts eenmaal uitgevoerd wanneer deze wordt gemaakt. U kunt een Indexeer functie echter op elk gewenst moment uitvoeren.   
 
@@ -135,6 +141,7 @@ Wanneer u een tabel Indexeer functie zo instelt dat deze volgens een planning wo
 
 Om aan te geven dat bepaalde documenten uit de index moeten worden verwijderd, kunt u een voorlopig verwijderings strategie gebruiken. In plaats van een rij te verwijderen, voegt u een eigenschap toe om aan te geven dat deze is verwijderd en stelt u een voorlopig detectie beleid voor het verwijderen van de gegevens bron in. Het volgende beleid is bijvoorbeeld van mening dat een rij wordt verwijderd als de rij een eigenschap heeft `IsDeleted` met de waarde `"true"` :
 
+```http
     PUT https://[service name].search.windows.net/datasources?api-version=2020-06-30
     Content-Type: application/json
     api-key: [admin key]
@@ -146,6 +153,7 @@ Om aan te geven dat bepaalde documenten uit de index moeten worden verwijderd, k
         "container" : { "name" : "table name", "query" : "<query>" },
         "dataDeletionDetectionPolicy" : { "@odata.type" : "#Microsoft.Azure.Search.SoftDeleteColumnDeletionDetectionPolicy", "softDeleteColumnName" : "IsDeleted", "softDeleteMarkerValue" : "true" }
     }   
+```
 
 <a name="Performance"></a>
 ## <a name="performance-considerations"></a>Prestatieoverwegingen

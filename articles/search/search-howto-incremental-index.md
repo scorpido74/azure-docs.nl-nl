@@ -9,12 +9,12 @@ ms.service: cognitive-search
 ms.devlang: rest-api
 ms.topic: conceptual
 ms.date: 01/06/2020
-ms.openlocfilehash: 75b533368a01b2e98bece0751f45b12f36796658
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 6af9db5ed76ecb79f8891895eab52ff71bcab048
+ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85556271"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86146878"
 ---
 # <a name="how-to-configure-caching-for-incremental-enrichment-in-azure-cognitive-search"></a>Caching configureren voor incrementele verrijking in azure Cognitive Search
 
@@ -103,11 +103,13 @@ api-key: [YOUR-ADMIN-KEY]
 
 Als u nu een nieuwe GET-aanvraag voor de Indexeer functie levert, bevat het antwoord van de service een `ID` eigenschap in het cache-object. De alfanumerieke teken reeks wordt toegevoegd aan de naam van de container die alle in de cache opgeslagen resultaten en de tussenliggende status van elk document verwerkt door deze Indexeer functie bevat. De ID wordt gebruikt om de cache in Blob Storage een unieke naam te krijgen.
 
+```http
     "cache": {
         "ID": "<ALPHA-NUMERIC STRING>",
         "enableReprocessing": true,
         "storageConnectionString": "DefaultEndpointsProtocol=https;AccountName=<YOUR-STORAGE-ACCOUNT>;AccountKey=<YOUR-STORAGE-KEY>;EndpointSuffix=core.windows.net"
     }
+```
 
 ### <a name="step-5-run-the-indexer"></a>Stap 5: de Indexeer functie uitvoeren
 

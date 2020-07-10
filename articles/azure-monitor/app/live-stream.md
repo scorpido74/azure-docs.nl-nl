@@ -4,12 +4,12 @@ description: Bewaak uw web-app in realtime met aangepaste metrische gegevens en 
 ms.topic: conceptual
 ms.date: 04/22/2019
 ms.reviewer: sdash
-ms.openlocfilehash: 10818a531a43b50b86a6d413c7a504e2c19c3986
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: e554595a7a88e1455f7426636dc69db99a7d3e94
+ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85507329"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86166481"
 ---
 # <a name="live-metrics-stream-monitor--diagnose-with-1-second-latency"></a>Live Metrics Stream: controleren & diagnose met een latentie van 1 seconde
 
@@ -49,12 +49,12 @@ Controleer of de [uitgaande poorten voor Live Metrics stream](../../azure-monito
 
 | |Live Stream | Metrics Explorer en analyse |
 |---|---|---|
-|Latentie|Gegevens die binnen één seconde worden weer gegeven|Geaggregeerd over minuten|
-|Geen Bewaar periode|De gegevens blijven behouden in de grafiek en vervolgens verwijderd|[Gegevens die gedurende 90 dagen worden bewaard](../../azure-monitor/app/data-retention-privacy.md#how-long-is-the-data-kept)|
-|Op aanvraag|Gegevens worden alleen gestreamd wanneer het deel venster Live Metrics is geopend. |Er worden gegevens verzonden wanneer de SDK is geïnstalleerd en ingeschakeld|
-|Gratis|Er worden geen kosten in rekening gebracht voor Live Stream gegevens|Onderworpen aan [prijzen](../../azure-monitor/app/pricing.md)
-|Steekproeven|Alle geselecteerde metrische gegevens en tellers worden verzonden. Voor beelden van fouten en stack traceringen zijn. TelemetryProcessors worden niet toegepast.|Gebeurtenissen kunnen worden [bemonsterd](../../azure-monitor/app/api-filtering-sampling.md)|
-|Besturings kanaal|Filter besturings signalen worden naar de SDK verzonden. U wordt aangeraden dit kanaal te beveiligen.|Communicatie is een manier, naar de portal|
+|**Latentie**|Gegevens die binnen één seconde worden weer gegeven|Geaggregeerd over minuten|
+|**Geen Bewaar periode**|De gegevens blijven behouden in de grafiek en vervolgens verwijderd|[Gegevens die gedurende 90 dagen worden bewaard](../../azure-monitor/app/data-retention-privacy.md#how-long-is-the-data-kept)|
+|**Op aanvraag**|Gegevens worden alleen gestreamd wanneer het deel venster Live Metrics is geopend. |Er worden gegevens verzonden wanneer de SDK is geïnstalleerd en ingeschakeld|
+|**Gratis**|Er worden geen kosten in rekening gebracht voor Live Stream gegevens|Onderworpen aan [prijzen](../../azure-monitor/app/pricing.md)
+|**Steekproeven**|Alle geselecteerde metrische gegevens en tellers worden verzonden. Voor beelden van fouten en stack traceringen zijn. TelemetryProcessors worden niet toegepast.|Gebeurtenissen kunnen worden [bemonsterd](../../azure-monitor/app/api-filtering-sampling.md)|
+|**Besturings kanaal**|Filter besturings signalen worden naar de SDK verzonden. U wordt aangeraden dit kanaal te beveiligen.|Communicatie is een manier, naar de portal|
 
 ## <a name="select-and-filter-your-metrics"></a>Uw metrische gegevens selecteren en filteren
 

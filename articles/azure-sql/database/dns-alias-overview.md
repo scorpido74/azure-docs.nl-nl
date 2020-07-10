@@ -11,11 +11,12 @@ author: rohitnayakmsft
 ms.author: rohitna
 ms.reviewer: genemi, jrasnick, vanto
 ms.date: 06/26/2019
-ms.openlocfilehash: aa8fa9ff6973e908d6af700f7c2965a844e87b04
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: d208a9b9f8e1cc16e2c72aa825a2daf88ad00176
+ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84170978"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86145659"
 ---
 # <a name="dns-alias-for-azure-sql-database"></a>DNS-alias voor Azure SQL Database
 [!INCLUDE[appliesto-sqldb-asa](../includes/appliesto-sqldb-asa.md)]
@@ -111,6 +112,8 @@ Momenteel heeft een DNS-alias de volgende beperkingen:
 ## <a name="related-resources"></a>Gerelateerde resources
 
 - [Overzicht van bedrijfs continuïteit met Azure SQL database](business-continuity-high-availability-disaster-recover-hadr-overview.md), met inbegrip van herstel na nood gevallen.
+- [Azure REST API-naslaginformatie](https://docs.microsoft.com/rest/api/azure/)
+- [Server DNS-aliassen API](https://docs.microsoft.com/rest/api/sql/serverdnsaliases)
 
 ## <a name="next-steps"></a>Volgende stappen
 

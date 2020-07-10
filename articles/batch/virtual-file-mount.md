@@ -3,11 +3,12 @@ title: Een virtueel bestands systeem koppelen aan een groep
 description: Meer informatie over het koppelen van een virtueel bestands systeem aan een batch-pool.
 ms.topic: how-to
 ms.date: 08/13/2019
-ms.openlocfilehash: 80acf5df0cf5262249b2eac584152744a4224a35
-ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.openlocfilehash: 3f948f8441208f4a8741949e65afc8032f0a5080
+ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/05/2020
-ms.locfileid: "85954669"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86144419"
 ---
 # <a name="mount-a-virtual-file-system-on-a-batch-pool"></a>Een virtueel bestands systeem koppelen aan een batch-pool
 
@@ -76,7 +77,7 @@ new PoolAddParameter
 
 ### <a name="azure-blob-file-system"></a>Azure Blob-bestands systeem
 
-Een andere optie is het gebruik van Azure Blob Storage via [blobfuse](../storage/blobs/storage-how-to-mount-container-linux.md). Voor het koppelen van een BLOB-bestands systeem is een `AccountKey` or vereist `SasKey` voor uw opslag account. Zie [toegangs sleutels voor opslag accounts beheren](../storage/common/storage-account-keys-manage.md)of [hand tekeningen voor gedeelde toegang gebruiken (SAS)](../storage/common/storage-dotnet-shared-access-signature-part-1.md)voor meer informatie over het ophalen van deze sleutels. Zie de blobfuse [Troubleshooting FAQ (Engelstalig](https://github.com/Azure/azure-storage-fuse/wiki/3.-Troubleshoot-FAQ)) voor meer informatie over het gebruik van blobfuse. Als u standaard toegang wilt krijgen tot de gekoppelde blobfuse Directory, voert u de taak uit als **beheerder**. Blobfuse koppelt de directory aan de gebruikers ruimte en bij het maken van de groep wordt deze als root gekoppeld. In Linux zijn alle **beheerders** taken hoofdmap. Alle opties voor de ZEKERing-module worden beschreven op de [pagina zekerheid](https://manpages.ubuntu.com/manpages/xenial/man8/mount.fuse.8.html).
+Een andere optie is het gebruik van Azure Blob Storage via [blobfuse](../storage/blobs/storage-how-to-mount-container-linux.md). Voor het koppelen van een BLOB-bestands systeem is een `AccountKey` or vereist `SasKey` voor uw opslag account. Zie [toegangs sleutels voor opslag accounts beheren](../storage/common/storage-account-keys-manage.md)of [hand tekeningen voor gedeelde toegang gebruiken (SAS)](../storage/common/storage-sas-overview.md)voor meer informatie over het ophalen van deze sleutels. Zie de blobfuse [Troubleshooting FAQ (Engelstalig](https://github.com/Azure/azure-storage-fuse/wiki/3.-Troubleshoot-FAQ)) voor meer informatie over het gebruik van blobfuse. Als u standaard toegang wilt krijgen tot de gekoppelde blobfuse Directory, voert u de taak uit als **beheerder**. Blobfuse koppelt de directory aan de gebruikers ruimte en bij het maken van de groep wordt deze als root gekoppeld. In Linux zijn alle **beheerders** taken hoofdmap. Alle opties voor de ZEKERing-module worden beschreven op de [pagina zekerheid](https://manpages.ubuntu.com/manpages/xenial/man8/mount.fuse.8.html).
 
 Naast de hand leiding voor het oplossen van problemen, zijn GitHub problemen in de blobfuse-opslag plaats een handige manier om te controleren of er problemen zijn met blobfuse en oplossingen. Zie [blobfuse issues](https://github.com/Azure/azure-storage-fuse/issues)(Engelstalig) voor meer informatie.
 

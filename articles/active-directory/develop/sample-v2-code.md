@@ -12,12 +12,12 @@ ms.date: 06/01/2020
 ms.author: marsma
 ms.reviewer: jmprieur
 ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: 788f7eab3e547347beb4d95b523ad3c77e954687
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 42b7cf88942fb9b54b1292ece18cf14eb0d21958
+ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85477359"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86165959"
 ---
 # <a name="microsoft-identity-platform-code-samples-v20-endpoint"></a>Micro soft Identity platform code samples (v 2.0-eind punt)
 
@@ -65,22 +65,22 @@ De volgende voor beelden illustreren webtoepassingen die aanmelden bij gebruiker
 
 ## <a name="desktop-and-mobile-public-client-apps"></a>Desktop-en mobiele open bare client-apps
 
-De volgende voor beelden tonen open bare client toepassingen (desktop-of mobiele toepassingen) die toegang hebben tot de Microsoft Graph-API of uw eigen web-API in de naam van een gebruiker. Al deze client toepassingen gebruiken micro soft Authentication Library (MSAL).
+De volgende voor beelden tonen open bare client toepassingen (desktop-of mobiele toepassingen) die toegang hebben tot de Microsoft Graph-API of uw eigen web-API in de naam van een gebruiker. Naast het *bureau blad (console) met WAM-voor* beeld gebruiken al deze client toepassingen micro soft Authentication Library (MSAL).
 
 | Client toepassing | Platform | Stroom/verlenen | Aanroepen Microsoft Graph | Hiermee wordt een ASP.NET Core Web-API aangeroepen |
 | ------------------ | -------- |  ----------| ---------- | ------------------------- |
-| Bureau blad (WPF)      | ![In deze afbeelding wordt het .NET/C#-logo weer gegeven](media/sample-v2-code/logo_NET.png) | [interactief](msal-authentication-flows.md#interactive)| [DotNet-Desktop-MSGraph-v2](https://github.com/azure-samples/active-directory-dotnet-desktop-msgraph-v2) | [DotNet-systeem eigen-aspnetcore-v2](https://aka.ms/msidentity-aspnetcore-webapi) |
+| Bureau blad (WPF)      | ![In deze afbeelding wordt het .NET/C#-logo weer gegeven](media/sample-v2-code/logo_NET.png) | [Autorisatie code](msal-authentication-flows.md#authorization-code)| [DotNet-Desktop-MSGraph-v2](https://github.com/azure-samples/active-directory-dotnet-desktop-msgraph-v2) | [DotNet-systeem eigen-aspnetcore-v2](https://aka.ms/msidentity-aspnetcore-webapi) |
 | Bureau blad (console)   | ![In deze afbeelding wordt het .NET/C#-logo (Desktop) weer gegeven](media/sample-v2-code/logo_NET.png) | [Geïntegreerde Windows-verificatie](msal-authentication-flows.md#integrated-windows-authentication) | [DotNet-IWA-v2](https://github.com/azure-samples/active-directory-dotnet-iwa-v2) |  |
 | Bureau blad (console)   | ![In deze afbeelding wordt het Java-logo weer gegeven](media/sample-v2-code/logo_java.png) | [Geïntegreerde Windows-verificatie](msal-authentication-flows.md#integrated-windows-authentication) |[MS-Identity-Java-Desktop](https://github.com/Azure-Samples/ms-identity-java-desktop/) |  |
 | Bureau blad (console)   | ![In deze afbeelding wordt het .NET/C#-logo (Desktop) weer gegeven](media/sample-v2-code/logo_NETcore.png) | [Gebruikers naam/wacht woord](msal-authentication-flows.md#usernamepassword) |[dotnetcore-up-v2](https://github.com/azure-samples/active-directory-dotnetcore-console-up-v2) |  |
-| Bureau blad (console) met WAM  | ![In deze afbeelding wordt het .NET/C#-logo (Desktop) weer gegeven](media/sample-v2-code/logo_NETcore.png) | [interactief met WAM](msal-authentication-flows.md#interactive) |[DotNet-systeem eigen-UWP-WAM](https://github.com/azure-samples/active-directory-dotnet-native-uwp-wam) |  |
+| Bureau blad (console) met WAM  | ![In deze afbeelding wordt het .NET/C#-logo (Desktop) weer gegeven](media/sample-v2-code/logo_NETcore.png) | Interactief met [web account manager](/windows/uwp/security/web-account-manager) (WAM) |[DotNet-systeem eigen-UWP-WAM](https://github.com/azure-samples/active-directory-dotnet-native-uwp-wam) |  |
 | Bureau blad (console)   | ![In deze afbeelding wordt het Java-logo weer gegeven](media/sample-v2-code/logo_java.png) | [Gebruikers naam/wacht woord](msal-authentication-flows.md#usernamepassword) |[MS-Identity-Java-Desktop](https://github.com/Azure-Samples/ms-identity-java-desktop/) |  |
 | Bureau blad (console)   | ![Deze afbeelding toont het python-logo](media/sample-v2-code/logo_python.png) | [Gebruikers naam/wacht woord](msal-authentication-flows.md#usernamepassword) |[MS-Identity-python-desktop](https://github.com/Azure-Samples/ms-identity-python-desktop) |  |
-| Mobiel (Android, iOS, UWP)   | ![In deze afbeelding wordt het .NET/C#-logo (Xamarin) weer gegeven](media/sample-v2-code/logo_xamarin.png) | [interactief](msal-authentication-flows.md#interactive) |[xamarin-native-v2](https://github.com/azure-samples/active-directory-xamarin-native-v2) |  |
-| Mobiel (iOS)       | ![Deze afbeelding toont iOS/objectief-C of SWIFT](media/sample-v2-code/logo_iOS.png) | [interactief](msal-authentication-flows.md#interactive) |[IOS-Swift-objc-native-v2](https://github.com/azure-samples/active-directory-ios-swift-native-v2) </p> [IOS-systeem eigen-nxoauth2-v2](https://github.com/azure-samples/active-directory-ios-native-nxoauth2-v2) |  |
-| Bureau blad (macOS)       | macOS | [interactief](msal-authentication-flows.md#interactive) |[macOS-Swift-objc-native-v2](https://github.com/Azure-Samples/ms-identity-macOS-swift-objc) |  |
-| Mobiel (Android-Java)   | ![Deze afbeelding toont het Android-logo](media/sample-v2-code/logo_Android.png) | [interactief](msal-authentication-flows.md#interactive) |  [Android-java](https://github.com/Azure-Samples/ms-identity-android-java) |  |
-| Mobiel (Android-Kotlin)   | ![Deze afbeelding toont het Android-logo](media/sample-v2-code/logo_Android.png) | [interactief](msal-authentication-flows.md#interactive) |  [Android-Kotlin](https://github.com/Azure-Samples/ms-identity-android-kotlin) |  |
+| Mobiel (Android, iOS, UWP)   | ![In deze afbeelding wordt het .NET/C#-logo (Xamarin) weer gegeven](media/sample-v2-code/logo_xamarin.png) | [Autorisatie code](msal-authentication-flows.md#authorization-code) |[xamarin-native-v2](https://github.com/azure-samples/active-directory-xamarin-native-v2) |  |
+| Mobiel (iOS)       | ![Deze afbeelding toont iOS/objectief-C of SWIFT](media/sample-v2-code/logo_iOS.png) | [Autorisatie code](msal-authentication-flows.md#authorization-code) |[IOS-Swift-objc-native-v2](https://github.com/azure-samples/active-directory-ios-swift-native-v2) </p> [IOS-systeem eigen-nxoauth2-v2](https://github.com/azure-samples/active-directory-ios-native-nxoauth2-v2) |  |
+| Bureau blad (macOS)       | macOS | [Autorisatie code](msal-authentication-flows.md#authorization-code) |[macOS-Swift-objc-native-v2](https://github.com/Azure-Samples/ms-identity-macOS-swift-objc) |  |
+| Mobiel (Android-Java)   | ![Deze afbeelding toont het Android-logo](media/sample-v2-code/logo_Android.png) | [Autorisatie code](msal-authentication-flows.md#authorization-code) |  [Android-java](https://github.com/Azure-Samples/ms-identity-android-java) |  |
+| Mobiel (Android-Kotlin)   | ![Deze afbeelding toont het Android-logo](media/sample-v2-code/logo_Android.png) | [Autorisatie code](msal-authentication-flows.md#authorization-code) |  [Android-Kotlin](https://github.com/Azure-Samples/ms-identity-android-kotlin) |  |
 
 ## <a name="daemon-applications"></a>Daemon-toepassingen
 

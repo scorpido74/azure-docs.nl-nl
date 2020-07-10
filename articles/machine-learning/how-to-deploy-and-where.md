@@ -9,14 +9,14 @@ ms.topic: how-to
 ms.author: jordane
 author: jpe316
 ms.reviewer: larryfr
-ms.date: 06/12/2020
+ms.date: 07/08/2020
 ms.custom: seoapril2019, tracking-python
-ms.openlocfilehash: aa961cb94816b50aa515532e69454fce9b370c54
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.openlocfilehash: 57e1ecb080d816898b862951846b15a4b5709e38
+ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
 ms.translationtype: MT
 ms.contentlocale: nl-NL
 ms.lasthandoff: 07/08/2020
-ms.locfileid: "86083076"
+ms.locfileid: "86146553"
 ---
 # <a name="deploy-models-with-azure-machine-learning"></a>Modellen implementeren met Azure Machine Learning
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -59,7 +59,7 @@ De volgende code laat zien hoe u verbinding maakt met een Azure Machine Learning
 
 + **Visual Studio Code gebruiken**
 
-   Wanneer u Visual Studio code gebruikt, selecteert u de werk ruimte met behulp van een grafische interface. Zie [modellen implementeren en beheren](tutorial-train-deploy-image-classification-model-vscode.md#deploy-the-model) in de documentatie van Visual Studio code Extension voor meer informatie.
+   Wanneer u Visual Studio code gebruikt, selecteert u de werk ruimte met behulp van een grafische interface. Zie [modellen implementeren en beheren](how-to-manage-resources-vscode.md#endpoints) in de documentatie van Visual Studio code Extension voor meer informatie.
 
 ## <a name="register-your-model"></a><a id="registermodel"></a>Uw model registreren
 
@@ -608,13 +608,13 @@ Tijdens de implementatie van het model ziet u mogelijk de wijziging van de servi
 
 In de volgende tabel worden de verschillende service statussen beschreven:
 
-| Status van webservice | Description | Eind status?
+| Status van webservice | Beschrijving | Eind status?
 | ----- | ----- | ----- |
-| Overstappen | De service is in het implementatie proces. | No |
-| Niet in orde | De service is geïmplementeerd, maar is momenteel niet bereikbaar.  | No |
-| Unschedulable | De service kan op dit moment niet worden geïmplementeerd vanwege een gebrek aan resources. | No |
-| Mislukt | De implementatie van de service is mislukt vanwege een fout of een crash. | Yes |
-| In orde | De service is in orde en het eind punt is beschikbaar. | Yes |
+| Overstappen | De service is in het implementatie proces. | Nee |
+| Niet in orde | De service is geïmplementeerd, maar is momenteel niet bereikbaar.  | Nee |
+| Unschedulable | De service kan op dit moment niet worden geïmplementeerd vanwege een gebrek aan resources. | Nee |
+| Mislukt | De implementatie van de service is mislukt vanwege een fout of een crash. | Ja |
+| In orde | De service is in orde en het eind punt is beschikbaar. | Ja |
 
 ### <a name="compute-instance-web-service-devtest"></a><a id="notebookvm"></a>Compute instance web service (dev/test)
 

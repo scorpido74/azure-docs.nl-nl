@@ -4,11 +4,12 @@ description: Meer informatie over het verwerken van uw parallelle Compute-werk b
 ms.topic: how-to
 ms.date: 06/01/2018
 ms.custom: H1Hack27Feb2017, tracking-python
-ms.openlocfilehash: 1a87b72b16c1d41e5569c4ce9e5e1a6e2c51a2e0
-ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.openlocfilehash: 05e23093a00eab70db683c10eae59ef27152d2f7
+ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/05/2020
-ms.locfileid: "85960075"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86145035"
 ---
 # <a name="provision-linux-compute-nodes-in-batch-pools"></a>Linux-reken knooppunten inrichten in batch-Pools
 
@@ -28,7 +29,7 @@ Wanneer u een pool van reken knooppunten in batch maakt, hebt u twee opties waar
 
 ### <a name="virtual-machine-image-reference"></a>Naslag informatie voor installatie kopieën van virtuele machines
 
-De batch-service maakt gebruik van [schaal sets voor virtuele machines](../virtual-machine-scale-sets/virtual-machine-scale-sets-overview.md) voor het leveren van reken knooppunten in de configuratie van de virtuele machine. U kunt een installatie kopie van de [Azure Marketplace][vm_marketplace]opgeven of een aangepaste installatie kopie die u hebt voor bereid. Zie [een groep maken met de galerie gedeelde afbeeldingen](batch-sig-images.md)voor meer informatie over aangepaste installatie kopieën.
+De batch-service maakt gebruik van [schaal sets voor virtuele machines](../virtual-machine-scale-sets/overview.md) voor het leveren van reken knooppunten in de configuratie van de virtuele machine. U kunt een installatie kopie van de [Azure Marketplace][vm_marketplace]opgeven of een aangepaste installatie kopie die u hebt voor bereid. Zie [een groep maken met de galerie gedeelde afbeeldingen](batch-sig-images.md)voor meer informatie over aangepaste installatie kopieën.
 
 Wanneer u een verwijzing naar een installatie kopie van een virtuele machine configureert, geeft u de eigenschappen van de installatie kopie van de virtuele machine op. De volgende eigenschappen zijn vereist wanneer u een verwijzing naar een installatie kopie van een virtuele machine maakt:
 

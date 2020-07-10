@@ -16,12 +16,12 @@ ms.date: 04/16/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: af5a9b5b5dd8eb6b6bec8440287918d1f8610064
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: bde937adba8d2469390a6cf404f6cce8c5008e87
+ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85357916"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86144699"
 ---
 # <a name="azure-active-directory-seamless-single-sign-on-technical-deep-dive"></a>Azure Active Directory naadloze eenmalige aanmelding: technische grondige kennis
 
@@ -45,6 +45,9 @@ Naadloze SSO is ingeschakeld met Azure AD Connect, zoals [hier](how-to-connect-s
 
 >[!IMPORTANT]
 > Het `AZUREADSSOACC` computer account moet om veiligheids redenen sterk worden beveiligd. Alleen domein Administrators moeten het computer account kunnen beheren. Zorg ervoor dat Kerberos-delegering op het computer account is uitgeschakeld en dat geen ander account in Active Directory overdrachts machtigingen heeft voor het `AZUREADSSOACC` computer account. Sla het computer account op in een organisatie-eenheid (OE) waar het veilig is tegen onbedoeld verwijderen en waar alleen domein beheerders toegang hebben. De Kerberos-ontsleutelings sleutel op het computer account moet ook als gevoelig worden beschouwd. We raden u ten zeerste aan [de Kerberos-ontsleutelings sleutel](how-to-connect-sso-faq.md) van het `AZUREADSSOACC` computer account ten minste elke 30 dagen in te voeren.
+
+>[!IMPORTANT]
+> Naadloze SSO ondersteunt de AES256_HMAC_SHA1, AES128_HMAC_SHA1 en RC4_HMAC_MD5 versleutelings typen voor Kerberos. Het is raadzaam om het versleutelings type voor de AzureADSSOAcc $-account in te stellen op AES256_HMAC_SHA1, of een van de AES-typen versus RC4 voor extra beveiliging. Het versleutelings type wordt opgeslagen in het kenmerk msDS-SupportedEncryptionTypes van het account in uw Active Directory.  Als het versleutelings type AzureADSSOAcc $-account is ingesteld op RC4_HMAC_MD5 en u het wilt wijzigen in een van de AES-versleutelings typen, moet u ervoor zorgen dat u de eerste keer de Kerberos-ontsleutelingssleutel van het AzureADSSOAcc $-account uitschakelt, zoals wordt uitgelegd in het [document met veelgestelde vragen](how-to-connect-sso-faq.md) onder de relevante vraag, anders wordt naadloze SSO niet uitgevoerd.
 
 Zodra de installatie is voltooid, werkt naadloze SSO op dezelfde manier als andere aanmelding waarbij gebruik wordt gemaakt van geïntegreerde Windows-authenticatie (IWA).
 

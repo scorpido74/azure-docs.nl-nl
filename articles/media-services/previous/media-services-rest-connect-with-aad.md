@@ -14,12 +14,12 @@ ms.topic: article
 ms.date: 03/20/2019
 ms.author: juliako
 ms.reviewer: willzhan; johndeu
-ms.openlocfilehash: a693eb374365670da3fe8c4b2bb8ce664a024217
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 8b4980ee8ea252b4ce13601501e4bf1f7af97d1b
+ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80295446"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86166362"
 ---
 # <a name="use-azure-ad-authentication-to-access-the-media-services-api-with-rest"></a>Azure Active Directory-verificatie gebruiken voor toegang tot de Media Services-API met REST
 
@@ -137,8 +137,10 @@ In deze sectie wordt beschreven hoe u **postman** gebruikt om een rest API uit t
 
     U kunt ook op de koppeling **bulk bewerking** rechts van het venster postman klikken en de volgende code plakken.
 
-        Content-Type:application/x-www-form-urlencoded
-        Keep-Alive:true
+    ```javascript
+    Content-Type:application/x-www-form-urlencoded
+    Keep-Alive:true
+    ```
 
 6. Klik op het tabblad **hoofd tekst** .
 7. Voer de informatie over de hoofd tekst in met behulp van het gegevens raster ' sleutel/waarde ' (Vervang de client-ID en geheime waarden). 
@@ -147,10 +149,12 @@ In deze sectie wordt beschreven hoe u **postman** gebruikt om een rest API uit t
 
     U kunt ook op **bulk bewerking** klikken rechts van het venster postman en de volgende hoofd tekst plakken (Vervang de client-id en de geheime waarden):
 
-        grant_type:client_credentials
-        client_id:{Your Client ID that you got from your Azure AD Application}
-        client_secret:{Your client secret that you got from your Azure AD Application's Keys}
-        resource:https://rest.media.azure.net
+    ```javascript
+    grant_type:client_credentials
+    client_id:{Your Client ID that you got from your Azure AD Application}
+    client_secret:{Your client secret that you got from your Azure AD Application's Keys}
+    resource:https://rest.media.azure.net
+    ```
 
 8. Druk op **Verzenden**.
 
@@ -180,11 +184,13 @@ In deze sectie wordt beschreven hoe u **de Asset** -API opent met behulp van **p
 5. Klik in het venster postman op koppeling **bulk bewerking** .
 6. Plak de volgende headers:
 
-        x-ms-version:2.19
-        Accept:application/json
-        Content-Type:application/json
-        DataServiceVersion:3.0
-        MaxDataServiceVersion:3.0
+    ```javascript
+    x-ms-version:2.19
+    Accept:application/json
+    Content-Type:application/json
+    DataServiceVersion:3.0
+    MaxDataServiceVersion:3.0
+    ```
 
 7. Druk op **Verzenden**.
 

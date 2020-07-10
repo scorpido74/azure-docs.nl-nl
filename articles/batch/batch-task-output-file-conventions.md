@@ -4,12 +4,12 @@ description: Meer informatie over het gebruik van Azure Batch bestands conventie
 ms.topic: how-to
 ms.date: 11/14/2018
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: ba1b35bd8f2a4cc58558607581d10b598d23058c
-ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.openlocfilehash: 2e06bc90c95f9951895e0434ec8a8a7defaa6156
+ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/05/2020
-ms.locfileid: "85965192"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86147168"
 ---
 # <a name="persist-job-and-task-data-to-azure-storage-with-the-batch-file-conventions-library-for-net"></a>Taak-en taak gegevens persistent maken om te Azure Storage met de conventies bibliotheek voor batch bestanden voor .NET
 
@@ -55,7 +55,7 @@ Als u uitvoer gegevens wilt behouden voor Azure Storage met behulp van de bestan
 
 Als u taak-en taak uitvoer gegevens wilt behouden met de bestands conventies bibliotheek, maakt u een container in Azure Storage en slaat u de uitvoer op in de container. Gebruik de [Azure Storage-client bibliotheek voor .net](https://www.nuget.org/packages/WindowsAzure.Storage) in uw taak code om de uitvoer van de taak naar de container te uploaden.
 
-Zie [aan de slag met Azure Blob Storage met .net](../storage/blobs/storage-dotnet-how-to-use-blobs.md)voor meer informatie over het werken met containers en blobs in azure Storage.
+Zie [aan de slag met Azure Blob Storage met .net](../storage/blobs/storage-quickstart-blobs-dotnet.md)voor meer informatie over het werken met containers en blobs in azure Storage.
 
 > [!WARNING]
 > Alle taak-en taak uitvoer die persistent is gemaakt met de bestands conventies bibliotheek worden opgeslagen in dezelfde container. Als voor een groot aantal taken tegelijkertijd bestanden proberen te worden bewaard, kunnen Azure Storage beperkings limieten worden afgedwongen. Zie voor meer informatie over beperkings limieten de [controle lijst voor prestaties en schaal baarheid voor Blob Storage](../storage/blobs/storage-performance-checklist.md).

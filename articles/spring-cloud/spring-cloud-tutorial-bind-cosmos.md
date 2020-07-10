@@ -1,17 +1,17 @@
 ---
-title: 'Zelf studie: een Azure Cosmos DB binden aan uw Azure lente-Cloud toepassing'
-description: In deze zelf studie leert u hoe u Azure Cosmos DB bindt aan uw Azure lente-Cloud toepassing
+title: Een Azure Cosmos DB aan uw Azure Spring Cloud-toepassing verbinden
+description: Meer informatie over het binden van Azure Cosmos DB aan uw Azure lente-Cloud toepassing
 author: bmitchell287
 ms.service: spring-cloud
-ms.topic: tutorial
+ms.topic: how-to
 ms.date: 10/06/2019
 ms.author: brendm
-ms.openlocfilehash: 1566b6ab59e858217adcf6818e1d62f851f37eb1
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 083c67184c6b039303b29119261a6967306a1447
+ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "76277567"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86142216"
 ---
 # <a name="bind-an-azure-cosmos-db-database-to-your-azure-spring-cloud-application"></a>Een Azure Cosmos DB-Data Base koppelen aan uw Azure lente-Cloud toepassing
 
@@ -30,7 +30,7 @@ Azure Cosmos DB heeft vijf verschillende typen API die ondersteuning bieden voor
 
 1. Noteer de naam van uw data base. Voor deze procedure is de naam van de Data Base **testdb**.
 
-1. Voeg een van de volgende afhankelijkheden toe aan het pom. XML-bestand van uw Azure veer Cloud-toepassing. Kies de afhankelijkheid die geschikt is voor uw API-type.
+1. Voeg een van de volgende afhankelijkheden toe aan het pom.xml bestand van uw Azure veer Cloud-toepassing. Kies de afhankelijkheid die geschikt is voor uw API-type.
 
     * API-type: core (SQL)
 
@@ -80,7 +80,7 @@ Azure Cosmos DB heeft vijf verschillende typen API die ondersteuning bieden voor
       </dependency>
       ```
 
-1. Gebruik `az spring-cloud app update` om de huidige implementatie bij te werken of `az spring-cloud app deployment create` gebruik om een nieuwe implementatie te maken. Met deze opdrachten kunt u de toepassing bijwerken of maken met de nieuwe afhankelijkheid.
+1. Gebruik `az spring-cloud app update` om de huidige implementatie bij te werken of gebruik `az spring-cloud app deployment create` om een nieuwe implementatie te maken. Met deze opdrachten kunt u de toepassing bijwerken of maken met de nieuwe afhankelijkheid.
 
 1. Ga naar de pagina Azure lente-Cloud service in de Azure Portal. Ga naar het **toepassings dashboard** en selecteer de toepassing die u wilt verbinden met Azure Cosmos db. Deze toepassing is hetzelfde als die u in de vorige stap hebt bijgewerkt of geïmplementeerd.
 
@@ -105,7 +105,4 @@ Azure Cosmos DB heeft vijf verschillende typen API die ondersteuning bieden voor
 
 ## <a name="next-steps"></a>Volgende stappen
 
-In deze zelf studie hebt u geleerd hoe u uw Azure lente-Cloud toepassing verbindt met een Azure Cosmos DB-Data Base. Ga verder met de volgende zelf studie als u wilt weten hoe u uw toepassing kunt binden aan een Azure-cache voor redis-cache.
-
-> [!div class="nextstepaction"]
-> [Meer informatie over het binden van een Azure-cache voor redis-cache](spring-cloud-tutorial-bind-redis.md)
+In dit artikel hebt u geleerd hoe u uw Azure lente-Cloud toepassing verbindt met een Azure Cosmos DB-Data Base. Zie [verbinding maken met een Azure-cache voor redis cache](spring-cloud-tutorial-bind-redis.md)voor meer informatie over bindings Services voor uw toepassing.

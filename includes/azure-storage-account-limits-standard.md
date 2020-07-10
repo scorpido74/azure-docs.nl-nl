@@ -5,15 +5,15 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: include
-ms.date: 05/20/2020
+ms.date: 07/08/2020
 ms.author: tamram
 ms.custom: include file
-ms.openlocfilehash: e2540bceab17e6f37fd94b28df3814ccffa1c81e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 509568b143c9fbbf236139ca83cb55b0ef39beb0
+ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84466868"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86145935"
 ---
 In de volgende tabel worden de standaard limieten beschreven voor v1-, v2-, Blob-opslag en blok-Blob-opslag accounts voor Azure. De *ingangs* limiet verwijst naar alle gegevens die worden verzonden naar een opslag account. De *limiet voor* uitgaand verkeer verwijst naar alle gegevens die worden ontvangen van een opslag account.
 
@@ -33,11 +33,7 @@ In de volgende tabel worden de standaard limieten beschreven voor v1-, v2-, Blob
 
 <sup>1</sup> Azure Storage standaard accounts ondersteunen hogere capaciteits limieten en hogere limieten voor inkomend verkeer per aanvraag. Neem contact op met de [ondersteuning van Azure](https://azure.microsoft.com/support/faq/)om een verhoging van de account limieten aan te vragen.
 
-<sup>2</sup> als voor uw opslag account lees toegang is ingeschakeld met geo-redundante opslag (RA-GRS) of geo-zone-redundante opslag (RA-GZRS), zijn de uitgangs doelen voor de secundaire locatie identiek aan die van de primaire locatie. [Azure storage replicatie](https://docs.microsoft.com/azure/storage/common/storage-redundancy) opties zijn:
-
-[!INCLUDE [azure-storage-redundancy](azure-storage-redundancy.md)]
-
-<sup>3</sup> [Azure data Lake Storage Gen2](../articles/storage/blobs/data-lake-storage-introduction.md) is een set mogelijkheden die is toegewezen aan Big Data Analytics, gebouwd op Azure Blob Storage.
+<sup>2</sup> als voor uw opslag account lees toegang is ingeschakeld met geo-redundante opslag (RA-GRS) of geo-zone-redundante opslag (RA-GZRS), zijn de uitgangs doelen voor de secundaire locatie identiek aan die van de primaire locatie. Zie [Azure storage-replicatie](../articles/storage/common/storage-redundancy.md)voor meer informatie.
 
 > [!NOTE]
 > Micro soft raadt u aan om voor de meeste scenario's een v2-opslag account voor algemeen gebruik te gebruiken. U kunt eenvoudig een algemene versie van v1 of een Azure Blob Storage-account bijwerken naar een v2-account voor algemeen gebruik zonder uitval tijd en hoeft u geen gegevens te kopiëren. Zie [een upgrade uitvoeren naar een v2-opslag account voor algemeen gebruik](../articles/storage/common/storage-account-upgrade.md)voor meer informatie.

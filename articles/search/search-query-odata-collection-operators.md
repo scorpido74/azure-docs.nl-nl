@@ -19,11 +19,12 @@ translation.priority.mt:
 - ru-ru
 - zh-cn
 - zh-tw
-ms.openlocfilehash: 54ddc8222816831b5b436297bbb1b40d03230f0c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 47e7e09bae082141efd872d3a90ecc30a3be04e5
+ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "74113231"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86146064"
 ---
 # <a name="odata-collection-operators-in-azure-cognitive-search---any-and-all"></a>OData-verzamelings operators in azure Cognitive Search- `any` en`all`
 
@@ -65,23 +66,33 @@ Een **lambda-expressie** in een verzamelings filter is net als de hoofd tekst va
 
 Overeenkomende documenten waarvan `tags` het veld precies de teken reeks ' WiFi ' bevat:
 
-    tags/any(t: t eq 'wifi')
+```text
+tags/any(t: t eq 'wifi')
+```
 
 Vergelijkt documenten waarbij elk element van het `ratings` veld tussen 3 en 5 ligt:
 
-    ratings/all(r: r ge 3 and r le 5)
+```text
+ratings/all(r: r ge 3 and r le 5)
+```
 
 Vergelijkt documenten waarbij een van de geo-coördinaten in het `locations` veld binnen de opgegeven veelhoek ligt:
 
-    locations/any(loc: geo.intersects(loc, geography'POLYGON((-122.031577 47.578581, -122.031577 47.678581, -122.131577 47.678581, -122.031577 47.578581))'))
+```text
+locations/any(loc: geo.intersects(loc, geography'POLYGON((-122.031577 47.578581, -122.031577 47.678581, -122.131577 47.678581, -122.031577 47.578581))'))
+```
 
 Overeenkomende documenten waarbij het `rooms` veld leeg is:
 
-    not rooms/any()
+```text
+not rooms/any()
+```
 
 Documenten die voor alle ruimten overeenkomen, het `rooms/amenities` veld bevat ' TV ' en `rooms/baseRate` is kleiner dan 100:
 
-    rooms/all(room: room/amenities/any(a: a eq 'tv') and room/baseRate lt 100.0)
+```text
+rooms/all(room: room/amenities/any(a: a eq 'tv') and room/baseRate lt 100.0)
+```
 
 ## <a name="limitations"></a>Beperkingen
 

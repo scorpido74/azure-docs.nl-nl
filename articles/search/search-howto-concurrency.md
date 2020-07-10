@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: edfb2fe5cc37a00335ca7b5be851a88825b03eb1
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: f22e69cbc625d21c398151e413574387a2587790
+ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "72792221"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86145288"
 ---
 # <a name="how-to-manage-concurrency-in-azure-cognitive-search"></a>Gelijktijdigheid beheren in azure Cognitive Search
 
@@ -22,7 +22,7 @@ Bij het beheren van Azure Cognitive Search resources, zoals indexen en gegevens 
 > [!Tip]
 > Concept code in een [C#-voorbeeld oplossing](https://github.com/Azure-Samples/search-dotnet-getting-started/tree/master/DotNetETagsExplainer) wordt uitgelegd hoe gelijktijdigheids beheer werkt in azure Cognitive Search. De code maakt voor waarden die gelijktijdigheids beheer aanroepen. Lees het [onderstaande code fragment](#samplecode) is waarschijnlijk voldoende voor de meeste ontwikkel aars, maar als u het wilt uitvoeren, bewerkt u appsettings.jsop om de service naam en een beheer-API-sleutel toe te voegen. Op basis van de service `http://myservice.search.windows.net` -URL van is de service naam `myservice` .
 
-## <a name="how-it-works"></a>Uitleg
+## <a name="how-it-works"></a>Hoe werkt het?
 
 Optimistische gelijktijdigheid wordt geïmplementeerd via controle van toegangs voorwaarden in API-aanroepen die schrijven naar indexen, Indexeer functies, gegevens bronnen en synonymMap-resources.
 
@@ -46,7 +46,7 @@ De volgende code toont accessCondition controles op belang rijke update bewerkin
 
 ### <a name="sample-code-from-dotnetetagsexplainer-program"></a>Voorbeeld code uit het [programma DotNetETagsExplainer](https://github.com/Azure-Samples/search-dotnet-getting-started/tree/master/DotNetETagsExplainer)
 
-```
+```csharp
     class Program
     {
         // This sample shows how ETags work by performing conditional updates and deletes
@@ -173,6 +173,7 @@ Dit code fragment illustreert de toevoeging van een synonymMap aan een index die
 
 Met het fragment wordt de index "Hotels" opgehaald, de object versie wordt gecontroleerd op een update bewerking, wordt een uitzonde ring gegenereerd als de voor waarde is mislukt en wordt de bewerking vervolgens opnieuw geprobeerd (Maxi maal drie keer), te beginnen met het ophalen van index van de server om de meest recente versie te verkrijgen.
 
+```csharp
         private static void EnableSynonymsInHotelsIndexSafely(SearchServiceClient serviceClient)
         {
             int MaxNumTries = 3;
@@ -203,7 +204,7 @@ Met het fragment wordt de index "Hotels" opgehaald, de object versie wordt gecon
             index.Fields.First(f => f.Name == "tags").SynonymMaps = new[] { "desc-synonymmap" };
             return index;
         }
-
+```
 
 ## <a name="next-steps"></a>Volgende stappen
 

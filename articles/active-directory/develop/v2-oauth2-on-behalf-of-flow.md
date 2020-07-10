@@ -9,16 +9,16 @@ ms.service: active-directory
 ms.subservice: develop
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 05/18/2020
+ms.date: 07/8/2020
 ms.author: hirsin
 ms.reviewer: hirsin
 ms.custom: aaddev
-ms.openlocfilehash: 9e653469eb5bffbf81a0e09982edcbd1e937ba61
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 3a0d4d205e82f377d6ea02c91fbd6db7820c3868
+ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85553545"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86165869"
 ---
 # <a name="microsoft-identity-platform-and-oauth-20-on-behalf-of-flow"></a>Micro soft Identity platform en OAuth 2,0-of-flow
 
@@ -47,7 +47,7 @@ De volgende stappen vormen de OBO-stroom en worden uitgelegd in de Help van het 
 > [!NOTE]
 > In dit scenario heeft de middelste laag service geen interactie van de gebruiker om de toestemming van de gebruiker voor toegang tot de downstream API te verkrijgen. Daarom wordt de optie voor het verlenen van toegang tot de downstream API vooraf weer gegeven als onderdeel van de stap voor toestemming tijdens de verificatie. Zie [toestemming geven voor de middelste toepassing](#gaining-consent-for-the-middle-tier-application)voor meer informatie over het instellen van dit voor uw app.
 
-## <a name="service-to-service-access-token-request"></a>Aanvraag voor service-naar-service-toegangs token
+## <a name="middle-tier-access-token-request"></a>Aanvraag voor toegangs token op middelste laag
 
 Als u een toegangs token wilt aanvragen, maakt u een HTTP POST naar het Tenant-specifieke micro soft Identity platform token-eind punt met de volgende para meters.
 
@@ -66,7 +66,7 @@ Bij gebruik van een gedeeld geheim bevat een aanvraag voor service-naar-service-
 | `grant_type` | Vereist | Het type van de token aanvraag. Voor een aanvraag met behulp van een JWT moet de waarde zijn `urn:ietf:params:oauth:grant-type:jwt-bearer` . |
 | `client_id` | Vereist | De ID van de toepassing (client) waaraan [de Azure Portal-app-registraties](https://go.microsoft.com/fwlink/?linkid=2083908) pagina is toegewezen aan uw app. |
 | `client_secret` | Vereist | Het client geheim dat u hebt gegenereerd voor uw app op de pagina Azure Portal-App-registraties. |
-| `assertion` | Vereist | De waarde van het token dat in de aanvraag wordt gebruikt.  Dit token moet een doel groep hebben van de app die deze OBO-aanvraag maakt (de app wordt door het `client-id` veld aangeduid). |
+| `assertion` | Vereist | Het toegangs token dat is verzonden naar de middelste laag-API.  Dit token moet een claim van een doel groep hebben `aud` van de app die deze OBO-aanvraag maakt (de app wordt aangeduid met het `client-id` veld). Toepassingen kunnen geen token inwisselen voor een andere app (dus als een client een API verzendt die bedoeld is voor MS Graph, kan de API deze niet inwisselen met OBO.  Het token moet in plaats daarvan worden afgewezen.  |
 | `scope` | Vereist | Een lijst met door spaties gescheiden bereiken voor de token aanvraag. Zie [scopes](v2-permissions-and-consent.md)voor meer informatie. |
 | `requested_token_use` | Vereist | Hiermee geeft u op hoe de aanvraag moet worden verwerkt. In de OBO-stroom moet de waarde worden ingesteld op `on_behalf_of` . |
 
@@ -99,7 +99,7 @@ Een aanvraag voor service-naar-service-toegangs token met een certificaat bevat 
 | `client_id` | Vereist |  De ID van de toepassing (client) waaraan [de Azure Portal-app-registraties](https://go.microsoft.com/fwlink/?linkid=2083908) pagina is toegewezen aan uw app. |
 | `client_assertion_type` | Vereist | De waarde moet zijn `urn:ietf:params:oauth:client-assertion-type:jwt-bearer` . |
 | `client_assertion` | Vereist | Een verklaring (een JSON-webtoken) die u moet maken en ondertekenen met het certificaat dat u hebt geregistreerd als referenties voor uw toepassing. Zie [certificaat referenties](active-directory-certificate-credentials.md)voor meer informatie over het registreren van uw certificaat en de indeling van de bevestiging. |
-| `assertion` | Vereist | De waarde van het token dat in de aanvraag wordt gebruikt. |
+| `assertion` | Vereist |  Het toegangs token dat is verzonden naar de middelste laag-API.  Dit token moet een claim van een doel groep hebben `aud` van de app die deze OBO-aanvraag maakt (de app wordt aangeduid met het `client-id` veld). Toepassingen kunnen geen token inwisselen voor een andere app (dus als een client een API verzendt die bedoeld is voor MS Graph, kan de API deze niet inwisselen met OBO.  Het token moet in plaats daarvan worden afgewezen.  |
 | `requested_token_use` | Vereist | Hiermee geeft u op hoe de aanvraag moet worden verwerkt. In de OBO-stroom moet de waarde worden ingesteld op `on_behalf_of` . |
 | `scope` | Vereist | Een lijst met door spaties gescheiden bereiken voor de token aanvraag. Zie [scopes](v2-permissions-and-consent.md)voor meer informatie.|
 
@@ -125,7 +125,7 @@ grant_type=urn%3Aietf%3Aparams%3Aoauth%3Agrant-type%3Ajwt-bearer
 &scope=https://graph.microsoft.com/user.read+offline_access
 ```
 
-## <a name="service-to-service-access-token-response"></a>Antwoord service-to-service-toegangs token
+## <a name="middle-tier-access-token-response"></a>Reactie van toegangs token in middelste laag
 
 Een reactie op geslaagde pogingen is een JSON OAuth 2,0-antwoord met de volgende para meters.
 

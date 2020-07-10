@@ -9,12 +9,12 @@ ms.devlang: rest-api
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 05/18/2020
-ms.openlocfilehash: e6c766008faa6bbe53a4af69f7da9325cb9ff6a8
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: ffbc850c580daee5890f9c75021cc518918d098e
+ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85559865"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86145383"
 ---
 # <a name="set-up-a-connection-to-an-azure-storage-account-using-a-managed-identity-preview"></a>Een verbinding met een Azure Storage account instellen met behulp van een beheerde identiteit (preview)
 
@@ -103,6 +103,7 @@ De index specificeert de velden in een document, kenmerken en andere constructie
 
 Ga als volgt te werk om een index met een doorzoekbaar `content` veld te maken voor het opslaan van de tekst die uit blobs is geëxtraheerd:   
 
+```http
     POST https://[service name].search.windows.net/indexes?api-version=2020-06-30
     Content-Type: application/json
     api-key: [admin key]
@@ -114,6 +115,7 @@ Ga als volgt te werk om een index met een doorzoekbaar `content` veld te maken v
             { "name": "content", "type": "Edm.String", "searchable": true, "filterable": false, "sortable": false, "facetable": false }
           ]
     }
+```
 
 Zie [index maken](https://docs.microsoft.com/rest/api/searchservice/create-index) voor meer informatie over het maken van indexen
 
@@ -125,6 +127,7 @@ Zodra de index en gegevens bron zijn gemaakt, kunt u de Indexeer functie maken.
 
 Voor beeld van een indexerings definitie voor een BLOB-Indexer:
 
+```http
     POST https://[service name].search.windows.net/indexers?api-version=2020-06-30
     Content-Type: application/json
     api-key: [admin key]
@@ -135,6 +138,7 @@ Voor beeld van een indexerings definitie voor een BLOB-Indexer:
       "targetIndexName" : "my-target-index",
       "schedule" : { "interval" : "PT2H" }
     }
+```
 
 Deze Indexeer functie wordt elke twee uur uitgevoerd (schema-interval is ingesteld op "PT2H"). Als u een Indexeer functie elke 30 minuten wilt uitvoeren, stelt u het interval in op ' PT30M '. Het kortste ondersteunde interval is 5 minuten. Het schema is optioneel: als u dit weglaat, wordt een Indexeer functie slechts eenmaal uitgevoerd wanneer deze wordt gemaakt. U kunt echter op elk gewenst moment een Indexeer functie op aanvraag uitvoeren.   
 
@@ -142,7 +146,7 @@ Bekijk [Indexeer functie maken](https://docs.microsoft.com/rest/api/searchservic
 
 Zie [Indexeer functies plannen voor Azure Cognitive Search](search-howto-schedule-indexers.md)voor meer informatie over het definiëren van de planningen voor de Indexeer functie.
 
-## <a name="see-also"></a>Zie tevens
+## <a name="see-also"></a>Zie ook
 
 Meer informatie over Azure Storage Indexeer functies:
 * [Indexer van Azure Blob](search-howto-indexing-azure-blob-storage.md)

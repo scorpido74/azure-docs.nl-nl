@@ -7,15 +7,16 @@ author: vhorne
 ms.service: web-application-firewall
 ms.date: 04/16/2020
 ms.author: ant
-ms.openlocfilehash: fb3b922b753b9696aa26ea189597589ecc5772db
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: eccd6b33353e071a66225279f1f1c150d4bdaafc
+ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81536621"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86143857"
 ---
 # <a name="migrate-web-application-firewall-policies-using-azure-powershell"></a>Web Application firewall-beleid migreren met behulp van Azure PowerShell
 
-Met dit script kunt u eenvoudig overstappen van een WAF-configuratie of een aangepast WAF-beleid naar een volledig WAF-beleid. Mogelijk wordt er een waarschuwing weer gegeven in de portal die *gemigreerd wordt naar WAF-beleid*, of wilt u de nieuwe open bare preview-WAF-functies, zoals geomatch aangepaste regels, per-site en per URI-WAF-beleid of de Rule-regel voor het beperken van de bot. Als u een van deze functies wilt gebruiken, moet u een volledig WAF-beleid koppelen aan uw toepassings gateway. 
+Met dit script kunt u eenvoudig overstappen van een WAF-configuratie of een aangepast WAF-beleid naar een volledig WAF-beleid. Mogelijk wordt er een waarschuwing weer gegeven in de portal met de tekst *migratie naar WAF-beleid*. u kunt ook de nieuwe WAF-functies, zoals de aangepaste regels voor geomatching (preview), het WAF per site en het beleid per URI-WAF (preview-versie) of de rule (preview-versie) van de bot beperken. Als u een van deze functies wilt gebruiken, moet u een volledig WAF-beleid koppelen aan uw toepassings gateway. 
 
 Zie voor meer informatie over het maken van een nieuw WAF-beleid [Web Application firewall-beleid voor Application Gateway maken](create-waf-policy-ag.md). Zie voor meer informatie over migreren [naar WAF-beleid](create-waf-policy-ag.md#migrate-to-waf-policy).
 

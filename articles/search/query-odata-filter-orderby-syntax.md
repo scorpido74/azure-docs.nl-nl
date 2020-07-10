@@ -19,11 +19,12 @@ translation.priority.mt:
 - ru-ru
 - zh-cn
 - zh-tw
-ms.openlocfilehash: f3a1be435e297ab4a9ba7f8bfbd5f3ce3451d8a8
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 07f3e270e799753a582227abe53223bd05755eb5
+ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77153873"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86165206"
 ---
 # <a name="odata-language-overview-for-filter-orderby-and-select-in-azure-cognitive-search"></a>Overzicht van OData-taal voor `$filter` , `$orderby` en `$select` in azure Cognitive Search
 
@@ -69,7 +70,7 @@ Een id kan verwijzen naar de naam van een veld of naar een **bereik variabele** 
 
 Voor beelden van veld paden worden weer gegeven in de volgende tabel:
 
-| Pad naar veld | Description |
+| Pad naar veld | Beschrijving |
 | --- | --- |
 | `HotelName` | Verwijst naar een veld op het hoogste niveau van de index |
 | `Address/City` | Verwijst naar het `City` subveld van een complex veld in de index; `Address` is van het type `Edm.ComplexType` in dit voor beeld |
@@ -82,7 +83,9 @@ De betekenis van een pad naar een veld verschilt, afhankelijk van de context. In
 
 Overweeg het pad naar het veld `Address/City` . In een filter verwijst dit naar één plaats voor het huidige document, zoals ' San Francisco '. Verwijst daarentegen `Rooms/Type` naar het `Type` subveld voor veel kamers (zoals ' standaard ' voor de eerste kamer ' Deluxe ' voor de tweede kamer, enzovoort). Omdat `Rooms/Type` niet naar *één exemplaar* van het subveld verwijst `Type` , kan het niet rechtstreeks worden gebruikt in een filter. In plaats daarvan gebruikt u een [lambda-expressie](search-query-odata-collection-operators.md) met een bereik variabele, als u wilt filteren op room-type:
 
-    Rooms/any(room: room/Type eq 'deluxe')
+```odata
+Rooms/any(room: room/Type eq 'deluxe')
+```
 
 In dit voor beeld wordt de variabele Range `room` weer gegeven in het `room/Type` veld pad. Op die manier `room/Type` verwijst naar het type van de huidige ruimte in het huidige document. Dit is één exemplaar van het `Type` subveld, zodat het rechtstreeks in het filter kan worden gebruikt.
 
@@ -236,7 +239,7 @@ De para meters **$filter**, **$OrderBy**en **$Select** worden uitgebreid beschre
 - [OData-$orderby syntaxis in azure Cognitive Search](search-query-odata-orderby.md)
 - [OData-$select syntaxis in azure Cognitive Search](search-query-odata-select.md)
 
-## <a name="see-also"></a>Zie tevens  
+## <a name="see-also"></a>Zie ook  
 
 - [Facet navigatie in azure Cognitive Search](search-faceted-navigation.md)
 - [Filters in azure Cognitive Search](search-filters.md)

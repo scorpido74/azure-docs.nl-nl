@@ -7,11 +7,12 @@ author: vhorne
 ms.service: web-application-firewall
 ms.date: 02/08/2020
 ms.author: victorh
-ms.openlocfilehash: 7ab4b60747509dfe56ec2e89b38986de747dab69
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 5705eedfb919c792c558384f6309325dcded4b43
+ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84014533"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86146607"
 ---
 # <a name="create-web-application-firewall-policies-for-application-gateway"></a>Een firewall beleid voor webtoepassingen voor Application Gateway maken
 
@@ -22,7 +23,7 @@ U kunt zoveel beleids regels maken als u wilt. Als u een beleid hebt gemaakt, mo
 Als op uw Application Gateway een beleid is toegepast en u vervolgens een ander beleid toepast op een listener op die Application Gateway, wordt het beleid van de listener van kracht, maar alleen voor de listener (s) waaraan ze zijn toegewezen. Het Application Gateway beleid is nog steeds van toepassing op alle andere listeners waaraan geen specifiek beleid is toegewezen. 
 
    > [!NOTE]
-   > WAF-beleidsregels per site en per URI zijn beschikbaar als openbare preview. Dit betekent dat deze functie onderhevig is aan de aanvullende gebruiksvoorwaarden van Microsoft. Zie [Supplemental Terms of Use for Microsoft Azure Previews (Aanvullende gebruiksvoorwaarden voor Microsoft Azure-previews)](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) voor meer informatie.
+   > Het WAF-beleid per URI is beschikbaar als open bare preview. Dit betekent dat deze functie onderhevig is aan de aanvullende gebruiksvoorwaarden van Microsoft. Zie [Supplemental Terms of Use for Microsoft Azure Previews (Aanvullende gebruiksvoorwaarden voor Microsoft Azure-previews)](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) voor meer informatie.
    > [!NOTE]
    > Zodra een firewall beleid is gekoppeld aan een WAF, moet er altijd een beleid zijn dat aan die WAF is gekoppeld. U kunt dat beleid overschrijven, maar het ontkoppelen van een beleid van de WAF wordt niet volledig ondersteund. 
 

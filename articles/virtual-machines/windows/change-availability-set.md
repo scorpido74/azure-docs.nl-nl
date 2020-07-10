@@ -6,11 +6,12 @@ author: cynthn
 ms.topic: article
 ms.date: 01/31/2020
 ms.author: cynthn
-ms.openlocfilehash: 092dafff6622d3402322eb96d0fe4215e52e16b5
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: e014dbe440f1b7baf39c290b8b7ab8fcaea0bada
+ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "76964920"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86165852"
 ---
 # <a name="change-the-availability-set-for-a-vm"></a>De beschikbaarheidsset voor een VM wijzigen
 In de volgende stappen wordt beschreven hoe u de beschikbaarheidsset van een virtuele machine wijzigt met behulp van Azure PowerShell. Een virtuele machine kan alleen worden toegevoegd aan een beschikbaarheidsset wanneer deze wordt gemaakt. Als u de beschikbaarheidsset wilt wijzigen, moet u de virtuele machine verwijderen en vervolgens opnieuw maken. 
@@ -18,6 +19,8 @@ In de volgende stappen wordt beschreven hoe u de beschikbaarheidsset van een vir
 Dit artikel is van toepassing op zowel Linux-als Windows-Vm's.
 
 Dit artikel is voor het laatst getest op 2/12/2019 met behulp van de [Azure Cloud shell](https://shell.azure.com/powershell) en de [AZ Power shell-module](https://docs.microsoft.com/powershell/azure/install-az-ps) versie 1.2.0.
+
+In dit voor beeld wordt niet gecontroleerd of de virtuele machine is gekoppeld aan een load balancer. Als uw virtuele machine is gekoppeld aan een load balancer, moet u het script bijwerken om die aanvraag af te handelen. 
 
 
 ## <a name="change-the-availability-set"></a>De beschikbaarheidsset wijzigen 

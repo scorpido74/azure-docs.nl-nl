@@ -5,11 +5,12 @@ author: chrisreddington
 ms.author: chredd
 ms.date: 03/28/2019
 ms.topic: how-to
-ms.openlocfilehash: d6b68a8448d8b644500b62e54ab763838d707c66
-ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.openlocfilehash: 3569e5cc25491fd408f7aec57a51d11f56dbd1fe
+ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/05/2020
-ms.locfileid: "85956658"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86145271"
 ---
 # <a name="use-azure-pipelines-to-build-and-deploy-hpc-solutions"></a>Gebruik Azure-pijp lijnen om HPC-oplossingen te bouwen en te implementeren
 
@@ -48,7 +49,7 @@ De code basis structuur die in dit voor beeld wordt gebruikt, lijkt op het volge
 In deze sectie wordt ervan uitgegaan dat u bekend bent met versie beheer en het ontwerpen van Resource Manager-sjablonen. Als u niet bekend bent met deze concepten, raadpleegt u de volgende pagina's voor meer informatie.
 
 * [Wat is broncode beheer?](/azure/devops/user-guide/source-control?view=azure-devops)
-* [Informatie over de structuur en de syntaxis van Azure Resource Manager-sjablonen](../azure-resource-manager/templates/template-syntax.md)
+* [Inzicht in de structuur en syntaxis van Azure Resource Manager sjablonen](../azure-resource-manager/templates/template-syntax.md)
 
 #### <a name="azure-resource-manager-templates"></a>Azure Resource Manager-sjablonen
 
@@ -188,7 +189,7 @@ De volgende sjabloon toont een voor beeld van het maken van een Azure Batch groe
 
 Ten slotte hebben we een sjabloon die vergelijkbaar is met een Orchestrator. Deze sjabloon is verantwoordelijk voor het implementeren van de mogelijkheden sjablonen.
 
-U kunt ook meer te weten komen over [het maken van gekoppelde Azure Resource Manager sjablonen](../azure-resource-manager/templates/template-tutorial-create-linked-templates.md) in een afzonderlijk artikel.
+U kunt ook meer te weten komen over [het maken van gekoppelde Azure Resource Manager sjablonen](../azure-resource-manager/templates/deployment-tutorial-linked-template.md) in een afzonderlijk artikel.
 
 ```json
 {

@@ -12,11 +12,12 @@ ms.subservice: core
 ms.workload: data-services
 ms.topic: how-to
 ms.date: 03/10/2020
-ms.openlocfilehash: 28b687577f01d6e83f012a51bd18ad082f2bd48d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 3db7a1489b877544cd36627f3962b6b4e1b8c462
+ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84433274"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86146429"
 ---
 # <a name="where-to-save-and-write-files-for-azure-machine-learning-experiments"></a>Locatie voor het opslaan en schrijven van bestanden voor Azure Machine Learning experimenten
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -29,7 +30,9 @@ Wanneer u training uitvoert op een [Compute-doel](how-to-set-up-training-targets
 
 Voordat u een experiment kunt initiëren op een reken doel of op uw lokale computer, moet u ervoor zorgen dat de benodigde bestanden beschikbaar zijn voor het reken doel, zoals afhankelijkheids bestanden en gegevens bestanden die de code moet uitvoeren.
 
-Azure Machine Learning oefent trainings scripts uit door de hele scripthost naar de doel Compute-context te kopiëren en vervolgens een moment opname te maken. De opslaglimiet voor momentopnamen van experimenten is 300 MB en/of 2000 bestanden.
+Azure Machine Learning trainings scripts worden uitgevoerd door de hele bronmap te kopiëren. Als u gevoelige gegevens hebt die u niet wilt uploaden, gebruikt u een [. ignore-bestand](how-to-save-write-experiment-files.md#storage-limits-of-experiment-snapshots) of neemt u het niet op in de bron directory. In plaats daarvan opent u uw gegevens met behulp van een gegevens [opslag](https://docs.microsoft.com/python/api/azureml-core/azureml.data?view=azure-ml-py).
+
+De opslaglimiet voor momentopnamen van experimenten is 300 MB en/of 2000 bestanden.
 
 Daarom kunt u het beste het volgende doen:
 
@@ -55,7 +58,7 @@ Beschrijving van experiment &nbsp;|Oplossing voor opslag limiet
 Minder dan 2000 bestanden & kan geen gegevens opslag gebruiken| Maximale grootte van moment opname overschrijven met <br> `azureml._restclient.snapshots_client.SNAPSHOT_MAX_SIZE_BYTES = 'insert_desired_size'`<br> Dit kan enkele minuten duren, afhankelijk van het aantal en de grootte van de bestanden.
 U moet een specifieke script Directory gebruiken| [!INCLUDE [amlinclude-info](../../includes/machine-learning-amlignore-gitignore.md)]
 Pijplijn|Voor elke stap een andere submap gebruiken
-Jupyter-notebooks| Maak een `.amlignore` bestand of verplaats uw notitie blok naar een nieuwe, lege, submap en voer de code opnieuw uit.
+Jupyter Notebooks| Maak een `.amlignore` bestand of verplaats uw notitie blok naar een nieuwe, lege, submap en voer de code opnieuw uit.
 
 ## <a name="where-to-write-files"></a>Locatie voor het schrijven van bestanden
 

@@ -9,12 +9,12 @@ ms.devlang: dotnet
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 4714fbb5d9f08e0b02dbc8f6cb32845642911e51
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 929241d7bc5db5476bab84d00fde90d4db55aedc
+ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85556297"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86146920"
 ---
 # <a name="how-to-use-azure-cognitive-search-from-a-net-application"></a>Azure Cognitive Search gebruiken vanuit een .NET-toepassing
 
@@ -171,46 +171,49 @@ Deze keer gebruiken we een query sleutel omdat we geen schrijf toegang tot de in
 
 Als u deze toepassing uitvoert met een geldige service naam en API-sleutel, moet de uitvoer er als volgt uitzien: (sommige console-uitvoer is vervangen door "..." voor illustratie doeleinden.)
 
-    Deleting index...
+```output
 
-    Creating index...
+Deleting index...
 
-    Uploading documents...
+Creating index...
 
-    Waiting for documents to be indexed...
+Uploading documents...
 
-    Search the entire index for the term 'motel' and return only the HotelName field:
+Waiting for documents to be indexed...
 
-    Name: Secret Point Motel
+Search the entire index for the term 'motel' and return only the HotelName field:
 
-    Name: Twin Dome Motel
+Name: Secret Point Motel
 
-
-    Apply a filter to the index to find hotels with a room cheaper than $100 per night, and return the hotelId and description:
-
-    HotelId: 1
-    Description: The hotel is ideally located on the main commercial artery of the city in the heart of New York. A few minutes away is Times Square and the historic centre of the city, as well as other places of interest that make New York one of America's most attractive and cosmopolitan cities.
-
-    HotelId: 2
-    Description: The hotel is situated in a  nineteenth century plaza, which has been expanded and renovated to the highest architectural standards to create a modern, functional and first-class hotel in which art and unique historical elements coexist with the most modern comforts.
+Name: Twin Dome Motel
 
 
-    Search the entire index, order by a specific field (lastRenovationDate) in descending order, take the top two results, and show only hotelName and lastRenovationDate:
+Apply a filter to the index to find hotels with a room cheaper than $100 per night, and return the hotelId and description:
 
-    Name: Triple Landscape Hotel
-    Last renovated on: 9/20/2015 12:00:00 AM +00:00
+HotelId: 1
+Description: The hotel is ideally located on the main commercial artery of the city in the heart of New York. A few minutes away is Times Square and the historic centre of the city, as well as other places of interest that make New York one of America's most attractive and cosmopolitan cities.
 
-    Name: Twin Dome Motel
-    Last renovated on: 2/18/1979 12:00:00 AM +00:00
+HotelId: 2
+Description: The hotel is situated in a  nineteenth century plaza, which has been expanded and renovated to the highest architectural standards to create a modern, functional and first-class hotel in which art and unique historical elements coexist with the most modern comforts.
 
 
-    Search the hotel names for the term 'hotel':
+Search the entire index, order by a specific field (lastRenovationDate) in descending order, take the top two results, and show only hotelName and lastRenovationDate:
 
-    HotelId: 3
-    Name: Triple Landscape Hotel
-    ...
+Name: Triple Landscape Hotel
+Last renovated on: 9/20/2015 12:00:00 AM +00:00
 
-    Complete.  Press any key to end application... 
+Name: Twin Dome Motel
+Last renovated on: 2/18/1979 12:00:00 AM +00:00
+
+
+Search the hotel names for the term 'hotel':
+
+HotelId: 3
+Name: Triple Landscape Hotel
+...
+
+Complete.  Press any key to end application... 
+```
 
 De volledige bron code van de toepassing wordt aan het einde van dit artikel vermeld.
 
@@ -566,7 +569,9 @@ Wanneer u uw eigen model klassen ontwerpt om toe te wijzen aan een Azure Cogniti
 
 Dit is niet alleen een hypothetische probleem: Stel een scenario voor waarin u een nieuw veld toevoegt aan een bestaande index van het type `Edm.Int32`. Nadat de index definitie is bijgewerkt, hebben alle documenten een null-waarde voor dat nieuwe veld (aangezien alle typen in azure Cognitive Search zijn toegestaan). Als u vervolgens een modelklasse met een niet-nullbare `int`-eigenschap voor dat veld gebruikt, ontvangt u een `JsonSerializationException` zoals deze bij het ophalen van documenten:
 
-    Error converting value {null} to type 'System.Int32'. Path 'IntValue'.
+```output
+Error converting value {null} to type 'System.Int32'. Path 'IntValue'.
+```
 
 Daarom wordt u aangeraden nullbare typen in uw modelklassen te gebruiken.
 
@@ -680,9 +685,11 @@ WriteDocuments(results);
 
 In dit geval doorzoeken we de volledige index voor het woord "Motel" in elk doorzoekbaar veld en willen we alleen de namen van hotels ophalen, zoals opgegeven door de `Select` para meter. Dit zijn de resultaten:
 
-    Name: Secret Point Motel
+```output
+Name: Secret Point Motel
 
-    Name: Twin Dome Motel
+Name: Twin Dome Motel
+```
 
 De volgende query is iets interessanter.  We willen hotels vinden met een ruimte met een uurtarief van minder dan $100 en alleen de Hotel-ID en de beschrijving retour neren:
 
@@ -703,11 +710,13 @@ Deze query maakt gebruik van een OData `$filter` -expressie, `Rooms/any(r: r/Bas
 
 Dit zijn de resultaten van de query:
 
-    HotelId: 1
-    Description: The hotel is ideally located on the main commercial artery of the city in the heart of New York...
+```output
+HotelId: 1
+Description: The hotel is ideally located on the main commercial artery of the city in the heart of New York...
 
-    HotelId: 2
-    Description: The hotel is situated in a nineteenth century plaza, which has been expanded and renovated to...
+HotelId: 2
+Description: The hotel is situated in a nineteenth century plaza, which has been expanded and renovated to...
+```
 
 We willen nu de bovenste twee hotels vinden die het meest recent zijn renovated, en de naam van het hotel en de datum van de laatste renovatie weer geven. Dit is de code: 
 
@@ -729,8 +738,10 @@ In dit geval gebruiken we de OData-syntaxis opnieuw om de `OrderBy` para meter o
 
 Dit zijn de resultaten:
 
-    Name: Fancy Stay        Last renovated on: 6/27/2010 12:00:00 AM +00:00
-    Name: Roach Motel       Last renovated on: 4/28/1982 12:00:00 AM +00:00
+```output
+Name: Fancy Stay        Last renovated on: 6/27/2010 12:00:00 AM +00:00
+Name: Roach Motel       Last renovated on: 4/28/1982 12:00:00 AM +00:00
+```
 
 Tot slot willen we zoeken naar alle hotels namen die overeenkomen met het woord ' Hotel ':
 
@@ -746,9 +757,11 @@ WriteDocuments(results);
 
 En dit zijn de resultaten, die alle velden bevatten omdat we de eigenschap niet hebben opgegeven `Select` :
 
+```output
     HotelId: 3
     Name: Triple Landscape Hotel
     ...
+```
 
 Met deze stap wordt de zelf studie voltooid, maar niet meer. * * De volgende stappen bieden aanvullende bronnen voor meer informatie over Azure Cognitive Search.
 

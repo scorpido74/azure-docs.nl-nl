@@ -16,11 +16,12 @@ ms.date: 06/17/2020
 ms.author: barclayn
 ms.reviewer: markwahl-msft
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7494f8e65f0b92540fec3ddc1f07e59004227625
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 8bf19123888dd26073016131c93047b0cd0afaf4
+ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85338175"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86145774"
 ---
 # <a name="troubleshoot-azure-ad-entitlement-management"></a>Het beheer van rechten voor Azure AD oplossen
 
@@ -94,7 +95,9 @@ In dit artikel worden enkele items beschreven die u moet controleren om te helpe
 
 Als er een fout is opgetreden na het activeren van een aanvraag voor het opnieuw verwerken van een toegangs pakket, moet u wachten tot de aanvraag opnieuw wordt verwerkt door het systeem. Het systeem probeert gedurende een aantal uur meerdere keren opnieuw te verwerken, zodat u de herverwerking tijdens deze periode niet kunt afdwingen. 
 
-U kunt alleen een aanvraag met de status **bezorgd** of **gedeeltelijk** opnieuw verwerken, en een voltooide datum van minder dan een week.
+U kunt alleen een aanvraag met de status **bezorgd** of **gedeeltelijk** opnieuw verwerken, en een voltooide datum van minder dan een week. De knop opnieuw **verwerken** zou anders grijs worden weer gegeven.
+
+![Knop opnieuw verwerken grijs weer gegeven](./media/entitlement-management-troubleshoot/cancel-reprocess-grayedout.png)
 
 - Als de fout is opgelost tijdens het venster trials, wordt de status van de aanvraag gewijzigd in **bezorgd**. De aanvraag wordt opnieuw verwerkt zonder aanvullende acties van de gebruiker.
 
@@ -116,7 +119,7 @@ U kunt alleen een aanvraag met de status **bezorgd** of **gedeeltelijk** opnieuw
 
 ### <a name="cancel-a-pending-request"></a>Een aanvraag in behandeling annuleren
 
-U kunt een aanvraag die in behandeling is, alleen annuleren als deze nog niet is bezorgd of waarvoor de bezorging is mislukt.
+U kunt een aanvraag die in behandeling is, alleen annuleren als deze nog niet is bezorgd of waarvoor de bezorging is mislukt. De knop **Annuleren** wordt anders grijs weer gegeven.
 
 **Vereiste rol:** Globale beheerder, gebruikers beheerder, catalogus eigenaar of toegangs pakket beheer
 
@@ -140,9 +143,9 @@ U kunt een aanvraag die in behandeling is, alleen annuleren als deze nog niet is
 
     | Beleids prioriteit | Bereik |
     | --- | --- |
-    | P1 | Specifieke gebruikers en groepen in uw Directory of specifieke verbonden organisaties |
-    | P2 | Alle leden in uw directory (exclusief gasten) |
-    | P3 | Alle gebruikers in uw directory (inclusief gasten) of specifieke verbonden organisaties |
+    | B1 | Specifieke gebruikers en groepen in uw Directory of specifieke verbonden organisaties |
+    | B2 | Alle leden in uw directory (exclusief gasten) |
+    | B3 | Alle gebruikers in uw directory (inclusief gasten) of specifieke verbonden organisaties |
     | P4 | Alle verbonden organisaties of alle gebruikers (alle verbonden organisaties en alle nieuwe externe gebruikers) |
     
     Als een beleid zich in een categorie met hogere prioriteit bevindt, worden de categorieën met lagere prioriteit genegeerd. Zie [een beleid selecteren](entitlement-management-request-access.md#select-a-policy)voor een voor beeld van hoe er meerdere beleids regels met dezelfde prioriteit worden weer gegeven voor de aanvrager.

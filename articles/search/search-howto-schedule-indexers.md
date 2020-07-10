@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 72a0812f8064174b539a1ea39fc0017a4e00a341
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: f85645d8c77d2317807bb02a19a308070acb6007
+ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85565767"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86143539"
 ---
 # <a name="how-to-schedule-indexers-in-azure-cognitive-search"></a>Indexeer functies plannen in azure Cognitive Search
 
@@ -68,6 +68,7 @@ Nadat u een Indexeer functie hebt gemaakt, kunt u de schema-instellingen wijzige
 
 U kunt het schema voor een Indexeer functie definiëren met behulp van de REST API. Hiertoe neemt u de eigenschap **schema** op bij het maken of bijwerken van de Indexeer functie. In het onderstaande voor beeld ziet u een PUT-aanvraag voor het bijwerken van een bestaande Indexeer functie:
 
+```http
     PUT https://myservice.search.windows.net/indexers/myindexer?api-version=2020-06-30
     Content-Type: application/json
     api-key: admin-key
@@ -77,6 +78,7 @@ U kunt het schema voor een Indexeer functie definiëren met behulp van de REST A
         "targetIndexName" : "target index name",
         "schedule" : { "interval" : "PT10M", "startTime" : "2015-01-01T00:00:00Z" }
     }
+```
 
 De **interval** parameter is vereist. Het interval verwijst naar de tijd tussen het begin van twee opeenvolgende indexerings uitvoeringen. Het kleinste toegestane interval is 5 minuten. de langste is één dag. Deze moet worden ingedeeld als een XSD ' dayTimeDuration-waarde (een beperkte subset van een [ISO 8601 duration](https://www.w3.org/TR/xmlschema11-2/#dayTimeDuration) -waarde). Het patroon hiervoor is: `P(nD)(T(nH)(nM))` . Voor beelden: elke `PT15M` 2 uur voor elke 15 minuten `PT2H` .
 

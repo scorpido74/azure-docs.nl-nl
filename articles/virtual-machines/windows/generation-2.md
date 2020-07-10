@@ -8,11 +8,12 @@ ms.workload: infrastructure-services
 ms.topic: how-to
 ms.date: 02/11/2020
 ms.author: jushiman
-ms.openlocfilehash: 9c16cd4143bc07bf5f3b1d00b890dc54bd5ea318
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: fef582048d1e1093a4a4d69229185e8a3d8dc229
+ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83659878"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86144864"
 ---
 # <a name="support-for-generation-2-vms-on-azure"></a>Ondersteuning voor virtuele machines van generatie 2 op Azure
 
@@ -109,7 +110,7 @@ Hieronder vindt u de stappen voor het maken van een Gen2-VM (Generation 2) in Az
 1. Selecteer **Een resource maken**.
 1. Klik op **alles weer geven** in azure Marketplace aan de linkerkant.
 1. Selecteer een installatie kopie die Gen2 ondersteunt.
-1. Klik op **Create**.
+1. Klik op **Maken**.
 1. Selecteer op het tabblad **Geavanceerd** onder de sectie **VM-generatie** de optie **generatie 2** .
 1. Ga naar het tabblad **basis** informatie en klik onder **Details van exemplaar**op **grootte** en open de Blade **VM-grootte selecteren** .
 1. Selecteer een [ondersteunde virtuele machine van de tweede generatie](#generation-2-vm-sizes).
@@ -191,6 +192,9 @@ U kunt ook virtuele machines van de tweede generatie maken met behulp van schaal
 * **Ondersteunen virtuele machines van generatie 2 versneld netwerken?**  
     Ja. Zie [een virtuele machine maken met versneld netwerken](../../virtual-network/create-vm-accelerated-networking-cli.md)voor meer informatie.
 
+* **Ondersteunen virtuele machines van generatie 2 beveiligde opstart-of vTPM in azure?**
+    Virtuele machines van de 1e generatie en van de 2e generatie in azure bieden geen ondersteuning voor beveiligd opstarten of vTPM. 
+    
 * **Wordt VHDX ondersteund voor generatie 2?**  
     Nee; Vm's van generatie 2 ondersteunen alleen VHD.
 
