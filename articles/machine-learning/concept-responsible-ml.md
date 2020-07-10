@@ -1,5 +1,5 @@
 ---
-title: Verantwoordelijke Machine Learning (ML)
+title: Voor beeld van verantwoordelijke Machine Learning (ML)
 titleSuffix: Azure Machine Learning
 description: Meer informatie over de belaste ML en hoe u deze kunt gebruiken in Azure Machine Learning
 services: machine-learning
@@ -8,14 +8,15 @@ ms.subservice: core
 ms.topic: conceptual
 ms.author: luquinta
 author: luisquintanilla
-ms.date: 05/08/2020
-ms.openlocfilehash: 09bb7710df19482e9625c1834d2646f70368fc1d
-ms.sourcegitcommit: dee7b84104741ddf74b660c3c0a291adf11ed349
+ms.date: 07/09/2020
+ms.openlocfilehash: 4f14d4a9207b3bd0ba242973443b8e756527fd70
+ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85920365"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86201932"
 ---
-# <a name="responsible-machine-learning-ml"></a>Verantwoordelijke Machine Learning (ML)
+# <a name="responsible-machine-learning-ml-preview"></a>Voor beeld van verantwoordelijke Machine Learning (ML)
 
 In dit artikel vindt u informatie over de verantwoordelijke MILLILITERs en manieren waarop u deze in de praktijk kunt plaatsen met Azure Machine Learning.
 
@@ -80,7 +81,7 @@ Sommige model gegevens die u mogelijk wilt documenteren als onderdeel van een ge
 
 Raadpleeg het volgende voor beeld om te leren hoe u de Azure Machine Learning SDK kunt gebruiken om [gegevens bladen voor modellen](https://github.com/microsoft/MLOps/blob/master/pytorch_with_datasheet/model_with_datasheet.ipynb)te implementeren.
 
-## <a name="additional-resources"></a>Aanvullende bronnen
+## <a name="additional-resources"></a>Aanvullende resources
 
 - Gebruik Homomorphic-versleuteling voor [het implementeren van een versleutelde webservice](how-to-homomorphic-encryption-seal.md).
 - Meer informatie over de set met richt lijnen [over milliliters](https://www.partnershiponai.org/about-ml/) voor machine learning systeem documentatie.

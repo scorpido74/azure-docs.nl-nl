@@ -14,12 +14,12 @@ ms.custom:
 - it-pro
 - seo-update-azuread-jan"
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5f8bafb04d0a5d9c6d25a7ed7e155888d492e9fc
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: a835872d4a4fedfb5ef72a1cb9499e4f969adcd3
+ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80050789"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86202115"
 ---
 # <a name="troubleshooting-azure-active-directory-b2b-collaboration"></a>Problemen oplossen Azure Active Directory B2B-samen werking
 
@@ -87,7 +87,9 @@ Als dit scenario belang rijk voor u is, kunt u onze API-uitnodiging e-mail onder
 
 Een gebruiker met een gast account kan zich niet aanmelden en ontvangt het volgende fout bericht:
 
+```plaintext
     AADSTS65005: Using application 'AppName' is currently not supported for your organization contoso.com because it is in an unmanaged state. An administrator needs to claim ownership of the company by DNS validation of contoso.com before the application AppName can be provisioned.
+```
 
 De gebruiker heeft een Azure-gebruikers account en is een virale Tenant die is verlaten of onbeheerd. Daarnaast zijn er geen globale of bedrijfs beheerders in de Tenant.
 

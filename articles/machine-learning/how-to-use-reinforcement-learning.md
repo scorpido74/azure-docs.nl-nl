@@ -1,7 +1,7 @@
 ---
-title: Train en implementeer een versterkt leer model.
+title: Train en implementeer een versterkt leer model (preview).
 titleSuffix: Azure Machine Learning
-description: Meer informatie over het gebruik van Azure Machine Learning versterking leren (RL) om een RL-agent te trainen om Pong af te spelen.
+description: Meer informatie over het gebruik van Azure Machine Learning versterking (preview) om een RL-agent te trainen om Pong af te spelen.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -10,11 +10,12 @@ ms.author: peterlu
 author: peterclu
 ms.date: 05/05/2020
 ms.custom: tracking-python
-ms.openlocfilehash: f8559733de9b7acfb23e2846e4d92ce6db5e2df0
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: b918369f68c3b0047213c24f1d4666fd0593cf30
+ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84556943"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86203278"
 ---
 # <a name="reinforcement-learning-preview-with-azure-machine-learning"></a>Educatief leren (preview) met Azure Machine Learning
 

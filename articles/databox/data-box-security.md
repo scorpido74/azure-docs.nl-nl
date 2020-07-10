@@ -8,12 +8,12 @@ ms.subservice: pod
 ms.topic: conceptual
 ms.date: 06/16/2020
 ms.author: alkohli
-ms.openlocfilehash: 19f06893c862e1e34cd79a42c428d202918f92e2
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 3ec5889d952e2836f1d112e38b8248f667cab586
+ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84817720"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86200403"
 ---
 # <a name="azure-data-box-security-and-data-protection"></a>Azure Data Box-beveiliging en -gegevensbescherming
 
@@ -30,11 +30,14 @@ De Microsoft Azure Data Box-oplossing bestaat uit vier hoofdonderdelen die met e
 - **Clients/hosts die met het apparaat zijn verbonden** – De clients in uw infrastructuur die via USB verbinding maken met de Data Box-apparaat en gegevens bevatten die moeten worden beschermd.
 - **Cloudopslag** – De locatie in de Azure-cloud waar gegevens worden opgeslagen. Dit is meestal het opslagaccount dat is gekoppeld aan de Azure Data Box-resource die u hebt gemaakt.
 
-Het volgende diagram toont de stroom van gegevens via de Azure Data Box-oplossing van on-premises naar Azure.
+Het volgende diagram toont de stroom van gegevens via de Azure Data Box-oplossing van on-premises naar Azure. Deze stroom is voor een import volgorde voor uw Data Box.
 
 ![Data Box-beveiliging](media/data-box-security/data-box-security-2.png)
 
-Wanneer de gegevens via deze oplossing stromen, worden gebeurtenissen vastgelegd en worden logboeken gegenereerd. Ga naar [Tracking en logboek registratie voor uw Azure data Box](data-box-logs.md)voor meer informatie.
+Wanneer de gegevens via deze oplossing stromen, worden gebeurtenissen vastgelegd en worden logboeken gegenereerd. Ga voor meer informatie naar:
+
+- [Tracering en logboek registratie voor uw Azure data Box import orders](data-box-logs.md).
+- [Tracering en logboek registratie voor uw Azure Data Box export orders](data-box-export-logs.md)
 
 ## <a name="security-features"></a>Beveiligingsfuncties
 
@@ -83,7 +86,7 @@ Azure Data Box verzamelt en toont persoonlijke informatie in de volgende belangr
   - Adres
   - Plaats
   - Postcode
-  - Status
+  - Staat
   - Land/Provincie/Regio
   - Accountnummer van transporteur
   - Volgnummer van verzending
@@ -99,7 +102,7 @@ Bekijk het Microsoft-privacybeleid in het [Vertrouwenscentrum](https://www.micro
 
 De volgende beveiligingsrichtlijnen zijn geïmplementeerd in Data Box: 
 
-|Richtlijn   |Description   |
+|Richtlijn   |Beschrijving   |
 |---------|---------|
 |[IEC 60529 IP52](https://www.iec.ch/)    | Voor bescherming tegen water en stof         |
 |[ISTA 2A](https://ista.org/docs/2Aoverview.pdf)     | Voor het weerstaan van nadelige vervoersomstandigheden          |

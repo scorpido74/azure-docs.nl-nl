@@ -6,24 +6,26 @@ author: alkohli
 ms.service: databox
 ms.subservice: pod
 ms.topic: troubleshooting
-ms.date: 04/30/2020
+ms.date: 07/08/2020
 ms.author: alkohli
-ms.openlocfilehash: 3aa48f42c767a8f1fb1c7bf0ad78fef8b8af1594
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: a632e753426def52bb260d7bf01875ec24e2ea9e
+ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85558535"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86200130"
 ---
 # <a name="troubleshoot-issues-related-to-azure-data-box-and-azure-data-box-heavy"></a>Problemen oplossen die verband houden met Azure Data Box en Azure Data Box Heavy
 
-In dit artikel vindt u informatie over het oplossen van problemen die kunnen optreden bij het gebruik van de Azure Data Box of Azure Data Box Heavy. Het artikel bevat een lijst met mogelijke fouten die worden weer gegeven wanneer gegevens worden gekopieerd naar het Data Box of wanneer gegevens van Data Box worden geüpload.
+In dit artikel vindt u informatie over het oplossen van problemen die kunnen optreden bij het gebruik van de Azure Data Box of Azure Data Box Heavy voor import orders. Het artikel bevat de lijst met mogelijke fouten die worden weer gegeven wanneer gegevens worden gekopieerd naar het Data Box of wanneer gegevens worden geüpload van Data Box voor een import volgorde.
+
+De informatie in dit artikel is niet van toepassing op het exporteren van orders die zijn gemaakt voor Data Box.
 
 ## <a name="error-classes"></a>Fout klassen
 
 De fouten in Data Box en Data Box Heavy worden als volgt samenvatten:
 
-| Fout categorie *        | Description        | Aanbevolen actie    |
+| Fout categorie *        | Beschrijving        | Aanbevolen actie    |
 |----------------------------------------------|---------|--------------------------------------|
 | Container-of share namen | De container-of share namen volgen niet de Azure-naamgevings regels.  |Down load de fout lijsten. <br> Wijzig de naam van de containers of shares. [Meer informatie](#container-or-share-name-errors).  |
 | Maximale grootte van container of share | De totale gegevens in containers of shares overschrijden de limiet van Azure.   |Down load de fout lijsten. <br> Verminder de totale hoeveelheid gegevens in de container of de share. [Meer informatie](#container-or-share-size-limit-errors).|

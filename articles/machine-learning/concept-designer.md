@@ -1,5 +1,5 @@
 ---
-title: ML-modellen bouwen met Designer
+title: ML-modellen bouwen met de ontwerp functie (preview-versie)
 titleSuffix: Azure Machine Learning
 description: Meer informatie over de termen, concepten en werk stromen die samen de ontwerper vormen voor Azure Machine Learning.
 services: machine-learning
@@ -10,12 +10,12 @@ ms.author: peterlu
 author: peterclu
 ms.date: 06/28/2020
 ms.custom: designer
-ms.openlocfilehash: 184db0280629e07314f9589338a33cdf442e63cb
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: a2074b1ecd37fd18a9a0ac9091f05e734765e40b
+ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85517361"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86199988"
 ---
 # <a name="what-is-azure-machine-learning-designer-preview"></a>Wat is een Azure Machine Learning-ontwerpfunctie (preview)? 
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-enterprise-sku.md)]
@@ -90,7 +90,7 @@ Zie voor meer informatie over de beschik bare bibliotheek met machine learning a
 
 Gebruik reken resources van uw werk ruimte om uw pijp lijn uit te voeren en uw geïmplementeerde modellen als realtime-eind punten of pijplijn eindpunten te hosten (voor batch-deinterferentie). De ondersteunde Compute-doelen zijn:
 
-| Rekendoel | Training | Implementatie |
+| Rekendoel | Bezig met trainen | Implementatie |
 | ---- |:----:|:----:|
 | Azure Machine Learning compute | ✓ | |
 | Reken instantie Azure Machine Learning | ✓ | |

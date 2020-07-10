@@ -12,12 +12,12 @@ manager: daveba
 ms.reviewer: annaba
 ms.collection: M365-identity-device-management
 ms.custom: has-adal-ref
-ms.openlocfilehash: 9c3ea7596e589431412489bea4ac9a23fa604540
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: ca19ccb925721126f7e7d8495addd0794766f376
+ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82610646"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86202880"
 ---
 # <a name="get-started-with-certificate-based-authentication-in-azure-active-directory"></a>Aan de slag met verificatie op basis van certificaten in Azure Active Directory
 
@@ -69,6 +69,7 @@ Als u uw certificerings instanties in Azure Active Directory wilt configureren, 
 
 Het schema voor een certificerings instantie ziet er als volgt uit:
 
+```csharp
     class TrustedCAsForPasswordlessAuth
     {
        CertificateAuthorityInformation[] certificateAuthorities;
@@ -90,13 +91,16 @@ Het schema voor een certificerings instantie ziet er als volgt uit:
         RootAuthority = 0,
         IntermediateAuthority = 1
     }
+```
 
 Voor de configuratie kunt u de [Azure Active Directory Power shell versie 2](/powershell/azure/install-adv2?view=azureadps-2.0)gebruiken:
 
 1. Start Windows Power shell met beheerders bevoegdheden.
 2. Installeer de Azure AD-module versie [2.0.0.33](https://www.powershellgallery.com/packages/AzureAD/2.0.0.33) of hoger.
 
-        Install-Module -Name AzureAD –RequiredVersion 2.0.0.33
+```powershell
+    Install-Module -Name AzureAD –RequiredVersion 2.0.0.33
+```
 
 Als eerste configuratie stap moet u een verbinding maken met uw Tenant. Zodra er een verbinding met uw Tenant bestaat, kunt u de vertrouwde certificerings instanties die in uw Directory zijn gedefinieerd, bekijken, toevoegen, verwijderen en wijzigen.
 
@@ -104,39 +108,49 @@ Als eerste configuratie stap moet u een verbinding maken met uw Tenant. Zodra er
 
 Gebruik de cmdlet [Connect-AzureAD](/powershell/module/azuread/connect-azuread?view=azureadps-2.0) om verbinding te maken met uw Tenant:
 
+```azurepowershell
     Connect-AzureAD
+```
 
 ### <a name="retrieve"></a>Ophalen
 
 Gebruik de cmdlet [Get-AzureADTrustedCertificateAuthority](/powershell/module/azuread/get-azureadtrustedcertificateauthority?view=azureadps-2.0) om de vertrouwde certificerings instanties op te halen die in uw Directory zijn gedefinieerd.
 
+```azurepowershell
     Get-AzureADTrustedCertificateAuthority
+```
 
 ### <a name="add"></a>Toevoegen
 
-Als u een vertrouwde certificerings instantie wilt maken, gebruikt u de cmdlet [New-AzureADTrustedCertificateAuthority](/powershell/module/azuread/new-azureadtrustedcertificateauthority?view=azureadps-2.0) en stelt u het kenmerk **crlDistributionPoint** in op een juiste waarde:
+Als u een vertrouwde certificerings instantie wilt maken, gebruikt u de cmdlet [New-AzureADTrustedCertificateAuthority](/azurepowershell/module/azuread/new-azureadtrustedcertificateauthority?view=azureadps-2.0) en stelt u het kenmerk **crlDistributionPoint** in op een juiste waarde:
 
+```azurepowershell
     $cert=Get-Content -Encoding byte "[LOCATION OF THE CER FILE]"
     $new_ca=New-Object -TypeName Microsoft.Open.AzureAD.Model.CertificateAuthorityInformation
     $new_ca.AuthorityType=0
     $new_ca.TrustedCertificate=$cert
     $new_ca.crlDistributionPoint="<CRL Distribution URL>"
     New-AzureADTrustedCertificateAuthority -CertificateAuthorityInformation $new_ca
+```
 
 ### <a name="remove"></a>Verwijderen
 
 Als u een vertrouwde certificerings instantie wilt verwijderen, gebruikt u de cmdlet [Remove-AzureADTrustedCertificateAuthority](/powershell/module/azuread/remove-azureadtrustedcertificateauthority?view=azureadps-2.0) :
 
+```azurepowershell
     $c=Get-AzureADTrustedCertificateAuthority
     Remove-AzureADTrustedCertificateAuthority -CertificateAuthorityInformation $c[2]
+```
 
 ### <a name="modify"></a>Wijzigen
 
 Als u een vertrouwde certificerings instantie wilt wijzigen, gebruikt u de cmdlet [set-AzureADTrustedCertificateAuthority](/powershell/module/azuread/set-azureadtrustedcertificateauthority?view=azureadps-2.0) :
 
+```azurepowershell
     $c=Get-AzureADTrustedCertificateAuthority
     $c[0].AuthorityType=1
     Set-AzureADTrustedCertificateAuthority -CertificateAuthorityInformation $c[0]
+```
 
 ## <a name="step-3-configure-revocation"></a>Stap 3: intrekking configureren
 
@@ -152,17 +166,23 @@ De volgende stappen beschrijven het proces voor het bijwerken en ongeldig valide
 
 1. Verbinding maken met beheerders referenties voor de MSOL-service:
 
+```powershell
         $msolcred = get-credential
         connect-msolservice -credential $msolcred
+```
 
 2. De huidige StsRefreshTokensValidFrom-waarde voor een gebruiker ophalen:
 
+```powershell
         $user = Get-MsolUser -UserPrincipalName test@yourdomain.com`
         $user.StsRefreshTokensValidFrom
+```
 
 3. Configureer een nieuwe StsRefreshTokensValidFrom-waarde voor de gebruiker die gelijk is aan de huidige tijds tempel:
 
+```powershell
         Set-MsolUser -UserPrincipalName test@yourdomain.com -StsRefreshTokensValidFrom ("03/05/2016")
+```
 
 De datum die u instelt, moet in de toekomst liggen. Als de datum niet in de toekomst ligt, is de eigenschap **StsRefreshTokensValidFrom** niet ingesteld. Als de datum in de toekomst ligt, wordt **StsRefreshTokensValidFrom** ingesteld op de huidige tijd (niet de datum die wordt aangegeven door de set-MsolUser opdracht).
 

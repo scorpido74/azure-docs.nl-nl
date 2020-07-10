@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 03/04/2020
-ms.openlocfilehash: 13b6753d7c04951839852b3090e99fd8cde1fe2d
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.openlocfilehash: 0d76bf29efeb40f9f29f80b6e3e6414f5e9b6fc8
+ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86079799"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86203268"
 ---
 # <a name="connect-hdinsight-to-your-on-premises-network"></a>HDInsight verbinden met uw on-premises netwerk
 
@@ -131,29 +131,31 @@ Als de virtuele machine eenmaal is gemaakt, ontvangt u een melding over de **imp
 
 3. Als u BIND wilt configureren om aanvragen voor naam omzetting door te sturen naar uw on-premises DNS-server, gebruikt u de volgende tekst als de inhoud van het `/etc/bind/named.conf.options` bestand:
 
-        acl goodclients {
-            10.0.0.0/16; # Replace with the IP address range of the virtual network
-            10.1.0.0/16; # Replace with the IP address range of the on-premises network
-            localhost;
-            localnets;
-        };
+    ```DNS Zone file
+    acl goodclients {
+        10.0.0.0/16; # Replace with the IP address range of the virtual network
+        10.1.0.0/16; # Replace with the IP address range of the on-premises network
+        localhost;
+        localnets;
+    };
 
-        options {
-                directory "/var/cache/bind";
+    options {
+            directory "/var/cache/bind";
 
-                recursion yes;
+            recursion yes;
 
-                allow-query { goodclients; };
+            allow-query { goodclients; };
 
-                forwarders {
-                192.168.0.1; # Replace with the IP address of the on-premises DNS server
-                };
+            forwarders {
+            192.168.0.1; # Replace with the IP address of the on-premises DNS server
+            };
 
-                dnssec-validation auto;
+            dnssec-validation auto;
 
-                auth-nxdomain no;    # conform to RFC1035
-                listen-on { any; };
-        };
+            auth-nxdomain no;    # conform to RFC1035
+            listen-on { any; };
+    };
+    ```
 
     > [!IMPORTANT]  
     > Vervang de waarden in de `goodclients` sectie door het IP-adres bereik van het virtuele netwerk en het on-premises netwerk. In deze sectie worden de adressen gedefinieerd waarvan deze DNS-server aanvragen accepteert.
@@ -184,11 +186,13 @@ Als de virtuele machine eenmaal is gemaakt, ontvangt u een melding over de **imp
 
 5. Als u BIND wilt configureren om DNS-namen voor resources binnen het virtuele netwerk op te lossen, gebruikt u de volgende tekst als de inhoud van het `/etc/bind/named.conf.local` bestand:
 
-        // Replace the following with the DNS suffix for your virtual network
-        zone "icb0d0thtw0ebifqt0g1jycdxd.ex.internal.cloudapp.net" {
-            type forward;
-            forwarders {168.63.129.16;}; # The Azure recursive resolver
-        };
+    ```DNS Zone file
+    // Replace the following with the DNS suffix for your virtual network
+    zone "icb0d0thtw0ebifqt0g1jycdxd.ex.internal.cloudapp.net" {
+        type forward;
+        forwarders {168.63.129.16;}; # The Azure recursive resolver
+    };
+    ```
 
     > [!IMPORTANT]  
     > U moet de vervangen `icb0d0thtw0ebifqt0g1jycdxd.ex.internal.cloudapp.net` door het DNS-achtervoegsel dat u eerder hebt opgehaald.
@@ -256,10 +260,12 @@ Een voorwaardelijke voorwaarts stuurt alleen aanvragen voor een specifiek DNS-ac
 
 De volgende tekst is een voor beeld van een configuratie voor voorwaardelijke doorstuur servers voor de **BIND** -DNS-software:
 
-    zone "icb0d0thtw0ebifqt0g1jycdxd.ex.internal.cloudapp.net" {
-        type forward;
-        forwarders {10.0.0.4;}; # The custom DNS server's internal IP address
-    };
+```DNS Zone file
+zone "icb0d0thtw0ebifqt0g1jycdxd.ex.internal.cloudapp.net" {
+    type forward;
+    forwarders {10.0.0.4;}; # The custom DNS server's internal IP address
+};
+```
 
 Zie de documentatie van [add-DnsServerConditionalForwarderZone](https://technet.microsoft.com/itpro/powershell/windows/dnsserver/add-dnsserverconditionalforwarderzone) voor meer informatie over het gebruik van DNS op **Windows Server 2016**...
 

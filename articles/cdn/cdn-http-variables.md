@@ -14,11 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/09/2018
 ms.author: allensu
-ms.openlocfilehash: f9768d4d20380e8e0c4ca6f7c71fddd68bb93d5c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 6e601e3e06965faf8ec0fd238c54115570150b61
+ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84340671"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86203565"
 ---
 # <a name="http-variables-for-azure-cdn-rules-engine"></a>HTTP-variabelen voor Azure CDN-regel engine
 HTTP-variabelen bieden de manier waarop u HTTP-aanvraag-en respons meta gegevens kunt ophalen. Deze meta gegevens kunnen vervolgens worden gebruikt om een aanvraag of antwoord dynamisch te wijzigen. Het gebruik van HTTP-variabelen is beperkt tot de volgende functies van de regel Engine:
@@ -33,7 +34,7 @@ HTTP-variabelen bieden de manier waarop u HTTP-aanvraag-en respons meta gegevens
 In de volgende tabel worden de ondersteunde HTTP-variabelen beschreven. Er wordt een lege waarde geretourneerd als GEO-meta gegevens (bijvoorbeeld post code) niet beschikbaar zijn voor een bepaalde aanvraag.
 
 
-| Name | Variabele | Description | Voorbeeldwaarde |
+| Naam | Variabele | Beschrijving | Voorbeeldwaarde |
 | ---- | -------- | ----------- | ------------ |
 | ASN (aanvrager) | % {geo_asnum} | Hiermee wordt het AS-nummer van de aanvrager aangegeven. <br /><br />**Afgeschaft:** % {virt_dst_asnum}. <br />Deze variabele is vervangen door% {geo_asnum}. Hoewel een regel die gebruikmaakt van deze afgeschafte variabele, blijft werken, moet u deze bijwerken om de nieuwe variabele te gebruiken. | AS15133 |
 | Plaats (aanvrager) | % {geo_city} | Hiermee wordt de plaats van de aanvrager aangegeven. | Los Angeles |
@@ -68,7 +69,7 @@ In de volgende tabel worden de ondersteunde HTTP-variabelen beschreven. Er wordt
 De volgende tabel beschrijft de juiste syntaxis voor het opgeven van een HTTP-variabele.
 
 
-| Syntax | Voorbeeld | Description |
+| Syntax | Voorbeeld | Beschrijving |
 | ------ | -------- | ---------- |
 | % { &lt; HTTPVariable &gt; } | % {host} | Gebruik deze syntaxis om de volledige waarde op te halen die overeenkomt met de opgegeven &lt; HTTPVariable &gt; . |
 | % { &lt; HTTPVariableDelimiter &gt; } | % {host,} | Gebruik deze syntaxis om de case in te stellen voor de gehele waarde die overeenkomt met de opgegeven &lt; HTTPVariableDelimiter &gt; . |
@@ -91,7 +92,7 @@ Een scheidings teken kan worden opgegeven na een HTTP-variabele om een van de vo
 
 De scheidings tekens worden in de volgende tabel beschreven.
 
-| Scheidingsteken | Description |
+| Scheidingsteken | Beschrijving |
 | --------- | ----------- |
 | := | Geeft aan dat er een standaard waarde wordt toegewezen aan de variabele wanneer het een van de volgende is: <br />-Ontbreekt <br />-Stel in op NULL. |
 | :+ | Geeft aan dat er een standaard waarde wordt toegewezen aan de variabele wanneer hieraan een waarde is toegewezen. |
@@ -124,7 +125,7 @@ Een standaard waarde kan worden toegewezen aan een header wanneer deze aan een v
 
 In de volgende tabel wordt beschreven hoe u een standaard waarde definieert.
 
-| Voorwaarde | Syntax | Voorbeeld | Description |
+| Voorwaarde | Syntax | Voorbeeld | Beschrijving |
 | --------- | ------ | --------| ----------- |
 | Stel een koptekst in op een standaard waarde wanneer deze aan een van de volgende voor waarden voldoet: <br /><br />-Ontbrekende header <br /><br />-Header-waarde is ingesteld op NULL.| % {Variable: = waarde} | % {http_referrer: = niet opgegeven} | De verwijzende header wordt alleen ingesteld op niet *opgegeven* als deze ontbreekt of als deze is ingesteld op null. Als deze is ingesteld, wordt er geen actie uitgevoerd. |
 | Stel een koptekst in op een standaard waarde wanneer deze ontbreekt. | % {Variable = waarde} | % {http_referrer = niet opgegeven} | De verwijzende header wordt alleen ingesteld op niet *opgegeven* wanneer deze ontbreekt. Als deze is ingesteld, wordt er geen actie uitgevoerd. |
@@ -173,7 +174,7 @@ https: \/ /www.mydomain.com/mobile/marketing/proposal.htm
 ### <a name="pattern-removal"></a>Patroon verwijderen
 Tekst die overeenkomt met een specifiek patroon kan worden verwijderd uit het begin of het einde van de waarde van een variabele.
 
-| Syntax | Bewerking |
+| Syntax | Actie |
 | ------ | ------ |
 | % {Variable # patroon} | Tekst verwijderen wanneer het opgegeven patroon wordt gevonden aan het begin van de waarde van een variabele. |
 | % {Variabele% pattern} | Tekst verwijderen wanneer het opgegeven patroon wordt gevonden aan het einde van de waarde van een variabele. |
@@ -186,7 +187,7 @@ In dit voorbeeld scenario wordt de variabele *REQUEST_URI* ingesteld op:
 
 In de volgende tabel ziet u hoe deze syntaxis werkt.
 
-| Voorbeeld syntaxis | Resultaten | |
+| Voorbeeld syntaxis | Resultaten | Beschrijving |
 | ------------- | ------- | --- |
 | % {request_uri #/800001}/customerorigin | /customerorigin/myorigin/marketing/product.html? language = nl-nl | Omdat de variabele begint met het patroon, is deze vervangen. |
 | % {request_uri% html} htm | /800001/myorigin/marketing/product.html? language = nl-nl | Omdat de variabele niet eindigt met het patroon, is er geen wijziging.|
@@ -194,7 +195,7 @@ In de volgende tabel ziet u hoe deze syntaxis werkt.
 ### <a name="find-and-replace"></a>Zoeken en vervangen
 De syntaxis voor zoeken en vervangen wordt beschreven in de volgende tabel.
 
-| Syntax | Bewerking |
+| Syntax | Actie |
 | ------ | ------ |
 | % {Variabele/zoeken/vervangen} | Het eerste exemplaar van het opgegeven patroon zoeken en vervangen. |
 | % {Variable//zoeken/vervangen} | Zoek en vervang alle instanties van het opgegeven patroon. |
@@ -206,7 +207,7 @@ De syntaxis voor zoeken en vervangen wordt beschreven in de volgende tabel.
 ### <a name="find-and-rewrite"></a>Zoeken en herschrijven
 Gebruik voor een variatie op zoeken en vervangen de tekst die overeenkomt met het opgegeven patroon wanneer u deze herschrijft. De syntaxis voor zoeken en herschrijven wordt beschreven in de volgende tabel.
 
-| Syntax | Bewerking |
+| Syntax | Actie |
 | ------ | ------ |
 | % {Variable/= zoeken/herschrijven} | Alle exemplaren van het opgegeven patroon zoeken, kopiëren en herschrijven. |
 | % {Variable/^ zoeken/herschrijven} | Zoeken, kopiëren en herschrijven van het opgegeven patroon wanneer dit plaatsvindt aan het begin van de variabele. |

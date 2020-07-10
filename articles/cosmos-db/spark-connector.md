@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: how-to
 ms.date: 05/21/2019
 ms.author: ramkris
-ms.openlocfilehash: f576da01a7d80559419376f1629c0765074065da
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: ef2691f63d7bb8c468d065b82c9726e8f7740c20
+ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85262222"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86203155"
 ---
 # <a name="accelerate-big-data-analytics-by-using-the-apache-spark-to-azure-cosmos-db-connector"></a>big data Analytics versnellen met behulp van de Apache Spark om de connector te Azure Cosmos DB
 
@@ -31,7 +31,7 @@ U kunt de connector gebruiken met [Azure Databricks](https://azure.microsoft.com
 > Voor Cosmos DB Cassandra-API gebruikt u de [Cassandra Spark-connector](https://github.com/datastax/spark-cassandra-connector).
 >
 
-## <a name="quickstart"></a>Snelstart
+## <a name="quickstart"></a>Snelstartgids
 
 * Volg de stappen in aan [de slag met de Java SDK](sql-api-async-java-get-started.md) om een Cosmos DB account in te stellen en een aantal gegevens in te vullen.
 * Volg de stappen in [Azure Databricks](/azure/azure-databricks/quickstart-create-databricks-workspace-portal) aan de slag om een Azure Databricks-werk ruimte en-cluster in te stellen.
@@ -233,7 +233,7 @@ U kunt de connector bouwen vanuit een bron in GitHub of de uber-potten downloade
 Maak een bibliotheek met behulp van uw Databricks-werk ruimte door de richt lijnen in de Azure Databricks Guide te volgen > [de Azure Cosmos DB Spark-connector te gebruiken](https://docs.azuredatabricks.net/spark/latest/data-sources/azure/cosmosdb-connector.html)
 
 > [!NOTE]
-> Houd er rekening mee dat de pagina **Azure Cosmos DB Spark-connector gebruiken** momenteel niet up-to-date is. In plaats van de zes afzonderlijke potten in zes verschillende bibliotheken te downloaden, kunt u het uber jar downloaden van Maven op https://search.maven.org/artifact/com.microsoft.azure/azure-cosmosdb-spark_2.4.0_2.11/1.4.0/jar) en installeert u deze één jar/Library.
+> De pagina **Azure Cosmos DB Spark-connector gebruiken** is momenteel niet up-to-date. In plaats van de zes afzonderlijke potten in zes verschillende bibliotheken te downloaden, kunt u het uber jar downloaden van Maven op [Azure-cosmosdb-spark_lkg_version](https://aka.ms/CosmosDB_OLTP_Spark_2.4_LKG) en dit ene jar/bibliotheek installeren.
 > 
 
 ### <a name="using-spark-cli"></a>Spark-CLI gebruiken
@@ -309,7 +309,7 @@ We hebben meer informatie in de `azure-cosmosdb-spark` [wiki](https://github.com
 * [Demonstraties van feeds wijzigen](https://github.com/Azure/azure-cosmosdb-spark/wiki/Change-Feed-demos)
 * [Demo's van Structured stream](https://github.com/Azure/azure-cosmosdb-spark/wiki/Structured-Stream-demos)
 
-### <a name="monitoring"></a>Bewaking
+### <a name="monitoring"></a>Controle
 
 * [Spark-taken bewaken met Application Insights](https://github.com/Azure/azure-cosmosdb-spark/tree/2.3/samples/monitoring)
 

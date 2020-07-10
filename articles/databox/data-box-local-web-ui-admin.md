@@ -5,14 +5,15 @@ services: databox
 author: alkohli
 ms.service: databox
 ms.subservice: pod
-ms.topic: how-to
-ms.date: 06/03/2019
+ms.topic: article
+ms.date: 07/10/2020
 ms.author: alkohli
-ms.openlocfilehash: 4e16f57d7a8ee10ef870ac102c5458cea4946304
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 34b1ce42850fcefcc2b0d146e7f33d720fd8062d
+ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84608244"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86202525"
 ---
 # <a name="use-the-local-web-ui-to-administer-your-data-box-and-data-box-heavy"></a>Gebruik de lokale web-UI voor het beheren van uw Data Box en Data Box Heavy
 
@@ -27,6 +28,8 @@ Dit artikel bevat de volgende zelfstudies:
 - Stuklijst- of manifestbestanden downloaden
 - Beschikbare capaciteit van het apparaat weergeven
 - De controlesomvalidatie overslaan
+
+[!INCLUDE [Data Box feature is in preview](../../includes/data-box-feature-is-preview-info.md)]
 
 ## <a name="generate-support-package"></a>Ondersteuningspakket genereren
 
@@ -79,9 +82,9 @@ Voer de volgende stappen uit om uw Data Box opnieuw op te starten.
 
 ## <a name="download-bom-or-manifest-files"></a>Stuklijst- of manifestbestanden downloaden
 
-De lijst met bestanden (stuk lijst) of de manifest bestanden bevatten de lijsten met de gekopieerde-Data Box of Data Box Heavy. Deze bestanden worden gegenereerd wanneer u het apparaat voorbereidt op verzen ding.
+De lijst met bestanden (stuk lijst) of de manifest bestanden bevatten de lijsten met de gekopieerde-Data Box of Data Box Heavy. Deze bestanden worden gegenereerd voor een import volgorde wanneer u het apparaat voorbereidt op verzen ding.
 
-Voordat u begint, moet u ervoor zorgen dat uw apparaat **voorbereiding voor verzending** stap is voltooid. Volg deze stappen om stuklijst- of manifestbestanden te downloaden:
+Voordat u begint, moet u ervoor zorgen dat uw apparaat **voorbereiding voor verzending** stap is voltooid. Voer de volgende stappen uit om stuk lijst-of manifest bestanden voor uw import volgorde te downloaden:
 
 1. Ga naar de lokale web-UI voor uw apparaat. U zult zien dat het apparaat klaar is met het verzenden van de verzen ding. Nadat de voorbereiding van het apparaat is voltooid, wordt de status van het apparaat bijgewerkt naar **Gereed voor verzending**.
 
@@ -167,6 +170,8 @@ U kunt het apparaatdashboard gebruiken om de beschikbare en gebruikte capaciteit
 
 Er worden standaard controlesommen gegenereerd voor uw gegevens tijdens de voorbereiding voor verzending. In sommige zeldzame gevallen, afhankelijk van het gegevenstype (kleine bestandsgrootten), kan dit lang duren. In dergelijke gevallen kunt u de controlesom overslaan.
 
+De berekening van de controlesom tijdens de voor bereiding op verzen ding wordt alleen uitgevoerd voor import orders en niet voor export orders. 
+
 We raden u ten zeerste aan om de controlesom niet uit te schakelen, tenzij de prestaties te veel worden beïnvloed.
 
 1. Ga in de rechter bovenhoek van de lokale web-UI van uw apparaat naar **instellingen**.
@@ -176,7 +181,8 @@ We raden u ten zeerste aan om de controlesom niet uit te schakelen, tenzij de pr
 2. Controlesomvalidatie **Uitschakelen**
 3. Klik op **Toepassen**.
 
-## <a name="next-steps"></a>Volgende stappen
+> [!NOTE]
+> De optie voor het berekenen van de controlesom overs laan is alleen beschikbaar wanneer de Azure Data Box is ontgrendeld. Deze optie wordt niet weer geven wanneer het apparaat is vergrendeld.
 
 - Meer informatie over het [beheren van de data box en het data Box Heavy via de Azure Portal](data-box-portal-admin.md).
 

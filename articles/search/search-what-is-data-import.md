@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 06/30/2020
-ms.openlocfilehash: 9a4b6bc8ae20789c1420e68f91cee34ac5b3a3ed
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 86982aa418433ecef6a81252363091714185fe22
+ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85554261"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86202293"
 ---
 # <a name="data-import-overview---azure-cognitive-search"></a>Overzicht van het importeren van gegevens-Azure Cognitive Search
 
@@ -52,7 +52,7 @@ Geef in het REST API HTTP POST-aanvragen met JSON-aanvraag instanties op de eind
 In de .NET SDK kunt u uw gegevens inpakken in een- `IndexBatch` object. Een `IndexBatch` verzameling objecten die elk een `IndexAction` document bevat en een eigenschap die de Azure-Cognitive Search vertelt welke actie moet worden uitgevoerd op dat document. Zie voor een code voorbeeld de [C#-Snelstartgids](search-get-started-dotnet.md).
 
 
-| @search.action | Description | Vereiste velden voor elk document | Notities |
+| @search.action | Beschrijving | Vereiste velden voor elk document | Opmerkingen |
 | -------------- | ----------- | ---------------------------------- | ----- |
 | `upload` |Een `upload`-actie is vergelijkbaar met een "upsert", waarbij het document wordt ingevoegd als het nieuw is en wordt bijgewerkt/vervangen als het al bestaat. |sleutel, plus andere velden die u wilt definiëren |Tijdens het bijwerken/vervangen van een bestaand document wordt elk veld dat niet is opgegeven in de aanvraag ingesteld op `null`. Dit gebeurt zelfs als het veld eerder is ingesteld op een niet-null-waarde. |
 | `merge` |Een bestaand document wordt bijgewerkt met de opgegeven velden. Als het document niet in de index bestaat, mislukt de samenvoeging. |sleutel, plus andere velden die u wilt definiëren |Alle velden die u in een samenvoeging opgeeft, vervangen de bestaande velden in het document, In de .NET SDK bevat dit velden van het type `DataType.Collection(DataType.String)` . In de REST API omvat dit velden van het type `Collection(Edm.String)` . Als het document bijvoorbeeld een veld `tags` bevat met de waarde `["budget"]` en u een samenvoeging doet met de waarde `["economy", "pool"]` voor `tags`, wordt de uiteindelijke waarde van het veld `tags``["economy", "pool"]`. Het wordt dus niet `["budget", "economy", "pool"]`. |
@@ -67,7 +67,9 @@ Voor zowel POST als GET moet u uw *service naam*, *index naam*en een *API-versie
 
 Voor GET geeft u in de *querytekenreeks* aan het einde van de URL de queryparameters op. Hieronder vindt u de URL-indeling:
 
-    https://[service name].search.windows.net/indexes/[index name]/docs?[query string]&api-version=2020-06-30
+```http
+    https://[service name].search.windows.net/indexes/[index name]/docs?[query string]&api-version=2019-05-06
+```
 
 De indeling voor POST is hetzelfde, maar met `api-version` in de para meters van de query reeks.
 
@@ -75,8 +77,8 @@ De indeling voor POST is hetzelfde, maar met `api-version` in de para meters van
 
 Het pullmodel verkent een ondersteunde gegevensbron en uploadt de gegevens automatisch naar uw index. In azure Cognitive Search is deze mogelijkheid geïmplementeerd via *Indexeer functies*, die momenteel beschikbaar zijn voor deze platformen:
 
-+ [Blob-opslag](search-howto-indexing-azure-blob-storage.md)
-+ [Tabel opslag](search-howto-indexing-azure-tables.md)
++ [Blob Storage](search-howto-indexing-azure-blob-storage.md)
++ [Table Storage](search-howto-indexing-azure-tables.md)
 + [Azure Cosmos DB](search-howto-index-cosmosdb.md)
 + [Azure SQL Database, SQL Managed instance en SQL Server op virtuele machines van Azure](search-howto-connecting-azure-sql-database-to-azure-search-using-indexers.md)
 
@@ -96,7 +98,7 @@ Een snelle manier om een voor spelling controle uit te voeren op het uploaden va
 > [!TIP]
 > Talloze [Azure Cognitive Search-code voorbeelden](https://github.com/Azure-Samples/?utf8=%E2%9C%93&query=search) zijn Inge sloten of gemakkelijk beschik bare gegevens sets, zodat u snel aan de slag kunt gaan. De portal bevat ook een voorbeeldindexeerfunctie en een gegevensbron, bestaande uit een kleine vastgoedgegevensset ('realestate-us-sample'). Wanneer u de vooraf geconfigureerde Indexeer functie uitvoert op de voorbeeld gegevens bron, wordt er een index gemaakt en geladen met documenten die vervolgens kunnen worden opgevraagd in Search Explorer of door de code die u schrijft.
 
-## <a name="see-also"></a>Zie tevens
+## <a name="see-also"></a>Zie ook
 
 + [Overzicht van de indexeerfunctie](search-indexer-overview.md)
 + [Portaloverzicht: een index maken, gegevens laden, een query in een index uitvoeren](search-get-started-portal.md)

@@ -4,12 +4,12 @@ description: Meer informatie over hoe u Azure Backup kunt gebruiken om gegevens 
 ms.reviewer: saurse
 ms.topic: conceptual
 ms.date: 05/17/2018
-ms.openlocfilehash: 5611b5a6fc9ba8bbff11e35449caf0dd9d33fa21
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: e5761f56106989084f12b80620ffc417b781965d
+ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85373299"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86187826"
 ---
 # <a name="offline-backup-workflow-in-azure-backup"></a>Werk stroom voor offline back-up in Azure Backup
 
@@ -136,7 +136,7 @@ Het hulp programma *AzureOfflineBackupDiskPrep* bereidt de SATA-stations voor di
     | Parameter | Beschrijving |
     | --- | --- |
     | s: &lt; *pad naar locatie van tijdelijke bestanden*&gt; |Deze verplichte invoer wordt gebruikt om het pad naar de faserings locatie op te geven die u hebt ingevoerd in de werk stroom in de sectie ' offline back-up initiëren '. |
-    | p: &lt; *pad naar PublishSettingsFile*&gt; |Deze optionele invoer wordt gebruikt om het pad naar het Azure Publish settings-bestand op te geven dat u in de werk stroom hebt ingevoerd in de sectie ' offline back-up initiëren '. |
+    | p: &lt; *pad naar PublishSettingsFile*&gt; |Deze optionele invoer wordt gebruikt om het pad naar het Azure Publish settings-bestand op te geven.  |
 
     Wanneer u de opdracht uitvoert, vraagt het hulp programma de selectie van de Azure import-taak aan die overeenkomt met de stations die moeten worden voor bereid. Als er slechts één import taak is gekoppeld aan de gegeven faserings locatie, ziet u een pagina zoals deze.
 

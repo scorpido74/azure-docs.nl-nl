@@ -12,13 +12,14 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 04/21/2019
+ms.date: 07/09/2020
 ms.author: juliako
-ms.openlocfilehash: 126700e6290650221a9cb9711b22472301409fca
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 1e5f1e38461b7f229f9eb7559aeb6203563fceb6
+ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "74974169"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86200207"
 ---
 # <a name="tutorial-encrypt-video-with-aes-128-and-use-the-key-delivery-service"></a>Zelf studie: video versleutelen met AES-128 en de key delivery service gebruiken
 
@@ -46,7 +47,7 @@ In deze handleiding ontdekt u hoe u:
 > * Configureer de streaming-Locator voor het versleutelen van de video met AES (ClearKey).
 > * Een test Token ophalen.
 > * Een streaming-URL bouwen.
-> * Resources opschonen.
+> * Schoon resources op.
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 
@@ -148,7 +149,7 @@ Nu de [streaming-Locator](https://docs.microsoft.com/rest/api/media/streamingloc
 
 ## <a name="clean-up-resources-in-your-media-services-account"></a>Resources in uw Media Services-account opschonen
 
-Over het algemeen moet u alles opschonen behalve objecten die u wilt hergebruiken (meestal gebruikt u trans formaties, streaming-Locators, enzovoort). Als u wilt dat uw account wordt gereinigd na het experimenteren, verwijdert u de resources die u niet wilt hergebruiken. Met de volgende code worden bijvoorbeeld taken verwijderd:
+Over het algemeen moet u alles opschonen behalve objecten die u wilt hergebruiken (meestal gebruikt u trans formaties, streaming-Locators, enzovoort). Als u wilt dat uw account wordt gereinigd na het experimenteren, verwijdert u de resources die u niet wilt hergebruiken. Met de volgende code worden bijvoorbeeld de taak, gemaakte assets en het beleid voor inhouds sleutels verwijderd:
 
 [!code-csharp[Main](../../../media-services-v3-dotnet-tutorials/AMSV3Tutorials/EncryptWithAES/Program.cs#CleanUp)]
 

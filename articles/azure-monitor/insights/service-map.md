@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 07/24/2019
-ms.openlocfilehash: 217b15b4004b1f06ef63414adc25890d4d87b027
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 637db3a0749b5a0738b0ccc5136d26e435a03c7b
+ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85557589"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86203133"
 ---
 # <a name="using-service-map-solution-in-azure"></a>Servicetoewijzing gebruiken in Azure
 
@@ -154,7 +154,7 @@ Klik op het menu met weglatings tekens naast de groeps naam in de lijst groep.
 
 Bepaalde processen dienen specifieke rollen op computers: webservers, toepassings servers, Data Base, enzovoort. Met Servicetoewijzing worden de vakken proces en computer met functie pictogrammen gemarkeerd om in één oogopslag de rol te zien die een proces of server speelt.
 
-| Pictogram rol | Description |
+| Pictogram rol | Beschrijving |
 |:--|:--|
 | ![Webserver](media/service-map/role-web-server.png) | Webserver |
 | ![App-server](media/service-map/role-application-server.png) | Toepassings server |
@@ -457,43 +457,43 @@ Records met een type *ServiceMapProcess_CL* hebben inventaris gegevens voor met 
 
 ### <a name="list-all-known-machines"></a>Alle bekende computers weer geven
 
-ServiceMapComputer_CL | arg_max samenvatten (TimeGenerated, *) door ResourceId
+`ServiceMapComputer_CL | summarize arg_max(TimeGenerated, *) by ResourceId`
 
 ### <a name="list-the-physical-memory-capacity-of-all-managed-computers"></a>De capaciteit van het fysieke geheugen van alle beheerde computers weer geven.
 
-ServiceMapComputer_CL | arg_max samenvatten (TimeGenerated, *) door ResourceId | project PhysicalMemory_d, ComputerName_s
+`ServiceMapComputer_CL | summarize arg_max(TimeGenerated, *) by ResourceId | project PhysicalMemory_d, ComputerName_s`
 
 ### <a name="list-computer-name-dns-ip-and-os"></a>Computer naam, DNS, IP en besturings systeem weer geven.
 
-ServiceMapComputer_CL | arg_max samenvatten (TimeGenerated, *) door ResourceId | project ComputerName_s, OperatingSystemFullName_s, DnsNames_s, Ipv4Addresses_s
+`ServiceMapComputer_CL | summarize arg_max(TimeGenerated, *) by ResourceId | project ComputerName_s, OperatingSystemFullName_s, DnsNames_s, Ipv4Addresses_s`
 
 ### <a name="find-all-processes-with-sql-in-the-command-line"></a>Alle processen zoeken met ' SQL ' in de opdracht regel
 
-ServiceMapProcess_CL | waar CommandLine_s contains_cs "SQL" | arg_max samenvatten (TimeGenerated, *) door ResourceId
+`ServiceMapProcess_CL | where CommandLine_s contains_cs "sql" | summarize arg_max(TimeGenerated, *) by ResourceId`
 
 ### <a name="find-a-machine-most-recent-record-by-resource-name"></a>Zoek een machine (de meest recente record) op resource naam
 
-zoeken in (ServiceMapComputer_CL) "m-4b9c93f9-bc37-46df-b43c-899ba829e07b" | arg_max samenvatten (TimeGenerated, *) door ResourceId
+`search in (ServiceMapComputer_CL) "m-4b9c93f9-bc37-46df-b43c-899ba829e07b" | summarize arg_max(TimeGenerated, *) by ResourceId`
 
 ### <a name="find-a-machine-most-recent-record-by-ip-address"></a>Een machine (meest recente record) zoeken op IP-adres
 
-zoeken in (ServiceMapComputer_CL) "10.229.243.232" | arg_max samenvatten (TimeGenerated, *) door ResourceId
+`search in (ServiceMapComputer_CL) "10.229.243.232" | summarize arg_max(TimeGenerated, *) by ResourceId`
 
 ### <a name="list-all-known-processes-on-a-specified-machine"></a>Alle bekende processen op een opgegeven computer weer geven
 
-ServiceMapProcess_CL | Where MachineResourceName_s = = "m-559dbcd8-3130-454d-8d1d-f624e57961bc" | arg_max samenvatten (TimeGenerated, *) door ResourceId
+`ServiceMapProcess_CL | where MachineResourceName_s == "m-559dbcd8-3130-454d-8d1d-f624e57961bc" | summarize arg_max(TimeGenerated, *) by ResourceId`
 
 ### <a name="list-all-computers-running-sql"></a>Alle computers met SQL weer geven
 
-ServiceMapComputer_CL | waar ResourceName_s in (((ServiceMapProcess_CL) " \* SQL \* " | Distinct MachineResourceName_s)) | DISTINCT ComputerName_s
+`ServiceMapComputer_CL | where ResourceName_s in ((search in (ServiceMapProcess_CL) "\*sql\*" | distinct MachineResourceName_s)) | distinct ComputerName_s`
 
 ### <a name="list-all-unique-product-versions-of-curl-in-my-datacenter"></a>Alle unieke product versies van krul in mijn Data Center weer geven
 
-ServiceMapProcess_CL | waar ExecutableName_s = = "krul" | DISTINCT ProductVersion_s
+`ServiceMapProcess_CL | where ExecutableName_s == "curl" | distinct ProductVersion_s`
 
 ### <a name="create-a-computer-group-of-all-computers-running-centos"></a>Een computer groep maken van alle computers waarop CentOS wordt uitgevoerd
 
-ServiceMapComputer_CL | waar OperatingSystemFullName_s contains_cs "CentOS" | DISTINCT ComputerName_s
+`ServiceMapComputer_CL | where OperatingSystemFullName_s contains_cs "CentOS" | distinct ComputerName_s`
 
 ### <a name="summarize-the-outbound-connections-from-a-group-of-machines"></a>De uitgaande verbindingen van een groep machines samenvatten
 
@@ -571,7 +571,7 @@ Het kan handig zijn om eerst de [meest recente runtime-bibliotheken](https://sup
 
 De volgende tabel bevat code nummers en voorgestelde oplossingen.
 
-| Code | Description | Oplossing |
+| Code | Beschrijving | Oplossing |
 |:--|:--|:--|
 | 0x17 | Voor het installatieprogramma van de bibliotheek is een Windows-update vereist die niet is geïnstalleerd. | Bekijk het meest recente installatielogboek van de bibliotheek.<br><br>Als een verwijzing naar `Windows8.1-KB2999226-x64.msu` wordt gevolgd door een regel, `Error 0x80240017: Failed to execute MSU package,` hebt u niet de vereiste onderdelen om KB2999226 te installeren. Volg de instructies in het gedeelte vereiste onderdelen in het artikel [Universal C-runtime in Windows](https://support.microsoft.com/kb/2999226). Mogelijk moet u Windows Update uitvoeren en meerdere keren opnieuw opstarten om de vereiste onderdelen te kunnen installeren.<br><br>Voer het installatieprogramma voor de Microsoft-afhankelijkheidsagent opnieuw uit. |
 

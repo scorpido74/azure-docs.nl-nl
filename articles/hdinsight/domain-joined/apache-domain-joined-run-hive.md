@@ -8,11 +8,12 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 11/27/2019
-ms.openlocfilehash: 90d7da9c8ddd8c9c595f2209dcc34e2f595acfd2
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 71c1306d1516d8af3fb16c0ba353ab8144de2562
+ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "78196923"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86202580"
 ---
 # <a name="configure-apache-hive-policies-in-hdinsight-with-enterprise-security-package"></a>Apache Hive-beleidsregels configureren in HDInsight met Enterprise Security Package
 
@@ -55,7 +56,7 @@ In deze sectie maakt u twee zwerver-beleids regels voor toegang tot hivesampleta
     |---|---|
     |Policy Name|lezen-hivesampletable-alle|
     |Hive-data base|standaardinstelling|
-    |tabel|hivesampletable|
+    |table|hivesampletable|
     |Hive-kolom|*|
     |Select User|hiveuser1|
     |Machtigingen|Selecteer|
@@ -73,7 +74,7 @@ In deze sectie maakt u twee zwerver-beleids regels voor toegang tot hivesampleta
     |---|---|
     |Policy Name|lezen-hivesampletable-devicemake|
     |Hive-data base|standaardinstelling|
-    |tabel|hivesampletable|
+    |table|hivesampletable|
     |Hive-kolom|ClientID, devicemake|
     |Select User|hiveuser2|
     |Machtigingen|Selecteer|
@@ -114,13 +115,15 @@ In de laatste sectie hebt u twee beleids regels geconfigureerd.  hiveuser1 heeft
 
 1. Selecteer **hivesampletable**en selecteer **volgende**.
 
-1. Selecteer **Finish**.
+1. Selecteer **Voltooien**.
 
 1. In het dialoogvenster **Gegevens importeren** kunt u de query wijzigen of opgeven. Als u dit wilt doen, selecteert u **Eigenschappen**. Dit kan een paar seconden duren.
 
 1. Selecteer het tabblad **definitie** . De opdracht tekst is:
 
-       SELECT * FROM "HIVE"."default"."hivesampletable"
+    ```sql
+    SELECT * FROM "HIVE"."default"."hivesampletable"`
+    ```
 
    Bij de Ranger-beleidsregels hebt u gedefinieerd dat hiveuser1 de machtiging SELECT heeft voor alle kolommen.  Deze query werkt dus met hiveuser1-referenties, maar deze query werkt niet met hiveuser2-referenties.
 
@@ -135,15 +138,21 @@ Als u het tweede beleid wilt testen (Read-hivesampletable-devicemake), hebt u in
 1. Voeg een nieuw blad in Excel toe.
 2. Voer de vorige procedure uit om de gegevens te importeren.  De enige wijziging die u aanbrengt, is het gebruik van hiveuser2-referenties in plaats van hiveuser1. Dit mislukt omdat hiveuser2 alleen machtigingen heeft om twee kolommen weer te geven. De volgende fout wordt weergegeven:
 
-        [Microsoft][HiveODBC] (35) Error from Hive: error code: '40000' error message: 'Error while compiling statement: FAILED: HiveAccessControlException Permission denied: user [hiveuser2] does not have [SELECT] privilege on [default/hivesampletable/clientid,country ...]'.
-        
+    ```output
+    [Microsoft][HiveODBC] (35) Error from Hive: error code: '40000' error message: 'Error while compiling statement: FAILED: HiveAccessControlException Permission denied: user [hiveuser2] does not have [SELECT] privilege on [default/hivesampletable/clientid,country ...]'.
+    ```
+
 3. Voer dezelfde procedure uit om gegevens te importeren. Gebruik deze keer de referenties van hiveuser2 en wijzig ook de SELECT-instructie van:
 
-        SELECT * FROM "HIVE"."default"."hivesampletable"
+    ```sql
+    SELECT * FROM "HIVE"."default"."hivesampletable"
+    ```
 
     in:
 
-        SELECT clientid, devicemake FROM "HIVE"."default"."hivesampletable"
+    ```sql
+    SELECT clientid, devicemake FROM "HIVE"."default"."hivesampletable"
+    ```
 
     Wanneer u klaar bent, ziet u twee kolommen met geïmporteerde gegevens.
 

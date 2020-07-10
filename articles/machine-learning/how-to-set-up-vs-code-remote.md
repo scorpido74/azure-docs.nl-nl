@@ -1,5 +1,5 @@
 ---
-title: 'Interactieve fout opsporing: VS code & ML reken instanties'
+title: 'Interactieve fout opsporing: VS code & ML Compute instances (preview)'
 titleSuffix: Azure Machine Learning
 description: U kunt met behulp van Azure Machine Learning uw code op een externe wijze met de code in-en uitzetten.
 services: machine-learning
@@ -8,14 +8,15 @@ ms.subservice: core
 ms.topic: how-to
 ms.author: jmartens
 author: j-martens
-ms.date: 12/09/2019
-ms.openlocfilehash: 19d4b6e7994450eacacab51e9a01cbf58eab803a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 07/09/2020
+ms.openlocfilehash: 46aefa62ab00c0b3bc2b90467a9fafd61439a10e
+ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84433131"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86203455"
 ---
-# <a name="debug-interactively-on-an-azure-machine-learning-compute-instance-with-vs-code-remote"></a>Interactief fouten opsporen in een Azure Machine Learning Compute-exemplaar met externe versus code
+# <a name="debug-interactively-on-an-azure-machine-learning-compute-instance-with-vs-code-remote-preview"></a>Interactief fouten opsporen in een Azure Machine Learning Compute-exemplaar met een externe versus code (preview-versie)
 
 In dit artikel leert u hoe u de externe Visual Studio code kunt instellen op een Azure Machine Learning Compute-exemplaar, zodat u uw code op een andere manier op een andere manier kan **debuggen** vanuit VS code. 
 

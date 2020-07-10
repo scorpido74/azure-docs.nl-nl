@@ -8,12 +8,12 @@ ms.topic: article
 ms.workload: infrastructure
 ms.date: 02/22/2019
 ms.author: cynthn
-ms.openlocfilehash: ec6fcfbc171b7227c79741c00adbc16be4c7ce87
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 194610845d9625139ff826711fc361bd9670a426
+ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85445522"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86202656"
 ---
 # <a name="how-to-use-packer-to-create-windows-virtual-machine-images-in-azure"></a>Hoe kan ik met behulp van Packer installatie kopieën voor virtuele Windows-machines maken in azure?
 Elke virtuele machine (VM) in azure wordt gemaakt op basis van een installatie kopie die de Windows-distributie-en besturingssysteem versie definieert. Installatie kopieën kunnen vooraf geïnstalleerde toepassingen en configuraties bevatten. De Azure Marketplace biedt veel kopieën van de eerste en derde partij voor het meest voorkomende besturings systeem en de toepassingen omgevingen, of u kunt uw eigen aangepaste installatie kopieën maken die zijn afgestemd op uw behoeften. In dit artikel wordt beschreven hoe u met behulp van de open source tool [Packer](https://www.packer.io/) aangepaste installatie kopieën in azure kunt definiëren en bouwen.
@@ -111,6 +111,9 @@ Maak een bestand met de naam *windows.jsop* en plak de volgende inhoud. Voer uw 
     "type": "powershell",
     "inline": [
       "Add-WindowsFeature Web-Server",
+      "while ((Get-Service RdAgent).Status -ne 'Running') { Start-Sleep -s 5 }",
+      "while ((Get-Service WindowsAzureTelemetryService).Status -ne 'Running') { Start-Sleep -s 5 }",
+      "while ((Get-Service WindowsAzureGuestAgent).Status -ne 'Running') { Start-Sleep -s 5 }",
       "& $env:SystemRoot\\System32\\Sysprep\\Sysprep.exe /oobe /generalize /quiet /quit",
       "while($true) { $imageState = Get-ItemProperty HKLM:\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Setup\\State | Select ImageState; if($imageState.ImageState -ne 'IMAGE_STATE_GENERALIZE_RESEAL_TO_OOBE') { Write-Output $imageState.ImageState; Start-Sleep -s 10  } else { break } }"
     ]
@@ -119,6 +122,8 @@ Maak een bestand met de naam *windows.jsop* en plak de volgende inhoud. Voer uw 
 ```
 
 Met deze sjabloon maakt u een virtuele machine met Windows Server 2016, installeert u IIS en generaliseert u vervolgens de virtuele machine met Sysprep. De IIS-installatie laat zien hoe u de Power shell-inrichtings programma kunt gebruiken om extra opdrachten uit te voeren. De uiteindelijke installatie kopie van de verpakker bevat vervolgens de vereiste software-installatie en-configuratie.
+
+De Windows-gast agent neemt deel aan het Sysprep-proces. De agent moet volledig zijn geïnstalleerd voordat de virtuele machine kan worden sysprep'ed. Om ervoor te zorgen dat dit waar is, moeten alle agent services worden uitgevoerd voordat u sysprep.exe uitvoert. In het voor gaande JSON-fragment ziet u een manier om dit te doen in de Power shell-inrichting. Dit fragment is alleen vereist als de virtuele machine is geconfigureerd om de agent te installeren. Dit is de standaard waarde.
 
 
 ## <a name="build-packer-image"></a>Installatie kopie van Builder

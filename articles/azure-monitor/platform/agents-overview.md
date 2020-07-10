@@ -7,11 +7,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 02/14/2020
-ms.openlocfilehash: a7e6a3a299df8112fe4fbcf457516894c1766b8c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 75394768cc41d3ca73398c2691b9ec0feb8c17f8
+ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84686661"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86202567"
 ---
 # <a name="overview-of-azure-monitor-agents"></a>Overzicht van Azure Monitor agents
 
@@ -30,20 +31,20 @@ De volgende tabellen bieden een snelle vergelijking van de Azure Monitor agents 
 
 | | Diagnostiek<br>extensie (WAD) | Log Analytics<br>agent | Afhankelijkheid<br>agent |
 |:---|:---|:---|:---|
-| Omgevingen worden ondersteund | Azure | Azure<br>Andere Cloud<br>On-premises | Azure<br>Andere Cloud<br>On-premises | 
-| Agent vereisten  | Geen | Geen | Vereist Log Analytics-agent |
-| Verzamelde gegevens | Gebeurtenislogboeken<br>ETW-gebeurtenissen<br>Prestaties<br>Logboeken op basis van bestanden<br>IIS-logboeken<br>.NET-app-logboeken<br>Crashdumps<br>Logboeken met diagnostische gegevens van agent | Gebeurtenislogboeken<br>Prestaties<IIS logs><br>Logboeken op basis van bestanden<br>Inzicht en oplossingen<br>Overige services | Details en afhankelijkheden van het proces<br>Metrische netwerk verbindings gegevens |
-| Gegevens die worden verzonden naar | Azure Storage<br>Azure Monitor metrische gegevens<br>Event Hub | Azure Monitor-logboeken | Azure Monitor-logboeken |
+| **Omgevingen worden ondersteund** | Azure | Azure<br>Andere Cloud<br>On-premises | Azure<br>Andere Cloud<br>On-premises | 
+| **Agent vereisten**  | Geen | Geen | Vereist Log Analytics-agent |
+| **Verzamelde gegevens** | Gebeurtenislogboeken<br>ETW-gebeurtenissen<br>Prestaties<br>Logboeken op basis van bestanden<br>IIS-logboeken<br>.NET-app-logboeken<br>Crashdumps<br>Logboeken met diagnostische gegevens van agent | Gebeurtenislogboeken<br>Prestaties<IIS logs><br>Logboeken op basis van bestanden<br>Inzicht en oplossingen<br>Overige services | Details en afhankelijkheden van het proces<br>Metrische netwerk verbindings gegevens |
+| **Gegevens die worden verzonden naar** | Azure Storage<br>Azure Monitor metrische gegevens<br>Event Hub | Azure Monitor-logboeken | Azure Monitor-logboeken |
 
 
 ### <a name="linux-agents"></a>Linux-agents
 
 | | Diagnostiek<br>extensie (LAD) | Telegrafie<br>agent | Log Analytics<br>agent | Afhankelijkheid<br>agent |
 |:---|:---|:---|:---|:---|
-| Omgevingen worden ondersteund | Azure | Azure<br>Andere Cloud<br>On-premises | Azure<br>Andere Cloud<br>On-premises | Azure<br>Andere Cloud<br>On-premises |
-| Agent vereisten  | Geen | Geen | Geen | Vereist Log Analytics-agent |
-| Verzamelde gegevens | Syslog<br>Prestaties | Prestaties | Syslog<br>Prestaties| Details en afhankelijkheden van het proces<br>Metrische netwerk verbindings gegevens |
-| Gegevens die worden verzonden naar | Azure Storage<br>Event Hub | Azure Monitor metrische gegevens | Azure Monitor-logboeken | Azure Monitor-logboeken |
+| **Omgevingen worden ondersteund** | Azure | Azure<br>Andere Cloud<br>On-premises | Azure<br>Andere Cloud<br>On-premises | Azure<br>Andere Cloud<br>On-premises |
+| **Agent vereisten**  | Geen | Geen | Geen | Vereist Log Analytics-agent |
+| **Verzamelde gegevens** | Syslog<br>Prestaties | Prestaties | Syslog<br>Prestaties| Details en afhankelijkheden van het proces<br>Metrische netwerk verbindings gegevens |
+| **Gegevens die worden verzonden naar** | Azure Storage<br>Event Hub | Azure Monitor metrische gegevens | Azure Monitor-logboeken | Azure Monitor-logboeken |
 
 ## <a name="log-analytics-agent"></a>Log Analytics-agent
 

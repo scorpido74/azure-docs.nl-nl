@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.author: sgilley
 author: sdgilley
 ms.date: 06/26/2020
-ms.openlocfilehash: 8b0fa1402452d8e1f348cd353b00d0ef050d866c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 95177282ad5b07a600f11f72789e0fc08f4b52c0
+ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85483275"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86199806"
 ---
 #  <a name="what-are-compute-targets-in-azure-machine-learning"></a>Wat zijn Compute-doelen in Azure Machine Learning? 
 
@@ -48,7 +48,7 @@ Meer informatie over [waar en hoe u uw model implementeert in een compute-doel](
 
 Een beheerde Compute-resource wordt gemaakt en beheerd door Azure Machine Learning. Deze berekening is geoptimaliseerd voor machine learning workloads. Azure Machine Learning compute-clusters en [reken instanties](concept-compute-instance.md) zijn de enige beheerde reken processen. Extra beheerde reken bronnen kunnen in de toekomst worden toegevoegd.
 
-U kunt Azure Machine Learning Compute instances (preview) of reken clusters maken van:
+U kunt Azure Machine Learning Compute-exemplaren of reken clusters maken van:
 * Azure Machine Learning Studio
 * Azure Portal
 * Python SDK [ComputeInstance](https://docs.microsoft.com/python/api/azureml-core/azureml.core.compute.computeinstance(class)?view=azure-ml-py) -en [AmlCompute](https://docs.microsoft.com/python/api/azureml-core/azureml.core.compute.amlcompute(class)?view=azure-ml-py) -klassen

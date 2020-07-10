@@ -11,12 +11,12 @@ ms.subservice: core
 ms.topic: how-to
 ms.date: 05/20/2020
 ms.custom: seodec18, tracking-python
-ms.openlocfilehash: 519d9f25276ea54fbfd49970ba3c288245ce9653
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 528696daf4bddd1f448266243b511e600351606a
+ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85833686"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86202602"
 ---
 # <a name="configure-automated-ml-experiments-in-python"></a>Geautomatiseerde ML-experimenten configureren in Python
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -129,7 +129,7 @@ Gebruik `validation_size` om het percentage van de trainings gegevensset op te g
 
 ### <a name="custom-validation-dataset"></a>Gegevensset voor aangepaste validatie
 
-Aangepaste validatie gegevensset gebruiken als wille keurige splitsing niet acceptabel is, meestal time series-gegevens of gegevens die niet in balans zijn. U kunt uw eigen validatie gegevensset opgeven. Het model wordt geëvalueerd op basis van de validatie gegevensset die is opgegeven in plaats van een wille keurige gegevensset.
+Aangepaste validatie gegevensset gebruiken als wille keurige splitsing niet acceptabel is, meestal time series-gegevens of gegevens die niet in balans zijn. U kunt uw eigen validatie gegevensset opgeven. Het model wordt geëvalueerd op basis van de validatie gegevensset die is opgegeven in plaats van een wille keurige gegevensset. Meer informatie over het [configureren van een aangepaste validatieset met de SDK](how-to-configure-cross-validation-data-splits.md#provide-validation-data).
 
 ## <a name="compute-to-run-experiment"></a>Compute en uitvoering van het experiment instellen
 
@@ -199,7 +199,7 @@ In elk automatisch machine learning experiment worden uw gegevens [automatisch g
 
 Wanneer u uw experimenten in uw `AutoMLConfig` object configureert, kunt u de instelling in-of uitschakelen `featurization` . De volgende tabel bevat de geaccepteerde instellingen voor parametrisatie in de [klasse AutoMLConfig](/python/api/azureml-train-automl-client/azureml.train.automl.automlconfig.automlconfig).
 
-|Parametrisatie-configuratie | Description |
+|Parametrisatie-configuratie | Beschrijving |
 | ------------- | ------------- |
 |`"featurization": 'auto'`| Geeft aan dat als onderdeel van de voor verwerking, [gegevens Guardrails en parametrisatie-stappen](how-to-configure-auto-features.md#featurization) automatisch worden uitgevoerd. **Standaardinstelling**|
 |`"featurization": 'off'`| Hiermee wordt aangegeven dat de parametrisatie-stap niet automatisch moet worden uitgevoerd.|
@@ -422,7 +422,7 @@ Gebruik deze 2 Api's voor de eerste stap van het model voor meer informatie.  Be
     'Tranformations': ['DateTime','DateTime','DateTime','DateTime','DateTime','DateTime','DateTime','DateTime','DateTime','DateTime','DateTime']}]
   ```
 
-   Waarbij:
+   Waar:
 
    |Uitvoer|Definitie|
    |----|--------|
@@ -433,7 +433,7 @@ Gebruik deze 2 Api's voor de eerste stap van het model voor meer informatie.  Be
    |Transformaties|Lijst met trans formaties die zijn toegepast op de invoer functies voor het genereren van ontworpen functies.|
 ### <a name="scalingnormalization-and-algorithm-with-hyperparameter-values"></a>Schalen/normaliseren en algoritmen met afstemming-waarden:
 
-Gebruik fitted_model om inzicht te krijgen in de waarden voor schalen/normalisatie en algoritme/afstemming voor een pijp lijn. Meer [informatie over schalen/normalisatie](). Hier volgt een voorbeeld van uitvoer:
+Gebruik fitted_model om inzicht te krijgen in de waarden voor schalen/normalisatie en algoritme/afstemming voor een pijp lijn. Meer [informatie over schalen/normalisatie](how-to-configure-auto-features.md). Hier volgt een voorbeeld van uitvoer:
 
 ```
 [('RobustScaler', RobustScaler(copy=True, quantile_range=[10, 90], with_centering=True, with_scaling=True)), ('LogisticRegression', LogisticRegression(C=0.18420699693267145, class_weight='balanced', dual=False, fit_intercept=True, intercept_scaling=1, max_iter=100, multi_class='multinomial', n_jobs=1, penalty='l2', random_state=None, solver='newton-cg', tol=0.0001, verbose=0, warm_start=False))

@@ -6,20 +6,21 @@ documentationcenter: ''
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
-ms.date: 02/01/2020
+ms.date: 07/09/2020
 author: swinarko
 ms.author: sawinark
 ms.reviewer: douglasl
 manager: mflasko
-ms.openlocfilehash: b0e18ec4665ede783145cd1aedf38c907f6f2905
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 50abe5071ef424b03d92522e01477d1152930b2e
+ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84118485"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86187809"
 ---
 # <a name="join-an-azure-ssis-integration-runtime-to-a-virtual-network"></a>Een Azure-SSIS Integration Runtime samenvoegen met een virtueel netwerk
 
-[!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
+[!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
 
 Wanneer u SQL Server Integration Services (SSIS) in Azure Data Factory gebruikt, moet u uw Azure-SSIS Integration runtime (IR) koppelen aan een virtueel Azure-netwerk in de volgende scenario's:
 
@@ -171,7 +172,7 @@ Als u een NSG wilt implementeren voor het subnet dat door uw Azure-SSIS IR wordt
 | Uitgaand | TCP | VirtualNetwork | * | Internet | 80 | Beschrijving De knoop punten van uw Azure-SSIS IR in het virtuele netwerk gebruiken deze poort om een certificaatintrekkingslijst van Internet te downloaden. Als u dit verkeer blokkeert, kan dit leiden tot prestatie downgrade bij het starten van IR en verliest u de mogelijkheid om de intrekkings lijst voor certificaten te controleren op het gebruik van certificaten. Als u de bestemming verder wilt beperken tot bepaalde FQDN-verwijzingen, raadpleegt u de sectie **Azure ExpressRoute of UDR gebruiken**|
 | Uitgaand | TCP | VirtualNetwork | * | SQL | 1433, 11000-11999 | Beschrijving Deze regel is alleen vereist wanneer de knoop punten van uw Azure-SSIS IR in het virtuele netwerk toegang hebben tot een SSISDB die wordt gehost door uw server. Als uw server verbindings beleid is ingesteld op **proxy** in plaats van **omleiden**, is alleen poort 1433 vereist. <br/><br/> Deze uitgaande beveiligings regel is niet van toepassing op een SSISDB die wordt gehost door uw SQL Managed instance in het virtuele netwerk of SQL Database geconfigureerd met een persoonlijk eind punt. |
 | Uitgaand | TCP | VirtualNetwork | * | VirtualNetwork | 1433, 11000-11999 | Beschrijving Deze regel is alleen vereist wanneer de knoop punten van uw Azure-SSIS IR in het virtuele netwerk toegang hebben tot een SSISDB die wordt gehost door uw SQL Managed instance in het virtuele netwerk of SQL Database geconfigureerd met een persoonlijk eind punt. Als uw server verbindings beleid is ingesteld op **proxy** in plaats van **omleiden**, is alleen poort 1433 vereist. |
-| Uitgaand | TCP | VirtualNetwork | * | Storage | 445 | Beschrijving Deze regel is alleen vereist als u SSIS-pakket wilt uitvoeren dat is opgeslagen in Azure Files. |
+| Uitgaand | TCP | VirtualNetwork | * | Opslag | 445 | Beschrijving Deze regel is alleen vereist als u SSIS-pakket wilt uitvoeren dat is opgeslagen in Azure Files. |
 ||||||||
 
 ### <a name="use-azure-expressroute-or-udr"></a><a name="route"></a>Azure ExpressRoute of UDR gebruiken

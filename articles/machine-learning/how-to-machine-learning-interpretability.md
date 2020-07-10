@@ -1,5 +1,5 @@
 ---
-title: De interpretatie van modellen in Azure Machine Learning
+title: Interpreteer van modellen in Azure Machine Learning (preview-versie)
 titleSuffix: Azure Machine Learning
 description: Meer informatie over hoe u uw model voorspellingen maakt met behulp van de Azure Machine Learning SDK. Het kan worden gebruikt tijdens de training en om te begrijpen hoe uw model voor spellingen doet.
 services: machine-learning
@@ -9,15 +9,15 @@ ms.topic: how-to
 ms.author: mesameki
 author: mesameki
 ms.reviewer: Luis.Quintanilla
-ms.date: 06/30/2020
-ms.openlocfilehash: 97401b2bdbcc2dc1379505f8dade443a4f1eb318
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 07/09/2020
+ms.openlocfilehash: 83fc13362a373686ee027fd642f03003b411cd63
+ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85601680"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86201441"
 ---
-# <a name="model-interpretability-in-azure-machine-learning"></a>De interpretatie van modellen in Azure Machine Learning
+# <a name="model-interpretability-in-azure-machine-learning-preview"></a>Interpreteer van modellen in Azure Machine Learning (preview-versie)
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
 
 ## <a name="overview-of-model-interpretability"></a>Overzicht van de interpretatie van modellen
@@ -70,7 +70,7 @@ Meer informatie over ondersteunde technieken voor interpretatie, ondersteunde ma
 
  `azureml-interpret`maakt gebruik van de technieken voor interpretaties die zijn ontwikkeld in [interprete-Community](https://github.com/interpretml/interpret-community/), een open source python-pakket voor het interpreteren van modellen en helpen bij het uitleggen van blackbox AI-systemen. [Interpreteren: Community](https://github.com/interpretml/interpret-community/) fungeert als host voor de ondersteunde uitlegers van deze SDK en ondersteunt momenteel de volgende methoden voor interpretatie:
 
-|Geïnterpreteerde techniek|Description|Type|
+|Geïnterpreteerde techniek|Beschrijving|Type|
 |--|--|--------------------|
 |Uitleg over de SHAP-structuur| De boom uitleg van de [Shap](https://github.com/slundberg/shap), die gericht is op een polynomiale, snelle Shap waarde schattings algoritme die specifiek is voor **bomen en ensembles van structuren**.|Model-specifiek|
 |Uitgebreide uitleg van SHAP| Op basis van de uitleg van SHAP is diepe uitleg een uiterst snelle benaderings algoritme voor SHAP-waarden in diepe leer modellen die zijn gebaseerd op een verbinding met DeepLIFT beschreven in het [Shap NIPS-papier](https://papers.nips.cc/paper/7062-a-unified-approach-to-interpreting-model-predictions). **Tensor flow** -modellen en **Keras** -modellen met behulp van de tensor flow-backend worden ondersteund (er is ook voorlopige ondersteuning voor PyTorch) '.|Model-specifiek|

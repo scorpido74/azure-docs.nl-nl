@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 09/20/2019
-ms.openlocfilehash: 7cc2b7871c7141a0e466bf8620351c5beed0c684
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: ed525230315781eeca41956047a173f27b1447e1
+ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82165685"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86201296"
 ---
 # <a name="designing-your-azure-monitor-logs-deployment"></a>De implementatie van uw Azure Monitor-logboeken ontwerpen
 
@@ -62,7 +62,7 @@ Met op rollen gebaseerd toegangs beheer (RBAC) kunt u gebruikers en groepen alle
 
 De gegevens waartoe een gebruiker toegang heeft, wordt bepaald door een combi natie van factoren die in de volgende tabel worden weer gegeven. Elk wordt beschreven in de volgende secties.
 
-| Rekening | Beschrijving |
+| Factor | Beschrijving |
 |:---|:---|
 | [Toegangsmodus](#access-mode) | De methode die de gebruiker gebruikt voor toegang tot de werk ruimte.  Hiermee definieert u het bereik van de beschik bare gegevens en de toegangs beheer modus die wordt toegepast. |
 | [Toegangs beheer modus](#access-control-mode) | Instelling in de werk ruimte die definieert of machtigingen worden toegepast op het niveau van de werk ruimte of de resource. |
@@ -97,7 +97,7 @@ Azure Monitor bepaalt automatisch de juiste modus, afhankelijk van de context wa
 
 De volgende tabel bevat een overzicht van de toegangs modi:
 
-| | Werk ruimte-context | Resource-context |
+| Probleem | Werk ruimte-context | Resource-context |
 |:---|:---|:---|
 | Voor wie is elk model bedoeld? | Centraal beheer. Beheerders die gegevens verzameling en gebruikers moeten configureren die toegang nodig hebben tot een groot aantal verschillende bronnen. Dit is ook vereist voor gebruikers die toegang moeten hebben tot logboeken voor bronnen buiten Azure. | Toepassings teams. Beheerders van Azure-resources die worden bewaakt. |
 | Wat heeft een gebruiker nodig om logboeken weer te geven? | Machtigingen voor de werk ruimte. Zie **machtigingen voor werk ruimten** in [toegang beheren via werkruimte machtigingen](manage-access.md#manage-access-using-workspace-permissions). | Lees toegang tot de resource. Zie **resource machtigingen** in [toegang beheren met Azure-machtigingen](manage-access.md#manage-access-using-azure-permissions). Machtigingen kunnen worden overgenomen (bijvoorbeeld van de container resource groep) of rechtstreeks worden toegewezen aan de resource. De machtigingen voor de logboeken voor de resource worden automatisch toegewezen. |

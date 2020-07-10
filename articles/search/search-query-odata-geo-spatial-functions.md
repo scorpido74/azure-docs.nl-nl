@@ -19,11 +19,12 @@ translation.priority.mt:
 - ru-ru
 - zh-cn
 - zh-tw
-ms.openlocfilehash: 902996c1813931638012c78f81bd65c400bee7a1
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 09e492ae950003f97ed86355257c97777cd71c1a
+ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "74113174"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86202003"
 ---
 # <a name="odata-geo-spatial-functions-in-azure-cognitive-search---geodistance-and-geointersects"></a>Geo-ruimtelijke functies van OData in azure Cognitive Search- `geo.distance` en`geo.intersects`
 
@@ -104,21 +105,29 @@ Net als alle andere niet-verzamelings velden in azure Cognitive Search, kunnen v
 
 Alle hotels zoeken binnen 10 kilo meter van een gegeven referentie punt (waarbij locatie een veld van het type is `Edm.GeographyPoint` ):
 
+```odata-filter-expr
     geo.distance(location, geography'POINT(-122.131577 47.678581)') le 10
+```
 
 Alle hotels in een bepaalde View Port zoeken die worden beschreven als een veelhoek (waarbij locatie een veld van het type is `Edm.GeographyPoint` ). Houd er rekening mee dat de veelhoek is gesloten (de eerste en laatste punt sets moeten hetzelfde zijn) en [de punten moeten in de juiste volg orde worden weer gegeven](https://docs.microsoft.com/rest/api/searchservice/supported-data-types#Anchor_1).
 
+```odata-filter-expr
     geo.intersects(location, geography'POLYGON((-122.031577 47.578581, -122.031577 47.678581, -122.131577 47.678581, -122.031577 47.578581))')
+```
 
 ### <a name="order-by-examples"></a>Voor beelden per order
 
 Hotels sorteren op Aflopend `rating` en vervolgens oplopend op afstand van de opgegeven coördinaten:
 
+```odata-filter-expr
     rating desc,geo.distance(location, geography'POINT(-122.131577 47.678581)') asc
+```
 
 Sorteer hotels in aflopende volg orde op `search.score` en `rating` , en vervolgens in oplopende volg orde op afstand van de opgegeven coördinaten, zodat tussen twee hotels met een identieke classificatie, het dichtstbijzijnde item bovenaan wordt weer gegeven:
 
+```odata-filter-expr
     search.score() desc,rating desc,geo.distance(location, geography'POINT(-122.131577 47.678581)') asc
+```
 
 ## <a name="next-steps"></a>Volgende stappen  
 

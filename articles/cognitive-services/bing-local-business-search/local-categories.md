@@ -10,21 +10,21 @@ ms.subservice: bing-local-business
 ms.topic: conceptual
 ms.date: 11/01/2018
 ms.author: rosh
-ms.openlocfilehash: 56b94d66eb0929d2fd0ca74a1a631d229330adfa
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: f469196f96b97903f69e29d1a38900369653e02f
+ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "69906401"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86200510"
 ---
 # <a name="search-categories-for-the-bing-local-business-search-api"></a>Zoek naar categorieën voor de Bing lokale zakelijke zoek-API
 
-Met de Bing Local Business Search-API kunt u zoeken naar lokale bedrijfs entiteiten in verschillende categorieën, met prioriteit aan de hand van resultaten die de locatie van een gebruiker sluiten. U kunt deze Zoek opdrachten gebruiken in Zoek opdrachten samen `localCircularView` met `localMapView` de [para meters](specify-geographic-search.md)en.
+Met de Bing Local Business Search-API kunt u zoeken naar lokale bedrijfs entiteiten in verschillende categorieën, met prioriteit aan de hand van resultaten die de locatie van een gebruiker sluiten. U kunt deze Zoek opdrachten gebruiken in Zoek opdrachten samen met de `localCircularView` `localMapView` [para meters](specify-geographic-search.md)en.
 
 
 ## <a name="toplevel-categories"></a>TopLevel Categorieën 
 
-Met de volgende typen wordt de belangrijkste Zoek categorie gedefinieerd.  Er kan meer dan één categorie worden opgegeven met een door komma's gescheiden lijst die is toegewezen `localCategories` aan de para meter.  
+Met de volgende typen wordt de belangrijkste Zoek categorie gedefinieerd.  Er kan meer dan één categorie worden opgegeven met een door komma's gescheiden lijst die is toegewezen aan de `localCategories` para meter.  
 - EatDrink 
 - SeeDo 
 - Aanschaffen 
@@ -34,56 +34,24 @@ Met de volgende typen wordt de belangrijkste Zoek categorie gedefinieerd.  Er ka
 - Zieken huizen 
 
 ## <a name="sub-categories"></a>Subcategorieën
-Subcategorieën worden op dezelfde manier door gegeven `localCategories`als. Subcategorieën zijn meer specifieke categorieën. Ze zijn ondergeschikt in de zin dat als u een categorie C en een van de subcategorieën in dezelfde door komma's gescheiden lijst opgeeft, dezelfde resultaten krijgt als wanneer u C alleen hebt opgegeven.
+Subcategorieën worden op dezelfde manier door gegeven als `localCategories` . Subcategorieën zijn meer specifieke categorieën. Ze zijn ondergeschikt in de zin dat als u een categorie C en een van de subcategorieën in dezelfde door komma's gescheiden lijst opgeeft, dezelfde resultaten krijgt als wanneer u C alleen hebt opgegeven.
 
-### <a name="eat-drink"></a>Eten drinken 
-|  |  |  |  |
-| - | - | - | - |
-| BreweriesAndBrewPubs | CocktailLounges | AfricanRestaurants |
-| AmericanRestaurants | Bagels | BarbecueRestaurants |
-| Taverns | SportsBars | Regelaar |
-| BarsGrillsAndPubs | BuffetRestaurants| BelgianRestaurants | 
-| BritishRestaurants | CafeRestaurants | CaribbeanRestaurants |
-| ChineseRestaurants | CoffeeAndTea | Delicatessens | 
-| DeliveryService | Diners | DiscountStores | 
-| Donuts | FastFood | FrenchRestaurants | 
-| FrozenYogurt | GermanRestaurants | Super markten | 
-| GreekRestaurants | Boodschappen | HawaiianRestaurants | 
-| HungarianRestaurants | IceCreamAndFrozenDesserts | IndianRestaurants | 
-| ItalianRestaurants | JapaneseRestaurants | SAPS | 
-| KoreanRestaurants | LiquorStores | MexicanRestaurants |
-| MiddleEasternRestaurants | Pizza | PolishRestaurants | 
-| PortugueseRestaurants | Pretzels | Horeca | 
-| RussianAndUkrainianRestaurants | Broodjes | SeafoodRestaurants | 
-| SpanishRestaurants | SteakHouseRestaurants | SushiRestaurants | 
-| Maakt | ThaiRestaurants | TurkishRestaurants | 
-| VegetarianAndVeganRestaurants | VietnameseRestaurants|  |
- 
-### <a name="see-do"></a>Zie do 
-|  |  |  |
-| -- | -- | -- |
-| AmusementParks | Attractions | Carnivals |
-| Casinos | LandmarksAndHistoricalSites | MiniatureGolfCourses |
-| MovieTheaters | Musea | Parkeer |
-| SightseeingTours | TouristInformation | Zoos |
- 
-### <a name="shop"></a>Aanschaffen 
-|  |  |  |
-| -- | -- | -- |
-| AntiqueStores | Bookstores | CDAndRecordStores |
-| ChildrensClothingStores | CigarAndTobaccoShops | ComicBookStores |
-| DepartmentStores | DiscountStores | FleaMarketsAndBazaars |
-| FurnitureStores | HomeImprovementStores | JewelryAndWatchesStores |
-| KitchenwareStores | LiquorStores | MallsAndShoppingCenters |
-| MensClothingStores | MusicStores | OutletStores |
-| PetShops | PetSupplyStores | SchoolAndOfficeSupplyStores |
-| ShoeStores | SportingGoodsStores | ToyAndGameStores |
-| VitaminAndSupplementStores | WomensClothingStores |  |
+### <a name="eat-drink"></a>Eten drinken
+
+> BreweriesAndBrewPubs, CocktailLounges, AfricanRestaurants, AmericanRestaurants, bagels, BarbecueRestaurants, Taverns, SportsBars, Bar, BarsGrillsAndPubs, BuffetRestaurants | BelgianRestaurants, BritishRestaurants, CafeRestaurants, CaribbeanRestaurants, ChineseRestaurants, CoffeeAndTea, Delicatessens, DeliveryService, Diners, DiscountStores, donuts, FastFood, FrenchRestaurants, FrozenYogurt, GermanRestaurants, super markets, GreekRestaurants, boodschappen, HawaiianRestaurants, HungarianRestaurants, IceCreamAndFrozenDesserts, IndianRestaurants, ItalianRestaurants, JapaneseRestaurants, SAP, KoreanRestaurants, LiquorStores, MexicanRestaurants, MiddleEasternRestaurants, pizza, PolishRestaurants, PortugueseRestaurants, pretzels, restaurants, RussianAndUkrainianRestaurants, broods, SeafoodRestaurants, SpanishRestaurants, SteakHouseRestaurants, SushiRestaurants, maakt, ThaiRestaurants, TurkishRestaurants, VegetarianAndVeganRestaurants, VietnameseRestaurants
+
+### <a name="see-do"></a>Zie do
+
+> AmusementParks, attractions, Carnivals, Casinos, LandmarksAndHistoricalSites, MiniatureGolfCourses, MovieTheaters, musea, parken, SightseeingTours, TouristInformation, Zoos
+
+### <a name="shop"></a>Aanschaffen
+
+> AntiqueStores, Bookstores, CDAndRecordStores, ChildrensClothingStores, CigarAndTobaccoShops, ComicBookStores, DepartmentStores, DiscountStores, FleaMarketsAndBazaars, FurnitureStores, HomeImprovementStores, JewelryAndWatchesStores, KitchenwareStores, LiquorStores, MallsAndShoppingCenters, MensClothingStores, MusicStores, OutletStores, PetShops, PetSupplyStores, SchoolAndOfficeSupplyStores, ShoeStores, SportingGoodsStores, ToyAndGameStores, VitaminAndSupplementStores, WomensClothingStores
 
 
 ## <a name="examples-of-local-categories-search"></a>Voor beelden van lokale categorieën zoeken
 
-In de volgende voor beelden worden resultaten OPGEHAALD `localCategories` volgens de para meter:
+In de volgende voor beelden worden resultaten OPGEHAALD volgens de `localCategories` para meter:
 
 `https://api.cognitive.microsoft.com/localbusinesses/v7.0/search?&q=&mkt=en-US&localcategories=HotelsAndMotels`
 

@@ -5,12 +5,12 @@ author: sideeksh
 manager: rochakm
 ms.date: 04/29/2019
 ms.topic: conceptual
-ms.openlocfilehash: 22848d84896989b1872c55e687c4a5e73da31de8
-ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.openlocfilehash: 52c7a4bfeddf808e5a714c7ad4ab164d65868940
+ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86134044"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86201203"
 ---
 # <a name="common-questions-azure-to-azure-disaster-recovery"></a>Veelgestelde vragen: nood herstel voor Azure naar Azure
 
@@ -120,7 +120,7 @@ Nee, dit is een niet-ondersteund scenario. Als u echter per ongeluk opslag accou
 Een replicatie beleid definieert de instellingen voor de Bewaar geschiedenis van herstel punten. Het beleid definieert ook de frequentie van app-consistente moment opnamen. Azure Site Recovery maakt standaard een nieuw replicatie beleid met de standaard instellingen van:
 
 - 24 uur voor de Bewaar geschiedenis van herstel punten.
-- 60 minuten voor de frequentie van app-consistente moment opnamen.
+- 4 uur voor de frequentie van app-consistente moment opnamen.
 
 Meer [informatie over replicatie-instellingen](./azure-to-azure-tutorial-enable-replication.md#configure-replication-settings).
 

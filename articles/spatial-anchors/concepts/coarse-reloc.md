@@ -8,11 +8,12 @@ ms.author: bobuc
 ms.date: 09/18/2019
 ms.topic: conceptual
 ms.service: azure-spatial-anchors
-ms.openlocfilehash: 4c1604eaad1ebdedf6a360a647fe5b9f95c829c6
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 4ed1a7cacc6c40cb12976c8703164d46e0dc0458
+ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "76844391"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86202380"
 ---
 # <a name="coarse-relocalization"></a>Coarse-relokalisatie
 
@@ -119,13 +120,11 @@ cloudSpatialAnchorSession.LocationProvider(sensorProvider);
 
 Vervolgens moet u bepalen welke Sens oren u wilt gebruiken voor grove Herlokalisatie. Deze beslissing is specifiek voor de toepassing die u ontwikkelt, maar de aanbevelingen in de volgende tabel moeten u een goed uitgangs punt bieden:
 
-
-|             | Binnendeuren | Gek |
-|-------------|---------|----------|
-| GPS         | Aan | Uit |
-| WiFi        | Uit | Aan (optioneel) |
-| Conbakeners | Aan (optioneel met aanvullende opmerkingen, zie hieronder) | Aan |
-
+|                 | Binnendeuren | Gek |
+|-----------------|---------|----------|
+| **GPS**         | Uitgeschakeld | Uit |
+| **WiFi**        | Uit | Aan (optioneel) |
+| **Conbakeners** | Aan (optioneel met aanvullende opmerkingen, zie hieronder) | Uitgeschakeld |
 
 ### <a name="enabling-gps"></a>GPS inschakelen
 
@@ -657,12 +656,11 @@ In de onderstaande tabel wordt de verwachte Zoek ruimte voor elk type sensor ges
 
 De volgende tabel bevat een overzicht van de sensor gegevens die op elk van de ondersteunde platforms zijn verzameld, samen met alle platformspecifieke voor behoud:
 
-
-|             | HoloLens | Android | iOS |
-|-------------|----------|---------|-----|
-| GPS         | N.v.t. | Ondersteund via [LocationManager][3] API'S (GPS en netwerk) | Ondersteund via [CLLocationManager][4] -api's |
-| WiFi        | Wordt ondersteund met een snelheid van ongeveer één scan om de 3 seconden | Ondersteund. Vanaf API Level 28 worden WiFi-scans om de 2 minuten beperkt tot 4 aanroepen. In Android 10 kan de beperking worden uitgeschakeld vanuit het menu instellingen voor ontwikkel aars. Raadpleeg de [Android-documentatie][5]voor meer informatie. | N.v.t.-geen open bare API |
-| Conbakeners | Beperkt tot [Eddystone][1] en [iBeacon][2] | Beperkt tot [Eddystone][1] en [iBeacon][2] | Beperkt tot [Eddystone][1] en [iBeacon][2] |
+|                 | HoloLens | Android | iOS |
+|-----------------|----------|---------|-----|
+| **GPS**         | N.v.t. | Ondersteund via [LocationManager][3] API'S (GPS en netwerk) | Ondersteund via [CLLocationManager][4] -api's |
+| **WiFi**        | Wordt ondersteund met een snelheid van ongeveer één scan om de 3 seconden | Ondersteund. Vanaf API Level 28 worden WiFi-scans om de 2 minuten beperkt tot 4 aanroepen. In Android 10 kan de beperking worden uitgeschakeld vanuit het menu instellingen voor ontwikkel aars. Raadpleeg de [Android-documentatie][5]voor meer informatie. | N.v.t.-geen open bare API |
+| **Conbakeners** | Beperkt tot [Eddystone][1] en [iBeacon][2] | Beperkt tot [Eddystone][1] en [iBeacon][2] | Beperkt tot [Eddystone][1] en [iBeacon][2] |
 
 ## <a name="next-steps"></a>Volgende stappen
 

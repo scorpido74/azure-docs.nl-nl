@@ -19,11 +19,12 @@ translation.priority.mt:
 - ru-ru
 - zh-cn
 - zh-tw
-ms.openlocfilehash: 2d3952f7d2adc26892cbebcd962f2ea25b86de7d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 741bf9e2aba6f893f670e86fb8bf5cd6c8b9d803
+ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "74113180"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86201981"
 ---
 # <a name="odata-logical-operators-in-azure-cognitive-search---and-or-not"></a>Logische OData-Opera tors in azure Cognitive Search- `and` , `or` ,`not`
 
@@ -71,7 +72,7 @@ Er zijn twee soorten logische expressies: binary ( `and` / `or` ), waar er twee 
 
 De meeste Booleaanse expressies zoals functies en vergelijkingen kunnen geen `null` waarden produceren en de logische Opera tors kunnen niet rechtstreeks op de `null` letterlijke waarde worden toegepast (bijvoorbeeld `x and null` is niet toegestaan). Boole-velden kunnen echter wel zijn `null` , dus u moet weten hoe de `and` `or` `not` Opera Tors, en zich gedragen in de aanwezigheid van Null. Dit wordt in de volgende tabel samenvatten, waarbij `b` een veld van het type is `Edm.Boolean` :
 
-| Expression | Resultaat wanneer `b` is`null` |
+| Expressie | Resultaat wanneer `b` is`null` |
 | --- | --- |
 | `b` | `false` |
 | `not b` | `true` |
@@ -92,19 +93,27 @@ Wanneer een Boole-veld `b` in een filter expressie wordt weer gegeven, wordt ger
 
 Overeenkomende documenten waarbij het `rating` veld tussen 3 en 5 ligt:
 
+```odata-filter-expr
     rating ge 3 and rating le 5
+```
 
 Overeenkomende documenten waarbij alle elementen van het `ratings` veld kleiner zijn dan 3 of groter dan 5:
 
+```odata-filter-expr
     ratings/all(r: r lt 3 or r gt 5)
+```
 
 Vergelijkt documenten waarbij het `location` veld binnen de gegeven veelhoek ligt en het document niet de term ' openbaar ' bevat.
 
+```odata-filter-expr
     geo.intersects(location, geography'POLYGON((-122.031577 47.578581, -122.031577 47.678581, -122.131577 47.678581, -122.031577 47.578581))') and not search.ismatch('public')
+```
 
 Documenten voor hotels zoeken in Vancouver, Canada waar zich een luxe ruimte bevindt met een basis tempo van minder dan 160:
 
+```odata-filter-expr
     Address/City eq 'Vancouver' and Address/Country eq 'Canada' and Rooms/any(room: room/Type eq 'Deluxe Room' and room/BaseRate lt 160)
+```
 
 ## <a name="next-steps"></a>Volgende stappen  
 

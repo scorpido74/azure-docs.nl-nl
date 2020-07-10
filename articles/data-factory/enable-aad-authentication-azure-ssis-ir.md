@@ -10,16 +10,17 @@ author: swinarko
 ms.author: sawinark
 manager: mflasko
 ms.custom: seo-lt-2019
-ms.date: 5/14/2019
-ms.openlocfilehash: eb167f121027272330399f8345c90602d93ecbaf
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 07/09/2020
+ms.openlocfilehash: fd9433c2482c4ddd907f7e30c0028dc2a15faed2
+ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84113862"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86187673"
 ---
 # <a name="enable-azure-active-directory-authentication-for-azure-ssis-integration-runtime"></a>Azure Active Directory-verificatie inschakelen voor Azure-SSIS Integration Runtime
 
-[!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
+[!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
 
 In dit artikel wordt beschreven hoe u Azure Active Directory (Azure AD)-verificatie inschakelt met de beheerde identiteit voor uw Azure Data Factory (ADF) en deze gebruikt in plaats van conventionele verificatie methoden (zoals SQL-verificatie) voor het volgende:
 

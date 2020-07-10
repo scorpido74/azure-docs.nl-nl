@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 01/08/2020
-ms.openlocfilehash: 2eb5817a3339494417bb426bfdccb09ae3ac7230
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.openlocfilehash: bd6d02ce1cd60a6d54047139f06fa59f359f9da9
+ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86087772"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86202413"
 ---
 # <a name="run-mapreduce-jobs-with-apache-hadoop-on-hdinsight-using-powershell"></a>MapReduce-taken uitvoeren met Apache Hadoop op HDInsight met behulp van Power shell
 
@@ -33,7 +33,7 @@ Azure PowerShell biedt *cmdlets* waarmee u op afstand MapReduce-taken kunt uitvo
 
 De volgende cmdlets worden gebruikt voor het uitvoeren van MapReduce-taken in een extern HDInsight-cluster.
 
-|Cmdlet | Description |
+|Cmdlet | Beschrijving |
 |---|---|
 |Connect-AzAccount|Verifieert Azure PowerShell aan uw Azure-abonnement.|
 |New-AzHDInsightMapReduceJobDefinition|Hiermee wordt een nieuwe *taak definitie* gemaakt met behulp van de opgegeven MapReduce-gegevens.|
@@ -49,21 +49,25 @@ De volgende stappen laten zien hoe u deze cmdlets kunt gebruiken om een taak uit
 
 2. Open een nieuwe **Azure PowerShell** opdracht prompt. Wijzig de mappen in de locatie van het **mapreducejob.ps1** bestand en gebruik vervolgens de volgende opdracht om het script uit te voeren:
 
-        .\mapreducejob.ps1
+    ```azurepowershell
+    .\mapreducejob.ps1
+    ```
 
     Wanneer u het script uitvoert, wordt u gevraagd de naam van het HDInsight-cluster en de cluster aanmelding op te vragen. U wordt mogelijk ook gevraagd om u aan te melden bij uw Azure-abonnement.
 
 3. Wanneer de taak is voltooid, ontvangt u uitvoer die er ongeveer als volgt uitziet:
 
-        Cluster         : CLUSTERNAME
-        ExitCode        : 0
-        Name            : wordcount
-        PercentComplete : map 100% reduce 100%
-        Query           :
-        State           : Completed
-        StatusDirectory : f1ed2028-afe8-402f-a24b-13cc17858097
-        SubmissionTime  : 12/5/2014 8:34:09 PM
-        JobId           : job_1415949758166_0071
+    ```output
+    Cluster         : CLUSTERNAME
+    ExitCode        : 0
+    Name            : wordcount
+    PercentComplete : map 100% reduce 100%
+    Query           :
+    State           : Completed
+    StatusDirectory : f1ed2028-afe8-402f-a24b-13cc17858097
+    SubmissionTime  : 12/5/2014 8:34:09 PM
+    JobId           : job_1415949758166_0071
+    ```
 
     Deze uitvoer geeft aan dat de taak is voltooid.
 
@@ -79,7 +83,7 @@ Als u de woorden en aantallen wilt zien die door de taak worden geproduceerd, op
 > [!NOTE]  
 > De uitvoer bestanden van een MapReduce-taak zijn onveranderbaar. Dus als u dit voor beeld opnieuw uitvoert, moet u de naam van het uitvoer bestand wijzigen.
 
-## <a name="troubleshooting"></a>Probleemoplossing
+## <a name="troubleshooting"></a>Problemen oplossen
 
 Als er geen informatie wordt geretourneerd wanneer de taak is voltooid, kunt u de fouten voor de taak weer geven. Als u de fout gegevens voor deze taak wilt weer geven, voegt u de volgende opdracht toe aan het einde van het **mapreducejob.ps1** -bestand. Sla het bestand op en voer het script opnieuw uit.
 

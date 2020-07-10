@@ -3,18 +3,18 @@ title: Voor beelden Azure PowerShell voor Azure Lab Services | Microsoft Docs
 description: 'Azure PowerShell-voor beelden: scripts waarmee u Labs in Azure Lab Services kunt beheren'
 ms.topic: article
 ms.date: 06/26/2020
-ms.openlocfilehash: d94074acdd4aeef87f322f8e7a9734e5da9a1c32
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: ce7a4f77aa0ea309afb81a54fd2f8f0a8f373e58
+ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85483224"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86187724"
 ---
 # <a name="azure-powershell-samples-for-azure-lab-services"></a>Voor beelden Azure PowerShell voor Azure Lab Services
 
 De volgende tabel bevat koppelingen naar voor beelden van Azure PowerShell scripts voor Azure Lab Services.
 
-| |  |
+| Script | Beschrijving |
 |---|---|
 |[Een externe gebruiker aan een lab toevoegen](scripts/add-external-user-to-lab.md)| Met dit Power shell-script wordt een externe gebruiker toegevoegd aan een lab in Azure DevTest Labs. |
 |[Marketplace-afbeeldingen toevoegen aan een lab](scripts/add-marketplace-images-to-lab.md)| Met dit Power shell-script worden installatie kopieën van Marketplace toegevoegd aan een lab in Azure DevTest Labs. |

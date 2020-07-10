@@ -8,12 +8,12 @@ ms.author: normesta
 ms.reviewer: dineshm
 ms.date: 05/14/2020
 ms.subservice: blobs
-ms.openlocfilehash: e2dcc070baa94ecf1ea27100fd49d4cde1dac637
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: ccad51d18a5e76f68633103af64e9ba6cc3f19c0
+ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85833343"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86203364"
 ---
 # <a name="static-website-hosting-in-azure-storage"></a>Een statische website hosten in Azure Storage
 
@@ -42,7 +42,7 @@ Bestanden in de **$Web** -container zijn hoofdletter gevoelig, worden aangeboden
 U kunt elk van deze hulpprogram ma's gebruiken om inhoud te uploaden naar de container **$Web** :
 
 > [!div class="checklist"]
-> * [Azure-CLI](storage-blob-static-website-how-to.md?tabs=azure-cli)
+> * [Azure CLI](storage-blob-static-website-how-to.md?tabs=azure-cli)
 > * [Azure PowerShell-module](storage-blob-static-website-how-to.md?tabs=azure-powershell)
 > * [AzCopy](../common/storage-use-azcopy-v10.md)
 > * [Azure Storage Explorer](https://azure.microsoft.com/features/storage-explorer/)
@@ -76,13 +76,15 @@ U kunt het open bare toegangs niveau van de **$Web** -container wijzigen, maar d
 
 De volgende scherm afbeelding toont de instelling voor het niveau van open bare toegang in de Azure Portal:
 
-![Scherm afbeelding die laat zien hoe u het niveau van open bare toegang instelt in de portal](./media/storage-manage-access-to-resources/storage-manage-access-to-resources-0.png)
+![Scherm afbeelding die laat zien hoe u het niveau van open bare toegang instelt in de portal](./media/anonymous-read-access-configure/configure-public-access-container.png)
 
 Terwijl het eind punt van de primaire statische website niet wordt beïnvloed, heeft een wijziging van het open bare toegangs niveau invloed op het eind punt van de primaire BLOB-service.
 
 Als u bijvoorbeeld het open bare toegangs niveau van de container **$Web** van **privé (geen anonieme toegang)** wijzigt in **BLOB (anonieme lees toegang voor blobs)**, wordt het niveau van de open bare toegang tot het eind punt van de primaire statische website `https://contosoblobaccount.z22.web.core.windows.net/index.html` niet gewijzigd.
 
 De open bare toegang tot het eind punt van de primaire BLOB-service `https://contosoblobaccount.blob.core.windows.net/$web/index.html` wordt echter gewijzigd van persoonlijk in openbaar. Gebruikers kunnen dit bestand nu openen met behulp van een van deze twee eind punten.
+
+Het uitschakelen van open bare toegang op een opslag account heeft geen invloed op statische websites die worden gehost in dat opslag account. Zie [anonieme open bare Lees toegang voor containers en blobs configureren](anonymous-read-access-configure.md)voor meer informatie.
 
 ## <a name="mapping-a-custom-domain-to-a-static-website-url"></a>Een aangepast domein toewijzen aan een statische website-URL
 

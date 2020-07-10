@@ -19,11 +19,12 @@ translation.priority.mt:
 - ru-ru
 - zh-cn
 - zh-tw
-ms.openlocfilehash: 99ec639b88f3334530243242aadfa0ab52a40df0
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 68e6ec0af0b24771b21dac35c944fc7fa098b404
+ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "74113160"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86203116"
 ---
 # <a name="odata-orderby-syntax-in-azure-cognitive-search"></a>OData-$orderby syntaxis in azure Cognitive Search
 
@@ -63,19 +64,27 @@ De syntaxis voor `search.score` in **$OrderBy** is `search.score()` . De functie
 
 Hotels sorteren oplopend op basis van base-rate:
 
+```odata-filter-expr
     $orderby=BaseRate asc
+```
 
 Hotels sorteren aflopend op waardering en vervolgens oplopend per basis tarief (Houd er rekening mee dat oplopend is de standaard instelling):
 
+```odata-filter-expr
     $orderby=Rating desc,BaseRate
+```
 
 Hotels sorteren aflopend op waardering en vervolgens oplopend op afstand van de opgegeven coördinaten:
 
+```odata-filter-expr
     $orderby=Rating desc,geo.distance(Location, geography'POINT(-122.131577 47.678581)') asc
+```
 
 Sorteer hotels in aflopende volg orde door te zoeken. Score en waardering en vervolgens in oplopende volg orde op afstand van de opgegeven coördinaten. Tussen twee hotels met identieke relevantie scores en beoordelingen wordt het dichtstbijzijnde item als eerste weer gegeven:
 
+```odata-filter-expr
     $orderby=search.score() desc,Rating desc,geo.distance(Location, geography'POINT(-122.131577 47.678581)') asc
+```
 
 ## <a name="next-steps"></a>Volgende stappen  
 

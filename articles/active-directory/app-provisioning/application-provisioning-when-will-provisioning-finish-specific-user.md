@@ -11,11 +11,12 @@ ms.topic: how-to
 ms.date: 09/03/2019
 ms.author: kenwith
 ms.reviewer: arvinh
-ms.openlocfilehash: 03af572c94500e046265a5e9affa4f1742fae544
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: a8f712604ae854a1870fe96112db3ae0f2ed60a8
+ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84782021"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86203013"
 ---
 # <a name="check-the-status-of-user-provisioning"></a>De status van het inrichten van gebruikers controleren
 
@@ -76,12 +77,11 @@ De volgende tabel bevat een overzicht van de synchronisatie tijden voor veelvoor
 | Alle gebruikers in azure AD synchroniseren|  < 1.000  | < 30 minuten | < 30 minuten |
 | Alle gebruikers in azure AD synchroniseren | 1.000-10.000  | 43-86 minuten | < 30 minuten |
 
-
 Voor de configuratie **synchronisatie alleen gebruiker en groepen toegewezen**, kunt u de volgende formules gebruiken om de geschatte minimale en maximale verwachte **initiële cyclus** tijden te bepalen:
 
-    Minimum minutes =  0.01 x [Number of assigned users, groups, and group members]
-    Maximum minutes = 0.08 x [Number of assigned users, groups, and group members] 
-    
+- Minimale minuten = 0,01 x [aantal toegewezen gebruikers, groepen en groeps leden]
+- Maxi maal minuten = 0,08 x [aantal toegewezen gebruikers, groepen en groeps leden]
+
 Samen vatting van factoren die van invloed zijn op de tijd die nodig is om een **eerste cyclus**te volt ooien:
 
 - Het totale aantal gebruikers en groepen in het bereik voor inrichting.

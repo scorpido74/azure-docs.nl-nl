@@ -5,19 +5,20 @@ ms.date: 06/10/2019
 ms.topic: conceptual
 hide_comments: true
 hideEdit: true
-ms.openlocfilehash: 28870a197af07e964a50a06ffeef08f3b71451f4
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: a6bf0010ddc7be2cb9e250f8b1beba28e0494ee1
+ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82891726"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86187741"
 ---
 # <a name="service-fabric-releases"></a>Service Fabric releases
 
-| <a href="https://github.com/Azure/Service-Fabric-Troubleshooting-Guides" target="blank">Richt lijnen</a>  
-|  voor probleem oplossing <a href="https://github.com/Azure/service-fabric-issues" target="blank">Bijhouden</a>  
-|  van problemen <a href="https://docs.microsoft.com/azure/service-fabric/service-fabric-support" target="blank">Ondersteunings opties</a>  
-|  <a href="https://docs.microsoft.com/azure/service-fabric/service-fabric-versions" target="blank">Ondersteunde versies</a>  
-|  <a href="https://azure.microsoft.com/resources/samples/?service=service-fabric&sort=0" target="blank">Code voorbeelden</a>
+- <a href="https://github.com/Azure/Service-Fabric-Troubleshooting-Guides" target="blank">Richt lijnen voor probleem oplossing</a> 
+- <a href="https://github.com/Azure/service-fabric-issues" target="blank">Bijhouden van problemen</a> 
+- <a href="https://docs.microsoft.com/azure/service-fabric/service-fabric-support" target="blank">Ondersteuningsopties</a> 
+- <a href="https://docs.microsoft.com/azure/service-fabric/service-fabric-versions" target="blank">Ondersteunde versies</a> 
+- <a href="https://azure.microsoft.com/resources/samples/?service=service-fabric&sort=0" target="blank">Code voorbeelden</a>
 
 In dit artikel vindt u meer informatie over de nieuwste releases en updates voor de Service Fabric runtime en Sdk's.
 

@@ -7,11 +7,12 @@ ms.workload: infrastructure-services
 ms.topic: article
 ms.date: 05/08/2019
 ms.author: cynthn
-ms.openlocfilehash: 3c6a5e011a536cc9c34565d4f72a9bee6c6a5254
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: cda729779c333064c91152e8427ce1a05227396e
+ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "78945172"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86201978"
 ---
 # <a name="frequently-asked-question-about-linux-virtual-machines"></a>Veelgestelde vragen over Linux Virtual Machines
 In dit artikel worden enkele veelgestelde vragen over virtuele Linux-machines die zijn gemaakt in azure, behandeld met het Resource Manager-implementatie model. Voor de Windows-versie van dit onderwerp raadpleegt u [Veelgestelde vragen over Windows virtual machines](../windows/faq.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
@@ -55,24 +56,48 @@ Gebruikers namen moeten 1-32 tekens lang zijn.
 
 De volgende gebruikers namen zijn niet toegestaan:
 
-| | | | |
-|-----------------|-----------|--------------------|----------|
-| `administrator` | `admin`   | `user`             | `user1`  |
-| `test`          | `user2`   | `test1`            | `user3`  |
-| `admin1`        | `1`       | `123`              | `a`      |
-| `actuser`       | `adm`     | `admin2`           | `aspnet` |
-| `backup`        | `console` | `david`            | `guest`  |
-| `john`          | `owner`   | `root`             | `server` |
-| `sql`           | `support` | `support_388945a0` | `sys`    |
-| `test2`         | `test3`   | `user4`            | `user5`  |
-| `video`         |
+- `1`
+- `123`
+- `a`
+- `actuser`
+- `adm`
+- `admin`
+- `admin1`
+- `admin2`
+-`administrator`
+- `aspnet`
+- `backup`
+- `console`
+- `david`
+- `guest`
+- `john`
+- `owner`
+- `root`
+- `server`
+- `sql`
+- `support_388945a0`
+- `support`
+- `sys`
+- `test`
+- `test1`
+- `test2`
+- `test3`
+- `user`
+- `user1`
+- `user2`
+- `user3`
+- `user4`
+- `user5`
+- `video`
+
 
 ## <a name="what-are-the-password-requirements-when-creating-a-vm"></a>Wat zijn de wachtwoord vereisten bij het maken van een VM?
 
 Er zijn verschillende vereisten voor wachtwoord lengte, afhankelijk van het hulp programma dat u gebruikt:
  - Portal: tussen 12-72 tekens
  - Power shell-tussen 8-123 tekens
- - CLI-tussen 12-123
+ - CLI-tussen 12-123 tekens
+ - Azure Resource Manager-sjablonen (ARM)-12-72 tekens en besturings tekens zijn niet toegestaan
  
 
 Wacht woorden moeten ook voldoen aan drie van de volgende 4 complexiteits vereisten:
