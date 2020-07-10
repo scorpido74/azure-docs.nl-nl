@@ -5,12 +5,12 @@ ms.assetid: 501722c3-f2f7-4224-a220-6d59da08a320
 ms.topic: conceptual
 ms.date: 04/04/2019
 ms.custom: fasttrack-edit
-ms.openlocfilehash: 578e1580bdaafb1b309a7af44353602cc31cb5a5
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 5560d24601b8aef0d8a4058cc2c04e27e9c86362
+ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85207004"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86170408"
 ---
 # <a name="monitor-azure-functions"></a>Azure Functions controleren
 
@@ -64,7 +64,7 @@ Zie de [Application Insights-documentatie](https://docs.microsoft.com/azure/appl
 
 De volgende gebieden van Application Insights kunnen nuttig zijn bij het evalueren van het gedrag, de prestaties en de fouten in uw functies:
 
-| Onderzoeken | Description |
+| Onderzoeken | Beschrijving |
 | ---- | ----------- |
 | **[Fouten](../azure-monitor/app/asp-net-exceptions.md)** |  Grafieken en waarschuwingen maken op basis van functie fouten en server uitzonderingen. De **naam** van de bewerking is de naam van de functie. Storingen in afhankelijkheden worden niet weer gegeven, tenzij u aangepaste telemetrie implementeert voor afhankelijkheden. |
 | **[Prestaties](../azure-monitor/app/performance-counters.md)** | Analyseer prestatie problemen door het resource gebruik en de door Voer per **Cloud-rolinstanties**weer te geven. Deze gegevens kunnen nuttig zijn voor het opsporen van fouten in scenario's waarbij functies worden bogging van uw onderliggende resources. |
@@ -537,7 +537,7 @@ Niet instellen `telemetryClient.Context.Operation.Id` . Deze globale instelling 
 
 ## <a name="log-custom-telemetry-in-javascript-functions"></a>Aangepaste telemetrie voor logboeken in JavaScript-functies
 
-Hier volgen enkele voor beelden van code fragmenten die aangepaste telemetrie verzenden met de [Application Insights Node.js SDK](https://github.com/microsoft/applicationinsights-node.js):
+Hier volgen voorbeeld code fragmenten die aangepaste telemetrie verzenden met de [Application Insights Node.js SDK](https://github.com/microsoft/applicationinsights-node.js):
 
 ### <a name="version-2x-and-later"></a>Versie 2. x en hoger
 
@@ -688,27 +688,41 @@ Get-AzSubscription -SubscriptionName "<subscription name>" | Select-AzSubscripti
 Get-AzWebSiteLog -Name <FUNCTION_APP_NAME> -Tail
 ```
 
-## <a name="scale-controller-logs"></a>Controller logboeken schalen
+## <a name="scale-controller-logs-preview"></a>Controller logboeken schalen (preview-versie)
 
-De [Azure functions Scale-controller](./functions-scale.md#runtime-scaling) bewaakt de instanties van de functie-host die uw app uitvoeren en nemen beslissingen over het toevoegen of verwijderen van exemplaren van een host van een functie. Als u inzicht wilt krijgen in de beslissingen die de schaal controller in uw toepassing maakt, kunt u deze configureren voor het verzenden van logboeken naar Application Insights of naar Blob Storage.
+Deze functie is beschikbaar als preview-versie. 
 
-> [!WARNING]
-> Deze functie is beschikbaar als preview-versie. We raden u aan deze functie niet voor onbepaalde tijd ingeschakeld te laten, en u moet deze in plaats daarvan inschakelen wanneer u de verzamelde informatie nodig hebt en deze vervolgens uitschakelt.
+De [Azure functions Scale-controller](./functions-scale.md#runtime-scaling) controleert exemplaren van de Azure functions host waarop uw app wordt uitgevoerd. Deze controller maakt beslissingen over het toevoegen of verwijderen van exemplaren op basis van de huidige prestaties. U kunt de schaal controller logboeken naar een Application Insights of een Blob-opslag laten verzenden om beter inzicht te krijgen in de beslissingen die de schaal controller voor uw functie-app maakt.
 
-Als u deze functie wilt inschakelen, voegt u een nieuwe toepassings instelling toe met de naam `SCALE_CONTROLLER_LOGGING_ENABLED` . De waarde van deze instelling moet de `{Destination}:{Verbosity}` volgende indeling hebben:
-* `{Destination}`Hiermee geeft u het doel voor de logboeken waarnaar moet worden verzonden en moet ofwel `AppInsights` of zijn `Blob` .
-* `{Verbosity}`Hiermee geeft u het gewenste niveau van de logboek registratie op en moet u een van `None` `Warning` of opgeven `Verbose` .
+Als u deze functie wilt inschakelen, voegt u een nieuwe toepassings instelling toe met de naam `SCALE_CONTROLLER_LOGGING_ENABLED` . De waarde van deze instelling moet de `<DESTINATION>:<VERBOSITY>` volgende indeling hebben:
 
-Als u bijvoorbeeld uitgebreide informatie van de schaal controller wilt registreren voor Application Insights, gebruikt u de waarde `AppInsights:Verbose` .
+[!INCLUDE [functions-scale-controller-logging](../../includes/functions-scale-controller-logging.md)]
 
-> [!NOTE]
-> Als u het doel type inschakelt `AppInsights` , moet u ervoor zorgen dat u [Application Insights configureert voor uw functie-app](#enable-application-insights-integration).
+De volgende Azure CLI-opdracht schakelt bijvoorbeeld uitgebreide logboek registratie van de schaal controller naar Application Insights:
 
-Als u de bestemming instelt op `Blob` , worden de logboeken gemaakt in een BLOB-container met de naam in `azure-functions-scale-controller` het opslag account dat is ingesteld in de `AzureWebJobsStorage` toepassings instelling.
+```azurecli-interactive
+az functionapp config appsettings set --name <FUNCTION_APP_NAME> \
+--resource-group <RESOURCE_GROUP_NAME> \
+--settings SCALE_CONTROLLER_LOGGING_ENABLED=AppInsights:Verbose
+```
 
-Als u de uitgebreidheid instelt op `Verbose` , registreert de schaal controller een reden voor elke wijziging in het aantal werk nemers, evenals informatie over de triggers die deel uitmaken van de beslissingen van de schaal controller. De logboeken bevatten bijvoorbeeld trigger waarschuwingen en de hashes die worden gebruikt door de triggers vóór en nadat de schaal controller wordt uitgevoerd.
+Vervang in dit voor beeld `<FUNCTION_APP_NAME>` en door `<RESOURCE_GROUP_NAME>` de naam van de functie-app en de naam van de resource groep. 
 
-Als u logboek registratie van schaal controller wilt uitschakelen, stelt u de waarde van de `{Verbosity}` `None` toepassing in of verwijdert u de `SCALE_CONTROLLER_LOGGING_ENABLED` toepassings instelling.
+Met de volgende Azure CLI-opdracht wordt logboek registratie uitgeschakeld door de uitgebreidheid in te stellen op `None` :
+
+```azurecli-interactive
+az functionapp config appsettings set --name <FUNCTION_APP_NAME> \
+--resource-group <RESOURCE_GROUP_NAME> \
+--settings SCALE_CONTROLLER_LOGGING_ENABLED=AppInsights:None
+```
+
+U kunt logboek registratie ook uitschakelen door de `SCALE_CONTROLLER_LOGGING_ENABLED` instelling te verwijderen met de volgende Azure cli-opdracht:
+
+```azurecli-interactive
+az functionapp config appsettings delete --name <FUNCTION_APP_NAME> \
+--resource-group <RESOURCE_GROUP_NAME> \
+--setting-names SCALE_CONTROLLER_LOGGING_ENABLED
+```
 
 ## <a name="disable-built-in-logging"></a>Ingebouwde logboek registratie uitschakelen
 

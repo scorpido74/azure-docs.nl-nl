@@ -3,12 +3,12 @@ title: Azure-resources-QnA Maker
 description: QnA Maker maakt gebruik van verschillende Azure-bronnen, elk met een ander doel. Als u begrijpt hoe deze afzonderlijk worden gebruikt, kunt u de juiste prijs categorie plannen en selecteren of u moet weten wanneer u de prijs categorie wilt wijzigen. Als u begrijpt hoe ze in combi natie worden gebruikt, kunt u problemen opsporen en oplossen wanneer deze zich voordoen.
 ms.topic: conceptual
 ms.date: 03/25/2020
-ms.openlocfilehash: 916f5b9b012d233c6a28d5cbb75ea0b4e073d064
-ms.sourcegitcommit: f1132db5c8ad5a0f2193d751e341e1cd31989854
+ms.openlocfilehash: 7d6598510ae75a76e0a4fcaff59297b4c724ba78
+ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/31/2020
-ms.locfileid: "84236087"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86171071"
 ---
 # <a name="azure-resources-for-qna-maker"></a>Azure-resources voor QnA Maker
 
@@ -44,11 +44,11 @@ Normaal gesp roken zijn er drie para meters die u moet overwegen:
 
 De volgende tabel bevat een aantal richt lijnen op hoog niveau.
 
-|                        | QnA Maker beheer | App Service | Azure Cognitive Search | Beperkingen                      |
-| ---------------------- | -------------------- | ----------- | ------------ | -------------------------------- |
-| Experiment        | Gratis SKU             | Gratis laag   | Gratis laag    | Publiceren tot 2 Kb's, 50 MB aan grootte  |
-| Ontwikkel-en test omgeving   | Standaard SKU         | Gedeeld      | Basic        | Maxi maal 14 Kb's publiceren, grootte van 2 GB    |
-| Productie omgeving | Standaard SKU         | Basic       | Standard     | Publiceer tot 49 Kb's, grootte van 25 GB |
+|                            | QnA Maker beheer | App Service | Azure Cognitive Search | Beperkingen                      |
+| -------------------------- | -------------------- | ----------- | ------------ | -------------------------------- |
+| **Experimenten**        | Gratis SKU             | Gratis laag   | Gratis laag    | Publiceren tot 2 Kb's, 50 MB aan grootte  |
+| **Ontwikkel-en test omgeving**   | Standaard SKU         | Gedeeld      | Basic        | Maxi maal 14 Kb's publiceren, grootte van 2 GB    |
+| **Productie omgeving** | Standaard SKU         | Basic       | Standard     | Publiceer tot 49 Kb's, grootte van 25 GB |
 
 ## <a name="recommended-settings"></a>Aanbevolen instellingen
 
@@ -172,7 +172,7 @@ Gebruik deze sleutels bij het indienen van aanvragen bij de service via Api's.
 
 ![Sleutelbeheer](../media/qnamaker-how-to-key-management/key-management.png)
 
-|Name|Locatie|Functie|
+|Naam|Locatie|Doel|
 |--|--|--|
 |Sleutel ontwerpen|[Azure Portal](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)|Deze sleutels worden gebruikt voor toegang tot de Api's van de [QnA Maker Management-service](https://go.microsoft.com/fwlink/?linkid=2092179). Met deze Api's kunt u de vragen en antwoorden in uw Knowledge Base bewerken en uw kennis database publiceren. Deze sleutels worden gemaakt wanneer u een nieuwe QnA Maker-service maakt.<br><br>Deze sleutels vindt u op de pagina **sleutels** van de **Cognitive Services** resource.|
 |Query-eindpunt sleutel|[QnA Maker-portal](https://www.qnamaker.ai)|Deze sleutels worden gebruikt om een query uit te geven op het gepubliceerde Knowledge Base-eind punt om een antwoord te krijgen op de vraag van een gebruiker. Normaal gesp roken gebruikt u dit query-eind punt in uw chat-bot of in de client toepassings code die verbinding maakt met de QnA Maker-service. Deze sleutels worden gemaakt wanneer u uw QnA Maker Knowledge Base publiceert.<br><br>Deze sleutels vindt u op de pagina **Service-instellingen** . Ga naar deze pagina vanuit het menu van de gebruiker in de rechter bovenhoek van de pagina in de vervolg keuzelijst.|

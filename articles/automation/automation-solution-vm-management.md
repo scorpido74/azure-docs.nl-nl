@@ -5,17 +5,18 @@ services: automation
 ms.subservice: process-automation
 ms.date: 06/04/2020
 ms.topic: conceptual
-ms.openlocfilehash: 3b4358651b811ba5c1e7644333a1e9f5a8da2990
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: dbfb50b40b4705cae55ba6e4f1ef950b586b5fb5
+ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84424071"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86185871"
 ---
 # <a name="startstop-vms-during-off-hours-overview"></a>Overzicht van VM's buiten bedrijfsuren starten/stoppen
 
 Met de functie VM's buiten bedrijfsuren starten/stoppen worden de ingeschakelde Azure-Vm's gestart of gestopt. Hiermee worden computers op door de gebruiker gedefinieerde planningen gestart of gestopt, vindt u inzichten via Azure Monitor-logboeken en verzendt u optionele e-mail berichten met behulp van [actie groepen](../azure-monitor/platform/action-groups.md). De functie kan worden ingeschakeld op zowel Azure Resource Manager als klassieke Vm's voor de meeste scenario's. 
 
-Deze functie maakt gebruik van de cmdlet [Start-AzVm](https://docs.microsoft.com/powershell/module/az.compute/start-azvm) om vm's te starten. Er wordt gebruikgemaakt van [Stop-AzVM](https://docs.microsoft.com/powershell/module/az.compute/stop-azvm) voor het stoppen van vm's.
+Deze functie maakt gebruik van de cmdlet [Start-AzVm](/powershell/module/az.compute/start-azvm) om vm's te starten. Er wordt gebruikgemaakt van [Stop-AzVM](/powershell/module/az.compute/stop-azvm) voor het stoppen van vm's.
 
 > [!NOTE]
 > Hoewel de runbooks zijn bijgewerkt voor het gebruik van de nieuwe Azure AZ module-cmdlets, gebruiken ze de AzureRM-voor voegsel alias.
@@ -36,7 +37,7 @@ Hier volgen enkele beperkingen met betrekking tot de huidige functie:
 
 ## <a name="prerequisites"></a>Vereisten
 
-De runbooks voor het starten/stoppen van Vm's buiten kantoor uren functie werken met een [Azure uitvoeren als-account](automation-create-runas-account.md). Het run as-account is de voorkeurs verificatie methode omdat deze gebruikmaakt van certificaat verificatie in plaats van een wacht woord dat regel matig verloopt of kan worden gewijzigd.
+De runbooks voor het starten/stoppen van Vm's buiten kantoor uren functie werken met een [Azure uitvoeren als-account](./manage-runas-account.md). Het run as-account is de voorkeurs verificatie methode omdat deze gebruikmaakt van certificaat verificatie in plaats van een wacht woord dat regel matig verloopt of kan worden gewijzigd.
 
 U wordt aangeraden een afzonderlijk Automation-account te gebruiken voor het werken met Vm's die zijn ingeschakeld voor de functie VM's buiten bedrijfsuren starten/stoppen. Versies van Azure-modules worden vaak geüpgraded en de bijbehorende para meters kunnen veranderen. De functie wordt niet bijgewerkt op dezelfde uitgebracht en is mogelijk niet geschikt voor nieuwere versies van de cmdlets die worden gebruikt. U wordt aangeraden module-updates in een test Automation-account te testen voordat u ze importeert in uw productie Automation-account (s).
 
@@ -103,7 +104,7 @@ De volgende tabel geeft een lijst van de runbooks die de functie implementeert v
 
 Alle bovenliggende runbooks bevatten de `WhatIf` para meter. Als deze eigenschap is ingesteld op True, wordt de para meter gebruikt om het exacte gedrag te bepalen dat het runbook uitvoert wanneer het wordt uitgevoerd zonder de para meter en wordt gevalideerd of de juiste Vm's zijn gericht. Een runbook voert alleen de gedefinieerde acties uit wanneer de `WhatIf` para meter is ingesteld op ONWAAR.
 
-|Runbook | Parameters | Description|
+|Runbook | Parameters | Beschrijving|
 | --- | --- | ---|
 |AutoStop_CreateAlert_Child | VMObject <br> AlertAction <br> WebHookURI | Aangeroepen vanuit het bovenliggende runbook. Dit runbook maakt waarschuwingen per resource voor het scenario voor automatisch stoppen.|
 |AutoStop_CreateAlert_Parent | VMList<br> WhatIf: True of False  | Hiermee worden Azure-waarschuwings regels gemaakt of bijgewerkt op Vm's in het doel abonnement of resource groepen. <br> `VMList`is een door komma's gescheiden lijst met virtuele machines (zonder spaties), bijvoorbeeld `vm1,vm2,vm3` .<br> `WhatIf`Hiermee wordt de validatie van de runbook-logica mogelijk zonder dat deze wordt uitgevoerd.|
@@ -116,14 +117,14 @@ Alle bovenliggende runbooks bevatten de `WhatIf` para meter. Als deze eigenschap
 |ScheduledStartStop_Parent | Actie: starten of stoppen <br>VMList <br> WhatIf: True of False | Hiermee worden alle virtuele machines in het abonnement gestart of gestopt. Bewerk de variabelen `External_Start_ResourceGroupNames` en `External_Stop_ResourceGroupNames` alleen voor het uitvoeren van deze doel resource groepen. U kunt ook specifieke Vm's uitsluiten door de variabele bij te werken `External_ExcludeVMNames` .|
 |SequencedStartStop_Parent | Actie: starten of stoppen <br> WhatIf: True of False<br>VMList| Maakt labels met de naam **sequencestart** en **sequencestop** op elke virtuele machine waarvoor u de activiteit start/stop wilt sequentieren. Deze label namen zijn hoofdletter gevoelig. De waarde van het label moet een lijst met positieve gehele getallen zijn, bijvoorbeeld `1,2,3` , die overeenkomt met de volg orde waarin u wilt starten of stoppen. <br>**Opmerking**: vm's moeten zich in resource groepen bezien die zijn gedefinieerd in `External_Start_ResourceGroupNames` , `External_Stop_ResourceGroupNames` en `External_ExcludeVMNames` variabelen. Ze moeten de juiste labels hebben om de acties van kracht te laten worden.|
 
-### <a name="variables"></a>Variabelen
+### <a name="variables"></a>Variables
 
 De volgende tabel bevat de variabelen die zijn gemaakt in uw Automation-account. Wijzig variabelen alleen met de voor voegsels `External` . Het wijzigen van variabelen die met een probleem worden opgelost, `Internal` leidt tot ongewenste effecten.
 
 > [!NOTE]
-> De beperkingen voor de VM-naam en resource groep zijn grotendeels het resultaat van de variabele grootte. Zie [variabele assets in azure Automation](https://docs.microsoft.com/azure/automation/shared-resources/variables).
+> De beperkingen voor de VM-naam en resource groep zijn grotendeels het resultaat van de variabele grootte. Zie [variabele assets in azure Automation](./shared-resources/variables.md).
 
-|Variabele | Description|
+|Variabele | Beschrijving|
 |---------|------------|
 |External_AutoStop_Condition | De voorwaardelijke operator die is vereist voor het configureren van de voor waarde voordat een waarschuwing wordt geactiveerd. Acceptabele waarden zijn `GreaterThan` , `GreaterThanOrEqual` , `LessThan` en `LessThanOrEqual` .|
 |External_AutoStop_Description | De waarschuwing voor het stoppen van de virtuele machine als het CPU-percentage de drempel waarde overschrijdt.|
@@ -155,7 +156,7 @@ De volgende tabel bevat een overzicht van de standaard schema's die zijn gemaakt
 
 Schakel niet alle schema's in, omdat dit mogelijk overlappende plannings acties kan maken. U kunt het beste bepalen welke optimalisaties u wilt uitvoeren en ze dienovereenkomstig aanpassen. Zie de voorbeeld scenario's in de sectie Overzicht voor meer informatie.
 
-|Schema naam | Frequentie | Description|
+|Schema naam | Frequentie | Beschrijving|
 |--- | --- | ---|
 |Schedule_AutoStop_CreateAlert_Parent | Om de 8 uur | Voert het **AutoStop_CreateAlert_Parent** runbook uit om de 8 uur, waardoor de op virtuele machines gebaseerde waarden in `External_Start_ResourceGroupNames` , `External_Stop_ResourceGroupNames` en variabelen op zijn beurt worden gestopt `External_ExcludeVMNames` . U kunt ook een door komma's gescheiden lijst met Vm's opgeven met behulp van de `VMList` para meter.|
 |Scheduled_StopVM | Door de gebruiker gedefinieerd, dagelijks | Voert het **ScheduledStopStart_Parent** runbook uit met een para meter van `Stop` elke dag op de opgegeven tijd.Stopt automatisch alle virtuele machines die voldoen aan de regels die zijn gedefinieerd door variabele assets.Schakel de planning **StartVM**.|
@@ -176,7 +177,7 @@ Als u meer dan 20 Vm's per Cloud service hebt, zijn hier enkele aanbevelingen:
 
 Als de Automation-taak voor deze functie meer dan drie uur wordt uitgevoerd, wordt deze tijdelijk uit het geheugen verwijderd of gestopt volgens de limiet voor de [billijke share](automation-runbook-execution.md#fair-share) .
 
-Azure CSP-abonnementen bieden alleen ondersteuning voor het Azure Resource Manager model. Niet-Azure Resource Manager services zijn niet beschikbaar in het programma. Wanneer de VM's buiten bedrijfsuren starten/stoppen functie wordt uitgevoerd, kunnen er fouten optreden omdat deze cmdlets bevat om klassieke resources te beheren. Zie [beschik bare Services in CSP-abonnementen](https://docs.microsoft.com/azure/cloud-solution-provider/overview/azure-csp-available-services)voor meer informatie over CSP. Als u een CSP-abonnement gebruikt, moet u de variabele [External_EnableClassicVMs](#variables) instellen op False na de implementatie.
+Azure CSP-abonnementen bieden alleen ondersteuning voor het Azure Resource Manager model. Niet-Azure Resource Manager services zijn niet beschikbaar in het programma. Wanneer de VM's buiten bedrijfsuren starten/stoppen functie wordt uitgevoerd, kunnen er fouten optreden omdat deze cmdlets bevat om klassieke resources te beheren. Zie [beschik bare Services in CSP-abonnementen](/azure/cloud-solution-provider/overview/azure-csp-available-services)voor meer informatie over CSP. Als u een CSP-abonnement gebruikt, moet u de variabele [External_EnableClassicVMs](#variables) instellen op False na de implementatie.
 
 [!INCLUDE [azure-monitor-log-analytics-rebrand](../../includes/azure-monitor-log-analytics-rebrand.md)]
 
