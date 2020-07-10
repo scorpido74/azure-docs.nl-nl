@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 01/13/2020
-ms.openlocfilehash: a1d411662fd7afe57c714b97ab67b9d490acd40d
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.openlocfilehash: 407db727f521ea7731f0cbdbdd05c4338c9f452e
+ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86076365"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86207719"
 ---
 # <a name="run-mapreduce-jobs-with-apache-hadoop-on-hdinsight-using-rest"></a>MapReduce-taken uitvoeren met Apache Hadoop op HDInsight met behulp van REST
 
@@ -61,7 +61,7 @@ Er zijn verschillende opties:
 
     U ontvangt een antwoord dat vergelijkbaar is met de volgende JSON:
 
-    ```output
+    ```json
     {"version":"v1","status":"ok"}
     ```
 
@@ -83,9 +83,7 @@ Er zijn verschillende opties:
      * **klasse**: de klasse die de MapReduce Logic bevat
      * **ARG**: de argumenten die moeten worden door gegeven aan de MapReduce-taak. In dit geval het invoer tekst bestand en de map die worden gebruikt voor de uitvoer
 
-    Met deze opdracht moet een taak-ID worden geretourneerd die kan worden gebruikt om de status van de taak te controleren:
-
-       job_1415651640909_0026
+    Met deze opdracht moet een taak-ID worden geretourneerd die kan worden gebruikt om de status van de taak te controleren: `job_1415651640909_0026` .
 
 1. Gebruik de volgende opdracht om de status van de taak te controleren. Vervang de waarde voor `JOBID` door de **werkelijke** waarde die in de vorige stap is geretourneerd. Wijzig de locatie van **JQ** naar behoefte.
 
@@ -116,7 +114,7 @@ Er zijn verschillende opties:
 
     U ontvangt een antwoord dat vergelijkbaar is met de volgende JSON:
 
-    ```output
+    ```json
     {"version":"v1","status":"ok"}
     ```
 
@@ -146,9 +144,7 @@ Er zijn verschillende opties:
     * **klasse**: de klasse die de MapReduce Logic bevat
     * **ARG**: de argumenten die moeten worden door gegeven aan de MapReduce-taak. In dit geval het invoer tekst bestand en de map die worden gebruikt voor de uitvoer
 
-   Met deze opdracht moet een taak-ID worden geretourneerd die kan worden gebruikt om de status van de taak te controleren:
-
-       job_1415651640909_0026
+   Met deze opdracht moet een taak-ID worden geretourneerd die kan worden gebruikt om de status van de taak te controleren: `job_1415651640909_0026` .
 
 1. Als u de status van de taak wilt controleren, gebruikt u de volgende opdracht:
 

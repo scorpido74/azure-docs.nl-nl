@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: troubleshooting
 ms.date: 10/31/2018
 ms.author: genli
-ms.openlocfilehash: 783b479dd3e5f429516799d7d3ea82f363cac2ec
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 896e69bad9cd75b57ef2bf93048c332ef4d974c0
+ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85847449"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86207712"
 ---
 # <a name="how-to-use-perfinsights"></a>PerfInsights gebruiken
 
@@ -101,9 +101,8 @@ Wanneer u een geavanceerde prestatie analyse uitvoert, selecteert u traceringen 
 
 Informatie over Windows VM, schijven of opslag groepen configuratie, prestatie meter items, logboeken en verschillende traceringen worden verzameld. Dit is afhankelijk van het prestatie scenario dat u gebruikt. De volgende lijst bevat de details:
 
-|Verzamelde gegevens                              |  |  | Prestatie scenario's |  |  | |
-|----------------------------------|----------------------------|------------------------------------|--------------------------|--------------------------------|----------------------|----------------------|
-|                               | Analyse van snelle prestaties | Benchmarking | Analyse van prestaties | Azure Files analyse | Geavanceerde prestatie analyse |
+| Verzamelde gegevens | Analyse van snelle prestaties | Benchmarking | Analyse van prestaties | Azure Files analyse | Geavanceerde prestatie analyse |
+|----------------------------------|----------------------------|------------------------------------|--------------------------|--------------------------------|----------------------|
 | Informatie uit gebeurtenis logboeken       | Ja                        | Ja                                | Ja                      | Ja                  | Ja                  |
 | Systeemgegevens                | Ja                        | Ja                                | Ja                      | Ja                  | Ja                  |
 | Volume toewijzing                        | Ja                        | Ja                                | Ja                      | Ja                  | Ja                  |
@@ -119,12 +118,12 @@ Informatie over Windows VM, schijven of opslag groepen configuratie, prestatie m
 | SQL Server-configuratie          | Ja                        | Ja                                | Ja                      | Ja                  | Ja                  |
 | Traceringen van prestatie diagnostiek *  | Ja                        | Ja                                | Ja                      | Ja                  | Ja                  |
 | Tracering van prestatie meter items * *      |                            |                                    | Ja                      |                      | Ja                  |
-| Tracering SMB-teller * *              |                            |                                    |                          | Yes                  |                      |
+| Tracering SMB-teller * *              |                            |                                    |                          | Ja                  |                      |
 | Teller tracering SQL Server * *       |                            |                                    | Ja                      |                      | Ja                  |
-| Xperf tracering                       |                            |                                    |                          |                      | Yes                  |
-| StorPort-tracering                    |                            |                                    |                          |                      | Yes                  |
+| Xperf tracering                       |                            |                                    |                          |                      | Ja                  |
+| StorPort-tracering                    |                            |                                    |                          |                      | Ja                  |
 | Netwerk tracering                     |                            |                                    |                          | Ja                  | Ja                  |
-| Diskspd-Bench Mark-tracering * * *       |                            | Yes                                |                          |                      |                      |
+| Diskspd-Bench Mark-tracering * * *       |                            | Ja                                |                          |                      |                      |
 |       |                            |                         |                                                   |                      |                      |
 
 ### <a name="performance-diagnostics-trace-"></a>Prestatie diagnostiek tracering (*)

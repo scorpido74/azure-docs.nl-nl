@@ -4,12 +4,12 @@ ms.service: app-service-web
 ms.topic: include
 ms.date: 06/08/2020
 ms.author: ccompy
-ms.openlocfilehash: ee81b391587b994bd79e9f0950d041de70153b5c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 926a1867a77b543057fa1de170cdb64ccfefe7cb
+ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84488784"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86218073"
 ---
 Door gebruik te maken van regionale VNet-integratie kan uw app toegang tot:
 
@@ -28,7 +28,7 @@ Wanneer u VNet-integratie met VNets in dezelfde regio gebruikt, kunt u de volgen
 
 Standaard stuurt uw app alleen RFC1918-verkeer naar uw VNet. Als u al het uitgaande verkeer wilt door sturen naar uw VNet, past u de app-instelling WEBSITE_VNET_ROUTE_ALL toe op uw app. De app-instelling configureren:
 
-1. Ga naar de **configuratie** gebruikersinterface in de app-Portal. Selecteer **nieuwe toepassings instelling**.
+1. Ga naar de **configuratie** gebruikersinterface in de app-Portal. Selecteer **Nieuwe toepassingsinstelling**.
 1. Voer **WEBSITE_VNET_ROUTE_ALL** in het vak **naam** in en voer **1** in het vak **waarde** in.
 
    ![Toepassings instelling opgeven][4]
@@ -41,7 +41,7 @@ Als u al het uitgaande verkeer naar uw VNet routert, is het onderhevig aan de Ns
 Er zijn enkele beperkingen bij het gebruik van VNet-integratie met VNets in dezelfde regio:
 
 * U kunt geen resources bereiken via globale peering-verbindingen.
-* De functie is alleen beschikbaar vanuit nieuwere Azure App Service schaal eenheden die ondersteuning bieden voor PremiumV2 App Service-plannen.
+* De functie is alleen beschikbaar vanuit nieuwere Azure App Service schaal eenheden die ondersteuning bieden voor PremiumV2 App Service-plannen. Houd er rekening mee dat *uw app niet moet worden uitgevoerd op een PremiumV2 prijs categorie*, alleen dat deze moet worden uitgevoerd op een app service plan waarbij de optie PremiumV2 beschikbaar is (wat impliceert dat het een nieuwere schaal eenheid is waar deze VNet-integratie functie vervolgens ook beschikbaar is).
 * Het integratie subnet kan slechts door één App Service schema worden gebruikt.
 * De functie kan niet worden gebruikt door toepassingen van het geïsoleerde abonnement in een App Service Environment.
 * Voor de functie is een ongebruikt subnet met een/27 met 32-adressen of groter vereist in een Azure Resource Manager VNet.

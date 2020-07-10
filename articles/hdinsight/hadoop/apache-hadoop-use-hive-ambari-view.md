@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive,seoapr2020
 ms.date: 04/23/2020
-ms.openlocfilehash: 6490292ef898e00c7677c829be41f3b06c638164
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.openlocfilehash: cc04a891bb32ede6c7bb72a339b728642cf343ed
+ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86076603"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86207820"
 ---
 # <a name="use-apache-ambari-hive-view-with-apache-hadoop-in-hdinsight"></a>Apache Ambari Hive-weergave gebruiken met Apache Hadoop in HDInsight
 
@@ -60,7 +60,7 @@ Een Hadoop-cluster in HDInsight. Zie aan de [slag met HDInsight op Linux](./apac
 
     Deze instructies doen de volgende acties:
 
-    |Rekeningen | Description |
+    |Rekeningen | Beschrijving |
     |---|---|
     |TABEL NEERZETTEN|Hiermee verwijdert u de tabel en het gegevens bestand, voor het geval de tabel al bestaat.|
     |CREATE EXTERNAL TABLE|Hiermee maakt u een nieuwe tabel ' External ' in de component. Externe tabellen slaan alleen de tabel definitie in Hive op. De gegevens blijven op de oorspronkelijke locatie.|
@@ -75,8 +75,10 @@ Een Hadoop-cluster in HDInsight. Zie aan de [slag met HDInsight op Linux](./apac
 
 1. Nadat de query is voltooid, worden de resultaten van de bewerking weer gegeven op het tabblad **resultaten** . De volgende tekst is het resultaat van de query:
 
-        loglevel       count
-        [ERROR]        3
+    ```output
+    loglevel       count
+    [ERROR]        3
+    ```
 
     U kunt het tabblad **logboek** gebruiken om de logboek gegevens weer te geven die de taak heeft gemaakt.
 

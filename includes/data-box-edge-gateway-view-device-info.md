@@ -4,12 +4,12 @@ ms.service: databox
 ms.topic: include
 ms.date: 03/04/2019
 ms.author: alkohli
-ms.openlocfilehash: 94c132421f1e113b667341b094acad8047e5f465
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 3312d1ec7c2535e103cf8959599c0d4c3014f520
+ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82561775"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86218151"
 ---
 1. [Verbinding maken met de Power shell-interface](#connect-to-the-powershell-interface).
 2. Gebruik de `Get-HcsApplianceInfo` om de informatie voor uw apparaat op te halen.
@@ -44,15 +44,15 @@ ms.locfileid: "82561775"
     ```
 
     Hier volgt een tabel met een overzicht van een aantal belang rijke informatie over apparaten:
-    
-    | Parameter                             | Beschrijving                                                                                                                                                  |   |
-    |--------------------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------|---|
-    | FriendlyName                   | De beschrijvende naam van het apparaat zoals geconfigureerd via de lokale web-UI tijdens de implementatie van het apparaat. De standaard beschrijvende naam is het serie nummer van het apparaat.  |   |
-    | SerialNumber                   | Het serie nummer van het apparaat is een uniek nummer dat is toegewezen aan de Factory.                                                                             |   |
-    | Model                          | Het model voor uw Azure Stack rand of Data Box Gateway apparaat. Het model is fysiek voor Azure Stack Edge en virtueel voor Data Box Gateway.                   |   |
-    | FriendlySoftwareVersion        | De beschrijvende teken reeks die overeenkomt met de versie van de apparaatsoftware. Voor een systeem met Preview wordt de beschrijvende software versie Data Box Edge 1902. |   |
-    | HcsVersion                     | De versie van de HCS-software die op uw apparaat wordt uitgevoerd. De HCS-software versie die overeenkomt met Data Box Edge 1902 is bijvoorbeeld 1.4.771.324.            |   |
-    | LocalCapacityInMb              | De totale lokale capaciteit van het apparaat in megabits.                                                                                                        |   |
-    | IsRegistered                   | Deze waarde geeft aan of uw apparaat is geactiveerd met de service.                                                                                         |   |
+
+    | Parameter | Beschrijving |
+    |-----------|-------------|
+    | FriendlyName                   | De beschrijvende naam van het apparaat zoals geconfigureerd via de lokale web-UI tijdens de implementatie van het apparaat. De standaard beschrijvende naam is het serie nummer van het apparaat.  |
+    | SerialNumber                   | Het serie nummer van het apparaat is een uniek nummer dat is toegewezen aan de Factory.                                                                             |
+    | Model                          | Het model voor uw Azure Stack rand of Data Box Gateway apparaat. Het model is fysiek voor Azure Stack Edge en virtueel voor Data Box Gateway.                   |
+    | FriendlySoftwareVersion        | De beschrijvende teken reeks die overeenkomt met de versie van de apparaatsoftware. Voor een systeem met Preview wordt de beschrijvende software versie Data Box Edge 1902. |
+    | HcsVersion                     | De versie van de HCS-software die op uw apparaat wordt uitgevoerd. De HCS-software versie die overeenkomt met Data Box Edge 1902 is bijvoorbeeld 1.4.771.324.            |
+    | LocalCapacityInMb              | De totale lokale capaciteit van het apparaat in megabits.                                                                                                        |
+    | IsRegistered                   | Deze waarde geeft aan of uw apparaat is geactiveerd met de service.                                                                                         |
 
 

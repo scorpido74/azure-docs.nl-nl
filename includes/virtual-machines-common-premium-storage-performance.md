@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 07/08/2019
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: 2c8c0430e8a1f54daa99d3fd986bae0c3eaf7f61
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: e10d1d5aa5b45c0ea0e31df4d5d847f8541838b9
+ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84017598"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86218367"
 ---
 ## <a name="application-performance-indicators"></a>Prestatie-indica toren voor toepassingen
 
@@ -92,7 +92,7 @@ De beste manier om prestatie vereisten van uw toepassing te meten, is het gebrui
 
 De prestatie meter items zijn beschikbaar voor processor, geheugen en, elke logische schijf en fysieke schijf van uw server. Wanneer u Premium Storage-schijven met een virtuele machine gebruikt, zijn de fysieke-schijf tellers voor elke Premium-opslag schijf en worden voor elk volume dat op de Premium Storage-schijven wordt gemaakt, items voor logische schijven opgenomen. U moet de waarden vastleggen voor de schijven waarop de workload van uw toepassing wordt gehost. Als er een toewijzing is tussen logische en fysieke schijven, kunt u verwijzen naar fysieke-schijf items; Raadpleeg anders de items van de logische schijf. In Linux genereert de iostat gebruiken-opdracht een rapport voor CPU-en schijf gebruik. Het rapport schijf gebruik bevat statistieken per fysiek apparaat of partitie. Als u een database server hebt met gegevens en logboeken op afzonderlijke schijven, verzamelt u deze gegevens voor beide schijven. In de onderstaande tabel worden de items voor schijven, processors en geheugen beschreven:
 
-| Prestatiemeteritem | Description | Controle | Iostat gebruiken |
+| Prestatiemeteritem | Beschrijving | Controle | Iostat gebruiken |
 | --- | --- | --- | --- |
 | **IOPS of trans acties per seconde** |Het aantal I/O-aanvragen dat per seconde aan de opslag schijf is uitgegeven. |Lees bewerkingen per seconde <br> Schrijf bewerkingen per seconde |TPS <br> r/s <br> w/s |
 | **Lees-en schrijf bewerkingen op schijf** |% van lees-en schrijf bewerkingen die op de schijf worden uitgevoerd. |Percentage schijf leestijd <br> Percentage schrijf tijd schijf |r/s <br> w/s |
@@ -119,13 +119,13 @@ De volgende tabel bevat een overzicht van de prestatie factoren en de stappen di
 
 Zie [Linux VM-grootten](../articles/virtual-machines/linux/sizes.md) of [Windows VM](../articles/virtual-machines/windows/sizes.md)-grootten voor meer informatie over VM-grootten en over de IOPS, door Voer en latentie die beschikbaar zijn voor elk type virtuele machine.
 
-| &nbsp; | **IOPS** | **Doorvoer** | **Latentie** |
+| | **IOPS** | **Doorvoer** | **Latentie** |
 | --- | --- | --- | --- |
 | **Voorbeeld scenario** |De OLTP-toepassing voor ondernemingen vereist zeer hoge trans acties per seconde. |Bedrijfs gegevens magazijn toepassing verwerkt grote hoeveel heden gegevens. |Bijna realtime toepassingen die directe reacties op aanvragen van gebruikers vereisen, zoals online gaming. |
-| Prestatie factoren | &nbsp; | &nbsp; | &nbsp; |
+| **Prestatie factoren** | &nbsp; | &nbsp; | &nbsp; |
 | **I/o-grootte** |Bij een kleinere IO-grootte wordt een hogere IOPS als resultaat verkregen. |Grotere IO-grootte om een hogere door voer te leveren. | &nbsp;|
 | **VM-grootte** |Gebruik een VM-grootte die IOPS groter is dan de vereiste van uw toepassing. |Gebruik een VM-grootte met een doorvoer limiet van meer dan uw toepassings vereiste. |Gebruik een VM-grootte die groter is dan de vereiste schaal limieten. |
-| **Schijf grootte** |Gebruik een schijf grootte met IOPS die groter is dan de vereiste van uw toepassing. |Gebruik een schijf grootte met een doorvoer limiet van meer dan uw toepassings vereiste. |Gebruik een schijf grootte die hoger is dan de vereiste voor uw toepassing. |
+| **Schijfgrootte** |Gebruik een schijf grootte met IOPS die groter is dan de vereiste van uw toepassing. |Gebruik een schijf grootte met een doorvoer limiet van meer dan uw toepassings vereiste. |Gebruik een schijf grootte die hoger is dan de vereiste voor uw toepassing. |
 | **Schaal limieten voor VM'S en schijven** |De limiet voor IOPS van de gekozen VM-grootte moet groter zijn dan het totale aantal IOPS dat wordt aangestuurd door de opslag schijven die eraan zijn gekoppeld. |De doorvoer limiet van de gekozen VM-grootte moet groter zijn dan de totale door Voer die wordt aangestuurd door de Premium-opslag schijven die eraan zijn gekoppeld. |De schaal limieten van de gekozen VM-grootte moeten groter zijn dan de totale schaal limieten van gekoppelde Premium Storage-schijven. |
 | **Schijf cache** |Schakel alleen-lezen cache op Premium-opslag schijven in met zware bewerkingen om meer Lees-IOPS te krijgen. | &nbsp; |Schakel alleen-lezen cache op Premium-opslag schijven met kant-en-klare bewerkingen uit om zeer weinig lees latentie te verkrijgen. |
 | **Schijf striping** |Gebruik meerdere schijven en strip deze samen om een gecombineerde hogere IOPS en doorvoer limiet te verkrijgen. De gecombineerde limiet per VM moet hoger zijn dan de gecombineerde limieten van gekoppelde Premium-schijven. | &nbsp; | &nbsp; |
@@ -243,7 +243,7 @@ Raadpleeg het blog bericht over [Azure Premium Storage](https://azure.microsoft.
 
 Het is belang rijk om cache in te scha kelen op de juiste set schijven. Of u schijf cache gebruik moet inschakelen op een Premium-schijf of niet afhankelijk is van het werkbelasting patroon dat wordt verwerkt door de schijf. De volgende tabel bevat de standaard cache-instellingen voor besturings systeem-en gegevens schijven.
 
-| **Schijf type** | **Standaard cache-instelling** |
+| **Schijftype** | **Standaard cache-instelling** |
 | --- | --- |
 | Besturingssysteemschijf |ReadWrite |
 | Gegevensschijf |ReadOnly |
@@ -256,7 +256,7 @@ Hieronder vindt u de aanbevolen schijf cache-instellingen voor gegevens schijven
 | ReadOnly |Configureer de host-cache als alleen-lezen voor de schijven met het kenmerk alleen-schrijven en lees-en schrijf bewerkingen. |
 | ReadWrite |Configureer de host-cache als ReadWrite alleen als uw toepassing het schrijven van gegevens in de cache op de juiste wijze afhandelt naar permanente schijven als dat nodig is. |
 
-*ReadOnly*  
+*Kenmerk*  
 Door het configureren van alleen-lezen cache op Premium Storage gegevens schijven, kunt u een lage lees latentie bereiken en zeer grote Lees-IOPS en door Voer voor uw toepassing verkrijgen. Dit kan twee oorzaken hebben:
 
 1. Lees bewerkingen van de cache, die zich op het geheugen van de virtuele machine en lokale SSD bevindt, zijn veel sneller dan lees bewerkingen van de gegevens schijf, die zich in de Azure Blob-opslag bevindt.  

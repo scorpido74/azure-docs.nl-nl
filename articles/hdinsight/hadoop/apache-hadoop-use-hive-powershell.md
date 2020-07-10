@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 12/24/2019
-ms.openlocfilehash: 653a481efeeaac83215b1e46309944efab924d2e
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.openlocfilehash: 5588920c860de09ea1561cf5ed4b28a08085438c
+ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86076481"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86207772"
 ---
 # <a name="run-apache-hive-queries-using-powershell"></a>Apache Hive query's uitvoeren met Power shell
 
@@ -52,16 +52,20 @@ De volgende stappen laten zien hoe u deze cmdlets kunt gebruiken om een taak uit
 
 2. Open een nieuwe **Azure PowerShell** opdracht prompt. Wijzig de mappen in de locatie van het `hivejob.ps1` bestand en gebruik vervolgens de volgende opdracht om het script uit te voeren:
 
-        .\hivejob.ps1
+    ```azurepowershell
+    .\hivejob.ps1
+    ```
 
     Wanneer het script wordt uitgevoerd, wordt u gevraagd om de cluster naam en de referenties van het HTTPS/Cluster-beheer account in te voeren. U wordt mogelijk ook gevraagd om u aan te melden bij uw Azure-abonnement.
 
 3. Wanneer de taak is voltooid, wordt er informatie weer gegeven die vergelijkbaar is met de volgende tekst:
 
-        Display the standard output...
-        2012-02-03      18:35:34        SampleClass0    [ERROR] incorrect       id
-        2012-02-03      18:55:54        SampleClass1    [ERROR] incorrect       id
-        2012-02-03      19:25:27        SampleClass4    [ERROR] incorrect       id
+    ```output
+    Display the standard output...
+    2012-02-03      18:35:34        SampleClass0    [ERROR] incorrect       id
+    2012-02-03      18:55:54        SampleClass1    [ERROR] incorrect       id
+    2012-02-03      19:25:27        SampleClass4    [ERROR] incorrect       id
+    ```
 
 4. Zoals eerder vermeld, `Invoke-Hive` kan worden gebruikt om een query uit te voeren en te wachten op de reactie. Gebruik het volgende script om te zien hoe invoke-Hive werkt:
 
@@ -69,9 +73,11 @@ De volgende stappen laten zien hoe u deze cmdlets kunt gebruiken om een taak uit
 
     De uitvoer ziet er als volgt uit:
 
-        2012-02-03    18:35:34    SampleClass0    [ERROR]    incorrect    id
-        2012-02-03    18:55:54    SampleClass1    [ERROR]    incorrect    id
-        2012-02-03    19:25:27    SampleClass4    [ERROR]    incorrect    id
+    ```output
+    2012-02-03    18:35:34    SampleClass0    [ERROR]    incorrect    id
+    2012-02-03    18:55:54    SampleClass1    [ERROR]    incorrect    id
+    2012-02-03    19:25:27    SampleClass4    [ERROR]    incorrect    id
+    ```
 
    > [!NOTE]  
    > Voor langere HiveQL query's kunt u de script bestanden Azure PowerShell **hier-strings** of HiveQL gebruiken. Het volgende code fragment laat zien hoe u de cmdlet kunt gebruiken `Invoke-Hive` om een HiveQL-script bestand uit te voeren. Het HiveQL-script bestand moet worden geüpload naar wasbs://.
