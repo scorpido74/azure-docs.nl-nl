@@ -1,19 +1,19 @@
 ---
-title: 'Zelfstudie: uw instantie van een Config Server instellen in Azure Spring Cloud'
-description: In deze zelfstudie leert u hoe u een instantie van een Spring Cloud Config Server instelt voor uw Azure Spring Cloud in het Azure-portal
+title: Uw configuratie Server-exemplaar instellen in azure lente-Cloud
+description: Meer informatie over het instellen van een lente Cloud config server-exemplaar voor uw Azure lente-Cloud op de Azure Portal
 ms.service: spring-cloud
-ms.topic: tutorial
+ms.topic: how-to
 ms.author: brendm
 author: bmitchell287
 ms.date: 10/18/2019
-ms.openlocfilehash: 4c8b2e92cd7e88dde434e42971d091db689bfbc9
-ms.sourcegitcommit: 6571e34e609785e82751f0b34f6237686470c1f3
-ms.translationtype: HT
+ms.openlocfilehash: bfce1ce54da9d9e8e7feaa8e8eb5cd676866a1cb
+ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/15/2020
-ms.locfileid: "84791296"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86142180"
 ---
-# <a name="tutorial-set-up-a-spring-cloud-config-server-instance-for-your-service"></a>Zelfstudie: Een instantie van een Spring Cloud Config Server instellen voor uw service
+# <a name="set-up-a-spring-cloud-config-server-instance-for-your-service"></a>Stel een lente-exemplaar voor de Cloud configuratie server in voor uw service
 
 In dit artikel leest u hoe u een instantie van een Spring Cloud Config Server kunt verbinden met uw Azure Spring Cloud-service.
 
@@ -190,7 +190,4 @@ Nadat u een configuratiebestand hebt opgeslagen verschijnt de knop **App-configu
 
 ## <a name="next-steps"></a>Volgende stappen
 
-In deze zelfstudie leert u hoe u uw instantie van een Spring Cloud Config Server kunt inschakelen en configureren. Ga verder met de zelfstudie over het handmatig schalen van uw app voor meer informatie over het beheer van uw toepassing.
-
-> [!div class="nextstepaction"]
-> [Zelfstudie: een toepassing schalen in Azure Spring Cloud](spring-cloud-tutorial-scale-manual.md)
+In dit artikel hebt u geleerd hoe u uw lente Cloud config server-exemplaar kunt inschakelen en configureren. Zie [een toepassing schalen in azure veer Cloud](spring-cloud-tutorial-scale-manual.md)voor meer informatie over het beheren van uw toepassing.
