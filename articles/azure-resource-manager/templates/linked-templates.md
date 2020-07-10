@@ -3,12 +3,12 @@ title: Koppelings sjablonen voor implementatie
 description: Hierin wordt beschreven hoe u gekoppelde sjablonen in een Azure Resource Manager sjabloon gebruikt om een modulaire sjabloon oplossing te maken. Toont hoe parameter waarden worden door gegeven, geef een parameter bestand op en dynamisch gemaakte Url's.
 ms.topic: conceptual
 ms.date: 06/26/2020
-ms.openlocfilehash: 1b63ebc62a944b43aef3b777dd7d285369356c29
-ms.sourcegitcommit: bcb962e74ee5302d0b9242b1ee006f769a94cfb8
+ms.openlocfilehash: 6b28268a522dde4fe16ccf9d0d01738c3b6a9b5d
+ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86056681"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86170646"
 ---
 # <a name="using-linked-and-nested-templates-when-deploying-azure-resources"></a>Gekoppelde en geneste sjablonen gebruiken bij het implementeren van Azure-resources
 
@@ -160,7 +160,7 @@ In de volgende sjabloon ziet u hoe sjabloon expressies worden omgezet volgens he
 
 De waarde van `exampleVar` wijzigingen, afhankelijk van de waarde van de `scope` eigenschap in `expressionEvaluationOptions` . In de volgende tabel ziet u de resultaten voor beide bereiken.
 
-| `expressionEvaluationOptions` `scope` | Uitvoer |
+| `expressionEvaluationOptions`ligt | Uitvoer |
 | ----- | ------ |
 | wend | van geneste sjabloon |
 | Outer (of standaard) | van bovenliggende sjabloon |
@@ -785,7 +785,7 @@ az deployment group create --resource-group ExampleGroup --template-uri $url?$to
 
 In de volgende voor beelden ziet u veelvoorkomende toepassingen van gekoppelde sjablonen.
 
-|Hoofd sjabloon  |Gekoppelde sjabloon |Description  |
+|Hoofd sjabloon  |Gekoppelde sjabloon |Beschrijving  |
 |---------|---------| ---------|
 |[Hallo wereld](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/linkedtemplates/helloworldparent.json) |[gekoppelde sjabloon](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/linkedtemplates/helloworld.json) | Retourneert een teken reeks uit een gekoppelde sjabloon. |
 |[Load Balancer met openbaar IP-adres](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/linkedtemplates/public-ip-parentloadbalancer.json) |[gekoppelde sjabloon](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/linkedtemplates/public-ip.json) |Hiermee wordt het open bare IP-adres uit de gekoppelde sjabloon geretourneerd en wordt die waarde ingesteld in load balancer. |
