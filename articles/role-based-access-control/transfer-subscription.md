@@ -10,12 +10,12 @@ ms.topic: how-to
 ms.workload: identity
 ms.date: 07/01/2020
 ms.author: rolyon
-ms.openlocfilehash: f169cf45702d4a5051f9f6908b77c645c7a0018f
-ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
+ms.openlocfilehash: db1b030aed34498ade91a195d5ca68725b579ba3
+ms.sourcegitcommit: f7e160c820c1e2eb57dc480b2a8fd6bef7053e91
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86042387"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86230839"
 ---
 # <a name="transfer-an-azure-subscription-to-a-different-azure-ad-directory-preview"></a>Een Azure-abonnement overdragen naar een andere Azure AD-Directory (preview)
 
@@ -66,19 +66,19 @@ Verschillende Azure-resources hebben een afhankelijkheid van een abonnement of e
 
 | Service of resource | Beïnvloed | Herstel bare | Hebt u last van dit probleem? | Wat u kunt doen |
 | --------- | --------- | --------- | --------- | --------- |
-| Roltoewijzingen | Ja | Yes | [Lijst met roltoewijzingen weergeven](#save-all-role-assignments) | Alle roltoewijzingen worden definitief verwijderd. U moet gebruikers, groepen en service-principals toewijzen aan de bijbehorende objecten in de doel directory. U moet de roltoewijzingen opnieuw maken. |
-| Aangepaste rollen | Ja | Yes | [Aangepaste rollen opvragen](#save-custom-roles) | Alle aangepaste rollen worden permanent verwijderd. U moet de aangepaste rollen en eventuele roltoewijzingen opnieuw maken. |
-| Door het systeem toegewezen beheerde identiteiten | Ja | Yes | [Beheerde identiteiten weer geven](#list-role-assignments-for-managed-identities) | U moet de beheerde identiteiten uitschakelen en opnieuw inschakelen. U moet de roltoewijzingen opnieuw maken. |
-| Door de gebruiker toegewezen beheerde identiteiten | Ja | Yes | [Beheerde identiteiten weer geven](#list-role-assignments-for-managed-identities) | U moet de beheerde identiteiten verwijderen, opnieuw maken en koppelen aan de juiste resource. U moet de roltoewijzingen opnieuw maken. |
-| Azure Key Vault | Ja | Yes | [Key Vault toegangs beleid weer geven](#list-other-known-resources) | U moet de Tenant-ID die is gekoppeld aan de sleutel kluizen bijwerken. U moet een nieuw toegangs beleid verwijderen en toevoegen. |
-| Azure SQL-data bases met Azure AD-verificatie | Yes | Nee | [Azure SQL-data bases controleren met Azure AD-verificatie](#list-other-known-resources) |  |  |
-| Azure Storage en Azure Data Lake Storage Gen2 | Ja | Yes |  | U moet alle Acl's opnieuw maken. |
+| Roltoewijzingen | Ja | Ja | [Lijst met roltoewijzingen weergeven](#save-all-role-assignments) | Alle roltoewijzingen worden definitief verwijderd. U moet gebruikers, groepen en service-principals toewijzen aan de bijbehorende objecten in de doel directory. U moet de roltoewijzingen opnieuw maken. |
+| Aangepaste rollen | Ja | Ja | [Aangepaste rollen opvragen](#save-custom-roles) | Alle aangepaste rollen worden permanent verwijderd. U moet de aangepaste rollen en eventuele roltoewijzingen opnieuw maken. |
+| Door het systeem toegewezen beheerde identiteiten | Ja | Ja | [Beheerde identiteiten weer geven](#list-role-assignments-for-managed-identities) | U moet de beheerde identiteiten uitschakelen en opnieuw inschakelen. U moet de roltoewijzingen opnieuw maken. |
+| Door de gebruiker toegewezen beheerde identiteiten | Ja | Ja | [Beheerde identiteiten weer geven](#list-role-assignments-for-managed-identities) | U moet de beheerde identiteiten verwijderen, opnieuw maken en koppelen aan de juiste resource. U moet de roltoewijzingen opnieuw maken. |
+| Azure Key Vault | Ja | Ja | [Key Vault toegangs beleid weer geven](#list-other-known-resources) | U moet de Tenant-ID die is gekoppeld aan de sleutel kluizen bijwerken. U moet een nieuw toegangs beleid verwijderen en toevoegen. |
+| Azure SQL-data bases met Azure AD-verificatie | Ja | Nee | [Azure SQL-data bases controleren met Azure AD-verificatie](#list-other-known-resources) |  |  |
+| Azure Storage en Azure Data Lake Storage Gen2 | Ja | Ja |  | U moet alle Acl's opnieuw maken. |
 | Azure Data Lake Storage Gen1 | Ja |  |  | U moet alle Acl's opnieuw maken. |
-| Azure Files | Ja | Yes |  | U moet alle Acl's opnieuw maken. |
-| Azure File Sync | Ja | Yes |  |  |
-| Azure Managed Disks | Yes | N.v.t. |  |  |
-| Azure container Services voor Kubernetes | Ja | Yes |  |  |
-| Azure Active Directory Domain Services | Yes | Nee |  |  |
+| Azure Files | Ja | Ja |  | U moet alle Acl's opnieuw maken. |
+| Azure File Sync | Ja | Ja |  |  |
+| Azure Managed Disks | Ja | N.v.t. |  |  |
+| Azure container Services voor Kubernetes | Ja | Ja |  |  |
+| Azure Active Directory Domain Services | Ja | Nee |  |  |
 | App-registraties | Ja | Ja |  |  |
 
 Als u versleuteling op rest gebruikt voor een resource, zoals een opslag account of SQL database, die een afhankelijkheid heeft van een sleutel kluis die zich niet in hetzelfde abonnement bevindt dat wordt overgedragen, kan dit leiden tot een onherstelbaar scenario. Als u deze situatie hebt, moet u stappen ondernemen voor het gebruik van een andere sleutel kluis of het tijdelijk uitschakelen van door de klant beheerde sleutels om dit onherstelbare scenario te voor komen.
@@ -189,7 +189,7 @@ Beheerde identiteiten worden niet bijgewerkt wanneer een abonnement wordt overge
 
 1. Bekijk de [lijst met Azure-Services die beheerde identiteiten ondersteunen](../active-directory/managed-identities-azure-resources/services-support-managed-identities.md) om te weten waar u mogelijk beheerde identiteiten gebruikt.
 
-1. Gebruik [AZ AD SP List](/azure/ad/sp#az-ad-sp-list) om uw door het systeem toegewezen en door de gebruiker toegewezen beheerde identiteiten weer te geven.
+1. Gebruik [AZ AD SP List](/cli/azure/identity?view=azure-cli-latest#az-identity-list) om uw door het systeem toegewezen en door de gebruiker toegewezen beheerde identiteiten weer te geven.
 
     ```azurecli
     az ad sp list --all --filter "servicePrincipalType eq 'ManagedIdentity'"
@@ -289,7 +289,7 @@ In deze stap brengt u het eigendom van het abonnement over van de bron directory
     az account set --subscription "Contoso"
     ```
 
-### <a name="create-custom-roles"></a>Aangepaste rollen maken
+### <a name="create-custom-roles"></a>Aangepast rollen maken
         
 - Gebruik [AZ Role definition Create](https://docs.microsoft.com/cli/azure/role/definition#az-role-definition-create) om elke aangepaste rol te maken op basis van de bestanden die u eerder hebt gemaakt. Zie [aangepaste rollen maken of bijwerken voor Azure-resources met behulp van Azure cli](custom-roles-cli.md)voor meer informatie.
 

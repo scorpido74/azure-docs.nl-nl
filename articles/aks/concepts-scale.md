@@ -4,11 +4,12 @@ description: Meer informatie over schalen in azure Kubernetes service (AKS), met
 services: container-service
 ms.topic: conceptual
 ms.date: 02/28/2019
-ms.openlocfilehash: 83cbaf49f26a53518b1aa1e211b61af1959642a6
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 7c9c3cf159d67d2f4acaaab943ecf9d99263ae55
+ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84465334"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86223836"
 ---
 # <a name="scaling-options-for-applications-in-azure-kubernetes-service-aks"></a>Schaalopties voor toepassingen in Azure Kubernetes Service (AKS)
 
@@ -79,7 +80,7 @@ Als u uw AKS-cluster snel wilt schalen, kunt u integreren met Azure Container In
 
 ![Kubernetes burst-schaling naar ACI](media/concepts-scale/burst-scaling.png)
 
-Met ACI kunt u snel container instanties implementeren zonder extra infrastructuur overhead. Wanneer u verbinding maakt met AKS, wordt ACI een beveiligde logische extensie van uw AKS-cluster. Het onderdeel [virtuele knoop punten][virtual-nodes-cli] , dat is gebaseerd op [virtuele-Kubelet][virtual-kubelet], is geïnstalleerd in uw AKS-cluster dat ACI als een virtueel Kubernetes-knoop punt presenteert. Kubernetes kan vervolgens peulen plannen die worden uitgevoerd als ACI-instanties via virtuele knoop punten, en niet als peul op VM-knoop punten direct in uw AKS-cluster. Virtuele knoop punten zijn momenteel beschikbaar als preview-versie in AKS.
+Met ACI kunt u snel container instanties implementeren zonder extra infrastructuur overhead. Wanneer u verbinding maakt met AKS, wordt ACI een beveiligde logische extensie van uw AKS-cluster. Het onderdeel [virtuele knoop punten][virtual-nodes-cli] , dat is gebaseerd op [virtuele-Kubelet][virtual-kubelet], is geïnstalleerd in uw AKS-cluster dat ACI als een virtueel Kubernetes-knoop punt presenteert. Kubernetes kan vervolgens peulen plannen die worden uitgevoerd als ACI-instanties via virtuele knoop punten, en niet als peul op VM-knoop punten direct in uw AKS-cluster.
 
 Uw toepassing hoeft niet te worden gewijzigd om virtuele knoop punten te gebruiken. Implementaties kunnen worden geschaald op basis van AKS en ACI en zonder vertraging als cluster automatisch schalen nieuwe knoop punten implementeert in uw AKS-cluster.
 

@@ -11,12 +11,12 @@ ms.topic: how-to
 ms.date: 06/25/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 2b66ef1a28faf97759045d40ea0f649282b2d837
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 91360776c50ce514985ad36242606223becbd933
+ms.sourcegitcommit: f7e160c820c1e2eb57dc480b2a8fd6bef7053e91
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85392893"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86230873"
 ---
 # <a name="custom-email-verification-with-mailjet"></a>Aangepaste e-mail verificatie met Mailjet
 
@@ -57,7 +57,7 @@ Sla vervolgens de Mailjet API-sleutel op in een Azure AD B2C-beleids sleutel voo
 
 ## <a name="create-a-mailjet-template"></a>Een Mailjet-sjabloon maken
 
-Als er een Mailjet-account is gemaakt en de Mailjet-API-sleutel die is opgeslagen in een Azure AD B2C-beleids sleutel, maakt u een Mailjet- [sjabloon voor dynamische transactionele acties](https://Mailjet.com/docs/ui/sending-email/how-to-send-an-email-with-dynamic-transactional-templates/).
+Als er een Mailjet-account is gemaakt en de Mailjet-API-sleutel die is opgeslagen in een Azure AD B2C-beleids sleutel, maakt u een Mailjet- [sjabloon voor dynamische transactionele acties](https://sendgrid.com/docs/ui/sending-email/how-to-send-an-email-with-dynamic-transactional-templates/).
 
 1. Open de pagina [transactionele sjablonen](https://app.mailjet.com/templates/transactional) op de site Mailjet en selecteer **een nieuwe sjabloon maken**.
 1. Selecteer **deze optie door deze te coderen in HTML**en vervolgens **code**te selecteren.

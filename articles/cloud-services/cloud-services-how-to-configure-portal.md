@@ -8,11 +8,12 @@ ms.service: cloud-services
 ms.topic: article
 ms.date: 12/07/2016
 ms.author: tagore
-ms.openlocfilehash: e862818a4fe2471af574d153d43f0096af7847b8
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 169b12ff4fbf2471270aa912d5d1f8242371036b
+ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80811412"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86223734"
 ---
 # <a name="how-to-configure-cloud-services"></a>Cloud Services configureren
 
@@ -47,7 +48,7 @@ Als u een specifieke versie van het besturings systeem nodig hebt, kunt u deze i
 
 U kunt waarschuwingen toevoegen aan uw Cloud service. Klik op **instellingen**  >  **waarschuwings regels**  >  **waarschuwing toevoegen**.
 
-![](./media/cloud-services-how-to-configure-portal/cs-alerts.png)
+![Scherm afbeelding van de instellingen pannen met de optie waarschuwings regels gemarkeerd en in rood beschreven en de optie waarschuwing toevoegen wordt in het rood beschreven.](./media/cloud-services-how-to-configure-portal/cs-alerts.png)
 
 Hier kunt u een waarschuwing instellen. In de vervolg keuzelijst **metriek** kunt u een waarschuwing instellen voor de volgende typen gegevens.
 
@@ -57,7 +58,7 @@ Hier kunt u een waarschuwing instellen. In de vervolg keuzelijst **metriek** kun
 * Netwerk - uitgaand
 * CPU-percentage
 
-![](./media/cloud-services-how-to-configure-portal/cs-alert-item.png)
+![Scherm opname van het deel venster een waarschuwings regel toevoegen met alle configuratie opties die zijn ingesteld.](./media/cloud-services-how-to-configure-portal/cs-alert-item.png)
 
 ### <a name="configure-monitoring-from-a-metric-tile"></a>Bewaking configureren op basis van een metrische tegel
 

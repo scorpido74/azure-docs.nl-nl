@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/23/2020
 ms.author: memildin
-ms.openlocfilehash: b395931d11c7bc7119be0122531908ed680fc3b9
-ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
+ms.openlocfilehash: a7ff8a0cf23bf0701a7cc35cb137ec0965f295ec
+ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86145983"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86223972"
 ---
 # <a name="prevent-dangling-dns-entries-and-avoid-subdomain-takeover"></a>Dangling DNS-vermeldingen voor komen en de overname van subdomeinen voor komen
 
@@ -117,8 +117,8 @@ Het is vaak tot ontwikkel aars en operationele teams om opschoon processen uit t
 
     - Controleer uw DNS-records regel matig om ervoor te zorgen dat uw subdomeinen allemaal zijn toegewezen aan Azure-resources die:
 
-        - **Existing** : query's uitvoeren op uw DNS-zones voor resources die verwijzen naar Azure-subdomeinen, zoals *. azurewebsites.net of *. cloudapp.Azure.com (Zie [deze lijst met verwijzingen](azure-domains.md)).
-        - **U bent eigenaar** van de resources die zijn gericht op uw DNS-subdomeinen.
+        - Existing: Query's uitvoeren op uw DNS-zones voor resources die verwijzen naar Azure-subdomeinen, zoals *. azurewebsites.net of *. cloudapp.azure.com (Zie [deze lijst met verwijzingen](azure-domains.md)).
+        - U bent eigenaar van de resources die zijn gericht op uw DNS-subdomeinen.
 
     - Onderhoud van een service catalogus van uw Azure Fully Qualified Domain Name (FQDN)-eind punten en de eigen aren van de toepassing. Als u uw service catalogus wilt maken, voert u de volgende Azure resource Graph-query (ARG) uit met de para meters uit de onderstaande tabel:
     
@@ -127,26 +127,15 @@ Het is vaak tot ontwikkel aars en operationele teams om opschoon processen uit t
         >
         > **Beperkingen** : Azure-resource grafiek heeft beperkingen en limieten voor wissel geheugens die u moet overwegen als u een grote Azure-omgeving hebt. [Meer informatie](https://docs.microsoft.com/azure/governance/resource-graph/concepts/work-with-data) over het werken met grote Azure-resource gegevens sets.  
 
-        ```
-        Search-AzGraph -Query "resources | where type == '[ResourceType]' | project tenantId, subscriptionId, type, resourceGroup, name, endpoint = [FQDNproperty]"
+        ```powershell
+        Search-AzGraph -Query "resources | where type == '<ResourceType>' | 
+        project tenantId, subscriptionId, type, resourceGroup, name, 
+        endpoint = <FQDNproperty>"
         ``` 
-        
-        Met deze query worden bijvoorbeeld de resources uit Azure App Service geretourneerd:
-
-        ```
-        Search-AzGraph -Query "resources | where type == 'microsoft.web/sites' | project tenantId, subscriptionId, type, resourceGroup, name, endpoint = properties.defaultHostName"
-        ```
-        
-        U kunt ook meerdere resource typen combi neren. Met dit voorbeeld query worden de resources van Azure App Service **en** Azure app service-sleuven geretourneerd:
-
-        ```azurepowershell
-        Search-AzGraph -Query "resources | where type in ('microsoft.web/sites', 'microsoft.web/sites/slots') | project tenantId, subscriptionId, type, resourceGroup, name, endpoint = properties.defaultHostName"
-        ```
-
 
         Para meters per service voor de query ARG:
 
-        |Resourcenaam  |[ResourceType]  | [FQDNproperty]  |
+        |Resourcenaam  | `<ResourceType>`  | `<FQDNproperty>`  |
         |---------|---------|---------|
         |Azure Front Door|micro soft. Network/frontdoors|Properties. cName|
         |Azure Blob Storage|micro soft. Storage/Storage accounts|Properties. primaire. blob|
@@ -157,6 +146,23 @@ Het is vaak tot ontwikkel aars en operationele teams om opschoon processen uit t
         |Azure API Management|micro soft. apimanagement/service|Properties. hostnameConfigurations. hostName|
         |Azure App Service|micro soft. web/sites|Eigenschappen. defaultHostName|
         |Azure App Service-sleuven|micro soft. web/sites/sleuven|Eigenschappen. defaultHostName|
+
+        
+        **Voor beeld 1** : met deze query worden de resources uit Azure app service geretourneerd: 
+
+        ```powershell
+        Search-AzGraph -Query "resources | where type == 'microsoft.web/sites' | 
+        project tenantId, subscriptionId, type, resourceGroup, name, 
+        endpoint = properties.defaultHostName"
+        ```
+        
+        **Voor beeld 2** : met deze query worden meerdere bron typen gecombineerd om de resources te retour neren van Azure App Service **en** Azure app service-sleuven:
+
+        ```powershell
+        Search-AzGraph -Query "resources | where type in ('microsoft.web/sites', 
+        'microsoft.web/sites/slots') | project tenantId, subscriptionId, type, 
+        resourceGroup, name, endpoint = properties.defaultHostName"
+        ```
 
 
 - **Procedures voor herstel maken:**
@@ -173,4 +179,4 @@ Zie de volgende pagina's voor meer informatie over gerelateerde services en Azur
 
 - [De domein verificatie-ID gebruiken bij het toevoegen van aangepaste domeinen in Azure App Service](https://docs.microsoft.com/azure/app-service/app-service-web-tutorial-custom-domain#get-domain-verification-id) 
 
--    [Quickstart: Uw eerste Resource Graph-query uitvoeren met Azure PowerShell](https://docs.microsoft.com/azure/governance/resource-graph/first-query-powershell)
+- [Quickstart: Uw eerste Resource Graph-query uitvoeren met Azure PowerShell](https://docs.microsoft.com/azure/governance/resource-graph/first-query-powershell)

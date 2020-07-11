@@ -15,18 +15,19 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 04/08/2020
 ms.author: terrylan
-ms.openlocfilehash: e1223560c5d7b19bf9da4c7c16a56c4741e582a0
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: d8baf1c70d115b80e3238d3eedf128057684d2e6
+ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80981304"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86224703"
 ---
 # <a name="security-management-in-azure"></a>Beveiligingsbeheer in Azure
 Azure-abonnees kunnen hun cloudomgevingen beheren vanaf meerdere apparaten, waaronder beheerwerkstations, de pc's van ontwikkelaars en zelfs apparaten van bevoegde eindgebruikers met taakspecifieke rechten. In sommige gevallen worden beheerfuncties uitgevoerd via op het web gebaseerde consoles, zoals de [Azure Portal](https://azure.microsoft.com/features/azure-portal/). In andere gevallen zijn er mogelijk rechtstreekse verbindingen naar Azure vanaf on-premises systemen via virtuele particuliere netwerken (VPN), Terminal Services, protocollen van clienttoepassingen of de Azure Service Management API (SMAPI) (via een programma). Clienteindpunten kunnen bovendien zowel in een domein zijn samengevoegd als op zichzelf staand en niet-beheerd zijn, zoals tablets en smartphones.
 
 Hoewel meerdere mogelijkheden voor toegang en beheer uitgebreide opties bieden, kan deze verscheidenheid voor een cloudimplementatie aanzienlijke risico's met zich meebrengen. Het beheren, volgen en controleren van beheeracties kan hierdoor worden bemoeilijkt. Deze verscheidenheid kan ook leiden tot beveiligingsrisico's, omdat er ongereglementeerde toegang plaatsvindt tot clienteindpunten die worden gebruikt voor het beheer van cloudservices. Het gebruik van algemene of persoonlijke werkstations voor het ontwikkelen en beheren van infrastructuur brengt onvoorspelbare bedreigingen met zich mee voor bijvoorbeeld surfen op internet (denk aan waterhole-aanvallen) of e-mail (zoals social engineering en phishing).
 
-![](./media/management/typical-management-network-topology.png)
+![Een diagram met de verschillende manieren waarop een bedreiging kan worden gekoppeld.](./media/management/typical-management-network-topology.png)
 
 Het risico op aanvallen neemt in dit type omgeving toe, omdat het moeilijk is beveiligingsbeleid en -methoden te maken die op de juiste manier toegang tot Azure-interfaces (zoals SMAPI) beheren vanuit uiteenlopende eindpunten.
 
@@ -156,18 +157,18 @@ Met een zelfstandig, beperkt werkstation hebben beheerders een pc of laptop die 
 
 In het scenario voor zelfstandige beperkte werkstations (zie hieronder) is het lokale exemplaar van Windows Firewall (of een niet-Microsoft-clientfirewall) zo geconfigureerd dat binnenkomende verbindingen, zoals RDP, worden geblokkeerd. De beheerder kan zich aanmelden bij het beperkte werkstation en een RDP-sessie starten die verbinding maakt met Azure na het tot stand brengen van een VPN-verbinding met een virtueel netwerk in Azure. De beheerder kan zich echter niet aanmelden bij een zakelijke pc en een RDP-sessie gebruiken om verbinding te maken met het beperkte werkstation zelf.
 
-![](./media/management/stand-alone-hardened-workstation-topology.png)
+![Een diagram met het zelfstandige, beperkte werk station.](./media/management/stand-alone-hardened-workstation-topology.png)
 
 ### <a name="corporate-pc-as-virtual-machine"></a>Zakelijke pc als virtuele machine
 In gevallen waarin een afzonderlijk zelfstandig, beperkt werkstation te duur is of onhandig, kan het beperkte werkstation een virtuele machine hosten voor het uitvoeren van niet-beheertaken.
 
-![](./media/management/hardened-workstation-enabled-with-hyper-v.png)
+![Een diagram van het beveiligde werk station dat als host fungeert voor een virtuele machine om niet-beheerders taken uit te voeren.](./media/management/hardened-workstation-enabled-with-hyper-v.png)
 
 Ter voorkoming van diverse beveiligingsrisico's die voortvloeien uit het gebruik van hetzelfde werkstation voor systeembeheer en voor andere dagelijkse taken, kunt u op het beperkte werkstation een virtuele machine met Windows Hyper-V implementeren. Deze virtuele machine kan vervolgens worden gebruikt als zakelijke pc. De omgeving van de zakelijke pc kan geïsoleerd blijven van de host, waardoor u de kwetsbaarheid voor aanvallen vermindert en de dagelijkse activiteiten van de gebruiker (zoals het verzenden van e-mail) niet meer op hetzelfde systeem worden uitgevoerd als gevoelige beheertaken.
 
 De virtuele machine die als zakelijke pc wordt gebruikt, wordt uitgevoerd in een beveiligde ruimte en biedt de benodigde gebruikerstoepassingen. De host blijft een 'schone bron' en past strikt netwerkbeleid toe op het basisbesturingssysteem (bijvoorbeeld het blokkeren van RDP-toegang tot de virtuele machine).
 
-## <a name="best-practices"></a>Aanbevolen procedures
+## <a name="best-practices"></a>Best practices
 Houd rekening met de volgende aanvullende richtlijnen bij het beheren van toepassingen en gegevens in Azure.
 
 ### <a name="dos-and-donts"></a>Wat u wel en wat u niet moet doen

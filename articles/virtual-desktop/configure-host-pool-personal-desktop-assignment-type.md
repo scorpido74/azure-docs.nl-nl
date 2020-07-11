@@ -5,15 +5,15 @@ services: virtual-desktop
 author: HeidiLohr
 ms.service: virtual-desktop
 ms.topic: how-to
-ms.date: 04/30/2020
+ms.date: 07/09/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 158ac92a930b53e02ee81570c62711ca27dc4ae8
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: bfe428b9eba1f83f3e1bb05c3941c4c56317c9bc
+ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85200389"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86223105"
 ---
 # <a name="configure-the-personal-desktop-host-pool-assignment-type"></a>Het toewijzings type voor de hostgroep voor persoonlijk bureau blad configureren
 
@@ -71,6 +71,21 @@ Als u een gebruiker aan een specifieke sessiehost wilt toewijzen, voert u de vol
 ```powershell
 Update-AzWvdSessionHost -HostPoolName <hostpoolname> -Name <sessionhostname> -ResourceGroupName <resourcegroupname> -AssignedUser <userupn>
 ```
+
+Om een gebruiker rechtstreeks toe te wijzen aan een sessiehost in de Azure Portal:
+
+1. Meld u aan bij Azure Portal op <https://portal.azure.com>.
+2. Voer **Windows virtueel bureau blad** in op de zoek balk.
+3. Onder **Services**selecteert u **virtueel bureau blad voor Windows**.
+4. Ga op de pagina virtueel bureau blad van Windows naar het menu aan de linkerkant van het venster en selecteer **groepen hosten**.
+5. Selecteer de naam van de hostgroep die u wilt bijwerken.
+6. Ga vervolgens naar het menu aan de linkerkant van het venster en selecteer **toepassings groepen**.
+7. Selecteer de naam van de bureau blad-app-groep die u wilt bewerken en selecteer vervolgens **toewijzingen** in het menu aan de linkerkant van het venster.
+8. Selecteer **+ toevoegen**en selecteer vervolgens de gebruikers of gebruikers groepen waarop u deze app-groep wilt publiceren.
+9. Selecteer **virtuele machine toewijzen** in de informatie balk om een sessie-host aan een gebruiker toe te wijzen.
+10. Selecteer de sessiehost die u aan de gebruiker wilt toewijzen en selecteer vervolgens **toewijzen**.
+11. Selecteer de gebruiker aan wie u de sessiehost wilt toewijzen in de lijst met beschik bare gebruikers.
+12. Wanneer u klaar bent, selecteert u **selecteren**.
 
 ## <a name="next-steps"></a>Volgende stappen
 

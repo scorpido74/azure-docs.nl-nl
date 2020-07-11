@@ -9,11 +9,12 @@ ms.topic: conceptual
 ms.date: 04/30/2020
 ms.author: tamram
 ms.subservice: blobs
-ms.openlocfilehash: dd5d9c721c3e0204a66367b76654f9a917e26ba6
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: f8e84e845910b8f84a9b3f84ad414f2ecdd250a5
+ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82884629"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86223785"
 ---
 # <a name="soft-delete-for-blob-storage"></a>Voorlopig verwijderen voor Blob Storage
 
@@ -53,7 +54,7 @@ Met zacht verwijderen worden uw gegevens in veel gevallen bewaard, waarbij objec
 
 Wanneer een BLOB wordt overschreven met behulp van **put-BLOB**, **put-blok lijst**of **Kopieer-BLOB**, wordt er automatisch een versie of moment opname van de status van de BLOB vóór de schrijf bewerking gegenereerd. Dit object is onzichtbaar, tenzij tijdelijke verwijderde objecten expliciet worden weer gegeven. Zie de sectie [herstel](#recovery) voor meer informatie over het weer geven van zachte verwijderde objecten.
 
-![](media/soft-delete-overview/storage-blob-soft-delete-overwrite.png)
+![Een diagram waarin wordt getoond hoe moment opnamen van blobs worden opgeslagen wanneer ze worden overschreven met behulp van put-blob, put-blok lijst of kopiëren van BLOB.](media/soft-delete-overview/storage-blob-soft-delete-overwrite.png)
 
 *Zacht verwijderde gegevens zijn grijs, terwijl actieve gegevens blauw zijn. Meer recent geschreven gegevens worden onder oudere gegevens weer gegeven. Als B0 wordt overschreven met B1, wordt er een voorlopig verwijderde moment opname van B0 gegenereerd. Als B1 wordt overschreven met B2, wordt er een voorlopig verwijderde moment opname van B1 gegenereerd.*
 
@@ -65,13 +66,13 @@ Wanneer een BLOB wordt overschreven met behulp van **put-BLOB**, **put-blok lijs
 
 Wanneer **Delete BLOB** wordt aangeroepen voor een moment opname, wordt die moment opname gemarkeerd als zacht verwijderd. Er wordt geen nieuwe moment opname gegenereerd.
 
-![](media/soft-delete-overview/storage-blob-soft-delete-explicit-delete-snapshot.png)
+![Een diagram waarin wordt getoond hoe moment opnamen van blobs zacht worden verwijderd bij het gebruik van delete blob.](media/soft-delete-overview/storage-blob-soft-delete-explicit-delete-snapshot.png)
 
 *Zacht verwijderde gegevens zijn grijs, terwijl actieve gegevens blauw zijn. Meer recent geschreven gegevens worden onder oudere gegevens weer gegeven. Als **moment opname-BLOB** wordt aangeroepen, wordt B0 een moment opname en B1 de actieve status van de blob. Wanneer de B0-moment opname wordt verwijderd, wordt deze als zacht verwijderd gemarkeerd.*
 
 Wanneer **Delete BLOB** wordt aangeroepen op een basis-BLOB (een blob die niet zelf een moment opname is), wordt die BLOB gemarkeerd als zacht verwijderd. Consistent met het vorige gedrag: het aanroepen van **Delete BLOB** op een blob met actieve moment opnamen retourneert een fout. Als u **Delete BLOB** aanroept voor een blob met tijdelijke verwijderde moment opnamen, wordt er geen fout geretourneerd. U kunt nog steeds een BLOB en alle bijbehorende moment opnamen in één bewerking verwijderen wanneer de functie voor voorlopig verwijderen is ingeschakeld. Hiermee markeert u de basis-Blob en moment opnamen als zacht verwijderd.
 
-![](media/soft-delete-overview/storage-blob-soft-delete-explicit-include.png)
+![Een diagram waarin wordt weer gegeven wat er gebeurt wanneer blog verwijderen wordt aangeroepen op een basis-blob.](media/soft-delete-overview/storage-blob-soft-delete-explicit-include.png)
 
 *Zacht verwijderde gegevens zijn grijs, terwijl actieve gegevens blauw zijn. Meer recent geschreven gegevens worden onder oudere gegevens weer gegeven. Hier wordt een **Delete BLOB** -aanroep gemaakt om B2 en alle bijbehorende moment opnamen te verwijderen. De actieve blob, B2 en alle bijbehorende moment opnamen zijn gemarkeerd als zacht verwijderd.*
 
@@ -82,7 +83,7 @@ Met zacht verwijderen worden uw gegevens niet opgeslagen in gevallen waarin cont
 
 De volgende tabel bevat details over het verwachte gedrag wanneer zacht verwijderen is ingeschakeld:
 
-| REST API bewerking | Resourcetype | Description | Wijziging in gedrag |
+| REST API bewerking | Resourcetype | Beschrijving | Wijziging in gedrag |
 |--------------------|---------------|-------------|--------------------|
 | [Verwijderen](/rest/api/storagerp/StorageAccounts/Delete) | Account | Hiermee verwijdert u het opslag account, inclusief alle containers en blobs die het bevat.                           | Geen wijziging. Containers en blobs in het verwijderde account kunnen niet worden hersteld. |
 | [Container verwijderen](/rest/api/storageservices/delete-container) | Container | Hiermee verwijdert u de container, inclusief alle blobs die deze bevat. | Geen wijziging. Blobs in de verwijderde container kunnen niet worden hersteld. |
@@ -104,7 +105,7 @@ Bij het aanroepen van de bewerking voor het [ongedaan](/rest/api/storageservices
 
 Als u een BLOB wilt herstellen naar een specifieke voorlopig verwijderde moment opname, kunt u de **BLOB undelete** aanroepen op de basis-blob. Vervolgens kunt u de moment opname kopiëren over de nu actieve blob. U kunt de moment opname ook kopiëren naar een nieuwe blob.
 
-![](media/soft-delete-overview/storage-blob-soft-delete-recover.png)
+![Een diagram waarin wordt weer gegeven wat er gebeurt wanneer BLOB verwijderen wordt gebruikt.](media/soft-delete-overview/storage-blob-soft-delete-recover.png)
 
 *Zacht verwijderde gegevens zijn grijs, terwijl actieve gegevens blauw zijn. Meer recent geschreven gegevens worden onder oudere gegevens weer gegeven. Hier wordt de **verwijdering van BLOB ongedaan** gemaakt op BLOB B, waardoor de basis-blob, B1 en alle bijbehorende moment opnamen, hier net als actief, wordt hersteld. In de tweede stap wordt B0 gekopieerd over de basis-blob. Met deze Kopieer bewerking wordt een voorlopig verwijderde moment opname van B1 gegenereerd.*
 

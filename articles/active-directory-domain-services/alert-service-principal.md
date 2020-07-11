@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
 ms.topic: troubleshooting
-ms.date: 09/20/2019
+ms.date: 07/09/2020
 ms.author: iainfou
-ms.openlocfilehash: 991bb3e296f18ef6d5182048d8ce4601c0fc09c9
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: fc665503413d2f022b10ae043aac3315597c6ba4
+ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84734993"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86221388"
 ---
 # <a name="known-issues-service-principal-alerts-in-azure-active-directory-domain-services"></a>Bekende problemen: waarschuwingen voor service-principals in Azure Active Directory Domain Services
 
@@ -38,7 +38,7 @@ Voer de volgende stappen uit om te controleren welke service-principal ontbreekt
 
 1. Selecteer in de Azure Portal **Azure Active Directory** in het navigatie menu aan de linkerkant.
 1. Selecteer **bedrijfs toepassingen**. Kies *alle toepassingen* in de vervolg keuzelijst **toepassings type** en selecteer vervolgens **Toep assen**.
-1. Zoek naar elk van de toepassings-Id's. Als er geen bestaande toepassing wordt gevonden, volgt u *de stappen voor het maken* van de service-principal of het opnieuw registreren van de naam ruimte.
+1. Zoek naar elk van de volgende toepassings-Id's. Als er geen bestaande toepassing wordt gevonden, volgt u *de stappen voor het maken* van de service-principal of het opnieuw registreren van de naam ruimte.
 
     | Toepassings-id | Oplossing |
     | :--- | :--- |
@@ -49,9 +49,9 @@ Voer de volgende stappen uit om te controleren welke service-principal ontbreekt
 
 ### <a name="recreate-a-missing-service-principal"></a>Een ontbrekende Service-Principal opnieuw maken
 
-Als de *2565bd9d-DA50-47d4-8b85-4c97f669dc36* van de toepassings-id ontbreekt in uw Azure AD-adres lijst, kunt u Azure AD Power shell gebruiken om de volgende stappen uit te voeren. Zie voor meer informatie [Azure AD Power Shell installeren](/powershell/azure/active-directory/install-adv2).
+Als de *2565bd9d-DA50-47d4-8b85-4c97f669dc36* van de toepassings-id ontbreekt in uw Azure AD-adres lijst, kunt u Azure AD Power shell gebruiken om de volgende stappen uit te voeren. Zie [Azure AD Power shell](/powershell/azure/active-directory/install-adv2)voor meer informatie.
 
-1. Installeer de Azure AD Power shell-module en importeer deze als volgt:
+1. Als dat nodig is, installeert u de Azure AD Power shell-module en importeert u deze als volgt:
 
     ```powershell
     Install-Module AzureAD
@@ -89,7 +89,7 @@ Azure AD DS synchroniseert automatisch gebruikers accounts en referenties van Az
 
 Als u de Azure AD-toepassing die wordt gebruikt voor referentie synchronisatie opnieuw wilt maken, gebruikt u Azure AD Power shell om de volgende stappen uit te voeren. Zie voor meer informatie [Azure AD Power Shell installeren](/powershell/azure/active-directory/install-adv2).
 
-1. Installeer de Azure AD Power shell-module en importeer deze als volgt:
+1. Als dat nodig is, installeert u de Azure AD Power shell-module en importeert u deze als volgt:
 
     ```powershell
     Install-Module AzureAD

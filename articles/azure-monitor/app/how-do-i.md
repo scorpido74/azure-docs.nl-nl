@@ -3,12 +3,12 @@ title: Hoe kan ik... in Azure-toepassing inzichten | Microsoft Docs
 description: Veelgestelde vragen in Application Insights.
 ms.topic: conceptual
 ms.date: 04/04/2017
-ms.openlocfilehash: 665d98378fc52e972986111847872ae30701f631
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: bda0091fe06c93150d5b3cae27f278f3fd9a91ea
+ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86110229"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86224465"
 ---
 # <a name="how-do-i--in-application-insights"></a>Hoe kan ik ... in Application Insights?
 ## <a name="get-an-email-when-"></a>Een e-mail ontvangen wanneer...
@@ -18,7 +18,7 @@ Stel een [Beschik baarheid-webtest](../../azure-monitor/app/monitor-web-app-avai
 ### <a name="email-if-my-site-is-overloaded"></a>E-mail als mijn site overbelast is
 Stel een [waarschuwing](../../azure-monitor/platform/alerts-log.md) in voor de **reactie tijd**van de server. Een drempel waarde tussen 1 en 2 seconden zou moeten werken.
 
-![](./media/how-do-i/030-server.png)
+![Scherm afbeelding die laat zien hoe u een waarschuwing instelt voor de reactie tijd van de server.](./media/how-do-i/030-server.png)
 
 Uw app kan ook tekenen van een stam weer geven door fout codes te retour neren. Stel een waarschuwing in voor **mislukte aanvragen**.
 
@@ -53,11 +53,11 @@ telemetry.TrackMetric("Alarm", 0.5);
 
 Maak een grafiek in [metrische Explorer](../../azure-monitor/platform/metrics-charts.md) om uw wekker te bekijken:
 
-![](./media/how-do-i/010-alarm.png)
+![Scherm afbeelding die laat zien hoe u een grafiek in metrische Explorer kunt maken om uw wekker weer te geven.](./media/how-do-i/010-alarm.png)
 
 Stel nu een waarschuwing in die wordt geactiveerd wanneer de metriek boven een mid-waarde voor een korte periode komt:
 
-![](./media/how-do-i/020-threshold.png)
+![Scherm afbeelding die laat zien hoe u een waarschuwing instelt die wordt geactiveerd wanneer de metrische gegevens boven de mid-waarde voor een korte periode worden geplaatst.](./media/how-do-i/020-threshold.png)
 
 Stel de gemiddelde periode in op het minimum.
 
@@ -106,11 +106,11 @@ U kunt dan:
 
 * Zoeken naar specifieke gebruikers-Id's
 
-![](./media/how-do-i/110-search.png)
+![Scherm afbeelding met de opties voor searchin voor specifieke gebruikers-Id's.](./media/how-do-i/110-search.png)
 
 * De metrische gegevens filteren op anonieme of geverifieerde gebruikers
 
-![](./media/how-do-i/115-metrics.png)
+![Scherm opname van de filter-metrixs op anonieme of geverifieerde gebruikers.](./media/how-do-i/115-metrics.png)
 
 ## <a name="modify-property-names-or-values"></a>Eigenschaps namen of-waarden wijzigen
 Een [filter](../../azure-monitor/app/api-filtering-sampling.md#filtering)maken. Hiermee kunt u de telemetrie wijzigen of filteren voordat deze vanuit uw app naar Application Insights wordt verzonden.

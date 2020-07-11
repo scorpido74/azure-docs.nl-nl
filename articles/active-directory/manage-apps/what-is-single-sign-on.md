@@ -12,12 +12,12 @@ ms.date: 12/03/2019
 ms.author: kenwith
 ms.reviewer: arvindh, japere
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a50f2cf6fc00189c8cc764a132b550153b80b52e
-ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
+ms.openlocfilehash: b7b2a75bff21825a47f4364a8936ee7d5f122c1a
+ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86144599"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86223887"
 ---
 # <a name="what-is-single-sign-on-sso"></a>Wat is eenmalige aanmelding?
 
@@ -90,6 +90,9 @@ Kies eenmalige aanmelding op basis van wacht woorden wanneer:
 - Een toepassing biedt geen ondersteuning voor het SAML-protocol voor eenmalige aanmelding.
 - Een toepassing wordt geverifieerd met een gebruikers naam en wacht woord in plaats van toegangs tokens en headers.
 
+>[!NOTE]
+>U kunt geen beleid voor voorwaardelijke toegang of multi-factor Authentication voor SSO op basis van wacht woorden Toep assen.
+
 Eenmalige aanmelding op basis van wacht woorden wordt ondersteund voor elke Cloud toepassing die een op HTML gebaseerde aanmeldings pagina heeft. De gebruiker kan een van de volgende browsers gebruiken:
 
 - Internet Explorer 11 op Windows 7 of hoger
@@ -136,6 +139,9 @@ Met gekoppelde aanmelding kan Azure AD eenmalige aanmelding bieden voor een toep
 Een gekoppelde aanmelding kan een consistente gebruikers ervaring bieden tijdens het migreren van toepassingen over een bepaalde periode. Als u toepassingen migreert naar Azure Active Directory, kunt u een gekoppelde aanmelding gebruiken om snel koppelingen te publiceren naar alle toepassingen die u wilt migreren.  Gebruikers kunnen alle koppelingen vinden in de [MyApps-Portal](../user-help/active-directory-saas-access-panel-introduction.md) of het [Start programma voor Office 365 Application](https://support.office.com/article/meet-the-office-365-app-launcher-79f12104-6fed-442f-96a0-eb089a3f476a). Gebruikers weten niet dat ze toegang hebben tot een gekoppelde toepassing of een gemigreerde toepassing.  
 
 Nadat een gebruiker is geverifieerd met een gekoppelde toepassing, moet een account record worden gemaakt voordat de eind gebruiker toegang tot eenmalige aanmelding biedt. Het inrichten van deze account record kan automatisch plaatsvinden of kan hand matig door een beheerder worden uitgevoerd.
+
+>[!NOTE]
+>U kunt geen beleid voor voorwaardelijke toegang of multi-factor Authentication Toep assen op een gekoppelde toepassing. Dit komt doordat een gekoppelde toepassing geen mogelijkheden biedt voor eenmalige aanmelding via Azure AD. Wanneer u een gekoppelde toepassing configureert, voegt u simpelweg een koppeling toe die wordt weer gegeven in het start programma voor apps of in de MyApps-Portal. 
 
 ## <a name="disabled-sso"></a>SSO uitgeschakeld
 

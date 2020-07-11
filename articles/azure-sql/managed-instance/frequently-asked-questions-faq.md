@@ -12,12 +12,12 @@ author: jovanpop-msft
 ms.author: jovanpop
 ms.reviewer: sstein, carlrab
 ms.date: 03/17/2020
-ms.openlocfilehash: d2e4b07c97e09fce5cdaa034e2fe67a18ef0d7f1
-ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
+ms.openlocfilehash: b5fad1e287ffca569546092893c4f1a6501a3b7b
+ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86171156"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86224414"
 ---
 # <a name="azure-sql-managed-instance-frequently-asked-questions-faq"></a>Veelgestelde vragen over Azure SQL Managed instance (FAQ)
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -122,56 +122,121 @@ Als u een andere DNS-zone wilt gebruiken in plaats van de standaard instelling, 
 - Gebruik CliConfig voor het definiëren van een alias. Het hulp programma is slechts een wrapper voor register instellingen, zodat het kan worden uitgevoerd met behulp van groeps beleid of een script.
 - Gebruik *CNAME* met de optie *TrustServerCertificate = True* .
 
-## <a name="move-a-database-from-sql-managed-instance"></a>Een Data Base verplaatsen van een SQL-beheerd exemplaar 
+## <a name="migration-options"></a>Migratieopties
 
-**Hoe kan ik een Data Base van een SQL Managed instance weer verplaatsen naar SQL Server of Azure SQL Database?**
+**Hoe kan ik migreren van Azure SQL Database enkele of elastische pool naar een beheerd exemplaar van SQL?**
 
-U kunt [een Data Base exporteren naar BACPAC](../database/database-export.md) en vervolgens [het BACPAC-bestand importeren](../database/database-import.md). Dit is de aanbevolen benadering als uw data base kleiner is dan 100 GB.
+Beheerde instantie biedt dezelfde prestatie niveaus per Compute en opslag grootte als andere implementatie opties van Azure SQL Database. Als u gegevens wilt consolideren voor één exemplaar of als u alleen een functie nodig hebt die uitsluitend wordt ondersteund in het beheerde exemplaar, kunt u uw gegevens migreren met behulp van de functionaliteit voor exporteren/importeren (BACPAC). Hier volgen andere manieren om te overwegen om SQL Database migratie naar een door SQL beheerd exemplaar: 
+- [Externe gegevens bron]() gebruiken
+- [SQLPackage](https://techcommunity.microsoft.com/t5/azure-database-support-blog/how-to-migrate-azure-sql-database-to-azure-sql-managed-instance/ba-p/369182) gebruiken
+- [Bcp](https://medium.com/azure-sqldb-managed-instance/migrate-from-azure-sql-managed-instance-using-bcp-674c92efdca7) gebruiken
 
-Transactionele replicatie kan worden gebruikt als alle tabellen in de data base primaire sleutels hebben.
+**Hoe kan ik mijn exemplaar database migreren naar een enkele Azure SQL Database?**
 
-Systeem eigen `COPY_ONLY` back-ups die zijn gemaakt op basis van een SQL-beheerd exemplaar, kunnen niet worden hersteld naar SQL Server omdat SQL Managed instance een hogere database versie heeft dan SQL Server.
+U kunt ook [een Data Base exporteren naar BACPAC](../database/database-export.md) en vervolgens [het BACPAC-bestand importeren](../database/database-import.md). Dit is de aanbevolen benadering als uw data base kleiner is dan 100 GB.
 
-## <a name="migrate-an-instance-database"></a>Een exemplaar database migreren
+[Transactionele replicatie](replication-two-instances-and-sql-server-configure-tutorial.md?view=sql-server-2017) kan worden gebruikt als alle tabellen in de Data Base *primaire* sleutels hebben en er geen in-Memory OLTP-objecten in de Data Base zijn.
 
-**Hoe kan ik mijn exemplaar database migreren naar Azure SQL Database?**
+Systeem eigen COPY_ONLY back-ups die zijn gemaakt van het beheerde exemplaar, kunnen niet worden hersteld naar SQL Server omdat het beheerde exemplaar een hogere database versie heeft dan SQL Server. Zie [kopie-only backup](https://docs.microsoft.com/sql/relational-databases/backup-restore/copy-only-backups-sql-server?view=sql-server-ver15)voor meer informatie.
 
-U kunt [de data base ook exporteren naar een BACPAC](../database/database-export.md) en vervolgens [het BACPAC-bestand importeren](../database/database-import.md). 
+**Hoe kan ik mijn SQL Server-exemplaar migreren naar een SQL Managed instance?**
 
-Dit is de aanbevolen benadering als uw data base kleiner is dan 100 GB. Transactionele replicatie kan worden gebruikt als alle tabellen in de data base primaire sleutels hebben.
+Als u uw SQL Server-exemplaar wilt migreren, raadpleegt [u SQL Server exemplaar migratie naar Azure SQL Managed instance](migrate-to-instance-from-sql-server.md).
+
+**Hoe kan ik migreren van andere platforms naar een SQL Managed instance?**
+
+Raadpleeg de [migratie handleiding voor Azure data base](https://datamigration.microsoft.com/)voor migratie-informatie over het migreren van andere platforms.
 
 ## <a name="switch-hardware-generation"></a>Hardware-generatie scha kelen 
 
-**Kan ik de generatie van de hardware van SQL Managed instance tussen gen 4 en Gen 5 online veranderen?**
+**Kan ik de hardware-generatie van beheerde exemplaren tussen gen 4 en Gen 5 online veranderen?**
 
-Geautomatiseerde online switches tussen de hardware is mogelijk als beide generaties beschikbaar zijn in de regio waar SQL Managed instance is ingericht. In dit geval kunt u de [overzichts pagina](../database/service-tiers-vcore.md)van het vCore-model controleren, waarin wordt uitgelegd hoe u kunt scha kelen tussen hardware gegenereerd.
+Automated online overschakelen van Gen4 naar GEN5 is mogelijk als GEN5 hardware beschikbaar is in de regio waar uw beheerde exemplaar is ingericht. In dit geval kunt u de [overzichts pagina](../database/service-tiers-vcore.md) van het vCore-model controleren, waarin wordt uitgelegd hoe u tussen de hardware gegenereerd.
 
-Dit is een langlopende bewerking, omdat een nieuw beheerd exemplaar wordt ingericht op de achtergrond en data bases automatisch worden overgedragen tussen de oude en nieuwe instanties, met een snelle failover aan het einde van het proces. 
+Dit is een langlopende bewerking als een nieuw beheerd exemplaar wordt ingericht op de achtergrond en data bases worden automatisch overgebracht tussen het oude en het nieuwe exemplaar met een snelle failover aan het einde van het proces.
 
-**Wat gebeurt er als beide hardware gegenereerd worden in dezelfde regio?**
+Opmerking: Gen4-hardware wordt gefaseerd uitgevoerd en is niet meer beschikbaar voor nieuwe implementaties. Alle nieuwe data bases moeten worden geïmplementeerd op GEN5-hardware. Het is ook niet mogelijk om over te scha kelen van GEN5 naar Gen4.
 
-Als beide generaties niet in dezelfde regio worden ondersteund, is het wijzigen van de hardware mogelijk, maar moet u deze hand matig uitvoeren. Hiervoor moet u een nieuw exemplaar inrichten in de regio waar de gewenste hardware-generatie beschikbaar is, en hand matig back-ups maken en gegevens herstellen tussen de oude en nieuwe instanties.
+## <a name="performance"></a>Prestaties 
 
-**Wat gebeurt er als er onvoldoende IP-adressen zijn voor het uitvoeren van een update bewerking?**
+**Hoe kan ik de prestaties van het beheerde exemplaar vergelijken met de prestaties van SQL Server?**
 
-Als er onvoldoende IP-adressen zijn in het subnet waar uw beheerde exemplaar is ingericht, moet u een nieuw subnet en een nieuw beheerd exemplaar maken. We raden ook aan dat het nieuwe subnet wordt gemaakt met meer IP-adressen die zijn toegewezen zodat toekomstige update bewerkingen voor komen dat er soort gelijke situaties zijn. (Zie [de grootte van een VNet-subnet bepalen voor de juiste grootte van het](vnet-subnet-determine-size.md)subnet.) Nadat het nieuwe exemplaar is ingericht, kunt u hand matig een back-up maken van gegevens en deze herstellen tussen de oude en nieuwe instanties of het [herstel punt in de tijd](point-in-time-restore.md?tabs=azure-powershell)van meerdere exemplaren uitvoeren. 
+Voor een vergelijking van de prestaties tussen het beheerde exemplaar en SQL Server, is een goed uitgangs punt [Aanbevolen procedures voor de prestatie vergelijking tussen Azure SQL Managed instance en SQL Server](https://techcommunity.microsoft.com/t5/azure-sql-database/the-best-practices-for-performance-comparison-between-azure-sql/ba-p/683210) artikel.
 
+**Wat veroorzaakt prestatie verschillen tussen het beheerde exemplaar en het SQL Server?**
 
-## <a name="tune-performance"></a>Prestaties afstemmen
+Zie de [belangrijkste oorzaken van prestatie verschillen tussen het beheerde exemplaar van SQL en SQL Server](https://azure.microsoft.com/blog/key-causes-of-performance-differences-between-sql-managed-instance-and-sql-server/). Zie [impact van de grootte van het logboek bestand op algemeen](https://medium.com/azure-sqldb-managed-instance/impact-of-log-file-size-on-general-purpose-managed-instance-performance-21ad170c823e)voor meer informatie over de invloed van de grootte van het logboek bestand op de prestaties van algemeen Managed instance.
 
-**De prestaties van het SQL Managed instance Hoe kan ik verfijnen?**
+**De prestaties van mijn beheerde exemplaar Hoe kan ik afstemmen?**
 
-SQL Managed instance in de laag Algemeen maakt gebruik van externe opslag, zodat de grootte van de gegevens en logboek bestanden op de prestaties van belang is. Zie [impact van de grootte van het logboek bestand op algemeen prestaties van SQL Managed instance](https://medium.com/azure-sqldb-managed-instance/impact-of-log-file-size-on-general-purpose-managed-instance-performance-21ad170c823e)voor meer informatie.
+U kunt de prestaties van uw beheerde exemplaar optimaliseren door:
+- [Automatisch afstemmen](../database/automatic-tuning-overview.md) waarmee de prestaties en stabiele workloads met een voortdurende prestaties worden afgestemd op basis van AI en machine learning.
+-   [In-Memory OLTP](../in-memory-oltp-overview.md) waarmee de door Voer en latentie van transactionele werk belastingen worden verbeterd en waarmee zakelijke inzichten sneller worden geleverd. 
 
-Als uw werk belasting uit veel kleine trans acties bestaat, kunt u overwegen om het verbindings type van de proxy naar de omleidings modus te scha kelen.
+Als u de prestaties nog verder wilt afstemmen, kunt u overwegen enkele van de *Aanbevolen procedures* voor het [afstemmen van toepassingen en data bases](../database/performance-guidance.md#tune-your-database)toe te passen.
+Als uw werk belasting uit veel kleine trans acties bestaat, kunt u overwegen om [het verbindings type van de proxy naar de omleidings modus te scha kelen voor een](connection-types-overview.md#changing-connection-type) lagere latentie en een hogere door voer.
 
-## <a name="maximum-storage-size"></a>Maximale opslag grootte
+## <a name="monitoring-metrics-and-alerts"></a>Bewaking, metrische gegevens en waarschuwingen
+
+**Wat zijn de opties voor het bewaken en waarschuwen van mijn beheerde exemplaar?**
+
+Zie het [blog bericht bewakings opties voor Azure SQL Managed instance](https://techcommunity.microsoft.com/t5/azure-sql-database/monitoring-options-available-for-azure-sql-managed-instance/ba-p/1065416)voor alle mogelijke opties voor het bewaken en waarschuwen van het verbruik en de prestaties van het beheerde exemplaar van SQL. Zie [realtime prestatie bewaking voor het beheerde exemplaar van Azure SQL data base](https://docs.microsoft.com/archive/blogs/sqlcat/real-time-performance-monitoring-for-azure-sql-database-managed-instance)voor de realtime prestatie bewaking voor SQL mi.
+
+**Kan ik SQL Profiler gebruiken voor het bijhouden van prestaties?**
+
+Ja, SQL Profiler wordt ondersteund of SQL Managed instance. Zie [SQL](https://docs.microsoft.com/sql/tools/sql-server-profiler/sql-server-profiler?view=sql-server-ver15)Profiler voor meer informatie.
+
+**Worden Database Advisor en Query Performance Insight ondersteund voor beheerde exemplaar databases?**
+
+Nee, ze worden niet ondersteund. U kunt [dmv's](../database/monitoring-with-dmvs.md) en [query Store](https://docs.microsoft.com/sql/relational-databases/performance/monitoring-performance-by-using-the-query-store?view=sql-server-ver15) samen met [SQL Profiler](https://docs.microsoft.com/sql/tools/sql-server-profiler/sql-server-profiler?view=sql-server-ver15) en [XEvents](https://docs.microsoft.com/sql/relational-databases/extended-events/extended-events?view=sql-server-ver15) gebruiken om uw data bases te bewaken.
+
+**Kan ik metrische waarschuwingen maken op een SQL Managed instance?**
+
+Ja. Zie [Create Alerts for SQL Managed instance](alerts-create.md)(Engelstalig) voor instructies.
+
+**Kan ik metrische waarschuwingen maken voor een data base in een beheerd exemplaar?**
+
+U kunt geen waarschuwingen voor metrische gegevens beschikbaar maken voor alleen beheerde exemplaren. Er zijn geen waarschuwings gegevens voor de afzonderlijke data bases in het beheerde exemplaar beschikbaar.
+
+## <a name="storage-size"></a>Opslag grootte
 
 **Wat is de maximale opslag grootte voor een SQL Managed instance?**
 
 De opslag grootte voor het SQL Managed instance is afhankelijk van de geselecteerde servicelaag (Algemeen of Bedrijfskritiek). Zie [kenmerken](../database/service-tiers-general-purpose-business-critical.md)van de servicelaag voor opslag beperkingen van deze service lagen.
 
-  
+**Wat is de minimale opslag grootte die beschikbaar is voor een beheerd exemplaar?**
+
+De minimale hoeveelheid beschik bare opslag ruimte in een exemplaar is 32 GB. Opslag kan worden toegevoegd in stappen van 32 GB tot aan de maximale opslag grootte. De eerste 32 GB zijn gratis.
+
+**Kan ik de opslag ruimte die is toegewezen aan een exemplaar, onafhankelijk van reken bronnen verg Roten?**
+
+Ja, u kunt extra opslag aanschaffen, onafhankelijk van compute, tot op zekere hoogte. Bekijk de *maximale instantie gereserveerde opslag* in de [tabel](resource-limits.md#hardware-generation-characteristics).
+
+**Hoe kan ik mijn opslag prestaties in Algemeen servicelaag optimaliseren?**
+
+Zie [Aanbevolen procedures voor opslag in algemeen](https://techcommunity.microsoft.com/t5/datacat/storage-performance-best-practices-and-considerations-for-azure/ba-p/305525)voor het optimaliseren van opslag prestaties.
+
+## <a name="backup-and-restore"></a>Back-ups en herstellen
+
+**Wordt de back-upopslag afgetrokken van mijn beheerde exemplaar opslag?**
+
+Nee, back-upopslag wordt niet afgetrokken van de opslag ruimte voor uw beheerde exemplaar. De back-upopslag is onafhankelijk van de opslag ruimte van het exemplaar en is niet beperkt. Back-upopslag wordt beperkt door de tijds periode voor het bewaren van de back-up van uw exemplaar databases en kan Maxi maal 35 dagen worden geconfigureerd. Zie [automatische back-ups](../database/automated-backups-overview.md)voor meer informatie.
+
+**Hoe kan ik zien wanneer automatische back-ups worden gemaakt op mijn beheerde exemplaar?**
+Zie [de geautomatiseerde back-up voor een Azure SQL Managed instance volgen](https://techcommunity.microsoft.com/t5/azure-database-support-blog/lesson-learned-128-how-to-track-the-automated-backup-for-an/ba-p/1442355)om bij te houden wanneer geautomatiseerde back-ups zijn uitgevoerd op een beheerd exemplaar.
+
+**Wordt back-up op aanvraag ondersteund?**
+Ja, u kunt een volledige back-up in hun Azure-Blob Storage maken, maar deze kan alleen worden vrijgemaakt in een beheerd exemplaar. Zie [kopie-only backup](https://docs.microsoft.com/sql/relational-databases/backup-restore/copy-only-backups-sql-server?view=sql-server-ver15)voor meer informatie. Alleen back-ups kopiëren is niet mogelijk als de data base is versleuteld met TDE die door de service worden beheerd, omdat het certificaat dat voor versleuteling wordt gebruikt, niet toegankelijk is. In dat geval kunt u de functie voor het herstellen van een punt gebruiken om de data base te verplaatsen naar een ander SQL-beheerd exemplaar of over te scha kelen naar een door de klant beheerde sleutel.
+
+**Wordt systeem eigen herstel (van. bak-bestanden) naar een beheerd exemplaar ondersteund?**
+Ja, het wordt ondersteund en is beschikbaar voor SQL Server 2005 en versies.  Als u systeem eigen herstel wilt gebruiken, uploadt u uw. bak-bestand naar Azure Blob-opslag en voert u T-SQL-opdrachten uit. Zie [systeem eigen herstel van URL](https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance-migrate#native-restore-from-url)voor meer informatie.
+
+## <a name="business-continuity"></a>Bedrijfscontinuïteit
+
+**Worden mijn systeem databases gerepliceerd naar het secundaire exemplaar in een failover-groep?**
+
+Systeem databases worden niet gerepliceerd naar het secundaire exemplaar in een failovergroep. Daarom zijn scenario's die afhankelijk zijn van objecten van de systeem databases niet mogelijk op het secundaire exemplaar, tenzij de objecten hand matig op de secundaire instantie worden gemaakt. Zie scenario's die afhankelijk zijn van [het object van de systeem databases inschakelen](../database/auto-failover-group-overview.md?tabs=azure-powershell#enable-scenarios-dependent-on-objects-from-the-system-databases)voor tijdelijke oplossingen.
+ 
 ## <a name="networking-requirements"></a>Netwerk vereisten 
 
 **Wat zijn de huidige binnenkomende/uitgaande NSG-beperkingen op het subnet van het beheerde exemplaar?**
@@ -231,6 +296,44 @@ Dit is niet vereist. U kunt ofwel [een virtueel netwerk maken voor Azure SQL Man
 
 Nee. Momenteel wordt het plaatsen van beheerde exemplaren in een subnet dat al andere bron typen bevat, niet ondersteund.
 
+## <a name="connectivity"></a>Connectiviteit 
+
+**Kan ik verbinding maken met mijn beheerde exemplaar met behulp van een IP-adres?**
+
+Nee, dit wordt niet ondersteund. De hostnaam van een beheerd exemplaar wordt toegewezen aan de load balancer vóór het virtuele cluster van het beheerde exemplaar. Als één virtueel cluster meerdere beheerde exemplaren kan hosten, kan er geen verbinding worden doorgestuurd naar het juiste beheerde exemplaar zonder de naam op te geven.
+Zie [connectiviteits architectuur voor virtuele clusters](connectivity-architecture-overview.md#virtual-cluster-connectivity-architecture)voor meer informatie over de architectuur van een virtueel cluster voor SQL-beheerde exemplaren.
+
+**Kan mijn beheerde exemplaar een statisch IP-adres hebben?**
+
+Dit wordt momenteel niet ondersteund.
+
+In zeldzame maar nood zakelijke situaties moet u mogelijk een online migratie van een beheerd exemplaar uitvoeren naar een nieuw virtueel cluster. Als dat nodig is, wordt deze migratie veroorzaakt door wijzigingen in onze technologie stack, die gericht is op het verbeteren van de beveiliging en betrouw baarheid van de service. Migreren naar een nieuw virtueel cluster resulteert in het wijzigen van het IP-adres dat is toegewezen aan de hostnaam van het beheerde exemplaar. De service Managed instance claimt geen ondersteuning voor statische IP-adressen en behoudt zich het recht voor om deze te wijzigen zonder kennisgeving als onderdeel van normale onderhouds cycli.
+
+Daarom raden wij u ten zeerste aan om te vertrouwen op Onveranderbaarheid van het IP-adres, omdat dit onnodig downtime kan veroorzaken.
+
+**Heeft een beheerd exemplaar een openbaar eind punt?**
+
+Ja. Het beheerde exemplaar heeft een openbaar eind punt dat standaard alleen wordt gebruikt voor Service beheer, maar een klant kan dit ook inschakelen voor toegang tot gegevens. Zie [SQL Managed instance gebruiken met open bare eind punten](https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance-public-endpoint-securely)voor meer informatie. Als u een openbaar eind punt wilt configureren, gaat u naar het [configureren van het open bare eind punt in SQL Managed instance](public-endpoint-configure.md)
+
+**Hoe beheert Managed instance de toegang tot het open bare eind punt?**
+
+Beheerd exemplaar beheert de toegang tot het open bare eind punt op het niveau van het netwerk en de toepassing.
+
+Beheer-en implementatie services maken verbinding met een beheerd exemplaar met behulp van een [beheer eindpunt](https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance-connectivity-architecture#management-endpoint) dat is toegewezen aan een externe Load Balancer. Verkeer wordt alleen gerouteerd naar de knoop punten als het wordt ontvangen op een vooraf gedefinieerde set poorten die alleen worden gebruikt door de beheer onderdelen van het beheerde exemplaar. Een ingebouwde firewall op de knoop punten is ingesteld om alleen verkeer vanaf micro soft IP-bereiken toe te staan. Certificaten verifiëren wederzijds alle communicatie tussen beheer onderdelen en het beheer vlak. Zie [connectiviteits architectuur voor SQL Managed instance](https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance-connectivity-architecture#virtual-cluster-connectivity-architecture)voor meer informatie.
+
+**Kan ik het open bare eind punt gebruiken om toegang te krijgen tot de gegevens in de data bases van het beheerde exemplaar?**
+
+Ja. De klant moet toegang tot open bare eindpunt gegevens inschakelen vanuit de [Azure Portal](public-endpoint-configure.md#enabling-public-endpoint-for-a-managed-instance-in-the-azure-portal)  /  [Power shell](public-endpoint-configure.md#enabling-public-endpoint-for-a-managed-instance-using-powershell) /arm en NSG configureren om de toegang tot de gegevens poort (poort nummer 3342) te vergren delen. Zie voor meer informatie het [configureren van een openbaar eind punt in Azure SQL Managed instance](public-endpoint-configure.md) en het [gebruik van Azure SQL Managed instance veilig met een openbaar eind punt](public-endpoint-overview.md). 
+
+**Kan ik een aangepaste poort opgeven voor SQL data endpoint (s)?**
+
+Nee, deze optie is niet beschikbaar.  Voor het eind punt van een persoonlijke gegevens gebruikt het beheerde exemplaar het standaard poort nummer 1433 en voor het open bare gegevens eindpunt. het beheerde exemplaar gebruikt standaard poort nummer 3342.
+
+**Wat is de aanbevolen manier om een verbinding te maken tussen beheerde instanties die in verschillende regio's zijn geplaatst?**
+
+De peering voor Express route-circuits is de beste manier om dat te doen. Dit kan niet worden gemengd met de cross-regio peering van het virtuele netwerk die niet wordt ondersteund vanwege een interne load balancer gerelateerde [beperking](https://docs.microsoft.com/azure/virtual-network/virtual-network-peering-overview).
+
+Als de peering voor Express route-Circuit niet mogelijk is, is de enige andere optie het maken van een site-naar-site-VPN-verbinding ([Azure Portal](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-howto-site-to-site-resource-manager-portal), [Power shell](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-create-site-to-site-rm-powershell), [Azure cli](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-howto-site-to-site-resource-manager-cli)).
 
 ## <a name="mitigate-data-exfiltration-risks"></a>Gegevens exfiltration Risico's beperken  
 
@@ -277,21 +380,6 @@ De DNS-configuratie wordt uiteindelijk vernieuwd:
 - Op platform upgrade.
 
 U kunt dit probleem omzeilen door SQL Managed instance te downgradeen naar 4 vCores en deze later opnieuw bij te werken. Dit heeft een neven effect van het vernieuwen van de DNS-configuratie.
-
-
-## <a name="ip-address"></a>IP-adres
-
-**Kan ik verbinding maken met een SQL-beheerd exemplaar met behulp van een IP-adres?**
-
-Het is niet mogelijk om verbinding te maken met een SQL-beheerd exemplaar met behulp van een IP-adres. De hostnaam van het SQL Managed instance-exemplaar wordt toegewezen aan een load balancer vóór het virtuele cluster van het SQL-beheerde exemplaar. Als één virtueel cluster meerdere beheerde exemplaren kan hosten, kunnen er geen verbindingen worden doorgestuurd naar het juiste beheerde exemplaar zonder de naam expliciet op te geven.
-
-Zie [connectiviteits architectuur voor virtuele clusters](connectivity-architecture-overview.md#virtual-cluster-connectivity-architecture)voor meer informatie over de architectuur van een virtueel cluster voor SQL-beheerde exemplaren.
-
-**Kan SQL Managed instance een statisch IP-adres hebben?**
-
-In zeldzame maar nood zakelijke situaties moet u mogelijk een online migratie uitvoeren van een SQL-beheerd exemplaar naar een nieuw virtueel cluster. Als dat nodig is, wordt deze migratie veroorzaakt door wijzigingen in onze technologie stack, die gericht is op het verbeteren van de beveiliging en betrouw baarheid van de service. Migreren naar een nieuw virtueel cluster resulteert in het wijzigen van het IP-adres dat is toegewezen aan de hostnaam van het SQL Managed instance-exemplaar. De service SQL Managed instance claimt geen ondersteuning voor statische IP-adressen en behoudt zich het recht voor om deze te wijzigen zonder kennisgeving als onderdeel van normale onderhouds cycli.
-
-Daarom raden wij u ten zeerste aan om te vertrouwen op Onveranderbaarheid van het IP-adres, omdat dit onnodig downtime kan veroorzaken.
 
 ## <a name="change-time-zone"></a>Tijd zone wijzigen
 

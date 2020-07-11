@@ -7,11 +7,12 @@ ms.workload: infrastructure-services
 ms.topic: how-to
 ms.date: 05/06/2020
 ms.author: cynthn
-ms.openlocfilehash: 3d55efb15454f0b1dfe5ac1101a8a53eb1c9aa8f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 469e225a1cc40dc2ecc45339d9355484e87c4af2
+ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83683951"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86223581"
 ---
 # <a name="preview-use-customer-managed-keys-for-encrypting-images"></a>Voor beeld: door de klant beheerde sleutels gebruiken voor het versleutelen van installatie kopieën
 
@@ -174,7 +175,7 @@ az sig image-version create \
    
 ```
 
-### <a name="create-the-vm"></a>De virtuele machine maken
+### <a name="create-the-vm"></a>De VM maken
 
 U kunt een virtuele machine maken op basis van een galerie met gedeelde afbeeldingen en door de klant beheerde sleutels gebruiken om de schijven te versleutelen. De syntaxis is hetzelfde als het maken van een [gegeneraliseerde](vm-generalized-image-version-cli.md) of [gespecialiseerde](vm-specialized-image-version-cli.md) virtuele machine uit een installatie kopie, maar u hoeft alleen de para meter toe te voegen `--os-disk-encryption-set` met de id van de versleutelings. Voeg voor gegevens schijven `--data-disk-encryption-sets` een door spaties gescheiden lijst van de schijf versleutelings sets voor de gegevens schijven toe.
 
@@ -187,10 +188,12 @@ Wanneer u de installatie kopie versie maakt in de portal, kunt u het tabblad **v
 2. In **versleutelings type**selecteert u **versleuteling op rest met een door de klant beheerde sleutel**. 
 3. Selecteer voor elke schijf in de installatie kopie de **schijf versleutelings** die u wilt gebruiken in de vervolg keuzelijst. 
 
-### <a name="create-the-vm"></a>De virtuele machine maken
+### <a name="create-the-vm"></a>De VM maken
 
 U kunt een virtuele machine maken op basis van een galerie met gedeelde afbeeldingen en door de klant beheerde sleutels gebruiken om de schijven te versleutelen. Wanneer u de virtuele machine in de portal maakt, selecteert u op het tabblad **schijven** de optie **versleuteling op rest met door de klant beheerde sleutels** voor het **versleutelings type**. Vervolgens kunt u de versleutelings reeks selecteren in de vervolg keuzelijst.
 
 ## <a name="next-steps"></a>Volgende stappen
 
 Meer informatie over [schijf versleuteling aan de server zijde](./windows/disk-encryption.md).
+
+Zie voor meer informatie over het verstrekken van informatie over het aankoop plan [Azure Marketplace-informatie over het aankoop plan bij het maken van installatie kopieën](marketplace-images.md).

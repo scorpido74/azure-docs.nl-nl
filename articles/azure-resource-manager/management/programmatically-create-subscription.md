@@ -1,17 +1,17 @@
 ---
 title: Programmatisch Azure-abonnementen maken
 description: Meer informatie over het programmatisch maken van extra Azure-abonnementen.
-author: amberbhargava
+author: anuragdalmia
 ms.topic: conceptual
-ms.date: 06/26/2020
+ms.date: 07/09/2020
 ms.reviewer: andalmia
 ms.author: banders
-ms.openlocfilehash: b53c81a52c06780378e45b2141cbef452b4d363a
-ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
+ms.openlocfilehash: 7fac201de2fd623058eb5771e194ae697f879ee8
+ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86170629"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86224159"
 ---
 # <a name="programmatically-create-azure-subscriptions-preview"></a>Programmatisch Azure-abonnementen maken (preview)
 
@@ -156,7 +156,7 @@ POST https://management.azure.com/providers/Microsoft.Billing/enrollmentAccounts
 | `offerType`   | Ja      | Tekenreeks | De aanbieding van het abonnement. De twee opties voor EA zijn [MS-AZR-0017P](https://azure.microsoft.com/pricing/enterprise-agreement/) (productie gebruik) en [MS-AZR-0148P](https://azure.microsoft.com/offers/ms-azr-0148p/) (dev/test) moeten worden [ingeschakeld met behulp van de EA-Portal](https://ea.azure.com/helpdocs/DevOrTestOffer).                |
 | `owners`      | Nee       | Tekenreeks | De object-ID van een gebruiker die u wilt toevoegen als een RBAC-eigenaar voor het abonnement wanneer deze wordt gemaakt.  |
 
-In het antwoord krijgt u een `Location` URL voor de bewaking terug. Wanneer het maken van het abonnement is voltooid, retourneert een GET on `Location` -URL een `subscriptionLink` object met de abonnements-id. Raadpleeg API-documentatie voor [abonnementen](https://docs.microsoft.com/rest/api/subscription/) voor meer informatie
+Als onderdeel van de koptekst wordt in het antwoord `Location` een URL weer gegeven die u kunt opvragen voor de status van de bewerking voor het maken van het abonnement. Wanneer het maken van het abonnement is voltooid, retourneert een GET on `Location` -URL een `subscriptionLink` object met de abonnements-id. Raadpleeg API-documentatie voor [abonnementen](https://docs.microsoft.com/rest/api/subscription/) voor meer informatie
 
 ### <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 

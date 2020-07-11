@@ -9,11 +9,12 @@ ms.date: 06/15/2020
 ms.author: tamram
 ms.reviewer: wielriac
 ms.subservice: blobs
-ms.openlocfilehash: f54adb54ca842ea389b0d3ea203d747df0071ee5
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 2338c523c13b16b4a63ee9de0d966182e26c3286
+ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84792027"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86223292"
 ---
 # <a name="overview-of-azure-page-blobs"></a>Overzicht van Azure-pagina-blobs
 
@@ -35,7 +36,7 @@ Micro soft-services van derden, zoals Azure Site Recovery, Azure Backup, en veel
 
 ## <a name="page-blob-features"></a>Functies voor pagina-blobs
 
-### <a name="rest-api"></a>REST-API
+### <a name="rest-api"></a>REST API
 
 Raadpleeg het volgende document om aan de slag te gaan met [ontwikkelen met behulp van pagina-blobs](storage-dotnet-how-to-use-blobs.md). Bekijk bijvoorbeeld hoe u met de Storage-client bibliotheek voor .NET toegang hebt tot pagina-blobs. 
 
@@ -122,7 +123,7 @@ Zodra een schrijf aanvraag voor een opeenvolgende set pagina's slaagt in de BLOB
 
 In het onderstaande diagram ziet u twee afzonderlijke schrijf bewerkingen:
 
-![](./media/storage-blob-pageblob-overview/storage-blob-pageblob-overview-figure2.png)
+![Een diagram waarin de twee afzonderlijke schrijf opties worden weer gegeven.](./media/storage-blob-pageblob-overview/storage-blob-pageblob-overview-figure2.png)
 
 1.  Een schrijf bewerking beginnend bij een offset van 0 tot en met een lengte van 1024 bytes 
 2.  Een schrijf bewerking vanaf een offset van 4096 met een lengte van 1024 
@@ -150,7 +151,7 @@ Zo kunt u de volledige BLOB of het bereik van de bytes downloaden, te beginnen b
 
 In de volgende afbeelding ziet u een lees bewerking met een offset van 256 en een bereik grootte van 4352. Gegevens die worden geretourneerd, worden oranje gemarkeerd. Nullen worden geretourneerd voor NUL pagina's.
 
-![](./media/storage-blob-pageblob-overview/storage-blob-pageblob-overview-figure3.png)
+![Een diagram met een lees bewerking met een offset van 256 en een bereik grootte van 4352](./media/storage-blob-pageblob-overview/storage-blob-pageblob-overview-figure3.png)
 
 Als u een met sparse gevulde BLOB hebt, wilt u misschien alleen de geldige pagina regio's downloaden om te voor komen dat u betaalt voor egressing van nul bytes en om de latentie van de down load te verminderen.  
 

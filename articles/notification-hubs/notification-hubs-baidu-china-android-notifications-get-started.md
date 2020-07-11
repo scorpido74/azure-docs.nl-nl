@@ -14,12 +14,12 @@ ms.date: 03/18/2020
 ms.author: sethm
 ms.reviewer: jowargo
 ms.lastreviewed: 06/19/2019
-ms.openlocfilehash: b9ca241b5deebc4d23e0ff648eddee0782617e0a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: aaaaedbd6d2262f632bd47aa6eefb4cc83ab1abd
+ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "79536986"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86223955"
 ---
 # <a name="get-started-with-notification-hubs-using-baidu"></a>Aan de slag met Azure Notification Hubs die gebruikmaken van Baidu
 
@@ -415,8 +415,8 @@ Noteer de `DefaultListenSharedAccessSignature` en `DefaultFullSharedAccessSignat
 
 U kunt de ontvangst van meldingen snel testen via [Azure Portal]: gebruik de knop **Verzenden** in het configuratiescherm van de Notification Hub, zoals in de volgende schermen wordt weergegeven:
 
-![](./media/notification-hubs-baidu-get-started/BaiduTestSendButton.png)
-![](./media/notification-hubs-baidu-get-started/BaiduTestSend.png)
+![Scherm opname van de Azure-Portal met de optie voor het verzenden van testen, die wordt beschreven in een rood en een rode pijl die ernaar wijst. ](./media/notification-hubs-baidu-get-started/BaiduTestSendButton.png)
+ ![ Scherm opname van de pagina voor het verzenden van de Baidu-test in de Azure Portal.](./media/notification-hubs-baidu-get-started/BaiduTestSend.png)
 
 Pushmeldingen worden gewoonlijk in een back-endservice zoals Mobile Services of ASP.NET verzonden met een compatibele bibliotheek. U kunt de REST API ook rechtstreeks gebruiken om meldingen te verzenden als er geen bibliotheek beschikbaar is voor uw back-end.
 
@@ -436,7 +436,7 @@ In dit gedeelte behandelen we hoe u een melding vanuit een .NET-console-app kunt
 
 1. Maak een nieuwe Visual C#-consoletoepassing:
 
-    ![](./media/notification-hubs-baidu-get-started/ConsoleProject.png)
+    ![Scherm afbeelding van het dialoog venster Nieuw project met de optie console toepassing Visual C# gemarkeerd.](./media/notification-hubs-baidu-get-started/ConsoleProject.png)
 
 2. Stel in het venster Package Manager-console het **standaardproject** in op uw nieuwe consoletoepassingsproject en voer vervolgens in het consolevenster de volgende opdracht uit:
 
@@ -446,7 +446,7 @@ In dit gedeelte behandelen we hoe u een melding vanuit een .NET-console-app kunt
 
     Hiermee wordt een verwijzing toegevoegd aan de Azure Notification Hubs-SDK met het [Microsoft.Azure.Notification Hubs NuGet-pakket](https://www.nuget.org/packages/Microsoft.Azure.NotificationHubs/).
 
-    ![](./media/notification-hubs-windows-store-dotnet-get-started/notification-hub-package-manager.png)
+    ![Scherm afbeelding van het dialoog venster Package Manager-console met de optie verzenden naar notification hub, omcirkeld in het rood.](./media/notification-hubs-windows-store-dotnet-get-started/notification-hub-package-manager.png)
 
 3. Open het bestand `Program.cs` en voeg de volgende instructie toe:
 

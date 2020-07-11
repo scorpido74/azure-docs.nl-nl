@@ -12,16 +12,16 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: how-to
-ms.date: 02/27/2020
+ms.date: 06/25/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2bcf7b5b8791b813a28133d8a662d1736aacf35a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 9bd19093034b4427d9e1b637a653a90e0568cddf
+ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85358715"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86223921"
 ---
 # <a name="prerequisites-for-azure-ad-connect"></a>Vereisten voor Azure AD Connect
 In dit onderwerp worden de vereisten en hardwarevereisten voor Azure AD Connect beschreven.
@@ -48,34 +48,35 @@ Voordat u Azure AD Connect installeert, zijn er enkele dingen die u nodig hebt.
 * Het is raadzaam om [de Prullenbak van Active Directory in te scha kelen](how-to-connect-sync-recycle-bin.md).
 
 ### <a name="azure-ad-connect-server"></a>Azure AD Connect server
->[!IMPORTANT]
->De Azure AD Connect-server bevat essentiële identiteits gegevens en moet worden behandeld als een onderdeel van de laag 0 zoals beschreven in [het Active Directory beheer laag model](https://docs.microsoft.com/windows-server/identity/securing-privileged-access/securing-privileged-access-reference-material)
+De Azure AD Connect-server bevat essentiële identiteits gegevens. Het is belang rijk dat beheerders toegang tot deze server op de juiste wijze is beveiligd, de volgende richt lijnen zoals beschreven in het [beveiligen van bevoegde toegang](https://docs.microsoft.com/windows-server/identity/securing-privileged-access/securing-privileged-access). 
 
-* Azure AD Connect kan niet worden geïnstalleerd op Small Business Server of Windows Server Essentials vóór 2019 (Windows Server Essentials 2019 wordt ondersteund). De server moet Windows Server Standard of hoger gebruiken.
-* Het installeren van Azure AD Connect op een domein controller wordt niet aanbevolen vanwege beveiligings procedures en meer beperkende instellingen waarmee wordt voor komen dat Azure AD Connect op de juiste manier worden geïnstalleerd.
-* Op de Azure AD Connect-server moet een volledige GUI zijn geïnstalleerd. Het wordt **niet ondersteund** voor installatie op Server Core.
->[!IMPORTANT]
->Het installeren van Azure AD Connect op Small Business Server, Server Essentials of Server Core wordt niet ondersteund.
+De Azure AD Connect-server moet worden behandeld als een onderdeel van de laag 0 zoals beschreven in het model van de [Active Directory-administratieve laag](https://docs.microsoft.com/windows-server/identity/securing-privileged-access/securing-privileged-access-reference-material).  
 
-* Azure AD Connect moet zijn geïnstalleerd op Windows Server 2012 of hoger. Deze server moet lid zijn van een domein en kan een domein controller of een lidserver zijn.
-* De Azure AD Connect-server moet Power shell transcriptie niet hebben groepsbeleid ingeschakeld als u Azure AD Connect wizard gebruikt voor het beheren van de ADFS-configuratie. U kunt Power shell transcriptie inschakelen als u Azure AD Connect wizard gebruikt voor het beheren van de synchronisatie configuratie.
-* Als Active Directory Federation Services wordt geïmplementeerd, moeten de servers waarop AD FS of Web Application proxy is geïnstalleerd, Windows Server 2012 R2 of later zijn. [Windows Remote Management](#windows-remote-management) moet zijn ingeschakeld op deze servers voor installatie op afstand.
-* Als Active Directory Federation Services wordt geïmplementeerd, hebt u [TLS/SSL-certificaten](#tlsssl-certificate-requirements)nodig.
-* Als Active Directory Federation Services wordt geïmplementeerd, moet u [naam omzetting](#name-resolution-for-federation-servers)configureren.
-* Als voor uw globale beheerders MFA is ingeschakeld, moet de URL **https://secure.aadcdn.microsoftonline-p.com** zich in de lijst met vertrouwde sites bekomen. U wordt gevraagd deze site toe te voegen aan de lijst met vertrouwde websites wanneer u wordt gevraagd om een MFA-Challenge en deze niet eerder is toegevoegd. U kunt Internet Explorer gebruiken om het toe te voegen aan uw vertrouwde sites.
-* Micro soft raadt aan uw Azure AD Connect-server te beveiligen om het beveiligings risico te verminderen voor dit kritieke onderdeel van uw IT-omgeving.  Als u de onderstaande aanbevelingen volgt, worden de beveiligings Risico's voor uw organisatie verminderd.
+Zie [Aanbevolen procedures voor het beveiligen van Active Directory](https://docs.microsoft.com/windows-server/identity/ad-ds/plan/security-best-practices/best-practices-for-securing-active-directory)voor meer informatie over het beveiligen van uw Active Directory-omgeving.
 
-* Implementeer Azure AD Connect op een server die lid is van een domein en beperk beheerders toegang tot domein beheerders of andere nauw beheerde beveiligings groepen.
+#### <a name="installation-prerequisites"></a>Installatievereisten 
 
-Voor meer informatie zie: 
+- Azure AD Connect moet worden geïnstalleerd op een domein dat is toegevoegd aan Windows Server 2012 of hoger. Het wordt ten zeerste aangeraden deze server een domein controller te zijn. 
+- Azure AD Connect kan niet worden geïnstalleerd op Small Business Server of Windows Server Essentials vóór 2019 (Windows Server Essentials 2019 wordt ondersteund). De server moet Windows Server Standard of hoger gebruiken.  
+- Op de Azure AD Connect-server moet een volledige GUI zijn geïnstalleerd. Het is niet mogelijk om Azure AD Connect te installeren op Windows Server Core. 
+- De Azure AD Connect-server moet Power shell transcriptie niet hebben groepsbeleid ingeschakeld als u Azure AD Connect wizard gebruikt voor het beheren van de ADFS-configuratie. U kunt Power shell transcriptie inschakelen als u Azure AD Connect wizard gebruikt voor het beheren van de synchronisatie configuratie. 
+- Als Active Directory Federation Services wordt geïmplementeerd, geldt het volgende: 
+    - de servers waarop AD FS of Web Application proxy zijn geïnstalleerd, moeten Windows Server 2012 R2 of later zijn. Windows Remote Management moet zijn ingeschakeld op deze servers voor installatie op afstand. 
+    - u moet TLS/SSL-certificaten configureren.  Zie [SSL/TLS-protocollen en coderings suites beheren voor AD FS](https://docs.microsoft.com/windows-server/identity/ad-fs/operations/manage-ssl-protocols-in-ad-fs) en [SSL-certificaten beheren in AD FS](https://docs.microsoft.com/windows-server/identity/ad-fs/operations/manage-ssl-certificates-ad-fs-wap).
+    - u moet naam omzetting configureren. 
+- Als voor uw globale beheerders MFA is ingeschakeld, https://secure.aadcdn.microsoftonline-p.com **moet** de URL zich in de lijst met vertrouwde sites bekomen. U wordt gevraagd deze site toe te voegen aan de lijst met vertrouwde websites wanneer u wordt gevraagd om een MFA-Challenge en deze niet eerder is toegevoegd. U kunt Internet Explorer gebruiken om het toe te voegen aan uw vertrouwde sites.  
 
-* [Beheerders groepen beveiligen](https://docs.microsoft.com/windows-server/identity/ad-ds/plan/security-best-practices/appendix-g--securing-administrators-groups-in-active-directory)
+#### <a name="hardening-your-azure-ad-connect-server"></a>De beveiliging van uw Azure AD Connect server 
+Micro soft raadt aan uw Azure AD Connect-server te beveiligen om het beveiligings risico te verminderen voor dit kritieke onderdeel van uw IT-omgeving. Als u de onderstaande aanbevelingen volgt, kunt u een aantal beveiligings Risico's voor uw organisatie beperken.
 
-* [Ingebouwde Administrator-accounts beveiligen](https://docs.microsoft.com/windows-server/identity/ad-ds/plan/security-best-practices/appendix-d--securing-built-in-administrator-accounts-in-active-directory)
+- U moet de Azure AD Connect op dezelfde manier behandelen als een domein controller en voor andere laag 0-resources:https://docs.microsoft.com/windows-server/identity/securing-privileged-access/securing-privileged-access-reference-material 
+- U moet beheerders toegang tot de Azure AD Connect-server beperken tot alleen domein beheerders of andere nauw keurig beheerde beveiligings groepen.
+- U moet een [speciaal account maken voor alle mede werkers met privileged Access](https://docs.microsoft.com/windows-server/identity/securing-privileged-access/securing-privileged-access). Beheerders moeten niet surfen op het web, hun e-mail controleren en dagelijkse productiviteits taken uitvoeren met accounts met zeer privileged.
+- U moet de richt lijnen voor het [beveiligen van bevoegde toegang](https://docs.microsoft.com/windows-server/security/credentials-protection-and-management/how-to-configure-protected-accounts)volgen. 
+- Zorg ervoor dat elke computer een uniek wacht woord voor de lokale beheerder heeft. De [lokale Administrator-wachtwoord oplossing (verval)](https://support.microsoft.com/help/3062591/microsoft-security-advisory-local-administrator-password-solution-laps) kan unieke wille keurige wacht woorden configureren op elk werk station en de server slaat ze op in Active Directory (AD) die worden beveiligd door een ACL. Alleen in aanmerking komende geautoriseerde gebruikers kunnen de wacht woorden van deze lokale beheerders accounts lezen of aanvragen. U kunt het verval verkrijgen voor gebruik op werk stations en servers vanuit het [micro soft Download centrum](https://www.microsoft.com/download/details.aspx?id=46899#:~:text=The%20%22Local%20Administrator%20Password%20Solution,it%20or%20request%20its%20reset.). Aanvullende richt lijnen voor het gebruik van een omgeving met verval-en Paw's vindt u in [operationele standaarden op basis van het schone bron principe](https://docs.microsoft.com/windows-server/identity/securing-privileged-access/securing-privileged-access-reference-material#operational-standards-based-on-clean-source-principle). 
+- U moet toegewezen [privileged Access workstations (Paw)](https://docs.microsoft.com/windows-server/identity/securing-privileged-access/privileged-access-workstations) implementeren voor alle mede werkers met bevoorrechte toegang tot de gegevens systemen van uw organisatie. 
+- U moet deze [aanvullende richt lijnen](https://docs.microsoft.com/windows-server/identity/ad-ds/plan/security-best-practices/reducing-the-active-directory-attack-surface) volgen om de kwets baarheid van uw Active Directory omgeving te verminderen.
 
-* [Beveiligings verbetering en-ondersteuning door kwets baarheid te verminderen](https://docs.microsoft.com/windows-server/identity/securing-privileged-access/securing-privileged-access#2-reduce-attack-surfaces )
-
-* [De Active Directory kwets baarheid verminderen](https://docs.microsoft.com/windows-server/identity/ad-ds/plan/security-best-practices/reducing-the-active-directory-attack-surface)
 
 ### <a name="sql-server-used-by-azure-ad-connect"></a>SQL Server gebruikt door Azure AD Connect
 * Azure AD Connect vereist een SQL Server-database voor het opslaan van identiteitsgegevens. Er is standaard een SQL Server 2012 Express LocalDB (een lichte versie van SQL Server Express) geïnstalleerd. SQL Server Express heeft een maximale grootte van 10 GB waarmee u ongeveer 100.000 objecten kunt beheren. Als u een groter volume aan Directory objecten wilt beheren, moet u de installatie wizard naar een andere installatie van SQL Server wijzen. Het type SQL Server installatie kan invloed hebben [op de prestaties van Azure AD Connect](https://docs.microsoft.com/azure/active-directory/hybrid/plan-connect-performance-factors#sql-database-factors).

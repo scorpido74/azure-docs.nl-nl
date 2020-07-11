@@ -9,11 +9,12 @@ ms.subservice: certificates
 ms.topic: conceptual
 ms.date: 06/13/2020
 ms.author: mbaldwin
-ms.openlocfilehash: 316a6c13b55664bdabf7c0cb3e37d7bb18b8649f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: d99d211ec48a507b205c4cef21618054c11aec9b
+ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84765094"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86224856"
 ---
 # <a name="get-started-with-key-vault-certificates"></a>Aan de slag gaan met Key Vault-certificaten
 De volgende scenario's schetsen verschillende van de primaire gebruiks mogelijkheden van de certificaat beheer service van Key Vault, met inbegrip van de extra stappen voor het maken van uw eerste certificaat in uw sleutel kluis.
@@ -79,6 +80,9 @@ Opmerking: dit proces, tot en met stap 3,1, is een eenmalige-bewerking.
 [Certificaat bewerking ophalen](/rest/api/keyvault/getcertificateoperation/getcertificateoperation)  
       -   Status: voltooid, mislukt met fout informatie of geannuleerd  
       -   Als gevolg van de vertraging om te maken, kan een annulerings bewerking worden gestart. Het annuleren kan al dan niet effectief zijn.  
+
+### <a name="network-security-and-access-policies-associated-with-integrated-ca"></a>Beleid voor netwerk beveiliging en-toegang gekoppeld aan geïntegreerde CA
+Key Vault service verzendt aanvragen naar CA (uitgaand verkeer). Daarom is het volledig compatibel met sleutel kluizen die zijn ingeschakeld voor de firewall. De Key Vault deelt geen toegangs beleid met de certificerings instantie. De CA moet zo worden geconfigureerd dat het ondertekenen van aanvragen onafhankelijk wordt geaccepteerd. [Hand leiding voor het integreren van vertrouwde CA](https://docs.microsoft.com/azure/key-vault/certificates/how-to-integrate-certificate-authority)
 
 ## <a name="import-a-certificate"></a>Certificaat importeren  
  Als alternatief: een certificaat kan worden geïmporteerd in Key Vault-PFX of PEM.  

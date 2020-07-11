@@ -3,12 +3,12 @@ title: Knowledge Base-QnA Maker verbeteren
 description: Verbeter de kwaliteit van uw kennis basis met actief onderwijs. Beoordeling, accepteren of afwijzen, toevoegen zonder bestaande vragen te verwijderen of te wijzigen.
 ms.topic: conceptual
 ms.date: 04/06/2020
-ms.openlocfilehash: 2e074716e4342a8748de4fb4e217548f1cb731f6
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: 88ccbc52e0eb3447d0b99cac9ba41761e292a6fd
+ms.sourcegitcommit: f7e160c820c1e2eb57dc480b2a8fd6bef7053e91
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83650771"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86231774"
 ---
 # <a name="accept-active-learning-suggested-questions-in-the-knowledge-base"></a>Voorgestelde vragen over actieve trainingen in de Knowledge Base accepteren
 
@@ -127,12 +127,12 @@ Content-Type: application/json
 {"feedbackRecords": [{"userId": "1","userQuestion": "<question-text>","qnaId": 1}]}
 ```
 
-|Eigenschap HTTP-aanvraag|Name|Type|Doel|
+|Eigenschap HTTP-aanvraag|Naam|Type|Doel|
 |--|--|--|--|
 |URL-route parameter|Knowledge Base-ID|tekenreeks|De GUID voor uw Knowledge Base.|
 |Aangepast subdomein|Resource naam QnAMaker|tekenreeks|De resource naam wordt gebruikt als het aangepaste subdomein voor uw QnA Maker. Dit is beschikbaar op de pagina instellingen nadat u de Knowledge Base hebt gepubliceerd. Deze wordt weer gegeven als de `host` .|
-|Koptekst|Content-Type|tekenreeks|Het media type van de hoofd tekst die naar de API is verzonden. De standaard waarde is:`application/json`|
-|Koptekst|Autorisatie|tekenreeks|Uw eindpunt sleutel (EndpointKey XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX).|
+|Header|Content-Type|tekenreeks|Het media type van de hoofd tekst die naar de API is verzonden. De standaard waarde is:`application/json`|
+|Header|Autorisatie|tekenreeks|Uw eindpunt sleutel (EndpointKey XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX).|
 |Bericht tekst|JSON-object|JSON|De trainings feedback|
 
 De JSON-hoofd tekst heeft verschillende instellingen:
@@ -199,7 +199,7 @@ Uw bot-Framework code moet de Train API aanroepen als de query van de gebruiker 
 * Bepalen of de query moet worden gebruikt voor actief leren
 * Query terugsturen naar Train API van QnA Maker voor actief leren
 
-In het voor [beeld van Azure bot](https://aka.ms/activelearningsamplebot)zijn beide activiteiten geprogrammeerd.
+In het voor [beeld van Azure bot](https://github.com/microsoft/BotBuilder-Samples)zijn beide activiteiten geprogrammeerd.
 
 ### <a name="example-c-code-for-train-api-with-bot-framework-4x"></a>Voor beeld C#-code voor Train API with bot Framework 4. x
 
@@ -264,7 +264,7 @@ public async static void CallTrain(string endpoint, FeedbackRecords feedbackReco
 }
 ```
 
-### <a name="example-nodejs-code-for-train-api-with-bot-framework-4x"></a>Voor beeld van node. js-code voor Train API with bot Framework 4. x
+### <a name="example-nodejs-code-for-train-api-with-bot-framework-4x"></a>Voor beeld Node.js code voor Train API with bot Framework 4. x
 
 De volgende code laat zien hoe u gegevens kunt terugsturen naar QnA Maker met de Train API.
 
@@ -334,7 +334,7 @@ Wanneer u deze app opnieuw importeert, gaat het actieve leer proces verder met h
 
 
 
-## <a name="best-practices"></a>Aanbevolen procedures
+## <a name="best-practices"></a>Best practices
 
 Zie [Aanbevolen procedures](../Concepts/best-practices.md#active-learning)voor aanbevolen procedures voor het gebruik van actief leren.
 

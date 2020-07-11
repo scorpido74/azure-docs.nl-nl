@@ -6,6 +6,8 @@
   href: sample-v1-code.md
 - name: Concepten
   items:
+    - name: Evolutie van het Microsoft Identity Platform
+      href: about-microsoft-identity-platform.md
     - name: Waarom updaten naar v2.0?
       href: azure-ad-endpoint-comparison.md
     - name: Toepassingstypen

@@ -5,11 +5,12 @@ ms.topic: article
 ms.date: 08/14/2019
 ms.reviewer: byvinyal
 ms.custom: seodec18
-ms.openlocfilehash: c6f7c2422e043da6df498fe81da938576687b916
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 45d2ec6cf4b2a54b899036d932bc310caede3c29
+ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83649111"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86223853"
 ---
 # <a name="configure-deployment-credentials-for-azure-app-service"></a>Implementatie referenties voor Azure App Service configureren
 [Azure app service](https://go.microsoft.com/fwlink/?LinkId=529714) ondersteunt twee typen referenties voor [lokale Git-implementatie](deploy-local-git.md) en [FTP/S-implementatie](deploy-ftp.md). Deze referenties zijn niet hetzelfde als de referenties van uw Azure-abonnement.
@@ -39,17 +40,17 @@ In de Azure Portal moet u ten minste één app hebben voordat u toegang kunt kri
 
 1. Selecteer in het menu links in het [Azure Portal](https://portal.azure.com) **app Services**  >  **\<any_app>**  >  **Deployment Center**  >  **-FTP-**  >  **dash board**.
 
-    ![](./media/app-service-deployment-credentials/access-no-git.png)
+    ![Laat zien hoe u het FTP-dash board kunt selecteren in het implementatie centrum van Azure-app Services.](./media/app-service-deployment-credentials/access-no-git.png)
 
     Als u de Git-implementatie al hebt geconfigureerd, selecteert u **app Services**  >  ** &lt; any_app>**  >  **Deployment Center**  >  **FTP/credentials**.
 
-    ![](./media/app-service-deployment-credentials/access-with-git.png)
+    ![Laat zien hoe u het FTP-dash board kunt selecteren in het implementatie centrum in Azure-app Services voor uw geconfigureerde Git-implementatie.](./media/app-service-deployment-credentials/access-with-git.png)
 
 2. Selecteer **gebruikers referenties**, Configureer de gebruikers naam en het wacht woord en selecteer vervolgens **referenties opslaan**.
 
 Wanneer u de referenties voor de implementatie hebt ingesteld, kunt u de gebruikers naam van de *Git* -implementatie vinden op de pagina **overzicht** van uw app.
 
-![](./media/app-service-deployment-credentials/deployment_credentials_overview.png)
+![Laat zien hoe u de gebruikers naam voor git-implementatie kunt vinden op de overzichts pagina van uw app.](./media/app-service-deployment-credentials/deployment_credentials_overview.png)
 
 Als de Git-implementatie is geconfigureerd, wordt op de pagina een **Git/implementatie-gebruikers naam**weer gegeven. anders een **FTP/implementatie-gebruikers naam**.
 

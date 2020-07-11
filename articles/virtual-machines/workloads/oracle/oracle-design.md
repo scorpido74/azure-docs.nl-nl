@@ -3,8 +3,8 @@ title: Een Oracle-data base ontwerpen en implementeren in azure | Microsoft Docs
 description: Ontwerp en implementeer een Oracle-data base in uw Azure-omgeving.
 services: virtual-machines-linux
 documentationcenter: virtual-machines
-author: BorisB2015
-manager: gwallace
+author: rgardler
+manager: ''
 editor: ''
 tags: azure-resource-manager
 ms.assetid: ''
@@ -13,12 +13,13 @@ ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 08/02/2018
-ms.author: borisb
-ms.openlocfilehash: ad446180b3bd864c5b6df808e6e4efac7d6c1c65
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.author: rogardle
+ms.openlocfilehash: b553256d3e6a498e36e8b5c98d90c6c14b10df75
+ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81687526"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86224567"
 ---
 # <a name="design-and-implement-an-oracle-database-in-azure"></a>Een Oracle-data base ontwerpen en implementeren in azure
 
@@ -51,7 +52,7 @@ De volgende tabel bevat enkele van de verschillen tussen een on-premises impleme
 > | **Gepland onderhoud** |Patches/upgrades|[Beschikbaarheids sets](https://docs.microsoft.com/azure/virtual-machines/windows/infrastructure-availability-sets-guidelines) (patches/upgrades die worden beheerd door Azure) |
 > | **Resource** |Toegewezen  |Gedeeld met andere clients|
 > | **Regio's** |Datacenters |[Regioparen](https://docs.microsoft.com/azure/virtual-machines/windows/regions#region-pairs)|
-> | **Storage** |SAN/fysieke schijven |[Door Azure beheerde opslag](https://azure.microsoft.com/pricing/details/managed-disks/?v=17.23h)|
+> | **Opslag** |SAN/fysieke schijven |[Door Azure beheerde opslag](https://azure.microsoft.com/pricing/details/managed-disks/?v=17.23h)|
 > | **Schalen** |Verticale schaal |Horizontaal schalen|
 
 
@@ -143,7 +144,7 @@ Op basis van de vereisten voor de netwerk bandbreedte zijn er verschillende gate
 - De netwerk latentie is hoger vergeleken met een on-premises implementatie. Het verminderen van netwerk round trips kan de prestaties aanzienlijk verbeteren.
 - Consolidatie van toepassingen die hoge trans acties of ' intensieve-apps hebben op dezelfde virtuele machine om retouren te verminderen.
 - Gebruik Virtual Machines met [versneld netwerken](https://docs.microsoft.com/azure/virtual-network/create-vm-accelerated-networking-cli) voor betere netwerk prestaties.
-- Voor bepaalde Linux-distrubutions kunt u [ondersteuning voor knippen/](https://docs.microsoft.com/azure/virtual-machines/linux/configure-lvm#trimunmap-support)ontkoppelen inschakelen.
+- Voor bepaalde Linux-distributies kunt u [ondersteuning voor knippen/](https://docs.microsoft.com/azure/virtual-machines/linux/configure-lvm#trimunmap-support)ontkoppelen inschakelen.
 - Installeer [Oracle Enter prise Manager](https://www.oracle.com/technetwork/oem/enterprise-manager/overview/index.html) op een afzonderlijke virtuele machine.
 - Zeer grote pagina's zijn standaard niet ingeschakeld op Linux. Overweeg om zeer grote pagina's in te scha kelen en in te stellen `use_large_pages = ONLY` op de Oracle DB. Dit kan helpen om de prestaties te verbeteren. Meer informatie vindt u [hier](https://docs.oracle.com/en/database/oracle/oracle-database/12.2/refrn/USE_LARGE_PAGES.html#GUID-1B0F4D27-8222-439E-A01D-E50758C88390).
 

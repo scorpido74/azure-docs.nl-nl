@@ -8,11 +8,12 @@ ms.author: liamca
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 90a9672e3a58a068d1a4488a514a6fd51c272a56
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 69fec93c2426f4274e0c890d76bdcbbb4678fa7d
+ms.sourcegitcommit: f7e160c820c1e2eb57dc480b2a8fd6bef7053e91
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85081103"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86230754"
 ---
 # <a name="design-patterns-for-multitenant-saas-applications-and-azure-cognitive-search"></a>Ontwerp patronen voor SaaS-toepassingen met meerdere tenants en Azure Cognitive Search
 
@@ -42,12 +43,12 @@ Er zijn een aantal verschillende [prijs categorieën](https://azure.microsoft.co
 
 |  | Basic | Standard1 | Standard2 | Standard3 | Standard3 HD |
 | --- | --- | --- | --- | --- | --- |
-| Maximum aantal Replica's per service |3 |12 |12 |12 |12 |
-| Maximum aantal partities per service |1 |12 |12 |12 |3 |
-| Maximum aantal Zoek eenheden (Replica's * partities) per service |3 |36 |36 |36 |36 (Maxi maal 3 partities) |
-| Maximale opslag per service |2 GB |300 GB |1,2 TB |2,4 TB |600 GB |
-| Maximale opslag per partitie |2 GB |25 GB |100 GB |200 GB |200 GB |
-| Maximum aantal indexen per service |5 |50 |200 |200 |3000 (max. 1000 indexen/partitie) |
+| **Maximum aantal Replica's per service** |3 |12 |12 |12 |12 |
+| **Maximum aantal partities per service** |1 |12 |12 |12 |3 |
+| **Maximum aantal Zoek eenheden (Replica's * partities) per service** |3 |36 |36 |36 |36 (Maxi maal 3 partities) |
+| **Maximale opslag per service** |2 GB |300 GB |1,2 TB |2,4 TB |600 GB |
+| **Maximale opslag per partitie** |2 GB |25 GB |100 GB |200 GB |200 GB |
+| **Maximum aantal indexen per service** |5 |50 |200 |200 |3000 (max. 1000 indexen/partitie) |
 
 #### <a name="s3-high-density"></a>S3-hoge dichtheid
 In de prijs categorie S3 van Azure Cognitive Search is er een optie voor de high-density modus (HD) die specifiek is ontworpen voor multi tenant scenario's. In veel gevallen is het nood zakelijk om een groot aantal kleinere tenants te ondersteunen onder één service om de voor delen van eenvoud en kosten efficiëntie te verhalen.

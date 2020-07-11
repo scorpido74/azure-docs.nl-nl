@@ -7,12 +7,12 @@ ms.service: key-vault
 ms.topic: conceptual
 ms.date: 06/30/2019
 ms.author: mbaldwin
-ms.openlocfilehash: 4959d530e1f7a3c777aa3db21fe577c853fbca13
-ms.sourcegitcommit: 9b5c20fb5e904684dc6dd9059d62429b52cb39bc
+ms.openlocfilehash: 58c5fdcfef5e866d0c69d65412582c0ed649f7c6
+ms.sourcegitcommit: f7e160c820c1e2eb57dc480b2a8fd6bef7053e91
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85855998"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86230822"
 ---
 # <a name="key-vault-versions"></a>Versies van Key Vault
 
@@ -55,7 +55,7 @@ Nieuwe functies die dit jaar zijn uitgebracht:
 ## <a name="2015"></a>2015
 
 Nieuwe functies die dit jaar zijn uitgebracht:
-- Certificaat beheer. Toegevoegd als een functie aan de GA-versie 2015-06-01 op 26 september 2016.
+- Certificaatbeheer. Toegevoegd als een functie aan de GA-versie 2015-06-01 op 26 september 2016.
 
 Algemene Beschik baarheid (versie 2015-06-01) werd aangekondigd op 24 juni 2015. In deze release zijn de volgende wijzigingen aangebracht: 
 - Een sleutel verwijderen-veld gebruiken is verwijderd.
@@ -64,7 +64,7 @@ Algemene Beschik baarheid (versie 2015-06-01) werd aangekondigd op 24 juni 2015.
 - Een sleutel herstellen-veld gebruiken is verwijderd.     
 - RSA_OAEP gewijzigd in ' RSA-OAEP ' voor RSA-algoritmen. Zie [over sleutels, geheimen en certificaten](about-keys-secrets-certificates.md).    
  
-De tweede preview-versie (versie 2015-02-01-preview) is aangekondigd 20 april 2015. Zie REST API blog bericht [bijwerken](https://blogs.technet.com/b/kv/archive/2015/04/20/empty-3.aspx) voor meer informatie. De volgende taken zijn bijgewerkt:
+De tweede preview-versie (versie 2015-02-01-preview) is aangekondigd 20 april 2015. Zie REST API blog bericht [bijwerken](https://docs.microsoft.com/archive/blogs/kv/rest-api-update) voor meer informatie. De volgende taken zijn bijgewerkt:
  
 - Vermeld de sleutels in een kluis toegevoegde paginerings ondersteuning voor de bewerking.
 - Geef een lijst weer met de versies van een sleutel-toegevoegde bewerking om de versies van een sleutel weer te geven.  

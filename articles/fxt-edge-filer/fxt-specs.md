@@ -6,12 +6,12 @@ ms.service: fxt-edge-filer
 ms.topic: conceptual
 ms.date: 06/20/2019
 ms.author: rohogue
-ms.openlocfilehash: c06b0c79e01257eebf566b9752269cb88c072d8a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 57e312df31682ea868443423f40d54369cab6699
+ms.sourcegitcommit: f7e160c820c1e2eb57dc480b2a8fd6bef7053e91
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85846723"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86231296"
 ---
 # <a name="azure-fxt-edge-filer-specifications"></a>Specificaties van Azure FXT Edge-bestanden
 
@@ -34,9 +34,9 @@ Stations worden afgedrukt op de ruimte tussen stations. In de Azure FXT Edge-Bes
 
 ![Foto van een Bay van een harde schijf in het FXT-chassis, met stations en capaciteits labels](media/fxt-drives-photo.png)
 
-| Stationsnummer    |  Gebruiken   |  Specificaties |
+| Stationsnummer    |  Gebruik   |  Specificaties |
 |------------------|--------|-----------------|
-| 0, 1             | OS     | 480 GB SATA SSD |
+| 0, 1             | Besturingssysteem     | 480 GB SATA SSD |
 | 2, 3, 4, 5, 6, 7, 8, 9 | Gegevens   | FXT 6600:3,2 TB NVMe SSD <br> FXT 6400:1,6 TB NVMe SSD |
 
 
@@ -46,9 +46,9 @@ De Azure FXT Edge-Bestandsr is ontworpen voor gebruik in een Standard 19-apparaa
 
 <!-- 10x2.5 inches version -->
 
-| Afmetingen van de bestandsr           |                          |
+| Afmetingen van de bestandsr            | Waarde                    |
 |-----------------------------|--------------------------|
-| Height                      | 42,8 mm (1,68 inch)    |
+| Hoogte                      | 42,8 mm (1,68 inch)    |
 | Breedte (inclusief rack oren) | 482,0 mm (18,97 inch)  |
 | Breedte: hoofd behuizing      | 434,0 mm (17,08 inch) |
 | Diepte: Rack-oren tot de primaire behuizing                   | 733,82 mm (29,61 inch) |
@@ -56,7 +56,7 @@ De Azure FXT Edge-Bestandsr is ontworpen voor gebruik in een Standard 19-apparaa
 | Diepte: Rack oren tot de meest verprotrusione front-staat, zonder omlijsting | 22,0 mm (0,87 inch)  |
 | Diepte: Rack oren tot de meest verprotrusione front-staat, met omlijsting    | 35,84 mm (1,41 inch) |
 
-| Gewicht | |
+| Gewicht | Waarde |
 |-----------------|----------------------|
 | Gewicht van knoop punt (zonder verpakking, zonder accessoires) | 40 lbs (18,1 kg) |
 | Nettogewicht (zonder verpakking, inclusief accessoires) | 51 lbs (23,1 kg)|
@@ -66,7 +66,7 @@ De Azure FXT Edge-Bestandsr is ontworpen voor gebruik in een Standard 19-apparaa
 
 | Pakket dimensie | Millimeters | Mm |
 |-------------------|-------------|--------|
-| Height            | 311,2       | 12,25 ' |
+| Hoogte            | 311,2       | 12,25 ' |
 | Breedte             | 642,8       | 25,31 ' |
 | Lengte            | 1.051,1     | 41,38 ' |
 

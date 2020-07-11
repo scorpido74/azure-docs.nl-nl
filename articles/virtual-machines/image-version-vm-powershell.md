@@ -9,11 +9,12 @@ ms.workload: infrastructure
 ms.date: 05/04/2020
 ms.author: cynthn
 ms.reviewer: akjosh
-ms.openlocfilehash: 454ed810f950924d3dd790a2442fe29816bf940d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: caa8e928a10deb3d6d97e601c607074c09e0572e
+ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82838464"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86223513"
 ---
 # <a name="preview-create-an-image-from-a-vm"></a>Voor beeld: een installatie kopie maken op basis van een virtuele machine
 
@@ -138,3 +139,5 @@ $job.State
 ## <a name="next-steps"></a>Volgende stappen
 
 Wanneer u hebt gecontroleerd of de nieuwe versie van de installatie kopie correct werkt, kunt u een virtuele machine maken. Maak een virtuele machine op basis van een [gespecialiseerde installatie kopie versie](vm-specialized-image-version-powershell.md) of een [gegeneraliseerde installatie kopie versie](vm-generalized-image-version-powershell.md).
+
+Zie voor meer informatie over het verstrekken van informatie over het aankoop plan [Azure Marketplace-informatie over het aankoop plan bij het maken van installatie kopieën](marketplace-images.md).

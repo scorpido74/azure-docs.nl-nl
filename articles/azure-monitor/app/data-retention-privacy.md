@@ -3,12 +3,12 @@ title: Bewaren van gegevens en opslag in Azure-toepassing inzichten | Microsoft 
 description: Retentie en privacybeleid
 ms.topic: conceptual
 ms.date: 06/30/2020
-ms.openlocfilehash: 848285accd7e05607bac418b6b4ae39055a5772f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: acee1ad0b531f23a872d78111ccd9f0ac09bcfb1
+ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85601357"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86224482"
 ---
 # <a name="data-collection-retention-and-storage-in-application-insights"></a>Gegevens verzameling, retentie en opslag in Application Insights
 
@@ -62,7 +62,7 @@ De belangrijkste categorieën zijn:
 ## <a name="how-can-i-verify-whats-being-collected"></a>Hoe kan ik controleren wat er wordt verzameld?
 Als u de App ontwikkelt met behulp van Visual Studio, voert u de app uit in de foutopsporingsmodus (F5). De telemetrie wordt weer gegeven in het uitvoer venster. Daar kunt u het kopiëren en opmaken als JSON voor eenvoudige inspectie. 
 
-![](./media/data-retention-privacy/06-vs.png)
+![Scherm afbeelding waarin de app wordt uitgevoerd in de foutopsporingsmodus in Visual Studio.](./media/data-retention-privacy/06-vs.png)
 
 Er is ook een meer Lees bare weer gave in het venster Diagnostiek.
 

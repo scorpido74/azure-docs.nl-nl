@@ -3,11 +3,12 @@ title: Problemen met ontbrekende gegevens oplossen - Application Insights voor .
 description: Ziet u geen gegevens in Azure-toepassing Insights? Probeer het hier.
 ms.topic: conceptual
 ms.date: 05/21/2020
-ms.openlocfilehash: 59543adaf01a8e19f0e3eefd167234f6c5d18deb
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 3f1c4a741bf092ab89638fdca130a52d96318157
+ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84485157"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86221031"
 ---
 # <a name="troubleshooting-no-data---application-insights-for-netnet-core"></a>Problemen met geen gegevens Application Insights voor .NET/.NET core oplossen
 
@@ -123,7 +124,7 @@ Holpen
 *Ik heb mijn app uitgevoerd en ik heb de Application Insights-service in Microsoft Azure geopend, maar in alle grafieken wordt uitgelegd hoe ik het verzamelen... of is niet geconfigureerd.* Of, *alleen pagina weergave en gebruikers gegevens, maar geen server gegevens.*
 
 * Voer uw toepassing uit in de foutopsporingsmodus in Visual Studio (F5). Gebruik de toepassing om een telemetrie te genereren. Controleer of de gebeurtenissen in het venster Visual Studio uitvoer worden weer gegeven.  
-  ![](./media/asp-net-troubleshoot-no-data/output-window.png)
+  ![Scherm opname van de uitvoering van uw toepassing in de foutopsporingsmodus in Visual Studio.](./media/asp-net-troubleshoot-no-data/output-window.png)
 * Open in de Application Insights-Portal [Diagnostische gegevens zoeken](../../azure-monitor/app/diagnostic-search.md). Gegevens worden doorgaans als eerste weer gegeven.
 * Klik op de knop Vernieuwen. De Blade wordt regel matig vernieuwd, maar u kunt dit ook hand matig doen. Het Vernieuwings interval is langer voor grotere Peri Oden.
 * Controleer of de instrumentatie sleutels overeenkomen. Bekijk op de hoofd Blade voor uw app in de Application Insights-Portal in de vervolg keuzelijst **Essentials** de **instrumentatie sleutel**. Open vervolgens in het project in Visual Studio ApplicationInsights.config en zoek de `<instrumentationkey>` . Controleer of de twee sleutels gelijk zijn. Zo niet:  

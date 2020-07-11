@@ -5,17 +5,17 @@ services: virtual-machines
 author: axayjo
 ms.service: virtual-machines
 ms.topic: include
-ms.date: 04/25/2019
+ms.date: 06/15/2020
 ms.author: akjosh; cynthn
 ms.custom: include file
-ms.openlocfilehash: 40ba5a935e78cd75c4fcd7729e44f1cdf6c2859b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 7aad1eb10018445150fb5cf3ac01b97480da674b
+ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "75772917"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86226397"
 ---
-Als u problemen ondervindt tijdens het uitvoeren van bewerkingen op galerieën met gedeelde installatiekopieën, definities van installatiekopieën en versies van installatiekopieën, voert u de mislukte opdracht opnieuw uit in de foutopsporingsmodus. De foutopsporingsmodus wordt geactiveerd door de switch **debug** te geven met CLI en de switch **debug** met Power shell. Wanneer u de fout hebt gevonden, volgt u dit document om de fouten op te lossen.
+Als u problemen ondervindt tijdens het uitvoeren van bewerkingen op galerieën met gedeelde installatiekopieën, definities van installatiekopieën en versies van installatiekopieën, voert u de mislukte opdracht opnieuw uit in de foutopsporingsmodus. De foutopsporingsmodus wordt geactiveerd door de `--debug` Switch door te geven met CLI en de `-Debug` Switch met Power shell. Wanneer u de fout hebt gevonden, volgt u dit document om de fouten op te lossen.
 
 
 ## <a name="unable-to-create-a-shared-image-gallery"></a>Kan geen galerie met gedeelde installatiekopieën maken
@@ -43,7 +43,7 @@ Toegestane tekens voor de definitie van de installatie kopie zijn hoofd letters,
 
 De eigenschappen, zoals naam, uitgever, aanbieding, SKU en type besturings systeem, zijn verplicht. Controleer of alle eigenschappen worden door gegeven.
 
-Zorg ervoor dat de **OSTYPE**, Linux of Windows, van de definitie van de installatie kopie hetzelfde is als de door de bron beheerde installatie kopie die u gebruikt om de installatie kopie versie te maken. 
+Zorg ervoor dat de **OSTYPE**, Linux of Windows, van de definitie van de installatie kopie hetzelfde is als de bron die u gebruikt om de installatie kopie versie te maken. 
 
 
 ## <a name="unable-to-create-an-image-version"></a>Kan geen versie voor de installatiekopie maken 
@@ -84,7 +84,7 @@ Controleer of de regio waarvoor u een VM of virtuele machine wilt maken, is opge
 
 *Het maken van de virtuele machine of de VM-schaalset neemt veel tijd in beslag.*
 
-Controleer of de **OSTYPE** van de versie van de installatie kopie die u probeert te maken van de virtuele machine en de VM-schaalset hetzelfde **OSTYPE** heeft van de door de bron beheerde installatie kopie die u hebt gebruikt voor het maken van de installatie kopie versie. 
+Controleer of de **OSTYPE** van de versie van de installatie kopie die u probeert te maken van de virtuele machine en de VM-schaalset hetzelfde **OSTYPE** heeft van de bron die u hebt gebruikt voor het maken van de installatie kopie versie. 
 
 ## <a name="unable-to-share-resources"></a>Kan geen resources delen
 

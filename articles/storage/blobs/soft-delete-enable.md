@@ -9,11 +9,12 @@ ms.topic: how-to
 ms.date: 05/15/2020
 ms.author: tamram
 ms.subservice: blobs
-ms.openlocfilehash: 970a6dfc167a6bef7984598c60e7ce89c6e4b34c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 2914dfed14360c114476025c74f3dc0c03d82e25
+ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84463719"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86224890"
 ---
 # <a name="enable-and-manage-soft-delete-for-blobs"></a>Zacht verwijderen voor blobs inschakelen en beheren
 
@@ -39,31 +40,31 @@ Schakel de optie voor het voorlopig verwijderen van blobs in uw opslag account i
 
 5. Klik op de knop **Opslaan** om uw instellingen voor gegevens beveiliging te bevestigen
 
-![](media/soft-delete-enable/storage-blob-soft-delete-portal-configuration.png)
+![Scherm opname van Azure Portal met de gegevens bescherming BLOB-service gekozen.](media/soft-delete-enable/storage-blob-soft-delete-portal-configuration.png)
 
 Als u de voorlopig verwijderde blobs wilt weer geven, schakelt u het selectie vakje **Verwijderde blobs weer geven** in.
 
-![](media/soft-delete-enable/storage-blob-soft-delete-portal-view-soft-deleted.png)
+![Scherm afbeelding van de pagina gegevens bescherming BLOB-service met de optie verwijderde blobs weer geven gemarkeerd.](media/soft-delete-enable/storage-blob-soft-delete-portal-view-soft-deleted.png)
 
 Als u tijdelijke verwijderde moment opnamen voor een bepaalde BLOB wilt weer geven, selecteert u de BLOB en klikt u vervolgens op **moment opnamen weer geven**.
 
-![](media/soft-delete-enable/storage-blob-soft-delete-portal-view-soft-deleted-snapshots.png)
+![Scherm afbeelding van de pagina gegevens bescherming BLOB-service met de optie moment opnamen weer geven gemarkeerd.](media/soft-delete-enable/storage-blob-soft-delete-portal-view-soft-deleted-snapshots.png)
 
 Zorg ervoor dat het selectie vakje **Verwijderde moment opnamen weer geven** is geselecteerd.
 
-![](media/soft-delete-enable/storage-blob-soft-delete-portal-view-soft-deleted-snapshots-check.png)
+![Scherm afbeelding van de pagina moment opnamen weer geven met de optie verwijderde blobs weer geven gemarkeerd.](media/soft-delete-enable/storage-blob-soft-delete-portal-view-soft-deleted-snapshots-check.png)
 
 Wanneer u op een zachte verwijderde BLOB of moment opname klikt, ziet u de nieuwe BLOB-eigenschappen. Ze geven aan wanneer het object is verwijderd en hoeveel dagen resteren totdat de moment opname van de BLOB of BLOB permanent is verlopen. Als het voorlopig verwijderde object geen moment opname is, hebt u ook de mogelijkheid om de verwijdering ervan ongedaan te maken.
 
-![](media/soft-delete-enable/storage-blob-soft-delete-portal-properties.png)
+![Scherm afbeelding van de details van een voorlopig verwijderd object.](media/soft-delete-enable/storage-blob-soft-delete-portal-properties.png)
 
 Houd er rekening mee dat het verwijderen van een BLOB ook de verwijdering van alle gekoppelde moment opnamen ongedaan maakt. Als u het verwijderen van tijdelijke verwijderde moment opnamen voor een actieve BLOB ongedaan wilt maken, klikt u op de BLOB en selecteert u **verwijderen van alle moment opnamen ongedaan**maken.
 
-![](media/soft-delete-enable/storage-blob-soft-delete-portal-undelete-all-snapshots.png)
+![Scherm afbeelding van de details van een voorlopig verwijderde blob.](media/soft-delete-enable/storage-blob-soft-delete-portal-undelete-all-snapshots.png)
 
 Wanneer u de moment opnamen van een BLOB hebt verwijderd, kunt u op **niveau verhogen** klikken om een moment opname te kopiëren over de hoofd-blob, waardoor de BLOB wordt teruggezet naar de moment opname.
 
-![](media/soft-delete-enable/storage-blob-soft-delete-portal-promote-snapshot.png)
+![Scherm afbeelding van de pagina moment opnamen weer geven met de optie niveau verhogen gemarkeerd.](media/soft-delete-enable/storage-blob-soft-delete-portal-promote-snapshot.png)
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 

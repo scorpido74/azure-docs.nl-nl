@@ -3,12 +3,12 @@ title: Exporteren met behulp van Stream Analytics vanuit Azure-toepassing inzich
 description: Stream Analytics kunt de gegevens die u exporteert, continu transformeren, filteren en routeren vanuit Application Insights.
 ms.topic: conceptual
 ms.date: 01/08/2019
-ms.openlocfilehash: 400c727b44d3794dc9a17c59959dc5c75cea71fe
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: 71b19f0b49dec8f7176a53eeb656519c65f9c1d0
+ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86110484"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86224516"
 ---
 # <a name="use-stream-analytics-to-process-exported-data-from-application-insights"></a>Gebruik Stream Analytics voor het verwerken van geëxporteerde gegevens van Application Insights
 [Azure stream Analytics](https://azure.microsoft.com/services/stream-analytics/) is het ideale hulp programma voor het verwerken van gegevens die zijn [geëxporteerd vanuit Application Insights](export-telemetry.md). Stream Analytics kunnen gegevens uit verschillende bronnen ophalen. De gegevens kunnen worden getransformeerd en gefilterd en vervolgens worden doorgestuurd naar verschillende Sinks.
@@ -60,7 +60,7 @@ Met [doorlopend exporteren](export-telemetry.md) worden gegevens verplaatst van 
     Daarnaast worden de gegevens naar uw opslag geëxporteerd. 
 2. Inspecteer de geëxporteerde gegevens. In Visual Studio kiest u **weer gave/Cloud Verkenner**en opent u Azure/Storage. (Als u deze menu optie niet hebt, moet u de Azure SDK installeren: Open het dialoog venster New project en open Visual C#/Cloud/Get Microsoft Azure SDK voor .NET.)
    
-    ![](./media/export-stream-analytics/04-data.png)
+    ![Scherm afbeelding die laat zien hoe u de gebeurtenis typen instelt die u wilt zien.](./media/export-stream-analytics/04-data.png)
    
     Noteer het algemene deel van de padnaam, die is afgeleid van de toepassings naam en instrumentatie sleutel. 
 
@@ -69,21 +69,21 @@ De gebeurtenissen worden geschreven naar BLOB-bestanden in JSON-indeling. Elk be
 ## <a name="create-an-azure-stream-analytics-instance"></a>Een Azure Stream Analytics-exemplaar maken
 Selecteer in de [Azure Portal](https://portal.azure.com/)de Azure stream Analytics-service en maak een nieuwe stream Analytics taak:
 
-![](./media/export-stream-analytics/SA001.png)
+![Scherm opname van de hoofd pagina voor het maken van Stream Analytics taak in de Azure Portal.](./media/export-stream-analytics/SA001.png)
 
-![](./media/export-stream-analytics/SA002.png)
+![Scherm opname van de gegevens die nodig zijn bij het maken van een nieuwe Stream Analytics-taak.](./media/export-stream-analytics/SA002.png)
 
 Wanneer de nieuwe taak is gemaakt, selecteert **u naar resource**.
 
-![](./media/export-stream-analytics/SA003.png)
+![Scherm afbeelding met het bericht dat wordt ontvangen wanneer de implementatie van de nieuwe Stream Analytics-taak is voltooid.](./media/export-stream-analytics/SA003.png)
 
 ### <a name="add-a-new-input"></a>Een nieuwe invoer toevoegen
 
-![](./media/export-stream-analytics/SA004.png)
+![Scherm afbeelding die laat zien hoe u invoer kunt toevoegen aan de Stream Analytics taak.](./media/export-stream-analytics/SA004.png)
 
 Stel deze waarde in om in te voeren op basis van de doorlopende export-blob:
 
-![](./media/export-stream-analytics/SA0005.png)
+![Scherm opname van de configuratie van de Stream Analytics taak om invoer uit te voeren vanuit een doorlopende export-blob.](./media/export-stream-analytics/SA0005.png)
 
 Nu hebt u de primaire toegangs sleutel van uw opslag account nodig die u eerder hebt genoteerd. Stel dit in als de sleutel voor het opslag account.
 
@@ -109,7 +109,7 @@ In dit voorbeeld geldt het volgende:
 ## <a name="add-new-output"></a>Nieuwe uitvoer toevoegen
 Selecteer nu uw taak > **uitvoer**  >  **toevoegen**.
 
-![](./media/export-stream-analytics/SA006.png)
+![Scherm opname van het selecteren van de Stream Analytics taak voor het toevoegen van een nieuwe uitvoer.](./media/export-stream-analytics/SA006.png)
 
 
 ![Selecteer het nieuwe kanaal, klik op uitvoer, toevoegen, Power BI](./media/export-stream-analytics/SA010.png)

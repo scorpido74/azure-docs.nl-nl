@@ -15,11 +15,12 @@ ms.topic: article
 ms.date: 03/20/2019
 ms.author: juliako
 ms.reviewer: milanga
-ms.openlocfilehash: a79e718c04f81b1552d63ab98b6dcd6bb428fb50
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 1b85cffe497ad0b374edb18a1089412da839cdf8
+ms.sourcegitcommit: f7e160c820c1e2eb57dc480b2a8fd6bef7053e91
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77918311"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86231842"
 ---
 # <a name="use-azure-media-video-thumbnails-to-create-a-video-summarization"></a>Azure Media Video Thumbnails gebruiken om een video samenvatting te maken  
 
@@ -58,7 +59,7 @@ Wanneer u een miniatuur van een video met **Azure Media video thumbnails**maakt,
 
 Op dit moment kunt u de volgende para meters wijzigen:
 
-| Param | Description |
+| Param | Beschrijving |
 | --- | --- |
 | outputAudio |Hiermee wordt aangegeven of de resulterende video audio bevat. <br/>Toegestane waarden zijn: True of false. De standaard waarde is True. |
 | fadeInFadeOut |Hiermee wordt aangegeven of vervag overgangen tussen de afzonderlijke animatie miniaturen worden gebruikt.  <br/>Toegestane waarden zijn: True of false.  De standaard waarde is True. |
@@ -66,10 +67,10 @@ Op dit moment kunt u de volgende para meters wijzigen:
 
 In de volgende tabel wordt de standaard duur beschreven, wanneer **maxMotionThumbnailInSecs** niet wordt gebruikt.
 
-|  |  |  |
+|  | Small | Neemt |
 | --- | --- | --- |
-| Video duur |d < 3 min. |3 min < d < 15 minuten |
-| Miniatuur duur |15 seconden (2-3 scènes) |30 seconden (3-5 scènes) |
+| **Video duur** |d < 3 min. |3 min < d < 15 minuten |
+| **Miniatuur duur** |15 seconden (2-3 scènes) |30 seconden (3-5 scènes) |
 
 De volgende JSON-sets beschik bare para meters.
 

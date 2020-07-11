@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 06/30/2020
-ms.openlocfilehash: 75ecfcca24aa801c2ec277e810f60dbc0a9167fc
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 78a8e0a46fd60f14ea3bae7485c737aa4fe3c60e
+ms.sourcegitcommit: f7e160c820c1e2eb57dc480b2a8fd6bef7053e91
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85565271"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86230771"
 ---
 # <a name="knowledge-store-in-azure-cognitive-search"></a>Knowledge Store in azure Cognitive Search
 
@@ -102,7 +102,7 @@ De [vaardig heden](cognitive-search-working-with-skillsets.md) zijn vereist. Het
 
 Als u een kennis winkel wilt maken, gebruikt u de portal of de REST API ( `api-version=2020-06-30` ).
 
-### <a name="use-the-azure-portal"></a>Azure Portal gebruiken
+### <a name="use-the-azure-portal"></a>De Azure-portal gebruiken
 
 De wizard **gegevens importeren** bevat opties voor het maken van een kennis archief. Voor de eerste verkenning [maakt u uw eerste kennis archief in vier stappen](knowledge-store-connect-power-bi.md).
 
@@ -138,8 +138,8 @@ Zodra de verrijkingen in de opslag ruimte bestaan, kunnen alle hulp middelen of 
 
 REST API versie `2020-06-30` biedt kennis opslag via aanvullende definities op vaardig heden. Naast de referentie raadpleegt u [een kennis archief maken met behulp van Postman](knowledge-store-create-rest.md) voor meer informatie over het aanroepen van de api's.
 
-+ [Vaardig heden maken (API-Version = 2020-06-30)](https://docs.microsoft.com/rest/api/searchservice/2020-06-30/create-skillset)
-+ [Vaardig heden bijwerken (API-Version = 2020-06-30)](https://docs.microsoft.com/rest/api/searchservice/2020-06-30/update-skillset)
++ [Vaardig heden maken (API-Version = 2020-06-30)](https://docs.microsoft.com/rest/api/searchservice/create-skillset)
++ [Vaardig heden bijwerken (API-Version = 2020-06-30)](https://docs.microsoft.com/rest/api/searchservice/update-skillset)
 
 
 ## <a name="next-steps"></a>Volgende stappen

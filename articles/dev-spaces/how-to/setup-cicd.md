@@ -8,11 +8,12 @@ ms.topic: conceptual
 manager: gwallace
 description: Meer informatie over het instellen van continue integratie/continue implementatie met Azure DevOps met Azure dev Spaces
 keywords: Docker, Kubernetes, azure, AKS, Azure Container Service, containers
-ms.openlocfilehash: f2eb9449518b32ab74f2dbbca6b5489aed325db7
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 3a5f232111bd01f707080cc1638970f8dc51e6fa
+ms.sourcegitcommit: f7e160c820c1e2eb57dc480b2a8fd6bef7053e91
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81685633"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86229326"
 ---
 # <a name="use-cicd-with-azure-dev-spaces"></a>CI/CD gebruiken met Azure Dev Spaces
 
@@ -25,7 +26,7 @@ Hoewel dit artikel u begeleidt bij Azure DevOps, zijn dezelfde concepten ook van
 ## <a name="prerequisites"></a>Vereisten
 * [Azure Kubernetes service (AKS)-cluster met Azure dev Spaces ingeschakeld](../get-started-netcore.md)
 * [Azure dev Spaces CLI geïnstalleerd](upgrade-tools.md)
-* [Azure DevOps-organisatie met een project](https://docs.microsoft.com/azure/devops/user-guide/sign-up-invite-teammates?view=vsts)
+* [Azure DevOps-organisatie met een project](/azure/devops/user-guide/sign-up-invite-teammates?view=vsts)
 * [Azure Container Registry (ACR)](../../container-registry/container-registry-get-started-azure-cli.md)
     * Details van Azure Container Registry- [beheerders account](../../container-registry/container-registry-authentication.md#admin-account) beschikbaar
 * [Uw AKS-cluster autoriseren om te halen uit uw Azure Container Registry](../../aks/cluster-container-registry-integration.md)
@@ -67,7 +68,7 @@ De optie om uit te scha kelen:
 > [!Note]
 > De preview-functie voor het maken van Azure DevOps _nieuwe YAML-pijp lijn_ veroorzaakt een conflict met het maken van vooraf gedefinieerde build-pijp lijnen. U moet dit nu uitschakelen om onze vooraf gedefinieerde build-pijp lijn te kunnen implementeren.
 
-In de _azds_updates_ Branch hebben we een eenvoudige [Azure pipeline-yaml](https://docs.microsoft.com/azure/devops/pipelines/yaml-schema?view=vsts&tabs=schema) opgenomen waarmee de build-stappen worden gedefinieerd die vereist zijn voor *mywebapi* en *webfrontend*.
+In de _azds_updates_ Branch hebben we een eenvoudige [Azure pipeline-yaml](/azure/devops/pipelines/yaml-schema?view=vsts&tabs=schema) opgenomen waarmee de build-stappen worden gedefinieerd die vereist zijn voor *mywebapi* en *webfrontend*.
 
 Afhankelijk van de taal die u hebt gekozen, is de pijplijn YAML ingecheckt in een pad dat lijkt op het volgende:`samples/dotnetcore/getting-started/azure-pipelines.dotnetcore.yml`
 
@@ -98,7 +99,7 @@ U hebt nu een CI-oplossing die automatisch *mywebapi* en Webfront- *End* bouwt v
 1. Voor de **standaard versie**kiest u **meest recent in de standaard vertakking build pijplijn met Tags**.
 1. Laat **labels** leeg.
 1. Stel de **bron alias** in op `drop` . De waarde van de **bron alias** wordt gebruikt door de vooraf gedefinieerde release taken zodat deze moet worden ingesteld.
-1. Klik op **Add**.
+1. Klik op **Toevoegen**.
 1. Klik nu op het pictogram bliksem flits op de zojuist gemaakte `drop` artefact bron, zoals hieronder wordt weer gegeven:
 
     ![Setup van continue implementatie van release artefact](../media/common/release-artifact-cd-setup.png)
@@ -118,7 +119,7 @@ U hebt nu een CI-oplossing die automatisch *mywebapi* en Webfront- *End* bouwt v
 1. Klik op **Opslaan** in de rechter bovenhoek en **OK**.
 1. Klik op **+ release** (naast de knop Opslaan) en **Maak een release**.
 1. Controleer onder **artefacten**de meest recente build van uw build-pijp lijn is geselecteerd.
-1. Klik op **Create**.
+1. Klik op **Maken**.
 
 Er wordt nu een geautomatiseerd release proces gestart, waarbij de *mywebapi* -en Webfront- *End* grafieken worden geïmplementeerd in uw Kubernetes-cluster in de _ontwikkel_ ruimte op het hoogste niveau. U kunt de voortgang van uw release bewaken in de Azure DevOps-webportal:
 

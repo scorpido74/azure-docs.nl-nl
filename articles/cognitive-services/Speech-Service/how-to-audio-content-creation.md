@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 01/31/2020
 ms.author: trbye
-ms.openlocfilehash: 083580435c467a7d4b6a4cede0a821a2c271962f
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.openlocfilehash: 72fecbdc173a6174e54a28e48f983965f397ba6a
+ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83589649"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86224584"
 ---
 # <a name="improve-synthesis-with-the-audio-content-creation-tool"></a>De synthese verbeteren met het hulp programma voor het maken van een audio-inhoud
 
@@ -23,11 +23,13 @@ Het [maken van audio-inhoud](https://aka.ms/audiocontentcreation) is een online 
 
 Het hulp programma voor het maken van de audio-inhoud is gebaseerd op [SSML (Speech synthese Markup Language)](speech-synthesis-markup.md). Om het aanpassen en afstemmen te vereenvoudigen, kunt u met het maken van audio-inhoud uw tekst-naar-spraak-uitvoer in realtime visueel controleren.
 
-## <a name="how-does-it-work"></a>Hoe werkt het?
+Zie de [video zelf studie](https://www.youtube.com/watch?v=O1wIJ7mts_w) voor het maken van audio-inhoud.
+
+## <a name="how-does-it-work"></a>Hoe werkt dit?
 
 Dit diagram toont de stappen die nodig zijn om tekst-naar-spraak-uitvoer te verfijnen. Gebruik de onderstaande koppelingen voor meer informatie over elke stap.
 
-![](media/audio-content-creation/audio-content-creation-diagram.jpg)
+![Een diagram van de stappen die nodig zijn om tekst-naar-spraak-uitvoer te verfijnen.](media/audio-content-creation/audio-content-creation-diagram.jpg)
 
 1. [Stel uw Azure-account en spraak bron](#set-up-your-azure-account-and-speech-resource) in om aan de slag te gaan.
 2. [Maak een audio-afstemmings bestand](#create-an-audio-tuning-file) met behulp van onbewerkte tekst of SSML-scripts.
@@ -64,7 +66,7 @@ Er zijn twee manieren om uw inhoud te verkrijgen in het hulp programma voor het 
 
    | Eigenschap | Waarde/opmerkingen |
    |----------|---------------|
-   | Bestands indeling | Tekst zonder opmaak (. txt)<br/> SSML tekst (. txt)<br/> Zip-bestanden worden niet ondersteund |
+   | Bestandsindeling | Tekst zonder opmaak (. txt)<br/> SSML tekst (. txt)<br/> Zip-bestanden worden niet ondersteund |
    | Coderings indeling | UTF-8 |
    | Bestandsnaam | Elk bestand moet een unieke naam hebben. Dubbele waarden worden niet ondersteund. |
    | Tekst lengte | Tekst bestanden mogen niet langer zijn dan 20.000 tekens. |
@@ -94,7 +96,7 @@ Nadat u de audio-uitvoer hebt gecontroleerd en tevreden bent met uw afstemming e
 2. Kies de uitvoer indeling voor uw afgestemde audio. Hieronder vindt u een lijst met ondersteunde indelingen en voorbeeld tarieven.
 3. U kunt de status van de taak weer geven op het tabblad **taak exporteren** . Als de taak mislukt, raadpleegt u de pagina gedetailleerde informatie voor een volledig rapport.
 4. Wanneer de taak is voltooid, kunt u de audio downloaden van het tabblad **audio bibliotheek** .
-5. Klik op **downloaden**. U bent nu klaar om uw aangepaste afgestemde audio in uw apps of producten te gebruiken.
+5. Klik op **Downloaden**. U bent nu klaar om uw aangepaste afgestemde audio in uw apps of producten te gebruiken.
 
 ### <a name="supported-audio-formats"></a>Ondersteunde audio-indelingen
 

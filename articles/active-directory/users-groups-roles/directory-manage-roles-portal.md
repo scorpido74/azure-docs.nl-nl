@@ -8,16 +8,17 @@ ms.service: active-directory
 ms.workload: identity
 ms.subservice: users-groups-roles
 ms.topic: how-to
-ms.date: 11/08/2019
+ms.date: 06/15/2020
 ms.author: curtand
 ms.reviewer: vincesm
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d9bfc7f194730545469e7d17d46c47f7293f016e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 5e067e8d56f8a928f952648fc76cd5d6b7a1afe7
+ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84728891"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86221255"
 ---
 # <a name="view-and-assign-administrator-roles-in-azure-active-directory"></a>Beheerders rollen in Azure Active Directory weer geven en toewijzen
 
@@ -25,29 +26,50 @@ U kunt nu alle leden van de beheerders rollen weer geven en beheren in de Azure 
 
 ## <a name="view-all-roles"></a>Alle rollen weer geven
 
-Zoek naar **Azure Active Directory** en selecteer deze optie. Selecteer **rollen en beheerders** om de lijst met alle beschik bare rollen weer te geven.
+1. Meld u aan bij de [Azure Portal](https://portal.azure.com) en selecteer **Azure Active Directory**.
 
-Klik op het weglatings teken rechts van elke rij om de gedetailleerde beschrijving van de functie te openen.
+1. Selecteer **rollen en beheerders** om de lijst met alle beschik bare rollen weer te geven.
 
-![lijst met rollen in de Azure AD-Portal](./media/directory-manage-roles-portal/view-roles-in-azure-active-directory.png)
+1. Selecteer het beletsel teken rechts van elke rij om de machtigingen voor de rol weer te geven. Selecteer een rol om de gebruikers weer te geven die aan de rol zijn toegewezen. Als u iets anders ziet in de volgende afbeelding, leest u de opmerking in [toewijzingen weer geven voor geprivilegieerde rollen](#view-assignments-for-privileged-roles) om te controleren of u in PRIVILEGED Identity Management (PIM) bent.
+
+    ![lijst met rollen in de Azure AD-Portal](./media/directory-manage-roles-portal/view-roles-in-azure-active-directory.png)
 
 ## <a name="view-my-roles"></a>Mijn rollen weer geven
 
 U kunt ook eenvoudig uw eigen machtigingen weer geven. Selecteer **uw rol** op de pagina **rollen en beheerders** om de rollen weer te geven die momenteel aan u zijn toegewezen.
 
-## <a name="view-assignments-for-a-role"></a>Toewijzingen voor een rol weer geven
+## <a name="view-assignments-for-privileged-roles"></a>Toewijzingen voor geprivilegieerde rollen weer geven
 
-Klik op een rol om de gebruikers weer te geven die aan de rol zijn toegewezen. U kunt **beheren in PIM** selecteren voor extra beheer mogelijkheden. Beheerders van geprivilegieerde rollen kunnen de toewijzingen ' permanent ' (altijd actief in de rol) wijzigen in in aanmerking komende (in de rol alleen bij verhoogde bevoegdheid). Als u geen PIM hebt, kunt u nog steeds **beheren in PIM** selecteren om u aan te melden voor een proef versie. Voor Privileged Identity Management is een [Azure AD Premium P2-licentie plan](../privileged-identity-management/subscription-requirements.md)vereist.
+U kunt **beheren in PIM** selecteren voor extra beheer mogelijkheden. Beheerders van geprivilegieerde rollen kunnen de toewijzingen ' permanent ' (altijd actief in de rol) wijzigen in in aanmerking komende (in de rol alleen bij verhoogde bevoegdheid). Als u niet beschikt over Privileged Identity Management, kunt u nog steeds **beheren in PIM** selecteren om u aan te melden voor een proef versie. Voor Privileged Identity Management is een [Azure AD Premium P2-licentie plan](../privileged-identity-management/subscription-requirements.md)vereist.
 
 ![lijst met leden van een beheerdersrol](./media/directory-manage-roles-portal/member-list.png)
 
 Als u een globale beheerder of een beheerder van een bevoegde rol bent, kunt u eenvoudig leden toevoegen of verwijderen, de lijst filteren of een lid selecteren om hun actieve toegewezen rollen te zien.
+
+> [!Note]
+> Als u een Azure AD Premium P2-licentie hebt en u Privileged Identity Management al gebruikt, worden alle beheer taken voor rollen uitgevoerd in bevoegdheden voor identiteits beheer en niet in azure AD.
+>
+> ![Azure AD-rollen die worden beheerd in PIM voor gebruikers die PIM al gebruiken en een Premium P2-licentie hebben](./media/directory-manage-roles-portal/pim-manages-roles-for-p2.png)
 
 ## <a name="view-a-users-role-permissions"></a>De rolmachtigingen van een gebruiker weer geven
 
 Wanneer u de leden van een rol bekijkt, selecteert u **Beschrijving** om de volledige lijst met machtigingen te zien die zijn verleend door de roltoewijzing. De pagina bevat koppelingen naar relevante documentatie om u te helpen bij het beheren van Directory rollen.
 
 ![lijst met machtigingen voor een beheerdersrol](./media/directory-manage-roles-portal/role-description.png)
+
+## <a name="assign-a-role"></a>Een rol toewijzen
+
+1. Meld u aan bij de [Azure Portal](https://portal.azure.com) met de beheerders machtigingen globale beheerder of privileged Role en selecteer **Azure Active Directory**.
+
+1. Selecteer **rollen en beheerders** om de lijst met alle beschik bare rollen weer te geven.
+
+1. Selecteer een rol om de bijbehorende toewijzingen te bekijken.
+
+    ![lijst met machtigingen voor een beheerdersrol](./media/directory-manage-roles-portal/member-list.png)
+
+1. Selecteer **toewijzingen toevoegen** en selecteer de functies die u wilt toewijzen. U kunt **beheren in PIM** selecteren voor extra beheer mogelijkheden. Als u iets anders ziet in de volgende afbeelding, leest u de opmerking in [toewijzingen weer geven voor geprivilegieerde rollen](#view-assignments-for-privileged-roles) om te controleren of u zich in PIM bevindt.
+
+    ![lijst met machtigingen voor een beheerdersrol](./media/directory-manage-roles-portal/directory-role-select-role.png)
 
 ## <a name="next-steps"></a>Volgende stappen
 

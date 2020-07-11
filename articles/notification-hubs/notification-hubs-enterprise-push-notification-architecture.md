@@ -16,11 +16,12 @@ ms.date: 01/04/2019
 ms.author: sethm
 ms.reviewer: jowargo
 ms.lastreviewed: 01/04/2019
-ms.openlocfilehash: 0104547a432f7f78d74731e11926bcd82088cef7
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: e53e9599da3c12fdf01c8902a7275fc75ce86643
+ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "76264030"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86223598"
 ---
 # <a name="enterprise-push-architectural-guidance"></a>Hulp voor architectuur via pushmeldingen van het bedrijf
 
@@ -36,7 +37,7 @@ Hier volgt de algemene architectuur van de oplossing (gegeneraliseerd met meerde
 
 ## <a name="architecture"></a>Architectuur
 
-![][1]
+![Diagram van de bedrijfs architectuur met de stroom gebeurtenissen, abonnementen en push berichten.][1]
 
 Het sleutel gedeelte in dit architectuur diagram is Azure Service Bus, dat een programmeer model voor onderwerpen/abonnementen bevat (meer op het [Service Bus pub/sub-programmering]). De ontvanger, in dit geval de mobiele back-end (meestal [Azure Mobile Service], die een push naar de mobiele apps initieert) ontvangt geen berichten rechtstreeks van de back-end-systemen, maar een tussenliggende abstractie laag die wordt geleverd door [Azure service bus], waarmee mobiele back-end berichten van een of meer back-upsystemen kan ontvangen. Er moet een Service Bus onderwerp worden gemaakt voor elk van de back-end-systemen, bijvoorbeeld account, HR, Finance, wat in principe ' Topics ' is, en die berichten initieert om te worden verzonden als push melding. De back-end-systemen verzenden berichten naar deze onderwerpen. Een mobiele back-end kan zich abonneren op een of meer van deze onderwerpen door een Service Bus-abonnement te maken. Hiermee wordt de mobiele back-end gemachtigd om een melding van het bijbehorende back-end-systeem te ontvangen. Mobiele back-end wordt geluisterd naar berichten op hun abonnementen en zodra een bericht binnenkomt, wordt dit teruggezet en wordt het als een melding verzonden naar de notification hub. Notification hubs leveren uiteindelijk het bericht af voor de mobiele app. Hier volgt een lijst met belang rijke onderdelen:
 
@@ -227,15 +228,17 @@ De volledige voorbeeld code is beschikbaar op [Notification hub]-voor beelden. H
 
     e. Als u deze app als **Webtaak**wilt publiceren, klikt u met de rechter muisknop op de oplossing in Visual Studio en selecteert u **publiceren als Webtaak**
 
-    ![][2]
+    ![Scherm opname van de opties die met de rechter muisknop worden weer gegeven met publiceren als Azure-Webtaak die in het rood wordt beschreven.][2]
 
     f. Selecteer uw publicatie profiel en maak een nieuwe Azure-WebSite als deze nog niet bestaat, die als host fungeert voor deze Webtaak en wanneer u de WebSite vervolgens **publiceert**.
 
-    ![][3]
+    :::image type="complex" source="./media/notification-hubs-enterprise-push-architecture/PublishAsWebJob.png" alt-text="Scherm opname van de werk stroom voor het maken van een site in Azure.":::
+    Scherm afbeelding van het dialoog venster Publish Web met de optie Microsoft Azure Websites geselecteerd, een groene pijl die verwijst naar het dialoog venster bestaande website selecteren met de nieuwe optie die wordt beschreven in rood en een groene pijl die verwijst naar het dialoog venster site maken op Microsoft Azure met de site naam en de opties voor het maken van een rood kader.
+    :::image-end:::
 
     bijvoorbeeld Configureer de taak zo dat deze continu wordt uitgevoerd. Als u zich aanmeldt bij de [Azure Portal] , moet u er ongeveer als volgt uitzien:
 
-    ![][4]
+    ![Scherm opname van de Azure-Portal met de Enter prise push back-end-webtaken die worden weer gegeven en de naam, planning en logboeken waarden die in het rood worden beschreven.][4]
 
 3. **EnterprisePushMobileApp**
 
@@ -269,11 +272,11 @@ De volledige voorbeeld code is beschikbaar op [Notification hub]-voor beelden. H
 2. Voer de **EnterprisePushMobileApp**uit, waarmee de Windows Store-app wordt gestart.
 3. Voer de **EnterprisePushBackendSystem** -console toepassing uit die de LOB-back-end simuleert en begint met het verzenden van berichten. de pop-upmeldingen worden weer gegeven zoals in de volgende afbeelding:
 
-    ![][5]
+    ![Scherm opname van een console waarop de Enter prise push back-end-systeem-app wordt uitgevoerd en het bericht dat wordt verzonden door de app.][5]
 
 4. De berichten zijn oorspronkelijk verzonden naar Service Bus-onderwerpen, die door Service Bus abonnementen in uw Webtaak worden bewaakt. Zodra een bericht is ontvangen, is er een melding gemaakt en verzonden naar de mobiele app. U kunt de logboeken van de Webtaak bekijken om de verwerking te bevestigen wanneer u naar de koppeling Logboeken in [Azure Portal] voor uw webtaken gaat:
 
-    ![][6]
+    ![Scherm afbeelding van het dialoog venster Details van doorlopende Webtaak, met het bericht dat in een rood kader wordt verzonden.][6]
 
 <!-- Images -->
 [1]: ./media/notification-hubs-enterprise-push-architecture/architecture.png

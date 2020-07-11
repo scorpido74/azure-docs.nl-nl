@@ -3,12 +3,12 @@ title: Veelgestelde vragen over Azure Migrate server migratie
 description: Krijg antwoorden op veelgestelde vragen over het gebruik van Azure Migrate server migratie om machines te migreren.
 ms.topic: conceptual
 ms.date: 05/04/2020
-ms.openlocfilehash: 0cfe23b4e544040fc3ab69796988ca34b1bdcdbf
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 282f7ab27eead59fc87a95ea7d397268177f4f2c
+ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82744329"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86224125"
 ---
 # <a name="azure-migrate-server-migration-common-questions"></a>Migratie van Azure Migrate server: veelgestelde vragen
 
@@ -66,6 +66,9 @@ Nee. Azure-beschikbaarheidszones worden niet ondersteund voor Azure Migrate migr
 ## <a name="what-transport-protocol-does-azure-migrate-use-during-replication"></a>Welk transport protocol gebruikt Azure Migrate tijdens de replicatie?
 
 Azure Migrate maakt gebruik van het protocol voor netwerk blok apparaten (NBD) met TLS-code ring.
+
+## <a name="how-is-the-data-transmitted-from-on-prem-environment-to-azure-is-it-encrypted-before-transmission"></a>Hoe worden de gegevens verzonden vanuit een on-premises omgeving naar Azure? Versleuteld vóór verzen ding? 
+Het Azure Migrate apparaat in de replicatie zonder agent zorgt ervoor dat gegevens worden gecomprimeerd en versleuteld voordat ze worden geüpload. Gegevens worden verzonden via een beveiligd communicatie kanaal via https en maakt gebruik van TLS 1,2 of hoger. Daarnaast worden uw gegevens automatisch door Azure Storage versleuteld wanneer deze persistent worden gemaakt in de Cloud (versleuteling-at-rest).  
 
 ## <a name="what-is-the-minimum-vcenter-server-version-required-for-migration"></a>Wat is de minimale vCenter Server versie die vereist is voor de migratie?
 

@@ -7,11 +7,12 @@ ms.service: cloud-services
 ms.topic: article
 ms.date: 05/18/2017
 ms.author: tagore
-ms.openlocfilehash: 5880544137855a2ea5bcd6d6e4bada46563564ad
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: e5452e0794083afabbee2759c5b37feb1eed0c88
+ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "75360834"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86223683"
 ---
 # <a name="how-to-configure-auto-scaling-for-a-cloud-service-in-the-portal"></a>Automatisch schalen configureren voor een Cloud service in de portal
 
@@ -20,7 +21,7 @@ Er kunnen voor waarden worden ingesteld voor een werk rollen van de Cloud servic
 > [!NOTE]
 > Dit artikel richt zich op Web-en werk rollen van de Cloud service. Wanneer u een virtuele machine (klassiek) rechtstreeks maakt, wordt deze gehost in een Cloud service. U kunt een standaard virtuele machine schalen door deze te koppelen aan een [beschikbaarheidsset](../virtual-machines/windows/classic/configure-availability-classic.md) en ze hand matig in of uit te scha kelen.
 
-## <a name="considerations"></a>Overwegingen
+## <a name="considerations"></a>Aandachtspunten
 U moet rekening houden met de volgende informatie voordat u schaling voor uw toepassing configureert:
 
 * Schalen wordt beïnvloed door het gebruik van kernen.
@@ -42,10 +43,10 @@ Nadat u uw Cloud service hebt geselecteerd, moet de Blade Cloud service zichtbaa
 1. Selecteer op de Blade Cloud service, op de tegel **rollen en instanties** , de naam van de Cloud service.   
    **Belang rijk**: Zorg ervoor dat u op de Cloud service functie klikt, niet de rolinstantie die zich onder de rol bevindt.
 
-    ![](./media/cloud-services-how-to-scale-portal/roles-instances.png)
+    ![Scherm afbeelding van de tegel rollen en instanties met de rol worker met S B wachtrij 1, in rood beschreven.](./media/cloud-services-how-to-scale-portal/roles-instances.png)
 2. Selecteer de tegel **schalen** .
 
-    ![](./media/cloud-services-how-to-scale-portal/scale-tile.png)
+    ![Scherm afbeelding van de pagina bewerkingen met de tegel verkopen die rood wordt beschreven.](./media/cloud-services-how-to-scale-portal/scale-tile.png)
 
 ## <a name="automatic-scale"></a>Automatisch schalen
 U kunt schaal instellingen configureren voor een functie met twee modi **hand matig** of **automatisch**. Hand matig is net zoals u verwacht, stelt u het absolute aantal exemplaren in. Met automatisch kunt u regels instellen die bepalen hoe en hoeveel u moet schalen.
@@ -88,7 +89,7 @@ Regels worden toegevoegd aan een profiel en vertegenwoordigen een voor waarde wa
 
 De regel trigger is gebaseerd op de metrische gegevens van de Cloud service (CPU-gebruik, schijf activiteit of netwerk activiteit) waaraan u een voorwaardelijke waarde kunt toevoegen. Daarnaast kunt u de trigger hebben op basis van een berichten wachtrij of de metriek van een andere Azure-resource die aan uw abonnement is gekoppeld.
 
-![](./media/cloud-services-how-to-scale-portal/rule-settings.png)
+![Scherm afbeelding van het dialoog venster regel met de optie voor de metrische naam in het rood.](./media/cloud-services-how-to-scale-portal/rule-settings.png)
 
 Nadat u de regel hebt geconfigureerd, selecteert u de knop **OK** onder aan de Blade regel.
 

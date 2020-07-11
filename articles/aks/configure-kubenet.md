@@ -5,12 +5,12 @@ services: container-service
 ms.topic: article
 ms.date: 06/02/2020
 ms.reviewer: nieberts, jomore
-ms.openlocfilehash: 983005e815061f65907fc54aa6a3dfec1771b3f0
-ms.sourcegitcommit: bcb962e74ee5302d0b9242b1ee006f769a94cfb8
+ms.openlocfilehash: 740c5dfb7dd4bece32aa2df5ef47d5f87091445b
+ms.sourcegitcommit: f7e160c820c1e2eb57dc480b2a8fd6bef7053e91
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86055491"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86231638"
 ---
 # <a name="use-kubenet-networking-with-your-own-ip-address-ranges-in-azure-kubernetes-service-aks"></a>Gebruik kubenet-netwerken met uw eigen IP-adresbereiken in azure Kubernetes service (AKS)
 
@@ -54,7 +54,7 @@ Met *Azure cni*is een veelvoorkomend probleem het toegewezen IP-adres bereik te 
 
 Als inbreuk kunt u een AKS-cluster maken dat gebruikmaakt van *kubenet* en verbinding maken met een bestaand subnet van een virtueel netwerk. Op deze manier kunnen de knoop punten gedefinieerde IP-adressen ontvangen, zonder dat er een groot aantal IP-adressen hoeft te worden gereserveerd voor alle mogelijke peulen die in het cluster kunnen worden uitgevoerd.
 
-Met *kubenet*kunt u een veel kleiner IP-adres bereik gebruiken en kunt u grote clusters en toepassings vereisten ondersteunen. Bijvoorbeeld, zelfs met een */27* IP-adres bereik, kunt u een 20-25-knooppunt cluster uitvoeren met voldoende ruimte om te schalen of bij te werken. Deze cluster grootte zou Maxi maal *2200-2750* peul ondersteunen (met een standaard maximum van 110 peul per knoop punt). Het maximum aantal peulen per knoop punt dat u kunt configureren met *kubenet* in AKS is 110.
+Met *kubenet*kunt u een veel kleiner IP-adres bereik gebruiken en kunt u grote clusters en toepassings vereisten ondersteunen. Bijvoorbeeld, zelfs met een */27* IP-adres bereik in uw subnet, kunt u een 20-25-knooppunt cluster uitvoeren met voldoende ruimte om te schalen of bij te werken. Deze cluster grootte zou Maxi maal *2200-2750* peul ondersteunen (met een standaard maximum van 110 peul per knoop punt). Het maximum aantal peulen per knoop punt dat u kunt configureren met *kubenet* in AKS is 110.
 
 In de volgende basis berekeningen wordt het verschil in netwerk modellen vergeleken:
 

@@ -6,11 +6,12 @@ ms.topic: article
 ms.date: 12/03/2018
 ms.reviewer: dariac
 ms.custom: seodec18
-ms.openlocfilehash: 9f18eef607a5f655aecc0b6ebe1c85a239b34192
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 693e552c8743b435fac6fda9d5ab023be5d9adeb
+ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77482969"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86221133"
 ---
 # <a name="sync-content-from-a-cloud-folder-to-azure-app-service"></a>Inhoud vanuit een Cloud-map synchroniseren met Azure App Service
 In dit artikel wordt beschreven hoe u uw inhoud synchroniseert met [Azure app service](https://go.microsoft.com/fwlink/?LinkId=529714) vanuit Dropbox en OneDrive. 
@@ -23,11 +24,11 @@ Als u inhouds synchronisatie wilt inschakelen, navigeert u naar de pagina App Se
 
 Klik in het linkermenu op **implementatie centrum**  >  **OneDrive** of **Dropbox**  >  **autoriseren**. Volg de autorisatie prompts. 
 
-![](media/app-service-deploy-content-sync/choose-source.png)
+![Laat zien hoe u OneDrive of Dropbox kunt autoriseren in het implementatie centrum in de Azure Portal.](media/app-service-deploy-content-sync/choose-source.png)
 
 U hoeft slechts één keer per OneDrive of Dropbox te autoriseren. Als u al bent gemachtigd, klikt u op **door gaan**. U kunt het geautoriseerde OneDrive-of Dropbox-account wijzigen door te klikken op **account wijzigen**.
 
-![](media/app-service-deploy-content-sync/continue.png)
+![Laat zien hoe u het geautoriseerde OneDrive-of Dropbox-account kunt wijzigen in het implementatie centrum in de Azure Portal.](media/app-service-deploy-content-sync/continue.png)
 
 Selecteer op de pagina **configureren** de map die u wilt synchroniseren. Deze map wordt gemaakt onder het volgende toegewezen inhoudsdistributiepad in OneDrive of Dropbox. 
    
@@ -42,7 +43,7 @@ Controleer de opties op de pagina **samen vatting** en klik op **volt ooien**.
 
 Als u inhoud in de map Cloud met App Service wilt synchroniseren, gaat u terug naar de pagina van het **implementatie centrum** en klikt u op **synchroniseren**.
 
-![](media/app-service-deploy-content-sync/synchronize.png)
+![Laat zien hoe u uw Cloud-map synchroniseert met App Service.](media/app-service-deploy-content-sync/synchronize.png)
    
    > [!NOTE]
    > Vanwege onderliggende verschillen in de Api's, wordt **OneDrive voor bedrijven** op dit moment niet ondersteund. 
@@ -55,7 +56,7 @@ Als u inhouds synchronisatie wilt uitschakelen, gaat u naar de pagina App Servic
 
 Klik in het linkermenu op het verbreken van het **implementatie centrum**  >  **Disconnect**.
 
-![](media/app-service-deploy-content-sync/disable.png)
+![Laat zien hoe u de synchronisatie van uw Cloud mappen verbreekt met uw App Service-app in de Azure Portal.](media/app-service-deploy-content-sync/disable.png)
 
 [!INCLUDE [What happens to my app during deployment?](../../includes/app-service-deploy-atomicity.md)]
 

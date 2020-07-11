@@ -44,9 +44,19 @@
           href: set-up-mabs-for-avs.md
         - name: Een back-up maken van AVS-VM's met Azure Backup Server
           href: backup-avs-vms-with-mabs.md
+    - name: Systeemeigen Azure-integratie
+      items:
+        - name: API Management
+          href: concepts-api-management.md
+        - name: Hub en spoke
+          href: concepts-avs-hub-and-spoke-integration.md
 - name: Naslaginformatie
   items: null
 - name: Resources
   items:
+    - name: Problemen oplossen
+      items:
+        - name: Krijg hulp bij AVS-implementatie of inrichtingsfouten
+          href: fix-deployment-provisioning-failures.md
     - name: Veelgestelde vragen
       href: faq.md

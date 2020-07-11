@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/05/2016
 ms.author: kumud
-ms.openlocfilehash: 80a9397838e90a2af504125b2dc4c4ef39251d4e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 1d2dde4e77a39b114f721cd6d2be250141984e7f
+ms.sourcegitcommit: f7e160c820c1e2eb57dc480b2a8fd6bef7053e91
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81455359"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86231706"
 ---
 # <a name="virtual-appliance-scenario"></a>Scenario voor virtueel apparaat
 Een veelvoorkomend scenario tussen een grotere Azure-klant is de nood zaak om een toepassing met twee lagen te bieden die beschikbaar is op internet, terwijl toegang tot de back-uplaag wordt toegestaan vanuit een on-premises Data Center. Dit document begeleidt u door een scenario met behulp van door de gebruiker gedefinieerde routes (UDR), een VPN Gateway en virtuele netwerk apparaten om een omgeving met twee lagen te implementeren die voldoet aan de volgende vereisten:
@@ -33,12 +33,12 @@ Dit is een standaard perimeter netwerk (ook wel bekend als DMZ) met een DMZ en e
 
 |  | Voordelen | Nadelen |
 | --- | --- | --- |
-| NSG |Geen kosten. <br/>Geïntegreerd in azure RBAC. <br/>Regels kunnen worden gemaakt in Azure Resource Manager sjablonen. |De complexiteit kan verschillen in grotere omgevingen. |
-| Firewall |Volledige controle over het gegevens vlak. <br/>Centraal beheer via firewall-console. |Kosten van het firewall apparaat. <br/>Niet geïntegreerd met Azure RBAC. |
+| **NSG** |Geen kosten. <br/>Geïntegreerd in azure RBAC. <br/>Regels kunnen worden gemaakt in Azure Resource Manager sjablonen. |De complexiteit kan verschillen in grotere omgevingen. |
+| **Firewall** |Volledige controle over het gegevens vlak. <br/>Centraal beheer via firewall-console. |Kosten van het firewall apparaat. <br/>Niet geïntegreerd met Azure RBAC. |
 
 De onderstaande oplossing maakt gebruik van virtuele firewall apparaten voor het implementeren van een perimeter netwerk (DMZ)/Protected-netwerk scenario.
 
-## <a name="considerations"></a>Overwegingen
+## <a name="considerations"></a>Aandachtspunten
 U kunt de hierboven beschreven omgeving in azure implementeren met behulp van verschillende functies die momenteel beschikbaar zijn.
 
 * **Virtueel netwerk (VNet)** . Een Azure-VNet fungeert op vergelijk bare wijze als een on-premises netwerk en kan worden gesegmenteerd in een of meer subnetten voor verkeer isolatie en een schei ding van de problemen.

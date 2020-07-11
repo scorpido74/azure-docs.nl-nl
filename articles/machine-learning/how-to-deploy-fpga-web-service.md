@@ -11,12 +11,12 @@ ms.author: jordane
 author: jpe316
 ms.date: 06/03/2020
 ms.custom: seodec18, contperfq4, tracking-python
-ms.openlocfilehash: 636d16c4fbbd662d6fccb811fb4a88b2d862b533
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: ace657efaac323dcf48cfba95629abc59ca0cac3
+ms.sourcegitcommit: f7e160c820c1e2eb57dc480b2a8fd6bef7053e91
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86107322"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86231757"
 ---
 # <a name="what-are-field-programmable-gate-arrays-fpga-and-how-to-deploy"></a>Wat zijn veld-Programmeer bare poort matrices (FPGA) en implementeren
 
@@ -27,7 +27,7 @@ Dit artikel bevat een inleiding tot veld-Programmeer bare poort matrices (FPGA) 
 ## <a name="prerequisites"></a>Vereisten
 
 - Een Azure-abonnement. Als u er geen hebt, moet u een [betalen per gebruik-](https://azure.microsoft.com/pricing/purchase-options/pay-as-you-go) account maken (gratis Azure-accounts komen niet in aanmerking voor FPGA-quotum).
-- [Azure-CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest)
+- [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest)
 - FPGA quota. Gebruik de Azure CLI om te controleren of u een quotum hebt:
 
     ```azurecli-interactive
@@ -65,7 +65,7 @@ In het volgende diagram en in de tabel ziet u hoe Fpga's met andere processors k
 
 ![Diagram van Azure Machine Learning FPGA-vergelijking](./media/how-to-deploy-fpga-web-service/azure-machine-learning-fpga-comparison.png)
 
-|Processor||Description|
+|Processor| Afkorting |Beschrijving|
 |---|:-------:|------|
 |Toepassingsspecifieke geïntegreerde circuits|ASICs|Aangepaste circuits, zoals Google tensor flow processor units (TPU), bieden de hoogste efficiëntie. Ze kunnen niet opnieuw worden geconfigureerd als uw behoeften veranderen.|
 |Veld-Programmeer bare poort matrices|FPGAs|Fpga's, zoals die beschikbaar zijn op Azure, bieden de prestaties bijna ASICs. Ze zijn ook flexibel en kunnen na verloop van tijd opnieuw worden geconfigureerd om nieuwe logica te implementeren.|
@@ -102,10 +102,10 @@ Deze DNN modellen zijn momenteel beschikbaar:
 
 Fpga's zijn beschikbaar in deze Azure-regio's:
 
-  - VS - oost
+  - East US
   - Azië - zuidoost
-  - Europa -west
-  - VS - west 2
+  - West Europe
+  - West US 2
 
 > [!IMPORTANT]
 > Om de latentie en door voer te optimaliseren, moet uw client gegevens verzenden naar het FPGA-model in een van de bovenstaande regio's (het model dat u hebt geïmplementeerd.)

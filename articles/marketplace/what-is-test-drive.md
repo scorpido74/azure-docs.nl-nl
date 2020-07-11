@@ -7,12 +7,12 @@ ms.topic: article
 author: keferna
 ms.author: keferna
 ms.date: 06/19/2020
-ms.openlocfilehash: 95ca527d8f7912e2c455f94036fe61828b220257
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: abad72145b095b4da77ec499f936c6912fd970a6
+ms.sourcegitcommit: f7e160c820c1e2eb57dc480b2a8fd6bef7053e91
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86121466"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86229445"
 ---
 # <a name="what-is-a-test-drive"></a>Wat is een test drive?
 
@@ -24,7 +24,7 @@ Als uitgever kunt u de test drive-instellingen beheren en configureren in partne
 
 Potentiële klanten kunnen uw test drive op de commerciële Marketplace ontdekken. Ze bieden hun contact gegevens en gaan akkoord met de voor waarden en het privacybeleid van uw aanbieding en krijgen vervolgens toegang tot uw vooraf geconfigureerde omgeving om deze voor een bepaalde periode te proberen. Klanten ontvangen een praktijk gerichte, zelf-begeleide proef versie van de belangrijkste functies en voor delen van uw product en u ontvangt een waardevolle lead.
 
-## <a name="how-does-it-work"></a>Hoe werkt het?
+## <a name="how-does-it-work"></a>Hoe werkt dit?
 
 Als uitgever kunt u de test drive-instellingen beheren en configureren binnen het partner centrum. Na de installatie wordt het een beheerd exemplaar dat op aanvraag wordt geïmplementeerd voor de klant die daarom vraagt. Zodra een test drive-exemplaar is toegewezen, is het beschikbaar voor gebruik voor een bepaalde tijd en vervolgens verwijderd om ruimte te maken voor een andere klant.
 
@@ -74,7 +74,7 @@ Het proces waarbij een architectuur van bronnen in een test drive wordt omgezet,
 
 ## <a name="generate-leads-from-your-test-drive"></a>Leads van uw test drive genereren
 
-Een commerciële Marketplace test drive is een uitstekend hulp programma voor markt verhandelers. We raden u aan om deze op te nemen in uw Go-to-Market-inspanningen wanneer u start om meer leads voor uw bedrijf te genereren. Zie [leads van klanten van uw aanbieding voor commerciële Marketplace](https://github.com/partner-center-portal/commercial-marketplace-get-customer-leads.md)voor gedetailleerde richt lijnen.
+Een commerciële Marketplace test drive is een uitstekend hulp programma voor markt verhandelers. We raden u aan om deze op te nemen in uw Go-to-Market-inspanningen wanneer u start om meer leads voor uw bedrijf te genereren. Zie [leads van klanten van uw aanbieding voor commerciële Marketplace](https://github.com/MicrosoftDocs/azure-docs/blob/master/articles/marketplace/partner-center-portal/commercial-marketplace-get-customer-leads.md)voor gedetailleerde richt lijnen.
 
 Als u een oplossing met een test drive-lead sluit, dient u deze te registreren bij [micro soft partner Sales Connect](https://support.microsoft.com/help/3155788/getting-started-with-microsoft-partner-sales-connect). Het is ook belang rijk om te horen over uw klant wint waar een test drive een rol heeft gespeeld.
 

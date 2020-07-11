@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: virtual-machines-linux
 ms.subservice: imaging
 ms.reviewer: cynthn
-ms.openlocfilehash: 975d6842110ffa864a534e09cf35d0d33612d7d5
-ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.openlocfilehash: 191f0468a01c98ec60b85ea7aca6333807bf4b80
+ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86135072"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86221201"
 ---
 # <a name="preview-create-an-azure-image-builder-template"></a>Voor beeld: een Azure Image Builder-sjabloon maken 
 
@@ -71,7 +71,7 @@ De locatie is de regio waar de aangepaste installatie kopie wordt gemaakt. Voor 
 - VS - west
 - VS - west 2
 - Europa - noord
-- Europa -west
+- West Europe
 
 
 ```json
@@ -150,6 +150,9 @@ Voor de API is een source type vereist dat de bron voor de build van de installa
 - PlatformImage: er is aangegeven dat de bron afbeelding een Marketplace-installatie kopie is.
 - ManagedImage: gebruik dit wanneer u vanaf een normale beheerde installatie kopie begint.
 - SharedImageVersion: dit wordt gebruikt wanneer u een installatie kopie versie in een galerie met gedeelde afbeeldingen als de bron gebruikt.
+
+> [!NOTE]
+> Wanneer u bestaande Windows-aangepaste installatie kopieën gebruikt, kunt u de Sysprep-opdracht Maxi maal acht keer uitvoeren op één Windows-installatie kopie. Raadpleeg de documentatie van [Sysprep](https://docs.microsoft.com/windows-hardware/manufacture/desktop/sysprep--generalize--a-windows-installation#limits-on-how-many-times-you-can-run-sysprep) voor meer informatie.
 
 ### <a name="iso-source"></a>ISO-bron
 We nemen deze functionaliteit uit de opbouw functie voor afbeeldingen af, omdat [u nu RHEL uw eigen abonnements installatie kopieën meenemen](https://docs.microsoft.com/azure/virtual-machines/workloads/redhat/byos), raadpleegt u de onderstaande tijd lijnen:
@@ -468,7 +471,10 @@ Azure Image Builder ondersteunt drie distributie doelen:
 - Galerie met **sharedImage** -gedeelde afbeeldingen.
 - **VHD** -VHD in een opslag account.
 
-U kunt een installatie kopie distribueren naar beide doel typen in dezelfde configuratie, Zie [voor beelden](https://github.com/danielsollondon/azvmimagebuilder/blob/7f3d8c01eb3bf960d8b6df20ecd5c244988d13b6/armTemplates/azplatform_image_deploy_sigmdi.json#L80).
+U kunt een installatie kopie distribueren naar beide doel typen in dezelfde configuratie.
+
+> [!NOTE]
+> De standaard AIB Sysprep-opdracht bevat niet '/mode: VM ', maar dit is mogelijk vereist bij het maken van installatie kopieën waarop de hyper-v-rol is geïnstalleerd. Als u dit opdracht argument moet toevoegen, moet u de Sysprep-opdracht onderdrukken.
 
 Omdat er meer dan één doel kan zijn om naar te distribueren, houdt Image Builder een status bij voor elk distributie doel dat toegankelijk is door query's uit te stellen op de `runOutputName` .  Het `runOutputName` is een-object waarmee u een query kunt uitvoeren op distributie voor informatie over die distributie. U kunt bijvoorbeeld een query uitvoeren op de locatie van de VHD, of regio's waarnaar de versie van de installatie kopie is gerepliceerd, of de versie van de SIG-installatie kopie is gemaakt. Dit is een eigenschap van elke distributie doel. De `runOutputName` moet uniek zijn voor elk distributie doel. Hier volgt een voor beeld van het uitvoeren van een query op de distributie van een gedeelde installatie kopie galerie:
 

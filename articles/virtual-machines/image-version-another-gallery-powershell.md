@@ -1,5 +1,5 @@
 ---
-title: Een afbeelding uit een andere galerie kopiëren
+title: Een afbeelding uit een andere galerie kopiëren met behulp van Power shell
 description: Een afbeelding uit een andere galerie kopiëren met behulp van Azure PowerShell.
 author: cynthn
 ms.service: virtual-machines
@@ -9,14 +9,14 @@ ms.workload: infrastructure
 ms.date: 05/04/2020
 ms.author: cynthn
 ms.reviewer: akjosh
-ms.openlocfilehash: 10cd8514b529f29f68ea3df14cdc208dd8fdd556
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 1fe26a880979a431e456d9a1819dfd1b18d25f77
+ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82796926"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86221218"
 ---
-# <a name="copy-an-image-from-another-gallery"></a>Een afbeelding uit een andere galerie kopiëren
+# <a name="copy-an-image-from-another-gallery-using-powershell"></a>Een afbeelding uit een andere galerie kopiëren met behulp van Power shell
 
 Als uw organisatie meerdere galerieën bevat, kunt u installatie kopieën maken van afbeeldingen die zijn opgeslagen in andere galerieën. U kunt bijvoorbeeld een galerie voor ontwikkelen en testen hebben voor het maken en testen van nieuwe installatie kopieën. Wanneer ze klaar zijn om te worden gebruikt in de productie, kunt u deze naar een productie galerie kopiëren met behulp van dit voor beeld. U kunt ook een installatie kopie maken van een afbeelding in een andere galerie met behulp van de [Azure cli](image-version-another-gallery-cli.md).
 
@@ -165,3 +165,5 @@ $job.State
 Een virtuele machine maken van een [gegeneraliseerde](vm-generalized-image-version-powershell.md) of een [gespecialiseerde](vm-specialized-image-version-powershell.md) installatie kopie versie.
 
 Met [Azure Image Builder (preview)](./linux/image-builder-overview.md) kunt u het maken van de installatie kopie versie automatiseren, maar u kunt deze zelfs gebruiken om [een nieuwe installatie kopie versie te maken op basis van een bestaande versie van de installatie kopie](./linux/image-builder-gallery-update-image-version.md). 
+
+Zie voor meer informatie over het verstrekken van informatie over het aankoop plan [Azure Marketplace-informatie over het aankoop plan bij het maken van installatie kopieën](marketplace-images.md).

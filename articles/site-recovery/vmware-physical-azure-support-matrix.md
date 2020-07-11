@@ -2,13 +2,13 @@
 title: Ondersteunings matrix voor nood herstel voor VMware/fysiek in Azure Site Recovery
 description: Hierin wordt een overzicht gegeven van de ondersteuning voor nood herstel van virtuele VMware-machines en fysieke servers naar Azure met behulp van Azure Site Recovery.
 ms.topic: conceptual
-ms.date: 06/10/2020
-ms.openlocfilehash: ff99fd1dd1710cd96f6257096b97ae1912a61dc6
-ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.date: 07/10/2020
+ms.openlocfilehash: 86aed87be2d65a78b2485d0ce71ce1f674ea9407
+ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86131881"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86224635"
 ---
 # <a name="support-matrix-for-disaster-recovery--of-vmware-vms-and-physical-servers-to-azure"></a>Ondersteunings matrix voor nood herstel van virtuele VMware-machines en fysieke servers naar Azure
 
@@ -59,9 +59,6 @@ Poorten | 443 gebruikt voor het beheren van de kanaal indeling<br/>9443 voor geg
 ## <a name="replicated-machines"></a>Gerepliceerde machines
 
 Site Recovery ondersteunt replicatie van elke werk belasting die wordt uitgevoerd op een ondersteunde computer.
-
-> [!Note]
-> De volgende tabel geeft een overzicht van de ondersteuning voor computers met BIOS-opstart. Raadpleeg de sectie [opslag](#storage) voor ondersteuning op UEFI-machines.
 
 **Onderdeel** | **Details**
 --- | ---
@@ -181,73 +178,76 @@ Statisch IP-adres van gast/Server netwerk (Linux) | Ja. <br/><br/>Vm's zijn geco
 Gast/Server netwerk meerdere Nic's | Ja.
 
 
+
 ## <a name="azure-vm-network-after-failover"></a>Azure VM-netwerk (na failover)
 
 **Onderdeel** | **Ondersteund**
 --- | ---
-Azure ExpressRoute | Yes
-ILB | Yes
-ELB | Yes
-Azure Traffic Manager | Yes
-Multi-NIC | Yes
-Gereserveerd IP adres | Yes
-IPv4 | Yes
-Bron-IP-adres behouden | Yes
-Service-eindpunten voor een virtueel Azure-netwerk<br/> | Yes
-Versneld netwerken | No
+Azure ExpressRoute | Ja
+ILB | Ja
+ELB | Ja
+Azure Traffic Manager | Ja
+Multi-NIC | Ja
+Gereserveerd IP adres | Ja
+IPv4 | Ja
+Bron-IP-adres behouden | Ja
+Service-eindpunten voor een virtueel Azure-netwerk<br/> | Ja
+Versneld netwerken | Nee
 
 ## <a name="storage"></a>Storage
 **Onderdeel** | **Ondersteund**
 --- | ---
 Dynamische schijf | De besturingssysteem schijf moet een standaard schijf zijn. <br/><br/>Gegevens schijven kunnen dynamische schijven zijn
-Configuratie van docker-schijf | No
+Configuratie van docker-schijf | Nee
 Host-NFS | Ja voor VMware<br/><br/> Nee voor fysieke servers
-SAN van host (iSCSI/FC) | Yes
+SAN van host (iSCSI/FC) | Ja
 VSAN hosten | Ja voor VMware<br/><br/> N.v.t. voor fysieke servers
 Multipath (MPIO) hosten | Ja, getest met micro soft DSM, EMC PowerPath 5,7 SP4, EMC PowerPath DSM voor CLARiiON
 Virtuele volumes hosten (VVols) | Ja voor VMware<br/><br/> N.v.t. voor fysieke servers
-VMDK van gast/server | Yes
-Gedeelde gast/server-cluster schijf | No
-Door gast/server versleutelde schijf | No
-Gast/server-NFS | No
+VMDK van gast/server | Ja
+Gedeelde gast/server-cluster schijf | Nee
+Door gast/server versleutelde schijf | Nee
+Gast/server-NFS | Nee
 ISCSI voor gast/server | Voor migratie-Ja<br/>Voor herstel na nood gevallen-Nee, iSCSI zal failback als een gekoppelde schijf aan de VM
-Het SMB 3,0 van de gast/server | No
-RDM/server | Yes<br/><br/> N.v.t. voor fysieke servers
+Het SMB 3,0 van de gast/server | Nee
+RDM/server | Ja<br/><br/> N.v.t. voor fysieke servers
 Gast/server schijf > 1 TB | Ja, schijf moet groter zijn dan 1024 MB<br/><br/>Maxi maal 8.192 GB bij het repliceren naar Managed disks (9,26-versie en hoger)<br></br> Maxi maal 4.095 GB bij het repliceren naar opslag accounts
-Gast/server-schijf met 4 KB logische en 4.000 fysieke sector grootte | No
-Gast/server schijf met 4 KB logische en 512-bytes fysieke sector grootte | No
-Volume van gast/server met gestripte schijf >4 TB | Yes
+Gast/server-schijf met 4 KB logische en 4.000 fysieke sector grootte | Nee
+Gast/server schijf met 4 KB logische en 512-bytes fysieke sector grootte | Nee
+Volume van gast/server met gestripte schijf >4 TB | Ja
 Beheer van logische volumes (LVM)| Dik inrichten-Ja <br></br> Thin Provisioning-Nee
-Gast/Server-opslag ruimten | No
-Hot-of-Remove-schijf voor gast/server | No
-Gast/server-schijf uitsluiten | Yes
-Meerdere paden gast/server (MPIO) | No
+Gast/Server-opslag ruimten | Nee
+Hot-of-Remove-schijf voor gast/server | Nee
+Gast/server-schijf uitsluiten | Ja
+Meerdere paden gast/server (MPIO) | Nee
 GPT/server-GUID-partities | Er worden vijf partities ondersteund van [Update pakket 37](https://support.microsoft.com/help/4508614/) (versie 9,25 van de Mobility-service). Eerder vier werden ondersteund.
 ReFS | Flexibel bestands systeem wordt ondersteund met Mobility Service versie 9,23 of hoger
-EFI/UEFI-opstart procedure voor gast/server | -Ondersteund voor Windows Server 2012 of hoger, SLES 12 SP4 en RHEL 8,0 met mobiliteits agent versie 9,30<br/> -Secure UEFI-opstart type wordt niet ondersteund. [Meer informatie.](../virtual-machines/windows/generation-2.md#on-premises-vs-azure-generation-2-vms)
+EFI/UEFI-opstart procedure voor gast/server | -Wordt ondersteund voor alle [UEFI-besturings systemen van Azure Marketplace](https://docs.microsoft.com/azure/virtual-machines/windows/generation-2#generation-2-vm-images-in-azure-marketplace) met site Recovery Mobility agent versie 9,30 en hoger. <br/> -Secure UEFI-opstart type wordt niet ondersteund. [Meer informatie.](https://docs.microsoft.com/azure/virtual-machines/windows/generation-2#on-premises-vs-azure-generation-2-vms)
 
 ## <a name="replication-channels"></a>Replicatie kanalen
 
 |**Type replicatie**   |**Ondersteund**  |
 |---------|---------|
-|Offloaded data transfers (ODX)    |       No  |
-|Offline seeding        |   No      |
-| Azure Data Box | No
+|Offloaded data transfers (ODX)    |       Nee  |
+|Offline seeding        |   Nee      |
+| Azure Data Box | Nee
 
 ## <a name="azure-storage"></a>Azure Storage
 
 **Onderdeel** | **Ondersteund**
 --- | ---
-Lokaal redundante opslag | Yes
-Geografisch redundante opslag | Yes
-Geografisch redundante opslag met leestoegang | Yes
-Cool Storage | No
-Hot Storage| No
-Blok-blobs | No
-Versleuteling-at-rest (SSE)| Yes
+Lokaal redundante opslag | Ja
+Geografisch redundante opslag | Ja
+Geografisch redundante opslag met leestoegang | Ja
+Cool Storage | Nee
+Hot Storage| Nee
+Blok-blobs | Nee
+Versleuteling-at-rest (SSE)| Ja
 Versleuteling-at-rest (CMK)| Ja (via Power shell AZ 3.3.0 module)
-Premium Storage | Yes
-Import/export-service | No
+Dubbele versleuteling bij rest | Ja (via Power shell AZ 3.3.0 module). Meer informatie over ondersteunde regio's voor [Windows](../virtual-machines/windows/disk-encryption.md) en [Linux](../virtual-machines/linux/disk-encryption.md).
+Premium Storage | Ja
+Optie voor beveiligde overdracht | Ja
+Import/export-service | Nee
 Firewalls voor VNets Azure Storage | Ja.<br/> Geconfigureerd op het doel opslag/cache-opslag account (wordt gebruikt voor het opslaan van replicatie gegevens).
 V2-opslag accounts voor algemeen gebruik (warme en coole lagen) | Ja (de transactie kosten zijn aanzienlijk hoger voor v2 vergeleken met v1)
 
@@ -255,10 +255,10 @@ V2-opslag accounts voor algemeen gebruik (warme en coole lagen) | Ja (de transac
 
 **Functie** | **Ondersteund**
 --- | ---
-Beschikbaarheidssets | Yes
-Beschikbaarheidszones | No
-HUB | Yes
-Managed Disks | Yes
+Beschikbaarheidssets | Ja
+Beschikbaarheidszones | Nee
+HUB | Ja
+Beheerde schijven | Ja
 
 ## <a name="azure-vm-requirements"></a>Vereisten voor Azure-VM's
 
@@ -312,10 +312,10 @@ Maximumgegevensverloop per dag dat wordt ondersteund door een processerver | 2 T
 
 **Actie** | **Ondersteund**
 --- | ---
-De kluis verplaatsen tussen resource groepen | No
-De kluis verplaatsen binnen en tussen abonnementen | No
-Opslag, netwerk, Azure-Vm's verplaatsen tussen resource groepen | No
-Verplaats opslag-, netwerk-, Azure-Vm's binnen en tussen abonnementen. | No
+De kluis verplaatsen tussen resource groepen | Nee
+De kluis verplaatsen binnen en tussen abonnementen | Nee
+Opslag, netwerk, Azure-Vm's verplaatsen tussen resource groepen | Nee
+Verplaats opslag-, netwerk-, Azure-Vm's binnen en tussen abonnementen. | Nee
 
 
 ## <a name="obtain-latest-components"></a>Nieuwste onderdelen ophalen

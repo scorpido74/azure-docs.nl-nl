@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
 ms.topic: troubleshooting
-ms.date: 03/31/2020
+ms.date: 07/09/2020
 ms.author: iainfou
-ms.openlocfilehash: 40dd985b7cf09ddc2a902630cec3f0c74a1edbe1
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 0e21009341857cc6de3cb7aa411445bc10e6827e
+ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84734602"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86223479"
 ---
 # <a name="resolve-mismatched-directory-errors-for-existing-azure-active-directory-domain-services-managed-domains"></a>Fouten van niet-overeenkomende mappen oplossen voor bestaande Azure Active Directory Domain Services beheerde domeinen
 
@@ -28,26 +28,32 @@ In dit artikel wordt uitgelegd waarom de fout optreedt en hoe u deze kunt oploss
 
 Er treedt een fout op die niet overeenkomt wanneer een door Azure AD DS beheerd domein en een virtueel netwerk deel uitmaken van twee verschillende Azure AD-tenants. U hebt bijvoorbeeld een beheerd domein met de naam *aaddscontoso.com* dat wordt uitgevoerd in de Azure AD-Tenant van contoso. Het virtuele netwerk van Azure voor het beheerde domein maakt echter deel uit van de fabrikam Azure AD-Tenant.
 
-Azure gebruikt op rollen gebaseerd toegangs beheer (RBAC) om de toegang tot resources te beperken. Wanneer u Azure AD DS in een Azure AD-Tenant inschakelt, worden referentie-hashes gesynchroniseerd met het beheerde domein. Deze bewerking vereist dat u een Tenant beheerder bent voor de Azure AD-adres lijst en dat toegang tot de referenties moet worden beheerd. Als u resources wilt implementeren in een virtueel Azure-netwerk en beheer verkeer, moet u over beheerders bevoegdheden beschikken voor het virtuele netwerk waarin u Azure AD DS implementeert.
+Azure gebruikt op rollen gebaseerd toegangs beheer (RBAC) om de toegang tot resources te beperken. Wanneer u Azure AD DS in een Azure AD-Tenant inschakelt, worden referentie-hashes gesynchroniseerd met het beheerde domein. Deze bewerking vereist dat u een Tenant beheerder bent voor de Azure AD-adres lijst en dat toegang tot de referenties moet worden beheerd.
+
+Als u resources wilt implementeren in een virtueel Azure-netwerk en beheer verkeer, moet u over beheerders rechten beschikken voor het virtuele netwerk waarin u het beheerde domein implementeert.
 
 Voor RBAC om consistente en veilige toegang te kunnen krijgen tot alle resources die Azure AD DS gebruikt, moeten het beheerde domein en het virtuele netwerk deel uitmaken van dezelfde Azure AD-Tenant.
 
-De volgende regels zijn van toepassing in de Resource Manager-omgeving:
+De volgende regels zijn van toepassing op implementaties:
 
 - Een Azure AD-adres lijst kan meerdere Azure-abonnementen hebben.
 - Een Azure-abonnement kan meerdere resources bevatten, zoals virtuele netwerken.
-- Eén Azure AD Domain Services beheerd domein is ingeschakeld voor een Azure AD-adres lijst.
-- Een Azure AD Domain Services beheerd domein kan worden ingeschakeld op een virtueel netwerk dat deel uitmaakt van een van de Azure-abonnementen binnen dezelfde Azure AD-Tenant.
+- Eén beheerd domein is ingeschakeld voor een Azure AD-Directory.
+- Een beheerd domein kan worden ingeschakeld op een virtueel netwerk dat deel uitmaakt van een van de Azure-abonnementen binnen dezelfde Azure AD-Tenant.
 
 ### <a name="valid-configuration"></a>Geldige configuratie
 
-In het volgende voor beeld van een implementatie scenario wordt het beheerde domein contoso ingeschakeld in de contoso Azure AD-Tenant. Het beheerde domein wordt geïmplementeerd in een virtueel netwerk dat hoort bij een Azure-abonnement dat eigendom is van de contoso Azure AD-Tenant. Zowel het beheerde domein als het virtuele netwerk behoren tot dezelfde Azure AD-Tenant. Deze voorbeeld configuratie is geldig en volledig ondersteund.
+In het volgende voor beeld van een implementatie scenario wordt het beheerde domein contoso ingeschakeld in de contoso Azure AD-Tenant. Het beheerde domein wordt geïmplementeerd in een virtueel netwerk dat hoort bij een Azure-abonnement dat eigendom is van de contoso Azure AD-Tenant.
+
+Zowel het beheerde domein als het virtuele netwerk behoren tot dezelfde Azure AD-Tenant. Deze voorbeeld configuratie is geldig en volledig ondersteund.
 
 ![Geldige Tenant configuratie van Azure AD DS met het beheerde domein en het virtuele netwerk deel van dezelfde Azure AD-Tenant](./media/getting-started/valid-tenant-config.png)
 
 ### <a name="mismatched-tenant-configuration"></a>Niet-overeenkomende Tenant configuratie
 
-In dit voor beeld van een implementatie scenario wordt het beheerde domein contoso ingeschakeld in de contoso Azure AD-Tenant. Het beheerde domein wordt echter geïmplementeerd in een virtueel netwerk dat hoort bij een Azure-abonnement dat eigendom is van de fabrikam Azure AD-Tenant. Het beheerde domein en het virtuele netwerk behoren tot twee verschillende Azure AD-tenants. Deze voorbeeld configuratie is een niet-overeenkomende Tenant en wordt niet ondersteund. Het virtuele netwerk moet worden verplaatst naar dezelfde Azure AD-Tenant als het beheerde domein.
+In dit voor beeld van een implementatie scenario wordt het beheerde domein contoso ingeschakeld in de contoso Azure AD-Tenant. Het beheerde domein wordt echter geïmplementeerd in een virtueel netwerk dat hoort bij een Azure-abonnement dat eigendom is van de fabrikam Azure AD-Tenant.
+
+Het beheerde domein en het virtuele netwerk behoren tot twee verschillende Azure AD-tenants. Deze voorbeeld configuratie is een niet-overeenkomende Tenant en wordt niet ondersteund. Het virtuele netwerk moet worden verplaatst naar dezelfde Azure AD-Tenant als het beheerde domein.
 
 ![Niet-overeenkomende Tenant configuratie](./media/getting-started/mismatched-tenant-config.png)
 
@@ -55,7 +61,7 @@ In dit voor beeld van een implementatie scenario wordt het beheerde domein conto
 
 Met de volgende twee opties wordt de fout met niet-overeenkomende mappen opgelost:
 
-* [Verwijder het beheerde domein](delete-aadds.md) uit uw bestaande Azure AD-adres lijst. [Maak een vervangend beheerd domein](tutorial-create-instance.md) in dezelfde Azure AD-Directory als het virtuele netwerk dat u wilt gebruiken. Als u klaar bent, moet u alle computers die eerder zijn toegevoegd aan het verwijderde domein, toevoegen aan het opnieuw gemaakte beheerde domein.
+* Verwijder eerst [het beheerde domein](delete-aadds.md) uit uw bestaande Azure AD-adres lijst. Maak vervolgens [een vervangend beheerd domein](tutorial-create-instance.md) in dezelfde Azure AD-Directory als het virtuele netwerk dat u wilt gebruiken. Als u klaar bent, moet u alle computers die eerder zijn toegevoegd aan het verwijderde domein, toevoegen aan het opnieuw gemaakte beheerde domein.
 * [Verplaats het Azure-abonnement](../cost-management-billing/manage/billing-subscription-transfer.md) met het virtuele netwerk naar dezelfde Azure AD-Directory als het beheerde domein.
 
 ## <a name="next-steps"></a>Volgende stappen

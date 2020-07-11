@@ -6,32 +6,35 @@ services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: how-to
-ms.reviewer: nibaccam
+ms.reviewer: sgilley
 ms.author: copeters
 author: lostmygithubaccount
-ms.date: 11/04/2019
-ms.openlocfilehash: 15cfa56f718290af3ae5fb87aadab70016cc8594
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 06/25/2020
+ms.openlocfilehash: 2e0f1765f9f91824f716cb70f591ce6b178c4563
+ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84430241"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86223156"
 ---
 # <a name="detect-data-drift-preview-on-datasets"></a>Gegevens drift (preview) detecteren in gegevens sets
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
 
-In dit artikel leert u hoe u Azure Machine Learning gegevensset-monitors (preview) maakt, monitort voor gegevens drift en statistische wijzigingen in de gegevens sets en het instellen van waarschuwingen.
+Meer informatie over het bewaken van gegevens drift en het instellen van waarschuwingen wanneer de drift hoog is.  
 
-Met Azure Machine Learning gegevensset monitor kunt u het volgende doen:
+Met Azure Machine Learning gegevensset monitors (preview) kunt u het volgende doen:
 * **Analyseer de drift in uw gegevens** om inzicht te krijgen in de manier waarop deze in de loop van de tijd verandert.
-* **Model gegevens bewaken** voor verschillen tussen trainingen en gegevens sets.
+* **Model gegevens bewaken** voor verschillen tussen trainingen en gegevens sets.  Verzamel eerst [model gegevens uit geïmplementeerde modellen](how-to-enable-data-collection.md).
 * **Bewaak nieuwe gegevens** voor verschillen tussen de basis lijn en de doel-DataSet.
 * **Profiel functies in gegevens** om bij te houden hoe statistische eigenschappen na verloop van tijd veranderen.
 * **Stel waarschuwingen in voor de gegevens drift** voor vroegtijdige waarschuwingen voor potentiële problemen. 
 
-Metrische gegevens en inzichten zijn beschikbaar via de [Azure-toepassing Insights](https://docs.microsoft.com/azure/azure-monitor/app/app-insights-overview) -resource die aan de Azure machine learning-werk ruimte is gekoppeld.
+Er wordt een [Azure machine learning-gegevensset](how-to-create-register-datasets.md) gebruikt om de monitor te maken. De gegevensset moet een time stamp-kolom bevatten.
+
+U kunt metrische gegevens over data drift weer geven met de python-SDK of in Azure Machine Learning Studio.  Andere metrische gegevens en inzichten zijn beschikbaar via de [Azure-toepassing Insights](https://docs.microsoft.com/azure/azure-monitor/app/app-insights-overview) -resource die aan de Azure machine learning-werk ruimte is gekoppeld.
 
 > [!Important]
-> Houd er rekening mee dat het bewaken van gegevens drift met de SDK beschikbaar is in alle edities, terwijl het bewaken van gegevens drift via de studio op internet alleen Enter prise Edition is.
+> Het bewaken van gegevens drift met de SDK is beschikbaar in alle edities. Het bewaken van gegevens drift via de studio op internet is echter alleen Enter prise Edition.
 
 ## <a name="prerequisites"></a>Vereisten
 
@@ -43,40 +46,61 @@ U hebt het volgende nodig om de monitors voor de gegevensset te maken en te gebr
 
 ## <a name="what-is-data-drift"></a>Wat is gegevens drift?
 
-In de context van machine learning is gegevens drift de wijziging in model invoer gegevens die leidt tot het model leren van prestaties. Het is een van de belangrijkste redenen om de nauw keurigheid van het model te verslechteren, waardoor gegevens drift helpt bij het detecteren van prestatie problemen van modellen.
+Gegevens drift is een van de belangrijkste redenen voor de nauw keurigheid van het model in de loop van de tijd.  Voor machine learning modellen is gegevens drift de wijziging in model invoer gegevens die leidt tot het model leren van prestaties.  Bewaken van gegevens drift helpt bij het detecteren van deze prestatie problemen voor modellen.
 
-Oorzaken van gegevens drift zijn onder andere: 
+Oorzaken van gegevens drift zijn onder andere:
 
 - Proces wijzigingen in de upstream, zoals een sensor die wordt vervangen, waarbij de maat eenheden worden gewijzigd van inches in centimeters. 
 - Problemen met gegevens kwaliteit, zoals een gebroken sensor, worden altijd 0 gelezen.
 - Natuurlijke drift in de gegevens, zoals gemiddelde temperatuur wijziging, met de seizoenen.
 - Wijziging ten opzichte van functies of covariate SHIFT. 
 
-Met Azure Machine Learning-gegevensset monitors kunt u waarschuwingen instellen die in gegevens sets in de loop der tijd helpen bij het detecteren van gegevensdrift. 
+Azure Machine Learning vereenvoudigt de detectie van de drift door één metrische waarde te berekenen die de complexiteit van gegevens sets vergeleken wordt.  Deze gegevens sets kunnen honderden functies en tien duizenden rijen bevatten. Zodra de drift is gedetecteerd, kunt u inzoomen op de functies die de drift veroorzaken.  Vervolgens inspecteert u de metrische gegevens van het functie niveau om fouten op te sporen en de hoofd oorzaak voor de drift te isoleren.
 
+Met deze neerwaartse benadering kunt u eenvoudig gegevens bewaken in plaats van traditionele op regels gebaseerde technieken. Op regels gebaseerde technieken zoals toegestaan gegevens bereik of toegestane unieke waarden kunnen tijdrovend en fout gevoelig zijn.
+
+In Azure Machine Learning gebruikt u de monitors voor gegevensset om gegevens drift te detecteren en te waarschuwen.
+  
 ### <a name="dataset-monitors"></a>Monitor voor gegevensset 
 
-U kunt een gegevensset-monitor maken om gegevens drift op nieuwe gegevens in een gegevensset te detecteren en te waarschuwen, historische gegevens voor drift te analyseren en nieuwe gegevens gedurende een bepaalde periode te bekijken. Het algoritme voor gegevens drift biedt een algemene meting van de gegevens wijziging en geeft aan welke functies verantwoordelijk zijn voor nader onderzoek. De monitors van de gegevensset geven een aantal andere metrische gegevens aan door het profileren van de nieuwe informatie in de `timeseries` gegevensset. Aangepaste waarschuwingen kunnen worden ingesteld op alle metrische gegevens die door de monitor worden gegenereerd via [Azure-toepassing Insights](https://docs.microsoft.com/azure/azure-monitor/app/app-insights-overview). U kunt de monitors van de gegevensset gebruiken om snel gegevens problemen te ondervangen en de tijd te beperken om het probleem op te lossen door waarschijnlijke oorzaken te identificeren.  
+Met een gegevensset-monitor kunt u het volgende doen:
+
+* Gegevens drift detecteren en waarschuwen voor nieuwe gegevens in een gegevensset.
+* Analyseer historische gegevens voor drift.
+* Nieuwe gegevens in de loop van de tijd van het profiel.
+
+Het algoritme voor gegevens drift biedt een algemene meting van de gegevens wijziging en geeft aan welke functies verantwoordelijk zijn voor nader onderzoek. De monitors van de gegevensset geven een aantal andere metrische gegevens aan door het profileren van de nieuwe informatie in de `timeseries` gegevensset. 
+
+Aangepaste waarschuwingen kunnen worden ingesteld op alle metrische gegevens die door de monitor worden gegenereerd via [Azure-toepassing Insights](https://docs.microsoft.com/azure/azure-monitor/app/app-insights-overview). U kunt de monitors van de gegevensset gebruiken om snel gegevens problemen te ondervangen en de tijd te beperken om het probleem op te lossen door waarschijnlijke oorzaken te identificeren.  
 
 In het algemeen zijn er drie primaire scenario's voor het instellen van gegevensset-monitors in Azure Machine Learning.
 
-Scenario | Description
+Scenario | Beschrijving
 ---|---
-Bewaken van de gegevens van een model voor drift van de trainings gegevens van het model | De resultaten van dit scenario kunnen worden geïnterpreteerd als bewaking van een proxy voor de nauw keurigheid van het model, op voor waarde dat de model nauwkeurigheid afnemen als het leveren van gegevens verhoudingen van de trainings gegevens.
-Een time series-gegevensset voor drift bewaken vanuit een vorige tijds periode. | Dit scenario is algemener en kan worden gebruikt voor het bewaken van gegevens sets die betrekking hebben op de upstream of het maken van een model.  De doel gegevensset moet een time stamp-kolom hebben, terwijl de gegevensset van de basis lijn een wille keurige gegevensset kan zijn met functies die gemeen schappelijk zijn met de doel-DataSet.
+De gegevens van een model bewaken voor drift van de trainings gegevens | De resultaten van dit scenario kunnen worden geïnterpreteerd als bewaking van een proxy voor de nauw keurigheid van het model, omdat de model nauwkeurigheid afnemen wanneer het gaat om gegevens drift van de trainings gegevens.
+Een time series-gegevensset controleren voor drift vanaf een vorige tijds periode. | Dit scenario is algemener en kan worden gebruikt voor het bewaken van gegevens sets die betrekking hebben op de upstream of het maken van een model.  De doel gegevensset moet een time stamp-kolom bevatten. De gegevensset voor de basis lijn kan elke tabellaire gegevensset zijn met functies die gemeen schappelijk zijn met de doel-DataSet.
 Analyse uitvoeren op gegevens in het verleden. | Dit scenario kan worden gebruikt om historische gegevens te begrijpen en beslissingen op te nemen in instellingen voor de monitors van de gegevensset.
 
-## <a name="how-dataset-can-monitor-data"></a>Hoe gegevensset gegevens kan bewaken
+Gegevensset monitors zijn afhankelijk van de volgende Azure-Services.
 
-Met behulp van Azure Machine Learning wordt de gegevens drift bewaakt via data sets. Als u wilt controleren op gegevens drift, een basislijn gegevensset, meestal de trainings gegevensset voor een model, is opgegeven. Een doel gegevensset-doorgaans model invoer gegevens-wordt in de loop van de tijd vergeleken met de gegevensset van de basis lijn. Deze vergelijking betekent dat er een time stamp-kolom moet worden opgegeven voor de doel-DataSet.
+|Azure-service  |Beschrijving  |
+|---------|---------|
+| *Gegevensset* | Drift maakt gebruik van Machine Learning gegevens sets om trainings gegevens op te halen en gegevens voor model training te vergelijken.  Het genereren van een gegevens profiel wordt gebruikt voor het genereren van een aantal van de gerapporteerde metrieken, zoals min, Max, DISTINCT-waarden en aantal afzonderlijke waarden. |
+| *Azureml-pijp lijn en-reken kracht* | De taak voor het berekenen van de drift wordt gehost in de azureml-pijp lijn.  De taak wordt op aanvraag geactiveerd of op schema om te worden uitgevoerd op een reken tijd die is geconfigureerd tijdens het maken van de drijf monitor.
+| *Application Insights*| Met drift worden metrische gegevens verzonden naar Application Insights die horen bij de machine learning-werk ruimte.
+| *Azure Blob-opslag*| Met drift worden metrische gegevens in JSON-indeling verzonden naar Azure Blob-opslag.
 
-### <a name="set-the-timeseries-trait-in-the-target-dataset"></a>De `timeseries` Eigenschappen in de doel-dataset instellen
+## <a name="how-dataset-monitors-data"></a>Hoe gegevensset gegevens bewaakt
 
-De eigenschappen van de doel-dataset moeten worden `timeseries` ingesteld op de opgegeven waarde door de time stamp-kolom op te geven van een kolom in de gegevens of een virtuele kolom die is afgeleid van het pad patroon van de bestanden. Dit kan worden gedaan met behulp van de python-SDK of Azure Machine Learning Studio. Een kolom met een ' fijne korrel ' tijds tempel moet worden opgegeven om `timeseries` Eigenschappen toe te voegen aan de gegevensset. Als uw gegevens zijn gepartitioneerd in mapstructuur met tijd gegevens, zoals {JJJJ/MM/DD}, kunt u een virtuele kolom maken met de patroon instelling pad en instellen als de tijds tempel "grof korrels" om het belang van de tijd reeks functionaliteit te verbeteren. 
+Gebruik Machine Learning gegevens sets om te controleren op Data drift. Geef een basislijn gegevensset op-meestal de trainings gegevensset voor een model. Een doel gegevensset-doorgaans model invoer gegevens-wordt in de loop van de tijd vergeleken met de gegevensset van de basis lijn. Deze vergelijking betekent dat er een time stamp-kolom moet worden opgegeven voor de doel-DataSet.
 
-#### <a name="python-sdk"></a>Python-SDK
+## <a name="create-target-dataset"></a>Doel gegevensset maken
 
-De [`Dataset`](https://docs.microsoft.com/python/api/azureml-core/azureml.data.tabulardataset?view=azure-ml-py#with-timestamp-columns-timestamp-none--partition-timestamp-none--validate-false----kwargs-) methode Class [`with_timestamp_columns()`](https://docs.microsoft.com/python/api/azureml-core/azureml.data.tabulardataset?view=azure-ml-py#with-timestamp-columns-timestamp-none--partition-timestamp-none--validate-false----kwargs-) definieert de time stamp-kolom voor de gegevensset. 
+De eigenschappen van de doel-dataset moeten worden `timeseries` ingesteld op de gewenste eigenschap door de time stamp-kolom op te geven van een kolom in de gegevens of een virtuele kolom die is afgeleid van het pad patroon van de bestanden. Maak de gegevensset met een tijds tempel via de [python-SDK](#sdk-dataset) of [Azure machine learning Studio](#studio-dataset). Een kolom met een tijds tempel moet worden opgegeven om eigenschappen toe `timeseries` te voegen aan de gegevensset. Als uw gegevens zijn gepartitioneerd in mapstructuur met tijd gegevens, zoals {JJJJ/MM/DD}, maakt u een virtuele kolom met de instelling voor het pad patroon en stelt u deze in als de tijds tempel van de partitie om het belang van de tijd reeks functionaliteit te verbeteren.
+
+### <a name="python-sdk"></a><a name="sdk-dataset"></a>Python-SDK
+
+De [`Dataset`](https://docs.microsoft.com/python/api/azureml-core/azureml.data.tabulardataset?view=azure-ml-py#with-timestamp-columns-timestamp-none--partition-timestamp-none--validate-false----kwargs-) [`with_timestamp_columns()`](https://docs.microsoft.com/python/api/azureml-core/azureml.data.tabulardataset?view=azure-ml-py#with-timestamp-columns-timestamp-none--partition-timestamp-none--validate-false----kwargs-) methode class definieert de time stamp-kolom voor de gegevensset.
 
 ```python 
 from azureml.core import Workspace, Dataset, Datastore
@@ -105,78 +129,29 @@ dset = dset.register(ws, 'target')
 
 Voor een volledig voor beeld van het gebruik `timeseries` van de eigenschappen van gegevens sets raadpleegt u het [voor beeld-notebook](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/work-with-data/datasets-tutorial/timeseries-datasets/tabular-timeseries-dataset-filtering.ipynb) of de SDK-documentatie voor [gegevens sets](https://docs.microsoft.com/python/api/azureml-core/azureml.data.tabulardataset?view=azure-ml-py#with-timestamp-columns-timestamp-none--partition-timestamp-none--validate-false----kwargs-).
 
-#### <a name="azure-machine-learning-studio"></a>Azure Machine Learning Studio
+### <a name="azure-machine-learning-studio"></a><a name="studio-dataset"></a>Azure Machine Learning Studio
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-enterprise-sku-inline.md)]
 
-Als u uw gegevensset maakt met behulp van Azure Machine Learning Studio, zorgt u ervoor dat het pad naar uw gegevens tijds tempel informatie bevat, alle submappen met gegevens bevatten en de partitie-indeling instellen. 
+Als u uw gegevensset maakt met behulp van Azure Machine Learning Studio, zorgt u ervoor dat het pad naar uw gegevens tijds tempel informatie bevat, alle submappen met gegevens bevatten en de partitie-indeling instellen.
 
-In het volgende voor beeld worden alle gegevens in de submap *NoaaIsdFlorida/2019* gemaakt en de partitie-indeling geeft het jaar, de maand en de dag van het tijds tempel. 
+In het volgende voor beeld worden alle gegevens in de submap *NoaaIsdFlorida/2019* gemaakt en de partitie-indeling geeft het jaar, de maand en de dag van het tijds tempel.
 
 [![Partitie-indeling](./media/how-to-monitor-datasets/partition-format.png)](media/how-to-monitor-datasets/partition-format-expand.png)
 
 Geef in de **schema** -instellingen de time stamp-kolom op uit een virtuele of Real-kolom in de opgegeven gegevensset:
 
-![Tijdstempel](./media/how-to-monitor-datasets/timestamp.png)
+:::image type="content" source="media/how-to-monitor-datasets/timestamp.png" alt-text="De tijds tempel instellen":::
 
-## <a name="dataset-monitor-settings"></a>Monitor instellingen voor de gegevensset
+Als uw gegevens op datum zijn gepartitioneerd, zoals hier het geval is, kunt u ook de partition_timestamp opgeven.  Hierdoor kan de verwerking van datums efficiënter worden uitgevoerd.
 
-Wanneer u uw gegevensset met de opgegeven tijds tempel instellingen hebt gemaakt, kunt u uw gegevensset-monitor configureren.
+:::image type="content" source="media/how-to-monitor-datasets/timeseries-partitiontimestamp.png" alt-text="Tijds tempel van partitie":::
 
-De verschillende instellingen voor de controle van de gegevensset zijn onderverdeeld in drie groepen: **basis informatie, controle-instellingen** en **backfill-instellingen**.
 
-### <a name="basic-info"></a>Basis informatie
+## <a name="create-dataset-monitors"></a>Gegevensset-monitors maken
 
-Deze tabel bevat de basis instellingen die worden gebruikt voor de monitor van de gegevensset.
+Maak gegevensset-monitors om gegevens drift te detecteren en te waarschuwen voor een nieuwe gegevensset.  Gebruik de [python-SDK](#sdk-monitor) of [Azure machine learning Studio](#studio-monitor).
 
-| Instelling | Beschrijving | Tips | Veranderlijk | 
-| ------- | ----------- | ---- | ------- | 
-| Name | De naam van de monitor van de gegevensset. | | No |
-| Gegevensset voor basis lijn | Tabellaire gegevensset die wordt gebruikt als de basis lijn voor de vergelijking van de doel gegevensset gedurende een bepaalde periode. | De gegevensset van de basis lijn moet algemene kenmerken hebben met de doel-DataSet. Over het algemeen moet de basis lijn worden ingesteld op de trainings gegevensset van een model of een segment van de doel gegevensset. | No |
-| Doel gegevensset | Er is een gegevensset met een time stamp-kolom opgegeven die wordt geanalyseerd voor gegevens drift. | De doel gegevensset moet algemene kenmerken hebben met de gegevensset van de basis lijn en moet een `timeseries` gegevensset zijn waaraan nieuwe gegevens worden toegevoegd. Historische gegevens in de doel-gegevensset kunnen worden geanalyseerd of nieuwe gegevens kunnen worden bewaakt. | No | 
-| Frequentie | De frequentie die wordt gebruikt om de pijplijn taak te plannen en historische gegevens te analyseren als er een backfill wordt uitgevoerd. Opties zijn dagelijks, wekelijks of maandelijks. | Stel deze instelling zo in dat een vergelijk bare grootte van de gegevens wordt toegevoegd aan de basis lijn. | No | 
-| Functies | Lijst met functies die gedurende een bepaalde periode worden geanalyseerd voor gegevens opslag. | Ingesteld op de uitvoer functie (s) van een model om concept drift te meten. Neem geen functies op die in de loop van de tijd (maand, jaar, index enz.) natuurlijk worden overgenomen. U kunt backfill en een bestaande gegevensdrijf monitor na het aanpassen van de lijst met functies. | Yes | 
-| Rekendoel | Azure Machine Learning Compute-doel voor het uitvoeren van de controle taken voor de gegevensset. | | Yes | 
-
-### <a name="monitor-settings"></a>Monitor instellingen
-
-Deze instellingen zijn voor de bewaakte pijp lijn van de geplande gegevensset, die wordt gemaakt. 
-
-| Instelling | Description | Tips | Veranderlijk | 
-| ------- | ----------- | ---- | ------- |
-| Inschakelen | Het schema in-of uitschakelen voor de monitor pijplijn van de gegevensset | Schakel het schema uit om historische gegevens te analyseren met de instelling backfill. De functie kan worden ingeschakeld nadat de monitor voor de gegevensset is gemaakt. | Yes | 
-| Latentie | Tijd, in uren, duurt het om gegevens in de gegevensset te ontvangen. Als het bijvoorbeeld drie dagen duurt voordat de gegevens in de SQL-Data Base worden inge kapseld, stelt u de gegevensset in op 72. | Kan niet worden gewijzigd nadat de monitor voor de gegevensset is gemaakt | No | 
-| E-mailadressen | E-mail adressen voor waarschuwingen op basis van schending van de drempel waarde voor het percentage gegevens drift. | E-mail berichten worden verzonden via Azure Monitor. | Yes | 
-| Drempelwaarde | Drempel waarde voor het percentage gegevens drift voor e-mail waarschuwingen. | Verdere waarschuwingen en gebeurtenissen kunnen worden ingesteld op veel andere metrische gegevens in de gekoppelde Application Insights resource van de werk ruimte. | Yes | 
-
-### <a name="backfill-settings"></a>Backfill-instellingen
-
-Deze instellingen zijn voor het uitvoeren van een backfill in vroegere gegevens voor metrische gegevens over data waarde.
-
-| Instelling | Description | Tips |
-| ------- | ----------- | ---- |
-| Begindatum | Begin datum van de taak backfill. | | 
-| Einddatum | Eind datum van de taak backfill. | De eind datum mag niet meer dan 31 * Peri eenheden van de tijd van de begin datum zijn. In een bestaande gegevensset-monitor kunnen metrische gegevens worden alsnog om historische data te analyseren of metrische waarden te vervangen door bijgewerkte instellingen. |
-
-## <a name="create-dataset-monitors"></a>Gegevensset-monitors maken 
-
-Maak gegevensset-monitors om gegevens drift te detecteren en te waarschuwen voor een nieuwe gegevensset met Azure Machine Learning Studio of de python-SDK. 
-
-### <a name="azure-machine-learning-studio"></a>Azure Machine Learning Studio
-[!INCLUDE [applies-to-skus](../../includes/aml-applies-to-enterprise-sku-inline.md)]
-
-Als u waarschuwingen wilt instellen op uw gegevenssetcontrole, moet de werk ruimte die de gegevensset bevat waarvoor u een monitor wilt maken, beschikken over de mogelijkheden van ENTER prise Edition. 
-
-Nadat de werkruimte functionaliteit is bevestigd, gaat u naar de start pagina van de studio en selecteert u het tabblad gegevens sets aan de linkerkant. Selecteer de monitors voor de gegevensset.
-
-![Monitor lijst](./media/how-to-monitor-datasets/monitor-list.png)
-
-Klik op de knop **monitor maken** en ga door met de wizard door op **volgende**te klikken.
-
-![Wizard](./media/how-to-monitor-datasets/wizard.png)
-
-De resulterende gegevensset-monitor wordt weer gegeven in de lijst. Selecteer deze optie om naar de pagina met details van de monitor te gaan.
-
-### <a name="from-python-sdk"></a>Van python-SDK
+### <a name="python-sdk"></a><a name="sdk-monitor"></a>Python-SDK
 
 Raadpleeg de [documentatie van PYTHON SDK voor meer informatie over gegevens drift](/python/api/azureml-datadrift/azureml.datadrift) . 
 
@@ -228,65 +203,104 @@ monitor = monitor.enable_schedule()
 
 Zie voor een volledig voor beeld van het instellen van een `timeseries` gegevensset en gegevens drift een [voor beeld](https://aka.ms/datadrift-notebook)van een notebook.
 
-## <a name="understanding-data-drift-results"></a>Informatie over de resultaten van gegevens drift
+### <a name="azure-machine-learning-studio"></a><a name="studio-monitor"></a>Azure Machine Learning Studio
+[!INCLUDE [applies-to-skus](../../includes/aml-applies-to-enterprise-sku-inline.md)]
 
-De gegevens monitor produceert twee groepen resultaten: overzicht van drift en Details van de functie. In de volgende animatie ziet u de beschik bare drift-monitor diagrammen op basis van de geselecteerde functie en metrische gegevens. 
+Als u waarschuwingen wilt instellen op uw gegevenssetcontrole, moet de werk ruimte die de gegevensset bevat waarvoor u een monitor wilt maken, beschikken over de mogelijkheden van ENTER prise Edition.
 
-![Demo video](./media/how-to-monitor-datasets/video.gif)
+Nadat de werkruimte functionaliteit is bevestigd, gaat u naar de [Start pagina van de Studio](https://ml.azure.com) en selecteert u het tabblad **gegevens sets** aan de linkerkant. Selecteer de **monitors**voor de gegevensset.
 
-### <a name="drift-overview"></a>Overzicht van drift
+![Monitor lijst](./media/how-to-monitor-datasets/monitor-list.png)
 
-De sectie **overzicht van drift** bevat inzichten op het hoogste niveau in de grootte van de gegevens drift en de functies die verder moeten worden onderzocht. 
+Klik op de knop **monitor maken** en ga door met de wizard door op **volgende**te klikken.  
 
-| Gegevens | Beschrijving | Tips | 
-| ------ | ----------- | ---- | 
-| Grootte van gegevens drift | Gegeven als een percentage tussen de basis lijn en de doel gegevensset gedurende een bepaalde periode. Variërend van 0 tot 100 waarbij 0 overeenkomt met identieke gegevens sets en 100 geeft aan dat de Azure Machine Learning data drift de twee gegevens sets volledig kan onderscheiden. | Er wordt een nauw keuriger percentage gemeten als gevolg van machine learning technieken die worden gebruikt voor het genereren van deze omvang. | 
-| Drift-bijdrage per functie | De bijdrage van elke functie in de doel gegevensset naar de gemeten grootte van de drift. |  Vanwege covariate-verschuiving hoeft de onderliggende verdeling van een functie niet noodzakelijkerwijs te worden aangepast aan een relatief hoog belang rijk onderdeel. | 
+:::image type="content" source="media/how-to-monitor-datasets/wizard.png" alt-text="Een wizard voor het maken van een monitor":::
 
-De volgende afbeelding is een voor beeld van grafieken die worden weer gegeven in de **overzichts** resultaten van de Drift in azure machine learning Studio, wat resulteert uit een backfill van [NOAA geïntegreerde Surface-gegevens](https://azure.microsoft.com/services/open-datasets/catalog/noaa-integrated-surface-data/). Er zijn gegevens voor het bemonsterd tot `stationName contains 'FLORIDA'` , waarbij januari 2019 wordt gebruikt als de basislijn gegevensset en alle 2019-gegevens die als doel worden gebruikt.
- 
-![Overzicht van drift](./media/how-to-monitor-datasets/drift-overview.png)
+* **Selecteer doel gegevensset**.  De doel-dataset is een gegevensset in tabel vorm waarvoor een time stamp-kolom is opgegeven die wordt geanalyseerd voor gegevens drift. De doel gegevensset moet algemene kenmerken hebben met de gegevensset van de basis lijn en moet een `timeseries` gegevensset zijn waaraan nieuwe gegevens worden toegevoegd. Historische gegevens in de doel-gegevensset kunnen worden geanalyseerd of nieuwe gegevens kunnen worden bewaakt.
+
+* **Selecteer de basislijn gegevensset.**  Selecteer de tabellaire gegevensset die moet worden gebruikt als de basis lijn voor de vergelijking van de doel gegevensset gedurende een bepaalde periode.  De gegevensset van de basis lijn moet algemene kenmerken hebben met de doel-DataSet.  Selecteer een tijds bereik voor het gebruik van een segment van de doel gegevensset of geef een afzonderlijke gegevensset op die moet worden gebruikt als basis lijn.
+
+* **Instellingen controleren**.  Deze instellingen zijn voor de bewaakte pijp lijn van de geplande gegevensset, die wordt gemaakt. 
+
+    | Instelling | Beschrijving | Tips | Veranderlijk | 
+    | ------- | ----------- | ---- | ------- |
+    | Naam | De naam van de monitor van de gegevensset. | | Nee |
+    | Functies | Lijst met functies die gedurende een bepaalde periode worden geanalyseerd voor gegevens opslag. | Ingesteld op de uitvoer functie (s) van een model om concept drift te meten. Neem geen functies op die in de loop van de tijd (maand, jaar, index enz.) natuurlijk zijn. U kunt backfill en een bestaande gegevensdrijf monitor na het aanpassen van de lijst met functies. | Ja | 
+    | Rekendoel | Azure Machine Learning Compute-doel voor het uitvoeren van de controle taken voor de gegevensset. | | Ja | 
+    | Inschakelen | Het schema in-of uitschakelen voor de monitor pijplijn van de gegevensset | Schakel het schema uit om historische gegevens te analyseren met de instelling backfill. De functie kan worden ingeschakeld nadat de monitor voor de gegevensset is gemaakt. | Ja | 
+    | Frequentie | De frequentie die wordt gebruikt om de pijplijn taak te plannen en historische gegevens te analyseren als er een backfill wordt uitgevoerd. Opties zijn dagelijks, wekelijks of maandelijks. | Bij elke uitvoering worden de gegevens in de doel gegevensset vergeleken op basis van de frequentie: <li>Dagelijks: de meest recente volledige dag in de doel gegevensset vergelijken met de basis lijn <li>Wekelijks: de meest recente volledige week (maandag-zondag) in de doel gegevensset vergelijken met de basis lijn <li>Maandelijks: de meest recente volledige maand in de doel gegevensset vergelijken met de basis lijn | Nee | 
+    | Latentie | Tijd, in uren, duurt het om gegevens in de gegevensset te ontvangen. Als het bijvoorbeeld drie dagen duurt voordat de gegevens in de SQL-Data Base worden inge kapseld, stelt u de gegevensset in op 72. | Kan niet worden gewijzigd nadat de monitor voor de gegevensset is gemaakt | Nee | 
+    | E-mailadressen | E-mail adressen voor waarschuwingen op basis van schending van de drempel waarde voor het percentage gegevens drift. | E-mail berichten worden verzonden via Azure Monitor. | Ja | 
+    | Drempelwaarde | Drempel waarde voor het percentage gegevens drift voor e-mail waarschuwingen. | Verdere waarschuwingen en gebeurtenissen kunnen worden ingesteld op veel andere metrische gegevens in de gekoppelde Application Insights resource van de werk ruimte. | Ja |
+
+Nadat de wizard is voltooid, wordt de resulterende gegevensset-monitor weer gegeven in de lijst. Selecteer deze optie om naar de pagina met details van de monitor te gaan.
+
+## <a name="understand-data-drift-results"></a>Resultaten van gegevens drift begrijpen
+
+In deze sectie ziet u de resultaten van het bewaken van een gegevensset die is gevonden op de pagina **gegevens sets**  /  **gegevensset monitors** in azure Studio.  U kunt de instellingen bijwerken en bestaande gegevens voor een bepaalde periode op deze pagina analyseren.  
+
+Begin met inzichten op het hoogste niveau in de omvang van gegevens drift en een hooglicht van functies die verder moeten worden onderzocht.
+
+:::image type="content" source="media/how-to-monitor-datasets/drift-overview.png" alt-text="Overzicht van drift":::
+
+
+| Gegevens | Beschrijving | 
+| ------ | ----------- | 
+| Grootte van gegevens drift | Een percentage van de verschuiving tussen de basis lijn en de doel gegevensset gedurende een bepaalde periode. Variërend van 0 tot 100 duidt 0 op identieke gegevens sets en 100 geeft aan dat het gegevensdrijf model van Azure Machine Learning de twee gegevens sets volledig kan onderscheiden. Er wordt een nauw keuriger percentage gemeten als gevolg van machine learning technieken die worden gebruikt voor het genereren van deze omvang. | 
+| Belangrijkste drijf functies | Hier worden de functies weer gegeven van de gegevensset die het meest is gedrijfd en zijn daarom het grootste deel van de metrische meet waarde. Vanwege covariate-verschuiving hoeft de onderliggende verdeling van een functie niet noodzakelijkerwijs te worden aangepast aan een relatief hoog belang rijk onderdeel. |
+| Drempelwaarde | Er worden waarschuwingen geactiveerd door de grootte van gegevens drift boven de drempel waarde instellen. Dit kan worden geconfigureerd in de instellingen van de monitor. | 
+
+### <a name="drift-magnitude-trend"></a>Trend van grootte van drift
+
+Bekijk hoe de gegevensset verschilt van de doel gegevensset in de opgegeven tijds periode.  Dichter bij 100%, des te meer gegevens sets verschillen.
+
+:::image type="content" source="media/how-to-monitor-datasets/drift-magnitude.png" alt-text="Trend van grootte van drift":::
+
+### <a name="drift-magnitude-by-features"></a>Grootte van de drift per functie
+
+Deze sectie bevat inzichten op functie niveau in de wijziging in de distributie van de geselecteerde functie, evenals andere statistieken, na verloop van tijd.
+
+De doel gegevensset is ook in de loop van de tijd profileren. De statistische afstand tussen de basislijn distributie van elke functie wordt vergeleken met de tijds duur van de doel gegevensset.  In het algemeen is dit vergelijkbaar met de grootte van de gegevens drift.  Deze statistische afstand geldt echter voor een afzonderlijke functie in plaats van alle functies. Min, Max en gemiddelde zijn ook beschikbaar.
+
+Klik in de Azure Machine Learning Studio op een staaf in de grafiek om de details van het functie niveau voor die datum te bekijken. Standaard ziet u de distributie van de basislijn gegevensset en de distributie van de meest recente uitvoering van hetzelfde onderdeel.
+
+:::image type="content" source="media/how-to-monitor-datasets/drift-by-feature.gif" alt-text="Grootte van de drift per functie":::
+
+Deze metrische gegevens kunnen ook worden opgehaald in de python-SDK via de `get_metrics()` methode voor een `DataDriftDetector` object.
 
 ### <a name="feature-details"></a>Details van functie
 
-De sectie **Details van functie** bevat inzichten op functie niveau in de wijziging in de distributie van de geselecteerde functie, evenals andere statistieken, na verloop van tijd. 
+Schuif ten slotte omlaag om de Details voor elke afzonderlijke functie weer te geven.  Gebruik de vervolg keuzelijsten boven de grafiek om de functie te selecteren en selecteer vervolgens de metrische gegevens die u wilt weer geven.
 
-De doel gegevensset is ook in de loop van de tijd profileren. De statistische afstand tussen de basislijn distributie van elke functie wordt vergeleken met de tijds duur van de doel gegevensset, die conceptueel overeenkomt met de grootte van de gegevens drift, met uitzonde ring dat deze statistische afstand voor een afzonderlijke functie geldt. Min, Max en gemiddelde zijn ook beschikbaar. 
+:::image type="content" source="media/how-to-monitor-datasets/numeric-feature.gif" alt-text="Grafiek en vergelijking van numerieke functies":::
 
-Als u in de Azure Machine Learning Studio op een gegevens punt in de grafiek klikt, wordt de verdeling van de weer gegeven functie dienovereenkomstig aangepast. Standaard worden de distributie van de basislijn gegevensset en de distributie van de meest recente uitvoering van hetzelfde onderdeel weer gegeven. 
+De metrische gegevens in de grafiek zijn afhankelijk van het type functie.
 
-Deze metrische gegevens kunnen ook worden opgehaald in de python-SDK via de `get_metrics()` methode voor een `DataDriftDetector` object. 
+* Numerieke functies
 
-#### <a name="numeric-features"></a>Numerieke functies 
+    | Gegevens | Beschrijving |  
+    | ------ | ----------- |  
+    | Wasserstein afstand | Minimale hoeveelheid werk voor het transformeren van basislijn distributie in de doel verdeling. |
+    | Gemiddelde waarde | De gemiddelde waarde van de functie. |
+    | Minimumwaarde | De minimum waarde van de functie. |
+    | Maximumwaarde | De maximum waarde van de functie. |
 
-Numerieke functies worden in elke controle van de gegevensset profileeerd. Het volgende wordt weer gegeven in de Azure Machine Learning Studio. De kansdichtheids wordt weer gegeven voor de distributie.
+* Categorische-functies
+    
+    | Gegevens | Beschrijving |  
+    | ------ | ----------- |  
+    | Euclidian afstand     |  Berekend voor categorische-kolommen.De Euclidean-afstand wordt berekend op twee vectoren die zijn gegenereerd op basis van een empirische verdeling van dezelfde categorische-kolom uit twee gegevens sets.0 geeft aan dat er geen verschil is in de empirische verdelingen.Hoe meer het is dan 0, hoe meer deze kolom is gedrijfd.Trends kunnen worden waargenomen vanuit een tijd reeks diagram van deze metrische gegevens en kunnen nuttig zijn bij het opsporen van een drijf functie.  |
+    | Unieke waarden | Het aantal unieke waarden (kardinaliteit) van de functie. |
 
-| Gegevens | Beschrijving |  
-| ------ | ----------- |  
-| Wasserstein afstand | Minimale hoeveelheid werk voor het transformeren van basislijn distributie in de doel verdeling. |
-| Gemiddelde waarde | De gemiddelde waarde van de functie. |
-| Minimumwaarde | De minimum waarde van de functie. |
-| Maximumwaarde | De maximum waarde van de functie. |
+Selecteer in dit diagram één datum om de functie distributie tussen het doel en deze datum voor de weer gegeven functie te vergelijken. Voor numerieke functies worden er twee kans-distributies weer gegeven.  Als de functie numeriek is, wordt er een staaf diagram weer gegeven.
 
-![Numerieke functie gegevens](./media/how-to-monitor-datasets/feature-details.png)
-
-#### <a name="categorical-features"></a>Categorische-functies 
-
-Numerieke functies worden in elke controle van de gegevensset profileeerd. Het volgende wordt weer gegeven in de Azure Machine Learning Studio. Er wordt een histogram weer gegeven voor de distributie.
-
-| Gegevens | Beschrijving |  
-| ------ | ----------- |  
-| Euclidian afstand | Geometrische afstand tussen basis lijn-en doel distributies. |
-| Unieke waarden | Het aantal unieke waarden (kardinaliteit) van de functie. |
-
-
-![Details van functie categorische](./media/how-to-monitor-datasets/feature-details2.png)
+:::image type="content" source="media/how-to-monitor-datasets/select-date-to-compare.gif" alt-text="Selecteer een datum om te vergelijken met het doel":::
 
 ## <a name="metrics-alerts-and-events"></a>Metrische gegevens, waarschuwingen en gebeurtenissen
 
-U kunt de metrische gegevens opvragen in de [Azure-toepassing Insights](https://docs.microsoft.com/azure/azure-monitor/app/app-insights-overview) -resource die aan uw machine learning-werk ruimte is gekoppeld. Hiermee krijgt u toegang tot alle functies van Application Insights, met inbegrip van aangepaste waarschuwings regels en actie groepen voor het activeren van een actie, zoals een E-mail/SMS/push/Voice-of Azure-functie. Raadpleeg de volledige Application Insights-documentatie voor meer informatie. 
+U kunt de metrische gegevens opvragen in de [Azure-toepassing Insights](https://docs.microsoft.com/azure/azure-monitor/app/app-insights-overview) -resource die aan uw machine learning-werk ruimte is gekoppeld. U hebt toegang tot alle functies van Application Insights, zoals instellen voor aangepaste waarschuwings regels en actie groepen om een actie te activeren, zoals een E-mail/SMS/push/Voice-of Azure-functie. Raadpleeg de volledige Application Insights-documentatie voor meer informatie. 
 
-Om aan de slag te gaan, gaat u naar de Azure Portal en selecteert u de **overzichts** pagina van uw werk ruimte.  De gekoppelde Application Insights resource bevindt zich uiterst rechts:
+Om aan de slag te gaan, gaat u naar de [Azure Portal](https://portal.azure.com) en selecteert u de **overzichts** pagina van uw werk ruimte.  De gekoppelde Application Insights resource bevindt zich uiterst rechts:
 
 [![Overzicht van de Azure Portal](./media/how-to-monitor-datasets/ap-overview.png)](media/how-to-monitor-datasets/ap-overview-expanded.png)
 
@@ -306,25 +320,9 @@ U kunt een bestaande actie groep gebruiken of een nieuwe maken om de actie te de
 
 ![Nieuwe actie groep](./media/how-to-monitor-datasets/action-group.png)
 
-## <a name="troubleshooting"></a>Problemen oplossen
-
-Beperkingen en bekende problemen:
-
-* Het tijds bereik van backfill-taken is beperkt tot 31 intervallen van de frequentie-instelling van de monitor. 
-* Beperking van 200-functies, tenzij er geen functie lijst is opgegeven (alle gebruikte functies).
-* De reken grootte moet groot genoeg zijn om de gegevens te kunnen verwerken. 
-* Zorg ervoor dat uw gegevensset gegevens bevat binnen de begin-en eind datum voor een bepaalde monitor uitvoering.
-* De monitors van de gegevensset werken alleen voor gegevens sets die 50 rijen of meer bevatten. 
-
-Kolommen, of functies, worden in de gegevensset geclassificeerd als categorische of numeriek op basis van de voor waarden in de volgende tabel. Als de functie niet aan deze voor waarden voldoet, bijvoorbeeld een kolom van het type teken reeks met de unieke waarden van >100, wordt de functie verwijderd uit onze data drift-algoritme, maar is nog steeds profileeerd. 
-
-| Onderdeel type | Gegevenstype | Voorwaarde | Beperkingen | 
-| ------------ | --------- | --------- | ----------- |
-| Categorische gegevens | teken reeks, BOOL, int, float | Het aantal unieke waarden in de functie is kleiner dan 100 en minder dan 5% van het aantal rijen. | NULL wordt beschouwd als een eigen categorie. | 
-| Cijfer | int, float | De waarden in de functie zijn van een numeriek gegevens type en voldoen niet aan de voor waarde voor een categorische-functie. | De functie is verwijderd als >15% van de waarden null zijn. | 
-
 ## <a name="next-steps"></a>Volgende stappen
 
 * Kop naar de [Azure machine learning Studio](https://ml.azure.com) of de [python-notebook](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/work-with-data/datadrift-tutorial/datadrift-tutorial.ipynb) voor het instellen van een monitor voor de gegevensset.
 * Zie gegevens drift instellen voor [modellen die zijn geïmplementeerd in azure Kubernetes service](how-to-monitor-data-drift.md).
 * Stel de gegevensset-drijf monitors in met [Event grid](how-to-use-event-grid.md). 
+* Bekijk deze veelvoorkomende [Tips voor probleem oplossing](resource-known-issues.md#data-drift) als u problemen ondervindt.

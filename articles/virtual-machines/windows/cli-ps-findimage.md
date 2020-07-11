@@ -1,28 +1,26 @@
 ---
-title: Windows VM-installatie kopieën selecteren in azure
+title: Azure Marketplace-installatie kopieën zoeken en gebruiken
 description: Gebruik Azure PowerShell om de uitgever, aanbieding, SKU en versie te bepalen voor VM-installatie kopieën van Marketplace.
 author: cynthn
-ms.service: virtual-machines-windows
+ms.service: virtual-machines
 ms.subservice: imaging
 ms.topic: article
-ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 01/25/2019
 ms.author: cynthn
-ms.openlocfilehash: 46a2badbbe957f6a8a6af7f5a40633ea24cadcd4
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: e1ddc354e95185b6b2ba8bcb821fcabd5721c442
+ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82083362"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86224244"
 ---
-# <a name="find-windows-vm-images-in-the-azure-marketplace-with-azure-powershell"></a>Windows-VM-installatiekopieën zoeken in de Azure Marketplace met Azure PowerShell
+# <a name="find-and-use-vm-images-in-the-azure-marketplace-with-azure-powershell"></a>VM-installatie kopieën zoeken en gebruiken in azure Marketplace met Azure PowerShell
 
-In dit artikel wordt beschreven hoe u Azure PowerShell kunt gebruiken om VM-installatie kopieën te vinden in azure Marketplace. U kunt vervolgens een Marketplace-installatie kopie opgeven wanneer u een virtuele machine programmatisch maakt met Power shell, Resource Manager-sjablonen of andere hulpprogram ma's.
+In dit artikel wordt beschreven hoe u Azure PowerShell kunt gebruiken om VM-installatie kopieën te vinden in azure Marketplace. U kunt vervolgens een Marketplace-installatie kopie opgeven wanneer u een VM maakt.
 
 U kunt ook bladeren in beschik bare installatie kopieën en aanbiedingen met behulp van de [Azure Marketplace](https://azuremarketplace.microsoft.com/) -winkel, de [Azure Portal](https://portal.azure.com)of de [Azure cli](../linux/cli-ps-findimage.md). 
 
- 
 
 [!INCLUDE [virtual-machines-common-image-terms](../../../includes/virtual-machines-common-image-terms.md)]
 
@@ -318,7 +316,6 @@ Vervolgens geeft u de VM-configuratie samen met de netwerk configuratie objecten
 
 `New-AzVM`Zie [een virtuele Windows-machine maken met Power shell](quick-create-powershell.md)om snel een virtuele machine met de cmdlet te maken met behulp van basis informatie over de installatie kopie.
 
-
-Bekijk een voor beeld van een Power shell-script om [een volledig geconfigureerde virtuele machine te maken](../scripts/virtual-machines-windows-powershell-sample-create-vm.md).
+Zie voor meer informatie over het gebruik van Azure Marketplace-installatie kopieën voor het maken van aangepaste installatie kopieën in een galerie met gedeelde afbeeldingen, [informatie over het aankoop plan van Azure Marketplace opgeven bij het maken van installatie kopieën](../marketplace-images.md).
 
 

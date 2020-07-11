@@ -1,0 +1,113 @@
+---
+title: Delta-indeling in Azure Data Factory
+description: Gegevens transformeren en verplaatsen vanuit een Delta-Lake met de Delta-indeling
+author: djpmsft
+ms.service: data-factory
+ms.workload: data-services
+ms.topic: conceptual
+ms.date: 07/09/2020
+ms.author: daperlov
+ms.openlocfilehash: 74c2e738153b1afa5c90f4769b6d9b0e982af363
+ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
+ms.translationtype: MT
+ms.contentlocale: nl-NL
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86225276"
+---
+# <a name="delta-format-in-azure-data-factory"></a>Delta-indeling in Azure Data Factory
+
+[!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
+
+In dit artikel wordt uitgelegd hoe u gegevens kopieert van en naar een Delta Lake dat is opgeslagen in [Azure data Lake Store Gen2](connector-azure-data-lake-storage.md) of [Azure Blob Storage](connector-azure-blob-storage.md) met behulp van de Delta-indeling. Deze connector is beschikbaar als een [inline-gegevensset](data-flow-source.md#inline-datasets) in het toewijzen van gegevens stromen als bron en een sink.
+
+> [!NOTE]
+> De connector voor de Delta-indeling voor het toewijzen van gegevens stromen is momenteel beschikbaar als open bare preview.
+
+## <a name="mapping-data-flow-properties"></a>Eigenschappen van gegevens stroom toewijzen
+
+Deze connector is beschikbaar als een [inline-gegevensset](data-flow-source.md#inline-datasets) in het toewijzen van gegevens stromen als bron en een sink.
+
+### <a name="source-properties"></a>Bron eigenschappen
+
+De onderstaande tabel geeft een lijst van de eigenschappen die worden ondersteund door een Delta bron. U kunt deze eigenschappen bewerken op het tabblad **bron opties** .
+
+| Naam | Beschrijving | Vereist | Toegestane waarden | Eigenschap gegevens stroom script |
+| ---- | ----------- | -------- | -------------- | ---------------- |
+| Indeling | Indeling moet`delta` | ja | `delta` | indeling |
+| Bestandssysteem | De container/het bestands systeem van de Delta Lake | ja | Tekenreeks | System |
+| Mappad | De rechtstreekse van de Delta Lake | ja | Tekenreeks | folderPath |
+| Compressie type | Het compressie type van de Delta tabel | nee | `bzip2`<br>`gzip`<br>`deflate`<br>`ZipDeflate`<br>`snappy`<br>`lz4` | compressionType |
+| Compressie niveau | Kies of de compressie zo snel mogelijk wordt voltooid of dat het resulterende bestand optimaal moet worden gecomprimeerd. | vereist als `compressedType` is opgegeven. | compressionLevel |
+| Tijd reis | Kies of u een query wilt uitvoeren op een oudere moment opname van een Delta tabel | nee | Query op tijds tempel: tijds tempel <br> Query op versie: geheel getal | timestampAsOf <br> versionAsOf |
+
+#### <a name="import-schema"></a>Schema importeren
+
+Delta is alleen beschikbaar als een inline-gegevensset en heeft standaard geen gekoppeld schema. Als u kolom meta gegevens wilt ophalen, klikt u op de knop **schema importeren** op het tabblad **projectie** . Hiermee kunt u verwijzen naar de kolom namen en gegevens typen die door de verzameling zijn opgegeven. Als u het schema wilt importeren, moet een foutopsporingssessie voor [gegevens stromen](concepts-data-flow-debug-mode.md) actief zijn en moet u een bestaand CDM-entiteits definitie bestand hebben om naar te verwijzen.
+ 
+
+### <a name="delta-source-script-example"></a>Voor beeld van Delta bron script
+
+```
+source(output(movieId as integer,
+            title as string,
+            releaseDate as date,
+            rated as boolean,
+            screenedOn as timestamp,
+            ticketPrice as decimal(10,2)
+            ),
+    store: 'local',
+    format: 'delta',
+    versionAsOf: 0,
+    allowSchemaDrift: false,
+    folderPath: $tempPath + '/delta'
+  ) ~> movies
+```
+
+### <a name="sink-properties"></a>Eigenschappen van Sink
+
+De onderstaande tabel geeft een lijst van de eigenschappen die worden ondersteund door een Delta-sink. U kunt deze eigenschappen bewerken op het tabblad **instellingen** .
+
+| Naam | Beschrijving | Vereist | Toegestane waarden | Eigenschap gegevens stroom script |
+| ---- | ----------- | -------- | -------------- | ---------------- |
+| Indeling | Indeling moet`delta` | ja | `delta` | indeling |
+| Bestandssysteem | De container/het bestands systeem van de Delta Lake | ja | Tekenreeks | System |
+| Mappad | De rechtstreekse van de Delta Lake | ja | Tekenreeks | folderPath |
+| Compressie type | Het compressie type van de Delta tabel | nee | `bzip2`<br>`gzip`<br>`deflate`<br>`ZipDeflate`<br>`snappy`<br>`lz4` | compressionType |
+| Compressie niveau | Kies of de compressie zo snel mogelijk wordt voltooid of dat het resulterende bestand optimaal moet worden gecomprimeerd. | vereist als `compressedType` is opgegeven. | compressionLevel |
+| Vacuum | Geef de drempel waarde voor bewaren op in uren voor oudere versies van de tabel. Een waarde van 0 of minder standaard ingesteld op 30 dagen | ja | Geheel getal | vacuüm |
+| Update methode | Opgeven welke bijwerk bewerkingen zijn toegestaan op Delta Lake. Voor-methoden die niet worden ingevoegd, is een voor gaande trans formatie van rijen vereist voor het markeren van een rij. | ja | `true` of `false` | verwijderd <br> invoegen <br> bij te werken <br> upsertable |
+
+### <a name="delta-sink-script-example"></a>Script voor beeld van Delta-Sink
+
+Het gekoppelde gegevensstroom script is:
+
+```
+moviesAltered sink(
+          input(movieId as integer,
+                title as string
+            ),
+           mapColumn(
+                movieId,
+                title
+            ),
+           insertable: true,
+           updateable: true,
+           deletable: true,
+           upsertable: false,
+           keys: ['movieId'],
+            store: 'local',
+           format: 'delta',
+           vacuum: 180,
+           folderPath: $tempPath + '/delta'
+           ) ~> movieDB
+```
+
+### <a name="known-limitations"></a>Bekende beperkingen
+
+Bij het schrijven naar een Delta-sink is er sprake van een bekende beperking waarbij het aantal rijen dat is geschreven niet wordt geretourneerd in de uitvoer van de bewaking.
+
+## <a name="next-steps"></a>Volgende stappen
+
+* Maak een [bron transformatie](data-flow-source.md) in de toewijzing van gegevens stroom.
+* Maak een [sink-trans formatie](data-flow-sink.md) in de toewijzing van gegevens stroom.
+* Maak een [ALTER Row trans formatie](data-flow-alter-row.md) om rijen te markeren als insert, update, upsert of DELETE.
