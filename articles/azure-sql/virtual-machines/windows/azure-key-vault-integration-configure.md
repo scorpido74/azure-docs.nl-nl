@@ -14,18 +14,15 @@ ms.workload: iaas-sql-server
 ms.date: 04/30/2018
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: 966daa52652846004d163e230fab227a78c20f7d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 5f1a8e2768c7ea9f252a35ab58480c613d3face6
+ms.sourcegitcommit: f7e160c820c1e2eb57dc480b2a8fd6bef7053e91
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84669253"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86231961"
 ---
 # <a name="configure-azure-key-vault-integration-for-sql-server-on-azure-vms-resource-manager"></a>Azure Key Vault integratie configureren voor SQL Server op virtuele machines van Azure (Resource Manager)
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
-
-> [!div class="op_single_selector"]
-> * [Resource Manager](azure-key-vault-integration-configure.md)
-> * [Klassiek](../../../virtual-machines/windows/sqlclassic/virtual-machines-windows-classic-ps-sql-keyvault.md)
 
 Er zijn meerdere SQL Server versleutelings functies, zoals [transparante gegevens versleuteling (TDE)](https://msdn.microsoft.com/library/bb934049.aspx), [versleuteling op kolom niveau (CLE)](https://msdn.microsoft.com/library/ms173744.aspx)en [back-upcodering](https://msdn.microsoft.com/library/dn449489.aspx). Voor deze coderings vormen moet u de cryptografische sleutels die u voor versleuteling gebruikt, beheren en opslaan. De Azure Key Vault-service is ontworpen voor het verbeteren van de beveiliging en het beheer van deze sleutels op een veilige en Maxi maal beschik bare locatie. Met de [SQL Server-connector](https://www.microsoft.com/download/details.aspx?id=45344) kan SQL Server deze sleutels vanuit Azure Key Vault gebruiken.
 

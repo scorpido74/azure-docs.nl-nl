@@ -7,12 +7,12 @@ ms.topic: troubleshooting
 ms.date: 10/16/2018
 ms.author: jeffpatt
 ms.subservice: files
-ms.openlocfilehash: 3a24f6c7c8339ee5e63fea4c0cd4d7edc9da2a17
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: ffd73e9dff06df4b5acdd004dddcfca5ff03ede0
+ms.sourcegitcommit: f7e160c820c1e2eb57dc480b2a8fd6bef7053e91
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85512010"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86232267"
 ---
 # <a name="troubleshoot-azure-files-problems-in-linux"></a>Problemen met Azure Files in Linux oplossen
 
@@ -30,12 +30,12 @@ Veelvoorkomende oorzaken van dit probleem zijn:
 
 |   | SMB 2.1 <br>(Koppelt op Vm's binnen dezelfde Azure-regio) | SMB 3.0 <br>(Koppelt van on-premises en kruis regio's) |
 | --- | :---: | :---: |
-| Ubuntu Server | 14.04 + | 16.04 + |
-| RHEL | 7 + | 7.5 + |
-| CentOS | 7 + |  7.5 + |
-| Debian | 8 + |   |
-| openSUSE | 13.2 + | 42.3 + |
-| SUSE Linux Enterprise Server | 12 | 12 SP3 + |
+| **Ubuntu Server** | 14.04 + | 16.04 + |
+| **RHEL** | 7 + | 7.5 + |
+| **CentOS** | 7 + |  7.5 + |
+| **Debian** | 8 + |   |
+| **openSUSE** | 13.2 + | 42.3 + |
+| **SUSE Linux Enterprise Server** | 12 | 12 SP3 + |
 
 - CIFS-hulpprogram ma's (CIFS-hulppr.) zijn niet geïnstalleerd op de client.
 - De minimale versie van SMB/CIFS, 2,1, is niet geïnstalleerd op de client.
@@ -84,9 +84,9 @@ In Linux wordt een fout bericht van de volgende strekking weer gegeven:
 
 ### <a name="cause"></a>Oorzaak
 
-U hebt de maximum limiet bereikt van gelijktijdige open ingangen die zijn toegestaan voor een bestand.
+U hebt de maximum limiet bereikt van gelijktijdige open ingangen die zijn toegestaan voor een bestand of map.
 
-Er is een quotum van 2.000 open ingangen voor één bestand. Wanneer u 2.000 open ingangen hebt, wordt een fout bericht weer gegeven met de melding dat het quotum is bereikt.
+Er is een quotum van 2.000 open ingangen voor één bestand of map. Wanneer u 2.000 open ingangen hebt, wordt een fout bericht weer gegeven met de melding dat het quotum is bereikt.
 
 ### <a name="solution"></a>Oplossing
 

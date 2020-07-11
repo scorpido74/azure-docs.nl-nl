@@ -5,11 +5,12 @@ ms.date: 10/04/2018
 ms.topic: conceptual
 description: Meer informatie over hoe u snel een Kubernetes-cluster kunt maken dat rechtstreeks vanuit uw browser kan worden geactiveerd zonder dat u iets hoeft te installeren.
 keywords: Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, containers, Helm, servicemesh, servicemeshroutering, kubectl, k8s
-ms.openlocfilehash: 5e2e5cfd22eeedd3554737458caeca0b891b62fe
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: f6da9055e11b5c514d71122c3650bbc326fb8de8
+ms.sourcegitcommit: f7e160c820c1e2eb57dc480b2a8fd6bef7053e91
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77605297"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86232284"
 ---
 # <a name="create-a-kubernetes-cluster-with-azure-dev-spaces-enabled-with-azure-cloud-shell"></a>Een Kubernetes-cluster maken met Azure dev Spaces ingeschakeld met Azure Cloud Shell
 
@@ -33,7 +34,7 @@ Het duurt een paar minuten om het cluster te maken.  Wanneer dit is voltooid, wo
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Zie [Azure dev Spaces](/azure/dev-spaces/) voor koppelingen naar volledige zelf studies.
+Zie [Azure dev Spaces](../index.yml) voor koppelingen naar volledige zelf studies.
 
 > [!IMPORTANT]
 > Veel van de Azure dev Spaces Quick starts en zelf studies gebruiken de Azure dev Spaces CLI om bewerkingen uit te voeren. U kunt de CLI voor Azure Dev Spaces niet installeren in Azure Cloud Shell.

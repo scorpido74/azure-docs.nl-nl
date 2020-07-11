@@ -5,11 +5,12 @@ ms.topic: article
 ms.date: 01/17/2020
 author: dkkapur
 ms.author: dekapur
-ms.openlocfilehash: ad232c5d9df9f6bfae3a79dbd72e2c68143be949
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 2f9aff2ea88c2334ab30c9819f68fd6cbb9124c5
+ms.sourcegitcommit: f7e160c820c1e2eb57dc480b2a8fd6bef7053e91
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "79080357"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86232437"
 ---
 # <a name="encrypt-deployment-data"></a>Implementatiegegevens versleutelen
 
@@ -25,10 +26,10 @@ U kunt gebruikmaken van door micro soft beheerde sleutels voor het versleutelen 
 
 |    |    Door micro soft beheerde sleutels     |     Door klant beheerde sleutels     |
 |----|----|----|
-|    Bewerkingen voor versleuteling/ontsleuteling    |    Azure    |    Azure    |
-|    Sleutel opslag    |    Micro soft-sleutel archief    |    Azure Key Vault    |
-|    Verantwoordelijkheid voor sleutel rotatie    |    Microsoft    |    Klant    |
-|    Sleutel toegang    |    Alleen micro soft    |    Micro soft, klant    |
+|    **Bewerkingen voor versleuteling/ontsleuteling**    |    Azure    |    Azure    |
+|    **Sleutel opslag**    |    Micro soft-sleutel archief    |    Azure Key Vault    |
+|    **Verantwoordelijkheid voor sleutel rotatie**    |    Microsoft-peering    |    Klant    |
+|    **Sleutel toegang**    |    Alleen micro soft    |    Micro soft, klant    |
 
 In de rest van het document worden de stappen beschreven die nodig zijn voor het versleutelen van uw ACI-implementatie gegevens met uw sleutel (door de klant beheerde sleutel). 
 

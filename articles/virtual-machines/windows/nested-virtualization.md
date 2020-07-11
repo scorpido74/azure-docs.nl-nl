@@ -7,12 +7,12 @@ ms.date: 10/09/2017
 ms.topic: how-to
 ms.service: virtual-machines-windows
 ms.workload: infrastructure
-ms.openlocfilehash: 543ed51cc10cce017e0e57a1a351ce382f1ca35f
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.openlocfilehash: f448174842ffd3b7ba14104c30319933c680127d
+ms.sourcegitcommit: f7e160c820c1e2eb57dc480b2a8fd6bef7053e91
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86083505"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86232318"
 ---
 # <a name="how-to-enable-nested-virtualization-in-an-azure-vm"></a>Geneste virtualisatie inschakelen in een Azure VM
 
@@ -145,7 +145,7 @@ Volg de onderstaande stappen om DHCP op de virtuele machine van de host te confi
   
 3. Schakel het selectie vakje **DHCP-server** in, klik op **onderdelen toevoegen**en klik vervolgens op **volgende** totdat u de wizard hebt voltooid.
   
-4. Klik op **Installeren**.
+4. Klik op **Install**.
 
 #### <a name="configure-a-new-dhcp-scope"></a>Een nieuwe DHCP-scope configureren
 
@@ -181,3 +181,4 @@ In dit voor beeld gebruikt u een adres in het bereik 192.168.0.0/24.
 Open in de virtuele gast machine uw browser en navigeer naar een webpagina.
     ![GuestVM](./media/virtual-machines-nested-virtualization/guest-virtual-machine.png)
 
+Raadpleeg [dit document](https://docs.microsoft.com/virtualization/hyper-v-on-windows/user-guide/nested-virtualization)voor instructies over het inschakelen van transparante connectiviteit tussen virtuele gast-Vm's en Azure-vm's.

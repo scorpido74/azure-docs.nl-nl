@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.devlang: azurecli
 ms.date: 11/22/2018
 ms.author: delhan
-ms.openlocfilehash: e93dbd085ce99b8d555d6b9bb04e7eb6f60de0ee
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: f9484b81622e208077f0659975f42f46d90d2137
+ms.sourcegitcommit: f7e160c820c1e2eb57dc480b2a8fd6bef7053e91
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80422895"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86232233"
 ---
 # <a name="enable-or-disable-a-firewall-rule-on-an-azure-vm-guest-os"></a>Een firewallregel in een gastbesturingssysteem in- of uitschakelen
 
@@ -107,7 +107,7 @@ Als de virtuele machine online is en toegankelijk is op een andere VM in hetzelf
     
         Wijzig vervolgens **actief = False** in **actief = True** in de teken reeks:
 
-        **v 2.22 | Actie = toestaan | Actief = waar | Dir = in | Protocol = 6 | Profiel = domein | Profiel = privé | Profiel = openbaar | LPort = 3389 | App =% System root% \system32\svchost.exe| SVC = term | Name = \@FirewallAPI.dll,-28775 | Desc = \@FirewallAPI.dll,-28756 | EmbedCtxt = \@FirewallAPI.dll,-28752 |**
+        `v2.22|Action=Allow|Active=TRUE|Dir=In|Protocol=6|Profile=Domain|Profile=Private|Profile=Public|LPort=3389|App=%SystemRoot%\system32\svchost.exe|Svc=termservice|Name=\@FirewallAPI.dll,-28775|Desc=\@FirewallAPI.dll,-28756|EmbedCtxt=\@FirewallAPI.dll,-28752|`
     
     * Als u een regel wilt uitschakelen, opent u de volgende register waarde:
     
@@ -115,7 +115,7 @@ Als de virtuele machine online is en toegankelijk is op een andere VM in hetzelf
 
         Wijzig vervolgens **actief = True** in **actief = onwaar**:
         
-        **v 2.22 | Actie = toestaan | Actief = onwaar | Dir = in | Protocol = 6 | Profiel = domein | Profiel = privé | Profiel = openbaar | LPort = 3389 | App =% System root% \system32\svchost.exe| SVC = term | Name = \@FirewallAPI.dll,-28775 | Desc = \@FirewallAPI.dll,-28756 | EmbedCtxt = \@FirewallAPI.dll,-28752 |**
+        `v2.22|Action=Allow|Active=FALSE|Dir=In|Protocol=6|Profile=Domain|Profile=Private|Profile=Public|LPort=3389|App=%SystemRoot%\system32\svchost.exe|Svc=termservice|Name=\@FirewallAPI.dll,-28775|Desc=\@FirewallAPI.dll,-28756|EmbedCtxt=\@FirewallAPI.dll,-28752|`
 
 3.  Start de virtuele machine opnieuw op om de wijzigingen toe te passen.
 
@@ -154,7 +154,7 @@ Voordat u deze stappen volgt, moet u een moment opname maken van de systeem schi
         
         Wijzig vervolgens **actief = False** in **actief = True**.
         
-        **v 2.22 | Actie = toestaan | Actief = waar | Dir = in | Protocol = 6 | Profiel = domein | Profiel = privé | Profiel = openbaar | LPort = 3389 | App =% System root% \system32\svchost.exe| SVC = term | Name = \@FirewallAPI.dll,-28775 | Desc = \@FirewallAPI.dll,-28756 | EmbedCtxt = \@FirewallAPI.dll,-28752 |**
+        `v2.22|Action=Allow|Active=TRUE|Dir=In|Protocol=6|Profile=Domain|Profile=Private|Profile=Public|LPort=3389|App=%SystemRoot%\system32\svchost.exe|Svc=termservice|Name=\@FirewallAPI.dll,-28775|Desc=\@FirewallAPI.dll,-28756|EmbedCtxt=\@FirewallAPI.dll,-28752|`
 
     3.  Als u een regel wilt uitschakelen, opent u de volgende register sleutel:
 
@@ -162,7 +162,7 @@ Voordat u deze stappen volgt, moet u een moment opname maken van de systeem schi
 
         Wijzig vervolgens **actief = True** in **actief = onwaar**.
         
-        **v 2.22 | Actie = toestaan | Actief = onwaar | Dir = in | Protocol = 6 | Profiel = domein | Profiel = privé | Profiel = openbaar | LPort = 3389 | App =% System root% \system32\svchost.exe| SVC = term | Name = \@FirewallAPI.dll,-28775 | Desc = \@FirewallAPI.dll,-28756 | EmbedCtxt = \@FirewallAPI.dll,-28752 |**
+        `v2.22|Action=Allow|Active=FALSE|Dir=In|Protocol=6|Profile=Domain|Profile=Private|Profile=Public|LPort=3389|App=%SystemRoot%\system32\svchost.exe|Svc=termservice|Name=\@FirewallAPI.dll,-28775|Desc=\@FirewallAPI.dll,-28756|EmbedCtxt=\@FirewallAPI.dll,-28752|`
 
 9.  Markeer **BROKENSYSTEM**en selecteer vervolgens component **bestand**  >  **verwijderen** in het menu.
 

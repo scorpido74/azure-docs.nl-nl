@@ -5,11 +5,12 @@ ms.date: 09/25/2019
 ms.topic: troubleshooting
 description: Meer informatie over het oplossen van veelvoorkomende problemen bij het inschakelen en gebruiken van Azure dev Spaces
 keywords: 'Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, containers, Helm, servicemesh, servicemeshroutering, kubectl, k8s '
-ms.openlocfilehash: 51846c8630e4e8c60205f8d92fb7f74f92de3f41
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 7b97bab7182e382801a57bcf7dd6f325e665438b
+ms.sourcegitcommit: f7e160c820c1e2eb57dc480b2a8fd6bef7053e91
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84309642"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86232488"
 ---
 # <a name="azure-dev-spaces-troubleshooting"></a>Problemen met Azure dev Spaces oplossen
 
@@ -131,7 +132,7 @@ Dit probleem oplossen:
 
 ### <a name="timeout-at-waiting-for-container-image-build-step-with-aks-virtual-nodes"></a>Time-out bij wachten op build van container installatie kopie... stap met virtuele AKS-knoop punten
 
-Deze time-out treedt op wanneer u probeert om dev Spaces te gebruiken om een service uit te voeren die is geconfigureerd om te worden uitgevoerd op een [virtueel AKS-knoop punt](https://docs.microsoft.com/azure/aks/virtual-nodes-portal). Ontwikkel ruimten biedt momenteel geen ondersteuning voor het bouwen of opsporen van fouten op virtuele knoop punten.
+Deze time-out treedt op wanneer u probeert om dev Spaces te gebruiken om een service uit te voeren die is geconfigureerd om te worden uitgevoerd op een [virtueel AKS-knoop punt](../aks/virtual-nodes-portal.md). Ontwikkel ruimten biedt momenteel geen ondersteuning voor het bouwen of opsporen van fouten op virtuele knoop punten.
 
 Als u `azds up` de switch uitvoert `--verbose` of uitgebreide logboek registratie inschakelt in Visual Studio, ziet u meer details:
 
@@ -591,7 +592,7 @@ Nadat uw peul opnieuw is opgestart, kunt u beginnen met het gebruik van uw besta
 
 Als u Azure-ontwikkel ruimten wilt inschakelen op een AKS-cluster waarvoor het uitgaande verkeer van cluster knooppunten is beperkt, moet u de volgende FQDN-namen toestaan:
 
-| FQDN                                    | Poort      | Gebruiken      |
+| FQDN                                    | Poort      | Gebruik      |
 |-----------------------------------------|-----------|----------|
 | cloudflare.docker.com | HTTPS: 443 | Voor het ophalen van images voor Linux alpine en andere Azure dev Spaces |
 | gcr.io | HTTP: 443 | Helm/Tiller-installatie kopieën ophalen|

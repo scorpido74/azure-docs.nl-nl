@@ -13,11 +13,12 @@ ms.assetid: 521180dc-2cc9-43f1-ae87-2701de7ca6b8
 ms.devlang: na
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.openlocfilehash: f9ed611ae530e49ad8e776c47450bc9b7ece3190
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 34294bf29ec861d7bbb954ece7016de37769a332
+ms.sourcegitcommit: f7e160c820c1e2eb57dc480b2a8fd6bef7053e91
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84266760"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86232692"
 ---
 # <a name="develop-secure-applications-on-azure"></a>Beveiligde toepassingen ontwikkelen in Azure
 In dit artikel bieden we beveiligings activiteiten en-controles waarmee u rekening moet houden bij het ontwikkelen van toepassingen voor de Cloud. Beveiligings vragen en-concepten waarmee u rekening moet houden tijdens de implementatie-en verificatie fasen van micro soft [Security Development Lifecycle (SDL)](https://msdn.microsoft.com/library/windows/desktop/84aed186-1d75-4366-8e61-8d258746bopq.aspx) vallen onder de dekking. Het doel is om u te helpen bij het definiëren van activiteiten en Azure-Services die u kunt gebruiken om een veiligere toepassing te ontwikkelen.
@@ -133,7 +134,7 @@ Voer DAST uit, bij voor keur met de hulp van een beveiligings Professional (een 
 
 Bij [fuzz testen](https://cloudblogs.microsoft.com/microsoftsecure/2007/09/20/fuzz-testing-at-microsoft-and-the-triage-process/)wordt programma fouten veroorzaakt door een opzettelijk geformuleerde of wille keurige gegevens naar een toepassing te introduceren. Als er programma fouten optreden, kunnen er beveiligings problemen worden onthuld voordat de toepassing wordt uitgebracht.
 
-[Detectie van beveiligings Risico's](https://docs.microsoft.com/security-risk-detection/) is de micro soft Unique-test service voor het vinden van essentiële beveiligings problemen in software.
+[Detectie van beveiligings Risico's](https://www.microsoft.com/en-us/security-risk-detection/) is de micro soft Unique-test service voor het vinden van essentiële beveiligings problemen in software.
 
 ### <a name="conduct-attack-surface-review"></a>Aanvals beoordeling uitvoeren
 

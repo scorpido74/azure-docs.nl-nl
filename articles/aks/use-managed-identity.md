@@ -4,14 +4,14 @@ description: Meer informatie over het gebruik van beheerde identiteiten in azure
 services: container-service
 author: mlearned
 ms.topic: article
-ms.date: 06/30/2020
+ms.date: 07/10/2020
 ms.author: mlearned
-ms.openlocfilehash: 30d1290f9eb7b2750f09e5e256d4dd212c7e4607
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 27ae1d1a2c6309bdac2410dca4b48abf27d8ea0b
+ms.sourcegitcommit: f7e160c820c1e2eb57dc480b2a8fd6bef7053e91
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85610282"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86231978"
 ---
 # <a name="use-managed-identities-in-azure-kubernetes-service"></a>Beheerde identiteiten gebruiken in azure Kubernetes service
 
@@ -23,7 +23,7 @@ Op dit moment vereist een Azure Kubernetes service (AKS)-cluster (met name de Ku
 
 U moet de volgende bron hebben geïnstalleerd:
 
-- De Azure CLI, versie 2.2.0 of hoger
+- De Azure CLI, versie 2.8.0 of hoger
 
 ## <a name="limitations"></a>Beperkingen
 
@@ -36,20 +36,20 @@ U moet de volgende bron hebben geïnstalleerd:
 
 AKS maakt gebruik van verschillende beheerde identiteiten voor ingebouwde services en invoeg toepassingen.
 
-| Identiteit                       | Name    | Toepassing | Standaard machtigingen | Uw eigen identiteit meenemen
+| Identiteit                       | Naam    | Gebruiksvoorbeeld | Standaard machtigingen | Uw eigen identiteit meenemen
 |----------------------------|-----------|----------|
 | Besturingsvlak | niet zichtbaar | Wordt door AKS gebruikt voor het beheren van netwerk bronnen, zoals het maken van een load balancer voor ingangen, open bare IP, enzovoort.| Rol Inzender voor knooppunt resource groep | Momenteel niet ondersteund
 | Kubelet | AKS-cluster naam-agent pool | Verificatie met Azure Container Registry (ACR) | Rol van lezer voor knooppunt resource groep | Momenteel niet ondersteund
-| Invoeg toepassing | AzureNPM | Geen identiteit vereist | NA | No
-| Invoeg toepassing | AzureCNI netwerk bewaking | Geen identiteit vereist | NA | No
-| Invoeg toepassing | azurepolicy (gate keeper) | Geen identiteit vereist | NA | No
-| Invoeg toepassing | azurepolicy | Geen identiteit vereist | NA | No
-| Invoeg toepassing | Calico | Geen identiteit vereist | NA | No
-| Invoeg toepassing | Dashboard | Geen identiteit vereist | NA | No
-| Invoeg toepassing | HTTPApplicationRouting | Hiermee worden de vereiste netwerk bronnen beheerd | Rol van lezer voor knooppunt resource groep, rol Inzender voor DNS-zone | No
-| Invoeg toepassing | Ingangs toepassings gateway | Hiermee worden de vereiste netwerk bronnen beheerd| Rol Inzender voor knooppunt resource groep | No
-| Invoeg toepassing | omsagent | Wordt gebruikt om AKS-metrische gegevens naar Azure Monitor te verzenden | Rol van uitgever voor metrische gegevens controleren | No
-| Invoeg toepassing | Virtueel knoop punt (ACIConnector) | Beheert vereiste netwerk bronnen voor Azure Container Instances (ACI) | Rol Inzender voor knooppunt resource groep | No
+| Invoeg toepassing | AzureNPM | Geen identiteit vereist | NA | Nee
+| Invoeg toepassing | AzureCNI netwerk bewaking | Geen identiteit vereist | NA | Nee
+| Invoeg toepassing | azurepolicy (gate keeper) | Geen identiteit vereist | NA | Nee
+| Invoeg toepassing | azurepolicy | Geen identiteit vereist | NA | Nee
+| Invoeg toepassing | Calico | Geen identiteit vereist | NA | Nee
+| Invoeg toepassing | Dashboard | Geen identiteit vereist | NA | Nee
+| Invoeg toepassing | HTTPApplicationRouting | Hiermee worden de vereiste netwerk bronnen beheerd | Rol van lezer voor knooppunt resource groep, rol Inzender voor DNS-zone | Nee
+| Invoeg toepassing | Ingangs toepassings gateway | Hiermee worden de vereiste netwerk bronnen beheerd| Rol Inzender voor knooppunt resource groep | Nee
+| Invoeg toepassing | omsagent | Wordt gebruikt om AKS-metrische gegevens naar Azure Monitor te verzenden | Rol van uitgever voor metrische gegevens controleren | Nee
+| Invoeg toepassing | Virtueel knoop punt (ACIConnector) | Beheert vereiste netwerk bronnen voor Azure Container Instances (ACI) | Rol Inzender voor knooppunt resource groep | Nee
 
 
 ## <a name="create-an-aks-cluster-with-managed-identities"></a>Een AKS-cluster maken met beheerde identiteiten

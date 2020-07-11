@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 06/26/2020
 ms.author: kumud
-ms.openlocfilehash: 19824e978af78e85f9e8c790517bd66b1f6c0113
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 5d32c130205420ef8f20d7ce8cb97f9a2595e978
+ms.sourcegitcommit: f7e160c820c1e2eb57dc480b2a8fd6bef7053e91
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85481728"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86232199"
 ---
 # <a name="azure-virtual-network-frequently-asked-questions-faq"></a>Veelgestelde vragen over virtuele Azure-netwerken (FAQ)
 
@@ -191,7 +191,7 @@ Ja. Alle Vm's en Cloud Services rolinstanties die in een VNet zijn geïmplemente
 ## <a name="azure-services-that-connect-to-vnets"></a>Azure-Services die verbinding maken met VNets
 
 ### <a name="can-i-use-azure-app-service-web-apps-with-a-vnet"></a>Kan ik Azure App Service Web Apps met een VNet gebruiken?
-Ja. U kunt Web Apps implementeren in een VNet met behulp van een ASE (App Service Environment), de back-end van uw apps verbinden met uw VNets met VNet-integratie en het inkomende verkeer naar uw app vergren delen met Service-eind punten. Raadpleeg voor meer informatie de volgende artikelen:
+Ja. U kunt Web Apps implementeren in een VNet met behulp van een ASE (App Service Environment), de back-end van uw apps verbinden met uw VNets met VNet-integratie en het inkomende verkeer naar uw app vergren delen met Service-eind punten. Raadpleeg de volgende artikelen voor meer informatie:
 
 * [App Service-netwerk functies](../app-service/networking-features.md)
 * [Web Apps maken in een App Service Environment](../app-service/environment/app-service-web-how-to-create-a-web-app-in-an-ase.md?toc=%2fazure%2fvirtual-network%2ftoc.json)
@@ -406,9 +406,8 @@ Azure Active Directory (Azure AD) biedt geen ondersteuning voor service-eind pun
 ### <a name="are-there-any-limits-on-how-many-vnet-service-endpoints-i-can-set-up-from-my-vnet"></a>Gelden er limieten voor het aantal VNet-service-eind punten dat ik kan instellen vanuit mijn VNet?
 Er is geen limiet voor het totale aantal VNet-service-eind punten in een virtueel netwerk. Voor een Azure-service resource (zoals een Azure Storage account) kunnen services beperkingen afdwingen voor het aantal subnetten dat wordt gebruikt voor het beveiligen van de bron. In de volgende tabel ziet u enkele voor beelden van limieten: 
 
-|||
-|---|---|
 |Azure-service| Limieten voor VNet-regels|
+|---|---|
 |Azure Storage| 100|
 |Azure SQL| 128|
 |Azure SQL Data Warehouse|  128|

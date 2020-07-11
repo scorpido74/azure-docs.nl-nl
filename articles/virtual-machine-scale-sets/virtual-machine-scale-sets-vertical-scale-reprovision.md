@@ -9,11 +9,12 @@ ms.subservice: autoscale
 ms.date: 04/18/2019
 ms.reviewer: avverma
 ms.custom: avverma
-ms.openlocfilehash: 565d98bd5f27351f16ff523aa017c4b980fbdd53
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 597a9e3b018f4ddb68710dff65094f35828b3c4b
+ms.sourcegitcommit: f7e160c820c1e2eb57dc480b2a8fd6bef7053e91
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83827263"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86232658"
 ---
 # <a name="vertical-autoscale-with-virtual-machine-scale-sets"></a>Verticaal automatisch schalen met schaal sets voor virtuele machines
 
@@ -38,7 +39,7 @@ U kunt verticaal schalen instellen om te worden geactiveerd op basis van waarsch
 > [!NOTE]
 > Omdat de grootte van de eerste virtuele machine kan worden geschaald, kan de grootte worden beperkt door de beschik baarheid van de andere grootten in de cluster huidige virtuele machine wordt geïmplementeerd in. In de gepubliceerde Automation-runbooks die in dit artikel worden gebruikt, wordt dit geval in rekening gebracht en schaalt deze alleen binnen de onderstaande VM-grootte paren. Dit betekent dat een Standard_D1v2 virtuele machine niet plotseling kan worden geschaald naar Standard_G5 of omlaag geschaald naar Basic_A0. Ook omhoog/omlaag schalen van beperkte virtuele machines wordt niet ondersteund. U kunt kiezen tussen de volgende combi Naties van grootten:
 > 
-> | Combi natie van VM-grootten schalen |  |
+> | VM-grootten schalen koppel lid | Lid |
 > | --- | --- |
 > | Basic_A0 |Basic_A4 |
 > | Standard_A0 |Standard_A4 |

@@ -7,11 +7,12 @@ ms.manager: carmonm
 ms.topic: article
 ms.date: 03/12/2020
 ms.author: raynew
-ms.openlocfilehash: c6b791fda43a018a26204b2b43dc1e581ff3a945
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: afc3132ebdd0f144d16507ef2ccda2dcaffaa34e
+ms.sourcegitcommit: f7e160c820c1e2eb57dc480b2a8fd6bef7053e91
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "79269482"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86232165"
 ---
 # <a name="migrate-vmware-vms-to-azure-vms-enabled-with-server-side-encryption-and-customer-managed-keys"></a>Virtuele VMware-machines migreren naar Azure-Vm's die zijn ingeschakeld met versleuteling aan de server zijde en door de klant beheerde sleutels
 
@@ -57,7 +58,7 @@ De portal voor server migratie vereenvoudigt de voor bereiding van de replicatie
 
 Een schijf Encryption set-object wijst Managed Disks toe aan een Key Vault die de CMK bevat die voor SSE moet worden gebruikt. Als u Vm's wilt repliceren met CMK, maakt u een set voor schijf versleuteling en geeft u deze door als invoer voor de replicatie bewerking.
 
-Volg het voor beeld [hier](../virtual-machines/windows/disk-encryption.md#powershell) om een schijf Encryption set te maken met behulp van Azure PowerShell. Zorg ervoor dat de schijf versleuteling is ingesteld in het doel abonnement waarnaar Vm's worden gemigreerd, en in de Azure-doel regio voor de migratie.
+Volg het voor beeld [hier](../virtual-machines/windows/disks-enable-customer-managed-keys-powershell.md) om een schijf Encryption set te maken met behulp van Azure PowerShell. Zorg ervoor dat de schijf versleuteling is ingesteld in het doel abonnement waarnaar Vm's worden gemigreerd, en in de Azure-doel regio voor de migratie.
 
 ```azurepowershell
 $Location = "southcentralus"                           #Target Azure region for migration 

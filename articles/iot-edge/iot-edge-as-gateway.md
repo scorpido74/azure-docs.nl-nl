@@ -11,11 +11,12 @@ services: iot-edge
 ms.custom:
 - amqp
 - mqtt
-ms.openlocfilehash: 916eeaa60bc054301af039164ce1c14e77ceb91a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: d7c924af297d9a315b61351b69d2fe6346bc1178
+ms.sourcegitcommit: f7e160c820c1e2eb57dc480b2a8fd6bef7053e91
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81733515"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86232624"
 ---
 # <a name="how-an-iot-edge-device-can-be-used-as-a-gateway"></a>Hoe een IoT Edge-apparaat kan worden gebruikt als gateway
 
@@ -23,11 +24,11 @@ Gateways in IoT Edge oplossingen bieden connectiviteit van apparaten en Edge Ana
 
 ## <a name="patterns"></a>Patronen
 
-Er zijn drie patronen voor het gebruik van een IoT Edge apparaat als gateway: transparant, protocol omzetting en identiteits omzetting:
+Er zijn drie patronen voor het gebruik van een IoT Edge-apparaat als gateway: transparant, protocolomzetting en identiteitsomzetting:
 
-* **Transparant** : apparaten die theoretisch verbinding kunnen maken met IOT hub kunnen in plaats daarvan verbinding maken met een gateway apparaat. De downstream-apparaten hebben hun eigen IoT Hub identiteiten en maken gebruik van een van de MQTT-, AMQP-of HTTP-protocollen. De gateway geeft simpelweg communicatie tussen de apparaten en IoT Hub door. Zowel de apparaten als de gebruikers die met hen communiceren via IoT Hub, zijn niet op de hoogte van de communicatie van een gateway. Dit gebrek aan bewustzijn betekent dat de gateway als *transparant*wordt beschouwd. Raadpleeg [een transparante gateway maken](how-to-create-transparent-gateway.md) voor specifieke informatie over het gebruik van een IOT edge apparaat als transparante gateway.
-* **Protocol vertaling** : ook wel bekend als een dekkend gateway patroon, apparaten die geen ondersteuning bieden voor MQTT, AMQP of http, kunnen een gateway apparaat gebruiken om gegevens te verzenden naar IOT hub namens hun naam. De gateway begrijpt het protocol dat wordt gebruikt door de downstream-apparaten en is het enige apparaat met een identiteit in IoT Hub. Alle informatie lijkt op het ene apparaat, de gateway. Downstream-apparaten moeten extra identificerende informatie in hun berichten insluiten als Cloud toepassingen de gegevens per apparaat willen analyseren. Daarnaast zijn IoT Hub primitieven, zoals apparaatdubbels en methoden, alleen beschikbaar voor het gateway apparaat, niet voor downstream-apparaten.
-* **Identiteits vertalingen** : apparaten die geen verbinding kunnen maken met IOT hub kunnen in plaats daarvan verbinding maken met een gateway apparaat. De gateway biedt IoT Hub identiteits-en protocol omzetting namens de downstream-apparaten. De gateway is slim genoeg om inzicht te krijgen in het protocol dat wordt gebruikt door de downstream-apparaten, de identiteit ervan te leveren en IoT Hub primitieven te vertalen. Downstream-apparaten worden in IoT Hub weer gegeven als apparaten van de eerste klasse met apparaatdubbels en-methoden. Een gebruiker kan communiceren met de apparaten in IoT Hub en is niet op de hoogte van het tussenliggende gateway apparaat.
+* **Transparant** : apparaten die theoretisch verbinding kunnen maken met IOT hub kunnen in plaats daarvan verbinding maken met een gateway apparaat. De downstreamapparaten hebben hun eigen IoT Hub-identiteiten en maken gebruik van een van de MQTT-, AMQP- of HTTP-protocollen. Via de gateway wordt simpelweg communicatie tussen de apparaten en IoT Hub doorgegeven. Zowel de apparaten als de gebruikers die met hen communiceren via IoT Hub, zijn niet op de hoogte van de communicatie van een gateway. Dit gebrek aan bewustzijn betekent dat de gateway als *transparant*wordt beschouwd. Zie [Een transparante gateway maken](how-to-create-transparent-gateway.md) voor specifieke informatie over het gebruik van een IoT Edge-apparaat als transparante gateway.
+* **Protocol vertaling** : ook wel bekend als een dekkend gateway patroon, apparaten die geen ondersteuning bieden voor MQTT, AMQP of http, kunnen een gateway apparaat gebruiken om gegevens te verzenden naar IOT hub namens hun naam. De gateway begrijpt het protocol dat wordt gebruikt door de downstreamapparaten en is het enige apparaat met een identiteit in IoT Hub. Alle informatie lijkt op het ene apparaat, de gateway. Downstreamapparaten moeten extra identificatiegegevens in hun berichten insluiten als cloudtoepassingen de gegevens per apparaat willen analyseren. Daarnaast zijn IoT Hub-primitieven, zoals apparaatdubbels en methoden, alleen beschikbaar voor het gatewayapparaat, niet voor downstreamapparaten.
+* **Identiteits vertalingen** : apparaten die geen verbinding kunnen maken met IOT hub kunnen in plaats daarvan verbinding maken met een gateway apparaat. De gateway verstrekt de identiteits- en protocolomzetting voor IoT Hub namens de downstreamapparaten. De gateway is slim genoeg om het protocol te begrijpen dat wordt gebruikt door de downstreamapparaten, identiteit te leveren en IoT Hub-primitieven om te zetten. Downstreamapparaten worden in IoT Hub weergegeven als eersteklasapparaten met apparaatdubbels en methoden. Een gebruiker kan communiceren met de apparaten in IoT Hub en is zich niet bewust van het tussenliggende gatewayapparaat.
 
 ![Diagram: transparante, protocol-en identiteits gateway-patronen](./media/iot-edge-as-gateway/edge-as-gateway.png)
 
@@ -49,7 +50,7 @@ Een gateway die identiteits vertalingen ondersteunt, biedt de voor delen van pro
 
 Hier volgt een snel Cheat-blad dat IoT Hub primitieven vergelijkt wanneer transparante, dekkende (Protocol) en proxy gateways worden gebruikt.
 
-| &nbsp; | Transparante gateway | Protocol omzetting | Identiteits vertalingen |
+| Primitieve | Transparante gateway | Protocol omzetting | Identiteits vertalingen |
 |--------|-------------|--------|--------|
 | Identiteiten die zijn opgeslagen in het IoT Hub-identiteits register | Identiteit van alle verbonden apparaten | Alleen de identiteit van het gateway apparaat | Identiteit van alle verbonden apparaten |
 | Dubbel apparaat | Elk verbonden apparaat heeft een eigen apparaat, twee | Alleen de gateway heeft een apparaat-en module-apparaatdubbels | Elk verbonden apparaat heeft een eigen apparaat, twee |

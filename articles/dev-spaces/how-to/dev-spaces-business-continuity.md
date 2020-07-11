@@ -1,5 +1,5 @@
 ---
-title: Bedrijfscontinuïteit en herstel na noodgevallen
+title: Zakelijke continuïteit en herstel na noodgevallen
 services: azure-dev-spaces
 author: lisaguthrie
 ms.author: lcozzens
@@ -8,23 +8,24 @@ ms.topic: conceptual
 description: Meer informatie over het gebruik van Azure dev Spaces en Azure Kubernetes Services voor bedrijfs continuïteit en voor bereiding op nood herstel
 keywords: 'Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, containers, Helm, servicemesh, servicemeshroutering, kubectl, k8s '
 manager: gwallace
-ms.openlocfilehash: 993866a35f530616c235728cbe59e52e083aa968
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 4e47d4b05dedb981d55c527f76ae1c3a120f23d0
+ms.sourcegitcommit: f7e160c820c1e2eb57dc480b2a8fd6bef7053e91
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83996921"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86232420"
 ---
 # <a name="business-continuity-and-disaster-recovery-in-azure-dev-spaces"></a>Bedrijfs continuïteit en herstel na nood gevallen in azure dev Spaces
 
 ## <a name="review-disaster-recovery-guidance-for-azure-kubernetes-service-aks"></a>Raadpleeg de richt lijnen voor herstel na nood gevallen voor Azure Kubernetes service (AKS)
 
-Azure dev Spaces is een functie van Azure Kubernetes service (AKS). U moet rekening houden met richt lijnen voor herstel na nood gevallen in AKS en u kunt overwegen of ze van toepassing zijn op de AKS-clusters die u gebruikt voor dev-ruimten. Raadpleeg [Aanbevolen procedures voor bedrijfs continuïteit en herstel na nood gevallen in azure Kubernetes service (AKS)](https://docs.microsoft.com/azure/aks/operator-best-practices-multi-region) voor meer informatie.
+Azure dev Spaces is een functie van Azure Kubernetes service (AKS). U moet rekening houden met richt lijnen voor herstel na nood gevallen in AKS en u kunt overwegen of ze van toepassing zijn op de AKS-clusters die u gebruikt voor dev-ruimten. Raadpleeg [Aanbevolen procedures voor bedrijfs continuïteit en herstel na nood gevallen in azure Kubernetes service (AKS)](../../aks/operator-best-practices-multi-region.md) voor meer informatie.
 
 ## <a name="enable-dev-spaces-on-aks-clusters-in-different-regions"></a>Ontwikkel ruimten in AKS-clusters in verschillende regio's inschakelen
 
 Door ontwikkel ruimten in AKS-clusters in verschillende regio's in te scha kelen, kunt u direct na een storing in de Azure-regio het gebruik van dev Spaces hervatten.
 
-Voor algemene informatie over implementaties met meerdere regio's van AKS raadpleegt u [implementatie van meerdere regio's plannen](https://docs.microsoft.com/azure/aks/operator-best-practices-multi-region#plan-for-multiregion-deployment)
+Voor algemene informatie over implementaties met meerdere regio's van AKS raadpleegt u [implementatie van meerdere regio's plannen](../../aks/operator-best-practices-multi-region.md#plan-for-multiregion-deployment)
 
 ### <a name="enable-dev-spaces-via-the-azure-cli"></a>Ontwikkel ruimten inschakelen via de Azure CLI
 

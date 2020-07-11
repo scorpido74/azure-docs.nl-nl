@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 07/16/2019
 ms.author: erhopf
-ms.openlocfilehash: a87bdd7a55036e8b70f0bc5816d2b587c1569202
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: eace63effdbd62d8f08395aa16683627b475a963
+ms.sourcegitcommit: f7e160c820c1e2eb57dc480b2a8fd6bef7053e91
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "77168141"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86232522"
 ---
 # <a name="speech-devices-sdk-microphone-array-recommendations"></a>Aanbevelingen voor SDK-microfoon matrix voor speech-apparaten
 
@@ -27,7 +27,7 @@ De SDK voor spraak apparaten werkt het beste met een microfoon matrix die is ont
 
 De volgende matrix geometries worden aanbevolen voor gebruik met de micro soft audio-stack. De locatie van de geluids bronnen en de weigering van het lucht geluid is verbeterd met een groter aantal microfoons met afhankelijkheden van specifieke toepassingen, gebruikers scenario's en de vorm factor van het apparaat.
 
-|     | Cirkel vormige matrix |     | Lineaire matrix |     |
+| Mics & geometrie | Cirkel vormige matrix | Cirkel vormige matrix | Lineaire matrix | Lineaire matrix |
 | --- | -------------- | --- | ------------ | --- |
 |     | <img src="media/speech-devices-sdk/7-mic-c.png" alt="7 mic circular array" width="150"/> | <img src="media/speech-devices-sdk/4-mic-c.png" alt="4 mic circular array" width="150"/> | <img src="media/speech-devices-sdk/4-mic-l.png" alt="4 mic linear array" width="150"/> | <img src="media/speech-devices-sdk/2-mic-l.png" alt="2 mic linear array" width="150"/> |
 | \#Mics | 7 | 4 | 4 | 2 |
@@ -91,7 +91,7 @@ De volgende richt lijnen voor architectuur zijn nodig bij het integreren van mic
 | --------- | -------------- |
 | Gelijkwaardige microfoon poort | Alle microfoon poorten hebben dezelfde lengte in de matrix |
 | Microfoon poort dimensies | Poort grootte Ø 0,8-1,0 mm. Poort lengte/poort diameter \< 2 |
-| Mic verzegelen         | Gaskets verzegelen uniform geïmplementeerd in de stack-up. 70 \> % compressie ratio voor schuim Gaskets aanbevelen |
+| Mic verzegelen         | Gaskets verzegelen uniform geïmplementeerd in de stack-up. \>70% compressie ratio voor schuim Gaskets aanbevelen |
 | Betrouw baarheid van Mic     | Net moet worden gebruikt om te voor komen dat stof en inkomend verkeer (tussen PCB'S voor de onderste, getransporteerde microfoons en verzegelde GASKET/top-dekking) |
 | Microfoon isolatie       | Rubber Gaskets en trillingen ontkoppelen via structuur, met name voor het isoleren van trillings paden vanwege geïntegreerde sprekers |
 | Sampling-klok      | De audio van het apparaat mag geen jitter-en drop-outs met lage drift hebben |
