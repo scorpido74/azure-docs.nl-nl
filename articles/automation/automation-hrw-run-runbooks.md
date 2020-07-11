@@ -5,11 +5,12 @@ services: automation
 ms.subservice: process-automation
 ms.date: 01/29/2019
 ms.topic: conceptual
-ms.openlocfilehash: 8ea32b2e393a13f1725ff7a83f4b4f2191b59ddb
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 22ab982abe9f73aa77cb9bb2c8d3eaa383bc42fb
+ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83835305"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86186211"
 ---
 # <a name="run-runbooks-on-a-hybrid-runbook-worker"></a>Runbooks uitvoeren op een Hybrid Runbook Worker
 
@@ -21,7 +22,7 @@ Wanneer u een runbook ontwerpt om uit te voeren op een Hybrid Runbook Worker, mo
 
 Azure Automation verwerkt taken van Hybrid Runbook Workers enigszins anders dan taken die worden uitgevoerd in azure-sandboxes. Als u een langlopend runbook hebt, moet u ervoor zorgen dat het bestand kan worden opgestart. Zie [Hybrid Runbook worker Jobs](automation-hybrid-runbook-worker.md#hybrid-runbook-worker-jobs)voor meer informatie over het gedrag van taken.
 
-Houd er rekening mee dat taken voor Hybrid Runbook Workers worden uitgevoerd onder het lokale **systeem** account op Windows of het **nxautomation** -account in Linux. Zorg ervoor dat het **nxautomation** -account toegang heeft tot de locatie waar de runbook-modules zijn opgeslagen voor Linux. Wanneer u de cmdlet [install-module](/powershell/module/powershellget/install-module) gebruikt, moet u ALLUSERS opgeven voor de `Scope` para meter om er zeker van te zijn dat het **nxautomation** -account toegang heeft. Zie voor meer informatie over Power shell op Linux [bekende problemen voor Power shell op niet-Windows-platforms](https://docs.microsoft.com/powershell/scripting/whats-new/known-issues-ps6?view=powershell-6#known-issues-for-powershell-on-non-windows-platforms).
+Houd er rekening mee dat taken voor Hybrid Runbook Workers worden uitgevoerd onder het lokale **systeem** account op Windows of het **nxautomation** -account in Linux. Zorg ervoor dat het **nxautomation** -account toegang heeft tot de locatie waar de runbook-modules zijn opgeslagen voor Linux. Wanneer u de cmdlet [install-module](/powershell/module/powershellget/install-module) gebruikt, moet u ALLUSERS opgeven voor de `Scope` para meter om er zeker van te zijn dat het **nxautomation** -account toegang heeft. Zie voor meer informatie over Power shell op Linux [bekende problemen voor Power shell op niet-Windows-platforms](/powershell/scripting/whats-new/known-issues-ps6?view=powershell-6#known-issues-for-powershell-on-non-windows-platforms).
 
 ## <a name="set-up-runbook-permissions"></a>Runbook-machtigingen instellen
 
@@ -33,7 +34,7 @@ Definieer de machtigingen voor uw runbook om op de volgende manieren te worden u
 
 ## <a name="use-runbook-authentication-to-local-resources"></a>Runbook-verificatie gebruiken voor lokale bronnen
 
-Als u een runbook voorbereidt dat een eigen verificatie voor bronnen biedt, gebruikt u [referentie](automation-credentials.md) -en [certificaat](automation-certificates.md) assets in uw runbook. Er zijn verschillende cmdlets waarmee u referenties kunt opgeven, zodat het runbook kan worden geverifieerd bij verschillende bronnen. In het volgende voor beeld ziet u een deel van een runbook waarmee een computer opnieuw wordt opgestart. De referenties worden opgehaald uit een referentie-element en de naam van de computer van een variabele Asset en gebruiken deze waarden vervolgens met de `Restart-Computer` cmdlet.
+Als u een runbook voorbereidt dat een eigen verificatie voor bronnen biedt, gebruikt u [referentie](./shared-resources/credentials.md) -en [certificaat](./shared-resources/certificates.md) assets in uw runbook. Er zijn verschillende cmdlets waarmee u referenties kunt opgeven, zodat het runbook kan worden geverifieerd bij verschillende bronnen. In het volgende voor beeld ziet u een deel van een runbook waarmee een computer opnieuw wordt opgestart. De referenties worden opgehaald uit een referentie-element en de naam van de computer van een variabele Asset en gebruiken deze waarden vervolgens met de `Restart-Computer` cmdlet.
 
 ```powershell
 $Cred = Get-AutomationPSCredential -Name "MyCredential"
@@ -58,7 +59,7 @@ Volg de volgende stappen om een beheerde identiteit voor Azure-resources te gebr
 2. Configureer beheerde identiteiten voor Azure-resources op de VM. Zie [beheerde identiteiten voor Azure-resources configureren op een virtuele machine met behulp van de Azure Portal](../active-directory/managed-identities-azure-resources/qs-configure-portal-windows-vm.md#enable-system-assigned-managed-identity-on-an-existing-vm).
 3. Geef de virtuele machine toegang tot een resource groep in Resource Manager. Raadpleeg [een door Windows-VM-systeem toegewezen beheerde identiteit gebruiken om toegang te krijgen tot Resource Manager](../active-directory/managed-identities-azure-resources/tutorial-windows-vm-access-arm.md#grant-your-vm-access-to-a-resource-group-in-resource-manager).
 4. Installeer de Hybrid Runbook Worker op de VM. Zie [een Windows-Hybrid Runbook worker implementeren](automation-windows-hrw-install.md) of [een Linux-Hybrid Runbook worker implementeren](automation-linux-hrw-install.md).
-5. Werk het runbook bij om de cmdlet [Connect-AzAccount](https://docs.microsoft.com/powershell/module/az.accounts/connect-azaccount?view=azps-3.5.0) te gebruiken met de `Identity` para meter voor verificatie bij Azure-resources. Deze configuratie vermindert de nood zaak om een uitvoeren als-account te gebruiken en het bijbehorende account beheer uit te voeren.
+5. Werk het runbook bij om de cmdlet [Connect-AzAccount](/powershell/module/az.accounts/connect-azaccount?view=azps-3.5.0) te gebruiken met de `Identity` para meter voor verificatie bij Azure-resources. Deze configuratie vermindert de nood zaak om een uitvoeren als-account te gebruiken en het bijbehorende account beheer uit te voeren.
 
     ```powershell
     # Connect to Azure using the managed identities for Azure resources identity configured on the Azure VM that is hosting the hybrid runbook worker
@@ -73,7 +74,7 @@ Volg de volgende stappen om een beheerde identiteit voor Azure-resources te gebr
 
 ## <a name="use-runbook-authentication-with-run-as-account"></a>Runbook-verificatie gebruiken met het run as-account
 
-In plaats van uw runbook zelf verificatie te bieden voor lokale resources, kunt u een uitvoeren als-account opgeven voor een Hybrid Runbook Worker groep. Hiervoor moet u een [referentie-element](automation-credentials.md) definiëren dat toegang heeft tot lokale bronnen. Deze resources omvatten certificaat archieven en alle runbooks worden onder deze referenties uitgevoerd op een Hybrid Runbook Worker in de groep.
+In plaats van uw runbook zelf verificatie te bieden voor lokale resources, kunt u een uitvoeren als-account opgeven voor een Hybrid Runbook Worker groep. Hiervoor moet u een [referentie-element](./shared-resources/credentials.md) definiëren dat toegang heeft tot lokale bronnen. Deze resources omvatten certificaat archieven en alle runbooks worden onder deze referenties uitgevoerd op een Hybrid Runbook Worker in de groep.
 
 De gebruikers naam voor de referentie moet een van de volgende indelingen hebben:
 
@@ -83,7 +84,7 @@ De gebruikers naam voor de referentie moet een van de volgende indelingen hebben
 
 Gebruik de volgende procedure om een uitvoeren als-account op te geven voor een Hybrid Runbook Worker groep:
 
-1. Maak een [referentie-element](automation-credentials.md) met toegang tot lokale bronnen.
+1. Maak een [referentie-element](./shared-resources/credentials.md) met toegang tot lokale bronnen.
 2. Open het Automation-account in de Azure Portal.
 3. Selecteer **Hybrid worker groepen**en selecteer vervolgens de specifieke groep.
 4. Selecteer **alle instellingen**, gevolgd door de instellingen van de **Hybrid worker-groep**.
@@ -298,7 +299,7 @@ U kunt nu het ondertekende runbook uploaden naar Azure Automation en dit uitvoer
 
 Wanneer u een runbook in de Azure Portal start, wordt de optie **uitvoeren op** weer gegeven waarvoor u **Azure** of **Hybrid worker**kunt selecteren. Als u **Hybrid worker**selecteert, kunt u de Hybrid Runbook worker groep kiezen in een vervolg keuzelijst.
 
-Wanneer u een runbook start met behulp van Power shell, gebruikt u de `RunOn` para meter met de cmdlet [Start-AzAutomationRunbook](https://docs.microsoft.com/powershell/module/Az.Automation/Start-AzAutomationRunbook?view=azps-3.7.0) . In het volgende voor beeld wordt Windows Power shell gebruikt om een runbook met de naam **test-runbook** te starten voor een Hybrid Runbook worker groep met de naam MyHybridGroup.
+Wanneer u een runbook start met behulp van Power shell, gebruikt u de `RunOn` para meter met de cmdlet [Start-AzAutomationRunbook](/powershell/module/Az.Automation/Start-AzAutomationRunbook?view=azps-3.7.0) . In het volgende voor beeld wordt Windows Power shell gebruikt om een runbook met de naam **test-runbook** te starten voor een Hybrid Runbook worker groep met de naam MyHybridGroup.
 
 ```azurepowershell-interactive
 Start-AzAutomationRunbook –AutomationAccountName "MyAutomationAccount" –Name "Test-Runbook" -RunOn "MyHybridGroup"
@@ -307,5 +308,5 @@ Start-AzAutomationRunbook –AutomationAccountName "MyAutomationAccount" –Name
 ## <a name="next-steps"></a>Volgende stappen
 
 * Als uw runbooks niet met succes worden voltooid, raadpleegt u de hand leiding voor het oplossen van de [runbook-uitvoerings fouten](troubleshoot/hybrid-runbook-worker.md#runbook-execution-fails).
-* Raadpleeg de [Power shell-documenten](https://docs.microsoft.com/powershell/scripting/overview)voor meer informatie over Power shell, inclusief taal referentie-en leer modules.
-* Zie [Az.Automation](https://docs.microsoft.com/powershell/module/az.automation/?view=azps-3.7.0#automation) voor een naslagdocumentatie voor een PowerShell-cmdlet.
+* Raadpleeg de [Power shell-documenten](/powershell/scripting/overview)voor meer informatie over Power shell, inclusief taal referentie-en leer modules.
+* Zie [Az.Automation](/powershell/module/az.automation/?view=azps-3.7.0#automation) voor een naslagdocumentatie voor een PowerShell-cmdlet.

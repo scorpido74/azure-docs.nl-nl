@@ -10,12 +10,12 @@ ms.reviewer: jmartens
 author: cartacioS
 ms.author: sacartac
 ms.date: 04/22/2020
-ms.openlocfilehash: f12f080f2b1b7379b622fe4d7c5e0b35e358d0ef
-ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
+ms.openlocfilehash: 5f4b48dfbef7362a0b49e53a17b080e127701c94
+ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86041724"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86199886"
 ---
 # <a name="what-is-automated-machine-learning-automl"></a>Wat is geautomatiseerde machine learning (AutoML)?
 
@@ -118,7 +118,7 @@ Voor automatische machine learning experimenten wordt parametrisatie automatisch
 
 In elk automatisch machine learning experiment worden uw gegevens automatisch geschaald of genormaliseerd om de Help-algoritmen goed uit te voeren. Tijdens de model training wordt een van de volgende schalen of normalisatie technieken toegepast op elk model. Meer informatie over hoe AutoML helpt [om te voor komen dat gegevens in uw modellen worden gespreid en niet in evenwicht worden gegeven](concept-manage-ml-pitfalls.md) .
 
-|Normalisatie aanpassen &nbsp; & &nbsp;| Description |
+|Normalisatie aanpassen &nbsp; & &nbsp;| Beschrijving |
 | ------------- | ------------- |
 | [StandardScaleWrapper](https://scikit-learn.org/stable/modules/generated/sklearn.preprocessing.StandardScaler.html)  | Functies standaardiseren door het gemiddelde en de schaal aanpassing te verwijderen voor eenheids variantie  |
 | [MinMaxScalar](https://scikit-learn.org/stable/modules/generated/sklearn.preprocessing.MinMaxScaler.html)  | Transformeert functies door elke functie te schalen op basis van het minimum en maximum van die kolom  |
@@ -220,21 +220,21 @@ Met de volgende instellingen kunt u uw geautomatiseerde ML experiment configurer
 
 | |De python-SDK|De web-ervaring van Studio|
 ----|:----:|:----:
-Gegevens in Train/validatie sets splitsen| ✓|✓
-Ondersteunt ML-taken: classificatie, regressie en prognose| ✓| ✓
-Optimaliseert op basis van primaire metriek| ✓| ✓
-Ondersteunt AML Compute als Compute-doel | ✓|✓
-Prognose horizon, target lags & Rolling venster configureren|✓|✓
-Afsluit criteria instellen |✓|✓ 
-Gelijktijdige herhalingen instellen| ✓|✓
-Kolommen neerzetten| ✓|✓
-Blok algoritmen|✓|✓
-Kruis validatie |✓|✓
-Ondersteunt training op Azure Databricks clusters| ✓|
-Functie namen van ontworpen weer geven|✓|
-Parametrisatie-samen vatting| ✓|
-Parametrisatie voor feest dagen|✓|
-Uitgebreide niveaus van het logboek bestand| ✓|
+|**Gegevens in Train/validatie sets splitsen**| ✓|✓
+|**Ondersteunt ML-taken: classificatie, regressie en prognose**| ✓| ✓
+|**Optimaliseert op basis van primaire metriek**| ✓| ✓
+|**Ondersteunt AML Compute als Compute-doel** | ✓|✓
+|**Prognose horizon, target lags & Rolling venster configureren**|✓|✓
+|**Afsluit criteria instellen** |✓|✓ 
+|**Gelijktijdige herhalingen instellen**| ✓|✓
+|**Kolommen neerzetten**| ✓|✓
+|**Blok algoritmen**|✓|✓
+|**Kruis validatie** |✓|✓
+|**Ondersteunt training op Azure Databricks clusters**| ✓|
+|**Functie namen van ontworpen weer geven**|✓|
+|**Parametrisatie-samen vatting**| ✓|
+|**Parametrisatie voor feest dagen**|✓|
+|**Uitgebreide niveaus van het logboek bestand**| ✓|
 
 ### <a name="model-settings"></a>Model instellingen
 
@@ -242,11 +242,11 @@ Deze instellingen kunnen worden toegepast op het beste model als resultaat van u
 
 | |De python-SDK|De web-ervaring van Studio|
 |----|:----:|:----:|
-|Beste model registratie, implementatie, uitleg| ✓|✓|
-|Stem ensemble inschakelen & stack-ensembles modellen| ✓|✓|
-|Beste model weer geven op basis van niet-primaire metriek|✓||
-|Compatibiliteit met ONNX-modellen in-of uitschakelen|✓||
-|Het model testen | ✓| |
+|**Beste model registratie, implementatie, uitleg**| ✓|✓|
+|**Stem ensemble inschakelen & stack-ensembles modellen**| ✓|✓|
+|**Beste model weer geven op basis van niet-primaire metriek**|✓||
+|**Compatibiliteit met ONNX-modellen in-of uitschakelen**|✓||
+|**Het model testen** | ✓| |
 
 ### <a name="run-control-settings"></a>Instellingen voor beheer uitvoeren
 
@@ -254,10 +254,10 @@ Met deze instellingen kunt u de uitvoeringen van uw experiment en de onderliggen
 
 | |De python-SDK|De web-ervaring van Studio|
 |----|:----:|:----:|
-|Samenvattings tabel uitvoeren| ✓|✓|
-|Uitvoeringen annuleren & onderliggende uitvoeringen| ✓|✓|
-|Guardrails ophalen| ✓|✓|
-|Uitvoeringen onderbreken & hervatten| ✓| |
+|**Samenvattings tabel uitvoeren**| ✓|✓|
+|**Uitvoeringen annuleren & onderliggende uitvoeringen**| ✓|✓|
+|**Guardrails ophalen**| ✓|✓|
+|**Uitvoeringen onderbreken & hervatten**| ✓| |
 
 <a name="use-with-onnx"></a>
 

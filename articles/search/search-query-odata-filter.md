@@ -19,11 +19,12 @@ translation.priority.mt:
 - ru-ru
 - zh-cn
 - zh-tw
-ms.openlocfilehash: b966e9cfa3ef40666dbbd62135f8f964e5eb2023
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 959adec9f74a8cda7fde941ccea7db75e981a650
+ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84692798"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86201549"
 ---
 # <a name="odata-filter-syntax-in-azure-cognitive-search"></a>OData-$filter syntaxis in azure Cognitive Search
 
@@ -76,27 +77,35 @@ Als u een filter expressie zonder haakjes schrijft rond de bijbehorende subexpre
 
 | Groep | Operator (s) |
 | --- | --- |
-| Logische operators | `not` |
-| Vergelijkingsoperators | `eq`, `ne`, `gt`, `lt`, `ge`, `le` |
-| Logische operators | `and` |
-| Logische operators | `or` |
+| Logische operatoren | `not` |
+| Vergelijkingsoperatoren | `eq`, `ne`, `gt`, `lt`, `ge`, `le` |
+| Logische operatoren | `and` |
+| Logische operatoren | `or` |
 
 Een operator die hoger in de bovenstaande tabel staat, wordt ' Binder meer ' aan de operanden dan andere opera tors. Een voor beeld `and` is van een hogere prioriteit dan `or` , en vergelijkings operatoren hebben een hogere prioriteit dan een van beide, dus zijn de volgende twee expressies gelijkwaardig:
 
+```odata-filter-expr
     Rating gt 0 and Rating lt 3 or Rating gt 7 and Rating lt 10
     ((Rating gt 0) and (Rating lt 3)) or ((Rating gt 7) and (Rating lt 10))
+```
 
 De `not` operator heeft de hoogste prioriteit van alle--zelfs hoger dan de vergelijkings operators. Daarom kunt u een filter als volgt schrijven:
 
+```odata-filter-expr
     not Rating gt 5
+```
 
 Dit fout bericht wordt weer gegeven:
 
+```text
     Invalid expression: A unary operator with an incompatible type was detected. Found operand type 'Edm.Int32' for operator kind 'Not'.
+```
 
 Deze fout treedt op omdat de operator is gekoppeld aan alleen het `Rating` veld, van het type `Edm.Int32` en niet met de volledige vergelijkings expressie. De oplossing bestaat uit het plaatsen van de operand tussen `not` haakjes:
 
+```odata-filter-expr
     not (Rating gt 5)
+```
 
 <a name="bkmk_limits"></a>
 
@@ -111,87 +120,129 @@ Er zijn limieten voor de grootte en complexiteit van filter expressies die u kun
 
 Zoek alle hotels met ten minste één kamer met een basis snelheid van minder dan $200 die is gewaardeerd op of boven 4:
 
+```odata-filter-expr
     $filter=Rooms/any(room: room/BaseRate lt 200.0) and Rating ge 4
+```
 
 Alle andere hotels zoeken dan ' Sea View Motel ' die sinds 2010 zijn renovated:
 
+```odata-filter-expr
     $filter=HotelName ne 'Sea View Motel' and LastRenovationDate ge 2010-01-01T00:00:00Z
+```
 
 Alle hotels zoeken die in 2010 of hoger zijn renovated. De letterlijke datetime bevat informatie over de tijd zone voor Pacific (standaard tijd):  
 
+```odata-filter-expr
     $filter=LastRenovationDate ge 2010-01-01T00:00:00-08:00
+```
 
 Alle hotels zoeken die zijn opgenomen in parkeer plaatsen, waarbij alle kamers niet-roken zijn:
 
+```odata-filter-expr
     $filter=ParkingIncluded and Rooms/all(room: not room/SmokingAllowed)
+```
 
  \-Of  
 
+```odata-filter-expr
     $filter=ParkingIncluded eq true and Rooms/all(room: room/SmokingAllowed eq false)
+```
 
 Alle hotels zoeken die luxe of parkeren zijn en een classificatie van 5 hebben:  
 
+```odata-filter-expr
     $filter=(Category eq 'Luxury' or ParkingIncluded eq true) and Rating eq 5
+```
 
 Alle hotels met het label "WiFi" zoeken in ten minste één ruimte (waarbij elke kamer labels in een veld heeft opgeslagen `Collection(Edm.String)` ):  
 
+```odata-filter-expr
     $filter=Rooms/any(room: room/Tags/any(tag: tag eq 'wifi'))
+```
 
 Alle hotels zoeken met alle kamers:  
 
+```odata-filter-expr
     $filter=Rooms/any()
+```
 
 Alle hotels zoeken die geen kamers hebben:
 
+```odata-filter-expr
     $filter=not Rooms/any()
+```
 
 Alle hotels zoeken binnen 10 kilo meter van een gegeven referentie punt (waarbij `Location` een veld van het type is `Edm.GeographyPoint` ):
 
+```odata-filter-expr
     $filter=geo.distance(Location, geography'POINT(-122.131577 47.678581)') le 10
+```
 
 Alle hotels in een bepaalde View Port zoeken die worden beschreven als een veelhoek (waarbij `Location` een veld van het type EDM. GeographyPoint) is. De veelhoek moet worden gesloten, wat betekent dat de eerste en laatste punt sets hetzelfde moeten zijn. [De punten moeten ook links in de volg orde worden weer gegeven](https://docs.microsoft.com/rest/api/searchservice/supported-data-types#Anchor_1).
 
+```odata-filter-expr
     $filter=geo.intersects(Location, geography'POLYGON((-122.031577 47.578581, -122.031577 47.678581, -122.131577 47.678581, -122.031577 47.578581))')
+```
 
 Alle hotels zoeken waarbij het veld Beschrijving null is. Het veld is leeg als het nooit is ingesteld, of als het expliciet is ingesteld op Null:  
 
+```odata-filter-expr
     $filter=Description eq null
+```
 
 Alle hotels zoeken waarvan de naam gelijk is aan ' Sea View Motel ' of ' budget hotel '). Deze woord groepen bevatten spaties en ruimte is een standaard scheidings teken. U kunt een alternatief scheidings teken opgeven tussen enkele aanhalings tekens als de derde teken reeks parameter:  
 
+```odata-filter-expr
     $filter=search.in(HotelName, 'Sea View motel,Budget hotel', ',')
+```
 
 Alle hotels zoeken waarvan de naam gelijk is aan ' Sea View Motel ' of ' budget hotel ', gescheiden door ' | '):  
 
+```odata-filter-expr
     $filter=search.in(HotelName, 'Sea View motel|Budget hotel', '|')
+```
 
 Alle hotels zoeken waarbij alle kamers het label ' WiFi ' of ' tub ' hebben:
 
+```odata-filter-expr
     $filter=Rooms/any(room: room/Tags/any(tag: search.in(tag, 'wifi, tub'))
+```
 
 Zoek een overeenkomst op zinsdelen in een verzameling, zoals ' verwarmd handdoekontwerptoepassingen-racks ' of ' hairdryer inbegrepen ' in Tags.
 
+```odata-filter-expr
     $filter=Rooms/any(room: room/Tags/any(tag: search.in(tag, 'heated towel racks,hairdryer included', ','))
+```
 
 Vind documenten met het woord ' afgebakend '. Deze filter query is identiek aan een [Zoek opdracht](https://docs.microsoft.com/rest/api/searchservice/search-documents) met `search=waterfront` .
 
+```odata-filter-expr
     $filter=search.ismatchscoring('waterfront')
+```
 
 Vind documenten met het woord ' Hostel ' en classificatie groter of gelijk aan 4, of documenten met het woord ' Motel ' en de classificatie is gelijk aan 5. Deze aanvraag kan niet worden aangegeven zonder de `search.ismatchscoring` functie omdat hiermee zoeken in volledige tekst met filter bewerkingen wordt gecombineerd met `or` .
 
+```odata-filter-expr
     $filter=search.ismatchscoring('hostel') and rating ge 4 or search.ismatchscoring('motel') and rating eq 5
+```
 
 Documenten zonder het woord "luxe" zoeken.
 
+```odata-filter-expr
     $filter=not search.ismatch('luxury')
+```
 
 Documenten zoeken met de woord weer gave ' Oceaan ' of de classificatie gelijk aan 5. De `search.ismatchscoring` query wordt alleen uitgevoerd op velden `HotelName` en `Description` . Documenten die overeenkomen met alleen de tweede component van de schei ding, retour neren te veel-hotels met een waarde die `Rating` gelijk is aan 5. Deze documenten worden geretourneerd met een score die gelijk is aan nul, zodat deze duidelijk wordt gemaakt dat ze niet overeenkomen met een van de gescoorde delen van de expressie.
 
+```odata-filter-expr
     $filter=search.ismatchscoring('"ocean view"', 'Description,HotelName') or Rating eq 5
+```
 
 Zoek hotels waar de termen ' Hotel ' en ' lucht haven ' niet meer dan vijf woorden uit de beschrijving bestaan en waarbij alle kamers niet-roken zijn. Deze query maakt gebruik van de [volledige lucene-query taal](query-lucene-syntax.md).
 
+```odata-filter-expr
     $filter=search.ismatch('"hotel airport"~5', 'Description', 'full', 'any') and not Rooms/any(room: room/SmokingAllowed)
+```
 
 ## <a name="next-steps"></a>Volgende stappen  
 

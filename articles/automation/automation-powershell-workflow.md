@@ -5,11 +5,12 @@ services: automation
 ms.subservice: process-automation
 ms.date: 12/14/2018
 ms.topic: conceptual
-ms.openlocfilehash: 741569740713fef72f714f7cbce38a3c6f075684
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: f175e495af8e925c0d5a6c61669a5e2f44f73ae7
+ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83836682"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86185994"
 ---
 # <a name="learn-powershell-workflow-for-azure-automation"></a>Power shell-werk stroom voor Azure Automation leren
 
@@ -20,7 +21,7 @@ Terwijl een werk stroom is geschreven met de Windows Power shell-syntaxis en wor
 > [!NOTE]
 > Een Power shell-werk stroom script is vergelijkbaar met een Windows Power shell-script, maar heeft een aantal belang rijke verschillen die verwarrend kunnen zijn voor een nieuwe gebruiker. Daarom raden we u aan om uw runbooks te schrijven met behulp van de Power shell-werk stroom alleen als u [controle punten](#use-checkpoints-in-a-workflow)moet gebruiken. 
 
-Zie aan de slag [met Windows Power shell-werk stroom](https://technet.microsoft.com/library/jj134242.aspx)voor meer informatie over de onderwerpen in dit artikel.
+Zie aan de slag [met Windows Power shell-werk stroom](/previous-versions/windows/it-pro/windows-server-2012-R2-and-2012/jj134242(v=ws.11))voor meer informatie over de onderwerpen in dit artikel.
 
 ## <a name="use-workflow-keyword"></a>Werk stroom trefwoord gebruiken
 
@@ -45,9 +46,9 @@ Power shell-werk stroom code lijkt bijna identiek te zijn met Power shell-script
 
 Een activiteit is een specifieke taak in een werk stroom die wordt uitgevoerd in een reeks. Windows PowerShell-werkstroom converteert automatisch veel van de Windows PowerShell cmdlets in activiteiten wanneer het een werkstroom uitvoert. Wanneer u een van deze cmdlets in uw runbook opgeeft, wordt de bijbehorende activiteit uitgevoerd door Windows Workflow Foundation. 
 
-Als een cmdlet geen bijbehorende activiteit heeft, voert Windows Power shell-werk stroom automatisch de cmdlet uit in een [InlineScript](#use-inlinescript) -activiteit. Sommige cmdlets worden uitgesloten en kunnen niet worden gebruikt in een werk stroom, tenzij u ze expliciet opneemt in een InlineScript-blok. Zie voor meer informatie [activiteiten gebruiken in script werk stromen](https://technet.microsoft.com/library/jj574194.aspx).
+Als een cmdlet geen bijbehorende activiteit heeft, voert Windows Power shell-werk stroom automatisch de cmdlet uit in een [InlineScript](#use-inlinescript) -activiteit. Sommige cmdlets worden uitgesloten en kunnen niet worden gebruikt in een werk stroom, tenzij u ze expliciet opneemt in een InlineScript-blok. Zie voor meer informatie [activiteiten gebruiken in script werk stromen](/previous-versions/windows/it-pro/windows-server-2012-R2-and-2012/jj574194(v=ws.11)).
 
-Werkstroomactiviteiten delen een aantal gemeenschappelijke parameters om hun werking te configureren. Zie [about_WorkflowCommonParameters](https://technet.microsoft.com/library/jj129719.aspx).
+Werkstroomactiviteiten delen een aantal gemeenschappelijke parameters om hun werking te configureren. Zie [about_WorkflowCommonParameters](/powershell/module/psworkflow/about/about_workflowcommonparameters).
 
 ### <a name="positional-parameters"></a>Positionele para meters
 
@@ -150,7 +151,7 @@ Hoewel InlineScript-activiteiten in bepaalde werk stromen kritiek kunnen zijn, b
 * U kunt geen [parallelle uitvoering](#use-parallel-processing) binnen een InlineScript-blok gebruiken.
 * InlineScript is van invloed op de schaal baarheid van de werk stroom, omdat deze de Windows Power shell-sessie voor de volledige lengte van het blok InlineScript bevat.
 
-Zie [Windows Power shell-opdrachten uitvoeren in een werk stroom](https://technet.microsoft.com/library/jj574197.aspx) en [about_InlineScript](https://technet.microsoft.com/library/jj649082.aspx)voor meer informatie over het gebruik van InlineScript.
+Zie [Windows Power shell-opdrachten uitvoeren in een werk stroom](/previous-versions/windows/it-pro/windows-server-2012-R2-and-2012/jj574197(v=ws.11)) en [about_InlineScript](/powershell/module/psworkflow/about/about_inlinescript)voor meer informatie over het gebruik van InlineScript.
 
 ## <a name="use-parallel-processing"></a>Parallelle verwerking gebruiken
 
@@ -260,7 +261,7 @@ Workflow Copy-Files
 }
 ```
 
-Omdat de referenties van de gebruikers naam niet worden bewaard nadat u de activiteit [suspend-workflow](https://technet.microsoft.com/library/jj733586.aspx) of na het laatste controle punt hebt aangeroepen, moet u de referenties instellen op null en ze vervolgens opnieuw uit het activa archief ophalen nadat `Suspend-Workflow` of het controle punt is aangeroepen.  Anders wordt mogelijk het volgende fout bericht weer gegeven:`The workflow job cannot be resumed, either because persistence data could not be saved completely, or saved persistence data has been corrupted. You must restart the workflow.`
+Omdat de referenties van de gebruikers naam niet worden bewaard nadat u de activiteit [suspend-workflow](/powershell/module/psworkflow/about/about_suspend-workflow) of na het laatste controle punt hebt aangeroepen, moet u de referenties instellen op null en ze vervolgens opnieuw uit het activa archief ophalen nadat `Suspend-Workflow` of het controle punt is aangeroepen.  Anders wordt mogelijk het volgende fout bericht weer gegeven:`The workflow job cannot be resumed, either because persistence data could not be saved completely, or saved persistence data has been corrupted. You must restart the workflow.`
 
 In de volgende code ziet u hoe u deze situatie kunt afhandelen in uw Power shell workflow-runbooks.
 
@@ -289,9 +290,9 @@ workflow CreateTestVms
 ```
 
 > [!NOTE]
-> Voor niet-grafische power shell-runbooks `Add-AzAccount` en `Add-AzureRMAccount` aliassen voor [Connect-AzAccount](https://docs.microsoft.com/powershell/module/az.accounts/connect-azaccount?view=azps-3.5.0). U kunt deze cmdlets gebruiken of u kunt [uw modules bijwerken](automation-update-azure-modules.md) naar de nieuwste versie in uw Automation-account. Zelfs wanneer u zojuist een nieuw Automation-account hebt aangemaakt, moet u mogelijk uw modules bijwerken. Het gebruik van deze cmdlets is niet vereist als u verificatie uitvoert met een run as-account dat is geconfigureerd met een service-principal.
+> Voor niet-grafische power shell-runbooks `Add-AzAccount` en `Add-AzureRMAccount` aliassen voor [Connect-AzAccount](/powershell/module/az.accounts/connect-azaccount?view=azps-3.5.0). U kunt deze cmdlets gebruiken of u kunt [uw modules bijwerken](automation-update-azure-modules.md) naar de nieuwste versie in uw Automation-account. Zelfs wanneer u zojuist een nieuw Automation-account hebt aangemaakt, moet u mogelijk uw modules bijwerken. Het gebruik van deze cmdlets is niet vereist als u verificatie uitvoert met een run as-account dat is geconfigureerd met een service-principal.
 
-Zie [controle punten toevoegen aan een script werk stroom](https://technet.microsoft.com/library/jj574114.aspx)voor meer informatie over controle punten.
+Zie [controle punten toevoegen aan een script werk stroom](/previous-versions/windows/it-pro/windows-server-2012-R2-and-2012/jj574114(v=ws.11))voor meer informatie over controle punten.
 
 ## <a name="next-steps"></a>Volgende stappen
 

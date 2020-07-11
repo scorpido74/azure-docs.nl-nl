@@ -2,12 +2,13 @@
 title: Met GPU ingeschakelde container instantie implementeren
 description: Meer informatie over het implementeren van Azure container instances voor het uitvoeren van Compute-container-apps met GPU-resources.
 ms.topic: article
-ms.date: 02/19/2020
-ms.openlocfilehash: 0f1d21c62be5d7ae099faa2c6fcc440829bb451f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 07/02/2020
+ms.openlocfilehash: 78b67843978583dd6b0f0aee2c1d8ad0e5a7ca77
+ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77525283"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86169745"
 ---
 # <a name="deploy-container-instances-that-use-gpu-resources"></a>Container instanties implementeren die GPU-bronnen gebruiken
 
@@ -72,7 +73,7 @@ Een manier om GPU-resources toe te voegen, is door een container groep te implem
 
 ```YAML
 additional_properties: {}
-apiVersion: '2018-10-01'
+apiVersion: '2019-12-01'
 name: gpucontainergroup
 properties:
   containers:
@@ -138,7 +139,7 @@ Een andere manier om een container groep te implementeren met GPU-resources is m
       {
         "name": "[parameters('containerGroupName')]",
         "type": "Microsoft.ContainerInstance/containerGroups",
-        "apiVersion": "2018-10-01",
+        "apiVersion": "2019-12-01",
         "location": "[resourceGroup().location]",
         "properties": {
             "containers": [
@@ -167,10 +168,10 @@ Een andere manier om een container groep te implementeren met GPU-resources is m
 }
 ```
 
-Implementeer de sjabloon met de opdracht [AZ Group Deployment Create][az-group-deployment-create] . U moet de naam opgeven van een resource groep die is gemaakt in een regio, zoals *ooster* , die GPU-resources ondersteunt.
+Implementeer de sjabloon met de opdracht [AZ Deployment Group Create][az-deployment-group-create] . U moet de naam opgeven van een resource groep die is gemaakt in een regio, zoals *ooster* , die GPU-resources ondersteunt.
 
 ```azurecli-interactive
-az group deployment create --resource-group myResourceGroup --template-file gpudeploy.json
+az deployment group create --resource-group myResourceGroup --template-file gpudeploy.json
 ```
 
 Het duurt enkele minuten om de implementatie te voltooien. De container start en voert vervolgens de tensor flow-taak uit. Voer de opdracht [AZ container logs][az-container-logs] uit om de logboek uitvoer weer te geven:
@@ -239,4 +240,4 @@ az container delete --resource-group myResourceGroup --name gpucontainergrouprm 
 [az-container-show]: /cli/azure/container#az-container-show
 [az-container-logs]: /cli/azure/container#az-container-logs
 [az-container-show]: /cli/azure/container#az-container-show
-[az-group-deployment-create]: /cli/azure/group/deployment#az-group-deployment-create
+[az-deployment-group-create]: /cli/azure/deployment/group#az-deployment-group-create

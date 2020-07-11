@@ -6,11 +6,12 @@ ms.service: cache
 ms.topic: conceptual
 ms.date: 10/18/2019
 ms.author: adsasine
-ms.openlocfilehash: 6ff33bd594181aabc4fd7d55ce33f780a0d06086
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: d14e030898db364d6621933d0032fa9ce0cab676
+ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "74122201"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86185021"
 ---
 # <a name="failover-and-patching-for-azure-cache-for-redis"></a>Failover en Patching voor Azure cache voor redis
 
@@ -22,32 +23,32 @@ Laten we beginnen met een overzicht van failover voor Azure cache voor redis.
 
 ### <a name="a-quick-summary-of-cache-architecture"></a>Een snelle samen vatting van de cache architectuur
 
-Een cache bestaat uit meerdere virtuele machines met afzonderlijke, persoonlijke IP-adressen. Elke virtuele machine, ook wel een knoop punt genoemd, is verbonden met een gedeelde load balancer met één virtueel IP-adres. Elk knoop punt voert het redis-server proces uit en is toegankelijk met behulp van de hostnaam en de redis-poorten. Elk knoop punt wordt beschouwd als een hoofd-of replica knooppunt. Wanneer een client toepassing verbinding maakt met een cache, loopt het verkeer via deze load balancer en wordt het automatisch doorgestuurd naar het hoofd knooppunt.
+Een cache bestaat uit meerdere virtuele machines met afzonderlijke, persoonlijke IP-adressen. Elke virtuele machine, ook wel een knoop punt genoemd, is verbonden met een gedeelde load balancer met één virtueel IP-adres. Elk knoop punt voert het redis-server proces uit en is toegankelijk met behulp van de hostnaam en de redis-poorten. Elk knoop punt wordt beschouwd als een primair of replica knooppunt. Wanneer een client toepassing verbinding maakt met een cache, loopt het verkeer via deze load balancer en wordt het automatisch doorgestuurd naar het primaire knoop punt.
 
-In een Basic-cache is het één knoop punt altijd een Master. In een Standard-of Premium-cache zijn er twee knoop punten: een wordt gekozen als Master en de andere is de replica. Omdat de standaard-en Premium-cache meerdere knoop punten hebben, is het mogelijk dat er een knoop punt niet beschikbaar is terwijl de andere aanvragen blijven verwerken. Geclusterde caches worden gemaakt van veel Shards, elk met afzonderlijke hoofd-en replica knooppunten. Een Shard is mogelijk niet actief terwijl de andere beschikbaar blijven.
+In een Basic-cache is het één knoop punt altijd een primaire. In een Standard-of Premium-cache zijn er twee knoop punten: een is geselecteerd als de primaire en de andere is de replica. Omdat de standaard-en Premium-cache meerdere knoop punten hebben, is het mogelijk dat er een knoop punt niet beschikbaar is terwijl de andere aanvragen blijven verwerken. Geclusterde caches worden gemaakt van veel Shards, elk met afzonderlijke primaire en replica knooppunten. Een Shard is mogelijk niet actief terwijl de andere beschikbaar blijven.
 
 > [!NOTE]
 > Een Basic-cache heeft geen meerdere knoop punten en biedt geen SLA (Service Level Agreement) voor de beschik baarheid. Basis caches worden alleen aanbevolen voor ontwikkelings-en test doeleinden. Gebruik een Standard-of Premium-cache voor een implementatie met meerdere knoop punten om de beschik baarheid te verg Roten.
 
 ### <a name="explanation-of-a-failover"></a>Uitleg van een failover
 
-Er treedt een failover op wanneer een replica-knoop punt zichzelf kan maken als hoofd knooppunt en het oude hoofd knooppunt bestaande verbindingen sluit. Nadat het hoofd knooppunt een back-up heeft gemaakt, ziet u de wijziging in rollen en degradeert zichzelf zichzelf als een replica. Vervolgens wordt er verbinding gemaakt met de nieuwe master en worden gegevens gesynchroniseerd. Een failover kan gepland of niet-gepland zijn.
+Er treedt een failover op wanneer een replica-knoop punt een primair knoop punt wordt, en de bestaande verbindingen worden gesloten door het oude primaire knoop punt. Nadat het primaire knoop punt een back-up heeft gemaakt, ziet u de wijziging in rollen en degradeert zichzelf om een replica te worden. Vervolgens wordt er verbinding gemaakt met de nieuwe primaire en worden gegevens gesynchroniseerd. Een failover kan gepland of niet-gepland zijn.
 
 Een *geplande failover* vindt plaats tijdens systeem updates, zoals redis patches of besturingssysteem upgrades, en beheer bewerkingen, zoals schalen en opnieuw opstarten. Omdat de knoop punten voorafgaande kennisgeving van de update ontvangen, kunnen ze hun rollen gezamenlijk wisselen en snel de load balancer van de wijziging bijwerken. Een geplande failover eindigt doorgaans in minder dan 1 seconde.
 
-Een niet- *geplande failover* kan optreden als gevolg van hardwarestoringen, netwerk storingen of andere onverwachte storingen in het hoofd knooppunt. Het replica knooppunt bevordert zichzelf tot de Master, maar het proces duurt langer. Een replica knooppunt moet eerst detecteren dat het hoofd knooppunt niet beschikbaar is voordat het failover-proces kan initiëren. Het replica knooppunt moet er ook voor zorgen dat deze niet-geplande fout niet tijdelijk of lokaal is, om een onnodige failover te voor komen. Deze vertraging in de detectie houdt in dat een niet-geplande failover doorgaans binnen 10 tot 15 seconden wordt voltooid.
+Een niet- *geplande failover* kan optreden als gevolg van hardwarestoringen, netwerk storingen of andere onverwachte storingen in het primaire knoop punt. Het replica-knoop punt bevordert zichzelf tot primaire, maar het proces duurt langer. Een replica knooppunt moet eerst detecteren dat het primaire knoop punt niet beschikbaar is voordat het failoverproces kan initiëren. Het replica knooppunt moet er ook voor zorgen dat deze niet-geplande fout niet tijdelijk of lokaal is, om een onnodige failover te voor komen. Deze vertraging in de detectie houdt in dat een niet-geplande failover doorgaans binnen 10 tot 15 seconden wordt voltooid.
 
 ## <a name="how-does-patching-occur"></a>Hoe wordt patching uitgevoerd?
 
 De Azure cache for redis-service werkt uw cache regel matig bij met de nieuwste platform functies en-oplossingen. Als u een cache wilt patchen, volgt de service deze stappen:
 
 1. De Management service selecteert één knoop punt waarvoor een patch moet worden uitgevoerd.
-1. Als het geselecteerde knoop punt een hoofd knooppunt is, bevordert het bijbehorende replica knooppunt zichzelf samen. Deze promotie wordt beschouwd als een geplande failover.
+1. Als het geselecteerde knoop punt een primair knoop punt is, wordt het bijbehorende replica knooppunt gezamenlijk gepromoot. Deze promotie wordt beschouwd als een geplande failover.
 1. Het geselecteerde knoop punt wordt opnieuw opgestart om de nieuwe wijzigingen te maken en er wordt een back-up van gemaakt als replica knooppunt.
-1. Het replica knooppunt maakt verbinding met het hoofd knooppunt en synchroniseert gegevens.
+1. Het replica knooppunt maakt verbinding met het primaire knoop punt en synchroniseert gegevens.
 1. Wanneer de gegevens synchronisatie is voltooid, wordt het patch proces herhaald voor de resterende knoop punten.
 
-Omdat patching een geplande failover is, wordt het replica-knoop punt snel gepromoveerd om een Master te worden, en worden er aanvragen voor het onderhoud en nieuwe verbindingen gestart. Basis caches hebben geen replica knooppunt en zijn pas beschikbaar als de update is voltooid. Elk Shard van een geclusterde cache wordt afzonderlijk gerepareerd en sluit geen verbindingen met een andere Shard.
+Omdat patching een geplande failover is, kan het replica knooppunt snel worden gepromoveerd tot een primair en worden er aanvragen voor onderhoud en nieuwe verbindingen gestart. Basis caches hebben geen replica knooppunt en zijn pas beschikbaar als de update is voltooid. Elk Shard van een geclusterde cache wordt afzonderlijk gerepareerd en sluit geen verbindingen met een andere Shard.
 
 > [!IMPORTANT]
 > Knoop punten worden een voor een patch uitgevoerd om gegevens verlies te voor komen. Voor basis caches geldt een verlies van gegevens. Geclusterde caches worden één Shard per keer patched.

@@ -5,11 +5,12 @@ services: automation
 ms.subservice: process-automation
 ms.date: 12/04/2019
 ms.topic: conceptual
-ms.openlocfilehash: e550489f34d84946d0a9e3df641a1484b85a60f0
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: f1e4e288b5b95f355221188a45f1e6c764fde77c
+ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83828930"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86187333"
 ---
 # <a name="use-source-control-integration-in-azure-automation---legacy"></a>Broncode beheer integratie gebruiken in Azure Automation-verouderd
 
@@ -55,7 +56,7 @@ Als u al een GitHub-account en een opslag plaats hebt die u wilt koppelen aan Az
 5. Nadat u op **OK**hebt geklikt, wordt broncode beheer integratie nu geconfigureerd voor uw Automation-account en moet deze worden bijgewerkt met uw github-gegevens. U kunt nu op dit onderdeel klikken om al uw bron beheer synchronisatie taak geschiedenis weer te geven.  
 
     ![Waarden voor de huidige geconfigureerde broncode beheer configuratie](media/source-control-integration-legacy/automation-RepoValues.png)
-6. Nadat u broncode beheer hebt ingesteld, worden er twee [variabele assets](automation-variables.md) in uw Automation-account gemaakt. Daarnaast wordt een geautoriseerde toepassing toegevoegd aan uw GitHub-account.
+6. Nadat u broncode beheer hebt ingesteld, worden er twee [variabele assets](./shared-resources/variables.md) in uw Automation-account gemaakt. Daarnaast wordt een geautoriseerde toepassing toegevoegd aan uw GitHub-account.
 
    * De variabele **micro soft. Azure. Automation. SourceControl. Connection** bevat de waarden van de Connection String, zoals hieronder wordt weer gegeven.  
 
@@ -83,7 +84,7 @@ Als u al een GitHub-account en een opslag plaats hebt die u wilt koppelen aan Az
 
 Met het inchecken van een runbook kunt u de wijzigingen die u hebt aangebracht in een runbook in Azure Automation naar uw opslag plaats voor broncode beheer pushen. Hieronder vindt u de stappen voor het controleren van een runbook:
 
-1. Maak vanuit uw Automation-account [een nieuw tekst runbook](automation-first-runbook-textual.md)of [Bewerk een bestaand tekst runbook](automation-edit-textual-runbook.md). Dit runbook kan een Power shell-werk stroom of een Power shell-script runbook zijn.  
+1. Maak vanuit uw Automation-account [een nieuw tekst runbook](./learn/automation-tutorial-runbook-textual.md)of [Bewerk een bestaand tekst runbook](automation-edit-textual-runbook.md). Dit runbook kan een Power shell-werk stroom of een Power shell-script runbook zijn.  
 2. Nadat u het runbook hebt bewerkt, slaat u het op en klikt u op **inchecken** op de pagina bewerken.  
 
     ![Een venster met de knop inchecken naar GitHub](media/source-control-integration-legacy/automation-CheckinButton.png)

@@ -5,17 +5,18 @@ services: automation
 ms.subservice: process-automation
 ms.date: 03/05/2019
 ms.topic: conceptual
-ms.openlocfilehash: 184e65c929d43e7a5d4ca3be8bd93770c55cd2a5
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 24d0123eecc56b56573e94d831283d8d360cd16e
+ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83836563"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86185922"
 ---
 # <a name="azure-automation-runbook-types"></a>Azure Automation-runbooktypen
 
 De functie Azure Automation proces automatisering ondersteunt diverse typen runbooks, zoals gedefinieerd in de volgende tabel. Zie [Runbook-uitvoering in azure Automation](automation-runbook-execution.md)voor meer informatie over de proces automatiserings omgeving.
 
-| Type | Description |
+| Type | Beschrijving |
 |:--- |:--- |
 | [Grafisch](#graphical-runbooks)|Grafisch runbook dat is gebaseerd op Windows Power shell en is volledig gemaakt en bewerkt in de grafische editor in Azure Portal. |
 | [Grafische power shell-werk stroom](#graphical-runbooks)|Grafisch runbook op basis van een Windows Power shell-werk stroom en is volledig gemaakt en bewerkt in de grafische editor in Azure Portal. |
@@ -67,15 +68,15 @@ PowerShell-runbooks zijn gebaseerd op Windows PowerShell. U bewerkt de code van 
 * U moet vertrouwd zijn met het uitvoeren van Power shell-scripts.
 * Runbooks kunnen geen [parallelle verwerking](automation-powershell-workflow.md#use-parallel-processing) gebruiken om meerdere acties parallel uit te voeren.
 * Runbooks kunnen geen [controle punten](automation-powershell-workflow.md#use-checkpoints-in-a-workflow) gebruiken om het runbook te hervatten als er een fout optreedt.
-* U kunt alleen Power shell workflow-runbooks en grafische runbooks als onderliggende runbooks toevoegen met behulp van de cmdlet [Start-AzAutomationRunbook](https://docs.microsoft.com/powershell/module/az.automation/start-azautomationrunbook?view=azps-3.7.0) , waarmee een nieuwe taak wordt gemaakt.
+* U kunt alleen Power shell workflow-runbooks en grafische runbooks als onderliggende runbooks toevoegen met behulp van de cmdlet [Start-AzAutomationRunbook](/powershell/module/az.automation/start-azautomationrunbook?view=azps-3.7.0) , waarmee een nieuwe taak wordt gemaakt.
 
 ### <a name="known-issues"></a>Bekende problemen
 
 Hieronder vindt u actuele bekende problemen met Power shell-runbooks:
 
-* Power shell-runbooks kunnen een niet-versleutelde [variabele Asset](automation-variables.md) niet ophalen met een null-waarde.
+* Power shell-runbooks kunnen een niet-versleutelde [variabele Asset](./shared-resources/variables.md) niet ophalen met een null-waarde.
 * Power shell-runbooks kunnen een variabele Asset met `*~*` in de naam niet ophalen.
-* Een [Get-process-](https://docs.microsoft.com/powershell/module/microsoft.powershell.management/get-process?view=powershell-7) bewerking in een lus in een Power shell-runbook kan vastlopen na ongeveer 80 iteraties.
+* Een [Get-process-](/powershell/module/microsoft.powershell.management/get-process?view=powershell-7) bewerking in een lus in een Power shell-runbook kan vastlopen na ongeveer 80 iteraties.
 * Een Power shell-runbook kan mislukken als wordt geprobeerd een grote hoeveelheid gegevens naar de uitvoer stroom tegelijk te schrijven. Normaal gesp roken kunt u dit probleem omzeilen door het runbook uit te voeren alleen de informatie die nodig is om met grote objecten te werken. In plaats van zonder beperkingen te gebruiken `Get-Process` , kunt u bijvoorbeeld de cmdlet uitvoer alleen de vereiste para meters hebben als in `Get-Process | Select ProcessName, CPU` .
 
 ## <a name="powershell-workflow-runbooks"></a>Power shell workflow-runbooks

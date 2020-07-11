@@ -5,11 +5,12 @@ services: automation
 ms.subservice: process-automation
 ms.date: 05/22/2020
 ms.topic: conceptual
-ms.openlocfilehash: ba498fe9f70664a801172a6ff3705ac41a6371ef
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 0c8863615446f8b14043cd7bd13e529b7efa1e46
+ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83835241"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86186194"
 ---
 # <a name="forward-azure-automation-job-data-to-azure-monitor-logs"></a>Azure Automation-taakgegevens doorsturen naar Azure Monitor-logboeken
 
@@ -27,8 +28,8 @@ Azure Automation kunt de status van de runbook-taak en taak stromen verzenden na
 
 Als u uw Automation-logboeken wilt gaan verzenden naar Azure Monitor-logboeken, hebt u het volgende nodig:
 
-* De nieuwste versie van [Azure PowerShell](https://docs.microsoft.com/powershell/azureps-cmdlets-docs/).
-* Een Log Analytics-werkruimte. Zie [aan de slag met Azure monitor-logboeken](../log-analytics/log-analytics-get-started.md)voor meer informatie.
+* De nieuwste versie van [Azure PowerShell](/powershell/azureps-cmdlets-docs/).
+* Een Log Analytics-werkruimte. Zie [aan de slag met Azure monitor-logboeken](../azure-monitor/overview.md)voor meer informatie.
 * De resource-ID voor uw Azure Automation-account.
 
 Gebruik de volgende opdracht om de resource-ID te vinden voor uw Azure Automation-account:
@@ -185,8 +186,8 @@ Remove-AzDiagnosticSetting -ResourceId $automationAccountId
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* Zie [Zoek opdrachten in Logboeken in azure monitor logboeken](../log-analytics/log-analytics-log-searches.md)voor meer informatie over het maken van zoek query's en het controleren van de Automation-taak logboeken met Azure monitor-Logboeken.
+* Zie [Zoek opdrachten in Logboeken in azure monitor logboeken](../azure-monitor/log-query/log-query-overview.md)voor meer informatie over het maken van zoek query's en het controleren van de Automation-taak logboeken met Azure monitor-Logboeken.
 * Zie [runbook-uitvoer bewaken](automation-runbook-output-and-messages.md)voor meer informatie over het maken en ophalen van uitvoer-en fout berichten van runbooks.
 * Voor meer informatie over het uitvoeren van een runbook, het controleren van runbook-taken en andere technische details raadpleegt u [runbook execution in azure Automation](automation-runbook-execution.md).
-* Zie [Azure Storage-gegevens verzamelen in azure monitor logs Overview](../azure-monitor/platform/collect-azure-metrics-logs.md)voor meer informatie over Azure monitor logboeken en bronnen voor gegevens verzameling.
+* Zie [Azure Storage-gegevens verzamelen in azure monitor logs Overview](../azure-monitor/platform/resource-logs.md#send-to-log-analytics-workspace)voor meer informatie over Azure monitor logboeken en bronnen voor gegevens verzameling.
 * Zie voor hulp bij het oplossen van problemen Log Analytics [problemen oplossen waarom log Analytics niet langer gegevens verzamelt](../azure-monitor/platform/manage-cost-storage.md#troubleshooting-why-log-analytics-is-no-longer-collecting-data).

@@ -5,15 +5,16 @@ services: automation
 ms.date: 03/04/2020
 ms.topic: conceptual
 ms.custom: mvc
-ms.openlocfilehash: 72065b388f348da1d268f875a10d5b13d2f8cf3b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 8770762fa2d2ae6bc0584d75397829298a62e8c0
+ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84117406"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86185888"
 ---
 # <a name="limit-update-management-deployment-scope"></a>Updatebeheer implementatie bereik beperken
 
-In dit artikel wordt beschreven hoe u met Scope configuraties kunt werken wanneer u de functie [updatebeheer](automation-update-management.md) gebruikt voor het implementeren van updates en patches voor uw virtuele machines. Zie voor meer informatie [doel controle oplossingen in azure monitor (preview-versie)](https://docs.microsoft.com/azure/azure-monitor/insights/solution-targeting). 
+In dit artikel wordt beschreven hoe u met Scope configuraties kunt werken wanneer u de functie [updatebeheer](automation-update-management.md) gebruikt voor het implementeren van updates en patches voor uw virtuele machines. Zie voor meer informatie [doel controle oplossingen in azure monitor (preview-versie)](../azure-monitor/insights/solution-targeting.md). 
 
 ## <a name="about-scope-configurations"></a>Over Scope configuraties
 
@@ -33,7 +34,7 @@ Het bereik voor uw Updatebeheer-implementatie beperken:
 
 5. Vouw in het deel venster voor bewerken de **optie computer groepen selecteren**uit. In het deel venster computer groepen worden de opgeslagen Zoek opdrachten weer gegeven die worden gebruikt voor het maken van de scope configuratie. De opgeslagen zoek opdracht die door Updatebeheer wordt gebruikt, is:
 
-    |Name     |Categorie  |Alias  |
+    |Naam     |Categorie  |Alias  |
     |---------|---------|---------|
     |MicrosoftDefaultComputerGroup     | Updates        | Updates__MicrosoftDefaultComputerGroup         |
 

@@ -5,12 +5,12 @@ author: sunasing
 ms.topic: article
 ms.date: 03/31/2020
 ms.author: sunasing
-ms.openlocfilehash: 39d37b1a032a386219a98a409f2eb04a6ccc6eca
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.openlocfilehash: 7666ee1a81c2ed93ee5e246b3ec79f056f9d63ab
+ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86078723"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86187775"
 ---
 # <a name="get-weather-data-from-weather-partners"></a>Weer gegevens ophalen van weer partners
 
@@ -211,6 +211,11 @@ Volg de onderstaande stappen om de weers gegevens op te vragen met behulp van Fa
 
 In het vorige voor beeld bevat het antwoord gegevens voor twee tijds tempels, samen met de naam van de meting (' Tempe ratuur ') en waarden van de gerapporteerde weers gegevens in de twee tijds tempels. U moet verwijzen naar het bijbehorende weer gegevens model (zoals beschreven in stap 2 hierboven) om het type en de eenheid van de gerapporteerde waarden te interpreteren.
 
+## <a name="troubleshoot-job-failures"></a>Problemen met taak fouten oplossen
+
+U kunt controleren op de taak Logboeken om problemen met de taak op te lossen. Volg de [stappen die hier worden beschreven](troubleshoot-azure-farmbeats.md#weather-data-job-failures) .
+
+
 ## <a name="appendix"></a>Bijlage
 
 |        Partner   |  Details   |
@@ -224,7 +229,7 @@ In het vorige voor beeld bevat het antwoord gegevens voor twee tijds tempels, sa
 | DockerDetails - partnerCredentials | referenties voor het aanroepen van de partner-API in docker. De partner moet deze informatie aan hun klanten geven op basis van het verificatie mechanisme dat wordt ondersteund voor beeld. Gebruikers naam/wacht woord of API-sleutels. |
 | partnerType | "Weer" (andere partner typen in FarmBeats zijn "sensor" en "installatie kopie")  |
 |  naam   |   Gewenste naam van de partner in het FarmBeats-systeem   |
-|  description |  Description   |
+|  beschrijving |  Beschrijving   |
 
 ## <a name="next-steps"></a>Volgende stappen
 

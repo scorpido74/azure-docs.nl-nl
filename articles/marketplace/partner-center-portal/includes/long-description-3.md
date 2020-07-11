@@ -16,7 +16,7 @@ ms.locfileid: "86109646"
 ---
 Gebruik HTML-tags om uw beschrijving zo in te delen dat deze meer aantrekkelijker is. Voor de meeste tags is een begin-en eind component vereist, zoals wordt weer gegeven in deze tabel.
 
-|   Functie  |  Gebruiken  |  Zo  |  Om dit te krijgen   |
+|   Functie  |  Gebruik  |  Zo  |  Om dit te krijgen   |
 | --- | --- | --- | --- |
 |   Vet  |  `<b> & </b>`  |  `<b>`Voor beeld `</b>` : gratis proef versie  |  **Voor beeld**: gratis proef versie   |
 |   Cursief  |  `<i> & </i>`  |  Selecteer de `<i>` eerste `</i>` rij.  |  Selecteer de *eerste* rij.   |

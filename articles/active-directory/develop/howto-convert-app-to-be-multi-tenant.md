@@ -13,12 +13,12 @@ ms.date: 03/17/2020
 ms.author: ryanwi
 ms.reviewer: jmprieur, lenalepa, sureshja, kkrishna
 ms.custom: aaddev
-ms.openlocfilehash: f4b76bd91a47f14104a9f7f23a4a545ee3d40e59
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 6a48467100e396ed1b43544d1b10ae5007415e3e
+ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85477852"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86201956"
 ---
 # <a name="how-to-sign-in-any-azure-active-directory-user-using-the-multi-tenant-application-pattern"></a>Procedure: Een Azure Active Directory-gebruiker aanmelden met behulp van het patroon voor multitenant-toepassingen
 
@@ -71,15 +71,21 @@ Webtoepassingen en Web-Api's ontvangen en valideren tokens van micro soft Identi
 
 Laten we eens kijken hoe tokens die de toepassing ontvangt, worden gevalideerd van het micro soft Identity-platform. Een enkele Tenant toepassing heeft normaal gesp roken een eindpunt waarde als:
 
+```http
     https://login.microsoftonline.com/contoso.onmicrosoft.com
+```
 
 en gebruikt deze om een meta gegevens-URL te maken (in dit geval OpenID Connect Connect), zoals:
 
+```http
     https://login.microsoftonline.com/contoso.onmicrosoft.com/.well-known/openid-configuration
+```
 
 voor het downloaden van twee belang rijke stukjes informatie die worden gebruikt voor het valideren van tokens: de handtekening sleutels en de waarde van de verlener van de Tenant. Elke Azure AD-Tenant heeft een unieke Issuer-waarde van de vorm:
 
+```http
     https://sts.windows.net/31537af4-6d77-4bb9-a681-d2394888ea26/
+```
 
 de GUID-waarde is de naam van de Tenant-ID van de Tenant. Als u de voor gaande meta gegevens koppeling voor hebt geselecteerd `contoso.onmicrosoft.com` , ziet u de waarde van deze verlener in het document.
 
@@ -87,7 +93,9 @@ Wanneer één Tenant toepassing een token valideert, wordt de hand tekening van 
 
 Omdat het/veelvoorkomende-eind punt niet overeenkomt met een Tenant en geen verlener is, controleert u de waarde van de verlener in de meta gegevens voor/veelvoorkomende deze een URL met sjabloon heeft in plaats van een werkelijke waarde:
 
+```http
     https://sts.windows.net/{tenantid}/
+```
 
 Daarom kan een toepassing met meerdere tenants geen tokens valideren door te voldoen aan de waarde van de verlener in de meta gegevens met de `issuer` waarde in het token. Een toepassing met meerdere tenants heeft logica nodig om te bepalen welke Issuer-waarden geldig zijn en die niet zijn gebaseerd op het Tenant-ID-gedeelte van de waarde van de verlener. 
 
@@ -135,7 +143,9 @@ Uw toepassing heeft mogelijk meerdere lagen, die elk worden vertegenwoordigd doo
 
 Dit kan een probleem zijn als uw logische toepassing bestaat uit twee of meer toepassings registraties, bijvoorbeeld een afzonderlijke client en resource. Hoe wordt de resource eerst in de Tenant van de klant weer geven? Azure AD bestrijkt deze situatie door de client en resource in te scha kelen in één stap. De gebruiker ziet het totaal van de machtigingen die zijn aangevraagd door de client en de resource op de pagina toestemming. Als u dit gedrag wilt inschakelen, moet de toepassings registratie van de resource de App-ID van de client `knownClientApplications` in het [toepassings manifest][AAD-App-Manifest]van de bron bevatten. Bijvoorbeeld:
 
+```aad-app-manifest
     knownClientApplications": ["94da0930-763f-45c7-8d26-04d5938baab2"]
+```
 
 Dit wordt geïllustreerd in een native client voor het aanroepen van een web-API met meerdere lagen in de sectie [gerelateerde inhoud](#related-content) aan het einde van dit artikel. In het volgende diagram vindt u een overzicht van de toestemming voor een app met meerdere lagen die is geregistreerd in één Tenant.
 

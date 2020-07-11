@@ -7,11 +7,12 @@ ms.author: baanders
 ms.date: 3/12/2020
 ms.topic: conceptual
 ms.service: digital-twins
-ms.openlocfilehash: 6b6da2a15441564ef0b67e76ee5a0e0c85839a63
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 248725c7281c8c63e4ca5c0c70428b4fc997d350
+ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85609313"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86142412"
 ---
 # <a name="understand-digital-twins-and-their-twin-graph"></a>Meer informatie over digitale apparaatdubbels en hun twee grafieken
 
@@ -97,6 +98,7 @@ Wanneer het wordt weer gegeven als een JSON-object, worden de volgende velden we
 | Veldnaam | Beschrijving |
 | --- | --- |
 | `$dtId` | Een door de gebruiker gegeven teken reeks voor de ID van de digitale dubbele |
+| `$etag` | Standaard-HTTP-veld toegewezen door de webserver |
 | `$conformance` | Een enum met de status van de conformiteit van deze digitale twee richting *(conformiteit*, *non-conformiteit*, *onbekend*) |
 | `{propertyName}` | De waarde van een eigenschap in JSON ( `string` , Number type of object) |
 | `$relationships` | De URL van het pad naar de verzameling relationships. Dit veld is niet aanwezig als de digitale twee kanten geen uitgaande relatie randen hebben. |
@@ -115,6 +117,7 @@ Hier volgt een voor beeld van een digitale dubbele indeling als een JSON-object:
 ```json
 {
   "$dtId": "Cafe",
+  "$etag": "W/\"e59ce8f5-03c0-4356-aea9-249ecbdc07f9\"",
   "Temperature": 72,
   "Location": {
     "x": 101,
@@ -162,6 +165,7 @@ Wanneer wordt weer gegeven als een JSON-object, worden de volgende velden weer g
 | Veldnaam | Beschrijving |
 | --- | --- |
 | `$relationshipId` | Een door de gebruiker gegeven teken reeks voor de ID van deze relatie. Deze teken reeks is uniek in de context van de bron digitale dubbele, wat betekent dat deze `sourceId`  +  `relationshipId` uniek is in de context van het Azure Digital apparaatdubbels-exemplaar. |
+| `$etag` | Standaard-HTTP-veld toegewezen door de webserver |
 | `$sourceId` | De ID van de bron digitale dubbele |
 | `$targetId` | De ID van de doel-digitale-dubbele |
 | `$relationshipName` | De naam van de relatie |

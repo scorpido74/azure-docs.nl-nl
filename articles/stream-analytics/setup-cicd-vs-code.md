@@ -8,12 +8,12 @@ ms.reviewer: jasonh
 ms.service: stream-analytics
 ms.topic: how-to
 ms.date: 01/28/2020
-ms.openlocfilehash: 7a7fe3f7e1c39837106471d118a8b1bb770a524e
-ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
+ms.openlocfilehash: 75db20bdb746e7d15bef56ce7ac0a064993d3f3a
+ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86045821"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86187758"
 ---
 # <a name="deploy-an-azure-stream-analytics-job-using-cicd-npm-package"></a>Een Azure Stream Analytics-taak implementeren met CI/CD NPM-pakket 
 
@@ -41,15 +41,11 @@ Wanneer een Stream Analytics Visual Studio code-project is gebouwd, worden de vo
 
 * Resource Manager-sjabloon bestand
 
-   ```
-   [ProjectName].JobTemplate.json 
-   ```
+   `[ProjectName].JobTemplate.json`
 
 * Resource Manager-parameter bestand
 
-   ```
-   [ProjectName].JobTemplate.parameters.json
-   ```   
+   `[ProjectName].JobTemplate.parameters.json`   
 
 De standaard parameters in de parameters.jsin het bestand zijn afkomstig uit de instellingen in uw Visual Studio code-project. Als u wilt implementeren in een andere omgeving, vervangt u de para meters dienovereenkomstig.
 
@@ -155,11 +151,11 @@ Open een webbrowser en navigeer naar uw Azure Stream Analytics Visual Studio cod
    |-|-|
    |Weergavenaam| *MyASAJob implementeren*|
    |Azure-abonnement| Kies uw abonnement.|
-   |Bewerking| *Resourcegroep maken of bijwerken*|
+   |Actie| *Resourcegroep maken of bijwerken*|
    |Resourcegroep| Kies een naam voor de test resource groep die uw Stream Analytics-taak bevat.|
    |Locatie|Kies de locatie van de test resource groep.|
    |Sjabloonlocatie| *Gekoppeld artefact*|
-   |Template| $ (Build. ArtifactStagingDirectory) \drop\myASAJob.JobTemplate.jsop |
+   |Sjabloon| $ (Build. ArtifactStagingDirectory) \drop\myASAJob.JobTemplate.jsop |
    |Sjabloonparameters|($ (Build. ArtifactStagingDirectory) \drop\myASAJob.JobTemplate.parameters.jsop|
    |Sjabloonparameters overschrijven|-Input_IoTHub1_iotHubNamespace $ (test_eventhubname)|
    |Implementatie modus|Incrementeel|
@@ -172,11 +168,11 @@ Open een webbrowser en navigeer naar uw Azure Stream Analytics Visual Studio cod
    |-|-|
    |Weergavenaam| *MyASAJob implementeren*|
    |Azure-abonnement| Kies uw abonnement.|
-   |Bewerking| *Resourcegroep maken of bijwerken*|
+   |Actie| *Resourcegroep maken of bijwerken*|
    |Resourcegroep| Kies een naam voor de productie resource groep die uw Stream Analytics-taak bevat.|
    |Locatie|Kies de locatie van de productie resource groep.|
    |Sjabloonlocatie| *Gekoppeld artefact*|
-   |Template| $ (Build. ArtifactStagingDirectory) \drop\myASAJob.JobTemplate.jsop |
+   |Sjabloon| $ (Build. ArtifactStagingDirectory) \drop\myASAJob.JobTemplate.jsop |
    |Sjabloonparameters|($ (Build. ArtifactStagingDirectory) \drop\myASAJob.JobTemplate.parameters.jsop|
    |Sjabloonparameters overschrijven|-Input_IoTHub1_iotHubNamespace $ (eventhubname)|
    |Implementatie modus|Incrementeel|

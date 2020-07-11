@@ -5,15 +5,16 @@ services: automation
 ms.subservice: update-management
 ms.date: 05/04/2020
 ms.topic: conceptual
-ms.openlocfilehash: ea05e75c0d1db1ef27ae2e8e9364327528a7c8ed
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: e30d1606a3928f421d2155e2d1abac0c8a6872aa
+ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83837158"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86186636"
 ---
 # <a name="configure-windows-update-settings-for-azure-automation-update-management"></a>Windows Update instellingen voor Azure Automation configureren Updatebeheer
 
-Azure Automation Updatebeheer is afhankelijk van de [Windows Update-client](https://docs.microsoft.com//windows/deployment/update/windows-update-overview) om Windows-updates te downloaden en te installeren. Er zijn specifieke instellingen die worden gebruikt door de Windows Update-client wanneer er verbinding wordt gemaakt met Windows Server Update Services (WSUS) of Windows Update. Veel van deze instellingen kunnen worden beheerd met:
+Azure Automation Updatebeheer is afhankelijk van de [Windows Update-client](/windows/deployment/update/windows-update-overview) om Windows-updates te downloaden en te installeren. Er zijn specifieke instellingen die worden gebruikt door de Windows Update-client wanneer er verbinding wordt gemaakt met Windows Server Update Services (WSUS) of Windows Update. Veel van deze instellingen kunnen worden beheerd met:
 
 - Editor voor lokaal groepsbeleid
 - Groepsbeleid
@@ -22,7 +23,7 @@ Azure Automation Updatebeheer is afhankelijk van de [Windows Update-client](http
 
 Updatebeheer veel van de instellingen die zijn opgegeven om de Windows Update-client te beheren. Als u instellingen gebruikt om niet-Windows-updates in te scha kelen, worden deze updates ook door Updatebeheer beheerd. Als u het downloaden van updates wilt inschakelen voordat een update-implementatie plaatsvindt, kan de update-implementatie sneller, efficiënter en minder waarschijnlijk het onderhouds venster overschrijden.
 
-Raadpleeg [uw implementatie plannen voor het bijwerken van virtuele Windows-machines in azure met WSUS](https://docs.microsoft.com/azure/architecture/example-scenario/wsus/)voor aanvullende aanbevelingen voor het instellen van WSUS in uw Azure-abonnement en uw virtuele Windows-machines veilig te houden.
+Raadpleeg [uw implementatie plannen voor het bijwerken van virtuele Windows-machines in azure met WSUS](/azure/architecture/example-scenario/wsus/)voor aanvullende aanbevelingen voor het instellen van WSUS in uw Azure-abonnement en uw virtuele Windows-machines veilig te houden.
 
 ## <a name="pre-download-updates"></a>Updates vooraf downloaden
 
@@ -57,7 +58,7 @@ $ServiceManager.AddService2($ServiceId,7,"")
 
 Updatebeheer ondersteunt WSUS-instellingen. U kunt bronnen opgeven voor het scannen en downloaden van updates met behulp van de instructies in de [locatie van intranet-Microsoft Update service opgeven](/windows/deployment/update/waas-wu-settings#specify-intranet-microsoft-update-service-location). De Windows Update-client is standaard geconfigureerd om updates te downloaden van Windows Update. Wanneer u een WSUS-server als bron voor uw machines opgeeft en de updates niet zijn goedgekeurd in WSUS, mislukt de update-implementatie. 
 
-Als u computers wilt beperken tot de interne Update service, stelt u [geen verbinding maken met een Windows Update Internet locaties](https://docs.microsoft.com/windows-server/administration/windows-server-update-services/deploy/4-configure-group-policy-settings-for-automatic-updates#do-not-connect-to-any-windows-update-internet-locations)in. 
+Als u computers wilt beperken tot de interne Update service, stelt u [geen verbinding maken met een Windows Update Internet locaties](/windows-server/administration/windows-server-update-services/deploy/4-configure-group-policy-settings-for-automatic-updates#do-not-connect-to-any-windows-update-internet-locations)in. 
 
 ## <a name="next-steps"></a>Volgende stappen
 

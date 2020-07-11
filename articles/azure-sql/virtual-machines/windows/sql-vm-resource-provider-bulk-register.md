@@ -13,11 +13,12 @@ ms.workload: iaas-sql-server
 ms.date: 10/21/2019
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: 58f2b1828bcc63ce11c234847bc20f90944aba18
-ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.openlocfilehash: 74757b2f5e272c7e7dbc0dc7f033c7899be1414b
+ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/05/2020
-ms.locfileid: "85960381"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86184274"
 ---
 # <a name="register-multiple-sql-virtual-machines-in-azure-with-the-sql-vm-resource-provider"></a>Meerdere virtuele SQL-machines registreren in azure met de resource provider van de SQL-VM
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -133,7 +134,7 @@ Please find the detailed report in file RegisterSqlVMScriptReport1571314821.txt
 Please find the error details in file VMsNotRegisteredDueToError1571314821.log
 ```
 
-## <a name="resister-all-vms-in-a-resource-group"></a>Alle Vm's in een resource groep opnieuw zustereren
+## <a name="register-all-vms-in-a-resource-group"></a>Alle Vm's in een resource groep registreren
 
 Gebruik de volgende cmdlet om alle SQL Server virtuele machines in één resource groep te registreren: 
 
@@ -214,7 +215,7 @@ Het rapport wordt gegenereerd als een `.txt` bestand met `RegisterSqlVMScriptRep
 | Aantal overgeslagen Vm's omdat deze niet worden uitgevoerd SQL Server op Windows | Het aantal virtuele machines dat is overgeslagen omdat deze niet worden uitgevoerd SQL Server of geen virtuele Windows-machine zijn. De virtuele machines worden weer gegeven in de indeling `SubscriptionID, Resource Group, Virtual Machine` . | 
 | &nbsp; | &nbsp; |
 
-### <a name="log"></a>Logboek 
+### <a name="log"></a>Log 
 
 Fouten worden vastgelegd in het logboek bestand met de naam `VMsNotRegisteredDueToError<Timestamp>.log` , waarbij tijds tempel het tijdstip is waarop het script is gestart. Als de fout zich op het abonnements niveau bevindt, bevat het logboek de door komma's gescheiden abonnements-ID en het fout bericht. Als de fout is opgetreden bij de registratie van de virtuele machine, bevat het logboek de abonnements-ID, de naam van de resource groep, de naam van de virtuele machine, de fout code en het bericht, gescheiden door komma's. 
 

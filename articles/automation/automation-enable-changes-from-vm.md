@@ -5,11 +5,12 @@ services: automation
 ms.date: 03/04/2020
 ms.topic: conceptual
 ms.custom: mvc
-ms.openlocfilehash: 332ff4f6e63a831c1523c3f959708f9dc48a72a9
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 5ff6e0ffd4040393a040dc67a511aab47887f6e1
+ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84171052"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86186262"
 ---
 # <a name="enable-change-tracking-and-inventory-from-an-azure-vm"></a>Wijzigingen bijhouden en inventaris inschakelen vanaf een virtuele Azure-machine
 
@@ -21,7 +22,7 @@ In dit artikel wordt beschreven hoe u een virtuele machine van Azure kunt gebrui
 ## <a name="prerequisites"></a>Vereisten
 
 * Azure-abonnement. Als u nog geen abonnement hebt, kunt u [uw voordelen als MSDN-abonnee activeren](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/) of u aanmelden voor een [gratis account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
-* [Automation-account](automation-offering-get-started.md) voor het beheren van computers.
+* [Automation-account](./index.yml) voor het beheren van computers.
 * Een [virtuele machine](../virtual-machines/windows/quick-create-portal.md).
 
 ## <a name="sign-in-to-azure"></a>Aanmelden bij Azure

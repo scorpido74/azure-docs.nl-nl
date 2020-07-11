@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/18/2020
 ms.author: mnayak
-ms.openlocfilehash: ba01b89b54dc7209449490059555f531f7616720
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 171ae04a70f3639981e74d20d260a03359a0f2c8
+ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85193359"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86187435"
 ---
 # <a name="what-is-routing-preference-preview"></a>Wat is routerings voorkeur (preview)?
 
@@ -88,7 +88,7 @@ Het prijs verschil tussen beide opties wordt weer gegeven in de prijzen voor geg
 
 Ondersteuning voor route ring van voor keuren is beschikbaar in de volgende regio's voor services, zoals virtuele machines en Internet gerichte load balancer die gebruikmaken van een openbaar IP-adres voor Internet uitgaand verkeer: Europa-noord, Europa-west, Frankrijk-zuid, UK-zuid, VS-Oost, Noord-Centraal VS, Zuid-Centraal VS, VS-West, West-Centraal VS, Azië en Japan-West.
 
-Ondersteuning voor route ring van het opslag account is beschikbaar in de volgende Azure-regio's-Frankrijk-zuid, Noord-Centraal VS, West-Centraal VS, Japan-Oost, Japan-West, Duitsland-west-centraal en Zwitserland-west.
+Ondersteuning voor route ring van het opslag account is beschikbaar in de volgende Azure-regio's: Noord-Centraal VS, VS-West-Centraal, Zuid-Centraal VS, Oost-VS, VS-West, Europa-noord, Frankrijk-zuid, Duitsland-west-centraal, Zwitserland-west, Zuid-Azië-oost, Japan-Oost en Japan-West.
 ## <a name="limitations"></a>Beperkingen
 
 * Routerings voorkeur is alleen compatibel met de standaard-SKU van het open bare IP-adres. De basis-SKU van het open bare IP-adres wordt niet ondersteund.

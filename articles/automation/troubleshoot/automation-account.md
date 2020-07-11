@@ -8,11 +8,12 @@ ms.date: 03/24/2020
 ms.topic: conceptual
 ms.service: automation
 manager: carmonm
-ms.openlocfilehash: bebc89514da7f28015da5cb145ae50bf3fccdb6a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: edd57d3d77432f3bb37872ee26f414b56398cae0
+ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83680080"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86187282"
 ---
 # <a name="troubleshoot-azure-automation-account-issues"></a>Problemen met Azure Automation-account oplossen
 
@@ -44,7 +45,7 @@ Voer de volgende stappen uit in de Azure Portal om de resource provider Automati
 
 4. Controleer in de lijst met resource providers of de resource provider **micro soft. Automation** is geregistreerd.
 
-5. Als de provider niet wordt weer gegeven, registreert u deze zoals beschreven in [fouten voor de registratie van de resource provider oplossen](/azure/azure-resource-manager/resource-manager-register-provider-errors).
+5. Als de provider niet wordt weer gegeven, registreert u deze zoals beschreven in [fouten voor de registratie van de resource provider oplossen](../../azure-resource-manager/templates/error-register-resource-provider.md).
 
 ## <a name="next-steps"></a>Volgende stappen
 

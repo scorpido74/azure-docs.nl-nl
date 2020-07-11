@@ -9,11 +9,12 @@ ms.author: magoedte
 ms.date: 04/04/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 557dc3ad48f8f21d8898e2beb5d940d66058e90c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 8bd988029b8d78a29de38e995c36ee1860d8cda9
+ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83744982"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86187350"
 ---
 # <a name="manage-schedules-in-azure-automation"></a>Schema's in Azure Automation beheren
 
@@ -29,15 +30,15 @@ Als u een runbook in Azure Automation wilt plannen om op een opgegeven tijdstip 
 
 Met de cmdlets in de volgende tabel worden Automation-schema's gemaakt en beheerd met Power shell. Ze worden geleverd als onderdeel van de [AZ-modules](modules.md#az-modules). 
 
-| Cmdlets | Description |
+| Cmdlets | Beschrijving |
 |:--- |:--- |
-| [Get-AzAutomationSchedule](https://docs.microsoft.com/powershell/module/Az.Automation/Get-AzAutomationSchedule?view=azps-3.7.0) |Hiermee wordt een planning opgehaald. |
-| [Get-AzAutomationScheduledRunbook](https://docs.microsoft.com/powershell/module/az.automation/get-azautomationscheduledrunbook?view=azps-3.7.0) |Hiermee worden geplande runbooks opgehaald. |
-| [New-AzAutomationSchedule](https://docs.microsoft.com/powershell/module/Az.Automation/New-AzAutomationSchedule?view=azps-3.7.0) |Hiermee maakt u een nieuw schema. |
-| [REGI ster-AzAutomationScheduledRunbook](https://docs.microsoft.com/powershell/module/Az.Automation/Register-AzAutomationScheduledRunbook?view=azps-3.7.0) |Hiermee wordt een runbook gekoppeld aan een schema. |
-| [Remove-AzAutomationSchedule](https://docs.microsoft.com/powershell/module/Az.Automation/Remove-AzAutomationSchedule?view=azps-3.7.0) |Hiermee verwijdert u een schema. |
-| [Set-AzAutomationSchedule](https://docs.microsoft.com/powershell/module/Az.Automation/Set-AzAutomationSchedule?view=azps-3.7.0) |Hiermee stelt u de eigenschappen voor een bestaande planning. |
-| [Registratie ongedaan maken-AzAutomationScheduledRunbook](https://docs.microsoft.com/powershell/module/Az.Automation/Unregister-AzAutomationScheduledRunbook?view=azps-3.7.0) |Hiermee wordt een runbook ontkoppeld van een schema. |
+| [Get-AzAutomationSchedule](/powershell/module/Az.Automation/Get-AzAutomationSchedule?view=azps-3.7.0) |Hiermee wordt een planning opgehaald. |
+| [Get-AzAutomationScheduledRunbook](/powershell/module/az.automation/get-azautomationscheduledrunbook?view=azps-3.7.0) |Hiermee worden geplande runbooks opgehaald. |
+| [New-AzAutomationSchedule](/powershell/module/Az.Automation/New-AzAutomationSchedule?view=azps-3.7.0) |Hiermee maakt u een nieuw schema. |
+| [REGI ster-AzAutomationScheduledRunbook](/powershell/module/Az.Automation/Register-AzAutomationScheduledRunbook?view=azps-3.7.0) |Hiermee wordt een runbook gekoppeld aan een schema. |
+| [Remove-AzAutomationSchedule](/powershell/module/Az.Automation/Remove-AzAutomationSchedule?view=azps-3.7.0) |Hiermee verwijdert u een schema. |
+| [Set-AzAutomationSchedule](/powershell/module/Az.Automation/Set-AzAutomationSchedule?view=azps-3.7.0) |Hiermee stelt u de eigenschappen voor een bestaande planning. |
+| [Registratie ongedaan maken-AzAutomationScheduledRunbook](/powershell/module/Az.Automation/Unregister-AzAutomationScheduledRunbook?view=azps-3.7.0) |Hiermee wordt een runbook ontkoppeld van een schema. |
 
 ## <a name="create-a-schedule"></a>Een planning maken
 
@@ -64,7 +65,7 @@ U kunt een nieuw schema maken voor uw runbooks in de Azure Portal of met Power s
 
 ### <a name="create-a-new-schedule-with-powershell"></a>Een nieuw schema maken met Power shell
 
-Gebruik de cmdlet [New-AzAutomationSchedule](https://docs.microsoft.com/powershell/module/Az.Automation/New-AzAutomationSchedule?view=azps-3.7.0) om planningen te maken. U geeft de begin tijd voor de planning op en de frequentie die moet worden uitgevoerd. In de volgende voor beelden ziet u hoe u veel verschillende plannings scenario's maakt.
+Gebruik de cmdlet [New-AzAutomationSchedule](/powershell/module/Az.Automation/New-AzAutomationSchedule?view=azps-3.7.0) om planningen te maken. U geeft de begin tijd voor de planning op en de frequentie die moet worden uitgevoerd. In de volgende voor beelden ziet u hoe u veel verschillende plannings scenario's maakt.
 
 #### <a name="create-a-one-time-schedule"></a>Een eenmalige planning maken
 
@@ -127,7 +128,7 @@ Een runbook kan worden gekoppeld aan meerdere planningen en er kunnen meerdere r
 
 ### <a name="link-a-schedule-to-a-runbook-with-powershell"></a>Een planning aan een runbook koppelen met Power shell
 
-Gebruik de cmdlet [REGI ster-AzAutomationScheduledRunbook](https://docs.microsoft.com/powershell/module/Az.Automation/Register-AzAutomationScheduledRunbook?view=azps-3.7.0) om een schema te koppelen. U kunt waarden voor de parameters van het runbook opgeven met de parameter Parameters . Zie [starten van een Runbook in azure Automation](../automation-starting-a-runbook.md)voor meer informatie over het opgeven van parameter waarden.
+Gebruik de cmdlet [REGI ster-AzAutomationScheduledRunbook](/powershell/module/Az.Automation/Register-AzAutomationScheduledRunbook?view=azps-3.7.0) om een schema te koppelen. U kunt waarden voor de parameters van het runbook opgeven met de parameter Parameters . Zie [starten van een Runbook in azure Automation](../start-runbooks.md)voor meer informatie over het opgeven van parameter waarden.
 In het volgende voor beeld ziet u hoe u een schema aan een runbook koppelt met behulp van een Azure Resource Manager-cmdlet met para meters.
 
 ```azurepowershell-interactive
@@ -163,7 +164,7 @@ Wanneer u een planning uitschakelt, wordt elk runbook dat is gekoppeld aan het s
 
 ### <a name="disable-a-schedule-with-powershell"></a>Een planning uitschakelen met Power shell
 
-Gebruik de cmdlet [set-AzAutomationSchedule](https://docs.microsoft.com/powershell/module/Az.Automation/Set-AzAutomationSchedule?view=azps-3.7.0) om de eigenschappen van een bestaande planning te wijzigen. Als u het schema wilt uitschakelen, geeft u False op voor de `IsEnabled` para meter.
+Gebruik de cmdlet [set-AzAutomationSchedule](/powershell/module/Az.Automation/Set-AzAutomationSchedule?view=azps-3.7.0) om de eigenschappen van een bestaande planning te wijzigen. Als u het schema wilt uitschakelen, geeft u False op voor de `IsEnabled` para meter.
 
 In het volgende voor beeld ziet u hoe u een planning voor een runbook kunt uitschakelen met behulp van een Azure Resource Manager-cmdlet.
 

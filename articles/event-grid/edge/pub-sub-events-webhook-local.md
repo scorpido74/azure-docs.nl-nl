@@ -5,15 +5,14 @@ author: VidyaKukke
 manager: rajarv
 ms.author: vkukke
 ms.reviewer: spelluru
-ms.date: 10/29/2019
+ms.date: 07/08/2020
 ms.topic: article
-ms.service: event-grid
-services: event-grid
-ms.openlocfilehash: ba82b1bea4753cd51e275a78b248247032d79a01
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 2a7cc864366bd9a35c96dd453c0dc68f77d8abd9
+ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84710861"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86171445"
 ---
 # <a name="tutorial-publish-subscribe-to-events-locally"></a>Zelf studie: publiceren, lokaal abonneren op gebeurtenissen
 
@@ -76,7 +75,7 @@ Een implementatie manifest is een JSON-document waarin wordt beschreven welke mo
           }
         }
     ```    
- 1. Klik op **Opslaan**.
+ 1. Klik op **Opslaan**
  1. Ga verder met de volgende sectie om de Azure Event Grid Subscriber module toe te voegen voordat u ze samen implementeert.
 
     >[!IMPORTANT]
@@ -98,7 +97,7 @@ In deze sectie wordt beschreven hoe u een andere IoT-module implementeert die al
    * **Naam**: abonnee
    * **Afbeeldings-URI**:`mcr.microsoft.com/azure-event-grid/iotedge-samplesubscriber:latest`
    * **Opties**voor het maken van containers: geen
-1. Klik op **Opslaan**.
+1. Klik op **Opslaan**
 1. Klik op **volgende** om door te gaan naar de sectie routes
 
  ### <a name="setup-routes"></a>Installatie routes

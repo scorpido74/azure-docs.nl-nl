@@ -5,11 +5,12 @@ services: automation
 ms.subservice: change-inventory-management
 ms.date: 06/08/2020
 ms.topic: conceptual
-ms.openlocfilehash: 2aab90b12cd3844b94b0b7e6e94582d403db2efe
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 192fd0fe73a34ca4d6ffc49badeac7ca8a080793
+ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84555036"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86185582"
 ---
 # <a name="change-tracking-and-inventory-overview"></a>Overzicht Wijzigingen bijhouden en Inventaris
 
@@ -48,11 +49,11 @@ Wijzigingen bijhouden en inventaris ondervindt momenteel de volgende problemen:
 
 - Hotfix-updates worden niet verzameld op Windows Server 2016 core RS3-machines.
 
-- Linux-daemons kunnen een gewijzigde status weer geven, zelfs als er geen wijziging heeft plaatsgevonden. Dit probleem doet zich voor vanwege de manier waarop de `SvcRunLevels` gegevens in het [ConfigurationChange](https://docs.microsoft.com/azure/azure-monitor/reference/tables/configurationchange) -logboek van Azure monitor worden vastgelegd.
+- Linux-daemons kunnen een gewijzigde status weer geven, zelfs als er geen wijziging heeft plaatsgevonden. Dit probleem doet zich voor vanwege de manier waarop de `SvcRunLevels` gegevens in het [ConfigurationChange](/azure/azure-monitor/reference/tables/configurationchange) -logboek van Azure monitor worden vastgelegd.
 
 ## <a name="supported-operating-systems"></a>Ondersteunde besturingssystemen
 
-Wijzigingen bijhouden en inventarisatie wordt ondersteund op alle besturings systemen die voldoen aan de vereisten van Log Analytics agent. De officiële versies van het besturings systeem zijn Windows Server 2008 SP1 of hoger en Windows 7 SP1 of hoger. De functie wordt ook ondersteund op een aantal Linux-besturings systemen. Zie [overzicht van log Analytics agent](https://docs.microsoft.com/azure/azure-monitor/platform/log-analytics-agent)voor besturings systemen die log Analytics ondersteunen.
+Wijzigingen bijhouden en inventarisatie wordt ondersteund op alle besturings systemen die voldoen aan de vereisten van Log Analytics agent. De officiële versies van het besturings systeem zijn Windows Server 2008 SP1 of hoger en Windows 7 SP1 of hoger. De functie wordt ook ondersteund op een aantal Linux-besturings systemen. Zie [overzicht van log Analytics agent](../azure-monitor/platform/log-analytics-agent.md)voor besturings systemen die log Analytics ondersteunen.
 
 Zie [TLS 1,2 Enforcement voor Azure Automation](automation-managing-data.md#tls-12-enforcement-for-azure-automation)voor meer informatie over de client vereisten voor TLS 1,2.
 
@@ -90,7 +91,7 @@ U kunt elke wijziging toevoegen, wijzigen of verwijderen. In het onderstaande vo
 
 ## <a name="fim-support-in-azure-security-center"></a>FIM-ondersteuning in Azure Security Center
 
-Wijzigingen bijhouden en inventaris maakt gebruik van [Azure Security Center File Integrity Monitoring (FIM)](https://docs.microsoft.com/azure/security-center/security-center-file-integrity-monitoring). Hoewel FIM alleen bestanden en registers bewaakt, omvat de functie volledige Wijzigingen bijhouden en inventaris ook tracering voor:
+Wijzigingen bijhouden en inventaris maakt gebruik van [Azure Security Center File Integrity Monitoring (FIM)](../security-center/security-center-file-integrity-monitoring.md). Hoewel FIM alleen bestanden en registers bewaakt, omvat de functie volledige Wijzigingen bijhouden en inventaris ook tracering voor:
 
 - Software wijzigingen
 - Micro soft-Services
@@ -105,7 +106,7 @@ Voor het bijhouden van wijzigingen in bestanden op Windows en Linux maakt Wijzig
 
 ## <a name="tracking-of-file-content-changes"></a>Wijzigingen van bestands inhoud bijhouden
 
-Met Wijzigingen bijhouden en inventaris kunt u de inhoud van een Windows-of Linux-bestand weer geven. Voor elke wijziging in een bestand bevat Wijzigingen bijhouden en inventaris de inhoud van het bestand in een [Azure Storage-account](../storage/common/storage-create-storage-account.md). Wanneer u een bestand volgt, kunt u de inhoud ervan weer geven vóór of na een wijziging. De bestands inhoud kan in line of naast elkaar worden weer gegeven. 
+Met Wijzigingen bijhouden en inventaris kunt u de inhoud van een Windows-of Linux-bestand weer geven. Voor elke wijziging in een bestand bevat Wijzigingen bijhouden en inventaris de inhoud van het bestand in een [Azure Storage-account](../storage/common/storage-account-create.md). Wanneer u een bestand volgt, kunt u de inhoud ervan weer geven vóór of na een wijziging. De bestands inhoud kan in line of naast elkaar worden weer gegeven. 
 
 ![Wijzigingen in een bestand weer geven](./media/change-tracking/view-file-changes.png)
 
@@ -114,7 +115,7 @@ Met Wijzigingen bijhouden en inventaris kunt u de inhoud van een Windows-of Linu
 Met Wijzigingen bijhouden en inventaris kunt u wijzigingen in Windows-register sleutels controleren. Met bewaking kunt u uitbreid bare punten herkennen waarbij code en malware van derden kunnen worden geactiveerd. De volgende tabel geeft een lijst van vooraf geconfigureerde register sleutels (maar niet ingeschakeld). Als u deze sleutels wilt bijhouden, moet u deze inschakelen.
 
 > [!div class="mx-tdBreakAll"]
-> |Registersleutel | Functie |
+> |Registersleutel | Doel |
 > | --- | --- |
 > |`HKEY\LOCAL\MACHINE\Software\Microsoft\Windows\CurrentVersion\Group Policy\Scripts\Startup` | Bewaakt de scripts die worden uitgevoerd bij het opstarten.
 > |`HKEY\LOCAL\MACHINE\Software\Microsoft\Windows\CurrentVersion\Group Policy\Scripts\Shutdown` | Bewaakt de scripts die worden uitgevoerd bij het afsluiten.
@@ -170,7 +171,7 @@ De volgende tabel bevat de limieten voor bijgehouden items per computer voor Wij
 |Services|250|
 |Daemons|250|
 
-Het gemiddelde Log Analytics gegevens gebruik voor een machine met Wijzigingen bijhouden en inventaris is ongeveer 40 MB per maand, afhankelijk van uw omgeving. Met de functie voor gebruik en geschatte kosten van de Log Analytics-werk ruimte kunt u de gegevens weer geven die zijn opgenomen door Wijzigingen bijhouden en inventaris in een gebruiks diagram. Gebruik deze gegevens weergave om uw gegevens gebruik te evalueren en te bepalen hoe deze van invloed is op uw factuur. Bekijk [inzicht in uw gebruik en geschatte kosten](https://docs.microsoft.com/azure/azure-monitor/platform/manage-cost-storage#understand-your-usage-and-estimate-costs).
+Het gemiddelde Log Analytics gegevens gebruik voor een machine met Wijzigingen bijhouden en inventaris is ongeveer 40 MB per maand, afhankelijk van uw omgeving. Met de functie voor gebruik en geschatte kosten van de Log Analytics-werk ruimte kunt u de gegevens weer geven die zijn opgenomen door Wijzigingen bijhouden en inventaris in een gebruiks diagram. Gebruik deze gegevens weergave om uw gegevens gebruik te evalueren en te bepalen hoe deze van invloed is op uw factuur. Bekijk [inzicht in uw gebruik en geschatte kosten](../azure-monitor/platform/manage-cost-storage.md#understand-your-usage-and-estimate-costs).
 
 ### <a name="microsoft-service-data"></a>Micro soft-service gegevens
 
@@ -187,7 +188,7 @@ Om de prestaties te optimaliseren, houdt de Log Analytics agent alleen wijziging
 
 Een belang rijke mogelijkheid van Wijzigingen bijhouden en inventarisatie wordt gewaarschuwd voor wijzigingen in de configuratie status van uw hybride omgeving. Er zijn veel nuttige acties beschikbaar om te activeren als reactie op waarschuwingen, zoals acties voor Azure functions, Automation-runbooks, webhooks en dergelijke. Een waarschuwing over wijzigingen in het **c:\Windows\System32\drivers\etc\hosts** -bestand voor een machine is een goede toepassing van waarschuwingen voor wijzigingen bijhouden-en inventaris gegevens. Er zijn veel meer scenario's voor waarschuwingen, zoals de query scenario's die in de volgende tabel zijn gedefinieerd.
 
-|Query’s uitvoeren  |Description  |
+|Query  |Beschrijving  |
 |---------|---------|
 |ConfigurationChange <br>&#124; waarbij ConfigChangeType = = "files" en FileSystemPath bevat "c: \\ Windows \\ System32 \\ drivers \\ "|Dit is handig voor het bijhouden van wijzigingen in essentiële bestanden van het systeem.|
 |ConfigurationChange <br>&#124; waarbij FieldsChanged ' FileContentChecksum ' en FileSystemPath = = "c: \\ Windows \\ System32 \\ drivers etc- \\ \\ hosts ' bevat.|Dit is handig voor het bijhouden van wijzigingen in sleutel configuratie bestanden.|

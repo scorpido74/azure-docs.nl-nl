@@ -6,11 +6,12 @@ ms.subservice: shared-capabilities
 ms.date: 01/13/2020
 ms.topic: conceptual
 ms.custom: has-adal-ref
-ms.openlocfilehash: 3c5901dbd45cc0ce82c7fcd8117705eaeed7b4ba
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 39085aa7967ffeac3416b61f32146ac023b46dfe
+ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83837124"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86186653"
 ---
 # <a name="manage-connections-in-azure-automation"></a>Verbindingen in Azure Automation beheren
 
@@ -40,18 +41,18 @@ In de meeste gevallen hoeft u geen verbindings bron te maken omdat deze wordt ge
 
 Met de cmdlets in de volgende tabel worden Automation-verbindingen met Power shell gemaakt en beheerd. Ze worden geleverd als onderdeel van de [AZ-modules](shared-resources/modules.md#az-modules).
 
-|Cmdlet|Description|
+|Cmdlet|Beschrijving|
 |---|---|
-|[Get-AzAutomationConnection](https://docs.microsoft.com/powershell/module/az.automation/get-azautomationconnection?view=azps-3.7.0)|Hiermee haalt u informatie op over een verbinding.|
-|[New-AzAutomationConnection](https://docs.microsoft.com/powershell/module/az.automation/new-azautomationconnection?view=azps-3.7.0)|Hiermee maakt u een nieuwe verbinding.|
-|[Remove-AzAutomationConnection](https://docs.microsoft.com/powershell/module/Az.Automation/Remove-AzAutomationConnection?view=azps-3.7.0)|Hiermee verwijdert u een bestaande verbinding.|
-|[Set-AzAutomationConnectionFieldValue](https://docs.microsoft.com/powershell/module/Az.Automation/Set-AzAutomationConnectionFieldValue?view=azps-3.7.0)|Hiermee stelt u de waarde van een bepaald veld voor een bestaande verbinding in.|
+|[Get-AzAutomationConnection](/powershell/module/az.automation/get-azautomationconnection?view=azps-3.7.0)|Hiermee haalt u informatie op over een verbinding.|
+|[New-AzAutomationConnection](/powershell/module/az.automation/new-azautomationconnection?view=azps-3.7.0)|Hiermee maakt u een nieuwe verbinding.|
+|[Remove-AzAutomationConnection](/powershell/module/Az.Automation/Remove-AzAutomationConnection?view=azps-3.7.0)|Hiermee verwijdert u een bestaande verbinding.|
+|[Set-AzAutomationConnectionFieldValue](/powershell/module/Az.Automation/Set-AzAutomationConnectionFieldValue?view=azps-3.7.0)|Hiermee stelt u de waarde van een bepaald veld voor een bestaande verbinding in.|
 
 ## <a name="internal-cmdlets-to-access-connections"></a>Interne cmdlets voor toegang tot verbindingen
 
 De interne cmdlet in de volgende tabel wordt gebruikt voor toegang tot verbindingen in uw runbooks en DSC-configuraties. Deze cmdlet wordt geleverd met de globale module `Orchestrator.AssetManagement.Cmdlets` . Zie [interne cmdlets](shared-resources/modules.md#internal-cmdlets)voor meer informatie.
 
-|Interne cmdlet|Description|
+|Interne cmdlet|Beschrijving|
 |---|---|
 |`Get-AutomationConnection` | Haalt de waarden van de verschillende velden in de verbinding op en retourneert deze als een [hashtabel](https://go.microsoft.com/fwlink/?LinkID=324844). U kunt deze hashtabel vervolgens gebruiken met de juiste opdrachten in het runbook of de DSC-configuratie.|
 

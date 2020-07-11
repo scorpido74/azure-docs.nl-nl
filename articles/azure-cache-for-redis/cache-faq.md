@@ -6,12 +6,12 @@ ms.author: yegu
 ms.service: cache
 ms.topic: conceptual
 ms.date: 04/29/2019
-ms.openlocfilehash: f0fba815cdc8425f016b74be7df36e5b28dfee3d
-ms.sourcegitcommit: 9b5c20fb5e904684dc6dd9059d62429b52cb39bc
+ms.openlocfilehash: 9a6ee4f5b18c6747796f33bc433d1d40982205a3
+ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85856976"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86185004"
 ---
 # <a name="azure-cache-for-redis-faq"></a>Veelgestelde vragen over Azure Cache voor Redis
 Meer informatie over de antwoorden op veelgestelde vragen, patronen en aanbevolen procedures voor Azure cache voor redis.
@@ -41,6 +41,7 @@ De volgende veelgestelde vragen hebben betrekking op basis concepten en vragen o
 * [Wat is Azure cache voor redis aanbieding en grootte moet ik gebruiken?](#what-azure-cache-for-redis-offering-and-size-should-i-use)
 * [Azure cache voor redis-prestaties](#azure-cache-for-redis-performance)
 * [In welke regio moet ik mijn cache vinden?](#in-what-region-should-i-locate-my-cache)
+* [Waar bevinden de gegevens zich in de cache?](#where-do-my-cached-data-reside)
 * [Hoe word ik gefactureerd voor Azure-cache voor redis?](#how-am-i-billed-for-azure-cache-for-redis)
 * [Kan ik Azure cache gebruiken voor redis met Azure Government Cloud, Azure China Cloud of Microsoft Azure Duitsland?](#can-i-use-azure-cache-for-redis-with-azure-government-cloud-azure-china-cloud-or-microsoft-azure-germany)
 
@@ -136,11 +137,11 @@ In deze tabel kunnen we de volgende conclusies tekenen:
 | C5 |  26 GB | 4      | 1.000/125 | 102.000 |  93.000 |
 | C6 |  53 GB | 8      | 2.000/250 | 126.000 | 120.000 |
 | **Premium-cache grootten** | |**CPU-kernen per Shard** | **Megabits per seconde (MB/s)/mega bytes per seconde (MB/s)** |**Aanvragen per seconde (RPS) niet-SSL, per Shard** |**SSL-aanvragen per seconde (RPS) per Shard** |
-| P1 |   6 GB |  2 | 1.500/187,5 | 180.000 | 172.000 |
-| P2 |  13 GB |  4 | 3.000/375   | 350.000 | 341.000 |
-| P3 |  26 GB |  4 | 3.000/375   | 350.000 | 341.000 |
+| B1 |   6 GB |  2 | 1.500/187,5 | 180.000 | 172.000 |
+| B2 |  13 GB |  4 | 3.000/375   | 350.000 | 341.000 |
+| B3 |  26 GB |  4 | 3.000/375   | 350.000 | 341.000 |
 | P4 |  53 GB |  8 | 6.000/750   | 400,000 | 373.000 |
-| P5 | 120 GB | 20 | 6.000/750   | 400,000 | 373.000 |
+| B5 | 120 GB | 20 | 6.000/750   | 400,000 | 373.000 |
 
 Voor instructies voor het instellen van stunnel of het downloaden van de redis `redis-benchmark.exe` -hulpprogram ma's, zoals, raadpleegt u de sectie [Hoe kan ik redis-opdrachten uitvoeren?](#cache-commands)
 
@@ -148,6 +149,13 @@ Voor instructies voor het instellen van stunnel of het downloaden van de redis `
 
 ### <a name="in-what-region-should-i-locate-my-cache"></a>In welke regio moet ik mijn cache vinden?
 Voor de beste prestaties en de laagste latentie zoekt u uw Azure-cache voor redis in dezelfde regio als uw cache-client toepassing.
+
+### <a name="where-do-my-cached-data-reside"></a>Waar bevinden de gegevens zich in de cache?
+Met Azure cache voor redis worden uw toepassings gegevens opgeslagen in het RAM-geheugen van de virtuele machine of Vm's, afhankelijk van de laag die uw cache host. Uw gegevens bevinden zich in de Azure-regio die u standaard hebt geselecteerd. Er zijn twee gevallen waarin uw gegevens een regio kunnen verlaten:
+  1. Wanneer u persistentie op de cache inschakelt, maakt Azure cache voor redis een back-up van uw gegevens naar een Azure Storage account dat u bezit. Als het opslag account dat u opgeeft, zich in een andere regio bevindt, wordt er een kopie van uw gegevens weer gegeven.
+  1. Als u geo-replicatie instelt en de secundaire cache zich in een andere regio bevindt, wat normaal het geval is, worden uw gegevens gerepliceerd naar deze regio.
+
+U moet Azure-cache expliciet configureren voor redis om deze functies te kunnen gebruiken. Daarnaast hebt u volledige controle over de regio waarin het opslag account of de secundaire cache zich bevindt.
 
 <a name="cache-billing"></a>
 
@@ -159,7 +167,7 @@ Ja, Azure cache voor redis is beschikbaar in Azure Government Cloud, Azure China
 
 | Cloud   | DNS-achtervoegsel voor redis            |
 |---------|---------------------------------|
-| Public  | *. redis.cache.windows.net       |
+| Openbaar  | *. redis.cache.windows.net       |
 | US Gov  | *. redis.cache.usgovcloudapi.net |
 | Duitsland | *. redis.cache.cloudapi.de       |
 | China   | *. redis.cache.chinacloudapi.cn  |
@@ -177,7 +185,7 @@ Zie [verbinding maken met andere Clouds-Azure cache voor redis Power shell](cach
 ### <a name="what-do-the-stackexchangeredis-configuration-options-do"></a>Wat doen de configuratie opties voor stack Exchange. redis?
 Stack Exchange. redis heeft veel opties. In deze sectie vindt u enkele van de algemene instellingen. Zie [stack Exchange. redis-configuratie](https://stackexchange.github.io/StackExchange.Redis/Configuration)voor meer gedetailleerde informatie over de opties voor stack Exchange. redis.
 
-| ConfigurationOptions | Description | Aanbeveling |
+| ConfigurationOptions | Beschrijving | Aanbeveling |
 | --- | --- | --- |
 | AbortOnConnectFail |Als deze eigenschap is ingesteld op True, wordt er geen verbinding gemaakt na een netwerk fout. |Stel deze waarde in op False en laat stack Exchange. redis automatisch opnieuw verbinding maken. |
 | ConnectRetry |Het aantal keren dat verbindings pogingen moeten worden herhaald tijdens de eerste verbinding. |Raadpleeg de volgende opmerkingen voor hulp. |
@@ -215,20 +223,20 @@ Er is geen lokale emulator voor Azure cache voor redis, maar u kunt de MSOpenTec
 
 ```csharp
 private static Lazy<ConnectionMultiplexer>
-      lazyConnection = new Lazy<ConnectionMultiplexer>
-    (() =>
+    lazyConnection = new Lazy<ConnectionMultiplexer> (() =>
     {
-        // Connect to a locally running instance of Redis to simulate a local cache emulator experience.
+        // Connect to a locally running instance of Redis to simulate
+        // a local cache emulator experience.
         return ConnectionMultiplexer.Connect("127.0.0.1:6379");
     });
 
-    public static ConnectionMultiplexer Connection
+public static ConnectionMultiplexer Connection
+{
+    get
     {
-        get
-        {
-            return lazyConnection.Value;
-        }
+        return lazyConnection.Value;
     }
+}
 ```
 
 U kunt eventueel een bestand [redis. conf](https://redis.io/topics/config) configureren dat meer nauw keurig overeenkomt met de [standaard cache-instellingen](cache-configure.md#default-redis-server-configuration) voor uw online Azure-cache voor redis, indien gewenst.
@@ -367,11 +375,11 @@ In principe betekent dit dat wanneer het aantal bezette threads groter is dan de
 
 Als we een voor beeld van een fout bericht van stack Exchange. redis (build 1.0.450 of hoger) bekijken, ziet u dat er nu thread pool-statistieken worden afgedrukt (Zie de details van IOCP en WORKer hieronder).
 
-```output
-    System.TimeoutException: Timeout performing GET MyKey, inst: 2, mgr: Inactive,
-    queue: 6, qu: 0, qs: 6, qc: 0, wr: 0, wq: 0, in: 0, ar: 0,
-    IOCP: (Busy=6,Free=994,Min=4,Max=1000),
-    WORKER: (Busy=3,Free=997,Min=4,Max=1000)
+```
+System.TimeoutException: Timeout performing GET MyKey, inst: 2, mgr: Inactive,
+queue: 6, qu: 0, qs: 6, qc: 0, wr: 0, wq: 0, in: 0, ar: 0,
+IOCP: (Busy=6,Free=994,Min=4,Max=1000),
+WORKER: (Busy=3,Free=997,Min=4,Max=1000)
 ```
 
 In het vorige voor beeld ziet u dat er voor IOCP-thread zes bezette threads zijn en het systeem zo is geconfigureerd dat vier minimale threads zijn toegestaan. In dit geval zou de client waarschijnlijk 2 500-MS vertragingen hebben gezien, omdat 6 > 4.
@@ -386,20 +394,20 @@ Deze instelling configureren:
 
 * U wordt aangeraden deze instelling programmatisch te wijzigen met behulp van de methode [thread pool. SetMinThreads (...)](/dotnet/api/system.threading.threadpool.setminthreads#System_Threading_ThreadPool_SetMinThreads_System_Int32_System_Int32_) in `global.asax.cs` . Bijvoorbeeld:
 
-```cs
-private readonly int minThreads = 200;
-void Application_Start(object sender, EventArgs e)
-{
-    // Code that runs on application startup
-    AreaRegistration.RegisterAllAreas();
-    RouteConfig.RegisterRoutes(RouteTable.Routes);
-    BundleConfig.RegisterBundles(BundleTable.Bundles);
-    ThreadPool.SetMinThreads(minThreads, minThreads);
-}
-```
+    ```csharp
+    private readonly int minThreads = 200;
+    void Application_Start(object sender, EventArgs e)
+    {
+        // Code that runs on application startup
+        AreaRegistration.RegisterAllAreas();
+        RouteConfig.RegisterRoutes(RouteTable.Routes);
+        BundleConfig.RegisterBundles(BundleTable.Bundles);
+        ThreadPool.SetMinThreads(minThreads, minThreads);
+    }
+    ```
 
-  > [!NOTE]
-  > De waarde die wordt opgegeven met deze methode is een algemene instelling die van invloed is op het hele AppDomain. Als u bijvoorbeeld een computer met vier kernen hebt en *minWorkerThreads* en *minIoThreads* wilt instellen op 50 per CPU tijdens runtime, gebruikt u **thread pool. SetMinThreads (200, 200)**.
+    > [!NOTE]
+    > De waarde die wordt opgegeven met deze methode is een algemene instelling die van invloed is op het hele AppDomain. Als u bijvoorbeeld een computer met vier kernen hebt en *minWorkerThreads* en *minIoThreads* wilt instellen op 50 per CPU tijdens runtime, gebruikt u **thread pool. SetMinThreads (200, 200)**.
 
 * Het is ook mogelijk om de instelling minimale threads op te geven met behulp van de [configuratie-instelling *MinIoThreads* of *minWorkerThreads* ](https://msdn.microsoft.com/library/vstudio/7w2sway1(v=vs.100).aspx) onder het `<processModel>` configuratie-element in `Machine.config` , meestal bevindt zich op `%SystemRoot%\Microsoft.NET\Framework\[versionNumber]\CONFIG\` . **Het instellen van het aantal minimale threads op deze manier wordt doorgaans niet aanbevolen, omdat het een instelling voor het hele systeem is.**
 
@@ -455,7 +463,7 @@ Hier volgen enkele veelvoorkomende redenen voor het verbreken van een cache.
   * De drempel waarden voor de band breedte zijn bereikt.
   * Het duurt te lang om aan de CPU gebonden bewerkingen te volt ooien.
 * Oorzaken die zich aan de server zijde bevindt
-  * Op de standaard cache aanbieding heeft de service Azure cache for redis een failover geïnitieerd van het primaire knoop punt naar het secundaire knoop punt.
+  * Op de standaard cache aanbieding heeft de service Azure cache for redis een failover geïnitieerd van het primaire knoop punt naar het replica knooppunt.
   * Het exemplaar waarop de cache is geïmplementeerd, is door Azure bijgewerkt
     * Dit kan zijn voor redis-server updates of algemeen VM-onderhoud.
 

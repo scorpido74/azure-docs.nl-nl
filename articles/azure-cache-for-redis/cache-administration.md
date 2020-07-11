@@ -6,11 +6,12 @@ ms.service: cache
 ms.topic: conceptual
 ms.date: 07/05/2017
 ms.author: yegu
-ms.openlocfilehash: dfb760477fc528575212d79d929661c2276effbb
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 224436c155f1133621abede21878b49ebc9b3331
+ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85079072"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86185199"
 ---
 # <a name="how-to-administer-azure-cache-for-redis"></a>Azure-cache beheren voor redis
 In dit onderwerp wordt beschreven hoe u beheer taken uitvoert, zoals het [opnieuw opstarten](#reboot) en het [plannen van updates](#schedule-updates) voor uw Azure-cache voor redis-exemplaren.
@@ -34,9 +35,9 @@ Als u een of meer knoop punten van uw cache opnieuw wilt opstarten, selecteert u
 
 De invloed op client toepassingen varieert, afhankelijk van de knoop punten die u opnieuw opstart.
 
-* **Master** : wanneer het hoofd knooppunt opnieuw wordt opgestart, wordt door Azure cache voor redis een failover uitgevoerd naar het replica knooppunt en wordt het model gepromoot naar de Master. Tijdens deze failover kan er sprake zijn van een kort interval waarin verbindingen mogelijk niet in de cache worden opgeslagen.
+* **Master** : wanneer het primaire knoop punt opnieuw wordt opgestart, wordt door Azure cache voor redis een failover uitgevoerd naar het replica knooppunt en gepromoot naar primair. Tijdens deze failover kan er sprake zijn van een kort interval waarin verbindingen mogelijk niet in de cache worden opgeslagen.
 * **Replica** : wanneer het replica knooppunt opnieuw wordt opgestart, heeft dit doorgaans geen invloed op de cache-clients.
-* **Zowel hoofd** -als replica: wanneer beide cache knooppunten opnieuw worden opgestart, gaan alle gegevens verloren in de cache en worden de verbindingen met de cache mislukt totdat het primaire knoop punt weer online is. Als u [gegevens persistentie](cache-how-to-premium-persistence.md)hebt geconfigureerd, wordt de meest recente back-up hersteld wanneer de cache weer online is, maar eventuele cache schrijf bewerkingen die zijn opgetreden na de meest recente back-up, gaan verloren.
+* **Zowel primair als replica** : wanneer beide cache knooppunten opnieuw worden opgestart, gaan alle gegevens verloren in de cache en worden de verbindingen met de cache mislukt totdat het primaire knoop punt weer online is. Als u [gegevens persistentie](cache-how-to-premium-persistence.md)hebt geconfigureerd, wordt de meest recente back-up hersteld wanneer de cache weer online is, maar eventuele cache schrijf bewerkingen die zijn opgetreden na de meest recente back-up, gaan verloren.
 * **Knoop punten van een Premium-cache waarbij Clustering is ingeschakeld** : wanneer u een of meer knoop punten van een Premium-cache opnieuw opstart terwijl Clustering is ingeschakeld, is het gedrag voor de geselecteerde knoop punten hetzelfde als wanneer u het bijbehorende knoop punt of knoop punten van een niet-geclusterde cache opnieuw opstart.
 
 ## <a name="reboot-faq"></a>Veelgestelde vragen over opnieuw opstarten
@@ -46,7 +47,7 @@ De invloed op client toepassingen varieert, afhankelijk van de knoop punten die 
 * [Kan ik mijn cache opnieuw opstarten met Power shell, CLI of andere beheer hulpprogramma's?](#can-i-reboot-my-cache-using-powershell-cli-or-other-management-tools)
 
 ### <a name="which-node-should-i-reboot-to-test-my-application"></a>Welk knoop punt moet ik opnieuw opstarten om mijn toepassing te testen?
-Als u de tolerantie van uw toepassing wilt testen op fouten van het primaire knoop punt van uw cache, start u het **hoofd** knooppunt opnieuw op. Als u de tolerantie van uw toepassing wilt testen tegen storingen van het secundaire knoop punt, start u het **replica** -knoop punt opnieuw op. Als u de tolerantie van uw toepassing wilt testen tegen de totale uitval van de cache, moet u **beide** knoop punten opnieuw opstarten.
+Als u de tolerantie van uw toepassing wilt testen op fouten van het primaire knoop punt van uw cache, start u het **hoofd** knooppunt opnieuw op. Als u de tolerantie van uw toepassing wilt testen op fouten in het replica knooppunt, start u het **replica** -knoop punt opnieuw op. Als u de tolerantie van uw toepassing wilt testen tegen de totale uitval van de cache, moet u **beide** knoop punten opnieuw opstarten.
 
 ### <a name="can-i-reboot-the-cache-to-clear-client-connections"></a>Kan ik de cache opnieuw opstarten om client verbindingen te wissen?
 Ja, als u de cache opnieuw opstart, worden alle client verbindingen gewist. Het opnieuw opstarten van het systeem kan nuttig zijn in het geval dat alle client verbindingen worden gebruikt vanwege een logische fout of een fout in de client toepassing. Elke prijs categorie heeft verschillende [limieten voor client verbindingen](cache-configure.md#default-redis-server-configuration) voor de verschillende grootten en zodra deze limieten zijn bereikt, worden er geen client verbindingen meer geaccepteerd. Het opnieuw opstarten van de cache biedt een manier om alle client verbindingen te wissen.
@@ -59,7 +60,7 @@ Ja, als u de cache opnieuw opstart, worden alle client verbindingen gewist. Het 
 ### <a name="will-i-lose-data-from-my-cache-if-i-do-a-reboot"></a>Gaan er gegevens verloren vanuit mijn cache als ik opnieuw opstart?
 Als u de **hoofd** -en **replica** knooppunten opnieuw opstart, kunnen alle gegevens in de cache (of in die Shard als u een Premium-cache gebruikt en clustering is ingeschakeld) verloren gaan, maar dit wordt niet gegarandeerd. Als u [gegevens persistentie](cache-how-to-premium-persistence.md)hebt geconfigureerd, wordt de meest recente back-up hersteld wanneer de cache weer online is, maar eventuele cache schrijf bewerkingen die zijn opgetreden nadat de back-up is gemaakt, gaan verloren.
 
-Als u slechts één van de knoop punten opnieuw opstart, gaan de gegevens doorgaans verloren, maar is deze nog steeds aanwezig. Als bijvoorbeeld het hoofd knooppunt opnieuw wordt opgestart en er een cache-schrijf bewerking wordt uitgevoerd, gaan de gegevens uit de cache-schrijf bewerking verloren. Een ander scenario voor gegevens verlies is dat als u één knoop punt opnieuw opstart en het andere knoop punt wordt uitgevoerd als gevolg van een fout op hetzelfde moment. Zie [Wat is er gebeurd met mijn gegevens in redis?](https://gist.github.com/JonCole/b6354d92a2d51c141490f10142884ea4#file-whathappenedtomydatainredis-md) voor meer informatie over mogelijke oorzaken voor gegevens verlies.
+Als u slechts één van de knoop punten opnieuw opstart, gaan de gegevens doorgaans verloren, maar is deze nog steeds aanwezig. Als bijvoorbeeld het primaire knoop punt opnieuw wordt opgestart en er een cache-schrijf bewerking wordt uitgevoerd, gaan de gegevens uit de cache-schrijf bewerking verloren. Een ander scenario voor gegevens verlies is dat als u één knoop punt opnieuw opstart en het andere knoop punt wordt uitgevoerd als gevolg van een fout op hetzelfde moment. Zie [Wat is er gebeurd met mijn gegevens in redis?](https://gist.github.com/JonCole/b6354d92a2d51c141490f10142884ea4#file-whathappenedtomydatainredis-md) voor meer informatie over mogelijke oorzaken voor gegevens verlies.
 
 ### <a name="can-i-reboot-my-cache-using-powershell-cli-or-other-management-tools"></a>Kan ik mijn cache opnieuw opstarten met Power shell, CLI of andere beheer hulpprogramma's?
 Ja, voor Power shell-instructies Zie [een Azure-cache opnieuw opstarten voor redis](cache-how-to-manage-redis-cache-powershell.md#to-reboot-an-azure-cache-for-redis).

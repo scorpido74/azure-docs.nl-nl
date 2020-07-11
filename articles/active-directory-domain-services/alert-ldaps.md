@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
 ms.topic: troubleshooting
-ms.date: 09/18/2019
+ms.date: 07/09/2020
 ms.author: iainfou
-ms.openlocfilehash: 68798cf98bf01697e5d854f5b539c1c381642c3c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: d987bbbe2a35dd24341b75d5663bab33d8c3bdb9
+ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84735027"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86220249"
 ---
 # <a name="known-issues-secure-ldap-alerts-in-azure-active-directory-domain-services"></a>Bekende problemen: Secure LDAP waarschuwingen in Azure Active Directory Domain Services
 
@@ -36,7 +36,7 @@ Wanneer u beveiligd LDAP inschakelt, is het raadzaam extra regels te maken voor 
 
 1. In de Azure Portal zoekt en selecteert u **netwerk beveiligings groepen**.
 1. Kies de netwerk beveiligings groep die is gekoppeld aan uw beheerde domein, zoals *AADDS-contoso.com-NSG*, en selecteer vervolgens **regels voor binnenkomende beveiliging**
-1. **+** Een regel toevoegen voor TCP-poort 636. Selecteer, indien nodig, **Geavanceerd** in het venster om een regel te maken.
+1. Selecteer **+ toevoegen** om een regel voor TCP-poort 636 te maken. Selecteer, indien nodig, **Geavanceerd** in het venster om een regel te maken.
 1. Kies *IP-adressen* in de vervolg keuzelijst voor de **bron**. Voer de bron-IP-adressen in die u toegang wilt verlenen voor beveiligd LDAP-verkeer.
 1. Kies *een* van de **doel**waarden en voer *636* in als **doel poort bereik**.
 1. Stel het **protocol** in als *TCP* en de **actie** die moet worden *toegestaan*.

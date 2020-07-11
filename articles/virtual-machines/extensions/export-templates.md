@@ -14,11 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 12/05/2016
 ms.author: akjosh
-ms.openlocfilehash: 79991dad96742109817d579b951082d1a30e3951
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 4919ce9ecaa3dc4f621aa5658b44aa53fad0bbf3
+ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84703992"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86201027"
 ---
 # <a name="exporting-resource-groups-that-contain-vm-extensions"></a>Resource groepen exporteren die VM-extensies bevatten
 
@@ -32,18 +33,7 @@ Er zijn veel uitbrei dingen voor virtuele machines beschikbaar. Niet alle uitbre
 
 De volgende uitbrei dingen kunnen worden geëxporteerd met de functie Automation script.
 
-| Toestelnummer ||||
-|---|---|---|---|
-| Acronis-back-up | Datadog Windows-agent | BESTURINGSSYSTEEM patches voor Linux | VM-moment opname Linux
-| Acronis backup Linux | Docker-extensie | Puppet-agent |
-| BG-gegevens | DSC-extensie | Site 24x7 apm Insight |
-| BMC CMT-agent Linux | Dynatrace Linux | Site 24x7 Linux-server |
-| BMC CMT-agent Windows | Dynatrace Windows | Site 24x7 Windows Server |
-| Chef-client | HPE-beveiligings toepassing Defender | Trend Micro DSA |
-| Aangepast script | Antimalware IaaS | Trend Micro DSA Linux |
-| Aangepaste scriptextensie | IaaS diagnostische gegevens | VM-toegang voor Linux |
-| Aangepast script voor Linux | Linux chef-client | VM-toegang voor Linux |
-| Datadog Linux-agent | Linux-diagnose | VM-momentopname |
+> Acronis backup, Acronis backup Linux, bg info, BMC CMT agent Linux, BMC CMT agent Windows, chef-client, aangepast script, aangepaste script extensie, aangepast script voor Linux, Datadog Linux-agent, Datadog Windows-agent, docker-extensie, DSC-extensie, Dynatrace Linux, Dynatrace Windows, HPE-beveiligings toepassing Defender, IaaS antimalware, IaaS Diagnostics, Linux chef-client, Linux Diagnostic, patch voor Linux, puppet agent, site 24x7 apm Insight , Site 24x7 Linux-server, site 24x7 Windows Server, Trend Micro DSA, Trend Micro DSA Linux, VM-toegang voor Linux, VM-toegang voor Linux, VM-moment opname, VM snap shot Linux
 
 ## <a name="export-the-resource-group"></a>De resource groep exporteren
 

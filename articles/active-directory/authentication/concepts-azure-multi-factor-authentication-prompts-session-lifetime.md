@@ -11,12 +11,12 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: inbarc
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b77f2e78fa3df6c7ac6a422a03335f93d2a19d99
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 4834cccff11a70249140f49b498b8f7891787c72
+ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85255955"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86169337"
 ---
 # <a name="optimize-reauthentication-prompts-and-understand-session-lifetime-for-azure-multi-factor-authentication"></a>Herauthenticatie vragen en de levens duur van sessies voor Azure Multi-Factor Authentication optimaliseren
 
@@ -122,10 +122,10 @@ Als u Configureer bare token levensduur hebt ingeschakeld, wordt deze functie bi
 
 De volgende tabel bevat een overzicht van de aanbevelingen op basis van licenties:
 
-|                              | Azure AD Free-en Office 365-apps | Azure AD Premium |
+|              | Azure AD Free-en Office 365-apps | Azure AD Premium |
 |------------------------------|-----------------------------------|------------------|
-| SSO                          | Deelname aan [Azure AD](../devices/concept-azure-ad-join.md) of [hybride Azure AD](../devices/concept-azure-ad-join-hybrid.md)of [naadloze SSO](../hybrid/how-to-connect-sso.md) voor onbeheerde apparaten. | Azure AD-koppeling<br />Hybride Azure AD-koppeling |
-| Instellingen voor opnieuw verifiëren    | Blijven aangemeld                  | Beleid voor voorwaardelijke toegang gebruiken voor aanmeldings frequentie en permanente browser sessie |
+| **SSO**                      | Deelname aan [Azure AD](../devices/concept-azure-ad-join.md) of [hybride Azure AD](../devices/concept-azure-ad-join-hybrid.md)of [naadloze SSO](../hybrid/how-to-connect-sso.md) voor onbeheerde apparaten. | Azure AD-koppeling<br />Hybride Azure AD-koppeling |
+| **Instellingen voor opnieuw verifiëren** | Blijven aangemeld                  | Beleid voor voorwaardelijke toegang gebruiken voor aanmeldings frequentie en permanente browser sessie |
 
 ## <a name="next-steps"></a>Volgende stappen
 

@@ -1,14 +1,15 @@
 ---
 title: 'Begrijpen hoe waarschuwingen voor metrische gegevens werken in Azure Monitor:'
 description: Bekijk een overzicht van wat u met metrische waarschuwingen kunt doen en hoe ze werken in Azure Monitor.
-ms.date: 03/17/2020
+ms.date: 07/09/2020
 ms.topic: conceptual
 ms.subservice: alerts
-ms.openlocfilehash: 603df6f9b00c9261885937a3d85052b3806ff4f8
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: cd8c28b2c26e8859eda1634d2441982336cdd460
+ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84248818"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86187520"
 ---
 # <a name="understand-how-metric-alerts-work-in-azure-monitor"></a>Begrijpen hoe metrische waarschuwingen werken in Azure Monitor
 
@@ -127,16 +128,20 @@ Deze functie wordt momenteel ondersteund voor platform metrieken (geen aangepast
 
 | Service | Open bare Azure | Overheid | China |
 |:--------|:--------|:--------|:--------|
-| Virtuele machines  | **Ja** | Nee | No |
+| Virtuele machines  | **Ja** | Nee | Nee |
 | SQL server-data bases | **Ja** | **Ja** | Nee |
 | Elastische Pools van SQL Server | **Ja** | **Ja** | Nee |
 | Data Box edge-apparaten | **Ja** | **Ja** | Nee |
 
 U kunt op een van de drie manieren het bewakings bereik opgeven voor één metrische waarschuwings regel. Met virtuele machines kunt u bijvoorbeeld het bereik opgeven als:  
 
-- een lijst met virtuele machines in één Azure-regio binnen een abonnement
+- een lijst met virtuele machines (in één Azure-regio) binnen een abonnement
 - alle virtuele machines (in één Azure-regio) in een of meer resource groepen in een abonnement
-- alle virtuele machines (in één Azure-regio) in één abonnement
+- alle virtuele machines (in één Azure-regio) in een abonnement
+
+> [!NOTE]
+>
+> Het bereik van een waarschuwings regel voor metrische gegevens met meerdere resources moet ten minste één resource van het geselecteerde resource type bevatten.
 
 Het maken van metrische waarschuwings regels waarmee meerdere resources worden bewaakt, is vergelijkbaar met [het maken van een andere metrische waarschuwing](alerts-metric.md) waarmee één resource wordt gecontroleerd. Alleen een verschil is dat u alle resources selecteert die u wilt bewaken. U kunt deze regels ook maken via [Azure Resource Manager sjablonen](../../azure-monitor/platform/alerts-metric-create-templates.md#template-for-a-metric-alert-that-monitors-multiple-resources). U ontvangt afzonderlijke meldingen voor elke bewaakte resource.
 

@@ -6,11 +6,12 @@ services: automation
 ms.subservice: shared-capabilities
 ms.date: 05/17/2018
 ms.topic: conceptual
-ms.openlocfilehash: ac05d5b4eb8dd9d7a39f56ec6efae4831f00c623
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 9e997f80ceee54a1454128c1308032fefa603f5d
+ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85100004"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86186143"
 ---
 # <a name="manage-role-permissions-and-security"></a>Rolmachtigingen en beveiliging beheren
 
@@ -42,7 +43,7 @@ In de volgende tabellen worden de specifieke machtigingen beschreven die aan elk
 
 Een eigenaar kan alles beheren, inclusief toegang. In de volgende tabel ziet u de machtigingen die zijn verleend voor de rol:
 
-|Acties|Description|
+|Acties|Beschrijving|
 |---|---|
 |Micro soft. Automation/automationAccounts/|Resources van alle typen maken en beheren.|
 
@@ -253,7 +254,7 @@ In de volgende secties worden de minimale vereiste machtigingen beschreven die n
 
 Update beheer bereikt meerdere services voor het leveren van de service. De volgende tabel bevat de machtigingen die nodig zijn voor het beheren van implementaties van update beheer:
 
-|**Resource**  |**Role**  |**Bereik**  |
+|**Resource**  |**Role**  |**Scope**  |
 |---------|---------|---------|
 |Automation-account     | Inzender van Log Analytics       | Automation-account        |
 |Automation-account    | Inzender voor virtuele machines        | Resource groep voor het account        |
@@ -310,7 +311,7 @@ U kunt de toegangs machtiging verwijderen voor een gebruiker die het Automation-
 
 U kunt ook op rollen gebaseerde toegang configureren voor een Automation-account met behulp van de volgende [Azure PowerShell-cmdlets](../role-based-access-control/role-assignments-powershell.md):
 
-[Get-AzRoleDefinition](https://docs.microsoft.com/powershell/module/Az.Resources/Get-AzRoleDefinition?view=azps-3.7.0) geeft een lijst van alle RBAC-rollen die beschikbaar zijn in azure Active Directory. U kunt deze cmdlet gebruiken met de `Name` para meter om alle acties weer te geven die een specifieke rol kan uitvoeren.
+[Get-AzRoleDefinition](/powershell/module/Az.Resources/Get-AzRoleDefinition?view=azps-3.7.0) geeft een lijst van alle RBAC-rollen die beschikbaar zijn in azure Active Directory. U kunt deze cmdlet gebruiken met de `Name` para meter om alle acties weer te geven die een specifieke rol kan uitvoeren.
 
 ```azurepowershell-interactive
 Get-AzRoleDefinition -Name 'Automation Operator'
@@ -329,7 +330,7 @@ NotActions       : {}
 AssignableScopes : {/}
 ```
 
-[Get-AzRoleAssignment](https://docs.microsoft.com/powershell/module/az.resources/get-azroleassignment?view=azps-3.7.0) geeft een overzicht van Azure AD RBAC-roltoewijzingen voor het opgegeven bereik. Zonder para meters retourneert deze cmdlet alle roltoewijzingen die zijn gemaakt met het abonnement. Gebruik de `ExpandPrincipalGroups` para meter om de toegangs toewijzingen voor de opgegeven gebruiker weer te geven, evenals de groepen waartoe de gebruiker behoort.
+[Get-AzRoleAssignment](/powershell/module/az.resources/get-azroleassignment?view=azps-3.7.0) geeft een overzicht van Azure AD RBAC-roltoewijzingen voor het opgegeven bereik. Zonder para meters retourneert deze cmdlet alle roltoewijzingen die zijn gemaakt met het abonnement. Gebruik de `ExpandPrincipalGroups` para meter om de toegangs toewijzingen voor de opgegeven gebruiker weer te geven, evenals de groepen waartoe de gebruiker behoort.
 
 **Voor beeld:** Gebruik de volgende cmdlet om een lijst weer te geven van alle gebruikers en hun rollen binnen een Automation-account.
 
@@ -351,7 +352,7 @@ ObjectId           : 15f26a47-812d-489a-8197-3d4853558347
 ObjectType         : User
 ```
 
-Gebruik [New-AzRoleAssignment](https://docs.microsoft.com/powershell/module/Az.Resources/New-AzRoleAssignment?view=azps-3.7.0) om toegang te verlenen aan gebruikers, groepen en toepassingen aan een bepaald bereik.
+Gebruik [New-AzRoleAssignment](/powershell/module/Az.Resources/New-AzRoleAssignment?view=azps-3.7.0) om toegang te verlenen aan gebruikers, groepen en toepassingen aan een bepaald bereik.
     
 **Voor beeld:** Gebruik de volgende opdracht om de rol ' Automation-operator ' toe te wijzen voor een gebruiker in het Automation-account bereik.
 
@@ -373,7 +374,7 @@ ObjectId           : f5ecbe87-1181-43d2-88d5-a8f5e9d8014e
 ObjectType         : User
 ```
 
-Gebruik [Remove-AzRoleAssignment](https://docs.microsoft.com/powershell/module/Az.Resources/Remove-AzRoleAssignment?view=azps-3.7.0) om de toegang van een opgegeven gebruiker, groep of toepassing te verwijderen uit een bepaald bereik.
+Gebruik [Remove-AzRoleAssignment](/powershell/module/Az.Resources/Remove-AzRoleAssignment?view=azps-3.7.0) om de toegang van een opgegeven gebruiker, groep of toepassing te verwijderen uit een bepaald bereik.
 
 **Voor beeld:** Gebruik de volgende opdracht om de gebruiker te verwijderen uit de rol Automation-operator in het Automation-account bereik.
 

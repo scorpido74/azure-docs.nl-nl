@@ -5,11 +5,12 @@ services: automation
 ms.subservice: update-management
 ms.date: 04/06/2020
 ms.topic: conceptual
-ms.openlocfilehash: b40357e71275d835a200f3bc08c618b6713001d8
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 146cf01d99ccc00a972c98128d8e93e1ed5fb690
+ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83830766"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86185701"
 ---
 # <a name="query-update-management-logs"></a>Query's uitvoeren op Updatebeheer-logboeken
 
@@ -32,7 +33,7 @@ Er wordt een record met een type `RequiredUpdate` gemaakt die de updates vertege
 | ManagementGroupName | De naam van de Operations Manager beheer groep of Log Analytics werk ruimte. | 
 | Product | De producten waarvoor de update van toepassing is. | 
 | PublishDate | De datum waarop de update gereed is om te worden gedownload en geïnstalleerd vanaf Windows Update. |
-| server | | 
+| Server | | 
 | SourceHealthServiceId | De unieke id die de Log Analytics Windows agent-ID vertegenwoordigt. |
 | SourceSystem | *OperationsManager* | 
 | TenantId | De unieke id die uw organisatie-exemplaar van Azure Active Directory vertegenwoordigt. | 
@@ -91,7 +92,7 @@ Er wordt een record met `UpdateAgent` het type gemaakt met details van de Update
 | DaySinceLastUpdateBucket | | 
 | ManagementGroupName | De naam van de Operations Manager beheer groep of Log Analytics werk ruimte. |
 | OSVersion | De versie van het besturings systeem. |
-| server | |
+| Server | |
 | SourceHealthServiceId | De unieke id die de Log Analytics Windows agent-ID vertegenwoordigt. |
 | SourceSystem | Het bron systeem voor de record. De waarde is `OperationsManager` . | 
 | TenantId | De unieke id die het exemplaar van Azure Active Directory van uw organisatie vertegenwoordigt. |
@@ -193,7 +194,7 @@ Op een Windows-computer kunt u de volgende informatie controleren om de agent co
 1. Open **micro soft Monitoring Agent**in het configuratie scherm. Op het tabblad **log Analytics van Azure** wordt het volgende bericht weer gegeven: **micro soft monitoring agent heeft verbinding gemaakt met log Analytics**.
 2. Open het Windows-gebeurtenis logboek. Ga naar **Application and Services Servicelogboeken\operations Manager** en zoek naar gebeurtenis-id 3000 en gebeurtenis-id 5002 van de bron **service connector**. Deze gebeurtenissen geven aan of de computer is geregistreerd bij de Log Analytics-werkruimte en of deze de configuratie ontvangt.
 
-Als de agent niet kan communiceren met Azure Monitor-logboeken en de agent is geconfigureerd voor communicatie met Internet via een firewall of proxy server, controleert u of de firewall of proxy server correct is geconfigureerd. Zie [netwerk configuratie voor Windows-agent](../azure-monitor/platform/agent-windows.md) of [netwerk configuratie voor Linux-agent](../log-analytics/log-analytics-agent-linux.md)voor informatie over het controleren van de juiste configuratie van de firewall of proxy server.
+Als de agent niet kan communiceren met Azure Monitor-logboeken en de agent is geconfigureerd voor communicatie met Internet via een firewall of proxy server, controleert u of de firewall of proxy server correct is geconfigureerd. Zie [netwerk configuratie voor Windows-agent](../azure-monitor/platform/agent-windows.md) of [netwerk configuratie voor Linux-agent](../azure-monitor/learn/quick-collect-linux-computer.md)voor informatie over het controleren van de juiste configuratie van de firewall of proxy server.
 
 > [!NOTE]
 > Als uw Linux-systemen zijn geconfigureerd om te communiceren met een proxy-of Log Analytics gateway en u Updatebeheer inschakelt, werkt u de `proxy.conf` machtigingen bij om de groep omiuser Lees machtigingen voor het bestand te verlenen met behulp van de volgende opdrachten:
@@ -408,5 +409,5 @@ Update
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* Zie [Azure monitor-logboeken](../log-analytics/log-analytics-log-searches.md)voor meer informatie over Azure monitor Logboeken.
+* Zie [Azure monitor-logboeken](../azure-monitor/log-query/log-query-overview.md)voor meer informatie over Azure monitor Logboeken.
 * Zie [Configuring Alerts (waarschuwingen configureren](automation-tutorial-update-management.md#configure-alerts)) voor meer informatie.

@@ -11,12 +11,12 @@ ms.date: 12/05/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0c922b95154f16a199660bcd5e58f792e46eade7
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: d4fbfe9222971ccd1d28ceaddc91b137c6106e12
+ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85360602"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86146746"
 ---
 # <a name="tutorial-integrate-a-single-forest-with-a-single-azure-ad-tenant"></a>Zelf studie: Eén forest met één Azure AD-Tenant integreren
 
@@ -107,14 +107,14 @@ Voer de volgende stappen uit om te controleren of de agent wordt uitgevoerd:
 1.  Meld u aan bij de Azure AD-Portal.
 2.  Klik op **Azure Active Directory**
 3.  Klik op **Azure AD Connect**
-4.  Selecteer **Inrichting beheren (preview)** 
-![](media/how-to-configure/manage1.png)
-5.  Klik op **Nieuwe configuratie**
-![](media/tutorial-single-forest/configure1.png)
+4.  Selecteer scherm opname **beheren (preview-versie)** 
+ ![ met de koppeling inrichting beheren (preview).](media/how-to-configure/manage1.png)
+5.  Klik op **nieuwe** 
+ ![ scherm afbeelding van Azure AD Provisioning (preview) met de koppeling ' nieuwe configuratie ' gemarkeerd.](media/tutorial-single-forest/configure1.png)
 7.  Voer in het configuratiescherm een **E-mailadres voor meldingen** in, zet de selector op **Inschakelen** en klik op **Opslaan**.
-![](media/tutorial-single-forest/configure2.png)
+![Scherm opname van scherm configureren met e-mail melding ingevuld en ingeschakeld.](media/tutorial-single-forest/configure2.png)
 1.  De configuratie status moet nu **in orde**zijn.
-![](media/how-to-configure/manage4.png)
+![Scherm opname van Azure AD Provisioning (preview) met de status in orde.](media/how-to-configure/manage4.png)
 
 ## <a name="verify-users-are-created-and-synchronization-is-occurring"></a>Controleer of gebruikers zijn gemaakt en synchronisatie plaatsvindt
 U gaat nu controleren of de gebruikers die u in onze on-premises Directory had, zijn gesynchroniseerd en nu aanwezig zijn in onze Azure AD-Tenant.  Dit synchronisatieproces kan enkele uren duren.  Ga als volgt te werk om te controleren of gebruikers zijn gesynchroniseerd.

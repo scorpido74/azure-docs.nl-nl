@@ -8,13 +8,13 @@ ms.subservice: core
 ms.topic: reference
 author: likebupt
 ms.author: keli19
-ms.date: 04/24/2020
-ms.openlocfilehash: 0b7ca2654fb8b7bdcca6dcb5f2fd354a138f2fcf
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 07/08/2020
+ms.openlocfilehash: fe0d3819701e062fa2253bc6dd0c3a28eaeaadfb
+ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85564348"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86171109"
 ---
 # <a name="evaluate-model-module"></a>Model module evalueren
 
@@ -35,10 +35,10 @@ Gebruik deze module om de nauw keurigheid van een getraind model te meten. U gee
 
 ## <a name="how-to-use-evaluate-model"></a>Het gebruik van een evalueren model
 1. Verbind de Score van de **gescoorde gegevensset** van het [score model](./score-model.md) of de uitvoer van de gegevensset van het resultaat van de gegevens van het type [toewijzen aan clusters](./assign-data-to-clusters.md) aan de linkerkant invoer poort van het **Evalueer model**. 
-  > [!NOTE] 
-  > Als u modules als ' select columns in Dataset ' wilt gebruiken om een deel van een invoer gegevensset te selecteren, moet u ervoor zorgen dat de werkelijke Label kolom (gebruikt in de training), de kolom ' gescoorde kansen ' en de kolom ' gescoorde labels ' bestaan voor het berekenen van metrische gegevens zoals AUC, nauw keurigheid voor binaire classificatie/anomalie detectie.
-  > Kolom werkelijk label, de kolom scoored labels bestaat voor het berekenen van metrische gegevens voor classificatie en regressie met meerdere klassen.
-  > De kolom Assignments, columns DistancesToClusterCenter. X ' (X is massa middelpunt index, variërend van 0,..., aantal centroids-1) bevindt zich voor het berekenen van metrische gegevens voor clustering.
+    > [!NOTE] 
+    > Als u modules als ' select columns in Dataset ' wilt gebruiken om een deel van een invoer gegevensset te selecteren, moet u ervoor zorgen dat de werkelijke Label kolom (gebruikt in de training), de kolom ' gescoorde kansen ' en de kolom ' gescoorde labels ' bestaan voor het berekenen van metrische gegevens zoals AUC, nauw keurigheid voor binaire classificatie/anomalie detectie.
+    > Kolom werkelijk label, de kolom scoored labels bestaat voor het berekenen van metrische gegevens voor classificatie en regressie met meerdere klassen.
+    > De kolom Assignments, columns DistancesToClusterCenter. X ' (X is massa middelpunt index, variërend van 0,..., aantal centroids-1) bevindt zich voor het berekenen van metrische gegevens voor clustering.
 
 2. Beschrijving Verbind de Score van de **gescoorde gegevensset** van het [score model](./score-model.md) of het resultaat van de gegevensset-uitvoer van de gegevens voor het tweede model aan de **juiste** invoer poort van het **Evalueer model**. U kunt de resultaten van twee verschillende modellen op dezelfde gegevens eenvoudig vergelijken. De twee invoer algoritmen moeten hetzelfde algoritme type zijn. U kunt ook scores van twee verschillende uitvoeringen vergelijken met dezelfde gegevens met verschillende para meters.
 
@@ -49,7 +49,12 @@ Gebruik deze module om de nauw keurigheid van een getraind model te meten. U gee
 
 ## <a name="results"></a>Resultaten
 
-Nadat u het **model evalueren**hebt uitgevoerd, selecteert u de module om het navigatie paneel voor het **model evalueren** te openen aan de rechter kant.  Kies vervolgens het tabblad **uitvoer en logboeken** en op dat tabblad bevat de sectie **gegevens uitvoer** meerdere pictogrammen.   Het pictogram **visualiseren** bevat een pictogram van een staaf diagram en is een eerste manier om de resultaten weer te geven.
+Nadat u het **model evalueren**hebt uitgevoerd, selecteert u de module om het navigatie paneel voor het **model evalueren** te openen aan de rechter kant.  Kies vervolgens het tabblad **uitvoer en logboeken** en op dat tabblad bevat de sectie **gegevens uitvoer** meerdere pictogrammen. Het pictogram **visualiseren** bevat een pictogram van een staaf diagram en is een eerste manier om de resultaten weer te geven.
+
+Voor binaire classificatie kunt u, nadat u op het pictogram **visualiseren** hebt geklikt, de binaire Verwar ring visualiseren.
+Voor multi-classificatie kunt u het teken bestand met de Verwar ring matrix vinden op het tabblad **uitvoer en logboeken** , zoals hieronder:
+> [!div class="mx-imgBorder"]
+> ![Voor beeld van geüploade afbeelding](media/module/multi-class-confusion-matrix.png)
 
 Als u gegevens sets verbindt met zowel de invoer van een **Evalueer model**, bevatten de resultaten metrische gegevens voor beide sets of beide modellen.
 Het model of de gegevens die aan de linker poort zijn gekoppeld, worden eerst in het rapport weer gegeven, gevolgd door de metrieken voor de gegevensset of het model dat is gekoppeld aan de juiste poort.  
@@ -70,7 +75,8 @@ In deze sectie worden de metrische gegevens die worden geretourneerd voor de spe
 
 ### <a name="metrics-for-classification-models"></a>Metrische gegevens voor classificatie modellen
 
-De volgende metrische gegevens worden gerapporteerd bij het evalueren van classificatie modellen.
+
+De volgende metrische gegevens worden gerapporteerd bij het evalueren van binaire classificatie modellen.
   
 -   **Nauw keurigheid** meet de goed keuring van een classificatie model als het aandeel van de werkelijke resultaten tot het totale aantal cases.  
   
@@ -78,13 +84,10 @@ De volgende metrische gegevens worden gerapporteerd bij het evalueren van classi
   
 -   **Intrekken** is de Fractie van alle juiste resultaten die door het model worden geretourneerd.  
   
--   **F-Score** wordt berekend als het gewogen gemiddelde van de precisie en intrekken tussen 0 en 1, waarbij de ideale waarde voor de F-score 1 is.  
+-   De **F1-Score** wordt berekend als het gewogen gemiddelde van de precisie en intrekken tussen 0 en 1, waarbij de ideale waarde voor de F1-score 1 is.  
   
 -   **AUC** meet het gebied onder de curve die is getekend met echte positieven op de y-as en fout-positieven op de x-as. Deze meet waarde is nuttig omdat deze een enkel getal bevat waarmee u modellen van verschillende typen kunt vergelijken.  
-  
-- **Gemiddeld logboek verlies** is een enkele score die wordt gebruikt om de sanctie voor verkeerde resultaten te drukken. Het wordt berekend als het verschil tussen de twee waarschijnlijke verdelingen: de werkelijke waarde en de naam van het model.  
-  
-- **Verlies van trainings logboeken** is een enkele score die het voor deel van de classificatie op een wille keurige voor spelling weergeeft. Het logboek verlies meet de onzekerheid van uw model door de waarschijnlijkheid dat het wordt uitgevoerd, te vergelijken met de bekende waarden van de labels. U wilt het logboek verlies voor het model als geheel minimaliseren.
+
 
 ### <a name="metrics-for-regression-models"></a>Metrische gegevens voor regressie modellen
  

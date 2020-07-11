@@ -1,5 +1,5 @@
 ---
-title: Uitleg bij automatische ML
+title: Uitleg bij automatische MILLILITERs (preview)
 titleSuffix: Azure Machine Learning
 description: Meer informatie over het verkrijgen van uitleg over hoe uw Automated ML-model bepaalt het belang van de functie en voor spellingen wanneer u de Azure Machine Learning SDK gebruikt.
 services: machine-learning
@@ -8,14 +8,15 @@ ms.subservice: core
 ms.topic: how-to
 ms.author: mesameki
 author: mesameki
-ms.date: 03/11/2020
-ms.openlocfilehash: 6fcebb34f82565fcf83a9535e8c036231c5b3cf7
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 07/09/2020
+ms.openlocfilehash: af3fe7bffbf985936a1648088daaf1a294a69905
+ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84430527"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86206599"
 ---
-# <a name="interpretability-model-explanations-in-automated-machine-learning"></a>Interpretiteit: model uitleg bij automatische machine learning
+# <a name="interpretability-model-explanations-in-automated-machine-learning-preview"></a>Interpretation: model uitleg in automatische machine learning (preview)
 
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
 

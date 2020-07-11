@@ -9,11 +9,12 @@ ms.author: magoedte
 ms.date: 03/11/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 3cfc63b29b51b70cb41c476c49bc17f5e9cbd308
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 562ea5e0e9e4851ed59bd3ef917be2f9c48cd2a7
+ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83746622"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86185548"
 ---
 # <a name="move-your-azure-automation-account-to-another-subscription"></a>Uw Azure Automation-account verplaatsen naar een ander abonnement
 
@@ -40,7 +41,7 @@ Als u uw werk ruimte wilt ontkoppelen van uw Automation-account, moet u de funct
 
     ![Scherm opname van het verwijderen van functie resources uit het Azure Portal](../media/move-account/delete-solutions.png)
 
-Als u wilt, kunt u de resources verwijderen met de cmdlet [Remove-AzResource](https://docs.microsoft.com/powershell/module/Az.Resources/Remove-AzResource?view=azps-3.7.0) :
+Als u wilt, kunt u de resources verwijderen met de cmdlet [Remove-AzResource](/powershell/module/Az.Resources/Remove-AzResource?view=azps-3.7.0) :
 
 ```azurepowershell-interactive
 $workspaceName = <myWorkspaceName>
@@ -79,7 +80,7 @@ Voor VM's buiten bedrijfsuren starten/stoppen moet u ook de waarschuwings regels
 
     ![Scherm afbeelding van de pagina actie groep](../media/move-account/delete-action-group.png)
 
-Als u wilt, kunt u uw actie groep verwijderen met de cmdlet [Remove-AzActionGroup](https://docs.microsoft.com/powershell/module/az.monitor/remove-azactiongroup?view=azps-3.7.0) :
+Als u wilt, kunt u uw actie groep verwijderen met de cmdlet [Remove-AzActionGroup](/powershell/module/az.monitor/remove-azactiongroup?view=azps-3.7.0) :
 
 ```azurepowershell-interactive
 Remove-AzActionGroup -ResourceGroupName <myResourceGroup> -Name StartStop_VM_Notification

@@ -6,12 +6,12 @@ ms.suite: integration
 ms.reviewer: deli, logicappspm
 ms.topic: conceptual
 ms.date: 06/19/2020
-ms.openlocfilehash: 938f10b621d6081af84cf15d7e04c5f5ab517417
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 6563f3e263867387332940db58abff62e085cded
+ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84977681"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86187690"
 ---
 # <a name="block-connections-created-by-connectors-in-azure-logic-apps"></a>Verbindingen die zijn gemaakt door connectors in Azure Logic Apps blok keren
 
@@ -125,11 +125,11 @@ Voer de volgende stappen uit om het maken van een verbinding in een logische app
 
    | Eigenschap | Vereist | Waarde | Beschrijving |
    |----------|----------|-------|-------------|
-   | **Locatie van definitie** | Yes | <*Azure-subscription-name*> | Het Azure-abonnement dat moet worden gebruikt voor de beleids definitie <p><p>1. Als u uw abonnement wilt vinden, selecteert u de knop met weglatings tekens (**...**). <br>2. Zoek en selecteer uw abonnement in de lijst met **abonnementen** . <br>3. Als u klaar bent, selecteert u **selecteren**. |
-   | **Naam** | Yes | <*beleids definitie: naam*> | De naam die moet worden gebruikt voor de beleids definitie |
-   | **Beschrijving** | No | <*beleids definitie: naam*> | Een beschrijving van de beleids definitie |
-   | **Categorie** | Yes | **Logic apps** | De naam van een bestaande categorie of nieuwe categorie voor de beleids definitie |
-   | **Afdwingen van beleid** | Yes | **Ingeschakeld** | Met deze instelling bepaalt u of de beleids definitie moet worden in-of uitgeschakeld wanneer u uw werk opslaat. |
+   | **Locatie van definitie** | Ja | <*Azure-subscription-name*> | Het Azure-abonnement dat moet worden gebruikt voor de beleids definitie <p><p>1. Als u uw abonnement wilt vinden, selecteert u de knop met weglatings tekens (**...**). <br>2. Zoek en selecteer uw abonnement in de lijst met **abonnementen** . <br>3. Als u klaar bent, selecteert u **selecteren**. |
+   | **Naam** | Ja | <*beleids definitie: naam*> | De naam die moet worden gebruikt voor de beleids definitie |
+   | **Beschrijving** | Nee | <*beleids definitie: naam*> | Een beschrijving van de beleids definitie |
+   | **Categorie** | Ja | **Logic apps** | De naam van een bestaande categorie of nieuwe categorie voor de beleids definitie |
+   | **Afdwingen van beleid** | Ja | **Ingeschakeld** | Met deze instelling bepaalt u of de beleids definitie moet worden in-of uitgeschakeld wanneer u uw werk opslaat. |
    ||||
 
 1. Onder **BELEIDS regel**is het JSON-invoervak vooraf ingevuld met een beleids definitie sjabloon. Vervang deze sjabloon door de [beleids definitie](../governance/policy/concepts/definition-structure.md) op basis van de eigenschappen die worden beschreven in de onderstaande tabel en met de volgende syntaxis:
@@ -244,13 +244,13 @@ Wanneer u een verbinding maakt in een logische app, bestaat die verbinding als a
 
    ![Eigenschappen van beleids definitie](./media/block-connections-connectors/policy-definition-using-connections-1.png)
 
-   | Eigenschap | Vereist | Waarde | Description |
+   | Eigenschap | Vereist | Waarde | Beschrijving |
    |----------|----------|-------|-------------|
-   | **Locatie van definitie** | Yes | <*Azure-subscription-name*> | Het Azure-abonnement dat moet worden gebruikt voor de beleids definitie <p><p>1. Als u uw abonnement wilt vinden, selecteert u de knop met weglatings tekens (**...**). <br>2. Zoek en selecteer uw abonnement in de lijst met **abonnementen** . <br>3. Als u klaar bent, selecteert u **selecteren**. |
-   | **Naam** | Yes | <*beleids definitie: naam*> | De naam die moet worden gebruikt voor de beleids definitie |
-   | **Beschrijving** | No | <*beleids definitie: naam*> | Een beschrijving van de beleids definitie |
-   | **Categorie** | Yes | **Logic apps** | De naam van een bestaande categorie of nieuwe categorie voor de beleids definitie |
-   | **Afdwingen van beleid** | Yes | **Ingeschakeld** | Met deze instelling bepaalt u of de beleids definitie moet worden in-of uitgeschakeld wanneer u uw werk opslaat. |
+   | **Locatie van definitie** | Ja | <*Azure-subscription-name*> | Het Azure-abonnement dat moet worden gebruikt voor de beleids definitie <p><p>1. Als u uw abonnement wilt vinden, selecteert u de knop met weglatings tekens (**...**). <br>2. Zoek en selecteer uw abonnement in de lijst met **abonnementen** . <br>3. Als u klaar bent, selecteert u **selecteren**. |
+   | **Naam** | Ja | <*beleids definitie: naam*> | De naam die moet worden gebruikt voor de beleids definitie |
+   | **Beschrijving** | Nee | <*beleids definitie: naam*> | Een beschrijving van de beleids definitie |
+   | **Categorie** | Ja | **Logic apps** | De naam van een bestaande categorie of nieuwe categorie voor de beleids definitie |
+   | **Afdwingen van beleid** | Ja | **Ingeschakeld** | Met deze instelling bepaalt u of de beleids definitie moet worden in-of uitgeschakeld wanneer u uw werk opslaat. |
    ||||
 
 1. Onder **BELEIDS regel**is het JSON-invoervak vooraf ingevuld met een beleids definitie sjabloon. Vervang deze sjabloon door de [beleids definitie](../governance/policy/concepts/definition-structure.md) op basis van de eigenschappen die worden beschreven in de onderstaande tabel en met de volgende syntaxis:
@@ -271,7 +271,7 @@ Wanneer u een verbinding maakt in een logische app, bestaat die verbinding als a
     }
     ```
 
-   | Eigenschap | Waarde | Description |
+   | Eigenschap | Waarde | Beschrijving |
    |----------|-------|-------------|
    | `mode` | `All` | De modus die de resource typen bepaalt die door het beleid worden geëvalueerd. <p><p>Met dit scenario stelt `mode` u in dat `All` het beleid wordt toegepast op Azure-resource groepen,-abonnementen en alle resource typen. <p><p>Zie [structuur modus van beleids definitie](../governance/policy/concepts/definition-structure.md#mode)voor meer informatie. |
    | `if` | `{condition-to-evaluate}` | De voor waarde waarmee wordt bepaald wanneer de beleids regel moet worden afgedwongen <p><p>In dit scenario bepaalt de `{condition-to-evaluate}` of de teken reeks uitvoer van de `[string(field('Microsoft.Logic/workflows/parameters'))]` teken reeks bevat, `{connector-name}` . <p><p>Zie [structuur beleids definitie-beleids regel](../governance/policy/concepts/definition-structure.md#policy-rule)voor meer informatie. |
@@ -331,14 +331,14 @@ Vervolgens moet u de beleids definitie toewijzen waarvoor u het beleid wilt afdw
 
    | Eigenschap | Vereist | Beschrijving |
    |----------|----------|-------------|
-   | **Bereik** | Yes | De resources waar u de beleids toewijzing wilt afdwingen. <p><p>1. Selecteer de knop met weglatings tekens (**...**) naast het vak **bereik** . <br>2. Selecteer in de lijst **abonnement** het Azure-abonnement. <br>3. Selecteer desgewenst de resource groep in de lijst **resource groep** . <br>4. Als u klaar bent, selecteert u **selecteren**. |
-   | **Uitsluitingen** | No | Alle Azure-resources die moeten worden uitgesloten van de beleids toewijzing. <p><p>1. Selecteer de knop met weglatings tekens (**...**) naast het vak **uitsluitingen** . <br>2. Selecteer in de lijst met **resources** de resource die > **toevoegen aan de geselecteerde scope**. <br>3. Als u klaar bent, selecteert u **Opslaan**. |
-   | **Beleidsdefinitie** | Yes | De naam voor de beleids definitie die u wilt toewijzen en afdwingen. In dit voor beeld wordt het Insta gram-beleid ' Insta gram-verbindingen blok keren ' voortgezet. <p><p>1. Selecteer de knop met weglatings tekens (**...**) naast het vak **beleids definitie** . <br>2. Zoek de beleids definitie en selecteer deze met behulp van het **type** filter of het **zoekvak** . <br>3. Als u klaar bent, selecteert u **selecteren**. |
-   | **Toewijzings naam** | Yes | De naam die moet worden gebruikt voor de beleids toewijzing als deze afwijkt van de beleids definitie |
-   | **Toewijzings-ID** | Yes | De automatisch gegenereerde ID voor de beleids toewijzing |
-   | **Beschrijving** | No | Een beschrijving voor de beleids toewijzing |
-   | **Afdwingen van beleid** | Yes | De instelling waarmee de beleids toewijzing wordt in-of uitgeschakeld |
-   | **Toegewezen door** | No | De naam van de persoon die de beleids toewijzing heeft gemaakt en toegepast |
+   | **Scope** | Ja | De resources waar u de beleids toewijzing wilt afdwingen. <p><p>1. Selecteer de knop met weglatings tekens (**...**) naast het vak **bereik** . <br>2. Selecteer in de lijst **abonnement** het Azure-abonnement. <br>3. Selecteer desgewenst de resource groep in de lijst **resource groep** . <br>4. Als u klaar bent, selecteert u **selecteren**. |
+   | **Uitsluitingen** | Nee | Alle Azure-resources die moeten worden uitgesloten van de beleids toewijzing. <p><p>1. Selecteer de knop met weglatings tekens (**...**) naast het vak **uitsluitingen** . <br>2. Selecteer in de lijst met **resources** de resource die > **toevoegen aan de geselecteerde scope**. <br>3. Als u klaar bent, selecteert u **Opslaan**. |
+   | **Beleidsdefinitie** | Ja | De naam voor de beleids definitie die u wilt toewijzen en afdwingen. In dit voor beeld wordt het Insta gram-beleid ' Insta gram-verbindingen blok keren ' voortgezet. <p><p>1. Selecteer de knop met weglatings tekens (**...**) naast het vak **beleids definitie** . <br>2. Zoek de beleids definitie en selecteer deze met behulp van het **type** filter of het **zoekvak** . <br>3. Als u klaar bent, selecteert u **selecteren**. |
+   | **Toewijzings naam** | Ja | De naam die moet worden gebruikt voor de beleids toewijzing als deze afwijkt van de beleids definitie |
+   | **Toewijzings-ID** | Ja | De automatisch gegenereerde ID voor de beleids toewijzing |
+   | **Beschrijving** | Nee | Een beschrijving voor de beleids toewijzing |
+   | **Afdwingen van beleid** | Ja | De instelling waarmee de beleids toewijzing wordt in-of uitgeschakeld |
+   | **Toegewezen door** | Nee | De naam van de persoon die de beleids toewijzing heeft gemaakt en toegepast |
    ||||
 
    Bijvoorbeeld, om het beleid toe te wijzen aan een Azure-resource groep met behulp van het Insta gram-voor beeld:
@@ -363,7 +363,7 @@ U kunt het beleid proberen door een verbinding te maken met behulp van de nu bep
 
 Het bericht bevat de volgende informatie:
 
-| | |
+| Beschrijving | Inhoud |
 |---|---|
 | Reden voor de fout | `"Resource 'instagram' was disallowed by policy."` |
 | Toewijzings naam | `"Block Instagram connections"` |

@@ -5,11 +5,12 @@ services: automation
 ms.subservice: process-automation
 ms.topic: conceptual
 ms.date: 10/30/2018
-ms.openlocfilehash: 3369a807410e9e959e8091d5b16c8480803d26bb
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 38963a8e1bfdbde50439ed871aa33e9aaa830d35
+ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83830579"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86185650"
 ---
 # <a name="track-updated-files-with-a-watcher-task"></a>Bijgewerkte bestanden bijhouden met een Watcher-taak
 
@@ -19,7 +20,7 @@ Azure Automation een Watcher-taak gebruikt om te zoeken naar gebeurtenissen en t
 > Watcher-taken worden niet ondersteund in azure China ViaNet 21.
 
 > [!IMPORTANT]
-> Vanaf mei 2020 is het gebruik van Azure Logic Apps de ondersteunde manier om gebeurtenissen te controleren, terugkerende taken te plannen en acties te activeren. Zie [terugkerende geautomatiseerde taken, processen en werk stromen plannen en uitvoeren met Azure Logic apps](https://docs.microsoft.com/azure/logic-apps/concepts-schedule-automated-recurring-tasks-workflows).
+> Vanaf mei 2020 is het gebruik van Azure Logic Apps de ondersteunde manier om gebeurtenissen te controleren, terugkerende taken te plannen en acties te activeren. Zie [terugkerende geautomatiseerde taken, processen en werk stromen plannen en uitvoeren met Azure Logic apps](../logic-apps/concepts-schedule-automated-recurring-tasks-workflows.md).
 
 In deze zelf studie wordt u begeleid bij het maken van een Watcher-taak om te controleren wanneer een nieuw bestand wordt toegevoegd aan een map. In deze zelfstudie leert u procedures om het volgende te doen:
 
@@ -36,7 +37,7 @@ In deze zelf studie wordt u begeleid bij het maken van een Watcher-taak om te co
 Hieronder wordt aangegeven wat de vereisten zijn om deze zelfstudie te voltooien:
 
 * Azure-abonnement. Als u nog geen abonnement hebt, kunt u [uw voordelen als MSDN-abonnee activeren](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/) of u aanmelden voor een [gratis account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
-* [Automation-account](automation-offering-get-started.md) voor het opslaan van de Watcher-en actie-runbooks en de Watcher-taak.
+* [Automation-account](./index.yml) voor het opslaan van de Watcher-en actie-runbooks en de Watcher-taak.
 * Een [hybride runbook worker](automation-hybrid-runbook-worker.md) waarbij de Watcher-taak wordt uitgevoerd.
 * Power shell-runbooks. Power shell workflow-runbooks worden niet ondersteund door Watcher-taken.
 
@@ -60,7 +61,7 @@ U kunt dit runbook ook vanuit de Portal importeren in uw Automation-account door
 
 ## <a name="create-an-automation-variable"></a>Een Automation-variabele maken
 
-Een [Automation-variabele](automation-variables.md) wordt gebruikt voor het opslaan van de tijds tempels die het voor gaande runbook leest en opslaat uit elk bestand.
+Een [Automation-variabele](./shared-resources/variables.md) wordt gebruikt voor het opslaan van de tijds tempels die het voor gaande runbook leest en opslaat uit elk bestand.
 
 1. Selecteer **variabelen** onder **gedeelde resources** en klik op **+ een variabele toevoegen**.
 1. Voer Watch-NewFileTimestamp in als naam.

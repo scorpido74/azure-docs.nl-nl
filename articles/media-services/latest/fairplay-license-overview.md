@@ -14,11 +14,12 @@ ms.topic: article
 ms.date: 12/08/2018
 ms.author: juliako
 ms.custom: seodec18
-ms.openlocfilehash: d348f2696ef865616669af311477cb3a90a59a50
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 4a3516d96e397944adcd31628a561a243e178c2d
+ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82995872"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86183032"
 ---
 # <a name="apple-fairplay-license-requirements-and-configuration"></a>Vereisten voor en configuratie van Apple FairPlay-licenties 
 
@@ -60,6 +61,9 @@ Het volgende is vereist wanneer u Media Services gebruikt voor het versleutelen 
   * . der-bestanden
   * pfx-bestand
   * wacht woord voor het pfx-
+  
+> [!NOTE]
+> Azure Media Services controleert de verval datum van het certificaat niet tijdens de verpakking of de levering van sleutels. Het blijft werken nadat het certificaat is verlopen.
 
 ## <a name="fairplay-and-player-apps"></a>FairPlay-en Player-apps
 

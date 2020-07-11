@@ -19,12 +19,12 @@ translation.priority.mt:
 - ru-ru
 - zh-cn
 - zh-tw
-ms.openlocfilehash: 06eb29f2f3245d3f4fd047fb86b2b57fb1f0989e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 837237be636e67f37f5c744cd4863f1eb159652a
+ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "72793355"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86201387"
 ---
 # <a name="odata-full-text-search-functions-in-azure-cognitive-search---searchismatch-and-searchismatchscoring"></a>OData-functies voor zoeken in volledige tekst in azure Cognitive Search- `search.ismatch` en`search.ismatchscoring`
 
@@ -98,25 +98,35 @@ Zowel de `search.ismatch` als- `search.ismatchscoring` functies kunnen in dezelf
 
 Vind documenten met het woord ' afgebakend '. Deze filter query is identiek aan een [Zoek opdracht](https://docs.microsoft.com/rest/api/searchservice/search-documents) met `search=waterfront` .
 
+```odata-filter-expr
     search.ismatchscoring('waterfront')
+```
 
 Vind documenten met het woord ' Hostel ' en classificatie groter of gelijk aan 4, of documenten met het woord ' Motel ' en de classificatie is gelijk aan 5. Opmerking: deze aanvraag kan niet worden aangegeven zonder de `search.ismatchscoring` functie.
 
+```odata-filter-expr
     search.ismatchscoring('hostel') and Rating ge 4 or search.ismatchscoring('motel') and Rating eq 5
+```
 
 Documenten zonder het woord "luxe" zoeken.
 
+```odata-filter-expr
     not search.ismatch('luxury')
+```
 
 Documenten zoeken met de woord weer gave ' Oceaan ' of de classificatie gelijk aan 5. De `search.ismatchscoring` query wordt alleen uitgevoerd op velden `HotelName` en `Rooms/Description` .
 
 Documenten die overeenkomen met alleen de tweede component van de schei ding, retour neren te veel-hotels met een waarde die `Rating` gelijk is aan 5. Om het duidelijk te maken dat deze documenten niet overeenkomen met een van de gescoorde delen van de expressie, worden deze geretourneerd met een score die gelijk is aan nul.
 
+```odata-filter-expr
     search.ismatchscoring('"ocean view"', 'Rooms/Description,HotelName') or Rating eq 5
+```
 
 Vind documenten waar de termen "Hotel" en "lucht haven" binnen vijf woorden van elkaar zijn genoteerd in de beschrijving van het hotel en wanneer roken niet in ten minste een deel van de kamers is toegestaan. Deze query maakt gebruik van de [volledige lucene-query taal](query-lucene-syntax.md).
 
+```odata-filter-expr
     search.ismatch('"hotel airport"~5', 'Description', 'full', 'any') and Rooms/any(room: not room/SmokingAllowed)
+```
 
 ## <a name="next-steps"></a>Volgende stappen  
 

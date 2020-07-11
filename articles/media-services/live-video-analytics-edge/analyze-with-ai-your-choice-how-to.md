@@ -3,11 +3,12 @@ title: Analyseer live video met AI van uw keuze-Azure
 description: In dit artikel leert u hoe u een IoT Edge module bouwt die kan worden geïntegreerd met live video Analytics op IoT Edge om live video te analyseren met behulp van een computer vision model van uw keuze.
 ms.topic: how-to
 ms.date: 04/27/2020
-ms.openlocfilehash: 0ac2af280eefd5ce293a8be422551d5ee6f6d3f3
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 6a1ea3ebd8c7de4c691d7a982dbc08e9d08d9e38
+ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84261259"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86182862"
 ---
 # <a name="analyze-live-video-with-ai-of-your-choice"></a>Livevideo analyseren met de AI van uw keuze
 
@@ -45,7 +46,7 @@ Het HTTP-contract wordt als volgt gedefinieerd:
 
 Aanvragen van de module live video Analytics naar uw module zouden er als volgt uitzien:
 
-|||
+| Sleutel | Waarde |
 |---|---|
 |POST| `https://hostname/optional-path?optional-query`|
 |Accepteren|Application/JSON,*/*|
@@ -67,11 +68,11 @@ Content-Length: 519222
 (Image Binary Content)
 ```
 
-### <a name="response"></a>Antwoord
+### <a name="response"></a>Reactie
 
 Reacties van uw module naar de live video Analytics-module moeten er als volgt uitzien
 
-|||
+| Sleutel | Waarde |
 |---|---|
 |Statuscodes|200 OK-resultaten van het inleiden van interferenties gevonden<br/>204 geen inhoud-geen inhoud gevonden door de AI<br/>400 ongeldige aanvraag-niet verwacht<br/>500 interne server fout-niet verwacht<br/>503 Server bezet-AMS wordt een back-up gemaakt op basis van de header ' opnieuw proberen na ' of op basis van een standaard hoeveelheid tijd in de koptekst van het hoofdletter gebruik dat niet vooraf is ingesteld.|
 |Content-Type|application/json|
@@ -264,7 +265,7 @@ Het onderstaande voor beeld bevat één gebeurtenis met alle ondersteunde typen 
  
 ## <a name="sample-http-extension-modules"></a>Voor beelden van HTTP-extensie modules
 
-Een paar voor beelden van HTTP-extensie modules vindt u in de [Live video Analytics github opslag plaats](https://github.com/Azure/live-video-analytics/tree/master/utilities/video-analysis). Een van deze voor [beelden van video analyse](https://github.com/Azure/live-video-analytics/tree/master/utilities/video-analysis/yolov3-onnx) laat zien hoe u [Yolov3](https://pjreddie.com/darknet/yolo/) [ONNX](http://onnx.ai/) -model kunt gebruiken om een IOT Edge module te maken voor object detectie. U kunt dezelfde benadering gebruiken om een eigen module te bouwen met een AI-model van uw keuze.
+Een paar voor beelden van HTTP-extensie modules vindt u in de [Live video Analytics github opslag plaats](https://github.com/Azure/live-video-analytics/tree/master/utilities/video-analysis). Een van deze voor [beelden van video analyse](https://github.com/Azure/live-video-analytics/tree/master/utilities/video-analysis/yolov3-onnx) laat zien hoe u het [YOLOv3](https://pjreddie.com/darknet/yolo/) [ONNX](http://onnx.ai/) -model kunt gebruiken om een IOT Edge module voor object detectie te maken. In een ander voor beeld van een [video analyse](https://github.com/Azure/live-video-analytics/tree/master/utilities/video-analysis/yolov3-onnx-tiny) ziet u hoe u kleine YOLOv3 gebruikt, een licht gewicht versie van het YOLOv3 ONNX-model. U kunt dezelfde benadering gebruiken om een eigen module te bouwen met een AI-model van uw keuze.
 
 ## <a name="next-steps"></a>Volgende stappen
 

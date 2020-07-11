@@ -16,13 +16,14 @@ ms.date: 01/04/2019
 ms.author: sethm
 ms.reviewer: jowargo
 ms.lastreviewed: 01/04/2019
-ms.openlocfilehash: 7d88f57fe92b9da62cc9f90d64bdec4c27642fb0
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: e3c64155053517205ab006673bb8f400325ad3c4
+ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "76263741"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86219960"
 ---
-# <a name="templates"></a>Sjablonen
+# <a name="notification-hubs-templates"></a>Notification Hubs sjablonen
 
 Met sjablonen kunnen een client toepassing de exacte indeling opgeven van de meldingen die ze willen ontvangen. Met behulp van sjablonen kunnen apps verschillende voor delen realiseren, waaronder de volgende:
 
@@ -61,7 +62,7 @@ Met de functie Notification Hubs sjabloon kan een client-app speciale registrati
 
 In de volgende afbeelding ziet u het proces:
 
-![](./media/notification-hubs-templates/notification-hubs-hello.png)
+![Diagram van het proces voor het gebruik van sjablonen voor meerdere platformen](./media/notification-hubs-templates/notification-hubs-hello.png)
 
 De sjabloon voor de registratie van de iOS-client-app is als volgt:
 
@@ -120,7 +121,7 @@ Het bericht dat naar de notification hub wordt verzonden, bevat alle volgende ei
 
 Met dit patroon verzendt de back-end alleen één bericht zonder specifieke persoonlijke opties op te slaan voor de gebruikers van de app. In de volgende afbeelding ziet u dit scenario:
 
-![](./media/notification-hubs-templates/notification-hubs-registration-specific.png)
+![Diagram waarin wordt getoond hoe de back-end slechts één bericht naar elk platform verzendt.](./media/notification-hubs-templates/notification-hubs-registration-specific.png)
 
 ## <a name="how-to-register-templates"></a>Sjablonen registreren
 

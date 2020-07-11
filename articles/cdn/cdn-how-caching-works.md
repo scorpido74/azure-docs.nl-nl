@@ -14,11 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/30/2018
 ms.author: allensu
-ms.openlocfilehash: d0c438aee7f56e96feb7167fad718fd9519a9f76
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: aa3c190912c0fbd62b08182018c99b985354811b
+ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81253710"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86201809"
 ---
 # <a name="how-caching-works"></a>Hoe caching werkt
 
@@ -111,11 +112,11 @@ Wanneer de cache verouderd is, worden validaties van de HTTP-cache gebruikt voor
 
 Niet alle resources kunnen in de cache worden opgeslagen. In de volgende tabel ziet u welke bronnen kunnen worden opgeslagen in de cache, op basis van het type HTTP-antwoord. Resources die niet aan al deze voor waarden voldoen, kunnen niet in de cache worden opgeslagen. Voor **Azure CDN Premium van Verizon** kunt u de regel engine gebruiken om enkele van deze voor waarden aan te passen.
 
-|                   | Azure CDN van micro soft          | Azure CDN van Verizon | Azure CDN van Akamai        |
-|-------------------|-----------------------------------|------------------------|------------------------------|
-| HTTP-statuscode | 200, 203, 206, 300, 301, 410, 416 | 200                    | 200, 203, 300, 301, 302, 401 |
-| HTTP-methoden      | GET, HEAD                         | GET                    | GET                          |
-| Maximale bestands grootte  | 300 GB                            | 300 GB                 | -Algemene optimalisatie van webleveringen: 1,8 GB<br />-Optimalisatie van mediastreaming: 1,8 GB<br />-Optimalisatie van grote bestanden: 150 GB |
+|                       | Azure CDN van micro soft          | Azure CDN van Verizon | Azure CDN van Akamai        |
+|-----------------------|-----------------------------------|------------------------|------------------------------|
+| **HTTP-statuscode** | 200, 203, 206, 300, 301, 410, 416 | 200                    | 200, 203, 300, 301, 302, 401 |
+| **HTTP-methoden**      | GET, HEAD                         | GET                    | GET                          |
+| **Maximale bestands grootte**  | 300 GB                            | 300 GB                 | -Algemene optimalisatie van webleveringen: 1,8 GB<br />-Optimalisatie van mediastreaming: 1,8 GB<br />-Optimalisatie van grote bestanden: 150 GB |
 
 Voor **Azure CDN standaard van micro soft** caching om aan een resource te werken, moet de oorspronkelijke server een kop ondersteunen en HTTP-aanvragen ontvangen en moeten de waarden voor de inhouds lengte hetzelfde zijn voor elke kop en HTTP-antwoorden voor de Asset ontvangen. Voor een HEAD-aanvraag moet de oorspronkelijke server de HEAD-aanvraag ondersteunen en moet deze reageren met dezelfde headers alsof er een GET-aanvraag is ontvangen.
 
@@ -125,7 +126,7 @@ In de volgende tabel wordt het standaard gedrag voor caching voor de Azure CDN p
 
 |    | Micro soft: algemene Internet levering | Verizon: algemene Internet levering | Verizon: DSA | Akamai: algemene Internet levering | Akamai: DSA | Akamai: grote bestanden downloaden | Akamai: algemeen of VOD mediastreaming |
 |------------------------|--------|-------|------|--------|------|-------|--------|
-| **Naleven**       | Ja    | Ja   | Nee   | Yes    | Nee   | Ja   | Ja    |
+| **Naleven**       | Ja    | Ja   | Nee   | Ja    | Nee   | Ja   | Ja    |
 | **CDN-cache duur** | 2 dagen |7 dagen | Geen | 7 dagen | Geen | 1 dag | 1 jaar |
 
 Nagaan van de **oorsprong**: Hiermee geeft u aan of de ondersteunde cache-instructie headers moeten worden nageleefd als deze bestaan in het HTTP-antwoord van de oorspronkelijke server.

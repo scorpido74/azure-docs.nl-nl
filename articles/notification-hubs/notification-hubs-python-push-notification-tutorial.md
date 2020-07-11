@@ -17,11 +17,12 @@ ms.author: sethm
 ms.reviewer: jowargo
 ms.lastreviewed: 01/04/2019
 ms.custom: tracking-python
-ms.openlocfilehash: e94448debe3e846e37dcffa81a6a6a28f0f7d757
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: af03d0fc091c34bfef7f38b1a215832086de57c6
+ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84561187"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86220062"
 ---
 # <a name="how-to-use-notification-hubs-from-python"></a>Notification Hubs van python gebruiken
 
@@ -382,7 +383,7 @@ Als u de python-code uitvoert, moet er een melding op uw doel apparaat worden we
 
 Wanneer u de vlag debug tijdens het initialiseren van de NotificationHub inschakelt, ziet u gedetailleerde HTTP-aanvraag-en reactie dump en NotificationOutcome zoals het volgende, waar u kunt zien welke HTTP-headers in de aanvraag worden door gegeven en welk HTTP-antwoord is ontvangen van de notification hub:
 
-![][1]
+![Scherm opname van een console met details van de berichten H T T P-aanvraag en-antwoord en meldings resultaten die in het rood worden beschreven.][1]
 
 U ziet bijvoorbeeld een gedetailleerd resultaat van de notification hub.
 
@@ -403,7 +404,7 @@ Let op de kopteksten die worden verzonden wanneer u een melding voor een broadca
 hub.send_windows_notification(wns_payload)
 ```
 
-![][2]
+![Scherm opname van een console met details van de H T T P-aanvraag en de waarden van de Service Bus-melding en de type X W N S die in het rood worden beschreven.][2]
 
 ### <a name="send-notification-specifying-a-tag-or-tag-expression"></a>Melding verzenden met een tag (of een label expressie)
 
@@ -413,7 +414,7 @@ Let op de Tags HTTP-header die wordt toegevoegd aan de HTTP-aanvraag (in het vol
 hub.send_windows_notification(wns_payload, "sports")
 ```
 
-![][3]
+![Scherm opname van een console met details van de H T T P-aanvraag en de indeling van de Service Bus melding, Service Bus meldings Tags en type X b N S-waarden die in het rood worden beschreven.][3]
 
 ### <a name="send-notification-specifying-multiple-tags"></a>Melding verzenden met meerdere labels
 
@@ -424,7 +425,7 @@ tags = {'sports', 'politics'}
 hub.send_windows_notification(wns_payload, tags)
 ```
 
-![][4]
+![Scherm opname van een console met details van de H T T P-aanvraag en de indeling van de Service Bus melding, Service Bus meldings Tags en type X b N S-waarden die in het rood worden beschreven.][4]
 
 ### <a name="templated-notification"></a>Sjabloon melding
 
@@ -443,7 +444,7 @@ template_payload = {'greeting_en': 'Hello', 'greeting_fr': 'Salut'}
 hub.send_template_notification(template_payload)
 ```
 
-![][5]
+![Scherm afbeelding van een-console met details van de H T T P-aanvraag en het inhouds type en de indelings waarden van Service Bus meldingen worden in het rood beschreven.][5]
 
 ## <a name="next-steps"></a>Volgende stappen
 

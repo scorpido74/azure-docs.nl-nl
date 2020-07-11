@@ -1,17 +1,17 @@
 ---
-title: Zelf studie-gedistribueerde tracering gebruiken met Azure veer Cloud
-description: In deze zelf studie wordt uitgelegd hoe u de gedistribueerde tracering van Lente-Clouds via Azure-toepassing Insights gebruikt
+title: Gedistribueerde tracering gebruiken met Azure veer Cloud
+description: Meer informatie over het gebruik van de gedistribueerde tracering van Lente Clouds via Azure-toepassing Insights
 author: bmitchell287
 ms.service: spring-cloud
-ms.topic: tutorial
+ms.topic: how-to
 ms.date: 10/06/2019
 ms.author: brendm
-ms.openlocfilehash: 0815aa084462d1b829d64cd7c5d6fa7cebf534fc
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: ccaf58465c1ade0228daea2b535d06fb6168d64f
+ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "78273211"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86142118"
 ---
 # <a name="use-distributed-tracing-with-azure-spring-cloud"></a>Gedistribueerde tracering gebruiken met Azure veer Cloud
 
@@ -27,7 +27,7 @@ In dit artikel leert u het volgende:
 
 ## <a name="prerequisites"></a>Vereisten
 
-Voor het volt ooien van deze zelf studie hebt u een Azure lente-Cloud service nodig die al is ingericht en actief is. Voltooi de [Snelstartgids voor het implementeren van een app via de Azure cli](spring-cloud-quickstart-launch-app-cli.md) om een Azure lente-Cloud service in te richten en uit te voeren.
+Als u deze procedures wilt volgen, hebt u een Azure lente-Cloud service nodig die al is ingericht en actief is. Voltooi de [Snelstartgids voor het implementeren van een app via de Azure cli](spring-cloud-quickstart-launch-app-cli.md) om een Azure lente-Cloud service in te richten en uit te voeren.
     
 ## <a name="add-dependencies"></a>Afhankelijkheden toevoegen
 
@@ -39,7 +39,7 @@ Voor het volt ooien van deze zelf studie hebt u een Azure lente-Cloud service no
 
    Na deze wijziging kan de Zipkin-afzender naar het web worden verzonden.
 
-1. Sla deze stap over als u onze [hand leiding voor het voorbereiden van een Azure lente-Cloud toepassing](spring-cloud-tutorial-prepare-app-deployment.md)hebt gevolgd. Als dat niet het geval is, gaat u naar uw lokale ontwikkel omgeving en bewerkt u het bestand pom. XML om de volgende afhankelijkheids-Sleuth-afhankelijkheid toe te voegen:
+1. Sla deze stap over als u onze [hand leiding voor het voorbereiden van een Azure lente-Cloud toepassing](spring-cloud-tutorial-prepare-app-deployment.md)hebt gevolgd. Als dat niet het geval is, gaat u naar uw lokale ontwikkel omgeving en bewerkt u uw pom.xml-bestand voor het toevoegen van de volgende bron Sleuth afhankelijkheid:
 
     ```xml
     <dependencyManagement>
@@ -102,7 +102,4 @@ Application Insights biedt bewakings mogelijkheden naast het toepassings overzic
 
 ## <a name="next-steps"></a>Volgende stappen
 
-In deze zelf studie hebt u geleerd hoe u gedistribueerde tracering in azure lente-Cloud kunt inschakelen en begrijpen. Ga verder met de volgende zelf studie als u wilt weten hoe u uw toepassing verbindt met een Azure Cosmos DB-Data Base.
-
-> [!div class="nextstepaction"]
-> [Meer informatie over het verbinden met een Azure Cosmos DB-Data Base](spring-cloud-tutorial-bind-cosmos.md)
+In dit artikel hebt u geleerd hoe u gedistribueerde tracering in azure lente-Cloud kunt inschakelen en begrijpen. Zie [een Azure Cosmos DB Data Base binden aan een Azure lente-Cloud toepassing](spring-cloud-tutorial-bind-cosmos.md)voor meer informatie over bindings Services voor een toepassing.

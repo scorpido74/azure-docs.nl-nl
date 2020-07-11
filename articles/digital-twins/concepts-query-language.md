@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 3/26/2020
 ms.topic: conceptual
 ms.service: digital-twins
-ms.openlocfilehash: 3196004015046b4d3d2789745c80d323bacdced9
-ms.sourcegitcommit: 93462ccb4dd178ec81115f50455fbad2fa1d79ce
+ms.openlocfilehash: 6da539ccd8ad293aed402a4a6d130b6701e7b9c2
+ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/06/2020
-ms.locfileid: "85985238"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86187112"
 ---
 # <a name="about-the-query-language-for-azure-digital-twins"></a>Over de query taal voor Azure Digital Apparaatdubbels
 
@@ -30,10 +30,10 @@ Hier volgen de bewerkingen die beschikbaar zijn in de Azure Digital Apparaatdubb
 * Apparaatdubbels op basis van relatie-eigenschappen ophalen.
 * Apparaatdubbels ophalen via meerdere relatie typen ( `JOIN` query's). Er gelden beperkingen voor het toegestane aantal `JOIN` s (één niveau voor de open bare preview).
 * Gebruik aangepaste functie `IS_OF_MODEL(twinCollection, twinTypeName)` , waarmee filtering op basis van het dubbele [model](concepts-models.md)mogelijk is. Het ondersteunt overname.
-* Gebruik een combi natie ( `AND` , `OR` , `NOT` operator) van de bovenstaande.
 * Scalaire functies gebruiken: `IS_BOOL` , `IS_DEFINED` , `IS_NULL` , `IS_NUMBER` , `IS_OBJECT` , `IS_PRIMITIVE` , `IS_STRING` , `STARTS_WITH` , `ENDS_WITH` .
-* Vergelijkings operatoren voor query's gebruiken: `AND` / `OR` / `NOT` , `IN` / `NOT IN` , `STARTSWITH` / `ENDSWITH` , `=` , `!=` , `<` , `>` , `<=` , `>=` .
-* Voortzetting gebruiken: het query-object wordt geïnstantieerd met een pagina grootte (Maxi maal 100). U kunt de digitale apparaatdubbels één pagina tegelijk ophalen door aanroepen naar de methode te herhalen `nextAsTwin` .
+* Vergelijkings operatoren voor query's gebruiken: `IN` / `NIN` , `=` , `!=` , `<` , `>` , `<=` , `>=` .
+* Gebruik een combi natie ( `AND` , `OR` , `NOT` operator) van de bovenstaande.
+* Voortzetting gebruiken: het query-object wordt geïnstantieerd met een pagina grootte (Maxi maal 100). U kunt de digitale apparaatdubbels één pagina tegelijk ophalen door de vervolg token op te geven in de volgende aanroepen van de API.
 
 ## <a name="next-steps"></a>Volgende stappen
 

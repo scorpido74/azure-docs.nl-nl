@@ -9,12 +9,12 @@ ms.topic: how-to
 ms.date: 04/21/2020
 ms.author: normesta
 ms.reviewer: prishet
-ms.openlocfilehash: 67aa9fcb51742432dcd629073f15a65d14bf3597
-ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.openlocfilehash: d22b83e1f3464f6d87d2bc3821682b25e05d947b
+ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/05/2020
-ms.locfileid: "85961197"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86142537"
 ---
 # <a name="use-powershell-to-manage-directories-files-and-acls-in-azure-data-lake-storage-gen2"></a>Power shell gebruiken voor het beheren van mappen, bestanden en Acl's in Azure Data Lake Storage Gen2
 
@@ -81,11 +81,11 @@ $storageAccount = Get-AzStorageAccount -ResourceGroupName "<resource-group-name>
 $ctx = $storageAccount.Context
 ```
 
-## <a name="create-a-file-system"></a>Een bestandssysteem maken
+## <a name="create-a-container"></a>Een container maken
 
-Een bestands systeem fungeert als een container voor uw bestanden. U kunt er een maken met behulp van de- `New-AzStorageContainer` cmdlet. 
+Een container fungeert als bestands systeem voor uw bestanden. U kunt er een maken met behulp van de- `New-AzStorageContainer` cmdlet. 
 
-In dit voor beeld wordt een bestands systeem gemaakt met de naam `my-file-system` .
+In dit voor beeld wordt een container gemaakt met de naam `my-file-system` .
 
 ```powershell
 $filesystemName = "my-file-system"
@@ -96,7 +96,7 @@ New-AzStorageContainer -Context $ctx -Name $filesystemName
 
 Een directory verwijzing maken met behulp van de- `New-AzDataLakeGen2Item` cmdlet. 
 
-In dit voor beeld wordt een map toegevoegd met de naam van `my-directory` een bestands systeem.
+In dit voor beeld wordt een map met de naam toegevoegd `my-directory` aan een container.
 
 ```powershell
 $filesystemName = "my-file-system"
@@ -202,7 +202,7 @@ $properties.Group
 $properties.Owner
 ```
 
-Als u de inhoud van een bestands systeem wilt weer geven, laat u de `-Path` para meter van de opdracht weg.
+Als u de inhoud van een container wilt weer geven, laat u de `-Path` para meter van de opdracht weg.
 
 ## <a name="upload-a-file-to-a-directory"></a>Een bestand uploaden naar een map
 
@@ -270,7 +270,7 @@ U kunt toegangs machtigingen van mappen en bestanden ophalen, instellen en bijwe
 
 De ACL van een map of bestand ophalen met behulp van de- `Get-AzDataLakeGen2Item` cmdlet.
 
-In dit voor beeld wordt de ACL van de hoofdmap van een **Bestands systeem** opgehaald en wordt de ACL vervolgens naar de console afgedrukt.
+In dit voor beeld wordt de ACL van de hoofdmap van een **container** opgehaald en wordt de ACL vervolgens naar de console afgedrukt.
 
 ```powershell
 $filesystemName = "my-file-system"
@@ -305,7 +305,7 @@ In dit voor beeld heeft de gebruiker die eigenaar is, de machtigingen lezen, sch
 
 Gebruik de `set-AzDataLakeGen2ItemAclObject` cmdlet om een ACL te maken voor de gebruiker die eigenaar is, de groep die eigenaar is of andere gebruikers. Gebruik vervolgens de `Update-AzDataLakeGen2Item` cmdlet om de ACL door te voeren.
 
-In dit voor beeld wordt de ACL ingesteld op de hoofdmap van een **Bestands systeem** voor de gebruiker die eigenaar is van de groep of van andere gebruikers, en wordt de ACL vervolgens naar de console afgedrukt.
+In dit voor beeld wordt de ACL ingesteld op de hoofdmap van een **container** voor de gebruiker die eigenaar is van de groep of andere gebruikers, en wordt de ACL vervolgens naar de console afgedrukt.
 
 ```powershell
 $filesystemName = "my-file-system"
@@ -349,9 +349,9 @@ In de volgende afbeelding ziet u de uitvoer na het instellen van de ACL van een 
 In dit voor beeld hebben de gebruiker die eigenaar is en de groep die eigenaar is alleen lees-en schrijf machtigingen. Alle andere gebruikers hebben machtigingen voor schrijven en uitvoeren. Zie [toegangs beheer in azure data Lake Storage Gen2](data-lake-storage-access-control.md)voor meer informatie over toegangs beheer lijsten.
 
 
-### <a name="set-acls-on-all-items-in-a-file-system"></a>Acl's instellen voor alle items in een bestands systeem
+### <a name="set-acls-on-all-items-in-a-container"></a>Acl's instellen voor alle items in een container
 
-U kunt de `Get-AzDataLakeGen2Item` en de `-Recurse` para meter samen met de `Update-AzDataLakeGen2Item` cmdlet recursief gebruiken om de ACL voor mappen en bestanden in een bestands systeem in te stellen. 
+U kunt de `Get-AzDataLakeGen2Item` en de `-Recurse` para meter samen met de `Update-AzDataLakeGen2Item` cmdlet recursief gebruiken om de ACL voor mappen en bestanden in een container in te stellen. 
 
 ```powershell
 $filesystemName = "my-file-system"
@@ -422,7 +422,7 @@ In de volgende tabel ziet u hoe de cmdlets die worden gebruikt voor Data Lake St
 |Set-AzDataLakeStoreItemOwner<br>Set-AzDataLakeStoreItemPermission<br>Set-AzDataLakeStoreItemAcl|Update-AzDataLakeGen2Item|Met de cmdlet Update-AzDataLakeGen2Item wordt één enkel item bijgewerkt en niet recursief. Als u recursief wilt bijwerken, kunt u items weer geven met behulp van de cmdlet Get-AzDataLakeStoreChildItem en vervolgens pijp lijn naar de cmdlet Update-AzDataLakeGen2Item.|
 |Test-AzDataLakeStoreItem|Get-AzDataLakeGen2Item|Met de cmdlet Get-AzDataLakeGen2Item wordt een fout gerapporteerd als het item niet bestaat.|
 
-## <a name="see-also"></a>Zie tevens
+## <a name="see-also"></a>Zie ook
 
 * [Bekende problemen](data-lake-storage-known-issues.md#api-scope-data-lake-client-library)
 * [PowerShell Storage-cmdlets](/powershell/module/az.storage)

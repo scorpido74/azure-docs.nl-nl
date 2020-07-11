@@ -11,12 +11,12 @@ ms.topic: how-to
 ms.date: 06/08/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: d8229864acc80a27994ae3c795213dc2a65d22db
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 85dd58398021ef61e425eb58797e818b233c491b
+ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85385566"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86170119"
 ---
 # <a name="configure-itsme-openid-connect-oidc-with-azure-active-directory-b2c"></a>Itsme OpenID Connect Connect (OIDC) configureren met Azure Active Directory B2C
 
@@ -40,7 +40,7 @@ Om aan de slag te gaan, hebt u het volgende nodig:
 Please clarify step 1 in the description below - we don't have steps in this tutorial for "adapting in the Azure AD B2C Custom Policy- User Journeys" - should this be added somewhere?
 -->
 
-|   |   |
+| Stap | Beschrijving |
 |------|------|
 |1     | Voeg op uw website of toepassing de knop **Aanmelden met Itsme** toe door het aanpassen van de Azure AD B2C gebruikers stroom. De interactie stroom wordt gestart wanneer de gebruiker op deze knop klikt.  |
 |2     | Azure AD B2C start de OpenID Connect Connect-stroom door een autorisatie aanvraag te verzenden naar de Itsme client Secret-API. Een goed bekend/OpenID Connect-configuratie-eind punt is beschikbaar met informatie over de eind punten.  |

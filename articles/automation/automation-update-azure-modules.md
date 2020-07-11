@@ -5,11 +5,12 @@ services: automation
 ms.subservice: process-automation
 ms.date: 06/14/2019
 ms.topic: conceptual
-ms.openlocfilehash: 892197c79285495f49a870bbe79eb75229af2940
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 9cc5e5107784d447640ef0ae77d412885b1e5668
+ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83831021"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86185769"
 ---
 # <a name="update-azure-powershell-modules"></a>Azure PowerShell-modules bijwerken
 
@@ -37,7 +38,7 @@ Het **Update-AutomationAzureModulesForAccount-** runbook ondersteunt standaard h
 
 ## <a name="use-update-runbook-code-as-a-regular-powershell-script"></a>Runbook-code bijwerken als een normaal Power shell-script gebruiken
 
-U kunt de runbook-code als een gewoon Power shell-script gebruiken in plaats van een runbook. Als u dit wilt doen, meldt u zich eerst aan bij Azure met de cmdlet [Connect-AzAccount](https://docs.microsoft.com/powershell/module/az.accounts/connect-azaccount?view=azps-3.7.0) en geeft `-Login $false` u vervolgens het script door.
+U kunt de runbook-code als een gewoon Power shell-script gebruiken in plaats van een runbook. Als u dit wilt doen, meldt u zich eerst aan bij Azure met de cmdlet [Connect-AzAccount](/powershell/module/az.accounts/connect-azaccount?view=azps-3.7.0) en geeft `-Login $false` u vervolgens het script door.
 
 ## <a name="use-the-update-runbook-on-sovereign-clouds"></a>Het bijwerken van het runbook op soevereine Clouds gebruiken
 

@@ -10,12 +10,12 @@ ms.subservice: bing-custom-search
 ms.topic: conceptual
 ms.date: 02/12/2019
 ms.author: aahi
-ms.openlocfilehash: 2cc89bf57167db75404c044f58d18ab48edfaf38
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 7ec407b7f6baf56f0a2fe724089826d8f9303b85
+ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "68854072"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86186840"
 ---
 # <a name="configure-your-hosted-ui-experience"></a>Gehoste UI-ervaring configureren
 
@@ -35,13 +35,11 @@ Als u een gehoste gebruikers interface voor uw webtoepassingen wilt configureren
   
 4. Selecteer een lay-out.
 
-    |  |  |
-    |---------|---------|
-    |Zoek balk en resultaten (standaard)    | Hiermee wordt een zoekvak met zoek resultaten weer gegeven daaronder.         |
-    |Alleen resultaten     | Alleen Zoek resultaten worden weer gegeven, zonder zoekvak. Wanneer u deze indeling gebruikt, moet u de zoek query (`&q=<query string>`) opgeven. Voeg de query-para meter toe aan de aanvraag-URL in het Java script-fragment of de koppeling naar het HTML-eind punt.        |
-    |Pop-over     | Voorziet in een zoekvak en de zoek resultaten worden weer gegeven in een schuif bare overlay.        |
-    
-5. Selecteer een kleurenthema. U kunt de kleuren aanpassen aan uw toepassing door te klikken op **thema aanpassen**. Als u een kleur wilt wijzigen, voert u de RGB HEXADECIMALe waarde van de kleur `#366eb8`(bijvoorbeeld) in of klikt u op de kleur voorbeeld.
+    - Zoek balk en resultaten (standaard): Hiermee wordt een zoekvak met zoek resultaten weer gegeven.
+    - Alleen resultaten: alleen Zoek resultaten weer geven, zonder zoekvak. Wanneer u deze indeling gebruikt, moet u de zoek query ( `&q=<query string>` ) opgeven. Voeg de query-para meter toe aan de aanvraag-URL in het Java script-fragment of de koppeling naar het HTML-eind punt.
+    - Pop-over: bevat een zoekvak en de zoek resultaten worden weer gegeven in een schuif bare overlay.
+
+5. Selecteer een kleurenthema. U kunt de kleuren aanpassen aan uw toepassing door te klikken op **thema aanpassen**. Als u een kleur wilt wijzigen, voert u de RGB HEXADECIMALe waarde van de kleur (bijvoorbeeld `#366eb8` ) in of klikt u op de kleur voorbeeld.
 
    U kunt een voor beeld bekijken van uw wijzigingen aan de rechter kant van de portal. **Als u op opnieuw instellen** klikt, worden de standaard kleuren voor het geselecteerde thema hersteld.
 
@@ -96,55 +94,38 @@ U kunt het gedrag van uw gehoste gebruikers interface configureren door te klikk
 
 ### <a name="web-search-configurations"></a>Webzoekactie configuraties
 
-|  |  |
-|---------|---------|
-|Webresultaten ingeschakeld    | Hiermee wordt bepaald of zoeken op internet is ingeschakeld (boven aan de pagina wordt het tabblad Web weer geven)        |
-|Automatische suggestie inschakelen     | Hiermee wordt bepaald of aangepaste automatische suggesties zijn ingeschakeld (Zie de [prijzen](https://azure.microsoft.com/pricing/details/cognitive-services/bing-custom-search/) voor extra kosten).        |
-|Webresultaten per pagina    | Aantal Zoek resultaten van de webtoepassingen tegelijk worden weer gegeven (de maximum waarde is 50 resultaten per pagina).        |
-|Bijschrift voor afbeelding   | Hiermee wordt bepaald of afbeeldingen worden weer gegeven met zoek resultaten.|
-
+- Webresultaten ingeschakeld: Hiermee wordt bepaald of zoeken op internet is ingeschakeld (boven aan de pagina wordt het tabblad Web weer geven)
+- Automatische suggesties inschakelen: Hiermee wordt bepaald of aangepaste automatische suggesties zijn ingeschakeld (Zie de [prijzen](https://azure.microsoft.com/pricing/details/cognitive-services/bing-custom-search/) voor extra kosten).
+- Webresultaten per pagina: aantal resultaten webzoekopdrachten die tegelijk worden weer gegeven (de maximum waarde is 50 resultaten per pagina).
+- Bijschrift afbeelding: bepaalt of afbeeldingen worden weer gegeven met zoek resultaten.
 
 De volgende configuraties worden weer gegeven als u op **geavanceerde configuraties weer geven**klikt:
 
-
-|  | |
-|---------|---------|
-|Markeer woorden     | Hiermee wordt bepaald of resultaten worden weer gegeven met een vetgedrukte zoek term.         |
-|Doel van koppeling    |  Bepaalt of de webpagina wordt geopend in een nieuw browser tabblad (leeg) of hetzelfde browser tabblad (zelf) wanneer de gebruiker op een Zoek resultaat klikt.        |
+- Markeer woorden: Hiermee wordt bepaald of resultaten worden weer gegeven met zoek termen in vet.
+- Doel van de koppeling: bepaalt of de webpagina wordt geopend in een nieuw browser tabblad (leeg) of op hetzelfde browser tabblad (zelf) wanneer de gebruiker op een Zoek resultaat klikt.
 
 ### <a name="image-search-configurations"></a>Configuraties voor afbeeldingen zoeken
 
-| | |
-|---------|---------|
-|Resultaten van afbeelding ingeschakeld     | Hiermee wordt bepaald of de afbeelding zoeken is ingeschakeld (boven aan de pagina wordt een tabblad afbeeldingen weer geven).            |
-|Afbeeldings resultaten per pagina     | Aantal Zoek resultaten van de afbeelding dat tegelijk wordt weer gegeven (de maximum waarde is 150 resultaten per pagina).          |
+- Resultaten van de afbeelding ingeschakeld: Hiermee wordt bepaald of de zoek opdracht voor afbeeldingen wordt ingeschakeld (boven aan de pagina).
+- Afbeeldings resultaten per pagina: aantal Zoek resultaten van afbeeldingen die tegelijk worden weer gegeven (de maximum waarde is 150 resultaten per pagina).
 
 De volgende configuratie wordt weer gegeven als u op **geavanceerde configuraties weer geven**klikt.  
   
-| | |
-|---------|---------|
-| Filters inschakelen     | Voegt filters toe die de gebruiker kan gebruiken om de afbeeldingen te filteren die door Bing worden geretourneerd. De gebruiker kan bijvoorbeeld de resultaten filteren voor alleen GIF-animaties.|
+- Filters inschakelen: voegt filters toe die de gebruiker kan gebruiken om de installatie kopieën te filteren die door Bing worden geretourneerd. De gebruiker kan bijvoorbeeld de resultaten filteren voor alleen GIF-animaties.
 
 ### <a name="video-search-configurations"></a>Configuraties voor video zoeken
 
-|  | |
-|---------|---------|
-|Video resultaten ingeschakeld     | Hiermee wordt bepaald of zoeken in video is ingeschakeld (het tabblad Video's wordt boven aan de pagina weer geven).           |
-|Video resultaten per pagina   | Aantal Zoek resultaten van de video dat tegelijk wordt weer gegeven (de maximum waarde is 150 resultaten per pagina).        |
+- Video resultaten ingeschakeld: Hiermee wordt bepaald of het zoeken naar Video's is ingeschakeld (op het tabblad Video's boven aan de pagina).
+- Video resultaten per pagina: aantal Zoek resultaten in de video die tegelijk worden weer gegeven (de maximum waarde is 150 resultaten per pagina).
 
 De volgende configuratie wordt weer gegeven als u op **geavanceerde configuraties weer geven**klikt.  
   
-|  | |
-|---------|---------|
-|Filters inschakelen    | Hiermee voegt u filters toe die de gebruiker kan gebruiken voor het filteren van de Video's die door Bing worden geretourneerd. De gebruiker kan bijvoorbeeld de resultaten filteren voor Video's met een specifieke resolutie of Video's die in de afgelopen 24 uur zijn gedetecteerd.          |
+- Filters inschakelen: voegt filters toe die de gebruiker kan gebruiken voor het filteren van de Video's die door Bing worden geretourneerd. De gebruiker kan bijvoorbeeld de resultaten filteren voor Video's met een specifieke resolutie of Video's die in de afgelopen 24 uur zijn gedetecteerd.
 
 ### <a name="miscellaneous-configurations"></a>Diverse configuraties
 
-
-| |  |
-|---------|---------|
-|Paginatitel   | De tekst die wordt weer gegeven in het titel gebied van de pagina met zoek resultaten (niet voor pop-over-indeling).        |
-|Thema van de werk balk    | Bepaalt de achtergrond kleur van het titel gebied van de pagina met zoek resultaten. |
+- Pagina titel: tekst die wordt weer gegeven in het titel gebied van de pagina met zoek resultaten (niet voor pop-over-indeling).
+- Werkbalk thema: bepaalt de achtergrond kleur van het titel gebied van de pagina met zoek resultaten.
 
 De volgende configuraties worden weer gegeven als u op **geavanceerde configuraties weer geven**klikt.  
 

@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
 ms.topic: how-to
-ms.date: 03/31/2020
+ms.date: 07/09/2020
 ms.author: iainfou
-ms.openlocfilehash: 285f5aabe32013a629eebb150e55ba343150f589
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 0880f697ceea9c10a070ede0a73235022ce0529d
+ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84734840"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86220286"
 ---
 # <a name="deploy-azure-ad-application-proxy-for-secure-access-to-internal-applications-in-an-azure-active-directory-domain-services-managed-domain"></a>Azure AD-toepassingsproxy implementeren voor beveiligde toegang tot interne toepassingen in een Azure Active Directory Domain Services beheerd domein
 
@@ -40,9 +40,9 @@ U hebt de volgende resources en bevoegdheden nodig om dit artikel te volt ooien:
 
 ## <a name="create-a-domain-joined-windows-vm"></a>Een aan een domein gekoppelde Windows-VM maken
 
-Als u verkeer wilt door sturen naar toepassingen die in uw omgeving worden uitgevoerd, installeert u het onderdeel Azure AD-toepassingsproxy-connector. Deze Azure AD-toepassingsproxy-connector moet worden geïnstalleerd op Windows Server virtual machines (VM) die zijn gekoppeld aan het beheerde domein. Voor sommige toepassingen kunt u meerdere servers implementeren waarop elke connector is geïnstalleerd. Deze implementatie optie biedt meer Beschik baarheid en helpt zwaarere verificatie belasting te verwerken.
+Als u verkeer wilt door sturen naar toepassingen die in uw omgeving worden uitgevoerd, installeert u het onderdeel Azure AD-toepassingsproxy-connector. Deze Azure AD-toepassingsproxy-connector moet worden geïnstalleerd op een virtuele Windows Server-machine (VM) die is gekoppeld aan het beheerde domein. Voor sommige toepassingen kunt u meerdere servers implementeren waarop elke connector is geïnstalleerd. Deze implementatie optie biedt meer Beschik baarheid en helpt zwaarere verificatie belasting te verwerken.
 
-De virtuele machine waarop de Azure AD-toepassingsproxy-connector wordt uitgevoerd, moet zich op dezelfde of een peered virtueel netwerk Bewaar u Azure AD DS hebt ingeschakeld. De virtuele machines die vervolgens worden gehost op de toepassingen die u publiceert met behulp van de toepassings proxy, moeten ook worden geïmplementeerd op hetzelfde virtuele Azure-netwerk.
+De virtuele machine waarop de Azure AD-toepassingsproxy-connector wordt uitgevoerd, moet zich op dezelfde of een peered virtueel netwerk als uw beheerde domein. De virtuele machines die vervolgens worden gehost op de toepassingen die u publiceert met behulp van de toepassings proxy, moeten ook worden geïmplementeerd op hetzelfde virtuele Azure-netwerk.
 
 Voer de volgende stappen uit om een virtuele machine voor de Azure AD-toepassingsproxy-connector te maken:
 
@@ -72,7 +72,7 @@ Wanneer een virtuele machine gereed is om te worden gebruikt als Azure AD-toepas
         > [!NOTE]
         > Het globale beheerders account dat wordt gebruikt voor het registreren van de connector, moet behoren tot dezelfde map als waarin u de Application proxy-service inschakelt.
         >
-        > Als het Azure AD-domein bijvoorbeeld *aaddscontoso.com*is, moet de globale beheerder `admin@aaddscontoso.com` of een andere geldige alias in dat domein zijn.
+        > Als het Azure AD-domein bijvoorbeeld *contoso.com*is, moet de globale beheerder `admin@contoso.com` of een andere geldige alias in dat domein zijn.
 
    * Als verbeterde beveiliging van Internet Explorer is ingeschakeld voor de virtuele machine waarop u de connector installeert, wordt het registratie scherm mogelijk geblokkeerd. Als u toegang wilt toestaan, volgt u de instructies in het fout bericht of schakelt u de verbeterde beveiliging van Internet Explorer uit tijdens het installatie proces.
    * Zie [problemen met toepassings proxy oplossen](../active-directory/manage-apps/application-proxy-troubleshoot.md)als de registratie van de connector mislukt.

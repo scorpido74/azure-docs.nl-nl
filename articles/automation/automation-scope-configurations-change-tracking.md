@@ -5,15 +5,16 @@ services: automation
 ms.date: 03/04/2020
 ms.topic: conceptual
 ms.custom: mvc
-ms.openlocfilehash: 49655d11858086b16099a1864fd4d2dc5988f02a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 353f29d9b4c6599226619d40e4378e21618bcad4
+ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84117433"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86185905"
 ---
 # <a name="limit-change-tracking-and-inventory-deployment-scope"></a>Het implementatie bereik voor Wijzigingen bijhouden en inventarisatie beperken
 
-In dit artikel wordt beschreven hoe u met Scope configuraties kunt werken wanneer u de functie [Wijzigingen bijhouden en inventarisatie](change-tracking.md) gebruikt om wijzigingen in uw vm's te implementeren. Zie voor meer informatie [doel controle oplossingen in azure monitor (preview-versie)](https://docs.microsoft.com/azure/azure-monitor/insights/solution-targeting). 
+In dit artikel wordt beschreven hoe u met Scope configuraties kunt werken wanneer u de functie [Wijzigingen bijhouden en inventarisatie](change-tracking.md) gebruikt om wijzigingen in uw vm's te implementeren. Zie voor meer informatie [doel controle oplossingen in azure monitor (preview-versie)](../azure-monitor/insights/solution-targeting.md). 
 
 ## <a name="about-scope-configurations"></a>Over Scope configuraties
 
@@ -33,7 +34,7 @@ Het bereik voor uw Wijzigingen bijhouden-en inventaris implementatie beperken:
 
 5. Selecteer in het deel venster bewerken de optie **computer groepen selecteren**. In het deel venster computer groepen worden de opgeslagen Zoek opdrachten weer gegeven die worden gebruikt voor het maken van de scope configuratie. De opgeslagen zoek opdracht die wordt gebruikt door Wijzigingen bijhouden en inventaris is:
 
-    |Name     |Categorie  |Alias  |
+    |Naam     |Categorie  |Alias  |
     |---------|---------|---------|
     |MicrosoftDefaultComputerGroup     |  Change tracking       | ChangeTracking__MicrosoftDefaultComputerGroup        |
 

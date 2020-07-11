@@ -9,11 +9,12 @@ ms.topic: conceptual
 ms.service: automation
 manager: carmonm
 ms.custom: has-adal-ref
-ms.openlocfilehash: 5de4b6f16f52d7cab7088ab39aa70267110eed88
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: e0665a6aa55b998d54d076013a25e2efadaa2b06
+ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84606884"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86187180"
 ---
 # <a name="troubleshoot-runbook-issues"></a>Problemen met runbooks oplossen
 
@@ -203,7 +204,7 @@ Deze fout kan optreden als:
 Volg deze stappen om te bepalen of u hebt geverifieerd voor Azure en toegang hebt tot het abonnement dat u wilt selecteren:
 
 1. Om ervoor te zorgen dat uw script zelfstandig werkt, test u het buiten Azure Automation.
-1. Zorg ervoor dat uw script de cmdlet [Connect-AzAccount](https://docs.microsoft.com/powershell/module/Az.Accounts/Connect-AzAccount?view=azps-3.7.0) uitvoert voordat u de `Select-*` cmdlet uitvoert.
+1. Zorg ervoor dat uw script de cmdlet [Connect-AzAccount](/powershell/module/Az.Accounts/Connect-AzAccount?view=azps-3.7.0) uitvoert voordat u de `Select-*` cmdlet uitvoert.
 1. Voeg `Disable-AzContextAutosave –Scope Process` aan het begin van uw runbook toe. Deze cmdlet zorgt ervoor dat alle referenties alleen van toepassing zijn op de uitvoering van het huidige runbook.
 1. Als het fout bericht nog steeds wordt weer gegeven, wijzigt u de code door de para meter toe te voegen `AzContext` voor `Connect-AzAccount` en voert u de code uit.
 
@@ -400,7 +401,7 @@ Als de stroom objecten bevat, `Start-AzAutomationRunbook` wordt de uitvoer stroo
 
 ### <a name="resolution"></a>Oplossing
 
-Implementeer een polling-logica en gebruik de cmdlet [Get-AzAutomationJobOutput](https://docs.microsoft.com/powershell/module/Az.Automation/Get-AzAutomationJobOutput?view=azps-3.7.0) om de uitvoer op te halen. Een voor beeld van deze logica wordt hier gedefinieerd:
+Implementeer een polling-logica en gebruik de cmdlet [Get-AzAutomationJobOutput](/powershell/module/Az.Automation/Get-AzAutomationJobOutput?view=azps-3.7.0) om de uitvoer op te halen. Een voor beeld van deze logica wordt hier gedefinieerd:
 
 ```powershell
 $automationAccountName = "ContosoAutomationAccount"
@@ -485,7 +486,7 @@ Deze fout kan optreden bij het ophalen van de taak uitvoer van een runbook met v
 Voer een van de volgende handelingen uit om deze fout op te lossen:
 
 * Bewerk het runbook en verminder het aantal taak stromen dat wordt verzonden.
-* Verminder het aantal streams dat moet worden opgehaald bij het uitvoeren van de cmdlet. U kunt dit doen door de waarde van de `Stream` para meter voor de cmdlet [Get-AzAutomationJobOutput](https://docs.microsoft.com/powershell/module/Az.Automation/Get-AzAutomationJobOutput?view=azps-3.7.0) in te stellen op alleen uitvoer stromen op te halen. 
+* Verminder het aantal streams dat moet worden opgehaald bij het uitvoeren van de cmdlet. U kunt dit doen door de waarde van de `Stream` para meter voor de cmdlet [Get-AzAutomationJobOutput](/powershell/module/Az.Automation/Get-AzAutomationJobOutput?view=azps-3.7.0) in te stellen op alleen uitvoer stromen op te halen. 
 
 ## <a name="scenario-runbook-job-fails-because-allocated-quota-was-exceeded"></a><a name="quota-exceeded"></a>Scenario: Runbook-taak is mislukt omdat het toegewezen quotum is overschreden
 
@@ -558,7 +559,7 @@ Deze fout kan erop wijzen dat runbooks die worden uitgevoerd in een Azure-sandbo
 
 Er zijn twee manieren om deze fout op te lossen:
 
-* Gebruik start [-AzAutomationRunbook](https://docs.microsoft.com/powershell/module/az.automation/start-azautomationrunbook?view=azps-3.7.0) in plaats van de [Start-taak](https://docs.microsoft.com/powershell/module/microsoft.powershell.core/start-job?view=powershell-7)te gebruiken om het runbook te starten.
+* Gebruik start [-AzAutomationRunbook](/powershell/module/az.automation/start-azautomationrunbook?view=azps-3.7.0) in plaats van de [Start-taak](/powershell/module/microsoft.powershell.core/start-job?view=powershell-7)te gebruiken om het runbook te starten.
 * Probeer het runbook uit te voeren op een Hybrid Runbook Worker.
 
 Zie voor meer informatie over dit gedrag en ander gedrag van Azure Automation runbooks [Runbook-uitvoering in azure Automation](../automation-runbook-execution.md).
@@ -587,8 +588,8 @@ Een andere oplossing is het optimaliseren van het runbook door [onderliggende ru
 
 De Power shell-cmdlets waarmee het onderliggende runbook-scenario wordt ingeschakeld, zijn:
 
-* [Start-AzAutomationRunbook](https://docs.microsoft.com/powershell/module/Az.Automation/Start-AzAutomationRunbook?view=azps-3.7.0). met deze cmdlet kunt u een runbook starten en parameters aan het runbook doorgeven.
-* [Get-AzAutomationJob](https://docs.microsoft.com/powershell/module/Az.Automation/Get-AzAutomationJob?view=azps-3.7.0). Als er bewerkingen zijn die moeten worden uitgevoerd nadat het onderliggende runbook is voltooid, kunt u met deze cmdlet de taak status voor elk onderliggend item controleren.
+* [Start-AzAutomationRunbook](/powershell/module/Az.Automation/Start-AzAutomationRunbook?view=azps-3.7.0). met deze cmdlet kunt u een runbook starten en parameters aan het runbook doorgeven.
+* [Get-AzAutomationJob](/powershell/module/Az.Automation/Get-AzAutomationJob?view=azps-3.7.0). Als er bewerkingen zijn die moeten worden uitgevoerd nadat het onderliggende runbook is voltooid, kunt u met deze cmdlet de taak status voor elk onderliggend item controleren.
 
 ## <a name="scenario-error-in-job-streams-about-the-get_serializationsettings-method"></a><a name="get-serializationsettings"></a>Scenario: fout in taak stromen over de methode get_SerializationSettings
 
@@ -651,7 +652,7 @@ Mogelijke oorzaken van dit probleem zijn:
 
 #### <a name="not-using-a-run-as-account"></a>Geen uitvoeren als-account gebruiken
 
-Volg [stap 5: Voeg verificatie toe om Azure-resources te beheren](../automation-first-runbook-textual-powershell.md#add-authentication-to-manage-azure-resources) om ervoor te zorgen dat u een uitvoeren als-account gebruikt om toegang te krijgen tot Key Vault.
+Volg [stap 5: Voeg verificatie toe om Azure-resources te beheren](../learn/automation-tutorial-runbook-textual-powershell.md#step-5---add-authentication-to-manage-azure-resources) om ervoor te zorgen dat u een uitvoeren als-account gebruikt om toegang te krijgen tot Key Vault.
 
 #### <a name="insufficient-permissions"></a>Onvoldoende machtigingen
 
@@ -660,7 +661,7 @@ Volg [stap 5: Voeg verificatie toe om Azure-resources te beheren](../automation-
 ## <a name="recommended-documents"></a>Aanbevolen documenten
 
 * [Uitvoering van runbooks in Azure Automation](../automation-runbook-execution.md)
-* [Een runbook starten in Azure Automation](../automation-starting-a-runbook.md)
+* [Een runbook starten in Azure Automation](../start-runbooks.md)
 
 ## <a name="next-steps"></a>Volgende stappen
 

@@ -7,24 +7,24 @@ ms.topic: conceptual
 ms.date: 06/22/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: 718be8599db5b30aa6c98bf4dfbd3663250b9d9c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 88f06bd30c97f857cd5a81068322a95c480a7b34
+ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85255967"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86187418"
 ---
 # <a name="azure-security-baseline-for-automation"></a>Azure-beveiligings basislijn voor Automation
 
 De Azure-beveiligings basislijn voor Automation bevat aanbevelingen waarmee u de beveiligings postuur van uw implementatie kunt verbeteren.
 
-De basis lijn voor deze service wordt opgehaald uit de [Azure Security Bench Mark-versie 1,0](https://docs.microsoft.com/azure/security/benchmarks/overview), die aanbevelingen biedt over hoe u uw cloud oplossingen kunt beveiligen in azure met onze richt lijnen voor best practices.
+De basis lijn voor deze service wordt opgehaald uit de [Azure Security Bench Mark-versie 1,0](../security/benchmarks/overview.md), die aanbevelingen biedt over hoe u uw cloud oplossingen kunt beveiligen in azure met onze richt lijnen voor best practices.
 
-Zie het [overzicht van Azure Security-basis lijnen](https://docs.microsoft.com/azure/security/benchmarks/security-baselines-overview)voor meer informatie.
+Zie het [overzicht van Azure Security-basis lijnen](../security/benchmarks/security-baselines-overview.md)voor meer informatie.
 
 ## <a name="network-security"></a>Netwerkbeveiliging
 
-*Zie [beveiligings beheer: netwerk beveiliging](https://docs.microsoft.com/azure/security/benchmarks/security-control-network-security)voor meer informatie.*
+*Zie [beveiligings beheer: netwerk beveiliging](../security/benchmarks/security-control-network-security.md)voor meer informatie.*
 
 ### <a name="11-protect-azure-resources-within-virtual-networks"></a>1,1: Azure-resources in virtuele netwerken beveiligen
 
@@ -34,15 +34,15 @@ Voor meer isolatie van uw runbooks kunt u Hybrid Runbook Workers gebruiken die w
 
 Als u een specifieke vereiste hebt, kan Azure Firewall ook worden gebruikt om hieraan te voldoen.
 
-* [Virtuele netwerken en virtuele machines in azure](https://docs.microsoft.com/azure/virtual-machines/windows/network-overview)
+* [Virtuele netwerken en virtuele machines in azure](../virtual-machines/windows/network-overview.md)
 
-* [Een Virtual Network maken](https://docs.microsoft.com/azure/virtual-network/quick-create-portal)
+* [Een Virtual Network maken](../virtual-network/quick-create-portal.md)
 
-* [Een NSG maken met een beveiligings configuratie](https://docs.microsoft.com/azure/virtual-network/tutorial-filter-network-traffic)
+* [Een NSG maken met een beveiligings configuratie](../virtual-network/tutorial-filter-network-traffic.md)
 
-* [Azure Firewall implementeren en configureren](https://docs.microsoft.com/azure/firewall/tutorial-firewall-deploy-portal)
+* [Azure Firewall implementeren en configureren](../firewall/tutorial-firewall-deploy-portal.md)
 
-* [Runbook Execution Environment](https://docs.microsoft.com/azure/automation/automation-runbook-execution#runbook-execution-environment)
+* [Runbook Execution Environment](./automation-runbook-execution.md#runbook-execution-environment)
 
 **Azure Security Center bewaking**: niet van toepassing
 
@@ -56,9 +56,9 @@ Als u Hybrid Runbook Workers gebruikt die worden ondersteund door Azure virtual 
 
 Hoewel NSG-regels en door de gebruiker gedefinieerde routes niet van toepassing zijn op een privé-eind punt, worden NSG-stroom logboeken en controle gegevens voor uitgaande verbindingen nog steeds ondersteund en kunnen ze worden gebruikt.
 
-* [NSG-stroom logboeken inschakelen](https://docs.microsoft.com/azure/network-watcher/network-watcher-nsg-flow-logging-portal)
+* [NSG-stroom logboeken inschakelen](../network-watcher/network-watcher-nsg-flow-logging-portal.md)
 
-* [Traffic Analytics inschakelen en gebruiken](https://docs.microsoft.com/azure/network-watcher/traffic-analytics)
+* [Traffic Analytics inschakelen en gebruiken](../network-watcher/traffic-analytics.md)
 
 **Azure Security Center bewaking**: Ja
 
@@ -80,15 +80,15 @@ Als u Hybrid Runbook Workers gebruikt die worden ondersteund door virtuele machi
 
 U kunt de just-in-time-netwerk toegang van Azure Security Center gebruiken om de bloot stelling van virtuele Windows-machines gedurende een beperkte periode te beperken tot de goedgekeurde IP-adressen. U kunt ook de aanbevelingen van Azure Security Center Adaptive netwerk beveiliging voor NSG-configuraties gebruiken om poorten en bron-Ip's te beperken op basis van daad werkelijk verkeer en bedreigings informatie.
 
-* [DDoS-beveiliging configureren](https://docs.microsoft.com/azure/virtual-network/manage-ddos-protection)
+* [DDoS-beveiliging configureren](../virtual-network/manage-ddos-protection.md)
 
-* [Azure Firewall implementeren](https://docs.microsoft.com/azure/firewall/tutorial-firewall-deploy-portal)
+* [Azure Firewall implementeren](../firewall/tutorial-firewall-deploy-portal.md)
 
-* [Meer informatie over Azure Security Center geïntegreerde bedreigings informatie](https://docs.microsoft.com/azure/security-center/security-center-alerts-service-layer)
+* [Meer informatie over Azure Security Center geïntegreerde bedreigings informatie](../security-center/threat-protection.md)
 
-* [Meer informatie over Azure Security Center adaptieve netwerk beveiliging](https://docs.microsoft.com/azure/security-center/security-center-adaptive-network-hardening)
+* [Meer informatie over Azure Security Center adaptieve netwerk beveiliging](../security-center/security-center-adaptive-network-hardening.md)
 
-* [Meer informatie over Azure Security Center just-in-time-netwerk Access Control](https://docs.microsoft.com/azure/security-center/security-center-just-in-time)
+* [Meer informatie over Azure Security Center just-in-time-netwerk Access Control](../security-center/security-center-just-in-time.md)
 
 **Azure Security Center bewaking**: Ja
 
@@ -100,9 +100,9 @@ U kunt de just-in-time-netwerk toegang van Azure Security Center gebruiken om de
 
 Als u Hybrid Runbook Workers gebruikt die worden ondersteund door virtuele machines van Azure, kunt u NSG-stroom logboeken vastleggen in een opslag account om stroom records te genereren voor uw Azure-Virtual Machines die fungeren als Runbook-werk nemers. Bij het onderzoeken van afwijkende activiteiten kunt u Network Watcher pakket vastleggen inschakelen, zodat het netwerk verkeer kan worden gecontroleerd op ongebruikelijke en onverwachte activiteiten.
 
-* [NSG-stroom logboeken inschakelen](https://docs.microsoft.com/azure/network-watcher/network-watcher-nsg-flow-logging-portal)
+* [NSG-stroom logboeken inschakelen](../network-watcher/network-watcher-nsg-flow-logging-portal.md)
 
-* [Network Watcher inschakelen](https://docs.microsoft.com/azure/network-watcher/network-watcher-create)
+* [Network Watcher inschakelen](../network-watcher/network-watcher-create.md)
 
 **Azure Security Center bewaking**: Ja
 
@@ -114,11 +114,11 @@ Als u Hybrid Runbook Workers gebruikt die worden ondersteund door virtuele machi
 
 Als u Hybrid Runbook Workers gebruikt die worden gehost op virtuele machines van Azure, kunt u pakket opnames combi neren die worden verstrekt door Network Watcher-en open source-id-hulpprogram ma's om netwerk inbreuken te detecteren voor een breed scala aan bedreigingen voor deze werk computers. U kunt ook Azure Firewall op de Virtual Network-segmenten implementeren waar nodig, met bedreigings informatie die is ingeschakeld en die is geconfigureerd voor waarschuwing en weigeren voor schadelijk netwerk verkeer.
 
-* [Detectie van binnendringing van het netwerk met Network Watcher en open source-hulpprogram ma's uitvoeren](https://docs.microsoft.com/azure/network-watcher/network-watcher-intrusion-detection-open-source-tools)
+* [Detectie van binnendringing van het netwerk met Network Watcher en open source-hulpprogram ma's uitvoeren](../network-watcher/network-watcher-intrusion-detection-open-source-tools.md)
 
-* [Azure Firewall implementeren](https://docs.microsoft.com/azure/firewall/tutorial-firewall-deploy-portal)
+* [Azure Firewall implementeren](../firewall/tutorial-firewall-deploy-portal.md)
 
-* [Waarschuwingen configureren met Azure Firewall](https://docs.microsoft.com/azure/firewall/threat-intel)
+* [Waarschuwingen configureren met Azure Firewall](../firewall/threat-intel.md)
 
 **Azure Security Center bewaking**: momenteel niet beschikbaar
 
@@ -136,7 +136,7 @@ Als u Hybrid Runbook Workers gebruikt die worden gehost op virtuele machines van
 
 **Hulp**: gebruik Virtual Network Service Tags voor het definiëren van netwerk toegangs beheer voor netwerk beveiligings groepen of Azure firewall die zijn geconfigureerd in Azure en die toegang nodig hebben tot uw Automation-resources. U kunt servicetags gebruiken in plaats van specifieke IP-adressen wanneer u beveiligingsregels maakt. Door de naam van de service label (bijvoorbeeld GuestAndHybridManagement) op te geven in het juiste bron-of doel veld van een regel, kunt u het verkeer voor de bijbehorende service toestaan of weigeren. Micro soft beheert de adres voorvoegsels die zijn opgenomen in het servicetag van de service en werkt de servicetag automatisch bij met gewijzigde adressen.
 
-* [Service Tags begrijpen en gebruiken](https://docs.microsoft.com/azure/virtual-network/service-tags-overview)
+* [Service Tags begrijpen en gebruiken](../virtual-network/service-tags-overview.md)
 
 **Azure Security Center bewaking**: momenteel niet beschikbaar
 
@@ -148,11 +148,11 @@ Als u Hybrid Runbook Workers gebruikt die worden gehost op virtuele machines van
 
 U kunt ook Azure-blauw drukken gebruiken om grootschalige Azure-implementaties te vereenvoudigen door sleutel omgevings artefacten, zoals Azure Resources Manager-sjablonen, RBAC-besturings elementen en beleids regels, in één definitie van een blauw druk te verpakken. U kunt de blauw druk Toep assen op nieuwe abonnementen en het beheer en beheer verfijnen met behulp van versies.
 
-* [Azure Policy configureren en beheren](https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage)
+* [Azure Policy configureren en beheren](../governance/policy/tutorials/create-and-manage.md)
 
-* [Voor beelden Azure Policy voor netwerken](https://docs.microsoft.com/azure/governance/policy/samples/#network)
+* [Voor beelden Azure Policy voor netwerken](/azure/governance/policy/samples/#network)
 
-* [Een Azure Blueprint maken](https://docs.microsoft.com/azure/governance/blueprints/create-blueprint-portal)
+* [Een Azure Blueprint maken](../governance/blueprints/create-blueprint-portal.md)
 
 **Azure Security Center bewaking**: niet van toepassing
 
@@ -166,11 +166,11 @@ Gebruik een van de ingebouwde Azure Policy definities die betrekking hebben op l
 
 U kunt Azure PowerShell of Azure CLI gebruiken om op basis van hun labels acties op resources te zoeken of uit te voeren.
 
-* [Tags maken en gebruiken](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-using-tags)
+* [Tags maken en gebruiken](../azure-resource-manager/management/tag-resources.md)
 
-* [Een Virtual Network maken](https://docs.microsoft.com/azure/virtual-network/quick-create-portal)
+* [Een Virtual Network maken](../virtual-network/quick-create-portal.md)
 
-* [Een NSG maken met een beveiligings configuratie](https://docs.microsoft.com/azure/virtual-network/tutorial-filter-network-traffic)
+* [Een NSG maken met een beveiligings configuratie](../virtual-network/tutorial-filter-network-traffic.md)
 
 **Azure Security Center bewaking**: niet van toepassing
 
@@ -180,9 +180,9 @@ U kunt Azure PowerShell of Azure CLI gebruiken om op basis van hun labels acties
 
 **Hulp**: Azure-activiteiten logboek gebruiken om resource configuraties te bewaken en wijzigingen in uw netwerk bronnen te detecteren. Maak waarschuwingen in Azure Monitor die worden geactiveerd wanneer er wijzigingen in kritieke resources plaatsvinden.
 
-* [Activiteiten logboek gebeurtenissen van Azure weer geven en ophalen](https://docs.microsoft.com/azure/azure-monitor/platform/activity-log-view)
+* [Activiteiten logboek gebeurtenissen van Azure weer geven en ophalen](../azure-monitor/platform/activity-log.md#view-the-activity-log)
 
-* [Waarschuwingen maken in Azure Monitor](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-activity-log)
+* [Waarschuwingen maken in Azure Monitor](../azure-monitor/platform/alerts-activity-log.md)
 
 **Azure Security Center bewaking**: momenteel niet beschikbaar
 
@@ -190,13 +190,13 @@ U kunt Azure PowerShell of Azure CLI gebruiken om op basis van hun labels acties
 
 ## <a name="logging-and-monitoring"></a>Logboekregistratie en bewaking
 
-*Zie voor meer informatie [beveiligings beheer: logboek registratie en controle](https://docs.microsoft.com/azure/security/benchmarks/security-control-logging-monitoring).*
+*Zie voor meer informatie [beveiligings beheer: logboek registratie en controle](../security/benchmarks/security-control-logging-monitoring.md).*
 
 ### <a name="21-use-approved-time-synchronization-sources"></a>2,1: goedgekeurde tijd synchronisatie bronnen gebruiken
 
 **Richt lijnen**: micro soft onderhoudt tijd bronnen voor Azure-resources. U hebt echter de mogelijkheid om de tijd synchronisatie-instellingen te beheren voor Hybrid Runbook workers die worden uitgevoerd op virtuele Windows-machines.
 
-* [Tijd synchronisatie configureren voor Azure Compute-resources](https://docs.microsoft.com/azure/virtual-machines/windows/time-sync)
+* [Tijd synchronisatie configureren voor Azure Compute-resources](../virtual-machines/windows/time-sync.md)
 
 **Azure Security Center bewaking**: niet van toepassing
 
@@ -208,19 +208,19 @@ U kunt Azure PowerShell of Azure CLI gebruiken om op basis van hun labels acties
 
 U kunt ook gegevens in-of uitschakelen voor Azure Sentinel of een SIEM van derden.
 
-* [Azure-Sentinel onboarden](https://docs.microsoft.com/azure/sentinel/quickstart-onboard)
+* [Azure-Sentinel onboarden](../sentinel/quickstart-onboard.md)
 
-* [Platform logboeken en metrische gegevens verzamelen met Azure Monitor](https://docs.microsoft.com/azure/azure-monitor/platform/diagnostic-settings)
+* [Platform logboeken en metrische gegevens verzamelen met Azure Monitor](../azure-monitor/platform/diagnostic-settings.md)
 
 * [Aan de slag met Azure Monitor en integratie van SIEM van derden](https://azure.microsoft.com/blog/use-azure-monitor-to-integrate-with-siem-tools/)
 
-* [Azure Automation-taakgegevens doorsturen naar Azure Monitor-logboeken](https://docs.microsoft.com/azure/automation/automation-manage-send-joblogs-log-analytics)
+* [Azure Automation-taakgegevens doorsturen naar Azure Monitor-logboeken](./automation-manage-send-joblogs-log-analytics.md)
 
-* [DSC integreren met Azure Monitor-logboeken](https://docs.microsoft.com/azure/automation/automation-dsc-diagnostics)
+* [DSC integreren met Azure Monitor-logboeken](./automation-dsc-diagnostics.md)
 
-* [Ondersteunde regio's voor gekoppelde Log Analytics-werkruimte](https://docs.microsoft.com/azure/automation/how-to/region-mappings)
+* [Ondersteunde regio's voor gekoppelde Log Analytics-werkruimte](./how-to/region-mappings.md)
 
-* [Updatebeheer logboeken opvragen](https://docs.microsoft.com/azure/automation/automation-update-management-query-logs)
+* [Updatebeheer logboeken opvragen](./automation-update-management-query-logs.md)
 
 **Azure Security Center bewaking**: Ja
 
@@ -230,9 +230,9 @@ U kunt ook gegevens in-of uitschakelen voor Azure Sentinel of een SIEM van derde
 
 **Hulp**: Schakel Azure monitor in voor toegang tot uw audit-en activiteiten logboeken, waaronder gebeurtenis bron, datum, gebruiker, tijds tempel, bron adressen, doel adressen en andere nuttige elementen.
 
-* [Platform logboeken en metrische gegevens verzamelen met Azure Monitor](https://docs.microsoft.com/azure/azure-monitor/platform/diagnostic-settings)
+* [Platform logboeken en metrische gegevens verzamelen met Azure Monitor](../azure-monitor/platform/diagnostic-settings.md)
 
-* [Activiteiten logboek gebeurtenissen van Azure bekijken en ophalen](https://docs.microsoft.com/azure/azure-monitor/platform/activity-log-view)
+* [Activiteiten logboek gebeurtenissen van Azure bekijken en ophalen](../azure-monitor/platform/activity-log.md#view-the-activity-log)
 
 **Azure Security Center bewaking**: Ja
 
@@ -244,7 +244,7 @@ U kunt ook gegevens in-of uitschakelen voor Azure Sentinel of een SIEM van derde
 
 Wanneer u de functie Hybrid Runbook Worker gebruikt, bevat Azure Security Center beveiligings logboek bewaking voor virtuele Windows-machines. Als uw organisatie de gegevens van het beveiligings gebeurtenis logboek wil behouden, kan deze worden opgeslagen in een gegevensverzamelings tier, op welk moment een query kan worden uitgevoerd in Log Analytics. Er zijn verschillende lagen: Mini maal, algemeen en alle, die worden beschreven in de volgende koppeling.
 
-* [De gegevensverzamelings laag configureren in Azure Security Center](https://docs.microsoft.com/azure/security-center/security-center-enable-data-collection#data-collection-tier)
+* [De gegevensverzamelings laag configureren in Azure Security Center](../security-center/security-center-enable-data-collection.md#data-collection-tier)
 
 **Azure Security Center bewaking**: niet van toepassing
 
@@ -254,9 +254,9 @@ Wanneer u de functie Hybrid Runbook Worker gebruikt, bevat Azure Security Center
 
 **Hulp**: stel binnen Azure monitor uw Bewaar periode voor log Analytics werk ruimte in volgens de nalevings voorschriften van uw organisatie. Gebruik Azure Storage-accounts voor lange termijn/archiverings opslag.
 
-* [De Bewaar periode voor gegevens wijzigen in Log Analytics](https://docs.microsoft.com/azure/azure-monitor/platform/manage-cost-storage#change-the-data-retention-period)
+* [De Bewaar periode voor gegevens wijzigen in Log Analytics](../azure-monitor/platform/manage-cost-storage.md#change-the-data-retention-period)
 
-* [Details van gegevens retentie voor Automation-accounts](https://docs.microsoft.com/azure/automation/automation-managing-data#data-retention)
+* [Details van gegevens retentie voor Automation-accounts](./automation-managing-data.md#data-retention)
 
 **Azure Security Center bewaking**: momenteel niet beschikbaar
 
@@ -268,11 +268,11 @@ Wanneer u de functie Hybrid Runbook Worker gebruikt, bevat Azure Security Center
 
 U kunt ook gegevens in-of uitschakelen voor Azure Sentinel of een SIEM van derden.
 
-* [Azure-Sentinel onboarden](https://docs.microsoft.com/azure/sentinel/quickstart-onboard)
+* [Azure-Sentinel onboarden](../sentinel/quickstart-onboard.md)
 
-* [Logboek query's in Azure Monitor begrijpen](https://docs.microsoft.com/azure/azure-monitor/log-query/get-started-portal)
+* [Logboek query's in Azure Monitor begrijpen](../azure-monitor/log-query/get-started-portal.md)
 
-* [Aangepaste query's uitvoeren in Azure Monitor](https://docs.microsoft.com/azure/azure-monitor/log-query/get-started-queries)
+* [Aangepaste query's uitvoeren in Azure Monitor](../azure-monitor/log-query/get-started-queries.md)
 
 **Azure Security Center bewaking**: niet van toepassing
 
@@ -284,11 +284,11 @@ U kunt ook gegevens in-of uitschakelen voor Azure Sentinel of een SIEM van derde
 
 U kunt ook gegevens naar Azure-Sentinel inschakelen en op het bord zetten.
 
-* [Azure-Sentinel onboarden](https://docs.microsoft.com/azure/sentinel/quickstart-onboard)
+* [Azure-Sentinel onboarden](../sentinel/quickstart-onboard.md)
 
-* [Waarschuwingen beheren in Azure Security Center](https://docs.microsoft.com/azure/security-center/security-center-managing-and-responding-alerts)
+* [Waarschuwingen beheren in Azure Security Center](../security-center/security-center-managing-and-responding-alerts.md)
 
-* [Een waarschuwing over Azure Monitor logboek gegevens](https://docs.microsoft.com/azure/azure-monitor/learn/tutorial-response)
+* [Een waarschuwing over Azure Monitor logboek gegevens](../azure-monitor/learn/tutorial-response.md)
 
 **Azure Security Center bewaking**: momenteel niet beschikbaar
 
@@ -300,9 +300,9 @@ U kunt ook gegevens naar Azure-Sentinel inschakelen en op het bord zetten.
 
 Wanneer u de functie Hybrid Runbook Worker gebruikt, kunt u echter gebruikmaken van micro soft anti-malware voor Azure Cloud Services en virtuele machines. Configureer uw virtuele machines om gebeurtenissen te registreren in een Azure Storage-account. Configureer een Log Analytics-werk ruimte om de gebeurtenissen van de opslag accounts op te nemen en maak waar nodig waarschuwingen. Volg de aanbevelingen in Azure Security Center: ' COMPUTE &amp; apps '.
 
-* [Micro soft anti-malware configureren voor Cloud Services en Virtual Machines](https://docs.microsoft.com/azure/security/fundamentals/antimalware)
+* [Micro soft anti-malware configureren voor Cloud Services en Virtual Machines](../security/fundamentals/antimalware.md)
 
-* [Bewaking op gast niveau inschakelen voor virtuele machines](https://docs.microsoft.com/azure/cost-management/azure-vm-extended-metrics)
+* [Bewaking op gast niveau inschakelen voor virtuele machines](../cost-management-billing/cloudyn/azure-vm-extended-metrics.md)
 
 **Azure Security Center bewaking**: niet van toepassing
 
@@ -322,7 +322,7 @@ Wanneer u de functie Hybrid Runbook Worker gebruikt, kunt u echter gebruikmaken 
 
 Wanneer u echter de functie Hybrid Runbook Worker gebruikt, biedt Azure Security Center beveiligings logboek bewaking voor virtuele machines van Azure. Security Center voorziet de Log Analytics agent op alle ondersteunde virtuele machines van Azure en nieuwe die worden gemaakt als automatisch inrichten is ingeschakeld. U kunt de agent ook hand matig installeren. De agent maakt de gebeurtenis 4688 voor het maken van processen en het veld commandline in gebeurtenis 4688 mogelijk. Nieuwe processen die op de virtuele machine worden gemaakt, worden vastgelegd door het gebeurtenis logboek en worden bewaakt door de detectie services van Security Center.
 
-* [Gegevensverzameling in Azure Security Center](https://docs.microsoft.com/azure/security-center/security-center-enable-data-collection#data-collection-tier)
+* [Gegevensverzameling in Azure Security Center](../security-center/security-center-enable-data-collection.md#data-collection-tier)
 
 **Azure Security Center bewaking**: niet van toepassing
 
@@ -330,19 +330,19 @@ Wanneer u echter de functie Hybrid Runbook Worker gebruikt, biedt Azure Security
 
 ## <a name="identity-and-access-control"></a>Identiteits- en toegangsbeheer
 
-*Zie [beveiligings beheer: identiteits-en toegangs beheer](https://docs.microsoft.com/azure/security/benchmarks/security-control-identity-access-control)voor meer informatie.*
+*Zie [beveiligings beheer: identiteits-en toegangs beheer](../security/benchmarks/security-control-identity-access-control.md)voor meer informatie.*
 
 ### <a name="31-maintain-an-inventory-of-administrative-accounts"></a>3,1: een inventaris van beheerders accounts onderhouden
 
 **Hulp**: gebruik Azure Active Directory ingebouwde beheerders rollen die expliciet kunnen worden toegewezen en waarop query's kunnen worden uitgevoerd. Gebruik de Azure AD Power shell-module om ad hoc-query's uit te voeren om accounts te detecteren die lid zijn van beheer groepen. Wanneer u een Automation-account uitvoert als accounts voor uw runbooks, moet u ervoor zorgen dat deze service-principals ook worden bijgehouden in uw inventaris, omdat deze vaak verhoogde machtigingen hebben. Verwijder ongebruikte run as-accounts om uw blootgestelde aanvals oppervlak te minimaliseren.
 
-* [Een directory-rol verkrijgen in azure AD met Power shell](https://docs.microsoft.com/powershell/module/azuread/get-azureaddirectoryrole?view=azureadps-2.0)
+* [Een directory-rol verkrijgen in azure AD met Power shell](/powershell/module/azuread/get-azureaddirectoryrole?view=azureadps-2.0)
 
-* [Leden van een directory-rol in azure AD ophalen met Power shell](https://docs.microsoft.com/powershell/module/azuread/get-azureaddirectoryrolemember?view=azureadps-2.0)
+* [Leden van een directory-rol in azure AD ophalen met Power shell](/powershell/module/azuread/get-azureaddirectoryrolemember?view=azureadps-2.0)
 
-* [Een Uitvoeren als- of klassiek Uitvoeren als-account verwijderen](https://docs.microsoft.com/azure/automation/manage-runas-account#delete-a-run-as-or-classic-run-as-account)
+* [Een Uitvoeren als- of klassiek Uitvoeren als-account verwijderen](./manage-runas-account.md#delete-a-run-as-or-classic-run-as-account)
 
-* [Een Azure Automation uitvoeren als-account beheren](https://docs.microsoft.com/azure/automation/manage-runas-account)
+* [Een Azure Automation uitvoeren als-account beheren](./manage-runas-account.md)
 
 **Azure Security Center bewaking**: Ja
 
@@ -362,11 +362,11 @@ Wanneer u echter de functie Hybrid Runbook Worker gebruikt, biedt Azure Security
 
 U kunt ook Just-in-time/alleen-voldoende toegang inschakelen met behulp van Azure AD Privileged Identity Management geprivilegieerde rollen voor micro soft-Services en Azure Resource Manager.
 
-* [Meer informatie over Privileged Identity Management](https://docs.microsoft.com/azure/active-directory/privileged-identity-management/)
+* [Meer informatie over Privileged Identity Management](../active-directory/privileged-identity-management/index.yml)
 
-* [Een Uitvoeren als- of klassiek Uitvoeren als-account verwijderen](https://docs.microsoft.com/azure/automation/manage-runas-account#delete-a-run-as-or-classic-run-as-account)
+* [Een Uitvoeren als- of klassiek Uitvoeren als-account verwijderen](./manage-runas-account.md#delete-a-run-as-or-classic-run-as-account)
 
-* [Een Azure Automation uitvoeren als-account beheren](https://docs.microsoft.com/azure/automation/manage-runas-account)
+* [Een Azure Automation uitvoeren als-account beheren](./manage-runas-account.md)
 
 **Azure Security Center bewaking**: Ja
 
@@ -376,11 +376,11 @@ U kunt ook Just-in-time/alleen-voldoende toegang inschakelen met behulp van Azur
 
 **Richt lijnen**: gebruik waar mogelijk SSO met Azure Active Directory in plaats van afzonderlijke zelfstandige referenties per service te configureren. Gebruik Azure Security Center aanbevelingen voor identiteits-en toegangs beheer.
 
-* [Eenmalige aanmelding bij toepassingen in Azure Active Directory](https://docs.microsoft.com/azure/active-directory/manage-apps/what-is-single-sign-on)
+* [Eenmalige aanmelding bij toepassingen in Azure Active Directory](../active-directory/manage-apps/what-is-single-sign-on.md)
 
-* [Identiteit en toegang bewaken in Azure Security Center](https://docs.microsoft.com/azure/security-center/security-center-identity-access)
+* [Identiteit en toegang bewaken in Azure Security Center](../security-center/security-center-identity-access.md)
 
-* [Azure AD gebruiken voor verificatie bij Azure](https://docs.microsoft.com/azure/automation/automation-use-azure-ad)
+* [Azure AD gebruiken voor verificatie bij Azure](./automation-use-azure-ad.md)
 
 **Azure Security Center bewaking**: momenteel niet beschikbaar
 
@@ -390,9 +390,9 @@ U kunt ook Just-in-time/alleen-voldoende toegang inschakelen met behulp van Azur
 
 **Hulp**: Schakel Azure AD multi-factor Authentication (MFA) in en volg Azure Security Center aanbevelingen voor identiteits-en toegangs beheer.
 
-* [MFA inschakelen in azure](https://docs.microsoft.com/azure/active-directory/authentication/howto-mfa-getstarted)
+* [MFA inschakelen in azure](../active-directory/authentication/howto-mfa-getstarted.md)
 
-* [Identiteit en toegang bewaken in Azure Security Center](https://docs.microsoft.com/azure/security-center/security-center-identity-access)
+* [Identiteit en toegang bewaken in Azure Security Center](../security-center/security-center-identity-access.md)
 
 **Azure Security Center bewaking**: Ja
 
@@ -402,9 +402,9 @@ U kunt ook Just-in-time/alleen-voldoende toegang inschakelen met behulp van Azur
 
 **Richt lijnen**: gebruik paw's met multi-factor Authentication om u aan te melden bij en te configureren Azure Automation account bronnen in productie omgevingen.
 
-* [Meer informatie over privileged Access workstations](https://docs.microsoft.com/windows-server/identity/securing-privileged-access/privileged-access-workstations)
+* [Meer informatie over privileged Access workstations](/windows-server/identity/securing-privileged-access/privileged-access-workstations)
 
-* [MFA inschakelen in azure](https://docs.microsoft.com/azure/active-directory/authentication/howto-mfa-getstarted)
+* [MFA inschakelen in azure](../active-directory/authentication/howto-mfa-getstarted.md)
 
 **Azure Security Center bewaking**: niet van toepassing
 
@@ -414,11 +414,11 @@ U kunt ook Just-in-time/alleen-voldoende toegang inschakelen met behulp van Azur
 
 **Richt lijnen**: gebruik Azure AD-risico detecties om waarschuwingen en rapporten weer te geven over Risk ante gebruikers gedrag. De klant kan eventueel waarschuwingen voor Azure Security Center risico detectie door sturen naar Azure Monitor en aangepaste waarschuwingen/meldingen configureren met actie groepen.
 
-* [Meer informatie over Azure Security Center risico detecties (verdachte activiteiten)](https://docs.microsoft.com/azure/active-directory/reports-monitoring/concept-risk-events)
+* [Meer informatie over Azure Security Center risico detecties (verdachte activiteiten)](../active-directory/identity-protection/overview-identity-protection.md)
 
-* [Azure-activiteiten logboeken integreren in Azure Monitor](https://docs.microsoft.com/azure/active-directory/reports-monitoring/howto-integrate-activity-logs-with-log-analytics)
+* [Azure-activiteiten logboeken integreren in Azure Monitor](../active-directory/reports-monitoring/howto-integrate-activity-logs-with-log-analytics.md)
 
-* [Actie groepen configureren voor aangepaste waarschuwingen en meldingen](https://docs.microsoft.com/azure/azure-monitor/platform/action-groups)
+* [Actie groepen configureren voor aangepaste waarschuwingen en meldingen](../azure-monitor/platform/action-groups.md)
 
 **Azure Security Center bewaking**: Ja
 
@@ -428,7 +428,7 @@ U kunt ook Just-in-time/alleen-voldoende toegang inschakelen met behulp van Azur
 
 **Richt lijnen**: het wordt aanbevolen om de benoemde locaties voor voorwaardelijke toegang te gebruiken om alleen toegang toe te staan vanaf specifieke logische groepen met IP-adresbereiken of landen/regio's.
 
-* [Benoemde locaties configureren in azure](https://docs.microsoft.com/azure/active-directory/reports-monitoring/quickstart-configure-named-locations)
+* [Benoemde locaties configureren in azure](../active-directory/reports-monitoring/quickstart-configure-named-locations.md)
 
 **Azure Security Center bewaking**: momenteel niet beschikbaar
 
@@ -438,9 +438,9 @@ U kunt ook Just-in-time/alleen-voldoende toegang inschakelen met behulp van Azur
 
 **Richt lijnen**: Azure AD gebruiken als het centrale verificatie-en autorisatie systeem. Azure AD beveiligt gegevens door gebruik te maken van sterke versleuteling voor gegevens in rust en onderweg. Azure AD bevat ook zouten, hashes en veilige gebruikers referenties. Als u Hybrid Runbook Workers gebruikt, kunt u beheerde identiteiten gebruiken in plaats van run as-accounts om naadloze beveiligde machtigingen in te scha kelen.
 
-* [Een Azure AD-exemplaar maken en configureren](https://docs.microsoft.com/azure/active-directory-domain-services/tutorial-create-instance)
+* [Een Azure AD-exemplaar maken en configureren](../active-directory-domain-services/tutorial-create-instance.md)
 
-* [Runbook-verificatie gebruiken met beheerde identiteiten](https://docs.microsoft.com/azure/automation/automation-hrw-run-runbooks#runbook-auth-managed-identities)
+* [Runbook-verificatie gebruiken met beheerde identiteiten](./automation-hrw-run-runbooks.md#runbook-auth-managed-identities)
 
 **Azure Security Center bewaking**: Ja
 
@@ -450,13 +450,13 @@ U kunt ook Just-in-time/alleen-voldoende toegang inschakelen met behulp van Azur
 
 **Richt lijnen**: Azure AD biedt logboeken waarmee u verlopen accounts kunt detecteren. Daarnaast kunt u Azure Identity Access revisies gebruiken om groepslid maatschappen en de toegang tot bedrijfs toepassingen en roltoewijzingen op efficiënte wijze te beheren. Gebruikers toegang kan regel matig worden gecontroleerd om ervoor te zorgen dat alleen de juiste gebruikers toegang hebben. Wanneer u een run as-account voor Automation-accounts gebruikt voor uw runbooks, moet u ervoor zorgen dat deze service-principals ook worden bijgehouden in uw inventaris, omdat deze vaak verhoogde machtigingen hebben. Verwijder ongebruikte run as-accounts om uw blootgestelde aanvals oppervlak te minimaliseren.
 
-* [Meer informatie over Azure AD-rapportage](https://docs.microsoft.com/azure/active-directory/reports-monitoring/)
+* [Meer informatie over Azure AD-rapportage](../active-directory/reports-monitoring/index.yml)
 
-* [Beoordelingen over Azure Identity Access gebruiken](https://docs.microsoft.com/azure/active-directory/governance/access-reviews-overview)
+* [Beoordelingen over Azure Identity Access gebruiken](../active-directory/governance/access-reviews-overview.md)
 
-* [Een Uitvoeren als- of klassiek Uitvoeren als-account verwijderen](https://docs.microsoft.com/azure/automation/manage-runas-account#delete-a-run-as-or-classic-run-as-account)
+* [Een Uitvoeren als- of klassiek Uitvoeren als-account verwijderen](./manage-runas-account.md#delete-a-run-as-or-classic-run-as-account)
 
-* [Een Azure Automation uitvoeren als-account beheren](https://docs.microsoft.com/azure/automation/manage-runas-account)
+* [Een Azure Automation uitvoeren als-account beheren](./manage-runas-account.md)
 
 **Azure Security Center bewaking**: Ja
 
@@ -468,7 +468,7 @@ U kunt ook Just-in-time/alleen-voldoende toegang inschakelen met behulp van Azur
 
 U kunt dit proces stroom lijnen door Diagnostische instellingen voor Azure Active Directory gebruikers accounts te maken en de audit logboeken en aanmeldings logboeken te verzenden naar een Log Analytics-werk ruimte. U kunt de gewenste waarschuwingen configureren in Log Analytics werk ruimte.
 
-* [Azure-activiteiten logboeken integreren in Azure Monitor](https://docs.microsoft.com/azure/active-directory/reports-monitoring/howto-integrate-activity-logs-with-log-analytics)
+* [Azure-activiteiten logboeken integreren in Azure Monitor](../active-directory/reports-monitoring/howto-integrate-activity-logs-with-log-analytics.md)
 
 **Azure Security Center bewaking**: momenteel niet beschikbaar
 
@@ -478,11 +478,11 @@ U kunt dit proces stroom lijnen door Diagnostische instellingen voor Azure Activ
 
 **Hulp**: Azure AD-functies voor risico-en identiteits beveiliging gebruiken voor het configureren van automatische antwoorden op gedetecteerde verdachte acties met betrekking tot de gebruikers identiteiten voor uw netwerk bron. U kunt ook gegevens opnemen in azure Sentinel voor verder onderzoek.
 
-* [Risk ante aanmeldingen voor Azure AD weer geven](https://docs.microsoft.com/azure/active-directory/reports-monitoring/concept-risky-sign-ins)
+* [Risk ante aanmeldingen voor Azure AD weer geven](../active-directory/identity-protection/overview-identity-protection.md)
 
-* [Risico beleid voor identiteits beveiliging configureren en inschakelen](https://docs.microsoft.com/azure/active-directory/identity-protection/howto-identity-protection-configure-risk-policies)
+* [Risico beleid voor identiteits beveiliging configureren en inschakelen](../active-directory/identity-protection/howto-identity-protection-configure-risk-policies.md)
 
-* [Azure-Sentinel onboarden](https://docs.microsoft.com/azure/sentinel/quickstart-onboard)
+* [Azure-Sentinel onboarden](../sentinel/quickstart-onboard.md)
 
 **Azure Security Center bewaking**: momenteel niet beschikbaar
 
@@ -494,21 +494,21 @@ U kunt dit proces stroom lijnen door Diagnostische instellingen voor Azure Activ
 
 Als er echter Hybrid Runbook Workers worden gebruikt die worden ondersteund door Azure virtual machines en een derde partij toegang heeft tot klant gegevens (zoals tijdens een ondersteunings aanvraag), gebruikt u Klanten-lockbox (preview) voor virtuele machines van Azure om aanvragen voor toegang tot klant gegevens te controleren en goed te keuren of af te wijzen.
 
-* [Wat is Klanten-lockbox?](https://docs.microsoft.com/azure/security/fundamentals/customer-lockbox-overview)
+* [Wat is Klanten-lockbox?](../security/fundamentals/customer-lockbox-overview.md)
 
 **Azure Security Center bewaking**: momenteel niet beschikbaar
 
 **Verantwoordelijkheid**: klant
 
-## <a name="data-protection"></a>Gegevensbescherming
+## <a name="data-protection"></a>Gegevensbeveiliging
 
-*Zie [beveiligings beheer: gegevens beveiliging](https://docs.microsoft.com/azure/security/benchmarks/security-control-data-protection)voor meer informatie.*
+*Zie [beveiligings beheer: gegevens beveiliging](../security/benchmarks/security-control-data-protection.md)voor meer informatie.*
 
 ### <a name="41-maintain-an-inventory-of-sensitive-information"></a>4,1: een inventaris van gevoelige informatie onderhouden
 
 **Hulp**: Tags gebruiken bij het volgen van Azure Automation resources die gevoelige informatie opslaan of verwerken.
 
-* [Tags maken en gebruiken](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-using-tags)
+* [Tags maken en gebruiken](../azure-resource-manager/management/tag-resources.md)
 
 **Azure Security Center bewaking**: momenteel niet beschikbaar
 
@@ -518,19 +518,19 @@ Als er echter Hybrid Runbook Workers worden gebruikt die worden ondersteund door
 
 **Richt lijnen**: afzonderlijke abonnementen en/of beheer groepen implementeren voor ontwikkeling, testen en productie. Geïsoleerde omgevingen door gebruik te maken van afzonderlijke Automation-account resources. Resources zoals Hybrid Runbook Workers moeten worden gescheiden door het virtuele netwerk/subnet, op de juiste wijze worden gelabeld en beveiligd in een netwerk beveiligings groep (NSG) of Azure Firewall. Voor virtuele machines die gevoelige gegevens opslaan of verwerken, implementeert u beleid en procedure (s) om ze uit te scha kelen wanneer ze niet worden gebruikt.
 
-* [Aanvullende Azure-abonnementen maken](https://docs.microsoft.com/azure/billing/billing-create-subscription)
+* [Aanvullende Azure-abonnementen maken](../cost-management-billing/manage/create-subscription.md)
 
-* [Beheergroepen maken](https://docs.microsoft.com/azure/governance/management-groups/create)
+* [Beheergroepen maken](../governance/management-groups/create.md)
 
-* [Tags maken en gebruiken](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-using-tags)
+* [Tags maken en gebruiken](../azure-resource-manager/management/tag-resources.md)
 
-* [Een Virtual Network maken](https://docs.microsoft.com/azure/virtual-network/quick-create-portal)
+* [Een Virtual Network maken](../virtual-network/quick-create-portal.md)
 
-* [Een NSG maken met een beveiligings configuratie](https://docs.microsoft.com/azure/virtual-network/tutorial-filter-network-traffic)
+* [Een NSG maken met een beveiligings configuratie](../virtual-network/tutorial-filter-network-traffic.md)
 
-* [Azure Firewall implementeren](https://docs.microsoft.com/azure/firewall/tutorial-firewall-deploy-portal)
+* [Azure Firewall implementeren](../firewall/tutorial-firewall-deploy-portal.md)
 
-* [Waarschuwing of waarschuwing configureren en weigeren met Azure Firewall](https://docs.microsoft.com/azure/firewall/threat-intel)
+* [Waarschuwing of waarschuwing configureren en weigeren met Azure Firewall](../firewall/threat-intel.md)
 
 **Azure Security Center bewaking**: niet van toepassing
 
@@ -542,7 +542,7 @@ Als er echter Hybrid Runbook Workers worden gebruikt die worden ondersteund door
 
 Voor het onderliggende platform dat door micro soft wordt beheerd, behandelt micro soft alle inhoud van de klant als gevoelig en beschermd tegen verlies en bloot stelling van klant gegevens. Om ervoor te zorgen dat klant gegevens binnen Azure veilig blijven, heeft micro soft een reeks robuuste besturings elementen en mogelijkheden voor gegevens bescherming geïmplementeerd en onderhouden.
 
-* [Informatie over beveiliging van klanten in azure](https://docs.microsoft.com/azure/security/fundamentals/protection-customer-data)
+* [Informatie over beveiliging van klanten in azure](../security/fundamentals/protection-customer-data.md)
 
 **Azure Security Center bewaking**: Ja
 
@@ -554,7 +554,7 @@ Voor het onderliggende platform dat door micro soft wordt beheerd, behandelt mic
 
 Volg Azure Security Center aanbevelingen voor het versleutelen van de rest en de versleuteling in de door Voer, indien van toepassing.
 
-* [Meer informatie over versleuteling in transit met Azure](https://docs.microsoft.com/azure/security/fundamentals/encryption-overview#encryption-of-data-in-transit)
+* [Meer informatie over versleuteling in transit met Azure](../security/fundamentals/encryption-overview.md#encryption-of-data-in-transit)
 
 * [Azure Automation TLS 1,2 afdwingen](https://azure.microsoft.com/updates/azure-automation-tls12-enforcement/)
 
@@ -574,11 +574,11 @@ Volg Azure Security Center aanbevelingen voor het versleutelen van de rest en de
 
 **Hulp**: Azure AD RBAC gebruiken om de toegang tot Azure Automation resources te beheren met behulp van de ingebouwde roldefinities, toegangs rechten toewijzen aan gebruikers die toegang hebben tot uw Automation-resources met een mini maal privileged of ' just-genoeg '-toegangs model. Wanneer u Hybrid Runbook Workers gebruikt, moet u beheerde identiteiten voor die virtuele machines gebruiken om service-principals te vermijden, wanneer u de werk nemers met meerdere tenants of Hybrid Runbook gebruikt om te zorgen dat de RBAC-machtigingen op de juiste manier zijn afgestemd op de identiteit van de Runbook-werk nemers.
 
-* [RBAC configureren in azure](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-portal)
+* [RBAC configureren in azure](../role-based-access-control/role-assignments-portal.md)
 
-* [Runbook-machtigingen voor een Hybrid Runbook Worker](https://docs.microsoft.com/azure/automation/automation-hybrid-runbook-worker#runbook-permissions-for-a-hybrid-runbook-worker)
+* [Runbook-machtigingen voor een Hybrid Runbook Worker](./automation-hybrid-runbook-worker.md#runbook-permissions-for-a-hybrid-runbook-worker)
 
-* [Rolmachtigingen en beveiliging beheren](https://docs.microsoft.com/azure/automation/automation-role-based-access-control)
+* [Rolmachtigingen en beveiliging beheren](./automation-role-based-access-control.md)
 
 **Azure Security Center bewaking**: momenteel niet beschikbaar
 
@@ -600,13 +600,13 @@ Als u Hybrid Runbook Workers gebruikt die worden ondersteund door Azure virtual 
 
 Bij het gebruik van Hybrid Runbook Workers worden de virtuele schijven op de virtuele machines op rest versleuteld met behulp van server versleuteling of Azure Disk Encryption (ADE). Azure Disk Encryption maakt gebruik van de BitLocker-functie van Windows voor het versleutelen van beheerde schijven met door de klant beheerde sleutels in de gast-VM. Versleuteling aan de server zijde met door de klant beheerde sleutels wordt verbeterd op ADE door u in staat te stellen alle typen besturings systemen en installatie kopieën voor uw virtuele machines te gebruiken door gegevens in de opslag service te versleutelen.
 
-* [Versleuteling aan server zijde van Azure Managed disks](https://docs.microsoft.com/azure/virtual-machines/windows/disk-encryption)
+* [Versleuteling aan server zijde van Azure Managed disks](../virtual-machines/windows/disk-encryption.md)
 
-* [Azure Disk Encryption voor Windows-Vm's](https://docs.microsoft.com/azure/virtual-machines/windows/disk-encryption-overview)
+* [Azure Disk Encryption voor Windows-Vm's](../virtual-machines/windows/disk-encryption-overview.md)
 
-* [Gebruik van door de klant beheerde sleutels voor een Automation-account](https://docs.microsoft.com/azure/automation/automation-secure-asset-encryption#use-of-customer-managed-keys-for-an-automation-account)
+* [Gebruik van door de klant beheerde sleutels voor een Automation-account](./automation-secure-asset-encryption.md#use-of-customer-managed-keys-for-an-automation-account)
 
-* [Beheerde variabelen in Azure Automation](https://docs.microsoft.com/azure/automation/shared-resources/variables)
+* [Beheerde variabelen in Azure Automation](./shared-resources/variables.md)
 
 **Azure Security Center bewaking**: Ja
 
@@ -616,9 +616,9 @@ Bij het gebruik van Hybrid Runbook Workers worden de virtuele schijven op de vir
 
 **Hulp**: gebruik Azure monitor met Azure-activiteiten logboek om waarschuwingen te maken voor wanneer wijzigingen worden aangebracht in essentiële Azure-resources, zoals netwerk onderdelen, Azure Automation accounts en runbooks.
 
-* [Diagnostische logboek registratie voor een netwerk beveiligings groep](https://docs.microsoft.com/azure/private-link/private-link-overview#logging-and-monitoring)
+* [Diagnostische logboek registratie voor een netwerk beveiligings groep](../private-link/private-link-overview.md#logging-and-monitoring)
 
-* [Waarschuwingen maken voor gebeurtenissen in het Azure-activiteiten logboek](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-activity-log)
+* [Waarschuwingen maken voor gebeurtenissen in het Azure-activiteiten logboek](../azure-monitor/platform/alerts-activity-log.md)
 
 **Azure Security Center bewaking**: momenteel niet beschikbaar
 
@@ -626,15 +626,15 @@ Bij het gebruik van Hybrid Runbook Workers worden de virtuele schijven op de vir
 
 ## <a name="vulnerability-management"></a>Beheer van beveiligingsproblemen
 
-*Zie [beveiligings beheer: beveiligingslek beheer](https://docs.microsoft.com/azure/security/benchmarks/security-control-vulnerability-management)voor meer informatie.*
+*Zie [beveiligings beheer: beveiligingslek beheer](../security/benchmarks/security-control-vulnerability-management.md)voor meer informatie.*
 
 ### <a name="51-run-automated-vulnerability-scanning-tools"></a>5,1: automatische hulpprogram ma's voor het scannen van beveiligings problemen uitvoeren
 
 **Richt lijnen**: Volg de aanbevelingen van Azure Security Center over het uitvoeren van beveiligings evaluaties voor uw Azure-resources
 
-* [Aanbevelingen voor beveiliging in Azure Security Center](https://docs.microsoft.com/azure/security-center/security-center-recommendations)
+* [Aanbevelingen voor beveiliging in Azure Security Center](../security-center/security-center-recommendations.md)
 
-* [Naslag informatie over Security Center aanbeveling](https://docs.microsoft.com/azure/security-center/recommendations-reference)
+* [Naslag informatie over Security Center aanbeveling](../security-center/recommendations-reference.md)
 
 **Azure Security Center bewaking**: momenteel niet beschikbaar
 
@@ -646,9 +646,9 @@ Bij het gebruik van Hybrid Runbook Workers worden de virtuele schijven op de vir
 
 Als u Hybrid Runbook Workers gebruikt die worden ondersteund door virtuele machines van Azure, kunt u Azure Updatebeheer gebruiken om updates en patches voor uw virtuele machines te beheren. Updatebeheer is afhankelijk van de lokaal geconfigureerde update opslagplaats voor patches die worden ondersteund door Windows-systemen. Met hulpprogram ma's als System Center Updates Publisher (updates Publisher) kunt u aangepaste updates publiceren in Windows Server Update Services (WSUS). Met dit scenario kunnen Updatebeheer patches voor machines die gebruikmaken van Configuration Manager als update opslagplaats met software van derden.
 
-* [Updatebeheer in azure](https://docs.microsoft.com/azure/automation/automation-update-management)
+* [Updatebeheer in azure](./automation-update-management.md)
 
-* [Updates en patches voor uw Azure-VM's beheren](https://docs.microsoft.com/azure/automation/automation-tutorial-update-management)
+* [Updates en patches voor uw Azure-VM's beheren](./automation-tutorial-update-management.md)
 
 **Azure Security Center bewaking**: niet van toepassing
 
@@ -660,9 +660,9 @@ Als u Hybrid Runbook Workers gebruikt die worden ondersteund door virtuele machi
 
 Als u Hybrid Runbook Workers gebruikt die worden ondersteund door virtuele machines van Azure, kunt u Azure Updatebeheer gebruiken om updates en patches voor uw virtuele machines te beheren. Updatebeheer is afhankelijk van de lokaal geconfigureerde update opslagplaats voor patches die worden ondersteund door Windows-systemen. Met hulpprogram ma's als System Center Updates Publisher (updates Publisher) kunt u aangepaste updates publiceren in Windows Server Update Services (WSUS). Met dit scenario kunnen Updatebeheer patches voor machines die gebruikmaken van Configuration Manager als update opslagplaats met software van derden.
 
-* [Updatebeheer oplossing in azure](https://docs.microsoft.com/azure/automation/automation-update-management)
+* [Updatebeheer oplossing in azure](./automation-update-management.md)
 
-* [Updates en patches voor uw Azure-VM's beheren](https://docs.microsoft.com/azure/automation/automation-tutorial-update-management)
+* [Updates en patches voor uw Azure-VM's beheren](./automation-tutorial-update-management.md)
 
 **Azure Security Center bewaking**: niet van toepassing
 
@@ -680,7 +680,7 @@ Als u Hybrid Runbook Workers gebruikt die worden ondersteund door virtuele machi
 
 **Richt lijnen**: gebruik de standaard risico classificaties (beveiligde Score) van Azure Security Center om prioriteiten te stellen voor het herstel van ontdekte beveiligings problemen.
 
-* [Azure Security Center beveiligde Score begrijpen](https://docs.microsoft.com/azure/security-center/security-center-secure-score)
+* [Azure Security Center beveiligde Score begrijpen](../security-center/secure-score-security-controls.md)
 
 **Azure Security Center bewaking**: niet van toepassing
 
@@ -688,17 +688,17 @@ Als u Hybrid Runbook Workers gebruikt die worden ondersteund door virtuele machi
 
 ## <a name="inventory-and-asset-management"></a>Inventarisatie en asset-management
 
-*Zie voor meer informatie [beveiligings beheer: inventarisatie en activa beheer](https://docs.microsoft.com/azure/security/benchmarks/security-control-inventory-asset-management).*
+*Zie voor meer informatie [beveiligings beheer: inventarisatie en activa beheer](../security/benchmarks/security-control-inventory-asset-management.md).*
 
 ### <a name="61-use-automated-asset-discovery-solution"></a>6,1: automatische Asset-detectie oplossing gebruiken
 
 **Hulp**: Azure resource Graph gebruiken om alle Azure Automation-resources binnen uw abonnementen te doorzoeken en te detecteren. Zorg ervoor dat u de juiste machtigingen (lezen) hebt in uw Tenant en dat u alle Azure-abonnementen kunt inventariseren, evenals de resources in uw abonnementen.
 
-* [Query's maken met Azure resource Graph](https://docs.microsoft.com/azure/governance/resource-graph/first-query-portal)
+* [Query's maken met Azure resource Graph](../governance/resource-graph/first-query-portal.md)
 
-* [Uw Azure-abonnementen weer geven](https://docs.microsoft.com/powershell/module/az.accounts/get-azsubscription?view=azps-3.0.0)
+* [Uw Azure-abonnementen weer geven](/powershell/module/az.accounts/get-azsubscription?view=azps-3.0.0)
 
-* [Meer informatie over Azure RBAC](https://docs.microsoft.com/azure/role-based-access-control/overview)
+* [Meer informatie over Azure RBAC](../role-based-access-control/overview.md)
 
 **Azure Security Center bewaking**: niet van toepassing
 
@@ -708,7 +708,7 @@ Als u Hybrid Runbook Workers gebruikt die worden ondersteund door virtuele machi
 
 **Richt lijnen**: Tags Toep assen op Azure-resources die meta gegevens geven om ze logisch in een taxonomie te organiseren.
 
-* [Tags maken en gebruiken](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-using-tags)
+* [Tags maken en gebruiken](../azure-resource-manager/management/tag-resources.md)
 
 **Azure Security Center bewaking**: niet van toepassing
 
@@ -718,15 +718,15 @@ Als u Hybrid Runbook Workers gebruikt die worden ondersteund door virtuele machi
 
 **Richt lijnen**: Gebruik labels, beheer groepen en afzonderlijke abonnementen, waar nodig, om Azure Automation-resources in te delen en bij te houden. Sluit de inventaris regel matig af en zorg ervoor dat niet-geautoriseerde resources tijdig worden verwijderd uit het abonnement. Verwijder ongebruikte run as-accounts om uw blootgestelde aanvals oppervlak te minimaliseren.
 
-* [Aanvullende Azure-abonnementen maken](https://docs.microsoft.com/azure/billing/billing-create-subscription)
+* [Aanvullende Azure-abonnementen maken](../cost-management-billing/manage/create-subscription.md)
 
-* [Beheergroepen maken](https://docs.microsoft.com/azure/governance/management-groups/create)
+* [Beheergroepen maken](../governance/management-groups/create.md)
 
-* [Tags maken en gebruiken](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-using-tags)
+* [Tags maken en gebruiken](../azure-resource-manager/management/tag-resources.md)
 
-* [Een Uitvoeren als- of klassiek Uitvoeren als-account verwijderen](https://docs.microsoft.com/azure/automation/manage-runas-account#delete-a-run-as-or-classic-run-as-account)
+* [Een Uitvoeren als- of klassiek Uitvoeren als-account verwijderen](./manage-runas-account.md#delete-a-run-as-or-classic-run-as-account)
 
-* [Een Azure Automation uitvoeren als-account beheren](https://docs.microsoft.com/azure/automation/manage-runas-account)
+* [Een Azure Automation uitvoeren als-account beheren](./manage-runas-account.md)
 
 **Azure Security Center bewaking**: niet van toepassing
 
@@ -743,16 +743,16 @@ Als u Hybrid Runbook Workers gebruikt die worden ondersteund door virtuele machi
 ### <a name="65-monitor-for-unapproved-azure-resources"></a>6,5: monitor voor niet-goedgekeurde Azure-resources
 
 **Hulp: gebruik**Azure Policy om beperkingen toe te voegen voor het type resources dat kan worden gemaakt in klant abonnementen met behulp van de volgende ingebouwde beleids definities:
-- Niet toegestane brontypen
+- Niet toegestane resourcetypen
 - Toegestane brontypen
 
 Daarnaast kunt u met de Azure-resource grafiek bronnen in abonnementen opvragen/ontdekken. Dit kan helpen bij omgevingen met hoge beveiliging, zoals die met opslag accounts.
 
-* [Azure Policy configureren en beheren](https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage)
+* [Azure Policy configureren en beheren](../governance/policy/tutorials/create-and-manage.md)
 
-* [Query's maken met Azure resource Graph](https://docs.microsoft.com/azure/governance/resource-graph/first-query-portal)
+* [Query's maken met Azure resource Graph](../governance/resource-graph/first-query-portal.md)
 
-* [Azure Policy voor beeld van ingebouwde invoeg toepassingen voor Azure Automation](https://docs.microsoft.com/azure/automation/policy-samples)
+* [Azure Policy voor beeld van ingebouwde invoeg toepassingen voor Azure Automation](./policy-samples.md)
 
 **Azure Security Center bewaking**: niet van toepassing
 
@@ -764,11 +764,11 @@ Daarnaast kunt u met de Azure-resource grafiek bronnen in abonnementen opvragen/
 
 Als u Hybrid Runbook Workers gebruikt die door Azure worden ondersteund Virtual Machines is Azure Automation volledige controle over de implementatie, het uitvoeren van bewerkingen en het buiten gebruik stellen van werk belastingen en resources. Maak gebruik van Azure virtual machine Inventory om het verzamelen van informatie over alle software op Virtual Machines te automatiseren. De software naam, versie, uitgever en tijd van vernieuwen zijn beschikbaar via de Azure Portal. Om toegang te krijgen tot de installatie datum en andere informatie, is de klant verplicht om diagnostische gegevens op gast niveau in te scha kelen en de Windows-gebeurtenis logboeken naar een Log Analytics-werk ruimte te brengen.
 
-* [Een inleiding tot Azure Automation](https://docs.microsoft.com/azure/automation/automation-intro)
+* [Een inleiding tot Azure Automation](./automation-intro.md)
 
-* [Azure VM-inventaris inschakelen](https://docs.microsoft.com/azure/automation/automation-tutorial-installed-software)
+* [Azure VM-inventaris inschakelen](./automation-tutorial-installed-software.md)
 
-* [Module in Azure Automation beheren](https://docs.microsoft.com/azure/automation/shared-resources/modules)
+* [Module in Azure Automation beheren](./shared-resources/modules.md)
 
 **Azure Security Center bewaking**: niet van toepassing
 
@@ -778,9 +778,9 @@ Als u Hybrid Runbook Workers gebruikt die door Azure worden ondersteund Virtual 
 
 **Hulp**: klanten kunnen voor komen dat resources worden gemaakt of gebruikt met Azure policy zoals vereist door de bedrijfs richtlijnen van de klant. U kunt uw eigen proces voor het verwijderen van niet-geautoriseerde resources implementeren. Binnen de Azure Automation kunt u de Power shell-of python-modules installeren, verwijderen en beheren die door runbooks toegankelijk zijn via de portal of cmdlets. De module ungoedgekeurd of Old moet worden verwijderd of bijgewerkt voor de runbooks.
 
-* [Azure Policy configureren en beheren](https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage)
+* [Azure Policy configureren en beheren](../governance/policy/tutorials/create-and-manage.md)
 
-* [Module in Azure Automation beheren](https://docs.microsoft.com/azure/automation/shared-resources/modules)
+* [Module in Azure Automation beheren](./shared-resources/modules.md)
 
 **Azure Security Center bewaking**: niet van toepassing
 
@@ -790,7 +790,7 @@ Als u Hybrid Runbook Workers gebruikt die door Azure worden ondersteund Virtual 
 
 **Richt lijnen**: wanneer u de functie Hybrid Runbook worker gebruikt, kunt u Azure Security Center adaptieve toepassings besturings elementen gebruiken om ervoor te zorgen dat alleen geautoriseerde software wordt uitgevoerd en alle niet-geautoriseerde software wordt geblokkeerd voor het uitvoeren van Azure virtual machines.
 
-* [Azure Security Center adaptieve toepassings besturings elementen gebruiken](https://docs.microsoft.com/azure/security-center/security-center-adaptive-application)
+* [Azure Security Center adaptieve toepassings besturings elementen gebruiken](../security-center/security-center-adaptive-application.md)
 
 **Azure Security Center bewaking**: niet van toepassing
 
@@ -799,12 +799,12 @@ Als u Hybrid Runbook Workers gebruikt die door Azure worden ondersteund Virtual 
 ### <a name="69-use-only-approved-azure-services"></a>6,9: alleen goedgekeurde Azure-Services gebruiken
 
 **Hulp: gebruik**Azure Policy om beperkingen toe te voegen voor het type resources dat kan worden gemaakt in klant abonnementen met behulp van de volgende ingebouwde beleids definities:
-- Niet toegestane brontypen
+- Niet toegestane resourcetypen
 - Toegestane brontypen
 
-* [Azure Policy configureren en beheren](https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage)
+* [Azure Policy configureren en beheren](../governance/policy/tutorials/create-and-manage.md)
 
-* [Een specifiek resource type weigeren met Azure Policy](https://docs.microsoft.com/azure/governance/policy/samples/not-allowed-resource-types)
+* [Een specifiek resource type weigeren met Azure Policy](../governance/policy/samples/index.md)
 
 **Azure Security Center bewaking**: niet van toepassing
 
@@ -816,7 +816,7 @@ Als u Hybrid Runbook Workers gebruikt die door Azure worden ondersteund Virtual 
 
 Adaptief toepassings beheer is een intelligente, geautomatiseerde en end-to-end oplossing van Azure Security Center waarmee u kunt bepalen welke toepassingen kunnen worden uitgevoerd op uw Azure-en niet-Azure-machines (Windows en Linux). Implementeer een oplossing van derden als deze niet voldoet aan de vereisten van uw organisatie.
 
-* [Azure Security Center adaptieve toepassings besturings elementen gebruiken](https://docs.microsoft.com/azure/security-center/security-center-adaptive-application)
+* [Azure Security Center adaptieve toepassings besturings elementen gebruiken](../security-center/security-center-adaptive-application.md)
 
 **Azure Security Center bewaking**: niet van toepassing
 
@@ -826,7 +826,7 @@ Adaptief toepassings beheer is een intelligente, geautomatiseerde en end-to-end 
 
 **Richt lijnen**: gebruik Azure-beleid voor voorwaardelijke toegang om de interactie van gebruikers met Azure Resource Manager te beperken door het configureren van ' toegang blok keren ' voor de app Microsoft Azure beheer van niet-beveiligde of niet-goedgekeurde locaties of apparaten.
 
-* [Voorwaardelijke toegang configureren om de toegang tot Azure Resource Manager te blok keren](https://docs.microsoft.com/azure/role-based-access-control/conditional-access-azure-management)
+* [Voorwaardelijke toegang configureren om de toegang tot Azure Resource Manager te blok keren](../role-based-access-control/conditional-access-azure-management.md)
 
 **Azure Security Center bewaking**: Ja
 
@@ -836,9 +836,9 @@ Adaptief toepassings beheer is een intelligente, geautomatiseerde en end-to-end 
 
 **Richt lijnen**: wanneer u de functie Hybrid Runbook worker gebruikt en afhankelijk van het type scripts, kunt u specifieke configuraties van het besturings systeem of bronnen van derden gebruiken om de mogelijkheid van gebruikers om scripts uit te voeren binnen Azure Compute-resources te beperken. U kunt ook gebruikmaken van Azure Security Center adaptieve toepassings controles om ervoor te zorgen dat alleen geautoriseerde software wordt uitgevoerd en alle niet-geautoriseerde software wordt geblokkeerd voor uitvoering op Azure Virtual Machines.
 
-* [De uitvoering van Power shell-scripts beheren in Windows-omgevingen](https://docs.microsoft.com/powershell/module/microsoft.powershell.security/set-executionpolicy?view=powershell-6)
+* [De uitvoering van Power shell-scripts beheren in Windows-omgevingen](/powershell/module/microsoft.powershell.security/set-executionpolicy?view=powershell-6)
 
-* [Azure Security Center adaptieve toepassings besturings elementen gebruiken](https://docs.microsoft.com/azure/security-center/security-center-adaptive-application)
+* [Azure Security Center adaptieve toepassings besturings elementen gebruiken](../security-center/security-center-adaptive-application.md)
 
 **Azure Security Center bewaking**: niet van toepassing
 
@@ -848,19 +848,19 @@ Adaptief toepassings beheer is een intelligente, geautomatiseerde en end-to-end 
 
 **Richt lijnen**: toepassingen met een hoog risico die in uw Azure-omgeving zijn geïmplementeerd, kunnen worden geïsoleerd met behulp van afzonderlijke netwerk-en resource containers met behulp van constructs als virtuele netwerken, subnetten, abonnementen, beheer groepen, ze kunnen voldoende worden beveiligd met een Azure firewall, Web Application firewall (WAF) of netwerk beveiligings groep (NSG).
 
-* [Virtuele netwerken en virtuele machines in azure](https://docs.microsoft.com/azure/virtual-machines/windows/network-overview)
+* [Virtuele netwerken en virtuele machines in azure](../virtual-machines/windows/network-overview.md)
 
-* [Overzicht van Azure Firewall](https://docs.microsoft.com/azure/firewall/overview)
+* [Overzicht van Azure Firewall](../firewall/overview.md)
 
-* [Overzicht van de firewall van Azure Web Application](https://docs.microsoft.com/azure/web-application-firewall/overview)
+* [Overzicht van de firewall van Azure Web Application](../web-application-firewall/overview.md)
 
-* [Netwerkbeveiligingsgroepen](https://docs.microsoft.com/azure/virtual-network/security-overview)
+* [Netwerkbeveiligingsgroepen](../virtual-network/security-overview.md)
 
-* [Overzicht van Azure Virtual Network](https://docs.microsoft.com/azure/virtual-network/virtual-networks-overview)
+* [Overzicht van Azure Virtual Network](../virtual-network/virtual-networks-overview.md)
 
-* [Uw resources organiseren met Azure-beheergroepen](https://docs.microsoft.com/azure/governance/management-groups/overview)
+* [Uw resources organiseren met Azure-beheergroepen](../governance/management-groups/overview.md)
 
-* [Handleiding voor beslissingen over abonnementen](https://docs.microsoft.com/azure/cloud-adoption-framework/decision-guides/subscriptions/)
+* [Handleiding voor beslissingen over abonnementen](/azure/cloud-adoption-framework/decision-guides/subscriptions/)
 
 **Azure Security Center bewaking**: niet van toepassing
 
@@ -868,7 +868,7 @@ Adaptief toepassings beheer is een intelligente, geautomatiseerde en end-to-end 
 
 ## <a name="secure-configuration"></a>Veilige configuratie
 
-*Zie [beveiligings beheer: beveiligde configuratie](https://docs.microsoft.com/azure/security/benchmarks/security-control-secure-configuration)voor meer informatie.*
+*Zie [beveiligings beheer: beveiligde configuratie](../security/benchmarks/security-control-secure-configuration.md)voor meer informatie.*
 
 ### <a name="71-establish-secure-configurations-for-all-azure-resources"></a>7,1: veilige configuraties instellen voor alle Azure-resources
 
@@ -878,15 +878,15 @@ Azure Resource Manager heeft ook de mogelijkheid om de sjabloon in JavaScript Ob
 
 U kunt ook aanbevelingen van Azure Security Center gebruiken als een veilige configuratie basislijn voor uw Azure-resources.
 
-* [Beschik bare Azure Policy aliassen weer geven](https://docs.microsoft.com/powershell/module/az.resources/get-azpolicyalias?view=azps-3.3.0)
+* [Beschik bare Azure Policy aliassen weer geven](/powershell/module/az.resources/get-azpolicyalias?view=azps-3.3.0)
 
-* [Zelfstudie: Beleidsregels voor het afdwingen van naleving maken en beheren](https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage)
+* [Zelfstudie: Beleidsregels voor het afdwingen van naleving maken en beheren](../governance/policy/tutorials/create-and-manage.md)
 
-* [Azure Policy voor beeld van ingebouwde invoeg toepassingen voor Azure Automation](https://docs.microsoft.com/azure/automation/policy-samples)
+* [Azure Policy voor beeld van ingebouwde invoeg toepassingen voor Azure Automation](./policy-samples.md)
 
-* [Eén en meerdere resources exporteren naar een sjabloon in Azure Portal](https://docs.microsoft.com/azure/azure-resource-manager/templates/export-template-portal)
+* [Eén en meerdere resources exporteren naar een sjabloon in Azure Portal](../azure-resource-manager/templates/export-template-portal.md)
 
-* [Aanbevelingen voor beveiliging: een referentie gids](https://docs.microsoft.com/azure/security-center/recommendations-reference)
+* [Aanbevelingen voor beveiliging: een referentie gids](../security-center/recommendations-reference.md)
 
 **Azure Security Center bewaking**: niet van toepassing
 
@@ -898,9 +898,9 @@ U kunt ook aanbevelingen van Azure Security Center gebruiken als een veilige con
 
 Wanneer u de functie Hybrid Runbook Worker gebruikt, gebruikt u Azure Security Center aanbeveling [beveiligings problemen in beveiligings configuraties op uw Virtual Machines oplossen] voor het onderhouden van beveiligings configuraties op uw virtuele machines.
 
-* [Azure Security Center aanbevelingen bewaken](https://docs.microsoft.com/azure/security-center/security-center-recommendations)
+* [Azure Security Center aanbevelingen bewaken](../security-center/security-center-recommendations.md)
 
-* [Azure Security Center aanbevelingen herstellen](https://docs.microsoft.com/azure/security-center/security-center-remediate-recommendations)
+* [Azure Security Center aanbevelingen herstellen](../security-center/security-center-remediate-recommendations.md)
 
 **Azure Security Center bewaking**: niet van toepassing
 
@@ -910,17 +910,17 @@ Wanneer u de functie Hybrid Runbook Worker gebruikt, gebruikt u Azure Security C
 
 **Hulp**: gebruik Azure Resource Manager sjablonen en Azure Policy voor het veilig configureren van Azure-resources die zijn gekoppeld aan Azure Automation. Azure Resource Manager sjablonen zijn JSON-bestanden die worden gebruikt voor het implementeren van Azure-resources en aangepaste sjablonen moeten worden opgeslagen en veilig worden bewaard in een code opslagplaats. Gebruik de functie integratie van bron beheer om uw runbooks in uw Automation-account up-to-date te houden met scripts in uw opslag plaats voor bron beheer. Gebruik Azure Policy [deny] en [implementeren indien niet aanwezig] voor het afdwingen van beveiligde instellingen voor uw Azure-resources.
 
-* [Integratie van bronbeheer gebruiken](https://docs.microsoft.com/azure/automation/source-control-integration)
+* [Integratie van bronbeheer gebruiken](./source-control-integration.md)
 
-* [Informatie over het maken van Azure Resource Manager sjablonen](https://docs.microsoft.com/azure/azure-resource-manager/templates/quickstart-create-templates-use-the-portal)
+* [Informatie over het maken van Azure Resource Manager sjablonen](../azure-resource-manager/templates/quickstart-create-templates-use-the-portal.md)
 
-* [Azure Policy configureren en beheren](https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage)
+* [Azure Policy configureren en beheren](../governance/policy/tutorials/create-and-manage.md)
 
-* [Wat zijn Azure Policy effecten?](https://docs.microsoft.com/azure/governance/policy/concepts/effects)
+* [Wat zijn Azure Policy effecten?](../governance/policy/concepts/effects.md)
 
-* [Een Automation-account implementeren met behulp van een Azure Resource Manager sjabloon](https://docs.microsoft.com/azure/automation/automation-create-account-template#deploy-the-template)
+* [Een Automation-account implementeren met behulp van een Azure Resource Manager sjabloon](./automation-create-account-template.md#deploy-the-template)
 
-* [Azure Policy voor beeld van ingebouwde invoeg toepassingen voor Azure Automation](https://docs.microsoft.com/azure/automation/policy-samples)
+* [Azure Policy voor beeld van ingebouwde invoeg toepassingen voor Azure Automation](./policy-samples.md)
 
 **Azure Security Center bewaking**: niet van toepassing
 
@@ -938,11 +938,11 @@ Wanneer u de functie Hybrid Runbook Worker gebruikt, zijn er verschillende optie
 
 Voor de meeste scenario's kan de micro soft-sjablonen voor virtuele machines die worden gecombineerd met de configuratie van de Azure Automation status, helpen bij de vergadering en het onderhouden van de beveiligings vereisten.
 
-* [Informatie over het downloaden van de VM-sjabloon](https://docs.microsoft.com/azure/virtual-machines/windows/download-template)
+* [Informatie over het downloaden van de VM-sjabloon](../virtual-machines/windows/download-template.md)
 
-* [Informatie over het maken van ARM-sjablonen](https://docs.microsoft.com/azure/virtual-machines/windows/ps-template)
+* [Informatie over het maken van ARM-sjablonen](../virtual-machines/windows/ps-template.md)
 
-* [Een aangepaste VM-VHD uploaden naar Azure](https://docs.microsoft.com/azure-stack/operator/azure-stack-add-vm-image?view=azs-1910)
+* [Een aangepaste VM-VHD uploaden naar Azure](/azure-stack/operator/azure-stack-add-vm-image?view=azs-1910)
 
 **Azure Security Center bewaking**: niet van toepassing
 
@@ -952,11 +952,11 @@ Voor de meeste scenario's kan de micro soft-sjablonen voor virtuele machines die
 
 **Hulp**: Azure DevOps gebruiken om uw code veilig op te slaan en te beheren, zoals aangepaste Azure-beleids regels, Azure Resource Manager sjablonen en desired state Configuration-scripts. Als u toegang wilt krijgen tot de resources die u beheert in azure DevOps, kunt u machtigingen verlenen of weigeren aan specifieke gebruikers, ingebouwde beveiligings groepen of groepen die zijn gedefinieerd in Azure Active Directory als deze zijn geïntegreerd met Azure DevOps, of Active Directory als deze zijn geïntegreerd met TFS. Gebruik de functie integratie van bron beheer om uw runbooks in uw Automation-account up-to-date te houden met scripts in uw opslag plaats voor bron beheer.
 
-* [Code opslaan in azure DevOps](https://docs.microsoft.com/azure/devops/repos/git/gitworkflow?view=azure-devops)
+* [Code opslaan in azure DevOps](/azure/devops/repos/git/gitworkflow?view=azure-devops)
 
-* [Over machtigingen en groepen in azure DevOps](https://docs.microsoft.com/azure/devops/organizations/security/about-permissions)
+* [Over machtigingen en groepen in azure DevOps](/azure/devops/organizations/security/about-permissions)
 
-* [Integratie van bronbeheer gebruiken](https://docs.microsoft.com/azure/automation/source-control-integration)
+* [Integratie van bronbeheer gebruiken](./source-control-integration.md)
 
 **Azure Security Center bewaking**: niet van toepassing
 
@@ -968,9 +968,9 @@ Voor de meeste scenario's kan de micro soft-sjablonen voor virtuele machines die
 
 Wanneer u de functie Hybrid Runbook Worker gebruikt, moet u ervoor zorgen dat u de toegang tot de aangepaste installatie kopie van het besturings systeem die zich in uw opslag account bevindt, goed beperkt zodat alleen gemachtigde gebruikers toegang hebben tot de installatie kopie.
 
-* [Wat is RBAC in azure?](https://docs.microsoft.com/azure/role-based-access-control/rbac-and-directory-admin-roles)
+* [Wat is RBAC in azure?](../role-based-access-control/rbac-and-directory-admin-roles.md)
 
-* [RBAC configureren in azure](https://docs.microsoft.com/azure/role-based-access-control/quickstart-assign-role-user-portal)
+* [RBAC configureren in azure](../role-based-access-control/quickstart-assign-role-user-portal.md)
 
 **Azure Security Center bewaking**: niet van toepassing
 
@@ -980,11 +980,11 @@ Wanneer u de functie Hybrid Runbook Worker gebruikt, moet u ervoor zorgen dat u 
 
 **Richt lijnen**: standaard beveiligings configuraties voor Azure-resources definiëren en implementeren met behulp van Azure Policy. Gebruik Azure Policy aliassen om aangepaste beleids regels te maken om de netwerk configuratie van uw Azure-resources te controleren of af te dwingen. U kunt ook gebruikmaken van ingebouwde beleids definities die betrekking hebben op uw specifieke resources.
 
-* [Azure Policy configureren en beheren](https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage)
+* [Azure Policy configureren en beheren](../governance/policy/tutorials/create-and-manage.md)
 
-* [Aliassen gebruiken](https://docs.microsoft.com/azure/governance/policy/concepts/definition-structure#aliases)
+* [Aliassen gebruiken](../governance/policy/concepts/definition-structure.md#aliases)
 
-* [Azure Policy voor beeld van ingebouwde invoeg toepassingen voor Azure Automation](https://docs.microsoft.com/azure/automation/policy-samples)
+* [Azure Policy voor beeld van ingebouwde invoeg toepassingen voor Azure Automation](./policy-samples.md)
 
 **Azure Security Center bewaking**: niet van toepassing
 
@@ -996,7 +996,7 @@ Wanneer u de functie Hybrid Runbook Worker gebruikt, moet u ervoor zorgen dat u 
 
 Wanneer u de functie Hybrid Runbook Worker gebruikt, gebruikt u Azure Automation status configuratie op Runbook workers die een Configuration Management-service voor desired state Configuration-knoop punten zijn in elke Cloud of on-premises Data Center. Hiermee kan de schaal baarheid van duizenden computers snel en eenvoudig worden uitgebreid vanaf een centrale, veilige locatie. U kunt eenvoudig computers onboarden, de declaratieve configuraties toewijzen en rapporten weer geven met de naleving van elke computer die u hebt opgegeven.
 
-* [Onboarding van machines voor beheer door Azure Automation status configuratie](https://docs.microsoft.com/azure/automation/automation-dsc-onboarding)
+* [Onboarding van machines voor beheer door Azure Automation status configuratie](./automation-dsc-onboarding.md)
 
 **Azure Security Center bewaking**: niet van toepassing
 
@@ -1008,13 +1008,13 @@ Wanneer u de functie Hybrid Runbook Worker gebruikt, gebruikt u Azure Automation
 
 Wanneer u de functie Hybrid Runbook Worker gebruikt, maakt u gebruik van Azure Security Center om basislijn scans voor uw virtuele Azure-machines uit te voeren. Aanvullende methoden voor automatische configuratie bevatten de configuratie van de Azure Automation-status.
 
-* [Aanbevelingen herstellen in Azure Security Center](https://docs.microsoft.com/azure/security-center/security-center-remediate-recommendations)
+* [Aanbevelingen herstellen in Azure Security Center](../security-center/security-center-remediate-recommendations.md)
 
-* [Aan de slag met de configuratie van de Azure Automation-status](https://docs.microsoft.com/azure/automation/automation-dsc-getting-started)
+* [Aan de slag met de configuratie van de Azure Automation-status](./automation-dsc-getting-started.md)
 
-* [Azure Policy configureren en beheren](https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage)
+* [Azure Policy configureren en beheren](../governance/policy/tutorials/create-and-manage.md)
 
-* [Azure Policy voor beeld van ingebouwde invoeg toepassingen voor Azure Automation](https://docs.microsoft.com/azure/automation/policy-samples)
+* [Azure Policy voor beeld van ingebouwde invoeg toepassingen voor Azure Automation](./policy-samples.md)
 
 **Azure Security Center bewaking**: niet van toepassing
 
@@ -1026,7 +1026,7 @@ Wanneer u de functie Hybrid Runbook Worker gebruikt, maakt u gebruik van Azure S
 
 Wanneer u de functie Hybrid Runbook Worker gebruikt, gebruikt u Azure Automation status configuratie voor Runbook workers die een Configuration Management-service voor desired state Configuration-knoop punten zijn in elke Cloud of on-premises Data Center. Hiermee kan de schaal baarheid van duizenden computers snel en eenvoudig worden uitgebreid vanaf een centrale, veilige locatie. U kunt eenvoudig computers onboarden, de declaratieve configuraties toewijzen en rapporten weer geven met de naleving van elke computer die u hebt opgegeven.
 
-* [Onboarding van machines voor beheer door Azure Automation status configuratie](https://docs.microsoft.com/azure/automation/automation-dsc-onboarding)
+* [Onboarding van machines voor beheer door Azure Automation status configuratie](./automation-dsc-onboarding.md)
 
 **Azure Security Center bewaking**: niet van toepassing
 
@@ -1036,13 +1036,13 @@ Wanneer u de functie Hybrid Runbook Worker gebruikt, gebruikt u Azure Automation
 
 **Hulp**: gebruik Managed Service Identity in combi natie met Azure Key Vault om het geheim beheer voor uw Cloud toepassingen te vereenvoudigen en te beveiligen.
 
-* [Gebruik van door de klant beheerde sleutels voor een Automation-account](https://docs.microsoft.com/azure/automation/automation-secure-asset-encryption#use-of-customer-managed-keys-for-an-automation-account)
+* [Gebruik van door de klant beheerde sleutels voor een Automation-account](./automation-secure-asset-encryption.md#use-of-customer-managed-keys-for-an-automation-account)
 
-* [Runbook-verificatie gebruiken met beheerde identiteiten](https://docs.microsoft.com/azure/automation/automation-hrw-run-runbooks#runbook-auth-managed-identities)
+* [Runbook-verificatie gebruiken met beheerde identiteiten](./automation-hrw-run-runbooks.md#runbook-auth-managed-identities)
 
-* [Een Key Vault maken](https://docs.microsoft.com/azure/key-vault/quick-create-portal)
+* [Een Key Vault maken](../key-vault/secrets/quick-create-portal.md)
 
-* [Key Vault verificatie bieden met een beheerde identiteit](https://docs.microsoft.com/azure/key-vault/managed-identity)
+* [Key Vault verificatie bieden met een beheerde identiteit](../key-vault/general/managed-identity.md)
 
 **Azure Security Center bewaking**: niet van toepassing
 
@@ -1052,9 +1052,9 @@ Wanneer u de functie Hybrid Runbook Worker gebruikt, gebruikt u Azure Automation
 
 **Richt lijnen**: gebruik beheerde identiteiten voor het leveren van Azure-Services met een automatisch beheerde identiteit in azure AD. Met beheerde identiteiten kunt u zich verifiëren bij elke service die ondersteuning biedt voor Azure AD-verificatie, met inbegrip van Key Vault, zonder enige referenties in uw code.
 
-* [Beheerde identiteiten configureren](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/qs-configure-portal-windows-vm)
+* [Beheerde identiteiten configureren](../active-directory/managed-identities-azure-resources/qs-configure-portal-windows-vm.md)
 
-* [Gebruik van door de klant beheerde sleutels voor een Automation-account](https://docs.microsoft.com/azure/automation/automation-secure-asset-encryption#use-of-customer-managed-keys-for-an-automation-account)
+* [Gebruik van door de klant beheerde sleutels voor een Automation-account](./automation-secure-asset-encryption.md#use-of-customer-managed-keys-for-an-automation-account)
 
 **Azure Security Center bewaking**: niet van toepassing
 
@@ -1072,7 +1072,7 @@ Wanneer u de functie Hybrid Runbook Worker gebruikt, gebruikt u Azure Automation
 
 ## <a name="malware-defense"></a>Beveiliging tegen malware
 
-*Zie [beveiligings beheer: verdediging tegen malware](https://docs.microsoft.com/azure/security/benchmarks/security-control-malware-defense)voor meer informatie.*
+*Zie [beveiligings beheer: verdediging tegen malware](../security/benchmarks/security-control-malware-defense.md)voor meer informatie.*
 
 ### <a name="81-use-centrally-managed-anti-malware-software"></a>8,1: centraal beheerde anti-malware-software gebruiken
 
@@ -1080,7 +1080,7 @@ Wanneer u de functie Hybrid Runbook Worker gebruikt, gebruikt u Azure Automation
 
 Wanneer u de functie Hybrid Runbook Worker gebruikt, gebruikt u micro soft anti-malware voor virtuele Azure Windows-machines om uw runbook worker bronnen voortdurend te controleren en te beschermen.
 
-* [Micro soft anti-malware configureren voor Cloud Services en Virtual Machines](https://docs.microsoft.com/azure/security/fundamentals/antimalware)
+* [Micro soft anti-malware configureren voor Cloud Services en Virtual Machines](../security/fundamentals/antimalware.md)
 
 **Azure Security Center bewaking**: niet van toepassing
 
@@ -1090,7 +1090,7 @@ Wanneer u de functie Hybrid Runbook Worker gebruikt, gebruikt u micro soft anti-
 
 **Richt lijnen**: niet van toepassing; Met Azure Automation als een service worden geen bestanden opgeslagen. Micro soft antimalware is ingeschakeld op de onderliggende host die ondersteuning biedt voor Azure-Services (bijvoorbeeld Azure Automation), maar wordt niet uitgevoerd op uw inhoud.
 
-* [Micro soft antimalware voor Azure Cloud Services en Virtual Machines begrijpen](https://docs.microsoft.com/azure/security/fundamentals/antimalware)
+* [Micro soft antimalware voor Azure Cloud Services en Virtual Machines begrijpen](../security/fundamentals/antimalware.md)
 
 **Azure Security Center bewaking**: niet van toepassing
 
@@ -1102,9 +1102,9 @@ Wanneer u de functie Hybrid Runbook Worker gebruikt, gebruikt u micro soft anti-
 
 Wanneer u de functie Hybrid Runbook Worker gebruikt, moet u micro soft antimalware voor Azure gebruiken om automatisch de nieuwste hand tekening, platform en engine-updates te installeren op uw runbook worker. Volg de aanbevelingen in Azure Security Center: "COMPUTE &amp; apps" om ervoor te zorgen dat alle eind punten up-to-date zijn met de nieuwste hand tekeningen. Het Windows-besturings systeem kan verder worden beveiligd met extra beveiliging om het risico van aanvallen op virussen of schadelijke software te beperken met behulp van de micro soft Defender Advanced Threat Protection-Service die kan worden geïntegreerd met Azure Security Center.
 
-* [Micro soft antimalware implementeren voor Azure Cloud Services en Virtual Machines](https://docs.microsoft.com/azure/security/fundamentals/antimalware)
+* [Micro soft antimalware implementeren voor Azure Cloud Services en Virtual Machines](../security/fundamentals/antimalware.md)
 
-* [Microsoft Defender Advanced Threat Protection](https://docs.microsoft.com/windows/security/threat-protection/microsoft-defender-atp/onboard-configure)
+* [Microsoft Defender Advanced Threat Protection](/windows/security/threat-protection/microsoft-defender-atp/onboard-configure)
 
 **Azure Security Center bewaking**: niet van toepassing
 
@@ -1112,7 +1112,7 @@ Wanneer u de functie Hybrid Runbook Worker gebruikt, moet u micro soft antimalwa
 
 ## <a name="data-recovery"></a>Gegevensherstel
 
-*Zie [beveiligings beheer: gegevens herstel](https://docs.microsoft.com/azure/security/benchmarks/security-control-data-recovery)voor meer informatie.*
+*Zie [beveiligings beheer: gegevens herstel](../security/benchmarks/security-control-data-recovery.md)voor meer informatie.*
 
 ### <a name="91-ensure-regular-automated-back-ups"></a>9,1: controleren op regel matige automatische back-ups
 
@@ -1120,23 +1120,23 @@ Wanneer u de functie Hybrid Runbook Worker gebruikt, moet u micro soft antimalwa
 
 Gebruik de functie integratie van bron beheer om uw runbooks in uw Automation-account up-to-date te houden met scripts in uw opslag plaats voor bron beheer.
 
-* [Overzicht van Azure Resource Manager](https://docs.microsoft.com/azure/azure-resource-manager/management/overview)
+* [Overzicht van Azure Resource Manager](../azure-resource-manager/management/overview.md)
 
-* [Azure Resource Manager-sjabloon verwijzing voor Azure Automation resources](https://docs.microsoft.com/azure/templates/microsoft.automation/allversions)
+* [Azure Resource Manager-sjabloon verwijzing voor Azure Automation resources](/azure/templates/microsoft.automation/allversions)
 
-* [Een Automation-account maken met behulp van een Azure Resource Manager sjabloon](https://docs.microsoft.com/azure/automation/automation-create-account-template)
+* [Een Automation-account maken met behulp van een Azure Resource Manager sjabloon](./automation-create-account-template.md)
 
-* [Eén en meerdere resources exporteren naar een sjabloon in Azure Portal](https://docs.microsoft.com/azure/azure-resource-manager/templates/export-template-portal)
+* [Eén en meerdere resources exporteren naar een sjabloon in Azure Portal](../azure-resource-manager/templates/export-template-portal.md)
 
-* [Resource groepen-sjabloon exporteren](https://docs.microsoft.com/rest/api/resources/resourcegroups/exporttemplate)
+* [Resource groepen-sjabloon exporteren](/rest/api/resources/resourcegroups/exporttemplate)
 
-* [Inleiding tot Azure Automation](https://docs.microsoft.com/azure/automation/automation-intro)
+* [Inleiding tot Azure Automation](./automation-intro.md)
 
-* [Hoe kan ik een back-up maken van sleutel kluis sleutels in azure?](https://docs.microsoft.com/powershell/module/azurerm.keyvault/backup-azurekeyvaultkey?view=azurermps-6.13.0)
+* [Hoe kan ik een back-up maken van sleutel kluis sleutels in azure?](/powershell/module/azurerm.keyvault/backup-azurekeyvaultkey?view=azurermps-6.13.0)
 
-* [Gebruik van door de klant beheerde sleutels voor een Automation-account](https://docs.microsoft.com/azure/automation/automation-secure-asset-encryption#use-of-customer-managed-keys-for-an-automation-account)
+* [Gebruik van door de klant beheerde sleutels voor een Automation-account](./automation-secure-asset-encryption.md#use-of-customer-managed-keys-for-an-automation-account)
 
-* [Integratie van bronbeheer gebruiken](https://docs.microsoft.com/azure/automation/source-control-integration)
+* [Integratie van bronbeheer gebruiken](./source-control-integration.md)
 
 **Azure Security Center bewaking**: momenteel niet beschikbaar
 
@@ -1146,23 +1146,23 @@ Gebruik de functie integratie van bron beheer om uw runbooks in uw Automation-ac
 
 **Hulp**: gebruik Azure Resource Manager om Azure Automation-accounts en gerelateerde resources te implementeren. Azure Resource Manager biedt de mogelijkheid om sjablonen te exporteren die als back-ups kunnen worden gebruikt om Azure Automation-accounts en gerelateerde resources te herstellen. Gebruik Azure Automation om de API van de Azure Resource Manager-sjabloon regel matig te kunnen aanroepen. Back-ups van door de klant beheerde sleutels binnen Azure Key Vault. U kunt uw runbooks exporteren naar script bestanden met behulp van Azure Portal of Power shell.
 
-* [Overzicht van Azure Resource Manager](https://docs.microsoft.com/azure/azure-resource-manager/management/overview)
+* [Overzicht van Azure Resource Manager](../azure-resource-manager/management/overview.md)
 
-* [Azure Resource Manager-sjabloon verwijzing voor Azure Automation resources](https://docs.microsoft.com/azure/templates/microsoft.automation/allversions)
+* [Azure Resource Manager-sjabloon verwijzing voor Azure Automation resources](/azure/templates/microsoft.automation/allversions)
 
-* [Een Automation-account maken met behulp van een Azure Resource Manager sjabloon](https://docs.microsoft.com/azure/automation/automation-create-account-template)
+* [Een Automation-account maken met behulp van een Azure Resource Manager sjabloon](./automation-create-account-template.md)
 
-* [Eén en meerdere resources exporteren naar een sjabloon in Azure Portal](https://docs.microsoft.com/azure/azure-resource-manager/templates/export-template-portal)
+* [Eén en meerdere resources exporteren naar een sjabloon in Azure Portal](../azure-resource-manager/templates/export-template-portal.md)
 
-* [Resource groepen-sjabloon exporteren](https://docs.microsoft.com/rest/api/resources/resourcegroups/exporttemplate)
+* [Resource groepen-sjabloon exporteren](/rest/api/resources/resourcegroups/exporttemplate)
 
-* [Inleiding tot Azure Automation](https://docs.microsoft.com/azure/automation/automation-intro)
+* [Inleiding tot Azure Automation](./automation-intro.md)
 
-* [Hoe kan ik een back-up maken van sleutel kluis sleutels in azure?](https://docs.microsoft.com/powershell/module/azurerm.keyvault/backup-azurekeyvaultkey?view=azurermps-6.13.0)
+* [Hoe kan ik een back-up maken van sleutel kluis sleutels in azure?](/powershell/module/azurerm.keyvault/backup-azurekeyvaultkey?view=azurermps-6.13.0)
 
-* [Gebruik van door de klant beheerde sleutels voor een Automation-account](https://docs.microsoft.com/azure/automation/automation-secure-asset-encryption#use-of-customer-managed-keys-for-an-automation-account)
+* [Gebruik van door de klant beheerde sleutels voor een Automation-account](./automation-secure-asset-encryption.md#use-of-customer-managed-keys-for-an-automation-account)
 
-* [Azure data backup voor Automation-accounts](https://docs.microsoft.com/azure/automation/automation-managing-data#data-backup)
+* [Azure data backup voor Automation-accounts](./automation-managing-data.md#data-backup)
 
 **Azure Security Center bewaking**: Ja
 
@@ -1172,11 +1172,11 @@ Gebruik de functie integratie van bron beheer om uw runbooks in uw Automation-ac
 
 **Richt lijnen**: Zorg ervoor dat u regel matig de implementatie van Azure Resource Manager sjablonen regel matig uitvoert op een geïsoleerd abonnement, indien nodig. Het herstellen van een back-up van door de klant beheerde sleutels testen.
 
-* [Resources implementeren met ARM-sjablonen en Azure Portal](https://docs.microsoft.com/azure/azure-resource-manager/templates/deploy-portal)
+* [Resources implementeren met ARM-sjablonen en Azure Portal](../azure-resource-manager/templates/deploy-portal.md)
 
-* [Sleutel kluis sleutels herstellen in azure](https://docs.microsoft.com/powershell/module/azurerm.keyvault/restore-azurekeyvaultkey?view=azurermps-6.13.0)
+* [Sleutel kluis sleutels herstellen in azure](/powershell/module/azurerm.keyvault/restore-azurekeyvaultkey?view=azurermps-6.13.0)
 
-* [Gebruik van door de klant beheerde sleutels voor een Automation-account](https://docs.microsoft.com/azure/automation/automation-secure-asset-encryption#use-of-customer-managed-keys-for-an-automation-account)
+* [Gebruik van door de klant beheerde sleutels voor een Automation-account](./automation-secure-asset-encryption.md#use-of-customer-managed-keys-for-an-automation-account)
 
 **Azure Security Center bewaking**: Ja
 
@@ -1188,19 +1188,19 @@ Gebruik de functie integratie van bron beheer om uw runbooks in uw Automation-ac
 
 Gebruik de functie integratie van bron beheer om uw runbooks in uw Automation-account up-to-date te houden met scripts in uw opslag plaats voor bron beheer.
 
-* [Code opslaan in azure DevOps](https://docs.microsoft.com/azure/devops/repos/git/gitworkflow?view=azure-devops)
+* [Code opslaan in azure DevOps](/azure/devops/repos/git/gitworkflow?view=azure-devops)
 
-* [Over machtigingen en groepen in azure DevOps](https://docs.microsoft.com/azure/devops/organizations/security/about-permissions)
+* [Over machtigingen en groepen in azure DevOps](/azure/devops/organizations/security/about-permissions)
 
-* [Integratie van bronbeheer gebruiken](https://docs.microsoft.com/azure/automation/source-control-integration)
+* [Integratie van bronbeheer gebruiken](./source-control-integration.md)
 
 **Azure Security Center bewaking**: niet van toepassing
 
 **Verantwoordelijkheid**: klant
 
-## <a name="incident-response"></a>Reageren op incidenten
+## <a name="incident-response"></a>Incidentrespons
 
-*Zie voor meer informatie [beveiligings beheer: reactie op incidenten](https://docs.microsoft.com/azure/security/benchmarks/security-control-incident-response).*
+*Zie voor meer informatie [beveiligings beheer: reactie op incidenten](../security/benchmarks/security-control-incident-response.md).*
 
 ### <a name="101-create-an-incident-response-guide"></a>10,1: een hand leiding voor reactie op incidenten maken
 
@@ -1222,9 +1222,9 @@ Gebruik de functie integratie van bron beheer om uw runbooks in uw Automation-ac
 
 Daarnaast kunt u ook duidelijk abonnementen markeren (voor bijvoorbeeld productie, niet-productie) met behulp van tags en maak een naamgevings systeem om Azure-resources duidelijk te identificeren en te categoriseren, met name voor de verwerking van gevoelige gegevens. Het is uw verantwoordelijkheid om prioriteit te geven aan het herstel van waarschuwingen op basis van de ernst van de Azure-resources en-omgeving waar het incident heeft plaatsgevonden.
 
-* [Beveiligingswaarschuwingen in Azure Security Center](https://docs.microsoft.com/azure/security-center/security-center-alerts-overview)
+* [Beveiligingswaarschuwingen in Azure Security Center](../security-center/security-center-alerts-overview.md)
 
-* [Tags gebruiken om uw Azure-resources te organiseren](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-using-tags)
+* [Labels gebruiken om uw Azure-resources te organiseren](../azure-resource-manager/management/tag-resources.md)
 
 **Azure Security Center bewaking**: Ja
 
@@ -1244,7 +1244,7 @@ Daarnaast kunt u ook duidelijk abonnementen markeren (voor bijvoorbeeld producti
 
 **Hulp**: contact gegevens van beveiligings incidenten worden door micro soft gebruikt om contact met u op te nemen als het micro soft Security Response Center (MSRC) detecteert dat uw gegevens zijn geopend door een onrecht matige of niet-gemachtigde partij. Bekijk incidenten na het feit om te controleren of de problemen zijn opgelost.
 
-* [De Azure Security Center Security-contact persoon instellen](https://docs.microsoft.com/azure/security-center/security-center-provide-security-contact-details)
+* [De Azure Security Center Security-contact persoon instellen](../security-center/security-center-provide-security-contact-details.md)
 
 **Azure Security Center bewaking**: Ja
 
@@ -1254,9 +1254,9 @@ Daarnaast kunt u ook duidelijk abonnementen markeren (voor bijvoorbeeld producti
 
 **Hulp**: exporteer uw Azure Security Center waarschuwingen en aanbevelingen met behulp van de functie continue export om Risico's voor Azure-resources te identificeren. Met doorlopend exporteren kunt u waarschuwingen en aanbevelingen hand matig of op een doorlopende manier exporteren. U kunt de Azure Security Center Data Connector gebruiken om de waarschuwingen naar Azure Sentinel te streamen.
 
-* [Continue export configureren](https://docs.microsoft.com/azure/security-center/continuous-export)
+* [Continue export configureren](../security-center/continuous-export.md)
 
-* [Waarschuwingen streamen naar Azure Sentinel](https://docs.microsoft.com/azure/sentinel/connect-azure-security-center)
+* [Waarschuwingen streamen naar Azure Sentinel](../sentinel/connect-azure-security-center.md)
 
 **Azure Security Center bewaking**: momenteel niet beschikbaar
 
@@ -1266,7 +1266,7 @@ Daarnaast kunt u ook duidelijk abonnementen markeren (voor bijvoorbeeld producti
 
 **Hulp**: gebruik de functie werk stroom automatisering in azure Security Center om automatisch reacties te activeren via ' Logic apps ' in beveiligings waarschuwingen en aanbevelingen voor het beveiligen van uw Azure-resources.
 
-* [Werk stroom automatisering en Logic Apps configureren](https://docs.microsoft.com/azure/security-center/workflow-automation)
+* [Werk stroom automatisering en Logic Apps configureren](../security-center/workflow-automation.md)
 
 **Azure Security Center bewaking**: momenteel niet beschikbaar
 
@@ -1274,7 +1274,7 @@ Daarnaast kunt u ook duidelijk abonnementen markeren (voor bijvoorbeeld producti
 
 ## <a name="penetration-tests-and-red-team-exercises"></a>Penetratietests en Red Team-oefeningen
 
-*Zie voor meer informatie [Security Control: Indringings tests en Red team-oefeningen](https://docs.microsoft.com/azure/security/benchmarks/security-control-penetration-tests-red-team-exercises).*
+*Zie voor meer informatie [Security Control: Indringings tests en Red team-oefeningen](../security/benchmarks/security-control-penetration-tests-red-team-exercises.md).*
 
 ### <a name="111-conduct-regular-penetration-testing-of-your-azure-resources-and-ensure-remediation-of-all-critical-security-findings"></a>11,1: voert regel matig indringings tests van uw Azure-resources uit en zorgt voor herbemiddeling van alle essentiële beveiligings resultaten
 
@@ -1290,5 +1290,5 @@ Daarnaast kunt u ook duidelijk abonnementen markeren (voor bijvoorbeeld producti
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- Zie de [Azure Security-Bench Mark](https://docs.microsoft.com/azure/security/benchmarks/overview)
-- Meer informatie over [Azure-beveiligings basislijnen](https://docs.microsoft.com/azure/security/benchmarks/security-baselines-overview)
+- Zie de [Azure Security-Bench Mark](../security/benchmarks/overview.md)
+- Meer informatie over [Azure-beveiligings basislijnen](../security/benchmarks/security-baselines-overview.md)

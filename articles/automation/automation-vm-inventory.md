@@ -6,12 +6,12 @@ ms.subservice: change-inventory-management
 keywords: inventaris, automation, wijziging, bijhouden
 ms.date: 06/30/2020
 ms.topic: conceptual
-ms.openlocfilehash: 73f5105240b8b6475bb9ebed48baadd501aec87d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 32d3c17a5f3d152f32b19ffbfd5c9793a7a34b80
+ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85603108"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86185718"
 ---
 # <a name="manage-inventory-collection-from-vms"></a>Een inventarisverzameling beheren vanuit VM's
 
@@ -43,7 +43,7 @@ Meld u aan bij de [Azure-portal](https://portal.azure.com/).
 
    ![Opties voor onboarding weergeven](./media/automation-vm-inventory/inventory-onboarding-options.png)
 
-    Een status balk waarschuwt u dat de functie voor Wijzigingen bijhouden en inventarisatie is ingeschakeld. Dit proces duurt maximaal 15 minuten. Gedurende deze tijd kunt u het venster sluiten, of u kunt het openen en u krijgt een melding wanneer de functie is ingeschakeld. U kunt de implementatiestatus controleren vanuit het deelvenster met meldingen.
+    Een status balk waarschuwt u dat de functie voor Wijzigingen bijhouden en inventarisatie is ingeschakeld. Dit proces kan maximaal 15 minuten duren. Gedurende deze tijd kunt u het venster sluiten, of u kunt het openen en u krijgt een melding wanneer de functie is ingeschakeld. U kunt de implementatiestatus controleren vanuit het deelvenster met meldingen.
 
    ![Inventaris weergeven](./media/automation-vm-inventory/inventory-onboarded.png)
 
@@ -131,5 +131,5 @@ Uw virtuele machine verwijderen uit Wijzigingen bijhouden en voorraad beheer:
 ## <a name="next-steps"></a>Volgende stappen
 
 * Zie [Wijzigingen bijhouden en inventaris beheren](change-tracking-file-contents.md)voor meer informatie over het werken met de functie.
-* Zie [software wijzigingen bijhouden in uw omgeving met wijzigingen bijhouden](../log-analytics/log-analytics-change-tracking.md)voor meer informatie over het bijhouden van software wijzigingen.
+* Zie [software wijzigingen bijhouden in uw omgeving met wijzigingen bijhouden](./change-tracking.md)voor meer informatie over het bijhouden van software wijzigingen.
 * Zie [problemen met wijzigingen bijhouden en voorraad problemen oplossen](troubleshoot/change-tracking.md)voor informatie over het oplossen van algemene problemen met de functie.

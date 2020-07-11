@@ -8,12 +8,12 @@ ms.author: jlembicz
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 344b3bb30c9a92046a5fbd13c35b0efc7e6f3a23
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 54def7f03e28acb201d613ab5a13d9077cff121b
+ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85560829"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86146767"
 ---
 # <a name="how-to-create-an-index-for-multiple-languages-in-azure-cognitive-search"></a>Een index maken voor meerdere talen in azure Cognitive Search
 
@@ -52,6 +52,7 @@ U kunt een query uitvoeren op uw index vanuit de portal, met behulp van [**Searc
 
 Soms is de taal van de agent waarmee een query wordt uitgegeven niet bekend. in dat geval kan de query worden uitgegeven voor alle velden tegelijk. Als dat nodig is, kan de voor keur voor de resultaten in een bepaalde taal worden gedefinieerd met behulp van [Score profielen](index-add-scoring-profiles.md). In het onderstaande voor beeld krijgen overeenkomsten die in de beschrijving in het Engels zijn gevonden, hoger ten opzichte van overeenkomsten in Pools en Frans:
 
+```http
     "scoringProfiles": [
       {
         "name": "englishFirst",
@@ -60,6 +61,7 @@ Soms is de taal van de agent waarmee een query wordt uitgegeven niet bekend. in 
         }
       }
     ]
+```
 
 `https://[service name].search.windows.net/indexes/[index name]/docs?search=Microsoft&scoringProfile=englishFirst&api-version=2020-06-30`
 

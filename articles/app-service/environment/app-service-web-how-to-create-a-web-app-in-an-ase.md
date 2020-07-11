@@ -7,11 +7,12 @@ ms.topic: article
 ms.date: 07/11/2017
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: 5c947617f0c27708e72f9bff92e2b0041473cd92
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: ba94f15f21696c87b336dc1f17b6f9f9def75c6c
+ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84701827"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86220691"
 ---
 # <a name="create-a-web-app-in-an-app-service-environment-v1"></a>Een web-app maken in een App Service Environment v1
 
@@ -30,10 +31,10 @@ Deze zelf studie laat zien hoe u web-apps en App Service plannen maakt in een [a
 ## <a name="prerequisites"></a>Vereisten
 In deze zelf studie wordt ervan uitgegaan dat u een App Service Environment hebt gemaakt. Als u dit nog niet hebt gedaan, raadpleegt u [een app service Environment maken](app-service-web-how-to-create-an-app-service-environment.md). 
 
-## <a name="create-a-web-app"></a>Een webtoepassing maken
+## <a name="create-a-web-app"></a>Een web-app maken
 1. Klik in [Azure Portal](https://portal.azure.com/)op **een resource maken > web en mobiel > web-app**. 
    
-    ![][1]
+    ![Scherm afbeelding die laat zien waar u een web-app maakt in de Azure Portal.][1]
 2. Selecteer uw abonnement.  
    
     Als u meerdere abonnementen hebt om een app in uw App Service Environment te maken, moet u hetzelfde abonnement gebruiken dat u hebt gebruikt bij het maken van de omgeving. 
@@ -46,7 +47,7 @@ In deze zelf studie wordt ervan uitgegaan dat u een App Service Environment hebt
    
     U kunt de App Service plannen in uw ASE identificeren door te kijken naar de locatie die wordt vermeld onder de naam van het abonnement.  
    
-    ![][5]
+    ![De scherm opname die wordt weer gegeven, is om de App Service plannen in uw ASE weer te geven.][5]
    
     Als u een App Service plan wilt gebruiken dat al in uw App Service Environment bestaat, selecteert u dat plan. Als u een nieuw App Service plan wilt maken, raadpleegt u de volgende sectie in deze zelf studie, [een app service plan maken in een app service Environment](#createplan).
 5. Voer de naam van uw web-app in en klik vervolgens op **maken**. 
@@ -68,18 +69,18 @@ De volgende instructies laten zien hoe u een App Service plan maakt tijdens het 
    
     Omdat een App Service Environment in feite een locatie van een privé-implementatie is, wordt deze weer gegeven onder locatie. 
    
-    ![][2]
+    ![Scherm opname waarin de locatie kiezer wordt weer gegeven voor het selecteren van de ASE die u wilt.][2]
    
     Nadat een ASE is geselecteerd in de locatie kiezer, worden de UI-updates voor het App Service plan gemaakt.  Op de locatie ziet u nu de naam van het ASE-systeem en de regio waarin deze zich bevindt, en wordt de prijs plan kiezer vervangen door de kiezer van een werk groep.  
    
-    ![][3]
+    ![Scherm opname van de details van het ASE-systeem na het selecteren van de ASE in de locatie kiezer.][3]
 
 ### <a name="selecting-a-worker-pool"></a>Een werk groep selecteren
 Normaal gesp roken zijn er drie berekenings grootten die beschikbaar zijn voor de selectie van een speciaal prijs plan in Azure App Service en buiten een App Service Environment.  Op een vergelijk bare manier kunt u voor een ASE Maxi maal drie groepen van werk nemers definiëren en de berekenings grootte opgeven die voor die werk groep wordt gebruikt.  Wat het betekent voor tenants van de ASE is dat u in plaats van een prijs plan met een reken grootte voor uw App Service plan selecteert, wat een *werk groep*wordt genoemd.  
 
 De gebruikers interface voor de selectie van werk groepen toont de reken grootte die voor de werk groep wordt gebruikt onder de naam.  De beschik bare hoeveelheid verwijst naar hoeveel reken instanties er beschikbaar zijn voor gebruik in die groep.  De totale pool mag in werkelijkheid meer exemplaren hebben dan dit getal, maar deze waarde verwijst naar gewoon het aantal dat niet in gebruik is.  Als u uw App Service Environment moet aanpassen om meer reken bronnen toe te voegen, raadpleegt u [uw app service Environment configureren](app-service-web-configure-an-app-service-environment.md).
 
-![][4]
+![Scherm opname van het deel venster met de werk groep waarin u werknemers groepen voor de ASE kunt selecteren.][4]
 
 In dit voor beeld ziet u slechts twee werk groepen die beschikbaar zijn. Dat komt omdat de ASE-beheerder alleen hosts heeft toegewezen aan deze twee werk groepen.  De derde zou worden weer gegeven wanneer er Vm's aan zijn toegewezen.  
 

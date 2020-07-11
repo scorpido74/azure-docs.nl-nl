@@ -9,15 +9,16 @@ ms.author: magoedte
 ms.date: 01/31/2020
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 540ae25b22b2c134a47f91ad5b8b19089c7f2acb
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 23f12278d02715bd94f1ea26abf2bd4b2b03caf1
+ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83744999"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86187401"
 ---
 # <a name="manage-credentials-in-azure-automation"></a>Referenties beheren in Azure Automation
 
-Een Automation-referentie-Asset bevat een object dat beveiligings referenties bevat, zoals een gebruikers naam en een wacht woord. Runbooks en DSC-configuraties gebruiken cmdlets waarmee een [PSCredential](https://docs.microsoft.com/dotnet/api/system.management.automation.pscredential?view=pscore-6.2.0) -object voor verificatie wordt geaccepteerd. Het is ook mogelijk om de gebruikers naam en het wacht woord van het `PSCredential` object op te halen om aan te geven aan bepaalde toepassingen of services waarvoor verificatie is vereist. 
+Een Automation-referentie-Asset bevat een object dat beveiligings referenties bevat, zoals een gebruikers naam en een wacht woord. Runbooks en DSC-configuraties gebruiken cmdlets waarmee een [PSCredential](/dotnet/api/system.management.automation.pscredential?view=pscore-6.2.0) -object voor verificatie wordt geaccepteerd. Het is ook mogelijk om de gebruikers naam en het wacht woord van het `PSCredential` object op te halen om aan te geven aan bepaalde toepassingen of services waarvoor verificatie is vereist. 
 
 >[!NOTE]
 >Beveilig assets in Azure Automation referenties, certificaten, verbindingen en versleutelde variabelen bevatten. Deze assets worden versleuteld en opgeslagen in Azure Automation met behulp van een unieke sleutel die wordt gegenereerd voor elk Automation-account. Azure Automation slaat de sleutel op in de door het systeem beheerde Key Vault. Voordat u een beveiligde Asset opslaat, laadt Automation de sleutel van Key Vault en gebruikt deze om de Asset te versleutelen. 
@@ -28,9 +29,9 @@ Een Automation-referentie-Asset bevat een object dat beveiligings referenties be
 
 Met de cmdlets in de volgende tabel worden Automation-referenties met Power shell gemaakt en beheerd. Ze worden geleverd als onderdeel van de [AZ-modules](modules.md#az-modules).
 
-| Cmdlet | Description |
+| Cmdlet | Beschrijving |
 |:--- |:--- |
-| [Get-AzAutomationCredential](/powershell/module/az.automation/get-azautomationcredential?view=azps-3.3.0) |Hiermee wordt een [CredentialInfo](https://docs.microsoft.com/dotnet/api/microsoft.azure.commands.automation.model.credentialinfo?view=azurerm-ps) -object opgehaald dat meta gegevens bevat over de referentie. De cmdlet haalt het `PSCredential` object zelf niet op.  |
+| [Get-AzAutomationCredential](/powershell/module/az.automation/get-azautomationcredential?view=azps-3.3.0) |Hiermee wordt een [CredentialInfo](/dotnet/api/microsoft.azure.commands.automation.model.credentialinfo?view=azurerm-ps) -object opgehaald dat meta gegevens bevat over de referentie. De cmdlet haalt het `PSCredential` object zelf niet op.  |
 | [New-AzAutomationCredential](/powershell/module/az.automation/new-azautomationcredential?view=azps-3.3.0) |Hiermee maakt u een nieuwe Automation-referentie. |
 | [Remove-AzAutomationCredential](/powershell/module/az.automation/remove-azautomationcredential?view=azps-3.3.0) |Hiermee verwijdert u een Automation-referentie. |
 | [Set-AzAutomationCredential](/powershell/module/az.automation/set-azautomationcredential?view=azps-3.3.0) |Hiermee stelt u de eigenschappen voor een bestaande Automation-referentie. |
@@ -39,11 +40,11 @@ Met de cmdlets in de volgende tabel worden Automation-referenties met Power shel
 
 De cmdlets in de volgende tabel worden gebruikt voor toegang tot referenties in uw runbooks en DSC-configuraties. 
 
-| Cmdlet | Description |
+| Cmdlet | Beschrijving |
 |:--- |:--- |
 | `Get-AutomationPSCredential` |Hiermee wordt een `PSCredential` object opgehaald dat in een runbook-of DSC-configuratie kan worden gebruikt. Meestal moet u deze [interne cmdlet](modules.md#internal-cmdlets) gebruiken in plaats van de `Get-AzAutomationCredential` cmdlet, aangezien de laatste alleen referentie gegevens ophaalt. Deze informatie is doorgaans niet nuttig voor het door geven van een andere cmdlet. |
-| [Get-Credential](https://docs.microsoft.com/powershell/module/microsoft.powershell.security/get-credential?view=powershell-7) |Hiermee wordt een referentie opgehaald met de vraag naar een gebruikers naam en wacht woord. Deze cmdlet maakt deel uit van de standaard module micro soft. Power shell. Security. Zie [standaard modules](modules.md#default-modules).|
-| [New-AzureAutomationCredential](https://docs.microsoft.com/powershell/module/servicemanagement/azure/new-azureautomationcredential?view=azuresmps-4.0.0) | Hiermee maakt u een referentie-element. Deze cmdlet maakt deel uit van de standaard Azure-module. Zie [standaard modules](modules.md#default-modules).|
+| [Get-Credential](/powershell/module/microsoft.powershell.security/get-credential?view=powershell-7) |Hiermee wordt een referentie opgehaald met de vraag naar een gebruikers naam en wacht woord. Deze cmdlet maakt deel uit van de standaard module micro soft. Power shell. Security. Zie [standaard modules](modules.md#default-modules).|
+| [New-AzureAutomationCredential](/powershell/module/servicemanagement/azure/new-azureautomationcredential?view=azuresmps-4.0.0) | Hiermee maakt u een referentie-element. Deze cmdlet maakt deel uit van de standaard Azure-module. Zie [standaard modules](modules.md#default-modules).|
 
 Als `PSCredential` u objecten in uw code wilt ophalen, moet u de `Orchestrator.AssetManagement.Cmdlets` module importeren. Zie [modules beheren in azure Automation](modules.md)voor meer informatie.
 
@@ -103,7 +104,7 @@ Een runbook-of DSC-configuratie haalt een referentie-element op met de interne `
 > [!NOTE]
 > De `Get-AzAutomationCredential` cmdlet haalt geen `PSCredential` object op dat voor verificatie kan worden gebruikt. Het bevat alleen informatie over de referentie. Als u een referentie in een runbook moet gebruiken, moet u deze als een object ophalen `PSCredential` met `Get-AutomationPSCredential` .
 
-U kunt ook de methode [GetNetworkCredential](https://docs.microsoft.com/dotnet/api/system.management.automation.pscredential.getnetworkcredential?view=pscore-6.2.0) gebruiken om een [NetworkCredential](/dotnet/api/system.net.networkcredential) -object op te halen dat een niet-beveiligde versie vertegenwoordigt van het wacht woord.
+U kunt ook de methode [GetNetworkCredential](/dotnet/api/system.management.automation.pscredential.getnetworkcredential?view=pscore-6.2.0) gebruiken om een [NetworkCredential](/dotnet/api/system.net.networkcredential) -object op te halen dat een niet-beveiligde versie vertegenwoordigt van het wacht woord.
 
 ### <a name="textual-runbook-example"></a>Voor beeld van een tekst-runbook
 

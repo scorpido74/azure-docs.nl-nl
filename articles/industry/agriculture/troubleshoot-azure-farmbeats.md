@@ -5,11 +5,12 @@ author: uhabiba04
 ms.topic: article
 ms.date: 11/04/2019
 ms.author: v-umha
-ms.openlocfilehash: b82d415d5e0cf18250123f3483e196aa040285dd
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 6527ee8be64d57b42d7753c266a5c416ceeef589
+ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83656814"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86187707"
 ---
 # <a name="troubleshoot"></a>Problemen oplossen
 
@@ -313,3 +314,39 @@ Dat **wil zeggen**: als een taak mislukt omdat het maximum aantal verbindingen i
 1. Ga naar de resource groep FarmBeats Datahub.
 2. Selecteer **app service**.  
 3. Ga naar de pagina met [prijs](https://azure.microsoft.com/pricing/details/app-service/windows/)opschalen app service en selecteer een geschikte prijs categorie.
+
+## <a name="weather-data-job-failures"></a>Fouten met weer gegevens taken
+
+**Fout**: u kunt taken uitvoeren om weer gegevens op te halen, maar de taak mislukt
+
+### <a name="collect-logs-to-troubleshoot-weather-data-job-failures"></a>Logboeken verzamelen om problemen met weer gegeven gegevens taken op te lossen
+
+1. Ga naar de resource groep FarmBeats in de Azure Portal.
+2. Klik op de Data Factory-service die deel uitmaakt van de resource groep. De service heeft een tag ' SKU: Datahub '
+
+> [!NOTE]
+> Als u de tags van de services binnen de resource groep wilt weer geven, klikt u op ' kolommen bewerken ' en voegt u ' Tags ' toe aan de weer gave van de resource groep
+
+:::image type="content" source="./media/troubleshoot-Azure-farmbeats/weather-log-1.png" alt-text="Project FarmBeats":::
+
+3. Klik op de pagina overzicht van de Data Factory op **auteur en monitor**. Er wordt een nieuw tabblad geopend in uw browser. Klik op **monitor**
+
+:::image type="content" source="./media/troubleshoot-Azure-farmbeats/weather-log-2.png" alt-text="Project FarmBeats":::
+
+4. Er wordt een lijst met pijplijn uitvoeringen weer geven die deel uitmaken van de weers-taak wordt uitgevoerd. Klik op de taak waarvoor u logboeken wilt verzamelen
+ 
+:::image type="content" source="./media/troubleshoot-Azure-farmbeats/weather-log-3.png" alt-text="Project FarmBeats":::
+
+5. Op de overzichts pagina pijplijn ziet u de lijst met uitvoeringen van de activiteit. Noteer de run-Id's van de activiteiten waarvoor u logboeken wilt verzamelen
+ 
+:::image type="content" source="./media/troubleshoot-Azure-farmbeats/weather-log-4.png" alt-text="Project FarmBeats":::
+
+6. Ga terug naar de resource groep FarmBeats in Azure Portal en klik op het opslag account met de naam **datahublogs-xxxx**
+ 
+:::image type="content" source="./media/troubleshoot-Azure-farmbeats/weather-log-5.png" alt-text="Project FarmBeats":::
+
+7. Klik op **containers**  ->  **adfjobs**. Voer in het zoekvak de taak run-ID in die u in stap 5 hierboven hebt genoteerd.
+ 
+:::image type="content" source="./media/troubleshoot-Azure-farmbeats/weather-log-6.png" alt-text="Project FarmBeats":::
+
+8. Het Zoek resultaat bevat de map met de logboeken die betrekking hebben op de taak. Down load de logboeken en verzend het naar farmbeatssupport@microsoft.com voor hulp bij fout opsporing in het probleem.

@@ -6,12 +6,12 @@ ms.service: signalr
 ms.topic: conceptual
 ms.date: 11/13/2019
 ms.author: zhshang
-ms.openlocfilehash: 8ba34edfc382f0f03abe080d78a6a47dcb65501b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: f06b8f9a2d41fc5400aa0fa610a2be3f31e21f1c
+ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82105757"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86169796"
 ---
 # <a name="azure-signalr-service-internals"></a>Interne werking van Azure SignalR Service
 
@@ -84,7 +84,9 @@ Wanneer een client is verbonden met SignalR Service, zoekt serviceruntime een se
 
 Op dat moment ontvangt de toepassingsserver een gebeurtenis met informatie van de nieuwe client. In de toepassingsserver wordt een logische verbinding met de client tot stand gebracht. Via SignalR-Service wordt het gegevenskanaal van de client naar de toepassingsserver gerealiseerd.
 
-SignalR Service draagt gegevens over van de client naar de koppelende toepassingsserver. Gegevens van de toepassingsserver worden daarnaast verzonden naar de toegewezen clients.
+De signaal service verzendt gegevens van de client naar de koppelings server. Gegevens van de toepassingsserver worden daarnaast verzonden naar de toegewezen clients.
+
+De signaal service slaat geen klant gegevens op of slaat deze niet op. alle ontvangen klant gegevens worden in realtime verzonden naar de doel server of clients.
 
 Zoals u ziet, is Azure SignalR Service in wezen een logische transportlaag tussen de toepassingsserver en clients. Alle permanente verbindingen worden geoffload naar SignalR Service.
 De toepassingsserver hoeft alleen de bedrijfslogica in de hubklasse af te handelen, zonder zich bezig te houden met clientverbindingen.

@@ -5,14 +5,14 @@ author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: conceptual
-ms.date: 1/27/2020
+ms.date: 7/10/2020
 ms.author: raynew
-ms.openlocfilehash: b48dfba6fa5dc270a4d711864d15e9128f4beb98
-ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.openlocfilehash: b7551ec01e3401c0636b47a25d83173b6322d06e
+ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86132413"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86219875"
 ---
 # <a name="support-matrix-for-disaster-recovery-of-on-premises-hyper-v-vms-to-azure"></a>Ondersteunings matrix voor herstel na nood gevallen van on-premises virtuele Hyper-V-machines naar Azure
 
@@ -68,11 +68,12 @@ Hostcluster: IPv4 | Ja | Ja
 Hostnetwerkadapter: IPv6 | Nee | Nee
 VM-netwerk van de gast: NIC-koppeling | Nee | Nee
 VM-netwerk van gast: IPv4 | Ja | Ja
-VM-netwerk van de gast: IPv6 | No | Yes
+VM-netwerk van de gast: IPv6 | Nee | Ja
 VM-netwerk van de gast: statisch IP-adres (Windows) | Ja | Ja
 VM-netwerk van de gast: statisch IP-adres (Linux) | Nee | Nee
 VM-netwerk van de gast: meerdere NIC'S | Ja | Ja
 HTTPS-proxy | Nee | Nee
+
 
 
 
@@ -94,7 +95,7 @@ Versneld netwerken | Nee | Nee
 
 ## <a name="hyper-v-host-storage"></a>Opslag voor Hyper-V-host
 
-**Storage** | **Hyper-V met Virtual Machine Manager** | **Hyper-V zonder Virtual Machine Manager**
+**Opslag** | **Hyper-V met Virtual Machine Manager** | **Hyper-V zonder Virtual Machine Manager**
 --- | --- | --- 
 NFS | NA | NA
 SMB 3.0 | Ja | Ja
@@ -103,7 +104,7 @@ Meerdere paden (MPIO). Getest met:<br></br> Micro soft DSM, EMC PowerPath 5,7 SP
 
 ## <a name="hyper-v-vm-guest-storage"></a>Hyper-V VM-gast opslag
 
-**Storage** | **Hyper-V met Virtual Machine Manager** | **Hyper-V zonder Virtual Machine Manager**
+**Opslag** | **Hyper-V met Virtual Machine Manager** | **Hyper-V zonder Virtual Machine Manager**
 --- | --- | ---
 VMDK | NA | NA
 VHD/VHDX | Ja | Ja
@@ -136,11 +137,13 @@ Hot Storage| Nee | Nee
 Blok-blobs | Nee | Nee
 Versleuteling op rest (SSE)| Ja | Ja
 Versleuteling in rust (CMK) <br></br> (Alleen voor failover naar beheerde schijven)| Ja (via Power shell AZ 3.3.0 module) | Ja (via Power shell AZ 3.3.0 module)
+Dubbele versleuteling bij rest <br></br> (Alleen voor failover naar beheerde schijven) <br></br> Meer informatie over ondersteunde regio's voor [Windows](../virtual-machines/windows/disk-encryption.md) en [Linux](../virtual-machines/linux/disk-encryption.md) | Ja (via Power shell AZ 3.3.0 module) | Ja (via Power shell AZ 3.3.0 module)
 Premium Storage | Ja | Ja
 Standard Storage | Ja | Ja
 Import/export-service | Nee | Nee
 Azure Storage accounts waarvoor Firewall is ingeschakeld | Ja. Voor doel opslag en cache. | Ja. Voor doel opslag en cache.
-Opslag account wijzigen | Nee. Het doel Azure Storage account kan niet worden gewijzigd nadat de replicatie is ingeschakeld. Als u herstel na nood gevallen wilt wijzigen, uitschakelen en opnieuw inschakelen. | No
+Opslag account wijzigen | Nee. Het doel Azure Storage account kan niet worden gewijzigd nadat de replicatie is ingeschakeld. Als u herstel na nood gevallen wilt wijzigen, uitschakelen en opnieuw inschakelen. | Nee
+Optie voor beveiligde overdracht | Ja
 
 
 ## <a name="azure-compute-features"></a>Azure Compute-functies
@@ -149,7 +152,7 @@ Opslag account wijzigen | Nee. Het doel Azure Storage account kan niet worden ge
 --- | --- | ---
 Beschikbaarheidssets | Ja | Ja
 HUB | Ja | Ja  
-Managed Disks | Ja, voor failover.<br/><br/> Failback van beheerde schijven wordt niet ondersteund. | Ja, voor failover.<br/><br/> Failback van beheerde schijven wordt niet ondersteund.
+Beheerde schijven | Ja, voor failover.<br/><br/> Failback van beheerde schijven wordt niet ondersteund. | Ja, voor failover.<br/><br/> Failback van beheerde schijven wordt niet ondersteund.
 
 ## <a name="azure-vm-requirements"></a>Vereisten voor Azure-VM's
 

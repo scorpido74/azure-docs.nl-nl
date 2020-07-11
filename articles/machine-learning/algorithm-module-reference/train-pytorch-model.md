@@ -9,11 +9,12 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 05/26/2020
-ms.openlocfilehash: ca5c8fdd14f155163dd55d944cafd2e209e7a94b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: af14d4770d032c23216b805045eb27fadded5954
+ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84450659"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86170255"
 ---
 # <a name="train-pytorch-model"></a>Pytorch-model trainen
 
@@ -26,7 +27,7 @@ In dit artikel wordt beschreven hoe u de **Pytorch-model module Train** in azure
 2. Voeg de module **Train Pytorch model** toe aan de pijp lijn. U kunt deze module vinden onder de categorie **model training** . Vouw **Train**uit en sleep de module **Train Pytorch model** naar uw pijp lijn.
 
    > [!NOTE]
-   > **Train Pytorch model** module kan alleen worden uitgevoerd op het **GPU** -type compute, anders mislukt de pijp lijn. U kunt Compute voor een specifieke module selecteren in het rechterdeel venster van de module door het **gebruik van andere compute target**in te stellen.
+   > De **Pytorch-model** module voor Train kan beter worden uitgevoerd op het **GPU** -type Compute voor grote gegevensset, anders mislukt de pijp lijn. U kunt Compute voor een specifieke module selecteren in het rechterdeel venster van de module door het **gebruik van andere compute target**in te stellen.
 
 3.  Voeg aan de linkerkant een niet-traind model toe. Koppel de trainings gegevensset en de validatie gegevensset aan de middelste en rechter invoer van het **trein Pytorch model**.
 
@@ -57,7 +58,7 @@ Wanneer de uitvoering van de pijp lijn is voltooid, kunt u het model voor scores
 ## <a name="technical-notes"></a>Technische opmerkingen
 ###  <a name="expected-inputs"></a>Verwachte invoer  
 
-| Naam               | Type                    | Description                              |
+| Naam               | Type                    | Beschrijving                              |
 | ------------------ | ----------------------- | ---------------------------------------- |
 | Niet-traind model    | UntrainedModelDirectory | Niet-traind model, vereisen pytorch         |
 | Trainings gegevensset   | ImageDirectory          | Trainings gegevensset                         |
@@ -65,17 +66,17 @@ Wanneer de uitvoering van de pijp lijn is voltooid, kunt u het model voor scores
 
 ###  <a name="module-parameters"></a>Module parameters  
 
-| Name          | Bereik            | Type    | Standaard | Description                              |
+| Naam          | Bereik            | Type    | Standaard | Beschrijving                              |
 | ------------- | ---------------- | ------- | ------- | ---------------------------------------- |
 | Epoches        | >0               | Geheel getal | 5       | Selecteer de kolom die de kolom Label of het resultaat bevat |
 | Batchgrootte    | >0               | Geheel getal | 16      | Het aantal exemplaren dat in een batch moet worden getraind   |
 | Leersnelheid | >= double. Letter | Float   | 0,001   | Het eerste leer tempo voor de stochastische Gradient Daal Optimizer. |
-| Wille keurige Seed   | Alle              | Geheel getal | 1       | Het Seed voor de generator voor wille keurige getallen die wordt gebruikt door het model. |
+| Wille keurige Seed   | Elk              | Geheel getal | 1       | Het Seed voor de generator voor wille keurige getallen die wordt gebruikt door het model. |
 | Geduld      | >0               | Geheel getal | 3       | Het aantal epochen naar een vroege stop-training   |
 
 ###  <a name="outputs"></a>Uitvoerwaarden  
 
-| Naam          | Type           | Description   |
+| Naam          | Type           | Beschrijving   |
 | ------------- | -------------- | ------------- |
 | Getraind model | ModelDirectory | Getraind model |
 

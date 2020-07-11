@@ -5,23 +5,23 @@ services: application-gateway
 author: vhorne
 ms.service: application-gateway
 ms.topic: article
-ms.date: 02/20/2020
+ms.date: 07/09/2020
 ms.author: victorh
-ms.openlocfilehash: e1afc389508eb75313d046b759bcc9c03a50daad
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: b613e89fbe29074160d83a96d2cd13505244994a
+ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83648405"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86186708"
 ---
 # <a name="application-gateway-health-monitoring-overview"></a>Overzicht van Application Gateway status controle
 
-Azure-toepassing gateway controleert standaard de status van alle resources in de back-end-groep en verwijdert automatisch alle bronnen die worden beschouwd als een slechte status van de groep. Application Gateway blijft de exemplaren met slechte status bewaken en voegt deze weer aan de goede back-end-adrespool toe zodra ze beschikbaar komen en beantwoorden aan de statuscontroles. Application Gateway verzendt de status tests met dezelfde poort die is gedefinieerd in de back-end-HTTP-instellingen. Deze configuratie zorgt ervoor dat de test wordt uitgevoerd op dezelfde poort die door klanten zou worden gebruikt om verbinding te maken met de back-end. 
+Azure-toepassing gateway controleert standaard de status van alle resources in de back-end-groep en verwijdert automatisch alle bronnen die worden beschouwd als een slechte status van de groep. Application Gateway blijft de exemplaren met slechte status bewaken en voegt deze weer aan de goede back-end-adrespool toe zodra ze beschikbaar komen en beantwoorden aan de statuscontroles. Standaard verzendt Application Gateway de status tests met dezelfde poort die is gedefinieerd in de back-end-HTTP-instellingen. Een aangepaste test poort kan worden geconfigureerd met behulp van een aangepaste status test.
 
 Het bron-IP-adres Application Gateway gebruikt voor status tests is afhankelijk van de back-end-groep:
  
-- Als de back-end-pool een openbaar eind punt is, is het bron adres het open bare IP-adres van de Application Gateway-frontend.
-- Als de back-end-pool een persoonlijk eind punt is, is het IP-bron adres van de toepassings gateway van het subnet persoonlijke IP-adres ruimte.
-
+- Als het server adres in de back-endadresgroep een openbaar eind punt is, is het bron adres het open bare frontend-front-end-IP-adres van de toepassings gateway.
+- Als het adres van de server in de back-endadresgroep een persoonlijk eind punt is, is het bron-IP-adres van de privé IP-adres ruimte van het subnet van de toepassings gateway.
 
 ![test voorbeeld van Application Gateway][1]
 
@@ -31,11 +31,47 @@ Naast het gebruik van de standaard controle van de status test, kunt u ook de st
 
 ## <a name="default-health-probe"></a>Standaard status test
 
-Een toepassings gateway configureert automatisch een standaard status test wanneer u geen aangepaste test configuratie instelt. Het bewakings gedrag werkt door een HTTP-aanvraag in te stellen voor de IP-adressen die zijn geconfigureerd voor de back-end-pool. Voor standaard tests als de back-end-http-instellingen voor HTTPS zijn geconfigureerd, gebruikt de test HTTPS en de test status van de back-ends.
+Een toepassings gateway configureert automatisch een standaard status test wanneer u geen aangepaste test configuratie instelt. Het bewakings gedrag werkt door een HTTP GET-aanvraag naar de IP-adressen of FQDN te maken die is geconfigureerd in de back-end-pool. Voor standaard tests als de back-end-http-instellingen voor HTTPS zijn geconfigureerd, gebruikt de test HTTPS om de status van de back-endservers te testen.
 
-Bijvoorbeeld: u configureert uw toepassings gateway voor het gebruik van back-endservers A, B en C om HTTP-netwerk verkeer te ontvangen op poort 80. De standaard status bewaking test de drie servers om de 30 seconden voor een gezonde HTTP-reactie. Een gezond HTTP-antwoord heeft een [status code](https://msdn.microsoft.com/library/aa287675.aspx) tussen 200 en 399.
+Bijvoorbeeld: u configureert uw toepassings gateway voor het gebruik van back-endservers A, B en C om HTTP-netwerk verkeer te ontvangen op poort 80. De standaard status bewaking test de drie servers om de 30 seconden voor een gezonde HTTP-reactie met een time-out van 30 seconden voor elke aanvraag. Een gezond HTTP-antwoord heeft een [status code](https://msdn.microsoft.com/library/aa287675.aspx) tussen 200 en 399. In dit geval ziet de HTTP GET-aanvraag voor de status test er als volgt uit http://127.0.0.1/ .
 
-Als de standaard controle van de test voor Server A mislukt, wordt deze door de toepassings gateway verwijderd uit de back-end-pool en wordt het netwerk verkeer niet meer naar deze server gestroomt. De standaard test blijft altijd elke 30 seconden controleren op server. Als server A reageert op een aanvraag van een standaard status test, wordt deze als gezond toegevoegd aan de back-end-pool en wordt het verkeer opnieuw naar de server verzonden.
+Als de standaard controle van de test voor Server A mislukt, stopt de toepassings gateway met het door sturen van aanvragen naar deze server. De standaard test blijft altijd elke 30 seconden controleren op server. Als server A reageert op een aanvraag van een standaard status test, wordt de aanvraag door Application Gateway opnieuw door sturen naar de server.
+
+### <a name="default-health-probe-settings"></a>Standaard instellingen voor status controle
+
+| Probe-eigenschap | Waarde | Beschrijving |
+| --- | --- | --- |
+| Test-URL |\<protocol\>://127.0.0.1:\<port\>/ |Het protocol en de poort worden overgenomen van de back-end-HTTP-instellingen waaraan de test is gekoppeld |
+| Interval |30 |De hoeveelheid tijd in seconden die moet worden gewacht voordat de volgende status test wordt verzonden.|
+| Time-out |30 |De hoeveelheid tijd in seconden die de toepassings gateway wacht op een test reactie voordat de test wordt gemarkeerd als beschadigd. Als een test wordt geretourneerd als in orde, wordt de bijbehorende back-end direct gemarkeerd als in orde.|
+| Drempelwaarde voor beschadigde status |3 |Bepaalt hoeveel tests er moeten worden verzonden als er een fout is opgetreden van de normale status test. In v1 SKU worden deze aanvullende Health-tests snel achter elkaar verzonden om de status van de back-end snel te bepalen en te wachten op het test interval. In het geval van v2 SKU wordt het interval gewacht op de status. De back-endserver is gemarkeerd wanneer het aantal opeenvolgende test fouten de drempel waarde voor de onjuiste status bereikt. |
+
+De standaard test zoekt alleen op \<protocol\> : \/ /127.0.0.1: \<port\> om de status te bepalen. Als u de status test moet configureren om naar een aangepaste URL te gaan of andere instellingen te wijzigen, moet u aangepaste tests gebruiken. Zie [overzicht van TLS-beëindiging en end-to-end-TLS met Application Gateway](ssl-overview.md#for-probe-traffic)voor meer informatie over HTTPS-tests.
+
+### <a name="probe-intervals"></a>Sonde-intervallen
+
+Alle exemplaren van Application Gateway testen de back-end onafhankelijk van elkaar. Dezelfde test configuratie is van toepassing op elk Application Gateway-exemplaar. Als de test configuratie bijvoorbeeld elke 30 seconden status controles verzendt en de toepassings gateway twee exemplaren heeft, worden beide instanties elke 30 seconden de status test verzonden.
+
+Als er meerdere listeners zijn, controleert elke listener de back-end onafhankelijk van elkaar. Als er bijvoorbeeld twee listeners zijn die verwijzen naar dezelfde back-end-groep op twee verschillende poorten (geconfigureerd met twee back-end-http-instellingen), wordt de dezelfde back-end onafhankelijk door elke listener gecontroleerd. In dit geval zijn er twee tests van elk toepassings gateway-exemplaar voor de twee listeners. Als er in dit scenario twee exemplaren van de toepassings gateway zijn, ziet u op de virtuele machine van de back-end vier tests volgens het geconfigureerde test interval.
+
+## <a name="custom-health-probe"></a>Aangepaste status test
+
+Met aangepaste tests kunt u de controle over de status controle nauw keuriger maken. Wanneer u aangepaste tests gebruikt, kunt u een aangepaste hostnaam, een URL-pad, een test interval en het aantal mislukte antwoorden accepteren voordat het exemplaar van de back-end-pool wordt gemarkeerd als beschadigd, enzovoort.
+
+### <a name="custom-health-probe-settings"></a>Instellingen voor aangepaste Health probe
+
+De volgende tabel bevat definities voor de eigenschappen van een aangepaste status test.
+
+| Probe-eigenschap | Beschrijving |
+| --- | --- |
+| Naam |De naam van de test. Deze naam wordt gebruikt om de test in back-end-HTTP-instellingen te identificeren en te raadplegen. |
+| Protocol |Het protocol dat wordt gebruikt om de test te verzenden. Dit moet overeenkomen met het protocol dat is gedefinieerd in de back-end HTTP-instellingen waaraan het is gekoppeld|
+| Host |De hostnaam waarmee de test wordt verzonden. In v1 SKU wordt deze waarde alleen gebruikt voor de host-header van de test aanvraag. In v2 SKU wordt het gebruikt als host-header, evenals SNI |
+| Pad |Het relatieve pad van de test. Er begint een geldig pad met '/' |
+| Poort |Indien gedefinieerd, wordt dit gebruikt als de doel poort. Anders wordt dezelfde poort gebruikt als de HTTP-instellingen waaraan deze is gekoppeld. Deze eigenschap is alleen beschikbaar in de v2-SKU
+| Interval |Test interval in seconden. Deze waarde is het tijds interval tussen twee opeenvolgende tests |
+| Time-out |Time-out van de test (in seconden). Als er binnen deze time-outperiode geen geldig antwoord wordt ontvangen, wordt de test als mislukt gemarkeerd  |
+| Drempelwaarde voor beschadigde status |Aantal nieuwe pogingen testen. De back-endserver is gemarkeerd wanneer het aantal opeenvolgende test fouten de drempel waarde voor onjuiste status bereikt |
 
 ### <a name="probe-matching"></a>Testen vergelijken
 
@@ -55,48 +91,6 @@ $match = New-AzApplicationGatewayProbeHealthResponseMatch -StatusCode 200-399
 $match = New-AzApplicationGatewayProbeHealthResponseMatch -Body "Healthy"
 ```
 Zodra de match criteria zijn opgegeven, kan deze worden gekoppeld aan de test configuratie met behulp `-Match` van een para meter in Power shell.
-
-### <a name="default-health-probe-settings"></a>Standaard instellingen voor status controle
-
-| Probe-eigenschap | Waarde | Beschrijving |
-| --- | --- | --- |
-| Test-URL |http://127.0.0.1:\<port\>/ |URL-pad |
-| Interval |30 |De hoeveelheid tijd in seconden die moet worden gewacht voordat de volgende status test wordt verzonden.|
-| Time-out |30 |De hoeveelheid tijd in seconden die de toepassings gateway wacht op een test reactie voordat de test wordt gemarkeerd als beschadigd. Als een test wordt geretourneerd als in orde, wordt de bijbehorende back-end direct gemarkeerd als in orde.|
-| Drempelwaarde voor beschadigde status |3 |Bepaalt hoeveel tests er moeten worden verzonden als er een fout is opgetreden van de normale status test. Deze aanvullende Health-tests worden snel achter elkaar verzonden om de status van de back-end snel te bepalen en niet te wachten op het test interval. Dit gedrag is alleen v1 SKU. In het geval van v2 SKU wordt het interval gewacht op de status. De back-endserver is gemarkeerd wanneer het aantal opeenvolgende test fouten de drempel waarde voor de onjuiste status bereikt. |
-
-> [!NOTE]
-> De poort is dezelfde poort als de back-end-HTTP-instellingen.
-
-De standaard test zoekt alleen op http: \/ /127.0.0.1: \<port\> om de status te bepalen. Als u de status test moet configureren om naar een aangepaste URL te gaan of andere instellingen te wijzigen, moet u aangepaste tests gebruiken. Zie [overzicht van TLS-beëindiging en end-to-end-TLS met Application Gateway](ssl-overview.md#for-probe-traffic)voor meer informatie over http-tests.
-
-### <a name="probe-intervals"></a>Sonde-intervallen
-
-Alle exemplaren van Application Gateway testen de back-end onafhankelijk van elkaar. Dezelfde test configuratie is van toepassing op elk Application Gateway-exemplaar. Als de test configuratie bijvoorbeeld elke 30 seconden status controles verzendt en de toepassings gateway twee exemplaren heeft, worden beide instanties elke 30 seconden de status test verzonden.
-
-Als er meerdere listeners zijn, controleert elke listener de back-end onafhankelijk van elkaar. Als er bijvoorbeeld twee listeners zijn die verwijzen naar dezelfde back-end-groep op twee verschillende poorten (geconfigureerd met twee back-end-http-instellingen), wordt de dezelfde back-end onafhankelijk door elke listener gecontroleerd. In dit geval zijn er twee tests van elk toepassings gateway-exemplaar voor de twee listeners. Als er in dit scenario twee exemplaren van de toepassings gateway zijn, ziet u op de virtuele machine van de back-end vier tests volgens het geconfigureerde test interval.
-
-## <a name="custom-health-probe"></a>Aangepaste status test
-
-Met aangepaste tests kunt u de controle over de status controle nauw keuriger maken. Wanneer u aangepaste tests gebruikt, kunt u het test interval, de URL en het pad dat moet worden getest en het aantal mislukte antwoorden dat moet worden geaccepteerd, configureren voordat de back-end-pool instantie als beschadigd wordt gemarkeerd.
-
-### <a name="custom-health-probe-settings"></a>Instellingen voor aangepaste Health probe
-
-De volgende tabel bevat definities voor de eigenschappen van een aangepaste status test.
-
-| Probe-eigenschap | Beschrijving |
-| --- | --- |
-| Naam |De naam van de test. Deze naam wordt gebruikt om te verwijzen naar de test in back-end-HTTP-instellingen. |
-| Protocol |Het protocol dat wordt gebruikt om de test te verzenden. De test gebruikt het protocol dat is gedefinieerd in de back-end-HTTP-instellingen |
-| Host |De hostnaam voor het verzenden van de test. Alleen van toepassing als multi-site is geconfigureerd op Application Gateway, anders ' 127.0.0.1 ' gebruiken. Deze waarde wijkt af van de naam van de VM-host. |
-| Pad |Het relatieve pad van de test. Het geldige pad wordt gestart vanaf/. |
-| Interval |Test interval in seconden. Deze waarde is het tijds interval tussen twee opeenvolgende tests. |
-| Time-out |Time-out van de test (in seconden). Als er binnen deze time-outperiode geen geldig antwoord wordt ontvangen, wordt de test als mislukt gemarkeerd.  |
-| Drempelwaarde voor beschadigde status |Aantal nieuwe pogingen testen. De back-endserver is gemarkeerd wanneer het aantal opeenvolgende test fouten de drempel waarde voor de onjuiste status bereikt. |
-
-> [!IMPORTANT]
-> Als Application Gateway voor één site is geconfigureerd, moet de hostnaam standaard worden opgegeven als 127.0.0.1, tenzij anders geconfigureerd in de aangepaste test.
-> Als referentie voor een aangepaste test wordt verzonden naar \<protocol\> :// \<host\> : \<port\> \<path\> . De poort die wordt gebruikt, is de poort die is gedefinieerd in de back-end-HTTP-instellingen.
 
 ## <a name="nsg-considerations"></a>NSG overwegingen
 

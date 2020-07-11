@@ -9,12 +9,12 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 05/26/2020
-ms.openlocfilehash: 41724753df0d529e4c44344e8e975e68ee5eafd6
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: b29b5fa1beb19bc055f94c56b064ae2c0ae175b5
+ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84904589"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86171139"
 ---
 # <a name="convert-to-image-directory"></a>Converteren naar afbeeldingsmap
 
@@ -24,11 +24,15 @@ In dit artikel wordt beschreven hoe u de map converteren naar afbeelding kunt ge
 
 1.  Voeg de module **converteren naar afbeeldings mappen** toe aan uw experiment. U kunt deze module vinden in de categorie ' Computer Vision/image-gegevens transformatie ' in de module lijst. 
 
-2.  Een gegevensset voor een installatie kopie verbinden als invoer. Zorg ervoor dat er een afbeelding in de invoer gegevensset staat.
+2.  [Registreer een installatie kopie gegevensset](https://docs.microsoft.com/azure/machine-learning/how-to-create-register-datasets) en verbind deze met de invoer poort van de module. Zorg ervoor dat er een afbeelding in de invoer gegevensset staat. 
     De volgende indelingen voor gegevensset worden ondersteund:
 
     - Gecomprimeerd bestand in deze extensies: '. zip ', '. tar ', '. gz ', '. bz2 '.
     - Map met installatie kopieën. **Het is raadzaam om deze map eerst te comprimeren en vervolgens het gecomprimeerde bestand als gegevensset te gebruiken**.
+
+    > [!WARNING]
+    > U **kunt** de module **gegevens importeren** niet gebruiken voor het importeren van de gegevensset van een afbeelding, omdat het uitvoer type van de module **import data** de data frame Directory is. deze map bevat alleen een teken reeks voor het bestandspad.
+    
 
     > [!NOTE]
     > Als u de gegevensset van de afbeelding in Super visie leren gebruiken, is label vereist.
@@ -54,13 +58,13 @@ De uitvoer van de modus **converteren naar afbeeldings mappen** is in de indelin
 
 ###  <a name="expected-inputs"></a>Verwachte invoer  
 
-| Naam          | Type                  | Description   |
+| Naam          | Type                  | Beschrijving   |
 | ------------- | --------------------- | ------------- |
 | Invoer gegevensset | AnyDirectory, ZipFile | Invoer gegevensset |
 
 ###  <a name="output"></a>Uitvoer  
 
-| Naam                   | Type           | Description            |
+| Naam                   | Type           | Beschrijving            |
 | ---------------------- | -------------- | ---------------------- |
 | Uitvoer afbeelding map | ImageDirectory | Uitvoer afbeelding map |
 

@@ -9,11 +9,12 @@ ms.author: snmuvva
 ms.date: 01/11/2020
 ms.topic: conceptual
 manager: kmadnani
-ms.openlocfilehash: 1cb70109657343f41a1b3a19f3426377d97e261e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 7d59ca60c7f90c227885927086511bd1f8ac7ca1
+ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83830120"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86185837"
 ---
 # <a name="encryption-of-secure-assets-in-azure-automation"></a>Versleuteling van beveiligde activa in Azure Automation
 
@@ -51,12 +52,12 @@ Voordat u door de klant beheerde sleutels voor een Automation-account inschakelt
 
  - De beheerd-sleutel van de klant wordt opgeslagen in een Azure Key Vault. 
  - Schakel de opties **voorlopig verwijderen** en **niet wissen** in de sleutel kluis in. Deze functies zijn vereist om sleutels te herstellen in geval van onbedoeld verwijderen.
- - Alleen RSA-sleutels worden ondersteund met Azure Automation versleuteling. Zie [informatie over Azure Key Vault sleutels, geheimen en certificaten](../key-vault/about-keys-secrets-and-certificates.md#key-vault-keys)voor meer informatie over sleutels.
+ - Alleen RSA-sleutels worden ondersteund met Azure Automation versleuteling. Zie [informatie over Azure Key Vault sleutels, geheimen en certificaten](../key-vault/general/about-keys-secrets-certificates.md)voor meer informatie over sleutels.
 - Het Automation-account en de sleutel kluis kunnen zich in verschillende abonnementen bevindt, maar moeten zich in dezelfde Tenant beAzure Active Directory.
 
 ### <a name="assignment-of-an-identity-to-the-automation-account"></a>Toewijzing van een identiteit aan het Automation-account
 
-Als u door de klant beheerde sleutels wilt gebruiken met een Automation-account, moet uw Automation-account worden geverifieerd op basis van de sleutel kluis die door de klant beheerde sleutels opslaat. Azure Automation maakt gebruik van door het systeem toegewezen beheerde identiteiten om het account te verifiëren met Azure Key Vault. Zie [Wat zijn beheerde identiteiten voor Azure-resources](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview) voor meer informatie over beheerde identiteiten?
+Als u door de klant beheerde sleutels wilt gebruiken met een Automation-account, moet uw Automation-account worden geverifieerd op basis van de sleutel kluis die door de klant beheerde sleutels opslaat. Azure Automation maakt gebruik van door het systeem toegewezen beheerde identiteiten om het account te verifiëren met Azure Key Vault. Zie [Wat zijn beheerde identiteiten voor Azure-resources](../active-directory/managed-identities-azure-resources/overview.md) voor meer informatie over beheerde identiteiten?
 
 Configureer een door het systeem toegewezen beheerde identiteit aan het Automation-account met behulp van de volgende REST API-aanroep:
 
@@ -184,7 +185,7 @@ Als u de sleutel roteert, wordt het opnieuw versleutelen van beveiligde assets i
 
 ## <a name="revocation-of-access-to-a-customer-managed-key"></a>Intrekking van toegang tot een door de klant beheerde sleutel
 
-Als u de toegang tot door de klant beheerde sleutels wilt intrekken, gebruikt u Power shell of de Azure CLI. Zie [Azure Key Vault Power shell](https://docs.microsoft.com/powershell/module/az.keyvault/) of [Azure Key Vault cli](https://docs.microsoft.com/cli/azure/keyvault)(Engelstalig) voor meer informatie. Toegang intrekken effectief blokkeert de toegang tot alle beveiligde assets in het Automation-account, omdat de versleutelings sleutel niet toegankelijk is voor Azure Automation.
+Als u de toegang tot door de klant beheerde sleutels wilt intrekken, gebruikt u Power shell of de Azure CLI. Zie [Azure Key Vault Power shell](/powershell/module/az.keyvault/) of [Azure Key Vault cli](/cli/azure/keyvault)(Engelstalig) voor meer informatie. Toegang intrekken effectief blokkeert de toegang tot alle beveiligde assets in het Automation-account, omdat de versleutelings sleutel niet toegankelijk is voor Azure Automation.
 
 ## <a name="next-steps"></a>Volgende stappen
 

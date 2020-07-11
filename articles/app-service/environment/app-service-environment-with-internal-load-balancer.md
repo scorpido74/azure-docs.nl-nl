@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 07/11/2017
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: 009b1ff08f9a3a0b840a20a01be5b16cd28d4533
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 49045c8b8c7b3ccfa44a1077e59683191393e1ee
+ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85833100"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86220810"
 ---
 # <a name="using-an-internal-load-balancer-with-an-app-service-environment"></a>Een interne Load Balancer gebruiken met een App Service Environment
 
@@ -54,7 +54,7 @@ Het maken van een ILB ASE verschilt niet veel van het maken van een ASE. Zie [Ho
 7. Geef een subdomeinnaam op (deze naam is het subdomein dat wordt gebruikt voor de apps die in deze ASE zijn gemaakt).
 8. Selecteer **OK** en vervolgens **maken**.
 
-![][1]
+![Toont de schermen die worden gebruikt voor het maken van een ILB-ASE.][1]
 
 In het deel venster Virtual Network bevindt zich een VNet-configuratie optie waarmee u tussen een extern VIP of interne VIP kunt selecteren. De standaard is Extern. Als u deze hebt ingesteld op extern, gebruikt uw ASE een via internet toegankelijke VIP. Als u Intern selecteert, is de AS-omgeving geconfigureerd met een ILB op een IP-adres binnen uw VNet. 
 
@@ -70,7 +70,7 @@ Het maken van een app in een ILB ASE is hetzelfde als het maken van een app in e
 5. Selecteer of maak een App Service plan (ASP). Als u een nieuwe ASP maakt, selecteert u uw ASE als locatie en selecteert u de werk groep waarmee u uw ASP wilt maken. Wanneer u de ASP maakt, selecteert u uw ASE als locatie en de werk groep. Wanneer u de naam van de app opgeeft, ziet u dat het subdomein onder de naam van uw app wordt vervangen door het subdomein voor uw ASE. 
 6. Selecteer **Maken**. Schakel het selectie vakje **vastmaken aan dash board** in als u wilt dat de app wordt weer gegeven op uw dash board. 
 
-![][2]
+![Laat zien hoe u een app maakt in een ILB ASE in de Azure Portal.][2]
 
 Onder de naam van de app wordt de subdomeinnaam bijgewerkt op basis van het subdomein van uw ASE. 
 
@@ -79,11 +79,11 @@ Een ILB AS-omgeving verschilt iets van de niet-ILB AS-omgeving. Zoals u al hebt 
 
 Nadat u uw ASE hebt gemaakt, ziet u dat in het subdomein het subdomein wordt weer gegeven dat u hebt opgegeven en dat er een nieuw item is in het menu **instelling** met de naam **ILB certificaat**. De ASE wordt gemaakt met een zelfondertekend certificaat, waardoor het eenvoudiger wordt om HTTPS te testen. De portal geeft aan dat u uw eigen certificaat moet opgeven voor HTTPS, maar dit is om u te stimuleren dat u een certificaat met uw subdomein hebt. 
 
-![][3]
+![Hier wordt het subdomein weer gegeven dat u hebt opgegeven tijdens het maken van uw ASE.][3]
 
 Als u gewoon van dingen werkt en u niet weet hoe u een certificaat moet maken, kunt u de IIS MMC-console toepassing gebruiken om een zelfondertekend certificaat te maken. Zodra de app is gemaakt, kunt u deze exporteren als een. pfx-bestand en deze vervolgens uploaden naar de gebruikers interface van het ILB-certificaat. Wanneer u toegang krijgt tot een site die is beveiligd met een zelfondertekend certificaat, geeft u in uw browser een waarschuwing dat de site waartoe u toegang hebt, niet beveiligd is omdat het niet mogelijk is om het certificaat te valideren. Als u deze waarschuwing wilt voor komen, hebt u een correct ondertekend certificaat nodig dat overeenkomt met uw subdomein en beschikt u over een vertrouwens keten die wordt herkend door uw browser.
 
-![][6]
+![Laat zien hoe u de IIS MMC-console toepassing gebruikt om een zelfondertekend certificaat te maken.][6]
 
 Als u de stroom met uw eigen certificaten wilt proberen en de HTTP-en HTTPS-toegang tot uw ASE wilt testen:
 
@@ -98,7 +98,7 @@ Als u de stroom met uw eigen certificaten wilt proberen en de HTTP-en HTTPS-toeg
 
 Het IP-adres voor uw ILB wordt vermeld in uw eigenschappen als het virtuele IP-adres.
 
-![][4]
+![Geeft aan dat het IP-adres voor uw ILB wordt vermeld in uw eigenschappen als het virtuele IP-adres.][4]
 
 ## <a name="using-an-ilb-ase"></a>Een ILB-ASE gebruiken
 #### <a name="network-security-groups"></a>Netwerkbeveiligingsgroepen
@@ -108,7 +108,7 @@ Als u Nsg's wilt gebruiken om de toegang verder te beperken, moet u ervoor zorge
 
 Als u uw Nsg's wilt configureren, moet u het IP-adres weten dat door Azure wordt gebruikt voor het beheren van uw ASE. Dat IP-adres is ook het uitgaande IP-adres van uw ASE als Internet aanvragen worden uitgevoerd. Het uitgaande IP-adres voor uw ASE blijft statisch voor de levens duur van uw ASE. Als u uw ASE verwijdert en opnieuw maakt, krijgt u een nieuw IP-adres. Als u het IP-adres wilt vinden, gaat u naar **instellingen-> eigenschappen** en zoekt u het **uitgaande IP-adres**. 
 
-![][5]
+![Hier wordt weer gegeven waar u het uitgaande IP-adres voor uw ASE kunt vinden.][5]
 
 #### <a name="general-ilb-ase-management"></a>Algemeen ILB ASE-beheer
 Het beheren van een ILB-ASE is grotendeels hetzelfde als het beheren van een ASE. U moet uw werknemers groepen omhoog schalen om meer ASP-instanties te hosten en de front-endservers omhoog te schalen om meer bedragen aan HTTP/HTTPS-verkeer te kunnen verwerken. Zie [Configure an app service Environment][ASEConfig](Engelstalig) voor algemene informatie over het beheren van de configuratie van een ASE. 

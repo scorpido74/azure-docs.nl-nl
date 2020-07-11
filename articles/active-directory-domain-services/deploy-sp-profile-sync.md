@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
 ms.topic: how-to
-ms.date: 01/21/2020
+ms.date: 07/09/2020
 ms.author: iainfou
-ms.openlocfilehash: c45921b75fff000185c7e24b998b761ecc088d9f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 9a65065a6f3cbc7264a8efb9bcf128b06897aacf
+ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84734789"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86220266"
 ---
 # <a name="configure-azure-active-directory-domain-services-to-support-user-profile-synchronization-for-sharepoint-server"></a>Azure Active Directory Domain Services configureren voor de ondersteuning van synchronisatie van gebruikers profielen voor share Point server
 
@@ -42,18 +42,18 @@ U hebt de volgende resources en bevoegdheden nodig om dit artikel te volt ooien:
 
 ## <a name="service-accounts-overview"></a>Overzicht van service accounts
 
-In een beheerd domein bestaat een beveiligings groep met de naam **Aad DC-service accounts** als onderdeel van de organisatie-eenheid (OE) van de *gebruiker* . Leden van deze beveiligings groep zijn gemachtigd om de volgende bevoegdheden:
+In een beheerd domein bestaat een beveiligings groep met de naam *Aad DC-service accounts* als onderdeel van de organisatie-eenheid (OE) van de *gebruiker* . Leden van deze beveiligings groep zijn gemachtigd om de volgende bevoegdheden:
 
 - De bevoegdheid **Directory wijzigingen repliceren** op het hoofd DSE.
 - De bevoegdheid **Directory wijzigingen repliceren** in de *configuratie* naamgevings context ( `cn=configuration` container).
 
-De beveiligings groep van de **Aad DC-service accounts** is ook lid van de ingebouwde groep **Pre-Windows 2000-compatibele toegang**.
+De beveiligings groep van de *Aad DC-service accounts* is ook lid van de ingebouwde groep *Pre-Windows 2000-compatibele toegang*.
 
 Wanneer het service account voor de synchronisatie service van de share Point server-gebruikers profielen aan deze beveiligings groep wordt toegevoegd, worden de vereiste bevoegdheden verleend om correct te werken.
 
 ## <a name="enable-support-for-sharepoint-server-user-profile-sync"></a>Ondersteuning voor synchronisatie van gebruikers profielen van share Point server inschakelen
 
-Het service account voor share Point server heeft voldoende bevoegdheden nodig om wijzigingen in de Directory te repliceren en de synchronisatie van het gebruikers profiel van share Point server correct te laten werken. Als u deze bevoegdheden wilt opgeven, voegt u het service account dat wordt gebruikt voor de synchronisatie van share point-gebruikers profielen toe aan de groep **Aad DC-service accounts** .
+Het service account voor share Point server heeft voldoende bevoegdheden nodig om wijzigingen in de Directory te repliceren en de synchronisatie van het gebruikers profiel van share Point server correct te laten werken. Als u deze bevoegdheden wilt opgeven, voegt u het service account dat wordt gebruikt voor de synchronisatie van share point-gebruikers profielen toe aan de groep *Aad DC-service accounts* .
 
 Voer de volgende stappen uit op de virtuele machine met Azure AD DS Management:
 

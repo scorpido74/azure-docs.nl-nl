@@ -7,12 +7,12 @@ ms.topic: reference
 ms.date: 09/08/2018
 ms.author: cshoe
 ms.custom: tracking-python
-ms.openlocfilehash: e1dd20514fcb14e411fbb7efee4157b670d462b9
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: a832fe4e212ce39ca423263ed2554c2682455002
+ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85389697"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86165653"
 ---
 # <a name="timer-trigger-for-azure-functions"></a>Timer trigger voor Azure Functions 
 
@@ -217,7 +217,7 @@ public void keepAlive(
 
 De volgende tabel bevat uitleg over de binding configuratie-eigenschappen die u hebt ingesteld in de *function.jsvoor* het bestand en het `TimerTrigger` kenmerk.
 
-|function.jsbij eigenschap | Kenmerk eigenschap |Description|
+|function.jsbij eigenschap | Kenmerk eigenschap |Beschrijving|
 |---------|---------|----------------------|
 |**type** | N.v.t. | Moet worden ingesteld op ' Timer trigger '. Deze eigenschap wordt automatisch ingesteld wanneer u de trigger maakt in de Azure Portal.|
 |**direction** | N.v.t. | Moet worden ingesteld op in. Deze eigenschap wordt automatisch ingesteld wanneer u de trigger maakt in de Azure Portal. |
@@ -287,24 +287,7 @@ Hier volgen enkele voor beelden van NCRONTAB-expressies die u kunt gebruiken voo
 
 De getallen in een CRON-expressie verwijzen naar een datum en tijd, niet een tijds Panne. Bijvoorbeeld, een 5 in het `hour` veld verwijst naar 5:00 uur, niet om de vijf uur.
 
-De standaardtijd zone die wordt gebruikt in de CRON-expressies is Coordinated Universal Time (UTC). Als u de CRON-expressie op basis van een andere tijd zone wilt gebruiken, maakt u een app-instelling voor de functie-app met de naam `WEBSITE_TIME_ZONE` . Stel de waarde in op de naam van de gewenste tijd zone, zoals weer gegeven in de [micro soft-tijd zone-index](https://technet.microsoft.com/library/cc749073).
-
-  > [!NOTE]
-  > `WEBSITE_TIME_ZONE`wordt momenteel niet ondersteund in het verbruiks abonnement voor Linux.
-
-Bijvoorbeeld, *Eastern Standard Time* is UTC-05:00. Als u wilt dat uw timer trigger wordt geactiveerd om 10:00 uur EST elke dag, gebruikt u de volgende NCRONTAB-expressie die accounts voor UTC-tijd zone:
-
-```
-"0 0 15 * * *"
-``` 
-
-Of maak een app-instelling voor de naam van de functie-app `WEBSITE_TIME_ZONE` en stel de waarde in op **Eastern Standard Time**.  Gebruikt vervolgens de volgende NCRONTAB-expressie: 
-
-```
-"0 0 10 * * *"
-``` 
-
-Wanneer u gebruikt `WEBSITE_TIME_ZONE` , wordt de tijd aangepast voor tijd wijzigingen in de specifieke tijd zone, zoals zomer tijd. 
+[!INCLUDE [functions-timezone](../../includes/functions-timezone.md)]
 
 ## <a name="timespan"></a>TimeSpan
 
@@ -312,7 +295,7 @@ Wanneer u gebruikt `WEBSITE_TIME_ZONE` , wordt de tijd aangepast voor tijd wijzi
 
 In tegens telling tot een CRON-expressie `TimeSpan` specificeert een waarde het tijds interval tussen elke functie aanroep. Wanneer een functie wordt voltooid nadat deze langer dan het opgegeven interval is uitgevoerd, roept de timer de functie opnieuw aan.
 
-Wordt weer gegeven als een teken reeks, de `TimeSpan` notatie is `hh:mm:ss` `hh` kleiner dan 24. Als de eerste twee cijfers 24 of hoger zijn, is de notatie `dd:hh:mm` . Enkele voorbeelden:
+Wordt weer gegeven als een teken reeks, de `TimeSpan` notatie is `hh:mm:ss` `hh` kleiner dan 24. Als de eerste twee cijfers 24 of hoger zijn, is de notatie `dd:hh:mm` . Hier volgen enkele voorbeelden:
 
 |Voorbeeld |Wanneer geactiveerd  |
 |---------|---------|

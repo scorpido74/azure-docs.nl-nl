@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 07/11/2017
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: 89dc96370f65ff20d7f8be38ff78d6c1664305d3
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 543050bc899c257c4ad5e0d0c399a1de6f0f58f2
+ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80477793"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86220572"
 ---
 # <a name="how-to-create-an-app-service-environment-v1"></a>Een App Service Environment v1 maken 
 
@@ -40,11 +40,11 @@ Als u een app service Environment v1 wilt maken, kunt u in de Azure Marketplace 
 
 1. Geef de naam van uw ASE op. De naam die u opgeeft voor de ASE wordt gebruikt voor de apps die zijn gemaakt in de ASE. Als de naam van de ASE appsvcenvdemo is, is de naam van het subdomein: *appsvcenvdemo.p.azurewebsites.net*. Als u een app hebt gemaakt met de naam *mytestapp*, is deze beschikbaar op *mytestapp.appsvcenvdemo.p.azurewebsites.net*. U kunt geen witruimte gebruiken in de naam van uw ASE. Als u hoofd letters in de naam gebruikt, wordt de domein naam de totale kleine letters versie van die naam. Als u een ILB gebruikt, wordt uw ASE-naam niet gebruikt in uw subdomein, maar wordt in plaats daarvan expliciet aangegeven tijdens het maken van ASE.
    
-    ![][1]
+    ![Scherm afbeelding die laat zien hoe u een App Service Environment maakt (ASE).][1]
 2. Selecteer uw abonnement. Het abonnement dat u gebruikt voor uw ASE is ook van toepassing op alle apps die u in die ASE maakt. U kunt uw ASE niet in een VNet plaatsen dat zich in een ander abonnement bevindt.
 3. Selecteer een nieuwe resource groep of geef deze op. De resource groep die wordt gebruikt voor uw ASE moet gelijk zijn aan die voor uw VNet. Als u een bestaand VNet selecteert, wordt de selectie van de resource groep voor uw ASE bijgewerkt zodat deze overeenkomt met die van uw VNet.
    
-    ![][2]
+    ![Scherm afbeelding die laat zien hoe u een nieuwe resource groep selecteert of wijzigt.][2]
 4. Maak de selecties voor Virtual Network en locatie. U kunt ervoor kiezen om een nieuw VNet te maken of een bestaand VNet te selecteren. Als u een nieuw VNet selecteert, kunt u een naam en locatie opgeven. Het nieuwe VNet heeft het adres bereik 192.168.250.0/23 en een subnet met de naam **standaard** dat is gedefinieerd als 192.168.250.0/24. U kunt ook gewoon een bestaand klassiek of Resource Manager-VNet selecteren. De selectie van het VIP-type bepaalt of uw ASE rechtstreeks toegankelijk is vanaf internet (extern) of dat er een interne Load Balancer (ILB) wordt gebruikt. Voor meer informatie over het lezen van [een interne Load Balancer met een app service Environment][ILBASE]. Als u het VIP-type extern selecteert, kunt u selecteren hoeveel externe IP-adressen het systeem heeft gemaakt met voor IP SSL doeleinden. Als u intern selecteert, moet u het subdomein opgeven dat door uw ASE wordt gebruikt. As kan worden geïmplementeerd in virtuele netwerken *die gebruikmaken van* open bare adresbereiken *of* RFC1918-adres ruimten (dat wil zeggen persoonlijke adressen). Als u een virtueel netwerk met een openbaar adres bereik wilt gebruiken, moet u het VNet vooraf van de tijd maken. Wanneer u een al bestaand VNet selecteert, moet u een nieuw subnet maken tijdens het maken van ASE. **U kunt een vooraf gemaakt subnet niet gebruiken in de portal. U kunt een ASE maken met een reeds bestaand subnet als u uw ASE maakt met behulp van een resource manager-sjabloon.** Als u een ASE wilt maken op basis van een sjabloon, gebruikt u de informatie hier, [maakt u een app service Environment van de sjabloon][ILBAseTemplate] en [maakt u een ILB-app service Environment van een sjabloon][ASEfromTemplate].
 
 ### <a name="details"></a>Details

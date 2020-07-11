@@ -5,11 +5,12 @@ services: automation
 ms.subservice: process-automation
 ms.date: 01/17/2019
 ms.topic: conceptual
-ms.openlocfilehash: c15ed6e9409bee71a778986d8f38ae1ab126c180
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 95e156c17b723c679772293401c730cbdff2220b
+ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83828641"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86169881"
 ---
 # <a name="create-modular-runbooks"></a>Modulaire runbooks maken
 
@@ -19,12 +20,12 @@ Er zijn twee manieren om een onderliggend runbook aan te roepen en er zijn versc
 
 |  | Inline | Cmdlet |
 |:--- |:--- |:--- |
-| Taak |Onderliggende runbooks worden uitgevoerd in dezelfde taak als het bovenliggende runbook. |Er wordt een afzonderlijke taak gemaakt voor het onderliggende runbook. |
-| Uitvoering |Bovenliggend runbook wacht tot het onderliggende runbook is voltooid voordat het verdergaat. |Het bovenliggende runbook blijft onmiddellijk nadat het onderliggende runbook is gestart *of* het bovenliggende runbook wacht totdat de onderliggende taak is voltooid. |
-| Uitvoer |Bovenliggend runbook kan uitvoer rechtstreeks uit onderliggend runbook verkrijgen. |Bovenliggend runbook moet uitvoer ophalen van onderliggend runbook-taak *of* bovenliggend runbook kan rechtstreeks uitvoer ophalen van onderliggend runbook. |
-| Parameters |Waarden voor de parameters van onderliggend runbook worden afzonderlijk opgegeven en kunnen elk gegevenstype hebben. |Waarden voor de para meters van het onderliggende runbook moeten worden gecombineerd in één hashtabel. Deze hashtabel kan alleen eenvoudige, matrix-en object gegevens typen bevatten die gebruikmaken van JSON-serialisatie. |
-| Automation-account |Bovenliggend runbook kan alleen een onderliggend runbook gebruiken in hetzelfde Automation-account. |Bovenliggende runbooks kunnen een onderliggend runbook gebruiken uit elk Automation-account, van hetzelfde Azure-abonnement en zelfs van een ander abonnement waarmee u verbinding hebt. |
-| Publiceren |Onderliggend runbook moet zijn gepubliceerd voordat bovenliggend runbook wordt gepubliceerd. |Onderliggend runbook wordt gepubliceerd telkens voordat het bovenliggende runbook wordt gestart. |
+| **Taak** |Onderliggende runbooks worden uitgevoerd in dezelfde taak als het bovenliggende runbook. |Er wordt een afzonderlijke taak gemaakt voor het onderliggende runbook. |
+| **Uitvoering** |Bovenliggend runbook wacht tot het onderliggende runbook is voltooid voordat het verdergaat. |Het bovenliggende runbook blijft onmiddellijk nadat het onderliggende runbook is gestart *of* het bovenliggende runbook wacht totdat de onderliggende taak is voltooid. |
+| **Uitvoer** |Bovenliggend runbook kan uitvoer rechtstreeks uit onderliggend runbook verkrijgen. |Bovenliggend runbook moet uitvoer ophalen van onderliggend runbook-taak *of* bovenliggend runbook kan rechtstreeks uitvoer ophalen van onderliggend runbook. |
+| **Parameters** |Waarden voor de parameters van onderliggend runbook worden afzonderlijk opgegeven en kunnen elk gegevenstype hebben. |Waarden voor de para meters van het onderliggende runbook moeten worden gecombineerd in één hashtabel. Deze hashtabel kan alleen eenvoudige, matrix-en object gegevens typen bevatten die gebruikmaken van JSON-serialisatie. |
+| **Automation-account** |Bovenliggend runbook kan alleen een onderliggend runbook gebruiken in hetzelfde Automation-account. |Bovenliggende runbooks kunnen een onderliggend runbook gebruiken uit elk Automation-account, van hetzelfde Azure-abonnement en zelfs van een ander abonnement waarmee u verbinding hebt. |
+| **Publiceren** |Onderliggend runbook moet zijn gepubliceerd voordat bovenliggend runbook wordt gepubliceerd. |Onderliggend runbook wordt gepubliceerd telkens voordat het bovenliggende runbook wordt gestart. |
 
 ## <a name="invoke-a-child-runbook-using-inline-execution"></a>Een onderliggend runbook aanroepen met inline-uitvoering
 

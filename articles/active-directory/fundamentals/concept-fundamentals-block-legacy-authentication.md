@@ -12,11 +12,12 @@ manager: daveba
 ms.reviewer: rogoya
 ms.collection: M365-identity-device-management
 ms.custom: has-adal-ref
-ms.openlocfilehash: 1799f676e8971726832cc50598e119f029bc331d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 1e17421b27082a079d078f53c38d0c942db7ae71
+ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83196395"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86200545"
 ---
 # <a name="blocking-legacy-authentication"></a>Verouderde verificatie blok keren
  
@@ -31,9 +32,9 @@ De meeste pogingen om zich aan te melden, zijn tegenwoordig afkomstig van veroud
 
 Voordat u verouderde verificatie in uw Directory kunt blok keren, moet u eerst begrijpen of uw gebruikers apps hebben die gebruikmaken van verouderde verificatie en hoe dit van invloed is op uw algemene Directory. Aanmeld logboeken van Azure AD kunnen worden gebruikt om te begrijpen of u gebruikmaakt van verouderde verificatie.
 
-1. Navigeer naar het **Azure Portal**   >  **Azure Active Directory**   >  **-Azure Active Directory aanmeldingen**.
+1. Navigeer naar het **Azure Portal**  >  **Azure Active Directory**  >  **-Azure Active Directory aanmeldingen**.
 1. Voeg de kolom **client** toepassing toe als deze niet wordt weer gegeven door te klikken op de client-app **Columns**   >  **Client App**.
-1. Filteren op **Client App**  > alle **verouderde** opties voor verificatie-clients controleren.
+1. Filteren op **Client App** > alle **verouderde** opties voor verificatie-clients controleren.
 1. Filteren op **status**  >  **geslaagd**. 
 1. Breid het datum bereik uit, indien nodig, met behulp van het **datum** filter.
 
@@ -99,4 +100,4 @@ De stappen voor het inschakelen van moderne verificatie vindt u in de volgende a
 
 - [Exchange Server on-premises configureren voor het gebruik van hybride, moderne authenticatie](https://docs.microsoft.com/office365/enterprise/configure-exchange-server-for-hybrid-modern-authentication)
 - [Moderne verificatie (ADAL) gebruiken met Skype voor bedrijven](https://docs.microsoft.com/skypeforbusiness/manage/authentication/use-adal)
-- [Verouderde verificatie blok keren](../conditional-access/block-legacy-authentication.md)
+- [Verouderde verificatie blokkeren](../conditional-access/block-legacy-authentication.md)

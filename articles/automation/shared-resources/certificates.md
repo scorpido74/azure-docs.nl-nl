@@ -9,15 +9,16 @@ ms.author: magoedte
 ms.date: 04/02/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: ebd4bf0ff91342229edb4295489f0cbd0970699a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 918e34114faa7a57e54ec45c1cca8036462a8fa1
+ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83745027"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86187384"
 ---
 # <a name="manage-certificates-in-azure-automation"></a>Certificaten in Azure Automation beheren
 
-Azure Automation certificaten veilig opslaat voor toegang door runbooks en DSC-configuraties, met behulp van de cmdlet [Get-AzAutomationCertificate](https://docs.microsoft.com/powershell/module/Az.Automation/Get-AzAutomationCertificate?view=azps-3.7.0) voor Azure Resource Manager resources. Met beveiligde certificaat opslag kunt u runbooks en DSC-configuraties maken die gebruikmaken van certificaten voor verificatie, of deze toevoegen aan Azure of bronnen van derden.
+Azure Automation certificaten veilig opslaat voor toegang door runbooks en DSC-configuraties, met behulp van de cmdlet [Get-AzAutomationCertificate](/powershell/module/Az.Automation/Get-AzAutomationCertificate?view=azps-3.7.0) voor Azure Resource Manager resources. Met beveiligde certificaat opslag kunt u runbooks en DSC-configuraties maken die gebruikmaken van certificaten voor verificatie, of deze toevoegen aan Azure of bronnen van derden.
 
 >[!NOTE]
 >Beveilig assets in Azure Automation referenties, certificaten, verbindingen en versleutelde variabelen bevatten. Deze assets worden versleuteld en opgeslagen in Automation met behulp van een unieke sleutel die wordt gegenereerd voor elk Automation-account. Automation slaat de sleutel op in de door het systeem beheerde Key Vault-service. Voordat u een beveiligde Asset opslaat, laadt Automation de sleutel van Key Vault en gebruikt deze om de Asset te versleutelen. 
@@ -26,12 +27,12 @@ Azure Automation certificaten veilig opslaat voor toegang door runbooks en DSC-c
 
 Met de cmdlets in de volgende tabel worden Automation-certificaten met Power shell gemaakt en beheerd. Ze worden geleverd als onderdeel van de [AZ-modules](modules.md#az-modules).
 
-|Cmdlet |Description|
+|Cmdlet |Beschrijving|
 | --- | ---|
-|[Get-AzAutomationCertificate](https://docs.microsoft.com/powershell/module/Az.Automation/Get-AzAutomationCertificate?view=azps-3.7.0)|Haalt informatie op over een certificaat dat moet worden gebruikt in een runbook of DSC-configuratie. U kunt het certificaat zelf alleen ophalen met behulp van de interne `Get-AutomationCertificate` cmdlet.|
-|[New-AzAutomationCertificate](https://docs.microsoft.com/powershell/module/Az.Automation/New-AzAutomationCertificate?view=azps-3.7.0)|Hiermee maakt u een nieuw certificaat in Automation.|
-|[Remove-AzAutomationCertificate](https://docs.microsoft.com/powershell/module/Az.Automation/Remove-AzAutomationCertificate?view=azps-3.7.0)|Hiermee verwijdert u een certificaat uit Automation.|
-|[Set-AzAutomationCertificate](https://docs.microsoft.com/powershell/module/Az.Automation/Set-AzAutomationCertificate?view=azps-3.7.0)|Hiermee stelt u de eigenschappen van een bestaand certificaat in, waaronder het uploaden van het certificaat bestand en het instellen van het wacht woord voor een **PFX** -bestand.|
+|[Get-AzAutomationCertificate](/powershell/module/Az.Automation/Get-AzAutomationCertificate?view=azps-3.7.0)|Haalt informatie op over een certificaat dat moet worden gebruikt in een runbook of DSC-configuratie. U kunt het certificaat zelf alleen ophalen met behulp van de interne `Get-AutomationCertificate` cmdlet.|
+|[New-AzAutomationCertificate](/powershell/module/Az.Automation/New-AzAutomationCertificate?view=azps-3.7.0)|Hiermee maakt u een nieuw certificaat in Automation.|
+|[Remove-AzAutomationCertificate](/powershell/module/Az.Automation/Remove-AzAutomationCertificate?view=azps-3.7.0)|Hiermee verwijdert u een certificaat uit Automation.|
+|[Set-AzAutomationCertificate](/powershell/module/Az.Automation/Set-AzAutomationCertificate?view=azps-3.7.0)|Hiermee stelt u de eigenschappen van een bestaand certificaat in, waaronder het uploaden van het certificaat bestand en het instellen van het wacht woord voor een **PFX** -bestand.|
 
 De cmdlet [add-AzureCertificate](/powershell/module/servicemanagement/azure/add-azurecertificate) kan ook worden gebruikt voor het uploaden van een service certificaat voor de opgegeven Cloud service.
 
@@ -39,7 +40,7 @@ De cmdlet [add-AzureCertificate](/powershell/module/servicemanagement/azure/add-
 
 De interne cmdlet in de volgende tabel wordt gebruikt voor toegang tot certificaten in uw runbooks. Deze cmdlet wordt geleverd met de globale module `Orchestrator.AssetManagement.Cmdlets` . Zie [interne cmdlets](modules.md#internal-cmdlets)voor meer informatie.
 
-| Interne cmdlet | Description |
+| Interne cmdlet | Beschrijving |
 |:---|:---|
 |`Get-AutomationCertificate`|Haalt een certificaat op dat moet worden gebruikt in een runbook-of DSC-configuratie. Retourneert een [System. Security. Cryptography. X509Certificates. X509Certificate2](/dotnet/api/system.security.cryptography.x509certificates.x509certificate2) -object.|
 
@@ -126,7 +127,7 @@ New-AzResourceGroupDeployment -Name NewCert -ResourceGroupName TestAzureAuto -Te
 
 ## <a name="get-a-certificate"></a>Een certificaat ophalen
 
-Gebruik de interne cmdlet om een certificaat op te halen `Get-AutomationCertificate` . U kunt de cmdlet [Get-AzAutomationCertificate](https://docs.microsoft.com/powershell/module/Az.Automation/Get-AzAutomationCertificate?view=azps-3.7.0) niet gebruiken, omdat deze informatie over de certificaat Asset retourneert, maar niet het certificaat zelf.
+Gebruik de interne cmdlet om een certificaat op te halen `Get-AutomationCertificate` . U kunt de cmdlet [Get-AzAutomationCertificate](/powershell/module/Az.Automation/Get-AzAutomationCertificate?view=azps-3.7.0) niet gebruiken, omdat deze informatie over de certificaat Asset retourneert, maar niet het certificaat zelf.
 
 ### <a name="textual-runbook-example"></a>Voor beeld van een tekst-runbook
 

@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: vinynigam
 ms.author: vinigam
 ms.date: 10/12/2018
-ms.openlocfilehash: 191c6d411418229d40b10704ea14d5a536c0d5f7
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: de1c6e91a6502e3a5e03dde69c5559445628d369
+ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86110620"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86184545"
 ---
 # <a name="network-performance-monitor-solution-faq"></a>Veelgestelde vragen over Netwerkprestatiemeter oplossingen
 
@@ -95,7 +95,7 @@ Als een hop rood is, betekent dit dat deze deel uitmaakt van ten minste één be
 NPM maakt gebruik van een Probabilistic-mechanisme om fout kansen toe te wijzen aan elk netwerkpad, netwerk segment en de samenstellende netwerk hops op basis van het aantal beschadigde paden waarvan ze deel uitmaken. Naarmate de netwerk segmenten en-hops deel uitmaken van meer aantal beschadigde paden, nemen de fout waarschijnlijke fouten toe. Dit algoritme werkt het beste wanneer u een groot aantal knoop punten met NPM-agent hebt verbonden, omdat hierdoor de gegevens punten voor het berekenen van de fout kansen worden verhoogd.
 
 ### <a name="how-can-i-create-alerts-in-npm"></a>Hoe kan ik waarschuwingen in NPM maken?
-Raadpleeg [de sectie waarschuwingen in de documentatie](https://docs.microsoft.com/azure/log-analytics/log-analytics-network-performance-monitor#alerts) voor stapsgewijze instructies.
+Het maken van waarschuwingen van de NPM-gebruikers interface is momenteel mislukt vanwege een probleem. Maak waarschuwingen hand matig.
 
 ### <a name="what-are-the-default-log-analytics-queries-for-alerts"></a>Wat zijn de standaard Log Analytics query's voor waarschuwingen
 Query prestatie meter

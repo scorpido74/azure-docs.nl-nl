@@ -3,12 +3,12 @@ title: Versleuteling in Azure Backup
 description: Meer informatie over hoe versleutelings functies in Azure Backup u helpen uw back-upgegevens te beschermen en te voldoen aan de beveiligings behoeften van uw bedrijf.
 ms.topic: conceptual
 ms.date: 04/30/2020
-ms.openlocfilehash: ca570cfdc6e78e712715ba075168f4b06c55e4af
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: aafb9868dfb6a63ec9b6a3ae654b88b202a1a145
+ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86116553"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86171819"
 ---
 # <a name="encryption-in-azure-backup"></a>Versleuteling in Azure Backup
 
@@ -26,8 +26,7 @@ Standaard worden al uw gegevens versleuteld met sleutels die door het platform w
 
 Wanneer u een back-up maakt van uw Azure-Virtual Machines, kunt u uw gegevens nu versleutelen met sleutels die eigendom zijn van en worden beheerd door u. Met Azure Backup kunt u uw RSA-sleutels gebruiken die zijn opgeslagen in de Azure Key Vault voor het versleutelen van uw back-ups. De versleutelings sleutel die wordt gebruikt voor het versleutelen van back-ups is mogelijk anders dan die voor de bron. De gegevens worden beveiligd met behulp van een AES 256-gegevens versleutelings sleutel (DEK), die op zijn beurt wordt beveiligd met uw sleutels. Hiermee krijgt u volledige controle over de gegevens en de sleutels. Als u versleuteling wilt toestaan, moet de Recovery Services-kluis toegang krijgen tot de versleutelings sleutel in de Azure Key Vault. U kunt de sleutel uitschakelen of toegang intrekken wanneer dit nodig is. U moet echter versleuteling inschakelen met behulp van uw sleutels voordat u de items in de kluis probeert te beveiligen.
 
->[!NOTE]
->Deze functie is momenteel beperkt beschikbaar. Vul [deze enquête](https://forms.microsoft.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbR0H3_nezt2RNkpBCUTbWEapURE9TTDRIUEUyNFhNT1lZS1BNVDdZVllHWi4u) in en stuur ons een e-mail AskAzureBackupTeam@microsoft.com naar als u uw back-upgegevens wilt versleutelen met door de klant beheerde sleutels. Houd er rekening mee dat de mogelijkheid om deze functie te gebruiken afhankelijk is van de Azure Backup service.
+Lees [hier](encryption-at-rest-with-cmk.md)meer informatie over het versleutelen van uw back-upgegevens met door de klant beheerde sleutels.
 
 ## <a name="backup-of-managed-disk-vms-encrypted-using-customer-managed-keys"></a>Back-up van virtuele machines met beheerde schijven versleuteld met door de klant beheerde sleutels
 
@@ -38,7 +37,7 @@ Met Azure Backup kunt u ook een back-up maken van uw Azure-Vm's die gebruikmaken
 Naast het versleutelen van uw gegevens in de Recovery Services kluis met door de klant beheerde sleutels, kunt u er ook voor kiezen om een extra laag versleuteling te configureren voor de opslag infrastructuur. Deze infra structuur versleuteling wordt beheerd door het platform en samen met de versleutelings functie met door de klant beheerde sleutels, is het mogelijk om twee lagen versleuteling van uw back-upgegevens te maken. U moet erop gewezen dat infrastructuur versleuteling alleen kan worden geconfigureerd als u ervoor kiest om uw eigen sleutels te gebruiken voor versleuteling in rust. Infrastructuur versleuteling maakt gebruik van door het platform beheerde sleutels voor het versleutelen van gegevens.
 
 >[!NOTE]
->Infrastructuur versleuteling is momenteel in een beperkte preview-versie en is alleen beschikbaar in de regio's VS-Oost, VS-West2 en VS Zuid-Centraal. Als u de functie in een van deze regio's wilt gebruiken, vult u [dit formulier](https://forms.office.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbR0H3_nezt2RNkpBCUTbWEapUN0VHNEpJS0ZUWklUNVdJSTEzR0hIOVRMVC4u) in en gaat u een e-mail sturen naar [AskAzureBackupTeam@microsoft.com](mailto:AskAzureBackupTeam@microsoft.com) .
+>Infrastructuur versleuteling is momenteel in beperkte preview en is alleen beschikbaar in de regio's VS-Oost, VS-West2, VS Zuid-Centraal, US Gov-Arizona en VS GOV Virginia. Als u de functie in een van deze regio's wilt gebruiken, vult u [dit formulier](https://forms.office.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbR0H3_nezt2RNkpBCUTbWEapUN0VHNEpJS0ZUWklUNVdJSTEzR0hIOVRMVC4u) in en gaat u een e-mail sturen naar [AskAzureBackupTeam@microsoft.com](mailto:AskAzureBackupTeam@microsoft.com) .
 
 ## <a name="backup-of-vms-encrypted-using-ade"></a>Back-up van virtuele machines die zijn versleuteld met ADE
 

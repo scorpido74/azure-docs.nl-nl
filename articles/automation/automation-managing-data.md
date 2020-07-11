@@ -5,11 +5,12 @@ services: automation
 ms.subservice: shared-capabilities
 ms.date: 06/03/2020
 ms.topic: conceptual
-ms.openlocfilehash: 2dbaebac2228c11aef5fb33af4588f75ea15677a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: cc96f2dd81b618b4170acd4b415a09248adbb7d5
+ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84343051"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86186160"
 ---
 # <a name="management-of-azure-automation-data"></a>Beheer van Azure Automation-gegevens
 
@@ -36,11 +37,11 @@ Zie [log Analytics agent Overview-TLS 1,2](..//azure-monitor/platform/log-analyt
 |Platform/taal | Ondersteuning | Meer informatie |
 | --- | --- | --- |
 |Linux | Linux-distributies zijn vaak afhankelijk van [openssl](https://www.openssl.org) voor TLS 1,2-ondersteuning.  | Controleer de [openssl wijzigingen logboek](https://www.openssl.org/news/changelog.html) om te bevestigen dat uw versie van openssl wordt ondersteund.|
-| Windows 8,0-10 | Wordt ondersteund en is standaard ingeschakeld. | Om te bevestigen dat u nog steeds de [standaard instellingen](https://docs.microsoft.com/windows-server/security/tls/tls-registry-settings)gebruikt.  |
-| Windows Server 2012-2016 | Wordt ondersteund en is standaard ingeschakeld. | Controleren of u nog steeds de [standaard instellingen](https://docs.microsoft.com/windows-server/security/tls/tls-registry-settings) gebruikt |
-| Windows 7 SP1 en Windows Server 2008 R2 SP1 | Ondersteund, maar is niet standaard ingeschakeld. | Zie de pagina met [register instellingen voor Transport Layer Security (TLS)](https://docs.microsoft.com/windows-server/security/tls/tls-registry-settings) voor meer informatie over het inschakelen van.  |
+| Windows 8,0-10 | Wordt ondersteund en is standaard ingeschakeld. | Om te bevestigen dat u nog steeds de [standaard instellingen](/windows-server/security/tls/tls-registry-settings)gebruikt.  |
+| Windows Server 2012-2016 | Wordt ondersteund en is standaard ingeschakeld. | Controleren of u nog steeds de [standaard instellingen](/windows-server/security/tls/tls-registry-settings) gebruikt |
+| Windows 7 SP1 en Windows Server 2008 R2 SP1 | Ondersteund, maar is niet standaard ingeschakeld. | Zie de pagina met [register instellingen voor Transport Layer Security (TLS)](/windows-server/security/tls/tls-registry-settings) voor meer informatie over het inschakelen van.  |
 
-## <a name="data-retention"></a>Bewaartijd van gegevens
+## <a name="data-retention"></a>Gegevensretentie
 
 Wanneer u een resource in Azure Automation verwijdert, wordt deze gedurende een aantal dagen voor controle doeleinden bewaard voordat deze definitief worden verwijderd. U kunt de resource niet zien of gebruiken tijdens deze periode. Dit beleid is ook van toepassing op bronnen die horen bij een verwijderd Automation-account.
 
@@ -50,7 +51,7 @@ De volgende tabel bevat een overzicht van het Bewaar beleid voor verschillende r
 |:--- |:--- |
 | Accounts |Een account wordt definitief verwijderd 30 dagen nadat een gebruiker het heeft verwijderd. |
 | Assets |Een activum wordt definitief verwijderd 30 dagen nadat een gebruiker het heeft verwijderd, of 30 dagen nadat een gebruiker een account heeft verwijderd dat de Asset bevat. |
-| DSC-knoop punten |Een DSC-knoop punt wordt permanent verwijderd 30 dagen nadat de registratie van een Automation-account is ongedaan gemaakt met Azure Portal of de cmdlet [unregister-AzAutomationDscNode](https://docs.microsoft.com/powershell/module/az.automation/unregister-azautomationdscnode?view=azps-3.7.0) in Windows Power shell. Een knoop punt wordt ook 30 dagen nadat een gebruiker het account dat het knoop punt bevat verwijderd, definitief verwijderd. |
+| DSC-knoop punten |Een DSC-knoop punt wordt permanent verwijderd 30 dagen nadat de registratie van een Automation-account is ongedaan gemaakt met Azure Portal of de cmdlet [unregister-AzAutomationDscNode](/powershell/module/az.automation/unregister-azautomationdscnode?view=azps-3.7.0) in Windows Power shell. Een knoop punt wordt ook 30 dagen nadat een gebruiker het account dat het knoop punt bevat verwijderd, definitief verwijderd. |
 | Taken |Een taak wordt verwijderd en wordt 30 dagen na de wijziging permanent verwijderd, bijvoorbeeld nadat de taak is voltooid, is gestopt of is onderbroken. |
 | Modules |Een module wordt definitief verwijderd 30 dagen nadat een gebruiker deze heeft verwijderd, of 30 dagen nadat een gebruiker het account heeft verwijderd dat de module bevat. |
 | Knooppunt configuraties/MOF-bestanden |Een oude knooppunt configuratie wordt definitief verwijderd 30 dagen nadat een nieuwe knooppunt configuratie is gegenereerd. |
@@ -65,7 +66,7 @@ Wanneer u een Automation-account in azure verwijdert, worden alle objecten in he
 
 ### <a name="runbooks"></a>Runbooks
 
-U kunt uw runbooks exporteren naar script bestanden met behulp van de Azure Portal of de cmdlet [Get-AzureAutomationRunbookDefinition](https://docs.microsoft.com/powershell/module/servicemanagement/azure/get-azureautomationrunbookdefinition) in Windows Power shell. U kunt deze script bestanden importeren in een ander Automation-account, zoals beschreven in [Runbooks beheren in azure Automation](manage-runbooks.md).
+U kunt uw runbooks exporteren naar script bestanden met behulp van de Azure Portal of de cmdlet [Get-AzureAutomationRunbookDefinition](/powershell/module/servicemanagement/azure/get-azureautomationrunbookdefinition) in Windows Power shell. U kunt deze script bestanden importeren in een ander Automation-account, zoals beschreven in [Runbooks beheren in azure Automation](manage-runbooks.md).
 
 ### <a name="integration-modules"></a>Integratiemodules
 
@@ -79,8 +80,7 @@ U kunt de waarden voor versleutelde variabelen of de wachtwoord velden van refer
 
 ### <a name="dsc-configurations"></a>DSC-configuraties
 
-U kunt uw DSC-configuraties exporteren naar script bestanden met behulp van de Azure Portal of de cmdlet [export-AzAutomationDscConfiguration](https://docs.microsoft.com/powershell/module/az.automation/export-azautomationdscconfiguration?view=azps-3.7.0
-) in Windows Power shell. U kunt deze configuraties importeren en gebruiken in een ander Automation-account.
+U kunt uw DSC-configuraties exporteren naar script bestanden met behulp van de Azure Portal of de cmdlet [export-AzAutomationDscConfiguration](/powershell/module/az.automation/export-azautomationdscconfiguration?view=azps-3.7.0) in Windows Power shell. U kunt deze configuraties importeren en gebruiken in een ander Automation-account.
 
 ## <a name="geo-replication-in-azure-automation"></a>Geo-replicatie in Azure Automation
 
@@ -102,4 +102,4 @@ De geo-replicatie service voor automatisering is niet rechtstreeks toegankelijk 
 
 * Zie voor meer informatie over beveiligde assets in Azure Automation [versleuteling van beveiligde assets in azure Automation](automation-secure-asset-encryption.md).
 
-* Zie [actieve geo-replicatie maken en gebruiken](../sql-database/sql-database-active-geo-replication.md)om meer te weten te komen over geo-replicatie.
+* Zie [actieve geo-replicatie maken en gebruiken](../azure-sql/database/active-geo-replication-overview.md)om meer te weten te komen over geo-replicatie.

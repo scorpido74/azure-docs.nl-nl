@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 4/10/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 707cfb2e9bea3286daa92ea54f7bb9659a455caf
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: e37c680f6bf9e296230232c0d4e0fab5f50ad3cd
+ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85390513"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86142379"
 ---
 # <a name="manage-digital-twins"></a>Digitale tweelingen beheren
 
@@ -122,6 +122,7 @@ Het resultaat van het aanroepen van `object result = await client.DigitalTwins.G
 ```json
 {
   "$dtId": "myMoon-001",
+  "$etag": "W/\"e59ce8f5-03c0-4356-aea9-249ecbdc07f9\"",
   "radius": 1737.1,
   "mass": 0.0734,
   "$metadata": {
@@ -146,7 +147,8 @@ Het resultaat van het aanroepen van `object result = await client.DigitalTwins.G
 
 De gedefinieerde eigenschappen van de digitale twee worden geretourneerd als eigenschappen op het hoogste niveau van de digitale twee. Meta gegevens of systeem gegevens die geen deel uitmaken van de DTDL-definitie, worden geretourneerd met een `$` voor voegsel. Eigenschappen van meta gegevens zijn onder andere:
 * De ID van de digitale dubbele in dit Azure Digital Apparaatdubbels-exemplaar, zoals `$dtId` .
-* Andere eigenschappen in een `$metadata` sectie. Dit omvat:
+* `$etag`, een standaard-HTTP-veld dat is toegewezen door de webserver
+* Andere eigenschappen in een `$metadata` sectie. Deze omvatten:
     - De DTMI van het model van de digitale twee.
     - Synchronisatie status voor elke Beschrijf bare eigenschap. Dit is vooral nuttig voor apparaten, waar het mogelijk is dat de service en het apparaat afwijkende statussen hebben (bijvoorbeeld wanneer een apparaat offline is). Deze eigenschap is op dit moment alleen van toepassing op fysieke apparaten die zijn verbonden met IoT Hub. Met de gegevens in de sectie meta gegevens is het mogelijk inzicht te krijgen in de volledige status van een eigenschap, evenals de laatste gewijzigde tijds tempels. Zie voor meer informatie over de synchronisatie status [deze IOT hub zelf studie over het](../iot-hub/tutorial-device-twins.md) synchroniseren van de Apparaatstatus.
     - Servicespecifieke meta gegevens, zoals van IoT Hub of Azure Digital Apparaatdubbels. 

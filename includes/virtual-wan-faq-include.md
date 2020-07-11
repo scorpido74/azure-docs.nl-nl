@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 06/26/2020
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: 98b82047c1744fbd63ecd3665e804e9d8f6c5221
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 28ea1e68441a57d67fef1e78153e00eb1bd09211
+ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85565963"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86143902"
 ---
 ### <a name="does-the-user-need-to-have-hub-and-spoke-with-sd-wanvpn-devices-to-use-azure-virtual-wan"></a>Moet de gebruiker hub en spoke met SD-WAN/VPN-apparaten hebben om virtueel WAN van Azure te gebruiken?
 
@@ -25,7 +25,7 @@ Virtuele WAN is beschikbaar in twee soorten: Basic en Standard. In het virtuele 
 
 ### <a name="how-are-availability-zones-and-resiliency-handled-in-virtual-wan"></a>Hoe worden Beschikbaarheidszones en tolerantie verwerkt in virtueel WAN?
 
-Virtual WAN is een verzameling hubs en services die beschikbaar zijn in de hub. De gebruiker kan net zoveel virtueel WAN hebben als nodig is. In een virtuele WAN-hub zijn er meerdere services, zoals VPN, ExpressRoute, enzovoort. Elk van deze services wordt geïmplementeerd in een Beschikbaarheidszones regio, als de regio Beschikbaarheidszones ondersteunt. Als een regio een beschikbaarheids zone wordt na de eerste implementatie in de hub, kan de gebruiker de gateways opnieuw maken, waardoor de implementatie van een beschikbaarheids zone wordt geactiveerd. Alle gateways worden ingericht in een hub als actief-actief, wat inhoudt dat er toleranties zijn ingebouwd in een hub. Gebruikers kunnen verbinding maken met meerdere hubs als ze toleranties voor verschillende regio's willen. Hoewel het concept van virtueel WAN globaal is, is de daad werkelijke virtuele WAN-resource op basis van Resource Manager en gedistribueerd. Als de virtuele WAN-regio zelf een probleem had, blijven alle hubs in dat virtuele WAN functioneren, maar de gebruiker kan pas nieuwe hubs maken als de virtuele WAN-regio beschikbaar is.
+Virtual WAN is een verzameling hubs en services die beschikbaar zijn in de hub. De gebruiker kan net zoveel virtueel WAN hebben als nodig is. In een virtuele WAN-hub zijn er meerdere services, zoals VPN, ExpressRoute, enzovoort. Elk van deze services (met uitzonde ring van de Azure Firewall) wordt geïmplementeerd in een Beschikbaarheidszones regio, dat wil zeggen dat de regio Beschikbaarheidszones ondersteunt. Als een regio een beschikbaarheids zone wordt na de eerste implementatie in de hub, kan de gebruiker de gateways opnieuw maken, waardoor de implementatie van een beschikbaarheids zone wordt geactiveerd. Alle gateways worden ingericht in een hub als actief-actief, wat inhoudt dat er toleranties zijn ingebouwd in een hub. Gebruikers kunnen verbinding maken met meerdere hubs als ze toleranties voor verschillende regio's willen. Hoewel het concept van virtueel WAN globaal is, is de daad werkelijke virtuele WAN-resource op basis van Resource Manager en gedistribueerd. Als de virtuele WAN-regio zelf een probleem had, blijven alle hubs in dat virtuele WAN functioneren, maar de gebruiker kan pas nieuwe hubs maken als de virtuele WAN-regio beschikbaar is.
 
 ### <a name="what-client-does-the-azure-virtual-wan-user-vpn-point-to-site-support"></a>Welke client ondersteunt de Azure Virtual WAN-gebruikers VPN (punt-naar-site)?
 

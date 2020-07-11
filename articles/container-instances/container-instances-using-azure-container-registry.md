@@ -3,15 +3,15 @@ title: Container installatie kopie implementeren vanaf Azure Container Registry
 description: Meer informatie over het implementeren van containers in Azure Container Instances door container installatie kopieën te halen uit een Azure container Registry.
 services: container-instances
 ms.topic: article
-ms.date: 02/18/2020
+ms.date: 07/02/2020
 ms.author: danlep
 ms.custom: mvc
-ms.openlocfilehash: 212624b857d65297830995018603c2627f83369b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 8a82b0b70b7be8897d8f85cabea2ee21ce84d913
+ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81453520"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86169609"
 ---
 # <a name="deploy-to-azure-container-instances-from-azure-container-registry"></a>Azure Container Instances implementeren vanuit Azure Container Registry
 
@@ -136,7 +136,7 @@ U kunt de eigenschappen van uw Azure container Registry opgeven in een Azure Res
 [...]
 ```
 
-Zie de [Naslag Gids voor Resource Manager-sjablonen](/azure/templates/Microsoft.ContainerInstance/2018-10-01/containerGroups)voor de volledige instellingen van de container groep.    
+Zie de [Naslag Gids voor Resource Manager-sjablonen](/azure/templates/Microsoft.ContainerInstance/2019-12-01/containerGroups)voor de volledige instellingen van de container groep.    
 
 Zie [Azure Key Vault gebruiken om een veilige parameter waarde door te geven tijdens de implementatie](../azure-resource-manager/templates/key-vault-parameter.md)voor meer informatie over het verwijzen naar Azure Key Vault geheimen in een resource manager-sjabloon.
 

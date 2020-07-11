@@ -3,11 +3,12 @@ title: Een SharePoint-site met Application Insights bewaken
 description: Een nieuwe toepassing bewaken met een nieuwe instrumentatiesleutel
 ms.topic: conceptual
 ms.date: 07/11/2018
-ms.openlocfilehash: 395e8d667985318f4a084428c6fd4c395ee8b956
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: b9b31a715b19d6c06cbddb91c0bd9279088c4447
+ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77671440"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86221048"
 ---
 # <a name="monitor-a-sharepoint-site-with-application-insights"></a>Een SharePoint-site met Application Insights bewaken
 Azure Application Insights bewaakt de beschikbaarheid, de prestaties en het gebruik van uw apps. Hier wordt uitgelegd hoe u dit kunt instellen voor een SharePoint-site.
@@ -48,18 +49,18 @@ Als u de basispagina van de site kunt bewerken, biedt dit bewaking voor elke pag
 
 Bekijk de basispagina en bewerk deze met SharePoint Designer of een andere editor.
 
-![](./media/sharepoint/03-master.png)
+![Scherm afbeelding waarin wordt weer gegeven hoe u de basis pagina bewerkt met behulp van Sharepoing Designer of een andere editor.](./media/sharepoint/03-master.png)
 
 Voeg de code toe vlak voor de </head> Tag. 
 
-![](./media/sharepoint/04-code.png)
+![Scherm afbeelding die laat zien waar u de code aan uw site pagina kunt toevoegen.](./media/sharepoint/04-code.png)
 
 #### <a name="or-on-individual-pages"></a>Of op afzonderlijke pagina’s
 Als u een beperkt aantal pagina's wilt bewaken, voegt u het script afzonderlijk toe aan elke pagina. 
 
 Voeg een webonderdeel in en sluit het codefragment hierin in.
 
-![](./media/sharepoint/05-page.png)
+![Scherm afbeelding van het toevoegen van het script voor het bewaken van een beperkt aantal pagina's.](./media/sharepoint/05-page.png)
 
 ## <a name="view-data-about-your-app"></a>Gegevens over uw app weergeven
 Implementeer uw app opnieuw.
@@ -68,7 +69,7 @@ Ga terug naar uw toepassingsblade in de [Azure Portal](https://portal.azure.com)
 
 De eerste gebeurtenissen worden weergegeven bij Zoeken. 
 
-![](./media/sharepoint/09-search.png)
+![Scherm opname waarin de nieuwe gegevens worden weer gegeven die u in de app kunt weer geven.](./media/sharepoint/09-search.png)
 
 Klik na een paar seconden op Vernieuwen als u meer gegevens verwacht.
 
@@ -77,7 +78,7 @@ Met het standaardcodefragment van de webpagina wordt niet de gebruikers-id van S
 
 1. Kopieer de instrumentatiesleutel van uw app van de vervolgkeuzelijst Essentials in Application Insights. 
 
-    ![](./media/sharepoint/02-props.png)
+    ![Scherm opname van het kopiëren van de app-instrumentatie uit de vervolg keuzelijst Essentials in Application Insights.](./media/sharepoint/02-props.png)
 
 1. Vervang de instrumentatiesleutel door XXXX in het onderstaande fragment. 
 2. Sluit dit script in in uw SharePoint-app, in plaats van het fragment dat u via de portal krijgt.

@@ -4,24 +4,25 @@ description: In dit artikel leest u hoe u Azure Automation kunt gebruiken om Off
 services: automation
 ms.date: 04/01/2020
 ms.topic: conceptual
-ms.openlocfilehash: 322e2a3679ed29ab9ecc4cdc3c6e1fe4d0f20276
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 91f5ac0c3adabf9880078d7a4d3703e2757cb97f
+ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83831161"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86185310"
 ---
 # <a name="manage-office-365-services"></a>Office 365-services beheren
 
-U kunt Azure Automation gebruiken voor het beheer van Office 365-abonnements Services, voor producten zoals micro soft Word en micro soft Outlook. Interacties met Office 365 zijn ingeschakeld door [Azure Active Directory (Azure AD)](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-whatis). Zie [Azure AD gebruiken in azure Automation om te verifiëren bij Azure](automation-use-azure-ad.md).
+U kunt Azure Automation gebruiken voor het beheer van Office 365-abonnements Services, voor producten zoals micro soft Word en micro soft Outlook. Interacties met Office 365 zijn ingeschakeld door [Azure Active Directory (Azure AD)](../active-directory/fundamentals/active-directory-whatis.md). Zie [Azure AD gebruiken in azure Automation om te verifiëren bij Azure](automation-use-azure-ad.md).
 
 ## <a name="prerequisites"></a>Vereisten
 
 U hebt het volgende nodig voor het beheren van Office 365-abonnements Services in Azure Automation.
 
-* Een Azure-abonnement. Zie de [hand leiding voor abonnements beslissingen](https://docs.microsoft.com/azure/cloud-adoption-framework/decision-guides/subscriptions/).
-* Een Automation-object in azure voor de referenties van het gebruikers account en runbooks. Bekijk [een inleiding tot Azure Automation](https://docs.microsoft.com/azure/automation/automation-intro).
+* Een Azure-abonnement. Zie de [hand leiding voor abonnements beslissingen](/azure/cloud-adoption-framework/decision-guides/subscriptions/).
+* Een Automation-object in azure voor de referenties van het gebruikers account en runbooks. Bekijk [een inleiding tot Azure Automation](./automation-intro.md).
 * Azure AD. Zie [Azure AD gebruiken in azure Automation om te verifiëren bij Azure](automation-use-azure-ad.md).
-* Een Office 365-Tenant met een account. Zie [uw Office 365-Tenant instellen](https://docs.microsoft.com/sharepoint/dev/spfx/set-up-your-developer-tenant).
+* Een Office 365-Tenant met een account. Zie [uw Office 365-Tenant instellen](/sharepoint/dev/spfx/set-up-your-developer-tenant).
 
 ## <a name="install-the-msonline-and-msonlineext-modules"></a>De MSOnline-en MSOnlineExt-modules installeren
 
@@ -51,7 +52,7 @@ Het is optioneel om een referentie-element te maken voor de Office 365-gebruiker
 
 ## <a name="create-an-office-365-service-account"></a>Een Office 365-service account maken
 
-Als u Office 365-abonnements Services wilt uitvoeren, hebt u een Office 365 service-account nodig met de juiste machtigingen. U kunt één algemeen beheerders account gebruiken, één account per service of een functie of script hebben om uit te voeren. In elk geval is een complex en veilig wacht woord vereist voor het service account. Zie [Office 365 voor bedrijven instellen](https://docs.microsoft.com/microsoft-365/admin/setup/setup?view=o365-worldwide). 
+Als u Office 365-abonnements Services wilt uitvoeren, hebt u een Office 365 service-account nodig met de juiste machtigingen. U kunt één algemeen beheerders account gebruiken, één account per service of een functie of script hebben om uit te voeren. In elk geval is een complex en veilig wacht woord vereist voor het service account. Zie [Office 365 voor bedrijven instellen](/microsoft-365/admin/setup/setup?view=o365-worldwide). 
 
 ## <a name="connect-to-the-azure-ad-online-service"></a>Verbinding maken met de Azure AD online-service
 
@@ -60,7 +61,7 @@ Als u Office 365-abonnements Services wilt uitvoeren, hebt u een Office 365 serv
 
 U kunt de MSOnline-module gebruiken om vanuit het Office 365-abonnement verbinding te maken met Azure AD. De verbinding maakt gebruik van een Office 365-gebruikers naam en-wacht woord of gebruikt multi-factor Authentication (MFA). U kunt verbinding maken met behulp van de Azure Portal of een Windows Power shell-opdracht prompt (heeft geen verhoogde bevoegdheden nodig).
 
-Hieronder ziet u een voor beeld van Power shell. Met de cmdlet [Get-Credential](https://docs.microsoft.com/powershell/module/microsoft.powershell.security/get-credential?view=powershell-7) wordt om referenties gevraagd en opgeslagen in de `Msolcred` variabele. Vervolgens maakt de [Connect-MsolService](https://docs.microsoft.com/powershell/module/msonline/connect-msolservice?view=azureadps-1.0) -cmdlet gebruik van de referenties om verbinding te maken met de online service Azure Directory. Als u verbinding wilt maken met een specifieke Azure-omgeving, gebruikt u de `AzureEnvironment` para meter.
+Hieronder ziet u een voor beeld van Power shell. Met de cmdlet [Get-Credential](/powershell/module/microsoft.powershell.security/get-credential?view=powershell-7) wordt om referenties gevraagd en opgeslagen in de `Msolcred` variabele. Vervolgens maakt de [Connect-MsolService](/powershell/module/msonline/connect-msolservice?view=azureadps-1.0) -cmdlet gebruik van de referenties om verbinding te maken met de online service Azure Directory. Als u verbinding wilt maken met een specifieke Azure-omgeving, gebruikt u de `AzureEnvironment` para meter.
 
 ```powershell
 $Msolcred = Get-Credential
@@ -70,7 +71,7 @@ Connect-MsolService -Credential $MsolCred -AzureEnvironment "AzureCloud"
 Als er geen fouten worden weer gegeven, hebt u verbinding gemaakt. Een snelle test is een Office 365-cmdlet uit te voeren, bijvoorbeeld, `Get-MsolUser` en de resultaten te bekijken. Als u fouten ontvangt, moet u er rekening mee houden dat een veelvoorkomend probleem een onjuist wacht woord is.
 
 >[!NOTE]
->U kunt ook de module AzureRM of de module AZ gebruiken om vanuit het Office 365-abonnement verbinding te maken met Azure AD. De hoofd verbindings-cmdlet is [Connect-AzureAD](https://docs.microsoft.com/powershell/module/azuread/connect-azuread?view=azureadps-2.0). Met deze cmdlet wordt de `AzureEnvironmentName` para meter voor specifieke Office 365-omgevingen ondersteund.
+>U kunt ook de module AzureRM of de module AZ gebruiken om vanuit het Office 365-abonnement verbinding te maken met Azure AD. De hoofd verbindings-cmdlet is [Connect-AzureAD](/powershell/module/azuread/connect-azuread?view=azureadps-2.0). Met deze cmdlet wordt de `AzureEnvironmentName` para meter voor specifieke Office 365-omgevingen ondersteund.
 
 ## <a name="create-a-powershell-runbook-from-an-existing-script"></a>Een Power shell-runbook maken op basis van een bestaand script
 
@@ -95,22 +96,22 @@ $O365Licenses -SmtpServer $emailSMTPServer -UseSSL
 
 U kunt uw script gebruiken in een Azure Automation runbook. We gebruiken bijvoorbeeld het type Power shell-runbook.
 
-1. Maak een nieuw Power shell-runbook. Raadpleeg [een Azure Automation Runbook maken](https://docs.microsoft.com/azure/automation/automation-quickstart-create-runbook).
+1. Maak een nieuw Power shell-runbook. Raadpleeg [een Azure Automation Runbook maken](./automation-quickstart-create-runbook.md).
 2. Selecteer in uw Automation-account **Runbooks** onder **proces automatisering**.
 3. Selecteer het nieuwe runbook en klik op **bewerken**.
 4. Kopieer uw script en plak het in de tekst editor voor het runbook.
 5. Selecteer **assets**, vouw vervolgens **referenties** uit en controleer of de Office 365-referentie daar aanwezig is.
 6. Klik op **Opslaan**.
-7. Selecteer **test deel venster**en klik vervolgens op **starten** om te beginnen met het testen van uw runbook. Zie [Runbooks beheren in azure Automation](https://docs.microsoft.com/azure/automation/manage-runbooks).
+7. Selecteer **test deel venster**en klik vervolgens op **starten** om te beginnen met het testen van uw runbook. Zie [Runbooks beheren in azure Automation](./manage-runbooks.md).
 8. Wanneer het testen is voltooid, sluit u af vanuit het test venster.
 
 ## <a name="publish-and-schedule-the-runbook"></a>Het runbook publiceren en plannen
 
-Als u uw runbook wilt publiceren en vervolgens wilt plannen, raadpleegt u [Runbooks beheren in azure Automation](https://docs.microsoft.com/azure/automation/manage-runbooks).
+Als u uw runbook wilt publiceren en vervolgens wilt plannen, raadpleegt u [Runbooks beheren in azure Automation](./manage-runbooks.md).
 
 ## <a name="next-steps"></a>Volgende stappen
 
 * Zie [referenties beheren in azure Automation](shared-resources/credentials.md)voor meer informatie over het gebruik van referenties.
 * Zie [modules beheren in azure Automation](shared-resources/modules.md)voor meer informatie over modules.
 * Als u een runbook moet starten, raadpleegt u [een Runbook starten in azure Automation](start-runbooks.md).
-* Zie Power shell- [documenten](https://docs.microsoft.com/powershell/scripting/overview)voor meer informatie over Power shell.
+* Zie Power shell- [documenten](/powershell/scripting/overview)voor meer informatie over Power shell.

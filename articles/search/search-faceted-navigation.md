@@ -8,11 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 4d2ee2bccf94dca933981c3070323b659eab6cfa
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: f7bf1c8f3f1ecbb21207776a99bba99d123ea891
+ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83836087"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86171938"
 ---
 # <a name="how-to-implement-faceted-navigation-in-azure-cognitive-search"></a>Facet navigatie in azure Cognitive Search implementeren
 
@@ -283,10 +284,12 @@ In facet inzoomen wilt u meestal alleen documenten met de facet waarde in een sp
 
 Facet resultaten zijn documenten gevonden in de zoek resultaten die overeenkomen met een facet term. In het volgende voor beeld, in Zoek resultaten voor *Cloud Computing*, hebben 254-items ook een *interne specificatie* als een inhouds type. Items zijn niet noodzakelijkerwijs wederzijds exclusief. Als een item voldoet aan de criteria van beide filters, wordt dit in elk filter geteld. Deze duplicatie kan worden gebruikt wanneer facetten op `Collection(Edm.String)` velden, die vaak worden toegepast voor het implementeren van document tagging.
 
-        Search term: "cloud computing"
-        Content type
-           Internal specification (254)
-           Video (10) 
+```output
+Search term: "cloud computing"
+Content type
+   Internal specification (254)
+   Video (10)
+```
 
 In het algemeen is het raadzaam om meer filters toe te voegen, als u merkt dat facet resultaten te groot zijn. u kunt er ook voor kiezen om de Zoek opdrachten te beperken.
 
@@ -344,7 +347,7 @@ Voor numerieke gegevens kunt u een lijst met waarden gebruiken.  Houd rekening m
 
 Als u een facet bereik wilt opgeven zoals in de vorige scherm afbeelding, gebruikt u een lijst met waarden:
 
-    facet=listPrice,values:10|25|100|500|1000|2500
+> `facet=listPrice,values:10|25|100|500|1000|2500`
 
 Elk bereik is gebouwd op basis van 0 als uitgangs punt, een waarde uit de lijst als een eind punt en wordt vervolgens bijgesneden van het vorige bereik om discrete intervallen te maken. Azure Cognitive Search doet dit als onderdeel van facet navigatie. U hoeft geen code te schrijven voor het structureren van elk interval.
 
@@ -394,7 +397,7 @@ Bekijk bij het werken met zoek resultaten de URL voor wijzigingen in de bouw van
    
 <a name="nextstep"></a>
 
-## <a name="learn-more"></a>Lees meer
+## <a name="learn-more"></a>Meer informatie
 Bekijk [Azure Cognitive Search diep gaande](https://channel9.msdn.com/Events/TechEd/Europe/2014/DBI-B410). Bij 45:25 is er een demo over het implementeren van facetten.
 
 Voor meer informatie over ontwerp principes voor facet navigatie raden wij de volgende koppelingen aan:

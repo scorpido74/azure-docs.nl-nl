@@ -16,11 +16,12 @@ ms.date: 01/04/2019
 ms.author: sethm
 ms.reviewer: jowargo
 ms.lastreviewed: 01/04/2019
-ms.openlocfilehash: db42cf7f886855af77073963e6f04ac088ca5612
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: f953b21a221967c2310b2fc70056d48863149821
+ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "75530728"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86220045"
 ---
 # <a name="securely-push-notifications-from-azure-notification-hubs"></a>Veilige push meldingen van Azure Notification Hubs
 
@@ -93,7 +94,7 @@ De volgende stap is het maken van het push-achtergrond onderdeel.
 1. Klik in Solution Explorer met de rechter muisknop op het knoop punt op het hoogste niveau van de oplossing (**oplossing SecurePush** in dit geval), klik op **toevoegen**en klik vervolgens op **Nieuw project**.
 2. Vouw **Store-apps**uit, klik op **Windows Phone apps**en klik vervolgens op **Windows runtime onderdeel (Windows Phone)**. Noem het project **PushBackgroundComponent**en klik vervolgens op **OK** om het project te maken.
 
-    ![][12]
+    ![Scherm afbeelding van het dialoog venster Nieuw project toevoegen met de Visual C#-optie Windows Runtime onderdeel (Windows Phone) gemarkeerd.][12]
 3. Klik in Solution Explorer met de rechter muisknop op het project **PushBackgroundComponent (Windows Phone 8,1)** , klik op **toevoegen**en klik vervolgens op **klasse**. Geef de nieuwe klasse een naam `PushBackgroundTask.cs` . Klik op **toevoegen** om de klasse te genereren.
 4. Vervang de volledige inhoud van de `PushBackgroundComponent` naam ruimte definitie door de volgende code, waarbij u de tijdelijke aanduiding vervangt `{back-end endpoint}` door het back-end-eind punt dat is verkregen tijdens het implementeren van uw back-end:
 
@@ -161,12 +162,12 @@ De volgende stap is het maken van het push-achtergrond onderdeel.
 11. Klik in Solution Explorer, in het **NotifyUserWindowsPhone (Windows Phone 8,1)** -project, met de rechter muisknop op **verwijzingen**en klik vervolgens op **verwijzing toevoegen...**. Schakel in het dialoog venster referentie beheer het selectie vakje naast **PushBackgroundComponent**in en klik vervolgens op **OK**.
 12. In Solution Explorer dubbelklikt u op **package. appxmanifest** in het **NotifyUserWindowsPhone-project (Windows Phone 8,1)** . Stel onder **meldingen**de **pop-up kan** in op **Ja**.
 
-    ![][3]
+    ![Scherm afbeelding van het Solution Explorer venster waarin wordt gefocust op package. appxmanifest met de optie voor het inschakelen van de pop-up ingesteld op Ja, in rood beschreven.][3]
 13. Klik nog steeds in **package. appxmanifest**op het vervolg keuzelijst met **declaraties** bovenaan. Klik in de vervolg keuzelijst **beschik bare aangiften** op **achtergrond taken**en klik vervolgens op **toevoegen**.
 14. In **package. appxmanifest**, onder **Eigenschappen**, **push melding**controleren.
 15. In **package. appxmanifest**, onder **app-instellingen**, typt u **PushBackgroundComponent. PushBackgroundTask** in het veld **ingangs punt** .
 
-    ![][13]
+    ![Scherm afbeelding van het Solution Explorer venster waarin wordt gefocust op package. appxmanifest met de beschik bare aangiften, ondersteunde aangiften, Push meldingen en toegangs punt opties die in het rood worden weer gegeven.][13]
 16. Klik in het menu **Bestand** op **Alles opslaan**.
 
 ## <a name="run-the-application"></a>De toepassing uitvoeren

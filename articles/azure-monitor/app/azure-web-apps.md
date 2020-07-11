@@ -3,12 +3,12 @@ title: Prestaties van Azure app Services controleren | Microsoft Docs
 description: Bewaking van toepassings prestaties voor Azure app Services. Grafiek belasting en respons tijd, afhankelijkheids informatie en waarschuwingen instellen voor prestaties.
 ms.topic: conceptual
 ms.date: 12/11/2019
-ms.openlocfilehash: 0f4d4dedab30839db56cb47ac7ac103413f2d4be
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 574aefa4d554be7b0027c921289d8d15cffb8e49
+ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82733444"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86169932"
 ---
 # <a name="monitor-azure-app-service-performance"></a>Azure App Service-prestaties bewaken
 
@@ -58,7 +58,7 @@ Er zijn twee manieren om toepassings bewaking in te scha kelen voor door Azure-a
  
  Hieronder vindt u een overzicht van de gegevens die voor elke route worden verzameld:
         
-|  | .NET Basic-verzameling | .NET aanbevolen verzameling |
+| Gegevens | .NET Basic-verzameling | .NET aanbevolen verzameling |
 | --- | --- | --- |
 | Voegt trends toe voor CPU, geheugen en I/O-gebruik |Ja |Ja |
 | Verzamelt gebruikstrends en maakt correlatie mogelijk van beschikbaarheidsresultaten tot transacties | Ja |Ja |
@@ -118,7 +118,7 @@ Bewaking aan client zijde is opt-in voor ASP.NET. Bewaking aan client zijde insc
 
      Naam: `APPINSIGHTS_JAVASCRIPT_ENABLED`
 
-     Waarde:`true`
+     Waarde: `true`
 
    * Sla de instellingen op met **Opslaan** en start de app opnieuw met **Opnieuw opstarten**.
 
@@ -137,7 +137,7 @@ Als u de bewaking aan client zijde om een of andere reden wilt uitschakelen:
 
      naam`APPINSIGHTS_JAVASCRIPT_ENABLED`
 
-     Waarde:`false`
+     Waarde: `false`
 
    * Sla de instellingen op met **Opslaan** en start de app opnieuw met **Opnieuw opstarten**.
 
@@ -376,7 +376,7 @@ Hieronder vindt u stapsgewijze richt lijnen voor het oplossen van problemen met 
 
 De onderstaande tabel bevat een gedetailleerdere uitleg van de betekenis van deze waarden, de onderliggende oorzaken en aanbevolen oplossingen:
 
-|Probleem waarde|Uitleg|Fix
+|Probleem waarde|Uitleg|Herstellen
 |---- |----|---|
 | `AppAlreadyInstrumented:true` | Deze waarde geeft aan dat de uitbrei ding heeft gedetecteerd dat er al een aspect van de SDK aanwezig is in de toepassing en dat deze wordt teruggedraaid. Dit kan worden veroorzaakt door een verwijzing naar `System.Diagnostics.DiagnosticSource` , `Microsoft.AspNet.TelemetryCorrelation` of`Microsoft.ApplicationInsights`  | Verwijder de verwijzingen. Sommige van deze verwijzingen worden standaard toegevoegd vanuit bepaalde Visual Studio-sjablonen, en oudere versies van Visual Studio kunnen verwijzingen toevoegen aan `Microsoft.ApplicationInsights` .
 |`AppAlreadyInstrumented:true` | Als de toepassing is gericht op .NET Core 2,1 of 2,2, en verwijst naar [micro soft. AspNetCore. all](https://www.nuget.org/packages/Microsoft.AspNetCore.All) meta package, wordt het Application Insights en wordt er een uitbrei ding van de extensie. | Klanten op .NET Core 2.1 2.2 worden [Aanbevolen](https://github.com/aspnet/Announcements/issues/287) het meta-pakket micro soft. AspNetCore. app te gebruiken.|

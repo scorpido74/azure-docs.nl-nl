@@ -9,11 +9,12 @@ ms.topic: conceptual
 ms.service: automation
 ms.subservice: update-management
 manager: carmonm
-ms.openlocfilehash: ff996227e23836bf85cc3885d9184ae6d7d6c61d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 92020313fccf1b8be0add58a7bafab62b5daa4d5
+ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83680838"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86187129"
 ---
 # <a name="troubleshoot-windows-update-agent-issues"></a>Problemen met de Windows Update-agent oplossen
 
@@ -109,7 +110,7 @@ De toegangs controle voor de cryptografie mappen bepaalt of het lokale systeem a
 
 ## <a name="troubleshoot-offline"></a><a name="troubleshoot-offline"></a>Problemen met offline oplossen
 
-U kunt de probleem Oplosser op een Hybrid Runbook Worker offline gebruiken door het script lokaal uit te voeren. Haal het volgende script op uit de PowerShell Gallery: [Troubleshooting-WindowsUpdateAgentRegistration](https://www.powershellgallery.com/packages/Troubleshoot-WindowsUpdateAgentRegistration). Als u het script wilt uitvoeren, moet u WMF 4,0 of hoger hebben geïnstalleerd. Zie [verschillende versies van Power Shell installeren](https://docs.microsoft.com/powershell/scripting/install/installing-powershell)voor informatie over het downloaden van de meest recente versie van Power shell.
+U kunt de probleem Oplosser op een Hybrid Runbook Worker offline gebruiken door het script lokaal uit te voeren. Haal het volgende script op uit de PowerShell Gallery: [Troubleshooting-WindowsUpdateAgentRegistration](https://www.powershellgallery.com/packages/Troubleshoot-WindowsUpdateAgentRegistration). Als u het script wilt uitvoeren, moet u WMF 4,0 of hoger hebben geïnstalleerd. Zie [verschillende versies van Power Shell installeren](/powershell/scripting/install/installing-powershell)voor informatie over het downloaden van de meest recente versie van Power shell.
 
 De uitvoer van dit script ziet eruit als in het volgende voor beeld:
 

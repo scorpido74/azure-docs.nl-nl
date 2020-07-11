@@ -2,12 +2,13 @@
 title: TLS inschakelen met de container zijspan
 description: Een SSL-of TLS-eind punt maken voor een container groep die wordt uitgevoerd in Azure Container Instances door nginx uit te voeren in een zijspan container
 ms.topic: article
-ms.date: 02/14/2020
-ms.openlocfilehash: b9ea9367219db694b89d6bf4a1e52efb373c71c4
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 07/02/2020
+ms.openlocfilehash: f7f5d8e8136f4357067888f5a39fa0c3635122d1
+ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80984603"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86169847"
 ---
 # <a name="enable-a-tls-endpoint-in-a-sidecar-container"></a>Een TLS-eind punt inschakelen in een zijspan wagen
 
@@ -146,7 +147,7 @@ code deploy-aci.yaml
 Voer de inhoud van de met base64 gecodeerde bestanden in, zoals aangegeven onder `secret` . Bijvoorbeeld `cat` elk van de met base64 gecodeerde bestanden om de inhoud ervan weer te geven. Tijdens de implementatie worden deze bestanden toegevoegd aan een [geheim volume](container-instances-volume-secret.md) in de container groep. In dit voor beeld wordt het geheime volume gekoppeld aan de nginx-container.
 
 ```YAML
-api-version: 2018-10-01
+api-version: 2019-12-01
 location: westus
 name: app-with-ssl
 properties:

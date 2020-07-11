@@ -2,12 +2,13 @@
 title: De afronding van de liveiteit instellen voor het container exemplaar
 description: Meer informatie over het configureren van Live-tests om beschadigde containers opnieuw te starten in Azure Container Instances
 ms.topic: article
-ms.date: 01/30/2020
-ms.openlocfilehash: 11c6c9d39067c536bf4325f74eb24b2ab64ef515
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 07/02/2020
+ms.openlocfilehash: befe9693be1413abf455d915814c53aab20db53c
+ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "76934166"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86169694"
 ---
 # <a name="configure-liveness-probes"></a>Activiteitstests configureren
 
@@ -25,7 +26,7 @@ Azure Container Instances biedt ook ondersteuning voor [gereedheids tests](conta
 Maak een `liveness-probe.yaml` bestand met het volgende code fragment. Dit bestand definieert een container groep die bestaat uit een NGNIX-container die uiteindelijk slecht wordt.
 
 ```yaml
-apiVersion: 2018-10-01
+apiVersion: 2019-12-01
 location: eastus
 name: livenesstest
 properties:

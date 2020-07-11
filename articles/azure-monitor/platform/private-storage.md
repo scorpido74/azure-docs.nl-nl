@@ -6,11 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 05/20/2020
-ms.openlocfilehash: 0c9982fd4aa6459cdcbd715077f08092075a9776
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 05eb92e2fb887b5c64e2c73576fe85a4543ac1b7
+ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84610063"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86184494"
 ---
 # <a name="customer-owned-storage-accounts-for-log-ingestion-in-azure-monitor"></a>Opslag accounts die eigendom zijn van de klant voor logboek opname in Azure Monitor
 
@@ -39,7 +40,7 @@ Het opslag account moet voldoen aan de volgende vereisten:
 
 - Toegankelijk voor bronnen op uw VNet die logboeken naar de opslag schrijven.
 - Moet zich in dezelfde regio bevinden als de werk ruimte waaraan deze is gekoppeld.
-- Het is expliciet toegestaan Log Analytics logboeken van het opslag account te lezen door *vertrouwde MS-services toegang geven tot dit opslag account*te selecteren.
+- Azure Monitor toegang toestaan: als u ervoor hebt gekozen om de toegang tot het opslag account te beperken tot het selecteren van netwerken, moet u deze uitzonde ring toestaan: *vertrouwde micro soft-Services toegang geven tot dit opslag account*.
 
 ## <a name="process-to-configure-customer-owned-storage"></a>Proces voor het configureren van opslag in eigendom van de klant
 Het basis proces van het gebruik van uw eigen opslag account voor opname is als volgt:
@@ -50,7 +51,12 @@ Het basis proces van het gebruik van uw eigen opslag account voor opname is als 
 
 De enige beschik bare methode voor het maken en verwijderen van koppelingen vindt u via de REST API. Meer informatie over de specifieke API-aanvraag die is vereist voor elk proces, vindt u in de volgende secties.
 
-## <a name="api-request-values"></a>Waarden van API-aanvragen
+## <a name="command-line-and-rest-api"></a>Opdracht regel en REST API
+
+### <a name="command-line"></a>Opdrachtregel
+Als u gekoppelde opslag accounts wilt maken en beheren, gebruikt u [AZ monitor log-Analytics Workspace linked-Storage](https://docs.microsoft.com/cli/azure/monitor/log-analytics/workspace/linked-storage). Met deze opdracht kunt u opslag accounts koppelen en ontkoppelen van een werk ruimte en de gekoppelde opslag accounts weer geven.
+
+### <a name="request-and-cli-values"></a>Aanvraag-en CLI-waarden
 
 #### <a name="datasourcetype"></a>Data Source Type 
 
@@ -72,37 +78,7 @@ subscriptions/{subscriptionId}/resourcesGroups/{resourceGroupName}/providers/Mic
 ```
 
 
-
-## <a name="get-current-links"></a>Huidige koppelingen ophalen
-
-### <a name="get-linked-storage-accounts-for-a-specific-data-source-type"></a>Gekoppelde opslag accounts ophalen voor een specifiek gegevens bron type
-
-#### <a name="api-request"></a>API-aanvraag
-
-```
-GET https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{workspaceName}/linkedStorageAccounts/{dataSourceType}?api-version=2019-08-01-preview  
-```
-
-#### <a name="response"></a>Antwoord 
-
-```json
-{
-    "properties":
-    {
-        "dataSourceType": "CustomLogs",
-        "storageAccountIds  ": 
-        [  
-            "<storage_account_resource_id_1>",
-            "<storage_account_resource_id_2>"
-        ],
-    },
-    "id":"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroup}/providers/microsoft. operationalinsights/workspaces/{resourceName}/linkedStorageAccounts/CustomLogs",
-    "name": "CustomLogs",
-    "type": "Microsoft.OperationalInsights/workspaces/linkedStorageAccounts"
-}
-```
-
-### <a name="get-all-linked-storage-accounts"></a>Alle gekoppelde opslag accounts ophalen
+### <a name="get-linked-storage-accounts-for-all-data-source-types"></a>Gekoppelde opslag accounts ophalen voor alle typen gegevens bronnen
 
 #### <a name="api-request"></a>API-aanvraag
 
@@ -110,7 +86,7 @@ GET https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{
 GET https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{workspaceName}/linkedStorageAccounts?api-version=2019-08-01-preview  
 ```
 
-#### <a name="response"></a>Antwoord
+#### <a name="response"></a>Reactie
 
 ```json
 {
@@ -147,6 +123,34 @@ GET https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{
 }
 ```
 
+
+### <a name="get-linked-storage-accounts-for-a-specific-data-source-type"></a>Gekoppelde opslag accounts ophalen voor een specifiek gegevens bron type
+
+#### <a name="api-request"></a>API-aanvraag
+
+```
+GET https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{workspaceName}/linkedStorageAccounts/{dataSourceType}?api-version=2019-08-01-preview  
+```
+
+#### <a name="response"></a>Reactie 
+
+```json
+{
+    "properties":
+    {
+        "dataSourceType": "CustomLogs",
+        "storageAccountIds  ": 
+        [  
+            "<storage_account_resource_id_1>",
+            "<storage_account_resource_id_2>"
+        ],
+    },
+    "id":"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroup}/providers/microsoft. operationalinsights/workspaces/{resourceName}/linkedStorageAccounts/CustomLogs",
+    "name": "CustomLogs",
+    "type": "Microsoft.OperationalInsights/workspaces/linkedStorageAccounts"
+}
+```
+
 ## <a name="create-or-modify-a-link"></a>Een koppeling maken of wijzigen
 
 Zodra u een opslag account aan een werk ruimte koppelt, wordt Log Analytics gebruikt in plaats van het opslag account dat eigendom is van de service. U kunt op hetzelfde moment een lijst met opslag accounts registreren en u kunt hetzelfde opslag account gebruiken voor meerdere werk ruimten.
@@ -174,7 +178,7 @@ PUT https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{
 }
 ```
 
-### <a name="response"></a>Antwoord
+### <a name="response"></a>Reactie
 
 ```json
 {
@@ -217,7 +221,7 @@ De agent configuratie wordt na een paar minuten vernieuwd en er wordt overgescha
 
 ## <a name="manage-storage-account"></a>Opslag account beheren
 
-### <a name="load"></a>Belasting
+### <a name="load"></a>Laden
 
 Opslag accounts kunnen een bepaalde belasting van lees-en schrijf aanvragen afhandelen voordat de aanvragen worden gestart. Beperking is van invloed op de tijd die nodig is om logboeken op te nemen. Dit kan leiden tot verlies van gegevens. Als uw opslag is overbelast, registreert u extra opslag accounts en verspreidt u de belasting ertussen. 
 

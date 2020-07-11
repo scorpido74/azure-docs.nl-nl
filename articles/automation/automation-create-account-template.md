@@ -7,11 +7,12 @@ ms.topic: conceptual
 author: mgoedtel
 ms.author: magoedte
 ms.date: 06/09/2020
-ms.openlocfilehash: 6b26db522db246add48941da9af4784ed2942a0a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 7b9d3ea30f502f8f95bb12c6a3b270f8eddde0cf
+ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84661030"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86186619"
 ---
 # <a name="create-an-automation-account-using-an-azure-resource-manager-template"></a>Een Automation-account maken met behulp van een Azure Resource Manager sjabloon
 
@@ -35,13 +36,13 @@ De volgende tabel geeft een overzicht van de API-versie voor de resources die in
 | Resource | Resourcetype | API-versie |
 |:---|:---|:---|
 | Werkruimte | workspaces | 2020-03-01-preview |
-| Automation-account | automation | 2018-06-30 | 
+| Automation-account | automatisering | 2018-06-30 | 
 
 ## <a name="before-you-use-the-template"></a>Voordat u de sjabloon gebruikt
 
 Als u Power shell lokaal wilt installeren en gebruiken, is voor dit artikel de Azure PowerShell AZ-module vereist. Voer `Get-Module -ListAvailable Az` uit om de versie te bekijken. Zie [De Azure PowerShell-module installeren](/powershell/azure/install-az-ps) als u een upgrade wilt uitvoeren. Als u PowerShell lokaal uitvoert, moet u ook `Connect-AzAccount` uitvoeren om verbinding te kunnen maken met Azure. Met Power Shell maakt de implementatie gebruik van [New-AzResourceGroupDeployment](/powershell/module/az.resources/new-azresourcegroupdeployment).
 
-Als u ervoor kiest om de Azure CLI lokaal te installeren en te gebruiken, moet u voor dit artikel versie 2.1.0 of hoger uitvoeren. Voer `az --version` uit om de versie te bekijken. Als u uw CLI wilt installeren of upgraden, raadpleegt u [De Azure CLI installeren](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest). Met de Azure CLI maakt deze implementatie gebruik van [AZ Group Deployment Create](https://docs.microsoft.com/cli/azure/group/deployment?view=azure-cli-latest#az-group-deployment-create). 
+Als u ervoor kiest om de Azure CLI lokaal te installeren en te gebruiken, moet u voor dit artikel versie 2.1.0 of hoger uitvoeren. Voer `az --version` uit om de versie te bekijken. Als u uw CLI wilt installeren of upgraden, raadpleegt u [De Azure CLI installeren](/cli/azure/install-azure-cli?view=azure-cli-latest). Met de Azure CLI maakt deze implementatie gebruik van [AZ Group Deployment Create](/cli/azure/group/deployment?view=azure-cli-latest#az-group-deployment-create). 
 
 De JSON-sjabloon is zo geconfigureerd dat u wordt gevraagd om:
 

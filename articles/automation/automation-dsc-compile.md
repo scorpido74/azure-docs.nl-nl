@@ -5,11 +5,12 @@ services: automation
 ms.subservice: dsc
 ms.date: 04/06/2020
 ms.topic: conceptual
-ms.openlocfilehash: de46f4e2fd53b888981076256fda28a2a14995af
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 3bb42886c653afbdf8975b532bd2e1e1c3c63ce9
+ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83837039"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86186534"
 ---
 # <a name="compile-dsc-configurations-in-azure-automation-state-configuration"></a>DSC-configuraties compileren in de configuratie van de Azure Automation status
 
@@ -26,7 +27,7 @@ U kunt de configuratie van desired state Configuration (DSC) in Azure Automation
   - Werken met knoop punt-en niet-knooppunt gegevens op schaal
   - Aanzienlijke prestatie verbetering
 
-U kunt ook Azure Resource Manager sjablonen met de extensie Azure desired state Configuration (DSC) gebruiken om configuraties naar uw Azure-Vm's te pushen. De Azure DSC-uitbrei ding maakt gebruik van het Azure VM-agent Framework voor het leveren, door voeren en rapporteren van DSC-configuraties die worden uitgevoerd op virtuele Azure-machines. Zie [desired state Configuration extension with Azure Resource Manager Templates](https://docs.microsoft.com/azure/virtual-machines/extensions/dsc-template#details)(Engelstalig) voor meer informatie over de compilatie van Azure Resource Manager sjablonen. 
+U kunt ook Azure Resource Manager sjablonen met de extensie Azure desired state Configuration (DSC) gebruiken om configuraties naar uw Azure-Vm's te pushen. De Azure DSC-uitbrei ding maakt gebruik van het Azure VM-agent Framework voor het leveren, door voeren en rapporteren van DSC-configuraties die worden uitgevoerd op virtuele Azure-machines. Zie [desired state Configuration extension with Azure Resource Manager Templates](../virtual-machines/extensions/dsc-template.md#details)(Engelstalig) voor meer informatie over de compilatie van Azure Resource Manager sjablonen. 
 
 ## <a name="compile-a-dsc-configuration-in-azure-state-configuration"></a>Een DSC-configuratie compileren in de Azure-status configuratie
 
@@ -62,7 +63,7 @@ $CompilationJob | Get-AzAutomationDscCompilationJobOutput –Stream Any
 
 ### <a name="declare-basic-parameters"></a>Algemene para meters declareren
 
-Parameter declaraties in DSC-configuraties, inclusief parameter typen en eigenschappen, werken hetzelfde als in Azure Automation runbooks. Zie [een Runbook starten in azure Automation](automation-starting-a-runbook.md) voor meer informatie over runbook-para meters.
+Parameter declaraties in DSC-configuraties, inclusief parameter typen en eigenschappen, werken hetzelfde als in Azure Automation runbooks. Zie [een Runbook starten in azure Automation](./start-runbooks.md) voor meer informatie over runbook-para meters.
 
 In het volgende voor beeld worden `FeatureName` en `IsPresent` para meters gebruikt om de waarden van eigenschappen in de **ParametersExample. voorbeeld** knooppunt configuratie te bepalen, gegenereerd tijdens de compilatie.
 
@@ -122,7 +123,7 @@ Zie referentie-assets voor informatie over het door geven van `PSCredential` obj
 Met de functie **samengestelde resources** kunt u DSC-configuraties gebruiken als geneste resources in een configuratie. Met deze functie kunt u meerdere configuraties op één resource Toep assen. Zie [Composite resources: een DSC-configuratie gebruiken als resource](/powershell/scripting/dsc/resources/authoringresourcecomposite) voor meer informatie over samengestelde resources.
 
 > [!NOTE]
-> Als configuraties met samengestelde resources op de juiste wijze worden gecompileerd, moet u eerst importeren in Azure Automation van de DSC-resources waarvan de samengesteldes afhankelijk zijn. Het toevoegen van een DSC-samengestelde resource wijkt af van het toevoegen van een Power shell-module aan Azure Automation. Dit proces wordt beschreven in [modules beheren in azure Automation](/azure/automation/shared-resources/modules).
+> Als configuraties met samengestelde resources op de juiste wijze worden gecompileerd, moet u eerst importeren in Azure Automation van de DSC-resources waarvan de samengesteldes afhankelijk zijn. Het toevoegen van een DSC-samengestelde resource wijkt af van het toevoegen van een Power shell-module aan Azure Automation. Dit proces wordt beschreven in [modules beheren in azure Automation](./shared-resources/modules.md).
 
 ### <a name="manage-configurationdata-when-compiling-configurations-in-azure-automation"></a>ConfigurationData beheren bij het compileren van configuraties in Azure Automation
 
@@ -183,10 +184,10 @@ Start-AzAutomationDscCompilationJob -ResourceGroupName 'MyResourceGroup' -Automa
 
 Activa verwijzingen zijn hetzelfde in de Azure Automation status configuratie en runbooks. Raadpleeg de volgende artikelen voor meer informatie:
 
-- [Certificaten](automation-certificates.md)
+- [Certificaten](./shared-resources/certificates.md)
 - [Verbindingen](automation-connections.md)
-- [Referenties](automation-credentials.md)
-- [Variabelen](automation-variables.md)
+- [Referenties](./shared-resources/credentials.md)
+- [Variabelen](./shared-resources/variables.md)
 
 #### <a name="credential-assets"></a>Referentie-assets
 
@@ -277,7 +278,6 @@ Import-AzAutomationDscNodeConfiguration -AutomationAccountName 'MyAutomationAcco
 
 - Zie aan de slag [met de configuratie van de Azure Automation-status](automation-dsc-getting-started.md)om aan de slag te gaan.
 - Zie [DSC-configuraties compileren in azure Automation status configuratie](automation-dsc-compile.md)voor meer informatie over het compileren van DSC-configuraties zodat u ze aan doel knooppunten kunt toewijzen.
-- Zie [Az.Automation](https://docs.microsoft.com/powershell/module/az.automation/?view=azps-3.7.0#automation
-) voor een naslagdocumentatie voor een PowerShell-cmdlet.
+- Zie [Az.Automation](/powershell/module/az.automation/?view=azps-3.7.0#automation) voor een naslagdocumentatie voor een PowerShell-cmdlet.
 - Zie [prijzen voor Azure Automation status configuratie](https://azure.microsoft.com/pricing/details/automation/)voor prijs informatie.
 - Zie [continue implementatie instellen met Choco lade](automation-dsc-cd-chocolatey.md)voor een voor beeld van het gebruik van status configuratie in een pijp lijn voor continue implementatie.

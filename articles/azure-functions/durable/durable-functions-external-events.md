@@ -4,11 +4,12 @@ description: Meer informatie over het afhandelen van externe gebeurtenissen in d
 ms.topic: conceptual
 ms.date: 11/02/2019
 ms.author: azfuncdf
-ms.openlocfilehash: 0877161f8d668141c8efb7c06b10643bf209341f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 387b5d920de4a295366cc7e948862a12cea901d3
+ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "76262959"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86165546"
 ---
 # <a name="handling-external-events-in-durable-functions-azure-functions"></a>Externe gebeurtenissen in Durable Functions verwerken (Azure Functions)
 
@@ -19,7 +20,7 @@ Orchestrator-functies hebben de mogelijkheid om te wachten op externe gebeurteni
 
 ## <a name="wait-for-events"></a>Wachten op gebeurtenissen
 
-De `WaitForExternalEvent` methoden (.net) en `waitForExternalEvent` (Java script) van de [Orchestration-trigger binding](durable-functions-bindings.md#orchestration-trigger) kunnen een Orchestrator-functie asynchroon wachten en Luis teren naar een externe gebeurtenis. De functie voor het Luis teren van Orchestrator declareert de *naam* van de gebeurtenis en de *vorm van de gegevens* die ze verwacht te ontvangen.
+De methoden [WaitForExternalEvent](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableOrchestrationContext.html#Microsoft_Azure_WebJobs_DurableOrchestrationContext_WaitForExternalEvent_) (.net) en `waitForExternalEvent` (Java script) van de Orchestration- [trigger binding](durable-functions-bindings.md#orchestration-trigger) zorgen ervoor dat een Orchestrator-functie asynchroon wacht en luistert naar een externe gebeurtenis. De functie voor het Luis teren van Orchestrator declareert de *naam* van de gebeurtenis en de *vorm van de gegevens* die ze verwacht te ontvangen.
 
 # <a name="c"></a>[C#](#tab/csharp)
 
@@ -172,7 +173,14 @@ module.exports = df.orchestrator(function*(context) {
 
 ## <a name="send-events"></a>Gebeurtenissen verzenden
 
-De `RaiseEventAsync` (.net) of `raiseEvent` (Java script)-methode van de [Orchestrator client binding](durable-functions-bindings.md#orchestration-client) verzendt de gebeurtenissen die `WaitForExternalEvent` (.net) of `waitForExternalEvent` (Java script) wachten op.  Voor de- `RaiseEventAsync` methode worden *eventname* en *Event Data* als para meters gebruikt. De gebeurtenis gegevens moeten JSON-serialiseerbaar zijn.
+U kunt de methoden [RaiseEventAsync](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableOrchestrationClient.html#Microsoft_Azure_WebJobs_DurableOrchestrationClient_RaiseEventAsync_) (.net) of `raiseEventAsync` (Java script) gebruiken om een externe gebeurtenis naar een indeling te verzenden. Deze methoden worden weer gegeven door de [Orchestration-client](durable-functions-bindings.md#orchestration-client) binding. U kunt ook de ingebouwde [HTTP-API](durable-functions-http-api.md#raise-event) voor het activeren van gebeurtenissen gebruiken om een externe gebeurtenis naar een indeling te verzenden.
+
+Een verhoogde gebeurtenis omvat een *exemplaar-id*, een *eventname*en *Event Data* als para meters. Orchestrator-functies verwerken deze gebeurtenissen met behulp van de `WaitForExternalEvent` api's (.net) of `waitForExternalEvent` (Java script). De *eventname* moet overeenkomen met de verzend-en ontvangst eindigt om de gebeurtenis te verwerken. De gebeurtenis gegevens moeten ook JSON-serialiseerbaar zijn.
+
+Intern worden de mechanismen ' gebeurtenis verhogen ' gebruikt om een bericht in de wachtrij te plaatsen dat wordt opgehaald door de functie voor wachtende functies. Als het exemplaar niet op de opgegeven *gebeurtenis naam wacht,* wordt het gebeurtenis bericht toegevoegd aan een in-Memory wachtrij. Als het Orchestrator-exemplaar later begint met Luis teren naar die *gebeurtenis naam,* wordt de wachtrij gecontroleerd op gebeurtenis berichten.
+
+> [!NOTE]
+> Als er geen Orchestrator-exemplaar is met de opgegeven *exemplaar-id*, wordt het gebeurtenis bericht verwijderd.
 
 Hieronder ziet u een voor beeld van een door de wachtrij geactiveerde functie die een ' goed keuring ' gebeurtenis naar een Orchestrator-functie exemplaar verzendt. De indelings exemplaar-ID is afkomstig van de hoofd tekst van het wachtrij bericht.
 
@@ -208,6 +216,19 @@ Intern, `RaiseEventAsync` (.net) of `raiseEvent` (Java script) in een bericht da
 
 > [!NOTE]
 > Als er geen Orchestrator-exemplaar is met de opgegeven *exemplaar-id*, wordt het gebeurtenis bericht verwijderd.
+
+### <a name="http"></a>HTTP
+
+Hier volgt een voor beeld van een HTTP-aanvraag waarmee een ' goed keuring '-gebeurtenis wordt gegenereerd aan een Orchestration-exemplaar. 
+
+```http
+POST /runtime/webhooks/durabletask/instances/MyInstanceId/raiseEvent/Approval&code=XXX
+Content-Type: application/json
+
+"true"
+```
+
+In dit geval is de exemplaar-ID hardcoded als *MyInstanceId*.
 
 ## <a name="next-steps"></a>Volgende stappen
 
