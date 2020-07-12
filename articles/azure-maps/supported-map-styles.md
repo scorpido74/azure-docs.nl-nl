@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: timlt
-ms.openlocfilehash: 2eafe3c16a89723d55ec52fde785e9ec69e45e0c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 3db8ae98302ad6df7355ce03f5a33b5d21f1ea09
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80334042"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86242097"
 ---
 # <a name="azure-maps-supported-map-styles"></a>Azure Maps ondersteunde kaart stijlen
 Azure Maps biedt ondersteuning voor verschillende ingebouwde kaart stijlen, zoals hieronder wordt beschreven.
@@ -28,6 +28,7 @@ Een **wegkaart is een standaard** kaart met wegen, natuurlijke en kunst matige f
 * [Kaart tegel](https://docs.microsoft.com/rest/api/maps/render/getmaptile)
 * Web SDK-kaart besturings element
 * Besturings element Android-kaart
+* Power BI-visual
 
 ## <a name="blank-and-blank_accessible"></a>leeg en blank_accessible
 
@@ -48,6 +49,7 @@ De **satelliet** stijl is een combi natie van satelliet-en lucht foto beelden.
 * [Satelliet tegel](https://docs.microsoft.com/rest/api/maps/render/getmapimagerytilepreview)
 * Web SDK-kaart besturings element
 * Besturings element Android-kaart
+* Power BI-visual
 
 ## <a name="satellite_road_labels"></a>satellite_road_labels
 Deze kaart stijl bestaat uit een hybride van de weg en labels op satelliet-en lucht foto-afbeelding.
@@ -57,6 +59,7 @@ Deze kaart stijl bestaat uit een hybride van de weg en labels op satelliet-en lu
 **Toepasselijke Api's:**
 * Web SDK-kaart besturings element
 * Besturings element Android-kaart
+* Power BI-visual
 
 ## <a name="grayscale_dark"></a>grayscale_dark
 het **donkere grijs tinten** is een donkere versie van het kaart type weg.
@@ -68,6 +71,7 @@ het **donkere grijs tinten** is een donkere versie van het kaart type weg.
 * [Kaart tegel](https://docs.microsoft.com/rest/api/maps/render/getmaptile)
 * Web SDK-kaart besturings element 
 * Besturings element Android-kaart
+* Power BI-visual
 
 
 ## <a name="grayscale_light"></a>grayscale_light
@@ -78,6 +82,7 @@ het **donkere grijs tinten** is een donkere versie van het kaart type weg.
 **Toepasselijke Api's:**
 * Web SDK-kaart besturings element
 * Besturings element Android-kaart
+* Power BI-visual
 
 
 ## <a name="night"></a>nacht
@@ -88,6 +93,7 @@ het **donkere grijs tinten** is een donkere versie van het kaart type weg.
 **Toepasselijke Api's:**
 * Web SDK-kaart besturings element
 * Besturings element Android-kaart
+* Power BI-visual
 
 ## <a name="road_shaded_relief"></a>road_shaded_relief
 **Uitlichting** van de weg is een Azure Maps hoofd stijl voltooid met conto uren van de aarde.
@@ -98,6 +104,7 @@ het **donkere grijs tinten** is een donkere versie van het kaart type weg.
 * [Kaart tegel](https://docs.microsoft.com/rest/api/maps/render/getmaptile)
 * Web SDK-kaart besturings element
 * Besturings element Android-kaart
+* Power BI-visual
 
 ## <a name="high_contrast_dark"></a>high_contrast_dark
 
@@ -107,6 +114,7 @@ het **donkere grijs tinten** is een donkere versie van het kaart type weg.
 
 **Toepasselijke Api's:**
 * Web SDK-kaart besturings element
+* Power BI-visual
 
 ## <a name="next-steps"></a>Volgende stappen
 

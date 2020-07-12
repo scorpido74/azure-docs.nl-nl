@@ -8,11 +8,12 @@ ms.date: 12/10/2019
 ms.topic: conceptual
 ms.service: azure-maps
 manager: cpendleton
-ms.openlocfilehash: 23f52e48c6a435678a01569d25e0072d9c8a3e28
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: febfdf5405038e5b60a3133a554eba7a756f617d
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83648569"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86242369"
 ---
 # <a name="building-an-accessible-application"></a>Een toegankelijke toepassing bouwen
 
@@ -45,6 +46,7 @@ Er zijn verschillende manieren waarop de kaart kan worden ingezoomd, panned, ged
 - Als de kaart is gericht, gebruikt u het minteken, afbreek streepje ( `-` ) of onderstrepings teken ( `_` ) om één niveau uit te zoomen.
 - Het besturings element zoomen met behulp van een muis, Touch-of toetsenbord tabblad/Enter-toets.
 - Houd de knop ingedrukt `Shift` en druk op de knop met de rechter muisknop op de kaart en sleep om een gebied te tekenen om in te zoomen op de kaart in.
+- Met een aantal meerdere Touch-pad's kunt u twee vingers omhoog slepen om uit te zoomen of omlaag om in te zoomen.
 
 **Kaart pannen**
 
@@ -92,7 +94,7 @@ map.getMapContainer().classList.contains("high-contrast-light")
 
 De kaart bevat een aantal ingebouwde sneltoetsen waarmee u de kaart gemakkelijker kunt gebruiken. Deze sneltoetsen werken op het moment dat de kaart de focus heeft.
 
-| Sleutel      | Bewerking                            |
+| Sleutel      | Actie                            |
 |----------|-----------------------------------|
 | `Tab` | Navigeer over de besturings elementen en pop-upvensters in de kaart. |
 | `ESC` | De focus verplaatsen van een wille keurig element in de kaart naar het kaart element op het hoogste niveau. |

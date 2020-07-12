@@ -9,11 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: ''
 ms.custom: codepen
-ms.openlocfilehash: 61d7a11df499e6b740adb45968721b6a9bb1af22
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 6bb3cfa7266688ac8973bd3838d0d03e9efe8d50
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "76988597"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86242301"
 ---
 # <a name="add-a-tile-layer-to-a-map"></a>Een titellaag toevoegen aan een kaart
 
@@ -36,6 +37,7 @@ De tegel-URL die wordt door gegeven aan een tegel laag moet een HTTP-of HTTPS-UR
 * `{quadkey}`-Tegel quadkey-id gebaseerd op de naam Conventie voor Bing Maps-tegel systeem.
 * `{bbox-epsg-3857}`-Een teken reeks voor selectie kader met de indeling `{west},{south},{east},{north}` in het EPSG 3857 Spatial Reference System.
 * `{subdomain}`-Een tijdelijke aanduiding voor de waarden van het subdomein, indien opgegeven, `subdomain` wordt toegevoegd.
+* `{azMapsDomain}`-Een tijdelijke aanduiding voor het uitlijnen van het domein en de verificatie van Tegel aanvragen met dezelfde waarden die worden gebruikt door de kaart.
 
 ## <a name="add-a-tile-layer"></a>Een titellaag toevoegen
 

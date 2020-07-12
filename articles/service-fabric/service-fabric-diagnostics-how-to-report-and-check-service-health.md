@@ -5,18 +5,19 @@ author: srrengar
 ms.topic: conceptual
 ms.date: 02/25/2019
 ms.author: srrengar
-ms.openlocfilehash: 2b7a9c44a84e3ce15eaec22c8f57bb48f79dae05
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 751af36c630d1b0faa0c07bdd3a8b7519bd328c9
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "75464637"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86241927"
 ---
 # <a name="report-and-check-service-health"></a>Servicestatus rapporteren en controleren
 Wanneer uw services problemen ondervinden, is het mogelijk om te reageren op incidenten en problemen op te lossen. Als u problemen en storingen in de Azure Service Fabric Health manager in uw service code rapporteert, kunt u gebruikmaken van de standaard hulpprogram ma's voor status controle die Service Fabric biedt om de status te controleren.
 
 Er zijn drie manieren waarop u de status van de service kunt rapporteren:
 
-* Gebruik [partitie](https://docs.microsoft.com/dotnet/api/system.fabric.istatefulservicepartition) -of [CodePackageActivationContext](https://docs.microsoft.com/dotnet/api/system.fabric.codepackageactivationcontext) -objecten.  
+* Gebruik [partitie](/dotnet/api/system.fabric.istatefulservicepartition) -of [CodePackageActivationContext](/dotnet/api/system.fabric.codepackageactivationcontext) -objecten.  
   U kunt de- `Partition` en- `CodePackageActivationContext` objecten gebruiken om de status van elementen te rapporteren die deel uitmaken van de huidige context. Bijvoorbeeld: code die wordt uitgevoerd als onderdeel van een replica kan alleen de status rapporteren voor die replica, de partitie waarvan deze deel uitmaakt en de toepassing waarvan deze deel uitmaakt.
 * Gebruik `FabricClient`.   
   U kunt gebruiken `FabricClient` om de status van de service code te rapporteren als het cluster niet is [beveiligd](service-fabric-cluster-security.md) of als de service wordt uitgevoerd met beheerders bevoegdheden. De meeste praktijk scenario's maken geen gebruik van niet-beveiligde clusters of bieden beheerders bevoegdheden. Met `FabricClient` kunt u de status rapporteren voor elke entiteit die deel uitmaakt van het cluster. In het ideale geval moet Service code echter alleen rapporten verzenden die betrekking hebben op de eigen status.
@@ -140,6 +141,5 @@ activationContext.ReportApplicationHealth(healthInformation);
 
 ## <a name="next-steps"></a>Volgende stappen
 * [Diep gaande over Service Fabric status](service-fabric-health-introduction.md)
-* [REST API voor Reporting service Health](https://docs.microsoft.com/rest/api/servicefabric/report-the-health-of-a-service)
-* [REST API voor de rapportage van de status van de toepassing](https://docs.microsoft.com/rest/api/servicefabric/report-the-health-of-an-application)
-
+* [REST API voor Reporting service Health](/rest/api/servicefabric/report-the-health-of-a-service)
+* [REST API voor de rapportage van de status van de toepassing](/rest/api/servicefabric/report-the-health-of-an-application)

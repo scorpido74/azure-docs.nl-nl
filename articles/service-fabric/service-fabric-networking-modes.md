@@ -5,12 +5,12 @@ author: athinanthny
 ms.topic: conceptual
 ms.date: 2/23/2018
 ms.author: atsenthi
-ms.openlocfilehash: feeef1773ffe68f3ff88175b413cd40ba618b8d9
-ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.openlocfilehash: e6174f35bd54b3ca0b2c5240a663369350b30ce8
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86207233"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86241893"
 ---
 # <a name="service-fabric-container-networking-modes"></a>Service Fabric container netwerk modi
 
@@ -21,7 +21,7 @@ Als u één container service met een statisch eind punt in uw service manifest 
 Wanneer een container service opnieuw wordt gestart of naar een ander knoop punt in het cluster wordt verplaatst, wordt het IP-adres gewijzigd. Daarom wordt het gebruik van het dynamisch toegewezen IP-adres niet aanbevolen voor het detecteren van container Services. Alleen de Service Fabric Naming Service of de DNS-service moet worden gebruikt voor service detectie. 
 
 >[!WARNING]
->In Azure is een totaal van 65.356 IP-adressen per virtueel netwerk toegestaan. De som van het aantal knoop punten en het aantal container service-instanties (die gebruikmaken van de open modus) mag niet groter zijn dan 65.356 IP-adressen in een virtueel netwerk. Voor scenario's met hoge dichtheid wordt u aangeraden NAT-netwerk modus te activeren. Daarnaast hebben andere afhankelijkheden, zoals de load balancer, andere [beperkingen](https://docs.microsoft.com/azure/azure-resource-manager/management/azure-subscription-service-limits) om rekening mee te houden. Momenteel zijn Maxi maal 50 Ip's per knoop punt getest en stabiel bewezen. 
+>In Azure is een totaal van 65.356 IP-adressen per virtueel netwerk toegestaan. De som van het aantal knoop punten en het aantal container service-instanties (die gebruikmaken van de open modus) mag niet groter zijn dan 65.356 IP-adressen in een virtueel netwerk. Voor scenario's met hoge dichtheid wordt u aangeraden NAT-netwerk modus te activeren. Daarnaast hebben andere afhankelijkheden, zoals de load balancer, andere [beperkingen](../azure-resource-manager/management/azure-subscription-service-limits.md) om rekening mee te houden. Momenteel zijn Maxi maal 50 Ip's per knoop punt getest en stabiel bewezen. 
 >
 
 ## <a name="set-up-open-networking-mode"></a>Open-netwerk modus instellen
@@ -263,6 +263,6 @@ Wanneer een container service opnieuw wordt gestart of naar een ander knoop punt
  
 ## <a name="next-steps"></a>Volgende stappen
 * [Inzicht krijgen in het Service Fabric-toepassingsmodel](service-fabric-application-model.md)
-* [Meer informatie over de bronnen voor het Service Fabric-service manifest](https://docs.microsoft.com/azure/service-fabric/service-fabric-service-manifest-resources)
+* [Meer informatie over de bronnen voor het Service Fabric-service manifest](./service-fabric-service-manifest-resources.md)
 * [Een Windows-container implementeren voor het Service Fabric op Windows Server 2016](service-fabric-get-started-containers.md)
 * [Een docker-container implementeren voor Service Fabric op Linux](service-fabric-get-started-containers-linux.md)
