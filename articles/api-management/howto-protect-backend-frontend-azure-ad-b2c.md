@@ -14,12 +14,12 @@ ms.topic: article
 ms.date: 02/20/2020
 ms.author: wieastbu
 ms.custom: fasttrack-new
-ms.openlocfilehash: 3c5c13b3aae33b098de79a3429a299cc33f1c4f6
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 60177dd00dc6326aae4cfdc0b658c85f2635f8c0
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82202873"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86253691"
 ---
 # <a name="protect-spa-backend-with-oauth-20-azure-active-directory-b2c-and-azure-api-management"></a>Beveiligd-wachtwoord verificatie beveiligen met OAuth 2,0, Azure Active Directory B2C en Azure API Management
 
@@ -458,7 +458,7 @@ U moet de met CIDR opgemaakte blokken met adressen toevoegen aan het paneel IP-b
 De bovenstaande stappen kunnen worden aangepast en bewerkt om veel verschillende manieren van Azure AD B2C met API Management mogelijk te maken.
 
 ## <a name="next-steps"></a>Volgende stappen
-* Meer informatie over [Azure Active Directory en OAuth 2.0](../active-directory/develop/authentication-scenarios.md).
+* Meer informatie over [Azure Active Directory en OAuth 2.0](../active-directory/develop/authentication-vs-authorization.md).
 * Bekijk meer [Video's](https://azure.microsoft.com/documentation/videos/index/?services=api-management) over API management.
 * Zie [wederzijdse verificatie van certificaten](api-management-howto-mutual-certificates.md)voor andere manieren om uw back-end-service te beveiligen.
 * [Een API Management service-exemplaar maken](get-started-create-service-instance.md).

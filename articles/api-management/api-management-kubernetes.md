@@ -12,21 +12,22 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 12/14/2019
 ms.author: apimpm
-ms.openlocfilehash: 1d6773b4daac256234c33bf50fb3736d585ac505
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 5e995d008b441e122f9e93e5f7c29f0bb9bf9c53
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "75480994"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86254687"
 ---
 # <a name="use-azure-api-management-with-microservices-deployed-in-azure-kubernetes-service"></a>Azure API Management gebruiken met micro services die zijn geïmplementeerd in azure Kubernetes service
 
-Micro Services zijn perfect voor het bouwen van Api's. Met [Azure Kubernetes service](https://azure.microsoft.com/services/kubernetes-service/) (AKS) kunt u snel een [architectuur op basis van micro Services](https://docs.microsoft.com/azure/architecture/guide/architecture-styles/microservices) implementeren en gebruiken in de Cloud. U kunt vervolgens [Azure API Management](https://aka.ms/apimrocks) (API Management) gebruiken om uw micro services te publiceren als api's voor intern en extern verbruik. In dit artikel worden de opties voor het implementeren van API Management met AKS beschreven. Er wordt uitgegaan van basis kennis van Kubernetes, API Management en Azure-netwerken. 
+Micro Services zijn perfect voor het bouwen van Api's. Met [Azure Kubernetes service](https://azure.microsoft.com/services/kubernetes-service/) (AKS) kunt u snel een [architectuur op basis van micro Services](/azure/architecture/guide/architecture-styles/microservices) implementeren en gebruiken in de Cloud. U kunt vervolgens [Azure API Management](https://aka.ms/apimrocks) (API Management) gebruiken om uw micro services te publiceren als api's voor intern en extern verbruik. In dit artikel worden de opties voor het implementeren van API Management met AKS beschreven. Er wordt uitgegaan van basis kennis van Kubernetes, API Management en Azure-netwerken. 
 
 ## <a name="background"></a>Achtergrond
 
 Wanneer u micro Services als Api's voor verbruik publiceert, kan het lastig zijn om de communicatie tussen de micro Services en de clients die deze gebruiken te beheren. Er zijn diverse cross-knipte problemen zoals verificatie, autorisatie, beperking, caching, trans formatie en bewaking. Deze problemen zijn van toepassing, ongeacht of de micro services worden blootgesteld aan interne of externe clients. 
 
-Het patroon van de [API-gateway](https://docs.microsoft.com/dotnet/architecture/microservices/architect-microservice-container-applications/direct-client-to-microservice-communication-versus-the-api-gateway-pattern) behandelt deze problemen. Een API-gateway fungeert als front-deur voor de micro Services, ontkoppelt clients van uw micro Services, voegt een extra beveiligingslaag toe en vermindert de complexiteit van uw micro Services door het verwijderen van de last van het afhandelen van cross-zaken. 
+Het patroon van de [API-gateway](/dotnet/architecture/microservices/architect-microservice-container-applications/direct-client-to-microservice-communication-versus-the-api-gateway-pattern) behandelt deze problemen. Een API-gateway fungeert als front-deur voor de micro Services, ontkoppelt clients van uw micro Services, voegt een extra beveiligingslaag toe en vermindert de complexiteit van uw micro Services door het verwijderen van de last van het afhandelen van cross-zaken. 
 
 [Azure API Management](https://aka.ms/apimrocks) is een kant-en-klare oplossing om uw API-gateway behoeften op te lossen. U kunt snel een consistente en moderne gateway voor uw micro Services maken en deze als Api's publiceren. Als een full-levenscyclus API Management-oplossing biedt IT ook extra mogelijkheden, waaronder een self-service ontwikkelaars portal voor API-detectie, API-levenscyclus beheer en API Analytics.
 
@@ -52,18 +53,18 @@ Hoewel een AKS-cluster altijd wordt geïmplementeerd in een virtueel netwerk (VN
 
 ### <a name="option-1-expose-services-publicly"></a>Optie 1: openbaar gemaakte services
 
-Services in een AKS-cluster kunnen openbaar worden weer gegeven met behulp van [service types](https://docs.microsoft.com/azure/aks/concepts-network) NodePort, Load Balancer of externe naam. In dit geval zijn services rechtstreeks toegankelijk vanuit het open bare Internet. Na de implementatie van API Management vóór het cluster, moeten alle inkomende verkeer via de API Management worden door middel van verificatie in de micro Services. Zo kan API Management een toegangs token in elke aanvraag in het cluster bevatten. Elke micro service is verantwoordelijk voor het valideren van het token voordat de aanvraag wordt verwerkt. 
+Services in een AKS-cluster kunnen openbaar worden weer gegeven met behulp van [service types](../aks/concepts-network.md) NodePort, Load Balancer of externe naam. In dit geval zijn services rechtstreeks toegankelijk vanuit het open bare Internet. Na de implementatie van API Management vóór het cluster, moeten alle inkomende verkeer via de API Management worden door middel van verificatie in de micro Services. Zo kan API Management een toegangs token in elke aanvraag in het cluster bevatten. Elke micro service is verantwoordelijk voor het valideren van het token voordat de aanvraag wordt verwerkt. 
 
 
 Dit kan de eenvoudigste optie zijn voor het implementeren van API Management voor AKS, met name als u al een verificatie logica hebt geïmplementeerd in uw micro Services. 
 
 ![Services rechtstreeks publiceren](./media/api-management-aks/direct.png)
 
-Voordelen:
+-Professionals
 * Eenvoudige configuratie aan de API Management zijde omdat deze niet in het cluster-VNet hoeft te worden geïnjecteerd
 * Er is geen wijziging aan de AKS-zijde als Services al openbaar zijn en verificatie logica al aanwezig is in micro Services
 
-Nadelen:
+Nadelen
 * Mogelijk beveiligings risico vanwege open bare zicht baarheid van service-eind punten
 * Geen enkel invoer punt voor binnenkomend cluster verkeer
 * Bemoeilijkt micro Services met dubbele verificatie logica
@@ -72,18 +73,18 @@ Nadelen:
 
 Hoewel optie 1 eenvoudiger kan zijn, heeft dit een duidelijk nadeel zoals hierboven wordt beschreven. Als een API Management-exemplaar zich niet in het cluster-VNet bevindt, is wederzijdse TLS-verificatie (mTLS) een robuuste manier om ervoor te zorgen dat het verkeer veilig en vertrouwd is in beide richtingen tussen een API Management exemplaar en een AKS-cluster. 
 
-Wederzijdse TLS-verificatie wordt standaard [ondersteund](https://docs.microsoft.com/azure/api-management/api-management-howto-mutual-certificates) door API management en kan worden ingeschakeld in Kubernetes door [een ingangs controller te installeren](https://docs.microsoft.com/azure/aks/ingress-own-tls) (figuur 3). Als gevolg hiervan wordt verificatie uitgevoerd in de ingangs controller, waardoor de micro services worden vereenvoudigd. Daarnaast kunt u de IP-adressen van API Management toevoegen aan de lijst met toegestane software door ingangs rechten om ervoor te zorgen dat alleen API Management toegang tot het cluster heeft.  
+Wederzijdse TLS-verificatie wordt standaard [ondersteund](./api-management-howto-mutual-certificates.md) door API management en kan worden ingeschakeld in Kubernetes door [een ingangs controller te installeren](../aks/ingress-own-tls.md) (figuur 3). Als gevolg hiervan wordt verificatie uitgevoerd in de ingangs controller, waardoor de micro services worden vereenvoudigd. Daarnaast kunt u de IP-adressen van API Management toevoegen aan de lijst met toegestane software door ingangs rechten om ervoor te zorgen dat alleen API Management toegang tot het cluster heeft.  
 
  
 ![Publiceren via een ingangs controller](./media/api-management-aks/ingress-controller.png)
 
 
-Voordelen:
+-Professionals
 * Eenvoudige configuratie aan de API Management-zijde omdat deze niet hoeft te worden geïnjecteerd in het cluster-VNet en mTLS systeem eigen wordt ondersteund
 * Centraliseert de beveiliging voor binnenkomend cluster verkeer op de ingangs controller-laag
 * Vermindert het beveiligings risico door de open bare cluster eindpunten te minimaliseren
 
-Nadelen:
+Nadelen
 * Verhoogt de complexiteit van de cluster configuratie vanwege extra werk voor het installeren, configureren en onderhouden van de ingangs controller en het beheren van certificaten die worden gebruikt voor mTLS
 * Beveiligings risico vanwege open bare zicht baarheid van de ingangs-endpoint (s)
 
@@ -96,7 +97,7 @@ Als u een abonnements sleutel voor toegang tot Api's wilt ophalen, is een abonne
 
 In sommige gevallen kunnen klanten met wettelijke beperkingen of strikte beveiligings vereisten de optie 1 en 2 geen levensvat bare oplossingen door open bare eind punten vinden. In andere gevallen kunnen het AKS-cluster en de toepassingen die gebruikmaken van de micro Services zich in hetzelfde VNet bevinden. Daarom is er geen reden om het cluster openbaar te maken, omdat al het API-verkeer binnen het VNet blijft. Voor deze scenario's kunt u API Management implementeren in het cluster-VNet. [API Management Premium-laag](https://aka.ms/apimpricing) ondersteunt VNet-implementatie. 
 
-Er zijn twee modi voor [het implementeren van API Management in een VNet](https://docs.microsoft.com/azure/api-management/api-management-using-with-vnet) – extern en intern. 
+Er zijn twee modi voor [het implementeren van API Management in een VNet](./api-management-using-with-vnet.md) – extern en intern. 
 
 Als API-gebruikers zich niet in het cluster-VNet bevinden, moet de externe modus (figuur 4) worden gebruikt. In deze modus wordt de API Management-Gateway in het cluster-VNet geïnjecteerd, maar via een extern load balancer toegankelijk vanaf het open bare Internet. Het helpt het cluster volledig te verbergen terwijl externe clients de micro Services toch kunnen gebruiken. Daarnaast kunt u Azure-netwerk mogelijkheden, zoals netwerk beveiligings groepen (NSG), gebruiken om het netwerk verkeer te beperken.
 
@@ -108,21 +109,16 @@ Als alle API-gebruikers zich in het cluster-VNet bevinden, kan de interne modus 
 
  In beide gevallen is het AKS-cluster niet openbaar zichtbaar. Vergeleken met optie 2 is de ingangs controller mogelijk niet nodig. Afhankelijk van uw scenario en configuratie is er mogelijk nog steeds verificatie vereist tussen API Management en uw micro Services. Als er bijvoorbeeld een service-net wordt aangenomen, is hiervoor altijd wederzijdse TLS-verificatie vereist. 
 
-Voordelen:
+-Professionals
 * De veiligste optie omdat het AKS-cluster geen openbaar eind punt heeft
 * Vereenvoudigt de cluster configuratie omdat er geen openbaar eind punt is
 * De mogelijkheid om zowel API Management als AKS in het VNet te verbergen met de interne modus
 * Mogelijkheid om netwerk verkeer te beheren met Azure-netwerk mogelijkheden zoals netwerk beveiligings groepen (NSG)
 
-Nadelen:
+Nadelen
 * Verhoogt de complexiteit van het implementeren en configureren van API Management voor werken binnen het VNet
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* Meer informatie over [netwerk concepten voor toepassingen in AKS](https://docs.microsoft.com/azure/aks/concepts-network)
-* Meer informatie over [het gebruik van API Management met virtuele netwerken](https://docs.microsoft.com/azure/api-management/api-management-using-with-vnet)
-
-
-
-
-
+* Meer informatie over [netwerk concepten voor toepassingen in AKS](../aks/concepts-network.md)
+* Meer informatie over [het gebruik van API Management met virtuele netwerken](./api-management-using-with-vnet.md)

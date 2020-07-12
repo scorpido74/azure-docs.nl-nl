@@ -5,11 +5,12 @@ author: sumukhs
 ms.topic: conceptual
 ms.date: 10/02/2017
 ms.author: sumukhs
-ms.openlocfilehash: 9743213394b59af701b25b8be9dd48cf4310b499
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 8765e86ffeae86b9f4e2b693c0dbf92478632dbf
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "75645511"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86253164"
 ---
 # <a name="configure-stateful-reliable-services"></a>Stateful reliable Services configureren
 Er zijn twee sets configuratie-instellingen voor betrouw bare Services. Eén set is globaal voor alle betrouw bare Services in het cluster, terwijl de andere set specifiek is voor een bepaalde betrouw bare service.
@@ -18,7 +19,7 @@ Er zijn twee sets configuratie-instellingen voor betrouw bare Services. Eén set
 De algemene betrouw bare service configuratie is opgegeven in het cluster manifest voor het cluster in het gedeelte KtlLogger. Hiermee kunt u de locatie en grootte van het gedeelde logboek configureren, plus de globale geheugen limieten die door de logboeken worden gebruikt. Het cluster manifest is een enkel XML-bestand met instellingen en configuraties die van toepassing zijn op alle knoop punten en services in het cluster. Het bestand wordt doorgaans ClusterManifest.xml genoemd. U kunt het cluster manifest voor uw cluster zien met behulp van de Power shell-opdracht Get-ServiceFabricClusterManifest.
 
 ### <a name="configuration-names"></a>Configuratie namen
-| Name | Eenheid | Standaardwaarde | Opmerkingen |
+| Naam | Eenheid | Standaardwaarde | Opmerkingen |
 | --- | --- | --- | --- |
 | WriteBufferMemoryPoolMinimumInKB |Kilo bytes |8388608 |Minimum aantal KB dat moet worden toegewezen in de kernelmodus voor de geheugen groep schrijf buffer voor logboek registratie. Deze geheugen groep wordt gebruikt voor het opslaan van de status informatie voordat naar de schijf wordt geschreven. |
 | WriteBufferMemoryPoolMaximumInKB |Kilo bytes |Geen limiet |Maximale grootte van de geheugen groep voor schrijf buffer voor logboek registratie kan worden uitgebreid. |
@@ -99,7 +100,7 @@ ReplicatorConfig
 > 
 
 ### <a name="configuration-names"></a>Configuratie namen
-| Name | Eenheid | Standaardwaarde | Opmerkingen |
+| Naam | Eenheid | Standaardwaarde | Opmerkingen |
 | --- | --- | --- | --- |
 | BatchAcknowledgementInterval |Seconden |0,015 |De periode gedurende welke de Replicator op het secundaire wacht na ontvangst van een bewerking voordat een bevestiging wordt verzonden naar de primaire. Alle andere bevestigingen die moeten worden verzonden voor bewerkingen die binnen dit interval worden verwerkt, worden als één antwoord verzonden. |
 | ReplicatorEndpoint |N.v.t. |Geen standaard-vereiste para meter |Het IP-adres en de poort die door de primaire/secundaire Replicator worden gebruikt om te communiceren met andere replicatie Programma's in de replicaset. Dit moet verwijzen naar een TCP-bron eindpunt in het service manifest. Raadpleeg de [service manifest bronnen](service-fabric-service-manifest-resources.md) voor meer informatie over het definiëren van eindpunt resources in een service manifest. |
@@ -108,14 +109,14 @@ ReplicatorConfig
 | CheckpointThresholdInMB |MB |50 |De hoeveelheid logboek bestands ruimte waarna de status van een controle punt wordt gemaakt. |
 | MaxRecordSizeInKB |KB |1024 |Grootste record grootte die door de Replicator kan worden geschreven in het logboek. Deze waarde moet een meervoud van 4 en groter dan 16 zijn. |
 | MinLogSizeInMB |MB |0 (door systeem vastgesteld) |Minimale grootte van het transactionele logboek. Het logboek mag niet worden afgekapt op een grootte onder deze instelling. 0 geeft aan dat de Replicator de minimale logboek grootte bepaalt. Als u deze waarde verhoogt, verhoogt u de kans op gedeeltelijke kopieën en incrementele back-ups omdat de kans dat relevante logboek records worden afgekapt wordt verlaagd. |
-| TruncationThresholdFactor |Rekening |2 |Bepaalt op welke grootte het logboek moet worden afgekapt. De drempel waarde voor afkap ping wordt bepaald door MinLogSizeInMB vermenigvuldigd met TruncationThresholdFactor. TruncationThresholdFactor moet groter zijn dan 1. MinLogSizeInMB * TruncationThresholdFactor moet kleiner zijn dan MaxStreamSizeInMB. |
-| ThrottlingThresholdFactor |Rekening |4 |Bepaalt op welke grootte van het logboek de replica wordt gestart. Drempel waarde voor bandbreedte beperking (in MB) wordt bepaald door Max ((MinLogSizeInMB * ThrottlingThresholdFactor), (CheckpointThresholdInMB * ThrottlingThresholdFactor)). Drempel waarde voor bandbreedte beperking (in MB) moet groter zijn dan Afbrekings drempel (in MB). De drempel waarde voor afkap ping (in MB) moet kleiner zijn dan MaxStreamSizeInMB. |
+| TruncationThresholdFactor |Factor |2 |Bepaalt op welke grootte het logboek moet worden afgekapt. De drempel waarde voor afkap ping wordt bepaald door MinLogSizeInMB vermenigvuldigd met TruncationThresholdFactor. TruncationThresholdFactor moet groter zijn dan 1. MinLogSizeInMB * TruncationThresholdFactor moet kleiner zijn dan MaxStreamSizeInMB. |
+| ThrottlingThresholdFactor |Factor |4 |Bepaalt op welke grootte van het logboek de replica wordt gestart. Drempel waarde voor bandbreedte beperking (in MB) wordt bepaald door Max ((MinLogSizeInMB * ThrottlingThresholdFactor), (CheckpointThresholdInMB * ThrottlingThresholdFactor)). Drempel waarde voor bandbreedte beperking (in MB) moet groter zijn dan Afbrekings drempel (in MB). De drempel waarde voor afkap ping (in MB) moet kleiner zijn dan MaxStreamSizeInMB. |
 | MaxAccumulatedBackupLogSizeInMB |MB |800 |De maximale gecumuleerde grootte (in MB) van back-uplogboeken in een bepaalde back-uplogboek keten. Een incrementele back-up mislukt als met de incrementele back-up een back-uplogboek wordt gegenereerd dat de geaccumuleerde back-uplogboeken zou kunnen veroorzaken omdat de relevante volledige back-up groter is dan deze grootte. In dergelijke gevallen is de gebruiker verplicht een volledige back-up te maken. |
 | SharedLogId |GUID |"" |Hiermee geeft u een unieke GUID op die moet worden gebruikt voor het identificeren van het gedeelde logboek bestand dat wordt gebruikt met deze replica. Normaal gesp roken moeten services deze instelling niet gebruiken. Als SharedLogId echter is opgegeven, moet SharedLogPath ook worden opgegeven. |
 | SharedLogPath |Fully Qualified Path name |"" |Hiermee geeft u het volledige pad op waar het gedeelde logboek bestand voor deze replica wordt gemaakt. Normaal gesp roken moeten services deze instelling niet gebruiken. Als SharedLogPath echter is opgegeven, moet SharedLogId ook worden opgegeven. |
 | SlowApiMonitoringDuration |Seconden |300 |Hiermee stelt u het bewakings interval voor beheerde API-aanroepen. Voor beeld: door de gebruiker geleverde Terugbel functie voor back-up. Nadat het interval is verstreken, wordt een waarschuwings status rapport verzonden naar de Health Manager. |
 | LogTruncationIntervalSeconds |Seconden |0 |Configureerbaar interval waarmee de afkap ping van het logboek op elke replica wordt gestart. Het wordt gebruikt om ervoor te zorgen dat Logboeken ook worden afgekapt op basis van tijd in plaats van alleen logboek grootte. Deze instelling dwingt ook het leegmaken van verwijderde vermeldingen in een betrouw bare woorden lijst af. Dit kan daarom worden gebruikt om ervoor te zorgen dat verwijderde items tijdig worden opgeschoond. |
-| EnableStableReads |Boolean-waarde |False |Het inschakelen van stabiele Lees bewerkingen beperkt secundaire replica's voor het retour neren van waarden die zijn bevestigd. |
+| EnableStableReads |Booleaans |Niet waar |Het inschakelen van stabiele Lees bewerkingen beperkt secundaire replica's voor het retour neren van waarden die zijn bevestigd. |
 
 ### <a name="sample-configuration-via-code"></a>Voorbeeld configuratie via code
 ```csharp
@@ -183,5 +184,4 @@ De instellingen SharedLogId en SharedLogPath worden altijd samen gebruikt om een
 
 ## <a name="next-steps"></a>Volgende stappen
 * [Fouten opsporen in uw Service Fabric-toepassing in Visual Studio](service-fabric-debugging-your-application.md)
-* [Naslag informatie voor ontwikkel aars voor Reliable Services](https://msdn.microsoft.com/library/azure/dn706529.aspx)
-
+* [Naslag informatie voor ontwikkel aars voor Reliable Services](/previous-versions/azure/dn706529(v=azure.100))

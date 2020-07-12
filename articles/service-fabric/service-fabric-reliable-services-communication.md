@@ -5,11 +5,12 @@ author: vturecek
 ms.topic: conceptual
 ms.date: 11/01/2017
 ms.author: vturecek
-ms.openlocfilehash: 3c1a6cfa5227369bf1cde4af087019727c22c0c2
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 0899e33e875fea4a1708e593876b7ef771004677
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "75462947"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86253181"
 ---
 # <a name="how-to-use-the-reliable-services-communication-apis"></a>De Reliable Services Communication Api's gebruiken
 Azure Service Fabric als platform is volledig neutraal over de communicatie tussen services. Alle protocollen en Stacks zijn acceptabel, van UDP tot HTTP. Het is aan de service ontwikkelaar om te kiezen hoe services moeten communiceren. Het Reliable Services Application Framework biedt ingebouwde communicatie stacks en Api's die u kunt gebruiken om uw aangepaste communicatie-onderdelen te bouwen.
@@ -187,7 +188,7 @@ public CompletableFuture<String> openAsync(CancellationToken cancellationToken)
 Service Fabric biedt Api's waarmee clients en andere services dit adres vervolgens kunnen vragen op service naam. Dit is belang rijk omdat het service adres niet statisch is. Services worden in het cluster verplaatst voor resource verdeling en beschik baarheid. Dit is het mechanisme waarmee clients het Luister adres voor een service kunnen omzetten.
 
 > [!NOTE]
-> Zie voor een volledig overzicht van het schrijven van een communicatie-listener [service Fabric Web API-services met OWIN self-hosting](service-fabric-reliable-services-communication-webapi.md) voor C#, terwijl u voor Java uw eigen http-server implementatie kunt schrijven, zie EchoServer toepassing voor beeld in https://github.com/Azure-Samples/service-fabric-java-getting-started .
+> Zie voor een volledig overzicht van het schrijven van een communicatie-listener [service Fabric Web API-services met OWIN self-hosting](./service-fabric-reliable-services-communication-aspnetcore.md) voor C#, terwijl u voor Java uw eigen http-server implementatie kunt schrijven, zie EchoServer toepassing voor beeld in https://github.com/Azure-Samples/service-fabric-java-getting-started .
 >
 >
 

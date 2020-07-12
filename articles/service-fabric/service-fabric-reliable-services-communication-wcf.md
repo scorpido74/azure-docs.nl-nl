@@ -5,11 +5,12 @@ author: BharatNarasimman
 ms.topic: conceptual
 ms.date: 06/07/2017
 ms.author: bharatn
-ms.openlocfilehash: 7f3b3974893316a488270f755b8f8822080658d9
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 1fbcf552cee8a96636920f04472843b1fea5c845
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "75433864"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86253232"
 ---
 # <a name="wcf-based-communication-stack-for-reliable-services"></a>Op WCF gebaseerde communicatie stack voor Reliable Services
 Met het Reliable Services Framework kunnen service ontwerpers de communicatie stack kiezen die ze willen gebruiken voor hun service. Ze kunnen de communicatie stack van hun keuze aansluiten via de **ICommunicationListener** die wordt geretourneerd door de [CreateServiceReplicaListeners-of CreateServiceInstanceListeners](service-fabric-reliable-services-communication.md) -methoden. Het Framework bevat een implementatie van de communicatie stack op basis van de Windows Communication Foundation (WCF) voor service auteurs die op WCF gebaseerde communicatie willen gebruiken.
@@ -115,6 +116,5 @@ var result = calculatorServiceCommunicationClient.InvokeWithRetryAsync(
 
 ## <a name="next-steps"></a>Volgende stappen
 * [Externe procedure aanroep met Reliable Services externe communicatie](service-fabric-reliable-services-communication-remoting.md)
-* [Web-API met OWIN in Reliable Services](service-fabric-reliable-services-communication-webapi.md)
+* [Web-API met OWIN in Reliable Services](./service-fabric-reliable-services-communication-aspnetcore.md)
 * [Communicatie beveiligen voor Reliable Services](service-fabric-reliable-services-secure-communication-wcf.md)
-

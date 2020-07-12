@@ -15,16 +15,17 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 01/23/2018
 ms.author: apimpm
-ms.openlocfilehash: 4a0717bf7a284668af4808acae3050cc7f42f836
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: ace0ef2660a44af41d8942cfe4d225bc1a03228e
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "75442531"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86254585"
 ---
 # <a name="monitor-your-apis-with-azure-api-management-event-hubs-and-moesif"></a>Bewaak uw Api's met Azure API Management, Event Hubs en Moesif
 De [API Management-service](api-management-key-concepts.md) biedt veel mogelijkheden voor het verbeteren van de verwerking van HTTP-aanvragen die worden verzonden naar uw HTTP-API. Het bestaan van de aanvragen en antwoorden is echter tijdelijk. De aanvraag wordt gemaakt en de API Management-service wordt door gegeven aan uw back-end-API. Uw API verwerkt de aanvraag en een antwoord loopt terug via de API-Consumer. De API Management-service houdt enkele belang rijke statistische gegevens over de Api's bij om weer te geven in het Azure Portal dash board, maar de details zijn verdwenen.
 
-Door gebruik te maken van het logboek-naar-eventhub-beleid in de API Management-service, kunt u de gegevens van de aanvraag en het antwoord verzenden naar een [Azure Event hub](../event-hubs/event-hubs-what-is-event-hubs.md). Er zijn verschillende redenen waarom u mogelijk gebeurtenissen wilt genereren van HTTP-berichten die naar uw Api's worden verzonden. Enkele voor beelden zijn onder andere de audittrail van updates, gebruiks analyses, uitzonderings waarschuwingen en integraties van derden.
+Door gebruik te maken van het logboek-naar-eventhub-beleid in de API Management-service, kunt u de gegevens van de aanvraag en het antwoord verzenden naar een [Azure Event hub](../event-hubs/event-hubs-about.md). Er zijn verschillende redenen waarom u mogelijk gebeurtenissen wilt genereren van HTTP-berichten die naar uw Api's worden verzonden. Enkele voor beelden zijn onder andere de audittrail van updates, gebruiks analyses, uitzonderings waarschuwingen en integraties van derden.
 
 In dit artikel wordt beschreven hoe u het hele HTTP-aanvraag-en-antwoord bericht vastlegt, verzendt naar een event hub en dat bericht vervolgens doorstuurt naar een service van derden die HTTP-logboek registratie en bewakings Services biedt.
 
@@ -47,7 +48,7 @@ Een event hub accepteert gebeurtenis gegevens als een eenvoudige teken reeks. De
 
 Een alternatieve optie was het `application/http` media type te gebruiken zoals beschreven in de HTTP-specificatie [RFC 7230](https://tools.ietf.org/html/rfc7230). Dit media type maakt gebruik van de exacte indeling die wordt gebruikt voor het daad werkelijk verzenden van HTTP-berichten via de kabel, maar het hele bericht kan worden geplaatst in de hoofd tekst van een andere HTTP-aanvraag. In ons geval gaan we de hoofd tekst gebruiken als ons bericht om naar Event Hubs te verzenden. In de [micro soft ASP.net Web API 2,2-client](https://www.nuget.org/packages/Microsoft.AspNet.WebApi.Client/) bibliotheken vindt u een parser die deze indeling kan parseren en converteren naar de systeem eigen `HttpRequestMessage` en- `HttpResponseMessage` objecten.
 
-Om dit bericht te kunnen maken, moeten we profiteren van [beleids expressies](/azure/api-management/api-management-policy-expressions) op basis van C# in azure API management. Dit is het beleid dat een HTTP-aanvraag bericht verzendt naar Azure Event Hubs.
+Om dit bericht te kunnen maken, moeten we profiteren van [beleids expressies](./api-management-policy-expressions.md) op basis van C# in azure API management. Dit is het beleid dat een HTTP-aanvraag bericht verzendt naar Azure Event Hubs.
 
 ```xml
 <log-to-eventhub logger-id="conferencelogger" partition-id="0">
@@ -296,7 +297,7 @@ public class MoesifHttpMessageProcessor : IHttpMessageProcessor
 De voor `MoesifHttpMessageProcessor` delen van een [C# API library voor Moesif](https://www.moesif.com/docs/api?csharp#events) , waarmee u eenvoudig http-gebeurtenis gegevens in hun service kunt pushen. Als u HTTP-gegevens wilt verzenden naar de Moesif Collector-API, hebt u een account en een toepassings-id nodig. U krijgt een Moesif-toepassings-id door een account te maken op de [website van Moesif](https://www.moesif.com) en vervolgens naar de _meest rechter menu_-  ->  _app-installatie_te gaan.
 
 ## <a name="complete-sample"></a>Voor beeld volt ooien
-De [bron code](https://github.com/dgilling/ApimEventProcessor) en tests voor het voor beeld bevinden zich op github. U hebt een [API Management-service](get-started-create-service-instance.md), [een verbonden Event hub](api-management-howto-log-event-hubs.md)en een [opslag account](../storage/common/storage-create-storage-account.md) nodig om het voor beeld voor uzelf uit te voeren.   
+De [bron code](https://github.com/dgilling/ApimEventProcessor) en tests voor het voor beeld bevinden zich op github. U hebt een [API Management-service](get-started-create-service-instance.md), [een verbonden Event hub](api-management-howto-log-event-hubs.md)en een [opslag account](../storage/common/storage-account-create.md) nodig om het voor beeld voor uzelf uit te voeren.   
 
 Het voor beeld is slechts een eenvoudige console toepassing die luistert naar gebeurtenissen die afkomstig zijn van Event hub, converteert ze naar een Moesif `EventRequestModel` en `EventResponseModel` objecten en stuurt ze vervolgens door naar de MOESIF Collector API.
 
@@ -310,9 +311,9 @@ Azure API Management service biedt een ideale plaats voor het vastleggen van het
 ## <a name="next-steps"></a>Volgende stappen
 * Meer informatie over Azure Event Hubs
   * [Aan de slag met Azure Event Hubs](../event-hubs/event-hubs-c-getstarted-send.md)
-  * [Berichten ontvangen met EventProcessorHost](../event-hubs/event-hubs-dotnet-standard-getstarted-receive-eph.md)
+  * [Berichten ontvangen met EventProcessorHost](../event-hubs/event-hubs-dotnet-standard-getstarted-send.md)
   * [Programmeer handleiding voor Event Hubs](../event-hubs/event-hubs-programming-guide.md)
 * Meer informatie over de integratie van API Management en Event Hubs
   * [Gebeurtenissen vastleggen in azure Event Hubs in azure API Management](api-management-howto-log-event-hubs.md)
-  * [Verwijzing naar traceer entiteit](https://docs.microsoft.com/rest/api/apimanagement/apimanagementrest/azure-api-management-rest-api-logger-entity)
-  * [Naslag informatie voor het aanmelden bij het eventhub-beleid](/azure/api-management/api-management-advanced-policies#log-to-eventhub)
+  * [Verwijzing naar traceer entiteit](/rest/api/apimanagement/apimanagementrest/azure-api-management-rest-api-logger-entity)
+  * [Naslag informatie voor het aanmelden bij het eventhub-beleid](./api-management-advanced-policies.md#log-to-eventhub)

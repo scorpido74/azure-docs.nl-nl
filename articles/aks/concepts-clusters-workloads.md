@@ -4,11 +4,12 @@ description: Meer informatie over de basis onderdelen van het cluster en de work
 services: container-service
 ms.topic: conceptual
 ms.date: 06/03/2019
-ms.openlocfilehash: 9b54bdbfcbc37d3863d4e6b86ae6fe5522bb5be9
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 2fe687ddd63ee85faec2d1aa4c02fa2636a3058f
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85336630"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86251855"
 ---
 # <a name="kubernetes-core-concepts-for-azure-kubernetes-service-aks"></a>Kubernetes-kernconcepten voor Azure Kubernetes Service (AKS)
 
@@ -37,7 +38,7 @@ Een Kubernetes-cluster is onderverdeeld in twee onderdelen:
 
 ## <a name="control-plane"></a>Besturingsvlak
 
-Wanneer u een AKS-cluster maakt, wordt automatisch een besturings vlak gemaakt en geconfigureerd. Dit besturings element wordt gegeven als een beheerde Azure-resource die is afgeleid van de gebruiker. Er zijn geen kosten verbonden aan het besturings vlak, alleen de knoop punten die deel uitmaken van het AKS-cluster.
+Wanneer u een AKS-cluster maakt, wordt automatisch een besturings vlak gemaakt en geconfigureerd. Dit besturings element wordt gegeven als een beheerde Azure-resource die is afgeleid van de gebruiker. Er zijn geen kosten verbonden aan het besturings vlak, alleen de knoop punten die deel uitmaken van het AKS-cluster. Het besturings vlak en de bijbehorende resources bevinden zich alleen in de regio waar u het cluster hebt gemaakt.
 
 Het besturings vlak bevat de volgende kern Kubernetes-onderdelen:
 
@@ -72,9 +73,9 @@ Als u een ander host-besturings systeem, container runtime of aangepaste pakkett
 
 ### <a name="resource-reservations"></a>Resource reserveringen
 
-Knooppunt resources worden gebruikt door AKS om de knooppunt functie als onderdeel van het cluster te maken. Dit kan een verschil maken tussen het totale aantal resources van het knoop punt en de resources die kunnen worden verplaatst wanneer ze worden gebruikt in AKS. Dit is belang rijk om te weten wanneer u aanvragen en limieten instelt voor een door de gebruiker geïmplementeerde peul.
+Knooppunt resources worden gebruikt door AKS om de knooppunt functie als onderdeel van het cluster te maken. Dit gebruik kan een verschil maken tussen het totale aantal resources van het knoop punt en de resources die kunnen worden verplaatst wanneer ze worden gebruikt in AKS. Deze informatie is belang rijk voor het instellen van aanvragen en limieten voor de door de gebruiker geïmplementeerde peulen.
 
-Ga als volgt te werk om te zoeken naar de toewijs bare resources van een knoop punt:
+Voer de volgende opdracht uit om de toewijs bare bronnen van een knoop punt te vinden:
 ```kubectl
 kubectl describe node [NODE_NAME]
 
@@ -85,7 +86,7 @@ Als u de prestaties en functionaliteit van knoop punten wilt behouden, worden de
 >[!NOTE]
 > Het gebruik van AKS-invoeg toepassingen zoals container Insights (OMS) neemt extra knooppunt bronnen in beslag.
 
-- **CPU-** gereserveerde CPU is afhankelijk van het knooppunt type en de cluster configuratie, waardoor er minder TOEWIJS bare CPU kan optreden vanwege het uitvoeren van extra functies
+- **CPU-** gereserveerde CPU is afhankelijk van het knooppunt type en de cluster configuratie. Dit kan leiden tot een minder TOEWIJS bare CPU vanwege het uitvoeren van aanvullende functies
 
 | CPU-kernen op de host | 1    | 2    | 4    | 8    | 16 | 32|64|
 |---|---|---|---|---|---|---|---|
@@ -93,7 +94,7 @@ Als u de prestaties en functionaliteit van knoop punten wilt behouden, worden de
 
 - **Geheugen** : het geheugen dat door aks wordt gebruikt, omvat de som van twee waarden.
 
-1. De kubelet-daemon wordt geïnstalleerd op alle knoop punten van de Kubernetes-agent om het maken en beëindigen van containers te beheren. Deze daemon bevat standaard de volgende verwijderings regel: *Memory. available<750Mi*, wat betekent dat een knoop punt altijd ten minste 750 mi te allen tijde kan hebben.  Wanneer een host lager is dan de drempel waarde van het beschik bare geheugen, wordt een van de kubelet beëindigd om geheugen vrij te maken op de hostcomputer en te beveiligen. Dit is een reactief optreden zodra het beschik bare geheugen groter wordt dan de drempel waarde voor 750Mi.
+1. De kubelet-daemon wordt geïnstalleerd op alle knoop punten van de Kubernetes-agent om het maken en beëindigen van containers te beheren. Deze daemon bevat standaard de volgende verwijderings regel: *Memory. available<750Mi*, wat betekent dat een knoop punt altijd ten minste 750 mi te allen tijde kan hebben.  Wanneer een host lager is dan de drempel waarde van het beschik bare geheugen, wordt een van de kubelet beëindigd om geheugen vrij te maken op de hostcomputer en te beveiligen. Deze actie wordt geactiveerd zodra het beschik bare geheugen groter is dan de drempel waarde voor 750Mi.
 
 2. De tweede waarde is een redegressieve hoeveelheid geheugen reserveringen om de kubelet-daemon goed te laten functioneren (uitvoeren-gereserveerd).
     - 25% van de eerste 4 GB geheugen
@@ -102,7 +103,7 @@ Als u de prestaties en functionaliteit van knoop punten wilt behouden, worden de
     - 6% van de volgende 112 GB geheugen (Maxi maal 128 GB)
     - 2% van de geheugens boven 128 GB
 
-De bovenstaande regels voor geheugen-en CPU-toewijzing worden gebruikt om agent knooppunten in orde te blijven, met inbegrip van enige hosting systeem die essentieel is voor de cluster status. Deze toewijzings regels zorgen er ook voor dat het knoop punt minder toegewezen geheugen en CPU rapporteert dan wanneer het geen deel uitmaakt van een Kubernetes-cluster. De bovenstaande resource reserveringen kunnen niet worden gewijzigd.
+De bovenstaande regels voor geheugen-en CPU-toewijzing worden gebruikt om agent knooppunten in orde te blijven, met inbegrip van enige hosting systeem die essentieel is voor de cluster status. Deze toewijzings regels zorgen er ook voor dat het knoop punt minder toegewezen geheugen en CPU rapporteert dan normaal gesp roken zou zijn als het geen deel uitmaakt van een Kubernetes-cluster. De bovenstaande resource reserveringen kunnen niet worden gewijzigd.
 
 Als een knoop punt bijvoorbeeld 7 GB biedt, wordt er 34% van het geheugen gerapporteerd die niet kan worden verplaatst, inclusief de 750Mi-drempel waarde voor harde verwijdering.
 
@@ -152,7 +153,7 @@ Wanneer u een pod maakt, kunt u *resource aanvragen* definiëren om een bepaalde
 
 Zie [Kubernetes peul][kubernetes-pods] en [Kubernetes pod Lifecycle][kubernetes-pod-lifecycle]voor meer informatie.
 
-Een Pod is een logische resource, maar de container (s) zijn waar de werk belasting van de toepassing wordt uitgevoerd. De meeste zijn doorgaans tijdelijke, wegwerp bronnen en individueel geplande een aantal van de hoge Beschik baarheid en redundantie functies die Kubernetes biedt. In plaats daarvan worden er meestal peulen geïmplementeerd en beheerd door Kubernetes- *controllers*, zoals de implementatie controller.
+Een Pod is een logische resource, maar de container (s) zijn waar de werk belasting van de toepassing wordt uitgevoerd. De meeste zijn doorgaans tijdelijke, wegwerp bronnen en individueel geplande een aantal van de hoge Beschik baarheid en redundantie functies die Kubernetes biedt. In plaats daarvan worden er peulen geïmplementeerd en beheerd door Kubernetes- *controllers*, zoals de implementatie controller.
 
 ## <a name="deployments-and-yaml-manifests"></a>Implementaties en YAML-manifesten
 
@@ -162,9 +163,9 @@ U kunt implementaties bijwerken om de configuratie van een Peul, container insta
 
 Voor de meeste stateless toepassingen in AKS moet het implementatie model worden gebruikt in plaats van dat er afzonderlijke peulen worden gepland. Kubernetes kan de status en status van implementaties controleren om ervoor te zorgen dat het vereiste aantal replica's binnen het cluster wordt uitgevoerd. Wanneer u alleen afzonderlijke peulen plant, wordt het meren aantal niet opnieuw gestart als er een probleem optreedt en worden ze niet opnieuw gepland op gezonde knoop punten als het huidige knoop punt een probleem aantreft.
 
-Als een toepassing een quorum van instanties vereist om altijd beschikbaar te zijn voor het beheer van beslissingen, wilt u niet dat een update proces die mogelijkheid verstoort. *Pod-onderbrekings budgetten* kunnen worden gebruikt om te definiëren hoeveel replica's in een implementatie kunnen worden uitgevoerd tijdens een update of een upgrade van een knoop punt. Als u bijvoorbeeld *vijf* replica's in uw implementatie hebt, kunt u een pod-onderbreking van *4* definiëren, zodat er slechts één replica tegelijk mag worden verwijderd of opnieuw wordt gepland. Net als bij pod-resource limieten bestaat een best practice uit het definiëren van pod-onderbrekings budgetten voor toepassingen waarvoor een minimum aantal replica's vereist is om altijd aanwezig te zijn.
+Als een toepassing een quorum van instanties vereist om altijd beschikbaar te zijn voor het beheer van beslissingen, wilt u niet dat een update proces die mogelijkheid verstoort. *Pod-onderbrekings budgetten* kunnen worden gebruikt om te definiëren hoeveel replica's in een implementatie kunnen worden uitgevoerd tijdens een update of een upgrade van een knoop punt. Als u bijvoorbeeld *vijf (5)* replica's in uw implementatie hebt, kunt u een pod-onderbreking van *4* definiëren, zodat er slechts één replica tegelijk mag worden verwijderd of opnieuw wordt gepland. Net als bij pod-resource limieten bestaat een best practice uit het definiëren van pod-onderbrekings budgetten voor toepassingen waarvoor een minimum aantal replica's vereist is om altijd aanwezig te zijn.
 
-Implementaties worden doorgaans gemaakt en beheerd met `kubectl create` of `kubectl apply` . Als u een implementatie wilt maken, definieert u een manifest bestand in de indeling YAML (YAML Ain't Markup Language). In het volgende voor beeld wordt een basis implementatie van de NGINX-webserver gemaakt. In de implementatie worden *drie* te maken replica's opgegeven en wordt poort *80* geopend op de container. Resource aanvragen en-limieten worden ook gedefinieerd voor de CPU en het geheugen.
+Implementaties worden doorgaans gemaakt en beheerd met `kubectl create` of `kubectl apply` . Als u een implementatie wilt maken, definieert u een manifest bestand in de indeling YAML (YAML Ain't Markup Language). In het volgende voor beeld wordt een basis implementatie van de NGINX-webserver gemaakt. De implementatie specificeert *drie (3)* replica's die moeten worden gemaakt en vereist dat poort *80* is geopend in de container. Resource aanvragen en-limieten worden ook gedefinieerd voor de CPU en het geheugen.
 
 ```yaml
 apiVersion: apps/v1

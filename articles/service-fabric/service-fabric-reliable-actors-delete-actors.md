@@ -5,11 +5,12 @@ author: amanbha
 ms.topic: conceptual
 ms.date: 03/19/2018
 ms.author: amanbha
-ms.openlocfilehash: b90c5a10c64e273f1c8f48c7bf5713859796db65
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: d977b6fea71d246610b0e6ef2d9e17d587f1e9ad
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "75645613"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86253538"
 ---
 # <a name="delete-reliable-actors-and-their-state"></a>Reliable Actors en hun status verwijderen
 Garbagecollection van gedeactiveerde actors reinigt alleen het actor-object, maar verwijdert geen gegevens die zijn opgeslagen in de status Manager van een actor. Wanneer een actor opnieuw wordt geactiveerd, worden de bijbehorende gegevens opnieuw beschikbaar gemaakt via de status Manager. In gevallen waarin actors gegevens opslaan in de status Manager en worden gedeactiveerd, maar nooit opnieuw worden geactiveerd, kan het nodig zijn om de gegevens op te schonen.
@@ -48,7 +49,7 @@ Lees het volgende voor meer informatie over Reliable Actors:
 * [Actor gebeurtenissen](service-fabric-reliable-actors-events.md)
 * [Actor herbetreedbaarheid](service-fabric-reliable-actors-reentrancy.md)
 * [De functie voor het controleren van actor en prestaties](service-fabric-reliable-actors-diagnostics.md)
-* [Referentie documentatie voor actor-API](https://msdn.microsoft.com/library/azure/dn971626.aspx)
+* [Referentie documentatie voor actor-API](/previous-versions/azure/dn971626(v=azure.100))
 * [C#-voorbeeld code](https://github.com/Azure-Samples/service-fabric-dotnet-getting-started)
 * [Java-voorbeeld code](https://github.com/Azure-Samples/service-fabric-java-getting-started)
 

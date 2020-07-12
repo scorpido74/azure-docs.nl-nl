@@ -6,11 +6,12 @@ ms.topic: conceptual
 ms.date: 3/9/2018
 ms.author: masnider
 ms.custom: sfrev
-ms.openlocfilehash: 58259b0d19d68c468779a579bd9c86e77106c18d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 66fc58941de206d0bff086f44852d0f2a31587f1
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77083515"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86253079"
 ---
 # <a name="reliable-services-overview"></a>Overzicht van Reliable Services
 
@@ -36,7 +37,7 @@ Reliable Services biedt u een eenvoudig, krachtig, op het hoogste niveau program
   * De [betrouw bare verzamelingen](service-fabric-reliable-services-reliable-collections.md) gebruiken
   * Toegang tot veel andere mogelijkheden, allemaal van een eerste programmeer model in verschillende programmeer talen.
 * Een eenvoudig model voor het uitvoeren van uw eigen code die lijkt op andere bekende programmeer modellen. Uw code heeft een goed gedefinieerd ingangs punt en een eenvoudig beheerde levens cyclus.
-* Een pluggable communicatie model. Gebruik het Trans Port van uw keuze, zoals HTTP met [Web-API](service-fabric-reliable-services-communication-webapi.md), websockets, aangepaste TCP-protocollen of iets anders. Reliable Services bieden enkele fantastische opties die u kunt gebruiken, of u kunt uw eigen keuze maken.
+* Een pluggable communicatie model. Gebruik het Trans Port van uw keuze, zoals HTTP met [Web-API](./service-fabric-reliable-services-communication-aspnetcore.md), websockets, aangepaste TCP-protocollen of iets anders. Reliable Services bieden enkele fantastische opties die u kunt gebruiken, of u kunt uw eigen keuze maken.
 * Voor stateful Services kunt u met behulp van [betrouw bare verzamelingen](service-fabric-reliable-services-reliable-collections.md)uw status consistent en betrouwbaar in uw service opslaan met het programmeer model reliable Services. Betrouw bare verzamelingen zijn een eenvoudige set van zeer beschik bare en betrouw bare verzamelings klassen die bekend zijn bij iedereen die gebruik maakt van C#-verzamelingen. Traditioneel, services die externe systemen nodig hebben voor betrouw bare status beheer. Met betrouw bare verzamelingen kunt u uw status naast uw computer opslaan met dezelfde hoge Beschik baarheid en betrouw baarheid die u kunt verwachten van Maxi maal beschik bare externe winkels. Dit model verbetert ook de latentie omdat u de reken kracht en de status moet gebruiken.
 
 ## <a name="what-makes-reliable-services-different"></a>Wat maakt Reliable Services anders
@@ -52,7 +53,7 @@ Reliable Services verschillen van de services die u eerder hebt geschreven, omda
 
 Of uw service stateful of stateless is, Reliable Services een eenvoudige levens cyclus bieden waarmee u snel en aan de slag kunt met uw code.  Als u een nieuwe service wilt uitvoeren, moet u twee methoden implementeren:
 
-* **CreateServiceReplicaListeners/CreateServiceInstanceListeners** : deze methode is de plaats waar de service de communicatie stack (s) definieert die hij wil gebruiken. De communicatie stack, zoals [Web API](service-fabric-reliable-services-communication-webapi.md), definieert het luisterende eind punt of eind punten voor de service (hoe clients de service bereiken). Ook wordt gedefinieerd hoe de berichten die worden weer gegeven, communiceren met de rest van de service code.
+* **CreateServiceReplicaListeners/CreateServiceInstanceListeners** : deze methode is de plaats waar de service de communicatie stack (s) definieert die hij wil gebruiken. De communicatie stack, zoals [Web API](./service-fabric-reliable-services-communication-aspnetcore.md), definieert het luisterende eind punt of eind punten voor de service (hoe clients de service bereiken). Ook wordt gedefinieerd hoe de berichten die worden weer gegeven, communiceren met de rest van de service code.
 * **RunAsync** : deze methode is waar uw service zijn bedrijfs logica uitvoert en waar alle achtergrond taken worden uitgevoerd die voor de levens duur van de service moeten worden gestart. Het Afbrekings token dat wordt gegeven, is een signaal voor wanneer het werk moet worden gestopt. Als de service bijvoorbeeld berichten uit een betrouw bare wachtrij moet ophalen en ze kan verwerken, is dit het geval.
 
 Lees over als u voor het eerst een betrouw bare service bekijkt. Als u een gedetailleerd overzicht wilt van de levens cyclus van betrouw bare Services, raadpleegt u [overzicht van reliable Services levenscyclus](service-fabric-reliable-services-lifecycle.md).
@@ -67,7 +68,7 @@ Een *stateless service* is een locatie waar er geen status in de service wordt o
 
 Denk bijvoorbeeld aan een reken machine die geen geheugen heeft en ontvangt alle voor waarden en bewerkingen die tegelijk worden uitgevoerd.
 
-In dit geval kan de `RunAsync()` (C#) of `runAsync()` (Java) van de service leeg zijn, omdat er geen achtergrond taak verwerking is die door de service moet worden uitgevoerd. Wanneer de rekenmachine service wordt gemaakt, wordt een `ICommunicationListener` (C#) of `CommunicationListener` (Java) (bijvoorbeeld web- [API](service-fabric-reliable-services-communication-webapi.md)) geretourneerd waarmee een luister eindpunt wordt geopend op een bepaalde poort. Deze luisterende eindpunt hooks tot de verschillende berekenings methoden (bijvoorbeeld: ' toevoegen (N1, N2) ') waarmee de open bare API van de reken machine wordt gedefinieerd.
+In dit geval kan de `RunAsync()` (C#) of `runAsync()` (Java) van de service leeg zijn, omdat er geen achtergrond taak verwerking is die door de service moet worden uitgevoerd. Wanneer de rekenmachine service wordt gemaakt, wordt een `ICommunicationListener` (C#) of `CommunicationListener` (Java) (bijvoorbeeld web- [API](./service-fabric-reliable-services-communication-aspnetcore.md)) geretourneerd waarmee een luister eindpunt wordt geopend op een bepaalde poort. Deze luisterende eindpunt hooks tot de verschillende berekenings methoden (bijvoorbeeld: ' toevoegen (N1, N2) ') waarmee de open bare API van de reken machine wordt gedefinieerd.
 
 Wanneer een aanroep van een client wordt uitgevoerd, wordt de juiste methode aangeroepen en worden de bewerkingen uitgevoerd op de opgegeven gegevens en wordt het resultaat geretourneerd. Er wordt geen status opgeslagen.
 

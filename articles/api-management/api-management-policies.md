@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 11/19/2017
 ms.author: apimpm
-ms.openlocfilehash: f4a29c7cb7e35e69eb9410dd7ddc9f07757e3565
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 069fc95d226e4417bb650b6092a7d00953f69e8d
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82128719"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86252842"
 ---
 # <a name="api-management-policies"></a>API Management-beleidsregels
 Deze sectie bevat een referentie voor het volgende API Management-beleid. Zie [beleid in API Management](api-management-howto-policies.md)voor meer informatie over het toevoegen en configureren van beleid.  
@@ -50,12 +50,12 @@ Deze sectie bevat een referentie voor het volgende API Management-beleid. Zie [b
     -   [Variabele instellen](api-management-advanced-policies.md#set-variable) : behoud een waarde in een benoemde context variabele voor later toegang.  
     -   [Set-aanvraag methode](api-management-advanced-policies.md#SetRequestMethod) : Hiermee kunt u de HTTP-methode voor een aanvraag wijzigen.  
     -   [Status code instellen](api-management-advanced-policies.md#SetStatus) : Hiermee wijzigt u de HTTP-status code in de opgegeven waarde.  
-    -   [Trace](api-management-advanced-policies.md#Trace) : voegt aangepaste traceringen toe aan de [API-Inspector](https://azure.microsoft.com/documentation/articles/api-management-howto-api-inspector/) -uitvoer, Application Insights-Telerichtingen en resource Logboeken.  
+    -   [Trace](api-management-advanced-policies.md#Trace) : voegt aangepaste traceringen toe aan de [API-Inspector](./api-management-howto-api-inspector.md) -uitvoer, Application Insights-Telerichtingen en resource Logboeken.  
     -   [Wacht](api-management-advanced-policies.md#Wait) op een Inge sloten [verzend aanvraag](api-management-advanced-policies.md#SendRequest), haal de [waarde uit het cache geheugen](api-management-caching-policies.md#GetFromCacheByKey)of Controleer of [controle stroom](api-management-advanced-policies.md#choose) beleid is voltooid voordat u doorgaat.  
 -   [Verificatiebeleid](api-management-authentication-policies.md#AuthenticationPolicies)  
     -   [Authenticatie met Basic](api-management-authentication-policies.md#Basic) : verifiëren met een back-end-service met basis verificatie.  
     -   [Verificatie met client certificaat](api-management-authentication-policies.md#ClientCertificate) : Verifieer met een back-end-service met behulp van client certificaten.  
-    -   [Verificatie met beheerde identiteit](api-management-authentication-policies.md#ManagedIdentity) -verificatie met een back-end-service met een [beheerde identiteit](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview).  
+    -   [Verificatie met beheerde identiteit](api-management-authentication-policies.md#ManagedIdentity) -verificatie met een back-end-service met een [beheerde identiteit](../active-directory/managed-identities-azure-resources/overview.md).  
 -   [Cachebeleidsregels](api-management-caching-policies.md#CachingPolicies)  
     -   [Ophalen uit cache](api-management-caching-policies.md#GetFromCache) -cache uitvoeren en een geldig antwoord in de cache retour neren als deze beschikbaar zijn.  
     -   [Opslaan in cache](api-management-caching-policies.md#StoreToCache) -antwoord in cache geheugen volgens de opgegeven cache beheer configuratie.  

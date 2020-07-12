@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 04/30/2020
 ms.author: apimpm
-ms.openlocfilehash: dd49680da6f52e32ddb52dbdb23ad5e8f627a91e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: ac147863fe54be3343eda653fc863ebd08dac54d
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82205064"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86254500"
 ---
 # <a name="configure-local-metrics-and-logs-for-azure-api-management-self-hosted-gateway"></a>Lokale metrische gegevens en logboeken voor Azure API Management zelf-hostende gateway configureren
 
@@ -189,7 +189,7 @@ Nu alles is geïmplementeerd en geconfigureerd, moet de zelf-hostende gateway me
 
 Maak een aantal API-aanroepen via de zelf-hostende gateway als alles correct is geconfigureerd, kunt u de onderstaande metrische gegevens weer geven:
 
-| Metrisch  | Beschrijving |
+| Gegevens  | Beschrijving |
 | ------------- | ------------- |
 | Aanvragen  | Aantal API-aanvragen in de periode |
 | DurationInMS | Aantal milliseconden vanaf het moment dat de gateway de aanvraag ontving tot het moment dat het antwoord volledig werd verzonden |
@@ -204,7 +204,7 @@ De zelf-hostende Gateway levert standaard logboeken naar `stdout` en `stderr` . 
 kubectl logs <pod-name>
 ```
 
-Als uw zelf-hostende gateway is geïmplementeerd in de Azure Kubernetes-service, kunt u [Azure monitor voor containers](https://docs.microsoft.com/azure/azure-monitor/insights/container-insights-overview) inschakelen `stdout` en `stderr` van uw workloads verzamelen en de logboeken in log Analytics weer geven. 
+Als uw zelf-hostende gateway is geïmplementeerd in de Azure Kubernetes-service, kunt u [Azure monitor voor containers](../azure-monitor/insights/container-insights-overview.md) inschakelen `stdout` en `stderr` van uw workloads verzamelen en de logboeken in log Analytics weer geven. 
 
 De zelf-hostende gateway biedt ook ondersteuning voor een aantal protocollen `localsyslog` , waaronder, `rfc5424` en `journal` . De onderstaande tabel bevat een overzicht van alle ondersteunde opties. 
 
@@ -236,4 +236,3 @@ Hier volgt een voor beeld van de configuratie van lokale logboek registratie:
 
 * Meer informatie over de zelf-hostende Gateway vindt u in [Azure API Management zelf-hostende gateway-overzicht](self-hosted-gateway-overview.md)
 * Meer informatie over [het configureren en persistent maken van Logboeken in de Cloud](how-to-configure-local-metrics-logs.md)
-

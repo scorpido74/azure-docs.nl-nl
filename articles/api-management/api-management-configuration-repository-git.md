@@ -12,11 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 03/12/2019
 ms.author: apimpm
-ms.openlocfilehash: c1a9f3e76622523dde03cc2a639cce33227dff5f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 183a3561a7c01d8f0911a70846384cf8ebc7dd9c
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83649214"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86254840"
 ---
 # <a name="how-to-save-and-configure-your-api-management-service-configuration-using-git"></a>Configuratie van API Management-service opslaan en configureren met behulp van Git
 
@@ -141,13 +142,13 @@ git push
 
 Zodra uw lokale wijzigingen zijn doorgevoerd en naar de server opslagplaats zijn gepusht, kunt u deze implementeren in uw API Management service-exemplaar.
 
-Zie [Git-wijzigingen in de configuratie database implementeren met behulp](https://docs.microsoft.com/rest/api/apimanagement/2019-12-01/tenantconfiguration)van de rest API voor meer informatie over het uitvoeren van deze bewerking met behulp van de rest API.
+Zie [Git-wijzigingen in de configuratie database implementeren met behulp](/rest/api/apimanagement/2019-12-01/tenantconfiguration)van de rest API voor meer informatie over het uitvoeren van deze bewerking met behulp van de rest API.
 
 ## <a name="file-and-folder-structure-reference-of-local-git-repository"></a>Verwijzing naar bestands-en mapstructuur van lokale Git-opslag plaats
 
 De bestanden en mappen in de lokale Git-opslag plaats bevatten de configuratie-informatie over het service-exemplaar.
 
-| Item | Description |
+| Item | Beschrijving |
 | --- | --- |
 | hoofdmap-API-beheer map |Bevat configuratie op het hoogste niveau voor het service-exemplaar |
 | de map api's |Bevat de configuratie voor de api's in het service-exemplaar |
@@ -159,7 +160,7 @@ De bestanden en mappen in de lokale Git-opslag plaats bevatten de configuratie-i
 
 Elke map kan een of meer bestanden bevatten, en in sommige gevallen een of meer mappen, bijvoorbeeld een map voor elke API, product of groep. De bestanden in elke map zijn specifiek voor het entiteits type dat wordt beschreven door de naam van de map.
 
-| Bestands type | Functie |
+| Bestands type | Doel |
 | --- | --- |
 | json |Configuratie-informatie over de respectieve entiteit |
 | html |Beschrijvingen van de entiteit, vaak weer gegeven in de ontwikkelaars Portal |
@@ -171,8 +172,8 @@ U kunt deze bestanden maken, verwijderen, bewerken en beheren op uw lokale besta
 > [!NOTE]
 > De volgende entiteiten bevinden zich niet in de Git-opslag plaats en kunnen niet worden geconfigureerd met behulp van Git.
 >
-> * [Gebruikers](https://docs.microsoft.com/rest/api/apimanagement/2019-12-01/user)
-> * [Abonnementen](https://docs.microsoft.com/rest/api/apimanagement/2019-12-01/subscription)
+> * [Gebruikers](/rest/api/apimanagement/2019-12-01/user)
+> * [Abonnementen](/rest/api/apimanagement/2019-12-01/subscription)
 > * Naamwaarden
 > * Portal-entiteiten voor ontwikkel aars behalve stijlen
 >
@@ -221,15 +222,15 @@ De laatste instelling, `$ref-policy` , verwijst naar het bestand met globale bel
 ### <a name="apis-folder"></a>de map api's
 De `apis` map bevat een map voor elke API in het service-exemplaar, die de volgende items bevat.
 
-* `apis\<api name>\configuration.json`-Dit is de configuratie voor de API en bevat informatie over de URL van de back-end-service en de bewerkingen. Dit is dezelfde informatie die zou worden geretourneerd als u [een specifieke API](https://docs.microsoft.com/rest/api/apimanagement/2019-12-01/apis/get) met in-indeling moet aanroepen `export=true` `application/json` .
-* `apis\<api name>\api.description.html`-Dit is de beschrijving van de API en komt overeen met de `description` eigenschap van de [API-entiteit](https://docs.microsoft.com/java/api/com.microsoft.azure.storage.table.entityproperty).
-* `apis\<api name>\operations\`-deze map bevat `<operation name>.description.html` bestanden die zijn toegewezen aan de bewerkingen in de API. Elk bestand bevat de beschrijving van één bewerking in de API, die wordt toegewezen aan de `description` eigenschap van de [entiteit](https://docs.microsoft.com/rest/api/visualstudio/operations/list#operationproperties) van de bewerking in de rest API.
+* `apis\<api name>\configuration.json`-Dit is de configuratie voor de API en bevat informatie over de URL van de back-end-service en de bewerkingen. Dit is dezelfde informatie die zou worden geretourneerd als u [een specifieke API](/rest/api/apimanagement/2019-12-01/apis/get) met in-indeling moet aanroepen `export=true` `application/json` .
+* `apis\<api name>\api.description.html`-Dit is de beschrijving van de API en komt overeen met de `description` eigenschap van de [API-entiteit](/java/api/com.microsoft.azure.storage.table.entityproperty).
+* `apis\<api name>\operations\`-deze map bevat `<operation name>.description.html` bestanden die zijn toegewezen aan de bewerkingen in de API. Elk bestand bevat de beschrijving van één bewerking in de API, die wordt toegewezen aan de `description` eigenschap van de [entiteit](/rest/api/visualstudio/operations/list#operationproperties) van de bewerking in de rest API.
 
 ### <a name="groups-folder"></a>map groepen
 De `groups` map bevat een map voor elke groep die is gedefinieerd in het service-exemplaar.
 
-* `groups\<group name>\configuration.json`: dit is de configuratie voor de groep. Dit is dezelfde informatie die zou worden geretourneerd als u de bewerking [een specifieke groep ophalen](https://docs.microsoft.com/rest/api/apimanagement/2019-12-01/group/get) aanroept.
-* `groups\<group name>\description.html`-Dit is de beschrijving van de groep en komt overeen met de `description` eigenschap van de [entiteit groep](https://docs.microsoft.com/rest/api/apimanagement/apimanagementrest/azure-api-management-rest-api-group-entity).
+* `groups\<group name>\configuration.json`: dit is de configuratie voor de groep. Dit is dezelfde informatie die zou worden geretourneerd als u de bewerking [een specifieke groep ophalen](/rest/api/apimanagement/2019-12-01/group/get) aanroept.
+* `groups\<group name>\description.html`-Dit is de beschrijving van de groep en komt overeen met de `description` eigenschap van de [entiteit groep](/rest/api/apimanagement/apimanagementrest/azure-api-management-rest-api-group-entity).
 
 ### <a name="policies-folder"></a>map beleid
 De `policies` map bevat de beleids instructies voor uw service-exemplaar.
@@ -248,8 +249,8 @@ De `portalStyles` map bevat configuratie-en stijl bladen voor aanpassingen van d
 ### <a name="products-folder"></a>de map Products
 De `products` map bevat een map voor elk product dat is gedefinieerd in het service-exemplaar.
 
-* `products\<product name>\configuration.json`: dit is de configuratie voor het product. Dit is dezelfde informatie die zou worden geretourneerd als u de bewerking [een specifieke product ophalen](https://docs.microsoft.com/rest/api/apimanagement/2019-12-01/product/get) aanroept.
-* `products\<product name>\product.description.html`: dit is de beschrijving van het product en komt overeen met de `description` eigenschap van de [product entiteit](https://docs.microsoft.com/rest/api/apimanagement/apimanagementrest/azure-api-management-rest-api-product-entity) in de rest API.
+* `products\<product name>\configuration.json`: dit is de configuratie voor het product. Dit is dezelfde informatie die zou worden geretourneerd als u de bewerking [een specifieke product ophalen](/rest/api/apimanagement/2019-12-01/product/get) aanroept.
+* `products\<product name>\product.description.html`: dit is de beschrijving van het product en komt overeen met de `description` eigenschap van de [product entiteit](/rest/api/apimanagement/apimanagementrest/azure-api-management-rest-api-product-entity) in de rest API.
 
 ### <a name="templates"></a>sjablonen
 De `templates` map bevat configuratie voor de [e-mail sjablonen](api-management-howto-configure-notifications.md) van het service-exemplaar.
@@ -261,8 +262,8 @@ De `templates` map bevat configuratie voor de [e-mail sjablonen](api-management-
 Zie voor meer informatie over andere manieren om uw service-exemplaar te beheren:
 
 * Uw service-exemplaar beheren met de volgende Power shell-cmdlets
-  * [Referentiemateriaal voor PowerShell-cmdlets voor service-implementatie](https://docs.microsoft.com/powershell/module/wds)
-  * [Referentiemateriaal voor PowerShell-cmdlets voor servicebeheer](https://docs.microsoft.com/powershell/azure/servicemanagement/overview)
+  * [Referentiemateriaal voor PowerShell-cmdlets voor service-implementatie](/powershell/module/wds)
+  * [Referentiemateriaal voor PowerShell-cmdlets voor servicebeheer](/powershell/azure/servicemanagement/overview)
 * Beheer uw service-exemplaar met behulp van de REST API
   * [Naslag informatie over API Management REST API](/rest/api/apimanagement/)
 
@@ -280,7 +281,3 @@ Zie voor meer informatie over andere manieren om uw service-exemplaar te beheren
 [api-management-identity-settings]: ./media/api-management-configuration-repository-git/api-management-identity-settings.png
 [api-management-delegation-settings]: ./media/api-management-configuration-repository-git/api-management-delegation-settings.png
 [api-management-git-icon-enable]: ./media/api-management-configuration-repository-git/api-management-git-icon-enable.png
-
-
-
-

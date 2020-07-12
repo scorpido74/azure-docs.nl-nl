@@ -9,11 +9,12 @@ ms.workload: mobile
 ms.topic: article
 ms.author: apimpm
 ms.date: 04/23/2020
-ms.openlocfilehash: 38cfab8a3b73eeef28249f53bd2f5c56e26b21a1
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 51ce2e0dec8b38c9285f4f4e71dd35056b292b66
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82854111"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86254279"
 ---
 # <a name="deploy-a-self-hosted-gateway-to-kubernetes"></a>Een zelf-hostende gateway implementeren op Kubernetes
 
@@ -64,7 +65,7 @@ In dit artikel worden de stappen beschreven voor het implementeren van het zelf-
 ### <a name="access-token"></a>Toegangs token
 Zonder een geldig toegangs token heeft een zelf-hostende gateway geen toegang tot de configuratie gegevens van het eind punt van de bijbehorende API Management service. Het toegangs token kan Maxi maal 30 dagen geldig zijn. Het moet opnieuw worden gegenereerd en het cluster is geconfigureerd met een nieuwe token, hetzij hand matig of via automatisering voordat het verloopt. 
 
-Wanneer u het vernieuwen van tokens automatiseert, gebruikt u [deze beheer API-bewerking](https://docs.microsoft.com/rest/api/apimanagement/2019-12-01/gateway/generatetoken) om een nieuw token te genereren. Zie de [Kubernetes-website](https://kubernetes.io/docs/concepts/configuration/secret)voor meer informatie over het beheren van Kubernetes-geheimen.
+Wanneer u het vernieuwen van tokens automatiseert, gebruikt u [deze beheer API-bewerking](/rest/api/apimanagement/2019-12-01/gateway/generatetoken) om een nieuw token te genereren. Zie de [Kubernetes-website](https://kubernetes.io/docs/concepts/configuration/secret)voor meer informatie over het beheren van Kubernetes-geheimen.
 
 ### <a name="namespace"></a>Naamruimte
 Kubernetes- [naam ruimten](https://kubernetes.io/docs/concepts/overview/working-with-objects/namespaces/) helpen bij het delen van één cluster over meerdere teams, projecten of toepassingen. Naam ruimten bieden een bereik voor resources en namen. Ze kunnen worden gekoppeld aan een resource quota en toegangs beheer beleid.

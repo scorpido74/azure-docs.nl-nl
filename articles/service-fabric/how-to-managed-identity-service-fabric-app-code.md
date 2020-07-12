@@ -3,12 +3,12 @@ title: Beheerde identiteit gebruiken met een toepassing
 description: Beheerde identiteiten gebruiken in azure Service Fabric toepassings code voor toegang tot Azure-Services.
 ms.topic: article
 ms.date: 10/09/2019
-ms.openlocfilehash: 8f1f355d6add16f3b3ec25bc569f9b198a8d6778
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 07f960c01367ab42a434a8c2e1e276d9c5f7bd11
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81461562"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86253640"
 ---
 # <a name="how-to-leverage-a-service-fabric-applications-managed-identity-to-access-azure-services"></a>De beheerde identiteit van een Service Fabric-toepassing gebruiken voor toegang tot Azure-Services
 
@@ -371,7 +371,7 @@ Het wordt aanbevolen dat aanvragen die zijn mislukt door beperking, als volgt op
 | 5 | Wacht 16 seconden en probeer het opnieuw |
 
 ## <a name="resource-ids-for-azure-services"></a>Resource-Id's voor Azure-Services
-Zie [Azure-Services die ondersteuning bieden voor Azure AD-verificatie](../active-directory/managed-identities-azure-resources/services-support-msi.md) voor een lijst met resources die ondersteuning bieden voor Azure AD en de bijbehorende resource-id's.
+Zie [Azure-Services die ondersteuning bieden voor Azure AD-verificatie](../active-directory/managed-identities-azure-resources/services-support-managed-identities.md) voor een lijst met resources die ondersteuning bieden voor Azure AD en de bijbehorende resource-id's.
 
 ## <a name="next-steps"></a>Volgende stappen
 * [Een Azure Service Fabric-toepassing implementeren met een door het systeem toegewezen beheerde identiteit](./how-to-deploy-service-fabric-application-system-assigned-managed-identity.md)

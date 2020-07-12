@@ -5,11 +5,12 @@ author: vturecek
 ms.topic: conceptual
 ms.date: 09/20/2017
 ms.author: vturecek
-ms.openlocfilehash: 0d59275f25931a11b2d551a2e9eb019838e4c1b3
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: a3f19d1240c2dcf1e62d5723c40b4f7c8b2154f0
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "75433872"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86253283"
 ---
 # <a name="service-remoting-in-c-with-reliable-services"></a>Externe service in C# met Reliable Services
 
@@ -64,7 +65,7 @@ class MyService : StatelessService, IMyService
 ```
 
 > [!NOTE]
-> De argumenten en retour typen in de service-interface kunnen eenvoudige, complexe of aangepaste typen zijn, maar ze moeten kunnen worden geserialiseerd met de .NET [DataContractSerializer](https://msdn.microsoft.com/library/ms731923.aspx).
+> De argumenten en retour typen in de service-interface kunnen eenvoudige, complexe of aangepaste typen zijn, maar ze moeten kunnen worden geserialiseerd met de .NET [DataContractSerializer](/dotnet/framework/wcf/feature-details/types-supported-by-the-data-contract-serializer).
 >
 >
 
@@ -88,19 +89,19 @@ Het maken van een Service proxy is een licht gewicht bewerking, zodat u zoveel m
 
 ### <a name="service-proxy-factory-lifetime"></a>Levens duur van Service proxy-Factory
 
-[ServiceProxyFactory](https://docs.microsoft.com/dotnet/api/microsoft.servicefabric.services.remoting.client.serviceproxyfactory) is een Factory waarmee proxy-instanties voor verschillende externe interfaces worden gemaakt. Als u de API gebruikt `ServiceProxyFactory.CreateServiceProxy` om een proxy te maken, maakt het Framework een singleton-Service proxy.
-Het is handig om een hand matig te maken wanneer u [IServiceRemotingClientFactory](https://docs.microsoft.com/dotnet/api/microsoft.servicefabric.services.remoting.v1.client.iserviceremotingclientfactory) -eigenschappen wilt overschrijven.
+[ServiceProxyFactory](/dotnet/api/microsoft.servicefabric.services.remoting.client.serviceproxyfactory) is een Factory waarmee proxy-instanties voor verschillende externe interfaces worden gemaakt. Als u de API gebruikt `ServiceProxyFactory.CreateServiceProxy` om een proxy te maken, maakt het Framework een singleton-Service proxy.
+Het is handig om een hand matig te maken wanneer u [IServiceRemotingClientFactory](/dotnet/api/microsoft.servicefabric.services.remoting.v1.client.iserviceremotingclientfactory) -eigenschappen wilt overschrijven.
 Het maken van de fabriek is een dure bewerking. Een Service proxy-Factory houdt een interne cache van de communicatie-client bij.
 Een best practice is de Service proxy-Factory zo lang mogelijk in de cache op te slaan.
 
 ## <a name="remoting-exception-handling"></a>Afhandeling van externe uitzonde ringen
 
-Alle externe uitzonde ringen die worden veroorzaakt door de API van de service, worden teruggestuurd naar de client als AggregateException. Externe uitzonde ringen moeten kunnen worden geserialiseerd door data contract. Als dat niet het geval is, genereert de proxy-API [ServiceException](https://docs.microsoft.com/dotnet/api/microsoft.servicefabric.services.communication.serviceexception) met de serialisatiefout.
+Alle externe uitzonde ringen die worden veroorzaakt door de API van de service, worden teruggestuurd naar de client als AggregateException. Externe uitzonde ringen moeten kunnen worden geserialiseerd door data contract. Als dat niet het geval is, genereert de proxy-API [ServiceException](/dotnet/api/microsoft.servicefabric.services.communication.serviceexception) met de serialisatiefout.
 
 De Service proxy verwerkt alle failover-uitzonde ringen voor de service partitie waarvoor deze is gemaakt. De eind punten worden opnieuw omgezet als er failover-uitzonde ringen zijn (geen tijdelijke uitzonde ringen) en de aanroep opnieuw probeert met het juiste eind punt. Het aantal nieuwe pogingen voor failover-uitzonde ringen is oneindig.
 Als er tijdelijke uitzonde ringen optreden, probeert de proxy de aanroep opnieuw uit te voeren.
 
-De standaard parameters voor opnieuw proberen worden opgegeven door [OperationRetrySettings](https://docs.microsoft.com/dotnet/api/microsoft.servicefabric.services.communication.client.operationretrysettings).
+De standaard parameters voor opnieuw proberen worden opgegeven door [OperationRetrySettings](/dotnet/api/microsoft.servicefabric.services.communication.client.operationretrysettings).
 
 Een gebruiker kan deze waarden configureren door het object OperationRetrySettings door te geven aan de ServiceProxyFactory-constructor.
 
@@ -160,7 +161,7 @@ Met deze stappen wijzigt u de sjabloon code om de v2-stack te gebruiken met behu
    </Resources>
    ```
 
-2. Gebruik [FabricTransportServiceRemotingListener](https://docs.microsoft.com/dotnet/api/microsoft.servicefabric.services.remoting.v2.fabrictransport.runtime.fabrictransportserviceremotingListener?view=azure-dotnet) uit de `Microsoft.ServiceFabric.Services.Remoting.V2.FabricTransport.Runtime` naam ruimte.
+2. Gebruik [FabricTransportServiceRemotingListener](/dotnet/api/microsoft.servicefabric.services.remoting.v2.fabrictransport.runtime.fabrictransportserviceremotinglistener?view=azure-dotnet) uit de `Microsoft.ServiceFabric.Services.Remoting.V2.FabricTransport.Runtime` naam ruimte.
 
    ```csharp
    protected override IEnumerable<ServiceInstanceListener> CreateServiceInstanceListeners()
@@ -176,7 +177,7 @@ Met deze stappen wijzigt u de sjabloon code om de v2-stack te gebruiken met behu
     }
    ```
 
-3. Gebruik [FabricTransportServiceRemotingClientFactory](https://docs.microsoft.com/dotnet/api/microsoft.servicefabric.services.remoting.v2.fabrictransport.client.fabrictransportserviceremotingclientfactory?view=azure-dotnet) uit de `Microsoft.ServiceFabric.Services.Remoting.V2.FabricTransport.Client` naam ruimte om clients te maken.
+3. Gebruik [FabricTransportServiceRemotingClientFactory](/dotnet/api/microsoft.servicefabric.services.remoting.v2.fabrictransport.client.fabrictransportserviceremotingclientfactory?view=azure-dotnet) uit de `Microsoft.ServiceFabric.Services.Remoting.V2.FabricTransport.Client` naam ruimte om clients te maken.
 
    ```csharp
    var proxyFactory = new ServiceProxyFactory((c) =>
@@ -255,7 +256,7 @@ Volg deze stappen om een V2_1 stack te wijzigen.
     }
    ```
 
-3. Voeg een [Assembly-kenmerk](https://docs.microsoft.com/dotnet/api/microsoft.servicefabric.services.remoting.fabrictransport.fabrictransportserviceremotingproviderattribute?view=azure-dotnet) toe op externe interfaces.
+3. Voeg een [Assembly-kenmerk](/dotnet/api/microsoft.servicefabric.services.remoting.fabrictransport.fabrictransportserviceremotingproviderattribute?view=azure-dotnet) toe op externe interfaces.
 
    ```csharp
     [assembly:  FabricTransportServiceRemotingProvider(RemotingListenerVersion=  RemotingListenerVersion.V2_1, RemotingClientVersion= RemotingClientVersion.V2_1)]
@@ -279,7 +280,7 @@ Volg deze stappen:
    </Resources>
    ```
 
-2. Gebruik de [externe v2-listener](https://docs.microsoft.com/dotnet/api/microsoft.servicefabric.services.remoting.v2.fabrictransport.runtime.fabrictransportserviceremotinglistener?view=azure-dotnet). De standaard naam van de service-eindpunt resource die wordt gebruikt, is "ServiceEndpointV2_1". Deze moet worden gedefinieerd in het service manifest.
+2. Gebruik de [externe v2-listener](/dotnet/api/microsoft.servicefabric.services.remoting.v2.fabrictransport.runtime.fabrictransportserviceremotinglistener?view=azure-dotnet). De standaard naam van de service-eindpunt resource die wordt gebruikt, is "ServiceEndpointV2_1". Deze moet worden gedefinieerd in het service manifest.
 
    ```csharp
    protected override IEnumerable<ServiceInstanceListener> CreateServiceInstanceListeners()
@@ -297,7 +298,7 @@ Volg deze stappen:
     }
    ```
 
-3. De v2- [client-Factory](https://docs.microsoft.com/dotnet/api/microsoft.servicefabric.services.remoting.v2.fabrictransport.client.fabrictransportserviceremotingclientfactory?view=azure-dotnet)gebruiken.
+3. De v2- [client-Factory](/dotnet/api/microsoft.servicefabric.services.remoting.v2.fabrictransport.client.fabrictransportserviceremotingclientfactory?view=azure-dotnet)gebruiken.
    ```csharp
    var proxyFactory = new ServiceProxyFactory((c) =>
           {
@@ -548,6 +549,6 @@ Volg deze stappen:
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* [Web-API met OWIN in Reliable Services](service-fabric-reliable-services-communication-webapi.md)
+* [Web-API met OWIN in Reliable Services](./service-fabric-reliable-services-communication-aspnetcore.md)
 * [Communicatie Windows Communication Foundation met Reliable Services](service-fabric-reliable-services-communication-wcf.md)
 * [Beveiligde communicatie voor Reliable Services](service-fabric-reliable-services-secure-communication.md)

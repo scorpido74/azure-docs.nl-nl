@@ -5,11 +5,12 @@ author: vturecek
 ms.topic: conceptual
 ms.date: 10/12/2018
 ms.author: vturecek
-ms.openlocfilehash: 0d432bd19d0689ef508fca0bf24eed4406929f82
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: c8866714ca1736b3ba785b560cb5a7aea451fdf1
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "75639629"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86253334"
 ---
 # <a name="aspnet-core-in-azure-service-fabric-reliable-services"></a>ASP.NET Core in azure Service Fabric Reliable Services
 
@@ -19,7 +20,7 @@ Dit artikel is een diep gaande hand leiding voor het hosten van ASP.NET Core Ser
 
 Zie [zelf studie: een toepassing maken en implementeren met een ASP.net core web API-front-end-service en een stateful back-end-service](service-fabric-tutorial-create-dotnet-app.md)voor een inleidende zelf studie over ASP.NET Core in service Fabric en instructies over het instellen van uw ontwikkel omgeving.
 
-In de rest van dit artikel wordt ervan uitgegaan dat u al bekend bent met ASP.NET Core. Als dat niet het geval is, lees dan de [ASP.net core fundamentals](https://docs.microsoft.com/aspnet/core/fundamentals/index).
+In de rest van dit artikel wordt ervan uitgegaan dat u al bekend bent met ASP.NET Core. Als dat niet het geval is, lees dan de [ASP.net core fundamentals](/aspnet/core/fundamentals/index).
 
 ## <a name="aspnet-core-in-the-service-fabric-environment"></a>ASP.NET Core in de Service Fabric omgeving
 
@@ -93,7 +94,7 @@ Daarom wordt zowel Kestrel-als HTTP.sys- `ICommunicationListener` implementaties
 ## <a name="httpsys-in-reliable-services"></a>HTTP.sys in Reliable Services
 U kunt HTTP.sys in Reliable Services gebruiken door het pakket **micro soft. ServiceFabric. AspNetCore. HttpSys** NuGet te importeren. Dit pakket bevat `HttpSysCommunicationListener` een implementatie van `ICommunicationListener` . `HttpSysCommunicationListener`Hiermee kunt u een ASP.NET Core WebHost maken binnen een betrouw bare service door HTTP.sys als webserver te gebruiken.
 
-HTTP.sys is gebaseerd op de [Windows HTTP-Server-API](https://msdn.microsoft.com/library/windows/desktop/aa364510(v=vs.85).aspx). Deze API maakt gebruik van het **HTTP.sys** kernel-stuur programma om HTTP-aanvragen te verwerken en te routeren naar processen die webtoepassingen uitvoeren. Hierdoor kunnen meerdere processen op dezelfde fysieke of virtuele machine fungeren als host voor webtoepassingen op dezelfde poort, disambiguated door een unieke URL-pad of hostnaam. Deze functies zijn handig in Service Fabric voor het hosten van meerdere websites in hetzelfde cluster.
+HTTP.sys is gebaseerd op de [Windows HTTP-Server-API](/windows/win32/http/http-api-start-page). Deze API maakt gebruik van het **HTTP.sys** kernel-stuur programma om HTTP-aanvragen te verwerken en te routeren naar processen die webtoepassingen uitvoeren. Hierdoor kunnen meerdere processen op dezelfde fysieke of virtuele machine fungeren als host voor webtoepassingen op dezelfde poort, disambiguated door een unieke URL-pad of hostnaam. Deze functies zijn handig in Service Fabric voor het hosten van meerdere websites in hetzelfde cluster.
 
 >[!NOTE]
 >HTTP.sys implementatie werkt alleen op het Windows-platform.
@@ -132,9 +133,9 @@ protected override IEnumerable<ServiceInstanceListener> CreateServiceInstanceLis
 
 ### <a name="endpoint-configuration"></a>Eindpunt configuratie
 
-Een `Endpoint` configuratie is vereist voor webservers die gebruikmaken van de Windows HTTP-Server-API, met inbegrip van HTTP.sys. Webservers die gebruikmaken van de HTTP-Server-API van Windows, moeten eerst hun URL reserveren met HTTP.sys (dit gebeurt normaal gesp roken met het hulp programma [netsh](https://msdn.microsoft.com/library/windows/desktop/cc307236(v=vs.85).aspx) ). 
+Een `Endpoint` configuratie is vereist voor webservers die gebruikmaken van de Windows HTTP-Server-API, met inbegrip van HTTP.sys. Webservers die gebruikmaken van de HTTP-Server-API van Windows, moeten eerst hun URL reserveren met HTTP.sys (dit gebeurt normaal gesp roken met het hulp programma [netsh](/windows/win32/http/netsh-commands-for-http) ). 
 
-Voor deze actie zijn verhoogde bevoegdheden vereist die uw services niet standaard hebben. De opties http of HTTPS voor de `Protocol` eigenschap van de `Endpoint` configuratie in ServiceManifest.xml worden speciaal gebruikt om de service Fabric-runtime te instrueren om een URL met HTTP.sys namens u te registreren. Dit wordt gedaan met behulp van het URL-voor voegsel voor [*sterke joker tekens*](https://msdn.microsoft.com/library/windows/desktop/aa364698(v=vs.85).aspx) .
+Voor deze actie zijn verhoogde bevoegdheden vereist die uw services niet standaard hebben. De opties http of HTTPS voor de `Protocol` eigenschap van de `Endpoint` configuratie in ServiceManifest.xml worden speciaal gebruikt om de service Fabric-runtime te instrueren om een URL met HTTP.sys namens u te registreren. Dit wordt gedaan met behulp van het URL-voor voegsel voor [*sterke joker tekens*](/windows/win32/http/urlprefix-strings) .
 
 Als u bijvoorbeeld wilt reserveren `http://+:80` voor een service, gebruikt u de volgende configuratie in ServiceManifest.xml:
 
@@ -190,7 +191,7 @@ Een dynamische poort die door een configuratie wordt toegewezen, `Endpoint` bied
 ## <a name="kestrel-in-reliable-services"></a>Kestrel in Reliable Services
 U kunt Kestrel in Reliable Services gebruiken door het NuGet-pakket **micro soft. ServiceFabric. AspNetCore. Kestrel** te importeren. Dit pakket bevat `KestrelCommunicationListener` een implementatie van `ICommunicationListener` . `KestrelCommunicationListener`Hiermee kunt u een ASP.NET Core WebHost in een betrouw bare service maken met behulp van Kestrel als de webserver.
 
-Kestrel is een cross-platform webserver voor ASP.NET Core. In tegens telling tot HTTP.sys gebruikt Kestrel geen gecentraliseerd eindpunt beheer. In tegens telling tot HTTP.sys biedt Kestrel geen ondersteuning voor het delen van poorten tussen meerdere processen. Elk exemplaar van Kestrel moet een unieke poort gebruiken. Zie de [Implementatie Details](https://docs.microsoft.com/aspnet/core/fundamentals/servers/kestrel?view=aspnetcore-2.2)voor meer informatie over Kestrel.
+Kestrel is een cross-platform webserver voor ASP.NET Core. In tegens telling tot HTTP.sys gebruikt Kestrel geen gecentraliseerd eindpunt beheer. In tegens telling tot HTTP.sys biedt Kestrel geen ondersteuning voor het delen van poorten tussen meerdere processen. Elk exemplaar van Kestrel moet een unieke poort gebruiken. Zie de [Implementatie Details](/aspnet/core/fundamentals/servers/kestrel?view=aspnetcore-2.2)voor meer informatie over Kestrel.
 
 ![Kestrel diagram][4]
 
@@ -334,7 +335,7 @@ Voor HTTPS moet het eind punt zijn geconfigureerd met het HTTPS-protocol zonder 
 
 
 ## <a name="service-fabric-configuration-provider"></a>Configuratie provider Service Fabric
-App-configuratie in ASP.NET Core is gebaseerd op sleutel-waardeparen die zijn ingesteld door de configuratie provider. Lees de [configuratie in ASP.net core](https://docs.microsoft.com/aspnet/core/fundamentals/configuration/) voor meer informatie over algemene ondersteuning voor ASP.net core-configuratie.
+App-configuratie in ASP.NET Core is gebaseerd op sleutel-waardeparen die zijn ingesteld door de configuratie provider. Lees de [configuratie in ASP.net core](/aspnet/core/fundamentals/configuration/) voor meer informatie over algemene ondersteuning voor ASP.net core-configuratie.
 
 In deze sectie wordt beschreven hoe de Service Fabric-configuratie provider integreert met ASP.NET Core configuratie door het `Microsoft.ServiceFabric.AspNetCore.Configuration` pakket NuGet te importeren.
 
@@ -447,7 +448,7 @@ public Startup()
 ```
 
 ### <a name="configuration-updates"></a>Configuratie-updates
-De configuratie provider Service Fabric ondersteunt ook configuratie-updates. U kunt ASP.NET Core gebruiken `IOptionsMonitor` om wijzigings meldingen te ontvangen en vervolgens gebruiken `IOptionsSnapshot` om configuratie gegevens opnieuw te laden. Zie [ASP.net core Options (opties](https://docs.microsoft.com/aspnet/core/fundamentals/configuration/options)) voor meer informatie.
+De configuratie provider Service Fabric ondersteunt ook configuratie-updates. U kunt ASP.NET Core gebruiken `IOptionsMonitor` om wijzigings meldingen te ontvangen en vervolgens gebruiken `IOptionsSnapshot` om configuratie gegevens opnieuw te laden. Zie [ASP.net core Options (opties](/aspnet/core/fundamentals/configuration/options)) voor meer informatie.
 
 Deze opties worden standaard ondersteund. Er is geen verdere code ring nodig om configuratie-updates in te scha kelen.
 

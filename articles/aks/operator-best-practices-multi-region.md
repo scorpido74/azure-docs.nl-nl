@@ -7,15 +7,16 @@ ms.topic: conceptual
 ms.date: 11/28/2018
 ms.author: thfalgou
 ms.custom: fasttrack-edit
-ms.openlocfilehash: 7aa93d8ba21cafddc5511e16fa430b76942b1a6d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: e4e2a1fc08851e4e625bfc59419fc274ebbce1c8
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80668292"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86251193"
 ---
 # <a name="best-practices-for-business-continuity-and-disaster-recovery-in-azure-kubernetes-service-aks"></a>Aanbevolen procedures voor bedrijfs continuïteit en herstel na nood gevallen in azure Kubernetes service (AKS)
 
-Wanneer u clusters beheert in azure Kubernetes service (AKS), wordt de uptime van toepassingen belang rijker. AKS biedt standaard hoge Beschik baarheid met behulp van meerdere knoop punten in een [virtuele-machine Scale set (VMSS)](https://docs.microsoft.com/azure/virtual-machine-scale-sets/overview). Maar deze meerdere knoop punten beveiligen uw systeem niet vanuit een regionale storing. Plan vooruit om bedrijfs continuïteit te behouden en voor bereidingen voor nood herstel om uw uptime te maximaliseren.
+Wanneer u clusters beheert in azure Kubernetes service (AKS), wordt de uptime van toepassingen belang rijker. AKS biedt standaard hoge Beschik baarheid met behulp van meerdere knoop punten in een [virtuele-machine Scale set (VMSS)](../virtual-machine-scale-sets/overview.md). Maar deze meerdere knoop punten beveiligen uw systeem niet vanuit een regionale storing. Plan vooruit om bedrijfs continuïteit te behouden en voor bereidingen voor nood herstel om uw uptime te maximaliseren.
 
 Dit artikel is gericht op het plannen van bedrijfs continuïteit en herstel na nood gevallen in AKS. In deze zelfstudie leert u procedures om het volgende te doen:
 
@@ -32,8 +33,8 @@ Dit artikel is gericht op het plannen van bedrijfs continuïteit en herstel na n
 
 Er wordt een AKS-cluster geïmplementeerd in één regio. Als u uw systeem wilt beveiligen tegen storingen in regio's, implementeert u uw toepassing in meerdere AKS-clusters in verschillende regio's. Wanneer u van plan bent om uw AKS-cluster te implementeren, kunt u het volgende overwegen:
 
-* [**Beschik baarheid van AKS-regio**](https://docs.microsoft.com/azure/aks/quotas-skus-regions#region-availability): Kies regio's sluiten voor uw gebruikers. AKS wordt doorlopend uitgebreid naar nieuwe regio's.
-* [**Gekoppelde Azure-regio's**](https://docs.microsoft.com/azure/best-practices-availability-paired-regions): Kies voor uw geografische gebied twee regio's die aan elkaar zijn gekoppeld. Gekoppelde regio's coördineren platform updates en bepalen waar nodig herstel taken.
+* [**Beschik baarheid van AKS-regio**](./quotas-skus-regions.md#region-availability): Kies regio's sluiten voor uw gebruikers. AKS wordt doorlopend uitgebreid naar nieuwe regio's.
+* [**Gekoppelde Azure-regio's**](../best-practices-availability-paired-regions.md): Kies voor uw geografische gebied twee regio's die aan elkaar zijn gekoppeld. Gekoppelde regio's coördineren platform updates en bepalen waar nodig herstel taken.
 * **Beschik baarheid**van de service: Bepaal of de gekoppelde regio's warm/hot, Hot/warme of warme/koud moeten zijn. Wilt u beide regio's tegelijk uitvoeren, met een regio die *gereed* is voor het leveren van verkeer? Of wilt u dat er voor een regio een tijd is om het verkeer te kunnen verwerken?
 
 De beschik baarheid en gekoppelde regio's van de AKS-regio zijn een gezamenlijke overweging. Implementeer uw AKS-clusters in gekoppelde regio's die zijn ontworpen voor het samen stellen van de regionale nood herstel. AKS is bijvoorbeeld beschikbaar in VS-Oost en VS-West. Deze regio's zijn gekoppeld. Kies deze twee regio's wanneer u een AKS BC/DR-strategie maakt.
@@ -44,7 +45,7 @@ Wanneer u uw toepassing implementeert, voegt u nog een stap toe aan uw CI/CD-pij
 
 **Best Practice**: Azure Traffic Manager kan klanten naar hun dichtstbijzijnde AKS-cluster en toepassings exemplaar sturen. Voor de beste prestaties en redundantie moet u alle toepassings verkeer via Traffic Manager door sturen voordat het naar uw AKS-cluster gaat.
 
-Als u meerdere AKS-clusters in verschillende regio's hebt, gebruikt u Traffic Manager om te bepalen hoe verkeer stromen naar de toepassingen die in elk cluster worden uitgevoerd. [Azure Traffic Manager](https://docs.microsoft.com/azure/traffic-manager/) is een op DNS gebaseerd verkeer Load Balancer dat netwerk verkeer kan distribueren tussen regio's. Gebruik Traffic Manager om gebruikers te routeren op basis van de reactie tijd van een cluster of op basis van geografie.
+Als u meerdere AKS-clusters in verschillende regio's hebt, gebruikt u Traffic Manager om te bepalen hoe verkeer stromen naar de toepassingen die in elk cluster worden uitgevoerd. [Azure Traffic Manager](../traffic-manager/index.yml) is een op DNS gebaseerd verkeer Load Balancer dat netwerk verkeer kan distribueren tussen regio's. Gebruik Traffic Manager om gebruikers te routeren op basis van de reactie tijd van een cluster of op basis van geografie.
 
 ![AKS met Traffic Manager](media/operator-best-practices-bc-dr/aks-azure-traffic-manager.png)
 
@@ -54,15 +55,15 @@ Klanten met één AKS-cluster maken doorgaans verbinding met het service-IP-adre
 
 Traffic Manager DNS-Zoek opdrachten uitvoeren en retourneert het meest geschikte eind punt van een gebruiker. Geneste profielen kunnen een prioriteit geven aan een primaire locatie. Gebruikers moeten in het algemeen bijvoorbeeld verbinding maken met hun dichtstbijzijnde geografische regio. Als deze regio een probleem heeft, stuurt Traffic Manager in plaats daarvan de gebruikers naar een secundaire regio. Deze aanpak zorgt ervoor dat klanten verbinding kunnen maken met een toepassings exemplaar, zelfs als hun dichtstbijzijnde geografische regio niet beschikbaar is.
 
-Voor informatie over het instellen van eind punten en route ring, Zie [de methode voor geografische verkeers routering configureren met behulp van Traffic Manager](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-configure-geographic-routing-method).
+Voor informatie over het instellen van eind punten en route ring, Zie [de methode voor geografische verkeers routering configureren met behulp van Traffic Manager](../traffic-manager/traffic-manager-configure-geographic-routing-method.md).
 
 ### <a name="layer-7-application-routing-with-azure-front-door-service"></a>Route ring van laag 7-toepassingen met de Azure front-deur service
 
-Traffic Manager DNS (Layer 3) gebruikt voor het vorm geven van verkeer. De [Azure front-deur service](https://docs.microsoft.com/azure/frontdoor/front-door-overview) biedt een HTTP/HTTPS-routerings optie (Layer 7). Aanvullende functies van de Azure front-deur service zijn TLS-beëindiging, aangepast domein, Web Application Firewall, URL herschrijven en sessie affiniteit. Bekijk de vereisten van uw toepassings verkeer om te begrijpen welke oplossing het meest geschikt is.
+Traffic Manager DNS (Layer 3) gebruikt voor het vorm geven van verkeer. De [Azure front-deur service](../frontdoor/front-door-overview.md) biedt een HTTP/HTTPS-routerings optie (Layer 7). Aanvullende functies van de Azure front-deur service zijn TLS-beëindiging, aangepast domein, Web Application Firewall, URL herschrijven en sessie affiniteit. Bekijk de vereisten van uw toepassings verkeer om te begrijpen welke oplossing het meest geschikt is.
 
 ### <a name="interconnect-regions-with-global-virtual-network-peering"></a>Interconnect-regio's met globale virtuele-netwerk peering
 
-Als de clusters met elkaar moeten communiceren, kunt u beide virtuele netwerken met elkaar verbinden met behulp van [peering op virtueel netwerk](https://docs.microsoft.com/azure/virtual-network/virtual-network-peering-overview). Met deze technologie worden virtuele netwerken met elkaar verbonden met een hoge band breedte in het backbone-netwerk van micro soft, zelfs in verschillende geografische regio's.
+Als de clusters met elkaar moeten communiceren, kunt u beide virtuele netwerken met elkaar verbinden met behulp van [peering op virtueel netwerk](../virtual-network/virtual-network-peering-overview.md). Met deze technologie worden virtuele netwerken met elkaar verbonden met een hoge band breedte in het backbone-netwerk van micro soft, zelfs in verschillende geografische regio's.
 
 Een vereiste voor de peer van de virtuele netwerken waarin AKS-clusters worden uitgevoerd, is door gebruik te maken van de standaard Load Balancer in uw AKS-cluster, zodat Kubernetes-services bereikbaar zijn via de peering van het virtuele netwerk.
 
@@ -82,7 +83,7 @@ Wanneer u Container Registry geo-replicatie gebruikt voor het ophalen van instal
 * **Betrouwbaarder**: als een regio niet beschikbaar is, haalt uw AKS-cluster de installatie kopieën op uit een beschikbaar container register.
 * **Goed koper**: er worden geen kosten in rekening gebracht voor het netwerk tussen data centers.
 
-Geo-replicatie is een functie van *Premium* SKU-container registers. Zie [container Registry geo-replicatie](https://docs.microsoft.com/azure/container-registry/container-registry-geo-replication)voor meer informatie over het configureren van geo-replicatie.
+Geo-replicatie is een functie van *Premium* SKU-container registers. Zie [container Registry geo-replicatie](../container-registry/container-registry-geo-replication.md)voor meer informatie over het configureren van geo-replicatie.
 
 ## <a name="remove-service-state-from-inside-containers"></a>Service status van binnen containers verwijderen
 
@@ -97,7 +98,7 @@ Containers en micro Services zijn het meest flexibel wanneer de processen die in
 Als u draag bare toepassingen wilt bouwen, raadpleegt u de volgende richt lijnen:
 
 * [De methodologie van de 12-factor-app](https://12factor.net/)
-* [Een webtoepassing uitvoeren in meerdere Azure-regio's](https://docs.microsoft.com/azure/architecture/reference-architectures/app-service-web-app/multi-region)
+* [Een webtoepassing uitvoeren in meerdere Azure-regio's](/azure/architecture/reference-architectures/app-service-web-app/multi-region)
 
 ## <a name="create-a-storage-migration-plan"></a>Een opslag migratie plan maken
 

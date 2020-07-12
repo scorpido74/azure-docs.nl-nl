@@ -5,12 +5,12 @@ services: container-service
 ms.topic: conceptual
 ms.date: 06/24/2020
 ms.custom: references_regions
-ms.openlocfilehash: 9f8b0cc5a80853542b15d1993713d8a97f5371b9
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 672a5afe36449aaa486ca6980f510ba52cf6daf2
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85361571"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86250954"
 ---
 # <a name="azure-kubernetes-service-aks-uptime-sla"></a>SLA voor uptime van Azure Kubernetes service (AKS)
 
@@ -40,7 +40,7 @@ SLA voor uptime is een betaalde functie en ingeschakeld per cluster. De prijzen 
 
 ## <a name="before-you-begin"></a>Voordat u begint
 
-* De [Azure cli](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest) -versie 2.8.0 of hoger installeren
+* De [Azure cli](/cli/azure/install-azure-cli?view=azure-cli-latest) -versie 2.8.0 of hoger installeren
 
 ## <a name="creating-a-new-cluster-with-uptime-sla"></a>Een nieuw cluster maken met SLA voor uptime
 
@@ -113,7 +113,7 @@ Gebruik de [`az aks update`][az-aks-nodepool-update] opdracht om het bestaande c
   },
   ```
 
-## <a name="clean-up"></a>Opruimen
+## <a name="clean-up"></a>Opschonen
 
 Opschonen van de resources die u hebt gemaakt om kosten te voor komen. Als u het cluster wilt verwijderen, gebruikt u de [`az group delete`][az-group-delete] opdracht om de resource groep AKS te verwijderen:
 

@@ -10,12 +10,12 @@ ms.service: api-management
 ms.topic: article
 ms.date: 04/26/2020
 ms.author: apimpm
-ms.openlocfilehash: abf7e6d7032e7e5dc35b2f4397a5630d45d762de
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 7321331adcfc81e26b40e7a3c4869b8b1e50fc0e
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82205116"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86254381"
 ---
 # <a name="deploy-to-azure-kubernetes-service"></a>Implementeren naar Azure Kubernetes Service
 
@@ -36,7 +36,7 @@ Dit artikel bevat de stappen voor het implementeren van een zelf-hostend gateway
 5. Zorg ervoor dat **Kubernetes** is geselecteerd onder **implementatie scripts**.
 6. Selecteer **<gateway naam>. yml-** bestands koppeling naast **implementatie** om het bestand te downloaden.
 7. Pas de poort toewijzingen en de container naam in het yml-bestand naar wens aan.
-8. Afhankelijk van uw scenario moet u het [Service type](https://docs.microsoft.com/azure/aks/concepts-network#services)mogelijk wijzigen. De standaardwaarde is `NodePort`.
+8. Afhankelijk van uw scenario moet u het [Service type](../aks/concepts-network.md#services)mogelijk wijzigen. De standaardwaarde is `NodePort`.
 9. Selecteer het **Kopieer** pictogram dat zich aan de rechter kant van het tekstvak **implementeren** bevindt om de `kubectl` opdracht op het klem bord op te slaan.
 10. Plak de opdracht in het venster Terminal (of Command). Houd er rekening mee dat de opdracht verwacht dat het gedownloade omgevings bestand aanwezig is in de huidige map.
 ```console
@@ -63,10 +63,6 @@ contosogateway   NodePort    10.110.230.87   <none>        80:32504/TCP,443:3004
 ## <a name="next-steps"></a>Volgende stappen
 
 * Meer informatie over de zelf-hostende Gateway vindt u in [Azure API Management zelf-hostende gateway-overzicht](self-hosted-gateway-overview.md)
-* Meer informatie over de [Azure Kubernetes-service](https://docs.microsoft.com/azure/aks/intro-kubernetes)
+* Meer informatie over de [Azure Kubernetes-service](../aks/intro-kubernetes.md)
 * Meer informatie [over het configureren en persistent maken van Logboeken in de Cloud](how-to-configure-cloud-metrics-logs.md)
 * * Meer informatie [over het lokaal configureren en persistent maken van Logboeken](how-to-configure-local-metrics-logs.md)
-
-
-
-

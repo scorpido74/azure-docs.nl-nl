@@ -13,11 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 06/20/2018
 ms.author: apimpm
-ms.openlocfilehash: 48a83fad3395f6ecf06fb1f1ba95aa1b06a53431
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 8c9df3393a0554d2e65b3918c6760885f89e11ed
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81259133"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86254740"
 ---
 # <a name="how-to-integrate-azure-api-management-with-azure-application-insights"></a>Azure API Management integreren met Azure Application Insights
 
@@ -36,7 +37,7 @@ Voordat u Azure-toepassing Insights kunt gebruiken, moet u eerst een exemplaar v
 2. Klik op **+ Toevoegen**.  
     ![App Insights maken](media/api-management-howto-app-insights/apim-app-insights-instance-2.png)  
 3. Vul het formulier in. Selecteer **Algemeen** als het **toepassings type**.
-4. Klik op **Create**.
+4. Klik op **Maken**.
 
 ## <a name="create-a-connection-between-azure-application-insights-and-azure-api-management-service-instance"></a>Een verbinding maken tussen Azure-toepassing Insights-en Azure API Management service-exemplaar
 
@@ -45,12 +46,12 @@ Voordat u Azure-toepassing Insights kunt gebruiken, moet u eerst een exemplaar v
 3. Klik op **+ Toevoegen**.  
     ![Logboek voor app Insights](media/api-management-howto-app-insights/apim-app-insights-logger-1.png)  
 4. Selecteer het eerder gemaakte **Application Insights** -exemplaar en geef een korte beschrijving op.
-5. Klik op **Create**.
+5. Klik op **Maken**.
 6. U hebt zojuist een Azure-toepassing Insights-logboek registratie gemaakt met een instrumentatie sleutel. Deze wordt nu weer gegeven in de lijst.  
     ![Logboek voor app Insights](media/api-management-howto-app-insights/apim-app-insights-logger-2.png)  
 
 > [!NOTE]
-> Achter de scène wordt een [logger](https://docs.microsoft.com/rest/api/apimanagement/2019-12-01/logger/createorupdate) -entiteit gemaakt in uw API Management-exemplaar met de instrumentatie sleutel van de Application Insights instantie.
+> Achter de scène wordt een [logger](/rest/api/apimanagement/2019-12-01/logger/createorupdate) -entiteit gemaakt in uw API Management-exemplaar met de instrumentatie sleutel van de Application Insights instantie.
 
 ## <a name="enable-application-insights-logging-for-your-api"></a>Application Insights logboek registratie inschakelen voor uw API
 
@@ -69,9 +70,9 @@ Voordat u Azure-toepassing Insights kunt gebruiken, moet u eerst een exemplaar v
 > Het overschrijven van de standaard waarde **0** in de **eerste bytes van het veld hoofd tekst** kan de prestaties van uw api's aanzienlijk verminderen.
 
 > [!NOTE]
-> Achter de scène wordt een [Diagnostische](https://docs.microsoft.com/rest/api/apimanagement/2019-12-01/diagnostic/createorupdate) entiteit met de naam ' applicationinsights ' gemaakt op het API-niveau.
+> Achter de scène wordt een [Diagnostische](/rest/api/apimanagement/2019-12-01/diagnostic/createorupdate) entiteit met de naam ' applicationinsights ' gemaakt op het API-niveau.
 
-| Naam van de instelling                        | Waardetype                        | Description                                                                                                                                                                                                                                                                                                                                      |
+| Naam van de instelling                        | Waardetype                        | Beschrijving                                                                                                                                                                                                                                                                                                                                      |
 |-------------------------------------|-----------------------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | Inschakelen                              | booleaans                           | Hiermee wordt aangegeven of logboek registratie van deze API is ingeschakeld.                                                                                                                                                                                                                                                                                                |
 | Doel                         | Azure-toepassing Insights-logboek registratie | Hiermee wordt aangegeven Azure-toepassing Insights-logboeken moeten worden gebruikt                                                                                                                                                                                                                                                                                           |
@@ -125,5 +126,5 @@ Het overs laan van de logboek registratie van headers en hoofd tekst van aanvrag
 
 ## <a name="next-steps"></a>Volgende stappen
 
-+ Meer informatie over [Azure-toepassing Insights](https://docs.microsoft.com/azure/application-insights/).
++ Meer informatie over [Azure-toepassing Insights](/azure/application-insights/).
 + Overweeg [logboek registratie met Azure Event hubs](api-management-howto-log-event-hubs.md).

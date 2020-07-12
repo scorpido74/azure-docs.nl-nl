@@ -3,11 +3,12 @@ title: Resource logboeken verzamelen & analyseren
 description: Registreer en analyseer bron logboek gebeurtenissen voor Azure Container Registry zoals verificatie, installatie kopie push en installatie kopie ophalen.
 ms.topic: article
 ms.date: 06/01/2020
-ms.openlocfilehash: b41b1001a669fe42721471bc196e7628eabff983
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 8757b8bdb67cf75b1ba800658d80b2a44311f1ba
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84343180"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86252484"
 ---
 # <a name="azure-container-registry-logs-for-diagnostic-evaluation-and-auditing"></a>Azure Container Registry logboeken voor diagnostische evaluatie en controle
 
@@ -141,10 +142,9 @@ ContainerRegistryLoginEvents
 
 Naast het verzenden van de logboeken naar Log Analytics, of als alternatief, is het een gemeen schappelijke scenario om een Azure Storage account te selecteren als een logboek bestemming. Als u Logboeken in Azure Storage wilt archiveren, maakt u een opslag account voordat u archiveren via de diagnostische instellingen inschakelt.
 
-U kunt ook diagnostische logboek gebeurtenissen streamen naar een [Azure Event hub](../event-hubs/event-hubs-what-is-event-hubs.md). Event Hubs kan miljoenen gebeurtenissen per seconde opnemen, die u vervolgens kunt transformeren en opslaan met behulp van een real-time analyse provider. 
+U kunt ook diagnostische logboek gebeurtenissen streamen naar een [Azure Event hub](../event-hubs/event-hubs-about.md). Event Hubs kan miljoenen gebeurtenissen per seconde opnemen, die u vervolgens kunt transformeren en opslaan met behulp van een real-time analyse provider. 
 
 ## <a name="next-steps"></a>Volgende stappen
 
 * Meer informatie over het gebruik van [log Analytics](../azure-monitor/log-query/get-started-portal.md) en het maken van [logboek query's](../azure-monitor/log-query/get-started-queries.md).
 * Zie [overzicht van Azure platform-logboeken](../azure-monitor/platform/platform-logs-overview.md) voor meer informatie over platform logboeken die beschikbaar zijn op verschillende lagen van Azure.
-

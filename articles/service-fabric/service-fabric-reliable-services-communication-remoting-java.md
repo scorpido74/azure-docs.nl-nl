@@ -5,11 +5,12 @@ author: PavanKunapareddyMSFT
 ms.topic: conceptual
 ms.date: 06/30/2017
 ms.author: pakunapa
-ms.openlocfilehash: eef63d7a2c8a4b15938dfbffd7db5f9d1b22d426
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 2942c015ba9265d7f2c597ced2321a7789c28576
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "75426640"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86253386"
 ---
 # <a name="service-remoting-in-java-with-reliable-services"></a>Externe service in Java met Reliable Services
 > [!div class="op_single_selector"]
@@ -82,8 +83,8 @@ Het externe Framework geeft uitzonde ringen door die zijn gegenereerd bij de ser
 Het maken van een ServiceProxy is een licht gewicht bewerking, zodat u zoveel mogelijk kunt maken. Service proxy-exemplaren kunnen opnieuw worden gebruikt zolang ze nodig zijn. Als een externe procedure aanroep een uitzonde ring genereert, kunt u nog steeds hetzelfde proxy-exemplaar gebruiken. Elk ServiceProxy bevat een communicatie-client die wordt gebruikt voor het verzenden van berichten via de kabel. Tijdens het aanroepen van externe aanroepen worden interne controles uitgevoerd om te bepalen of de communicatie client geldig is. Op basis van de resultaten van die controles wordt de communicatie client indien nodig opnieuw gemaakt. Als er een uitzonde ring optreedt, hoeft u daarom niet opnieuw te maken `ServiceProxy` .
 
 ### <a name="serviceproxyfactory-lifetime"></a>Levens duur ServiceProxyFactory
-[FabricServiceProxyFactory](https://docs.microsoft.com/java/api/microsoft.servicefabric.services.remoting.client.fabricserviceproxyfactory) is een Factory waarmee proxy voor verschillende externe interfaces wordt gemaakt. Als u API gebruikt `ServiceProxyBase.create` voor het maken van een proxy, maakt Framework een `FabricServiceProxyFactory` .
-Het is handig om een hand matig te maken wanneer u [ServiceRemotingClientFactory](https://docs.microsoft.com/java/api/microsoft.servicefabric.services.remoting.client.serviceremotingclientfactory) -eigenschappen wilt overschrijven.
+[FabricServiceProxyFactory](/java/api/microsoft.servicefabric.services.remoting.client.fabricserviceproxyfactory) is een Factory waarmee proxy voor verschillende externe interfaces wordt gemaakt. Als u API gebruikt `ServiceProxyBase.create` voor het maken van een proxy, maakt Framework een `FabricServiceProxyFactory` .
+Het is handig om een hand matig te maken wanneer u [ServiceRemotingClientFactory](/java/api/microsoft.servicefabric.services.remoting.client.serviceremotingclientfactory) -eigenschappen wilt overschrijven.
 Factory is een dure bewerking. `FabricServiceProxyFactory`onderhoudt cache van communicatie-clients.
 De aanbevolen procedure is om zo lang mogelijk in de cache te plaatsen `FabricServiceProxyFactory` .
 
@@ -93,7 +94,7 @@ Alle externe uitzonde ringen die worden veroorzaakt door Service-API, worden ter
 ServiceProxy verwerkt alle failover-uitzonde ringen voor de service partitie waarvoor deze is gemaakt. De eind punten worden opnieuw omgezet als er failover-uitzonde ringen zijn (geen tijdelijke uitzonde ringen) en de aanroep opnieuw probeert met het juiste eind punt. Aantal nieuwe pogingen voor failover-uitzonde ring is oneindig.
 In het geval van TransientExceptions wordt de aanroep alleen opnieuw geprobeerd.
 
-De standaard parameters voor nieuwe pogingen zijn geleverde door [OperationRetrySettings](https://docs.microsoft.com/java/api/microsoft.servicefabric.services.communication.client.operationretrysettings).
+De standaard parameters voor nieuwe pogingen zijn geleverde door [OperationRetrySettings](/java/api/microsoft.servicefabric.services.communication.client.operationretrysettings).
 U kunt deze waarden configureren door OperationRetrySettings object door te geven aan ServiceProxyFactory constructor.
 
 ## <a name="next-steps"></a>Volgende stappen

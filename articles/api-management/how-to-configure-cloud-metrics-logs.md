@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 04/30/2020
 ms.author: apimpm
-ms.openlocfilehash: d0fbdcb877e91a703306f15fdc7507fd19d534f4
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 3bbfd167e89ae1b5f9b7de1df5fd1cb72c720cb6
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82205129"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86254523"
 ---
 # <a name="configure-cloud-metrics-and-logs-for-azure-api-management-self-hosted-gateway"></a>Metrische gegevens en logboeken voor de Cloud configureren voor Azure API Management zelf-hostende gateway
 
@@ -49,7 +49,7 @@ Hier volgt een voor beeld van een configuratie:
 
 De zelf-hostende Gateway verzendt momenteel de volgende metrische gegevens via Azure Monitor:
 
-| Metrisch  | Beschrijving |
+| Gegevens  | Beschrijving |
 | ------------- | ------------- |
 | Aanvragen  | Aantal API-aanvragen in de periode |
 | Duur van gateway aanvragen | Aantal milliseconden vanaf het moment dat de gateway de aanvraag ontving tot het moment dat het antwoord volledig werd verzonden |
@@ -57,14 +57,12 @@ De zelf-hostende Gateway verzendt momenteel de volgende metrische gegevens via A
 
 ## <a name="logs"></a>Logboeken
 
-De zelf-hostende Gateway verzendt momenteel geen [Diagnostische logboeken](https://docs.microsoft.com/azure/api-management/api-management-howto-use-azure-monitor#diagnostic-logs) naar de Cloud. Het is echter mogelijk om [lokaal logboeken te configureren en persistent](how-to-configure-local-metrics-logs.md) te maken, waarbij de zelf-hostende gateway wordt geïmplementeerd. 
+De zelf-hostende Gateway verzendt momenteel geen [Diagnostische logboeken](./api-management-howto-use-azure-monitor.md#activity-logs) naar de Cloud. Het is echter mogelijk om [lokaal logboeken te configureren en persistent](how-to-configure-local-metrics-logs.md) te maken, waarbij de zelf-hostende gateway wordt geïmplementeerd. 
 
-Als er een gateway is geïmplementeerd in de [Azure Kubernetes-service](https://azure.microsoft.com/services/kubernetes-service/), kunt u [Azure monitor voor containers](https://docs.microsoft.com/azure/azure-monitor/insights/container-insights-overview) inschakelen om logboeken te verzamelen van uw containers en deze weer geven in log Analytics. 
+Als er een gateway is geïmplementeerd in de [Azure Kubernetes-service](https://azure.microsoft.com/services/kubernetes-service/), kunt u [Azure monitor voor containers](../azure-monitor/insights/container-insights-overview.md) inschakelen om logboeken te verzamelen van uw containers en deze weer geven in log Analytics. 
 
 
 ## <a name="next-steps"></a>Volgende stappen
 
 * Meer informatie over de zelf-hostende Gateway vindt u in [Azure API Management zelf-hostende gateway-overzicht](self-hosted-gateway-overview.md)
 * Meer informatie over het [lokaal configureren en persistent maken van Logboeken](how-to-configure-local-metrics-logs.md)
-
-

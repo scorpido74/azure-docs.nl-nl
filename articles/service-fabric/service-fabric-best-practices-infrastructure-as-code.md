@@ -5,13 +5,14 @@ author: peterpogorski
 ms.topic: conceptual
 ms.date: 01/23/2019
 ms.author: pepogors
-ms.openlocfilehash: 1c044d5fd973d3c577088a887f2fac413d2ab79d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: c381c6e7d692eda32fea2033779bacddafc267bb
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "75551808"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86253674"
 ---
-# <a name="infrastructure-as-code"></a>Infrastructure als code
+# <a name="infrastructure-as-code"></a>Infrastructuur als code
 
 Maak in een productie scenario Azure Service Fabric-clusters met behulp van Resource Manager-sjablonen. Resource Manager-sjablonen bieden meer controle over de bron eigenschappen en zorgen ervoor dat u een consistent resource model hebt.
 
@@ -43,7 +44,7 @@ New-AzResourceGroupDeployment -Name $ResourceGroupName -TemplateFile $Template -
 
 ## <a name="azure-service-fabric-resources"></a>Azure Service Fabric-resources
 
-U kunt toepassingen en services implementeren op uw Service Fabric-cluster via Azure Resource Manager. Zie [toepassingen en services beheren als Azure Resource Manager resources](https://docs.microsoft.com/azure/service-fabric/service-fabric-application-arm-resource) voor meer informatie. Hieronder vindt u best practice Service Fabric toepassingsspecifieke resources die moeten worden meegenomen in de resources van de Resource Manager-sjabloon.
+U kunt toepassingen en services implementeren op uw Service Fabric-cluster via Azure Resource Manager. Zie [toepassingen en services beheren als Azure Resource Manager resources](./service-fabric-application-arm-resource.md) voor meer informatie. Hieronder vindt u best practice Service Fabric toepassingsspecifieke resources die moeten worden meegenomen in de resources van de Resource Manager-sjabloon.
 
 ```json
 {
@@ -72,7 +73,7 @@ U kunt toepassingen en services implementeren op uw Service Fabric-cluster via A
 }
 ```
 
-Als u uw toepassing wilt implementeren met behulp van Azure Resource Manager, moet u eerst [een sfpkg](https://docs.microsoft.com/azure/service-fabric/service-fabric-package-apps#create-an-sfpkg) service Fabric toepassings pakket maken. Het volgende python-script is een voor beeld van het maken van een sfpkg:
+Als u uw toepassing wilt implementeren met behulp van Azure Resource Manager, moet u eerst [een sfpkg](./service-fabric-package-apps.md#create-an-sfpkg) service Fabric toepassings pakket maken. Het volgende python-script is een voor beeld van het maken van een sfpkg:
 
 ```python
 # Create SFPKG that needs to be uploaded to Azure Storage Blob Container
@@ -90,7 +91,7 @@ microservices_sfpkg.close()
 ```
 
 ## <a name="azure-virtual-machine-operating-system-automatic-upgrade-configuration"></a>Automatische upgrade configuratie van het besturings systeem van de virtuele machine van Azure 
-Het upgraden van uw virtuele machines is een door de gebruiker geïnitieerde bewerking. het wordt aanbevolen dat u de Schaalset voor de virtuele machine gebruikt voor het [automatisch bijwerken van het besturings systeem](https://docs.microsoft.com/azure/virtual-machine-scale-sets/virtual-machine-scale-sets-automatic-upgrade) voor Azure service Fabric clusters host patch management; Patch Orchestration Application is een alternatieve oplossing die is bedoeld voor wanneer deze buiten Azure wordt gehost, maar POA kan worden gebruikt in azure, waarbij de overhead van het hosten van POA in azure een gemeen schappelijke reden is om de voor keur te geven aan een automatische upgrade van het besturings systeem van de virtuele machine over POA. Hieronder vindt u de eigenschappen van de Resource Manager-sjabloon voor de berekening van de virtuele machine Scale set om automatische upgrades van besturings systemen in te scha kelen:
+Het upgraden van uw virtuele machines is een door de gebruiker geïnitieerde bewerking. het wordt aanbevolen dat u de Schaalset voor de virtuele machine gebruikt voor het [automatisch bijwerken van het besturings systeem](../virtual-machine-scale-sets/virtual-machine-scale-sets-automatic-upgrade.md) voor Azure service Fabric clusters host patch management; Patch Orchestration Application is een alternatieve oplossing die is bedoeld voor wanneer deze buiten Azure wordt gehost, maar POA kan worden gebruikt in azure, waarbij de overhead van het hosten van POA in azure een gemeen schappelijke reden is om de voor keur te geven aan een automatische upgrade van het besturings systeem van de virtuele machine over POA. Hieronder vindt u de eigenschappen van de Resource Manager-sjabloon voor de berekening van de virtuele machine Scale set om automatische upgrades van besturings systemen in te scha kelen:
 
 ```json
 "upgradePolicy": {

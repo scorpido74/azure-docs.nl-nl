@@ -4,12 +4,12 @@ description: Meer informatie over hoe u snel een Kubernetes-cluster kunt maken, 
 services: container-service
 ms.topic: article
 ms.date: 05/26/2020
-ms.openlocfilehash: 735869da1432c241927597789f00a0bd2aea63f3
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 036c97d406e37e038474287daf39182ddce194a1
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85207945"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86250869"
 ---
 # <a name="create-a-windows-server-container-on-an-azure-kubernetes-service-aks-cluster-using-powershell"></a>Een Windows Server-container maken op een Azure Kubernetes service (AKS)-cluster met behulp van Power shell
 
@@ -47,7 +47,7 @@ De volgende extra beperkingen zijn van toepassing op Windows Server-knooppunt gr
 
 ## <a name="create-a-resource-group"></a>Een resourcegroep maken
 
-Een [Azure-resourcegroep](/azure/azure-resource-manager/resource-group-overview) is een logische groep waarin Azure-resources worden geïmplementeerd en beheerd. Wanneer u een resourcegroep maakt, wordt u gevraagd een locatie op te geven. Op deze locatie zijn de metagegevens van de resourcegroep opgeslagen. Dit is ook de locatie waar uw resources worden uitgevoerd in Azure als u tijdens het maken van de resource geen andere regio opgeeft. Maak een resourcegroep met behulp van de cdmlet [New-AzResourceGroup][new-azresourcegroup].
+Een [Azure-resourcegroep](../azure-resource-manager/management/overview.md) is een logische groep waarin Azure-resources worden geïmplementeerd en beheerd. Wanneer u een resourcegroep maakt, wordt u gevraagd een locatie op te geven. Op deze locatie zijn de metagegevens van de resourcegroep opgeslagen. Dit is ook de locatie waar uw resources worden uitgevoerd in Azure als u tijdens het maken van de resource geen andere regio opgeeft. Maak een resourcegroep met behulp van de cdmlet [New-AzResourceGroup][new-azresourcegroup].
 
 In het volgende voorbeeld wordt een resourcegroep met de naam **myResourceGroup** gemaakt op de locatie **VS - oost**.
 
@@ -70,7 +70,7 @@ ResourceId        : /subscriptions/00000000-0000-0000-0000-000000000000/resource
 
 ## <a name="create-an-aks-cluster"></a>Een AKS-cluster maken
 
-Gebruik het `ssh-keygen`-opdrachtregelprogramma om een SSH-sleutelpaar te genereren. Zie voor meer informatie [Snelle stappen: een sleutelpaar met een openbare-persoonlijke SSH-sleutel voor virtuele Linux-machines maken en gebruiken](/azure/virtual-machines/linux/mac-create-ssh-keys).
+Gebruik het `ssh-keygen`-opdrachtregelprogramma om een SSH-sleutelpaar te genereren. Zie voor meer informatie [Snelle stappen: een sleutelpaar met een openbare-persoonlijke SSH-sleutel voor virtuele Linux-machines maken en gebruiken](../virtual-machines/linux/mac-create-ssh-keys.md).
 
 Als u een AKS-cluster wilt uitvoeren dat knooppunt Pools ondersteunt voor Windows Server-containers, moet uw cluster gebruikmaken van een netwerk beleid dat gebruikmaakt van de invoeg toepassing [Azure cni][azure-cni-about] (Geavanceerd). Zie [Azure cni-netwerken configureren][use-advanced-networking]voor meer informatie over het plannen van de vereiste subnet bereiken en netwerk overwegingen. Gebruik de cmdlet [New-AzAks][new-azaks] hieronder om een AKS-cluster te maken met de naam **myAKSCluster**. In het volgende voor beeld worden de benodigde netwerk bronnen gemaakt als ze niet bestaan.
 

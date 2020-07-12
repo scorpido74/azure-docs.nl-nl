@@ -6,12 +6,12 @@ ms.author: andrela
 ms.service: mariadb
 ms.topic: conceptual
 ms.date: 7/7/2020
-ms.openlocfilehash: c1f4945cda9db0f99799ea072737d4524f04e481
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.openlocfilehash: 183ece0d82431a8a961902d75d2fc24b013bc97b
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86076569"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86252263"
 ---
 # <a name="understand-business-continuity-in-azure-database-for-mariadb"></a>Inzicht in de bedrijfs continuïteit in Azure Database for MariaDB
 
@@ -23,7 +23,7 @@ Azure Database for MariaDB biedt functies voor bedrijfs continuïteit, waaronder
 
 De volgende tabel vergelijkt de ERT en RPO voor de beschik bare functies:
 
-| **Mogelijkheid** | **Standaard** | **Algemeen** | **Geoptimaliseerd geheugen** |
+| **Mogelijkheid** | **Basic** | **Algemeen** | **Geoptimaliseerd voor geheugen** |
 | :------------: | :-------: | :-----------------: | :------------------: |
 | Herstel naar een bepaald tijdstip vanuit back-up | Elk herstel punt binnen de Bewaar periode | Elk herstel punt binnen de Bewaar periode | Elk herstel punt binnen de Bewaar periode |
 | Geo-herstel van geo-gerepliceerde back-ups | Niet ondersteund | ERT < 12 uur<br/>RPO < 1 uur | ERT < 12 uur<br/>RPO < 1 uur |
@@ -51,6 +51,10 @@ De andere optie is het gebruik van de functie geo-Restore van de Azure Database 
 ## <a name="cross-region-read-replicas"></a>Meerdere regio's replica's lezen
 
 U kunt Kruis regio's gebruiken om replica's te verg Roten om uw bedrijfs continuïteit en herstel na nood gevallen te verbeteren. Lees replica's worden asynchroon bijgewerkt met de binaire logboek replicatie technologie van MariaDB. Meer informatie over het lezen van replica's, beschik bare regio's en hoe u een failover kunt uitvoeren vanuit het [artikel concepten van replica's lezen](concepts-read-replicas.md). 
+
+## <a name="faq"></a>Veelgestelde vragen
+### <a name="where-does-azure-database-for-mariadb-store-customer-data"></a>Waar worden klant gegevens Azure Database for MariaDB opgeslagen?
+Azure Database for MariaDB verplaatsen of opslaan van klant gegevens wordt standaard niet uitgevoerd in de regio waarin deze is geïmplementeerd. Klanten kunnen er echter voor kiezen om [geo-redundante back-ups](concepts-backup.md#backup-redundancy-options) in te scha kelen of om [meerdere regio's](concepts-read-replicas.md#cross-region-replication) te maken voor het opslaan van gegevens in een andere regio.
 
 ## <a name="next-steps"></a>Volgende stappen
 

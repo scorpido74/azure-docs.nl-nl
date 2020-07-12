@@ -6,12 +6,12 @@ ms.topic: article
 ms.author: jpalma
 ms.date: 06/29/2020
 author: palma21
-ms.openlocfilehash: 6aed6c84439e65646c15367cdad3bf13c5573256
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 9d06852e9d3d61b3e3d368a1d1c6f4107aff1442
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85831666"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86251311"
 ---
 # <a name="control-egress-traffic-for-cluster-nodes-in-azure-kubernetes-service-aks"></a>Uitgaand verkeer beheren voor cluster knooppunten in azure Kubernetes service (AKS)
 
@@ -46,7 +46,7 @@ Het volgende netwerk en de FQDN/toepassings regels zijn vereist voor een AKS-clu
 
 De vereiste netwerk regels en afhankelijkheden voor IP-adressen zijn:
 
-| Doel eindpunt                                                             | Protocol | Poort    | Gebruiken  |
+| Doel eindpunt                                                             | Protocol | Poort    | Gebruik  |
 |----------------------------------------------------------------------------------|----------|---------|------|
 | **`*:1194`** <br/> *Of* <br/> [ServiceTag](../virtual-network/service-tags-overview.md#available-service-tags) - **`AzureCloud.<Region>:1194`** <br/> *Of* <br/> [Regionale CIDR](../virtual-network/service-tags-overview.md#discover-service-tags-by-using-downloadable-json-files) - **`RegionCIDRs:1194`** <br/> *Of* <br/> **`APIServerIP:1194`** `(only known after cluster creation)`  | UDP           | 1194      | Voor beveiligde communicatie via een tunnel tussen de knoop punten en het besturings vlak. |
 | **`*:9000`** <br/> *Of* <br/> [ServiceTag](../virtual-network/service-tags-overview.md#available-service-tags) - **`AzureCloud.<Region>:9000`** <br/> *Of* <br/> [Regionale CIDR](../virtual-network/service-tags-overview.md#discover-service-tags-by-using-downloadable-json-files) - **`RegionCIDRs:9000`** <br/> *Of* <br/> **`APIServerIP:9000`** `(only known after cluster creation)`  | TCP           | 9000      | Voor beveiligde communicatie via een tunnel tussen de knoop punten en het besturings vlak. |
@@ -58,7 +58,7 @@ De vereiste netwerk regels en afhankelijkheden voor IP-adressen zijn:
 
 De volgende FQDN/toepassings regels zijn vereist:
 
-| Doel-FQDN                 | Poort            | Gebruiken      |
+| Doel-FQDN                 | Poort            | Gebruik      |
 |----------------------------------|-----------------|----------|
 | **`*.hcp.<location>.azmk8s.io`** | **`HTTPS:443`** | Vereist voor de > API-server communicatie van het knoop punt <. Vervang door *\<location\>* de regio waarin uw AKS-cluster is geïmplementeerd. |
 | **`mcr.microsoft.com`**          | **`HTTPS:443`** | Vereist voor toegang tot afbeeldingen in micro soft Container Registry (MCR). Dit REGI ster bevat afbeeldingen/grafieken van de eerste partij (bijvoorbeeld coreDNS, enzovoort). Deze installatie kopieën zijn vereist voor het correct maken en functioneren van het cluster, inclusief schaal-en upgrade bewerkingen.  |
@@ -73,7 +73,7 @@ De volgende FQDN/toepassings regels zijn vereist:
 
 De vereiste netwerk regels en afhankelijkheden voor IP-adressen zijn:
 
-| Doel eindpunt                                                             | Protocol | Poort    | Gebruiken  |
+| Doel eindpunt                                                             | Protocol | Poort    | Gebruik  |
 |----------------------------------------------------------------------------------|----------|---------|------|
 | **`*:1194`** <br/> *Of* <br/> [ServiceTag](../virtual-network/service-tags-overview.md#available-service-tags) - **`AzureCloud.Region:1194`** <br/> *Of* <br/> [Regionale CIDR](../virtual-network/service-tags-overview.md#discover-service-tags-by-using-downloadable-json-files) - **`RegionCIDRs:1194`** <br/> *Of* <br/> **`APIServerIP:1194`** `(only known after cluster creation)`  | UDP           | 1194      | Voor beveiligde communicatie via een tunnel tussen de knoop punten en het besturings vlak. |
 | **`*:9000`** <br/> *Of* <br/> [ServiceTag](../virtual-network/service-tags-overview.md#available-service-tags) - **`AzureCloud.<Region>:9000`** <br/> *Of* <br/> [Regionale CIDR](../virtual-network/service-tags-overview.md#discover-service-tags-by-using-downloadable-json-files) - **`RegionCIDRs:9000`** <br/> *Of* <br/> **`APIServerIP:9000`** `(only known after cluster creation)`  | TCP           | 9000      | Voor beveiligde communicatie via een tunnel tussen de knoop punten en het besturings vlak. |
@@ -86,7 +86,7 @@ De vereiste netwerk regels en afhankelijkheden voor IP-adressen zijn:
 
 De volgende FQDN/toepassings regels zijn vereist:
 
-| Doel-FQDN                               | Poort            | Gebruiken      |
+| Doel-FQDN                               | Poort            | Gebruik      |
 |------------------------------------------------|-----------------|----------|
 | **`*.hcp.<location>.cx.prod.service.azk8s.cn`**| **`HTTPS:443`** | Vereist voor de > API-server communicatie van het knoop punt <. Vervang door *\<location\>* de regio waarin uw AKS-cluster is geïmplementeerd. |
 | **`*.tun.<location>.cx.prod.service.azk8s.cn`**| **`HTTPS:443`** | Vereist voor de > API-server communicatie van het knoop punt <. Vervang door *\<location\>* de regio waarin uw AKS-cluster is geïmplementeerd. |
@@ -102,7 +102,7 @@ De volgende FQDN/toepassings regels zijn vereist:
 
 De vereiste netwerk regels en afhankelijkheden voor IP-adressen zijn:
 
-| Doel eindpunt                                                             | Protocol | Poort    | Gebruiken  |
+| Doel eindpunt                                                             | Protocol | Poort    | Gebruik  |
 |----------------------------------------------------------------------------------|----------|---------|------|
 | **`*:1194`** <br/> *Of* <br/> [ServiceTag](../virtual-network/service-tags-overview.md#available-service-tags) - **`AzureCloud.<Region>:1194`** <br/> *Of* <br/> [Regionale CIDR](../virtual-network/service-tags-overview.md#discover-service-tags-by-using-downloadable-json-files) - **`RegionCIDRs:1194`** <br/> *Of* <br/> **`APIServerIP:1194`** `(only known after cluster creation)`  | UDP           | 1194      | Voor beveiligde communicatie via een tunnel tussen de knoop punten en het besturings vlak. |
 | **`*:9000`** <br/> *Of* <br/> [ServiceTag](../virtual-network/service-tags-overview.md#available-service-tags) - **`AzureCloud.<Region>:9000`** <br/> *Of* <br/> [Regionale CIDR](../virtual-network/service-tags-overview.md#discover-service-tags-by-using-downloadable-json-files) - **`RegionCIDRs:9000`** <br/> *Of* <br/> **`APIServerIP:9000`** `(only known after cluster creation)`  | TCP           | 9000      | Voor beveiligde communicatie via een tunnel tussen de knoop punten en het besturings vlak. |
@@ -114,7 +114,7 @@ De vereiste netwerk regels en afhankelijkheden voor IP-adressen zijn:
 
 De volgende FQDN/toepassings regels zijn vereist:
 
-| Doel-FQDN                                        | Poort            | Gebruiken      |
+| Doel-FQDN                                        | Poort            | Gebruik      |
 |---------------------------------------------------------|-----------------|----------|
 | **`*.hcp.<location>.cx.aks.containerservice.azure.us`** | **`HTTPS:443`** | Vereist voor de > API-server communicatie van het knoop punt <. Vervang door *\<location\>* de regio waarin uw AKS-cluster is geïmplementeerd.|
 | **`mcr.microsoft.com`**                                 | **`HTTPS:443`** | Vereist voor toegang tot afbeeldingen in micro soft Container Registry (MCR). Dit REGI ster bevat afbeeldingen/grafieken van de eerste partij (bijvoorbeeld coreDNS, enzovoort). Deze installatie kopieën zijn vereist voor het correct maken en functioneren van het cluster, inclusief schaal-en upgrade bewerkingen. |
@@ -129,7 +129,7 @@ De volgende FQDN/toepassings regels zijn vereist:
 
 De volgende FQDN/toepassings regels zijn optioneel, maar aanbevolen voor AKS-clusters:
 
-| Doel-FQDN                                                               | Poort          | Gebruiken      |
+| Doel-FQDN                                                               | Poort          | Gebruik      |
 |--------------------------------------------------------------------------------|---------------|----------|
 | **`security.ubuntu.com`, `azure.archive.ubuntu.com`, `changelogs.ubuntu.com`** | **`HTTP:80`** | Met dit adres kunnen Linux-cluster knooppunten de vereiste beveiligings patches en updates downloaden. |
 
@@ -141,7 +141,7 @@ Als u ervoor kiest deze FQDN-naam te blok keren/niet toe te staan, ontvangen de 
 
 De volgende FQDN/toepassings regels zijn vereist voor AKS-clusters waarop GPU is ingeschakeld:
 
-| Doel-FQDN                        | Poort      | Gebruiken      |
+| Doel-FQDN                        | Poort      | Gebruik      |
 |-----------------------------------------|-----------|----------|
 | **`nvidia.github.io`**                  | **`HTTPS:443`** | Dit adres wordt gebruikt voor juiste installatie van Stuur Programma's en bewerkingen op op GPU gebaseerde knoop punten. |
 | **`us.download.nvidia.com`**            | **`HTTPS:443`** | Dit adres wordt gebruikt voor juiste installatie van Stuur Programma's en bewerkingen op op GPU gebaseerde knoop punten. |
@@ -153,7 +153,7 @@ De volgende FQDN/toepassings regels zijn vereist voor AKS-clusters waarop GPU is
 
 De volgende FQDN/toepassings regels zijn vereist voor het gebruik van Windows Server-knooppunt groepen:
 
-| Doel-FQDN                                                           | Poort      | Gebruiken      |
+| Doel-FQDN                                                           | Poort      | Gebruik      |
 |----------------------------------------------------------------------------|-----------|----------|
 | **`onegetcdn.azureedge.net, go.microsoft.com`**                            | **`HTTPS:443`** | Windows-gerelateerde binaire bestanden installeren |
 | **`*.mp.microsoft.com, www.msftconnecttest.com, ctldl.windowsupdate.com`** | **`HTTP:80`**   | Windows-gerelateerde binaire bestanden installeren |
@@ -168,7 +168,7 @@ Er zijn twee opties om toegang te bieden tot Azure Monitor voor containers. u ku
 
 De volgende FQDN/toepassings regels zijn vereist:
 
-| Doel eindpunt                                                             | Protocol | Poort    | Gebruiken  |
+| Doel eindpunt                                                             | Protocol | Poort    | Gebruik  |
 |----------------------------------------------------------------------------------|----------|---------|------|
 | [ServiceTag](../virtual-network/service-tags-overview.md#available-service-tags) - **`AzureMonitor:443`**  | TCP           | 443      | Dit eind punt wordt gebruikt voor het verzenden van metrische gegevens en logboeken naar Azure Monitor en Log Analytics. |
 
@@ -176,7 +176,7 @@ De volgende FQDN/toepassings regels zijn vereist:
 
 De volgende FQDN/toepassings regels zijn vereist voor AKS-clusters waarvoor de Azure Monitor voor containers is ingeschakeld:
 
-| FQDN                                    | Poort      | Gebruiken      |
+| FQDN                                    | Poort      | Gebruik      |
 |-----------------------------------------|-----------|----------|
 | dc.services.visualstudio.com | **`HTTPS:443`**    | Dit eind punt wordt gebruikt voor metrische gegevens en het bewaken van telemetrie met behulp van Azure Monitor. |
 | *.ods.opinsights.azure.com    | **`HTTPS:443`**    | Dit eind punt wordt gebruikt door Azure Monitor voor opname van log Analytics-gegevens. |
@@ -189,7 +189,7 @@ Werk uw firewall of beveiligings configuratie bij om netwerk verkeer toe te staa
 
 #### <a name="required-network-rules"></a>Vereiste netwerk regels
 
-| Doel eindpunt                                                             | Protocol | Poort    | Gebruiken  |
+| Doel eindpunt                                                             | Protocol | Poort    | Gebruik  |
 |----------------------------------------------------------------------------------|----------|---------|------|
 | [ServiceTag](../virtual-network/service-tags-overview.md#available-service-tags) - **`AzureDevSpaces`**  | TCP           | 443      | Dit eind punt wordt gebruikt voor het verzenden van metrische gegevens en logboeken naar Azure Monitor en Log Analytics. |
 
@@ -197,7 +197,7 @@ Werk uw firewall of beveiligings configuratie bij om netwerk verkeer toe te staa
 
 De volgende FQDN/toepassings regels zijn vereist voor AKS-clusters waarvoor de Azure dev Spaces zijn ingeschakeld:
 
-| FQDN                                    | Poort      | Gebruiken      |
+| FQDN                                    | Poort      | Gebruik      |
 |-----------------------------------------|-----------|----------|
 | `cloudflare.docker.com` | **`HTTPS:443`** | Dit adres wordt gebruikt voor het ophalen van images voor Linux alpine en andere Azure dev Spaces |
 | `gcr.io` | **`HTTPS:443`** | Dit adres wordt gebruikt voor het ophalen van helm/Tiller-installatie kopieën |
@@ -213,7 +213,7 @@ De volgende FQDN/toepassings regels zijn vereist voor AKS-clusters waarvoor de A
 
 De volgende FQDN/toepassings regels zijn vereist voor AKS-clusters waarvoor de Azure Policy ingeschakeld.
 
-| FQDN                                          | Poort      | Gebruiken      |
+| FQDN                                          | Poort      | Gebruik      |
 |-----------------------------------------------|-----------|----------|
 | **`gov-prod-policy-data.trafficmanager.net`** | **`HTTPS:443`** | Dit adres wordt gebruikt voor een juiste werking van Azure Policy. (momenteel als preview-versie in AKS) |
 | **`raw.githubusercontent.com`**               | **`HTTPS:443`** | Dit adres wordt gebruikt om het ingebouwde beleid van GitHub te halen om te zorgen voor een juiste werking van Azure Policy. (momenteel als preview-versie in AKS) |
@@ -239,7 +239,7 @@ Hieronder ziet u een voor beeld van de architectuur van de implementatie:
   * Aanvragen van AKS-agent knooppunten volgen een UDR die is geplaatst op het subnet waarin het AKS-cluster is geïmplementeerd.
   * Azure Firewall egresses buiten het virtuele netwerk vanaf een openbaar IP-front-end
   * Toegang tot het open bare Internet of andere Azure-Services stromen van en naar het IP-adres van de firewall-frontend
-  * De toegang tot het AKS-besturings vlak wordt optioneel beschermd door de door de [API server geautoriseerde IP-adresbereiken](https://docs.microsoft.com/azure/aks/api-server-authorized-ip-ranges), waaronder het open bare IP-adres van de firewall.
+  * De toegang tot het AKS-besturings vlak wordt optioneel beschermd door de door de [API server geautoriseerde IP-adresbereiken](./api-server-authorized-ip-ranges.md), waaronder het open bare IP-adres van de firewall.
 * Intern verkeer
   * U kunt in plaats daarvan ook of naast een [open bare Load Balancer](load-balancer-standard.md) een [intern Load Balancer](internal-lb.md) gebruiken voor intern verkeer, dat u ook op eigen subnet zou kunnen isoleren.
 
@@ -353,7 +353,7 @@ FWPRIVATE_IP=$(az network firewall show -g $RG -n $FWNAME --query "ipConfigurati
 ```
 
 > [!NOTE]
-> Als u gebruikmaakt van beveiligde toegang tot de AKS API-server met [geautoriseerde IP-](https://docs.microsoft.com/azure/aks/api-server-authorized-ip-ranges)adresbereiken, moet u het open bare IP-adres van de firewall toevoegen aan het toegestane IP-bereik.
+> Als u gebruikmaakt van beveiligde toegang tot de AKS API-server met [geautoriseerde IP-](./api-server-authorized-ip-ranges.md)adresbereiken, moet u het open bare IP-adres van de firewall toevoegen aan het toegestane IP-bereik.
 
 ### <a name="create-a-udr-with-a-hop-to-azure-firewall"></a>Een UDR maken met een hop naar Azure Firewall
 
@@ -389,7 +389,7 @@ az network firewall network-rule create -g $RG -f $FWNAME --collection-name 'aks
 az network firewall application-rule create -g $RG -f $FWNAME --collection-name 'aksfwar' -n 'fqdn' --source-addresses '*' --protocols 'http=80' 'https=443' --fqdn-tags "AzureKubernetesService" --action allow --priority 100
 ```
 
-Raadpleeg de [documentatie van Azure firewall](https://docs.microsoft.com/azure/firewall/overview) voor meer informatie over de Azure Firewall-service.
+Raadpleeg de [documentatie van Azure firewall](../firewall/overview.md) voor meer informatie over de Azure Firewall-service.
 
 ### <a name="associate-the-route-table-to-aks"></a>De route tabel aan AKS koppelen
 
@@ -722,7 +722,7 @@ kubectl apply -f example.yaml
 ### <a name="add-a-dnat-rule-to-azure-firewall"></a>Een DNAT-regel toevoegen aan Azure Firewall
 
 > [!IMPORTANT]
-> Wanneer u Azure Firewall gebruikt om uitgaand verkeer te beperken en een door de gebruiker gedefinieerde route (UDR) te maken om al het uitgaande verkeer af te dwingen, moet u een geschikte DNAT-regel in de firewall maken om binnenkomend verkeer op de juiste wijze toe te staan. Als Azure Firewall wordt gebruikt met een UDR, wordt de ingangs instellingen voor asymmetrische route ring onderbroken. (Het probleem treedt op als het AKS-subnet een standaard route heeft die naar het privé-IP-adres van de firewall gaat, maar u een open bare load balancer-binnenkomend of Kubernetes service van het type: LoadBalancer) gebruikt. In dit geval wordt het binnenkomende load balancer verkeer ontvangen via het open bare IP-adres, maar het retour pad gaat via het privé-IP-adres van de firewall. Omdat de firewall stateful is, wordt het terugkerende pakket neergezet omdat de firewall niet op de hoogte is van een vastgestelde sessie. Zie [Azure firewall integreren met Azure Standard Load Balancer](https://docs.microsoft.com/azure/firewall/integrate-lb)voor meer informatie over het integreren van Azure Firewall met uw ingangs-of service Load Balancer.
+> Wanneer u Azure Firewall gebruikt om uitgaand verkeer te beperken en een door de gebruiker gedefinieerde route (UDR) te maken om al het uitgaande verkeer af te dwingen, moet u een geschikte DNAT-regel in de firewall maken om binnenkomend verkeer op de juiste wijze toe te staan. Als Azure Firewall wordt gebruikt met een UDR, wordt de ingangs instellingen voor asymmetrische route ring onderbroken. (Het probleem treedt op als het AKS-subnet een standaard route heeft die naar het privé-IP-adres van de firewall gaat, maar u een open bare load balancer-binnenkomend of Kubernetes service van het type: LoadBalancer) gebruikt. In dit geval wordt het binnenkomende load balancer verkeer ontvangen via het open bare IP-adres, maar het retour pad gaat via het privé-IP-adres van de firewall. Omdat de firewall stateful is, wordt het terugkerende pakket neergezet omdat de firewall niet op de hoogte is van een vastgestelde sessie. Zie [Azure firewall integreren met Azure Standard Load Balancer](../firewall/integrate-lb.md)voor meer informatie over het integreren van Azure Firewall met uw ingangs-of service Load Balancer.
 
 
 Als u binnenkomende connectiviteit wilt configureren, moet er een DNAT-regel naar de Azure Firewall geschreven. Als u de verbinding met uw cluster wilt testen, wordt er een regel gedefinieerd voor het open bare IP-adres van de firewall-frontend om te routeren naar de interne IP die wordt weer gegeven door de interne service.
