@@ -7,11 +7,12 @@ ms.reviewers: jonfan, logicappspm
 ms.topic: conceptual
 ms.date: 05/29/2020
 tags: connectors
-ms.openlocfilehash: 9f3f361b3e9fafdb350f943c0a8adcd87fa06c78
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 25aafee59c7f5f7ae59aa2fd7871de8926907f68
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84325130"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86261382"
 ---
 # <a name="receive-and-respond-to-inbound-https-requests-in-azure-logic-apps"></a>Inkomende HTTPS-aanvragen ontvangen en erop reageren in Azure Logic Apps
 
@@ -23,7 +24,7 @@ Met [Azure Logic apps](../logic-apps/logic-apps-overview.md) en de ingebouwde aa
 
 * Ontvangen en reageren op een HTTPS-aanroep vanuit een andere logische app.
 
-De trigger voor aanvragen ondersteunt [Azure Active Directory open verificatie](../active-directory/develop/about-microsoft-identity-platform.md) (Azure AD OAuth) voor het machtigen van binnenkomende oproepen aan uw logische app. Zie voor meer informatie over het inschakelen van deze verificatie [beveiligde toegang en gegevens in azure Logic apps-Azure AD OAuth-verificatie inschakelen](../logic-apps/logic-apps-securing-a-logic-app.md#enable-oauth).
+De trigger voor aanvragen ondersteunt [Azure Active Directory open verificatie](/azure/active-directory/develop/) (Azure AD OAuth) voor het machtigen van binnenkomende oproepen aan uw logische app. Zie voor meer informatie over het inschakelen van deze verificatie [beveiligde toegang en gegevens in azure Logic apps-Azure AD OAuth-verificatie inschakelen](../logic-apps/logic-apps-securing-a-logic-app.md#enable-oauth).
 
 ## <a name="prerequisites"></a>Vereisten
 
@@ -73,8 +74,8 @@ Deze ingebouwde trigger maakt een hand matig aanroep bare HTTPS-eind punt dat *a
 
    | Naam van eigenschap | JSON-eigenschaps naam | Vereist | Beschrijving |
    |---------------|--------------------|----------|-------------|
-   | **HTTP POST-URL** | geen | Yes | De eind punt-URL die wordt gegenereerd na het opslaan van de logische app en wordt gebruikt voor het aanroepen van uw logische app |
-   | **JSON-schema van aanvraag tekst** | `schema` | No | Het JSON-schema dat de eigenschappen en waarden in de hoofd tekst van de binnenkomende aanvraag beschrijft |
+   | **HTTP POST-URL** | geen | Ja | De eind punt-URL die wordt gegenereerd na het opslaan van de logische app en wordt gebruikt voor het aanroepen van uw logische app |
+   | **JSON-schema van aanvraag tekst** | `schema` | Nee | Het JSON-schema dat de eigenschappen en waarden in de hoofd tekst van de binnenkomende aanvraag beschrijft |
    |||||
 
 1. Voer desgewenst in het vak **JSON-schema van aanvraag tekst** een JSON-schema in dat de hoofd tekst in de binnenkomende aanvraag beschrijft, bijvoorbeeld:
@@ -156,7 +157,7 @@ Deze ingebouwde trigger maakt een hand matig aanroep bare HTTPS-eind punt dat *a
          "account": {
             "name": "Contoso",
             "ID": "12345",
-            "address": { 
+            "address": {
                "number": "1234",
                "street": "Anywhere Street",
                "city": "AnyTown",
@@ -171,17 +172,17 @@ Deze ingebouwde trigger maakt een hand matig aanroep bare HTTPS-eind punt dat *a
 1. Voer de volgende stappen uit om te controleren of de inkomende oproep een aanvraag tekst heeft die overeenkomt met het opgegeven schema:
 
    1. Selecteer de knop met weglatings tekens (**...**) in de titel balk van de trigger voor de aanvraag.
-   
+
    1. Schakel in de instellingen van de trigger **schema validatie**in en selecteer **gereed**.
-   
+
       Als de aanvraag tekst van de inkomende oproep niet overeenkomt met uw schema, retourneert de trigger een `HTTP 400 Bad Request` fout.
 
 1. Als u aanvullende eigenschappen wilt opgeven, opent u de lijst **nieuwe para meter toevoegen** en selecteert u de para meters die u wilt toevoegen.
 
    | Naam van eigenschap | JSON-eigenschaps naam | Vereist | Beschrijving |
    |---------------|--------------------|----------|-------------|
-   | **Methode** | `method` | No | De methode die de inkomende aanvraag moet gebruiken om de logische app aan te roepen |
-   | **Relatief pad** | `relativePath` | No | Het relatieve pad voor de para meter die door de eind punt-URL van de logische app kan worden geaccepteerd |
+   | **Methode** | `method` | Nee | De methode die de inkomende aanvraag moet gebruiken om de logische app aan te roepen |
+   | **Relatief pad** | `relativePath` | Nee | Het relatieve pad voor de para meter die door de eind punt-URL van de logische app kan worden geaccepteerd |
    |||||
 
    In dit voor beeld wordt de eigenschap **Method** toegevoegd:
@@ -217,7 +218,7 @@ Voor meer informatie over de onderliggende JSON-definitie van de trigger en hoe 
 
 Hier volgt meer informatie over de uitvoer van de aanvraag trigger:
 
-| JSON-eigenschaps naam | Gegevenstype | Description |
+| JSON-eigenschaps naam | Gegevenstype | Beschrijving |
 |--------------------|-----------|-------------|
 | `headers` | Object | Een JSON-object dat de headers van de aanvraag beschrijft |
 | `body` | Object | Een JSON-object waarmee de inhoud van de hoofd tekst van de aanvraag wordt beschreven |
@@ -258,7 +259,7 @@ Uw logische app houdt de inkomende aanvraag alleen gedurende een [beperkte perio
 
    De trigger voor aanvragen wordt in dit voor beeld samengevouwen voor eenvoud.
 
-1. Voeg waarden toe die vereist zijn voor het antwoord bericht. 
+1. Voeg waarden toe die vereist zijn voor het antwoord bericht.
 
    In sommige velden wordt de lijst met dynamische inhoud geopend wanneer u in hun vakken klikt. Vervolgens kunt u tokens selecteren die beschik bare uitvoer van de vorige stappen in de werk stroom vertegenwoordigen. Eigenschappen uit het schema dat in het vorige voor beeld is opgegeven, worden nu weer gegeven in de lijst met dynamische inhoud.
 
@@ -270,18 +271,18 @@ Uw logische app houdt de inkomende aanvraag alleen gedurende een [beperkte perio
 
    ![Headers: overschakelen naar tekst weergave](./media/connectors-native-reqres/switch-to-text-view.png)
 
-   Hier vindt u meer informatie over de eigenschappen die u kunt instellen in de reactie actie. 
+   Hier vindt u meer informatie over de eigenschappen die u kunt instellen in de reactie actie.
 
    | Naam van eigenschap | JSON-eigenschaps naam | Vereist | Beschrijving |
    |---------------|--------------------|----------|-------------|
-   | **Status code** | `statusCode` | Yes | De status code die in het antwoord moet worden geretourneerd |
-   | **Headers** | `headers` | No | Een JSON-object dat een of meer headers beschrijft die in het antwoord moeten worden meegenomen |
-   | **Hoofdtekst** | `body` | No | De antwoord tekst |
+   | **Status code** | `statusCode` | Ja | De status code die in het antwoord moet worden geretourneerd |
+   | **Kopteksten** | `headers` | Nee | Een JSON-object dat een of meer headers beschrijft die in het antwoord moeten worden meegenomen |
+   | **Hoofdtekst** | `body` | Nee | De antwoord tekst |
    |||||
 
 1. Als u aanvullende eigenschappen, zoals een JSON-schema voor de antwoord tekst, wilt opgeven, opent u de lijst **nieuwe para meter toevoegen** en selecteert u de para meters die u wilt toevoegen.
 
-1. Wanneer u klaar bent, slaat u de logische app op. Selecteer **Opslaan** op de werkbalk van de ontwerper. 
+1. Wanneer u klaar bent, slaat u de logische app op. Selecteer **Opslaan** op de werkbalk van de ontwerper.
 
 ## <a name="next-steps"></a>Volgende stappen
 

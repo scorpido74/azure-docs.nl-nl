@@ -3,11 +3,12 @@ title: Veelgestelde vragen over Azure Kubernetes service (AKS)
 description: Vind antwoorden op enkele veelgestelde vragen over Azure Kubernetes service (AKS).
 ms.topic: conceptual
 ms.date: 05/14/2020
-ms.openlocfilehash: 136f79df43bcc1730f187980df8726d693390faa
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: ba4ceaf0d7f9e3b344b2a6efbb84f2145c4a2f65
+ms.sourcegitcommit: 0b2367b4a9171cac4a706ae9f516e108e25db30c
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84300923"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86275713"
 ---
 # <a name="frequently-asked-questions-about-azure-kubernetes-service-aks"></a>Veelgestelde vragen over AKS (Azure Kubernetes Service)
 
@@ -136,7 +137,7 @@ AKS-agent knooppunten worden gefactureerd als standaard virtuele machines van Az
 
 ## <a name="can-i-movemigrate-my-cluster-between-azure-tenants"></a>Kan ik mijn cluster verplaatsen/migreren tussen Azure-tenants?
 
-De `az aks update-credentials` opdracht kan worden gebruikt om een AKS-cluster te verplaatsen tussen Azure-tenants. Volg de instructies in [kiezen om een service-principal bij te werken of te maken](https://docs.microsoft.com/azure/aks/update-credentials) en [werk vervolgens AKS-cluster bij met nieuwe referenties](https://docs.microsoft.com/azure/aks/update-credentials#update-aks-cluster-with-new-service-principal-credentials).
+De `az aks update-credentials` opdracht kan worden gebruikt om een AKS-cluster te verplaatsen tussen Azure-tenants. Volg de instructies in [kiezen om een service-principal bij te werken of te maken](./update-credentials.md) en [werk vervolgens AKS-cluster bij met nieuwe referenties](./update-credentials.md#update-aks-cluster-with-new-service-principal-credentials).
 
 ## <a name="can-i-movemigrate-my-cluster-between-subscriptions"></a>Kan ik mijn cluster verplaatsen/migreren tussen abonnementen?
 
@@ -145,6 +146,10 @@ Het verplaatsen van clusters tussen abonnementen wordt momenteel niet ondersteun
 ## <a name="can-i-move-my-aks-clusters-from-the-current-azure-subscription-to-another"></a>Kan ik mijn AKS-clusters van het huidige Azure-abonnement naar een andere verplaatsen? 
 
 Het verplaatsen van uw AKS-cluster en de bijbehorende resources tussen Azure-abonnementen wordt niet ondersteund.
+
+## <a name="can-i-move-my-aks-cluster-or-aks-infrastructure-resources-to-other-resource-groups-or-rename-them"></a>Kan ik mijn AKS-cluster of AKS-infrastructuur resources verplaatsen naar andere resource groepen of de naam ervan wijzigen?
+
+Het verplaatsen of hernoemen van uw AKS-cluster en de bijbehorende resources worden niet ondersteund.
 
 ## <a name="why-is-my-cluster-delete-taking-so-long"></a>Waarom duurt het verwijderen van een cluster? 
 
@@ -164,11 +169,11 @@ Dit wordt meestal veroorzaakt door gebruikers die een of meer netwerk beveiligin
 
 ## <a name="i-ran-an-upgrade-but-now-my-pods-are-in-crash-loops-and-readiness-probes-fail"></a>Ik heb een upgrade uitgevoerd, maar nu zijn mijn peulen in de loop van een crash, en mislukt de gereedheids tests?
 
-Controleer of uw Service-Principal niet is verlopen.  Zie de referenties van de [AKS-Service-Principal](https://docs.microsoft.com/azure/aks/kubernetes-service-principal) en de AKS- [Update](https://docs.microsoft.com/azure/aks/update-credentials).
+Controleer of uw Service-Principal niet is verlopen.  Zie de referenties van de [AKS-Service-Principal](./kubernetes-service-principal.md) en de AKS- [Update](./update-credentials.md).
 
 ## <a name="my-cluster-was-working-but-suddenly-cannot-provision-loadbalancers-mount-pvcs-etc"></a>Mijn cluster werkte, maar u kunt plotseling geen LoadBalancers, Mount-Pvc's, enzovoort inrichten. 
 
-Controleer of uw Service-Principal niet is verlopen.  Zie de referenties van de [AKS-Service-Principal](https://docs.microsoft.com/azure/aks/kubernetes-service-principal) en de AKS- [Update](https://docs.microsoft.com/azure/aks/update-credentials).
+Controleer of uw Service-Principal niet is verlopen.  Zie de referenties van de [AKS-Service-Principal](./kubernetes-service-principal.md) en de AKS- [Update](./update-credentials.md).
 
 ## <a name="can-i-use-the-virtual-machine-scale-set-apis-to-scale-manually"></a>Kan ik de Api's voor de schaalset van de virtuele machine gebruiken om hand matig te schalen?
 
@@ -189,9 +194,9 @@ Geen AKS is een beheerde service en het bewerken van de IaaS-resources wordt nie
 <!-- LINKS - internal -->
 
 [aks-upgrade]: ./upgrade-cluster.md
-[aks-cluster-autoscale]: ./autoscaler.md
+[aks-cluster-autoscale]: ./cluster-autoscaler.md
 [aks-advanced-networking]: ./configure-azure-cni.md
-[aks-rbac-aad]: ./azure-ad-integration.md
+[aks-rbac-aad]: ./azure-ad-integration-cli.md
 [node-updates-kured]: node-updates-kured.md
 [aks-preview-cli]: /cli/azure/ext/aks-preview/aks
 [az-aks-create]: /cli/azure/aks#az-aks-create

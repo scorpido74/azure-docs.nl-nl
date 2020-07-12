@@ -15,14 +15,15 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/28/2018
 ms.author: terrylan
-ms.openlocfilehash: 630304bec17dd34befab4e5bd9f1cfdfb6505645
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: d723e60afe543808c88b1ae040e2979412ff324c
+ms.sourcegitcommit: 0b2367b4a9171cac4a706ae9f516e108e25db30c
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80811424"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86273469"
 ---
 # <a name="azure-customer-data-protection"></a>Azure-klant gegevens beveiliging   
-De toegang tot klant gegevens door micro soft Operations en het ondersteunings personeel wordt standaard geweigerd. Wanneer toegang tot klant gegevens wordt verleend, is leiderschaps goed keuring vereist en wordt de toegang vervolgens zorgvuldig beheerd en geregistreerd. De vereisten voor toegangs beheer worden vastgesteld door het volgende Azure-beveiligings beleid:
+De toegang tot klant gegevens door micro soft Operations en het ondersteunings personeel wordt standaard geweigerd. Wanneer er toegang wordt verleend tot gegevens met betrekking tot een ondersteunings aanvraag, wordt deze alleen verleend met behulp van een just-in-time-model (JIT) met behulp van beleids regels die worden gecontroleerd en gecontroleerd aan de hand van het nalevings-en privacybeleid beleid.  De vereisten voor toegangs beheer worden vastgesteld door het volgende Azure-beveiligings beleid:
 
 - Standaard geen toegang tot klant gegevens.
 - Geen gebruikers-of beheerders accounts op virtuele machines van de klant (Vm's).
@@ -32,19 +33,16 @@ Ondersteunings medewerkers van Azure krijgen unieke zakelijke Active Directory a
 
 Alle toegangs pogingen worden gecontroleerd en kunnen worden weer gegeven via een eenvoudige set rapporten.
 
-## <a name="data-protection"></a>Gegevensbescherming
+## <a name="data-protection"></a>Gegevensbeveiliging
 Azure biedt klanten krachtige gegevens beveiliging, zowel standaard als klant opties.
 
 **Gegevens**scheiding: Azure is een service met meerdere tenants, wat betekent dat meerdere klant implementaties en virtuele machines op dezelfde fysieke hardware zijn opgeslagen. Azure gebruikt logische isolatie om de gegevens van elke klant te scheiden van de gegevens van anderen. Schei ding biedt de schaal en de economische voor delen van multi tenant Services, terwijl klanten de gegevens van elkaar niet kunnen openen.
 
-**At-rest-gegevens beveiliging**: klanten moeten ervoor zorgen dat gegevens die zijn opgeslagen in azure, worden versleuteld volgens hun normen. Azure biedt een breed scala aan versleutelings mogelijkheden en geeft klanten de flexibiliteit om de oplossing te kiezen die het beste voldoet aan hun behoeften. Azure Key Vault helpt klanten om de controle over de sleutels die door Cloud toepassingen en-services worden gebruikt, gemakkelijk te beheren om gegevens te versleutelen. Met Azure Disk Encryption kunnen klanten virtuele machines versleutelen. Azure Storage service versleuteling maakt het mogelijk alle gegevens te versleutelen die in het opslag account van een klant worden geplaatst.
+**At-rest-gegevens beveiliging**: klanten moeten ervoor zorgen dat gegevens die zijn opgeslagen in azure, worden versleuteld volgens hun normen. Azure biedt een breed scala aan versleutelings mogelijkheden en geeft klanten de flexibiliteit om de oplossing te kiezen die het beste voldoet aan hun behoeften. Azure Key Vault helpt klanten om de controle over de sleutels die door Cloud toepassingen en-services worden gebruikt, gemakkelijk te beheren om gegevens te versleutelen. Met Azure Disk Encryption kunnen klanten virtuele machines versleutelen. Azure Storage service versleuteling maakt het mogelijk om alle gegevens te versleutelen die in het opslag account van een klant worden geplaatst.
 
-**Gegevens bescherming in transit**: klanten kunnen versleuteling inschakelen voor verkeer tussen hun eigen vm's en eind gebruikers. Azure beveiligt gegevens in transit naar of van externe onderdelen en gegevens die intern worden overgedragen, zoals tussen twee virtuele netwerken. Azure maakt gebruik van het protocol voor de industrie norm Transport Layer Security (TLS) 1,2 of hoger met 2.048-bits RSA/SHA256-versleutelings sleutels, zoals aanbevolen door CESG/NCSC, om de communicatie te versleutelen tussen:
+**In-transit gegevens bescherming**: micro soft biedt een aantal opties die door klanten kunnen worden gebruikt voor het intern beveiligen van gegevens in het Azure-netwerk en extern via internet naar de eind gebruiker.  Hieronder vallen communicatie via virtuele particuliere netwerken (waarbij IPsec/IKE-versleuteling wordt gebruikt), Transport Layer Security (TLS) 1,2 of hoger (via Azure-onderdelen, zoals Application Gateway of Azure front deur), de protocollen rechtstreeks op de virtuele machines van Azure (zoals Windows IPsec of SMB), en meer. 
 
-- De klant en de Cloud.
-- Intern tussen Azure-systemen en-data centers.
-
-**Versleuteling**: versleuteling van gegevens in opslag en onderweg kan door klanten worden geïmplementeerd als best practice om de vertrouwelijkheid en integriteit van gegevens te garanderen. Het is eenvoudig voor klanten om hun Azure-Cloud Services te configureren om TLS te gebruiken voor het beveiligen van de communicatie van Internet en zelfs tussen hun door Azure gehoste Vm's.
+Daarnaast is "versleuteling standaard" met behulp van MACsec (een IEEE-standaard op de Data Link-laag) ingeschakeld voor alle Azure-verkeer tussen Azure-Data Centers om de vertrouwelijkheid en integriteit van klant gegevens te waarborgen. 
 
 **Gegevens redundantie**: micro soft helpt ervoor te zorgen dat gegevens beveiligd zijn als er sprake is van een cyberattack of fysieke schade aan een Data Center. Klanten kunnen kiezen voor:
 

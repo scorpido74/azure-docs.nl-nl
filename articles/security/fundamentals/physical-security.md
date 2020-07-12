@@ -15,11 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 04/28/2019
 ms.author: terrylan
-ms.openlocfilehash: 19fd257e76cdf811343f1c1c772fb3646933bb86
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: fd83cd164415f45929049541a8731f80a4ba146d
+ms.sourcegitcommit: 0b2367b4a9171cac4a706ae9f516e108e25db30c
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83774048"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86273503"
 ---
 # <a name="azure-facilities-premises-and-physical-security"></a>Azure-faciliteiten,-locaties en fysieke beveiliging
 In dit artikel wordt beschreven wat micro soft doet bij het beveiligen van de Azure-infra structuur.
@@ -29,7 +30,7 @@ Azure bestaat uit een [wereld wijd gedistribueerde Data Center-infra structuur](
 
 De infra structuur is ontworpen om toepassingen dichter bij gebruikers over de hele wereld te brengen, gegevens locatie te behouden en uitgebreide nalevings-en tolerantie opties voor klanten aan te bieden. Azure heeft 58 regio's over de hele wereld en is beschikbaar in 140 landen/regio's.
 
-Een regio is een set data centers die zijn verbonden via een enorm en flexibel netwerk. Het netwerk bevat standaard distributie, taak verdeling, redundantie en versleuteling. Met meer wereld wijde regio's dan elke andere Cloud provider biedt Azure u de flexibiliteit om toepassingen te implementeren waar u ze nodig hebt.
+Een regio is een set data centers die zijn verbonden via een enorm en flexibel netwerk. Het netwerk omvat inhouds distributie, taak verdeling, redundantie en [gegevenskoppeling slaag versleuteling standaard](encryption-overview.md#encryption-of-data-in-transit) voor alle Azure-verkeer binnen een regio of tussen regio's. Met meer wereld wijde regio's dan elke andere Cloud provider biedt Azure u de flexibiliteit om toepassingen te implementeren waar u ze nodig hebt.
 
 Azure-regio's zijn ingedeeld in geographs. Een Azure-geografie zorgt ervoor dat de vereisten voor gegevens locatie, soevereiniteit, naleving en tolerantie binnen geografische grenzen worden gerespecteerd.
 

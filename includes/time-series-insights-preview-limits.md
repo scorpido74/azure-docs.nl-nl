@@ -9,12 +9,12 @@ author: deepakpalled
 ms.author: dpalled
 manager: cshankar
 ms.custom: include file
-ms.openlocfilehash: 7bc6938523a6d66a2bc20b37c659568fc5ca494d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 1171c07a754b056fb9df2cee73ddf224427037cc
+ms.sourcegitcommit: f7e160c820c1e2eb57dc480b2a8fd6bef7053e91
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77123248"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86277813"
 ---
 ### <a name="general-availability-and-preview-comparison"></a>Algemene Beschik baarheid en preview-vergelijking
 
@@ -22,16 +22,16 @@ De volgende tabel bevat een overzicht van verschillende belang rijke verschillen
 
 | | Algemene beschikbaarheid | Preview |
 | --- | --- | ---|
-| Eersteklas burger | Gebeurtenis gerichte | Time-Series-gericht |
-| Semantische redenen | Laag-niveau (referentie gegevens) | High-Level (modellen) |
-| Gegevens contextualization | Niet-apparaatniveau | Apparaat en niet-apparaatniveau |
-| Berekenings logica opslag | No | Opgeslagen in type variabelen deel van model |
-| Opslag en toegangs beheer | No | Ingeschakeld via model |
-| Aggregaties/steek proeven | No | Gewogen gebeurtenis en tijd gewogen |
-| Signaal wederopbouw | No | Interpolatie |
-| Productie van afgeleide tijd reeks | No | Ja, samen voegingen en koppelingen |
-| Taal flexibiliteit | Niet-samenstelbaar | Samenstel bare |
-| Expressietaal | Predicaat teken reeks | Time Series-expressies (predicaat teken reeksen, waarden, expressies en functies) |
+| **Eersteklas burger** | Gebeurtenis gerichte | Time-Series-gericht |
+| **Semantische redenen** | Laag-niveau (referentie gegevens) | High-Level (modellen) |
+| **Gegevens contextualization** | Niet-apparaatniveau | Apparaat en niet-apparaatniveau |
+| **Berekenings logica opslag** | Nee | Opgeslagen in type variabelen deel van model |
+| **Opslag en toegangs beheer** | Nee | Ingeschakeld via model |
+| **Aggregaties/steek proeven** | Nee | Gewogen gebeurtenis en tijd gewogen |
+| **Signaal wederopbouw** | Nee | Interpolatie |
+| **Productie van afgeleide tijd reeks** | Nee | Ja, samen voegingen en koppelingen |
+| **Taal flexibiliteit** | Niet-samenstelbaar | Samenstel bare |
+| **Expressie taal** | Predicaat teken reeks | Time Series-expressies (predicaat teken reeksen, waarden, expressies en functies) |
 
 ### <a name="property-limits"></a>Eigenschaps limieten
 

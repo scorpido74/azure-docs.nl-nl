@@ -5,13 +5,13 @@ author: rachel-msft
 ms.author: raagyema
 ms.service: postgresql
 ms.topic: conceptual
-ms.date: 06/24/2020
-ms.openlocfilehash: 0d678d900ec31b00d27eba19617d533c5010c1dc
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 07/10/2020
+ms.openlocfilehash: f2f752d6435b311c1737d531f5572aed5af223f2
+ms.sourcegitcommit: 0b2367b4a9171cac4a706ae9f516e108e25db30c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85367989"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86276648"
 ---
 # <a name="read-replicas-in-azure-database-for-postgresql---single-server"></a>Replica's lezen in Azure Database for PostgreSQL-één server
 
@@ -142,7 +142,7 @@ Zodra u hebt vastgesteld dat u een failover naar een replica wilt uitvoeren,
 Zodra uw toepassing Lees-en schrijf bewerkingen heeft verwerkt, hebt u de failover voltooid. De uitval tijd van uw toepassings ervaring is afhankelijk van wanneer u een probleem detecteert en de stappen 1 en 2 hierboven uitvoert.
 
 
-## <a name="considerations"></a>Overwegingen
+## <a name="considerations"></a>Aandachtspunten
 
 In deze sectie vindt u een overzicht van de overwegingen voor de functie replica lezen.
 
@@ -161,12 +161,14 @@ De server moet opnieuw worden opgestart na het wijzigen van deze para meter. Int
 Er wordt een lees replica gemaakt als een nieuwe Azure Database for PostgreSQL-server. Een bestaande server kan niet worden gemaakt in een replica. Het is niet mogelijk om een replica van een andere Lees replica te maken.
 
 ### <a name="replica-configuration"></a>Replica configuratie
-Een replica wordt gemaakt met behulp van dezelfde berekenings-en opslag instellingen als de hoofd server. Nadat een replica is gemaakt, kunnen verschillende instellingen onafhankelijk van de hoofd server worden gewijzigd: generatie van compute, vCores, opslag en back-up van Bewaar periode. De prijs categorie kan ook onafhankelijk worden gewijzigd, met uitzonde ring van of van de Basic-laag.
+Een replica wordt gemaakt met behulp van dezelfde berekenings-en opslag instellingen als de hoofd server. Nadat een replica is gemaakt, kunnen verschillende instellingen worden gewijzigd, waaronder opslag en back-up van de Bewaar periode.
+
+de vCores en de prijs categorie kunnen ook worden gewijzigd op de replica onder de volgende voor waarden:
+* PostgreSQL vereist dat de waarde van de `max_connections` para meter op de Lees replica groter dan of gelijk aan de Master waarde is. anders wordt de replica niet gestart. In Azure Database for PostgreSQL is de `max_connections` waarde van de para meter gebaseerd op de SKU (vCores en prijs categorie). Zie [limieten in azure database for PostgreSQL](concepts-limits.md)voor meer informatie. 
+* Schalen naar of van de basis prijs categorie wordt niet ondersteund
 
 > [!IMPORTANT]
 > Voordat een Master-instelling wordt bijgewerkt naar een nieuwe waarde, moet u de replica configuratie bijwerken naar een gelijke of hogere waarde. Met deze actie wordt ervoor gezorgd dat in de replica alle wijzigingen worden doorgevoerd die in de hoofdserver zijn aangebracht.
-
-PostgreSQL vereist dat de waarde van de `max_connections` para meter op de Lees replica groter dan of gelijk aan de Master waarde is. anders wordt de replica niet gestart. In Azure Database for PostgreSQL is de `max_connections` waarde van de para meter gebaseerd op de SKU. Zie [limieten in azure database for PostgreSQL](concepts-limits.md)voor meer informatie. 
 
 Als u de hierboven beschreven server waarden wilt bijwerken, maar niet aan de limieten wilt voldoen, treedt er een fout op.
 

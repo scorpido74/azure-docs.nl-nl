@@ -1,14 +1,14 @@
 ---
 title: Serviceproviders weergeven en beheren
 description: Klanten kunnen de pagina service providers in het Azure Portal gebruiken om informatie over service providers, aanbiedingen van providers en gedelegeerde resources weer te geven.
-ms.date: 07/07/2020
+ms.date: 07/10/2020
 ms.topic: how-to
-ms.openlocfilehash: 56ba5b8c88cd4653c9d41f7f3fcc6219cc376256
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: bc0de0d3fd7ac4fe7c00720aab41961d9100ff5a
+ms.sourcegitcommit: 0b2367b4a9171cac4a706ae9f516e108e25db30c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86111623"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86273775"
 ---
 # <a name="view-and-manage-service-providers"></a>Serviceproviders weergeven en beheren
 
@@ -19,7 +19,7 @@ Om toegang te krijgen tot de pagina **service providers** in de Azure Portal, ka
 > [!NOTE]
 > Als u de pagina **service providers** wilt weer geven, moet een gebruiker in de Tenant van de klant beschikken over de [ingebouwde rol](../../role-based-access-control/built-in-roles.md#reader) van de lezer (of een andere ingebouwde rol die lees toegang heeft).
 >
-> Om aanbiedingen toe te voegen, resources te delegeren en aanbiedingen te verwijderen, moet de gebruiker beschikken over de [ingebouwde rol](../../role-based-access-control/built-in-roles.md#owner) van de eigenaar voor het abonnement.
+> Om aanbiedingen toe te voegen of bij te werken, resources te delegeren en aanbiedingen te verwijderen, moet de gebruiker beschikken over de [ingebouwde rol](../../role-based-access-control/built-in-roles.md#owner) van de eigenaar van het abonnement.
 
 Houd er wel op dat op de pagina **service providers** alleen informatie wordt weer gegeven over de service providers die toegang hebben tot de abonnementen of resource groepen van de klant via Azure Lighthouse. Als een klant gebruikmaakt van aanvullende service providers die geen Azure Lighthouse gebruiken om toegang te krijgen tot de resources van de klant, wordt hier geen informatie over die service providers weer gegeven.
 

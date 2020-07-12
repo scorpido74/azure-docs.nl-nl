@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 05/04/2020
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: b8d30e7fe3138a26d9b64ec35d18260933df7999
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: efb32631c5ee1eedece6d2a06b94702b602ed418
+ms.sourcegitcommit: 0b2367b4a9171cac4a706ae9f516e108e25db30c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82780301"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86276108"
 ---
 ### <a name="which-regions-are-available"></a><a name="regions"></a>Welke regio's zijn er beschikbaar?
 
@@ -48,6 +48,10 @@ Op dit moment wordt alleen tekst kopiëren/plakken ondersteund. Functies zoals h
 ### <a name="which-browsers-are-supported"></a><a name="browsers"></a>Welke browsers worden ondersteund?
 
 Gebruik de micro soft Edge-browser of Google Chrome in Windows. Voor Apple Mac gebruikt u Google Chrome-browser. Chroom van micro soft Edge wordt ook ondersteund in respectievelijk Windows en Mac.
+
+### <a name="where-does-azure-bastion-store-customer-data"></a><a name="data"></a>Waar worden klant gegevens opgeslagen in azure Bastion?
+
+Azure Bastion verplaatst of opslaat geen klant gegevens uit de regio waarin deze is geïmplementeerd.
 
 ### <a name="are-any-roles-required-to-access-a-virtual-machine"></a><a name="roles"></a>Zijn er rollen vereist voor toegang tot een virtuele machine?
 

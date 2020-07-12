@@ -5,18 +5,20 @@ author: dianaputnam
 ms.author: dianas
 ms.service: postgresql
 ms.topic: how-to
-ms.date: 5/6/2019
-ms.openlocfilehash: 9b0e263d3b8bce9e04548f5e8433ff90d2bda274
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.date: 07/09/2020
+ms.openlocfilehash: a94afc1ab970c2cd3f509c86efba4e455d46fd13
+ms.sourcegitcommit: 0b2367b4a9171cac4a706ae9f516e108e25db30c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86116349"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86274506"
 ---
 # <a name="optimize-autovacuum-on-an-azure-database-for-postgresql---single-server"></a>Autoonderdruk op een Azure Database for PostgreSQL-één server optimaliseren
+
 In dit artikel wordt beschreven hoe u autovacuüm op een Azure Database for PostgreSQL Server effectief optimaliseert.
 
 ## <a name="overview-of-autovacuum"></a>Overzicht van autovacuüm
+
 PostgreSQL maakt gebruik van gelijktijdigheids beheer met meerdere versies (MVCC) om een grotere database gelijktijdigheid toe te staan. Elke update resulteert in een invoegen en verwijderen en elke verwijderings bewerking resulteert in rijen die zacht worden gemarkeerd voor verwijdering. Zacht markeren identificeert Dead-Tuples die later worden verwijderd. PostgreSQL voert een vacuüm taak uit om deze taken uit te voeren.
 
 Een vacuüm taak kan hand matig of automatisch worden geactiveerd. Er zijn meer dode Tuples wanneer de data base zware werk-of verwijderings bewerkingen ondervindt. Er zijn minder Dead-Tuples wanneer de data base niet actief is. U moet regel matig een vacuüm van de belasting van de data base maken, waardoor vacuüm taken *hand matig* onhandig worden uitgevoerd.
@@ -36,6 +38,7 @@ Als u niet van tijd tot tijd vacuüm, kunnen de niet-actieve Tuples die worden s
 - Meer I/O-bewerkingen.
 
 ## <a name="monitor-bloat-with-autovacuum-queries"></a>Meer bewaken met autovacuüm query's
+
 De volgende voorbeeld query is ontworpen om het aantal dode en actieve Tuples in een tabel met de naam XYZ te identificeren:
 
 ```sql
@@ -43,7 +46,9 @@ SELECT relname, n_dead_tup, n_live_tup, (n_dead_tup/ n_live_tup) AS DeadTuplesRa
 ```
 
 ## <a name="autovacuum-configurations"></a>Autovacuüm-configuraties
+
 De configuratie parameters die de autoonderdruk bepalen, zijn gebaseerd op de antwoorden op twee belang rijke vragen:
+
 - Wanneer moet het worden gestart?
 - Hoeveel moet er worden opgeschoond nadat het is gestart?
 
@@ -55,10 +60,10 @@ autovacuum_vacuum_threshold|Hiermee geeft u het minimale aantal bijgewerkte of v
 autovacuum_vacuum_scale_factor|Hiermee geeft u een fractie van de tabel grootte op die moet worden toegevoegd aan autovacuum_vacuum_threshold bij het bepalen of een vacuüm bewerking moet worden geactiveerd. De standaard waarde is 0,2. Dit is 20 procent van de tabel grootte. Stel deze para meter alleen in het bestand postgresql. conf of op de server opdracht regel in. Als u de instelling voor afzonderlijke tabellen wilt onderdrukken, wijzigt u de para meters voor de tabel opslag.|0,2
 autovacuum_vacuum_cost_limit|Hiermee geeft u de kosten limiet waarde op die in automatische vacuüm bewerkingen wordt gebruikt. Als-1 is opgegeven, dat wil zeggen de standaard waarde, wordt de regel reguliere vacuum_cost_limit gebruikt. Als er meer dan één werk nemer is, wordt de waarde proportioneel verdeeld over de actieve autoonderdruk-werk rollen. De som van de limieten voor elke werk nemer overschrijdt niet de waarde van deze variabele. Stel deze para meter alleen in het bestand postgresql. conf of op de server opdracht regel in. Als u de instelling voor afzonderlijke tabellen wilt onderdrukken, wijzigt u de para meters voor de tabel opslag.|-1
 autovacuum_vacuum_cost_delay|Hiermee geeft u de waarde voor de kosten vertraging op die in automatische vacuüm bewerkingen wordt gebruikt. Als-1 is opgegeven, wordt de reguliere vacuum_cost_delay-waarde gebruikt. De standaard waarde is 20 milliseconden. Stel deze para meter alleen in het bestand postgresql. conf of op de server opdracht regel in. Als u de instelling voor afzonderlijke tabellen wilt onderdrukken, wijzigt u de para meters voor de tabel opslag.|20 MS
-autovacuum_nap_time|Hiermee geeft u de minimale vertraging tussen autovacuüm-uitvoeringen op een bepaalde data base. Bij elke afronding onderzoekt de daemon de data base en worden vacuüm-en analyse opdrachten voor tabellen in die data base onderzocht. De vertraging wordt gemeten in seconden en de standaard waarde is één minuut (1 min.). Stel deze para meter alleen in het bestand postgresql. conf of op de server opdracht regel in.|15 s
-autovacuum_max_workers|Hiermee geeft u het maximum aantal autovacuüm-processen op, behalve het autovacuüm-start programma, dat op elk gewenst moment kan worden uitgevoerd. De standaard waarde is drie. Stel deze para meter alleen in op het starten van de server.|3
+autovacuum_naptime | Hiermee geeft u de minimale vertraging tussen autovacuüm-uitvoeringen op een bepaalde data base. Bij elke afronding onderzoekt de daemon de data base en worden vacuüm-en analyse opdrachten voor tabellen in die data base onderzocht. De vertraging wordt gemeten in seconden. Stel deze para meter alleen in het bestand postgresql. conf of op de server opdracht regel in.| 15 s
+autovacuum_max_workers | Hiermee geeft u het maximum aantal autovacuüm-processen op, behalve het autovacuüm-start programma, dat op elk gewenst moment kan worden uitgevoerd. De standaard waarde is drie. Stel deze para meter alleen in op het starten van de server.|3
 
-Als u de instellingen voor afzonderlijke tabellen wilt overschrijven, wijzigt u de para meters voor de tabel opslag. 
+Als u de instellingen voor afzonderlijke tabellen wilt overschrijven, wijzigt u de para meters voor de tabel opslag.
 
 ## <a name="autovacuum-cost"></a>Autovacuüm kosten
 
@@ -82,12 +87,14 @@ De standaard schaal factor van 20 procent werkt goed voor tabellen met een laag 
 Met PostgreSQL kunt u deze para meters instellen op tabel niveau of op instantie niveau. U kunt deze para meters nu alleen op tabel niveau instellen in Azure Database for PostgreSQL.
 
 ## <a name="estimate-the-cost-of-autovacuum"></a>De kosten van de autovacuüm schatten
+
 Het uitvoeren van autovacuüm is ' kostbaar ' en er zijn para meters voor het beheren van de runtime van vacuüm bewerkingen. De volgende para meters helpen u bij het schatten van de kosten van het uitvoeren van vacuüm:
+
 - vacuum_cost_page_hit = 1
 - vacuum_cost_page_miss = 10
 - vacuum_cost_page_dirty = 20
 
-Met het vacuüm proces worden fysieke pagina's en controles voor onbestelbare Tuples gelezen. Voor elke pagina in shared_buffers wordt aangenomen dat de kosten 1 (vacuum_cost_page_hit) zijn. Voor alle andere pagina's geldt een prijs van 20 (vacuum_cost_page_dirty), als er sprake is van Dead-Tuples of 10 (vacuum_cost_page_miss) als er geen Dead-Tuples bestaan. De vacuüm bewerking stopt wanneer het proces de autovacuum_vacuum_cost_limit overschrijdt. 
+Met het vacuüm proces worden fysieke pagina's en controles voor onbestelbare Tuples gelezen. Voor elke pagina in shared_buffers wordt aangenomen dat de kosten 1 (vacuum_cost_page_hit) zijn. Voor alle andere pagina's geldt een prijs van 20 (vacuum_cost_page_dirty), als er sprake is van Dead-Tuples of 10 (vacuum_cost_page_miss) als er geen Dead-Tuples bestaan. De vacuüm bewerking stopt wanneer het proces de autovacuum_vacuum_cost_limit overschrijdt.
 
 Nadat de limiet is bereikt, wordt het proces in slaap stand gezet voor de duur die is opgegeven door de para meter autovacuum_vacuum_cost_delay voordat deze opnieuw wordt gestart. Als de limiet niet is bereikt, begint autovacuüm na de waarde die is opgegeven door de para meter autovacuum_nap_time.
 

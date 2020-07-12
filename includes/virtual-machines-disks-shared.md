@@ -5,19 +5,19 @@ services: virtual-machines
 author: roygara
 ms.service: virtual-machines
 ms.topic: include
-ms.date: 04/08/2020
+ms.date: 07/10/2020
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: 6e7294f10ba094a1adaae399187fb9973397a561
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 2589c2abf13edc19b930d597a4d75a2be823f45d
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83868027"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86277767"
 ---
 Gedeelde Azure-schijven (preview) is een nieuwe functie voor Azure Managed disks waarmee u tegelijkertijd een beheerde schijf kunt koppelen aan meerdere virtuele machines (Vm's). Als u een beheerde schijf aan meerdere Vm's koppelt, kunt u nieuwe, geclusterde toepassingen implementeren of migreren naar Azure.
 
-## <a name="how-it-works"></a>Uitleg
+## <a name="how-it-works"></a>Hoe werkt het?
 
 Vm's in het cluster kunnen lezen van of schrijven naar uw gekoppelde schijf op basis van de reserve ring die door de geclusterde toepassing is gekozen met behulp van [SCSI-permanente reserve ringen](https://www.t10.org/members/w_spc3.htm) (SCSI-PR). SCSI-PR is een industrie standaard die wordt gebruikt door toepassingen die on-premises worden uitgevoerd op Storage Area Network (SAN). Door SCSI-PR op een beheerde schijf in te scha kelen, kunt u deze toepassingen naar Azure migreren.
 
@@ -41,7 +41,7 @@ De meeste op Windows gebaseerde clusters op WSFC, die alle basisinfrastructuur v
 
 Enkele populaire toepassingen die worden uitgevoerd op WSFC zijn:
 
-- Instanties van een SQL Server-failovercluster (FCI)
+- [Een FCI maken met gedeelde Azure-schijven (SQL Server op virtuele machines van Azure)](../articles/azure-sql/virtual-machines/windows/failover-cluster-instance-azure-shared-disks-manually-configure.md)
 - Uitschaalbare bestandsserver (SoFS)
 - Bestandsserver voor algemeen gebruik (IW-workload)
 - Gebruikersprofielschijf van externe bureaubladserver (RDS UPD)
@@ -87,7 +87,12 @@ Ultra disks bieden een extra beperking voor een totaal van twee gashendel. Als g
 
 :::image type="content" source="media/virtual-machines-disks-shared-disks/ultra-reservation-table.png" alt-text="Een afbeelding van een tabel met de ReadOnly-of lees/schrijf-toegang voor reserverings houder, geregistreerd en anderen.":::
 
-## <a name="ultra-disk-performance-throttles"></a>Hoge prestaties voor de schijf
+## <a name="performance-throttles"></a>Prestatie bandbreedten
+
+### <a name="premium-ssd-performance-throttles"></a>Prestatie bandbreedten Premium SSD
+Met Premium SSD is de schijf-IOPS en de door Voer vast, bijv. IOPS van een P30 is 5000. Deze waarde blijft ongewijzigd of de schijf wordt gedeeld over twee Vm's of 5 Vm's. De schijf limieten kunnen worden bereikt vanaf één virtuele machine of worden verdeeld over twee of meer virtuele machines. 
+
+### <a name="ultra-disk-performance-throttles"></a>Hoge prestaties voor de schijf
 
 Ultra schijven hebben de unieke mogelijkheid om uw prestaties in te stellen door aanpas bare kenmerken weer te geven en u toe te passen. Standaard zijn er slechts twee kenmerken die kunnen worden gewijzigd, maar gedeelde Ultra schijven hebben twee extra kenmerken.
 
@@ -111,23 +116,23 @@ In de volgende formules wordt uitgelegd hoe de prestatie kenmerken kunnen worden
     - De doorvoer limiet van één schijf is 256 KiB/s voor elke ingerichte IOPS, tot een maximum van 2000 MBps per schijf
     - De minimale gegarandeerde door Voer per schijf is 4KiB/s voor elke ingerichte IOPS, met een totale basis lijn van Mini maal 1 MBps
 
-### <a name="examples"></a>Voorbeelden
+#### <a name="examples"></a>Voorbeelden
 
 In de volgende voor beelden ziet u een aantal scenario's waarin u kunt zien hoe de beperking kan werken met gedeelde Ultra schijven, met name.
 
-#### <a name="two-nodes-cluster-using-cluster-shared-volumes"></a>Cluster met twee knoop punten met behulp van gedeelde cluster volumes
+##### <a name="two-nodes-cluster-using-cluster-shared-volumes"></a>Cluster met twee knoop punten met behulp van gedeelde cluster volumes
 
 Hier volgt een voor beeld van een WSFC-netwerk met twee knoop punten met geclusterde gedeelde volumes. Met deze configuratie hebben beide Vm's gelijktijdig schrijf toegang tot de schijf, wat resulteert in de ReadWrite-beperking voor de twee virtuele machines en de alleen-lezen-beperking die niet wordt gebruikt.
 
 :::image type="content" source="media/virtual-machines-disks-shared-disks/ultra-two-node-example.png" alt-text="CSV twee-knoop punt-zeer voor beeld":::
 
-#### <a name="two-node-cluster-without-cluster-share-volumes"></a>Cluster met twee knoop punten zonder cluster share volumes
+##### <a name="two-node-cluster-without-cluster-share-volumes"></a>Cluster met twee knoop punten zonder cluster share volumes
 
 Hier volgt een voor beeld van een WSFC met twee knoop punten die geen geclusterde gedeelde volumes gebruikt. Met deze configuratie heeft slechts één virtuele machine schrijf toegang tot de schijf. Dit resulteert in de versnellings beperking die uitsluitend voor de primaire virtuele machine wordt gebruikt en de alleen-lezen-vertraging die wordt gebruikt door de secundaire.
 
 :::image type="content" source="media/virtual-machines-disks-shared-disks/ultra-two-node-no-csv.png" alt-text="CSV-twee knoop punten geen CSV Ultra disk-voor beeld":::
 
-#### <a name="four-node-linux-cluster"></a>Linux-cluster met vier knoop punten
+##### <a name="four-node-linux-cluster"></a>Linux-cluster met vier knoop punten
 
 Hier volgt een voor beeld van een Linux-cluster met vier knoop punten met één schrijver en drie scale-out lezers. Met deze configuratie heeft slechts één virtuele machine schrijf toegang tot de schijf. Dit resulteert in de versnellings beperking die uitsluitend voor de primaire virtuele machine wordt gebruikt en de ReadOnly-beperking wordt gesplitst door de secundaire Vm's.
 

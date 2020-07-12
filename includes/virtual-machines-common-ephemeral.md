@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 07/08/2019
 ms.author: cynthn
 ms.custom: include file
-ms.openlocfilehash: d8d712e4eecb930b52a519a1aaddf97c744a24ab
-ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.openlocfilehash: 6a400ae798245cc4912724c16840421d5282b3a0
+ms.sourcegitcommit: 0b2367b4a9171cac4a706ae9f516e108e25db30c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86218292"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86277749"
 ---
 Tijdelijke besturingssysteem schijven worden gemaakt op de lokale virtuele machine (VM) en worden niet opgeslagen op de externe Azure Storage. Tijdelijke besturingssysteem schijven werken goed voor stateless workloads, waarbij toepassingen tolerant zijn voor afzonderlijke VM-fouten, maar die meer worden beïnvloed door de implementatie tijd van de VM of het opnieuw maken van de afzonderlijke VM-exemplaren. Met een kortstondige besturingssysteem schijf krijgt u een lagere latentie voor lezen/schrijven naar de besturingssysteem schijf en een snellere installatie kopie van de virtuele machine. 
  
@@ -33,7 +33,7 @@ Belangrijkste verschillen tussen permanente en tijdelijke besturingssysteem schi
 |                             | Permanente besturingssysteem schijf                          | Kortstondige besturingssysteemschijf                              |
 |-----------------------------|---------------------------------------------|------------------------------------------------|
 | **Maximale grootte voor de besturingssysteem schijf**      | 2 TiB                                                                                        | De cache grootte voor de VM-grootte of 2TiB, afhankelijk van wat kleiner is. Zie [DS](../articles/virtual-machines/linux/sizes-general.md), [es](../articles/virtual-machines/linux/sizes-memory.md), [M](../articles/virtual-machines/linux/sizes-memory.md), [FS](../articles/virtual-machines/linux/sizes-compute.md)en [GS](/azure/virtual-machines/linux/sizes-previous-gen#gs-series) voor de **cache grootte in GiB**              |
-| **VM-grootten worden ondersteund**          | Alles                                                                                          | DSv1, DSv2, DSv3, Esv3, FS, FsV2, GS, M                                               |
+| **VM-grootten worden ondersteund**          | Alles                                                                                          | VM-grootten die ondersteuning bieden voor Premium-opslag, zoals DSv1, DSv2, DSv3, Esv3, FS, FsV2, GS, LSv2, M                                               |
 | **Ondersteuning voor schijf type**           | Beheerde en onbeheerde besturingssysteem schijf                                                                | Alleen beheerde besturingssysteem schijf                                                               |
 | **Ondersteuning voor regio**              | Alle regio's                                                                                  | Alle regio's                              |
 | **Gegevens persistentie**            | De schijf gegevens van het besturings systeem die naar de besturingssysteem schijf zijn geschreven, worden opgeslagen in Azure Storage                                  | Gegevens die naar de besturingssysteem schijf zijn geschreven, worden opgeslagen in de lokale VM-opslag en worden niet bewaard om Azure Storage. |

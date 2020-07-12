@@ -15,11 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/20/2018
 ms.author: mbaldwin
-ms.openlocfilehash: c45839d622f4bad5097006a364a36db05ce5dacc
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 005932f4a4be9e4a7bae85a6b380c934de5e9874
+ms.sourcegitcommit: 0b2367b4a9171cac4a706ae9f516e108e25db30c
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84012973"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86276529"
 ---
 # <a name="azure-encryption-overview"></a>Overzicht van Azure-versleuteling
 
@@ -116,9 +117,13 @@ Er worden drie soorten sleutels gebruikt bij het versleutelen en ontsleutelen va
 
 Azure biedt veel mechanismen voor het privé houden van gegevens wanneer deze van de ene locatie naar de andere worden verplaatst.
 
-### <a name="tlsssl-encryption-in-azure"></a>TLS/SSL-versleuteling in azure
+### <a name="data-link-layer-encryption-in-azure"></a>Data Link-laag versleuteling in azure
 
-Micro soft maakt gebruik van het [Transport Layer Security](https://en.wikipedia.org/wiki/Transport_Layer_Security) (TLS)-protocol voor het beveiligen van gegevens wanneer het onderweg is tussen de Cloud Services en klanten. Micro soft-data centers onderhandelen over een TLS-verbinding met client systemen die verbinding maken met Azure-Services. TLS biedt sterke verificatie, privacy van berichten en integriteit (inschakelen van detectie van bericht manipulatie, onderscheping en vervalsing), interoperabiliteit, algoritme flexibiliteit en gemakkelijke implementatie en gebruik.
+Wanneer het verkeer van Azure-klanten tussen data centers wordt verplaatst: buiten de fysieke grenzen die niet worden beheerd door micro soft (of namens micro soft)--een gegevenskoppeling slaag versleutelings methode met behulp van de [IEEE 802.1 AE Mac Security Standards](https://1.ieee802.org/security/802-1ae/) (ook wel bekend als MACsec) wordt toegepast vanaf Point-to-Point over de onderliggende netwerkhardware.  De pakketten worden versleuteld en ontsleuteld op de apparaten voordat ze worden verzonden, waardoor fysieke ' man-in-the-middle ' of bewaak-en wiretapping-aanvallen worden voor komen.  Omdat deze technologie is geïntegreerd op de netwerkhardware zelf, biedt deze een regel frequentie versleuteling op de netwerkhardware zonder meet bare koppelings latentie verhoging.  Deze MACsec-versleuteling is standaard ingeschakeld voor alle Azure-verkeer binnen een regio of tussen regio's, en er is geen actie vereist voor het onderdeel van de klanten om in te scha kelen. 
+
+### <a name="tls-encryption-in-azure"></a>TLS-versleuteling in azure
+
+Micro soft biedt klanten de mogelijkheid om [Transport Layer Security](https://en.wikipedia.org/wiki/Transport_Layer_Security) -Protocol (TLS) te gebruiken voor het beveiligen van gegevens wanneer er wordt gereisd tussen de Cloud Services en klanten. Micro soft-data centers onderhandelen over een TLS-verbinding met client systemen die verbinding maken met Azure-Services. TLS biedt sterke verificatie, privacy van berichten en integriteit (inschakelen van detectie van bericht manipulatie, onderscheping en vervalsing), interoperabiliteit, algoritme flexibiliteit en gemakkelijke implementatie en gebruik.
 
 [Perfect Forward Secrecy](https://en.wikipedia.org/wiki/Forward_secrecy) (PFS) beschermt verbindingen tussen client systemen van klanten en micro soft-Cloud Services door unieke sleutels. Verbindingen maken ook gebruik van op RSA gebaseerde 2.048-bits versleutelings sleutel lengtes. Deze combi natie maakt het moeilijk voor iemand om gegevens te onderscheppen en te benaderen die onderweg zijn.
 
@@ -140,7 +145,7 @@ Wanneer SMB-versleuteling standaard is ingeschakeld voor een share of server, he
 
 ## <a name="in-transit-encryption-in-vms"></a>In-transit versleuteling in Vm's
 
-Gegevens in transit naar, van en tussen virtuele machines waarop Windows wordt uitgevoerd, worden op een aantal manieren versleuteld, afhankelijk van de aard van de verbinding.
+Gegevens in transit naar, van en tussen virtuele machines met Windows kunnen op verschillende manieren worden versleuteld, afhankelijk van de aard van de verbinding.
 
 ### <a name="rdp-sessions"></a>RDP-sessies
 
@@ -156,7 +161,7 @@ Voor extern beheer kunt u [Secure Shell](../../virtual-machines/linux/ssh-from-w
 
 U kunt verbinding maken met Azure via een virtueel particulier netwerk dat een beveiligde tunnel maakt om de privacy te beschermen van de gegevens die via het netwerk worden verzonden.
 
-### <a name="azure-vpn-gateways"></a>Azure VPN Gateways
+### <a name="azure-vpn-gateways"></a>Azure VPN-gateways
 
 U kunt een [Azure VPN-gateway](../../vpn-gateway/vpn-gateway-about-vpn-gateway-settings.md) gebruiken om versleuteld verkeer tussen uw virtuele netwerk en uw on-premises locatie via een open bare verbinding te verzenden, of om verkeer tussen virtuele netwerken te verzenden.
 

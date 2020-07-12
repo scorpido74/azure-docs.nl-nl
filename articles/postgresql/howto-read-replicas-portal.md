@@ -5,13 +5,13 @@ author: rachel-msft
 ms.author: raagyema
 ms.service: postgresql
 ms.topic: how-to
-ms.date: 06/09/2020
-ms.openlocfilehash: 8e148a3dac8435a08c0f1735cd35d06c700e1e84
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.date: 07/10/2020
+ms.openlocfilehash: 8ca4d3d2d52e79dbcaaa15eba5794a4d2d28366a
+ms.sourcegitcommit: 0b2367b4a9171cac4a706ae9f516e108e25db30c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86106625"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86274540"
 ---
 # <a name="create-and-manage-read-replicas-in-azure-database-for-postgresql---single-server-from-the-azure-portal"></a>Lees replica's maken en beheren in Azure Database for PostgreSQL-één server van de Azure Portal
 
@@ -71,22 +71,22 @@ Voer de volgende stappen uit om een lees replica te maken:
 
 5. Selecteer een locatie voor de replica. De standaard locatie is dezelfde als die van de hoofd server.
 
-    ![Selecteer een locatie](./media/howto-read-replicas-portal/location-replica.png)
+    ![Een locatie selecteren](./media/howto-read-replicas-portal/location-replica.png)
 
    > [!NOTE]
    > Ga naar het [artikel concepten van replica's lezen](concepts-read-replicas.md)voor meer informatie over de regio's die u kunt maken in de replica. 
 
 6. Selecteer **OK** om te bevestigen dat de replica is gemaakt.
 
-Een replica wordt gemaakt met behulp van dezelfde berekenings-en opslag instellingen als de hoofd server. Nadat een replica is gemaakt, kunnen verschillende instellingen onafhankelijk van de hoofd server worden gewijzigd: generatie van compute, vCores, opslag en back-up van Bewaar periode. De prijs categorie kan ook onafhankelijk worden gewijzigd, met uitzonde ring van of van de Basic-laag.
-
-> [!IMPORTANT]
-> Werk de replica-instelling bij naar een gelijke of grotere waarde voordat een master server-instelling wordt bijgewerkt naar een nieuwe waarde. Met deze actie wordt de replica zo aangepast dat er wijzigingen in de master worden aangebracht.
-
 Nadat de Lees replica is gemaakt, kan deze worden weer gegeven in het venster **replicatie** :
 
 ![De nieuwe replica weer geven in het venster replicatie](./media/howto-read-replicas-portal/list-replica.png)
  
+
+> [!IMPORTANT]
+> Raadpleeg de [sectie overwegingen in het overzicht van het lezen van replica's](concepts-read-replicas.md#considerations).
+>
+> Werk de replica-instelling bij naar een gelijke of grotere waarde voordat een master server-instelling wordt bijgewerkt naar een nieuwe waarde. Met deze actie wordt de replica zo aangepast dat er wijzigingen in de master worden aangebracht.
 
 ## <a name="stop-replication"></a>Replicatie stoppen
 U kunt de replicatie tussen een hoofd server en een lees replica stoppen.

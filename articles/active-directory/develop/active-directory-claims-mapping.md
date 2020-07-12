@@ -13,12 +13,12 @@ ms.topic: how-to
 ms.date: 10/22/2019
 ms.author: ryanwi
 ms.reviewer: paulgarn, hirsin, jeedes, luleon
-ms.openlocfilehash: d9c46368b42cac1d06f7d78d5e0d03ad2de0bada
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: d240ed426bb270ac4cf09f3806bd36a6a52d3633
+ms.sourcegitcommit: 0b2367b4a9171cac4a706ae9f516e108e25db30c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85478396"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86275390"
 ---
 # <a name="how-to-customize-claims-emitted-in-tokens-for-a-specific-app-in-a-tenant-preview"></a>Procedure: claims aanpassen die worden verzonden in tokens voor een specifieke app in een Tenant (preview-versie)
 
@@ -44,7 +44,7 @@ Een claim toewijzings beleid is een type **beleids** object dat de claims wijzig
 
 Er zijn bepaalde sets claims die bepalen hoe en wanneer ze worden gebruikt in tokens.
 
-| Claimset | Description |
+| Claimset | Beschrijving |
 |---|---|
 | Kern claim ingesteld | Zijn aanwezig in elke token, ongeacht het beleid. Deze claims worden ook beschouwd als beperkt en kunnen niet worden gewijzigd. |
 | Basis claim instellen | Bevat de claims die standaard worden verzonden voor tokens (naast de kern claim set). U kunt basis claims weglaten of wijzigen met behulp van het beleid voor claim toewijzing. |
@@ -158,7 +158,7 @@ Er zijn bepaalde sets claims die bepalen hoe en wanneer ze worden gebruikt in to
 | request_nonce |
 | resource |
 | role |
-| rolls |
+| rollen |
 | scope |
 | verbindings |
 | geval |
@@ -284,7 +284,7 @@ Het ID-element identificeert welke eigenschap van de bron de waarde voor de clai
 
 #### <a name="table-3-valid-id-values-per-source"></a>Tabel 3: geldige ID-waarden per bron
 
-| Bron | Id | Description |
+| Bron | Id | Beschrijving |
 |-----|-----|-----|
 | Gebruiker | surname | Familie naam |
 | Gebruiker | givenname | Voornaam |
@@ -321,9 +321,9 @@ Het ID-element identificeert welke eigenschap van de bron de waarde voor de clai
 | Gebruiker | othermail | Andere E-mail |
 | Gebruiker | country | Land/regio |
 | Gebruiker | city | Plaats |
-| Gebruiker | state | Status |
+| Gebruiker | state | Staat |
 | Gebruiker | JobTitle | Functie |
-| Gebruiker | employeeid | Werknemer-id |
+| Gebruiker | employeeid | Werknemers-id |
 | Gebruiker | facsimiletelephonenumber | Telefoon nummer Fax |
 | Gebruiker | assignedroles | lijst met app-rollen die aan de gebruiker zijn toegewezen|
 | toepassing, resource, doel groep | displayname | Weergavenaam |
@@ -359,10 +359,10 @@ Op basis van de gekozen methode wordt een set invoer en uitvoer verwacht. Defini
 
 #### <a name="table-4-transformation-methods-and-expected-inputs-and-outputs"></a>Tabel 4: transformatie methoden en verwachte invoer en uitvoer
 
-|TransformationMethod|Verwachte invoer|Verwachte uitvoer|Description|
+|TransformationMethod|Verwachte invoer|Verwachte uitvoer|Beschrijving|
 |-----|-----|-----|-----|
 |Koppelen|tekenreeks1, tekenreeks2, scheidings teken|Output claim|Voegt invoer teken reeksen samen met behulp van een scheidings teken tussen. Bijvoorbeeld: tekenreeks1: " foo@bar.com ", tekenreeks2: "sandbox", scheidings teken: "." resulteert in output claim: " foo@bar.com.sandbox "|
-|ExtractMailPrefix|mail|Output claim|Extraheert het lokale deel van een e-mail adres. Bijvoorbeeld: mail: " foo@bar.com " resulteert in output claim: "foo". Als er geen \@ teken aanwezig is, wordt de oorspronkelijke invoer teken reeks geretourneerd als is.|
+|ExtractMailPrefix|e-mail of UPN|UPN|ExtensionAttributes 1-15 of andere schema-uitbrei dingen die een UPN-of e-mailadres waarde voor de gebruiker opslaan, bijvoorbeeld johndoe@contoso.com . Extraheert het lokale deel van een e-mail adres. Bijvoorbeeld: mail: " foo@bar.com " resulteert in output claim: "foo". Als er geen \@ teken aanwezig is, wordt de oorspronkelijke invoer teken reeks geretourneerd als is.|
 
 **InputClaims:** Gebruik een InputClaims-element om de gegevens van een claim schema vermelding door te geven aan een trans formatie. Het heeft twee kenmerken: **ClaimTypeReferenceId** en **TransformationClaimType**.
 
@@ -385,12 +385,12 @@ Op basis van de gekozen methode wordt een set invoer en uitvoer verwacht. Defini
 
 #### <a name="table-5-attributes-allowed-as-a-data-source-for-saml-nameid"></a>Tabel 5: kenmerken die zijn toegestaan als gegevens bron voor SAML NameID
 
-|Bron|Id|Description|
+|Bron|Id|Beschrijving|
 |-----|-----|-----|
 | Gebruiker | mail|E-mailadres|
 | Gebruiker | userPrincipalName|User Principal Name|
 | Gebruiker | onpremisessamaccountname|Naam van on-premises SAM-account|
-| Gebruiker | employeeid|Werknemer-id|
+| Gebruiker | employeeid|Werknemers-id|
 | Gebruiker | extensionattribute1 | Uitbreidings kenmerk 1 |
 | Gebruiker | extensionattribute2 | Uitbreidings kenmerk 2 |
 | Gebruiker | extensionattribute3 | Uitbreidings kenmerk 3 |
@@ -525,6 +525,6 @@ In dit voor beeld maakt u een beleid dat een aangepaste claim ' JoinedData ' uit
       Add-AzureADServicePrincipalPolicy -Id <ObjectId of the ServicePrincipal> -RefObjectId <ObjectId of the Policy>
       ```
 
-## <a name="see-also"></a>Zie tevens
+## <a name="see-also"></a>Zie ook
 
 Zie [How to: claims aanpassen die zijn uitgegeven in het SAML-token voor zakelijke toepassingen voor](active-directory-saml-claims-customization.md) meer informatie over het aanpassen van claims die zijn uitgegeven in het SAML-token via de Azure Portal.
