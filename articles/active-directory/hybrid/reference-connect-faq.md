@@ -15,11 +15,12 @@ ms.date: 08/23/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7ad8990512cb09f6048b169c1d0c0a259a62b61b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 4956014e3a950a729ef3993e10ca455ab8aae6f4
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83827145"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86256676"
 ---
 # <a name="azure-active-directory-connect-faq"></a>Veelgestelde vragen over Azure Active Directory Connect
 
@@ -256,6 +257,16 @@ In zeldzame gevallen wordt de Azure AD Connect-service niet gestart nadat u de u
 
 **V: Ik weet niet wat de Risico's zijn wanneer ik een upgrade naar een nieuwere versie van Azure AD Connect. Kunt u mij bellen om me te helpen met de upgrade?**  
 Als u hulp nodig hebt bij het upgraden naar een nieuwere versie van Azure AD Connect, opent u een ondersteunings ticket bij [een service aanvraag maken om contact op te nemen met de ondersteuning van Office 365](https://blogs.technet.microsoft.com/praveenkumar/2013/07/17/how-to-create-service-requests-to-contact-office-365-support/).
+
+## <a name="operational-best-practice"></a>Operationele best practice    
+Hieronder vindt u enkele aanbevolen procedures voor het synchroniseren van de Windows Server-Active Directory en Azure Active Directory.
+
+**Multi-factor Authentication Toep assen voor alle gesynchroniseerde accounts** Azure Multi-Factor Authentication helpt bij het beschermen van de toegang tot gegevens en toepassingen, terwijl u eenvoudiger bent voor gebruikers. Het biedt extra beveiliging door een tweede vorm van verificatie te vereisen en sterke verificatie te bieden met behulp van een bereik aan gebruiks vriendelijke verificatie methoden. Gebruikers kunnen of kunnen niet worden aangevraagd voor MFA op basis van configuratie beslissingen die een beheerder doet. U kunt hier meer lezen over MFA:https://www.microsoft.com/security/business/identity/mfa?rtc=1
+
+**Volg de Azure AD Connect server-beveiligings richtlijnen** De Azure AD Connect-server bevat essentiële identiteits gegevens en moet worden behandeld als een onderdeel van laag 0 zoals beschreven in het model van de [Active Directory-administratieve laag](https://docs.microsoft.com/windows-server/identity/securing-privileged-access/securing-privileged-access-reference-material). Raadpleeg ook onze [richt lijnen voor het beveiligen van uw AADConnect-server](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-install-prerequisites#azure-ad-connect-server).
+
+**PHS inschakelen voor de detectie van gelekte referenties** Met wachtwoord hash-synchronisatie wordt ook [gelekte referentie detectie](https://docs.microsoft.com/azure/active-directory/identity-protection/concept-identity-protection-risks) voor uw hybride accounts ingeschakeld. Micro soft werkt samen met Darken voor webonderzoekers en politie instanties om openbaar beschik bare gebruikers naam-en wachtwoord paren te vinden. Als een van deze paren overeenkomt met die van uw gebruikers, wordt het gekoppelde account verplaatst naar een hoog risico. 
+
 
 ## <a name="troubleshooting"></a>Problemen oplossen
 **V: hoe kan ik hulp krijgen bij Azure AD Connect?**

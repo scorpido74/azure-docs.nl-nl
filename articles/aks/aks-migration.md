@@ -5,12 +5,12 @@ services: container-service
 ms.topic: article
 ms.date: 02/25/2020
 ms.custom: mvc
-ms.openlocfilehash: 9a5e2c1e36a742115ed2f5c690c81a186a86dee7
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: c864a9cc5dd5658bcb3205ce2cbe4f6142cf45a1
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82129102"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86255486"
 ---
 # <a name="migrate-to-azure-kubernetes-service-aks"></a>Migreren naar Azure Kubernetes service (AKS)
 
@@ -18,13 +18,13 @@ Dit artikel helpt u bij het plannen en uitvoeren van een geslaagde migratie naar
 
 Dit document kan worden gebruikt om de volgende scenario's te ondersteunen:
 
-* Een AKS-cluster dat wordt ondersteund door [beschikbaarheids sets](https://docs.microsoft.com/azure/virtual-machines/windows/tutorial-availability-sets) , migreren naar [Virtual Machine Scale sets](https://docs.microsoft.com/azure/virtual-machine-scale-sets/overview)
-* Een AKS-cluster migreren voor gebruik van een [standaard-SKU Load Balancer](https://docs.microsoft.com/azure/aks/load-balancer-standard)
+* Een AKS-cluster dat wordt ondersteund door [beschikbaarheids sets](../virtual-machines/windows/tutorial-availability-sets.md) , migreren naar [Virtual Machine Scale sets](../virtual-machine-scale-sets/overview.md)
+* Een AKS-cluster migreren voor gebruik van een [standaard-SKU Load Balancer](./load-balancer-standard.md)
 * Migreren van [Azure container service (ACS): 31 januari 2020 wordt buiten gebruik gesteld](https://azure.microsoft.com/updates/azure-container-service-will-retire-on-january-31-2020/) op AKS
-* Migreren van de [AKS-engine](https://docs.microsoft.com/azure-stack/user/azure-stack-kubernetes-aks-engine-overview?view=azs-1908) naar AKS
+* Migreren van de [AKS-engine](/azure-stack/user/azure-stack-kubernetes-aks-engine-overview?view=azs-1908) naar AKS
 * Migreren van niet-Azure gebaseerde Kubernetes-clusters naar AKS
 
-Zorg ervoor dat uw doel-Kubernetes-versie binnen het ondersteunde venster voor AKS ligt tijdens de migratie. Als u een oudere versie gebruikt, kan deze zich niet binnen het ondersteunde bereik bevinden en moeten upgrades van versies worden ondersteund door AKS. Zie [AKS ondersteunde Kubernetes-versies](https://docs.microsoft.com/azure/aks/supported-kubernetes-versions) voor meer informatie.
+Zorg ervoor dat uw doel-Kubernetes-versie binnen het ondersteunde venster voor AKS ligt tijdens de migratie. Als u een oudere versie gebruikt, kan deze zich niet binnen het ondersteunde bereik bevinden en moeten upgrades van versies worden ondersteund door AKS. Zie [AKS ondersteunde Kubernetes-versies](./supported-kubernetes-versions.md) voor meer informatie.
 
 Als u migreert naar een nieuwere versie van Kubernetes, raadpleegt u het [ondersteunings beleid voor Kubernetes versie en versie scheefheid](https://kubernetes.io/docs/setup/release/version-skew-policy/#supported-versions).
 
@@ -47,11 +47,11 @@ In dit artikel wordt een overzicht gegeven van de migratie gegevens voor:
 
 ## <a name="aks-with-standard-load-balancer-and-virtual-machine-scale-sets"></a>AKS met Standard Load Balancer en Virtual Machine Scale Sets
 
-AKS is een beheerde service die unieke mogelijkheden biedt met lagere beheer overhead. Als gevolg van een beheerde service, moet u selecteren uit een set [regio's](https://docs.microsoft.com/azure/aks/quotas-skus-regions) die door aks worden ondersteund. Voor de overgang van uw bestaande cluster naar AKS moet u mogelijk uw bestaande toepassingen aanpassen zodat ze in orde blijven op het door AKS beheerde besturings vlak.
+AKS is een beheerde service die unieke mogelijkheden biedt met lagere beheer overhead. Als gevolg van een beheerde service, moet u selecteren uit een set [regio's](./quotas-skus-regions.md) die door aks worden ondersteund. Voor de overgang van uw bestaande cluster naar AKS moet u mogelijk uw bestaande toepassingen aanpassen zodat ze in orde blijven op het door AKS beheerde besturings vlak.
 
-We raden u aan om AKS-clusters die worden ondersteund door [Virtual Machine Scale sets](https://docs.microsoft.com/azure/virtual-machine-scale-sets) en de [Azure-Standard Load Balancer](https://docs.microsoft.com/azure/aks/load-balancer-standard) te gebruiken om ervoor te zorgen dat u beschikt over functies zoals [meerdere knooppunt groepen](https://docs.microsoft.com/azure/aks/use-multiple-node-pools), [Beschikbaarheidszones](https://docs.microsoft.com/azure/availability-zones/az-overview), [geautoriseerde IP-bereiken](https://docs.microsoft.com/azure/aks/api-server-authorized-ip-ranges), [cluster automatisch schalen](https://docs.microsoft.com/azure/aks/cluster-autoscaler), [Azure Policy voor AKS](https://docs.microsoft.com/azure/governance/policy/concepts/rego-for-aks)en andere nieuwe functies wanneer deze worden uitgebracht.
+We raden u aan om AKS-clusters die worden ondersteund door [Virtual Machine Scale sets](../virtual-machine-scale-sets/index.yml) en de [Azure-Standard Load Balancer](./load-balancer-standard.md) te gebruiken om ervoor te zorgen dat u beschikt over functies zoals [meerdere knooppunt groepen](./use-multiple-node-pools.md), [Beschikbaarheidszones](../availability-zones/az-overview.md), [geautoriseerde IP-bereiken](./api-server-authorized-ip-ranges.md), [cluster automatisch schalen](./cluster-autoscaler.md), [Azure Policy voor AKS](../governance/policy/concepts/policy-for-kubernetes.md)en andere nieuwe functies wanneer deze worden uitgebracht.
 
-AKS-clusters die worden ondersteund door [beschikbaarheids sets voor virtuele machines](https://docs.microsoft.com/azure/virtual-machine-scale-sets/availability#availability-sets) , bieden geen ondersteuning voor veel van deze functies.
+AKS-clusters die worden ondersteund door [beschikbaarheids sets voor virtuele machines](../virtual-machine-scale-sets/availability.md#availability-sets) , bieden geen ondersteuning voor veel van deze functies.
 
 In het volgende voor beeld wordt een AKS-cluster gemaakt met één knooppunt groep die wordt ondersteund door een virtuele-machine schaalset. Er wordt gebruikgemaakt van een standaard load balancer. Ook wordt de cluster-automatische schaal functie voor de knooppunt groep voor het cluster ingeschakeld en worden mini maal *1* en Maxi maal *drie* knoop punten ingesteld:
 
@@ -84,25 +84,25 @@ Bij het migreren van clusters hebt u mogelijk externe Azure-Services gekoppeld. 
 
 ## <a name="ensure-valid-quotas"></a>Zorg voor geldige quota's
 
-Omdat er tijdens de migratie extra virtuele machines in uw abonnement worden geïmplementeerd, moet u controleren of uw quota en limieten voldoende zijn voor deze resources. Mogelijk moet u een toename van het [vCPU-quotum](https://docs.microsoft.com/azure/azure-portal/supportability/per-vm-quota-requests)aanvragen.
+Omdat er tijdens de migratie extra virtuele machines in uw abonnement worden geïmplementeerd, moet u controleren of uw quota en limieten voldoende zijn voor deze resources. Mogelijk moet u een toename van het [vCPU-quotum](../azure-portal/supportability/per-vm-quota-requests.md)aanvragen.
 
-Mogelijk moet u een verhoging van de [netwerk quota](https://docs.microsoft.com/azure/azure-portal/supportability/networking-quota-requests) aanvragen om ervoor te zorgen dat de IP-adressen niet worden uitgeput. Zie [netwerk-en IP-bereiken voor AKS](https://docs.microsoft.com/azure/aks/configure-kubenet) voor meer informatie.
+Mogelijk moet u een verhoging van de [netwerk quota](../azure-portal/supportability/networking-quota-requests.md) aanvragen om ervoor te zorgen dat de IP-adressen niet worden uitgeput. Zie [netwerk-en IP-bereiken voor AKS](./configure-kubenet.md) voor meer informatie.
 
-Zie [Azure-abonnement en service limieten](https://docs.microsoft.com/azure/azure-resource-manager/management/azure-subscription-service-limits)voor meer informatie. Als u de huidige quota's wilt controleren, gaat u in het Azure Portal naar de [Blade abonnementen](https://portal.azure.com/#blade/Microsoft_Azure_Billing/SubscriptionsBlade), selecteert u uw abonnement en selecteert u vervolgens **gebruik en quota's**.
+Zie [Azure-abonnement en service limieten](../azure-resource-manager/management/azure-subscription-service-limits.md)voor meer informatie. Als u de huidige quota's wilt controleren, gaat u in het Azure Portal naar de [Blade abonnementen](https://portal.azure.com/#blade/Microsoft_Azure_Billing/SubscriptionsBlade), selecteert u uw abonnement en selecteert u vervolgens **gebruik en quota's**.
 
 ## <a name="high-availability-and-business-continuity"></a>Hoge Beschik baarheid en bedrijfs continuïteit
 
-Als uw toepassing downtime niet kan verwerken, moet u aanbevolen procedures volgen voor migratie scenario's met hoge Beschik baarheid.  Best practices voor het plannen van complexe bedrijfs continuïteit, herstel na nood gevallen en maximale uptime van het bedrijf vallen buiten het bereik van dit document.  Lees meer over de [Aanbevolen procedures voor bedrijfs continuïteit en herstel na nood gevallen in azure Kubernetes service (AKS)](https://docs.microsoft.com/azure/aks/operator-best-practices-multi-region) voor meer informatie.
+Als uw toepassing downtime niet kan verwerken, moet u aanbevolen procedures volgen voor migratie scenario's met hoge Beschik baarheid.  Best practices voor het plannen van complexe bedrijfs continuïteit, herstel na nood gevallen en maximale uptime van het bedrijf vallen buiten het bereik van dit document.  Lees meer over de [Aanbevolen procedures voor bedrijfs continuïteit en herstel na nood gevallen in azure Kubernetes service (AKS)](./operator-best-practices-multi-region.md) voor meer informatie.
 
 Voor complexe toepassingen migreert u doorgaans over tijd in plaats van allemaal tegelijk. Dit betekent dat de oude en nieuwe omgevingen mogelijk moeten communiceren via het netwerk. Toepassingen waarvoor eerder `ClusterIP` Services zijn gebruikt om te communiceren, moeten mogelijk worden weer gegeven als type `LoadBalancer` en moeten op de juiste manier worden beveiligd.
 
 Als u de migratie wilt volt ooien, moet u clients verwijzen naar de nieuwe services die worden uitgevoerd op AKS. We raden aan dat u verkeer omleidt door DNS te laten verwijzen naar de Load Balancer die zich vóór uw AKS-cluster bevindt.
 
-Met [Azure Traffic Manager](https://docs.microsoft.com/azure/traffic-manager/) kunnen klanten worden doorgestuurd naar het gewenste Kubernetes-cluster en toepassings exemplaar.  Traffic Manager is een op DNS gebaseerd verkeer load balancer dat netwerk verkeer kan distribueren tussen regio's.  Voor de beste prestaties en redundantie moet u alle toepassings verkeer via Traffic Manager door sturen voordat het naar uw AKS-cluster gaat.  In een implementatie met verschillende clusters moeten klanten verbinding maken met een Traffic Manager DNS-naam die verwijst naar de services op elk AKS-cluster. Definieer deze services met behulp van Traffic Manager-eind punten. Elk eind punt is de *service load BALANCER IP*. Gebruik deze configuratie om netwerk verkeer van het Traffic Manager-eind punt in de ene regio naar het eind punt in een andere regio te sturen.
+Met [Azure Traffic Manager](../traffic-manager/index.yml) kunnen klanten worden doorgestuurd naar het gewenste Kubernetes-cluster en toepassings exemplaar.  Traffic Manager is een op DNS gebaseerd verkeer load balancer dat netwerk verkeer kan distribueren tussen regio's.  Voor de beste prestaties en redundantie moet u alle toepassings verkeer via Traffic Manager door sturen voordat het naar uw AKS-cluster gaat.  In een implementatie met verschillende clusters moeten klanten verbinding maken met een Traffic Manager DNS-naam die verwijst naar de services op elk AKS-cluster. Definieer deze services met behulp van Traffic Manager-eind punten. Elk eind punt is de *service load BALANCER IP*. Gebruik deze configuratie om netwerk verkeer van het Traffic Manager-eind punt in de ene regio naar het eind punt in een andere regio te sturen.
 
 ![AKS met Traffic Manager](media/operator-best-practices-bc-dr/aks-azure-traffic-manager.png)
 
-De [Azure front-deur service](https://docs.microsoft.com/azure/frontdoor/front-door-overview) is een andere optie voor het routeren van verkeer voor AKS-clusters.  Met de Azure Front Door Service kunt u de internationale routering van uw webverkeer definiëren, beheren en bewaken door te optimaliseren voor de beste prestaties en directe wereldwijde failover voor hoge beschikbaarheid. 
+De [Azure front-deur service](../frontdoor/front-door-overview.md) is een andere optie voor het routeren van verkeer voor AKS-clusters.  Met de Azure Front Door Service kunt u de internationale routering van uw webverkeer definiëren, beheren en bewaken door te optimaliseren voor de beste prestaties en directe wereldwijde failover voor hoge beschikbaarheid. 
 
 ### <a name="considerations-for-stateless-applications"></a>Overwegingen voor stateless toepassingen
 
@@ -113,10 +113,10 @@ Stateless toepassings migratie is de meest eenvoudige situatie. Pas uw resource 
 Plan uw migratie van stateful toepassingen om verlies van gegevens of onverwachte downtime te voor komen.
 
 Als u Azure Files gebruikt, kunt u de bestands share als een volume koppelen aan het nieuwe cluster:
-* [Statische Azure Files koppelen als een volume](https://docs.microsoft.com/azure/aks/azure-files-volume#mount-the-file-share-as-a-volume)
+* [Statische Azure Files koppelen als een volume](./azure-files-volume.md#mount-the-file-share-as-a-volume)
 
 Als u Azure Managed Disks gebruikt, kunt u de schijf alleen koppelen als deze is gekoppeld aan een virtuele machine:
-* [Statische Azure-schijf koppelen als een volume](https://docs.microsoft.com/azure/aks/azure-disk-volume#mount-disk-as-volume)
+* [Statische Azure-schijf koppelen als een volume](./azure-disk-volume.md#mount-disk-as-volume)
 
 Als geen van beide benaderingen werken, kunt u een back-up-en herstel opties gebruiken:
 * [Velero op Azure](https://github.com/vmware-tanzu/velero-plugin-for-microsoft-azure/blob/master/README.md)
@@ -131,7 +131,7 @@ Als uw toepassing meerdere replica's kan hosten die naar dezelfde bestands share
 * Wijs uw live verkeer naar uw nieuwe AKS-cluster.
 * Verbreek de verbinding met het oude cluster.
 
-Als u met een lege share wilt beginnen en een kopie van de bron gegevens wilt maken, kunt u de [`az storage file copy`](https://docs.microsoft.com/cli/azure/storage/file/copy?view=azure-cli-latest) opdrachten gebruiken om uw gegevens te migreren.
+Als u met een lege share wilt beginnen en een kopie van de bron gegevens wilt maken, kunt u de [`az storage file copy`](/cli/azure/storage/file/copy?view=azure-cli-latest) opdrachten gebruiken om uw gegevens te migreren.
 
 
 #### <a name="migrating-persistent-volumes"></a>Permanente volumes migreren
@@ -142,7 +142,7 @@ Als u bestaande permanente volumes migreert naar AKS, voert u de volgende stappe
 * Maak moment opnamen van de schijven.
 * Nieuwe beheerde schijven maken op basis van de moment opnamen.
 * Maak permanente volumes in AKS.
-* Update pod-specificaties om [bestaande volumes te gebruiken](https://docs.microsoft.com/azure/aks/azure-disk-volume) in plaats van PersistentVolumeClaims (static Provisioning).
+* Update pod-specificaties om [bestaande volumes te gebruiken](./azure-disk-volume.md) in plaats van PersistentVolumeClaims (static Provisioning).
 * Implementeer uw toepassing in AKS.
 * Controleer of de toepassing correct werkt.
 * Wijs uw live verkeer naar uw nieuwe AKS-cluster.
@@ -158,7 +158,7 @@ Sommige open source-hulpprogram ma's kunnen u helpen bij het maken van beheerde 
 
 ### <a name="deployment-of-your-cluster-configuration"></a>Implementatie van uw cluster configuratie
 
-We raden u aan om uw bestaande, doorlopende integratie (CI) en continue Delivery (CD)-pijp lijn te gebruiken voor het implementeren van een bekende, goede configuratie op AKS. U kunt Azure-pijp lijnen gebruiken om [uw toepassingen te bouwen en te implementeren in AKS](https://docs.microsoft.com/azure/devops/pipelines/ecosystems/kubernetes/aks-template?view=azure-devops). Kloon uw bestaande implementatie taken en zorg ervoor dat `kubeconfig` u naar het nieuwe AKS-cluster verwijst.
+We raden u aan om uw bestaande, doorlopende integratie (CI) en continue Delivery (CD)-pijp lijn te gebruiken voor het implementeren van een bekende, goede configuratie op AKS. U kunt Azure-pijp lijnen gebruiken om [uw toepassingen te bouwen en te implementeren in AKS](/azure/devops/pipelines/ecosystems/kubernetes/aks-template?view=azure-devops). Kloon uw bestaande implementatie taken en zorg ervoor dat `kubeconfig` u naar het nieuwe AKS-cluster verwijst.
 
 Als dat niet mogelijk is, kunt u resource definities uit uw bestaande Kubernetes-cluster exporteren en vervolgens Toep assen op AKS. U kunt gebruiken `kubectl` om objecten te exporteren.
 
@@ -184,4 +184,4 @@ In dit artikel wordt een overzicht gegeven van de migratie Details voor:
 
 
 [region-availability]: https://azure.microsoft.com/global-infrastructure/services/?products=kubernetes-service
-[azure-dev-spaces]: https://docs.microsoft.com/azure/dev-spaces/
+[azure-dev-spaces]: ../dev-spaces/index.yml

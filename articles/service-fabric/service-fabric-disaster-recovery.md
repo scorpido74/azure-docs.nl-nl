@@ -5,11 +5,12 @@ author: masnider
 ms.topic: conceptual
 ms.date: 08/18/2017
 ms.author: masnider
-ms.openlocfilehash: b29985d40ae3a1bf582099e998e000fed83460f6
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 9c258d8d0a7aa26c96ab4f64017770ebdd153e60
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "79371644"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86257511"
 ---
 # <a name="disaster-recovery-in-azure-service-fabric"></a>Herstel na nood geval in azure Service Fabric
 Een essentieel onderdeel van het leveren van hoge Beschik baarheid zorgt ervoor dat Services alle verschillende soorten fouten kunnen overlaten. Dit is vooral belang rijk voor storingen die ongepland zijn en buiten uw besturings element vallen. 
@@ -171,7 +172,7 @@ De volgende acties kunnen leiden tot gegevens verlies. Controleer voordat u deze
 >
 
 - Gebruik de `Repair-ServiceFabricPartition -PartitionId` `System.Fabric.FabricClient.ClusterManagementClient.RecoverPartitionAsync(Guid partitionId)` API of. Met deze API kunt u de ID van de partitie die uit het quorum verlies of het verlies van gegevens kan optreden, opgeven.
-- Als uw cluster veelvuldige storingen detecteert waardoor Services de status van een quorum verlies veroorzaken en mogelijk _gegevens verlies acceptabel is_, kunt u een geschikte [QuorumLossWaitDuration](https://docs.microsoft.com/powershell/module/servicefabric/update-servicefabricservice?view=azureservicefabricps) -waarde opgeven, zodat uw service automatisch kan worden hersteld. Service Fabric wordt gewacht op de gegeven `QuorumLossWaitDuration` waarde (de standaard instelling is oneindig) voordat het herstel wordt uitgevoerd. Deze methode wordt *niet* aanbevolen omdat dit kan leiden tot onverwachte gegevens verlies.
+- Als uw cluster veelvuldige storingen detecteert waardoor Services de status van een quorum verlies veroorzaken en mogelijk _gegevens verlies acceptabel is_, kunt u een geschikte [QuorumLossWaitDuration](/powershell/module/servicefabric/update-servicefabricservice?view=azureservicefabricps) -waarde opgeven, zodat uw service automatisch kan worden hersteld. Service Fabric wordt gewacht op de gegeven `QuorumLossWaitDuration` waarde (de standaard instelling is oneindig) voordat het herstel wordt uitgevoerd. Deze methode wordt *niet* aanbevolen omdat dit kan leiden tot onverwachte gegevens verlies.
 
 ## <a name="availability-of-the-service-fabric-cluster"></a>Beschik baarheid van het Service Fabric cluster
 Over het algemeen is het Service Fabric cluster een zeer gedistribueerde omgeving zonder storings punten. Als er een storing optreedt in een van de knoop punten, worden er geen Beschik baarheid of betrouwbaarheids problemen voor het cluster veroorzaakt, voornamelijk omdat de Service Fabric systeem services dezelfde richt lijnen volgen als hierboven. Dat wil zeggen dat ze altijd worden uitgevoerd met drie of meer replica's standaard, en systeem services die stateless worden uitgevoerd op alle knoop punten. 
@@ -207,17 +208,17 @@ In zowel zelfstandige Service Fabric clusters en Azure is het primaire knooppunt
 - Meer informatie over het simuleren van verschillende fouten met behulp van het [Test-Framework](service-fabric-testability-overview.md).
 - Lees andere bronnen voor herstel na nood gevallen en hoge Beschik baarheid. Micro soft heeft een groot aantal richt lijnen gepubliceerd op deze onderwerpen. Hoewel sommige van deze resources verwijzen naar specifieke technieken voor gebruik in andere producten, bevatten ze veel algemene aanbevolen procedures die u kunt Toep assen in de Service Fabric context:
   - [Controlelijst voor beschikbaarheid](/azure/architecture/checklist/resiliency-per-service)
-  - [Een nood herstel analyse uitvoeren](../sql-database/sql-database-disaster-recovery-drills.md)
+  - [Een nood herstel analyse uitvoeren](../azure-sql/database/disaster-recovery-drills.md)
   - [Herstel na noodgevallen en hoge beschikbaarheid voor Azure-toepassingen][dr-ha-guide]
 - Meer informatie over [service Fabric ondersteunings opties](service-fabric-support.md).
 
 
 <!-- External links -->
 
-[repair-partition-ps]: https://msdn.microsoft.com/library/mt163522.aspx
+[repair-partition-ps]: /windows/win32/perfctrs/specifying-a-counter-path
 [azure-status-dashboard]:https://azure.microsoft.com/status/
 [azure-regions]: https://azure.microsoft.com/regions/
-[dr-ha-guide]: https://msdn.microsoft.com/library/azure/dn251004.aspx
+[dr-ha-guide]: /previous-versions/azure/dn251004(v=azure.100)
 
 
 <!-- Images -->

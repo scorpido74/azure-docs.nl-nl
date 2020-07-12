@@ -1,27 +1,25 @@
 ---
-title: Azure AD-rollen beheren in Privileged Identity Management (PIM) | Microsoft Docs
+title: Functies van Azure AD Role in Privileged Identity Management | Microsoft Docs
 description: Azure AD-rollen beheren voor toewijzings Privileged Identity Management (PIM)
 services: active-directory
 documentationcenter: ''
 author: curtand
-manager: mtillman
+manager: daveba
 ms.assetid: ''
 ms.service: active-directory
 ms.subservice: pim
-ms.devlang: na
-ms.topic: how-to
-ms.tgt_pltfrm: na
+ms.topic: conceptual
 ms.workload: identity
-ms.date: 12/06/2019
+ms.date: 07/10/2020
 ms.author: curtand
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 501efaf2e9e97f37521daa770e6c760cc794fa36
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 54a286ed63d842dba08ad545b17498cb4000a5cf
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84742858"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86256625"
 ---
 # <a name="management-capabilities-for-azure-ad-roles-in-privileged-identity-management"></a>Beheer mogelijkheden voor Azure AD-rollen in Privileged Identity Management
 
@@ -29,10 +27,9 @@ De beheer ervaring voor Azure AD-rollen in Privileged Identity Management is bij
 
 Wanneer de update momenteel is geïmplementeerd, worden de twee in één beheer ervaring samengevoegd en krijgt u dezelfde functionaliteit voor Azure AD-rollen als voor Azure-resource rollen. In dit artikel wordt u geïnformeerd over de bijgewerkte functies en eventuele vereisten.
 
-
 ## <a name="time-bound-assignments"></a>Tijdgebonden toewijzingen
 
-Voorheen werd Privileged Identity Management voor Azure AD-rollen u vertrouwd met roltoewijzingen met twee mogelijke statussen: *in aanmerking komend* en *permanent*. U kunt nu een begin-en eind tijd instellen voor elk type toewijzing. Deze toevoeging geeft u vier mogelijke statussen waarin u een toewijzing kunt plaatsen:
+Voorheen zijn er twee mogelijke statussen voor roltoewijzingen: *in aanmerking komend* en *permanent*. U kunt nu ook een begin-en eind tijd instellen voor elk type toewijzing. Deze toevoeging biedt u vier mogelijke statussen waarin u een toewijzing kunt plaatsen:
 
 - Permanent geschikt
 - Permanent actief
@@ -43,14 +40,17 @@ In veel gevallen, zelfs als u niet wilt dat gebruikers een geschikte toewijzing 
 
 ## <a name="new-role-settings"></a>Instellingen voor nieuwe rol
 
-We voegen ook nieuwe instellingen voor Azure AD-rollen toe. Voorheen kon u activerings instellingen alleen per rol configureren. Dat wil zeggen dat activerings instellingen, zoals vereisten voor multi-factor Authentication en vereisten voor incidenten/aanvraag ticket, worden toegepast op alle gebruikers die in aanmerking komen voor een opgegeven rol. U kunt nu configureren of een afzonderlijke gebruiker multi-factor Authentication moet uitvoeren voordat ze een rol kunnen activeren. U kunt ook geavanceerde controle hebben over uw Privileged Identity Management-e-mails die betrekking hebben op specifieke rollen.
+We voegen ook nieuwe instellingen voor Azure AD-rollen toe.
+
+- **Voorheen**kon u activerings instellingen alleen per rol configureren. Dat wil zeggen dat activerings instellingen, zoals vereisten voor multi-factor Authentication en vereisten voor incidenten/aanvraag ticket, worden toegepast op alle gebruikers die in aanmerking komen voor een opgegeven rol.
+- U kunt **nu**configureren of een afzonderlijke gebruiker multi-factor Authentication moet uitvoeren voordat ze een rol kunnen activeren. U kunt ook geavanceerde controle hebben over uw Privileged Identity Management-e-mails die betrekking hebben op specifieke rollen.
 
 ## <a name="extend-and-renew-assignments"></a>Toewijzingen uitbreiden en vernieuwen
 
 Zodra u een tijd afhankelijke toewijzing hebt, kan de eerste vraag worden gevraagd wat er gebeurt als een rol is verlopen? In deze nieuwe versie bieden we twee opties voor dit scenario:
 
-- Uitbreiden: wanneer een roltoewijzing bijna is verlopen, kan de gebruiker Privileged Identity Management gebruiken om een uitbrei ding aan te vragen voor die roltoewijzing
-- Verlengen: wanneer een roltoewijzing is verlopen, kan de gebruiker Privileged Identity Management gebruiken om een verlenging aan te vragen voor die roltoewijzing
+- **Uitbreiden**: wanneer een roltoewijzing bijna is verlopen, kan de gebruiker privileged Identity Management gebruiken om een uitbrei ding aan te vragen voor die roltoewijzing
+- **Vernieuwen**: wanneer een roltoewijzing is verlopen, kan de gebruiker privileged Identity Management gebruiken om een verlenging aan te vragen voor die roltoewijzing
 
 Voor zowel door de gebruiker geïnitieerde acties is een goed keuring van een globale beheerder of een beheerder met een bevoegde rol vereist. Beheerders hoeven deze verloop tijd niet langer te beheersen. Ze hoeven alleen te wachten op de verlenging of de vernieuwings aanvragen en ze worden goedgekeurd als de aanvraag geldig is.
 

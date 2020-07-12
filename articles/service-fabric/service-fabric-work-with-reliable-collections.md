@@ -3,12 +3,12 @@ title: Werken met betrouwbare verzamelingen
 description: Meer informatie over de aanbevolen procedures voor het werken met betrouw bare verzamelingen binnen een Azure Service Fabric-toepassing.
 ms.topic: conceptual
 ms.date: 03/10/2020
-ms.openlocfilehash: f0f1d332b3636e28ffc50ee8b8edcd253474a307
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 7df48bc0dfbef6fc85335801e64484914a218eb7
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85374692"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86255792"
 ---
 # <a name="working-with-reliable-collections"></a>Werken met betrouwbare verzamelingen
 Service Fabric biedt een stateful programmeer model dat via betrouw bare verzamelingen beschikbaar is voor .NET-ontwikkel aars. Service Fabric biedt met name betrouw bare woorden lijst en betrouw bare wachtrij klassen. Wanneer u deze klassen gebruikt, wordt de status gepartitioneerd (voor schaal baarheid), gerepliceerd (voor Beschik baarheid) en trans actie binnen een partitie (voor ACID-semantiek). Laten we een typisch voor beeld van een betrouwbaar woordenlijst object bekijken en zien wat het daad werkelijk doet.
@@ -219,10 +219,10 @@ Daarnaast wordt de service code één upgrade domein tegelijk geüpgraded. Tijde
 U kunt ook uitvoeren wat meestal een twee upgrades wordt genoemd. Bij een upgrade met twee fasen voert u een upgrade uit van v1 naar v2: v2 bevat de code die weet hoe u kunt omgaan met de nieuwe schema wijziging, maar deze code wordt niet uitgevoerd. Wanneer de v2-code v1-gegevens leest, wordt deze op IT toegepast en worden er v1-gegevens wegge schreven. Nadat de upgrade voor alle upgrade domeinen is voltooid, kunt u een signaal verzenden naar de actieve v2-instanties die de upgrade is voltooid. (Een manier om dit aan te geven, is om een configuratie-upgrade uit te vouwen. Dit is een upgrade van twee fasen.) De v2-exemplaren kunnen nu v1-gegevens lezen, deze converteren naar v2-gegevens, hierop op de app worden uitgevoerd en deze als v2-gegevens schrijven. Wanneer andere instanties v2-gegevens lezen, hoeven ze niet te worden geconverteerd, ze worden gewoon op de app uitgevoerd en kunnen v2-gegevens worden geschreven.
 
 ## <a name="next-steps"></a>Volgende stappen
-Voor meer informatie over het maken van forward compatibele gegevens contracten raadpleegt u [Forward-compatibele gegevens contracten](https://msdn.microsoft.com/library/ms731083.aspx)
+Voor meer informatie over het maken van forward compatibele gegevens contracten raadpleegt u [Forward-compatibele gegevens contracten](/dotnet/framework/wcf/feature-details/forward-compatible-data-contracts)
 
-Zie [Data contract versie beheer](https://msdn.microsoft.com/library/ms731138.aspx) voor meer informatie over best practices voor het versie nummer van gegevens contracten
+Zie [Data contract versie beheer](/dotnet/framework/wcf/feature-details/data-contract-versioning) voor meer informatie over best practices voor het versie nummer van gegevens contracten
 
-Zie voor meer informatie over het implementeren van gegevens contracten van versie [tolerant serialisatie](https://msdn.microsoft.com/library/ms733734.aspx) .
+Zie voor meer informatie over het implementeren van gegevens contracten van versie [tolerant serialisatie](/dotnet/framework/wcf/feature-details/version-tolerant-serialization-callbacks) .
 
-Zie [IExtensibleDataObject](https://msdn.microsoft.com/library/system.runtime.serialization.iextensibledataobject.aspx) voor meer informatie over het bieden van een gegevens structuur die in meerdere versies kan worden gebruikt.
+Zie [IExtensibleDataObject](/dotnet/api/system.runtime.serialization.iextensibledataobject?view=netcore-3.1) voor meer informatie over het bieden van een gegevens structuur die in meerdere versies kan worden gebruikt.

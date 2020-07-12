@@ -5,11 +5,12 @@ author: cawaMS
 ms.topic: conceptual
 ms.date: 8/04/2017
 ms.author: cawa
-ms.openlocfilehash: 11f76153726d3fc92118fb46cc61b4627ab6a1b2
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: d4d6b781d97d481793e69cf2ca97cca5b93ce432
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "75464089"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86256090"
 ---
 # <a name="configure-secure-connections-to-a-service-fabric-cluster-from-visual-studio"></a>Beveiligde verbindingen met een Service Fabric-cluster configureren vanuit Visual Studio
 Meer informatie over hoe u Visual Studio kunt gebruiken om veilig toegang te krijgen tot een Azure Service Fabric-cluster met beleids regels voor toegangs beheer die zijn geconfigureerd.
@@ -34,9 +35,9 @@ In het dialoog venster **service Fabric toepassing publiceren** wordt de cluster
 3. Kies in het snelmenu van het project de opdracht **publiceren...** om het dialoog venster **publiceren Azure-toepassing** te openen en selecteer vervolgens het doel cluster. Het hulp programma lost de verbinding automatisch op en slaat de para meters voor de beveiligde verbinding op in het publicatie profiel.
 4. Optioneel: u kunt het publicatie profiel bewerken om een beveiligde cluster verbinding op te geven.
    
-   Omdat u het XML-bestand voor het publicatie profiel hand matig bewerkt om de certificaat gegevens op te geven, noteert u de naam van het certificaat archief, de opslag locatie en de vinger afdruk van het certificaat. U moet deze waarden opgeven voor de archief naam en opslag locatie van het certificaat. Zie [How to: de vinger afdruk van een certificaat ophalen](https://msdn.microsoft.com/library/ms734695\(v=vs.110\).aspx) voor meer informatie.
+   Omdat u het XML-bestand voor het publicatie profiel hand matig bewerkt om de certificaat gegevens op te geven, noteert u de naam van het certificaat archief, de opslag locatie en de vinger afdruk van het certificaat. U moet deze waarden opgeven voor de archief naam en opslag locatie van het certificaat. Zie [How to: de vinger afdruk van een certificaat ophalen](https://techcommunity.microsoft.com/t5/azure-service-fabric/bg-p/Service-Fabric) voor meer informatie.
    
-   U kunt de para meters *ClusterConnectionParameters* gebruiken om de Power shell-para meters op te geven die moeten worden gebruikt om verbinding te maken met het service Fabric cluster. Geldige para meters worden geaccepteerd door de cmdlet Connect-ServiceFabricCluster. Zie [Connect-ServiceFabricCluster](https://docs.microsoft.com/powershell/module/servicefabric/connect-servicefabriccluster) voor een lijst met beschik bare para meters.
+   U kunt de para meters *ClusterConnectionParameters* gebruiken om de Power shell-para meters op te geven die moeten worden gebruikt om verbinding te maken met het service Fabric cluster. Geldige para meters worden geaccepteerd door de cmdlet Connect-ServiceFabricCluster. Zie [Connect-ServiceFabricCluster](/powershell/module/servicefabric/connect-servicefabriccluster) voor een lijst met beschik bare para meters.
    
    Als u naar een extern cluster publiceert, moet u de juiste para meters voor dat specifieke cluster opgeven. Hier volgt een voor beeld van het maken van een verbinding met een niet-beveiligd cluster:
    

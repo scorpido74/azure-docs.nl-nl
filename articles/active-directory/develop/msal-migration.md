@@ -13,12 +13,12 @@ ms.date: 06/16/2020
 ms.author: jmprieur
 ms.reviewer: saeeda
 ms.custom: aaddev
-ms.openlocfilehash: 52a4a7131c85231107a2a23a1916016776b219fd
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: f84e479c4780437b09ab463781edbb52d8dfdfaa
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85367424"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86255622"
 ---
 # <a name="migrate-applications-to-microsoft-authentication-library-msal"></a>Toepassingen migreren naar micro soft Authentication Library (MSAL)
 
@@ -75,5 +75,5 @@ A: Zie de sectie [migratie richtlijnen](#migration-guidance) van dit artikel. Al
 ## <a name="next-steps"></a>Volgende stappen
 
 - [Werk uw toepassingen bij om micro soft-verificatie bibliotheek en Microsoft Graph-API te gebruiken](https://techcommunity.microsoft.com/t5/azure-active-directory-identity/update-your-applications-to-use-microsoft-authentication-library/ba-p/1257363)
-- [Meer informatie over micro soft Identity platform (MSAL)](https://docs.microsoft.com/azure/active-directory/develop/v2-overview)
-- [Bekijk onze MSAL-code voorbeelden](https://docs.microsoft.com/azure/active-directory/develop/sample-v2-code)
+- [Overzicht van het micro soft Identity-platform](v2-overview.md)
+- [Bekijk onze MSAL-code voorbeelden](sample-v2-code.md)

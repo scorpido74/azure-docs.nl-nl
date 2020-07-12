@@ -3,12 +3,12 @@ title: Meer informatie over de beveiliging van Azure Service Fabric-toepassingen
 description: Een overzicht van hoe u op een veilige manier micro Services-toepassingen kunt uitvoeren op Service Fabric. Meer informatie over het uitvoeren van services en opstart scripts onder verschillende beveiligings accounts, het verifiëren en autoriseren van gebruikers, het beheren van toepassings geheimen, het beveiligen van service communicatie, het gebruiken van een API-gateway en het beveiligen van toepassings gegevens in rust.
 ms.topic: conceptual
 ms.date: 03/16/2018
-ms.openlocfilehash: c97c5345a1a18cce8c44508542f12d3642d2b8f9
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: f17840f31d2a4c12a1d4618bd16e81dcc2cc8a14
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81461426"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86256574"
 ---
 # <a name="service-fabric-application-and-service-security"></a>Beveiliging van toepassingen en Services Service Fabric
 Een micro service architectuur kan [veel voor delen](service-fabric-overview-microservices.md)bieden. Het beheren van de beveiliging van micro Services is echter een uitdaging en wijkt af van het beheer van traditionele monolithische-toepassingen. 
@@ -35,7 +35,7 @@ Na verificatie moeten Services gebruikers toegang verlenen of bepalen wat een ge
 ## <a name="restrict-and-secure-access-using-an-api-gateway"></a>Toegang beperken en beveiligen met behulp van een API-gateway
 Cloudtoepassingen hebben meestal een gateway in de front-end nodig om een centraal ingangspunt te bieden voor gebruikers, apparaten of andere toepassingen. Een [API-gateway](/azure/architecture/microservices/gateway) bevindt zich tussen clients en services en is het toegangs punt voor alle services die uw toepassing levert. Het fungeert als een omgekeerde proxy, routerings aanvragen van clients naar Services. Het kan ook verschillende cross-snij taken uitvoeren, zoals verificatie en autorisatie, TLS-beëindiging en frequentie beperkingen. Als u geen gateway implementeert, moeten clients aanvragen rechtstreeks naar de front-end-services verzenden.
 
-In Service Fabric kan een gateway een stateless service zoals een [ASP.net core-toepassing](service-fabric-reliable-services-communication-aspnetcore.md)zijn, of een andere service die is ontworpen voor binnenkomend verkeer, zoals [Traefik](https://docs.traefik.io/), [Event hubs](https://docs.microsoft.com/azure/event-hubs/), [IOT hub](https://docs.microsoft.com/azure/iot-hub/)of [Azure-API Management](https://docs.microsoft.com/azure/api-management).
+In Service Fabric kan een gateway een stateless service zoals een [ASP.net core-toepassing](service-fabric-reliable-services-communication-aspnetcore.md)zijn, of een andere service die is ontworpen voor binnenkomend verkeer, zoals [Traefik](https://docs.traefik.io/), [Event hubs](../event-hubs/index.yml), [IOT hub](../iot-hub/index.yml)of [Azure-API Management](../api-management/index.yml).
 
 API Management kan rechtstreeks worden geïntegreerd met Service Fabric, zodat u Api's kunt publiceren met een uitgebreide set routerings regels voor uw back-end-Service Fabric Services.  U kunt de toegang tot back-end-services beveiligen, DOS-aanvallen voor komen door beperking te gebruiken of om API-sleutels, JWT-tokens, certificaten en andere referenties te controleren. Lees [service fabric met Azure API Management Overview](service-fabric-api-management-overview.md)voor meer informatie.
 
@@ -85,7 +85,7 @@ U kunt een beveiligde verbinding tot stand brengen tussen de omgekeerde proxy en
 Het Reliable Services-toepassings raamwerk bevat enkele vooraf ontwikkelde communicatie stacks en hulpprogram ma's die u kunt gebruiken om de beveiliging te verbeteren. Meer informatie over het verbeteren van de beveiliging bij het gebruik van service Remoting (in [C#](service-fabric-reliable-services-secure-communication.md) of [Java](service-fabric-reliable-services-secure-communication-java.md)) of het gebruik van [WCF](service-fabric-reliable-services-secure-communication-wcf.md).
 
 ## <a name="encrypt-application-data-at-rest"></a>Toepassings gegevens in rust versleutelen
-Elk [knooppunt type](service-fabric-cluster-nodetypes.md) in een service Fabric cluster dat in azure wordt uitgevoerd, wordt ondersteund door een [schaalset voor virtuele machines](../virtual-machine-scale-sets/virtual-machine-scale-sets-overview.md). U kunt met behulp van een Azure Resource Manager-sjabloon gegevensschijven koppelen aan de schaalsets die gezamenlijk het Service Fabric-cluster vormen.  Als uw Services gegevens opslaan op een gekoppelde gegevens schijf, kunt u [deze gegevens schijven versleutelen](../virtual-machine-scale-sets/virtual-machine-scale-sets-encrypt-disks-ps.md) om uw toepassings gegevens te beveiligen.
+Elk [knooppunt type](service-fabric-cluster-nodetypes.md) in een service Fabric cluster dat in azure wordt uitgevoerd, wordt ondersteund door een [schaalset voor virtuele machines](../virtual-machine-scale-sets/overview.md). U kunt met behulp van een Azure Resource Manager-sjabloon gegevensschijven koppelen aan de schaalsets die gezamenlijk het Service Fabric-cluster vormen.  Als uw Services gegevens opslaan op een gekoppelde gegevens schijf, kunt u [deze gegevens schijven versleutelen](../virtual-machine-scale-sets/disk-encryption-powershell.md) om uw toepassings gegevens te beveiligen.
 
 <!--TO DO: Enable BitLocker on Windows standalone clusters?
 TO DO: Encrypt disks on Linux clusters?-->

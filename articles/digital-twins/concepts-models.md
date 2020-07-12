@@ -7,11 +7,12 @@ ms.author: baanders
 ms.date: 3/12/2020
 ms.topic: conceptual
 ms.service: digital-twins
-ms.openlocfilehash: a1bb07ee900622b138a556a33469641e4e8310af
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: ab0b08c01478d1375ec2a234dc0277980312f17c
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85392298"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86258282"
 ---
 # <a name="understand-twin-models-in-azure-digital-twins"></a>Meer informatie over dubbele modellen in azure Digital Apparaatdubbels
 
@@ -196,9 +197,14 @@ De uitbreidende interface kan geen van de definities van de bovenliggende interf
 
 ## <a name="validating-models"></a>Modellen valideren
 
-Er is een voor beeld beschikbaar voor het valideren van model documenten om ervoor te zorgen dat de DTDL geldig is. Het is gebouwd op de DTDL parser-bibliotheek en is taal-neutraal. Vind het hier: [DTDL validator](https://docs.microsoft.com/samples/azure-samples/dtdl-validator/dtdl-validator)-voor beeld.
+> [!TIP]
+> Het is raadzaam om uw modellen offline te valideren voordat u ze uploadt naar uw Azure Digital Apparaatdubbels-exemplaar.
 
-Als u meer informatie wilt over de parser-bibliotheek, met inbegrip van een voor beeld van hoe u deze kunt gebruiken, raadpleegt u [procedures: modellen parseren en valideren](how-to-use-parser.md).
+Er is een taal-neutraal-voor beeld beschikbaar voor het valideren van model documenten om ervoor te zorgen dat de DTDL juist is. Deze bevindt zich hier: [**DTDL validator**](https://docs.microsoft.com/samples/azure-samples/dtdl-validator/dtdl-validator)-voor beeld.
+
+Het DTDL-voor beeld van de validatie functie is gebaseerd op een .NET DTDL-parser-bibliotheek, die beschikbaar is op NuGet als een bibliotheek aan de client zijde: [**micro soft. Azure. DigitalTwins. parser**](https://nuget.org/packages/Microsoft.Azure.DigitalTwins.Parser/). U kunt de bibliotheek ook rechtstreeks gebruiken om uw eigen validatie oplossing te ontwerpen. Wanneer u de parser-bibliotheek gebruikt, moet u ervoor zorgen dat u een versie gebruikt die compatibel is met de versie die door Azure Digital Apparaatdubbels wordt uitgevoerd. Tijdens de preview is dit versie *3.7.0*.
+
+Meer informatie over de parser-bibliotheek, inclusief gebruiks voorbeelden, vindt u in [procedures: modellen parseren en valideren](how-to-use-parser.md).
 
 ## <a name="next-steps"></a>Volgende stappen
 

@@ -5,11 +5,12 @@ author: mikkelhegn
 ms.topic: conceptual
 ms.date: 06/29/2017
 ms.author: mikhegn
-ms.openlocfilehash: ef88a528dbb6d326e5cc742d14c27218eb7502f7
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 1db6cea0af229664b07e88463e279b2a64d7e267
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "75464073"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86256047"
 ---
 # <a name="configure-the-upgrade-of-a-service-fabric-application-in-visual-studio"></a>De upgrade van een Service Fabric-toepassing in Visual Studio configureren
 Visual Studio Tools voor Azure Service Fabric bieden upgrade ondersteuning voor het publiceren naar lokale of externe clusters. Er zijn drie scenario's waarin u uw toepassing wilt bijwerken naar een nieuwere versie in plaats van de toepassing te vervangen tijdens het testen en fout opsporing:
@@ -56,7 +57,7 @@ Als u de Service Fabric-hulpprogram ma's van Visual Studio gebruikt om een Servi
 3. Als u de UnmonitoredManual-upgrade modus selecteert, moet u hand matig een Power shell-console starten om door te gaan en het upgrade proces te volt ooien. Raadpleeg [service Fabric toepassings upgrade: geavanceerde onderwerpen](service-fabric-application-upgrade-advanced.md) voor meer informatie over de werking van hand matige upgrades.
 
 ## <a name="upgrade-an-application-by-using-powershell"></a>Een toepassing bijwerken met behulp van Power shell
-U kunt Power shell-cmdlets gebruiken om een Service Fabric-toepassing bij te werken. Zie [service Fabric zelf studie](service-fabric-application-upgrade-tutorial.md) voor de upgrade van toepassingen en [Start-ServiceFabricApplicationUpgrade](https://docs.microsoft.com/powershell/module/servicefabric/start-servicefabricapplicationupgrade) voor meer informatie.
+U kunt Power shell-cmdlets gebruiken om een Service Fabric-toepassing bij te werken. Zie [service Fabric zelf studie](service-fabric-application-upgrade-tutorial.md) voor de upgrade van toepassingen en [Start-ServiceFabricApplicationUpgrade](/powershell/module/servicefabric/start-servicefabricapplicationupgrade) voor meer informatie.
 
 ## <a name="specify-a-health-check-policy-in-the-application-manifest-file"></a>Een beleid voor status controle opgeven in het manifest bestand van de toepassing
 Elke service in een Service Fabric toepassing kan een eigen status beleids parameter hebben waarmee de standaard waarden worden overschreven. U kunt deze parameter waarden opgeven in het manifest bestand van de toepassing.

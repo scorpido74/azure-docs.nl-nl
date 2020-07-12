@@ -3,12 +3,12 @@ title: Netwerk patronen voor Azure Service Fabric
 description: Beschrijft veelvoorkomende netwerk patronen voor Service Fabric en het maken van een cluster met behulp van Azure-netwerk functies.
 ms.topic: conceptual
 ms.date: 01/19/2018
-ms.openlocfilehash: b9114be5498bcb7fdec4e105ad6e3ff9fcc03a7c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 0c3664d1890fd318aa1bff508a51cb227bdcc01d
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85106620"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86258538"
 ---
 # <a name="service-fabric-networking-patterns"></a>Service Fabric netwerk patronen
 U kunt uw Azure Service Fabric-cluster integreren met andere Azure-netwerk functies. In dit artikel wordt uitgelegd hoe u clusters maakt die gebruikmaken van de volgende functies:
@@ -598,10 +598,9 @@ Na de implementatie kunt u twee load balancers weer geven in de resource groep. 
 
 ## <a name="notes-for-production-workloads"></a>Opmerkingen voor werk belastingen voor productie
 
-De bovenstaande GitHub-sjablonen zijn ontworpen voor gebruik met de standaard SKU voor Azure Standard Load Balancer (SLB), de basis-SKU. Deze SLB heeft geen SLA, dus voor productie werkbelastingen moet de standaard-SKU worden gebruikt. Zie het [overzicht van Azure Standard Load Balancer](/azure/load-balancer/load-balancer-standard-overview)voor meer informatie. Elk Service Fabric cluster dat gebruikmaakt van de standaard-SKU voor SLB moet ervoor zorgen dat elk knooppunt type een regel heeft die uitgaand verkeer op poort 443 toestaat. Dit is nodig voor het volt ooien van de installatie van het cluster en een implementatie zonder een dergelijke regel zal mislukken. In het bovenstaande voor beeld van een load balancer ' alleen intern ' moet er een extra externe load balancer aan de sjabloon worden toegevoegd met een regel voor uitgaand verkeer voor poort 443.
+De bovenstaande GitHub-sjablonen zijn ontworpen voor gebruik met de standaard SKU voor Azure Standard Load Balancer (SLB), de basis-SKU. Deze SLB heeft geen SLA, dus voor productie werkbelastingen moet de standaard-SKU worden gebruikt. Zie het [overzicht van Azure Standard Load Balancer](../load-balancer/load-balancer-overview.md)voor meer informatie. Elk Service Fabric cluster dat gebruikmaakt van de standaard-SKU voor SLB moet ervoor zorgen dat elk knooppunt type een regel heeft die uitgaand verkeer op poort 443 toestaat. Dit is nodig voor het volt ooien van de installatie van het cluster en een implementatie zonder een dergelijke regel zal mislukken. In het bovenstaande voor beeld van een load balancer ' alleen intern ' moet er een extra externe load balancer aan de sjabloon worden toegevoegd met een regel voor uitgaand verkeer voor poort 443.
 
 ## <a name="next-steps"></a>Volgende stappen
 [Een cluster maken](service-fabric-cluster-creation-via-arm.md)
 
 Na de implementatie kunt u twee load balancers weer geven in de resource groep. Als u door de load balancers bladert, ziet u het open bare IP-adres en de beheer eindpunten (poorten 19000 en 19080) die zijn toegewezen aan het open bare IP-adres. U kunt ook het statische interne IP-adres en eind punt van de toepassing zien (poort 80) die aan de interne load balancer zijn toegewezen. Beide load balancers maken gebruik van dezelfde back-end-groep voor schaal sets voor virtuele machines.
-

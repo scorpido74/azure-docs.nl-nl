@@ -7,11 +7,12 @@ author: seanmck
 ms.topic: troubleshooting
 ms.date: 11/05/2018
 ms.author: seanmck
-ms.openlocfilehash: 9dc5a38a05ef73863f85e4dbe92d52eb94b2715f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 2b0078f1aff3ef81ee270f67de0fffddec3abab9
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83773790"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86255248"
 ---
 # <a name="checking-for-kubernetes-best-practices-in-your-cluster"></a>Controleren op aanbevolen procedures voor Kubernetes in uw cluster
 
@@ -28,7 +29,7 @@ Het uitvoeren-hulp programma kan rapporteren over de resource aanvraag en limiet
 
 ## <a name="running-kube-advisor"></a>Uitvoeren van uitvoeren-Advisor
 
-Als u het hulp programma wilt uitvoeren op een cluster dat is geconfigureerd voor op [rollen gebaseerd toegangs beheer (RBAC)](azure-ad-integration.md), met behulp van de volgende opdrachten. Met de eerste opdracht maakt u een Kubernetes-service account. Met de tweede opdracht wordt het hulp programma uitgevoerd in een pod met dat Service account en wordt de Pod voor verwijdering geconfigureerd nadat deze is afgesloten. 
+Als u het hulp programma wilt uitvoeren op een cluster dat is geconfigureerd voor op [rollen gebaseerd toegangs beheer (RBAC)](./azure-ad-integration-cli.md), met behulp van de volgende opdrachten. Met de eerste opdracht maakt u een Kubernetes-service account. Met de tweede opdracht wordt het hulp programma uitgevoerd in een pod met dat Service account en wordt de Pod voor verwijdering geconfigureerd nadat deze is afgesloten. 
 
 ```bash
 kubectl apply -f https://raw.githubusercontent.com/Azure/kube-advisor/master/sa.yaml

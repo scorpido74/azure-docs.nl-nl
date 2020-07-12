@@ -5,11 +5,12 @@ author: grzuber
 ms.topic: article
 ms.date: 05/09/2019
 ms.author: grzuber
-ms.openlocfilehash: 344fef70522240da2236a020c96308c472c9c545
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 983d45a7a240701fa6441d2d9edeeda16f1ed18b
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "75463113"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86256489"
 ---
 # <a name="diagnose-common-code-package-errors-by-using-service-fabric"></a>Veelvoorkomende code pakket fouten vaststellen met behulp van Service Fabric
 
@@ -40,7 +41,7 @@ Service Fabric kan verantwoordelijk zijn voor het beëindigen van uw code pakket
 >[!NOTE]
 > Als uw proces of container wordt beëindigd met een andere afsluit code dan de codes in de volgende tabel, is Service Fabric niet verantwoordelijk voor het beëindigen ervan.
 
-Afsluitcode | Description
+Afsluitcode | Beschrijving
 --------- | -----------
 7147 | Hiermee wordt aangegeven dat het proces of de container door Service Fabric op de juiste wijze is afgesloten door een CTRL + C-signaal te verzenden.
 7148 | Geeft aan dat het proces of de container is beëindigd Service Fabric. Deze fout code geeft soms aan dat het proces of de container niet tijdig heeft gereageerd na het verzenden van een CTRL + C-signaal en dat het is beëindigd.
@@ -56,6 +57,6 @@ Afsluitcode | Hexadecimale waarde | Korte beschrijving | Hoofdoorzaak | Mogelijk
 ## <a name="next-steps"></a>Volgende stappen
 
 * Meer informatie over het [diagnosticeren van andere algemene scenario's](service-fabric-diagnostics-common-scenarios.md).
-* Bekijk een gedetailleerd overzicht van Azure Monitor-logboeken en wat ze bieden door [Azure Monitor overzicht](../operations-management-suite/operations-management-suite-overview.md)te lezen.
-* Meer informatie over Azure Monitor- [Logboeken voor hulp bij detectie](../log-analytics/log-analytics-alerts.md) en diagnose.
-* Krijg kennis met de functies voor [Zoeken in Logboeken en query's](../log-analytics/log-analytics-log-searches.md) die worden aangeboden als onderdeel van Azure monitor Logboeken.
+* Bekijk een gedetailleerd overzicht van Azure Monitor-logboeken en wat ze bieden door [Azure Monitor overzicht](../azure-monitor/overview.md)te lezen.
+* Meer informatie over Azure Monitor- [Logboeken voor hulp bij detectie](../azure-monitor/platform/alerts-overview.md) en diagnose.
+* Krijg kennis met de functies voor [Zoeken in Logboeken en query's](../azure-monitor/log-query/log-query-overview.md) die worden aangeboden als onderdeel van Azure monitor Logboeken.

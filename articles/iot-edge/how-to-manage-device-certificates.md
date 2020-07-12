@@ -8,11 +8,12 @@ ms.date: 06/02/2020
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: b13944e30c339357997fbc5f0919e5eb8485a0a9
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 4c49345f7036dfee7d1f37c15a4647202b3e5670
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84308775"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86257841"
 ---
 # <a name="manage-certificates-on-an-iot-edge-device"></a>Certificaten op een IoT Edge apparaat beheren
 
@@ -46,6 +47,9 @@ U moet uw eigen certificerings instantie gebruiken om de volgende bestanden te m
 * Persoonlijke sleutel van de apparaat-CA
 
 In dit artikel wordt verwezen naar de *basis-CA* , maar niet de hoogste certificerings instantie voor een organisatie. Het is de bovenste certificerings instantie voor het IoT Edge scenario, die door de IoT Edge hub-module, gebruikers modules en downstream-apparaten wordt gebruikt om een vertrouwens relatie tussen elkaar te leggen.
+
+> [!NOTE]
+> Op dit moment wordt een beperking in libiothsm voor komen dat certificaten worden gebruikt die op of na 1 januari 2050 verlopen.
 
 Als u een voor beeld van deze certificaten wilt zien, bekijkt u de scripts die demo certificaten maken bij het [beheren van test-CA-certificaten voor voor beelden en zelf studies](https://github.com/Azure/iotedge/tree/master/tools/CACertificates).
 
@@ -108,7 +112,7 @@ Zie [begrijpen hoe Azure IOT Edge certificaten gebruikt](iot-edge-certs.md)voor 
 Voor deze twee automatisch gegenereerde certificaten hebt u de optie om de **auto_generated_ca_lifetime_days** vlag in config. yaml in te stellen om het aantal dagen voor de levens duur van de certificaten te configureren.
 
 >[!NOTE]
->Er is een derde automatisch gegenereerd certificaat dat IoT Edge Security Manager maakt, het **IOT Edge hub-server certificaat**. Dit certificaat heeft altijd een 90 dag, maar wordt automatisch verlengd voordat het verloopt. De waarde van de **auto_generated_ca_lifetime_days** heeft geen invloed op dit certificaat.
+>Er is een derde automatisch gegenereerd certificaat dat IoT Edge Security Manager maakt, het **IOT Edge hub-server certificaat**. Dit certificaat heeft altijd een levens duur van 90 dagen, maar wordt automatisch verlengd voordat het verloopt. De waarde van de **auto_generated_ca_lifetime_days** heeft geen invloed op dit certificaat.
 
 Als u het verlopen van het certificaat wilt configureren naar een andere waarde dan de standaard 90 dagen, voegt u het gedeelte dagen aan de sectie **certificaten** van het bestand config. yaml toe.
 
@@ -119,6 +123,9 @@ certificates:
   trusted_ca_certs: "<ADD URI TO TRUSTED CA CERTIFICATES HERE>"
   auto_generated_ca_lifetime_days: <value>
 ```
+
+> [!NOTE]
+> Op dit moment wordt een beperking in libiothsm voor komen dat certificaten worden gebruikt die op of na 1 januari 2050 verlopen.
 
 Als u uw eigen CA-certificaten voor het apparaat hebt opgegeven, is deze waarde nog steeds van toepassing op het CA-certificaat van de werk belasting, op voor waarde dat de ingestelde levens duur korter is dan de levens duur van het CA-certificaat van de apparaat.
 

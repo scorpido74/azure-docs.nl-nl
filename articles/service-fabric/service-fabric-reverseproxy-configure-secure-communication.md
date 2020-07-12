@@ -3,11 +3,12 @@ title: Beveiligde communicatie van Azure Service Fabric reverse proxy
 description: Configureer omgekeerde proxy zo dat beveiligde end-to-end-communicatie mogelijk is in een Azure Service Fabric-toepassing.
 ms.topic: conceptual
 ms.date: 08/10/2017
-ms.openlocfilehash: e88a81108f38efefe413024fb2b41bbd82f297b2
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: b01ce559b3c790164992d6618149afa9df069466
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82858525"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86256132"
 ---
 # <a name="connect-to-a-secure-service-with-the-reverse-proxy"></a>Verbinding maken met een beveiligde service met de omgekeerde proxy
 
@@ -19,7 +20,7 @@ In dit artikel wordt uitgelegd hoe u een veilige verbinding tot stand brengt tus
 ## <a name="secure-connection-establishment-between-the-reverse-proxy-and-services"></a>Beveiligde verbinding tot stand brengen tussen de omgekeerde proxy en services 
 
 ### <a name="reverse-proxy-authenticating-to-services"></a>Omgekeerde proxy verificatie bij Services:
-De omgekeerde proxy identificeert zichzelf bij Services met behulp van het certificaat. Voor Azure-clusters wordt het certificaat opgegeven met de eigenschap ***reverseProxyCertificate*** in het [resource type](../azure-resource-manager/templates/template-syntax.md) [**micro soft. ServiceFabric/clusters**](https://docs.microsoft.com/azure/templates/microsoft.servicefabric/clusters) van de Resource Manager-sjabloon. Voor zelfstandige clusters wordt het certificaat opgegeven met de ***ReverseProxyCertificate*** of de eigenschap ***ReverseProxyCertificateCommonNames*** in het gedeelte **beveiliging** van ClusterConfig.jsop. Zie [reverse proxy inschakelen op zelfstandige clusters](service-fabric-reverseproxy-setup.md#enable-reverse-proxy-on-standalone-clusters)voor meer informatie. 
+De omgekeerde proxy identificeert zichzelf bij Services met behulp van het certificaat. Voor Azure-clusters wordt het certificaat opgegeven met de eigenschap ***reverseProxyCertificate*** in het [resource type](../azure-resource-manager/templates/template-syntax.md) [**micro soft. ServiceFabric/clusters**](/azure/templates/microsoft.servicefabric/clusters) van de Resource Manager-sjabloon. Voor zelfstandige clusters wordt het certificaat opgegeven met de ***ReverseProxyCertificate*** of de eigenschap ***ReverseProxyCertificateCommonNames*** in het gedeelte **beveiliging** van ClusterConfig.jsop. Zie [reverse proxy inschakelen op zelfstandige clusters](service-fabric-reverseproxy-setup.md#enable-reverse-proxy-on-standalone-clusters)voor meer informatie. 
 
 Services kunnen de logica implementeren om het certificaat te verifiëren dat door de omgekeerde proxy wordt aangeboden. De services kunnen de geaccepteerde client certificaat gegevens opgeven als configuratie-instellingen in het configuratie pakket. Dit kan tijdens runtime worden gelezen en wordt gebruikt om het certificaat te valideren dat door de omgekeerde proxy wordt aangeboden. Raadpleeg [toepassings parameters beheren](service-fabric-manage-multiple-environment-app-configuration.md) om de configuratie-instellingen toe te voegen. 
 
@@ -188,5 +189,5 @@ Als de client geen certificaat presenteert, stuurt de omgekeerde proxy een lege 
 * Raadpleeg [reverse proxy configureren om verbinding te maken met beveiligde services](https://github.com/Azure-Samples/service-fabric-cluster-templates/tree/master/Reverse-Proxy-Sample#configure-reverse-proxy-to-connect-to-secure-services)
 * Bekijk een voor beeld van HTTP-communicatie tussen services in een [voorbeeld project op github](https://github.com/Azure-Samples/service-fabric-dotnet-getting-started).
 * [Externe procedure aanroepen met Reliable Services externe toegang](service-fabric-reliable-services-communication-remoting.md)
-* [Web-API die gebruikmaakt van OWIN in Reliable Services](service-fabric-reliable-services-communication-webapi.md)
+* [Web-API die gebruikmaakt van OWIN in Reliable Services](./service-fabric-reliable-services-communication-aspnetcore.md)
 * [Clustercertificaten beheren](service-fabric-cluster-security-update-certs-azure.md)

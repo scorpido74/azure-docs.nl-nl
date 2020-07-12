@@ -5,11 +5,12 @@ author: srrengar
 ms.topic: conceptual
 ms.date: 02/21/2019
 ms.author: srrengar
-ms.openlocfilehash: 40dd930aa21e3056d5ecc908359215d6874ed8ae
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: bd952449cb088a383f0b9241fb7856522fbeeb10
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "75464734"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86257665"
 ---
 # <a name="event-analysis-and-visualization-with-azure-monitor-logs"></a>Gebeurtenis analyse en visualisatie met Azure Monitor-logboeken
  Met Azure Monitor-logboeken wordt telemetrie vastgelegd, verzameld en geanalyseerd op basis van toepassingen en services die worden gehost in de cloud en worden er analysehulpprogramma's geboden waarmee u de beschikbaarheid en prestaties hiervan kunt maximaliseren. In dit artikel wordt beschreven hoe u query's uitvoert in Azure Monitor Logboeken om inzicht te krijgen in wat er in uw cluster gebeurt. De volgende veelgestelde vragen worden behandeld:
@@ -103,6 +104,6 @@ Kusto is een krachtige querytaal. U kunt ook een andere waardevolle query uitvoe
 
 * Als u de bewaking van infra structuur wilt inschakelen, zoals prestatie meter items, moet u [de log Analytics agent toevoegen](service-fabric-diagnostics-oms-agent.md). De agent verzamelt prestatie meter items en voegt deze toe aan uw bestaande werk ruimte.
 * Voor on-premises clusters biedt Azure Monitor-Logboeken een gateway (HTTP forward proxy) die kan worden gebruikt om gegevens te verzenden naar Azure Monitor-Logboeken. Meer informatie hierover vindt [u bij het verbinden van computers zonder Internet toegang tot Azure monitor-logboeken met behulp van de log Analytics gateway](../azure-monitor/platform/gateway.md).
-* [Automatische waarschuwingen](../log-analytics/log-analytics-alerts.md) configureren voor ondersteuning bij detectie en diagnose.
-* U kunt vertrouwd raken met de [Zoek-en query](../log-analytics/log-analytics-log-searches.md) functies die beschikbaar worden gesteld als onderdeel van Azure monitor Logboeken.
-* Meer gedetailleerd overzicht van Azure Monitor-logboeken en wat het biedt, Lees [Wat is Azure monitor logboeken?](../operations-management-suite/operations-management-suite-overview.md).
+* [Automatische waarschuwingen](../azure-monitor/platform/alerts-overview.md) configureren voor ondersteuning bij detectie en diagnose.
+* U kunt vertrouwd raken met de [Zoek-en query](../azure-monitor/log-query/log-query-overview.md) functies die beschikbaar worden gesteld als onderdeel van Azure monitor Logboeken.
+* Meer gedetailleerd overzicht van Azure Monitor-logboeken en wat het biedt, Lees [Wat is Azure monitor logboeken?](../azure-monitor/overview.md).

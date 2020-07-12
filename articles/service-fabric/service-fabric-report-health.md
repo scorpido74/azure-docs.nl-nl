@@ -5,11 +5,12 @@ author: georgewallace
 ms.topic: conceptual
 ms.date: 2/28/2018
 ms.author: gwallace
-ms.openlocfilehash: 167ca76d0b6977a87352f8219d807949a0e4a301
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 5695e8d03f782527cd3a9a2667f3513046d7e76c
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85392638"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86256302"
 ---
 # <a name="add-custom-service-fabric-health-reports"></a>Aangepaste Service Fabric status rapporten toevoegen
 Azure Service Fabric introduceert een [status model](service-fabric-health-introduction.md) dat is ontworpen voor het markeren van slechte cluster-en toepassings voorwaarden voor specifieke entiteiten. Het status model gebruikt **status rapporten** (systeem onderdelen en watchdog). Het doel is eenvoudig en snel te diagnosticeren en te herstellen. Service schrijvers moeten vooraf denken over de status. Elke voor waarde die de status van invloed kan hebben, moet worden gerapporteerd op, met name als het kan helpen om problemen in de buurt van de hoofdmap te markeren. De status informatie kan tijd en moeite besparen bij fout opsporing en onderzoek. Het nut is vooral duidelijk wanneer de service op schaal wordt uitgevoerd in de Cloud (privé of Azure).
@@ -37,7 +38,7 @@ Zoals vermeld, kan rapportage worden uitgevoerd vanaf:
 > 
 > 
 
-Zodra het ontwerp voor status rapportage duidelijk is, kunnen status rapporten gemakkelijk worden verzonden. U kunt [FabricClient](https://docs.microsoft.com/dotnet/api/system.fabric.fabricclient) gebruiken om de status te rapporteren als het cluster niet is [beveiligd](service-fabric-cluster-security.md) of als de Fabric-client beheerders bevoegdheden heeft. Rapportage kan worden uitgevoerd via de API met behulp van [FabricClient. HealthManager. ReportHealth](https://docs.microsoft.com/dotnet/api/system.fabric.fabricclient.healthclient.reporthealth), via Power shell of via rest. Configuratie knoppen batch rapporten voor betere prestaties.
+Zodra het ontwerp voor status rapportage duidelijk is, kunnen status rapporten gemakkelijk worden verzonden. U kunt [FabricClient](/dotnet/api/system.fabric.fabricclient) gebruiken om de status te rapporteren als het cluster niet is [beveiligd](service-fabric-cluster-security.md) of als de Fabric-client beheerders bevoegdheden heeft. Rapportage kan worden uitgevoerd via de API met behulp van [FabricClient. HealthManager. ReportHealth](/dotnet/api/system.fabric.fabricclient.healthclient.reporthealth), via Power shell of via rest. Configuratie knoppen batch rapporten voor betere prestaties.
 
 > [!NOTE]
 > Rapport status is synchroon en bevat alleen het validatie werk aan de client zijde. Het feit dat het rapport wordt geaccepteerd door de Health-client of de `Partition` or- `CodePackageActivationContext` objecten betekenen niet dat het wordt toegepast in de Store. Het wordt asynchroon verzonden en kan eventueel worden gebatcheerd met andere rapporten. De verwerking op de server kan nog steeds mislukken: het Volg nummer kan worden verouderd. de entiteit waarop het rapport moet worden toegepast, is verwijderd, enzovoort.
@@ -57,7 +58,7 @@ De status rapporten worden verzonden naar de Health Manager via een Health-clien
 > 
 
 De buffering op de client neemt de uniekheid van de rapporten in overweging. Als bijvoorbeeld een bepaalde slechte rapporter 100 rapporten per seconde rapporteert over dezelfde eigenschap van dezelfde entiteit, worden de rapporten vervangen door de laatste versie. Er bestaat Maxi maal één rapport in de client wachtrij. Als batch verwerking is geconfigureerd, is het aantal rapporten dat naar de Health Manager wordt verzonden, slechts één per verzend interval. Dit rapport is het laatst toegevoegde rapport, dat de meest actuele status van de entiteit weerspiegelt.
-Geef configuratie parameters `FabricClient` op wanneer deze worden gemaakt door [FabricClientSettings](https://docs.microsoft.com/dotnet/api/system.fabric.fabricclientsettings) door te geven met de gewenste waarden voor aan de status gerelateerde vermeldingen.
+Geef configuratie parameters `FabricClient` op wanneer deze worden gemaakt door [FabricClientSettings](/dotnet/api/system.fabric.fabricclientsettings) door te geven met de gewenste waarden voor aan de status gerelateerde vermeldingen.
 
 In het volgende voor beeld wordt een Fabric-client gemaakt en wordt opgegeven dat de rapporten moeten worden verzonden wanneer ze worden toegevoegd. Bij time-outs en fouten die opnieuw kunnen worden geprobeerd, wordt elke 40 seconden opnieuw geprobeerd.
 
@@ -71,7 +72,7 @@ var clientSettings = new FabricClientSettings()
 var fabricClient = new FabricClient(clientSettings);
 ```
 
-We raden u aan de standaard instellingen voor de Fabric-client te houden, die zijn ingesteld `HealthReportSendInterval` op 30 seconden. Deze instelling zorgt voor optimale prestaties vanwege batch verwerking. Voor kritieke rapporten die zo snel mogelijk moeten worden verzonden, gebruikt u `HealthReportSendOptions` direct `true` in [FabricClient. HealthClient. ReportHealth](https://docs.microsoft.com/dotnet/api/system.fabric.fabricclient.healthclient.reporthealth) -API. Directe rapporten slaan het interval voor batch verwerking over. Gebruik deze vlag met zorg; We willen zo mogelijk gebruikmaken van de batch verwerking voor de Health-client. Direct verzenden is ook handig wanneer de Fabric-client wordt afgesloten (bijvoorbeeld omdat het proces een ongeldige status heeft bepaald en moet worden afgesloten om neven effecten te voor komen). Het zorgt voor een beste verzen ding van de verzamelde rapporten. Wanneer één rapport wordt toegevoegd met de vlag Immediate, worden de verzamelde rapporten sinds de laatste verzen ding door de Health-client in batches opgenomen.
+We raden u aan de standaard instellingen voor de Fabric-client te houden, die zijn ingesteld `HealthReportSendInterval` op 30 seconden. Deze instelling zorgt voor optimale prestaties vanwege batch verwerking. Voor kritieke rapporten die zo snel mogelijk moeten worden verzonden, gebruikt u `HealthReportSendOptions` direct `true` in [FabricClient. HealthClient. ReportHealth](/dotnet/api/system.fabric.fabricclient.healthclient.reporthealth) -API. Directe rapporten slaan het interval voor batch verwerking over. Gebruik deze vlag met zorg; We willen zo mogelijk gebruikmaken van de batch verwerking voor de Health-client. Direct verzenden is ook handig wanneer de Fabric-client wordt afgesloten (bijvoorbeeld omdat het proces een ongeldige status heeft bepaald en moet worden afgesloten om neven effecten te voor komen). Het zorgt voor een beste verzen ding van de verzamelde rapporten. Wanneer één rapport wordt toegevoegd met de vlag Immediate, worden de verzamelde rapporten sinds de laatste verzen ding door de Health-client in batches opgenomen.
 
 U kunt dezelfde para meters opgeven wanneer een verbinding met een cluster wordt gemaakt via Power shell. In het volgende voor beeld wordt een verbinding met een lokaal cluster gestart:
 
@@ -113,12 +114,12 @@ Voor REST worden de rapporten verzonden naar de Service Fabric-gateway, die een 
 ## <a name="report-from-within-low-privilege-services"></a>Rapport vanuit Services met weinig bevoegdheid
 Als Service Fabric Services geen beheerders toegang tot het cluster hebben, kunt u de status van entiteiten rapporteren vanuit de huidige context via `Partition` of `CodePackageActivationContext` .
 
-* Gebruik [IStatelessServicePartition. ReportInstanceHealth](https://docs.microsoft.com/dotnet/api/system.fabric.istatelessservicepartition.reportinstancehealth) voor stateless Services om te rapporteren over het huidige service-exemplaar.
-* Gebruik [IStatefulServicePartition. ReportReplicaHealth](https://docs.microsoft.com/dotnet/api/system.fabric.istatefulservicepartition.reportreplicahealth) voor stateful Services om te rapporteren over de huidige replica.
-* Gebruik [IServicePartition. ReportPartitionHealth](https://docs.microsoft.com/dotnet/api/system.fabric.iservicepartition.reportpartitionhealth) om te rapporteren over de huidige partitie-entiteit.
-* Gebruik [CodePackageActivationContext. ReportApplicationHealth](https://docs.microsoft.com/dotnet/api/system.fabric.codepackageactivationcontext.reportapplicationhealth) om te rapporteren over de huidige toepassing.
-* Gebruik [CodePackageActivationContext. ReportDeployedApplicationHealth](https://docs.microsoft.com/dotnet/api/system.fabric.codepackageactivationcontext.reportdeployedapplicationhealth) om te rapporteren over de huidige toepassing die op het huidige knoop punt is geïmplementeerd.
-* Gebruik [CodePackageActivationContext. ReportDeployedServicePackageHealth](https://docs.microsoft.com/dotnet/api/system.fabric.codepackageactivationcontext.reportdeployedservicepackagehealth) om te rapporteren over een service pakket voor de toepassing die op het huidige knoop punt is geïmplementeerd.
+* Gebruik [IStatelessServicePartition. ReportInstanceHealth](/dotnet/api/system.fabric.istatelessservicepartition.reportinstancehealth) voor stateless Services om te rapporteren over het huidige service-exemplaar.
+* Gebruik [IStatefulServicePartition. ReportReplicaHealth](/dotnet/api/system.fabric.istatefulservicepartition.reportreplicahealth) voor stateful Services om te rapporteren over de huidige replica.
+* Gebruik [IServicePartition. ReportPartitionHealth](/dotnet/api/system.fabric.iservicepartition.reportpartitionhealth) om te rapporteren over de huidige partitie-entiteit.
+* Gebruik [CodePackageActivationContext. ReportApplicationHealth](/dotnet/api/system.fabric.codepackageactivationcontext.reportapplicationhealth) om te rapporteren over de huidige toepassing.
+* Gebruik [CodePackageActivationContext. ReportDeployedApplicationHealth](/dotnet/api/system.fabric.codepackageactivationcontext.reportdeployedapplicationhealth) om te rapporteren over de huidige toepassing die op het huidige knoop punt is geïmplementeerd.
+* Gebruik [CodePackageActivationContext. ReportDeployedServicePackageHealth](/dotnet/api/system.fabric.codepackageactivationcontext.reportdeployedservicepackagehealth) om te rapporteren over een service pakket voor de toepassing die op het huidige knoop punt is geïmplementeerd.
 
 > [!NOTE]
 > Intern, de `Partition` en de `CodePackageActivationContext` bewaring van een Health-client die is geconfigureerd met de standaard instellingen. Zoals wordt uitgelegd voor de [Health-client](service-fabric-report-health.md#health-client), worden rapporten batches en verzonden naar een timer. De objecten moeten worden bewaard, zodat de kans bestaat dat het rapport wordt verzonden.
@@ -289,7 +290,7 @@ HealthEvents          :
 ```
 
 ### <a name="rest"></a>REST
-Status rapporten verzenden met behulp van POST-aanvragen die naar de gewenste entiteit gaan en de beschrijving van het status rapport hebben in de hoofd tekst. Zie bijvoorbeeld informatie over het verzenden van REST [cluster status rapporten](https://docs.microsoft.com/rest/api/servicefabric/report-the-health-of-a-cluster) of [service status rapporten](https://docs.microsoft.com/rest/api/servicefabric/report-the-health-of-a-service). Alle entiteiten worden ondersteund.
+Status rapporten verzenden met behulp van POST-aanvragen die naar de gewenste entiteit gaan en de beschrijving van het status rapport hebben in de hoofd tekst. Zie bijvoorbeeld informatie over het verzenden van REST [cluster status rapporten](/rest/api/servicefabric/report-the-health-of-a-cluster) of [service status rapporten](/rest/api/servicefabric/report-the-health-of-a-service). Alle entiteiten worden ondersteund.
 
 ## <a name="next-steps"></a>Volgende stappen
 Op basis van de status gegevens kunnen service schrijvers en cluster/toepassings beheerders zien hoe ze deze gegevens gebruiken. Ze kunnen bijvoorbeeld waarschuwingen instellen op basis van de status om ernstige problemen te ondervangen voordat ze storingen veroorzaken. Beheerders kunnen ook reparatie systemen instellen om problemen automatisch op te lossen.
@@ -305,4 +306,3 @@ Op basis van de status gegevens kunnen service schrijvers en cluster/toepassings
 [Services lokaal controleren en een diagnose uitvoeren](service-fabric-diagnostics-how-to-monitor-and-diagnose-services-locally.md)
 
 [Upgrade van toepassing Service Fabric](service-fabric-application-upgrade.md)
-

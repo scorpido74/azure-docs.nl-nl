@@ -5,16 +5,17 @@ author: jeffj6123
 ms.topic: reference
 ms.date: 1/16/2020
 ms.author: jejarry
-ms.openlocfilehash: f8665e75e4c921a3305c9965601e2ee0825c8995
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 9ac1d85a1a498f9f6fcd0a03f8f819d1cdfcac33
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "76906047"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86257294"
 ---
 # <a name="sfctl-mesh-code-package-log"></a>sfctl mesh code-package-log
 De logboeken ophalen voor de container van het opgegeven code pakket voor de opgegeven service replica.
 
-## <a name="commands"></a>Opdrachten
+## <a name="commands"></a>Opdracht
 
 |Opdracht|Beschrijving|
 | --- | --- |
@@ -27,7 +28,7 @@ Hiermee haalt u de logboeken voor de container van het opgegeven code pakket van
 
 ### <a name="arguments"></a>Argumenten
 
-|Argument|Description|
+|Argument|Beschrijving|
 | --- | --- |
 | --app-naam--Application name [required] | De naam van de toepassing. |
 | --code-pakket naam [vereist] | De naam van het code pakket van de service. |
@@ -37,7 +38,7 @@ Hiermee haalt u de logboeken voor de container van het opgegeven code pakket van
 
 ### <a name="global-arguments"></a>Algemene argumenten
 
-|Argument|Description|
+|Argument|Beschrijving|
 | --- | --- |
 | --fouten opsporen | Verg root logboek registratie uitgebreid om alle logboeken voor fout opsporing weer te geven. |
 | --Help-h | Dit Help-bericht weer geven en afsluiten. |
@@ -48,4 +49,4 @@ Hiermee haalt u de logboeken voor de container van het opgegeven code pakket van
 
 ## <a name="next-steps"></a>Volgende stappen
 - [Stel](service-fabric-cli.md) de service Fabric cli in.
-- Meer informatie over het gebruik van de Service Fabric CLI met behulp van de [voorbeeld scripts](/azure/service-fabric/scripts/sfctl-upgrade-application).
+- Meer informatie over het gebruik van de Service Fabric CLI met behulp van de [voorbeeld scripts](./scripts/sfctl-upgrade-application.md).

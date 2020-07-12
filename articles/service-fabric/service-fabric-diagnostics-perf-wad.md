@@ -5,11 +5,12 @@ author: srrengar
 ms.topic: conceptual
 ms.date: 11/21/2018
 ms.author: srrengar
-ms.openlocfilehash: 0819ca02d088aeb9ada5de1269467f70242bbcca
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: c2114f5392da788bb440589e69e704a148731e02
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "75609907"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86258611"
 ---
 # <a name="performance-monitoring-with-the-windows-azure-diagnostics-extension"></a>Prestatie bewaking met de uitbrei ding voor Windows-Azure Diagnostics
 
@@ -192,5 +193,5 @@ Hier volgt een voor beeld van een configuratie met de teller voor de *totale pro
 
 ## <a name="next-steps"></a>Volgende stappen
 * Verzamelen van meer prestatie meter items voor uw cluster. Bekijk [metrische prestatie gegevens](service-fabric-diagnostics-event-generation-perf.md) voor een lijst met prestatie meter items die u moet verzamelen.
-* [Gebruik bewaking en diagnostische gegevens met een Windows-VM en Azure Resource Manager sjablonen](../virtual-machines/windows/extensions-diagnostics-template.md) om uw wijzigingen aan te brengen `WadCfg` , inclusief het configureren van extra opslag accounts voor het verzenden van diagnostische gegevens naar.
+* [Gebruik bewaking en diagnostische gegevens met een Windows-VM en Azure Resource Manager sjablonen](../virtual-machines/extensions/diagnostics-template.md) om uw wijzigingen aan te brengen `WadCfg` , inclusief het configureren van extra opslag accounts voor het verzenden van diagnostische gegevens naar.
 * Ga naar de [WadCfg Builder](https://azure.github.io/azure-diagnostics-tools/config-builder/) om een volledig nieuwe sjabloon te maken en zorg ervoor dat de syntaxis juist is. ( https://azure.github.io/azure-diagnostics-tools/config-builder/) Als u een volledig nieuwe sjabloon wilt maken, moet u ervoor zorgen dat de syntaxis juist is.

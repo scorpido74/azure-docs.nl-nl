@@ -5,11 +5,12 @@ author: mikkelhegn
 ms.topic: conceptual
 ms.date: 02/23/2018
 ms.author: mikhegn
-ms.openlocfilehash: 0bca690fd585b288f15cbab21c1c951474390318
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: b6d6ff37024a3181a43b67d2af26b067225654fe
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "78196976"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86257476"
 ---
 # <a name="manage-applications-for-multiple-environments"></a>Toepassingen voor meerdere omgevingen beheren
 
@@ -39,8 +40,8 @@ De configuratie die u opgeeft, kan worden onderverdeeld in twee categorieën:
 
 Wanneer u een benoemde instantie van een toepassing maakt in Service Fabric, kunt u de para meters door geven. Hoe u dit doet, hangt af van de manier waarop u het toepassings exemplaar maakt.
 
-  - In Power shell [`New-ServiceFabricApplication`](https://docs.microsoft.com/powershell/module/servicefabric/new-servicefabricapplication?view=azureservicefabricps) neemt de cmdlet de toepassings parameters op als een hash.
-  - Met behulp van sfctl [`sfctl application create`](https://docs.microsoft.com/azure/service-fabric/service-fabric-sfctl-application#sfctl-application-create) krijgt de opdracht para meters als een JSON-teken reeks. Het install.sh-script maakt gebruik van sfctl.
+  - In Power shell [`New-ServiceFabricApplication`](/powershell/module/servicefabric/new-servicefabricapplication?view=azureservicefabricps) neemt de cmdlet de toepassings parameters op als een hash.
+  - Met behulp van sfctl [`sfctl application create`](./service-fabric-sfctl-application.md#sfctl-application-create) krijgt de opdracht para meters als een JSON-teken reeks. Het install.sh-script maakt gebruik van sfctl.
   - Visual Studio biedt een set parameter bestanden in de map para meters in het toepassings project. Deze parameter bestanden worden gebruikt bij het publiceren vanuit Visual Studio met behulp van Azure DevOps Services of Azure DevOps Server. In Visual Studio worden de parameter bestanden door gegeven aan het Deploy-FabricApplication.ps1 script.
 
 ## <a name="next-steps"></a>Volgende stappen

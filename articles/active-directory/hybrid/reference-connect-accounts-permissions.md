@@ -17,11 +17,12 @@ ms.date: 05/18/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 23508535c1853cd056bb162c254cda5f7f86d7fe
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: f84724285dee6dfff4913b067daa651837787d4e
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83681745"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86255775"
 ---
 # <a name="azure-ad-connect-accounts-and-permissions"></a>Azure AD Connect: accounts en machtigingen
 
@@ -37,7 +38,7 @@ Azure AD Connect maakt gebruik van 3 accounts om gegevens van on-premises of Win
 
 - **Azure AD-Connector account**: wordt gebruikt voor het schrijven van gegevens naar Azure AD
 
-Naast deze drie accounts die worden gebruikt om Azure AD Connect uit te voeren, hebt u ook de volgende extra accounts nodig om Azure AD Connect te installeren.  Dit zijn:
+Naast deze drie accounts die worden gebruikt om Azure AD Connect uit te voeren, hebt u ook de volgende extra accounts nodig om Azure AD Connect te installeren.  Deze zijn:
 
 - **Lokaal beheerders account**: de beheerder die Azure AD Connect installeert en lokale beheerders machtigingen heeft op de computer.
 
@@ -174,7 +175,7 @@ Als u aangepaste instellingen gebruikt, bent u zelf verantwoordelijk voor het ma
 ### <a name="adsync-service-account"></a>ADSync-serviceaccount
 De synchronisatie service kan worden uitgevoerd onder verschillende accounts. Het kan worden uitgevoerd onder een **virtueel service account** (leverancierspecifieke naam), een **beheerd service account voor groepen** (gMSA/sMSA) of een gewoon gebruikers account. De ondersteunde opties zijn gewijzigd met de release van 2017 april wanneer u een nieuwe installatie maakt. Als u een upgrade uitvoert van een eerdere versie van Azure AD Connect, zijn deze extra opties niet beschikbaar.
 
-| Type account | Installatie optie | Description |
+| Type account | Installatie optie | Beschrijving |
 | --- | --- | --- |
 | [Virtueel service-account](#virtual-service-account) | Express en aangepast, 2017 april en hoger | Dit is de optie die wordt gebruikt voor alle snelle installaties, met uitzonde ring van installaties op een domein controller. Voor aangepast is dit de standaard optie, tenzij een andere optie wordt gebruikt. |
 | [Door groep beheerd serviceaccount](#group-managed-service-account) | Aangepast, 2017 april en hoger | Als u een externe SQL Server gebruikt, raden we u aan een beheerd service account voor een groep te gebruiken. |
@@ -201,7 +202,6 @@ Legenda:
 
 | | LocalDB</br>Express | LocalDB/LocalSQL</br>Aangepast | Externe SQL</br>Aangepast |
 | --- | --- | --- | --- |
-| **zelfstandige computer/werk groep** | Niet ondersteund | **KENMERK**</br>Lokaal account (2008)</br>Lokaal account |  Niet ondersteund |
 | **computer die lid is van een domein** | **KENMERK**</br>Lokaal account (2008) | **KENMERK**</br>Lokaal account (2008)</br>Lokaal account</br>Domeinaccount</br>sMSA, gMSA | **gMSA**</br>Domeinaccount |
 | **Domein controller** | **Domeinaccount** | *gMSA*</br>**Domeinaccount**</br>sMSA| *gMSA*</br>**Domeinaccount**|
 

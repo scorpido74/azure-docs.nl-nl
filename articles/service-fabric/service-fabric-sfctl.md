@@ -5,11 +5,12 @@ author: jeffj6123
 ms.topic: reference
 ms.date: 1/16/2020
 ms.author: jejarry
-ms.openlocfilehash: 56efa15a7de3414f9c535e66bd80c94594cd5038
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: fc317345155a6807a20d342e2cefd0701b20f180
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "76906216"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86257050"
 ---
 # <a name="sfctl"></a>sfctl
 Opdrachten voor het beheren van Service Fabric clusters en entiteiten. Deze versie is compatibel met Service Fabric 7,0-runtime.
@@ -17,7 +18,7 @@ Opdrachten voor het beheren van Service Fabric clusters en entiteiten. Deze vers
 Opdrachten volgen het patroon van de zelfstandig naam woord. Zie subgroepen voor meer informatie.
 
 ## <a name="subgroups"></a>Subgroepen
-|Subgroep|Description|
+|Subgroep|Beschrijving|
 | --- | --- |
 | [toepassing](service-fabric-sfctl-application.md) | Toepassingen en toepassings typen maken, verwijderen en beheren. |
 | [chaos](service-fabric-sfctl-chaos.md) | Starten, stoppen en rapporteren op de chaos-test service. |
@@ -39,4 +40,4 @@ Opdrachten volgen het patroon van de zelfstandig naam woord. Zie subgroepen voor
 
 ## <a name="next-steps"></a>Volgende stappen
 - [Stel](service-fabric-cli.md) de service Fabric cli in.
-- Meer informatie over het gebruik van de Service Fabric CLI met behulp van de [voorbeeld scripts](/azure/service-fabric/scripts/sfctl-upgrade-application).
+- Meer informatie over het gebruik van de Service Fabric CLI met behulp van de [voorbeeld scripts](./scripts/sfctl-upgrade-application.md).

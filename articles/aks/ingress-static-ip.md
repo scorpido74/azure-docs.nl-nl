@@ -5,11 +5,12 @@ description: Meer informatie over het installeren en configureren van een NGINX 
 services: container-service
 ms.topic: article
 ms.date: 07/02/2020
-ms.openlocfilehash: f10bed46f93af3579f07e04d9940fc98eef67826
-ms.sourcegitcommit: dee7b84104741ddf74b660c3c0a291adf11ed349
+ms.openlocfilehash: a59bd1cfcc03b0a6c9af218cb7108a0ba094377d
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85920310"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86255282"
 ---
 # <a name="create-an-ingress-controller-with-a-static-public-ip-address-in-azure-kubernetes-service-aks"></a>Een ingangs controller maken met een statisch openbaar IP-adres in azure Kubernetes service (AKS)
 
@@ -433,7 +434,7 @@ In dit artikel zijn enkele externe onderdelen opgenomen in AKS. Zie de volgende 
 
 - [Helm CLI][helm-cli]
 - [NGINX ingress-controller][nginx-ingress]
-- [CERT-beheerder][cert-manager]
+- [Certificaatbeheer][cert-manager]
 
 U kunt ook het volgende doen:
 
@@ -444,7 +445,7 @@ U kunt ook het volgende doen:
 - [Een ingangs controller maken met een dynamisch openbaar IP-adres en configureren laten versleutelen om automatisch TLS-certificaten te genereren][aks-ingress-tls]
 
 <!-- LINKS - external -->
-[helm-cli]: https://docs.microsoft.com/azure/aks/kubernetes-helm
+[helm-cli]: ./kubernetes-helm.md
 [cert-manager]: https://github.com/jetstack/cert-manager
 [cert-manager-certificates]: https://cert-manager.readthedocs.io/en/latest/reference/certificates.html
 [cert-manager-cluster-issuer]: https://cert-manager.readthedocs.io/en/latest/reference/clusterissuers.html

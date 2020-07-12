@@ -5,11 +5,12 @@ author: dkkapur
 ms.topic: conceptual
 ms.date: 10/15/2017
 ms.author: dekapur
-ms.openlocfilehash: 1277af2e8f9de575fbe51ea0f43bbcfd2812e610
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 43825728da34c027557f6e6d722e39d494451e55
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83653636"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86255928"
 ---
 # <a name="secure-a-standalone-cluster-on-windows-by-using-x509-certificates"></a>Een zelfstandige cluster in Windows beveiligen met behulp van X. 509-certificaten
 In dit artikel wordt beschreven hoe u de communicatie tussen de verschillende knoop punten van uw zelfstandige Windows-cluster kunt beveiligen. Ook wordt beschreven hoe u clients verifieert die verbinding maken met dit cluster met behulp van X. 509-certificaten. Verificatie zorgt ervoor dat alleen gemachtigde gebruikers toegang hebben tot het cluster en de geïmplementeerde toepassingen en beheer taken uitvoeren. Certificaat beveiliging moet worden ingeschakeld op het cluster als het cluster wordt gemaakt.  
@@ -109,7 +110,7 @@ In deze sectie worden de certificaten beschreven die u nodig hebt om uw zelfstan
 
 
 > [!NOTE]
-> Een [vinger afdruk](https://en.wikipedia.org/wiki/Public_key_fingerprint) is de primaire identiteit van een certificaat. Zie [een vinger afdruk van een certificaat ophalen](https://msdn.microsoft.com/library/ms734695.aspx)voor informatie over de vinger afdruk van de certificaten die u maakt.
+> Een [vinger afdruk](https://en.wikipedia.org/wiki/Public_key_fingerprint) is de primaire identiteit van een certificaat. Zie [een vinger afdruk van een certificaat ophalen](/dotnet/framework/wcf/feature-details/how-to-retrieve-the-thumbprint-of-a-certificate)voor informatie over de vinger afdruk van de certificaten die u maakt.
 > 
 > 
 
@@ -124,7 +125,7 @@ De volgende tabel geeft een lijst van de certificaten die u nodig hebt voor de i
 | ServerCertificateCommonNames |Aanbevolen voor een productie omgeving. Dit certificaat wordt weer gegeven aan de client wanneer deze probeert verbinding te maken met dit cluster. De CertificateIssuerThumbprint komt overeen met de vinger afdruk van de verlener van dit certificaat. Als er meer dan één certificaat met dezelfde algemene naam wordt gebruikt, kunt u meerdere verleners vingerafdrukken opgeven. Voor het gemak kunt u ervoor kiezen om hetzelfde certificaat te gebruiken voor ClusterCertificateCommonNames en ServerCertificateCommonNames. U kunt een of twee algemene namen voor server certificaten gebruiken. |
 | ServerCertificateIssuerStores |Aanbevolen voor een productie omgeving. Dit certificaat komt overeen met de uitgever van het server certificaat. U kunt de algemene naam van de certificaat verlener en de bijbehorende winkel naam onder deze sectie opgeven, in plaats van de vinger afdruk van de verlener onder ServerCertificateCommonNames.  Dit maakt het eenvoudig om certificaten van de server verlener te rolloveren. Meerdere verleners kunnen worden opgegeven als er meerdere server certificaten worden gebruikt. Een lege IssuerCommonName whitelists alle certificaten in de bijbehorende archieven die zijn opgegeven onder X509StoreNames.|
 | ClientCertificateThumbprints |Installeer deze reeks certificaten op de geverifieerde clients. U kunt een aantal verschillende client certificaten hebben geïnstalleerd op de computers die u toegang wilt geven tot het cluster. Stel de vinger afdruk van elk certificaat in de variabele CertificateThumbprint in. Als u IsAdmin instelt op *True*, kan de client waarop dit certificaat is geïnstalleerd, beheer activiteiten op het cluster uitvoeren. Als IsAdmin *False*is, kan de client met dit certificaat de acties uitvoeren die alleen worden toegestaan voor gebruikers toegangs rechten, meestal alleen-lezen. Zie op [rollen gebaseerde Access Control (RBAC)](service-fabric-cluster-security.md#role-based-access-control-rbac)voor meer informatie over rollen. |
-| ClientCertificateCommonNames |Stel de algemene naam in van het eerste client certificaat voor de CertificateCommonName. De CertificateIssuerThumbprint is de vinger afdruk voor de verlener van dit certificaat. Zie [werken met certificaten](https://msdn.microsoft.com/library/ms731899.aspx)voor meer informatie over algemene namen en de uitgever. |
+| ClientCertificateCommonNames |Stel de algemene naam in van het eerste client certificaat voor de CertificateCommonName. De CertificateIssuerThumbprint is de vinger afdruk voor de verlener van dit certificaat. Zie [werken met certificaten](/dotnet/framework/wcf/feature-details/working-with-certificates)voor meer informatie over algemene namen en de uitgever. |
 | ClientCertificateIssuerStores |Aanbevolen voor een productie omgeving. Dit certificaat komt overeen met de verlener van het client certificaat (zowel admin-als niet-beheerders rollen). U kunt de algemene naam van de certificaat verlener en de bijbehorende winkel naam onder deze sectie opgeven, in plaats van de vinger afdruk van de verlener onder ClientCertificateCommonNames.  Dit maakt het eenvoudig om certificaten van client Issues te laten overschakelen. Meerdere verleners kunnen worden opgegeven als er meerdere client certificaten worden gebruikt. Een lege IssuerCommonName whitelists alle certificaten in de bijbehorende archieven die zijn opgegeven onder X509StoreNames.|
 | ReverseProxyCertificate |Aanbevolen voor een test omgeving. Dit optionele certificaat kan worden opgegeven als u de [omgekeerde proxy](service-fabric-reverseproxy.md)wilt beveiligen. Zorg ervoor dat reverseProxyEndpointPort is ingesteld in nodeTypes als u dit certificaat gebruikt. |
 | ReverseProxyCertificateCommonNames |Aanbevolen voor een productie omgeving. Dit optionele certificaat kan worden opgegeven als u de [omgekeerde proxy](service-fabric-reverseproxy.md)wilt beveiligen. Zorg ervoor dat reverseProxyEndpointPort is ingesteld in nodeTypes als u dit certificaat gebruikt. |
@@ -247,7 +248,7 @@ Als u de archiefen van de uitgever gebruikt, moet er geen configuratie-upgrade w
 ## <a name="acquire-the-x509-certificates"></a>De X. 509-certificaten ophalen
 Als u de communicatie binnen het cluster wilt beveiligen, moet u eerst X. 509-certificaten voor uw cluster knooppunten verkrijgen. Als u de verbinding met dit cluster met geautoriseerde computers/gebruikers wilt beperken, moet u bovendien certificaten voor de client computers verkrijgen en installeren.
 
-Voor clusters met productie-workloads gebruikt u een door de [certificerings instantie (CA)](https://en.wikipedia.org/wiki/Certificate_authority)ondertekend X. 509-certificaat om het cluster te beveiligen. Zie [How to Schaf a Certificate (een certificaat verkrijgen](https://msdn.microsoft.com/library/aa702761.aspx)) voor meer informatie over het verkrijgen van deze certificaten. 
+Voor clusters met productie-workloads gebruikt u een door de [certificerings instantie (CA)](https://en.wikipedia.org/wiki/Certificate_authority)ondertekend X. 509-certificaat om het cluster te beveiligen. Zie [How to Schaf a Certificate (een certificaat verkrijgen](/dotnet/framework/wcf/feature-details/how-to-obtain-a-certificate-wcf)) voor meer informatie over het verkrijgen van deze certificaten. 
 
 Er zijn een aantal eigenschappen die het certificaat moet hebben om goed te kunnen functioneren:
 
@@ -261,7 +262,7 @@ Er zijn een aantal eigenschappen die het certificaat moet hebben om goed te kunn
 
 Voor clusters die u voor test doeleinden gebruikt, kunt u ervoor kiezen om een zelfondertekend certificaat te gebruiken.
 
-Raadpleeg [Veelgestelde vragen over certificaten](https://docs.microsoft.com/azure/service-fabric/cluster-security-certificate-management#troubleshooting-and-frequently-asked-questions)voor aanvullende vragen.
+Raadpleeg [Veelgestelde vragen over certificaten](./cluster-security-certificate-management.md#troubleshooting-and-frequently-asked-questions)voor aanvullende vragen.
 
 ## <a name="optional-create-a-self-signed-certificate"></a>Optioneel: een zelfondertekend certificaat maken
 Eén manier om een zelfondertekend certificaat te maken dat goed kan worden beveiligd, is door het CertSetup.ps1 script te gebruiken in de map Service Fabric SDK in de map C:\Program Files\Microsoft SDKs\Service Fabric\ClusterSetup\Secure. Bewerk dit bestand om de standaard naam van het certificaat te wijzigen. (Zoek naar de waarde CN = ServiceFabricDevClusterCert.) Voer dit script uit als `.\CertSetup.ps1 -Install` .
@@ -356,7 +357,7 @@ $ConnectArgs = @{  ConnectionEndpoint = '10.7.0.5:19000';  X509Credential = $Tru
 Connect-ServiceFabricCluster $ConnectArgs
 ```
 
-U kunt vervolgens andere Power shell-opdrachten uitvoeren om met dit cluster te werken. U kunt bijvoorbeeld [Get-ServiceFabricNode](https://docs.microsoft.com/powershell/module/servicefabric/get-servicefabricnode?view=azureservicefabricps) uitvoeren om een lijst met knoop punten op dit beveiligde cluster weer te geven.
+U kunt vervolgens andere Power shell-opdrachten uitvoeren om met dit cluster te werken. U kunt bijvoorbeeld [Get-ServiceFabricNode](/powershell/module/servicefabric/get-servicefabricnode?view=azureservicefabricps) uitvoeren om een lijst met knoop punten op dit beveiligde cluster weer te geven.
 
 
 Als u het cluster wilt verwijderen, maakt u verbinding met het knoop punt op het cluster waar u het Service Fabric-pakket hebt gedownload, opent u een opdracht regel en gaat u naar de map pakket. Voer nu de volgende opdracht uit:
@@ -369,4 +370,3 @@ Als u het cluster wilt verwijderen, maakt u verbinding met het knoop punt op het
 > Onjuiste certificaat configuratie kan verhinderen dat het cluster tijdens de implementatie komt. Als u beveiligings problemen zelf wilt vaststellen, kijkt u in de logboeken groep **toepassingen en-services**  >  **micro soft-service Fabric**.
 > 
 > 
-

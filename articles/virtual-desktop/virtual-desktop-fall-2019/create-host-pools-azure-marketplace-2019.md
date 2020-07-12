@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 03/30/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: cd309b7c3b37e338b1d8e69635247cc90511b34f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: b4472baa51bb0b8806c7ad617c0fc1001c800ff0
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85204741"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86256846"
 ---
 # <a name="tutorial-create-a-host-pool-by-using-the-azure-marketplace"></a>Zelfstudie: Een hostpool maken met behulp van Azure Marketplace
 
@@ -154,7 +154,7 @@ Gebruikers die u toevoegt aan de bureaubladtoepassingsgroep, kunnen zich via een
 
 Dit zijn de clients die momenteel worden ondersteund:
 
-* [Extern bureaublad-client voor Windows 7 en Windows 10](../connect-windows-7-and-10.md)
+* [Extern bureaublad-client voor Windows 7 en Windows 10](connect-windows-7-10-2019.md)
 * [Windows Virtual Desktop-webclient](connect-web-2019.md)
 
 ## <a name="next-steps"></a>Volgende stappen

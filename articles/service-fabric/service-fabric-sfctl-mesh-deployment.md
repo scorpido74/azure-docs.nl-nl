@@ -5,16 +5,17 @@ author: jeffj6123
 ms.topic: reference
 ms.date: 1/16/2020
 ms.author: jejarry
-ms.openlocfilehash: 108389407221779ed20e81310f084b7b5c23b8c7
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: fb2adafab88eb1d3855cdec8268601fb4e15dcbb
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "76906036"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86257283"
 ---
 # <a name="sfctl-mesh-deployment"></a>sfctl mesh deployment
 Service Fabric netresources maken.
 
-## <a name="commands"></a>Opdrachten
+## <a name="commands"></a>Opdracht
 
 |Opdracht|Beschrijving|
 | --- | --- |
@@ -25,14 +26,14 @@ Hiermee maakt u een implementatie van Service Fabric netresources.
 
 ### <a name="arguments"></a>Argumenten
 
-|Argument|Description|
+|Argument|Beschrijving|
 | --- | --- |
 | --input-YAML-files [required] | Door komma's gescheiden of absolute bestands paden van alle YAML-bestanden of relatief of absoluut pad van de directory (recursieve) die YAML-bestanden bevatten. |
 | --para meters | Een relatief of absoluut pad naar een yaml-bestand of een JSON-object dat de para meters bevat die moeten worden overschreven. |
 
 ### <a name="global-arguments"></a>Algemene argumenten
 
-|Argument|Description|
+|Argument|Beschrijving|
 | --- | --- |
 | --fouten opsporen | Verg root logboek registratie uitgebreid om alle logboeken voor fout opsporing weer te geven. |
 | --Help-h | Dit Help-bericht weer geven en afsluiten. |
@@ -62,4 +63,4 @@ sfctl mesh deployment create --input-yaml-files ./resources --parameters "{ 'my_
 
 ## <a name="next-steps"></a>Volgende stappen
 - [Stel](service-fabric-cli.md) de service Fabric cli in.
-- Meer informatie over het gebruik van de Service Fabric CLI met behulp van de [voorbeeld scripts](/azure/service-fabric/scripts/sfctl-upgrade-application).
+- Meer informatie over het gebruik van de Service Fabric CLI met behulp van de [voorbeeld scripts](./scripts/sfctl-upgrade-application.md).

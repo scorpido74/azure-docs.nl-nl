@@ -5,24 +5,24 @@ author: suchiagicha
 ms.topic: conceptual
 ms.date: 04/20/2017
 ms.author: pepogors
-ms.openlocfilehash: 182b35194a647f5de706f9ada07b8e9db51bb4c2
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: d5f6d3502662d48cf6ff750c9a695fadfeac97c2
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "75645579"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86256231"
 ---
 # <a name="configure-fabrictransport-settings-for-reliable-actors"></a>FabricTransport-instellingen voor Reliable Actors configureren
 
 Dit zijn de instellingen die u kunt configureren:
-- C#: [FabricTransportRemotingSettings](
-https://docs.microsoft.com/java/api/microsoft.servicefabric.services.remoting.fabrictransport.fabrictransportremotingsettings)
-- Java: [FabricTransportRemotingSettings](https://docs.microsoft.com/java/api/microsoft.servicefabric.services.remoting.fabrictransport.fabrictransportremotingsettings)
+- C#: [FabricTransportRemotingSettings](/java/api/microsoft.servicefabric.services.remoting.fabrictransport.fabrictransportremotingsettings)
+- Java: [FabricTransportRemotingSettings](/java/api/microsoft.servicefabric.services.remoting.fabrictransport.fabrictransportremotingsettings)
 
 U kunt de standaard configuratie van FabricTransport op de volgende manieren wijzigen.
 
 ## <a name="assembly-attribute"></a>Assembly-kenmerk
 
-Het kenmerk [FabricTransportActorRemotingProvider](https://docs.microsoft.com/dotnet/api/microsoft.servicefabric.actors.remoting.fabrictransport.fabrictransportactorremotingproviderattribute?redirectedfrom=MSDN) moet worden toegepast op de actor-client en actor service-assembly's.
+Het kenmerk [FabricTransportActorRemotingProvider](/dotnet/api/microsoft.servicefabric.actors.remoting.fabrictransport.fabrictransportactorremotingproviderattribute) moet worden toegepast op de actor-client en actor service-assembly's.
 
 In het volgende voor beeld ziet u hoe u de standaard waarde van instellingen voor FabricTransport OperationTimeout wijzigt:
 

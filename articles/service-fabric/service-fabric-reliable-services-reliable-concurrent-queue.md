@@ -3,14 +3,15 @@ title: ReliableConcurrentQueue in azure Service Fabric
 description: ReliableConcurrentQueue is een wachtrij met hoge door Voer waarmee parallelle in en dequeues zijn toegestaan.
 ms.topic: conceptual
 ms.date: 5/1/2017
-ms.openlocfilehash: a7115db8259fde0e87e53557ecef730f8e82d2fd
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 423ef3d1898176d7c25c596ad186a9c000108aa4
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "75462740"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86257448"
 ---
 # <a name="introduction-to-reliableconcurrentqueue-in-azure-service-fabric"></a>Inleiding tot ReliableConcurrentQueue in azure Service Fabric
-Betrouw bare, gelijktijdige wachtrij is een asynchrone, transactionele en gerepliceerde wachtrij, die een hoge gelijktijdigheid voor bewerkingen in de wachtrij plaatsen en verwijderen. Het is ontworpen om hoge door Voer en lage latentie te bieden door de strikte FIFO-volg orde die wordt geleverd door een [betrouw bare wachtrij](https://msdn.microsoft.com/library/azure/dn971527.aspx) te verminderen en in plaats daarvan een best mogelijke volg orde te bieden.
+Betrouw bare, gelijktijdige wachtrij is een asynchrone, transactionele en gerepliceerde wachtrij, die een hoge gelijktijdigheid voor bewerkingen in de wachtrij plaatsen en verwijderen. Het is ontworpen om hoge door Voer en lage latentie te bieden door de strikte FIFO-volg orde die wordt geleverd door een [betrouw bare wachtrij](/dotnet/api/microsoft.servicefabric.data.collections.ireliablequeue-1?view=azure-dotnet#microsoft_servicefabric_data_collections_ireliablequeue_1) te verminderen en in plaats daarvan een best mogelijke volg orde te bieden.
 
 ## <a name="apis"></a>API's
 
@@ -20,11 +21,11 @@ Betrouw bare, gelijktijdige wachtrij is een asynchrone, transactionele en gerepl
 | BOOL TryDequeue (uitgaand resultaat)  | Taak< ConditionalValue < T > > TryDequeueAsync (ITransaction TX)  |
 | Aantal int ()                    | Lange telling ()                                                     |
 
-## <a name="comparison-with-reliable-queue"></a>Vergelijking met [betrouw bare wachtrij](https://msdn.microsoft.com/library/azure/dn971527.aspx)
+## <a name="comparison-with-reliable-queue"></a>Vergelijking met [betrouw bare wachtrij](/dotnet/api/microsoft.servicefabric.data.collections.ireliablequeue-1?view=azure-dotnet#microsoft_servicefabric_data_collections_ireliablequeue_1)
 
-Betrouw bare gelijktijdige wachtrij wordt aangeboden als alternatief voor een [betrouw bare wachtrij](https://msdn.microsoft.com/library/azure/dn971527.aspx). Het moet worden gebruikt in gevallen waarin strikte FIFO-ordening niet is vereist, omdat voor het garanderen van FIFO een afweging met gelijktijdigheid is vereist.  Een [betrouw bare wachtrij](https://msdn.microsoft.com/library/azure/dn971527.aspx) maakt gebruik van vergren delingen voor het afdwingen van FIFO-bestelling, met Maxi maal één trans actie die in de wachtrij mag worden geplaatst en Maxi maal één trans actie tegelijk mag worden verwijderd. In vergelijking zorgt een betrouw bare, gelijktijdige wachtrij voor een versoepeling van de ordenings beperking en kan elk aantal gelijktijdige trans acties interacties uitvoeren om de bewerkingen in de wachtrij te plaatsen en Best mogelijke ordening is beschikbaar, maar de relatieve volg orde van twee waarden in een betrouw bare, gelijktijdige wachtrij kan nooit worden gegarandeerd.
+Betrouw bare gelijktijdige wachtrij wordt aangeboden als alternatief voor een [betrouw bare wachtrij](/dotnet/api/microsoft.servicefabric.data.collections.ireliablequeue-1?view=azure-dotnet#microsoft_servicefabric_data_collections_ireliablequeue_1). Het moet worden gebruikt in gevallen waarin strikte FIFO-ordening niet is vereist, omdat voor het garanderen van FIFO een afweging met gelijktijdigheid is vereist.  Een [betrouw bare wachtrij](/dotnet/api/microsoft.servicefabric.data.collections.ireliablequeue-1?view=azure-dotnet#microsoft_servicefabric_data_collections_ireliablequeue_1) maakt gebruik van vergren delingen voor het afdwingen van FIFO-bestelling, met Maxi maal één trans actie die in de wachtrij mag worden geplaatst en Maxi maal één trans actie tegelijk mag worden verwijderd. In vergelijking zorgt een betrouw bare, gelijktijdige wachtrij voor een versoepeling van de ordenings beperking en kan elk aantal gelijktijdige trans acties interacties uitvoeren om de bewerkingen in de wachtrij te plaatsen en Best mogelijke ordening is beschikbaar, maar de relatieve volg orde van twee waarden in een betrouw bare, gelijktijdige wachtrij kan nooit worden gegarandeerd.
 
-Betrouw bare gelijktijdige wachtrij biedt hogere door Voer en een lagere latentie dan [betrouw bare wachtrij](https://msdn.microsoft.com/library/azure/dn971527.aspx) wanneer er meerdere gelijktijdige trans acties zijn die in en/of dewachtrijen uitvoeren.
+Betrouw bare gelijktijdige wachtrij biedt hogere door Voer en een lagere latentie dan [betrouw bare wachtrij](/dotnet/api/microsoft.servicefabric.data.collections.ireliablequeue-1?view=azure-dotnet#microsoft_servicefabric_data_collections_ireliablequeue_1) wanneer er meerdere gelijktijdige trans acties zijn die in en/of dewachtrijen uitvoeren.
 
 Een voor beeld van een use-case voor ReliableConcurrentQueue is het scenario voor de [berichten wachtrij](https://en.wikipedia.org/wiki/Message_queue) . In dit scenario maken en toevoegen een of meer bericht producenten items aan de wachtrij en kunnen een of meer gebruikers berichten uit de wachtrij halen en verwerken. Meerdere producenten en consumenten kunnen onafhankelijk werken, met behulp van gelijktijdige trans acties om de wachtrij te verwerken.
 
@@ -337,6 +338,6 @@ using (var txn = this.StateManager.CreateTransaction())
 * [Reliable Services meldingen](service-fabric-reliable-services-notifications.md)
 * [Back-up en herstel (nood herstel) Reliable Services](service-fabric-reliable-services-backup-restore.md)
 * [Configuratie van betrouw bare status Manager](service-fabric-reliable-services-configuration.md)
-* [Aan de slag met Service Fabric Web API-services](service-fabric-reliable-services-communication-webapi.md)
-* [Geavanceerd gebruik van het Reliable Services-programmeer model](service-fabric-reliable-services-advanced-usage.md)
-* [Naslag informatie voor ontwikkel aars voor betrouw bare verzamelingen](https://msdn.microsoft.com/library/azure/microsoft.servicefabric.data.collections.aspx)
+* [Aan de slag met Service Fabric Web API-services](./service-fabric-reliable-services-communication-aspnetcore.md)
+* [Geavanceerd gebruik van het Reliable Services-programmeer model](./service-fabric-reliable-services-lifecycle.md)
+* [Naslag informatie voor ontwikkel aars voor betrouw bare verzamelingen](/dotnet/api/microsoft.servicefabric.data.collections?view=azure-dotnet#microsoft_servicefabric_data_collections)

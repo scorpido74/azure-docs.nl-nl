@@ -7,11 +7,12 @@ ms.author: baanders
 ms.date: 4/10/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: bfdf1263ccee78b57ccf79c63efcc01d95dd13c6
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 6d51abab46cd8450dd3a09e5e5ef47e6267b990d
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85392247"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86258102"
 ---
 # <a name="manage-a-graph-of-digital-twins-using-relationships"></a>Een grafiek van digitale apparaatdubbels beheren met behulp van relaties
 
@@ -20,6 +21,8 @@ De kern van Azure Digital Apparaatdubbels is de [dubbele grafiek](concepts-twins
 Zodra u een werkend [Azure Digital apparaatdubbels-exemplaar](how-to-set-up-instance.md) hebt en [verificatie](how-to-authenticate-client.md) hebt ingesteld voor uw client-app, kunt u de [**DigitalTwins-api's**](how-to-use-apis-sdks.md) gebruiken voor het maken, wijzigen en verwijderen van digitale Apparaatdubbels en hun relaties in een Azure Digital apparaatdubbels-instantie. U kunt ook de [.net (C#) SDK](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/digitaltwins/Azure.DigitalTwins.Core)of de [Azure Digital apparaatdubbels cli](how-to-use-cli.md)gebruiken.
 
 Dit artikel richt zich op het beheren van relaties en de hele grafiek; Zie [How-to: Manage Digital apparaatdubbels](how-to-manage-twin.md)(Engelstalig) als u wilt werken met afzonderlijke digitale apparaatdubbels.
+
+[!INCLUDE [visualizing with Azure Digital Twins explorer](../../includes/digital-twins-visualization.md)]
 
 ## <a name="create-relationships"></a>Relaties maken
 
@@ -229,12 +232,12 @@ Bekijk de volgende gegevens tabel, met een beschrijving van een set digitale app
 | Model    | Id | Bovenliggend | Naam van relatie | Andere gegevens |
 | --- | --- | --- | --- | --- |
 | Floor    | Floor01 | | | … |
-| ruimte    | Room10 | Floor01 | bevat | … |
-| ruimte    | Room11 | Floor01 | bevat | … |
-| ruimte    | Room12 | Floor01 | bevat | … |
+| ruimte    | Room10 | Floor01 | contains | … |
+| ruimte    | Room11 | Floor01 | contains | … |
+| ruimte    | Room12 | Floor01 | contains | … |
 | Floor    | Floor02 | | | … |
-| ruimte    | Room21 | Floor02 | bevat | … |
-| ruimte    | Room22 | Floor02 | bevat | … |
+| ruimte    | Room21 | Floor02 | contains | … |
+| ruimte    | Room22 | Floor02 | contains | … |
 
 De volgende code maakt gebruik van de [Microsoft Graph-API](https://docs.microsoft.com/graph/overview) om een spread sheet te lezen en een Azure Digital apparaatdubbels-grafiek te maken op basis van de resultaten.
 

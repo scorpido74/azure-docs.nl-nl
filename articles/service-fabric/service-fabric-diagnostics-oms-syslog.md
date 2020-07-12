@@ -5,11 +5,12 @@ author: srrengar
 ms.topic: conceptual
 ms.date: 10/23/2018
 ms.author: srrengar
-ms.openlocfilehash: 5bd3bda71943b2ba8a34cd4fbd0b20917b875670
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: fe31c6fdca3651bfe56e798b30d50c9f047c680b
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "75645749"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86258636"
 ---
 # <a name="service-fabric-linux-cluster-events-in-syslog"></a>Linux-cluster gebeurtenissen Service Fabric in syslog
 
@@ -25,7 +26,7 @@ Elke syslog-gebeurtenis heeft 4 onderdelen
 * Mogelijkheid
 * Identiteit
 * Bericht
-* Severity
+* Ernst
 
 De SyslogConsumer schrijft alle platform gebeurtenissen met behulp van faciliteit `Local0` . U kunt bijwerken naar een wille keurige geldige faciliteit door de configuratie configuratie te wijzigen. De gebruikte identiteit is `ServiceFabric` . Het veld bericht bevat de gehele gebeurtenis geserialiseerd in JSON, zodat deze kan worden opgevraagd en gebruikt door diverse hulpprogram ma's. 
 
@@ -112,6 +113,6 @@ Het bovenstaande voor beeld is van een NodeDown-gebeurtenis. U kunt [hier](servi
 
 ## <a name="next-steps"></a>Volgende stappen
 * [Implementeer de log Analytics-agent](service-fabric-diagnostics-oms-agent.md) op uw knoop punten om prestatie meter items te verzamelen en docker-statistieken en-logboeken te verzamelen voor uw containers
-* Krijg vertrouwd met de functies voor [Zoeken in Logboeken en query's](../log-analytics/log-analytics-log-searches.md) die worden aangeboden als onderdeel van Azure monitor logboeken
-* [De weer gave Designer gebruiken om aangepaste weer gaven te maken in Azure Monitor-logboeken](../log-analytics/log-analytics-view-designer.md)
-* Naslag informatie over het [Azure monitor van logboek integratie met syslog](../log-analytics/log-analytics-data-sources-syslog.md).
+* Krijg vertrouwd met de functies voor [Zoeken in Logboeken en query's](../azure-monitor/log-query/log-query-overview.md) die worden aangeboden als onderdeel van Azure monitor logboeken
+* [De weer gave Designer gebruiken om aangepaste weer gaven te maken in Azure Monitor-logboeken](../azure-monitor/platform/view-designer.md)
+* Naslag informatie over het [Azure monitor van logboek integratie met syslog](../azure-monitor/platform/data-sources-syslog.md).

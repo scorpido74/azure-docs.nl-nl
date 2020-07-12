@@ -4,12 +4,12 @@ description: Meer informatie over het gebruik van beheerde identiteiten voor Azu
 ms.topic: conceptual
 ms.date: 12/09/2019
 ms.custom: sfrev
-ms.openlocfilehash: a5c82f49195fc6d790ca4308d78b70106b6cc042
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 786d9b4b577f4a686367a103542ae4f8fa5453da
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84710300"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86257635"
 ---
 # <a name="using-managed-identities-for-azure-with-service-fabric"></a>Beheerde identiteiten gebruiken voor Azure met Service Fabric
 
@@ -24,7 +24,7 @@ Een veelvoorkomende uitdaging bij het bouwen van Cloud toepassingen is het veili
 
 Beheerde identiteiten voor Azure zijn gebaseerd op verschillende belang rijke concepten:
 
-- **Client-id** : een unieke id die wordt gegenereerd door Azure AD die is gekoppeld aan een toepassing en Service-Principal tijdens de eerste inrichting (ook de [toepassings-id](/azure/active-directory/develop/developer-glossary#application-id-client-id).)
+- **Client-id** : een unieke id die wordt gegenereerd door Azure AD die is gekoppeld aan een toepassing en Service-Principal tijdens de eerste inrichting (ook de [toepassings-id](../active-directory/develop/developer-glossary.md#application-id-client-id).)
 
 - **Principal-id** : de object-id van het Service-Principal-object voor uw beheerde identiteit die wordt gebruikt om op rollen gebaseerde toegang tot een Azure-resource te verlenen.
 

@@ -5,11 +5,12 @@ author: pkcsf
 ms.topic: troubleshooting
 ms.date: 8/24/2018
 ms.author: pkc
-ms.openlocfilehash: f2da9fbb04f9d1fa696250967db404864a3cce82
-ms.sourcegitcommit: dee7b84104741ddf74b660c3c0a291adf11ed349
+ms.openlocfilehash: ae49a59c2629d9f9461d298ada555d314c0c9f22
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85921821"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86256965"
 ---
 # <a name="azure-service-fabric-support-options"></a>Ondersteunings opties voor Azure Service Fabric
 
@@ -25,9 +26,9 @@ Meer informatie over:
 - [Micro soft Premier Support](https://support.microsoft.com/en-us/premier).
 
 > [!Note]
-> Met clusters die worden uitgevoerd op een Bronze-betrouwbaarheids-of een cluster met één knoop punt, kunt u alleen test werkbelastingen uitvoeren. Als u problemen ondervindt met een cluster dat wordt uitgevoerd op Bronze betrouw baarheid of cluster met één knoop punt, helpt het micro soft-ondersteunings team u bij het beperken van het probleem, maar wordt er geen analyse van de hoofd oorzaak uitgevoerd. Raadpleeg [de betrouw bare kenmerken van het cluster](https://docs.microsoft.com/azure/service-fabric/service-fabric-cluster-capacity#reliability-characteristics-of-the-cluster) voor meer informatie.
+> Met clusters die worden uitgevoerd op een Bronze-betrouwbaarheids-of een cluster met één knoop punt, kunt u alleen test werkbelastingen uitvoeren. Als u problemen ondervindt met een cluster dat wordt uitgevoerd op Bronze betrouw baarheid of cluster met één knoop punt, helpt het micro soft-ondersteunings team u bij het beperken van het probleem, maar wordt er geen analyse van de hoofd oorzaak uitgevoerd. Raadpleeg [de betrouw bare kenmerken van het cluster](./service-fabric-cluster-capacity.md#reliability-characteristics-of-the-cluster) voor meer informatie.
 >
-> Raadpleeg de [controle lijst voor productie voorbereiding](https://docs.microsoft.com/azure/service-fabric/service-fabric-production-readiness-checklist)voor meer informatie over wat er is vereist voor een cluster dat gereed is voor productie.
+> Raadpleeg de [controle lijst voor productie voorbereiding](./service-fabric-production-readiness-checklist.md)voor meer informatie over wat er is vereist voor een cluster dat gereed is voor productie.
 
 <a id="getlivesitesupportonprem"></a>
 
@@ -44,7 +45,7 @@ Meer informatie over:
 
 We hebben een GitHub-opslag plaats ingesteld voor het melden van Service Fabric problemen.  De volgende forums worden ook actief bewaakt.
 
-### <a name="github-repo"></a>GitHub opslag plaats 
+### <a name="github-repo"></a>GitHub-opslagplaats 
 
 Meld problemen met Azure Service Fabric op [service-Fabric-problemen Git opslag plaats](https://github.com/Azure/service-fabric-issues). Deze opslag plaats is bedoeld voor rapportage-en tracerings problemen met Azure Service Fabric en voor het maken van kleine functie aanvragen. **Gebruik deze niet om problemen met Live-sites te melden**.
 
@@ -58,15 +59,15 @@ Het [Azure-feedback forum voor service Fabric][uservoice-forum] is de beste plaa
 
 ## <a name="service-fabric-preview-versions---unsupported-for-production-use"></a>Preview-versies van Service Fabric-niet ondersteund voor productie gebruik
 
-Van tijd tot tijd brengen we versies uit met belang rijke functies waarop we feedback willen hebben. deze worden uitgebracht als previews. Deze Preview-versies mogen alleen worden gebruikt voor test doeleinden. In uw productie cluster moet altijd een ondersteunde, stabiele, Service Fabric versie worden uitgevoerd. Een preview-versie begint altijd met een primair en secundair versie nummer van 255. Als u bijvoorbeeld een Service Fabric versie 255.255.5703.949 ziet, wordt die release versie alleen gebruikt in test clusters en is deze beschikbaar als preview. Deze Preview-versies worden ook aangekondigd op het [service Fabric team blog](https://blogs.msdn.microsoft.com/azureservicefabric) en bevatten details over de functies die zijn opgenomen.
-Er is geen betaalde ondersteunings optie voor deze Preview-versies. Gebruik een van de opties die worden vermeld onder [rapport over Azure-service Fabric-problemen](https://docs.microsoft.com/azure/service-fabric/service-fabric-support#report-azure-service-fabric-issues) om vragen te stellen of feedback te geven.
+Van tijd tot tijd brengen we versies uit met belang rijke functies waarop we feedback willen hebben. deze worden uitgebracht als previews. Deze Preview-versies mogen alleen worden gebruikt voor test doeleinden. In uw productie cluster moet altijd een ondersteunde, stabiele, Service Fabric versie worden uitgevoerd. Een preview-versie begint altijd met een primair en secundair versie nummer van 255. Als u bijvoorbeeld een Service Fabric versie 255.255.5703.949 ziet, wordt die release versie alleen gebruikt in test clusters en is deze beschikbaar als preview. Deze Preview-versies worden ook aangekondigd op het [service Fabric team blog](https://techcommunity.microsoft.com/t5/azure-service-fabric/bg-p/Service-Fabric) en bevatten details over de functies die zijn opgenomen.
+Er is geen betaalde ondersteunings optie voor deze Preview-versies. Gebruik een van de opties die worden vermeld onder [rapport over Azure-service Fabric-problemen](#report-azure-service-fabric-issues) om vragen te stellen of feedback te geven.
 
 ## <a name="next-steps"></a>Volgende stappen
 
 [Ondersteunde Service Fabric versies](service-fabric-versions.md)
 
 <!--references-->
-[Microsoft Q&A question page]: https://docs.microsoft.com/answers/topics/azure-service-fabric.html
+[Microsoft Q&A question page]: /answers/topics/azure-service-fabric.html
 [stackoverflow]: https://stackoverflow.com/questions/tagged/azure-service-fabric
 [uservoice-forum]: https://feedback.azure.com/forums/293901-service-fabric
 [acom-docs]: https://aka.ms/servicefabricdocs

@@ -3,12 +3,12 @@ title: Cluster knooppunten upgraden om Azure Managed disks te gebruiken
 description: U kunt als volgt een upgrade uitvoeren van een bestaand Service Fabric cluster om Azure Managed disks te gebruiken met weinig of geen uitval tijd van uw cluster.
 ms.topic: how-to
 ms.date: 4/07/2020
-ms.openlocfilehash: 46dec6ae29fdd8f2a418f695c31900e6df4483e1
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: cff0f99412f189f38f1b14d15c7285166a048c87
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85611625"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86255894"
 ---
 # <a name="upgrade-cluster-nodes-to-use-azure-managed-disks"></a>Cluster knooppunten upgraden om Azure Managed disks te gebruiken
 
@@ -16,7 +16,7 @@ ms.locfileid: "85611625"
 
 De algemene strategie voor het upgraden van een Service Fabric cluster knooppunt voor het gebruik van beheerde schijven is:
 
-1. Implementeer een andere dubbele schaalset voor virtuele machines van dat knooppunt type, maar met het object [managedDisk](https://docs.microsoft.com/azure/templates/microsoft.compute/2019-07-01/virtualmachinescalesets/virtualmachines#ManagedDiskParameters) toegevoegd aan de `osDisk` sectie van de implementatie sjabloon voor virtuele-machine schaal sets. De nieuwe schaalset moet worden gebonden aan hetzelfde load balancer/IP-adres als het origineel, zodat uw klanten geen service-onderbrekingen ondervinden tijdens de migratie.
+1. Implementeer een andere dubbele schaalset voor virtuele machines van dat knooppunt type, maar met het object [managedDisk](/azure/templates/microsoft.compute/2019-07-01/virtualmachinescalesets/virtualmachines#ManagedDiskParameters) toegevoegd aan de `osDisk` sectie van de implementatie sjabloon voor virtuele-machine schaal sets. De nieuwe schaalset moet worden gebonden aan hetzelfde load balancer/IP-adres als het origineel, zodat uw klanten geen service-onderbrekingen ondervinden tijdens de migratie.
 
 2. Als zowel de oorspronkelijke als de bijgewerkte schaal sets gelijktijdig worden uitgevoerd, schakelt u de oorspronkelijke knooppunt exemplaren één keer uit zodat de systeem services (of replica's van stateful Services) worden gemigreerd naar de nieuwe schaalset.
 
@@ -25,7 +25,7 @@ De algemene strategie voor het upgraden van een Service Fabric cluster knooppunt
 Dit artikel begeleidt u stapsgewijs door de stappen voor het upgraden van het primaire knooppunt type van een voorbeeld cluster om beheerde schijven te gebruiken, terwijl u geen uitval tijd van het cluster kunt vermijden (zie opmerking hieronder). De aanvankelijke status van het test cluster bestaat uit één knooppunt type van [Silver duurzaamheid](service-fabric-cluster-capacity.md#durability-characteristics-of-the-cluster), dat wordt ondersteund door een enkele schaalset met vijf knoop punten.
 
 > [!CAUTION]
-> U ondervindt alleen een onderbreking met deze procedure als u afhankelijkheden hebt op de cluster-DNS (bijvoorbeeld wanneer u [service Fabric Explorer](service-fabric-visualizing-your-cluster.md)opent). [Best Practice van de front-end-services](https://docs.microsoft.com/azure/architecture/microservices/design/gateway) van de architectuur heeft een soort [Load Balancer](https://docs.microsoft.com/azure/architecture/guide/technology-choices/load-balancing-overview) voor de knooppunt typen om het wisselen van knoop punten mogelijk te maken zonder storingen.
+> U ondervindt alleen een onderbreking met deze procedure als u afhankelijkheden hebt op de cluster-DNS (bijvoorbeeld wanneer u [service Fabric Explorer](service-fabric-visualizing-your-cluster.md)opent). [Best Practice van de front-end-services](/azure/architecture/microservices/design/gateway) van de architectuur heeft een soort [Load Balancer](/azure/architecture/guide/technology-choices/load-balancing-overview) voor de knooppunt typen om het wisselen van knoop punten mogelijk te maken zonder storingen.
 
 Hier vindt u de [sjablonen en cmdlets](https://github.com/microsoft/service-fabric-scripts-and-templates/tree/master/templates/nodetype-upgrade-no-outage) voor Azure Resource Manager die we gaan gebruiken om het upgrade scenario te volt ooien. De sjabloon wijzigingen worden uitgelegd in [een geüpgradede schaalset implementeren voor het primaire knooppunt type](#deploy-an-upgraded-scale-set-for-the-primary-node-type) hieronder.
 

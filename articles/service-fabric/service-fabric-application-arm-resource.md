@@ -3,11 +3,12 @@ title: Implementeren en upgraden met Azure Resource Manager
 description: Meer informatie over het implementeren van toepassingen en services naar een Service Fabric cluster met behulp van een Azure Resource Manager sjabloon.
 ms.topic: conceptual
 ms.date: 12/06/2017
-ms.openlocfilehash: a2dfe54bf2c6b4fa8814f10c10576a73727a7417
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: a849bdff0d2719f02b6b5f2d7159b87ce664c13f
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "75610247"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86256506"
 ---
 # <a name="manage-applications-and-services-as-azure-resource-manager-resources"></a>Toepassingen en services beheren als Azure Resource Manager resources
 
@@ -260,13 +261,12 @@ Als u micro soft. ServiceFabric/clusters/Application uit uw ARM-sjabloon verwijd
 
 ## <a name="manage-an-existing-application-via-resource-manager"></a>Een bestaande toepassing beheren via Resource Manager
 
-Als uw cluster al actief is en bepaalde toepassingen die u wilt beheren als Resource Manager-resources, al zijn geïmplementeerd, kunt u in plaats van de toepassingen te verwijderen en ze opnieuw te implementeren, een PUT-aanroep gebruiken met dezelfde Api's zodat de toepassingen worden bevestigd als Resource Manager-resources. Zie [Wat is het service Fabric-toepassings bron model?](https://docs.microsoft.com/azure/service-fabric/service-fabric-concept-resource-model) voor meer informatie.
+Als uw cluster al actief is en bepaalde toepassingen die u wilt beheren als Resource Manager-resources, al zijn geïmplementeerd, kunt u in plaats van de toepassingen te verwijderen en ze opnieuw te implementeren, een PUT-aanroep gebruiken met dezelfde Api's zodat de toepassingen worden bevestigd als Resource Manager-resources. Zie [Wat is het service Fabric-toepassings bron model?](./service-fabric-concept-resource-model.md) voor meer informatie.
 
 > [!NOTE]
-> Als u een cluster upgrade wilt toestaan om beschadigde apps te negeren, kan de klant ' maxPercentUnhealthyApplications: 100 ' in de sectie ' upgradeDescription/healthPolicy ' opgeven. gedetailleerde beschrijvingen voor alle instellingen bevinden zich in [service fabrics rest API documentatie voor het upgrade beleid](https://docs.microsoft.com/rest/api/servicefabric/sfrp-model-clusterupgradepolicy)van het cluster.
+> Als u een cluster upgrade wilt toestaan om beschadigde apps te negeren, kan de klant ' maxPercentUnhealthyApplications: 100 ' in de sectie ' upgradeDescription/healthPolicy ' opgeven. gedetailleerde beschrijvingen voor alle instellingen bevinden zich in [service fabrics rest API documentatie voor het upgrade beleid](/rest/api/servicefabric/sfrp-model-clusterupgradepolicy)van het cluster.
 
 ## <a name="next-steps"></a>Volgende stappen
 
 * Gebruik de [service Fabric cli](service-fabric-cli.md) of [Power shell](service-fabric-deploy-remove-applications.md) om andere toepassingen te implementeren in uw cluster. 
 * [Service Fabric cluster bijwerken](service-fabric-cluster-upgrade.md)
-

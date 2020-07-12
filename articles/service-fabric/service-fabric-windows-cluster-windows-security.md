@@ -5,11 +5,12 @@ author: dkkapur
 ms.topic: conceptual
 ms.date: 08/24/2017
 ms.author: dekapur
-ms.openlocfilehash: 46be6acc1ef08770826a2e020c8930eba0787791
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 360bba2ffc344175214c44e2c9c1d3c0859ac3e5
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "76774451"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86255962"
 ---
 # <a name="secure-a-standalone-cluster-on-windows-by-using-windows-security"></a>Een zelfstandige cluster in Windows beveiligen met behulp van Windows-beveiliging
 Als u ongeoorloofde toegang tot een Service Fabric cluster wilt voor komen, moet u het cluster beveiligen. Beveiliging is vooral belang rijk wanneer het cluster productie werkbelastingen uitvoert. In dit artikel wordt beschreven hoe u de beveiliging van knoop punt-naar-knoop punt en client-naar-knoop punt configureert met behulp van Windows-beveiliging in de *ClusterConfig.JSvoor* het bestand.  Het proces komt overeen met de beveiligings stap configureren van [een zelfstandig cluster maken dat wordt uitgevoerd in Windows](service-fabric-cluster-creation-for-windows-server.md). Zie [cluster beveiligings scenario's](service-fabric-cluster-security.md)voor meer informatie over het gebruik van Windows-beveiliging met Service Fabric.
@@ -20,7 +21,7 @@ Als u ongeoorloofde toegang tot een Service Fabric cluster wilt voor komen, moet
 >
 
 ## <a name="configure-windows-security-using-gmsa"></a>Windows-beveiliging configureren met behulp van gMSA  
-De voorbeeld *ClusterConfig.gMSA.Windows.MultiMachine.JSvan* het configuratie bestand dat is gedownload met [micro soft. Azure. ServiceFabric. Windowsserver. \<version> . ](https://go.microsoft.com/fwlink/?LinkId=730690)het zelfstandige zip-cluster pakket bevat een sjabloon voor het configureren van Windows-beveiliging met behulp van door de [groep beheerde service accounts (gMSA)](https://technet.microsoft.com/library/hh831782.aspx):  
+De voorbeeld *ClusterConfig.gMSA.Windows.MultiMachine.JSvan* het configuratie bestand dat is gedownload met [micro soft. Azure. ServiceFabric. Windowsserver. \<version> . ](https://go.microsoft.com/fwlink/?LinkId=730690)het zelfstandige zip-cluster pakket bevat een sjabloon voor het configureren van Windows-beveiliging met behulp van door de [groep beheerde service accounts (gMSA)](/previous-versions/windows/it-pro/windows-server-2012-R2-and-2012/hh831782(v=ws.11)):  
 
 ```
 "security": {
@@ -53,8 +54,8 @@ De voorbeeld *ClusterConfig.gMSA.Windows.MultiMachine.JSvan* het configuratie be
 > [!NOTE]
 > De waarde van ClustergMSAIdentity moet de indeling ' mysfgmsa@mydomain ' hebben.
 
-[Knoop punt-naar-knooppunt beveiliging](service-fabric-cluster-security.md#node-to-node-security) wordt geconfigureerd door **ClustergMSAIdentity** in te stellen wanneer service Fabric moet worden uitgevoerd onder gMSA. Om vertrouwens relaties tussen knoop punten te kunnen bouwen, moeten ze van elkaar op de hoogte worden gesteld. Dit kan op twee verschillende manieren worden uitgevoerd: Geef het beheerde service account van de groep op dat alle knoop punten in het cluster bevat of geef de computer groep van het domein op die alle knoop punten in het cluster bevat. We raden u ten zeerste aan de [gMSA-aanpak (Group Managed Service account)](https://technet.microsoft.com/library/hh831782.aspx) te gebruiken, met name voor grotere clusters (meer dan 10 knoop punten) of voor clusters die waarschijnlijk groter of kleiner zijn.  
-Voor deze methode is het maken van een domein groep waarvoor cluster beheerders toegangs rechten hebben gekregen om leden toe te voegen en te verwijderen, niet vereist. Deze accounts zijn ook handig voor automatische wachtwoord beheer. Zie aan de slag [met beheerde service accounts voor groepen](https://technet.microsoft.com/library/jj128431.aspx)voor meer informatie.  
+[Knoop punt-naar-knooppunt beveiliging](service-fabric-cluster-security.md#node-to-node-security) wordt geconfigureerd door **ClustergMSAIdentity** in te stellen wanneer service Fabric moet worden uitgevoerd onder gMSA. Om vertrouwens relaties tussen knoop punten te kunnen bouwen, moeten ze van elkaar op de hoogte worden gesteld. Dit kan op twee verschillende manieren worden uitgevoerd: Geef het beheerde service account van de groep op dat alle knoop punten in het cluster bevat of geef de computer groep van het domein op die alle knoop punten in het cluster bevat. We raden u ten zeerste aan de [gMSA-aanpak (Group Managed Service account)](/previous-versions/windows/it-pro/windows-server-2012-R2-and-2012/hh831782(v=ws.11)) te gebruiken, met name voor grotere clusters (meer dan 10 knoop punten) of voor clusters die waarschijnlijk groter of kleiner zijn.  
+Voor deze methode is het maken van een domein groep waarvoor cluster beheerders toegangs rechten hebben gekregen om leden toe te voegen en te verwijderen, niet vereist. Deze accounts zijn ook handig voor automatische wachtwoord beheer. Zie aan de slag [met beheerde service accounts voor groepen](/previous-versions/windows/it-pro/windows-server-2012-R2-and-2012/jj128431(v=ws.11))voor meer informatie.  
  
 [Beveiliging van client naar knoop punt](service-fabric-cluster-security.md#client-to-node-security) wordt geconfigureerd met behulp van **ClientIdentities**. Om een vertrouwens relatie tussen een client en het cluster tot stand te brengen, moet u het cluster configureren om te weten welke client identiteiten het kan vertrouwen. Dit kan op twee verschillende manieren worden gedaan: Geef de gebruikers van de domein groep op die verbinding kunnen maken of geef de gebruikers van het domein knooppunt op waarmee verbinding kan worden gemaakt. Service Fabric ondersteunt twee verschillende typen toegangs beheer voor clients die zijn verbonden met een Service Fabric cluster: beheerder en gebruiker. Toegangs beheer biedt de mogelijkheid van de Cluster beheerder om de toegang tot bepaalde typen cluster bewerkingen voor verschillende groepen gebruikers te beperken, waardoor het cluster beter is beveiligd.  Beheerders hebben volledige toegang tot beheer mogelijkheden (inclusief Lees-en schrijf mogelijkheden). Gebruikers hebben standaard alleen lees toegang tot beheer mogelijkheden (bijvoorbeeld query mogelijkheden) en de mogelijkheid om toepassingen en services op te lossen. Zie [op rollen gebaseerd toegangs beheer voor service Fabric-clients](service-fabric-cluster-security-roles.md)voor meer informatie over besturings elementen voor toegang.  
  
@@ -102,7 +103,7 @@ Dit model wordt afgeschaft. De aanbeveling is om gMSA te gebruiken zoals hierbov
 | Identiteit |Voeg de domein gebruiker domein\gebruikersnaam toe voor de client identiteit. |  
 | IsAdmin |Stel deze waarde in op True om op te geven dat de domein gebruiker beheerders toegang of ONWAAR heeft voor toegang tot de client gebruiker. |  
 
-[Knoop punt-naar-knooppunt beveiliging](service-fabric-cluster-security.md#node-to-node-security) wordt geconfigureerd met behulp van **ClusterIdentity** als u een computer groep binnen een Active Directory-domein wilt gebruiken. Zie [een machine groep maken in Active Directory](https://msdn.microsoft.com/library/aa545347(v=cs.70).aspx)voor meer informatie.
+[Knoop punt-naar-knooppunt beveiliging](service-fabric-cluster-security.md#node-to-node-security) wordt geconfigureerd met behulp van **ClusterIdentity** als u een computer groep binnen een Active Directory-domein wilt gebruiken. Zie [een machine groep maken in Active Directory](/previous-versions/commerce-server/aa545347(v=cs.70))voor meer informatie.
 
 [Beveiliging van client naar knoop punt](service-fabric-cluster-security.md#client-to-node-security) wordt geconfigureerd met behulp van **ClientIdentities**. Om een vertrouwens relatie tussen een client en het cluster tot stand te brengen, moet u het cluster configureren om de client identiteiten te kennen die het cluster kan vertrouwen. U kunt vertrouwen op twee verschillende manieren tot stand brengen:
 

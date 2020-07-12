@@ -3,11 +3,12 @@ title: Sjabloon voor het maken van Resource Health-waarschuwingen
 description: Maak waarschuwingen via een programma waarmee u wordt gewaarschuwd wanneer uw Azure-resources niet meer beschikbaar zijn.
 ms.topic: conceptual
 ms.date: 9/4/2018
-ms.openlocfilehash: 60ff5bdf2f4f0dab94c18fd7c751869c1893ad65
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 18a3b2df2d159d2903c69debd79cccfc6d0af63e
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81759015"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86255877"
 ---
 # <a name="configure-resource-health-alerts-using-resource-manager-templates"></a>Resourcestatuswaarschuwingen configureren met Resource Manager-sjablonen
 
@@ -30,45 +31,55 @@ Als u de instructies op deze pagina wilt volgen, moet u enkele dingen vooraf ins
 ## <a name="instructions"></a>Instructies
 1. Meld u met behulp van Power shell aan bij Azure met uw account en selecteer het abonnement waarmee u wilt communiceren
 
-        Login-AzAccount
-        Select-AzSubscription -Subscription <subscriptionId>
+    ```azurepowershell
+    Login-AzAccount
+    Select-AzSubscription -Subscription <subscriptionId>
+    ```
 
     > U kunt gebruiken `Get-AzSubscription` om de abonnementen weer te geven waartoe u toegang hebt.
 
 2. De volledige Azure Resource Manager-ID voor uw actie groep zoeken en opslaan
 
-        (Get-AzActionGroup -ResourceGroupName <resourceGroup> -Name <actionGroup>).Id
+    ```azurepowershell
+    (Get-AzActionGroup -ResourceGroupName <resourceGroup> -Name <actionGroup>).Id
+    ```
 
 3. Een resource manager-sjabloon maken en opslaan voor Resource Health waarschuwingen als `resourcehealthalert.json` ([Zie de details hieronder](#resource-manager-template-options-for-resource-health-alerts))
 
 4. Een nieuwe Azure Resource Manager-implementatie met behulp van deze sjabloon maken
 
-        New-AzResourceGroupDeployment -Name ExampleDeployment -ResourceGroupName <resourceGroup> -TemplateFile <path\to\resourcehealthalert.json>
+    ```azurepowershell
+    New-AzResourceGroupDeployment -Name ExampleDeployment -ResourceGroupName <resourceGroup> -TemplateFile <path\to\resourcehealthalert.json>
+    ```
 
 5. U wordt gevraagd om de naam van de waarschuwing en de resource-ID van de actie groep die u eerder hebt gekopieerd in te voeren:
 
-        Supply values for the following parameters:
-        (Type !? for Help.)
-        activityLogAlertName: <Alert Name>
-        actionGroupResourceId: /subscriptions/<subscriptionId>/resourceGroups/<resourceGroup>/providers/microsoft.insights/actionGroups/<actionGroup>
+    ```azurepowershell
+    Supply values for the following parameters:
+    (Type !? for Help.)
+    activityLogAlertName: <Alert Name>
+    actionGroupResourceId: /subscriptions/<subscriptionId>/resourceGroups/<resourceGroup>/providers/microsoft.insights/actionGroups/<actionGroup>
+    ```
 
 6. Als alles goed werkte, ontvangt u een bevestiging in Power shell
 
-        DeploymentName          : ExampleDeployment
-        ResourceGroupName       : <resourceGroup>
-        ProvisioningState       : Succeeded
-        Timestamp               : 11/8/2017 2:32:00 AM
-        Mode                    : Incremental
-        TemplateLink            :
-        Parameters              :
-                                Name                     Type       Value
-                                ===============          =========  ==========
-                                activityLogAlertName     String     <Alert Name>
-                                activityLogAlertEnabled  Bool       True
-                                actionGroupResourceId    String     /...
-        
-        Outputs                 :
-        DeploymentDebugLogLevel :
+    ```output
+    DeploymentName          : ExampleDeployment
+    ResourceGroupName       : <resourceGroup>
+    ProvisioningState       : Succeeded
+    Timestamp               : 11/8/2017 2:32:00 AM
+    Mode                    : Incremental
+    TemplateLink            :
+    Parameters              :
+                            Name                     Type       Value
+                            ===============          =========  ==========
+                            activityLogAlertName     String     <Alert Name>
+                            activityLogAlertEnabled  Bool       True
+                            actionGroupResourceId    String     /...
+
+    Outputs                 :
+    DeploymentDebugLogLevel :
+    ```
 
 Houd er rekening mee dat als u van plan bent dit proces volledig te automatiseren, u de Resource Manager-sjabloon hoeft te bewerken om niet te vragen naar de waarden in stap 5.
 

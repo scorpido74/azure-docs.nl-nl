@@ -4,12 +4,12 @@ description: Meer informatie over het instellen en configureren van de reverse p
 ms.topic: conceptual
 ms.date: 11/13/2018
 ms.author: pepogors
-ms.openlocfilehash: 6e3edb0fe238dcaddb7d99cc68660591f081581c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: f8a9025a50b2815f0e6030e7baf317b261c8c462
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80476670"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86256340"
 ---
 # <a name="set-up-and-configure-reverse-proxy-in-azure-service-fabric"></a>Een omgekeerde proxy instellen en configureren in azure Service Fabric
 Omgekeerde proxy is een optionele Azure Service Fabric-service die micro services die worden uitgevoerd in een Service Fabric cluster kan detecteren en communiceren met andere services met http-eind punten. Zie [reverse proxy in Azure service Fabric](service-fabric-reverseproxy.md)voor meer informatie. In dit artikel wordt beschreven hoe u een omgekeerde proxy in uw cluster instelt en configureert. 
@@ -37,7 +37,7 @@ Voor een nieuw cluster kunt u [een aangepaste Resource Manager-sjabloon maken](s
 
 U kunt voor beelden van Resource Manager-sjablonen vinden die u kunnen helpen bij het configureren van een beveiligde omgekeerde proxy voor een Azure-cluster in de voor [beelden van beveiligde reverse proxy-voorbeeld sjablonen](https://github.com/Azure-Samples/service-fabric-cluster-templates/tree/master/Reverse-Proxy-Sample) op github. Raadpleeg [https reverse proxy configureren in een beveiligd cluster](https://github.com/Azure-Samples/service-fabric-cluster-templates/tree/master/Reverse-Proxy-Sample/README.md#configure-https-reverse-proxy-in-a-secure-cluster) in het Leesmij-bestand voor instructies en de sjablonen die moeten worden gebruikt voor het configureren van een beveiligde reverse proxy met een certificaat en voor het afhandelen van certificaat overschakeling.
 
-Voor een bestaand cluster kunt u de Resource Manager-sjabloon voor de resource groep van het cluster exporteren met behulp van de [Azure Portal](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-export-template), [Power shell](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-export-template-powershell)of de [Azure cli](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-export-template-cli).
+Voor een bestaand cluster kunt u de Resource Manager-sjabloon voor de resource groep van het cluster exporteren met behulp van de [Azure Portal](../azure-resource-manager/templates/export-template-portal.md), [Power shell](../azure-resource-manager/management/manage-resources-powershell.md)of de [Azure cli](../azure-resource-manager/management/manage-resources-cli.md).
 
 Nadat u een resource manager-sjabloon hebt, kunt u de reverse proxy inschakelen met de volgende stappen:
 
@@ -52,7 +52,7 @@ Nadat u een resource manager-sjabloon hebt, kunt u de reverse proxy inschakelen 
         }
     },
     ```
-2. Geef de poort voor elk van de NodeType-objecten op in de [sectie resource type](../azure-resource-manager/templates/template-syntax.md) [**micro soft. ServiceFabric/clusters**](https://docs.microsoft.com/azure/templates/microsoft.servicefabric/clusters) .
+2. Geef de poort voor elk van de NodeType-objecten op in de [sectie resource type](../azure-resource-manager/templates/template-syntax.md) [**micro soft. ServiceFabric/clusters**](/azure/templates/microsoft.servicefabric/clusters) .
 
     De poort wordt aangeduid met de parameter naam reverseProxyEndpointPort.
 
@@ -74,7 +74,7 @@ Nadat u een resource manager-sjabloon hebt, kunt u de reverse proxy inschakelen 
         ...
     }
     ```
-3. Als u TLS/SSL-certificaten op de poort voor de omgekeerde proxy wilt configureren, voegt u het certificaat toe aan de eigenschap ***reverseProxyCertificate*** in de [sectie resource type](../resource-group-authoring-templates.md) **micro soft. ServiceFabric/clusters** .
+3. Als u TLS/SSL-certificaten op de poort voor de omgekeerde proxy wilt configureren, voegt u het certificaat toe aan de eigenschap ***reverseProxyCertificate*** in de [sectie resource type](../azure-resource-manager/templates/template-syntax.md) **micro soft. ServiceFabric/clusters** .
 
     ```json
     {
@@ -98,7 +98,7 @@ Nadat u een resource manager-sjabloon hebt, kunt u de reverse proxy inschakelen 
     ```
 
 ### <a name="supporting-a-reverse-proxy-certificate-thats-different-from-the-cluster-certificate"></a>Ondersteuning voor een omgekeerd proxy certificaat dat verschilt van het cluster certificaat
- Als het omgekeerde proxy certificaat afwijkt van het certificaat dat het cluster beveiligt, moet het eerder opgegeven certificaat zijn geïnstalleerd op de virtuele machine en worden toegevoegd aan de toegangs beheer lijst (ACL), zodat Service Fabric het kan openen. Dit kunt u doen in het [gedeelte resource type](../resource-group-authoring-templates.md) [**micro soft. Compute/virtualMachineScaleSets**](https://docs.microsoft.com/azure/templates/microsoft.compute/virtualmachinescalesets) . Voeg het certificaat toe aan de osProfile voor installatie. In de sectie uitbrei ding van de sjabloon kan het certificaat in de ACL worden bijgewerkt.
+ Als het omgekeerde proxy certificaat afwijkt van het certificaat dat het cluster beveiligt, moet het eerder opgegeven certificaat zijn geïnstalleerd op de virtuele machine en worden toegevoegd aan de toegangs beheer lijst (ACL), zodat Service Fabric het kan openen. Dit kunt u doen in het [gedeelte resource type](../azure-resource-manager/templates/template-syntax.md) [**micro soft. Compute/virtualMachineScaleSets**](/azure/templates/microsoft.compute/virtualmachinescalesets) . Voeg het certificaat toe aan de osProfile voor installatie. In de sectie uitbrei ding van de sjabloon kan het certificaat in de ACL worden bijgewerkt.
 
   ```json
   {
@@ -252,50 +252,50 @@ Als u een omgekeerde proxy openbaar wilt maken voor een zelfstandig cluster, is 
 
 ### <a name="expose-the-reverse-proxy-via-resource-manager-templates"></a>De omgekeerde proxy beschikbaar stellen via Resource Manager-sjablonen
 
-De volgende JSON verwijst naar dezelfde sjabloon die wordt gebruikt bij het inschakelen van een [omgekeerde proxy via Azure Resource Manager sjablonen](#enable-reverse-proxy-via-azure-resource-manager-templates). Raadpleeg die sectie van het document voor informatie over het maken van een resource manager-sjabloon of het exporteren van een sjabloon voor een bestaand cluster.  De wijzigingen worden doorgevoerd in de [sectie resource type](../resource-group-authoring-templates.md) [**micro soft. Network/loadBalancers**](https://docs.microsoft.com/azure/templates/microsoft.network/loadbalancers) .
+De volgende JSON verwijst naar dezelfde sjabloon die wordt gebruikt bij het inschakelen van een [omgekeerde proxy via Azure Resource Manager sjablonen](#enable-reverse-proxy-via-azure-resource-manager-templates). Raadpleeg die sectie van het document voor informatie over het maken van een resource manager-sjabloon of het exporteren van een sjabloon voor een bestaand cluster.  De wijzigingen worden doorgevoerd in de [sectie resource type](../azure-resource-manager/templates/template-syntax.md) [**micro soft. Network/loadBalancers**](/azure/templates/microsoft.network/loadbalancers) .
 
-    ```json
-    {
-        "apiVersion": "[variables('lbApiVersion')]",
-        "type": "Microsoft.Network/loadBalancers",
+```json
+{
+    "apiVersion": "[variables('lbApiVersion')]",
+    "type": "Microsoft.Network/loadBalancers",
+    ...
+    ...
+    "loadBalancingRules": [
         ...
-        ...
-        "loadBalancingRules": [
-            ...
-            {
-                "name": "LBSFReverseProxyRule",
-                "properties": {
-                    "backendAddressPool": {
-                        "id": "[variables('lbPoolID0')]"
-                    },
-                    "backendPort": "[parameters('SFReverseProxyPort')]",
-                    "enableFloatingIP": "false",
-                    "frontendIPConfiguration": {
-                        "id": "[variables('lbIPConfig0')]"
-                    },
-                    "frontendPort": "[parameters('SFReverseProxyPort')]",
-                    "idleTimeoutInMinutes": "5",
-                    "probe": {
-                        "id": "[concat(variables('lbID0'),'/probes/SFReverseProxyProbe')]"
-                    },
-                    "protocol": "tcp"
-                }
+        {
+            "name": "LBSFReverseProxyRule",
+            "properties": {
+                "backendAddressPool": {
+                    "id": "[variables('lbPoolID0')]"
+                },
+                "backendPort": "[parameters('SFReverseProxyPort')]",
+                "enableFloatingIP": "false",
+                "frontendIPConfiguration": {
+                    "id": "[variables('lbIPConfig0')]"
+                },
+                "frontendPort": "[parameters('SFReverseProxyPort')]",
+                "idleTimeoutInMinutes": "5",
+                "probe": {
+                    "id": "[concat(variables('lbID0'),'/probes/SFReverseProxyProbe')]"
+                },
+                "protocol": "tcp"
             }
-        ],
-        "probes": [
-            ...
-            {
-                "name": "SFReverseProxyProbe",
-                "properties": {
-                    "intervalInSeconds": 5,
-                    "numberOfProbes": 2,
-                    "port":     "[parameters('SFReverseProxyPort')]",
-                    "protocol": "tcp"
-                }
-            }  
-        ]
-    }
-    ```
+        }
+    ],
+    "probes": [
+        ...
+        {
+            "name": "SFReverseProxyProbe",
+            "properties": {
+                "intervalInSeconds": 5,
+                "numberOfProbes": 2,
+                "port":     "[parameters('SFReverseProxyPort')]",
+                "protocol": "tcp"
+            }
+        }  
+    ]
+}
+```
 
 
 ## <a name="customize-reverse-proxy-behavior-using-fabric-settings"></a>Het gedrag van omgekeerde proxy's aanpassen met behulp van infrastructuur instellingen

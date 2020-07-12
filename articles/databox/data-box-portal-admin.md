@@ -5,14 +5,15 @@ services: databox
 author: alkohli
 ms.service: databox
 ms.subservice: pod
-ms.topic: how-to
-ms.date: 08/07/2019
+ms.topic: article
+ms.date: 07/20/2020
 ms.author: alkohli
-ms.openlocfilehash: 22fd67797bbec516317aadaa4b33371c5d335b36
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 2fc869448bac8303acee902b5d8819fdd3f26138
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84609451"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86258512"
 ---
 # <a name="use-the-azure-portal-to-administer-your-azure-data-box-and-azure-data-box-heavy"></a>Gebruik de Azure Portal om uw Azure Data Box en Azure Data Box Heavy te beheren
 
@@ -20,10 +21,14 @@ Dit artikel is van toepassing op zowel Azure Data Box als Azure Data Box Heavy. 
 
 Dit artikel richt zich op de taken die u kunt uitvoeren met behulp van de Azure-portal. Gebruik de Azure Portal om orders te beheren, Data Box-apparaat te beheren en de status van de order bij te houden terwijl deze wordt voltooid.
 
+[!INCLUDE [Data Box feature is in preview](../../includes/data-box-feature-is-preview-info.md)]
+
 
 ## <a name="cancel-an-order"></a>Een order annuleren
 
-Soms moet u een order om een bepaalde reden annuleren nadat u deze hebt geplaatst. U kunt de order alleen annuleren als deze nog niet is verwerkt. Wanneer de order wordt verwerkt en Data Box apparaat wordt voor bereid, is het niet mogelijk om de volg orde te annuleren.
+Soms moet u een order om een bepaalde reden annuleren nadat u deze hebt geplaatst. 
+
+Voor import-en export orders kunt u alleen de order annuleren voordat de order wordt verwerkt. Wanneer de order wordt verwerkt en Data Box apparaat wordt voor bereid, is het niet mogelijk om de volg orde te annuleren.
 
 Voer de volgende stappen uit om een order te annuleren.
 
@@ -41,13 +46,16 @@ Voer de volgende stappen uit om een order te annuleren.
 
 Klonen is handig in bepaalde situaties. Een voorbeeld: Een gebruiker heeft Data Box gebruikt om wat gegevens over te dragen. Naarmate er meer gegevens worden gegenereerd, is er een andere Data Box apparaat nodig om die gegevens over te brengen naar Azure. In dit geval kan dezelfde order gewoon worden gekloond.
 
-Voer de volgende stappen uit om een order te klonen.
+> [!IMPORTANT]
+> Klonen is niet beschikbaar voor export orders. U kunt import orders alleen klonen.
+
+Voer de volgende stappen uit om een import volgorde te klonen.
 
 1.  Ga naar **Overzicht > Klonen**. 
 
     ![Order klonen 1](media/data-box-portal-admin/clone-order1.png)
 
-2.  Alle details van de order blijven hetzelfde. De ordernaam is de oorspronkelijke ordernaam met *-Kloon* eraan toegevoegd. Schakel het selectievakje in om te bevestigen dat u de privacyinformatie hebt gelezen. Klik op **Create**.
+2.  Alle details van de order blijven hetzelfde. De ordernaam is de oorspronkelijke ordernaam met *-Kloon* eraan toegevoegd. Schakel het selectievakje in om te bevestigen dat u de privacyinformatie hebt gelezen. Klik op **Maken**.
 
 De kloon wordt binnen enkele minuten gemaakt en de portal wordt bijgewerkt met de nieuwe order.
 
@@ -121,70 +129,74 @@ Voer de volgende stappen uit om de ordergeschiedenis te downloaden.
 
 2. Klik op **Ordergeschiedenis downloaden**. In de downloadgeschiedenis ziet u een record met logboeken voor tracering van de koerier. Er worden twee sets logboeken die overeenkomen met de twee knoop punten op een Data Box Heavy. Als u naar de onderkant van dit logboek bladert, kunt u koppelingen zien naar:
     
-   - **Logboeken kopiëren**: hier vindt u de lijst met bestanden met fouten tijdens het kopiëren van gegevens van de Data Box naar uw Azure Storage-account.
+   - **Logboeken kopiëren** : laat de lijst met bestanden die zijn opgetreden tijdens het kopiëren van de gegevens van data box naar uw Azure Storage-account (import volgorde) of *vice versa* (export volgorde).
    - **Audit logboeken** : bevatten informatie over het inschakelen en openen van shares op de data Box wanneer deze zich buiten het Azure-Data Center bevindt.
-   - **BOM-bestanden**: hier vindt u de lijst met bestanden (ook wel bekend als het bestandsmanifest) die u kunt downloaden tijdens **Voorbereiding voor verzending** en de bestandsnamen, grootte en de bestandscontrolesommen.
+   - **Stuk lijst bestanden in import volgorde** : hebben de lijst met bestanden (ook wel het bestand manifest genoemd) die u tijdens **voorbereiding voor verzending** kunt downloaden en heeft bestands namen, bestands grootten en bestands controlesom.
+   - **Uitgebreide Logboeken in export volgorde** : bevatten de lijst met bestanden met bestands namen, bestands grootten en reken kundige berekeningen wanneer de gegevens uit de Azure Storage accounts naar de data box zijn gekopieerd.
 
-       ```
-       -------------------------------
-       Microsoft Data Box Order Report
-       -------------------------------
-       Name                                               : DataBoxTestOrder                              
-       StartTime(UTC)                                     : 10/31/2018 8:49:23 AM +00:00                       
-       DeviceType                                         : DataBox                                           
-       -------------------
-       Data Box Activities
-       -------------------
-       Time(UTC)                 | Activity                       | Status          | Description  
-       
-       10/31/2018 8:49:26 AM     | OrderCreated                   | Completed       |                                                   
-       11/2/2018 7:32:53 AM      | DevicePrepared                 | Completed       |                                                   
-       11/3/2018 1:36:43 PM      | ShippingToCustomer             | InProgress      | Shipment picked up. Local Time : 11/3/2018 1:36:43        PM at AMSTERDAM-NLD                                                                                
-       11/4/2018 8:23:30 PM      | ShippingToCustomer             | InProgress      | Processed at AMSTERDAM-NLD. Local Time : 11/4/2018        8:23:30 PM at AMSTERDAM-NLD                                                                        
-       11/4/2018 11:43:34 PM     | ShippingToCustomer             | InProgress      | Departed Facility in AMSTERDAM-NLD. Local Time :          11/4/2018 11:43:34 PM at AMSTERDAM-NLD                                                               
-       11/5/2018 1:38:20 AM      | ShippingToCustomer             | InProgress      | Arrived at Sort Facility LEIPZIG-DEU. Local Time :        11/5/2018 1:38:20 AM at LEIPZIG-DEU                                                                
-       11/5/2018 2:31:07 AM      | ShippingToCustomer             | InProgress      | Processed at LEIPZIG-DEU. Local Time : 11/5/2018          2:31:07 AM at LEIPZIG-DEU                                                                            
-       11/5/2018 4:05:58 AM      | ShippingToCustomer             | InProgress      | Departed Facility in LEIPZIG-DEU. Local Time :            11/5/2018 4:05:58 AM at LEIPZIG-DEU                                                                    
-       11/5/2018 4:35:43 AM      | ShippingToCustomer             | InProgress      | Transferred through LUTON-GBR. Local Time :              11/5/2018 4:35:43 AM at LUTON-GBR                                                                         
-       11/5/2018 4:52:15 AM      | ShippingToCustomer             | InProgress      | Departed Facility in LUTON-GBR. Local Time :              11/5/2018 4:52:15 AM at LUTON-GBR                                                                        
-       11/5/2018 5:47:58 AM      | ShippingToCustomer             | InProgress      | Arrived at Sort Facility LONDON-HEATHROW-GBR.            Local Time : 10/5/2018 5:47:58 AM at LONDON-HEATHROW-GBR                                                
-       11/5/2018 6:27:37 AM      | ShippingToCustomer             | InProgress      | Processed at LONDON-HEATHROW-GBR. Local Time :            11/5/2018 6:27:37 AM at LONDON-HEATHROW-GBR                                                            
-       11/5/2018 6:39:40 AM      | ShippingToCustomer             | InProgress      | Departed Facility in LONDON-HEATHROW-GBR. Local          Time : 11/5/2018 6:39:40 AM at LONDON-HEATHROW-GBR                                                    
-       11/5/2018 8:13:49 AM      | ShippingToCustomer             | InProgress      | Arrived at Delivery Facility in LAMBETH-GBR. Local        Time : 11/5/2018 8:13:49 AM at LAMBETH-GBR                                                         
-       11/5/2018 9:13:24 AM      | ShippingToCustomer             | InProgress      | With delivery courier. Local Time : 11/5/2018            9:13:24 AM at LAMBETH-GBR                                                                               
-       11/5/2018 12:03:04 PM     | ShippingToCustomer             | Completed       | Delivered - Signed for by. Local Time : 11/5/2018        12:03:04 PM at LAMBETH-GBR                                                                          
-       1/25/2019 3:19:25 PM      | ShippingToDataCenter           | InProgress      | Shipment picked up. Local Time : 1/25/2019 3:19:25        PM at LAMBETH-GBR                                                                                       
-       1/25/2019 8:03:55 PM      | ShippingToDataCenter           | InProgress      | Processed at LAMBETH-GBR. Local Time : 1/25/2019          8:03:55 PM at LAMBETH-GBR                                                                            
-       1/25/2019 8:04:58 PM      | ShippingToDataCenter           | InProgress      | Departed Facility in LAMBETH-GBR. Local Time :            1/25/2019 8:04:58 PM at LAMBETH-GBR                                                                    
-       1/25/2019 9:06:09 PM      | ShippingToDataCenter           | InProgress      | Arrived at Sort Facility LONDON-HEATHROW-GBR.            Local Time : 1/25/2019 9:06:09 PM at LONDON-HEATHROW-GBR                                                
-       1/25/2019 9:48:54 PM      | ShippingToDataCenter           | InProgress      | Processed at LONDON-HEATHROW-GBR. Local Time :            1/25/2019 9:48:54 PM at LONDON-HEATHROW-GBR                                                            
-       1/25/2019 10:30:20 PM     | ShippingToDataCenter           | InProgress      | Departed Facility in LONDON-HEATHROW-GBR. Local          Time : 1/25/2019 10:30:20 PM at LONDON-HEATHROW-GBR                                                   
-       1/26/2019 2:17:10 PM      | ShippingToDataCenter           | InProgress      | Arrived at Sort Facility BRUSSELS-BEL. Local Time        : 1/26/2019 2:17:10 PM at BRUSSELS-BEL                                                              
-       1/26/2019 2:31:57 PM      | ShippingToDataCenter           | InProgress      | Processed at BRUSSELS-BEL. Local Time : 1/26/2019        2:31:57 PM at BRUSSELS-BEL                                                                          
-       1/26/2019 3:37:53 PM      | ShippingToDataCenter           | InProgress      | Processed at BRUSSELS-BEL. Local Time : 1/26/2019        3:37:53 PM at BRUSSELS-BEL                                                                          
-       1/27/2019 11:01:45 AM     | ShippingToDataCenter           | InProgress      | Departed Facility in BRUSSELS-BEL. Local Time :          1/27/2019 11:01:45 AM at BRUSSELS-BEL                                                                 
-       1/28/2019 7:11:35 AM      | ShippingToDataCenter           | InProgress      | Arrived at Delivery Facility in AMSTERDAM-NLD.            Local Time : 1/28/2019 7:11:35 AM at AMSTERDAM-NLD                                                     
-       1/28/2019 9:07:57 AM      | ShippingToDataCenter           | InProgress      | With delivery courier. Local Time : 1/28/2019            9:07:57 AM at AMSTERDAM-NLD                                                                             
-       1/28/2019 1:35:56 PM      | ShippingToDataCenter           | InProgress      | Scheduled for delivery. Local Time : 1/28/2019            1:35:56 PM at AMSTERDAM-NLD                                                                            
-       1/28/2019 2:57:48 PM      | ShippingToDataCenter           | Completed       | Delivered - Signed for by. Local Time : 1/28/2019        2:57:48 PM at AMSTERDAM-NLD                                                                         
-       1/29/2019 2:18:43 PM      | PhysicalVerification           | Completed       |                                              
-       1/29/2019 3:49:50 PM      | DeviceBoot                     | Completed       | Appliance booted up successfully                  
-       1/29/2019 3:49:51 PM      | AnomalyDetection               | Completed       | No anomaly detected.                               
-       1/29/2019 4:55:00 PM      | DataCopy                       | Started         |                                                 
-       2/2/2019 7:07:34 PM       | DataCopy                       | Completed       | Copy Completed.                                   
-       2/4/2019 7:47:32 PM       | SecureErase                    | Started         |                                                  
-       2/4/2019 8:01:10 PM      | SecureErase                    | Completed       | Azure Data Box:DEVICESERIALNO has been sanitized          according to NIST 800-88 Rev 1.                                                                       
+   Hier volgt een voor beeld van een order geschiedenis van een import volgorde.
 
-       ------------------
-       Data Box Log Links
-       ------------------
+    ```output
+    -------------------------------
+    Microsoft Data Box Order Report
+    -------------------------------
+    Name                                               : DataBoxTestOrder                              
+    StartTime(UTC)                                     : 10/31/2018 8:49:23 AM +00:00                       
+    DeviceType                                         : DataBox                                           
+    -------------------
+    Data Box Activities
+    -------------------
+    Time(UTC)                 | Activity                       | Status          | Description  
+    
+    10/31/2018 8:49:26 AM     | OrderCreated                   | Completed       |                                                   
+    11/2/2018 7:32:53 AM      | DevicePrepared                 | Completed       |                                                   
+    11/3/2018 1:36:43 PM      | ShippingToCustomer             | InProgress      | Shipment picked up. Local Time : 11/3/2018 1:36:43        PM at AMSTERDAM-NLD                                                                                
+    11/4/2018 8:23:30 PM      | ShippingToCustomer             | InProgress      | Processed at AMSTERDAM-NLD. Local Time : 11/4/2018        8:23:30 PM at AMSTERDAM-NLD                                                                        
+    11/4/2018 11:43:34 PM     | ShippingToCustomer             | InProgress      | Departed Facility in AMSTERDAM-NLD. Local Time :          11/4/2018 11:43:34 PM at AMSTERDAM-NLD                                                               
+    11/5/2018 1:38:20 AM      | ShippingToCustomer             | InProgress      | Arrived at Sort Facility LEIPZIG-DEU. Local Time :        11/5/2018 1:38:20 AM at LEIPZIG-DEU                                                                
+    11/5/2018 2:31:07 AM      | ShippingToCustomer             | InProgress      | Processed at LEIPZIG-DEU. Local Time : 11/5/2018          2:31:07 AM at LEIPZIG-DEU                                                                            
+    11/5/2018 4:05:58 AM      | ShippingToCustomer             | InProgress      | Departed Facility in LEIPZIG-DEU. Local Time :            11/5/2018 4:05:58 AM at LEIPZIG-DEU                                                                    
+    11/5/2018 4:35:43 AM      | ShippingToCustomer             | InProgress      | Transferred through LUTON-GBR. Local Time :              11/5/2018 4:35:43 AM at LUTON-GBR                                                                         
+    11/5/2018 4:52:15 AM      | ShippingToCustomer             | InProgress      | Departed Facility in LUTON-GBR. Local Time :              11/5/2018 4:52:15 AM at LUTON-GBR                                                                        
+    11/5/2018 5:47:58 AM      | ShippingToCustomer             | InProgress      | Arrived at Sort Facility LONDON-HEATHROW-GBR.            Local Time : 10/5/2018 5:47:58 AM at LONDON-HEATHROW-GBR                                                
+    11/5/2018 6:27:37 AM      | ShippingToCustomer             | InProgress      | Processed at LONDON-HEATHROW-GBR. Local Time :            11/5/2018 6:27:37 AM at LONDON-HEATHROW-GBR                                                            
+    11/5/2018 6:39:40 AM      | ShippingToCustomer             | InProgress      | Departed Facility in LONDON-HEATHROW-GBR. Local          Time : 11/5/2018 6:39:40 AM at LONDON-HEATHROW-GBR                                                    
+    11/5/2018 8:13:49 AM      | ShippingToCustomer             | InProgress      | Arrived at Delivery Facility in LAMBETH-GBR. Local        Time : 11/5/2018 8:13:49 AM at LAMBETH-GBR                                                         
+    11/5/2018 9:13:24 AM      | ShippingToCustomer             | InProgress      | With delivery courier. Local Time : 11/5/2018            9:13:24 AM at LAMBETH-GBR                                                                               
+    11/5/2018 12:03:04 PM     | ShippingToCustomer             | Completed       | Delivered - Signed for by. Local Time : 11/5/2018        12:03:04 PM at LAMBETH-GBR                                                                          
+    1/25/2019 3:19:25 PM      | ShippingToDataCenter           | InProgress      | Shipment picked up. Local Time : 1/25/2019 3:19:25        PM at LAMBETH-GBR                                                                                       
+    1/25/2019 8:03:55 PM      | ShippingToDataCenter           | InProgress      | Processed at LAMBETH-GBR. Local Time : 1/25/2019          8:03:55 PM at LAMBETH-GBR                                                                            
+    1/25/2019 8:04:58 PM      | ShippingToDataCenter           | InProgress      | Departed Facility in LAMBETH-GBR. Local Time :            1/25/2019 8:04:58 PM at LAMBETH-GBR                                                                    
+    1/25/2019 9:06:09 PM      | ShippingToDataCenter           | InProgress      | Arrived at Sort Facility LONDON-HEATHROW-GBR.            Local Time : 1/25/2019 9:06:09 PM at LONDON-HEATHROW-GBR                                                
+    1/25/2019 9:48:54 PM      | ShippingToDataCenter           | InProgress      | Processed at LONDON-HEATHROW-GBR. Local Time :            1/25/2019 9:48:54 PM at LONDON-HEATHROW-GBR                                                            
+    1/25/2019 10:30:20 PM     | ShippingToDataCenter           | InProgress      | Departed Facility in LONDON-HEATHROW-GBR. Local          Time : 1/25/2019 10:30:20 PM at LONDON-HEATHROW-GBR                                                   
+    1/26/2019 2:17:10 PM      | ShippingToDataCenter           | InProgress      | Arrived at Sort Facility BRUSSELS-BEL. Local Time        : 1/26/2019 2:17:10 PM at BRUSSELS-BEL                                                              
+    1/26/2019 2:31:57 PM      | ShippingToDataCenter           | InProgress      | Processed at BRUSSELS-BEL. Local Time : 1/26/2019        2:31:57 PM at BRUSSELS-BEL                                                                          
+    1/26/2019 3:37:53 PM      | ShippingToDataCenter           | InProgress      | Processed at BRUSSELS-BEL. Local Time : 1/26/2019        3:37:53 PM at BRUSSELS-BEL                                                                          
+    1/27/2019 11:01:45 AM     | ShippingToDataCenter           | InProgress      | Departed Facility in BRUSSELS-BEL. Local Time :          1/27/2019 11:01:45 AM at BRUSSELS-BEL                                                                 
+    1/28/2019 7:11:35 AM      | ShippingToDataCenter           | InProgress      | Arrived at Delivery Facility in AMSTERDAM-NLD.            Local Time : 1/28/2019 7:11:35 AM at AMSTERDAM-NLD                                                     
+    1/28/2019 9:07:57 AM      | ShippingToDataCenter           | InProgress      | With delivery courier. Local Time : 1/28/2019            9:07:57 AM at AMSTERDAM-NLD                                                                             
+    1/28/2019 1:35:56 PM      | ShippingToDataCenter           | InProgress      | Scheduled for delivery. Local Time : 1/28/2019            1:35:56 PM at AMSTERDAM-NLD                                                                            
+    1/28/2019 2:57:48 PM      | ShippingToDataCenter           | Completed       | Delivered - Signed for by. Local Time : 1/28/2019        2:57:48 PM at AMSTERDAM-NLD                                                                         
+    1/29/2019 2:18:43 PM      | PhysicalVerification           | Completed       |                                              
+    1/29/2019 3:49:50 PM      | DeviceBoot                     | Completed       | Appliance booted up successfully                  
+    1/29/2019 3:49:51 PM      | AnomalyDetection               | Completed       | No anomaly detected.                               
+    1/29/2019 4:55:00 PM      | DataCopy                       | Started         |                                                 
+    2/2/2019 7:07:34 PM       | DataCopy                       | Completed       | Copy Completed.                                   
+    2/4/2019 7:47:32 PM       | SecureErase                    | Started         |                                                  
+    2/4/2019 8:01:10 PM       | SecureErase                    | Completed       | Azure Data Box:DEVICESERIALNO has been sanitized          according to NIST 800-88 Rev 1.                                                                       
 
-       Account Name         : Gus                                                       
-       Copy Logs Path       : databoxcopylog/DataBoxTestOrder_CHC533180024_CopyLog_73a81b2d613547a28ecb7b1612fe93ca.xml
-       Audit Logs Path      : azuredatabox-chainofcustodylogs\7fc6cac9-9cd6-4dd8-ae22-1ce479666282\chc533180024
-       BOM Files Path       : azuredatabox-chainofcustodylogs\7fc6cac9-9cd6-4dd8-ae22-1ce479666282\chc533180024      
-       ```
-     U kunt vervolgens naar uw opslagaccount gaan en de logboeken met kopieerbewerkingen bekijken.
+    ------------------
+    Data Box Log Links
+    ------------------
+
+    Account Name         : Gus                                                       
+    Copy Logs Path       : databoxcopylog/DataBoxTestOrder_CHC533180024_CopyLog_73a81b2d613547a28ecb7b1612fe93ca.xml
+    Audit Logs Path      : azuredatabox-chainofcustodylogs\7fc6cac9-9cd6-4dd8-ae22-1ce479666282\chc533180024
+    BOM Files Path       : azuredatabox-chainofcustodylogs\7fc6cac9-9cd6-4dd8-ae22-1ce479666282\chc533180024      
+    ```
+
+    U kunt vervolgens naar uw opslagaccount gaan en de logboeken met kopieerbewerkingen bekijken.
 
 ![Logboeken in opslagaccounts](media/data-box-portal-admin/logs-in-storage-acct-2.png)
 
@@ -196,7 +208,11 @@ U kunt ook de bewakingsketenlogboeken bekijken die de auditlogboeken en de BOM-b
 
 Wanneer de apparaatstatus in de portal verandert, wordt u per e-mail op de hoogte gesteld.
 
-|Orderstatus |Description |
+### <a name="statuses-for-import-order"></a>Statussen voor import order
+
+Dit zijn de statussen voor een import volgorde.
+
+|Orderstatus |Beschrijving |
 |---------|---------|
 |Besteld     | De order is geplaatst. <br>Als het apparaat beschikbaar is, identificeert Microsoft het apparaat dat moet worden verzonden en bereidt Microsoft het apparaat voor. <br> Als het apparaat niet onmiddellijk beschikbaar is, wordt de order verwerkt zodra het apparaat beschikbaar is. Het kan enkele dagen tot een paar maanden duren voordat de order is verwerkt. Als de order niet binnen 90 dagen kan worden voltooid, wordt deze geannuleerd en wordt u op de hoogte gesteld.         |
 |Verwerkt     | De order is verwerkt. In overeenstemming met uw order wordt het apparaat in het datacenter voorbereid voor verzending.         |
@@ -209,7 +225,43 @@ Wanneer de apparaatstatus in de portal verandert, wordt u per e-mail op de hoogt
 |Voltooid met fouten| Het kopiëren van gegevens is voltooid, maar er zijn fouten opgetreden tijdens het kopiëren. <br> Bekijk de logboeken met kopieerbewerkingen via het pad in de Azure-portal. Zie [voor beelden van Kopieer Logboeken wanneer het uploaden is voltooid met fouten](https://docs.microsoft.com/azure/databox/data-box-logs#upload-completed-with-errors).   |
 |Voltooid met waarschuwingen| De gegevens kopie is voltooid, maar de gegevens zijn gewijzigd. De gegevens bevatten niet-kritieke BLOB-of bestandsnaam fouten die zijn opgelost door het wijzigen van de naam van het bestand of de blob. <br> Bekijk de logboeken met kopieerbewerkingen via het pad in de Azure-portal. Noteer de wijzigingen in uw gegevens. Zie [voor beelden van Kopieer Logboeken wanneer het uploaden is voltooid met waarschuwingen](https://docs.microsoft.com/azure/databox/data-box-logs#upload-completed-with-warnings).   |
 |Geannuleerd            |De order is geannuleerd. <br> U hebt de order zelf geannuleerd, of er is een fout opgetreden waardoor de service de order heeft geannuleerd. Als de order niet binnen 90 dagen kan worden voltooid, wordt deze ook geannuleerd en wordt u op de hoogte gesteld.     |
-|Opruimen | De gegevens op het apparaat worden gewist. Het opruimen van het apparaat wordt als voltooid beschouwd zodra de ordergeschiedenis beschikbaar is om te downloaden in de Azure-portal.|
+|Opschonen | De gegevens op het apparaat worden gewist. Het opruimen van het apparaat wordt als voltooid beschouwd zodra de ordergeschiedenis beschikbaar is om te downloaden in de Azure-portal.|
+
+### <a name="statuses-for-export-order"></a>Statussen voor export volgorde
+
+Dit zijn de statussen voor een export volgorde.
+
+|Orderstatus |Beschrijving |
+|---------|---------|
+|Besteld     | Er is een export volgorde geplaatst. <br>Als het apparaat beschikbaar is, identificeert Microsoft het apparaat dat moet worden verzonden en bereidt Microsoft het apparaat voor. <br> Als het apparaat niet onmiddellijk beschikbaar is, wordt de order verwerkt zodra het apparaat beschikbaar is. Het kan enkele dagen tot een paar maanden duren voordat de order is verwerkt. Als de order niet binnen 90 dagen kan worden voltooid, wordt deze geannuleerd en wordt u op de hoogte gesteld.         |
+|Geannuleerd            |De order is geannuleerd. <br> U hebt de volg orde geannuleerd (u kunt alleen annuleren voordat de order wordt verwerkt) of er is een fout opgetreden. de order is geannuleerd door de service. Als de order niet binnen 90 dagen kan worden voltooid, wordt deze ook geannuleerd en wordt u op de hoogte gesteld.     |
+|Verwerkt     | De order is verwerkt. Op basis van uw bestelling wordt het apparaat voor bereid voor het kopiëren van gegevens in het Data Center. Er worden apparaat shares gemaakt.         |
+|De gegevens kopie wordt uitgevoerd     | Er wordt een gegevens kopie van de opgegeven Azure Storage accounts naar het apparaat uitgevoerd. Houd de kopieervoortgang voor uw order bij in de Azure-portal. <br> Wacht totdat het kopiëren van gegevens is voltooid. |
+|Kopiëren is voltooid     | De gegevens kopie van de opgegeven Azure Storage accounts naar het apparaat is voltooid. Een uitgebreid logboek bestand (als de optie in de volg orde is ingeschakeld) en er in uw opslag account een kopie logboek wordt gemaakt. Het uitgebreide logboek bevat de informatie over alle bestanden (naam, pad, reken controlesom) die naar het apparaat worden gekopieerd. Het Kopieer logboek bevat de samen vatting van het kopieer proces, met inbegrip van een lijst met bestanden die niet kunnen worden gekopieerd als gevolg van fouten.<br> De gegevens van het opslag account blijven ongewijzigd. |
+|Kopiëren voltooid met fouten| Het kopiëren van gegevens is voltooid, maar er zijn fouten opgetreden tijdens het kopiëren. <br> Controleer de Kopieer Logboeken in het Azure Storage-account met behulp van het pad in de Azure Portal. Zie [voor beelden van Kopieer Logboeken wanneer het downloaden is voltooid met fouten](https://docs.microsoft.com/azure/databox/data-box-logs#upload-completed-with-errors).   |
+|Kopiëren voltooid met waarschuwingen| De gegevens kopie van Azure Storage account is voltooid, maar de gegevens bevatten niet-kritieke fouten. <br> Bekijk de logboeken met kopieerbewerkingen via het pad in de Azure-portal. Noteer de niet-kritieke fouten. Zie [voor beelden van Kopieer Logboeken wanneer het downloaden is voltooid met waarschuwingen](https://docs.microsoft.com/azure/databox/data-box-logs#upload-completed-with-warnings).   |
+|Kopiëren is mislukt met fouten| Het kopiëren van gegevens uit Azure Storage account is mislukt en de volg orde wordt beëindigd. Er wordt geen apparaat verzonden.<br> Controleer de Kopieer Logboeken in het Azure Storage-account met behulp van het pad in de Azure Portal. Zie [voor beelden van Kopieer Logboeken wanneer het downloaden is mislukt met fouten](https://docs.microsoft.com/azure/databox/data-box-logs#upload-completed-with-errors).   |
+|Verzonden     |De order is verzonden. Gebruik het volgnummer dat in uw order in de portal wordt weergegeven om de verzending bij te houden.        |
+|Afgeleverd     |De verzending is afgeleverd op het adres dat in de order is opgegeven.        |
+|Opgehaald     |Uw retourzending is opgehaald en gescand door de vervoerder.         |
+|Ontvangen     | Uw apparaat is ontvangen en gescand in het Azure-datacenter. <br> De verzen ding wordt geïnspecteerd.      |
+|Voltooid           |De volg orde is voltooid.     |
+|Opschonen | De gegevens op het apparaat worden gewist. Het opruimen van het apparaat wordt als voltooid beschouwd zodra de ordergeschiedenis beschikbaar is om te downloaden in de Azure-portal.|
+
+> [!NOTE]
+> Als de Kopieer taak voor het exporteren van gegevens van Azure Storage accounts naar Data Box is voltooid met fouten of waarschuwingen, wordt het apparaat nog steeds geleverd. Alleen als er een Kopieer fout is opgetreden, wordt de order beëindigd en wordt het apparaat niet verzonden.
+
+
+Als u een zelfbeheerde verzen ding gebruikt, ziet u nadat de kopie is voltooid en voordat u het apparaat ontvangt, de volgende statussen (in plaats van de bestanden die in de voor gaande tabel worden genoemd):
+
+|Orderstatus |Beschrijving |
+|---------|---------|
+|Gereed voor ophalen in azure Data Center      |Het apparaat kan worden opgenomen in het Azure-Data Center.        |
+|Opgehaald    |U hebt het apparaat geselecteerd.         |
+|Klaar om te ontvangen in azure Data Center     |Het apparaat kan worden ontvangen in het Azure-Data Center.        |
+|Ontvangen     |Het apparaat wordt ontvangen in het Azure-Data Center.      |
+
+
 
 
 

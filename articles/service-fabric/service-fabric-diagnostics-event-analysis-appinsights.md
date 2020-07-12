@@ -5,11 +5,12 @@ author: srrengar
 ms.topic: conceptual
 ms.date: 11/21/2018
 ms.author: srrengar
-ms.openlocfilehash: 3b7cb09d67080d49f53d9dd48b5ed0f8f3a54884
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: a912b7a6d918a40aaae54c9b177250dc3c30c84d
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83701894"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86256557"
 ---
 # <a name="event-analysis-and-visualization-with-application-insights"></a>Gebeurtenis analyse en visualisatie met Application Insights
 
@@ -37,7 +38,7 @@ Application Insights heeft een specifieke weer gave voor het uitvoeren van query
 
 ![Details van Application Insights-aanvraag](media/service-fabric-diagnostics-event-analysis-appinsights/ai-metrics-explorer.png)
 
-Als u meer wilt weten over de mogelijkheden van de Application Insights Portal, gaat u naar de [documentatie over Application Insights Portal](../azure-monitor/app/app-insights-dashboards.md).
+Als u meer wilt weten over de mogelijkheden van de Application Insights Portal, gaat u naar de [documentatie over Application Insights Portal](../azure-monitor/app/overview-dashboard.md).
 
 ### <a name="configuring-application-insights-with-eventflow"></a>Application Insights configureren met Event flow
 
@@ -66,11 +67,11 @@ Als u in .NET ontwikkelt en waarschijnlijk enkele van de programmeer modellen va
 
 Zodra u Application Insights hebt geconfigureerd als uitvoer voor uw gebeurtenissen en Logboeken, moeten de gegevens in een paar minuten worden weer gegeven in uw Application Insights resource. Ga naar de Application Insights resource waarmee u naar het Application Insights resource dashboard gaat. Klik op **zoeken** op de taak balk Application Insights om de meest recente traceringen te zien die zijn ontvangen en om ze te kunnen filteren.
 
-*Metrics Explorer* is een handig hulp middel voor het maken van aangepaste Dash boards op basis van metrische gegevens die uw toepassingen, services en cluster kunnen rapporteren. Zie [metrische gegevens verkennen in Application Insights](../azure-monitor/app/metrics-explorer.md) voor het instellen van een paar grafieken die u zelf hebt gemaakt op basis van de door u verzamelde informatie.
+*Metrics Explorer* is een handig hulp middel voor het maken van aangepaste Dash boards op basis van metrische gegevens die uw toepassingen, services en cluster kunnen rapporteren. Zie [metrische gegevens verkennen in Application Insights](../azure-monitor/platform/metrics-charts.md) voor het instellen van een paar grafieken die u zelf hebt gemaakt op basis van de door u verzamelde informatie.
 
-Als u op **Analytics** klikt, gaat u naar de Application Insights Analytics-Portal, waar u kunt zoeken naar gebeurtenissen en traceringen met een grotere omvang en optioneel. Meer informatie hierover vindt u [in Application Insights](../azure-monitor/app/analytics.md).
+Als u op **Analytics** klikt, gaat u naar de Application Insights Analytics-Portal, waar u kunt zoeken naar gebeurtenissen en traceringen met een grotere omvang en optioneel. Meer informatie hierover vindt u [in Application Insights](../azure-monitor/log-query/log-query-overview.md).
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* [Stel waarschuwingen in AI in](/azure/azure-monitor/platform/alerts-log) om een melding te ontvangen over wijzigingen in prestaties of gebruik
+* [Stel waarschuwingen in AI in](../azure-monitor/platform/alerts-log.md) om een melding te ontvangen over wijzigingen in prestaties of gebruik
 * [Slimme detectie in Application Insights](../azure-monitor/app/proactive-diagnostics.md) voert een proactieve analyse uit van de telemetrie die wordt verzonden naar Application Insights om u te waarschuwen over mogelijke prestatie problemen

@@ -4,12 +4,12 @@ description: U kunt als volgt ondersteuning voor beheerde identiteiten inschakel
 ms.topic: article
 ms.date: 03/11/2019
 ms.custom: sfrev
-ms.openlocfilehash: 73c890e960f26b8e0e3fa924d9ff6b7a4cd4a4dc
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 722c507300cc5766d162f336f77f60293c5c90dc
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81415694"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86257616"
 ---
 # <a name="configure-managed-identity-support-in-an-existing-service-fabric-cluster"></a>Ondersteuning voor beheerde identiteiten configureren in een bestaand Service Fabric cluster
 
@@ -40,7 +40,7 @@ Als u de service beheerde identiteits token in een bestaand cluster wilt inschak
 ]
 ```
 
-Om de wijzigingen van kracht te laten worden, moet u ook het upgrade beleid wijzigen om een geforceerde opnieuw op te geven van de Service Fabric runtime op elk knoop punt wanneer de upgrade wordt uitgevoerd via het cluster. Opnieuw opstarten zorgt ervoor dat de nieuw ingeschakelde systeem service wordt gestart en wordt uitgevoerd op elk knoop punt. In het onderstaande fragment `forceRestart` is de essentiële instelling voor het inschakelen van opnieuw opstarten. Voor de overige para meters gebruikt u de hieronder beschreven waarden of gebruikt u bestaande aangepaste waarden die al zijn opgegeven voor de cluster bron. Aangepaste instellingen voor Fabric-upgrade beleid (' upgradeDescription ') kunnen worden weer gegeven vanuit Azure portal door de optie infrastructuur upgrades te selecteren op de Service Fabric resource of resources.azure.com. Standaard opties voor het upgrade beleid (' upgradeDescription ') zijn niet zichtbaar vanuit Power shell of resources.azure.com. Zie [ClusterUpgradePolicy](https://docs.microsoft.com/dotnet/api/microsoft.azure.management.servicefabric.models.clusterupgradepolicy?view=azure-dotnet) voor meer informatie.  
+Om de wijzigingen van kracht te laten worden, moet u ook het upgrade beleid wijzigen om een geforceerde opnieuw op te geven van de Service Fabric runtime op elk knoop punt wanneer de upgrade wordt uitgevoerd via het cluster. Opnieuw opstarten zorgt ervoor dat de nieuw ingeschakelde systeem service wordt gestart en wordt uitgevoerd op elk knoop punt. In het onderstaande fragment `forceRestart` is de essentiële instelling voor het inschakelen van opnieuw opstarten. Voor de overige para meters gebruikt u de hieronder beschreven waarden of gebruikt u bestaande aangepaste waarden die al zijn opgegeven voor de cluster bron. Aangepaste instellingen voor Fabric-upgrade beleid (' upgradeDescription ') kunnen worden weer gegeven vanuit Azure portal door de optie infrastructuur upgrades te selecteren op de Service Fabric resource of resources.azure.com. Standaard opties voor het upgrade beleid (' upgradeDescription ') zijn niet zichtbaar vanuit Power shell of resources.azure.com. Zie [ClusterUpgradePolicy](/dotnet/api/microsoft.azure.management.servicefabric.models.clusterupgradepolicy?view=azure-dotnet) voor meer informatie.  
 
 ```json
 "upgradeDescription": {

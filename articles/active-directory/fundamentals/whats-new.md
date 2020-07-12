@@ -1,5 +1,5 @@
 ---
-title: Wat is nieuw? Release opmerkingen-Azure Active Directory | Microsoft Docs
+title: Wat is er nieuw? Release opmerkingen-Azure Active Directory | Microsoft Docs
 description: Ontdek wat er nieuw is met Azure Active Directory, zoals de nieuwste opmerkingen bij de release, bekende problemen, oplossingen voor fouten, afgeschafte functionaliteit en aanstaande wijzigingen.
 services: active-directory
 author: msaburnley
@@ -16,12 +16,12 @@ ms.author: ajburnle
 ms.reviewer: dhanyahk
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 30c6be98eeca4433798ad8ed2bacb9338331b112
-ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
+ms.openlocfilehash: cbf811fdb8ff051ec1bb782eb3da12ea45b29bdf
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86170442"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86256813"
 ---
 # <a name="whats-new-in-azure-active-directory"></a>Wat is er nieuw in Azure Active Directory?
 
@@ -259,7 +259,7 @@ We hebben een nieuwe riskEventsTypes_v2-eigenschap (teken reeks) geïntroduceerd
 **Product mogelijkheden:** Beveiliging van identiteits beveiliging &
  
 
-De volgende wijzigingen worden aangebracht in de e-mail meldingen voor MFA voor MFA:
+De volgende wijzigingen worden in de e-mail meldingen voor Cloud MFA aangebracht:
 
 E-mail meldingen worden verzonden vanaf het volgende adres: azure-noreply@microsoft.com en msonlineservicesteam@microsoftonline.com . De inhoud van e-mail berichten voor fraude bestrijding worden bijgewerkt om beter te kunnen aangeven wat de vereiste stappen zijn voor het deblokkeren van het gebruik.
 

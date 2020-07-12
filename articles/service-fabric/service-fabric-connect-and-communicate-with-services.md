@@ -5,11 +5,12 @@ author: vturecek
 ms.topic: conceptual
 ms.date: 11/01/2017
 ms.author: vturecek
-ms.openlocfilehash: e57d169decf482f8b8be1e3b31a07690bc222c5d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: a873a32aa8c12b535c06711ea7dc7a4aa920a27f
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "75458243"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86257767"
 ---
 # <a name="connect-and-communicate-with-services-in-service-fabric"></a>Verbinding maken en communiceren met Services in Service Fabric
 In Service Fabric wordt een service ergens in een Service Fabric cluster uitgevoerd, meestal verdeeld over meerdere Vm's. Het kan worden verplaatst van de ene locatie naar de andere, hetzij door de eigenaar van de service, hetzij automatisch door Service Fabric. Services zijn niet statisch gebonden aan een bepaalde machine of een bepaald adres.
@@ -162,14 +163,14 @@ Het is belang rijk te weten dat de Azure Load Balancer en de test alleen weten o
 Het Reliable Services Framework wordt geleverd met verschillende vooraf ontwikkelde communicatie opties. De beslissing over welke het voor u het meest geschikt is, is afhankelijk van de keuze van het programmeer model, het communicatie raamwerk en de programmeer taal waarin uw services zijn geschreven.
 
 * **Geen specifiek Protocol:**  Als u geen specifieke communicatie raamwerk hebt, maar u al iets aan de slag wilt gaan, kunt u de ideale optie voor externe procedures gebruiken, waardoor het Reliable Services en Reliable Actors sterk getypte aanroepen op [afstand worden uitgevoerd](service-fabric-reliable-services-communication-remoting.md). Dit is de eenvoudigste en snelste manier om aan de slag te gaan met Service communicatie. Externe communicatie van service verzorgt de omzetting van service adressen, verbindingen, opnieuw proberen en fout afhandeling. Dit is beschikbaar voor zowel C#-als Java-toepassingen.
-* **Http**: voor neutraal-communicatie biedt http een industrie standaard keuze met hulpprogram MA'S en HTTP-servers die beschikbaar zijn in veel verschillende talen, die allemaal door service Fabric worden ondersteund. Services kunnen gebruikmaken van elke beschik bare HTTP-stack, waaronder [ASP.net Web API](service-fabric-reliable-services-communication-webapi.md) voor C#-toepassingen. Clients die zijn geschreven in C#, kunnen gebruikmaken `ICommunicationClient` `ServicePartitionClient` van de klassen en, terwijl u voor Java de `CommunicationClient` klassen and gebruikt `FabricServicePartitionClient` , [voor service omzetting, http-verbindingen en lussen](service-fabric-reliable-services-communication.md).
+* **Http**: voor neutraal-communicatie biedt http een industrie standaard keuze met hulpprogram MA'S en HTTP-servers die beschikbaar zijn in veel verschillende talen, die allemaal door service Fabric worden ondersteund. Services kunnen gebruikmaken van elke beschik bare HTTP-stack, waaronder [ASP.net Web API](./service-fabric-reliable-services-communication-aspnetcore.md) voor C#-toepassingen. Clients die zijn geschreven in C#, kunnen gebruikmaken `ICommunicationClient` `ServicePartitionClient` van de klassen en, terwijl u voor Java de `CommunicationClient` klassen and gebruikt `FabricServicePartitionClient` , [voor service omzetting, http-verbindingen en lussen](service-fabric-reliable-services-communication.md).
 * **WCF**: als u bestaande code hebt die gebruikmaakt van WCF als uw communicatie raamwerk, kunt u de `WcfCommunicationListener` voor de server zijde en `WcfCommunicationClient` en `ServicePartitionClient` klassen voor de client gebruiken. Dit is echter alleen beschikbaar voor C#-toepassingen op op Windows gebaseerde clusters. Zie dit artikel over [op WCF gebaseerde implementatie van de communicatie stack](service-fabric-reliable-services-communication-wcf.md)voor meer informatie.
 
 ## <a name="using-custom-protocols-and-other-communication-frameworks"></a>Aangepaste protocollen en andere communicatie raamwerken gebruiken
 Services kunnen gebruikmaken van elk protocol of Framework voor communicatie, of het nu een aangepast binair protocol via TCP-sockets is, of het streamen van gebeurtenissen via [azure Event hubs](https://azure.microsoft.com/services/event-hubs/) of [Azure IOT hub](https://azure.microsoft.com/services/iot-hub/). Service Fabric biedt communicatie-Api's waarmee u uw communicatie stack kunt aansluiten, terwijl al het werk dat u wilt detecteren en verbinding maakt, van u wordt afgeleid. Raadpleeg dit artikel over het [betrouw bare communicatie model voor services](service-fabric-reliable-services-communication.md) voor meer informatie.
 
 ## <a name="next-steps"></a>Volgende stappen
-Meer informatie over de concepten en Api's die beschikbaar zijn in het [communicatie model van reliable Services](service-fabric-reliable-services-communication.md). Ga vervolgens snel aan de slag met [service Remoting](service-fabric-reliable-services-communication-remoting.md) of Ga dieper in voor meer informatie over het schrijven van een communicatie-listener met behulp [van Web API met OWIN Self-Host](service-fabric-reliable-services-communication-webapi.md).
+Meer informatie over de concepten en Api's die beschikbaar zijn in het [communicatie model van reliable Services](service-fabric-reliable-services-communication.md). Ga vervolgens snel aan de slag met [service Remoting](service-fabric-reliable-services-communication-remoting.md) of Ga dieper in voor meer informatie over het schrijven van een communicatie-listener met behulp [van Web API met OWIN Self-Host](./service-fabric-reliable-services-communication-aspnetcore.md).
 
 [1]: ./media/service-fabric-connect-and-communicate-with-services/serviceendpoints.png
 [2]: ./media/service-fabric-connect-and-communicate-with-services/namingservice.png

@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 3/12/2020
 ms.topic: conceptual
 ms.service: digital-twins
-ms.openlocfilehash: 248725c7281c8c63e4ca5c0c70428b4fc997d350
-ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
+ms.openlocfilehash: 955a3b8d12eb3b93bc9d44c624953cd5c1007318
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86142412"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86258206"
 ---
 # <a name="understand-digital-twins-and-their-twin-graph"></a>Meer informatie over digitale apparaatdubbels en hun twee grafieken
 
@@ -21,11 +21,27 @@ In een Azure Digital Apparaatdubbels-oplossing worden de entiteiten in uw omgevi
 > [!TIP]
 > ' Azure Digital Apparaatdubbels ' verwijst naar deze Azure-service als geheel. ' Digitale twee (en) ' of alleen ' dubbele (s) ' verwijzen naar afzonderlijke dubbele knoop punten in uw exemplaar van de service.
 
-## <a name="creating-digital-twins"></a>Digitale tweelingen maken
+## <a name="digital-twins"></a>Digitale apparaatdubbels
 
 Voordat u een digitale dubbele in uw Azure Digital Apparaatdubbels-exemplaar kunt maken, moet u een *model* hebben dat naar de service wordt geüpload. Een model beschrijft de set eigenschappen, telemetrie-berichten en relaties die een bepaalde dubbele kan hebben, onder andere. Zie [concepten: Custom modelers](concepts-models.md)(Engelstalig) voor informatie over de typen die in een model zijn gedefinieerd.
 
 Na het maken en uploaden van een model, kan uw client-app een exemplaar van het type maken. Dit is een digitale dubbele. Nadat u bijvoorbeeld een model van de *vloer*hebt gemaakt, kunt u een of meer digitale apparaatdubbels maken die gebruikmaken van dit type (zoals een *Floor*-type met dubbele naam *GroundFloor*, een andere met de naam *Floor2*, enzovoort). 
+
+## <a name="relationships-a-graph-of-digital-twins"></a>Relaties: een grafiek met digitale apparaatdubbels
+
+Apparaatdubbels zijn verbonden met een twee ledige grafiek met hun relaties. De relaties die een dubbele kan hebben, worden gedefinieerd als onderdeel van het model.  
+
+De model *Floor* kan bijvoorbeeld een *contains* -relatie definiëren die de apparaatdubbels van het type *room*bedoelt. Met deze definitie kunt u met Azure Digital Apparaatdubbels de relaties maken van elke *vloer* , in plaats van een wille keurige *kamer* , met inbegrip *van apparaatdubbels* die subtypen *bevatten.* 
+
+Het resultaat van dit proces is een set knoop punten (de Digital apparaatdubbels) die is verbonden via randen (hun relaties) in een grafiek.
+
+[!INCLUDE [visualizing with Azure Digital Twins explorer](../../includes/digital-twins-visualization.md)]
+
+## <a name="create-with-the-apis"></a>Maken met de Api's
+
+In deze sectie ziet u hoe u digitale apparaatdubbels en relaties van een client toepassing maakt. Het bevat .NET-code voorbeelden die gebruikmaken van de [DigitalTwins-api's](how-to-use-apis-sdks.md), om aanvullende context te bieden over wat er in elk van deze concepten gaat.
+
+### <a name="create-digital-twins"></a>Digitale tweelingen maken
 
 Hieronder vindt u een code fragment van de clientcode die gebruikmaakt van de [DigitalTwins-api's](how-to-use-apis-sdks.md) voor het instantiëren van een dubbele van het type *kamer*.
 
@@ -59,11 +75,7 @@ public Task<boolean> CreateRoom(string id, double temperature, double humidity)
 }
 ```
 
-## <a name="relationships-creating-a-graph-of-digital-twins"></a>Relaties: een grafiek met digitale apparaatdubbels maken
-
-Apparaatdubbels zijn verbonden met een twee ledige grafiek met hun relaties. De relaties die een dubbele kan hebben, worden gedefinieerd als onderdeel van het model.  
-
-De model *Floor* kan bijvoorbeeld een *contains* -relatie definiëren die de apparaatdubbels van het type *room*bedoelt. Met deze definitie kunt u met Azure Digital Apparaatdubbels de relaties maken van elke *vloer* , in plaats van een wille keurige *kamer* , met inbegrip *van apparaatdubbels* die subtypen *bevatten.* 
+### <a name="create-relationships"></a>Relaties maken
 
 Hier volgt een voor beeld van een client code die gebruikmaakt van de [DigitalTwins-api's](how-to-use-apis-sdks.md) voor het bouwen van een relatie tussen een van de twee *basis*typen, *GroundFloor* en een *kamer*type digitale dubbele naam *Cafe*.
 
@@ -84,8 +96,6 @@ try
     Console.WriteLine($"*** Error creating relationship: {e.Response.StatusCode}");
 }
 ```
-
-Het resultaat van dit proces is een set knoop punten (de Digital apparaatdubbels) die is verbonden via randen (hun relaties) in een grafiek.
 
 ## <a name="json-representations-of-graph-elements"></a>JSON-representaties van grafiek elementen
 

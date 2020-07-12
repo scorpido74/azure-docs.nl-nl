@@ -5,25 +5,25 @@ author: abhishekram
 ms.topic: conceptual
 ms.date: 10/26/2017
 ms.author: abhisram
-ms.openlocfilehash: e6e9fb66368461e0d3ebdd2709f4ced0e796bea5
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: a38a11d9cf062cd0a45890d43afe9b2530b2b7bb
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85846594"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86258461"
 ---
 # <a name="diagnostics-and-performance-monitoring-for-reliable-actors"></a>Diagnose- en prestatiecontrole voor betrouwbare actoren
-De Reliable Actors runtime verzendt gebeurtenissen van [Event source](https://msdn.microsoft.com/library/system.diagnostics.tracing.eventsource.aspx) en [prestatie meter items](https://msdn.microsoft.com/library/system.diagnostics.performancecounter.aspx). Deze bieden inzicht in hoe de runtime werkt en helpt u bij het oplossen van problemen en het controleren van prestaties.
+De Reliable Actors runtime verzendt gebeurtenissen van [Event source](/dotnet/api/system.diagnostics.tracing.eventsource?view=netcore-3.1) en [prestatie meter items](/dotnet/api/system.diagnostics.performancecounter?view=dotnet-plat-ext-3.1). Deze bieden inzicht in hoe de runtime werkt en helpt u bij het oplossen van problemen en het controleren van prestaties.
 
 ## <a name="eventsource-events"></a>Event source-gebeurtenissen
 De naam van de Event source-provider voor de Reliable Actors runtime is ' micro soft-ServiceFabric-Actors '. Gebeurtenissen van deze gebeurtenis bron worden weer gegeven in het venster [diagnostische gebeurtenissen](service-fabric-diagnostics-how-to-monitor-and-diagnose-services-locally.md#view-service-fabric-system-events-in-visual-studio) wanneer de actor-toepassing [in Visual Studio wordt opgespoord](service-fabric-debugging-your-application.md).
 
-Voor beelden van hulpprogram ma's en technologieën die u helpen bij het verzamelen en/of weer geven van Event source-gebeurtenissen zijn [PerfView](https://www.microsoft.com/download/details.aspx?id=28567), [Azure Diagnostics](../cloud-services/cloud-services-dotnet-diagnostics.md), [semantische logboek registratie](https://msdn.microsoft.com/library/dn774980.aspx)en de [TraceEvent-bibliotheek van micro soft](https://www.nuget.org/packages/Microsoft.Diagnostics.Tracing.TraceEvent).
+Voor beelden van hulpprogram ma's en technologieën die u helpen bij het verzamelen en/of weer geven van Event source-gebeurtenissen zijn [PerfView](https://www.microsoft.com/download/details.aspx?id=28567), [Azure Diagnostics](../cloud-services/cloud-services-dotnet-diagnostics.md), [semantische logboek registratie](/previous-versions/msp-n-p/dn774980(v=pandp.10))en de [TraceEvent-bibliotheek van micro soft](https://www.nuget.org/packages/Microsoft.Diagnostics.Tracing.TraceEvent).
 
 ### <a name="keywords"></a>Trefwoorden
 Alle gebeurtenissen die deel uitmaken van de Reliable Actors Event source zijn gekoppeld aan een of meer tref woorden. Hiermee wordt gefilterd op gebeurtenissen die worden verzameld. De volgende trefwoord bits zijn gedefinieerd.
 
-| Bitmask | Description |
+| Bitmask | Beschrijving |
 | --- | --- |
 | 0x1 |Set van belang rijke gebeurtenissen die de werking van de runtime van de Fabric actors samenvatten. |
 | 0x2 |Set gebeurtenissen die de actor-methode aanroepen beschrijven. Zie het [inleidende onderwerp over actors](service-fabric-reliable-actors-introduction.md)voor meer informatie. |
@@ -40,7 +40,7 @@ De Reliable Actors runtime definieert de volgende categorieën voor prestatie me
 
 Elk van de bovenstaande categorieën heeft een of meer tellers.
 
-De [Windows Performance Monitor](https://technet.microsoft.com/library/cc749249.aspx) -toepassing die standaard beschikbaar is in het Windows-besturings systeem, kan worden gebruikt voor het verzamelen en weer geven van gegevens van prestatie meter items. [Azure Diagnostics](../cloud-services/cloud-services-dotnet-diagnostics.md) is een andere optie voor het verzamelen van gegevens over prestatie meter items en het uploaden ervan naar Azure-tabellen.
+De [Windows Performance Monitor](/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/cc749249(v=ws.11)) -toepassing die standaard beschikbaar is in het Windows-besturings systeem, kan worden gebruikt voor het verzamelen en weer geven van gegevens van prestatie meter items. [Azure Diagnostics](../cloud-services/cloud-services-dotnet-diagnostics.md) is een andere optie voor het verzamelen van gegevens over prestatie meter items en het uploaden ervan naar Azure-tabellen.
 
 ### <a name="performance-counter-instance-names"></a>Instantie namen van prestatie meter items
 Een cluster met een groot aantal actor Services-of actor service-partities krijgt een groot aantal instanties voor prestatie meter items voor actors. De instantie namen van het prestatie meter item kunnen helpen bij het identificeren van de specifieke [partitie](service-fabric-reliable-actors-platform.md#service-fabric-partition-concepts-for-actors) en actor methode (indien van toepassing) waaraan het prestatie meter exemplaar is gekoppeld.
@@ -50,7 +50,7 @@ De namen van de tellers voor de categorie `Service Fabric Actor` hebben de volge
 
 `ServiceFabricPartitionID_ActorsRuntimeInternalID`
 
-*ServiceFabricPartitionID* is de teken reeks representatie van de service Fabric partitie-id waaraan het prestatie meter exemplaar is gekoppeld. De partitie-ID is een GUID en de teken reeks representatie wordt gegenereerd via de [`Guid.ToString`](https://msdn.microsoft.com/library/97af8hh4.aspx) methode met de indelings specificatie "D".
+*ServiceFabricPartitionID* is de teken reeks representatie van de service Fabric partitie-id waaraan het prestatie meter exemplaar is gekoppeld. De partitie-ID is een GUID en de teken reeks representatie wordt gegenereerd via de [`Guid.ToString`](/dotnet/api/system.guid.tostring?view=netcore-3.1#System_Guid_ToString_System_String_) methode met de indelings specificatie "D".
 
 *ActorRuntimeInternalID* is de teken reeks representatie van een 64-bits geheel getal dat wordt gegenereerd door de Fabric actors-runtime voor intern gebruik. Dit is opgenomen in de exemplaar naam van het prestatie meter item om de uniekheid ervan te garanderen en te voor komen dat er conflicten ontstaan met andere instantie namen van prestatie meter items. Gebruikers moeten dit gedeelte van de exemplaar naam van het prestatie meter item niet interpreteren.
 
@@ -69,7 +69,7 @@ De namen van de tellers voor de categorie `Service Fabric Actor Method` hebben d
 
 *ActorsRuntimeMethodId* is de teken reeks representatie van een 32-bits geheel getal dat wordt gegenereerd door de Fabric actors-runtime voor intern gebruik. Dit is opgenomen in de exemplaar naam van het prestatie meter item om de uniekheid ervan te garanderen en te voor komen dat er conflicten ontstaan met andere instantie namen van prestatie meter items. Gebruikers moeten dit gedeelte van de exemplaar naam van het prestatie meter item niet interpreteren.
 
-*ServiceFabricPartitionID* is de teken reeks representatie van de service Fabric partitie-id waaraan het prestatie meter exemplaar is gekoppeld. De partitie-ID is een GUID en de teken reeks representatie wordt gegenereerd via de [`Guid.ToString`](https://msdn.microsoft.com/library/97af8hh4.aspx) methode met de indelings specificatie "D".
+*ServiceFabricPartitionID* is de teken reeks representatie van de service Fabric partitie-id waaraan het prestatie meter exemplaar is gekoppeld. De partitie-ID is een GUID en de teken reeks representatie wordt gegenereerd via de [`Guid.ToString`](/dotnet/api/system.guid.tostring?view=netcore-3.1#System_Guid_ToString_System_String_) methode met de indelings specificatie "D".
 
 *ActorRuntimeInternalID* is de teken reeks representatie van een 64-bits geheel getal dat wordt gegenereerd door de Fabric actors-runtime voor intern gebruik. Dit is opgenomen in de exemplaar naam van het prestatie meter item om de uniekheid ervan te garanderen en te voor komen dat er conflicten ontstaan met andere instantie namen van prestatie meter items. Gebruikers moeten dit gedeelte van de exemplaar naam van het prestatie meter item niet interpreteren.
 
@@ -83,7 +83,7 @@ In het bovenstaande voor beeld is `ivoicemailboxactor.leavemessageasync` de naam
 ### <a name="actor-method-events-and-performance-counters"></a>Actor-methode gebeurtenissen en prestatie meter items
 De Reliable Actors runtime verzendt de volgende gebeurtenissen met betrekking tot [actor-methoden](service-fabric-reliable-actors-introduction.md).
 
-| Gebeurtenis naam | Gebeurtenis-id | Niveau | Zoek | Description |
+| Gebeurtenis naam | Gebeurtenis-id | Niveau | Zoek | Beschrijving |
 | --- | --- | --- | --- | --- |
 | ActorMethodStart |7 |Verbose |0x2 |Actors-runtime staat op het punt een actor-methode aan te roepen. |
 | ActorMethodStop |8 |Verbose |0x2 |Het uitvoeren van een actor-methode is voltooid. Dat wil zeggen dat de asynchrone aanroep van de runtime naar de actor methode heeft geretourneerd en dat de taak die door de actor-methode is geretourneerd, is voltooid. |
@@ -91,7 +91,7 @@ De Reliable Actors runtime verzendt de volgende gebeurtenissen met betrekking to
 
 De Reliable Actors runtime publiceert de volgende prestatie meter items die betrekking hebben op de uitvoering van actor-methoden.
 
-| Category name | Naam van het meteritem | Description |
+| Category name | Naam van het meteritem | Beschrijving |
 | --- | --- | --- |
 | Service Fabric actor-methode |Aanroepen per seconde |Aantal keren dat de actor-service methode per seconde wordt aangeroepen |
 | Service Fabric actor-methode |Gemiddeld aantal milliseconden per aanroep |Gebruikte tijd in milliseconden voor het uitvoeren van de service methode actor |
@@ -100,13 +100,13 @@ De Reliable Actors runtime publiceert de volgende prestatie meter items die betr
 ### <a name="concurrency-events-and-performance-counters"></a>Gelijktijdigheid van gebeurtenissen en prestatie meter items
 De Reliable Actors runtime verzendt de volgende gebeurtenissen met betrekking tot [gelijktijdigheid](service-fabric-reliable-actors-introduction.md#concurrency).
 
-| Gebeurtenis naam | Gebeurtenis-id | Niveau | Zoek | Description |
+| Gebeurtenis naam | Gebeurtenis-id | Niveau | Zoek | Beschrijving |
 | --- | --- | --- | --- | --- |
 | ActorMethodCallsWaitingForLock |12 |Verbose |0x8 |Deze gebeurtenis is geschreven aan het begin van elke nieuwe functie voor het inschakelen van een actor. Het bevat het aantal in behandeling zijnde actor-aanroepen dat wacht om de vergren deling per actor te verkrijgen waarmee gelijktijdigheid op basis van een bocht wordt afgedwongen. |
 
 De Reliable Actors runtime publiceert de volgende prestatie meters die betrekking hebben op gelijktijdigheid.
 
-| Category name | Naam van het meteritem | Description |
+| Category name | Naam van het meteritem | Beschrijving |
 | --- | --- | --- |
 | Service Fabric actor |aantal actor-aanroepen tijdens het wachten op actor vergrendeling |Het aantal in behandeling zijnde actor-aanroepen dat wacht om de vergren deling per actor te verkrijgen waarmee gelijktijdigheid op basis van een hand gave wordt afgedwongen |
 | Service Fabric actor |Gemiddeld aantal milliseconden per wachten op vergren deling |Gebruikte tijd (in milliseconden) om de vergren deling per actor te verkrijgen waarmee gelijktijdig gebruik op basis van een bocht wordt afgedwongen |
@@ -115,14 +115,14 @@ De Reliable Actors runtime publiceert de volgende prestatie meters die betrekkin
 ### <a name="actor-state-management-events-and-performance-counters"></a>Gebeurtenissen en prestatie meter items voor actor status beheer
 De Reliable Actors runtime verzendt de volgende gebeurtenissen met betrekking tot het [beheer van actor status](service-fabric-reliable-actors-state-management.md).
 
-| Gebeurtenis naam | Gebeurtenis-id | Niveau | Zoek | Description |
+| Gebeurtenis naam | Gebeurtenis-id | Niveau | Zoek | Beschrijving |
 | --- | --- | --- | --- | --- |
 | ActorSaveStateStart |10 |Verbose |0x4 |Actors-runtime staat op het punt de actor status op te slaan. |
 | ActorSaveStateStop |11 |Verbose |0x4 |Actors-runtime heeft het opslaan van de actor status voltooid. |
 
 Met de Reliable Actors runtime worden de volgende prestatie meter items gepubliceerd die betrekking hebben op het beheer van actor status.
 
-| Category name | Naam van het meteritem | Description |
+| Category name | Naam van het meteritem | Beschrijving |
 | --- | --- | --- |
 | Service Fabric actor |Gemiddeld aantal milliseconden per opslag status bewerking |Gebruikte tijd in milliseconden voor het opslaan van de actor status |
 | Service Fabric actor |Gemiddeld aantal milliseconden per bewerking van de laad status |Gebruikte tijd in milliseconden voor het laden van de actor status |
@@ -130,7 +130,7 @@ Met de Reliable Actors runtime worden de volgende prestatie meter items gepublic
 ### <a name="events-related-to-actor-replicas"></a>Gebeurtenissen met betrekking tot actor replica's
 De Reliable Actors runtime verzendt de volgende gebeurtenissen met betrekking tot [actor replica's](service-fabric-reliable-actors-platform.md#service-fabric-partition-concepts-for-actors).
 
-| Gebeurtenis naam | Gebeurtenis-id | Niveau | Zoek | Description |
+| Gebeurtenis naam | Gebeurtenis-id | Niveau | Zoek | Beschrijving |
 | --- | --- | --- | --- | --- |
 | ReplicaChangeRoleToPrimary |1 |Informatief |0x1 |De rol van de actor replica is gewijzigd in Primary. Dit betekent dat de actors voor deze partitie worden gemaakt in deze replica. |
 | ReplicaChangeRoleFromPrimary |2 |Informatief |0x1 |De rol van de actor replica is gewijzigd in niet-primair. Dit betekent dat de actors voor deze partitie niet meer worden gemaakt in deze replica. Er worden geen nieuwe aanvragen bezorgd bij Actors die al zijn gemaakt in deze replica. De actors worden vernietigd nadat alle lopende aanvragen zijn voltooid. |
@@ -138,21 +138,21 @@ De Reliable Actors runtime verzendt de volgende gebeurtenissen met betrekking to
 ### <a name="actor-activation-and-deactivation-events-and-performance-counters"></a>Actor-activering en deactivering van gebeurtenissen en prestatie meter items
 De Reliable Actors runtime verzendt de volgende gebeurtenissen met betrekking tot de [Activering en deactivering van actor](service-fabric-reliable-actors-lifecycle.md).
 
-| Gebeurtenis naam | Gebeurtenis-id | Niveau | Zoek | Description |
+| Gebeurtenis naam | Gebeurtenis-id | Niveau | Zoek | Beschrijving |
 | --- | --- | --- | --- | --- |
 | ActorActivated |5 |Informatief |0x1 |Er is een actor geactiveerd. |
 | ActorDeactivated |6 |Informatief |0x1 |Een actor is gedeactiveerd. |
 
 Met de Reliable Actors runtime worden de volgende prestatie meter items gepubliceerd die betrekking hebben op het activeren en deactiveren van actor.
 
-| Category name | Naam van het meteritem | Description |
+| Category name | Naam van het meteritem | Beschrijving |
 | --- | --- | --- |
 | Service Fabric actor |Gemiddelde OnActivateAsync milliseconden |Gebruikte tijd in milliseconden voor het uitvoeren van de methode OnActivateAsync |
 
 ### <a name="actor-request-processing-performance-counters"></a>Prestatie meter items verwerking actor-aanvraag
 Wanneer een client een methode aanroept via een actor-proxy object, resulteert dit in een aanvraag bericht dat via het netwerk wordt verzonden naar de actor-service. De service verwerkt het aanvraag bericht en stuurt een antwoord terug naar de client. Met de Reliable Actors runtime worden de volgende prestatie meter items gepubliceerd die betrekking hebben op de verwerking van actor-aanvragen.
 
-| Category name | Naam van het meteritem | Description |
+| Category name | Naam van het meteritem | Beschrijving |
 | --- | --- | --- |
 | Service Fabric actor |aantal openstaande aanvragen |Aantal aanvragen dat wordt verwerkt in de service |
 | Service Fabric actor |Gemiddeld aantal milliseconden per aanvraag |Gebruikte tijd (in milliseconden) van de service voor het verwerken van een aanvraag |
@@ -161,6 +161,6 @@ Wanneer een client een methode aanroept via een actor-proxy object, resulteert d
 
 ## <a name="next-steps"></a>Volgende stappen
 * [Hoe Reliable Actors het Service Fabric platform gebruiken?](service-fabric-reliable-actors-platform.md)
-* [Referentie documentatie voor actor-API](https://msdn.microsoft.com/library/azure/dn971626.aspx)
+* [Referentie documentatie voor actor-API](/previous-versions/azure/dn971626(v=azure.100))
 * [Voorbeeldcode](https://github.com/Azure-Samples/service-fabric-dotnet-getting-started)
-* [Event source-providers in PerfView](https://blogs.msdn.microsoft.com/vancem/2012/07/09/introduction-tutorial-logging-etw-events-in-c-system-diagnostics-tracing-eventsource/)
+* [Event source-providers in PerfView](/archive/blogs/vancem/introduction-tutorial-logging-etw-events-in-c-system-diagnostics-tracing-eventsource)

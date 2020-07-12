@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 05/29/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 3fc44ca18f237fecd1c694e96f9ebc2d5b541757
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: d482b3335b31d116846ec64883b43897fcc4e43d
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85564465"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86255656"
 ---
 # <a name="use-microsoft-teams-on-windows-virtual-desktop"></a>Micro soft teams gebruiken op het virtuele bureau blad van Windows
 
@@ -32,7 +32,7 @@ Met media optimalisatie voor micro soft-teams verwerkt de Windows desktop-client
 Voordat u micro soft teams kunt gebruiken op het virtuele bureau blad van Windows, moet u de volgende dingen doen:
 
 - [Bereid uw netwerk](/microsoftteams/prepare-network/) voor op micro soft teams.
-- Installeer de [Windows desktop-client](connect-windows-7-and-10.md) op een Windows 10-of Windows 10 IOT Enter prise-apparaat dat voldoet aan de hardwarevereisten voor teams van micro soft teams [op een Windows-PC](/microsoftteams/hardware-requirements-for-the-teams-app#hardware-requirements-for-teams-on-a-windows-pc/).
+- Installeer de [Windows desktop-client](connect-windows-7-10.md) op een Windows 10-of Windows 10 IOT Enter prise-apparaat dat voldoet aan de hardwarevereisten voor teams van micro soft teams [op een Windows-PC](/microsoftteams/hardware-requirements-for-the-teams-app#hardware-requirements-for-teams-on-a-windows-pc/).
 - Verbinding maken met een Windows 10-of Windows 10 Enter prise virtual machine (VM).
 - Installeer de teams bureau blad-app op de host met behulp van installatie per computer. Voor media optimalisatie voor micro soft-teams is teams 1.3.00.4461 of hoger vereist.
 

@@ -5,17 +5,18 @@ author: jeffj6123
 ms.topic: reference
 ms.date: 1/16/2020
 ms.author: jejarry
-ms.openlocfilehash: 40d0f70b0dabdc02434fa662663a2fd105431f0a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 4682eee93b5ff9f01e65611e8d5e0920930776a5
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "76905889"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86257248"
 ---
 # <a name="sfctl-mesh"></a>sfctl mesh
 Service Fabric-mesh-toepassingen verwijderen en beheren.
 
 ## <a name="subgroups"></a>Subgroepen
-|Subgroep|Description|
+|Subgroep|Beschrijving|
 | --- | --- |
 | [app](service-fabric-sfctl-mesh-app.md) | Toepassings resources ophalen en verwijderen. |
 | [code-pakket-logboek](service-fabric-sfctl-mesh-code-package-log.md) | De logboeken ophalen voor de container van het opgegeven code pakket voor de opgegeven service replica. |
@@ -31,4 +32,4 @@ Service Fabric-mesh-toepassingen verwijderen en beheren.
 
 ## <a name="next-steps"></a>Volgende stappen
 - [Stel](service-fabric-cli.md) de service Fabric cli in.
-- Meer informatie over het gebruik van de Service Fabric CLI met behulp van de [voorbeeld scripts](/azure/service-fabric/scripts/sfctl-upgrade-application).
+- Meer informatie over het gebruik van de Service Fabric CLI met behulp van de [voorbeeld scripts](./scripts/sfctl-upgrade-application.md).

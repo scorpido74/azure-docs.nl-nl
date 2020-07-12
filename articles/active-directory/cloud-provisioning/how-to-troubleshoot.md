@@ -8,12 +8,12 @@ ms.date: 12/02/2019
 ms.topic: how-to
 ms.prod: windows-server-threshold
 ms.technology: identity-adfs
-ms.openlocfilehash: 009e762b69d4f3512158d69ef3c67089096c9da7
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 77ea5a354dde7adb006c95e9548d8fcc37e2dc12
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85360789"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86256863"
 ---
 # <a name="cloud-provisioning-troubleshooting"></a>Problemen met het inrichten van Clouds oplossen
 
@@ -55,9 +55,7 @@ Voer de volgende stappen uit om te controleren of de agent door Azure wordt gezi
 
 ### <a name="verify-the-port"></a>De poort controleren
 
-Gebruik het volgende hulp programma om te controleren of Azure luistert op poort 443 en dat uw agent ermee kan communiceren:
-
-https://aadap-portcheck.connectorporttest.msappproxy.net/ 
+Controleer of Azure luistert op poort 443 en of uw agent ermee kan communiceren. 
 
 Met deze test wordt gecontroleerd of uw agents kunnen communiceren met Azure via poort 443. Open een browser en ga naar de vorige URL van de server waarop de agent is geïnstalleerd.
 
