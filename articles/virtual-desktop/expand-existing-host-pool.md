@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 04/30/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 07394fb2d33aaacdc8e47bc2d1809854c0c8ca1b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 5eee6f34124f8b286deff278c6c3d1038b595357
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85209348"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86259874"
 ---
 # <a name="expand-an-existing-host-pool-with-new-session-hosts"></a>Een bestaande hostgroep uitbreiden met nieuwe sessie-hosts
 
@@ -31,7 +31,7 @@ In dit artikel wordt uitgelegd hoe u een bestaande hostgroep kunt uitbreiden met
 
 Voordat u begint, moet u ervoor zorgen dat u een hostgroep en virtuele machines (Vm's) voor de host hebt gemaakt met behulp van een van de volgende methoden:
 
-- [Azure-portal](./create-host-pools-azure-marketplace.md)
+- [Azure Portal](./create-host-pools-azure-marketplace.md)
 - [Een hostpool maken met PowerShell](./create-host-pools-powershell.md)
 
 U hebt ook de volgende informatie nodig bij het maken van de hostgroep en de Vm's voor de sessiehost:
@@ -78,7 +78,7 @@ U kunt als volgt uw hostgroep uitbreiden door virtuele machines toe te voegen:
 
 Nu u uw bestaande hostgroep hebt uitgebreid, kunt u zich aanmelden bij een virtueel-bureaubladclient van Windows om ze te testen als onderdeel van een gebruikers sessie. U kunt verbinding maken met een sessie met een van de volgende clients:
 
-- [Verbinding maken met de Windows Desktop-client](./connect-windows-7-and-10.md)
+- [Verbinding maken met de Windows Desktop-client](./connect-windows-7-10.md)
 - [Verbinding maken met de webclient](./connect-web.md)
 - [Verbinding maken met de Android-client](./connect-android.md)
 - [Verbinding maken met de macOS-client](./connect-macos.md)

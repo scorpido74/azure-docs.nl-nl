@@ -8,12 +8,12 @@ ms.author: rogarana
 ms.service: virtual-machines-linux
 ms.subservice: disks
 ms.custom: references_regions
-ms.openlocfilehash: c78fa51150ba09e5b72eeb0587679f779c947acf
-ms.sourcegitcommit: f7e160c820c1e2eb57dc480b2a8fd6bef7053e91
+ms.openlocfilehash: 2d4fc47247c9fe2ed1af0eee59500db7e894fdd0
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/10/2020
-ms.locfileid: "86230975"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86260132"
 ---
 # <a name="server-side-encryption-of-azure-disk-storage"></a>Versleuteling aan de server zijde van Azure Disk Storage
 
@@ -80,9 +80,8 @@ Hoge beveiligings gevoelige klanten die zich zorgen maken over het risico dat is
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- [Versleuteling op host inschakelen](disks-enable-host-based-encryption-cli.md)
-- [Azure CLI: dubbele versleuteling inschakelen op schijven die worden beheerd door rest](disks-enable-double-encryption-at-rest-cli.md)
+- [End-to-end-versleuteling inschakelen met versleuteling op host-CLI](disks-enable-host-based-encryption-cli.md)
+- [Dubbele versleuteling inschakelen bij rest voor beheerde schijven-CLI](disks-enable-double-encryption-at-rest-cli.md)
 - [Door de klant beheerde sleutels voor beheerde schijven inschakelen-CLI](disks-enable-customer-managed-keys-cli.md)
 - [Door de klant beheerde sleutels voor beheerde schijven inschakelen-Portal](disks-enable-customer-managed-keys-portal.md)
-- [Door de klant beheerde sleutels voor uw beheerde schijf inschakelen-Power shell](../windows/disks-enable-customer-managed-keys-powershell.md)
 - [Wat is Azure Key Vault?](../../key-vault/general/overview.md)

@@ -12,8 +12,6 @@
       href: tutorial-hybrid-portal.md
     - name: Inkomend verkeer filteren met DNAT
       href: tutorial-firewall-dnat.md
-    - name: Diagnostische logboeken bewaken
-      href: tutorial-diagnostics.md
 - name: Snelstartgidsen
   expanded: true
   items:
@@ -86,6 +84,8 @@
       href: protect-azure-kubernetes-service.md
     - name: DNS-instellingen
       href: dns-settings.md
+    - name: Diagnostische logboeken bewaken
+      href: firewall-diagnostics.md
 - name: Naslaginformatie
   items:
     - name: Azure CLI

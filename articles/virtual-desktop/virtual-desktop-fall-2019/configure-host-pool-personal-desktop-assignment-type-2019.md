@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 05/22/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 376f9d78f508c245bec2d066863566ace68eff0a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 6f4ee0a6ba028a6359a83f5130aca7c6f05ba08b
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85204860"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86259797"
 ---
 # <a name="configure-the-personal-desktop-host-pool-assignment-type"></a>Het toewijzings type voor de hostgroep voor persoonlijk bureau blad configureren
 
@@ -92,5 +92,5 @@ Als u de sessiemap weer wilt toevoegen aan de Personal Desktop-hostgroep, verwij
 
 Nu u het persoonlijke bureau blad-toewijzings type hebt geconfigureerd, kunt u zich aanmelden bij een virtueel-bureaubladclient van Windows om het te testen als onderdeel van een gebruikers sessie. In de volgende twee procedures wordt uitgelegd hoe u verbinding maakt met een sessie met de client van uw keuze:
 
-- [Verbinding maken met de Windows Desktop-client](../connect-windows-7-and-10.md)
+- [Verbinding maken met de Windows Desktop-client](connect-windows-7-10-2019.md)
 - [Verbinding maken met de webclient](connect-web-2019.md)

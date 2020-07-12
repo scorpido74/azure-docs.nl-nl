@@ -4,12 +4,12 @@ description: Scenario's, bronnen en beperkingen voor het implementeren van conta
 ms.topic: article
 ms.date: 04/29/2020
 ms.author: danlep
-ms.openlocfilehash: 77fbdb1720e571027f28b5bdca5c0e3c65c3ded2
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: c4e983e7d83e661b4ba50ebe2c6d65bce2f42514
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82584400"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86259546"
 ---
 # <a name="virtual-network-scenarios-and-resources"></a>Scenario's en resources voor het virtuele netwerk
 
@@ -67,7 +67,7 @@ Het subnet dat u voor container groepen gebruikt, mag alleen container groepen b
 
 Een netwerk profiel is een netwerk configuratie sjabloon voor Azure-resources. Hiermee geeft u bepaalde netwerk eigenschappen voor de resource op, bijvoorbeeld het subnet waarin het moet worden geïmplementeerd. Wanneer u de opdracht [AZ container Create][az-container-create] gebruikt voor het implementeren van een container groep naar een subnet (en dus een virtueel netwerk), maakt Azure een netwerk profiel voor u. U kunt dat netwerk profiel vervolgens gebruiken voor toekomstige implementaties naar het subnet. 
 
-Als u een resource manager-sjabloon, een YAML-bestand of een programmatische methode wilt gebruiken om een container groep naar een subnet te implementeren, moet u de volledige Resource Manager-Resource-ID van een netwerk profiel opgeven. U kunt een profiel gebruiken dat eerder is gemaakt met [AZ container Create][az-container-create]of een profiel maken met een resource manager-sjabloon (Zie [voor beeld van sjabloon](https://github.com/Azure/azure-quickstart-templates/tree/master/101-aci-vnet) en [Naslag informatie](https://docs.microsoft.com/azure/templates/microsoft.network/networkprofiles)). Als u de ID van een eerder gemaakt profiel wilt ophalen, gebruikt u de opdracht [AZ Network profile list][az-network-profile-list] . 
+Als u een resource manager-sjabloon, een YAML-bestand of een programmatische methode wilt gebruiken om een container groep naar een subnet te implementeren, moet u de volledige Resource Manager-Resource-ID van een netwerk profiel opgeven. U kunt een profiel gebruiken dat eerder is gemaakt met [AZ container Create][az-container-create]of een profiel maken met een resource manager-sjabloon (Zie [voor beeld van sjabloon](https://github.com/Azure/azure-quickstart-templates/tree/master/101-aci-vnet) en [Naslag informatie](/azure/templates/microsoft.network/networkprofiles)). Als u de ID van een eerder gemaakt profiel wilt ophalen, gebruikt u de opdracht [AZ Network profile list][az-network-profile-list] . 
 
 In het volgende diagram zijn verschillende container groepen geïmplementeerd naar een subnet dat is overgedragen aan Azure Container Instances. Zodra u één container groep naar een subnet hebt geïmplementeerd, kunt u extra container groepen implementeren door hetzelfde netwerk profiel op te geven.
 
@@ -86,4 +86,3 @@ In het volgende diagram zijn verschillende container groepen geïmplementeerd na
 <!-- LINKS - Internal -->
 [az-container-create]: /cli/azure/container#az-container-create
 [az-network-profile-list]: /cli/azure/network/profile#az-network-profile-list
-

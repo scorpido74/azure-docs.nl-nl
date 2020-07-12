@@ -5,16 +5,17 @@ author: jeffj6123
 ms.topic: reference
 ms.date: 1/16/2020
 ms.author: jejarry
-ms.openlocfilehash: a64aaca97c9df61d795c82d64e6048d6f9ae032f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 349f70c32ea4ebb4559f053d5ef05b4b37b6480f
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "76906090"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86260376"
 ---
 # <a name="sfctl-is"></a>sfctl is
 Query's uitvoeren en opdrachten verzenden naar de infrastructuur service.
 
-## <a name="commands"></a>Opdrachten
+## <a name="commands"></a>Opdracht
 
 |Opdracht|Beschrijving|
 | --- | --- |
@@ -28,7 +29,7 @@ Voor clusters waarvoor een of meer exemplaren van de infrastructuur service zijn
 
 ### <a name="arguments"></a>Argumenten
 
-|Argument|Description|
+|Argument|Beschrijving|
 | --- | --- |
 | --opdracht [vereist] | De tekst van de opdracht die moet worden aangeroepen. De inhoud van de opdracht is specifiek voor een infra structuur. |
 | --Service-id | De identiteit van de infrastructuur service. <br><br> Dit is de volledige naam van de infrastructuur service zonder het URI- \: schema ' fabric '. Deze para meter is alleen vereist voor het cluster waarop meer dan één exemplaar van de infrastructuur service wordt uitgevoerd. |
@@ -36,7 +37,7 @@ Voor clusters waarvoor een of meer exemplaren van de infrastructuur service zijn
 
 ### <a name="global-arguments"></a>Algemene argumenten
 
-|Argument|Description|
+|Argument|Beschrijving|
 | --- | --- |
 | --fouten opsporen | Verg root logboek registratie uitgebreid om alle logboeken voor fout opsporing weer te geven. |
 | --Help-h | Dit Help-bericht weer geven en afsluiten. |
@@ -51,7 +52,7 @@ Voor clusters waarvoor een of meer exemplaren van de infrastructuur service zijn
 
 ### <a name="arguments"></a>Argumenten
 
-|Argument|Description|
+|Argument|Beschrijving|
 | --- | --- |
 | --opdracht [vereist] | De tekst van de opdracht die moet worden aangeroepen. De inhoud van de opdracht is specifiek voor een infra structuur. |
 | --Service-id | De identiteit van de infrastructuur service. <br><br> Dit is de volledige naam van de infrastructuur service zonder het URI- \: schema ' fabric '. Deze para meter is alleen vereist voor het cluster waarop meer dan één exemplaar van de infrastructuur service wordt uitgevoerd. |
@@ -59,7 +60,7 @@ Voor clusters waarvoor een of meer exemplaren van de infrastructuur service zijn
 
 ### <a name="global-arguments"></a>Algemene argumenten
 
-|Argument|Description|
+|Argument|Beschrijving|
 | --- | --- |
 | --fouten opsporen | Verg root logboek registratie uitgebreid om alle logboeken voor fout opsporing weer te geven. |
 | --Help-h | Dit Help-bericht weer geven en afsluiten. |
@@ -70,4 +71,4 @@ Voor clusters waarvoor een of meer exemplaren van de infrastructuur service zijn
 
 ## <a name="next-steps"></a>Volgende stappen
 - [Stel](service-fabric-cli.md) de service Fabric cli in.
-- Meer informatie over het gebruik van de Service Fabric CLI met behulp van de [voorbeeld scripts](/azure/service-fabric/scripts/sfctl-upgrade-application).
+- Meer informatie over het gebruik van de Service Fabric CLI met behulp van de [voorbeeld scripts](./scripts/sfctl-upgrade-application.md).

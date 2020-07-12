@@ -6,11 +6,12 @@ ms.author: edoyle
 ms.topic: how-to
 ms.date: 01/14/2020
 ms.custom: subject-moving-resources
-ms.openlocfilehash: 376808a6d8f61d4dc03d17061323a473d48053a6
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: c842a065f108a924c6bffd70d6c2edbbd31b6dff
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "76908161"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86260151"
 ---
 # <a name="move-a-service-fabric-mesh-application-to-another-azure-region"></a>Een Service Fabric mesh-toepassing verplaatsen naar een andere Azure-regio
 
@@ -20,14 +21,14 @@ In dit artikel wordt beschreven hoe u uw Service Fabric mesh-toepassing en de bi
 
 ## <a name="prerequisites"></a>Vereisten
 
-* Ingangs controller (zoals [Application Gateway](https://docs.microsoft.com/azure/application-gateway/)) die fungeert als intermediair voor het routeren van verkeer tussen clients en uw service Fabric mesh-toepassing
+* Ingangs controller (zoals [Application Gateway](../application-gateway/index.yml)) die fungeert als intermediair voor het routeren van verkeer tussen clients en uw service Fabric mesh-toepassing
 * Beschik baarheid van Service Fabric net (preview) in de Azure-doel regio ( `westus` , `eastus` of `westeurope` )
 
 ## <a name="prepare"></a>Voorbereiden
 
-1. Maak een moment opname van de huidige status van uw Service Fabric mesh door de Azure Resource Manager sjabloon en de para meters van de meest recente implementatie te exporteren. Volg hiervoor de stappen in [sjabloon exporteren na de implementatie](../azure-resource-manager/templates/export-template-portal.md#export-template-after-deployment) met behulp van de Azure Portal. U kunt ook [Azure cli](../azure-resource-manager/management/manage-resource-groups-cli.md#export-resource-groups-to-templates), [Azure PowerShell](../azure-resource-manager/management/manage-resource-groups-powershell.md#export-resource-groups-to-templates)of [rest API](https://docs.microsoft.com/rest/api/resources/resourcegroups/exporttemplate)gebruiken.
+1. Maak een moment opname van de huidige status van uw Service Fabric mesh door de Azure Resource Manager sjabloon en de para meters van de meest recente implementatie te exporteren. Volg hiervoor de stappen in [sjabloon exporteren na de implementatie](../azure-resource-manager/templates/export-template-portal.md#export-template-after-deployment) met behulp van de Azure Portal. U kunt ook [Azure cli](../azure-resource-manager/management/manage-resource-groups-cli.md#export-resource-groups-to-templates), [Azure PowerShell](../azure-resource-manager/management/manage-resource-groups-powershell.md#export-resource-groups-to-templates)of [rest API](/rest/api/resources/resourcegroups/exporttemplate)gebruiken.
 
-2. Exporteer, indien van toepassing, [andere resources in dezelfde resource groep](https://docs.microsoft.com/azure/azure-resource-manager/templates/export-template-portal#export-template-from-a-resource-group) voor een herimplementatie in de doel regio.
+2. Exporteer, indien van toepassing, [andere resources in dezelfde resource groep](../azure-resource-manager/templates/export-template-portal.md#export-template-from-a-resource-group) voor een herimplementatie in de doel regio.
 
 3. Bekijk (en bewerk indien nodig de geëxporteerde sjabloon) om ervoor te zorgen dat de bestaande eigenschaps waarden worden gebruikt die u in de doel regio wilt gebruiken. De nieuwe `location` (Azure-regio) is een para meter die u tijdens de herimplementatie kunt opgeven.
 
@@ -35,7 +36,7 @@ In dit artikel wordt beschreven hoe u uw Service Fabric mesh-toepassing en de bi
 
 1. Een nieuwe resource groep maken (of een bestaande gebruiken) in de doel regio.
 
-2. Volg de stappen in [resources implementeren vanuit aangepaste sjabloon](https://docs.microsoft.com/azure/azure-resource-manager/templates/deploy-portal#deploy-resources-from-custom-template) met behulp van de Azure Portal met de geëxporteerde sjabloon. U kunt ook [Azure cli](https://docs.microsoft.com/azure/azure-resource-manager/templates/deploy-cli), [Azure PowerShell](https://docs.microsoft.com/azure/azure-resource-manager/templates/deploy-powershell)of [rest API](https://docs.microsoft.com/azure/azure-resource-manager/templates/deploy-rest)gebruiken.
+2. Volg de stappen in [resources implementeren vanuit aangepaste sjabloon](../azure-resource-manager/templates/deploy-portal.md#deploy-resources-from-custom-template) met behulp van de Azure Portal met de geëxporteerde sjabloon. U kunt ook [Azure cli](../azure-resource-manager/templates/deploy-cli.md), [Azure PowerShell](../azure-resource-manager/templates/deploy-powershell.md)of [rest API](../azure-resource-manager/templates/deploy-rest.md)gebruiken.
 
 3. Raadpleeg de richt lijnen voor afzonderlijke services die worden vermeld in het onderwerp [Azure-resources verplaatsen tussen regio's](../azure-resource-manager/management/move-region.md)voor hulp bij het verplaatsen van gerelateerde resources, zoals [Azure Storage accounts](../storage/common/storage-account-move.md).
 
@@ -43,7 +44,7 @@ In dit artikel wordt beschreven hoe u uw Service Fabric mesh-toepassing en de bi
 
 1. Wanneer de implementatie is voltooid, test u de eind punten van de toepassing om de functionaliteit van uw toepassing te controleren.
 
-2. U kunt ook de status van uw toepassing controleren door de status van de toepassing te controleren en de toepassings logboeken en ([AZ netcode-package-log](https://docs.microsoft.com/cli/azure/ext/mesh/mesh/code-package-log?view=azure-cli-latest)[)-](https://docs.microsoft.com/cli/azure/ext/mesh/mesh/app?view=azure-cli-latest#ext-mesh-az-mesh-app-show)opdrachten te bekijken met behulp van de [Azure service Fabric mesh cli](https://docs.microsoft.com/azure/service-fabric-mesh/service-fabric-mesh-quickstart-deploy-container#set-up-service-fabric-mesh-cli).
+2. U kunt ook de status van uw toepassing controleren door de status van de toepassing te controleren en de toepassings logboeken en ([AZ netcode-package-log](/cli/azure/ext/mesh/mesh/code-package-log?view=azure-cli-latest)[)-](/cli/azure/ext/mesh/mesh/app?view=azure-cli-latest#ext-mesh-az-mesh-app-show)opdrachten te bekijken met behulp van de [Azure service Fabric mesh cli](./service-fabric-mesh-quickstart-deploy-container.md#set-up-service-fabric-mesh-cli).
 
 ## <a name="commit"></a>Doorvoeren
 

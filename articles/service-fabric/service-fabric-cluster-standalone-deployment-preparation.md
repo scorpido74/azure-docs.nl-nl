@@ -5,11 +5,12 @@ author: dkkapur
 ms.topic: conceptual
 ms.date: 9/11/2018
 ms.author: dekapur
-ms.openlocfilehash: 495949d1a4ec927c601f174521c360f51034a2fb
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 6b07e3fe14478cf45df2f02378da4e83853cf9ea
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85079346"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86261044"
 ---
 # <a name="plan-and-prepare-your-service-fabric-standalone-cluster-deployment"></a>De implementatie van uw Service Fabric zelfstandige cluster plannen en voorbereiden
 
@@ -58,10 +59,10 @@ Hier vindt u de aanbevolen specificaties voor computers in een Service Fabric cl
 * Connectiviteit met een beveiligd netwerk of netwerken voor alle computers
 * Windows Server-besturings systeem geïnstalleerd (geldige versies: 2012 R2, 2016, 1709 of 1803). Service Fabric versie 6.4.654.9590 en hoger ondersteunt ook server 2019 en 1809.
 * [.NET Framework 4.5.1 of hoger](https://www.microsoft.com/download/details.aspx?id=40773), volledige installatie
-* [Windows PowerShell 3.0](https://msdn.microsoft.com/powershell/scripting/install/installing-windows-powershell)
-* De [RemoteRegistry-service](https://technet.microsoft.com/library/cc754820) moet op alle computers worden uitgevoerd
+* [Windows PowerShell 3.0](/powershell/scripting/windows-powershell/install/installing-windows-powershell?view=powershell-7)
+* De [RemoteRegistry-service](/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/cc754820(v=ws.11)) moet op alle computers worden uitgevoerd
 * **Service Fabric installatie station moet een NTFS-bestands systeem zijn**
-* ** *Prestatie logboeken* voor windows-Services & waarschuwingen en *Windows-gebeurtenis logboek* moet [zijn ingeschakeld](https://docs.microsoft.com/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/cc755249(v=ws.11))**.
+* ** *Prestatie logboeken* voor windows-Services & waarschuwingen en *Windows-gebeurtenis logboek* moet [zijn ingeschakeld](/previous-versions/windows/it-pro/windows-server-2008-r2-and-2008/cc755249(v=ws.11))**.
 
 > [!IMPORTANT]
 > De Cluster beheerder die het cluster implementeert en configureert, moet over [beheerders bevoegdheden](https://social.technet.microsoft.com/wiki/contents/articles/13436.windows-server-2012-how-to-add-an-account-to-a-local-administrator-group.aspx) beschikken voor elk van de computers. U kunt Service Fabric niet installeren op een domeincontroller.
@@ -156,7 +157,7 @@ Passed                     : True
 Momenteel valideert deze configuratie test module de beveiligings configuratie niet, zodat deze onafhankelijk moet worden uitgevoerd.
 
 > [!NOTE]
-> We nemen voortdurend verbeteringen aan om deze module robuuster te maken, dus als er sprake is van een defecte of ontbrekende situatie die momenteel niet wordt onderschept door de testconfiguration, moet u ons laten weten wat de [ondersteunings kanalen](https://docs.microsoft.com/azure/service-fabric/service-fabric-support)zijn.
+> We nemen voortdurend verbeteringen aan om deze module robuuster te maken, dus als er sprake is van een defecte of ontbrekende situatie die momenteel niet wordt onderschept door de testconfiguration, moet u ons laten weten wat de [ondersteunings kanalen](./service-fabric-support.md)zijn.
 >
 >
 

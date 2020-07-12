@@ -4,30 +4,31 @@ description: Meer informatie over de SQL-functie GetCurrentDateTime in Azure Cos
 author: ginamr
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 09/13/2019
+ms.date: 07/09/2020
 ms.author: girobins
 ms.custom: query-reference
-ms.openlocfilehash: 2ac3235191952702f2acc39a25e948511901050b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 4db2ec7bbd05d982af57c05fd46ef7da7c682e15
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85555886"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86258808"
 ---
 # <a name="getcurrentdatetime-azure-cosmos-db"></a>GetCurrentDateTime (Azure Cosmos DB)
- Retourneert de huidige UTC-datum en-tijd (Coordinated Universal Time) als een ISO 8601-teken reeks.
+
+Retourneert de huidige UTC-datum en-tijd (Coordinated Universal Time) als een ISO 8601-teken reeks.
   
 ## <a name="syntax"></a>Syntax
   
 ```sql
 GetCurrentDateTime ()
 ```
-  
+
 ## <a name="return-types"></a>Retour typen
   
   Retourneert de huidige UTC-datum en-8601 tijd in de notatie `YYYY-MM-DDThh:mm:ss.fffffffZ` waar:
   
-  |Indeling|Description|
+  |Indeling|Beschrijving|
   |-|-|
   |DD|jaar met vier cijfers|
   |MM|maand van twee cijfers (01 = januari, etc.)|
@@ -43,7 +44,7 @@ GetCurrentDateTime ()
 
 ## <a name="remarks"></a>Opmerkingen
 
-  GetCurrentDateTime () is een niet-deterministische functie. 
+  GetCurrentDateTime () is een niet-deterministische functie.
   
   Het geretourneerde resultaat is UTC.
 

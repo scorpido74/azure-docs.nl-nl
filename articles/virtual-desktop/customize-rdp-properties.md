@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 06/19/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 4cbfe03c48c6d971c140dc332c38a47bc9234173
-ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.openlocfilehash: d41df8fe4f411cf28af83c8b4b667f1e86bdb45d
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86135109"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86259908"
 ---
 # <a name="customize-remote-desktop-protocol-properties-for-a-host-pool"></a>Remote Desktop Protocol eigenschappen voor een hostgroep aanpassen
 
@@ -132,7 +132,7 @@ CustomRdpProperty : <CustomRDPpropertystring>
 
 Nu u de RDP-eigenschappen voor een bepaalde hostgroep hebt aangepast, kunt u zich aanmelden bij een virtueel-bureaubladclient van Windows om ze te testen als onderdeel van een gebruikers sessie. In deze volgende hand leidingen wordt uitgelegd hoe u verbinding maakt met een sessie met de client van uw keuze:
 
-- [Verbinding maken met de Windows Desktop-client](connect-windows-7-and-10.md)
+- [Verbinding maken met de Windows Desktop-client](connect-windows-7-10.md)
 - [Verbinding maken met de webclient](connect-web.md)
 - [Verbinding maken met de Android-client](connect-android.md)
 - [Verbinding maken met de macOS-client](connect-macos.md)

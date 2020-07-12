@@ -3,11 +3,12 @@ title: Overzicht van Service Fabric en containers
 description: Een overzicht van Service Fabric en het gebruik van containers voor het implementeren van micro service-toepassingen. Dit artikel bevat een overzicht van de manier waarop containers kunnen worden gebruikt en de beschik bare mogelijkheden in Service Fabric.
 ms.topic: conceptual
 ms.date: 8/8/2018
-ms.openlocfilehash: 884cefa3d6a60f55269afac73c40b9f6b21518f6
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 7c92910a92c8fa3061a1a0d53611734cf681484f
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "75458218"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86259223"
 ---
 # <a name="service-fabric-and-containers"></a>Service Fabric en containers
 
@@ -64,7 +65,7 @@ In de volgende afbeelding ziet u de verschillende soorten virtualisatie-en isola
 
 Hier volgen enkele typische voor beelden waarin een container een goede keuze is:
 
-* **IIS lift en Shift**: u kunt een bestaande [ASP.NET MVC](https://www.asp.net/mvc) -app in een container plaatsen in plaats van deze te migreren naar ASP.net core. Deze ASP.NET MVC-apps zijn afhankelijk van Internet Information Services (IIS). U kunt deze toepassingen inpakken in container installatie kopieën van de voorgemaakte IIS-installatie kopie en implementeren met Service Fabric. Zie [container installatie kopieën op Windows Server](https://docs.microsoft.com/virtualization/windowscontainers/quick-start/quick-start-windows-server) voor meer informatie over Windows-containers.
+* **IIS lift en Shift**: u kunt een bestaande [ASP.NET MVC](https://www.asp.net/mvc) -app in een container plaatsen in plaats van deze te migreren naar ASP.net core. Deze ASP.NET MVC-apps zijn afhankelijk van Internet Information Services (IIS). U kunt deze toepassingen inpakken in container installatie kopieën van de voorgemaakte IIS-installatie kopie en implementeren met Service Fabric. Zie [container installatie kopieën op Windows Server](/virtualization/windowscontainers/quick-start/quick-start-windows-server) voor meer informatie over Windows-containers.
 
 * **Containers en service Fabric micro Services combi neren**: gebruik een bestaande container installatie kopie voor een deel van uw toepassing. U kunt bijvoorbeeld de [NGINX-container](https://hub.docker.com/_/nginx/) voor de web-front-end van uw toepassing en stateful Services gebruiken voor een meer intensieve berekening van de back-end.
 
@@ -89,7 +90,7 @@ Service Fabric biedt verschillende container mogelijkheden die u helpen bij het 
 * De mogelijkheid om beveiligings referenties in te stellen op de container.
 * Een keuze uit verschillende netwerk modi voor containers.
 
-Voor een uitgebreid overzicht van container ondersteuning op Azure, zoals het maken van een Kubernetes-cluster met de Azure Kubernetes-service, het maken van een persoonlijk docker-REGI ster in Azure Container Registry en meer, Zie [Azure voor containers](https://docs.microsoft.com/azure/containers/).
+Voor een uitgebreid overzicht van container ondersteuning op Azure, zoals het maken van een Kubernetes-cluster met de Azure Kubernetes-service, het maken van een persoonlijk docker-REGI ster in Azure Container Registry en meer, Zie [Azure voor containers](../containers/index.yml).
 
 ## <a name="next-steps"></a>Volgende stappen
 
@@ -97,6 +98,6 @@ In dit artikel hebt u geleerd over de ondersteunings Service Fabric voor het uit
 
 [Uw eerste Service Fabric-containertoepassing maken in Linux](service-fabric-get-started-containers-linux.md)  
 [Uw eerste Service Fabric-containertoepassing maken in Windows](service-fabric-get-started-containers.md)  
-[Meer informatie over Windows-containers](https://docs.microsoft.com/virtualization/windowscontainers/about/)
+[Meer informatie over Windows-containers](/virtualization/windowscontainers/about/)
 
 [Image1]: media/service-fabric-containers/Service-Fabric-Types-of-Isolation.png

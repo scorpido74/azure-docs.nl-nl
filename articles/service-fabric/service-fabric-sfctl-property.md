@@ -5,20 +5,21 @@ author: jeffj6123
 ms.topic: reference
 ms.date: 1/16/2020
 ms.author: jejarry
-ms.openlocfilehash: a9bd75e0b7f8bfceb50a71ca83b60ff1e7b45508
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 0a5ebd4822c5f0ff1735464bb4d5b42c436ee529
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "76905827"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86260327"
 ---
 # <a name="sfctl-property"></a>sfctl property
 Eigenschappen voor opslaan en opvragen onder Service Fabric namen.
 
-## <a name="commands"></a>Opdrachten
+## <a name="commands"></a>Opdracht
 
 |Opdracht|Beschrijving|
 | --- | --- |
-| delete | Hiermee verwijdert u de opgegeven Service Fabric eigenschap. |
+| verwijderen | Hiermee verwijdert u de opgegeven Service Fabric eigenschap. |
 | ophalen | Hiermee wordt de opgegeven Service Fabric-eigenschap opgehaald. |
 | list | Haalt informatie op over alle Service Fabric eigenschappen onder een bepaalde naam. |
 | plaatsen | Hiermee wordt een Service Fabric eigenschap gemaakt of bijgewerkt. |
@@ -30,7 +31,7 @@ Hiermee verwijdert u de opgegeven Service Fabric eigenschap onder een bepaalde n
 
 ### <a name="arguments"></a>Argumenten
 
-|Argument|Description|
+|Argument|Beschrijving|
 | --- | --- |
 | --naam-id [vereist] | De naam van de Service Fabric, zonder het \: URI-schema ' fabric '. |
 | --eigenschap-naam [vereist] | Hiermee geeft u de naam op van de eigenschap die moet worden opgehaald. |
@@ -38,7 +39,7 @@ Hiermee verwijdert u de opgegeven Service Fabric eigenschap onder een bepaalde n
 
 ### <a name="global-arguments"></a>Algemene argumenten
 
-|Argument|Description|
+|Argument|Beschrijving|
 | --- | --- |
 | --fouten opsporen | Verg root logboek registratie uitgebreid om alle logboeken voor fout opsporing weer te geven. |
 | --Help-h | Dit Help-bericht weer geven en afsluiten. |
@@ -53,7 +54,7 @@ Hiermee wordt de opgegeven Service Fabric eigenschap met een opgegeven naam opge
 
 ### <a name="arguments"></a>Argumenten
 
-|Argument|Description|
+|Argument|Beschrijving|
 | --- | --- |
 | --naam-id [vereist] | De naam van de Service Fabric, zonder het \: URI-schema ' fabric '. |
 | --eigenschap-naam [vereist] | Hiermee geeft u de naam op van de eigenschap die moet worden opgehaald. |
@@ -61,7 +62,7 @@ Hiermee wordt de opgegeven Service Fabric eigenschap met een opgegeven naam opge
 
 ### <a name="global-arguments"></a>Algemene argumenten
 
-|Argument|Description|
+|Argument|Beschrijving|
 | --- | --- |
 | --fouten opsporen | Verg root logboek registratie uitgebreid om alle logboeken voor fout opsporing weer te geven. |
 | --Help-h | Dit Help-bericht weer geven en afsluiten. |
@@ -76,7 +77,7 @@ Een Service Fabric naam kan een of meer benoemde eigenschappen hebben die aangep
 
 ### <a name="arguments"></a>Argumenten
 
-|Argument|Description|
+|Argument|Beschrijving|
 | --- | --- |
 | --naam-id [vereist] | De naam van de Service Fabric, zonder het \: URI-schema ' fabric '. |
 | --vervolg token | De vervolg token parameter wordt gebruikt om de volgende set resultaten op te halen. Een vervolg token met een niet-lege waarde wordt opgenomen in het antwoord van de API wanneer de resultaten van het systeem niet in één antwoord passen. Wanneer deze waarde wordt door gegeven aan de volgende API-aanroep, retourneert de API de volgende set resultaten. Als er geen verdere resultaten zijn, bevat het vervolg token geen waarde. De waarde van deze para meter mag geen URL-code ring zijn. |
@@ -85,7 +86,7 @@ Een Service Fabric naam kan een of meer benoemde eigenschappen hebben die aangep
 
 ### <a name="global-arguments"></a>Algemene argumenten
 
-|Argument|Description|
+|Argument|Beschrijving|
 | --- | --- |
 | --fouten opsporen | Verg root logboek registratie uitgebreid om alle logboeken voor fout opsporing weer te geven. |
 | --Help-h | Dit Help-bericht weer geven en afsluiten. |
@@ -100,7 +101,7 @@ Hiermee wordt de opgegeven Service Fabric eigenschap met een bepaalde naam gemaa
 
 ### <a name="arguments"></a>Argumenten
 
-|Argument|Description|
+|Argument|Beschrijving|
 | --- | --- |
 | --naam-id [vereist] | De naam van de Service Fabric, zonder het \: URI-schema ' fabric '. |
 | --eigenschap-naam [vereist] | De naam van de eigenschap Service Fabric. |
@@ -110,7 +111,7 @@ Hiermee wordt de opgegeven Service Fabric eigenschap met een bepaalde naam gemaa
 
 ### <a name="global-arguments"></a>Algemene argumenten
 
-|Argument|Description|
+|Argument|Beschrijving|
 | --- | --- |
 | --fouten opsporen | Verg root logboek registratie uitgebreid om alle logboeken voor fout opsporing weer te geven. |
 | --Help-h | Dit Help-bericht weer geven en afsluiten. |
@@ -121,4 +122,4 @@ Hiermee wordt de opgegeven Service Fabric eigenschap met een bepaalde naam gemaa
 
 ## <a name="next-steps"></a>Volgende stappen
 - [Stel](service-fabric-cli.md) de service Fabric cli in.
-- Meer informatie over het gebruik van de Service Fabric CLI met behulp van de [voorbeeld scripts](/azure/service-fabric/scripts/sfctl-upgrade-application).
+- Meer informatie over het gebruik van de Service Fabric CLI met behulp van de [voorbeeld scripts](./scripts/sfctl-upgrade-application.md).

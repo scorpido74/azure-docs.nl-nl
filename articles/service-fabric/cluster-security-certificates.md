@@ -4,12 +4,12 @@ description: Meer informatie over verificatie op basis van certificaten in Servi
 ms.topic: conceptual
 ms.date: 03/16/2020
 ms.custom: sfrev
-ms.openlocfilehash: 699015e322c599dea996b3a8b9dbc0a4589440ab
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 36717f526f88af753f3929d62e84ee65be4320e9
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81429666"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86259027"
 ---
 # <a name="x509-certificate-based-authentication-in-service-fabric-clusters"></a>X. 509 authenticatie op basis van certificaten in Service Fabric clusters
 
@@ -180,7 +180,7 @@ Voorheen werd vermeld dat de beveiligings instellingen van een Service Fabric cl
 
 Zoals vermeld, houdt certificaat validatie altijd in voor het bouwen en evalueren van de keten van het certificaat. Voor certificaten die door de certificerings instantie worden verleend, worden meestal enkele uitgaande aanroepen naar verschillende eind punten van de uitgevende PKI, het opslaan van antwoorden in de cache, uitgevoerd. Gezien de prevalentie van certificaat validatie aanroepen in een Service Fabric-cluster, kunnen eventuele problemen in de eind punten van de PKI leiden tot een lagere Beschik baarheid van het cluster of uitsplitsing. De uitgaande aanroepen kunnen niet worden onderdrukt (zie hieronder in het gedeelte met veelgestelde vragen voor meer informatie): de volgende instellingen kunnen worden gebruikt om validatie fouten te maskeren die worden veroorzaakt door mislukte CRL-aanroepen.
 
-  * CrlCheckingFlag: de teken reeks die is geconverteerd naar UINT in het gedeelte Security. De waarde van deze instelling wordt door Service Fabric gebruikt om status fouten in de certificaat keten te maskeren door het gedrag van het bouwen van de keten te wijzigen. het wordt door gegeven aan de Win32 CryptoAPI [CertGetCertificateChain](https://docs.microsoft.com/windows/win32/api/wincrypt/nf-wincrypt-certgetcertificatechain) -aanroep als de para meter dwFlags en kan worden ingesteld op een geldige combi natie van vlaggen die worden geaccepteerd door de functie. Met de waarde 0 wordt de Service Fabric runtime gedwongen om status fouten van vertrouwens relaties te negeren. dit wordt niet aanbevolen, omdat het gebruik hiervan een belang rijke beveiligings risico vormt. De standaard waarde is 0x40000000 (CERT_CHAIN_REVOCATION_CHECK_CHAIN_EXCLUDE_ROOT).
+  * CrlCheckingFlag: de teken reeks die is geconverteerd naar UINT in het gedeelte Security. De waarde van deze instelling wordt door Service Fabric gebruikt om status fouten in de certificaat keten te maskeren door het gedrag van het bouwen van de keten te wijzigen. het wordt door gegeven aan de Win32 CryptoAPI [CertGetCertificateChain](/windows/win32/api/wincrypt/nf-wincrypt-certgetcertificatechain) -aanroep als de para meter dwFlags en kan worden ingesteld op een geldige combi natie van vlaggen die worden geaccepteerd door de functie. Met de waarde 0 wordt de Service Fabric runtime gedwongen om status fouten van vertrouwens relaties te negeren. dit wordt niet aanbevolen, omdat het gebruik hiervan een belang rijke beveiligings risico vormt. De standaard waarde is 0x40000000 (CERT_CHAIN_REVOCATION_CHECK_CHAIN_EXCLUDE_ROOT).
 
   Wanneer gebruikt u: voor lokale tests met zelfondertekende certificaten of ontwikkelaars certificaten die niet volledig zijn opgemaakt/geen juiste open bare-sleutel infrastructuur hebben ter ondersteuning van de certificaten. Kan ook worden gebruikt als oplossing in gapped omgevingen tijdens de overgang tussen Pki's.
 
@@ -257,7 +257,7 @@ Als fase 2 is voltooid, wordt ook de conversie van het cluster naar algemene op 
 In een afzonderlijk artikel gaan we het onderwerp over het beheren en inrichten van certificaten in een Service Fabric-cluster.
 
 ## <a name="troubleshooting-and-frequently-asked-questions"></a>Problemen oplossen en veelgestelde vragen
-Bij het opsporen van problemen met betrekking tot de verificatie in Service Fabric clusters is het niet eenvoudig om de volgende hints te hopeful en tips kunnen helpen. De eenvoudigste manier om te beginnen met onderzoeken is het controleren van de Service Fabric gebeurtenis logboeken op de knoop punten van het cluster, niet noodzakelijkerwijs alleen die symptomen, maar ook knoop punten die wel of geen verbinding kunnen maken met een van hun neighbors. In Windows worden gebeurtenissen die van belang zijn, meestal vastgelegd in respectievelijk de kanalen ' toepassingen en services Logs\Microsoft-ServiceFabric\Admin ' of ' operationeel '. Soms kan het nuttig zijn om [Diagnostische CAPI2-logboek registratie in te scha kelen](https://docs.microsoft.com/archive/blogs/benjaminperkins/enable-capi2-event-logging-to-troubleshoot-pki-and-ssl-certificate-issues)om meer informatie vast te leggen over de validatie van het certificaat, het ophalen van CRL'S/CTL, enzovoort. (Vergeet niet om het uit te scha kelen na het volt ooien van de reproduceren.)
+Bij het opsporen van problemen met betrekking tot de verificatie in Service Fabric clusters is het niet eenvoudig om de volgende hints te hopeful en tips kunnen helpen. De eenvoudigste manier om te beginnen met onderzoeken is het controleren van de Service Fabric gebeurtenis logboeken op de knoop punten van het cluster, niet noodzakelijkerwijs alleen die symptomen, maar ook knoop punten die wel of geen verbinding kunnen maken met een van hun neighbors. In Windows worden gebeurtenissen die van belang zijn, meestal vastgelegd in respectievelijk de kanalen ' toepassingen en services Logs\Microsoft-ServiceFabric\Admin ' of ' operationeel '. Soms kan het nuttig zijn om [Diagnostische CAPI2-logboek registratie in te scha kelen](/archive/blogs/benjaminperkins/enable-capi2-event-logging-to-troubleshoot-pki-and-ssl-certificate-issues)om meer informatie vast te leggen over de validatie van het certificaat, het ophalen van CRL'S/CTL, enzovoort. (Vergeet niet om het uit te scha kelen na het volt ooien van de reproduceren.)
 
 Voor beelden van problemen die zich voordoen in een cluster met verificatie, zijn: 
   - knoop punten zijn omlaag/scha kelen 
@@ -300,5 +300,4 @@ Elk van de symptomen kan worden veroorzaakt door verschillende problemen en deze
     ```C++
     0x80090014  -2146893804 NTE_BAD_PROV_TYPE
     ```
-    U kunt dit oplossen door het cluster certificaat opnieuw te maken met behulp van een CAPI1 (bijvoorbeeld ' micro soft Enhanced RSA en AES Cryptographic Provider '). Raadpleeg voor meer informatie over crypto grafie de [informatie over cryptografische providers](https://docs.microsoft.com/windows/win32/seccertenroll/understanding-cryptographic-providers)
-
+    U kunt dit oplossen door het cluster certificaat opnieuw te maken met behulp van een CAPI1 (bijvoorbeeld ' micro soft Enhanced RSA en AES Cryptographic Provider '). Raadpleeg voor meer informatie over crypto grafie de [informatie over cryptografische providers](/windows/win32/seccertenroll/understanding-cryptographic-providers)

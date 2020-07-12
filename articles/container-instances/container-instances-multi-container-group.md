@@ -4,12 +4,12 @@ description: In deze zelf studie leert u hoe u een container groep met meerdere 
 ms.topic: article
 ms.date: 07/02/2020
 ms.custom: mvc
-ms.openlocfilehash: 48068659d99fc060aa0c0580eb781e10c434c597
-ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
+ms.openlocfilehash: cb085112c6e6458d897f52f19988e6301d4ae6e8
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86169711"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86259567"
 ---
 # <a name="tutorial-deploy-a-multi-container-group-using-a-resource-manager-template"></a>Zelf studie: een groep met meerdere containers implementeren met behulp van een resource manager-sjabloon
 
@@ -154,7 +154,7 @@ az group create --name myResourceGroup --location eastus
 Implementeer de sjabloon met de opdracht [AZ Deployment Group Create][az-deployment-group-create] .
 
 ```azurecli-interactive
-az group deployment create --resource-group myResourceGroup --template-file azuredeploy.json
+az deployment group create --resource-group myResourceGroup --template-file azuredeploy.json
 ```
 
 U ontvangt binnen enkele seconden een eerste reactie van Azure.
@@ -240,4 +240,4 @@ U kunt ook een groep met meerdere containers opgeven met behulp van een [yaml-be
 [az-container-show]: /cli/azure/container#az-container-show
 [az-group-create]: /cli/azure/group#az-group-create
 [az-deployment-group-create]: /cli/azure/deployment/group#az-deployment-group-create
-[template-reference]: https://docs.microsoft.com/azure/templates/microsoft.containerinstance/containergroups
+[template-reference]: /azure/templates/microsoft.containerinstance/containergroups

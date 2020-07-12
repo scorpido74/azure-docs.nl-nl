@@ -9,12 +9,12 @@ ms.date: 04/09/2020
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: ccd8d383db265826d8644ee89d7300128fc3a350
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: c54690645286a4fceb3fd786d85652b1cf77d7aa
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82131311"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86260034"
 ---
 # <a name="create-and-provision-an-iot-edge-device-using-x509-certificates"></a>Een IoT Edge apparaat maken en inrichten met X. 509-certificaten
 
@@ -50,6 +50,9 @@ U hebt de volgende bestanden nodig om automatische inrichting in te stellen met 
 * Het certificaat van de apparaat-id en het certificaat van de persoonlijke sleutel. Het certificaat van de apparaat-id wordt geüpload naar DPS als u een afzonderlijke inschrijving maakt. De persoonlijke sleutel wordt door gegeven aan de IoT Edge runtime.
 * Een volledig keten certificaat dat ten minste de apparaat-id en de tussenliggende certificaten moet bevatten. Het volledige keten certificaat wordt door gegeven aan de IoT Edge runtime.
 * Een tussenliggend of basis-CA-certificaat van de certificaat vertrouwens keten. Dit certificaat wordt geüpload naar DPS als u een groeps registratie maakt.
+
+> [!NOTE]
+> Op dit moment wordt een beperking in libiothsm voor komen dat certificaten worden gebruikt die op of na 1 januari 2050 verlopen.
 
 ### <a name="use-test-certificates"></a>Test certificaten gebruiken
 

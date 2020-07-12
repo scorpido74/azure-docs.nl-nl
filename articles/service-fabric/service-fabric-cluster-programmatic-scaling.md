@@ -5,12 +5,12 @@ author: mjrousos
 ms.topic: conceptual
 ms.date: 01/23/2018
 ms.author: mikerou
-ms.openlocfilehash: bd7c57f3089115e4da861fc8fd20331ab92bc33e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 19f773fa781c51f64412039201842a7af4c29052
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82787104"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86261114"
 ---
 # <a name="scale-a-service-fabric-cluster-programmatically"></a>Een Service Fabric cluster via een programma schalen 
 
@@ -20,7 +20,7 @@ Service Fabric clusters die worden uitgevoerd in azure, zijn gebouwd op schaal s
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 ## <a name="manage-credentials"></a>Referenties beheren
-Een uitdaging voor het schrijven van een service voor het afhandelen van schalen is dat de service toegang moet hebben tot bronnen van virtuele-machine schaal sets zonder interactieve aanmelding. Toegang tot het Service Fabric cluster is eenvoudig als de schaal service een eigen Service Fabric toepassing wijzigt, maar er zijn referenties nodig om toegang te krijgen tot de schaalset. Als u zich wilt aanmelden, kunt u een [Service-Principal](https://docs.microsoft.com/cli/azure/create-an-azure-service-principal-azure-cli) gebruiken die is gemaakt met de [Azure cli](https://github.com/azure/azure-cli).
+Een uitdaging voor het schrijven van een service voor het afhandelen van schalen is dat de service toegang moet hebben tot bronnen van virtuele-machine schaal sets zonder interactieve aanmelding. Toegang tot het Service Fabric cluster is eenvoudig als de schaal service een eigen Service Fabric toepassing wijzigt, maar er zijn referenties nodig om toegang te krijgen tot de schaalset. Als u zich wilt aanmelden, kunt u een [Service-Principal](/cli/azure/create-an-azure-service-principal-azure-cli) gebruiken die is gemaakt met de [Azure cli](https://github.com/azure/azure-cli).
 
 U kunt een service-principal maken met de volgende stappen:
 
@@ -59,7 +59,7 @@ var newCapacity = (int)Math.Min(MaximumNodeCount, scaleSet.Capacity + 1);
 scaleSet.Update().WithCapacity(newCapacity).Apply(); 
 ``` 
 
-U kunt ook de grootte van de schaalset voor virtuele machines beheren met Power shell-cmdlets. [`Get-AzVmss`](https://docs.microsoft.com/powershell/module/az.compute/get-azvmss)kan het object voor de virtuele-machine schaalset ophalen. De huidige capaciteit is beschikbaar via de `.sku.capacity` eigenschap. Nadat u de capaciteit hebt gewijzigd in de gewenste waarde, kan de schaalset voor virtuele machines in Azure worden bijgewerkt met de [`Update-AzVmss`](https://docs.microsoft.com/powershell/module/az.compute/update-azvmss) opdracht.
+U kunt ook de grootte van de schaalset voor virtuele machines beheren met Power shell-cmdlets. [`Get-AzVmss`](/powershell/module/az.compute/get-azvmss)kan het object voor de virtuele-machine schaalset ophalen. De huidige capaciteit is beschikbaar via de `.sku.capacity` eigenschap. Nadat u de capaciteit hebt gewijzigd in de gewenste waarde, kan de schaalset voor virtuele machines in Azure worden bijgewerkt met de [`Update-AzVmss`](/powershell/module/az.compute/update-azvmss) opdracht.
 
 Net als bij het hand matig toevoegen van een knoop punt, moet u een instantie van een schaalset toevoegen die nodig is om een nieuw Service Fabric knoop punt te starten omdat de sjabloon voor de schaalset extensies bevat om automatisch nieuwe exemplaren toe te voegen aan het Service Fabric cluster. 
 
@@ -121,4 +121,4 @@ Raadpleeg de volgende concepten en nuttige Api's om aan de slag te gaan met het 
 
 - [Hand matig schalen of met regels voor automatisch schalen](./service-fabric-cluster-scale-in-out.md)
 - [Fluent Azure-beheer bibliotheken voor .net](https://github.com/Azure/azure-sdk-for-net/tree/Fluent) (geschikt voor interactie met de onderliggende virtuele-machine schaal sets van een service Fabric cluster)
-- [System. Fabric. FabricClient](https://docs.microsoft.com/dotnet/api/system.fabric.fabricclient) (handig voor interactie met een service Fabric cluster en de bijbehorende knoop punten)
+- [System. Fabric. FabricClient](/dotnet/api/system.fabric.fabricclient) (handig voor interactie met een service Fabric cluster en de bijbehorende knoop punten)

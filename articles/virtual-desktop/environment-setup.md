@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 04/30/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: ad535dd18b89cbe2fceab90f73789180ad332b57
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: d189d5febe54a83cde4fe6cd6aa51e728aa882e6
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82612364"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86259902"
 ---
 # <a name="windows-virtual-desktop-environment"></a>Windows Virtual Desktop-omgeving
 
@@ -66,7 +66,7 @@ Zie [een hostgroep maken met de Azure Portal](create-host-pools-azure-marketplac
 
 Zie een van de volgende artikelen voor meer informatie over het maken van verbinding met Windows Virtual Desktop:
 
-- [Verbinding maken met Windows 10 of Windows 7](connect-windows-7-and-10.md)
+- [Verbinding maken met Windows 10 of Windows 7](connect-windows-7-10.md)
 - [Verbinding maken met een webbrowser](connect-web.md)
 - [Verbinding maken met de Android-client](connect-android.md)
 - [Verbinding maken met de macOS-client](connect-macos.md)

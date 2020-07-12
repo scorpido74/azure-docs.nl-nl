@@ -5,11 +5,12 @@ author: vturecek
 ms.topic: conceptual
 ms.date: 11/02/2017
 ms.author: vturecek
-ms.openlocfilehash: 46ce91e607341e2fbdc0b6a3018e74cb24e76839
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 100cf1f7bf8a0c903cfd61d93d2f923c32cabd11
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "75645528"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86260959"
 ---
 # <a name="reliable-actors-reentrancy"></a>Reliable Actors herbetreedbaarheid
 Met de Reliable Actors runtime kunt u standaard herbetreedbaarheid op basis van logische oproepen. Hiermee kunnen actors worden ingetrokken als ze zich in dezelfde aanroep context keten bevinden. Actor A verzendt bijvoorbeeld een bericht naar actor B, die een bericht naar actor C verzendt. Als onderdeel van de bericht verwerking, als actor C actor A aanroept, wordt het bericht weer gegeven, zodat het is toegestaan. Andere berichten die deel uitmaken van een andere aanroep context, worden geblokkeerd op actor A tot de verwerking is voltooid.
@@ -101,4 +102,4 @@ static class Program
 
 
 ## <a name="next-steps"></a>Volgende stappen
-* Meer informatie over herbetreedbaarheid in de [ACTOR API-referentie documentatie](https://msdn.microsoft.com/library/azure/dn971626.aspx)
+* Meer informatie over herbetreedbaarheid in de [ACTOR API-referentie documentatie](/previous-versions/azure/dn971626(v=azure.100))

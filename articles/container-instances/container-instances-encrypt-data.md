@@ -5,12 +5,12 @@ ms.topic: article
 ms.date: 01/17/2020
 author: dkkapur
 ms.author: dekapur
-ms.openlocfilehash: 2f9aff2ea88c2334ab30c9819f68fd6cbb9124c5
-ms.sourcegitcommit: f7e160c820c1e2eb57dc480b2a8fd6bef7053e91
+ms.openlocfilehash: 3c7a84dad1f107d8709e3bcdeac696414cdf883d
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/10/2020
-ms.locfileid: "86232437"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86259713"
 ---
 # <a name="encrypt-deployment-data"></a>Implementatiegegevens versleutelen
 
@@ -39,7 +39,7 @@ In de rest van het document worden de stappen beschreven die nodig zijn voor het
 
 ### <a name="create-service-principal-for-aci"></a>Een service-principal maken voor ACI
 
-De eerste stap is om ervoor te zorgen dat uw [Azure-Tenant](https://docs.microsoft.com/azure/active-directory/develop/quickstart-create-new-tenant) beschikt over een service-principal die is toegewezen voor het verlenen van machtigingen aan de Azure container instances-service. 
+De eerste stap is om ervoor te zorgen dat uw [Azure-Tenant](../active-directory/develop/quickstart-create-new-tenant.md) beschikt over een service-principal die is toegewezen voor het verlenen van machtigingen aan de Azure container instances-service. 
 
 > [!IMPORTANT]
 > Als u de volgende opdracht wilt uitvoeren en een Service-Principal wilt maken, controleert u of u gemachtigd bent om service-principals in uw Tenant te maken.
@@ -59,7 +59,7 @@ Als u de Service-Principal niet kunt maken, doet u het volgende:
 
 ### <a name="create-a-key-vault-resource"></a>Een Key Vault-resource maken
 
-Maak een Azure Key Vault met behulp van [Azure Portal](https://docs.microsoft.com/azure/key-vault/quick-create-portal#create-a-vault), [cli](https://docs.microsoft.com/azure/key-vault/quick-create-cli)of [Power shell](https://docs.microsoft.com/azure/key-vault/quick-create-powershell). 
+Maak een Azure Key Vault met behulp van [Azure Portal](../key-vault/secrets/quick-create-portal.md#create-a-vault), [cli](../key-vault/secrets/quick-create-cli.md)of [Power shell](../key-vault/secrets/quick-create-powershell.md). 
 
 Gebruik de volgende richt lijnen voor de eigenschappen van uw sleutel kluis: 
 * Naam: geef een unieke naam op. 
@@ -96,7 +96,7 @@ Het toegangs beleid wordt nu weer gegeven in het toegangs beleid van uw sleutel 
 > [!IMPORTANT]
 > Het versleutelen van implementatie gegevens met een door de klant beheerde sleutel is beschikbaar in de nieuwste API-versie (2019-12-01) die momenteel wordt geïmplementeerd. Geef deze API-versie op in uw implementatie sjabloon. Neem contact op met de ondersteuning van Azure als u problemen ondervindt.
 
-Wanneer de sleutel kluis sleutel en het toegangs beleid zijn ingesteld, voegt u de volgende eigenschappen toe aan uw ACI-implementatie sjabloon. Meer informatie over het implementeren van ACI-resources met een sjabloon in de [zelf studie: een groep met meerdere containers implementeren met behulp van een resource manager-sjabloon](https://docs.microsoft.com/azure/container-instances/container-instances-multi-container-group). 
+Wanneer de sleutel kluis sleutel en het toegangs beleid zijn ingesteld, voegt u de volgende eigenschappen toe aan uw ACI-implementatie sjabloon. Meer informatie over het implementeren van ACI-resources met een sjabloon in de [zelf studie: een groep met meerdere containers implementeren met behulp van een resource manager-sjabloon](./container-instances-multi-container-group.md). 
 * `resources`Stel onder in `apiVersion` op `2019-12-01` .
 * Voeg onder de sectie eigenschappen van container groep van de implementatie sjabloon een toe `encryptionProperties` , die de volgende waarden bevat:
   * `vaultBaseUrl`: de DNS-naam van uw sleutel kluis kunt u vinden op de Blade overzicht van de sleutel kluis bron in de portal
@@ -129,7 +129,7 @@ In het volgende sjabloon fragment worden de volgende aanvullende eigenschappen w
 ]
 ```
 
-Hieronder volgt een volledige sjabloon, aangepast aan de hand van de sjabloon in [zelf studie: een groep met meerdere containers implementeren met een resource manager-sjabloon](https://docs.microsoft.com/azure/container-instances/container-instances-multi-container-group). 
+Hieronder volgt een volledige sjabloon, aangepast aan de hand van de sjabloon in [zelf studie: een groep met meerdere containers implementeren met een resource manager-sjabloon](./container-instances-multi-container-group.md). 
 
 ```json
 {
@@ -233,14 +233,14 @@ Een resourcegroep maken met de opdracht [az group create][az-group-create].
 az group create --name myResourceGroup --location eastus
 ```
 
-Implementeer de sjabloon met de opdracht [AZ Group Deployment Create][az-group-deployment-create] .
+Implementeer de sjabloon met de opdracht [AZ Deployment Group Create][az-deployment-group-create] .
 
 ```azurecli-interactive
-az group deployment create --resource-group myResourceGroup --template-file deployment-template.json
+az deployment group create --resource-group myResourceGroup --template-file deployment-template.json
 ```
 
 U ontvangt binnen enkele seconden een eerste reactie van Azure. Zodra de implementatie is voltooid, worden alle gegevens die betrekking hebben op deze door de ACI-service bewaard, versleuteld met de sleutel die u hebt ingevoerd.
 
 <!-- LINKS - Internal -->
 [az-group-create]: /cli/azure/group#az-group-create
-[az-group-deployment-create]: /cli/azure/group/deployment#az-group-deployment-create
+[az-deployment-group-create]: /cli/azure/deployment/group/#az-deployment-group-create

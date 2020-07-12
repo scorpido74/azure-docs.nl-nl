@@ -7,12 +7,12 @@ ms.manager: carmonm
 ms.topic: article
 ms.date: 03/12/2020
 ms.author: raynew
-ms.openlocfilehash: afc3132ebdd0f144d16507ef2ccda2dcaffaa34e
-ms.sourcegitcommit: f7e160c820c1e2eb57dc480b2a8fd6bef7053e91
+ms.openlocfilehash: 01f30305529e7f142be0ca6ddffa0f5a12a235bb
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/10/2020
-ms.locfileid: "86232165"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86260009"
 ---
 # <a name="migrate-vmware-vms-to-azure-vms-enabled-with-server-side-encryption-and-customer-managed-keys"></a>Virtuele VMware-machines migreren naar Azure-Vm's die zijn ingeschakeld met versleuteling aan de server zijde en door de klant beheerde sleutels
 
@@ -59,6 +59,10 @@ De portal voor server migratie vereenvoudigt de voor bereiding van de replicatie
 Een schijf Encryption set-object wijst Managed Disks toe aan een Key Vault die de CMK bevat die voor SSE moet worden gebruikt. Als u Vm's wilt repliceren met CMK, maakt u een set voor schijf versleuteling en geeft u deze door als invoer voor de replicatie bewerking.
 
 Volg het voor beeld [hier](../virtual-machines/windows/disks-enable-customer-managed-keys-powershell.md) om een schijf Encryption set te maken met behulp van Azure PowerShell. Zorg ervoor dat de schijf versleuteling is ingesteld in het doel abonnement waarnaar Vm's worden gemigreerd, en in de Azure-doel regio voor de migratie.
+
+De schijf versleutelings kan worden geconfigureerd voor het versleutelen van beheerde schijven met een door de klant beheerde sleutel of voor dubbele versleuteling met een door de klant beheerde sleutel en een platform sleutel. Als u de optie dubbele versleuteling bij rest wilt gebruiken, moet u de ingestelde schijf versleuteling configureren, zoals [hier](../virtual-machines/windows/disks-enable-double-encryption-at-rest-powershell.md)wordt beschreven.
+
+In het voor beeld dat hieronder wordt weer gegeven, is geconfigureerd voor het gebruik van een door de klant beheerde sleutel.
 
 ```azurepowershell
 $Location = "southcentralus"                           #Target Azure region for migration 

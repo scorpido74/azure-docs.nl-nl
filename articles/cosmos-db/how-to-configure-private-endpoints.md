@@ -4,14 +4,14 @@ description: Meer informatie over het instellen van een persoonlijke Azure-koppe
 author: ThomasWeiss
 ms.service: cosmos-db
 ms.topic: how-to
-ms.date: 06/11/2020
+ms.date: 07/10/2020
 ms.author: thweiss
-ms.openlocfilehash: 1ee468b99cddeb5f18f78a6d1298c8959bda075b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: bb1310d0f45f945fc150e0ae011ede0d102a5918
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85261627"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86259105"
 ---
 # <a name="configure-azure-private-link-for-an-azure-cosmos-account"></a>Een persoonlijke Azure-koppeling configureren voor een Azure Cosmos-account
 
@@ -41,7 +41,7 @@ Gebruik de volgende stappen om een persoonlijk eind punt te maken voor een besta
     | Abonnement | Selecteer uw abonnement. |
     | Resourcegroep | Selecteer een resourcegroep.|
     | **Exemplaardetails** |  |
-    | Name | Voer een naam in voor uw privé-eind punt. Als deze naam wordt gebruikt, maakt u er een. |
+    | Naam | Voer een naam in voor uw privé-eind punt. Als deze naam wordt gebruikt, maakt u er een. |
     |Regio| Selecteer de regio waar u een persoonlijke koppeling wilt implementeren. Maak het persoonlijke eind punt op de locatie waar het virtuele netwerk zich bevindt.|
     |||
 1. Selecteer **Volgende: Resource**.
@@ -69,7 +69,7 @@ Gebruik de volgende stappen om een persoonlijk eind punt te maken voor een besta
     |Privé-DNS-zone |Selecteer **privatelink.documents.Azure.com**. <br><br/> De privé-DNS-zone wordt automatisch bepaald. U kunt deze niet wijzigen met behulp van de Azure Portal.|
     |||
 
-1. Selecteer **Controleren + maken**. Op de pagina **controleren en maken** valideert Azure uw configuratie.
+1. Selecteer **Controleren en maken**. Op de pagina **controleren en maken** valideert Azure uw configuratie.
 1. Als u het bericht **Validatie geslaagd** ziet, selecteert u **Maken**.
 
 Wanneer u een persoonlijke koppeling hebt goedgekeurd voor een Azure Cosmos-account, is de optie **alle netwerken** in het deel venster **firewall en virtuele netwerken** niet beschikbaar in de Azure Portal.
@@ -655,8 +655,6 @@ De volgende beperkingen zijn van toepassing wanneer u een privé-verbinding met 
 * Wanneer u de API van een Azure Cosmos DB gebruikt voor een MongoDB-account met een persoonlijke koppeling, werken sommige hulpprogram ma's of bibliotheken mogelijk niet wanneer ze de `appName` para meter automatisch uit de Connection String verwijderen. Deze para meter is vereist om verbinding te maken met het account via een persoonlijk eind punt. Sommige hulpprogram ma's, zoals Visual Studio code, verwijderen deze para meter niet uit de connection string en zijn daarom compatibel.
 
 * Aan een netwerk beheerder moet ten minste de `Microsoft.DocumentDB/databaseAccounts/PrivateEndpointConnectionsApproval/action` machtiging voor het bereik van het Azure Cosmos-account worden verleend om automatisch goedgekeurde privé-eind punten te maken.
-
-* De directe modus wordt momenteel niet ondersteund in azure-regio's op basis van China.
 
 ### <a name="limitations-to-private-dns-zone-integration"></a>Beperkingen voor de integratie van particuliere DNS-zones
 

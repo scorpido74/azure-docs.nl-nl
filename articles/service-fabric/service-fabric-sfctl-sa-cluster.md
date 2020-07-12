@@ -5,16 +5,17 @@ author: jeffj6123
 ms.topic: reference
 ms.date: 1/16/2020
 ms.author: jejarry
-ms.openlocfilehash: 233148c04fb1a9c6cf1d6c7042c12c54eebd0205
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 7e9f4b55945afc04e5c826b26632d68cb75e502f
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "76904918"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86260272"
 ---
 # <a name="sfctl-sa-cluster"></a>sfctl sa-cluster
 Zelfstandige Service Fabric-clusters beheren.
 
-## <a name="commands"></a>Opdrachten
+## <a name="commands"></a>Opdracht
 
 |Opdracht|Beschrijving|
 | --- | --- |
@@ -29,14 +30,14 @@ De cluster configuratie bevat eigenschappen van het cluster die verschillende kn
 
 ### <a name="arguments"></a>Argumenten
 
-|Argument|Description|
+|Argument|Beschrijving|
 | --- | --- |
 | --configuratie-API-versie [vereist] | De API-versie van de JSON-configuratie van de zelfstandige cluster. |
 | --time-out-t | De time-out van de server voor het uitvoeren van de bewerking in enkele seconden. Met deze time-out geeft u de tijds duur op die de client nodig heeft om te wachten tot de aangevraagde bewerking is voltooid. De standaard waarde voor deze para meter is 60 seconden.  Standaard \: 60. |
 
 ### <a name="global-arguments"></a>Algemene argumenten
 
-|Argument|Description|
+|Argument|Beschrijving|
 | --- | --- |
 | --fouten opsporen | Verg root logboek registratie uitgebreid om alle logboeken voor fout opsporing weer te geven. |
 | --Help-h | Dit Help-bericht weer geven en afsluiten. |
@@ -51,7 +52,7 @@ Valideer de opgegeven configuratie-upgrade parameters en begin met het upgraden 
 
 ### <a name="arguments"></a>Argumenten
 
-|Argument|Description|
+|Argument|Beschrijving|
 | --- | --- |
 | --cluster-config [vereist] | De cluster configuratie. |
 | --toepassings status-beleids regels | JSON-gecodeerde woorden lijst met paren van de naam van het toepassings type en het maximum percentage is slecht voordat er een fout optreedt. |
@@ -68,7 +69,7 @@ Valideer de opgegeven configuratie-upgrade parameters en begin met het upgraden 
 
 ### <a name="global-arguments"></a>Algemene argumenten
 
-|Argument|Description|
+|Argument|Beschrijving|
 | --- | --- |
 | --fouten opsporen | Verg root logboek registratie uitgebreid om alle logboeken voor fout opsporing weer te geven. |
 | --Help-h | Dit Help-bericht weer geven en afsluiten. |
@@ -91,13 +92,13 @@ De details van de upgrade status van de cluster configuratie van een zelfstandig
 
 ### <a name="arguments"></a>Argumenten
 
-|Argument|Description|
+|Argument|Beschrijving|
 | --- | --- |
 | --time-out-t | De time-out van de server voor het uitvoeren van de bewerking in enkele seconden. Met deze time-out geeft u de tijds duur op die de client nodig heeft om te wachten tot de aangevraagde bewerking is voltooid. De standaard waarde voor deze para meter is 60 seconden.  Standaard \: 60. |
 
 ### <a name="global-arguments"></a>Algemene argumenten
 
-|Argument|Description|
+|Argument|Beschrijving|
 | --- | --- |
 | --fouten opsporen | Verg root logboek registratie uitgebreid om alle logboeken voor fout opsporing weer te geven. |
 | --Help-h | Dit Help-bericht weer geven en afsluiten. |
@@ -108,4 +109,4 @@ De details van de upgrade status van de cluster configuratie van een zelfstandig
 
 ## <a name="next-steps"></a>Volgende stappen
 - [Stel](service-fabric-cli.md) de service Fabric cli in.
-- Meer informatie over het gebruik van de Service Fabric CLI met behulp van de [voorbeeld scripts](/azure/service-fabric/scripts/sfctl-upgrade-application).
+- Meer informatie over het gebruik van de Service Fabric CLI met behulp van de [voorbeeld scripts](./scripts/sfctl-upgrade-application.md).

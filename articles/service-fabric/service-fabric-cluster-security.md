@@ -4,12 +4,12 @@ description: Meer informatie over beveiligings scenario's voor een Azure Service
 ms.topic: conceptual
 ms.date: 08/14/2018
 ms.custom: sfrev
-ms.openlocfilehash: ba1565c31e8a3ce3f25501f0cad321d5413dc962
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 258a6dd141ccc31516e37dac9f265328f981bbf5
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85080682"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86261075"
 ---
 # <a name="service-fabric-cluster-security-scenarios"></a>Beveiligings scenario's voor Service Fabric cluster
 
@@ -27,7 +27,7 @@ Met de beveiliging van knoop punt naar knoop punt kunt u de communicatie tussen 
 
 ![Diagram van de communicatie tussen knoop punten][Node-to-Node]
 
-Clusters die worden uitgevoerd op Azure en zelfstandige clusters die op Windows worden uitgevoerd, kunnen gebruikmaken van de [certificaat beveiliging](https://msdn.microsoft.com/library/ff649801.aspx) of [Windows-beveiliging](https://msdn.microsoft.com/library/ff649396.aspx) voor Windows Server-computers.
+Clusters die worden uitgevoerd op Azure en zelfstandige clusters die op Windows worden uitgevoerd, kunnen gebruikmaken van de [certificaat beveiliging](/previous-versions/msp-n-p/ff649801(v=pandp.10)) of [Windows-beveiliging](/previous-versions/msp-n-p/ff649396(v=pandp.10)) voor Windows Server-computers.
 
 ### <a name="node-to-node-certificate-security"></a>Certificaat beveiliging van knoop punt naar knoop punt
 
@@ -54,7 +54,7 @@ Bij client-naar-knoop punt-beveiliging worden clients geverifieerd en wordt de c
 
 ![Diagram van client-naar-knoop punt-communicatie][Client-to-Node]
 
-Clusters die worden uitgevoerd op Azure en zelfstandige clusters waarop Windows wordt uitgevoerd, kunnen gebruikmaken van [certificaat beveiliging](https://msdn.microsoft.com/library/ff649801.aspx) of [Windows-beveiliging](https://msdn.microsoft.com/library/ff649396.aspx), hoewel het aanbeveling is om indien mogelijk X. 509-certificaat verificatie te gebruiken.
+Clusters die worden uitgevoerd op Azure en zelfstandige clusters waarop Windows wordt uitgevoerd, kunnen gebruikmaken van [certificaat beveiliging](/previous-versions/msp-n-p/ff649801(v=pandp.10)) of [Windows-beveiliging](/previous-versions/msp-n-p/ff649396(v=pandp.10)), hoewel het aanbeveling is om indien mogelijk X. 509-certificaat verificatie te gebruiken.
 
 ### <a name="client-to-node-certificate-security"></a>Client-naar-knoop punt certificaat beveiliging
 
@@ -95,7 +95,7 @@ Stel de client rollen beheerder en gebruiker in wanneer u het cluster maakt. Wij
 
 ## <a name="x509-certificates-and-service-fabric"></a>X. 509-certificaten en-Service Fabric
 
-X. 509-digitale certificaten worden meestal gebruikt voor het verifiëren van clients en servers. Ze worden ook gebruikt voor het versleutelen en digitaal ondertekenen van berichten. Service Fabric maakt gebruik van X. 509-certificaten voor het beveiligen van een cluster en het bieden van beveiligings functies van toepassingen. Zie [werken met certificaten](https://msdn.microsoft.com/library/ms731899.aspx)voor meer informatie over X. 509 digitale certificaten. U gebruikt [Key Vault](../key-vault/general/overview.md) om certificaten voor service Fabric clusters in azure te beheren.
+X. 509-digitale certificaten worden meestal gebruikt voor het verifiëren van clients en servers. Ze worden ook gebruikt voor het versleutelen en digitaal ondertekenen van berichten. Service Fabric maakt gebruik van X. 509-certificaten voor het beveiligen van een cluster en het bieden van beveiligings functies van toepassingen. Zie [werken met certificaten](/dotnet/framework/wcf/feature-details/working-with-certificates)voor meer informatie over X. 509 digitale certificaten. U gebruikt [Key Vault](../key-vault/general/overview.md) om certificaten voor service Fabric clusters in azure te beheren.
 
 Enkele belang rijke dingen die u moet overwegen:
 

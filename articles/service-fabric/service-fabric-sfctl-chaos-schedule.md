@@ -5,16 +5,17 @@ author: jeffj6123
 ms.topic: reference
 ms.date: 1/16/2020
 ms.author: jejarry
-ms.openlocfilehash: 29b365c48e405830e238945f1d94156f477c15b4
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: dd911574cd37c18e3043cfc2482bd1fcd5f3857b
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "76906188"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86260857"
 ---
 # <a name="sfctl-chaos-schedule"></a>sfctl chaos schedule
 De chaos-planning ophalen en instellen.
 
-## <a name="commands"></a>Opdrachten
+## <a name="commands"></a>Opdracht
 
 |Opdracht|Beschrijving|
 | --- | --- |
@@ -28,13 +29,13 @@ Hiermee haalt u de versie van de chaos-planning in gebruik en het chaos-schema d
 
 ### <a name="arguments"></a>Argumenten
 
-|Argument|Description|
+|Argument|Beschrijving|
 | --- | --- |
 | --time-out-t | De time-out van de server voor het uitvoeren van de bewerking in enkele seconden. Met deze time-out geeft u de tijds duur op die de client nodig heeft om te wachten tot de aangevraagde bewerking is voltooid. De standaard waarde voor deze para meter is 60 seconden.  Standaard \: 60. |
 
 ### <a name="global-arguments"></a>Algemene argumenten
 
-|Argument|Description|
+|Argument|Beschrijving|
 | --- | --- |
 | --fouten opsporen | Verg root logboek registratie uitgebreid om alle logboeken voor fout opsporing weer te geven. |
 | --Help-h | Dit Help-bericht weer geven en afsluiten. |
@@ -49,7 +50,7 @@ Chaos wordt automatisch gepland op basis van het chaos-schema. Het chaos-schema 
 
 ### <a name="arguments"></a>Argumenten
 
-|Argument|Description|
+|Argument|Beschrijving|
 | --- | --- |
 | --chaos-para meters-Dictionary | JSON-gecodeerde lijst die een toewijzing van teken reeks namen vertegenwoordigt aan ChaosParameters die moeten worden gebruikt door taken. |
 | --verloop datum-UTC | De datum en tijd waarop wordt gebruikgemaakt van het schema om chaos te plannen.  Standaard: \: 9999-12-31T23 \: 59 \: 59.999 z. |
@@ -60,7 +61,7 @@ Chaos wordt automatisch gepland op basis van het chaos-schema. Het chaos-schema 
 
 ### <a name="global-arguments"></a>Algemene argumenten
 
-|Argument|Description|
+|Argument|Beschrijving|
 | --- | --- |
 | --fouten opsporen | Verg root logboek registratie uitgebreid om alle logboeken voor fout opsporing weer te geven. |
 | --Help-h | Dit Help-bericht weer geven en afsluiten. |
@@ -140,4 +141,4 @@ sfctl chaos schedule set --version 0 --start-date-utc "2016-01-01T00:00:00.000Z"
 
 ## <a name="next-steps"></a>Volgende stappen
 - [Stel](service-fabric-cli.md) de service Fabric cli in.
-- Meer informatie over het gebruik van de Service Fabric CLI met behulp van de [voorbeeld scripts](/azure/service-fabric/scripts/sfctl-upgrade-application).
+- Meer informatie over het gebruik van de Service Fabric CLI met behulp van de [voorbeeld scripts](./scripts/sfctl-upgrade-application.md).

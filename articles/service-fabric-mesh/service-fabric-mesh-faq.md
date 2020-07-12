@@ -4,11 +4,12 @@ description: Meer informatie over veelgestelde vragen en antwoorden voor Azure S
 ms.author: pepogors
 ms.date: 4/23/2019
 ms.topic: troubleshooting
-ms.openlocfilehash: 2a5c2ea63d162eb6fb78ab702e0519f8ac25dcc7
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 64eeb43d743d71d5acd456409445a4fadfe91aeb
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "78252495"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86260113"
 ---
 # <a name="commonly-asked-service-fabric-mesh-questions"></a>Veelgestelde vragen over Service Fabric mesh
 
@@ -120,7 +121,7 @@ Gebruik in uw lokale ontwikkel cluster `{serviceName}.{applicationName}` . Gebru
 
 Azure mesh biedt momenteel geen ondersteuning voor DNS-omzetting in toepassingen.
 
-Zie voor andere bekende DNS-problemen met het uitvoeren van een Service Fabric-ontwikkelings cluster in Windows 10: [fout opsporing in Windows-containers](/azure/service-fabric/service-fabric-how-to-debug-windows-containers) en [bekende DNS-problemen](https://docs.microsoft.com/azure/service-fabric/service-fabric-dnsservice#known-issues).
+Zie voor andere bekende DNS-problemen met het uitvoeren van een Service Fabric-ontwikkelings cluster in Windows 10: [fout opsporing in Windows-containers](../service-fabric/service-fabric-how-to-debug-windows-containers.md) en [bekende DNS-problemen](../service-fabric/service-fabric-dnsservice.md#known-issues).
 
 ### <a name="networking"></a>Netwerken
 

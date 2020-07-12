@@ -10,12 +10,12 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
 ms.custom: fasttrack-edit
-ms.openlocfilehash: 7e3a35d95e7d2a339bf33620c9d1a140fb6a0a1d
-ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
+ms.openlocfilehash: 3ed3ff94b764c0fcb5521ef8106b32923b203a01
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86143748"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86260638"
 ---
 # <a name="how-to-index-documents-in-azure-blob-storage-with-azure-cognitive-search"></a>Documenten in Azure Blob Storage indexeren met Azure Cognitive Search
 
@@ -210,6 +210,25 @@ Als u dit alles wilt doen, kunt u veld toewijzingen toevoegen en de base-64-code
 >
 >
 
+#### <a name="what-if-you-need-to-encode-a-field-to-use-it-as-a-key-but-you-also-want-to-search-it"></a>Wat moet u doen als u een veld wilt coderen om het te gebruiken als sleutel, maar u ook wilt zoeken?
+
+Het kan voor komen dat u een gecodeerde versie van een metadata_storage_path veld als de sleutel moet gebruiken, maar dat veld ook moet worden doorzocht (zonder code ring). U kunt dit probleem oplossen door het toe te wijzen aan twee velden. een die wordt gebruikt voor de sleutel en een andere die voor zoek doeleinden wordt gebruikt. In het onderstaande voor beeld bevat het *sleutel* veld het gecodeerde pad, terwijl het veld *pad* niet is gecodeerd en wordt gebruikt als Doorzoek bare veld in de index.
+
+```http
+    PUT https://[service name].search.windows.net/indexers/blob-indexer?api-version=2020-06-30
+    Content-Type: application/json
+    api-key: [admin key]
+
+    {
+      "dataSourceName" : " blob-datasource ",
+      "targetIndexName" : "my-target-index",
+      "schedule" : { "interval" : "PT2H" },
+      "fieldMappings" : [
+        { "sourceFieldName" : "metadata_storage_path", "targetFieldName" : "key", "mappingFunction" : { "name" : "base64Encode" } },
+        { "sourceFieldName" : "metadata_storage_path", "targetFieldName" : "path" }
+      ]
+    }
+```
 <a name="WhichBlobsAreIndexed"></a>
 ## <a name="controlling-which-blobs-are-indexed"></a>Bepalen welke blobs worden geïndexeerd
 U kunt bepalen welke blobs worden geïndexeerd en welke worden overgeslagen.

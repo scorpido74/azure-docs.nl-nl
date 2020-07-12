@@ -5,20 +5,21 @@ author: jeffj6123
 ms.topic: reference
 ms.date: 1/16/2020
 ms.author: jejarry
-ms.openlocfilehash: fab388ff223eb95020e2ba0945c76532bc54f224
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 2c91a59e57613934c946e3cd56089b330893a51a
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "76905977"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86260332"
 ---
 # <a name="sfctl-mesh-secret"></a>sfctl mesh secret
 Geheim bronnen van het net ophalen en verwijderen.
 
-## <a name="commands"></a>Opdrachten
+## <a name="commands"></a>Opdracht
 
 |Opdracht|Beschrijving|
 | --- | --- |
-| delete | Hiermee verwijdert u de geheime resource. |
+| verwijderen | Hiermee verwijdert u de geheime resource. |
 | list | Een lijst met alle geheime bronnen. |
 | weergeven | Hiermee wordt de geheime resource met de opgegeven naam opgehaald. |
 
@@ -29,13 +30,13 @@ Hiermee verwijdert u de opgegeven geheime resource en alle bijbehorende benoemde
 
 ### <a name="arguments"></a>Argumenten
 
-|Argument|Description|
+|Argument|Beschrijving|
 | --- | --- |
 | --naam-n [vereist] | De naam van de geheime resource. |
 
 ### <a name="global-arguments"></a>Algemene argumenten
 
-|Argument|Description|
+|Argument|Beschrijving|
 | --- | --- |
 | --fouten opsporen | Verg root logboek registratie uitgebreid om alle logboeken voor fout opsporing weer te geven. |
 | --Help-h | Dit Help-bericht weer geven en afsluiten. |
@@ -50,7 +51,7 @@ Hiermee wordt de informatie opgehaald over alle geheime resources in een bepaald
 
 ### <a name="global-arguments"></a>Algemene argumenten
 
-|Argument|Description|
+|Argument|Beschrijving|
 | --- | --- |
 | --fouten opsporen | Verg root logboek registratie uitgebreid om alle logboeken voor fout opsporing weer te geven. |
 | --Help-h | Dit Help-bericht weer geven en afsluiten. |
@@ -65,13 +66,13 @@ Hiermee wordt de informatie opgehaald over de geheime resource met de opgegeven 
 
 ### <a name="arguments"></a>Argumenten
 
-|Argument|Description|
+|Argument|Beschrijving|
 | --- | --- |
 | --naam-n [vereist] | De naam van de geheime resource. |
 
 ### <a name="global-arguments"></a>Algemene argumenten
 
-|Argument|Description|
+|Argument|Beschrijving|
 | --- | --- |
 | --fouten opsporen | Verg root logboek registratie uitgebreid om alle logboeken voor fout opsporing weer te geven. |
 | --Help-h | Dit Help-bericht weer geven en afsluiten. |
@@ -82,4 +83,4 @@ Hiermee wordt de informatie opgehaald over de geheime resource met de opgegeven 
 
 ## <a name="next-steps"></a>Volgende stappen
 - [Stel](service-fabric-cli.md) de service Fabric cli in.
-- Meer informatie over het gebruik van de Service Fabric CLI met behulp van de [voorbeeld scripts](/azure/service-fabric/scripts/sfctl-upgrade-application).
+- Meer informatie over het gebruik van de Service Fabric CLI met behulp van de [voorbeeld scripts](./scripts/sfctl-upgrade-application.md).

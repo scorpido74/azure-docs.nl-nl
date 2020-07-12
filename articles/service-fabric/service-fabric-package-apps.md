@@ -3,11 +3,12 @@ title: Een Azure Service Fabric-app inpakken
 description: Meer informatie over het inpakken van een Azure Service Fabric-toepassing en hoe u de implementatie kunt voorbereiden op een cluster.
 ms.topic: conceptual
 ms.date: 2/23/2018
-ms.openlocfilehash: 7c99eec28ac06ecf666d6dda1015f889841a5dbf
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: c00e46915c7bf147d224911ef4988d9fedd691c7
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84701044"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86260973"
 ---
 # <a name="package-an-application"></a>Toepassingspakket maken
 
@@ -210,7 +211,7 @@ Met deze optie hoeft het toepassings pakket niet naar het archief met installati
 Het `sfpkg` bestand is een zip die het oorspronkelijke toepassings pakket bevat en de extensie '. sfpkg ' heeft.
 In de zip kan het toepassings pakket gecomprimeerd of gedecomprimeerd zijn. De compressie van het toepassings pakket in het zip-bestand wordt uitgevoerd op het niveau van code, configuratie en gegevens pakket, zoals [eerder beschreven](service-fabric-package-apps.md#compress-a-package).
 
-Als u een wilt maken `sfpkg` , begint u met een map die het oorspronkelijke toepassings pakket bevat of niet. Gebruik vervolgens elk hulp programma om de map met de extensie '. sfpkg ' te laten overgaan. Gebruik bijvoorbeeld [ZipFile. CreateFromDirectory](https://msdn.microsoft.com/library/hh485721(v=vs.110).aspx).
+Als u een wilt maken `sfpkg` , begint u met een map die het oorspronkelijke toepassings pakket bevat of niet. Gebruik vervolgens elk hulp programma om de map met de extensie '. sfpkg ' te laten overgaan. Gebruik bijvoorbeeld [ZipFile. CreateFromDirectory](/dotnet/api/system.io.compression.zipfile.createfromdirectory?view=netcore-3.1#System_IO_Compression_ZipFile_CreateFromDirectory_System_String_System_String_System_IO_Compression_CompressionLevel_System_Boolean_).
 
 ```csharp
 ZipFile.CreateFromDirectory(appPackageDirectoryPath, sfpkgFilePath);

@@ -7,11 +7,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 03/17/2020
 ms.author: philmea
-ms.openlocfilehash: 87932887edd0aac536a2c7fbd25a02d2442f9db9
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 84fa7ae50b69e7e1a2fe341e34497f2bf1a75b0d
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84267627"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86260162"
 ---
 # <a name="iot-hub-high-availability-and-disaster-recovery"></a>Hoge beschikbaarheid en herstel na noodgevallen van IoT Hub
 
@@ -75,6 +76,8 @@ Als de doel stellingen van uw bedrijf niet voldoen aan de RTO die door micro sof
 
 De optie hand matige failover is altijd beschikbaar voor gebruik, ongeacht of er sprake is van uitval tijd van de primaire regio. Daarom kan deze optie mogelijk worden gebruikt voor het uitvoeren van geplande failovers. Een voor beeld van het gebruik van geplande failovers is het uitvoeren van periodieke failover-oefeningen. Een waarschuwing dat een geplande failover-bewerking resulteert in een downtime voor de hub gedurende de periode die is gedefinieerd door de RTO voor deze optie, en resulteert ook in een gegevens verlies zoals gedefinieerd in de bovenstaande tabel RPO. U kunt overwegen om een test IoT hub-exemplaar in te stellen om de optie voor de geplande failover regel matig uit te voeren, zodat u uw end-to-end-oplossingen optimaal kunt benutten wanneer een echte nood situatie optreedt.
 
+De hand matige failover is zonder extra kosten beschikbaar voor IoT-hubs die zijn gemaakt na 18 mei 2017
+
 Zie [zelf studie: hand matige failover uitvoeren voor een IOT-hub](tutorial-manual-failover.md) voor stapsgewijze instructies.
 
 ### <a name="running-test-drills"></a>Test oefeningen uitvoeren
@@ -129,9 +132,9 @@ Hier volgt een samen vatting van de HA/DR-opties die in dit artikel worden gepre
 
 | HA/DR-optie | RTO | RPO | Is hand matige interventie vereist? | Implementatie complexiteit | Extra kosten impact|
 | --- | --- | --- | --- | --- | --- |
-| Door micro soft geïnitieerde failover |2-26 uur|Bovenstaande RPO-tabel verwijzen|No|Geen|Geen|
-| Handmatige failover |10 min-2 uur|Bovenstaande RPO-tabel verwijzen|Yes|Zeer laag. U hoeft alleen deze bewerking vanuit de portal te activeren.|Geen|
-| Kruis regio HA |< 1 minuut|Is afhankelijk van de replicatie frequentie van uw aangepaste HA-oplossing|No|Hoog|> 1x de kosten van 1 IoT hub|
+| Door micro soft geïnitieerde failover |2-26 uur|Bovenstaande RPO-tabel verwijzen|Nee|Geen|Geen|
+| Handmatige failover |10 min-2 uur|Bovenstaande RPO-tabel verwijzen|Ja|Zeer laag. U hoeft alleen deze bewerking vanuit de portal te activeren.|Geen|
+| Kruis regio HA |< 1 minuut|Is afhankelijk van de replicatie frequentie van uw aangepaste HA-oplossing|Nee|Hoog|> 1x de kosten van 1 IoT hub|
 
 ## <a name="next-steps"></a>Volgende stappen
 

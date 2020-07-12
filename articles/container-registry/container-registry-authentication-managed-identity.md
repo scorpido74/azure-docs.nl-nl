@@ -3,11 +3,12 @@ title: Verifiëren met beheerde identiteit
 description: Toegang bieden tot installatie kopieën in uw persoonlijke container register met behulp van een door de gebruiker toegewezen of door het systeem toegewezen beheerde Azure-identiteit.
 ms.topic: article
 ms.date: 01/16/2019
-ms.openlocfilehash: 9b8bed78629d3a9739ec00772ad5c8216a04c122
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: d3a1f0f9c9e814cabaa205fbb0abf05333fd6daf
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "74456489"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86259086"
 ---
 # <a name="use-an-azure-managed-identity-to-authenticate-to-an-azure-container-registry"></a>Een door Azure beheerde identiteit gebruiken om te verifiëren bij een Azure container Registry 
 
@@ -95,7 +96,7 @@ This message shows that your installation appears to be working correctly.
 [...]
 ```
 
-### <a name="install-the-azure-cli"></a>Azure-CLI installeren
+### <a name="install-the-azure-cli"></a>De Azure CLI installeren
 
 Volg de stappen in [Azure cli installeren met apt](/cli/azure/install-azure-cli-apt?view=azure-cli-latest) om de Azure CLI op uw virtuele Ubuntu-machine te installeren. Voor dit artikel moet u versie 2.0.55 of hoger installeren.
 
@@ -238,7 +239,7 @@ In dit artikel hebt u geleerd hoe u beheerde identiteiten gebruikt met Azure Con
 > * De identiteit toegang verlenen tot een Azure container Registry
 > * De beheerde identiteit gebruiken om toegang te krijgen tot het REGI ster en een container installatie kopie te halen
 
-* Meer informatie over [beheerde identiteiten voor Azure-resources](/azure/active-directory/managed-identities-azure-resources/).
+* Meer informatie over [beheerde identiteiten voor Azure-resources](../active-directory/managed-identities-azure-resources/index.yml).
 
 
 <!-- LINKS - external -->

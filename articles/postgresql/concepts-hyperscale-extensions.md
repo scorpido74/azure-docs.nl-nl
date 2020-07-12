@@ -6,13 +6,13 @@ ms.author: jonels
 ms.service: postgresql
 ms.subservice: hyperscale-citus
 ms.topic: conceptual
-ms.date: 04/16/2020
-ms.openlocfilehash: ba8f4591782a4e34fbde26d9669ef01f24450486
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 07/09/2020
+ms.openlocfilehash: de2579868ad72bdf4cf78c552e9553f289ecabd0
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82146416"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86259065"
 ---
 # <a name="postgresql-extensions-in-azure-database-for-postgresql--hyperscale-citus"></a>PostgreSQL-uitbrei dingen in Azure Database for PostgreSQL – grootschalige (Citus)
 
@@ -31,7 +31,7 @@ De volgende tabellen geven een lijst van de standaard PostgreSQL-extensies die m
 ### <a name="data-types-extensions"></a>Uitbrei dingen van gegevens typen
 
 > [!div class="mx-tableFixed"]
-> | **Toestelnummer** | **Beschrijving** |
+> | **Extensie** | **Beschrijving** |
 > |---|---|
 > | [citext](https://www.postgresql.org/docs/current/static/citext.html) | Bevat een hoofdletter gevoelig type teken reeks. |
 > | [kubus](https://www.postgresql.org/docs/current/static/cube.html) | Biedt een gegevens type voor multidimensionale kubussen. |
@@ -46,7 +46,7 @@ De volgende tabellen geven een lijst van de standaard PostgreSQL-extensies die m
 ### <a name="full-text-search-extensions"></a>Extensies voor zoeken in volledige tekst
 
 > [!div class="mx-tableFixed"]
-> | **Toestelnummer** | **Beschrijving** |
+> | **Extensie** | **Beschrijving** |
 > |---|---|
 > | [dicteren \_ int](https://www.postgresql.org/docs/current/static/dict-int.html) | Voorziet in een woordenlijst sjabloon voor tekst zoeken voor gehele getallen. |
 > | [dict \_ xsyn](https://www.postgresql.org/docs/current/dict-xsyn.html) | Zoek woordenlijst sjabloon voor tekst voor uitgebreide synoniemen verwerking. |
@@ -55,7 +55,7 @@ De volgende tabellen geven een lijst van de standaard PostgreSQL-extensies die m
 ### <a name="functions-extensions"></a>Extensies voor functies
 
 > [!div class="mx-tableFixed"]
-> | **Toestelnummer** | **Beschrijving** |
+> | **Extensie** | **Beschrijving** |
 > |---|---|
 > | [autoinc](https://www.postgresql.org/docs/current/contrib-spi.html#id-1.11.7.45.7) | Functies voor auto incrementele velden. |
 > | [earthdistance](https://www.postgresql.org/docs/current/static/earthdistance.html) | Biedt een manier om grote afstanden te berekenen op het Opper vlak van de aarde. |
@@ -77,7 +77,7 @@ De volgende tabellen geven een lijst van de standaard PostgreSQL-extensies die m
 ### <a name="hyperscale-extensions"></a>Grootschalige-extensies
 
 > [!div class="mx-tableFixed"]
-> | **Toestelnummer** | **Beschrijving** |
+> | **Extensie** | **Beschrijving** |
 > |---|---|
 > | [citus](https://github.com/citusdata/citus) | Gedistribueerde data base Citus. |
 > | Shard- \_ herbalancer | Gegevens in een server groep veilig opnieuw verdelen in geval van toevoeging of verwijdering van knoop punten. |
@@ -85,7 +85,7 @@ De volgende tabellen geven een lijst van de standaard PostgreSQL-extensies die m
 ### <a name="index-types-extensions"></a>Extensies van index typen
 
 > [!div class="mx-tableFixed"]
-> | **Toestelnummer** | **Beschrijving** |
+> | **Extensie** | **Beschrijving** |
 > |---|---|
 > | [bloei](https://www.postgresql.org/docs/current/bloom.html) | Toegangs methode voor bloei-index op basis van een hand tekening bestand. |
 > | [btree \_ eginnen](https://www.postgresql.org/docs/current/static/btree-gin.html) | Biedt een voor beeld van EGINNEN-operator klassen waarmee B-structuur-like-gedrag voor bepaalde gegevens typen kan worden geïmplementeerd. |
@@ -94,14 +94,14 @@ De volgende tabellen geven een lijst van de standaard PostgreSQL-extensies die m
 ### <a name="language-extensions"></a>Taal extensies
 
 > [!div class="mx-tableFixed"]
-> | **Toestelnummer** | **Beschrijving** |
+> | **Extensie** | **Beschrijving** |
 > |---|---|
 > | [plpgsql](https://www.postgresql.org/docs/current/static/plpgsql.html) | Door PL/pgSQL geladen procedure taal. |
 
 ### <a name="miscellaneous-extensions"></a>Diverse uitbrei dingen
 
 > [!div class="mx-tableFixed"]
-> | **Toestelnummer** | **Beschrijving** |
+> | **Extensie** | **Beschrijving** |
 > |---|---|
 > | [adminpack](https://www.postgresql.org/docs/current/adminpack.html) | Beheer functies voor PostgreSQL. |
 > | [amcheck](https://www.postgresql.org/docs/current/amcheck.html) | Functies voor het controleren van relatie-integriteit. |
@@ -127,7 +127,7 @@ De volgende tabellen geven een lijst van de standaard PostgreSQL-extensies die m
 ### <a name="postgis-extensions"></a>PostGIS-extensies
 
 > [!div class="mx-tableFixed"]
-> | **Toestelnummer** | **Beschrijving** |
+> | **Extensie** | **Beschrijving** |
 > |---|---|
 > | [Postgis](https://www.postgis.net/), postgis- \_ topologie, postgis \_ Tiger \_ geocodeer, postgis \_ sfcgal | Ruimtelijke en geografische objecten voor PostgreSQL. |
 > | adres \_ standaardiserer, adresseer \_ \_ data gegevens \_ | Wordt gebruikt om een adres te parseren in onderdeel elementen. Wordt gebruikt ter ondersteuning van de stap voor het normaliseren van het adres voor geocodering. |
@@ -144,6 +144,6 @@ De instelling `pg_stat_statements.track` bepaalt welke instructies worden geteld
 Er is sprake van een afweging tussen de informatie over het uitvoeren van query's pg_stat_statements biedt en het effect op Server prestaties, terwijl elke SQL-instructie wordt geregistreerd. Als u de uitbrei ding pg_stat_statements niet actief gebruikt, wordt u aangeraden `pg_stat_statements.track` om in te stellen op `none` . Sommige bewakings services van derden zijn afhankelijk van pg_stat_statements om query prestaties te kunnen leveren, dus bevestig of dit het geval voor u is.
 
 ## <a name="dblink-and-postgres_fdw"></a>dblink en postgres_fdw
-U kunt dblink en postgres_fdw gebruiken om verbinding te maken tussen een PostgreSQL-server of een andere Data Base op dezelfde server. De ontvangende server moet verbindingen vanaf de verzendende server via de Firewall toestaan. Als u deze uitbrei dingen wilt gebruiken om verbinding te maken tussen Azure Database for PostgreSQL servers, stelt u **toegang tot Azure-Services toestaan** in op aan. U moet deze instelling ook inschakelen als u de uitbrei dingen wilt gebruiken om naar dezelfde server te gaan. De instelling **toegang tot Azure-Services toestaan vindt u** op de pagina Azure portal voor de post gres-server onder **verbindings beveiliging**. **Toegang tot Azure-Services toestaan** op whitelists alle Azure ip's.
 
-Momenteel worden uitgaande verbindingen van Azure Database for PostgreSQL niet ondersteund, met uitzonde ring van verbindingen met andere Azure Database for PostgreSQL-servers.
+U kunt dblink en post gres \_ fdw gebruiken om verbinding te maken tussen een postgresql server en een andere Data Base op dezelfde server.  De ontvangende server moet verbindingen vanaf de verzendende server via de Firewall toestaan.  Als u deze uitbrei dingen wilt gebruiken om verbinding te maken tussen Azure Database for PostgreSQL servers of grootschalige (Citus)-Server groepen, stelt u **Azure-Services en-resources in staat om toegang te krijgen tot deze server groep (of server)** naar op.  U moet deze instelling ook inschakelen als u de uitbrei dingen wilt gebruiken om naar dezelfde server te gaan.
+De instelling **Azure-Services en-resources toegang tot deze server groep toestaan vindt u** op de pagina Azure portal voor de Server groep grootschalige (Citus) onder **netwerken**.  Momenteel worden uitgaande verbindingen van Azure Database for PostgreSQL één server en grootschalige (Citus) niet ondersteund, met uitzonde ring van verbindingen met andere Azure Database for PostgreSQL servers en grootschalige (Citus)-Server groepen.

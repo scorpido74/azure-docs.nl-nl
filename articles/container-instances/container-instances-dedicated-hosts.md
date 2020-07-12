@@ -5,11 +5,12 @@ ms.topic: article
 ms.date: 01/17/2020
 author: dkkapur
 ms.author: dekapur
-ms.openlocfilehash: a614d6b5d0cf5c6c1df5ffcb90e56960d6b8a2a9
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: e9d7e2a706f65b5f2948a24400aa63ba39350661
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82025030"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86259645"
 ---
 # <a name="deploy-on-dedicated-hosts"></a>Implementeren op toegewezen hosts
 
@@ -27,7 +28,7 @@ De toegewezen SKU is geschikt voor werkbelastingen van containers waarvoor isola
 > Het gebruik van de toegewezen SKU is alleen beschikbaar in de nieuwste API-versie (2019-12-01) die momenteel wordt geïmplementeerd. Geef deze API-versie op in uw implementatie sjabloon.
 >
 
-Vanaf API-versie 2019-12-01 is er een `sku` eigenschap in de sectie eigenschappen van container groep van een implementatie sjabloon, die vereist is voor een ACI-implementatie. Op dit moment kunt u deze eigenschap gebruiken als onderdeel van een Azure Resource Manager implementatie sjabloon voor ACI. Meer informatie over het implementeren van ACI-resources met een sjabloon in de [zelf studie: een groep met meerdere containers implementeren met behulp van een resource manager-sjabloon](https://docs.microsoft.com/azure/container-instances/container-instances-multi-container-group). 
+Vanaf API-versie 2019-12-01 is er een `sku` eigenschap in de sectie eigenschappen van container groep van een implementatie sjabloon, die vereist is voor een ACI-implementatie. Op dit moment kunt u deze eigenschap gebruiken als onderdeel van een Azure Resource Manager implementatie sjabloon voor ACI. Meer informatie over het implementeren van ACI-resources met een sjabloon in de [zelf studie: een groep met meerdere containers implementeren met behulp van een resource manager-sjabloon](./container-instances-multi-container-group.md). 
 
 De `sku` eigenschap kan een van de volgende waarden hebben:
 * `Standard`-de standaard implementatie keuze van ACI, die nog steeds beveiliging op Hyper Visor niveau garandeert 
@@ -136,17 +137,17 @@ Een resourcegroep maken met de opdracht [az group create][az-group-create].
 az group create --name myResourceGroup --location eastus
 ```
 
-Implementeer de sjabloon met de opdracht [AZ Group Deployment Create][az-group-deployment-create] .
+Implementeer de sjabloon met de opdracht [AZ Deployment Group Create][az-deployment-group-create] .
 
 ```azurecli-interactive
-az group deployment create --resource-group myResourceGroup --template-file deployment-template.json
+az deployment group create --resource-group myResourceGroup --template-file deployment-template.json
 ```
 
 U ontvangt binnen enkele seconden een eerste reactie van Azure. Een geslaagde implementatie vindt plaats op een specifieke host.
 
 <!-- LINKS - Internal -->
 [az-group-create]: /cli/azure/group#az-group-create
-[az-group-deployment-create]: /cli/azure/group/deployment#az-group-deployment-create
+[az-deployment-group-create]: /cli/azure/deployment/group#az-deployment-group-create
 
 <!-- LINKS - External -->
 [azure-support]: https://ms.portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest

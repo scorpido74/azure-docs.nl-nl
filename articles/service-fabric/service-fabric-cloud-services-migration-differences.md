@@ -5,11 +5,12 @@ author: vturecek
 ms.topic: conceptual
 ms.date: 11/02/2017
 ms.author: vturecek
-ms.openlocfilehash: 283ad2c63bb59771dab7881522e737f773ab1705
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 47c3d1b4d603e2dde2de8d4a95fb953744d71409
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "75463380"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86259009"
 ---
 # <a name="learn-about-the-differences-between-cloud-services-and-service-fabric-before-migrating-applications"></a>Meer informatie over de verschillen tussen Cloud Services en Service Fabric voordat u toepassingen migreert.
 Microsoft Azure Service Fabric is het Cloud toepassings platform van de volgende generatie voor zeer schaal bare, zeer betrouw bare gedistribueerde toepassingen. Het bevat een groot aantal nieuwe functies voor het verpakken, implementeren, bijwerken en beheren van gedistribueerde Cloud toepassingen. 
@@ -80,7 +81,7 @@ Hetzelfde communicatie model kan worden gebruikt in Service Fabric. Dit kan hand
 ![Service Fabric directe communicatie][8]
 
 ## <a name="parity"></a>Parity
-[Cloud Services is vergelijkbaar met Service fabric in de mate van beheer en gebruiks gemak, maar het is nu een verouderde service en service Fabric wordt aanbevolen voor nieuwe ontwikkeling](https://docs.microsoft.com/azure/app-service/overview-compare). Hier volgt een API-vergelijking:
+[Cloud Services is vergelijkbaar met Service fabric in de mate van beheer en gebruiks gemak, maar het is nu een verouderde service en service Fabric wordt aanbevolen voor nieuwe ontwikkeling](/azure/app-service/overview-compare). Hier volgt een API-vergelijking:
 
 
 | **Cloud Service-API** | **Service Fabric-API** | **Opmerkingen** |

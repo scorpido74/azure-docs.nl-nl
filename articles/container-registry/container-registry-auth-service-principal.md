@@ -3,11 +3,12 @@ title: Verifiëren met service-principal
 description: Toegang bieden tot installatie kopieën in uw persoonlijke container register met behulp van een Azure Active Directory Service-Principal.
 ms.topic: article
 ms.date: 10/04/2019
-ms.openlocfilehash: 37da784c8e95a5f5b924532e4a019552924a1a3f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 8d49628576a1c337efaea3e5286fef00e39def17
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "74455404"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86259152"
 ---
 # <a name="azure-container-registry-authentication-with-service-principals"></a>Verificatie Azure Container Registry met Service-principals
 
@@ -29,7 +30,7 @@ Configureer bijvoorbeeld uw webtoepassing voor het gebruik van een service-princ
 
 U moet een Service-Principal gebruiken om toegang te krijgen tot het REGI ster in **headless scenario's**. Dat wil zeggen, elke toepassing, service of script dat container installatie kopieën moet pushen of ophalen in een geautomatiseerde of op een andere manier zonder toezicht. Bijvoorbeeld:
 
-  * *Pull*: implementeer containers vanuit een REGI ster naar Orchestration-systemen, waaronder KUBERNETES, DC/OS en docker Swarm. U kunt ook uit container registers halen voor gerelateerde Azure-Services, zoals [Azure Kubernetes service (AKS)](../aks/cluster-container-registry-integration.md), [Azure container instances](container-registry-auth-aci.md), [app service](../app-service/index.yml), [batch](../batch/index.yml), [service Fabric](/azure/service-fabric/)en anderen.
+  * *Pull*: implementeer containers vanuit een REGI ster naar Orchestration-systemen, waaronder KUBERNETES, DC/OS en docker Swarm. U kunt ook uit container registers halen voor gerelateerde Azure-Services, zoals [Azure Kubernetes service (AKS)](../aks/cluster-container-registry-integration.md), [Azure container instances](container-registry-auth-aci.md), [app service](../app-service/index.yml), [batch](../batch/index.yml), [service Fabric](../service-fabric/index.yml)en anderen.
 
   * *Push*: container installatie kopieën bouwen en deze pushen naar een REGI ster met behulp van doorlopende integratie-en implementatie oplossingen zoals Azure pipelines of Jenkins.
 

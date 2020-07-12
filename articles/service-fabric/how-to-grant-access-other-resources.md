@@ -3,11 +3,12 @@ title: Een toepassing toegang verlenen tot andere Azure-resources
 description: In dit artikel wordt uitgelegd hoe u uw beheerde identiteits Service Fabric toegang tot toepassingen kunt verlenen aan andere Azure-resources die op Azure Active Directory gebaseerde verificatie ondersteunen.
 ms.topic: article
 ms.date: 12/09/2019
-ms.openlocfilehash: 3b1feab1e67e993df771564a1a7c1aba4236b2c0
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 638176ca2665146a64fb7a6bd83253eba3434a7f
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "75614790"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86258965"
 ---
 # <a name="granting-a-service-fabric-applications-managed-identity-access-to-azure-resources-preview"></a>Het verlenen van toegang tot Azure-resources door de beheerde identiteit van een Service Fabric-toepassing (preview)
 
@@ -101,7 +102,7 @@ En voor door het systeem toegewezen beheerde identiteiten:
     }
 ```
 
-Zie [kluizen-Access Policy bijwerken](https://docs.microsoft.com/rest/api/keyvault/vaults/updateaccesspolicy)voor meer informatie.
+Zie [kluizen-Access Policy bijwerken](/rest/api/keyvault/vaults/updateaccesspolicy)voor meer informatie.
 
 ## <a name="next-steps"></a>Volgende stappen
 * [Een Azure Service Fabric-toepassing implementeren met een door het systeem toegewezen beheerde identiteit](./how-to-deploy-service-fabric-application-system-assigned-managed-identity.md)

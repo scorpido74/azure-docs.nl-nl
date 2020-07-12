@@ -3,12 +3,12 @@ title: Een Azure Service Fabric-knooppunt type omhoog schalen
 description: Meer informatie over hoe u een Service Fabric cluster kunt schalen door een Schaalset voor virtuele machines toe te voegen.
 ms.topic: article
 ms.date: 02/13/2019
-ms.openlocfilehash: 2d700367049e0bf9bf710aad110c850a78c26220
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: a42e33fa87b6cf7966368481ef6d3920511919e3
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85610690"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86260459"
 ---
 # <a name="scale-up-a-service-fabric-cluster-primary-node-type"></a>Een primair knooppunttype voor Service Fabric-clusters omhoog schalen
 In dit artikel wordt beschreven hoe u het primaire knooppunt type van een Service Fabric cluster omhoog kunt schalen door de resources van de virtuele machine te verg Roten. Een Service Fabric cluster is een met het netwerk verbonden reeks virtuele of fysieke machines waarop uw micro services worden geïmplementeerd en beheerd. Een computer of virtuele machine die deel uitmaakt van een cluster, wordt een knoop punt genoemd. Virtuele-machine schaal sets vormen een Azure Compute-resource die u gebruikt om een verzameling virtuele machines als een set te implementeren en te beheren. Elk knooppunt type dat in een Azure-cluster is gedefinieerd, wordt [ingesteld als een afzonderlijke schaalset](service-fabric-cluster-nodetypes.md). Elk knooppunt type kan vervolgens afzonderlijk worden beheerd. Nadat u een Service Fabric cluster hebt gemaakt, kunt u het type van een cluster knooppunt verticaal schalen (de resources van de knoop punten wijzigen) of het besturings systeem van het knooppunt type Vm's bijwerken.  U kunt het cluster op elk gewenst moment schalen, zelfs wanneer werk belastingen op het cluster worden uitgevoerd.  Naarmate het cluster wordt geschaald, worden uw toepassingen ook automatisch geschaald.
@@ -49,7 +49,7 @@ Meld u vervolgens aan bij uw Azure-account.
 Login-AzAccount -SubscriptionId "<your subscription ID>"
 ```
 
-In deze zelf studie wordt het scenario voor het maken van een zelfondertekend certificaat door lopen. Als u een bestaand certificaat van Azure Key Vault wilt gebruiken, slaat u de onderstaande stap over en spiegelt u in plaats daarvan de stappen in [een bestaand certificaat om het cluster te implementeren](https://docs.microsoft.com/azure/service-fabric/upgrade-managed-disks#use-an-existing-certificate-to-deploy-the-cluster).
+In deze zelf studie wordt het scenario voor het maken van een zelfondertekend certificaat door lopen. Als u een bestaand certificaat van Azure Key Vault wilt gebruiken, slaat u de onderstaande stap over en spiegelt u in plaats daarvan de stappen in [een bestaand certificaat om het cluster te implementeren](./upgrade-managed-disks.md#use-an-existing-certificate-to-deploy-the-cluster).
 
 ### <a name="generate-a-self-signed-certificate-and-deploy-the-cluster"></a>Een zelfondertekend certificaat genereren en het cluster implementeren
 
@@ -251,4 +251,3 @@ Het primaire knooppunt type van het cluster is nu bijgewerkt. Controleer of de g
 * [Een Azure-cluster in-of uitschalen](service-fabric-tutorial-scale-cluster.md).
 * [Schaal een Azure-cluster programmatisch](service-fabric-cluster-programmatic-scaling.md) met behulp van de Fluent Azure Compute SDK.
 * [Een zelfstandige cluster in-of uitschalen](service-fabric-cluster-windows-server-add-remove-nodes.md).
-

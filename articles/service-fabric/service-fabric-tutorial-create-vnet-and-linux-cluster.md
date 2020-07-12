@@ -4,12 +4,12 @@ description: Informatie over hoe u een Linux Service Fabric-cluster implementeer
 ms.topic: conceptual
 ms.date: 02/14/2019
 ms.custom: mvc
-ms.openlocfilehash: 1d6edc086233d757269c12e323241bc4bf55249f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 14e029622f17e8aae392cc55ba4418b3971a5ad2
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85611693"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86260215"
 ---
 # <a name="deploy-a-linux-service-fabric-cluster-into-an-azure-virtual-network"></a>Een Linux Service Fabric-cluster implementeren in een virtueel Azure-netwerk
 
@@ -162,7 +162,7 @@ sfctl cluster health
 
 ## <a name="clean-up-resources"></a>Resources opschonen
 
-Als u niet meteen overstapt op het volgende artikel, kunt u [het cluster verwijderen](service-fabric-cluster-delete.md) om te voor komen dat er kosten in rekening worden gebracht.
+Als u niet meteen overstapt op het volgende artikel, kunt u [het cluster verwijderen](./service-fabric-tutorial-delete-cluster.md) om te voor komen dat er kosten in rekening worden gebracht.
 
 ## <a name="next-steps"></a>Volgende stappen
 

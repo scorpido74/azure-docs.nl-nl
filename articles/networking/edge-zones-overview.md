@@ -7,12 +7,12 @@ ms.service: vnf-manager
 ms.topic: article
 ms.date: 07/07/2020
 ms.author: ganesr
-ms.openlocfilehash: 65a5f7e261913fa38c41930cc44341ca872d1b44
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.openlocfilehash: be113fec596d4730d55403b6ce4dbd6d2709e273
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86086888"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86260064"
 ---
 # <a name="about-azure-edge-zone-preview"></a>Voor beeld van Azure Edge zone
 
@@ -75,6 +75,8 @@ Typische gebruiks voorbeelden zijn onder andere:
 Rand zones worden aangeboden in samen werking met de volgende Opera tors:
 
 - OP&T (Atlanta, Amsterdam en Los Angeles) 
+
+Isv's die werken aan geoptimaliseerde en schaal bare toepassingen die zijn verbonden met 5G-netwerken, kunnen nu gebruikmaken van de nieuwe preview-locatie van Azure Edge-zones met op&T bij het bouwen en experimenteren met uiterst lage latentie platforms, mobiele en verbonden scenario's. Meld u aan voor het early adopter-programma om te profiteren van beveiligde, connectiviteit met hoge band breedte.
 
 [Neem contact op met het team van de rand zone](https://aka.ms/EdgeZones) voor meer informatie.
 

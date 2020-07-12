@@ -5,11 +5,12 @@ author: georgewallace
 ms.topic: conceptual
 ms.date: 2/28/2018
 ms.author: gwallace
-ms.openlocfilehash: a3b2f7c22c1afd0a24aafa3bcd9dc9a6c3f725f1
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 8e60ac5065c2f9543a641daf4f62299c00c61fc8
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85392570"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86260182"
 ---
 # <a name="use-system-health-reports-to-troubleshoot"></a>Systeemstatusrapporten gebruiken om fouten op te lossen
 Azure Service Fabric-onderdelen bieden systeem status rapporten voor alle entiteiten in het cluster direct uit het vak. Met de [Health Store](service-fabric-health-introduction.md#health-store) worden entiteiten gemaakt en verwijderd op basis van de systeem rapporten. Ook worden deze ingedeeld in een-hiërarchie waarin entiteits interacties worden vastgelegd.
@@ -73,17 +74,17 @@ In het waarschuwings rapport voor de status van het Seed-knoop punt worden alle 
 * **Volgende stappen**: als deze waarschuwing in het cluster wordt weer gegeven, volgt u de onderstaande instructies om het probleem op te lossen: voor een cluster met Service Fabric versie 6,5 of hoger service Fabric: als het Seed-knoop punt uitvalt, probeert service Fabric het cluster automatisch te wijzigen in een niet-Seed-knoop punt. Als u dit wilt doen, moet u ervoor zorgen dat het aantal niet-Seed-knoop punten in het primaire knooppunt type groter is dan of gelijk is aan het aantal knoop punten van de lagere seeding. Indien nodig voegt u meer knoop punten toe aan het primaire knooppunt type om dit te doen.
 Afhankelijk van de status van het cluster kan het enige tijd duren om het probleem op te lossen. Zodra dit is gebeurd, wordt het waarschuwings rapport automatisch gewist.
 
-Om het waarschuwings rapport te wissen voor Service Fabric zelfstandige cluster, moeten alle Seed-knoop punten in orde zijn. Afhankelijk van waarom Seed-knoop punten niet in orde zijn, moeten er verschillende acties worden uitgevoerd: als het Seed-knoop punt niet beschikbaar is, moeten gebruikers dat Seed-knoop punt omhoog kunnen zetten. Als het Seed-knoop punt wordt verwijderd of onbekend, moet dit Seed-knoop punt [uit het cluster worden verwijderd](https://docs.microsoft.com/azure/service-fabric/service-fabric-cluster-windows-server-add-remove-nodes).
+Om het waarschuwings rapport te wissen voor Service Fabric zelfstandige cluster, moeten alle Seed-knoop punten in orde zijn. Afhankelijk van waarom Seed-knoop punten niet in orde zijn, moeten er verschillende acties worden uitgevoerd: als het Seed-knoop punt niet beschikbaar is, moeten gebruikers dat Seed-knoop punt omhoog kunnen zetten. Als het Seed-knoop punt wordt verwijderd of onbekend, moet dit Seed-knoop punt [uit het cluster worden verwijderd](./service-fabric-cluster-windows-server-add-remove-nodes.md).
 Het waarschuwings rapport wordt automatisch gewist wanneer alle Seed-knoop punten in orde zijn.
 
 Voor een cluster met Service Fabric oudere versie dan 6,5: in dit geval moet het waarschuwings rapport hand matig worden gewist. **Gebruikers moeten ervoor zorgen dat alle Seed-knoop punten in orde zijn voordat het rapport wordt gewist**: als het Seed-knoop punt niet beschikbaar is, moeten gebruikers dat Seed-knoop punt omhoog kunnen zetten. als het Seed-knoop punt wordt verwijderd of onbekend, moet het Seed-knoop punt uit het cluster worden verwijderd.
-Nadat alle Seed-knoop punten in orde zijn geworden, gebruikt u de volgende opdracht uit Power shell om [het waarschuwings rapport te wissen](https://docs.microsoft.com/powershell/module/servicefabric/send-servicefabricclusterhealthreport):
+Nadat alle Seed-knoop punten in orde zijn geworden, gebruikt u de volgende opdracht uit Power shell om [het waarschuwings rapport te wissen](/powershell/module/servicefabric/send-servicefabricclusterhealthreport):
 
 ```powershell
 PS C:\> Send-ServiceFabricClusterHealthReport -SourceId "System.FM" -HealthProperty "SeedNodeStatus" -HealthState OK
 
 ## Node system health reports
-System.FM, which represents the Failover Manager service, is the authority that manages information about cluster nodes. Each node should have one report from System.FM showing its state. The node entities are removed when the node state is removed. For more information, see [RemoveNodeStateAsync](https://docs.microsoft.com/dotnet/api/system.fabric.fabricclient.clustermanagementclient.removenodestateasync).
+System.FM, which represents the Failover Manager service, is the authority that manages information about cluster nodes. Each node should have one report from System.FM showing its state. The node entities are removed when the node state is removed. For more information, see [RemoveNodeStateAsync](/dotnet/api/system.fabric.fabricclient.clustermanagementclient.removenodestateasync).
 
 ### Node up/down
 System.FM reports as OK when the node joins the ring (it's up and running). It reports an error when the node departs the ring (it's down, either for upgrading or simply because it has failed). The health hierarchy built by the health store acts on deployed entities in correlation with System.FM node reports. It considers the node a virtual parent of all deployed entities. The deployed entities on that node are exposed through queries if the node is reported as up by System.FM, with the same instance as the instance associated with the entities. When System.FM reports that the node is down or restarted, as a new instance, the health store automatically cleans up the deployed entities that can exist only on the down node or on the previous instance of the node.
@@ -138,7 +139,7 @@ System. hosting rapporteert een waarschuwing als gedefinieerde knooppunt capacit
 ## <a name="application-system-health-reports"></a>Status rapporten van het toepassings systeem
 System.CM, dat de Cluster Manager-service vertegenwoordigt, is de instantie die informatie over een toepassing beheert.
 
-### <a name="state"></a>Status
+### <a name="state"></a>Staat
 System.CM rapporten als OK wanneer de toepassing is gemaakt of bijgewerkt. Er wordt een melding van de Health Store wanneer de toepassing wordt verwijderd, zodat deze uit de Store kan worden verwijderd.
 
 * **SourceId**: System.cm
@@ -171,7 +172,7 @@ HealthEvents                    :
 ## <a name="service-system-health-reports"></a>Service systeem status rapporten
 System.FM, dat de Failover Manager-service vertegenwoordigt, is de instantie die informatie over services beheert.
 
-### <a name="state"></a>Status
+### <a name="state"></a>Staat
 System.FM rapporteert als OK wanneer de service is gemaakt. De entiteit wordt uit het Health Store verwijderd wanneer de service wordt verwijderd.
 
 * **SourceId**: System.fm
@@ -213,7 +214,7 @@ HealthEvents          :
 ## <a name="partition-system-health-reports"></a>Systeem status rapporten partitioneren
 System.FM, dat de Failover Manager-service vertegenwoordigt, is de instantie die informatie over service partities beheert.
 
-### <a name="state"></a>Status
+### <a name="state"></a>Staat
 System.FM rapporten als OK wanneer de partitie is gemaakt en in orde is. De entiteit wordt uit het Health Store verwijderd wanneer de partitie wordt verwijderd.
 
 Als de partitie minder dan het minimale aantal replica's bevat, wordt er een fout melding weer gegeven. Als de partitie niet kleiner is dan het minimum aantal replica's, maar deze lager is dan het aantal doel replica's, wordt een waarschuwing weer gegeven. Als de partitie zich in quorum verlies bevindt, wordt er een fout melding weer gegeven in System.FM.
@@ -390,7 +391,7 @@ In het geval van het voor beeld is verder onderzoek nodig. Onderzoek de status v
 ## <a name="replica-system-health-reports"></a>Status rapporten van het replica systeem
 **System. ra**, dat het onderdeel reconfiguratie agent vertegenwoordigt, is de instantie voor de replica status.
 
-### <a name="state"></a>Status
+### <a name="state"></a>Staat
 System. RA-rapporten OK wanneer de replica is gemaakt.
 
 * **SourceId**: System. ra
@@ -674,7 +675,7 @@ De **replicatie wachtrij is vol:**
 * **Eigenschap**: **PrimaryReplicationQueueStatus** of **SecondaryReplicationQueueStatus**, afhankelijk van de replica-rol.
 
 ### <a name="slow-naming-operations"></a>Trage naamgevings bewerkingen
-**System. NamingService** rapporteert de status van de primaire replica wanneer een naamgevings bewerking langer duurt dan acceptabel is. Voor beelden van naamgevings bewerkingen zijn [CreateServiceAsync](https://docs.microsoft.com/dotnet/api/system.fabric.fabricclient.servicemanagementclient.createserviceasync) of [DeleteServiceAsync](https://docs.microsoft.com/dotnet/api/system.fabric.fabricclient.servicemanagementclient.deleteserviceasync). Meer methoden vindt u onder FabricClient. Ze kunnen bijvoorbeeld worden gevonden onder [Service Management-methoden](https://docs.microsoft.com/dotnet/api/system.fabric.fabricclient.servicemanagementclient) of [methoden voor eigenschaps beheer](https://docs.microsoft.com/dotnet/api/system.fabric.fabricclient.propertymanagementclient).
+**System. NamingService** rapporteert de status van de primaire replica wanneer een naamgevings bewerking langer duurt dan acceptabel is. Voor beelden van naamgevings bewerkingen zijn [CreateServiceAsync](/dotnet/api/system.fabric.fabricclient.servicemanagementclient.createserviceasync) of [DeleteServiceAsync](/dotnet/api/system.fabric.fabricclient.servicemanagementclient.deleteserviceasync). Meer methoden vindt u onder FabricClient. Ze kunnen bijvoorbeeld worden gevonden onder [Service Management-methoden](/dotnet/api/system.fabric.fabricclient.servicemanagementclient) of [methoden voor eigenschaps beheer](/dotnet/api/system.fabric.fabricclient.propertymanagementclient).
 
 > [!NOTE]
 > Met de naamgevings service worden service namen omgezet naar een locatie in het cluster. Gebruikers kunnen deze gebruiken om service namen en-eigenschappen te beheren. Het is een Service Fabric gepartitioneerde service. Een van de partities vertegenwoordigt de *eigenaar*van de instantie, die meta gegevens bevat over alle service Fabric namen en services. De namen van de Service Fabric worden toegewezen aan verschillende partities, ook wel partities met de *naam eigenaar* genoemd, waardoor de service uitbreidbaar is. Meer informatie over de [naamgevings service](service-fabric-architecture.md).
@@ -879,4 +880,3 @@ System. hosting rapporteert een waarschuwing als knooppunt capaciteit niet is ge
 * [Services lokaal controleren en een diagnose uitvoeren](service-fabric-diagnostics-how-to-monitor-and-diagnose-services-locally.md)
 
 * [Upgrade van toepassing Service Fabric](service-fabric-application-upgrade.md)
-

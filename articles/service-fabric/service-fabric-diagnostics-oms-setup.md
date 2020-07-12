@@ -5,11 +5,12 @@ author: srrengar
 ms.topic: conceptual
 ms.date: 02/20/2019
 ms.author: srrengar
-ms.openlocfilehash: cf0fab9942dcbb7ee09e554f2c9ba8738f208009
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 691f3b7987c2591b0f6cea3f7b520c03c0ba9a9e
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "75609924"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86258652"
 ---
 # <a name="set-up-azure-monitor-logs-for-a-cluster"></a>Azure Monitor-logboeken voor een cluster instellen
 
@@ -90,7 +91,7 @@ Azure Resource Manager detecteert dat deze opdracht een update is van een bestaa
 
 ## <a name="deploy-azure-monitor-logs-with-azure-powershell"></a>Azure Monitor-logboeken implementeren met Azure PowerShell
 
-U kunt uw log Analytics-resource ook via Power shell implementeren met behulp van de `New-AzOperationalInsightsWorkspace` opdracht. Als u deze methode wilt gebruiken, zorg er dan voor dat u [Azure PowerShell](https://docs.microsoft.com/powershell/azure/install-Az-ps)hebt geïnstalleerd. Gebruik dit script om een nieuwe Log Analytics-werk ruimte te maken en de Service Fabric oplossing hieraan toe te voegen: 
+U kunt uw log Analytics-resource ook via Power shell implementeren met behulp van de `New-AzOperationalInsightsWorkspace` opdracht. Als u deze methode wilt gebruiken, zorg er dan voor dat u [Azure PowerShell](/powershell/azure/install-az-ps)hebt geïnstalleerd. Gebruik dit script om een nieuwe Log Analytics-werk ruimte te maken en de Service Fabric oplossing hieraan toe te voegen: 
 
 ```powershell
 
@@ -122,5 +123,5 @@ U kunt ook andere oplossingen toevoegen of andere wijzigingen aanbrengen in uw L
 
 ## <a name="next-steps"></a>Volgende stappen
 * [Implementeer de log Analytics-agent](service-fabric-diagnostics-oms-agent.md) op uw knoop punten om prestatie meter items te verzamelen en docker-statistieken en-logboeken te verzamelen voor uw containers
-* Krijg vertrouwd met de functies voor [Zoeken in Logboeken en query's](../log-analytics/log-analytics-log-searches.md) die worden aangeboden als onderdeel van Azure monitor logboeken
+* Krijg vertrouwd met de functies voor [Zoeken in Logboeken en query's](../azure-monitor/log-query/log-query-overview.md) die worden aangeboden als onderdeel van Azure monitor logboeken
 * [De weer gave Designer gebruiken om aangepaste weer gaven te maken in Azure Monitor-logboeken](../azure-monitor/platform/view-designer.md)

@@ -5,16 +5,16 @@ ms.topic: conceptual
 ms.date: 03/23/2018
 ms.author: pepogors
 ms.custom: sfrev
-ms.openlocfilehash: 03076a711041812f7587aa1c388b0889b49725d2
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 4efa8626e80cbd64cd6216faa1869d7210f32cf2
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82787130"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86261101"
 ---
 # <a name="azure-service-fabric-node-types-and-virtual-machine-scale-sets"></a>Azure Service Fabric-knooppunt typen en schaal sets voor virtuele machines
 
-[Virtuele-machine schaal sets](/azure/virtual-machine-scale-sets) vormen een Azure Compute-resource. U kunt schaal sets gebruiken voor het implementeren en beheren van een verzameling virtuele machines als een set. Elk type knoop punt dat u in een Azure Service Fabric-cluster definieert, stelt precies één schaalset in: meerdere knooppunt typen kunnen niet worden ondersteund door dezelfde schaalset en het ene knooppunt type mag niet (in de meeste gevallen) worden ondersteund door meerdere schaal sets. Een uitzonde ring hierop is in de zeldzame situatie van het [verticaal schalen](service-fabric-best-practices-capacity-scaling.md#vertical-scaling-considerations) van een knooppunt type, wanneer u tijdelijk twee schaal sets met dezelfde `nodeTypeRef` waarde hebt terwijl replica's worden gemigreerd van de oorspronkelijke naar de bijgewerkte schaalset.
+[Virtuele-machine schaal sets](../virtual-machine-scale-sets/index.yml) vormen een Azure Compute-resource. U kunt schaal sets gebruiken voor het implementeren en beheren van een verzameling virtuele machines als een set. Elk type knoop punt dat u in een Azure Service Fabric-cluster definieert, stelt precies één schaalset in: meerdere knooppunt typen kunnen niet worden ondersteund door dezelfde schaalset en het ene knooppunt type mag niet (in de meeste gevallen) worden ondersteund door meerdere schaal sets. Een uitzonde ring hierop is in de zeldzame situatie van het [verticaal schalen](service-fabric-best-practices-capacity-scaling.md#vertical-scaling-considerations) van een knooppunt type, wanneer u tijdelijk twee schaal sets met dezelfde `nodeTypeRef` waarde hebt terwijl replica's worden gemigreerd van de oorspronkelijke naar de bijgewerkte schaalset.
 
 De Service Fabric runtime wordt geïnstalleerd op elke virtuele machine in de schaalset met de extensie *micro soft. Azure. ServiceFabric* virtual machine. U kunt elk knooppunt type omhoog of omlaag schalen, de SKU van het besturings systeem wijzigen dat op elk cluster knooppunt wordt uitgevoerd, verschillende sets poorten openen en verschillende capaciteits metrieken gebruiken.
 

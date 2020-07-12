@@ -5,11 +5,12 @@ author: vturecek
 ms.topic: conceptual
 ms.date: 10/06/2017
 ms.author: amanbha
-ms.openlocfilehash: 73c149a0d0992fecd1acf633891057570285df64
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: b17befcd86cd56eb5eb385ddc5196cbfce73003c
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "75639663"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86260429"
 ---
 # <a name="actor-events"></a>Actor gebeurtenissen
 Actor gebeurtenissen bieden een manier om meldingen over de beste inspanningen van de actor naar de clients te verzenden. Actor gebeurtenissen zijn ontworpen voor communicatie tussen clients en mogen niet worden gebruikt voor communicatie tussen actors.
@@ -101,7 +102,7 @@ event.gameScoreUpdated(Id.getUUIDId(), score);
 ## <a name="next-steps"></a>Volgende stappen
 * [Actor herbetreedbaarheid](service-fabric-reliable-actors-reentrancy.md)
 * [De functie voor het controleren van actor en prestaties](service-fabric-reliable-actors-diagnostics.md)
-* [Referentie documentatie voor actor-API](https://msdn.microsoft.com/library/azure/dn971626.aspx)
+* [Referentie documentatie voor actor-API](/previous-versions/azure/dn971626(v=azure.100))
 * [C#-voorbeeld code](https://github.com/Azure-Samples/service-fabric-dotnet-getting-started)
 * [C# .NET core-voorbeeld code](https://github.com/Azure-Samples/service-fabric-dotnet-core-getting-started)
 * [Java-voorbeeld code](https://github.com/Azure-Samples/service-fabric-java-getting-started)

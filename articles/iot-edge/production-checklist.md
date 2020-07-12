@@ -4,18 +4,19 @@ description: Meer informatie over hoe u uw Azure IoT Edge oplossing van ontwikke
 author: kgremban
 manager: philmea
 ms.author: kgremban
-ms.date: 4/25/2020
+ms.date: 07/10/2020
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
 ms.custom:
 - amqp
 - mqtt
-ms.openlocfilehash: 128504c59690476afef03aa82a03d69769968e99
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 6f5698c5390a341df505bf5a1f849e121bd754a2
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84431928"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86258789"
 ---
 # <a name="prepare-to-deploy-your-iot-edge-solution-in-production"></a>De implementatie van uw IoT Edge oplossing in productie voorbereiden
 
@@ -37,11 +38,14 @@ IoT Edge-apparaten kunnen van een Raspberry pi van een laptop naar een virtuele 
 
 ### <a name="install-production-certificates"></a>Productiecertificaten installeren
 
-Voor elk IoT Edge apparaat in productie moet een certificaat van een apparaat voor een certificerings instantie (CA) worden geïnstalleerd. Dat CA-certificaat wordt vervolgens gedeclareerd voor de IoT Edge runtime in het bestand config. yaml. Voor ontwikkelings-en test scenario's maakt de IoT Edge-runtime tijdelijke certificaten als er geen certificaten worden gedefinieerd in het bestand config. yaml. Deze tijdelijke certificaten verlopen echter na drie maanden en zijn niet veilig voor productie scenario's.
+Voor elk IoT Edge apparaat in productie moet een certificaat van een apparaat voor een certificerings instantie (CA) worden geïnstalleerd. Dat CA-certificaat wordt vervolgens gedeclareerd voor de IoT Edge runtime in het bestand config. yaml. Voor ontwikkelings-en test scenario's maakt de IoT Edge-runtime tijdelijke certificaten als er geen certificaten worden gedefinieerd in het bestand config. yaml. Deze tijdelijke certificaten verlopen echter na drie maanden en zijn niet veilig voor productie scenario's. Voor productie scenario's moet u uw eigen CA-certificaat voor uw apparaat opgeven, hetzij van een zelfondertekende certificerings instantie, hetzij zijn gekocht bij een commerciële certificerings instantie.
+
+> [!NOTE]
+> Op dit moment wordt een beperking in libiothsm voor komen dat certificaten worden gebruikt die op of na 1 januari 2050 verlopen.
 
 Zie [How Azure IOT Edge certificaten gebruikt](iot-edge-certs.md)voor meer informatie over de rol van het CA-certificaat van het apparaat.
 
-Zie [Production certificaten installeren op een IOT edge-apparaat](how-to-manage-device-certificates.md)voor meer informatie over het installeren van certificaten op een IOT edge apparaat en om ernaar te verwijzen vanuit het bestand config. yaml.
+Zie [certificaat beheren op een IOT edge apparaat](how-to-manage-device-certificates.md)voor meer informatie over het installeren van certificaten op een IOT edge apparaat en om ernaar te verwijzen vanuit het bestand config. yaml.
 
 ### <a name="have-a-device-management-plan"></a>Een plan voor Apparaatbeheer hebben
 

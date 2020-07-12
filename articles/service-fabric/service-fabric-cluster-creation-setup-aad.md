@@ -3,11 +3,12 @@ title: Azure Active Directory instellen voor client verificatie
 description: Meer informatie over het instellen van Azure Active Directory (Azure AD) voor het verifiëren van clients voor Service Fabric clusters.
 ms.topic: conceptual
 ms.date: 6/28/2019
-ms.openlocfilehash: 28c4c65cfcc77607dfe9a463a09ecd10389a6eca
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 537a81a090828d3fcc9dde6032f1d4eb2df9b4e4
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "78193374"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86258775"
 ---
 # <a name="set-up-azure-active-directory-for-client-authentication"></a>Azure Active Directory instellen voor client verificatie
 
@@ -124,7 +125,7 @@ Gebruik de volgende Power shell-opdracht voor beeld om verbinding te maken met h
 Connect-ServiceFabricCluster -ConnectionEndpoint <endpoint> -KeepAliveIntervalInSec 10 -AzureActiveDirectory -ServerCertThumbprint <thumbprint>
 ```
 
-Zie [Connect-ServiceFabricCluster cmdlet](https://docs.microsoft.com/powershell/module/servicefabric/connect-servicefabriccluster)(Engelstalig) voor meer informatie.
+Zie [Connect-ServiceFabricCluster cmdlet](/powershell/module/servicefabric/connect-servicefabriccluster)(Engelstalig) voor meer informatie.
 
 ### <a name="can-i-reuse-the-same-azure-ad-tenant-in-multiple-clusters"></a>Kan ik dezelfde Azure AD-Tenant in meerdere clusters gebruiken?
 Ja. Maar vergeet niet om de URL van Service Fabric Explorer toe te voegen aan uw cluster toepassing (web). Anders werkt Service Fabric Explorer niet.

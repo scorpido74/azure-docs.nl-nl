@@ -8,11 +8,12 @@ ms.topic: how-to
 ms.date: 03/30/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 70ae4a014768976c7dcf81ffadf1066027fa06ad
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 956934bd536d8eb5e692ed193cad1424929db24b
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85214278"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86260757"
 ---
 # <a name="expand-an-existing-host-pool-with-new-session-hosts"></a>Een bestaande hostgroep uitbreiden met nieuwe sessie-hosts
 
@@ -75,7 +76,7 @@ U kunt als volgt de Azure Resource Manager-sjabloon opnieuw implementeren om een
 
 Volg de instructies in [een hostgroep maken met behulp van de Azure Marketplace](create-host-pools-azure-marketplace-2019.md) totdat u [de Azure Marketplace-aanbieding hebt uitgevoerd om een nieuwe hostgroep in te richten](create-host-pools-azure-marketplace-2019.md#run-the-azure-marketplace-offering-to-provision-a-new-host-pool). Wanneer u dat punt krijgt, moet u de volgende informatie invoeren voor elk tabblad:
 
-### <a name="basics"></a>Basisbeginselen
+### <a name="basics"></a>Basisinstellingen
 
 Alle waarden in deze sectie moeten overeenkomen met wat u hebt opgegeven tijdens de eerste keer dat u de hostgroep en de Vm's voor de host maakt, met uitzonde ring van *standaard bureaublad gebruikers*:
 
@@ -129,7 +130,7 @@ Volg de instructies in [Run the Azure Resource Manager-sjabloon voor het inricht
 
 Nu u uw bestaande hostgroep hebt uitgebreid, kunt u zich aanmelden bij een virtueel-bureaubladclient van Windows om ze te testen als onderdeel van een gebruikers sessie. U kunt verbinding maken met een sessie met een van de volgende clients:
 
-- [Verbinding maken met de Windows Desktop-client](../connect-windows-7-and-10.md)
+- [Verbinding maken met de Windows Desktop-client](connect-windows-7-10-2019.md)
 - [Verbinding maken met de webclient](connect-web-2019.md)
 - [Verbinding maken met de Android-client](connect-android-2019.md)
 - [Verbinding maken met de macOS-client](connect-macos-2019.md)

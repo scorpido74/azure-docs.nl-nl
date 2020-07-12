@@ -7,12 +7,12 @@ ms.service: expressroute
 ms.topic: how-to
 ms.date: 07/11/2019
 ms.author: charwen
-ms.openlocfilehash: f3a658d4b02501994437691308810ffb9cabcb6d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 2672068e505b7c86127b8b765372e7c607c3875a
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84738852"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86259775"
 ---
 # <a name="optimize-expressroute-routing"></a>ExpressRoute-routering optimaliseren
 Als u meerdere ExpressRoute-circuits hebt, hebt u meer dan één pad om verbinding te maken met Microsoft. Dat betekent dat suboptimale routering kan plaatsvinden, met andere woorden, dat verkeer soms een langer pad aflegt om Microsoft te bereiken en Microsoft om uw netwerk te bereiken. Hoe langer het netwerkpad, hoe groter de latentie. Latentie heeft een directe invloed op toepassingsprestaties en gebruikerservaring. In dit artikel wordt dit probleem geïllustreerd en wordt uitgelegd hoe u routering optimaliseert met behulp van de standaardrouteringstechnologieën.
@@ -33,18 +33,18 @@ In het bovenstaande voor beeld kunt u de lokale voor keur als volgt configureren
 
 **Cisco IOS-XE-configuratie van R1-perspectief:**
 
-    R1(config)#route-map prefer-ExR permit 10
-    R1(config-route-map)#set local-preference 150
+- R1 (config) #route: ExR toestaan 10
+- R1 (config-route-map) #set lokale-voorkeurs 150
 
-    R1(config)#router BGP 345
-    R1(config-router)#neighbor 1.1.1.2 remote-as 12076
-    R1(config-router)#neighbor 1.1.1.2 activate
-    R1(config-router)#neighbor 1.1.1.2 route-map prefer-ExR in
+- R1 (config) #router BGP 345
+- R1 (config-router) #neighbor 1.1.1.2 extern-as 12076
+- R1 (config-router) #neighbor 1.1.1.2-activering
+- R1 (config-router) #neighbor 1.1.1.2 route kaart voor keur-ExR in
 
 **Junos-configuratie van R1 perspectief:**
 
-    user@R1# set protocols bgp group ibgp type internal
-    user@R1# set protocols bgp group ibgp local-preference 150
+- user@R1aantal ingestelde protocollen BGP-groep ibgp intern
+- user@R1# set-protocollen BGP-groep ibgp Local-preference 150
 
 
 

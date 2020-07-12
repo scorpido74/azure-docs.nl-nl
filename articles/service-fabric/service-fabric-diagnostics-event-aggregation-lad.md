@@ -5,11 +5,12 @@ author: srrengar
 ms.topic: conceptual
 ms.date: 2/25/2019
 ms.author: srrengar
-ms.openlocfilehash: fdb78498d33416ef21b2e2b0f498e7afa6a58d99
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 453258bb5768a2faa8f4e42cce86d02125283026
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "75609958"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86259192"
 ---
 # <a name="event-aggregation-and-collection-using-linux-azure-diagnostics"></a>Gebeurtenis aggregatie en verzameling met Linux Azure Diagnostics
 > [!div class="op_single_selector"]
@@ -20,7 +21,7 @@ ms.locfileid: "75609958"
 
 Wanneer u een Azure Service Fabric-cluster uitvoert, is het een goed idee om de logboeken te verzamelen van alle knoop punten op een centrale locatie. Met de logboeken op een centrale locatie kunt u problemen in uw cluster analyseren en oplossen, of problemen in de toepassingen en services die in dat cluster worden uitgevoerd.
 
-Een manier om logboeken te uploaden en te verzamelen, is door de Linux Azure Diagnostics-extensie (LAD) te gebruiken, waarmee logboeken naar Azure Storage worden geüpload en ook de optie is voor het verzenden van logboeken naar Azure-toepassing inzichten of Event Hubs. U kunt ook een extern proces gebruiken om de gebeurtenissen uit de opslag te lezen en deze te plaatsen in een analyse platform product, zoals [Azure monitor logboeken](../log-analytics/log-analytics-service-fabric.md) of een andere oplossing voor het parseren van Logboeken.
+Een manier om logboeken te uploaden en te verzamelen, is door de Linux Azure Diagnostics-extensie (LAD) te gebruiken, waarmee logboeken naar Azure Storage worden geüpload en ook de optie is voor het verzenden van logboeken naar Azure-toepassing inzichten of Event Hubs. U kunt ook een extern proces gebruiken om de gebeurtenissen uit de opslag te lezen en deze te plaatsen in een analyse platform product, zoals [Azure monitor logboeken](./service-fabric-diagnostics-oms-setup.md) of een andere oplossing voor het parseren van Logboeken.
 
 ## <a name="log-and-event-sources"></a>Logboek-en gebeurtenis bronnen
 
@@ -42,5 +43,5 @@ Hiermee configureert u de LAD-agent om de opgegeven logboek bestanden te bewaken
 
 ## <a name="next-steps"></a>Volgende stappen
 
-1. Zie [LTTng-documentatie](https://lttng.org/docs) en [Lad gebruiken](https://docs.microsoft.com/azure/virtual-machines/extensions/diagnostics-linux)voor meer informatie over de gebeurtenissen die u moet onderzoeken tijdens het oplossen van problemen.
+1. Zie [LTTng-documentatie](https://lttng.org/docs) en [Lad gebruiken](../virtual-machines/extensions/diagnostics-linux.md)voor meer informatie over de gebeurtenissen die u moet onderzoeken tijdens het oplossen van problemen.
 2. [Stel de log Analytics agent](service-fabric-diagnostics-event-analysis-oms.md) in voor het verzamelen van metrische gegevens, het controleren van containers die zijn geïmplementeerd in uw cluster en het visualiseren van uw logboeken 

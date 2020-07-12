@@ -5,12 +5,12 @@ author: amanbha
 ms.topic: conceptual
 ms.date: 10/06/2017
 ms.author: amanbha
-ms.openlocfilehash: b05da78091260297d94062c06cba100d01ce7e2e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: db47a758d33c3ed6e861601285e7737514ab416d
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85847876"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86260449"
 ---
 # <a name="actor-lifecycle-automatic-garbage-collection-and-manual-delete"></a>Actor-levens cyclus, automatische garbage collection en hand matig verwijderen
 Er wordt een actor geactiveerd wanneer een aanroep voor de eerste keer wordt uitgevoerd naar een van de methoden. Een actor wordt gedeactiveerd (garbagecollection door de actors-runtime) als deze niet wordt gebruikt voor een Configureer bare periode. Een actor en de status kunnen op elk gewenst moment hand matig worden verwijderd.
@@ -112,7 +112,7 @@ Garbagecollection van gedeactiveerde actors reinigt alleen het actor-object, maa
 * [Actor gebeurtenissen](service-fabric-reliable-actors-events.md)
 * [Actor herbetreedbaarheid](service-fabric-reliable-actors-reentrancy.md)
 * [De functie voor het controleren van actor en prestaties](service-fabric-reliable-actors-diagnostics.md)
-* [Referentie documentatie voor actor-API](https://msdn.microsoft.com/library/azure/dn971626.aspx)
+* [Referentie documentatie voor actor-API](/previous-versions/azure/dn971626(v=azure.100))
 * [C#-voorbeeld code](https://github.com/Azure-Samples/service-fabric-dotnet-getting-started)
 * [Java-voorbeeld code](https://github.com/Azure-Samples/service-fabric-java-getting-started)
 

@@ -5,12 +5,12 @@ author: shsha-msft
 ms.topic: conceptual
 ms.date: 03/10/2020
 ms.author: shsha
-ms.openlocfilehash: 8483e00f55d0dd49ba57db58b99b237ce0a169e5
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 3be079b97c2660437344f88203fdda06cc6d6740
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81430628"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86258974"
 ---
 # <a name="initializer-codepackages"></a>CodePackages voor initialisatiefunctie
 
@@ -50,7 +50,7 @@ We kijken naar een volledig voor beeld met behulp van initializer CodePackages.
 > [!IMPORTANT]
 > In het volgende voor beeld wordt ervan uitgegaan dat u bekend bent met het maken van [Windows-container toepassingen met Service Fabric en docker][containers-getting-started-link].
 >
-> In dit voor beeld wordt verwezen naar mcr.microsoft.com/windows/nanoserver:1809. Windows Server-containers zijn niet compatibel in alle versies van een host-besturings systeem. Zie compatibiliteit met Windows- [container versie](https://docs.microsoft.com/virtualization/windowscontainers/deploy-containers/version-compatibility)voor meer informatie.
+> In dit voor beeld wordt verwezen naar mcr.microsoft.com/windows/nanoserver:1809. Windows Server-containers zijn niet compatibel in alle versies van een host-besturings systeem. Zie compatibiliteit met Windows- [container versie](/virtualization/windowscontainers/deploy-containers/version-compatibility)voor meer informatie.
 
 De volgende ServiceManifest.xml bouwt voort op het ServiceManifest-code fragment dat eerder is beschreven. *InitCodePackage0*, *InitCodePackage1* en *WorkloadCodePackage* zijn CodePackages die containers vertegenwoordigen. Na activering wordt *InitCodePackage0* eerst uitgevoerd. Er wordt een bericht in een bestand geregistreerd en afgesloten. Vervolgens wordt *InitCodePackage1* uitgevoerd, waarmee ook een bericht wordt geregistreerd bij een bestand en wordt afgesloten. Ten slotte wordt de *WorkloadCodePackage* uitgevoerd. Ook wordt er een bericht naar een bestand geregistreerd, wordt de inhoud van het bestand naar **stdout** uitgevoerd en wordt vervolgens de opdracht ' altijd '.
 
@@ -151,4 +151,3 @@ Raadpleeg de volgende artikelen voor gerelateerde informatie.
 [application-model-link]: service-fabric-application-model.md
 [hosting-model-link]: service-fabric-hosting-model.md
 [setup-entry-point-link]: service-fabric-run-script-at-service-startup.md
-

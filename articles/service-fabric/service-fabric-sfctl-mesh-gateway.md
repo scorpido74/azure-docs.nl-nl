@@ -5,20 +5,21 @@ author: jeffj6123
 ms.topic: reference
 ms.date: 1/16/2020
 ms.author: jejarry
-ms.openlocfilehash: 3e398ff8a1a0a28fd9d0650a7c9d18ba04817d33
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 9b6766137dd88a5a780dcca7b6eab7c6c3f9bbf4
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "76906016"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86260394"
 ---
 # <a name="sfctl-mesh-gateway"></a>sfctl mesh gateway
 Netgateway-resources ophalen en verwijderen.
 
-## <a name="commands"></a>Opdrachten
+## <a name="commands"></a>Opdracht
 
 |Opdracht|Beschrijving|
 | --- | --- |
-| delete | Hiermee verwijdert u de gateway resource. |
+| verwijderen | Hiermee verwijdert u de gateway resource. |
 | list | Een lijst met alle gateway-resources. |
 | weergeven | Hiermee wordt de gateway resource met de opgegeven naam opgehaald. |
 
@@ -29,13 +30,13 @@ Hiermee verwijdert u de gateway bron geïdentificeerd door de naam.
 
 ### <a name="arguments"></a>Argumenten
 
-|Argument|Description|
+|Argument|Beschrijving|
 | --- | --- |
 | --naam-n [vereist] | De naam van de gateway resource. |
 
 ### <a name="global-arguments"></a>Algemene argumenten
 
-|Argument|Description|
+|Argument|Beschrijving|
 | --- | --- |
 | --fouten opsporen | Verg root logboek registratie uitgebreid om alle logboeken voor fout opsporing weer te geven. |
 | --Help-h | Dit Help-bericht weer geven en afsluiten. |
@@ -50,7 +51,7 @@ Hiermee wordt de informatie opgehaald over alle gateway-resources in een bepaald
 
 ### <a name="global-arguments"></a>Algemene argumenten
 
-|Argument|Description|
+|Argument|Beschrijving|
 | --- | --- |
 | --fouten opsporen | Verg root logboek registratie uitgebreid om alle logboeken voor fout opsporing weer te geven. |
 | --Help-h | Dit Help-bericht weer geven en afsluiten. |
@@ -65,13 +66,13 @@ Hiermee wordt de informatie opgehaald over de gateway resource met de opgegeven 
 
 ### <a name="arguments"></a>Argumenten
 
-|Argument|Description|
+|Argument|Beschrijving|
 | --- | --- |
 | --naam-n [vereist] | De naam van de gateway resource. |
 
 ### <a name="global-arguments"></a>Algemene argumenten
 
-|Argument|Description|
+|Argument|Beschrijving|
 | --- | --- |
 | --fouten opsporen | Verg root logboek registratie uitgebreid om alle logboeken voor fout opsporing weer te geven. |
 | --Help-h | Dit Help-bericht weer geven en afsluiten. |
@@ -82,4 +83,4 @@ Hiermee wordt de informatie opgehaald over de gateway resource met de opgegeven 
 
 ## <a name="next-steps"></a>Volgende stappen
 - [Stel](service-fabric-cli.md) de service Fabric cli in.
-- Meer informatie over het gebruik van de Service Fabric CLI met behulp van de [voorbeeld scripts](/azure/service-fabric/scripts/sfctl-upgrade-application).
+- Meer informatie over het gebruik van de Service Fabric CLI met behulp van de [voorbeeld scripts](./scripts/sfctl-upgrade-application.md).

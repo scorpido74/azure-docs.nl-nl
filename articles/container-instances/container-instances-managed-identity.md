@@ -3,12 +3,12 @@ title: Beheerde identiteit inschakelen in container groep
 description: Meer informatie over het inschakelen van een beheerde identiteit in Azure Container Instances die kan worden geverifieerd met andere Azure-Services
 ms.topic: article
 ms.date: 07/02/2020
-ms.openlocfilehash: 9bc96ed29039650082bdfa8b7b2b1b48ecb6bd3f
-ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
+ms.openlocfilehash: 23f2347593137a4846c8fd22e3b90f22db39bda3
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86169779"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86259632"
 ---
 # <a name="how-to-use-managed-identities-with-azure-container-instances"></a>Beheerde identiteiten gebruiken met Azure Container Instances
 
@@ -392,6 +392,6 @@ In dit artikel hebt u geleerd over beheerde identiteiten in Azure Container Inst
 > * De identiteit toegang verlenen tot een Azure-sleutel kluis
 > * De beheerde identiteit gebruiken om toegang te krijgen tot een sleutel kluis van een actieve container
 
-* Meer informatie over [beheerde identiteiten voor Azure-resources](/azure/active-directory/managed-identities-azure-resources/).
+* Meer informatie over [beheerde identiteiten voor Azure-resources](../active-directory/managed-identities-azure-resources/index.yml).
 
 * Bekijk een [Azure go SDK-voor beeld](https://medium.com/@samkreter/c98911206328) van het gebruik van een beheerde identiteit voor toegang tot een sleutel kluis van Azure container instances.

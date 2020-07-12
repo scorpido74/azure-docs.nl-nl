@@ -5,26 +5,27 @@ author: georgewallace
 ms.topic: conceptual
 ms.date: 06/20/2018
 ms.author: gwallace
-ms.openlocfilehash: d22184d6d275adb95932fb29338768210547c199
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 7f3c3e072a3a2e4f7723f84b2c70ba0d0ddb9d03
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85392621"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86258841"
 ---
 # <a name="common-exceptions-and-errors-when-working-with-the-fabricclient-apis"></a>Algemene uitzonderingen en fouten bij het werken met de FabricClient-API's
-Met de [FabricClient](https://docs.microsoft.com/dotnet/api/system.fabric.fabricclient) -api's kunnen cluster-en toepassings beheerders beheer taken uitvoeren op een service Fabric toepassing, service of cluster. Bijvoorbeeld het implementeren van toepassingen, het upgraden en verwijderen, het controleren van de status van een cluster of het testen van een service. Toepassings ontwikkelaars en cluster beheerders kunnen de FabricClient-Api's gebruiken voor het ontwikkelen van hulpprogram ma's voor het beheren van de Service Fabric cluster en toepassingen.
+Met de [FabricClient](/dotnet/api/system.fabric.fabricclient) -api's kunnen cluster-en toepassings beheerders beheer taken uitvoeren op een service Fabric toepassing, service of cluster. Bijvoorbeeld het implementeren van toepassingen, het upgraden en verwijderen, het controleren van de status van een cluster of het testen van een service. Toepassings ontwikkelaars en cluster beheerders kunnen de FabricClient-Api's gebruiken voor het ontwikkelen van hulpprogram ma's voor het beheren van de Service Fabric cluster en toepassingen.
 
-Er zijn veel verschillende typen bewerkingen die kunnen worden uitgevoerd met behulp van FabricClient.  Elke methode kan uitzonde ringen veroorzaken op fouten vanwege onjuiste invoer, runtime fouten of problemen met de tijdelijke infra structuur.  Raadpleeg de API-referentie documentatie om te bepalen welke uitzonde ringen worden veroorzaakt door een specifieke methode. Er zijn echter enkele uitzonde ringen, die kunnen worden gegenereerd door een groot aantal verschillende [FabricClient](https://docs.microsoft.com/dotnet/api/system.fabric.fabricclient) -api's. De volgende tabel bevat de uitzonde ringen die gemeen schappelijk zijn in de FabricClient-Api's.
+Er zijn veel verschillende typen bewerkingen die kunnen worden uitgevoerd met behulp van FabricClient.  Elke methode kan uitzonde ringen veroorzaken op fouten vanwege onjuiste invoer, runtime fouten of problemen met de tijdelijke infra structuur.  Raadpleeg de API-referentie documentatie om te bepalen welke uitzonde ringen worden veroorzaakt door een specifieke methode. Er zijn echter enkele uitzonde ringen, die kunnen worden gegenereerd door een groot aantal verschillende [FabricClient](/dotnet/api/system.fabric.fabricclient) -api's. De volgende tabel bevat de uitzonde ringen die gemeen schappelijk zijn in de FabricClient-Api's.
 
 | Uitzondering | Wordt gegenereerd wanneer |
 | --- |:--- |
-| [System. Fabric. FabricObjectClosedException](https://docs.microsoft.com/dotnet/api/system.fabric.fabricobjectclosedexception) |Het [FabricClient](https://docs.microsoft.com/dotnet/api/system.fabric.fabricclient) -object bevindt zich in een gesloten status. U kunt het [FabricClient](https://docs.microsoft.com/dotnet/api/system.fabric.fabricclient) -object dat u gebruikt, verwijderen en een nieuw [FabricClient](https://docs.microsoft.com/dotnet/api/system.fabric.fabricclient) -object instantiëren. |
-| [System. TimeoutException](https://docs.microsoft.com/dotnet/core/api/system.timeoutexception) |Time-out van de bewerking. [OperationTimedOut](https://docs.microsoft.com/dotnet/api/system.fabric.fabricerrorcode) wordt geretourneerd wanneer de bewerking meer dan MaxOperationTimeout heeft voltooid. |
-| [System. UnauthorizedAccessException](https://docs.microsoft.com/dotnet/core/api/system.unauthorizedaccessexception) |De toegangs controle voor de bewerking is mislukt. E_ACCESSDENIED wordt geretourneerd. |
-| [System. Fabric. FabricException](https://docs.microsoft.com/dotnet/api/system.fabric.fabricexception) |Er is een runtime fout opgetreden tijdens het uitvoeren van de bewerking. Een van de FabricClient-methoden kan [FabricException](https://docs.microsoft.com/dotnet/api/system.fabric.fabricexception)genereren, de eigenschap [error code](https://docs.microsoft.com/dotnet/api/system.fabric.fabricexception.ErrorCode) geeft de exacte oorzaak van de uitzonde ring aan. Fout codes worden gedefinieerd in de [FabricErrorCode](https://docs.microsoft.com/dotnet/api/system.fabric.fabricerrorcode) -inventarisatie. |
-| [System. Fabric. FabricTransientException](https://docs.microsoft.com/dotnet/api/system.fabric.fabrictransientexception) |De bewerking is mislukt vanwege een tijdelijke fout. Een bewerking kan bijvoorbeeld mislukken omdat een quorum van replica's tijdelijk niet bereikbaar is. Tijdelijke uitzonde ringen komen overeen met mislukte bewerkingen die opnieuw kunnen worden uitgevoerd. |
+| [System. Fabric. FabricObjectClosedException](/dotnet/api/system.fabric.fabricobjectclosedexception) |Het [FabricClient](/dotnet/api/system.fabric.fabricclient) -object bevindt zich in een gesloten status. U kunt het [FabricClient](/dotnet/api/system.fabric.fabricclient) -object dat u gebruikt, verwijderen en een nieuw [FabricClient](/dotnet/api/system.fabric.fabricclient) -object instantiëren. |
+| [System. TimeoutException](/dotnet/core/api/system.timeoutexception) |Time-out van de bewerking. [OperationTimedOut](/dotnet/api/system.fabric.fabricerrorcode) wordt geretourneerd wanneer de bewerking meer dan MaxOperationTimeout heeft voltooid. |
+| [System. UnauthorizedAccessException](/dotnet/core/api/system.unauthorizedaccessexception) |De toegangs controle voor de bewerking is mislukt. E_ACCESSDENIED wordt geretourneerd. |
+| [System. Fabric. FabricException](/dotnet/api/system.fabric.fabricexception) |Er is een runtime fout opgetreden tijdens het uitvoeren van de bewerking. Een van de FabricClient-methoden kan [FabricException](/dotnet/api/system.fabric.fabricexception)genereren, de eigenschap [error code](/dotnet/api/system.fabric.fabricexception.errorcode) geeft de exacte oorzaak van de uitzonde ring aan. Fout codes worden gedefinieerd in de [FabricErrorCode](/dotnet/api/system.fabric.fabricerrorcode) -inventarisatie. |
+| [System. Fabric. FabricTransientException](/dotnet/api/system.fabric.fabrictransientexception) |De bewerking is mislukt vanwege een tijdelijke fout. Een bewerking kan bijvoorbeeld mislukken omdat een quorum van replica's tijdelijk niet bereikbaar is. Tijdelijke uitzonde ringen komen overeen met mislukte bewerkingen die opnieuw kunnen worden uitgevoerd. |
 
-Enkele veelvoorkomende [FabricErrorCode](https://docs.microsoft.com/dotnet/api/system.fabric.fabricerrorcode) -fouten die kunnen worden geretourneerd in een [FabricException](https://docs.microsoft.com/dotnet/api/system.fabric.fabricexception):
+Enkele veelvoorkomende [FabricErrorCode](/dotnet/api/system.fabric.fabricerrorcode) -fouten die kunnen worden geretourneerd in een [FabricException](/dotnet/api/system.fabric.fabricexception):
 
 | Fout | Voorwaarde |
 | --- |:--- |
@@ -38,4 +39,3 @@ Enkele veelvoorkomende [FabricErrorCode](https://docs.microsoft.com/dotnet/api/s
 | InvalidX509Store |Het x509-certificaat archief kan niet worden geopend. |
 | InvalidSubjectName |De object naam is ongeldig. |
 | InvalidAllowedCommonNameList |De indeling van de teken reeks voor de algemene naam lijst is ongeldig. Dit moet een door komma's gescheiden lijst zijn. |
-

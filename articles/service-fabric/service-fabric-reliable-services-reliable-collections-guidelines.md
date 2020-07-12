@@ -3,12 +3,12 @@ title: Richt lijnen voor betrouw bare verzamelingen
 description: Richt lijnen en aanbevelingen voor het gebruik van Service Fabric betrouw bare verzamelingen in een Azure Service Fabric-toepassing.
 ms.topic: conceptual
 ms.date: 03/10/2020
-ms.openlocfilehash: f196df4b58f1acb01a497b5fa08e9af99a4707d0
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 63e6de436bdaceed7f1d2a78e8385dd14bfc0ed6
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85483122"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86260923"
 ---
 # <a name="guidelines-and-recommendations-for-reliable-collections-in-azure-service-fabric"></a>Richt lijnen en aanbevelingen voor betrouw bare verzamelingen in azure Service Fabric
 Deze sectie bevat richt lijnen voor het gebruik van betrouw bare status Manager en betrouw bare verzamelingen. Het doel is om gebruikers te helpen veelvoorkomende Valk uilen te voor komen.
@@ -64,4 +64,4 @@ Houd rekening met het volgende als u wilt bepalen of u vluchtige betrouw bare ve
   * [Configuratie van betrouw bare status Manager](service-fabric-reliable-services-configuration.md)
 * Andere
   * [Snelstartgids Reliable Services](service-fabric-reliable-services-quick-start.md)
-  * [Naslag informatie voor ontwikkel aars voor betrouw bare verzamelingen](https://msdn.microsoft.com/library/azure/microsoft.servicefabric.data.collections.aspx)
+  * [Naslag informatie voor ontwikkel aars voor betrouw bare verzamelingen](/dotnet/api/microsoft.servicefabric.data.collections?view=azure-dotnet#microsoft_servicefabric_data_collections)

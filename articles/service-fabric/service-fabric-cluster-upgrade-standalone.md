@@ -3,19 +3,19 @@ title: Een zelfstandige Azure Service Fabric-cluster upgraden
 description: Meer informatie over het bijwerken van de versie of configuratie van een zelfstandige Azure Service Fabric-cluster.  T
 ms.topic: conceptual
 ms.date: 11/12/2018
-ms.openlocfilehash: ac3e80aae440c6709057e4211f7a4f6a1beea058
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 519a9163d16fda2dd9fcf49cf22fe4ad4a272e09
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82790640"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86260988"
 ---
 # <a name="upgrading-and-updating-a-service-fabric-standalone-cluster"></a>Een Service Fabric zelfstandige cluster bijwerken en bijwerken
 
 Voor elk modern systeem is het ontwerpen van een hoge mate van omvang voor het succes van uw product op lange termijn. Een zelfstandige Azure Service Fabric cluster is een bron waarvan u de eigenaar bent. In dit artikel wordt beschreven wat er kan worden bijgewerkt of bijgewerkt.
 
 ## <a name="controlling-the-fabric-version-that-runs-on-your-cluster"></a>De infrastructuur versie beheren die op uw cluster wordt uitgevoerd
-Zorg ervoor dat uw cluster altijd een [ondersteunde service Fabric versie](service-fabric-versions.md)uitvoert. Wanneer micro soft de release van een nieuwe versie van Service Fabric aankondigt, wordt de vorige versie gemarkeerd voor het einde van de ondersteuning na mini maal 60 dagen na de datum van de aankondiging. Nieuwe releases worden aangekondigd [op het service Fabric team blog](https://blogs.msdn.microsoft.com/azureservicefabric/). De nieuwe versie kan op dat moment worden gekozen.
+Zorg ervoor dat uw cluster altijd een [ondersteunde service Fabric versie](service-fabric-versions.md)uitvoert. Wanneer micro soft de release van een nieuwe versie van Service Fabric aankondigt, wordt de vorige versie gemarkeerd voor het einde van de ondersteuning na mini maal 60 dagen na de datum van de aankondiging. Nieuwe releases worden aangekondigd [op het service Fabric team blog](https://techcommunity.microsoft.com/t5/azure-service-fabric/bg-p/Service-Fabric). De nieuwe versie kan op dat moment worden gekozen.
 
 U kunt uw cluster zo instellen dat automatische infrastructuur upgrades worden ontvangen wanneer deze door micro soft worden uitgebracht of u kunt hand matig een ondersteunde infrastructuur versie selecteren waarop u het cluster wilt maken. Lees voor meer informatie [de service Fabric-versie die op uw cluster wordt uitgevoerd, bijwerken](service-fabric-cluster-upgrade-windows-server.md).
 

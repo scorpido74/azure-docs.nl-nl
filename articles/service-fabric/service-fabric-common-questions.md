@@ -4,11 +4,12 @@ description: Veelgestelde vragen over Service Fabric, inclusief mogelijkheden, u
 ms.topic: troubleshooting
 ms.date: 08/18/2017
 ms.author: pepogors
-ms.openlocfilehash: bf61858b446c1ac6d4a0210571fffaa721ad0166
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 056ff2475e0ae8c78887e24e07a3e33f12d7df88
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "78254889"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86258946"
 ---
 # <a name="commonly-asked-service-fabric-questions"></a>Veelgestelde vragen over Service Fabric
 
@@ -21,9 +22,9 @@ Er zijn veel Veelgestelde vragen over wat Service Fabric kan doen en hoe het moe
 
 ### <a name="how-do-i-roll-back-my-service-fabric-cluster-certificate"></a>Hoe kan ik ik mijn Service Fabric cluster certificaat terug?
 
-Bij het terugdraaien van een upgrade naar uw toepassing is een status detectie voor de Health-fout vereist voordat uw Service Fabric cluster quorum de wijziging heeft doorgevoerd. doorgevoerde wijzigingen kunnen alleen naar voren worden gemigreerd. Escalatie-Engineer door de klant ondersteuning is mogelijk vereist om uw cluster te herstellen als er een niet-bewaakte wijziging van het certificaat is geïntroduceerd.  [De upgrade van de toepassing van service Fabric](https://docs.microsoft.com/azure/service-fabric/service-fabric-application-upgrade?branch=master) past [para meters](https://docs.microsoft.com/azure/service-fabric/service-fabric-application-upgrade-parameters?branch=master)voor de upgrade van de toepassing toe en levert een installatie van geen downtime.  Na de aanbevolen modus voor de upgrade van de toepassing, is automatische voortgang via update domeinen gebaseerd op status controles, waarbij automatisch wordt teruggedraaid als het bijwerken van een standaard service mislukt.
+Bij het terugdraaien van een upgrade naar uw toepassing is een status detectie voor de Health-fout vereist voordat uw Service Fabric cluster quorum de wijziging heeft doorgevoerd. doorgevoerde wijzigingen kunnen alleen naar voren worden gemigreerd. Escalatie-Engineer door de klant ondersteuning is mogelijk vereist om uw cluster te herstellen als er een niet-bewaakte wijziging van het certificaat is geïntroduceerd.  [De upgrade van de toepassing van service Fabric](./service-fabric-application-upgrade.md?branch=master) past [para meters](./service-fabric-application-upgrade-parameters.md?branch=master)voor de upgrade van de toepassing toe en levert een installatie van geen downtime.  Na de aanbevolen modus voor de upgrade van de toepassing, is automatische voortgang via update domeinen gebaseerd op status controles, waarbij automatisch wordt teruggedraaid als het bijwerken van een standaard service mislukt.
  
-Als uw cluster nog steeds gebruikmaakt van de klassieke eigenschap vinger afdruk van het certificaat in uw Resource Manager-sjabloon, kunt u het beste het [cluster van de vinger afdruk van een certificaat wijzigen in een algemene naam](https://docs.microsoft.com/azure/service-fabric/service-fabric-cluster-change-cert-thumbprint-to-cn)om gebruik te maken van de beheer functies van moderne geheimen.
+Als uw cluster nog steeds gebruikmaakt van de klassieke eigenschap vinger afdruk van het certificaat in uw Resource Manager-sjabloon, kunt u het beste het [cluster van de vinger afdruk van een certificaat wijzigen in een algemene naam](./service-fabric-cluster-change-cert-thumbprint-to-cn.md)om gebruik te maken van de beheer functies van moderne geheimen.
 
 ### <a name="can-i-create-a-cluster-that-spans-multiple-azure-regions-or-my-own-datacenters"></a>Kan ik een cluster maken dat meerdere Azure-regio's of mijn eigen data centers omvat?
 
@@ -40,7 +41,7 @@ Enkele dingen die u moet overwegen:
 
 ### <a name="do-service-fabric-nodes-automatically-receive-os-updates"></a>Ontvangen Service Fabric knoop punten automatisch updates van het besturings systeem?
 
-U kunt de [schaalset voor virtuele machines gebruiken automatische update van de besturingssysteem installatie kopie standaard](https://docs.microsoft.com/azure/virtual-machine-scale-sets/virtual-machine-scale-sets-automatic-upgrade) beschikbaar onderdeel.
+U kunt de [schaalset voor virtuele machines gebruiken automatische update van de besturingssysteem installatie kopie standaard](../virtual-machine-scale-sets/virtual-machine-scale-sets-automatic-upgrade.md) beschikbaar onderdeel.
 
 Voor clusters die niet worden uitgevoerd in azure, beschikken we over [een toepassing](service-fabric-patch-orchestration-application.md) voor het patchen van de besturings systemen onder uw service Fabric-knoop punten.
 
@@ -125,7 +126,7 @@ Nee. Vm's met een lage prioriteit worden niet ondersteund.
 Als uw toepassing referenties voor verificatie bij de sleutel kluis heeft, kunt u het volgende doen:
 
 A. Tijdens de build/Packing-taak van uw toepassingen kunt u een certificaat in het gegevens pakket van uw SF-app halen en dit gebruiken om te verifiëren bij de sleutel kluis.
-B. Voor virtuele-machine schaal sets MSI ingeschakelde hosts kunt u een eenvoudige Power shell-SetupEntryPoint voor uw SF-App ontwikkelen om [een toegangs token van het MSI-eind punt](https://docs.microsoft.com/azure/active-directory/managed-service-identity/how-to-use-vm-token)op te halen en vervolgens [uw geheimen uit de sleutel kluis op te halen](/powershell/module/azurerm.keyvault/get-azurekeyvaultsecret).
+B. Voor virtuele-machine schaal sets MSI ingeschakelde hosts kunt u een eenvoudige Power shell-SetupEntryPoint voor uw SF-App ontwikkelen om [een toegangs token van het MSI-eind punt](../active-directory/managed-identities-azure-resources/how-to-use-vm-token.md)op te halen en vervolgens [uw geheimen uit de sleutel kluis op te halen](/powershell/module/azurerm.keyvault/get-azurekeyvaultsecret).
 
 ## <a name="application-design"></a>Toepassings ontwerp
 
@@ -176,9 +177,9 @@ Containers bieden een eenvoudige manier voor het inpakken van services en hun af
 
 Er zijn open-source onderdelen van Service Fabric ([reliable Services Framework](https://github.com/Azure/service-fabric-services-and-actors-dotnet), [reliable actors Framework](https://github.com/Azure/service-fabric-services-and-actors-dotnet), [ASP.net core integration libraries](https://github.com/Azure/service-fabric-aspnetcore), [service Fabric Explorer](https://github.com/Azure/service-fabric-explorer)en [service Fabric cli](https://github.com/Azure/service-fabric-cli)) op github en accepteren de bijdragen van de community voor deze projecten. 
 
-We hebben [onlangs aangekondigd](https://blogs.msdn.microsoft.com/azureservicefabric/2018/03/14/service-fabric-is-going-open-source/) dat de service Fabric-runtime wordt geopend. Op dit moment hebben we de [service Fabric opslag plaats](https://github.com/Microsoft/service-fabric/) op github met Linux-hulpprogram ma's voor bouwen en testen. Dit betekent dat u de opslag plaats kunt klonen, service Fabric voor Linux moet bouwen, basis tests moet uitvoeren, problemen kunt openen en pull-aanvragen moet verzenden. Er wordt hard gewerkt om de Windows build-omgeving te verkrijgen, samen met een volledige CI-omgeving.
+We hebben [onlangs aangekondigd](https://techcommunity.microsoft.com/t5/azure-service-fabric/bg-p/Service-Fabric) dat de service Fabric-runtime wordt geopend. Op dit moment hebben we de [service Fabric opslag plaats](https://github.com/Microsoft/service-fabric/) op github met Linux-hulpprogram ma's voor bouwen en testen. Dit betekent dat u de opslag plaats kunt klonen, service Fabric voor Linux moet bouwen, basis tests moet uitvoeren, problemen kunt openen en pull-aanvragen moet verzenden. Er wordt hard gewerkt om de Windows build-omgeving te verkrijgen, samen met een volledige CI-omgeving.
 
-Volg de [service Fabric blog](https://blogs.msdn.microsoft.com/azureservicefabric/) voor meer informatie over hoe deze worden aangekondigd.
+Volg de [service Fabric blog](https://techcommunity.microsoft.com/t5/azure-service-fabric/bg-p/Service-Fabric) voor meer informatie over hoe deze worden aangekondigd.
 
 ## <a name="next-steps"></a>Volgende stappen
 

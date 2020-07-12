@@ -3,11 +3,12 @@ title: Azure Service Fabric DNS-service
 description: De DNS-service van Service Fabric gebruiken voor het detecteren van micro Services in het cluster.
 ms.topic: conceptual
 ms.date: 7/20/2018
-ms.openlocfilehash: 317aa81238ec7a0dc24b69b1d00568901b9bc34f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 6a6611281fd2d2368809419ad594d2eb1289b5a0
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "75458028"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86258915"
 ---
 # <a name="dns-service-in-azure-service-fabric"></a>DNS Service in Azure Service Fabric
 De DNS-service is een optionele systeem service die u in uw cluster kunt inschakelen om andere services te detecteren die gebruikmaken van het DNS-protocol. 
@@ -41,7 +42,7 @@ Wanneer u een cluster maakt met behulp van de portal, wordt de DNS-service stand
 Als u de portal niet gebruikt om uw cluster te maken of als u een bestaand cluster bijwerkt, moet u de DNS-service inschakelen in een sjabloon:
 
 - Als u een nieuw cluster wilt implementeren, kunt u de [voorbeeld sjablonen](https://github.com/Azure/azure-quickstart-templates/tree/master/service-fabric-secure-cluster-5-node-1-nodetype) gebruiken of uw eigen Resource Manager-sjabloon maken. 
-- Als u een bestaand cluster wilt bijwerken, gaat u naar de resource groep van het cluster op de portal en klikt u op **Automation script** om te werken met een sjabloon die de huidige status van het cluster en andere resources in de groep weergeeft. Zie [de sjabloon exporteren uit de resource groep](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-export-template)voor meer informatie.
+- Als u een bestaand cluster wilt bijwerken, gaat u naar de resource groep van het cluster op de portal en klikt u op **Automation script** om te werken met een sjabloon die de huidige status van het cluster en andere resources in de groep weergeeft. Zie [de sjabloon exporteren uit de resource groep](../azure-resource-manager/templates/export-template-portal.md)voor meer informatie.
 
 Nadat u een sjabloon hebt, kunt u de DNS-service inschakelen met de volgende stappen:
 
@@ -102,7 +103,7 @@ Nadat u een sjabloon hebt, kunt u de DNS-service inschakelen met de volgende sta
 3. Nadat u de cluster sjabloon met uw wijzigingen hebt bijgewerkt, past u deze toe en laat u de upgrade volt ooien. Wanneer de upgrade is voltooid, wordt de DNS-systeem service gestart in uw cluster. De naam van de service is `fabric:/System/DnsService` en u vindt deze in het gedeelte **systeem** service van service Fabric Explorer. 
 
 > [!NOTE]
-> Wanneer de upgrade van DNS van uitgeschakeld naar ingeschakeld is, komt Service Fabric Explorer mogelijk niet overeen met de nieuwe status. Als u dit wilt oplossen, start u de knoop punten opnieuw door de upgrade policy in uw Azure Resource Manager-sjabloon te wijzigen. Zie de [Naslag informatie over service Fabric sjablonen](https://docs.microsoft.com/azure/templates/microsoft.servicefabric/2019-03-01/clusters/applications) voor meer.
+> Wanneer de upgrade van DNS van uitgeschakeld naar ingeschakeld is, komt Service Fabric Explorer mogelijk niet overeen met de nieuwe status. Als u dit wilt oplossen, start u de knoop punten opnieuw door de upgrade policy in uw Azure Resource Manager-sjabloon te wijzigen. Zie de [Naslag informatie over service Fabric sjablonen](/azure/templates/microsoft.servicefabric/2019-03-01/clusters/applications) voor meer.
 
 > [!NOTE]
 > Wanneer u de DNS-service inschakelt op een lokale computer, worden bepaalde DNS-instellingen genegeerd. Controleer uw DNS-instellingen als u problemen ondervindt bij het maken van verbinding met internet.
@@ -128,7 +129,7 @@ Zodra de toepassing is geïmplementeerd, wordt in het service-exemplaar in Servi
 
 ![Service-eind punten](./media/service-fabric-dnsservice/service-fabric-explorer-dns.png)
 
-In het volgende voor beeld wordt de DNS-naam voor een stateful service ingesteld op `statefulsvc.app` . De service maakt gebruik van een benoemde partitie schema. U ziet dat de namen van de partities kleine letters zijn. Dit is een vereiste voor partities die worden bedoeld in DNS-query's; Zie [DNS-Query's maken op een stateful service partitie](https://docs.microsoft.com/azure/service-fabric/service-fabric-dnsservice#preview-making-dns-queries-on-a-stateful-service-partition)voor meer informatie.
+In het volgende voor beeld wordt de DNS-naam voor een stateful service ingesteld op `statefulsvc.app` . De service maakt gebruik van een benoemde partitie schema. U ziet dat de namen van de partities kleine letters zijn. Dit is een vereiste voor partities die worden bedoeld in DNS-query's; Zie [DNS-Query's maken op een stateful service partitie](#preview-making-dns-queries-on-a-stateful-service-partition)voor meer informatie.
 
 ```xml
     <Service Name="Stateful1" ServiceDnsName="statefulsvc.app" />
@@ -169,7 +170,7 @@ DNS-query's die zijn gericht op een partitie, zijn als volgt ingedeeld:
 ```
     <First-Label-Of-Partitioned-Service-DNSName><PartitionPrefix><Target-Partition-Name>< PartitionSuffix>.<Remaining- Partitioned-Service-DNSName>
 ```
-Waarbij:
+Waar:
 
 - Het *eerste label van de gepartitioneerde service-DNSName* is het eerste deel van de DNS-naam van uw service.
 - *PartitionPrefix* is een waarde die kan worden ingesteld in de sectie DNS van het cluster manifest of via de Resource Manager-sjabloon van het cluster. De standaard waarde is '--'. Zie [DNS-service-instellingen](./service-fabric-cluster-fabric-settings.md#dnsservice)voor meer informatie.
@@ -252,4 +253,3 @@ public class ValuesController : Controller
 
 ## <a name="next-steps"></a>Volgende stappen
 Meer informatie over service communicatie binnen het cluster met [verbinding maken en communiceren met Services](service-fabric-connect-and-communicate-with-services.md)
-

@@ -4,11 +4,12 @@ description: Certificaten voor uw app configureren met de Service Fabric runtime
 ms.topic: conceptual
 ms.date: 09/06/2019
 ms.author: pepogors
-ms.openlocfilehash: 802e76614f51e1f6479a311e61a49d83b8125546
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: a97c8b8315fe3be405aed9c6570004afb8fafd1d
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "79282573"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86258672"
 ---
 # <a name="certificates-and-security-on-linux-clusters"></a>Certificaten en beveiliging op Linux-clusters
 
@@ -20,11 +21,11 @@ Service Fabric verwacht in het algemeen dat X. 509-certificaten aanwezig zijn in
 
 Voor Linux-clusters wordt Service Fabric verwacht dat certificaten aanwezig zijn als een. pem-bestand dat zowel het certificaat als de persoonlijke sleutel bevat, of als een. crt-bestand dat het certificaat en een. key-bestand bevat dat de persoonlijke sleutel bevat. Alle bestanden moeten de indeling PEM hebben. 
 
-Als u uw certificaat van Azure Key Vault installeert met behulp van een [Resource Manager-sjabloon](./service-fabric-cluster-creation-create-template.md) of [Power shell](https://docs.microsoft.com/powershell/module/az.servicefabric/?view=azps-2.6.0) -opdrachten, wordt het certificaat geïnstalleerd in de juiste indeling in de map */var/lib/sfcerts* op elk knoop punt. Als u een certificaat installeert via een andere methode, moet u ervoor zorgen dat het certificaat correct is geïnstalleerd op cluster knooppunten.
+Als u uw certificaat van Azure Key Vault installeert met behulp van een [Resource Manager-sjabloon](./service-fabric-cluster-creation-create-template.md) of [Power shell](/powershell/module/az.servicefabric/?view=azps-2.6.0) -opdrachten, wordt het certificaat geïnstalleerd in de juiste indeling in de map */var/lib/sfcerts* op elk knoop punt. Als u een certificaat installeert via een andere methode, moet u ervoor zorgen dat het certificaat correct is geïnstalleerd op cluster knooppunten.
 
 ## <a name="certificates-referenced-in-the-application-manifest"></a>Certificaten waarnaar wordt verwezen in het toepassings manifest
 
-Certificaten die zijn opgegeven in het manifest van de toepassing, bijvoorbeeld via de elementen [**SecretsCertificate**](https://docs.microsoft.com/azure/service-fabric/service-fabric-service-model-schema-elements#secretscertificate-element) of [**EndpointCertificate**](https://docs.microsoft.com/azure/service-fabric/service-fabric-service-model-schema-elements#endpointcertificate-element) , moeten aanwezig zijn in de map */var/lib/sfcerts* . De elementen die worden gebruikt om certificaten in het manifest van de toepassing op te geven, hebben geen kenmerk path, dus de certificaten moeten aanwezig zijn in de standaard directory. Deze elementen hebben een optioneel **X509StoreName** -kenmerk. De standaard waarde is ' My ', die verwijst naar de map */var/lib/sfcerts* op Linux-knoop punten. Een andere waarde is niet gedefinieerd in een Linux-cluster. Het is raadzaam dat u het kenmerk **X509StoreName** weglaat voor apps die worden uitgevoerd op Linux-clusters. 
+Certificaten die zijn opgegeven in het manifest van de toepassing, bijvoorbeeld via de elementen [**SecretsCertificate**](./service-fabric-service-model-schema-elements.md#secretscertificate-element) of [**EndpointCertificate**](./service-fabric-service-model-schema-elements.md#endpointcertificate-element) , moeten aanwezig zijn in de map */var/lib/sfcerts* . De elementen die worden gebruikt om certificaten in het manifest van de toepassing op te geven, hebben geen kenmerk path, dus de certificaten moeten aanwezig zijn in de standaard directory. Deze elementen hebben een optioneel **X509StoreName** -kenmerk. De standaard waarde is ' My ', die verwijst naar de map */var/lib/sfcerts* op Linux-knoop punten. Een andere waarde is niet gedefinieerd in een Linux-cluster. Het is raadzaam dat u het kenmerk **X509StoreName** weglaat voor apps die worden uitgevoerd op Linux-clusters. 
 
 ## <a name="certificates-referenced-in-the-configuration-package-settingsxml"></a>Certificaten waarnaar wordt verwezen in het configuratie pakket (Settings.xml)
 
@@ -32,7 +33,7 @@ Voor sommige services kunt u X. 509-certificaten configureren in de [ConfigPacka
 
 ### <a name="using-x509-securitycredentialstype"></a>X509-SecurityCredentialsType gebruiken
 
-Met de .NET-of Java-Sdk's kunt u **x509** opgeven voor de **SecurityCredentialsType**. Dit komt overeen met het `X509Credentials` ([.net](https://msdn.microsoft.com/library/system.fabric.x509credentials.aspx) / [Java](https://docs.microsoft.com/java/api/system.fabric.x509credentials))-type `SecurityCredentials` ([.NET](https://msdn.microsoft.com/library/system.fabric.securitycredentials.aspx) / [Java](https://docs.microsoft.com/java/api/system.fabric.securitycredentials).net java).
+Met de .NET-of Java-Sdk's kunt u **x509** opgeven voor de **SecurityCredentialsType**. Dit komt overeen met het `X509Credentials` ([.net](/previous-versions/azure/reference/mt124925(v=azure.100)) / [Java](/java/api/system.fabric.x509credentials))-type `SecurityCredentials` ([.NET](/previous-versions/azure/reference/mt124894(v=azure.100)) / [Java](/java/api/system.fabric.securitycredentials).net java).
 
 De **x509** -verwijzing zoekt naar het certificaat in een certificaat archief. Het volgende XML-bestand toont de para meters die worden gebruikt om de locatie van het certificaat op te geven:
 
@@ -63,7 +64,7 @@ In het volgende XML-bestand wordt een **TransportSettings** -sectie weer gegeven
 
 ### <a name="using-x509_2-securitycredentialstype"></a>X509_2 SecurityCredentialsType gebruiken
 
-Met de Java-SDK kunt u **X509_2** opgeven voor de **SecurityCredentialsType**. Dit komt overeen met het `X509Credentials2` ([Java](https://docs.microsoft.com/java/api/system.fabric.x509credentials2))-type (Java) `SecurityCredentials` .[Java](https://docs.microsoft.com/java/api/system.fabric.securitycredentials) 
+Met de Java-SDK kunt u **X509_2** opgeven voor de **SecurityCredentialsType**. Dit komt overeen met het `X509Credentials2` ([Java](/java/api/system.fabric.x509credentials2))-type (Java) `SecurityCredentials` .[Java](/java/api/system.fabric.securitycredentials) 
 
 Met een **X509_2** referentie geeft u een pad para meter op, zodat u het certificaat in een andere map dan */var/lib/sfcerts*kunt vinden.  Het volgende XML-bestand toont de para meters die worden gebruikt om de locatie van het certificaat op te geven: 
 
@@ -93,7 +94,7 @@ In het volgende XML-bestand wordt een **TransportSettings** -sectie weer gegeven
 
 Met de Service Fabric Sdk's kunt u communiceren met de Service Fabric runtime-Api's om gebruik te maken van het platform. Wanneer u een toepassing uitvoert die gebruikmaakt van deze functionaliteit op beveiligde Linux-clusters, moet u uw toepassing configureren met een certificaat dat kan worden gebruikt om te valideren met de Service Fabric runtime. Toepassingen die Service Fabric betrouw bare service services die zijn geschreven met de .NET core-of Java-Sdk's, hebben deze configuratie nodig. 
 
-Als u een toepassing wilt configureren, voegt u een [**SecretsCertificate**](https://docs.microsoft.com/azure/service-fabric/service-fabric-service-model-schema-elements#secretscertificate-element) -element toe onder het label **certificaten** . Deze bevindt zich onder de tag **ApplicationManifest** in het *ApplicationManifest.xml* -bestand. De volgende XML-code bevat een certificaat waarnaar wordt verwezen door de vinger afdruk: 
+Als u een toepassing wilt configureren, voegt u een [**SecretsCertificate**](./service-fabric-service-model-schema-elements.md#secretscertificate-element) -element toe onder het label **certificaten** . Deze bevindt zich onder de tag **ApplicationManifest** in het *ApplicationManifest.xml* -bestand. De volgende XML-code bevat een certificaat waarnaar wordt verwezen door de vinger afdruk: 
 
 ```xml
    <Certificates>
@@ -102,6 +103,3 @@ Als u een toepassing wilt configureren, voegt u een [**SecretsCertificate**](htt
 ```
 
 U kunt verwijzen naar het cluster certificaat of een certificaat dat u op elk cluster knooppunt installeert. In Linux moeten de certificaat bestanden aanwezig zijn in de */var/lib/sfcerts* -map. Zie [locatie en indeling van X. 509-certificaten op Linux-knoop punten](#location-and-format-of-x509-certificates-on-linux-nodes)voor meer informatie.
-
-
-

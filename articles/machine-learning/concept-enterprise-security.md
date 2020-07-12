@@ -10,12 +10,12 @@ ms.author: aashishb
 author: aashishb
 ms.reviewer: larryfr
 ms.date: 05/19/2020
-ms.openlocfilehash: be0e24977bbb1aeec74e8847b3fb128267a9ec0e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 5afa6b9127317fcd1a683651be86cdfe078cfcd6
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85392230"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86259432"
 ---
 # <a name="enterprise-security-for-azure-machine-learning"></a>Enter prise Security voor Azure Machine Learning
 
@@ -42,7 +42,7 @@ Zie [verificatie instellen voor Azure machine learning resources en werk stromen
 
 Azure Machine Learning ondersteunt twee verificatie vormen voor webservices: sleutel en token. Elke webservice kan per keer slechts één vorm van authenticatie inschakelen.
 
-|Verificatiemethode|Description|Azure Container Instances|AKS|
+|Verificatiemethode|Beschrijving|Azure Container Instances|AKS|
 |---|---|---|---|
 |Sleutel|Sleutels zijn statisch en hoeven niet te worden vernieuwd. Sleutels kunnen hand matig opnieuw worden gegenereerd.|Standaard uitgeschakeld| Standaard ingeschakeld|
 |Token|Tokens verlopen na een opgegeven tijds periode en moeten worden vernieuwd.| Niet beschikbaar| Standaard uitgeschakeld |
@@ -91,7 +91,7 @@ Zie [beheerde identiteiten voor Azure-resources](https://docs.microsoft.com/azur
 | Resource | Machtigingen |
 | ----- | ----- |
 | Werkruimte | Inzender |
-| Storage-account | Inzender voor Storage BLOB-gegevens |
+| Opslagaccount | Inzender voor Storage BLOB-gegevens |
 | Key Vault | Toegang tot alle sleutels, geheimen, certificaten |
 | Azure Container Registry | Inzender |
 | Resource groep die de werk ruimte bevat | Inzender |
@@ -111,15 +111,20 @@ U kunt ook een persoonlijke Azure-koppeling inschakelen voor uw werk ruimte. Met
 
 ## <a name="data-encryption"></a>Gegevensversleuteling
 
+> [!IMPORTANT]
+> Voor productie kwaliteit versleuteling tijdens de __training__raadt micro soft aan om Azure machine learning Compute-cluster te gebruiken. Voor de versleuteling van de productie __kwaliteit tijdens de__degradatie raadt micro soft de Azure Kubernetes-service te gebruiken.
+>
+> Azure Machine Learning Compute-instantie is een ontwikkel-en test omgeving. Wanneer u deze gebruikt, raden we u aan om uw bestanden, zoals notebooks en scripts, op te slaan in een bestands share. Uw gegevens moeten worden opgeslagen in een gegevens opslag.
+
 ### <a name="encryption-at-rest"></a>Versleuteling 'at rest'
 
 > [!IMPORTANT]
 > Als uw werk ruimte gevoelige gegevens bevat, kunt u het beste de [hbi_workspace vlag](https://docs.microsoft.com/python/api/azureml-core/azureml.core.workspace(class)?view=azure-ml-py#create-name--auth-none--subscription-id-none--resource-group-none--location-none--create-resource-group-true--sku--basic---friendly-name-none--storage-account-none--key-vault-none--app-insights-none--container-registry-none--cmk-keyvault-none--resource-cmk-uri-none--hbi-workspace-false--default-cpu-compute-target-none--default-gpu-compute-target-none--exist-ok-false--show-output-true-) instellen tijdens het maken van uw werk ruimte. 
 
-Met de `hbi_workspace` markering bepaalt u de hoeveelheid gegevens die micro soft verzamelt voor diagnostische doel einden, en wordt extra versleuteling mogelijk in door micro soft beheerde omgevingen. Daarnaast kunt u hiermee het volgende doen:
+De `hbi_workspace` markering bepaalt de hoeveelheid gegevens die micro soft verzamelt voor diagnostische doel einden en maakt extra versleuteling mogelijk in door micro soft beheerde omgevingen. Daarnaast kunnen de volgende acties worden uitgevoerd:
 
-* Begint met het versleutelen van de lokale Scratch schijf in uw Amlcompute-cluster. u hebt geen eerdere clusters in dat abonnement gemaakt. Anders moet u een ondersteunings ticket genereren om versleuteling van de Scratch schijf van uw reken clusters mogelijk te maken 
-* Ruim uw lokale werk schijf op tussen uitvoeringen
+* Hiermee wordt het versleutelen van de lokale werk schijf in uw Azure Machine Learning Compute-Cluster gestart, mits u geen eerdere clusters hebt gemaakt in dat abonnement. Anders moet u een ondersteunings ticket genereren om versleuteling van de Scratch schijf van uw reken clusters mogelijk te maken 
+* De lokale scratchschijf opschonen tussen uitvoeringen
 * Referenties voor uw opslag account, container register en SSH-account veilig door gegeven van de uitvoerings slaag naar uw reken clusters met behulp van uw sleutel kluis
 * IP-filtering inschakelen om ervoor te zorgen dat de onderliggende batch-groepen niet kunnen worden aangeroepen door andere externe services dan AzureMachineLearningService
 
@@ -224,11 +229,11 @@ Elke virtuele machine heeft ook een lokale tijdelijke schijf voor besturingssyst
 
 Azure Databricks kunnen worden gebruikt in Azure Machine Learning pijp lijnen. Het Databricks File System (DBFS) dat door Azure Databricks wordt gebruikt, is standaard versleuteld met een door micro soft beheerde sleutel. Zie door de klant beheerde sleutels [configureren op standaard (root) DBFS](/azure/databricks/security/customer-managed-keys-dbfs)om Azure Databricks te configureren voor het gebruik van door de klant beheerde sleutels.
 
-### <a name="encryption-in-transit"></a>Versleuteling tijdens overdracht
+### <a name="encryption-in-transit"></a>Versleuteling 'in transit'
 
 Azure Machine Learning gebruikt TLS om interne communicatie tussen verschillende Azure Machine Learning micro services te beveiligen. Alle Azure Storage toegang vindt ook plaats via een beveiligd kanaal.
 
-Als u externe aanroepen naar het Score eindpunt wilt beveiligen Azure Machine Learning TLS gebruikt. Zie [TLS gebruiken om een webservice te beveiligen via Azure machine learning](https://docs.microsoft.com/azure/machine-learning/how-to-secure-web-service)voor meer informatie.
+Azure Machine Learning maakt gebruik van TLS om externe aanroepen naar het Score-eind punt te beveiligen. Zie [TLS gebruiken om een webservice te beveiligen via Azure machine learning](https://docs.microsoft.com/azure/machine-learning/how-to-secure-web-service)voor meer informatie.
 
 ### <a name="using-azure-key-vault"></a>Azure Key Vault gebruiken
 
@@ -322,7 +327,7 @@ Gekoppeld aan een Azure Machine Learning werk ruimte zijn mappen (experimenten) 
 
 [![Workflow voor code momentopname](media/concept-enterprise-security/code-snapshot.png)](media/concept-enterprise-security/code-snapshot-expanded.png#lightbox)
 
-### <a name="training"></a>Training
+### <a name="training"></a>Bezig met trainen
 
 In het volgende diagram ziet u de werk stroom training.
 

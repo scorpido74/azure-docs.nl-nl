@@ -8,12 +8,12 @@ ms.service: virtual-wan
 ms.topic: conceptual
 ms.date: 06/29/2020
 ms.author: cherylmc
-ms.openlocfilehash: 368440976558730bd7bb9600a0bf45c56d1ee300
-ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
+ms.openlocfilehash: 659cb9aabe5fcca68aea9a73ea9beadb8e52ec50
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86147388"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86259181"
 ---
 # <a name="about-virtual-hub-routing"></a>Over virtuele hub-routering
 
@@ -63,6 +63,9 @@ Er is ook een **route tabel geen** beschikbaar voor elke virtuele hub. Door door
 ### <a name="configuring-static-routes-in-a-virtual-network-connection"></a><a name="static"></a>Statische routes configureren in een virtuele netwerk verbinding
 
 Het configureren van statische routes biedt een mechanisme voor het stuur verkeer via een volgende hop-IP. Dit kan een virtueel netwerk apparaat (NVA) zijn dat is ingericht in een spoke-VNet dat is gekoppeld aan een virtuele hub. De statische route bestaat uit een route naam, een lijst met doel voorvoegsels en het volgende hop-IP-adres.
+
+## <a name="reset-hub"></a><a name="route"></a>Hub opnieuw instellen
+Deze optie is alleen beschikbaar in de Azure Portal, maar biedt de gebruiker een manier om mislukte resources zoals route tabellen, hub-router of de virtuele-hub-resource zelf terug te brengen naar de inrichtings status Rightful. Dit is een extra optie waarmee de gebruiker rekening moet houden voordat u contact opneemt met micro soft voor ondersteuning. Met deze bewerking worden de gateways in een virtuele hub niet opnieuw ingesteld. 
 
 ## <a name="route-tables-in-basic-and-standard-virtual-wans-prior-to-the-feature-set-of-association-and-propagation"></a><a name="route"></a>Route tabellen in de Basic-en Standard-standaard-virtuele Wan's vóór de functieset van koppeling en doorgifte
 

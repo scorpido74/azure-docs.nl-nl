@@ -3,17 +3,17 @@ title: Een Azure Service Fabric-cluster maken
 description: Meer informatie over het instellen van een beveiligd Service Fabric-cluster in azure met behulp van Azure Resource Manager.  U kunt een cluster maken met behulp van een standaard sjabloon of uw eigen cluster sjabloon gebruiken.
 ms.topic: conceptual
 ms.date: 08/16/2018
-ms.openlocfilehash: 24bc80a7ab3ce61b79466cdd943c60efd367ce01
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: fd2c472d24f305e42f1706e5fc49168ccde2a580
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81458297"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86258747"
 ---
 # <a name="create-a-service-fabric-cluster-using-azure-resource-manager"></a>Een Service Fabric-cluster maken met behulp van Azure Resource Manager 
 > [!div class="op_single_selector"]
 > * [Azure Resource Manager](service-fabric-cluster-creation-via-arm.md)
-> * [Azure-portal](service-fabric-cluster-creation-via-portal.md)
+> * [Azure Portal](service-fabric-cluster-creation-via-portal.md)
 >
 >
 
@@ -33,8 +33,8 @@ In dit artikel gebruikt u de modules Service Fabric RM Power shell of Azure CLI 
 * [Azure CLI-versie 2,0 en hoger][azure-CLI]
 
 U kunt hier de referentie documentatie voor de Service Fabric-modules vinden:
-* [Az.ServiceFabric](https://docs.microsoft.com/powershell/module/az.servicefabric)
-* [AZ SF CLI-module](https://docs.microsoft.com/cli/azure/sf?view=azure-cli-latest)
+* [Az.ServiceFabric](/powershell/module/az.servicefabric)
+* [AZ SF CLI-module](/cli/azure/sf?view=azure-cli-latest)
 
 ### <a name="sign-in-to-azure"></a>Aanmelden bij Azure
 

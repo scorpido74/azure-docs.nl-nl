@@ -1,8 +1,8 @@
 - name: Kubernetes
-  href: kubernetes/container-service-kubernetes-walkthrough.md
+  href: /previous-versions/azure/container-service/kubernetes/container-service-kubernetes-walkthrough
 - name: DC/OS en Docker Swarm
-  href: dcos-swarm/container-service-dcos-quickstart.md
-- name: Bronnen
+  href: /previous-versions/azure/container-service/dcos-swarm/container-service-dcos-quickstart
+- name: Resources
   items:
     - name: Uw vaardigheden ontwikkelen met Microsoft Learn
       href: /learn/browse/?products=azure-container-instances&azure-container-registry

@@ -5,15 +5,16 @@ author: vturecek
 ms.topic: conceptual
 ms.date: 06/22/2017
 ms.author: vturecek
-ms.openlocfilehash: 2a331715d4e4538cfdda8d958ff549a81b627b79
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: bbde23dd888d179917f123d00745fb7d0099c2d2
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "76028545"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86259297"
 ---
 # <a name="service-fabric-with-azure-api-management-overview"></a>Overzicht van Service Fabric met Azure API Management
 
-Cloudtoepassingen hebben meestal een gateway in de front-end nodig om een centraal ingangspunt te bieden voor gebruikers, apparaten of andere toepassingen. In Service Fabric kan een gateway een stateless service zoals een [ASP.net core toepassing](service-fabric-reliable-services-communication-aspnetcore.md), of een andere service die is ontworpen voor het binnenkomen van verkeer, zoals [Event hubs](https://docs.microsoft.com/azure/event-hubs/), [IOT hub](https://docs.microsoft.com/azure/iot-hub/)of [Azure API Management](https://docs.microsoft.com/azure/api-management/).
+Cloudtoepassingen hebben meestal een gateway in de front-end nodig om een centraal ingangspunt te bieden voor gebruikers, apparaten of andere toepassingen. In Service Fabric kan een gateway een stateless service zoals een [ASP.net core toepassing](service-fabric-reliable-services-communication-aspnetcore.md), of een andere service die is ontworpen voor het binnenkomen van verkeer, zoals [Event hubs](../event-hubs/index.yml), [IOT hub](../iot-hub/index.yml)of [Azure API Management](../api-management/index.yml).
 
 Dit artikel is een inleiding tot het gebruik van Azure API Management als een gateway voor uw Service Fabric toepassingen. API Management kan rechtstreeks worden geïntegreerd met Service Fabric, zodat u Api's kunt publiceren met een uitgebreide set routerings regels voor uw back-end-Service Fabric Services.
 

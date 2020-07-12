@@ -5,21 +5,22 @@ author: jeffj6123
 ms.topic: reference
 ms.date: 1/16/2020
 ms.author: jejarry
-ms.openlocfilehash: 1787c0c8a8d5994ce1f1e9e4c55f155bbca6934c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 7317fd66303aaabf5232106aa7391439880bebaf
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "76904938"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86260293"
 ---
 # <a name="sfctl-rpm"></a>sfctl rpm
 Query's uitvoeren en opdrachten verzenden naar de service reparatie beheer.
 
-## <a name="commands"></a>Opdrachten
+## <a name="commands"></a>Opdracht
 
 |Opdracht|Beschrijving|
 | --- | --- |
 | goed keuren forceren | Hiermee wordt de goed keuring van de opgegeven herstel taak geforceerd. |
-| delete | Hiermee verwijdert u een voltooide herstel taak. |
+| verwijderen | Hiermee verwijdert u een voltooide herstel taak. |
 | list | Hiermee wordt een lijst met herstel taken opgehaald die overeenkomen met de opgegeven filters. |
 
 ## <a name="sfctl-rpm-approve-force"></a>sfctl rpm goed keuren-forceren
@@ -29,14 +30,14 @@ Deze API ondersteunt het Service Fabric-platform. het is niet bedoeld om rechtst
 
 ### <a name="arguments"></a>Argumenten
 
-|Argument|Description|
+|Argument|Beschrijving|
 | --- | --- |
 | --taak-id [vereist] | De ID van de herstel taak. |
 | --versie | Het huidige versie nummer van de herstel taak. Als dit niet het geval is, wordt de aanvraag alleen uitgevoerd als deze waarde overeenkomt met de werkelijke huidige versie van de herstel taak. Als de waarde nul is, wordt er geen versie controle uitgevoerd. |
 
 ### <a name="global-arguments"></a>Algemene argumenten
 
-|Argument|Description|
+|Argument|Beschrijving|
 | --- | --- |
 | --fouten opsporen | Verg root logboek registratie uitgebreid om alle logboeken voor fout opsporing weer te geven. |
 | --Help-h | Dit Help-bericht weer geven en afsluiten. |
@@ -51,14 +52,14 @@ Deze API ondersteunt het Service Fabric-platform. het is niet bedoeld om rechtst
 
 ### <a name="arguments"></a>Argumenten
 
-|Argument|Description|
+|Argument|Beschrijving|
 | --- | --- |
 | --taak-id [vereist] | De ID van de voltooide herstel taak die moet worden verwijderd. |
 | --versie | Het huidige versie nummer van de herstel taak. Als dit niet het geval is, wordt de aanvraag alleen uitgevoerd als deze waarde overeenkomt met de werkelijke huidige versie van de herstel taak. Als de waarde nul is, wordt er geen versie controle uitgevoerd. |
 
 ### <a name="global-arguments"></a>Algemene argumenten
 
-|Argument|Description|
+|Argument|Beschrijving|
 | --- | --- |
 | --fouten opsporen | Verg root logboek registratie uitgebreid om alle logboeken voor fout opsporing weer te geven. |
 | --Help-h | Dit Help-bericht weer geven en afsluiten. |
@@ -73,7 +74,7 @@ Deze API ondersteunt het Service Fabric-platform. het is niet bedoeld om rechtst
 
 ### <a name="arguments"></a>Argumenten
 
-|Argument|Description|
+|Argument|Beschrijving|
 | --- | --- |
 | --uitvoerbaar filter | De naam van de reparatie-uitvoerder waarvan de gedeclareerde taken moeten worden opgenomen in de lijst. |
 | --status-filter | Een bitsgewijze-of van de volgende waarden, opgeven welke taak statussen moeten worden opgenomen in de lijst met resultaten. <ul><li>1-gemaakt</li><li>2-geclaimd</li><li>4: voorbereiden</li><li>8-goedgekeurd</li><li>16-uitvoeren</li><li>32-herstellen</li><li>64-voltooid</li></ul>
@@ -81,7 +82,7 @@ Deze API ondersteunt het Service Fabric-platform. het is niet bedoeld om rechtst
 
 ### <a name="global-arguments"></a>Algemene argumenten
 
-|Argument|Description|
+|Argument|Beschrijving|
 | --- | --- |
 | --fouten opsporen | Verg root logboek registratie uitgebreid om alle logboeken voor fout opsporing weer te geven. |
 | --Help-h | Dit Help-bericht weer geven en afsluiten. |
@@ -92,4 +93,4 @@ Deze API ondersteunt het Service Fabric-platform. het is niet bedoeld om rechtst
 
 ## <a name="next-steps"></a>Volgende stappen
 - [Stel](service-fabric-cli.md) de service Fabric cli in.
-- Meer informatie over het gebruik van de Service Fabric CLI met behulp van de [voorbeeld scripts](/azure/service-fabric/scripts/sfctl-upgrade-application).
+- Meer informatie over het gebruik van de Service Fabric CLI met behulp van de [voorbeeld scripts](./scripts/sfctl-upgrade-application.md).

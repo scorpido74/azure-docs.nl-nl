@@ -3,11 +3,12 @@ title: Statisch IP-adres voor container groep
 description: Een container groep maken in een virtueel netwerk en een Azure Application gateway gebruiken om een statisch frontend-IP-adres beschikbaar te stellen voor een web-app met container
 ms.topic: article
 ms.date: 03/16/2020
-ms.openlocfilehash: a27cf20b7d04fedb0b9e0ab408de24d37f2935c7
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: bc128da0f4c2e92af98781cef45f48f9e8aeab31
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84299159"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86260782"
 ---
 # <a name="expose-a-static-ip-address-for-a-container-group"></a>Een statisch IP-adres voor een container groep beschikbaar maken
 
@@ -102,7 +103,7 @@ ACI_IP=$(az container show \
 
 ## <a name="create-application-gateway"></a>Een toepassingsgateway maken
 
-Maak een toepassings gateway in het virtuele netwerk volgens de stappen in de [Snelstartgids voor Application Gateway](../application-gateway/quick-create-cli.md). De volgende [AZ Network Application-Gateway Create][az-network-application-gateway-create] opdracht maakt een gateway met een openbaar frontend-IP-adres en een route naar de back-end-container groep. Raadpleeg de [Application Gateway-documentatie](/azure/application-gateway/) voor meer informatie over de gateway-instellingen.
+Maak een toepassings gateway in het virtuele netwerk volgens de stappen in de [Snelstartgids voor Application Gateway](../application-gateway/quick-create-cli.md). De volgende [AZ Network Application-Gateway Create][az-network-application-gateway-create] opdracht maakt een gateway met een openbaar frontend-IP-adres en een route naar de back-end-container groep. Raadpleeg de [Application Gateway-documentatie](../application-gateway/index.yml) voor meer informatie over de gateway-instellingen.
 
 ```azurecli
 az network application-gateway create \

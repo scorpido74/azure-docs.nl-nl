@@ -3,17 +3,17 @@ title: Een Service Fabric-cluster maken in Azure Portal
 description: Meer informatie over het instellen van een beveiligd Service Fabric-cluster in azure met behulp van de Azure Portal en Azure Key Vault.
 ms.topic: conceptual
 ms.date: 09/06/2018
-ms.openlocfilehash: eeadfcf24ad2448c845f3d612247686347600001
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: b47f3b756ef4d012b41fd15686ffc08ab54fc187
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85611149"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86259322"
 ---
 # <a name="create-a-service-fabric-cluster-in-azure-using-the-azure-portal"></a>Een Service Fabric-cluster maken in azure met behulp van de Azure Portal
 > [!div class="op_single_selector"]
 > * [Azure Resource Manager](service-fabric-cluster-creation-via-arm.md)
-> * [Azure-portal](service-fabric-cluster-creation-via-portal.md)
+> * [Azure Portal](service-fabric-cluster-creation-via-portal.md)
 > 
 > 
 
@@ -121,7 +121,7 @@ Configureer uw cluster knooppunten. Knooppunt typen definiëren de VM-grootten, 
 ### <a name="3-security"></a>3. beveiliging
 ![Scherm opname van beveiligings configuraties op Azure Portal.][BasicSecurityConfigs]
 
-We hebben de **basis** optie voor het instellen van een veilig test cluster voor u gemakkelijk maken. Als u al een certificaat hebt en dit hebt geüpload naar uw [sleutel kluis](/azure/key-vault/) (en de sleutel kluis voor de implementatie hebt ingeschakeld), gebruikt u de optie **aangepast**
+We hebben de **basis** optie voor het instellen van een veilig test cluster voor u gemakkelijk maken. Als u al een certificaat hebt en dit hebt geüpload naar uw [sleutel kluis](../key-vault/index.yml) (en de sleutel kluis voor de implementatie hebt ingeschakeld), gebruikt u de optie **aangepast**
 
 #### <a name="basic-option"></a>Basis optie
 Volg de schermen om een bestaande sleutel kluis toe te voegen of te hergebruiken en een certificaat toe te voegen. Het toevoegen van het certificaat is een synchroon proces, zodat u moet wachten tot het certificaat is gemaakt.
@@ -202,7 +202,7 @@ Elk van de NodeTypes die u in uw cluster opgeeft, resulteert in het instellen va
 Op dit moment hebt u een beveiligd cluster met behulp van certificaten voor beheer authenticatie. Vervolgens [maakt u verbinding met uw cluster](service-fabric-connect-to-secure-cluster.md) en leert u hoe u [toepassings geheimen kunt beheren](service-fabric-application-secret-management.md).  Meer informatie over [service Fabric ondersteunings opties](service-fabric-support.md).
 
 <!-- Links -->
-[azure-powershell]: https://azure.microsoft.com/documentation/articles/powershell-install-configure/
+[azure-powershell]: /powershell/azure/
 [azure-portal]: https://portal.azure.com/
 [key-vault-get-started]: ../key-vault/general/overview.md
 [create-cluster-arm]: service-fabric-cluster-creation-via-arm.md

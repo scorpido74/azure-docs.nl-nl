@@ -7,18 +7,18 @@ ms.topic: troubleshooting
 ms.date: 10/16/2018
 ms.author: jeffpatt
 ms.subservice: files
-ms.openlocfilehash: ffd73e9dff06df4b5acdd004dddcfca5ff03ede0
-ms.sourcegitcommit: f7e160c820c1e2eb57dc480b2a8fd6bef7053e91
+ms.openlocfilehash: 4dddc2eab5004377afd6743c4722498dd5c6e2a0
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/10/2020
-ms.locfileid: "86232267"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86260000"
 ---
 # <a name="troubleshoot-azure-files-problems-in-linux"></a>Problemen met Azure Files in Linux oplossen
 
 In dit artikel vindt u algemene problemen die betrekking hebben op Azure Files wanneer u verbinding maakt vanaf Linux-clients. Het biedt ook mogelijke oorzaken en oplossingen voor deze problemen. 
 
-Naast de stappen voor probleem oplossing in dit artikel, kunt u [AzFileDiagnostics](https://gallery.technet.microsoft.com/Troubleshooting-tool-for-02184089) gebruiken om ervoor te zorgen dat de Linux-client over de juiste vereisten beschikt. AzFileDiagnostics automatiseert de detectie van de meeste symptomen die in dit artikel worden genoemd. Het helpt bij het instellen van uw omgeving om optimale prestaties te krijgen. U kunt deze informatie ook vinden in de [probleem oplosser Azure files-shares](https://support.microsoft.com/help/4022301/troubleshooter-for-azure-files-shares). De probleem Oplosser biedt stappen om u te helpen bij het verbinden, koppelen en koppelen van Azure Files shares.
+Naast de stappen voor probleem oplossing in dit artikel, kunt u [AzFileDiagnostics](https://github.com/Azure-Samples/azure-files-samples/tree/master/AzFileDiagnostics/Linux) gebruiken om ervoor te zorgen dat de Linux-client over de juiste vereisten beschikt. AzFileDiagnostics automatiseert de detectie van de meeste symptomen die in dit artikel worden genoemd. Het helpt bij het instellen van uw omgeving om optimale prestaties te krijgen. U kunt deze informatie ook vinden in de [probleem oplosser Azure files-shares](https://support.microsoft.com/help/4022301/troubleshooter-for-azure-files-shares). De probleem Oplosser biedt stappen om u te helpen bij het verbinden, koppelen en koppelen van Azure Files shares.
 
 ## <a name="cannot-connect-to-or-mount-an-azure-file-share"></a>Kan geen verbinding maken met een Azure-bestands share of deze koppelen
 

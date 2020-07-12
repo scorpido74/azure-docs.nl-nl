@@ -4,11 +4,12 @@ description: Inleiding tot het maken van een Microsoft Azure Service Fabric-toep
 ms.topic: conceptual
 ms.date: 07/10/2019
 ms.custom: sfrev
-ms.openlocfilehash: 0a8d5a05f922cd01067abbc3e98320a32cd9d256
-ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
+ms.openlocfilehash: 201131f774632e1130c6be6a0dbcb950b96ec508
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86038018"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86260483"
 ---
 # <a name="get-started-with-reliable-services"></a>Aan de slag met Reliable Services
 
@@ -168,11 +169,11 @@ protected override async Task RunAsync(CancellationToken cancellationToken)
 var myDictionary = await this.StateManager.GetOrAddAsync<IReliableDictionary<string, long>>("myDictionary");
 ```
 
-[IReliableDictionary](https://msdn.microsoft.com/library/dn971511.aspx) is een woorden lijst-implementatie die u kunt gebruiken om de status van de service op een betrouw bare manier op te slaan. Met Service Fabric en betrouw bare verzamelingen kunt u gegevens rechtstreeks in uw service opslaan zonder dat hiervoor een externe permanente opslag nodig is. Betrouw bare verzamelingen maken uw gegevens Maxi maal beschikbaar. Service Fabric dit te bereiken door meerdere *replica's* van uw service voor u te maken en te beheren. Het biedt ook een API die de complexiteit van het beheer van deze replica's en hun status overgangen opstelt.
+[IReliableDictionary](/dotnet/api/microsoft.servicefabric.data.collections.ireliabledictionary-2?view=azure-dotnet#microsoft_servicefabric_data_collections_ireliabledictionary_2) is een woorden lijst-implementatie die u kunt gebruiken om de status van de service op een betrouw bare manier op te slaan. Met Service Fabric en betrouw bare verzamelingen kunt u gegevens rechtstreeks in uw service opslaan zonder dat hiervoor een externe permanente opslag nodig is. Betrouw bare verzamelingen maken uw gegevens Maxi maal beschikbaar. Service Fabric dit te bereiken door meerdere *replica's* van uw service voor u te maken en te beheren. Het biedt ook een API die de complexiteit van het beheer van deze replica's en hun status overgangen opstelt.
 
 In betrouw bare verzamelingen kan elk .NET-type worden opgeslagen, inclusief uw aangepaste typen, met een aantal voor behoud:
 
-* Service Fabric uw status Maxi maal beschikbaar maakt door de status van de knoop punten te *repliceren* , en met betrouw bare verzamelingen worden uw gegevens opgeslagen op een lokale schijf op elke replica. Dit betekent dat alles dat is opgeslagen in betrouw bare verzamelingen *serialiseerbaar*moet zijn. Standaard gebruiken betrouw bare verzamelingen [Data](https://msdn.microsoft.com/library/system.runtime.serialization.datacontractattribute%28v=vs.110%29.aspx) contract voor serialisatie, dus is het belang rijk om ervoor te zorgen dat uw typen worden [ondersteund door de Serialisatiefunctie voor het gegevens contract](https://msdn.microsoft.com/library/ms731923%28v=vs.110%29.aspx) wanneer u de standaardserialisatiefunctie gebruikt.
+* Service Fabric uw status Maxi maal beschikbaar maakt door de status van de knoop punten te *repliceren* , en met betrouw bare verzamelingen worden uw gegevens opgeslagen op een lokale schijf op elke replica. Dit betekent dat alles dat is opgeslagen in betrouw bare verzamelingen *serialiseerbaar*moet zijn. Standaard gebruiken betrouw bare verzamelingen [Data](/dotnet/api/system.runtime.serialization.datacontractattribute?view=netcore-3.1) contract voor serialisatie, dus is het belang rijk om ervoor te zorgen dat uw typen worden [ondersteund door de Serialisatiefunctie voor het gegevens contract](/dotnet/framework/wcf/feature-details/types-supported-by-the-data-contract-serializer) wanneer u de standaardserialisatiefunctie gebruikt.
 * Objecten worden gerepliceerd voor hoge Beschik baarheid wanneer u trans acties doorvoert voor betrouw bare verzamelingen. Objecten die zijn opgeslagen in betrouw bare verzamelingen, worden in het lokale geheugen in uw service bewaard. Dit betekent dat u een lokale verwijzing naar het object hebt.
   
    Het is belang rijk dat u geen lokale exemplaren van deze objecten mutate zonder een update-bewerking uit te voeren op de betrouw bare verzameling in een trans actie. Dit komt doordat wijzigingen in lokale exemplaren van objecten niet automatisch worden gerepliceerd. U moet het object opnieuw toevoegen aan de woorden lijst of een van de *Update* methoden gebruiken in de woorden lijst.
@@ -211,7 +212,7 @@ Nadat de services zijn gestart, kunt u de gegenereerde gebeurtenissen van het Ev
 ## <a name="next-steps"></a>Volgende stappen
 [Fouten opsporen in uw Service Fabric-toepassing in Visual Studio](service-fabric-debugging-your-application.md)
 
-[Aan de slag: Service Fabric Web API-services met OWIN self-hosting](service-fabric-reliable-services-communication-webapi.md)
+[Aan de slag: Service Fabric Web API-services met OWIN self-hosting](./service-fabric-reliable-services-communication-aspnetcore.md)
 
 [Meer informatie over betrouw bare verzamelingen](service-fabric-reliable-services-reliable-collections.md)
 
@@ -219,5 +220,4 @@ Nadat de services zijn gestart, kunt u de gegenereerde gebeurtenissen van het Ev
 
 [Toepassingsupgrade](service-fabric-application-upgrade.md)
 
-[Naslag informatie voor ontwikkel aars voor Reliable Services](https://msdn.microsoft.com/library/azure/dn706529.aspx)
-
+[Naslag informatie voor ontwikkel aars voor Reliable Services](/previous-versions/azure/dn706529(v=azure.100))

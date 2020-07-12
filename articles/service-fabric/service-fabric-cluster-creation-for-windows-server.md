@@ -5,11 +5,12 @@ author: dkkapur
 ms.topic: conceptual
 ms.date: 2/21/2019
 ms.author: dekapur
-ms.openlocfilehash: a42797b51d811ee9427c9b77f8ea59a24c00feee
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: ba6474751913b4994ae840f77577b3c1db6c5f73
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83827961"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86259273"
 ---
 # <a name="create-a-standalone-cluster-running-on-windows-server"></a>Een zelfstandig cluster maken dat wordt uitgevoerd in Windows Server
 U kunt Azure Service Fabric gebruiken om Service Fabric-clusters te maken op alle virtuele machines of computers waarop Windows Server wordt uitgevoerd. Dit betekent dat u Service Fabric-toepassingen kunt implementeren en uitvoeren in elke omgeving met een set onderling verbonden Windows Server-computers, deze on-premises of met een Cloud provider. Service Fabric biedt een installatie pakket om Service Fabric clusters te maken die het zelfstandige Windows Server-pakket worden genoemd. Traditionele Service Fabric clusters op Azure zijn beschikbaar als beheerde service, terwijl zelfstandige Service Fabric clusters self-service zijn. Zie [Azure en zelfstandige service Fabric clusters vergelijken](./service-fabric-deploy-anywhere.md)voor meer informatie over de verschillen.
@@ -24,10 +25,10 @@ Dit artikel begeleidt u stapsgewijs door de stappen voor het maken van een Servi
 <a id="getsupport"></a>
 
 ## <a name="get-support-for-the-service-fabric-for-windows-server-package"></a>Ontvang ondersteuning voor de Service Fabric voor Windows Server-pakket
-* Vraag de community naar het zelfstandige Service Fabric-pakket voor Windows Server op de [pagina micro soft Q&een vraag voor Azure service Fabric](https://docs.microsoft.com/answers/topics/azure-service-fabric.html).
+* Vraag de community naar het zelfstandige Service Fabric-pakket voor Windows Server op de [pagina micro soft Q&een vraag voor Azure service Fabric](/answers/topics/azure-service-fabric.html).
 * Open een ticket voor [professionele ondersteuning voor service Fabric](https://support.microsoft.com/oas/default.aspx?prid=16146).  Meer informatie over Professional Support van micro soft [vindt u hier](https://support.microsoft.com/en-us/gp/offerprophone?wa=wsignin1.0).
 * U kunt ook ondersteuning voor dit pakket krijgen als onderdeel van [micro soft Premier Support](https://support.microsoft.com/en-us/premier).
-* Raadpleeg de [ondersteunings opties voor Azure service Fabric](https://docs.microsoft.com/azure/service-fabric/service-fabric-support)voor meer informatie.
+* Raadpleeg de [ondersteunings opties voor Azure service Fabric](./service-fabric-support.md)voor meer informatie.
 * Als u Logboeken voor ondersteunings doeleinden wilt verzamelen, voert u de [service Fabric zelfstandige logboek verzamelaar](service-fabric-cluster-standalone-package-contents.md)uit.
 
 <a id="downloadpackage"></a>
@@ -215,7 +216,7 @@ Geen.
 * [Configuratie-instellingen voor zelfstandig Windows-cluster](service-fabric-cluster-manifest.md)
 * [Knoop punten toevoegen aan of verwijderen uit een zelfstandig Service Fabric cluster](service-fabric-cluster-windows-server-add-remove-nodes.md)
 * [Een zelfstandige Service Fabric cluster versie bijwerken](service-fabric-cluster-upgrade-windows-server.md)
-* [Een zelfstandig Service Fabric cluster maken met virtuele Azure-machines waarop Windows wordt uitgevoerd](service-fabric-cluster-creation-with-windows-azure-vms.md)
+* [Een zelfstandig Service Fabric cluster maken met virtuele Azure-machines waarop Windows wordt uitgevoerd](./service-fabric-cluster-creation-via-arm.md)
 * [Een zelfstandige cluster in Windows beveiligen met behulp van Windows-beveiliging](service-fabric-windows-cluster-windows-security.md)
 * [Een zelfstandige cluster in Windows beveiligen met x509-certificaten](service-fabric-windows-cluster-x509-security.md)
 

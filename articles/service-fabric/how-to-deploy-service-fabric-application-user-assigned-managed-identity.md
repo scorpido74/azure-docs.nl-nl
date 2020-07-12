@@ -3,12 +3,12 @@ title: Een app implementeren met een door de gebruiker toegewezen beheerde ident
 description: In dit artikel wordt beschreven hoe u Service Fabric-toepassing implementeert met een door de gebruiker toegewezen beheerde identiteit
 ms.topic: article
 ms.date: 12/09/2019
-ms.openlocfilehash: 9aef81db7a455b72c83cf96898a0c228f1c382fd
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 79d8654733b580be96d59e78f31105077929ac78
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81415631"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86260090"
 ---
 # <a name="deploy-service-fabric-application-with-a-user-assigned-managed-identity"></a>Service Fabric toepassing implementeren met een door de gebruiker toegewezen beheerde identiteit
 
@@ -23,40 +23,42 @@ Als u een Service Fabric toepassing wilt implementeren met beheerde identiteit, 
 
 ## <a name="user-assigned-identity"></a>Door gebruiker toegewezen identiteit
 
-Als u een toepassing met een door de gebruiker toegewezen identiteit wilt inschakelen, voegt u eerst de eigenschap **Identity** toe aan de toepassings resource met het type **userAssigned** en de door de gebruiker toegewezen identiteiten. Voeg vervolgens een sectie **managedIdentities** toe aan de sectie **Eigenschappen** van de **toepassings** resource die een lijst met beschrijvende namen bevat voor principalId-toewijzing voor elk van de door de gebruiker toegewezen identiteiten. Zie [een door de gebruiker toegewezen beheerde identiteit maken, weer geven of verwijderen](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-powershell)voor meer informatie over door de gebruiker toegewezen identiteiten.
+Als u een toepassing met een door de gebruiker toegewezen identiteit wilt inschakelen, voegt u eerst de eigenschap **Identity** toe aan de toepassings resource met het type **userAssigned** en de door de gebruiker toegewezen identiteiten. Voeg vervolgens een sectie **managedIdentities** toe aan de sectie **Eigenschappen** van de **toepassings** resource die een lijst met beschrijvende namen bevat voor principalId-toewijzing voor elk van de door de gebruiker toegewezen identiteiten. Zie [een door de gebruiker toegewezen beheerde identiteit maken, weer geven of verwijderen](../active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-powershell.md)voor meer informatie over door de gebruiker toegewezen identiteiten.
 
 ### <a name="application-template"></a>Toepassingsjabloon
 
 Als u de toepassing met de door de gebruiker toegewezen identiteit wilt inschakelen, voegt u eerst de eigenschap **Identity** toe aan de toepassings resource met het type **userAssigned** en de door de gebruiker toegewezen identiteiten en voegt u vervolgens een **managedIdentities** -object toe aan de sectie **Eigenschappen** die een lijst met beschrijvende namen bevat waarmee de door de gebruiker toegewezen identiteiten worden principalId.
 
-    {
-      "apiVersion": "2019-06-01-preview",
-      "type": "Microsoft.ServiceFabric/clusters/applications",
-      "name": "[concat(parameters('clusterName'), '/', parameters('applicationName'))]",
-      "location": "[resourceGroup().location]",
-      "dependsOn": [
-        "[concat('Microsoft.ServiceFabric/clusters/', parameters('clusterName'), '/applicationTypes/', parameters('applicationTypeName'), '/versions/', parameters('applicationTypeVersion'))]",
-        "[resourceId('Microsoft.ManagedIdentity/userAssignedIdentities/', parameters('userAssignedIdentityName'))]"
-      ],
-      "identity": {
-        "type" : "userAssigned",
-        "userAssignedIdentities": {
-            "[resourceId('Microsoft.ManagedIdentity/userAssignedIdentities/', parameters('userAssignedIdentityName'))]": {}
-        }
-      },
-      "properties": {
-        "typeName": "[parameters('applicationTypeName')]",
-        "typeVersion": "[parameters('applicationTypeVersion')]",
-        "parameters": {
-        },
-        "managedIdentities": [
-          {
-            "name" : "[parameters('userAssignedIdentityName')]",
-            "principalId" : "[reference(resourceId('Microsoft.ManagedIdentity/userAssignedIdentities/', parameters('userAssignedIdentityName')), '2018-11-30').principalId]"
-          }
-        ]
-      }
+```json
+{
+  "apiVersion": "2019-06-01-preview",
+  "type": "Microsoft.ServiceFabric/clusters/applications",
+  "name": "[concat(parameters('clusterName'), '/', parameters('applicationName'))]",
+  "location": "[resourceGroup().location]",
+  "dependsOn": [
+    "[concat('Microsoft.ServiceFabric/clusters/', parameters('clusterName'), '/applicationTypes/', parameters('applicationTypeName'), '/versions/', parameters('applicationTypeVersion'))]",
+    "[resourceId('Microsoft.ManagedIdentity/userAssignedIdentities/', parameters('userAssignedIdentityName'))]"
+  ],
+  "identity": {
+    "type" : "userAssigned",
+    "userAssignedIdentities": {
+        "[resourceId('Microsoft.ManagedIdentity/userAssignedIdentities/', parameters('userAssignedIdentityName'))]": {}
     }
+  },
+  "properties": {
+    "typeName": "[parameters('applicationTypeName')]",
+    "typeVersion": "[parameters('applicationTypeVersion')]",
+    "parameters": {
+    },
+    "managedIdentities": [
+      {
+        "name" : "[parameters('userAssignedIdentityName')]",
+        "principalId" : "[reference(resourceId('Microsoft.ManagedIdentity/userAssignedIdentities/', parameters('userAssignedIdentityName')), '2018-11-30').principalId]"
+      }
+    ]
+  }
+}
+```
 
 In het bovenstaande voor beeld wordt de resource naam van de door de gebruiker toegewezen identiteit gebruikt als beschrijvende naam van de beheerde identiteit voor de toepassing. In de volgende voor beelden wordt ervan uitgegaan dat de daad werkelijke beschrijvende naam ' AdminUser ' is.
 

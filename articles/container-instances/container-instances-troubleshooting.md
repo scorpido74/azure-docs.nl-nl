@@ -4,12 +4,12 @@ description: Meer informatie over het oplossen van veelvoorkomende problemen wan
 ms.topic: article
 ms.date: 06/25/2020
 ms.custom: mvc
-ms.openlocfilehash: aeb4517f5be7fff9c29487d6521f80ee697c0e96
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 46d3ad6afb1761ca9503676ad2176482b7e4530e
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85807839"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86260746"
 ---
 # <a name="troubleshoot-common-issues-in-azure-container-instances"></a>Veelvoorkomende problemen in Azure Container Instances oplossen
 
@@ -183,7 +183,7 @@ De sleutel voor het bewaren van afbeeldings grootten zorgt ervoor dat de uiteind
 
 #### <a name="image-location"></a>Locatie van installatie kopie
 
-Een andere manier om de impact van de installatie kopie op de opstart tijd van de container te verminderen, is door de container installatie kopie te hosten in [Azure container Registry](/azure/container-registry/) in dezelfde regio waarin u container instanties wilt implementeren. Hiermee verkort u het netwerkpad dat de container installatie kopie moet reizen, waardoor de download tijd aanzienlijk verkort.
+Een andere manier om de impact van de installatie kopie op de opstart tijd van de container te verminderen, is door de container installatie kopie te hosten in [Azure container Registry](../container-registry/index.yml) in dezelfde regio waarin u container instanties wilt implementeren. Hiermee verkort u het netwerkpad dat de container installatie kopie moet reizen, waardoor de download tijd aanzienlijk verkort.
 
 #### <a name="cached-images"></a>Afbeeldingen in cache
 
@@ -228,9 +228,9 @@ Als u wilt bevestigen dat Azure Container Instances kan Luis teren op de poort d
 Meer informatie over het [ophalen van container logboeken en-gebeurtenissen](container-instances-get-logs.md) voor het opsporen van fouten in uw containers.
 
 <!-- LINKS - External -->
-[azure-name-restrictions]: https://docs.microsoft.com/azure/cloud-adoption-framework/ready/azure-best-practices/naming-and-tagging#naming-and-tagging-resources
+[azure-name-restrictions]: /azure/cloud-adoption-framework/ready/azure-best-practices/naming-and-tagging#naming-and-tagging-resources
 [naming-rules]: ../azure-resource-manager/management/resource-name-rules.md
-[windows-sac-overview]: https://docs.microsoft.com/windows-server/get-started/semi-annual-channel-overview
+[windows-sac-overview]: /windows-server/get-started/semi-annual-channel-overview
 [docker-multi-stage-builds]: https://docs.docker.com/engine/userguide/eng-image/multistage-build/
 [docker-hub-windows-core]: https://hub.docker.com/_/microsoft-windows-servercore
 [docker-hub-windows-nano]: https://hub.docker.com/_/microsoft-windows-nanoserver

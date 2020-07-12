@@ -3,12 +3,12 @@ title: Met GPU ingeschakelde container instantie implementeren
 description: Meer informatie over het implementeren van Azure container instances voor het uitvoeren van Compute-container-apps met GPU-resources.
 ms.topic: article
 ms.date: 07/02/2020
-ms.openlocfilehash: 78b67843978583dd6b0f0aee2c1d8ad0e5a7ca77
-ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
+ms.openlocfilehash: a25efc90573eb338b81f4a6532a632a140c7ab7d
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86169745"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86259599"
 ---
 # <a name="deploy-container-instances-that-use-gpu-resources"></a>Container instanties implementeren die GPU-bronnen gebruiken
 
@@ -225,7 +225,7 @@ az container delete --resource-group myResourceGroup --name gpucontainergrouprm 
 ## <a name="next-steps"></a>Volgende stappen
 
 * Meer informatie over het implementeren van een container groep met behulp van een [yaml-bestand](container-instances-multi-container-yaml.md) of een [Resource Manager-sjabloon](container-instances-multi-container-group.md).
-* Meer informatie over door [GPU geoptimaliseerde VM-grootten](../virtual-machines/linux/sizes-gpu.md) in Azure.
+* Meer informatie over door [GPU geoptimaliseerde VM-grootten](../virtual-machines/sizes-gpu.md) in Azure.
 
 
 <!-- IMAGES -->

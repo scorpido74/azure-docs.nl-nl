@@ -5,11 +5,12 @@ author: dkkapur
 ms.topic: conceptual
 ms.date: 11/02/2017
 ms.author: dekapur
-ms.openlocfilehash: f9bee35ee8e82070b4cf601139b471562ba5e10b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 9fa8b0970d198f9801c7661b9555db17cdf67b3c
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "75934212"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86258715"
 ---
 # <a name="add-or-remove-nodes-to-a-standalone-service-fabric-cluster-running-on-windows-server"></a>Knooppunten toevoegen aan of verwijderen uit een zelfstandig Service Fabric-cluster dat wordt uitgevoerd op Windows Server
 Nadat u [uw zelfstandige service Fabric cluster op Windows Server-computers hebt gemaakt](service-fabric-cluster-creation-for-windows-server.md), kan het zijn dat uw (zakelijke) uw bedrijfs behoeften veranderen en moet u knoop punten toevoegen aan of verwijderen uit uw cluster. Dit artikel bevat gedetailleerde stappen om dit te doen. Houd er rekening mee dat de functionaliteit van het knoop punt toevoegen/verwijderen niet wordt ondersteund in lokale ontwikkel clusters.
@@ -141,5 +142,4 @@ De vervanging van primaire knoop punten moet na een andere knoop punt worden uit
 ## <a name="next-steps"></a>Volgende stappen
 * [Configuratie-instellingen voor zelfstandig Windows-cluster](service-fabric-cluster-manifest.md)
 * [Een zelfstandige cluster in Windows beveiligen met x509-certificaten](service-fabric-windows-cluster-x509-security.md)
-* [Een zelfstandig Service Fabric cluster maken met virtuele Azure-machines waarop Windows wordt uitgevoerd](service-fabric-cluster-creation-with-windows-azure-vms.md)
-
+* [Een zelfstandig Service Fabric cluster maken met virtuele Azure-machines waarop Windows wordt uitgevoerd](./service-fabric-cluster-creation-via-arm.md)

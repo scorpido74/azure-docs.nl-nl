@@ -3,11 +3,12 @@ title: Azure service Health-waarschuwingen verzenden met ServiceNow
 description: Krijg persoonlijke meldingen over service status gebeurtenissen aan uw ServiceNow-exemplaar.
 ms.topic: conceptual
 ms.date: 06/10/2019
-ms.openlocfilehash: 3daae05aabff571010d043cf5602847e95ea29f0
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 5cd17af080714fdf2e9e5b168e72f975c8d3a3f6
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77654100"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86260200"
 ---
 # <a name="send-azure-service-health-alerts-with-servicenow-using-webhooks"></a>Azure service Health-waarschuwingen verzenden met ServiceNow met behulp van webhooks
 
@@ -139,9 +140,10 @@ In dit artikel leest u hoe u Azure service Health Alerts integreert met ServiceN
      ![Het ' basis-API-pad ' in ServiceNow](./media/webhook-alerts/servicenow-base-api-path.png)
 
 1.  Uw volledige integratie-URL ziet er als volgt uit:
-        
-         https://<yourInstanceName>.service-now.com/<baseApiPath>?apiKey=<secret>
 
+    ```http
+    https://<yourInstanceName>.service-now.com/<baseApiPath>?apiKey=<secret>
+    ```
 
 ## <a name="create-an-alert-using-servicenow-in-the-azure-portal"></a>Een waarschuwing maken met behulp van ServiceNow in de Azure Portal
 ### <a name="for-a-new-action-group"></a>Voor een nieuwe actie groep:

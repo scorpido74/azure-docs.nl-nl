@@ -3,12 +3,12 @@ title: De Azure Service Fabric-versie van een cluster upgraden
 description: Voer een upgrade uit voor de Service Fabric code en/of configuratie waarmee een Service Fabric cluster wordt uitgevoerd, met inbegrip van het instellen van de cluster update modus, het bijwerken van certificaten, het toevoegen van toepassings poorten, het uitvoeren van besturingssysteem patches, enzovoort. Wat kunt u verwachten wanneer de upgrades worden uitgevoerd?
 ms.topic: conceptual
 ms.date: 11/12/2018
-ms.openlocfilehash: 802e7402f60370b7151c5e373c8a4921a5af7c80
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: b0fef612725d606f1415e7e8d004aacee025cedf
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82789597"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86261049"
 ---
 # <a name="upgrade-the-service-fabric-version-of-a-cluster"></a>Upgrade uitvoeren voor de Service Fabric-versie van een cluster
 
@@ -19,7 +19,7 @@ U kunt uw cluster zo instellen dat automatische infrastructuur upgrades worden o
 U doet dit door de cluster configuratie ' upgrade mode ingesteld ' in te stellen op de portal of door Resource Manager te gebruiken op het moment van maken of later op een live cluster 
 
 > [!NOTE]
-> Zorg ervoor dat uw cluster altijd een ondersteunde infrastructuur versie gebruikt. Wanneer we de release van een nieuwe versie van service Fabric aankondigen, wordt de vorige versie gemarkeerd voor het einde van de ondersteuning na mini maal 60 dagen vanaf die datum. De nieuwe releases worden aangekondigd [op het service Fabric-team blog](https://blogs.msdn.microsoft.com/azureservicefabric/). De nieuwe versie is beschikbaar om te kiezen. 
+> Zorg ervoor dat uw cluster altijd een ondersteunde infrastructuur versie gebruikt. Wanneer we de release van een nieuwe versie van service Fabric aankondigen, wordt de vorige versie gemarkeerd voor het einde van de ondersteuning na mini maal 60 dagen vanaf die datum. De nieuwe releases worden aangekondigd [op het service Fabric-team blog](https://techcommunity.microsoft.com/t5/azure-service-fabric/bg-p/Service-Fabric). De nieuwe versie is beschikbaar om te kiezen. 
 > 
 > 
 

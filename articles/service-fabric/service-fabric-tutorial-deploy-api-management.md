@@ -4,12 +4,12 @@ description: Meer informatie over hoe u snel aan de slag kunt gaan met Azure API
 ms.topic: conceptual
 ms.date: 07/10/2019
 ms.custom: mvc
-ms.openlocfilehash: 7bd781a21a32ca29fe3f5dd2f4432dbf1e5ca411
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 40f8c53394292a85f6fd032e445d79ed82e2d4e9
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80292147"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86260262"
 ---
 # <a name="integrate-api-management-with-service-fabric-in-azure"></a>API Management integreren met Service Fabric in azure
 
@@ -30,7 +30,7 @@ In dit artikel wordt beschreven hoe u [Azure API Management](../api-management/a
 Voordat u begint:
 
 * Als u nog geen abonnement op Azure hebt, maak dan een [gratis account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)
-* Installeer [Azure Powershell](https://docs.microsoft.com/powershell/azure/install-Az-ps) of [Azure CLI](/cli/azure/install-azure-cli).
+* Installeer [Azure Powershell](/powershell/azure/install-az-ps) of [Azure CLI](/cli/azure/install-azure-cli).
 * Maak een beveiligd [Windows-cluster](service-fabric-tutorial-create-vnet-and-windows-cluster.md) in een netwerk beveiligings groep.
 * Als u een Windows-cluster implementeert, richt u een Windows-ontwikkelomgeving in. Installeer [Visual Studio 2019](https://www.visualstudio.com) en de ontwikkelings-, **ASP.net-en Web**-ontwikkeling van **Azure**en het ontwikkelen van **.net core-** werk belastingen.  Richt vervolgens een [.NET-ontwikkelomgeving in](service-fabric-get-started.md).
 
@@ -151,9 +151,9 @@ Geef deze waarden op als u een API-bewerking voor de front-end wilt toevoegen:
 
 ### <a name="microsoftapimanagementserviceapispolicies"></a>Microsoft.ApiManagement/service/apis/policies
 
-Met [Microsoft.ApiManagement/service/apis/policies](/azure/templates/microsoft.apimanagement/service/apis/policies) wordt een back-endbeleid gemaakt, waarmee alles met elkaar wordt verbonden. Dit is de plek waar u de service van Service Fabric in de back-end configureert waarnaar aanvragen worden doorgestuurd. U kunt dit beleid toepassen op elke API-bewerking.  Zie het [beleidsoverzicht](/azure/api-management/api-management-howto-policies) voor meer informatie.
+Met [Microsoft.ApiManagement/service/apis/policies](/azure/templates/microsoft.apimanagement/service/apis/policies) wordt een back-endbeleid gemaakt, waarmee alles met elkaar wordt verbonden. Dit is de plek waar u de service van Service Fabric in de back-end configureert waarnaar aanvragen worden doorgestuurd. U kunt dit beleid toepassen op elke API-bewerking.  Zie het [beleidsoverzicht](../api-management/api-management-howto-policies.md) voor meer informatie.
 
-De [back-endconfiguratie voor Service Fabric](/azure/api-management/api-management-transformation-policies#SetBackendService) biedt de volgende onderdelen voor het doorsturen van aanvragen:
+De [back-endconfiguratie voor Service Fabric](../api-management/api-management-transformation-policies.md#SetBackendService) biedt de volgende onderdelen voor het doorsturen van aanvragen:
 
 * Selectie van service-exemplaar door de naam van een exemplaar van een Service Fabric-service op te geven. Deze naam kan programmatisch worden vastgelegd (bijvoorbeeld `"fabric:/myapp/myservice"`) of worden gegenereerd vanuit de HTTP-aanvraag (bijvoorbeeld `"fabric:/myapp/users/" + context.Request.MatchedParameters["name"]`).
 * Partitie-omzetting door het genereren van een partitiesleutel met behulp van een partitieschema van Service Fabric.
@@ -180,7 +180,7 @@ De [back-endconfiguratie voor Service Fabric](/azure/api-management/api-manageme
 </policies>
 ```
 
-Raadpleeg de [documentatie over back-ends voor API Management](https://docs.microsoft.com/azure/api-management/api-management-transformation-policies#SetBackendService) voor een overzicht van alle beleidskenmerken voor Service Fabric-back-ends.
+Raadpleeg de [documentatie over back-ends voor API Management](../api-management/api-management-transformation-policies.md#SetBackendService) voor een overzicht van alle beleidskenmerken voor Service Fabric-back-ends.
 
 ## <a name="set-parameters-and-deploy-api-management"></a>Parameters instellen en API Management implementeren
 
@@ -291,9 +291,9 @@ az group delete --name $ResourceGroupName
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Meer informatie over het gebruik van [API Management](/azure/api-management/import-and-publish).
+Meer informatie over het gebruik van [API Management](../api-management/import-and-publish.md).
 
-[azure-powershell]: https://azure.microsoft.com/documentation/articles/powershell-install-configure/
+[azure-powershell]: /powershell/azure/
 
 [apim-arm]:https://github.com/Azure/service-fabric-scripts-and-templates/blob/master/templates/service-integration/apim.json
 [apim-parameters-arm]:https://github.com/Azure/service-fabric-scripts-and-templates/blob/master/templates/service-integration/apim.parameters.json

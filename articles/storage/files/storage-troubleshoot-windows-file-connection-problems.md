@@ -7,16 +7,16 @@ ms.topic: troubleshooting
 ms.date: 05/31/2019
 ms.author: jeffpatt
 ms.subservice: files
-ms.openlocfilehash: 8a8fff374edab7e307cd6dc8fb9aa4a4f974d09c
-ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
+ms.openlocfilehash: e855ed169a0c4eca7dda696c03deedb9e519e9bf
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/10/2020
-ms.locfileid: "86224686"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86259986"
 ---
 # <a name="troubleshoot-azure-files-problems-in-windows"></a>Problemen met Azure Files in Windows oplossen
 
-In dit artikel vindt u algemene problemen die betrekking hebben op Microsoft Azure-bestanden wanneer u verbinding maakt vanaf Windows-clients. Het biedt ook mogelijke oorzaken en oplossingen voor deze problemen. Naast de stappen voor probleem oplossing in dit artikel, kunt u ook [AzFileDiagnostics](https://gallery.technet.microsoft.com/Troubleshooting-tool-for-a9fa1fe5)gebruiken   om ervoor te zorgen dat de Windows-client omgeving voldoet aan de vereisten. AzFileDiagnostics automatiseert de detectie van de meeste symptomen die in dit artikel worden genoemd en helpt u bij het instellen van uw omgeving om optimaal gebruik te maken van de prestaties. U kunt deze informatie ook vinden in de [probleem oplosser voor Azure files-shares](https://support.microsoft.com/help/4022301/troubleshooter-for-azure-files-shares) die stappen biedt om u te helpen bij het verbinden/koppelen van Azure files shares.
+In dit artikel vindt u algemene problemen die betrekking hebben op Microsoft Azure-bestanden wanneer u verbinding maakt vanaf Windows-clients. Het biedt ook mogelijke oorzaken en oplossingen voor deze problemen. Naast de stappen voor probleem oplossing in dit artikel, kunt u ook [AzFileDiagnostics](https://github.com/Azure-Samples/azure-files-samples/tree/master/AzFileDiagnostics/Windows)gebruiken   om ervoor te zorgen dat de Windows-client omgeving voldoet aan de vereisten. AzFileDiagnostics automatiseert de detectie van de meeste symptomen die in dit artikel worden genoemd en helpt u bij het instellen van uw omgeving om optimaal gebruik te maken van de prestaties. U kunt deze informatie ook vinden in de [probleem oplosser voor Azure files-shares](https://support.microsoft.com/help/4022301/troubleshooter-for-azure-files-shares) die stappen biedt om u te helpen bij het verbinden/koppelen van Azure files shares.
 
 <a id="error5"></a>
 ## <a name="error-5-when-you-mount-an-azure-file-share"></a>Fout 5 bij het koppelen van een Azure-bestands share
@@ -65,7 +65,7 @@ Wanneer u probeert een bestands share te koppelen vanuit een on-premises of vanu
 
 Systeem fout 53 of systeem fout 67 kan optreden als poort 445 uitgaande communicatie met een Azure Files Data Center wordt geblokkeerd. Ga naar [TechNet](https://social.technet.microsoft.com/wiki/contents/articles/32346.azure-summary-of-isps-that-allow-disallow-access-from-port-445.aspx) voor een overzicht van welke internetproviders toegang via poort 445 toestaan en welke niet.
 
-Gebruik het hulp programma [AzFileDiagnostics](https://gallery.technet.microsoft.com/Troubleshooting-tool-for-a9fa1fe5) of de cmdlet om te controleren of uw firewall of Internet provider poort 445 blokkeert `Test-NetConnection` . 
+Gebruik het hulp programma [AzFileDiagnostics](https://github.com/Azure-Samples/azure-files-samples/tree/master/AzFileDiagnostics/Windows) of de cmdlet om te controleren of uw firewall of Internet provider poort 445 blokkeert `Test-NetConnection` . 
 
 Als u de `Test-NetConnection` cmdlet wilt gebruiken, moet de module Azure PowerShell zijn geïnstalleerd. zie [Azure PowerShell-module installeren](/powershell/azure/install-Az-ps) voor meer informatie. Vergeet niet om `<your-storage-account-name>` en `<your-resource-group-name>` te vervangen door de betreffende namen van uw opslagaccount.
 
@@ -334,7 +334,7 @@ Op dit moment kunt u overwegen om uw AAD DS opnieuw te implementeren met een nie
 ### <a name="self-diagnostics-steps"></a>Stappen voor zelf diagnostische gegevens
 Zorg er eerst voor dat u alle vier de stappen hebt gevolgd om [Azure files AD-verificatie in te scha kelen](https://docs.microsoft.com/azure/storage/files/storage-files-identity-auth-active-directory-enable).
 
-Probeer vervolgens de [Azure-bestands share te koppelen met de sleutel van het opslag account](https://docs.microsoft.com/azure/storage/files/storage-how-to-use-files-windows). Als u de koppeling niet hebt gemaakt, downloadt u [AzFileDiagnostics.ps1](https://gallery.technet.microsoft.com/Troubleshooting-tool-for-a9fa1fe5) om u te helpen bij het valideren van de client omgeving, detecteert u de niet-compatibele client configuratie die toegang zou hebben tot de Azure files, bevat prescriptieve richt lijnen voor zelf herstel en worden de diagnostische traceringen verzameld.
+Probeer vervolgens de [Azure-bestands share te koppelen met de sleutel van het opslag account](https://docs.microsoft.com/azure/storage/files/storage-how-to-use-files-windows). Als u de koppeling niet hebt gemaakt, downloadt u [AzFileDiagnostics.ps1](https://github.com/Azure-Samples/azure-files-samples/tree/master/AzFileDiagnostics/Windows) om u te helpen bij het valideren van de client omgeving, detecteert u de niet-compatibele client configuratie die toegang zou hebben tot de Azure files, bevat prescriptieve richt lijnen voor zelf herstel en worden de diagnostische traceringen verzameld.
 
 Ten derde kunt u de cmdlet debug-AzStorageAccountAuth uitvoeren om een set basis controles uit te voeren op uw AD-configuratie met de aangemelde AD-gebruiker. Deze cmdlet wordt ondersteund met [versie AzFilesHybrid v 0.1.2 en hoger](https://github.com/Azure-Samples/azure-files-samples/releases). U moet deze cmdlet uitvoeren met een AD-gebruiker die de machtiging Eigenaar heeft voor het doelopslagaccount.  
 ```PowerShell

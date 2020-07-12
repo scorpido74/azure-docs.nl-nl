@@ -3,12 +3,12 @@ title: Een bestaand uitvoerbaar bestand implementeren in azure Service Fabric
 description: Meer informatie over het inpakken van een bestaande toepassing als een uitvoerbaar gast bestand, zodat het kan worden geïmplementeerd in een Service Fabric cluster.
 ms.topic: conceptual
 ms.date: 03/30/2020
-ms.openlocfilehash: c6c6bc0369593c177b74261da1fd8c15dd73fcb3
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 72fde75e16341164106bb952d0bb66b83be744e1
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80520488"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86259263"
 ---
 # <a name="package-and-deploy-an-existing-executable-to-service-fabric"></a>Een bestaand uitvoerbaar bestand inpakken en implementeren in Service Fabric
 
@@ -76,7 +76,7 @@ Het proces van het hand matig uitpakken van een gast uitvoer bare bestand is geb
 
 ### <a name="create-the-package-directory-structure"></a>De mapstructuur van het pakket maken
 
-U kunt beginnen met het maken van de mapstructuur, zoals beschreven in [een Azure service Fabric-app inpakken](https://docs.microsoft.com/azure/service-fabric/service-fabric-package-apps).
+U kunt beginnen met het maken van de mapstructuur, zoals beschreven in [een Azure service Fabric-app inpakken](./service-fabric-package-apps.md).
 
 ### <a name="add-the-applications-code-and-configuration-files"></a>De code-en configuratie bestanden van de toepassing toevoegen
 

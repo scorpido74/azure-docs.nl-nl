@@ -6,17 +6,18 @@ ms.topic: conceptual
 ms.date: 11/21/2018
 ms.author: dekapur
 ms.custom: mvc, devcenter
-ms.openlocfilehash: 5bb7ab6c861d958f6811ca852363c59cfced3940
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 54edc242260479a8f48cc4aae91845041fc2d376
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "76718817"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86260097"
 ---
 # <a name="mount-an-azure-files-based-volume-in-a-service-fabric-mesh-application"></a>Een op Azure Files gebaseerd volume koppelen in een Service Fabric mesh-toepassing 
 
 In dit artikel wordt beschreven hoe u een op Azure Files gebaseerd volume koppelt in een service van een Service Fabric mesh-toepassing.  Het Azure Files-volume stuur programma is een docker-volume stuur programma dat wordt gebruikt om een Azure Files share te koppelen aan een container, waarmee u de service status persistent kunt maken. Volumes bieden u bestands opslag voor algemeen gebruik en bieden de mogelijkheid om bestanden te lezen/schrijven met behulp van normale I/O-bestand-Api's van de schijf.  Lees de [opslag status](service-fabric-mesh-storing-state.md)voor meer informatie over de volumes en opties voor het opslaan van toepassings gegevens.
 
-Als u een volume in een service wilt koppelen, maakt u een volume bron in uw Service Fabric mesh-toepassing en verwijst u naar dat volume in uw service.  Het declareren van de volume resource en het verwijzen naar deze in de service resource kan worden uitgevoerd in de [op YAML gebaseerde resource bestanden](#declare-a-volume-resource-and-update-the-service-resource-yaml) of in het [JSON-gebaseerde implementatie sjabloon](#declare-a-volume-resource-and-update-the-service-resource-json). Voordat u het volume koppelt, moet u eerst een Azure-opslag account en een [Bestands share in azure files](/azure/storage/files/storage-how-to-create-file-share)maken.
+Als u een volume in een service wilt koppelen, maakt u een volume bron in uw Service Fabric mesh-toepassing en verwijst u naar dat volume in uw service.  Het declareren van de volume resource en het verwijzen naar deze in de service resource kan worden uitgevoerd in de [op YAML gebaseerde resource bestanden](#declare-a-volume-resource-and-update-the-service-resource-yaml) of in het [JSON-gebaseerde implementatie sjabloon](#declare-a-volume-resource-and-update-the-service-resource-json). Voordat u het volume koppelt, moet u eerst een Azure-opslag account en een [Bestands share in azure files](../storage/files/storage-how-to-create-file-share.md)maken.
 
 ## <a name="prerequisites"></a>Vereisten
 > [!NOTE]

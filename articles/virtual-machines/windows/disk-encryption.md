@@ -8,12 +8,12 @@ ms.author: rogarana
 ms.service: virtual-machines
 ms.subservice: disks
 ms.custom: references_regions
-ms.openlocfilehash: d0625c817703fe5d5645bcfdab962591cb184ae2
-ms.sourcegitcommit: f7e160c820c1e2eb57dc480b2a8fd6bef7053e91
+ms.openlocfilehash: 0bb0fb268d18ddc152dae45014e2154686762976
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/10/2020
-ms.locfileid: "86232726"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86259830"
 ---
 # <a name="server-side-encryption-of-azure-disk-storage"></a>Versleuteling aan de server zijde van Azure Disk Storage
 
@@ -84,9 +84,9 @@ Hoge beveiligings gevoelige klanten die zich zorgen maken over het risico dat is
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- [Versleuteling op basis van een host inschakelen](disks-enable-host-based-encryption-powershell.md)
-- [Azure PowerShell-dubbele versleuteling op schijven met rest-beheer inschakelen](disks-enable-double-encryption-at-rest-powershell.md)
-- [Door de klant beheerde sleutels voor uw beheerde schijf inschakelen-Power shell](disks-enable-customer-managed-keys-powershell.md)
-- [Door de klant beheerde sleutels inschakelen-beheerde schijven](disks-enable-customer-managed-keys-portal.md)
+- [End-to-end-versleuteling met versleuteling op host-Power shell inschakelen](disks-enable-host-based-encryption-powershell.md)
+- [Dubbele versleuteling inschakelen bij rest voor uw beheerde schijven-Power shell](disks-enable-double-encryption-at-rest-powershell.md)
+- [Door de klant beheerde sleutels voor uw beheerde schijven inschakelen-Power shell](disks-enable-customer-managed-keys-powershell.md)
+- [Door de klant beheerde sleutels voor uw beheerde schijven inschakelen-Portal](disks-enable-customer-managed-keys-portal.md)
 - [Bekijk de Azure Resource Manager sjablonen voor het maken van versleutelde schijven met door de klant beheerde sleutels](https://github.com/ramankumarlive/manageddiskscmkpreview)
 - [Wat is Azure Key Vault?](../../key-vault/general/overview.md)

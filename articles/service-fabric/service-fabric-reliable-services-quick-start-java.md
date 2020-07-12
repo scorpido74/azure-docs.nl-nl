@@ -5,12 +5,12 @@ author: suhuruli
 ms.topic: conceptual
 ms.date: 11/02/2017
 ms.author: suhuruli
-ms.openlocfilehash: 7855b92c90a9ccd208a25080c260437e6808d1b7
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: f4cab376318bec471fa59614e5bcc716a31dc333
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82184143"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86260939"
 ---
 # <a name="get-started-with-reliable-services-in-java"></a>Aan de slag met Reliable Services in Java
 > [!div class="op_single_selector"]
@@ -190,7 +190,7 @@ protected CompletableFuture<?> runAsync(CancellationToken cancellationToken) {
 ReliableHashMap<String,Long> map = this.stateManager.<String, Long>getOrAddReliableHashMapAsync("myHashMap")
 ```
 
-[ReliableHashMap](https://docs.microsoft.com/java/api/microsoft.servicefabric.data.collections.reliablehashmap) is een woorden lijst-implementatie die u kunt gebruiken om de status van de service op een betrouw bare manier op te slaan. Met Service Fabric en betrouw bare HashMaps kunt u gegevens rechtstreeks in uw service opslaan zonder dat hiervoor een externe permanente opslag nodig is. Betrouw bare HashMaps maken uw gegevens Maxi maal beschikbaar. Service Fabric dit te bereiken door meerdere *replica's* van uw service voor u te maken en te beheren. Het biedt ook een API die de complexiteit van het beheer van deze replica's en hun status overgangen opstelt.
+[ReliableHashMap](/java/api/microsoft.servicefabric.data.collections.reliablehashmap) is een woorden lijst-implementatie die u kunt gebruiken om de status van de service op een betrouw bare manier op te slaan. Met Service Fabric en betrouw bare HashMaps kunt u gegevens rechtstreeks in uw service opslaan zonder dat hiervoor een externe permanente opslag nodig is. Betrouw bare HashMaps maken uw gegevens Maxi maal beschikbaar. Service Fabric dit te bereiken door meerdere *replica's* van uw service voor u te maken en te beheren. Het biedt ook een API die de complexiteit van het beheer van deze replica's en hun status overgangen opstelt.
 
 In betrouw bare verzamelingen kan elk Java-type worden opgeslagen, inclusief uw aangepaste typen, met een aantal voor behoud:
 

@@ -3,17 +3,18 @@ title: Een Azure Load Balancer-regel voor een cluster maken
 description: Configureer een Azure Load Balancer voor het openen van poorten voor uw Azure Service Fabric-cluster.
 ms.topic: conceptual
 ms.date: 12/06/2017
-ms.openlocfilehash: f4599b2e0174381ab7df04aeeb33db7e3ee60f26
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 049afb88b5552c92294180069b54d49574a410fa
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77025381"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86259048"
 ---
 # <a name="open-ports-for-a-service-fabric-cluster"></a>Poorten openen voor een Service Fabric-cluster
 
 De load balancer die met uw Azure Service Fabric cluster wordt geïmplementeerd, stuurt verkeer naar uw app die op een knoop punt wordt uitgevoerd. Als u de app wijzigt om een andere poort te gebruiken, moet u die poort zichtbaar maken (of een andere poort routeren) in de Azure Load Balancer.
 
-Wanneer u uw Service Fabric-cluster in azure hebt geïmplementeerd, is er automatisch een load balancer voor u gemaakt. Als u geen load balancer hebt, raadpleegt u [een Internet gerichte Load Balancer configureren](../load-balancer/load-balancer-get-started-internet-portal.md).
+Wanneer u uw Service Fabric-cluster in azure hebt geïmplementeerd, is er automatisch een load balancer voor u gemaakt. Als u geen load balancer hebt, raadpleegt u [een Internet gerichte Load Balancer configureren](../load-balancer/quickstart-load-balancer-standard-public-portal.md).
 
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
@@ -24,7 +25,7 @@ Het configuratie bestand van uw Service Fabric-toepassing **ServiceManifest.xml*
 
 ## <a name="create-a-load-balancer-rule"></a>Een load balancer-regel maken
 
-Met een Load Balancer regel wordt een Internet gerichte poort geopend en verkeer doorgestuurd naar de poort van het interne knoop punt dat door uw toepassing wordt gebruikt. Als u geen load balancer hebt, raadpleegt u [een Internet gerichte Load Balancer configureren](../load-balancer/load-balancer-get-started-internet-portal.md).
+Met een Load Balancer regel wordt een Internet gerichte poort geopend en verkeer doorgestuurd naar de poort van het interne knoop punt dat door uw toepassing wordt gebruikt. Als u geen load balancer hebt, raadpleegt u [een Internet gerichte Load Balancer configureren](../load-balancer/quickstart-load-balancer-standard-public-portal.md).
 
 Als u een Load Balancer regel wilt maken, moet u de volgende informatie verzamelen:
 

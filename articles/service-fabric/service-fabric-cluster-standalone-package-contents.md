@@ -5,11 +5,12 @@ author: maburlik
 ms.topic: conceptual
 ms.date: 8/10/2017
 ms.author: maburlik
-ms.openlocfilehash: 1bb73fa69717f067139067f127a0d50af4878d6c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: fb9a52510788a275bdeea67cd5c1fdd2e894738d
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "75451852"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86261023"
 ---
 # <a name="contents-of-service-fabric-standalone-package-for-windows-server"></a>Inhoud van Service Fabric zelfstandig pakket voor Windows Server
 In het zelfstandige pakket [gedownloade](https://go.microsoft.com/fwlink/?LinkId=730690) service Fabric ziet u de volgende bestanden:
@@ -36,11 +37,11 @@ In het zelfstandige pakket [gedownloade](https://go.microsoft.com/fwlink/?LinkId
 | --- | --- |
 | ClusterConfig.Unsecure.DevCluster.jsop |Een voorbeeld bestand van een cluster configuratie met daarin de instellingen voor een niet-beveiligd, drie knoop punt (of virtuele machine) ontwikkel cluster, met inbegrip van de informatie voor elk knoop punt in het cluster. |
 | ClusterConfig.Unsecure.MultiMachine.jsop |Een voorbeeld bestand van een cluster configuratie met de instellingen voor een niet-beveiligd cluster voor meerdere machines (of virtuele machines), met inbegrip van de informatie voor elke computer in het cluster. |
-| ClusterConfig.Windows.DevCluster.jsop |Een voor beeld van een cluster configuratie dat alle instellingen bevat voor een veilig ontwikkel cluster met één computer (of virtuele machine) met een enkele machine, met inbegrip van de informatie voor elk knoop punt in het cluster. Het cluster wordt beveiligd met behulp van [Windows-identiteiten](https://msdn.microsoft.com/library/ff649396.aspx). |
-| ClusterConfig.Windows.MultiMachine.jsop |Een voor beeld van een cluster configuratie dat alle instellingen bevat voor een beveiligde, multi machine-of virtuele-machine-cluster met behulp van Windows-beveiliging, met inbegrip van de informatie voor elke computer die zich in het beveiligde cluster bevindt. Het cluster wordt beveiligd met behulp van [Windows-identiteiten](https://msdn.microsoft.com/library/ff649396.aspx). |
+| ClusterConfig.Windows.DevCluster.jsop |Een voor beeld van een cluster configuratie dat alle instellingen bevat voor een veilig ontwikkel cluster met één computer (of virtuele machine) met een enkele machine, met inbegrip van de informatie voor elk knoop punt in het cluster. Het cluster wordt beveiligd met behulp van [Windows-identiteiten](/previous-versions/msp-n-p/ff649396(v=pandp.10)). |
+| ClusterConfig.Windows.MultiMachine.jsop |Een voor beeld van een cluster configuratie dat alle instellingen bevat voor een beveiligde, multi machine-of virtuele-machine-cluster met behulp van Windows-beveiliging, met inbegrip van de informatie voor elke computer die zich in het beveiligde cluster bevindt. Het cluster wordt beveiligd met behulp van [Windows-identiteiten](/previous-versions/msp-n-p/ff649396(v=pandp.10)). |
 | ClusterConfig.x509.DevCluster.jsop |Een voor beeld van een cluster configuratie dat alle instellingen bevat voor een veilig ontwikkel cluster met één computer (of virtuele machine) met een enkele machine, met inbegrip van de informatie voor elk knoop punt in het cluster. Het cluster wordt beveiligd met x509-certificaten. |
 | ClusterConfig.x509.MultiMachine.jsop |Een voorbeeld bestand van een cluster configuratie dat alle instellingen bevat voor het beveiligde, meerdere machine-of virtuele-machine-cluster, inclusief de informatie voor elk knoop punt in het beveiligde cluster. Het cluster wordt beveiligd met x509-certificaten. |
-| ClusterConfig.gMSA.Windows.MultiMachine.jsop |Een voorbeeld bestand van een cluster configuratie dat alle instellingen bevat voor het beveiligde, meerdere machine-of virtuele-machine-cluster, inclusief de informatie voor elk knoop punt in het beveiligde cluster. Het cluster wordt beveiligd met [beheerde service accounts voor groepen](https://technet.microsoft.com/library/jj128431(v=ws.11).aspx). |
+| ClusterConfig.gMSA.Windows.MultiMachine.jsop |Een voorbeeld bestand van een cluster configuratie dat alle instellingen bevat voor het beveiligde, meerdere machine-of virtuele-machine-cluster, inclusief de informatie voor elk knoop punt in het beveiligde cluster. Het cluster wordt beveiligd met [beheerde service accounts voor groepen](/previous-versions/windows/it-pro/windows-server-2012-R2-and-2012/jj128431(v=ws.11)). |
 
 ## <a name="cluster-configuration-samples"></a>Voor beelden van cluster configuratie
 De meest recente versies van de cluster configuratie sjablonen vindt u op de pagina GitHub: voor [beelden van zelfstandige cluster configuraties](https://github.com/Azure-Samples/service-fabric-dotnet-standalone-cluster-configuration/tree/master/Samples).

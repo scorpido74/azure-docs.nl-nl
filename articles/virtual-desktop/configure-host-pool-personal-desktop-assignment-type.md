@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 07/09/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: bfe428b9eba1f83f3e1bb05c3941c4c56317c9bc
-ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
+ms.openlocfilehash: 12caa6fce4d49e86d1ad5da16aa7abba30f26207
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/10/2020
-ms.locfileid: "86223105"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86260823"
 ---
 # <a name="configure-the-personal-desktop-host-pool-assignment-type"></a>Het toewijzings type voor de hostgroep voor persoonlijk bureau blad configureren
 
@@ -91,7 +91,7 @@ Om een gebruiker rechtstreeks toe te wijzen aan een sessiehost in de Azure Porta
 
 Nu u het persoonlijke bureau blad-toewijzings type hebt geconfigureerd, kunt u zich aanmelden bij een virtueel-bureaubladclient van Windows om het te testen als onderdeel van een gebruikers sessie. In de volgende twee procedures wordt uitgelegd hoe u verbinding maakt met een sessie met de client van uw keuze:
 
-- [Verbinding maken met de Windows Desktop-client](connect-windows-7-and-10.md)
+- [Verbinding maken met de Windows Desktop-client](connect-windows-7-10.md)
 - [Verbinding maken met de webclient](connect-web.md)
 - [Verbinding maken met de Android-client](connect-android.md)
 - [Verbinding maken met de iOS-client](connect-ios.md)

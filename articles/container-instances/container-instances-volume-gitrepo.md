@@ -3,11 +3,12 @@ title: GitRepo volume koppelen aan container groep
 description: Meer informatie over het koppelen van een gitRepo-volume om een Git-opslag plaats in uw container instanties te klonen
 ms.topic: article
 ms.date: 06/15/2018
-ms.openlocfilehash: 405cacd7a1649f95640a8dabf476729e101d03f8
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 5f361b0bbd4a02f754e47c8321a664af05036601
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "78252087"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86260719"
 ---
 # <a name="mount-a-gitrepo-volume-in-azure-container-instances"></a>Een gitRepo-volume koppelen in Azure Container Instances
 
@@ -24,9 +25,9 @@ Wanneer u een *gitRepo* -volume koppelt, kunt u drie eigenschappen instellen voo
 
 | Eigenschap | Vereist | Beschrijving |
 | -------- | -------- | ----------- |
-| `repository` | Yes | De volledige URL, inclusief `http://` of `https://` , van de Git-opslag plaats die moet worden gekloond.|
-| `directory` | No | De map waarin de opslag plaats moet worden gekloond. Het pad mag niet bevatten of beginnen met `..` .  Als u " `.` " opgeeft, wordt de opslag plaats gekloond in de map van het volume. Anders wordt de Git-opslag plaats gekloond in een submap van de opgegeven naam binnen de map volume. |
-| `revision` | No | De doorvoer-hash van de revisie die moet worden gekloond. Als u deze niet opgeeft, `HEAD` wordt de revisie gekloond. |
+| `repository` | Ja | De volledige URL, inclusief `http://` of `https://` , van de Git-opslag plaats die moet worden gekloond.|
+| `directory` | Nee | De map waarin de opslag plaats moet worden gekloond. Het pad mag niet bevatten of beginnen met `..` .  Als u " `.` " opgeeft, wordt de opslag plaats gekloond in de map van het volume. Anders wordt de Git-opslag plaats gekloond in een submap van de opgegeven naam binnen de map volume. |
+| `revision` | Nee | De doorvoer-hash van de revisie die moet worden gekloond. Als u deze niet opgeeft, `HEAD` wordt de revisie gekloond. |
 
 ## <a name="mount-gitrepo-volume-azure-cli"></a>GitRepo volume koppelen: Azure CLI
 
@@ -111,7 +112,7 @@ Meer informatie over het koppelen van andere volume typen in Azure Container Ins
 <!-- LINKS - External -->
 [aci-helloworld]: https://github.com/Azure-Samples/aci-helloworld
 [pat-github]: https://help.github.com/articles/creating-a-personal-access-token-for-the-command-line/
-[pat-repos]: https://docs.microsoft.com/azure/devops/organizations/accounts/use-personal-access-tokens-to-authenticate
+[pat-repos]: /azure/devops/organizations/accounts/use-personal-access-tokens-to-authenticate
 
 <!-- LINKS - Internal -->
 [az-container-create]: /cli/azure/container#az-container-create

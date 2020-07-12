@@ -4,12 +4,12 @@ description: Verzamelingen van installatie kopieën of andere artefacten overdra
 ms.topic: article
 ms.date: 05/08/2020
 ms.custom: ''
-ms.openlocfilehash: c80f10e8795c63b84bb46fc21fd3406a195b772e
-ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.openlocfilehash: 7f63936ad8f2a97bae6ff63e783e38c15db35e13
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86186925"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86259454"
 ---
 # <a name="transfer-artifacts-to-another-registry"></a>Artefacten overdragen naar een ander REGI ster
 
@@ -36,7 +36,7 @@ Deze functie is beschikbaar in de service tier van het **Premium** -container re
 * **Opslag accounts** : Maak bron-en doel opslag accounts in een abonnement en locatie van uw keuze. Voor test doeleinden kunt u hetzelfde abonnement of dezelfde abonnementen gebruiken als voor de bron-en doel registers. Voor scenario's met meerdere clouds maakt u doorgaans een afzonderlijk opslag account in elke Cloud. Maak, indien nodig, de opslag accounts met de [Azure cli](../storage/common/storage-account-create.md?tabs=azure-cli) of andere hulpprogram ma's. 
 
   Maak een BLOB-container voor artefact overdracht in elk account. Maak bijvoorbeeld een container met de naam *overdracht*. Twee of meer overdrachts pijplijnen kunnen hetzelfde opslag account delen, maar moeten verschillende opslag container bereiken gebruiken.
-* **Sleutel kluizen** : sleutel kluizen zijn vereist voor het opslaan van SAS-token geheimen die worden gebruikt voor toegang tot de bron-en doel opslag accounts. Maak de bron-en doel sleutel kluizen in hetzelfde Azure-abonnement of op abonnementen als uw bron-en doel registers. Maak, indien nodig, sleutel kluizen met de [Azure cli](../key-vault/quick-create-cli.md) of andere hulpprogram ma's.
+* **Sleutel kluizen** : sleutel kluizen zijn vereist voor het opslaan van SAS-token geheimen die worden gebruikt voor toegang tot de bron-en doel opslag accounts. Maak de bron-en doel sleutel kluizen in hetzelfde Azure-abonnement of op abonnementen als uw bron-en doel registers. Maak, indien nodig, sleutel kluizen met de [Azure cli](../key-vault/secrets/quick-create-cli.md) of andere hulpprogram ma's.
 * **Omgevings variabelen** : voor de opdrachten in dit artikel stelt u de volgende omgevings variabelen in voor de bron-en doel omgeving. Alle voor beelden zijn opgemaakt voor de bash-shell.
   ```console
   SOURCE_RG="<source-resource-group>"
@@ -257,7 +257,7 @@ az storage blob list \
 
 Gebruik het hulp programma AzCopy of andere methoden voor het [overdragen van BLOB-gegevens](../storage/common/storage-use-azcopy-blobs.md#copy-blobs-between-storage-accounts) van het bron opslag account naar het doel opslag account.
 
-Met de volgende opdracht wordt bijvoorbeeld [`azcopy copy`](/azure/storage/common/storage-ref-azcopy-copy) myblob gekopieerd van de container *overdracht* in het bron account naar de container *overdracht* in het doel account. Als de BLOB in het doel account bestaat, wordt deze overschreven. Verificatie maakt gebruik van SAS-tokens met de juiste machtigingen voor de bron-en doel containers. (De stappen voor het maken van tokens worden niet weer gegeven.)
+Met de volgende opdracht wordt bijvoorbeeld [`azcopy copy`](../storage/common/storage-ref-azcopy-copy.md) myblob gekopieerd van de container *overdracht* in het bron account naar de container *overdracht* in het doel account. Als de BLOB in het doel account bestaat, wordt deze overschreven. Verificatie maakt gebruik van SAS-tokens met de juiste machtigingen voor de bron-en doel containers. (De stappen voor het maken van tokens worden niet weer gegeven.)
 
 ```console
 azcopy copy \
@@ -366,6 +366,3 @@ Als u één container installatie kopie wilt importeren in een Azure container R
 [az-deployment-group-show]: /cli/azure/deployment/group#az-deployment-group-show
 [az-acr-repository-list]: /cli/azure/acr/repository#az-acr-repository-list
 [az-acr-import]: /cli/azure/acr#az-acr-import
-
-
-

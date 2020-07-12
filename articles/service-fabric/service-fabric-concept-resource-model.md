@@ -4,11 +4,12 @@ description: Dit artikel bevat een overzicht van het beheren van een Azure Servi
 ms.topic: conceptual
 ms.date: 10/21/2019
 ms.custom: sfrev
-ms.openlocfilehash: 7a9f59e3e44d3302ac19c7a9e7e77beb51947ce4
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 7ad0d4f6d92ba8d85383df281bd14681f43bb6d4
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81682633"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86258729"
 ---
 # <a name="service-fabric-application-resource-model"></a>Resource model van Service Fabric toepassing
 
@@ -39,13 +40,13 @@ Bekijk voor meer informatie [package a Application](service-fabric-package-apps.
 
 Vervolgens maakt u een resource manager-sjabloon, werkt u het parameter bestand bij met toepassings Details en implementeert u de sjabloon op het Service Fabric cluster. Voor [beelden verkennen](https://github.com/Azure-Samples/service-fabric-dotnet-quickstart/tree/master/ARM).
 
-### <a name="create-a-storage-account"></a>Create a storage account
+### <a name="create-a-storage-account"></a>Een opslagaccount maken
 
 Als u een toepassing wilt implementeren vanuit een resource manager-sjabloon, moet u een opslag account hebben. Het opslag account wordt gebruikt om de installatie kopie van de toepassing te faseren. 
 
 U kunt een bestaand opslag account opnieuw gebruiken of u kunt een nieuw opslag account maken voor het faseren van uw toepassingen. Als u een bestaand opslag account gebruikt, kunt u deze stap overs Laan. 
 
-![Create a storage account][CreateStorageAccount]
+![Een opslagaccount maken][CreateStorageAccount]
 
 ### <a name="configure-your-storage-account"></a>Uw opslag account configureren
 
@@ -55,7 +56,7 @@ Resources in uw cluster kunnen worden beveiligd door het open bare toegangs nive
 
 * Machtig de toegang tot blobs en wacht rijen met behulp van [Azure Active Directory](../storage/common/storage-auth-aad-app.md).
 * Verleen toegang tot Azure Blob-en wachtrij gegevens met behulp van [RBAC in het Azure Portal](../storage/common/storage-auth-aad-rbac-portal.md).
-* Toegang delegeren met behulp van een [hand tekening voor gedeelde toegang](https://docs.microsoft.com/rest/api/storageservices/delegate-access-with-shared-access-signature).
+* Toegang delegeren met behulp van een [hand tekening voor gedeelde toegang](/rest/api/storageservices/delegate-access-with-shared-access-signature).
 
 In het voor beeld in de volgende scherm afbeelding wordt anonieme lees toegang voor blobs gebruikt.
 
@@ -165,13 +166,13 @@ U kunt een van de volgende redenen voor een upgrade uitvoeren van een toepassing
 
 Een toepassing verwijderen die is geïmplementeerd met het resource model van de toepassing in Resource Manager:
 
-1. Gebruik de cmdlet [Get-AzResource](https://docs.microsoft.com/powershell/module/az.resources/get-azresource?view=azps-2.5.0) om de resource-id voor de toepassing op te halen:
+1. Gebruik de cmdlet [Get-AzResource](/powershell/module/az.resources/get-azresource?view=azps-2.5.0) om de resource-id voor de toepassing op te halen:
 
     ```powershell
     Get-AzResource  -Name <String> | f1
     ```
 
-1. Gebruik de cmdlet [Remove-AzResource](https://docs.microsoft.com/powershell/module/az.resources/remove-azresource?view=azps-2.5.0) om de toepassings resources te verwijderen:
+1. Gebruik de cmdlet [Remove-AzResource](/powershell/module/az.resources/remove-azresource?view=azps-2.5.0) om de toepassings resources te verwijderen:
 
     ```powershell
     Remove-AzResource  -ResourceId <String> [-Force] [-ApiVersion <String>]

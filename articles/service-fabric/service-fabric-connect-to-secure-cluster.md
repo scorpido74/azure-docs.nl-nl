@@ -3,11 +3,12 @@ title: Veilig verbinding maken met een Azure Service Fabric-cluster
 description: Hierin wordt beschreven hoe u client toegang tot een Service Fabric cluster verifieert en hoe u communicatie tussen clients en een cluster beveiligt.
 ms.topic: conceptual
 ms.date: 01/29/2019
-ms.openlocfilehash: a1f4abbabe428a09492efefca4a8da9801b9f68d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 89d3598b283a91645f0db648be81c73dffde8b46
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84701216"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86259239"
 ---
 # <a name="connect-to-a-secure-cluster"></a>Verbinding maken met een beveiligd cluster
 
@@ -144,7 +145,7 @@ Connect-ServiceFabricCluster -ConnectionEndpoint <Cluster FQDN>:19000 `
 <a id="connectsecureclusterfabricclient"></a>
 
 ## <a name="connect-to-a-cluster-using-the-fabricclient-apis"></a>Verbinding maken met een cluster met behulp van de FabricClient-Api's
-De Service Fabric-SDK biedt de [FabricClient](https://docs.microsoft.com/dotnet/api/system.fabric.fabricclient) -klasse voor cluster beheer. Als u de FabricClient-Api's wilt gebruiken, haalt u het micro soft. ServiceFabric NuGet-pakket op.
+De Service Fabric-SDK biedt de [FabricClient](/dotnet/api/system.fabric.fabricclient) -klasse voor cluster beheer. Als u de FabricClient-Api's wilt gebruiken, haalt u het micro soft. ServiceFabric NuGet-pakket op.
 
 ### <a name="connect-to-an-unsecure-cluster"></a>Verbinding maken met een niet-beveiligd cluster
 
@@ -162,7 +163,7 @@ FabricClient fabricClient = new FabricClient();
 
 ### <a name="connect-to-a-secure-cluster-using-a-client-certificate"></a>Verbinding maken met een beveiligd cluster met behulp van een client certificaat
 
-De knoop punten in het cluster moeten geldige certificaten hebben waarvan de algemene naam of DNS-naam in SAN wordt weer gegeven in de [eigenschap RemoteCommonNames](https://docs.microsoft.com/dotnet/api/system.fabric.x509credentials) die is ingesteld op [FabricClient](https://docs.microsoft.com/dotnet/api/system.fabric.fabricclient). Als u dit proces volgt, wordt wederzijdse verificatie tussen de client en de cluster knooppunten ingeschakeld.
+De knoop punten in het cluster moeten geldige certificaten hebben waarvan de algemene naam of DNS-naam in SAN wordt weer gegeven in de [eigenschap RemoteCommonNames](/dotnet/api/system.fabric.x509credentials) die is ingesteld op [FabricClient](/dotnet/api/system.fabric.fabricclient). Als u dit proces volgt, wordt wederzijdse verificatie tussen de client en de cluster knooppunten ingeschakeld.
 
 ```csharp
 using System.Fabric;
@@ -230,7 +231,7 @@ catch (Exception e)
 
 In het volgende voor beeld wordt gebruikgemaakt van micro soft. Identity model. clients. ActiveDirectory, versie: 2.19.208020213.
 
-Zie [micro soft. Identity model. clients. ActiveDirectory](https://msdn.microsoft.com/library/microsoft.identitymodel.clients.activedirectory.aspx)voor meer informatie over het verkrijgen van Aad-tokens.
+Zie [micro soft. Identity model. clients. ActiveDirectory](/dotnet/api/microsoft.identitymodel.clients.activedirectory?view=azure-dotnet)voor meer informatie over het verkrijgen van Aad-tokens.
 
 ```csharp
 string tenantId = "C15CFCEA-02C1-40DC-8466-FBD0EE0B05D2";

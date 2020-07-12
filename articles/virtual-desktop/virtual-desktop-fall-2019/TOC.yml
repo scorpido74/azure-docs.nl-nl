@@ -24,6 +24,8 @@
   items:
     - name: Verbinding maken met Windows Virtual Desktop-resources
       items:
+        - name: Verbinding maken met de Windows Desktop-client
+          href: connect-windows-7-10-2019.md
         - name: Verbinding maken met de webclient
           href: connect-web-2019.md
         - name: Verbinding maken met de Android-client
