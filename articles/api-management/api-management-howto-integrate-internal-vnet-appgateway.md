@@ -14,11 +14,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 11/04/2019
 ms.author: sasolank
-ms.openlocfilehash: 733f4b74ca7643476586189b36f4e1d3e446968b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 08e718739971283418d151bef9ad75333e313d85
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80811169"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86250427"
 ---
 # <a name="integrate-api-management-in-an-internal-vnet-with-application-gateway"></a>API Management integreren in een intern VNET met Application Gateway
 
@@ -329,7 +330,7 @@ $rule02 = New-AzApplicationGatewayRequestRoutingRule -Name "rule2" -RuleType Bas
 
 ### <a name="step-11"></a>Stap 11
 
-Configureer het aantal exemplaren en de grootte voor de Application Gateway. In dit voor beeld gebruiken we de [WAF-SKU](../application-gateway/application-gateway-webapplicationfirewall-overview.md) voor een betere beveiliging van de API Management resource.
+Configureer het aantal exemplaren en de grootte voor de Application Gateway. In dit voor beeld gebruiken we de [WAF-SKU](../web-application-firewall/ag/ag-overview.md) voor een betere beveiliging van de API Management resource.
 
 ```powershell
 $sku = New-AzApplicationGatewaySku -Name "WAF_Medium" -Tier "WAF" -Capacity 2
@@ -367,9 +368,9 @@ Azure API Management geconfigureerd in een VNET biedt één gateway-interface vo
 
 ## <a name="next-steps"></a><a name="next-steps"> </a> Volgende stappen
 * Meer informatie over Azure-toepassing gateway
-  * [Overzicht van Application Gateway](../application-gateway/application-gateway-introduction.md)
-  * [Application Gateway Web Application firewall](../application-gateway/application-gateway-webapplicationfirewall-overview.md)
-  * [Application Gateway met behulp van op pad gebaseerde route ring](../application-gateway/application-gateway-create-url-route-arm-ps.md)
+  * [Overzicht van Application Gateway](../application-gateway/overview.md)
+  * [Application Gateway Web Application firewall](../web-application-firewall/ag/ag-overview.md)
+  * [Application Gateway met behulp van op pad gebaseerde route ring](../application-gateway/tutorial-url-route-powershell.md)
 * Meer informatie over API Management en VNETs
   * [API Management gebruiken die alleen beschikbaar zijn in het VNET](api-management-using-with-internal-vnet.md)
   * [API Management in VNET gebruiken](api-management-using-with-vnet.md)

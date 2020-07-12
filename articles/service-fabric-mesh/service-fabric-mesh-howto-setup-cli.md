@@ -5,19 +5,19 @@ author: dkkapur
 ms.author: dekapur
 ms.date: 11/28/2018
 ms.topic: conceptual
-ms.openlocfilehash: 0fb65ceeabca9331130083f8ec5b3fe8acce13b8
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 3ce2dbcefa63cc55a66e712664d1436ca24d3a1d
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84707937"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86248506"
 ---
 # <a name="set-up-service-fabric-mesh-cli"></a>Service Fabric Mesh CLI instellen
 De Service Fabric Mesh CLI (opdrachtregelinterface) is vereist voor het implementeren en beheren van resources, zowel lokaal als in Azure Service Fabric Mesh. Zo kunt u het instellen.
 
 Er kunnen drie typen CLI worden gebruikt. Ze staan in de tabel hieronder.
 
-| CLI Module | Doelomgeving |  Description | 
+| CLI Module | Doelomgeving |  Beschrijving | 
 |---|---|---|
 | az mesh | Azure Service Fabric Mesh | De primaire CLI, waarmee u uw toepassingen kunt implementeren en resources beheren in de Azure Service Fabric Mesh-omgeving. 
 | sfctl | Lokale clusters | De Service Fabric CLI waarmee u Service Fabric-resources in lokale clusters kunt implementeren en testen.  
@@ -44,7 +44,7 @@ Voor de preview is de Azure Service Fabric-NET CLI geschreven als een uitbreidin
 
 ## <a name="install-the-service-fabric-cli-sfctl"></a>Service Fabric CLI (sfctl) installeren 
 
-Volg de instructies in [Service Fabric CLI instellen](https://docs.microsoft.com/azure/service-fabric/service-fabric-cli). De module **sfctl** kan worden gebruikt om toepassingen op basis van het resourcemodel in Service Fabric-clusters op de lokale computer te implementeren. 
+Volg de instructies in [Service Fabric CLI instellen](../service-fabric/service-fabric-cli.md). De module **sfctl** kan worden gebruikt om toepassingen op basis van het resourcemodel in Service Fabric-clusters op de lokale computer te implementeren. 
 
 ## <a name="install-the-maven-cli"></a>Maven CLI installeren 
 

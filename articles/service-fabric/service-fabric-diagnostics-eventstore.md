@@ -5,11 +5,12 @@ author: srrengar
 ms.topic: conceptual
 ms.date: 6/6/2019
 ms.author: srrengar
-ms.openlocfilehash: d23c8114bf10ef3225775accef6910c0ba539e15
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: e2fcbd07c105885da4180b06fa27ec13045940a6
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "75645732"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86247639"
 ---
 # <a name="eventstore-overview"></a>Overzicht van Event Store
 
@@ -45,7 +46,7 @@ De Event Store-service kan worden opgevraagd voor gebeurtenissen die beschikbaar
 * Partitie Replica's: gebeurtenissen van alle replica's/instanties binnen een specifieke partitie geïdentificeerd door`partitionId`
 * Partitie replica: gebeurtenissen van een specifieke replica/instantie geïdentificeerd door `replicaId` en`partitionId`
 
-Raadpleeg de [API-naslag](https://docs.microsoft.com/rest/api/servicefabric/sfclient-index-eventsstore)informatie voor Event Store voor meer informatie over de API.
+Raadpleeg de [API-naslag](/rest/api/servicefabric/sfclient-index-eventsstore)informatie voor Event Store voor meer informatie over de API.
 
 De Event Store-service biedt ook de mogelijkheid om gebeurtenissen in uw cluster te correleren. Door te kijken naar gebeurtenissen die op hetzelfde moment zijn geschreven van verschillende entiteiten die van invloed kunnen zijn op elkaar, kan de Event Store-service deze gebeurtenissen koppelen aan hulp bij het identificeren van de oorzaken van activiteiten in uw cluster. Als een van uw toepassingen bijvoorbeeld wordt beschadigd zonder dat er wijzigingen zijn aangebracht, kijken de Event Store ook naar andere gebeurtenissen die worden weer gegeven door het platform en kunnen deze met een of-gebeurtenis worden gecorreleerd `Error` `Warning` . Dit helpt bij snellere detectie van fouten en de oorzaak van analyses.
 
@@ -125,5 +126,5 @@ Als u versie 6,4 gebruikt, kunt u uw Azure Resource Manager-sjabloon bewerken om
 * Aan de slag met de Event Store-API: [de Event Store-api's in Azure service Fabric-clusters gebruiken](service-fabric-diagnostics-eventstore-query.md)
 * Meer informatie over de lijst met gebeurtenissen die worden aangeboden door Event Store- [service Fabric gebeurtenissen](service-fabric-diagnostics-event-generation-operational.md)
 * Overzicht van controle en diagnostische gegevens in Service Fabric [bewaking en diagnostische gegevens voor service Fabric](service-fabric-diagnostics-overview.md)
-* De volledige lijst met API-aanroepen weer geven- [event store rest API-verwijzing](https://docs.microsoft.com/rest/api/servicefabric/sfclient-index-eventsstore)
+* De volledige lijst met API-aanroepen weer geven- [event store rest API-verwijzing](/rest/api/servicefabric/sfclient-index-eventsstore)
 * Meer informatie over het bewaken van [het cluster en het platform](service-fabric-diagnostics-event-generation-infra.md)bewaken.

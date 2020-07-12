@@ -13,17 +13,18 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 01/13/2020
 ms.author: apimpm
-ms.openlocfilehash: 8c1d126f01580574a83850e63945aa7e513eaeda
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: e7be1e90d10a84465d6416f2c13a6e4b6855077b
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "76713148"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86250070"
 ---
 # <a name="how-to-secure-apis-using-client-certificate-authentication-in-api-management"></a>API's beveiligen met behulp van verificatie via clientcertificaten in API Management
 
 API Management biedt de mogelijkheid om de toegang tot Api's (client naar API Management) te beveiligen met behulp van client certificaten. U kunt het inkomende certificaat valideren en certificaat eigenschappen controleren op basis van de gewenste waarden met behulp van beleids expressies.
 
-Voor informatie over het beveiligen van de toegang tot de back-end-service van een API met behulp van client certificaten (API Management naar back-end), raadpleegt u [back-end-services beveiligen met verificatie op basis van client certificaten](https://docs.microsoft.com/azure/api-management/api-management-howto-mutual-certificates)
+Voor informatie over het beveiligen van de toegang tot de back-end-service van een API met behulp van client certificaten (API Management naar back-end), raadpleegt u [back-end-services beveiligen met verificatie op basis van client certificaten](./api-management-howto-mutual-certificates.md)
 
 > [!IMPORTANT]
 > Als u client certificaten wilt ontvangen en controleren via HTTP/2 in de lagen ontwikkelaar, Basic, Standard of Premium, moet u de instelling ' onderhandelen over client certificaat ' op de Blade ' aangepaste domeinen ' inschakelen, zoals hieronder wordt weer gegeven.
@@ -98,5 +99,5 @@ In het volgende voor beeld ziet u hoe u de vinger afdruk van een client certific
 
 ## <a name="next-steps"></a>Volgende stappen
 
--   [Back-end-services beveiligen met verificatie op basis van client certificaten](https://docs.microsoft.com/azure/api-management/api-management-howto-mutual-certificates)
--   [Certificaten uploaden](https://docs.microsoft.com/azure/api-management/api-management-howto-mutual-certificates)
+-   [Back-end-services beveiligen met verificatie op basis van client certificaten](./api-management-howto-mutual-certificates.md)
+-   [Certificaten uploaden](./api-management-howto-mutual-certificates.md)

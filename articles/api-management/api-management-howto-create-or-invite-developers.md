@@ -12,15 +12,16 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 02/13/2018
 ms.author: apimpm
-ms.openlocfilehash: 672f145b638fa6b85f7139f2edb4fc41bb2855d9
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: d8f7d7f7707add22d700421b229f6dbe725db465
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81260969"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86250455"
 ---
 # <a name="how-to-manage-user-accounts-in-azure-api-management"></a>Gebruikersaccounts in Azure API Management beheren
 
-In API Management zijn ontwikkel aars de gebruikers van de Api's die u beschikbaar maakt met behulp van API Management. Deze hand leiding bevat informatie over het maken en uitnodigen van ontwikkel aars voor het gebruik van de Api's en producten die u voor hen beschikbaar stelt met uw API Management-exemplaar. Zie de documentatie van de [gebruikers entiteit](https://docs.microsoft.com/rest/api/apimanagement/2019-12-01/user) in de referentie [API Management rest](/rest/api/apimanagement/) voor meer informatie over het programmatisch beheren van gebruikers accounts.
+In API Management zijn ontwikkel aars de gebruikers van de Api's die u beschikbaar maakt met behulp van API Management. Deze hand leiding bevat informatie over het maken en uitnodigen van ontwikkel aars voor het gebruik van de Api's en producten die u voor hen beschikbaar stelt met uw API Management-exemplaar. Zie de documentatie van de [gebruikers entiteit](/rest/api/apimanagement/2019-12-01/user) in de referentie [API Management rest](/rest/api/apimanagement/) voor meer informatie over het programmatisch beheren van gebruikers accounts.
 
 [!INCLUDE [premium-dev-standard-basic.md](../../includes/api-management-availability-premium-dev-standard-basic.md)]
 
@@ -67,7 +68,7 @@ Voer de volgende stappen uit om een gebruiker te blok keren.
 
 ## <a name="reset-a-user-password"></a>Een gebruikerswachtwoord opnieuw instellen
 
-Zie de documentatie van de gebruikers entiteit in de naslag informatie over [API Management rest API](/rest/api/apimanagement/) als u programmatisch wilt werken met gebruikers accounts. Als u een wacht woord voor een gebruikers account opnieuw wilt instellen op een specifieke waarde, kunt u de bewerking [een gebruiker bijwerken](https://docs.microsoft.com/rest/api/apimanagement/apimanagementrest/azure-api-management-rest-api-user-entity#UpdateUser) gebruiken en het gewenste wacht woord opgeven.
+Zie de documentatie van de gebruikers entiteit in de naslag informatie over [API Management rest API](/rest/api/apimanagement/) als u programmatisch wilt werken met gebruikers accounts. Als u een wacht woord voor een gebruikers account opnieuw wilt instellen op een specifieke waarde, kunt u de bewerking [een gebruiker bijwerken](/rest/api/apimanagement/apimanagementrest/azure-api-management-rest-api-user-entity#UpdateUser) gebruiken en het gewenste wacht woord opgeven.
 
 ## <a name="next-steps"></a><a name="next-steps"> </a>Volgende stappen
 Zodra een ontwikkelaars account is gemaakt, kunt u deze koppelen aan rollen en zich abonneren op producten en Api's. Zie [groepen maken en gebruiken][How to create and use groups]voor meer informatie.

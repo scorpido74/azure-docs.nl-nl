@@ -4,11 +4,12 @@ description: Aanbevolen procedures voor het serialiseren van gegevens en hoe dit
 author: vturecek
 ms.topic: conceptual
 ms.date: 11/02/2017
-ms.openlocfilehash: 7dc60c28b56982f82c1ac90db55ac752977ea2d6
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: d502e74139c543d4183a75faa6bea1948d9f3e56
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "75457496"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86247979"
 ---
 # <a name="how-data-serialization-affects-an-application-upgrade"></a>Hoe gegevens serialisatie van toepassing is op een toepassings upgrade
 Bij een [upgrade van een rolling toepassing](service-fabric-application-upgrade.md)wordt de upgrade toegepast op een subset knoop punten, één upgrade domein per keer. Tijdens dit proces bevinden sommige upgrade domeinen zich op de nieuwere versie van uw toepassing. sommige upgrade domeinen bevinden zich op de oudere versie van uw toepassing. Tijdens de implementatie moet de nieuwe versie van uw toepassing de oude versie van uw gegevens kunnen lezen, en de oude versie van uw toepassing moet de nieuwe versie van uw gegevens kunnen lezen. Als de gegevens indeling niet voorwaarts en achterwaarts compatibel is, kan de upgrade mislukken of kunnen de gegevens verloren gaan of beschadigd raken. In dit artikel wordt beschreven wat uw gegevens indeling vormt en worden aanbevolen procedures geboden om ervoor te zorgen dat uw gegevens voorwaarts en achterwaarts compatibel zijn.
@@ -25,7 +26,7 @@ Omdat de gegevens indeling wordt bepaald door C#-klassen, kunnen wijzigingen aan
 * De klassenaam of naam ruimte wijzigen
 
 ### <a name="data-contract-as-the-default-serializer"></a>Gegevens contract als standaard-serialisatiefunctie
-De serialisatiefunctie is over het algemeen verantwoordelijk voor het lezen van de gegevens en het deserialiseren ervan naar de huidige versie, zelfs als de gegevens zich in een oudere of *nieuwere* versie bevindt. De standaardserialisatiefunctie is de serialisatiefunctie voor het [gegevens contract](https://msdn.microsoft.com/library/ms733127.aspx), met goed gedefinieerde versies van regels. Met betrouw bare verzamelingen kan de serialisatiefunctie worden overschreven, maar Reliable Actors momenteel niet. De data serializer speelt een belang rijke rol bij het inschakelen van rolling upgrades. De serialisatiefunctie van het gegevens contract is de serialisatiefunctie die wordt aanbevolen voor Service Fabric toepassingen.
+De serialisatiefunctie is over het algemeen verantwoordelijk voor het lezen van de gegevens en het deserialiseren ervan naar de huidige versie, zelfs als de gegevens zich in een oudere of *nieuwere* versie bevindt. De standaardserialisatiefunctie is de serialisatiefunctie voor het [gegevens contract](/dotnet/framework/wcf/feature-details/using-data-contracts), met goed gedefinieerde versies van regels. Met betrouw bare verzamelingen kan de serialisatiefunctie worden overschreven, maar Reliable Actors momenteel niet. De data serializer speelt een belang rijke rol bij het inschakelen van rolling upgrades. De serialisatiefunctie van het gegevens contract is de serialisatiefunctie die wordt aanbevolen voor Service Fabric toepassingen.
 
 ## <a name="how-the-data-format-affects-a-rolling-upgrade"></a>Hoe de gegevens indeling van invloed is op een rolling upgrade
 Tijdens een rolling upgrade zijn er twee belang rijke scenario's waarin de serialisatiefunctie een oudere of *nieuwere* versie van uw gegevens kan ondervinden:
@@ -40,7 +41,7 @@ Tijdens een rolling upgrade zijn er twee belang rijke scenario's waarin de seria
 
 De twee versies van code en gegevens indeling moeten voorwaarts en achterwaarts compatibel zijn. Als ze niet compatibel zijn, kunnen de rolling upgrade mislukken of kunnen gegevens verloren gaan. De rolling upgrade kan mislukken omdat de code of de serialisatiefunctie uitzonde ringen of een fout kan veroorzaken wanneer de andere versie wordt aangetroffen. Gegevens kunnen verloren gaan als er bijvoorbeeld een nieuwe eigenschap is toegevoegd, maar de oude serialisatiefunctie deze negeert tijdens deserialisatie.
 
-Data contract is de aanbevolen oplossing om ervoor te zorgen dat uw gegevens compatibel zijn. Er zijn goed gedefinieerde versie regels voor het toevoegen, verwijderen en wijzigen van velden. Het biedt ook ondersteuning voor het afhandelen van onbekende velden, het koppelen van het serialisatie proces en het afhandelen van klasse-overname. Zie [using data contract](https://msdn.microsoft.com/library/ms733127.aspx)(Engelstalig) voor meer informatie.
+Data contract is de aanbevolen oplossing om ervoor te zorgen dat uw gegevens compatibel zijn. Er zijn goed gedefinieerde versie regels voor het toevoegen, verwijderen en wijzigen van velden. Het biedt ook ondersteuning voor het afhandelen van onbekende velden, het koppelen van het serialisatie proces en het afhandelen van klasse-overname. Zie [using data contract](/dotnet/framework/wcf/feature-details/using-data-contracts)(Engelstalig) voor meer informatie.
 
 ## <a name="next-steps"></a>Volgende stappen
 Als u een [upgrade uitvoert van uw toepassing met behulp van Visual Studio](service-fabric-application-upgrade-tutorial.md) , wordt u begeleid bij een toepassings upgrade met Visual Studio.
@@ -52,4 +53,3 @@ Bepalen hoe uw toepassing wordt bijgewerkt met behulp van [upgrade parameters](s
 Meer informatie over het gebruik van geavanceerde functionaliteit bij het upgraden van uw toepassing door te verwijzen naar [Geavanceerde onderwerpen](service-fabric-application-upgrade-advanced.md).
 
 Corrigeer veelvoorkomende problemen in toepassings upgrades door te verwijzen naar de stappen in [Troubleshooting Application upgrades](service-fabric-application-upgrade-troubleshooting.md).
-

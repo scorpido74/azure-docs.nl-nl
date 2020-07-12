@@ -13,11 +13,12 @@ ms.topic: article
 ms.date: 06/10/2020
 ms.author: apimpm
 ms.custom: references_regions
-ms.openlocfilehash: 76107a3713a7570bc3bbca15aa1b47e76560bf66
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: e7323793dcbbd05fc5abf032d140b2caa5975da4
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84674275"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86249458"
 ---
 # <a name="how-to-use-azure-api-management-with-virtual-networks"></a>Azure API Management gebruiken met virtuele netwerken
 Met Azure Virtual Networks (VNETs) kunt u uw Azure-resources in een routeerbaar netwerk (buiten internet) plaatsen waarvan u de toegang beheert. Deze netwerken kunnen vervolgens worden verbonden met uw on-premises netwerken met behulp van verschillende VPN-technologieën. Voor meer informatie over Azure Virtual Networks begint u met de informatie hier: [overzicht van azure Virtual Network](../virtual-network/virtual-networks-overview.md).
@@ -102,7 +103,7 @@ Hieronder vindt u een lijst met veelvoorkomende fouten die zich kunnen voordoen 
 * **Aangepaste installatie van DNS-server**: de API Management-service is afhankelijk van verschillende Azure-Services. Als API Management wordt gehost in een VNET met een aangepaste DNS-server, moet deze de hostnamen van deze Azure-Services omzetten. Volg [deze](../virtual-network/virtual-networks-name-resolution-for-vms-and-role-instances.md#name-resolution-that-uses-your-own-dns-server) richt lijnen voor aangepaste DNS-instellingen. Zie de onderstaande tabel poorten en andere netwerk vereisten voor naslag informatie.
 
 > [!IMPORTANT]
-> Als u van plan bent om een aangepaste DNS-server (s) te gebruiken voor het VNET, moet u deze instellen **voordat** u een API Management-service implementeert. Anders moet u de API Management-service telkens bijwerken wanneer u de DNS-server (s) wijzigt door de [bewerking netwerk configuratie Toep assen](https://docs.microsoft.com/rest/api/apimanagement/2019-12-01/ApiManagementService/ApplyNetworkConfigurationUpdates) uit te voeren
+> Als u van plan bent om een aangepaste DNS-server (s) te gebruiken voor het VNET, moet u deze instellen **voordat** u een API Management-service implementeert. Anders moet u de API Management-service telkens bijwerken wanneer u de DNS-server (s) wijzigt door de [bewerking netwerk configuratie Toep assen](/rest/api/apimanagement/2019-12-01/apimanagementservice/applynetworkconfigurationupdates) uit te voeren
 
 * **Poorten die vereist zijn voor API Management**: binnenkomend en uitgaand verkeer in het Subnet waarin API Management wordt geïmplementeerd, kunnen worden beheerd met behulp van de [netwerk beveiligings groep][Network Security Group]. Als een van deze poorten niet beschikbaar is, werkt API Management mogelijk niet goed en wordt deze mogelijk niet meer toegankelijk. Als een of meer van deze poorten zijn geblokkeerd, is een ander veelvoorkomend probleem met de configuratie bij het gebruik van API Management met een VNET.
 
@@ -173,7 +174,7 @@ Hieronder vindt u een lijst met veelvoorkomende fouten die zich kunnen voordoen 
   > [!IMPORTANT]
   > Nadat u de connectiviteit hebt gevalideerd, moet u alle resources die in het subnet zijn geïmplementeerd, verwijderen voordat u API Management in het subnet implementeert.
 
-* **Incrementele updates**: als u wijzigingen aanbrengt in uw netwerk, raadpleegt u de [NetworkStatus-API](https://docs.microsoft.com/rest/api/apimanagement/2019-12-01/networkstatus)om te controleren of de API Management-service geen toegang meer heeft tot een van de kritieke resources waarvan deze afhankelijk is. De connectiviteits status moet elke 15 minuten worden bijgewerkt.
+* **Incrementele updates**: als u wijzigingen aanbrengt in uw netwerk, raadpleegt u de [NetworkStatus-API](/rest/api/apimanagement/2019-12-01/networkstatus)om te controleren of de API Management-service geen toegang meer heeft tot een van de kritieke resources waarvan deze afhankelijk is. De connectiviteits status moet elke 15 minuten worden bijgewerkt.
 
 * **Bronnen navigatie koppelingen**: bij het implementeren van het Resource Manager-type vnet-subnet, API Management het subnet reserveert door een resource navigatie koppeling te maken. Als het subnet al een resource van een andere provider bevat, **mislukt**de implementatie. En wanneer u een API Management-service naar een ander subnet verplaatst of verwijdert, worden de navigatie koppeling naar die resource verwijderd.
 
@@ -213,29 +214,29 @@ De IP-adressen worden gedeeld door **Azure-omgeving**. Wanneer het IP-adres voor
 | Openbare Azure-peering| VS - noord-centraal| 40.81.47.216|
 | Openbare Azure-peering| Verenigd Koninkrijk Zuid| 51.145.56.125|
 | Openbare Azure-peering| India - west| 40.81.89.24|
-| Openbare Azure-peering| VS - oost| 52.224.186.99|
-| Openbare Azure-peering| Europa -west| 51.145.179.78|
-| Openbare Azure-peering| Japan - oost| 52.140.238.179|
+| Openbare Azure-peering| East US| 52.224.186.99|
+| Openbare Azure-peering| West Europe| 51.145.179.78|
+| Openbare Azure-peering| Japan East| 52.140.238.179|
 | Openbare Azure-peering| Frankrijk - centraal| 40.66.60.111|
 | Openbare Azure-peering| Canada - oost| 52.139.80.117|
 | Openbare Azure-peering| UAE - noord| 20.46.144.85|
-| Openbare Azure-peering| Brazilië - zuid| 191.233.24.179|
+| Openbare Azure-peering| Brazil South| 191.233.24.179|
 | Openbare Azure-peering| Azië - zuidoost| 40.90.185.46|
 | Openbare Azure-peering| Zuid-Afrika - noord| 102.133.130.197|
 | Openbare Azure-peering| Canada - midden| 52.139.20.34|
 | Openbare Azure-peering| Korea - zuid| 40.80.232.185|
 | Openbare Azure-peering| India - centraal| 13.71.49.1|
 | Openbare Azure-peering| VS - west| 13.64.39.16|
-| Openbare Azure-peering| Australië - zuidoost| 20.40.160.107|
+| Openbare Azure-peering| Australia Southeast| 20.40.160.107|
 | Openbare Azure-peering| Australië - centraal| 20.37.52.67|
 | Openbare Azure-peering| India - zuid| 20.44.33.246|
-| Openbare Azure-peering| VS - centraal| 13.86.102.66|
+| Openbare Azure-peering| Central US| 13.86.102.66|
 | Openbare Azure-peering| Australië - oost| 20.40.125.155|
-| Openbare Azure-peering| VS - west 2| 51.143.127.203|
+| Openbare Azure-peering| West US 2| 51.143.127.203|
 | Openbare Azure-peering| VS-Oost 2 EUAP| 52.253.229.253|
 | Openbare Azure-peering| VS - centraal EUAP| 52.253.159.160|
-| Openbare Azure-peering| VS - zuid-centraal| 20.188.77.119|
-| Openbare Azure-peering| VS - oost 2| 20.44.72.3|
+| Openbare Azure-peering| South Central US| 20.188.77.119|
+| Openbare Azure-peering| US - oost 2| 20.44.72.3|
 | Openbare Azure-peering| Europa - noord| 52.142.95.35|
 | Openbare Azure-peering| Azië - oost| 52.139.152.27|
 | Openbare Azure-peering| Frankrijk - zuid| 20.39.80.2|

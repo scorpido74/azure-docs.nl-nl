@@ -5,11 +5,12 @@ author: aagup
 ms.topic: conceptual
 ms.date: 10/30/2018
 ms.author: aagup
-ms.openlocfilehash: d5eada62bec49fe771373671e9438d2786d6b165
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 04d8bb4a9f8157a229751d073e8d351f5448fa68
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "75458417"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86247894"
 ---
 # <a name="on-demand-backup-in-azure-service-fabric"></a>Back-ups op aanvraag in azure Service Fabric
 
@@ -55,7 +56,7 @@ Backup-SFPartition -PartitionId '974bd92a-b395-4631-8a7f-53bd4ae9cf22'
 
 #### <a name="rest-call-using-powershell"></a>Rest-aanroep met Power shell
 
-Gebruik de [BackupPartition](https://docs.microsoft.com/rest/api/servicefabric/sfclient-api-backuppartition) -API om triggering in te stellen voor de back-up op aanvraag voor de partitie-id `974bd92a-b395-4631-8a7f-53bd4ae9cf22` .
+Gebruik de [BackupPartition](/rest/api/servicefabric/sfclient-api-backuppartition) -API om triggering in te stellen voor de back-up op aanvraag voor de partitie-id `974bd92a-b395-4631-8a7f-53bd4ae9cf22` .
 
 ```powershell
 $url = "https://mysfcluster.southcentralus.cloudapp.azure.com:19080/Partitions/974bd92a-b395-4631-8a7f-53bd4ae9cf22/$/Backup?api-version=6.4"
@@ -63,7 +64,7 @@ $url = "https://mysfcluster.southcentralus.cloudapp.azure.com:19080/Partitions/9
 Invoke-WebRequest -Uri $url -Method Post -ContentType 'application/json' -CertificateThumbprint '1b7ebe2174649c45474a4819dafae956712c31d3'
 ```
 
-Gebruik de [GetBackupProgress](https://docs.microsoft.com/rest/api/servicefabric/sfclient-api-getpartitionbackupprogress) -API om tracering in te scha kelen voor de [voortgang van de back-up op aanvraag](service-fabric-backup-restore-service-ondemand-backup.md#tracking-on-demand-backup-progress).
+Gebruik de [GetBackupProgress](/rest/api/servicefabric/sfclient-api-getpartitionbackupprogress) -API om tracering in te scha kelen voor de [voortgang van de back-up op aanvraag](service-fabric-backup-restore-service-ondemand-backup.md#tracking-on-demand-backup-progress).
 
 ### <a name="on-demand-backup-to-specified-storage"></a>Back-up op aanvraag naar opgegeven opslag
 
@@ -80,7 +81,7 @@ Backup-SFPartition -PartitionId '974bd92a-b395-4631-8a7f-53bd4ae9cf22' -AzureBlo
 
 #### <a name="rest-call-using-powershell"></a>Rest-aanroep met Power shell
 
-Gebruik de [BackupPartition](https://docs.microsoft.com/rest/api/servicefabric/sfclient-api-backuppartition) -API om triggering in te stellen voor de back-up op aanvraag voor de partitie-id `974bd92a-b395-4631-8a7f-53bd4ae9cf22` . Neem de volgende Azure Storage informatie op:
+Gebruik de [BackupPartition](/rest/api/servicefabric/sfclient-api-backuppartition) -API om triggering in te stellen voor de back-up op aanvraag voor de partitie-id `974bd92a-b395-4631-8a7f-53bd4ae9cf22` . Neem de volgende Azure Storage informatie op:
 
 ```powershell
 $StorageInfo = @{
@@ -99,7 +100,7 @@ $url = "https://mysfcluster.southcentralus.cloudapp.azure.com:19080/Partitions/9
 Invoke-WebRequest -Uri $url -Method Post -Body $body -ContentType 'application/json' -CertificateThumbprint '1b7ebe2174649c45474a4819dafae956712c31d3'
 ```
 
-U kunt de [GetBackupProgress](https://docs.microsoft.com/rest/api/servicefabric/sfclient-api-getpartitionbackupprogress) -API gebruiken om tracering in te stellen voor de [voortgang van de back-up op aanvraag](service-fabric-backup-restore-service-ondemand-backup.md#tracking-on-demand-backup-progress).
+U kunt de [GetBackupProgress](/rest/api/servicefabric/sfclient-api-getpartitionbackupprogress) -API gebruiken om tracering in te stellen voor de [voortgang van de back-up op aanvraag](service-fabric-backup-restore-service-ondemand-backup.md#tracking-on-demand-backup-progress).
 
 ### <a name="using-service-fabric-explorer"></a>Service Fabric Explorer gebruiken
 Zorg ervoor dat de geavanceerde modus is ingeschakeld in Service Fabric Explorer instellingen.
@@ -169,7 +170,7 @@ Aanvragen voor back-ups op aanvraag kunnen de volgende statussen hebben:
     LsnOfLastBackupRecord   : 0
     FailureError            : @{Code=FABRIC_E_BACKUPCOPIER_UNEXPECTED_ERROR; Message=An error occurred during this operation.  Please check the trace logs for more details.}
     ```
-  - **Time-out**: de back-upstatus van een _time-out_ geeft aan dat de back-up van de partitie status in een bepaalde tijd niet kan worden gemaakt. De standaard time-outwaarde is 10 minuten. Initieer een nieuwe aanvraag voor back-ups op aanvraag met een grotere [BackupTimeout](https://docs.microsoft.com/rest/api/servicefabric/sfclient-api-backuppartition#backuptimeout) in dit scenario.
+  - **Time-out**: de back-upstatus van een _time-out_ geeft aan dat de back-up van de partitie status in een bepaalde tijd niet kan worden gemaakt. De standaard time-outwaarde is 10 minuten. Initieer een nieuwe aanvraag voor back-ups op aanvraag met een grotere [BackupTimeout](/rest/api/servicefabric/sfclient-api-backuppartition#backuptimeout) in dit scenario.
     ```
     BackupState             : Timeout
     TimeStampUtc            : 0001-01-01T00:00:00Z
@@ -183,7 +184,7 @@ Aanvragen voor back-ups op aanvraag kunnen de volgende statussen hebben:
 ## <a name="next-steps"></a>Volgende stappen
 
 - [Meer informatie over de configuratie van periodieke back-ups](./service-fabric-backuprestoreservice-configure-periodic-backup.md)
-- [Referentie voor BackupRestore-REST API](https://docs.microsoft.com/rest/api/servicefabric/sfclient-index-backuprestore)
+- [Referentie voor BackupRestore-REST API](/rest/api/servicefabric/sfclient-index-backuprestore)
 
 [0]: ./media/service-fabric-backuprestoreservice/trigger-partition-backup.png
 [1]: ./media/service-fabric-backuprestoreservice/trigger-backup-fileshare.png

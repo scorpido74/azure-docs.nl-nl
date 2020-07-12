@@ -3,11 +3,12 @@ title: Azure Service Fabric-apps en-services beschrijven
 description: Beschrijft hoe manifesten worden gebruikt voor het beschrijven van Service Fabric toepassingen en-services.
 ms.topic: conceptual
 ms.date: 8/12/2019
-ms.openlocfilehash: 6014ef6a9b6ec810aafd5e5be96223b8ed92d576
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: fcf4c7611f0a6f52c28b234717b9244ac58ad2d4
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "75349969"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86248217"
 ---
 # <a name="service-fabric-application-and-service-manifests"></a>Toepassings-en service manifesten Service Fabric
 In dit artikel wordt beschreven hoe Service Fabric toepassingen en-services worden gedefinieerd en geversied met behulp van de ApplicationManifest.xml en ServiceManifest.xml bestanden.  Zie voor beelden van toepassings- [en service manifesten](service-fabric-manifest-examples.md)voor meer gedetailleerde voor beelden.  Het XML-schema voor deze manifest bestanden wordt beschreven in de [documentatie bij ServiceFabricServiceModel. XSD-schema](service-fabric-service-model-schema.md).
@@ -156,7 +157,7 @@ Evenals service manifesten zijn **versie** -kenmerken ongestructureerde teken re
 
 **Certificaten** (niet ingesteld in het voor gaande voor beeld) declareert de certificaten die worden gebruikt voor het [instellen van HTTPS-eind punten](service-fabric-service-manifest-resources.md#example-specifying-an-https-endpoint-for-your-service) of [het versleutelen van geheimen in het toepassings manifest](service-fabric-application-secret-management.md).
 
-**Plaatsings beperkingen** zijn de instructies die bepalen waar services moeten worden uitgevoerd. Deze instructies zijn gekoppeld aan afzonderlijke services die u voor een of meer knooppunt eigenschappen selecteert. Zie [plaatsing van beperkingen en syntaxis van knooppunt eigenschappen](https://docs.microsoft.com/azure/service-fabric/service-fabric-cluster-resource-manager-cluster-description#placement-constraints-and-node-property-syntax) voor meer informatie.
+**Plaatsings beperkingen** zijn de instructies die bepalen waar services moeten worden uitgevoerd. Deze instructies zijn gekoppeld aan afzonderlijke services die u voor een of meer knooppunt eigenschappen selecteert. Zie [plaatsing van beperkingen en syntaxis van knooppunt eigenschappen](./service-fabric-cluster-resource-manager-cluster-description.md#placement-constraints-and-node-property-syntax) voor meer informatie.
 
 **Beleids regels** (niet ingesteld in het voor gaande voor beeld) hierin worden de logboek verzameling, het standaard beleid voor [uitvoeren als](service-fabric-application-runas-security.md), de [status](service-fabric-health-introduction.md#health-policies)en [beveiligings toegang](service-fabric-application-runas-security.md) beschreven die op toepassings niveau moeten worden ingesteld, inclusief of de service (s) toegang hebben tot de service Fabric runtime.
 
@@ -191,6 +192,3 @@ For more information about other features supported by application manifests, re
 [appmodel-diagram]: ./media/service-fabric-application-model/application-model.png
 [cluster-imagestore-apptypes]: ./media/service-fabric-application-model/cluster-imagestore-apptypes.png
 [cluster-application-instances]: media/service-fabric-application-model/cluster-application-instances.png
-
-
-

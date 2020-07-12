@@ -5,12 +5,12 @@ author: srrengar
 ms.topic: conceptual
 ms.date: 1/17/2019
 ms.author: srrengar
-ms.openlocfilehash: ef77810adfab213845c7824740effc3416d85407
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 4b4e454532dec31cbcc92269d63c8be1ff92a9f6
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84712221"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86247520"
 ---
 # <a name="monitoring-and-diagnostics-for-azure-service-fabric"></a>Bewaking en diagnostische gegevens voor Azure Service Fabric
 
@@ -92,4 +92,4 @@ De belangrijkste punten voor elk platform dat u kiest, moeten de volgende zaken 
 * Meer informatie over het instellen van Azure Monitor-logboeken voor het bewaken van containers: [bewaking en diagnose voor Windows-containers in Azure service Fabric](service-fabric-tutorial-monitoring-wincontainers.md).
 * Bekijk voor beelden van diagnostische problemen en oplossingen met Service Fabric bij het [vaststellen van veelvoorkomende scenario's](service-fabric-diagnostics-common-scenarios.md)
 * Bekijk andere diagnostische producten die met Service Fabric worden geïntegreerd in [service Fabric diagnostische partners](service-fabric-diagnostics-partners.md)
-* Meer informatie over algemene controle aanbevelingen voor Azure-resources- [Aanbevolen procedures-bewaking en diagnose](https://docs.microsoft.com/azure/architecture/best-practices/monitoring). 
+* Meer informatie over algemene controle aanbevelingen voor Azure-resources- [Aanbevolen procedures-bewaking en diagnose](/azure/architecture/best-practices/monitoring). 

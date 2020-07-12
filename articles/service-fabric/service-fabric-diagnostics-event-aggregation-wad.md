@@ -5,12 +5,12 @@ author: srrengar
 ms.topic: conceptual
 ms.date: 04/03/2018
 ms.author: srrengar
-ms.openlocfilehash: b9a448ff41c66fa3a38c124f7acde062bacbe9ba
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: ff13f8301274ebfc8b31dcbe01ef2a0fe6cd6fcc
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85846674"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86247758"
 ---
 # <a name="event-aggregation-and-collection-using-windows-azure-diagnostics"></a>Gebeurtenis aggregatie en verzameling met behulp van Windows Azure Diagnostics
 > [!div class="op_single_selector"]
@@ -21,7 +21,7 @@ ms.locfileid: "85846674"
 
 Wanneer u een Azure Service Fabric-cluster uitvoert, is het een goed idee om de logboeken te verzamelen van alle knoop punten op een centrale locatie. Met de logboeken op een centrale locatie kunt u problemen in uw cluster analyseren en oplossen, of problemen in de toepassingen en services die in dat cluster worden uitgevoerd.
 
-Een manier om logboeken te uploaden en te verzamelen, is door gebruik te maken van de extensie Windows Azure Diagnostics (WAD), waarmee logboeken naar Azure Storage worden geüpload en ook de optie is voor het verzenden van logboeken naar Azure-toepassing inzichten of Event Hubs. U kunt ook een extern proces gebruiken om de gebeurtenissen uit de opslag te lezen en deze te plaatsen in een analyse platform product, zoals [Azure monitor logboeken](../log-analytics/log-analytics-service-fabric.md) of een andere oplossing voor het parseren van Logboeken.
+Een manier om logboeken te uploaden en te verzamelen, is door gebruik te maken van de extensie Windows Azure Diagnostics (WAD), waarmee logboeken naar Azure Storage worden geüpload en ook de optie is voor het verzenden van logboeken naar Azure-toepassing inzichten of Event Hubs. U kunt ook een extern proces gebruiken om de gebeurtenissen uit de opslag te lezen en deze te plaatsen in een analyse platform product, zoals [Azure monitor logboeken](./service-fabric-diagnostics-oms-setup.md) of een andere oplossing voor het parseren van Logboeken.
 
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
@@ -31,7 +31,7 @@ De volgende hulpprogram ma's worden gebruikt in dit artikel:
 
 * [Azure Resource Manager](../azure-resource-manager/management/overview.md)
 * [Azure PowerShell](/powershell/azure/overview)
-* [Azure Resource Manager-sjabloon](../virtual-machines/windows/extensions-diagnostics-template.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
+* [Azure Resource Manager-sjabloon](../virtual-machines/extensions/diagnostics-template.md?toc=/azure/virtual-machines/windows/toc.json)
 
 ## <a name="service-fabric-platform-events"></a>Service Fabric-platform gebeurtenissen
 Service Fabric stelt u in met enkele kant-en- [klare logboek kanalen](service-fabric-diagnostics-event-generation-infra.md), waarvan de volgende kanalen vooraf zijn geconfigureerd met de extensie voor het verzenden van bewakings-en diagnostische gegevens naar een opslag tabel of elders:
@@ -202,12 +202,12 @@ Omdat de tabellen die worden gevuld door de uitbrei ding groeien tot het quotum 
 ## <a name="log-collection-configurations"></a>Configuraties van logboek verzameling
 Logboeken van extra kanalen zijn ook beschikbaar voor de verzameling. Hier volgen enkele van de meest voorkomende configuraties die u in de sjabloon kunt maken voor clusters die worden uitgevoerd in Azure.
 
-* Operationeel kanaal-basis: deze optie is standaard ingeschakeld voor bewerkingen op hoog niveau die worden uitgevoerd door Service Fabric en het cluster, met inbegrip van gebeurtenissen voor een knoop punt, een nieuwe toepassing die wordt geïmplementeerd of een upgrade wordt teruggedraaid, enzovoort. Raadpleeg [operationele kanaal gebeurtenissen](https://docs.microsoft.com/azure/service-fabric/service-fabric-diagnostics-event-generation-operational)voor een lijst met gebeurtenissen.
+* Operationeel kanaal-basis: deze optie is standaard ingeschakeld voor bewerkingen op hoog niveau die worden uitgevoerd door Service Fabric en het cluster, met inbegrip van gebeurtenissen voor een knoop punt, een nieuwe toepassing die wordt geïmplementeerd of een upgrade wordt teruggedraaid, enzovoort. Raadpleeg [operationele kanaal gebeurtenissen](./service-fabric-diagnostics-event-generation-operational.md)voor een lijst met gebeurtenissen.
   
 ```json
       scheduledTransferKeywordFilter: "4611686018427387904"
   ```
-* Operationeel kanaal-gedetailleerd: Dit omvat status rapporten en taak verdelings beslissingen, plus alles in het basis-operationele kanaal. Deze gebeurtenissen worden gegenereerd door het systeem of door uw code met behulp van de status-of belasting rapportage-Api's zoals [ReportPartitionHealth](https://msdn.microsoft.com/library/azure/system.fabric.iservicepartition.reportpartitionhealth.aspx) of [ReportLoad](https://msdn.microsoft.com/library/azure/system.fabric.iservicepartition.reportload.aspx). Als u deze gebeurtenissen wilt weer geven in de diagnostische Logboeken van Visual Studio, voegt u ' micro soft-ServiceFabric: 4:0x4000000000000008 ' toe aan de lijst met ETW-providers.
+* Operationeel kanaal-gedetailleerd: Dit omvat status rapporten en taak verdelings beslissingen, plus alles in het basis-operationele kanaal. Deze gebeurtenissen worden gegenereerd door het systeem of door uw code met behulp van de status-of belasting rapportage-Api's zoals [ReportPartitionHealth](/previous-versions/azure/reference/mt645153(v=azure.100)) of [ReportLoad](/previous-versions/azure/reference/mt161491(v=azure.100)). Als u deze gebeurtenissen wilt weer geven in de diagnostische Logboeken van Visual Studio, voegt u ' micro soft-ServiceFabric: 4:0x4000000000000008 ' toe aan de lijst met ETW-providers.
 
 ```json
       scheduledTransferKeywordFilter: "4611686018427387912"
@@ -296,7 +296,7 @@ Als uw gebeurtenis bron bijvoorbeeld mijn-Event source heet, voegt u de volgende
         }
 ```
 
-Als u prestatie meter items of gebeurtenis logboeken wilt verzamelen, wijzigt u de Resource Manager-sjabloon met behulp van de voor beelden in [een virtuele Windows-machine maken met bewaking en diagnose met behulp van een Azure Resource Manager sjabloon](../virtual-machines/windows/extensions-diagnostics-template.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json). Publiceer vervolgens de Resource Manager-sjabloon opnieuw.
+Als u prestatie meter items of gebeurtenis logboeken wilt verzamelen, wijzigt u de Resource Manager-sjabloon met behulp van de voor beelden in [een virtuele Windows-machine maken met bewaking en diagnose met behulp van een Azure Resource Manager sjabloon](../virtual-machines/extensions/diagnostics-template.md?toc=/azure/virtual-machines/windows/toc.json). Publiceer vervolgens de Resource Manager-sjabloon opnieuw.
 
 ## <a name="collect-performance-counters"></a>Prestatie meter items verzamelen
 
@@ -358,7 +358,7 @@ Zodra u Azure Diagnostics correct hebt geconfigureerd, ziet u de gegevens in uw 
 >[!NOTE]
 >Er is momenteel geen manier om de gebeurtenissen te filteren of op te schonen die naar de tabel worden verzonden. Als u geen proces implementeert om gebeurtenissen uit de tabel te verwijderen, blijft de tabel groeien. Op dit moment is er een voor beeld van een service voor het opschonen van gegevens die wordt uitgevoerd in het watchdog-voor [beeld](https://github.com/Azure-Samples/service-fabric-watchdog-service)en wordt aanbevolen dat u er een voor uzelf schrijft, tenzij u een goede reden hebt om logboeken te bewaren buiten een periode van 30 of 90 dagen.
 
-* [Meer informatie over het verzamelen van prestatie meter items of Logboeken met behulp van de diagnostische extensie](../virtual-machines/windows/extensions-diagnostics-template.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
+* [Meer informatie over het verzamelen van prestatie meter items of Logboeken met behulp van de diagnostische extensie](../virtual-machines/extensions/diagnostics-template.md?toc=/azure/virtual-machines/windows/toc.json)
 * [Gebeurtenis analyse en visualisatie met Application Insights](service-fabric-diagnostics-event-analysis-appinsights.md)
 * [Gebeurtenis analyse en visualisatie met Azure Monitor-logboeken](service-fabric-diagnostics-event-analysis-oms.md)
 * [Gebeurtenis analyse en visualisatie met Application Insights](service-fabric-diagnostics-event-analysis-appinsights.md)

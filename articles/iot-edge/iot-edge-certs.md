@@ -9,11 +9,12 @@ ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
 ms.custom: mqtt
-ms.openlocfilehash: 1b299cf21652c23451aed735b10597adb85dc3db
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: f9c3f8e1e37a59dc0010269c6b4c19e3a682c57e
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82982725"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86247010"
 ---
 # <a name="understand-how-azure-iot-edge-uses-certificates"></a>Meer informatie over het gebruik van Azure IoT Edge certificaten
 
@@ -24,6 +25,9 @@ In dit artikel wordt uitgelegd hoe IoT Edge certificaten kunnen werken in produc
 ## <a name="iot-edge-certificates"></a>IoT Edge-certificaten
 
 Meestal zijn fabrikanten niet de eind gebruikers van een IoT Edge apparaat. Soms is de enige relatie tussen de twee, wanneer de eind gebruiker of de operator, een algemeen apparaat koopt dat door de fabrikant is gemaakt. Andere keren werkt de fabrikant onder contract om een aangepast apparaat voor de operator te bouwen. Het IoT Edge certificaat ontwerp probeert beide scenario's in rekening te brengen.
+
+> [!NOTE]
+> Op dit moment wordt een beperking in libiothsm voor komen dat certificaten worden gebruikt die op of na 1 januari 2050 verlopen. Deze beperking geldt voor het CA-certificaat van het apparaat, alle certificaten in de vertrouwens bundel en de apparaat-ID-certificaten die worden gebruikt voor X. 509-inrichtings methoden.
 
 In de volgende afbeelding ziet u het gebruik van IoT Edge van certificaten. Er kunnen zich nul, één of veel tussenliggende handtekening certificaten bevinden tussen het basis-CA-certificaat en het CA-certificaat van het apparaat, afhankelijk van het aantal betrokken entiteiten. Hier zien we één geval.
 

@@ -9,12 +9,12 @@ ms.topic: reference
 ms.date: 05/20/2020
 ms.author: anfeldma
 ms.custom: tracking-python
-ms.openlocfilehash: e70d7d1f2ca7aa0eeec08d69720e37c5be34f8ae
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 6bd880806a4b067139c1f22a0e4d4e6df5c88451
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85391907"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86247061"
 ---
 # <a name="azure-cosmos-db-python-sdk-for-sql-api-release-notes-and-resources"></a>Azure Cosmos DB python SDK voor SQL API: release opmerkingen en bronnen
 
@@ -134,7 +134,7 @@ ms.locfileid: "85391907"
 
 * Alle bewerkingen die ondernemen `request_options` of `feed_options` para meters zijn, zijn verplaatst naar sleutel woorden alleen para meters. Hoewel deze opties worden ondersteund, worden alle afzonderlijke opties in de woorden lijst nu ondersteund als expliciete trefwoord argumenten.
 
-* De fout hiërarchie is nu overgenomen van `azure.core.AzureError` in plaats van, die is verwijderd.
+* De fout hiërarchie is nu overgenomen van `azure.core.AzureError` :
 
   * De naam van `HTTPFailure` is gewijzigd in `CosmosHttpResponseError`
   * `JSONParseFailure`is verwijderd en vervangen door`azure.core.DecodeError`

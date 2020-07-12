@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 06/30/2020
-ms.openlocfilehash: fb99530923f25541316fd159a2270f7035a1916b
-ms.sourcegitcommit: f7e160c820c1e2eb57dc480b2a8fd6bef7053e91
+ms.openlocfilehash: 0c0f40144fde49d467ca7fb126a19afa6c76660a
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/10/2020
-ms.locfileid: "86229241"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86246953"
 ---
 # <a name="preview-features-in-azure-cognitive-search"></a>Preview-functies in azure Cognitive Search
 
@@ -23,6 +23,7 @@ Preview-functies die worden overgezet naar algemene Beschik baarheid, worden ver
 
 |Hulp&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  | Categorie | Beschrijving | Beschikbaarheid  |
 |---------|------------------|-------------|---------------|
+| [**Vaardigheid van Azure Machine Learning (AML)**](cognitive-search-aml-skill.md) | AI-verrijking| Een nieuw vaardigheids type voor het integreren van een Afleidings eindpunt van Azure Machine Learning. Ga aan de slag met [deze zelfstudie](cognitive-search-tutorial-aml-custom-skill.md). | [Zoek REST API 2020-06-30-preview](https://docs.microsoft.com/rest/api/searchservice/) of 2019-05-06-preview gebruiken. Ook beschikbaar in de portal, in het ontwerp van vaardig heden, aangenomen dat Cognitive Search en Azure ML-Services in hetzelfde abonnement zijn geïmplementeerd. |
 | [**featuresMode-para meter**](https://docs.microsoft.com/rest/api/searchservice/search-documents#featuresmode) | Relevantie (Score) | Uitbrei ding van relevantie score voor het toevoegen van Details: per veld vergelijk bare Score, per veld term frequentie en per veld aantal unieke tokens die overeenkomen. U kunt deze gegevens punten gebruiken in [aangepaste Score oplossingen](https://github.com/Azure-Samples/search-ranking-tutorial). | Voeg deze query parameter toe met behulp van [Zoek documenten (rest)](https://docs.microsoft.com/rest/api/searchservice/search-documents) met API-Version = 2020-06 -30-preview of 2019-05-06-preview. |
 | [**Beheerde service-identiteit**](search-howto-managed-identities-data-sources.md) | Indexeer functies, beveiliging| Registreer een zoek service met Azure Active Directory om het een vertrouwde service te maken en gebruik vervolgens RBAC-machtigingen voor Azure-gegevens bronnen om alleen-lezen toegang toe te staan door een Indexeer functie. | Toegang tot deze mogelijkheid bij het gebruik van de portal of het maken van een [gegevens bron (rest)](https://docs.microsoft.com/rest/api/searchservice/create-data-source) met API-Version = 2020-06 -30-preview of API-Version = 2019-05 -06-preview. |
 | [**Sessies voor fout opsporing**](cognitive-search-debug-session.md) | Portal, AI-verrijking (vaardig heden) | Een in-Session kwalificatieset-editor die wordt gebruikt om problemen met een vaardig heden te onderzoeken en op te lossen. Oplossingen die worden toegepast tijdens een foutopsporingssessie, kunnen worden opgeslagen in een vakkennisset in de service. | Alleen Portal, met behulp van koppelingen op de pagina overzicht voor het openen van een foutopsporingssessie. |

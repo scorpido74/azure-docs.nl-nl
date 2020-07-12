@@ -3,11 +3,12 @@ title: Upgrade van toepassing Service Fabric
 description: Dit artikel bevat een inleiding tot het upgraden van een Service Fabric-toepassing, inclusief het kiezen van upgrade modi en het uitvoeren van status controles.
 ms.topic: conceptual
 ms.date: 2/23/2018
-ms.openlocfilehash: 2dc484b49c5250510e5f018cbbc2da107573d452
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 9e7a93dd3ef8a1adf6617dcd57887a0ce694c509
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84710317"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86247996"
 ---
 # <a name="service-fabric-application-upgrade"></a>Upgrade van toepassing Service Fabric
 Een Azure Service Fabric-toepassing is een verzameling van services. Tijdens een upgrade vergelijkt Service Fabric het nieuwe [toepassings manifest](service-fabric-application-and-service-manifests.md) met de vorige versie en bepaalt u welke services in de toepassing moeten worden bijgewerkt. Service Fabric vergelijkt de versie nummers in de service manifesten met de versie nummers in de vorige versie. Als een service niet is gewijzigd, wordt die service niet geüpgraded.
@@ -36,7 +37,7 @@ De modus die wordt aanbevolen voor de upgrade van de toepassing is de bewaakte m
 In de niet-bewaakte hand matige modus moet hand matige interventie worden uitgevoerd na elke upgrade op een update domein, om de upgrade uit te kunnen laten op het volgende update domein. Er worden geen Service Fabric status controles uitgevoerd. De beheerder voert de status controles uit voordat de upgrade wordt gestart in het volgende update domein.
 
 ## <a name="upgrade-default-services"></a>Standaard Services bijwerken
-Sommige standaard service parameters die in het [manifest](service-fabric-application-and-service-manifests.md) van de toepassing zijn gedefinieerd, kunnen ook worden bijgewerkt als onderdeel van een toepassings upgrade. Alleen de service parameters die worden gewijzigd via [Update-ServiceFabricService](https://docs.microsoft.com/powershell/module/servicefabric/update-servicefabricservice?view=azureservicefabricps) kunnen worden gewijzigd als onderdeel van een upgrade. Het gedrag van het wijzigen van standaard services tijdens de upgrade van de toepassing is als volgt:
+Sommige standaard service parameters die in het [manifest](service-fabric-application-and-service-manifests.md) van de toepassing zijn gedefinieerd, kunnen ook worden bijgewerkt als onderdeel van een toepassings upgrade. Alleen de service parameters die worden gewijzigd via [Update-ServiceFabricService](/powershell/module/servicefabric/update-servicefabricservice?view=azureservicefabricps) kunnen worden gewijzigd als onderdeel van een upgrade. Het gedrag van het wijzigen van standaard services tijdens de upgrade van de toepassing is als volgt:
 
 1. Standaard services in het nieuwe toepassings manifest die nog niet in het cluster bestaan, worden gemaakt.
 2. Standaard-services die voor komen in zowel de vorige als de nieuwe toepassings manifesten, worden bijgewerkt. De para meters van de standaard service in het manifest van de nieuwe toepassing overschrijven de para meters van de bestaande service. De upgrade van de toepassing wordt automatisch ongedaan gemaakt als het bijwerken van een standaard service mislukt.

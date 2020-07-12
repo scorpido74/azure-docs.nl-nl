@@ -13,11 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 01/29/2018
 ms.author: apimpm
-ms.openlocfilehash: 0d122a56035e58bd5065da8fde56246da6478d54
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: f594d4467e64ead40ff3c26aaf3e3a44cb673a98
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82871269"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86250291"
 ---
 # <a name="how-to-log-events-to-azure-event-hubs-in-azure-api-management"></a>Gebeurtenissen vastleggen in azure Event Hubs in azure API Management
 Azure Event Hubs is een zeer schaalbare service voor inkomende gegevens die miljoenen gebeurtenissen per seconde kan opnemen, voor verwerking en analyse van de enorme hoeveelheden gegevens die worden geproduceerd door verbonden apparaten en toepassingen. Event Hubs fungeert als de "front deur" voor een gebeurtenis pijplijn en wanneer gegevens worden verzameld in een Event Hub, kan deze worden getransformeerd en opgeslagen met behulp van een realtime analyse provider of batches/opslag adapters. Event Hubs koppelt de productie van een gebeurtenissenstroom los van het gebruik van deze gebeurtenissen, zodat de consumenten ervan toegang hebben tot de gebeurtenissen op basis van hun eigen planning.
@@ -26,12 +27,12 @@ Dit artikel is een aanvulling op de [integratie van azure API Management met Eve
 
 ## <a name="create-an-azure-event-hub"></a>Een Azure Event Hub maken
 
-Zie [een event hubs naam ruimte en een event hub maken met behulp van de Azure Portal](https://docs.microsoft.com/azure/event-hubs/event-hubs-create)voor gedetailleerde stappen voor het maken van een event hub en het ophalen van verbindings reeksen die u nodig hebt om gebeurtenissen te verzenden en te ontvangen van en naar de Event hub.
+Zie [een event hubs naam ruimte en een event hub maken met behulp van de Azure Portal](../event-hubs/event-hubs-create.md)voor gedetailleerde stappen voor het maken van een event hub en het ophalen van verbindings reeksen die u nodig hebt om gebeurtenissen te verzenden en te ontvangen van en naar de Event hub.
 
 ## <a name="create-an-api-management-logger"></a>Een API Management logger maken
-Nu u een event hub hebt, is de volgende stap het configureren van een [logger](https://docs.microsoft.com/rest/api/apimanagement/2019-12-01/logger) in uw API Management-service zodat deze gebeurtenissen kan registreren in de Event hub.
+Nu u een event hub hebt, is de volgende stap het configureren van een [logger](/rest/api/apimanagement/2019-12-01/logger) in uw API Management-service zodat deze gebeurtenissen kan registreren in de Event hub.
 
-API Management-logboeken worden geconfigureerd met behulp van de [API Management rest API](https://aka.ms/apimapi). Zie [Logboeken maken](https://docs.microsoft.com/rest/api/apimanagement/2019-12-01/logger/createorupdate)voor voor beelden van gedetailleerde aanvragen.
+API Management-logboeken worden geconfigureerd met behulp van de [API Management rest API](https://aka.ms/apimapi). Zie [Logboeken maken](/rest/api/apimanagement/2019-12-01/logger/createorupdate)voor voor beelden van gedetailleerde aanvragen.
 
 ## <a name="configure-log-to-eventhub-policies"></a>Logboek-naar-eventhub-beleid configureren
 
@@ -68,7 +69,7 @@ Klik op **Opslaan** om de bijgewerkte beleids configuratie op te slaan. Zodra he
 
 ## <a name="preview-the-log-in-event-hubs-by-using-azure-stream-analytics"></a>Bekijk een voor beeld van het logboek in Event Hubs met behulp van Azure Stream Analytics
 
-U kunt een voor beeld van het logboek in Event Hubs bekijken met behulp van [Azure stream Analytics query's](https://docs.microsoft.com/azure/event-hubs/process-data-azure-stream-analytics). 
+U kunt een voor beeld van het logboek in Event Hubs bekijken met behulp van [Azure stream Analytics query's](../event-hubs/process-data-azure-stream-analytics.md). 
 
 1. Blader in het Azure Portal naar de Event Hub waarnaar de logboek gebeurtenissen verzendt. 
 2. Selecteer onder **functies**het tabblad **proces gegevens** .
@@ -78,11 +79,11 @@ U kunt een voor beeld van het logboek in Event Hubs bekijken met behulp van [Azu
 ## <a name="next-steps"></a>Volgende stappen
 * Meer informatie over Azure Event Hubs
   * [Aan de slag met Azure Event Hubs](../event-hubs/event-hubs-c-getstarted-send.md)
-  * [Berichten ontvangen met EventProcessorHost](../event-hubs/event-hubs-dotnet-standard-getstarted-receive-eph.md)
+  * [Berichten ontvangen met EventProcessorHost](../event-hubs/event-hubs-dotnet-standard-getstarted-send.md)
   * [Programmeer handleiding voor Event Hubs](../event-hubs/event-hubs-programming-guide.md)
 * Meer informatie over de integratie van API Management en Event Hubs
-  * [Verwijzing naar traceer entiteit](https://docs.microsoft.com/rest/api/apimanagement/2019-12-01/logger)
-  * [Naslag informatie voor het aanmelden bij het eventhub-beleid](https://docs.microsoft.com/azure/api-management/api-management-advanced-policies#log-to-eventhub)
+  * [Verwijzing naar traceer entiteit](/rest/api/apimanagement/2019-12-01/logger)
+  * [Naslag informatie voor het aanmelden bij het eventhub-beleid](./api-management-advanced-policies.md#log-to-eventhub)
   * [Bewaak uw Api's met Azure API Management, Event Hubs en Moesif](api-management-log-to-eventhub-sample.md)  
 * Meer informatie over [integratie met Azure-toepassing Insights](api-management-howto-app-insights.md)
 

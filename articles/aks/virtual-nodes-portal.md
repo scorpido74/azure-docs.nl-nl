@@ -5,12 +5,12 @@ services: container-service
 ms.topic: conceptual
 ms.date: 05/06/2019
 ms.custom: references_regions
-ms.openlocfilehash: 6706d9c1c683cdf46fe42822cad67a49a69843a9
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 277bdc19635231628cea8c308b30c57b129dc364
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85389816"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86250699"
 ---
 # <a name="create-and-configure-an-azure-kubernetes-services-aks-cluster-to-use-virtual-nodes-in-the-azure-portal"></a>Een AKS-cluster (Azure Kubernetes Services) maken en configureren voor het gebruik van virtuele knoop punten in de Azure Portal
 
@@ -77,7 +77,7 @@ Meld u aan bij Azure Portal op https://portal.azure.com.
 
 Selecteer in de linkerbovenhoek van de Azure Portal **een resource**  >  **Kubernetes-service**maken.
 
-Configureer op de pagina **Basisprincipes** de volgende opties:
+Configureer de volgende opties op het tabblad **Basisinstellingen**:
 
 - *Project Details*: Selecteer een Azure-abonnement en selecteer of maak een Azure-resource groep, zoals *myResourceGroup*. Voer een **Kubernetes-clusternaam** in, zoals *myAKSCluster*.
 - *CLUSTERDETAILS*: selecteer een regio, Kubernetes-versie en DNS-naamvoorvoegsel voor het AKS-cluster.
@@ -94,7 +94,7 @@ Standaard wordt een Azure Active Directory Service-Principal gemaakt. Deze servi
 
 Het cluster is ook geconfigureerd voor geavanceerde netwerken. De virtuele knoop punten zijn geconfigureerd voor het gebruik van hun eigen subnet van het virtuele netwerk van Azure. Dit subnet heeft gedelegeerde machtigingen voor het verbinden van Azure-resources tussen het AKS-cluster. Als u nog geen overgedragen subnet hebt, wordt het virtuele Azure-netwerk en-subnet door de Azure Portal gemaakt en geconfigureerd voor gebruik met de virtuele knoop punten.
 
-Selecteer **Controleren + maken**. Nadat de validatie is voltooid, selecteert u **maken**.
+Selecteer **Controleren en maken**. Nadat de validatie is voltooid, selecteert u **maken**.
 
 Het duurt enkele minuten om het AKS-cluster te maken en voor te bereiden voor gebruik.
 
@@ -235,7 +235,7 @@ Virtuele knoop punten zijn één onderdeel van een schaal oplossing in AKS. Raad
 [acr-aks-secrets]: https://kubernetes.io/docs/tasks/configure-pod-container/pull-image-private-registry/
 
 <!-- LINKS - internal -->
-[aks-network]: ./networking-overview.md
+[aks-network]: ./configure-azure-cni.md
 [az-aks-get-credentials]: /cli/azure/aks?view=azure-cli-latest#az-aks-get-credentials
 [aks-hpa]: tutorial-kubernetes-scale.md
 [aks-cluster-autoscaler]: cluster-autoscaler.md

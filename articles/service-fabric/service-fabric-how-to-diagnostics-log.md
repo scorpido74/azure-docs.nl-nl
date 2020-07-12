@@ -5,11 +5,12 @@ author: srrengar
 ms.topic: conceptual
 ms.date: 03/27/2018
 ms.author: srrengar
-ms.openlocfilehash: 8c4721584e74bd7f7111c516f2d16bd190392bb5
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: caa6d4fc27373e524f4c492635cffbf8b735add8
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "75614363"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86247214"
 ---
 # <a name="add-logging-to-your-service-fabric-application"></a>Logboekregistratie toevoegen aan uw Service Fabric-toepassing
 
@@ -95,7 +96,7 @@ Het gebruik van een Hybrid of Structured en generic instrumentatie kan ook goed 
 
 Het ASP.NET Core logboek registratie ([micro soft. Extensions. logging NuGet-pakket](https://www.nuget.org/packages/Microsoft.Extensions.Logging)) is een logboek registratie raamwerk dat een standaard logboek registratie-API biedt voor uw toepassing. Ondersteuning voor andere back-endservers voor logboek registratie kan worden aangesloten op ASP.NET Core logboek registratie. Dit geeft u een breed scala aan ondersteuning voor logboek registratie in uw toepassing, zonder dat u veel code hoeft te wijzigen.
 
-1. Voeg het NuGet-pakket **micro soft. Extensions. logging** toe aan het project dat u wilt instrumenteren. Voeg ook alle provider pakketten toe. Zie [Logging in ASP.net core](https://docs.microsoft.com/aspnet/core/fundamentals/logging)voor meer informatie.
+1. Voeg het NuGet-pakket **micro soft. Extensions. logging** toe aan het project dat u wilt instrumenteren. Voeg ook alle provider pakketten toe. Zie [Logging in ASP.net core](/aspnet/core/fundamentals/logging)voor meer informatie.
 2. Voeg een **using** -instructie toe voor **micro soft. Extensions. log** in uw service bestand.
 3. Definieer een persoonlijke variabele binnen uw service klasse.
 
@@ -166,13 +167,3 @@ Sommige providers van derden gebruiken de benadering die wordt beschreven in de 
 
 - Meer informatie over [toepassings bewaking vindt u in service Fabric](service-fabric-diagnostics-event-generation-app.md).
 - Meer informatie over logboek registratie met [Event flow](service-fabric-diagnostics-event-aggregation-eventflow.md) en [Windows Azure Diagnostics](service-fabric-diagnostics-event-aggregation-wad.md).
-
-
-
-
-
-
-
-
-
-

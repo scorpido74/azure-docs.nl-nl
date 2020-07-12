@@ -5,11 +5,12 @@ author: harahma
 ms.topic: conceptual
 ms.date: 04/15/2017
 ms.author: harahma
-ms.openlocfilehash: 82bc5068be651b05eb24efa3b05e46c1e7c1e24d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: b6c55ab52f4e51ddf2a39e03bed3ea543a6096be
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81115044"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86247452"
 ---
 # <a name="azure-service-fabric-hosting-model"></a>Hosting model voor Azure Service Fabric
 Dit artikel bevat een overzicht van de toepassings hosting modellen van Azure Service Fabric en beschrijft de verschillen tussen de modellen **gedeeld proces** en **exclusief proces** . Hierin wordt beschreven hoe een geïmplementeerde toepassing eruitziet op een Service Fabric knoop punt en de relatie tussen replica's (of exemplaren) van de service en het proces-hostproces.
@@ -170,7 +171,7 @@ In het vorige voor beeld zou u kunnen denken dat als ' MyCodePackageA ' zowel ' 
 
 ### <a name="reliable-services-and-actor-forking-subprocesses"></a>Subprocessen voor Reliable Services en actor vertakkingen
 
-Service Fabric biedt geen ondersteuning voor betrouw bare Services en vervolgens betrouw bare Actors die subprocessen splitsen. Een voor beeld van waarom de niet-ondersteunde [CodePackageActivationContext](https://docs.microsoft.com/dotnet/api/system.fabric.codepackageactivationcontext?view=azure-dotnet) niet kan worden gebruikt om een niet-ondersteund subproces te registreren en annulerings tokens worden alleen verzonden naar geregistreerde processen. wat resulteert in allerlei problemen, zoals upgrade fouten, wanneer subprocessen niet worden gesloten nadat het bovenliggende proces een annulerings token heeft ontvangen.
+Service Fabric biedt geen ondersteuning voor betrouw bare Services en vervolgens betrouw bare Actors die subprocessen splitsen. Een voor beeld van waarom de niet-ondersteunde [CodePackageActivationContext](/dotnet/api/system.fabric.codepackageactivationcontext?view=azure-dotnet) niet kan worden gebruikt om een niet-ondersteund subproces te registreren en annulerings tokens worden alleen verzonden naar geregistreerde processen. wat resulteert in allerlei problemen, zoals upgrade fouten, wanneer subprocessen niet worden gesloten nadat het bovenliggende proces een annulerings token heeft ontvangen.
 
 ## <a name="next-steps"></a>Volgende stappen
 [Een toepassing inpakken][a4] en deze voorbereiden om te implementeren.
@@ -192,16 +193,16 @@ Service Fabric biedt geen ondersteuning voor betrouw bare Services en vervolgens
 [a4]: service-fabric-package-apps.md
 [a5]: service-fabric-deploy-remove-applications.md
 
-[r1]: https://docs.microsoft.com/rest/api/servicefabric/sfclient-api-createservice
+[r1]: /rest/api/servicefabric/sfclient-api-createservice
 
-[c1]: https://docs.microsoft.com/dotnet/api/system.fabric.fabricclient.servicemanagementclient.createserviceasync
-[c2]: https://docs.microsoft.com/dotnet/api/system.fabric.description.statelessservicedescription.instancecount
+[c1]: /dotnet/api/system.fabric.fabricclient.servicemanagementclient.createserviceasync
+[c2]: /dotnet/api/system.fabric.description.statelessservicedescription.instancecount
 
-[p1]: https://docs.microsoft.com/powershell/module/servicefabric/new-servicefabricservice
-[p2]: https://docs.microsoft.com/powershell/module/servicefabric/get-servicefabricservicedescription
-[p3]: https://docs.microsoft.com/powershell/module/servicefabric/get-servicefabricdeployedservicePackage
-[p4]: https://docs.microsoft.com/powershell/module/servicefabric/send-servicefabricdeployedservicepackagehealthreport
-[p5]: https://docs.microsoft.com/powershell/module/servicefabric/restart-servicefabricdeployedcodepackage
-[p6]: https://docs.microsoft.com/powershell/module/servicefabric/get-servicefabricdeployedservicetype
-[p7]: https://docs.microsoft.com/powershell/module/servicefabric/get-servicefabricdeployedreplica
-[p8]: https://docs.microsoft.com/powershell/module/servicefabric/get-servicefabricdeployedcodepackage
+[p1]: /powershell/module/servicefabric/new-servicefabricservice
+[p2]: /powershell/module/servicefabric/get-servicefabricservicedescription
+[p3]: /powershell/module/servicefabric/get-servicefabricdeployedservicepackage
+[p4]: /powershell/module/servicefabric/send-servicefabricdeployedservicepackagehealthreport
+[p5]: /powershell/module/servicefabric/restart-servicefabricdeployedcodepackage
+[p6]: /powershell/module/servicefabric/get-servicefabricdeployedservicetype
+[p7]: /powershell/module/servicefabric/get-servicefabricdeployedreplica
+[p8]: /powershell/module/servicefabric/get-servicefabricdeployedcodepackage

@@ -5,12 +5,12 @@ ms.topic: conceptual
 ms.date: 05/21/2020
 ms.author: pepogors
 ms.custom: sfrev
-ms.openlocfilehash: 774b114a47958b173f891ed13d423f9b051ee37c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: f2af8dcb2460e4e95d29bd81e6994d145ac61a48
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85610537"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86247774"
 ---
 # <a name="service-fabric-cluster-capacity-planning-considerations"></a>Overwegingen bij het plannen van Service Fabric cluster capaciteit
 
@@ -26,7 +26,7 @@ Dit artikel begeleidt u stapsgewijs door de belang rijke beslissings punten voor
 
 ## <a name="initial-number-and-properties-of-cluster-node-types"></a>Oorspronkelijk aantal en eigenschappen van cluster knooppunt typen
 
-Een *knooppunt type* definieert de grootte, het aantal en de eigenschappen van een set knoop punten (virtuele machines) in het cluster. Elk knooppunt type dat in een Service Fabric cluster is gedefinieerd, wordt toegewezen aan een [schaalset voor virtuele machines](https://docs.microsoft.com/azure/virtual-machine-scale-sets/overview).
+Een *knooppunt type* definieert de grootte, het aantal en de eigenschappen van een set knoop punten (virtuele machines) in het cluster. Elk knooppunt type dat in een Service Fabric cluster is gedefinieerd, wordt toegewezen aan een [schaalset voor virtuele machines](../virtual-machine-scale-sets/overview.md).
 
 Omdat elk knooppunt type een afzonderlijke schaalset is, kan deze afzonderlijk worden uitgebreid of omlaag worden geschaald, er verschillende sets poorten zijn geopend en verschillende capaciteits metrieken hebben. Zie [service Fabric cluster knooppunt typen](service-fabric-cluster-nodetypes.md)voor meer informatie over de relatie tussen knooppunt typen en virtuele-machine schaal sets.
 
@@ -34,7 +34,7 @@ Voor elk cluster is één **primair knooppunt type**vereist, waarmee essentiële
 
 **Niet-primaire knooppunt typen** kunnen worden gebruikt om toepassings rollen (zoals *front-end-* en *back-end-* Services) te definiëren en om services in een cluster fysiek te isoleren. Service Fabric clusters kunnen nul of meer niet-primaire knooppunt typen hebben.
 
-Het primaire knooppunt type is geconfigureerd met behulp `isPrimary` van het kenmerk onder de definitie van het knooppunt type in de sjabloon Azure Resource Manager-implementatie. Zie het [object NodeTypeDescription](https://docs.microsoft.com/azure/templates/microsoft.servicefabric/clusters#nodetypedescription-object) voor de volledige lijst met eigenschappen van knooppunt typen. Open bijvoorbeeld een *AzureDeploy.js* in het bestand in [service Fabric cluster voorbeelden](https://github.com/Azure-Samples/service-fabric-cluster-templates/tree/master/) en zoek *op pagina* zoeken naar het `nodetTypes` object.
+Het primaire knooppunt type is geconfigureerd met behulp `isPrimary` van het kenmerk onder de definitie van het knooppunt type in de sjabloon Azure Resource Manager-implementatie. Zie het [object NodeTypeDescription](/azure/templates/microsoft.servicefabric/clusters#nodetypedescription-object) voor de volledige lijst met eigenschappen van knooppunt typen. Open bijvoorbeeld een *AzureDeploy.js* in het bestand in [service Fabric cluster voorbeelden](https://github.com/Azure-Samples/service-fabric-cluster-templates/tree/master/) en zoek *op pagina* zoeken naar het `nodetTypes` object.
 
 ### <a name="node-type-planning-considerations"></a>Overwegingen bij de planning van knooppunt typen
 
@@ -79,7 +79,7 @@ De volgende tabel bevat een lijst met Service Fabric duurzaamheids lagen, hun ve
 > Met Bronze duurzaamheid is de automatische upgrade van de installatie kopie van het besturings systeem niet beschikbaar. Hoewel [patch Orchestration-toepassing](service-fabric-patch-orchestration-application.md) (alleen bedoeld voor niet door Azure gehoste clusters) *niet wordt aanbevolen* voor Silver-of hogere duurzaamheids niveaus, is dit de enige optie om Windows-updates te automatiseren met betrekking tot service Fabric upgrade domeinen.
 
 > [!IMPORTANT]
-> Ongeacht het duurzaamheids niveau wordt het cluster vernietigd als er een [toewijzings](https://docs.microsoft.com/rest/api/compute/virtualmachinescalesets/deallocate) bewerking wordt uitgevoerd op een schaalset voor virtuele machines.
+> Ongeacht het duurzaamheids niveau wordt het cluster vernietigd als er een [toewijzings](/rest/api/compute/virtualmachinescalesets/deallocate) bewerking wordt uitgevoerd op een schaalset voor virtuele machines.
 
 ### <a name="bronze"></a>Bron
 

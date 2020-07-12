@@ -4,11 +4,12 @@ description: Overzicht van categorieën Cloud toepassingen in Service Fabric. Be
 ms.topic: conceptual
 ms.date: 01/08/2020
 ms.custom: sfrev
-ms.openlocfilehash: 0aeb8ab2923915befdd11f96025687be3b3c4ff9
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: aaf8204158f720d8c69c98af758071cd91f6eff0
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "76024737"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86248166"
 ---
 # <a name="service-fabric-application-scenarios"></a>Toepassings scenario's Service Fabric
 
@@ -16,7 +17,7 @@ Azure Service Fabric biedt een betrouwbaar en flexibel platform waar u veel soor
 
 Met de unieke architectuur van Service Fabric kunt u bijna realtime gegevens analyses uitvoeren, berekeningen in het geheugen, parallelle trans acties en gebeurtenis verwerking in uw toepassingen. U kunt uw toepassingen eenvoudig in-of uitschalen, afhankelijk van de veranderende resource vereisten.
 
-Lees de [architectuur micro Services in Azure service Fabric](https://docs.microsoft.com/azure/architecture/reference-architectures/microservices/service-fabric) en [Aanbevolen procedures voor het ontwerpen van toepassingen met behulp van service Fabric](service-fabric-best-practices-applications.md)voor ontwerp richtlijnen voor het bouwen van apps.
+Lees de [architectuur micro Services in Azure service Fabric](/azure/architecture/reference-architectures/microservices/service-fabric) en [Aanbevolen procedures voor het ontwerpen van toepassingen met behulp van service Fabric](service-fabric-best-practices-applications.md)voor ontwerp richtlijnen voor het bouwen van apps.
 
 Overweeg het gebruik van het Service Fabric platform voor de volgende typen toepassingen:
 
@@ -24,7 +25,7 @@ Overweeg het gebruik van het Service Fabric platform voor de volgende typen toep
 
     Klanten die IoT-Services hebben gebouwd met behulp van Service Fabric, zijn [Honeywell](https://customers.microsoft.com/story/honeywell-builds-microservices-based-thermostats-on-azure), [PCL-constructie](https://customers.microsoft.com/story/pcl-construction-professional-services-azure), [Crestron](https://customers.microsoft.com/story/crestron-partner-professional-services-azure), [BMW](https://customers.microsoft.com/story/bmw-enables-driver-mobility-via-azure-service-fabric/), [Schneidere Electric](https://customers.microsoft.com/story/schneider-electric-powers-engergy-solutions-on-azure-service-fabric)en [net Systems](https://customers.microsoft.com/story/mesh-systems-lights-up-the-market-with-iot-based-azure-solutions).
 
-* **Interactieve toepassingen op het niveau van games en sessies**: Service Fabric is handig als uw toepassing Lees-en schrijf bewerkingen met een lage latentie vereist, zoals in online gaming of chat berichten. Met Service Fabric kunt u deze interactieve, stateful toepassingen bouwen zonder dat u een afzonderlijke Store of cache hoeft te maken. Ga naar [Azure gaming oplossingen](https://azure.microsoft.com/solutions/gaming/) voor ontwerp richtlijnen over het [gebruik van service fabric in gaming services](https://docs.microsoft.com/gaming/azure/reference-architectures/multiplayer-synchronous-sf).
+* **Interactieve toepassingen op het niveau van games en sessies**: Service Fabric is handig als uw toepassing Lees-en schrijf bewerkingen met een lage latentie vereist, zoals in online gaming of chat berichten. Met Service Fabric kunt u deze interactieve, stateful toepassingen bouwen zonder dat u een afzonderlijke Store of cache hoeft te maken. Ga naar [Azure gaming oplossingen](https://azure.microsoft.com/solutions/gaming/) voor ontwerp richtlijnen over het [gebruik van service fabric in gaming services](/gaming/azure/reference-architectures/multiplayer-synchronous-sf).
 
     Klanten die gaming-services hebben gebouwd, zijn [volgende games](https://customers.microsoft.com/story/next-games-media-telecommunications-azure) en [Digamore](https://customers.microsoft.com/story/digamore-entertainment-scores-with-a-new-gaming-platform-based-on-azure-service-fabric/). Klanten die interactieve sessies hebben gebouwd, zijn [Honeywell met Hololens](https://customers.microsoft.com/story/honeywell-manufacturing-hololens).
 
@@ -67,7 +68,7 @@ Hier volgt een voorbeeld toepassing die gebruikmaakt van stateful Services: ![ d
 ## <a name="next-steps"></a>Volgende stappen
 
 * Ga aan de slag met het bouwen van stateless en stateful Services met de Service Fabric [reliable Services](service-fabric-reliable-services-quick-start.md) en [reliable actors](service-fabric-reliable-actors-get-started.md) programmeer modellen.
-* Ga naar de Azure Architecture Center voor hulp bij het bouwen van micro [Services in azure](https://docs.microsoft.com/azure/architecture/microservices/).
+* Ga naar de Azure Architecture Center voor hulp bij het bouwen van micro [Services in azure](/azure/architecture/microservices/).
 * Ga naar de [Aanbevolen procedures voor Azure service Fabric-toepassingen en-clusters](service-fabric-best-practices-overview.md) voor hulp bij het ontwerpen van toepassingen.
 
 * Zie ook:

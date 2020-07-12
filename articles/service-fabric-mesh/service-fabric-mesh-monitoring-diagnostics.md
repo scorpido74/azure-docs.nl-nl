@@ -6,11 +6,12 @@ ms.topic: conceptual
 ms.date: 03/19/2019
 ms.author: srrengar
 ms.custom: mvc, devcenter
-ms.openlocfilehash: 247a1de4d00668371337295616d31caf101f0cc5
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: e940f0cf0d1547b317cd9e7bd15ac5486d5e70b2
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "75498141"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86248404"
 ---
 # <a name="monitoring-and-diagnostics"></a>Controle en diagnose
 Azure Service Fabric Mesh is een volledig beheerde service waarmee ontwikkelaars microservices-toepassingen kunnen implementeren zonder virtuele machines, opslag of netwerken hoeven te beheren. Bewaking en diagnose van Service Fabric net zijn onderverdeeld in drie hoofd typen diagnostische gegevens:
@@ -57,7 +58,7 @@ In de mesh-omgeving wordt een aantal metrische gegevens weer gegeven die aangeve
 | RestartCount | Aantal herstarts van de container | N.v.t. |
 
 > [!NOTE]
-> De waarden ServiceStatus en ServiceReplicaStatus zijn hetzelfde als die van de [HealthState](https://docs.microsoft.com/dotnet/api/system.fabric.health.healthstate?view=azure-dotnet) in service Fabric. 
+> De waarden ServiceStatus en ServiceReplicaStatus zijn hetzelfde als die van de [HealthState](/dotnet/api/system.fabric.health.healthstate?view=azure-dotnet) in service Fabric. 
 
 Elke metriek is beschikbaar op verschillende dimensies, zodat u aggregaties op verschillende niveaus kunt zien. De huidige lijst met dimensies is als volgt:
 
@@ -73,7 +74,7 @@ Elke dimensie komt overeen met verschillende onderdelen van het [service Fabric-
 
 ### <a name="azure-monitor-cli"></a>Azure Monitor CLI
 
-Er is een volledige lijst met opdrachten beschikbaar in de [Azure monitor cli-documenten](https://docs.microsoft.com/cli/azure/monitor/metrics?view=azure-cli-latest#az-monitor-metrics-list) , maar we hebben een paar handige voor beelden opgenomen 
+Er is een volledige lijst met opdrachten beschikbaar in de [Azure monitor cli-documenten](/cli/azure/monitor/metrics?view=azure-cli-latest#az-monitor-metrics-list) , maar we hebben een paar handige voor beelden opgenomen 
 
 In elk voor beeld volgt de resource-ID dit patroon
 
@@ -117,4 +118,4 @@ In addition to the metrics explorer, we also have a dashboard available out of t
 
 ## <a name="next-steps"></a>Volgende stappen
 * Lees [Wat is Service Fabric Mesh?](service-fabric-mesh-overview.md) voor meer informatie over Service Fabric Mesh.
-* Raadpleeg de [Azure monitor cli-documenten](https://docs.microsoft.com/cli/azure/monitor/metrics?view=azure-cli-latest#az-monitor-metrics-list)voor meer informatie over de Azure monitor metrische opdrachten.
+* Raadpleeg de [Azure monitor cli-documenten](/cli/azure/monitor/metrics?view=azure-cli-latest#az-monitor-metrics-list)voor meer informatie over de Azure monitor metrische opdrachten.

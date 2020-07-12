@@ -3,18 +3,19 @@ title: 'Toepassings upgrade: upgrade parameters'
 description: Beschrijft para meters met betrekking tot het bijwerken van een Service Fabric-toepassing, inclusief status controles die moeten worden uitgevoerd en het beleid om de upgrade automatisch ongedaan te maken.
 ms.topic: conceptual
 ms.date: 11/08/2018
-ms.openlocfilehash: 42b5c52181cfb006ae57e43c183b96a059a9c63a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 6b6116bf1188fcf191b2d672e6c698bb3c050e6c
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "75377970"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86247962"
 ---
 # <a name="application-upgrade-parameters"></a>Parameters toepassingsupgrade
 In dit artikel worden de verschillende para meters beschreven die van toepassing zijn tijdens de upgrade van een Azure Service Fabric-toepassing. De para meters voor toepassings upgrades bepalen de time-outs en status controles die tijdens de upgrade worden toegepast en geven de beleids regels op die moeten worden toegepast wanneer een upgrade mislukt. Toepassings parameters zijn van toepassing op upgrades met:
 - PowerShell
 - Visual Studio
 - SFCTL
-- [REST](https://docs.microsoft.com/rest/api/servicefabric/sfclient-api-startapplicationupgrade)
+- [REST](/rest/api/servicefabric/sfclient-api-startapplicationupgrade)
 
 Toepassings upgrades worden gestart via een van de drie door de gebruiker geselecteerde upgrade modi. Elke modus heeft een eigen set toepassings parameters:
 - Nauwlettend
@@ -25,14 +26,14 @@ De toepasselijke vereiste en optionele para meters worden als volgt in elke sect
 
 ## <a name="visual-studio-and-powershell-parameters"></a>Visual Studio-en Power shell-para meters
 
-Service Fabric toepassings upgrades met behulp van Power shell gebruikt u de opdracht [Start-ServiceFabricApplicationUpgrade](https://docs.microsoft.com/powershell/module/servicefabric/start-servicefabricapplicationupgrade) . De upgrade modus is geselecteerd door de para meter **bewaakt**, **UnmonitoredAuto**of **UnmonitoredManual** door te geven aan [Start-ServiceFabricApplicationUpgrade](https://docs.microsoft.com/powershell/module/servicefabric/start-servicefabricapplicationupgrade).
+Service Fabric toepassings upgrades met behulp van Power shell gebruikt u de opdracht [Start-ServiceFabricApplicationUpgrade](/powershell/module/servicefabric/start-servicefabricapplicationupgrade) . De upgrade modus is geselecteerd door de para meter **bewaakt**, **UnmonitoredAuto**of **UnmonitoredManual** door te geven aan [Start-ServiceFabricApplicationUpgrade](/powershell/module/servicefabric/start-servicefabricapplicationupgrade).
 
 De upgrade parameters voor Visual Studio Service Fabric-toepassing worden ingesteld via het dialoog venster upgrade-instellingen van Visual Studio. De Visual Studio-upgrade modus wordt geselecteerd in de vervolg keuzelijst **upgrade modus** naar **bewaakt**, **UnmonitoredAuto**of **UnmonitoredManual**. Zie [de upgrade van een service Fabric-toepassing configureren in Visual Studio](service-fabric-visualstudio-configure-upgrade.md)voor meer informatie.
 
 ### <a name="required-parameters"></a>Vereiste para meters
 (PS = Power shell, VS = Visual Studio)
 
-| Parameter | Van toepassing op | Description |
+| Parameter | Van toepassing op | Beschrijving |
 | --- | --- | --- |
 ApplicationName |PS| De naam van de toepassing die wordt bijgewerkt. Voor beelden: Fabric:/VisualObjects, Fabric:/ClusterMonitor. |
 ApplicationTypeVersion|PS|De versie van het toepassings type dat de upgrade doelen. |
@@ -47,7 +48,7 @@ UnmonitoredManual | PS | Geeft aan dat de upgrade modus niet-bewaakt hand matig 
 De para meters voor de status evaluatie zijn optioneel. Als de criteria voor de status evaluatie niet zijn opgegeven wanneer een upgrade wordt gestart, gebruikt Service Fabric het toepassings status beleid dat is opgegeven in de ApplicationManifest.xml van het toepassings exemplaar.
 
 > [!div class="mx-tdBreakAll"]
-> | Parameter | Van toepassing op | Description |
+> | Parameter | Van toepassing op | Beschrijving |
 > | --- | --- | --- |
 > | ApplicationParameter |PS, VS| Hiermee geeft u de onderdrukkingen voor toepassings parameters op.<br>Power shell-toepassings parameters zijn opgegeven als hash-naam/waarde-paren. Bijvoorbeeld: @ {"VotingData_MinReplicaSetSize" = "3"; "VotingData_PartitionCount" = "1"}.<br>Visual Studio-toepassings parameters kunnen worden opgegeven in het dialoog venster Service Fabric toepassing publiceren in het veld **toepassings parameters bestand** .
 > | Bevestigen |PS| Toegestane waarden zijn **waar** en **Onwaar**. Vraagt om bevestiging voordat de cmdlet wordt uitgevoerd. |
@@ -57,7 +58,7 @@ De para meters voor de status evaluatie zijn optioneel. Als de criteria voor de 
 > | ForceRestart |PS, VS |Als u een configuratie of gegevens pakket bijwerkt zonder de service code bij te werken, wordt de service alleen opnieuw opgestart als de eigenschap ForceRestart is ingesteld op **True**. Wanneer de update is voltooid, wordt door Service Fabric een melding verzonden naar de service dat er een nieuw configuratie pakket of gegevens pakket beschikbaar is. De service is verantwoordelijk voor het Toep assen van de wijzigingen. Als dat nodig is, kan de service zichzelf opnieuw opstarten. |
 > | HealthCheckRetryTimeoutSec |PS, VS |De duur (in seconden) die Service Fabric de status evaluatie blijft uitvoeren voordat de upgrade wordt gedeclareerd als mislukt. De standaard waarde is 600 seconden. Deze duur begint nadat *HealthCheckWaitDurationSec* is bereikt. In deze *HealthCheckRetryTimeout*kan service Fabric meerdere status controles van de toepassings status uitvoeren. De standaard waarde is 10 minuten en moet op de juiste wijze worden aangepast voor uw toepassing. |
 > | HealthCheckStableDurationSec |PS, VS |De duur (in seconden) om te controleren of de toepassing stabiel is voordat u overstapt op het volgende upgrade domein of de upgrade uitvoert. Deze wacht tijd wordt gebruikt om niet-gedetecteerde wijzigingen aan de status te voor komen nadat de status controle is uitgevoerd. De standaard waarde is 120 seconden, en moet op de juiste wijze worden aangepast voor uw toepassing. |
-> | HealthCheckWaitDurationSec |PS, VS | De wacht tijd (in seconden) nadat de upgrade is voltooid voor het upgrade domein voordat Service Fabric de status van de toepassing evalueert. Deze duur kan ook worden overwogen wanneer een toepassing actief moet zijn voordat deze in orde kan worden beschouwd. Als de status controle wordt door gegeven, wordt het upgrade proces voortgezet naar het volgende upgrade domein.  Als de status controle mislukt, Service Fabric wacht op [UpgradeHealthCheckInterval](https://docs.microsoft.com/azure/service-fabric/service-fabric-cluster-fabric-settings#clustermanager) voordat u de status controle opnieuw probeert uit te voeren totdat de *HealthCheckRetryTimeoutSec* is bereikt. De standaard-en aanbevolen waarde is 0 seconden. |
+> | HealthCheckWaitDurationSec |PS, VS | De wacht tijd (in seconden) nadat de upgrade is voltooid voor het upgrade domein voordat Service Fabric de status van de toepassing evalueert. Deze duur kan ook worden overwogen wanneer een toepassing actief moet zijn voordat deze in orde kan worden beschouwd. Als de status controle wordt door gegeven, wordt het upgrade proces voortgezet naar het volgende upgrade domein.  Als de status controle mislukt, Service Fabric wacht op [UpgradeHealthCheckInterval](./service-fabric-cluster-fabric-settings.md#clustermanager) voordat u de status controle opnieuw probeert uit te voeren totdat de *HealthCheckRetryTimeoutSec* is bereikt. De standaard-en aanbevolen waarde is 0 seconden. |
 > | MaxPercentUnhealthyDeployedApplications|PS, VS |De standaard-en aanbevolen waarde is 0. Geef het maximum aantal geïmplementeerde toepassingen op (Zie de [sectie status](service-fabric-health-introduction.md)) die een slechte status kan hebben voordat de toepassing wordt beschouwd als beschadigd en de upgrade mislukt. Deze para meter definieert de toepassings status van het knoop punt en helpt tijdens het bijwerken van problemen te detecteren. De replica's van de toepassing krijgen normaal gesp roken taak verdeling naar het andere knoop punt, waardoor de toepassing in orde kan worden weer gegeven, waardoor de upgrade kan worden voortgezet. Als u een strikte *MaxPercentUnhealthyDeployedApplications* -status opgeeft, kan service Fabric snel een probleem met het toepassings pakket detecteren en een mislukte snelle upgrade maken. |
 > | MaxPercentUnhealthyServices |PS, VS |Een para meter voor *DefaultServiceTypeHealthPolicy* en *ServiceTypeHealthPolicyMap*. De standaard-en aanbevolen waarde is 0. Geef het maximum aantal services in het toepassings exemplaar op dat slecht kan zijn voordat de toepassing wordt beschouwd als beschadigd en de upgrade mislukt. |
 > | MaxPercentUnhealthyPartitionsPerService|PS, VS |Een para meter voor *DefaultServiceTypeHealthPolicy* en *ServiceTypeHealthPolicyMap*. De standaard-en aanbevolen waarde is 0. Geef het maximum aantal partities in een service op dat slecht kan zijn voordat de service wordt beschouwd als beschadigd. |
@@ -73,7 +74,7 @@ De criteria *MaxPercentUnhealthyServices*, *MaxPercentUnhealthyPartitionsPerServ
 
 ## <a name="sfctl-parameters"></a>SFCTL-para meters
 
-Service Fabric toepassings upgrades via de Service Fabric CLI gebruik de [sfctl-toepassings upgrade](https://docs.microsoft.com/azure/service-fabric/service-fabric-sfctl-application#sfctl-application-upgrade) opdracht samen met de volgende vereiste en optionele para meters.
+Service Fabric toepassings upgrades via de Service Fabric CLI gebruik de [sfctl-toepassings upgrade](./service-fabric-sfctl-application.md#sfctl-application-upgrade) opdracht samen met de volgende vereiste en optionele para meters.
 
 ### <a name="required-parameters"></a>Vereiste para meters
 
@@ -87,7 +88,7 @@ parameters  |Een JSON-gecodeerde lijst van toepassings parameters onderdrukkinge
 
 | Parameter | Beschrijving |
 | --- | --- |
-standaard-service-status-beleid | [JSON](https://docs.microsoft.com/rest/api/servicefabric/sfclient-model-servicetypehealthpolicy) -gecodeerde specificatie van het status beleid dat standaard wordt gebruikt om de status van een service type te evalueren. De kaart is standaard leeg. |
+standaard-service-status-beleid | [JSON](/rest/api/servicefabric/sfclient-model-servicetypehealthpolicy) -gecodeerde specificatie van het status beleid dat standaard wordt gebruikt om de status van een service type te evalueren. De kaart is standaard leeg. |
 fout-actie | Toegestane waarden zijn **Rollback**, **Manual**en **ongeldig**. De compensatie actie die moet worden uitgevoerd wanneer een *bewaakte* upgrade problemen ondervindt met bewakings beleid of schendingen van het status beleid. <br>**Terugdraai** actie geeft aan dat de upgrade automatisch wordt teruggedraaid naar de versie van vóór de upgrade. <br>**Hand matig** geeft aan dat de upgrade wordt overgeschakeld naar de *UnmonitoredManual* -upgrade modus. <br>**Ongeldig** geeft aan dat de fout actie ongeldig is.|
 geforceerd opnieuw opstarten | Als u een configuratie of gegevens pakket bijwerkt zonder de service code bij te werken, wordt de service alleen opnieuw opgestart als de eigenschap ForceRestart is ingesteld op **True**. Wanneer de update is voltooid, wordt door Service Fabric een melding verzonden naar de service dat er een nieuw configuratie pakket of gegevens pakket beschikbaar is. De service is verantwoordelijk voor het Toep assen van de wijzigingen. Als dat nodig is, kan de service zichzelf opnieuw opstarten. |
 status-controle-opnieuw proberen-time-out | De tijd waarvoor de status opnieuw moet worden geëvalueerd wanneer de toepassing of het cluster een slechte status heeft voordat *FailureAction* wordt uitgevoerd. Het wordt eerst geïnterpreteerd als een teken reeks die een ISO 8601-duur vertegenwoordigt. Als dat mislukt, wordt dit geïnterpreteerd als een getal dat het totale aantal milliseconden aangeeft. Standaard: PT0H10M0S. |
@@ -96,7 +97,7 @@ status-controle-wacht tijd | De hoeveelheid tijd die moet worden gewacht na het 
 Max-beschadigde apps | De standaard-en aanbevolen waarde is 0. Geef het maximum aantal geïmplementeerde toepassingen op (Zie de [sectie status](service-fabric-health-introduction.md)) die een slechte status kan hebben voordat de toepassing wordt beschouwd als beschadigd en de upgrade mislukt. Deze para meter definieert de toepassings status van het knoop punt en helpt tijdens het bijwerken van problemen te detecteren. De replica's van de toepassing krijgen normaal gesp roken taak verdeling naar het andere knoop punt, waardoor de toepassing in orde kan worden weer gegeven, waardoor de upgrade kan worden voortgezet. Als u een strikte status van *Maxi maal toegestane apps* opgeeft, kunt Service Fabric snel een probleem met het toepassings pakket detecteren en een mislukte snelle upgrade maken. Wordt weer gegeven als een getal tussen 0 en 100. |
 mode | Toegestane waarden worden **bewaakt**, **upgrade mode ingesteld**, **UnmonitoredAuto**, **UnmonitoredManual**. De standaard waarde is **UnmonitoredAuto**. Zie de sectie met *vereiste para meters* voor Visual Studio en Power shell voor beschrijvingen van deze waarden.|
 replica-set-check-timeout |Gemeten in seconden. <br>**Stateless service**: in één upgrade domein probeert service Fabric ervoor te zorgen dat er extra exemplaren van de service beschikbaar zijn. Als het aantal doel instanties meer is dan een, Service Fabric wacht tot er meer dan één instantie beschikbaar is, tot een maximale time-outwaarde. Deze time-out wordt opgegeven met behulp van de eigenschap *replica-set-check-timeout* . Als de time-outperiode is verlopen, wordt Service Fabric doorgegaan met de upgrade, ongeacht het aantal service-exemplaren. Als het aantal exemplaren van de doel groep is, wordt Service Fabric niet gewacht en wordt er onmiddellijk een upgrade uitgevoerd.<br><br>**Stateful service**: in één upgrade domein probeert service Fabric om ervoor te zorgen dat de replicaset een quorum heeft. Service Fabric wacht tot een quorum beschikbaar is, tot een maximale time-outwaarde (opgegeven door de eigenschap *replica-set-check-timeout* ). Als de time-outperiode is verlopen, wordt Service Fabric doorgegaan met de upgrade, ongeacht het quorum. Deze instelling is ingesteld als nooit (oneindig) bij het terugdraaien en 1200 seconden bij het terugdraaien. |
-service-status-beleid | JSON-gecodeerde toewijzing met status beleid van Service type per service type naam. De kaart is standaard leeg. [JSON-indeling van de para meter.](https://docs.microsoft.com/rest/api/servicefabric/sfclient-model-applicationhealthpolicy#servicetypehealthpolicymap).. De JSON voor het gedeelte ' value ' bevat **MaxPercentUnhealthyServices**, **MaxPercentUnhealthyPartitionsPerService**en **MaxPercentUnhealthyReplicasPerPartition**. Zie de sectie optionele para meters in Visual Studio en Power shell voor beschrijvingen van deze para meters.
+service-status-beleid | JSON-gecodeerde toewijzing met status beleid van Service type per service type naam. De kaart is standaard leeg. [JSON-indeling van de para meter.](/rest/api/servicefabric/sfclient-model-applicationhealthpolicy#servicetypehealthpolicymap).. De JSON voor het gedeelte ' value ' bevat **MaxPercentUnhealthyServices**, **MaxPercentUnhealthyPartitionsPerService**en **MaxPercentUnhealthyReplicasPerPartition**. Zie de sectie optionele para meters in Visual Studio en Power shell voor beschrijvingen van deze para meters.
 timeout | Hiermee geeft u de time-outperiode in seconden voor de bewerking. Standaard: 60. |
 upgrade-domein-time-out | De hoeveelheid tijd die elk upgrade domein moet volt ooien voordat *FailureAction* wordt uitgevoerd. Het wordt eerst geïnterpreteerd als een teken reeks die een ISO 8601-duur vertegenwoordigt. Als dat mislukt, wordt dit geïnterpreteerd als een getal dat het totale aantal milliseconden aangeeft. De standaard waarde is nooit (oneindig) en moet op de juiste wijze worden aangepast voor uw toepassing. Standaard: P10675199DT02H48M 05.4775807 S. |
 upgrade-time-out | De hoeveelheid tijd die elk upgrade domein moet volt ooien voordat *FailureAction* wordt uitgevoerd. Het wordt eerst geïnterpreteerd als een teken reeks die een ISO 8601-duur vertegenwoordigt. Als dat mislukt, wordt dit geïnterpreteerd als een getal dat het totale aantal milliseconden aangeeft. De standaard waarde is nooit (oneindig) en moet op de juiste wijze worden aangepast voor uw toepassing. Standaard: P10675199DT02H48M 05.4775807 S.|

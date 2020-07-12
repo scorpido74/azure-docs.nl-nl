@@ -12,11 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 11/04/2019
 ms.author: apimpm
-ms.openlocfilehash: ff608cac9786ebc0d3908ce4d88fb501e621be6c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: b826c986a0af26bb79fb0823e4e8626f0165d460
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84690180"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86250019"
 ---
 # <a name="azure-api-management-page-controls"></a>Besturings elementen van Azure API Management-pagina
 Azure API Management biedt de volgende besturings elementen voor gebruik in de sjablonen voor de ontwikkelaars Portal.  
@@ -29,7 +30,7 @@ Als u een besturings element wilt gebruiken, plaatst u het op de gewenste locati
   
 De waarden voor de para meters worden door gegeven als onderdeel van het gegevens model voor de sjabloon. In de meeste gevallen kunt u in het voor beeld van het besturings element gewoon plakken. Meer informatie over de parameter waarden vindt u in de sectie gegevens model voor elke sjabloon waarin een besturings element mag worden gebruikt.  
 
-Zie [de API Management ontwikkelaars portal aanpassen met behulp van sjablonen](https://azure.microsoft.com/documentation/articles/api-management-developer-portal-templates/)voor meer informatie over het werken met sjablonen.  
+Zie [de API Management ontwikkelaars portal aanpassen met behulp van sjablonen](./api-management-developer-portal-templates.md)voor meer informatie over het werken met sjablonen.  
 
 [!INCLUDE [api-management-portal-legacy.md](../../includes/api-management-portal-legacy.md)]
 

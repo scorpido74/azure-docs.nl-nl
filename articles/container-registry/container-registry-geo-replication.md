@@ -1,33 +1,34 @@
 ---
 title: Geo-replicatie toepassen voor een register
-description: Ga aan de slag met het maken en beheren van een geo-gerepliceerd Azure container Registry, waarmee het REGI ster meerdere regio's met regionale replica's voor meerdere masters kan verwerken. Geo-replicatie is een functie van de Premium doelcloudservice-laag.
+description: Ga aan de slag met het maken en beheren van een geo-gerepliceerd Azure container Registry, waarmee het REGI ster meerdere regio's met regionale replica's voor meerdere masters kan verwerken. Geo-replicatie is een functie van de service-laag Premium.
 author: stevelas
 ms.topic: article
 ms.date: 05/11/2020
 ms.author: stevelas
-ms.openlocfilehash: 35525906135db02c453c55d8798e1405396c8598
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 315de5151547c4339255639cb65d1be30f7213ff
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84508791"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86247129"
 ---
 # <a name="geo-replication-in-azure-container-registry"></a>Geo-replicatie in Azure Container Registry
 
 Bedrijven die lokale aanwezigheid willen, of een back-up zonder opnieuw opstarten, kunnen services uitvoeren vanuit meerdere Azure-regio's. Het plaatsen van een containerregister in elke regio waarin installatiekopieën worden uitgevoerd, is een best practice die bewerkingen dicht bij het netwerk mogelijk maakt, wat zorgt voor snelle, betrouwbare overdrachten van installatiekopielagen. Met geo-replicatie kan een Azure-containerregister als één register functioneren en meerdere regio's bedienen met regionale registers voor meerdere masters. 
 
-Een geo-gerepliceerd register biedt de volgende voordelen:
+Een register met geo-replicatie biedt de volgende voordelen:
 
-* Dezelfde register-/installatiekopie-/tagnamen kunnen worden gebruikt in meerdere regio's
-* Toegang tot het register dicht bij het netwerk via regionale implementaties
-* Geen extra kosten voor uitgaand verkeer, aangezien de installatiekopieën worden opgehaald uit een lokaal, gerepliceerd register in dezelfde regio als uw containerhost
-* Beheer van een enkel register voor meerdere regio's
+* Er kan één register/installatiekopie/tagnaam in meerdere regio’s worden gebruikt
+* Registertoegang dicht bij het netwerk vanuit regionale implementaties
+* Geen extra kosten voor uitgaande gegevens, omdat installatiekopieën uit een lokaal, gerepliceerd register in dezelfde regio als uw containerhost worden gehaald
+* Eén beheerpunt voor een register in meerdere regio's
 
 > [!NOTE]
 > Als u kopieën van containerinstallaties in meer dan één Azure-containerregister wilt behouden, kunt u met Azure Container Registry ook [installatiekopieën importeren](container-registry-import-images.md). U kunt bijvoorbeeld binnen een DevOps-werkstroom een installatiekopie uit een ontwikkelingsregister naar een productieregister importeren zonder Docker-opdrachten te gebruiken.
 >
 
 ## <a name="example-use-case"></a>Voorbeeld van een toepassing
-Contoso voert een website voor openbare aanwezigheid uit voor de VS, Canada en Europa. Contoso voert AKS-clusters ([Azure Kubernetes Service](/azure/aks/)) uit in VS - west, VS - oost, Canada - centraal en Europa - west om deze markten met lokale inhoud van dicht bij het netwerk te bedienen. De webtoepassing, geïmplementeerd als een Docker-installatiekopie, gebruikt dezelfde code en installatiekopie in alle regio's. Inhoud, die lokaal is voor een bepaalde regio, wordt opgehaald uit een database, die uniek is ingericht in elke regio. Elke regionale implementatie heeft een unieke configuratie voor resources zoals de lokale database.
+Contoso voert een website voor openbare aanwezigheid uit voor de VS, Canada en Europa. Contoso voert AKS-clusters ([Azure Kubernetes Service](../aks/index.yml)) uit in VS - west, VS - oost, Canada - centraal en Europa - west om deze markten met lokale inhoud van dicht bij het netwerk te bedienen. De webtoepassing, geïmplementeerd als een Docker-installatiekopie, gebruikt dezelfde code en installatiekopie in alle regio's. Inhoud, die lokaal is voor een bepaalde regio, wordt opgehaald uit een database, die uniek is ingericht in elke regio. Elke regionale implementatie heeft een unieke configuratie voor resources zoals de lokale database.
 
 Het ontwikkelteam bevindt zich in Seattle, WA en gebruikt het datacentrum VS - west.
 
@@ -94,7 +95,7 @@ ACR begint installatiekopieën te synchroniseren voor de geconfigureerde replica
 * Wanneer u installatie kopieën vanuit een geo-gerepliceerd REGI ster pusht of pullt, verzendt Azure Traffic Manager op de achtergrond de aanvraag naar het REGI ster in de regio die het dichtst bij u in de buurt is van de netwerk latentie.
 * Nadat u een installatie kopie of label update naar de dichtstbijzijnde regio hebt gepusht, duurt het enige tijd voor Azure Container Registry om de manifesten en lagen te repliceren naar de overige regio's waarin u zich hebt aangemeld. Grotere afbeeldingen nemen meer tijd in beslag dan kleinere bestanden. Afbeeldingen en tags worden gesynchroniseerd over de replicatie regio's met een mogelijk consistentie model.
 * Voor het beheren van werk stromen die afhankelijk zijn van push-updates naar een geo-gerepliceerd REGI ster, wordt u aangeraden [webhooks](container-registry-webhook.md) zodanig te configureren dat deze reageert op push gebeurtenissen. U kunt regionale webhooks instellen binnen een geo-gerepliceerd REGI ster om Push gebeurtenissen bij te houden die worden uitgevoerd in de geografisch gerepliceerde regio's.
-* Als u blobs wilt leveren die inhouds lagen vertegenwoordigen, gebruikt Azure container data-eind punten. U kunt [specifieke gegevens eindpunten](container-registry-firewall-access-rules.md#enable-dedicated-data-endpoints) voor uw REGI ster inschakelen in elk van de geo-replicatie regio's van uw REGI ster. Met deze eind punten kan de nauw keurig bereik van Firewall toegangs regels worden geconfigureerd.
+* Azure Container Registry gebruikt gegevens eindpunten als u blobs wilt leveren die inhouds lagen vertegenwoordigen. U kunt [specifieke gegevens eindpunten](container-registry-firewall-access-rules.md#enable-dedicated-data-endpoints) voor uw REGI ster inschakelen in elk van de geo-replicatie regio's van uw REGI ster. Met deze eind punten kan de nauw keurig bereik van Firewall toegangs regels worden geconfigureerd.
 * Als u een [persoonlijke koppeling](container-registry-private-link.md) voor uw REGI ster configureert met behulp van privé-eind punten in een virtueel netwerk, worden toegewezen gegevens eindpunten in elk van de geo-gerepliceerde regio's standaard ingeschakeld. 
 
 ## <a name="delete-a-replica"></a>Een replica verwijderen

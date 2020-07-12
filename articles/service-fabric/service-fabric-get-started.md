@@ -5,12 +5,12 @@ author: peterpogorski
 ms.topic: conceptual
 ms.date: 06/16/2020
 ms.custom: sfrev
-ms.openlocfilehash: e059a503a29872ee6241fe00ff5c7ec94ae30308
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: e82c7809f5a6c79b61dc0c6731a696c672f6aa97
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84888093"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86247333"
 ---
 # <a name="prepare-your-development-environment-on-windows"></a>Uw ontwikkelomgeving voorbereiden in Windows
 
@@ -42,7 +42,7 @@ De volgende versies van besturingssystemen worden ondersteund voor de ontwikkeli
 
 ## <a name="install-the-sdk-and-tools"></a>De SDK en hulpprogramma's installeren
 
-Web platform Installer (WebPI) is de aanbevolen manier om de SDK en hulpprogram ma's te installeren. Als er runtime-fouten worden ontvangen met behulp van WebPI, kunt u ook directe koppelingen naar de installatie Programma's in de release opmerkingen vinden voor een specifieke Service Fabric versie. De release opmerkingen vindt u in de verschillende release mededelingen op het [service Fabric team blog](https://blogs.msdn.microsoft.com/azureservicefabric/).
+Web platform Installer (WebPI) is de aanbevolen manier om de SDK en hulpprogram ma's te installeren. Als er runtime-fouten worden ontvangen met behulp van WebPI, kunt u ook directe koppelingen naar de installatie Programma's in de release opmerkingen vinden voor een specifieke Service Fabric versie. De release opmerkingen vindt u in de verschillende release mededelingen op het [service Fabric team blog](https://techcommunity.microsoft.com/t5/azure-service-fabric/bg-p/Service-Fabric).
 
 > [!NOTE]
 > Lokale Service Fabric ontwikkeling van cluster upgrades worden niet ondersteund.

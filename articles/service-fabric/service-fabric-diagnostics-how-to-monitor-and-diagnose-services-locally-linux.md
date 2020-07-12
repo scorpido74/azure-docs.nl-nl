@@ -3,11 +3,12 @@ title: Fouten opsporen in azure Service Fabric-apps in Linux
 description: Meer informatie over het bewaken en diagnosticeren van uw Service Fabric Services op een lokale Linux-ontwikkel machine.
 ms.topic: conceptual
 ms.date: 2/23/2018
-ms.openlocfilehash: fa8c4053a348c539c2e9e7a87d002d0fcf4a4d52
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 6f637721d24045f5ca3386ffc31775d469e88537
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80991327"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86247554"
 ---
 # <a name="monitor-and-diagnose-services-in-a-local-linux-machine-development-setup"></a>Services controleren en diagnoses uitvoeren in een lokale installatie van Linux machine Development
 
@@ -131,4 +132,4 @@ In de voor beelden van C#-voor [beelden](https://github.com/Azure-Samples/servic
 
 ## <a name="next-steps"></a>Volgende stappen
 Dezelfde tracerings code die aan uw toepassing wordt toegevoegd, werkt ook met de diagnostische gegevens van uw toepassing op een Azure-cluster. Bekijk deze artikelen over de verschillende opties voor de hulpprogram ma's en beschrijf hoe u deze kunt instellen.
-* [Logboeken verzamelen met Azure Diagnostics](service-fabric-diagnostics-how-to-setup-lad.md)
+* [Logboeken verzamelen met Azure Diagnostics](./service-fabric-diagnostics-event-aggregation-lad.md)

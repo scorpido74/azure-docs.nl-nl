@@ -12,18 +12,18 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 08/26/2019
 ms.author: apimpm
-ms.openlocfilehash: 39803ab88e5b252ef119d22a697e135c83f87780
-ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.openlocfilehash: 0eed2328aca78402c5f4691bb9b3d07d4f36472e
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86205642"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86250223"
 ---
 # <a name="how-to-migrate-azure-api-management-across-regions"></a>Azure API Management migreren over regio's
 Als u API Management exemplaren van de ene Azure-regio naar de andere wilt migreren, kunt u de functie [back-up en herstellen](api-management-howto-disaster-recovery-backup-restore.md) gebruiken. U moet dezelfde API Management Prijs categorie in de bron-en doel regio's kiezen. 
 
 > [!NOTE]
-> Het maken van back-ups en herstellen werkt niet tijdens de migratie tussen verschillende Cloud typen. Hiervoor moet u de resource exporteren [als een sjabloon](https://docs.microsoft.com/azure/azure-resource-manager/manage-resource-groups-portal#export-resource-groups-to-templates). Pas vervolgens de geëxporteerde sjabloon voor de Azure-doel regio aan en maak de resource opnieuw. 
+> Het maken van back-ups en herstellen werkt niet tijdens de migratie tussen verschillende Cloud typen. Hiervoor moet u de resource exporteren [als een sjabloon](../azure-resource-manager/management/manage-resource-groups-portal.md#export-resource-groups-to-templates). Pas vervolgens de geëxporteerde sjabloon voor de Azure-doel regio aan en maak de resource opnieuw. 
 
 ## <a name="option-1-use-a-different-api-management-instance-name"></a>Optie 1: een andere API Management exemplaar naam gebruiken
 
@@ -47,4 +47,4 @@ Als u API Management exemplaren van de ene Azure-regio naar de andere wilt migre
 ## <a name="next-steps"></a><a name="next-steps"> </a>Volgende stappen
 * Zie [herstel na nood gevallen](api-management-howto-disaster-recovery-backup-restore.md)voor meer informatie over de functie voor het maken en terugzetten van back-ups.
 * Zie voor meer informatie over het migreren van Azure [-resources Azure-ondersteuning voor migratie tussen regio's](https://github.com/Azure/Azure-Migration-Guidance).
-* [Optimaliseer en bespaar in uw Cloud uitgaven](https://docs.microsoft.com/azure/cost-management-billing/costs/quick-acm-cost-analysis?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn).
+* [Optimaliseer en bespaar in uw Cloud uitgaven](../cost-management-billing/costs/quick-acm-cost-analysis.md?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn).

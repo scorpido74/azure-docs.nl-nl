@@ -4,11 +4,12 @@ description: Maak uw eerste Windows-containertoepassing in Azure Service Fabric.
 ms.topic: conceptual
 ms.date: 01/25/2019
 ms.custom: tracking-python
-ms.openlocfilehash: d7076226b63fa3b45eaae82c2964997d3065ed88
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: c0baad5d2596de04b629c4cf9eb86c51b37b8cdc
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84560666"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86247401"
 ---
 # <a name="create-your-first-service-fabric-container-application-on-windows"></a>Uw eerste Service Fabric-containertoepassing maken in Windows
 
@@ -16,7 +17,7 @@ ms.locfileid: "84560666"
 > * [Windows](service-fabric-get-started-containers.md)
 > * [Linux](service-fabric-get-started-containers-linux.md)
 
-Er zijn geen wijzigingen in uw toepassing vereist om een bestaande toepassing in een Windows-container uit te voeren in een Service Fabric-cluster. In dit artikel wordt stapsgewijs beschreven hoe u een docker-installatie kopie met een python- [kolf](http://flask.pocoo.org/) -webtoepassing maakt en deze implementeert in een Azure service Fabric-cluster. U gaat uw containertoepassing ook delen via [Azure Container Registry](/azure/container-registry/). In dit artikel wordt ervan uitgegaan dat u de basisbeginselen kent van Docker. Meer informatie over Docker kunt u lezen in het [Docker-overzicht](https://docs.docker.com/engine/understanding-docker/).
+Er zijn geen wijzigingen in uw toepassing vereist om een bestaande toepassing in een Windows-container uit te voeren in een Service Fabric-cluster. In dit artikel wordt stapsgewijs beschreven hoe u een docker-installatie kopie met een python- [kolf](http://flask.pocoo.org/) -webtoepassing maakt en deze implementeert in een Azure service Fabric-cluster. U gaat uw containertoepassing ook delen via [Azure Container Registry](../container-registry/index.yml). In dit artikel wordt ervan uitgegaan dat u de basisbeginselen kent van Docker. Meer informatie over Docker kunt u lezen in het [Docker-overzicht](https://docs.docker.com/engine/understanding-docker/).
 
 > [!NOTE]
 > Dit artikel is van toepassing op een Windows-ontwikkel omgeving.  De runtime van Service Fabric cluster en de docker-runtime moeten op hetzelfde besturings systeem worden uitgevoerd.  U kunt geen Windows-containers uitvoeren op een Linux-cluster.
@@ -330,9 +331,9 @@ De toepassing is gereed bij een ```Ready```-status: ![Gereed][2]
 
 Open een browser en ga naar `http://containercluster.westus2.cloudapp.azure.com:8081`. Als het goed is, ziet u de koptekst Hallo wereld! weergegeven in de browser.
 
-## <a name="clean-up"></a>Opruimen
+## <a name="clean-up"></a>Opschonen
 
-Zolang het cluster actief is, worden er kosten in rekening gebracht. Overweeg daarom [het cluster te verwijderen](service-fabric-cluster-delete.md).
+Zolang het cluster actief is, worden er kosten in rekening gebracht. Overweeg daarom [het cluster te verwijderen](./service-fabric-tutorial-delete-cluster.md).
 
 Nadat u de installatiekopie naar het containerregister hebt gepusht, kunt u de lokale installatiekopie op de ontwikkelcomputer verwijderen:
 
@@ -349,7 +350,7 @@ Windows Server-containers zijn niet compatibel in alle versies van een host-best
 - Windows Server-containers die zijn gemaakt met Windows Server 2016 werken alleen in de isolatie modus van Hyper-V op een host met Windows Server versie 1709. 
 - Met Windows Server-containers die zijn gebouwd met behulp van Windows Server 2016, kan het nodig zijn om ervoor te zorgen dat de revisie van het container besturingssysteem en het hostbesturingssysteem hetzelfde zijn als in de isolatie modus voor processen wordt uitgevoerd op een host met Windows Server 2016.
  
-Zie compatibiliteit met Windows- [container versie](https://docs.microsoft.com/virtualization/windowscontainers/deploy-containers/version-compatibility)voor meer informatie.
+Zie compatibiliteit met Windows- [container versie](/virtualization/windowscontainers/deploy-containers/version-compatibility)voor meer informatie.
 
 Denk na over de compatibiliteit van het hostbesturingssysteem en het container besturingssysteem wanneer u containers bouwt en implementeert op uw Service Fabric-cluster. Bijvoorbeeld:
 

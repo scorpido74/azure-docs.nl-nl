@@ -3,11 +3,12 @@ title: Een bestaand uitvoerbaar bestand verpakken naar Azure Service Fabric
 description: Meer informatie over het verpakken van een bestaande toepassing als een uitvoerbaar gast bestand, zodat het kan worden geïmplementeerd in een Service Fabric cluster.
 ms.topic: conceptual
 ms.date: 03/15/2018
-ms.openlocfilehash: 3d7aab28a32effa2caf7b04b830d72e5e3dfda56
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 8b808d092001196a4d2150e44d508e031db95554
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "75457830"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86247384"
 ---
 # <a name="deploy-an-existing-executable-to-service-fabric"></a>Een bestaand uitvoerbaar bestand implementeren naar Service Fabric
 U kunt elk type code, zoals Node.js, Java of C++, uitvoeren in azure Service Fabric als een service. Service Fabric verwijst naar deze typen services als uitvoer bare gast bestanden.
@@ -64,8 +65,7 @@ De Application Package root bevat het ApplicationManifest.xml bestand dat de toe
 ## <a name="next-steps"></a>Volgende stappen
 Raadpleeg de volgende artikelen voor gerelateerde informatie en taken.
 * [Een toepassing implementeren die door een gast kan worden uitgevoerd](service-fabric-deploy-existing-app.md)
-* [Meerdere toepassingen implementeren die door gasten kunnen worden uitgevoerd](service-fabric-deploy-multiple-apps.md)
+* [Meerdere toepassingen implementeren die door gasten kunnen worden uitgevoerd](./service-fabric-deploy-existing-app.md)
 * [Uw eerste uitvoer bare gast toepassing maken met Visual Studio](quickstart-guest-app.md)
 * [Voor beeld voor het verpakken en implementeren van een uitvoerbaar gast bestand](https://github.com/Azure-Samples/service-fabric-dotnet-getting-started), met inbegrip van een koppeling naar de Prerelease van het verpakkings programma
 * [Voor beeld van twee gast uitvoer bare bestanden (C# en nodejs) die communiceren via de naamgevings service met REST](https://github.com/Azure-Samples/service-fabric-containers)
-

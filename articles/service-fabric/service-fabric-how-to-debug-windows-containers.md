@@ -4,11 +4,12 @@ description: Meer informatie over het opsporen van fouten in Windows-containers 
 ms.topic: article
 ms.date: 02/14/2019
 ms.author: mikhegn
-ms.openlocfilehash: 2a00a352d09562ffe46dc8e6e63a5d4963ac3a3f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 3e6e7785278b182cebb21115a70f35ade52303c3
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84701146"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86247248"
 ---
 # <a name="how-to-debug-windows-containers-in-azure-service-fabric-using-visual-studio-2019"></a>Procedure: fouten opsporen in Windows-containers in azure Service Fabric met behulp van Visual Studio 2019
 
@@ -16,9 +17,9 @@ Met Visual Studio 2019 kunt u fouten opsporen in .NET-toepassingen in containers
 
 ## <a name="prerequisites"></a>Vereisten
 
-* In Windows 10 voert u deze Snelstartgids uit om [Windows 10 te configureren voor het uitvoeren van Windows-containers](https://docs.microsoft.com/virtualization/windowscontainers/quick-start/quick-start-windows-10)
-* In Windows Server 2016, volgt u deze Quick [Start om Windows-containers uit te voeren](https://docs.microsoft.com/virtualization/windowscontainers/quick-start/quick-start-windows-server) op Windows 2016
-* Stel uw lokale Service Fabric-omgeving in door [de ontwikkel omgeving voor te bereiden in Windows](https://docs.microsoft.com/azure/service-fabric/service-fabric-get-started)
+* In Windows 10 voert u deze Snelstartgids uit om [Windows 10 te configureren voor het uitvoeren van Windows-containers](/virtualization/windowscontainers/quick-start/quick-start-windows-10)
+* In Windows Server 2016, volgt u deze Quick [Start om Windows-containers uit te voeren](/virtualization/windowscontainers/quick-start/quick-start-windows-server) op Windows 2016
+* Stel uw lokale Service Fabric-omgeving in door [de ontwikkel omgeving voor te bereiden in Windows](./service-fabric-get-started.md)
 
 ## <a name="configure-your-developer-environment-to-debug-containers"></a>Uw ontwikkel omgeving configureren voor het opsporen van fouten in containers
 
@@ -37,7 +38,7 @@ Met Visual Studio 2019 kunt u fouten opsporen in .NET-toepassingen in containers
       > U kunt de gebruiken `-CreateOneNodeCluster` om een cluster met één knoop punt te installeren. Met de standaard instelling wordt een lokaal cluster met vijf knoop punten gemaakt.
       >
 
-      Zie [DNS-service in Azure service Fabric](https://docs.microsoft.com/azure/service-fabric/service-fabric-dnsservice)voor meer informatie over de DNS-service in service Fabric. Zie voor meer informatie over het gebruik van Service Fabric reverse proxy van services die in een container worden uitgevoerd, [reverse proxy rehandling for services die in containers worden uitgevoerd](service-fabric-reverseproxy.md#special-handling-for-services-running-in-containers).
+      Zie [DNS-service in Azure service Fabric](./service-fabric-dnsservice.md)voor meer informatie over de DNS-service in service Fabric. Zie voor meer informatie over het gebruik van Service Fabric reverse proxy van services die in een container worden uitgevoerd, [reverse proxy rehandling for services die in containers worden uitgevoerd](service-fabric-reverseproxy.md#special-handling-for-services-running-in-containers).
 
 ### <a name="known-limitations-when-debugging-containers-in-service-fabric"></a>Bekende beperkingen bij het opsporen van fouten in containers in Service Fabric
 

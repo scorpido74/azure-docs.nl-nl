@@ -2,16 +2,16 @@
 title: Afhankelijkheidsinjectie gebruiken in .NET Azure Functions
 description: Meer informatie over het gebruik van afhankelijkheids injectie voor het registreren en gebruiken van services in .NET functions
 author: craigshoemaker
-ms.topic: reference
+ms.topic: conceptual
 ms.date: 09/05/2019
 ms.author: cshoe
 ms.reviewer: jehollan
-ms.openlocfilehash: a994111d2f7e938ecdd71236858e4cb8773b00f7
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: bb9783b38185940f0e75e888c3bc69a1edcc6cbb
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85832862"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86249254"
 ---
 # <a name="use-dependency-injection-in-net-azure-functions"></a>Afhankelijkheidsinjectie gebruiken in .NET Azure Functions
 
@@ -185,7 +185,7 @@ Het volgende voorbeeld `host.json` bestand voegt het logboek filter toe.
 
 De functie-host registreert veel services. De volgende services zijn veilig als afhankelijkheid in uw toepassing:
 
-|Servicetype|Dood|Description|
+|Servicetype|Dood|Beschrijving|
 |--|--|--|
 |`Microsoft.Extensions.Configuration.IConfiguration`|Singleton|Runtime configuratie|
 |`Microsoft.Azure.WebJobs.Host.Executors.IHostIdProvider`|Singleton|Verantwoordelijk voor het opgeven van de ID van het exemplaar van de host|
@@ -257,7 +257,7 @@ Raadpleeg het [Opties patroon in ASP.net core](https://docs.microsoft.com/aspnet
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Zie de volgende bronnen voor meer informatie:
+Zie de volgende resources voor meer informatie:
 
 - [Uw functie-app bewaken](functions-monitoring.md)
 - [Aanbevolen procedures voor functies](functions-best-practices.md)
